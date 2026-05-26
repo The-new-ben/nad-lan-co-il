@@ -1,0 +1,62 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/theme.json",
+  "version": 3,
+  "settings": {
+    "appearanceTools": true,
+    "color": {
+      "custom": false,
+      "palette": [
+        {
+          "name": "Ink",
+          "slug": "ink",
+          "color": "#17211b"
+        },
+        {
+          "name": "Brand",
+          "slug": "brand",
+          "color": "#176b52"
+        },
+        {
+          "name": "Accent",
+          "slug": "accent",
+          "color": "#c99a2e"
+        },
+        {
+          "name": "Surface",
+          "slug": "surface",
+          "color": "#ffffff"
+        }
+      ]
+    },
+    "layout": {
+      "contentSize": "760px",
+      "wideSize": "1160px"
+    },
+    "spacing": {
+      "units": [
+        "px",
+        "rem",
+        "%"
+      ]
+    },
+    "typography": {
+      "fontFamilies": [
+        {
+          "fontFamily": "Arial, 'Noto Sans Hebrew', 'Rubik', sans-serif",
+          "name": "Hebrew Sans",
+          "slug": "hebrew-sans"
+        }
+      ]
+    }
+  },
+  "styles": {
+    "typography": {
+      "fontFamily": "var:preset|font-family|hebrew-sans",
+      "lineHeight": "1.65"
+    },
+    "color": {
+      "background": "#f7f8f6",
+      "text": "#17211b"
+    }
+  }
+}

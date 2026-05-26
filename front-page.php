@@ -27,9 +27,20 @@ get_header();
                 <?php if (isset($_GET['lead']) && $_GET['lead'] === 'received') : ?>
                     <p class="notice">הפנייה התקבלה. נחזור אליך בהקדם.</p>
                 <?php endif; ?>
+                <?php if (isset($_GET['lead']) && $_GET['lead'] === 'missing_required') : ?>
+                    <p class="notice error">שם, טלפון ואישור יצירת קשר הם שדות חובה.</p>
+                <?php endif; ?>
                 <form class="form-grid" method="post" action="<?php echo esc_url(admin_url('admin-post.php')); ?>">
                     <input type="hidden" name="action" value="nadlan_lead">
                     <?php wp_nonce_field('nadlan_lead', 'nadlan_nonce'); ?>
+                    <input type="hidden" name="landing_url" value="">
+                    <input type="hidden" name="referrer_url" value="">
+                    <input type="hidden" name="utm_source" value="">
+                    <input type="hidden" name="utm_medium" value="">
+                    <input type="hidden" name="utm_campaign" value="">
+                    <input type="hidden" name="utm_term" value="">
+                    <input type="hidden" name="utm_content" value="">
+                    <div class="field hp-field" aria-hidden="true"><label for="company_website">אתר חברה</label><input id="company_website" name="company_website" tabindex="-1" autocomplete="off"></div>
                     <div class="field"><label for="lead_name">שם מלא</label><input id="lead_name" name="lead_name" autocomplete="name" required></div>
                     <div class="field"><label for="lead_phone">טלפון</label><input id="lead_phone" name="lead_phone" autocomplete="tel" required></div>
                     <div class="field"><label for="lead_email">אימייל</label><input id="lead_email" name="lead_email" type="email" autocomplete="email"></div>
@@ -38,6 +49,7 @@ get_header();
                     <div class="field"><label for="lead_budget">תקציב משוער</label><input id="lead_budget" name="lead_budget" placeholder="לדוגמה: 2,000,000 ש״ח"></div>
                     <div class="field"><label for="lead_timeline">מתי זה רלוונטי?</label><select id="lead_timeline" name="lead_timeline"><option>מיידי</option><option>בחודש הקרוב</option><option>3 חודשים</option><option>רק בודק/ת כרגע</option></select></div>
                     <div class="field"><label for="lead_message">פרטים נוספים</label><textarea id="lead_message" name="lead_message"></textarea></div>
+                    <label class="consent-field"><input type="checkbox" name="lead_consent" value="yes" required> אני מאשר/ת שמירת פרטי הפנייה ויצירת קשר לצורך בדיקה ראשונית וחיבור לספק מתאים.</label>
                     <button class="button" type="submit">שליחת בדיקה</button>
                     <p class="notice">אין לראות במידע ייעוץ משפטי, מיסויי או פיננסי. הפנייה מיועדת לבדיקה ראשונית בלבד.</p>
                 </form>

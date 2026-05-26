@@ -66,6 +66,9 @@ h1 { font-size: clamp(2.1rem, 4vw, 4.2rem); line-height: 1.08; margin: 0 0 18px;
 .field label { display: block; font-weight: 700; margin-bottom: 6px; }
 .field input, .field select, .field textarea { width: 100%; border: 1px solid var(--line); border-radius: 6px; min-height: 44px; padding: 10px 12px; font: inherit; background: #fff; }
 .field textarea { min-height: 90px; resize: vertical; }
+.hp-field { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
+.consent-field { display: flex; align-items: flex-start; gap: 10px; color: var(--muted); font-size: .9rem; }
+.consent-field input { flex: 0 0 auto; margin-top: 6px; }
 .section { padding: 50px 0; }
 .section-head { display: flex; justify-content: space-between; gap: 24px; align-items: end; margin-bottom: 22px; }
 .section-head h2 { margin: 0; font-size: clamp(1.6rem, 2.4vw, 2.4rem); }
@@ -81,6 +84,7 @@ h1 { font-size: clamp(2.1rem, 4vw, 4.2rem); line-height: 1.08; margin: 0 0 18px;
 .tools-band .card p { color: rgba(255,255,255,.72); }
 .site-footer { padding: 32px 0; border-top: 1px solid var(--line); color: var(--muted); }
 .notice { font-size: .88rem; color: var(--muted); margin-top: 12px; }
+.notice.error { color: var(--danger); font-weight: 700; }
 
 @media (max-width: 860px) {
   .hero-grid, .cards { grid-template-columns: 1fr; }
