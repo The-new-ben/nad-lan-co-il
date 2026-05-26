@@ -262,15 +262,12 @@ function nadlan_revenue_schema(): void {
     }
     $schema = [
         '@context' => 'https://schema.org',
-        '@type' => 'WebSite',
+        '@type' => 'RealEstateAgent',
         'name' => 'NadLan',
         'url' => home_url('/'),
+        'areaServed' => 'IL',
         'inLanguage' => 'he-IL',
-        'potentialAction' => [
-            '@type' => 'SearchAction',
-            'target' => home_url('/?s={search_term_string}'),
-            'query-input' => 'required name=search_term_string',
-        ],
+        'serviceType' => ['Real estate buyer guidance', 'Mortgage and purchase tax lead routing'],
     ];
     echo '<script type="application/ld+json">' . wp_json_encode($schema, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES) . '</script>';
 }
