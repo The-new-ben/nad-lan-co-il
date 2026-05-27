@@ -263,3 +263,36 @@ Updated: 2026-05-28 02:39 Asia/Jerusalem
 
 - This page now meets the portfolio minimum content gate and is live. It is stronger than the previous draft, especially on buyer protections and contract/payment checks.
 - It still needs the same site-wide Nadlan header/footer/theme polish, and later a dedicated new-project inquiry flow with structured project fields such as city, rooms, budget, delivery range, permit status, and financing readiness.
+
+## Buying Apartment Pillar Expansion
+
+Updated: 2026-05-28 02:52 Asia/Jerusalem
+
+- Live page upgraded: `https://nad-lan.co.il/buying-apartment/`.
+- Replaced the short 304-word draft-like pillar page with a full consumer-facing guide of 2,057 words.
+- Removed public internal wording from both the page body and WordPress excerpt, including old draft/pillar language.
+- Added a realistic residential construction image, premium guide layout, buyer journey sections, total-cost planning, mortgage approval, city/neighborhood checks, price comparison, rights/document checks, physical/building checks, purchase-type comparison table, lawyer role, buying timeline, common mistakes, FAQ, and public non-advice boundary.
+- Research used before editing:
+  - Google Search Central helpful content guidance for people-first YMYL pages.
+  - Bank of Israel mortgage guidance around standardized preliminary approval and comparing mortgage offers.
+  - Israel Tax Authority purchase-tax simulator context for transaction-cost planning.
+  - Gov.il / Land Registry context for checking registration and rights documents before signing.
+
+### Live Verification
+
+- Quality gate: passed.
+- URL: `https://nad-lan.co.il/buying-apartment/`.
+- Rendered H1 count: 1.
+- Word count: 2,057.
+- Image count: 1.
+- Blocked internal terms: none.
+- WordPress excerpt: cleaned to public buyer-facing text.
+- Mobile 390px rendered check: no horizontal overflow, one H1, public terms clean.
+- Image URL check: Wikimedia image returns `image/jpeg` and `Content-Length` 174,066 bytes after replacing a broken 404 image URL caught during verification.
+- Screenshot:
+  - `verification-screenshots/nadlan-buying-apartment-mobile-clean-2026-05-28-top.png`
+
+### Honest Gap Statement
+
+- This page now meets the portfolio minimum content gate and is live. It is now a real central buyer pillar instead of a navigation draft.
+- The content hierarchy is stronger because it links into checklist, mortgage, purchase tax, Tabu, lawyer, new projects, and investment pages. The next gap is to expand the checklist page and then move the temporary page-level style/chrome into a durable theme/header/footer implementation.
