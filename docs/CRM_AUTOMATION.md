@@ -66,3 +66,5 @@ Open the private lead detail screen for the full attribution record, including r
 The NadLan Leads menu includes a `Revenue Board` submenu. It summarizes the latest 50 private leads by status, UTM source, and landing URL, then lists the latest leads with edit links.
 
 Use it for weekly revenue triage: identify which pages and campaigns are producing qualified real-estate opportunities before prioritizing new SEO work, partner outreach, or paid tests.
+
+The `Export board CSV` button downloads only board-level fields: lead ID, date, status, UTM source/medium/campaign, landing URL, and the private admin edit URL. It intentionally excludes name, phone, email, message, budget, city, and deal details.
