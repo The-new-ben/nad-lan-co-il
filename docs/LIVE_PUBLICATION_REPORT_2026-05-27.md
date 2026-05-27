@@ -115,3 +115,32 @@ Updated: 2026-05-28 00:59 Asia/Jerusalem
 - This is a real visible live improvement, not a draft, and it was verified on the public homepage.
 - The active Twenty Twenty-Five header still does not expose a proper desktop menu in the theme header. The page-level nav solves the user-facing/crawlable route issue on the homepage now, but the durable fix is still to move the header/nav/footer into the production theme and pull it through UPress Git management.
 - Next competitive gap for Nadlan: expand the existing live pillar pages to 2,000-3,000 Hebrew words each and replace placeholder city links with real city/neighborhood hubs.
+
+## Purchase Tax Page Expansion
+
+Updated: 2026-05-28 01:19 Asia/Jerusalem
+
+- Live page upgraded: `https://nad-lan.co.il/purchase-tax-calculator/`.
+- Replaced the short 380-word draft-like content with a full consumer-facing guide of 2,037 words.
+- Removed public internal wording such as `דראפט` and editor/source instructions.
+- Added a realistic real-estate image, a premium guide layout, official Tax Authority bracket table, preparation checklist, mortgage connection, lawyer/checklist internal links, FAQ, and a public non-advice boundary.
+- Research used before editing:
+  - Google Search Central helpful content guidance for finance/YMYL quality.
+  - Israel Tax Authority official purchase-tax simulator and official apartment brackets from 16.1.2025 to 15.1.2028.
+  - Bank of Israel mortgage context as a planning connection for purchase-tax affordability.
+
+### Live Verification
+
+- Quality gate: passed.
+- URL: `https://nad-lan.co.il/purchase-tax-calculator/`.
+- Rendered H1 count: 1.
+- Word count: 2,037.
+- Image count: 1.
+- Blocked internal terms: none.
+- Mobile 390px rendered check: no horizontal overflow, one H1, public terms clean.
+- Screenshot:
+  - `verification-screenshots/nadlan-purchase-tax-mobile-2026-05-28-top.png`
+
+### Honest Gap Statement
+
+- This page now meets the portfolio minimum content gate and is live, but it still needs the full site-wide Nadlan theme/header/footer deployment so every pillar page shares the same premium chrome as the homepage.
