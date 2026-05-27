@@ -28,10 +28,14 @@ Until the pretty REST route is fixed, automation should use the `?rest_route=` f
 | ID | Slug | Status | Intent |
 | --- | --- | --- | --- |
 | 6 | `purchase-tax-calculator` | draft | Purchase tax calculator lead capture |
-| 7 | `mortgage-check` | draft | Mortgage adviser qualification |
-| 8 | `buying-checklist` | draft | Buyer checklist lead magnet |
+| 7 | `mortgage-advisor` | draft | Mortgage adviser qualification |
+| 8 | `apartment-buying-checklist` | draft | Buyer checklist lead magnet |
 | 9 | `buying-apartment` | draft | Pillar page for buying an apartment |
 | 10 | `investment-apartment` | draft | Investment apartment lead capture |
 | 11 | `real-estate-lawyer` | draft | Real-estate lawyer service intent |
+| 17 | `new-projects` | draft | New-project / contractor apartment lead capture |
+| 18 | `tabu-extract-check` | draft | Tabu extract / ownership check education and legal-routing lead |
 
 These are intentionally drafts. Before publishing, add richer Hebrew content, source references, internal links, schema checks, and active calculators/forms.
+
+Updated: 2026-05-27. Draft IDs 7 and 8 were normalized from `mortgage-check` and `buying-checklist` to the production slugs above. Draft IDs 17 and 18 were created as the missing production-priority pages from `docs/MONEY_PAGE_BRIEFS.md`.
