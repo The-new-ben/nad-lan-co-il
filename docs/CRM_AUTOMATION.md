@@ -60,3 +60,9 @@ No personally identifiable information, buyer details, message text, budget, or 
 The NadLan Leads admin list shows `UTM source` and `Landing URL` beside the core triage fields so operators can quickly spot which campaigns and pages are producing leads.
 
 Open the private lead detail screen for the full attribution record, including referrer URL and the complete UTM set.
+
+## 2026-05-27 Revenue Board
+
+The NadLan Leads menu includes a `Revenue Board` submenu. It summarizes the latest 50 private leads by status, UTM source, and landing URL, then lists the latest leads with edit links.
+
+Use it for weekly revenue triage: identify which pages and campaigns are producing qualified real-estate opportunities before prioritizing new SEO work, partner outreach, or paid tests.
