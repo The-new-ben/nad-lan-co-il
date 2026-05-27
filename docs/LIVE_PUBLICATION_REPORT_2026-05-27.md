@@ -144,3 +144,32 @@ Updated: 2026-05-28 01:19 Asia/Jerusalem
 ### Honest Gap Statement
 
 - This page now meets the portfolio minimum content gate and is live, but it still needs the full site-wide Nadlan theme/header/footer deployment so every pillar page shares the same premium chrome as the homepage.
+
+## Mortgage Adviser Page Expansion
+
+Updated: 2026-05-28 01:32 Asia/Jerusalem
+
+- Live page upgraded: `https://nad-lan.co.il/mortgage-advisor/`.
+- Replaced the short 355-word draft-like content with a full consumer-facing guide of 2,035 words.
+- Removed public internal wording such as `דראפט` and editor/source instructions.
+- Added a realistic real-estate image, premium guide layout, sections on early financing checks, adviser role, preliminary approval, comparing bank offers, mortgage tracks, new-build purchases, investment apartments, preparation checklist, common mistakes, FAQ, and public non-advice boundary.
+- Research used before editing:
+  - Google Search Central helpful content guidance for financial/YMYL quality.
+  - Bank of Israel “Equalizer” and mortgage comparison information, including the public note that these tools are informational and not personal advice.
+  - Current competitor SERP review for Israeli mortgage-guide structure, with the public page written as original Hebrew content.
+
+### Live Verification
+
+- Quality gate: passed.
+- URL: `https://nad-lan.co.il/mortgage-advisor/`.
+- Rendered H1 count: 1.
+- Word count: 2,035.
+- Image count: 1.
+- Blocked internal terms: none.
+- Mobile 390px rendered check: no horizontal overflow, one H1, public terms clean.
+- Screenshot:
+  - `verification-screenshots/nadlan-mortgage-mobile-2026-05-28-top.png`
+
+### Honest Gap Statement
+
+- This page now meets the portfolio minimum content gate and is live, but it still needs the same site-wide Nadlan header/footer/theme polish and later a real calculator or offer-comparison interface to compete with the strongest mortgage competitors.
