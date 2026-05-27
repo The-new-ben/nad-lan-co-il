@@ -19,9 +19,9 @@ uPress SSL/TLS is installed and active. This was required before WordPress would
 ## REST behavior
 
 - Working REST route style: `https://nad-lan.co.il/?rest_route=/wp/v2/...`
-- Needs cleanup: `https://nad-lan.co.il/wp-json/...` currently returns the front-end HTML instead of JSON.
+- Pretty REST route verified after permalink flush: `https://nad-lan.co.il/wp-json/` returns JSON.
 
-Until the pretty REST route is fixed, automation should use the `?rest_route=` form.
+Automation can keep using the `?rest_route=` form because it is explicit and stable, but public/internal content links should use clean page URLs.
 
 ## Published content pages
 
@@ -37,7 +37,7 @@ Until the pretty REST route is fixed, automation should use the `?rest_route=` f
 | 17 | `new-projects` | publish | New-project / contractor apartment fit page |
 | 18 | `tabu-extract-check` | publish | Tabu extract / ownership-check page |
 
-Updated: 2026-05-27 13:23 UTC. The homepage is now a static page and the first eight content pages are public. Verification confirmed HTTP 200 responses, unique `?page_id=` content for the inner pages, and no visible operating-language leak in the checked public text.
+Updated: 2026-05-27 13:31 UTC. The homepage is now a static page and the first eight content pages are public. WordPress permalink settings were saved to `Post name`, and verification confirmed HTTP 200 responses, unique clean URLs for the inner pages, and no visible operating-language leak in the checked public text.
 
 Updated: 2026-05-27. Draft IDs 7 and 8 were normalized from `mortgage-check` and `buying-checklist` to the production slugs above. Draft IDs 17 and 18 were created as the missing production-priority pages from `docs/MONEY_PAGE_BRIEFS.md`.
 

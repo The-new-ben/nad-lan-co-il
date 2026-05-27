@@ -8,21 +8,22 @@ Owner: Codex acting as operator
 - Set `https://nad-lan.co.il/` to a static public homepage instead of the default WordPress blog feed.
 - Published the first real-estate content hub pages through WordPress REST API.
 - Replaced public-facing operating language with consumer-facing wording such as `פנייה`, `בדיקה`, `הכוונה`, and `גורם מקצועי`.
-- Updated homepage internal links to the currently working plain WordPress page URLs because pretty permalinks are not resolving unique page content yet.
+- Saved WordPress permalink settings to `Post name`, which fixed clean page URLs.
+- Updated homepage internal links back to clean SEO URLs after live verification.
 
 ## Published URLs Verified
 
 | Page | URL | Verification |
 | --- | --- | --- |
 | Homepage | `https://nad-lan.co.il/` | HTTP 200, unique homepage content, hero image present |
-| Purchase tax | `https://nad-lan.co.il/?page_id=6` | HTTP 200, unique H1 |
-| Mortgage adviser | `https://nad-lan.co.il/?page_id=7` | HTTP 200, unique H1 |
-| Buying checklist | `https://nad-lan.co.il/?page_id=8` | HTTP 200, unique H1 |
-| Buying apartment pillar | `https://nad-lan.co.il/?page_id=9` | HTTP 200, unique H1 |
-| Investment apartment | `https://nad-lan.co.il/?page_id=10` | HTTP 200, unique H1 |
-| Real-estate lawyer | `https://nad-lan.co.il/?page_id=11` | HTTP 200, unique H1 |
-| New projects | `https://nad-lan.co.il/?page_id=17` | HTTP 200, unique H1 |
-| Tabu extract check | `https://nad-lan.co.il/?page_id=18` | HTTP 200, unique H1 |
+| Purchase tax | `https://nad-lan.co.il/purchase-tax-calculator/` | HTTP 200, unique H1 |
+| Mortgage adviser | `https://nad-lan.co.il/mortgage-advisor/` | HTTP 200, unique H1 |
+| Buying checklist | `https://nad-lan.co.il/apartment-buying-checklist/` | HTTP 200, unique H1 |
+| Buying apartment pillar | `https://nad-lan.co.il/buying-apartment/` | HTTP 200, unique H1 |
+| Investment apartment | `https://nad-lan.co.il/investment-apartment/` | HTTP 200, unique H1 |
+| Real-estate lawyer | `https://nad-lan.co.il/real-estate-lawyer/` | HTTP 200, unique H1 |
+| New projects | `https://nad-lan.co.il/new-projects/` | HTTP 200, unique H1 |
+| Tabu extract check | `https://nad-lan.co.il/tabu-extract-check/` | HTTP 200, unique H1 |
 
 ## Research Applied
 
@@ -37,12 +38,12 @@ Owner: Codex acting as operator
 - This is a real public visibility upgrade, but it is not the final competitive standard.
 - The homepage is now much better than the default WordPress state, yet still needs a custom branded theme, stronger logo, better above-the-fold trust proof, and mobile CTA polish.
 - The published pages are useful first pages, but still too short versus top-ranking competitors. The next content pass should expand each page with more price ranges, examples, questions, updated official-source references, and comparison tables.
-- Pretty permalinks currently return the homepage content instead of the unique page content. Until this is fixed, homepage links use working `?page_id=` URLs.
+- Pretty permalinks were broken immediately after publication, returning the homepage instead of unique page content. This was fixed by saving WordPress permalink settings to `Post name`; the clean URLs now return the correct H1s.
 
 ## Next Gap-Closing Tasks
 
-1. Fix pretty permalinks so `/purchase-tax-calculator/`, `/mortgage-advisor/`, and similar URLs resolve to unique content.
-2. Expand each published page to competitor-level depth.
-3. Add structured FAQ blocks and schema where appropriate.
-4. Add a real lead form to each page or a clear shared intake flow.
-5. Replace the external hero image with an owned/generated asset uploaded to WordPress media.
+1. Expand each published page to competitor-level depth.
+2. Add structured FAQ blocks and schema where appropriate.
+3. Add a real lead form to each page or a clear shared intake flow.
+4. Replace the external hero image with an owned/generated asset uploaded to WordPress media.
+5. Add Search Console sitemap submission/recrawl once the content depth pass is complete.
