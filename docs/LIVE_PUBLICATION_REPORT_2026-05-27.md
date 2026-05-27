@@ -231,3 +231,35 @@ Updated: 2026-05-28 02:12 Asia/Jerusalem
 ### Honest Gap Statement
 
 - This page now meets the portfolio minimum content gate and is live, but it still needs the same site-wide Nadlan header/footer/theme polish and later real tools for yield calculation, property comparison, and professional inquiry.
+
+## New Projects / Contractor Apartment Page Expansion
+
+Updated: 2026-05-28 02:39 Asia/Jerusalem
+
+- Live page upgraded: `https://nad-lan.co.il/new-projects/`.
+- Replaced the short 309-word draft-like content with a full consumer-facing guide of 2,506 words.
+- Removed public internal wording from both the page body and the WordPress excerpt, including old draft/commercial/lead language.
+- Added a realistic construction/project image from Wikimedia Commons, premium guide layout, sections on developer checks, permits, Sales Law protections, payment schedule, construction index exposure, technical specification, delivery delays, purchase tax, mortgage planning, investment use case, warning signs, FAQ, and public non-advice boundary.
+- Research used before editing:
+  - Google Search Central helpful content guidance for financial/legal YMYL quality and people-first content.
+  - Official `hoc-hamecher.moch.gov.il` Sales Law portal for buyer protections, the 7% threshold, voucher-book/payment route, bank guarantee/insurance protection, and timing of guarantees.
+  - Current SERP and competitor review for contractor-apartment guides, including Madlan-style buyer-protection content and real-estate-law office pages that emphasize contract, permit, guarantee, indexation, delivery, specification, and registration checks.
+
+### Live Verification
+
+- Quality gate: passed.
+- URL: `https://nad-lan.co.il/new-projects/`.
+- Rendered H1 count: 1.
+- Word count: 2,506.
+- Image count: 1.
+- Blocked internal terms: none.
+- WordPress excerpt: cleaned to public buyer-facing text.
+- Mobile 390px rendered check: no horizontal overflow, one H1, public terms clean.
+- Image URL check: Wikimedia image returns `image/jpeg` and `Content-Length` 174,066 bytes.
+- Screenshot:
+  - `verification-screenshots/nadlan-new-projects-mobile-clean-2026-05-28-top.png`
+
+### Honest Gap Statement
+
+- This page now meets the portfolio minimum content gate and is live. It is stronger than the previous draft, especially on buyer protections and contract/payment checks.
+- It still needs the same site-wide Nadlan header/footer/theme polish, and later a dedicated new-project inquiry flow with structured project fields such as city, rooms, budget, delivery range, permit status, and financing readiness.
