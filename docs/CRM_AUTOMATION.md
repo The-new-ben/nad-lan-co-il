@@ -39,3 +39,10 @@ References:
 - https://developers.google.com/search/docs/fundamentals/seo-starter-guide
 - https://developers.google.com/search/docs/appearance/page-experience
 - https://developer.wordpress.org/themes/
+
+## 2026-05-27 Initial Status Routing
+
+New leads no longer all start as `new`.
+
+- Leads with at least two useful qualification signals among goal, city, budget, and timeline start as `qualified`.
+- Thin or incomplete leads remain `new` for manual review.

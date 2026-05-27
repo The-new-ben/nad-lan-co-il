@@ -89,6 +89,18 @@ function nadlan_revenue_clean_url(string $key): string {
     return isset($_POST[$key]) ? esc_url_raw(wp_unslash($_POST[$key])) : '';
 }
 
+function nadlan_revenue_initial_status(string $goal, string $city, string $budget, string $timeline): string {
+    $signals = 0;
+
+    foreach ([$goal, $city, $budget, $timeline] as $value) {
+        if ($value !== '') {
+            $signals++;
+        }
+    }
+
+    return $signals >= 2 ? 'qualified' : 'new';
+}
+
 function nadlan_revenue_handle_lead(): void {
     if (!isset($_POST['nadlan_nonce']) || !wp_verify_nonce(sanitize_text_field(wp_unslash($_POST['nadlan_nonce'])), 'nadlan_lead')) {
         wp_safe_redirect(add_query_arg('lead', 'bad_nonce', home_url('/')));
@@ -115,6 +127,8 @@ function nadlan_revenue_handle_lead(): void {
         exit;
     }
 
+    $initial_status = nadlan_revenue_initial_status($goal, $city, $budget, $timeline);
+
     $title = sprintf('%s - %s - %s', $name ?: 'Lead', $goal ?: 'General', current_time('Y-m-d H:i'));
     $lead_id = wp_insert_post([
         'post_type' => 'nadlan_lead',
@@ -133,7 +147,7 @@ function nadlan_revenue_handle_lead(): void {
             'lead_budget' => $budget,
             'lead_timeline' => $timeline,
             'lead_consent' => $consent,
-            'lead_status' => 'new',
+            'lead_status' => $initial_status,
             'landing_url' => nadlan_revenue_clean_url('landing_url') ?: home_url('/'),
             'referrer_url' => nadlan_revenue_clean_url('referrer_url') ?: esc_url_raw(wp_get_referer() ?: ''),
             'utm_source' => nadlan_revenue_clean('utm_source'),
