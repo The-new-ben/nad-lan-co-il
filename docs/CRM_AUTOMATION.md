@@ -67,4 +67,10 @@ The NadLan Leads menu includes a `Revenue Board` submenu. It summarizes the late
 
 Use it for weekly revenue triage: identify which pages and campaigns are producing qualified real-estate opportunities before prioritizing new SEO work, partner outreach, or paid tests.
 
-The `Export board CSV` button downloads only board-level fields: lead ID, date, status, UTM source/medium/campaign, landing URL, and the private admin edit URL. It intentionally excludes name, phone, email, message, budget, city, and deal details.
+The `Export board CSV` button downloads only board-level fields: lead ID, date, status, priority, score, UTM source/medium/campaign, landing URL, and the private admin edit URL. It intentionally excludes name, phone, email, message, budget, city, and deal details.
+
+## 2026-05-27 Lead Priority Scoring
+
+New leads get an operator-only score and priority band: `Hot`, `Warm`, or `Watch`. NadLan scoring favors goal, city, budget, timeline, and numeric budget signals.
+
+The score is for queue priority only. It does not guarantee mortgage approval, legal/tax outcome, partner acceptance, conversion, price, or revenue.

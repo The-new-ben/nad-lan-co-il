@@ -58,6 +58,8 @@ function nadlan_revenue_register_lead_type(): void {
         'lead_timeline',
         'lead_consent',
         'lead_status',
+        'lead_score',
+        'lead_priority',
         'landing_url',
         'referrer_url',
         'utm_source',
@@ -101,6 +103,40 @@ function nadlan_revenue_initial_status(string $goal, string $city, string $budge
     return $signals >= 2 ? 'qualified' : 'new';
 }
 
+function nadlan_revenue_priority_from_score(int $score): string {
+    if ($score >= 80) {
+        return 'Hot';
+    }
+
+    if ($score >= 50) {
+        return 'Warm';
+    }
+
+    return 'Watch';
+}
+
+function nadlan_revenue_score_lead(string $goal, string $city, string $budget, string $timeline): int {
+    $score = 20;
+
+    if ($goal !== '') {
+        $score += 20;
+    }
+    if ($city !== '') {
+        $score += 15;
+    }
+    if ($budget !== '') {
+        $score += 20;
+    }
+    if ($timeline !== '') {
+        $score += 15;
+    }
+    if (preg_match('/[1-9]/', $budget)) {
+        $score += 10;
+    }
+
+    return min(100, $score);
+}
+
 function nadlan_revenue_handle_lead(): void {
     if (!isset($_POST['nadlan_nonce']) || !wp_verify_nonce(sanitize_text_field(wp_unslash($_POST['nadlan_nonce'])), 'nadlan_lead')) {
         wp_safe_redirect(add_query_arg('lead', 'bad_nonce', home_url('/')));
@@ -128,6 +164,8 @@ function nadlan_revenue_handle_lead(): void {
     }
 
     $initial_status = nadlan_revenue_initial_status($goal, $city, $budget, $timeline);
+    $lead_score = nadlan_revenue_score_lead($goal, $city, $budget, $timeline);
+    $lead_priority = nadlan_revenue_priority_from_score($lead_score);
 
     $title = sprintf('%s - %s - %s', $name ?: 'Lead', $goal ?: 'General', current_time('Y-m-d H:i'));
     $lead_id = wp_insert_post([
@@ -148,6 +186,8 @@ function nadlan_revenue_handle_lead(): void {
             'lead_timeline' => $timeline,
             'lead_consent' => $consent,
             'lead_status' => $initial_status,
+            'lead_score' => (string) $lead_score,
+            'lead_priority' => $lead_priority,
             'landing_url' => nadlan_revenue_clean_url('landing_url') ?: home_url('/'),
             'referrer_url' => nadlan_revenue_clean_url('referrer_url') ?: esc_url_raw(wp_get_referer() ?: ''),
             'utm_source' => nadlan_revenue_clean('utm_source'),
@@ -179,6 +219,7 @@ function nadlan_revenue_lead_columns(array $columns): array {
             $new_columns['lead_goal'] = __('Goal', 'nadlan-revenue');
             $new_columns['lead_city'] = __('City', 'nadlan-revenue');
             $new_columns['lead_status'] = __('Status', 'nadlan-revenue');
+            $new_columns['lead_priority'] = __('Priority', 'nadlan-revenue');
             $new_columns['utm_source'] = __('UTM source', 'nadlan-revenue');
             $new_columns['landing_url'] = __('Landing URL', 'nadlan-revenue');
         }
@@ -188,7 +229,7 @@ function nadlan_revenue_lead_columns(array $columns): array {
 add_filter('manage_nadlan_lead_posts_columns', 'nadlan_revenue_lead_columns');
 
 function nadlan_revenue_lead_column_content(string $column, int $post_id): void {
-    if (in_array($column, ['lead_phone', 'lead_goal', 'lead_city', 'utm_source', 'landing_url'], true)) {
+    if (in_array($column, ['lead_phone', 'lead_goal', 'lead_city', 'lead_priority', 'utm_source', 'landing_url'], true)) {
         echo esc_html((string) get_post_meta($post_id, $column, true));
         return;
     }
@@ -225,6 +266,8 @@ function nadlan_revenue_render_lead_meta_box(WP_Post $post): void {
         __('City', 'nadlan-revenue') => get_post_meta($post->ID, 'lead_city', true),
         __('Budget', 'nadlan-revenue') => get_post_meta($post->ID, 'lead_budget', true),
         __('Timeline', 'nadlan-revenue') => get_post_meta($post->ID, 'lead_timeline', true),
+        __('Priority', 'nadlan-revenue') => get_post_meta($post->ID, 'lead_priority', true),
+        __('Lead score', 'nadlan-revenue') => get_post_meta($post->ID, 'lead_score', true),
         __('Landing URL', 'nadlan-revenue') => get_post_meta($post->ID, 'landing_url', true),
         __('Referrer URL', 'nadlan-revenue') => get_post_meta($post->ID, 'referrer_url', true),
         __('UTM source', 'nadlan-revenue') => get_post_meta($post->ID, 'utm_source', true),
@@ -405,7 +448,7 @@ function nadlan_revenue_export_lead_board(): void {
         wp_die(esc_html__('Could not open CSV output stream.', 'nadlan-revenue'));
     }
 
-    fputcsv($output, ['lead_id', 'date', 'status', 'utm_source', 'utm_medium', 'utm_campaign', 'landing_url', 'edit_url']);
+    fputcsv($output, ['lead_id', 'date', 'status', 'priority', 'score', 'utm_source', 'utm_medium', 'utm_campaign', 'landing_url', 'edit_url']);
 
     foreach ($leads as $lead) {
         $status_key = (string) get_post_meta($lead->ID, 'lead_status', true);
@@ -413,6 +456,8 @@ function nadlan_revenue_export_lead_board(): void {
             $lead->ID,
             get_the_date('Y-m-d H:i:s', $lead),
             $statuses[$status_key ?: 'new'] ?? $status_key,
+            get_post_meta($lead->ID, 'lead_priority', true),
+            get_post_meta($lead->ID, 'lead_score', true),
             get_post_meta($lead->ID, 'utm_source', true),
             get_post_meta($lead->ID, 'utm_medium', true),
             get_post_meta($lead->ID, 'utm_campaign', true),
