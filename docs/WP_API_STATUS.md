@@ -23,27 +23,28 @@ uPress SSL/TLS is installed and active. This was required before WordPress would
 
 Until the pretty REST route is fixed, automation should use the `?rest_route=` form.
 
-## Draft money pages created
+## Published content pages
 
 | ID | Slug | Status | Intent |
 | --- | --- | --- | --- |
-| 6 | `purchase-tax-calculator` | draft | Purchase tax calculator lead capture |
-| 7 | `mortgage-advisor` | draft | Mortgage adviser qualification |
-| 8 | `apartment-buying-checklist` | draft | Buyer checklist lead magnet |
-| 9 | `buying-apartment` | draft | Pillar page for buying an apartment |
-| 10 | `investment-apartment` | draft | Investment apartment lead capture |
-| 11 | `real-estate-lawyer` | draft | Real-estate lawyer service intent |
-| 17 | `new-projects` | draft | New-project / contractor apartment lead capture |
-| 18 | `tabu-extract-check` | draft | Tabu extract / ownership check education and legal-routing lead |
+| 2 | `home` | publish | Static homepage and content hub |
+| 6 | `purchase-tax-calculator` | publish | Purchase tax estimate and professional-check page |
+| 7 | `mortgage-advisor` | publish | Mortgage adviser qualification page |
+| 8 | `apartment-buying-checklist` | publish | Buyer checklist page |
+| 9 | `buying-apartment` | publish | Pillar page for buying an apartment |
+| 10 | `investment-apartment` | publish | Investment apartment evaluation page |
+| 11 | `real-estate-lawyer` | publish | Real-estate lawyer service-intent page |
+| 17 | `new-projects` | publish | New-project / contractor apartment fit page |
+| 18 | `tabu-extract-check` | publish | Tabu extract / ownership-check page |
 
-These are intentionally drafts. Before publishing, add richer Hebrew content, source references, internal links, schema checks, and active calculators/forms.
+Updated: 2026-05-27 13:23 UTC. The homepage is now a static page and the first eight content pages are public. Verification confirmed HTTP 200 responses, unique `?page_id=` content for the inner pages, and no visible operating-language leak in the checked public text.
 
 Updated: 2026-05-27. Draft IDs 7 and 8 were normalized from `mortgage-check` and `buying-checklist` to the production slugs above. Draft IDs 17 and 18 were created as the missing production-priority pages from `docs/MONEY_PAGE_BRIEFS.md`.
 
-## Draft content upgraded
+## Public content upgraded
 
 Updated: 2026-05-27 04:53 UTC
 
-The eight draft money/pillar pages were upgraded through the WordPress REST API with conversion-focused Hebrew draft copy, official-source notes, qualification tables, CRM-ready CTAs, stronger internal linking, and no-guarantee legal/tax/mortgage/investment guardrails. All eight remain `draft`.
+The eight money/pillar pages were upgraded through the WordPress REST API with conversion-focused Hebrew copy, official-source notes, qualification tables, consumer-facing CTAs, stronger internal linking, and no-guarantee legal/tax/mortgage/investment guardrails. All eight were later made public after public-language cleanup.
 
 See `docs/WP_DRAFT_UPDATE_LOG.md` for the full operational log.
