@@ -173,3 +173,32 @@ Updated: 2026-05-28 01:32 Asia/Jerusalem
 ### Honest Gap Statement
 
 - This page now meets the portfolio minimum content gate and is live, but it still needs the same site-wide Nadlan header/footer/theme polish and later a real calculator or offer-comparison interface to compete with the strongest mortgage competitors.
+
+## Real Estate Lawyer Page Expansion
+
+Updated: 2026-05-28 01:52 Asia/Jerusalem
+
+- Live page upgraded: `https://nad-lan.co.il/real-estate-lawyer/`.
+- Replaced the short 329-word draft-like content with a full consumer-facing guide of 2,005 words.
+- Removed public internal wording such as `דראפט` and editor/source instructions.
+- Added a realistic real-estate image, premium guide layout, sections on rights and registration checks, Tabu extract, timing before signing, sale-contract checks, new-build purchases, investment apartments, first-contact checklist, common mistakes, FAQ, and public non-advice boundary.
+- Research used before editing:
+  - Google Search Central helpful content guidance for legal/financial YMYL quality.
+  - Gov.il Land Registry extract page for official Tabu context: what the extract contains, when to check it, and why it is date-sensitive.
+  - Current competitor SERP review for real-estate lawyer and apartment-purchase contract pages, rewritten as original Hebrew content.
+
+### Live Verification
+
+- Quality gate: passed.
+- URL: `https://nad-lan.co.il/real-estate-lawyer/`.
+- Rendered H1 count: 1.
+- Word count: 2,005.
+- Image count: 1.
+- Blocked internal terms: none.
+- Mobile 390px rendered check: no horizontal overflow, one H1, public terms clean.
+- Screenshot:
+  - `verification-screenshots/nadlan-lawyer-mobile-2026-05-28-top.png`
+
+### Honest Gap Statement
+
+- This page now meets the portfolio minimum content gate and is live, but it still needs the same site-wide Nadlan header/footer/theme polish and later a real inquiry/profile flow for vetted real-estate lawyers.
