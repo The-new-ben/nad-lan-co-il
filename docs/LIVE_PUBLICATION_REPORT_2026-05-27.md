@@ -85,3 +85,33 @@ Updated: 2026-05-28 00:40 Asia/Jerusalem
 - This is a real visible upgrade, but it is still an interim REST/content-layer homepage. The stronger long-term fix is to activate/sync the dedicated `NadLan Revenue` theme on production through UPress Git pull and then move this homepage/chrome into theme files.
 - Homepage depth is suitable for a hub, but the competitive pages still need full 2,000-3,000 word expansions.
 - The current city links are placeholders to existing published pages. Next pass should create real city/neighborhood hubs and connect them to transaction/source data.
+
+## Live Homepage Navigation Polish
+
+Updated: 2026-05-28 00:59 Asia/Jerusalem
+
+- Researched crawlable/internal links and WordPress menu behavior before editing:
+  - Google Search Central link best practices: internal links should be crawlable `<a href>` elements with concise, descriptive anchor text.
+  - WordPress Theme Handbook navigation menus: WordPress can fall back to generated page menus when a custom location is not properly assigned, which explains the long page-title menu behavior.
+  - Nielsen Norman Group/footer-navigation research remains the trust/navigation reference for keeping footer and site chrome clear instead of keyword-dumped.
+- Added a live, crawlable homepage navigation strip under the H1 with short public labels: `קנייה`, `השקעה`, `מקבלן`, `משכנתא`, `מס רכישה`, `טאבו`, `עורך דין`.
+- Sanitized the inline homepage style block. WordPress auto-inserted paragraph tags inside the style block after blank lines, which made later CSS visible in HTML but not parsed by the browser. The style block now avoids blank-line paragraph injection.
+- Added a repeatable headless Chrome verifier: `scripts/verify-nadlan-home.mjs`.
+
+### Live Verification
+
+- Live URL verified: `https://nad-lan.co.il/`.
+- Desktop check: 1366px viewport, no horizontal overflow, one visible H1, page navigation visible, custom footer visible, hero visible, first image loaded.
+- Mobile check: 390px viewport, no horizontal overflow, one visible H1, navigation wraps cleanly into compact rows, no cut labels.
+- Blocked internal terms check passed: no `SEO`, `CRM`, `לידים`, `כוונת חיפוש`, `מסלולי כסף`, `מוניטיזציה`, or `ספקים` in rendered public text.
+- Final screenshots:
+  - `verification-screenshots/nadlan-home-nav-wrap-desktop-2026-05-28-top.png`
+  - `verification-screenshots/nadlan-home-nav-wrap-desktop-2026-05-28-footer.png`
+  - `verification-screenshots/nadlan-home-nav-wrap-mobile-2026-05-28-top.png`
+  - `verification-screenshots/nadlan-home-nav-wrap-mobile-2026-05-28-footer.png`
+
+### Honest Gap Statement
+
+- This is a real visible live improvement, not a draft, and it was verified on the public homepage.
+- The active Twenty Twenty-Five header still does not expose a proper desktop menu in the theme header. The page-level nav solves the user-facing/crawlable route issue on the homepage now, but the durable fix is still to move the header/nav/footer into the production theme and pull it through UPress Git management.
+- Next competitive gap for Nadlan: expand the existing live pillar pages to 2,000-3,000 Hebrew words each and replace placeholder city links with real city/neighborhood hubs.
