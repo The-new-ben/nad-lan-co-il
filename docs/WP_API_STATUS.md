@@ -39,3 +39,11 @@ Until the pretty REST route is fixed, automation should use the `?rest_route=` f
 These are intentionally drafts. Before publishing, add richer Hebrew content, source references, internal links, schema checks, and active calculators/forms.
 
 Updated: 2026-05-27. Draft IDs 7 and 8 were normalized from `mortgage-check` and `buying-checklist` to the production slugs above. Draft IDs 17 and 18 were created as the missing production-priority pages from `docs/MONEY_PAGE_BRIEFS.md`.
+
+## Draft content upgraded
+
+Updated: 2026-05-27 04:53 UTC
+
+The eight draft money/pillar pages were upgraded through the WordPress REST API with conversion-focused Hebrew draft copy, official-source notes, qualification tables, CRM-ready CTAs, stronger internal linking, and no-guarantee legal/tax/mortgage/investment guardrails. All eight remain `draft`.
+
+See `docs/WP_DRAFT_UPDATE_LOG.md` for the full operational log.
