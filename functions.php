@@ -179,6 +179,8 @@ function nadlan_revenue_lead_columns(array $columns): array {
             $new_columns['lead_goal'] = __('Goal', 'nadlan-revenue');
             $new_columns['lead_city'] = __('City', 'nadlan-revenue');
             $new_columns['lead_status'] = __('Status', 'nadlan-revenue');
+            $new_columns['utm_source'] = __('UTM source', 'nadlan-revenue');
+            $new_columns['landing_url'] = __('Landing URL', 'nadlan-revenue');
         }
     }
     return $new_columns;
@@ -186,7 +188,7 @@ function nadlan_revenue_lead_columns(array $columns): array {
 add_filter('manage_nadlan_lead_posts_columns', 'nadlan_revenue_lead_columns');
 
 function nadlan_revenue_lead_column_content(string $column, int $post_id): void {
-    if (in_array($column, ['lead_phone', 'lead_goal', 'lead_city'], true)) {
+    if (in_array($column, ['lead_phone', 'lead_goal', 'lead_city', 'utm_source', 'landing_url'], true)) {
         echo esc_html((string) get_post_meta($post_id, $column, true));
         return;
     }
