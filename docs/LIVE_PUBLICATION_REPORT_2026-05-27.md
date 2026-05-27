@@ -202,3 +202,32 @@ Updated: 2026-05-28 01:52 Asia/Jerusalem
 ### Honest Gap Statement
 
 - This page now meets the portfolio minimum content gate and is live, but it still needs the same site-wide Nadlan header/footer/theme polish and later a real inquiry/profile flow for vetted real-estate lawyers.
+
+## Investment Apartment Page Expansion
+
+Updated: 2026-05-28 02:12 Asia/Jerusalem
+
+- Live page upgraded: `https://nad-lan.co.il/investment-apartment/`.
+- Replaced the short 349-word draft-like content with a full consumer-facing guide of 2,002 words.
+- Removed public internal wording such as `דראפט` and awkward wording from the previous version.
+- Added a realistic real-estate image, premium guide layout, sections on investment goals, yield calculation, purchase tax, mortgage and leverage, area/rental checks, legal and physical checks, investor worksheet, new-build investment, tenant management, exit planning, common mistakes, FAQ, and public non-advice boundary.
+- Research used before editing:
+  - Google Search Central helpful content guidance for financial/YMYL quality.
+  - Israel Tax Authority official purchase-tax simulator for second/investment apartment tax planning.
+  - Current competitor SERP review for Israeli investment-apartment guides, yield calculators, financing pages, and city-opportunity pages, rewritten as original Hebrew content.
+
+### Live Verification
+
+- Quality gate: passed.
+- URL: `https://nad-lan.co.il/investment-apartment/`.
+- Rendered H1 count: 1.
+- Word count: 2,002.
+- Image count: 1.
+- Blocked internal terms: none.
+- Mobile 390px rendered check: no horizontal overflow, one H1, public terms clean.
+- Screenshot:
+  - `verification-screenshots/nadlan-investment-mobile-2026-05-28-top.png`
+
+### Honest Gap Statement
+
+- This page now meets the portfolio minimum content gate and is live, but it still needs the same site-wide Nadlan header/footer/theme polish and later real tools for yield calculation, property comparison, and professional inquiry.
