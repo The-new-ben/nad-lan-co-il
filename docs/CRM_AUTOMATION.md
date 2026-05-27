@@ -46,3 +46,11 @@ New leads no longer all start as `new`.
 
 - Leads with at least two useful qualification signals among goal, city, budget, and timeline start as `qualified`.
 - Thin or incomplete leads remain `new` for manual review.
+
+## 2026-05-27 Conversion Measurement
+
+When the stored-lead redirect reaches `?lead=received`, the theme pushes a privacy-safe `generate_lead` event into `window.dataLayer`.
+
+Payload fields: `event`, `lead_form`, `portfolio_site`, `lead_result`, and `conversion_source`.
+
+No personally identifiable information, buyer details, message text, budget, or deal data is sent in this browser event. Configure GTM/GA4 to treat `generate_lead` as the lead key event after production deployment.
