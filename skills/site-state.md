@@ -294,3 +294,15 @@ Owner reported being tired and concerned about token usage ($43.07 / $50 monthly
   - Logo: monogram נ in 1px gold double-circle "seal" (cartoon-house version REJECTED — media ids 338/340 still on live; pending cleanup)
 - **Tokens are documented, palette is set; the actual CSS / theme.json port to the live theme is gated on the second Lovable round** producing the CSS bundle + theme.json fragment + block patterns.
 - No live-site changes this session beyond the skills tree update.
+
+### 2026-05-28 (late) — Claude Code (claude-opus-4-8) — LUXURY DESIGN SYSTEM PORTED INTO THEME
+- Owner delivered Lovable round 2 (`docs/design/lovable-output-round-2.md`, 2624 lines): full CSS bundle, theme.json fragment, 10 Gutenberg patterns, monetization surfaces, self-critique, honesty statement.
+- **Ported all artifacts into the theme** (commit 25acbc4, theme bumped to v1.1.0):
+  - CSS bundle (1315 lines) → appended to `style.css` + `style.min.css` behind marker. Tokens, @font-face, base, all component classes, micro-interactions, reduced-motion. Brace-balanced, RTL logical props.
+  - theme.json fragment → deep-merged (13-color palette, 2 fontFamilies w/ local fontFace, 13 fontSizes, 14 spacingSizes, shadows, layout, element styles). templateParts + customTemplates preserved. Valid v3.
+  - 10 patterns → `patterns/nadlan-*.php`, all php-lint clean, slugs `nadlan-revenue/*`.
+  - Added missing font heebo-300 (+latin) — the light luxury body weight.
+- **New skill `skills/design-implementation.md`** — full map of source→theme-file, enqueue logic (prod loads style.min.css, bundle in both), theme.json merge rules, pattern list, go-live = ONE theme sync, post-sync verification checklist, known follow-ups, update workflow.
+- **GOES LIVE ON NEXT THEME SYNC.** Owner action: merge PR to main → UPress ניהול GIT pull from main → `/wp-content/themes/nadlan-revenue/`. No re-activation needed. CSS + theme.json + fonts + patterns land together.
+- Did NOT inject CSS live via REST — would be a font-broken half-measure (CSS references theme.json fontFace + patterns that only exist after sync). One sync = complete correct result.
+- **Follow-ups after sync** (documented in design-implementation.md): retoken calculator widgets (still corporate-blue), replace footer template-part with nadlan-footer pattern, rebuild homepage from the new patterns, swap rejected logo for monogram-seal, run post-sync verification.
