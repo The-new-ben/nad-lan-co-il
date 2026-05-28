@@ -95,3 +95,16 @@ MapLibre GL JS + OSM tiles (Stadia/MapTiler free tier — confirm with owner, no
 
 ---
 _Created 2026-05-28 by Claude Code (claude-opus-4-8). Owner asked to "start to develop the catalog" — this is the architecture + phased plan; Phase A build pending the owner's listings-source decision._
+
+## Update 2026-05-28 — Phase A foundation shipped
+
+- **Plugin v1.1.0 built**: registers `nadlan_property` + `nadlan_project` + `nadlan_professional` CPTs (public, REST-enabled, with archives at `/properties/`, `/projects/`, `/professionals/`), plus `nadlan_city` hierarchical taxonomy + `nadlan_profession` taxonomy. English labels (admin-only) per lessons. function_exists-guarded. Single capability addition per release.
+- Healthcheck endpoint now reports catalog readiness: `catalog.nadlan_property_cpt`, etc.
+- Owner approved: gov.il data, free map tiles, legal re-publishing — all green-lit.
+- Plugin ZIP at repo root: `nadlan-config.zip` (built from `plugin-build/`). Owner uploads via standard WP admin (delete old → upload new → activate).
+- **Next on Phase A** (after owner installs v1.1.0):
+  1. Verify CPTs via healthcheck `catalog` block.
+  2. Add `register_post_meta` for the property fields (listing_type, price, rooms, sqm, lat, lng, photos, agent_id, is_sponsored, etc.) — gated for REST writes.
+  3. Seed 5–10 properties via REST.
+  4. Build archive template using `.listing-card` class (already in the luxury CSS bundle).
+  5. Build single-property template with `RealEstateListing` schema.

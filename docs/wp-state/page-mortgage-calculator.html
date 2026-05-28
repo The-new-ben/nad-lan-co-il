@@ -1,0 +1,316 @@
+<!-- wp:html -->
+<style>
+.nlc-calc{font-family:var(--font-sans,Heebo,sans-serif);direction:rtl;background:#FAF7F1;border:1px solid rgba(27,26,23,.12);border-radius:14px;padding:24px;margin:24px 0;color:#1B1A17;box-shadow:0 2px 12px rgba(15,27,45,.04)}
+.nlc-calc h3{font-size:24px;font-weight:700;margin:0 0 4px;color:#1B1A17}
+.nlc-calc .nlc-sub{font-size:14px;color:#6E6A63;margin:0 0 20px}
+.nlc-calc .nlc-tracks{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:20px}
+.nlc-calc .nlc-track{background:#fff;border:1px solid rgba(27,26,23,.12);border-radius:10px;padding:14px}
+.nlc-calc .nlc-track h4{font-size:14px;margin:0 0 10px;color:#1B1A17;font-weight:700;display:flex;justify-content:space-between;align-items:center}
+.nlc-calc .nlc-track h4 small{font-size:11px;font-weight:400;color:#6E6A63}
+.nlc-calc label{display:block;font-size:12px;color:#6E6A63;margin:6px 0 2px}
+.nlc-calc input[type=number]{width:100%;padding:8px 10px;border:1px solid rgba(27,26,23,.12);border-radius:8px;font-size:15px;font-family:inherit;background:#fff;direction:ltr;text-align:right}
+.nlc-calc input[type=number]:focus{outline:none;border-color:#9C7A3C;box-shadow:0 0 0 3px rgba(216,155,60,.15)}
+.nlc-calc .nlc-totals{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;background:#fff;border:1px solid rgba(27,26,23,.12);border-radius:10px;padding:16px;margin-bottom:16px}
+.nlc-calc .nlc-total{text-align:center}
+.nlc-calc .nlc-total .nlc-tlabel{font-size:11px;color:#6E6A63;margin-bottom:4px}
+.nlc-calc .nlc-total .nlc-tval{font-size:20px;font-weight:700;color:#1B1A17;direction:ltr}
+.nlc-calc .nlc-total.nlc-hl .nlc-tval{color:#9C7A3C}
+.nlc-calc .nlc-bar{display:flex;height:32px;border-radius:8px;overflow:hidden;margin:12px 0 8px;border:1px solid rgba(27,26,23,.12)}
+.nlc-calc .nlc-bar-seg{display:flex;align-items:center;justify-content:center;font-size:11px;color:#fff;font-weight:600}
+.nlc-calc .nlc-bar-seg.s1{background:#1B1A17}
+.nlc-calc .nlc-bar-seg.s2{background:#9C7A3C}
+.nlc-calc .nlc-bar-seg.s3{background:#2E6A4F}
+.nlc-calc .nlc-stress{background:#fff;border:1px solid rgba(27,26,23,.12);border-radius:10px;padding:12px 16px;display:flex;align-items:center;gap:10px;margin-top:8px;font-size:13px}
+.nlc-calc .nlc-stress input{margin-left:6px}
+.nlc-calc .nlc-stress-out{color:#B3261E;font-weight:600}
+.nlc-calc .nlc-note{font-size:12px;color:#6E6A63;margin-top:14px;border-top:1px solid rgba(27,26,23,.12);padding-top:12px;line-height:1.5}
+@media(max-width:720px){.nlc-calc .nlc-tracks{grid-template-columns:1fr}.nlc-calc .nlc-totals{grid-template-columns:repeat(2,1fr)}}
+</style>
+<div class="nlc-calc" id="nlc-mortgage" data-nlc="mortgage-v1">
+<h3>מחשבון משכנתא — תמהיל 3 מסלולים</h3>
+<p class="nlc-sub">תכננו את התמהיל לפני פנייה לבנק. הזינו סכום, ריבית ותקופה לכל מסלול — החישוב נעשה בזמן אמת.</p>
+<div class="nlc-tracks">
+  <div class="nlc-track"><h4>קל"צ <small>קבועה לא צמודה</small></h4>
+    <label>סכום (₪)</label><input type="number" data-k="amt" data-t="0" value="600000" min="0" step="10000">
+    <label>ריבית (%)</label><input type="number" data-k="rate" data-t="0" value="5.2" min="0" step="0.05">
+    <label>תקופה (שנים)</label><input type="number" data-k="years" data-t="0" value="25" min="1" max="40">
+  </div>
+  <div class="nlc-track"><h4>פריים <small>צמודה לריבית פריים</small></h4>
+    <label>סכום (₪)</label><input type="number" data-k="amt" data-t="1" value="400000" min="0" step="10000">
+    <label>ריבית (%)</label><input type="number" data-k="rate" data-t="1" value="6.0" min="0" step="0.05">
+    <label>תקופה (שנים)</label><input type="number" data-k="years" data-t="1" value="25" min="1" max="40">
+  </div>
+  <div class="nlc-track"><h4>משתנה <small>צמודה כל 5 שנים</small></h4>
+    <label>סכום (₪)</label><input type="number" data-k="amt" data-t="2" value="200000" min="0" step="10000">
+    <label>ריבית (%)</label><input type="number" data-k="rate" data-t="2" value="5.5" min="0" step="0.05">
+    <label>תקופה (שנים)</label><input type="number" data-k="years" data-t="2" value="25" min="1" max="40">
+  </div>
+</div>
+<div class="nlc-totals">
+  <div class="nlc-total"><div class="nlc-tlabel">סך משכנתא</div><div class="nlc-tval" id="nlc-m-total">₪1,200,000</div></div>
+  <div class="nlc-total nlc-hl"><div class="nlc-tlabel">החזר חודשי</div><div class="nlc-tval" id="nlc-m-pmt">₪0</div></div>
+  <div class="nlc-total"><div class="nlc-tlabel">סך ריבית</div><div class="nlc-tval" id="nlc-m-int">₪0</div></div>
+  <div class="nlc-total"><div class="nlc-tlabel">עלות כוללת</div><div class="nlc-tval" id="nlc-m-cost">₪0</div></div>
+</div>
+<div class="nlc-bar" id="nlc-m-bar"></div>
+<div style="font-size:11px;color:#6E6A63;text-align:center">פילוח החזר חודשי בין המסלולים</div>
+<label class="nlc-stress"><input type="checkbox" id="nlc-m-stress">סימולציית עליית ריבית (+2%) — <span id="nlc-m-stress-out" class="nlc-stress-out" style="display:none"></span></label>
+<div class="nlc-note">החישוב מבוסס על נוסחת PMT סטנדרטית (לוח שפיצר). ערכי ריבית הם להמחשה — בנקים מציעים ריביות שונות לפי דירוג אשראי ויחס מימון. אינו מהווה ייעוץ פיננסי. נדלן חכם.</div>
+</div>
+<script>
+(function(){
+  const r=document.getElementById('nlc-mortgage'),
+    fmt=n=>new Intl.NumberFormat('he-IL',{maximumFractionDigits:0}).format(Math.round(n));
+  function pmt(p,r,n){r=r/100/12;n=n*12;return n<=0||p<=0?0:r===0?p/n:p*r/(1-Math.pow(1+r,-n))}
+  function calc(stressBps){
+    let pSum=0,mSum=0,iSum=0;const seg=[];
+    for(let t=0;t<3;t++){
+      const a=+r.querySelector(`input[data-t="${t}"][data-k="amt"]`).value||0,
+            rt=(+r.querySelector(`input[data-t="${t}"][data-k="rate"]`).value||0)+(stressBps||0),
+            yr=+r.querySelector(`input[data-t="${t}"][data-k="years"]`).value||0;
+      const m=pmt(a,rt,yr),total=m*yr*12,interest=Math.max(0,total-a);
+      pSum+=a;mSum+=m;iSum+=interest;seg.push(m);
+    }
+    return{pSum,mSum,iSum,seg}
+  }
+  function render(){
+    const{pSum,mSum,iSum,seg}=calc(0);
+    r.querySelector('#nlc-m-total').textContent='₪'+fmt(pSum);
+    r.querySelector('#nlc-m-pmt').textContent='₪'+fmt(mSum);
+    r.querySelector('#nlc-m-int').textContent='₪'+fmt(iSum);
+    r.querySelector('#nlc-m-cost').textContent='₪'+fmt(pSum+iSum);
+    const bar=r.querySelector('#nlc-m-bar');bar.innerHTML='';
+    if(mSum>0){const lbl=['קל"צ','פריים','משתנה'];seg.forEach((s,i)=>{const w=s/mSum*100;if(w<0.5)return;const d=document.createElement('div');d.className='nlc-bar-seg s'+(i+1);d.style.width=w+'%';d.textContent=w>=14?lbl[i]:'';bar.appendChild(d)})}
+    const stress=r.querySelector('#nlc-m-stress').checked;const out=r.querySelector('#nlc-m-stress-out');
+    if(stress){const s=calc(2);out.style.display='inline';out.textContent='החזר חודשי: ₪'+fmt(s.mSum)+' (גידול ₪'+fmt(s.mSum-mSum)+')'}else{out.style.display='none'}
+  }
+  r.querySelectorAll('input').forEach(i=>i.addEventListener('input',render));render();
+})();
+</script>
+<!-- /wp:html -->
+
+
+
+<style id="nadlan-mortgage-calculator-20260528">.nadlan-guide{direction:rtl;font-family:Heebo,"Noto Sans Hebrew",Arial,sans-serif;color:#14211c}.nadlan-guide *{box-sizing:border-box}.nadlan-guide .wrap{width:min(1080px,calc(100% - 32px));margin:0 auto}.nadlan-guide .nadlan-hero-shell{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(280px,.95fr);gap:28px;align-items:center;margin:20px auto 20px;padding:28px;border:1px solid #dce8e1;border-radius:24px;background:linear-gradient(135deg,#ffffff,#f2faf5);box-shadow:0 18px 44px rgba(8,56,45,.09)}.nadlan-guide .eyebrow{display:inline-flex;margin:0 0 12px;padding:8px 14px;border-radius:999px;background:#fff7de;border:1px solid #efd890;color:#65470f;font-weight:900}.nadlan-guide h2{font-size:clamp(26px,3vw,38px);line-height:1.18;color:#08382d;margin:38px 0 14px}.nadlan-guide h3{font-size:24px;line-height:1.25;color:#0f5a43;margin:26px 0 10px}.nadlan-guide p,.nadlan-guide li{font-size:18px;line-height:1.9;color:#2f433b}.nadlan-guide .nadlan-hero-shell p{font-size:19px}.nadlan-guide .nadlan-photo-card img{display:block;width:100%;height:auto;border-radius:18px;box-shadow:0 14px 30px rgba(8,56,45,.12)}.nadlan-guide figcaption{font-size:14px;line-height:1.7;color:#53675f;margin-top:10px}.nadlan-guide .calc-shell{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(280px,.9fr);gap:18px;align-items:start;margin:30px auto;padding:22px;border-radius:24px;border:1px solid #d7e8df;background:#fbfffd;box-shadow:0 18px 42px rgba(8,56,45,.08)}.nadlan-guide .calc-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.nadlan-guide label{display:grid;gap:7px;font-size:15px;font-weight:900;color:#08382d}.nadlan-guide input{width:100%;min-height:44px;border:1px solid #bfd7cc;border-radius:12px;padding:10px 12px;font:inherit;background:#fff;color:#14211c}.nadlan-guide .result-card{background:#08382d;color:#fff;border-radius:20px;padding:22px;box-shadow:0 14px 34px rgba(8,56,45,.15)}.nadlan-guide .result-card b{display:block;font-size:34px;line-height:1.1;margin:8px 0}.nadlan-guide .result-card span,.nadlan-guide .result-card p{color:#eaf8f1}.nadlan-guide .mini-results{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin-top:14px}.nadlan-guide .mini{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.2);border-radius:14px;padding:12px}.nadlan-guide .mini strong{display:block;font-size:20px;color:#fff}.nadlan-guide .cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin:22px 0}.nadlan-guide .card{background:#fff;border:1px solid #dce8e1;border-radius:18px;padding:18px;box-shadow:0 12px 28px rgba(8,56,45,.06)}.nadlan-guide .card b{display:block;font-size:20px;color:#08382d;margin-bottom:8px}.nadlan-guide table{width:100%;border-collapse:collapse;background:#fff;border:1px solid #dce8e1;border-radius:16px;overflow:hidden;display:table;margin:18px 0}.nadlan-guide th,.nadlan-guide td{padding:14px 16px;border-bottom:1px solid #e7f0eb;text-align:right;font-size:16px;line-height:1.65}.nadlan-guide th{background:#edf8f3;color:#08382d}.nadlan-guide .note{margin:26px 0;padding:18px 20px;border-radius:18px;background:#fff8e8;border:1px solid #efd890;color:#513d16;font-weight:700;line-height:1.8}.nadlan-guide .cta{display:flex;gap:10px;flex-wrap:wrap;margin:28px 0}.nadlan-guide .btn{display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:11px 16px;border-radius:999px;text-decoration:none!important;font-weight:900;background:#0f5a43;color:#fff!important}.nadlan-guide .btn.secondary{background:#fff;color:#08382d!important;border:1px solid #bfd7cc}.nadlan-guide .source-list a{color:#0f5a43;font-weight:900}@media(max-width:820px){.nadlan-guide .nadlan-hero-shell,.nadlan-guide .calc-shell,.nadlan-guide .cards{grid-template-columns:1fr}.nadlan-guide .nadlan-photo-card{order:-1;margin:0}.nadlan-guide .nadlan-hero-shell{padding:20px;gap:18px}.nadlan-guide .calc-grid,.nadlan-guide .mini-results{grid-template-columns:1fr}.nadlan-guide p,.nadlan-guide li{font-size:17px}.nadlan-guide th,.nadlan-guide td{font-size:15px;padding:10px}}</style>
+<div class="nadlan-guide">
+  <section class="nadlan-hero-shell wrap" aria-label="מחשבון משכנתא">
+    <div>
+      <span class="eyebrow">בדיקת החזר לפני הצעה או חתימה</span>
+      <h2>מחשבון משכנתא טוב מתחיל בשאלה כמה באמת תחזירו</h2>
+      <p>מחשבון משכנתא עוזר להבין את סדר הגודל של ההחזר החודשי, סך התשלומים, הריבית הכוללת והלחץ על ההכנסה לפני שניגשים לבנק או חותמים על עסקה. הוא לא מחליף הצעה רשמית, אבל הוא נותן תמונת פתיחה חשובה: האם המחיר מתאים ליכולת ההחזר, האם התקופה ארוכה מדי, ומה קורה אם הריבית עולה באחוז אחד.</p>
+      <p>הכלי שלפניכם מחשב החזר חודשי לפי סכום הלוואה, ריבית שנתית ותקופה בשנים. הוא מציג גם סך תשלומים, סך ריבית, יחס החזר מהכנסה ומבחן רגישות. לאחר החישוב כדאי לקרוא את ההסברים בעמוד, משום שמשכנתא אמיתית מורכבת ממסלולים, מדד, ביטוחים, שמאות, מס רכישה ולוח תשלומים.</p>
+      <div class="cta"><a class="btn" href="/mortgage-advisor/">מדריך יועץ משכנתאות</a><a class="btn secondary" href="/mortgage-refinance/">בדיקת מחזור משכנתא</a></div>
+    </div>
+    <figure class="nadlan-photo-card">
+      <img decoding="async" src="https://commons.wikimedia.org/wiki/Special:FilePath/Diamond%20Exchange%20complex%20in%20Ramat%20Gan%2C%20Israel%202024%2055.jpg?width=960" alt="בנייני משרדים ומגורים בישראל לפני חישוב החזר משכנתא" loading="eager">
+      <figcaption>לפני הצעה על דירה, בודקים החזר חודשי, ריבית, תקופה ויחס החזר מהכנסה.</figcaption>
+    </figure>
+  </section>
+  <section class="calc-shell wrap" aria-label="חישוב החזר משכנתא">
+    <div>
+      <h2>מחשבון החזר חודשי</h2>
+      <div class="calc-grid">
+        <label>סכום המשכנתא <input id="nmc-loan" type="number" value="1000000" inputmode="numeric"></label>
+        <label>ריבית שנתית משוערת באחוזים <input id="nmc-rate" type="number" value="4.8" step="0.1" inputmode="decimal"></label>
+        <label>תקופה בשנים <input id="nmc-years" type="number" value="25" min="1" max="35" inputmode="numeric"></label>
+        <label>הכנסה חודשית נטו <input id="nmc-income" type="number" value="22000" inputmode="numeric"></label>
+        <label>בדיקת רגישות: עלייה בריבית באחוזים <input id="nmc-stress" type="number" value="1" step="0.1" inputmode="decimal"></label>
+        <label>הוצאות חודשיות קבועות נוספות <input id="nmc-expenses" type="number" value="0" inputmode="numeric"></label>
+      </div>
+    </div>
+    <aside class="result-card" aria-live="polite">
+      <span>החזר חודשי משוער</span>
+      <b id="nmc-payment">₪0</b>
+      <p id="nmc-status">שנו את הסכום, הריבית או השנים כדי להבין את רגישות ההחזר.</p>
+      <div class="mini-results">
+        <div class="mini"><span>סך תשלומים</span><strong id="nmc-total">₪0</strong></div>
+        <div class="mini"><span>סך ריבית</span><strong id="nmc-interest">₪0</strong></div>
+        <div class="mini"><span>יחס החזר</span><strong id="nmc-ratio">0%</strong></div>
+        <div class="mini"><span>עלייה בריבית</span><strong id="nmc-stressed">₪0</strong></div>
+      </div>
+    </aside>
+  </section>
+  <div class="wrap">
+    <section>
+      <h2>איך משתמשים במחשבון המשכנתא?</h2>
+      <p>הכניסו את סכום המשכנתא שאתם שוקלים לקחת, את הריבית השנתית המשוערת ואת מספר השנים. אם יש לכם הכנסה חודשית נטו, הכניסו אותה כדי לראות את יחס ההחזר. היחס הזה חשוב משום שמשכנתא אינה רק מספר טכני. היא תשלום קבוע שחי יחד עם שכר דירה זמני, ילדים, רכב, הלוואות אחרות, ביטוחים, תחזוקה והוצאות מעבר.</p>
+      <p>החישוב מבוסס על נוסחת החזר קבועה פשוטה, ולכן הוא מתאים לבדיקה ראשונית. משכנתא אמיתית יכולה להיות מחולקת למספר מסלולים: פריים, קבועה לא צמודה, קבועה צמודה, משתנה, צמודת מדד או שילובים אחרים. בכל מסלול הריבית, ההצמדה והסיכון שונים. לכן משתמשים במחשבון כדי להבין סדר גודל, ולא כדי להחליף הצעה מפורטת מבנק.</p>
+      <p>כדאי להריץ כמה תרחישים. התחילו בסכום שאתם חושבים לקחת, ואז בדקו מה קורה אם הריבית גבוהה יותר, אם התקופה קצרה יותר, או אם ההכנסה נטו נמוכה יותר ממה שציפיתם. רוכש שמכיר את הרגישות של ההחזר לפני פגישה עם הבנק מגיע לשיחה רגועה ומדויקת יותר.</p>
+    </section>
+    <section class="cards" aria-label="בדיקות משכנתא מהירות">
+      <div class="card"><b>החזר חודשי</b><p>המספר הראשון שמראה אם המשכנתא יכולה להשתלב בתקציב המשפחה בלי לחץ קבוע.</p></div>
+      <div class="card"><b>עלות כוללת</b><p>סך התשלומים לאורך השנים יכול להיות גבוה בהרבה מסכום ההלוואה המקורי.</p></div>
+      <div class="card"><b>מבחן ריבית</b><p>בדיקת עלייה בריבית עוזרת להבין אם ההחזר עדיין סביר גם בתרחיש פחות נוח.</p></div>
+    </section>
+    <section>
+      <h2>מהו יחס החזר מהכנסה?</h2>
+      <p>יחס החזר מהכנסה הוא החלק מההכנסה החודשית שהולך להחזר המשכנתא. אם ההחזר הוא 6,000 שקל וההכנסה נטו היא 24,000 שקל, יחס ההחזר הוא 25%. היחס אינו מספר קסם, אבל הוא עוזר להבין את רמת הלחץ. ככל שהיחס גבוה יותר, נשאר פחות כסף להוצאות חיים, חיסכון, ביטוחים, תיקונים והפתעות.</p>
+      <p>חשוב לזכור שהבנק בוחן יכולת החזר לפי כללים ומסמכים, אבל החיים בוחנים אותה בצורה רחבה יותר. משפחה עם ילדים קטנים, עסק עצמאי, רכב יקר או הוצאות רפואיות יכולה להרגיש לחץ גם ביחס שנראה סביר. לעומת זאת, משק בית עם הכנסה יציבה והוצאות נמוכות יכול לשאת יחס גבוה יותר. לכן המחשבון מציג יחס החזר, אך ההחלטה צריכה להיות אישית ושמרנית.</p>
+    </section>
+    <section>
+      <h2>למה חשוב לבדוק עלות כוללת?</h2>
+      <p>רבים מסתכלים רק על ההחזר החודשי. זו טעות. משכנתא ל-30 שנה יכולה להיראות נוחה יותר בכל חודש, אבל עלות הריבית המצטברת יכולה להיות גבוהה מאוד. משכנתא קצרה יותר יכולה להיות כבדה יותר בחודש, אך לחסוך סכום משמעותי לאורך שנים. אין תשובה אחת שמתאימה לכולם, אבל צריך להבין את המחיר של כל בחירה.</p>
+      <p>במחשבון רואים את סך התשלומים ואת סך הריבית. אם שינוי של חמש שנים בתקופה משנה את סך הריבית בעשרות או מאות אלפי שקלים, כדאי לדעת זאת לפני חתימה. לפעמים עדיף להתחיל בתקופה ארוכה יותר כדי לשמור מרווח נשימה, ולבדוק אפשרות להחזר חלקי בעתיד. לפעמים עדיף לקצר כבר בהתחלה. ההחלטה תלויה ביציבות ההכנסה, בגיל, בתוכניות משפחתיות ובסיכון שהלווה מוכן לקחת.</p>
+    </section>
+    <section>
+      <h2>מה לא רואים במחשבון פשוט?</h2>
+      <table>
+        <thead><tr><th>נושא</th><th>למה הוא חשוב</th><th>מה לבדוק</th></tr></thead>
+        <tbody>
+          <tr><td>מסלולי משכנתא</td><td>כל מסלול מתנהג אחרת לאורך זמן</td><td>פריים, קבועה, משתנה, צמודה ולא צמודה</td></tr>
+          <tr><td>הצמדה למדד</td><td>יכולה להגדיל קרן והחזר</td><td>האם המסלול צמוד ומה המשמעות</td></tr>
+          <tr><td>ביטוחים</td><td>ביטוח חיים ומבנה מוסיפים הוצאה חודשית</td><td>עלות, כיסוי, מוטב בנק והחרגות</td></tr>
+          <tr><td>שמאות</td><td>שמאות נמוכה יכולה להגדיל הון עצמי דרוש</td><td>פער בין מחיר חוזה לשווי בנקאי</td></tr>
+          <tr><td>לוח תשלומים</td><td>חשוב במיוחד בדירה מקבלן</td><td>מועדי תשלום, הצמדות ומועד קבלת כספי הבנק</td></tr>
+          <tr><td>עמלת פירעון מוקדם</td><td>משפיעה על מחזור או סילוק עתידי</td><td>גמישות, תחנות יציאה ועלות שינוי</td></tr>
+        </tbody>
+      </table>
+      <p>לכן מחשבון משכנתא צריך להיות שער כניסה ולא נקודת סיום. אחרי החישוב הראשוני, עוברים לבדיקת תמהיל, הצעות בנק, מסמכים, שמאות, חוזה, מס רכישה והוצאות מעבר.</p>
+    </section>
+    <section>
+      <h2>בדיקת רגישות: למה להוסיף אחוז ריבית?</h2>
+      <p>משכנתא היא התחייבות ארוכה. גם אם הריבית היום נראית סבירה, חלק מהמסלולים עשויים להשתנות בעתיד. לכן כדאי לבדוק מה יקרה אם הריבית תהיה גבוהה באחוז אחד. המטרה אינה לנבא את העתיד, אלא לבדוק האם התקציב שלכם יכול לשאת שינוי. אם עלייה קטנה יחסית בריבית הופכת את ההחזר לבלתי אפשרי, העסקה צפופה מדי.</p>
+      <p>בדיקת רגישות טובה במיוחד לפני קניית דירה מקבלן, לפני דירה להשקעה ולפני עסקה שבה ההון העצמי מוגבל. כאשר יש מעט מרווח ביטחון, כל שינוי משפיע יותר. מי שבודק תרחיש פחות נוח מראש מקבל החלטה אחראית יותר.</p>
+    </section>
+    <section>
+      <h2>איך מחברים את ההחזר למחיר הדירה?</h2>
+      <p>מחיר הדירה הוא רק חלק מהעסקה. לפני שמחליטים כמה משכנתא לקחת, צריך לחשב גם מס רכישה, שכר טרחת עורך דין, תיווך, שמאות, פתיחת תיק, ביטוחים, מעבר, שיפוץ וריהוט. אם כל ההון העצמי הולך לדירה עצמה, לא נשאר מרווח להוצאות שמגיעות מיד אחרי החתימה. לכן סכום המשכנתא צריך להיבחן יחד עם כל עלויות הקנייה.</p>
+      <p>רוכש שמחשב רק את מחיר הדירה עלול להגיע לבנק עם בקשה לא מציאותית. רוכש שמחשב את כל העסקה יודע מראש כמה הון עצמי דרוש, כמה החזר חודשי מתאים, ומה המחיר המקסימלי שאפשר להציע בלי להכניס את הבית ללחץ.</p>
+    </section>
+    <section>
+      <h2>משכנתא לדירה להשקעה</h2>
+      <p>בדירה להשקעה החישוב מורכב עוד יותר. ההחזר החודשי צריך להתחבר לשכר דירה, חודשים ריקים, תחזוקה, מס, דמי ניהול ותוכנית יציאה. משכנתא שמרגישה סבירה למשק בית יכולה להיות בעייתית אם הדירה אינה מושכרת בזמן או אם השכירות נמוכה מהצפוי. לכן משקיע צריך לבדוק גם החזר חודשי וגם תזרים נטו.</p>
+      <p>אם הדירה מיועדת להשקעה, כדאי לעבור גם למחשבון התזרים של Nadlan ולבדוק מה נשאר אחרי שכירות והוצאות. משקיע טוב לא מסתפק באישור בנק. הוא בודק אם הנכס עובד גם כחלק מתיק השקעות.</p>
+    </section>
+    <section>
+      <h2>איך בודקים הון עצמי לפני חישוב משכנתא?</h2>
+      <p>לפני שמכניסים סכום משכנתא למחשבון, צריך לדעת כמה הון עצמי באמת עומד לרשותכם. ההון העצמי אינו רק הכסף בחשבון היום. צריך להוריד ממנו כסף שחייב להישאר בצד למעבר, תיקונים, ריהוט, מס רכישה, עורך דין, שמאות, תיווך, ביטוחים וקרן ביטחון. אם משתמשים בכל ההון העצמי כדי להקטין את המשכנתא, יכול להיות שההחזר יהיה נוח יותר, אבל המשפחה תישאר בלי מרווח להוצאות שמגיעות מיד אחרי הכניסה לדירה.</p>
+      <p>בדיקה שמרנית מתחילה ברשימת כל העלויות. לאחר מכן מחליטים כמה כסף חייב להישאר נזיל. רק אז מחשבים כמה משכנתא צריך. לפעמים רוכש מגלה שהמשכנתא הנדרשת גבוהה יותר מכפי שחשב, ולפעמים הוא מגלה שהמחיר של הדירה אינו מתאים בלי להגדיל הון עצמי. זו בדיקה לא תמיד נעימה, אבל היא עדיפה על הפתעה אחרי חתימה.</p>
+    </section>
+    <section>
+      <h2>מה ההבדל בין החזר ראשון להחזר עתידי?</h2>
+      <p>ההחזר שמופיע בתחילת הדרך אינו תמיד ההחזר שיישאר לכל חיי המשכנתא. במסלולים משתנים, הריבית יכולה להשתנות. במסלולים צמודים, המדד יכול להשפיע על הקרן ועל ההחזר. גם ביטוחים יכולים להשתנות עם גיל, בריאות או מעבר פוליסה. לכן מחשבון שמציג החזר חודשי נותן נקודת התחלה, אבל צריך לשאול מה יכול לקרות בעוד שנה, חמש שנים ועשר שנים.</p>
+      <p>כדאי לבקש מהבנק או מיועץ המשכנתאות הסבר על תרחישים: מה ההחזר אם הריבית עולה, מה קורה אם המדד גבוה, אילו מסלולים אפשר לפרוע בלי קושי, ומה העלות הכוללת בכל תרחיש. רוכש שמבין את ההחזר העתידי פחות מופתע כאשר התנאים משתנים.</p>
+    </section>
+    <section>
+      <h2>איך להשוות בין שתי הצעות בנק?</h2>
+      <p>שתי הצעות משכנתא יכולות להיראות דומות בהחזר החודשי ולהיות שונות מאוד בסיכון ובעלות הכוללת. הצעה אחת יכולה לכלול תקופה ארוכה יותר, מסלול צמוד יותר או פחות גמישות לפירעון. הצעה אחרת יכולה להיות יקרה מעט יותר בחודש אבל יציבה יותר. לכן לא משווים רק את השורה התחתונה של ההחזר הראשון.</p>
+      <p>בהשוואה טובה בודקים את סכום ההלוואה, התקופה, כל מסלול בנפרד, הריבית, ההצמדה, האפשרות למחזור, עמלת פירעון מוקדם, סך התשלומים, יחס החזר מהכנסה והקשר ללוח התשלומים של העסקה. אם לא מבינים הצעה, עדיף לעצור ולבקש פירוט. משכנתא היא התחייבות ארוכה מדי בשביל לבחור לפי מספר אחד.</p>
+    </section>
+    <section>
+      <h2>טעויות נפוצות בשימוש במחשבון משכנתא</h2>
+      <p>הטעות הראשונה היא להכניס ריבית נמוכה מדי רק כדי לראות החזר נוח. הטעות השנייה היא לבחור תקופה ארוכה בלי לבדוק כמה ריבית משלמים בסוף. הטעות השלישית היא לא להכניס הכנסה נטו אמיתית, או להתעלם מהוצאות קבועות שכבר קיימות. הטעות הרביעית היא לחשוב שאם המחשבון מראה החזר אפשרי, הבנק בהכרח יאשר את ההלוואה.</p>
+      <p>טעות נוספת היא לא לבדוק תרחיש לחץ. אם ההחזר נראה אפשרי רק בריבית מסוימת ורק בלי הוצאות בלתי צפויות, העסקה דורשת זהירות. שימוש טוב במחשבון כולל דווקא את המספרים הפחות נוחים: ריבית גבוהה יותר, הכנסה שמרנית יותר, תקופה קצרה יותר ועלויות נוספות. מי שבודק כך מקבל תמונה אמינה יותר.</p>
+    </section>
+    <section>
+      <h2>מתי כדאי לפנות ליועץ משכנתאות?</h2>
+      <p>אפשר להשתמש במחשבון לבד, אבל יש מצבים שבהם כדאי לקבל ליווי מקצועי: עסקה גדולה, הכנסה לא קבועה, עצמאים, דירה מקבלן, דירה להשקעה, מחזור משכנתא, רכישה עם מכירת דירה קיימת, או כאשר הצעות הבנק שונות וקשה להשוות ביניהן. יועץ טוב לא אמור רק להציג ריבית, אלא להסביר סיכון, גמישות, עלות כוללת והקשר לעסקת הנדל"ן.</p>
+      <p>גם מי שפונה לבד לבנקים צריך להגיע מוכן: סכום מבוקש, הון עצמי, מחיר נכס, הכנסה, התחייבויות, מסמכים ושאלות. מחשבון משכנתא עוזר להגיע לשיחה הזו עם מספרים ראשוניים ולא רק עם תחושה.</p>
+    </section>
+    <section>
+      <h2>מקורות מידע שכדאי לבדוק</h2>
+      <p>לפני חתימה, כדאי להיעזר במקורות ציבוריים לצד הצעות בנק. מקורות כאלה עוזרים להבין ריביות, עמלות ומונחים, אך אינם מחליפים הצעה רשמית או ייעוץ מותאם.</p>
+      <ul class="source-list">
+        <li><a href="https://www.boi.org.il/information/interestrates/" target="_blank" rel="noopener">בנק ישראל</a> למידע על ריביות משכנתא ועמלות פירעון מוקדם.</li>
+        <li><a href="https://www.boi.org.il/media/nqlblucq/h2430.pdf" target="_blank" rel="noopener">בנק ישראל</a> להוראות ומגבלות סביב הלוואות לדיור ושיעורי מימון.</li>
+        <li><a href="https://www.gov.il/he/service/real-estate-tax-7000" target="_blank" rel="noopener">רשות המסים</a> לבדיקת דיווח ומיסוי מקרקעין כחלק מעלויות רכישה.</li>
+      </ul>
+    </section>
+    <section id="faq">
+      <h2>שאלות נפוצות על מחשבון משכנתא</h2>
+      <h3>האם ההחזר במחשבון הוא ההחזר הסופי שאקבל מהבנק?</h3>
+      <p>לא. זהו חישוב ראשוני לפי ריבית ותקופה שהוזנו. ההחזר הסופי תלוי בתמהיל, הצמדות, הצעת בנק, ביטוחים, מסמכים ושינויים לאורך זמן.</p>
+      <h3>מה עדיף, תקופה קצרה או ארוכה?</h3>
+      <p>תקופה קצרה יכולה לחסוך ריבית אך מגדילה החזר חודשי. תקופה ארוכה מקלה על החודש אך מייקרת את העלות הכוללת. צריך לבדוק יכולת החזר ומרווח ביטחון.</p>
+      <h3>האם כדאי להכניס הכנסה נטו או ברוטו?</h3>
+      <p>לבדיקה ביתית עדיף להכניס הכנסה נטו, כי ממנה משלמים את ההחזר ואת שאר הוצאות החיים.</p>
+      <h3>האם המחשבון מתאים למחזור משכנתא?</h3>
+      <p>הוא יכול לתת בדיקת סדר גודל, אבל במחזור צריך להכניס גם יתרת הלוואה, עמלת פירעון מוקדם, מסלולים קיימים ועלויות מעבר או שינוי.</p>
+      <h3>האם מחשבון משכנתא מספיק לפני קניית דירה?</h3>
+      <p>לא. הוא כלי ראשון בלבד. לפני קנייה צריך לבדוק אישור עקרוני, שמאות, מס רכישה, חוזה, טאבו, הוצאות נלוות ותמהיל מתאים.</p>
+    </section>
+    <section>
+      <h2>סיכום: מספר טוב הוא מספר שנבדק בתרחיש פחות נוח</h2>
+      <p>מחשבון משכנתא נותן התחלה טובה, אבל ההחלטה האמיתית נוצרת כאשר בודקים כמה תשלמו בחודש, כמה תשלמו בסך הכל, מה יקרה אם הריבית תעלה, ומה נשאר מההכנסה אחרי ההחזר. ככל שהמספרים ברורים יותר לפני הפגישה עם הבנק, כך קל יותר לבחור דירה, לנהל משא ומתן ולהימנע מהתחייבות כבדה מדי.</p>
+      <p>השתמשו במחשבון, שמרו את התוצאה, הריצו תרחיש שמרני, ואז חברו את המספרים לעסקה עצמה: מחיר דירה, מס רכישה, עורך דין, שמאות, ביטוחים, לוח תשלומים ויכולת החזר אמיתית. משכנתא טובה היא לא רק ריבית טובה, אלא החלטה שמתאימה לחיים שלכם לאורך זמן.</p>
+      <div class="note">המידע והמחשבון בעמוד הם כלי עזר כללי בלבד ואינם ייעוץ פיננסי, משפטי, מיסוי, ביטוחי או שמאי. תנאי משכנתא נקבעים לפי הבנק, החיתום, התמהיל, המסמכים, הנכס והלווה. לפני חתימה יש לבדוק הצעה רשמית עם גורם מקצועי מתאים.</div>
+      <div class="cta"><a class="btn" href="/mortgage-advisor/">בדיקת משכנתא עם מדריך</a><a class="btn secondary" href="/investment-property-cashflow-calculator/">מחשבון תשואה למשקיעים</a><a class="btn secondary" href="/purchase-tax-calculator/">בדיקת מס רכישה</a></div>
+    </section>
+  
+<section>
+<h2>כלי המשך לפני קבלת החלטה</h2>
+<p>לפני שמתקדמים להצעה, לחתימה או לשיחה עם הבנק, כדאי לחבר את מחיר הדירה לכל ההוצאות שמסביב: מס רכישה, עורך דין, תיווך, מעבר, שיפוץ, ריהוט ומרווח ביטחון. החישוב הבא עוזר לראות כמה כסף צריך בפועל, ולא רק מהו מחיר הדירה במודעה.</p>
+<div class="cta"><a class="btn secondary" href="/apartment-purchase-cost-calculator/">מחשבון עלויות רכישת דירה</a></div>
+</section>
+</div>
+</div>
+<script id="nadlan-mortgage-calculator-js-20260528">
+(function(){
+  const names = ["loan","rate","years","income","stress","expenses"];
+  const el = name => document.getElementById("nmc-" + name);
+  const money = value => new Intl.NumberFormat("he-IL",{style:"currency",currency:"ILS",maximumFractionDigits:0}).format(Math.round(value || 0));
+  const pct = value => (Number.isFinite(value) ? value : 0).toFixed(1) + "%";
+  function num(name){ return Number(el(name)?.value || 0); }
+  function payment(loan, annualRate, years){
+    const months = Math.max(years * 12, 1);
+    const monthlyRate = annualRate / 100 / 12;
+    if (monthlyRate === 0) return loan / months;
+    return loan * monthlyRate * Math.pow(1 + monthlyRate, months) / (Math.pow(1 + monthlyRate, months) - 1);
+  }
+  function calc(){
+    const loan = num("loan");
+    const rate = num("rate");
+    const years = num("years");
+    const income = num("income");
+    const expenses = num("expenses");
+    const monthly = payment(loan, rate, years);
+    const months = Math.max(years * 12, 1);
+    const total = monthly * months;
+    const interest = total - loan;
+    const stressed = payment(loan, rate + num("stress"), years);
+    const ratio = income > 0 ? ((monthly + expenses) / income) * 100 : 0;
+    el("payment").textContent = money(monthly);
+    el("total").textContent = money(total);
+    el("interest").textContent = money(interest);
+    el("ratio").textContent = pct(ratio);
+    el("stressed").textContent = money(stressed);
+    const status = el("status");
+    if (ratio > 40) status.textContent = "יחס ההחזר גבוה לפי הנתונים שהוזנו. כדאי לבדוק סכום נמוך יותר, תקופה אחרת או מרווח ביטחון גדול יותר.";
+    else if (ratio > 30) status.textContent = "יחס ההחזר בינוני-גבוה. בדקו תרחיש ריבית גבוה יותר והוצאות חיים לפני החלטה.";
+    else status.textContent = "יחס ההחזר נראה מתון לפי הנתונים שהוזנו, אך עדיין צריך לבדוק תמהיל, ביטוחים ועלויות רכישה.";
+  }
+  names.forEach(name => el(name)?.addEventListener("input", calc));
+  calc();
+})();
+</script>
+
+
+<!-- nadlan-hub-related-v1 -->
+<!-- wp:separator {"className":"is-style-wide"} -->
+<hr class="wp-block-separator has-alpha-channel-opacity is-style-wide"/>
+<!-- /wp:separator -->
+
+<!-- wp:heading {"level":2} -->
+<h2 class="wp-block-heading">מדריכים קשורים — משכנתא</h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>המשך הקריאה במדריכים שבדקנו עבורך באותו אשכול נושאי. כתוב ונבדק על-ידי עורך דין מקרקעין.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:list -->
+<ul class="wp-block-list">
+<!-- wp:list-item -->
+<li><a href="https://nad-lan.co.il/mortgage-advisor/">יועץ משכנתאות: בדיקת משכנתא לפני חתימה או הצעה</a></li>
+<!-- /wp:list-item -->
+<!-- wp:list-item -->
+<li><a href="https://nad-lan.co.il/mortgage-refinance/">מחזור משכנתא: בדיקה לפני שמחליפים הלוואה</a></li>
+<!-- /wp:list-item -->
+<!-- wp:list-item -->
+<li><a href="https://nad-lan.co.il/mortgage-home-insurance/">ביטוח משכנתא וביטוח דירה: איך בודקים מבנה, חיים וכיסוי לפני קנייה</a></li>
+<!-- /wp:list-item -->
+<!-- wp:list-item -->
+<li><a href="https://nad-lan.co.il/investment-property-mortgage/">משכנתא לדירה להשקעה: מימון, החזר וסיכון</a></li>
+<!-- /wp:list-item -->
+</ul>
+<!-- /wp:list -->

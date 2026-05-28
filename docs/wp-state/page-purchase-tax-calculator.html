@@ -1,0 +1,233 @@
+<!-- wp:html -->
+<style>
+.nlc-ptx{font-family:var(--font-sans,Heebo,sans-serif);direction:rtl;background:#FAF7F1;border:1px solid rgba(27,26,23,.12);border-radius:14px;padding:24px;margin:24px 0;color:#1B1A17;box-shadow:0 2px 12px rgba(15,27,45,.04)}
+.nlc-ptx h3{font-size:24px;font-weight:700;margin:0 0 4px;color:#1B1A17}
+.nlc-ptx .nlc-sub{font-size:14px;color:#6E6A63;margin:0 0 20px}
+.nlc-ptx .nlc-row{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px}
+.nlc-ptx .nlc-field{background:#fff;border:1px solid rgba(27,26,23,.12);border-radius:10px;padding:14px}
+.nlc-ptx label{display:block;font-size:13px;color:#6E6A63;margin-bottom:6px}
+.nlc-ptx input[type=number]{width:100%;padding:10px 12px;border:1px solid rgba(27,26,23,.12);border-radius:8px;font-size:18px;font-family:inherit;background:#fff;direction:ltr;text-align:right;font-weight:600}
+.nlc-ptx input[type=number]:focus{outline:none;border-color:#9C7A3C;box-shadow:0 0 0 3px rgba(216,155,60,.15)}
+.nlc-ptx .nlc-radio{display:flex;gap:8px}
+.nlc-ptx .nlc-radio label{flex:1;background:#fff;border:1px solid rgba(27,26,23,.12);border-radius:8px;padding:10px;text-align:center;cursor:pointer;font-size:14px;color:#1B1A17;margin:0;font-weight:600}
+.nlc-ptx .nlc-radio label.on{background:#1B1A17;color:#fff;border-color:#1B1A17}
+.nlc-ptx .nlc-radio input{display:none}
+.nlc-ptx .nlc-result{background:linear-gradient(135deg,#1B1A17,#1B1A17 60%,#3A3733);color:#fff;border-radius:12px;padding:20px;text-align:center;margin:16px 0}
+.nlc-ptx .nlc-result .nlc-rlabel{font-size:13px;opacity:.85;margin-bottom:4px}
+.nlc-ptx .nlc-result .nlc-rval{font-size:36px;font-weight:800;line-height:1;letter-spacing:-0.5px}
+.nlc-ptx .nlc-result .nlc-rpct{font-size:13px;opacity:.85;margin-top:4px}
+.nlc-ptx .nlc-bracket{margin:16px 0 8px}
+.nlc-ptx .nlc-bracket-bar{position:relative;height:42px;background:#fff;border:1px solid rgba(27,26,23,.12);border-radius:8px;overflow:hidden;display:flex}
+.nlc-ptx .nlc-bseg{position:relative;display:flex;align-items:center;justify-content:center;color:#fff;font-size:11px;font-weight:600;text-align:center;padding:0 4px}
+.nlc-ptx .nlc-bseg.b0{background:#2E6A4F}
+.nlc-ptx .nlc-bseg.b1{background:#7CB342}
+.nlc-ptx .nlc-bseg.b2{background:#9C7A3C}
+.nlc-ptx .nlc-bseg.b3{background:#E67E22}
+.nlc-ptx .nlc-bseg.b4{background:#B3261E}
+.nlc-ptx .nlc-marker{position:absolute;top:-6px;bottom:-6px;width:3px;background:#1B1A17;z-index:2}
+.nlc-ptx .nlc-marker::before{content:"▼";position:absolute;top:-14px;right:-6px;font-size:14px;color:#1B1A17}
+.nlc-ptx .nlc-breakdown{background:#fff;border:1px solid rgba(27,26,23,.12);border-radius:10px;padding:14px;margin-top:12px}
+.nlc-ptx .nlc-breakdown h5{font-size:13px;color:#6E6A63;margin:0 0 10px;font-weight:600}
+.nlc-ptx .nlc-brow{display:flex;justify-content:space-between;font-size:13px;padding:4px 0;border-bottom:1px dashed rgba(27,26,23,.12);direction:ltr;text-align:right}
+.nlc-ptx .nlc-brow:last-child{border:0;font-weight:700;padding-top:8px;border-top:1px solid rgba(27,26,23,.12)}
+.nlc-ptx .nlc-brow .nlc-blab{direction:rtl;color:#6E6A63}
+.nlc-ptx .nlc-note{font-size:12px;color:#6E6A63;margin-top:14px;border-top:1px solid rgba(27,26,23,.12);padding-top:12px;line-height:1.5}
+@media(max-width:720px){.nlc-ptx .nlc-row{grid-template-columns:1fr}.nlc-ptx .nlc-bseg{font-size:9px}}
+</style>
+<div class="nlc-ptx" id="nlc-ptx-1" data-nlc="ptx-v1">
+<h3>מחשבון מס רכישה — מדרגות 2026</h3>
+<p class="nlc-sub">מדרגות מס רכישה לדירת מגורים בישראל, מעודכנות לשנת 2026 (מוקפאות עד 2028 לפי חוק ההסדרים).</p>
+<div class="nlc-row">
+  <div class="nlc-field">
+    <label>שווי הדירה (₪)</label>
+    <input type="number" id="nlc-ptx-price" value="2500000" min="0" step="10000">
+  </div>
+  <div class="nlc-field">
+    <label>סוג רכישה</label>
+    <div class="nlc-radio">
+      <label class="on"><input type="radio" name="nlc-ptx-type" value="single" checked>דירה יחידה</label>
+      <label><input type="radio" name="nlc-ptx-type" value="investor">משקיע / נוספת</label>
+    </div>
+  </div>
+</div>
+<div class="nlc-result">
+  <div class="nlc-rlabel">מס רכישה משוער</div>
+  <div class="nlc-rval" id="nlc-ptx-tax">₪0</div>
+  <div class="nlc-rpct" id="nlc-ptx-pct">0% מערך הדירה</div>
+</div>
+<div class="nlc-bracket">
+  <div class="nlc-bracket-bar" id="nlc-ptx-bar"></div>
+  <div style="font-size:11px;color:#6E6A63;text-align:center;margin-top:4px">המיקום שלך בסולם המדרגות (משמאל לימין: זול ליקר)</div>
+</div>
+<div class="nlc-breakdown">
+  <h5>פירוט לפי מדרגות</h5>
+  <div id="nlc-ptx-detail"></div>
+</div>
+<div class="nlc-note">המדרגות מבוססות על תקנות 2026 ומוקפאות עד 15.01.2028 (חוק ההסדרים). דירה יחידה: 0% עד 1,978,745 ₪. משקיע: 8% משקל ראשון עד 6,055,070 ₪. הצגה להמחשה — אינו מהווה ייעוץ מס. מקור: רשות המסים.</div>
+</div>
+<script>
+(function(){
+  const r=document.getElementById('nlc-ptx-1'),
+    SINGLE=[[1978745,0],[2347040,.035],[6055070,.05],[20183565,.08],[Infinity,.10]],
+    INV=[[6055070,.08],[Infinity,.10]],
+    fmt=n=>new Intl.NumberFormat('he-IL',{maximumFractionDigits:0}).format(Math.round(n));
+  function calc(p,br){let acc=0,prev=0,parts=[];for(const[cap,rate]of br){const slice=Math.max(0,Math.min(p,cap)-prev);if(slice>0){const t=slice*rate;acc+=t;parts.push({from:prev,to:Math.min(p,cap),rate,tax:t})}prev=cap;if(p<=cap)break}return{tax:acc,parts}}
+  function bar(br,p){
+    const total=20183565,el=r.querySelector('#nlc-ptx-bar');el.innerHTML='';
+    let prev=0,i=0,cls=['b0','b1','b2','b3','b4'];
+    for(const[cap,rate]of br){const to=Math.min(cap,total*1.0);const w=(to-prev)/total*100;if(w<=0.1)break;const d=document.createElement('div');d.className='nlc-bseg '+cls[i];d.style.flex=w;d.textContent=(rate*100).toFixed(rate===0||rate===0.1?0:1)+'%';el.appendChild(d);prev=cap;i++;if(cap===Infinity)break}
+    if(p>0){const pos=Math.min(p,total)/total*100;const m=document.createElement('div');m.className='nlc-marker';m.style.right=(100-pos)+'%';el.appendChild(m)}
+  }
+  function render(){
+    const p=+r.querySelector('#nlc-ptx-price').value||0,
+      type=r.querySelector('input[name="nlc-ptx-type"]:checked').value,
+      br=type==='single'?SINGLE:INV;
+    const{tax,parts}=calc(p,br);
+    r.querySelector('#nlc-ptx-tax').textContent='₪'+fmt(tax);
+    r.querySelector('#nlc-ptx-pct').textContent=p>0?(tax/p*100).toFixed(2)+'% מערך הדירה':'';
+    bar(br,p);
+    const dt=r.querySelector('#nlc-ptx-detail');
+    dt.innerHTML=parts.length?parts.map(x=>`<div class="nlc-brow"><span class="nlc-blab">${fmt(x.from)}–${fmt(x.to)} ₪ × ${(x.rate*100).toFixed(1)}%</span><span>₪${fmt(x.tax)}</span></div>`).join('')+`<div class="nlc-brow"><span class="nlc-blab">סך הכל</span><span>₪${fmt(tax)}</span></div>`:'<div class="nlc-brow"><span class="nlc-blab">הזינו ערך</span><span>—</span></div>';
+    r.querySelectorAll('.nlc-radio label').forEach(l=>l.classList.toggle('on',l.querySelector('input').checked));
+  }
+  r.querySelectorAll('input').forEach(i=>i.addEventListener('input',render));
+  r.querySelectorAll('input[name="nlc-ptx-type"]').forEach(i=>i.addEventListener('change',render));
+  render();
+})();
+</script>
+<!-- /wp:html -->
+
+
+<!-- wp:html -->
+<style id="nadlan-purchase-tax-guide-20260528">.nadlan-guide{direction:rtl;font-family:Heebo,"Noto Sans Hebrew",Arial,sans-serif;color:#14211c}.nadlan-guide *{box-sizing:border-box}.nadlan-guide .wrap{width:min(1040px,calc(100% - 32px));margin:0 auto}.nadlan-guide .hero{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(280px,.95fr);gap:28px;align-items:center;margin:20px auto 34px;padding:28px;border:1px solid #dce8e1;border-radius:24px;background:linear-gradient(135deg,#fff,#f2faf5);box-shadow:0 18px 44px rgba(8,56,45,.09)}.nadlan-guide .eyebrow{display:inline-flex;margin:0 0 12px;padding:8px 14px;border-radius:999px;background:#fff7de;border:1px solid #efd890;color:#65470f;font-weight:900}.nadlan-guide h2{font-size:clamp(26px,3vw,38px);line-height:1.18;color:#08382d;margin:38px 0 14px}.nadlan-guide h3{font-size:24px;line-height:1.25;color:#0f5a43;margin:26px 0 10px}.nadlan-guide p,.nadlan-guide li{font-size:18px;line-height:1.9;color:#2f433b}.nadlan-guide .hero p{font-size:19px}.nadlan-guide img{display:block;width:100%;height:auto;border-radius:18px;box-shadow:0 14px 30px rgba(8,56,45,.12)}.nadlan-guide .cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin:22px 0}.nadlan-guide .card{background:#fff;border:1px solid #dce8e1;border-radius:18px;padding:18px;box-shadow:0 12px 28px rgba(8,56,45,.06)}.nadlan-guide .card b{display:block;font-size:20px;color:#08382d;margin-bottom:8px}.nadlan-guide table{width:100%;border-collapse:collapse;background:#fff;border:1px solid #dce8e1;border-radius:16px;overflow:hidden;display:table}.nadlan-guide th,.nadlan-guide td{padding:14px 16px;border-bottom:1px solid #e7f0eb;text-align:right;font-size:16px;line-height:1.65}.nadlan-guide th{background:#edf8f3;color:#08382d}.nadlan-guide .note{margin:26px 0;padding:18px 20px;border-radius:18px;background:#fff8e8;border:1px solid #efd890;color:#513d16;font-weight:700;line-height:1.8}.nadlan-guide .cta{display:flex;gap:10px;flex-wrap:wrap;margin:28px 0}.nadlan-guide .btn{display:inline-flex;align-items:center;justify-content:center;min-height:46px;padding:12px 18px;border-radius:999px;background:#0f5a43;color:#fff!important;text-decoration:none!important;font-weight:900}.nadlan-guide .btn.secondary{background:#fff;color:#08382d!important;border:1px solid #bfd7cc}@media(max-width:800px){.nadlan-guide .hero,.nadlan-guide .cards{grid-template-columns:1fr}.nadlan-guide .hero{padding:20px}.nadlan-guide p,.nadlan-guide li{font-size:17px}.nadlan-guide th,.nadlan-guide td{font-size:15px;padding:10px}}</style>
+<div class="nadlan-guide">
+  <section class="hero wrap" aria-label="מדריך מס רכישה">
+    <div>
+      <span class="eyebrow">בדיקה ראשונית לפני חתימה</span>
+      <h2>מס רכישה הוא חלק מהתקציב, לא שורה שמגלים בסוף</h2>
+      <p>כאשר בודקים קניית דירה, מחיר הדירה הוא רק נקודת הפתיחה. מס רכישה יכול להוסיף לעסקה עשרות אלפי שקלים, לפעמים הרבה יותר, ולכן כדאי להבין אותו עוד לפני שמגישים הצעה, מבקשים אישור עקרוני למשכנתא או נכנסים למשא ומתן.</p>
+      <p>המדריך הזה מסביר מה בודקים, אילו נתונים צריך להכין, איך לקרוא את מדרגות המס, מתי ההערכה עלולה להשתנות ומתי חייבים לעצור לבדיקת עורך דין מקרקעין או איש מס. הוא נועד לתת סדר והכנה לשיחה מקצועית, לא להחליף שומה עצמית, דיווח לרשות המסים או ייעוץ פרטני.</p>
+      <div class="cta"><a class="btn" href="/real-estate-lawyer/">בדיקה משפטית לפני חוזה</a><a class="btn secondary" href="/mortgage-advisor/">בדיקת משכנתא</a></div>
+    </div>
+    <figure><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/48/Tel_Aviv_skyline_from_Jaffa_%282019%29.jpg/960px-Tel_Aviv_skyline_from_Jaffa_%282019%29.jpg" alt="קו רקיע עירוני בישראל לפני בדיקת עסקת נדל״ן ומס רכישה" loading="lazy"><figcaption>לפני התחייבות לעסקה, בודקים גם מס, מימון, מסמכים ועלויות נלוות.</figcaption></figure>
+  </section>
+  <div class="wrap">
+    <section>
+      <h2>מהו מס רכישה ולמה הוא משנה את החלטת הקנייה?</h2>
+      <p>מס רכישה הוא מס שמשלם רוכש זכות במקרקעין. ברכישת דירת מגורים, שיעור המס תלוי בדרך כלל בשווי העסקה ובסיווג הרוכש. ההבדל בין דירה יחידה, דירה חלופית, דירה נוספת, רכישה להשקעה או מצב שיש בו הקלה מיוחדת יכול לשנות מאוד את הסכום הסופי. לכן שני רוכשים שקונים דירה באותו מחיר לא תמיד ישלמו את אותו מס.</p>
+      <p>הטעות הנפוצה היא לחשב את מחיר הדירה בלבד, ואז להוסיף בערך שכר טרחה, תיווך ושיפוץ. בפועל, מס רכישה יכול להשפיע גם על גובה ההון העצמי שנשאר, על יכולת המימון, על מרווח הביטחון לאחר קבלת המשכנתא ועל השאלה אם כדאי להמשיך בעסקה או לנהל מחדש את המחיר. בעסקאות יקרות, גם שינוי קטן בסיווג או בטווח המס יכול להיות משמעותי.</p>
+      <p>בדיקה טובה מתחילה בשאלה פשוטה: מה שווי העסקה הכולל ומה הסטטוס המדויק שלכם ביום הרכישה. אחר כך בודקים אם יש דירה קיימת, אם הדירה הקיימת אמורה להימכר, אם זו רכישה של בני זוג, אם קיימות זכויות בנכס אחר, אם מדובר בדירה מקבלן או יד שנייה, ואם יש נסיבות שמצריכות בירור מיוחד.</p>
+    </section>
+    <section class="cards" aria-label="שלושה דברים לבדיקה">
+      <div class="card"><b>מחיר העסקה</b><p>המס מחושב לפי שווי הזכות הנרכשת. חשוב לעבוד עם מחיר חוזה צפוי ולא עם מספר כללי מהמודעה בלבד.</p></div>
+      <div class="card"><b>סטטוס הרוכש</b><p>דירה יחידה, דירה נוספת, דירה חלופית או זכאות להקלה הם מצבים שונים. ההגדרה המדויקת קובעת.</p></div>
+      <div class="card"><b>לוח זמנים</b><p>מועד החתימה, הדיווח והתשלום חשובים. גם מכירת דירה קודמת בזמן הנדרש יכולה להשפיע על התוצאה.</p></div>
+    </section>
+    <section>
+      <h2>מדרגות מס רכישה לדירה יחידה לפי רשות המסים</h2>
+      <p>רשות המסים מפרסמת סימולטור רשמי לחישוב מס רכישה. לפי עמוד השירות הרשמי, עבור רוכש דירת מגורים יחידה, בהתאם להגדרות החוק, בתקופה שמתחילה ביום 16.1.2025 ומסתיימת ביום 15.1.2028, החיוב נעשה לפי מדרגות. המדרגות הן פרוגרסיביות: כל חלק ממחיר הדירה נבחן לפי הטווח שלו, ולא כל המחיר מקבל שיעור אחד.</p>
+      <table>
+        <thead><tr><th>חלק משווי הדירה</th><th>שיעור מס לפי הפרסום הרשמי</th><th>מה המשמעות בפועל</th></tr></thead>
+        <tbody>
+          <tr><td>עד 1,978,745 ש״ח</td><td>0%</td><td>על חלק זה לא משולם מס רכישה לדירה יחידה.</td></tr>
+          <tr><td>מעל 1,978,745 ועד 2,347,040 ש״ח</td><td>3.5%</td><td>רק החלק שנמצא בטווח הזה מחויב בשיעור זה.</td></tr>
+          <tr><td>מעל 2,347,040 ועד 6,055,070 ש״ח</td><td>5%</td><td>זהו טווח נפוץ בעסקאות רבות באזורי ביקוש.</td></tr>
+          <tr><td>מעל 6,055,070 ועד 20,183,565 ש״ח</td><td>8%</td><td>רלוונטי לעסקאות יקרות יותר.</td></tr>
+          <tr><td>מעל 20,183,565 ש״ח</td><td>10%</td><td>חל על החלק שמעל התקרה הגבוהה.</td></tr>
+        </tbody>
+      </table>
+      <p>הנתונים בטבלה מבוססים על עמוד השירות הרשמי של רשות המסים, שבו מצוין גם שאם קיימת סתירה בין המידע באתר לבין החוק, הוראות החוק הן הקובעות. לכן לפני פעולה, תשלום או חתימה, צריך לבדוק את הסימולטור הרשמי ואת המסמכים המעודכנים.</p>
+      <p><a href="https://www.gov.il/en/service/real_eatate_taxsimulator" rel="nofollow">לסימולטור הרשמי של רשות המסים</a></p>
+    </section>
+    <section>
+      <h2>איך להבין את החישוב בלי להסתבך?</h2>
+      <p>נניח שרוכש עומד בתנאי דירה יחידה וקונה דירה במחיר שנמצא מעל המדרגה הראשונה. אין פירוש הדבר שכל שווי הדירה מחויב במס. החלק הראשון יכול להיות פטור, החלק הבא יחויב לפי שיעור המדרגה הבאה, ורק החלק שמעליו עובר למדרגה הבאה. זו הסיבה שחישוב ידני מהיר עלול לטעות אם מכפילים את כל מחיר הדירה בשיעור אחד.</p>
+      <p>כדי לקבל אומדן מסודר, רושמים את מחיר העסקה, מסמנים את המדרגות הרלוונטיות, מחשבים כל חלק בנפרד ומחברים. אבל גם אחרי החישוב הזה, לא נכון לראות בתוצאה מספר סופי אם יש נסיבות מיוחדות. למשל, מי שמחזיק בדירה נוספת ומתכנן למכור אותה, מי שרוכש יחד עם בן או בת זוג, מי שקיבל זכויות בירושה או מי שבודק דירה עם שימוש מעורב, צריך בדיקה מדויקת יותר.</p>
+      <p>יש גם הבדל בין שאלה מספרית לבין שאלה משפטית. המספר יכול להיראות פשוט, אבל השאלה אם הרוכש באמת נחשב בעל דירה יחידה, אם יש זכאות להקלה, אם עסקה מסוימת מוגדרת כדירת מגורים, או אם מועד מכירת דירה קודמת עומד בתנאי החוק, יכולה לדרוש בדיקת מסמכים.</p>
+    </section>
+    <section>
+      <h2>מה צריך להכין לפני שמפעילים מחשבון מס רכישה?</h2>
+      <p>לפני שמשתמשים בסימולטור או מבקשים הערכה, כדאי להכין רשימה קצרה. ככל שהמידע מדויק יותר, כך השיחה עם עורך הדין, יועץ המשכנתאות או רואה החשבון תהיה יעילה יותר. ברוב המקרים צריך לדעת את מחיר הרכישה, סוג הנכס, מיקום הנכס, האם הדירה נרכשת מקבלן או מיד שנייה, האם קיימות זכויות נוספות, מה מצב הדירה הקיימת, האם יש כוונה למכור אותה, ומה מועד החתימה הצפוי.</p>
+      <ul>
+        <li>מחיר חוזה צפוי, כולל הבנה אם יש תוספות למחיר.</li>
+        <li>סטטוס רכישה: דירה יחידה, דירה נוספת, דירה חלופית או רכישה מורכבת.</li>
+        <li>פרטי רוכשים: יחיד, בני זוג, רכישה משפחתית או רכישה עם שותפים.</li>
+        <li>פרטי נכס: דירה, בית, קרקע, נכס מסחרי או דירה מקבלן.</li>
+        <li>לוח זמנים: מועד חתימה, מועד מסירה ומועד מכירת דירה קיימת אם יש.</li>
+        <li>מסמכים רלוונטיים: טיוטת חוזה, נסח טאבו, אישור זכויות, מפרט או מסמכי פרויקט.</li>
+      </ul>
+      <p>גם אם עדיין אין את כל המסמכים, כדאי להתחיל בבדיקה מוקדמת. כך אפשר להבין אם התקציב עומד בעסקה, אם יש צורך להפחית מחיר, אם צריך לשנות תמהיל משכנתא, או אם כדאי לעצור עד לקבלת תשובה מקצועית.</p>
+    </section>
+    <section>
+      <h2>דירה יחידה, דירה נוספת ודירה חלופית</h2>
+      <p>המושגים האלה נשמעים פשוטים, אבל הם לא תמיד פשוטים בפועל. דירה יחידה היא לא רק תחושה של הרוכש שאין לו עוד בית לגור בו. צריך לבדוק זכויות רשומות, חלקי בעלות, דירות שהתקבלו בירושה, נכסים בחו״ל במקרים מסוימים, זכויות של בני זוג ומצבים שבהם הדירה הקודמת עומדת להימכר. כל פרט כזה יכול להשפיע על סיווג המס.</p>
+      <p>דירה נוספת היא בדרך כלל מצב שבו לרוכש כבר יש דירת מגורים והוא קונה עוד אחת. כאן שיעורי המס יכולים להיות שונים, ולכן בדיקת תקציב לפני הצעה חשובה במיוחד. בעסקאות השקעה, מס הרכישה הוא חלק משמעותי מהחישוב הכולל של התשואה, כי הוא תשלום חד פעמי בתחילת הדרך שמגדיל את עלות הכניסה לעסקה.</p>
+      <p>דירה חלופית היא מצב שבו רוכשים דירה חדשה ומתכננים למכור את הדירה הקיימת. במקרים כאלה חשוב להבין את הזמנים, את ההתחייבויות ואת התנאים. אם המכירה לא מתבצעת בזמן הנדרש, ייתכן שהמס יחושב אחרת. לכן לא מספיק לומר “נמכור אחר כך”. צריך לתכנן את המכירה כחלק מהעסקה.</p>
+    </section>
+    <section>
+      <h2>מס רכישה בדירה מקבלן</h2>
+      <p>ברכישת דירה מקבלן, מחיר הדירה הוא רק חלק מתמונת העלות. בדרך כלל בודקים הצמדות, לוח תשלומים, מועד מסירה, שינויים בדירה, חניה, מחסן, שכר טרחת עורך דין, ערבויות, מדד תשומות בנייה ותשלומים נוספים. מס רכישה מצטרף לכל אלה ולכן חייב להופיע בטבלת התקציב מהיום הראשון.</p>
+      <p>רוכש שלא מכניס את המס לתכנון עלול להגיע לשלב מתקדם עם אישור עקרוני למשכנתא שאינו משאיר מספיק מרווח. אם הרכישה היא להשקעה, צריך לשקלל את המס יחד עם דמי ניהול, תקופת אכלוס, עלויות מימון, סיכון לעיכוב במסירה ושכירות צפויה. אם זו דירה למגורים, צריך לבדוק שההון העצמי מספיק גם אחרי תשלום המס וההוצאות הנלוות.</p>
+      <p>דירה מקבלן יכולה להיות עסקה טובה, אבל היא דורשת סדר. לפני חתימה כדאי לבקש מעורך הדין להסביר מה נחשב חלק משווי העסקה לצורך המס, מתי צריך לשלם, מה קורה אם יש שינויים, ואילו מסמכים חשוב לשמור לצורך הדיווח.</p>
+    </section>
+    <section>
+      <h2>טעויות נפוצות בחישוב מס רכישה</h2>
+      <p>הטעות הראשונה היא להסתמך על מספר שנמצא בעמוד לא מעודכן. מדרגות מס וסכומים יכולים להשתנות לפי תקופות, ולכן מקור רשמי ותאריך עדכון חשובים. הטעות השנייה היא לחשב לפי סטטוס לא נכון, למשל להניח שמדובר בדירה יחידה בלי לבדוק זכויות קודמות או זכויות של בן זוג. הטעות השלישית היא לשכוח את מועד מכירת הדירה הקיימת בעסקת החלפה.</p>
+      <p>טעות נוספת היא להתעלם מהשאלה מי הרוכשים. רכישה של בני זוג, הורים וילדים, שותפים או חברה יכולה לפתוח שאלות שונות. גם רכישה של חלק מדירה, רכישת קרקע, רכישת נכס עם שימוש עסקי או עסקה שיש בה תנאים מיוחדים אינה תמיד מתאימה לחישוב בסיסי של דירת מגורים רגילה.</p>
+      <p>הדרך להימנע מטעות היא לאסוף נתונים מוקדם, לבדוק את הסימולטור הרשמי, ולא להסתפק בתשובה כללית כשיש נסיבות מיוחדות. אם הסכום משפיע על היכולת לקנות, עדיף לברר לפני שמציעים מחיר ולא אחרי שהמשא ומתן כבר מתקדם.</p>
+    </section>
+    <section>
+      <h2>איך מס רכישה מתחבר למשכנתא?</h2>
+      <p>מס רכישה אינו חלק ממחיר הדירה שממנו הבנק בהכרח מחשב את שיעור המימון. לכן רוכש צריך לוודא שיש לו כסף נזיל לתשלומים שמעבר למחיר הדירה, כולל מס, שכר טרחה, פתיחת תיק, שמאות, תיווך, הובלה, שיפוץ וריהוט. כאשר ההון העצמי גבולי, מס הרכישה יכול להיות ההבדל בין עסקה אפשרית לבין עסקה מסוכנת מדי.</p>
+      <p>לפני קבלת החלטה כדאי לבנות טבלת תזרים: כמה משלמים במעמד החתימה, מתי משלמים מס רכישה, מתי נדרשת משכנתא, מתי נכנסים לדירה ומתי צפויות הוצאות נוספות. ברכישה מקבלן התזרים חשוב במיוחד, כי התשלומים מתפרסים לאורך זמן ויכולים להיות מושפעים מהצמדות. ברכישה מיד שנייה, לוח התשלומים קצר יותר בדרך כלל ולכן הלחץ על ההון העצמי יכול להיות מיידי.</p>
+      <p><a href="/mortgage-advisor/">בדיקת משכנתא לפני חתימה</a> יכולה לעזור להבין אם מס הרכישה וההוצאות הנלוות משאירים החזר חודשי סביר ומרווח ביטחון אחרי הכניסה לדירה.</p>
+    </section>
+    <section>
+      <h2>מתי צריך עורך דין או איש מס?</h2>
+      <p>כמעט בכל עסקת דירה צריך עורך דין מקרקעין, אבל במס רכישה יש מצבים שבהם הבדיקה חשובה במיוחד. אם קיימת דירה נוספת, אם יש רכישה משותפת, אם מדובר בדירה שהתקבלה בירושה, אם הרוכש מוכר דירה קיימת, אם יש זכאות להקלה, אם הנכס אינו דירת מגורים רגילה, או אם יש פער בין מה שהמתווך אומר לבין מה שמופיע במסמכים, לא כדאי להסתמך על הערכה כללית.</p>
+      <p>עורך הדין צריך לבדוק את המסמכים, להסביר את חובת הדיווח, לוודא מהו המועד הרלוונטי, לבדוק האם יש צורך בשומה עצמית, ולסייע להבין את הסיכון אם התנאים משתנים. כאשר המספר גבוה או העסקה מורכבת, כדאי לקבל תשובה לפני החתימה ולא לאחריה.</p>
+      <p><a href="/real-estate-lawyer/">עורך דין מקרקעין לפני חתימת חוזה</a> יכול לחבר בין בדיקת המס, נסח הטאבו, החוזה, הערות אזהרה, לוח התשלומים והסיכונים המשפטיים של העסקה.</p>
+    </section>
+    <section>
+      <h2>שאלות נפוצות על מס רכישה</h2>
+      <h3>האם מחשבון מס רכישה מספיק לפני חתימה?</h3>
+      <p>מחשבון יכול לתת כיוון, אבל הוא לא מחליף בדיקת מסמכים. אם העסקה פשוטה והנתונים ברורים, האומדן יכול לעזור לתכנון תקציב. אם יש דירה נוספת, דירה חלופית, זכאות להקלה או רכישה מורכבת, צריך בדיקה מקצועית.</p>
+      <h3>האם מס רכישה משולם על כל מחיר הדירה באותו שיעור?</h3>
+      <p>בדירת מגורים יחידה לפי המדרגות, החישוב הוא מדורג. כל חלק מהמחיר נבחן לפי המדרגה שלו. זו הסיבה שחישוב מהיר לפי שיעור אחד על כל המחיר עלול לתת תוצאה לא נכונה.</p>
+      <h3>מה קורה אם יש לי דירה ואני קונה דירה אחרת?</h3>
+      <p>צריך לבדוק אם מדובר בדירה נוספת או בדירה חלופית ומהו לוח הזמנים למכירת הדירה הקיימת. ההבדל יכול להשפיע על המס ולכן חשוב לא לדחות את הבדיקה לשלב מאוחר.</p>
+      <h3>האם כדאי לבדוק מס רכישה לפני הצעת מחיר?</h3>
+      <p>כן. אם המס משנה את התקציב, עדיף לדעת זאת לפני שמציעים מחיר. כך אפשר להשאיר מקום להוצאות נוספות, לשפר את המשא ומתן ולהימנע מהתחייבות לא נוחה.</p>
+    </section>
+    <section>
+            <h2>בדיקה מהירה לפני שממשיכים לעסקה</h2>
+      <p>לפני שמתקדמים לשלב הבא, כדאי לשאול ארבע שאלות קצרות: האם מחיר העסקה נשאר בתקציב אחרי מס רכישה, האם נשאר מספיק הון עצמי להוצאות נוספות, האם סטטוס הדירה ברור, והאם יש מסמך כלשהו שיכול לשנות את הסיווג. אם אחת התשובות אינה ברורה, עדיף לעצור לשיחה מקצועית מוקדמת. שיחה כזו יכולה לחסוך שינוי יקר בהמשך, במיוחד כאשר העסקה תלויה במשכנתא, במכירת דירה קיימת או בלוח תשלומים צפוף.</p><h2>סיכום בדיקה לפני רכישה</h2>
+      <p>מס רכישה הוא לא פרט טכני קטן, אלא חלק מהחלטת הקנייה. בדיקה נכונה מתחילה במחיר העסקה ובסטטוס הרוכש, ממשיכה במדרגות הרשמיות ובשאלת המימון, ומסתיימת בבדיקת מסמכים לפני חתימה. ככל שהעסקה יקרה או מורכבת יותר, כך חשוב יותר להכניס את המס לתמונה מוקדם.</p>
+      <p>אם אתם בודקים דירה, התחילו באומדן מסודר, שמרו את המקור הרשמי, ודברו עם איש מקצוע לפני התחייבות. עסקה טובה אינה רק מחיר טוב לדירה, אלא עסקה שבה ברור מראש מה משלמים, מתי משלמים, אילו מסמכים נדרשים ומהם הסיכונים.</p>
+      <div class="note">המידע בעמוד הוא מידע כללי בלבד. הוא אינו ייעוץ משפטי, מיסוי, שמאי או פיננסי. לפני חתימה, דיווח, תשלום או הסתמכות על סכום מס, יש לבדוק את הדין, את הסימולטור הרשמי ואת מסמכי העסקה עם גורם מקצועי מתאים.</div>
+      <div class="cta"><a class="btn" href="/apartment-buying-checklist/">רשימת בדיקות לפני קנייה</a><a class="btn secondary" href="/buying-apartment/">מדריך קניית דירה</a><a class="btn secondary" href="/tabu-extract-check/">בדיקת נסח טאבו</a></div>
+    </section>
+  
+<section>
+<h2>כלי המשך לפני קבלת החלטה</h2>
+<p>לפני שמתקדמים להצעה, לחתימה או לשיחה עם הבנק, כדאי לחבר את מחיר הדירה לכל ההוצאות שמסביב: מס רכישה, עורך דין, תיווך, מעבר, שיפוץ, ריהוט ומרווח ביטחון. החישוב הבא עוזר לראות כמה כסף צריך בפועל, ולא רק מהו מחיר הדירה במודעה.</p>
+<div class="cta"><a class="btn secondary" href="/apartment-purchase-cost-calculator/">מחשבון עלויות רכישת דירה</a></div>
+</section>
+</div>
+</div>
+<!-- /wp:html -->
+
+<!-- nadlan-spoke-backlink-v1 -->
+<!-- wp:group {"className":"nadlan-spoke-backlink","backgroundColor":"accent-5"} -->
+<div class="wp-block-group nadlan-spoke-backlink has-accent-5-background-color has-background">
+
+<!-- wp:paragraph {"className":"nadlan-spoke-pillar"} -->
+<p class="nadlan-spoke-pillar"><strong>חלק מהמדריך:</strong> <a href="https://nad-lan.co.il/real-estate-tax-advisor/">מיסוי מקרקעין: מס שבח, מס רכישה והיטל השבחה לפני עסקת נדל״ן</a></p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph {"className":"nadlan-spoke-siblings"} -->
+<p class="nadlan-spoke-siblings"><strong>ראה גם באותו אשכול:</strong> <a href="https://nad-lan.co.il/apartment-purchase-cost-calculator/">עלויות רכישת דירה</a> · <a href="https://nad-lan.co.il/mortgage-calculator/">מחשבון משכנתא: החזר חודשי ועלות כוללת</a></p>
+<!-- /wp:paragraph -->
+
+</div>
+<!-- /wp:group -->

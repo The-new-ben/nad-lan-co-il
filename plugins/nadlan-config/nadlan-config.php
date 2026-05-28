@@ -2,7 +2,7 @@
 /**
  * Plugin Name: NadLan Config
  * Description: Lead-capture foundation: nadlan_lead CPT + lead-form handler + healthcheck. Read skills/nadlan-config-plugin.md.
- * Version: 1.0.5
+ * Version: 1.1.0
  * Author: nad-lan.co.il
  * License: GPL-2.0+
  * Requires PHP: 7.4
@@ -52,11 +52,12 @@ if ( ! function_exists( 'nadlan_config_healthcheck_response' ) ) {
 	function nadlan_config_healthcheck_response() {
 		return array(
 			'plugin'              => 'nadlan-config',
-			'version'             => '1.0.5',
+			'version'             => '1.1.0',
 			'cpt_present'         => post_type_exists( 'nadlan_lead' ),
 			'lead_handler_loaded' => (bool) has_action( 'admin_post_nadlan_lead' ),
 			'php_version'         => PHP_VERSION,
 			'wp_version'          => get_bloginfo( 'version' ),
+			'catalog'             => nadlan_config_catalog_status(),
 		);
 	}
 }
@@ -168,3 +169,62 @@ if ( ! function_exists( 'nadlan_config_register_yoast_meta' ) ) {
 	}
 }
 add_action( 'init', 'nadlan_config_register_yoast_meta', 11 );
+
+/* ---------- v1.1.0: Catalog CPTs (properties, projects, professionals) ----------
+ * Foundation for the properties catalog. English labels (admin-only) per lessons.
+ * function_exists guards per failure rules. Single capability addition per release.
+ * See skills/properties-catalog.md for the full architecture and roadmap.
+ */
+if ( ! function_exists( 'nadlan_config_register_catalog_cpts' ) ) {
+    function nadlan_config_register_catalog_cpts() {
+        register_post_type( 'nadlan_property', array(
+            'labels' => array(
+                'name' => 'NadLan Properties', 'singular_name' => 'NadLan Property',
+                'menu_name' => 'NadLan Properties',
+            ),
+            'public' => true, 'show_in_rest' => true,
+            'has_archive' => 'properties', 'rewrite' => array( 'slug' => 'properties' ),
+            'menu_icon' => 'dashicons-admin-home', 'menu_position' => 26,
+            'supports' => array( 'title', 'editor', 'thumbnail', 'custom-fields', 'excerpt' ),
+        ) );
+        register_post_type( 'nadlan_project', array(
+            'labels' => array(
+                'name' => 'NadLan Projects', 'singular_name' => 'NadLan Project',
+            ),
+            'public' => true, 'show_in_rest' => true,
+            'has_archive' => 'projects', 'rewrite' => array( 'slug' => 'projects' ),
+            'menu_icon' => 'dashicons-building', 'menu_position' => 27,
+            'supports' => array( 'title', 'editor', 'thumbnail', 'custom-fields', 'excerpt' ),
+        ) );
+        register_post_type( 'nadlan_professional', array(
+            'labels' => array(
+                'name' => 'NadLan Professionals', 'singular_name' => 'NadLan Professional',
+            ),
+            'public' => true, 'show_in_rest' => true,
+            'has_archive' => 'professionals', 'rewrite' => array( 'slug' => 'professionals' ),
+            'menu_icon' => 'dashicons-businessperson', 'menu_position' => 28,
+            'supports' => array( 'title', 'editor', 'thumbnail', 'custom-fields', 'excerpt' ),
+        ) );
+        register_taxonomy( 'nadlan_city', array( 'nadlan_property', 'nadlan_project' ),
+            array( 'public' => true, 'hierarchical' => true, 'show_in_rest' => true,
+                'rewrite' => array( 'slug' => 'cities' ),
+                'labels' => array( 'name' => 'Cities', 'singular_name' => 'City' ) ) );
+        register_taxonomy( 'nadlan_profession', array( 'nadlan_professional' ),
+            array( 'public' => true, 'hierarchical' => false, 'show_in_rest' => true,
+                'rewrite' => array( 'slug' => 'profession' ),
+                'labels' => array( 'name' => 'Professions', 'singular_name' => 'Profession' ) ) );
+    }
+}
+add_action( 'init', 'nadlan_config_register_catalog_cpts' );
+
+/* Healthcheck reports catalog readiness too */
+if ( ! function_exists( 'nadlan_config_catalog_status' ) ) {
+    function nadlan_config_catalog_status() {
+        return array(
+            'nadlan_property_cpt' => post_type_exists( 'nadlan_property' ),
+            'nadlan_project_cpt' => post_type_exists( 'nadlan_project' ),
+            'nadlan_professional_cpt' => post_type_exists( 'nadlan_professional' ),
+            'nadlan_city_tax' => taxonomy_exists( 'nadlan_city' ),
+        );
+    }
+}
