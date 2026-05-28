@@ -1,3 +1,46 @@
+## Herzliya Pituach Apartment Prices Luxury Neighborhood Guide
+
+Updated: 2026-05-28 07:51 Asia/Jerusalem
+
+- Live page published and verified: `https://nad-lan.co.il/herzliya-pituach-apartment-prices/`.
+- Published as a public consumer-facing Hebrew luxury/coastal neighborhood price guide of 2,279 words.
+- Linked from five existing pages:
+  - `https://nad-lan.co.il/property-value/`.
+  - `https://nad-lan.co.il/property-value-estimator/`.
+  - `https://nad-lan.co.il/buying-apartment/`.
+  - `https://nad-lan.co.il/investment-apartment/`.
+  - `https://nad-lan.co.il/real-estate-appraiser/`.
+- Added a realistic Herzliya marina image, premium guide layout, price-range table, buyer/seller/investor sections, planning-rights and building-file checks, official source links, FAQ, and a public non-advice boundary.
+- Saved a new repeatable skill lesson in the Codex portfolio knowledge graph for luxury coastal real estate: separate sea proximity, actual sea view, marina access, privacy, parking, elevator, garden/roof, plot rights, maintenance cost, and liquidity from generic apartment-price thinking.
+- Saved a local SEO page-analysis cache under `.seo-cache/pages/herzliya-pituach-apartment-prices/page-analysis.json` and ignored `.seo-cache/` in git.
+- Research used before editing:
+  - Herzliya engineering planning information: `https://handasa.herzliya.muni.il/planninginfo/`.
+  - Herzliya city planning page: `https://www.herzliya.muni.il/%D7%AA%D7%9B%D7%A0%D7%95%D7%9F-%D7%A2%D7%99%D7%A8-%D7%94%D7%A8%D7%A6%D7%9C%D7%99%D7%94/`.
+  - Madadirot Herzliya Pituach market/transaction pattern: `https://www.madadirot.co.il/areas/6400/neighborhood-af09fdef/`.
+  - Live luxury competitor pages around Herzliya Pituach apartments, villas, sea/marina positioning, boutique residences, building services, privacy, and premium presentation. The public content is original and adapted to Nadlan's brand.
+  - Wikimedia Commons image source for Herzliya Marina Aerial View: `https://commons.wikimedia.org/wiki/File:Herzliya_Marina_Aerial_View.jpg`.
+
+### Live Verification
+
+- Quality gate: passed.
+- URL: `https://nad-lan.co.il/herzliya-pituach-apartment-prices/`.
+- Rendered H1 count: 1.
+- Word count: 2,279.
+- Image count: 1.
+- Blocked internal terms: none.
+- WordPress excerpt: clean buyer/seller/investor-facing text, no internal wording.
+- Mobile 390px rendered check: no horizontal overflow, one H1, hero visible, image loaded at 960 x 557, no internal terms visible.
+- Image URL check: Wikimedia image returns `image/jpeg` and `Content-Length` 179,383 bytes.
+- Hierarchy check: `property-value`, `property-value-estimator`, `buying-apartment`, `investment-apartment`, and `real-estate-appraiser` all return HTTP 200 and contain `/herzliya-pituach-apartment-prices/`.
+- Screenshot:
+  - `verification-screenshots/nadlan-herzliya-pituach-prices-mobile-clean-2026-05-28-top.png`
+
+### Honest Gap Statement
+
+- This is a real live luxury neighborhood guide, not a draft: the page is published, verified, and linked from five related pages.
+- This block used fresh web research and the saved Nadlan Lovable competitor scan, but did not use fresh Lovable/ChatGPT/Gemini because the work was a WordPress REST publishing and browser-verification block.
+- The main gap is that Nadlan does not yet have a Herzliya city hub. This page still works as a luxury destination guide, but the next structural improvement is to add a broader Herzliya city page and connect Herzliya Pituach under it.
+
 ## Neve Tzedek Apartment Prices Neighborhood Guide
 
 Updated: 2026-05-28 07:40 Asia/Jerusalem
