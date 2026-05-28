@@ -166,3 +166,32 @@ Owner reported being tired and concerned about token usage ($43.07 / $50 monthly
 - New skill: `skills/nadlan-config-plugin.md` — documents the plugin's purpose, install/update flow, roadmap, the five "never do this" rules, and how to verify loaded.
 - Theme `functions.php` issue is now MOOT — the lead-capture lives in the plugin, theme can be anything.
 - Next agent should: ship v1.0.3 (add lead-form handler back), then v1.0.4 (abilities — after verifying `wp_register_ability` signature in WP 7.0 source).
+
+### 2026-05-28 (very late night) — Claude Code (claude-opus-4-7) — v1.0.4 live, REST work session
+- **Plugin v1.0.4 activated successfully.** Healthcheck confirms `cpt_present: true`, `lead_handler_loaded: true`, PHP 8.5.5, WP 7.0. This is the stable baseline; owner instructed no more uploads unless absolutely needed.
+- v1.0.3 had failed activation — the bisect (v1.0.4 = v1.0.3 minus shortcode + plus function_exists guards) succeeded. Cause was either the shortcode itself OR a function-name collision from not deleting v1.0.2 first. Unproven which; future plugin updates must add `function_exists` guards defensively.
+- **Critical finding for revenue:** the homepage at id=2 has **zero `<form>` tags**. The pretty lead-capture-looking fields Codex built are styled Gutenberg blocks that don't submit anywhere. Verified by reading raw page content via REST. No `nadlan_nonce`, no `admin-post.php` reference, no `nadlan_lead` action. **The homepage currently captures zero leads.**
+- **Path to fix the homepage form:** needs ONE more plugin upload (v1.0.5) adding a `[nadlan_lead_form]` shortcode that renders a complete working `<form>` with embedded nonce + action. Owner was told this and given the choice (A: ship v1.0.5 now, B: defer). At session end the choice was pending.
+- **Yoast REST limitation discovered:** the `_yoast_wpseo_metadesc` meta key is NOT exposed for REST writes by Yoast SEO Free. Attempted to write 28 templated Hebrew meta descriptions for all the calculator + pillar + professional + city pages; WP returned 200 but the meta did not persist (silent ignore of non-whitelisted private meta). To bulk-write Yoast descriptions via REST, one of:
+  - Add a small `register_meta` filter in nadlan-config plugin (requires v1.0.5)
+  - Upgrade to Yoast Premium (paid)
+  - Edit each page in WP admin manually
+- **Timezone now set to Asia/Jerusalem** (verified via PUT to `/wp/v2/settings` with field `timezone`).
+- **Confirmed via REST that all 42 of Codex's pages still have empty Yoast meta descriptions.** Major SEO miss — affects organic CTR. Highest-impact no-plugin-upload work for next session: write a `register_meta` exposing `_yoast_wpseo_metadesc` and `_yoast_wpseo_title` for REST in v1.0.5, then bulk-set descriptions.
+
+### Open issues by priority for next agent
+
+1. **Homepage form**: decide v1.0.5 (shortcode-based form) OR defer. If we want leads, this must happen.
+2. **Yoast meta descriptions × 42 pages**: blocked on either v1.0.5 register_meta or Yoast Premium.
+3. **Yoast Person schema for the lawyer-owner**: needs owner's full Hebrew name + bar number. Configure via Yoast UI manually (not via REST in free version).
+4. **Sitemap submission to GSC**: Site Kit shows GSC connected; sitemap auto-submits via Yoast's default sitemap. Verify in GSC dashboard.
+5. **Nav menu**: zero menus registered. Block themes can use the Navigation block in Site Editor; not strictly needed via classic menus.
+6. **Cornerstone marking in Yoast**: mark pillar pages (buying, selling, investment, urban-renewal, real-estate-lawyer, real-estate-tax-advisor, mortgage-calculator, purchase-tax-calculator) as cornerstone in Yoast UI.
+
+### What WAS accomplished this session (chronological)
+- Skills tree bootstrapped (16 files including strategy, monetization, copywriting, visual design, agent protocol).
+- Twenty Twenty-Five forked to nadlan-revenue (palette + Heebo + abilities API in functions.php, though functions.php failed to load).
+- Plugin journey: mu-plugin failed → v1.0.1 plugin failed → v1.0.2 minimal succeeded → v1.0.3 failed → v1.0.4 succeeded with lead handler.
+- Timezone fixed to Asia/Jerusalem.
+- 16 skill files committed for cross-agent persistence.
+- All work pushed to PR #1 (merged) + branch `claude/charming-meitner-mwVEW` (active).

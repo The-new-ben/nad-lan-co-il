@@ -102,3 +102,34 @@ If returns 500 → fatal error. Owner must check WP error log or deactivate the 
 
 ---
 _Created 2026-05-28 by Claude Code (claude-opus-4-7) after the v1.0.2 activation succeeded._
+
+## Revision 2026-05-28 late night — v1.0.4 LIVE
+
+v1.0.3 failed activation with no diagnostic info. The bisect step v1.0.4:
+- Removed: the `[nadlan_lead_nonce]` shortcode
+- Added: `function_exists` guards around every function declaration
+
+v1.0.4 activated cleanly. Healthcheck confirms `lead_handler_loaded: true`, `cpt_present: true`, PHP 8.5.5, WP 7.0.
+
+**Open question:** unproven whether v1.0.3 failed because of the shortcode OR because of a function-name collision from v1.0.2 not being fully deleted first. Future versions should keep the `function_exists` guards regardless.
+
+## v1.0.5 — planned changes (NOT YET SHIPPED, owner approval gate)
+
+Adds two capabilities the homepage actually needs to capture leads:
+
+1. **`[nadlan_lead_form]` shortcode** — renders a complete working `<form>` element. Inside: action=admin-post.php, hidden nonce + action fields, all 8 input fields (name, phone, email, goal, city, budget, timeline, message) with Hebrew labels, submit button. CSS-light; styling via theme palette. The form is the conversion mechanism for the lead-capture monetization model.
+
+2. **REST-write registration for Yoast meta keys**:
+   ```php
+   register_meta( 'post', '_yoast_wpseo_metadesc', array(
+       'show_in_rest'      => true,
+       'single'            => true,
+       'type'              => 'string',
+       'auth_callback'     => function() { return current_user_can('edit_posts'); },
+   ) );
+   register_meta( 'post', '_yoast_wpseo_title', array( /* same */ ) );
+   ```
+   Unblocks bulk REST writes of Yoast meta descriptions (currently 42 pages × empty = major SEO miss). After v1.0.5, an agent can iterate all pages and write Hebrew descriptions via REST.
+
+**Owner approval required** because v1.0.5 means another plugin delete + upload + activate cycle. Trade-off: one more upload buys the lead-capture form AND unlocks bulk Yoast description writes.
+
