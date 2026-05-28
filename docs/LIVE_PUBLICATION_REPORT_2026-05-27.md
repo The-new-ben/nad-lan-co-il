@@ -733,3 +733,32 @@ Updated: 2026-05-28 05:03 Asia/Jerusalem
 - This is a real live publication, not a draft: a new supporting construction-supervision page is published, verified, and linked from the professionals hub.
 - It deepens the future directory architecture because construction supervisors connect buyers of new apartments, owners in urban-renewal projects, private builders, renovation clients, inspection engineers, and future provider profiles.
 - The page meets the minimum content and live verification gates. The next gap remains structured professional-profile CMS plus durable theme-level header/footer implementation through GitHub and UPress pull.
+
+## Public Excerpt Cleanup / Hidden Internal Language Remediation
+
+Updated: 2026-05-28 05:27 Asia/Jerusalem
+
+- Live public WordPress excerpts were cleaned for four older Nadlan pages that still contained early internal wording even though the visible bodies had already been upgraded:
+  - `https://nad-lan.co.il/real-estate-lawyer/`
+  - `https://nad-lan.co.il/investment-apartment/`
+  - `https://nad-lan.co.il/mortgage-advisor/`
+  - `https://nad-lan.co.il/purchase-tax-calculator/`
+- Each excerpt is now short public-facing Hebrew that explains the reader benefit without internal operating language.
+- Saved a repeatable skill lesson in the Codex portfolio knowledge graph: always inspect `excerpt.rendered` after publishing or rewriting, because old excerpt text can leak into feeds, REST, theme cards, social snippets, or future search snippets.
+- Research checked before this cleanup:
+  - Google people-first content guidance: `https://developers.google.com/search/docs/fundamentals/creating-helpful-content`.
+  - WordPress REST page endpoint behavior was verified operationally through the live `/wp-json/wp/v2/pages` response.
+
+### Live Verification
+
+- REST excerpt verification: all four affected pages now return clean public Hebrew excerpts.
+- `https://nad-lan.co.il/real-estate-lawyer/`: quality gate passed, 2,101 words, one H1, one image, no blocked internal terms.
+- `https://nad-lan.co.il/investment-apartment/`: quality gate passed, 2,098 words, one H1, one image, no blocked internal terms.
+- `https://nad-lan.co.il/mortgage-advisor/`: quality gate passed, 2,131 words, one H1, one image, no blocked internal terms.
+- `https://nad-lan.co.il/purchase-tax-calculator/`: quality gate passed, 2,133 words, one H1, one image, no blocked internal terms.
+
+### Honest Gap Statement
+
+- This was not a new page publication, but it was a real live public cleanup: four existing live pages no longer expose old internal language through WordPress excerpts.
+- It directly fixes the type of issue Ben flagged earlier: public pages must speak only to buyers, sellers, borrowers, investors, and property owners.
+- Remaining gap: continue excerpt/meta checks across every older page and move durable header/footer improvements into the synced theme with UPress Git pull verification.
