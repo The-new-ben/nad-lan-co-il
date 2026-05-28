@@ -108,3 +108,48 @@ _File maintained by all agents. Created 2026-05-28 by Claude Code (claude-opus-4
   - When the owner does a manual file-manager upload, partial states are likely. Always run REST verification after any sync.
   - Going forward: I push to PR branch → owner clicks "Merge pull request" → UPress Git syncs from main. Owner does not need to know any Git commands; only the merge button click.
 - Open / blocked: until functions.php is loaded, the lead form, the CPT, and the Abilities API extensions don't exist. This blocks any next-agent work that depends on `nadlan_lead` or `nadlan/*` abilities.
+
+### 2026-05-28 (night) — Claude Code (claude-opus-4-7) — mu-plugin fallback + handoff
+- Final state of this session:
+  - PR #1 (theme fork) was **merged to main**. Confirmed via git log.
+  - UPress Git synced from main, cache cleared by owner.
+  - **`style.css` and `theme.json` on the server ARE the new fork** (verified via direct fetch: header v1.0.0, palette contains `#D89B3C`/`#0E3A8A`/`#0E7C57`/`#FAF8F4`, theme.json contains "Heebo").
+  - **`functions.php` on the server is NOT loading our appended additions.** Verified by REST: `nadlan_lead` CPT returns 404 from `/wp/v2/types/nadlan_lead`; abilities list still shows only the 4 core+Yoast entries, none of `nadlan/*`. Possible causes: UPress Git silently skipped functions.php, file permissions blocked the overwrite, or PHP opcache persisted older bytecode.
+  - **Mitigation committed to PR branch as `mu-plugins/nadlan-config.php`** (single 6.5 KB file, PHP-lint clean, GPL-2.0+). It contains: the `nadlan_lead` CPT, the lead-form handler, and the four `nadlan/*` Abilities API registrations. mu-plugins auto-load regardless of theme state, so this bypasses the functions.php issue entirely.
+  - **Owner was instructed to manually drop that one file into `/wp-content/mu-plugins/` via the UPress file manager.** As of session end, REST verification did NOT detect it loaded. Either the upload didn't complete, or UPress's mu-plugins path is non-standard.
+
+### Handoff to next agent (Claude resumed, Codex June 2+, or any other)
+
+1. **First action:** run REST verify (`python3 /tmp/v2.py` from previous session, or equivalent: hit `/wp/v2/themes?status=active`, `/wp/v2/types/nadlan_lead`, `/wp-abilities/v1/abilities`, `/wp/v2/pages?per_page=1` for X-WP-Total).
+2. **If `nadlan_lead` CPT is now registered and abilities list has 8 entries**, including `nadlan/*`: the mu-plugin upload succeeded between sessions. Proceed to Phase 1 of the monetization plan (`monetization-lawyer-angle.md`).
+3. **If still NOT registered**, the mu-plugin was never received OR the path is wrong. Ask the owner:
+   - Did the file `/wp-content/mu-plugins/nadlan-config.php` get uploaded to the server? Verify in UPress file manager.
+   - If yes: try a Site Health check in WP admin to see if mu-plugins are being scanned. The standard WP path is `wp-content/mu-plugins/<file>.php` at the root of that folder (not in a subfolder; mu-plugins are NOT recursive).
+   - If UPress uses a custom mu-plugins path (some hosts override `WPMU_PLUGIN_DIR`), that path is needed.
+4. **Alternative fallback if mu-plugins is blocked**: convert the file into a regular plugin (add `Plugin Name:` header and ZIP it for one-click upload via Plugins → Add New → Upload Plugin in WP admin). The file already has the right header — just zip the folder and provide to owner.
+
+### What is BLOCKED until functions.php OR mu-plugin work
+
+- Lead-form submissions (no `admin_post_nadlan_lead` handler → form would error)
+- The Abilities API extension (next agents can't discover what nad-lan can do)
+- Visible `NadLan Leads` admin menu (no CPT)
+
+### What is UNBLOCKED and ready for next-agent work (no PHP dependency)
+
+- Yoast configuration via REST API (titles, social, breadcrumbs, Person schema for the lawyer-owner). See `skills/yoast-config.md`.
+- Content pipeline: Codex (returning June 2) writes spoke articles per `skills/strategy-master.md` keyword clusters.
+- Image pipeline: `image-pipeline.md` protocol exists; Codex inventories `C:\Users\pro\.codex\generated_images` next session.
+- Google Search Console: already connected via Site Kit. Next step is to verify sitemap submission and look at first index data.
+- Site state, plugin discipline, theme-fork rationale, copywriting rules, visual design, abilities-API spec — all in `skills/`. Read before acting.
+
+### Files committed this session
+
+Commits on `claude/charming-meitner-mwVEW` (= PR #1, merged to main):
+- `5621b78` Bootstrap skills/ tree (initial skills, strategy, monetization, agent protocol, SERP research)
+- `ac7b351` Fork Twenty Twenty-Five into nadlan-revenue: brand palette, Heebo, Abilities API
+- `af840ed` site-state + protocol: post-activation verification; UPress Git branch=main constraint
+- `30ac21b` Add nadlan-config mu-plugin: CPT + Abilities API independent of theme
+- (this commit) site-state.md handoff
+
+### Owner tone at session end
+Owner reported being tired and concerned about token usage ($43.07 / $50 monthly Claude budget, 86%). Next session: be minimal in chat, batch operations, do not re-explain rationale that's already in skills/. Read site-state.md last 3 blocks first.
