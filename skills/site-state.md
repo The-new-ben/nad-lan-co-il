@@ -264,3 +264,11 @@ Owner reported being tired and concerned about token usage ($43.07 / $50 monthly
 - **New skill:** skills/interactive-widgets.md documents all 4 widgets, markers, update protocol, US/UK research basis, and TODO roadmap for next session.
 - **Repo state mirror:** docs/wp-state/template-part-footer.html and docs/wp-state/page-sitemap.html now hold the live versions for version control.
 - **Lawyer Person schema explicitly deferred** per owner — not ready to be publicly signed as lawyer.
+
+### 2026-05-28 (continued) — Lovable design prompt authored
+- Owner wants a $1M-quality theme and prefers Lovable for the visual design pass.
+- Authored `docs/lovable-prompt.md`: a world-class, exhaustive Lovable prompt + a follow-up "export portable CSS" prompt + a porting checklist for Claude/Codex.
+- Workflow established: Lovable designs → outputs framework-agnostic CSS + tokens → Claude/Codex port into the WordPress block theme (theme.json + style.css + template parts + widgets). We do NOT ship Lovable's React; we extract its visual decisions.
+- The prompt bakes in: luxury design language (Sotheby's/Christie's/The Agency/Compass caliber), RTL Hebrew, Frank Ruhl Libre headings + Heebo body, warm-minimal ink/cream/gold palette, all page types, the calculator tools, components library, and demands exact tokens/CSS.
+- Fonts already bundled locally (assets/fonts/frank-ruhl-libre + heebo); Lovable's @font-face points at those theme paths.
+- Status: brand assets (serif logo/favicon/OG) staged in repo + luxury-design-language.md skill committed. The earlier cartoon-house logo (media id 338/340) is still wired live as site_logo/site_icon — REPLACE after the Lovable direction is locked. Full theme.json/CSS rewrite deferred until Lovable output (or owner approval of provisional luxury direction) lands.
