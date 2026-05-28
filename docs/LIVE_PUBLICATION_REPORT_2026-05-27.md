@@ -627,3 +627,38 @@ Updated: 2026-05-28 04:30 Asia/Jerusalem
 - This is a real live publication, not a draft: a new supporting broker page is published, verified, and linked from the professionals hub.
 - It deepens the future directory architecture because brokers are a natural provider category for buyers, sellers, renters, commercial property, city pages, and future profile pages.
 - The page meets the minimum content and live verification gates. The next gap remains structured professional-profile CMS plus durable theme-level header/footer implementation through GitHub and UPress pull.
+
+## Home Inspection / Building Engineer Supporting Professional Page
+
+Updated: 2026-05-28 04:43 Asia/Jerusalem
+
+- Live page published and verified: `https://nad-lan.co.il/home-inspection/`.
+- Published as a public consumer-facing Hebrew guide of 2,079 words.
+- Linked from the existing professionals hub at `https://nad-lan.co.il/professionals/` with the public label `בדק בית`, so the new page is attached to the content hierarchy.
+- Added a realistic construction image, premium guide layout, and sections on what home inspection means, when to order it, inspection report scope, resale apartment checks, new-contractor handover, private-house checks, engineer/inspector selection, document preparation, cost factors, what to do after the report, limits of non-destructive inspection, negotiation use, FAQ, internal next-step links, and a public non-advice boundary.
+- Saved a new repeatable skill lesson in the Codex portfolio knowledge graph for home-inspection pages: explain the physical check, state non-destructive inspection limits, connect findings to lawyer/appraiser/contractor steps, and keep the page practical.
+- Research used before editing:
+  - Gov.il Ministry of Construction complaint/defect channel for contractor-related defects and public escalation context: `https://www.gov.il/he/service/complaint-about-constractor`.
+  - Official Sales Law / contractor-apartment buyer protection context from the Ministry of Construction Sales Law portal: `https://www.gov.il/he/pages/hok_hamecher`.
+  - Live competitor pages around בדק בית, engineer inspection, new-apartment handover, dampness, systems, reports, and pricing. The public content is original and adapted to Nadlan's brand.
+
+### Live Verification
+
+- Quality gate: passed.
+- URL: `https://nad-lan.co.il/home-inspection/`.
+- Rendered H1 count: 1.
+- Word count: 2,079.
+- Image count: 1.
+- Blocked internal terms: none.
+- WordPress excerpt: clean buyer/new-apartment-facing text, no old internal wording.
+- Mobile 390px rendered check: no horizontal overflow, one H1, public terms clean.
+- Image URL check: Wikimedia image returns `image/jpeg` and `Content-Length` 174,066 bytes.
+- Professionals hub hierarchy check: `https://nad-lan.co.il/professionals/` returns HTTP 200 and contains both `/home-inspection/` and visible `בדק בית`.
+- Screenshot:
+  - `verification-screenshots/nadlan-home-inspection-mobile-clean-2026-05-28-top.png`
+
+### Honest Gap Statement
+
+- This is a real live publication, not a draft: a new supporting inspection/engineer page is published, verified, and linked from the professionals hub.
+- It deepens the future directory architecture because inspection engineers connect buyer safety, new-project handover, resale-apartment negotiation, contractor defects, and future provider profiles.
+- The page meets the minimum content and live verification gates. The next gap remains structured professional-profile CMS plus durable theme-level header/footer implementation through GitHub and UPress pull.
