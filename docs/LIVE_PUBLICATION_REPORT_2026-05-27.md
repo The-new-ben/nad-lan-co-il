@@ -910,6 +910,47 @@ Updated: 2026-05-28 06:58 Asia/Jerusalem
 - This block used fresh web research and the saved Nadlan Lovable competitor scan, but did not use fresh Lovable credits because the expiring-credit window appears to have passed and this was a WordPress REST publishing/verification block.
 - The page meets the minimum content and live verification gates. The next gap remains deeper calculator/tool infrastructure: a practical investment-property cashflow calculator connected to mortgage, purchase tax, rent, vacancy, maintenance, and management assumptions.
 
+## Investment Property Cashflow Calculator Tool Page
+
+Updated: 2026-05-28 07:12 Asia/Jerusalem
+
+- Live page published and verified: `https://nad-lan.co.il/investment-property-cashflow-calculator/`.
+- Published as a public consumer-facing Hebrew calculator plus guide of 2,086 words.
+- Linked from two existing investment pages:
+  - `https://nad-lan.co.il/investment-apartment/`.
+  - `https://nad-lan.co.il/investment-property-mortgage/`.
+- Added a functional calculator that estimates monthly net cashflow, gross yield, net yield, invested amount, and annual net income after rent, mortgage payment, vacancy months, maintenance, management, tax estimate, purchase costs, equity, and optional appreciation assumption.
+- Added a realistic residential-building image, premium tool layout, and sections on how to use the calculator, why gross yield is not enough, expenses to include, vacancy, rent tax, negative cashflow, interpreting positive cashflow, cash reserve, local versus remote ownership, what the calculator does not cover, checking a deal before an offer, official sources, FAQ, and a public non-advice boundary.
+- Saved a new repeatable skill lesson in the Codex portfolio knowledge graph for calculator/tool pages: tool pages must be browser-tested by changing an input, not only checked as static HTML.
+- Research used before editing:
+  - Kol Zchut rental-income tax guidance: `https://www.kolzchut.org.il/he/פטור_ממס_על_הכנסה_מהשכרת_דירה_למגורים`.
+  - Israel Tax Authority real-estate-tax service page: `https://www.gov.il/he/service/real-estate-tax-7000`.
+  - Bank of Israel rates and early-repayment information page: `https://www.boi.org.il/information/interestrates/`.
+  - Live competitor calculator pages around gross yield, net yield, rent, financing, tax, maintenance, and vacancy. The public tool and content are original and adapted to Nadlan's brand.
+
+### Live Verification
+
+- First quality gate failed usefully: 1,623 words, below the 2,000-word minimum. I expanded the guide before reporting.
+- Final quality gate: passed.
+- URL: `https://nad-lan.co.il/investment-property-cashflow-calculator/`.
+- Rendered H1 count: 1.
+- Word count: 2,086.
+- Image count: 1.
+- Blocked internal terms: none.
+- WordPress excerpt: clean investor-facing text, no internal wording.
+- Mobile 390px rendered check: no horizontal overflow, one H1, hero visible, image loaded at 960 x 719, no internal terms visible.
+- Browser calculator interaction check: changing monthly rent from 5,200 to 6,500 updated monthly net cashflow from `₪417` to `₪1,608`.
+- Image URL check: Wikimedia image returns `image/jpeg` and `Content-Length` 195,698 bytes.
+- Hierarchy check: both `https://nad-lan.co.il/investment-apartment/` and `https://nad-lan.co.il/investment-property-mortgage/` return HTTP 200 and contain `/investment-property-cashflow-calculator/`.
+- Screenshot:
+  - `verification-screenshots/nadlan-investment-cashflow-calculator-mobile-clean-2026-05-28-v2-top.png`
+
+### Honest Gap Statement
+
+- This is a real live tool page, not a draft: the page is published, the calculator runs in the browser, and the page is linked from both investment pages.
+- This block used fresh web research and the saved Nadlan Lovable competitor scan, but did not use fresh Lovable/ChatGPT/Gemini because the work was a WordPress REST publishing and browser-verification block.
+- The calculator is a strong step toward real utility. The next gap is to turn it from a page-level script into a durable reusable WordPress tool/component and later connect it to inquiry capture, saved scenarios, and professional follow-up.
+
 ## Mortgage Refinance Supporting Finance Page
 
 Updated: 2026-05-28 06:39 Asia/Jerusalem
