@@ -871,6 +871,43 @@ Updated: 2026-05-28 05:54 Asia/Jerusalem
 - It deepens the future directory architecture because insurance connects mortgage borrowers, homeowners, investors, property managers, lawyers, mortgage advisers, and future insurance-professional profile pages.
 - The page meets the minimum content and live verification gates. The next gap remains structured provider profiles plus durable theme-level header/footer implementation through GitHub and UPress pull.
 
+## Mortgage Refinance Supporting Finance Page
+
+Updated: 2026-05-28 06:39 Asia/Jerusalem
+
+- Live page published and verified: `https://nad-lan.co.il/mortgage-refinance/`.
+- Published as a public consumer-facing Hebrew guide of 2,430 words.
+- Linked from the existing mortgage adviser pillar at `https://nad-lan.co.il/mortgage-advisor/` with the public label `בדיקת מחזור משכנתא`, so the new page is attached to the mortgage content hierarchy.
+- Added a realistic Ramat Gan/Tel Aviv business-district image, premium guide layout, page navigation, and sections on refinance definition, when to check refinance, internal versus external refinance, payoff balances, early repayment fee, real savings calculation, documents to prepare, relationship to the property, common mistakes, official information sources, FAQ, and a public non-advice boundary.
+- Saved a new repeatable skill lesson in the Codex portfolio knowledge graph for mortgage-refinance pages: never promise savings, always compare total cost and monthly payment together, separate internal and external refinance, and require payoff-balance plus early-repayment-fee checks before comparing offers.
+- Research used before editing:
+  - Bank of Israel rates and early-repayment information page: `https://www.boi.org.il/information/interestrates/`.
+  - Bank of Israel consumer-process update around early repayment and mortgage refinance: `https://www.boi.org.il/publications/pressreleases/19-07-23/`.
+  - Kol Zchut early repayment of mortgage guidance: `https://www.kolzchut.org.il/he/פירעון_מוקדם_של_מלוא_סכום_המשכנתא`.
+  - Ministry of Finance / `האוצר שלי` refinance guide: `https://haotzarsheli.mof.gov.il/Subject/Pages/Mortgage-Refinancing.aspx`.
+  - Live competitor pages from Bank Hapoalim, Bank Jerusalem, Midrag, and mortgage-adviser sites around refinance process, fee explanation, offer comparison, and borrower questions. The public content is original and adapted to Nadlan's brand.
+
+### Live Verification
+
+- Quality gate: passed.
+- URL: `https://nad-lan.co.il/mortgage-refinance/`.
+- Rendered H1 count: 1.
+- Word count: 2,430.
+- Image count: 1.
+- Blocked internal terms: none.
+- WordPress excerpt: clean borrower-facing text, no internal wording.
+- Mobile 390px rendered check: no horizontal overflow, one H1, page navigation visible, hero visible, image loaded at 960 x 540, no internal terms visible.
+- Image URL check: Wikimedia image returns `image/jpeg` and `Content-Length` 163,354 bytes.
+- Mortgage adviser hierarchy check: `https://nad-lan.co.il/mortgage-advisor/` returns HTTP 200 and contains both `/mortgage-refinance/` and visible `בדיקת מחזור משכנתא`.
+- Screenshot:
+  - `verification-screenshots/nadlan-mortgage-refinance-mobile-clean-2026-05-28-top.png`
+
+### Honest Gap Statement
+
+- This is a real live publication, not a draft: a new supporting mortgage-refinance page is published, verified, and linked from the mortgage pillar.
+- This block used fresh web research and the saved Nadlan Lovable competitor scan, but did not use fresh Lovable credits because the expiring-credit window appears to have passed and this was a publishing/verification block through the WordPress REST API.
+- The page meets the minimum content and live verification gates. The next gap remains a stronger real provider/profile CMS for mortgage advisers, insurance professionals, appraisers, brokers, and related real-estate professionals, plus durable theme-level header/footer improvements through GitHub and UPress pull.
+
 ## Renovation Contractor Supporting Professional Page
 
 Updated: 2026-05-28 06:09 Asia/Jerusalem
