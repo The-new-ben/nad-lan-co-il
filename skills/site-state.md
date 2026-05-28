@@ -332,3 +332,12 @@ Owner said "yes to all" + new idea. Shipped:
 - New skill `skills/lead-funnel.md`: funnel map + roadmap to self-registration + Stripe payments.
 - Plugin v1.1.1 ZIP sent to owner.
 - **Honestly deferred this turn** (documented, not done): full Hebrew article writing for short-rent pillar; listings catalog UI (archive/single templates + seed); self-registration + payments (needs owner stack decision + paid plugin); IndexNow instant-indexing; the "magic AI recommender" for short-rent. WhatsApp/phone FAB legs blocked on owner's number.
+
+### 2026-05-28 — Claude Code (claude-opus-4-8) — sitemap cleanup + IndexNow auto-ping (v1.1.2)
+- **Sitemap rewritten** (id 336, live): removed all visible "WordPress / REST API" technical language; restated copy ("מצא את הדרך", "עודכן לאחרונה" instead). New stats: total pages · clusters · **חדש החודש** count (pages modified in the last 30 days). Spokes within each cluster are now **sorted by `modified` desc** — the legit version of "links change position": fresher content appears higher = genuine SEO freshness signal, not cosmetic shuffling. Added "חדש" badges for pages modified in the last 30 days.
+- The lingering "WordPress" string is only in WP's own `<meta name="generator">` in `<head>` (not visible to users). v1.1.2 also **removes the generator meta** (`remove_action('wp_head','wp_generator')` + filter).
+- **IndexNow auto-ping** (plugin v1.1.2): on any publish/update of post/page/property/project/professional, the plugin posts to `api.indexnow.org/IndexNow` AND `bing.com/indexnow` with the page URL — instant submission to Bing/Yandex. Google does not officially honor IndexNow, but reads Yoast's `<lastmod>` XML sitemap (already on). This is the legit version of "ping Google" — Rank Math's instant-indexing addon uses the same protocol.
+- Auto-generates an IndexNow key (32-hex stored in wp_options) and serves it at `/{key}.txt` via an `init`-priority-1 hook so the verification endpoint works. No manual key management.
+- Healthcheck augmented (filter hook) to surface `indexnow.last_pings` for verification.
+- **New skill `skills/plugin-auto-update.md`**: honest three-options analysis. Recommendation is Option B — vendor `yahnis-elsts/plugin-update-checker` in v1.2.0 → owner clicks "Update" inside WP, no more ZIP cycle. Awaiting owner approval to vendor the library.
+- Plugin v1.1.2 ZIP shipped for upload.

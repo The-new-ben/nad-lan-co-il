@@ -2,7 +2,7 @@
 /**
  * Plugin Name: NadLan Config
  * Description: Lead-capture foundation: nadlan_lead CPT + lead-form handler + healthcheck. Read skills/nadlan-config-plugin.md.
- * Version: 1.1.1
+ * Version: 1.1.2
  * Author: nad-lan.co.il
  * License: GPL-2.0+
  * Requires PHP: 7.4
@@ -52,7 +52,7 @@ if ( ! function_exists( 'nadlan_config_healthcheck_response' ) ) {
 	function nadlan_config_healthcheck_response() {
 		return array(
 			'plugin'              => 'nadlan-config',
-			'version'             => '1.1.1',
+			'version'             => '1.1.2',
 			'cpt_present'         => post_type_exists( 'nadlan_lead' ),
 			'lead_handler_loaded' => (bool) has_action( 'admin_post_nadlan_lead' ),
 			'php_version'         => PHP_VERSION,
@@ -295,3 +295,98 @@ if ( ! function_exists( 'nadlan_config_rest_lead_handler' ) ) {
         return new WP_REST_Response( array( 'ok' => true, 'id' => $id ), 200 );
     }
 }
+
+/* ---------- v1.1.2: IndexNow auto-ping on publish/update ----------
+ * Pings Bing, Yandex (and others honoring IndexNow) the moment a page/post
+ * publishes or updates. This is the legitimate "instant indexing" — Rank Math
+ * uses the same protocol. Google does not officially honor IndexNow as of
+ * 2026-05 but reads the Yoast XML sitemap which already includes <lastmod>.
+ *
+ * One-time setup: an IndexNow key (an 8-128 char hex string) we host at:
+ *   /<key>.txt  (a static endpoint returning the key)
+ * We auto-generate the key on first load and store it in wp_options. We
+ * expose it via a virtual /wp-json/nadlan/v1/indexnow-key endpoint AND via
+ * a dynamic rewrite that returns the key at /<key>.txt (handled by WP's
+ * 404 fallback hooked into 'template_redirect').
+ */
+if ( ! function_exists( 'nadlan_config_indexnow_key' ) ) {
+    function nadlan_config_indexnow_key() {
+        $k = get_option( 'nadlan_indexnow_key' );
+        if ( ! $k ) {
+            $k = strtolower( bin2hex( random_bytes( 16 ) ) ); // 32 hex chars
+            update_option( 'nadlan_indexnow_key', $k, true );
+        }
+        return $k;
+    }
+}
+if ( ! function_exists( 'nadlan_config_indexnow_serve_key' ) ) {
+    function nadlan_config_indexnow_serve_key() {
+        if ( ! isset( $_SERVER['REQUEST_URI'] ) ) { return; }
+        $uri = strtok( $_SERVER['REQUEST_URI'], '?' );
+        $k   = nadlan_config_indexnow_key();
+        if ( $uri === '/' . $k . '.txt' ) {
+            header( 'Content-Type: text/plain; charset=us-ascii' );
+            echo $k;
+            exit;
+        }
+    }
+}
+add_action( 'init', 'nadlan_config_indexnow_serve_key', 1 );
+
+if ( ! function_exists( 'nadlan_config_indexnow_ping' ) ) {
+    function nadlan_config_indexnow_ping( $url ) {
+        if ( ! $url || strpos( $url, 'http' ) !== 0 ) { return; }
+        $key  = nadlan_config_indexnow_key();
+        $host = wp_parse_url( home_url(), PHP_URL_HOST );
+        $body = wp_json_encode( array(
+            'host'        => $host,
+            'key'         => $key,
+            'keyLocation' => home_url( '/' . $key . '.txt' ),
+            'urlList'     => array( $url ),
+        ) );
+        wp_remote_post( 'https://api.indexnow.org/IndexNow', array(
+            'timeout' => 6, 'blocking' => false, 'body' => $body,
+            'headers' => array( 'Content-Type' => 'application/json; charset=utf-8' ),
+        ) );
+        // Bing direct (some hosts route this differently)
+        wp_remote_post( 'https://www.bing.com/indexnow', array(
+            'timeout' => 6, 'blocking' => false, 'body' => $body,
+            'headers' => array( 'Content-Type' => 'application/json; charset=utf-8' ),
+        ) );
+        // store last ping for stats
+        $log = get_option( 'nadlan_indexnow_log', array() );
+        if ( ! is_array( $log ) ) { $log = array(); }
+        array_unshift( $log, array( 'url' => $url, 't' => time() ) );
+        $log = array_slice( $log, 0, 50 );
+        update_option( 'nadlan_indexnow_log', $log, false );
+    }
+}
+if ( ! function_exists( 'nadlan_config_indexnow_on_save' ) ) {
+    function nadlan_config_indexnow_on_save( $post_id, $post = null, $update = null ) {
+        if ( ! $post ) { $post = get_post( $post_id ); }
+        if ( ! $post ) { return; }
+        if ( wp_is_post_revision( $post_id ) || wp_is_post_autosave( $post_id ) ) { return; }
+        if ( $post->post_status !== 'publish' ) { return; }
+        if ( ! in_array( $post->post_type, array( 'post', 'page', 'nadlan_property', 'nadlan_project', 'nadlan_professional' ), true ) ) { return; }
+        nadlan_config_indexnow_ping( get_permalink( $post_id ) );
+    }
+}
+add_action( 'save_post', 'nadlan_config_indexnow_on_save', 20, 2 );
+
+/* Surface key + recent pings in the healthcheck (admin context only) */
+add_filter( 'rest_pre_dispatch', function( $r, $server, $request ) {
+    if ( $request->get_route() === '/nadlan/v1/healthcheck' ) {
+        add_filter( 'nadlan_config_healthcheck_extra', function( $arr ) {
+            $arr['indexnow'] = array(
+                'key_set'    => (bool) get_option( 'nadlan_indexnow_key' ),
+                'last_pings' => array_slice( (array) get_option( 'nadlan_indexnow_log', array() ), 0, 5 ),
+            );
+            return $arr;
+        } );
+    }
+    return $r;
+}, 10, 3 );
+
+/* Quietly remove the public WordPress "generator" meta — no need to advertise the stack */
+remove_action( 'wp_head', 'wp_generator' );
+add_filter( 'the_generator', '__return_empty_string' );
