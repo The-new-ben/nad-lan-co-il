@@ -296,3 +296,36 @@ Updated: 2026-05-28 02:52 Asia/Jerusalem
 
 - This page now meets the portfolio minimum content gate and is live. It is now a real central buyer pillar instead of a navigation draft.
 - The content hierarchy is stronger because it links into checklist, mortgage, purchase tax, Tabu, lawyer, new projects, and investment pages. The next gap is to expand the checklist page and then move the temporary page-level style/chrome into a durable theme/header/footer implementation.
+
+## Apartment Buying Checklist Expansion
+
+Updated: 2026-05-28 03:00 Asia/Jerusalem
+
+- Live page upgraded: `https://nad-lan.co.il/apartment-buying-checklist/`.
+- Replaced the short 341-word draft-like checklist with a full consumer-facing guide of 2,109 words.
+- Removed public internal wording from both the page body and WordPress excerpt, including old draft/commercial/professional-routing language.
+- Added a realistic construction/residential image, premium guide layout, sections on purchase purpose, total budget, mortgage approval, rights documents, contract checks, physical apartment checks, building/surroundings checks, transaction-type checks, red flags, negotiation and final price, document folder, post-signature tracking, FAQ, and public non-advice boundary.
+- Research used before editing:
+  - Google Search Central helpful content guidance for people-first YMYL pages.
+  - Bank of Israel mortgage transparency guidance around standardized preliminary approval and comparing offers.
+  - Israel Tax Authority purchase-tax simulator and official transaction-cost context.
+  - Gov.il / Land Registry context for checking rights and registration documents before signing.
+
+### Live Verification
+
+- Quality gate: passed.
+- URL: `https://nad-lan.co.il/apartment-buying-checklist/`.
+- Rendered H1 count: 1.
+- Word count: 2,109.
+- Image count: 1.
+- Blocked internal terms: none.
+- WordPress excerpt: cleaned to public buyer-facing text.
+- Mobile 390px rendered check: no horizontal overflow, one H1, public terms clean.
+- Image URL check: Wikimedia image returns `image/jpeg` and `Content-Length` 174,066 bytes.
+- Screenshot:
+  - `verification-screenshots/nadlan-buying-checklist-mobile-clean-2026-05-28-top.png`
+
+### Honest Gap Statement
+
+- This page now meets the portfolio minimum content gate and is live. It supports the main buying-apartment pillar with a practical checklist rather than a thin summary.
+- The next content gap is likely `tabu-extract-check`, because it is tightly linked to both the buying guide and the checklist. The design gap remains site-wide header/footer/theme polish.
