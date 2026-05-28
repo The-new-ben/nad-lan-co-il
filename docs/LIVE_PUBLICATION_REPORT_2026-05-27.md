@@ -951,6 +951,47 @@ Updated: 2026-05-28 07:12 Asia/Jerusalem
 - This block used fresh web research and the saved Nadlan Lovable competitor scan, but did not use fresh Lovable/ChatGPT/Gemini because the work was a WordPress REST publishing and browser-verification block.
 - The calculator is a strong step toward real utility. The next gap is to turn it from a page-level script into a durable reusable WordPress tool/component and later connect it to inquiry capture, saved scenarios, and professional follow-up.
 
+## Mortgage Calculator Tool Page
+
+Updated: 2026-05-28 07:26 Asia/Jerusalem
+
+- Live page published and verified: `https://nad-lan.co.il/mortgage-calculator/`.
+- Published as a public consumer-facing Hebrew calculator plus guide of 2,129 words.
+- Linked from two existing mortgage pages:
+  - `https://nad-lan.co.il/mortgage-advisor/`.
+  - `https://nad-lan.co.il/mortgage-refinance/`.
+- Added a functional calculator that estimates monthly mortgage payment, total repayment, total interest, income-payment ratio, and stressed monthly payment after a user-defined rate increase.
+- Added a realistic Ramat Gan/Tel Aviv business-district image, premium tool layout, and sections on how to use the calculator, income-payment ratio, total cost, calculator limitations, rate-stress testing, equity, future repayment changes, bank-offer comparison, investment-property use, when to consult a mortgage adviser, official sources, FAQ, and a public non-advice boundary.
+- Saved a new repeatable skill lesson in the Codex portfolio knowledge graph for mortgage calculator pages: a mortgage tool must calculate more than the monthly payment and must be browser-tested by changing an input.
+- Research used before editing:
+  - Bank of Israel rates and early-repayment information page: `https://www.boi.org.il/information/interestrates/`.
+  - Bank of Israel housing-loan limitation document: `https://www.boi.org.il/media/nqlblucq/h2430.pdf`.
+  - Israel Tax Authority real-estate-tax service page: `https://www.gov.il/he/service/real-estate-tax-7000`.
+  - Live competitor calculator pages including CalcFinance, AllCalc, Machshevonim, Calculatzia, fcalc, Count, and FlowMyHome around monthly payment, total interest, amortization, income pressure, and stress checks. The public tool and content are original and adapted to Nadlan's brand.
+
+### Live Verification
+
+- First quality gate failed usefully: 1,696 words, below the 2,000-word minimum. I expanded the guide before reporting.
+- Final quality gate: passed.
+- URL: `https://nad-lan.co.il/mortgage-calculator/`.
+- Rendered H1 count: 1.
+- Word count: 2,129.
+- Image count: 1.
+- Blocked internal terms: none.
+- WordPress excerpt: clean buyer-facing text, no internal wording.
+- Mobile 390px rendered check: no horizontal overflow, one H1, hero visible, image loaded at 960 x 540, no internal terms visible.
+- Browser calculator interaction check: changing annual rate from 4.8% to 5.8% updated the monthly payment from `₪5,730` to `₪6,321`.
+- Image URL check: Wikimedia image returns `image/jpeg` and `Content-Length` 163,354 bytes.
+- Hierarchy check: both `https://nad-lan.co.il/mortgage-advisor/` and `https://nad-lan.co.il/mortgage-refinance/` return HTTP 200 and contain `/mortgage-calculator/`.
+- Screenshot:
+  - `verification-screenshots/nadlan-mortgage-calculator-mobile-clean-2026-05-28-v2-top.png`
+
+### Honest Gap Statement
+
+- This is a real live tool page, not a draft: the page is published, the calculator runs in the browser, and the page is linked from both mortgage pages.
+- This block used fresh web research and the saved Nadlan Lovable competitor scan, but did not use fresh Lovable/ChatGPT/Gemini because the work was a WordPress REST publishing and browser-verification block.
+- The calculator is useful now, but the durable next gap is to turn mortgage/investment calculators into reusable WordPress components and connect them to saved scenarios, mortgage-adviser inquiries, purchase-tax checks, and follow-up flows.
+
 ## Mortgage Refinance Supporting Finance Page
 
 Updated: 2026-05-28 06:39 Asia/Jerusalem
