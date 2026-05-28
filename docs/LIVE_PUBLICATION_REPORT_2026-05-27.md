@@ -1,3 +1,45 @@
+## Tel Aviv Apartment Prices City Guide
+
+Updated: 2026-05-28 07:58 Asia/Jerusalem
+
+- Live page published and verified: `https://nad-lan.co.il/tel-aviv-apartment-prices/`.
+- Published as a public consumer-facing Hebrew city price guide of 2,213 words.
+- Linked from five existing pages:
+  - `https://nad-lan.co.il/property-value/`.
+  - `https://nad-lan.co.il/property-value-estimator/`.
+  - `https://nad-lan.co.il/buying-apartment/`.
+  - `https://nad-lan.co.il/selling-apartment/`.
+  - `https://nad-lan.co.il/investment-apartment/`.
+- Added a realistic Tel Aviv skyline image, premium guide layout, indicative price-range table, sections for buyers, sellers and investors, official source links, FAQ, and a public non-advice boundary.
+- Saved a new repeatable skill lesson in the Codex portfolio knowledge graph for city price guides: do not treat a city as one market; explain micro-areas, building factors, comparable transactions, ranges, and links to valuation/purchase-cost tools.
+- Research used before editing:
+  - Government real-estate transaction portal: `https://www.nadlan.gov.il/`.
+  - CBS apartment price publications: `https://www.cbs.gov.il/he/Pages/SubjectPublications.aspx?CbsSubject=%D7%9E%D7%97%D7%99%D7%A8%D7%99+%D7%93%D7%99%D7%A8%D7%95%D7%AA`.
+  - Tel Aviv Municipality planning information: `https://www.tel-aviv.gov.il/Residents/Construction/Pages/PlanningInformation.aspx`.
+  - Israel Tax Authority real-estate-tax service page: `https://www.gov.il/he/service/real-estate-tax-7000`.
+  - Live competitor/market pages around Tel Aviv apartment prices, neighborhood variation, price per sqm, luxury towers, beachfront premiums, ongoing costs, and purchase-side costs. The public content is original and adapted to Nadlan's brand.
+
+### Live Verification
+
+- Quality gate: passed.
+- URL: `https://nad-lan.co.il/tel-aviv-apartment-prices/`.
+- Rendered H1 count: 1.
+- Word count: 2,213.
+- Image count: 1.
+- Blocked internal terms: none.
+- WordPress excerpt: clean buyer/seller/investor-facing text, no internal wording.
+- Mobile 390px rendered check: no horizontal overflow, one H1, hero visible, image loaded at 960 x 454, no internal terms visible.
+- Image URL check: Wikimedia image returns `image/jpeg` and `Content-Length` 139,868 bytes.
+- Hierarchy check: `property-value`, `property-value-estimator`, `buying-apartment`, `selling-apartment`, and `investment-apartment` all return HTTP 200 and contain `/tel-aviv-apartment-prices/`.
+- Screenshot:
+  - `verification-screenshots/nadlan-tel-aviv-apartment-prices-mobile-clean-2026-05-28-top.png`
+
+### Honest Gap Statement
+
+- This is a real live city guide, not a draft: the page is published, verified, and linked from five related pages.
+- This block used fresh web research and the saved Nadlan Lovable competitor scan, but did not use fresh Lovable/ChatGPT/Gemini because the work was a WordPress REST publishing and browser-verification block.
+- The page starts the city/neighborhood layer. The next gap is to build separate neighborhood profiles for high-value Tel Aviv areas and connect them to comparable transactions, valuation, buying/selling paths, and professionals.
+
 ## Property Value Estimator Tool Page
 
 Updated: 2026-05-28 07:39 Asia/Jerusalem
