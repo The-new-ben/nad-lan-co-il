@@ -662,3 +662,39 @@ Updated: 2026-05-28 04:43 Asia/Jerusalem
 - This is a real live publication, not a draft: a new supporting inspection/engineer page is published, verified, and linked from the professionals hub.
 - It deepens the future directory architecture because inspection engineers connect buyer safety, new-project handover, resale-apartment negotiation, contractor defects, and future provider profiles.
 - The page meets the minimum content and live verification gates. The next gap remains structured professional-profile CMS plus durable theme-level header/footer implementation through GitHub and UPress pull.
+
+## Real Estate Tax / Tax Adviser Supporting Professional Page
+
+Updated: 2026-05-28 04:52 Asia/Jerusalem
+
+- Live page published and verified: `https://nad-lan.co.il/real-estate-tax-advisor/`.
+- Published as a public consumer-facing Hebrew guide of 2,221 words.
+- Linked from the existing professionals hub at `https://nad-lan.co.il/professionals/` with the public label `מיסוי מקרקעין`, so the new page is attached to the content hierarchy.
+- Added a realistic commercial-district image, premium guide layout, and sections on purchase tax, capital-gains/betterment tax, municipal improvement levy, transaction reporting and approvals, buyer/seller/investor questions, documents to prepare, when to involve a lawyer or tax adviser, inheritance/gift/investment cases, special transactions, common mistakes, integration with mortgage/appraisal/contract, FAQ, internal next-step links, and a public non-advice boundary.
+- Saved a new repeatable skill lesson in the Codex portfolio knowledge graph for real-estate-tax pages: separate the tax types clearly, use official Tax Authority/municipal anchors, connect tax to registration and cashflow, and avoid personal tax conclusions.
+- Research used before editing:
+  - Israel Tax Authority Form 7000 declaration page and 30-day transaction declaration context: `https://www.gov.il/he/service/real-estate-tax-7000`.
+  - Israel Tax Authority buyer/seller guide for real-estate rights: `https://www.gov.il/BlobFolder/generalpage/guide-for-seller-right-in-land/he/Guides_knowrightinland_2022.pdf`.
+  - Tel Aviv municipal improvement-levy public explanation as a local authority example: `https://www.tel-aviv.gov.il/Residents/Assets/Pages/ImprovmentTax.aspx`.
+  - Current competitor pages around 2026 real-estate taxation, purchase tax, capital-gains/betterment tax, improvement levy, inheritance, gifts, and investment apartments. The public content is original and adapted to Nadlan's brand.
+
+### Live Verification
+
+- Quality gate: passed.
+- URL: `https://nad-lan.co.il/real-estate-tax-advisor/`.
+- Rendered H1 count: 1.
+- Word count: 2,221.
+- Image count: 1.
+- Blocked internal terms: none.
+- WordPress excerpt: clean buyer/seller/investor-facing text, no old internal wording.
+- Mobile 390px rendered check: no horizontal overflow, one H1, public terms clean.
+- Image URL check: Wikimedia image returns `image/jpeg` and `Content-Length` 163,354 bytes.
+- Professionals hub hierarchy check: `https://nad-lan.co.il/professionals/` returns HTTP 200 and contains both `/real-estate-tax-advisor/` and visible `מיסוי מקרקעין`.
+- Screenshot:
+  - `verification-screenshots/nadlan-real-estate-tax-mobile-clean-2026-05-28-top.png`
+
+### Honest Gap Statement
+
+- This is a real live publication, not a draft: a new supporting real-estate-tax page is published, verified, and linked from the professionals hub.
+- It deepens the future directory architecture because tax advice connects buyers, sellers, investors, real-estate lawyers, appraisers, mortgage advisers, and future professional profiles.
+- The page meets the minimum content and live verification gates. The next gap remains structured professional-profile CMS plus durable theme-level header/footer implementation through GitHub and UPress pull.
