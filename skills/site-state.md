@@ -195,3 +195,18 @@ Owner reported being tired and concerned about token usage ($43.07 / $50 monthly
 - Timezone fixed to Asia/Jerusalem.
 - 16 skill files committed for cross-agent persistence.
 - All work pushed to PR #1 (merged) + branch `claude/charming-meitner-mwVEW` (active).
+
+### 2026-05-28 (deep night) — Claude Code (claude-opus-4-7) — hub-spoke implementation
+- **Pillars → Spokes sweep:** added "מדריכים קשורים" related-articles block to all 11 pillars (buying-apartment, selling-apartment, investment-apartment, mortgage-calculator, real-estate-tax-advisor, real-estate-lawyer, urban-renewal, commercial-real-estate, new-projects, professionals, tel-aviv-apartment-prices). 63 new outgoing internal links.
+- **Spokes → Pillar back-links + sibling links:** 30 spoke pages got back-link blocks (cream-bg group with "חלק מהמדריך" + "ראה גם" siblings). 30 pillar back-links + ~60 sibling links.
+- **Homepage Tools strip:** 5 calculators linked from home.
+- **Total new internal links this session: ~153.**
+- **Idempotency markers** in place: `<!-- nadlan-hub-related-v1 -->`, `<!-- nadlan-spoke-backlink-v1 -->`, `<!-- nadlan-tools-strip-v1 -->`. Future agents read these before re-running.
+- **Skill created:** `skills/internal-linking-hub-spoke.md` documents cluster maps, primary-pillar map, markers, anchor discipline, and TODOs.
+- **Verified:** sitemap reachable at `/sitemap_index.xml` (4 sub-sitemaps).
+- **Confirmed blocked (Yoast Free REST):**
+  - `_yoast_wpseo_metadesc` (descriptions) — silent ignore on REST writes
+  - `_yoast_wpseo_is_cornerstone` (cornerstone flag) — same
+  - Both unblocked by v1.0.5 plugin update (owner approval gate)
+- **Site Kit search-console data endpoint** returned 404 for `/google-site-kit/v1/modules/search-console/data/searchanalytics` — needs correct path; defer to next session.
+- **Timezone:** confirmed Asia/Jerusalem (set earlier this session via PUT to /wp/v2/settings).
