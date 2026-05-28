@@ -554,3 +554,40 @@ Updated: 2026-05-28 04:08 Asia/Jerusalem
 - This is a real live publication, not a draft: a new professionals pillar is published, verified, and linked from the homepage.
 - It improves Nadlan's business architecture because professional selection is the bridge between buyers, sellers, investors, lawyers, appraisers, mortgage advisers, brokers, engineers, and future verified profile pages.
 - The page meets the minimum content and live verification gates. The next competitive gap is to build the actual structured professionals index and profile CMS, then move the temporary page-level homepage navigation into durable theme-level header/footer chrome through GitHub and UPress pull.
+
+## Real Estate Appraiser Supporting Professional Page
+
+Updated: 2026-05-28 04:20 Asia/Jerusalem
+
+- Live page published and verified: `https://nad-lan.co.il/real-estate-appraiser/`.
+- Published as a public consumer-facing Hebrew guide of 2,212 words.
+- Linked from the existing professionals hub at `https://nad-lan.co.il/professionals/` with the public label `שמאי מקרקעין`, so the new page is attached to the content hierarchy instead of living as an orphan URL.
+- Added a realistic commercial-district image, premium guide layout, and sections on what a real-estate appraiser does, when to use one before buying, selling, mortgage approval, investment, commercial property, urban renewal, private houses/land, documents to prepare, fee factors, private appraisal versus bank appraisal, warning signs, city/neighborhood questions, FAQ, internal next-step links, and a public non-advice boundary.
+- Saved a new repeatable skill lesson in the Codex portfolio knowledge graph for appraiser pages: use official licensing/registry anchors, distinguish private appraisal from bank appraisal, and make the document checklist practical.
+- Research used before editing:
+  - Gov.il appraiser registry service and licensing conditions: `https://www.gov.il/he/service/registration_in_land_appraisal_registrar`.
+  - Gov.il / Israel Land Authority appraisal unit for government appraisal practice and appraisal use cases: `https://www.gov.il/he/departments/Units/unit-appraisal`.
+  - Gov.il Land Registry extract service for Tabu document context: `https://www.gov.il/he/service/land_registration_extract`.
+  - Gov.il / Ministry of Justice disciplinary page for licensed real-estate professionals: `https://www.gov.il/he/Departments/units/disciplinary-prosecution`.
+  - Live competitor SERP review around Israeli appraiser pages, valuation pages, mortgage-related appraisal, improvement levy, commercial property, and urban renewal. The public content is original and adapted to Nadlan's brand.
+
+### Live Verification
+
+- Quality gate: passed.
+- URL: `https://nad-lan.co.il/real-estate-appraiser/`.
+- Rendered H1 count: 1.
+- Word count: 2,212.
+- Image count: 1.
+- Blocked internal terms: none.
+- WordPress excerpt: clean buyer/seller/investor-facing text, no old internal wording.
+- Mobile 390px rendered check: no horizontal overflow, one H1, public terms clean.
+- Image URL check: Wikimedia image returns `image/jpeg` and `Content-Length` 163,354 bytes.
+- Professionals hub hierarchy check: `https://nad-lan.co.il/professionals/` returns HTTP 200 and contains both `/real-estate-appraiser/` and visible `שמאי מקרקעין`.
+- Screenshot:
+  - `verification-screenshots/nadlan-appraiser-mobile-clean-2026-05-28-top.png`
+
+### Honest Gap Statement
+
+- This is a real live publication, not a draft: a new supporting professional page is published, verified, and linked from the professionals hub.
+- It deepens the professional/directory architecture because valuation connects sellers, buyers, mortgage borrowers, investors, commercial-property checks, and future appraiser profiles.
+- The page meets the minimum content and live verification gates. The next gap is still a structured professional-profile CMS and a durable theme-level header/footer implementation through GitHub plus UPress pull.
