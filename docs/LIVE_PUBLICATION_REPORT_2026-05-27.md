@@ -1,3 +1,60 @@
+## Arsuf House Prices Coastal Luxury Guide
+
+Updated: 2026-05-28 09:53 Asia/Jerusalem
+
+- Live page published and verified: `https://nad-lan.co.il/arsuf-house-prices/`.
+- Published as a public consumer-facing Hebrew coastal luxury private-home/plot guide of 2,406 words.
+- Linked from fourteen existing pages:
+  - `https://nad-lan.co.il/property-value/`.
+  - `https://nad-lan.co.il/property-value-estimator/`.
+  - `https://nad-lan.co.il/buying-apartment/`.
+  - `https://nad-lan.co.il/selling-apartment/`.
+  - `https://nad-lan.co.il/investment-apartment/`.
+  - `https://nad-lan.co.il/real-estate-appraiser/`.
+  - `https://nad-lan.co.il/real-estate-lawyer/`.
+  - `https://nad-lan.co.il/rishpon-house-prices/`.
+  - `https://nad-lan.co.il/savyon-house-prices/`.
+  - `https://nad-lan.co.il/kfar-shmaryahu-house-prices/`.
+  - `https://nad-lan.co.il/herzliya-pituach-apartment-prices/`.
+  - `https://nad-lan.co.il/herzliya-apartment-prices/`.
+  - `https://nad-lan.co.il/raanana-apartment-prices/`.
+  - `https://nad-lan.co.il/ramat-hasharon-apartment-prices/`.
+- Added a local Arsuf/coastal aerial hero image, premium guide layout, sea/view/plot/zoning comparison table, buyer/seller/investor sections, coastal-cliff planning caution, Arsuf versus Rishpon/Kfar Shmaryahu/Savyon/Herzliya Pituach comparison, official source links, FAQ, and a public non-advice boundary.
+- Research used before editing:
+  - Google people-first content guidance: `https://developers.google.com/search/docs/fundamentals/creating-helpful-content`.
+  - Government real-estate transaction portal: `https://www.nadlan.gov.il/`.
+  - Planning Administration/Mavat planning information: `https://mavat.iplan.gov.il/`.
+  - Planning Administration service page: `https://www.gov.il/he/service/searching-for-plans-and-applications-in-planning-database`.
+  - Israel Tax Authority real-estate-tax service: `https://www.gov.il/he/service/real-estate-tax-7000`.
+  - Hof HaSharon Regional Council public site: `https://hof-hasharon.co.il/`.
+  - Competitor DNA checked from current Arsuf/Arsuf Kedem luxury listing pages and broker pages, including `https://www.yokra-estate.co.il/%D7%A0%D7%9B%D7%A1%D7%99%D7%9D/%D7%90%D7%A8%D7%A1%D7%95%D7%A3.html`, plus current public pages around Arsuf villas, plots, sea-view homes, and coastal luxury alternatives.
+  - Wikimedia image source: `https://commons.wikimedia.org/wiki/File:Arsuf_Aerial_View.jpg`.
+
+### Live Verification
+
+- Quality gate: passed.
+- URL: `https://nad-lan.co.il/arsuf-house-prices/`.
+- Rendered H1 count: 1.
+- Word count: 2,406.
+- Image count: 1.
+- Blocked internal terms: none after cleanup.
+- WordPress excerpt: clean buyer/seller-facing text, no internal wording.
+- Mobile 390px rendered check: no horizontal overflow, one H1, hero visible, image loaded at 960 x 530, no internal terms visible.
+- Image URL check: Wikimedia image returns `image/jpeg`, HTTP 200, and `Content-Length` 117,819 bytes.
+- Hierarchy check: all 14 support pages return HTTP 200 and contain `/arsuf-house-prices/`.
+- Screenshot:
+  - `verification-screenshots/nadlan-arsuf-house-prices-mobile-clean-2026-05-28-top.png`
+
+### Honest Gap Statement
+
+- This is a real live high-ticket Arsuf coastal luxury guide, not a draft: the page is published, verified, visually checked on mobile, and linked from fourteen related pages.
+- The first hierarchy pass misread single-page WordPress REST responses and skipped support links as missing. I caught it, fixed the parser, reran the linking, and verified all fourteen public support pages.
+- A transient 502 occurred while updating one support page. The update had actually landed; I added a retry and reran to complete the remaining support links.
+- The first mobile rendered scan caught the Hebrew substring `ספקים` inside the normal word `מספקים`. Because Ben asked for strict public/private separation, I rewrote the sentence and reran the checks before reporting.
+- This block used fresh web research and the saved Nadlan Lovable competitor scan, but did not use fresh Lovable/ChatGPT/Gemini/image generation because the work was a WordPress REST publishing and live-verification block.
+- No UPress Git pull was needed for this page content because the live change was published through the WordPress REST API, not through a theme-file GitHub sync.
+- The remaining visual gap is still site-wide: the article page body is clean and premium enough for the current Nadlan standard, but durable Nadlan header/footer/menu polish still needs theme-level GitHub change followed by UPress pull and public verification.
+
 ## Rishpon House Prices Moshav Luxury Guide
 
 Updated: 2026-05-28 09:39 Asia/Jerusalem
