@@ -210,3 +210,17 @@ Owner reported being tired and concerned about token usage ($43.07 / $50 monthly
   - Both unblocked by v1.0.5 plugin update (owner approval gate)
 - **Site Kit search-console data endpoint** returned 404 for `/google-site-kit/v1/modules/search-console/data/searchanalytics` — needs correct path; defer to next session.
 - **Timezone:** confirmed Asia/Jerusalem (set earlier this session via PUT to /wp/v2/settings).
+
+### 2026-05-28 (continued, claude-opus-4-8) — technical SEO + curated navigation
+- Read: prior blocks, internal-linking-hub-spoke.md, strategy-master.md §3.
+- **Technical-SEO audit via live HTML (good news):**
+  - Canonicals are `https` on home + pillar pages (Yoast). robots meta = `index, follow, max-image-preview:large`. og:url https. BreadcrumbList schema present (Yoast emits it). Site is fully indexable.
+  - `home` = https (correct, public-facing). `siteurl` (`url`) = http — minor inconsistency, causes sitemap to list http URLs (Google 301-follows to https; low harm). **Deliberately NOT changed** — flipping siteurl on a managed host (UPress edge SSL) risks an admin redirect-loop, not worth it for marginal benefit. Owner can fix in UPress → Settings → General → Site Address if desired.
+  - robots.txt returned 404 to my fetch — worth a later look but Google finds the sitemap via Site Kit/GSC.
+  - Yoast schema on /real-estate-lawyer/ = WebPage + Organization + BreadcrumbList + WebSite + ImageObject. **Missing Article + Person/Attorney** — Pages emit WebPage (Posts emit Article). This is the documented reason the strategy wants spokes as Posts eventually. Lawyer E-E-A-T Person schema still needs owner's full name + bar number + Yoast author config.
+- **Curated navigation deployed (high value):** replaced the auto `<!-- wp:page-list /-->` (which dumped all 42 flat pages) on nav id=4 with a curated pillar-first menu:
+  - Top level: קניית דירה, מכירת דירה, דירה להשקעה, [submenu] משכנתא ומימון, [submenu] מיסוי ומשפט, [submenu] כלים, התחדשות עירונית, דירה מקבלן, אנשי מקצוע
+  - 23 curated links total. Site-wide nav links to every pillar from every page = strong internal linking + clean UX + hierarchy signal.
+  - Old nav content backed up in this log: `<!-- wp:page-list /-->`. To revert: PUT that string to /wp/v2/navigation/4.
+  - Saved current nav markup to `docs/wp-state/navigation-4.html` for version control.
+- Homepage still renders HTTP 200 with new nav labels present.
