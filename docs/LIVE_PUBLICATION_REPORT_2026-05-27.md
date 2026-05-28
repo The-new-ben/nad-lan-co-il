@@ -698,3 +698,38 @@ Updated: 2026-05-28 04:52 Asia/Jerusalem
 - This is a real live publication, not a draft: a new supporting real-estate-tax page is published, verified, and linked from the professionals hub.
 - It deepens the future directory architecture because tax advice connects buyers, sellers, investors, real-estate lawyers, appraisers, mortgage advisers, and future professional profiles.
 - The page meets the minimum content and live verification gates. The next gap remains structured professional-profile CMS plus durable theme-level header/footer implementation through GitHub and UPress pull.
+
+## Construction Supervisor / Engineering Supervision Supporting Professional Page
+
+Updated: 2026-05-28 05:03 Asia/Jerusalem
+
+- Live page published and verified: `https://nad-lan.co.il/construction-supervisor/`.
+- Published as a public consumer-facing Hebrew guide of 2,042 words.
+- Linked from the existing professionals hub at `https://nad-lan.co.il/professionals/` with the public label `מפקח בנייה`, so the new page is attached to the content hierarchy.
+- Added a realistic construction image, premium guide layout, and sections on what a construction supervisor does, when supervision is useful, the difference between home inspection and ongoing supervision, new-contractor apartments, urban-renewal tenant supervision, private construction/major renovation, choosing a supervisor, agreement scope, reports, documents to prepare, conflict-of-interest checks, cost factors, FAQ, internal next-step links, and a public non-advice boundary.
+- Saved a new repeatable skill lesson in the Codex portfolio knowledge graph for construction-supervisor pages: explain supervision versus point-in-time inspection, cover contractor apartments/private construction/urban renewal, define report scope, and make conflict-of-interest checks explicit.
+- Research used before editing:
+  - Official new-apartment buyer guide with Sales Law inspection/warranty context: `https://www.gov.il/BlobFolder/guide/new_apartment_buyer/he/documents_chok_hamecher_madrich-lerochesh-dira.pdf`.
+  - Official Sales Law / contractor-apartment buyer protection context from the Ministry of Construction Sales Law portal: `https://www.gov.il/he/pages/hok_hamecher`.
+  - Live competitor pages around tenant-side construction supervision, urban-renewal supervision, engineering supervision, scope, reports, and selection criteria. The public content is original and adapted to Nadlan's brand.
+
+### Live Verification
+
+- Quality gate: passed.
+- URL: `https://nad-lan.co.il/construction-supervisor/`.
+- Rendered H1 count: 1.
+- Word count: 2,042.
+- Image count: 1.
+- Blocked internal terms: none.
+- WordPress excerpt: clean owner/new-apartment-facing text, no old internal wording.
+- Mobile 390px rendered check: no horizontal overflow, one H1, public terms clean.
+- Image URL check: Wikimedia image returns `image/jpeg` and `Content-Length` 174,066 bytes.
+- Professionals hub hierarchy check: `https://nad-lan.co.il/professionals/` returns HTTP 200 and contains both `/construction-supervisor/` and visible `מפקח בנייה`.
+- Screenshot:
+  - `verification-screenshots/nadlan-construction-supervisor-mobile-clean-2026-05-28-top.png`
+
+### Honest Gap Statement
+
+- This is a real live publication, not a draft: a new supporting construction-supervision page is published, verified, and linked from the professionals hub.
+- It deepens the future directory architecture because construction supervisors connect buyers of new apartments, owners in urban-renewal projects, private builders, renovation clients, inspection engineers, and future provider profiles.
+- The page meets the minimum content and live verification gates. The next gap remains structured professional-profile CMS plus durable theme-level header/footer implementation through GitHub and UPress pull.
