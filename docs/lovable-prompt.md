@@ -9,12 +9,34 @@
 ## THE PROMPT (paste into Lovable)
 
 ```
+SCOPE GUARD (read first)
+This is a DESIGN-SYSTEM task. Produce: (1) designed screens, (2) a written
+design-system document, (3) exact, framework-agnostic CSS + tokens (see OUTPUT).
+Do NOT invent product features, pages, or copy beyond this spec. Do NOT use
+stock-template patterns. If something is ambiguous, choose the most restrained,
+luxury-correct option and note the assumption in the honesty statement at the end.
+
 ROLE
 You are a world-class luxury brand & web designer (think the studios behind
 Sotheby's International Realty, Christie's International Real Estate, The Agency,
 and Compass). You design $1M+ brand systems. I need you to design a complete,
 museum-grade visual system for a Hebrew (RTL) real-estate decision platform.
 Design like every pixel is judged. Restraint, warmth, and precision over flash.
+
+STEP 0 — COMPETITOR DNA ANALYSIS (do this BEFORE designing, and show it)
+Study these references and write a short DNA table. For EACH, list the URL and
+3-5 concrete, specific observations about: typography (serif/sans, named feel),
+color palette (actual tones), whitespace/grid, hero treatment, navigation,
+button style, imagery, and the ONE move that makes it feel expensive.
+References:
+  - sothebysrealty.com  (serif, tradition, restraint)
+  - christiesrealestate.com  (Parisian minimalism, exclusivity)
+  - theagencyre.com  (full-bleed imagery, minimal)
+  - compass.com  (clean modern, search-forward)
+  - luxurypresence.com/best-real-estate-agent-websites  (agency design portfolio)
+Then write ONE paragraph: "Design DNA we will borrow (not copy)" — the synthesis
+that will guide our system. Do NOT reproduce any competitor's exact text, logo,
+layout, or proprietary look. Original work only.
 
 THE BRAND
 - Name (Hebrew): נדל״ן חכם  (transliteration: "Nadlan Chacham" = "Smart Real Estate")
@@ -103,6 +125,23 @@ K. Micro-interactions spec: hover/focus/active states for every interactive
    element, with exact timing and easing. RTL-aware (e.g., underline grows
    from the right).
 
+GRANULARITY (break the system into 100+ concrete decisions, not vibes)
+Be exhaustive and specific. Spell out exact values for: every color + its
+tints/shades + which goes on which background; every type style (size,
+line-height, weight, tracking, desktop + mobile); every spacing step; every
+radius; every shadow; every border; every state (default/hover/focus/active/
+disabled) for every interactive element; empty states; loading states; error
+states; the exact RTL behavior of each component. If a real designer would
+decide it, you decide it and write it down. No "use your judgment" hand-waving.
+
+COPY RULES (for the Hebrew placeholder copy you write)
+- Real, idiomatic Hebrew. Not translated-from-English.
+- No long em-dashes. No AI giveaway phrases ("חשוב להבין", "ראוי לציין",
+  "בעידן הנוכחי", "עולם הנדל\"ן", rhetorical-question stacks).
+- No salesy hype ("הזול ביותר", "המתקדם בישראל"). Calm, factual, confident.
+- Numbers with context; ₪ formatted as 2,500,000 ₪.
+- Never expose internal/marketing jargon in visible copy.
+
 STYLE REFERENCES (match this caliber, do not copy)
 Sotheby's Intl Realty (serif, restraint, tradition), Christie's Intl RE
 (Parisian minimalism, exclusivity), The Agency (full-bleed imagery, minimal),
@@ -110,10 +149,18 @@ Compass (clean modern). Aim for the intersection: classic-luxury serif
 sophistication with modern clarity. Warm, editorial, expensive, calm.
 
 OUTPUT FORMAT
-Design the screens, then give me a written DESIGN SYSTEM doc with every token
-spelled out, and component specs precise enough that a developer can rebuild it
-in plain CSS without guessing. Use real Hebrew copy placeholders (RTL) so I can
-judge the actual feel, not lorem ipsum.
+1. STEP 0 competitor DNA table + the "design DNA we will borrow" paragraph.
+2. The designed screens (desktop + mobile) for every deliverable A-K.
+3. A written DESIGN SYSTEM doc with every token + component spec spelled out,
+   precise enough that a developer rebuilds it in plain CSS without guessing.
+4. Use real Hebrew RTL copy placeholders so I judge the true feel, not lorem.
+5. SELF-CRITIQUE: before finishing, audit your own design against this bar —
+   "Would Sotheby's ship this? What still looks templated or cheap?" — and fix
+   it. List the 3 weakest spots and what you changed.
+6. HONESTY STATEMENT (end): state explicitly what you DESIGNED vs what you
+   ASSUMED, and what still requires real inputs to look $1M (e.g. professional
+   architectural photography, final logo lockup, real transaction data,
+   final Hebrew copy). Separate "done" from "needs real assets."
 ```
 
 ---
