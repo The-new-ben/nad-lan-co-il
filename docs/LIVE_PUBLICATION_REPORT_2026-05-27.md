@@ -1,3 +1,47 @@
+## Herzliya Apartment Prices City Guide
+
+Updated: 2026-05-28 08:38 Asia/Jerusalem
+
+- Live page published and verified: `https://nad-lan.co.il/herzliya-apartment-prices/`.
+- Published as a public consumer-facing Hebrew city guide of 2,231 words.
+- Linked from five existing pages:
+  - `https://nad-lan.co.il/herzliya-pituach-apartment-prices/`.
+  - `https://nad-lan.co.il/property-value/`.
+  - `https://nad-lan.co.il/property-value-estimator/`.
+  - `https://nad-lan.co.il/buying-apartment/`.
+  - `https://nad-lan.co.il/investment-apartment/`.
+- Added a realistic Herzliya city image, premium guide layout, buyer/seller/investor sections, city-to-luxury-neighborhood hierarchy, indicative comparison table, official source links, FAQ, and a public non-advice boundary.
+- Closed the previously recorded hierarchy gap: the Herzliya Pituach luxury neighborhood page now has a broader Herzliya city hub above it.
+- Research used before editing:
+  - Government real-estate transaction portal: `https://www.nadlan.gov.il/`.
+  - CBS apartment price publications: `https://www.cbs.gov.il/he/Pages/SubjectPublications.aspx?CbsSubject=%D7%9E%D7%97%D7%99%D7%A8%D7%99+%D7%93%D7%99%D7%A8%D7%95%D7%AA`.
+  - Herzliya engineering planning information: `https://handasa.herzliya.muni.il/planninginfo/`.
+  - Herzliya city planning page: `https://www.herzliya.muni.il/%D7%AA%D7%9B%D7%A0%D7%95%D7%9F-%D7%A2%D7%99%D7%A8-%D7%94%D7%A8%D7%A6%D7%9C%D7%99%D7%94/`.
+  - Israel Tax Authority real-estate-tax service page: `https://www.gov.il/he/service/real-estate-tax-7000`.
+  - Wikimedia image source for Herzliyya skyline: `https://commons.wikimedia.org/wiki/File:Herzliyya_skyline.jpg`.
+
+### Live Verification
+
+- Quality gate: passed.
+- URL: `https://nad-lan.co.il/herzliya-apartment-prices/`.
+- Rendered H1 count: 1.
+- Word count: 2,231.
+- Image count: 1.
+- Blocked internal terms: none.
+- WordPress excerpt: clean buyer/seller/investor-facing text, no internal wording.
+- Mobile 390px rendered check: no horizontal overflow, one H1, hero visible, image loaded at 1280 x 906, no internal terms visible.
+- Image URL check: Wikimedia image returns `image/jpeg` and `Content-Length` 401,271 bytes.
+- Hierarchy check: `herzliya-pituach-apartment-prices`, `property-value`, `property-value-estimator`, `buying-apartment`, and `investment-apartment` all return HTTP 200 and contain `/herzliya-apartment-prices/`.
+- Screenshot:
+  - `verification-screenshots/nadlan-herzliya-city-prices-mobile-clean-2026-05-28-top.png`
+
+### Honest Gap Statement
+
+- This is a real live city guide, not a draft: the page is published, verified, and linked from five related pages.
+- The block initially failed during local publishing because Windows PowerShell misread a Hebrew temp script. No live page changed during that failed run; the publish path was switched to a UTF-8 Node REST helper and rerun successfully.
+- This block used fresh web research and the saved Nadlan Lovable competitor scan, but did not use fresh Lovable/ChatGPT/Gemini/image generation because the work was a WordPress REST publishing and live-verification block.
+- The remaining visual gap is site-wide: the page-level article design is clean, but the durable Nadlan header/footer/menu polish still needs a theme-level GitHub change followed by UPress pull and public verification.
+
 ## Herzliya Pituach Apartment Prices Luxury Neighborhood Guide
 
 Updated: 2026-05-28 07:51 Asia/Jerusalem
