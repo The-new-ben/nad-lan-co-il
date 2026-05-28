@@ -1,0 +1,3 @@
+# Build artifacts — generated, not source. The canonical plugin source is plugins/nadlan-config/.
+nadlan-config.zip
+plugin-build/
