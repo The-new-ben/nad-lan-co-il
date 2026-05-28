@@ -871,6 +871,45 @@ Updated: 2026-05-28 05:54 Asia/Jerusalem
 - It deepens the future directory architecture because insurance connects mortgage borrowers, homeowners, investors, property managers, lawyers, mortgage advisers, and future insurance-professional profile pages.
 - The page meets the minimum content and live verification gates. The next gap remains structured provider profiles plus durable theme-level header/footer implementation through GitHub and UPress pull.
 
+## Investment Property Mortgage Supporting Finance Page
+
+Updated: 2026-05-28 06:58 Asia/Jerusalem
+
+- Live page published and verified: `https://nad-lan.co.il/investment-property-mortgage/`.
+- Published as a public consumer-facing Hebrew guide of 2,203 words.
+- Linked from two existing pillars:
+  - `https://nad-lan.co.il/mortgage-advisor/` with the public label `משכנתא לדירה להשקעה`.
+  - `https://nad-lan.co.il/investment-apartment/` with the public label `משכנתא לדירה להשקעה`.
+- Added a realistic Israeli residential-tower image, premium guide layout, page navigation, and sections on investment-property mortgage differences, equity needs, cashflow, bank review, existing mortgage exposure, purchase tax, rental taxation context, risk, offer comparison, documents, official sources, FAQ, and a public non-advice boundary.
+- Saved a new repeatable skill lesson in the Codex portfolio knowledge graph for investment-property mortgage pages: connect loan terms to full investment economics, not just approval; calculate equity, tax, rent, vacancy, maintenance, and exit risk together.
+- Research used before editing:
+  - Bank of Israel housing-loan limitation document: `https://www.boi.org.il/media/nqlblucq/h2430.pdf`.
+  - Bank of Israel rates and early-repayment information page: `https://www.boi.org.il/information/interestrates/`.
+  - Israel Tax Authority real-estate-tax service page: `https://www.gov.il/he/service/real-estate-tax-7000`.
+  - Discount Bank investment mortgage page: `https://mortgage.discountbank.co.il/get-mortgage/investment`.
+  - Current competitor pages around Bank of Israel mortgage limits, investment-property financing, purchase tax, cashflow, rent assumptions, and borrower documents. The public content is original and adapted to Nadlan's brand.
+
+### Live Verification
+
+- Quality gate: passed.
+- URL: `https://nad-lan.co.il/investment-property-mortgage/`.
+- Rendered H1 count: 1.
+- Word count: 2,203.
+- Image count: 1.
+- Blocked internal terms: none.
+- WordPress excerpt: clean investor-facing text, no internal wording.
+- Mobile 390px rendered check: no horizontal overflow, one H1, page navigation visible, hero visible, image loaded at 960 x 540, no internal terms visible.
+- Image URL check: Wikimedia image returns `image/jpeg` and `Content-Length` 158,163 bytes.
+- Hierarchy check: both `https://nad-lan.co.il/mortgage-advisor/` and `https://nad-lan.co.il/investment-apartment/` return HTTP 200 and contain `/investment-property-mortgage/`.
+- Screenshot:
+  - `verification-screenshots/nadlan-investment-property-mortgage-mobile-clean-2026-05-28-top.png`
+
+### Honest Gap Statement
+
+- This is a real live publication, not a draft: a new supporting finance page is published, verified, and linked from both mortgage and investment pillars.
+- This block used fresh web research and the saved Nadlan Lovable competitor scan, but did not use fresh Lovable credits because the expiring-credit window appears to have passed and this was a WordPress REST publishing/verification block.
+- The page meets the minimum content and live verification gates. The next gap remains deeper calculator/tool infrastructure: a practical investment-property cashflow calculator connected to mortgage, purchase tax, rent, vacancy, maintenance, and management assumptions.
+
 ## Mortgage Refinance Supporting Finance Page
 
 Updated: 2026-05-28 06:39 Asia/Jerusalem
