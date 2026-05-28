@@ -1,0 +1,15 @@
+{
+  "name": "NadLan Config",
+  "slug": "nadlan-config",
+  "version": "1.2.0",
+  "author": "nad-lan.co.il",
+  "homepage": "https://nad-lan.co.il",
+  "requires": "6.7",
+  "tested": "7.0",
+  "requires_php": "7.4",
+  "download_url": "https://raw.githubusercontent.com/The-new-ben/nad-lan-co-il/main/plugin-dist/nadlan-config-1.2.0.zip",
+  "last_updated": "2026-05-28 22:30:00",
+  "sections": {
+    "changelog": "<h4>1.2.0</h4><ul><li>Self-hosted auto-update (no more manual ZIP uploads).</li><li>IndexNow auto-ping on publish/update.</li><li>Public lead REST endpoint for the contact button.</li><li>Catalog CPTs: properties, projects, professionals.</li><li>Removed public WordPress generator meta.</li></ul>"
+  }
+}

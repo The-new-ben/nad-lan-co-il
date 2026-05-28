@@ -38,3 +38,24 @@ Bundling more code doesn't reduce upload friction; it just delays it. Same delet
 
 ---
 _Created 2026-05-28 by Claude Code (claude-opus-4-8)._
+
+## SHIPPED 2026-05-28 — v1.2.0 self-hosted auto-update (Option B, adapted)
+
+Because tool scope is restricted to the single repo (no separate plugin repo, no GitHub Releases API), we used PUC's **self-hosted JSON metadata** method instead of the GitHub-releases method — same end result for the owner.
+
+- Vendored `YahnisElsts/plugin-update-checker` v5.6 at `plugins/nadlan-config/lib/plugin-update-checker/` (trimmed css/js/languages → 392K).
+- Wired in `nadlan_config_boot_updater()` (init priority 5, try/catch guarded) pointing at:
+  `https://raw.githubusercontent.com/The-new-ben/nad-lan-co-il/main/plugin-dist/nadlan-config.json`
+- Committed `plugin-dist/nadlan-config.json` (version + download_url + changelog) and `plugin-dist/nadlan-config-1.2.0.zip` to the repo. The download_url is the raw.githubusercontent zip.
+
+### How to ship a new plugin version FROM NOW ON (no owner ZIP upload)
+1. Edit `plugins/nadlan-config/nadlan-config.php`, bump `Version:` (e.g. 1.2.1) and the healthcheck version string.
+2. Build the zip: `rm -rf plugin-build/nadlan-config && mkdir -p plugin-build/nadlan-config && cp -r plugins/nadlan-config/. plugin-build/nadlan-config/ && (cd plugin-build && zip -rq ../plugin-dist/nadlan-config-1.2.1.zip nadlan-config/)`
+3. Update `plugin-dist/nadlan-config.json`: set `version` to 1.2.1, `download_url` to the new zip path, update changelog + last_updated.
+4. Commit + push to a PR branch → owner merges to `main` (so raw.githubusercontent serves the new files).
+5. Within ~12h (or immediately if owner clicks "Check for updates"), WordPress shows "Update available" for NadLan Config. **Owner clicks Update. Done.**
+6. Verify via `/wp-json/nadlan/v1/healthcheck` version field.
+
+**This v1.2.0 is the LAST manual ZIP upload.** Confirmed by owner 2026-05-28.
+
+Note: the raw.githubusercontent JSON only updates after the change is on `main` (merged PR). So plugin updates still ride the same merge-to-main flow as the theme — but the owner's action becomes a single in-WP "Update" click instead of delete+upload+activate.

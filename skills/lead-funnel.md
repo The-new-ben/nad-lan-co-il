@@ -44,3 +44,8 @@ Visitor → tool/guide/short-rent page (value) → FAB "ייעוץ" → modal �
 
 ---
 _Created 2026-05-28 by Claude Code (claude-opus-4-8)._
+
+## Update 2026-05-28 — WhatsApp + phone wired; payment stack chosen
+- **Owner phone/WhatsApp: 052-510-1555** (+972525101555). Wired into the footer FAB: a green WhatsApp button (wa.me with a prefilled Hebrew message) + a tel: "חיוג" button, alongside the "ייעוץ ראשוני בחינם" lead-modal button. Live via REST footer override.
+- **Payment stack decision (owner delegated to agent): Paid Memberships Pro (free core) + Stripe.** Rationale: free core, pay-per-transaction (no monthly), native recurring memberships for the professional directory tiers (free/pro/premier), integrates with the nadlan_professional CPT. WooCommerce was the alternative but is heavier and more commerce-than-membership oriented.
+- Next build: PMPro + Stripe self-registration flow for professionals (register → license field → pick tier → Stripe Checkout → on payment, publish profile + set tier). Requires installing PMPro + the Stripe gateway (free) — owner approval to install at build time.

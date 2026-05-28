@@ -2,7 +2,7 @@
 /**
  * Plugin Name: NadLan Config
  * Description: Lead-capture foundation: nadlan_lead CPT + lead-form handler + healthcheck. Read skills/nadlan-config-plugin.md.
- * Version: 1.1.2
+ * Version: 1.2.0
  * Author: nad-lan.co.il
  * License: GPL-2.0+
  * Requires PHP: 7.4
@@ -52,7 +52,7 @@ if ( ! function_exists( 'nadlan_config_healthcheck_response' ) ) {
 	function nadlan_config_healthcheck_response() {
 		return array(
 			'plugin'              => 'nadlan-config',
-			'version'             => '1.1.2',
+			'version'             => '1.2.0',
 			'cpt_present'         => post_type_exists( 'nadlan_lead' ),
 			'lead_handler_loaded' => (bool) has_action( 'admin_post_nadlan_lead' ),
 			'php_version'         => PHP_VERSION,
@@ -390,3 +390,29 @@ add_filter( 'rest_pre_dispatch', function( $r, $server, $request ) {
 /* Quietly remove the public WordPress "generator" meta — no need to advertise the stack */
 remove_action( 'wp_head', 'wp_generator' );
 add_filter( 'the_generator', '__return_empty_string' );
+
+/* ---------- v1.2.0: self-hosted auto-update via plugin-update-checker ----------
+ * After this version is installed ONCE manually, WordPress shows a normal
+ * "Update available" notice whenever plugin-dist/nadlan-config.json (in the
+ * GitHub repo, served via raw.githubusercontent) advertises a higher version.
+ * The owner clicks Update inside WP — no more ZIP uploads.
+ * Workflow to ship a new version is documented in skills/plugin-auto-update.md.
+ */
+if ( ! function_exists( 'nadlan_config_boot_updater' ) ) {
+    function nadlan_config_boot_updater() {
+        $loader = __DIR__ . '/lib/plugin-update-checker/plugin-update-checker.php';
+        if ( ! file_exists( $loader ) ) { return; }
+        require_once $loader;
+        if ( ! class_exists( '\\YahnisElsts\\PluginUpdateChecker\\v5\\PucFactory' ) ) { return; }
+        try {
+            $checker = \YahnisElsts\PluginUpdateChecker\v5\PucFactory::buildUpdateChecker(
+                'https://raw.githubusercontent.com/The-new-ben/nad-lan-co-il/main/plugin-dist/nadlan-config.json',
+                __FILE__,
+                'nadlan-config'
+            );
+        } catch ( \Throwable $e ) {
+            error_log( 'nadlan-config updater: ' . $e->getMessage() );
+        }
+    }
+}
+add_action( 'init', 'nadlan_config_boot_updater', 5 );
