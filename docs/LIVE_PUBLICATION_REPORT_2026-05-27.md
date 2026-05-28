@@ -516,3 +516,41 @@ Updated: 2026-05-28 03:54 Asia/Jerusalem
 - This is a real live publication, not a draft: a new commercial-real-estate pillar is published, verified, and linked from the homepage.
 - It improves Nadlan's money architecture because commercial property supports investor leads, legal review, appraiser needs, financing needs, management services, and future professional listings.
 - The page meets the minimum content and live verification gates. The remaining opportunity is to build a commercial-property intake/calculator flow later, and to move the temporary page-level homepage nav into durable theme-level header/footer chrome through GitHub and UPress pull.
+
+## Professionals Directory / Real Estate Experts Pillar Publication
+
+Updated: 2026-05-28 04:08 Asia/Jerusalem
+
+- Live page published and verified: `https://nad-lan.co.il/professionals/`.
+- Published as a public consumer-facing Hebrew guide of 2,136 words.
+- Added the professionals page to the live homepage page-level navigation as `מקצוענים`, so it is reachable from the public homepage hierarchy.
+- Added a realistic commercial-district image, premium guide layout, and sections on why professional help matters, lawyer/appraiser/mortgage-adviser/broker/inspection roles, how to choose a professional, timing by transaction stage, warning signs, coordination between multiple professionals, questions to ask before hiring, FAQ, internal next-step links, and a public non-advice boundary.
+- Saved a new repeatable skill lesson in the Codex portfolio knowledge graph: real-estate professional directory pages must explain user value first, support lawyers/appraisers/mortgage advisers/brokers/inspectors/tax advisers, include trust fields, and keep commercial operations private.
+- Research used before editing:
+  - Google Search Central helpful content guidance for people-first pages and E-E-A-T: `https://developers.google.com/search/docs/fundamentals/creating-helpful-content`.
+  - Gov.il Land Registry extract service for document/risk context: `https://www.gov.il/he/service/land_registration_extract`.
+  - Gov.il / Ministry of Justice disciplinary page for licensed real-estate professionals such as appraisers and real-estate brokers: `https://www.gov.il/he/Departments/units/disciplinary-prosecution`.
+  - Live competitor SERP review around real-estate transaction teams, lawyer/appraiser/mortgage adviser coordination, and professional trust pages. The public content is original and adapted to Nadlan's brand.
+
+### Live Verification
+
+- Quality gate: passed.
+- URL: `https://nad-lan.co.il/professionals/`.
+- Rendered H1 count: 1.
+- Word count: 2,136.
+- Image count: 1.
+- Blocked internal terms: none.
+- WordPress excerpt: clean buyer/seller/investor-facing text, no old internal wording.
+- Mobile 390px rendered check: no horizontal overflow, one H1, public terms clean.
+- Image URL check: Wikimedia image returns `image/jpeg` and `Content-Length` 163,354 bytes.
+- Homepage hierarchy check: `https://nad-lan.co.il/` returns HTTP 200 and contains both `/professionals/` and visible `מקצוענים`.
+- Homepage mobile nav check: page-nav labels now include `קנייה`, `מכירה`, `שווי דירה`, `השקעה`, `מסחרי`, `מקבלן`, `התחדשות`, `משכנתא`, `מס רכישה`, `טאבו`, `עורך דין`, `מקצוענים`.
+- Screenshots:
+  - `verification-screenshots/nadlan-professionals-mobile-clean-2026-05-28-top.png`
+  - `verification-screenshots/nadlan-home-professionals-nav-mobile-2026-05-28-top.png`
+
+### Honest Gap Statement
+
+- This is a real live publication, not a draft: a new professionals pillar is published, verified, and linked from the homepage.
+- It improves Nadlan's business architecture because professional selection is the bridge between buyers, sellers, investors, lawyers, appraisers, mortgage advisers, brokers, engineers, and future verified profile pages.
+- The page meets the minimum content and live verification gates. The next competitive gap is to build the actual structured professionals index and profile CMS, then move the temporary page-level homepage navigation into durable theme-level header/footer chrome through GitHub and UPress pull.
