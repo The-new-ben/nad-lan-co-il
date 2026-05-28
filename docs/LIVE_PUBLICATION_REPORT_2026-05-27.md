@@ -362,3 +362,42 @@ Updated: 2026-05-28 03:10 Asia/Jerusalem
 
 - This page now meets the portfolio minimum content gate and is live. It is an important trust page because it anchors the buying/checklist/lawyer cluster in official registration-source logic.
 - It still needs a future interactive rights-check intake flow, but the public page no longer exposes internal draft language and now gives a real buyer a usable framework before contacting a lawyer.
+
+## Selling Apartment Pillar Publication
+
+Updated: 2026-05-28 03:24 Asia/Jerusalem
+
+- Live page published: `https://nad-lan.co.il/selling-apartment/`.
+- Added a new missing commercial pillar for sellers, instead of reworking an already-passing page.
+- Published as a public consumer-facing Hebrew guide of 2,208 words.
+- Added the seller page to the live homepage page-level navigation as `מכירה`, so the page is reachable from the public site hierarchy and not only by direct URL.
+- Added a realistic residential image, premium guide layout, and sections on pre-sale planning, price setting, rights documents, Tabu / rights checks, capital-gains tax and possible municipal improvement levy, advertising, buyer qualification, negotiation, contract topics, selling while buying, handover, common mistakes, FAQ, internal next-step links, and a public non-advice boundary.
+- Research used before editing:
+  - Google Search Central helpful content guidance for people-first YMYL pages.
+  - Gov.il Israel Tax Authority Form 7000B page for sale/purchase declaration context, online filing context, and the 30-day declaration timing note.
+  - Gov.il Land Registry extract page for Tabu document content and pre-sale/pre-purchase use.
+  - Yad2 seller-guide competitor result for seller workflow DNA: pricing, preparation, ad quality, visits, and broker/self-sale decision points.
+  - Real-estate-law competitor result patterns for seller legal DNA: rights checks, mortgage removal, tax planning, payment schedule, and final registration documents.
+
+### Live Verification
+
+- Quality gate: passed.
+- URL: `https://nad-lan.co.il/selling-apartment/`.
+- Rendered H1 count: 1.
+- Word count: 2,208.
+- Image count: 1.
+- Blocked internal terms: none.
+- WordPress excerpt: clean buyer/seller-facing text, no old internal wording.
+- Mobile 390px rendered check: no horizontal overflow, one H1, public terms clean.
+- Image URL check: Wikimedia image returns `image/jpeg` and `Content-Length` 182,681 bytes.
+- Homepage hierarchy check: `https://nad-lan.co.il/` returns HTTP 200 and contains both `/selling-apartment/` and visible `מכירה`.
+- Homepage mobile nav check: page-nav labels now include `קנייה`, `מכירה`, `השקעה`, `מקבלן`, `משכנתא`, `מס רכישה`, `טאבו`, `עורך דין`.
+- Screenshots:
+  - `verification-screenshots/nadlan-selling-apartment-mobile-clean-2026-05-28-top.png`
+  - `verification-screenshots/nadlan-home-selling-nav-mobile-2026-05-28-top.png`
+
+### Honest Gap Statement
+
+- This is a real live publication, not a draft: a new seller pillar is published, verified, and linked from the homepage.
+- It improves Nadlan's money architecture by adding the missing seller side of the marketplace: pricing, tax, rights, lawyer, buyer qualification, and handover.
+- The durable site-wide gap remains the same: the block-theme header and footer still need a proper theme-level implementation through GitHub plus UPress pull. The homepage page-level navigation is working and verified, but it is still a bridge until the real site chrome is completed.
