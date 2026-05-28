@@ -1,3 +1,57 @@
+## Kfar Shmaryahu House Prices Luxury Guide
+
+Updated: 2026-05-28 09:18 Asia/Jerusalem
+
+- Live page published and verified: `https://nad-lan.co.il/kfar-shmaryahu-house-prices/`.
+- Published as a public consumer-facing Hebrew luxury private-home/plot guide of 2,105 words.
+- Linked from eleven existing pages:
+  - `https://nad-lan.co.il/property-value/`.
+  - `https://nad-lan.co.il/property-value-estimator/`.
+  - `https://nad-lan.co.il/buying-apartment/`.
+  - `https://nad-lan.co.il/selling-apartment/`.
+  - `https://nad-lan.co.il/investment-apartment/`.
+  - `https://nad-lan.co.il/real-estate-appraiser/`.
+  - `https://nad-lan.co.il/real-estate-lawyer/`.
+  - `https://nad-lan.co.il/herzliya-pituach-apartment-prices/`.
+  - `https://nad-lan.co.il/herzliya-apartment-prices/`.
+  - `https://nad-lan.co.il/ramat-hasharon-apartment-prices/`.
+  - `https://nad-lan.co.il/raanana-apartment-prices/`.
+- Added a modern private-villa illustrative hero image, premium guide layout, villa/plot comparison table, planning-rights checks, privacy/street sections, buyer/seller/investor sections, official source links, FAQ, and a public non-advice boundary.
+- Research used before editing:
+  - Google people-first content guidance: `https://developers.google.com/search/docs/fundamentals/creating-helpful-content`.
+  - Google image SEO guidance: `https://developers.google.com/search/docs/appearance/google-images`.
+  - Government real-estate transaction portal: `https://www.nadlan.gov.il/`.
+  - Kfar Shmaryahu engineering department: `https://www.kfar-shemaryahu.muni.il/123/`.
+  - Herzliya/Kfar Shmaryahu planning information: `https://handasa.herzliya.muni.il/planninginfo/`.
+  - Planning Administration search: `https://www.gov.il/he/service/searching-for-plans-and-applications-in-planning-database`.
+  - Israel Tax Authority real-estate-tax service: `https://www.gov.il/he/service/real-estate-tax-7000`.
+  - Wikimedia image source: `https://commons.wikimedia.org/wiki/File:3D_Rendering_of_Modern_Luxury_Villa_Exterior_with_Pool.jpg`.
+
+### Live Verification
+
+- First quality gate failed usefully: 1,993 words, below the 2,000-word minimum. I expanded the guide before reporting.
+- First hero-image review also failed visually: the first image was technically valid but showed the wrong intent for luxury private homes. I replaced it with a modern villa/pool image and reran the checks.
+- Final quality gate: passed.
+- URL: `https://nad-lan.co.il/kfar-shmaryahu-house-prices/`.
+- Rendered H1 count: 1.
+- Word count: 2,105.
+- Image count: 1.
+- Blocked internal terms: none.
+- WordPress excerpt: clean buyer/seller-facing text, no internal wording.
+- Mobile 390px rendered check: no horizontal overflow, one H1, hero visible, image loaded at 960 x 640, no internal terms visible.
+- Image URL check: Wikimedia image returns `image/jpeg`, HTTP 200, and `Content-Length` 170,948 bytes.
+- Hierarchy check: all 11 support pages return HTTP 200 and contain `/kfar-shmaryahu-house-prices/`.
+- Screenshot:
+  - `verification-screenshots/nadlan-kfar-shmaryahu-house-prices-mobile-clean-2026-05-28-v3-top.png`
+
+### Honest Gap Statement
+
+- This is a real live high-ticket luxury/private-home guide, not a draft: the page is published, verified, and linked from eleven related pages.
+- The first gate failed at 1,993 words and I expanded it before reporting. The first hero image was technically valid but visually wrong for luxury-home intent; I replaced it and reran the mobile check before reporting.
+- This block used fresh web research and the saved Nadlan Lovable competitor scan, but did not use fresh Lovable/ChatGPT/Gemini/image generation because the work was a WordPress REST publishing and live-verification block.
+- No UPress Git pull was needed for this page content because the live change was published through the WordPress REST API, not through a theme-file GitHub sync.
+- The remaining visual gap is site-wide: page-level article design is clean, but durable Nadlan header/footer/menu polish still needs theme-level GitHub change followed by UPress pull and public verification.
+
 ## Raanana Apartment Prices City Guide
 
 Updated: 2026-05-28 08:59 Asia/Jerusalem
