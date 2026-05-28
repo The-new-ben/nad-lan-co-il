@@ -797,3 +797,39 @@ Updated: 2026-05-28 05:31 Asia/Jerusalem
 - This is a real live publication, not a draft: a new supporting architect/building-permit page is published, verified, and linked from the professionals hub.
 - It deepens the future directory architecture because architects connect buyers of renovation properties, private builders, owners seeking extensions, urban-renewal residents, commercial-property users, appraisers, lawyers, engineers, and construction supervisors.
 - The page meets the minimum content and live verification gates. The next gap remains a structured provider-profile CMS and a durable theme-level header/footer implementation through GitHub and UPress pull.
+
+## Property Management Supporting Professional Page
+
+Updated: 2026-05-28 05:39 Asia/Jerusalem
+
+- Live page published and verified: `https://nad-lan.co.il/property-management/`.
+- Published as a public consumer-facing Hebrew guide of 2,113 words.
+- Linked from the existing professionals hub at `https://nad-lan.co.il/professionals/` with the public label `ניהול נכסים`, so the new page is attached to the content hierarchy.
+- Added a realistic building image, premium guide layout, and sections on what property management includes, when it fits owners/investors, broker versus management company, choosing a company, management contract scope, tenant/contract/guarantees, maintenance, performance checks, pricing models, remote owners, warning signs, quarterly owner review, FAQ, internal next-step links, and a public non-advice boundary.
+- Saved a new repeatable skill lesson in the Codex portfolio knowledge graph for property-management pages: explain tenant screening, lease coordination, guarantees, rent collection, maintenance, reporting, vacancy handling, renewals, repair approval thresholds, and owner reporting cadence.
+- Research used before editing:
+  - Gov.il lease-registration context: `https://www.gov.il/he/service/registration_of_a_lease`.
+  - Tel Aviv public rental-contract guidance: `https://www.tel-aviv.gov.il/Residents/Assets/Pages/rent.aspx`.
+  - Live competitor pages around management companies, apartment management, investor services, maintenance, rent collection, owner reporting, pricing, and remote owners. The public content is original and adapted to Nadlan's brand.
+
+### Live Verification
+
+- First quality gate caught a useful issue: the first version was clean but only 1,974 words, below the 2,000-word minimum. The page was expanded before reporting.
+- Final quality gate: passed.
+- URL: `https://nad-lan.co.il/property-management/`.
+- Rendered H1 count: 1.
+- Word count: 2,113.
+- Image count: 1.
+- Blocked internal terms: none.
+- WordPress excerpt: clean owner/investor-facing text, no internal wording.
+- Mobile 390px rendered check: no horizontal overflow, one H1, public terms clean.
+- Image URL check: Wikimedia image returns `image/jpeg` and `Content-Length` 163,354 bytes.
+- Professionals hub hierarchy check: `https://nad-lan.co.il/professionals/` returns HTTP 200 and contains both `/property-management/` and visible `ניהול נכסים`.
+- Screenshot:
+  - `verification-screenshots/nadlan-property-management-mobile-clean-2026-05-28-top.png`
+
+### Honest Gap Statement
+
+- This is a real live publication, not a draft: a new supporting property-management page is published, verified, and linked from the professionals hub.
+- It deepens the future directory architecture because property management connects investors, owners, rental apartments, commercial property, brokers, lawyers, tax advisers, maintenance professionals, and future recurring service profiles.
+- The live check initially failed the word-count minimum, and I corrected it before reporting completion. The next gap remains structured provider profiles plus durable theme-level header/footer implementation through GitHub and UPress pull.
