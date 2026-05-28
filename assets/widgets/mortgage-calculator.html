@@ -1,0 +1,90 @@
+<!-- wp:html -->
+<style>
+.nlc-calc{font-family:Heebo,Arial,sans-serif;direction:rtl;background:#FAF8F4;border:1px solid #E3E6EC;border-radius:14px;padding:24px;margin:24px 0;color:#0F1B2D;box-shadow:0 2px 12px rgba(15,27,45,.04)}
+.nlc-calc h3{font-size:24px;font-weight:700;margin:0 0 4px;color:#0E3A8A}
+.nlc-calc .nlc-sub{font-size:14px;color:#5F6F66;margin:0 0 20px}
+.nlc-calc .nlc-tracks{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:20px}
+.nlc-calc .nlc-track{background:#fff;border:1px solid #E3E6EC;border-radius:10px;padding:14px}
+.nlc-calc .nlc-track h4{font-size:14px;margin:0 0 10px;color:#0E3A8A;font-weight:700;display:flex;justify-content:space-between;align-items:center}
+.nlc-calc .nlc-track h4 small{font-size:11px;font-weight:400;color:#5F6F66}
+.nlc-calc label{display:block;font-size:12px;color:#5F6F66;margin:6px 0 2px}
+.nlc-calc input[type=number]{width:100%;padding:8px 10px;border:1px solid #E3E6EC;border-radius:8px;font-size:15px;font-family:inherit;background:#fff;direction:ltr;text-align:right}
+.nlc-calc input[type=number]:focus{outline:none;border-color:#D89B3C;box-shadow:0 0 0 3px rgba(216,155,60,.15)}
+.nlc-calc .nlc-totals{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;background:#fff;border:1px solid #E3E6EC;border-radius:10px;padding:16px;margin-bottom:16px}
+.nlc-calc .nlc-total{text-align:center}
+.nlc-calc .nlc-total .nlc-tlabel{font-size:11px;color:#5F6F66;margin-bottom:4px}
+.nlc-calc .nlc-total .nlc-tval{font-size:20px;font-weight:700;color:#0E3A8A;direction:ltr}
+.nlc-calc .nlc-total.nlc-hl .nlc-tval{color:#D89B3C}
+.nlc-calc .nlc-bar{display:flex;height:32px;border-radius:8px;overflow:hidden;margin:12px 0 8px;border:1px solid #E3E6EC}
+.nlc-calc .nlc-bar-seg{display:flex;align-items:center;justify-content:center;font-size:11px;color:#fff;font-weight:600}
+.nlc-calc .nlc-bar-seg.s1{background:#0E3A8A}
+.nlc-calc .nlc-bar-seg.s2{background:#D89B3C}
+.nlc-calc .nlc-bar-seg.s3{background:#0E7C57}
+.nlc-calc .nlc-stress{background:#fff;border:1px solid #E3E6EC;border-radius:10px;padding:12px 16px;display:flex;align-items:center;gap:10px;margin-top:8px;font-size:13px}
+.nlc-calc .nlc-stress input{margin-left:6px}
+.nlc-calc .nlc-stress-out{color:#B3261E;font-weight:600}
+.nlc-calc .nlc-note{font-size:12px;color:#5F6F66;margin-top:14px;border-top:1px solid #E3E6EC;padding-top:12px;line-height:1.5}
+@media(max-width:720px){.nlc-calc .nlc-tracks{grid-template-columns:1fr}.nlc-calc .nlc-totals{grid-template-columns:repeat(2,1fr)}}
+</style>
+<div class="nlc-calc" id="nlc-mortgage" data-nlc="mortgage-v1">
+<h3>מחשבון משכנתא — תמהיל 3 מסלולים</h3>
+<p class="nlc-sub">תכננו את התמהיל לפני פנייה לבנק. הזינו סכום, ריבית ותקופה לכל מסלול — החישוב נעשה בזמן אמת.</p>
+<div class="nlc-tracks">
+  <div class="nlc-track"><h4>קל"צ <small>קבועה לא צמודה</small></h4>
+    <label>סכום (₪)</label><input type="number" data-k="amt" data-t="0" value="600000" min="0" step="10000">
+    <label>ריבית (%)</label><input type="number" data-k="rate" data-t="0" value="5.2" min="0" step="0.05">
+    <label>תקופה (שנים)</label><input type="number" data-k="years" data-t="0" value="25" min="1" max="40">
+  </div>
+  <div class="nlc-track"><h4>פריים <small>צמודה לריבית פריים</small></h4>
+    <label>סכום (₪)</label><input type="number" data-k="amt" data-t="1" value="400000" min="0" step="10000">
+    <label>ריבית (%)</label><input type="number" data-k="rate" data-t="1" value="6.0" min="0" step="0.05">
+    <label>תקופה (שנים)</label><input type="number" data-k="years" data-t="1" value="25" min="1" max="40">
+  </div>
+  <div class="nlc-track"><h4>משתנה <small>צמודה כל 5 שנים</small></h4>
+    <label>סכום (₪)</label><input type="number" data-k="amt" data-t="2" value="200000" min="0" step="10000">
+    <label>ריבית (%)</label><input type="number" data-k="rate" data-t="2" value="5.5" min="0" step="0.05">
+    <label>תקופה (שנים)</label><input type="number" data-k="years" data-t="2" value="25" min="1" max="40">
+  </div>
+</div>
+<div class="nlc-totals">
+  <div class="nlc-total"><div class="nlc-tlabel">סך משכנתא</div><div class="nlc-tval" id="nlc-m-total">₪1,200,000</div></div>
+  <div class="nlc-total nlc-hl"><div class="nlc-tlabel">החזר חודשי</div><div class="nlc-tval" id="nlc-m-pmt">₪0</div></div>
+  <div class="nlc-total"><div class="nlc-tlabel">סך ריבית</div><div class="nlc-tval" id="nlc-m-int">₪0</div></div>
+  <div class="nlc-total"><div class="nlc-tlabel">עלות כוללת</div><div class="nlc-tval" id="nlc-m-cost">₪0</div></div>
+</div>
+<div class="nlc-bar" id="nlc-m-bar"></div>
+<div style="font-size:11px;color:#5F6F66;text-align:center">פילוח החזר חודשי בין המסלולים</div>
+<label class="nlc-stress"><input type="checkbox" id="nlc-m-stress">סימולציית עליית ריבית (+2%) — <span id="nlc-m-stress-out" class="nlc-stress-out" style="display:none"></span></label>
+<div class="nlc-note">החישוב מבוסס על נוסחת PMT סטנדרטית (לוח שפיצר). ערכי ריבית הם להמחשה — בנקים מציעים ריביות שונות לפי דירוג אשראי ויחס מימון. אינו מהווה ייעוץ פיננסי. נדלן חכם.</div>
+</div>
+<script>
+(function(){
+  const r=document.getElementById('nlc-mortgage'),
+    fmt=n=>new Intl.NumberFormat('he-IL',{maximumFractionDigits:0}).format(Math.round(n));
+  function pmt(p,r,n){r=r/100/12;n=n*12;return n<=0||p<=0?0:r===0?p/n:p*r/(1-Math.pow(1+r,-n))}
+  function calc(stressBps){
+    let pSum=0,mSum=0,iSum=0;const seg=[];
+    for(let t=0;t<3;t++){
+      const a=+r.querySelector(`input[data-t="${t}"][data-k="amt"]`).value||0,
+            rt=(+r.querySelector(`input[data-t="${t}"][data-k="rate"]`).value||0)+(stressBps||0),
+            yr=+r.querySelector(`input[data-t="${t}"][data-k="years"]`).value||0;
+      const m=pmt(a,rt,yr),total=m*yr*12,interest=Math.max(0,total-a);
+      pSum+=a;mSum+=m;iSum+=interest;seg.push(m);
+    }
+    return{pSum,mSum,iSum,seg}
+  }
+  function render(){
+    const{pSum,mSum,iSum,seg}=calc(0);
+    r.querySelector('#nlc-m-total').textContent='₪'+fmt(pSum);
+    r.querySelector('#nlc-m-pmt').textContent='₪'+fmt(mSum);
+    r.querySelector('#nlc-m-int').textContent='₪'+fmt(iSum);
+    r.querySelector('#nlc-m-cost').textContent='₪'+fmt(pSum+iSum);
+    const bar=r.querySelector('#nlc-m-bar');bar.innerHTML='';
+    if(mSum>0){const lbl=['קל"צ','פריים','משתנה'];seg.forEach((s,i)=>{const w=s/mSum*100;if(w<0.5)return;const d=document.createElement('div');d.className='nlc-bar-seg s'+(i+1);d.style.width=w+'%';d.textContent=w>=14?lbl[i]:'';bar.appendChild(d)})}
+    const stress=r.querySelector('#nlc-m-stress').checked;const out=r.querySelector('#nlc-m-stress-out');
+    if(stress){const s=calc(2);out.style.display='inline';out.textContent='החזר חודשי: ₪'+fmt(s.mSum)+' (גידול ₪'+fmt(s.mSum-mSum)+')'}else{out.style.display='none'}
+  }
+  r.querySelectorAll('input').forEach(i=>i.addEventListener('input',render));render();
+})();
+</script>
+<!-- /wp:html -->
