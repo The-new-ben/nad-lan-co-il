@@ -69,3 +69,24 @@ Do not, without explicit owner approval:
 
 ---
 _Created 2026-05-28 by Claude Code (claude-opus-4-7)._
+
+## Revision 2026-05-28 — UPress Git branch constraint
+
+**UPress's "ניהול GIT" feature only supports the `main` branch.** It will not clone from a PR branch like `claude/charming-meitner-mwVEW`. This is a hard constraint we have to work around.
+
+Implications:
+- To deploy any change from a PR branch, the owner must first **merge the PR to `main` on GitHub** (one click on the green "Merge pull request" button), then have UPress Git pull from `main`.
+- For testing without affecting the live site: owner can either (a) merge to main on a Friday evening and rollback Sunday if bad, or (b) manually download specific files via the file manager. Both work.
+- Agents must keep `main` deployable. Don't push half-finished work to main directly. Use PR branches for work-in-progress, merge to main only when ready to deploy.
+
+## Revision 2026-05-28 — Manual file-manager uploads cause partial states
+
+When the owner uploads files via UPress's file manager (rather than UPress Git), partial syncs are very possible — only the files they happened to drop in get updated; everything else stays at the previous version. This was observed in the 2026-05-28 theme activation, where `style.css` and `functions.php` ended up at an older version than the rest of the theme.
+
+**Protocol:** after any non-Git sync (file manager, FTP, etc.), the next agent MUST run REST verification before assuming anything is deployed. Confirm:
+- Active theme version matches the expected version (`/wp/v2/themes?status=active`).
+- Key CPTs registered (`/wp/v2/types/<cpt_slug>`).
+- Custom Abilities API registrations visible (`/wp-abilities/v1/abilities`).
+- Page count and a few page content lengths haven't changed.
+
+Document findings in `site-state.md`.

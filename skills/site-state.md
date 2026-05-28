@@ -87,3 +87,24 @@ _File maintained by all agents. Created 2026-05-28 by Claude Code (claude-opus-4
   3. Visually verify homepage and a few pillar pages. Block content is theme-agnostic — expect the palette+typography to shift to ours; structure should be intact.
   4. If anything breaks, switch back to Twenty Twenty-Five (still installed) in WP Admin. Zero data loss.
   5. After visual confirmation: merge PR #1 to `main`, then change UPress Git branch to `main`.
+
+### 2026-05-28 (evening) — Claude Code (claude-opus-4-7) — post-activation verification
+- Read: prior block. Owner reported manual file-manager upload (UPress Git only supports `main` branch, which doesn't yet contain the fork — PR #1 unmerged).
+- Did: REST verification via WP REST API.
+- Findings:
+  - **Active theme: `NadLan Revenue` v0.1.0** — partial state. The version `0.1.0` indicates an OLD style.css landed on the server, not the v1.0.0 from the fork commit.
+  - Pages: 42, unchanged. **No content loss.** Sample pages (home, mortgage-calculator, real-estate-lawyer, buying-apartment, tel-aviv-apartment-prices) all retain full Hebrew content (17K-25K chars each).
+  - Block templates / parts: rendering correctly — homepage screenshot confirmed by owner.
+  - **functions.php NOT loaded**: `/wp/v2/types/nadlan_lead` returns 404; `/wp-abilities/v1/abilities` shows only the 4 core+Yoast abilities, none of our `nadlan/*` ones.
+  - Diagnosis: the file-manager upload landed the T25 base (templates, parts, theme.json, assets — enough for block rendering) but kept the OLD repo-root `style.css` and `functions.php` (pre-fork placeholders). Probably because the owner sourced from `main` branch which lacks the fork commits.
+  - Plugins / media unchanged.
+  - Color note: live homepage shows green-dominant branding because Codex's blocks use the `accent-3` slug, which our theme.json maps to `#0E7C57` (positive green). Not a bug — a brand-fit decision to revisit. Original strategy in `visual-design-skill.md` had trust-blue dominant.
+- Recommended owner action documented in chat:
+  1. Merge PR #1 to `main` on GitHub (one click on the green "Merge pull request" button at https://github.com/The-new-ben/nad-lan-co-il/pull/1).
+  2. UPress → ניהול GIT, branch `main`, re-clone to `/wp-content/themes/nadlan-revenue/` — overwrites partial files with the complete fork.
+  3. Verify by visiting `/wp-json/wp-abilities/v1/abilities` — should list 8 abilities including the 4 `nadlan/*` ones.
+- Lessons captured for the protocol:
+  - UPress Git only supports the `main` branch. Document this in `agent-coordination-protocol.md` as a hard constraint.
+  - When the owner does a manual file-manager upload, partial states are likely. Always run REST verification after any sync.
+  - Going forward: I push to PR branch → owner clicks "Merge pull request" → UPress Git syncs from main. Owner does not need to know any Git commands; only the merge button click.
+- Open / blocked: until functions.php is loaded, the lead form, the CPT, and the Abilities API extensions don't exist. This blocks any next-agent work that depends on `nadlan_lead` or `nadlan/*` abilities.
