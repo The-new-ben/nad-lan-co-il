@@ -1,3 +1,57 @@
+## Savyon House Prices Luxury Guide
+
+Updated: 2026-05-28 09:27 Asia/Jerusalem
+
+- Live page published and verified: `https://nad-lan.co.il/savyon-house-prices/`.
+- Published as a public consumer-facing Hebrew luxury private-home/plot guide of 2,294 words.
+- Linked from twelve existing pages:
+  - `https://nad-lan.co.il/property-value/`.
+  - `https://nad-lan.co.il/property-value-estimator/`.
+  - `https://nad-lan.co.il/buying-apartment/`.
+  - `https://nad-lan.co.il/selling-apartment/`.
+  - `https://nad-lan.co.il/investment-apartment/`.
+  - `https://nad-lan.co.il/real-estate-appraiser/`.
+  - `https://nad-lan.co.il/real-estate-lawyer/`.
+  - `https://nad-lan.co.il/kfar-shmaryahu-house-prices/`.
+  - `https://nad-lan.co.il/herzliya-pituach-apartment-prices/`.
+  - `https://nad-lan.co.il/herzliya-apartment-prices/`.
+  - `https://nad-lan.co.il/ramat-hasharon-apartment-prices/`.
+  - `https://nad-lan.co.il/raanana-apartment-prices/`.
+- Added a modern private-villa illustrative hero image, premium guide layout, villa/plot comparison table, engineering/planning checks, buyer/seller/investor sections, Savyon versus Kfar Shmaryahu/Herzliya Pituach comparison, official source links, FAQ, and a public non-advice boundary.
+- Research used before editing:
+  - Google people-first content guidance: `https://developers.google.com/search/docs/fundamentals/creating-helpful-content`.
+  - Google image SEO guidance: `https://developers.google.com/search/docs/appearance/google-images`.
+  - Government real-estate transaction portal: `https://www.nadlan.gov.il/`.
+  - Savyon engineering and infrastructure page: `https://www.savyon.muni.il/661/`.
+  - Sdot Dan planning information: `https://sdan.complot.co.il/planninginfo/`.
+  - Planning Administration search: `https://www.gov.il/he/service/searching-for-plans-and-applications-in-planning-database`.
+  - Israel Tax Authority real-estate-tax service: `https://www.gov.il/he/service/real-estate-tax-7000`.
+  - Competitor DNA checked from Savyon luxury broker and listing pages including `https://www.savyonluxuryhomes.co.il/`, `https://www.yokra-estate.co.il/`, `https://www.ednaroberts.com/location/%D7%A1%D7%91%D7%99%D7%95%D7%9F/`, `https://ono-nadlan.co.il/properties/villa-for-sale-sabion/`, and `https://www.leshemre.co.il/listings/selection-of-luxury-villas-sale/`.
+  - Wikimedia image source: `https://commons.wikimedia.org/wiki/File:3D_Rendering_of_Modern_Luxury_Villa_Exterior_with_Pool.jpg`.
+
+### Live Verification
+
+- Quality gate: passed.
+- URL: `https://nad-lan.co.il/savyon-house-prices/`.
+- Rendered H1 count: 1.
+- Word count: 2,294.
+- Image count: 1.
+- Blocked internal terms: none.
+- WordPress excerpt: clean buyer/seller-facing text, no internal wording.
+- Mobile 390px rendered check: no horizontal overflow, one H1, hero visible, image loaded at 960 x 640, no internal terms visible.
+- Image URL check: Wikimedia image returns `image/jpeg`, HTTP 200, and `Content-Length` 170,948 bytes.
+- Hierarchy check: all 12 support pages return HTTP 200 and contain `/savyon-house-prices/`.
+- Screenshot:
+  - `verification-screenshots/nadlan-savyon-house-prices-mobile-clean-2026-05-28-top.png`
+
+### Honest Gap Statement
+
+- This is a real live high-ticket Savyon private-home guide, not a draft: the page is published, verified, and linked from twelve related pages.
+- The page follows the luxury private-home/plot rule learned from Kfar Shmaryahu: separate land, rights, privacy, physical condition, planning, costs, and liquidity instead of forcing a simple apartment price-per-meter narrative.
+- This block used fresh web research and the saved Nadlan Lovable competitor scan, but did not use fresh Lovable/ChatGPT/Gemini/image generation because the work was a WordPress REST publishing and live-verification block.
+- No UPress Git pull was needed for this page content because the live change was published through the WordPress REST API, not through a theme-file GitHub sync.
+- The remaining visual gap is still site-wide: the page-level article design is clean, but durable Nadlan header/footer/menu polish still needs theme-level GitHub change followed by UPress pull and public verification.
+
 ## Kfar Shmaryahu House Prices Luxury Guide
 
 Updated: 2026-05-28 09:18 Asia/Jerusalem
