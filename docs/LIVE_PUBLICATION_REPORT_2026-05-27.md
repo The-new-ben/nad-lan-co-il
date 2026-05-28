@@ -833,3 +833,40 @@ Updated: 2026-05-28 05:39 Asia/Jerusalem
 - This is a real live publication, not a draft: a new supporting property-management page is published, verified, and linked from the professionals hub.
 - It deepens the future directory architecture because property management connects investors, owners, rental apartments, commercial property, brokers, lawyers, tax advisers, maintenance professionals, and future recurring service profiles.
 - The live check initially failed the word-count minimum, and I corrected it before reporting completion. The next gap remains structured provider profiles plus durable theme-level header/footer implementation through GitHub and UPress pull.
+
+## Mortgage / Home Insurance Supporting Professional Page
+
+Updated: 2026-05-28 05:54 Asia/Jerusalem
+
+- Live page published and verified: `https://nad-lan.co.il/mortgage-home-insurance/`.
+- Published as a public consumer-facing Hebrew guide of 2,493 words.
+- Linked from the existing professionals hub at `https://nad-lan.co.il/professionals/` with the public label `ביטוח משכנתא ודירה`, so the new page is attached to the content hierarchy.
+- Added a realistic Israeli business/residential skyline image, premium guide layout, sections on mortgage insurance, life insurance, building insurance, home contents, bank requirements, independent insurance choice, policy comparison, rental/investment apartments, documents to prepare, renewal checks, common mistakes, FAQ, internal next-step links, and a public non-advice boundary.
+- Saved a new repeatable skill lesson in the Codex portfolio knowledge graph for mortgage/home-insurance pages: separate bank-required mortgage cover from wider home cover, explain beneficiary/bank approval issues, compare price only after matching coverage, cover rental-property context, and always verify WordPress excerpts.
+- Research used before editing:
+  - Kol Zchut mortgage-insurance public guide: `https://www.kolzchut.org.il/he/ביטוח_משכנתא`.
+  - Ministry of Finance / `האוצר שלי` apartment-insurance comparison guide: `https://haotzarsheli.mof.gov.il/Subject/Pages/Choosing-Apartment-Insurance.aspx`.
+  - Bank Hapoalim mortgage life/building insurance page: `https://www.bankhapoalim.co.il/he/mortgage/building-insurance-and-life-insurance`.
+  - Discount Bank mortgage-insurance guide and current competitor pages around mortgage insurance, home insurance, policy comparison, exclusions, service, and claims. The public content is original and adapted to Nadlan's brand.
+
+### Live Verification
+
+- Quality gate: passed.
+- URL: `https://nad-lan.co.il/mortgage-home-insurance/`.
+- Rendered H1 count: 1.
+- Word count: 2,493.
+- Image count: 1.
+- Blocked internal terms: none.
+- WordPress excerpt: clean buyer/borrower-facing text, no internal wording.
+- Mobile 390px rendered check: no horizontal overflow, one H1, public terms clean.
+- Image URL check: Wikimedia image returns `image/jpeg` and `Content-Length` 163,354 bytes.
+- Professionals hub hierarchy check: `https://nad-lan.co.il/professionals/` returns HTTP 200 and contains both `/mortgage-home-insurance/` and visible `ביטוח משכנתא ודירה`; duplicate CTA was caught and removed before reporting.
+- Screenshot:
+  - `verification-screenshots/nadlan-mortgage-home-insurance-mobile-clean-2026-05-28-v2-top.png`
+
+### Honest Gap Statement
+
+- This is a real live publication, not a draft: a new supporting mortgage/home-insurance page is published, verified, and linked from the professionals hub.
+- The first mobile screenshot showed the image too low in the first viewport and the hub temporarily had a duplicate button; both issues were corrected before reporting completion.
+- It deepens the future directory architecture because insurance connects mortgage borrowers, homeowners, investors, property managers, lawyers, mortgage advisers, and future insurance-professional profile pages.
+- The page meets the minimum content and live verification gates. The next gap remains structured provider profiles plus durable theme-level header/footer implementation through GitHub and UPress pull.
