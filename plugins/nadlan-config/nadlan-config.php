@@ -2,7 +2,7 @@
 /**
  * Plugin Name: NadLan Config
  * Description: Lead-capture foundation: nadlan_lead CPT + lead-form handler + healthcheck. Read skills/nadlan-config-plugin.md.
- * Version: 1.0.4
+ * Version: 1.0.5
  * Author: nad-lan.co.il
  * License: GPL-2.0+
  * Requires PHP: 7.4
@@ -52,7 +52,7 @@ if ( ! function_exists( 'nadlan_config_healthcheck_response' ) ) {
 	function nadlan_config_healthcheck_response() {
 		return array(
 			'plugin'              => 'nadlan-config',
-			'version'             => '1.0.4',
+			'version'             => '1.0.5',
 			'cpt_present'         => post_type_exists( 'nadlan_lead' ),
 			'lead_handler_loaded' => (bool) has_action( 'admin_post_nadlan_lead' ),
 			'php_version'         => PHP_VERSION,
@@ -138,3 +138,33 @@ if ( ! function_exists( 'nadlan_config_handle_lead' ) ) {
 }
 add_action( 'admin_post_nopriv_nadlan_lead', 'nadlan_config_handle_lead' );
 add_action( 'admin_post_nadlan_lead',        'nadlan_config_handle_lead' );
+
+/* ---------- v1.0.5: expose Yoast meta keys for REST writes ----------
+ * Yoast SEO Free does not register its meta keys with show_in_rest, so bulk
+ * editing meta descriptions / titles / cornerstone via the REST API silently
+ * fails. We register them here (only as a REST-exposed mirror; Yoast still
+ * owns the rendering). auth_callback requires edit_posts so only logged-in
+ * editors can write. Read skills/nadlan-config-plugin.md.
+ */
+if ( ! function_exists( 'nadlan_config_register_yoast_meta' ) ) {
+	function nadlan_config_register_yoast_meta() {
+		$keys = array(
+			'_yoast_wpseo_metadesc'       => 'string',
+			'_yoast_wpseo_title'          => 'string',
+			'_yoast_wpseo_focuskw'        => 'string',
+			'_yoast_wpseo_is_cornerstone' => 'string',
+		);
+		$post_types = array( 'page', 'post' );
+		foreach ( $post_types as $pt ) {
+			foreach ( $keys as $key => $type ) {
+				register_post_meta( $pt, $key, array(
+					'show_in_rest'  => true,
+					'single'        => true,
+					'type'          => $type,
+					'auth_callback' => function () { return current_user_can( 'edit_posts' ); },
+				) );
+			}
+		}
+	}
+}
+add_action( 'init', 'nadlan_config_register_yoast_meta', 11 );
