@@ -440,3 +440,41 @@ Updated: 2026-05-28 03:33 Asia/Jerusalem
 - This is a real live publication, not a draft: a new urban-renewal pillar is published, verified, and linked from the homepage.
 - It improves Nadlan's money architecture by adding a high-value owner/developer/lawyer/appraiser topic cluster that can later support professional listings and inquiry tools.
 - The page meets the minimum content and live verification gates. The remaining gap is a future interactive intake/checklist flow for owners and buyers, plus the same durable theme-level header/footer work through GitHub and UPress pull.
+
+## Property Value / Apartment Valuation Pillar Publication
+
+Updated: 2026-05-28 03:44 Asia/Jerusalem
+
+- Live page published: `https://nad-lan.co.il/property-value/`.
+- Added a high-value missing Nadlan pillar for sellers, buyers, investors, mortgage borrowers, and future appraiser/professional workflows.
+- Published as a public consumer-facing Hebrew guide of 2,044 words.
+- Added the valuation page to the live homepage page-level navigation as `שווי דירה`, so it is reachable from the public homepage hierarchy.
+- Added a realistic residential image, premium guide layout, and sections on valuation basics, transaction comparables, differences between asking price and closing price, apartment/building/neighborhood factors, adjustment logic, when to use a real-estate appraiser, quick estimates versus formal valuation, seller use case, buyer use case, investor use case, common mistakes, FAQ, internal next-step links, and a public non-advice boundary.
+- Research used before editing:
+  - Google Search Central helpful content guidance for people-first YMYL pages.
+  - Gov.il / Israel Tax Authority real-estate information database service for actual transaction-comparison context.
+  - CBS housing-price publication pages for official apartment-price index and average-price context.
+  - Current valuation/appraiser competitor pages for commercial DNA: transaction comparison, property features, appraisal role, bank/mortgage need, and price-range framing.
+
+### Live Verification
+
+- Quality gate: passed.
+- URL: `https://nad-lan.co.il/property-value/`.
+- Rendered H1 count: 1.
+- Word count: 2,044.
+- Image count: 1.
+- Blocked internal terms: none.
+- WordPress excerpt: clean buyer/seller/investor-facing text, no old internal wording.
+- Mobile 390px rendered check: no horizontal overflow, one H1, public terms clean.
+- Image URL check: Wikimedia image returns `image/jpeg` and `Content-Length` 174,066 bytes.
+- Homepage hierarchy check: `https://nad-lan.co.il/` returns HTTP 200 and contains both `/property-value/` and visible `שווי דירה`.
+- Homepage mobile nav check: page-nav labels now include `קנייה`, `מכירה`, `שווי דירה`, `השקעה`, `מקבלן`, `התחדשות`, `משכנתא`, `מס רכישה`, `טאבו`, `עורך דין`.
+- Screenshots:
+  - `verification-screenshots/nadlan-property-value-mobile-clean-2026-05-28-top.png`
+  - `verification-screenshots/nadlan-home-property-value-nav-mobile-2026-05-28-top.png`
+
+### Honest Gap Statement
+
+- This is a real live publication, not a draft: a new valuation pillar is published, verified, and linked from the homepage.
+- It improves Nadlan's money architecture because valuation is a bridge topic for sellers, buyers, investors, mortgage checks, appraisers, and future property-value tools.
+- The page meets the minimum content and live verification gates. The remaining opportunity is to build a real calculator/intake experience later, and to move the temporary page-level homepage nav into durable theme-level header/footer chrome through GitHub and UPress pull.
