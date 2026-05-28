@@ -1,3 +1,45 @@
+## Neve Tzedek Apartment Prices Neighborhood Guide
+
+Updated: 2026-05-28 07:40 Asia/Jerusalem
+
+- Live page published and verified: `https://nad-lan.co.il/neve-tzedek-apartment-prices/`.
+- Published as a public consumer-facing Hebrew neighborhood price guide of 2,214 words.
+- Linked from five existing pages:
+  - `https://nad-lan.co.il/tel-aviv-apartment-prices/`.
+  - `https://nad-lan.co.il/property-value/`.
+  - `https://nad-lan.co.il/property-value-estimator/`.
+  - `https://nad-lan.co.il/buying-apartment/`.
+  - `https://nad-lan.co.il/investment-apartment/`.
+- Added a realistic Neve Tzedek street image, premium guide layout, price-range table, buyer/seller/investor sections, official source links, FAQ, and a public non-advice boundary.
+- Saved a new repeatable skill lesson in the Codex portfolio knowledge graph for neighborhood price guides: do not treat a neighborhood as one average; explain street character, preservation, building type, parking, balcony/garden/roof, comparable transaction limits, and links to valuation and purchase-cost tools.
+- Research used before editing:
+  - Google Search Central people-first content guidance: `https://developers.google.com/search/docs/fundamentals/creating-helpful-content`.
+  - Madlan Neve Tzedek neighborhood/data pattern: `https://www.madlan.co.il/area-info/%D7%A9%D7%9B%D7%95%D7%A0%D7%94-%D7%A0%D7%95%D7%95%D7%94-%D7%A6%D7%93%D7%A7-%D7%AA%D7%9C-%D7%90%D7%91%D7%99%D7%91-%D7%99%D7%A4%D7%95-%D7%99%D7%A9%D7%A8%D7%90%D7%9C`.
+  - Tel Aviv Municipality planning and development pages: `https://www.tel-aviv.gov.il/Residents/Development/Pages/default.aspx`.
+  - Tel Aviv Municipality planning information: `https://www.tel-aviv.gov.il/Residents/Construction/Pages/PlanningInformation.aspx`.
+  - Live boutique Neve Tzedek real-estate competitor pages around luxury positioning, preservation, private houses, penthouses, garden apartments, parking scarcity, and sea/Rothschild proximity. The public content is original and adapted to Nadlan's brand.
+
+### Live Verification
+
+- Quality gate: passed.
+- URL: `https://nad-lan.co.il/neve-tzedek-apartment-prices/`.
+- Rendered H1 count: 1.
+- Word count: 2,214.
+- Image count: 1.
+- Blocked internal terms: none.
+- WordPress excerpt: clean buyer/seller/investor-facing text, no internal wording.
+- Mobile 390px rendered check: no horizontal overflow, one H1, hero visible, image loaded at 960 x 1280, no internal terms visible.
+- Image URL check: Wikimedia image returns `image/jpeg` and `Content-Length` 275,531 bytes.
+- Hierarchy check: `tel-aviv-apartment-prices`, `property-value`, `property-value-estimator`, `buying-apartment`, and `investment-apartment` all return HTTP 200 and contain `/neve-tzedek-apartment-prices/`.
+- Screenshot:
+  - `verification-screenshots/nadlan-neve-tzedek-prices-mobile-clean-2026-05-28-v2-top.png`
+
+### Honest Gap Statement
+
+- This is a real live neighborhood guide, not a draft: the page is published, verified, and linked from five related pages.
+- This block used fresh web research and the saved Nadlan Lovable competitor scan, but did not use fresh Lovable/ChatGPT/Gemini because the work was a WordPress REST publishing and browser-verification block.
+- The page starts the neighborhood layer under the Tel Aviv price guide. The next gap is to add more high-value neighborhood guides and build provider/profile infrastructure so the content path can turn into service inquiries.
+
 ## Tel Aviv Apartment Prices City Guide
 
 Updated: 2026-05-28 07:58 Asia/Jerusalem
