@@ -1,3 +1,49 @@
+## Raanana Apartment Prices City Guide
+
+Updated: 2026-05-28 08:59 Asia/Jerusalem
+
+- Live page published and verified: `https://nad-lan.co.il/raanana-apartment-prices/`.
+- Published as a public consumer-facing Hebrew city guide of 2,117 words.
+- Linked from seven existing pages:
+  - `https://nad-lan.co.il/property-value/`.
+  - `https://nad-lan.co.il/property-value-estimator/`.
+  - `https://nad-lan.co.il/buying-apartment/`.
+  - `https://nad-lan.co.il/selling-apartment/`.
+  - `https://nad-lan.co.il/investment-apartment/`.
+  - `https://nad-lan.co.il/ramat-hasharon-apartment-prices/`.
+  - `https://nad-lan.co.il/herzliya-apartment-prices/`.
+- Added a realistic Raanana city image, premium guide layout, buyer/seller/investor sections, city-area comparison table, family/Anglo buyer demand framing, rental/investment caution, official source links, FAQ, and a public non-advice boundary.
+- Research used before editing:
+  - Government real-estate transaction portal: `https://www.nadlan.gov.il/`.
+  - CBS apartment price publications: `https://www.cbs.gov.il/he/Pages/SubjectPublications.aspx?CbsSubject=%D7%9E%D7%97%D7%99%D7%A8%D7%99+%D7%93%D7%99%D7%A8%D7%95%D7%AA`.
+  - Raanana municipal engineering/GIS page: `https://www.raanana.muni.il/Engineering/buildingPermit/pages/default.aspx`.
+  - Israel Tax Authority real-estate-tax service page: `https://www.gov.il/he/service/real-estate-tax-7000`.
+  - Madadirot Raanana city page for competitor/market structure: `https://www.madadirot.co.il/areas/8700/`.
+  - Wikimedia image source for Raanana city: `https://commons.wikimedia.org/wiki/File:Raanana_city.JPG`.
+
+### Live Verification
+
+- First quality gate failed usefully: 1,996 words, below the 2,000-word minimum. I expanded the guide before reporting.
+- Final quality gate: passed.
+- URL: `https://nad-lan.co.il/raanana-apartment-prices/`.
+- Rendered H1 count: 1.
+- Word count: 2,117.
+- Image count: 1.
+- Blocked internal terms: none.
+- WordPress excerpt: clean buyer/seller/investor-facing text, no internal wording.
+- Mobile 390px rendered check: no horizontal overflow, one H1, hero visible, image loaded at 960 x 643, no internal terms visible.
+- Image URL check: Wikimedia image returns `image/jpeg` and `Content-Length` 223,912 bytes.
+- Hierarchy check: `property-value`, `property-value-estimator`, `buying-apartment`, `selling-apartment`, `investment-apartment`, `ramat-hasharon-apartment-prices`, and `herzliya-apartment-prices` all return HTTP 200 and contain `/raanana-apartment-prices/`.
+- Screenshot:
+  - `verification-screenshots/nadlan-raanana-prices-mobile-clean-2026-05-28-v2-top.png`
+
+### Honest Gap Statement
+
+- This is a real live city guide, not a draft: the page is published, verified, and linked from seven related pages.
+- The first live quality gate failed by four words, which confirms the gate is useful. I expanded the page and reran the gate before reporting completion.
+- This block used fresh web research and the saved Nadlan Lovable competitor scan, but did not use fresh Lovable/ChatGPT/Gemini/image generation because the work was a WordPress REST publishing and live-verification block.
+- The remaining visual gap is site-wide: the page-level article design is clean, but the durable Nadlan header/footer/menu polish still needs a theme-level GitHub change followed by UPress pull and public verification.
+
 ## Ramat Hasharon Apartment Prices City Guide
 
 Updated: 2026-05-28 08:52 Asia/Jerusalem
