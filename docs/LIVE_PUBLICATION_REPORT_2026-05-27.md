@@ -1,3 +1,58 @@
+## Tel Aviv Penthouse Prices Guide
+
+Updated: 2026-05-28 10:14 Asia/Jerusalem
+
+- Live page published and verified: `https://nad-lan.co.il/tel-aviv-penthouse-prices/`.
+- Published as a public consumer-facing Hebrew penthouse, mini-penthouse, and roof-apartment guide of 2,096 words.
+- Linked from fourteen existing pages:
+  - `https://nad-lan.co.il/tel-aviv-luxury-apartment-prices/`.
+  - `https://nad-lan.co.il/property-value/`.
+  - `https://nad-lan.co.il/property-value-estimator/`.
+  - `https://nad-lan.co.il/buying-apartment/`.
+  - `https://nad-lan.co.il/selling-apartment/`.
+  - `https://nad-lan.co.il/investment-apartment/`.
+  - `https://nad-lan.co.il/real-estate-appraiser/`.
+  - `https://nad-lan.co.il/real-estate-lawyer/`.
+  - `https://nad-lan.co.il/herzliya-pituach-apartment-prices/`.
+  - `https://nad-lan.co.il/herzliya-apartment-prices/`.
+  - `https://nad-lan.co.il/arsuf-house-prices/`.
+  - `https://nad-lan.co.il/rishpon-house-prices/`.
+  - `https://nad-lan.co.il/savyon-house-prices/`.
+  - `https://nad-lan.co.il/kfar-shmaryahu-house-prices/`.
+- Added a Tel Aviv tower/sea-view sunset hero image, premium guide layout, penthouse-type comparison table, buyer/seller/investor sections, roof-rights and outdoor-area checks, official source links, FAQ, and a public non-advice boundary.
+- Research used before editing:
+  - Google people-first content guidance: `https://developers.google.com/search/docs/fundamentals/creating-helpful-content`.
+  - Government real-estate transaction portal: `https://www.nadlan.gov.il/`.
+  - Tel Aviv-Yafo planning information page: `https://www.tel-aviv.gov.il/Residents/Construction/Pages/PlanningInformation.aspx`.
+  - Tel Aviv-Yafo planning and construction overview: `https://www.tel-aviv.gov.il/About/Pages/planning.aspx`.
+  - Planning Administration/Mavat planning information: `https://mavat.iplan.gov.il/`.
+  - Israel Tax Authority real-estate-tax service: `https://www.gov.il/he/service/real-estate-tax-7000`.
+  - Competitor DNA checked from Tel Aviv penthouse, mini-penthouse, Neve Tzedek, Rothschild, seafront, tower, and roof-apartment listing pages including `https://neve-tzedekpro.co.il/property/0996/`, `https://www.domestictlv.co.il/estate-type/penthouse/`, `https://www.luxuryestate.com/he/p129513176-penthouse-for-sale-tel-aviv-yaffo`, and current public listing pages around Tel Aviv penthouses.
+  - Wikimedia image source: `https://commons.wikimedia.org/wiki/File:Da_Vinci_Towers_04.jpg`.
+
+### Live Verification
+
+- Quality gate: passed.
+- URL: `https://nad-lan.co.il/tel-aviv-penthouse-prices/`.
+- Rendered H1 count: 1.
+- Word count: 2,096.
+- Image count: 1.
+- Blocked internal terms: none.
+- WordPress excerpt: clean buyer/seller-facing text, no internal wording.
+- Mobile 390px rendered check: no horizontal overflow, one H1, hero visible, image loaded at 960 x 1003, no internal terms visible.
+- Image URL check: Wikimedia image returns `image/jpeg`, HTTP 200, and `Content-Length` 283,738 bytes.
+- Hierarchy check: all 14 linked support pages return HTTP 200 and contain `/tel-aviv-penthouse-prices/`.
+- Screenshot:
+  - `verification-screenshots/nadlan-tel-aviv-penthouse-prices-mobile-clean-2026-05-28-top.png`
+
+### Honest Gap Statement
+
+- This is a real live high-ticket Tel Aviv penthouse guide, not a draft: the page is published, verified, visually checked on mobile, and linked from fourteen related pages.
+- The page supports the broader Tel Aviv luxury-apartment pillar without duplicating it: the focus is roof/garden/terrace usability, mini-penthouse versus full penthouse, outdoor-area rights, privacy, roof systems, maintenance, and resale liquidity.
+- This block used fresh web research and the saved Nadlan Lovable competitor scan, but did not use fresh Lovable/ChatGPT/Gemini/image generation because the work was a WordPress REST publishing and live-verification block.
+- No UPress Git pull was needed for this page content because the live change was published through the WordPress REST API, not through a theme-file GitHub sync.
+- Remaining visual gap: global Nadlan header/footer/menu still needs a theme-level polish pass, GitHub push, UPress pull, and public verification.
+
 ## Tel Aviv Luxury Apartment Prices Guide
 
 Updated: 2026-05-28 10:04 Asia/Jerusalem
