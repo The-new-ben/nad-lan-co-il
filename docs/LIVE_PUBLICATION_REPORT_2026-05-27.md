@@ -762,3 +762,38 @@ Updated: 2026-05-28 05:27 Asia/Jerusalem
 - This was not a new page publication, but it was a real live public cleanup: four existing live pages no longer expose old internal language through WordPress excerpts.
 - It directly fixes the type of issue Ben flagged earlier: public pages must speak only to buyers, sellers, borrowers, investors, and property owners.
 - Remaining gap: continue excerpt/meta checks across every older page and move durable header/footer improvements into the synced theme with UPress Git pull verification.
+
+## Architect / Building Permit Supporting Professional Page
+
+Updated: 2026-05-28 05:31 Asia/Jerusalem
+
+- Live page published and verified: `https://nad-lan.co.il/architect-building-permit/`.
+- Published as a public consumer-facing Hebrew guide of 2,340 words.
+- Linked from the existing professionals hub at `https://nad-lan.co.il/professionals/` with the public label `אדריכל והיתר בנייה`, so the new page is attached to the content hierarchy.
+- Added a realistic architecture/plans image, premium guide layout, and sections on what an architect does, architect versus interior designer, permit basics, choosing an architect, registration/licensing checks, proposal scope, buying before renovation, large renovations, urban renewal, documents to prepare, warning signs, cost factors, efficient collaboration, FAQ, internal next-step links, and a public non-advice boundary.
+- Saved a new repeatable skill lesson in the Codex portfolio knowledge graph for architect/building-permit pages: separate design, permit, engineering, legal, appraisal, and supervision roles; cover documents, proposal scope, consultants, warning signs, and no guarantee of permit approval.
+- Research used before editing:
+  - Official engineer/architect registration context from gov.il: `https://www.gov.il/he/service/registration-of-engineers-and-architects`.
+  - Official Planning Administration / licensing-permit context around `רישוי זמין`, permit applications, and the role of an application editor.
+  - Live competitor pages around architect selection, building permits, renovation planning, cost factors, permit scope, and questions to ask. The public content is original and adapted to Nadlan's brand.
+
+### Live Verification
+
+- Quality gate: passed.
+- URL: `https://nad-lan.co.il/architect-building-permit/`.
+- Rendered H1 count: 1.
+- Word count: 2,340.
+- Image count: 1.
+- Blocked internal terms: none.
+- WordPress excerpt: clean owner/buyer/renovator-facing text, no internal wording.
+- Mobile 390px rendered check: no horizontal overflow, one H1, public terms clean.
+- Image URL check: Wikimedia image returns `image/jpeg` and `Content-Length` 89,809 bytes.
+- Professionals hub hierarchy check: `https://nad-lan.co.il/professionals/` returns HTTP 200 and contains both `/architect-building-permit/` and visible `אדריכל והיתר בנייה`.
+- Screenshot:
+  - `verification-screenshots/nadlan-architect-mobile-2026-05-28-top.png`
+
+### Honest Gap Statement
+
+- This is a real live publication, not a draft: a new supporting architect/building-permit page is published, verified, and linked from the professionals hub.
+- It deepens the future directory architecture because architects connect buyers of renovation properties, private builders, owners seeking extensions, urban-renewal residents, commercial-property users, appraisers, lawyers, engineers, and construction supervisors.
+- The page meets the minimum content and live verification gates. The next gap remains a structured provider-profile CMS and a durable theme-level header/footer implementation through GitHub and UPress pull.
