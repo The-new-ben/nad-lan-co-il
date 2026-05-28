@@ -66,3 +66,24 @@
 
 ---
 _File maintained by all agents. Created 2026-05-28 by Claude Code (claude-opus-4-7)._
+
+### 2026-05-28 (afternoon) — Claude Code (claude-opus-4-7) — theme fork + Abilities API
+- Read: prior session block; `AGENTS.md`; the owner's uploaded `twentytwentyfive.archive.zip`; `strategy-master.md`; `visual-design-skill.md`; `wordpress-content-types.md`.
+- Did:
+  - Forked Twenty Twenty-Five (v1.5, from the owner's UPress server) into this repo root.
+  - Bulk-renamed every identifier: `twentytwentyfive_` → `nadlan_revenue_`, text domain `'twentytwentyfive'` → `'nadlan-revenue'`, package + slug references throughout 14 PHP files.
+  - Replaced `style.css` header with NadLan Revenue metadata (still GPL-2.0+).
+  - Replaced `theme.json` color palette (10 brand colors: gold #D89B3C, trust blue #0E3A8A, cream #FAF8F4, positive green, negative red, etc.). Added Heebo as first fontFamily with Hebrew-friendly fallback stack. Switched body typography to Heebo, 400 weight, line-height 1.65.
+  - Appended to `functions.php`: `nadlan_lead` CPT, lead-form admin-post handler (with sanitization + nonce + meta storage + admin email), and four WP 7.0 Abilities API registrations: `nadlan/get-pillars`, `nadlan/get-calculators`, `nadlan/get-cities`, `nadlan/get-lead-stats`.
+  - PHP lint clean. theme.json valid JSON.
+  - Removed old classic-theme placeholder files (header.php, footer.php, front-page.php, index.php) — the block theme replaces them via `parts/header.html`, `parts/footer.html`, `templates/*.html`.
+- Why: owner instructed full theme fork (not child theme) for simple mental model. Next agent doesn't have to reason about parent inheritance. WP 7.0 Abilities API lets any AI agent introspect what nad-lan can do without reading source.
+- Touched: repo root (added ~150 T25 files + customizations); `skills/theme-fork-decision.md` (new); `skills/abilities-api.md` (new); `skills/plugin-discipline.md` (new); `skills/site-state.md` (this entry).
+- Discovery results captured this session (call out): site is on **WordPress 7.0**; active theme was `twentytwentyfive` (now ready to be replaced by `nadlan-revenue` after sync); 42 pages published by Codex covering pillars + calculators + 11 city/neighborhood pages; 0 posts (just hello-world); 1 media item; Google Site Kit shows `search-console` + `site-verification` + `pagespeed-insights` **connected** (contradicts earlier session's note that GSC wasn't opened); plugins are minimal (Yoast + Site Kit active; Akismet + Hello Dolly + AI Provider for OpenAI inactive).
+- Skills updated: theme-fork-decision (new), abilities-api (new), plugin-discipline (new), site-state (this entry).
+- Next agent / OWNER should:
+  1. In UPress → Git management: set path to `/wp-content/themes/nadlan-revenue/`, clone URL `https://github.com/The-new-ben/nad-lan-co-il.git`, branch `claude/charming-meitner-mwVEW` (PR #1). Click שכפול פרויקט.
+  2. In WP Admin → Appearance → Themes → activate "NadLan Revenue".
+  3. Visually verify homepage and a few pillar pages. Block content is theme-agnostic — expect the palette+typography to shift to ours; structure should be intact.
+  4. If anything breaks, switch back to Twenty Twenty-Five (still installed) in WP Admin. Zero data loss.
+  5. After visual confirmation: merge PR #1 to `main`, then change UPress Git branch to `main`.
