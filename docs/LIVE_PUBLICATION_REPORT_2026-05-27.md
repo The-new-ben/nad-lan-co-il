@@ -1,3 +1,47 @@
+## Property Value Estimator Tool Page
+
+Updated: 2026-05-28 07:39 Asia/Jerusalem
+
+- Live page published and verified: `https://nad-lan.co.il/property-value-estimator/`.
+- Published as a public consumer-facing Hebrew calculator plus guide of 2,094 words.
+- Linked from four existing valuation and transaction pages:
+  - `https://nad-lan.co.il/property-value/`.
+  - `https://nad-lan.co.il/selling-apartment/`.
+  - `https://nad-lan.co.il/buying-apartment/`.
+  - `https://nad-lan.co.il/real-estate-appraiser/`.
+- Added a functional calculator that estimates a property-value midpoint, low/high range, adjusted price per sqm, and asking-price gap from area, comparable price per sqm, parking, storage, balcony, condition, building/floor/view adjustments, caution range, and asking price.
+- Added a realistic residential-tower image, premium tool layout, explanatory sections, comparison table, official source links, FAQ, and a public non-advice/non-appraisal boundary.
+- Saved a new repeatable skill lesson in the Codex portfolio knowledge graph for property-value estimators: a valuation tool must produce a range, explain comparable-sale limits, and connect to seller, buyer, appraiser, and mortgage-risk journeys.
+- Research used before editing:
+  - Government real-estate transaction portal: `https://www.nadlan.gov.il/`.
+  - Israel Tax Authority real-estate-tax service page: `https://www.gov.il/he/service/real-estate-tax-7000`.
+  - Ministry of Justice real-estate appraiser resources: `https://www.gov.il/he/departments/topics/real_estate_appraisers/govil-landing-page`.
+  - CBS home page for housing-price data context: `https://www.cbs.gov.il/he/Pages/default.aspx`.
+  - Live competitor/valuation pages around comparable transactions, price per sqm, active listing prices, appraiser boundaries, and seller/buyer negotiation structure. The public tool and content are original and adapted to Nadlan's brand.
+
+### Live Verification
+
+- First quality gate failed usefully: 1,948 words, below the 2,000-word minimum. I expanded the guide before reporting.
+- Final quality gate: passed.
+- URL: `https://nad-lan.co.il/property-value-estimator/`.
+- Rendered H1 count: 1.
+- Word count: 2,094.
+- Image count: 1.
+- Blocked internal terms: none.
+- WordPress excerpt: clean buyer/seller-facing text, no internal wording.
+- Mobile 390px rendered check: no horizontal overflow, one H1, hero visible, image loaded at 960 x 540, no internal terms visible.
+- Browser calculator interaction check: changing price per sqm from 32,000 to 35,000 updated the value from `₪3,040,560` to `₪3,293,940`, high range from `₪3,192,588` to `₪3,458,637`, and asking-price gap from `-3.0%` to `-10.4%`.
+- Image URL check: Wikimedia image returns `image/jpeg` and `Content-Length` 158,163 bytes.
+- Hierarchy check: `property-value`, `selling-apartment`, `buying-apartment`, and `real-estate-appraiser` all return HTTP 200 and contain `/property-value-estimator/`.
+- Screenshot:
+  - `verification-screenshots/nadlan-property-value-estimator-mobile-clean-2026-05-28-v2-top.png`
+
+### Honest Gap Statement
+
+- This is a real live tool page, not a draft: the page is published, the calculator runs in the browser, and the page is linked from four supporting pages.
+- This block used fresh web research and the saved Nadlan Lovable competitor scan, but did not use fresh Lovable/ChatGPT/Gemini because the work was a WordPress REST publishing and browser-verification block.
+- The tool is useful now, but the durable next gap is to connect it with city/neighborhood profiles, recent comparable transactions, seller inquiry paths, and appraiser/profile pages.
+
 ## Apartment Purchase Cost Calculator Tool Page
 
 Updated: 2026-05-28 07:18 Asia/Jerusalem
