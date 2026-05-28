@@ -1,3 +1,60 @@
+## Tel Aviv Seafront Apartment Prices Guide
+
+Updated: 2026-05-28 10:24 Asia/Jerusalem
+
+- Live page published and verified: `https://nad-lan.co.il/tel-aviv-seafront-apartment-prices/`.
+- Published as a public consumer-facing Hebrew seafront-apartment and first-line beach guide of 2,072 words.
+- Linked from fifteen existing pages:
+  - `https://nad-lan.co.il/tel-aviv-luxury-apartment-prices/`.
+  - `https://nad-lan.co.il/tel-aviv-penthouse-prices/`.
+  - `https://nad-lan.co.il/property-value/`.
+  - `https://nad-lan.co.il/property-value-estimator/`.
+  - `https://nad-lan.co.il/buying-apartment/`.
+  - `https://nad-lan.co.il/selling-apartment/`.
+  - `https://nad-lan.co.il/investment-apartment/`.
+  - `https://nad-lan.co.il/real-estate-appraiser/`.
+  - `https://nad-lan.co.il/real-estate-lawyer/`.
+  - `https://nad-lan.co.il/herzliya-pituach-apartment-prices/`.
+  - `https://nad-lan.co.il/herzliya-apartment-prices/`.
+  - `https://nad-lan.co.il/arsuf-house-prices/`.
+  - `https://nad-lan.co.il/rishpon-house-prices/`.
+  - `https://nad-lan.co.il/savyon-house-prices/`.
+  - `https://nad-lan.co.il/kfar-shmaryahu-house-prices/`.
+- Added a Tel Aviv beach/marina skyline hero image, premium guide layout, first-line/second-line/view comparison table, buyer/seller/investor sections, marine-maintenance checks, official source links, FAQ, and a public non-advice boundary.
+- Research used before editing:
+  - Google people-first content guidance: `https://developers.google.com/search/docs/fundamentals/creating-helpful-content`.
+  - Government real-estate transaction portal: `https://www.nadlan.gov.il/`.
+  - Tel Aviv-Yafo planning information page: `https://www.tel-aviv.gov.il/Residents/Construction/Pages/PlanningInformation.aspx`.
+  - Tel Aviv-Yafo beaches page: `https://www.tel-aviv.gov.il/Residents/Environment/Pages/Beaches.aspx`.
+  - Planning Administration/Mavat planning information: `https://mavat.iplan.gov.il/`.
+  - Israel Tax Authority real-estate-tax service: `https://www.gov.il/he/service/real-estate-tax-7000`.
+  - Competitor DNA checked from Tel Aviv seafront, beach, hotel-residence, penthouse, and luxury-apartment listing pages including `https://www.myplace.co.il/%D7%93%D7%99%D7%A8%D7%95%D7%AA-%D7%99%D7%95%D7%A7%D7%A8%D7%94/`, `https://www.domestictlv.co.il/estate-type/penthouse/`, and current public pages around Tel Aviv beach apartments and first-line properties.
+  - Wikimedia image source: `https://commons.wikimedia.org/wiki/File:Beach_and_marina,_Tel_Aviv_2014_-_panoramio.jpg`.
+
+### Live Verification
+
+- Quality gate: passed.
+- URL: `https://nad-lan.co.il/tel-aviv-seafront-apartment-prices/`.
+- Rendered H1 count: 1.
+- Word count: 2,072.
+- Image count: 1.
+- Blocked internal terms: none.
+- WordPress excerpt: clean buyer/seller-facing text, no internal wording.
+- Mobile 390px rendered check: no horizontal overflow, one H1, hero visible, image loaded at 960 x 560, no internal terms visible.
+- Image URL check: Wikimedia image returns `image/jpeg`, HTTP 200, and `Content-Length` 171,920 bytes.
+- Hierarchy check: all 15 linked support pages return HTTP 200 and contain `/tel-aviv-seafront-apartment-prices/`.
+- Screenshot:
+  - `verification-screenshots/nadlan-tel-aviv-seafront-apartment-prices-mobile-clean-2026-05-28-top.png`
+
+### Honest Gap Statement
+
+- This is a real live high-ticket Tel Aviv seafront-apartment guide, not a draft: the page is published, verified, visually checked on mobile, and linked from fifteen related pages.
+- I rejected the first Wikimedia beach image candidate because it was mostly a sign and did not give a property/coast signal. I replaced it with a Tel Aviv beach/marina skyline image before publishing.
+- The page supports the Tel Aviv luxury and penthouse cluster without duplicating it: the focus is first-line/second-line beach positioning, real sea view, wind, noise, promenade exposure, marine maintenance, building condition, and liquidity.
+- This block used fresh web research and the saved Nadlan Lovable competitor scan, but did not use fresh Lovable/ChatGPT/Gemini/image generation because the work was a WordPress REST publishing and live-verification block.
+- No UPress Git pull was needed for this page content because the live change was published through the WordPress REST API, not through a theme-file GitHub sync.
+- Remaining visual gap: global Nadlan header/footer/menu still needs a theme-level polish pass, GitHub push, UPress pull, and public verification.
+
 ## Tel Aviv Penthouse Prices Guide
 
 Updated: 2026-05-28 10:14 Asia/Jerusalem
