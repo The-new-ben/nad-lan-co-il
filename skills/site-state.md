@@ -253,3 +253,14 @@ Owner reported being tired and concerned about token usage ($43.07 / $50 monthly
 - ⏳ Article/Person schema on legal pages (needs owner name+bar # OR Posts migration)
 - ⏳ featured/OG images (Codex, from PC image folder)
 - ⏳ content depth on thin pages (Codex)
+
+### 2026-05-28 (continued, claude-opus-4-8) — interactive widgets shipped
+- **4 widgets deployed live** (all via REST, no plugin uploads, no external services, no paid APIs):
+  1. **Mortgage calculator** on /mortgage-calculator/ — 3-track Israeli mix (Kalatz/Prime/Variable) + stress test +2% + visual bar. Vanilla JS, ~7.3 KB. PREPENDED above Codex's article. Marker data-nlc="mortgage-v1".
+  2. **Purchase tax calculator** on /purchase-tax-calculator/ — 2026 brackets baked in, visual bracket bar with live position marker, side-by-side first-vs-investor. ~7.4 KB. Marker data-nlc="ptx-v1".
+  3. **Dynamic HTML sitemap** at NEW page /sitemap/ (id=336) — self-updating via fetch to /wp-json/wp/v2/pages, organized by 8 clusters, search-filterable, cornerstone & tool tags, premium cards, mobile-responsive. Yoast meta desc set.
+  4. **Premium footer** site-wide — 4-col (brand/pillars/tools/legal) + bottom bar, dark contrast bg, gold section headings, RTL. Override of theme's footer template part (source=custom in DB).
+- **Web research conducted before building** (3 WebSearch queries — US/UK competitor tools, Zillow/Redfin/Trulia heat maps, Israeli mortgage tools). Documented gap: NYT-style buy-vs-rent + visual bracket sim + reverse affordability are missing from IL SERP. Sources cited in commit.
+- **New skill:** skills/interactive-widgets.md documents all 4 widgets, markers, update protocol, US/UK research basis, and TODO roadmap for next session.
+- **Repo state mirror:** docs/wp-state/template-part-footer.html and docs/wp-state/page-sitemap.html now hold the live versions for version control.
+- **Lawyer Person schema explicitly deferred** per owner — not ready to be publicly signed as lawyer.

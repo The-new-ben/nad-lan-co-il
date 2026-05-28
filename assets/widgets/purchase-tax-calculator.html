@@ -1,0 +1,98 @@
+<!-- wp:html -->
+<style>
+.nlc-ptx{font-family:Heebo,Arial,sans-serif;direction:rtl;background:#FAF8F4;border:1px solid #E3E6EC;border-radius:14px;padding:24px;margin:24px 0;color:#0F1B2D;box-shadow:0 2px 12px rgba(15,27,45,.04)}
+.nlc-ptx h3{font-size:24px;font-weight:700;margin:0 0 4px;color:#0E3A8A}
+.nlc-ptx .nlc-sub{font-size:14px;color:#5F6F66;margin:0 0 20px}
+.nlc-ptx .nlc-row{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px}
+.nlc-ptx .nlc-field{background:#fff;border:1px solid #E3E6EC;border-radius:10px;padding:14px}
+.nlc-ptx label{display:block;font-size:13px;color:#5F6F66;margin-bottom:6px}
+.nlc-ptx input[type=number]{width:100%;padding:10px 12px;border:1px solid #E3E6EC;border-radius:8px;font-size:18px;font-family:inherit;background:#fff;direction:ltr;text-align:right;font-weight:600}
+.nlc-ptx input[type=number]:focus{outline:none;border-color:#D89B3C;box-shadow:0 0 0 3px rgba(216,155,60,.15)}
+.nlc-ptx .nlc-radio{display:flex;gap:8px}
+.nlc-ptx .nlc-radio label{flex:1;background:#fff;border:1px solid #E3E6EC;border-radius:8px;padding:10px;text-align:center;cursor:pointer;font-size:14px;color:#0F1B2D;margin:0;font-weight:600}
+.nlc-ptx .nlc-radio label.on{background:#0E3A8A;color:#fff;border-color:#0E3A8A}
+.nlc-ptx .nlc-radio input{display:none}
+.nlc-ptx .nlc-result{background:linear-gradient(135deg,#0E3A8A,#0E3A8A 60%,#1A4FB8);color:#fff;border-radius:12px;padding:20px;text-align:center;margin:16px 0}
+.nlc-ptx .nlc-result .nlc-rlabel{font-size:13px;opacity:.85;margin-bottom:4px}
+.nlc-ptx .nlc-result .nlc-rval{font-size:36px;font-weight:800;line-height:1;letter-spacing:-0.5px}
+.nlc-ptx .nlc-result .nlc-rpct{font-size:13px;opacity:.85;margin-top:4px}
+.nlc-ptx .nlc-bracket{margin:16px 0 8px}
+.nlc-ptx .nlc-bracket-bar{position:relative;height:42px;background:#fff;border:1px solid #E3E6EC;border-radius:8px;overflow:hidden;display:flex}
+.nlc-ptx .nlc-bseg{position:relative;display:flex;align-items:center;justify-content:center;color:#fff;font-size:11px;font-weight:600;text-align:center;padding:0 4px}
+.nlc-ptx .nlc-bseg.b0{background:#0E7C57}
+.nlc-ptx .nlc-bseg.b1{background:#7CB342}
+.nlc-ptx .nlc-bseg.b2{background:#D89B3C}
+.nlc-ptx .nlc-bseg.b3{background:#E67E22}
+.nlc-ptx .nlc-bseg.b4{background:#B3261E}
+.nlc-ptx .nlc-marker{position:absolute;top:-6px;bottom:-6px;width:3px;background:#0F1B2D;z-index:2}
+.nlc-ptx .nlc-marker::before{content:"▼";position:absolute;top:-14px;right:-6px;font-size:14px;color:#0F1B2D}
+.nlc-ptx .nlc-breakdown{background:#fff;border:1px solid #E3E6EC;border-radius:10px;padding:14px;margin-top:12px}
+.nlc-ptx .nlc-breakdown h5{font-size:13px;color:#5F6F66;margin:0 0 10px;font-weight:600}
+.nlc-ptx .nlc-brow{display:flex;justify-content:space-between;font-size:13px;padding:4px 0;border-bottom:1px dashed #E3E6EC;direction:ltr;text-align:right}
+.nlc-ptx .nlc-brow:last-child{border:0;font-weight:700;padding-top:8px;border-top:1px solid #E3E6EC}
+.nlc-ptx .nlc-brow .nlc-blab{direction:rtl;color:#5F6F66}
+.nlc-ptx .nlc-note{font-size:12px;color:#5F6F66;margin-top:14px;border-top:1px solid #E3E6EC;padding-top:12px;line-height:1.5}
+@media(max-width:720px){.nlc-ptx .nlc-row{grid-template-columns:1fr}.nlc-ptx .nlc-bseg{font-size:9px}}
+</style>
+<div class="nlc-ptx" id="nlc-ptx-1" data-nlc="ptx-v1">
+<h3>מחשבון מס רכישה — מדרגות 2026</h3>
+<p class="nlc-sub">מדרגות מס רכישה לדירת מגורים בישראל, מעודכנות לשנת 2026 (מוקפאות עד 2028 לפי חוק ההסדרים).</p>
+<div class="nlc-row">
+  <div class="nlc-field">
+    <label>שווי הדירה (₪)</label>
+    <input type="number" id="nlc-ptx-price" value="2500000" min="0" step="10000">
+  </div>
+  <div class="nlc-field">
+    <label>סוג רכישה</label>
+    <div class="nlc-radio">
+      <label class="on"><input type="radio" name="nlc-ptx-type" value="single" checked>דירה יחידה</label>
+      <label><input type="radio" name="nlc-ptx-type" value="investor">משקיע / נוספת</label>
+    </div>
+  </div>
+</div>
+<div class="nlc-result">
+  <div class="nlc-rlabel">מס רכישה משוער</div>
+  <div class="nlc-rval" id="nlc-ptx-tax">₪0</div>
+  <div class="nlc-rpct" id="nlc-ptx-pct">0% מערך הדירה</div>
+</div>
+<div class="nlc-bracket">
+  <div class="nlc-bracket-bar" id="nlc-ptx-bar"></div>
+  <div style="font-size:11px;color:#5F6F66;text-align:center;margin-top:4px">המיקום שלך בסולם המדרגות (משמאל לימין: זול ליקר)</div>
+</div>
+<div class="nlc-breakdown">
+  <h5>פירוט לפי מדרגות</h5>
+  <div id="nlc-ptx-detail"></div>
+</div>
+<div class="nlc-note">המדרגות מבוססות על תקנות 2026 ומוקפאות עד 15.01.2028 (חוק ההסדרים). דירה יחידה: 0% עד 1,978,745 ₪. משקיע: 8% משקל ראשון עד 6,055,070 ₪. הצגה להמחשה — אינו מהווה ייעוץ מס. מקור: רשות המסים.</div>
+</div>
+<script>
+(function(){
+  const r=document.getElementById('nlc-ptx-1'),
+    SINGLE=[[1978745,0],[2347040,.035],[6055070,.05],[20183565,.08],[Infinity,.10]],
+    INV=[[6055070,.08],[Infinity,.10]],
+    fmt=n=>new Intl.NumberFormat('he-IL',{maximumFractionDigits:0}).format(Math.round(n));
+  function calc(p,br){let acc=0,prev=0,parts=[];for(const[cap,rate]of br){const slice=Math.max(0,Math.min(p,cap)-prev);if(slice>0){const t=slice*rate;acc+=t;parts.push({from:prev,to:Math.min(p,cap),rate,tax:t})}prev=cap;if(p<=cap)break}return{tax:acc,parts}}
+  function bar(br,p){
+    const total=20183565,el=r.querySelector('#nlc-ptx-bar');el.innerHTML='';
+    let prev=0,i=0,cls=['b0','b1','b2','b3','b4'];
+    for(const[cap,rate]of br){const to=Math.min(cap,total*1.0);const w=(to-prev)/total*100;if(w<=0.1)break;const d=document.createElement('div');d.className='nlc-bseg '+cls[i];d.style.flex=w;d.textContent=(rate*100).toFixed(rate===0||rate===0.1?0:1)+'%';el.appendChild(d);prev=cap;i++;if(cap===Infinity)break}
+    if(p>0){const pos=Math.min(p,total)/total*100;const m=document.createElement('div');m.className='nlc-marker';m.style.right=(100-pos)+'%';el.appendChild(m)}
+  }
+  function render(){
+    const p=+r.querySelector('#nlc-ptx-price').value||0,
+      type=r.querySelector('input[name="nlc-ptx-type"]:checked').value,
+      br=type==='single'?SINGLE:INV;
+    const{tax,parts}=calc(p,br);
+    r.querySelector('#nlc-ptx-tax').textContent='₪'+fmt(tax);
+    r.querySelector('#nlc-ptx-pct').textContent=p>0?(tax/p*100).toFixed(2)+'% מערך הדירה':'';
+    bar(br,p);
+    const dt=r.querySelector('#nlc-ptx-detail');
+    dt.innerHTML=parts.length?parts.map(x=>`<div class="nlc-brow"><span class="nlc-blab">${fmt(x.from)}–${fmt(x.to)} ₪ × ${(x.rate*100).toFixed(1)}%</span><span>₪${fmt(x.tax)}</span></div>`).join('')+`<div class="nlc-brow"><span class="nlc-blab">סך הכל</span><span>₪${fmt(tax)}</span></div>`:'<div class="nlc-brow"><span class="nlc-blab">הזינו ערך</span><span>—</span></div>';
+    r.querySelectorAll('.nlc-radio label').forEach(l=>l.classList.toggle('on',l.querySelector('input').checked));
+  }
+  r.querySelectorAll('input').forEach(i=>i.addEventListener('input',render));
+  r.querySelectorAll('input[name="nlc-ptx-type"]').forEach(i=>i.addEventListener('change',render));
+  render();
+})();
+</script>
+<!-- /wp:html -->

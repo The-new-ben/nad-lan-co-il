@@ -1,0 +1,104 @@
+<!-- wp:html -->
+<style>
+.nlc-sm{font-family:Heebo,Arial,sans-serif;direction:rtl;color:#0F1B2D;max-width:1200px;margin:0 auto;padding:24px 0}
+.nlc-sm-head{text-align:center;margin-bottom:32px}
+.nlc-sm-head h1{font-size:36px;font-weight:800;color:#0E3A8A;margin:0 0 8px;letter-spacing:-0.5px}
+.nlc-sm-head .sub{font-size:16px;color:#5F6F66;margin:0}
+.nlc-sm-search{max-width:520px;margin:24px auto;position:relative}
+.nlc-sm-search input{width:100%;padding:14px 48px 14px 18px;border:1px solid #E3E6EC;border-radius:30px;font-size:16px;font-family:inherit;background:#fff;direction:rtl;box-shadow:0 2px 12px rgba(15,27,45,.04)}
+.nlc-sm-search input:focus{outline:none;border-color:#D89B3C;box-shadow:0 0 0 4px rgba(216,155,60,.15)}
+.nlc-sm-search::before{content:"⌕";position:absolute;right:18px;top:50%;transform:translateY(-50%);font-size:20px;color:#5F6F66;pointer-events:none}
+.nlc-sm-stats{display:flex;gap:24px;justify-content:center;margin:16px 0 32px;font-size:13px;color:#5F6F66}
+.nlc-sm-stats strong{color:#0E3A8A;font-size:18px;display:block;font-weight:800}
+.nlc-sm-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:20px}
+.nlc-sm-cluster{background:#fff;border:1px solid #E3E6EC;border-radius:14px;padding:20px;box-shadow:0 2px 12px rgba(15,27,45,.04);transition:transform .15s ease,box-shadow .15s ease}
+.nlc-sm-cluster:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(15,27,45,.08)}
+.nlc-sm-cluster h2{display:flex;align-items:center;gap:10px;font-size:18px;color:#0E3A8A;margin:0 0 4px;font-weight:700}
+.nlc-sm-cluster h2 .ic{display:inline-flex;width:34px;height:34px;border-radius:8px;background:#FAF8F4;align-items:center;justify-content:center;font-size:18px}
+.nlc-sm-cluster h2 a{color:inherit;text-decoration:none}
+.nlc-sm-cluster h2 a:hover{text-decoration:underline}
+.nlc-sm-cluster .pmeta{font-size:12px;color:#5F6F66;margin:0 0 14px;padding-bottom:12px;border-bottom:1px dashed #E3E6EC}
+.nlc-sm-cluster ul{list-style:none;padding:0;margin:0}
+.nlc-sm-cluster li{padding:6px 0;font-size:14px;display:flex;justify-content:space-between;align-items:center;gap:8px}
+.nlc-sm-cluster li a{color:#0F1B2D;text-decoration:none;flex:1;line-height:1.4}
+.nlc-sm-cluster li a:hover{color:#0E3A8A}
+.nlc-sm-cluster li .tag{font-size:10px;background:#FAF8F4;color:#5F6F66;padding:2px 6px;border-radius:4px;font-weight:600;white-space:nowrap}
+.nlc-sm-cluster li .tag.cor{background:#D89B3C;color:#fff}
+.nlc-sm-cluster li .tag.tool{background:#0E7C57;color:#fff}
+.nlc-sm-empty{grid-column:1/-1;text-align:center;padding:40px;color:#5F6F66}
+.nlc-sm-foot{margin-top:32px;padding:20px;background:#FAF8F4;border-radius:12px;text-align:center;font-size:13px;color:#5F6F66}
+.nlc-sm-foot strong{color:#0E3A8A}
+@media(max-width:640px){.nlc-sm-head h1{font-size:28px}.nlc-sm-grid{grid-template-columns:1fr}}
+</style>
+<div class="nlc-sm" id="nlc-sitemap" data-nlc="sitemap-v1">
+<div class="nlc-sm-head">
+<h1>מפת האתר</h1>
+<p class="sub">כל המדריכים, הכלים ועמודי הערים — מאורגנים לפי אשכולות נושאיים. מתעדכן אוטומטית מ-WordPress.</p>
+</div>
+<div class="nlc-sm-search"><input type="search" id="nlc-sm-q" placeholder="חיפוש בעמודי האתר..." autocomplete="off"></div>
+<div class="nlc-sm-stats"><div><strong id="nlc-sm-tp">…</strong>עמודים</div><div><strong id="nlc-sm-tc">…</strong>אשכולות</div><div><strong id="nlc-sm-tt">…</strong>כלים</div><div><strong id="nlc-sm-tx">…</strong>פילרים</div></div>
+<div class="nlc-sm-grid" id="nlc-sm-grid"></div>
+<div class="nlc-sm-foot">מפת האתר מתעדכנת בזמן אמת מתוך WordPress REST API. עודכן לאחרונה: <strong id="nlc-sm-time">—</strong></div>
+</div>
+<script>
+(function(){
+  const CLUSTERS = [
+    {key:'buying',label:'קניית דירה',icon:'🏠',pillar:'buying-apartment',spokes:['apartment-buying-checklist','tabu-extract-check','property-value','home-inspection','new-projects']},
+    {key:'selling',label:'מכירת דירה',icon:'💰',pillar:'selling-apartment',spokes:['property-value-estimator','real-estate-broker']},
+    {key:'invest',label:'השקעות נדל"ן',icon:'📈',pillar:'investment-apartment',spokes:['investment-property-mortgage','investment-property-cashflow-calculator','property-management','commercial-real-estate']},
+    {key:'mortgage',label:'משכנתא ומימון',icon:'🏦',pillar:'mortgage-calculator',spokes:['mortgage-advisor','mortgage-refinance','mortgage-home-insurance']},
+    {key:'tax',label:'מיסוי ומשפט',icon:'⚖️',pillar:'real-estate-tax-advisor',spokes:['purchase-tax-calculator','apartment-purchase-cost-calculator','real-estate-lawyer','tabu-extract-check']},
+    {key:'renewal',label:'התחדשות עירונית',icon:'🏗️',pillar:'urban-renewal',spokes:['architect-building-permit','construction-supervisor']},
+    {key:'pros',label:'אנשי מקצוע',icon:'👥',pillar:'professionals',spokes:['real-estate-broker','real-estate-appraiser','mortgage-advisor','home-inspection','construction-supervisor','architect-building-permit','property-management','renovation-contractor']},
+    {key:'cities',label:'מחירי דירות לפי אזור',icon:'📍',pillar:'tel-aviv-apartment-prices',spokes:['tel-aviv-seafront-apartment-prices','tel-aviv-penthouse-prices','tel-aviv-luxury-apartment-prices','neve-tzedek-apartment-prices','herzliya-apartment-prices','herzliya-pituach-apartment-prices','ramat-hasharon-apartment-prices','raanana-apartment-prices','kfar-shmaryahu-house-prices','savyon-house-prices','rishpon-house-prices','arsuf-house-prices']}
+  ];
+  const TOOLS=new Set(['mortgage-calculator','purchase-tax-calculator','property-value-estimator','investment-property-cashflow-calculator','apartment-purchase-cost-calculator']);
+  const root=document.getElementById('nlc-sitemap'),grid=root.querySelector('#nlc-sm-grid'),qIn=root.querySelector('#nlc-sm-q');
+  let PAGES={},RAW=[];
+  function fetchAll(){
+    grid.innerHTML='<div class="nlc-sm-empty">טוען...</div>';
+    fetch('/wp-json/wp/v2/pages?per_page=100&_fields=id,slug,title,link,modified,meta').then(r=>r.json()).then(arr=>{
+      RAW=arr;PAGES={};
+      arr.forEach(p=>{PAGES[p.slug]={id:p.id,title:(p.title&&p.title.rendered)||p.slug,link:p.link,modified:p.modified,cornerstone:((p.meta||{})._yoast_wpseo_is_cornerstone==='1')}});
+      render('');
+      root.querySelector('#nlc-sm-tp').textContent=arr.length;
+      root.querySelector('#nlc-sm-tc').textContent=CLUSTERS.length;
+      root.querySelector('#nlc-sm-tt').textContent=arr.filter(p=>TOOLS.has(p.slug)).length;
+      root.querySelector('#nlc-sm-tx').textContent=CLUSTERS.length;
+      const t=new Date();root.querySelector('#nlc-sm-time').textContent=t.toLocaleDateString('he-IL')+' '+t.toLocaleTimeString('he-IL',{hour:'2-digit',minute:'2-digit'});
+    }).catch(e=>{grid.innerHTML='<div class="nlc-sm-empty">שגיאת טעינה: '+e+'</div>'});
+  }
+  function decode(s){const d=document.createElement('div');d.innerHTML=s;return d.textContent}
+  function render(q){
+    grid.innerHTML='';q=(q||'').trim().toLowerCase();
+    let shown=0,assigned=new Set();
+    CLUSTERS.forEach(c=>{
+      const p=PAGES[c.pillar];if(!p)return;
+      const items=c.spokes.map(s=>PAGES[s]).filter(Boolean);
+      const all=[p,...items];
+      const matched=q?all.filter(x=>decode(x.title).toLowerCase().includes(q)):all;
+      if(!matched.length)return;
+      shown+=matched.length;
+      matched.forEach(x=>assigned.add(x.id));
+      const el=document.createElement('div');el.className='nlc-sm-cluster';
+      const lis=items.filter(x=>!q||decode(x.title).toLowerCase().includes(q)).map(x=>{
+        let tag='';if(x.cornerstone)tag='<span class="tag cor">פילר</span>';else if(TOOLS.has(x.link.replace(/.*\/([^/]+)\/?$/,'$1')))tag='<span class="tag tool">כלי</span>';
+        return `<li><a href="${x.link}">${decode(x.title)}</a>${tag}</li>`;
+      }).join('');
+      el.innerHTML=`<h2><span class="ic">${c.icon}</span><a href="${p.link}">${decode(p.title)}</a></h2><p class="pmeta">${c.label} · ${items.length} מדריכים</p><ul>${lis||'<li style="color:#5F6F66">—</li>'}</ul>`;
+      grid.appendChild(el);
+    });
+    // unassigned pages
+    const orphan=RAW.filter(p=>!assigned.has(p.id)&&p.slug!=='sitemap'&&p.slug!=='home'&&(!q||decode(p.title.rendered).toLowerCase().includes(q)));
+    if(orphan.length){
+      const el=document.createElement('div');el.className='nlc-sm-cluster';
+      el.innerHTML=`<h2><span class="ic">📄</span>שאר העמודים</h2><p class="pmeta">${orphan.length} עמודים</p><ul>${orphan.map(x=>`<li><a href="${x.link}">${decode(x.title.rendered)}</a></li>`).join('')}</ul>`;
+      grid.appendChild(el);
+    }
+    if(!grid.children.length)grid.innerHTML='<div class="nlc-sm-empty">לא נמצאו תוצאות עבור "'+q+'"</div>';
+  }
+  qIn.addEventListener('input',e=>render(e.target.value));
+  fetchAll();
+})();
+</script>
+<!-- /wp:html -->
