@@ -1,3 +1,57 @@
+## Rishpon House Prices Moshav Luxury Guide
+
+Updated: 2026-05-28 09:39 Asia/Jerusalem
+
+- Live page published and verified: `https://nad-lan.co.il/rishpon-house-prices/`.
+- Published as a public consumer-facing Hebrew moshav/private-home guide of 2,128 words.
+- Linked from thirteen existing pages:
+  - `https://nad-lan.co.il/property-value/`.
+  - `https://nad-lan.co.il/property-value-estimator/`.
+  - `https://nad-lan.co.il/buying-apartment/`.
+  - `https://nad-lan.co.il/selling-apartment/`.
+  - `https://nad-lan.co.il/investment-apartment/`.
+  - `https://nad-lan.co.il/real-estate-appraiser/`.
+  - `https://nad-lan.co.il/real-estate-lawyer/`.
+  - `https://nad-lan.co.il/savyon-house-prices/`.
+  - `https://nad-lan.co.il/kfar-shmaryahu-house-prices/`.
+  - `https://nad-lan.co.il/herzliya-pituach-apartment-prices/`.
+  - `https://nad-lan.co.il/herzliya-apartment-prices/`.
+  - `https://nad-lan.co.il/raanana-apartment-prices/`.
+  - `https://nad-lan.co.il/ramat-hasharon-apartment-prices/`.
+- Added a local Rishpon aerial hero image, premium guide layout, house/nachala/plot comparison table, planning-rights checks, buyer/seller/investor sections, Rishpon versus Savyon/Kfar Shmaryahu/Herzliya Pituach comparison, official source links, FAQ, and a public non-advice boundary.
+- Research used before editing:
+  - Google people-first content guidance: `https://developers.google.com/search/docs/fundamentals/creating-helpful-content`.
+  - Government real-estate transaction portal: `https://www.nadlan.gov.il/`.
+  - Rishpon page on Hof HaSharon Regional Council: `https://hof-hasharon.co.il/%D7%A8%D7%99%D7%A9%D7%A4%D7%95%D7%9F/`.
+  - Hof HaSharon comprehensive plan page: `https://www.hof-hasharon.co.il/208/`.
+  - Planning Administration/Mavat planning information: `https://mavat.iplan.gov.il/`.
+  - Israel Tax Authority real-estate-tax service: `https://www.gov.il/he/service/real-estate-tax-7000`.
+  - Competitor DNA checked from Sharon luxury villa/moshav pages including `https://ytm.co.il/villas-for-sale-in-sharon/`, `https://nadlan-bneyzion.com/`, `https://iltam.co.il/he/villas-for-sale/`, and current listing/price pages around Rishpon villas, plots, estates, horse farms, fields, and coastal-Sharon alternatives.
+  - Wikimedia image source: `https://commons.wikimedia.org/wiki/File:Rishpon_Aerial_View.jpg`.
+
+### Live Verification
+
+- Quality gate: passed.
+- URL: `https://nad-lan.co.il/rishpon-house-prices/`.
+- Rendered H1 count: 1.
+- Word count: 2,128.
+- Image count: 1.
+- Blocked internal terms: none.
+- WordPress excerpt: clean buyer/seller-facing text, no internal wording.
+- Mobile 390px rendered check: no horizontal overflow, one H1, hero visible, image loaded at 960 x 467, no internal terms visible.
+- Image URL check: Wikimedia image returns `image/jpeg`, HTTP 200, and `Content-Length` 163,941 bytes.
+- Hierarchy check: all 13 support pages return HTTP 200 and contain `/rishpon-house-prices/`.
+- Screenshot:
+  - `verification-screenshots/nadlan-rishpon-house-prices-mobile-clean-2026-05-28-top.png`
+
+### Honest Gap Statement
+
+- This is a real live high-ticket Rishpon moshav/private-home guide, not a draft: the page is published, verified, and linked from thirteen related pages.
+- The page extends the luxury private-home rule into a moshav/nachala context: it separates house, land, rights, use, existing structures, planning, financing, tax, maintenance, and liquidity.
+- This block used fresh web research and the saved Nadlan Lovable competitor scan, but did not use fresh Lovable/ChatGPT/Gemini/image generation because the work was a WordPress REST publishing and live-verification block.
+- No UPress Git pull was needed for this page content because the live change was published through the WordPress REST API, not through a theme-file GitHub sync.
+- The remaining visual gap is still site-wide: page-level article design is clean, but durable Nadlan header/footer/menu polish still needs theme-level GitHub change followed by UPress pull and public verification.
+
 ## Savyon House Prices Luxury Guide
 
 Updated: 2026-05-28 09:27 Asia/Jerusalem
