@@ -1,3 +1,44 @@
+## Apartment Purchase Cost Calculator Tool Page
+
+Updated: 2026-05-28 07:18 Asia/Jerusalem
+
+- Live page published and verified: `https://nad-lan.co.il/apartment-purchase-cost-calculator/`.
+- Published as a public consumer-facing Hebrew calculator plus guide of 2,312 words.
+- Linked from three existing buyer/finance pages:
+  - `https://nad-lan.co.il/buying-apartment/`.
+  - `https://nad-lan.co.il/purchase-tax-calculator/`.
+  - `https://nad-lan.co.il/mortgage-calculator/`.
+- Added a functional calculator that estimates total apartment purchase cost, required cash/equity, added costs above property price, financing ratio, and total side costs from price, purchase tax, lawyer fee, brokerage, bank/appraisal costs, moving, renovation, furniture, reserve, and planned mortgage.
+- Added a realistic residential-building image, premium tool layout, explanatory sections, comparison table, official source links, FAQ, and a public non-advice boundary.
+- Saved a new repeatable skill lesson in the Codex portfolio knowledge graph for apartment-purchase-cost calculators: connect price, tax, mortgage, side costs, reserve, and loan-to-price ratio before a buyer makes an offer.
+- Research used before editing:
+  - Israel Tax Authority real-estate-tax service page: `https://www.gov.il/he/service/real-estate-tax-7000`.
+  - Bank of Israel mortgage transparency/consumer page, including financing-limit context: `https://www.boi.org.il/information/bank-paymnts/financial-education/%D7%94%D7%A8%D7%A4%D7%95%D7%A8%D7%9E%D7%94-%D7%9C%D7%94%D7%92%D7%91%D7%A8%D7%AA-%D7%A9%D7%A7%D7%99%D7%A4%D7%95%D7%AA-%D7%94%D7%9E%D7%99%D7%93%D7%A2-%D7%95%D7%94%D7%AA%D7%97%D7%A8%D7%95%D7%AA-%D7%91%D7%9E%D7%A9%D7%9B%D7%A0%D7%AA%D7%90%D7%95%D7%AA/`.
+  - Google Search Central people-first content guidance: `https://developers.google.com/search/docs/fundamentals/creating-helpful-content`.
+  - Live competitor/cost-guide pages around apartment purchase side costs, lawyer/brokerage fees, appraisal, moving, renovation, and buyer checklist structure. The public tool and content are original and adapted to Nadlan's brand.
+
+### Live Verification
+
+- Quality gate: passed.
+- URL: `https://nad-lan.co.il/apartment-purchase-cost-calculator/`.
+- Rendered H1 count: 1.
+- Word count: 2,312.
+- Image count: 1.
+- Blocked internal terms: none.
+- WordPress excerpt: clean buyer-facing text, no internal wording.
+- Mobile 390px rendered check: no horizontal overflow, one H1, hero visible, image loaded at 960 x 719, no internal terms visible.
+- Browser calculator interaction check: changing property price from 2,000,000 to 2,200,000 updated total cost from `₪2,278,000` to `₪2,479,000`, cash needed from `₪1,278,000` to `₪1,479,000`, and financing ratio from `50.0%` to `45.5%`.
+- Image URL check: Wikimedia image returns `image/jpeg` and `Content-Length` 195,698 bytes.
+- Hierarchy check: `buying-apartment`, `purchase-tax-calculator`, and `mortgage-calculator` all return HTTP 200 and contain `/apartment-purchase-cost-calculator/`.
+- Screenshot:
+  - `verification-screenshots/nadlan-apartment-cost-calculator-mobile-clean-2026-05-28-top.png`
+
+### Honest Gap Statement
+
+- This is a real live tool page, not a draft: the page is published, the calculator runs in the browser, and the page is linked from three supporting pages.
+- This block used fresh web research and the saved Nadlan Lovable competitor scan, but did not use fresh Lovable/ChatGPT/Gemini because the work was a WordPress REST publishing and browser-verification block.
+- The tool is useful now, but the durable next gap is to turn the calculator family into reusable WordPress components and connect purchase cost, purchase tax, mortgage payment, cashflow, saved scenarios, and professional inquiries.
+
 # nad-lan.co.il Live Publication Report
 
 Date: 2026-05-27
