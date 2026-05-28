@@ -591,3 +591,39 @@ Updated: 2026-05-28 04:20 Asia/Jerusalem
 - This is a real live publication, not a draft: a new supporting professional page is published, verified, and linked from the professionals hub.
 - It deepens the professional/directory architecture because valuation connects sellers, buyers, mortgage borrowers, investors, commercial-property checks, and future appraiser profiles.
 - The page meets the minimum content and live verification gates. The next gap is still a structured professional-profile CMS and a durable theme-level header/footer implementation through GitHub plus UPress pull.
+
+## Real Estate Broker Supporting Professional Page
+
+Updated: 2026-05-28 04:30 Asia/Jerusalem
+
+- Live page published and verified: `https://nad-lan.co.il/real-estate-broker/`.
+- Published as a public consumer-facing Hebrew guide of 2,273 words.
+- Linked from the existing professionals hub at `https://nad-lan.co.il/professionals/` with the public label `מתווך נדל״ן`, so the new page is attached to the content hierarchy.
+- Added a realistic commercial-district image, premium guide layout, and sections on broker role, seller use case, buyer/renter use case, written brokerage order, brokerage fees, exclusivity, choosing a broker, warning signs, seller preparation, property-visit behavior, fee-dispute prevention, broker as part of the transaction team, FAQ, internal next-step links, and a public non-advice boundary.
+- Saved a new repeatable skill lesson in the Codex portfolio knowledge graph for broker pages: explain licensing, written orders, fees, exclusivity, and dispute prevention without attacking brokers or exposing internal commercial operations.
+- Research used before editing:
+  - Gov.il broker license and registry service: `https://www.gov.il/he/service/realtor_license`.
+  - Gov.il broker-law exam/source material for written brokerage-order requirements and fee entitlement context: `https://www.gov.il/BlobFolder/news/exam_24112024/he/part2.pdf`.
+  - Current consumer/competitor pages around brokerage fees, exclusivity, and buyer/seller expectations.
+  - Current news/regulatory discussion around broker ethics and consumer complaints, used as a private research signal for trust concerns and not copied into public claims.
+
+### Live Verification
+
+- Quality gate: passed.
+- URL: `https://nad-lan.co.il/real-estate-broker/`.
+- Rendered H1 count: 1.
+- Word count: 2,273.
+- Image count: 1.
+- Blocked internal terms: none.
+- WordPress excerpt: clean buyer/seller/renter-facing text, no old internal wording.
+- Mobile 390px rendered check: no horizontal overflow, one H1, public terms clean.
+- Image URL check: Wikimedia image returns `image/jpeg` and `Content-Length` 163,354 bytes.
+- Professionals hub hierarchy check: `https://nad-lan.co.il/professionals/` returns HTTP 200 and contains both `/real-estate-broker/` and visible `מתווך נדל״ן`.
+- Screenshot:
+  - `verification-screenshots/nadlan-broker-mobile-clean-2026-05-28-top.png`
+
+### Honest Gap Statement
+
+- This is a real live publication, not a draft: a new supporting broker page is published, verified, and linked from the professionals hub.
+- It deepens the future directory architecture because brokers are a natural provider category for buyers, sellers, renters, commercial property, city pages, and future profile pages.
+- The page meets the minimum content and live verification gates. The next gap remains structured professional-profile CMS plus durable theme-level header/footer implementation through GitHub and UPress pull.
