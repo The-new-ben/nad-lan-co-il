@@ -2,10 +2,12 @@
 
 > **Notice to all agents:** this plugin is the runtime backbone of the lead-capture monetization model (`monetization-lawyer-angle.md`). When the theme's `functions.php` fails to load custom code (which happened in the 2026-05-28 sync), this plugin is the resilient fallback that keeps the CPT and lead handler alive. **Read before editing the theme `functions.php`.**
 
-## What it does (current — v1.0.2)
+## What it does (current — v1.0.3)
 
 1. Registers the **`nadlan_lead`** custom post type — private, admin-only, with `dashicons-money-alt`. Every public lead form submits to this CPT.
-2. Exposes a **healthcheck REST endpoint**: `GET /wp-json/nadlan/v1/healthcheck` — returns plugin version, php_version, wp_version, and `cpt_present` boolean. Public, no auth. Used by any agent to confirm the plugin is loaded after a deploy.
+2. Registers a public **lead-form admin-post handler** at `admin_post(_nopriv)_nadlan_lead`. Validates nonce, sanitizes 11 fields (name, phone, email, goal, city, budget, timeline, message, source_url, utm_source, utm_campaign + a hashed IP), inserts a private `nadlan_lead` post with meta, emails `admin_email`, redirects with `?lead=received`. Bad nonce → `?lead=bad_nonce`.
+3. Exposes a **`[nadlan_lead_nonce]` shortcode** that outputs the hidden nonce and action inputs for the form, so the Codex-built homepage form (raw HTML inside a Gutenberg block) can include them without PHP.
+4. Exposes a **healthcheck REST endpoint**: `GET /wp-json/nadlan/v1/healthcheck` — returns plugin version, php_version, wp_version, and `cpt_present` boolean. Public, no auth. Used by any agent to confirm the plugin is loaded after a deploy.
 
 That's it for v1.0.2. **Deliberately minimal** because earlier versions (mu-plugin v1.0.0, plugin v1.0.1 with Hebrew strings + lead-form handler + anonymous-function init + nested REST callbacks) failed to load on this WordPress 7.0 + UPress environment. Path-to-success was: strip everything → confirm load → add features back incrementally.
 
@@ -38,7 +40,7 @@ The PHP 8.5 confirmation is critical: **all modern PHP syntax is safe to use**, 
 
 ## Roadmap (incremental, only after each step verifies)
 
-### v1.0.3 — lead-form handler (next planned)
+### v1.0.3 — lead-form handler (SHIPPED 2026-05-28)
 
 Add back the `admin_post_nadlan_lead` / `admin_post_nopriv_nadlan_lead` handler so the public lead form on the homepage actually stores submissions. Specifically:
 - `nadlan_config_handle_lead()` — wp_verify_nonce + sanitize + wp_insert_post + update_post_meta + wp_mail to admin_email.
