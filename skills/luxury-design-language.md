@@ -1,3 +1,7 @@
+> **DEPRECATED 2026-05-28.** This file was a provisional sketch before Lovable produced the full design system. The authoritative source is now `docs/design/lovable-output-2026-05-28.md`, and the operational skill is `skills/luxury-design-system.md` + its sister skills (`design-page-patterns.md`, `design-components.md`, `design-micro-interactions.md`, `design-logo-mark.md`, `design-rtl-hebrew.md`, `design-monetization-surfaces.md`). Tokens in this file are SUPERSEDED.
+
+---
+
 # Luxury Design Language — nad-lan.co.il
 
 > **Notice to all agents:** this is the canonical visual system, derived 2026-05-28 from studying the most premium real-estate websites in the world (Sotheby's International Realty, Christie's International Real Estate, The Agency, Compass, and the Mediaboom "50 luxury examples" + Luxury Presence typography guidance). It **supersedes** the earlier `visual-design-skill.md` corporate-blue palette. When the two conflict, this file wins. The owner rejected the corporate-blue/trust-blue look and the cartoon-house logo on 2026-05-28 and asked explicitly to copy the luxury leaders' design language.

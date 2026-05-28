@@ -1,3 +1,7 @@
+> **DEPRECATED 2026-05-28** (palette + typography only).** The bright `#D89B3C` gold and `#0E3A8A` trust blue here were the corporate-blue direction. The luxury system (warm ink/cream/antique-gold) is authoritative — see `docs/design/lovable-output-2026-05-28.md` and `skills/luxury-design-system.md`. The non-design content here (e.g., performance constraints) remains valid.
+
+---
+
 # Visual Design Skill
 
 > **Notice to all agents:** any visual change to the theme, Elementor template, or front-end component must respect this skill. If a competing design instruction lands from anywhere else, raise it with the owner — don't silently override.

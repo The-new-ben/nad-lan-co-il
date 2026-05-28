@@ -272,3 +272,25 @@ Owner reported being tired and concerned about token usage ($43.07 / $50 monthly
 - The prompt bakes in: luxury design language (Sotheby's/Christie's/The Agency/Compass caliber), RTL Hebrew, Frank Ruhl Libre headings + Heebo body, warm-minimal ink/cream/gold palette, all page types, the calculator tools, components library, and demands exact tokens/CSS.
 - Fonts already bundled locally (assets/fonts/frank-ruhl-libre + heebo); Lovable's @font-face points at those theme paths.
 - Status: brand assets (serif logo/favicon/OG) staged in repo + luxury-design-language.md skill committed. The earlier cartoon-house logo (media id 338/340) is still wired live as site_logo/site_icon — REPLACE after the Lovable direction is locked. Full theme.json/CSS rewrite deferred until Lovable output (or owner approval of provisional luxury direction) lands.
+
+### 2026-05-28 (late) — Claude Code (claude-opus-4-8) — Lovable design system received + translated to skills
+- Owner ran Lovable round 1 and delivered `nadlanchachamdesignsystem.md` (715 lines): full luxury design system with competitor DNA (Sotheby's, Christie's, The Agency, Compass, Luxury Presence), WCAG-verified color palette, full type scale (desktop + mobile), 7-section homepage, article + calculator + city + professionals page specs, full components library, micro-interactions matrix, monogram logo spec, self-critique with 3 fixes applied, honesty statement.
+- **Source archived** at `docs/design/lovable-output-2026-05-28.md` (authoritative).
+- **Translated to 6 new skills** + 1 master:
+  - `skills/luxury-design-system.md` — master skill, tokens, hard rules, deprecation log
+  - `skills/design-page-patterns.md` — homepage, article, calculator, city/neighborhood, professionals
+  - `skills/design-components.md` — buttons, inputs, cards, tables, tabs, accordion, breadcrumb, pagination, badges, tooltips, lead form, toasts, header, footer, 404
+  - `skills/design-micro-interactions.md` — full motion matrix + animated underline + tab slide + drawer stagger
+  - `skills/design-logo-mark.md` — wordmark + monogram seal + lockups + tagline `ידע. כלים. החלטות.` + rejected cartoon-house cleanup
+  - `skills/design-rtl-hebrew.md` — consolidated RTL rules with logical-property cheat sheet
+  - `skills/design-monetization-surfaces.md` — NEW per owner request: sponsored articles, sponsored listings, sponsored map pins, in-article capsules, partner strip, directory Pro/Premier tiers, reserved ad slots, cookie disclosure, CMS schema readiness
+- **Deprecated** `skills/luxury-design-language.md` (provisional) and `skills/visual-design-skill.md` §palette+typography (corporate blue) with in-file notices pointing to the new system.
+- **Lovable Prompt #2 authored** at `docs/lovable-prompt-2.md`. Closes 7 gaps: blog index, search results, lead-form variations, neighborhood explicit spec, map widget full UI, listing card full state spec, MONETIZATION SURFACES (per owner addendum), plus three artifact gaps that unblock the WordPress port: GAP 4 CSS bundle, GAP 5 theme.json fragment, GAP 6 Gutenberg block-pattern markup for homepage sections P1–P10.
+- **Inconsistencies resolved (Lovable's values now canonical):**
+  - Gold: `#9C7A3C` (was provisional `#B08D57`)
+  - Cream: `#FAF7F1` + `#F3EEE3` (was `#F7F4ED`)
+  - Ink: `#1B1A17` + `#2E2B26` + `#5C564D` (was `#1A1A1C`)
+  - Hairlines: `#E2DCD0` + `#C9C0AE` (was `#E5E1D8`)
+  - Logo: monogram נ in 1px gold double-circle "seal" (cartoon-house version REJECTED — media ids 338/340 still on live; pending cleanup)
+- **Tokens are documented, palette is set; the actual CSS / theme.json port to the live theme is gated on the second Lovable round** producing the CSS bundle + theme.json fragment + block patterns.
+- No live-site changes this session beyond the skills tree update.
