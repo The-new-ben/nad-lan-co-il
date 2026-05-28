@@ -870,3 +870,39 @@ Updated: 2026-05-28 05:54 Asia/Jerusalem
 - The first mobile screenshot showed the image too low in the first viewport and the hub temporarily had a duplicate button; both issues were corrected before reporting completion.
 - It deepens the future directory architecture because insurance connects mortgage borrowers, homeowners, investors, property managers, lawyers, mortgage advisers, and future insurance-professional profile pages.
 - The page meets the minimum content and live verification gates. The next gap remains structured provider profiles plus durable theme-level header/footer implementation through GitHub and UPress pull.
+
+## Renovation Contractor Supporting Professional Page
+
+Updated: 2026-05-28 06:09 Asia/Jerusalem
+
+- Live page published and verified: `https://nad-lan.co.il/renovation-contractor/`.
+- Published as a public consumer-facing Hebrew guide of 2,382 words.
+- Linked from the existing professionals hub at `https://nad-lan.co.il/professionals/` with the public label `קבלן שיפוצים`, so the new page is attached to the content hierarchy.
+- Added a realistic Israeli construction image, premium guide layout, and sections on renovation before/after buying, contractor registry checks, preparing a scope, comparing quotes, cost factors, contracts, architects/supervisors, rental/investment renovation, warning signs, project conduct, FAQ, internal next-step links, and a public non-advice boundary.
+- Saved a new repeatable skill lesson in the Codex portfolio knowledge graph for renovation-contractor pages: connect renovation to property economics, use official registrar anchors, compare quotes only after matching scope, define payment milestones, avoid operational wording such as supplier language, and always verify excerpts.
+- Research used before editing:
+  - Ministry of Construction contractor registrar: `https://www.gov.il/he/departments/units/contractors_registrar_and_head_of_sales_laws_moch`.
+  - Official contractor registry: `https://www.gov.il/apps/moch/rasham/home`.
+  - Current renovation-guide and price-guide competitors around contractor selection, quote comparison, payment milestones, reserves, materials, defects, and handover.
+
+### Live Verification
+
+- Quality gate: passed.
+- URL: `https://nad-lan.co.il/renovation-contractor/`.
+- Rendered H1 count: 1.
+- Word count: 2,382.
+- Image count: 1.
+- Blocked internal terms: none.
+- WordPress excerpt: clean owner/buyer/investor-facing text, no internal wording.
+- Mobile 390px rendered check: no horizontal overflow, one H1, public terms clean.
+- Image URL check: Wikimedia image returns `image/jpeg` and `Content-Length` 174,066 bytes.
+- Professionals hub hierarchy check: `https://nad-lan.co.il/professionals/` returns HTTP 200 and contains both `/renovation-contractor/` and visible `קבלן שיפוצים`.
+- Screenshot:
+  - `verification-screenshots/nadlan-renovation-contractor-mobile-clean-2026-05-28-v2-top.png`
+
+### Honest Gap Statement
+
+- This is a real live publication, not a draft: a new supporting renovation-contractor page is published, verified, and linked from the professionals hub.
+- The first mobile verifier caught the word `ספקים`; even though it was used in an ordinary renovation context, I removed it before reporting to keep Ben's public/private language standard strict.
+- It deepens the future directory architecture because renovation contractors connect old-apartment purchases, rental upgrades, property-management maintenance, home inspection, architects, construction supervisors, appraisers, brokers, and future contractor-profile pages.
+- The page meets the minimum content and live verification gates. The next gap remains structured provider profiles plus durable theme-level header/footer implementation through GitHub and UPress pull.
