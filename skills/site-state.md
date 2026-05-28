@@ -224,3 +224,12 @@ Owner reported being tired and concerned about token usage ($43.07 / $50 monthly
   - Old nav content backed up in this log: `<!-- wp:page-list /-->`. To revert: PUT that string to /wp/v2/navigation/4.
   - Saved current nav markup to `docs/wp-state/navigation-4.html` for version control.
 - Homepage still renders HTTP 200 with new nav labels present.
+
+### 2026-05-28 (continued) — template fixes + breadcrumbs + v1.0.5 ready
+- **Bug fixed (repo):** earlier theme-fork sed renamed pattern slugs only in `.php` files; all `.html` templates/parts still referenced `twentytwentyfive/*` patterns that no longer exist under that name. Fixed every `.html` in templates/ + parts/ to `nadlan-revenue/*`. parts/header.html + parts/footer.html were affected (used on every page). Verified all referenced patterns resolve. **Requires owner theme re-sync (UPress Git pull from main) to apply on live.** Live header currently renders OK regardless (synced state internally consistent), so no live breakage — this is a correctness fix for the next sync.
+- **Visible breadcrumbs added** to templates/page.html + templates/single.html (yoast-seo/breadcrumbs block above title). Requires (a) owner theme re-sync AND (b) Yoast breadcrumbs enabled in SEO → Search Appearance → Breadcrumbs. Harmless if disabled (renders nothing).
+- **Plugin v1.0.5 BUILT and ZIP ready (NOT yet installed — owner decides):** adds `register_post_meta` exposing `_yoast_wpseo_metadesc`, `_yoast_wpseo_title`, `_yoast_wpseo_focuskw`, `_yoast_wpseo_is_cornerstone` for REST writes (edit_posts gated). Unblocks the two biggest remaining on-page levers: bulk meta descriptions (42 empty) + cornerstone marking (11 pillars). PHP lint clean. Source in plugins/nadlan-config/. If owner installs: next agent runs the desc-writing script (template Hebrew descriptions already designed in /tmp/work2.py logic — see strategy/copywriting skills for tone).
+
+### Decision pending for owner
+1. **Install plugin v1.0.5?** One delete-old + upload-new cycle. Payoff: I then write all 42 Yoast meta descriptions + mark 11 cornerstones via REST in one batch. Biggest remaining on-page SEO win.
+2. **Re-sync theme from main (UPress Git pull)?** Applies: pattern-ref consistency fix + visible breadcrumbs. Then enable Yoast breadcrumbs in Search Appearance.
