@@ -401,3 +401,42 @@ Updated: 2026-05-28 03:24 Asia/Jerusalem
 - This is a real live publication, not a draft: a new seller pillar is published, verified, and linked from the homepage.
 - It improves Nadlan's money architecture by adding the missing seller side of the marketplace: pricing, tax, rights, lawyer, buyer qualification, and handover.
 - The durable site-wide gap remains the same: the block-theme header and footer still need a proper theme-level implementation through GitHub plus UPress pull. The homepage page-level navigation is working and verified, but it is still a bridge until the real site chrome is completed.
+
+## Urban Renewal / Pinui Binui Pillar Publication
+
+Updated: 2026-05-28 03:33 Asia/Jerusalem
+
+- Live page published: `https://nad-lan.co.il/urban-renewal/`.
+- Added a high-value missing Nadlan pillar for owners and buyers evaluating `התחדשות עירונית`, `פינוי בינוי`, and project risk before signing.
+- Published as a public consumer-facing Hebrew guide of 2,088 words.
+- Added the urban-renewal page to the live homepage page-level navigation as `התחדשות`, so it is reachable from the public homepage hierarchy.
+- Added a realistic urban-renewal image, premium guide layout, and sections on renewal types, owner organization, majority/consent logic, developer checks, appraiser and feasibility questions, buyers evaluating a building with renewal potential, warning signs, agreement terms, document preservation, FAQ, internal next-step links, and a public non-advice boundary.
+- Research used before editing:
+  - Google Search Central helpful content guidance for people-first YMYL pages.
+  - Gov.il Governmental Urban Renewal Authority declaration service, including requirements such as planning, local authority position, agreements, and special majority references.
+  - Gov.il Governmental Urban Renewal Authority appraiser-appointment service, including the public concept of appraiser review for owners evaluating the feasibility of a proposed transaction.
+  - Gov.il tenant inquiries commissioner page, especially trust/fairness duties and complaint handling around urban-renewal organizers.
+  - Tel Aviv municipal urban-renewal page for public-facing process DNA: transparency, routes, rights, timetable expectations, public space, infrastructure, and resident participation.
+
+### Live Verification
+
+- Quality gate: passed.
+- URL: `https://nad-lan.co.il/urban-renewal/`.
+- Rendered H1 count: 1.
+- Word count: 2,088.
+- Image count: 1.
+- Blocked internal terms: none.
+- WordPress excerpt: clean owner/buyer-facing text, no old internal wording.
+- Mobile 390px rendered check: no horizontal overflow, one H1, public terms clean.
+- Image URL check: Wikimedia image returns `image/jpeg` and `Content-Length` 260,775 bytes.
+- Homepage hierarchy check: `https://nad-lan.co.il/` returns HTTP 200 and contains both `/urban-renewal/` and visible `התחדשות`.
+- Homepage mobile nav check: page-nav labels now include `קנייה`, `מכירה`, `השקעה`, `מקבלן`, `התחדשות`, `משכנתא`, `מס רכישה`, `טאבו`, `עורך דין`.
+- Screenshots:
+  - `verification-screenshots/nadlan-urban-renewal-mobile-clean-2026-05-28-top.png`
+  - `verification-screenshots/nadlan-home-urban-renewal-nav-mobile-2026-05-28-top.png`
+
+### Honest Gap Statement
+
+- This is a real live publication, not a draft: a new urban-renewal pillar is published, verified, and linked from the homepage.
+- It improves Nadlan's money architecture by adding a high-value owner/developer/lawyer/appraiser topic cluster that can later support professional listings and inquiry tools.
+- The page meets the minimum content and live verification gates. The remaining gap is a future interactive intake/checklist flow for owners and buyers, plus the same durable theme-level header/footer work through GitHub and UPress pull.
