@@ -1,3 +1,60 @@
+## Tel Aviv Luxury Apartment Prices Guide
+
+Updated: 2026-05-28 10:04 Asia/Jerusalem
+
+- Live page published and verified: `https://nad-lan.co.il/tel-aviv-luxury-apartment-prices/`.
+- Published as a public consumer-facing Hebrew luxury-apartment, penthouse, and tower guide of 2,211 words.
+- Linked from fifteen existing pages:
+  - `https://nad-lan.co.il/property-value/`.
+  - `https://nad-lan.co.il/property-value-estimator/`.
+  - `https://nad-lan.co.il/buying-apartment/`.
+  - `https://nad-lan.co.il/selling-apartment/`.
+  - `https://nad-lan.co.il/investment-apartment/`.
+  - `https://nad-lan.co.il/real-estate-appraiser/`.
+  - `https://nad-lan.co.il/real-estate-lawyer/`.
+  - `https://nad-lan.co.il/herzliya-pituach-apartment-prices/`.
+  - `https://nad-lan.co.il/herzliya-apartment-prices/`.
+  - `https://nad-lan.co.il/ramat-hasharon-apartment-prices/`.
+  - `https://nad-lan.co.il/raanana-apartment-prices/`.
+  - `https://nad-lan.co.il/arsuf-house-prices/`.
+  - `https://nad-lan.co.il/rishpon-house-prices/`.
+  - `https://nad-lan.co.il/savyon-house-prices/`.
+  - `https://nad-lan.co.il/kfar-shmaryahu-house-prices/`.
+- Added a Park Tzameret/Tel Aviv tower hero image, premium guide layout, location/tower comparison table, buyer/seller/investor sections, tower building-management checks, official source links, FAQ, and a public non-advice boundary.
+- Research used before editing:
+  - Google people-first content guidance: `https://developers.google.com/search/docs/fundamentals/creating-helpful-content`.
+  - Government real-estate transaction portal: `https://www.nadlan.gov.il/`.
+  - Tel Aviv-Yafo planning information page: `https://www.tel-aviv.gov.il/Residents/Construction/Pages/PlanningInformation.aspx`.
+  - Tel Aviv-Yafo planning and construction overview: `https://www.tel-aviv.gov.il/About/Pages/planning.aspx`.
+  - Planning Administration/Mavat planning information: `https://mavat.iplan.gov.il/`.
+  - Israel Tax Authority real-estate-tax service: `https://www.gov.il/he/service/real-estate-tax-7000`.
+  - Competitor DNA checked from Tel Aviv luxury-apartment, tower, Neve Tzedek, Park Tzameret, Rothschild, Kikar HaMedina, and seafront listing pages including `https://www.myplace.co.il/%D7%93%D7%99%D7%A8%D7%95%D7%AA-%D7%99%D7%95%D7%A7%D7%A8%D7%94/`, `https://www.kinyan.co.il/property-type/%D7%9E%D7%92%D7%93%D7%9C%D7%99-%D7%99%D7%95%D7%A7%D7%A8%D7%94-%D7%91%D7%AA%D7%9C-%D7%90%D7%91%D7%99%D7%91/`, `https://neve-tzedekpro.co.il/`, and current public broker/listing pages around Tel Aviv luxury apartments.
+  - Wikimedia image source: `https://commons.wikimedia.org/wiki/File:Park_Tzameret_in_2014.jpg`.
+
+### Live Verification
+
+- Quality gate: passed.
+- URL: `https://nad-lan.co.il/tel-aviv-luxury-apartment-prices/`.
+- Rendered H1 count: 1.
+- Word count: 2,211.
+- Image count: 1.
+- Blocked internal terms: none.
+- WordPress excerpt: clean buyer/seller-facing text, no internal wording.
+- Mobile 390px rendered check: no horizontal overflow, one H1, hero visible, image loaded at 960 x 651, no internal terms visible.
+- Image URL check: Wikimedia image returns `image/jpeg`, HTTP 200, and `Content-Length` 240,406 bytes.
+- Hierarchy check: all 15 linked support pages return HTTP 200 and contain `/tel-aviv-luxury-apartment-prices/`.
+- Two intended support slugs were not found under the exact names `mortgage` and `purchase-tax`, so they were not counted as linked.
+- Screenshot:
+  - `verification-screenshots/nadlan-tel-aviv-luxury-apartment-prices-mobile-clean-2026-05-28-top.png`
+
+### Honest Gap Statement
+
+- This is a real live high-ticket Tel Aviv luxury-apartment guide, not a draft: the page is published, verified, visually checked on mobile, and linked from fifteen related pages.
+- The page follows competitor DNA without copying: tower/neighborhood identity, sea/skyline view, floor height, balcony/terrace, parking, building services, privacy, discretion, cost, maintenance, and liquidity.
+- This block used fresh web research and the saved Nadlan Lovable competitor scan, but did not use fresh Lovable/ChatGPT/Gemini/image generation because the work was a WordPress REST publishing and live-verification block.
+- No UPress Git pull was needed for this page content because the live change was published through the WordPress REST API, not through a theme-file GitHub sync.
+- Remaining visual gap: page-level layout is clean, but the global Nadlan header/footer/menu still needs a theme-level polish pass, GitHub push, UPress pull, and public verification.
+
 ## Arsuf House Prices Coastal Luxury Guide
 
 Updated: 2026-05-28 09:53 Asia/Jerusalem
