@@ -233,3 +233,23 @@ Owner reported being tired and concerned about token usage ($43.07 / $50 monthly
 ### Decision pending for owner
 1. **Install plugin v1.0.5?** One delete-old + upload-new cycle. Payoff: I then write all 42 Yoast meta descriptions + mark 11 cornerstones via REST in one batch. Biggest remaining on-page SEO win.
 2. **Re-sync theme from main (UPress Git pull)?** Applies: pattern-ref consistency fix + visible breadcrumbs. Then enable Yoast breadcrumbs in Search Appearance.
+
+### 2026-05-28 (continued) — v1.0.5 installed, 41 meta descriptions + 11 cornerstones LIVE
+- Owner installed plugin v1.0.5. Healthcheck confirms version 1.0.5.
+- **register_post_meta worked** — Yoast meta keys now writable via REST.
+- **Wrote 41/42 Yoast meta descriptions** (hand-written Hebrew, 150-160 chars, copywriting-skill tone: fact + benefit + soft CTA, no AI markers, no forbidden internal terms). Verified persisted per-page during write; confirmed rendering live on mortgage-calculator + real-estate-lawyer (`<meta name="description">`).
+  - 1 page skipped (no mapping — likely a sample/privacy page; check & fill if it's a real page).
+- **Marked 11 pillars as cornerstone** (`_yoast_wpseo_is_cornerstone=1`): buying-apartment, selling-apartment, investment-apartment, mortgage-calculator, real-estate-tax-advisor, real-estate-lawyer, urban-renewal, commercial-real-estate, new-projects, professionals, purchase-tax-calculator.
+- Note: REST collection query with `_fields=...,meta` returns 400 (WP quirk); query meta per-page instead. Documented so next agent doesn't trip on it.
+- The full description text per slug is in /tmp/desc.py logic this session; if regeneration needed, the DESC dict pattern is reproducible from page titles + copywriting-skill.
+
+### On-page SEO status after this session
+- ✅ 41 pages: unique Hebrew meta descriptions (was 0)
+- ✅ 11 cornerstone pillars marked
+- ✅ 153 internal hub-spoke links
+- ✅ curated pillar-first navigation (site-wide)
+- ✅ https canonicals, index/follow, BreadcrumbList schema
+- ✅ visible breadcrumbs in templates (pending theme re-sync + Yoast breadcrumbs toggle)
+- ⏳ Article/Person schema on legal pages (needs owner name+bar # OR Posts migration)
+- ⏳ featured/OG images (Codex, from PC image folder)
+- ⏳ content depth on thin pages (Codex)
