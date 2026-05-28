@@ -478,3 +478,41 @@ Updated: 2026-05-28 03:44 Asia/Jerusalem
 - This is a real live publication, not a draft: a new valuation pillar is published, verified, and linked from the homepage.
 - It improves Nadlan's money architecture because valuation is a bridge topic for sellers, buyers, investors, mortgage checks, appraisers, and future property-value tools.
 - The page meets the minimum content and live verification gates. The remaining opportunity is to build a real calculator/intake experience later, and to move the temporary page-level homepage nav into durable theme-level header/footer chrome through GitHub and UPress pull.
+
+## Commercial Real Estate Pillar Publication
+
+Updated: 2026-05-28 03:54 Asia/Jerusalem
+
+- Live page published: `https://nad-lan.co.il/commercial-real-estate/`.
+- Added a high-value missing Nadlan pillar for investors and business owners evaluating offices, shops, clinics, warehouses, logistics space, and other income-producing commercial assets.
+- Published as a public consumer-facing Hebrew guide of 2,083 words.
+- Added the commercial real-estate page to the live homepage page-level navigation as `מסחרי`, so it is reachable from the public homepage hierarchy.
+- Added a realistic commercial-district image, premium guide layout, and sections on commercial property types, gross versus net yield, tenant and lease checks, legal/use checks, Tax Authority transaction data as a comparison source, financing, owner-occupier purchases, vacancy risk, appraiser/comparable checks, professional team, warning signs, FAQ, internal next-step links, and a public non-advice boundary.
+- Research used before editing:
+  - Google Search Central helpful content guidance for people-first YMYL pages.
+  - Gov.il / Israel Tax Authority real-estate information database service for actual transaction-comparison context.
+  - Commercial real-estate competitor pages around offices, shops, warehouses, yield, tenant strength, lease terms, management fees, financing, and professional checks.
+  - Current commercial-property investment guides that emphasize net yield, cap-rate-style thinking, vacancy risk, lease review, and area demand.
+
+### Live Verification
+
+- Quality gate: passed.
+- URL: `https://nad-lan.co.il/commercial-real-estate/`.
+- Rendered H1 count: 1.
+- Word count: 2,083.
+- Image count: 1.
+- Blocked internal terms: none.
+- WordPress excerpt: clean investor/business-owner-facing text, no old internal wording.
+- Mobile 390px rendered check: no horizontal overflow, one H1, public terms clean.
+- Image URL check: Wikimedia image returns `image/jpeg` and `Content-Length` 163,354 bytes.
+- Homepage hierarchy check: `https://nad-lan.co.il/` returns HTTP 200 and contains both `/commercial-real-estate/` and visible `מסחרי`.
+- Homepage mobile nav check: page-nav labels now include `קנייה`, `מכירה`, `שווי דירה`, `השקעה`, `מסחרי`, `מקבלן`, `התחדשות`, `משכנתא`, `מס רכישה`, `טאבו`, `עורך דין`.
+- Screenshots:
+  - `verification-screenshots/nadlan-commercial-real-estate-mobile-clean-2026-05-28-top.png`
+  - `verification-screenshots/nadlan-home-commercial-nav-mobile-2026-05-28-top.png`
+
+### Honest Gap Statement
+
+- This is a real live publication, not a draft: a new commercial-real-estate pillar is published, verified, and linked from the homepage.
+- It improves Nadlan's money architecture because commercial property supports investor leads, legal review, appraiser needs, financing needs, management services, and future professional listings.
+- The page meets the minimum content and live verification gates. The remaining opportunity is to build a commercial-property intake/calculator flow later, and to move the temporary page-level homepage nav into durable theme-level header/footer chrome through GitHub and UPress pull.
