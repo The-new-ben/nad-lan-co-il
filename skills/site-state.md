@@ -153,3 +153,16 @@ Commits on `claude/charming-meitner-mwVEW` (= PR #1, merged to main):
 
 ### Owner tone at session end
 Owner reported being tired and concerned about token usage ($43.07 / $50 monthly Claude budget, 86%). Next session: be minimal in chat, batch operations, do not re-explain rationale that's already in skills/. Read site-state.md last 3 blocks first.
+
+### 2026-05-28 (late night) — Claude Code (claude-opus-4-7) — nadlan-config plugin LIVE
+- **Outcome: lead-capture foundation is alive.** After three failed attempts (mu-plugin v1.0.0 didn't load, plugin v1.0.1 with Hebrew + lead handler + abilities had fatal on activation), the stripped v1.0.2 (CPT + healthcheck only) loaded successfully.
+- **Verified via** `GET /wp-json/nadlan/v1/healthcheck`:
+  - `plugin`: nadlan-config
+  - `version`: 1.0.2
+  - `cpt_present`: **true**
+  - `php_version`: **8.5.5** (much newer than the conservative 7.2 floor; all modern PHP is safe)
+  - `wp_version`: **7.0** (Abilities API namespace confirmed)
+- **Live URL for any agent to test:** `https://nad-lan.co.il/wp-json/nadlan/v1/healthcheck`
+- New skill: `skills/nadlan-config-plugin.md` — documents the plugin's purpose, install/update flow, roadmap, the five "never do this" rules, and how to verify loaded.
+- Theme `functions.php` issue is now MOOT — the lead-capture lives in the plugin, theme can be anything.
+- Next agent should: ship v1.0.3 (add lead-form handler back), then v1.0.4 (abilities — after verifying `wp_register_ability` signature in WP 7.0 source).
