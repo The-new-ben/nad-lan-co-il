@@ -324,3 +324,11 @@ Owner said "yes to all" + new idea. Shipped:
 - **Calculator widgets retokenized**: swapped corporate-blue #0E3A8A → ink-900, bright gold D89B3C → antique 9C7A3C, etc. — now match the luxury palette.
 - Mirrored: page-home.html, page-mortgage-calculator.html, page-purchase-tax-calculator.html in docs/wp-state/.
 - Owner approvals locked: gov.il data, free map tiles, legal re-publishing OK.
+
+### 2026-05-28 — Claude Code (claude-opus-4-8) — homepage fix + short-rent bugfix + lead FAB + plugin v1.1.1
+- **Short-rent widget WAS broken** (owner correct): a nested straight double-quote inside a JS string (`= "פעילות מקצועית"` in Greece data) threw a syntax error, killing the whole IIFE → tabs did nothing. Fixed (→ gershayim ״), verified 0 odd-quote lines, re-injected. Now functional.
+- **Homepage was empty-looking** (0 featured images, patterns are skeletons without photography). **Rebuilt type-led** (Sotheby's approach: type+restraint, no photo dependency): serif hero (no empty image box), 6 working tool cards (incl. buy-vs-rent + short-rent), real trust band, 3 guide cards, dark CTA band that opens the lead modal. Live, verified (nlh-hero present, 0 empty img boxes). Old pattern-homepage backed up earlier.
+- **Lead funnel built** (the missing contact path): site-wide floating "ייעוץ ראשוני בחינם" FAB + lead modal in the footer template part (custom override). Submits via fetch to NEW public REST endpoint `POST /nadlan/v1/lead` (plugin v1.1.1: honeypot + IP rate-limit + creates nadlan_lead + emails admin). Works on cached pages (no nonce). **FAB UI is live now; submissions work after owner activates v1.1.1.**
+- New skill `skills/lead-funnel.md`: funnel map + roadmap to self-registration + Stripe payments.
+- Plugin v1.1.1 ZIP sent to owner.
+- **Honestly deferred this turn** (documented, not done): full Hebrew article writing for short-rent pillar; listings catalog UI (archive/single templates + seed); self-registration + payments (needs owner stack decision + paid plugin); IndexNow instant-indexing; the "magic AI recommender" for short-rent. WhatsApp/phone FAB legs blocked on owner's number.
