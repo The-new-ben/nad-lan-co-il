@@ -1,0 +1,110 @@
+<!-- wp:html -->
+<style>
+.nbvr{font-family:var(--font-sans,Heebo,sans-serif);direction:rtl;color:var(--ink-700,#3A3733);background:var(--cream-50,#FAF7F1);border:1px solid var(--hairline,rgba(27,26,23,.12));border-radius:2px;padding:32px;margin:32px 0}
+.nbvr h3{font-family:var(--font-serif,"Frank Ruhl Libre",serif);font-weight:500;font-size:28px;color:var(--ink-900,#1B1A17);margin:0 0 4px}
+.nbvr .nbvr-eye{font-size:11px;letter-spacing:.18em;color:var(--gold-600,#9C7A3C);font-weight:500;margin:0 0 8px}
+.nbvr .nbvr-sub{font-size:15px;color:var(--ink-500,#6E6A63);margin:0 0 24px;max-width:560px;line-height:1.6}
+.nbvr-grid{display:grid;grid-template-columns:340px 1fr;gap:32px}
+.nbvr-inputs{display:flex;flex-direction:column;gap:14px}
+.nbvr-f label{display:block;font-size:11px;letter-spacing:.14em;color:var(--ink-500,#6E6A63);margin-bottom:6px;font-weight:500}
+.nbvr-f input[type=number]{width:100%;border:0;border-bottom:1px solid var(--hairline-strong,rgba(27,26,23,.24));background:transparent;font-size:18px;font-family:inherit;color:var(--ink-900,#1B1A17);padding:6px 0;direction:ltr;text-align:right;font-variant-numeric:tabular-nums}
+.nbvr-f input:focus{outline:none;border-bottom:1.5px solid var(--gold-600,#9C7A3C)}
+.nbvr-f .suf{font-size:12px;color:var(--ink-500)}
+.nbvr-result{background:var(--paper-0,#fff);border:1px solid var(--hairline,rgba(27,26,23,.12));border-radius:2px;padding:24px;display:flex;flex-direction:column}
+.nbvr-verdict{font-family:var(--font-serif,serif);font-size:24px;color:var(--ink-900,#1B1A17);line-height:1.3;margin:0 0 4px}
+.nbvr-verdict b{color:var(--gold-600,#9C7A3C)}
+.nbvr-vsub{font-size:13px;color:var(--ink-500);margin:0 0 16px}
+.nbvr-chart{width:100%;height:240px;margin-top:auto}
+.nbvr-legend{display:flex;gap:20px;font-size:12px;color:var(--ink-500);margin-top:10px;flex-wrap:wrap}
+.nbvr-legend i{display:inline-block;width:14px;height:2px;vertical-align:middle;margin-left:6px}
+.nbvr-li-buy i{background:var(--ink-900,#1B1A17)}
+.nbvr-li-rent i{background:var(--gold-600,#9C7A3C)}
+.nbvr-li-be i{background:var(--positive-700,#2E6A4F);height:0;border-top:1px dashed var(--positive-700,#2E6A4F)}
+.nbvr-note{font-size:12px;color:var(--ink-500);margin-top:18px;border-top:1px solid var(--hairline);padding-top:14px;line-height:1.55}
+.nbvr-cta{display:inline-block;margin-top:14px;font-size:15px;color:var(--gold-600,#9C7A3C);text-decoration:none;border-bottom:1px solid var(--gold-600,#9C7A3C);align-self:flex-start}
+@media(max-width:780px){.nbvr-grid{grid-template-columns:1fr}}
+</style>
+<div class="nbvr" id="nbvr" dir="rtl">
+  <p class="nbvr-eye">כלי החלטה · קנייה מול שכירות</p>
+  <h3>לקנות או לשכור? נקודת האיזון שלך</h3>
+  <p class="nbvr-sub">הכלי משווה את העלות הכוללת של קנייה מול שכירות לאורך זמן — כולל ריבית, מסים, אחזקה, עליית ערך, ותשואה אלטרנטיבית על ההון. הנקודה שבה הקווים נחתכים היא השנה שבה קנייה משתלמת יותר.</p>
+  <div class="nbvr-grid">
+    <div class="nbvr-inputs">
+      <div class="nbvr-f"><label>מחיר הדירה <span class="suf">₪</span></label><input type="number" id="nb-price" value="2500000" step="50000"></div>
+      <div class="nbvr-f"><label>הון עצמי <span class="suf">₪</span></label><input type="number" id="nb-down" value="700000" step="50000"></div>
+      <div class="nbvr-f"><label>ריבית משכנתא <span class="suf">% שנתי</span></label><input type="number" id="nb-rate" value="5.0" step="0.1"></div>
+      <div class="nbvr-f"><label>שכר דירה חודשי להשוואה <span class="suf">₪</span></label><input type="number" id="nb-rent" value="6500" step="100"></div>
+      <div class="nbvr-f"><label>עליית ערך נדל״ן <span class="suf">% שנתי</span></label><input type="number" id="nb-apprec" value="3.5" step="0.1"></div>
+      <div class="nbvr-f"><label>תשואה אלטרנטיבית על ההון <span class="suf">% שנתי</span></label><input type="number" id="nb-invest" value="4.0" step="0.1"></div>
+    </div>
+    <div class="nbvr-result">
+      <p class="nbvr-verdict" id="nb-verdict">…</p>
+      <p class="nbvr-vsub" id="nb-vsub"></p>
+      <svg class="nbvr-chart" id="nb-chart" viewBox="0 0 640 240" preserveAspectRatio="none" aria-label="גרף השוואת עלות מצטברת"></svg>
+      <div class="nbvr-legend">
+        <span class="nbvr-li-buy"><i></i>עלות קנייה מצטברת נטו</span>
+        <span class="nbvr-li-rent"><i></i>עלות שכירות מצטברת</span>
+        <span class="nbvr-li-be"><i></i>נקודת איזון</span>
+      </div>
+      <a class="nbvr-cta" href="/real-estate-lawyer/">רוצים בדיקה אישית לפני החלטה? ←</a>
+    </div>
+  </div>
+  <p class="nbvr-note">החישוב להמחשה בלבד ומבוסס על הנחות שמרניות (משכנתא ל-25 שנה בלוח שפיצר, אחזקה 1% משווי הדירה בשנה, עלויות רכישה חד-פעמיות ~8%, עליית שכירות בקצב עליית הערך). אינו מהווה ייעוץ פיננסי. נדל״ן חכם.</p>
+</div>
+<script>
+(function(){
+  var R=document.getElementById('nbvr'); if(!R) return;
+  var fmt=function(n){return new Intl.NumberFormat('he-IL',{maximumFractionDigits:0}).format(Math.round(n));};
+  function val(id){return +document.getElementById(id).value||0;}
+  function pmt(p,r,n){r=r/100/12;n=n*12;return r===0?p/n:p*r/(1-Math.pow(1+r,-n));}
+  function compute(){
+    var price=val('nb-price'),down=val('nb-down'),rate=val('nb-rate'),rent=val('nb-rent'),
+        apprec=val('nb-apprec')/100,invest=val('nb-invest')/100;
+    var loan=Math.max(0,price-down), years=25, m=pmt(loan,rate,years), rmo=rate/100/12;
+    var buyNet=[],rentNet=[],be=-1;
+    var bal=loan, buyOut=down+price*0.08, rentOut=0, rentNow=rent, investPot=down;
+    for(var y=1;y<=30;y++){
+      for(var k=0;k<12;k++){
+        // buy: pay mortgage (interest portion is cost, principal builds equity), maintenance
+        var interest=bal*rmo, principal=Math.min(bal,m-interest); bal=Math.max(0,bal-principal);
+        buyOut+= (y<=years? interest : 0) + (price*0.01/12); // interest + maintenance
+        // rent: pay rent; the would-be down payment grows in alt investment
+        rentOut+= rentNow;
+        investPot*= (1+invest/12);
+      }
+      rentNow*= (1+apprec); // rent rises with market
+      var homeVal=price*Math.pow(1+apprec,y);
+      var equity=homeVal-bal; // what you'd net selling (ignoring selling costs for simplicity)
+      var buyCostNet=buyOut - (equity-down); // net out-of-pocket minus equity gained beyond initial down
+      var rentCostNet=rentOut - (investPot-down); // rent minus alt-investment gain beyond initial
+      buyNet.push(buyCostNet); rentNet.push(rentCostNet);
+      if(be<0 && buyCostNet<rentCostNet) be=y;
+    }
+    return {buyNet:buyNet,rentNet:rentNet,be:be};
+  }
+  function draw(d){
+    var W=640,H=240,pad=8,n=d.buyNet.length;
+    var all=d.buyNet.concat(d.rentNet),mx=Math.max.apply(null,all),mn=Math.min.apply(null,all);
+    var sx=function(i){return pad+(W-2*pad)*(i/(n-1));};
+    var sy=function(v){return H-pad-(H-2*pad)*((v-mn)/((mx-mn)||1));};
+    function path(arr){return arr.map(function(v,i){return (i?'L':'M')+sx(i).toFixed(1)+' '+sy(v).toFixed(1);}).join(' ');}
+    var svg='';
+    if(d.be>0){var bx=sx(d.be-1);svg+='<line x1="'+bx.toFixed(1)+'" y1="'+pad+'" x2="'+bx.toFixed(1)+'" y2="'+(H-pad)+'" stroke="#2E6A4F" stroke-width="1" stroke-dasharray="3 3"/>';
+      svg+='<circle cx="'+bx.toFixed(1)+'" cy="'+sy(d.buyNet[d.be-1]).toFixed(1)+'" r="4" fill="#2E6A4F"/>';}
+    svg+='<path d="'+path(d.rentNet)+'" fill="none" stroke="#9C7A3C" stroke-width="1.5"/>';
+    svg+='<path d="'+path(d.buyNet)+'" fill="none" stroke="#1B1A17" stroke-width="1.5"/>';
+    document.getElementById('nb-chart').innerHTML=svg;
+  }
+  function render(){
+    var d=compute(); draw(d);
+    var v=document.getElementById('nb-verdict'),s=document.getElementById('nb-vsub');
+    if(d.be>0 && d.be<=30){v.innerHTML='קנייה משתלמת יותר אחרי <b>'+d.be+' שנים</b>';
+      s.textContent='אם תישארו בדירה מעבר ל-'+d.be+' שנים, קנייה זולה יותר מצטברת. פחות מכך — שכירות.';}
+    else{v.innerHTML='בתרחיש הזה, <b>שכירות</b> משתלמת לאורך 30 שנה';
+      s.textContent='בהנחות הנוכחיות נקודת האיזון רחוקה מ-30 שנה. שנו את ההנחות כדי לבדוק.';}
+  }
+  R.querySelectorAll('input').forEach(function(i){i.addEventListener('input',render);});
+  render();
+})();
+</script>
+<!-- /wp:html -->

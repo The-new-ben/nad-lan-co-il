@@ -97,3 +97,20 @@
 
 ---
 _Created 2026-05-28 by Claude Code (claude-opus-4-8). Sources: see WebSearch citations in commit message + skill content for US/UK competitor research._
+
+## Update 2026-05-28 (claude-opus-4-8) — Buy-vs-Rent break-even visualizer + logo header
+
+### Buy-vs-Rent break-even ("the wow")
+- **Live at `/buy-vs-rent/`** (page id 343). Repo source: `assets/widgets/buy-vs-rent.html`.
+- The globally-viral NYT-style tool, ABSENT in the Hebrew market (verified gap). Decision-stage → highest-value lead moment → CTA links to `/real-estate-lawyer/`.
+- Computes 30-year cumulative NET cost of buying (mortgage interest + maintenance 1% + ~8% purchase costs − equity/appreciation) vs renting (rent rising with market − alt-investment return on the would-be down payment). Finds the **break-even year** where the two lines cross.
+- Animated inline SVG dual-line chart with a dashed gold break-even marker, live recompute on every input change. Vanilla JS, no deps. Uses the live luxury CSS tokens (`--font-serif`, `--gold-600`, `--ink-900`), so it inherits the design system automatically.
+- Marker: `id="nbvr"`. Added to the כלים submenu in nav id 4.
+- **Honest limitation**: uses conservative fixed assumptions (25y Spitzer mortgage, 1% maintenance, 8% one-time purchase costs, rent rises at appreciation rate, ignores selling costs). Documented in the widget's note. A future v2 could expose these as advanced inputs and add a "sensitivity" band.
+
+### Logo header (the "internal pages show only a link" fix)
+- The header template part (`nadlan-revenue//header`) used `wp:site-title` (plain text) — so internal pages showed a text link, not a logo.
+- **Overridden live via REST** (`source: custom`) with a brand lockup: inline-SVG **monogram seal** (נ in a gold double-circle, the "old-house" double-rule) + serif wordmark "נדל״ן חכם" + tagline "ידע · כלים · החלטות" + a **pulsing gold dot** (CSS `@keyframes nlpulse`, respects `prefers-reduced-motion`, hidden detail the owner requested to "attract the eye").
+- Keeps the curated block navigation (ref 4). Slim, cream bg, hairline bottom border.
+- Repo mirror: should be saved to `docs/wp-state/template-part-header.html` (TODO next commit).
+- **Note**: this is a DB `custom` override — it does NOT live in the theme file `parts/header.html`. If the theme is re-synced, the override persists (DB wins over theme file for customized parts). But for repo-source-of-truth, mirror it.
