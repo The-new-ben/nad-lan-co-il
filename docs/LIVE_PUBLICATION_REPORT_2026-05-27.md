@@ -329,3 +329,36 @@ Updated: 2026-05-28 03:00 Asia/Jerusalem
 
 - This page now meets the portfolio minimum content gate and is live. It supports the main buying-apartment pillar with a practical checklist rather than a thin summary.
 - The next content gap is likely `tabu-extract-check`, because it is tightly linked to both the buying guide and the checklist. The design gap remains site-wide header/footer/theme polish.
+
+## Tabu Extract / Rights Check Expansion
+
+Updated: 2026-05-28 03:10 Asia/Jerusalem
+
+- Live page upgraded: `https://nad-lan.co.il/tabu-extract-check/`.
+- Replaced the short 329-word draft-like page with a full consumer-facing guide of 2,109 words.
+- Removed public internal wording from both the page body and WordPress excerpt, including old draft/commercial language.
+- Added a realistic residential image, premium guide layout, sections on what a Tabu extract is, what appears in the extract, ownership/right checks, mortgages, warnings, liens, attached parking/storage, when a Tabu extract is not enough, RMI rights approval, new-build cases, common gaps, house-registration documents, seller questions, repeated extract timing, mismatches, document prep for lawyers, FAQ, and public non-advice boundary.
+- Research used before editing:
+  - Google Search Central helpful content guidance for people-first YMYL pages.
+  - Gov.il official Land Registry service for producing a land-registration extract.
+  - Gov.il Ministry of Construction and Housing registration-status service, which distinguishes Tabu extract production from other registration-status inquiries.
+  - Gov.il / Israel Land Authority rights-approval service, including the distinction between RMI-managed property and property registered in the Land Registry.
+
+### Live Verification
+
+- Quality gate: passed.
+- URL: `https://nad-lan.co.il/tabu-extract-check/`.
+- Rendered H1 count: 1.
+- Word count: 2,109.
+- Image count: 1.
+- Blocked internal terms: none.
+- WordPress excerpt: cleaned to public buyer-facing text.
+- Mobile 390px rendered check: no horizontal overflow, one H1, public terms clean.
+- Image URL check: Wikimedia image returns `image/jpeg` and `Content-Length` 174,066 bytes.
+- Screenshot:
+  - `verification-screenshots/nadlan-tabu-extract-mobile-clean-2026-05-28-top.png`
+
+### Honest Gap Statement
+
+- This page now meets the portfolio minimum content gate and is live. It is an important trust page because it anchors the buying/checklist/lawyer cluster in official registration-source logic.
+- It still needs a future interactive rights-check intake flow, but the public page no longer exposes internal draft language and now gives a real buyer a usable framework before contacting a lawyer.
