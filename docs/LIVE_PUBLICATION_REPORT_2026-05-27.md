@@ -1,3 +1,47 @@
+## Ramat Hasharon Apartment Prices City Guide
+
+Updated: 2026-05-28 08:52 Asia/Jerusalem
+
+- Live page published and verified: `https://nad-lan.co.il/ramat-hasharon-apartment-prices/`.
+- Published as a public consumer-facing Hebrew city guide of 2,092 words.
+- Linked from six existing pages:
+  - `https://nad-lan.co.il/property-value/`.
+  - `https://nad-lan.co.il/property-value-estimator/`.
+  - `https://nad-lan.co.il/buying-apartment/`.
+  - `https://nad-lan.co.il/selling-apartment/`.
+  - `https://nad-lan.co.il/investment-apartment/`.
+  - `https://nad-lan.co.il/herzliya-apartment-prices/`.
+- Added a realistic Ramat Hasharon residential image, premium guide layout, buyer/seller/investor sections, price comparison table, urban-renewal risk section, official source links, FAQ, and a public non-advice boundary.
+- Research used before editing:
+  - Government real-estate transaction portal: `https://www.nadlan.gov.il/`.
+  - CBS apartment price publications: `https://www.cbs.gov.il/he/Pages/SubjectPublications.aspx?CbsSubject=%D7%9E%D7%97%D7%99%D7%A8%D7%99+%D7%93%D7%99%D7%A8%D7%95%D7%AA`.
+  - Ramat Hasharon GIS/planning page: `https://ramat-hasharon.muni.il/gis/`.
+  - Israel Tax Authority real-estate-tax service page: `https://www.gov.il/he/service/real-estate-tax-7000`.
+  - Madadirot Ramat Hasharon city page for competitor/market structure: `https://www.madadirot.co.il/areas/2650/`.
+  - Wikimedia image source for Ramat Hasharon from above: `https://commons.wikimedia.org/wiki/File:PikiWiki_Israel_7457_Ramat_Hasharon_from_the_top_of_tops.JPG`.
+
+### Live Verification
+
+- Quality gate: passed.
+- URL: `https://nad-lan.co.il/ramat-hasharon-apartment-prices/`.
+- Rendered H1 count: 1.
+- Word count: 2,092.
+- Image count: 1.
+- Blocked internal terms: none.
+- WordPress excerpt: clean buyer/seller/investor-facing text, no internal wording.
+- Mobile 390px rendered check: no horizontal overflow, one H1, hero visible, image loaded at 960 x 720, no internal terms visible.
+- Image URL check: Wikimedia image returns `image/jpeg` and `Content-Length` 213,745 bytes.
+- Hierarchy check: `property-value`, `property-value-estimator`, `buying-apartment`, `selling-apartment`, `investment-apartment`, and `herzliya-apartment-prices` all return HTTP 200 and contain `/ramat-hasharon-apartment-prices/`.
+- Screenshot:
+  - `verification-screenshots/nadlan-ramat-hasharon-prices-mobile-clean-2026-05-28-top.png`
+
+### Honest Gap Statement
+
+- This is a real live city guide, not a draft: the page is published, verified, and linked from six related pages.
+- The first local publish script created the page but failed at the support-link phase because PowerShell JSON conversion returned a shape the Node script did not handle. The support-link phase was rerun through the direct REST helper and verified successfully.
+- This block used fresh web research and the saved Nadlan Lovable competitor scan, but did not use fresh Lovable/ChatGPT/Gemini/image generation because the work was a WordPress REST publishing and live-verification block.
+- The remaining visual gap is site-wide: the page-level article design is clean, but the durable Nadlan header/footer/menu polish still needs a theme-level GitHub change followed by UPress pull and public verification.
+
 ## Herzliya Apartment Prices City Guide
 
 Updated: 2026-05-28 08:38 Asia/Jerusalem
