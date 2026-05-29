@@ -1,6 +1,6 @@
 <?php
 /**
- * Title: אנשי מקצוע — טיזר
+ * Title: אנשי מקצוע - טיזר
  * Slug: nadlan-revenue/professionals-teaser
  * Categories: nadlan-row
  * Description: שלוש כרטיסי פרופיל + קישור לדירקטוריון.

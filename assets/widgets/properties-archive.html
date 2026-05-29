@@ -36,7 +36,7 @@
 <div class="nlp" id="nlp" dir="rtl">
   <p class="e">קטלוג נכסים · אוצרות עם בדיקה משפטית</p>
   <h2>נכסים נבחרים</h2>
-  <p class="sub">הקטלוג שלנו אינו מודעות. הוא רשימה צרה של נכסים שנבדקו על-ידי עו״ד מקרקעין מהמשרד שלנו לפני שהוצגו כאן: זכויות בטאבו, חוזה, מסמכי בעלות, היתרי בנייה. כל נכס מסומן בעיר ומאפשר תיאום בדיקה משפטית מקדימה — בלי עלות ובלי התחייבות.</p>
+  <p class="sub">הקטלוג שלנו אינו מודעות. הוא רשימה צרה של נכסים שנבדקו על-ידי עו״ד מקרקעין מהמשרד שלנו לפני שהוצגו כאן: זכויות בטאבו, חוזה, מסמכי בעלות, היתרי בנייה. כל נכס מסומן בעיר ומאפשר תיאום בדיקה משפטית מקדימה - בלי עלות ובלי התחייבות.</p>
   <div class="nlp-bar" id="nlp-bar"></div>
   <div class="nlp-layout">
     <div>
@@ -78,7 +78,7 @@ if(!arr.length){grid.innerHTML='<div class="nlp-empty">אין נכסים זמי�
 grid.innerHTML=arr.map(function(x){
   var thumb=x.img?'<img src="'+x.img+'" alt="'+x.title+'" loading="lazy"/>':'<span>תצלום בקרוב</span>';
   var label={apartment:'דירה',penthouse:'פנטהאוז',garden:'גן',cottage:'קוטג׳',commercial:'מסחרי',new_project_unit:'מקבלן'}[x.type]||'נכס';
-  return '<a class="nlp-card" href="'+x.link+'"><div class="nlp-thumb">'+thumb+'<span class="nlp-flag">'+label+'</span></div><div class="nlp-bd"><div class="city">'+(x.city_name||x.city||'—')+'</div><h3>'+x.title+'</h3><div class="spec">'+(x.rooms?x.rooms+' חדרים':'')+(x.size?' · '+x.size+' מ״ר':'')+'</div><div class="price">'+fmt(x.price)+' ₪ <small>'+(x.lt==='rent'?'/חודש':'')+'</small></div></div></a>';
+  return '<a class="nlp-card" href="'+x.link+'"><div class="nlp-thumb">'+thumb+'<span class="nlp-flag">'+label+'</span></div><div class="nlp-bd"><div class="city">'+(x.city_name||x.city||' - ')+'</div><h3>'+x.title+'</h3><div class="spec">'+(x.rooms?x.rooms+' חדרים':'')+(x.size?' · '+x.size+' מ״ר':'')+'</div><div class="price">'+fmt(x.price)+' ₪ <small>'+(x.lt==='rent'?'/חודש':'')+'</small></div></div></a>';
 }).join('');
 }
 function initMap(){

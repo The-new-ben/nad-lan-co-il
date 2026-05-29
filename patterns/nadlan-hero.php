@@ -1,6 +1,6 @@
 <?php
 /**
- * Title: כותרת בית — Hero
+ * Title: כותרת בית - Hero
  * Slug: nadlan-revenue/hero
  * Categories: nadlan-hero
  * Description: כותרת אדיטוריאלית של עמוד הבית עם 4:5 imagery וקריאות לפעולה כקישורי טקסט.
@@ -22,7 +22,7 @@
       <!-- /wp:heading -->
 
       <!-- wp:paragraph {"fontSize":"body-lg"} -->
-      <p class="has-body-lg-font-size">מחירים אמיתיים, מסים מחושבים נכון, מסלולי משכנתא מושוואים — נכתב ונערך על־ידי המערכת, ללא תיווך מסחרי.</p>
+      <p class="has-body-lg-font-size">מחירים אמיתיים, מסים מחושבים נכון, מסלולי משכנתא מושוואים - נכתב ונערך על־ידי המערכת, ללא תיווך מסחרי.</p>
       <!-- /wp:paragraph -->
 
       <!-- wp:separator {"className":"gold-rule"} -->

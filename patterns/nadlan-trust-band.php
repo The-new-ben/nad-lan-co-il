@@ -48,7 +48,7 @@
   <!-- /wp:columns -->
 
   <!-- wp:paragraph {"align":"center","fontSize":"caption","style":{"color":{"text":"var:preset|color|ink-500"}}} -->
-  <p class="has-text-align-center has-caption-font-size has-text-color" style="color:var(--wp--preset--color--ink-500)">מקורות פתוחים בלבד. שום נתון לא מומצא — נטען מדאטה ציבורי כל שבוע.</p>
+  <p class="has-text-align-center has-caption-font-size has-text-color" style="color:var(--wp--preset--color--ink-500)">מקורות פתוחים בלבד. שום נתון לא מומצא - נטען מדאטה ציבורי כל שבוע.</p>
   <!-- /wp:paragraph -->
 </section>
 <!-- /wp:group -->

@@ -114,3 +114,17 @@ Forbidden:
 
 ---
 _Created 2026-05-28 by Claude Code (claude-opus-4-7)._
+
+
+## Em-dash ban — enforced 2026-05-29 (owner-explicit)
+
+**Never** use the em-dash `—` (U+2014) in user-facing copy on nad-lan.co.il. Owner-explicit. Use ` - ` (regular hyphen with surrounding spaces), comma, or colon depending on context. Hebrew rhythm allows the comma in 80% of cases.
+
+When you write new content or generate widgets, **scan for `—` before publishing**. To clean an existing file in the repo:
+```
+python3 -c "s=open('FILE').read(); open('FILE','w').write(s.replace(' — ',' - ').replace('—',' - ').replace('  -  ',' - '))"
+```
+
+To clean live content via REST (pages/properties/posts/template-parts/navigation), use the sweep script pattern at `/tmp/livesweep.py` (run from any Claude/Cowork session with WP_USER/WP_APP_PASSWORD env vars).
+
+The 2026-05-29 sweep already cleaned: 5 pages (home + 4 pillars), the header + footer template parts, and all repo patterns + widget HTML. Skill docs were NOT cleaned (internal, owner doesn't see them).

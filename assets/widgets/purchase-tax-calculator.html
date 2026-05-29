@@ -35,7 +35,7 @@
 @media(max-width:720px){.nlc-ptx .nlc-row{grid-template-columns:1fr}.nlc-ptx .nlc-bseg{font-size:9px}}
 </style>
 <div class="nlc-ptx" id="nlc-ptx-1" data-nlc="ptx-v1">
-<h3>מחשבון מס רכישה — מדרגות 2026</h3>
+<h3>מחשבון מס רכישה - מדרגות 2026</h3>
 <p class="nlc-sub">מדרגות מס רכישה לדירת מגורים בישראל, מעודכנות לשנת 2026 (מוקפאות עד 2028 לפי חוק ההסדרים).</p>
 <div class="nlc-row">
   <div class="nlc-field">
@@ -63,7 +63,7 @@
   <h5>פירוט לפי מדרגות</h5>
   <div id="nlc-ptx-detail"></div>
 </div>
-<div class="nlc-note">המדרגות מבוססות על תקנות 2026 ומוקפאות עד 15.01.2028 (חוק ההסדרים). דירה יחידה: 0% עד 1,978,745 ₪. משקיע: 8% משקל ראשון עד 6,055,070 ₪. הצגה להמחשה — אינו מהווה ייעוץ מס. מקור: רשות המסים.</div>
+<div class="nlc-note">המדרגות מבוססות על תקנות 2026 ומוקפאות עד 15.01.2028 (חוק ההסדרים). דירה יחידה: 0% עד 1,978,745 ₪. משקיע: 8% משקל ראשון עד 6,055,070 ₪. הצגה להמחשה - אינו מהווה ייעוץ מס. מקור: רשות המסים.</div>
 </div>
 <script>
 (function(){
@@ -87,7 +87,7 @@
     r.querySelector('#nlc-ptx-pct').textContent=p>0?(tax/p*100).toFixed(2)+'% מערך הדירה':'';
     bar(br,p);
     const dt=r.querySelector('#nlc-ptx-detail');
-    dt.innerHTML=parts.length?parts.map(x=>`<div class="nlc-brow"><span class="nlc-blab">${fmt(x.from)}–${fmt(x.to)} ₪ × ${(x.rate*100).toFixed(1)}%</span><span>₪${fmt(x.tax)}</span></div>`).join('')+`<div class="nlc-brow"><span class="nlc-blab">סך הכל</span><span>₪${fmt(tax)}</span></div>`:'<div class="nlc-brow"><span class="nlc-blab">הזינו ערך</span><span>—</span></div>';
+    dt.innerHTML=parts.length?parts.map(x=>`<div class="nlc-brow"><span class="nlc-blab">${fmt(x.from)}–${fmt(x.to)} ₪ × ${(x.rate*100).toFixed(1)}%</span><span>₪${fmt(x.tax)}</span></div>`).join('')+`<div class="nlc-brow"><span class="nlc-blab">סך הכל</span><span>₪${fmt(tax)}</span></div>`:'<div class="nlc-brow"><span class="nlc-blab">הזינו ערך</span><span> - </span></div>';
     r.querySelectorAll('.nlc-radio label').forEach(l=>l.classList.toggle('on',l.querySelector('input').checked));
   }
   r.querySelectorAll('input').forEach(i=>i.addEventListener('input',render));

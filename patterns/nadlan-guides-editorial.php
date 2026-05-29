@@ -1,9 +1,9 @@
 <?php
 /**
- * Title: מדריכים — 1+2 אדיטוריאלי
+ * Title: מדריכים - 1+2 אדיטוריאלי
  * Slug: nadlan-revenue/guides-editorial
  * Categories: nadlan-editorial
- * Description: לידיר אחד גדול ושני משניים — אותה היררכיית עורך.
+ * Description: לידיר אחד גדול ושני משניים - אותה היררכיית עורך.
  */
 ?>
 <!-- wp:group {"tagName":"section","className":"nadlan-guides-editorial","layout":{"type":"constrained"}} -->
@@ -20,7 +20,7 @@
         <figure class="image-luxury" style="aspect-ratio:16/9;background:var(--cream-100)"></figure>
         <div style="padding:24px">
           <p class="eyebrow">מדריך · מיסוי</p>
-          <h2>מס רכישה 2026 — מי משלם כמה, באמת.</h2>
+          <h2>מס רכישה 2026 - מי משלם כמה, באמת.</h2>
           <p>פירוק מדרגות, דירה ראשונה מול שנייה, חישוב בפועל על שני נכסים אמיתיים.</p>
           <p class="has-caption-font-size" style="color:var(--wp--preset--color--ink-500)">מערכת · 18 דקות קריאה</p>
         </div>
@@ -41,7 +41,7 @@
         <figure class="image-luxury" style="aspect-ratio:4/3;background:var(--cream-100)"></figure>
         <div style="padding:20px">
           <p class="eyebrow">מדריך · התחדשות עירונית</p>
-          <h4>תמ״א 38 מול פינוי־בינוי — איפה ערך אמיתי.</h4>
+          <h4>תמ״א 38 מול פינוי־בינוי - איפה ערך אמיתי.</h4>
         </div>
       </a>
     </div>
