@@ -382,3 +382,10 @@ Owner pasted a handoff brief asking 8 things. Identified self honestly; verified
 8. PMPro + Stripe plan — DONE (skills/payments-pmpro-stripe.md)
 
 v1.2.1 ZIP shipped to owner. New skills: spoke-prompts-short-rent-abroad.md (7 ChatGPT prompts) + payments-pmpro-stripe.md.
+
+### 2026-05-29 — Claude Code (claude-opus-4-8) — HANDOFF to Claude Cowork
+- Owner is migrating to **Claude Cowork** (more tools: manual browser clicks, more integrations). I am STOPPING active build work (no plugin changes, no site changes this session beyond the handoff docs).
+- Created `HANDOFF.md` (repo root, public-safe, NO secrets): full onboarding — project, repo, branch, PR #2 status, credentials-by-env-var, deploy model, live-site state, honest scorecard, skills read-order, hard rules.
+- Created `skills/agent-onboarding.md`: the credential-handshake doc. Key points: secrets are ENV VARS (WP_BASE_URL / WP_USER / WP_APP_PASSWORD), inherited automatically if Cowork uses the SAME environment; if fresh env, owner re-enters them in the secret config; NEVER in repo/chat. Recommended ROTATING the app password (it was pasted in chat earlier = treat as compromised). First-run verification curls included.
+- Plugin v1.2.1 remains BUILT but not uploaded (owner paused the upload cycle). PR #2 remains UNMERGED (8 commits ahead of main). These are the two outstanding owner actions; documented, not blocking the handoff.
+- Next agent (Cowork) start point: read HANDOFF.md → skills/agent-onboarding.md → verify REST → read last 6 site-state blocks → resume.
