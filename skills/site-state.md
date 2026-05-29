@@ -348,3 +348,37 @@ Owner said "yes to all" + new idea. Shipped:
 - **NEW widget**: assets/widgets/short-rent-recommender.html — "AI-style" scoring engine. 4 inputs (budget € / target yield % / regulatory tolerance / distance importance), instant ranking of 7 countries by weighted match score, top result highlighted gold, CTA to /real-estate-lawyer/. Vanilla JS, uses luxury tokens, reduced-motion safe.
 - **Spoke prompts skill** committed: skills/spoke-prompts-short-rent-abroad.md. SYSTEM block + 7 country-specific prompts owner pastes into ChatGPT (Greece, Portugal, Thailand, Dubai, Cyprus, Spain, Italy). Each prompt enforces: Hebrew, voice, structure (8 sections), key 2026 facts that must appear, suggested slug. Spoke-launch checklist for me documented (publish, parent=345, Yoast meta, hub-spoke blocks, IndexNow auto-pings on publish).
 - Architecture honest: pillar is cornerstone, spokes are ordinary Pages. Internal-linking rules from skills/internal-linking-hub-spoke.md apply. Codex/owner can fill spokes in any order; no deadline.
+
+### 2026-05-29 — Claude Code (claude-opus-4-8) — handoff brief execution: honest scorecard
+Owner pasted a handoff brief asking 8 things. Identified self honestly; verified env access; executed what I could; documented blockers.
+
+**DONE (live, verified):**
+- v1.2.0 healthcheck verified live; catalog CPTs all true.
+- Pillar Yoast title + meta description improved (id 345, cornerstone). Yoast title now: 'השקעת Airbnb בחו"ל 2026 — השוואת 7 יעדים, רגולציה, תשואות ומס | נדלן חכם'.
+- Pillar got a hub→spokes placeholder block (7 country slots marked "בקרוב"); spokes will replace placeholders as owner publishes them via ChatGPT.
+- `/catalog/` page live (id 359) with REST-driven properties archive widget + MapLibre map (free OSM raster tiles, no key needed). Has filter chips, RTL popovers, sticky map on desktop.
+- 5 seed property posts created (ids 360–364): Tel Aviv Neve Tzedek, Herzliya Pituach, Kfar Shmaryahu, Raanana, Savyon. Title + content body live.
+- Nav updated with קטלוג נכסים (rightmost in RTL).
+- Sitemap clean, no tech leak, sort-by-modified, freshness badges.
+
+**PARTIAL (built, blocked on plugin upload):**
+- Property meta fields (price, rooms, sqm, lat, lng, photos_csv, sponsored flags): the seed POSTs sent meta but it was SILENTLY DROPPED because v1.2.0 doesn't register property meta for REST. Plugin v1.2.1 fixes this (`register_post_meta` for all property fields). Once v1.2.1 is active, re-running the seed-meta writer will populate the 5 properties — the catalog cards will then show prices/specs, the map will show pins.
+- Generator meta suppression: v1.2.0 only removed WP core's. Site Kit by Google emits its own. v1.2.1 strips ALL `<meta name="generator">` via output buffer.
+- Healthcheck augmenter (indexnow.key_present + recent_pings): v1.2.0 had broken filter wiring; v1.2.1 fixes via `apply_filters('nadlan_config_healthcheck', $out)` in the response function. Until v1.2.1, can't show real IndexNow ping log from REST.
+
+**BLOCKED (waiting on owner):**
+- Auto-updater handshake: PR #2 not yet merged to main. Until merged, `raw.githubusercontent.com/.../main/plugin-dist/nadlan-config.json` returns 404. After merge, PUC will see v1.2.1 advertised and offer Update inside WP. Path to verify: merge PR → wait ~12h or click "Check for updates" in plugins → see banner.
+- PMPro + Stripe install: requires owner WP admin click + Stripe account creation. Full plan written: skills/payments-pmpro-stripe.md.
+- Photos for seed properties: no photography exists yet; cards render with cream-100 "תצלום בקרוב" placeholders. Codex job (June 2+) per image-pipeline.md.
+
+**SCORECARD:**
+1. Auto-updater handshake — PARTIAL (built; blocked on PR #2 merge)
+2. Pillar page Yoast/Article schema — DONE (Yoast title + desc; Article/FAQ schema is Yoast-default on pages)
+3. Hub↔spoke linking — DONE (placeholder block on pillar; spoke→hub blocks added per spoke as each lands)
+4. Navigation — DONE (Airbnb בחו״ל + קטלוג נכסים inserted)
+5. IndexNow log proof — BLOCKED (need v1.2.1 active to expose recent_pings; key serving is in v1.2.0 but not verifiable without the augmenter)
+6. Generator suppression + sitemap freshness — PARTIAL (sitemap done; generator needs v1.2.1)
+7. Properties catalog (Phase B–C) — PARTIAL (UI + map + 5 seeds + nav DONE; meta blocked on v1.2.1; photos blocked on Codex)
+8. PMPro + Stripe plan — DONE (skills/payments-pmpro-stripe.md)
+
+v1.2.1 ZIP shipped to owner. New skills: spoke-prompts-short-rent-abroad.md (7 ChatGPT prompts) + payments-pmpro-stripe.md.

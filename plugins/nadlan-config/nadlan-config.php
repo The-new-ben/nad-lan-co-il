@@ -2,7 +2,7 @@
 /**
  * Plugin Name: NadLan Config
  * Description: Lead-capture foundation: nadlan_lead CPT + lead-form handler + healthcheck. Read skills/nadlan-config-plugin.md.
- * Version: 1.2.0
+ * Version: 1.2.1
  * Author: nad-lan.co.il
  * License: GPL-2.0+
  * Requires PHP: 7.4
@@ -50,15 +50,16 @@ add_action( 'rest_api_init', 'nadlan_config_healthcheck' );
 
 if ( ! function_exists( 'nadlan_config_healthcheck_response' ) ) {
 	function nadlan_config_healthcheck_response() {
-		return array(
+		$out = array(
 			'plugin'              => 'nadlan-config',
-			'version'             => '1.2.0',
+			'version'             => '1.2.1',
 			'cpt_present'         => post_type_exists( 'nadlan_lead' ),
 			'lead_handler_loaded' => (bool) has_action( 'admin_post_nadlan_lead' ),
 			'php_version'         => PHP_VERSION,
 			'wp_version'          => get_bloginfo( 'version' ),
 			'catalog'             => nadlan_config_catalog_status(),
 		);
+		return apply_filters( 'nadlan_config_healthcheck', $out );
 	}
 }
 
@@ -416,3 +417,59 @@ if ( ! function_exists( 'nadlan_config_boot_updater' ) ) {
     }
 }
 add_action( 'init', 'nadlan_config_boot_updater', 5 );
+
+/* ---------- v1.2.1: tighten generator suppression + property meta REST ---------- */
+
+/* Suppress Site Kit's <meta name="generator"> too (not just core's). Output buffer at wp_loaded. */
+if ( ! function_exists( 'nadlan_config_strip_all_generators' ) ) {
+	function nadlan_config_strip_all_generators( $html ) {
+		if ( strpos( $html, 'name="generator"' ) !== false || strpos( $html, "name='generator'" ) !== false ) {
+			$html = preg_replace( '~<meta[^>]+name=["\']generator["\'][^>]*>\s*~i', '', $html );
+		}
+		return $html;
+	}
+}
+add_action( 'template_redirect', function() {
+	ob_start( 'nadlan_config_strip_all_generators' );
+}, 0 );
+
+/* Property meta exposed for REST so we can seed properties via the API */
+if ( ! function_exists( 'nadlan_config_register_property_meta' ) ) {
+	function nadlan_config_register_property_meta() {
+		$fields = array(
+			'listing_type'   => 'string',  'property_type'  => 'string',
+			'price'          => 'integer', 'price_per_sqm'  => 'integer',
+			'rooms'          => 'number',  'floor'          => 'integer',
+			'total_floors'   => 'integer', 'size_sqm'       => 'integer',
+			'balcony_sqm'    => 'integer',
+			'parking'        => 'boolean', 'elevator'       => 'boolean',
+			'ac'             => 'boolean', 'protected_room' => 'boolean',
+			'street'         => 'string',  'building_number' => 'string',
+			'lat'            => 'number',  'lng'            => 'number',
+			'status'         => 'string',  'source'         => 'string',
+			'is_sponsored'   => 'boolean', 'sponsor_name'   => 'string',
+			'photos_csv'     => 'string',
+		);
+		foreach ( $fields as $k => $type ) {
+			register_post_meta( 'nadlan_property', $k, array(
+				'show_in_rest'  => true,
+				'single'        => true,
+				'type'          => $type,
+				'auth_callback' => function() { return current_user_can( 'edit_posts' ); },
+			) );
+		}
+	}
+}
+add_action( 'init', 'nadlan_config_register_property_meta', 12 );
+
+/* Healthcheck augmenter via proper filter (wired into the refactored response above) */
+if ( ! function_exists( 'nadlan_config_healthcheck_augment' ) ) {
+	function nadlan_config_healthcheck_augment( $arr ) {
+		$arr['indexnow'] = array(
+			'key_present'  => (bool) get_option( 'nadlan_indexnow_key' ),
+			'recent_pings' => array_slice( (array) get_option( 'nadlan_indexnow_log', array() ), 0, 5 ),
+		);
+		return $arr;
+	}
+}
+add_filter( 'nadlan_config_healthcheck', 'nadlan_config_healthcheck_augment' );
