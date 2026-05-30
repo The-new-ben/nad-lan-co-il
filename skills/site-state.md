@@ -394,3 +394,45 @@ v1.2.1 ZIP shipped to owner. New skills: spoke-prompts-short-rent-abroad.md (7 C
 - **Cowork briefing** authored at `skills/cowork-briefing.md`: condensed project history (May 2026 build journey, Lovable rounds 1+2, plugin v1.0.0→1.2.0 evolution), competitor map (Yad2, Madlan, nadlan.gov.il, nadlanmaster, law firms on tax SERP, banks on mortgage SERP), money model (closing-attorney fees first, then directory subscriptions, developer ads, sponsored), the "no long Hebrew content yourself — use ChatGPT" rule, the em-dash ban, where every skill lives, what you're NOT building (so Cowork doesn't drift), open-work priority list.
 - **Em-dash sweep** (owner-explicit): live via REST cleaned 5 pages (home, real-estate-lawyer, investment-apartment, buying-apartment, purchase-tax-calculator = 25 removed) + header + footer template parts (4 removed). Repo user-facing files (10 patterns + 6 widget HTML files = 64 removed). Skill docs NOT touched (internal). Verified 0 em-dashes on live homepage HTML.
 - **copywriting-skill.md** got a permanent "Em-dash ban — enforced 2026-05-29 (owner-explicit)" section with the sweep snippets so any future agent (Cowork/Codex/Claude) keeps the site clean.
+
+### 2026-05-30 — Claude Code (claude-opus-4-7) — Cowork audit + emergency fix + skills tightening
+
+**Triggered by:** owner reported Cowork is feeding articles into the site with raw HTML tags showing, no design wiring, no anti-cannibalization, no proper SEO/Yoast/sitemap/menu plumbing. Asked for a full audit + opinion on whether content level is "Google Blueprint" eligible to rank first.
+
+**Audit of 2026-05-29 Cowork publishes (11 new pages: investment cluster + 7 country spokes + 1 investment-apartment):**
+
+| Severity | Issue | Pages affected | Status |
+|---|---|---|---|
+| CRITICAL | Escaped HTML (`&lt;h2&gt;`) visible as literal text on live page | 6 of 7 country spokes (401, 404, 407, 418, 417, 416) | **FIXED** this session via `html.unescape()` + preamble strip + citation strip |
+| CRITICAL | ChatGPT preamble published ("להלן מאמר HTML נקי להדבקה" + "הערת שקיפות..." + Perplexity-style "Government of Israel+9" footnotes) | Portugal + others | **FIXED** with regex strip during the unescape sweep |
+| HIGH | Missing Yoast meta description | 398, 416, 417, 418, 421, 425 (6 pages) | NOT YET FIXED — Google falls back to first paragraph (which for the broken pages was the preamble) |
+| HIGH | Spokes are orphans (only 1 internal link, to pillar) | All 7 short-rent spokes + 3 of 4 investment spokes | NOT YET FIXED — no spoke→sibling, no spoke→calculator, no spoke→lawyer CTA |
+| HIGH | No lawyer CTA block (the monetization path) | All 11 new pages | NOT YET FIXED — money-path zero from these pages |
+| MEDIUM | No author byline on tax/regulation pages | Investment pillar + spokes | NOT YET FIXED — copywriting-skill §8 mandatory for tax/legal |
+| LOW | AI-tell phrases | "חשוב להבין" ×1 (421), "באופן כללי" ×1 (421), "במאמר" ×1 (422), "במילים אחרות" ×1 (424) | Borderline — single instances each |
+| LOW | em-dashes | 0 on every page | Em-dash ban respected |
+
+**Skills tightening this session:**
+
+- `skills/README.md` — completely reindexed; old index was missing 20+ files (all design-*, plugin-*, payments, lead-funnel, internal-linking, properties-catalog, short-term-rentals-abroad, etc.). New index has read-order for fresh session + cross-reference rule (single source of truth per topic).
+- `skills/internal-linking-hub-spoke.md` — cluster map updated to include the two new pillars (investment 421, short-term-rentals-abroad 345) and their spokes. Added Revision block documenting the orphan-spoke audit + wiring gaps.
+- `skills/google-blueprint-workflow.md` — NEW skill capturing the manual SERP reverse-engineering process Cowork uses but forgets each session (7 steps from query → article spec → ChatGPT prompt).
+- `skills/article-publishing-protocol.md` — NEW skill, 10-step checklist from ChatGPT output → live page, with each failure mode from 2026-05-29 explicitly named so it cannot repeat (HTML unescape, preamble strip, footnote strip, Gutenberg block wrap, internal-link wiring with anti-cannibalization, Yoast meta, schema upgrade, lawyer CTA block).
+- `skills/spoke-prompts-short-rent-abroad.md` — SYSTEM block hardened: now explicitly tells ChatGPT not to include preamble, footnotes, em-dashes, AI-tells, or forbidden internal words; includes self-check before responding.
+
+**Honest writing-level assessment (Google Blueprint eligibility):**
+
+The Hebrew prose Cowork is producing via ChatGPT IS substantively good — native voice (not translation-feel), real numbers with primary sources (Bank of Israel, CBS, country-specific tax authorities, with dates), depth (15-25K chars per article, 1,800-2,500 words effective), and structure that matches the SERP backbone for the target query.
+
+What is breaking is **everything around the prose**: the HTML wrapper (was escaped, now fixed), Yoast meta (4 of 7 still missing), internal linking (orphans), lawyer CTA (absent — zero monetization), Person schema author (absent — losing the lawyer E-E-A-T moat the strategy depends on), Article schema (defaulting to WebPage).
+
+In short: the **content** is Google Blueprint eligible to rank first against competitors like nadlanmaster, Yad2's blog corner, and bank explainers. The **publication wrapping** is currently sabotaging it. If Cowork follows `article-publishing-protocol.md` step-for-step from now on, each next spoke will be both Google Blueprint AND monetized. If not, the content investment burns to the ground in the SERP.
+
+**Live action this session:**
+
+- Fixed 6 country spokes (HTML unescape + preamble strip + citation strip). All now have real `<h2>`, `<h3>`, `<p>` tags rendering.
+- Did NOT rewrite Yoast meta or wire internal links yet (deferred to either a follow-up sweep or the next Cowork publish using the new protocol).
+
+**Remaining owner-decision items (carried from previous sessions):**
+- PR #2 still unmerged → auto-updater dormant.
+- Plugin v1.2.1 still not uploaded → property meta + Site Kit generator strip + IndexNow log not active.

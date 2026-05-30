@@ -2,6 +2,8 @@
 
 > **Notice to the owner:** these are ready-to-paste prompts for ChatGPT (the $200 tier you mentioned). One prompt per spoke country article. The pillar `/short-term-rentals-abroad/` is already live and deep. The spokes feed traffic into the pillar via internal links — that's the SEO play.
 
+> **⚠️ For any agent publishing one of these articles:** the ChatGPT output is raw HTML. It does **NOT** go straight into WordPress. Run it through `article-publishing-protocol.md` first — that protocol's 10 steps include the HTML-unescape, preamble strip, citation-footnote removal, Gutenberg block wrapping, Yoast meta, internal-link wiring, and lawyer CTA. The 2026-05-29 publish skipped these steps and 6 of 7 spokes shipped broken (escaped HTML visible as text, missing meta, orphan links). Fixed retroactively 2026-05-30 by Claude Code, but DO NOT repeat.
+
 ## How to use these prompts
 
 1. Open ChatGPT (Pro or Plus, with web browsing on so it can verify current regulations).
@@ -48,7 +50,17 @@
 10. CTA למשפט: "לייעוץ משפטי לעסקה ספציפית: [קישור: /real-estate-lawyer/]"
 
 אורך כולל: 1,200-1,800 מילים.
-כל מספר מאומת. אם לא בטוח — כתוב "נכון ל-מאי 2026, ייתכן שינוי".
+כל מספר מאומת. אם לא בטוח, כתוב "נכון למאי 2026, ייתכן שינוי".
+
+פלט — חובה לעמוד בכל הסעיפים, אחרת המאמר ייפסל אוטומטית:
+
+- HTML גולמי בלבד. רק תגי <h2>, <h3>, <p>, <ul>, <li>, <strong>. ללא <h1> (התווסף ע"י WordPress מהכותרת). ללא <html>, <head>, <body>. ללא markdown. שמור על dir="rtl" בכל בלוק חוסם.
+- אל תפתח את הפלט במילים כמו "להלן המאמר", "הנה המאמר", "להלן HTML נקי להדבקה", או כל הערת שקיפות מקדימה. הפלט מתחיל ישירות בתג <h2> הראשון של המאמר.
+- אל תכלול footnotes של מקורות בפורמט "Source+9" / "[1][2]" / "(מקור Government of Israel+9 נדלן מאסטר+9)". אם אתה מצטט מקור, שלב אותו פנימית בעברית: "(מקור: בנק ישראל, מרץ 2026)".
+- אל תכלול em-dash (—) באף מקום. השתמש ב-",", ב-":", או ב-" - " (מקף רגיל עם רווחים).
+- אל תכלול את הביטויים הבאים: "חשוב להבין", "ראוי לציין", "במילים אחרות", "בעידן הנוכחי", "עולם הנדל״ן", "אכן", "ללא ספק", "בעולם שבו", "אינסוף", "באופן כללי", "בסופו של דבר", "לסיכום", "כפי שראינו", "במאמר הזה", "מצד אחד...מצד שני" כפסקה.
+- אל תכלול את המילים: ליד, leads, CRM, SEO, פילר, intent, money page, UTM.
+- בדיקה עצמית: לפני שאתה משיב, ספור — האם בפלט יש <h2> מובהקים? האם אין em-dash? האם אין footnotes כמו "+9"? אם משהו לא תקין, תקן ושלח רק את התקין.
 ```
 
 ## Country prompts (paste ONE per ChatGPT session, after the System block)

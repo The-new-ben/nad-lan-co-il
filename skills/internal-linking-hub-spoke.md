@@ -35,6 +35,8 @@ Three linking sweeps via WP REST API on the live site:
 | `buying-apartment` | קניית דירה | apartment-buying-checklist, tabu-extract-check, property-value, home-inspection, real-estate-broker, real-estate-appraiser, new-projects, purchase-tax-calculator, mortgage-calculator, apartment-purchase-cost-calculator, real-estate-lawyer |
 | `selling-apartment` | מכירת דירה | real-estate-broker, real-estate-appraiser, property-value-estimator, real-estate-tax-advisor, real-estate-lawyer |
 | `investment-apartment` | דירה להשקעה | investment-property-mortgage, investment-property-cashflow-calculator, property-management, commercial-real-estate, real-estate-tax-advisor, new-projects, real-estate-lawyer |
+| `investment` (NEW 2026-05-29, pillar id 421) | נדל"ן להשקעה — איפה ואיך | apartments-for-investment (425), real-estate-yield (422), bank-guarantee-purchase (424), short-term-rentals-abroad (345) |
+| `short-term-rentals-abroad` (NEW pillar id 345) | השכרה לטווח קצר בחו"ל | short-term-rentals-portugal (401), short-term-rentals-thailand (404), short-term-rentals-dubai (407), short-term-rentals-greece (398), short-term-rentals-italy (418), short-term-rentals-spain (417), short-term-rentals-cyprus (416) |
 | `mortgage-calculator` (tool-pillar) | משכנתא | mortgage-advisor, mortgage-refinance, mortgage-home-insurance, investment-property-mortgage |
 | `real-estate-tax-advisor` | מיסוי מקרקעין | purchase-tax-calculator, apartment-purchase-cost-calculator, real-estate-lawyer, tabu-extract-check |
 | `real-estate-lawyer` | עורך דין מקרקעין | real-estate-tax-advisor, apartment-buying-checklist, tabu-extract-check, new-projects, urban-renewal |
@@ -44,10 +46,29 @@ Three linking sweeps via WP REST API on the live site:
 | `professionals` (hub) | אנשי מקצוע | real-estate-lawyer, real-estate-broker, real-estate-appraiser, mortgage-advisor, home-inspection, construction-supervisor, architect-building-permit, property-management, renovation-contractor, real-estate-tax-advisor |
 | `tel-aviv-apartment-prices` (city hub) | מחירי דירות בתל אביב | tel-aviv-seafront-apartment-prices, tel-aviv-penthouse-prices, tel-aviv-luxury-apartment-prices, neve-tzedek-apartment-prices |
 
+### Cluster wiring status (audit 2026-05-30)
+
+| Cluster | Pillar→spoke links present | Spoke→pillar links present | Spoke→sibling links present | Lawyer-CTA on spokes |
+|---|---|---|---|---|
+| `investment` (421) | ✓ 4 of 4 | ✓ on spoke 10 only | ✗ MISSING on 422, 425, 424 | ✗ MISSING everywhere |
+| `short-term-rentals-abroad` (345) | ✓ (pillar links to all 7) | ✓ 7 of 7 (each spoke has 1 link to pillar) | ✗ MISSING on all 7 | ✗ MISSING everywhere |
+
+**Action required:** wire spoke→sibling + lawyer CTA across both new clusters. Use the `<!-- nadlan-spoke-backlink-v1 -->` marker pattern. Until done, these clusters are orphan-spoke trees that bleed link equity.
+
 ## Primary-pillar map for spokes (each spoke → ONE pillar)
 
 | Spoke | Primary pillar |
 |---|---|
+| apartments-for-investment (425) | investment (421) |
+| real-estate-yield (422) | investment (421) |
+| bank-guarantee-purchase (424) | investment (421) |
+| short-term-rentals-portugal (401) | short-term-rentals-abroad (345) |
+| short-term-rentals-thailand (404) | short-term-rentals-abroad (345) |
+| short-term-rentals-dubai (407) | short-term-rentals-abroad (345) |
+| short-term-rentals-greece (398) | short-term-rentals-abroad (345) |
+| short-term-rentals-italy (418) | short-term-rentals-abroad (345) |
+| short-term-rentals-spain (417) | short-term-rentals-abroad (345) |
+| short-term-rentals-cyprus (416) | short-term-rentals-abroad (345) |
 | apartment-buying-checklist | buying-apartment |
 | tabu-extract-check | real-estate-lawyer |
 | property-value | buying-apartment |
@@ -126,5 +147,19 @@ Visit any spoke (e.g. `https://nad-lan.co.il/mortgage-advisor/`), scroll to the 
 
 Visit homepage — scroll to bottom — Tools strip with 5 calculator links.
 
+## Revision 2026-05-30 — Claude Code (claude-opus-4-7)
+
+Audited the 2026-05-29 publishes by Cowork. Findings:
+
+- **6 of 7 short-rent country spokes shipped with escaped HTML** (`&lt;h2&gt;` visible as literal text). Fixed by REST PATCH with html.unescape() + removal of ChatGPT preamble + citation footnotes.
+- **All 7 short-rent spokes are orphans** — each links only back to the pillar; none link to siblings or to the lawyer CTA.
+- **3 of 4 investment-cluster spokes are orphans** (422, 425, 424). Only spoke 10 (investment-apartment) has proper internal linking from the earlier 2026-05-28 sweep.
+- **Missing Yoast metadesc** on pages 398, 416, 417, 418, 421, 425 (6 pages). Google falls back to first paragraph for these.
+- **No lawyer CTA block** anywhere in the new clusters. Money-path zero from these pages.
+
+This is exactly the failure pattern that `article-publishing-protocol.md` exists to prevent. The protocol now exists; the next sweep must apply it retroactively to these 11 pages.
+
+Updated cluster map to include the two new pillars + spokes. Added wiring-status table at end of map showing what's still missing.
+
 ---
-_Created 2026-05-28 by Claude Code (claude-opus-4-7) during the "make it rank on Google" session._
+_Created 2026-05-28 by Claude Code (claude-opus-4-7) during the "make it rank on Google" session. Updated 2026-05-30 with the 2026-05-29 Cowork audit + new clusters._
