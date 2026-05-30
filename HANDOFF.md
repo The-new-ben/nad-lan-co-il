@@ -60,7 +60,7 @@ If those return data, you're connected. If the env vars are empty, the owner mus
 | Sitemap (clean, fresh-sorted) | DONE |
 | IndexNow auto-ping | PARTIAL (works; proof endpoint needs v1.2.1) |
 | Auto-updater | PARTIAL (works after PR #2 merged) |
-| PMPro + Stripe self-registration | PLANNED (`skills/payments-pmpro-stripe.md`) |
+| PMPro + Stripe self-registration | PLANNED (`skills/payments-woo-greeninvoice.md`) |
 | Spoke articles (7 countries) | PROMPTS READY (`skills/spoke-prompts-short-rent-abroad.md`) — owner writes via ChatGPT |
 | Real photography | BLOCKED (Codex, `skills/image-pipeline.md`) |
 
@@ -70,7 +70,7 @@ If those return data, you're connected. If the env vars are empty, the owner mus
 2. Read the skills tree (§8).
 3. With owner: decide whether to merge PR #2 (unblocks auto-updater) and resume v1.2.1 (unblocks catalog meta).
 4. When owner sends a spoke article → publish per `skills/spoke-prompts-short-rent-abroad.md` checklist.
-5. Build the PMPro+Stripe flow when owner installs PMPro (`skills/payments-pmpro-stripe.md`).
+5. Build the PMPro+Stripe flow when owner installs PMPro (`skills/payments-woo-greeninvoice.md`).
 
 ## 8. Skills — read in this order
 
@@ -80,7 +80,7 @@ If those return data, you're connected. If the env vars are empty, the owner mus
 4. `skills/strategy-master.md`, `skills/monetization-lawyer-angle.md`
 5. `skills/luxury-design-system.md` + its sisters (`design-page-patterns`, `design-components`, `design-micro-interactions`, `design-logo-mark`, `design-rtl-hebrew`, `design-monetization-surfaces`)
 6. `skills/nadlan-config-plugin.md`, `skills/plugin-auto-update.md`
-7. `skills/properties-catalog.md`, `skills/lead-funnel.md`, `skills/payments-pmpro-stripe.md`
+7. `skills/properties-catalog.md`, `skills/lead-funnel.md`, `skills/payments-woo-greeninvoice.md`
 8. `skills/agent-coordination-protocol.md`, `skills/security-public-repo.md`, `skills/image-pipeline.md`
 9. `skills/spoke-prompts-short-rent-abroad.md`
 

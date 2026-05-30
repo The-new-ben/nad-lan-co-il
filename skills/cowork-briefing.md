@@ -25,7 +25,7 @@ Last updated: 2026-05-29 by Claude Code (claude-opus-4-8).
 1. **Closing-attorney fees** from leads → owner's law practice. ~0.5–1% of deal value × 2.5M ₪ apartment = 12,500–25,000 ₪ per closed deal per side. **This is the big number.**
 2. **Urban-renewal representation** (tama 38 / pinui-binui) — multi-year, 6–7 figure engagements per building.
 3. **Foreign-Jewish investor representation** (US/FR/UK buyers). High ticket, underserved.
-4. **Professional directory subscriptions**: Free / Pro 99₪/mo / Premier 299₪/mo. Plan in `skills/payments-pmpro-stripe.md`.
+4. **Professional directory subscriptions**: Free / Pro 99₪/mo / Premier 299₪/mo. Plan in `skills/payments-woo-greeninvoice.md`.
 5. **Developer-project advertising** (potentially 20–80K ₪/mo per project — comparable to Madlan/Yad2's rate cards).
 6. **Sponsored listings + map pins** (designed-in per `skills/design-monetization-surfaces.md`).
 7. **Affiliate referrals** (mortgage brokers, appraisers, inspectors).
@@ -114,7 +114,7 @@ Forked from Twenty Twenty-Five via owner's UPress server download. Two design ro
 |---|---|
 | Technical onboarding + credentials | `HANDOFF.md`, `skills/agent-onboarding.md` |
 | Strategy + competitor DNA + keyword clusters | `skills/strategy-master.md` |
-| Money model | `skills/monetization-lawyer-angle.md`, `skills/lead-funnel.md`, `skills/payments-pmpro-stripe.md`, `skills/design-monetization-surfaces.md` |
+| Money model | `skills/monetization-lawyer-angle.md`, `skills/lead-funnel.md`, `skills/payments-woo-greeninvoice.md`, `skills/design-monetization-surfaces.md` |
 | Brand & design system | `skills/luxury-design-system.md` + sister `design-*.md` files + `docs/design/lovable-output-*.md` |
 | Copywriting voice + bans | `skills/copywriting-skill.md` |
 | Plugin everything | `skills/nadlan-config-plugin.md`, `skills/plugin-auto-update.md` |
@@ -129,7 +129,7 @@ Forked from Twenty Twenty-Five via owner's UPress server download. Two design ro
 1. **Merge PR #2** (owner action) → auto-updater starts working.
 2. **Upload plugin v1.2.1** (one last manual upload OR push v1.2.1 onto main once PR #2 is merged so the auto-updater pulls it) → unlocks property meta REST + Site Kit generator strip + IndexNow log proof.
 3. **Re-seed property meta** for the 5 catalog properties (ids 360–364) once v1.2.1 active → catalog cards show prices, map shows pins.
-4. **Build PMPro+Stripe self-registration flow** per `skills/payments-pmpro-stripe.md` once owner installs PMPro (one click in wp-admin).
+4. **Build PMPro+Stripe self-registration flow** per `skills/payments-woo-greeninvoice.md` once owner installs PMPro (one click in wp-admin).
 5. **Owner runs ChatGPT spoke prompts** → you publish each spoke per the checklist in `skills/spoke-prompts-short-rent-abroad.md`.
 6. **Property photography** — blocked on Codex (returns June 2) handling `C:\Users\pro\.codex\generated_images`.
 

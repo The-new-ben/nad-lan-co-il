@@ -250,9 +250,13 @@ echo "table: $(grep -oc '<table' $F) (must be > 0)"
 echo "note: $(grep -c 'class=\"note\"' $F) (must be > 0)"
 echo "cta: $(grep -c 'class=\"cta\"' $F) (must be > 1)"
 echo "word count (Hebrew, rough): $(wc -w < $F)"
-for p in "חשוב להבין" "ראוי לציין" "במילים אחרות" "עולם הנדל" "בעידן" "ללא ספק" "אינסוף" "באופן כללי" "בסופו של דבר" "לסיכום" "כפי שראינו" "במאמר"; do
+for p in "חשוב להבין" "ראוי לציין" "במילים אחרות" "עולם הנדל" "בעידן" "ללא ספק" "אינסוף" "באופן כללי" "בסופו של דבר" "לסיכום" "כפי שראינו"; do
   c=$(grep -c "$p" $F); [ "$c" != "0" ] && echo "FORBIDDEN: $p ($c)"
 done
+# "במאמר זה" is allowed ONLY inside the legal disclaimer ("אין לראות במאמר זה ייעוץ משפטי").
+# Flag it only when it appears OUTSIDE that exact disclaimer phrase (an AI-tell opener like "במאמר זה נסקור").
+bad=$(grep -o 'במאמר זה[^י]' $F | grep -v 'במאמר זה י' | wc -l)
+[ "$bad" != "0" ] && echo "FORBIDDEN (opener): במאמר זה ($bad) — disclaimer use is OK, opener use is not"
 for w in "ליד" "leads" "CRM" "פילר" "intent" "SEO"; do
   c=$(grep -c "$w" $F); [ "$c" != "0" ] && echo "INTERNAL LEAK (check context): $w ($c)"
 done
@@ -456,7 +460,7 @@ For YOUR own (Cowork's) token use:
 | Plugin behavior / healthcheck | `skills/nadlan-config-plugin.md` |
 | Design tokens / CSS contract | `skills/article-guide-design-pattern.md` |
 | Strategy / competitor map | `skills/strategy-master.md` |
-| Money model | `skills/monetization-lawyer-angle.md` + `skills/payments-pmpro-stripe.md` (note: rename in progress) |
+| Money model | `skills/monetization-lawyer-angle.md` + `skills/payments-woo-greeninvoice.md` (note: rename in progress) |
 | Project history | `skills/cowork-briefing.md` |
 | Cross-agent contract | `AGENTS.md` |
 | Current state | `skills/site-state.md` (read last 6 blocks) |

@@ -51,7 +51,7 @@ Every agent (Claude, Codex, Antigravity, Cowork) reads from here before acting a
 | `strategy-master.md` | Full Hebrew SEO/content/design/business brief; competitor DNA |
 | `monetization-lawyer-angle.md` | Revenue model centered on owner's law practice |
 | `lead-funnel.md` | Site-wide FAB + lead CPT + REST endpoint |
-| `payments-pmpro-stripe.md` | Self-registration directory: Free/Pro/Premier tiers |
+| `payments-woo-greeninvoice.md` | Self-registration directory: Free/Pro/Premier tiers |
 
 ### Content production (the new authoring loop)
 

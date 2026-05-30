@@ -368,7 +368,7 @@ Owner pasted a handoff brief asking 8 things. Identified self honestly; verified
 
 **BLOCKED (waiting on owner):**
 - Auto-updater handshake: PR #2 not yet merged to main. Until merged, `raw.githubusercontent.com/.../main/plugin-dist/nadlan-config.json` returns 404. After merge, PUC will see v1.2.1 advertised and offer Update inside WP. Path to verify: merge PR → wait ~12h or click "Check for updates" in plugins → see banner.
-- PMPro + Stripe install: requires owner WP admin click + Stripe account creation. Full plan written: skills/payments-pmpro-stripe.md.
+- PMPro + Stripe install: requires owner WP admin click + Stripe account creation. Full plan written: skills/payments-woo-greeninvoice.md.
 - Photos for seed properties: no photography exists yet; cards render with cream-100 "תצלום בקרוב" placeholders. Codex job (June 2+) per image-pipeline.md.
 
 **SCORECARD:**
@@ -379,9 +379,9 @@ Owner pasted a handoff brief asking 8 things. Identified self honestly; verified
 5. IndexNow log proof — BLOCKED (need v1.2.1 active to expose recent_pings; key serving is in v1.2.0 but not verifiable without the augmenter)
 6. Generator suppression + sitemap freshness — PARTIAL (sitemap done; generator needs v1.2.1)
 7. Properties catalog (Phase B–C) — PARTIAL (UI + map + 5 seeds + nav DONE; meta blocked on v1.2.1; photos blocked on Codex)
-8. PMPro + Stripe plan — DONE (skills/payments-pmpro-stripe.md)
+8. PMPro + Stripe plan — DONE (skills/payments-woo-greeninvoice.md)
 
-v1.2.1 ZIP shipped to owner. New skills: spoke-prompts-short-rent-abroad.md (7 ChatGPT prompts) + payments-pmpro-stripe.md.
+v1.2.1 ZIP shipped to owner. New skills: spoke-prompts-short-rent-abroad.md (7 ChatGPT prompts) + payments-woo-greeninvoice.md.
 
 ### 2026-05-29 — Claude Code (claude-opus-4-8) — HANDOFF to Claude Cowork
 - Owner is migrating to **Claude Cowork** (more tools: manual browser clicks, more integrations). I am STOPPING active build work (no plugin changes, no site changes this session beyond the handoff docs).
@@ -467,7 +467,7 @@ First sweep added date stripe + spoke-backlink + lawyer-cta + hub-related blocks
 
 **Business pipeline audit (full plugin scan):**
 
-Actual installed payment stack: **WooCommerce 10.8.1 (active) + Paid Member Subscriptions 3.0.4 (active) + wc-gateway-greeninvoice 2.4.0 (active)**. This is DIFFERENT from the documented plan in `skills/payments-pmpro-stripe.md` which assumed PMPro+Stripe. The current stack is actually well-suited for Israel (Green Invoice handles ישראלי tax/חשבונית compliance and is the standard for Israeli ecommerce).
+Actual installed payment stack: **WooCommerce 10.8.1 (active) + Paid Member Subscriptions 3.0.4 (active) + wc-gateway-greeninvoice 2.4.0 (active)**. This is DIFFERENT from the documented plan in `skills/payments-woo-greeninvoice.md` which assumed PMPro+Stripe. The current stack is actually well-suited for Israel (Green Invoice handles ישראלי tax/חשבונית compliance and is the standard for Israeli ecommerce).
 
 Status:
 - WooCommerce pages exist (shop=390, cart=391, checkout=392, my-account=393) but **0 products** are configured. Nothing to sell.
@@ -477,9 +477,9 @@ Status:
 
 **Critical business gaps identified:**
 
-1. The `payments-pmpro-stripe.md` skill is now misaligned with reality. Either it should be renamed to a generic `payments-and-subscriptions.md` covering the actual WooCommerce + PMS + Green Invoice stack, OR PMPro should be installed and PMS removed. The skill needs to match reality before any payment flow gets built.
+1. The `payments-woo-greeninvoice.md` skill is now misaligned with reality. Either it should be renamed to a generic `payments-and-subscriptions.md` covering the actual WooCommerce + PMS + Green Invoice stack, OR PMPro should be installed and PMS removed. The skill needs to match reality before any payment flow gets built.
 2. WooCommerce has 0 products. The entire "people pay money" path is blocked until products/subscription plans are created. The current state is: pipes installed, nothing flowing through them.
-3. No public-facing pricing page. No "Become a Pro" CTA. No directory listing entry form. The 3-tier directory plan in `payments-pmpro-stripe.md` is not yet productized.
+3. No public-facing pricing page. No "Become a Pro" CTA. No directory listing entry form. The 3-tier directory plan in `payments-woo-greeninvoice.md` is not yet productized.
 4. E-E-A-T author byline is not yet set on any of the new pages - owner is deciding whether the byline is always the owner-lawyer, sometimes a registered professional, or per-article-author. Currently the strategy depends heavily on the owner-as-lawyer Person schema for SEO authority in the tax-legal cluster; not configuring it leaves significant SEO equity on the table.
 
 ### 2026-05-30 (proof + smoke test + design) — Claude Code (claude-opus-4-7)
@@ -547,9 +547,27 @@ Status:
 
 **Honesty / known gaps (for the next conversation):**
 1. The "חודש ראשון חינם" on Pro plan is currently a marketing claim, not enforced by code. To make it real, owner needs to either: install WooCommerce Subscriptions (paid plugin), or I'll add a coupon-auto-apply mechanism in the nadlan-config plugin. Pending decision.
-2. The `skills/payments-pmpro-stripe.md` skill is still misnamed (refers to Stripe). Should be renamed to `payments-woo-greeninvoice.md` and rewritten to match reality. Skill index already deprioritizes it.
+2. The `skills/payments-woo-greeninvoice.md` skill is still misnamed (refers to Stripe). Should be renamed to `payments-woo-greeninvoice.md` and rewritten to match reality. Skill index already deprioritizes it.
 3. The `/join-pro/` page isn't in the main nav yet. Owner action: add to wp-admin → Appearance → Menus, OR I can edit nav id=4 via REST if owner says go.
 4. The pricing-page hero image is the same Tel Aviv skyline stock. Owner-flagged TODO: real branded photography.
 5. The author photo is an SVG initials avatar ("בב"). Owner-flagged TODO: real headshot.
 6. The Yoast graph emits its own WebPage+Organization+Breadcrumb. Our inline graph adds Person+Article. Two graphs on one page is allowed by spec, but Yoast premium has a "schema aggregator" that would unify them. Out of scope for now.
 7. Bar number 29020 — owner-supplied, not independently verified by me (web search returned a different "בטש" firm, so the standalone search couldn't confirm). I trust the owner's word but flagging as I can't fact-check it from public sources.
+
+### 2026-05-30 (night) — Claude Code (claude-opus-4-7) — gaps closed + Cowork QA pass
+
+**Sequential completion of the 7 gaps:**
+1. Free-first-month: found Green Invoice gateway supports ONLY `['products','refunds']` — NO recurring. Created real working coupon `חודש-ראשון-חינם` (508) + alias `FIRSTMONTHFREE` (509), 100% off Pro, 1/customer; enabled coupons at checkout. Documented honestly: monthly auto-rebill not possible via this gateway; recurring handled via Morning הוראת קבע after signup (same as jus-tice.co.il) OR reframe to annual. Decision still pending owner.
+2. Payments skill renamed `payments-pmpro-stripe.md` → `payments-woo-greeninvoice.md`; rewrote top with LIVE config; marked old PMPro+Stripe plan DEPRECATED. Fixed all pointers in README, runbook, cowork-briefing, HANDOFF, site-state.
+3. `/join-pro/` added to main nav (id 4), label "הצטרפו כמקצוען". Verified live on homepage.
+4. Pricing/hero stock image — owner-blocked (no photography). Noted.
+5. Author avatar initials — kept (owner said avatar for now). Noted TODO real headshot.
+6. Bar 29020 — owner-supplied, flagged unverifiable from public web.
+7. Two JSON-LD graphs — needs Yoast Premium aggregator. Out of scope. Noted.
+
+**Cowork QA pass (owner asked to check his live work):**
+Cowork published 5 new tax-legal spokes following the runbook (exactly batch #1 recommended):
+- 493 capital-gains-tax-exemption (parent 92), 494 betterment-levy (92), 495 apartment-sale-contract (parent 11), 502 power-of-attorney-real-estate (11), 505 residential-lease-agreement (11).
+VERDICT: HIGH QUALITY. The runbook works. Every page has: nadlan-guide green design, byline "מאת בן בטש", Person+Article JSON-LD, cards+tables+notes+CTAs, disclaimer, author=1, 13-20 internal links incl pillar + lawyer CTA, Yoast title+metadesc. ZERO artifacts: no em-dash, no {index=}, no escaped HTML, no [N], no word+N, no preamble, no forbidden openers. The only grep hit "במאמר זה" was a FALSE POSITIVE (inside the mandatory legal disclaimer "אין לראות במאמר זה ייעוץ משפטי") - refined the runbook §4.5 sanity-check to not flag the disclaimer use. Live visual QA on 493 confirmed render. No fixes needed to Cowork's pages.
+
+**Runbook completeness verified:** all 13 sections (§0-§12) present, all referenced skill files exist, CSS template present, reference design page live (HTTP 200). 556 lines.

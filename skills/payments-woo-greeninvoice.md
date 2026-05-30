@@ -1,6 +1,47 @@
-# Self-Registration & Payments Plan — Paid Memberships Pro + Stripe
+# Self-Registration & Payments — WooCommerce + Green Invoice (LIVE)
 
-> **Notice to all agents:** decision locked 2026-05-28 — PMPro + Stripe is the chosen stack for the professional self-registration funnel (the "people pay me, I see money flow" path). This skill is the concrete install + config plan. Owner approves cost at install time (PMPro core is free, Stripe is per-transaction).
+> **STATUS 2026-05-30: this is now LIVE and reality has overridden the original plan below.** Stripe is NOT usable on this site (owner-confirmed). The actual stack is **WooCommerce 10.8.1 + Paid Member Subscriptions 3.0.4 + wc-gateway-greeninvoice 2.4.0 (Morning/מורנינג)**. The section "## What we're building" and everything below it referencing PMPro+Stripe is **DEPRECATED / historical** — kept for the requirements logic, not the tech choice. Read the LIVE section first.
+
+## LIVE configuration (2026-05-30)
+
+**Products (WooCommerce, all published, currency ILS, incl. VAT):**
+
+| id | name | price | type |
+|---|---|---|---|
+| 475 | רישום בסיסי - אנשי מקצוע | ₪0 | one-time (free listing) |
+| 476 | Pro - אנשי מקצוע (חודש ראשון חינם) | ₪349 | recurring intent (see billing note) |
+| 477 | Premier - חשיפה מוגברת | ₪749 | recurring intent |
+| 489 | קמפיין פרויקט - יזמים וקבלנים | ₪3,990 | one-time / 3-mo ₪10,990 / 6-mo ₪19,990 |
+| 490 | מודעה מקודמת לנכס - מוכר/קונה פרטי | ₪299 | recurring intent |
+
+**Pricing page (LIVE):** `https://nad-lan.co.il/join-pro/` (page id 491). Full `.nadlan-guide` green design: hero, 3-tier plan-row, project-advertising cards, listing CTA, FAQ, disclaimer.
+
+**Registration:** ENABLED — `woocommerce_enable_myaccount_registration=yes`, `woocommerce_enable_signup_and_login_from_checkout=yes`.
+
+**Payment gateway:** Green Invoice (Morning) — credit card, Bit, Google Pay, Apple Pay all active. Issues a חשבונית automatically.
+
+**Free first month:** real coupon `חודש-ראשון-חינם` (id 508) + alias `FIRSTMONTHFREE` (id 509), 100% off product 476, one use per customer. Coupons enabled at checkout.
+
+### CRITICAL billing limitation (honest)
+
+The Green Invoice WooCommerce gateway declares support only for `['products','refunds']` — **it does NOT support automatic recurring charges.** Therefore:
+
+- A WooCommerce purchase = a **single** charge (the signup + first month).
+- True monthly auto-rebilling is **not** possible through this gateway as-is.
+- The monthly model is sustained the same way the owner's other site (jus-tice.co.il) does it: after WooCommerce signup, recurring is handled via **Morning/Green Invoice standing order (הוראת קבע)**, set up per subscriber — a manual/owner-side step, NOT WooCommerce auto-charge.
+- Alternatives if the owner wants fully-automated recurring: (a) WooCommerce Subscriptions paid plugin — but the gateway must declare `subscriptions` support, which it currently does NOT, so this likely won't work without a gateway upgrade; (b) sell **annual** memberships as one-time WooCommerce products (gateway supports this perfectly); (c) Morning standing-order API integration in the nadlan-config plugin (custom dev).
+
+**Recommended:** reframe Pro/Premier as **annual** one-time products (₪3,490/yr, ₪7,490/yr) OR keep the monthly display + owner sets up הוראת קבע in Morning after each signup. Decision pending owner.
+
+### Verified end-to-end (smoke tests, 2026-05-30)
+
+Register customer → create order for product 476 → status `pending` → `greeninvoice-creditcard` gateway attached → checkout URL returned. Test customer + order deleted after. The signup + first-charge path works. The recurring path needs the decision above.
+
+---
+
+## (DEPRECATED 2026-05-30) Original plan — Paid Memberships Pro + Stripe
+
+> Stripe is blocked on this site. The tech below was never implemented. Kept only for the requirements/funnel logic, which still applies to the WooCommerce implementation above.
 
 ## What we're building
 
