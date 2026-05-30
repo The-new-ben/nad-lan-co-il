@@ -59,6 +59,8 @@ Every agent (Claude, Codex, Antigravity, Cowork) reads from here before acting a
 |---|---|
 | `strategy-master.md` §13 | Google Blueprint workflow — manual SERP reverse-engineering → article spec → ChatGPT prompt |
 | `internal-linking-hub-spoke.md` §"Article publishing protocol" | ChatGPT output → live page (10-step checklist) |
+| `runbook-cowork-article-batch.md` | **THE master recipe for Cowork** — pre-flight, batch selection, Google Blueprint, master ChatGPT prompt, sanity-check, publish, link wiring, visual QA, honesty report. Embedded skills. |
+| `article-guide-design-pattern.md` | The `.nadlan-guide` green canonical design pattern (hero/cards/table/note/CTA). Owner-approved 2026-05-30. |
 | `google-blueprint-workflow.md` (stub) | Folded into strategy-master.md §13; pointer only |
 | `article-publishing-protocol.md` (stub) | Folded into internal-linking-hub-spoke.md; pointer only |
 | `copywriting-skill.md` | Hebrew voice; forbidden AI phrases; em-dash ban (2026-05-29 owner-explicit) |
