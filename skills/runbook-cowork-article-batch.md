@@ -1,3 +1,5 @@
+> **⚠️ SUPERSEDED 2026-05-30: use `runbook-cowork-article-batch-v2.md` instead.** v2 incorporates the 9-article-batch lessons (duplicate-H2 detector, hardened opener check, word-count floor, engine-fallback protocol, explicit 24-article backlog).
+
 # Cowork Runbook — Article Batch Execution (master recipe)
 
 > **For Claude Cowork (and any agent the owner points at a batch):** this is the **single self-contained recipe** for producing a batch of high-ranking Hebrew articles on nad-lan.co.il, from cold session start to the owner's end-of-batch report. Read it once at the top of the session, then execute the loop section-by-section without stopping. The owner is walking away after he runs this; do not stop to ask permission on routine steps. **Stop only on:** broken REST connectivity, owner-facts you cannot infer (covered in §0), or a destructive-action gate.
