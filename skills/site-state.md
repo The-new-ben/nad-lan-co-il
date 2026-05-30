@@ -481,3 +481,26 @@ Status:
 2. WooCommerce has 0 products. The entire "people pay money" path is blocked until products/subscription plans are created. The current state is: pipes installed, nothing flowing through them.
 3. No public-facing pricing page. No "Become a Pro" CTA. No directory listing entry form. The 3-tier directory plan in `payments-pmpro-stripe.md` is not yet productized.
 4. E-E-A-T author byline is not yet set on any of the new pages - owner is deciding whether the byline is always the owner-lawyer, sometimes a registered professional, or per-article-author. Currently the strategy depends heavily on the owner-as-lawyer Person schema for SEO authority in the tax-legal cluster; not configuring it leaves significant SEO equity on the table.
+
+### 2026-05-30 (proof + smoke test + design) — Claude Code (claude-opus-4-7)
+
+**PROVED REST changes are live (owner couldn't see changes):**
+- Owner reported Thailand spoke still had brackets. Found the real artifact: `{index=0}` ... `{index=10}` (Perplexity citation markers in curly braces) - my earlier regex matched `[N]` and `word+N` but NOT `{index=N}`. Removed all 11 from page 404.
+- Fetched the LIVE rendered page fresh from origin (cache-busted): `https://nad-lan.co.il/short-term-rentals-abroad/short-term-rentals-thailand/` - 0 `{index=N}`, 0 in visible prose. Confirmed live.
+- IMPORTANT distinction clarified for owner: page CONTENT is edited via WP REST API and is INSTANT/live - it does NOT go through GitHub. The `git push` only ships theme/plugin/skills files. Pulling from GitHub does nothing for page content. No WP cache plugin installed (plain nginx; UPress may have a short nginx microcache).
+- The 7 short-rent spokes are actually nested under the pillar: `/short-term-rentals-abroad/{country}/` (a 301 redirects the flat slug). Updated mental model.
+
+**Payment / registration smoke test (WooCommerce + Green Invoice):**
+- Active stack confirmed: WooCommerce 10.8.1 + Paid Member Subscriptions 3.0.4 + wc-gateway-greeninvoice 2.4.0. Stripe is NOT usable on this site (owner: "Stripe is not working with this site"), so the model evolved to WooCommerce + Green Invoice (Morning/מורנינג).
+- Gateways ENABLED: greeninvoice credit-card, Bit, Google Pay, Apple Pay. Currency ILS, country IL. Good.
+- Registration toggles BOTH OFF: `woocommerce_enable_myaccount_registration=no`, `woocommerce_enable_signup_and_login_from_checkout=no`. → a professional CANNOT self-register today.
+- Products: 0. → nothing to buy today.
+- **Smoke test PASSED end-to-end (mechanics):** created draft product (id 471, 1188 ₪) → created test customer (registration) → created order (id 472, pending, 1188 ₪, greeninvoice-creditcard gateway attached). Then deleted test order + test customer; KEPT draft product 471 (hidden) for owner to review/adjust pricing. Final card charge needs a real card / Morning sandbox (cannot be automated via REST).
+- Honest conclusion: the money PIPES work. The money PATH is closed (registration off, 0 products, no pricing page, no "become a pro" CTA).
+
+**Design pattern skill created:** `article-guide-design-pattern.md` documents the `.nadlan-guide` self-contained HTML+CSS layout (hero with eyebrow + h2 + lede + CTA + image, body with cards/table/note/CTA) that the owner approved as the target look. It is live on id 9/10/11 (Codex era) and renders consistently because the CSS is scoped and theme-independent (injected via `wp:html`). Documented the current green palette AND a Lovable-luxury palette variant (same structure, swapped tokens). OPEN DECISION: green vs luxury palette.
+
+**Author / E-E-A-T (BLOCKED on owner facts, do NOT fabricate):**
+- Owner authorized using "בן בטש, עו״ד" as the site author for now (he is primarily a family-law lawyer with some real-estate work; will seek a more established real-estate name later).
+- Web search for בן בטש returns only an UNRELATED firm (בטש ושות' / Jacob & Jonathan Battash, TA litigation). No verifiable public profile for THIS owner. Therefore NO sameAs links, NO bar number, NO bio can be sourced from the web without risking wrong-person attribution (E-E-A-T damage + identity risk). Must get from owner.
+- Planned modular mechanism (native, no URL change, no plugin change): each expert = a WP User with bio + Yoast social sameAs + Gravatar; each Page's `author` field (settable via REST) points to the expert; Yoast per-page schema set to Article → nests author Person schema; visible byline block added to body. Modular = change author field to reassign; future experts = new users. Pending owner's verified facts.
