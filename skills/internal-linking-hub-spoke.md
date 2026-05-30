@@ -69,6 +69,15 @@ Three linking sweeps via WP REST API on the live site:
 | short-term-rentals-italy (418) | short-term-rentals-abroad (345) |
 | short-term-rentals-spain (417) | short-term-rentals-abroad (345) |
 | short-term-rentals-cyprus (416) | short-term-rentals-abroad (345) |
+| capital-gains-tax-exemption (493) | real-estate-tax-advisor (92) |
+| betterment-levy (494) | real-estate-tax-advisor (92) |
+| apartment-sale-contract (495) | real-estate-lawyer (11) |
+| power-of-attorney-real-estate (502) | real-estate-lawyer (11) |
+| residential-lease-agreement (505) | real-estate-lawyer (11) |
+| reverse-mortgage (512) | mortgage-calculator (121) |
+| mortgage-ltv-ratio (513) | mortgage-calculator (121) |
+| mortgage-interest-rates (514) | mortgage-calculator (121) |
+| mortgage-repayment-capacity (519) | mortgage-calculator (121) |
 | apartment-buying-checklist | buying-apartment |
 | tabu-extract-check | real-estate-lawyer |
 | property-value | buying-apartment |

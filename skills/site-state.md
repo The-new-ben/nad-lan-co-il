@@ -571,3 +571,52 @@ Cowork published 5 new tax-legal spokes following the runbook (exactly batch #1 
 VERDICT: HIGH QUALITY. The runbook works. Every page has: nadlan-guide green design, byline "מאת בן בטש", Person+Article JSON-LD, cards+tables+notes+CTAs, disclaimer, author=1, 13-20 internal links incl pillar + lawyer CTA, Yoast title+metadesc. ZERO artifacts: no em-dash, no {index=}, no escaped HTML, no [N], no word+N, no preamble, no forbidden openers. The only grep hit "במאמר זה" was a FALSE POSITIVE (inside the mandatory legal disclaimer "אין לראות במאמר זה ייעוץ משפטי") - refined the runbook §4.5 sanity-check to not flag the disclaimer use. Live visual QA on 493 confirmed render. No fixes needed to Cowork's pages.
 
 **Runbook completeness verified:** all 13 sections (§0-§12) present, all referenced skill files exist, CSS template present, reference design page live (HTTP 200). 556 lines.
+
+### 2026-05-30 (audit) — Claude Code (claude-opus-4-7) — deep QA on Cowork's 9 batch articles
+
+**Inventory:** 9 articles published this push — 5 tax-legal (493/494/495/502/505) + 4 mortgage (512/513/514/519). Plus the 11 retro-wired earlier the same day. Total ~21 articles in fresh content production.
+
+**Hebrew quality (read deeply):**
+- ChatGPT articles (8 of 9): professional native Hebrew, no translation feel, real legal anchors cited (חוק הנוטריונים §20, חוק שכירות הוגנת, סעיף 49ב, BoI directives), direct action-oriented voice. Quality: A.
+- Gemini article (519): content accurate, slightly more verbose, opened with the forbidden AI-tell "במאמר זה נפרט". Fixed in audit. Quality after fix: A-.
+
+**Google Blueprint adherence:** every article's H2 backbone matches the real SERP shared structure for its target query (verified by Cowork's manual Hebrew SERP scans). FAQs use genuine "אנשים גם שואלים" questions. Citation density 15-41 per article. Score: 9/10.
+
+**Cannibalization:** ZERO real cannibalization across the site. All apparent overlaps are pillar↔spoke (correct intent separation). Broad terms like "תשואה" mentioned by many pages but only 422 targets it. Score: 10/10.
+
+**Defects found and FIXED during audit:**
+1. Page 519 (Gemini): opener "במאמר זה נפרט במדויק" → rewritten to "הסקירה שלהלן מציגה כיצד..."
+2. Page 493 (ChatGPT, stitched): redundant byline-in-body paragraph removed.
+3. Page 493: 4 duplicate H2 sections (Cowork's stitching artifact when ChatGPT's two passes overlapped) — second copy of each removed (≈8.7KB freed). Page went from 27KB→18.8KB clean.
+After fix: 9/9 articles have 0 forbidden openers + 0 duplicate H2s.
+
+**Absent spokes (gaps per strategy §2, priority order for next batches):**
+
+Priority 1 (high commercial value, tax-legal moat):
+- `מס רכישה דירה ראשונה` — own spoke under tax-advisor pillar (5,400/mo SERP)
+- `מס רכישה משקיע` — own spoke (high CPC ₪4)
+- `מס שבח` — broader pillar (currently only the 493 spoke covers דירה יחידה sub-case)
+- `חוק מכר דירות` (the law itself, not the bank-guarantee)
+
+Priority 2 (urban renewal, owner's law speciality):
+- `תמא 38` (1,000/mo) — own spoke
+- `פינוי בינוי` (6,600/mo) — own spoke
+- `חוזה תמא 38 - מה לבדוק`
+
+Priority 3 (operational long-tail):
+- `תקופת אופציה במכר דירה`
+- `טופס 4`
+- `תב"ע / היתרי בנייה לאזרח`
+
+**Strategy master file:** last revision 2026-05-30 (added §13 Google Blueprint). Up to date except the cluster map in internal-linking-hub-spoke.md needed extension — NOW updated with the 9 new spokes.
+
+**Brutal scorecard for Cowork's runbook execution:**
+- Google Blueprint compliance: 9/10
+- Design adherence: 9/10
+- E-E-A-T (byline + Article+Person schema + sources): 10/10
+- Internal-link wiring: 9/10
+- Anti-cannibalization: 10/10
+- Hebrew prose quality: 9/10 (one Gemini opener defect, fixed)
+- Sanity-check effectiveness: 7/10 (caught the easy artifacts; missed the 493 duplicate-H2 stitching error + 519 opener — runbook §4.5 should add a duplicate-H2 check)
+
+**Runbook refinement queued:** add to §4.5 a sanity check for `wc -l <(grep -oP '<h2[^>]*>([^<]+)</h2>' file | sort -u)` vs `grep -c '<h2'` mismatch (means duplicates). And explicit search for `<p[^>]*>\s*המאמר נכתב על ידי` (redundant byline paragraph).
