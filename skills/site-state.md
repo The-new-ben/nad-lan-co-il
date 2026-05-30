@@ -436,3 +436,48 @@ In short: the **content** is Google Blueprint eligible to rank first against com
 **Remaining owner-decision items (carried from previous sessions):**
 - PR #2 still unmerged → auto-updater dormant.
 - Plugin v1.2.1 still not uploaded → property meta + Site Kit generator strip + IndexNow log not active.
+
+### 2026-05-30 (later) — Claude Code (claude-opus-4-7) — 11-page wiring + skills fold + business audit
+
+**11-page wiring sweep run + restored:**
+
+First sweep added date stripe + spoke-backlink + lawyer-cta + hub-related blocks to all 11 new pages (4 investment cluster + 7 short-rent spokes), set Yoast title+metadesc+focuskw+cornerstone flags. Then a buggy re-run with over-greedy `strip_existing_markers` regex wiped all 11 pages down to ~2.5-2.8KB stubs. Caught immediately. Restored all 11 from WordPress revisions (revs 436-446 saved the day) - final content now has the wiring blocks + the article body. Greece had 15 remaining Perplexity-style citation footnotes (`AADE+1`, `Bank of Greece+1`, etc.) that the first regex missed; aggressive second pass removed all of them.
+
+**Final state of the 11 pages (verified post-restore):**
+
+- Yoast title + metadesc + focuskw set on all 11
+- `_yoast_wpseo_is_cornerstone='1'` on investment pillar (421); abroad pillar (345) was already marked
+- Spoke-backlink-v1 block on all 10 spokes (pillar link + 2 sibling links)
+- Lawyer-cta-v1 block on all 11 (link to /real-estate-lawyer/ + /purchase-tax-calculator/)
+- Hub-related-v1 block on investment pillar (links to its 3 spokes)
+- Date-stripe-v1 block on all 11
+- 0 em-dashes, 0 escaped HTML, 0 ChatGPT preamble, 0 Perplexity citation footnotes
+- Internal link counts: 6-9 per spoke (was 0-1 before), 9 on investment pillar
+
+**Known visual issues (deferred, for runbook):**
+
+- The `cta-lawyer` group and `spoke-backlink` group reference `accent-5` background color which doesn't exist in this theme's palette. Theme has `cream-100`/`cream-50` instead. The old 2026-05-28 sweep also used `accent-5`. Result: blocks render without their accent background (functional but not visually rich). Fix is a 5-line patch but deferred per owner ("we're not starting now") - belongs in the next sweep alongside the broader design upgrade.
+- The 11 new pages use bare `<h2>` and `<p>` tags (no `<!-- wp:paragraph -->` block-wrapping), so theme.json typography tokens (Frank Ruhl Libre serif on h2/h3, Heebo on body, gold accents) are NOT being applied. The pages render correctly but don't visually match the Lovable luxury design. Investment-apartment (id 10) was pointed to as the design exemplar - but on inspection, ID 10 uses its OWN inline `<style>` block with green colors (older Codex era), NOT the Lovable warm ink/cream/gold palette either. The true Lovable design tokens are applied via theme.json + style.css and require proper Gutenberg block-wrapping in the page content. Deferred to runbook.
+
+**Skills folded:**
+
+- `google-blueprint-workflow.md` → folded into `strategy-master.md` §13 (the 7-step manual SERP reverse-engineering process before writing). Standalone file reduced to 1-paragraph pointer stub.
+- `article-publishing-protocol.md` → folded into `internal-linking-hub-spoke.md` §"Article publishing protocol" (the 10-step ChatGPT-output → live-page checklist). Standalone file reduced to pointer stub.
+- README.md index updated to reflect the fold.
+
+**Business pipeline audit (full plugin scan):**
+
+Actual installed payment stack: **WooCommerce 10.8.1 (active) + Paid Member Subscriptions 3.0.4 (active) + wc-gateway-greeninvoice 2.4.0 (active)**. This is DIFFERENT from the documented plan in `skills/payments-pmpro-stripe.md` which assumed PMPro+Stripe. The current stack is actually well-suited for Israel (Green Invoice handles ישראלי tax/חשבונית compliance and is the standard for Israeli ecommerce).
+
+Status:
+- WooCommerce pages exist (shop=390, cart=391, checkout=392, my-account=393) but **0 products** are configured. Nothing to sell.
+- Paid Member Subscriptions: plugin active. No subscription plans found via standard REST checks (PMS uses custom tables, not CPTs, so no REST surface).
+- Lead funnel: `nadlan-config` reports `lead_handler_loaded: true`. The `nadlan_lead` CPT does not appear in REST type list (`show_in_rest` likely false) - lead submissions via POST work, but the leads aren't REST-listable for verification.
+- Site Kit (Google Analytics + Search Console): active.
+
+**Critical business gaps identified:**
+
+1. The `payments-pmpro-stripe.md` skill is now misaligned with reality. Either it should be renamed to a generic `payments-and-subscriptions.md` covering the actual WooCommerce + PMS + Green Invoice stack, OR PMPro should be installed and PMS removed. The skill needs to match reality before any payment flow gets built.
+2. WooCommerce has 0 products. The entire "people pay money" path is blocked until products/subscription plans are created. The current state is: pipes installed, nothing flowing through them.
+3. No public-facing pricing page. No "Become a Pro" CTA. No directory listing entry form. The 3-tier directory plan in `payments-pmpro-stripe.md` is not yet productized.
+4. E-E-A-T author byline is not yet set on any of the new pages - owner is deciding whether the byline is always the owner-lawyer, sometimes a registered professional, or per-article-author. Currently the strategy depends heavily on the owner-as-lawyer Person schema for SEO authority in the tax-legal cluster; not configuring it leaves significant SEO equity on the table.

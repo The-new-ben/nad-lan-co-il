@@ -57,8 +57,10 @@ Every agent (Claude, Codex, Antigravity, Cowork) reads from here before acting a
 
 | File | Purpose |
 |---|---|
-| `google-blueprint-workflow.md` | Manual SERP reverse-engineering → article spec → ChatGPT prompt |
-| `article-publishing-protocol.md` | ChatGPT output → live page (10-step checklist) |
+| `strategy-master.md` §13 | Google Blueprint workflow — manual SERP reverse-engineering → article spec → ChatGPT prompt |
+| `internal-linking-hub-spoke.md` §"Article publishing protocol" | ChatGPT output → live page (10-step checklist) |
+| `google-blueprint-workflow.md` (stub) | Folded into strategy-master.md §13; pointer only |
+| `article-publishing-protocol.md` (stub) | Folded into internal-linking-hub-spoke.md; pointer only |
 | `copywriting-skill.md` | Hebrew voice; forbidden AI phrases; em-dash ban (2026-05-29 owner-explicit) |
 | `internal-linking-hub-spoke.md` | Pillar→spoke map; anti-cannibalization; idempotency markers |
 | `spoke-prompts-short-rent-abroad.md` | System block + 7 country prompts for ChatGPT |

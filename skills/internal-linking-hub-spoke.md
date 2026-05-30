@@ -157,9 +157,112 @@ Audited the 2026-05-29 publishes by Cowork. Findings:
 - **Missing Yoast metadesc** on pages 398, 416, 417, 418, 421, 425 (6 pages). Google falls back to first paragraph for these.
 - **No lawyer CTA block** anywhere in the new clusters. Money-path zero from these pages.
 
-This is exactly the failure pattern that `article-publishing-protocol.md` exists to prevent. The protocol now exists; the next sweep must apply it retroactively to these 11 pages.
+This is exactly the failure pattern that the publishing protocol below exists to prevent. The 11-page retro-wiring sweep was completed 2026-05-30 (see site-state.md).
 
 Updated cluster map to include the two new pillars + spokes. Added wiring-status table at end of map showing what's still missing.
 
 ---
-_Created 2026-05-28 by Claude Code (claude-opus-4-7) during the "make it rank on Google" session. Updated 2026-05-30 with the 2026-05-29 Cowork audit + new clusters._
+
+## Article publishing protocol - ChatGPT output → live page
+
+> Folded in 2026-05-30. The 10-step checklist that takes a ChatGPT Hebrew HTML article and turns it into a live page that ranks, monetizes, and matches the luxury design. Every article goes through every step. The 2026-05-29 country spokes skipped these steps and 6 of 7 shipped broken (escaped HTML visible as text, missing meta, orphan links).
+
+**Cross-references (do not duplicate, follow the link):** voice rules + em-dash ban + forbidden phrases → `copywriting-skill.md`. Pre-writing research → `strategy-master.md` §13 Google Blueprint workflow. Yoast meta + Person schema → `yoast-config.md`. Luxury design tokens → `luxury-design-system.md`. Existing country prompts → `spoke-prompts-short-rent-abroad.md`.
+
+### Step 1 - Sanity-check the ChatGPT output (BEFORE touching WordPress)
+
+Save to a temp file. Scan with these checks. Any fail → fix in the source, never publish broken HTML hoping to fix in WP.
+
+**1a. Strip ChatGPT preamble.** Delete lines like `להלן מאמר HTML נקי להדבקה`, `הנה המאמר המבוקש`, `להלן הטיוטה`, `הערת שקיפות: ...`. These are meta-commentary about the writing task and have no place on a public page.
+
+**1b. Strip citation tokens.** Delete every Perplexity-style or ChatGPT-search-style citation footnote: `Government of Israel+9נדלן מאסטר+9Portukey+9`, `[1][2][3]`, `(Source: ...)+12`. Convert real source attributions to clean Hebrew inline: `(מקור: בנק ישראל, מרץ 2026)`.
+
+**1c. Em-dash sweep.** `grep -c '—' file` must be 0. Replace ` — ` with ` - ` or comma. Owner-explicit ban 2026-05-29.
+
+**1d. Forbidden-phrase sweep.** For each phrase in `copywriting-skill.md` §3-4 (חשוב להבין, ראוי לציין, במילים אחרות, עולם הנדל"ן, בעידן, ללא ספק, אינסוף, באופן כללי, בסופו של דבר, לסיכום, כפי שראינו, במאמר), grep count must be 0. Any hit → send back to ChatGPT with: "החלף את כל המופעים של '[phrase]' בנוסח שונה. אל תשתמש בביטוי הזה כלל." Do not try to fix in place.
+
+**1e. Internal-leak word sweep.** Forbidden internal-only words must be 0 in public copy: ליד (manual check - real Hebrew word), leads, CRM, פילר, spoke, hub, cluster, intent, money page, UTM, SEO.
+
+**1f. HTML well-formedness.** Tag balance check: count `<h2` and `</h2>` - must match. Same for `<p>` and `<div>`.
+
+**1g. Length.** 1,800-2,500 words for spoke; 2,500-4,000 for pillar.
+
+### Step 2 - Prepend date + (optional) author byline + append disclaimer
+
+Date: `<p dir="rtl"><em>עודכן ונבדק: 2026-MM-DD.</em></p>`.
+
+If the article touches tax, legal, contract, or regulation: author byline. Wording in `copywriting-skill.md` §8. Owner-decision pending 2026-05-30 whether the byline is always the owner-lawyer, sometimes a registered professional from the directory, or omitted - until decided, omit the byline but leave the placeholder marker `<!-- nadlan-byline-pending -->` so a sweep can add it later.
+
+Bottom legal disclaimer for any tax/legal article: `<p dir="rtl"><em>אין לראות במאמר זה ייעוץ משפטי. כל מקרה דורש בדיקה פרטנית של נסיבותיו. ליצירת קשר לייעוץ ראשוני: <a href="/real-estate-lawyer/">/real-estate-lawyer/</a>.</em></p>`.
+
+### Step 3 - Wrap top-level elements in Gutenberg block comments
+
+Bare `<p>` gets default theme styling. `<!-- wp:paragraph --><p>...</p><!-- /wp:paragraph -->` gets the luxury design tokens (Frank Ruhl Libre serif on h2/h3, gold accents, RTL spacing). Same for h2-h6 (`<!-- wp:heading {"level":2} -->`), ul (`<!-- wp:list -->`), ol (`<!-- wp:list {"ordered":true} -->`). Helper Python in `/tmp/wrap_blocks.py` from the 2026-05-30 sweep can be reused.
+
+### Step 4 - Internal-link wiring (3 directions + lawyer CTA)
+
+Every spoke needs:
+1. Up to its pillar (one anchor in the opening 200 words)
+2. Across to 2-4 sibling spokes under the same pillar (in body text, not a "related articles" list)
+3. Down/across to 1-2 tools (calculator, comparison widget, catalog filter)
+4. Lawyer CTA (the `cta-lawyer` group block below) minimum once near the bottom
+
+**Anti-cannibalization:** never link a spoke to another spoke targeting the same query. Spoke→pillar anchor uses pillar's H1 phrasing. Spoke→sibling anchor uses sibling's exact target query. Pillar→spoke anchor uses spoke's target query.
+
+**Cluster map** is the table above. Read it before publishing.
+
+**Lawyer CTA block** (use idempotent marker `<!-- nadlan-lawyer-cta-v1 -->`):
+```html
+<!-- nadlan-lawyer-cta-v1 -->
+<!-- wp:group {"className":"cta-lawyer","backgroundColor":"cream-100"} -->
+<div class="wp-block-group cta-lawyer has-cream-100-background-color has-background">
+  <!-- wp:heading {"level":3} --><h3 dir="rtl">צריכים ליווי משפטי לעסקת נדל"ן?</h3><!-- /wp:heading -->
+  <!-- wp:paragraph --><p dir="rtl">משרד עורך דין מקרקעין מציע ייעוץ ראשוני לקוראי האתר...</p><!-- /wp:paragraph -->
+  <!-- wp:buttons --><div class="wp-block-buttons">
+    <!-- wp:button --><div class="wp-block-button"><a class="wp-block-button__link" href="/real-estate-lawyer/">קבעו ייעוץ</a></div><!-- /wp:button -->
+  </div><!-- /wp:buttons -->
+</div><!-- /wp:group -->
+```
+
+### Step 5 - Set Yoast meta
+
+Every article needs `_yoast_wpseo_title` (≤60 chars), `_yoast_wpseo_metadesc` (150-160 chars - one factual sentence + what reader gets + soft CTA), `_yoast_wpseo_focuskw`, `_yoast_wpseo_is_cornerstone` (`'1'` for pillar, `''` for spoke). Set via REST `meta` field. Verify after save with `yoast_head_json.description` - if MISSING or shows first paragraph, the write was rejected. The 2026-05-29 spokes shipped with 4 of 7 missing metadesc and Google showed "להלן מאמר HTML נקי להדבקה" in the SERP.
+
+### Step 6 - Schema upgrade
+
+Yoast defaults to WebPage schema. For real articles upgrade to Article schema with author + publication date. Per-page: `_yoast_wpseo_schema_article_type='Article'`. For tax/legal/contract articles also ensure Person schema for the author lawyer (one-time owner action in Yoast → Settings → Authors).
+
+### Step 7 - Parent + slug
+
+Spokes: set `parent: PILLAR_PAGE_ID` and let WP build the URL. The 7 short-rent abroad spokes are intentionally at flat `/short-term-rentals-{country}/` not nested under the pillar - the pillar slug is itself `/short-term-rentals-abroad/` and stuttering URLs are bad.
+
+### Step 8 - Navigation
+
+After publishing a new pillar (rare): add to main menu via wp-admin → Appearance → Menus. Spokes do not go in the main menu - they live via internal links from the pillar and via the sitemap.
+
+### Step 9 - Sitemap and IndexNow
+
+`nadlan-config` plugin v1.1.2+ auto-pings IndexNow on every publish. Verify via healthcheck. Yoast auto-generates `/sitemap_index.xml`. New pages appear within minutes.
+
+### Step 10 - Update `site-state.md`
+
+Append a dated block recording: target query, word count, internal links wired (which pillar/siblings/tools/lawyer CTA), Yoast title+metadesc set, author byline set, IndexNow pinged, known gaps.
+
+### Failure modes from 2026-05-29 (DO NOT REPEAT)
+
+| What broke | Why | Detection |
+|---|---|---|
+| 6 country spokes shipped with `&lt;h2&gt;` visible as text | Output pasted with HTML double-escaped | `&lt;` count in `content.raw` > 0 |
+| 4 country spokes missing Yoast metadesc | `meta` field not in REST POST | `yoast_head_json.description = MISSING` |
+| All 7 spokes had only 1 internal link (to pillar) | Cluster map skipped | Link count in body < 3 |
+| Several spokes opened with "להלן מאמר HTML נקי להדבקה" | Step 1a skipped | grep for "להלן" / "הנה המאמר" |
+| Citation footnotes `Source+9...` left in body | Step 1b skipped | regex `[A-Za-z]+\+\d+` |
+| No author byline on tax/regulation | Step 2 skipped | grep "מאת" / "עורך דין" |
+| No CTA block | Step 4 lawyer block skipped | grep `cta-lawyer` class |
+
+### TL;DR
+
+Sanity-check ChatGPT output → date+byline+disclaimer → Gutenberg block-wrap → 3-direction link wiring + lawyer CTA → Yoast meta → Article schema → parent+slug → menu (if pillar) → verify IndexNow → site-state.md block.
+
+---
+_Created 2026-05-28 by Claude Code (claude-opus-4-7) during the "make it rank on Google" session. Updated 2026-05-30 with the 2026-05-29 Cowork audit + new clusters + folded-in publishing protocol._

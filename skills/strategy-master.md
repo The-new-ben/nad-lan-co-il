@@ -306,4 +306,48 @@ H1: "השקעות נדל"ן בישראל — איך משקיעים נכון ב-2
 
 ---
 
+## 13. Google Blueprint workflow — pre-writing research
+
+> Folded in 2026-05-30. The workflow exists because we are a new domain with few backlinks. We cannot beat established competitors on authority. We beat them on **content fit to search intent**. Google ranks the page that answers the search best. The Blueprint figures out what "best" means for a specific query by looking at what Google itself already ranks.
+
+### When to use this
+
+Before writing any article targeting a query a human would type into Google. Skip the Blueprint only for: internal-process pages, legal-disclosure pages, transactional pages (calculator, lead form), and direct-traffic landing pages.
+
+### The 7 steps — do not skip any
+
+**1. Choose one query per article.** Real Hebrew search a real user would type. Examples: ✅ "השקעת נדל״ן בפורטוגל", ✅ "מס רכישה דירה ראשונה". ❌ Too broad ("פורטוגל") or keyword-stuffed strings no human types.
+
+**2. Manual Google search in Hebrew, from Israel, in incognito.** Record for the target query: top 10 organic results (URL + title + meta in SERP); every "אנשים גם שואלים" question (expand each, collect sub-questions); every "חיפושים קשורים"; featured snippet if present; knowledge panel / map pack presence; ads at top (commercial intent signal). For each top-10 result, classify type (blog / law-firm / bank / news / forum / government / aggregator), approximate word count, format (long guide / Q&A / list / calculator landing), the h2 sub-topics, and the angles it misses. 30-60 minutes per article. ChatGPT cannot do this for you - Google blocks LLM scraping and the results would be stale and US-biased.
+
+**3. Derive the intent.** After the top 10, write Google's model of the searcher in one sentence. Example: "השקעת נדל״ן בפורטוגל" → evaluation-stage investor, wants regulation/tax/yield in one place. Every section serves that intent.
+
+**4. Pattern-match the SERP.** Identify the shared backbone (sub-topics 7+ of 10 pages cover - mandatory in our article), the differentiators (unique angles #1-3 have that others lack - we steal/improve), and the gaps (PAA questions none of the top 10 answer well - our edge). Output a working outline: H1, mandatory sections, differentiator sections, gap sections, Q&A block.
+
+**5. Numbers and sources.** Every claim of a number needs a primary source with a date. Allowed: נדלן.gov.il, cbs.gov.il, boi.org.il, gov.il, court rulings, Knesset bills; foreign country statistics offices, central banks, tax authorities, tourism ministries; Eurostat for EU. Forbidden as sources: competitor sites (Madlan, Yad2, נדלן מאסטר, broker blogs), Wikipedia, ChatGPT summaries, industry reports from sales-driven firms. Every number gets `(מקור: בנק ישראל, מרץ 2026)`. Numbers without source get cut.
+
+**6. Write the ChatGPT prompt.** The Blueprint output feeds into the ChatGPT prompt. The prompt must include: voice rules (no em-dash, no AI-tells - see `copywriting-skill.md` §3-4), the intent (from step 3), the H1 (from step 4), mandatory sections in order, length 1,800-2,500 words for a spoke or 2,500-4,000 for a pillar, source data from step 5, output format (raw HTML with `<h2>`/`<h3>`/`<p>`/`<ul>`/`<li>`/`<strong>` only, no `<h1>`, no preamble, no footnotes, no markdown, dir="rtl" on every block). Worked SYSTEM block in `spoke-prompts-short-rent-abroad.md`.
+
+**7. Hand off to publishing.** ChatGPT output goes through the publishing protocol in `internal-linking-hub-spoke.md` §"Article publishing protocol". Skipping that protocol is what produced the 6 broken country pages on 2026-05-29.
+
+### Quality bar - article is Google-Blueprint eligible if:
+
+- [ ] Every mandatory h2 from the shared SERP backbone is present
+- [ ] At least 2 differentiator sections from SERP top-3
+- [ ] At least 1 gap section answering a PAA question none of the top 10 answered well
+- [ ] Every number has source + date
+- [ ] No forbidden phrases (see `copywriting-skill.md` §3-4)
+- [ ] No em-dashes
+- [ ] Q&A block at bottom covering 5-8 PAA questions
+- [ ] Author byline if tax/legal (per `copywriting-skill.md` §8)
+- [ ] Length 1,800-2,500 words for spoke; 2,500-4,000 for pillar
+
+Fail any → do not publish; send back to ChatGPT with the specific gap.
+
+---
+
 _מאוסטר 2026-05-28 על-ידי Claude Code (claude-opus-4-7). מבוסס על המסמך שבעל האתר העלה בסשן, עם הרחבות, אימותים חיים מ-SERP, והתאמה למודל "עו"ד-בעלים"._
+
+## Revision 2026-05-30 - Claude Code (claude-opus-4-7)
+
+Added §13 Google Blueprint workflow - folded in from the standalone `google-blueprint-workflow.md` file per owner request 2026-05-30. The standalone file becomes a pointer stub.
