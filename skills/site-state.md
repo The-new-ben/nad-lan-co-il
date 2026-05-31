@@ -670,3 +670,9 @@ The 10 articles that PASSED include all the top scorers: 529 purchase-tax-first-
 **New skills:** article-qa-audit.md, authority-eeat-program.md, accessibility-israel-is5568.md - all with cited sources + flagged unverified items.
 
 **OPEN ITEMS for owner decision:** (1) Person/lawyer schema - keep, soften, or remove; (2) footer link to /accessibility/ site-wide (theme/menu edit); (3) robots.txt missing + wptexturize disable = both need a plugin filter deploy; (4) native a11y remediation phases 1-3 (audit + code fixes); (5) rewrite-tier articles (571,564,563,562,559,575,561 + top-ups) - ChatGPT or Claude.
+
+### 2026-05-31 (footer + 569) - Claude Code
+- Footer: added site-wide links bar (/accessibility/ /about/ /editorial-policy/ /real-estate-lawyer/) to template-part nadlan-revenue//footer via REST. LIVE on every page (verified). Satisfies legal requirement that the accessibility statement is reachable from every page.
+- 569 investment-via-company: density top-up via REST (added "מבנה המס" section: סעיף 64א חברה משפחתית, סעיף 64 חברת בית, מס חברות 23%, דיבידנד+מס יסף סעיף 121ב, מס רכישה לחברה). Now 37 law refs / 31 numbers (was 1 law / 23 nums). LIVE.
+
+**DEPLOYMENT NOTE (owner clarified 2026-05-31):** All content/page/byline/title/footer/article edits this session were made via WordPress REST API = LIVE IMMEDIATELY, no server git pull needed. Repo commits (skills/*.md, site-state) are knowledge-capture only and do not affect the live site. The ONLY pending items that need a code deploy + server pull (or plugin update channel) are: robots.txt sitemap line + wptexturize disable (both PHP filters in the nadlan-config plugin). When those are built, owner must git pull server-side or run the plugin update.
