@@ -651,3 +651,22 @@ The 10 articles that PASSED include all the top scorers: 529 purchase-tax-first-
 **Architectural reasoning:** Cowork v2's browser-driven approach hit Canvas virtualization, blank-response glitches, and lockout risk. v3 removes Cowork from the ChatGPT loop entirely. ChatGPT's 60-120s think time is no longer a Cowork bottleneck — Cowork does parallel work (visual QA, link wiring, site-state commits, cannibalization pre-scans) during Drive idle.
 
 **Skills added/updated:** runbook-cowork-article-batch-v3.md (new canonical). v2 marked superseded. README index updated.
+
+### 2026-05-31 (late) - Claude Code (opus-4-8) - on-page cleanup, staff byline, a11y, /about/, 543 rewrite
+
+**Forensic on-page fixes (live, REST, backups in /tmp/backups):**
+- En-dash root cause = WordPress wptexturize converting ' - ' to en-dash AT RENDER. My first body sweep (–→' - ') was undone on render. Real fix: titles+headings use ':', body uses ','. Swept all 22 articles + 7 pillars + tools + titles. wptexturize still converts any future ' - ' → recommend disabling via plugin (open item).
+- Duplicate date boilerplate removed from pillar 421 (had 3 date lines: byline + 2 body). Research: show ONE date (byline), keep datePublished+dateModified in schema only; two visible dates can cost ~22% CTR (case study).
+- Breadcrumb=H1 duplication: research says NOT a penalty (Google Liaison: stuffing != repetition count). Optional fix = truncate visible last crumb (Yoast bctitle). Not yet applied.
+- Homepage: 2nd H1 demoted to H2 (content field). Theme title remains sole H1.
+- WooCommerce pages 390/391/392/393 set noindex.
+
+**Staff byline site-wide (per owner 2026-05-31):** replaced "מאת בן בטש, עו"ד · רישיון 29020" visible byline with "נכתב ונערך על ידי צוות נדל"ן חכם" on all 22 articles; neutralized the lawyer's personal name in CTAs/prose. **JSON-LD Person schema (ben-betesh, bar 29020) LEFT INTACT per owner instruction — schema decision PENDING (ask again).** Visible/schema mismatch is intentional/temporary.
+
+**543 פינוי בינוי REWRITTEN by Claude (one-time, owner-authorized):** 1,842 words, 46 law refs, 20 numbers, 9 H2, 2 tables, 4 notes, 2 cta, 0 dashes, staff byline, schema kept. Replaced the weak 1,593w/4-num version.
+
+**New pages (live):** /about/ (645), /editorial-policy/ (646), /accessibility/ (647 - honest statement, no overlay, רכז נגישות contact).
+
+**New skills:** article-qa-audit.md, authority-eeat-program.md, accessibility-israel-is5568.md - all with cited sources + flagged unverified items.
+
+**OPEN ITEMS for owner decision:** (1) Person/lawyer schema - keep, soften, or remove; (2) footer link to /accessibility/ site-wide (theme/menu edit); (3) robots.txt missing + wptexturize disable = both need a plugin filter deploy; (4) native a11y remediation phases 1-3 (audit + code fixes); (5) rewrite-tier articles (571,564,563,562,559,575,561 + top-ups) - ChatGPT or Claude.
