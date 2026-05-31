@@ -620,3 +620,34 @@ Priority 3 (operational long-tail):
 - Sanity-check effectiveness: 7/10 (caught the easy artifacts; missed the 493 duplicate-H2 stitching error + 519 opener — runbook §4.5 should add a duplicate-H2 check)
 
 **Runbook refinement queued:** add to §4.5 a sanity check for `wc -l <(grep -oP '<h2[^>]*>([^<]+)</h2>' file | sort -u)` vs `grep -c '<h2'` mismatch (means duplicates). And explicit search for `<p[^>]*>\s*המאמר נכתב על ידי` (redundant byline paragraph).
+
+### 2026-05-31 - Claude Code (claude-opus-4-7) - quality audit + v3 architecture
+
+**Honest scan of all 15 batch articles.** Scored by words, data density (numbers + law refs), padding-phrase count, engine. Five articles failed the rank-first bar:
+
+| id | slug | engine | words | nums | laws | padding | verdict |
+|---|---|---|---|---|---|---|---|
+| 519 | mortgage-repayment-capacity | Gemini | 1287 | 10 | 7 | 0 | REWRITE (worst) |
+| 512 | reverse-mortgage | ChatGPT | 1737 | 13 | 0 | 0 | REWRITE (no law refs) |
+| 543 | pinui-binui-tenant-guide | Gemini | 2661 | 4 | 62 | 3 | REWRITE (padding, thin numbers) |
+| 540 | tama-38-rights-obligations | ChatGPT | 2081 | 3 | 7 | 0 | REWRITE (thin data) |
+| 547 | tama-38-contract-checklist | Gemini | 2631 | 3 | 20 | 1 | REWRITE (thin data) |
+
+The 10 articles that PASSED include all the top scorers: 529 purchase-tax-first-home (102 nums + 53 law refs, the model of a top-quality piece), 536 capital-gains-tax-guide, 514 mortgage-interest-rates, 494 betterment-levy, 493 capital-gains-tax-exemption, 513 mortgage-ltv-ratio, 532 purchase-tax-investor (Gemini long-form, dense data).
+
+**Pattern: ChatGPT thinking-mode > Gemini > Cowork-stitched.** 4 of 5 rewrites are Gemini outputs; the one ChatGPT-written failure (512) is short because of Extended-mode truncation, not engine quality.
+
+**v3 architecture deployed.** Drive folder structure created:
+- nadlan-articles-output/ (id 1okuUY-MNyWwyBLQqyH0kgftZk1eOw9Zp)
+  - inbox/ (id 13jtpQF9wsYdeT78UQvvcHPnhtbKCPeWA)
+  - published/ (id 1uMSVp0RYBICgbJj8pmPRjq-C4hD637xe)
+  - prompts/ (id 1WqpI1oBTmkYv8w6OqdYbgFwnoiNQ2Bd9)
+    - SYSTEM doc (1efl0pGloDXUCQWv3XyChVSUxK8Amz8WSzw4bMM8OKsw)
+    - PROMPT TEMPLATE doc (1q5TBvpeSiCeBjA7LXcu7mo5I_Tyh4PKxJHYVhDbnvf4)
+  - ARTICLE QUEUE doc (1aAJXLFmYqVKiDkWBhN3Xi-quxtDcPF5iqdMYu1zDK5U) with full 23-item backlog (5 rewrites A1-A5 + 18 new B1-B18)
+
+**Owner's new workflow:** open ChatGPT Project "nadlan article batch" → paste prompt from PROMPT TEMPLATE doc → ChatGPT thinks + writes Doc to Drive inbox → close chat → next article in fresh chat. Cowork polls inbox, processes, publishes, moves to /published/.
+
+**Architectural reasoning:** Cowork v2's browser-driven approach hit Canvas virtualization, blank-response glitches, and lockout risk. v3 removes Cowork from the ChatGPT loop entirely. ChatGPT's 60-120s think time is no longer a Cowork bottleneck — Cowork does parallel work (visual QA, link wiring, site-state commits, cannibalization pre-scans) during Drive idle.
+
+**Skills added/updated:** runbook-cowork-article-batch-v3.md (new canonical). v2 marked superseded. README index updated.

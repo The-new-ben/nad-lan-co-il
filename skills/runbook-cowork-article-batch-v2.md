@@ -1,3 +1,5 @@
+> **⚠️ SUPERSEDED 2026-05-31: use `runbook-cowork-article-batch-v3.md`.** v3 inverts the architecture: owner drives ChatGPT inside a Project, ChatGPT writes Docs to Drive inbox, Cowork polls Drive and publishes. No more Canvas extraction, no more browser-DOM scraping, no more parallel-prompt risk.
+
 # Cowork Runbook v2 — Strategy Completion Batch (autonomous, sequential)
 
 > **For Claude Cowork.** Read this whole file once at session start. Then execute non-stop, one article at a time, in the order below. **Do not stop to ask the owner for approval between articles.** The owner has pre-approved the full backlog. Stop ONLY on the conditions in §11. When the backlog is done, write the final report in §12 and end the session.

@@ -59,7 +59,8 @@ Every agent (Claude, Codex, Antigravity, Cowork) reads from here before acting a
 |---|---|
 | `strategy-master.md` §13 | Google Blueprint workflow — manual SERP reverse-engineering → article spec → ChatGPT prompt |
 | `internal-linking-hub-spoke.md` §"Article publishing protocol" | ChatGPT output → live page (10-step checklist) |
-| `runbook-cowork-article-batch-v2.md` | **THE current master recipe for Cowork (use this one)** — 24-article backlog, hardened §4.5 sanity-check (duplicate-H2 detector, opener-outside-disclaimer detector), word-count floor 1,800, ChatGPT→Gemini→Claude-Chat fallback protocol, autonomous non-stop execution. |
+| `runbook-cowork-article-batch-v3.md` | **THE current master recipe (use this one)** — Drive-bridged architecture: owner runs ChatGPT in a Project, ChatGPT writes to Drive inbox, Cowork polls and publishes. 23-article queue (5 rewrites + 18 new). |
+| `runbook-cowork-article-batch-v2.md` | SUPERSEDED by v3 |
 | `runbook-cowork-article-batch.md` | SUPERSEDED by v2 - kept for history |
 | `article-guide-design-pattern.md` | The `.nadlan-guide` green canonical design pattern (hero/cards/table/note/CTA). Owner-approved 2026-05-30. |
 | `google-blueprint-workflow.md` (stub) | Folded into strategy-master.md §13; pointer only |
