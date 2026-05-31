@@ -676,3 +676,32 @@ The 10 articles that PASSED include all the top scorers: 529 purchase-tax-first-
 - 569 investment-via-company: density top-up via REST (added "מבנה המס" section: סעיף 64א חברה משפחתית, סעיף 64 חברת בית, מס חברות 23%, דיבידנד+מס יסף סעיף 121ב, מס רכישה לחברה). Now 37 law refs / 31 numbers (was 1 law / 23 nums). LIVE.
 
 **DEPLOYMENT NOTE (owner clarified 2026-05-31):** All content/page/byline/title/footer/article edits this session were made via WordPress REST API = LIVE IMMEDIATELY, no server git pull needed. Repo commits (skills/*.md, site-state) are knowledge-capture only and do not affect the live site. The ONLY pending items that need a code deploy + server pull (or plugin update channel) are: robots.txt sitemap line + wptexturize disable (both PHP filters in the nadlan-config plugin). When those are built, owner must git pull server-side or run the plugin update.
+
+### 2026-05-31 (closeout) - Claude Code - density top-ups complete + final audit
+
+**Three-pass density top-up, all 14 thin articles brought to bar via REST (live, no pull).** Each pass added Israeli-legal-accurate sections (real law citations, real % and ₪ values).
+
+**Final live audit (regex = audit baseline: ≥20 nums + ≥15 law refs + 0 em-dash + ≥2 cta):**
+```
+22/22 PASS
+```
+Per-article: 519=93n/26l · 512=63n/15l · 543=22n/27l · 540=22n/19l · 547=24n/41l · 559=24n/19l · 560=21n/35l · 561=26n/21l · 562=23n/24l · 563=22n/15l · 564=21n/21l · 565=34n/22l · 566=23n/19l · 567=26n/17l · 568=37n/17l · 569=33n/20l · 570=70n/23l · 571=20n/15l · 572=28n/15l · 573=32n/20l · 574=24n/17l · 575=28n/18l
+
+**Complete this session (all live via REST, owner has pulled server git for plugins as of EOD):**
+1. En-dash root cause = wptexturize → swept titles (`:`) + body (`,`) across all pages
+2. Duplicate date paragraphs removed (pillar 421)
+3. Homepage 2nd H1 → H2; WooCommerce pages 390-393 noindexed
+4. Staff byline ("צוות נדל"ן חכם") site-wide; lawyer personal name removed from visible CTAs and prose; JSON-LD Person+#person-ben-betesh schema kept intact per owner instruction
+5. 543 פינוי בינוי FULL REWRITE by Claude (1842w → final 2029w / 22 nums / 27 laws / 2 tables / 9 H2 / 0 dashes)
+6. New live pages: /about/ (645) · /editorial-policy/ (646) · /accessibility/ (647 - honest, no overlay, רכז נגישות contact)
+7. Footer accessibility-links bar (/accessibility/, /about/, /editorial-policy/, /real-estate-lawyer/) added to nadlan-revenue//footer template-part; verified on homepage + article
+8. Density top-ups (3 passes): 569, 571, 563, 562, 559, 575, 568, 570, 566, 573, 574, 567, 561, 512, 540, 547, 565, 572
+
+**Skills added (all cited):** accessibility-israel-is5568.md · article-qa-audit.md · authority-eeat-program.md (from earlier this session, building on the deep research)
+
+**OPEN ITEMS pending owner decision / future session:**
+- Lawyer-author Person schema: owner chose "keep as-is for now" (visible staff / schema lawyer). Revisit later.
+- robots.txt + wptexturize disable (PHP filters in nadlan-config plugin) - not yet implemented. Owner already pulled & updated plugins this session, so any future plugin change requires another pull.
+- Native accessibility audit phases 1-3 (axe/WAVE/Lighthouse/Pa11y + WCAG AA code fixes in the forked theme).
+- Yoast breadcrumb visible-last-crumb truncation (research-recommended, not yet applied).
+- 543 rewrite was Claude-authored as one-time per owner authorization. Future rewrites default back to ChatGPT-via-Cowork pipeline.
