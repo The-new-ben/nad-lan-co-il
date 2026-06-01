@@ -210,6 +210,39 @@ Commit small commits per task (easy rollback). Push to origin claude/charming-me
 Push retry: 4x exponential backoff 2/4/8/16s on network error.
 
 ==============================================================================
+TASK 7 — PHASE 0 SCAFFOLDING (read skills/proptech-adoption-roadmap.md FIRST)
+==============================================================================
+Owner has approved building the Phase 0 wedge layer. Scaffold these AS EMPTY
+PAGES + UI shells (no live calls to external APIs yet — owner adds keys later).
+Don't author Hebrew prose; pull labels/CTAs from customer-value-spec.md and
+proptech-adoption-roadmap.md.
+
+a) /contract-check/ — page with upload form + Hebrew copy block from
+   roadmap §0.1. Form POSTs to /wp-json/nadlan/v1/lead with type=contract.
+   Add a "מסלולי בדיקה" tier table: free AI flags / ₪450-750 lawyer review 48h.
+b) /avm/ — page with address-input form + result placeholder card. Wire
+   to a stub endpoint that returns "מערכת ההערכה בהשקה — תוצאות בקרוב"
+   until owner connects a real AVM service.
+c) /tax-calculator/ — extend the existing /purchase-tax-calculator/ to
+   support the all-in flow per roadmap §0.3 (inputs: price + buyer
+   profile + holding period; outputs: combined number). UI shell only;
+   keep the existing single-tax calc functional.
+d) /sold-prices/ — page that embeds an iframe of nadlan.gov.il for now,
+   plus a "בקרוב: מפת חום של עסקאות אחרונות בכתובת" placeholder. Tracks
+   intent + sets the SEO marker.
+e) /tama-38-checker/ — address input → returns placeholder "מערכת
+   בהשקה" while owner decides on the data source.
+
+Each page: green nadlan-guide design, staff byline, schema, footer link
+added to nadlan-revenue//footer template-part.
+
+OBSTACLES:
+- External API key not yet provided → ship as placeholder, not skipped.
+  The pages have SEO value the day they exist even before live data.
+- Stub responses must NOT be fake numbers. Always return "בהשקה" until
+  real data is wired.
+
+==============================================================================
 STOP CONDITIONS
 ==============================================================================
 1. Owner sends explicit stop.

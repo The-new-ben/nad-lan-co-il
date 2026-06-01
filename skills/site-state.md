@@ -721,3 +721,16 @@ Per-article: 519=93n/26l · 512=63n/15l · 543=22n/27l · 540=22n/19l · 547=24n
 - Competitor + real-estate-tech deep research running in background → will deliver feature-by-feature adoption plan + auction product spec + Israel-niche opportunities when it lands.
 
 **OPEN**: GA4 Measurement ID (owner to create + send); plugin deploy method (owner to fix path or use Cowork TASK 1); robots.txt server-side serve (drop file or add nginx line); /advertise/ + /pricing/ pages (Cowork TASK 4); empty directory seed (Cowork TASK 5).
+
+### 2026-06-01 - Claude Code - proptech adoption roadmap + sprint workflow
+- Deep competitor research returned (Zillow/Redfin/Realtor/Rightmove/REA/Idealista/Compass/Houzz/Opendoor/PropertyGuru/99.co/MAIA + Israeli incumbents Yad2/Madlan/Komo/Homeless/Yad1/Onmap). Synthesized into a gap map + 4-phase backlog.
+- New skill: proptech-adoption-roadmap.md (full sprint sequence with owner-decision gates, cited sources, unverified items flagged honestly).
+- Strategic thesis: combine (Madlan-grade data) + (Compass-grade workflow) + (lawyer-grade doc trust = owner is the moat) + (modern AI). The intersection is winnable in Israel because no one has all 4.
+- Cowork prompt extended with TASK 7 (Phase 0 scaffolding: /contract-check/, /avm/, /tax-calculator/ extension, /sold-prices/, /tama-38-checker/ as placeholder pages with SEO value pre-data-wire).
+- Owner-decision gates from the roadmap (block this sprint until answered):
+  1. Plugin deploy path (zip+upload / sftp / fix pipeline)
+  2. GA4 Measurement ID (G-XXXXXXXXXX)
+  3. Contract-review price (recommended ₪450-750 for 48h)
+  4. Lawyer schema (still "keep as-is"? confirming)
+  5. Founding professionals to recruit (lawyer + appraiser + mortgage advisor)
+- Skip list explicit: iBuyer (capital risk + IL market depth) and star-rating system for lawyers/brokers (IL bar rules + 2024 broker transparency תקנות). Use "verified transactions" counter instead.
