@@ -127,38 +127,6 @@ add_action( 'wp_footer', function () {
 		. '</div>';
 }, 99 );
 
-/* ---- v1.25.0: homepage discoverability hero ----
- * Inject a "מה אפשר למצוא כאן" pillar-card block on the homepage that links to
- * the actually-valuable destinations: professional directory, glossary,
- * urban-renewal hub, etc. Solves "no one knows where these pages are". */
-add_filter( 'the_content', function ( $content ) {
-	if ( ! is_front_page() || ! in_the_loop() || ! is_main_query() ) { return $content; }
-	$pro_count = (int) wp_count_posts( 'nadlan_professional' )->publish;
-	$term_count = (int) wp_count_posts( 'nadlan_term' )->publish;
-	$proj_count = (int) wp_count_posts( 'nadlan_project' )->publish;
-	$hero  = '<section class="nadlan-home-pillars" dir="rtl">';
-	$hero .= '<div class="nhp-head"><p class="nhp-eyebrow">מה תמצאו כאן</p><h2>הכלים והמידע שמצמצמים סיכון בעסקת נדל״ן</h2></div>';
-	$hero .= '<div class="nhp-grid">';
-	$hero .= '<a class="nhp-card" href="' . esc_url( home_url( '/professionals/' ) ) . '"><div class="nhp-num">' . number_format( $pro_count ) . '</div><h3>בעלי מקצוע רשומים</h3><p>קבלנים, שמאים, מפקחים — אינדקס מאומת ממקור ממשלתי.</p><span class="nhp-go">לאינדקס המקצועי ←</span></a>';
-	$hero .= '<a class="nhp-card" href="' . esc_url( home_url( '/glossary/' ) ) . '"><div class="nhp-num">' . number_format( $term_count ) . '</div><h3>מונחי נדל״ן</h3><p>מילון מקצועי, מבוסס תקנים וחוקים — בעברית פשוטה.</p><span class="nhp-go">למילון ←</span></a>';
-	$hero .= '<a class="nhp-card" href="' . esc_url( home_url( '/urban-renewal/' ) ) . '"><div class="nhp-num">' . number_format( $proj_count ) . '</div><h3>פרויקטים והתחדשות עירונית</h3><p>תמ״א 38, פינוי-בינוי, בנייה חדשה — מאגר רשמי.</p><span class="nhp-go">לפרויקטים ←</span></a>';
-	$hero .= '<a class="nhp-card" href="' . esc_url( home_url( '/real-estate-lawyer/' ) ) . '"><div class="nhp-num nhp-icon">⚖️</div><h3>ייעוץ משפטי</h3><p>מדריך מקיף לעבודה עם עורך דין מקרקעין.</p><span class="nhp-go">למדריך ←</span></a>';
-	$hero .= '</div></section>';
-	$hero .= '<style>
-.nadlan-home-pillars{font-family:var(--font-sans,Heebo,sans-serif);max-width:1240px;margin:32px auto;padding:0 24px;direction:rtl}
-.nhp-head{text-align:center;margin-bottom:28px}
-.nhp-eyebrow{font-size:11px;letter-spacing:.18em;color:#9C7A3C;font-weight:600;margin:0 0 6px;text-transform:uppercase}
-.nhp-head h2{font-family:var(--font-serif,"Frank Ruhl Libre",serif);font-weight:500;font-size:32px;color:#1B1A17;margin:0;letter-spacing:-.015em}
-.nhp-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:18px}
-.nhp-card{background:linear-gradient(135deg,#fff,#FBF9F5);border:1px solid rgba(27,26,23,.1);border-radius:16px;padding:28px 24px;text-decoration:none;color:inherit;transition:transform .25s,box-shadow .25s,border-color .25s;display:flex;flex-direction:column;min-height:230px}
-.nhp-card:hover{transform:translateY(-6px);box-shadow:0 18px 36px rgba(27,26,23,.1);border-color:rgba(156,122,60,.5)}
-.nhp-num{font-family:var(--font-serif,serif);font-size:38px;font-weight:600;color:#9C7A3C;line-height:1;margin-bottom:12px;font-variant-numeric:tabular-nums}
-.nhp-icon{font-size:32px}
-.nhp-card h3{font-family:var(--font-serif,serif);font-weight:500;font-size:19px;color:#1B1A17;margin:0 0 8px;line-height:1.35}
-.nhp-card p{font-size:13.5px;color:#5a5a5a;margin:0 0 16px;line-height:1.55}
-.nhp-go{margin-top:auto;color:#9C7A3C;font-weight:600;font-size:13.5px;transition:transform .2s}
-.nhp-card:hover .nhp-go{transform:translateX(-4px)}
-@media(max-width:600px){.nhp-head h2{font-size:24px}.nhp-card{padding:22px 18px;min-height:190px}.nhp-num{font-size:30px}}
-</style>';
-	return $hero . $content;
-}, 18 );
+/* NOTE: the homepage sections moved to inc/homepage.php (v1.27.0) — owner asked to
+ * keep the hero for real-estate-user intent and place discovery BELOW the fold,
+ * redesigned per the Lovable blueprint §5. This file keeps only nav/footer links. */
