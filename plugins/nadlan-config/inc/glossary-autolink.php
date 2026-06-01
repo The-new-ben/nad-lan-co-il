@@ -118,13 +118,28 @@ add_filter( 'wp_nav_menu_items', function ( $items, $args ) {
 	return $items . $extras;
 }, 10, 2 );
 
-/* footer fallback links (always reachable even if the theme has no nav menu) */
+/* footer fallback links — owner-approved location for all directory entry points
+ * (2026-06-01: "Only add to the footer, links to whatever"). Reachable on every page. */
 add_action( 'wp_footer', function () {
 	if ( is_admin() ) { return; }
-	echo '<div class="nadlan-nav-foot" style="text-align:center;padding:14px;font-family:var(--font-sans,Heebo,sans-serif);font-size:13px;display:flex;justify-content:center;gap:24px;flex-wrap:wrap">'
-		. '<a href="' . esc_url( home_url( '/professionals/' ) ) . '" style="color:#9C7A3C;text-decoration:none">מאגר בעלי המקצוע ←</a>'
-		. '<a href="' . esc_url( home_url( '/glossary/' ) ) . '" style="color:#9C7A3C;text-decoration:none">מילון מונחי נדל"ן ←</a>'
-		. '</div>';
+	$pro   = (int) wp_count_posts( 'nadlan_professional' )->publish;
+	$proj  = (int) wp_count_posts( 'nadlan_project' )->publish;
+	$terms = (int) wp_count_posts( 'nadlan_term' )->publish;
+	$links = array(
+		array( home_url( '/professionals/' ), 'מאגר בעלי המקצוע',          $pro   ? number_format( $pro )   : '' ),
+		array( home_url( '/urban-renewal/' ), 'פרויקטים והתחדשות עירונית', $proj  ? number_format( $proj )  : '' ),
+		array( home_url( '/glossary/' ),      'מילון מונחי נדל״ן',           $terms ? number_format( $terms ) : '' ),
+		array( home_url( '/catalog/' ),       'קטלוג ראשי',                  '' ),
+	);
+	$html = '<div class="nadlan-nav-foot" style="text-align:center;padding:20px 14px;margin:24px 0 0;background:#FBF9F5;border-top:1px solid rgba(27,26,23,.08);font-family:var(--font-sans,Heebo,sans-serif);font-size:13.5px;display:flex;justify-content:center;gap:28px;flex-wrap:wrap;direction:rtl">';
+	foreach ( $links as $L ) {
+		$html .= '<a href="' . esc_url( $L[0] ) . '" style="color:#9C7A3C;text-decoration:none;font-weight:600">'
+			   . esc_html( $L[1] )
+			   . ( $L[2] ? ' <span style="color:#999;font-weight:400">(' . esc_html( $L[2] ) . ')</span>' : '' )
+			   . ' ←</a>';
+	}
+	$html .= '</div>';
+	echo $html;
 }, 99 );
 
 /* NOTE: the homepage sections moved to inc/homepage.php (v1.27.0) — owner asked to

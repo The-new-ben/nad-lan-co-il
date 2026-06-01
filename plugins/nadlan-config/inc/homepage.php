@@ -139,11 +139,14 @@ if ( ! function_exists( 'nadlan_home_css' ) ) {
 	}
 }
 
-/* Append BELOW the page content on the front page only (priority 50 = under the fold). */
-add_filter( 'the_content', function ( $content ) {
-	if ( ! is_front_page() || ! in_the_loop() || ! is_main_query() ) { return $content; }
-	return $content . nadlan_home_sections_render();
-}, 50 );
+/* Append BELOW the page content on the front page only (priority 50 = under the fold).
+ * DISABLED per owner request (2026-06-01): "don't touch the homepage and the menus".
+ * The shortcodes below still work, so the owner can place these blocks anywhere later.
+ */
+// add_filter( 'the_content', function ( $content ) {
+//	if ( ! is_front_page() || ! in_the_loop() || ! is_main_query() ) { return $content; }
+//	return $content . nadlan_home_sections_render();
+// }, 50 );
 
 /* Also expose as a shortcode so the owner can place it anywhere in the page builder. */
 add_shortcode( 'nadlan_home_sections', 'nadlan_home_sections_render' );
