@@ -711,3 +711,13 @@ Per-article: 519=93n/26l · 512=63n/15l · 543=22n/27l · 540=22n/19l · 547=24n
 - Verified monetization audit: SKUs+prices+payment(Grow/Bit/Stripe) built; join-pro live; catalog CPTs exist but directory EMPTY (0 professionals, 0 projects, 5 seed properties); **NO analytics installed (no GA4/GTM/Search Console/Bing) = cannot measure/prove traffic**; no /advertise/ page; /pricing/ slug collided into an article.
 - Two cited research reports done (global portals + Israel). New skill: monetization-readiness-and-adsales.md (product ladder by phase, ₪ benchmarks, ממומן disclosure law §7(c), broker-license carve-out §2(c), reporting/traffic-commitment policy).
 - Verdict: store built, prices set, but no audience + no measurement + empty shelves. Sell only asset-based + pay-per-lead NOW; impression/guaranteed-views products wait for traffic. Blocker #1 = install analytics.
+
+### 2026-05-31 (business-readiness sprint, plugin gap, GA4 prep) - Claude Code
+- Plugin v1.3.0 in repo + push verified clean; **server active plugin still v1.2.0** (healthcheck). `git pull` does NOT deploy to wp-content/plugins on this server. Fix paths: zip+upload via WP Admin OR sftp copy plugins/nadlan-config/ → wp-content/plugins/nadlan-config/ OR fix the deploy pipeline (symlink). Detailed Cowork instructions in skills/cowork-prompt-business-readiness.md TASK 1.
+- robots.txt nginx 404 root cause confirmed (web server intercepts /robots.txt before WP). Added physical robots.txt at repo root as fallback — owner must drop it at web-root OR add nginx line `location = /robots.txt { try_files $uri /index.php?$args; }`. Both options noted.
+- Live verification: 22 articles render with 0 en-dashes (content sweep held). 1 en-dash still on individual page render = theme/breadcrumb residue (will disappear when v1.3.0 wptexturize-disable activates).
+- Search Console: owner says verified (likely DNS TXT — no HTML meta on homepage, which is fine). No GA4 yet → step-by-step setup instructions given to owner.
+- Two new skills committed: customer-value-spec.md (per-tier deliverables, "what does a paying customer GET?") + cowork-prompt-business-readiness.md (single copy-paste activation for hands-on operator work).
+- Competitor + real-estate-tech deep research running in background → will deliver feature-by-feature adoption plan + auction product spec + Israel-niche opportunities when it lands.
+
+**OPEN**: GA4 Measurement ID (owner to create + send); plugin deploy method (owner to fix path or use Cowork TASK 1); robots.txt server-side serve (drop file or add nginx line); /advertise/ + /pricing/ pages (Cowork TASK 4); empty directory seed (Cowork TASK 5).
