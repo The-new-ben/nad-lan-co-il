@@ -75,6 +75,29 @@ add_filter( 'wp_robots', function ( $r ) {
 	return $r;
 }, 20 );
 
+/* related terms (same nadlan_term_cat, excluding self), cached 12h per term */
+if ( ! function_exists( 'nadlan_glossary_related_terms' ) ) {
+	function nadlan_glossary_related_terms( $id, $limit = 6 ) {
+		$ck = 'nadlan_relterms_' . $id;
+		$cached = get_transient( $ck );
+		if ( is_array( $cached ) ) { return array_map( 'get_post', $cached ); }
+		$cats = wp_get_object_terms( $id, 'nadlan_term_cat', array( 'fields' => 'ids' ) );
+		if ( is_wp_error( $cats ) || ! $cats ) { return array(); }
+		$siblings = get_posts( array(
+			'post_type'      => 'nadlan_term',
+			'post_status'    => 'publish',
+			'posts_per_page' => $limit,
+			'post__not_in'   => array( $id ),
+			'orderby'        => 'rand',
+			'tax_query'      => array( array(
+				'taxonomy' => 'nadlan_term_cat', 'field' => 'term_id', 'terms' => $cats,
+			) ),
+		) );
+		set_transient( $ck, wp_list_pluck( $siblings, 'ID' ), 12 * HOUR_IN_SECONDS );
+		return $siblings;
+	}
+}
+
 /* render: practical block + source + up-link, appended to the definition */
 add_filter( 'the_content', function ( $content ) {
 	if ( ! ( is_singular( 'nadlan_term' ) && in_the_loop() && is_main_query() ) ) { return $content; }
@@ -94,6 +117,18 @@ add_filter( 'the_content', function ( $content ) {
 		<a href="<?php echo esc_url( $pillar ); ?>"><?php echo esc_html( $anchor ); ?></a>
 	</div>
 	<?php endif; ?>
+	<?php
+	/* Related terms: siblings in the same category — builds the topical cluster
+	 * (internal-link equity) on every published term. Cached per-term for 12h. */
+	$related = nadlan_glossary_related_terms( $id );
+	if ( $related ) : ?>
+	<div class="nlterm-rel">
+		<span>מונחים קשורים</span>
+		<ul><?php foreach ( $related as $rt ) : ?>
+			<li><a href="<?php echo esc_url( get_permalink( $rt ) ); ?>"><?php echo esc_html( get_the_title( $rt ) ); ?></a></li>
+		<?php endforeach; ?></ul>
+	</div>
+	<?php endif; ?>
 	<?php if ( $src ) : ?><p class="nlterm-src"><?php echo esc_html( $src_lbl ); ?>: <a href="<?php echo esc_url( $src ); ?>" target="_blank" rel="noopener nofollow"><?php echo esc_html( wp_parse_url( $src, PHP_URL_HOST ) ?: $src ); ?></a></p><?php endif; ?>
 </div>
 <style>
@@ -102,6 +137,11 @@ add_filter( 'the_content', function ( $content ) {
 .nlterm-up{background:#FAF7F1;border-inline-start:3px solid #9C7A3C;padding:14px 18px;border-radius:4px;margin:14px 0}
 .nlterm-up span{display:block;font-size:13px;color:#5C564D;margin-bottom:4px}
 .nlterm-up a{color:#1B1A17;font-weight:600;text-decoration:none}
+.nlterm-rel{margin:14px 0}
+.nlterm-rel span{display:block;font-size:13px;color:#5C564D;margin-bottom:6px;font-weight:600}
+.nlterm-rel ul{list-style:none;padding:0;margin:0;display:flex;flex-wrap:wrap;gap:8px}
+.nlterm-rel li a{display:inline-block;background:#F2EEE6;color:#1B1A17;padding:5px 12px;border-radius:14px;font-size:13px;text-decoration:none}
+.nlterm-rel li a:hover{background:#9C7A3C;color:#fff}
 .nlterm-src{font-size:12px;color:#999}
 </style>
 	<?php
