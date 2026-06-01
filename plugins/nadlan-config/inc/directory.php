@@ -343,4 +343,102 @@ if ( ! function_exists( 'nadlan_dir_render_page' ) ) {
 	}
 }
 
+/* ---------------------------------------------------------------------------
+ * Single professional PROFILE — premium colour header + "similar pros"
+ * (prepended/appended around the existing facts table from cards-render.php)
+ * ------------------------------------------------------------------------- */
+if ( ! function_exists( 'nadlan_dir_profile_header' ) ) {
+	function nadlan_dir_profile_header( $id ) {
+		$pm   = nadlan_dir_prof_meta( (string) get_post_meta( $id, 'profession', true ) );
+		$city = nadlan_meta_norm( get_post_meta( $id, 'city', true ) );
+		$cls  = nadlan_meta_norm( get_post_meta( $id, 'classification', true ) );
+		$reg  = nadlan_meta_norm( get_post_meta( $id, 'registry_number', true ) );
+		$phone= nadlan_meta_norm( get_post_meta( $id, 'phone', true ) );
+		$verified = get_post_meta( $id, 'claim_status', true ) === 'verified';
+		$rating   = (float) get_post_meta( $id, 'rating', true );
+		$reviews  = (int) get_post_meta( $id, 'reviews_count', true );
+		$title    = get_the_title( $id );
+
+		$stars = ( $reviews > 0 && $rating > 0 )
+			? '<span class="nlpf-stars">' . str_repeat( '★', (int) round( $rating ) ) . str_repeat( '☆', max( 0, 5 - (int) round( $rating ) ) ) . '</span> <b>' . number_format( $rating, 1 ) . '</b> <span class="nlpf-rev">(' . $reviews . ' חוות דעת)</span>'
+			: '<span class="nlpf-norate">טרם התקבלו חוות דעת — היו הראשונים</span>';
+
+		ob_start(); ?>
+<div class="nlpf" dir="rtl" style="--pc:<?php echo esc_attr( $pm['color'] ); ?>;--ps:<?php echo esc_attr( $pm['soft'] ); ?>">
+	<div class="nlpf-banner"></div>
+	<div class="nlpf-head">
+		<span class="nlpf-av"><?php echo esc_html( $pm['icon'] ); ?></span>
+		<div class="nlpf-id">
+			<div class="nlpf-badges">
+				<span class="nlpf-pill"><?php echo esc_html( $pm['label'] ); ?></span>
+				<?php if ( $verified ) : ?><span class="nlpf-vf">✓ בעלות מאומתת</span><?php endif; ?>
+				<?php if ( $reg ) : ?><span class="nlpf-reg">🛡️ רשם הקבלנים #<?php echo esc_html( $reg ); ?></span><?php endif; ?>
+			</div>
+			<h1 class="nlpf-name"><?php echo esc_html( $title ); ?></h1>
+			<div class="nlpf-sub">
+				<?php if ( $city ) : ?><span>📍 <?php echo esc_html( $city ); ?></span><?php endif; ?>
+				<?php if ( $cls ) : ?><span><?php echo esc_html( $cls ); ?></span><?php endif; ?>
+			</div>
+			<div class="nlpf-rate"><?php echo $stars; ?></div>
+		</div>
+		<div class="nlpf-cta">
+			<?php if ( $phone ) : ?><a class="nlpf-call" href="tel:<?php echo esc_attr( preg_replace( '/[^0-9+]/', '', $phone ) ); ?>">📞 התקשרו</a><?php endif; ?>
+			<button type="button" class="nlpf-quote" onclick="nadlanProQuote(<?php echo (int) $id; ?>,'<?php echo esc_js( $title ); ?>')">בקשת הצעת מחיר</button>
+		</div>
+	</div>
+</div>
+<style>
+.nlpf{font-family:var(--font-sans,Heebo,sans-serif);border:1px solid rgba(27,26,23,.1);border-radius:18px;overflow:hidden;margin:0 0 26px;background:#fff;direction:rtl}
+.nlpf-banner{height:90px;background:linear-gradient(120deg,var(--pc),color-mix(in srgb,var(--pc) 55%,#1B1A17))}
+.nlpf-head{display:flex;gap:18px;align-items:flex-start;padding:0 24px 22px;margin-top:-34px;flex-wrap:wrap}
+.nlpf-av{flex:none;width:84px;height:84px;border-radius:20px;display:grid;place-items:center;font-size:42px;background:var(--ps);border:4px solid #fff;box-shadow:0 8px 20px rgba(0,0,0,.12)}
+.nlpf-id{flex:1;min-width:200px;padding-top:42px}
+.nlpf-badges{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:8px}
+.nlpf-pill{background:var(--ps);color:var(--pc);font-weight:700;font-size:12.5px;padding:4px 12px;border-radius:20px}
+.nlpf-vf{color:#059669;font-weight:700;font-size:12.5px;background:#ECFDF5;padding:4px 12px;border-radius:20px}
+.nlpf-reg{color:#7a7a7a;font-weight:600;font-size:11.5px;background:#F6F4F0;padding:4px 12px;border-radius:20px}
+.nlpf-name{font-family:var(--font-serif,"Frank Ruhl Libre",serif);font-weight:600;font-size:clamp(24px,4vw,34px);margin:0 0 8px;line-height:1.15;color:#1B1A17}
+.nlpf-sub{display:flex;gap:16px;flex-wrap:wrap;color:#5a5a5a;font-size:14px;margin-bottom:8px}
+.nlpf-sub span:first-child{font-weight:600;color:#1B1A17}
+.nlpf-rate{font-size:14px}.nlpf-stars{color:#F5A623;letter-spacing:1px}.nlpf-rev{color:#9a9a9a;font-size:12.5px}.nlpf-norate{color:#b9b4a9;font-style:italic;font-size:13px}
+.nlpf-cta{display:flex;flex-direction:column;gap:9px;padding-top:46px;min-width:170px}
+.nlpf-call,.nlpf-quote{text-align:center;border-radius:10px;padding:13px 22px;font:inherit;font-weight:700;font-size:14.5px;cursor:pointer;text-decoration:none;border:0;transition:transform .15s,filter .2s}
+.nlpf-call{background:#fff;color:var(--pc);border:1.5px solid var(--pc)}
+.nlpf-quote{background:linear-gradient(135deg,var(--pc),color-mix(in srgb,var(--pc) 70%,#000));color:#fff}
+.nlpf-call:hover,.nlpf-quote:hover{transform:translateY(-2px);filter:brightness(1.05)}
+@media(max-width:640px){.nlpf-cta{width:100%;flex-direction:row}.nlpf-call,.nlpf-quote{flex:1}}
+</style>
+<script>function nadlanProQuote(id,name){var n=prompt('שמכם:');if(!n)return;var p=prompt('טלפון ליצירת קשר:');if(!p)return;fetch('<?php echo esc_js( rest_url( 'nadlan/v1/lead' ) ); ?>',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({name:n,phone:p,topic:'הצעת מחיר מבעל מקצוע',message:'פנייה ל: '+name+' (#'+id+')',source:'pro-profile'})}).then(function(){alert('✓ הבקשה נשלחה. בעל המקצוע יחזור אליכם.');}).catch(function(){alert('שגיאה, נסו שוב.');});}</script>
+		<?php
+		return ob_get_clean();
+	}
+}
+
+/* "Similar professionals" — same profession or city, for internal linking */
+if ( ! function_exists( 'nadlan_dir_similar' ) ) {
+	function nadlan_dir_similar( $id ) {
+		$prof = (string) get_post_meta( $id, 'profession', true );
+		$city = nadlan_meta_norm( get_post_meta( $id, 'city', true ) );
+		$mq = array( 'relation' => 'OR' );
+		if ( $prof ) { $mq[] = array( 'key' => 'profession', 'value' => $prof ); }
+		if ( $city ) { $mq[] = array( 'key' => 'city', 'value' => $city, 'compare' => 'LIKE' ); }
+		if ( count( $mq ) < 2 ) { return ''; }
+		$q = new WP_Query( array(
+			'post_type' => 'nadlan_professional', 'post_status' => 'publish',
+			'posts_per_page' => 4, 'post__not_in' => array( $id ),
+			'orderby' => 'rand', 'meta_query' => $mq, 'no_found_rows' => true,
+		) );
+		if ( ! $q->have_posts() ) { return ''; }
+		$cards = '';
+		foreach ( $q->posts as $p ) { $cards .= nadlan_dir_card( $p->ID ); }
+		wp_reset_postdata();
+		return '<section class="nldir nldir-similar" dir="rtl"><h2 style="font-family:var(--font-serif,serif);font-weight:600;font-size:24px;margin:34px 0 16px;color:#1B1A17">בעלי מקצוע דומים</h2><div class="nldir-results">' . $cards . '</div></section>' . nadlan_dir_css();
+	}
+}
+
+add_filter( 'the_content', function ( $content ) {
+	if ( ! is_singular( 'nadlan_professional' ) || ! in_the_loop() || ! is_main_query() ) { return $content; }
+	return nadlan_dir_profile_header( get_the_ID() ) . $content . nadlan_dir_similar( get_the_ID() );
+}, 5 );
+
 require __DIR__ . '/directory-assets.php';
