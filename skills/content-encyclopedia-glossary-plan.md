@@ -171,3 +171,44 @@ GEO research lists glossaries (definitions + disambiguation) alongside pillars/F
 Map (this skill) → term list with per-term flowchart verdict → ChatGPT master prompt (§9) → Drive inbox → Cowork publishes as `nadlan_term` (or anchor-edits into existing spokes) → /glossary/ index with A-Z + DefinedTermSet. Lovable only for the front-end UX component (infobox, A-Z, related-terms graph), not content.
 
 Sources: Wikipedia MOS/Layout, MOS/Lead, MOS/Infoboxes; Google consolidate-duplicate-URLs + canonicalization docs; Search Engine Roundtable (Mueller long-term noindex→nofollow); Sitebulb; Backlinko/Yoast/Semrush (cannibalization); schema.org DefinedTerm/DefinedTermSet; Search Engine Land GEO; Pagely (WP wiki / subdomain authority); Barn2/Bloggerpilot (glossary plugins).
+
+---
+
+## 12. Wikipedia/Wikimedia community-evidence integration patterns (2026-06-01)
+
+> Research pass mining Wikipedia MoS, Wikipedia talk archives, WordPress.org plugin support threads, and SEO case studies (Investopedia). Honest evidence-strength flags. This is the patterns shortlist; per-term flowchart in §11 still governs.
+
+### Ranked shortlist (use this when wiring a term into the site)
+
+**1. ANCHOR-IN-SPOKE (term = H2 with `id` inside its owning spoke, no new URL).** Evidence: **STRONG**. Direct Wikipedia parallel: `{{R to section}}` / targeted redirects. Zero cannibalization vector because no second URL exists. *Use when:* the term's meaning is fully owned by one pillar/spoke and other pages only need to reference it. **This is our default.**
+
+**2. PRIMARY-HOME + sibling section-links.** Evidence: STRONG (Wikipedia) / MEDIUM (SEO). When a term is relevant to several pillars, pick the single best-fit pillar as **owner**, place the term there as H2#id, and link `/owner-spoke/#term-id` from siblings. *Use when:* the term is multi-pillar but one is clearly primary. — This is the answer to the owner's worry "but the term is relevant to many pages": **pick one owner, link to its anchor from the others, never duplicate the definition across pages.**
+
+**3. INLINE GLOSS (short concise definition embedded in body, no link, no separate entry).** Evidence: MEDIUM. Wikipedia MOS:UNDERLINK explicitly endorses "a concise definition instead of or in addition to a link." Zero risk because nothing exists outside the article. *Use when:* the term needs in-context clarity but a separate destination would add no value.
+
+**4. HATNOTE-STYLE DISAMBIGUATION per pillar.** Evidence: MEDIUM. When one Hebrew term has multiple real-estate meanings, do NOT create a standalone disambiguation page (that's the thin-content trap that competes with both real homes). Each pillar that owns a sense puts a one-line hatnote at the top: "ערך זה עוסק ב-X. למשמעות Y ראו [pillar Z]." *Use when:* the same Hebrew word has distinct meanings owned by different pillars.
+
+**5. THICK STANDALONE TERM PAGE with deliberately NARROWED practical block (Investopedia /terms/ model).** Evidence: MEDIUM (one strong case: Investopedia). The term page covers what/why/who/which-form + **outbound government link** + internal link UP to the pillar's how-to. Critically, the practical block must be **strictly thinner than the pillar's** — names the form/authority, doesn't reproduce the full how-to. *Use when:* the term genuinely needs a standalone URL (backlinks, AI-overview citations, English-Wikipedia-gap term with real search demand) **AND** you can hold the line that its action section stays narrower than the pillar's.
+
+### Anti-patterns (do NOT do — research-backed)
+
+- **DO NOT** create standalone glossary entries that duplicate a pillar's how-to content. (Direct practitioner warning: "the glossary can rank too well, causing Google to send traffic to the glossary instead of your blog post." — Content Powered.)
+- **DO NOT** put a "ראו גם / See also" block that lists glossary links already present in the body. Wikipedia MoS/Layout explicitly prohibits this: "The 'See also' section should not repeat links that appear in the article's body." Signal dilution + redundant cues. The "See also" block is ONLY for related terms the article does NOT already mention inline.
+- **DO NOT** enable plugin auto-tooltip "link every occurrence." WordPress.org support threads show practitioners actively backing off this. Apply Wikipedia MOS:DUPLINK: **link a term at most once per major section, first occurrence only.** Inside the glossary itself, repeat linking is acceptable; in spoke articles it is not.
+
+### Anchor-text rule (Wikipedia MOS:DUPLINK + RTL note)
+- Pillar/spoke → glossary anchor: **bare-term anchor only**, on **first occurrence per section**, not the money keyword. Disable plugin "linkify all" features.
+- RTL caveat: Hebrew prefix letters (ה־, ב־, ל־, ש־, מ־) cause false-positive matches in naive auto-linkers. If we use Glossary by Codeat or similar, configure word-boundary detection carefully or rely on manual linking. Implementation issue, not SEO.
+
+### "Coursehood" + government-link discipline (owner non-negotiable)
+Per the owner's locked rule: every term page (and every spoke) pairs definition with a **practical action layer + direct government links**: לשכת רישום המקרקעין (Tabu), רשות המסים (Israel Tax Authority), רמ"י (Israel Land Authority), מינהל התכנון (Planning Administration), רשם הקבלנים (Contractor Registrar), משרד המשפטים (forms portal), בנק ישראל (mortgage rules). On a term page using Pattern #5, this block is **deliberately narrower** than the parent pillar's how-to — names the authority/form + outbound gov link + internal link to the pillar — so the term doesn't out-rank the pillar's transactional guide.
+
+### Honest evidence flags
+- Reddit (r/SEO, r/bigseo, r/TechSEO) and Moz were blocked to the research crawler — practitioner Search Console post-mortems specifically on glossary cannibalization are NOT publicly available in what we could reach. The cannibalization risk is real in principle (and well-documented for generic page-vs-page competition), but WordPress-glossary-specific forensic data is a gap.
+- Investopedia is the one strong case for the thick-term-page pattern. Second independent case (nolo.com / gov.uk) not found at equivalent depth.
+- Hebrew/RTL-specific cannibalization evidence: none found. RTL concerns are implementation (word boundaries), not SEO outcome.
+
+### When we resume the glossary build (later, after Zillow stable)
+Default to Pattern #1 (anchor-in-spoke). Use Pattern #2 for multi-pillar terms. Use Pattern #5 only for English-Wikipedia-gap terms with real demand. NEVER use noindex,follow as the primary defense (owner does not trust it; research confirms equity decay). The build still runs through ChatGPT→Drive→Cowork→publish, but Cowork's job is now mostly "anchor-edit into the right spoke" rather than "publish a new term page."
+
+Sources: Wikipedia MoS/Layout, MoS/Linking (DUPLINK/OVERLINK/UNDERLINK), MoS/Glossaries, MoS/Disambiguation, Redirect (R to section); WordPress.org plugin support indices (CM Tooltip Glossary, Glossary by Codeat); Content Powered glossary cannibalization article; Investopedia SEO case study (spicymargarita.co); Search Engine Land cannibalization guide.
