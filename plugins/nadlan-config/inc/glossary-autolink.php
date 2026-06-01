@@ -127,7 +127,7 @@ add_action( 'wp_footer', function () {
 	$terms = (int) wp_count_posts( 'nadlan_term' )->publish;
 	$links = array(
 		array( home_url( '/professionals/' ), 'מאגר בעלי המקצוע',          $pro   ? number_format( $pro )   : '' ),
-		array( home_url( '/urban-renewal/' ), 'פרויקטים והתחדשות עירונית', $proj  ? number_format( $proj )  : '' ),
+		array( home_url( '/projects/' ), 'פרויקטים והתחדשות עירונית', $proj  ? number_format( $proj )  : '' ),
 		array( home_url( '/glossary/' ),      'מילון מונחי נדל״ן',           $terms ? number_format( $terms ) : '' ),
 		array( home_url( '/catalog/' ),       'קטלוג ראשי',                  '' ),
 	);
@@ -156,7 +156,7 @@ add_filter( 'the_content', function ( $content ) {
 	$hero .= '<div class="nhp-grid">';
 	$hero .= '<a class="nhp-card" href="' . esc_url( home_url( '/professionals/' ) ) . '"><div class="nhp-num">' . number_format( $pro_count ) . '</div><h3>בעלי מקצוע רשומים</h3><p>קבלנים, שמאים, מפקחים — אינדקס מאומת ממקור ממשלתי.</p><span class="nhp-go">לאינדקס המקצועי ←</span></a>';
 	$hero .= '<a class="nhp-card" href="' . esc_url( home_url( '/glossary/' ) ) . '"><div class="nhp-num">' . number_format( $term_count ) . '</div><h3>מונחי נדל״ן</h3><p>מילון מקצועי, מבוסס תקנים וחוקים — בעברית פשוטה.</p><span class="nhp-go">למילון ←</span></a>';
-	$hero .= '<a class="nhp-card" href="' . esc_url( home_url( '/urban-renewal/' ) ) . '"><div class="nhp-num">' . number_format( $proj_count ) . '</div><h3>פרויקטים והתחדשות עירונית</h3><p>תמ״א 38, פינוי-בינוי, בנייה חדשה — מאגר רשמי.</p><span class="nhp-go">לפרויקטים ←</span></a>';
+	$hero .= '<a class="nhp-card" href="' . esc_url( home_url( '/projects/' ) ) . '"><div class="nhp-num">' . number_format( $proj_count ) . '</div><h3>פרויקטים והתחדשות עירונית</h3><p>תמ״א 38, פינוי-בינוי, בנייה חדשה — מאגר רשמי.</p><span class="nhp-go">לפרויקטים ←</span></a>';
 	$hero .= '<a class="nhp-card" href="' . esc_url( home_url( '/real-estate-lawyer/' ) ) . '"><div class="nhp-num nhp-icon">⚖️</div><h3>ייעוץ משפטי</h3><p>מדריך מקיף לעבודה עם עורך דין מקרקעין.</p><span class="nhp-go">למדריך ←</span></a>';
 	$hero .= '</div></section>';
 	$hero .= '<style>
