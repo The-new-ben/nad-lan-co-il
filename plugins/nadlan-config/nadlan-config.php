@@ -2,7 +2,7 @@
 /**
  * Plugin Name: NadLan Config
  * Description: Lead-capture foundation: nadlan_lead CPT + lead-form handler + healthcheck. Read skills/nadlan-config-plugin.md.
- * Version: 1.4.0
+ * Version: 1.5.0
  * Author: nad-lan.co.il
  * License: GPL-2.0+
  * Requires PHP: 7.4
@@ -11,6 +11,24 @@
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
+
+/* ---------- v1.5.0: directory cards, claim funnel, auction engine ----------
+ * Modular includes. Each is guarded internally with function_exists. They add:
+ *   catalog-meta.php  — project + professional (contractor/service) meta + claim meta
+ *   claim.php         — free-card → claim → verified-owner funnel (REST + admin + caps)
+ *   import.php        — data.gov.il CKAN importer (רשם הקבלנים + התחדשות עירונית) + enrich REST + WP-CLI
+ *   schema.php        — JSON-LD per card + thin-content noindex guard (anti-cannibalization)
+ *   cards-render.php  — facts table + gallery + claim CTA + provenance on card views
+ *   auction.php       — timed auctions: proxy bid, soft-close, custom bids table, REST
+ * See skills/listings-auction-directory-architecture.md for the full design.
+ */
+foreach ( array( 'catalog-meta', 'claim', 'import', 'schema', 'cards-render', 'auction' ) as $nadlan_mod ) {
+	$nadlan_mod_file = __DIR__ . '/inc/' . $nadlan_mod . '.php';
+	if ( file_exists( $nadlan_mod_file ) ) {
+		require_once $nadlan_mod_file;
+	}
+}
+unset( $nadlan_mod, $nadlan_mod_file );
 
 if ( ! function_exists( 'nadlan_config_register_cpt' ) ) {
 	function nadlan_config_register_cpt() {
@@ -52,12 +70,19 @@ if ( ! function_exists( 'nadlan_config_healthcheck_response' ) ) {
 	function nadlan_config_healthcheck_response() {
 		$out = array(
 			'plugin'              => 'nadlan-config',
-			'version'             => '1.3.0',
+			'version'             => '1.5.0',
 			'cpt_present'         => post_type_exists( 'nadlan_lead' ),
 			'lead_handler_loaded' => (bool) has_action( 'admin_post_nadlan_lead' ),
 			'php_version'         => PHP_VERSION,
 			'wp_version'          => get_bloginfo( 'version' ),
 			'catalog'             => nadlan_config_catalog_status(),
+			'directory'           => array(
+				'claim_cpt'        => post_type_exists( 'nadlan_claim' ),
+				'auction_cpt'      => post_type_exists( 'nadlan_auction' ),
+				'bids_table'       => get_option( 'nadlan_auction_db_version' ) === '1',
+				'import_offset_kab'=> (int) get_option( 'nadlan_import_offset_contractors', 0 ),
+				'ga4_hardcode'     => defined( 'NADLAN_GA4_HARDCODE' ) ? NADLAN_GA4_HARDCODE : null,
+			),
 		);
 		return apply_filters( 'nadlan_config_healthcheck', $out );
 	}
