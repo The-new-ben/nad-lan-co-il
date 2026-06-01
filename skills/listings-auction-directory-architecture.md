@@ -120,6 +120,25 @@ Research-grounded (2025–26 best practice):
 - **Roadmap upgrade:** replace median-comps with a trained gradient-boosting model + SHAP explanation once enough deal rows are cached; add repeat-sales index per neighborhood; price-trend charts.
 - **BLANK (legal):** storing nadlan.gov.il price data needs ToS/legal sign-off (no official API). Govmap deal endpoints are reverse-engineered — verify (M10) before wiring the live ETL.
 
+## 8c. AI features (BUILT v1.9.0 — `inc/ai-features.php`) + compliance discipline
+
+**Hard rule, baked into the prompt AND a post-generation scanner:** no steering language by protected class. HUD (USA, 2024) and Israel's **חוק איסור הפליה במוצרים, בשירותים ובכניסה למקומות ציבוריים** both apply to AI-generated marketing copy — the platform is legally responsible for what it publishes. Penalties are real (US: per-violation can exceed $100k).
+
+Banned phrases (non-exhaustive; reviewed list lives in code):
+- Family/age: "מתאים למשפחות עם ילדים", "ל-zugot צעירים", "great for young professionals", "perfect for families".
+- Religion/ethnicity: "קרוב לבית כנסת/מסגד/כנסייה", "שכונה דתית/חרדית/חילונית/ערבית/יהודית", "close to church/synagogue/mosque".
+- Disability: "walking distance" (ableist) → "near".
+- Exclusionary: "exclusive neighborhood".
+
+What v1.9.0 ships:
+- `nadlan_llm_request($system,$user,$opts)` — pluggable LLM adapter (default Anthropic, gated on `NADLAN_LLM_API_KEY`; swap via filter for OpenAI/DeepSeek). Never fails open: returns `WP_Error` on missing key.
+- **AI description generator** (admin meta box on `nadlan_property`): reads facts → prompts the LLM with the guardrails → runs `nadlan_compliance_scan()` → if hits, stores as DRAFT + flags for editor; if clean, editor still must click "Approve & write to content". Never auto-publishes.
+- **Natural-language search** (`GET /nadlan/v1/nl-search?q=...` + `[nadlan_nl_search]`): LLM parses Hebrew → strict-JSON filter → reuses `nadlan_ss_meta_query()` → returns items + the parsed filter for transparency. **Deterministic regex fallback** for Hebrew patterns (`N חדרים`, `עד N מיליון`, `ב<עיר>`, `שכירות`/`מכירה`) keeps it working even if LLM is down. 1-hour transient cache per query.
+
+Research grounding: Realmo Rey, planetRE+DeepSeek, Zillow's NL search (May 2026 launches); 2026 best-practice = LLM→structured filter→deterministic query, with cache + fallback.
+
+**BLANK (owner):** pick LLM provider + add `NADLAN_LLM_API_KEY` to wp-config.php. Compliance list is conservative; review with counsel before relaxing. NL-search UX (autocomplete, history, voice) is roadmap.
+
 ## 9. REUSE → Justice.co.il
 
 The whole pattern is portable: free-card land-grab → claim → upgrade → marketing platform; CKAN/registry importer; original-content pipeline; thin-content noindex guard; auction engine; cannibalization discipline. For Justice.co.il swap entity types (lawyers/courts/legal-topics/rulings) and registries (לשכת עוה"ד, court databases). Keep modules provider-agnostic. **Standing instruction: keep recording all research + patterns into skills/ as the reusable asset.**
