@@ -147,3 +147,85 @@ add_filter( 'the_content', function ( $content ) {
 
 /* Also expose as a shortcode so the owner can place it anywhere in the page builder. */
 add_shortcode( 'nadlan_home_sections', 'nadlan_home_sections_render' );
+
+/* ---- v1.28.0: Lovable-style HERO SEARCH (drop-in shortcode) ----
+ * [nadlan_hero_search] — the real-estate-user-intent search module for the hero,
+ * per Lovable §5. Three tabs (למכירה / להשכרה / פרויקטים), city field (gets the
+ * sitewide autocomplete free via name="city"), rooms + max price, search button.
+ * Submits GET to the matching archive so the existing facets engine handles it.
+ * The owner can place this in their hero block without us overwriting the hero. */
+if ( ! function_exists( 'nadlan_hero_search_render' ) ) {
+	function nadlan_hero_search_render() {
+		$prop_url = get_post_type_archive_link( 'nadlan_property' ) ?: home_url( '/properties/' );
+		$proj_url = get_post_type_archive_link( 'nadlan_project' ) ?: home_url( '/urban-renewal/' );
+		ob_start(); ?>
+<div class="nlhs" dir="rtl">
+	<div class="nlhs-tabs" role="tablist">
+		<button type="button" class="nlhs-tab is-on" data-mode="sale">למכירה</button>
+		<button type="button" class="nlhs-tab" data-mode="rent">להשכרה</button>
+		<button type="button" class="nlhs-tab" data-mode="project">פרויקטים</button>
+	</div>
+	<form class="nlhs-form" method="get" action="<?php echo esc_url( $prop_url ); ?>"
+		  data-prop="<?php echo esc_url( $prop_url ); ?>" data-proj="<?php echo esc_url( $proj_url ); ?>">
+		<input type="hidden" name="listing_type" value="sale" class="nlhs-lt">
+		<div class="nlhs-field nlhs-city">
+			<label>עיר או שכונה</label>
+			<input type="text" name="city" autocomplete="off" placeholder="לדוגמה: ירושלים, רמת גן">
+		</div>
+		<div class="nlhs-field nlhs-rooms">
+			<label>חדרים (מינ׳)</label>
+			<select name="rooms_min">
+				<option value="">הכל</option>
+				<option value="2">2+</option><option value="3">3+</option>
+				<option value="4">4+</option><option value="5">5+</option>
+			</select>
+		</div>
+		<div class="nlhs-field nlhs-price">
+			<label>מחיר עד</label>
+			<select name="price_max">
+				<option value="">ללא הגבלה</option>
+				<option value="1500000">1.5M ₪</option><option value="2500000">2.5M ₪</option>
+				<option value="3500000">3.5M ₪</option><option value="5000000">5M ₪</option>
+			</select>
+		</div>
+		<button type="submit" class="nlhs-go">חיפוש</button>
+	</form>
+	<?php $val = get_page_by_path( 'pricing-apartment-for-sale' ); $val_url = $val ? get_permalink( $val ) : home_url( '/pricing-apartment-for-sale/' ); ?>
+	<a class="nlhs-micro" href="<?php echo esc_url( $val_url ); ?>">או בדקו שווי דירה ←</a>
+</div>
+<style>
+.nlhs{font-family:var(--font-sans,Heebo,sans-serif);max-width:880px;margin:0 auto;direction:rtl}
+.nlhs-tabs{display:flex;gap:4px;margin-bottom:-1px}
+.nlhs-tab{background:rgba(255,255,255,.6);border:1px solid rgba(27,26,23,.12);border-bottom:0;border-radius:12px 12px 0 0;padding:11px 22px;font:inherit;font-weight:600;color:#5a5a5a;cursor:pointer}
+.nlhs-tab.is-on{background:#fff;color:#1B1A17}
+.nlhs-form{display:flex;gap:10px;align-items:flex-end;background:#fff;border:1px solid rgba(27,26,23,.12);border-radius:0 14px 14px 14px;padding:16px;box-shadow:0 10px 30px rgba(27,26,23,.08)}
+.nlhs-field{display:flex;flex-direction:column;gap:5px;flex:1}
+.nlhs-field label{font-size:11px;letter-spacing:.06em;color:#9C7A3C;font-weight:600}
+.nlhs-field input,.nlhs-field select{padding:12px;border:1px solid rgba(27,26,23,.16);border-radius:9px;font:inherit;background:#fff}
+.nlhs-city{flex:2}
+.nlhs-go{background:#1B1A17;color:#FAF7F1;border:0;border-radius:9px;padding:13px 30px;font:inherit;font-weight:600;cursor:pointer;transition:background .2s,color .2s;height:46px}
+.nlhs-go:hover{background:#9C7A3C;color:#fff}
+.nlhs-micro{display:inline-block;margin-top:12px;color:#9C7A3C;text-decoration:none;font-size:13.5px;font-weight:600}
+@media(max-width:680px){.nlhs-form{flex-wrap:wrap}.nlhs-field{flex:1 1 100%}.nlhs-go{width:100%}}
+</style>
+<script>
+(function(){
+	var box=document.currentScript.closest('.nlhs')||document.querySelector('.nlhs');
+	if(!box)return;
+	var form=box.querySelector('.nlhs-form'),lt=box.querySelector('.nlhs-lt');
+	box.querySelectorAll('.nlhs-tab').forEach(function(t){
+		t.addEventListener('click',function(){
+			box.querySelectorAll('.nlhs-tab').forEach(function(x){x.classList.remove('is-on');});
+			t.classList.add('is-on');
+			var m=t.dataset.mode;
+			if(m==='project'){form.action=form.dataset.proj;lt.disabled=true;}
+			else{form.action=form.dataset.prop;lt.disabled=false;lt.value=m;}
+		});
+	});
+})();
+</script>
+		<?php
+		return ob_get_clean();
+	}
+}
+add_shortcode( 'nadlan_hero_search', 'nadlan_hero_search_render' );
