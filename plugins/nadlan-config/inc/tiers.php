@@ -167,12 +167,24 @@ if ( ! function_exists( 'nadlan_tier_upgrade_cta' ) ) {
 	}
 }
 
-/* ---- Priority sort in archives + hubs: pro/premier first, then trial, then free ---- */
+/* ---- Priority sort in archives + hubs: pro/premier first, then trial, then free.
+ * v1.30.0 fix: use meta_query with NOT EXISTS so records WITHOUT paid_tier are
+ * still returned (the old `set('meta_key','paid_tier')` did an INNER JOIN that
+ * excluded the ~2700 imported records that have no tier set yet — making the
+ * archives show only the 5 demo records). */
 add_action( 'pre_get_posts', function ( $q ) {
 	if ( is_admin() || ! $q->is_main_query() ) { return; }
 	if ( ! is_post_type_archive( array( 'nadlan_property', 'nadlan_project', 'nadlan_professional' ) ) ) { return; }
-	$q->set( 'meta_key', 'paid_tier' );
-	$q->set( 'orderby', array( 'meta_value' => 'DESC', 'date' => 'DESC' ) );
+	$mq = (array) $q->get( 'meta_query' );
+	$mq[] = array(
+		'relation' => 'OR',
+		array( 'key' => 'paid_tier', 'compare' => 'EXISTS' ),
+		array( 'key' => 'paid_tier', 'compare' => 'NOT EXISTS' ),
+	);
+	$q->set( 'meta_query', $mq );
+	// order: newest first (paid-tier priority sort will resume once we have tiered records)
+	$q->set( 'orderby', 'date' );
+	$q->set( 'order', 'DESC' );
 } );
 
 /* ---- Admin meta box: set tier + view trial state ---- */
