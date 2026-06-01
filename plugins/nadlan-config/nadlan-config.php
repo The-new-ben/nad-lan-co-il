@@ -2,7 +2,7 @@
 /**
  * Plugin Name: NadLan Config
  * Description: Lead-capture foundation: nadlan_lead CPT + lead-form handler + healthcheck. Read skills/nadlan-config-plugin.md.
- * Version: 1.3.0
+ * Version: 1.4.0
  * Author: nad-lan.co.il
  * License: GPL-2.0+
  * Requires PHP: 7.4
@@ -516,3 +516,33 @@ if ( ! function_exists( 'nadlan_config_disable_texturize' ) ) {
 	}
 }
 add_action( 'init', 'nadlan_config_disable_texturize', 20 );
+
+/**
+ * GA4 direct tag (G-G3QRV5646E).
+ *
+ * Owner-approved 2026-06-01 ("hardcode now, consolidate later"). The live site
+ * was tagging Google Tag GT-W6VHT5TK via Site Kit, but the owner's GA4 property
+ * G-G3QRV5646E received no hits. This emits the GA4 config directly so that
+ * property starts collecting immediately.
+ *
+ * CONSOLIDATION TODO: once data is confirmed, pick ONE source of truth — either
+ * (a) add G-G3QRV5646E as a destination of GT-W6VHT5TK in Google Tag settings and
+ * set NADLAN_GA4_HARDCODE false, or (b) keep this and stop Site Kit from also
+ * sending to G-G3QRV5646E — to avoid double-counting. Guarded by the constant
+ * below so it can be switched off without a code edit if defined in wp-config.
+ */
+if ( ! defined( 'NADLAN_GA4_HARDCODE' ) ) {
+	define( 'NADLAN_GA4_HARDCODE', true );
+}
+if ( ! function_exists( 'nadlan_config_ga4_tag' ) ) {
+	function nadlan_config_ga4_tag() {
+		if ( ! NADLAN_GA4_HARDCODE || is_admin() ) {
+			return;
+		}
+		$id = 'G-G3QRV5646E';
+		echo "\n<!-- nadlan-config GA4 (direct) -->\n";
+		echo '<script async src="https://www.googletagmanager.com/gtag/js?id=' . esc_attr( $id ) . '"></script>' . "\n";
+		echo "<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','" . esc_js( $id ) . "');</script>\n";
+	}
+}
+add_action( 'wp_head', 'nadlan_config_ga4_tag', 5 );
