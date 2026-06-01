@@ -217,7 +217,8 @@ if ( ! function_exists( 'nadlan_import_enrich_handler' ) ) {
 	function nadlan_import_enrich_handler( $req ) {
 		$p  = $req->get_json_params(); if ( ! is_array( $p ) ) { $p = $req->get_params(); }
 		$id = (int) ( $p['post_id'] ?? 0 );
-		if ( ! $id || ! in_array( get_post_type( $id ), array( 'nadlan_project', 'nadlan_professional', 'nadlan_property' ), true ) ) {
+		$allowed = apply_filters( 'nadlan_import_enrich_types', array( 'nadlan_project', 'nadlan_professional', 'nadlan_property' ) );
+		if ( ! $id || ! in_array( get_post_type( $id ), $allowed, true ) ) {
 			return new WP_REST_Response( array( 'ok' => false, 'error' => 'bad_card' ), 400 );
 		}
 		if ( ! empty( $p['content'] ) ) {
