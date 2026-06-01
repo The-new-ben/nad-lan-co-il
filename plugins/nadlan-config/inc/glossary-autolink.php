@@ -118,19 +118,34 @@ add_filter( 'wp_nav_menu_items', function ( $items, $args ) {
 	return $items . $extras;
 }, 10, 2 );
 
-/* footer fallback links (always reachable even if the theme has no nav menu) */
+/* footer fallback links — owner-approved location for all directory entry points
+ * (2026-06-01: "Only add to the footer, links to whatever"). Reachable on every page. */
 add_action( 'wp_footer', function () {
 	if ( is_admin() ) { return; }
-	echo '<div class="nadlan-nav-foot" style="text-align:center;padding:14px;font-family:var(--font-sans,Heebo,sans-serif);font-size:13px;display:flex;justify-content:center;gap:24px;flex-wrap:wrap">'
-		. '<a href="' . esc_url( home_url( '/professionals/' ) ) . '" style="color:#9C7A3C;text-decoration:none">מאגר בעלי המקצוע ←</a>'
-		. '<a href="' . esc_url( home_url( '/glossary/' ) ) . '" style="color:#9C7A3C;text-decoration:none">מילון מונחי נדל"ן ←</a>'
-		. '</div>';
+	$pro   = (int) wp_count_posts( 'nadlan_professional' )->publish;
+	$proj  = (int) wp_count_posts( 'nadlan_project' )->publish;
+	$terms = (int) wp_count_posts( 'nadlan_term' )->publish;
+	$links = array(
+		array( home_url( '/professionals/' ), 'מאגר בעלי המקצוע',          $pro   ? number_format( $pro )   : '' ),
+		array( home_url( '/projects/' ), 'פרויקטים והתחדשות עירונית', $proj  ? number_format( $proj )  : '' ),
+		array( home_url( '/glossary/' ),      'מילון מונחי נדל״ן',           $terms ? number_format( $terms ) : '' ),
+		array( home_url( '/catalog/' ),       'קטלוג ראשי',                  '' ),
+	);
+	$html = '<div class="nadlan-nav-foot" style="text-align:center;padding:20px 14px;margin:24px 0 0;background:#FBF9F5;border-top:1px solid rgba(27,26,23,.08);font-family:var(--font-sans,Heebo,sans-serif);font-size:13.5px;display:flex;justify-content:center;gap:28px;flex-wrap:wrap;direction:rtl">';
+	foreach ( $links as $L ) {
+		$html .= '<a href="' . esc_url( $L[0] ) . '" style="color:#9C7A3C;text-decoration:none;font-weight:600">'
+			   . esc_html( $L[1] )
+			   . ( $L[2] ? ' <span style="color:#999;font-weight:400">(' . esc_html( $L[2] ) . ')</span>' : '' )
+			   . ' ←</a>';
+	}
+	$html .= '</div>';
+	echo $html;
 }, 99 );
 
-/* ---- v1.25.0: homepage discoverability hero ----
- * Inject a "מה אפשר למצוא כאן" pillar-card block on the homepage that links to
- * the actually-valuable destinations: professional directory, glossary,
- * urban-renewal hub, etc. Solves "no one knows where these pages are". */
+/* ---- v1.25.0: homepage discoverability block ----
+ * Owner confirmed (2026-06-01) to KEEP this block exactly as it is currently live.
+ * Injects a "מה תמצאו כאן" pillar-card block on the homepage linking to the
+ * professional directory, glossary, urban-renewal hub and legal guide. */
 add_filter( 'the_content', function ( $content ) {
 	if ( ! is_front_page() || ! in_the_loop() || ! is_main_query() ) { return $content; }
 	$pro_count = (int) wp_count_posts( 'nadlan_professional' )->publish;
@@ -141,7 +156,7 @@ add_filter( 'the_content', function ( $content ) {
 	$hero .= '<div class="nhp-grid">';
 	$hero .= '<a class="nhp-card" href="' . esc_url( home_url( '/professionals/' ) ) . '"><div class="nhp-num">' . number_format( $pro_count ) . '</div><h3>בעלי מקצוע רשומים</h3><p>קבלנים, שמאים, מפקחים — אינדקס מאומת ממקור ממשלתי.</p><span class="nhp-go">לאינדקס המקצועי ←</span></a>';
 	$hero .= '<a class="nhp-card" href="' . esc_url( home_url( '/glossary/' ) ) . '"><div class="nhp-num">' . number_format( $term_count ) . '</div><h3>מונחי נדל״ן</h3><p>מילון מקצועי, מבוסס תקנים וחוקים — בעברית פשוטה.</p><span class="nhp-go">למילון ←</span></a>';
-	$hero .= '<a class="nhp-card" href="' . esc_url( home_url( '/urban-renewal/' ) ) . '"><div class="nhp-num">' . number_format( $proj_count ) . '</div><h3>פרויקטים והתחדשות עירונית</h3><p>תמ״א 38, פינוי-בינוי, בנייה חדשה — מאגר רשמי.</p><span class="nhp-go">לפרויקטים ←</span></a>';
+	$hero .= '<a class="nhp-card" href="' . esc_url( home_url( '/projects/' ) ) . '"><div class="nhp-num">' . number_format( $proj_count ) . '</div><h3>פרויקטים והתחדשות עירונית</h3><p>תמ״א 38, פינוי-בינוי, בנייה חדשה — מאגר רשמי.</p><span class="nhp-go">לפרויקטים ←</span></a>';
 	$hero .= '<a class="nhp-card" href="' . esc_url( home_url( '/real-estate-lawyer/' ) ) . '"><div class="nhp-num nhp-icon">⚖️</div><h3>ייעוץ משפטי</h3><p>מדריך מקיף לעבודה עם עורך דין מקרקעין.</p><span class="nhp-go">למדריך ←</span></a>';
 	$hero .= '</div></section>';
 	$hero .= '<style>
@@ -162,3 +177,6 @@ add_filter( 'the_content', function ( $content ) {
 </style>';
 	return $hero . $content;
 }, 18 );
+
+/* NOTE: inc/homepage.php provides [nadlan_home_sections] / [nadlan_hero_search]
+ * shortcodes only (auto-injection disabled) — available if the owner wants them. */

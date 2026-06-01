@@ -54,6 +54,10 @@ if ( ! function_exists( 'nadlan_card_upsert' ) ) {
 				array( 'key' => 'source_id', 'value' => (string) $source_id ),
 			),
 		) );
+		// Normalize whitespace from the CKAN source (gov.il fields are space-padded).
+		$nz = function ( $s ) { return is_string( $s ) ? trim( preg_replace( '/\s+/u', ' ', $s ) ) : $s; };
+		$title = $nz( $title );
+		foreach ( $meta as $mk => $mv ) { $meta[ $mk ] = $nz( $mv ); }
 		$args = array(
 			'post_type'   => $post_type,
 			'post_status' => 'publish',
