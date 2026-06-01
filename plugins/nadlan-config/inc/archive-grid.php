@@ -69,11 +69,25 @@ if ( ! function_exists( 'nadlan_archive_grid_render' ) ) {
 
 	<?php if ( shortcode_exists( 'nadlan_facets' ) ) { echo do_shortcode( '[nadlan_facets type="' . esc_attr( $pt ) . '"]' ); } ?>
 
+	<?php
+	// ItemList JSON-LD for the visible cards (rich-result eligibility).
+	if ( have_posts() ) {
+		$items = array(); $pos = 1;
+		foreach ( $wp_query->posts as $sp ) {
+			$items[] = array( '@type' => 'ListItem', 'position' => $pos++, 'url' => get_permalink( $sp ), 'name' => get_the_title( $sp ) );
+		}
+		echo '<script type="application/ld+json">' . wp_json_encode( array(
+			'@context' => 'https://schema.org', '@type' => 'ItemList',
+			'name' => $L['h1'], 'numberOfItems' => $total,
+			'itemListElement' => $items,
+		), JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES ) . '</script>';
+	}
+	?>
 	<?php if ( have_posts() ) : ?>
 	<div class="nlag-grid">
 		<?php while ( have_posts() ) : the_post();
 			$id   = get_the_ID();
-			$city = trim( (string) get_post_meta( $id, 'city', true ) );
+			$city = nadlan_meta_norm( get_post_meta( $id, 'city', true ) );
 			echo '<a class="nlag-card" href="' . esc_url( get_permalink() ) . '">';
 			echo '<span class="nlag-badge">' . esc_html( $L['badge'] ) . '</span>';
 			echo '<h3>' . esc_html( get_the_title() ) . '</h3>';
