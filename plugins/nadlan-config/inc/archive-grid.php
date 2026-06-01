@@ -110,11 +110,15 @@ if ( ! function_exists( 'nadlan_archive_grid_render' ) ) {
 }
 
 /* type-specific card meta line */
+if ( ! function_exists( 'nadlan_meta_norm' ) ) {
+	/* collapse the whitespace padding gov.il leaves in CKAN fields */
+	function nadlan_meta_norm( $s ) { return trim( preg_replace( '/\s+/u', ' ', (string) $s ) ); }
+}
 if ( ! function_exists( 'nadlan_archive_card_meta' ) ) {
 	function nadlan_archive_card_meta( $id, $pt ) {
 		if ( $pt === 'nadlan_professional' ) {
-			$cls = trim( (string) get_post_meta( $id, 'classification', true ) );
-			$reg = trim( (string) get_post_meta( $id, 'registry_number', true ) );
+			$cls = nadlan_meta_norm( get_post_meta( $id, 'classification', true ) );
+			$reg = nadlan_meta_norm( get_post_meta( $id, 'registry_number', true ) );
 			$cls = mb_strlen( $cls ) > 46 ? mb_substr( $cls, 0, 46 ) . '…' : $cls;
 			$out = $cls ? '<span class="nlag-spec">' . esc_html( $cls ) . '</span>' : '';
 			$out .= $reg ? '<span class="nlag-reg">רשם הקבלנים #' . esc_html( $reg ) . '</span>' : '';
@@ -122,7 +126,7 @@ if ( ! function_exists( 'nadlan_archive_card_meta' ) ) {
 		}
 		if ( $pt === 'nadlan_project' ) {
 			$u  = (int) get_post_meta( $id, 'num_units', true );
-			$st = trim( (string) get_post_meta( $id, 'project_status', true ) );
+			$st = nadlan_meta_norm( get_post_meta( $id, 'project_status', true ) );
 			$bits = array_filter( array( $u ? $u . ' יח״ד' : '', $st ) );
 			return $bits ? '<span class="nlag-spec">' . esc_html( implode( ' · ', $bits ) ) . '</span>' : '';
 		}

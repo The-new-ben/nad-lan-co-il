@@ -17,7 +17,7 @@ if ( ! defined( 'ABSPATH' ) ) { exit; }
 
 if ( ! function_exists( 'nadlan_card_fact_rows' ) ) {
 	function nadlan_card_fact_rows( $id, $type ) {
-		$g = function ( $k ) use ( $id ) { return trim( (string) get_post_meta( $id, $k, true ) ); };
+		$g = function ( $k ) use ( $id ) { return trim( preg_replace( '/\s+/u', ' ', (string) get_post_meta( $id, $k, true ) ) ); };
 		$rows = array();
 		if ( $type === 'nadlan_professional' ) {
 			$prof_map = array( 'kablan' => 'קבלן רשום', 'shamai' => 'שמאי מקרקעין', 'bedek_bait' => 'בדק בית',
