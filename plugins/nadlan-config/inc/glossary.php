@@ -163,6 +163,113 @@ add_filter( 'nadlan_import_enrich_types', function ( $types ) {
 	return $types;
 } );
 
+/* ---- v1.20.0 ONE-SHOT PUBLISH: removes Cowork friction ----
+ * Was: 3 separate REST calls per term (POST wp/v2/nadlan_term → POST nadlan/v1/
+ * import-enrich → POST wp/v2/nadlan_term?status=publish), each with a different
+ * auth surface (browser nonce vs Application Password); keeps breaking when the
+ * Chrome extension drops.
+ *
+ * Now: a single POST /nadlan/v1/glossary-publish that does the whole publish in
+ * one auth-able call (works with Application Password / Basic Auth — NO browser
+ * needed). Idempotent: if a term with the same title (or `term_en`) already exists
+ * it UPDATES instead of duplicating. Returns the post_id + permalink.
+ *
+ * Payload:
+ *   {
+ *     "title": "כלונסאות",                   // required Hebrew term
+ *     "content_html": "<p>...</p>",            // required, will be wp_kses_post'd
+ *     "term_en":       "Pile (deep foundation)",
+ *     "wikipedia_en":  "https://en.wikipedia.org/wiki/Deep_foundation",
+ *     "related_pillar":"https://nad-lan.co.il/real-estate-lawyer/",
+ *     "related_anchor":"מדריך עורך דין מקרקעין",
+ *     "source_url":    "https://...",
+ *     "source_label":  "תקן ישראלי 940",
+ *     "term_cat":      ["בנייה וקונסטרוקציה"],  // optional
+ *     "excerpt":       "...",                  // optional, for meta description
+ *     "status":        "publish"               // default 'publish'; 'draft' for prep
+ *   }
+ */
+add_action( 'rest_api_init', function () {
+	register_rest_route( 'nadlan/v1', '/glossary-publish', array(
+		'methods'             => 'POST',
+		'permission_callback' => function () { return current_user_can( 'edit_posts' ); },
+		'callback'            => 'nadlan_glossary_one_shot_publish',
+	) );
+} );
+
+if ( ! function_exists( 'nadlan_glossary_one_shot_publish' ) ) {
+	function nadlan_glossary_one_shot_publish( $req ) {
+		$p = $req->get_json_params(); if ( ! is_array( $p ) ) { $p = $req->get_params(); }
+		$title = trim( (string) ( $p['title'] ?? '' ) );
+		$body  = (string) ( $p['content_html'] ?? '' );
+		if ( $title === '' || trim( wp_strip_all_tags( $body ) ) === '' ) {
+			return new WP_REST_Response( array( 'ok' => false, 'error' => 'need_title_and_content' ), 400 );
+		}
+		// Idempotency: dedupe by exact title, or by term_en if provided.
+		$existing = get_posts( array(
+			'post_type'   => 'nadlan_term',
+			'title'       => $title,
+			'posts_per_page' => 1,
+			'post_status' => 'any',
+		) );
+		if ( ! $existing && ! empty( $p['term_en'] ) ) {
+			$existing = get_posts( array(
+				'post_type' => 'nadlan_term', 'posts_per_page' => 1, 'post_status' => 'any',
+				'meta_query' => array( array( 'key' => 'term_en', 'value' => $p['term_en'] ) ),
+			) );
+		}
+		$status = ( ( $p['status'] ?? 'publish' ) === 'draft' ) ? 'draft' : 'publish';
+		$args = array(
+			'post_type'    => 'nadlan_term',
+			'post_status'  => $status,
+			'post_title'   => $title,
+			'post_content' => wp_kses_post( $body ),
+		);
+		if ( ! empty( $p['excerpt'] ) ) { $args['post_excerpt'] = sanitize_text_field( (string) $p['excerpt'] ); }
+		if ( $existing ) {
+			$args['ID'] = (int) $existing[0]->ID;
+			$id = wp_update_post( $args, true );
+		} else {
+			$id = wp_insert_post( $args, true );
+		}
+		if ( is_wp_error( $id ) ) {
+			return new WP_REST_Response( array( 'ok' => false, 'error' => 'save_failed', 'detail' => $id->get_error_message() ), 500 );
+		}
+		// Meta map
+		$meta_keys = array( 'term_en', 'wikipedia_en', 'wikipedia_he', 'related_pillar', 'related_anchor', 'source_url', 'source_label' );
+		foreach ( $meta_keys as $k ) {
+			if ( isset( $p[ $k ] ) && $p[ $k ] !== '' ) {
+				update_post_meta( $id, $k, sanitize_text_field( (string) $p[ $k ] ) );
+			}
+		}
+		update_post_meta( $id, 'data_quality', 'enriched' );
+		// Category assignment
+		if ( ! empty( $p['term_cat'] ) ) {
+			$cats = is_array( $p['term_cat'] ) ? $p['term_cat'] : array( $p['term_cat'] );
+			$term_ids = array();
+			foreach ( $cats as $c ) {
+				$c = trim( (string) $c );
+				if ( $c === '' ) { continue; }
+				$t = term_exists( $c, 'nadlan_term_cat' );
+				if ( ! $t ) { $t = wp_insert_term( $c, 'nadlan_term_cat' ); }
+				if ( ! is_wp_error( $t ) ) { $term_ids[] = (int) ( is_array( $t ) ? $t['term_id'] : $t ); }
+			}
+			if ( $term_ids ) { wp_set_object_terms( $id, $term_ids, 'nadlan_term_cat' ); }
+		}
+		// IndexNow ping (only on real publish)
+		if ( $status === 'publish' && function_exists( 'nadlan_config_indexnow_ping' ) ) {
+			nadlan_config_indexnow_ping( get_permalink( $id ) );
+		}
+		return new WP_REST_Response( array(
+			'ok' => true,
+			'id' => (int) $id,
+			'url' => get_permalink( $id ),
+			'status' => get_post_status( $id ),
+			'was_update' => (bool) $existing,
+		), 200 );
+	}
+}
+
 /* IndexNow ping for terms on publish */
 add_action( 'save_post_nadlan_term', function ( $post_id, $post ) {
 	if ( $post->post_status === 'publish' && function_exists( 'nadlan_config_indexnow_ping' ) ) {
