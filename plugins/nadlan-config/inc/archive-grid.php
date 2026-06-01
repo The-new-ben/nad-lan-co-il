@@ -20,7 +20,8 @@ if ( ! defined( 'ABSPATH' ) ) { exit; }
 if ( ! function_exists( 'nadlan_archive_grid_dispatch' ) ) {
 	function nadlan_archive_grid_dispatch() {
 		if ( defined( 'NADLAN_DISABLE_ARCHIVE_GRID' ) && NADLAN_DISABLE_ARCHIVE_GRID ) { return; }
-		if ( ! is_post_type_archive( array( 'nadlan_professional', 'nadlan_project', 'nadlan_property' ) ) ) { return; }
+		// Professionals get the premium dynamic directory (inc/directory.php) instead.
+		if ( ! is_post_type_archive( array( 'nadlan_project', 'nadlan_property' ) ) ) { return; }
 		if ( is_admin() ) { return; }
 		nadlan_archive_grid_render();
 		exit;
