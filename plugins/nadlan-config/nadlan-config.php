@@ -2,7 +2,7 @@
 /**
  * Plugin Name: NadLan Config
  * Description: Lead-capture foundation: nadlan_lead CPT + lead-form handler + healthcheck. Read skills/nadlan-config-plugin.md.
- * Version: 1.2.1
+ * Version: 1.3.0
  * Author: nad-lan.co.il
  * License: GPL-2.0+
  * Requires PHP: 7.4
@@ -52,7 +52,7 @@ if ( ! function_exists( 'nadlan_config_healthcheck_response' ) ) {
 	function nadlan_config_healthcheck_response() {
 		$out = array(
 			'plugin'              => 'nadlan-config',
-			'version'             => '1.2.1',
+			'version'             => '1.3.0',
 			'cpt_present'         => post_type_exists( 'nadlan_lead' ),
 			'lead_handler_loaded' => (bool) has_action( 'admin_post_nadlan_lead' ),
 			'php_version'         => PHP_VERSION,
@@ -473,3 +473,46 @@ if ( ! function_exists( 'nadlan_config_healthcheck_augment' ) ) {
 	}
 }
 add_filter( 'nadlan_config_healthcheck', 'nadlan_config_healthcheck_augment' );
+
+/* ---------- v1.3.0: robots.txt with sitemap + disable wptexturize ----------
+ * Two fixes:
+ * 1) Serve a proper robots.txt (with the Yoast sitemap_index reference) via the
+ *    WordPress robots_txt filter. NOTE: this only takes effect if the web server
+ *    routes /robots.txt to WordPress (index.php). If a physical robots.txt or an
+ *    nginx rule intercepts the path first, add the file/route at server level.
+ * 2) Disable wptexturize on titles/content/excerpts. wptexturize auto-converts
+ *    " - " (space-hyphen-space) into an en-dash (–) at render time, which violated
+ *    the owner's no-dash typography rule and reintroduced AI-tell punctuation even
+ *    after the stored text was cleaned. Removing it keeps punctuation as authored.
+ */
+if ( ! function_exists( 'nadlan_config_robots_txt' ) ) {
+	function nadlan_config_robots_txt( $output, $public ) {
+		if ( '0' === (string) $public ) {
+			return $output; // respect "discourage search engines" toggle
+		}
+		$sitemap = home_url( '/sitemap_index.xml' );
+		$out  = "User-agent: *\n";
+		$out .= "Allow: /\n";
+		$out .= "Disallow: /wp-admin/\n";
+		$out .= "Allow: /wp-admin/admin-ajax.php\n";
+		$out .= "Disallow: /cart/\n";
+		$out .= "Disallow: /checkout/\n";
+		$out .= "Disallow: /my-account/\n";
+		$out .= "Disallow: /*?s=\n";
+		$out .= "Disallow: /*add-to-cart=\n";
+		$out .= "\nSitemap: " . esc_url_raw( $sitemap ) . "\n";
+		return $out;
+	}
+}
+add_filter( 'robots_txt', 'nadlan_config_robots_txt', 20, 2 );
+
+if ( ! function_exists( 'nadlan_config_disable_texturize' ) ) {
+	function nadlan_config_disable_texturize() {
+		foreach ( array( 'the_content', 'the_title', 'the_excerpt', 'single_post_title',
+			'comment_text', 'widget_text_content', 'widget_block_content', 'nav_menu_description',
+			'term_description', 'list_cats', 'wp_title', 'document_title' ) as $f ) {
+			remove_filter( $f, 'wptexturize' );
+		}
+	}
+}
+add_action( 'init', 'nadlan_config_disable_texturize', 20 );

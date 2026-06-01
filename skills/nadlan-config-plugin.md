@@ -133,3 +133,8 @@ Adds two capabilities the homepage actually needs to capture leads:
 
 **Owner approval required** because v1.0.5 means another plugin delete + upload + activate cycle. Trade-off: one more upload buys the lead-capture form AND unlocks bulk Yoast description writes.
 
+
+## v1.3.0 (2026-05-31) - robots.txt + wptexturize disable
+- `robots_txt` filter: serves User-agent rules + `Sitemap: /sitemap_index.xml`. Respects the "discourage search engines" toggle. CAVEAT: only works if the web server routes /robots.txt to index.php. Live /robots.txt currently returns nginx 404 (request not reaching WP) - after deploy, verify; if still 404, the host must add `location = /robots.txt { try_files $uri /index.php?$args; }` or drop a physical robots.txt.
+- `nadlan_config_disable_texturize()`: removes wptexturize from the_content/the_title/excerpt/etc. Root-fix for the en-dash AI-tell (wptexturize converted ' - ' to '–' at render). Prevents future regressions site-wide.
+- Deploy: server `git pull` (plugin-build/ is gitignored; tracked copy is plugins/nadlan-config/). Bumped header + healthcheck version to 1.3.0 - verify via /wp-json/nadlan/v1/healthcheck.
