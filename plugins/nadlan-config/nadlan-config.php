@@ -2,7 +2,7 @@
 /**
  * Plugin Name: NadLan Config
  * Description: Lead-capture foundation: nadlan_lead CPT + lead-form handler + healthcheck. Read skills/nadlan-config-plugin.md.
- * Version: 1.3.0
+ * Version: 1.18.0
  * Author: nad-lan.co.il
  * License: GPL-2.0+
  * Requires PHP: 7.4
@@ -11,6 +11,24 @@
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
+
+/* ---------- v1.5.0: directory cards, claim funnel, auction engine ----------
+ * Modular includes. Each is guarded internally with function_exists. They add:
+ *   catalog-meta.php  — project + professional (contractor/service) meta + claim meta
+ *   claim.php         — free-card → claim → verified-owner funnel (REST + admin + caps)
+ *   import.php        — data.gov.il CKAN importer (רשם הקבלנים + התחדשות עירונית) + enrich REST + WP-CLI
+ *   schema.php        — JSON-LD per card + thin-content noindex guard (anti-cannibalization)
+ *   cards-render.php  — facts table + gallery + claim CTA + provenance on card views
+ *   auction.php       — timed auctions: proxy bid, soft-close, custom bids table, REST
+ * See skills/listings-auction-directory-architecture.md for the full design.
+ */
+foreach ( array( 'catalog-meta', 'claim', 'import', 'schema', 'cards-render', 'auction', 'listings-ux', 'avm-deals', 'saved-search', 'ai-features', 'city-hubs', 'media', 'compare', 'nearby-poi', 'esign', 'map', 'lead-drip', 'ops-dashboard', 'facets', 'breadcrumbs', 'autocomplete', 'tiers', 'glossary' ) as $nadlan_mod ) {
+	$nadlan_mod_file = __DIR__ . '/inc/' . $nadlan_mod . '.php';
+	if ( file_exists( $nadlan_mod_file ) ) {
+		require_once $nadlan_mod_file;
+	}
+}
+unset( $nadlan_mod, $nadlan_mod_file );
 
 if ( ! function_exists( 'nadlan_config_register_cpt' ) ) {
 	function nadlan_config_register_cpt() {
@@ -52,12 +70,19 @@ if ( ! function_exists( 'nadlan_config_healthcheck_response' ) ) {
 	function nadlan_config_healthcheck_response() {
 		$out = array(
 			'plugin'              => 'nadlan-config',
-			'version'             => '1.3.0',
+			'version'             => '1.18.0',
 			'cpt_present'         => post_type_exists( 'nadlan_lead' ),
 			'lead_handler_loaded' => (bool) has_action( 'admin_post_nadlan_lead' ),
 			'php_version'         => PHP_VERSION,
 			'wp_version'          => get_bloginfo( 'version' ),
 			'catalog'             => nadlan_config_catalog_status(),
+			'directory'           => array(
+				'claim_cpt'        => post_type_exists( 'nadlan_claim' ),
+				'auction_cpt'      => post_type_exists( 'nadlan_auction' ),
+				'bids_table'       => get_option( 'nadlan_auction_db_version' ) === '1',
+				'import_offset_kab'=> (int) get_option( 'nadlan_import_offset_contractors', 0 ),
+				'ga4_hardcode'     => defined( 'NADLAN_GA4_HARDCODE' ) ? NADLAN_GA4_HARDCODE : null,
+			),
 		);
 		return apply_filters( 'nadlan_config_healthcheck', $out );
 	}
@@ -516,3 +541,34 @@ if ( ! function_exists( 'nadlan_config_disable_texturize' ) ) {
 	}
 }
 add_action( 'init', 'nadlan_config_disable_texturize', 20 );
+
+/**
+ * GA4 direct tag (G-G3QRV5646E).
+ *
+ * Owner-approved 2026-06-01 ("hardcode now, consolidate later"). The live site
+ * was tagging Google Tag GT-W6VHT5TK via Site Kit, but the owner's GA4 property
+ * G-G3QRV5646E received no hits. This emits the GA4 config directly so that
+ * property starts collecting immediately.
+ *
+ * RESOLVED 2026-06-01: Site Kit is confirmed already tagging G-G3QRV5646E correctly
+ * (the "no data" the owner saw was Site Kit's "exclude logged-in users" — admin
+ * self-views; verified working in incognito). So the direct hardcode would
+ * DOUBLE-COUNT. Default is now FALSE — Site Kit owns GA4. To force the direct tag
+ * back on (e.g. if Site Kit is ever removed), add define('NADLAN_GA4_HARDCODE', true)
+ * to wp-config.php. No code edit needed to toggle.
+ */
+if ( ! defined( 'NADLAN_GA4_HARDCODE' ) ) {
+	define( 'NADLAN_GA4_HARDCODE', false );
+}
+if ( ! function_exists( 'nadlan_config_ga4_tag' ) ) {
+	function nadlan_config_ga4_tag() {
+		if ( ! NADLAN_GA4_HARDCODE || is_admin() ) {
+			return;
+		}
+		$id = 'G-G3QRV5646E';
+		echo "\n<!-- nadlan-config GA4 (direct) -->\n";
+		echo '<script async src="https://www.googletagmanager.com/gtag/js?id=' . esc_attr( $id ) . '"></script>' . "\n";
+		echo "<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','" . esc_js( $id ) . "');</script>\n";
+	}
+}
+add_action( 'wp_head', 'nadlan_config_ga4_tag', 5 );

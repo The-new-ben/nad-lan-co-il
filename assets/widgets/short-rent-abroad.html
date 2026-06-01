@@ -1,0 +1,123 @@
+<!-- wp:html -->
+<style>
+.nsra{font-family:var(--font-sans,Heebo,sans-serif);direction:rtl;color:var(--ink-700,#3A3733);max-width:1080px;margin:0 auto}
+.nsra h2,.nsra h3{font-family:var(--font-serif,"Frank Ruhl Libre",serif);font-weight:500;color:var(--ink-900,#1B1A17);letter-spacing:-.01em}
+.nsra-eye{font-size:11px;letter-spacing:.18em;color:var(--gold-600,#9C7A3C);font-weight:500;text-transform:uppercase}
+.nsra-tabs{display:flex;gap:0;border-bottom:1px solid var(--hairline,rgba(27,26,23,.12));margin:24px 0 0;flex-wrap:wrap}
+.nsra-tab{flex:0 0 auto;padding:14px 18px;border:0;background:transparent;font-family:inherit;font-size:14px;color:var(--ink-500,#6E6A63);cursor:pointer;border-bottom:1.5px solid transparent;transition:.2s}
+.nsra-tab.on{color:var(--ink-900,#1B1A17);border-bottom-color:var(--gold-600,#9C7A3C);font-weight:500}
+.nsra-tab:hover{color:var(--ink-900,#1B1A17)}
+.nsra-panel{padding:32px 0;display:none}
+.nsra-panel.on{display:block}
+.nsra-hero{display:grid;grid-template-columns:1fr 280px;gap:32px;align-items:start;margin-bottom:24px}
+.nsra-flag{font-size:64px;line-height:1;text-align:center}
+.nsra-verdict{background:var(--cream-100,#F1ECE2);border:1px solid var(--hairline,rgba(27,26,23,.12));padding:20px;font-size:14px;line-height:1.7}
+.nsra-verdict b{color:var(--gold-600,#9C7A3C)}
+.nsra-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:0;margin:24px 0;border-top:1px solid var(--hairline-strong,rgba(27,26,23,.24));border-bottom:1px solid var(--hairline-strong,rgba(27,26,23,.24))}
+.nsra-stat{padding:18px;border-inline-end:1px solid var(--hairline,rgba(27,26,23,.12))}
+.nsra-stat:last-child{border-inline-end:0}
+.nsra-stat .l{font-size:10px;letter-spacing:.16em;color:var(--ink-500,#6E6A63);font-weight:500;margin-bottom:6px}
+.nsra-stat .v{font-family:var(--font-serif,serif);font-size:24px;color:var(--ink-900,#1B1A17);font-variant-numeric:tabular-nums}
+.nsra-stat .sub{font-size:12px;color:var(--ink-500,#6E6A63);margin-top:4px}
+.nsra-cols{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin:24px 0}
+.nsra-card{background:var(--paper-0,#fff);border:1px solid var(--hairline,rgba(27,26,23,.12));padding:24px}
+.nsra-card h4{margin:0 0 12px;font-family:inherit;font-weight:500;font-size:16px;color:var(--ink-900,#1B1A17)}
+.nsra-card h4 .ic{display:inline-block;width:18px;height:18px;background:var(--gold-600,#9C7A3C);border-radius:50%;vertical-align:middle;margin-left:8px;position:relative}
+.nsra-card.warn h4 .ic{background:var(--negative-700,#8A2A2A)}
+.nsra-card.ok h4 .ic{background:var(--positive-700,#2E6A4F)}
+.nsra-card ul{margin:0;padding:0;list-style:none}
+.nsra-card li{position:relative;padding-inline-start:18px;margin-bottom:10px;font-size:14px;line-height:1.6}
+.nsra-card li::before{content:"·";position:absolute;inset-inline-start:6px;color:var(--gold-600,#9C7A3C);font-weight:700;font-size:18px;line-height:1}
+.nsra-compare{margin-top:48px}
+.nsra-tbl{width:100%;border-collapse:collapse;font-size:13px}
+.nsra-tbl th,.nsra-tbl td{padding:12px 10px;text-align:start;border-bottom:1px solid var(--hairline,rgba(27,26,23,.12))}
+.nsra-tbl th{font-size:11px;letter-spacing:.14em;color:var(--ink-500,#6E6A63);font-weight:500;border-bottom:1.5px solid var(--hairline-strong,rgba(27,26,23,.24))}
+.nsra-tbl td:first-child{font-weight:500;color:var(--ink-900,#1B1A17)}
+.nsra-tbl td.n{font-variant-numeric:tabular-nums;text-align:end;color:var(--ink-900,#1B1A17)}
+.nsra-tbl tr:hover{background:var(--cream-50,#FAF7F1)}
+.nsra-pill{display:inline-block;padding:2px 8px;border:1px solid var(--hairline-strong,rgba(27,26,23,.24));font-size:11px;letter-spacing:.05em}
+.nsra-pill.warn{border-color:var(--negative-700,#8A2A2A);color:var(--negative-700,#8A2A2A)}
+.nsra-pill.ok{border-color:var(--positive-700,#2E6A4F);color:var(--positive-700,#2E6A4F)}
+.nsra-tips{background:var(--cream-100,#F1ECE2);padding:28px;margin:32px 0;border-inline-start:3px solid var(--gold-600,#9C7A3C)}
+.nsra-tips h3{margin:0 0 12px;font-size:20px}
+.nsra-tips ol{margin:0;padding-inline-start:20px;font-size:14px;line-height:1.8}
+.nsra-tips li{margin-bottom:8px}
+.nsra-cta{text-align:center;margin:32px 0 0;padding:24px;border-top:1px solid var(--hairline,rgba(27,26,23,.12))}
+.nsra-cta a{color:var(--gold-600,#9C7A3C);font-size:16px;text-decoration:none;border-bottom:1px solid var(--gold-600,#9C7A3C)}
+@media(max-width:780px){.nsra-hero{grid-template-columns:1fr}.nsra-stats{grid-template-columns:repeat(2,1fr)}.nsra-cols{grid-template-columns:1fr}.nsra-tbl{font-size:12px}}
+</style>
+<div class="nsra">
+  <p class="nsra-eye">השקעה גלובלית · השכרה קצרת טווח</p>
+  <h2 style="font-size:36px;margin:4px 0 12px;line-height:1.15">השקעת נדל״ן Airbnb בחו״ל - המדריך המלא ל-2026</h2>
+  <p style="max-width:680px;font-size:17px;line-height:1.7;color:var(--ink-500,#6E6A63);margin:0 0 8px">שבע יעדים בדוקים שישראלים משקיעים בהם - תשואות, רגולציה חדשה, סף כניסה ומיסוי. עודכן עם תקנות אוקטובר 2025 ביוון, רגולציית האיחוד האירופי מאי 2026, וצו DCT דובאי ינואר 2026.</p>
+  <div class="nsra-tabs" role="tablist">
+    <button class="nsra-tab on" data-c="gr">🇬🇷 יוון</button>
+    <button class="nsra-tab" data-c="pt">🇵🇹 פורטוגל</button>
+    <button class="nsra-tab" data-c="es">🇪🇸 ספרד</button>
+    <button class="nsra-tab" data-c="it">🇮🇹 איטליה</button>
+    <button class="nsra-tab" data-c="cy">🇨🇾 קפריסין</button>
+    <button class="nsra-tab" data-c="th">🇹🇭 תאילנד</button>
+    <button class="nsra-tab" data-c="ae">🇦🇪 דובאי</button>
+  </div>
+  <div id="nsra-panels"></div>
+  <div class="nsra-compare">
+    <h3 style="font-size:24px;margin:32px 0 16px">השוואה לצד-צד</h3>
+    <div style="overflow-x:auto">
+    <table class="nsra-tbl">
+      <thead><tr><th>יעד</th><th>תשואה ברוטו</th><th>סף כניסה (€)</th><th>רישיון STR</th><th>מס שכירות</th><th>שינוי רגולציה 2025-26</th></tr></thead>
+      <tbody id="nsra-cmp"></tbody>
+    </table>
+    </div>
+  </div>
+  <div class="nsra-tips">
+    <h3>שבע אזהרות שמשקיעים ישראלים מתחרטים שלא ידעו</h3>
+    <ol>
+      <li><b>רגולציה משתנה כל שנה.</b> מה שהיה חוקי ב-2024 לא בהכרח חוקי ב-2026. בדקו מועד הוצאת הרישיון העירוני העדכני לפני סגירת חוזה.</li>
+      <li><b>תשואה ברוטו ≠ תשואה נטו.</b> נכו: דמי ניהול 15-25%, ניקיון בין אורחים, מס פלטפורמה, מס מקומי, אחזקה, ביטוח אחריות, חודשי שפל. הנטו ברוב המקומות נמוך ב-3-5 נקודות אחוז מהברוטו.</li>
+      <li><b>תאילנד &lt;30 לילה = לא חוקי.</b> ללא רישיון מלון. עוסקים פרטיים נקנסים ב-20,000 בהט + 10,000 ליום, ועלולים להיענש בכלא עד שנה. הפתרון: מינימום 30 לילה.</li>
+      <li><b>פלטפורמה תקנה את ההכנסה.</b> EU 2024/1028 מחייבת את Airbnb/Booking לדווח אוטומטית לרשויות המס המקומיות מ-מאי 2026. רשות המסים בישראל מקבלת את הנתונים בהסכמי חליפין.</li>
+      <li><b>מס דירה שנייה ושלישית בישראל.</b> רכישת דירה שלישית עלולה לחייב מס רכישה מוגדל גם אם הנכס בחו״ל לפי פסיקה מתפתחת. ייעוץ מקדים חובה.</li>
+      <li><b>אזורי חופש לזרים.</b> תאילנד: זר רוכש רק דירה (לא בית/קרקע). דובאי: רק באזורי Freehold מוגדרים. בדקו את האזור לפני התשלום.</li>
+      <li><b>מטבע ומכפיל.</b> ירידה של 10% בערך הריאל הברזילאי/בהט/אירו מכוונת את כל "התשואה" שלכם. נדל״ן בחו״ל הוא גם השקעה במטבע - לא רק בנכס.</li>
+    </ol>
+  </div>
+  <div class="nsra-cta">
+    <p style="font-size:14px;color:var(--ink-500);margin:0 0 12px">שוקלים השקעה ספציפית? תהליך הקנייה מורכב - מיסוי בינלאומי, חוזה, חשבון מקומי, יצוג משפטי.</p>
+    <a href="/real-estate-lawyer/">ייעוץ משפטי מקדים לעסקת נדל״ן בחו״ל ←</a>
+  </div>
+</div>
+<script>
+(function(){
+var D={
+gr:{flag:"🇬🇷",name:"יוון",yieldT:"5-8%",entry:"€80-100k",strict:"חמורה",tax:"15% עד €12k",chg:"חוק חדש 1.10.2025: אין רישיונות STR חדשים בכמה אזורים באתונה. מעל 3 נכסים = ״פעילות מקצועית״ (משטר מס שונה). תקני בטיחות חובה (כיבוי אש, ביטוח). קנסות 5k-20k €.",
+why:["מרחק טיסה קצר מישראל - 2-3 שעות","התשואה הגבוהה באירופה: 5-8% ברוטו","ויזת זהב מ-€250k באזורים פריפריאליים","שוק שמתאושש - עליית ערך 7.5% בשנה ממוצע"],warn:["באתונה מרכזית: חסימה זמנית של רישיונות חדשים 2025-26","ניהול מרחוק מאתגר: דמי ניהול 20-25%","סנטוריני/פארוס/כרתים: ייתכן חיסום דומה ב-2026","איי-3 נכסים = פעילות מקצועית עם מיסוי כפול"]},
+pt:{flag:"🇵🇹",name:"פורטוגל",yieldT:"3-5%",entry:"€150-200k",strict:"חמורה ומתהדקת",tax:"28%",chg:"רישיונות STR צנחו מ-126k ל-~90k (אביב 2026). 40% מהרישיונות בליסבון בוטלו. מסלול ויזת זהב ב-נדל״ן הוסר.",why:["שוק שקוף ובטוח עם מסגרת חוקית ברורה","אנגלית מדוברת בקהילת הנדל״ן","עליית ערך 60% מאז 2018","חוץ מליסבון/פורטו: STR עדיין אפשרי"],warn:["תשואות מתונות - 3-5% ברוטו","ויזת זהב בנדל״ן הוסרה (2024)","קיצוץ דרסטי ברישיונות STR","מחירי הכניסה גבוהים יחסית"]},
+es:{flag:"🇪🇸",name:"ספרד",yieldT:"4-7%",entry:"€100-180k",strict:"קיצונית בערים",tax:"19-24%",chg:"ברצלונה תיפטר מ-STR לתיירים עד נובמבר 2028. מדריד וערים אחרות מתחילות הגבלות.",why:["שוק גדול ומגוון - מקוסטה ברווה ועד הדרום","אקלים מצוין למשיכת תיירים שנתית","מחירים סבירים מחוץ למטרופולין","קהילה ישראלית גדולה במלאגה ובמרבייה"],warn:["ברצלונה: סוף עידן ה-STR ב-2028","הגבלות חדשות בכל הערים הגדולות","מס תושב חוץ גבוה (24%)","אכיפה אגרסיבית של פלטפורמות"]},
+it:{flag:"🇮🇹",name:"איטליה",yieldT:"4-6%",entry:"€100-250k",strict:"בינונית עם חוק מסים חדש",tax:"21%/26%",chg:"חוק תקציב 2026: דירה ראשונה 21%, שנייה 26%, שלישית+ = פעילות עסקית עם מע״מ. קוד CIN חובה לכל נכס מ-2025.",why:["שוק בוגר ויציב","מחירים סבירים בערי המחוז (דרום)","תשתית תיירותית מצוינת","תרבותית-מוכרת לתיירים ישראלים"],warn:["מערכת מס מסובכת ועלולה להתייקר","עד 26% מס ההכנסה משכירות","קוד CIN וביורוקרטיה מקומית","מחירי הכניסה גבוהים בערים פופולריות"]},
+cy:{flag:"🇨🇾",name:"קפריסין",yieldT:"4-7%",entry:"€150-300k",strict:"בינונית",tax:"12.5%",chg:"מערכת בריטית מוכרת. STR חוקי אבל דורש רישום בKOAT. תקנות בטיחות אש מוגברות.",why:["מסגרת חוקית מוכרת (בריטית)","מס נמוך (12.5%)","יציבות פוליטית","חברי EU - גישה לכלל השוק האירופי","קהילה ישראלית גדולה"],warn:["סף כניסה גבוה יחסית לתשואה","שוק קטן יחסית","תלות בתיירות עונתית","אזורים מסוימים רוויי-תיירים"]},
+th:{flag:"🇹🇭",name:"תאילנד",yieldT:"7-12%*",entry:"$80-200k",strict:"דרקונית בפועל",tax:"15%",chg:"חוק חדש מוצע 2026: רישום ארצי מרכזי + רישוי עירוני. אכיפה בין משרד ההגירה ורשות המסים. STR &lt;30 לילה = פלילי ללא רישיון מלון.",why:["תשואה גולמית 7-12% בפוקט/פוקאט","תיירות יציבה מסין/אירופה/אוסטרליה","עלות מחיה נמוכה למנהל מקומי","דירות בוטיק מ-$80k"],warn:["*אך ורק בעובדה: STR &lt;30 לילה לא חוקי בפועל","הפתרון: השכרה ל-30+ לילות בלבד","זר לא יכול לרכוש קרקע - רק דירה בקווטה","ניהול מרחוק קשה בלי שותף מקומי אמין","קנסות 20k בהט + 10k ליום + מאסר עד שנה"]},
+ae:{flag:"🇦🇪",name:"דובאי",yieldT:"6-9%",entry:"$200-500k",strict:"רגולציה חדשה ינואר 2026",tax:"0%",chg:"DCT Circular 8/2025: היתר DTCM Holiday Home חובה מ-1.1.2026. רישום מפעיל + היתר פר-יחידה. קנס עד AED 100,000.",why:["אפס מס הכנסה משכירות","תשואות 6-9% באזורי טופ","תיירות גדלה אגרסיבית","שוק לזרים מפותח עם תהליכים יעילים","מטבע מקובע לדולר - יציבות מטבעית"],warn:["רגולציה חדשה ינואר 2026 - לימוד אינטנסיבי","היתר פר-יחידה + עמלת תיירות לאורח","קנסות גבוהים על אי-ציות (עד 100k AED)","שוק נדל״ן תנודתי - בועות בעבר"]}
+};
+var Cmp=[
+["gr","יוון","5-8%","80-100k","טבעי, באתונה חסום","15% עד €12k","🔴 חוק חדש 10.2025"],
+["pt","פורטוגל","3-5%","150-200k","הגבלה ב-Lisbon/Porto","28%","🔴 -30% רישיונות"],
+["es","ספרד","4-7%","100-180k","ברצלונה: סוף 2028","19-24%","🔴 הקפאה ערים"],
+["it","איטליה","4-6%","100-250k","CIN חובה","21%/26%","🟡 מס חדש 2026"],
+["cy","קפריסין","4-7%","150-300k","חוקי + רישום KOAT","12.5%","🟢 יציב"],
+["th","תאילנד","7-12%*","80-200k","🔴 &lt;30 לילה אסור","15%","🔴 אכיפה אגרסיבית"],
+["ae","דובאי","6-9%","200-500k","DTCM חובה 1.2026","0%","🟡 רגולציה חדשה"]
+];
+var pa=document.getElementById('nsra-panels'),cm=document.getElementById('nsra-cmp');
+function panel(k,o){
+return '<div class="nsra-panel'+(k==='gr'?' on':'')+'" data-p="'+k+'"><div class="nsra-hero"><div><h3 style="font-size:28px;margin:0 0 8px">'+o.name+'</h3><p style="font-size:15px;color:var(--ink-500);line-height:1.7;margin:0">'+o.chg+'</p></div><div class="nsra-flag">'+o.flag+'</div></div><div class="nsra-stats"><div class="nsra-stat"><div class="l">תשואה ברוטו</div><div class="v">'+o.yieldT+'</div><div class="sub">לפני הוצאות ומס</div></div><div class="nsra-stat"><div class="l">סף כניסה</div><div class="v">'+o.entry+'</div><div class="sub">דירה קטנה באזור משני</div></div><div class="nsra-stat"><div class="l">רגולציה</div><div class="v" style="font-size:18px">'+o.strict+'</div></div><div class="nsra-stat"><div class="l">מס שכירות</div><div class="v">'+o.tax+'</div></div></div><div class="nsra-cols"><div class="nsra-card ok"><h4><span class="ic"></span>למה כן</h4><ul>'+o.why.map(function(x){return '<li>'+x+'</li>'}).join('')+'</ul></div><div class="nsra-card warn"><h4><span class="ic"></span>למה להיזהר</h4><ul>'+o.warn.map(function(x){return '<li>'+x+'</li>'}).join('')+'</ul></div></div></div>';
+}
+pa.innerHTML=Object.keys(D).map(function(k){return panel(k,D[k])}).join('');
+cm.innerHTML=Cmp.map(function(r){return '<tr><td>'+r[1]+'</td><td class="n">'+r[2]+'</td><td class="n">'+r[3]+'</td><td>'+r[4]+'</td><td class="n">'+r[5]+'</td><td>'+r[6]+'</td></tr>'}).join('');
+document.querySelectorAll('.nsra-tab').forEach(function(b){b.addEventListener('click',function(){
+document.querySelectorAll('.nsra-tab').forEach(function(x){x.classList.remove('on')}); b.classList.add('on');
+document.querySelectorAll('.nsra-panel').forEach(function(x){x.classList.remove('on')}); document.querySelector('.nsra-panel[data-p="'+b.dataset.c+'"]').classList.add('on');
+window.scrollTo({top:document.querySelector('.nsra').offsetTop,behavior:'smooth'});
+});});
+})();
+</script>
+<!-- /wp:html -->

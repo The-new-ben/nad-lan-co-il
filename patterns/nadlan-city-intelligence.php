@@ -3,7 +3,7 @@
  * Title: מודיעין ערים
  * Slug: nadlan-revenue/city-intelligence
  * Categories: nadlan-row
- * Description: שתי עמודות — מקום למפה/גרף ורשימת ערים מובילות.
+ * Description: שתי עמודות - מקום למפה/גרף ורשימת ערים מובילות.
  */
 ?>
 <!-- wp:group {"tagName":"section","className":"nadlan-city-intel","layout":{"type":"constrained"}} -->

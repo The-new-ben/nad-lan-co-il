@@ -1,0 +1,36 @@
+<!-- wp:group {"align":"full","className":"nadlan-header","style":{"spacing":{"padding":{"top":"var:preset|spacing|3","bottom":"var:preset|spacing|3"}},"border":{"bottom":{"color":"var:preset|color|hairline","width":"1px"}}},"backgroundColor":"cream-50","layout":{"type":"default"},"metadata":{"name":"Header"}} -->
+<div class="wp-block-group alignfull nadlan-header has-cream-50-background-color has-background" style="border-bottom-color:var(--wp--preset--color--hairline);border-bottom-width:1px;padding-top:var(--wp--preset--spacing--3);padding-bottom:var(--wp--preset--spacing--3)">
+  <!-- wp:group {"align":"wide","layout":{"type":"flex","flexWrap":"nowrap","justifyContent":"space-between"}} -->
+  <div class="wp-block-group alignwide">
+<!-- wp:html -->
+<style>
+.nl-brand{display:inline-flex;align-items:center;gap:12px;text-decoration:none;direction:rtl}
+.nl-seal{position:relative;flex:0 0 auto;width:46px;height:46px}
+.nl-seal svg{display:block;width:46px;height:46px}
+.nl-dot{position:absolute;top:3px;left:3px;width:8px;height:8px;border-radius:50%;background:#9C7A3C}
+.nl-dot::after{content:"";position:absolute;inset:0;border-radius:50%;background:#9C7A3C;animation:nlpulse 2.4s var(--ease-standard,ease) infinite}
+@keyframes nlpulse{0%{transform:scale(1);opacity:.7}70%{transform:scale(3.4);opacity:0}100%{opacity:0}}
+.nl-word{display:flex;flex-direction:column;line-height:1}
+.nl-word b{font-family:var(--font-serif,"Frank Ruhl Libre",serif);font-weight:500;font-size:26px;color:var(--ink-900,#1B1A17);letter-spacing:-.01em}
+.nl-word span{font-family:var(--font-sans,"Heebo",sans-serif);font-weight:500;font-size:10px;letter-spacing:.22em;color:var(--ink-500,#6E6A63);margin-top:5px}
+.nl-brand:hover .nl-word b{color:var(--gold-600,#9C7A3C)}
+@media (prefers-reduced-motion: reduce){.nl-dot::after{animation:none}}
+@media (max-width:640px){.nl-word span{display:none}.nl-word b{font-size:21px}.nl-seal,.nl-seal svg{width:38px;height:38px}}
+</style>
+<a class="nl-brand" href="https://nad-lan.co.il/" aria-label="נדל״ן חכם — דף הבית">
+  <span class="nl-seal">
+    <svg viewBox="0 0 46 46" role="img" aria-hidden="true">
+      <circle cx="23" cy="23" r="22" fill="none" stroke="#9C7A3C" stroke-width="1"/>
+      <circle cx="23" cy="23" r="19.5" fill="none" stroke="#9C7A3C" stroke-width="0.6" opacity="0.7"/>
+      <text x="23" y="23" text-anchor="middle" dominant-baseline="central" font-family="'Frank Ruhl Libre', serif" font-weight="500" font-size="26" fill="#1B1A17">נ</text>
+    </svg>
+    <span class="nl-dot" aria-hidden="true"></span>
+  </span>
+  <span class="nl-word"><b>נדל״ן חכם</b><span>ידע · כלים · החלטות</span></span>
+</a>
+<!-- /wp:html -->
+    <!-- wp:navigation {"ref":4,"overlayBackgroundColor":"cream-50","overlayTextColor":"ink-900","layout":{"type":"flex","justifyContent":"left","flexWrap":"wrap"},"style":{"typography":{"fontSize":"14px"}}} /-->
+  </div>
+  <!-- /wp:group -->
+</div>
+<!-- /wp:group -->

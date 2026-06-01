@@ -1,0 +1,108 @@
+<!-- wp:html -->
+<link rel="stylesheet" href="https://unpkg.com/maplibre-gl@4.7.1/dist/maplibre-gl.css" />
+<script src="https://unpkg.com/maplibre-gl@4.7.1/dist/maplibre-gl.js"></script>
+<style>
+.nlp{font-family:var(--font-sans,Heebo,sans-serif);direction:rtl;color:var(--ink-700,#3A3733);max-width:1240px;margin:0 auto;padding:24px}
+.nlp h2{font-family:var(--font-serif,"Frank Ruhl Libre",serif);font-weight:500;font-size:36px;color:var(--ink-900,#1B1A17);margin:0 0 6px;letter-spacing:-.015em}
+.nlp .e{font-size:11px;letter-spacing:.18em;color:var(--gold-600,#9C7A3C);font-weight:500;margin:0 0 6px}
+.nlp .sub{font-size:15px;color:var(--ink-500);margin:0 0 32px;max-width:680px;line-height:1.7}
+.nlp-bar{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:24px;padding-bottom:16px;border-bottom:1px solid var(--hairline,rgba(27,26,23,.12))}
+.nlp-chip{font-family:inherit;font-size:13px;background:transparent;border:1px solid var(--hairline-strong,rgba(27,26,23,.24));color:var(--ink-700);padding:8px 14px;cursor:pointer;letter-spacing:.04em}
+.nlp-chip.on{background:var(--ink-900,#1B1A17);color:var(--cream-50,#FAF7F1);border-color:var(--ink-900)}
+.nlp-chip:hover{border-color:var(--ink-900)}
+.nlp-layout{display:grid;grid-template-columns:1fr 480px;gap:24px}
+.nlp-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px;align-content:start}
+.nlp-card{background:var(--paper-0,#fff);border:1px solid var(--hairline,rgba(27,26,23,.12));text-decoration:none;color:inherit;display:block;transition:transform .2s,box-shadow .2s}
+.nlp-card:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(27,26,23,.08)}
+.nlp-thumb{aspect-ratio:4/5;background:var(--cream-100,#F1ECE2);position:relative;display:flex;align-items:center;justify-content:center;color:var(--stone-400,#9C978E);font-family:var(--font-serif,serif);font-style:italic;font-size:14px}
+.nlp-thumb img{width:100%;height:100%;object-fit:cover;display:block}
+.nlp-flag{position:absolute;inset-block-start:12px;inset-inline-start:12px;font-size:10px;letter-spacing:.14em;color:var(--ink-900);background:var(--cream-50,#FAF7F1);padding:4px 10px;border:1px solid var(--hairline);font-weight:500}
+.nlp-bd{padding:18px 20px}
+.nlp-bd .city{font-size:11px;letter-spacing:.16em;color:var(--gold-600,#9C7A3C);font-weight:500}
+.nlp-bd h3{font-family:var(--font-serif,serif);font-weight:500;font-size:19px;color:var(--ink-900,#1B1A17);margin:6px 0 8px;line-height:1.3}
+.nlp-bd .spec{font-size:13px;color:var(--ink-500);margin:0 0 12px}
+.nlp-bd .price{font-family:var(--font-serif,serif);font-size:22px;color:var(--ink-900,#1B1A17);font-variant-numeric:tabular-nums;font-weight:500}
+.nlp-bd .price small{font-size:12px;color:var(--ink-500);font-weight:400;font-family:var(--font-sans,sans-serif)}
+.nlp-map{position:sticky;top:80px;height:680px;border:1px solid var(--hairline);background:var(--cream-100)}
+.nlp-empty{padding:48px;text-align:center;color:var(--ink-500);background:var(--cream-50);border:1px dashed var(--hairline-strong)}
+@media(max-width:980px){.nlp-layout{grid-template-columns:1fr}.nlp-map{position:relative;top:auto;height:380px}}
+@media(max-width:640px){.nlp-grid{grid-template-columns:1fr}}
+.maplibregl-popup-content{font-family:var(--font-sans,Heebo,sans-serif);direction:rtl;border-radius:0;border:1px solid var(--hairline);padding:14px 16px;max-width:240px}
+.maplibregl-popup-content h4{font-family:var(--font-serif,serif);font-weight:500;font-size:16px;margin:0 0 4px;color:var(--ink-900)}
+.maplibregl-popup-content .pr{font-family:var(--font-serif,serif);font-size:18px;color:var(--gold-600);font-variant-numeric:tabular-nums;margin-top:4px}
+.maplibregl-popup-content a{color:var(--gold-600);text-decoration:none;font-size:13px;display:block;margin-top:6px}
+.maplibregl-marker svg circle{fill:#9C7A3C;stroke:#1B1A17;stroke-width:2}
+</style>
+<div class="nlp" id="nlp" dir="rtl">
+  <p class="e">קטלוג נכסים · אוצרות עם בדיקה משפטית</p>
+  <h2>נכסים נבחרים</h2>
+  <p class="sub">הקטלוג שלנו אינו מודעות. הוא רשימה צרה של נכסים שנבדקו על-ידי עו״ד מקרקעין מהמשרד שלנו לפני שהוצגו כאן: זכויות בטאבו, חוזה, מסמכי בעלות, היתרי בנייה. כל נכס מסומן בעיר ומאפשר תיאום בדיקה משפטית מקדימה - בלי עלות ובלי התחייבות.</p>
+  <div class="nlp-bar" id="nlp-bar"></div>
+  <div class="nlp-layout">
+    <div>
+      <div class="nlp-grid" id="nlp-grid"><div class="nlp-empty">טוען נכסים…</div></div>
+    </div>
+    <div class="nlp-map" id="nlp-map"></div>
+  </div>
+</div>
+<script>
+(function(){
+var R=document.getElementById('nlp'),grid=R.querySelector('#nlp-grid'),bar=R.querySelector('#nlp-bar');
+var active='all', items=[], map=null, markers=[];
+function fmt(n){return new Intl.NumberFormat('he-IL').format(n)}
+function load(){
+fetch('/wp-json/wp/v2/nadlan_property?per_page=50&_embed=wp:featuredmedia&_fields=id,slug,title,link,meta,featured_media').then(function(r){return r.json()}).then(function(arr){
+  items=arr.map(function(p){
+    var m=p.meta||{};
+    return {id:p.id,slug:p.slug,title:(p.title&&p.title.rendered)||p.slug,link:p.link,
+      price:+m.price||0,rooms:+m.rooms||0,size:+m.size_sqm||0,city:m.city||(p._embedded&&'')||'',
+      type:m.property_type||'apartment',lt:m.listing_type||'sale',
+      lat:+m.lat||0,lng:+m.lng||0,
+      city_name:m.city_name||'',
+      img:p._embedded && p._embedded['wp:featuredmedia'] && p._embedded['wp:featuredmedia'][0] && p._embedded['wp:featuredmedia'][0].source_url
+    };
+  });
+  buildBar(); render(); initMap();
+}).catch(function(){grid.innerHTML='<div class="nlp-empty">לא ניתן לטעון נכסים כרגע. נסו לרענן.</div>'});
+}
+function buildBar(){
+var types=['all'].concat(Array.from(new Set(items.map(function(x){return x.type}).filter(Boolean))));
+var labels={all:'הכל',apartment:'דירה',penthouse:'פנטהאוז',garden:'גן',cottage:'קוטג׳',commercial:'מסחרי',new_project_unit:'מקבלן'};
+bar.innerHTML=types.map(function(t){return '<button class="nlp-chip'+(t===active?' on':'')+'" data-t="'+t+'">'+(labels[t]||t)+'</button>'}).join('');
+bar.querySelectorAll('.nlp-chip').forEach(function(b){b.addEventListener('click',function(){active=b.dataset.t;buildBar();render();updateMap();})});
+}
+function filtered(){return items.filter(function(x){return active==='all'||x.type===active})}
+function render(){
+var arr=filtered();
+if(!arr.length){grid.innerHTML='<div class="nlp-empty">אין נכסים זמינים בקטגוריה זו.</div>';return}
+grid.innerHTML=arr.map(function(x){
+  var thumb=x.img?'<img src="'+x.img+'" alt="'+x.title+'" loading="lazy"/>':'<span>תצלום בקרוב</span>';
+  var label={apartment:'דירה',penthouse:'פנטהאוז',garden:'גן',cottage:'קוטג׳',commercial:'מסחרי',new_project_unit:'מקבלן'}[x.type]||'נכס';
+  return '<a class="nlp-card" href="'+x.link+'"><div class="nlp-thumb">'+thumb+'<span class="nlp-flag">'+label+'</span></div><div class="nlp-bd"><div class="city">'+(x.city_name||x.city||' - ')+'</div><h3>'+x.title+'</h3><div class="spec">'+(x.rooms?x.rooms+' חדרים':'')+(x.size?' · '+x.size+' מ״ר':'')+'</div><div class="price">'+fmt(x.price)+' ₪ <small>'+(x.lt==='rent'?'/חודש':'')+'</small></div></div></a>';
+}).join('');
+}
+function initMap(){
+if(!window.maplibregl){return}
+try{
+map=new maplibregl.Map({container:'nlp-map',style:{version:8,sources:{osm:{type:'raster',tiles:['https://a.tile.openstreetmap.org/{z}/{x}/{y}.png','https://b.tile.openstreetmap.org/{z}/{x}/{y}.png','https://c.tile.openstreetmap.org/{z}/{x}/{y}.png'],tileSize:256,attribution:'© OpenStreetMap'}},layers:[{id:'osm',type:'raster',source:'osm'}]},center:[34.78,32.07],zoom:7.5});
+map.addControl(new maplibregl.NavigationControl({showCompass:false}),'top-left');
+updateMap();
+}catch(e){}
+}
+function updateMap(){
+if(!map)return;
+markers.forEach(function(m){m.remove()}); markers=[];
+var arr=filtered().filter(function(x){return x.lat&&x.lng});
+arr.forEach(function(x){
+  var el=document.createElement('div');
+  el.innerHTML='<svg width="22" height="22" viewBox="0 0 22 22"><circle cx="11" cy="11" r="7"/></svg>';
+  el.style.cursor='pointer';
+  var m=new maplibregl.Marker({element:el}).setLngLat([x.lng,x.lat]).setPopup(new maplibregl.Popup({offset:14,closeButton:false}).setHTML('<h4>'+x.title+'</h4><div style="font-size:13px;color:#6E6A63">'+(x.rooms?x.rooms+' חדרים':'')+(x.size?' · '+x.size+' מ״ר':'')+'</div><div class="pr">'+fmt(x.price)+' ₪</div><a href="'+x.link+'">לפרטים ←</a>')).addTo(map);
+  markers.push(m);
+});
+if(arr.length){var b=new maplibregl.LngLatBounds();arr.forEach(function(x){b.extend([x.lng,x.lat])});map.fitBounds(b,{padding:60,maxZoom:13,duration:0})}
+}
+load();
+})();
+</script>
+<!-- /wp:html -->

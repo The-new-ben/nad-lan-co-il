@@ -1,0 +1,223 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>nad-lan — תצוגה מקדימה: כרטיסים, מילון, האב עיר</title>
+<link href="https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@500;700&family=Heebo:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --cream-50:#FAF7F1; --cream-100:#F3EEE3;
+  --ink-900:#1B1A17; --ink-700:#2E2B26; --ink-500:#5C564D;
+  --gold-600:#9C7A3C; --gold-500:#B89154; --gold-wash:#E6D4AE;
+  --hair:#E2DCD0; --hair-strong:#C9C0AE;
+  --up:#5b7a52; --down:#b4623f;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--cream-100);color:var(--ink-900);font-family:"Heebo",sans-serif;line-height:1.7}
+.wrap{max-width:1180px;margin:0 auto;padding:32px 20px 80px}
+h1,h2,h3{font-family:"Frank Ruhl Libre",serif;font-weight:700;letter-spacing:-.01em}
+.eyebrow{font-size:12px;letter-spacing:.18em;color:var(--gold-600);font-weight:500;text-transform:uppercase}
+.note{background:#fff;border:1px solid var(--hair);border-radius:10px;padding:18px 22px;margin:0 0 28px;font-size:14px;color:var(--ink-500)}
+.section-title{font-size:26px;margin:42px 0 6px}
+.section-sub{color:var(--ink-500);margin:0 0 20px;font-size:15px}
+.tabular{font-variant-numeric:tabular-nums}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));gap:20px}
+
+/* ===== property / directory card ===== */
+.card{background:#fff;border:1px solid var(--hair);border-radius:12px;overflow:hidden;box-shadow:0 1px 2px rgba(27,26,23,.04);transition:.2s;position:relative}
+.card:hover{box-shadow:0 10px 30px rgba(27,26,23,.10);transform:translateY(-2px)}
+.card .ph{height:170px;background:linear-gradient(135deg,#ded6c6,#cdbfa6);position:relative;display:flex;align-items:flex-end}
+.card .ph .tags{position:absolute;top:12px;inset-inline-start:12px;display:flex;gap:6px}
+.tag{font-size:11px;font-weight:600;padding:4px 9px;border-radius:3px;letter-spacing:.02em}
+.tag.new{background:var(--gold-600);color:#fff}
+.tag.drop{background:var(--down);color:#fff}
+.tag.kablan{background:var(--ink-900);color:var(--cream-50)}
+.tag.sponsored{background:#fff;color:var(--ink-500);border:1px solid var(--hair-strong)}
+.card .body{padding:16px}
+.card .price{font-size:24px;font-weight:700;letter-spacing:-.02em}
+.card .title{font-size:16px;font-weight:600;margin:3px 0 2px}
+.card .hood{color:var(--gold-600);font-size:13px;font-weight:500}
+.card .meta{color:var(--ink-500);font-size:13.5px;margin-top:8px;border-top:1px solid var(--hair);padding-top:8px}
+.card .fav{position:absolute;top:10px;inset-inline-end:12px;background:#fff;border-radius:50%;width:32px;height:32px;display:grid;place-items:center;border:1px solid var(--hair);cursor:pointer}
+.locked{filter:blur(5px);user-select:none;opacity:.7}
+.gate{margin-top:10px;background:var(--cream-50);border:1px dashed var(--hair-strong);border-radius:6px;padding:10px 12px;font-size:13px;color:var(--ink-500)}
+.gate b{color:var(--ink-900)}
+.upgrade{display:inline-block;margin-top:8px;background:var(--gold-600);color:#fff;border:0;border-radius:4px;padding:8px 16px;font:inherit;font-weight:500;font-size:13px;cursor:pointer;text-decoration:none}
+.premier-badge{display:inline-block;background:var(--ink-900);color:var(--gold-500);font-size:11px;letter-spacing:.12em;padding:3px 10px;margin-bottom:6px}
+.tier-label{position:absolute;top:0;inset-inline-end:0;font-size:10px;letter-spacing:.1em;padding:3px 9px;background:var(--ink-900);color:var(--cream-50);border-bottom-left-radius:8px}
+.tier-free{background:#9a948a}.tier-pro{background:var(--gold-600)}.tier-premier{background:var(--ink-900)}
+
+/* ===== glossary term page ===== */
+.term{background:#fff;border:1px solid var(--hair);border-radius:12px;padding:30px 34px;max-width:760px}
+.term h1{font-size:30px;margin:6px 0 4px}
+.term .en{font-size:14px;color:var(--ink-500);margin:0 0 16px}
+.term .en span{font-weight:600;color:var(--ink-700)}
+.term p{margin:0 0 14px}
+.term .practical{background:var(--cream-50);border-inline-start:3px solid var(--gold-600);padding:16px 18px;border-radius:4px;margin:16px 0}
+.term .practical h3{font-family:"Heebo";font-size:15px;margin:0 0 6px;color:var(--gold-600)}
+.term .up{background:var(--cream-50);border:1px solid var(--hair);border-radius:6px;padding:14px 18px;margin:16px 0}
+.term .up small{display:block;color:var(--ink-500);font-size:12px;margin-bottom:3px}
+.term .up a{color:var(--ink-900);font-weight:700;text-decoration:none}
+.term .src{font-size:12px;color:#999;border-top:1px solid var(--hair);padding-top:10px;margin-top:18px}
+.crumbs{font-size:12px;color:var(--ink-500);margin-bottom:10px}
+.crumbs a{color:var(--ink-500);text-decoration:none}.crumbs span{margin:0 5px;color:var(--hair-strong)}
+
+/* ===== city hub mini ===== */
+.hub{background:#fff;border:1px solid var(--hair);border-radius:12px;padding:24px 28px}
+.hub h2{font-size:24px;margin:0 0 4px}
+.hub .lede{color:var(--ink-500);font-size:14px;margin:0 0 16px}
+.stats{display:flex;gap:24px;flex-wrap:wrap;margin:0 0 18px}
+.stat .v{font-size:26px;font-weight:700;letter-spacing:-.02em}
+.stat .l{font-size:12px;color:var(--ink-500)}
+.cta{display:inline-block;background:var(--ink-900);color:var(--cream-50);border-radius:4px;padding:11px 22px;text-decoration:none;font-weight:500;font-size:14px}
+.legend{font-size:12px;color:var(--ink-500);margin-top:6px}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<div class="note">
+  <b>תצוגה מקדימה (mockup) — לא האתר החי.</b> מטרה: שתראה את שפת העיצוב (פלטת "הסמכות השקטה": שמנת #FAF7F1, דיו #1B1A17, זהב #9C7A3C), ואיך נראים: כרטיס בסיסי (חינמי), כרטיס נעול אחרי תקופת ניסיון, כרטיס Pro, כרטיס Premier, עמוד מונח במילון, והאב עיר. כל הנתונים כאן הם דוגמה.
+</div>
+
+<span class="eyebrow">כרטיסי דירקטורי — 4 הרמות (Free / נעול / Pro / Premier)</span>
+<h2 class="section-title">איך נראה כרטיס בכל רמת מנוי</h2>
+<p class="section-sub">העיקרון: כל כרטיס תמיד אינדקסבילי לגוגל (מלאי SEO), אבל ערך הקשר (טלפון, תמונות, לידים) נפתח רק בתשלום. כך אנחנו לא מחלקים פרסום וקישורים בחינם.</p>
+
+<div class="grid">
+
+  <!-- BASIC / stub (registry-imported, unclaimed) -->
+  <div class="card">
+    <div class="tier-label tier-free">FREE · לא נתבע</div>
+    <div class="ph"><div class="tags"><span class="tag kablan">קבלן רשום</span></div></div>
+    <div class="body">
+      <div class="title">א.כ. בנייה ופיתוח בע"מ</div>
+      <div class="hood">חיפה · רשם הקבלנים 12345</div>
+      <div class="meta">סיווג: בנייה (סיווג 3) · כבישים (סיווג 2) · ותק 14 שנים</div>
+      <div class="gate">📋 כרטיס בסיסי מתוך פנקס הקבלנים. <b>זה הכרטיס שלך?</b> תבע בעלות והוסף תמונות, פרטי קשר וקבלת לידים.</div>
+    </div>
+  </div>
+
+  <!-- FREE post-trial (claimed but downgraded) -->
+  <div class="card">
+    <div class="tier-label tier-free">FREE · אחרי ניסיון</div>
+    <div class="ph"><div class="tags"><span class="tag kablan">קבלן רשום</span></div></div>
+    <div class="body">
+      <div class="title">בנייני נוף הים בע"מ</div>
+      <div class="hood">נתניה · רשם הקבלנים 67890</div>
+      <div class="meta">סיווג: בנייה (סיווג 4) · ותק 21 שנים · 12 פרויקטים</div>
+      <div class="meta">טלפון: <span class="locked">050-000-0000</span></div>
+      <div class="gate"><b>פרטי הקשר, הגלריה וקבלת הלידים מוסתרים.</b> תקופת הניסיון הסתיימה.
+        <br><a class="upgrade" href="#">שדרגו לפרו</a></div>
+    </div>
+  </div>
+
+  <!-- PRO -->
+  <div class="card">
+    <div class="tier-label tier-pro">PRO</div>
+    <div class="ph">
+      <div class="tags"><span class="tag kablan">קבלן רשום</span><span class="tag new">פעיל</span></div>
+      <div class="fav">♡</div>
+    </div>
+    <div class="body">
+      <div class="title">קבוצת אורן נדל"ן</div>
+      <div class="hood">תל אביב · רשם הקבלנים 24680</div>
+      <div class="meta">📞 03-555-1234 · ✉ info@oren.co.il · 🌐 oren-nadlan.co.il</div>
+      <div class="meta">סיווג: בנייה (סיווג 5) · ותק 28 שנים · 40 פרויקטים</div>
+      <div class="legend" style="margin-top:8px">+ גלריית תמונות + טופס יצירת קשר פעיל</div>
+    </div>
+  </div>
+
+  <!-- PREMIER -->
+  <div class="card">
+    <div class="tier-label tier-premier">PREMIER</div>
+    <div class="ph">
+      <div class="tags"><span class="tag kablan">קבלן רשום</span><span class="tag sponsored">ממומן</span></div>
+      <div class="fav">♡</div>
+    </div>
+    <div class="body">
+      <span class="premier-badge">✓ פרופיל מאומת · PREMIER</span>
+      <div class="title">חברת השרון בנייה ויזמות</div>
+      <div class="hood">רעננה · רשם הקבלנים 13579</div>
+      <div class="meta">📞 09-777-8888 · ✉ sales@hasharon.co.il · 🌐 hasharon.co.il</div>
+      <div class="meta">סיווג: בנייה (סיווג 5) · ותק 33 שנים · 65 פרויקטים</div>
+      <div class="legend" style="margin-top:8px">קידום למעלה בדירוג + תג מאומת + גלריה מלאה</div>
+    </div>
+  </div>
+
+</div>
+
+<!-- property listing cards -->
+<span class="eyebrow" style="display:block;margin-top:48px">כרטיסי נכס (Listing)</span>
+<h2 class="section-title">כרטיס נכס — שכונה תמיד מוצמדת (כמו מדלן), מחיר ב-tabular-nums</h2>
+<div class="grid">
+  <div class="card">
+    <div class="ph"><div class="tags"><span class="tag new">חדש</span></div><div class="fav">♡</div></div>
+    <div class="body">
+      <div class="price tabular">₪2,750,000</div>
+      <div class="title">דירת 4 חדרים</div>
+      <div class="hood">פלורנטין, תל אביב</div>
+      <div class="meta tabular">4 חדרים · קומה 3 · 96 מ"ר · ₪28,646/מ"ר</div>
+    </div>
+  </div>
+  <div class="card">
+    <div class="ph"><div class="tags"><span class="tag drop">הורדת מחיר</span><span class="tag kablan">מקבלן</span></div><div class="fav">♡</div></div>
+    <div class="body">
+      <div class="price tabular">₪1,890,000</div>
+      <div class="title">פנטהאוז 5 חדרים</div>
+      <div class="hood">נווה שאנן, חיפה</div>
+      <div class="meta tabular">5 חדרים · קומה 9 · 132 מ"ר · מעלית · חניה · ממ"ד</div>
+    </div>
+  </div>
+  <div class="card">
+    <div class="ph"><div class="tags"><span class="tag sponsored">ממומן</span></div><div class="fav">♡</div></div>
+    <div class="body">
+      <div class="price tabular">₪3,400,000</div>
+      <div class="title">דירת גן 4 חדרים</div>
+      <div class="hood">רמת אביב ג', תל אביב</div>
+      <div class="meta tabular">4 חדרים · קומת קרקע · 110 מ"ר + גינה 40 מ"ר</div>
+    </div>
+  </div>
+</div>
+
+<!-- glossary term -->
+<span class="eyebrow" style="display:block;margin-top:48px">עמוד מונח במילון (פרויקט ויקיפדיה)</span>
+<h2 class="section-title">איך נראה מונח שאין לו ערך בוויקיפדיה העברית</h2>
+<p class="section-sub">דוגמה: "כלונסאות". יש ערך באנגלית, אין בעברית → אנחנו מדורגים #1 מהר, והעמוד מקשר למעלה לעמוד הכסף.</p>
+<div class="term">
+  <div class="crumbs"><a href="#">בית</a><span>›</span><a href="#">מילון נדל"ן</a><span>›</span><a href="#">בנייה וקונסטרוקציה</a><span>›</span>כלונסאות</div>
+  <span class="eyebrow">בנייה וקונסטרוקציה</span>
+  <h1>כלונסאות</h1>
+  <p class="en">באנגלית: <span>Deep foundation / Pile (Bored pile)</span></p>
+  <p>כלונס הוא יסוד עמוק בצורת עמוד בטון יצוק שמועבר עומק רב אל תוך הקרקע, ומעביר את עומס המבנה אל שכבות קרקע יציבות מתחת לפני השטח. בקרקעות חרסיתיות, חוליות או ממולאות, שבהן יסוד רדוד אינו נושא את העומס בבטחה, הכלונסאות הם הפתרון הקונסטרוקטיבי המקובל.</p>
+  <p>הכלונסאות מבוצעים בקידוח אנכי, הצבת כלוב זיון פלדה ויציקת בטון בתוך הקידוח. הקוטר הנפוץ נע בין 40 ל-120 ס"מ, והעומק נקבע לפי דו"ח קרקע (יועץ ביסוס) ועומס המבנה.</p>
+  <div class="practical">
+    <h3>מה זה אומר בפועל עבורכם</h3>
+    <p>אם אתם רוכשים דירה בפרויקט חדש, נוכחות כלונסאות בתכנית הקונסטרוקציה היא סימן לביסוס מתאים לתנאי הקרקע. כדאי לבקש מהיזם את דו"ח הביסוס ולוודא שתוכנן ע"י מהנדס קונסטרוקציה מוסמך.</p>
+  </div>
+  <div class="up">
+    <small>רוצים להעמיק?</small>
+    <a href="#">המדריך לרכישת דירה מקבלן — מה לבדוק לפני חתימה →</a>
+  </div>
+  <p class="src">מקור: תקן ישראלי 940 (יסודות) · המכון הישראלי לתקינה</p>
+</div>
+
+<!-- city hub mini -->
+<span class="eyebrow" style="display:block;margin-top:48px">האב עיר (Hub) — מלאי + נתוני אמת</span>
+<h2 class="section-title">האב עיר עם מספר מלאי חי ונתוני עסקאות</h2>
+<div class="hub">
+  <h2>קבלנים רשומים בחיפה</h2>
+  <p class="lede">אינדקס הקבלנים הרשומים בעיר חיפה מתוך פנקס הקבלנים, עם סיווג, ענפי בנייה ופרטי התקשרות.</p>
+  <div class="stats">
+    <div class="stat"><div class="v tabular">312</div><div class="l">קבלנים רשומים</div></div>
+    <div class="stat"><div class="v tabular">1,840</div><div class="l">עסקאות (12 חודשים)</div></div>
+    <div class="stat"><div class="v tabular">₪24,300</div><div class="l">ממוצע למ"ר</div></div>
+  </div>
+  <a class="cta" href="#">צפו בקבלנים →</a>
+  <p class="legend">מקור הנתונים: פנקס הקבלנים + אתר הנדל"ן הממשלתי · קישור פנימה לעמוד "עורך דין מקרקעין".</p>
+</div>
+
+</div>
+</body>
+</html>

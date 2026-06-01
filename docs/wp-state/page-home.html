@@ -1,0 +1,93 @@
+<!-- wp:html -->
+<style>
+.nlh{font-family:var(--font-sans,Heebo,sans-serif);direction:rtl;color:var(--ink-700,#3A3733)}
+.nlh-hero{max-width:1080px;margin:0 auto;padding:80px 24px 56px;text-align:center}
+.nlh-hero .eye{font-size:12px;letter-spacing:.22em;color:var(--gold-600,#9C7A3C);font-weight:500;margin:0 0 20px}
+.nlh-hero h1{font-family:var(--font-serif,"Frank Ruhl Libre",serif);font-weight:500;font-size:clamp(40px,6vw,72px);line-height:1.1;letter-spacing:-.02em;color:var(--ink-900,#1B1A17);margin:0 0 24px}
+.nlh-hero p.lead{font-size:19px;line-height:1.7;color:var(--ink-500,#6E6A63);max-width:620px;margin:0 auto 32px}
+.nlh-rule{width:64px;height:1px;background:var(--gold-600,#9C7A3C);margin:32px auto}
+.nlh-ctas{display:flex;gap:24px;justify-content:center;flex-wrap:wrap}
+.nlh-ctas a{font-size:16px;color:var(--ink-900,#1B1A17);text-decoration:none;border-bottom:1px solid var(--gold-600,#9C7A3C);padding-bottom:3px}
+.nlh-ctas a.gold{color:var(--gold-600,#9C7A3C)}
+.nlh-sec{max-width:1240px;margin:0 auto;padding:64px 24px}
+.nlh-sec h2{font-family:var(--font-serif,serif);font-weight:500;font-size:32px;color:var(--ink-900,#1B1A17);text-align:center;margin:0 0 8px;letter-spacing:-.01em}
+.nlh-sec .seye{font-size:11px;letter-spacing:.18em;color:var(--gold-600,#9C7A3C);text-align:center;font-weight:500;margin:0 0 8px}
+.nlh-sec .ssub{text-align:center;color:var(--ink-500);font-size:16px;margin:0 0 40px}
+.nlh-tools{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--hairline,rgba(27,26,23,.12));border:1px solid var(--hairline,rgba(27,26,23,.12))}
+.nlh-tool{background:var(--cream-50,#FAF7F1);padding:32px 28px;text-decoration:none;display:block;transition:background .2s}
+.nlh-tool:hover{background:var(--paper-0,#fff)}
+.nlh-tool .num{font-family:var(--font-serif,serif);font-style:italic;font-size:28px;color:var(--gold-600,#9C7A3C);margin:0 0 12px}
+.nlh-tool h3{font-family:var(--font-sans,Heebo);font-weight:500;font-size:18px;color:var(--ink-900,#1B1A17);margin:0 0 8px}
+.nlh-tool p{font-size:14px;color:var(--ink-500);margin:0 0 14px;line-height:1.55}
+.nlh-tool .go{font-size:14px;color:var(--gold-600,#9C7A3C)}
+.nlh-trust{background:var(--cream-100,#F1ECE2);border-block:1px solid var(--hairline,rgba(27,26,23,.12))}
+.nlh-trust .row{max-width:1080px;margin:0 auto;padding:56px 24px;display:grid;grid-template-columns:repeat(4,1fr);gap:0;text-align:center}
+.nlh-trust .st{border-inline-end:1px solid var(--hairline,rgba(27,26,23,.12));padding:0 16px}
+.nlh-trust .st:last-child{border:0}
+.nlh-trust .v{font-family:var(--font-serif,serif);font-size:34px;color:var(--ink-900,#1B1A17);line-height:1}
+.nlh-trust .l{font-size:11px;letter-spacing:.14em;color:var(--ink-500);margin-top:8px}
+.nlh-guides{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.nlh-g{border:1px solid var(--hairline,rgba(27,26,23,.12));background:var(--paper-0,#fff);padding:28px;text-decoration:none;display:block;transition:transform .2s,box-shadow .2s}
+.nlh-g:hover{transform:translateY(-2px);box-shadow:0 4px 12px rgba(27,26,23,.06)}
+.nlh-g .ge{font-size:11px;letter-spacing:.16em;color:var(--gold-600,#9C7A3C);font-weight:500}
+.nlh-g h3{font-family:var(--font-serif,serif);font-weight:500;font-size:22px;color:var(--ink-900,#1B1A17);margin:10px 0 8px;line-height:1.3}
+.nlh-g p{font-size:14px;color:var(--ink-500);margin:0;line-height:1.6}
+.nlh-cta-band{background:var(--ink-900,#1B1A17);color:var(--cream-50,#FAF7F1);text-align:center;padding:72px 24px}
+.nlh-cta-band h2{font-family:var(--font-serif,serif);font-weight:500;font-size:32px;color:var(--cream-50,#FAF7F1);margin:0 0 12px}
+.nlh-cta-band p{color:var(--stone-400,#9C978E);font-size:16px;max-width:520px;margin:0 auto 28px}
+.nlh-cta-band a{display:inline-block;background:var(--gold-600,#9C7A3C);color:var(--ink-900,#1B1A17);padding:14px 32px;text-decoration:none;font-weight:500;font-size:15px;letter-spacing:.02em}
+.nlh-cta-band a:hover{background:var(--gold-500,#B59558)}
+@media(max-width:780px){.nlh-tools{grid-template-columns:1fr}.nlh-trust .row{grid-template-columns:repeat(2,1fr);gap:24px}.nlh-trust .st{border:0}.nlh-guides{grid-template-columns:1fr}}
+</style>
+<div class="nlh">
+  <section class="nlh-hero">
+    <p class="eye">פלטפורמת ידע · נדל״ן ישראל</p>
+    <h1>לפני שחותמים — יודעים.</h1>
+    <p class="lead">מחשבונים, מדריכים ונתוני שוק לקונים, מוכרים ומשקיעים. בלי רעש שיווקי, בלי אותיות קטנות — רק מה שצריך כדי להחליט נכון.</p>
+    <div class="nlh-ctas">
+      <a class="gold" href="https://nad-lan.co.il/mortgage-calculator/">מחשבון משכנתא ←</a>
+      <a href="https://nad-lan.co.il/buying-apartment/">מדריך לקונה הראשון ←</a>
+    </div>
+    <div class="nlh-rule"></div>
+    <p style="font-size:13px;color:var(--ink-500)">מבוסס על נתוני רשות המסים ובנק ישראל · מעודכן לרבעון הנוכחי</p>
+  </section>
+
+  <section class="nlh-sec">
+    <p class="seye">הכלים שלנו</p>
+    <h2>שישה חישובים שאסור לדלג עליהם</h2>
+    <p class="ssub">כלים אינטראקטיביים שמראים את העלות האמיתית לפני שאתם מתחייבים.</p>
+    <div class="nlh-tools">
+      <a class="nlh-tool" href="https://nad-lan.co.il/mortgage-calculator/"><div class="num">01</div><h3>מחשבון משכנתא</h3><p>תמהיל 3 מסלולים, החזר חודשי ומבחן עמידות לעליית ריבית.</p><span class="go">פתחו את הכלי ←</span></a>
+      <a class="nlh-tool" href="https://nad-lan.co.il/purchase-tax-calculator/"><div class="num">02</div><h3>מחשבון מס רכישה</h3><p>מדרגות 2026 עם הדמיה ויזואלית של המדרגה שלכם.</p><span class="go">פתחו את הכלי ←</span></a>
+      <a class="nlh-tool" href="https://nad-lan.co.il/buy-vs-rent/"><div class="num">03</div><h3>לקנות או לשכור?</h3><p>נקודת האיזון — אחרי כמה שנים קנייה משתלמת יותר משכירות.</p><span class="go">פתחו את הכלי ←</span></a>
+      <a class="nlh-tool" href="https://nad-lan.co.il/investment-property-cashflow-calculator/"><div class="num">04</div><h3>תשואה להשקעה</h3><p>תזרים נטו, תשואה ברוטו ונטו — חישוב הוגן.</p><span class="go">פתחו את הכלי ←</span></a>
+      <a class="nlh-tool" href="https://nad-lan.co.il/property-value-estimator/"><div class="num">05</div><h3>הערכת שווי דירה</h3><p>טווח הערכה ראשוני לפי אזור ונתוני עסקאות.</p><span class="go">פתחו את הכלי ←</span></a>
+      <a class="nlh-tool" href="https://nad-lan.co.il/short-term-rentals-abroad/"><div class="num">06</div><h3>Airbnb בחו״ל</h3><p>השוואת 7 יעדים: תשואה, רגולציה ומס למשקיע הישראלי.</p><span class="go">פתחו את הכלי ←</span></a>
+    </div>
+  </section>
+
+  <div class="nlh-trust"><div class="row">
+    <div class="st"><div class="v">2026</div><div class="l">מדרגות מס מעודכנות</div></div>
+    <div class="st"><div class="v">11</div><div class="l">ערים ושכונות</div></div>
+    <div class="st"><div class="v">6</div><div class="l">מחשבונים חיים</div></div>
+    <div class="st"><div class="v">gov.il</div><div class="l">מקור נתוני אמת</div></div>
+  </div></div>
+
+  <section class="nlh-sec">
+    <p class="seye">מדריכים</p>
+    <h2>הידע שמגן על העסקה שלכם</h2>
+    <p class="ssub">כל מה שצריך לבדוק לפני חתימה — כתוב בבהירות, בלי ז׳רגון.</p>
+    <div class="nlh-guides">
+      <a class="nlh-g" href="https://nad-lan.co.il/buying-apartment/"><span class="ge">מדריך · רכישה</span><h3>קניית דירה בישראל</h3><p>עשרה שלבים, מסים, מסמכים ובדיקות לפני חתימה.</p></a>
+      <a class="nlh-g" href="https://nad-lan.co.il/real-estate-tax-advisor/"><span class="ge">מדריך · מיסוי</span><h3>מס רכישה ומס שבח 2026</h3><p>המדרגות החדשות, פטורים ואיך חוסכים כסף אמיתי.</p></a>
+      <a class="nlh-g" href="https://nad-lan.co.il/investment-apartment/"><span class="ge">מדריך · השקעה</span><h3>דירה להשקעה</h3><p>תשואה, מימון וסיכונים — כולל החלופה בחו״ל.</p></a>
+    </div>
+  </section>
+
+  <div class="nlh-cta-band">
+    <h2>שאלה לפני עסקה?</h2>
+    <p>השאירו פרטים ונחזור אליכם עם בדיקה ראשונית — בלי עלות, בלי התחייבות.</p>
+    <a href="#nadlan-lead" onclick="if(window.nadlanOpenLead){window.nadlanOpenLead();return false;}">לבדיקה ראשונית ←</a>
+  </div>
+</div>
+<!-- /wp:html -->

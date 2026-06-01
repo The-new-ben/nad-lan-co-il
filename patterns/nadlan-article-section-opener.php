@@ -3,7 +3,7 @@
  * Title: פותח חלק במאמר
  * Slug: nadlan-revenue/article-section-opener
  * Categories: nadlan-article
- * Description: קו זהב 32px + H2 — אותו אופנער לכל חלק במאמר ארוך.
+ * Description: קו זהב 32px + H2 - אותו אופנער לכל חלק במאמר ארוך.
  */
 ?>
 <!-- wp:group {"className":"article-section-opener"} -->

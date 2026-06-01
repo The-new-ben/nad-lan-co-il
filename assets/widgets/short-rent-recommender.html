@@ -1,0 +1,98 @@
+<!-- wp:html -->
+<style>
+.nrec{font-family:var(--font-sans,Heebo,sans-serif);direction:rtl;color:var(--ink-700,#3A3733);background:var(--paper-0,#fff);border:1px solid var(--hairline,rgba(27,26,23,.12));padding:36px;margin:32px 0;max-width:980px}
+.nrec h3{font-family:var(--font-serif,"Frank Ruhl Libre",serif);font-weight:500;font-size:28px;color:var(--ink-900,#1B1A17);margin:0 0 6px;letter-spacing:-.01em}
+.nrec .e{font-size:11px;letter-spacing:.18em;color:var(--gold-600,#9C7A3C);font-weight:500;margin:0 0 6px}
+.nrec p.s{font-size:14px;color:var(--ink-500);margin:0 0 24px;max-width:620px;line-height:1.65}
+.nrec-form{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-bottom:24px}
+.nrec-f label{display:block;font-size:11px;letter-spacing:.12em;color:var(--ink-500);font-weight:500;margin-bottom:6px}
+.nrec-f input,.nrec-f select{width:100%;background:transparent;border:0;border-bottom:1px solid var(--hairline-strong,rgba(27,26,23,.24));font-family:inherit;font-size:15px;color:var(--ink-900,#1B1A17);padding:6px 0;font-variant-numeric:tabular-nums}
+.nrec-f input:focus,.nrec-f select:focus{outline:none;border-bottom:1.5px solid var(--gold-600,#9C7A3C)}
+.nrec-go{background:var(--ink-900,#1B1A17);color:var(--cream-50,#FAF7F1);border:0;padding:14px 28px;font-family:inherit;font-size:15px;font-weight:500;cursor:pointer;letter-spacing:.02em}
+.nrec-go:hover{background:var(--gold-600,#9C7A3C);color:var(--ink-900,#1B1A17)}
+.nrec-out{margin-top:32px;border-top:1px solid var(--hairline,rgba(27,26,23,.12));padding-top:28px;display:none}
+.nrec-out.on{display:block;animation:nfade .4s ease}
+@keyframes nfade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+.nrec-rank{display:flex;flex-direction:column;gap:14px}
+.nrec-row{display:grid;grid-template-columns:64px 1fr 120px 120px;gap:18px;align-items:center;padding:18px 20px;background:var(--cream-50,#FAF7F1);border-inline-start:3px solid var(--hairline,rgba(27,26,23,.12));transition:.2s}
+.nrec-row.top{border-inline-start-color:var(--gold-600,#9C7A3C);background:var(--cream-100,#F1ECE2)}
+.nrec-row:hover{background:var(--paper-0,#fff);box-shadow:0 2px 8px rgba(27,26,23,.06)}
+.nrec-rk{font-family:var(--font-serif,serif);font-size:32px;color:var(--gold-600,#9C7A3C);font-style:italic;text-align:center}
+.nrec-bd b{font-family:var(--font-serif,serif);font-weight:500;font-size:20px;color:var(--ink-900,#1B1A17);display:block;margin-bottom:4px}
+.nrec-bd small{font-size:13px;color:var(--ink-500);line-height:1.5;display:block}
+.nrec-sc{text-align:center}
+.nrec-sc .v{font-family:var(--font-serif,serif);font-size:26px;color:var(--ink-900,#1B1A17);font-variant-numeric:tabular-nums}
+.nrec-sc .l{font-size:10px;letter-spacing:.12em;color:var(--ink-500)}
+.nrec-yi{text-align:center}
+.nrec-yi .v{font-family:var(--font-serif,serif);font-size:22px;color:var(--positive-700,#2E6A4F);font-variant-numeric:tabular-nums}
+.nrec-yi .l{font-size:10px;letter-spacing:.12em;color:var(--ink-500)}
+.nrec-why{margin-top:18px;background:var(--cream-100,#F1ECE2);padding:18px 22px;border-inline-start:3px solid var(--gold-600,#9C7A3C)}
+.nrec-why p{margin:0;font-size:14px;line-height:1.7;color:var(--ink-700)}
+.nrec-why b{color:var(--ink-900)}
+.nrec-cta{margin-top:22px;text-align:center}
+.nrec-cta a{color:var(--gold-600);text-decoration:none;border-bottom:1px solid var(--gold-600);font-size:15px}
+@media(max-width:780px){.nrec-form{grid-template-columns:1fr 1fr}.nrec-row{grid-template-columns:48px 1fr;gap:12px}.nrec-sc,.nrec-yi{grid-column:2;text-align:start;display:flex;gap:18px;font-size:13px}.nrec-sc .v,.nrec-yi .v{font-size:18px}}
+</style>
+<div class="nrec" id="nrec" dir="rtl">
+  <p class="e">המנוע החכם · 7 יעדים, התאמה אישית</p>
+  <h3>איזה יעד מתאים לכם?</h3>
+  <p class="s">המנוע מדרג שבעה יעדים פופולריים לפי ההון הזמין, סובלנות הסיכון הרגולטורי, יעד התשואה, מרחק הטיסה והוויזה. אינו ייעוץ פיננסי - כלי לתעדוף ראשוני בלבד.</p>
+  <div class="nrec-form">
+    <div class="nrec-f"><label>תקציב (€)</label><input id="nr-bud" type="number" value="150000" min="50000" step="10000"></div>
+    <div class="nrec-f"><label>יעד תשואה ברוטו (%)</label><input id="nr-yld" type="number" value="6" min="2" max="15" step="0.5"></div>
+    <div class="nrec-f"><label>סובלנות לרגולציה</label><select id="nr-reg"><option value="low">נמוכה - אני רוצה שקט</option><option value="mid" selected>בינונית - מקבל מורכבות סבירה</option><option value="high">גבוהה - מוכן ללחימת רישיונות</option></select></div>
+    <div class="nrec-f"><label>חשיבות קרבה לישראל</label><select id="nr-dis"><option value="high">חשוב - עד 4 שעות טיסה</option><option value="mid" selected>בינוני - עד 8 שעות</option><option value="low">לא חשוב</option></select></div>
+  </div>
+  <div style="display:flex;justify-content:center"><button class="nrec-go" onclick="window.nrecRun()">דרגו לי את היעדים ←</button></div>
+  <div class="nrec-out" id="nrec-out"></div>
+</div>
+<script>
+(function(){
+var D=[
+{k:"gr",n:"יוון",fl:"🇬🇷",yld:6.5,entry:90000,reg:"mid",dist:"close",notes:"קרובה (3 שעות), תשואות 5-8%, אבל באתונה מרכזית חסום STR חדש 2025-26.",link:"/short-term-rentals-abroad/#gr"},
+{k:"pt",n:"פורטוגל",fl:"🇵🇹",yld:4,entry:170000,reg:"high",dist:"mid",notes:"שוק יציב, אבל 40% מהרישיונות בליסבון בוטלו. ויזת זהב בנדל״ן הוסרה.",link:"/short-term-rentals-abroad/#pt"},
+{k:"es",n:"ספרד",fl:"🇪🇸",yld:5.5,entry:140000,reg:"high",dist:"mid",notes:"מחירים נגישים מחוץ למטרופולין, אבל ברצלונה תיפטר מ-STR עד 2028.",link:"/short-term-rentals-abroad/#es"},
+{k:"it",n:"איטליה",fl:"🇮🇹",yld:5,entry:175000,reg:"mid",dist:"mid",notes:"שוק בוגר, מס מורכב לדירה שנייה-שלישית (21-26%), קוד CIN חובה.",link:"/short-term-rentals-abroad/#it"},
+{k:"cy",n:"קפריסין",fl:"🇨🇾",yld:5.5,entry:225000,reg:"low",dist:"close",notes:"מסגרת חוקית בריטית מוכרת, מס נמוך 12.5%, אבל סף כניסה גבוה.",link:"/short-term-rentals-abroad/#cy"},
+{k:"th",n:"תאילנד",fl:"🇹🇭",yld:9.5,entry:140000,reg:"high",dist:"far",notes:"תשואה גולמית 7-12%, אבל <30 לילה לא חוקי. הפתרון: מינ' 30 לילה.",link:"/short-term-rentals-abroad/#th"},
+{k:"ae",n:"דובאי",fl:"🇦🇪",yld:7.5,entry:300000,reg:"mid",dist:"mid",notes:"אפס מס, אבל היתר DCT חובה מ-1.2026 + סף כניסה גבוה.",link:"/short-term-rentals-abroad/#ae"}
+];
+var REG={low:0,mid:1,high:2};
+function score(d,bud,yld,reg,dis){
+  var s=100;
+  // budget fit: penalty if entry > budget
+  if(d.entry>bud) s-=Math.min(45,(d.entry-bud)/bud*60); else s+=8;
+  // yield fit: closeness to target (within 1.5pp = full credit)
+  var dy=Math.abs(d.yld-yld); s-=dy*7;
+  // regulation tolerance vs country reg
+  var rg=d.reg==="low"?0:d.reg==="mid"?1:2;
+  if(rg>REG[reg]) s-=15*(rg-REG[reg]);
+  // distance preference
+  if(dis==="high" && d.dist!=="close") s-=22;
+  else if(dis==="mid" && d.dist==="far") s-=14;
+  return Math.max(0,Math.min(100,Math.round(s)));
+}
+function ar(arr){return arr.sort(function(a,b){return b.s-a.s})}
+function fmt(n){return new Intl.NumberFormat('he-IL').format(n)}
+window.nrecRun=function(){
+  var bud=+document.getElementById('nr-bud').value||0,
+      yld=+document.getElementById('nr-yld').value||0,
+      reg=document.getElementById('nr-reg').value,
+      dis=document.getElementById('nr-dis').value;
+  var rk=ar(D.map(function(d){return Object.assign({},d,{s:score(d,bud,yld,reg,dis)})}));
+  var out='<div class="nrec-rank">';
+  rk.forEach(function(d,i){
+    var cls=i===0?' top':'';
+    out+='<div class="nrec-row'+cls+'"><div class="nrec-rk">'+String(i+1).padStart(2,'0')+'</div><div class="nrec-bd"><b>'+d.fl+' '+d.n+'</b><small>'+d.notes+'</small></div><div class="nrec-sc"><div class="v">'+d.s+'</div><div class="l">ציון התאמה</div></div><div class="nrec-yi"><div class="v">~'+d.yld.toFixed(1)+'%</div><div class="l">תשואה צפויה</div></div></div>';
+  });
+  out+='</div>';
+  var w=rk[0];
+  out+='<div class="nrec-why"><p><b>למה '+w.n+'?</b> בהינתן תקציב '+fmt(bud)+'€, יעד תשואה '+yld.toFixed(1)+'% וההעדפות שלכם, ' +w.n+' מציעה את ההתאמה הגבוהה ביותר. '+w.notes+'</p></div>';
+  out+='<div class="nrec-cta"><a href="/real-estate-lawyer/">ייעוץ משפטי לעסקה בחו״ל ←</a></div>';
+  document.getElementById('nrec-out').innerHTML=out;
+  document.getElementById('nrec-out').classList.add('on');
+  document.getElementById('nrec-out').scrollIntoView({behavior:'smooth',block:'start'});
+};
+})();
+</script>
+<!-- /wp:html -->

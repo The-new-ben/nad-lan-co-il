@@ -9,7 +9,7 @@
 <!-- wp:group {"className":"pull-quote-wrap"} -->
 <div class="wp-block-group pull-quote-wrap">
   <blockquote class="pull-quote">
-    "הנתון היחיד שמשנה בעסקת מס רכישה הוא 'דירה יחידה' או 'שנייה ואילך' — כל השאר תוצאה של הגדרה."
+    "הנתון היחיד שמשנה בעסקת מס רכישה הוא 'דירה יחידה' או 'שנייה ואילך' - כל השאר תוצאה של הגדרה."
   </blockquote>
 </div>
 <!-- /wp:group -->

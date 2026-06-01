@@ -306,3 +306,521 @@ Owner reported being tired and concerned about token usage ($43.07 / $50 monthly
 - **GOES LIVE ON NEXT THEME SYNC.** Owner action: merge PR to main → UPress ניהול GIT pull from main → `/wp-content/themes/nadlan-revenue/`. No re-activation needed. CSS + theme.json + fonts + patterns land together.
 - Did NOT inject CSS live via REST — would be a font-broken half-measure (CSS references theme.json fontFace + patterns that only exist after sync). One sync = complete correct result.
 - **Follow-ups after sync** (documented in design-implementation.md): retoken calculator widgets (still corporate-blue), replace footer template-part with nadlan-footer pattern, rebuild homepage from the new patterns, swap rejected logo for monogram-seal, run post-sync verification.
+
+### 2026-05-28 (final) — Claude Code (claude-opus-4-8) — luxury LIVE verified + logo + wow feature + catalog plan
+- **VERIFIED LIVE** (PR #2 merged + pulled): style.min.css 41,769B with luxury bundle + --gold-600 + Frank Ruhl @font-face; theme.json palette = 13 luxury slugs; fonts 200; theme v1.1.0; internal pages render Frank Ruhl serif + warm palette. The design system is genuinely applied (not cache).
+- **Root cause of the earlier "didn't take effect"**: 21 commits (incl. the whole luxury port) were stranded on the PR branch after PR #1 merged at af840ed. A merged PR doesn't re-open for new pushes. Fixed by opening + merging PR #2. **Protocol lesson:** open a fresh PR whenever the prior one is merged and more commits follow.
+- **Logo fixed**: header template part was `wp:site-title` (text) → internal pages showed a plain link. Overrode the header part via REST (source=custom) with a monogram-seal (נ in gold double-circle) + serif wordmark + tagline + **pulsing gold dot** (owner requested; prefers-reduced-motion safe). Live on every page. Mirrored to docs/wp-state/template-part-header.html.
+- **Wow feature shipped**: Buy-vs-Rent break-even visualizer at /buy-vs-rent/ (page id 343) — NYT-style tool absent in the Hebrew market, decision-stage, CTA to /real-estate-lawyer/. Animated SVG dual-line chart + break-even marker, vanilla JS, luxury tokens. Added to כלים nav. Source: assets/widgets/buy-vs-rent.html.
+- **Properties catalog**: started — `skills/properties-catalog.md` documents the full architecture (CPTs nadlan_property/project/professional + nadlan_transactions table, templates, filters, MapLibre map, monetization hooks, 6-phase build plan). Phase A (register nadlan_property CPT) pending owner's answer: where do the first listings come from + map-tile approval + gov-data legal opinion.
+- **Honest design assessment** (told owner): it's now clearly a designed serif/cream/gold site, NOT generic WordPress — but still not yet "$1M" because: (1) no real architectural photography (biggest gap, per Lovable honesty statement); (2) homepage still Codex's old block content, not rebuilt from the new nadlan-* patterns; (3) calculator widgets still carry old corporate-blue inline styles (need retoken to bundle classes); (4) footer is the older custom override (replace with nadlan-footer pattern). These are the next design tasks.
+- Big remaining work areas (owner stated): CONTENT depth + COMPETITOR GAP analysis, and the properties catalog build.
+
+### 2026-05-28 (final final) — Claude Code (claude-opus-4-8) — "yes to all" execution
+Owner said "yes to all" + new idea. Shipped:
+- **Short-rent-abroad pillar**: research-rich comparison widget (7 countries × yield/entry/regs/tax + 7-row table + 7 warnings) at /short-term-rentals-abroad/ (page id 345, Yoast cornerstone, in nav). Web-researched 2026 data: EU 2024/1028 May 2026, Greece Oct 2025 freeze, Portugal STR collapse 126k→90k, Thailand <30 night rule, Dubai DCT permits Jan 2026. Sources cited in skills/short-term-rentals-abroad.md.
+- **Catalog Phase A**: plugin v1.1.0 built — registers nadlan_property/project/professional CPTs + nadlan_city/profession taxonomies. ZIP at repo root for owner upload. Healthcheck reports catalog status. Updated skills/properties-catalog.md.
+- **Homepage rebuilt from luxury patterns** (id=2): now composed of nadlan-hero + tools-row + trust-band + city-intelligence + guides-editorial + professionals-teaser patterns. Old 26K content backed up to docs/wp-state/homepage-pre-rebuild-2026-05-28.html. Verified live: contains nadlan-hero classes + 01/02 ordinals.
+- **Calculator widgets retokenized**: swapped corporate-blue #0E3A8A → ink-900, bright gold D89B3C → antique 9C7A3C, etc. — now match the luxury palette.
+- Mirrored: page-home.html, page-mortgage-calculator.html, page-purchase-tax-calculator.html in docs/wp-state/.
+- Owner approvals locked: gov.il data, free map tiles, legal re-publishing OK.
+
+### 2026-05-28 — Claude Code (claude-opus-4-8) — homepage fix + short-rent bugfix + lead FAB + plugin v1.1.1
+- **Short-rent widget WAS broken** (owner correct): a nested straight double-quote inside a JS string (`= "פעילות מקצועית"` in Greece data) threw a syntax error, killing the whole IIFE → tabs did nothing. Fixed (→ gershayim ״), verified 0 odd-quote lines, re-injected. Now functional.
+- **Homepage was empty-looking** (0 featured images, patterns are skeletons without photography). **Rebuilt type-led** (Sotheby's approach: type+restraint, no photo dependency): serif hero (no empty image box), 6 working tool cards (incl. buy-vs-rent + short-rent), real trust band, 3 guide cards, dark CTA band that opens the lead modal. Live, verified (nlh-hero present, 0 empty img boxes). Old pattern-homepage backed up earlier.
+- **Lead funnel built** (the missing contact path): site-wide floating "ייעוץ ראשוני בחינם" FAB + lead modal in the footer template part (custom override). Submits via fetch to NEW public REST endpoint `POST /nadlan/v1/lead` (plugin v1.1.1: honeypot + IP rate-limit + creates nadlan_lead + emails admin). Works on cached pages (no nonce). **FAB UI is live now; submissions work after owner activates v1.1.1.**
+- New skill `skills/lead-funnel.md`: funnel map + roadmap to self-registration + Stripe payments.
+- Plugin v1.1.1 ZIP sent to owner.
+- **Honestly deferred this turn** (documented, not done): full Hebrew article writing for short-rent pillar; listings catalog UI (archive/single templates + seed); self-registration + payments (needs owner stack decision + paid plugin); IndexNow instant-indexing; the "magic AI recommender" for short-rent. WhatsApp/phone FAB legs blocked on owner's number.
+
+### 2026-05-28 — Claude Code (claude-opus-4-8) — sitemap cleanup + IndexNow auto-ping (v1.1.2)
+- **Sitemap rewritten** (id 336, live): removed all visible "WordPress / REST API" technical language; restated copy ("מצא את הדרך", "עודכן לאחרונה" instead). New stats: total pages · clusters · **חדש החודש** count (pages modified in the last 30 days). Spokes within each cluster are now **sorted by `modified` desc** — the legit version of "links change position": fresher content appears higher = genuine SEO freshness signal, not cosmetic shuffling. Added "חדש" badges for pages modified in the last 30 days.
+- The lingering "WordPress" string is only in WP's own `<meta name="generator">` in `<head>` (not visible to users). v1.1.2 also **removes the generator meta** (`remove_action('wp_head','wp_generator')` + filter).
+- **IndexNow auto-ping** (plugin v1.1.2): on any publish/update of post/page/property/project/professional, the plugin posts to `api.indexnow.org/IndexNow` AND `bing.com/indexnow` with the page URL — instant submission to Bing/Yandex. Google does not officially honor IndexNow, but reads Yoast's `<lastmod>` XML sitemap (already on). This is the legit version of "ping Google" — Rank Math's instant-indexing addon uses the same protocol.
+- Auto-generates an IndexNow key (32-hex stored in wp_options) and serves it at `/{key}.txt` via an `init`-priority-1 hook so the verification endpoint works. No manual key management.
+- Healthcheck augmented (filter hook) to surface `indexnow.last_pings` for verification.
+- **New skill `skills/plugin-auto-update.md`**: honest three-options analysis. Recommendation is Option B — vendor `yahnis-elsts/plugin-update-checker` in v1.2.0 → owner clicks "Update" inside WP, no more ZIP cycle. Awaiting owner approval to vendor the library.
+- Plugin v1.1.2 ZIP shipped for upload.
+
+### 2026-05-28 (deep-pillar) — Claude Code (claude-opus-4-8)
+- **v1.2.0 verified live** (auto-updater installed). From here on plugin updates appear as normal WP "Update available" — no more ZIPs once main has the dist JSON.
+- **Short-rent pillar deepened** at /short-term-rentals-abroad/ (id 345): full Hebrew article ~32KB — opening macro, regulatory-wave section (EU 2024/1028 May 2026 + Greece Oct 2025 + Portugal license collapse + Spain Barcelona 2028 + Italy Budget 2026 CIN + Thailand 30-night enforcement + Dubai DCT Jan 2026), 8 numbered investor mistakes specific to ISR investors, 4-axis decision framework (budget / regulatory tolerance / distance / language), Israel tax treatment (15% gross vs marginal, treaty credits), 8-step transaction flow, sources block, FAQ. Embeds: AI recommender widget + 7-country comparison widget.
+- **NEW widget**: assets/widgets/short-rent-recommender.html — "AI-style" scoring engine. 4 inputs (budget € / target yield % / regulatory tolerance / distance importance), instant ranking of 7 countries by weighted match score, top result highlighted gold, CTA to /real-estate-lawyer/. Vanilla JS, uses luxury tokens, reduced-motion safe.
+- **Spoke prompts skill** committed: skills/spoke-prompts-short-rent-abroad.md. SYSTEM block + 7 country-specific prompts owner pastes into ChatGPT (Greece, Portugal, Thailand, Dubai, Cyprus, Spain, Italy). Each prompt enforces: Hebrew, voice, structure (8 sections), key 2026 facts that must appear, suggested slug. Spoke-launch checklist for me documented (publish, parent=345, Yoast meta, hub-spoke blocks, IndexNow auto-pings on publish).
+- Architecture honest: pillar is cornerstone, spokes are ordinary Pages. Internal-linking rules from skills/internal-linking-hub-spoke.md apply. Codex/owner can fill spokes in any order; no deadline.
+
+### 2026-05-29 — Claude Code (claude-opus-4-8) — handoff brief execution: honest scorecard
+Owner pasted a handoff brief asking 8 things. Identified self honestly; verified env access; executed what I could; documented blockers.
+
+**DONE (live, verified):**
+- v1.2.0 healthcheck verified live; catalog CPTs all true.
+- Pillar Yoast title + meta description improved (id 345, cornerstone). Yoast title now: 'השקעת Airbnb בחו"ל 2026 — השוואת 7 יעדים, רגולציה, תשואות ומס | נדלן חכם'.
+- Pillar got a hub→spokes placeholder block (7 country slots marked "בקרוב"); spokes will replace placeholders as owner publishes them via ChatGPT.
+- `/catalog/` page live (id 359) with REST-driven properties archive widget + MapLibre map (free OSM raster tiles, no key needed). Has filter chips, RTL popovers, sticky map on desktop.
+- 5 seed property posts created (ids 360–364): Tel Aviv Neve Tzedek, Herzliya Pituach, Kfar Shmaryahu, Raanana, Savyon. Title + content body live.
+- Nav updated with קטלוג נכסים (rightmost in RTL).
+- Sitemap clean, no tech leak, sort-by-modified, freshness badges.
+
+**PARTIAL (built, blocked on plugin upload):**
+- Property meta fields (price, rooms, sqm, lat, lng, photos_csv, sponsored flags): the seed POSTs sent meta but it was SILENTLY DROPPED because v1.2.0 doesn't register property meta for REST. Plugin v1.2.1 fixes this (`register_post_meta` for all property fields). Once v1.2.1 is active, re-running the seed-meta writer will populate the 5 properties — the catalog cards will then show prices/specs, the map will show pins.
+- Generator meta suppression: v1.2.0 only removed WP core's. Site Kit by Google emits its own. v1.2.1 strips ALL `<meta name="generator">` via output buffer.
+- Healthcheck augmenter (indexnow.key_present + recent_pings): v1.2.0 had broken filter wiring; v1.2.1 fixes via `apply_filters('nadlan_config_healthcheck', $out)` in the response function. Until v1.2.1, can't show real IndexNow ping log from REST.
+
+**BLOCKED (waiting on owner):**
+- Auto-updater handshake: PR #2 not yet merged to main. Until merged, `raw.githubusercontent.com/.../main/plugin-dist/nadlan-config.json` returns 404. After merge, PUC will see v1.2.1 advertised and offer Update inside WP. Path to verify: merge PR → wait ~12h or click "Check for updates" in plugins → see banner.
+- PMPro + Stripe install: requires owner WP admin click + Stripe account creation. Full plan written: skills/payments-woo-greeninvoice.md.
+- Photos for seed properties: no photography exists yet; cards render with cream-100 "תצלום בקרוב" placeholders. Codex job (June 2+) per image-pipeline.md.
+
+**SCORECARD:**
+1. Auto-updater handshake — PARTIAL (built; blocked on PR #2 merge)
+2. Pillar page Yoast/Article schema — DONE (Yoast title + desc; Article/FAQ schema is Yoast-default on pages)
+3. Hub↔spoke linking — DONE (placeholder block on pillar; spoke→hub blocks added per spoke as each lands)
+4. Navigation — DONE (Airbnb בחו״ל + קטלוג נכסים inserted)
+5. IndexNow log proof — BLOCKED (need v1.2.1 active to expose recent_pings; key serving is in v1.2.0 but not verifiable without the augmenter)
+6. Generator suppression + sitemap freshness — PARTIAL (sitemap done; generator needs v1.2.1)
+7. Properties catalog (Phase B–C) — PARTIAL (UI + map + 5 seeds + nav DONE; meta blocked on v1.2.1; photos blocked on Codex)
+8. PMPro + Stripe plan — DONE (skills/payments-woo-greeninvoice.md)
+
+v1.2.1 ZIP shipped to owner. New skills: spoke-prompts-short-rent-abroad.md (7 ChatGPT prompts) + payments-woo-greeninvoice.md.
+
+### 2026-05-29 — Claude Code (claude-opus-4-8) — HANDOFF to Claude Cowork
+- Owner is migrating to **Claude Cowork** (more tools: manual browser clicks, more integrations). I am STOPPING active build work (no plugin changes, no site changes this session beyond the handoff docs).
+- Created `HANDOFF.md` (repo root, public-safe, NO secrets): full onboarding — project, repo, branch, PR #2 status, credentials-by-env-var, deploy model, live-site state, honest scorecard, skills read-order, hard rules.
+- Created `skills/agent-onboarding.md`: the credential-handshake doc. Key points: secrets are ENV VARS (WP_BASE_URL / WP_USER / WP_APP_PASSWORD), inherited automatically if Cowork uses the SAME environment; if fresh env, owner re-enters them in the secret config; NEVER in repo/chat. Recommended ROTATING the app password (it was pasted in chat earlier = treat as compromised). First-run verification curls included.
+- Plugin v1.2.1 remains BUILT but not uploaded (owner paused the upload cycle). PR #2 remains UNMERGED (8 commits ahead of main). These are the two outstanding owner actions; documented, not blocking the handoff.
+- Next agent (Cowork) start point: read HANDOFF.md → skills/agent-onboarding.md → verify REST → read last 6 site-state blocks → resume.
+
+### 2026-05-29 — Claude Code (claude-opus-4-8) — Cowork briefing + em-dash sweep + copywriting ban
+- **Cowork briefing** authored at `skills/cowork-briefing.md`: condensed project history (May 2026 build journey, Lovable rounds 1+2, plugin v1.0.0→1.2.0 evolution), competitor map (Yad2, Madlan, nadlan.gov.il, nadlanmaster, law firms on tax SERP, banks on mortgage SERP), money model (closing-attorney fees first, then directory subscriptions, developer ads, sponsored), the "no long Hebrew content yourself — use ChatGPT" rule, the em-dash ban, where every skill lives, what you're NOT building (so Cowork doesn't drift), open-work priority list.
+- **Em-dash sweep** (owner-explicit): live via REST cleaned 5 pages (home, real-estate-lawyer, investment-apartment, buying-apartment, purchase-tax-calculator = 25 removed) + header + footer template parts (4 removed). Repo user-facing files (10 patterns + 6 widget HTML files = 64 removed). Skill docs NOT touched (internal). Verified 0 em-dashes on live homepage HTML.
+- **copywriting-skill.md** got a permanent "Em-dash ban — enforced 2026-05-29 (owner-explicit)" section with the sweep snippets so any future agent (Cowork/Codex/Claude) keeps the site clean.
+
+### 2026-05-30 — Claude Code (claude-opus-4-7) — Cowork audit + emergency fix + skills tightening
+
+**Triggered by:** owner reported Cowork is feeding articles into the site with raw HTML tags showing, no design wiring, no anti-cannibalization, no proper SEO/Yoast/sitemap/menu plumbing. Asked for a full audit + opinion on whether content level is "Google Blueprint" eligible to rank first.
+
+**Audit of 2026-05-29 Cowork publishes (11 new pages: investment cluster + 7 country spokes + 1 investment-apartment):**
+
+| Severity | Issue | Pages affected | Status |
+|---|---|---|---|
+| CRITICAL | Escaped HTML (`&lt;h2&gt;`) visible as literal text on live page | 6 of 7 country spokes (401, 404, 407, 418, 417, 416) | **FIXED** this session via `html.unescape()` + preamble strip + citation strip |
+| CRITICAL | ChatGPT preamble published ("להלן מאמר HTML נקי להדבקה" + "הערת שקיפות..." + Perplexity-style "Government of Israel+9" footnotes) | Portugal + others | **FIXED** with regex strip during the unescape sweep |
+| HIGH | Missing Yoast meta description | 398, 416, 417, 418, 421, 425 (6 pages) | NOT YET FIXED — Google falls back to first paragraph (which for the broken pages was the preamble) |
+| HIGH | Spokes are orphans (only 1 internal link, to pillar) | All 7 short-rent spokes + 3 of 4 investment spokes | NOT YET FIXED — no spoke→sibling, no spoke→calculator, no spoke→lawyer CTA |
+| HIGH | No lawyer CTA block (the monetization path) | All 11 new pages | NOT YET FIXED — money-path zero from these pages |
+| MEDIUM | No author byline on tax/regulation pages | Investment pillar + spokes | NOT YET FIXED — copywriting-skill §8 mandatory for tax/legal |
+| LOW | AI-tell phrases | "חשוב להבין" ×1 (421), "באופן כללי" ×1 (421), "במאמר" ×1 (422), "במילים אחרות" ×1 (424) | Borderline — single instances each |
+| LOW | em-dashes | 0 on every page | Em-dash ban respected |
+
+**Skills tightening this session:**
+
+- `skills/README.md` — completely reindexed; old index was missing 20+ files (all design-*, plugin-*, payments, lead-funnel, internal-linking, properties-catalog, short-term-rentals-abroad, etc.). New index has read-order for fresh session + cross-reference rule (single source of truth per topic).
+- `skills/internal-linking-hub-spoke.md` — cluster map updated to include the two new pillars (investment 421, short-term-rentals-abroad 345) and their spokes. Added Revision block documenting the orphan-spoke audit + wiring gaps.
+- `skills/google-blueprint-workflow.md` — NEW skill capturing the manual SERP reverse-engineering process Cowork uses but forgets each session (7 steps from query → article spec → ChatGPT prompt).
+- `skills/article-publishing-protocol.md` — NEW skill, 10-step checklist from ChatGPT output → live page, with each failure mode from 2026-05-29 explicitly named so it cannot repeat (HTML unescape, preamble strip, footnote strip, Gutenberg block wrap, internal-link wiring with anti-cannibalization, Yoast meta, schema upgrade, lawyer CTA block).
+- `skills/spoke-prompts-short-rent-abroad.md` — SYSTEM block hardened: now explicitly tells ChatGPT not to include preamble, footnotes, em-dashes, AI-tells, or forbidden internal words; includes self-check before responding.
+
+**Honest writing-level assessment (Google Blueprint eligibility):**
+
+The Hebrew prose Cowork is producing via ChatGPT IS substantively good — native voice (not translation-feel), real numbers with primary sources (Bank of Israel, CBS, country-specific tax authorities, with dates), depth (15-25K chars per article, 1,800-2,500 words effective), and structure that matches the SERP backbone for the target query.
+
+What is breaking is **everything around the prose**: the HTML wrapper (was escaped, now fixed), Yoast meta (4 of 7 still missing), internal linking (orphans), lawyer CTA (absent — zero monetization), Person schema author (absent — losing the lawyer E-E-A-T moat the strategy depends on), Article schema (defaulting to WebPage).
+
+In short: the **content** is Google Blueprint eligible to rank first against competitors like nadlanmaster, Yad2's blog corner, and bank explainers. The **publication wrapping** is currently sabotaging it. If Cowork follows `article-publishing-protocol.md` step-for-step from now on, each next spoke will be both Google Blueprint AND monetized. If not, the content investment burns to the ground in the SERP.
+
+**Live action this session:**
+
+- Fixed 6 country spokes (HTML unescape + preamble strip + citation strip). All now have real `<h2>`, `<h3>`, `<p>` tags rendering.
+- Did NOT rewrite Yoast meta or wire internal links yet (deferred to either a follow-up sweep or the next Cowork publish using the new protocol).
+
+**Remaining owner-decision items (carried from previous sessions):**
+- PR #2 still unmerged → auto-updater dormant.
+- Plugin v1.2.1 still not uploaded → property meta + Site Kit generator strip + IndexNow log not active.
+
+### 2026-05-30 (later) — Claude Code (claude-opus-4-7) — 11-page wiring + skills fold + business audit
+
+**11-page wiring sweep run + restored:**
+
+First sweep added date stripe + spoke-backlink + lawyer-cta + hub-related blocks to all 11 new pages (4 investment cluster + 7 short-rent spokes), set Yoast title+metadesc+focuskw+cornerstone flags. Then a buggy re-run with over-greedy `strip_existing_markers` regex wiped all 11 pages down to ~2.5-2.8KB stubs. Caught immediately. Restored all 11 from WordPress revisions (revs 436-446 saved the day) - final content now has the wiring blocks + the article body. Greece had 15 remaining Perplexity-style citation footnotes (`AADE+1`, `Bank of Greece+1`, etc.) that the first regex missed; aggressive second pass removed all of them.
+
+**Final state of the 11 pages (verified post-restore):**
+
+- Yoast title + metadesc + focuskw set on all 11
+- `_yoast_wpseo_is_cornerstone='1'` on investment pillar (421); abroad pillar (345) was already marked
+- Spoke-backlink-v1 block on all 10 spokes (pillar link + 2 sibling links)
+- Lawyer-cta-v1 block on all 11 (link to /real-estate-lawyer/ + /purchase-tax-calculator/)
+- Hub-related-v1 block on investment pillar (links to its 3 spokes)
+- Date-stripe-v1 block on all 11
+- 0 em-dashes, 0 escaped HTML, 0 ChatGPT preamble, 0 Perplexity citation footnotes
+- Internal link counts: 6-9 per spoke (was 0-1 before), 9 on investment pillar
+
+**Known visual issues (deferred, for runbook):**
+
+- The `cta-lawyer` group and `spoke-backlink` group reference `accent-5` background color which doesn't exist in this theme's palette. Theme has `cream-100`/`cream-50` instead. The old 2026-05-28 sweep also used `accent-5`. Result: blocks render without their accent background (functional but not visually rich). Fix is a 5-line patch but deferred per owner ("we're not starting now") - belongs in the next sweep alongside the broader design upgrade.
+- The 11 new pages use bare `<h2>` and `<p>` tags (no `<!-- wp:paragraph -->` block-wrapping), so theme.json typography tokens (Frank Ruhl Libre serif on h2/h3, Heebo on body, gold accents) are NOT being applied. The pages render correctly but don't visually match the Lovable luxury design. Investment-apartment (id 10) was pointed to as the design exemplar - but on inspection, ID 10 uses its OWN inline `<style>` block with green colors (older Codex era), NOT the Lovable warm ink/cream/gold palette either. The true Lovable design tokens are applied via theme.json + style.css and require proper Gutenberg block-wrapping in the page content. Deferred to runbook.
+
+**Skills folded:**
+
+- `google-blueprint-workflow.md` → folded into `strategy-master.md` §13 (the 7-step manual SERP reverse-engineering process before writing). Standalone file reduced to 1-paragraph pointer stub.
+- `article-publishing-protocol.md` → folded into `internal-linking-hub-spoke.md` §"Article publishing protocol" (the 10-step ChatGPT-output → live-page checklist). Standalone file reduced to pointer stub.
+- README.md index updated to reflect the fold.
+
+**Business pipeline audit (full plugin scan):**
+
+Actual installed payment stack: **WooCommerce 10.8.1 (active) + Paid Member Subscriptions 3.0.4 (active) + wc-gateway-greeninvoice 2.4.0 (active)**. This is DIFFERENT from the documented plan in `skills/payments-woo-greeninvoice.md` which assumed PMPro+Stripe. The current stack is actually well-suited for Israel (Green Invoice handles ישראלי tax/חשבונית compliance and is the standard for Israeli ecommerce).
+
+Status:
+- WooCommerce pages exist (shop=390, cart=391, checkout=392, my-account=393) but **0 products** are configured. Nothing to sell.
+- Paid Member Subscriptions: plugin active. No subscription plans found via standard REST checks (PMS uses custom tables, not CPTs, so no REST surface).
+- Lead funnel: `nadlan-config` reports `lead_handler_loaded: true`. The `nadlan_lead` CPT does not appear in REST type list (`show_in_rest` likely false) - lead submissions via POST work, but the leads aren't REST-listable for verification.
+- Site Kit (Google Analytics + Search Console): active.
+
+**Critical business gaps identified:**
+
+1. The `payments-woo-greeninvoice.md` skill is now misaligned with reality. Either it should be renamed to a generic `payments-and-subscriptions.md` covering the actual WooCommerce + PMS + Green Invoice stack, OR PMPro should be installed and PMS removed. The skill needs to match reality before any payment flow gets built.
+2. WooCommerce has 0 products. The entire "people pay money" path is blocked until products/subscription plans are created. The current state is: pipes installed, nothing flowing through them.
+3. No public-facing pricing page. No "Become a Pro" CTA. No directory listing entry form. The 3-tier directory plan in `payments-woo-greeninvoice.md` is not yet productized.
+4. E-E-A-T author byline is not yet set on any of the new pages - owner is deciding whether the byline is always the owner-lawyer, sometimes a registered professional, or per-article-author. Currently the strategy depends heavily on the owner-as-lawyer Person schema for SEO authority in the tax-legal cluster; not configuring it leaves significant SEO equity on the table.
+
+### 2026-05-30 (proof + smoke test + design) — Claude Code (claude-opus-4-7)
+
+**PROVED REST changes are live (owner couldn't see changes):**
+- Owner reported Thailand spoke still had brackets. Found the real artifact: `{index=0}` ... `{index=10}` (Perplexity citation markers in curly braces) - my earlier regex matched `[N]` and `word+N` but NOT `{index=N}`. Removed all 11 from page 404.
+- Fetched the LIVE rendered page fresh from origin (cache-busted): `https://nad-lan.co.il/short-term-rentals-abroad/short-term-rentals-thailand/` - 0 `{index=N}`, 0 in visible prose. Confirmed live.
+- IMPORTANT distinction clarified for owner: page CONTENT is edited via WP REST API and is INSTANT/live - it does NOT go through GitHub. The `git push` only ships theme/plugin/skills files. Pulling from GitHub does nothing for page content. No WP cache plugin installed (plain nginx; UPress may have a short nginx microcache).
+- The 7 short-rent spokes are actually nested under the pillar: `/short-term-rentals-abroad/{country}/` (a 301 redirects the flat slug). Updated mental model.
+
+**Payment / registration smoke test (WooCommerce + Green Invoice):**
+- Active stack confirmed: WooCommerce 10.8.1 + Paid Member Subscriptions 3.0.4 + wc-gateway-greeninvoice 2.4.0. Stripe is NOT usable on this site (owner: "Stripe is not working with this site"), so the model evolved to WooCommerce + Green Invoice (Morning/מורנינג).
+- Gateways ENABLED: greeninvoice credit-card, Bit, Google Pay, Apple Pay. Currency ILS, country IL. Good.
+- Registration toggles BOTH OFF: `woocommerce_enable_myaccount_registration=no`, `woocommerce_enable_signup_and_login_from_checkout=no`. → a professional CANNOT self-register today.
+- Products: 0. → nothing to buy today.
+- **Smoke test PASSED end-to-end (mechanics):** created draft product (id 471, 1188 ₪) → created test customer (registration) → created order (id 472, pending, 1188 ₪, greeninvoice-creditcard gateway attached). Then deleted test order + test customer; KEPT draft product 471 (hidden) for owner to review/adjust pricing. Final card charge needs a real card / Morning sandbox (cannot be automated via REST).
+- Honest conclusion: the money PIPES work. The money PATH is closed (registration off, 0 products, no pricing page, no "become a pro" CTA).
+
+**Design pattern skill created:** `article-guide-design-pattern.md` documents the `.nadlan-guide` self-contained HTML+CSS layout (hero with eyebrow + h2 + lede + CTA + image, body with cards/table/note/CTA) that the owner approved as the target look. It is live on id 9/10/11 (Codex era) and renders consistently because the CSS is scoped and theme-independent (injected via `wp:html`). Documented the current green palette AND a Lovable-luxury palette variant (same structure, swapped tokens). OPEN DECISION: green vs luxury palette.
+
+**Author / E-E-A-T (BLOCKED on owner facts, do NOT fabricate):**
+- Owner authorized using "בן בטש, עו״ד" as the site author for now (he is primarily a family-law lawyer with some real-estate work; will seek a more established real-estate name later).
+- Web search for בן בטש returns only an UNRELATED firm (בטש ושות' / Jacob & Jonathan Battash, TA litigation). No verifiable public profile for THIS owner. Therefore NO sameAs links, NO bar number, NO bio can be sourced from the web without risking wrong-person attribution (E-E-A-T damage + identity risk). Must get from owner.
+- Planned modular mechanism (native, no URL change, no plugin change): each expert = a WP User with bio + Yoast social sameAs + Gravatar; each Page's `author` field (settable via REST) points to the expert; Yoast per-page schema set to Article → nests author Person schema; visible byline block added to body. Modular = change author field to reassign; future experts = new users. Pending owner's verified facts.
+
+### 2026-05-30 (evening) — Claude Code (claude-opus-4-7) — author wired, green canonical, payment LIVE, runbook delivered
+
+**Owner-supplied identity facts (verifiable, now in §0 of runbook):**
+- בן בטש, עו"ד, בר 29020, https://www.israelbar.biz/lawyer-fd/?lawyer=Cqcs/1T4N0I
+- info@nad-lan.co.il, benbetesh@gmail.com, 0525101555 (mobile — SOLE phone; landline 036916454 RETIRED 2026-06-01 by owner, do not reintroduce)
+- וולנברג ראול 18, תל אביב יפו
+- Other site (sameAs): https://jus-tice.co.il/
+
+**Author entity wired:**
+- WP user id=1 (admin) renamed to "בן בטש", description set to bio with bar 29020, url to Israel Bar profile.
+- All 11 retro-wired pages have `author=1` set via REST.
+- Person + Article JSON-LD injected inline in each page via `<script type="application/ld+json">` inside the `wp:html` block. WordPress preserves `<script>` in wp:html for admin (unfiltered_html). Verified in raw DB content + live HTML.
+- Avatar: SVG-style initials "בב" on green circle (data-light, no media upload needed). Owner-flagged TODO: replace with real headshot when available.
+
+**Design — GREEN canonical (owner decision 2026-05-30):**
+- All 11 pages re-wrapped in `<div class="nadlan-guide">` with the green Codex CSS (h2 #08382d weight 900, h3 #0f5a43 weight 800, hero gradient, green pill buttons, eyebrow gold tag, cards/table/note styled). CSS is inlined per-page (~3.3KB), browser-cached after first hit.
+- `skills/article-guide-design-pattern.md` rewritten as green-canonical (the prior luxury variant deprecated).
+- The luxury demo page (id 474) deleted. Reference live: https://nad-lan.co.il/design-demo-green/.
+- Canonical CSS saved at `skills-templates/article-guide.css`.
+- Bug recovery during the wrap sweep: when re-running, the marker-bounded regex `<!-- nadlan-guide-wrap-v1 -->.*?<!-- /nadlan-guide-wrap-v1 -->` was used (idempotent strip) - no content loss this time. Compare to the 2026-05-30 morning bug where an unbounded `<!-- marker -->.*` regex wiped all 11 pages.
+
+**Payment LIVE end-to-end (owner: "make it work"):**
+- 5 products published, all visible at https://nad-lan.co.il/shop/:
+  - 475 רישום בסיסי - ₪0
+  - 476 Pro (חודש ראשון חינם) - ₪349/mo
+  - 477 Premier חשיפה מוגברת - ₪749/mo
+  - 489 קמפיין פרויקט יזם - ₪3,990/mo (3-mo ₪10,990 = -8%, 6-mo ₪19,990 = -16%)
+  - 490 מודעה מקודמת נכס - ₪299/mo
+- Pricing page LIVE: https://nad-lan.co.il/join-pro/ — 3-tier hero, plan-row, project-advertising cards, listing CTA, FAQ, disclaimer. All in green nadlan-guide design.
+- Registration ENABLED: `woocommerce_enable_myaccount_registration=yes`, `woocommerce_enable_signup_and_login_from_checkout=yes`.
+- Payment gateway: Green Invoice (Morning) — credit card, Bit, Google Pay, Apple Pay. All active.
+- **E2E SMOKE TEST PASSED**: created customer → POSTed order for product 476 → status `pending`, total ₪349, gateway `greeninvoice-creditcard` attached → checkout URL returned (`/checkout/order-pay/492/?pay_for_order=true&key=wc_order_iSm8GvQI32aeo`). Then deleted test customer + order.
+- Owner's other site jus-tice.co.il pricing pattern (₪349/₪749) confirmed and applied. Free trial twist added: Pro has "חודש ראשון חינם" headline; trial mechanics will need either WooCommerce Subscriptions or manual coupon (deferred — current implementation is the marketing claim, not yet enforced by code).
+
+**Runbook delivered for Cowork:**
+- `skills/runbook-cowork-article-batch.md` — 1 file, 12 sections, self-contained. Embeds: owner-facts cache, pre-flight checks, pre-batch website audit, batch selection (with cluster map and recommended priorities), Google Blueprint workflow, master ChatGPT prompt template (fully worked), sanity-check script, Python publish template, internal-link wiring, navigation rules, visual QA, site-state update template, end-of-batch honesty report template, token-saving rules for ChatGPT, stop conditions. Plus §10 listing each 2026-05-29 failure and how the runbook prevents it. Plus §9 master example prompt for `פטור ממס שבח דירה יחידה 2026`.
+- Reference page for "what good looks like": https://nad-lan.co.il/design-demo-green/.
+
+**Skills index updated** (README.md): added runbook + article-guide-design-pattern entries.
+
+**Honesty / known gaps (for the next conversation):**
+1. The "חודש ראשון חינם" on Pro plan is currently a marketing claim, not enforced by code. To make it real, owner needs to either: install WooCommerce Subscriptions (paid plugin), or I'll add a coupon-auto-apply mechanism in the nadlan-config plugin. Pending decision.
+2. The `skills/payments-woo-greeninvoice.md` skill is still misnamed (refers to Stripe). Should be renamed to `payments-woo-greeninvoice.md` and rewritten to match reality. Skill index already deprioritizes it.
+3. The `/join-pro/` page isn't in the main nav yet. Owner action: add to wp-admin → Appearance → Menus, OR I can edit nav id=4 via REST if owner says go.
+4. The pricing-page hero image is the same Tel Aviv skyline stock. Owner-flagged TODO: real branded photography.
+5. The author photo is an SVG initials avatar ("בב"). Owner-flagged TODO: real headshot.
+6. The Yoast graph emits its own WebPage+Organization+Breadcrumb. Our inline graph adds Person+Article. Two graphs on one page is allowed by spec, but Yoast premium has a "schema aggregator" that would unify them. Out of scope for now.
+7. Bar number 29020 — owner-supplied, not independently verified by me (web search returned a different "בטש" firm, so the standalone search couldn't confirm). I trust the owner's word but flagging as I can't fact-check it from public sources.
+
+### 2026-05-30 (night) — Claude Code (claude-opus-4-7) — gaps closed + Cowork QA pass
+
+**Sequential completion of the 7 gaps:**
+1. Free-first-month: found Green Invoice gateway supports ONLY `['products','refunds']` — NO recurring. Created real working coupon `חודש-ראשון-חינם` (508) + alias `FIRSTMONTHFREE` (509), 100% off Pro, 1/customer; enabled coupons at checkout. Documented honestly: monthly auto-rebill not possible via this gateway; recurring handled via Morning הוראת קבע after signup (same as jus-tice.co.il) OR reframe to annual. Decision still pending owner.
+2. Payments skill renamed `payments-pmpro-stripe.md` → `payments-woo-greeninvoice.md`; rewrote top with LIVE config; marked old PMPro+Stripe plan DEPRECATED. Fixed all pointers in README, runbook, cowork-briefing, HANDOFF, site-state.
+3. `/join-pro/` added to main nav (id 4), label "הצטרפו כמקצוען". Verified live on homepage.
+4. Pricing/hero stock image — owner-blocked (no photography). Noted.
+5. Author avatar initials — kept (owner said avatar for now). Noted TODO real headshot.
+6. Bar 29020 — owner-supplied, flagged unverifiable from public web.
+7. Two JSON-LD graphs — needs Yoast Premium aggregator. Out of scope. Noted.
+
+**Cowork QA pass (owner asked to check his live work):**
+Cowork published 5 new tax-legal spokes following the runbook (exactly batch #1 recommended):
+- 493 capital-gains-tax-exemption (parent 92), 494 betterment-levy (92), 495 apartment-sale-contract (parent 11), 502 power-of-attorney-real-estate (11), 505 residential-lease-agreement (11).
+VERDICT: HIGH QUALITY. The runbook works. Every page has: nadlan-guide green design, byline "מאת בן בטש", Person+Article JSON-LD, cards+tables+notes+CTAs, disclaimer, author=1, 13-20 internal links incl pillar + lawyer CTA, Yoast title+metadesc. ZERO artifacts: no em-dash, no {index=}, no escaped HTML, no [N], no word+N, no preamble, no forbidden openers. The only grep hit "במאמר זה" was a FALSE POSITIVE (inside the mandatory legal disclaimer "אין לראות במאמר זה ייעוץ משפטי") - refined the runbook §4.5 sanity-check to not flag the disclaimer use. Live visual QA on 493 confirmed render. No fixes needed to Cowork's pages.
+
+**Runbook completeness verified:** all 13 sections (§0-§12) present, all referenced skill files exist, CSS template present, reference design page live (HTTP 200). 556 lines.
+
+### 2026-05-30 (audit) — Claude Code (claude-opus-4-7) — deep QA on Cowork's 9 batch articles
+
+**Inventory:** 9 articles published this push — 5 tax-legal (493/494/495/502/505) + 4 mortgage (512/513/514/519). Plus the 11 retro-wired earlier the same day. Total ~21 articles in fresh content production.
+
+**Hebrew quality (read deeply):**
+- ChatGPT articles (8 of 9): professional native Hebrew, no translation feel, real legal anchors cited (חוק הנוטריונים §20, חוק שכירות הוגנת, סעיף 49ב, BoI directives), direct action-oriented voice. Quality: A.
+- Gemini article (519): content accurate, slightly more verbose, opened with the forbidden AI-tell "במאמר זה נפרט". Fixed in audit. Quality after fix: A-.
+
+**Google Blueprint adherence:** every article's H2 backbone matches the real SERP shared structure for its target query (verified by Cowork's manual Hebrew SERP scans). FAQs use genuine "אנשים גם שואלים" questions. Citation density 15-41 per article. Score: 9/10.
+
+**Cannibalization:** ZERO real cannibalization across the site. All apparent overlaps are pillar↔spoke (correct intent separation). Broad terms like "תשואה" mentioned by many pages but only 422 targets it. Score: 10/10.
+
+**Defects found and FIXED during audit:**
+1. Page 519 (Gemini): opener "במאמר זה נפרט במדויק" → rewritten to "הסקירה שלהלן מציגה כיצד..."
+2. Page 493 (ChatGPT, stitched): redundant byline-in-body paragraph removed.
+3. Page 493: 4 duplicate H2 sections (Cowork's stitching artifact when ChatGPT's two passes overlapped) — second copy of each removed (≈8.7KB freed). Page went from 27KB→18.8KB clean.
+After fix: 9/9 articles have 0 forbidden openers + 0 duplicate H2s.
+
+**Absent spokes (gaps per strategy §2, priority order for next batches):**
+
+Priority 1 (high commercial value, tax-legal moat):
+- `מס רכישה דירה ראשונה` — own spoke under tax-advisor pillar (5,400/mo SERP)
+- `מס רכישה משקיע` — own spoke (high CPC ₪4)
+- `מס שבח` — broader pillar (currently only the 493 spoke covers דירה יחידה sub-case)
+- `חוק מכר דירות` (the law itself, not the bank-guarantee)
+
+Priority 2 (urban renewal, owner's law speciality):
+- `תמא 38` (1,000/mo) — own spoke
+- `פינוי בינוי` (6,600/mo) — own spoke
+- `חוזה תמא 38 - מה לבדוק`
+
+Priority 3 (operational long-tail):
+- `תקופת אופציה במכר דירה`
+- `טופס 4`
+- `תב"ע / היתרי בנייה לאזרח`
+
+**Strategy master file:** last revision 2026-05-30 (added §13 Google Blueprint). Up to date except the cluster map in internal-linking-hub-spoke.md needed extension — NOW updated with the 9 new spokes.
+
+**Brutal scorecard for Cowork's runbook execution:**
+- Google Blueprint compliance: 9/10
+- Design adherence: 9/10
+- E-E-A-T (byline + Article+Person schema + sources): 10/10
+- Internal-link wiring: 9/10
+- Anti-cannibalization: 10/10
+- Hebrew prose quality: 9/10 (one Gemini opener defect, fixed)
+- Sanity-check effectiveness: 7/10 (caught the easy artifacts; missed the 493 duplicate-H2 stitching error + 519 opener — runbook §4.5 should add a duplicate-H2 check)
+
+**Runbook refinement queued:** add to §4.5 a sanity check for `wc -l <(grep -oP '<h2[^>]*>([^<]+)</h2>' file | sort -u)` vs `grep -c '<h2'` mismatch (means duplicates). And explicit search for `<p[^>]*>\s*המאמר נכתב על ידי` (redundant byline paragraph).
+
+### 2026-05-31 - Claude Code (claude-opus-4-7) - quality audit + v3 architecture
+
+**Honest scan of all 15 batch articles.** Scored by words, data density (numbers + law refs), padding-phrase count, engine. Five articles failed the rank-first bar:
+
+| id | slug | engine | words | nums | laws | padding | verdict |
+|---|---|---|---|---|---|---|---|
+| 519 | mortgage-repayment-capacity | Gemini | 1287 | 10 | 7 | 0 | REWRITE (worst) |
+| 512 | reverse-mortgage | ChatGPT | 1737 | 13 | 0 | 0 | REWRITE (no law refs) |
+| 543 | pinui-binui-tenant-guide | Gemini | 2661 | 4 | 62 | 3 | REWRITE (padding, thin numbers) |
+| 540 | tama-38-rights-obligations | ChatGPT | 2081 | 3 | 7 | 0 | REWRITE (thin data) |
+| 547 | tama-38-contract-checklist | Gemini | 2631 | 3 | 20 | 1 | REWRITE (thin data) |
+
+The 10 articles that PASSED include all the top scorers: 529 purchase-tax-first-home (102 nums + 53 law refs, the model of a top-quality piece), 536 capital-gains-tax-guide, 514 mortgage-interest-rates, 494 betterment-levy, 493 capital-gains-tax-exemption, 513 mortgage-ltv-ratio, 532 purchase-tax-investor (Gemini long-form, dense data).
+
+**Pattern: ChatGPT thinking-mode > Gemini > Cowork-stitched.** 4 of 5 rewrites are Gemini outputs; the one ChatGPT-written failure (512) is short because of Extended-mode truncation, not engine quality.
+
+**v3 architecture deployed.** Drive folder structure created:
+- nadlan-articles-output/ (id 1okuUY-MNyWwyBLQqyH0kgftZk1eOw9Zp)
+  - inbox/ (id 13jtpQF9wsYdeT78UQvvcHPnhtbKCPeWA)
+  - published/ (id 1uMSVp0RYBICgbJj8pmPRjq-C4hD637xe)
+  - prompts/ (id 1WqpI1oBTmkYv8w6OqdYbgFwnoiNQ2Bd9)
+    - SYSTEM doc (1efl0pGloDXUCQWv3XyChVSUxK8Amz8WSzw4bMM8OKsw)
+    - PROMPT TEMPLATE doc (1q5TBvpeSiCeBjA7LXcu7mo5I_Tyh4PKxJHYVhDbnvf4)
+  - ARTICLE QUEUE doc (1aAJXLFmYqVKiDkWBhN3Xi-quxtDcPF5iqdMYu1zDK5U) with full 23-item backlog (5 rewrites A1-A5 + 18 new B1-B18)
+
+**Owner's new workflow:** open ChatGPT Project "nadlan article batch" → paste prompt from PROMPT TEMPLATE doc → ChatGPT thinks + writes Doc to Drive inbox → close chat → next article in fresh chat. Cowork polls inbox, processes, publishes, moves to /published/.
+
+**Architectural reasoning:** Cowork v2's browser-driven approach hit Canvas virtualization, blank-response glitches, and lockout risk. v3 removes Cowork from the ChatGPT loop entirely. ChatGPT's 60-120s think time is no longer a Cowork bottleneck — Cowork does parallel work (visual QA, link wiring, site-state commits, cannibalization pre-scans) during Drive idle.
+
+**Skills added/updated:** runbook-cowork-article-batch-v3.md (new canonical). v2 marked superseded. README index updated.
+
+### 2026-05-31 (late) - Claude Code (opus-4-8) - on-page cleanup, staff byline, a11y, /about/, 543 rewrite
+
+**Forensic on-page fixes (live, REST, backups in /tmp/backups):**
+- En-dash root cause = WordPress wptexturize converting ' - ' to en-dash AT RENDER. My first body sweep (–→' - ') was undone on render. Real fix: titles+headings use ':', body uses ','. Swept all 22 articles + 7 pillars + tools + titles. wptexturize still converts any future ' - ' → recommend disabling via plugin (open item).
+- Duplicate date boilerplate removed from pillar 421 (had 3 date lines: byline + 2 body). Research: show ONE date (byline), keep datePublished+dateModified in schema only; two visible dates can cost ~22% CTR (case study).
+- Breadcrumb=H1 duplication: research says NOT a penalty (Google Liaison: stuffing != repetition count). Optional fix = truncate visible last crumb (Yoast bctitle). Not yet applied.
+- Homepage: 2nd H1 demoted to H2 (content field). Theme title remains sole H1.
+- WooCommerce pages 390/391/392/393 set noindex.
+
+**Staff byline site-wide (per owner 2026-05-31):** replaced "מאת בן בטש, עו"ד · רישיון 29020" visible byline with "נכתב ונערך על ידי צוות נדל"ן חכם" on all 22 articles; neutralized the lawyer's personal name in CTAs/prose. **JSON-LD Person schema (ben-betesh, bar 29020) LEFT INTACT per owner instruction — schema decision PENDING (ask again).** Visible/schema mismatch is intentional/temporary.
+
+**543 פינוי בינוי REWRITTEN by Claude (one-time, owner-authorized):** 1,842 words, 46 law refs, 20 numbers, 9 H2, 2 tables, 4 notes, 2 cta, 0 dashes, staff byline, schema kept. Replaced the weak 1,593w/4-num version.
+
+**New pages (live):** /about/ (645), /editorial-policy/ (646), /accessibility/ (647 - honest statement, no overlay, רכז נגישות contact).
+
+**New skills:** article-qa-audit.md, authority-eeat-program.md, accessibility-israel-is5568.md - all with cited sources + flagged unverified items.
+
+**OPEN ITEMS for owner decision:** (1) Person/lawyer schema - keep, soften, or remove; (2) footer link to /accessibility/ site-wide (theme/menu edit); (3) robots.txt missing + wptexturize disable = both need a plugin filter deploy; (4) native a11y remediation phases 1-3 (audit + code fixes); (5) rewrite-tier articles (571,564,563,562,559,575,561 + top-ups) - ChatGPT or Claude.
+
+### 2026-05-31 (footer + 569) - Claude Code
+- Footer: added site-wide links bar (/accessibility/ /about/ /editorial-policy/ /real-estate-lawyer/) to template-part nadlan-revenue//footer via REST. LIVE on every page (verified). Satisfies legal requirement that the accessibility statement is reachable from every page.
+- 569 investment-via-company: density top-up via REST (added "מבנה המס" section: סעיף 64א חברה משפחתית, סעיף 64 חברת בית, מס חברות 23%, דיבידנד+מס יסף סעיף 121ב, מס רכישה לחברה). Now 37 law refs / 31 numbers (was 1 law / 23 nums). LIVE.
+
+**DEPLOYMENT NOTE (owner clarified 2026-05-31):** All content/page/byline/title/footer/article edits this session were made via WordPress REST API = LIVE IMMEDIATELY, no server git pull needed. Repo commits (skills/*.md, site-state) are knowledge-capture only and do not affect the live site. The ONLY pending items that need a code deploy + server pull (or plugin update channel) are: robots.txt sitemap line + wptexturize disable (both PHP filters in the nadlan-config plugin). When those are built, owner must git pull server-side or run the plugin update.
+
+### 2026-05-31 (closeout) - Claude Code - density top-ups complete + final audit
+
+**Three-pass density top-up, all 14 thin articles brought to bar via REST (live, no pull).** Each pass added Israeli-legal-accurate sections (real law citations, real % and ₪ values).
+
+**Final live audit (regex = audit baseline: ≥20 nums + ≥15 law refs + 0 em-dash + ≥2 cta):**
+```
+22/22 PASS
+```
+Per-article: 519=93n/26l · 512=63n/15l · 543=22n/27l · 540=22n/19l · 547=24n/41l · 559=24n/19l · 560=21n/35l · 561=26n/21l · 562=23n/24l · 563=22n/15l · 564=21n/21l · 565=34n/22l · 566=23n/19l · 567=26n/17l · 568=37n/17l · 569=33n/20l · 570=70n/23l · 571=20n/15l · 572=28n/15l · 573=32n/20l · 574=24n/17l · 575=28n/18l
+
+**Complete this session (all live via REST, owner has pulled server git for plugins as of EOD):**
+1. En-dash root cause = wptexturize → swept titles (`:`) + body (`,`) across all pages
+2. Duplicate date paragraphs removed (pillar 421)
+3. Homepage 2nd H1 → H2; WooCommerce pages 390-393 noindexed
+4. Staff byline ("צוות נדל"ן חכם") site-wide; lawyer personal name removed from visible CTAs and prose; JSON-LD Person+#person-ben-betesh schema kept intact per owner instruction
+5. 543 פינוי בינוי FULL REWRITE by Claude (1842w → final 2029w / 22 nums / 27 laws / 2 tables / 9 H2 / 0 dashes)
+6. New live pages: /about/ (645) · /editorial-policy/ (646) · /accessibility/ (647 - honest, no overlay, רכז נגישות contact)
+7. Footer accessibility-links bar (/accessibility/, /about/, /editorial-policy/, /real-estate-lawyer/) added to nadlan-revenue//footer template-part; verified on homepage + article
+8. Density top-ups (3 passes): 569, 571, 563, 562, 559, 575, 568, 570, 566, 573, 574, 567, 561, 512, 540, 547, 565, 572
+
+**Skills added (all cited):** accessibility-israel-is5568.md · article-qa-audit.md · authority-eeat-program.md (from earlier this session, building on the deep research)
+
+**OPEN ITEMS pending owner decision / future session:**
+- Lawyer-author Person schema: owner chose "keep as-is for now" (visible staff / schema lawyer). Revisit later.
+- robots.txt + wptexturize disable (PHP filters in nadlan-config plugin) - not yet implemented. Owner already pulled & updated plugins this session, so any future plugin change requires another pull.
+- Native accessibility audit phases 1-3 (axe/WAVE/Lighthouse/Pa11y + WCAG AA code fixes in the forked theme).
+- Yoast breadcrumb visible-last-crumb truncation (research-recommended, not yet applied).
+- 543 rewrite was Claude-authored as one-time per owner authorization. Future rewrites default back to ChatGPT-via-Cowork pipeline.
+
+### 2026-05-31 (business-readiness report) - Claude Code
+- Plugin v1.3.0 pushed (robots.txt + wptexturize disable) - NEEDS server git pull to activate.
+- Verified monetization audit: SKUs+prices+payment(Grow/Bit/Stripe) built; join-pro live; catalog CPTs exist but directory EMPTY (0 professionals, 0 projects, 5 seed properties); **NO analytics installed (no GA4/GTM/Search Console/Bing) = cannot measure/prove traffic**; no /advertise/ page; /pricing/ slug collided into an article.
+- Two cited research reports done (global portals + Israel). New skill: monetization-readiness-and-adsales.md (product ladder by phase, ₪ benchmarks, ממומן disclosure law §7(c), broker-license carve-out §2(c), reporting/traffic-commitment policy).
+- Verdict: store built, prices set, but no audience + no measurement + empty shelves. Sell only asset-based + pay-per-lead NOW; impression/guaranteed-views products wait for traffic. Blocker #1 = install analytics.
+
+### 2026-05-31 (business-readiness sprint, plugin gap, GA4 prep) - Claude Code
+- Plugin v1.3.0 in repo + push verified clean; **server active plugin still v1.2.0** (healthcheck). `git pull` does NOT deploy to wp-content/plugins on this server. Fix paths: zip+upload via WP Admin OR sftp copy plugins/nadlan-config/ → wp-content/plugins/nadlan-config/ OR fix the deploy pipeline (symlink). Detailed Cowork instructions in skills/cowork-prompt-business-readiness.md TASK 1.
+- robots.txt nginx 404 root cause confirmed (web server intercepts /robots.txt before WP). Added physical robots.txt at repo root as fallback — owner must drop it at web-root OR add nginx line `location = /robots.txt { try_files $uri /index.php?$args; }`. Both options noted.
+- Live verification: 22 articles render with 0 en-dashes (content sweep held). 1 en-dash still on individual page render = theme/breadcrumb residue (will disappear when v1.3.0 wptexturize-disable activates).
+- Search Console: owner says verified (likely DNS TXT — no HTML meta on homepage, which is fine). No GA4 yet → step-by-step setup instructions given to owner.
+- Two new skills committed: customer-value-spec.md (per-tier deliverables, "what does a paying customer GET?") + cowork-prompt-business-readiness.md (single copy-paste activation for hands-on operator work).
+- Competitor + real-estate-tech deep research running in background → will deliver feature-by-feature adoption plan + auction product spec + Israel-niche opportunities when it lands.
+
+**OPEN**: GA4 Measurement ID (owner to create + send); plugin deploy method (owner to fix path or use Cowork TASK 1); robots.txt server-side serve (drop file or add nginx line); /advertise/ + /pricing/ pages (Cowork TASK 4); empty directory seed (Cowork TASK 5).
+
+### 2026-06-01 - Claude Code - proptech adoption roadmap + sprint workflow
+- Deep competitor research returned (Zillow/Redfin/Realtor/Rightmove/REA/Idealista/Compass/Houzz/Opendoor/PropertyGuru/99.co/MAIA + Israeli incumbents Yad2/Madlan/Komo/Homeless/Yad1/Onmap). Synthesized into a gap map + 4-phase backlog.
+- New skill: proptech-adoption-roadmap.md (full sprint sequence with owner-decision gates, cited sources, unverified items flagged honestly).
+- Strategic thesis: combine (Madlan-grade data) + (Compass-grade workflow) + (lawyer-grade doc trust = owner is the moat) + (modern AI). The intersection is winnable in Israel because no one has all 4.
+- Cowork prompt extended with TASK 7 (Phase 0 scaffolding: /contract-check/, /avm/, /tax-calculator/ extension, /sold-prices/, /tama-38-checker/ as placeholder pages with SEO value pre-data-wire).
+- Owner-decision gates from the roadmap (block this sprint until answered):
+  1. Plugin deploy path (zip+upload / sftp / fix pipeline)
+  2. GA4 Measurement ID (G-XXXXXXXXXX)
+  3. Contract-review price (recommended ₪450-750 for 48h)
+  4. Lawyer schema (still "keep as-is"? confirming)
+  5. Founding professionals to recruit (lawyer + appraiser + mortgage advisor)
+- Skip list explicit: iBuyer (capital risk + IL market depth) and star-rating system for lawyers/brokers (IL bar rules + 2024 broker transparency תקנות). Use "verified transactions" counter instead.
+
+### 2026-06-01 - Claude Code - plugin update mechanism solved + encyclopedia project MAP
+- PLUGIN UPDATE DIAGNOSIS: PUC (plugin-update-checker) reads plugin-dist/nadlan-config.json from the MAIN branch. Live=1.2.0, repo metadata was 1.2.1, my v1.3.0 only on feature branch + never published to plugin-dist on main → updater correctly never fired. Mechanism is NOT broken, just unfed. git pull syncs only the THEME (UPress git); plugin deploys via PUC (merge metadata to main → owner clicks Update in WP).
+- SHIPPED v1.3.0 via PUC: built plugin-dist/nadlan-config-1.3.0.zip + bumped nadlan-config.json to 1.3.0 + changelog. Pushed to feature branch. To deploy: merge feature→main (or cherry-pick plugin-dist/ + plugins/nadlan-config/) → WP Admin shows Update → owner clicks. Verify healthcheck=1.3.0.
+- GA4: Google Site Kit is ALREADY ACTIVE on the site. GA4 (G-G3QRV5646E, property 539731843) should be wired via Site Kit UI (no code, no plugin deploy, also fixes the Search Console link Cowork couldn't finish). Do NOT also hardcode gtag in the plugin = avoid double-tagging.
+- CANNIBALIZATION MAP captured: full 100-page slug+focus-keyword inventory pulled (8 pillars + ~45 spokes + city pages + tools + directory). This is the do-not-duplicate guardrail for all future content.
+- NEW skill: content-encyclopedia-glossary-plan.md = MAP ONLY (build later via ChatGPT-Cowork like the articles). Glossary CPT nadlan_term, /glossary/, definition + practical "coursehood" block + cross-links up to pillars. Iron rule: never target an existing focus keyword; glossary = definitional intent on terms with NO existing page. PRIORITY discovery = terms with EN Wikipedia article but no HE article (content gap = fast #1). Lovable only for front-end UX, not content.
+
+### 2026-06-01 (afternoon) — Claude Code — lawyer-marketplace product LOCKED + landline retired
+**Phone correction (owner, this session):** landline `036916454` is OUTDATED. Sole phone going forward = mobile **0525101555**. Removed `phone_work` from all 3 runbooks (v1/v2/v3) and corrected the §512 identity line. Live `tel:`/`wa.me` already point to the mobile — old number was leaking ONLY via runbook `phone_work` → article schema. Do NOT reintroduce 036916454 anywhere.
+
+**Marketplace product decisions LOCKED (owner answers, this session):**
+- STRUCTURE = Fiverr-style marketplace. Each lawyer = a "customer" of the platform with their OWN profile/storefront page; customer transacts with the LAWYER (lawyer issues חשבונית מס), platform takes a fee. Lowest IL-Bar risk (no fee-splitting). First lawyer = **Ben Bettesh / בן בטש, עו"ד, bar 29020** (owner himself) — run all checks on him.
+- PRODUCT = "ביקורת חוזה דירה" at URL **/contract-audit/**. Deliberately NOT "בדיקה משפטית" (that keyword is owned by the existing pillar /real-estate-lawyer/ — avoid cannibalization). Pillar gets a CTA block linking DOWN to the product.
+- TIERS = 3: **₪450 Basic** (written PDF, 48h, no follow-up) / **₪750 Premium** (PDF + phone call + follow-up) / **₪1200 Full** (PDF + call + one counter-revision round). Tight per-tier scope text to minimize refund edge-cases.
+- SLA = **48 BUSINESS hours** (excl. Fri PM / Shabbat / holidays), clock starts when payment clears AND readable contract uploaded. Late = automatic **50% refund** + delivery still happens. Full refund only if order abandoned.
+- HANDOFF = auto-email to lawyer on payment (intake form + contract + shared Drive folder), lawyer returns audit PDF → forwarded to customer.
+- PAYMENTS = **Grow/Meshulam** (already on site, supports Bit/cards/payment-links) + **Greeninvoice** for חשבונית מס. Stripe present as backup. WooCommerce live (/shop/, /checkout/, /my-account/ all 200).
+
+**OPEN / pending:**
+- Contact buttons (WhatsApp/call) "look awful" per owner → DEEP-RESEARCH best-practice click-to-call/WhatsApp button UX, then redesign. (Research prompt to be prepared.)
+- Competitor research prompt for Cowork (Israeli legal marketplaces + Fiverr/UpCounsel) drafted last turn — awaiting Cowork run before building /contract-audit/ page, lawyer-profile template, ToS/refund/disclaimer.
+- Private lawyer-handoff details (capacity etc.) to live in a .gitignored notes file — owner is using himself, identity facts already in runbook §0.
+
+### 2026-06-01 (later) — Cowork competitor research RETURNED (summary captured; full file NOT yet in repo)
+**⚠️ The full deliverable `competitive-research-contract-audit.md` lives in Cowork's OWN working copy — it was NOT committed/pushed, so it is NOT in this repo. Must be committed (or pasted) before it's lost when Cowork's session ends.**
+
+**STRATEGIC HEADLINE:** There is NO productized contract-review checkout in Israel. lawguide.co.il REDIRECTS to din.co.il (same company). din + peers = lead-gen DIRECTORIES + content portals: no price, no cart, no SLA, no escrow; lawyers PAY for placement; buyers fill a call-back form ("מלא/י את פרטיך ועורך דין יחזור אליך"). Israeli firm pages = SEO article + contact form, price hidden or quoted as a range. The ONLY click-to-buy fixed-scope real-estate contract review (stated deliverable + SLA) is FIVERR (already runs in Hebrew/₪). → Our productized model is genuinely differentiated in IL.
+
+**VERIFIED BENCHMARKS (from live visits; "not public" where hidden):**
+- Fiverr 3-tier (a real RE-contract gig): Basic ₪73.71 (simple, 2-day) / Standard ₪176.91 (detailed, 3-day) / Premium ₪265.36 (complex/tailored). Unlimited revisions. Paid 1-day rush +₪147–206. Buyer ALSO pays Fiverr service fee + VAT on top. Per-tier "Select" CTA; "Ideal for…" descriptor rows. Seller avg response 1h.
+- Fiverr review anatomy: each review stamped with price-range + duration + country + "Repeat Client" badge + sub-ratings (communication/quality/value).
+- RocketLawyer (intl subscription model): $149 / $249 / $349 per YEAR, middle tier "Most Popular", 7-day trial.
+- Israeli SERP price anchor: rental-contract review ₪500–₪900, up to ~₪1,500+VAT; framed as "half-to-one month's rent".
+- din.co.il profile anatomy: photo, name, address, one-line specialty, 5.0 rating + review count, tabs (על המשרד/המלצות/מאמרים/שו"ת/ייעוץ), practice-area icons, languages, answered forum Q&As as trust, lead form with פניה-type dropdown. CTAs: חייגו / SMS / פגישה בזום. NO price, NO checkout. Call-tracking numbers (055-453xxxx). Trust counters: 5,565 lawyers / 17,489 guides / 340,901 Q&As / 14,067 reviews.
+
+**COWORK'S RECOMMENDED nad-lan MODEL (verify before building):**
+- /contract-audit/ 3-tier: בסיסי ₪390 / מלא ₪690 ⭐(Most Popular) / קבלן ₪1,200. **RECONCILED 2026-06-01: owner chose Cowork's ₪390/₪690/₪1,200 (FINAL — supersedes earlier ₪450/₪750/₪1,200). All + מע"מ.** Scope: בסיסי = written red-flags list (≤10 notes), 3 business days. מלא = full clause-by-clause opinion + 15-min call, 2 business days. קבלן = contractor contract+spec+annexes, full opinion + 30-min Zoom + follow-up round, 2 business days. Rush +₪200 for 24h.
+- **FULL deliverable now committed to repo: `docs/competitive-research-contract-audit.md`** (owner pasted it back; no longer at risk of loss).
+- Steal: Fiverr "Ideal for…" tier framing + price-band-stamped reviews; din's answered-Q&A-on-profile as trust.
+- Avoid: no-price / no-SLA / lead-broker feel (the whole IL directory category's weakness).
+- Draft disclaimer frames LAWYER as the client's lawyer (issues חשבונית, holds professional responsibility), platform = intermediary — MUST verify vs לשכת עורכי הדין rules with counsel.
+
+**RESEARCH GAPS (Cowork was honest):** screenshots could NOT be saved to disk (described only). lawyers.co.il, psakdin.co.il, UpCounsel NOT opened (time budget) — no claims made about them.
+
+**BUILD DOCS DRAFTED (this session, await owner approval; nothing in WP yet):** `docs/contract-audit-product-page.md`, `docs/lawyer-profile-template.md`, `docs/contract-audit-tos-refund-disclaimer.md`. Owner inputs still needed: bio, headshot, sample opinion, public-contact preference.
+
+**GA4 FIXED (v1.4.0 shipped to feature branch):** Root cause = site tagged Google Tag GT-W6VHT5TK via Site Kit; owner's GA4 property G-G3QRV5646E got NO hits (not on page). Owner chose "hardcode now, consolidate later". Plugin v1.4.0 emits G-G3QRV5646E gtag in wp_head (guarded by NADLAN_GA4_HARDCODE const, skips admin). **DEPLOY: PUC reads dist json from MAIN — must merge plugin-dist/ (json + 1.4.0 zip) to main → WP shows Update → click Update → verify G-G3QRV5646E in page source + healthcheck.** CONSOLIDATION TODO: pick ONE source (GT destination OR this tag) to avoid double-count.
+
+**NEW PROJECT RECORDED (build deferred per owner):** `skills/directory-listings-project-plan.md` — free SEO "cards" for ALL Israeli real-estate projects + ALL contractors (auto-created teaser → claim → upgrade to marketing platform). Mini-Wikipedia, stats-rich, original (Cowork+ChatGPT), reuse `project`/`professional` CPTs, STRICT no-cannibalization vs the 100-page inventory. **Owner: keep recording all skills/knowledge — next project = Justice.co.il will REUSE these, not start from scratch.**
+
+### 2026-06-01 (evening) — Claude Code — DEEP BUILD: directory + listings + auction infra (v1.5.0)
+Owner went offline, directed autonomous continuous build ("you're the owner, prove deep wiring", leave questions for later, skip buttons). Ran 3 parallel research agents (best-in-class portals / cutting-edge proptech / IL directory data) — all returned verified, concrete specs.
+
+**SHIPPED nadlan-config v1.5.0 (branch/PR #4; NOT live until merge→main + WP Update):** 6 modular includes under `plugins/nadlan-config/inc/`:
+- catalog-meta, claim (free-card→claim→verified-owner funnel, REST+admin+map_meta_cap), import (REAL data.gov.il CKAN importer: רשם הקבלנים ~14k → professional cards, התחדשות עירונית ~938 → project cards; dashboard buttons + WP-CLI + import-enrich REST for Cowork/ChatGPT prose), schema (JSON-LD + thin-content noindex anti-cannibalization guard), cards-render (facts table + gallery + claim CTA + provenance), auction (timed proxy-bid + soft-close + custom wp_nadlan_bids table + auctions/v1 REST + GET_LOCK concurrency). All PHP lints clean. Healthcheck reports directory/auction readiness.
+- **OPERATE:** Dashboard → "NadLan Directory Import" → click "Import next 500" repeatedly (or `wp nadlan import`). Cards land as stub (noindexed) → Cowork enriches via /nadlan/v1/import-enrich → indexable.
+
+**KNOWLEDGE/REUSE:** Full architecture + 3 research reports consolidated in `skills/listings-auction-directory-architecture.md` (verified data-source resource_ids, competitor read, Zillow-feature roadmap, auction spec, claim/verification model, cannibalization rules, Justice.co.il reuse). Banked decisions/blanks + security-review items in `docs/listings-questions.md`.
+
+**NOT BUILT (roadmap in architecture skill §3):** the "Zillow" listing features (AVM/deal-history, neighborhood panel, saved-search alerts, seller funnel, schedule-viewing, school/planning overlays, compare/favorites, משכנתא calc, AI descriptions, 3D tours). Auction deposits/e-sign/realtime = stubs. Claim OTP-to-registry-contact = TODO. Contact-button fix = still deferred (owner: lowest priority, later via Cowork). Hands-on testing with Cowork = pending.
+
+### 2026-06-01 (late evening) — Claude Code — AUTONOMOUS DEEP BUILD continued (v1.6.0 → v1.13.0)
+Owner offline; continued autonomous build per "keep coding, web search everything, capture skills/knowledge, leave blanks for later". Ran web searches before each module for grounding (2025-26 best practice + IL law). 8 more versions shipped on PR #4 (all clean lints, all via PUC):
+
+- **v1.6.0** listings-ux: similar listings, favorites (REST+localStorage), DOM badge, ₪ mortgage calc, schedule-viewing+WhatsApp CTA.
+- **v1.7.0** avm-deals: cached wp_nadlan_deals table, comparable-sales AVM with FSD-style confidence + explainable range (degrades on sparse data), neighborhood stats, GET /nadlan/v1/avm + POST /deals-ingest, [nadlan_home_value] seller funnel. Research-grounded (comps+hedonic, confidence/FSD, explainability; ML/SHAP=roadmap).
+- **v1.8.0** saved-search: nadlan_saved_search CPT, double opt-in, daily cron matcher, [nadlan_save_search].
+- **v1.9.0** ai-features: pluggable nadlan_llm_request (default Anthropic via NADLAN_LLM_API_KEY); listing-description generator with HUD Fair-Housing + IL חוק איסור הפליה guardrails + post-gen steering-phrase scan; NL Hebrew search (LLM→strict JSON filter→WP_Query) + regex fallback + 1h cache.
+- **v1.10.0** city-hubs + media: /city/<city>/{contractors|projects|properties}/ rewrite endpoints (≥5-card floor, 5-9=noindex, CollectionPage+ItemList JSON-LD, dedicated sitemap-nadlan-hubs.xml); Kuula 3D tour (post-id auto-extract; Matterport dropped by Zillow Oct'25) + video oEmbed + floorplan tabbed block; VideoObject JSON-LD.
+- **v1.11.0** compare + nearby-poi + esign: localStorage compare tray + /compare/ + REST; Overpass POI panel (free, 10k/day, 24h cache, fail-silent); pluggable e-sign on auction win — IL LAW-AWARE (ESL 5761-2001: e-sign NOT valid for property conveyances/land-registry → scoped to offer letter only; disclaimer baked in; counsel review required).
+- **v1.12.0** map + lead-drip: Leaflet + leaflet.markercluster (CDN, no key, RTL) on /properties/ archive + [nadlan_map]; 6-step Hebrew drip with state machine (active→mid→long→archive), opt-out token+REST, daily cron, nadlan_drip_steps filter.
+- **v1.13.0** ops-dashboard: single WP Admin page "NadLan Ops" showing leads (drip states), claims, cards (counts+claimed+enriched), imports, auctions, data layer.
+
+**Knowledge captured (skills/knowledge per owner standing rule):** all modules + research grounding consolidated in `skills/listings-auction-directory-architecture.md` (now sections 8a-8g). Banked blanks/decisions/security-review items in `docs/listings-questions.md`. Cowork mission pack in `docs/cowork-missions.md` (13 missions, dependency-waved). All provider-agnostic where possible for Justice.co.il reuse.
+
+**Key research findings captured this run:** (1) AVMs blend comps+hedonic + report FSD/confidence (Zillow/Redfin model); (2) HUD 2024 Fair-Housing applies to AI-generated text → steering-phrase scan mandatory; (3) Matterport dropped by Zillow Oct 2025 → Kuula is the recommended free 3D platform; (4) Israeli ESL 5761-2001 makes e-sign INVALID for property conveyances → adapter scoped to offer letter only; (5) Programmatic SEO 2026 needs ≥25-30% unique data/page or risks scaled-content abuse penalty; (6) Lead-drip cadence 5-8 emails over 30-60d + state machine; (7) Overpass API free 10k/day for POI; (8) NL search = LLM→structured filter→deterministic query + regex fallback (Realmo Rey, planetRE+DeepSeek, Zillow NL search May'26 launches).
+
+### 2026-06-01 (late) — Claude Code — GA4 diagnosis CORRECTED + v1.16.0 tier paywall + nadlanmaster attack skill
+**GA4 ROOT CAUSE FOUND (corrects my earlier diagnosis):** Site Kit screenshot revealed Site Kit IS pointing at G-G3QRV5646E correctly (Measurement ID G-G3QRV5646E, Property 539731843, "Snippet is inserted"). The "no data" was because **"Excluded from Analytics: All logged-in users"** — owner viewing his own site as admin → tag stripped. Fix: test in **incognito** (not logged in). Realtime should populate within seconds. **Therefore my v1.4.0 hardcode WOULD DOUBLE-COUNT once PR #4 merges. Recommendation reversed: disable the hardcode by adding `define('NADLAN_GA4_HARDCODE', false);` to wp-config.php immediately after Update. Site Kit is doing it right.**
+
+**nadlanmaster.co.il DEEP-PROBED (direct fetch):** WP 5.4.19 + Yoast + CF7 (3 forms/project page) + GA4 G-PQG7YNQFV0. 650 indexable URLs (280 posts + 71 city categories + 299 pages). Schema: only Organization/WebSite/WebPage — NO RealEstateListing/Article/BreadcrumbList. We are massively ahead on schema + data layer + AVM + maps + auctions. They beat us on: 4yr of accumulated authority, 280 paid developer landing pages (3 CF7 forms each, /pirsum/ + /pirsumi/ confirm sponsorship model), foreign-market pillars (Portugal/Cyprus/Greece/UAE/USA), calc PAGES at money keywords, קבוצת רכישה, משקיע כשיר, השקעות אלטרנטיביות. Full anatomy + cannibalization-safe gap analysis + Lovable mission prompt: `skills/nadlanmaster-anatomy-and-attack.md`.
+
+**KEY FINDING owner asked for:** Lovable has **live Semrush integration FREE until 2026-08-15, no Semrush account needed** — confirmed via Lovable docs. The mission prompt in §6 of the anatomy skill is designed to exploit this for measured KD/volume gap analysis.
+
+**SHIPPED v1.16.0 — tier paywall (closes the leak):**  per rulebook §10 (Free/Pro/Premier). `inc/tiers.php`: `paid_tier` + `trial_started` meta. Claim approval → free + 30d trial. Trial=full surfaces; post-trial Free=facts visible (still indexable for SEO) but phone/email/website/photos HIDDEN + "שדרגו לפרו" CTA fires a lead with topic="שדרוג לפרו"; Pro=full; Premier=Pro+מאומת badge+priority sort. REST sanitizes gated meta so the API doesn't leak. Admin meta box per card. Healthcheck reports per-tier counts. Owner brief 2026-06-01 satisfied: "make it free more basic basic basic… not letting people advertise for free and getting links and contacts." Now: 14k contractor cards stay searchable (SEO inventory we want) but value (contact+photos+leads) is gated to paid tier.
+
+**Pending owner decisions (banked):** (1) Pro/Premier monthly price. (2) Free-trial length (currently 30d via NADLAN_FREE_TRIAL_DAYS). (3) Foreign-market expansion yes/no. (4) Owner to paste the Lovable mission prompt from the anatomy skill §6. (5) GA4 hardcode disable in wp-config.php once PR #4 merges.
+
+**Versions in this PR #4 now: 1.4.0 → 1.16.0** (13 plugin versions, 22 inc/ modules, all PHP lints clean).
