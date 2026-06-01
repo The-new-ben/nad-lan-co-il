@@ -771,7 +771,8 @@ Per-article: 519=93n/26l · 512=63n/15l · 543=22n/27l · 540=22n/19l · 547=24n
 - din.co.il profile anatomy: photo, name, address, one-line specialty, 5.0 rating + review count, tabs (על המשרד/המלצות/מאמרים/שו"ת/ייעוץ), practice-area icons, languages, answered forum Q&As as trust, lead form with פניה-type dropdown. CTAs: חייגו / SMS / פגישה בזום. NO price, NO checkout. Call-tracking numbers (055-453xxxx). Trust counters: 5,565 lawyers / 17,489 guides / 340,901 Q&As / 14,067 reviews.
 
 **COWORK'S RECOMMENDED nad-lan MODEL (verify before building):**
-- /contract-audit/ 3-tier: בסיסי ₪390 / מלא ₪690 ⭐(Most Popular) / קבלן ₪1,200.  NOTE: this DIFFERS from the tiers the OWNER locked earlier (₪450/₪750/₪1200). RECONCILE WITH OWNER before building.
+- /contract-audit/ 3-tier: בסיסי ₪390 / מלא ₪690 ⭐(Most Popular) / קבלן ₪1,200. **RECONCILED 2026-06-01: owner chose Cowork's ₪390/₪690/₪1,200 (FINAL — supersedes earlier ₪450/₪750/₪1,200). All + מע"מ.** Scope: בסיסי = written red-flags list (≤10 notes), 3 business days. מלא = full clause-by-clause opinion + 15-min call, 2 business days. קבלן = contractor contract+spec+annexes, full opinion + 30-min Zoom + follow-up round, 2 business days. Rush +₪200 for 24h.
+- **FULL deliverable now committed to repo: `docs/competitive-research-contract-audit.md`** (owner pasted it back; no longer at risk of loss).
 - Steal: Fiverr "Ideal for…" tier framing + price-band-stamped reviews; din's answered-Q&A-on-profile as trust.
 - Avoid: no-price / no-SLA / lead-broker feel (the whole IL directory category's weakness).
 - Draft disclaimer frames LAWYER as the client's lawyer (issues חשבונית, holds professional responsibility), platform = intermediary — MUST verify vs לשכת עורכי הדין rules with counsel.
