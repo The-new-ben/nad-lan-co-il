@@ -159,6 +159,12 @@ What v1.10.0 ships:
 - Tabbed UI on property singles. `VideoObject` JSON-LD when a video is set (rich-result eligible).
 - Meta: `tour_url`, `video_url`, `floorplan_url` (REST exposed).
 
+## 8f. Compare + Nearby POI + e-Sign (BUILT v1.11.0)
+
+- **Compare listings** (`inc/compare.php`): Zillow/Redfin-grade side-by-side. localStorage tray (no auth), `/compare/` rewrite page, REST `/nadlan/v1/compare`. Cap 4 items; per-property ₪/sqm, amenities (elevator/parking/protected_room) rendered.
+- **Nearby POI** (`inc/nearby-poi.php`): Realtor.com / Rightmove "what's nearby" parity via **OpenStreetMap Overpass API** — free, no key, 10k req/day/IP. Schools/kindergartens/transit/shops/health within 1km. **24h transient cache per coord-bucket** so we never burn rate. Fail-silent if Overpass is down.
+- **e-Sign adapter** (`inc/esign.php`): pluggable, hooks `nadlan_auction_closed`. Default = email Hebrew offer letter to winner + admin; real providers (BoldSign/Dropbox Sign/DocuSign) plug in via `nadlan_esign_create_request` filter and return a hosted signing URL. **⚠ IL LAW (חוק חתימה אלקטרונית התשס"א-2001):** e-signatures are valid in IL — EXCEPT for property transactions, conveyances, and land-registry filings (and wills, notarized deeds, POAs, bank-customer agreements). So the adapter is scoped to the **offer/engagement letter**, NOT the שטר מכר. The disclaimer is baked into every generated document. **Counsel review required before go-live.**
+
 ## 9. REUSE → Justice.co.il
 
 The whole pattern is portable: free-card land-grab → claim → upgrade → marketing platform; CKAN/registry importer; original-content pipeline; thin-content noindex guard; auction engine; cannibalization discipline. For Justice.co.il swap entity types (lawyers/courts/legal-topics/rulings) and registries (לשכת עוה"ד, court databases). Keep modules provider-agnostic. **Standing instruction: keep recording all research + patterns into skills/ as the reusable asset.**
