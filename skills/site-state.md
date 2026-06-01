@@ -705,3 +705,9 @@ Per-article: 519=93n/26l · 512=63n/15l · 543=22n/27l · 540=22n/19l · 547=24n
 - Native accessibility audit phases 1-3 (axe/WAVE/Lighthouse/Pa11y + WCAG AA code fixes in the forked theme).
 - Yoast breadcrumb visible-last-crumb truncation (research-recommended, not yet applied).
 - 543 rewrite was Claude-authored as one-time per owner authorization. Future rewrites default back to ChatGPT-via-Cowork pipeline.
+
+### 2026-05-31 (business-readiness report) - Claude Code
+- Plugin v1.3.0 pushed (robots.txt + wptexturize disable) - NEEDS server git pull to activate.
+- Verified monetization audit: SKUs+prices+payment(Grow/Bit/Stripe) built; join-pro live; catalog CPTs exist but directory EMPTY (0 professionals, 0 projects, 5 seed properties); **NO analytics installed (no GA4/GTM/Search Console/Bing) = cannot measure/prove traffic**; no /advertise/ page; /pricing/ slug collided into an article.
+- Two cited research reports done (global portals + Israel). New skill: monetization-readiness-and-adsales.md (product ladder by phase, ₪ benchmarks, ממומן disclosure law §7(c), broker-license carve-out §2(c), reporting/traffic-commitment policy).
+- Verdict: store built, prices set, but no audience + no measurement + empty shelves. Sell only asset-based + pay-per-lead NOW; impression/guaranteed-views products wait for traffic. Blocker #1 = install analytics.
