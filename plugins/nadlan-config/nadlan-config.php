@@ -2,7 +2,7 @@
 /**
  * Plugin Name: NadLan Config
  * Description: Lead-capture foundation: nadlan_lead CPT + lead-form handler + healthcheck. Read skills/nadlan-config-plugin.md.
- * Version: 1.17.0
+ * Version: 1.18.0
  * Author: nad-lan.co.il
  * License: GPL-2.0+
  * Requires PHP: 7.4
@@ -70,7 +70,7 @@ if ( ! function_exists( 'nadlan_config_healthcheck_response' ) ) {
 	function nadlan_config_healthcheck_response() {
 		$out = array(
 			'plugin'              => 'nadlan-config',
-			'version'             => '1.17.0',
+			'version'             => '1.18.0',
 			'cpt_present'         => post_type_exists( 'nadlan_lead' ),
 			'lead_handler_loaded' => (bool) has_action( 'admin_post_nadlan_lead' ),
 			'php_version'         => PHP_VERSION,
@@ -550,14 +550,15 @@ add_action( 'init', 'nadlan_config_disable_texturize', 20 );
  * G-G3QRV5646E received no hits. This emits the GA4 config directly so that
  * property starts collecting immediately.
  *
- * CONSOLIDATION TODO: once data is confirmed, pick ONE source of truth — either
- * (a) add G-G3QRV5646E as a destination of GT-W6VHT5TK in Google Tag settings and
- * set NADLAN_GA4_HARDCODE false, or (b) keep this and stop Site Kit from also
- * sending to G-G3QRV5646E — to avoid double-counting. Guarded by the constant
- * below so it can be switched off without a code edit if defined in wp-config.
+ * RESOLVED 2026-06-01: Site Kit is confirmed already tagging G-G3QRV5646E correctly
+ * (the "no data" the owner saw was Site Kit's "exclude logged-in users" — admin
+ * self-views; verified working in incognito). So the direct hardcode would
+ * DOUBLE-COUNT. Default is now FALSE — Site Kit owns GA4. To force the direct tag
+ * back on (e.g. if Site Kit is ever removed), add define('NADLAN_GA4_HARDCODE', true)
+ * to wp-config.php. No code edit needed to toggle.
  */
 if ( ! defined( 'NADLAN_GA4_HARDCODE' ) ) {
-	define( 'NADLAN_GA4_HARDCODE', true );
+	define( 'NADLAN_GA4_HARDCODE', false );
 }
 if ( ! function_exists( 'nadlan_config_ga4_tag' ) ) {
 	function nadlan_config_ga4_tag() {
