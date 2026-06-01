@@ -132,19 +132,25 @@ if ( ! function_exists( 'nadlan_card_assets' ) ) {
 		if ( ! is_singular( array( 'nadlan_project', 'nadlan_professional', 'nadlan_property' ) ) ) { return; }
 		?>
 <style>
-.nlcard{margin:24px 0;font-family:var(--font-sans,Heebo,sans-serif)}
-.nlcard-facts{width:100%;border-collapse:collapse;margin:0 0 18px}
-.nlcard-facts th,.nlcard-facts td{text-align:right;padding:9px 12px;border-bottom:1px solid rgba(27,26,23,.1);font-size:15px}
+.nlcard{margin:24px 0;font-family:var(--font-sans,Heebo,sans-serif);--nl-gold:#9C7A3C;--nl-ink:#1B1A17;--nl-cream:#FAF7F1}
+/* shiny facts table inside a rounded card */
+.nlcard-facts{width:100%;border-collapse:separate;border-spacing:0;margin:0 0 20px;background:#fff;border:1px solid rgba(27,26,23,.1);border-radius:14px;overflow:hidden;box-shadow:0 6px 20px rgba(27,26,23,.05)}
+.nlcard-facts th,.nlcard-facts td{text-align:right;padding:13px 18px;border-bottom:1px solid rgba(27,26,23,.07);font-size:15px}
+.nlcard-facts tr:last-child th,.nlcard-facts tr:last-child td{border-bottom:0}
+.nlcard-facts tr:nth-child(even) th,.nlcard-facts tr:nth-child(even) td{background:#FBF9F5}
 .nlcard-facts th{color:#6b6b6b;font-weight:500;width:42%;white-space:nowrap}
-.nlcard-gallery{display:grid;grid-template-columns:repeat(auto-fill,minmax(120px,1fr));gap:8px;margin:0 0 18px}
-.nlcard-gallery img{width:100%;height:110px;object-fit:cover;border-radius:4px}
-.nlcard-claim{background:#FAF7F1;border:1px solid rgba(27,26,23,.12);border-radius:6px;padding:20px;margin:18px 0}
-.nlcard-claim strong{font-size:17px}
-.nlcard-claim p{font-size:14px;color:#555;margin:6px 0 12px}
+.nlcard-facts td{font-weight:600;color:var(--nl-ink)}
+.nlcard-gallery{display:grid;grid-template-columns:repeat(auto-fill,minmax(130px,1fr));gap:10px;margin:0 0 20px}
+.nlcard-gallery a{overflow:hidden;border-radius:10px;display:block}
+.nlcard-gallery img{width:100%;height:120px;object-fit:cover;transition:transform .4s ease;display:block}
+.nlcard-gallery a:hover img{transform:scale(1.08)}
+.nlcard-claim{background:linear-gradient(135deg,#FAF7F1,#F3ECE0);border:1px solid rgba(156,122,60,.25);border-radius:14px;padding:24px;margin:18px 0;box-shadow:0 6px 20px rgba(156,122,60,.08)}
+.nlcard-claim strong{font-size:18px;color:var(--nl-ink)}
+.nlcard-claim p{font-size:14px;color:#555;margin:6px 0 14px}
 .nlcard-claim-form{display:grid;gap:8px;max-width:420px}
-.nlcard-claim-form input{padding:10px;border:1px solid rgba(27,26,23,.2);border-radius:4px;font:inherit}
-.nlcard-claim-form button{padding:11px;background:#1B1A17;color:#FAF7F1;border:0;border-radius:4px;font-weight:500;cursor:pointer}
-.nlcard-claim-form button:hover{background:#9C7A3C;color:#1B1A17}
+.nlcard-claim-form input{padding:11px;border:1px solid rgba(27,26,23,.18);border-radius:8px;font:inherit}
+.nlcard-claim-form button{padding:12px;background:var(--nl-ink);color:var(--nl-cream);border:0;border-radius:8px;font-weight:600;cursor:pointer;transition:background .2s,color .2s}
+.nlcard-claim-form button:hover{background:var(--nl-gold);color:#fff}
 .nlcard-hp{position:absolute;left:-9999px}
 .nlcard-claim-msg{font-size:13px}
 .nlcard-pending{color:#2e7d32;font-weight:500}
