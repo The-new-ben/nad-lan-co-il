@@ -13,7 +13,9 @@
 
 ## 2. THE IRON RULE — zero cannibalization
 
-**A glossary term gets its own page ONLY if no existing pillar/spoke already targets it.** If a term already has a page (see the do-not-duplicate list below), the glossary does NOT create a competing page — it either (a) skips it, or (b) creates a 1-paragraph stub that `rel=canonical`/links straight to the existing page. The glossary captures the *definition intent* of terms that currently have NO home.
+> **Refined 2026-06-01 by cited research — see §11 for the authoritative decision flowchart + a correction on `noindex,follow`.** §2 here is the summary; §11 governs.
+
+**A glossary term gets its own indexable page ONLY if its search intent differs from every existing pillar/spoke focus keyword.** If intent collides, the term does NOT get a competing page — it becomes an **anchor/H2 section inside the existing article** (physically cannot cannibalize, because no second URL exists). This is stronger than the noindex trick (see §11).
 
 ### Do-NOT-duplicate list (existing focus keywords — glossary must not target these as primary):
 Pillars: נדל"ן להשקעה, מכירת דירה, קניית דירה, עורך דין מקרקעין, התחדשות עירונית, נדל"ן מסחרי, מחשבון משכנתא, יעוץ מס מקרקעין.
@@ -106,3 +108,66 @@ For each candidate term:
 The glossary is the **content moat** that complements the **tech moat** in proptech-adoption-roadmap.md. Together: tools (AVM, tax calc, contract-checker) + knowledge (encyclopedia) + listings (catalog) + trust (lawyer-reviewed) = the Israeli Zillow/Madlan-beater. The glossary is low-risk (no cannibalization), high-GEO-value, and buildable now via the existing ChatGPT pipeline while traffic grows.
 
 _Created 2026-06-01 by Claude Code (claude-opus-4-8). Cannibalization guardrail = the 100-page keyword inventory captured in site-state. Build in governed batches via the ChatGPT pipeline; Lovable only for the front-end UX component._
+
+---
+
+## 11. Research-backed build spec (2026-06-01) — AUTHORITATIVE
+
+Cited from a deep research pass (Wikipedia MOS, Google canonical/noindex docs, Mueller statements, schema.org, GEO sources). This section governs where it conflicts with earlier notes.
+
+### 11a. Wikipedia/Wikimedia STYLE — the page template to replicate (RTL-adapted)
+Per Wikipedia Manual of Style / Layout, top → bottom:
+1. **Hatnote** ("ראו ערך מורחב: …" / "לא להתבלבל עם …") — disambiguation/cross-ref, first screen.
+2. **Infobox** (תיבת מידע) — structured fact box. **Place on the LEFT for our Hebrew RTL site** (Wikipedia puts it right on LTR).
+3. **Lead section** (פסקת פתיחה) — definition-first, term in bold in the first sentence, no bullets. This is the block AI engines extract/cite. Most important.
+4. **Table of contents** (תוכן עניינים) — auto from H2/H3 when 4+ sections.
+5. **Body** (H2/H3 hierarchy) + the practical "מדריך מעשי" coursehood block (owner-mandated, §4).
+6. **ראו גם / See also** — bulleted internal related-term links only.
+7. **מקורות / References** — citations (a minimal valid entry = lead + references).
+8. **תבנית ניווט / navbox** — bottom grouped links (e.g., "מונחי משכנתא").
+9. **קטגוריות / Categories** — classification for browse/discovery.
+Plus **disambiguation pages** where one Hebrew term has several real-estate meanings (stub listing the meanings, each linking out).
+
+### 11b. WordPress implementation — DECISION: CPT on the MAIN domain
+- **Build a `nadlan_term` CPT with a wiki-style template + CSS on the main domain.** Reason: shares existing domain authority + internal-link graph; full per-term control of canonical/robots/schema (essential for the cannibalization defense); one stack for a solo operator.
+- **Do NOT run MediaWiki on a subdomain.** Google treats a subdomain as a substantially separate site → splits authority → the topical-authority transfer to our pillars is lost. Confirmed (Pagely).
+- Optional bootstrap: the **Encyclopedia/Glossary/Lexicon plugin by Daniel Stelter (Eickmeyer)** creates its own CPT with A-Z, autocomplete, SEO URLs. If used: **DISABLE its auto-"linkify" feature** — auto-linking carpet-bombs pillar/spoke articles with links to thin term pages and destroys anchor discipline (a real cannibalization vector). Keep canonical/robots control.
+
+### 11c. Cannibalization defense — CORRECTED + ranked
+1. **Intent separation (primary).** Google tolerates the same keyword on multiple pages when intent differs. Glossary = purely definitional ("מה זה X" — definition, formula, history). Pillar/spoke = transactional/advisory ("X — כמה, איך, מדריך 2026"). Different title, H1, angle. Safe when intent is genuinely distinct.
+2. **ANCHOR-IN-EXISTING (safest).** If intent collides with an existing focus keyword, do NOT create a page — add the term as an H2 section with an `id` anchor inside the existing spoke, and point all "definition" internal links to that anchor. No second URL = cannot cannibalize. **Default choice when in doubt.**
+3. **Canonical → pillar (near-duplicates only).** `rel=canonical` from term to pillar ONLY when the term page is essentially a thin duplicate. Google may ignore a canonical between genuinely different pages. **NEVER combine canonical with noindex** (Google rejects the contradiction).
+4. **`noindex,follow` — CORRECTION to earlier advice.** It removes the page from the SERP (so it can't out-rank the pillar) — but it does **NOT durably preserve internal-link equity**. John Mueller confirmed long-term `noindex` decays to `noindex,nofollow`: Google stops recrawling, drops it, and stops following its links. So: use `noindex,follow` only for thin/navigational terms, and **never make a noindexed term the sole link path to another page** (any page it links to must also be reachable from indexable pages — pillars, navboxes, sitemap). Reassess noindexed terms in ~6 months: promote to index or fold into a parent term.
+5. **Anchor/link discipline.** Glossary links UP to the canonical pillar with the **bare term** as anchor (not the money keyword). Pillars link DOWN to terms sparingly. Always link to the canonical URL.
+
+### 11d. Per-term DECISION FLOWCHART (run on every candidate; first match wins)
+```
+Q1. Same search INTENT as an existing pillar/spoke focus keyword?
+      YES → ANCHOR-IN-EXISTING (H2+id inside that article). No new URL.
+      NO  → Q2
+Q2. Purely definitional, intent clearly DIFFERENT from any pillar?
+      YES → FULL INDEXABLE term page. Self-canonical. DefinedTerm schema. Link up to pillar.
+      NO  → Q3
+Q3. Overlaps a pillar keyword BUT has real encyclopedic value?
+      YES → build + rel=canonical → pillar (no noindex). Ensure its links are also reachable elsewhere.
+      NO  → Q4
+Q4. Thin / near-zero volume, needed only for completeness or navigation?
+      YES → noindex,follow (treat equity as temporary; never sole link path). Reassess in 6 months.
+      NO  → Q5
+Q5. No volume, no encyclopedic value, no nav need?
+      → SKIP.
+```
+Default bias for a rankings-protective site: when torn between INDEX and ANCHOR-IN-EXISTING → choose ANCHOR.
+
+### 11e. Schema
+- Glossary index page → `DefinedTermSet` (name, url, hasPart → term @ids).
+- Each term page → `DefinedTerm` (name, description, inDefinedTermSet), JSON-LD. Rich indexable terms can ALSO carry `Article`.
+- **Honest flag:** `DefinedTerm`/`DefinedTermSet` produce **no dedicated Google rich result** and are **not a confirmed ranking boost**. The verified benefit is machine-readability / entity clarity / AI-citation grounding. Don't promise a SERP visual from it.
+
+### 11f. The SEO/GEO upside (why it's worth it)
+GEO research lists glossaries (definitions + disambiguation) alongside pillars/FAQs as content that wins AI citations — "definitional clarity strengthens semantic coverage and increases citation eligibility." Definition-first leads are exactly what AI Overviews / ChatGPT / Perplexity extract. A comprehensive Hebrew term set signals nad-lan.co.il is the authoritative entity hub for Israeli real estate, strengthening the pillars it links to. Priority = English-Wikipedia-gap terms (no HE competitor = fast #1 + AI citation with little competition).
+
+### 11g. Build path (unchanged)
+Map (this skill) → term list with per-term flowchart verdict → ChatGPT master prompt (§9) → Drive inbox → Cowork publishes as `nadlan_term` (or anchor-edits into existing spokes) → /glossary/ index with A-Z + DefinedTermSet. Lovable only for the front-end UX component (infobox, A-Z, related-terms graph), not content.
+
+Sources: Wikipedia MOS/Layout, MOS/Lead, MOS/Infoboxes; Google consolidate-duplicate-URLs + canonicalization docs; Search Engine Roundtable (Mueller long-term noindex→nofollow); Sitebulb; Backlinko/Yoast/Semrush (cannibalization); schema.org DefinedTerm/DefinedTermSet; Search Engine Land GEO; Pagely (WP wiki / subdomain authority); Barn2/Bloggerpilot (glossary plugins).
