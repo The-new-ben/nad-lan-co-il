@@ -110,6 +110,16 @@ Timed English auctions (Auction.com/Hubzu model). Data: `nadlan_auction` CPT + `
 
 ---
 
+## 8b. AVM / valuation methodology (BUILT v1.7.0 — `inc/avm-deals.php`)
+
+Research-grounded (2025–26 best practice):
+- **AVMs blend methods:** comparable-sales (comps), **hedonic regression** (value from features: sqm, rooms, age, location, sale timing), repeat-sales, and tax-assessment models. Modern AVMs are ML (gradient boosting: XGBoost/LightGBM/CatBoost; RF; sometimes LSTM/Transformer for time trends) and report a **confidence score / Forecast Standard Deviation (FSD)**. Leaders claim ~2% median error on-market, ~90–94% accuracy; 2026 trend = **explainable AI (SHAP)** for interpretable reports (needed in regulated/lending use).
+- **What we built (v1.7.0):** a comparable-sales AVM as the pragmatic phase-1 — median ₪/sqm of nearby comps (same city, sqm ±25%, rooms ±1, last 36 months, 10% trimmed for robustness) × subject sqm; confidence = (1−coefficient-of-variation) scaled by sample size; ± band 5–25% from dispersion. Returns `insufficient_data` under 5 comps so it never shows a junk number. Reads ONLY from the cached `wp_nadlan_deals` table (never calls upstream per pageview).
+- **Data ingest, two paths (decoupled from endpoint reverse-engineering):** (a) `nadlan_deals_remote` filter where Cowork's verified govmap/nadlan endpoint (mission M10) slots in for a cron ETL; (b) `POST /nadlan/v1/deals-ingest` so Cowork can push verified deal rows directly. Either fills the cache; the AVM works off it regardless.
+- **Surfaces:** on-listing valuation block (estimate + range + comp count + confidence% + "not an appraisal" disclaimer), neighborhood 12-mo stats, and a `[nadlan_home_value]` **seller lead funnel** (estimate + captures phone → lead).
+- **Roadmap upgrade:** replace median-comps with a trained gradient-boosting model + SHAP explanation once enough deal rows are cached; add repeat-sales index per neighborhood; price-trend charts.
+- **BLANK (legal):** storing nadlan.gov.il price data needs ToS/legal sign-off (no official API). Govmap deal endpoints are reverse-engineered — verify (M10) before wiring the live ETL.
+
 ## 9. REUSE → Justice.co.il
 
 The whole pattern is portable: free-card land-grab → claim → upgrade → marketing platform; CKAN/registry importer; original-content pipeline; thin-content noindex guard; auction engine; cannibalization discipline. For Justice.co.il swap entity types (lawyers/courts/legal-topics/rulings) and registries (לשכת עוה"ד, court databases). Keep modules provider-agnostic. **Standing instruction: keep recording all research + patterns into skills/ as the reusable asset.**
