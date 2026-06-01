@@ -757,3 +757,23 @@ Per-article: 519=93n/26l · 512=63n/15l · 543=22n/27l · 540=22n/19l · 547=24n
 - Contact buttons (WhatsApp/call) "look awful" per owner → DEEP-RESEARCH best-practice click-to-call/WhatsApp button UX, then redesign. (Research prompt to be prepared.)
 - Competitor research prompt for Cowork (Israeli legal marketplaces + Fiverr/UpCounsel) drafted last turn — awaiting Cowork run before building /contract-audit/ page, lawyer-profile template, ToS/refund/disclaimer.
 - Private lawyer-handoff details (capacity etc.) to live in a .gitignored notes file — owner is using himself, identity facts already in runbook §0.
+
+### 2026-06-01 (later) — Cowork competitor research RETURNED (summary captured; full file NOT yet in repo)
+**⚠️ The full deliverable `competitive-research-contract-audit.md` lives in Cowork's OWN working copy — it was NOT committed/pushed, so it is NOT in this repo. Must be committed (or pasted) before it's lost when Cowork's session ends.**
+
+**STRATEGIC HEADLINE:** There is NO productized contract-review checkout in Israel. lawguide.co.il REDIRECTS to din.co.il (same company). din + peers = lead-gen DIRECTORIES + content portals: no price, no cart, no SLA, no escrow; lawyers PAY for placement; buyers fill a call-back form ("מלא/י את פרטיך ועורך דין יחזור אליך"). Israeli firm pages = SEO article + contact form, price hidden or quoted as a range. The ONLY click-to-buy fixed-scope real-estate contract review (stated deliverable + SLA) is FIVERR (already runs in Hebrew/₪). → Our productized model is genuinely differentiated in IL.
+
+**VERIFIED BENCHMARKS (from live visits; "not public" where hidden):**
+- Fiverr 3-tier (a real RE-contract gig): Basic ₪73.71 (simple, 2-day) / Standard ₪176.91 (detailed, 3-day) / Premium ₪265.36 (complex/tailored). Unlimited revisions. Paid 1-day rush +₪147–206. Buyer ALSO pays Fiverr service fee + VAT on top. Per-tier "Select" CTA; "Ideal for…" descriptor rows. Seller avg response 1h.
+- Fiverr review anatomy: each review stamped with price-range + duration + country + "Repeat Client" badge + sub-ratings (communication/quality/value).
+- RocketLawyer (intl subscription model): $149 / $249 / $349 per YEAR, middle tier "Most Popular", 7-day trial.
+- Israeli SERP price anchor: rental-contract review ₪500–₪900, up to ~₪1,500+VAT; framed as "half-to-one month's rent".
+- din.co.il profile anatomy: photo, name, address, one-line specialty, 5.0 rating + review count, tabs (על המשרד/המלצות/מאמרים/שו"ת/ייעוץ), practice-area icons, languages, answered forum Q&As as trust, lead form with פניה-type dropdown. CTAs: חייגו / SMS / פגישה בזום. NO price, NO checkout. Call-tracking numbers (055-453xxxx). Trust counters: 5,565 lawyers / 17,489 guides / 340,901 Q&As / 14,067 reviews.
+
+**COWORK'S RECOMMENDED nad-lan MODEL (verify before building):**
+- /contract-audit/ 3-tier: בסיסי ₪390 / מלא ₪690 ⭐(Most Popular) / קבלן ₪1,200.  NOTE: this DIFFERS from the tiers the OWNER locked earlier (₪450/₪750/₪1200). RECONCILE WITH OWNER before building.
+- Steal: Fiverr "Ideal for…" tier framing + price-band-stamped reviews; din's answered-Q&A-on-profile as trust.
+- Avoid: no-price / no-SLA / lead-broker feel (the whole IL directory category's weakness).
+- Draft disclaimer frames LAWYER as the client's lawyer (issues חשבונית, holds professional responsibility), platform = intermediary — MUST verify vs לשכת עורכי הדין rules with counsel.
+
+**RESEARCH GAPS (Cowork was honest):** screenshots could NOT be saved to disk (described only). lawyers.co.il, psakdin.co.il, UpCounsel NOT opened (time budget) — no claims made about them.
