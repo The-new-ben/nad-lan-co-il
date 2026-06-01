@@ -97,8 +97,8 @@ Returns: { "ok": true, "id": 1234, "url": "https://nad-lan.co.il/glossary/...", 
 | 31 | איטונג | Aerated concrete (Ytong) | 880 [est] | /buying-apartment/ | בנייה |
 | 32 | גשר תרמי | Thermal bridge | 170 [est] | /buying-apartment/ | בנייה |
 | 33 | בידוד אקוסטי | Acoustic insulation | 320 [est] | /buying-apartment/ | בנייה |
-| 34 | תקן ישראלי 1045 | IS 1045 (thermal insulation) | 110 [est] | /buying-apartment/ | בנייה |
-| 35 | תקן ישראלי 413 | IS 413 (earthquake) | 210 [est] | /urban-renewal/ | בנייה |
+| 34 | תקן ישראלי 1045 (בידוד תרמי של מבנים) | IS 1045 (thermal insulation) | 110 [est] | /buying-apartment/ | בנייה |
+| 35 | תקן ישראלי 413 (עמידות מבנים ברעידות אדמה) | IS 413 (earthquake) | 210 [est] | /urban-renewal/ | בנייה |
 | 36 | סגנון בינלאומי (אדריכלות) | International style | 480 [est] | /buying-apartment/ | אדריכלות |
 | 37 | באוהאוס | Bauhaus | 1900 [est] | /buying-apartment/ | אדריכלות |
 | 38 | ברוטליזם | Brutalism | 720 [est] | /buying-apartment/ | אדריכלות |
