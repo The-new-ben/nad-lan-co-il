@@ -62,10 +62,33 @@ Returns: { "ok": true, "id": 1234, "url": "https://nad-lan.co.il/glossary/...", 
 
 **Source**: `skills/lovable-competitor-blueprint-2026-06.md` §4 (27 verified Wiki-voids with vol estimates) + the existing rulebook §3 + the encyclopedia plan §3 whitelist. **Each term must still be confirmed as he.wikipedia void at publish time** (per-term step 1 of the loop). Volumes are `[Semrush]` where Lovable measured, else `[est]`.
 
+### 3a. Verified he.wikipedia status (Claude re-checked 2026-06-01 against the live API)
+
+**REAL VOIDS — publish freely:**
+- יחס הלוואה לשווי, יחס החזר חודשי, שיעור היוון, רווח תפעולי נטו, תשואה על הון עצמי, לוח קרן שווה, קומבינציה — no Hebrew article exists.
+- זכות קדימה (306 bytes), הפקעה (2 KB) — stub-level Hebrew article, treat as void: we win on depth.
+
+**COLLISIONS — skip OR re-angle (do not duplicate Wikipedia):**
+- לוח שפיצר → he.wiki has לוח סילוקין (30 KB, comprehensive). **Re-angle**: title as "לוח שפיצר vs לוח קרן שווה — איך לבחור" (comparison angle Wikipedia doesn't cover).
+- נסח טאבו → he.wiki has מרשם המקרקעין (30 KB). **Re-angle**: title as "איך לקרוא נסח טאבו" (how-to, not definitional).
+- כינוס נכסים → he.wiki article 29 KB, comprehensive. **SKIP**.
+- התיישנות במקרקעין → he.wiki התיישנות 56 KB. **Re-angle**: "התיישנות במקרקעין — ההבדל מהתיישנות אזרחית".
+- חכירה לדורות → he.wiki חכירה 14 KB. **Re-angle**: "חכירה לדורות מול בעלות — מה ההבדל בפועל".
+- ריבית פריים, משכנתא הפוכה, זיקת הנאה, שטר מכר → small Hebrew articles (5-7 KB) exist. Publishable IF body adds Israeli-specific practical depth Wikipedia lacks (mortgage flows, real-deal examples, gov refs). Otherwise skip.
+- גרייס משכנתא → covered inside the general משכנתה article (30 KB). Publishable as its own term because גרייס specifically is not a dedicated entry.
+
+### 3b. Pillar URL corrections (verified against the live site)
+
+- `/mortgage-advisor/` **redirects to `/mortgage-advisor/`** — use the latter as `related_pillar` for all finance terms.
+- `/urban-renewal/` exists (200) — use as-is.
+- `/real-estate-lawyer/` exists (200) — use as-is.
+
+### 3c. The 60-term table
+
 | # | Hebrew term | EN equiv | Vol | related_pillar | term_cat |
 |---|---|---|---|---|---|
-| 1 | יחס הלוואה לשווי | LTV ratio | 480 [est] | /mortgage/ (when built) | מימון ומשכנתא |
-| 2 | יחס החזר חודשי | DSCR / repayment ratio | 210 [est] | /mortgage/ | מימון ומשכנתא |
+| 1 | יחס הלוואה לשווי | LTV ratio | 480 [est] | /mortgage-advisor/ (when built) | מימון ומשכנתא |
+| 2 | יחס החזר חודשי | DSCR / repayment ratio | 210 [est] | /mortgage-advisor/ | מימון ומשכנתא |
 | 3 | שיעור היוון | Cap rate | 320 [est] | /investment-apartment/ | שמאות והערכה |
 | 4 | רווח תפעולי נטו | NOI | 170 [est] | /investment-apartment/ | שמאות והערכה |
 | 5 | תשואה על הון עצמי | Cash-on-cash return | 140 [est] | /investment-apartment/ | משקיע |
@@ -82,11 +105,11 @@ Returns: { "ok": true, "id": 1234, "url": "https://nad-lan.co.il/glossary/...", 
 | 16 | אגירת קרקעות | Land banking | 110 [est] | /investment-apartment/ | משקיע |
 | 17 | התיישנות במקרקעין | Adverse possession | 70 [est] | /real-estate-lawyer/ | משפט מקרקעין |
 | 18 | הערת ליס פנדנס | Lis pendens | 50 [est] | /real-estate-lawyer/ | משפט מקרקעין |
-| 19 | משכנתא הפוכה | Reverse mortgage | 3600 [Semrush] | /mortgage/ | מימון ומשכנתא |
+| 19 | משכנתא הפוכה | Reverse mortgage | 3600 [Semrush] | /mortgage-advisor/ | מימון ומשכנתא |
 | 20 | דירת ירושה | Probate real estate | 90 [est] | /real-estate-lawyer/ | משפט מקרקעין |
 | 21 | House Hacking | House hacking | 140 [est] | /investment-apartment/ | משקיע |
 | 22 | כינוס נכסים | Foreclosure | 590 [est] | /real-estate-lawyer/ | משפט מקרקעין |
-| 23 | מחזור משכנתא לשחרור הון | Cash-out refinance | 320 [est] | /mortgage/ | מימון ומשכנתא |
+| 23 | מחזור משכנתא לשחרור הון | Cash-out refinance | 320 [est] | /mortgage-advisor/ | מימון ומשכנתא |
 | 24 | היוון לחכירה / רמ"י | Capitalization (leasehold) | 880 [est] | /real-estate-lawyer/ | משפט מקרקעין |
 | 25 | תקנון בית משותף | Strata title bylaws | 210 [est] | /real-estate-lawyer/ | משפט מקרקעין |
 | 26 | כלונסאות | Pile / deep foundation | 320 [est] | /buying-apartment/ | בנייה וקונסטרוקציה |
@@ -114,10 +137,10 @@ Returns: { "ok": true, "id": 1234, "url": "https://nad-lan.co.il/glossary/...", 
 | 48 | חכירה לדורות | Long-term leasehold | 720 [est] | /real-estate-lawyer/ | משפט מקרקעין |
 | 49 | נסח טאבו | Land Registry extract | 5400 [est] | /real-estate-lawyer/ | משפט מקרקעין |
 | 50 | שטר מכר | Bill of sale (real estate) | 590 [est] | /real-estate-lawyer/ | משפט מקרקעין |
-| 51 | לוח שפיצר | Spitzer amortization schedule | 480 [est] | /mortgage/ | מימון ומשכנתא |
-| 52 | לוח קרן שווה | Equal-principal schedule | 210 [est] | /mortgage/ | מימון ומשכנתא |
-| 53 | גרייס (משכנתא) | Grace period (mortgage) | 320 [est] | /mortgage/ | מימון ומשכנתא |
-| 54 | ריבית פריים | Prime rate | 2400 [est] | /mortgage/ | מימון ומשכנתא |
+| 51 | לוח שפיצר | Spitzer amortization schedule | 480 [est] | /mortgage-advisor/ | מימון ומשכנתא |
+| 52 | לוח קרן שווה | Equal-principal schedule | 210 [est] | /mortgage-advisor/ | מימון ומשכנתא |
+| 53 | גרייס (משכנתא) | Grace period (mortgage) | 320 [est] | /mortgage-advisor/ | מימון ומשכנתא |
+| 54 | ריבית פריים | Prime rate | 2400 [est] | /mortgage-advisor/ | מימון ומשכנתא |
 | 55 | מדד תשומות הבנייה | Construction inputs index | 880 [est] | /buying-apartment/ | מימון ומשכנתא |
 | 56 | אופציה במקרקעין | Real estate option | 390 [est] | /real-estate-lawyer/ | משפט מקרקעין |
 | 57 | שמאי מכריע | Determining appraiser | 210 [est] | /real-estate-tax-advisor/ | שמאות |
@@ -127,7 +150,7 @@ Returns: { "ok": true, "id": 1234, "url": "https://nad-lan.co.il/glossary/...", 
 
 > Use Lovable's recommendation explicitly: KD<20 + verified void → these rank fast on a new site. The terms tagged `[Semrush]` (משכנתא הפוכה, רמ"י) are the highest-confidence buys.
 
-`related_pillar` placeholders for pages not yet built (`/mortgage/`, `/urban-renewal/`) can publish now pointing to the closest existing pillar (`/real-estate-tax-advisor/` or `/buying-apartment/`); when the new pillar lands, a bulk update reassigns. The cross-link rule (rulebook §6) is enforced by the field being non-empty, not by the specific URL.
+`related_pillar` placeholders for pages not yet built (`/mortgage-advisor/`, `/urban-renewal/`) can publish now pointing to the closest existing pillar (`/real-estate-tax-advisor/` or `/buying-apartment/`); when the new pillar lands, a bulk update reassigns. The cross-link rule (rulebook §6) is enforced by the field being non-empty, not by the specific URL.
 
 ---
 
