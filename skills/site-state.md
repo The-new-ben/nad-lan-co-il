@@ -734,3 +734,10 @@ Per-article: 519=93n/26l · 512=63n/15l · 543=22n/27l · 540=22n/19l · 547=24n
   4. Lawyer schema (still "keep as-is"? confirming)
   5. Founding professionals to recruit (lawyer + appraiser + mortgage advisor)
 - Skip list explicit: iBuyer (capital risk + IL market depth) and star-rating system for lawyers/brokers (IL bar rules + 2024 broker transparency תקנות). Use "verified transactions" counter instead.
+
+### 2026-06-01 - Claude Code - plugin update mechanism solved + encyclopedia project MAP
+- PLUGIN UPDATE DIAGNOSIS: PUC (plugin-update-checker) reads plugin-dist/nadlan-config.json from the MAIN branch. Live=1.2.0, repo metadata was 1.2.1, my v1.3.0 only on feature branch + never published to plugin-dist on main → updater correctly never fired. Mechanism is NOT broken, just unfed. git pull syncs only the THEME (UPress git); plugin deploys via PUC (merge metadata to main → owner clicks Update in WP).
+- SHIPPED v1.3.0 via PUC: built plugin-dist/nadlan-config-1.3.0.zip + bumped nadlan-config.json to 1.3.0 + changelog. Pushed to feature branch. To deploy: merge feature→main (or cherry-pick plugin-dist/ + plugins/nadlan-config/) → WP Admin shows Update → owner clicks. Verify healthcheck=1.3.0.
+- GA4: Google Site Kit is ALREADY ACTIVE on the site. GA4 (G-G3QRV5646E, property 539731843) should be wired via Site Kit UI (no code, no plugin deploy, also fixes the Search Console link Cowork couldn't finish). Do NOT also hardcode gtag in the plugin = avoid double-tagging.
+- CANNIBALIZATION MAP captured: full 100-page slug+focus-keyword inventory pulled (8 pillars + ~45 spokes + city pages + tools + directory). This is the do-not-duplicate guardrail for all future content.
+- NEW skill: content-encyclopedia-glossary-plan.md = MAP ONLY (build later via ChatGPT-Cowork like the articles). Glossary CPT nadlan_term, /glossary/, definition + practical "coursehood" block + cross-links up to pillars. Iron rule: never target an existing focus keyword; glossary = definitional intent on terms with NO existing page. PRIORITY discovery = terms with EN Wikipedia article but no HE article (content gap = fast #1). Lovable only for front-end UX, not content.
