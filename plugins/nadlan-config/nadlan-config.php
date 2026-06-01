@@ -2,7 +2,7 @@
 /**
  * Plugin Name: NadLan Config
  * Description: Lead-capture foundation: nadlan_lead CPT + lead-form handler + healthcheck. Read skills/nadlan-config-plugin.md.
- * Version: 1.0.5
+ * Version: 1.3.0
  * Author: nad-lan.co.il
  * License: GPL-2.0+
  * Requires PHP: 7.4
@@ -50,14 +50,16 @@ add_action( 'rest_api_init', 'nadlan_config_healthcheck' );
 
 if ( ! function_exists( 'nadlan_config_healthcheck_response' ) ) {
 	function nadlan_config_healthcheck_response() {
-		return array(
+		$out = array(
 			'plugin'              => 'nadlan-config',
-			'version'             => '1.0.5',
+			'version'             => '1.3.0',
 			'cpt_present'         => post_type_exists( 'nadlan_lead' ),
 			'lead_handler_loaded' => (bool) has_action( 'admin_post_nadlan_lead' ),
 			'php_version'         => PHP_VERSION,
 			'wp_version'          => get_bloginfo( 'version' ),
+			'catalog'             => nadlan_config_catalog_status(),
 		);
+		return apply_filters( 'nadlan_config_healthcheck', $out );
 	}
 }
 
@@ -168,3 +170,349 @@ if ( ! function_exists( 'nadlan_config_register_yoast_meta' ) ) {
 	}
 }
 add_action( 'init', 'nadlan_config_register_yoast_meta', 11 );
+
+/* ---------- v1.1.0: Catalog CPTs (properties, projects, professionals) ----------
+ * Foundation for the properties catalog. English labels (admin-only) per lessons.
+ * function_exists guards per failure rules. Single capability addition per release.
+ * See skills/properties-catalog.md for the full architecture and roadmap.
+ */
+if ( ! function_exists( 'nadlan_config_register_catalog_cpts' ) ) {
+    function nadlan_config_register_catalog_cpts() {
+        register_post_type( 'nadlan_property', array(
+            'labels' => array(
+                'name' => 'NadLan Properties', 'singular_name' => 'NadLan Property',
+                'menu_name' => 'NadLan Properties',
+            ),
+            'public' => true, 'show_in_rest' => true,
+            'has_archive' => 'properties', 'rewrite' => array( 'slug' => 'properties' ),
+            'menu_icon' => 'dashicons-admin-home', 'menu_position' => 26,
+            'supports' => array( 'title', 'editor', 'thumbnail', 'custom-fields', 'excerpt' ),
+        ) );
+        register_post_type( 'nadlan_project', array(
+            'labels' => array(
+                'name' => 'NadLan Projects', 'singular_name' => 'NadLan Project',
+            ),
+            'public' => true, 'show_in_rest' => true,
+            'has_archive' => 'projects', 'rewrite' => array( 'slug' => 'projects' ),
+            'menu_icon' => 'dashicons-building', 'menu_position' => 27,
+            'supports' => array( 'title', 'editor', 'thumbnail', 'custom-fields', 'excerpt' ),
+        ) );
+        register_post_type( 'nadlan_professional', array(
+            'labels' => array(
+                'name' => 'NadLan Professionals', 'singular_name' => 'NadLan Professional',
+            ),
+            'public' => true, 'show_in_rest' => true,
+            'has_archive' => 'professionals', 'rewrite' => array( 'slug' => 'professionals' ),
+            'menu_icon' => 'dashicons-businessperson', 'menu_position' => 28,
+            'supports' => array( 'title', 'editor', 'thumbnail', 'custom-fields', 'excerpt' ),
+        ) );
+        register_taxonomy( 'nadlan_city', array( 'nadlan_property', 'nadlan_project' ),
+            array( 'public' => true, 'hierarchical' => true, 'show_in_rest' => true,
+                'rewrite' => array( 'slug' => 'cities' ),
+                'labels' => array( 'name' => 'Cities', 'singular_name' => 'City' ) ) );
+        register_taxonomy( 'nadlan_profession', array( 'nadlan_professional' ),
+            array( 'public' => true, 'hierarchical' => false, 'show_in_rest' => true,
+                'rewrite' => array( 'slug' => 'profession' ),
+                'labels' => array( 'name' => 'Professions', 'singular_name' => 'Profession' ) ) );
+    }
+}
+add_action( 'init', 'nadlan_config_register_catalog_cpts' );
+
+/* Healthcheck reports catalog readiness too */
+if ( ! function_exists( 'nadlan_config_catalog_status' ) ) {
+    function nadlan_config_catalog_status() {
+        return array(
+            'nadlan_property_cpt' => post_type_exists( 'nadlan_property' ),
+            'nadlan_project_cpt' => post_type_exists( 'nadlan_project' ),
+            'nadlan_professional_cpt' => post_type_exists( 'nadlan_professional' ),
+            'nadlan_city_tax' => taxonomy_exists( 'nadlan_city' ),
+        );
+    }
+}
+
+/* ---------- v1.1.1: public lead REST endpoint (zero-friction funnel) ----------
+ * POST /wp-json/nadlan/v1/lead  — accepts public submissions from the floating
+ * contact button / any form, no WP nonce required (works on cached pages).
+ * Honeypot field "company" must be empty. Creates a private nadlan_lead and
+ * emails the admin. This is the revenue funnel entry point.
+ */
+if ( ! function_exists( 'nadlan_config_rest_lead' ) ) {
+    function nadlan_config_rest_lead() {
+        register_rest_route( 'nadlan/v1', '/lead', array(
+            'methods'  => 'POST',
+            'callback' => 'nadlan_config_rest_lead_handler',
+            'permission_callback' => '__return_true',
+        ) );
+    }
+}
+add_action( 'rest_api_init', 'nadlan_config_rest_lead' );
+
+if ( ! function_exists( 'nadlan_config_rest_lead_handler' ) ) {
+    function nadlan_config_rest_lead_handler( $req ) {
+        $p = $req->get_json_params();
+        if ( ! is_array( $p ) ) { $p = $req->get_params(); }
+        // Honeypot: bots fill "company"
+        if ( ! empty( $p['company'] ) ) {
+            return new WP_REST_Response( array( 'ok' => true ), 200 );
+        }
+        $clean = function( $k ) use ( $p ) {
+            return isset( $p[ $k ] ) ? sanitize_text_field( wp_unslash( (string) $p[ $k ] ) ) : '';
+        };
+        $name    = $clean( 'name' );
+        $phone   = $clean( 'phone' );
+        $email   = isset( $p['email'] ) ? sanitize_email( wp_unslash( (string) $p['email'] ) ) : '';
+        $topic   = $clean( 'topic' );
+        $message = isset( $p['message'] ) ? sanitize_textarea_field( wp_unslash( (string) $p['message'] ) ) : '';
+        $source  = $clean( 'source' );
+
+        if ( $name === '' && $phone === '' && $email === '' ) {
+            return new WP_REST_Response( array( 'ok' => false, 'error' => 'empty' ), 400 );
+        }
+        // Light rate-limit: same IP hash max 5 / 10 min
+        $iph = isset( $_SERVER['REMOTE_ADDR'] ) ? md5( $_SERVER['REMOTE_ADDR'] . 'nadlan' ) : 'x';
+        $key = 'nadlan_rl_' . $iph;
+        $cnt = (int) get_transient( $key );
+        if ( $cnt >= 5 ) {
+            return new WP_REST_Response( array( 'ok' => false, 'error' => 'rate' ), 429 );
+        }
+        set_transient( $key, $cnt + 1, 10 * MINUTE_IN_SECONDS );
+
+        $title = sprintf( '%s - %s - %s', $name ?: 'Lead', $topic ?: 'General', current_time( 'Y-m-d H:i' ) );
+        $id = wp_insert_post( array(
+            'post_type' => 'nadlan_lead', 'post_status' => 'private',
+            'post_title' => $title, 'post_content' => $message,
+        ), true );
+        if ( is_wp_error( $id ) ) {
+            return new WP_REST_Response( array( 'ok' => false, 'error' => 'save' ), 500 );
+        }
+        foreach ( array( 'name'=>$name,'phone'=>$phone,'email'=>$email,'topic'=>$topic,'source'=>$source ) as $k=>$v ) {
+            if ( $v !== '' ) { update_post_meta( $id, $k, $v ); }
+        }
+        $admin = get_option( 'admin_email' );
+        if ( $admin ) {
+            $body = "ליד חדש מ-nad-lan.co.il\n\nשם: $name\nטלפון: $phone\nאימייל: $email\nנושא: $topic\nמקור: $source\n\nהודעה:\n$message\n";
+            wp_mail( $admin, 'NadLan lead: ' . $title, $body );
+        }
+        return new WP_REST_Response( array( 'ok' => true, 'id' => $id ), 200 );
+    }
+}
+
+/* ---------- v1.1.2: IndexNow auto-ping on publish/update ----------
+ * Pings Bing, Yandex (and others honoring IndexNow) the moment a page/post
+ * publishes or updates. This is the legitimate "instant indexing" — Rank Math
+ * uses the same protocol. Google does not officially honor IndexNow as of
+ * 2026-05 but reads the Yoast XML sitemap which already includes <lastmod>.
+ *
+ * One-time setup: an IndexNow key (an 8-128 char hex string) we host at:
+ *   /<key>.txt  (a static endpoint returning the key)
+ * We auto-generate the key on first load and store it in wp_options. We
+ * expose it via a virtual /wp-json/nadlan/v1/indexnow-key endpoint AND via
+ * a dynamic rewrite that returns the key at /<key>.txt (handled by WP's
+ * 404 fallback hooked into 'template_redirect').
+ */
+if ( ! function_exists( 'nadlan_config_indexnow_key' ) ) {
+    function nadlan_config_indexnow_key() {
+        $k = get_option( 'nadlan_indexnow_key' );
+        if ( ! $k ) {
+            $k = strtolower( bin2hex( random_bytes( 16 ) ) ); // 32 hex chars
+            update_option( 'nadlan_indexnow_key', $k, true );
+        }
+        return $k;
+    }
+}
+if ( ! function_exists( 'nadlan_config_indexnow_serve_key' ) ) {
+    function nadlan_config_indexnow_serve_key() {
+        if ( ! isset( $_SERVER['REQUEST_URI'] ) ) { return; }
+        $uri = strtok( $_SERVER['REQUEST_URI'], '?' );
+        $k   = nadlan_config_indexnow_key();
+        if ( $uri === '/' . $k . '.txt' ) {
+            header( 'Content-Type: text/plain; charset=us-ascii' );
+            echo $k;
+            exit;
+        }
+    }
+}
+add_action( 'init', 'nadlan_config_indexnow_serve_key', 1 );
+
+if ( ! function_exists( 'nadlan_config_indexnow_ping' ) ) {
+    function nadlan_config_indexnow_ping( $url ) {
+        if ( ! $url || strpos( $url, 'http' ) !== 0 ) { return; }
+        $key  = nadlan_config_indexnow_key();
+        $host = wp_parse_url( home_url(), PHP_URL_HOST );
+        $body = wp_json_encode( array(
+            'host'        => $host,
+            'key'         => $key,
+            'keyLocation' => home_url( '/' . $key . '.txt' ),
+            'urlList'     => array( $url ),
+        ) );
+        wp_remote_post( 'https://api.indexnow.org/IndexNow', array(
+            'timeout' => 6, 'blocking' => false, 'body' => $body,
+            'headers' => array( 'Content-Type' => 'application/json; charset=utf-8' ),
+        ) );
+        // Bing direct (some hosts route this differently)
+        wp_remote_post( 'https://www.bing.com/indexnow', array(
+            'timeout' => 6, 'blocking' => false, 'body' => $body,
+            'headers' => array( 'Content-Type' => 'application/json; charset=utf-8' ),
+        ) );
+        // store last ping for stats
+        $log = get_option( 'nadlan_indexnow_log', array() );
+        if ( ! is_array( $log ) ) { $log = array(); }
+        array_unshift( $log, array( 'url' => $url, 't' => time() ) );
+        $log = array_slice( $log, 0, 50 );
+        update_option( 'nadlan_indexnow_log', $log, false );
+    }
+}
+if ( ! function_exists( 'nadlan_config_indexnow_on_save' ) ) {
+    function nadlan_config_indexnow_on_save( $post_id, $post = null, $update = null ) {
+        if ( ! $post ) { $post = get_post( $post_id ); }
+        if ( ! $post ) { return; }
+        if ( wp_is_post_revision( $post_id ) || wp_is_post_autosave( $post_id ) ) { return; }
+        if ( $post->post_status !== 'publish' ) { return; }
+        if ( ! in_array( $post->post_type, array( 'post', 'page', 'nadlan_property', 'nadlan_project', 'nadlan_professional' ), true ) ) { return; }
+        nadlan_config_indexnow_ping( get_permalink( $post_id ) );
+    }
+}
+add_action( 'save_post', 'nadlan_config_indexnow_on_save', 20, 2 );
+
+/* Surface key + recent pings in the healthcheck (admin context only) */
+add_filter( 'rest_pre_dispatch', function( $r, $server, $request ) {
+    if ( $request->get_route() === '/nadlan/v1/healthcheck' ) {
+        add_filter( 'nadlan_config_healthcheck_extra', function( $arr ) {
+            $arr['indexnow'] = array(
+                'key_set'    => (bool) get_option( 'nadlan_indexnow_key' ),
+                'last_pings' => array_slice( (array) get_option( 'nadlan_indexnow_log', array() ), 0, 5 ),
+            );
+            return $arr;
+        } );
+    }
+    return $r;
+}, 10, 3 );
+
+/* Quietly remove the public WordPress "generator" meta — no need to advertise the stack */
+remove_action( 'wp_head', 'wp_generator' );
+add_filter( 'the_generator', '__return_empty_string' );
+
+/* ---------- v1.2.0: self-hosted auto-update via plugin-update-checker ----------
+ * After this version is installed ONCE manually, WordPress shows a normal
+ * "Update available" notice whenever plugin-dist/nadlan-config.json (in the
+ * GitHub repo, served via raw.githubusercontent) advertises a higher version.
+ * The owner clicks Update inside WP — no more ZIP uploads.
+ * Workflow to ship a new version is documented in skills/plugin-auto-update.md.
+ */
+if ( ! function_exists( 'nadlan_config_boot_updater' ) ) {
+    function nadlan_config_boot_updater() {
+        $loader = __DIR__ . '/lib/plugin-update-checker/plugin-update-checker.php';
+        if ( ! file_exists( $loader ) ) { return; }
+        require_once $loader;
+        if ( ! class_exists( '\\YahnisElsts\\PluginUpdateChecker\\v5\\PucFactory' ) ) { return; }
+        try {
+            $checker = \YahnisElsts\PluginUpdateChecker\v5\PucFactory::buildUpdateChecker(
+                'https://raw.githubusercontent.com/The-new-ben/nad-lan-co-il/main/plugin-dist/nadlan-config.json',
+                __FILE__,
+                'nadlan-config'
+            );
+        } catch ( \Throwable $e ) {
+            error_log( 'nadlan-config updater: ' . $e->getMessage() );
+        }
+    }
+}
+add_action( 'init', 'nadlan_config_boot_updater', 5 );
+
+/* ---------- v1.2.1: tighten generator suppression + property meta REST ---------- */
+
+/* Suppress Site Kit's <meta name="generator"> too (not just core's). Output buffer at wp_loaded. */
+if ( ! function_exists( 'nadlan_config_strip_all_generators' ) ) {
+	function nadlan_config_strip_all_generators( $html ) {
+		if ( strpos( $html, 'name="generator"' ) !== false || strpos( $html, "name='generator'" ) !== false ) {
+			$html = preg_replace( '~<meta[^>]+name=["\']generator["\'][^>]*>\s*~i', '', $html );
+		}
+		return $html;
+	}
+}
+add_action( 'template_redirect', function() {
+	ob_start( 'nadlan_config_strip_all_generators' );
+}, 0 );
+
+/* Property meta exposed for REST so we can seed properties via the API */
+if ( ! function_exists( 'nadlan_config_register_property_meta' ) ) {
+	function nadlan_config_register_property_meta() {
+		$fields = array(
+			'listing_type'   => 'string',  'property_type'  => 'string',
+			'price'          => 'integer', 'price_per_sqm'  => 'integer',
+			'rooms'          => 'number',  'floor'          => 'integer',
+			'total_floors'   => 'integer', 'size_sqm'       => 'integer',
+			'balcony_sqm'    => 'integer',
+			'parking'        => 'boolean', 'elevator'       => 'boolean',
+			'ac'             => 'boolean', 'protected_room' => 'boolean',
+			'street'         => 'string',  'building_number' => 'string',
+			'lat'            => 'number',  'lng'            => 'number',
+			'status'         => 'string',  'source'         => 'string',
+			'is_sponsored'   => 'boolean', 'sponsor_name'   => 'string',
+			'photos_csv'     => 'string',
+		);
+		foreach ( $fields as $k => $type ) {
+			register_post_meta( 'nadlan_property', $k, array(
+				'show_in_rest'  => true,
+				'single'        => true,
+				'type'          => $type,
+				'auth_callback' => function() { return current_user_can( 'edit_posts' ); },
+			) );
+		}
+	}
+}
+add_action( 'init', 'nadlan_config_register_property_meta', 12 );
+
+/* Healthcheck augmenter via proper filter (wired into the refactored response above) */
+if ( ! function_exists( 'nadlan_config_healthcheck_augment' ) ) {
+	function nadlan_config_healthcheck_augment( $arr ) {
+		$arr['indexnow'] = array(
+			'key_present'  => (bool) get_option( 'nadlan_indexnow_key' ),
+			'recent_pings' => array_slice( (array) get_option( 'nadlan_indexnow_log', array() ), 0, 5 ),
+		);
+		return $arr;
+	}
+}
+add_filter( 'nadlan_config_healthcheck', 'nadlan_config_healthcheck_augment' );
+
+/* ---------- v1.3.0: robots.txt with sitemap + disable wptexturize ----------
+ * Two fixes:
+ * 1) Serve a proper robots.txt (with the Yoast sitemap_index reference) via the
+ *    WordPress robots_txt filter. NOTE: this only takes effect if the web server
+ *    routes /robots.txt to WordPress (index.php). If a physical robots.txt or an
+ *    nginx rule intercepts the path first, add the file/route at server level.
+ * 2) Disable wptexturize on titles/content/excerpts. wptexturize auto-converts
+ *    " - " (space-hyphen-space) into an en-dash (–) at render time, which violated
+ *    the owner's no-dash typography rule and reintroduced AI-tell punctuation even
+ *    after the stored text was cleaned. Removing it keeps punctuation as authored.
+ */
+if ( ! function_exists( 'nadlan_config_robots_txt' ) ) {
+	function nadlan_config_robots_txt( $output, $public ) {
+		if ( '0' === (string) $public ) {
+			return $output; // respect "discourage search engines" toggle
+		}
+		$sitemap = home_url( '/sitemap_index.xml' );
+		$out  = "User-agent: *\n";
+		$out .= "Allow: /\n";
+		$out .= "Disallow: /wp-admin/\n";
+		$out .= "Allow: /wp-admin/admin-ajax.php\n";
+		$out .= "Disallow: /cart/\n";
+		$out .= "Disallow: /checkout/\n";
+		$out .= "Disallow: /my-account/\n";
+		$out .= "Disallow: /*?s=\n";
+		$out .= "Disallow: /*add-to-cart=\n";
+		$out .= "\nSitemap: " . esc_url_raw( $sitemap ) . "\n";
+		return $out;
+	}
+}
+add_filter( 'robots_txt', 'nadlan_config_robots_txt', 20, 2 );
+
+if ( ! function_exists( 'nadlan_config_disable_texturize' ) ) {
+	function nadlan_config_disable_texturize() {
+		foreach ( array( 'the_content', 'the_title', 'the_excerpt', 'single_post_title',
+			'comment_text', 'widget_text_content', 'widget_block_content', 'nav_menu_description',
+			'term_description', 'list_cats', 'wp_title', 'document_title' ) as $f ) {
+			remove_filter( $f, 'wptexturize' );
+		}
+	}
+}
+add_action( 'init', 'nadlan_config_disable_texturize', 20 );
