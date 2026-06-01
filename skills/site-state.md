@@ -778,3 +778,9 @@ Per-article: 519=93n/26l · 512=63n/15l · 543=22n/27l · 540=22n/19l · 547=24n
 - Draft disclaimer frames LAWYER as the client's lawyer (issues חשבונית, holds professional responsibility), platform = intermediary — MUST verify vs לשכת עורכי הדין rules with counsel.
 
 **RESEARCH GAPS (Cowork was honest):** screenshots could NOT be saved to disk (described only). lawyers.co.il, psakdin.co.il, UpCounsel NOT opened (time budget) — no claims made about them.
+
+**BUILD DOCS DRAFTED (this session, await owner approval; nothing in WP yet):** `docs/contract-audit-product-page.md`, `docs/lawyer-profile-template.md`, `docs/contract-audit-tos-refund-disclaimer.md`. Owner inputs still needed: bio, headshot, sample opinion, public-contact preference.
+
+**GA4 FIXED (v1.4.0 shipped to feature branch):** Root cause = site tagged Google Tag GT-W6VHT5TK via Site Kit; owner's GA4 property G-G3QRV5646E got NO hits (not on page). Owner chose "hardcode now, consolidate later". Plugin v1.4.0 emits G-G3QRV5646E gtag in wp_head (guarded by NADLAN_GA4_HARDCODE const, skips admin). **DEPLOY: PUC reads dist json from MAIN — must merge plugin-dist/ (json + 1.4.0 zip) to main → WP shows Update → click Update → verify G-G3QRV5646E in page source + healthcheck.** CONSOLIDATION TODO: pick ONE source (GT destination OR this tag) to avoid double-count.
+
+**NEW PROJECT RECORDED (build deferred per owner):** `skills/directory-listings-project-plan.md` — free SEO "cards" for ALL Israeli real-estate projects + ALL contractors (auto-created teaser → claim → upgrade to marketing platform). Mini-Wikipedia, stats-rich, original (Cowork+ChatGPT), reuse `project`/`professional` CPTs, STRICT no-cannibalization vs the 100-page inventory. **Owner: keep recording all skills/knowledge — next project = Justice.co.il will REUSE these, not start from scratch.**
