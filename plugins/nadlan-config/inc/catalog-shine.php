@@ -209,12 +209,96 @@ if ( ! function_exists( 'nadlan_featured_pros_render' ) ) {
 }
 add_shortcode( 'nadlan_featured_pros', 'nadlan_featured_pros_render' );
 
-/* Auto-inject the featured pros block at the top of the /catalog/ page (and any
- * empty/sparse property-listing page) so the catalog never looks empty again. */
+/* ---- v1.26.0: /catalog/ as a DIRECTORY HUB ----
+ * Owner decision: /catalog/ becomes a landing page linking to all three branches of
+ * the directory — properties, registered professionals (live gov.il import), and
+ * urban-renewal projects — each as a premium category card with a live count. The
+ * old hardcoded empty property grid is replaced by this hub. Featured contractors
+ * render below so there is always real content on the page.
+ */
+if ( ! function_exists( 'nadlan_directory_hub_render' ) ) {
+	function nadlan_directory_hub_render() {
+		$prop = (int) wp_count_posts( 'nadlan_property' )->publish;
+		$pros = (int) wp_count_posts( 'nadlan_professional' )->publish;
+		$proj = (int) wp_count_posts( 'nadlan_project' )->publish;
+		$cards = array(
+			array(
+				'url'   => home_url( '/professionals/' ),
+				'count' => $pros,
+				'label' => 'בעלי מקצוע רשומים',
+				'desc'  => 'קבלנים, שמאים ומפקחים מאומתים — מתוך פנקס הקבלנים הרשומים (gov.il).',
+				'cta'   => 'לאינדקס המקצועי',
+				'live'  => true,
+			),
+			array(
+				'url'   => home_url( '/urban-renewal/' ),
+				'count' => $proj,
+				'label' => 'פרויקטים והתחדשות עירונית',
+				'desc'  => 'תמ״א 38, פינוי-בינוי ובנייה חדשה — עם מספר תוכנית, יזם וסטטוס.',
+				'cta'   => 'לפרויקטים',
+				'live'  => false,
+			),
+			array(
+				'url'   => home_url( '/properties/' ),
+				'count' => $prop,
+				'label' => 'נכסים למכירה והשקעה',
+				'desc'  => 'דירות ובתים עם בדיקה משפטית מקדימה — מחיר, חדרים, מ״ר ושכונה.',
+				'cta'   => $prop > 0 ? 'לנכסים' : 'בקרוב נכסים חדשים',
+				'live'  => false,
+			),
+		);
+		ob_start(); ?>
+<section class="nldh" dir="rtl">
+	<div class="nldh-head">
+		<p class="nldh-eyebrow">מאגר נדל״ן חכם</p>
+		<h2>קטלוג נכסים, פרויקטים ובעלי מקצוע</h2>
+		<p class="nldh-sub">כל מה שצריך לבדוק לפני עסקה — במקום אחד, ממקורות רשמיים.</p>
+	</div>
+	<div class="nldh-grid">
+		<?php foreach ( $cards as $c ) : ?>
+		<a class="nldh-card" href="<?php echo esc_url( $c['url'] ); ?>">
+			<?php if ( $c['live'] ) : ?><span class="nldh-livedot">מתעדכן עכשיו</span><?php endif; ?>
+			<div class="nldh-count"><?php echo $c['count'] > 0 ? number_format( $c['count'] ) : '—'; ?></div>
+			<h3><?php echo esc_html( $c['label'] ); ?></h3>
+			<p><?php echo esc_html( $c['desc'] ); ?></p>
+			<span class="nldh-go"><?php echo esc_html( $c['cta'] ); ?> ←</span>
+		</a>
+		<?php endforeach; ?>
+	</div>
+</section>
+<style>
+.nldh{font-family:var(--font-sans,Heebo,sans-serif);max-width:1240px;margin:24px auto 8px;padding:0 24px;direction:rtl}
+.nldh-head{text-align:center;margin-bottom:30px}
+.nldh-eyebrow{font-size:11px;letter-spacing:.18em;color:#9C7A3C;font-weight:600;margin:0 0 6px;text-transform:uppercase}
+.nldh-head h2{font-family:var(--font-serif,"Frank Ruhl Libre",serif);font-weight:500;font-size:36px;color:#1B1A17;margin:0 0 8px;letter-spacing:-.015em}
+.nldh-sub{font-size:15px;color:#6b6b6b;margin:0}
+.nldh-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:20px}
+.nldh-card{position:relative;background:linear-gradient(135deg,#fff,#FBF9F5);border:1px solid rgba(27,26,23,.1);border-radius:18px;padding:32px 28px;text-decoration:none;color:inherit;transition:transform .25s,box-shadow .25s,border-color .25s;display:flex;flex-direction:column;min-height:250px;overflow:hidden}
+.nldh-card:hover{transform:translateY(-6px);box-shadow:0 20px 40px rgba(27,26,23,.12);border-color:rgba(156,122,60,.5)}
+.nldh-livedot{position:absolute;inset-block-start:18px;inset-inline-start:18px;font-size:10px;letter-spacing:.1em;color:#2e7d32;font-weight:600;background:rgba(46,125,50,.1);padding:5px 11px;border-radius:20px}
+.nldh-livedot::before{content:"●";margin-inline-end:5px;animation:nldhpulse 1.6s infinite}
+@keyframes nldhpulse{0%,100%{opacity:1}50%{opacity:.3}}
+.nldh-count{font-family:var(--font-serif,serif);font-size:48px;font-weight:600;color:#9C7A3C;line-height:1;margin:12px 0 14px;font-variant-numeric:tabular-nums}
+.nldh-card h3{font-family:var(--font-serif,serif);font-weight:500;font-size:22px;color:#1B1A17;margin:0 0 10px;line-height:1.3}
+.nldh-card p{font-size:14px;color:#5a5a5a;margin:0 0 18px;line-height:1.6}
+.nldh-go{margin-top:auto;color:#9C7A3C;font-weight:600;font-size:14px;transition:transform .2s}
+.nldh-card:hover .nldh-go{transform:translateX(-5px)}
+@media(max-width:600px){.nldh-head h2{font-size:27px}.nldh-card{padding:26px 22px;min-height:210px}.nldh-count{font-size:38px}}
+</style>
+		<?php
+		return ob_get_clean();
+	}
+}
+
+/* Replace the /catalog/ page body with: directory hub + featured contractors. */
 add_filter( 'the_content', function ( $content ) {
 	if ( ! is_page() || ! in_the_loop() || ! is_main_query() ) { return $content; }
 	$slug = get_post_field( 'post_name', get_queried_object_id() );
 	if ( ! in_array( $slug, array( 'catalog', 'store', 'shop' ), true ) ) { return $content; }
+	$prop = (int) wp_count_posts( 'nadlan_property' )->publish;
+	$hub  = nadlan_directory_hub_render();
 	$featured = nadlan_featured_pros_render( array( 'count' => 12 ) );
-	return $featured . $content;
+	// If real properties exist, keep the original property grid below the hub;
+	// if not, replace the empty grid entirely with hub + featured pros.
+	return $prop > 0 ? ( $hub . $content . $featured ) : ( $hub . $featured );
 }, 15 );
