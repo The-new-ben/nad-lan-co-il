@@ -18,8 +18,8 @@ owner:
   bar_url:      "https://www.israelbar.biz/lawyer-fd/?lawyer=Cqcs/1T4N0I"
   other_site:   "https://jus-tice.co.il/"
   email_site:   "info@nad-lan.co.il"
-  phone_cell:   "0525101555"
-  phone_work:   "036916454"
+  phone_cell:   "0525101555"   # SOLE phone — mobile. Use everywhere (tel:, wa.me, schema). No other number.
+  # phone_work (036916454) RETIRED 2026-06-01 by owner — outdated landline. Do NOT reintroduce.
   address:      "וולנברג ראול 18, תל אביב יפו"
   wp_admin_user_id: 1
 

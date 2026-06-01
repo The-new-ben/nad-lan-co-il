@@ -509,7 +509,7 @@ Status:
 
 **Owner-supplied identity facts (verifiable, now in §0 of runbook):**
 - בן בטש, עו"ד, בר 29020, https://www.israelbar.biz/lawyer-fd/?lawyer=Cqcs/1T4N0I
-- info@nad-lan.co.il, benbetesh@gmail.com, 0525101555, 036916454
+- info@nad-lan.co.il, benbetesh@gmail.com, 0525101555 (mobile — SOLE phone; landline 036916454 RETIRED 2026-06-01 by owner, do not reintroduce)
 - וולנברג ראול 18, תל אביב יפו
 - Other site (sameAs): https://jus-tice.co.il/
 
@@ -741,3 +741,19 @@ Per-article: 519=93n/26l · 512=63n/15l · 543=22n/27l · 540=22n/19l · 547=24n
 - GA4: Google Site Kit is ALREADY ACTIVE on the site. GA4 (G-G3QRV5646E, property 539731843) should be wired via Site Kit UI (no code, no plugin deploy, also fixes the Search Console link Cowork couldn't finish). Do NOT also hardcode gtag in the plugin = avoid double-tagging.
 - CANNIBALIZATION MAP captured: full 100-page slug+focus-keyword inventory pulled (8 pillars + ~45 spokes + city pages + tools + directory). This is the do-not-duplicate guardrail for all future content.
 - NEW skill: content-encyclopedia-glossary-plan.md = MAP ONLY (build later via ChatGPT-Cowork like the articles). Glossary CPT nadlan_term, /glossary/, definition + practical "coursehood" block + cross-links up to pillars. Iron rule: never target an existing focus keyword; glossary = definitional intent on terms with NO existing page. PRIORITY discovery = terms with EN Wikipedia article but no HE article (content gap = fast #1). Lovable only for front-end UX, not content.
+
+### 2026-06-01 (afternoon) — Claude Code — lawyer-marketplace product LOCKED + landline retired
+**Phone correction (owner, this session):** landline `036916454` is OUTDATED. Sole phone going forward = mobile **0525101555**. Removed `phone_work` from all 3 runbooks (v1/v2/v3) and corrected the §512 identity line. Live `tel:`/`wa.me` already point to the mobile — old number was leaking ONLY via runbook `phone_work` → article schema. Do NOT reintroduce 036916454 anywhere.
+
+**Marketplace product decisions LOCKED (owner answers, this session):**
+- STRUCTURE = Fiverr-style marketplace. Each lawyer = a "customer" of the platform with their OWN profile/storefront page; customer transacts with the LAWYER (lawyer issues חשבונית מס), platform takes a fee. Lowest IL-Bar risk (no fee-splitting). First lawyer = **Ben Bettesh / בן בטש, עו"ד, bar 29020** (owner himself) — run all checks on him.
+- PRODUCT = "ביקורת חוזה דירה" at URL **/contract-audit/**. Deliberately NOT "בדיקה משפטית" (that keyword is owned by the existing pillar /real-estate-lawyer/ — avoid cannibalization). Pillar gets a CTA block linking DOWN to the product.
+- TIERS = 3: **₪450 Basic** (written PDF, 48h, no follow-up) / **₪750 Premium** (PDF + phone call + follow-up) / **₪1200 Full** (PDF + call + one counter-revision round). Tight per-tier scope text to minimize refund edge-cases.
+- SLA = **48 BUSINESS hours** (excl. Fri PM / Shabbat / holidays), clock starts when payment clears AND readable contract uploaded. Late = automatic **50% refund** + delivery still happens. Full refund only if order abandoned.
+- HANDOFF = auto-email to lawyer on payment (intake form + contract + shared Drive folder), lawyer returns audit PDF → forwarded to customer.
+- PAYMENTS = **Grow/Meshulam** (already on site, supports Bit/cards/payment-links) + **Greeninvoice** for חשבונית מס. Stripe present as backup. WooCommerce live (/shop/, /checkout/, /my-account/ all 200).
+
+**OPEN / pending:**
+- Contact buttons (WhatsApp/call) "look awful" per owner → DEEP-RESEARCH best-practice click-to-call/WhatsApp button UX, then redesign. (Research prompt to be prepared.)
+- Competitor research prompt for Cowork (Israeli legal marketplaces + Fiverr/UpCounsel) drafted last turn — awaiting Cowork run before building /contract-audit/ page, lawyer-profile template, ToS/refund/disclaimer.
+- Private lawyer-handoff details (capacity etc.) to live in a .gitignored notes file — owner is using himself, identity facts already in runbook §0.
