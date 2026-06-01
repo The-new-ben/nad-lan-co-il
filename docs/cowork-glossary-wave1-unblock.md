@@ -79,7 +79,7 @@ Returns: { "ok": true, "id": 1234, "url": "https://nad-lan.co.il/glossary/...", 
 
 ### 3b. Pillar URL corrections (verified against the live site)
 
-- `/mortgage-advisor/` **redirects to `/mortgage-advisor/`** — use the latter as `related_pillar` for all finance terms.
+- `/mortgage/` 301-redirects to `/mortgage-advisor/` — always use `/mortgage-advisor/` as `related_pillar` for finance terms (avoids a redirect hop).
 - `/urban-renewal/` exists (200) — use as-is.
 - `/real-estate-lawyer/` exists (200) — use as-is.
 
