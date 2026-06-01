@@ -139,6 +139,26 @@ Research grounding: Realmo Rey, planetRE+DeepSeek, Zillow's NL search (May 2026 
 
 **BLANK (owner):** pick LLM provider + add `NADLAN_LLM_API_KEY` to wp-config.php. Compliance list is conservative; review with counsel before relaxing. NL-search UX (autocomplete, history, voice) is roadmap.
 
+## 8d. Programmatic SEO city hubs (BUILT v1.10.0 — `inc/city-hubs.php`) — 2026 discipline
+
+**2026 reality (research):** Google now treats thin programmatic pages as **doorway/scaled-content abuse** with manual-action risk. The bar is much higher than 2022. Best practice:
+- **≥25-30% UNIQUE data per URL** (not boilerplate). Real numbers, real entities, not "nice place to live".
+- **Quality > volume.** 10 strong neighborhood hubs > 100 thin ones. Start with priority cities; expand from data.
+- Zillow's model = hyper-local pages with home values + price trends + schools + walkability — context-rich, not template-stuffed.
+
+What v1.10.0 ships:
+- Rewrite endpoints `/city/<city>/{contractors|projects|properties}/` (no DB pages — clean, cache-friendly).
+- **Card-count floor = 5** (configurable): under the floor → 404 (no thin page enters the index). Between 5 and the doubled floor → `noindex,follow`. Above → indexable.
+- Per-hub unique data: count, AVG ₪/sqm + 12-mo deal count from the `wp_nadlan_deals` cache, plus top cards rendered inline.
+- `CollectionPage` + `ItemList` JSON-LD, `meta description` derived from real counts, dedicated `/sitemap-nadlan-hubs.xml` (linked into Yoast sitemap index) that only includes hubs above the floor.
+- Per-kind UP-link: contractor hubs → `/real-estate-lawyer/` pillar; project hubs → `/contract-audit/` product; property hubs → `[nadlan_save_search]` alert form. Cannibalization-safe (hub keyword = generic; cards = branded).
+
+## 8e. Rich media (BUILT v1.10.0 — `inc/media.php`)
+
+- **Kuula** is the recommended 3D-tour platform (Matterport dropped by Zillow Oct 2025 after CoStar acquired it; Kuula is the approved Zillow provider). We support: Kuula iframe (JS-style for iOS/perf, post-id auto-extracted), generic iframe (CloudPano/Panoee), video via WP oEmbed (YouTube/Vimeo), floorplan image or PDF (iframe).
+- Tabbed UI on property singles. `VideoObject` JSON-LD when a video is set (rich-result eligible).
+- Meta: `tour_url`, `video_url`, `floorplan_url` (REST exposed).
+
 ## 9. REUSE → Justice.co.il
 
 The whole pattern is portable: free-card land-grab → claim → upgrade → marketing platform; CKAN/registry importer; original-content pipeline; thin-content noindex guard; auction engine; cannibalization discipline. For Justice.co.il swap entity types (lawyers/courts/legal-topics/rulings) and registries (לשכת עוה"ד, court databases). Keep modules provider-agnostic. **Standing instruction: keep recording all research + patterns into skills/ as the reusable asset.**
