@@ -27,7 +27,9 @@ if ( ! function_exists( 'nadlan_facets_apply' ) ) {
 		if ( ! in_array( $pt, array( 'nadlan_property', 'nadlan_project', 'nadlan_professional' ), true ) ) { return; }
 		$mq = (array) $q->get( 'meta_query' );
 		$add = array();
-		if ( ! empty( $_GET['city'] ) )         { $add[] = array( 'key' => 'city', 'value' => sanitize_text_field( wp_unslash( $_GET['city'] ) ) ); }
+		// City: partial, case-insensitive LIKE so "תל אביב" matches "תל אביב יפו"
+		// and trailing spaces / inexact typing still find results.
+		if ( ! empty( $_GET['city'] ) )         { $add[] = array( 'key' => 'city', 'value' => sanitize_text_field( wp_unslash( $_GET['city'] ) ), 'compare' => 'LIKE' ); }
 		if ( $pt === 'nadlan_property' ) {
 			if ( ! empty( $_GET['listing_type'] ) ){ $add[] = array( 'key' => 'listing_type', 'value' => sanitize_text_field( wp_unslash( $_GET['listing_type'] ) ) ); }
 			if ( ! empty( $_GET['rooms_min'] ) )   { $add[] = array( 'key' => 'rooms', 'value' => (float) $_GET['rooms_min'], 'type' => 'NUMERIC', 'compare' => '>=' ); }
@@ -122,11 +124,7 @@ if ( ! function_exists( 'nadlan_facets_render' ) ) {
 }
 add_shortcode( 'nadlan_facets', 'nadlan_facets_render' );
 
-/* Auto-inject on archive */
-add_action( 'loop_start', function ( $q ) {
-	if ( ! $q->is_main_query() ) { return; }
-	$pt = get_post_type();
-	if ( ! is_post_type_archive( array( 'nadlan_property', 'nadlan_project', 'nadlan_professional' ) ) ) { return; }
-	if ( $pt && $pt !== ( $q->queried_object->name ?? '' ) ) { /* noop guard */ }
-	echo nadlan_facets_render( array( 'type' => $q->queried_object->name ?? 'nadlan_property' ) );
-}, 6 );
+/* Auto-inject on archive — DISABLED v1.31.0: archive-grid.php / directory.php render
+ * the facets bar explicitly in the right place, so this loop_start hook produced a
+ * duplicate form. Kept as a no-op for back-compat. */
+// add_action( 'loop_start', function ( $q ) { ... }, 6 );
