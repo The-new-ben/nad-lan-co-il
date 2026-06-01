@@ -213,6 +213,55 @@ if ( ! function_exists( 'nadlan_import_register_rest' ) ) {
 }
 add_action( 'rest_api_init', 'nadlan_import_register_rest' );
 
+/* ---- REST: HEADLESS import runner (v1.23.0) ----
+ * Lets the catalog be populated via Application Password / Basic Auth — no browser,
+ * no dashboard button. Runs N batches of 500 server-side per call (capped so we stay
+ * inside PHP max_execution_time), advances the stored cursor, returns progress so the
+ * caller can loop until done. Idempotent (re-imports update existing cards by registry
+ * key, same as the batch functions).
+ *
+ *   POST /nadlan/v1/import-run  { "which": "contractors"|"urban", "batches": 3, "reset": false }
+ *   -> { ok, which, imported_this_call, offset, total, done }
+ */
+if ( ! function_exists( 'nadlan_import_run_handler' ) ) {
+	function nadlan_import_run_handler( $req ) {
+		$p     = $req->get_json_params(); if ( ! is_array( $p ) ) { $p = $req->get_params(); }
+		$which = ( ( $p['which'] ?? 'contractors' ) === 'urban' ) ? 'urban' : 'contractors';
+		$batches = max( 1, min( 8, (int) ( $p['batches'] ?? 3 ) ) ); // hard cap 8 × 500 = 4000/call
+		$opt   = 'nadlan_import_offset_' . $which;
+		if ( ! empty( $p['reset'] ) ) { update_option( $opt, 0, false ); }
+		$offset = (int) get_option( $opt, 0 );
+		$imported = 0; $total = 0;
+		for ( $i = 0; $i < $batches; $i++ ) {
+			$r = ( $which === 'urban' )
+				? nadlan_import_urban_batch( 500, $offset )
+				: nadlan_import_contractors_batch( 500, $offset );
+			if ( is_wp_error( $r ) ) {
+				return new WP_REST_Response( array( 'ok' => false, 'error' => $r->get_error_message(), 'offset' => $offset ), 502 );
+			}
+			$imported += (int) $r['imported'];
+			$total     = (int) $r['total'];
+			$offset    = (int) $r['next_offset'];
+			if ( $offset >= $total ) { break; } // reached the end
+		}
+		$done = ( $offset >= $total );
+		update_option( $opt, $done ? 0 : $offset, false );
+		return new WP_REST_Response( array(
+			'ok' => true, 'which' => $which,
+			'imported_this_call' => $imported,
+			'offset' => $done ? $total : $offset,
+			'total' => $total, 'done' => $done,
+		), 200 );
+	}
+}
+add_action( 'rest_api_init', function () {
+	register_rest_route( 'nadlan/v1', '/import-run', array(
+		'methods'             => 'POST',
+		'permission_callback' => function () { return current_user_can( 'manage_options' ); },
+		'callback'            => 'nadlan_import_run_handler',
+	) );
+} );
+
 if ( ! function_exists( 'nadlan_import_enrich_handler' ) ) {
 	function nadlan_import_enrich_handler( $req ) {
 		$p  = $req->get_json_params(); if ( ! is_array( $p ) ) { $p = $req->get_params(); }
@@ -236,6 +285,52 @@ if ( ! function_exists( 'nadlan_import_enrich_handler' ) ) {
 		return new WP_REST_Response( array( 'ok' => true, 'id' => $id ), 200 );
 	}
 }
+
+/* ---- v1.23.0: SELF-SEEDING background importer ----
+ * So the catalog populates itself after the plugin updates — no button, no endpoint
+ * call, no owner action. On each load we check a tiny flag; if the directory is still
+ * sparse, we schedule a wp-cron single event that imports ONE batch (500) of each
+ * dataset and reschedules itself until the cursor wraps, then marks itself done.
+ * Driven by normal site traffic via wp-cron, so it never blocks a page render.
+ */
+const NADLAN_AUTOSEED_TARGET = 1500; // stop auto-seeding once we have this many professionals
+
+if ( ! function_exists( 'nadlan_autoseed_maybe_schedule' ) ) {
+	function nadlan_autoseed_maybe_schedule() {
+		if ( get_option( 'nadlan_autoseed_done' ) === '1' ) { return; }
+		if ( wp_next_scheduled( 'nadlan_autoseed_tick' ) ) { return; }
+		// Already have enough? mark done.
+		$have = (int) wp_count_posts( 'nadlan_professional' )->publish;
+		if ( $have >= NADLAN_AUTOSEED_TARGET ) { update_option( 'nadlan_autoseed_done', '1', false ); return; }
+		wp_schedule_single_event( time() + 60, 'nadlan_autoseed_tick' );
+	}
+}
+add_action( 'init', 'nadlan_autoseed_maybe_schedule', 5 );
+
+if ( ! function_exists( 'nadlan_autoseed_tick' ) ) {
+	function nadlan_autoseed_tick() {
+		// One batch of each dataset per tick (keeps each cron run well under the time limit).
+		$any_more = false;
+		foreach ( array( 'contractors', 'urban' ) as $which ) {
+			$opt    = 'nadlan_import_offset_' . $which;
+			$offset = (int) get_option( $opt, 0 );
+			$r = ( $which === 'urban' )
+				? nadlan_import_urban_batch( 500, $offset )
+				: nadlan_import_contractors_batch( 500, $offset );
+			if ( is_wp_error( $r ) ) { continue; }
+			$next = ( $r['next_offset'] >= $r['total'] ) ? 0 : $r['next_offset'];
+			update_option( $opt, $next, false );
+			if ( $next !== 0 ) { $any_more = true; }
+		}
+		$have = (int) wp_count_posts( 'nadlan_professional' )->publish;
+		if ( $any_more && $have < NADLAN_AUTOSEED_TARGET ) {
+			wp_schedule_single_event( time() + 120, 'nadlan_autoseed_tick' ); // keep going, spaced out
+		} else {
+			update_option( 'nadlan_autoseed_done', '1', false );
+		}
+	}
+}
+add_action( 'nadlan_autoseed_tick', 'nadlan_autoseed_tick' );
 
 /* ---- WP-CLI: `wp nadlan import contractors|urban [--all]` ---- */
 if ( defined( 'WP_CLI' ) && WP_CLI ) {
