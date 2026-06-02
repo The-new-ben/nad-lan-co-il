@@ -37,6 +37,7 @@ The contract layer. Identical on every site.
 | `security-public-repo.md` | DNA·DOC | What never goes in a public repo. |
 | `plugin-discipline.md` / `plugin-auto-update.md` | DNA·DOC | One-capability modules + self-hosted update channel. |
 | `nadlan-config-plugin.md` | DNA·DOC | Plugin lessons (rename per site). |
+| `codex-plugin-access-and-deploy.md` | DNA·DOC | **The deploy pipeline operator guide** — how ANY agent (Codex/Claude/Cowork) changes the plugin and ships it live. Portable to every site (swap names/URLs). Read before touching plugin code. |
 
 **New-site action:** copy this whole branch first. It is the spine.
 
