@@ -21,7 +21,10 @@ if ( ! function_exists( 'nadlan_archive_grid_dispatch' ) ) {
 	function nadlan_archive_grid_dispatch() {
 		if ( defined( 'NADLAN_DISABLE_ARCHIVE_GRID' ) && NADLAN_DISABLE_ARCHIVE_GRID ) { return; }
 		// Professionals get the premium dynamic directory (inc/directory.php) instead.
-		if ( ! is_post_type_archive( array( 'nadlan_project', 'nadlan_property' ) ) ) { return; }
+		// v1.36.0: nadlan_project now handled by the premium directory in inc/directory.php
+		// (was previously routed here, producing the old paginated archive grid). Property
+		// still served here until its premium directory ships.
+		if ( ! is_post_type_archive( array( 'nadlan_property' ) ) ) { return; }
 		if ( is_admin() ) { return; }
 		nadlan_archive_grid_render();
 		exit;

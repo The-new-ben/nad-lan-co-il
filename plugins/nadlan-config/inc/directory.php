@@ -441,4 +441,234 @@ add_filter( 'the_content', function ( $content ) {
 	return nadlan_dir_profile_header( get_the_ID() ) . $content . nadlan_dir_similar( get_the_ID() );
 }, 5 );
 
+/* =========================================================================
+ * PROJECTS premium directory (v1.36.0 — the one that was lost from v1.33)
+ * ========================================================================= */
+
+if ( ! function_exists( 'nadlan_dir_project_types' ) ) {
+	function nadlan_dir_project_types() {
+		return array(
+			'tama38'      => array( 'label' => 'תמ״א 38',        'color' => '#DB2777', 'soft' => '#FFE9F1', 'icon' => '🏘️' ),
+			'pinui_binui' => array( 'label' => 'פינוי בינוי',     'color' => '#7C3AED', 'soft' => '#F2EAFF', 'icon' => '🏗️' ),
+			'new_build'   => array( 'label' => 'בנייה חדשה',      'color' => '#2563EB', 'soft' => '#EAF2FF', 'icon' => '🏢' ),
+			'urban'       => array( 'label' => 'התחדשות עירונית', 'color' => '#059669', 'soft' => '#E7FFF3', 'icon' => '🌆' ),
+			'other'       => array( 'label' => 'אחר',             'color' => '#0891B2', 'soft' => '#E6FAFF', 'icon' => '🏗️' ),
+		);
+	}
+}
+if ( ! function_exists( 'nadlan_dir_pt_meta' ) ) {
+	function nadlan_dir_pt_meta( $key ) {
+		$a = nadlan_dir_project_types();
+		return $a[ $key ] ?? $a['other'];
+	}
+}
+
+if ( ! function_exists( 'nadlan_dir_project_query' ) ) {
+	function nadlan_dir_project_query( $p ) {
+		$per = min( 48, max( 6, (int) ( $p['per_page'] ?? 24 ) ) );
+		$args = array(
+			'post_type' => 'nadlan_project', 'post_status' => 'publish',
+			'posts_per_page' => $per, 'paged' => max( 1, (int) ( $p['paged'] ?? 1 ) ),
+		);
+		$mq = array( 'relation' => 'AND' );
+		if ( ! empty( $p['city'] ) ) {
+			$mq[] = array( 'key' => 'city', 'value' => nadlan_meta_norm( $p['city'] ), 'compare' => 'LIKE' );
+		}
+		if ( ! empty( $p['project_type'] ) ) {
+			$mq[] = array( 'key' => 'project_type', 'value' => sanitize_key( $p['project_type'] ) );
+		}
+		if ( ! empty( $p['min_units'] ) ) {
+			$mq[] = array( 'key' => 'num_units', 'value' => (int) $p['min_units'], 'type' => 'NUMERIC', 'compare' => '>=' );
+		}
+		if ( count( $mq ) > 1 ) { $args['meta_query'] = $mq; }
+		if ( ! empty( $p['q'] ) ) { $args['s'] = sanitize_text_field( $p['q'] ); }
+		switch ( $p['sort'] ?? 'featured' ) {
+			case 'units':  $args['meta_key'] = 'num_units'; $args['orderby'] = 'meta_value_num'; $args['order'] = 'DESC'; break;
+			case 'newest': $args['orderby'] = 'date'; $args['order'] = 'DESC'; break;
+			case 'name':   $args['orderby'] = 'title'; $args['order'] = 'ASC'; break;
+			default:       $args['orderby'] = array( 'menu_order' => 'ASC', 'date' => 'DESC' );
+		}
+		return new WP_Query( $args );
+	}
+}
+
+if ( ! function_exists( 'nadlan_dir_project_card' ) ) {
+	function nadlan_dir_project_card( $id ) {
+		$pm     = nadlan_dir_pt_meta( (string) get_post_meta( $id, 'project_type', true ) );
+		$city   = nadlan_meta_norm( get_post_meta( $id, 'city', true ) );
+		$units  = (int) get_post_meta( $id, 'num_units', true );
+		$status = nadlan_meta_norm( get_post_meta( $id, 'project_status', true ) );
+		$dev    = nadlan_meta_norm( get_post_meta( $id, 'developer_name', true ) );
+		$tier   = (string) get_post_meta( $id, 'paid_tier', true );
+		$featured = in_array( $tier, array( 'pro', 'premier' ), true );
+		ob_start(); ?>
+<a class="nldc<?php echo $featured ? ' is-featured' : ''; ?>" href="<?php echo esc_url( get_permalink( $id ) ); ?>" style="--pc:<?php echo esc_attr( $pm['color'] ); ?>;--ps:<?php echo esc_attr( $pm['soft'] ); ?>">
+	<?php if ( $featured ) : ?><span class="nldc-sponsor">מקודם</span><?php endif; ?>
+	<div class="nldc-top">
+		<span class="nldc-av"><?php echo esc_html( $pm['icon'] ); ?></span>
+		<div class="nldc-id">
+			<h3 class="nldc-name"><?php echo esc_html( get_the_title( $id ) ); ?></h3>
+			<span class="nldc-pill"><?php echo esc_html( $pm['label'] ); ?></span>
+		</div>
+	</div>
+	<div class="nldc-meta">
+		<?php if ( $city ) : ?><span class="nldc-city">📍 <?php echo esc_html( $city ); ?></span><?php endif; ?>
+		<?php if ( $units > 0 ) : ?><span class="nldc-cls">🏠 <?php echo number_format( $units ); ?> יח״ד<?php echo $status ? ' · ' . esc_html( $status ) : ''; ?></span><?php endif; ?>
+		<?php if ( $dev ) : ?><span class="nldc-cls">👤 <?php echo esc_html( $dev ); ?></span><?php endif; ?>
+	</div>
+	<div class="nldc-foot">
+		<span class="nldc-reg">🛡️ data.gov.il</span>
+		<span class="nldc-go">לפרטים ←</span>
+	</div>
+</a>
+<?php
+		return ob_get_clean();
+	}
+}
+
+if ( ! function_exists( 'nadlan_dir_project_cards_html' ) ) {
+	function nadlan_dir_project_cards_html( $wq ) {
+		if ( ! $wq->have_posts() ) { return '<div class="nldir-empty"><p>לא נמצאו פרויקטים התואמים.</p><p>נסו עיר אחרת או הסירו סינון.</p></div>'; }
+		$out = '';
+		foreach ( $wq->posts as $p ) { $out .= nadlan_dir_project_card( $p->ID ); }
+		return $out;
+	}
+}
+
+if ( ! function_exists( 'nadlan_dir_project_facets' ) ) {
+	function nadlan_dir_project_facets() {
+		$k = 'nadlan_dir_projfacets_v1';
+		$c = get_transient( $k );
+		if ( is_array( $c ) ) { return $c; }
+		global $wpdb;
+		$types  = $wpdb->get_results( "SELECT pm.meta_value v, COUNT(*) n FROM {$wpdb->postmeta} pm INNER JOIN {$wpdb->posts} p ON p.ID=pm.post_id WHERE pm.meta_key='project_type' AND pm.meta_value<>'' AND p.post_type='nadlan_project' AND p.post_status='publish' GROUP BY pm.meta_value", ARRAY_A );
+		$cities = $wpdb->get_results( "SELECT pm.meta_value v, COUNT(*) n FROM {$wpdb->postmeta} pm INNER JOIN {$wpdb->posts} p ON p.ID=pm.post_id WHERE pm.meta_key='city' AND pm.meta_value<>'' AND p.post_type='nadlan_project' AND p.post_status='publish' GROUP BY pm.meta_value ORDER BY n DESC LIMIT 18", ARRAY_A );
+		$out = array( 'types' => array(), 'cities' => array(), 'total' => (int) wp_count_posts( 'nadlan_project' )->publish );
+		foreach ( (array) $types as $r )  { $out['types'][ $r['v'] ] = (int) $r['n']; }
+		foreach ( (array) $cities as $r ) { $out['cities'][] = array( 'name' => nadlan_meta_norm( $r['v'] ), 'n' => (int) $r['n'] ); }
+		set_transient( $k, $out, HOUR_IN_SECONDS );
+		return $out;
+	}
+}
+add_action( 'save_post_nadlan_project', function () { delete_transient( 'nadlan_dir_projfacets_v1' ); } );
+
+add_action( 'rest_api_init', function () {
+	register_rest_route( 'nadlan/v1', '/projects', array(
+		'methods' => 'GET', 'permission_callback' => '__return_true',
+		'callback' => function ( $req ) {
+			$p = array(
+				'q' => (string) $req->get_param( 'q' ),
+				'city' => (string) $req->get_param( 'city' ),
+				'project_type' => (string) $req->get_param( 'project_type' ),
+				'min_units' => (int) $req->get_param( 'min_units' ),
+				'sort' => (string) $req->get_param( 'sort' ),
+				'paged' => (int) $req->get_param( 'paged' ),
+				'per_page' => (int) $req->get_param( 'per_page' ),
+			);
+			$wq = nadlan_dir_project_query( $p );
+			$out = array( 'ok' => true, 'html' => nadlan_dir_project_cards_html( $wq ), 'total' => (int) $wq->found_posts, 'pages' => (int) $wq->max_num_pages, 'paged' => max( 1, $p['paged'] ) );
+			wp_reset_postdata();
+			return $out;
+		},
+	) );
+} );
+
+add_filter( 'get_the_archive_title', function ( $t ) {
+	if ( is_post_type_archive( 'nadlan_project' ) )  { return 'פרויקטים והתחדשות עירונית'; }
+	if ( is_post_type_archive( 'nadlan_property' ) ) { return 'דירות ונכסים'; }
+	return $t;
+} );
+add_filter( 'pre_get_document_title', function ( $t ) {
+	if ( is_post_type_archive( 'nadlan_project' ) ) {
+		return 'פרויקטים חדשים והתחדשות עירונית | תמ״א 38, פינוי בינוי | נדל״ן חכם';
+	}
+	return $t;
+}, 20 );
+
+add_action( 'template_redirect', function () {
+	if ( is_admin() || ! is_post_type_archive( 'nadlan_project' ) ) { return; }
+	if ( defined( 'NADLAN_DISABLE_DIRECTORY' ) && NADLAN_DISABLE_DIRECTORY ) { return; }
+	nadlan_dir_project_page();
+	exit;
+}, 5 );
+
+if ( ! function_exists( 'nadlan_dir_project_page' ) ) {
+	function nadlan_dir_project_page() {
+		$facets = nadlan_dir_project_facets();
+		$types  = nadlan_dir_project_types();
+		$state  = array(
+			'q' => isset( $_GET['q'] ) ? sanitize_text_field( wp_unslash( $_GET['q'] ) ) : '',
+			'city' => isset( $_GET['city'] ) ? sanitize_text_field( wp_unslash( $_GET['city'] ) ) : '',
+			'project_type' => isset( $_GET['project_type'] ) ? sanitize_key( $_GET['project_type'] ) : '',
+			'min_units' => isset( $_GET['min_units'] ) ? (int) $_GET['min_units'] : 0,
+			'sort' => isset( $_GET['sort'] ) ? sanitize_key( $_GET['sort'] ) : 'featured',
+			'paged' => max( 1, (int) ( $_GET['paged'] ?? 1 ) ),
+			'per_page' => 24,
+		);
+		$wq = nadlan_dir_project_query( $state );
+		$total = (int) $wq->found_posts;
+		$cards = nadlan_dir_project_cards_html( $wq );
+		wp_reset_postdata();
+
+		get_header();
+		echo nadlan_dir_css();
+		?>
+<div class="nldir" dir="rtl" data-mode="projects"
+	data-rest="<?php echo esc_url( rest_url( 'nadlan/v1/projects' ) ); ?>"
+	data-state="<?php echo esc_attr( wp_json_encode( $state ) ); ?>">
+	<header class="nldir-hero">
+		<nav class="nldir-crumbs"><a href="<?php echo esc_url( home_url( '/' ) ); ?>">בית</a> › <span>פרויקטים</span></nav>
+		<h1>פרויקטים והתחדשות עירונית</h1>
+		<p class="nldir-lead"><strong><?php echo number_format( $facets['total'] ); ?></strong> פרויקטים — תמ״א 38, פינוי בינוי ובנייה חדשה — ממאגר התחדשות עירונית הרשמי.</p>
+		<form class="nldir-search" role="search">
+			<input type="search" name="q" value="<?php echo esc_attr( $state['q'] ); ?>" placeholder="חיפוש לפי שם פרויקט או יזם" autocomplete="off">
+			<input type="text" name="city" value="<?php echo esc_attr( $state['city'] ); ?>" placeholder="עיר" autocomplete="off">
+			<button type="submit">חיפוש</button>
+		</form>
+		<div class="nldir-pills">
+			<button type="button" class="nldir-pill<?php echo $state['project_type'] === '' ? ' is-on' : ''; ?>" data-prof="">הכל</button>
+			<?php foreach ( $types as $key => $pm ) :
+				$n = $facets['types'][ $key ] ?? 0;
+				if ( $n < 1 ) { continue; } ?>
+			<button type="button" class="nldir-pill<?php echo $state['project_type'] === $key ? ' is-on' : ''; ?>"
+				data-prof="<?php echo esc_attr( $key ); ?>" style="--pc:<?php echo esc_attr( $pm['color'] ); ?>;--ps:<?php echo esc_attr( $pm['soft'] ); ?>">
+				<span><?php echo esc_html( $pm['icon'] ); ?></span><?php echo esc_html( $pm['label'] ); ?> <i><?php echo number_format( $n ); ?></i>
+			</button>
+			<?php endforeach; ?>
+		</div>
+	</header>
+	<div class="nldir-body">
+		<aside class="nldir-side">
+			<div class="nldir-fgroup"><h4>ערים מובילות</h4>
+				<ul class="nldir-cities">
+					<?php foreach ( array_slice( $facets['cities'], 0, 12 ) as $c ) : ?>
+					<li><button type="button" class="nldir-cityb" data-city="<?php echo esc_attr( $c['name'] ); ?>"><?php echo esc_html( $c['name'] ); ?> <i><?php echo number_format( $c['n'] ); ?></i></button></li>
+					<?php endforeach; ?>
+				</ul>
+			</div>
+		</aside>
+		<main class="nldir-main">
+			<div class="nldir-bar">
+				<div class="nldir-count"><strong id="nldir-total"><?php echo number_format( $total ); ?></strong> פרויקטים</div>
+				<div class="nldir-chips" id="nldir-chips"></div>
+				<label class="nldir-sortw">מיון:
+					<select id="nldir-sort">
+						<option value="featured"<?php selected( $state['sort'], 'featured' ); ?>>מומלצים</option>
+						<option value="units"<?php selected( $state['sort'], 'units' ); ?>>הכי הרבה יח״ד</option>
+						<option value="newest"<?php selected( $state['sort'], 'newest' ); ?>>חדש</option>
+						<option value="name"<?php selected( $state['sort'], 'name' ); ?>>א׳–ת׳</option>
+					</select>
+				</label>
+			</div>
+			<div class="nldir-results" id="nldir-results"><?php echo $cards; ?></div>
+			<div class="nldir-more-wrap"><button type="button" class="nldir-more" id="nldir-more"<?php echo $wq->max_num_pages > 1 ? '' : ' style="display:none"'; ?>>הצגת עוד</button></div>
+		</main>
+	</div>
+</div>
+<?php echo nadlan_dir_js(); ?>
+		<?php
+		get_footer();
+	}
+}
+
 require __DIR__ . '/directory-assets.php';
