@@ -1,3 +1,22 @@
+## 2026-06-02 Hard Revision - URL And Quality Gate
+
+Read `url-slug-governance.md` before any glossary work.
+
+Glossary terms are real content pages, not labels. Do not publish 100-word glossary entries as public SEO assets.
+
+Hard rules:
+
+- public glossary URL slugs must be ASCII only;
+- no raw Hebrew URL path and no `%d7` percent-encoded URL path;
+- every repaired old Hebrew glossary URL needs an exact 301 redirect to the new ASCII URL;
+- a glossary term must be at least 800 Hebrew words before it can even be considered for indexation;
+- indexable terms must be marked `data_quality=worldclass` or `data_quality=approved` only after review;
+- thin or unreviewed terms stay draft or `noindex,follow`;
+- thin or unreviewed terms must not appear in the glossary index;
+- thin or unreviewed terms must not receive automatic internal links;
+- every term needs a cannibalization check against money pillars and spokes.
+
+Use ChatGPT for the long Hebrew expansion, but give it a full SERP/source/intent/cannibalization blueprint first. Codex should not burn large Hebrew-writing tokens unless the owner explicitly authorizes.
 # Skill: Real-Estate Encyclopedia / Glossary ("מילון נדל"ן") — project map
 
 > The plan for the "Wikipedia of Israeli real estate" content layer: hundreds-to-thousands of definitional term pages (micro-spokes) that SUPPORT the pillars/spokes and capture definitional + academic + AI-deep-research queries — WITHOUT cannibalizing a single existing ranking. Owner goal: become the Israeli Zillow/Yad2/Madlan-beater on depth + trust.

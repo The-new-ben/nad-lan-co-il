@@ -34,6 +34,7 @@ if ( ! function_exists( 'nadlan_autolink_map' ) ) {
 		) );
 		$map = array();
 		foreach ( $terms as $tid ) {
+			if ( function_exists( 'nadlan_glossary_is_indexable_term' ) && ! nadlan_glossary_is_indexable_term( $tid ) ) { continue; }
 			$title = trim( get_the_title( $tid ) );
 			// Only auto-link meaningful multi-char terms; skip 1-2 char noise.
 			if ( mb_strlen( $title ) < 3 ) { continue; }

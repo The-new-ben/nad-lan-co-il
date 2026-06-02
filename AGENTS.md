@@ -35,7 +35,8 @@ After any action that changes the live site, the repo, plugins, or content:
 3. **Never delete another agent's skill file.** Extend, deprecate, or supersede with a clear note. Knowledge accumulates; it never gets erased.
 4. **Never publish public copy that contains internal SEO terms.** See the forbidden-words list in `skills/copywriting-skill.md`.
 5. **Never use a content type without checking `skills/wordpress-content-types.md`.** Pages-vs-Posts-vs-CPT decisions are documented; do not improvise.
-6. **Stop and ask** if a task requires acting outside the repo (sending email, posting reviews, contacting partners, purchasing plugins). The owner approves these out-of-band.
+6. **Never create Hebrew/non-ASCII public URL slugs.** Hebrew titles and copy are good; Hebrew URLs are forbidden. Read `skills/url-slug-governance.md` before publishing or migrating any URL.
+7. **Stop and ask** if a task requires acting outside the repo (sending email, posting reviews, contacting partners, purchasing plugins). The owner approves these out-of-band.
 
 ## When you finish a task
 

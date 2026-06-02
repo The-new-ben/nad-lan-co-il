@@ -154,6 +154,7 @@ Fresh web research was performed before editing. The implementation follows thes
 - Google title-link guidance warns that multiple large prominent headings can cause Google to choose the wrong visible text as the title link.
 - Google pagination guidance says crawlers generally discover URLs through `<a href>` links and do not click buttons. Therefore, a pure JavaScript "show more" UX is not enough for deep crawlability.
 - Practical conclusion for this site: keep modern "show more" UI where useful, but expose real crawlable paginated links or fallback links.
+- Google URL-change guidance says URL moves need exact mapping, permanent redirects, and aligned canonical/sitemap/internal-link signals. This applies to the Hebrew glossary URL remediation.
 
 Sources to cite in future reports:
 
@@ -161,6 +162,11 @@ Sources to cite in future reports:
 - https://developers.google.com/search/docs/advanced/appearance/good-titles-snippets
 - https://developers.google.com/search/docs/specialty/ecommerce/pagination-and-incremental-page-loading
 - https://developers.google.com/search/docs/fundamentals/seo-starter-guide
+- https://developers.google.com/search/docs/crawling-indexing/url-structure
+- https://developers.google.com/search/docs/crawling-indexing/site-move-with-url-changes
+- https://developers.google.com/search/docs/crawling-indexing/301-redirects
+- https://developer.wordpress.org/reference/functions/wp_update_post/
+- https://developer.wordpress.org/reference/functions/wp_safe_redirect/
 
 ## Files changed
 
@@ -169,7 +175,7 @@ Sources to cite in future reports:
 - `plugins/nadlan-config/nadlan-config.php`
   - Bumped plugin header from `1.34.0` to `1.35.0`.
   - Bumped healthcheck version from `1.34.0` to `1.35.0`.
-  - Added new loaded module `archive-seo` to the module `foreach` array.
+  - Added new loaded modules `archive-seo` and `url-governance` to the module `foreach` array.
 
 - `plugins/nadlan-config/inc/archive-seo.php`
   - New guarded module.
@@ -189,6 +195,22 @@ Sources to cite in future reports:
   - Root cause found during live visual check: plugin archive pages call `get_header()` / `get_footer()` inside a block theme, so WordPress renders theme-compat classic header/footer with the visible default credit `פועל על WordPress`. The new helpers preserve the document shell but replace the visible compatibility header/footer with the block theme `header` and `footer` template parts.
   - Demotes the first site-brand H1 to a `div` if the fallback header still appears. This reduces the duplicate-H1 risk without changing the full theme.
   - Adds viewport fallback on public catalog archives because live `1.34.0` rendered those archive pages without a viewport meta tag.
+
+- `plugins/nadlan-config/inc/glossary.php`
+  - Hard rule added: no `nadlan_term` or `nadlan_term_cat` public URL may use Hebrew/non-ASCII slug text.
+  - Future glossary-publish calls now set ASCII `post_name` values.
+  - New glossary categories now receive ASCII slugs.
+  - Existing Hebrew term/category slugs are migrated once on `admin_init` for an admin user after the plugin update.
+  - Exact old Hebrew slugs are stored in `nadlan_glossary_redirect_map` and 301 redirected to the new ASCII URLs.
+  - Migration flushes rewrite rules once and clears the glossary autolink cache.
+  - Glossary quality gate raised: a term needs 800+ words and `data_quality=worldclass` or `approved` before it is indexable.
+  - Future thin glossary submissions are forced to draft and tagged `thin_draft`.
+  - Thin/unapproved glossary terms are excluded from the glossary index, CPT archive, automatic internal links, and Yoast sitemap entries.
+
+- `plugins/nadlan-config/inc/url-governance.php`
+  - New global public slug guard.
+  - Prevents future public Page/Post/CPT saves from creating Hebrew/non-ASCII public slugs.
+  - Does not silently migrate existing broad-site URLs; existing URL repair still needs exact 301 mapping.
 
 - `plugins/nadlan-config/inc/directory.php`
   - Updated `/professionals/` title separator to avoid long dash punctuation.
@@ -283,6 +305,7 @@ Rendered live checks on `1.34.0`:
 
 Action taken after visual check:
 
+- `1.35.0` now also remediates live Hebrew/percent-encoded glossary URLs by migrating existing glossary term/category slugs to ASCII and preserving old paths with exact 301 redirects.
 - `1.35.0` now also replaces `archive-grid.php` numbered pagination with a premium crawlable "הצגת עוד" link for project/property archives.
 
 ## Still required before merge
@@ -318,6 +341,9 @@ For each:
 - No long dash punctuation in public copy.
 - Canonical and indexability via Yoast.
 - Crawlable links to deeper listing pages, not only JS buttons.
+- `/glossary/` term links contain no raw Hebrew and no `%d7` percent-encoded Hebrew in the path.
+- One old percent-encoded glossary URL returns `301` to its new ASCII `/glossary/<slug>/` URL.
+- New glossary canonical/sitemap URLs use the ASCII slug only.
 - Mobile viewport present.
 - Page still loads with cache-busting query string.
 

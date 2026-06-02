@@ -834,3 +834,11 @@ Owner offline; continued autonomous build per "keep coding, web search everythin
 **Pending owner decisions (banked):** (1) Pro/Premier monthly price. (2) Free-trial length (currently 30d via NADLAN_FREE_TRIAL_DAYS). (3) Foreign-market expansion yes/no. (4) Owner to paste the Lovable mission prompt from the anatomy skill §6. (5) GA4 hardcode disable in wp-config.php once PR #4 merges.
 
 **Versions in this PR #4 now: 1.4.0 → 1.16.0** (13 plugin versions, 22 inc/ modules, all PHP lints clean).
+## 2026-06-02 - Codex - glossary slug remediation added to v1.35.0 PR
+
+- Live `/glossary/` was checked and showed Hebrew/percent-encoded term URLs. Owner flagged this as a severe project rule violation.
+- Hard operating rule now documented: no public glossary term/category URL should contain Hebrew or other non-ASCII slug text.
+- `plugins/nadlan-config/inc/glossary.php` now forces ASCII slugs for future `nadlan_term` posts and glossary categories.
+- Existing Hebrew glossary term/category slugs are migrated once on admin load after the plugin update, with exact old slug -> new ASCII URL entries in `nadlan_glossary_redirect_map`.
+- Old Hebrew glossary URLs should return 301 redirects to the new ASCII URLs; internal links should resolve through `get_permalink()` after migration.
+- Verify after owner updates plugin: no `/glossary/` links contain `%d7`, one old percent-encoded URL 301s to ASCII, canonical/sitemap point to ASCII.

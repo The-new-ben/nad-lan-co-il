@@ -49,6 +49,10 @@
 
 ## P2 — Content / SEO
 
+- 🔴 **Glossary URL and quality repair.** Owner forbids Hebrew/non-ASCII public URLs.
+  v1.35.0 adds code guardrails and 301 migration for existing glossary Hebrew slugs. After
+  deploy, live QA must verify: no `%d7` glossary links, old URLs 301 to ASCII, and thin
+  glossary terms stay draft/noindex until ChatGPT expands them into 800+ word world-class entries.
 - 🔴 **Glossary rewrite to "magic."** Owner: current writing + titles are weak, reads like a
   flat page. Wants flowing, Wikipedia-DNA prose with two-way linking (pages → terms, terms
   → pillars/spokes). Research best-in-class glossary UX. Keep noindex on thin terms until

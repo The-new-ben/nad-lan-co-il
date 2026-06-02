@@ -53,6 +53,7 @@ The contract layer. Identical on every site.
 | `article-publishing-protocol.md` / `article-qa-audit.md` | DNA·DOC | Publish checklist + QA gate. Portable. |
 | `article-guide-design-pattern.md` | DNA·DOC | Guide/pillar layout. Portable. |
 | `copywriting-skill.md` | DNA·DOC | Voice, em-dash ban, forbidden phrases. Portable. |
+| `url-slug-governance.md` | DNA·DOC | ASCII-only public URL slugs, exact 301 repair method, glossary quality gate. Portable hard rule for Hebrew sites. |
 | `yoast-config.md` | DNA·DOC | Required meta + Person schema. Portable. |
 | `content-encyclopedia-glossary-plan.md` | DNA·DOC | Glossary/encyclopedia model. Portable concept — **needs rework, see BACKLOG**. |
 | `strategy-master.md` | SITE·DOC | Israeli RE keyword strategy. Re-derive per site. |
@@ -76,6 +77,7 @@ clinics, relocation services. Only the entity type + facets + colors change.
 | `inc/reviews.php` | DNA·CODE | **Generic reviews engine.** 5-star + moderation + schema.org. Works on any entity CPT. |
 | `inc/archive-grid.php` | DNA·CODE | Branded archive fallback. |
 | `inc/archive-seo.php` | DNA·CODE | Public archive titles, meta descriptions, CollectionPage schema, header H1 demotion helper, and crawlable archive hierarchy polish. Added v1.35.0. |
+| `inc/url-governance.php` | DNA·CODE | Global public slug guard: prevents future Hebrew/non-ASCII public slugs. Added v1.35.0. |
 | `inc/facets.php` | DNA·CODE | Server-side filter translation. |
 | `inc/claim.php` + `inc/tiers.php` | DNA·CODE | Free-card → claim → trial → paid-tier funnel. **The monetization spine.** |
 | `inc/catalog-meta.php` | DNA·CODE | Entity + claim meta registration. |

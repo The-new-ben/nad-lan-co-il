@@ -20,14 +20,15 @@ Every agent (Claude, Codex, Antigravity, Cowork) reads from here before acting a
 9. `article-publishing-protocol.md` — how a ChatGPT article becomes a live page (THE checklist that 2026-05-29 skipped)
 10. `copywriting-skill.md` — voice, forbidden phrases, em-dash ban
 11. `internal-linking-hub-spoke.md` — the hub/spoke map + anti-cannibalization rules
-12. `yoast-config.md` — required meta + Person schema
+12. `url-slug-governance.md` — ASCII-only public slugs, redirect discipline, glossary quality gate
+13. `yoast-config.md` — required meta + Person schema
 
 **Before shipping plugin or theme:**
 
-13. `nadlan-config-plugin.md` — plugin lessons, one-capability rule
-14. `codex-plugin-access-and-deploy.md` — **THE step-by-step deploy pipeline** (any agent: how to change the plugin and get it live; pre-solved blockers)
-15. `plugin-auto-update.md` — self-hosted update channel
-16. `agent-coordination-protocol.md` — UPress sync constraints
+14. `nadlan-config-plugin.md` — plugin lessons, one-capability rule
+15. `codex-plugin-access-and-deploy.md` — **THE step-by-step deploy pipeline** (any agent: how to change the plugin and get it live; pre-solved blockers)
+16. `plugin-auto-update.md` — self-hosted update channel
+17. `agent-coordination-protocol.md` — UPress sync constraints
 
 ## Index (current as of 2026-05-30)
 
@@ -67,6 +68,7 @@ Every agent (Claude, Codex, Antigravity, Cowork) reads from here before acting a
 | `google-blueprint-workflow.md` (stub) | Folded into strategy-master.md §13; pointer only |
 | `article-publishing-protocol.md` (stub) | Folded into internal-linking-hub-spoke.md; pointer only |
 | `copywriting-skill.md` | Hebrew voice; forbidden AI phrases; em-dash ban (2026-05-29 owner-explicit) |
+| `url-slug-governance.md` | ASCII-only public URL slugs; exact 301 repair method; glossary quality gate |
 | `internal-linking-hub-spoke.md` | Pillar→spoke map; anti-cannibalization; idempotency markers |
 | `spoke-prompts-short-rent-abroad.md` | System block + 7 country prompts for ChatGPT |
 | `short-term-rentals-abroad.md` | Pillar source data + 7-country regulation research |

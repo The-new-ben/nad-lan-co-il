@@ -24,7 +24,142 @@
 
 if ( ! defined( 'ABSPATH' ) ) { exit; }
 
-const NADLAN_TERM_WORD_FLOOR = 60;
+const NADLAN_TERM_WORD_FLOOR = 800;
+
+if ( ! function_exists( 'nadlan_glossary_word_count' ) ) {
+	function nadlan_glossary_word_count( $content ) {
+		$text = trim( wp_strip_all_tags( (string) $content ) );
+		if ( $text === '' ) { return 0; }
+		return count( preg_split( '/\s+/', $text ) );
+	}
+}
+
+if ( ! function_exists( 'nadlan_glossary_is_indexable_term' ) ) {
+	function nadlan_glossary_is_indexable_term( $id ) {
+		$words = nadlan_glossary_word_count( get_post_field( 'post_content', $id ) );
+		$quality = get_post_meta( $id, 'data_quality', true );
+		return $words >= NADLAN_TERM_WORD_FLOOR && in_array( $quality, array( 'worldclass', 'approved' ), true );
+	}
+}
+
+if ( ! function_exists( 'nadlan_glossary_has_non_ascii_slug' ) ) {
+	function nadlan_glossary_has_non_ascii_slug( $slug ) {
+		$decoded = rawurldecode( (string) $slug );
+		return (bool) preg_match( '/[^\x20-\x7E]/', $decoded );
+	}
+}
+
+if ( ! function_exists( 'nadlan_glossary_ascii_slug_base' ) ) {
+	function nadlan_glossary_ascii_slug_base( $text, $fallback = 'real-estate-term' ) {
+		$text = wp_strip_all_tags( html_entity_decode( (string) $text, ENT_QUOTES, 'UTF-8' ) );
+		$text = strtr( $text, array(
+			'א' => 'a', 'ב' => 'b', 'ג' => 'g', 'ד' => 'd', 'ה' => 'h', 'ו' => 'v', 'ז' => 'z',
+			'ח' => 'h', 'ט' => 't', 'י' => 'y', 'כ' => 'k', 'ך' => 'k', 'ל' => 'l', 'מ' => 'm',
+			'ם' => 'm', 'נ' => 'n', 'ן' => 'n', 'ס' => 's', 'ע' => 'a', 'פ' => 'p', 'ף' => 'p',
+			'צ' => 'ts', 'ץ' => 'ts', 'ק' => 'k', 'ר' => 'r', 'ש' => 'sh', 'ת' => 't',
+			'׳' => '', '״' => '', '"' => '', "'" => '', '`' => '',
+		) );
+		$text = remove_accents( $text );
+		$text = strtolower( $text );
+		$text = preg_replace( '/[^a-z0-9]+/', '-', $text );
+		$text = trim( (string) $text, '-' );
+		if ( strlen( $text ) > 80 ) {
+			$text = trim( substr( $text, 0, 80 ), '-' );
+		}
+		return $text !== '' ? $text : $fallback;
+	}
+}
+
+if ( ! function_exists( 'nadlan_glossary_ascii_post_slug' ) ) {
+	function nadlan_glossary_ascii_post_slug( $title, $term_en = '', $post_id = 0, $status = 'publish' ) {
+		$source = trim( (string) $term_en ) !== '' ? $term_en : $title;
+		$base = nadlan_glossary_ascii_slug_base( $source, 'real-estate-term' . ( $post_id ? '-' . (int) $post_id : '' ) );
+		return wp_unique_post_slug( $base, (int) $post_id, $status, 'nadlan_term', 0 );
+	}
+}
+
+if ( ! function_exists( 'nadlan_glossary_store_redirect' ) ) {
+	function nadlan_glossary_store_redirect( $kind, $old_slug, $target ) {
+		$old_slug = trim( rawurldecode( (string) $old_slug ), '/' );
+		$target   = esc_url_raw( $target );
+		if ( $old_slug === '' || $target === '' ) { return; }
+		$map = get_option( 'nadlan_glossary_redirect_map', array() );
+		if ( ! is_array( $map ) ) { $map = array(); }
+		$map[ $kind . ':' . $old_slug ] = $target;
+		update_option( 'nadlan_glossary_redirect_map', $map, false );
+	}
+}
+
+if ( ! function_exists( 'nadlan_glossary_redirect_old_slugs' ) ) {
+	function nadlan_glossary_redirect_old_slugs() {
+		$path = isset( $_SERVER['REQUEST_URI'] ) ? wp_parse_url( (string) $_SERVER['REQUEST_URI'], PHP_URL_PATH ) : '';
+		if ( ! $path ) { return; }
+		$decoded = trim( rawurldecode( $path ), '/' );
+		if ( strpos( $decoded, 'glossary/' ) === 0 ) {
+			$key = 'term:' . substr( $decoded, strlen( 'glossary/' ) );
+		} elseif ( strpos( $decoded, 'glossary-category/' ) === 0 ) {
+			$key = 'category:' . substr( $decoded, strlen( 'glossary-category/' ) );
+		} else {
+			return;
+		}
+		$map = get_option( 'nadlan_glossary_redirect_map', array() );
+		if ( is_array( $map ) && ! empty( $map[ $key ] ) ) {
+			wp_safe_redirect( $map[ $key ], 301, 'nadlan-config' );
+			exit;
+		}
+	}
+}
+add_action( 'template_redirect', 'nadlan_glossary_redirect_old_slugs', 1 );
+
+if ( ! function_exists( 'nadlan_glossary_migrate_ascii_slugs' ) ) {
+	function nadlan_glossary_migrate_ascii_slugs() {
+		if ( get_option( 'nadlan_glossary_ascii_slugs_1350' ) ) { return; }
+		if ( ! current_user_can( 'manage_options' ) ) { return; }
+
+		$terms = get_posts( array(
+			'post_type'      => 'nadlan_term',
+			'post_status'    => 'any',
+			'posts_per_page' => 1000,
+			'fields'         => 'ids',
+		) );
+		foreach ( $terms as $id ) {
+			$old = get_post_field( 'post_name', $id );
+			if ( ! nadlan_glossary_has_non_ascii_slug( $old ) ) { continue; }
+			$new = nadlan_glossary_ascii_post_slug(
+				get_the_title( $id ),
+				get_post_meta( $id, 'term_en', true ),
+				$id,
+				get_post_status( $id )
+			);
+			if ( $new && $new !== $old ) {
+				nadlan_glossary_store_redirect( 'term', $old, home_url( '/glossary/' . $new . '/' ) );
+				update_post_meta( $id, '_nadlan_old_glossary_slug', rawurldecode( $old ) );
+				wp_update_post( array( 'ID' => $id, 'post_name' => $new ) );
+			}
+		}
+
+		$cats = get_terms( array( 'taxonomy' => 'nadlan_term_cat', 'hide_empty' => false ) );
+		if ( ! is_wp_error( $cats ) ) {
+			foreach ( $cats as $cat ) {
+				if ( ! nadlan_glossary_has_non_ascii_slug( $cat->slug ) ) { continue; }
+				$base = nadlan_glossary_ascii_slug_base( $cat->name, 'glossary-category-' . (int) $cat->term_id );
+				$slug = $base;
+				$i = 2;
+				while ( ( $exists = term_exists( $slug, 'nadlan_term_cat' ) ) && (int) ( is_array( $exists ) ? $exists['term_id'] : $exists ) !== (int) $cat->term_id ) {
+					$slug = $base . '-' . $i;
+					$i++;
+				}
+				nadlan_glossary_store_redirect( 'category', $cat->slug, home_url( '/glossary-category/' . $slug . '/' ) );
+				wp_update_term( $cat->term_id, 'nadlan_term_cat', array( 'slug' => $slug ) );
+			}
+		}
+
+		update_option( 'nadlan_glossary_ascii_slugs_1350', gmdate( 'c' ), false );
+		delete_transient( 'nadlan_autolink_map' );
+		flush_rewrite_rules( false );
+	}
+}
+add_action( 'admin_init', 'nadlan_glossary_migrate_ascii_slugs' );
 
 if ( ! function_exists( 'nadlan_glossary_register' ) ) {
 	function nadlan_glossary_register() {
@@ -64,16 +199,30 @@ add_action( 'init', 'nadlan_glossary_register' );
 add_filter( 'wp_robots', function ( $r ) {
 	if ( ! is_singular( 'nadlan_term' ) ) { return $r; }
 	$id = get_queried_object_id();
-	$enriched = get_post_meta( $id, 'data_quality', true ) === 'enriched';
-	$words = max(
-		str_word_count( wp_strip_all_tags( (string) get_post_field( 'post_content', $id ) ) ),
-		count( preg_split( '/\s+/', trim( wp_strip_all_tags( (string) get_post_field( 'post_content', $id ) ) ) ) )
-	);
-	if ( ! $enriched && $words < NADLAN_TERM_WORD_FLOOR ) {
+	if ( ! nadlan_glossary_is_indexable_term( $id ) ) {
 		$r['noindex'] = true; $r['follow'] = true; unset( $r['index'] );
 	}
 	return $r;
 }, 20 );
+
+add_action( 'pre_get_posts', function ( $q ) {
+	if ( is_admin() || ! $q->is_main_query() ) { return; }
+	if ( ! $q->is_post_type_archive( 'nadlan_term' ) ) { return; }
+	$q->set( 'meta_query', array(
+		array(
+			'key'     => 'data_quality',
+			'value'   => array( 'worldclass', 'approved' ),
+			'compare' => 'IN',
+		),
+	) );
+} );
+
+add_filter( 'wpseo_sitemap_entry', function ( $url, $type, $object ) {
+	if ( is_object( $object ) && isset( $object->post_type, $object->ID ) && $object->post_type === 'nadlan_term' ) {
+		return nadlan_glossary_is_indexable_term( $object->ID ) ? $url : false;
+	}
+	return $url;
+}, 10, 3 );
 
 /* related terms (same nadlan_term_cat, excluding self), cached 12h per term */
 if ( ! function_exists( 'nadlan_glossary_related_terms' ) ) {
@@ -86,13 +235,16 @@ if ( ! function_exists( 'nadlan_glossary_related_terms' ) ) {
 		$siblings = get_posts( array(
 			'post_type'      => 'nadlan_term',
 			'post_status'    => 'publish',
-			'posts_per_page' => $limit,
+			'posts_per_page' => $limit * 3,
 			'post__not_in'   => array( $id ),
 			'orderby'        => 'rand',
 			'tax_query'      => array( array(
 				'taxonomy' => 'nadlan_term_cat', 'field' => 'term_id', 'terms' => $cats,
 			) ),
 		) );
+		$siblings = array_slice( array_filter( $siblings, function ( $post ) {
+			return nadlan_glossary_is_indexable_term( $post->ID );
+		} ), 0, $limit );
 		set_transient( $ck, wp_list_pluck( $siblings, 'ID' ), 12 * HOUR_IN_SECONDS );
 		return $siblings;
 	}
@@ -166,6 +318,9 @@ add_action( 'wp_head', function () {
 /* /glossary/ index: grouped A-Z + by category (overrides archive body via content filter on the archive description is hard; use a shortcode the archive template or a page can host) */
 add_shortcode( 'nadlan_glossary_index', function () {
 	$terms = get_posts( array( 'post_type' => 'nadlan_term', 'posts_per_page' => 1000, 'orderby' => 'title', 'order' => 'ASC' ) );
+	$terms = array_filter( $terms, function ( $term ) {
+		return nadlan_glossary_is_indexable_term( $term->ID );
+	} );
 	if ( ! $terms ) { return '<p dir="rtl">המילון בבנייה.</p>'; }
 	$groups = array();
 	foreach ( $terms as $t ) {
@@ -258,22 +413,31 @@ if ( ! function_exists( 'nadlan_glossary_one_shot_publish' ) ) {
 				'meta_query' => array( array( 'key' => 'term_en', 'value' => $p['term_en'] ) ),
 			) );
 		}
-		$status = ( ( $p['status'] ?? 'publish' ) === 'draft' ) ? 'draft' : 'publish';
+		$words = nadlan_glossary_word_count( $body );
+		$status = ( ( $p['status'] ?? 'publish' ) === 'draft' || $words < NADLAN_TERM_WORD_FLOOR ) ? 'draft' : 'publish';
+		$existing_id = $existing ? (int) $existing[0]->ID : 0;
+		$old_slug = $existing_id ? get_post_field( 'post_name', $existing_id ) : '';
+		$ascii_slug = nadlan_glossary_ascii_post_slug( $title, (string) ( $p['term_en'] ?? '' ), $existing_id, $status );
 		$args = array(
 			'post_type'    => 'nadlan_term',
 			'post_status'  => $status,
 			'post_title'   => $title,
 			'post_content' => wp_kses_post( $body ),
+			'post_name'    => $ascii_slug,
 		);
 		if ( ! empty( $p['excerpt'] ) ) { $args['post_excerpt'] = sanitize_text_field( (string) $p['excerpt'] ); }
 		if ( $existing ) {
-			$args['ID'] = (int) $existing[0]->ID;
+			$args['ID'] = $existing_id;
 			$id = wp_update_post( $args, true );
 		} else {
 			$id = wp_insert_post( $args, true );
 		}
 		if ( is_wp_error( $id ) ) {
 			return new WP_REST_Response( array( 'ok' => false, 'error' => 'save_failed', 'detail' => $id->get_error_message() ), 500 );
+		}
+		if ( $old_slug && $old_slug !== get_post_field( 'post_name', $id ) && nadlan_glossary_has_non_ascii_slug( $old_slug ) ) {
+			nadlan_glossary_store_redirect( 'term', $old_slug, get_permalink( $id ) );
+			update_post_meta( $id, '_nadlan_old_glossary_slug', rawurldecode( $old_slug ) );
 		}
 		// Meta map
 		$meta_keys = array( 'term_en', 'wikipedia_en', 'wikipedia_he', 'related_pillar', 'related_anchor', 'source_url', 'source_label' );
@@ -282,7 +446,7 @@ if ( ! function_exists( 'nadlan_glossary_one_shot_publish' ) ) {
 				update_post_meta( $id, $k, sanitize_text_field( (string) $p[ $k ] ) );
 			}
 		}
-		update_post_meta( $id, 'data_quality', 'enriched' );
+		update_post_meta( $id, 'data_quality', $words >= NADLAN_TERM_WORD_FLOOR ? 'needs_review' : 'thin_draft' );
 		// Category assignment
 		if ( ! empty( $p['term_cat'] ) ) {
 			$cats = is_array( $p['term_cat'] ) ? $p['term_cat'] : array( $p['term_cat'] );
@@ -291,7 +455,11 @@ if ( ! function_exists( 'nadlan_glossary_one_shot_publish' ) ) {
 				$c = trim( (string) $c );
 				if ( $c === '' ) { continue; }
 				$t = term_exists( $c, 'nadlan_term_cat' );
-				if ( ! $t ) { $t = wp_insert_term( $c, 'nadlan_term_cat' ); }
+				if ( ! $t ) {
+					$t = wp_insert_term( $c, 'nadlan_term_cat', array(
+						'slug' => nadlan_glossary_ascii_slug_base( $c, 'glossary-category' ),
+					) );
+				}
 				if ( ! is_wp_error( $t ) ) { $term_ids[] = (int) ( is_array( $t ) ? $t['term_id'] : $t ); }
 			}
 			if ( $term_ids ) { wp_set_object_terms( $id, $term_ids, 'nadlan_term_cat' ); }

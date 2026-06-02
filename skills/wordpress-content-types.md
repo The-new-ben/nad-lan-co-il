@@ -42,6 +42,14 @@ Codex previously created content as Pages. We do not migrate yet. We document th
 
 When CPTs are registered in `functions.php` (or a small companion plugin), use these slugs and labels. **Do not change slugs after launch** — URLs depend on them.
 
+## Hard URL Slug Rule
+
+Read `url-slug-governance.md` before creating or migrating any public URL.
+
+Public titles and body copy may be Hebrew. Public URL slugs must be ASCII only. Never create a Page, Post, CPT item, taxonomy term, project, professional, city, or glossary term with Hebrew/non-ASCII path text or a `%d7` percent-encoded path.
+
+If an existing Hebrew URL must be repaired, do not delete it blindly. Create the ASCII replacement, add exact 301 redirect mapping, update internal links, verify canonical/sitemap output, and document the migration.
+
 ```php
 // property → /properties/{slug}/
 // project → /projects/{slug}/
