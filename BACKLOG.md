@@ -48,10 +48,26 @@
 
 ## P2 — Content / SEO
 
-- 🔴 **Glossary rewrite to "magic."** Owner: current writing + titles are weak, reads like a
-  flat page. Wants flowing, Wikipedia-DNA prose with two-way linking (pages → terms, terms
-  → pillars/spokes). Research best-in-class glossary UX. Keep noindex on thin terms until
-  enriched (anti-cannibalization). ❓ keep/restructure decision after redesign.
+- 🟢 **Glossary slugs migrated Hebrew → clean Latin** (2026-06-02). All 22 terms; old URLs
+  301 → new via WP `_wp_old_slug`; Hebrew titles intact. Record:
+  `docs/glossary-slug-migration-2026-06-02.md`. Owner decided to KEEP the glossary.
+- 🔴 **Re-index the new glossary URLs** — ping sitemap / submit in Search Console so Google
+  recrawls the 22 new Latin URLs and follows the 301s.
+- 🔴 **`/glossary/` archive redesign** as an entity map (link each term to 2-4 decision
+  guides; clean title; stop repeating the same 3 headings). Codex audit confirmed this.
+- 🔴 **Canonical gap:** some `nadlan_project`/`nadlan_professional` pages lack a self
+  canonical (Codex audit + verified live on a profile). Fix via Yoast config or a
+  single-source canonical — do NOT add a 2nd canonical on top of Yoast.
+- 🟢 **URL namespace contract** written (`skills/url-namespace-contract.md`) — the
+  100-steps-ahead law: Latin concept slugs, one-concept-one-URL, namespace map, pre-publish
+  collision check, cannibalization rules. All agents follow it before publishing.
+- 🔴 **Glossary rewrite to "magic"** (titles/prose). Wikipedia-DNA flowing prose + two-way
+  linking. Lower priority now that slugs + namespace are fixed. ❓ after archive redesign.
+- 🔴 **Codex coordination:** PR #17 (Codex 1.35.0 archive polish) CLOSED + locked
+  "DO NOT MERGE" (fragile regex HTML surgery, dup schema, pagination links, edited
+  directory.php). Good parts (title/desc map) to be cherry-picked into a clean module if/when
+  needed. Division: Codex = content/research/audit; Claude = structural plugin code + review
+  gate. No agent edits another's module; no self-merge of plugin code.
 - 🔴 **Missing glossary terms** the owner expects: bill-of-materials / machinery / materials
   terms (כתב כמויות, ציוד, חומרי גלם...) — not present yet.
 - 🟢 (guard confirmed) Stub records are `noindex,follow` via `schema.php` — 1,700+ imported
