@@ -2,7 +2,7 @@
 /**
  * Plugin Name: NadLan Config
  * Description: Lead-capture foundation: nadlan_lead CPT + lead-form handler + healthcheck. Read skills/nadlan-config-plugin.md.
- * Version: 1.37.0
+ * Version: 1.38.0
  * Author: nad-lan.co.il
  * License: GPL-2.0+
  * Requires PHP: 7.4
@@ -70,7 +70,7 @@ if ( ! function_exists( 'nadlan_config_healthcheck_response' ) ) {
 	function nadlan_config_healthcheck_response() {
 		$out = array(
 			'plugin'              => 'nadlan-config',
-			'version'             => '1.37.0',
+			'version'             => '1.38.0',
 			'cpt_present'         => post_type_exists( 'nadlan_lead' ),
 			'lead_handler_loaded' => (bool) has_action( 'admin_post_nadlan_lead' ),
 			'php_version'         => PHP_VERSION,
@@ -450,6 +450,16 @@ if ( ! function_exists( 'nadlan_config_strip_all_generators' ) ) {
 	function nadlan_config_strip_all_generators( $html ) {
 		if ( strpos( $html, 'name="generator"' ) !== false || strpos( $html, "name='generator'" ) !== false ) {
 			$html = preg_replace( '~<meta[^>]+name=["\']generator["\'][^>]*>\s*~i', '', $html );
+		}
+		// v1.38.0: remove the WordPress theme-compat "powered by" credit paragraph that
+		// get_footer() prints on plugin-rendered archives in a block theme. Targeted:
+		// only the <p> that links to wordpress.org. Nothing else is touched.
+		if ( strpos( $html, 'wordpress.org' ) !== false ) {
+			$html = preg_replace(
+				'~<p>\s*[^<]*<a[^>]*href=["\']https?://(?:[a-z]+\.)?wordpress\.org/?["\'][^>]*>[^<]*</a>\s*</p>~i',
+				'',
+				$html
+			);
 		}
 		return $html;
 	}
