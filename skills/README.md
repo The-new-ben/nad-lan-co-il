@@ -25,8 +25,9 @@ Every agent (Claude, Codex, Antigravity, Cowork) reads from here before acting a
 **Before shipping plugin or theme:**
 
 13. `nadlan-config-plugin.md` — plugin lessons, one-capability rule
-14. `plugin-auto-update.md` — self-hosted update channel
-15. `agent-coordination-protocol.md` — UPress sync constraints
+14. `codex-plugin-access-and-deploy.md` — **THE step-by-step deploy pipeline** (any agent: how to change the plugin and get it live; pre-solved blockers)
+15. `plugin-auto-update.md` — self-hosted update channel
+16. `agent-coordination-protocol.md` — UPress sync constraints
 
 ## Index (current as of 2026-05-30)
 
@@ -92,6 +93,7 @@ Every agent (Claude, Codex, Antigravity, Cowork) reads from here before acting a
 | File | Purpose |
 |---|---|
 | `nadlan-config-plugin.md` | Plugin journey v1.0.0→v1.2.1; one-capability rule; lessons |
+| `codex-plugin-access-and-deploy.md` | **Complete deploy operator guide** — locations, links, the 9-step ship loop, obstacle→solution table, multi-agent etiquette. Start here to change the plugin. |
 | `plugin-auto-update.md` | PUC self-hosted JSON; ship workflow |
 | `plugin-discipline.md` | Mandatory guards (function_exists, no Hebrew in activation, no mu-plugins) |
 | `theme-fork-decision.md` | Why we forked Twenty Twenty-Five instead of child theme |

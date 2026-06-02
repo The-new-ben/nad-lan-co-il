@@ -10,6 +10,11 @@ Before any action:
 1. Read `skills/README.md`
 2. Read `skills/site-state.md` (current known state of the live site)
 3. Read the specific skill(s) relevant to your task
+4. **Before changing the `nadlan-config` plugin or shipping any plugin version, read
+   `skills/codex-plugin-access-and-deploy.md`** — the full deploy pipeline (locations,
+   links, the 9-step ship loop, and every pre-solved blocker). Editing a `.php` file alone
+   does NOT reach the live site; only a bumped ZIP + manifest on `main` + the owner's
+   "Update" click does.
 
 After any action that changes the live site, the repo, plugins, or content:
 1. Update `skills/site-state.md` with a dated entry: who you are, what you did, why, where.
