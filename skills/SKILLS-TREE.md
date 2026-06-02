@@ -100,7 +100,7 @@ rename CPT, redefine the category taxonomy + colours, point `import.php` at the 
 | `monetization-lawyer-angle.md` | SITE·DOC | RE-lawyer lead angle (owner is the expert). |
 | `monetization-readiness-and-adsales.md` | DNA·DOC | Ad-sales readiness. Portable. |
 | `design-monetization-surfaces.md` | DNA·DOC | Sponsored slots, ad reservations. Portable. |
-| `payments-woo-greeninvoice.md` | DNA·DOC | Israeli payment + invoicing notes. **Extend with PayPlus — see BACKLOG.** |
+| `payments-woo-greeninvoice.md` | DNA·DOC | **LIVE stack:** WooCommerce + PMS + Green Invoice/Morning gateway. Smoke-tested. Cards: ₪349 Pro, ₪749 Premier, ₪3,990 project campaign. Gateway is one-charge — monthly = manual standing order, or sell annual. |
 | `customer-value-spec.md` | DNA·DOC | What the customer actually pays for. |
 
 **Revenue DNA (the model, portable to every site):**
