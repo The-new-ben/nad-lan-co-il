@@ -116,6 +116,10 @@ add_action( 'rest_api_init', function () {
 			$source_url     = esc_url_raw( (string) ( $p['source_url'] ?? '' ) );
 			$est_value      = (int) ( $p['est_value'] ?? 0 );
 			$hp             = (string) ( $p['company'] ?? '' );
+			// v1.39.0: notify_partner defaults TRUE (legacy). Directory "request a quote"
+			// passes false → capture + track + email the OWNER only, do NOT cold-email the
+			// contractor and do NOT auto-schedule customer follow-ups. Owner routes manually.
+			$notify_partner = array_key_exists( 'notify_partner', $p ) ? (bool) $p['notify_partner'] : true;
 			if ( $hp !== '' ) { return new WP_Error( 'spam', 'spam' ); }
 
 			if ( ! $customer_name || ( ! $customer_phone && ! $customer_email ) || ! $partner_id ) {
@@ -144,9 +148,9 @@ add_action( 'rest_api_init', function () {
 			update_post_meta( $rid, 'source_url', $source_url );
 			update_post_meta( $rid, 'est_value', $est_value );
 			update_post_meta( $rid, 'commission_pct', $default_pct );
-			update_post_meta( $rid, 'status', 'routed' );
+			update_post_meta( $rid, 'status', $notify_partner ? 'routed' : 'new' );
 			update_post_meta( $rid, 'routed_at', time() );
-			nadlan_ll_log( $rid, 'routed', $source_url );
+			nadlan_ll_log( $rid, $notify_partner ? 'routed' : 'captured', $source_url );
 
 			// Notify owner + partner
 			$admin = get_option( 'admin_email' );
@@ -164,28 +168,31 @@ add_action( 'rest_api_init', function () {
 				$msg .= "ניהול: " . admin_url( 'post.php?post=' . $rid . '&action=edit' );
 				wp_mail( $admin, '[נדל"ן חכם · Ledger] ליד חדש הופנה — ' . $customer_name, $msg );
 			}
-			$partner_email = (string) get_post_meta( $partner_id, 'email', true );
-			if ( $partner_email && is_email( $partner_email ) ) {
-				$pm  = "שלום,\n\nיש לך הפניית לקוח חדשה מ-נדל\"ן חכם.\n\n";
-				$pm .= "לקוח: $customer_name · $customer_phone\n";
-				$pm .= "נושא: $topic\n\n";
-				$pm .= "תנאי שיתוף הפעולה: עמלה של $default_pct% מהעסקה הסגורה, משולמת בתוך 14 יום מסגירה.\n";
-				$pm .= "לאישור התנאים וקבלת פרטי הלקוח המלאים: $accept_url\n\n";
-				$pm .= "מערכת נדל\"ן חכם";
-				wp_mail( $partner_email, 'הפניית לקוח חדשה — מערכת נדל"ן חכם', $pm );
+			if ( $notify_partner ) {
+				$partner_email = (string) get_post_meta( $partner_id, 'email', true );
+				if ( $partner_email && is_email( $partner_email ) ) {
+					$pm  = "שלום,\n\nיש לך הפניית לקוח חדשה מ-נדל\"ן חכם.\n\n";
+					$pm .= "לקוח: $customer_name · $customer_phone\n";
+					$pm .= "נושא: $topic\n\n";
+					$pm .= "תנאי שיתוף הפעולה: עמלה של $default_pct% מהעסקה הסגורה, משולמת בתוך 14 יום מסגירה.\n";
+					$pm .= "לאישור התנאים וקבלת פרטי הלקוח המלאים: $accept_url\n\n";
+					$pm .= "מערכת נדל\"ן חכם";
+					wp_mail( $partner_email, 'הפניית לקוח חדשה — מערכת נדל"ן חכם', $pm );
+				}
+				// schedule customer follow-ups only once truly routed to a partner
+				wp_schedule_single_event( time() + 14 * DAY_IN_SECONDS, 'nadlan_ll_customer_ping', array( $rid ) );
+				wp_schedule_single_event( time() + 30 * DAY_IN_SECONDS, 'nadlan_ll_customer_ping', array( $rid ) );
+				wp_schedule_single_event( time() + 60 * DAY_IN_SECONDS, 'nadlan_ll_customer_ping', array( $rid ) );
 			}
-
-			// schedule customer follow-ups
-			wp_schedule_single_event( time() + 14 * DAY_IN_SECONDS, 'nadlan_ll_customer_ping', array( $rid ) );
-			wp_schedule_single_event( time() + 30 * DAY_IN_SECONDS, 'nadlan_ll_customer_ping', array( $rid ) );
-			wp_schedule_single_event( time() + 60 * DAY_IN_SECONDS, 'nadlan_ll_customer_ping', array( $rid ) );
 
 			return array(
 				'ok' => true,
 				'referral_id' => $rid,
 				'token' => $token,
 				'customer_status_url' => $cust_url,
-				'message' => 'הפניה נרשמה. הלקוח יקבל מעקב אוטומטי לסגירת מעגל.',
+				'message' => $notify_partner
+					? 'הפניה נרשמה. הלקוח יקבל מעקב אוטומטי לסגירת מעגל.'
+					: 'הבקשה התקבלה. נחזור אליכם בהקדם.',
 			);
 		},
 	) );

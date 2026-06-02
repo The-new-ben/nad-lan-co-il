@@ -408,7 +408,7 @@ if ( ! function_exists( 'nadlan_dir_profile_header' ) ) {
 .nlpf-call:hover,.nlpf-quote:hover{transform:translateY(-2px);filter:brightness(1.05)}
 @media(max-width:640px){.nlpf-cta{width:100%;flex-direction:row}.nlpf-call,.nlpf-quote{flex:1}}
 </style>
-<script>function nadlanProQuote(id,name){var n=prompt('שמכם:');if(!n)return;var p=prompt('טלפון ליצירת קשר:');if(!p)return;fetch('<?php echo esc_js( rest_url( 'nadlan/v1/lead' ) ); ?>',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({name:n,phone:p,topic:'הצעת מחיר מבעל מקצוע',message:'פנייה ל: '+name+' (#'+id+')',source:'pro-profile'})}).then(function(){alert('✓ הבקשה נשלחה. בעל המקצוע יחזור אליכם.');}).catch(function(){alert('שגיאה, נסו שוב.');});}</script>
+<script>function nadlanProQuote(id,name){var n=prompt('שמכם:');if(!n)return;var p=prompt('טלפון ליצירת קשר:');if(!p)return;fetch('<?php echo esc_js( rest_url( 'nadlan/v1/referral/route' ) ); ?>',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({customer_name:n,customer_phone:p,partner_id:id,topic:'הצעת מחיר — '+name,source_url:location.href,notify_partner:0})}).then(function(r){return r.json();}).then(function(d){alert((d&&d.ok)?'✓ הבקשה נשלחה. נחזור אליכם בהקדם.':'שגיאה, נסו שוב.');}).catch(function(){alert('שגיאה, נסו שוב.');});}</script>
 		<?php
 		return ob_get_clean();
 	}
