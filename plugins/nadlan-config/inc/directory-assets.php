@@ -92,6 +92,9 @@ if ( ! function_exists( 'nadlan_dir_css' ) ) {
 .nldir-more-wrap{text-align:center;margin-top:30px}
 .nldir-more{background:var(--ink);color:#fff;border:0;border-radius:10px;padding:14px 40px;font:inherit;font-weight:700;cursor:pointer;transition:background .2s,transform .15s}
 .nldir-more:hover{background:var(--gold);transform:translateY(-2px)}
+.nldir-crawl-pager{display:flex;justify-content:center;margin-top:12px}
+.nldir-crawl-pager a{font-size:13px;color:#6b5a39;text-decoration:none;border-bottom:1px solid rgba(156,122,60,.35);padding-bottom:2px}
+.nldir-crawl-pager a:hover{color:var(--gold);border-color:var(--gold)}
 .nldir-empty{grid-column:1/-1;text-align:center;padding:60px 20px;color:#6b6b6b}
 .nldir-empty p:first-child{font-size:18px;color:var(--ink);font-weight:600}
 

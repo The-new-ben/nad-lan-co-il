@@ -75,6 +75,7 @@ clinics, relocation services. Only the entity type + facets + colors change.
 | `inc/directory.php` + `inc/directory-assets.php` | DNA·CODE | **Generic directory engine.** Live AJAX filter/sort/search, colour-coded category pills, premium cards, REST. Swap the taxonomy (profession → lawyer-specialty / travel-service). |
 | `inc/reviews.php` | DNA·CODE | **Generic reviews engine.** 5-star + moderation + schema.org. Works on any entity CPT. |
 | `inc/archive-grid.php` | DNA·CODE | Branded archive fallback. |
+| `inc/archive-seo.php` | DNA·CODE | Public archive titles, meta descriptions, CollectionPage schema, header H1 demotion helper, and crawlable archive hierarchy polish. Added v1.35.0. |
 | `inc/facets.php` | DNA·CODE | Server-side filter translation. |
 | `inc/claim.php` + `inc/tiers.php` | DNA·CODE | Free-card → claim → trial → paid-tier funnel. **The monetization spine.** |
 | `inc/catalog-meta.php` | DNA·CODE | Entity + claim meta registration. |

@@ -2,6 +2,12 @@
 
 > **Notice to all agents:** this plugin is the runtime backbone of the lead-capture monetization model (`monetization-lawyer-angle.md`). When the theme's `functions.php` fails to load custom code (which happened in the 2026-05-28 sync), this plugin is the resilient fallback that keeps the CPT and lead handler alive. **Read before editing the theme `functions.php`.**
 
+> **Deploy update, 2026-06-02:** the old manual upload/delete flow below is historical.
+> The active deploy source of truth is now `skills/codex-plugin-access-and-deploy.md`:
+> bump plugin version in two places, build `plugin-dist/nadlan-config-X.Y.Z.zip`, update
+> `plugin-dist/nadlan-config.json`, merge to `main`, then the owner clicks Update in
+> WP Admin. Editing PHP files alone does not affect the live site.
+
 ## What it does (current — v1.0.3)
 
 1. Registers the **`nadlan_lead`** custom post type — private, admin-only, with `dashicons-money-alt`. Every public lead form submits to this CPT.

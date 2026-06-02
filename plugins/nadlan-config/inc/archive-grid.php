@@ -38,18 +38,24 @@ if ( ! function_exists( 'nadlan_archive_grid_render' ) ) {
 		$meta = array(
 			'nadlan_professional' => array(
 				'h1'  => 'בעלי מקצוע רשומים',
-				'sub' => 'קבלנים, שמאים ומפקחים מאומתים — מתוך פנקס הקבלנים הרשומים (gov.il). סינון לפי עיר, סיווג וענף.',
+				'sub' => 'קבלנים, שמאים ומפקחים מאומתים מתוך פנקס הקבלנים הרשומים (gov.il). סינון לפי עיר, סיווג וענף.',
 				'badge' => 'קבלן רשום',
+				'note' => 'המאגר עוזר לבדוק התאמה ראשונית לפני פנייה לבעל מקצוע: תחום פעילות, עיר, סיווג רשמי ופרטי כרטיס.',
+				'more' => 'הצגת עוד בעלי מקצוע',
 			),
 			'nadlan_project' => array(
-				'h1'  => 'פרויקטים והתחדשות עירונית',
-				'sub' => 'תמ״א 38, פינוי-בינוי ובנייה חדשה — מספר תוכנית, יזם, סטטוס ויחידות דיור.',
+				'h1'  => function_exists( 'nadlan_archive_get_label' ) ? nadlan_archive_get_label( 'nadlan_project', 'h1', 'פרויקטים והתחדשות עירונית' ) : 'פרויקטים והתחדשות עירונית',
+				'sub' => 'השוואת פרויקטים חדשים, פינוי בינוי ותמ״א 38 לפי עיר, יזם, סטטוס, מספר יחידות ושלב התקדמות.',
 				'badge' => 'פרויקט',
+				'note' => 'לפני שבוחנים פרויקט כדאי להבין מי היזם, מה מצב התכנון, כמה יחידות צפויות ומהם סימני ההתקדמות בפועל.',
+				'more' => 'הצגת עוד פרויקטים',
 			),
 			'nadlan_property' => array(
-				'h1'  => 'נכסים למכירה והשקעה',
-				'sub' => 'דירות ובתים עם בדיקה משפטית מקדימה — מחיר, חדרים, מ״ר ושכונה.',
+				'h1'  => function_exists( 'nadlan_archive_get_label' ) ? nadlan_archive_get_label( 'nadlan_property', 'h1', 'נכסים למכירה והשקעה' ) : 'נכסים למכירה והשקעה',
+				'sub' => 'דירות, בתים והזדמנויות השקעה עם נתוני מחיר, חדרים, שטח, עיר ושיקולי בדיקה ראשוניים.',
 				'badge' => 'נכס',
+				'note' => 'השוואת נכסים טובה מתחילה בפרטים הבסיסיים: מחיר מבוקש, שטח, מספר חדרים, סביבת מגורים והתאמה לצורך האמיתי.',
+				'more' => 'הצגת עוד נכסים',
 			),
 		);
 		$L = $meta[ $pt ] ?? $meta['nadlan_professional'];
@@ -57,7 +63,11 @@ if ( ! function_exists( 'nadlan_archive_grid_render' ) ) {
 		$paged = max( 1, (int) get_query_var( 'paged' ) );
 		$pages = (int) $wp_query->max_num_pages;
 
-		get_header();
+		if ( function_exists( 'nadlan_archive_render_header' ) ) {
+			nadlan_archive_render_header();
+		} else {
+			get_header();
+		}
 		echo nadlan_archive_grid_css();
 		?>
 <div class="nlag" dir="rtl">
@@ -65,6 +75,7 @@ if ( ! function_exists( 'nadlan_archive_grid_render' ) ) {
 	<header class="nlag-head">
 		<h1><?php echo esc_html( $L['h1'] ); ?></h1>
 		<p class="nlag-sub"><?php echo esc_html( $L['sub'] ); ?></p>
+		<?php if ( ! empty( $L['note'] ) ) : ?><p class="nlag-note"><?php echo esc_html( $L['note'] ); ?></p><?php endif; ?>
 		<p class="nlag-count"><strong><?php echo number_format( $total ); ?></strong> רשומות</p>
 	</header>
 
@@ -102,16 +113,13 @@ if ( ! function_exists( 'nadlan_archive_grid_render' ) ) {
 	</div>
 
 	<?php if ( $pages > 1 ) : ?>
-	<nav class="nlag-pager">
-		<?php
-		echo paginate_links( array(
-			'total'     => $pages,
-			'current'   => $paged,
-			'prev_text' => '← הקודם',
-			'next_text' => 'הבא →',
-			'mid_size'  => 2,
-		) );
-		?>
+	<nav class="nlag-more-nav" aria-label="עמודים נוספים">
+		<?php if ( $paged < $pages ) : ?>
+		<a class="nlag-more" href="<?php echo esc_url( get_pagenum_link( $paged + 1 ) ); ?>" rel="next"><?php echo esc_html( $L['more'] ); ?></a>
+		<?php endif; ?>
+		<?php if ( $paged > 1 ) : ?>
+		<a class="nlag-prev" href="<?php echo esc_url( get_pagenum_link( $paged - 1 ) ); ?>" rel="prev">חזרה לעמוד הקודם</a>
+		<?php endif; ?>
 	</nav>
 	<?php endif; ?>
 
@@ -120,7 +128,11 @@ if ( ! function_exists( 'nadlan_archive_grid_render' ) ) {
 	<?php endif; ?>
 </div>
 		<?php
-		get_footer();
+		if ( function_exists( 'nadlan_archive_render_footer' ) ) {
+			nadlan_archive_render_footer();
+		} else {
+			get_footer();
+		}
 	}
 }
 
@@ -165,6 +177,7 @@ if ( ! function_exists( 'nadlan_archive_grid_css' ) ) {
 .nlag-head{margin-bottom:22px}
 .nlag-head h1{font-family:var(--font-serif,"Frank Ruhl Libre",serif);font-weight:500;font-size:34px;margin:0 0 8px;letter-spacing:-.015em}
 .nlag-sub{font-size:15px;color:#6b6b6b;margin:0 0 8px;max-width:720px;line-height:1.6}
+.nlag-note{font-size:14px;color:#4d4a44;margin:0 0 12px;max-width:780px;line-height:1.7;background:#FBF9F5;border-inline-start:3px solid #9C7A3C;padding:10px 14px;border-radius:8px}
 .nlag-count{font-size:14px;color:#5a5a5a;margin:0}.nlag-count strong{color:#9C7A3C;font-size:16px}
 .nlag-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:16px;margin:22px 0}
 .nlag-card{position:relative;display:flex;flex-direction:column;gap:6px;background:linear-gradient(135deg,#fff,#FBF9F5);border:1px solid rgba(27,26,23,.1);border-radius:14px;padding:20px;text-decoration:none;color:inherit;transition:transform .22s,box-shadow .22s,border-color .22s;min-height:170px}
@@ -178,10 +191,11 @@ if ( ! function_exists( 'nadlan_archive_grid_css' ) ) {
 .nlag-verified{font-size:11px;color:#2e7d32;font-weight:600}
 .nlag-go{margin-top:auto;color:#9C7A3C;font-weight:600;font-size:13px;transition:transform .2s}
 .nlag-card:hover .nlag-go{transform:translateX(-4px)}
-.nlag-pager{display:flex;justify-content:center;gap:6px;flex-wrap:wrap;margin-top:30px}
-.nlag-pager .page-numbers{display:inline-block;padding:9px 14px;border:1px solid rgba(27,26,23,.14);border-radius:8px;text-decoration:none;color:#1B1A17;font-size:14px}
-.nlag-pager .page-numbers.current{background:#1B1A17;color:#FAF7F1;border-color:#1B1A17}
-.nlag-pager a.page-numbers:hover{background:#9C7A3C;color:#fff;border-color:#9C7A3C}
+.nlag-more-nav{display:flex;justify-content:center;align-items:center;gap:14px;flex-wrap:wrap;margin-top:30px}
+.nlag-more{display:inline-flex;align-items:center;justify-content:center;min-width:190px;background:#1B1A17;color:#fff;border:0;border-radius:10px;padding:13px 34px;text-decoration:none;font-weight:700;font-size:14px;transition:background .2s,transform .15s}
+.nlag-more:hover{background:#9C7A3C;transform:translateY(-2px)}
+.nlag-prev{font-size:13px;color:#6b5a39;text-decoration:none;border-bottom:1px solid rgba(156,122,60,.35);padding-bottom:2px}
+.nlag-prev:hover{color:#9C7A3C;border-color:#9C7A3C}
 .nlag-empty{text-align:center;padding:40px;color:#6b6b6b}
 .nlag-empty a{color:#9C7A3C}
 @media(max-width:600px){.nlag-head h1{font-size:27px}.nlag-grid{grid-template-columns:repeat(2,1fr);gap:12px}.nlag-card{padding:16px;min-height:150px}}

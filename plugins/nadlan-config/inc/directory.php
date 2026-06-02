@@ -229,7 +229,7 @@ add_filter( 'get_the_archive_title', function ( $t ) {
 } );
 add_filter( 'pre_get_document_title', function ( $t ) {
 	if ( is_post_type_archive( 'nadlan_professional' ) ) {
-		return 'מאגר בעלי מקצוע בנדל״ן — קבלנים, שמאים, יועצים מאומתים | נדל״ן חכם';
+		return 'מאגר בעלי מקצוע בנדל״ן | קבלנים, שמאים ויועצים מאומתים | נדל״ן חכם';
 	}
 	return $t;
 }, 20 );
@@ -263,7 +263,11 @@ if ( ! function_exists( 'nadlan_dir_render_page' ) ) {
 		$cards = nadlan_dir_cards_html( $wq );
 		wp_reset_postdata();
 
-		get_header();
+		if ( function_exists( 'nadlan_archive_render_header' ) ) {
+			nadlan_archive_render_header();
+		} else {
+			get_header();
+		}
 		echo nadlan_dir_css();
 		?>
 <div class="nldir" dir="rtl"
@@ -325,6 +329,11 @@ if ( ! function_exists( 'nadlan_dir_render_page' ) ) {
 			</div>
 			<div class="nldir-results" id="nldir-results"><?php echo $cards; ?></div>
 			<div class="nldir-more-wrap"><button type="button" class="nldir-more" id="nldir-more"<?php echo $wq->max_num_pages > 1 ? '' : ' style="display:none"'; ?>>הצגת עוד</button></div>
+			<?php if ( $wq->max_num_pages > 1 ) : ?>
+			<nav class="nldir-crawl-pager" aria-label="עמודים נוספים במאגר בעלי המקצוע">
+				<a href="<?php echo esc_url( add_query_arg( 'paged', 2, get_post_type_archive_link( 'nadlan_professional' ) ) ); ?>" rel="next">עמוד נוסף במאגר</a>
+			</nav>
+			<?php endif; ?>
 			<?php
 			// ItemList JSON-LD for SEO
 			if ( $wq->have_posts() ) {
@@ -339,7 +348,11 @@ if ( ! function_exists( 'nadlan_dir_render_page' ) ) {
 </div>
 <?php echo nadlan_dir_js(); ?>
 		<?php
-		get_footer();
+		if ( function_exists( 'nadlan_archive_render_footer' ) ) {
+			nadlan_archive_render_footer();
+		} else {
+			get_footer();
+		}
 	}
 }
 

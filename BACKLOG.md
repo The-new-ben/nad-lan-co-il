@@ -38,9 +38,10 @@
   already knows + associates with our keywords, so featured results create buzz → then
   upsell premium to *stay* floated. Needs an authority signal (brand search / backlinks /
   manual editorial pick). *Shark note: start with a manual `editor_pick` flag; automate later.*
-- 🔴 **Kill all pagination → "load more" everywhere** (owner hates pages, bad for SEO).
-  Professionals + projects already use load-more. Audit remaining `paginate_links` (archive
-  -grid for properties) and any blog/term archives; replace with load-more.
+- 🟡 **Listing pagination UX without crawl loss.** Owner prefers "load more" over old page
+  numbers. SEO correction from Google guidance: do not make listing depth JS-only. Use a
+  premium "show more" UX for people, but keep crawlable `<a href>` next/page links or
+  server-rendered paginated URLs for Googlebot. v1.35.0 starts this on `/professionals/`.
 - 🔴 **Reviews → world-class.** Engine shipped (1.33). Level-up: verified-reviewer badge,
   photo reviews, helpful-votes, reply-from-owner, review-request emails, rich snippet QA.
 - 🔴 **Verified-claim review boost.** Show "verified reviews" badges; claimed+verified cards
@@ -96,6 +97,9 @@
 
 ## Shipped log (history — do not delete)
 
+- 🟡 1.35.0 — in progress on branch `codex/nadlan-config-1-35-archive-polish`: archive
+  SEO/title/H1 polish, public archive descriptions, crawlable "show more" fallback, and
+  source-level deploy package. Requires PR merge + owner WP plugin update before live.
 - 🟢 1.33.0 — projects premium directory + real reviews engine (moderation + schema.org).
 - 🟢 1.32.0 — premium professional profile pages + "similar pros".
 - 🟢 1.31.0 — state-of-the-art professionals directory (live AJAX filter/sort, colour pills,

@@ -67,6 +67,16 @@
 ---
 _File maintained by all agents. Created 2026-05-28 by Claude Code (claude-opus-4-7)._
 
+### 2026-06-02 — Codex — nadlan-config v1.35.0 archive SEO polish branch
+- Read: `AGENTS.md`, `skills/codex-plugin-access-and-deploy.md`, `skills/SKILLS-TREE.md`, `skills/article-qa-audit.md`, `skills/google-blueprint-workflow.md`, `skills/copywriting-skill.md`, and Nadlan/SEO skills.
+- Did: created fresh branch `codex/nadlan-config-1-35-archive-polish` from `origin/main`; checked current main plugin version `1.34.0`; reserved next version `1.35.0`.
+- Why: owner requested non-article improvements after a critical scan: fix archive/listing hierarchy, SEO titles, duplicate H1 risk, crawlable listing depth, and public wording without writing full Hebrew articles.
+- Touched: `plugins/nadlan-config/nadlan-config.php`, `plugins/nadlan-config/inc/archive-seo.php`, `plugins/nadlan-config/inc/archive-grid.php`, `plugins/nadlan-config/inc/directory.php`, `plugins/nadlan-config/inc/directory-assets.php`, `BACKLOG.md`, `skills/SKILLS-TREE.md`, `skills/nadlan-config-plugin.md`, and `docs/AGENT_HANDOFF_NADLAN_CONFIG_1_35_ARCHIVE_SEO_2026-06-02.md`.
+- Verification: PHP lint passed on every changed PHP file using local PHP 8.3. `git diff --check` showed only Windows line-ending normalization warnings.
+- Package: `plugin-dist/nadlan-config.json` now advertises `1.35.0`, and `plugin-dist/nadlan-config-1.35.0.zip` was built and verified with top-level `nadlan-config/` entries.
+- Important deploy note: source/package changes are not live until this branch is committed, pushed, merged to `main`, and owner clicks the NadLan Config update in WP Admin.
+- Next agent should: read `docs/AGENT_HANDOFF_NADLAN_CONFIG_1_35_ARCHIVE_SEO_2026-06-02.md`, avoid taking version `1.35.0` for another branch, open PR if not already open, then hand owner the WP update click. No full article writing unless owner authorizes.
+
 ### 2026-05-28 (afternoon) — Claude Code (claude-opus-4-7) — theme fork + Abilities API
 - Read: prior session block; `AGENTS.md`; the owner's uploaded `twentytwentyfive.archive.zip`; `strategy-master.md`; `visual-design-skill.md`; `wordpress-content-types.md`.
 - Did:
