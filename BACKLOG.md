@@ -13,20 +13,21 @@
 
 ## P0 — Revenue (do first; the site earns ₪0 today)
 
-- 🔴 **PayPlus checkout for tier upgrades.** Owner approved but wants it explained first
-  (done in chat). Hosted-payment link (Israeli PSP) → on payment, flip `paid_tier` to
-  pro/premier + auto-approve claim. Recurring ₪99/₪299. *Owner action needed: open a
-  PayPlus (or Cardcom/Meshulam) merchant account; give us the API key.*
+- 🟡 **Wire tier-upgrade buttons → existing WooCommerce checkout.** Payments are LIVE
+  (WooCommerce + Green Invoice/Morning gateway, products 476 ₪349 Pro / 477 ₪749 Premier,
+  `/join-pro/` page exists, smoke test passed). The "upgrade" button just doesn't go to the
+  cart yet. *No new infra needed — just wire it up.* (in progress this session)
+- 🔴 **Recurring billing decision.** Green Invoice gateway is one-charge-only. Options:
+  (a) reframe Pro/Premier as **annual** one-time products (₪3,490/yr, ₪7,490/yr) —
+  recommended for zero friction; (b) keep monthly + owner manually sets up Morning הוראת
+  קבע per subscriber. ❓ owner decision.
 - 🔴 **Mortgage-advisor referral funnel.** "מצאו יועץ משכנתאות" CTA on the mortgage
-  calculator → routes the lead to ONE partnered advisor. **Fat money = per-closed-deal
-  commission (₪3k–8k), not subscription.** Needs the attribution lock-in below.
-- 🔴 **Lead attribution / revenue lock-in (the owner's #1 pain).** Today leads go out and
-  the owner rarely sees his cut. Build a zero-friction mechanism that LOCKS revenue:
-  unique tracked referral link per lead, partner status updates (won/lost), automatic
-  reminder follow-ups, and a commission ledger. Research: CRM integrations + escrow-style
-  intro. ❓ decide tooling (self-built ledger vs CRM API).
-- 🔴 **Partner integration w/ automatic attachment + CRM.** Owner willing to partner only
-  if attachment + revenue capture is automatic. Tie to the lock-in item above.
+  calculator → routes the lead to ONE partnered advisor. Fat money = per-closed-deal
+  commission (₪3k–8k), not subscription. Needs the lead ledger below.
+- 🟡 **Lead Ledger + lock-in** (owner's #1 pain — building this session). Every routed
+  lead gets a tracked record; partner accepts under terms; **customer** (not partner)
+  confirms status via auto follow-ups at 14/30/60 days; commission ledger logs what's owed
+  and paid. See inc/lead-ledger.php.
 
 ## P1 — Product polish that drives revenue/SEO
 
