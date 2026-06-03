@@ -110,7 +110,20 @@ a pillar — never `/glossary/`. This is what keeps the glossary a glossary.
 
 ---
 
+## 7. Public route / module sign-off rule
+
+Do **not** create new public routes/pages or edit existing plugin modules without Claude +
+owner sign-off on the URL and the module owner.
+
+Research, specs, audits, and docs are the safe green-light lane. Plugin code goes through
+Claude review. If a public page may overlap an existing intent, stop and decide the canonical
+URL first.
+
+---
+
 ## Revision log
+- 2026-06-03 — Added the public route/module sign-off rule after the parked `/advertise/`
+  build revealed a potential collision with the live `/join-pro/` package page.
 - 2026-06-02 — Created (Claude). Triggered by: 22 glossary terms migrated from Hebrew
   sentence-slugs to clean Latin concept slugs (all old URLs 301 → new). Establishes the
   namespace map + cannibalization rules so future content (guides, more terms, city pages)
