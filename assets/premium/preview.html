@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Nadlan Premium Asset Preview</title>
+  <style>
+    :root{
+      --ink:#1b1a17;
+      --ink-2:#5e5a50;
+      --paper:#fbf9f5;
+      --card:#fffdf8;
+      --gold:#9c7a3c;
+      --gold-soft:#f3eadc;
+      --green:#0e3b33;
+      --line:rgba(27,26,23,.14);
+      --shadow:0 18px 50px rgba(27,26,23,.08);
+      font-family:Heebo,Arial,sans-serif;
+      color:var(--ink);
+      background:var(--paper);
+    }
+    *{box-sizing:border-box}
+    body{margin:0;padding:40px 24px 80px}
+    main{max-width:1180px;margin:0 auto}
+    h1,h2{font-family:"Frank Ruhl Libre",Georgia,serif;font-weight:600;letter-spacing:0}
+    h1{font-size:44px;margin:0 0 10px}
+    h2{font-size:28px;margin:46px 0 18px}
+    p{color:var(--ink-2);line-height:1.75;margin:0 0 22px}
+    .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(138px,1fr));gap:14px}
+    .tile{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:18px 14px;min-height:118px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;box-shadow:0 10px 28px rgba(27,26,23,.04)}
+    .tile svg{width:34px;height:34px;color:var(--ink)}
+    .tile.mark svg{width:46px;height:46px;color:var(--gold)}
+    .tile span{font-size:12.5px;color:var(--ink-2);direction:ltr;text-align:center}
+    .row{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:18px}
+    .panel{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:22px;box-shadow:var(--shadow)}
+    .panel svg{width:100%;height:auto;color:var(--ink)}
+    .mono-wrap{display:flex;align-items:center;gap:18px;flex-wrap:wrap}
+    .mono-wrap img{width:120px;height:120px;border-radius:18px}
+    .note{font-size:13px;color:var(--ink-2);border-top:1px solid var(--line);padding-top:16px;margin-top:22px}
+    @media(max-width:640px){
+      body{padding:28px 16px 60px}
+      h1{font-size:34px}
+      .grid{grid-template-columns:repeat(auto-fill,minmax(112px,1fr))}
+    }
+  </style>
+</head>
+<body>
+<main>
+  <h1>נכסי UI פרימיום</h1>
+  <p>תצוגת עבודה מקומית לנכסים ב-<code>assets/premium</code>. הקובץ אינו Route ציבורי ואינו משנה את האתר החי.</p>
+
+  <h2>Micro UI controls</h2>
+  <section class="grid" id="micro"></section>
+
+  <h2>Directory profession marks</h2>
+  <section class="grid" id="professions"></section>
+
+  <h2>Advertiser and monetization states</h2>
+  <section class="grid" id="advertiser"></section>
+
+  <h2>Fallback illustrations</h2>
+  <section class="row" id="fallbacks"></section>
+
+  <h2>Monogram avatar template</h2>
+  <section class="panel mono-wrap">
+    <img src="initial-monogram-avatar-template.svg" alt="Premium monogram avatar template">
+    <div>
+      <p>Fallback avatar template for `.nldc-av`, `.nlpf-av`, and owned-card picker states. Implementation replaces <code>{{INITIALS}}</code> with sanitized initials.</p>
+    </div>
+  </section>
+
+  <h2>Reference sheets</h2>
+  <section class="row">
+    <div class="panel"><img src="button-treatment-reference.svg" alt="RTL premium button treatment reference" style="width:100%;height:auto"></div>
+    <div class="panel"><img src="tier-status-reference.svg" alt="Advertiser tier and campaign status reference" style="width:100%;height:auto"></div>
+  </section>
+
+  <p class="note">Open this file locally from the repository. Symbols are loaded from sibling SVG sprite files so Claude can visually inspect the asset names and appearance before wiring them into PHP/CSS.</p>
+</main>
+
+<script>
+  const groups = [
+    {
+      mount: 'micro',
+      file: 'icons-micro-ui.svg',
+      ids: ['chip-clear','close','help','info','upload','delete-overlay','save','preview-external','fab-contact','filter','sort','call','quote','whatsapp','claim']
+    },
+    {
+      mount: 'professions',
+      file: 'profession-marks.svg',
+      cls: 'mark',
+      ids: ['profession-architect','profession-lawyer','profession-appraiser','profession-contractor','profession-developer','profession-mortgage','profession-inspector','profession-broker','category-project','category-property']
+    },
+    {
+      mount: 'advertiser',
+      file: 'advertiser-flow-icons.svg',
+      ids: ['tier-free','tier-pro','tier-premier','tier-project-premier','tier-property-pro','paid-order','billing-card','campaign-calendar','campaign-expired','attach-card','exposure-chart','lead-inbox','verified-shield','completion-meter','ai-copy','gallery-media','map-pin-premium']
+    },
+    {
+      mount: 'fallbacks',
+      file: 'premium-fallback-illustrations.svg',
+      panel: true,
+      ids: ['sponsored-spot','empty-search','project-fallback','upload-empty']
+    }
+  ];
+
+  function tile(g, id){
+    const el = document.createElement('div');
+    el.className = g.panel ? 'panel' : 'tile ' + (g.cls || '');
+    el.innerHTML = '<svg aria-hidden="true"><use href="' + g.file + '#' + id + '"></use></svg><span>' + id + '</span>';
+    return el;
+  }
+
+  groups.forEach(g => {
+    const root = document.getElementById(g.mount);
+    g.ids.forEach(id => root.appendChild(tile(g, id)));
+  });
+</script>
+</body>
+</html>
