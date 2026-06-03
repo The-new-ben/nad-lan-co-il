@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" role="img" aria-labelledby="title desc">
+  <title id="title">Premium sponsored card background</title>
+  <desc id="desc">Original sponsored-placement background for directory cards, replacing dashed coupon-like placeholders.</desc>
+  <defs>
+    <linearGradient id="paper" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#fffdf8"/>
+      <stop offset="1" stop-color="#f1e6d5"/>
+    </linearGradient>
+    <radialGradient id="spot" cx=".74" cy=".22" r=".45">
+      <stop offset="0" stop-color="#d7c08a" stop-opacity=".44"/>
+      <stop offset=".65" stop-color="#d7c08a" stop-opacity=".08"/>
+      <stop offset="1" stop-color="#d7c08a" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="800" height="600" rx="28" fill="url(#paper)"/>
+  <rect width="800" height="600" rx="28" fill="url(#spot)"/>
+  <path d="M92 480h616" fill="none" stroke="#1b1a17" stroke-opacity=".16" stroke-width="2"/>
+  <g fill="none" stroke="#1b1a17" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
+    <path d="M142 480V250h122v230M264 480V168h170v312M434 480V290h156v190" stroke-opacity=".28"/>
+    <path d="M176 306h54M176 358h54M176 410h54M314 232h72M314 298h72M314 364h72M314 430h72M480 342h64M480 398h64" stroke-opacity=".16"/>
+  </g>
+  <g fill="none" stroke="#9c7a3c" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M536 168l74-74M610 94l28 96-102-22" stroke-width="4"/>
+    <circle cx="610" cy="168" r="72" stroke-width="3" stroke-opacity=".55"/>
+    <path d="M112 136h178M112 166h104" stroke-width="4" stroke-opacity=".72"/>
+  </g>
+</svg>

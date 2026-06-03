@@ -18,6 +18,10 @@ These files are implementation assets for Claude to wire into the specs already 
 | `assets/premium/tier-status-reference.svg` | Visual reference sheet for paid-tier badges and campaign/account states. |
 | `assets/premium/preview.html` | Local visual preview for Claude/owner review of all SVG assets before PHP/CSS wiring. |
 | `assets/premium/contact-sheet.svg` | Static self-contained SVG contact sheet generated from the actual sprite symbols for direct visual review. |
+| `assets/premium/hero-project-fallback.svg` | Standalone 16:10 project/property hero fallback for listings without legal photography. |
+| `assets/premium/profile-background-fallback.svg` | Standalone 16:9 professional profile background fallback for profiles without headshot/logo media. |
+| `assets/premium/sponsored-card-background.svg` | Standalone 4:3 sponsored placement background for `.nldc-sponsored-spot` and upsell cards. |
+| `assets/premium/upload-empty-state.svg` | Standalone Studio media upload/gallery empty-state illustration. |
 
 ## Micro UI icon mapping
 
@@ -92,6 +96,15 @@ Source file: `assets/premium/premium-fallback-illustrations.svg`
 | `empty-search` | `.nldir-empty`, empty filters/search, no owned cards in advertiser center | PR #36 empty-state treatments; PR #38 `Micro interaction states` |
 | `project-fallback` | project/property cards with no legal image, single project fallback hero | PR #36 generated-asset plan; PR #38 `Asset plan` |
 | `upload-empty` | `.nlst-dropzone`, Studio media uploader empty state | PR #37 Studio QA; PR #38 selector checklist `.nlst-dropzone` |
+
+Standalone SVG fallbacks:
+
+| File | Selectors / surfaces | Existing PR-spec section served |
+| --- | --- | --- |
+| `hero-project-fallback.svg` | `.nldc` project/property cards, single project/property hero, `.nlpf-banner`, media gallery fallback | PR #36 image-first cards and empty-state treatments; PR #38 `Asset plan` |
+| `profile-background-fallback.svg` | professional single hero, `.nlpf-banner`, professional cards without logo/headshot | PR #36 single-profile hero; PR #38 card/profile fallback rules |
+| `sponsored-card-background.svg` | `.nldc-sponsored-spot`, `.nldc-sponsor`, advertiser upsell cards, available paid placement | PR #36 sponsored state design; PR #38 selector checklist `.nldc-sponsored-spot` |
+| `upload-empty-state.svg` | `.nlst-dropzone`, `.nlst-gallery:empty`, Studio image onboarding | PR #37 Studio upload QA; PR #38 selector checklist `.nlst-dropzone` |
 
 ## Button treatment reference
 
