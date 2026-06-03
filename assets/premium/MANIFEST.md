@@ -14,6 +14,8 @@ These files are implementation assets for Claude to wire into the specs already 
 | `assets/premium/initial-monogram-avatar-template.svg` | Standalone SVG template for no-photo professional/listing avatars. Replace `{{INITIALS}}`. |
 | `assets/premium/premium-fallback-illustrations.svg` | Reusable SVG symbol sprite for sponsored slots, empty states, project fallback, and upload empty state. |
 | `assets/premium/button-treatment-reference.svg` | Visual reference sheet for primary, secondary, and ghost button states in RTL. |
+| `assets/premium/advertiser-flow-icons.svg` | Reusable SVG symbol sprite for monetization, campaign, order, lead, and Studio completion states. |
+| `assets/premium/tier-status-reference.svg` | Visual reference sheet for paid-tier badges and campaign/account states. |
 
 ## Micro UI icon mapping
 
@@ -96,6 +98,45 @@ Source file: `assets/premium/button-treatment-reference.svg`
 | Serves | Selectors | Existing PR-spec section served |
 | --- | --- | --- |
 | Primary/default/hover/focus/disabled reference | `.woocommerce a.button`, `.woocommerce button.button`, `.woocommerce input.button`, `.woocommerce .button.alt`, `.wc-block-components-button`, `.nlst-save`, `.nlst-pick`, `.nldir-more`, `.nlpf-call`, `.nlpf-quote`, `.nlcp-btn`, `.wp-block-button__link`, `.wp-element-button`, `.nadlan-guide .btn`, `.nlfab-btn` | PR #38 `Button grammar`, `Micro interaction states`; PR #36 premium catalog target |
+
+## Advertiser monetization and campaign state mapping
+
+Source file: `assets/premium/advertiser-flow-icons.svg`
+
+Usage pattern:
+
+```html
+<svg class="nl-af-icon" aria-hidden="true"><use href="/assets/premium/advertiser-flow-icons.svg#tier-premier"></use></svg>
+```
+
+| Symbol id | Selectors / surfaces | Existing PR-spec section served |
+| --- | --- | --- |
+| `tier-free` | free card state, unpaid listing badge, advertiser center card status | PR #37 advertiser tier QA; PR #38 badge/state grammar |
+| `tier-pro` | `paid_tier=pro`, `.nldc-sponsor`, upgrade package cards, advertiser center tier chip | PR #37 paid tier/order bridge; PR #38 `Icons and badges` |
+| `tier-premier` | `paid_tier=premier`, featured/premier card state, flagship/editorial premium marker | PR #36 premium catalog spec; PR #37 editorial premium note |
+| `tier-project-premier` | product `489`, project campaign package, `/join-pro/` project package card | PR #37 product-to-tier QA; PR #38 monetization buttons/states |
+| `tier-property-pro` | product `490`, property promotion package, property card paid state | PR #37 product-to-tier QA |
+| `paid-order` | order row/card in advertiser center, paid order details, attach order to card path | PR #37 no-card-id fallback and attach-to-card path |
+| `billing-card` | checkout/account billing state, Woo order/payment surfaces | PR #37 billing/order management; PR #38 Woo buttons/states |
+| `campaign-calendar` | `campaign_end` display, active campaign countdown, renewal prompts | PR #37 campaign_end QA and downgrade cron visibility |
+| `campaign-expired` | expired campaign state after daily downgrade, renewal CTA | PR #37 daily downgrade cron and non-permanent paid tier gate |
+| `attach-card` | unassigned paid order, card picker, "attach to card" UI | PR #37 card_id fallback requirement |
+| `exposure-chart` | advertiser center exposure panel, paid value proof, directory float-up explanation | PR #37 advertiser journey QA; PR #36 premium sponsored value |
+| `lead-inbox` | lead count panel, exact `lead_card_id` attribution, advertiser center leads | PR #37 lead attribution QA |
+| `verified-shield` | `.nldc-vf`, `.nlpf-reg`, claim verified state, editorial showcase verified state | PR #36 trust badges; PR #38 selector checklist `.nldc-vf` |
+| `completion-meter` | Studio completion score, listing quality checklist, onboarding progress | PR #37 Studio QA; PR #38 micro interaction states |
+| `ai-copy` | `.nlst-ai`, AI copy/improve/shorten/expand actions | PR #37 self-serve Studio QA; PR #38 selector checklist `.nlst-ai` |
+| `gallery-media` | `.nlst-gallery`, media completeness, listing image state | PR #36 image-first cards; PR #38 selector checklist `.nlst-gallery` |
+| `map-pin-premium` | `.nlst-map`, project/property map field, card location row | PR #36 single profile/project field map; PR #38 `Forms` |
+
+## Tier and status reference
+
+Source file: `assets/premium/tier-status-reference.svg`
+
+| Serves | Selectors / surfaces | Existing PR-spec section served |
+| --- | --- | --- |
+| Paid-tier badge visual reference | `.nldc-sponsor`, `.nldc-pill`, `.nlpf-pill`, advertiser center tier chips, `/join-pro/` package cards | PR #36 badge system; PR #37 paid tier/product mapping; PR #38 `Icons and badges` |
+| Campaign/account status reference | advertiser center card state, order rows, renewal/expired prompts, active campaign countdown | PR #37 billing/order/campaign QA; PR #38 `Micro interaction states` |
 
 ## Needs Claude/owner generation
 
