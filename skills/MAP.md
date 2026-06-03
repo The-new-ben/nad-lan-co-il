@@ -118,7 +118,13 @@ Everything else is on-demand by category below.
 |---|---|---|---|
 | ✅ | `skills/abilities-api.md` | Where the calculator JS lives and how it talks to the plugin | When changing any calculator |
 
-## 7. RUNBOOKS for Cowork (content publishing pipeline)
+## 7. RUNBOOKS for Cowork (content publishing + QA)
+
+| Status | File | Purpose | When to open |
+|---|---|---|---|
+| ✅🟪 | `skills/qa-journey-testing.md` | **THE Cowork end-to-end QA script** — 5 personas (incl. "Rainbow Project" advertiser), journey charters, session-report template, acceptance bar, fix→re-run loop. Reports land in `docs/qa/`. | Running any QA / smoke-test pass before or after a release |
+
+### (content publishing runbooks below)
 
 | Status | File | Purpose | When to open |
 |---|---|---|---|

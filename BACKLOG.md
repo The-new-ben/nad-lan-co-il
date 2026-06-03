@@ -110,6 +110,15 @@
 
 ---
 
+## QA program (added 2026-06-03)
+
+- 🟢 QA journey-testing script for Cowork shipped: `skills/qa-journey-testing.md`
+  (5 personas incl. the Rainbow-Project advertiser; SBTM charters; reports land in
+  `docs/qa/`; fix→re-run loop). Hand the PART-A brief to Cowork to start a run.
+- 🔴 First full QA run pending (Cowork). Known gaps it will surface and we must
+  decide on: advertiser exposure/impressions reporting, project image upload,
+  post-payment "what happens next" clarity, advertiser results dashboard.
+
 ## Shipped log (history — do not delete)
 
 - 🟢 1.33.0 — projects premium directory + real reviews engine (moderation + schema.org).
