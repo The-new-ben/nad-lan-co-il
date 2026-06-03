@@ -1,4 +1,4 @@
-# Advertiser Monetization Research + v1.41.2 Center
+# Advertiser Monetization Research + v1.41.3 Media Kit
 
 Date: 2026-06-03
 Agent: Codex
@@ -79,22 +79,29 @@ The site already has serious revenue plumbing: WooCommerce + Green Invoice, tier
 - Add a daily downgrade cron so expired one-charge campaigns return `paid_tier` to `free` instead of becoming permanent paid placements.
 - Add an Advertiser Center fallback for paid orders that were not connected to a card at checkout.
 
+## Product decisions applied in v1.41.3
+
+- Add `inc/advertise.php` with `/advertise/` and `[nadlan_advertise]` as the public media-kit and package-truth surface.
+- Present package deliverables as artifact + duration + reporting instead of vague "exposure".
+- Show an honest audience snapshot from current site data: professionals, projects, properties, recent leads, and internal tracked views.
+- Wire public CTAs directly to WooCommerce products 476, 477, 489, and 490.
+- Publish core advertiser policies on the page: no traffic guarantees in Phase 0, fixed campaign duration, sponsored-content disclosure, and make-good for missed placement.
+
 ## Ten more issues to handle next
 
-1. Replace vague monthly "exposure" copy with asset + position + duration + reporting copy everywhere public.
+1. Replace remaining vague monthly "exposure" copy with asset + position + duration + reporting copy everywhere outside `/advertise/`.
 2. Resolve recurring billing truth: annual products vs Morning standing order vs custom recurring integration.
-3. Create a public `/advertise/` route that explains project/professional/property packages without internal wording.
-4. Add a real advertiser report generator: PDF/email monthly summary with views, inquiries, reviews, completion score, campaign dates, and next recommended action.
-5. Add a "request project setup" form or draft-project wizard for customers who pay for product 489 before a project CPT exists.
-6. Add verified media checklist: hero images, gallery minimum, floorplan, video, 3D tour, map pin, developer logo.
-7. Add advertiser-facing lead quality states: new, contacted, valid, invalid/replaced, closed.
-8. Add customer notifications: after payment, after first edit, weekly missing-fields reminder, monthly report.
-9. Add public sponsored-content disclosure rules to advertiser terms before selling sponsored articles.
-10. Add visual QA for `/advertiser-center/` on mobile after the owner updates to v1.41.2.
-11. Decide whether admins should have a real all-advertisers dashboard separate from the customer-facing center.
-12. Add source-of-truth campaign metrics from GA4/Search Console when authenticated reporting is available.
-13. Add an automated test fixture for paid orders with `card_id` so the tier activation and downgrade logic can be regression-tested without a real charge.
-14. Add operational monitoring for the daily downgrade cron so expired paid tiers cannot silently stay paid.
+3. Add a real advertiser report generator: PDF/email monthly summary with views, inquiries, reviews, completion score, campaign dates, and next recommended action.
+4. Add a "request project setup" form or draft-project wizard for customers who pay for product 489 before a project CPT exists.
+5. Add verified media checklist: hero images, gallery minimum, floorplan, video, 3D tour, map pin, developer logo.
+6. Add advertiser-facing lead quality states: new, contacted, valid, invalid/replaced, closed.
+7. Add customer notifications: after payment, after first edit, weekly missing-fields reminder, monthly report.
+8. Add advertiser terms page/PDF before selling sponsored articles at scale.
+9. Add visual QA for `/advertise/` and `/advertiser-center/` on mobile after the owner updates to v1.41.3.
+10. Decide whether admins should have a real all-advertisers dashboard separate from the customer-facing center.
+11. Add source-of-truth campaign metrics from GA4/Search Console when authenticated reporting is available.
+12. Add an automated test fixture for paid orders with `card_id` so the tier activation and downgrade logic can be regression-tested without a real charge.
+13. Add operational monitoring for the daily downgrade cron so expired paid tiers cannot silently stay paid.
 
 ## QA notes for this release
 
@@ -109,3 +116,4 @@ The code can be linted and ZIP-gated before merge. Full end-to-end production QA
 - Paid order with `card_id` activates `paid_tier` through `woocommerce_payment_complete`, not through `woocommerce_thankyou`.
 - Paid activation writes only `campaign_end`, `paid_order_id`, and `paid_product_id` on the card.
 - Daily downgrade cron returns expired `pro`/`premier` cards to `paid_tier=free`.
+- `/advertise/` renders for public users, shows honest current metrics, and every package CTA lands in the expected WooCommerce cart flow.
