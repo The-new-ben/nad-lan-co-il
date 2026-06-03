@@ -54,6 +54,8 @@ In this exact order:
 5. Any specific skill named in the user's task (the MAP lists which to open
    when)
 
+**For a fresh agent (Codex/Cowork/Gemini) joining cold**: paste-ready one-shot brief at [`docs/codex-onboarding-and-mission-brief.md`](docs/codex-onboarding-and-mission-brief.md) — repo access, full feature inventory, user journeys, the Last-Mile Contract.
+
 **Before changing the plugin**: also read
 [`skills/codex-plugin-access-and-deploy.md`](skills/codex-plugin-access-and-deploy.md).
 **Before publishing/renaming any page**: also read
