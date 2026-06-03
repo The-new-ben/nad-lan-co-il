@@ -96,8 +96,10 @@ rename CPT, redefine the category taxonomy + colours, point `import.php` at the 
 | Skill | Type | Reuse note |
 |---|---|---|
 | `inc/tiers.php` | DNA·CODE | Free/Pro/Premier gating. **Checkout NOT wired — see BACKLOG.** |
+| `inc/advertiser-center.php` | DNA·CODE | Customer-facing paid advertiser center: owned assets, completion, orders, views, inquiries, Studio links, upgrade paths. |
 | `inc/lead-drip.php` | DNA·CODE | 6-step nurture sequence. Portable. |
 | `lead-funnel.md` | DNA·DOC | Funnel design. Portable. |
+| `advertiser-monetization-system.md` | DNA·DOC | Self-serve advertiser journey standard: pay, edit, upload, report, renew. |
 | `monetization-lawyer-angle.md` | SITE·DOC | RE-lawyer lead angle (owner is the expert). |
 | `monetization-readiness-and-adsales.md` | DNA·DOC | Ad-sales readiness. Portable. |
 | `design-monetization-surfaces.md` | DNA·DOC | Sponsored slots, ad reservations. Portable. |

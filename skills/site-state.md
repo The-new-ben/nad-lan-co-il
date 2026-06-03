@@ -824,3 +824,14 @@ Owner offline; continued autonomous build per "keep coding, web search everythin
 **Pending owner decisions (banked):** (1) Pro/Premier monthly price. (2) Free-trial length (currently 30d via NADLAN_FREE_TRIAL_DAYS). (3) Foreign-market expansion yes/no. (4) Owner to paste the Lovable mission prompt from the anatomy skill §6. (5) GA4 hardcode disable in wp-config.php once PR #4 merges.
 
 **Versions in this PR #4 now: 1.4.0 → 1.16.0** (13 plugin versions, 22 inc/ modules, all PHP lints clean).
+### 2026-06-03 — Codex — Advertiser monetization research + v1.41.2 center branch
+
+Owner asked for the Nadlan COIL customer monetization system to be researched against best-in-class advertiser/listing platforms and upgraded toward a full premium advertiser journey.
+
+Fresh sources reviewed included Zillow Premier Agent, Homes.com advertising, Rightmove valuation products, Zoopla agent products, REA Audience Maximiser, LoopNet/CoStar, Matterport, Houzz Pro, Yelp for Business, Yad2, and Madlan developers. The reusable product standard is now: sell artifact + position + duration + report, then give the customer an immediate post-payment center.
+
+Branch `codex/advertiser-center-1-41-2` adds `inc/advertiser-center.php`: `/advertiser-center/`, `/advertiser-dashboard/`, `[nadlan_advertiser_center]`, WooCommerce thank-you panel for products 476/477/489/490, My Account link, owned-card completion scoring, views, best-effort inquiries, reviews, orders, Studio links, and upgrade paths.
+
+Knowledge captured in `docs/2026-06-03-advertiser-monetization-research-and-center.md` and new skill `skills/advertiser-monetization-system.md`; indexed in `skills/MAP.md` and `skills/SKILLS-TREE.md`.
+
+Not live yet at time of writing. Requires plugin v1.41.2 ZIP/manifest gate, PR merge to main, owner plugin update, then live `/advertiser-center/` and Journey-2 QA.
