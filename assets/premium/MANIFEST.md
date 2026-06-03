@@ -17,6 +17,7 @@ These files are implementation assets for Claude to wire into the specs already 
 | `assets/premium/advertiser-flow-icons.svg` | Reusable SVG symbol sprite for monetization, campaign, order, lead, and Studio completion states. |
 | `assets/premium/tier-status-reference.svg` | Visual reference sheet for paid-tier badges and campaign/account states. |
 | `assets/premium/preview.html` | Local visual preview for Claude/owner review of all SVG assets before PHP/CSS wiring. |
+| `assets/premium/contact-sheet.svg` | Static self-contained SVG contact sheet generated from the actual sprite symbols for direct visual review. |
 
 ## Micro UI icon mapping
 

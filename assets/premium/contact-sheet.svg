@@ -1,0 +1,457 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1480 1480" role="img" aria-labelledby="title desc">
+  <title id="title">Nadlan premium asset contact sheet</title>
+  <desc id="desc">Static self-contained preview of the premium SVG symbol pack for catalog, advertiser, and micro UI implementation.</desc>
+  <defs>
+    <style>
+      .title{font:600 42px Georgia,'Frank Ruhl Libre',serif;fill:#1b1a17}
+      .subtitle{font:500 16px Heebo,Arial,sans-serif;fill:#5e5a50}
+      .section{font:700 22px Heebo,Arial,sans-serif;fill:#1b1a17}
+      .id{font:600 12px Heebo,Arial,sans-serif;fill:#5e5a50;direction:ltr}
+    </style>
+    <symbol id="ai-copy" viewBox="0 0 32 32">
+      <path fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round" d="M11 7h10a4 4 0 0 1 4 4v7a4 4 0 0 1-4 4h-3l-4 4v-4h-3a4 4 0 0 1-4-4v-7a4 4 0 0 1 4-4z"/>
+      <path fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round" d="M12 14h8M12 17h5"/>
+      <path fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round" d="M23 5l1-2 1 2 2 1-2 1-1 2-1-2-2-1z"/>
+    </symbol>
+    <symbol id="attach-card" viewBox="0 0 32 32">
+      <rect fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round" x="5" y="8" width="13" height="16" rx="3"/>
+      <rect fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round" x="14" y="12" width="13" height="12" rx="3"/>
+      <path fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round" d="M10 16h10M18 18l2-2-2-2"/>
+    </symbol>
+    <symbol id="billing-card" viewBox="0 0 32 32">
+      <rect fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round" x="5" y="9" width="22" height="15" rx="3"/>
+      <path fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round" d="M5 14h22M9 20h5"/>
+    </symbol>
+    <symbol id="call" viewBox="0 0 24 24">
+      <path fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round" d="M8.15 5.25l1.45 3.3-1.4 1.15c.95 2.15 2.35 3.55 4.5 4.5l1.15-1.4 3.3 1.45-.35 2.8c-.12.9-.82 1.55-1.72 1.55C9.78 18.6 5.4 14.22 5.4 8.92c0-.9.65-1.6 1.55-1.72z"/>
+    </symbol>
+    <symbol id="campaign-calendar" viewBox="0 0 32 32">
+      <rect fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round" x="6" y="8" width="20" height="18" rx="3"/>
+      <path fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round" d="M10 5v6M22 5v6M6 14h20M11 19h3M18 19h3"/>
+    </symbol>
+    <symbol id="campaign-expired" viewBox="0 0 32 32">
+      <rect fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round" x="6" y="8" width="20" height="18" rx="3"/>
+      <path fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round" d="M10 5v6M22 5v6M6 14h20M12 20l8 0M16 16v8"/>
+    </symbol>
+    <symbol id="category-project" viewBox="0 0 48 48">
+      <path fill="currentColor" opacity=".08" d="M8 36h32v4H8z"/>
+      <path fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" d="M10 37h28M14 37V15h8v22M22 37V10h12v27M17 20h2M17 25h2M17 30h2M26 15h4M26 21h4M26 27h4M26 33h4"/>
+    </symbol>
+    <symbol id="category-property" viewBox="0 0 48 48">
+      <path fill="currentColor" opacity=".08" d="M10 31h28v9H10z"/>
+      <path fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" d="M12 38V22l12-10 12 10v16M9 24l15-13 15 13M20 38V27h8v11M30 27h3"/>
+    </symbol>
+    <symbol id="chip-clear" viewBox="0 0 24 24">
+      <circle fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round" cx="12" cy="12" r="8.25"/>
+      <path fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round" d="M9 9l6 6M15 9l-6 6"/>
+    </symbol>
+    <symbol id="claim" viewBox="0 0 24 24">
+      <path fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round" d="M12 4.75l6.25 2.35v4.85c0 3.6-2.4 6.45-6.25 7.3-3.85-.85-6.25-3.7-6.25-7.3V7.1z"/>
+      <path fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round" d="M8.8 12.1l2.05 2.05 4.45-4.45"/>
+    </symbol>
+    <symbol id="close" viewBox="0 0 24 24">
+      <path fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round" d="M6.5 6.5l11 11M17.5 6.5l-11 11"/>
+    </symbol>
+    <symbol id="completion-meter" viewBox="0 0 32 32">
+      <circle fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round" cx="16" cy="16" r="10"/>
+      <path fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round" d="M16 6a10 10 0 0 1 9.4 6.6"/>
+      <path fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round" d="M12 16l3 3 6-7"/>
+    </symbol>
+    <symbol id="delete-overlay" viewBox="0 0 24 24">
+      <path fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round" d="M8 8h8M10 8V6.65c0-.8.55-1.35 1.35-1.35h1.3c.8 0 1.35.55 1.35 1.35V8"/>
+      <path fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round" d="M9 10.25l.62 7.25c.08.92.68 1.5 1.6 1.5h1.56c.92 0 1.52-.58 1.6-1.5l.62-7.25"/>
+      <path fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round" d="M11 12v4M13 12v4"/>
+    </symbol>
+    <symbol id="empty-search" viewBox="0 0 240 180">
+      <rect fill="currentColor" opacity=".07" x="30" y="34" width="180" height="112" rx="16"/>
+      <path fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" d="M58 126h82M70 126V76l34-26 34 26v50M88 126V93h32v33"/>
+      <circle fill="none" stroke="#9c7a3c" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" cx="158" cy="74" r="22"/>
+      <path fill="none" stroke="#9c7a3c" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" d="M174 90l25 25M64 58h30M64 66h18"/>
+    </symbol>
+    <symbol id="exposure-chart" viewBox="0 0 32 32">
+      <path fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round" d="M6 25h20M9 22v-6M16 22V9M23 22v-10"/>
+      <path fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round" d="M8 12l6-4 5 3 5-6"/>
+    </symbol>
+    <symbol id="fab-contact" viewBox="0 0 24 24">
+      <path fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round" d="M7.5 16.7l-2.15 2.4.65-3.45A7.65 7.65 0 1 1 7.5 16.7z"/>
+      <path fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round" d="M9 10.2h6M9 13.2h4.25"/>
+    </symbol>
+    <symbol id="filter" viewBox="0 0 24 24">
+      <path fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round" d="M5 7h14M7.5 12h9M10 17h4"/>
+      <circle fill="currentColor" stroke="none" cx="15.5" cy="7" r="1.25"/>
+      <circle fill="currentColor" stroke="none" cx="9" cy="12" r="1.25"/>
+      <circle fill="currentColor" stroke="none" cx="13" cy="17" r="1.25"/>
+    </symbol>
+    <symbol id="gallery-media" viewBox="0 0 32 32">
+      <rect fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round" x="6" y="8" width="20" height="16" rx="3"/>
+      <path fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round" d="M9 21l5-6 4 4 2-2 3 4"/>
+      <circle fill="currentColor" stroke="none" cx="21" cy="12" r="1.4"/>
+    </symbol>
+    <symbol id="help" viewBox="0 0 24 24">
+      <circle fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round" cx="12" cy="12" r="8.75"/>
+      <path fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round" d="M9.7 9.4A2.55 2.55 0 0 1 12.2 7c1.55 0 2.75.95 2.75 2.35 0 1.18-.65 1.9-1.85 2.6-.9.52-1.15.95-1.15 1.78"/>
+      <path fill="currentColor" stroke="none" d="M11.1 17.15a.9.9 0 1 0 1.8 0 .9.9 0 0 0-1.8 0"/>
+    </symbol>
+    <symbol id="info" viewBox="0 0 24 24">
+      <circle fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round" cx="12" cy="12" r="8.75"/>
+      <path fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round" d="M12 10.75v5.5"/>
+      <path fill="currentColor" stroke="none" d="M11.1 7.6a.9.9 0 1 0 1.8 0 .9.9 0 0 0-1.8 0"/>
+    </symbol>
+    <symbol id="lead-inbox" viewBox="0 0 32 32">
+      <path fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round" d="M7 9h18l2 10v5H5v-5z"/>
+      <path fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round" d="M5 19h7l2 3h4l2-3h7M11 13h10"/>
+    </symbol>
+    <symbol id="map-pin-premium" viewBox="0 0 32 32">
+      <path fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round" d="M16 27s8-7.2 8-14a8 8 0 1 0-16 0c0 6.8 8 14 8 14z"/>
+      <circle fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round" cx="16" cy="13" r="3"/>
+    </symbol>
+    <symbol id="paid-order" viewBox="0 0 32 32">
+      <rect fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round" x="7" y="5" width="18" height="22" rx="3"/>
+      <path fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round" d="M11 11h10M11 16h10M11 21h5"/>
+      <path fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round" d="M20 21l2 2 4-4"/>
+    </symbol>
+    <symbol id="preview-external" viewBox="0 0 24 24">
+      <path fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round" d="M10.5 6H6.8A1.8 1.8 0 0 0 5 7.8v9.4A1.8 1.8 0 0 0 6.8 19h9.4a1.8 1.8 0 0 0 1.8-1.8v-3.7"/>
+      <path fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round" d="M13.5 5H19v5.5M18.75 5.25l-8.25 8.25"/>
+    </symbol>
+    <symbol id="profession-appraiser" viewBox="0 0 48 48">
+      <path fill="currentColor" opacity=".08" d="M9 34h30v6H9z"/>
+      <path fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" d="M11 38h26M14 34V16h20v18M18 20h12M18 25h8M18 30h10"/>
+      <path fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" d="M31 11l6 6M36.5 11.5l-5 5M35 18l-7 7"/>
+    </symbol>
+    <symbol id="profession-architect" viewBox="0 0 48 48">
+      <path fill="currentColor" opacity=".08" d="M9 36h30v4H9z"/>
+      <path fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" d="M10 36h28M15 36V14l9-5 9 5v22M19 36V20h10v16M19 25h10M13 18l11-6 11 6"/>
+      <path fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" d="M35 12l4-4M39 8l1.5 5.5L35 12"/>
+    </symbol>
+    <symbol id="profession-broker" viewBox="0 0 48 48">
+      <path fill="currentColor" opacity=".08" d="M9 31h30v9H9z"/>
+      <path fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" d="M11 38h26M14 38V24l10-8 10 8v14M20 38V28h8v10"/>
+      <path fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" d="M34 14l4-4 4 4-4 4zM34 14H24"/>
+    </symbol>
+    <symbol id="profession-contractor" viewBox="0 0 48 48">
+      <path fill="currentColor" opacity=".08" d="M8 32h32v8H8z"/>
+      <path fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" d="M10 36h28M12 32l12-18 12 18M18 32V22h12v10M24 14v18"/>
+      <path fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" d="M15 18h18M19 12h10"/>
+    </symbol>
+    <symbol id="profession-developer" viewBox="0 0 48 48">
+      <path fill="currentColor" opacity=".08" d="M9 37h30v4H9z"/>
+      <path fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" d="M11 38h26M15 38V12h9v26M24 38V18h10v20M18 17h3M18 23h3M18 29h3M27 23h4M27 29h4"/>
+      <path fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" d="M35 15l3-3 3 3M38 12v10"/>
+    </symbol>
+    <symbol id="profession-inspector" viewBox="0 0 48 48">
+      <path fill="currentColor" opacity=".08" d="M12 35h24v5H12z"/>
+      <path fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" d="M15 36V16h14v20M19 21h6M19 26h6M19 31h4"/>
+      <circle fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" cx="33" cy="18" r="5"/>
+      <path fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" d="M36.5 21.5L41 26"/>
+    </symbol>
+    <symbol id="profession-lawyer" viewBox="0 0 48 48">
+      <path fill="currentColor" opacity=".08" d="M13 37h22v4H13z"/>
+      <path fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" d="M24 9v25M16 34h16M14 39h20M24 14h14M10 14h14"/>
+      <path fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" d="M13 14l-5 10h10zM35 14l-5 10h10z"/>
+    </symbol>
+    <symbol id="profession-mortgage" viewBox="0 0 48 48">
+      <path fill="currentColor" opacity=".08" d="M10 30h28v10H10z"/>
+      <path fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" d="M12 21l12-9 12 9v17H12zM17 38V26h14v12M19 31h10"/>
+      <path fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" d="M32 11h6v8"/>
+    </symbol>
+    <symbol id="project-fallback" viewBox="0 0 320 200">
+      <rect fill="currentColor" opacity=".07" x="20" y="18" width="280" height="164" rx="18"/>
+      <path fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" d="M42 158h236M70 158V64h54v94M124 158V38h76v120M200 158V82h52v76"/>
+      <path fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" d="M86 80h18M86 101h18M86 122h18M144 58h34M144 82h34M144 106h34M144 130h34M216 99h18M216 121h18"/>
+      <path fill="none" stroke="#9c7a3c" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" d="M54 46h54M54 56h34M244 46h28"/>
+    </symbol>
+    <symbol id="quote" viewBox="0 0 24 24">
+      <path fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round" d="M5.75 6.5h12.5v8.75H9.2L5.75 18.5z"/>
+      <path fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round" d="M9 10h6M9 12.75h4.2"/>
+    </symbol>
+    <symbol id="save" viewBox="0 0 24 24">
+      <path fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round" d="M6.5 4.75h9.35L18.5 7.4v11.85H6.5z"/>
+      <path fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round" d="M9 4.75v5h5.25v-5M9 19.25v-5h6v5"/>
+    </symbol>
+    <symbol id="sort" viewBox="0 0 24 24">
+      <path fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round" d="M8 5v14M5.7 16.7L8 19l2.3-2.3M16 19V5M13.7 7.3L16 5l2.3 2.3"/>
+    </symbol>
+    <symbol id="sponsored-spot" viewBox="0 0 240 180">
+      <rect fill="currentColor" opacity=".07" x="18" y="18" width="204" height="144" rx="18"/>
+      <path fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" d="M48 130h144M66 130V70h28v60M94 130V52h38v78M132 130V82h42v48"/>
+      <path fill="none" stroke="#9c7a3c" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" d="M52 52h48M52 62h30M156 42l18-18M174 24l9 24-27-6"/>
+      <circle fill="none" stroke="#9c7a3c" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" cx="176" cy="42" r="20"/>
+    </symbol>
+    <symbol id="tier-free" viewBox="0 0 32 32">
+      <rect fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round" x="6" y="8" width="20" height="16" rx="4"/>
+      <path fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round" d="M10 14h12M10 18h7"/>
+    </symbol>
+    <symbol id="tier-premier" viewBox="0 0 32 32">
+      <path fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round" d="M6 12l5.2 4.2L16 7l4.8 9.2L26 12l-2 13H8z"/>
+      <path fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round" d="M9 25h14"/>
+    </symbol>
+    <symbol id="tier-pro" viewBox="0 0 32 32">
+      <path fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round" d="M16 5l4 7 8 1.2-5.8 5.6 1.4 8-7.6-3.9-7.6 3.9 1.4-8L4 13.2 12 12z"/>
+      <path fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round" d="M13 16.5l2 2 4-4"/>
+    </symbol>
+    <symbol id="tier-project-premier" viewBox="0 0 32 32">
+      <path fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round" d="M7 26h18M10 26V10h7v16M17 26V6h8v20M12 14h3M12 18h3M20 10h2M20 14h2M20 18h2"/>
+      <path fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round" d="M6 8l3-3 3 3"/>
+    </symbol>
+    <symbol id="tier-property-pro" viewBox="0 0 32 32">
+      <path fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round" d="M8 25V14l8-7 8 7v11M6 16l10-9 10 9M13 25v-7h6v7"/>
+      <path fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round" d="M22 8h4v6"/>
+    </symbol>
+    <symbol id="upload" viewBox="0 0 24 24">
+      <path fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round" d="M5 16.25v1.7A2.05 2.05 0 0 0 7.05 20h9.9A2.05 2.05 0 0 0 19 17.95v-1.7"/>
+      <path fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v10M8.45 8.1L12 4.5l3.55 3.6"/>
+    </symbol>
+    <symbol id="upload-empty" viewBox="0 0 240 180">
+      <rect fill="currentColor" opacity=".07" x="28" y="24" width="184" height="132" rx="18"/>
+      <path fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" d="M68 128h104M78 118l28-32 22 21 15-16 26 27"/>
+      <circle fill="none" stroke="#9c7a3c" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" cx="151" cy="65" r="12"/>
+      <path fill="none" stroke="#9c7a3c" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" d="M120 108V52M102 70l18-18 18 18"/>
+    </symbol>
+    <symbol id="verified-shield" viewBox="0 0 32 32">
+      <path fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round" d="M16 5l10 3.8v7.6c0 5.8-3.8 9.8-10 11.1-6.2-1.3-10-5.3-10-11.1V8.8z"/>
+      <path fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round" d="M11 16.4l3.2 3.2L21 12.8"/>
+    </symbol>
+    <symbol id="whatsapp" viewBox="0 0 24 24">
+      <path fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round" d="M7.55 17.05l-2.1.62.62-2.05a7.15 7.15 0 1 1 1.48 1.43z"/>
+      <path fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round" d="M9.25 8.35c.3-.32.72-.3.95.08l.7 1.15c.16.28.12.62-.1.86l-.42.45c.42.85 1.05 1.48 1.9 1.9l.45-.42c.24-.22.58-.26.86-.1l1.15.7c.38.23.4.65.08.95-.5.48-1.12.72-1.86.52-1.9-.52-3.88-2.5-4.4-4.4-.2-.74.04-1.36.69-1.69z"/>
+    </symbol>
+  </defs>
+  <rect width="1480" height="1480" fill="#fbf9f5"/>
+  <text x="1420" y="58" class="title" direction="rtl">Nadlan premium assets</text>
+  <text x="1420" y="88" class="subtitle" direction="rtl">Static contact sheet generated from the actual SVG sprite symbols in assets/premium.</text>
+  <text x="1420" y="122" class="section" direction="rtl">Micro UI controls</text>
+  <g transform="translate(56 146)">
+    <rect width="188" height="92" rx="8" fill="#fffdf8" stroke="#1b1a17" stroke-opacity=".14"/>
+    <svg x="71" y="14" width="46" height="46" viewBox="0 0 24 24" color="#1b1a17"><use href="#chip-clear"/></svg>
+    <text x="94" y="74" class="id" text-anchor="middle">chip-clear</text>
+  </g>
+  <g transform="translate(272 146)">
+    <rect width="188" height="92" rx="8" fill="#fffdf8" stroke="#1b1a17" stroke-opacity=".14"/>
+    <svg x="71" y="14" width="46" height="46" viewBox="0 0 24 24" color="#1b1a17"><use href="#close"/></svg>
+    <text x="94" y="74" class="id" text-anchor="middle">close</text>
+  </g>
+  <g transform="translate(488 146)">
+    <rect width="188" height="92" rx="8" fill="#fffdf8" stroke="#1b1a17" stroke-opacity=".14"/>
+    <svg x="71" y="14" width="46" height="46" viewBox="0 0 24 24" color="#1b1a17"><use href="#help"/></svg>
+    <text x="94" y="74" class="id" text-anchor="middle">help</text>
+  </g>
+  <g transform="translate(704 146)">
+    <rect width="188" height="92" rx="8" fill="#fffdf8" stroke="#1b1a17" stroke-opacity=".14"/>
+    <svg x="71" y="14" width="46" height="46" viewBox="0 0 24 24" color="#1b1a17"><use href="#info"/></svg>
+    <text x="94" y="74" class="id" text-anchor="middle">info</text>
+  </g>
+  <g transform="translate(920 146)">
+    <rect width="188" height="92" rx="8" fill="#fffdf8" stroke="#1b1a17" stroke-opacity=".14"/>
+    <svg x="71" y="14" width="46" height="46" viewBox="0 0 24 24" color="#1b1a17"><use href="#upload"/></svg>
+    <text x="94" y="74" class="id" text-anchor="middle">upload</text>
+  </g>
+  <g transform="translate(1136 146)">
+    <rect width="188" height="92" rx="8" fill="#fffdf8" stroke="#1b1a17" stroke-opacity=".14"/>
+    <svg x="71" y="14" width="46" height="46" viewBox="0 0 24 24" color="#1b1a17"><use href="#delete-overlay"/></svg>
+    <text x="94" y="74" class="id" text-anchor="middle">delete-overlay</text>
+  </g>
+  <g transform="translate(56 264)">
+    <rect width="188" height="92" rx="8" fill="#fffdf8" stroke="#1b1a17" stroke-opacity=".14"/>
+    <svg x="71" y="14" width="46" height="46" viewBox="0 0 24 24" color="#1b1a17"><use href="#save"/></svg>
+    <text x="94" y="74" class="id" text-anchor="middle">save</text>
+  </g>
+  <g transform="translate(272 264)">
+    <rect width="188" height="92" rx="8" fill="#fffdf8" stroke="#1b1a17" stroke-opacity=".14"/>
+    <svg x="71" y="14" width="46" height="46" viewBox="0 0 24 24" color="#1b1a17"><use href="#preview-external"/></svg>
+    <text x="94" y="74" class="id" text-anchor="middle">preview-external</text>
+  </g>
+  <g transform="translate(488 264)">
+    <rect width="188" height="92" rx="8" fill="#fffdf8" stroke="#1b1a17" stroke-opacity=".14"/>
+    <svg x="71" y="14" width="46" height="46" viewBox="0 0 24 24" color="#1b1a17"><use href="#fab-contact"/></svg>
+    <text x="94" y="74" class="id" text-anchor="middle">fab-contact</text>
+  </g>
+  <g transform="translate(704 264)">
+    <rect width="188" height="92" rx="8" fill="#fffdf8" stroke="#1b1a17" stroke-opacity=".14"/>
+    <svg x="71" y="14" width="46" height="46" viewBox="0 0 24 24" color="#1b1a17"><use href="#filter"/></svg>
+    <text x="94" y="74" class="id" text-anchor="middle">filter</text>
+  </g>
+  <g transform="translate(920 264)">
+    <rect width="188" height="92" rx="8" fill="#fffdf8" stroke="#1b1a17" stroke-opacity=".14"/>
+    <svg x="71" y="14" width="46" height="46" viewBox="0 0 24 24" color="#1b1a17"><use href="#sort"/></svg>
+    <text x="94" y="74" class="id" text-anchor="middle">sort</text>
+  </g>
+  <g transform="translate(1136 264)">
+    <rect width="188" height="92" rx="8" fill="#fffdf8" stroke="#1b1a17" stroke-opacity=".14"/>
+    <svg x="71" y="14" width="46" height="46" viewBox="0 0 24 24" color="#1b1a17"><use href="#call"/></svg>
+    <text x="94" y="74" class="id" text-anchor="middle">call</text>
+  </g>
+  <g transform="translate(56 382)">
+    <rect width="188" height="92" rx="8" fill="#fffdf8" stroke="#1b1a17" stroke-opacity=".14"/>
+    <svg x="71" y="14" width="46" height="46" viewBox="0 0 24 24" color="#1b1a17"><use href="#quote"/></svg>
+    <text x="94" y="74" class="id" text-anchor="middle">quote</text>
+  </g>
+  <g transform="translate(272 382)">
+    <rect width="188" height="92" rx="8" fill="#fffdf8" stroke="#1b1a17" stroke-opacity=".14"/>
+    <svg x="71" y="14" width="46" height="46" viewBox="0 0 24 24" color="#1b1a17"><use href="#whatsapp"/></svg>
+    <text x="94" y="74" class="id" text-anchor="middle">whatsapp</text>
+  </g>
+  <g transform="translate(488 382)">
+    <rect width="188" height="92" rx="8" fill="#fffdf8" stroke="#1b1a17" stroke-opacity=".14"/>
+    <svg x="71" y="14" width="46" height="46" viewBox="0 0 24 24" color="#1b1a17"><use href="#claim"/></svg>
+    <text x="94" y="74" class="id" text-anchor="middle">claim</text>
+  </g>
+  <text x="1420" y="534" class="section" direction="rtl">Profession and category marks</text>
+  <g transform="translate(56 558)">
+    <rect width="188" height="92" rx="8" fill="#fffdf8" stroke="#1b1a17" stroke-opacity=".14"/>
+    <svg x="71" y="14" width="46" height="46" viewBox="0 0 48 48" color="#1b1a17"><use href="#profession-architect"/></svg>
+    <text x="94" y="74" class="id" text-anchor="middle">profession-architect</text>
+  </g>
+  <g transform="translate(272 558)">
+    <rect width="188" height="92" rx="8" fill="#fffdf8" stroke="#1b1a17" stroke-opacity=".14"/>
+    <svg x="71" y="14" width="46" height="46" viewBox="0 0 48 48" color="#1b1a17"><use href="#profession-lawyer"/></svg>
+    <text x="94" y="74" class="id" text-anchor="middle">profession-lawyer</text>
+  </g>
+  <g transform="translate(488 558)">
+    <rect width="188" height="92" rx="8" fill="#fffdf8" stroke="#1b1a17" stroke-opacity=".14"/>
+    <svg x="71" y="14" width="46" height="46" viewBox="0 0 48 48" color="#1b1a17"><use href="#profession-appraiser"/></svg>
+    <text x="94" y="74" class="id" text-anchor="middle">profession-appraiser</text>
+  </g>
+  <g transform="translate(704 558)">
+    <rect width="188" height="92" rx="8" fill="#fffdf8" stroke="#1b1a17" stroke-opacity=".14"/>
+    <svg x="71" y="14" width="46" height="46" viewBox="0 0 48 48" color="#1b1a17"><use href="#profession-contractor"/></svg>
+    <text x="94" y="74" class="id" text-anchor="middle">profession-contractor</text>
+  </g>
+  <g transform="translate(920 558)">
+    <rect width="188" height="92" rx="8" fill="#fffdf8" stroke="#1b1a17" stroke-opacity=".14"/>
+    <svg x="71" y="14" width="46" height="46" viewBox="0 0 48 48" color="#1b1a17"><use href="#profession-developer"/></svg>
+    <text x="94" y="74" class="id" text-anchor="middle">profession-developer</text>
+  </g>
+  <g transform="translate(1136 558)">
+    <rect width="188" height="92" rx="8" fill="#fffdf8" stroke="#1b1a17" stroke-opacity=".14"/>
+    <svg x="71" y="14" width="46" height="46" viewBox="0 0 48 48" color="#1b1a17"><use href="#profession-mortgage"/></svg>
+    <text x="94" y="74" class="id" text-anchor="middle">profession-mortgage</text>
+  </g>
+  <g transform="translate(56 676)">
+    <rect width="188" height="92" rx="8" fill="#fffdf8" stroke="#1b1a17" stroke-opacity=".14"/>
+    <svg x="71" y="14" width="46" height="46" viewBox="0 0 48 48" color="#1b1a17"><use href="#profession-inspector"/></svg>
+    <text x="94" y="74" class="id" text-anchor="middle">profession-inspector</text>
+  </g>
+  <g transform="translate(272 676)">
+    <rect width="188" height="92" rx="8" fill="#fffdf8" stroke="#1b1a17" stroke-opacity=".14"/>
+    <svg x="71" y="14" width="46" height="46" viewBox="0 0 48 48" color="#1b1a17"><use href="#profession-broker"/></svg>
+    <text x="94" y="74" class="id" text-anchor="middle">profession-broker</text>
+  </g>
+  <g transform="translate(488 676)">
+    <rect width="188" height="92" rx="8" fill="#fffdf8" stroke="#1b1a17" stroke-opacity=".14"/>
+    <svg x="71" y="14" width="46" height="46" viewBox="0 0 48 48" color="#1b1a17"><use href="#category-project"/></svg>
+    <text x="94" y="74" class="id" text-anchor="middle">category-project</text>
+  </g>
+  <g transform="translate(704 676)">
+    <rect width="188" height="92" rx="8" fill="#fffdf8" stroke="#1b1a17" stroke-opacity=".14"/>
+    <svg x="71" y="14" width="46" height="46" viewBox="0 0 48 48" color="#1b1a17"><use href="#category-property"/></svg>
+    <text x="94" y="74" class="id" text-anchor="middle">category-property</text>
+  </g>
+  <text x="1420" y="828" class="section" direction="rtl">Advertiser and monetization states</text>
+  <g transform="translate(56 852)">
+    <rect width="188" height="92" rx="8" fill="#fffdf8" stroke="#1b1a17" stroke-opacity=".14"/>
+    <svg x="71" y="14" width="46" height="46" viewBox="0 0 32 32" color="#1b1a17"><use href="#tier-free"/></svg>
+    <text x="94" y="74" class="id" text-anchor="middle">tier-free</text>
+  </g>
+  <g transform="translate(272 852)">
+    <rect width="188" height="92" rx="8" fill="#fffdf8" stroke="#1b1a17" stroke-opacity=".14"/>
+    <svg x="71" y="14" width="46" height="46" viewBox="0 0 32 32" color="#1b1a17"><use href="#tier-pro"/></svg>
+    <text x="94" y="74" class="id" text-anchor="middle">tier-pro</text>
+  </g>
+  <g transform="translate(488 852)">
+    <rect width="188" height="92" rx="8" fill="#fffdf8" stroke="#1b1a17" stroke-opacity=".14"/>
+    <svg x="71" y="14" width="46" height="46" viewBox="0 0 32 32" color="#1b1a17"><use href="#tier-premier"/></svg>
+    <text x="94" y="74" class="id" text-anchor="middle">tier-premier</text>
+  </g>
+  <g transform="translate(704 852)">
+    <rect width="188" height="92" rx="8" fill="#fffdf8" stroke="#1b1a17" stroke-opacity=".14"/>
+    <svg x="71" y="14" width="46" height="46" viewBox="0 0 32 32" color="#1b1a17"><use href="#tier-project-premier"/></svg>
+    <text x="94" y="74" class="id" text-anchor="middle">tier-project-premier</text>
+  </g>
+  <g transform="translate(920 852)">
+    <rect width="188" height="92" rx="8" fill="#fffdf8" stroke="#1b1a17" stroke-opacity=".14"/>
+    <svg x="71" y="14" width="46" height="46" viewBox="0 0 32 32" color="#1b1a17"><use href="#tier-property-pro"/></svg>
+    <text x="94" y="74" class="id" text-anchor="middle">tier-property-pro</text>
+  </g>
+  <g transform="translate(1136 852)">
+    <rect width="188" height="92" rx="8" fill="#fffdf8" stroke="#1b1a17" stroke-opacity=".14"/>
+    <svg x="71" y="14" width="46" height="46" viewBox="0 0 32 32" color="#1b1a17"><use href="#paid-order"/></svg>
+    <text x="94" y="74" class="id" text-anchor="middle">paid-order</text>
+  </g>
+  <g transform="translate(56 970)">
+    <rect width="188" height="92" rx="8" fill="#fffdf8" stroke="#1b1a17" stroke-opacity=".14"/>
+    <svg x="71" y="14" width="46" height="46" viewBox="0 0 32 32" color="#1b1a17"><use href="#billing-card"/></svg>
+    <text x="94" y="74" class="id" text-anchor="middle">billing-card</text>
+  </g>
+  <g transform="translate(272 970)">
+    <rect width="188" height="92" rx="8" fill="#fffdf8" stroke="#1b1a17" stroke-opacity=".14"/>
+    <svg x="71" y="14" width="46" height="46" viewBox="0 0 32 32" color="#1b1a17"><use href="#campaign-calendar"/></svg>
+    <text x="94" y="74" class="id" text-anchor="middle">campaign-calendar</text>
+  </g>
+  <g transform="translate(488 970)">
+    <rect width="188" height="92" rx="8" fill="#fffdf8" stroke="#1b1a17" stroke-opacity=".14"/>
+    <svg x="71" y="14" width="46" height="46" viewBox="0 0 32 32" color="#1b1a17"><use href="#campaign-expired"/></svg>
+    <text x="94" y="74" class="id" text-anchor="middle">campaign-expired</text>
+  </g>
+  <g transform="translate(704 970)">
+    <rect width="188" height="92" rx="8" fill="#fffdf8" stroke="#1b1a17" stroke-opacity=".14"/>
+    <svg x="71" y="14" width="46" height="46" viewBox="0 0 32 32" color="#1b1a17"><use href="#attach-card"/></svg>
+    <text x="94" y="74" class="id" text-anchor="middle">attach-card</text>
+  </g>
+  <g transform="translate(920 970)">
+    <rect width="188" height="92" rx="8" fill="#fffdf8" stroke="#1b1a17" stroke-opacity=".14"/>
+    <svg x="71" y="14" width="46" height="46" viewBox="0 0 32 32" color="#1b1a17"><use href="#exposure-chart"/></svg>
+    <text x="94" y="74" class="id" text-anchor="middle">exposure-chart</text>
+  </g>
+  <g transform="translate(1136 970)">
+    <rect width="188" height="92" rx="8" fill="#fffdf8" stroke="#1b1a17" stroke-opacity=".14"/>
+    <svg x="71" y="14" width="46" height="46" viewBox="0 0 32 32" color="#1b1a17"><use href="#lead-inbox"/></svg>
+    <text x="94" y="74" class="id" text-anchor="middle">lead-inbox</text>
+  </g>
+  <g transform="translate(56 1088)">
+    <rect width="188" height="92" rx="8" fill="#fffdf8" stroke="#1b1a17" stroke-opacity=".14"/>
+    <svg x="71" y="14" width="46" height="46" viewBox="0 0 32 32" color="#1b1a17"><use href="#verified-shield"/></svg>
+    <text x="94" y="74" class="id" text-anchor="middle">verified-shield</text>
+  </g>
+  <g transform="translate(272 1088)">
+    <rect width="188" height="92" rx="8" fill="#fffdf8" stroke="#1b1a17" stroke-opacity=".14"/>
+    <svg x="71" y="14" width="46" height="46" viewBox="0 0 32 32" color="#1b1a17"><use href="#completion-meter"/></svg>
+    <text x="94" y="74" class="id" text-anchor="middle">completion-meter</text>
+  </g>
+  <g transform="translate(488 1088)">
+    <rect width="188" height="92" rx="8" fill="#fffdf8" stroke="#1b1a17" stroke-opacity=".14"/>
+    <svg x="71" y="14" width="46" height="46" viewBox="0 0 32 32" color="#1b1a17"><use href="#ai-copy"/></svg>
+    <text x="94" y="74" class="id" text-anchor="middle">ai-copy</text>
+  </g>
+  <g transform="translate(704 1088)">
+    <rect width="188" height="92" rx="8" fill="#fffdf8" stroke="#1b1a17" stroke-opacity=".14"/>
+    <svg x="71" y="14" width="46" height="46" viewBox="0 0 32 32" color="#1b1a17"><use href="#gallery-media"/></svg>
+    <text x="94" y="74" class="id" text-anchor="middle">gallery-media</text>
+  </g>
+  <g transform="translate(920 1088)">
+    <rect width="188" height="92" rx="8" fill="#fffdf8" stroke="#1b1a17" stroke-opacity=".14"/>
+    <svg x="71" y="14" width="46" height="46" viewBox="0 0 32 32" color="#1b1a17"><use href="#map-pin-premium"/></svg>
+    <text x="94" y="74" class="id" text-anchor="middle">map-pin-premium</text>
+  </g>
+  <text x="1420" y="1240" class="section" direction="rtl">Fallback illustrations</text>
+  <g transform="translate(56 1264)">
+    <rect width="188" height="92" rx="8" fill="#fffdf8" stroke="#1b1a17" stroke-opacity=".14"/>
+    <svg x="71" y="14" width="46" height="46" viewBox="0 0 240 180" color="#1b1a17"><use href="#sponsored-spot"/></svg>
+    <text x="94" y="74" class="id" text-anchor="middle">sponsored-spot</text>
+  </g>
+  <g transform="translate(272 1264)">
+    <rect width="188" height="92" rx="8" fill="#fffdf8" stroke="#1b1a17" stroke-opacity=".14"/>
+    <svg x="71" y="14" width="46" height="46" viewBox="0 0 240 180" color="#1b1a17"><use href="#empty-search"/></svg>
+    <text x="94" y="74" class="id" text-anchor="middle">empty-search</text>
+  </g>
+  <g transform="translate(488 1264)">
+    <rect width="188" height="92" rx="8" fill="#fffdf8" stroke="#1b1a17" stroke-opacity=".14"/>
+    <svg x="71" y="14" width="46" height="46" viewBox="0 0 320 200" color="#1b1a17"><use href="#project-fallback"/></svg>
+    <text x="94" y="74" class="id" text-anchor="middle">project-fallback</text>
+  </g>
+  <g transform="translate(704 1264)">
+    <rect width="188" height="92" rx="8" fill="#fffdf8" stroke="#1b1a17" stroke-opacity=".14"/>
+    <svg x="71" y="14" width="46" height="46" viewBox="0 0 240 180" color="#1b1a17"><use href="#upload-empty"/></svg>
+    <text x="94" y="74" class="id" text-anchor="middle">upload-empty</text>
+  </g>
+</svg>
