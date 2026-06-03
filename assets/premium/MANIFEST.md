@@ -11,6 +11,7 @@ These files are implementation assets for Claude to wire into the specs already 
 | --- | --- |
 | `assets/premium/icons-micro-ui.svg` | Reusable SVG symbol sprite for tiny controls, CTAs, Studio controls, and contact actions. |
 | `assets/premium/profession-marks.svg` | Reusable SVG symbol sprite for directory category/profession marks. |
+| `assets/premium/premium-symbols.svg` | Combined reusable SVG symbol sprite containing all 46 micro, profession, advertiser, and fallback symbols. |
 | `assets/premium/initial-monogram-avatar-template.svg` | Standalone SVG template for no-photo professional/listing avatars. Replace `{{INITIALS}}`. |
 | `assets/premium/premium-fallback-illustrations.svg` | Reusable SVG symbol sprite for sponsored slots, empty states, project fallback, and upload empty state. |
 | `assets/premium/button-treatment-reference.svg` | Visual reference sheet for primary, secondary, and ghost button states in RTL. |
@@ -31,6 +32,12 @@ Usage pattern:
 
 ```html
 <svg class="nl-icon" aria-hidden="true"><use href="/assets/premium/icons-micro-ui.svg#chip-clear"></use></svg>
+```
+
+Combined-sprite option:
+
+```html
+<svg class="nl-icon" aria-hidden="true"><use href="/assets/premium/premium-symbols.svg#chip-clear"></use></svg>
 ```
 
 | Symbol id | Primary selectors | Existing PR-spec section served |
