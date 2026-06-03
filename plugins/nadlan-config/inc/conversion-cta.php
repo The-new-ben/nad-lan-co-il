@@ -77,6 +77,15 @@ add_action( 'rest_api_init', function () {
 			$goal  = sanitize_text_field( (string) ( $p['goal'] ?? ( $p['topic'] ?? '' ) ) );
 			$msg   = sanitize_textarea_field( (string) ( $p['message'] ?? '' ) );
 			$src   = sanitize_text_field( (string) ( $p['source'] ?? '' ) );
+			$card_id = absint( $p['card_id'] ?? ( $p['lead_card_id'] ?? 0 ) );
+			if ( function_exists( 'nadlan_config_valid_lead_card_id' ) ) {
+				$card_id = nadlan_config_valid_lead_card_id( $card_id );
+			} else {
+				$post = $card_id ? get_post( $card_id ) : null;
+				if ( ! $post || ! in_array( $post->post_type, array( 'nadlan_professional', 'nadlan_project', 'nadlan_property' ), true ) ) {
+					$card_id = 0;
+				}
+			}
 			$hp    = (string) ( $p['company'] ?? '' );
 			if ( $hp !== '' ) { return new WP_Error( 'spam', 'spam' ); }
 			if ( ! $name || ( ! $phone && ! $email ) ) { return new WP_Error( 'invalid', 'נדרשים שם וטלפון.' ); }
@@ -97,6 +106,7 @@ add_action( 'rest_api_init', function () {
 			if ( $email ) { update_post_meta( $lid, 'email', $email ); }
 			update_post_meta( $lid, 'goal', $goal );
 			if ( $src ) { update_post_meta( $lid, 'utm_source', $src ); }
+			if ( $card_id ) { update_post_meta( $lid, 'lead_card_id', $card_id ); }
 			$admin = get_option( 'admin_email' );
 			if ( $admin ) {
 				$body  = "ליד חדש מהאתר\n\nשם: $name\nטלפון: $phone\nאימייל: $email\nנושא: $goal\nמקור: $src\n\nהודעה: $msg\n\n";

@@ -506,7 +506,7 @@ if ( ! function_exists( 'nadlan_dir_project_profile_header' ) ) {
 .nlpf-quote:hover{transform:translateY(-2px);filter:brightness(1.05)}
 @media(max-width:640px){.nlpf-cta{width:100%}.nlpf-quote{flex:1}}
 </style>
-<script>function nadlanProjQuote(id,name){var n=prompt('שמכם:');if(!n)return;var p=prompt('טלפון ליצירת קשר:');if(!p)return;fetch('<?php echo esc_js( rest_url( 'nadlan/v1/lead' ) ); ?>',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({name:n,phone:p,topic:'מידע על פרויקט',message:'פנייה לגבי: '+name+' (#'+id+')',source:'project-profile'})}).then(function(){alert('✓ הבקשה נשלחה. נחזור אליכם עם פרטים.');}).catch(function(){alert('שגיאה, נסו שוב.');});}</script>
+<script>function nadlanProjQuote(id,name){var n=prompt('שמכם:');if(!n)return;var p=prompt('טלפון ליצירת קשר:');if(!p)return;fetch('<?php echo esc_js( rest_url( 'nadlan/v1/lead' ) ); ?>',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({name:n,phone:p,topic:'מידע על פרויקט',message:'פנייה לגבי: '+name+' (#'+id+')',source:'project-profile',card_id:id})}).then(function(){alert('✓ הבקשה נשלחה. נחזור אליכם עם פרטים.');}).catch(function(){alert('שגיאה, נסו שוב.');});}</script>
 <?php
 		return ob_get_clean();
 	}

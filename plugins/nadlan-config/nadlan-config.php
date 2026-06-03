@@ -2,7 +2,7 @@
 /**
  * Plugin Name: NadLan Config
  * Description: Lead-capture foundation: nadlan_lead CPT + lead-form handler + healthcheck. Read skills/nadlan-config-plugin.md.
- * Version: 1.41.1
+ * Version: 1.41.2
  * Author: nad-lan.co.il
  * License: GPL-2.0+
  * Requires PHP: 7.4
@@ -22,7 +22,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  *   auction.php       — timed auctions: proxy bid, soft-close, custom bids table, REST
  * See skills/listings-auction-directory-architecture.md for the full design.
  */
-foreach ( array( 'catalog-meta', 'claim', 'import', 'schema', 'cards-render', 'auction', 'listings-ux', 'avm-deals', 'saved-search', 'ai-features', 'city-hubs', 'media', 'compare', 'nearby-poi', 'esign', 'map', 'lead-drip', 'ops-dashboard', 'facets', 'breadcrumbs', 'autocomplete', 'tiers', 'glossary', 'glossary-autolink', 'homepage', 'directory', 'reviews', 'lead-ledger', 'ai-concierge', 'archive-grid', 'calculators', 'catalog-shine', 'conversion-cta', 'lead-inbox', 'preferred-partners', 'featured-upsell', 'sponsored-spot', 'pricing-schema', 'claim-prompt', 'ga4-events', 'sitemap-ping', 'social-proof', 'term-faq-schema', 'og-image', 'owner-config-rest', 'studio', 'studio-rest', 'profile-extras' ) as $nadlan_mod ) {
+foreach ( array( 'catalog-meta', 'claim', 'import', 'schema', 'cards-render', 'auction', 'listings-ux', 'avm-deals', 'saved-search', 'ai-features', 'city-hubs', 'media', 'compare', 'nearby-poi', 'esign', 'map', 'lead-drip', 'ops-dashboard', 'facets', 'breadcrumbs', 'autocomplete', 'tiers', 'glossary', 'glossary-autolink', 'homepage', 'directory', 'reviews', 'lead-ledger', 'ai-concierge', 'archive-grid', 'calculators', 'catalog-shine', 'conversion-cta', 'lead-inbox', 'preferred-partners', 'featured-upsell', 'sponsored-spot', 'pricing-schema', 'claim-prompt', 'ga4-events', 'sitemap-ping', 'social-proof', 'term-faq-schema', 'og-image', 'owner-config-rest', 'studio', 'studio-rest', 'profile-extras', 'advertiser-center', 'advertiser-orders' ) as $nadlan_mod ) {
 	$nadlan_mod_file = __DIR__ . '/inc/' . $nadlan_mod . '.php';
 	if ( file_exists( $nadlan_mod_file ) ) {
 		require_once $nadlan_mod_file;
@@ -70,7 +70,7 @@ if ( ! function_exists( 'nadlan_config_healthcheck_response' ) ) {
 	function nadlan_config_healthcheck_response() {
 		$out = array(
 			'plugin'              => 'nadlan-config',
-			'version'             => '1.41.1',
+			'version'             => '1.41.2',
 			'cpt_present'         => post_type_exists( 'nadlan_lead' ),
 			'lead_handler_loaded' => (bool) has_action( 'admin_post_nadlan_lead' ),
 			'php_version'         => PHP_VERSION,
@@ -94,6 +94,18 @@ if ( ! function_exists( 'nadlan_config_clean' ) ) {
 			return '';
 		}
 		return sanitize_text_field( wp_unslash( $_POST[ $key ] ) );
+	}
+}
+
+if ( ! function_exists( 'nadlan_config_valid_lead_card_id' ) ) {
+	function nadlan_config_valid_lead_card_id( $card_id ) {
+		$card_id = absint( $card_id );
+		if ( ! $card_id ) { return 0; }
+		$post = get_post( $card_id );
+		if ( ! $post || ! in_array( $post->post_type, array( 'nadlan_professional', 'nadlan_project', 'nadlan_property' ), true ) ) {
+			return 0;
+		}
+		return $card_id;
 	}
 }
 
@@ -121,6 +133,13 @@ if ( ! function_exists( 'nadlan_config_handle_lead' ) ) {
 			'utm_source'   => nadlan_config_clean( 'utm_source' ),
 			'utm_campaign' => nadlan_config_clean( 'utm_campaign' ),
 		);
+		$lead_card_raw = 0;
+		if ( isset( $_POST['card_id'] ) ) {
+			$lead_card_raw = wp_unslash( $_POST['card_id'] );
+		} elseif ( isset( $_POST['lead_card_id'] ) ) {
+			$lead_card_raw = wp_unslash( $_POST['lead_card_id'] );
+		}
+		$lead_card_id = nadlan_config_valid_lead_card_id( $lead_card_raw );
 
 		$name_for_title = $fields['name'] !== '' ? $fields['name'] : 'Lead';
 		$goal_for_title = $fields['goal'] !== '' ? $fields['goal'] : 'General';
@@ -141,6 +160,9 @@ if ( ! function_exists( 'nadlan_config_handle_lead' ) ) {
 				if ( $v !== '' ) {
 					update_post_meta( $lead_id, $k, $v );
 				}
+			}
+			if ( $lead_card_id ) {
+				update_post_meta( $lead_id, 'lead_card_id', $lead_card_id );
 			}
 
 			$admin_email = get_option( 'admin_email' );
@@ -252,73 +274,6 @@ if ( ! function_exists( 'nadlan_config_catalog_status' ) ) {
             'nadlan_professional_cpt' => post_type_exists( 'nadlan_professional' ),
             'nadlan_city_tax' => taxonomy_exists( 'nadlan_city' ),
         );
-    }
-}
-
-/* ---------- v1.1.1: public lead REST endpoint (zero-friction funnel) ----------
- * POST /wp-json/nadlan/v1/lead  — accepts public submissions from the floating
- * contact button / any form, no WP nonce required (works on cached pages).
- * Honeypot field "company" must be empty. Creates a private nadlan_lead and
- * emails the admin. This is the revenue funnel entry point.
- */
-if ( ! function_exists( 'nadlan_config_rest_lead' ) ) {
-    function nadlan_config_rest_lead() {
-        register_rest_route( 'nadlan/v1', '/lead', array(
-            'methods'  => 'POST',
-            'callback' => 'nadlan_config_rest_lead_handler',
-            'permission_callback' => '__return_true',
-        ) );
-    }
-}
-add_action( 'rest_api_init', 'nadlan_config_rest_lead' );
-
-if ( ! function_exists( 'nadlan_config_rest_lead_handler' ) ) {
-    function nadlan_config_rest_lead_handler( $req ) {
-        $p = $req->get_json_params();
-        if ( ! is_array( $p ) ) { $p = $req->get_params(); }
-        // Honeypot: bots fill "company"
-        if ( ! empty( $p['company'] ) ) {
-            return new WP_REST_Response( array( 'ok' => true ), 200 );
-        }
-        $clean = function( $k ) use ( $p ) {
-            return isset( $p[ $k ] ) ? sanitize_text_field( wp_unslash( (string) $p[ $k ] ) ) : '';
-        };
-        $name    = $clean( 'name' );
-        $phone   = $clean( 'phone' );
-        $email   = isset( $p['email'] ) ? sanitize_email( wp_unslash( (string) $p['email'] ) ) : '';
-        $topic   = $clean( 'topic' );
-        $message = isset( $p['message'] ) ? sanitize_textarea_field( wp_unslash( (string) $p['message'] ) ) : '';
-        $source  = $clean( 'source' );
-
-        if ( $name === '' && $phone === '' && $email === '' ) {
-            return new WP_REST_Response( array( 'ok' => false, 'error' => 'empty' ), 400 );
-        }
-        // Light rate-limit: same IP hash max 5 / 10 min
-        $iph = isset( $_SERVER['REMOTE_ADDR'] ) ? md5( $_SERVER['REMOTE_ADDR'] . 'nadlan' ) : 'x';
-        $key = 'nadlan_rl_' . $iph;
-        $cnt = (int) get_transient( $key );
-        if ( $cnt >= 5 ) {
-            return new WP_REST_Response( array( 'ok' => false, 'error' => 'rate' ), 429 );
-        }
-        set_transient( $key, $cnt + 1, 10 * MINUTE_IN_SECONDS );
-
-        $title = sprintf( '%s - %s - %s', $name ?: 'Lead', $topic ?: 'General', current_time( 'Y-m-d H:i' ) );
-        $id = wp_insert_post( array(
-            'post_type' => 'nadlan_lead', 'post_status' => 'private',
-            'post_title' => $title, 'post_content' => $message,
-        ), true );
-        if ( is_wp_error( $id ) ) {
-            return new WP_REST_Response( array( 'ok' => false, 'error' => 'save' ), 500 );
-        }
-        foreach ( array( 'name'=>$name,'phone'=>$phone,'email'=>$email,'topic'=>$topic,'source'=>$source ) as $k=>$v ) {
-            if ( $v !== '' ) { update_post_meta( $id, $k, $v ); }
-        }
-        $admin = get_option( 'admin_email' );
-        if ( $admin ) {
-            $body = "ליד חדש מ-nad-lan.co.il\n\nשם: $name\nטלפון: $phone\nאימייל: $email\nנושא: $topic\nמקור: $source\n\nהודעה:\n$message\n";
-            wp_mail( $admin, 'NadLan lead: ' . $title, $body );
-        }
-        return new WP_REST_Response( array( 'ok' => true, 'id' => $id ), 200 );
     }
 }
 
