@@ -1,37 +1,31 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
   <defs>
-    <style>
-      .nl-ill-line{fill:none;stroke:currentColor;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
-      .nl-ill-soft{fill:currentColor;opacity:.07}
-      .nl-ill-gold{fill:none;stroke:#9c7a3c;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
-    </style>
-
     <symbol id="sponsored-spot" viewBox="0 0 240 180">
-      <rect class="nl-ill-soft" x="18" y="18" width="204" height="144" rx="18"/>
-      <path class="nl-ill-line" d="M48 130h144M66 130V70h28v60M94 130V52h38v78M132 130V82h42v48"/>
-      <path class="nl-ill-gold" d="M52 52h48M52 62h30M156 42l18-18M174 24l9 24-27-6"/>
-      <circle class="nl-ill-gold" cx="176" cy="42" r="20"/>
+      <rect fill="currentColor" opacity=".07" x="18" y="18" width="204" height="144" rx="18"/>
+      <path fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" d="M48 130h144M66 130V70h28v60M94 130V52h38v78M132 130V82h42v48"/>
+      <path fill="none" stroke="#9c7a3c" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" d="M52 52h48M52 62h30M156 42l18-18M174 24l9 24-27-6"/>
+      <circle fill="none" stroke="#9c7a3c" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" cx="176" cy="42" r="20"/>
     </symbol>
 
     <symbol id="empty-search" viewBox="0 0 240 180">
-      <rect class="nl-ill-soft" x="30" y="34" width="180" height="112" rx="16"/>
-      <path class="nl-ill-line" d="M58 126h82M70 126V76l34-26 34 26v50M88 126V93h32v33"/>
-      <circle class="nl-ill-gold" cx="158" cy="74" r="22"/>
-      <path class="nl-ill-gold" d="M174 90l25 25M64 58h30M64 66h18"/>
+      <rect fill="currentColor" opacity=".07" x="30" y="34" width="180" height="112" rx="16"/>
+      <path fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" d="M58 126h82M70 126V76l34-26 34 26v50M88 126V93h32v33"/>
+      <circle fill="none" stroke="#9c7a3c" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" cx="158" cy="74" r="22"/>
+      <path fill="none" stroke="#9c7a3c" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" d="M174 90l25 25M64 58h30M64 66h18"/>
     </symbol>
 
     <symbol id="project-fallback" viewBox="0 0 320 200">
-      <rect class="nl-ill-soft" x="20" y="18" width="280" height="164" rx="18"/>
-      <path class="nl-ill-line" d="M42 158h236M70 158V64h54v94M124 158V38h76v120M200 158V82h52v76"/>
-      <path class="nl-ill-line" d="M86 80h18M86 101h18M86 122h18M144 58h34M144 82h34M144 106h34M144 130h34M216 99h18M216 121h18"/>
-      <path class="nl-ill-gold" d="M54 46h54M54 56h34M244 46h28"/>
+      <rect fill="currentColor" opacity=".07" x="20" y="18" width="280" height="164" rx="18"/>
+      <path fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" d="M42 158h236M70 158V64h54v94M124 158V38h76v120M200 158V82h52v76"/>
+      <path fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" d="M86 80h18M86 101h18M86 122h18M144 58h34M144 82h34M144 106h34M144 130h34M216 99h18M216 121h18"/>
+      <path fill="none" stroke="#9c7a3c" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" d="M54 46h54M54 56h34M244 46h28"/>
     </symbol>
 
     <symbol id="upload-empty" viewBox="0 0 240 180">
-      <rect class="nl-ill-soft" x="28" y="24" width="184" height="132" rx="18"/>
-      <path class="nl-ill-line" d="M68 128h104M78 118l28-32 22 21 15-16 26 27"/>
-      <circle class="nl-ill-gold" cx="151" cy="65" r="12"/>
-      <path class="nl-ill-gold" d="M120 108V52M102 70l18-18 18 18"/>
+      <rect fill="currentColor" opacity=".07" x="28" y="24" width="184" height="132" rx="18"/>
+      <path fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" d="M68 128h104M78 118l28-32 22 21 15-16 26 27"/>
+      <circle fill="none" stroke="#9c7a3c" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" cx="151" cy="65" r="12"/>
+      <path fill="none" stroke="#9c7a3c" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" d="M120 108V52M102 70l18-18 18 18"/>
     </symbol>
   </defs>
 </svg>
