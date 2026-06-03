@@ -18,25 +18,48 @@ if ( ! defined( 'ABSPATH' ) ) { exit; }
 
 if ( ! function_exists( 'nadlan_sp_render' ) ) {
 	function nadlan_sp_render() {
-		$pros  = (int) wp_count_posts( 'nadlan_professional' )->publish;
-		$proj  = (int) wp_count_posts( 'nadlan_project' )->publish;
-		$terms = (int) wp_count_posts( 'nadlan_term' )->publish;
+		// v1.40.2 hotfix — homepage 502 was caused by the heavy meta_value_num
+		// sorts below. Solution: cache + skip the unindexed-meta queries when no
+		// claimed contractors / no view-counts exist (true today; will turn on
+		// automatically when real data appears).
+		$ck = 'nadlan_sp_block_v3';
+		$cache = get_transient( $ck );
+		if ( $cache !== false ) { return (string) $cache; }
 
-		// recently claimed (last 3 verified)
-		$claimed = get_posts( array(
-			'post_type' => 'nadlan_professional', 'post_status' => 'publish',
-			'posts_per_page' => 3,
-			'meta_query' => array( array( 'key' => 'claim_status', 'value' => 'verified' ) ),
-			'orderby' => 'meta_value_num', 'meta_key' => 'verified_at', 'order' => 'DESC',
-		) );
+		$pros  = (int) wp_count_posts( 'nadlan_professional' )->publish; // natively cached
+		$proj  = (int) wp_count_posts( 'nadlan_project' )->publish;       // natively cached
+		$terms = (int) wp_count_posts( 'nadlan_term' )->publish;          // natively cached
 
-		// top-viewed (uses post_meta 'view_count' if present)
-		$top = get_posts( array(
-			'post_type' => 'nadlan_professional', 'post_status' => 'publish',
-			'posts_per_page' => 4,
-			'meta_query' => array( array( 'key' => 'view_count', 'value' => 0, 'type' => 'NUMERIC', 'compare' => '>' ) ),
-			'orderby' => 'meta_value_num', 'meta_key' => 'view_count', 'order' => 'DESC',
-		) );
+		// Cheap probe: do ANY verified claims exist? If not, skip the heavy query.
+		global $wpdb;
+		$has_verified = (int) $wpdb->get_var( "SELECT 1 FROM {$wpdb->postmeta} WHERE meta_key='claim_status' AND meta_value='verified' LIMIT 1" );
+		$claimed = array();
+		if ( $has_verified ) {
+			$claimed = get_posts( array(
+				'post_type' => 'nadlan_professional', 'post_status' => 'publish',
+				'posts_per_page' => 3,
+				'meta_query' => array( array( 'key' => 'claim_status', 'value' => 'verified' ) ),
+				'orderby' => 'date', 'order' => 'DESC',
+				'no_found_rows' => true, 'update_post_term_cache' => false,
+			) );
+		}
+
+		// Cheap probe: do ANY view counts exist? If not, skip.
+		$has_views = (int) $wpdb->get_var( "SELECT 1 FROM {$wpdb->postmeta} WHERE meta_key='view_count' LIMIT 1" );
+		$top = array();
+		if ( $has_views ) {
+			$top_raw = get_posts( array(
+				'post_type' => 'nadlan_professional', 'post_status' => 'publish',
+				'posts_per_page' => 20,
+				'meta_query' => array( array( 'key' => 'view_count', 'value' => 1, 'type' => 'NUMERIC', 'compare' => '>=' ) ),
+				'orderby' => 'date', 'order' => 'DESC',
+				'no_found_rows' => true, 'update_post_term_cache' => false,
+			) );
+			usort( $top_raw, function ( $a, $b ) {
+				return ( (int) get_post_meta( $b->ID, 'view_count', true ) ) - ( (int) get_post_meta( $a->ID, 'view_count', true ) );
+			} );
+			$top = array_slice( $top_raw, 0, 4 );
+		}
 
 		ob_start(); ?>
 <section class="nlsp" dir="rtl">
@@ -91,13 +114,22 @@ if ( ! function_exists( 'nadlan_sp_render' ) ) {
 .nlsp-dot{color:#10b981;font-size:10px}
 </style>
 <?php
-		return ob_get_clean();
+		$html = ob_get_clean();
+		set_transient( $ck, $html, HOUR_IN_SECONDS );
+		return $html;
 	}
 }
+/* invalidate the cache when a contractor is claimed or view count changes meaningfully */
+add_action( 'updated_post_meta', function ( $mid, $object_id, $key ) {
+	if ( in_array( $key, array( 'claim_status', 'verified_at' ), true ) ) {
+		delete_transient( 'nadlan_sp_block_v3' );
+	}
+}, 10, 3 );
 
 add_shortcode( 'nadlan_social_proof', 'nadlan_sp_render' );
 
-/* Inject on the homepage at the end of content */
+/* Inject on the homepage at the end of content. Cached internally to 1h so this
+ * is a single transient hit on the homepage from the second visitor onward. */
 add_filter( 'the_content', function ( $content ) {
 	if ( ! is_front_page() || ! in_the_loop() || ! is_main_query() ) { return $content; }
 	return $content . nadlan_sp_render();
