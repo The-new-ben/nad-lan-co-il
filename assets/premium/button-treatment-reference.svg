@@ -1,0 +1,86 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 980 640" role="img" aria-labelledby="title desc">
+  <title id="title">Nadlan premium button treatment reference</title>
+  <desc id="desc">Reference sheet for primary, secondary, and ghost button states in RTL layouts.</desc>
+  <defs>
+    <style>
+      .label{font:600 18px Heebo,Arial,sans-serif;fill:#1b1a17}
+      .small{font:500 13px Heebo,Arial,sans-serif;fill:#5e5a50}
+      .btntext{font:700 16px Heebo,Arial,sans-serif;dominant-baseline:middle;text-anchor:middle}
+      .ghosttext{font:700 16px Heebo,Arial,sans-serif;dominant-baseline:middle;text-anchor:middle;fill:#1b1a17}
+    </style>
+    <filter id="softShadow" x="-20%" y="-30%" width="140%" height="160%">
+      <feDropShadow dx="0" dy="8" stdDeviation="10" flood-color="#1b1a17" flood-opacity=".10"/>
+    </filter>
+  </defs>
+
+  <rect width="980" height="640" fill="#fbf9f5"/>
+  <text class="label" x="920" y="54" direction="rtl">רפרנס כפתורים פרימיום</text>
+  <text class="small" x="920" y="80" direction="rtl">כל מצב שומר גובה 44px+, RTL, פוקוס גלוי וללא קפיצת Layout</text>
+
+  <text class="label" x="850" y="138" direction="rtl">Primary</text>
+  <text class="label" x="850" y="278" direction="rtl">Secondary</text>
+  <text class="label" x="850" y="418" direction="rtl">Ghost</text>
+
+  <g transform="translate(90 116)">
+    <text class="small" x="78" y="-18" text-anchor="middle">disabled</text>
+    <rect x="0" y="0" width="156" height="48" rx="6" fill="#1b1a17" opacity=".36"/>
+    <text class="btntext" x="78" y="25" fill="#fbf9f5" direction="rtl">שמור</text>
+  </g>
+  <g transform="translate(278 116)">
+    <text class="small" x="78" y="-18" text-anchor="middle">focus</text>
+    <rect x="-5" y="-5" width="166" height="58" rx="9" fill="none" stroke="#d7c08a" stroke-width="2"/>
+    <rect x="0" y="0" width="156" height="48" rx="6" fill="#1b1a17"/>
+    <text class="btntext" x="78" y="25" fill="#fbf9f5" direction="rtl">שמור</text>
+  </g>
+  <g transform="translate(466 116)" filter="url(#softShadow)">
+    <text class="small" x="78" y="-18" text-anchor="middle">hover</text>
+    <rect x="0" y="0" width="156" height="48" rx="6" fill="#9c7a3c"/>
+    <text class="btntext" x="78" y="25" fill="#fffdf8" direction="rtl">שמור</text>
+  </g>
+  <g transform="translate(654 116)">
+    <text class="small" x="78" y="-18" text-anchor="middle">default</text>
+    <rect x="0" y="0" width="156" height="48" rx="6" fill="#1b1a17"/>
+    <text class="btntext" x="78" y="25" fill="#fbf9f5" direction="rtl">שמור</text>
+  </g>
+
+  <g transform="translate(90 256)">
+    <rect x="0" y="0" width="156" height="48" rx="6" fill="#fffdf8" stroke="#1b1a17" stroke-opacity=".14" opacity=".55"/>
+    <text class="btntext" x="78" y="25" fill="#5e5a50" direction="rtl">תצוגה</text>
+  </g>
+  <g transform="translate(278 256)">
+    <rect x="-5" y="-5" width="166" height="58" rx="9" fill="none" stroke="#d7c08a" stroke-width="2"/>
+    <rect x="0" y="0" width="156" height="48" rx="6" fill="#fffdf8" stroke="#1b1a17" stroke-opacity=".24"/>
+    <text class="btntext" x="78" y="25" fill="#1b1a17" direction="rtl">תצוגה</text>
+  </g>
+  <g transform="translate(466 256)">
+    <rect x="0" y="0" width="156" height="48" rx="6" fill="#f3eadc" stroke="#9c7a3c" stroke-opacity=".52"/>
+    <text class="btntext" x="78" y="25" fill="#1b1a17" direction="rtl">תצוגה</text>
+  </g>
+  <g transform="translate(654 256)">
+    <rect x="0" y="0" width="156" height="48" rx="6" fill="#fffdf8" stroke="#1b1a17" stroke-opacity=".18"/>
+    <text class="btntext" x="78" y="25" fill="#1b1a17" direction="rtl">תצוגה</text>
+  </g>
+
+  <g transform="translate(90 396)">
+    <text class="ghosttext" x="78" y="25" opacity=".38" direction="rtl">לפרטים</text>
+  </g>
+  <g transform="translate(278 396)">
+    <rect x="-5" y="1" width="166" height="46" rx="8" fill="none" stroke="#d7c08a" stroke-width="2"/>
+    <text class="ghosttext" x="78" y="25" direction="rtl">לפרטים</text>
+    <path d="M36 33h84" stroke="#9c7a3c" stroke-width="1.4"/>
+  </g>
+  <g transform="translate(466 396)">
+    <rect x="0" y="0" width="156" height="48" rx="6" fill="#f3eadc" fill-opacity=".55"/>
+    <text class="ghosttext" x="78" y="25" direction="rtl">לפרטים</text>
+    <path d="M38 33h80" stroke="#9c7a3c" stroke-width="1.4"/>
+  </g>
+  <g transform="translate(654 396)">
+    <text class="ghosttext" x="78" y="25" direction="rtl">לפרטים</text>
+    <path d="M42 33h72" stroke="#9c7a3c" stroke-width="1.4"/>
+  </g>
+
+  <g transform="translate(90 520)">
+    <rect x="0" y="0" width="780" height="1" fill="#1b1a17" opacity=".14"/>
+    <text class="small" x="780" y="34" direction="rtl">כל כפתור ציבורי חייב גובה מינימום 44px, פוקוס גלוי, מצב disabled ברור, ומעבר שלא משנה מידות.</text>
+  </g>
+</svg>
