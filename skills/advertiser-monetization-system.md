@@ -66,6 +66,10 @@
 - Healthcheck keys: `advertiser_center`, `advertiser_order_bridge`.
 - Research log: `docs/2026-06-03-advertiser-monetization-research-and-center.md`
 
+## Editorial premium showcase pattern
+
+For owner-approved editorial showcase cards, it is valid to set `paid_tier=premier` without `paid_order_id`. That distinguishes a manually curated demonstration listing from a paid campaign: the order-expiry cron only downgrades cards with a positive `paid_order_id`, so editorial showcases do not auto-expire or create fake revenue attribution. Document the reason in the PR/body notes, keep `claim_status=verified` when premium public surfaces are expected, and never treat the missing `paid_order_id` as a billing bug for explicitly marked editorial showcases.
+
 ## What not to do
 
 - Do not sell "exposure" without a time period and report.
@@ -78,3 +82,4 @@
 
 - 2026-06-03 — Created by Codex after the Nadlan advertiser-center build and competitor scan. Captures the reusable monetization/product standard for future site work.
 - 2026-06-03 — Tightened the order bridge around the owner steer: `paid_tier` stays the source of truth; `campaign_end` + daily downgrade cron prevent permanent access from one-time payments.
+- 2026-06-04 — Documented the editorial premium showcase pattern: `paid_tier=premier` can be valid without `paid_order_id` when the owner explicitly marks a curated example card as editorial, not paid.
