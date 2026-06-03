@@ -52,6 +52,7 @@ Everything else is on-demand by category below.
 
 | Status | File | Purpose | When to open |
 |---|---|---|---|
+| ✅🟪 | `docs/codex-onboarding-and-mission-brief.md` | **THE one-shot onboarding** — repo access, every feature/module/REST endpoint, user journeys, coding examples, the Last-Mile Contract anti-premature-completion checklist | Paste-to-Codex (or any new agent) at session start |
 | ✅🟪 | `skills/codex-plugin-access-and-deploy.md` | **THE deploy pipeline** — 9-step ship loop, every blocker pre-solved, multi-agent etiquette | **MANDATORY** before touching any plugin code |
 | ✅🟪 | `skills/nadlan-config-plugin.md` | Plugin lessons + one-capability-per-module rule + coding conventions | Before writing a new `inc/<module>.php` |
 | ✅🟪 | `skills/plugin-discipline.md` | What belongs in a plugin module vs the theme | Architectural decisions |
