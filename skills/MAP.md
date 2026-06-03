@@ -107,7 +107,7 @@ Everything else is on-demand by category below.
 |---|---|---|---|
 | ✅🟪 | `skills/payments-woo-greeninvoice.md` | **LIVE** Woo + Green Invoice (Morning) gateway; products 476/477/489/490; the recurring-billing caveat | Before touching anything that handles ₪ |
 | ✅🟪 | `skills/lead-funnel.md` | Funnel design pattern | Designing a new capture surface |
-| ✅🟪 | `skills/advertiser-monetization-system.md` | Self-serve advertiser journey: pay, edit, upload, report, renew | Building paid listings/projects/profiles |
+| ✅🟪 | `skills/advertiser-monetization-system.md` | Self-serve advertiser journey: pay, activate `paid_tier`, expire paid access, edit, upload, report, renew | Building paid listings/projects/profiles |
 | ✅🟪 | `skills/customer-value-spec.md` | What the customer actually pays for (the "asset, position, duration") | Designing pricing/packaging |
 | ✅🟪 | `skills/monetization-readiness-and-adsales.md` | Ad-sales readiness checklist | Before pitching sponsorships |
 | ✅ | `skills/monetization-lawyer-angle.md` | RE-lawyer-specific lead angle (owner is the expert) | When pitching legal-leg leads |

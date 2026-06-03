@@ -221,7 +221,7 @@ function nadlanFav(b){
 	});
 }
 function nadlanVisit(f,id){
-	var d={name:f.name.value,phone:f.phone.value,topic:'תיאום ביקור',message:'תאריך מבוקש: '+f.date.value,source:'property:'+id,company:f.company.value};
+	var d={name:f.name.value,phone:f.phone.value,topic:'תיאום ביקור',message:'תאריך מבוקש: '+f.date.value,source:'property:'+id,company:f.company.value,card_id:id};
 	var msg=f.querySelector('.nlx-msg');
 	fetch('<?php echo esc_url_raw( rest_url( 'nadlan/v1/lead' ) ); ?>',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(d)})
 	.then(function(r){return r.json();}).then(function(j){

@@ -136,26 +136,25 @@ if ( ! function_exists( 'nadlan_ac_completion' ) ) {
 
 if ( ! function_exists( 'nadlan_ac_lead_count' ) ) {
 	function nadlan_ac_lead_count( $post_id ) {
-		global $wpdb;
 		$post_id = (int) $post_id;
-		$permalink = get_permalink( $post_id );
-		$needle_id = '%' . $wpdb->esc_like( '#' . $post_id ) . '%';
-		$needle_src = '%' . $wpdb->esc_like( (string) $post_id ) . '%';
-		$needle_link = $permalink ? '%' . $wpdb->esc_like( $permalink ) . '%' : '';
-		$sql = "SELECT COUNT(DISTINCT p.ID)
-			FROM {$wpdb->posts} p
-			LEFT JOIN {$wpdb->postmeta} pm ON pm.post_id = p.ID
-			WHERE p.post_type = 'nadlan_lead'
-			AND (
-				p.post_content LIKE %s
-				OR (pm.meta_key IN ('utm_source','source_url','source') AND pm.meta_value LIKE %s)";
-		$args = array( $needle_id, $needle_src );
-		if ( $needle_link ) {
-			$sql .= " OR (pm.meta_key IN ('utm_source','source_url','source') AND pm.meta_value LIKE %s)";
-			$args[] = $needle_link;
-		}
-		$sql .= ')';
-		return (int) $wpdb->get_var( $wpdb->prepare( $sql, $args ) );
+		if ( ! $post_id ) { return 0; }
+		$q = new WP_Query( array(
+			'post_type'      => 'nadlan_lead',
+			'post_status'    => 'any',
+			'posts_per_page' => 1,
+			'fields'         => 'ids',
+			'meta_query'     => array(
+				array(
+					'key'     => 'lead_card_id',
+					'value'   => $post_id,
+					'compare' => '=',
+					'type'    => 'NUMERIC',
+				),
+			),
+		) );
+		$count = (int) $q->found_posts;
+		wp_reset_postdata();
+		return $count;
 	}
 }
 
@@ -290,6 +289,7 @@ if ( ! function_exists( 'nadlan_ac_render_inner' ) ) {
 					</div>
 					<div class="nlac-progress" aria-label="השלמת פרופיל"><i style="width:<?php echo (int) $completion['score']; ?>%"></i></div>
 					<div class="nlac-muted">השלמת עמוד: <?php echo (int) $completion['score']; ?>%</div>
+					<?php if ( function_exists( 'nadlan_ao_campaign_badge' ) ) { echo nadlan_ao_campaign_badge( $card->ID ); } ?>
 					<div class="nlac-facts">
 						<div class="nlac-fact"><b><?php echo number_format_i18n( $views ); ?></b><span>צפיות</span></div>
 						<div class="nlac-fact"><b><?php echo number_format_i18n( $inquiries ); ?></b><span>פניות</span></div>
@@ -332,9 +332,11 @@ if ( ! function_exists( 'nadlan_ac_render_inner' ) ) {
 					<div class="nlac-order">
 						<strong>#<?php echo (int) $order->get_id(); ?> · <?php echo esc_html( wc_get_order_status_name( $order->get_status() ) ); ?></strong>
 						<div class="nlac-muted"><?php echo wp_kses_post( wc_price( $order->get_total(), array( 'currency' => $order->get_currency() ) ) ); ?> · <?php echo esc_html( $order->get_date_created() ? $order->get_date_created()->date_i18n( 'd/m/Y' ) : '' ); ?></div>
+						<?php if ( function_exists( 'nadlan_ao_order_summary' ) ) { echo nadlan_ao_order_summary( $order ); } ?>
 					</div>
 				<?php endforeach; ?>
 			</div>
+			<?php if ( function_exists( 'nadlan_ao_render_link_box' ) ) { echo nadlan_ao_render_link_box( $orders, $cards ); } ?>
 		</aside>
 	</div>
 

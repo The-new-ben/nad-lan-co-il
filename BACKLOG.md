@@ -17,8 +17,12 @@
   `/advertiser-center/` module gives logged-in advertisers one place for owned
   cards/projects, completion score, views, inquiries, reviews, recent orders,
   Studio edit links, and upgrade paths. WooCommerce order-received page now
-  points paid products 476/477/489/490 to the center. Needs PR merge, owner
-  plugin update, and live Journey-2 QA before marking shipped.
+  points paid products 476/477/489/490 to the center. `inc/advertiser-orders.php`
+  preserves `card_id`, activates the existing `paid_tier` on
+  `woocommerce_payment_complete`, writes `campaign_end` / `paid_order_id` /
+  `paid_product_id`, and runs a daily downgrade cron so expired one-time paid
+  tiers return to free. Needs PR merge, owner plugin update, and live Journey-2
+  QA before marking shipped.
 - 🟡 **Wire tier-upgrade buttons → existing WooCommerce checkout.** Payments are LIVE
   (WooCommerce + Green Invoice/Morning gateway, products 476 ₪349 Pro / 477 ₪749 Premier,
   `/join-pro/` page exists, smoke test passed). The "upgrade" button just doesn't go to the

@@ -43,7 +43,7 @@ window.nadlanClaimNow=window.nadlanClaimNow||function(id,name){
 	var n=prompt('שמכם המלא:');if(!n)return;
 	var e=prompt('אימייל:');if(!e)return;
 	var p=prompt('טלפון:');if(!p)return;
-	fetch('<?php echo esc_js( rest_url( 'nadlan/v1/lead' ) ); ?>',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({name:n,email:e,phone:p,goal:'בקשת בעלות + 30 ימי Pro חינם',message:'כרטיס: '+name+' (#'+id+')',source:'claim-prompt'})})
+	fetch('<?php echo esc_js( rest_url( 'nadlan/v1/lead' ) ); ?>',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({name:n,email:e,phone:p,goal:'בקשת בעלות + 30 ימי Pro חינם',message:'כרטיס: '+name+' (#'+id+')',source:'claim-prompt',card_id:id})})
 		.then(function(r){return r.json();})
 		.then(function(d){alert((d&&d.ok!==false)?'✓ הבקשה התקבלה. אנשי הצוות יחזרו אליכם תוך 24 שעות לאימות הזהות, ולאחר מכן יופעלו 30 ימי Pro חינם.':'שגיאה. נסו שוב.');try{(window.dataLayer=window.dataLayer||[]).push({event:'claim_request',card_id:id});}catch(e){}})
 		.catch(function(){alert('שגיאה ברשת. נסו שוב.');});

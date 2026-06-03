@@ -36,8 +36,10 @@
    - Never promise traffic that cannot be measured or delivered.
 
 5. Billing truth must be visible internally and accurate publicly.
-   - If the gateway is one-charge only, sell annual/fixed-duration products or document manual standing-order follow-up.
-   - Do not describe a package as automatic recurring unless automatic rebilling is actually active.
+    - If the gateway is one-charge only, sell annual/fixed-duration products or document manual standing-order follow-up.
+    - Do not describe a package as automatic recurring unless automatic rebilling is actually active.
+    - A one-time paid tier must have an expiry job. Without downgrade automation, the first payment becomes permanent access and revenue leaks.
+    - Reuse the existing entitlement field that ranking/gating already reads. Do not invent a parallel campaign status that paid placement code cannot see.
 
 6. Media is the premium surface.
    - Require hero image, gallery, map pin, description, contact, and relevant proof.
@@ -52,11 +54,16 @@
 ## v1.41.2 Nadlan implementation
 
 - Code module: `plugins/nadlan-config/inc/advertiser-center.php`
+- Order bridge: `plugins/nadlan-config/inc/advertiser-orders.php`
 - Route: `/advertiser-center/`
 - Alias route: `/advertiser-dashboard/`
 - Shortcode: `[nadlan_advertiser_center]`
 - WooCommerce hook: post-payment next-step panel for products 476, 477, 489, 490.
-- Healthcheck key: `advertiser_center`
+- Paid activation hook: `woocommerce_payment_complete`.
+- Paid tier mapping: product 476 -> `pro`, 477 -> `premier`, 489 -> `premier` on `nadlan_project`, 490 -> `pro` on `nadlan_property`.
+- Card-level paid metadata: `paid_tier` plus `campaign_end`, `paid_order_id`, `paid_product_id`.
+- Daily cron: `nadlan_ao_daily_downgrade` returns expired `pro`/`premier` cards to `paid_tier=free`.
+- Healthcheck keys: `advertiser_center`, `advertiser_order_bridge`.
 - Research log: `docs/2026-06-03-advertiser-monetization-research-and-center.md`
 
 ## What not to do
@@ -70,3 +77,4 @@
 ## Revision log
 
 - 2026-06-03 — Created by Codex after the Nadlan advertiser-center build and competitor scan. Captures the reusable monetization/product standard for future site work.
+- 2026-06-03 — Tightened the order bridge around the owner steer: `paid_tier` stays the source of truth; `campaign_end` + daily downgrade cron prevent permanent access from one-time payments.

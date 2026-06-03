@@ -832,6 +832,8 @@ Fresh sources reviewed included Zillow Premier Agent, Homes.com advertising, Rig
 
 Branch `codex/advertiser-center-1-41-2` adds `inc/advertiser-center.php`: `/advertiser-center/`, `/advertiser-dashboard/`, `[nadlan_advertiser_center]`, WooCommerce thank-you panel for products 476/477/489/490, My Account link, owned-card completion scoring, views, best-effort inquiries, reviews, orders, Studio links, and upgrade paths.
 
+Same branch adds `inc/advertiser-orders.php` per owner steer: keep `paid_tier` as the only entitlement/ranking source of truth; preserve `card_id` through checkout; on `woocommerce_payment_complete`, set card `paid_tier` (476=pro, 477=premier, 489=project premier via `paid_tier=premier`, 490=property pro via `paid_tier=pro`) and only add card meta `campaign_end`, `paid_order_id`, `paid_product_id`. Daily cron `nadlan_ao_daily_downgrade` returns expired `pro`/`premier` cards to `paid_tier=free` so one-time payments cannot become permanent paid placements.
+
 Knowledge captured in `docs/2026-06-03-advertiser-monetization-research-and-center.md` and new skill `skills/advertiser-monetization-system.md`; indexed in `skills/MAP.md` and `skills/SKILLS-TREE.md`.
 
 Not live yet at time of writing. Requires plugin v1.41.2 ZIP/manifest gate, PR merge to main, owner plugin update, then live `/advertiser-center/` and Journey-2 QA.

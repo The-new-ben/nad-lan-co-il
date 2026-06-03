@@ -163,7 +163,7 @@ if ( ! function_exists( 'nadlan_tier_upgrade_cta' ) ) {
 			. '<button onclick="nadlanUpgradeReq(' . (int) $id . ',\'' . $title . '\')">שדרגו לפרו</button>'
 			. '</div>'
 			. '<style>.nlupgrade{margin:18px 0;padding:18px;background:#FAF7F1;border:1px solid #E2DCD0;border-radius:6px;direction:rtl;font-family:var(--font-sans,Heebo,sans-serif)}.nlupgrade button{margin-top:10px;padding:11px 22px;background:#9C7A3C;color:#FAF7F1;border:0;border-radius:4px;cursor:pointer;font:inherit}.nlpremier{display:inline-block;margin-bottom:10px;padding:4px 12px;background:#1B1A17;color:#9C7A3C;font-size:12px;letter-spacing:0.1em}</style>'
-			. '<script>function nadlanUpgradeReq(id,t){var name=prompt("שמכם:");if(!name)return;var phone=prompt("טלפון:");fetch("' . esc_js( rest_url( 'nadlan/v1/lead' ) ) . '",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({name:name,phone:phone,topic:"שדרוג לפרו",message:t+" #"+id,source:"upgrade-cta"})}).then(function(){alert("✓ בקשה התקבלה.");});}</script>';
+			. '<script>function nadlanUpgradeReq(id,t){var name=prompt("שמכם:");if(!name)return;var phone=prompt("טלפון:");fetch("' . esc_js( rest_url( 'nadlan/v1/lead' ) ) . '",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({name:name,phone:phone,topic:"שדרוג לפרו",message:t+" #"+id,source:"upgrade-cta",card_id:id})}).then(function(){alert("✓ בקשה התקבלה.");});}</script>';
 	}
 }
 

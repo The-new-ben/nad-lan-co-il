@@ -74,6 +74,10 @@ The site already has serious revenue plumbing: WooCommerce + Green Invoice, tier
 - Add a WooCommerce thank-you panel for paid products so the order-received page tells advertisers what to do next.
 - Add a My Account dashboard link to the advertiser center.
 - Add healthcheck metadata for the new route and product ids.
+- Add `inc/advertiser-orders.php` to preserve `card_id` through WooCommerce checkout and activate the existing `paid_tier` meta on `woocommerce_payment_complete`.
+- Do not create a parallel campaign status field. Card-level paid state is only `paid_tier` plus `campaign_end`, `paid_order_id`, and `paid_product_id`.
+- Add a daily downgrade cron so expired one-charge campaigns return `paid_tier` to `free` instead of becoming permanent paid placements.
+- Add an Advertiser Center fallback for paid orders that were not connected to a card at checkout.
 
 ## Ten more issues to handle next
 
@@ -81,16 +85,16 @@ The site already has serious revenue plumbing: WooCommerce + Green Invoice, tier
 2. Resolve recurring billing truth: annual products vs Morning standing order vs custom recurring integration.
 3. Create a public `/advertise/` route that explains project/professional/property packages without internal wording.
 4. Add a real advertiser report generator: PDF/email monthly summary with views, inquiries, reviews, completion score, campaign dates, and next recommended action.
-5. Persist campaign start/end dates per paid order and card, not only product purchase status.
-6. Tie WooCommerce order items to a specific card/project via cart item meta (`card_id`, `campaign_id`) so reporting is exact.
-7. Add a "request project setup" form for customers who pay before a project CPT exists.
-8. Add verified media checklist: hero images, gallery minimum, floorplan, video, 3D tour, map pin, developer logo.
-9. Add advertiser-facing lead quality states: new, contacted, valid, invalid/replaced, closed.
-10. Add customer notifications: after payment, after first edit, weekly missing-fields reminder, monthly report.
-11. Add public sponsored-content disclosure rules to advertiser terms before selling sponsored articles.
-12. Add visual QA for `/advertiser-center/` on mobile after the owner updates to v1.41.2.
-13. Decide whether admins should have a real all-advertisers dashboard separate from the customer-facing center.
-14. Add source-of-truth campaign metrics from GA4/Search Console when authenticated reporting is available.
+5. Add a "request project setup" form or draft-project wizard for customers who pay for product 489 before a project CPT exists.
+6. Add verified media checklist: hero images, gallery minimum, floorplan, video, 3D tour, map pin, developer logo.
+7. Add advertiser-facing lead quality states: new, contacted, valid, invalid/replaced, closed.
+8. Add customer notifications: after payment, after first edit, weekly missing-fields reminder, monthly report.
+9. Add public sponsored-content disclosure rules to advertiser terms before selling sponsored articles.
+10. Add visual QA for `/advertiser-center/` on mobile after the owner updates to v1.41.2.
+11. Decide whether admins should have a real all-advertisers dashboard separate from the customer-facing center.
+12. Add source-of-truth campaign metrics from GA4/Search Console when authenticated reporting is available.
+13. Add an automated test fixture for paid orders with `card_id` so the tier activation and downgrade logic can be regression-tested without a real charge.
+14. Add operational monitoring for the daily downgrade cron so expired paid tiers cannot silently stay paid.
 
 ## QA notes for this release
 
@@ -102,3 +106,6 @@ The code can be linted and ZIP-gated before merge. Full end-to-end production QA
 - Logged-in advertiser sees owned cards and Studio links.
 - A claimed card with missing photos shows the missing-fields chips.
 - A project advertiser can reach `/studio/?id=<project_id>` from the center.
+- Paid order with `card_id` activates `paid_tier` through `woocommerce_payment_complete`, not through `woocommerce_thankyou`.
+- Paid activation writes only `campaign_end`, `paid_order_id`, and `paid_product_id` on the card.
+- Daily downgrade cron returns expired `pro`/`premier` cards to `paid_tier=free`.
