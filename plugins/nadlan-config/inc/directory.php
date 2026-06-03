@@ -153,7 +153,7 @@ if ( ! function_exists( 'nadlan_dir_cards_html' ) ) {
 		}
 		$out = '';
 		foreach ( $wq->posts as $p ) { $out .= nadlan_dir_card( $p->ID ); }
-		return $out;
+		return apply_filters( 'nadlan_dir_cards_html', $out, 'nadlan_professional' );
 	}
 }
 
@@ -606,7 +606,7 @@ if ( ! function_exists( 'nadlan_dir_project_cards_html' ) ) {
 		if ( ! $wq->have_posts() ) { return '<div class="nldir-empty"><p>לא נמצאו פרויקטים התואמים.</p><p>נסו עיר אחרת או הסירו סינון.</p></div>'; }
 		$out = '';
 		foreach ( $wq->posts as $p ) { $out .= nadlan_dir_project_card( $p->ID ); }
-		return $out;
+		return apply_filters( 'nadlan_dir_cards_html', $out, 'nadlan_project' );
 	}
 }
 
