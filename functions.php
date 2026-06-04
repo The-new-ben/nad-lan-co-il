@@ -70,6 +70,16 @@ if ( ! function_exists( 'nadlan_revenue_enqueue_styles' ) ) :
 				(string) filemtime( $premium_path )
 			);
 		}
+
+		$revenue_path = get_parent_theme_file_path( 'assets/css/nadlan-premium-revenue.css' );
+		if ( file_exists( $revenue_path ) ) {
+			wp_enqueue_style(
+				'nadlan-revenue-premium-revenue',
+				get_parent_theme_file_uri( 'assets/css/nadlan-premium-revenue.css' ),
+				array( 'nadlan-revenue-premium-sitewide' ),
+				(string) filemtime( $revenue_path )
+			);
+		}
 	}
 endif;
 add_action( 'wp_enqueue_scripts', 'nadlan_revenue_enqueue_styles' );
@@ -92,6 +102,22 @@ if ( ! function_exists( 'nadlan_revenue_enqueue_accessibility' ) ) :
 	}
 endif;
 add_action( 'wp_enqueue_scripts', 'nadlan_revenue_enqueue_accessibility' );
+
+if ( ! function_exists( 'nadlan_revenue_enqueue_premium_revenue_script' ) ) :
+	function nadlan_revenue_enqueue_premium_revenue_script() {
+		if ( is_admin() ) { return; }
+		$path = get_parent_theme_file_path( 'assets/js/nadlan-premium-revenue.js' );
+		if ( ! file_exists( $path ) ) { return; }
+		wp_enqueue_script(
+			'nadlan-premium-revenue',
+			get_parent_theme_file_uri( 'assets/js/nadlan-premium-revenue.js' ),
+			array(),
+			(string) filemtime( $path ),
+			true
+		);
+	}
+endif;
+add_action( 'wp_enqueue_scripts', 'nadlan_revenue_enqueue_premium_revenue_script' );
 
 /* ---------------------------------------------------------------------------
  * CMS-editable hero image. Adds a Customizer control (Appearance → Customize →
@@ -780,3 +806,250 @@ add_filter( 'render_block', function ( $block_content, $block ) {
 	}
 	return $block_content;
 }, 9, 2 );
+
+/* ---------------------------------------------------------------------------
+ * Premium revenue journey layer.
+ *
+ * Theme-owned presentation and journey safety only: no plugin module edits, no
+ * product IDs changed, no order activation logic changed.
+ * ------------------------------------------------------------------------- */
+if ( ! function_exists( 'nadlan_revenue_money_product_ids' ) ) :
+	function nadlan_revenue_money_product_ids() {
+		return array( 475, 476, 477, 489, 490 );
+	}
+endif;
+
+if ( ! function_exists( 'nadlan_revenue_request_path' ) ) :
+	function nadlan_revenue_request_path() {
+		$uri = isset( $_SERVER['REQUEST_URI'] ) ? (string) wp_unslash( $_SERVER['REQUEST_URI'] ) : '/';
+		$path = (string) wp_parse_url( $uri, PHP_URL_PATH );
+		return '/' . ltrim( $path, '/' );
+	}
+endif;
+
+if ( ! function_exists( 'nadlan_revenue_is_money_path' ) ) :
+	function nadlan_revenue_is_money_path() {
+		$product_ids = nadlan_revenue_money_product_ids();
+		$add_to_cart = isset( $_GET['add-to-cart'] ) ? absint( wp_unslash( $_GET['add-to-cart'] ) ) : 0; // phpcs:ignore WordPress.Security.NonceVerification.Recommended
+		if ( $add_to_cart && in_array( $add_to_cart, $product_ids, true ) ) {
+			return true;
+		}
+
+		$path = nadlan_revenue_request_path();
+		$money_prefixes = array( '/cart', '/checkout', '/my-account', '/join-pro' );
+		foreach ( $money_prefixes as $prefix ) {
+			if ( strpos( $path, $prefix ) === 0 ) {
+				return true;
+			}
+		}
+
+		if ( function_exists( 'is_cart' ) && is_cart() ) { return true; }
+		if ( function_exists( 'is_checkout' ) && is_checkout() ) { return true; }
+		if ( function_exists( 'is_account_page' ) && is_account_page() ) { return true; }
+		if ( function_exists( 'is_product' ) && is_product() ) {
+			$product_id = get_queried_object_id();
+			if ( in_array( (int) $product_id, $product_ids, true ) ) {
+				return true;
+			}
+		}
+
+		return false;
+	}
+endif;
+
+add_filter( 'woocommerce_coming_soon_exclude', function ( $is_excluded ) {
+	if ( nadlan_revenue_is_money_path() ) {
+		return true;
+	}
+	return $is_excluded;
+}, 20 );
+
+if ( ! function_exists( 'nadlan_revenue_is_public_customer_gate' ) ) :
+	function nadlan_revenue_is_public_customer_gate() {
+		$path = nadlan_revenue_request_path();
+		if ( get_query_var( 'nadlan_advertiser_center' ) || get_query_var( 'nadlan_studio' ) ) {
+			return true;
+		}
+		return strpos( $path, '/advertiser-center' ) === 0
+			|| strpos( $path, '/advertiser-dashboard' ) === 0
+			|| strpos( $path, '/studio' ) === 0;
+	}
+endif;
+
+if ( ! function_exists( 'nadlan_revenue_premium_gateway_markup' ) ) :
+	function nadlan_revenue_premium_gateway_markup( $mode = 'center' ) {
+		$is_studio = $mode === 'studio';
+		$my_account = function_exists( 'wc_get_page_permalink' ) ? wc_get_page_permalink( 'myaccount' ) : '';
+		$account_url = add_query_arg(
+			'redirect_to',
+			rawurlencode( $is_studio ? home_url( '/studio/' ) : home_url( '/advertiser-center/' ) ),
+			$my_account ?: home_url( '/my-account/' )
+		);
+		$pricing_url = home_url( '/join-pro/' );
+		$claim_url   = home_url( '/professionals/' );
+
+		ob_start();
+		?>
+<main class="nlrx-gate" dir="rtl">
+	<section class="nlrx-gate-hero">
+		<div class="nlrx-gate-copy">
+			<p class="nlrx-eyebrow">מערכת פרסום וניהול נכסים</p>
+			<h1><?php echo esc_html( $is_studio ? 'כניסה לסטודיו העריכה של נדל״ן חכם' : 'מרכז הפרסום של נדל״ן חכם' ); ?></h1>
+			<p>כאן מפרסמים מנהלים פרויקט, נכס או כרטיס מקצועי: תמונות, פרטי קשר, מיקום, פניות ושדרוגי חשיפה. קודם מתחברים לחשבון, ואז ממשיכים לעריכה או למסלול הפרסום.</p>
+			<div class="nlrx-actions">
+				<a class="nlrx-btn nlrx-btn-primary" href="<?php echo esc_url( $account_url ); ?>">כניסה או פתיחת חשבון</a>
+				<a class="nlrx-btn nlrx-btn-ghost" href="<?php echo esc_url( $pricing_url ); ?>">מסלולי פרסום</a>
+			</div>
+		</div>
+		<div class="nlrx-gate-panel" aria-label="שלבי התחלה">
+			<div><span>01</span><strong>יוצרים חשבון</strong><p>שם, אימייל וסיסמה. אין צורך לדעת וורדפרס.</p></div>
+			<div><span>02</span><strong>בוחרים או תובעים כרטיס</strong><p>פרויקט, נכס או כרטיס מקצועי שכבר קיים במאגר.</p></div>
+			<div><span>03</span><strong>מעלים תמונות ומידע</strong><p>סטודיו עריכה עם שדות ברורים ותצוגה ציבורית.</p></div>
+			<div><span>04</span><strong>משדרגים חשיפה</strong><p>Pro, Premier, פרויקט או נכס מקודם דרך WooCommerce.</p></div>
+		</div>
+	</section>
+	<section class="nlrx-gate-proof">
+		<a href="<?php echo esc_url( $claim_url ); ?>">איתור כרטיס קיים</a>
+		<a href="<?php echo esc_url( home_url( '/projects/' ) ); ?>">צפייה בפרויקטים</a>
+		<a href="<?php echo esc_url( home_url( '/properties/' ) ); ?>">נכסים</a>
+	</section>
+</main>
+		<?php
+		return ob_get_clean();
+	}
+endif;
+
+add_action( 'template_redirect', function () {
+	if ( is_admin() || is_user_logged_in() || ! nadlan_revenue_is_public_customer_gate() ) {
+		return;
+	}
+	$mode = strpos( nadlan_revenue_request_path(), '/studio' ) === 0 || get_query_var( 'nadlan_studio' ) ? 'studio' : 'center';
+	status_header( 200 );
+	get_header();
+	echo nadlan_revenue_premium_gateway_markup( $mode ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+	get_footer();
+	exit;
+}, 1 );
+
+if ( ! function_exists( 'nadlan_revenue_price_plans' ) ) :
+	function nadlan_revenue_price_plans() {
+		return array(
+			array(
+				'id'       => 476,
+				'name'     => 'Pro מקצועי',
+				'price'    => '₪349',
+				'period'   => 'לחודש חשיפה',
+				'tone'     => 'ink',
+				'badge'    => 'לכרטיס מקצועי',
+				'features' => array( 'כרטיס בולט יותר בתוצאות', 'תמונות ופרטי קשר מסודרים', 'כניסה למרכז הפרסום', 'שדרוג לכרטיס קיים' ),
+			),
+			array(
+				'id'       => 477,
+				'name'     => 'Premier מקצועי',
+				'price'    => '₪749',
+				'period'   => 'לחודש חשיפה',
+				'tone'     => 'gold',
+				'badge'    => 'מומלץ',
+				'features' => array( 'נוכחות פרימיום בכרטיס', 'חשיפה חזקה יותר בקטלוג', 'עמוד עשיר עם תמונות ומידע', 'מתאים למשרדים ומומחים מובילים' ),
+			),
+			array(
+				'id'       => 489,
+				'name'     => 'Project Premier',
+				'price'    => '₪3,990',
+				'period'   => 'קמפיין לפרויקט',
+				'tone'     => 'deep',
+				'badge'    => 'ליזמים',
+				'features' => array( 'פרויקט מובלט בקטלוג', 'גלריה ותיאור עשיר', 'הפניות למתעניינים', 'מתאים לשיווק פרויקט חדש' ),
+			),
+			array(
+				'id'       => 490,
+				'name'     => 'Property Pro',
+				'price'    => '₪299',
+				'period'   => 'לנכס מקודם',
+				'tone'     => 'light',
+				'badge'    => 'לנכס בודד',
+				'features' => array( 'נכס מודגש בתוצאות', 'תמונות, מיקום ופרטי קשר', 'מסלול מהיר לפרסום', 'מתאים למוכרים ומשכירים' ),
+			),
+		);
+	}
+endif;
+
+if ( ! function_exists( 'nadlan_revenue_premium_join_page' ) ) :
+	function nadlan_revenue_premium_join_page() {
+		$plans = nadlan_revenue_price_plans();
+		ob_start();
+		?>
+<div class="nlrx-pricing" dir="rtl">
+	<section class="nlrx-pricing-hero">
+		<div>
+			<p class="nlrx-eyebrow">פרסום נדל״ן פרימיום</p>
+			<h1>מסלולי חשיפה לפרויקטים, נכסים ואנשי מקצוע</h1>
+			<p>בונים נוכחות שמרגישה כמו נכס יוקרתי: עמוד עשיר, תמונות, פרטי קשר, מיקום, פניות ומרכז ניהול אחד. המטרה פשוטה: להפוך מבקר למתעניין אמיתי.</p>
+		</div>
+		<div class="nlrx-pricing-proof">
+			<strong>WooCommerce + חשבונית</strong>
+			<span>תשלום מאובטח, הזמנה מסודרת, חיבור לכרטיס לאחר רכישה.</span>
+		</div>
+	</section>
+	<section class="nlrx-plan-grid" aria-label="מסלולי פרסום">
+		<?php foreach ( $plans as $plan ) : ?>
+			<article class="nlrx-plan nlrx-plan-<?php echo esc_attr( $plan['tone'] ); ?>">
+				<span class="nlrx-plan-badge"><?php echo esc_html( $plan['badge'] ); ?></span>
+				<h2><?php echo esc_html( $plan['name'] ); ?></h2>
+				<p class="nlrx-price"><b><?php echo esc_html( $plan['price'] ); ?></b><span><?php echo esc_html( $plan['period'] ); ?></span></p>
+				<ul>
+					<?php foreach ( $plan['features'] as $feature ) : ?>
+						<li><?php echo esc_html( $feature ); ?></li>
+					<?php endforeach; ?>
+				</ul>
+				<a class="nlrx-btn <?php echo $plan['tone'] === 'gold' || $plan['tone'] === 'deep' ? 'nlrx-btn-primary' : 'nlrx-btn-secondary'; ?>" href="<?php echo esc_url( home_url( '/cart/?add-to-cart=' . (int) $plan['id'] ) ); ?>">בחירת מסלול</a>
+			</article>
+		<?php endforeach; ?>
+	</section>
+	<section class="nlrx-revenue-flow" aria-label="איך זה עובד">
+		<div><span>1</span><strong>בוחרים מסלול</strong><p>הכרטיס או הפרויקט מקבל את מסלול החשיפה הנכון.</p></div>
+		<div><span>2</span><strong>משלימים תשלום</strong><p>WooCommerce פותח הזמנה וחשבונית לפי ההגדרות באתר.</p></div>
+		<div><span>3</span><strong>מחברים לכרטיס</strong><p>אם כבר יש כרטיס, מחברים אותו. אם לא, מרכז הפרסום מאפשר בחירה.</p></div>
+		<div><span>4</span><strong>מעלים תמונות ומידע</strong><p>הסטודיו מציג שדות ברורים, גלריה ומפה.</p></div>
+	</section>
+	<section class="nlrx-pricing-note">
+		<h2>לפני שמפעילים לקוחות אמיתיים</h2>
+		<p>הבדיקה החיה מצאה שעמודי התשלום של WooCommerce עדיין מוצגים כ-coming soon. הקוד כאן מוסיף שכבת ביטחון למסלולי הכסף, אבל בהתקנה חייבים גם לוודא ב-WooCommerce שהחנות מוגדרת גלויה לציבור.</p>
+	</section>
+</div>
+		<?php
+		return ob_get_clean();
+	}
+endif;
+
+add_filter( 'the_content', function ( $content ) {
+	if ( is_page( 'join-pro' ) && in_the_loop() && is_main_query() ) {
+		return nadlan_revenue_premium_join_page();
+	}
+	return $content;
+}, 98 );
+
+add_action( 'login_enqueue_scripts', function () {
+	$logo = esc_url( get_site_icon_url( 96 ) );
+	?>
+	<style>
+		body.login{min-height:100vh;background:radial-gradient(circle at 72% 8%,rgba(215,189,130,.18),transparent 34%),linear-gradient(135deg,#081d1d,#17130f 58%,#f4efe6 58.2%,#f8f3eb)!important;font-family:Heebo,Arial,sans-serif!important;color:#15130f}
+		body.login #login{width:min(420px,calc(100% - 36px));padding:clamp(42px,8vw,84px) 0 32px}
+		body.login h1 a{width:96px;height:96px;border-radius:50%;background:<?php echo $logo ? 'url(' . $logo . ') center/68px 68px no-repeat,' : ''; ?>linear-gradient(135deg,#f6e4ad,#926b2b)!important;box-shadow:0 24px 60px rgba(0,0,0,.28),inset 0 0 0 1px rgba(255,255,255,.42)}
+		body.login form{border:1px solid rgba(167,124,53,.22);border-radius:24px;background:rgba(255,253,248,.92);box-shadow:0 28px 90px rgba(13,13,11,.18);padding:28px}
+		body.login label{font-weight:800;color:#1d1912}
+		body.login input.input{min-height:48px;border:1px solid #d6cbbb;border-radius:14px;background:#fffdf8;box-shadow:none;font-size:16px}
+		body.login input.input:focus{border-color:#a77c35;box-shadow:0 0 0 3px rgba(167,124,53,.18)}
+		body.login .button-primary{min-height:48px;border:0;border-radius:999px;background:linear-gradient(135deg,#16130f,#3a2f20 58%,#a77c35)!important;font-weight:900;box-shadow:0 16px 34px rgba(13,13,11,.2)}
+		body.login #nav a,body.login #backtoblog a{color:#f4e8d2!important;font-weight:800;text-decoration:none}
+	</style>
+	<?php
+} );
+
+add_filter( 'login_headerurl', function () {
+	return home_url( '/' );
+} );
+
+add_filter( 'login_headertext', function () {
+	return get_bloginfo( 'name' );
+} );

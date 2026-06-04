@@ -1,0 +1,146 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>נדלן חכם - Premium Revenue Preview</title>
+	<link rel="stylesheet" href="../../assets/css/nadlan-premium-sitewide.css">
+	<link rel="stylesheet" href="../../assets/css/nadlan-premium-revenue.css">
+	<style>
+		body{margin:0;font-family:Heebo,Arial,sans-serif}
+		.preview-top{position:sticky;top:0;z-index:60;display:flex;align-items:center;justify-content:space-between;gap:18px;padding:14px 28px;background:rgba(251,248,242,.86);backdrop-filter:blur(16px);border-bottom:1px solid rgba(17,16,13,.08)}
+		.preview-brand{display:flex;align-items:center;gap:12px;font-weight:900;color:#15130f;text-decoration:none}
+		.preview-seal{width:42px;height:42px;border-radius:50%;background:linear-gradient(135deg,#17130e,#312719 58%,#b28846);box-shadow:inset 0 0 0 1px rgba(255,255,255,.24),0 12px 30px rgba(17,16,13,.14)}
+		.preview-nav{display:flex;gap:8px;flex-wrap:wrap}
+		.preview-nav a{min-height:40px;display:inline-flex;align-items:center;padding:0 14px;border-radius:999px;color:#252016;text-decoration:none;font-weight:800}
+		.preview-nav a:hover{background:rgba(167,124,53,.1)}
+		.preview-label{width:min(1320px,calc(100% - 34px));margin:36px auto 12px;color:#a77c35;font-weight:900;font-size:12px;letter-spacing:.14em!important;text-transform:uppercase}
+		.preview-shell{width:min(1320px,calc(100% - 34px));margin:0 auto 54px}
+		.preview-catalog{display:grid;grid-template-columns:270px 1fr;gap:20px}
+		.preview-facets{border:1px solid rgba(17,16,13,.08);border-radius:22px;background:#fffdf8;padding:18px;box-shadow:0 16px 44px rgba(17,16,13,.07)}
+		.preview-facets h3{margin:0 0 14px}.preview-facets div{display:flex;justify-content:space-between;padding:10px 0;border-bottom:1px solid rgba(17,16,13,.06);font-weight:800}
+		.preview-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+		.preview-card{position:relative;overflow:hidden;border:1px solid rgba(17,16,13,.08);border-radius:24px;background:#fffdf8;box-shadow:0 18px 48px rgba(17,16,13,.075);text-decoration:none;color:#17130f}
+		.preview-card .media{height:170px;background:linear-gradient(90deg,rgba(8,31,32,.92),rgba(8,31,32,.52)),url("../../assets/premium/concept/project-concept.svg") center/cover no-repeat,url("../../assets/premium/concept/blueprint-texture.svg"),#0d2d2d}
+		.preview-card:nth-child(2) .media{background:linear-gradient(90deg,rgba(8,31,32,.92),rgba(8,31,32,.45)),url("../../assets/premium/concept/skyline-telaviv-line.svg") center/cover no-repeat,url("../../assets/premium/concept/blueprint-texture.svg"),#0d2d2d}
+		.preview-card:nth-child(3) .media{background:linear-gradient(90deg,rgba(8,31,32,.92),rgba(8,31,32,.45)),url("../../assets/premium/concept/property-concept.svg") center/cover no-repeat,url("../../assets/premium/concept/blueprint-texture.svg"),#0d2d2d}
+		.preview-card .body{padding:18px}.preview-card h3{margin:0 0 8px;font-size:21px}.preview-card p{margin:0;color:#6d6253;line-height:1.55}.preview-card .chip{position:absolute;top:14px;right:14px;padding:7px 12px;border-radius:999px;background:rgba(17,16,13,.74);color:#f8df9c;font-weight:900;font-size:12px}
+		.preview-profile{display:grid;grid-template-columns:1fr 320px;gap:20px}
+		.preview-profile-hero{min-height:420px;border-radius:34px;padding:40px;color:#fff8e7;background:linear-gradient(90deg,rgba(8,31,32,.94),rgba(8,31,32,.58)),url("../../assets/premium/concept/hero-coast-concept.svg") center/cover no-repeat,url("../../assets/premium/concept/blueprint-texture.svg");box-shadow:0 34px 90px rgba(17,16,13,.18);display:flex;flex-direction:column;justify-content:end}
+		.preview-profile-side{border:1px solid rgba(17,16,13,.08);border-radius:24px;background:#fffdf8;padding:22px;box-shadow:0 18px 48px rgba(17,16,13,.075)}
+		.preview-checkout{display:grid;grid-template-columns:1fr 360px;gap:20px}
+		.preview-box{border:1px solid rgba(17,16,13,.08);border-radius:24px;background:#fffdf8;padding:26px;box-shadow:0 18px 54px rgba(17,16,13,.08)}
+		.preview-input{height:48px;border:1px solid #d8cfbf;border-radius:14px;background:#fffdf8;margin:10px 0}
+		@media(max-width:900px){html,body{width:100%;max-width:100%;overflow-x:hidden}.preview-top{align-items:flex-start;flex-direction:column;width:100%;max-width:100%;padding:14px 16px}.preview-label,.preview-shell{width:100%;max-width:100%;padding-inline:12px;margin-inline:auto;overflow:hidden}.preview-label{font-size:10px;line-height:1.5;overflow-wrap:anywhere}.preview-catalog,.preview-profile,.preview-checkout{grid-template-columns:1fr}.preview-grid{grid-template-columns:1fr}.preview-nav{display:none}.nlux-hero{margin-inline:0!important}.preview-card,.preview-facets,.preview-box{max-width:100%;overflow:hidden}}
+	</style>
+</head>
+<body>
+	<header class="preview-top">
+		<a class="preview-brand" href="#"><span class="preview-seal"></span><span>נדלן חכם</span></a>
+		<nav class="preview-nav" aria-label="Preview navigation">
+			<a href="#home">בית</a>
+			<a href="#catalog">קטלוג</a>
+			<a href="#pricing">פרסום</a>
+			<a href="#checkout">תשלום</a>
+			<a href="#internal">מערכת פנימית</a>
+		</nav>
+	</header>
+
+	<p class="preview-label" id="home">Cycle 1 - homepage above the fold</p>
+	<div class="nlux-home">
+		<section class="nlux-hero" aria-label="נדלן חכם">
+			<div class="nlux-hero-copy">
+				<p class="nlux-kicker">נדלן חכם · ישראל</p>
+				<h1>קונים, מוכרים ומשווקים נדל״ן עם מידע שנראה כמו נכס יוקרתי</h1>
+				<p class="nlux-lead">פרויקטים חדשים, אנשי מקצוע מאומתים, מחשבונים ועמודי פרסום עשירים. בלי תחושה של תבנית וורדפרס, בלי כרטיסים נטושים, עם תמונות וקווים אדריכליים שמחזיקים את כל החוויה.</p>
+				<form class="nlux-search">
+					<input type="search" placeholder="חיפוש פרויקט, עיר, יזם או בעל מקצוע">
+					<input type="text" placeholder="עיר">
+					<button type="button">התחילו חיפוש</button>
+				</form>
+				<div class="nlux-actions">
+					<a href="#">פרויקטים חדשים</a>
+					<a href="#">אנשי מקצוע</a>
+					<a href="#">מסלולי פרסום</a>
+				</div>
+			</div>
+			<div class="nlux-hero-panel">
+				<div><b>942</b><span>פרויקטים</span></div>
+				<div><b>2,702</b><span>בעלי מקצוע</span></div>
+				<div><b>22</b><span>מאמרים וכלים</span></div>
+			</div>
+		</section>
+	</div>
+
+	<p class="preview-label" id="catalog">Cycle 2 - catalog cards with no abandoned blanks</p>
+	<section class="preview-shell preview-catalog">
+		<aside class="preview-facets">
+			<h3>סינון שקט וברור</h3>
+			<div><span>תל אביב יפו</span><b>76</b></div>
+			<div><span>ירושלים</span><b>197</b></div>
+			<div><span>פינוי בינוי</span><b>240</b></div>
+			<div><span>בנייה חדשה</span><b>128</b></div>
+		</aside>
+		<div class="preview-grid">
+			<a class="preview-card" href="#"><span class="chip">Premier</span><div class="media"></div><div class="body"><h3>Rainbow Tel Aviv</h3><p>תל אביב יפו · ישראל קנדה · 480 יח״ד לפי שיווק היזם</p></div></a>
+			<a class="preview-card" href="#"><span class="chip">פרויקט</span><div class="media"></div><div class="body"><h3>קו חוף עתידי</h3><p>תמונת קונספט אדריכלית במקום כרטיס ריק.</p></div></a>
+			<a class="preview-card" href="#"><span class="chip">נכס</span><div class="media"></div><div class="body"><h3>דירת פרימיום</h3><p>תמונה גרפית מקורית, לא פנים מזויפות ולא סטוק.</p></div></a>
+		</div>
+	</section>
+
+	<p class="preview-label" id="pricing">Cycle 3 - pricing page that looks like a product</p>
+	<div class="nlrx-pricing">
+		<section class="nlrx-pricing-hero">
+			<div>
+				<p class="nlrx-eyebrow">פרסום נדל״ן פרימיום</p>
+				<h1>מסלולי חשיפה לפרויקטים, נכסים ואנשי מקצוע</h1>
+				<p>עמוד עשיר, תמונות, פרטי קשר, מיקום, פניות ומרכז ניהול אחד. תמחור ברור, תהליך ברור, חיבור לכרטיס לאחר רכישה.</p>
+			</div>
+			<div class="nlrx-pricing-proof"><strong>WooCommerce + חשבונית</strong><span>התשלום חייב להיות גלוי לציבור, לא תקוע ב-coming soon.</span></div>
+		</section>
+		<section class="nlrx-plan-grid">
+			<article class="nlrx-plan"><span class="nlrx-plan-badge">כרטיס מקצועי</span><h2>Pro מקצועי</h2><p class="nlrx-price"><b>₪349</b><span>לחודש חשיפה</span></p><ul><li>כרטיס בולט יותר</li><li>תמונות ופרטים</li><li>כניסה למרכז הפרסום</li></ul><a class="nlrx-btn nlrx-btn-secondary" href="#">בחירת מסלול</a></article>
+			<article class="nlrx-plan nlrx-plan-gold"><span class="nlrx-plan-badge">מומלץ</span><h2>Premier מקצועי</h2><p class="nlrx-price"><b>₪749</b><span>לחודש חשיפה</span></p><ul><li>נוכחות פרימיום</li><li>חשיפה חזקה בקטלוג</li><li>עמוד עשיר</li></ul><a class="nlrx-btn nlrx-btn-primary" href="#">בחירת מסלול</a></article>
+			<article class="nlrx-plan nlrx-plan-deep"><span class="nlrx-plan-badge">ליזמים</span><h2>Project Premier</h2><p class="nlrx-price"><b>₪3,990</b><span>קמפיין לפרויקט</span></p><ul><li>פרויקט מובלט</li><li>גלריה ותיאור עשיר</li><li>פניות למתעניינים</li></ul><a class="nlrx-btn nlrx-btn-primary" href="#">בחירת מסלול</a></article>
+			<article class="nlrx-plan"><span class="nlrx-plan-badge">נכס בודד</span><h2>Property Pro</h2><p class="nlrx-price"><b>₪299</b><span>לנכס מקודם</span></p><ul><li>נכס מודגש</li><li>תמונות ומיקום</li><li>מסלול מהיר</li></ul><a class="nlrx-btn nlrx-btn-secondary" href="#">בחירת מסלול</a></article>
+		</section>
+	</div>
+
+	<p class="preview-label" id="checkout">Cycle 4 - checkout and account feel like the same brand</p>
+	<section class="preview-shell preview-checkout">
+		<div class="preview-box">
+			<h2>פרטי תשלום</h2>
+			<div class="preview-input"></div>
+			<div class="preview-input"></div>
+			<div class="preview-input"></div>
+			<a class="nlrx-btn nlrx-btn-primary" href="#">סיום הזמנה</a>
+		</div>
+		<aside class="preview-box">
+			<h2>Project Premier</h2>
+			<p class="nlrx-price"><b>₪3,990</b><span>קמפיין לפרויקט</span></p>
+			<p>לאחר תשלום: בחירת כרטיס, העלאת תמונות, עריכת פרטים ומעקב אחר פניות.</p>
+		</aside>
+	</section>
+
+	<p class="preview-label" id="internal">Cycle 5 - internal advertiser/studio gateway</p>
+	<main class="nlrx-gate">
+		<section class="nlrx-gate-hero">
+			<div class="nlrx-gate-copy">
+				<p class="nlrx-eyebrow">מערכת פרסום וניהול נכסים</p>
+				<h1>מרכז הפרסום של נדל״ן חכם</h1>
+				<p>מפרסמים מנהלים פרויקט, נכס או כרטיס מקצועי: תמונות, פרטי קשר, מיקום, פניות ושדרוגי חשיפה. אין מסך וורדפרס חשוף לקוח.</p>
+				<div class="nlrx-actions">
+					<a class="nlrx-btn nlrx-btn-primary" href="#">כניסה או פתיחת חשבון</a>
+					<a class="nlrx-btn nlrx-btn-ghost" href="#">מסלולי פרסום</a>
+				</div>
+			</div>
+			<div class="nlrx-gate-panel">
+				<div><span>01</span><strong>יוצרים חשבון</strong><p>שם, אימייל וסיסמה.</p></div>
+				<div><span>02</span><strong>בוחרים כרטיס</strong><p>פרויקט, נכס או בעל מקצוע.</p></div>
+				<div><span>03</span><strong>מעלים תמונות</strong><p>סטודיו עריכה ברור.</p></div>
+				<div><span>04</span><strong>משדרגים חשיפה</strong><p>Pro, Premier או קמפיין.</p></div>
+			</div>
+		</section>
+	</main>
+</body>
+</html>
