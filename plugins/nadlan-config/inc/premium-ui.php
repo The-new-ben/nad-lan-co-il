@@ -55,13 +55,20 @@ SVG;
 /* ---------- 2. Premium CSS overlay ---------------------------------------- */
 if ( ! function_exists( 'nadlan_premium_css' ) ) {
 	function nadlan_premium_css() {
-		return <<<'CSS'
+		$asset = function_exists( 'nadlan_real_photo_asset_url' )
+			? 'nadlan_real_photo_asset_url'
+			: function ( $file ) { return plugins_url( 'assets/real-photo/' . ltrim( (string) $file, '/' ), dirname( __DIR__ ) . '/nadlan-config.php' ); };
+		$css = <<<'CSS'
 <style id="nl-premium-ui">
 /* ===== Premium tokens (site-wide) ===== */
 :root{
 	--nl-ink:#11110F; --nl-charcoal:#2B2924; --nl-warm:#6D665C;
 	--nl-hairline:#DDD6C8; --nl-surface:#FAF8F3; --nl-card:#FFFFFF; --nl-band:#F3EFE7;
 	--nl-gold:#9C7A3C; --nl-champagne:#D7C39A; --nl-olive:#334236; --nl-sea:#183C3C; --nl-clay:#9F6F54;
+	--nl-real-hero:url("{{NL_REAL_HERO}}");
+	--nl-real-project:url("{{NL_REAL_PROJECT}}");
+	--nl-real-property:url("{{NL_REAL_PROPERTY}}");
+	--nl-real-professional:url("{{NL_REAL_PROFESSIONAL}}");
 	--nl-radius:8px; --nl-radius-lg:12px;
 	--nl-shadow-sm:0 1px 2px rgba(17,17,15,.04),0 1px 1px rgba(17,17,15,.04);
 	--nl-shadow-md:0 8px 24px rgba(17,17,15,.07),0 2px 6px rgba(17,17,15,.04);
@@ -82,6 +89,128 @@ if ( ! function_exists( 'nadlan_premium_css' ) ) {
 	transform:translateY(-3px);
 	box-shadow:var(--nl-shadow-md);
 	border-color:var(--pc,var(--nl-gold));
+}
+.nldir-results .nldc.has-media{
+	padding:0!important;
+	gap:0!important;
+	border-radius:22px!important;
+	background:linear-gradient(180deg,#fff,#FBF8F1)!important;
+	overflow:hidden!important;
+	box-shadow:0 18px 54px rgba(17,17,15,.09)!important;
+}
+.nldir-results .nldc.has-media::before{display:none!important}
+.nldc-media{
+	position:relative!important;
+	display:block!important;
+	aspect-ratio:16/10!important;
+	min-height:178px!important;
+	overflow:hidden!important;
+	background:#0B1717!important;
+	isolation:isolate;
+}
+.nldc-media img{
+	width:100%!important;
+	height:100%!important;
+	object-fit:cover!important;
+	display:block!important;
+	filter:contrast(1.06) saturate(.9) brightness(.94)!important;
+	transform:scale(1.012);
+	transition:transform .35s cubic-bezier(.2,.8,.2,1),filter .35s!important;
+}
+.nldir-results .nldc.has-media:hover .nldc-media img{
+	transform:scale(1.045);
+	filter:contrast(1.08) saturate(.94) brightness(.98)!important;
+}
+.nldc-media::before{
+	content:"";
+	position:absolute;inset:0;z-index:1;
+	background:
+		linear-gradient(rgba(213,238,242,.17) 1px,transparent 1px),
+		linear-gradient(90deg,rgba(213,238,242,.14) 1px,transparent 1px),
+		linear-gradient(135deg,transparent 58%,rgba(216,183,99,.34) 58.5%,transparent 59%);
+	background-size:46px 46px,46px 46px,100% 100%;
+	opacity:.5;
+	mix-blend-mode:screen;
+	pointer-events:none;
+}
+.nldc-media::after{
+	content:"";
+	position:absolute;inset:0;z-index:2;
+	background:
+		linear-gradient(180deg,rgba(5,13,13,.03) 0%,rgba(5,13,13,.18) 52%,rgba(5,13,13,.74) 100%),
+		linear-gradient(90deg,rgba(6,17,18,.24),transparent 56%);
+	pointer-events:none;
+}
+.nldc-media-label{
+	position:absolute;z-index:3;
+	inset-block-start:13px;inset-inline-start:13px;
+	max-width:calc(100% - 72px);
+	padding:6px 10px;
+	color:#17140C;
+	background:linear-gradient(135deg,rgba(255,246,209,.94),rgba(190,145,68,.9));
+	border:1px solid rgba(255,255,255,.5);
+	border-radius:999px;
+	font-size:11.5px;
+	font-weight:800;
+	box-shadow:0 12px 28px rgba(0,0,0,.18);
+}
+.nldc-media-mark{
+	position:absolute;z-index:3;
+	inset-block-end:13px;inset-inline-end:13px;
+	width:42px;height:42px;
+	display:grid;place-items:center;
+	color:#FFF8E7;
+	background:rgba(8,18,18,.52);
+	border:1px solid rgba(255,255,255,.22);
+	border-radius:50%;
+	backdrop-filter:blur(16px) saturate(140%);
+	box-shadow:inset 0 1px 0 rgba(255,255,255,.2);
+}
+.nldc-media-mark .nl-mark{width:24px!important;height:24px!important}
+.nldir-results .nldc.has-media .nldc-top,
+.nldir-results .nldc.has-media .nldc-rate,
+.nldir-results .nldc.has-media .nldc-meta,
+.nldir-results .nldc.has-media .nldc-foot{
+	margin-inline:0!important;
+	padding-inline:20px!important;
+}
+.nldir-results .nldc.has-media .nldc-top{padding-block:18px 0!important}
+.nldir-results .nldc.has-media .nldc-rate{padding-block-start:10px!important}
+.nldir-results .nldc.has-media .nldc-meta{padding-block-start:12px!important}
+.nldir-results .nldc.has-media .nldc-foot{padding-block:14px 18px!important}
+.nldir-results .nldc.has-media .nldc-av{
+	width:40px!important;height:40px!important;
+	border-radius:50%!important;
+	background:#F4EFE5!important;
+	box-shadow:inset 0 0 0 1px rgba(17,18,15,.08)!important;
+	opacity:.92;
+}
+.nldir-results .nldc.has-media .nldc-av .nl-mark{width:23px!important;height:23px!important}
+.nldir-results .nldc.has-media .nldc-sponsor{
+	z-index:4!important;
+	inset-block-start:14px!important;
+	inset-inline-end:14px!important;
+}
+.nlag-card{
+	overflow:hidden!important;
+	border-radius:22px!important;
+	background:linear-gradient(180deg,#fff,#FBF8F1)!important;
+	box-shadow:0 18px 54px rgba(17,17,15,.09)!important;
+}
+.nlag-card > .nldc-media{
+	margin:-20px -20px 14px!important;
+	width:calc(100% + 40px)!important;
+	min-height:172px!important;
+}
+.nlag-card > .nlag-badge,
+.nlag-card > h3,
+.nlag-card > .nlag-city,
+.nlag-card > .nlag-spec,
+.nlag-card > .nlag-reg,
+.nlag-card > .nlag-price,
+.nlag-card > .nlag-verified,
+.nlag-card > .nlag-go{
+	margin-inline:0!important;
 }
 .nldir-results .nldc.is-featured{
 	border-color:var(--pc,var(--nl-gold));
@@ -178,11 +307,28 @@ if ( ! function_exists( 'nadlan_premium_css' ) ) {
 
 /* ===== HERO + filters: less "cyber dashboard", more editorial ===== */
 .nldir-hero{
+	position:relative!important;
 	background:
-		radial-gradient(80% 100% at 15% 0%,rgba(51,66,54,.55),transparent 55%),
-		radial-gradient(80% 100% at 85% 10%,rgba(24,60,60,.5),transparent 55%),
-		linear-gradient(135deg,#17170F,#1F1E18 60%,#17170F)!important;
+		linear-gradient(90deg,rgba(4,11,11,.9),rgba(6,19,20,.66) 48%,rgba(6,19,20,.28)),
+		linear-gradient(180deg,rgba(0,0,0,.08),rgba(0,0,0,.36)),
+		var(--nl-real-hero)!important;
+	background-size:cover!important;
+	background-position:center 45%!important;
+	border-radius:0 0 28px 28px!important;
+	overflow:hidden!important;
+	isolation:isolate;
 }
+.nldir-hero::before{
+	content:"";position:absolute;inset:0;z-index:1;
+	background:
+		linear-gradient(rgba(213,238,242,.15) 1px,transparent 1px),
+		linear-gradient(90deg,rgba(213,238,242,.12) 1px,transparent 1px);
+	background-size:58px 58px;
+	opacity:.38;
+	pointer-events:none;
+	mask-image:linear-gradient(90deg,#000 0 58%,transparent 88%);
+}
+.nldir-hero > *{position:relative;z-index:2}
 .nldir-hero h1{font-family:var(--font-serif,"Frank Ruhl Libre",serif)!important;font-weight:600!important;letter-spacing:-.02em}
 .nldir-search{box-shadow:var(--nl-shadow-lg)!important;border-radius:14px!important;padding:6px!important}
 .nldir-search button{
@@ -198,6 +344,80 @@ if ( ! function_exists( 'nadlan_premium_css' ) ) {
 }
 .nldir-pill:hover{background:rgba(255,255,255,.16)!important}
 .nldir-pill.is-on{background:#fff!important;color:var(--nl-ink)!important;border-color:#fff!important}
+
+/* ===== Existing homepage HTML (.nlh) gets the same real-photo product language ===== */
+.nlh .nlh-hero{
+	position:relative!important;
+	max-width:1240px!important;
+	margin:22px auto 34px!important;
+	padding:118px 28px 92px!important;
+	color:#FFF8EA!important;
+	background:
+		linear-gradient(90deg,rgba(4,11,11,.92),rgba(7,20,21,.66) 48%,rgba(7,20,21,.22)),
+		linear-gradient(180deg,rgba(0,0,0,.08),rgba(0,0,0,.38)),
+		var(--nl-real-hero)!important;
+	background-size:cover!important;
+	background-position:center 45%!important;
+	border:1px solid rgba(255,255,255,.16)!important;
+	border-radius:30px!important;
+	box-shadow:0 30px 92px rgba(10,17,15,.22)!important;
+	overflow:hidden!important;
+	isolation:isolate;
+}
+.nlh .nlh-hero::before{
+	content:"";position:absolute;inset:0;z-index:1;
+	background:
+		linear-gradient(rgba(213,238,242,.15) 1px,transparent 1px),
+		linear-gradient(90deg,rgba(213,238,242,.12) 1px,transparent 1px),
+		linear-gradient(135deg,transparent 58%,rgba(216,183,99,.28) 58.5%,transparent 59%);
+	background-size:64px 64px,64px 64px,100% 100%;
+	opacity:.42;
+	pointer-events:none;
+}
+.nlh .nlh-hero > *{position:relative!important;z-index:2!important}
+.nlh .nlh-hero .eye{
+	display:inline-flex!important;
+	width:auto!important;
+	padding:8px 13px!important;
+	color:#F6E6B8!important;
+	background:rgba(255,255,255,.1)!important;
+	border:1px solid rgba(255,255,255,.18)!important;
+	border-radius:999px!important;
+	backdrop-filter:blur(16px)!important;
+	letter-spacing:.08em!important;
+}
+.nlh .nlh-hero h1{
+	max-width:760px!important;
+	margin-inline:auto!important;
+	color:#FFF9EA!important;
+	text-shadow:0 2px 18px rgba(0,0,0,.28)!important;
+}
+.nlh .nlh-hero p.lead,
+.nlh .nlh-hero > p:not(.eye){
+	color:rgba(255,248,234,.82)!important;
+}
+.nlh .nlh-hero .nlh-ctas a{
+	min-height:46px!important;
+	display:inline-flex!important;
+	align-items:center!important;
+	padding:0 18px!important;
+	color:#FFF8EA!important;
+	background:rgba(255,255,255,.1)!important;
+	border:1px solid rgba(255,255,255,.22)!important;
+	border-radius:999px!important;
+	backdrop-filter:blur(16px)!important;
+	text-decoration:none!important;
+}
+.nlh .nlh-hero .nlh-ctas a.gold{
+	color:#12130F!important;
+	background:linear-gradient(135deg,#FFF3C3,#B98D44)!important;
+	border-color:rgba(255,255,255,.35)!important;
+}
+.nlh .nlh-rule{
+	background:linear-gradient(90deg,transparent,#D8B763,transparent)!important;
+	width:min(360px,70vw)!important;
+	opacity:.8;
+}
 
 /* ===== Filter sidebar: quiet, premium ===== */
 .nldir-fgroup h4{color:var(--nl-gold)!important;font-size:11px!important;letter-spacing:.16em!important}
@@ -231,9 +451,25 @@ if ( ! function_exists( 'nadlan_premium_css' ) ) {
 /* ===== Single-profile shell upgrades ===== */
 .nlpf-banner{
 	background:
-		radial-gradient(80% 100% at 20% 0%,rgba(215,195,154,.35),transparent 55%),
-		linear-gradient(135deg,#F3EFE7,#FAF8F3 60%,#F3EFE7)!important;
+		linear-gradient(90deg,rgba(5,13,13,.86),rgba(8,22,23,.52),rgba(8,22,23,.12)),
+		linear-gradient(180deg,rgba(0,0,0,.08),rgba(0,0,0,.32)),
+		var(--nlpf-photo,var(--nl-real-professional))!important;
+	background-size:cover!important;
+	background-position:center!important;
 	border-bottom:1px solid var(--nl-hairline)!important;
+	min-height:150px!important;
+	position:relative;
+	overflow:hidden;
+}
+.nlpf-banner::before{
+	content:"";position:absolute;inset:0;
+	background:
+		linear-gradient(rgba(213,238,242,.16) 1px,transparent 1px),
+		linear-gradient(90deg,rgba(213,238,242,.12) 1px,transparent 1px);
+	background-size:52px 52px;
+	opacity:.42;
+	mix-blend-mode:screen;
+	pointer-events:none;
 }
 .nlpf-av{
 	background:var(--nl-band)!important;
@@ -463,6 +699,12 @@ if ( ! function_exists( 'nadlan_premium_css' ) ) {
 }
 </style>
 CSS;
+		return strtr( $css, array(
+			'{{NL_REAL_HERO}}'         => esc_url( $asset( 'hero-tel-aviv-coast.jpg' ) ),
+			'{{NL_REAL_PROJECT}}'      => esc_url( $asset( 'fallback-project-coast.jpg' ) ),
+			'{{NL_REAL_PROPERTY}}'     => esc_url( $asset( 'fallback-property-interior.jpg' ) ),
+			'{{NL_REAL_PROFESSIONAL}}' => esc_url( $asset( 'fallback-professional-consultant.jpg' ) ),
+		) );
 	}
 }
 

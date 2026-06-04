@@ -194,12 +194,16 @@ if ( ! function_exists( 'nadlan_ac_css' ) ) {
 .nlac-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin:18px 0 28px}.nlac-metric{background:#fff;border:1px solid rgba(27,26,23,.12);border-radius:8px;padding:15px}
 .nlac-metric b{display:block;font-size:26px;line-height:1;color:#1B1A17}.nlac-metric span{display:block;margin-top:7px;font-size:12px;color:#6B7280}
 .nlac-section{margin-top:30px}.nlac-section h2{font-size:21px;margin:0 0 14px;font-family:var(--font-serif,"Frank Ruhl Libre",serif);letter-spacing:0}
-.nlac-card{background:#fff;border:1px solid rgba(27,26,23,.12);border-radius:8px;padding:17px;margin-bottom:14px}.nlac-card-head{display:flex;justify-content:space-between;gap:14px;align-items:flex-start}
+.nlac-card{background:linear-gradient(180deg,#fff,#FBF8F1);border:1px solid rgba(27,26,23,.12);border-radius:22px;padding:0;margin-bottom:16px;overflow:hidden;box-shadow:0 18px 54px rgba(17,17,15,.08)}.nlac-card-head{display:flex;justify-content:space-between;gap:14px;align-items:flex-start;padding:18px 18px 0}
+.nlac-card-media{position:relative;aspect-ratio:16/6;min-height:156px;background:#0B1717;overflow:hidden;isolation:isolate}.nlac-card-media img{width:100%;height:100%;object-fit:cover;display:block;filter:contrast(1.06) saturate(.9) brightness(.92)}
+.nlac-card-media:before{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(rgba(213,238,242,.16) 1px,transparent 1px),linear-gradient(90deg,rgba(213,238,242,.12) 1px,transparent 1px);background-size:48px 48px;mix-blend-mode:screen;opacity:.5}
+.nlac-card-media:after{content:"";position:absolute;inset:0;z-index:2;background:linear-gradient(180deg,transparent 30%,rgba(5,13,13,.72))}
+.nlac-card-media span{position:absolute;z-index:3;inset-block-start:13px;inset-inline-start:13px;padding:6px 10px;color:#17140C;background:linear-gradient(135deg,rgba(255,246,209,.94),rgba(190,145,68,.9));border:1px solid rgba(255,255,255,.5);border-radius:999px;font-size:11.5px;font-weight:800}
 .nlac-card-title{font-size:19px;font-weight:800;margin:0 0 4px}.nlac-muted{font-size:13px;color:#6B7280}.nlac-pill{display:inline-flex;align-items:center;border-radius:999px;padding:5px 10px;background:#F3F4F6;color:#374151;font-size:12px;font-weight:800}
 .nlac-pill.good{background:#ECFDF5;color:#047857}.nlac-pill.warn{background:#FEF3C7;color:#92400E}.nlac-progress{height:9px;background:#F3F4F6;border-radius:999px;overflow:hidden;margin:13px 0 8px}.nlac-progress i{display:block;height:100%;background:#9C7A3C;border-radius:999px}
-.nlac-facts{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin:14px 0}.nlac-fact{background:#FBF9F5;border-radius:7px;padding:10px}.nlac-fact b{display:block;font-size:18px}.nlac-fact span{font-size:12px;color:#6B7280}
+.nlac-card>.nlac-progress,.nlac-card>.nlac-muted,.nlac-card>.nlac-facts,.nlac-card>.nlac-missing,.nlac-card>.nlac-card-actions{margin-inline:18px}.nlac-facts{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin:14px 18px}.nlac-fact{background:rgba(251,249,245,.9);border:1px solid rgba(27,26,23,.08);border-radius:12px;padding:10px}.nlac-fact b{display:block;font-size:18px}.nlac-fact span{font-size:12px;color:#6B7280}
 .nlac-missing{display:flex;gap:7px;flex-wrap:wrap;margin-top:10px}.nlac-missing span{font-size:12px;background:#FFF7ED;color:#9A3412;border:1px solid #FED7AA;border-radius:999px;padding:4px 9px}
-.nlac-card-actions{display:flex;gap:9px;flex-wrap:wrap;margin-top:14px}.nlac-split{display:grid;grid-template-columns:minmax(0,1fr) minmax(280px,.45fr);gap:16px}.nlac-list{display:grid;gap:10px}
+.nlac-card-actions{display:flex;gap:9px;flex-wrap:wrap;margin-top:14px;padding-bottom:18px}.nlac-split{display:grid;grid-template-columns:minmax(0,1fr) minmax(280px,.45fr);gap:16px}.nlac-list{display:grid;gap:10px}
 .nlac-order,.nlac-step{border:1px solid rgba(27,26,23,.1);border-radius:8px;padding:13px;background:#fff}.nlac-step b{display:block;margin-bottom:4px}.nlac-empty{background:#FBF9F5;border:1px dashed #D8CDB8;border-radius:8px;padding:24px;text-align:center;color:#5A5A5A}
 .nlac-products{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:12px}.nlac-product{background:#fff;border:1px solid rgba(27,26,23,.12);border-radius:8px;padding:16px}.nlac-product strong{display:block;font-size:17px}.nlac-product small{color:#6B7280}
 @media(max-width:860px){.nlac-hero,.nlac-split{grid-template-columns:1fr}.nlac-actions{justify-content:flex-start}.nlac-grid,.nlac-facts{grid-template-columns:repeat(2,minmax(0,1fr))}}
@@ -278,8 +282,15 @@ if ( ! function_exists( 'nadlan_ac_render_inner' ) ) {
 				$reviews = (int) get_post_meta( $card->ID, 'reviews_count', true );
 				$photos = nadlan_ac_photos( $card->ID );
 				$is_project = $card->post_type === 'nadlan_project';
+				$card_photo = function_exists( 'nadlan_card_photo_url' ) ? nadlan_card_photo_url( $card->ID ) : array( 'url' => '', 'real' => false );
 				?>
 				<article class="nlac-card">
+					<?php if ( ! empty( $card_photo['url'] ) ) : ?>
+					<div class="nlac-card-media">
+						<img src="<?php echo esc_url( $card_photo['url'] ); ?>" alt="" loading="lazy" decoding="async">
+						<span><?php echo ! empty( $card_photo['real'] ) ? 'תמונה' : 'תמונת ברירת מחדל'; ?></span>
+					</div>
+					<?php endif; ?>
 					<div class="nlac-card-head">
 						<div>
 							<h3 class="nlac-card-title"><?php echo esc_html( get_the_title( $card ) ); ?></h3>

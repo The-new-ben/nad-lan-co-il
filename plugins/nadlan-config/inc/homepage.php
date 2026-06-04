@@ -21,11 +21,60 @@ if ( ! defined( 'ABSPATH' ) ) { exit; }
 if ( ! function_exists( 'nadlan_home_sections_render' ) ) {
 	function nadlan_home_sections_render() {
 		$out  = '<div class="nlhome" dir="rtl">';
+		$out .= nadlan_home_featured_projects_block();
 		$out .= nadlan_home_cities_block();
 		$out .= nadlan_home_pros_block();
 		$out .= nadlan_home_guides_block();
 		$out .= '</div>' . nadlan_home_css();
 		return $out;
+	}
+}
+
+/* ---- 0. Premium project rail: visual proof below the fold ---- */
+if ( ! function_exists( 'nadlan_home_featured_projects_block' ) ) {
+	function nadlan_home_featured_projects_block() {
+		$projects = get_posts( array(
+			'post_type'      => 'nadlan_project',
+			'post_status'    => 'publish',
+			'posts_per_page' => 8,
+			'orderby'        => array( 'menu_order' => 'ASC', 'date' => 'DESC' ),
+			'meta_query'     => array(
+				array( 'key' => 'paid_tier', 'value' => array( 'pro', 'premier' ), 'compare' => 'IN' ),
+			),
+			'no_found_rows'  => true,
+		) );
+		if ( count( $projects ) < 4 ) {
+			$fill = get_posts( array(
+				'post_type'      => 'nadlan_project',
+				'post_status'    => 'publish',
+				'posts_per_page' => 8 - count( $projects ),
+				'post__not_in'   => wp_list_pluck( $projects, 'ID' ),
+				'orderby'        => 'date',
+				'order'          => 'DESC',
+				'no_found_rows'  => true,
+			) );
+			$projects = array_merge( $projects, $fill );
+		}
+		if ( ! $projects ) { return ''; }
+
+		$h  = '<section class="nlhome-sec nlhome-featured-projects">';
+		$h .= '<div class="nlhome-head"><p class="nlhome-eyebrow">פרויקטים בולטים</p><h2>פרויקטים שמרגישים כמו נכס, לא כמו רשומה</h2><p class="nlhome-sub">כרטיסי פרויקט עם תמונה, שכבת מידע ותצוגה עשירה שמכבדת את היזם ואת הקורא.</p></div>';
+		$h .= '<div class="nlhome-project-rail" aria-label="פרויקטים בולטים">';
+		foreach ( $projects as $project ) {
+			$city   = trim( (string) get_post_meta( $project->ID, 'city', true ) );
+			$units  = (int) get_post_meta( $project->ID, 'num_units', true );
+			$status = trim( (string) get_post_meta( $project->ID, 'project_status', true ) );
+			$photo  = function_exists( 'nadlan_card_photo_url' ) ? nadlan_card_photo_url( $project->ID ) : array( 'url' => '', 'real' => false );
+			$img    = ! empty( $photo['url'] ) ? '<img src="' . esc_url( $photo['url'] ) . '" alt="" loading="lazy" decoding="async">' : '';
+			$bits   = array_filter( array( $city, $units ? number_format_i18n( $units ) . ' יח״ד' : '', $status ) );
+			$h     .= '<a class="nlhome-project-card" href="' . esc_url( get_permalink( $project ) ) . '">';
+			$h     .= '<span class="nlhome-project-media">' . $img . '<i>Premier</i></span>';
+			$h     .= '<span class="nlhome-project-body"><b>' . esc_html( get_the_title( $project ) ) . '</b>';
+			if ( $bits ) { $h .= '<small>' . esc_html( implode( ' · ', $bits ) ) . '</small>'; }
+			$h     .= '<em>לפרטים</em></span></a>';
+		}
+		$h .= '</div></section>';
+		return $h;
 	}
 }
 
@@ -108,6 +157,21 @@ if ( ! function_exists( 'nadlan_home_css' ) ) {
 .nlhome-eyebrow{font-size:11px;letter-spacing:.18em;color:#9C7A3C;font-weight:600;margin:0 0 6px;text-transform:uppercase}
 .nlhome-head h2{font-family:var(--font-serif,"Frank Ruhl Libre",serif);font-weight:500;font-size:32px;color:#1B1A17;margin:0 0 8px;letter-spacing:-.015em}
 .nlhome-sub{font-size:14.5px;color:#6b6b6b;margin:0;max-width:640px;margin-inline:auto;line-height:1.6}
+/* featured projects */
+.nlhome-featured-projects{margin-top:58px}
+.nlhome-project-rail{display:grid;grid-auto-flow:column;grid-auto-columns:minmax(282px,360px);gap:18px;overflow-x:auto;overscroll-behavior-inline:contain;scroll-snap-type:inline mandatory;padding:4px 4px 18px;scrollbar-width:thin}
+.nlhome-project-card{scroll-snap-align:start;display:flex;flex-direction:column;min-height:390px;background:#fff;border:1px solid rgba(27,26,23,.1);border-radius:22px;overflow:hidden;text-decoration:none;color:inherit;box-shadow:0 18px 54px rgba(17,17,15,.09);transition:transform .24s,box-shadow .24s,border-color .24s}
+.nlhome-project-card:hover{transform:translateY(-4px);box-shadow:0 26px 70px rgba(17,17,15,.14);border-color:rgba(156,122,60,.42)}
+.nlhome-project-media{position:relative;display:block;aspect-ratio:16/10;background:#0B1717;overflow:hidden;isolation:isolate}
+.nlhome-project-media img{width:100%;height:100%;object-fit:cover;display:block;filter:contrast(1.06) saturate(.9) brightness(.94);transform:scale(1.012);transition:transform .35s,filter .35s}
+.nlhome-project-card:hover .nlhome-project-media img{transform:scale(1.045);filter:contrast(1.08) saturate(.94) brightness(.98)}
+.nlhome-project-media::before{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(rgba(213,238,242,.17) 1px,transparent 1px),linear-gradient(90deg,rgba(213,238,242,.14) 1px,transparent 1px),linear-gradient(135deg,transparent 58%,rgba(216,183,99,.34) 58.5%,transparent 59%);background-size:46px 46px,46px 46px,100% 100%;opacity:.5;mix-blend-mode:screen;pointer-events:none}
+.nlhome-project-media::after{content:"";position:absolute;inset:0;z-index:2;background:linear-gradient(180deg,transparent 38%,rgba(5,13,13,.72)),linear-gradient(90deg,rgba(6,17,18,.22),transparent 56%);pointer-events:none}
+.nlhome-project-media i{position:absolute;z-index:3;inset-block-start:13px;inset-inline-start:13px;padding:6px 10px;color:#17140C;background:linear-gradient(135deg,rgba(255,246,209,.94),rgba(190,145,68,.9));border:1px solid rgba(255,255,255,.5);border-radius:999px;font-style:normal;font-size:11.5px;font-weight:800;box-shadow:0 12px 28px rgba(0,0,0,.18)}
+.nlhome-project-body{display:flex;flex-direction:column;gap:8px;padding:20px}
+.nlhome-project-body b{font-family:var(--font-serif,"Frank Ruhl Libre",serif);font-size:22px;line-height:1.15;color:#1B1A17}
+.nlhome-project-body small{font-size:13px;color:#6b6b6b;line-height:1.5}
+.nlhome-project-body em{margin-top:auto;color:#9C7A3C;font-style:normal;font-weight:700;font-size:13.5px}
 /* cities */
 .nlhome-cities{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:12px}
 .nlhome-city{display:flex;flex-direction:column;gap:4px;background:#fff;border:1px solid rgba(27,26,23,.1);border-radius:12px;padding:16px 18px;text-decoration:none;color:inherit;transition:transform .2s,box-shadow .2s,border-color .2s}
@@ -140,13 +204,14 @@ if ( ! function_exists( 'nadlan_home_css' ) ) {
 }
 
 /* Append BELOW the page content on the front page only (priority 50 = under the fold).
- * DISABLED per owner request (2026-06-01): "don't touch the homepage and the menus".
- * The shortcodes below still work, so the owner can place these blocks anywhere later.
+ * The guard prevents duplicate modules when the page already contains nlhome.
+ * The shortcodes below still work for manual placement.
  */
-// add_filter( 'the_content', function ( $content ) {
-//	if ( ! is_front_page() || ! in_the_loop() || ! is_main_query() ) { return $content; }
-//	return $content . nadlan_home_sections_render();
-// }, 50 );
+add_filter( 'the_content', function ( $content ) {
+	if ( ! is_front_page() || ! in_the_loop() || ! is_main_query() ) { return $content; }
+	if ( strpos( $content, 'nlhome' ) !== false ) { return $content; }
+	return $content . nadlan_home_sections_render();
+}, 50 );
 
 /* Also expose as a shortcode so the owner can place it anywhere in the page builder. */
 add_shortcode( 'nadlan_home_sections', 'nadlan_home_sections_render' );

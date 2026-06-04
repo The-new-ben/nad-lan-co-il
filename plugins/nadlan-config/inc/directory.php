@@ -47,6 +47,60 @@ if ( ! function_exists( 'nadlan_meta_norm' ) ) {
 	function nadlan_meta_norm( $s ) { return trim( preg_replace( '/\s+/u', ' ', (string) $s ) ); }
 }
 
+if ( ! function_exists( 'nadlan_real_photo_asset_url' ) ) {
+	function nadlan_real_photo_asset_url( $file ) {
+		$file = ltrim( (string) $file, '/' );
+		return plugins_url( 'assets/real-photo/' . $file, dirname( __DIR__ ) . '/nadlan-config.php' );
+	}
+}
+
+if ( ! function_exists( 'nadlan_card_photo_url' ) ) {
+	function nadlan_card_photo_url( $post_id ) {
+		if ( has_post_thumbnail( $post_id ) ) {
+			$url = get_the_post_thumbnail_url( $post_id, 'medium_large' );
+			if ( $url ) { return array( 'url' => $url, 'real' => true ); }
+		}
+		$photos = array_filter( array_map( 'trim', explode( ',', (string) get_post_meta( $post_id, 'photos_csv', true ) ) ) );
+		foreach ( $photos as $photo ) {
+			if ( preg_match( '~^https?://~i', $photo ) ) {
+				return array( 'url' => $photo, 'real' => true );
+			}
+		}
+
+		$type = get_post_type( $post_id );
+		if ( $type === 'nadlan_property' ) {
+			$files = array( 'fallback-property-interior.jpg', 'fallback-project-coast.jpg' );
+		} elseif ( $type === 'nadlan_project' ) {
+			$files = array( 'fallback-project-coast.jpg', 'fallback-project-model.jpg' );
+		} else {
+			$prof = (string) get_post_meta( $post_id, 'profession', true );
+			$files = in_array( $prof, array( 'architect', 'kablan', 'mefakeach' ), true )
+				? array( 'fallback-project-model.jpg', 'fallback-professional-consultant.jpg' )
+				: array( 'fallback-professional-consultant.jpg', 'fallback-project-model.jpg' );
+		}
+		$file = $files[ absint( $post_id ) % count( $files ) ];
+		return array( 'url' => nadlan_real_photo_asset_url( $file ), 'real' => false );
+	}
+}
+
+if ( ! function_exists( 'nadlan_card_media_html' ) ) {
+	function nadlan_card_media_html( $post_id, $label = '', $icon = '' ) {
+		$photo = nadlan_card_photo_url( $post_id );
+		if ( empty( $photo['url'] ) ) { return ''; }
+		$class = ! empty( $photo['real'] ) ? ' has-real-photo' : ' has-fallback-photo';
+		$out  = '<div class="nldc-media' . esc_attr( $class ) . '">';
+		$out .= '<img src="' . esc_url( $photo['url'] ) . '" alt="" loading="lazy" decoding="async">';
+		if ( $label !== '' ) {
+			$out .= '<span class="nldc-media-label">' . esc_html( $label ) . '</span>';
+		}
+		if ( $icon !== '' ) {
+			$out .= '<span class="nldc-media-mark" aria-hidden="true"><svg class="nl-mark" viewBox="0 0 48 48"><use href="#' . esc_attr( $icon ) . '"></use></svg></span>';
+		}
+		$out .= '</div>';
+		return $out;
+	}
+}
+
 /* ---------------------------------------------------------------------------
  * Query — used by BOTH the server render and the REST endpoint (single source)
  * ------------------------------------------------------------------------- */
@@ -120,8 +174,9 @@ if ( ! function_exists( 'nadlan_dir_card' ) ) {
 		$featured = in_array( $tier, array( 'pro', 'premier' ), true );
 
 		ob_start(); ?>
-<a class="nldc<?php echo $featured ? ' is-featured' : ''; ?>" href="<?php echo esc_url( $url ); ?>" style="--pc:<?php echo esc_attr( $pm['color'] ); ?>;--ps:<?php echo esc_attr( $pm['soft'] ); ?>">
+<a class="nldc has-media<?php echo $featured ? ' is-featured' : ''; ?>" href="<?php echo esc_url( $url ); ?>" style="--pc:<?php echo esc_attr( $pm['color'] ); ?>;--ps:<?php echo esc_attr( $pm['soft'] ); ?>">
 	<?php if ( $featured ) : ?><span class="nldc-sponsor">מקודם</span><?php endif; ?>
+	<?php echo nadlan_card_media_html( $id, $pm['label'], $pm['icon'] ); ?>
 	<div class="nldc-top">
 		<span class="nldc-av" aria-hidden="true"><svg class="nl-mark" viewBox="0 0 48 48"><use href="#<?php echo esc_attr( $pm['icon'] ); ?>"></use></svg></span>
 		<div class="nldc-id">
@@ -358,13 +413,14 @@ if ( ! function_exists( 'nadlan_dir_profile_header' ) ) {
 		$rating   = (float) get_post_meta( $id, 'rating', true );
 		$reviews  = (int) get_post_meta( $id, 'reviews_count', true );
 		$title    = get_the_title( $id );
+		$profile_photo = function_exists( 'nadlan_card_photo_url' ) ? nadlan_card_photo_url( $id ) : array( 'url' => '' );
 
 		$stars = ( $reviews > 0 && $rating > 0 )
 			? '<span class="nlpf-stars">' . str_repeat( '★', (int) round( $rating ) ) . str_repeat( '☆', max( 0, 5 - (int) round( $rating ) ) ) . '</span> <b>' . number_format( $rating, 1 ) . '</b> <span class="nlpf-rev">(' . $reviews . ' חוות דעת)</span>'
 			: '<span class="nlpf-norate">טרם התקבלו חוות דעת — היו הראשונים</span>';
 
 		ob_start(); ?>
-<div class="nlpf" dir="rtl" style="--pc:<?php echo esc_attr( $pm['color'] ); ?>;--ps:<?php echo esc_attr( $pm['soft'] ); ?>">
+<div class="nlpf" dir="rtl" style="--pc:<?php echo esc_attr( $pm['color'] ); ?>;--ps:<?php echo esc_attr( $pm['soft'] ); ?>;--nlpf-photo:url('<?php echo esc_url( $profile_photo['url'] ?? '' ); ?>')">
 	<div class="nlpf-banner"></div>
 	<div class="nlpf-head">
 		<span class="nlpf-av" aria-hidden="true"><svg class="nl-mark" viewBox="0 0 48 48"><use href="#<?php echo esc_attr( $pm['icon'] ); ?>"></use></svg></span>
@@ -466,8 +522,9 @@ if ( ! function_exists( 'nadlan_dir_project_profile_header' ) ) {
 		$dev    = nadlan_meta_norm( get_post_meta( $id, 'developer_name', true ) );
 		$addr   = nadlan_meta_norm( get_post_meta( $id, 'address', true ) );
 		$title  = get_the_title( $id );
+		$profile_photo = function_exists( 'nadlan_card_photo_url' ) ? nadlan_card_photo_url( $id ) : array( 'url' => '' );
 		ob_start(); ?>
-<div class="nlpf" dir="rtl" style="--pc:<?php echo esc_attr( $pm['color'] ); ?>;--ps:<?php echo esc_attr( $pm['soft'] ); ?>">
+<div class="nlpf" dir="rtl" style="--pc:<?php echo esc_attr( $pm['color'] ); ?>;--ps:<?php echo esc_attr( $pm['soft'] ); ?>;--nlpf-photo:url('<?php echo esc_url( $profile_photo['url'] ?? '' ); ?>')">
 	<div class="nlpf-banner"></div>
 	<div class="nlpf-head">
 		<span class="nlpf-av" aria-hidden="true"><svg class="nl-mark" viewBox="0 0 48 48"><use href="#<?php echo esc_attr( $pm['icon'] ); ?>"></use></svg></span>
@@ -577,8 +634,9 @@ if ( ! function_exists( 'nadlan_dir_project_card' ) ) {
 		$tier   = (string) get_post_meta( $id, 'paid_tier', true );
 		$featured = in_array( $tier, array( 'pro', 'premier' ), true );
 		ob_start(); ?>
-<a class="nldc<?php echo $featured ? ' is-featured' : ''; ?>" href="<?php echo esc_url( get_permalink( $id ) ); ?>" style="--pc:<?php echo esc_attr( $pm['color'] ); ?>;--ps:<?php echo esc_attr( $pm['soft'] ); ?>">
+<a class="nldc has-media<?php echo $featured ? ' is-featured' : ''; ?>" href="<?php echo esc_url( get_permalink( $id ) ); ?>" style="--pc:<?php echo esc_attr( $pm['color'] ); ?>;--ps:<?php echo esc_attr( $pm['soft'] ); ?>">
 	<?php if ( $featured ) : ?><span class="nldc-sponsor">מקודם</span><?php endif; ?>
+	<?php echo nadlan_card_media_html( $id, $pm['label'], $pm['icon'] ); ?>
 	<div class="nldc-top">
 		<span class="nldc-av" aria-hidden="true"><svg class="nl-mark" viewBox="0 0 48 48"><use href="#<?php echo esc_attr( $pm['icon'] ); ?>"></use></svg></span>
 		<div class="nldc-id">

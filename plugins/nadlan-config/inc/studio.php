@@ -115,9 +115,10 @@ if ( ! function_exists( 'nadlan_studio_hint' ) ) {
 if ( ! function_exists( 'nadlan_studio_render_denied' ) ) {
 	function nadlan_studio_render_denied() {
 		get_header();
+		echo nadlan_studio_css();
 		?>
 		<div class="nlst" dir="rtl" style="max-width:640px;margin:60px auto;padding:0 20px;text-align:center;font-family:var(--font-sans,Heebo,sans-serif)">
-			<div style="font-size:48px;margin-bottom:14px">🔒</div>
+			<div class="nlst-symbol nlst-symbol-lock" aria-hidden="true"></div>
 			<h1 style="font-family:var(--font-serif,'Frank Ruhl Libre',serif)">אין הרשאה</h1>
 			<p>הכרטיס הזה אינו שייך לך. כדי לערוך כרטיס, יש לבקש בעלות עליו תחילה.</p>
 			<p><a class="nlst-link" href="<?php echo esc_url( home_url( '/professionals/' ) ); ?>">חיפוש הכרטיס שלך במאגר ←</a></p>
@@ -129,11 +130,13 @@ if ( ! function_exists( 'nadlan_studio_render_denied' ) ) {
 
 if ( ! function_exists( 'nadlan_studio_render_picker' ) ) {
 	function nadlan_studio_render_picker() {
+		$studio_photo = function_exists( 'nadlan_real_photo_asset_url' ) ? nadlan_real_photo_asset_url( 'fallback-professional-consultant.jpg' ) : '';
 		get_header();
+		echo nadlan_studio_css();
 		?>
-		<div class="nlst" dir="rtl" style="max-width:880px;margin:40px auto;padding:0 20px;font-family:var(--font-sans,Heebo,sans-serif)">
+		<div class="nlst" dir="rtl" style="--nlst-photo:url('<?php echo esc_url( $studio_photo ); ?>');max-width:880px;margin:40px auto;padding:0 20px;font-family:var(--font-sans,Heebo,sans-serif)">
 			<div style="text-align:center;margin-bottom:30px">
-				<div style="font-size:42px">🎨</div>
+				<div class="nlst-symbol nlst-symbol-studio" aria-hidden="true"></div>
 				<h1 style="font-family:var(--font-serif,serif)">סטודיו פרסום</h1>
 				<p style="color:#5a5a5a">העריכה הכי קלה של כרטיס נדל״ן. בלי קוד, בלי כאב ראש.</p>
 			</div>
@@ -176,10 +179,12 @@ if ( ! function_exists( 'nadlan_studio_render_editor' ) ) {
 		$post = get_post( $id );
 		$nonce = wp_create_nonce( 'wp_rest' );
 		$rest_root = esc_url( rest_url( 'nadlan/v1/studio/' . $id ) );
+		$studio_photo = function_exists( 'nadlan_card_photo_url' ) ? nadlan_card_photo_url( $id ) : array( 'url' => '', 'real' => false );
+		$studio_photo_url = ! empty( $studio_photo['url'] ) ? $studio_photo['url'] : ( function_exists( 'nadlan_real_photo_asset_url' ) ? nadlan_real_photo_asset_url( 'fallback-professional-consultant.jpg' ) : '' );
 		get_header();
 		echo nadlan_studio_css();
 		?>
-<div class="nlst" dir="rtl" data-id="<?php echo (int) $id; ?>" data-rest="<?php echo $rest_root; ?>" data-nonce="<?php echo esc_attr( $nonce ); ?>" data-pt="<?php echo esc_attr( $post->post_type ); ?>">
+<div class="nlst" dir="rtl" data-id="<?php echo (int) $id; ?>" data-rest="<?php echo $rest_root; ?>" data-nonce="<?php echo esc_attr( $nonce ); ?>" data-pt="<?php echo esc_attr( $post->post_type ); ?>" style="--nlst-photo:url('<?php echo esc_url( $studio_photo_url ); ?>')">
 	<header class="nlst-bar">
 		<h1>סטודיו פרסום — <?php echo esc_html( get_the_title( $post ) ); ?></h1>
 		<div class="nlst-bar-actions">
@@ -198,7 +203,7 @@ if ( ! function_exists( 'nadlan_studio_render_editor' ) ) {
 				<div class="nlst-dropzone" id="nlst-drop">
 					<input type="file" id="nlst-file" accept="image/*" multiple hidden>
 					<div class="nlst-drop-empty">
-						<div class="nlst-drop-icon">📸</div>
+						<div class="nlst-drop-icon" aria-hidden="true"></div>
 						<p><b>גררו תמונות לכאן</b><br>או <button type="button" class="nlst-pick">בחרו תמונות מהמחשב</button></p>
 						<small>JPG / PNG / WEBP · עד 10MB לתמונה</small>
 					</div>
@@ -213,7 +218,7 @@ if ( ! function_exists( 'nadlan_studio_render_editor' ) ) {
 				<label class="nlst-label">תיאור מלא</label>
 				<textarea id="f-description" rows="6" placeholder="ספרו את הסיפור שלכם, מה מייחד אתכם, אילו פרויקטים סגרתם, מי הלקוחות שלכם."></textarea>
 				<div class="nlst-ai-row">
-					<button type="button" class="nlst-ai" data-mode="improve">✨ שפר טקסט</button>
+					<button type="button" class="nlst-ai" data-mode="improve">שפר טקסט</button>
 					<button type="button" class="nlst-ai" data-mode="shorter">קצר</button>
 					<button type="button" class="nlst-ai" data-mode="longer">הרחב</button>
 					<button type="button" class="nlst-ai" data-mode="pro">רשמי</button>
@@ -303,13 +308,13 @@ if ( ! function_exists( 'nadlan_studio_render_editor' ) ) {
 
 			<div class="nlst-section">
 				<h2>רשתות חברתיות <span class="nlst-help" title="הקישורים האלה יופיעו כאייקונים בכרטיס הציבורי שלכם.">?</span></h2>
-				<label class="nlst-label">📘 Facebook</label>
+				<label class="nlst-label">Facebook</label>
 				<input type="url" id="f-social_facebook" placeholder="https://facebook.com/…">
-				<label class="nlst-label">📸 Instagram</label>
+				<label class="nlst-label">Instagram</label>
 				<input type="url" id="f-social_instagram" placeholder="https://instagram.com/…">
-				<label class="nlst-label">🎵 TikTok</label>
+				<label class="nlst-label">TikTok</label>
 				<input type="url" id="f-social_tiktok" placeholder="https://tiktok.com/@…">
-				<label class="nlst-label">▶ YouTube</label>
+				<label class="nlst-label">YouTube</label>
 				<input type="url" id="f-social_youtube" placeholder="https://youtube.com/@…">
 			</div>
 
@@ -322,7 +327,7 @@ if ( ! function_exists( 'nadlan_studio_render_editor' ) ) {
 			<input type="hidden" id="f-lng">
 
 			<div class="nlst-section nlst-tips">
-				<h3>💡 טיפים מהירים</h3>
+				<h3>טיפים מהירים</h3>
 				<ul>
 					<li><b>3 תמונות לפחות.</b> כרטיסים עם 3+ תמונות מקבלים פי 3 פניות.</li>
 					<li><b>תיאור של 80+ מילים.</b> נכנס לתוצאות חיפוש של גוגל.</li>
@@ -348,7 +353,13 @@ if ( ! function_exists( 'nadlan_studio_css' ) ) {
 		return <<<'CSS'
 <style id="nlst-css">
 .nlst{font-family:var(--font-sans,Heebo,system-ui,sans-serif);direction:rtl;max-width:1280px;margin:0 auto;padding:24px 20px 60px;color:#1B1A17}
-.nlst-bar{display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap;background:linear-gradient(135deg,#1B1A17,#3a3329);color:#fff;padding:18px 22px;border-radius:14px;margin-bottom:18px}
+.nlst-symbol{width:52px;height:52px;margin:0 auto 14px;border-radius:50%;display:grid;place-items:center;background:linear-gradient(135deg,#FFF3C3,#B98D44);box-shadow:0 14px 34px rgba(27,26,23,.16)}
+.nlst-symbol:before{content:"";display:block;width:25px;height:25px;border:2px solid #151512;border-radius:8px}
+.nlst-symbol-lock:before{border-radius:6px;border-top-color:transparent;box-shadow:0 -9px 0 -5px #151512}
+.nlst-symbol-studio:before{border-radius:50%;border-color:#151512;box-shadow:inset 9px 0 0 rgba(21,21,18,.16)}
+.nlst-bar{position:relative;display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap;background:linear-gradient(90deg,rgba(4,11,11,.9),rgba(7,20,21,.66)),var(--nlst-photo);background-size:cover;background-position:center;color:#fff;padding:24px 26px;border-radius:24px;margin-bottom:20px;overflow:hidden;isolation:isolate;box-shadow:0 22px 70px rgba(17,17,15,.18)}
+.nlst-bar:before{content:"";position:absolute;inset:0;z-index:0;background:linear-gradient(rgba(213,238,242,.14) 1px,transparent 1px),linear-gradient(90deg,rgba(213,238,242,.1) 1px,transparent 1px);background-size:52px 52px;opacity:.42;mix-blend-mode:screen}
+.nlst-bar>*{position:relative;z-index:1}
 .nlst-bar h1{margin:0;font-family:var(--font-serif,'Frank Ruhl Libre',serif);font-size:22px;font-weight:600}
 .nlst-bar-actions{display:flex;gap:10px;align-items:center}
 .nlst-link{color:#F3D9A6;text-decoration:none;font-size:13.5px;font-weight:600}
@@ -361,7 +372,7 @@ if ( ! function_exists( 'nadlan_studio_css' ) ) {
 .nlst-grid{display:grid;grid-template-columns:1.4fr 1fr;gap:18px}
 @media(max-width:900px){.nlst-grid{grid-template-columns:1fr}}
 .nlst-col{display:flex;flex-direction:column;gap:18px}
-.nlst-section{background:#fff;border:1px solid rgba(27,26,23,.1);border-radius:14px;padding:20px}
+.nlst-section{background:rgba(255,255,255,.92);border:1px solid rgba(27,26,23,.1);border-radius:20px;padding:20px;box-shadow:0 16px 46px rgba(17,17,15,.07)}
 .nlst-section h2{font-family:var(--font-serif,serif);font-size:17px;font-weight:600;margin:0 0 12px;color:#1B1A17;display:flex;align-items:center;gap:8px}
 .nlst-section h3{font-size:14px;margin:0 0 8px}
 .nlst-help{display:inline-grid;place-items:center;width:18px;height:18px;border-radius:50%;background:#FBF9F5;border:1px solid rgba(156,122,60,.4);color:#9C7A3C;font-size:11px;font-weight:700;cursor:help}
@@ -369,15 +380,21 @@ if ( ! function_exists( 'nadlan_studio_css' ) ) {
 .nlst-section input[type=text],.nlst-section input[type=tel],.nlst-section input[type=email],.nlst-section input[type=url],.nlst-section input[type=number],.nlst-section select,.nlst-section textarea{width:100%;padding:11px 13px;border:1px solid rgba(27,26,23,.16);border-radius:9px;font:inherit;font-size:14px;background:#fff;box-sizing:border-box}
 .nlst-section textarea{resize:vertical;min-height:120px}
 .nlst-row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+#nlst-my-cards a{border-radius:20px!important;border-color:rgba(27,26,23,.1)!important;box-shadow:0 16px 46px rgba(17,17,15,.07)!important;background:linear-gradient(180deg,#fff,#FBF8F1)!important}
+#nlst-my-cards a:hover{transform:translateY(-3px)!important;box-shadow:0 22px 60px rgba(17,17,15,.12)!important}
+#nlst-my-cards>div[style*="text-align:center"]{border-radius:22px!important;border:1px solid rgba(156,122,60,.24)!important;background:linear-gradient(135deg,rgba(251,249,245,.94),rgba(243,239,231,.86)),var(--nlst-photo)!important;background-size:cover!important}
 .nlst-ai-row{display:flex;gap:6px;flex-wrap:wrap;margin-top:10px}
 .nlst-ai{background:#FBF9F5;color:#9C7A3C;border:1px solid rgba(156,122,60,.35);border-radius:18px;padding:7px 14px;font:inherit;font-size:12.5px;font-weight:600;cursor:pointer;transition:background .15s,color .15s}
 .nlst-ai:hover{background:#9C7A3C;color:#fff}
 .nlst-ai:disabled{opacity:.55;cursor:wait}
 /* drop zone */
-.nlst-dropzone{border:2px dashed rgba(27,26,23,.2);border-radius:14px;padding:18px;text-align:center;background:#FBF9F5;transition:border-color .2s,background .2s}
+.nlst-dropzone{position:relative;border:1px solid rgba(156,122,60,.28);border-radius:18px;padding:18px;text-align:center;background:linear-gradient(135deg,rgba(251,249,245,.9),rgba(243,239,231,.78)),var(--nlst-photo);background-size:cover;background-position:center;transition:border-color .2s,background .2s;overflow:hidden;isolation:isolate}
+.nlst-dropzone:before{content:"";position:absolute;inset:0;z-index:0;background:linear-gradient(rgba(213,238,242,.16) 1px,transparent 1px),linear-gradient(90deg,rgba(213,238,242,.12) 1px,transparent 1px);background-size:42px 42px;opacity:.38;mix-blend-mode:screen}
+.nlst-dropzone>*{position:relative;z-index:1}
 .nlst-dropzone.is-dragover{border-color:#9C7A3C;background:#FFF6E2}
 .nlst-drop-empty{padding:18px 10px}
-.nlst-drop-icon{font-size:42px}
+.nlst-drop-icon{width:52px;height:52px;margin:0 auto 10px;border-radius:50%;display:grid;place-items:center;background:rgba(255,255,255,.72);border:1px solid rgba(27,26,23,.12);backdrop-filter:blur(14px)}
+.nlst-drop-icon:before{content:"";width:25px;height:19px;border:2px solid #1B1A17;border-radius:6px;box-shadow:0 -6px 0 -3px #1B1A17}
 .nlst-pick{background:linear-gradient(135deg,#9C7A3C,#B89254);color:#fff;border:0;border-radius:9px;padding:10px 18px;font:inherit;font-weight:700;cursor:pointer;margin-top:8px}
 .nlst-pick:hover{filter:brightness(1.08)}
 .nlst-drop-empty small{display:block;margin-top:8px;color:#9a9a9a;font-size:11.5px}
@@ -494,7 +511,7 @@ if ( ! function_exists( 'nadlan_studio_js' ) ) {
 			api('/ai-copy',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({source:src,mode:btn.dataset.mode})})
 				.then(function(r){
 					btn.disabled=false;
-					if(r.data&&r.data.ok){ta.value=r.data.text;toast('ok','✨ הטקסט עודכן ע"י העוזר.');}
+					if(r.data&&r.data.ok){ta.value=r.data.text;toast('ok','הטקסט עודכן ע"י העוזר.');}
 					else{toast('err',(r.data&&r.data.message)||'העוזר החכם אינו פעיל. הזינו מפתח Anthropic ב-Settings → NadLan AI.');}
 				});
 		});

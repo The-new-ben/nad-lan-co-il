@@ -93,6 +93,9 @@ if ( ! function_exists( 'nadlan_archive_grid_render' ) ) {
 			$id   = get_the_ID();
 			$city = nadlan_meta_norm( get_post_meta( $id, 'city', true ) );
 			echo '<a class="nlag-card" href="' . esc_url( get_permalink() ) . '">';
+			if ( function_exists( 'nadlan_card_media_html' ) ) {
+				echo nadlan_card_media_html( $id, $L['badge'], 'category-property' );
+			}
 			echo '<span class="nlag-badge">' . esc_html( $L['badge'] ) . '</span>';
 			echo '<h3>' . esc_html( get_the_title() ) . '</h3>';
 			if ( $city ) { echo '<span class="nlag-city">' . esc_html( $city ) . '</span>'; }

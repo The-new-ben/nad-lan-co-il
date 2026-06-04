@@ -92,7 +92,7 @@ if ( ! function_exists( 'nadlan_sp_render' ) ) {
 				$city = get_post_meta( $c->ID, 'city', true );
 				$views = (int) get_post_meta( $c->ID, 'view_count', true );
 			?>
-			<li><a href="<?php echo esc_url( get_permalink( $c ) ); ?>"><span>🔥</span><b><?php echo esc_html( get_the_title( $c ) ); ?></b><span><?php echo esc_html( $city ); ?> · <?php echo number_format( $views ); ?> צפיות</span></a></li>
+			<li><a href="<?php echo esc_url( get_permalink( $c ) ); ?>"><span class="nlsp-dot">●</span><b><?php echo esc_html( get_the_title( $c ) ); ?></b><span><?php echo esc_html( $city ); ?> · <?php echo number_format( $views ); ?> צפיות</span></a></li>
 			<?php endforeach; ?>
 		</ul>
 	</div>
