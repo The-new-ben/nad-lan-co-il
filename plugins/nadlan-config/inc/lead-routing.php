@@ -148,9 +148,12 @@ if ( ! function_exists( 'nadlan_lead_route' ) ) {
 		if ( ! $lead || $lead->post_type !== 'nadlan_lead' ) {
 			return array( 'ok' => false, 'status' => 'invalid_lead' );
 		}
-		if ( get_post_meta( $lead_id, 'lead_route_attempted', true ) ) {
-			return array( 'ok' => true, 'status' => (string) get_post_meta( $lead_id, 'lead_route_status', true ), 'idempotent' => true );
+		if ( ! add_post_meta( $lead_id, 'lead_route_attempted', 1, true ) ) {
+			$status = (string) get_post_meta( $lead_id, 'lead_route_status', true );
+			return array( 'ok' => true, 'status' => $status !== '' ? $status : 'routing', 'idempotent' => true );
 		}
+		update_post_meta( $lead_id, 'lead_route_status', 'routing' );
+		update_post_meta( $lead_id, 'lead_route_attempted_at', time() );
 
 		$fields = nadlan_lead_route_fields( $lead_id, $fields );
 		if ( $card_id <= 0 ) {

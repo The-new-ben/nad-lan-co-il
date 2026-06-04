@@ -30,8 +30,8 @@ Scope: plugin only. No theme files, no new public routes, no secrets.
 | Cycle | Result |
 |---|---|
 | C1 foundation | `nadlan_lead_route()` resolves lead, exact card, `owner_user_id`, and `paid_tier`. It delivers only for `pro`/`premier`. |
-| C2 idempotence | `lead_route_attempted=1` prevents duplicate emails/log spam when the same lead is routed twice. |
-| C3 security + authority | Card validation requires existing `nadlan_professional`, `nadlan_project`, or `nadlan_property`. Advertiser Center lead details query only cards owned by the current user and only paid tiers. |
+| C2 idempotence | Atomic `add_post_meta( lead_route_attempted, 1, true )` claims the delivery attempt before any email path runs, preventing duplicate emails/log spam under concurrent calls. |
+| C3 security + authority | Card validation requires existing `nadlan_professional`, `nadlan_project`, or `nadlan_property`. Advertiser Center lead details query only cards owned by the current user and only paid tiers, then recheck ownership/tier per rendered lead. |
 | C4 edge cases | No card, invalid card, unclaimed card, free card, self-submission, missing/deleted owner, and `wp_mail=false` all degrade to a stored status instead of fatal. |
 | C5 observability | Writes lead meta: `lead_route_status`, `lead_route_reason`, `lead_route_attempted_at`, `lead_routed_to_owner`, `lead_routed_owner_user_id`, `lead_routed_at` on success. Also writes bounded option log `nadlan_lead_log`. |
 | C6 automation | Both current REST leads and legacy admin-post leads route automatically after card attribution. Existing admin email remains the fallback notification. |
@@ -81,7 +81,8 @@ To be filled after final lint and ZIP gate in this branch:
 ```text
 PHP lint: ALL CLEAN
 ZIP structure: bad_paths=0, first entry nadlan-config/nadlan-config.php
-ZIP signature count: lead_routing_signatures=37
+ZIP signature count: lead_routing_signatures=40
+ZIP hardening gate: atomic_guard_in_zip=True, inbox_owner_recheck_in_zip=True
 ZIP loader/version gate: loader_has_lead_routing=True, zip_version_header=True, zip_healthcheck_version=True
 Live healthcheck before merge/update: nadlan-config 1.42.8
 ```

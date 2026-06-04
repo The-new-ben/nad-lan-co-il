@@ -161,8 +161,13 @@ if ( ! function_exists( 'nadlan_ac_lead_count' ) ) {
 if ( ! function_exists( 'nadlan_ac_recent_leads' ) ) {
 	function nadlan_ac_recent_leads( $cards, $limit = 12 ) {
 		$card_ids = array();
+		$user_id = get_current_user_id();
 		foreach ( (array) $cards as $card ) {
 			if ( is_object( $card ) && ! empty( $card->ID ) ) {
+				$owner_id = (int) get_post_meta( (int) $card->ID, 'owner_user_id', true );
+				if ( $owner_id !== (int) $user_id && ! current_user_can( 'manage_options' ) ) {
+					continue;
+				}
 				$tier = (string) get_post_meta( (int) $card->ID, 'paid_tier', true );
 				if ( in_array( $tier, array( 'pro', 'premier' ), true ) ) {
 					$card_ids[] = (int) $card->ID;
@@ -186,7 +191,17 @@ if ( ! function_exists( 'nadlan_ac_recent_leads' ) ) {
 				),
 			),
 		) );
-		$leads = $q->posts;
+		$allowed = array_fill_keys( $card_ids, true );
+		$leads = array();
+		foreach ( (array) $q->posts as $lead ) {
+			$lead_card_id = (int) get_post_meta( (int) $lead->ID, 'lead_card_id', true );
+			if ( ! isset( $allowed[ $lead_card_id ] ) ) { continue; }
+			$owner_id = (int) get_post_meta( $lead_card_id, 'owner_user_id', true );
+			if ( $owner_id !== (int) $user_id && ! current_user_can( 'manage_options' ) ) { continue; }
+			$tier = (string) get_post_meta( $lead_card_id, 'paid_tier', true );
+			if ( ! in_array( $tier, array( 'pro', 'premier' ), true ) ) { continue; }
+			$leads[] = $lead;
+		}
 		wp_reset_postdata();
 		return $leads;
 	}
