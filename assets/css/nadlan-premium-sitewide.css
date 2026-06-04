@@ -151,8 +151,19 @@ body.home .wp-block-post-title{display:none!important}
 .nlux-home{
 	direction:rtl;
 	width:min(1440px,100%);
-	margin:0 auto;
+	max-width:min(1440px,100%)!important; /* escape the theme's 680px is-layout-constrained cap */
+	margin-inline:auto!important;
 	padding:0 18px 70px;
+	box-sizing:border-box;
+}
+/* Front page: ensure the post-content wrapper is full width so the home block can fill it */
+body.home .entry-content.wp-block-post-content,
+body.home main .wp-block-post-content,
+body.home .wp-block-post-content > .nlux-home,
+body.home .entry-content > .nlux-home{
+	max-width:none!important;
+	width:100%!important;
+	margin-inline:auto!important;
 }
 .nlux-hero{
 	position:relative;
