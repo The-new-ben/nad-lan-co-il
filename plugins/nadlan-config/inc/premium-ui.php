@@ -593,6 +593,45 @@ body.single-nadlan_professional .wp-block-post-date,
 body.single-nadlan_property .wp-block-post-author,
 body.single-nadlan_property .wp-block-post-date{display:none!important}
 
+/* ===== 1.42.4 — Codex PR #47 follow-up fixes ===== */
+
+/* #5 — honeypot inputs (.nlcard-hp, .nlrev-hp) used position:left:-9999px which
+   gave desktop pages a 11,439px scrollWidth (visible horizontal scrollbar +
+   layout chaos). Replace with the accessible 1px clipped pattern — same hidden
+   from sighted users and assistive tech, but no page-extending geometry. */
+.nlcard-hp,.nlrev-hp{
+	position:absolute!important;
+	left:auto!important;right:auto!important;
+	top:auto!important;
+	width:1px!important;height:1px!important;
+	padding:0!important;margin:-1px!important;
+	overflow:hidden!important;
+	clip:rect(0 0 0 0)!important;
+	clip-path:inset(50%)!important;
+	white-space:nowrap!important;
+	border:0!important;
+	pointer-events:none!important;
+}
+
+/* #9 — On nadlan CPT archive pages (/projects/, /professionals/, /properties/)
+   the theme header prints <h1><a>נדלן חכם</a></h1>, creating a 2nd H1 alongside
+   the archive hero H1. Visually hide the theme's site-title H1 on THESE archives
+   only — every other page keeps its header H1 as-is. */
+body.post-type-archive-nadlan_project #header h1,
+body.post-type-archive-nadlan_project #headerimg h1,
+body.post-type-archive-nadlan_professional #header h1,
+body.post-type-archive-nadlan_professional #headerimg h1,
+body.post-type-archive-nadlan_property #header h1,
+body.post-type-archive-nadlan_property #headerimg h1{
+	position:absolute!important;
+	width:1px!important;height:1px!important;
+	padding:0!important;margin:-1px!important;
+	overflow:hidden!important;
+	clip:rect(0 0 0 0)!important;
+	white-space:nowrap!important;
+	border:0!important;
+}
+
 </style>
 CSS;
 		return strtr( $css, array(
@@ -612,3 +651,35 @@ add_action( 'wp_footer', function () {
 	if ( ! nadlan_premium_enabled() ) { return; }
 	echo nadlan_premium_sprite(); // static SVG defs, no user data
 }, 1 );
+
+/* ---------- 4. Block-level cleanups (1.42.4 — proper fix for Codex #2 + #7) ------ */
+/* These render_block filters are the PROPER fix for the duplicate H1 (#2) and the
+   "Written by / in" pattern (#7) that 1.42.3 only hid visually via CSS. By skipping
+   the offending blocks at render time we remove the duplicate H1 from the DOM
+   entirely (no SEO concern) and we delete the literal "Written by" / "in" paragraph
+   text the theme's hidden-written-by pattern was printing on every CPT single. */
+if ( ! function_exists( 'nadlan_premium_block_cleanup' ) ) {
+	function nadlan_premium_block_cleanup( $block_content, $block ) {
+		if ( ! is_singular( array( 'nadlan_project', 'nadlan_professional', 'nadlan_property' ) ) ) {
+			return $block_content;
+		}
+		$name = isset( $block['blockName'] ) ? (string) $block['blockName'] : '';
+		// #2 — kill the theme's <h1 class="wp-block-post-title"> (the plugin's .nlpf-name is the H1).
+		if ( $name === 'core/post-title' ) { return ''; }
+		// #7 — kill the "Written by / in / terms / author / date" meta blocks on CPT singles.
+		if ( in_array( $name, array(
+			'core/post-author', 'core/post-author-name', 'core/post-author-biography',
+			'core/post-date', 'core/post-terms',
+		), true ) ) { return ''; }
+		// #7b — kill the bare "Written by" / "in" paragraph blocks the same theme
+		// pattern prints adjacent to the author/terms blocks.
+		if ( $name === 'core/paragraph' ) {
+			$txt = trim( wp_strip_all_tags( isset( $block['innerHTML'] ) ? $block['innerHTML'] : '' ) );
+			if ( in_array( $txt, array( 'Written by', 'in', 'Written by ', ' in' ), true ) ) {
+				return '';
+			}
+		}
+		return $block_content;
+	}
+}
+add_filter( 'render_block', 'nadlan_premium_block_cleanup', 10, 2 );
