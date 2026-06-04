@@ -1028,3 +1028,143 @@ body.home .nlux-home{max-width:min(1460px,100%)!important;width:100%!important;m
 	.nlux-section-head{flex-direction:column;align-items:flex-start;gap:12px}
 	.nlux-section-head a{width:auto}
 }
+
+/* ============================================================================
+ * Cycle 2: /professionals/ catalog cards — premium presence without photo
+ * ========================================================================= */
+
+/* Pro cards on /professionals/ have no media block (.nldc-media), only the
+   profession SVG mark. Give the top region a refined backdrop + the mark a
+   premium initial badge so the card has visual weight instead of looking thin. */
+.post-type-archive-nadlan_professional .nldir-results .nldc:not(.has-media){
+	overflow:hidden!important;
+	border:1px solid var(--nlx-line)!important;
+	background:#fff!important;
+	border-radius:var(--nlx-radius)!important;
+	box-shadow:var(--nlx-shadow-soft);
+	transition:transform .25s, box-shadow .25s, border-color .25s;
+}
+.post-type-archive-nadlan_professional .nldir-results .nldc:not(.has-media):hover{
+	transform:translateY(-4px);
+	box-shadow:0 22px 50px rgba(13,13,11,.12);
+	border-color:rgba(167,124,53,.45)!important;
+}
+.post-type-archive-nadlan_professional .nldir-results .nldc:not(.has-media) .nldc-top{
+	position:relative;
+	margin:-22px -22px 14px!important;
+	padding:24px 22px 18px!important;
+	background:
+		radial-gradient(120% 100% at 80% 0%,rgba(167,124,53,.16),transparent 55%),
+		linear-gradient(135deg,#0c1c1b,#13302e 75%,#0c1c1b)!important;
+	color:#fff!important;
+	min-height:120px;
+}
+.post-type-archive-nadlan_professional .nldir-results .nldc:not(.has-media) .nldc-av{
+	background:rgba(255,255,255,.06)!important;
+	border:1px solid rgba(243,217,157,.32)!important;
+	box-shadow:none!important;
+	width:64px!important;height:64px!important;
+	border-radius:18px!important;
+	color:#f3d99d!important;
+}
+.post-type-archive-nadlan_professional .nldir-results .nldc:not(.has-media) .nldc-av .nl-mark{
+	width:36px;height:36px;color:#f3d99d!important;
+}
+.post-type-archive-nadlan_professional .nldir-results .nldc:not(.has-media) .nldc-name{
+	color:#fff!important;
+	font-family:"Frank Ruhl Libre",serif!important;
+	font-size:17px!important;
+	font-weight:700!important;
+	margin:0 0 6px!important;
+}
+.post-type-archive-nadlan_professional .nldir-results .nldc:not(.has-media) .nldc-pill{
+	color:#e7d7ae!important;
+	border-bottom-color:#9C7A3C!important;
+	background:transparent!important;
+}
+.post-type-archive-nadlan_professional .nldir-results .nldc:not(.has-media) .nldc-vf{
+	background:rgba(243,217,157,.16)!important;
+	color:#f3d99d!important;
+}
+.post-type-archive-nadlan_professional .nldir-results .nldc:not(.has-media) .nldc-rate{
+	margin:2px 0 10px!important;color:var(--nlx-warm)!important;
+}
+.post-type-archive-nadlan_professional .nldir-results .nldc:not(.has-media) .nldc-meta{
+	gap:8px;font-size:13.5px;color:var(--nlx-ink)!important;
+}
+.post-type-archive-nadlan_professional .nldir-results .nldc:not(.has-media) .nldc-foot{
+	margin-top:auto;
+	padding-top:14px!important;
+	border-top:1px solid var(--nlx-line)!important;
+}
+.post-type-archive-nadlan_professional .nldir-results .nldc:not(.has-media) .nldc-reg{
+	font-size:11.5px;color:var(--nlx-warm)!important;
+}
+.post-type-archive-nadlan_professional .nldir-results .nldc:not(.has-media) .nldc-go{
+	color:var(--nlx-gold)!important;font-weight:800;
+}
+
+/* Singletons (profile pages): refine body type so it doesn't read as default WP */
+.single-nadlan_project .entry-content,
+.single-nadlan_professional .entry-content,
+.single-nadlan_property .entry-content,
+.single-post .entry-content,
+.single-nadlan_term .entry-content,
+.page .entry-content{
+	font-size:17px;
+	line-height:1.78;
+	color:var(--nlx-charcoal);
+}
+.single-nadlan_project .entry-content h2,
+.single-nadlan_professional .entry-content h2,
+.single-nadlan_property .entry-content h2,
+.single-post .entry-content h2,
+.page .entry-content h2{
+	font-family:"Frank Ruhl Libre",serif!important;
+	font-weight:700!important;
+	font-size:clamp(24px,2.2vw,32px)!important;
+	letter-spacing:-.01em;
+	margin:36px 0 14px!important;
+	color:var(--nlx-ink)!important;
+}
+.single-nadlan_project .entry-content h3,
+.single-nadlan_professional .entry-content h3,
+.single-nadlan_property .entry-content h3,
+.single-post .entry-content h3,
+.page .entry-content h3{
+	font-family:"Frank Ruhl Libre",serif!important;
+	font-weight:600!important;
+	font-size:clamp(19px,1.6vw,24px)!important;
+	margin:28px 0 10px!important;
+}
+.single-nadlan_project .entry-content p,
+.single-nadlan_professional .entry-content p,
+.single-nadlan_property .entry-content p,
+.single-post .entry-content p,
+.page .entry-content p{
+	margin:0 0 18px;max-width:72ch;
+}
+.single-nadlan_project .entry-content a,
+.single-nadlan_professional .entry-content a,
+.single-post .entry-content a,
+.page .entry-content a{
+	color:var(--nlx-gold);
+	text-decoration:underline;
+	text-decoration-color:rgba(167,124,53,.4);
+	text-underline-offset:.22em;
+}
+.single-nadlan_project .entry-content a:hover,
+.single-nadlan_professional .entry-content a:hover,
+.single-post .entry-content a:hover,
+.page .entry-content a:hover{
+	text-decoration-color:var(--nlx-gold);
+}
+
+/* Hide leftover theme "MORE POSTS / More posts" on CPT singles */
+.single-nadlan_project .wp-block-latest-posts,
+.single-nadlan_professional .wp-block-latest-posts,
+.single-nadlan_property .wp-block-latest-posts,
+.single-nadlan_project h2:has(+ .wp-block-latest-posts),
+body[class*="single-nadlan_"] .wp-block-template-part .wp-block-post-navigation-link,
+body[class*="single-nadlan_"] .wp-block-template-part .wp-block-comments,
+body[class*="single-nadlan_"] section.comments-area{display:none!important}
