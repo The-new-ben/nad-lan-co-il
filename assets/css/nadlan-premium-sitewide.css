@@ -1168,3 +1168,253 @@ body.home .nlux-home{max-width:min(1460px,100%)!important;width:100%!important;m
 body[class*="single-nadlan_"] .wp-block-template-part .wp-block-post-navigation-link,
 body[class*="single-nadlan_"] .wp-block-template-part .wp-block-comments,
 body[class*="single-nadlan_"] section.comments-area{display:none!important}
+
+/* ============================================================================
+ * Cycle 3: /join-pro/ pricing + project profile hero + small polish
+ * ========================================================================= */
+
+/* /join-pro/ pricing: WP columns → premium pricing-cards row */
+.page-id-2 .wp-block-columns,
+body[class*="join-pro"] .wp-block-columns{
+	gap:18px!important;
+	align-items:stretch!important;
+}
+body[class*="join-pro"] .wp-block-column,
+.page:has(.price-tag) .wp-block-column{
+	background:#fff!important;
+	border:1px solid var(--nlx-line)!important;
+	border-radius:18px!important;
+	padding:28px 24px!important;
+	box-shadow:var(--nlx-shadow-soft);
+	transition:transform .22s, box-shadow .22s, border-color .22s;
+	position:relative;
+	overflow:hidden;
+}
+body[class*="join-pro"] .wp-block-column:hover,
+.page:has(.price-tag) .wp-block-column:hover{
+	transform:translateY(-3px);
+	border-color:rgba(167,124,53,.45)!important;
+	box-shadow:0 22px 50px rgba(13,13,11,.12);
+}
+/* Premium highlight on the recommended tier (the one with .price-tag styled, typically Pro) */
+body[class*="join-pro"] .wp-block-column:has(.price-tag){
+	background:linear-gradient(180deg,#0c1c1b,#13302e 75%,#0c1c1b)!important;
+	color:#fff!important;
+	border-color:transparent!important;
+	box-shadow:0 26px 60px rgba(13,13,11,.22);
+}
+body[class*="join-pro"] .wp-block-column:has(.price-tag) *{color:#fff!important}
+body[class*="join-pro"] .wp-block-column:has(.price-tag) .price-tag{
+	font-family:"Frank Ruhl Libre",serif!important;
+	color:#f3d99d!important;
+	font-size:42px!important;
+	font-weight:700;
+	letter-spacing:-.01em;
+	display:block;
+	margin:10px 0 18px;
+}
+body[class*="join-pro"] .wp-block-column:has(.price-tag) .wp-block-button .wp-block-button__link,
+body[class*="join-pro"] .wp-block-column:has(.price-tag) a.button{
+	background:linear-gradient(135deg,var(--nlx-gold),#d7bd82)!important;
+	color:#15120e!important;
+	border:0!important;font-weight:900!important;
+	padding:14px 22px!important;border-radius:12px!important;
+}
+body[class*="join-pro"] .price-tag{
+	font-family:"Frank Ruhl Libre",serif;
+	color:var(--nlx-gold);
+	font-size:36px;
+	font-weight:700;
+	display:block;
+	margin:6px 0 14px;
+}
+body[class*="join-pro"] .wp-block-heading{
+	font-family:"Frank Ruhl Libre",serif!important;
+	font-weight:700!important;
+	color:inherit!important;
+}
+body[class*="join-pro"] .wp-block-list{padding-inline-start:18px;line-height:1.85}
+body[class*="join-pro"] .wp-block-button .wp-block-button__link{
+	background:var(--nlx-ink)!important;color:#fff!important;
+	border-radius:12px!important;font-weight:800!important;
+	padding:13px 22px!important;
+}
+
+/* Project profile hero — make the Rainbow-style header image bigger and premium */
+.single-nadlan_project .wp-block-post-featured-image,
+.single-nadlan_project .wp-block-post-featured-image img{
+	border-radius:22px!important;
+	overflow:hidden;
+}
+.single-nadlan_project .wp-block-post-featured-image img{
+	width:100%!important;
+	max-height:540px;
+	object-fit:cover;
+	box-shadow:var(--nlx-shadow);
+}
+.single-nadlan_project .nlpf-banner{min-height:120px!important}
+
+/* Single-project gallery rows breathe */
+.single-nadlan_project .nlcard-gallery{
+	display:grid!important;
+	grid-template-columns:repeat(auto-fill,minmax(220px,1fr))!important;
+	gap:14px!important;
+}
+.single-nadlan_project .nlcard-gallery a,
+.single-nadlan_project .nlcard-gallery img{
+	border-radius:14px;
+	overflow:hidden;
+}
+
+/* Lead form: don't look like a 2010 contact form on a luxury page */
+.nlcard-facts table,
+.entry-content table.nlcard-facts{
+	border-collapse:separate;
+	border-spacing:0;
+	width:100%;
+	border:1px solid var(--nlx-line);
+	border-radius:14px;
+	overflow:hidden;
+}
+.nlcard-facts th{
+	background:var(--nlx-paper-2)!important;
+	color:var(--nlx-ink)!important;
+	font-weight:700;
+	text-align:start;
+	padding:12px 14px!important;
+	border-bottom:1px solid var(--nlx-line);
+}
+.nlcard-facts td{
+	padding:12px 14px!important;
+	border-bottom:1px solid var(--nlx-line);
+	color:var(--nlx-charcoal);
+}
+.nlcard-facts tr:last-child td,
+.nlcard-facts tr:last-child th{border-bottom:0}
+
+/* Glossary tiles: already strong; lift them a touch (subtle, not invasive) */
+.post-type-archive-nadlan_term .wp-block-post-template > *,
+.tax-nadlan_term_cat .wp-block-post-template > *{
+	background:#fff!important;
+	border:1px solid var(--nlx-line)!important;
+	border-radius:16px!important;
+	padding:24px!important;
+	transition:transform .2s, box-shadow .2s, border-color .2s;
+}
+.post-type-archive-nadlan_term .wp-block-post-template > *:hover{
+	transform:translateY(-4px);
+	box-shadow:var(--nlx-shadow-soft);
+	border-color:rgba(167,124,53,.45)!important;
+}
+.post-type-archive-nadlan_term .wp-block-post-title{
+	font-family:"Frank Ruhl Libre",serif!important;
+	font-weight:700!important;
+	font-size:22px!important;
+	margin-bottom:8px!important;
+}
+
+/* /join-pro/ — real markup is .plan-row / .plan / .price-tag / .btn (not WP columns).
+   Overriding with the correct selectors. */
+.page-id-491 .plan-row,
+body.page-id-491 .plan-row{
+	display:grid!important;
+	grid-template-columns:repeat(3,1fr)!important;
+	gap:18px!important;
+	max-width:1100px;
+	margin:24px auto!important;
+}
+.page-id-491 .plan{
+	background:#fff!important;
+	border:1px solid var(--nlx-line)!important;
+	border-radius:18px!important;
+	padding:32px 26px!important;
+	box-shadow:var(--nlx-shadow-soft);
+	display:flex;flex-direction:column;
+	transition:transform .22s, box-shadow .22s, border-color .22s;
+}
+.page-id-491 .plan:hover{
+	transform:translateY(-4px);
+	border-color:rgba(167,124,53,.45)!important;
+	box-shadow:0 24px 50px rgba(13,13,11,.14);
+}
+/* The middle plan (Pro = recommended) — strongest visual */
+.page-id-491 .plan-row > .plan:nth-child(2){
+	background:linear-gradient(180deg,#0c1c1b,#13302e 75%,#0c1c1b)!important;
+	color:#fff!important;
+	border-color:transparent!important;
+	box-shadow:0 26px 60px rgba(13,13,11,.22);
+	position:relative;
+}
+.page-id-491 .plan-row > .plan:nth-child(2)::before{
+	content:"מומלץ";
+	position:absolute;inset-block-start:18px;inset-inline-end:18px;
+	background:linear-gradient(135deg,var(--nlx-gold),var(--nlx-gold-2));
+	color:#15120e;font-size:11px;font-weight:900;letter-spacing:.08em;
+	padding:5px 12px;border-radius:999px;
+}
+.page-id-491 .plan-row > .plan:nth-child(2) *{color:#fff!important}
+.page-id-491 .plan-row > .plan:nth-child(2) h3,
+.page-id-491 .plan-row > .plan:nth-child(2) .price-tag{color:#f3d99d!important}
+.page-id-491 .plan h3{
+	font-family:"Frank Ruhl Libre",serif!important;
+	font-weight:700!important;
+	font-size:22px!important;
+	margin:0 0 6px!important;
+}
+.page-id-491 .plan .price-tag{
+	font-family:"Frank Ruhl Libre",serif!important;
+	color:var(--nlx-gold)!important;
+	font-size:36px!important;
+	font-weight:700!important;
+	display:block;
+	margin:8px 0 18px;
+	line-height:1;
+}
+.page-id-491 .plan .price-tag small{
+	display:block;font-size:13px;font-weight:500;color:var(--nlx-warm)!important;margin-top:6px;
+}
+.page-id-491 .plan ul{
+	padding-inline-start:18px;
+	line-height:1.95;
+	margin:0 0 22px;
+	flex:1;
+}
+.page-id-491 .plan ul li{font-size:14.5px}
+.page-id-491 .plan .cta{margin-top:auto}
+.page-id-491 .plan .btn{
+	display:inline-block;
+	min-height:48px;
+	padding:12px 22px;
+	border-radius:12px!important;
+	background:var(--nlx-ink)!important;
+	color:#fff!important;
+	border:0!important;
+	font-weight:800!important;
+	text-decoration:none!important;
+	font-size:14.5px;
+	letter-spacing:.02em;
+	box-shadow:0 12px 26px rgba(13,13,11,.14);
+	transition:transform .15s, filter .2s;
+}
+.page-id-491 .plan .btn:hover{transform:translateY(-1px);filter:brightness(1.08)}
+.page-id-491 .plan-row > .plan:nth-child(2) .btn{
+	background:linear-gradient(135deg,var(--nlx-gold),#d7bd82)!important;
+	color:#15120e!important;
+}
+.page-id-491 .plan .btn.secondary{
+	background:#fff!important;
+	color:var(--nlx-ink)!important;
+	border:1px solid var(--nlx-ink)!important;
+}
+.page-id-491 #plans > h2,
+.page-id-491 h1{
+	font-family:"Frank Ruhl Libre",serif!important;
+	font-weight:700!important;
+}
+/* clean em-dash on H1 + replace with colon */
+.page-id-491 h1{font-size:clamp(28px,3vw,42px)!important;line-height:1.15!important}
+
+/* mobile */
+@media (max-width:780px){
+	.page-id-491 .plan-row{grid-template-columns:1fr!important}
+}
