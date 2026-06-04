@@ -97,8 +97,8 @@ add_action( 'template_redirect', 'nadlan_hub_dispatch', 5 );
 if ( ! function_exists( 'nadlan_hub_render' ) ) {
 	function nadlan_hub_render( $city, $kind, $data ) {
 		$labels = array(
-			'contractors' => array( 'h1' => "קבלנים רשומים ב$city", 'desc' => "אינדקס קבלנים רשומים בעיר $city מתוך פנקס הקבלנים — סינון לפי סיווג, ענפי בנייה ופרטי קשר.", 'kw' => "קבלנים $city" ),
-			'projects'    => array( 'h1' => "פרויקטים חדשים והתחדשות עירונית ב$city", 'desc' => "פרויקטי מגורים בעיר $city: תמ\"א 38, פינוי-בינוי, בנייה חדשה — עם מספר יחידות, סטטוס ופרטי תוכנית.", 'kw' => "פרויקטים $city" ),
+			'contractors' => array( 'h1' => "קבלנים רשומים ב$city", 'desc' => "אינדקס קבלנים רשומים בעיר  מתוך פנקס הקבלנים: סינון לפי סיווג, ענפי בנייה ופרטי קשר.", 'kw' => "קבלנים $city" ),
+			'projects'    => array( 'h1' => "פרויקטים חדשים והתחדשות עירונית ב$city", 'desc' => "פרויקטי מגורים בעיר $city: תמ\"א 38, פינוי-בינוי, בנייה חדשה, עם מספר יחידות, סטטוס ופרטי תוכנית.", 'kw' => "פרויקטים $city" ),
 			'properties'  => array( 'h1' => "דירות ב$city", 'desc' => "לוח דירות בעיר $city: מחיר, חדרים, מ\"ר ושכונה.", 'kw' => "דירות $city" ),
 		);
 		$L = $labels[ $kind ];

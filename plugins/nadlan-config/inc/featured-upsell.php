@@ -56,7 +56,7 @@ if ( ! function_exists( 'nadlan_fu_render' ) ) {
 	<div class="nlfu-eyebrow">📈 שיווק מותאם לעסק שלכם</div>
 	<?php if ( $pos > 0 ) : ?>
 	<h3>הכרטיס שלכם במקום <span class="nlfu-pos">#<?php echo (int) $pos; ?></span> בקטגוריה <strong><?php echo esc_html( $prof_label ); ?> · <?php echo esc_html( $city ); ?></strong></h3>
-	<p>שדרוג ל-Pro או Premier מוביל לחמשת המקומות הראשונים + כפתור התקשרות גלוי + תג מאומת — בדיוק במקום שלקוחות מסתכלים קודם.</p>
+	<p>שדרוג ל-Pro או Premier מוביל לחמשת המקומות הראשונים, כפתור התקשרות גלוי ותג מאומת. בדיוק במקום שלקוחות מסתכלים קודם.</p>
 	<?php else : ?>
 	<h3>קבלו חשיפה מירבית לעסק שלכם</h3>
 	<p>שדרוג ל-Pro או Premier מקפיץ את הכרטיס למעלה ופותח את כפתורי יצירת קשר ללקוחות.</p>

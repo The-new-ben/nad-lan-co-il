@@ -88,7 +88,7 @@ if ( ! function_exists( 'nadlan_studio_hint' ) ) {
 			'tagline' => 'משפט אחד שיכול להופיע כותרת בכרטיס. למשל "הקבלן של בעלי הבית".',
 			'description' => 'הסיפור שלכם. למה כדאי לפנות אליכם? מה מיוחד? אפשר לבקש מהעוזר החכם לשפר.',
 			'city' => 'בה אתם פועלים. משפיע על דירוג בחיפושים מקומיים.',
-			'address' => 'אופציונלי — לקוחות פוטנציאליים אוהבים להבין איפה אתם.',
+			'address' => 'אופציונלי. לקוחות פוטנציאליים אוהבים להבין איפה אתם.',
 			'phone' => 'הטלפון שיופיע ככפתור התקשרות לציבור.',
 			'email' => 'אימייל פנייה. לא יופיע כברירת מחדל; רק אם תאשרו.',
 			'website' => 'הקישור לאתר שלכם, אם יש.',
@@ -96,8 +96,8 @@ if ( ! function_exists( 'nadlan_studio_hint' ) ) {
 			'social_instagram' => 'הקישור המלא לפרופיל אינסטגרם.',
 			'social_tiktok' => 'הקישור המלא ל-TikTok.',
 			'social_youtube' => 'קישור לערוץ או לסרטון.',
-			'video_url' => 'קישור YouTube/Vimeo — נשתבץ אצלכם כסרטון.',
-			'classification' => 'תחום ההתמחות הראשי. למשל "בנייה רוויה — סיווג 1".',
+			'video_url' => 'קישור YouTube או Vimeo. נשתבץ אצלכם כסרטון.',
+			'classification' => 'תחום ההתמחות הראשי. למשל "בנייה רוויה, סיווג 1".',
 			'service_area' => 'באילו ערים/אזורים אתם נותנים שירות.',
 			'project_type' => 'תמ״א 38, פינוי בינוי, בנייה חדשה...',
 			'project_status' => 'באיזה שלב הפרויקט (תכנון, היתר, ביצוע, אכלוס).',
@@ -181,7 +181,7 @@ if ( ! function_exists( 'nadlan_studio_render_editor' ) ) {
 		?>
 <div class="nlst" dir="rtl" data-id="<?php echo (int) $id; ?>" data-rest="<?php echo $rest_root; ?>" data-nonce="<?php echo esc_attr( $nonce ); ?>" data-pt="<?php echo esc_attr( $post->post_type ); ?>">
 	<header class="nlst-bar">
-		<h1>סטודיו פרסום — <?php echo esc_html( get_the_title( $post ) ); ?></h1>
+		<h1>סטודיו פרסום: <?php echo esc_html( get_the_title( $post ) ); ?></h1>
 		<div class="nlst-bar-actions">
 			<a class="nlst-link" href="<?php echo esc_url( get_permalink( $post ) ); ?>" target="_blank" rel="noopener">תצוגה ציבורית ↗</a>
 			<button type="button" class="nlst-save" id="nlst-save-btn">שמירה</button>
@@ -251,7 +251,7 @@ if ( ! function_exists( 'nadlan_studio_render_editor' ) ) {
 			<div class="nlst-section">
 				<h2>פרטי בעל המקצוע</h2>
 				<label class="nlst-label">התמחות</label>
-				<input type="text" id="f-classification" placeholder="לדוגמה: בנייה רוויה — סיווג 1">
+				<input type="text" id="f-classification" placeholder="לדוגמה: בנייה רוויה, סיווג 1">
 				<div class="nlst-row">
 					<div><label class="nlst-label">שנות ותק</label><input type="number" id="f-years_active" min="0"></div>
 					<div><label class="nlst-label">אזורי שירות</label><input type="text" id="f-service_area" placeholder="גוש דן, השפלה…"></div>

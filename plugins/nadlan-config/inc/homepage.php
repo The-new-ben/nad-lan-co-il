@@ -84,8 +84,8 @@ if ( ! function_exists( 'nadlan_home_guides_block' ) ) {
 		// Curated, high-intent guides that already exist on the site.
 		$guides = array(
 			array( 'slug' => 'buying-apartment-step-by-step', 'title' => 'קונים דירה', 'desc' => 'מדריך מלא לרוכש — שלב אחר שלב, מהחיפוש ועד המסירה.' ),
-			array( 'slug' => 'selling-without-broker',         'title' => 'מוכרים דירה', 'desc' => 'תמחור, פרסום, משא ומתן וחוזה — בלי מתווך.' ),
-			array( 'slug' => 'real-estate-leverage',           'title' => 'משקיעים', 'desc' => 'מינוף, יחס מימון ותשואה על ההון — בלי טעויות יקרות.' ),
+			array( 'slug' => 'selling-without-broker',         'title' => 'מוכרים דירה', 'desc' => 'תמחור, פרסום, משא ומתן וחוזה. בלי מתווך.' ),
+			array( 'slug' => 'real-estate-leverage',           'title' => 'משקיעים', 'desc' => 'מינוף, יחס מימון ותשואה על ההון. בלי טעויות יקרות.' ),
 			array( 'slug' => 'when-real-estate-lawyer-required','title' => 'ליווי משפטי', 'desc' => 'מתי חייבים עורך דין מקרקעין, ומה הוא בודק בשבילכם.' ),
 		);
 		$cards = '';

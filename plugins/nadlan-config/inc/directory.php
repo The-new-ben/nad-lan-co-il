@@ -274,7 +274,7 @@ if ( ! function_exists( 'nadlan_dir_render_page' ) ) {
 	<header class="nldir-hero">
 		<nav class="nldir-crumbs"><a href="<?php echo esc_url( home_url( '/' ) ); ?>">בית</a> › <span>בעלי מקצוע</span></nav>
 		<h1>מצאו בעל מקצוע מאומת לנדל״ן</h1>
-		<p class="nldir-lead">קבלנים, שמאים, יועצי משכנתאות ועו״ד — <strong><?php echo number_format( $facets['total'] ); ?></strong> בעלי מקצוע, מאומתים מול פנקס הקבלנים הרשמי (gov.il).</p>
+		<p class="nldir-lead">קבלנים, שמאים, יועצי משכנתאות ועו״ד: <strong><?php echo number_format( $facets['total'] ); ?></strong> בעלי מקצוע, מאומתים מול פנקס הקבלנים הרשמי (gov.il).</p>
 		<form class="nldir-search" role="search">
 			<input type="search" name="q" value="<?php echo esc_attr( $state['q'] ); ?>" placeholder="חיפוש לפי שם, חברה או התמחות" autocomplete="off">
 			<input type="text" name="city" value="<?php echo esc_attr( $state['city'] ); ?>" placeholder="עיר" autocomplete="off">
@@ -361,7 +361,7 @@ if ( ! function_exists( 'nadlan_dir_profile_header' ) ) {
 
 		$stars = ( $reviews > 0 && $rating > 0 )
 			? '<span class="nlpf-stars">' . str_repeat( '★', (int) round( $rating ) ) . str_repeat( '☆', max( 0, 5 - (int) round( $rating ) ) ) . '</span> <b>' . number_format( $rating, 1 ) . '</b> <span class="nlpf-rev">(' . $reviews . ' חוות דעת)</span>'
-			: '<span class="nlpf-norate">טרם התקבלו חוות דעת — היו הראשונים</span>';
+			: '<span class="nlpf-norate">טרם התקבלו חוות דעת. היו הראשונים לדרג.</span>';
 
 		ob_start(); ?>
 <div class="nlpf" dir="rtl" style="--pc:<?php echo esc_attr( $pm['color'] ); ?>;--ps:<?php echo esc_attr( $pm['soft'] ); ?>">
@@ -597,8 +597,26 @@ if ( ! function_exists( 'nadlan_dir_project_card' ) ) {
 		}
 		$is_real_photo = $photo_url !== '';
 		if ( ! $is_real_photo ) {
-			$concept_files = array( 'skyline-telaviv-line.svg', 'project-concept.svg' );
-			$photo_url = nadlan_concept_asset_url( $concept_files[ absint( $id ) % count( $concept_files ) ] );
+			// Rotate 5 real architectural photos from the theme (luxurious, varied)
+			// rather than 2 dark concept SVGs so the catalog grid never reads as
+			// identical empty blocks. Falls back to the bundled concept SVG if the
+			// theme is not present (defensive).
+			$theme_fallbacks = array(
+				'tel-aviv-coast-skyline.jpg',
+				'sea-view-interior.jpg',
+				'tel-aviv-skyline-blueprint.jpg',
+				'architectural-model.jpg',
+				'blueprint-desk.jpg',
+			);
+			$pick = $theme_fallbacks[ absint( $id ) % count( $theme_fallbacks ) ];
+			$theme_path = function_exists( 'get_theme_file_path' )
+				? get_theme_file_path( 'assets/premium-site/' . $pick ) : '';
+			if ( $theme_path && file_exists( $theme_path ) ) {
+				$photo_url = get_theme_file_uri( 'assets/premium-site/' . $pick );
+			} else {
+				$concept_files = array( 'skyline-telaviv-line.svg', 'project-concept.svg' );
+				$photo_url = nadlan_concept_asset_url( $concept_files[ absint( $id ) % count( $concept_files ) ] );
+			}
 		}
 		ob_start(); ?>
 <a class="nldc has-media<?php echo $featured ? ' is-featured' : ''; ?>" href="<?php echo esc_url( get_permalink( $id ) ); ?>" style="--pc:<?php echo esc_attr( $pm['color'] ); ?>;--ps:<?php echo esc_attr( $pm['soft'] ); ?>">
