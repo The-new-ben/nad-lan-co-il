@@ -1,0 +1,93 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <defs>
+    <symbol id="tier-free" viewBox="0 0 32 32">
+      <rect fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round" x="6" y="8" width="20" height="16" rx="4"/>
+      <path fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round" d="M10 14h12M10 18h7"/>
+    </symbol>
+
+    <symbol id="tier-pro" viewBox="0 0 32 32">
+      <path fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round" d="M16 5l4 7 8 1.2-5.8 5.6 1.4 8-7.6-3.9-7.6 3.9 1.4-8L4 13.2 12 12z"/>
+      <path fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round" d="M13 16.5l2 2 4-4"/>
+    </symbol>
+
+    <symbol id="tier-premier" viewBox="0 0 32 32">
+      <path fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round" d="M6 12l5.2 4.2L16 7l4.8 9.2L26 12l-2 13H8z"/>
+      <path fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round" d="M9 25h14"/>
+    </symbol>
+
+    <symbol id="tier-project-premier" viewBox="0 0 32 32">
+      <path fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round" d="M7 26h18M10 26V10h7v16M17 26V6h8v20M12 14h3M12 18h3M20 10h2M20 14h2M20 18h2"/>
+      <path fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round" d="M6 8l3-3 3 3"/>
+    </symbol>
+
+    <symbol id="tier-property-pro" viewBox="0 0 32 32">
+      <path fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round" d="M8 25V14l8-7 8 7v11M6 16l10-9 10 9M13 25v-7h6v7"/>
+      <path fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round" d="M22 8h4v6"/>
+    </symbol>
+
+    <symbol id="paid-order" viewBox="0 0 32 32">
+      <rect fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round" x="7" y="5" width="18" height="22" rx="3"/>
+      <path fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round" d="M11 11h10M11 16h10M11 21h5"/>
+      <path fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round" d="M20 21l2 2 4-4"/>
+    </symbol>
+
+    <symbol id="billing-card" viewBox="0 0 32 32">
+      <rect fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round" x="5" y="9" width="22" height="15" rx="3"/>
+      <path fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round" d="M5 14h22M9 20h5"/>
+    </symbol>
+
+    <symbol id="campaign-calendar" viewBox="0 0 32 32">
+      <rect fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round" x="6" y="8" width="20" height="18" rx="3"/>
+      <path fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round" d="M10 5v6M22 5v6M6 14h20M11 19h3M18 19h3"/>
+    </symbol>
+
+    <symbol id="campaign-expired" viewBox="0 0 32 32">
+      <rect fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round" x="6" y="8" width="20" height="18" rx="3"/>
+      <path fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round" d="M10 5v6M22 5v6M6 14h20M12 20l8 0M16 16v8"/>
+    </symbol>
+
+    <symbol id="attach-card" viewBox="0 0 32 32">
+      <rect fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round" x="5" y="8" width="13" height="16" rx="3"/>
+      <rect fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round" x="14" y="12" width="13" height="12" rx="3"/>
+      <path fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round" d="M10 16h10M18 18l2-2-2-2"/>
+    </symbol>
+
+    <symbol id="exposure-chart" viewBox="0 0 32 32">
+      <path fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round" d="M6 25h20M9 22v-6M16 22V9M23 22v-10"/>
+      <path fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round" d="M8 12l6-4 5 3 5-6"/>
+    </symbol>
+
+    <symbol id="lead-inbox" viewBox="0 0 32 32">
+      <path fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round" d="M7 9h18l2 10v5H5v-5z"/>
+      <path fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round" d="M5 19h7l2 3h4l2-3h7M11 13h10"/>
+    </symbol>
+
+    <symbol id="verified-shield" viewBox="0 0 32 32">
+      <path fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round" d="M16 5l10 3.8v7.6c0 5.8-3.8 9.8-10 11.1-6.2-1.3-10-5.3-10-11.1V8.8z"/>
+      <path fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round" d="M11 16.4l3.2 3.2L21 12.8"/>
+    </symbol>
+
+    <symbol id="completion-meter" viewBox="0 0 32 32">
+      <circle fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round" cx="16" cy="16" r="10"/>
+      <path fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round" d="M16 6a10 10 0 0 1 9.4 6.6"/>
+      <path fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round" d="M12 16l3 3 6-7"/>
+    </symbol>
+
+    <symbol id="ai-copy" viewBox="0 0 32 32">
+      <path fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round" d="M11 7h10a4 4 0 0 1 4 4v7a4 4 0 0 1-4 4h-3l-4 4v-4h-3a4 4 0 0 1-4-4v-7a4 4 0 0 1 4-4z"/>
+      <path fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round" d="M12 14h8M12 17h5"/>
+      <path fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round" d="M23 5l1-2 1 2 2 1-2 1-1 2-1-2-2-1z"/>
+    </symbol>
+
+    <symbol id="gallery-media" viewBox="0 0 32 32">
+      <rect fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round" x="6" y="8" width="20" height="16" rx="3"/>
+      <path fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round" d="M9 21l5-6 4 4 2-2 3 4"/>
+      <circle fill="currentColor" stroke="none" cx="21" cy="12" r="1.4"/>
+    </symbol>
+
+    <symbol id="map-pin-premium" viewBox="0 0 32 32">
+      <path fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round" d="M16 27s8-7.2 8-14a8 8 0 1 0-16 0c0 6.8 8 14 8 14z"/>
+      <circle fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round" cx="16" cy="13" r="3"/>
+    </symbol>
+  </defs>
+</svg>
