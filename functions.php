@@ -650,16 +650,16 @@ if ( ! function_exists( 'nadlan_revenue_premium_front_page' ) ) :
 		<div class="nlux-hero-copy">
 			<p class="nlux-kicker">נדל״ן חכם · ישראל</p>
 			<h1>נדל״ן חכם: קנייה, מכירה והשקעה בעסקת נדל״ן מבוססת נתונים</h1>
-			<p class="nlux-lead">פרויקטים חדשים, אנשי מקצוע מאומתים, מדריכים ומחשבונים לבדיקת עסקת נדל״ן — מס רכישה, משכנתא, טאבו וליווי עו״ד מקרקעין. הכול במקום אחד, חינם.</p>
+			<p class="nlux-lead">פרויקטים חדשים, אנשי מקצוע מאומתים, מדריכים ומחשבונים לבדיקת עסקת נדל״ן: מס רכישה, משכנתא, טאבו וליווי עו״ד מקרקעין. הכול במקום אחד, חינם.</p>
 			<form class="nlux-search" method="get" action="<?php echo esc_url( $project_url ); ?>">
 				<input type="search" name="q" placeholder="חפשו פרויקט, עיר, יזם או בעל מקצוע">
 				<input type="text" name="city" placeholder="עיר">
-				<button type="submit">חיפוש</button>
+				<button type="submit">התחילו חיפוש</button>
 			</form>
 			<div class="nlux-actions">
 				<a href="<?php echo esc_url( $project_url ); ?>">פרויקטים חדשים</a>
 				<a href="<?php echo esc_url( $pro_url ); ?>">אנשי מקצוע</a>
-				<a href="<?php echo esc_url( $join_url ); ?>">פרסום פרימיום</a>
+				<a href="<?php echo esc_url( $join_url ); ?>">פרסמו נכס</a>
 			</div>
 		</div>
 		<div class="nlux-hero-panel" aria-label="נתוני המאגר">
@@ -750,11 +750,11 @@ if ( ! function_exists( 'nadlan_revenue_premium_front_page' ) ) :
 		<div>
 			<p class="nlux-kicker">פרסום בנדל״ן חכם</p>
 			<h2>יש לכם פרויקט, נכס או עסק בתחום הנדל״ן?</h2>
-			<p>פרסמו אצלנו וקבלו חשיפה לקונים, שוכרים ומשקיעים — עמוד נכס מעוצב, תמונות, מפה ופניות ישירות אליכם.</p>
+			<p>פרסמו אצלנו וקבלו חשיפה לקונים, שוכרים ומשקיעים: עמוד נכס מעוצב, תמונות, מפה ופניות ישירות אליכם.</p>
 		</div>
 		<div class="nlux-actions">
 			<a href="<?php echo esc_url( $join_url ); ?>">מסלולי פרסום</a>
-			<a href="<?php echo esc_url( $studio_url ); ?>">פתיחת סטודיו</a>
+			<a href="<?php echo esc_url( $studio_url ); ?>">כניסת מפרסמים</a>
 		</div>
 	</section>
 </div>
