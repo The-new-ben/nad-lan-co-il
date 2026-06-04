@@ -52,7 +52,8 @@ add_action( 'rest_api_init', function () {
 /* ---- Compare page render ---- */
 add_action( 'template_redirect', function () {
 	if ( ! get_query_var( 'nadlan_compare' ) ) { return; }
-	get_header(); ?>
+	get_header();
+	if ( function_exists( 'block_template_part' ) ) { block_template_part( 'header' ); } ?>
 <div class="nlcmp" dir="rtl"><h1>השוואת נכסים</h1><div class="nlcmp-empty">בחרו עד 4 נכסים מדף הנכס כדי להוסיף להשוואה.</div><div class="nlcmp-mount"></div></div>
 <script>
 (function(){
@@ -94,6 +95,7 @@ add_action( 'template_redirect', function () {
 .nlcmp-tbl img{max-width:140px;border-radius:4px}
 </style>
 	<?php
+	if ( function_exists( 'block_template_part' ) ) { block_template_part( 'footer' ); }
 	get_footer(); exit;
 }, 6 );
 

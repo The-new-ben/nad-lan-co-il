@@ -61,6 +61,7 @@ if ( ! function_exists( 'nadlan_archive_grid_render' ) ) {
 		$pages = (int) $wp_query->max_num_pages;
 
 		get_header();
+		if ( function_exists( 'block_template_part' ) ) { block_template_part( 'header' ); }
 		echo nadlan_archive_grid_css();
 		?>
 <div class="nlag" dir="rtl">
@@ -123,6 +124,7 @@ if ( ! function_exists( 'nadlan_archive_grid_render' ) ) {
 	<?php endif; ?>
 </div>
 		<?php
+		if ( function_exists( 'block_template_part' ) ) { block_template_part( 'footer' ); }
 		get_footer();
 	}
 }

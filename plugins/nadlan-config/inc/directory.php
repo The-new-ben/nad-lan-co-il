@@ -264,6 +264,7 @@ if ( ! function_exists( 'nadlan_dir_render_page' ) ) {
 		wp_reset_postdata();
 
 		get_header();
+		if ( function_exists( 'block_template_part' ) ) { block_template_part( 'header' ); }
 		echo nadlan_dir_css();
 		?>
 <div class="nldir" dir="rtl"
@@ -339,6 +340,9 @@ if ( ! function_exists( 'nadlan_dir_render_page' ) ) {
 </div>
 <?php echo nadlan_dir_js(); ?>
 		<?php
+		// Block theme footer: get_footer() is a noop when there's no footer.php,
+		// so explicitly render the theme's footer template part first.
+		if ( function_exists( 'block_template_part' ) ) { block_template_part( 'footer' ); }
 		get_footer();
 	}
 }
@@ -732,6 +736,7 @@ if ( ! function_exists( 'nadlan_dir_project_page' ) ) {
 		wp_reset_postdata();
 
 		get_header();
+		if ( function_exists( 'block_template_part' ) ) { block_template_part( 'header' ); }
 		echo nadlan_dir_css();
 		?>
 <div class="nldir" dir="rtl" data-mode="projects"
@@ -788,6 +793,9 @@ if ( ! function_exists( 'nadlan_dir_project_page' ) ) {
 </div>
 <?php echo nadlan_dir_js(); ?>
 		<?php
+		// Block theme footer: get_footer() is a noop when there's no footer.php,
+		// so explicitly render the theme's footer template part first.
+		if ( function_exists( 'block_template_part' ) ) { block_template_part( 'footer' ); }
 		get_footer();
 	}
 }
