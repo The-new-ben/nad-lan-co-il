@@ -55,7 +55,10 @@ SVG;
 /* ---------- 2. Premium CSS overlay ---------------------------------------- */
 if ( ! function_exists( 'nadlan_premium_css' ) ) {
 	function nadlan_premium_css() {
-		return <<<'CSS'
+		$asset = function ( $file ) {
+			return plugins_url( 'assets/concept/' . $file, dirname( __DIR__ ) . '/nadlan-config.php' );
+		};
+		$css = <<<'CSS'
 <style id="nl-premium-ui">
 /* ===== Premium tokens (site-wide) ===== */
 :root{
@@ -453,6 +456,73 @@ if ( ! function_exists( 'nadlan_premium_css' ) ) {
 	.entry-content p,.entry-content li{font-size:16px!important;line-height:1.7!important}
 }
 
+/* ===== Concept-art card media (project/property only — never professionals) ===== */
+.nldir-results .nldc.has-media{
+	padding:0!important;
+	border-radius:18px!important;
+	overflow:hidden;
+	background:linear-gradient(180deg,#fff,#FBF8F1)!important;
+	box-shadow:var(--nl-shadow-md);
+}
+.nldir-results .nldc.has-media::before{display:none!important}
+.nldir-results .nldc.has-media .nldc-top,
+.nldir-results .nldc.has-media .nldc-meta,
+.nldir-results .nldc.has-media .nldc-foot{padding-inline:20px}
+.nldir-results .nldc.has-media .nldc-top{padding-top:16px}
+.nldir-results .nldc.has-media .nldc-foot{padding-bottom:16px}
+.nldc-media{
+	position:relative;
+	aspect-ratio:16/10;
+	overflow:hidden;
+	background:#0B1717;
+	border-bottom:1px solid var(--nl-hairline);
+}
+.nldc-media img{
+	width:100%;height:100%;
+	object-fit:cover;
+	display:block;
+	transition:transform .35s cubic-bezier(.2,.8,.2,1);
+}
+.nldir-results .nldc.has-media:hover .nldc-media img{transform:scale(1.035)}
+.nldc-media.has-concept-art{background:#0B1717}
+.nldc-media.has-concept-art img{object-fit:contain;padding:6px}
+.nldc-media.has-real-photo::after{
+	content:"";position:absolute;inset:0;
+	background:linear-gradient(180deg,transparent 55%,rgba(11,23,23,.55));
+	pointer-events:none;
+}
+.nldc-media-label{
+	position:absolute;
+	inset-block-start:12px;inset-inline-start:12px;
+	font-family:var(--font-sans,Heebo,sans-serif);
+	font-size:11px;font-weight:700;letter-spacing:.08em;
+	padding:5px 11px;
+	color:#0B1717;
+	background:linear-gradient(135deg,#F4DFAA,#D7C39A);
+	border-radius:30px;
+	box-shadow:0 6px 18px rgba(0,0,0,.25);
+}
+
+/* ===== Single profile hero — original concept skyline (replaces flat gradient) ===== */
+.nlpf-banner{
+	background:
+		linear-gradient(180deg,rgba(7,19,19,.55),rgba(7,19,19,.85)),
+		url("CONCEPT_SKYLINE_URL") center/cover no-repeat,
+		linear-gradient(135deg,#0B1F1F,#113332)!important;
+	min-height:140px!important;
+}
+
+/* ===== Hero (directory + homepage) — subtle concept skyline backdrop ===== */
+.nldir-hero{position:relative}
+.nldir-hero::before{
+	content:"";
+	position:absolute;inset:0;
+	background:url("CONCEPT_HERO_URL") center/cover no-repeat;
+	opacity:.22;
+	mix-blend-mode:screen;
+	pointer-events:none;
+}
+
 /* ===== Reduced motion ===== */
 @media (prefers-reduced-motion:reduce){
 	.nldir-results .nldc,.nldir-search button,.nlpf-call,.nlpf-quote,
@@ -460,9 +530,14 @@ if ( ! function_exists( 'nadlan_premium_css' ) ) {
 		transition:none!important;
 	}
 	.nldir-results .nldc:hover{transform:none!important}
+	.nldir-results .nldc.has-media:hover .nldc-media img{transform:none!important}
 }
 </style>
 CSS;
+		return strtr( $css, array(
+			'CONCEPT_SKYLINE_URL' => esc_url( $asset( 'skyline-telaviv-line.svg' ) ),
+			'CONCEPT_HERO_URL'    => esc_url( $asset( 'hero-coast-concept.svg' ) ),
+		) );
 	}
 }
 

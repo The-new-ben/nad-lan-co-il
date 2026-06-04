@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1000" role="img" aria-labelledby="title desc">
+  <title id="title">Interior floor-plan property concept</title>
+  <desc id="desc">Original abstract interior and floor-plan concept for property cards without photography.</desc>
+  <defs>
+    <linearGradient id="field" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0b1d1c"/>
+      <stop offset=".56" stop-color="#163737"/>
+      <stop offset="1" stop-color="#0a1212"/>
+    </linearGradient>
+    <pattern id="grid" width="64" height="64" patternUnits="userSpaceOnUse">
+      <path d="M64 0H0v64" fill="none" stroke="#d7c39a" stroke-opacity=".07" stroke-width="1"/>
+      <path d="M0 32h64M32 0v64" fill="none" stroke="#d7c39a" stroke-opacity=".03" stroke-width="1"/>
+    </pattern>
+  </defs>
+  <rect width="1600" height="1000" fill="url(#field)"/>
+  <rect width="1600" height="1000" fill="url(#grid)"/>
+  <g fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="260" y="206" width="1080" height="588" rx="18" stroke="#f4dfaa" stroke-opacity=".54" stroke-width="3.2"/>
+    <path d="M260 438h364V206M624 438v356M624 570h326M950 206v364M950 570h390" stroke="#f4dfaa" stroke-opacity=".42" stroke-width="3"/>
+    <path d="M370 314h128M370 346h84M728 314h128M728 346h70M1048 314h146M1048 346h92" stroke="#d7c39a" stroke-opacity=".34" stroke-width="3"/>
+    <path d="M342 704h196M342 732h116M710 704h192M710 732h88M1048 704h184M1048 732h98" stroke="#d7c39a" stroke-opacity=".24" stroke-width="2.6"/>
+    <path d="M478 438a72 72 0 0 1-72-72M624 520a82 82 0 0 0 82-82M950 502a68 68 0 0 1 68 68" stroke="#d7c39a" stroke-opacity=".36" stroke-width="2.4"/>
+    <path d="M1122 438h118v76h-118zM394 566h96v82h-96zM780 634h110v82H780z" stroke="#f4dfaa" stroke-opacity=".28" stroke-width="2.4"/>
+    <path d="M1122 528h118M394 662h96M780 732h110" stroke="#d7c39a" stroke-opacity=".18" stroke-width="2"/>
+    <path d="M204 858h1192" stroke="#f4dfaa" stroke-opacity=".2" stroke-width="2"/>
+    <path d="M222 158h188M222 188h112" stroke="#d7c39a" stroke-opacity=".4" stroke-width="3"/>
+    <path d="M1288 142l78-78M1364 66l32 102-112-26" stroke="#d7c39a" stroke-opacity=".42" stroke-width="3"/>
+    <circle cx="1364" cy="142" r="76" stroke="#d7c39a" stroke-opacity=".2" stroke-width="2"/>
+  </g>
+  <g fill="#d7c39a" opacity=".22">
+    <circle cx="624" cy="438" r="4"/>
+    <circle cx="950" cy="570" r="4"/>
+    <circle cx="260" cy="438" r="4"/>
+    <circle cx="1340" cy="438" r="4"/>
+  </g>
+</svg>
