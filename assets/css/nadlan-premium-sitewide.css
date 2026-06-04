@@ -885,3 +885,146 @@ textarea{
 	.nlux-tool-grid a:hover,
 	.nlux-project-card:hover{transform:none!important}
 }
+
+/* ============================================================================
+ * 1.42.x HOMEPAGE POLISH PASS (Claude) — dedupe + full-width + refinement
+ * ========================================================================= */
+
+/* (1) Kill the duplicate OLD homepage section — the plugin still injects the
+ *     nhp pillars on the front page; the premium nlux-home replaces it. */
+body.home .nadlan-home-pillars,
+body.home .nhp-grid,
+body.home section.nadlan-home-pillars{display:none!important}
+
+/* (2) Hard full-width guarantee for the premium home (defensive, beyond #51). */
+body.home .entry-content.wp-block-post-content,
+body.home main .wp-block-post-content,
+body.home .wp-block-group.alignfull > .wp-block-post-content{max-width:none!important}
+body.home .nlux-home{max-width:min(1460px,100%)!important;width:100%!important;margin-inline:auto!important}
+
+/* ============================================================================
+ * ELITE HOMEPAGE — iteration pass (editorial luxury, kill hollow cards)
+ * ========================================================================= */
+
+/* HERO: refine type + spacing, keep big image */
+.nlux-hero{min-height:min(620px,82vh)!important;border-radius:28px!important;padding:clamp(30px,4.5vw,66px)!important}
+.nlux-hero h1{font-family:"Frank Ruhl Libre","Noto Serif Hebrew",serif!important;font-weight:700!important;font-size:clamp(36px,4.4vw,60px)!important;line-height:1.12!important;letter-spacing:-.01em!important}
+.nlux-kicker{font-size:12.5px!important;letter-spacing:.22em!important;opacity:.95}
+.nlux-lead{font-size:clamp(16px,1.25vw,19px)!important;max-width:620px!important;color:rgba(255,255,255,.82)!important}
+.nlux-hero-panel{padding:14px!important;border-radius:18px!important}
+.nlux-hero-panel div{padding:12px 14px!important}
+.nlux-hero-panel b{font-size:28px!important}
+.nlux-hero-panel span{font-size:13px!important;font-weight:600!important}
+
+/* SECTION HEADS: editorial eyebrow + serif title, generous but not hollow */
+.nlux-showcase,.nlux-tools,.nlux-pros,.nlux-paths,.nlux-final-cta{margin:clamp(48px,6vw,84px) 0!important}
+.nlux-section-head{align-items:flex-end!important;border-bottom:1px solid var(--nlx-line);padding-bottom:16px;margin-bottom:26px!important}
+.nlux-section-head .nlux-kicker{color:var(--nlx-gold)!important}
+.nlux-section-head h2{font-family:"Frank Ruhl Libre",serif!important;font-weight:700!important;font-size:clamp(26px,2.6vw,40px)!important;line-height:1.12!important}
+.nlux-section-head a{min-height:46px!important;font-size:14px!important;border-radius:999px!important;padding:0 22px!important}
+
+/* PATHS (01–04): magazine index, content-height, NOT hollow boxes */
+.nlux-paths{grid-template-columns:repeat(4,1fr)!important;gap:0!important;border-top:1px solid var(--nlx-line);margin-top:26px!important}
+.nlux-path{
+	min-height:0!important;border:0!important;border-inline-start:1px solid var(--nlx-line)!important;
+	border-radius:0!important;background:transparent!important;box-shadow:none!important;
+	padding:26px 24px 30px!important;
+}
+.nlux-paths .nlux-path:first-child{border-inline-start:0!important}
+.nlux-path::after{display:none!important}
+.nlux-path:hover{transform:none!important;background:linear-gradient(180deg,rgba(167,124,53,.06),transparent)!important;border-color:var(--nlx-line)!important;box-shadow:none!important}
+.nlux-path span{display:block;font-size:15px!important;font-style:normal!important;font-weight:800!important;letter-spacing:.06em;color:var(--nlx-gold)!important;font-family:Heebo,sans-serif!important;margin-bottom:14px}
+.nlux-path h2{font-size:20px!important;margin:0 0 8px!important;font-weight:700!important}
+.nlux-path p{font-size:14px!important;line-height:1.65!important}
+.nlux-path::before{content:"←";position:absolute;inset-block-end:24px;inset-inline-start:24px;color:var(--nlx-gold);font-weight:800;opacity:0;transition:opacity .2s,transform .2s}
+.nlux-path:hover::before{opacity:1;transform:translateX(-4px)}
+
+/* PROJECT CARDS: image-forward, consistent, luxury listing feel */
+.nlux-project-grid{grid-template-columns:repeat(4,1fr)!important;gap:16px!important}
+.nlux-project-card{min-height:0!important;border-radius:18px!important;grid-template-rows:auto!important;display:flex!important;flex-direction:column!important}
+.nlux-project-card img{aspect-ratio:4/3!important;height:auto!important}
+.nlux-project-card > div{padding:16px 18px 18px!important;display:flex;flex-direction:column;gap:4px}
+.nlux-project-card h3{font-family:"Frank Ruhl Libre",serif!important;font-size:17px!important;font-weight:700!important;line-height:1.25!important;margin:0!important;color:var(--nlx-ink)!important;display:-webkit-box;-webkit-line-clamp:1;-webkit-box-orient:vertical;overflow:hidden}
+.nlux-project-card p{font-size:13px!important;color:var(--nlx-warm)!important;margin:0!important}
+.nlux-card-chip{font-size:11px!important;font-weight:800!important;letter-spacing:.04em;padding:6px 12px!important;border-radius:999px!important}
+
+/* TOOLS: compact refined link row, NOT tall hollow boxes */
+.nlux-tool-grid{grid-template-columns:repeat(3,1fr)!important;gap:12px!important}
+.nlux-tool-grid a{
+	min-height:0!important;display:flex!important;align-items:center;gap:12px;
+	padding:18px 20px!important;border-radius:14px!important;background:var(--nlx-card)!important;
+	border:1px solid var(--nlx-line)!important;font-weight:700;font-size:15px;
+}
+.nlux-tool-grid a::after{inset:auto!important;position:static!important;width:auto!important;height:auto!important;background:none!important;content:"←";margin-inline-start:auto;color:var(--nlx-gold);font-weight:800;transition:transform .2s}
+.nlux-tool-grid a::before{content:"";width:8px;height:8px;border-radius:50%;background:linear-gradient(135deg,var(--nlx-gold),var(--nlx-gold-2));flex:none}
+.nlux-tool-grid a:hover{transform:translateY(-2px)!important}
+.nlux-tool-grid a:hover::after{transform:translateX(-4px)}
+
+/* PROS: compact cards, avatar + name inline */
+.nlux-pro-grid{grid-template-columns:repeat(3,1fr)!important;gap:14px!important}
+.nlux-pro-card{
+	min-height:0!important;display:grid!important;grid-template-columns:auto 1fr;gap:14px;align-items:center;
+	padding:18px 20px!important;border-radius:16px!important;
+}
+.nlux-pro-card::after{display:none!important}
+.nlux-pro-card > span{
+	grid-row:1/3;width:52px;height:52px;display:grid;place-items:center;border-radius:50%;
+	background:linear-gradient(135deg,var(--nlx-teal),var(--nlx-teal-2));color:#f3d99d;
+	font-family:"Frank Ruhl Libre",serif;font-size:22px;font-weight:700;
+}
+.nlux-pro-card h3{font-family:"Frank Ruhl Libre",serif!important;font-size:16px!important;margin:0!important;font-weight:700!important;color:var(--nlx-ink)!important}
+.nlux-pro-card p{font-size:12.5px!important;line-height:1.5!important;color:var(--nlx-warm)!important;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+
+/* DATA BAND: refined dark ribbon */
+.nlux-data-band{grid-template-columns:repeat(3,1fr)!important;gap:0!important;border-radius:18px;overflow:hidden;margin:clamp(40px,5vw,64px) 0!important;background:linear-gradient(135deg,#11100d,#1c2b29 70%,#0b1717)}
+.nlux-data-band div{padding:26px 28px!important;border-inline-start:1px solid rgba(255,255,255,.08)}
+.nlux-data-band div:first-child{border:0}
+.nlux-data-band strong{color:#f3d99d!important;font-family:"Frank Ruhl Libre",serif;font-size:20px;display:block;margin-bottom:4px}
+.nlux-data-band span{color:rgba(255,255,255,.7)!important;font-size:13.5px}
+
+/* FINAL CTA: premium dark block */
+.nlux-final-cta{background:linear-gradient(135deg,#11100d,#211d17 72%,#0b1717)!important;border-radius:24px;padding:clamp(34px,5vw,64px)!important;display:grid;grid-template-columns:1fr auto;align-items:center;gap:28px;color:#fff}
+.nlux-final-cta h2{color:#fff!important}
+.nlux-final-cta .nlux-kicker{color:#f3d99d!important}
+.nlux-final-cta p{color:rgba(255,255,255,.8)!important;max-width:560px}
+
+/* ELITE iteration 2: project-card luxury listing treatment */
+.nlux-project-card{position:relative!important}
+.nlux-project-card .nlux-card-chip{
+	position:absolute!important;inset-block-start:12px;inset-inline-start:12px;z-index:3;
+	background:rgba(17,16,13,.78)!important;color:#f3d99d!important;backdrop-filter:blur(8px);
+	border:1px solid rgba(243,217,157,.32);
+}
+.nlux-project-card::after{
+	content:"";position:absolute;inset-block-start:0;inset-inline:0;height:62%;z-index:1;pointer-events:none;
+	background:linear-gradient(180deg,rgba(11,17,17,.28),transparent 60%);
+}
+.nlux-project-card > div{position:relative;z-index:2;background:#fff}
+.nlux-project-card:hover img{transform:scale(1.04)}
+.nlux-project-card img{transition:transform .5s cubic-bezier(.2,.8,.2,1)}
+
+/* ELITE iteration 4: responsive — my !important grids must collapse on mobile */
+@media (max-width:980px){
+	.nlux-project-grid{grid-template-columns:repeat(2,1fr)!important}
+	.nlux-tool-grid{grid-template-columns:repeat(2,1fr)!important}
+	.nlux-pro-grid{grid-template-columns:repeat(2,1fr)!important}
+	.nlux-paths{grid-template-columns:repeat(2,1fr)!important}
+	.nlux-paths .nlux-path:nth-child(3){border-inline-start:0!important}
+	.nlux-data-band{grid-template-columns:repeat(3,1fr)!important}
+}
+@media (max-width:600px){
+	.nlux-hero{grid-template-columns:1fr!important;min-height:auto!important}
+	.nlux-hero-panel{margin-top:18px}
+	.nlux-project-grid{grid-template-columns:1fr!important}
+	.nlux-tool-grid{grid-template-columns:1fr!important}
+	.nlux-pro-grid{grid-template-columns:1fr!important}
+	.nlux-paths{grid-template-columns:1fr!important}
+	.nlux-paths .nlux-path{border-inline-start:0!important;border-bottom:1px solid var(--nlx-line)!important}
+	.nlux-data-band{grid-template-columns:1fr!important}
+	.nlux-data-band div{border-inline-start:0!important;border-top:1px solid rgba(255,255,255,.08)}
+	.nlux-data-band div:first-child{border-top:0}
+	.nlux-final-cta{grid-template-columns:1fr!important;text-align:center}
+	.nlux-final-cta .nlux-actions{justify-content:center}
+	.nlux-section-head{flex-direction:column;align-items:flex-start;gap:12px}
+	.nlux-section-head a{width:auto}
+}

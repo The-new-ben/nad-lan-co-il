@@ -649,8 +649,8 @@ if ( ! function_exists( 'nadlan_revenue_premium_front_page' ) ) :
 		<div class="nlux-hero-media" aria-hidden="true"></div>
 		<div class="nlux-hero-copy">
 			<p class="nlux-kicker">נדל״ן חכם · ישראל</p>
-			<h1>הדרך היוקרתית לבדוק, להשוות ולהתקדם בעסקת נדל״ן</h1>
-			<p class="nlux-lead">פרויקטים חדשים, אנשי מקצוע רשומים, מדריכים וכלים במקום אחד. חוויה נקייה, ויזואלית ומבוססת נתונים, בלי רעש של לוח מודעות.</p>
+			<h1>נדל״ן חכם: קנייה, מכירה והשקעה בעסקת נדל״ן מבוססת נתונים</h1>
+			<p class="nlux-lead">פרויקטים חדשים, אנשי מקצוע רשומים, מדריכים וכלים לבדיקת עסקת נדל״ן במקום אחד — מס רכישה, משכנתא, טאבו וליווי עו״ד מקרקעין. חוויה נקייה, ויזואלית ומבוססת נתונים.</p>
 			<form class="nlux-search" method="get" action="<?php echo esc_url( $project_url ); ?>">
 				<input type="search" name="q" placeholder="חפשו פרויקט, עיר, יזם או בעל מקצוע">
 				<input type="text" name="city" placeholder="עיר">
@@ -688,7 +688,8 @@ if ( ! function_exists( 'nadlan_revenue_premium_front_page' ) ) :
 				$status = trim( (string) get_post_meta( $id, 'project_status', true ) );
 				$dev    = trim( (string) get_post_meta( $id, 'developer_name', true ) );
 				$units  = trim( (string) get_post_meta( $id, 'num_units', true ) );
-				$img    = nadlan_revenue_card_media( $id, $i % 2 ? 'tel-aviv-coast-skyline.jpg' : 'architectural-model.jpg' );
+				$nlux_fallbacks = array( 'tel-aviv-coast-skyline.jpg', 'sea-view-interior.jpg', 'tel-aviv-skyline-blueprint.jpg' );
+				$img    = nadlan_revenue_card_media( $id, $nlux_fallbacks[ $i % count( $nlux_fallbacks ) ] );
 				?>
 				<a class="nlux-project-card" href="<?php echo esc_url( get_permalink( $id ) ); ?>">
 					<img src="<?php echo esc_url( $img ); ?>" alt="<?php echo esc_attr( get_the_title( $id ) ); ?>" loading="lazy">
@@ -764,10 +765,14 @@ endif;
 
 add_filter( 'the_content', function ( $content ) {
 	if ( is_front_page() && in_the_loop() && is_main_query() ) {
+		// Priority 99 = AFTER wpautop (10) + shortcodes (11), so our clean
+		// structured homepage HTML is NOT mangled with stray <p>/<br> tags
+		// (which previously spawned phantom empty cards). Returning here also
+		// short-circuits later content filters cleanly.
 		return nadlan_revenue_premium_front_page();
 	}
 	return $content;
-}, 3 );
+}, 99 );
 
 add_filter( 'render_block', function ( $block_content, $block ) {
 	if ( is_front_page() && isset( $block['blockName'] ) && $block['blockName'] === 'core/post-title' ) {
