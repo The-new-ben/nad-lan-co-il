@@ -11,7 +11,16 @@ Mode: docs-only. This file describes tests; it does not implement fixes.
 | `curl -s -o NUL -w "join-pro %{http_code}" https://nad-lan.co.il/join-pro/` | `200` |
 | `curl -s -o NUL -w "advertiser-center %{http_code}" https://nad-lan.co.il/advertiser-center/` | `302` logged-out redirect |
 | `curl -s -o NUL -w "advertise %{http_code}" https://nad-lan.co.il/advertise/` | `404`, correct while parked |
-| `curl -i https://nad-lan.co.il/wp-json/nadlan/v1/healthcheck` | `200`; version `1.41.2`; advertiser center and order bridge reported live |
+| `curl -i https://nad-lan.co.il/wp-json/nadlan/v1/healthcheck` | Original PR evidence was `1.41.2`; refreshed evidence after 1.42.2 is below |
+
+## Post-1.42.2 Evidence Refresh
+
+| Check | Result |
+| --- | --- |
+| `curl https://nad-lan.co.il/wp-json/nadlan/v1/healthcheck` | `200`; version `1.42.2`; `advertiser_center` and `advertiser_order_bridge` reported live |
+| `curl https://nad-lan.co.il/join-pro/` | `200`; canonical `/join-pro/`; source still contains monthly/traffic-oriented metadata and Wikimedia `og:image` |
+| `/advertiser-center/` logged-out status | Earlier PR evidence said `302`; post-1.42.2 command-line probes were inconsistent from this machine. Claude should rerun before merge. |
+| `/advertise/` parked status | Earlier PR evidence said `404`; post-1.42.2 command-line probes were inconsistent from this machine. Claude should rerun before merge. |
 
 Healthcheck invariants observed:
 
@@ -44,6 +53,7 @@ Claude/owner should create or identify:
 | Product CTAs exist | 476, 477, 489, 490 add-to-cart paths visible | Source search or browser click |
 | Product copy matches duration | 476/477 are 30 days, 489 is 180 days, 490 is 60 days unless product decision changes | Screenshot of package copy plus healthcheck/product map |
 | No traffic guarantee | Copy promises asset/placement/duration/reporting, not guaranteed views | Screenshot and copy excerpt |
+| Metadata matches offer | Title, meta description, OG description, Product schema, and `og:image` match the approved paid model and non-stock visual standard | Source fetch plus browser/social preview |
 
 ### 2. Logged-Out Advertiser Center
 
@@ -137,6 +147,16 @@ Claude/owner should create or identify:
 | `/studio/?id=<card_id>` | Upload/save/map controls usable | 390px screenshot |
 | Checkout | Cart/checkout/gateway fields usable in RTL | 390px screenshot |
 
+### 11. Premium Trust Pass
+
+| Surface | Expected | Evidence |
+| --- | --- | --- |
+| `/join-pro/` | Looks like a premium paid product, not a generic WordPress pricing page | 390px and 1440px screenshots |
+| Public catalogs | No raw sprite IDs such as `profession-developer`, no low-contrast hero text, no abandoned blank cards | PR #45 issues resolved and screenshots |
+| Single profiles/projects | Desktop first viewport renders real content, no blank capture, no duplicate H1/theme noise | Browser screenshots and H1 count |
+| Internal center | Buttons, chips, empty states, order panels, attach picker, and upload controls match the public premium language | Logged-in screenshot set |
+| Media policy | No fake faces, no stock-photo copy, no misleading non-Israeli defaults | Asset/source audit |
+
 ## Release Verdict Template
 
 Use this after a QA run:
@@ -177,4 +197,4 @@ Ship decision:
 
 - Legal approval of sponsored-content wording.
 - Actual payment settlement/refund accounting in Morning/Green Invoice.
-- Final premium catalog visuals, which are covered by the premium catalog redesign PR.
+- Final internal advertiser UX polish. Public premium UI shipped in 1.42.2, but authenticated center/studio screens still need their own visual QA pass.

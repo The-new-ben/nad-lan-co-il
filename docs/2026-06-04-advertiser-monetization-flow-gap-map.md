@@ -8,12 +8,12 @@ Mode: docs-only. No plugin code, no new public route, no version bump.
 
 The core monetization spine is now materially further along than the older readiness docs suggest.
 
-Live evidence from 2026-06-04:
+Live evidence from 2026-06-04, refreshed after production `nadlan-config` 1.42.2:
 
-- `https://nad-lan.co.il/join-pro/` returns `200` and is the canonical public pricing/packages page.
-- `https://nad-lan.co.il/advertiser-center/` returns `302` for logged-out users, which is correct for a logged-in advertiser center.
-- `https://nad-lan.co.il/advertise/` returns `404`, which is correct while the URL decision is parked. Do not create or merge a second public advertiser route without Claude and owner sign-off.
-- `https://nad-lan.co.il/wp-json/nadlan/v1/healthcheck` returns plugin version `1.41.2` and reports:
+- `https://nad-lan.co.il/join-pro/` returned `200` and is still the canonical public pricing/packages page.
+- `https://nad-lan.co.il/join-pro/` source still contains monthly/traffic-oriented marketing metadata: `Pro ₪349/חודש`, `Premier ₪749/חודש`, and "חשיפה לאלפי קונים פוטנציאליים בחודש". That conflicts with the fixed-duration order bridge unless a recurring billing decision is explicitly made.
+- `https://nad-lan.co.il/join-pro/` still uses a Wikimedia Tel Aviv skyline as `og:image`. That is visually off-strategy after the owner rejected stock-like public imagery.
+- `https://nad-lan.co.il/wp-json/nadlan/v1/healthcheck` returns plugin version `1.42.2` and reports:
   - `advertiser_center.route = https://nad-lan.co.il/advertiser-center/`
   - `advertiser_center.products = [476,477,489,490]`
   - `advertiser_order_bridge.activation_hook = woocommerce_payment_complete`
@@ -21,7 +21,8 @@ Live evidence from 2026-06-04:
   - card meta: `campaign_end`, `paid_order_id`, `paid_product_id`
   - `advertiser_order_bridge.daily_downgrade_cron = true`
   - durations: `476=30`, `477=30`, `489=180`, `490=60`
-- `/join-pro/` source includes Google Site Kit / Google tag output and Product JSON-LD for the main paid products I observed.
+- The earlier PR smoke said `https://nad-lan.co.il/advertiser-center/` returned `302` and `https://nad-lan.co.il/advertise/` returned `404`. My post-1.42.2 command-line probes to those two non-REST URLs were inconsistent from this machine, so Claude should rerun those two status checks from the reliable sandbox before treating them as current evidence.
+- Premium UI/concept art is live in 1.42.2, but post-ship visual QA in PR #45 still flags advertiser-relevant issues: raw sprite IDs visible in filter pills, weak hero contrast, homepage lacking a premium visual scene, and internal/authenticated advertiser surfaces not yet tested.
 
 The next phase is no longer "invent the system." It is: verify every customer path, align the public offer copy with the actual one-time billing/duration logic, finish the no-card attach/create path, improve advertiser reporting, and make the visual shell premium.
 
@@ -55,14 +56,14 @@ The best advertiser products do not sell vague "exposure" by itself. They sell o
 
 ## Current Nadlan Product Map
 
-Authoritative current live state comes from `/join-pro/`, plugin healthcheck, and the pending/merged 1.41.2 code path now reported live.
+Authoritative current live state comes from `/join-pro/`, plugin healthcheck, and the 1.42.2 code path now reported live.
 
 | Product | Current behavior | Card type | Tier outcome | Duration | Notes |
 | ---: | --- | --- | --- | ---: | --- |
 | 476 | Professional Pro | `nadlan_professional` | `paid_tier=pro` | 30 days | Product copy must not imply automatic monthly rebilling unless Morning standing order is configured. |
-| 477 | Professional Premier | `nadlan_professional` | `paid_tier=premier` | 30 days | Premium visual treatment still depends on catalog redesign. |
+| 477 | Professional Premier | `nadlan_professional` | `paid_tier=premier` | 30 days | Premium visual layer shipped in 1.42.2, but PR #45 still flags polish issues that can affect advertiser trust. |
 | 489 | Project campaign | `nadlan_project` | `paid_tier=premier` | 180 days | This is the flagship developer offer. Needs project create/attach path and reporting. |
-| 490 | Promoted property | `nadlan_property` | `paid_tier=pro` | 60 days | `/join-pro/` copy said monthly in the fetched source. Align with actual one-time/duration behavior. |
+| 490 | Promoted property | `nadlan_property` | `paid_tier=pro` | 60 days | `/join-pro/` metadata still says monthly/traffic exposure in the fetched source. Align with actual one-time/duration behavior or explicitly implement recurring billing. |
 
 Entitlement source of truth:
 
@@ -129,11 +130,11 @@ This is correct architecture, not a leak.
 | Gap | Severity | Evidence | Required next move |
 | --- | --- | --- | --- |
 | No-card project purchase needs full QA | Blocker | Order bridge has unlinked-order handling, but the actual user journey from paid product `489` to a live/owned project card still needs browser QA. | Run Journey 2 with a test user/order. If no project create/request path exists, Claude should add one after sign-off. |
-| Public offer copy vs billing reality | Blocker | Green Invoice/Morning gateway is one-time. Order bridge uses fixed durations. `/join-pro/` source showed monthly language for product 490. | Audit `/join-pro/` wording against actual duration and renewal model. Replace automatic-monthly implications with one-time campaign duration or explicit Morning standing-order language. |
+| Public offer copy vs billing reality | Blocker | Order bridge uses fixed durations. `/join-pro/` metadata still says `Pro ₪349/חודש`, `Premier ₪749/חודש`, and "חשיפה לאלפי קונים פוטנציאליים בחודש". | Audit `/join-pro/` body, title, meta description, OG description, schema, and CTA labels against the actual duration and renewal model. Replace automatic-monthly or traffic-guarantee implications with one-time campaign duration, renewal language, or explicit recurring billing after owner decision. |
 | Advertiser reporting is still thin | Major | Advertiser center reports `view_count`, exact `lead_card_id` inquiries, reviews, photos, orders. It does not yet prove Google/Bing/search exposure or campaign-period deltas. | Define report v1: campaign dates, page views, card views, leads, CTA clicks, source, completion score, public URL, next recommendation. |
-| Visual premium is pending | Major | Current catalog/profile shell still uses the older card system; PR #36 documents the premium redesign target. | Claude implements premium catalog/profile shell after reviewing PR #36. |
+| Premium visual layer shipped but still needs advertiser-grade QA | Major | 1.42.2 ships concept art and premium UI, but PR #45 still finds raw sprite IDs in `.nldir-pill`, low-contrast archive hero titles, a homepage that lacks premium visual energy, and untested internal advertiser screens. | Claude fixes the public visual blockers from PR #45, then run an authenticated 390px/1440px pass on `/advertiser-center/` and `/studio/` before calling the advertiser journey premium end to end. |
 | Legal disclosure policy must be productized | Major | Sponsored/benefit-driven content needs visible disclosure. Existing docs say this, but public terms/disclaimer need review. | Add/verify advertiser terms and sponsored-content disclosure language before selling sponsored articles at scale. |
-| `/join-pro/` Product schema may be incomplete | Major | Fetched source showed Product JSON-LD for 476, 477, 489; I did not observe 490 in the truncated match output. | Confirm 490 schema appears or update schema after Claude review. |
+| `/join-pro/` product metadata needs a full pass | Major | Source fetch proves Yoast metadata and public descriptions still carry monthly/traffic wording; product/schema coverage was not fully re-audited after 1.42.2. | Confirm schema for 476, 477, 489, and 490, then align schema names/descriptions/offers with the approved billing model. |
 | Measurement events need product/card ids | Major | Google tag is present, but event coverage for add-to-cart, checkout, purchase, card_id, tier, source is not proven. | Add GA4 event contract and verify in debug mode: view pricing, choose package, add to cart, begin checkout, purchase, open center, upload photo, submit lead. |
 | Renewal lifecycle is basic | Major | Cron downgrades expiry. Renewal reminders, "expiring soon", and post-expiry reactivation copy are not proven. | Add center/email states: active, expiring in 7 days, expired, renew, upgrade. |
 | Mobile advertiser center is unverified | Major | `/advertiser-center/` redirects logged out, so authenticated mobile layout still needs browser QA. | QA at 390px and desktop with real advertiser account. |
@@ -155,9 +156,11 @@ The advertiser system is not "production complete" until the following are prove
 8. Studio edits persist: description, city/address, phone/email, photos, map, video/tour where supported.
 9. Advertiser center shows campaign dates, views, inquiries, orders, and next action.
 10. Mobile 390px journey has no horizontal overflow or hidden CTAs.
+11. Public and internal advertiser screens pass the premium test: no raw IDs, no stock/fake people imagery, no WordPress-default controls, and no visual mismatch between the paid promise and the editing/reporting experience.
 
 ## What I Could Not Verify In This Pass
 
 - I did not log in as an advertiser or complete a WooCommerce payment. A real end-to-end paid order test still needs a test customer and owner-approved payment/gateway mode.
 - I did not alter `/join-pro/` copy or plugin code because the current lane is docs-only and plugin changes require Claude sign-off.
+- I refreshed the healthcheck and `/join-pro/` source after 1.42.2, but could not get stable command-line status evidence for `/advertiser-center/` and `/advertise/` from this machine. Rerun those two checks from Claude's reliable sandbox before merge.
 - Several competitor/sponsor/legal source URLs return `403` to curl. They should be reviewed in a normal browser before exact public copy is finalized.

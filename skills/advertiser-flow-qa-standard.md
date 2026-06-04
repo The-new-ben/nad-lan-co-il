@@ -11,6 +11,7 @@ Use this skill when testing or specifying a paid advertiser journey for Nadlan o
 - One-time campaigns must expire. A paid placement without expiry is a revenue leak.
 - Trial/editorial showcase states must not be wiped by paid-order expiry jobs.
 - Purchases without card context must be surfaced and attachable. Never silently drop paid intent.
+- Paid public and internal screens must support the same premium promise. Raw sprite IDs, stock/fake people imagery, default WordPress controls, or abandoned empty cards can undermine the sale even when billing works.
 
 ## The Journey To Prove
 
@@ -63,6 +64,7 @@ Major:
 - reporting does not show campaign period or leads
 - mobile flow has horizontal overflow or hidden CTA
 - public page looks non-premium enough to undermine the advertiser sale
+- public package metadata conflicts with actual billing duration or implies traffic guarantees
 
 Minor:
 
