@@ -1418,25 +1418,3 @@ body.page-id-491 .plan-row{
 @media (max-width:780px){
 	.page-id-491 .plan-row{grid-template-columns:1fr!important}
 }
-
-/* ============================================================================
- * Cycle 5: render the uploaded PNG logo as the header brand (every page)
- * The real header brand is a custom .nl-brand (SVG seal + .nl-word text).
- * Swap it for the owner's uploaded wordmark logo. Deploys via theme CSS,
- * so it applies on block-theme pages AND plugin-rendered archives (which now
- * render the same header template part since v1.42.6).
- * ========================================================================= */
-a.nl-brand{
-	display:inline-block!important;
-	width:172px!important;
-	height:46px!important;
-	font-size:0!important;line-height:0!important;
-	background:url("https://nad-lan.co.il/wp-content/uploads/2026/05/nadlan-logo.png") right center/contain no-repeat!important;
-	gap:0!important;
-}
-a.nl-brand .nl-seal,
-a.nl-brand .nl-word,
-a.nl-brand .nl-dot{display:none!important}
-@media (max-width:520px){
-	a.nl-brand{width:140px!important;height:38px!important}
-}
