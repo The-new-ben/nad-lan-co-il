@@ -25,14 +25,14 @@ if ( ! function_exists( 'nadlan_ss_card' ) ) {
 		$copy_h  = $mode === 'project' ? 'הציגו את הפרויקט שלכם כאן' : 'הכרטיס שלכם יכול להיות במקום זה';
 		$copy_p  = $mode === 'project' ? 'חשיפה מועדפת ליזמים מולנו ולקוחות פוטנציאליים. ₪3,990 לקמפיין.' : 'הופיעו לפני 2,700 קבלנים אחרים. Pro מ-₪349/חודש.';
 		// Plain string — NO ob_start (safe to call anywhere, incl. filters).
-		return '<a class="nldc nldc-sponsored-spot" href="' . $cart . '" style="--pc:#9C7A3C;--ps:#FBF6EE;background:linear-gradient(135deg,#FBF9F5,#F0E9DA);text-align:center;border:1.5px dashed rgba(156,122,60,.55)">'
-			. '<span class="nldc-sponsor" style="position:relative;inset:auto;align-self:center;margin-bottom:8px">מקודם · פנוי</span>'
-			. '<div style="display:flex;flex-direction:column;align-items:center;gap:6px;padding:14px 0">'
-			. '<span style="font-size:34px">📣</span>'
-			. '<h3 class="nldc-name" style="font-size:16px;margin:6px 0 2px;color:#1B1A17">' . esc_html( $copy_h ) . '</h3>'
-			. '<p style="font-size:12.5px;color:#6b6b6b;margin:0;line-height:1.5">' . esc_html( $copy_p ) . '</p>'
-			. '<span class="nldc-go" style="margin-top:8px;color:#9C7A3C;font-weight:700">בקשו מידע ←</span>'
-			. '<small style="font-size:11px;color:#9a9a9a">או <a href="' . $pricing . '" style="color:#9C7A3C">השוואה מלאה</a></small>'
+		return '<a class="nldc nldc-sponsored-spot" href="' . $cart . '">'
+			. '<span class="nldc-sponsor nldc-sponsor-slot">מקודם · פנוי</span>'
+			. '<div class="nldc-sponsored-body">'
+			. '<svg class="nldc-sponsored-mark" aria-hidden="true" viewBox="0 0 48 48"><circle cx="24" cy="24" r="22" fill="none" stroke="currentColor" stroke-width="1" opacity=".25"/><circle cx="24" cy="24" r="14" fill="none" stroke="currentColor" stroke-width="1" opacity=".4"/><circle cx="24" cy="24" r="6" fill="currentColor" opacity=".85"/></svg>'
+			. '<h3 class="nldc-name nldc-sponsored-h">' . esc_html( $copy_h ) . '</h3>'
+			. '<p class="nldc-sponsored-p">' . esc_html( $copy_p ) . '</p>'
+			. '<span class="nldc-go">בקשו מידע ←</span>'
+			. '<small class="nldc-sponsored-foot">או <a href="' . $pricing . '">השוואה מלאה</a></small>'
 			. '</div></a>';
 	}
 }
