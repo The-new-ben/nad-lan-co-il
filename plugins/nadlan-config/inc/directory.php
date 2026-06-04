@@ -287,7 +287,7 @@ if ( ! function_exists( 'nadlan_dir_render_page' ) ) {
 				if ( $n < 1 ) { continue; } ?>
 			<button type="button" class="nldir-pill<?php echo $state['profession'] === $key ? ' is-on' : ''; ?>"
 				data-prof="<?php echo esc_attr( $key ); ?>" style="--pc:<?php echo esc_attr( $pm['color'] ); ?>;--ps:<?php echo esc_attr( $pm['soft'] ); ?>">
-				<span><?php echo esc_html( $pm['icon'] ); ?></span><?php echo esc_html( $pm['label'] ); ?> <i><?php echo number_format( $n ); ?></i>
+				<span class="nldir-pill-mark" aria-hidden="true"><svg viewBox="0 0 48 48"><use href="#<?php echo esc_attr( $pm['icon'] ); ?>"></use></svg></span><?php echo esc_html( $pm['label'] ); ?> <i><?php echo number_format( $n ); ?></i>
 			</button>
 			<?php endforeach; ?>
 		</div>
@@ -735,7 +735,7 @@ if ( ! function_exists( 'nadlan_dir_project_page' ) ) {
 				if ( $n < 1 ) { continue; } ?>
 			<button type="button" class="nldir-pill<?php echo $state['project_type'] === $key ? ' is-on' : ''; ?>"
 				data-prof="<?php echo esc_attr( $key ); ?>" style="--pc:<?php echo esc_attr( $pm['color'] ); ?>;--ps:<?php echo esc_attr( $pm['soft'] ); ?>">
-				<span><?php echo esc_html( $pm['icon'] ); ?></span><?php echo esc_html( $pm['label'] ); ?> <i><?php echo number_format( $n ); ?></i>
+				<span class="nldir-pill-mark" aria-hidden="true"><svg viewBox="0 0 48 48"><use href="#<?php echo esc_attr( $pm['icon'] ); ?>"></use></svg></span><?php echo esc_html( $pm['label'] ); ?> <i><?php echo number_format( $n ); ?></i>
 			</button>
 			<?php endforeach; ?>
 		</div>
