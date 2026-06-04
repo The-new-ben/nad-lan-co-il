@@ -276,6 +276,7 @@ add_action( 'template_redirect', function () {
 	$name = esc_html( (string) get_post_meta( $r->ID, 'customer_name', true ) );
 	$cur  = (string) get_post_meta( $r->ID, 'status', true );
 	get_header();
+	if ( function_exists( 'block_template_part' ) ) { block_template_part( 'header' ); }
 	?>
 <div class="nlrs" dir="rtl" style="max-width:680px;margin:30px auto;padding:0 20px;font-family:var(--font-sans,Heebo,sans-serif);direction:rtl">
 	<h1 style="font-family:var(--font-serif,'Frank Ruhl Libre',serif);font-weight:600">עדכון מצב — <?php echo esc_html( $partner_name ); ?></h1>
@@ -305,6 +306,7 @@ fetch('<?php echo esc_js( rest_url( 'nadlan/v1/referral/' . $tok . '/status' ) )
 .then(function(r){return r.json();}).then(function(d){form.querySelector('.nlrs-msg').textContent=d.ok?'✓ תודה! הסטטוס נשמר.':'שגיאה. נסו שוב.';if(d.ok)form.querySelector('button').disabled=true;});return false;};})();
 </script>
 	<?php
+	if ( function_exists( 'block_template_part' ) ) { block_template_part( 'footer' ); }
 	get_footer();
 	exit;
 }, 5 );

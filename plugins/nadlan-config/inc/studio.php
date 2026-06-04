@@ -115,6 +115,7 @@ if ( ! function_exists( 'nadlan_studio_hint' ) ) {
 if ( ! function_exists( 'nadlan_studio_render_denied' ) ) {
 	function nadlan_studio_render_denied() {
 		get_header();
+		if ( function_exists( 'block_template_part' ) ) { block_template_part( 'header' ); }
 		?>
 		<div class="nlst" dir="rtl" style="max-width:640px;margin:60px auto;padding:0 20px;text-align:center;font-family:var(--font-sans,Heebo,sans-serif)">
 			<div style="font-size:48px;margin-bottom:14px">🔒</div>
@@ -123,6 +124,7 @@ if ( ! function_exists( 'nadlan_studio_render_denied' ) ) {
 			<p><a class="nlst-link" href="<?php echo esc_url( home_url( '/professionals/' ) ); ?>">חיפוש הכרטיס שלך במאגר ←</a></p>
 		</div>
 		<?php
+		if ( function_exists( 'block_template_part' ) ) { block_template_part( 'footer' ); }
 		get_footer();
 	}
 }
@@ -130,6 +132,7 @@ if ( ! function_exists( 'nadlan_studio_render_denied' ) ) {
 if ( ! function_exists( 'nadlan_studio_render_picker' ) ) {
 	function nadlan_studio_render_picker() {
 		get_header();
+		if ( function_exists( 'block_template_part' ) ) { block_template_part( 'header' ); }
 		?>
 		<div class="nlst" dir="rtl" style="max-width:880px;margin:40px auto;padding:0 20px;font-family:var(--font-sans,Heebo,sans-serif)">
 			<div style="text-align:center;margin-bottom:30px">
@@ -166,6 +169,7 @@ if ( ! function_exists( 'nadlan_studio_render_picker' ) ) {
 			</script>
 		</div>
 		<?php
+		if ( function_exists( 'block_template_part' ) ) { block_template_part( 'footer' ); }
 		get_footer();
 	}
 }
@@ -177,6 +181,7 @@ if ( ! function_exists( 'nadlan_studio_render_editor' ) ) {
 		$nonce = wp_create_nonce( 'wp_rest' );
 		$rest_root = esc_url( rest_url( 'nadlan/v1/studio/' . $id ) );
 		get_header();
+		if ( function_exists( 'block_template_part' ) ) { block_template_part( 'header' ); }
 		echo nadlan_studio_css();
 		?>
 <div class="nlst" dir="rtl" data-id="<?php echo (int) $id; ?>" data-rest="<?php echo $rest_root; ?>" data-nonce="<?php echo esc_attr( $nonce ); ?>" data-pt="<?php echo esc_attr( $post->post_type ); ?>">
@@ -339,6 +344,7 @@ if ( ! function_exists( 'nadlan_studio_render_editor' ) ) {
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin=""></script>
 <?php echo nadlan_studio_js(); ?>
 		<?php
+		if ( function_exists( 'block_template_part' ) ) { block_template_part( 'footer' ); }
 		get_footer();
 	}
 }

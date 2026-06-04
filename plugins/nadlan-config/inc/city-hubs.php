@@ -106,6 +106,7 @@ if ( ! function_exists( 'nadlan_hub_render' ) ) {
 		$title = $L['h1'] . " | נדל\"ן חכם";
 
 		get_header();
+		if ( function_exists( 'block_template_part' ) ) { block_template_part( 'header' ); }
 		?>
 <style>
 .nlhub{max-width:1100px;margin:0 auto;padding:24px;font-family:var(--font-sans,Heebo,sans-serif);direction:rtl}
@@ -181,6 +182,7 @@ if ( ! function_exists( 'nadlan_hub_render' ) ) {
 	</div>
 </div>
 		<?php
+		if ( function_exists( 'block_template_part' ) ) { block_template_part( 'footer' ); }
 		get_footer();
 	}
 }

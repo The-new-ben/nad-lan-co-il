@@ -211,7 +211,9 @@ if ( ! function_exists( 'nadlan_ac_css' ) ) {
 if ( ! function_exists( 'nadlan_ac_render_page' ) ) {
 	function nadlan_ac_render_page() {
 		get_header();
+		if ( function_exists( 'block_template_part' ) ) { block_template_part( 'header' ); }
 		echo nadlan_ac_render_inner();
+		if ( function_exists( 'block_template_part' ) ) { block_template_part( 'footer' ); }
 		get_footer();
 	}
 }
