@@ -13,6 +13,10 @@
 
 ## P0 — Revenue (do first; the site earns ₪0 today)
 
+- 🟡 **GAP 2 lead routing to paying card owners (Codex branch `codex/gap2-lead-routing`).**
+  Draft PR in progress for `nadlan-config` v1.42.9: route exact `lead_card_id`
+  inquiries to the paid card owner, add owner inbox in Advertiser Center, and
+  expose delivery trace in NadLan Ops. Claude reviews and ships after PR.
 - 🟡 **Advertiser Center / post-payment handoff (v1.41.2 Codex branch).** New
   `/advertiser-center/` module gives logged-in advertisers one place for owned
   cards/projects, completion score, views, inquiries, reviews, recent orders,

@@ -158,6 +158,53 @@ if ( ! function_exists( 'nadlan_ac_lead_count' ) ) {
 	}
 }
 
+if ( ! function_exists( 'nadlan_ac_recent_leads' ) ) {
+	function nadlan_ac_recent_leads( $cards, $limit = 12 ) {
+		$card_ids = array();
+		foreach ( (array) $cards as $card ) {
+			if ( is_object( $card ) && ! empty( $card->ID ) ) {
+				$tier = (string) get_post_meta( (int) $card->ID, 'paid_tier', true );
+				if ( in_array( $tier, array( 'pro', 'premier' ), true ) ) {
+					$card_ids[] = (int) $card->ID;
+				}
+			}
+		}
+		$card_ids = array_values( array_unique( array_filter( $card_ids ) ) );
+		if ( ! $card_ids ) { return array(); }
+		$q = new WP_Query( array(
+			'post_type'      => 'nadlan_lead',
+			'post_status'    => 'any',
+			'posts_per_page' => max( 1, (int) $limit ),
+			'orderby'        => 'date',
+			'order'          => 'DESC',
+			'meta_query'     => array(
+				array(
+					'key'     => 'lead_card_id',
+					'value'   => $card_ids,
+					'compare' => 'IN',
+					'type'    => 'NUMERIC',
+				),
+			),
+		) );
+		$leads = $q->posts;
+		wp_reset_postdata();
+		return $leads;
+	}
+}
+
+if ( ! function_exists( 'nadlan_ac_lead_status_label' ) ) {
+	function nadlan_ac_lead_status_label( $lead_id ) {
+		$status = (string) get_post_meta( (int) $lead_id, 'lead_route_status', true );
+		$labels = array(
+			'delivered_owner' => 'נמסרה אליכם',
+			'fallback_admin'  => 'בטיפול האתר',
+			'skipped_self'    => 'בדיקת בעלות',
+			'failed_email'    => 'בדיקה נדרשת',
+		);
+		return isset( $labels[ $status ] ) ? $labels[ $status ] : 'נקלטה';
+	}
+}
+
 if ( ! function_exists( 'nadlan_ac_orders' ) ) {
 	function nadlan_ac_orders( $user_id, $limit = 5 ) {
 		if ( ! function_exists( 'wc_get_orders' ) ) { return array(); }
@@ -201,9 +248,12 @@ if ( ! function_exists( 'nadlan_ac_css' ) ) {
 .nlac-missing{display:flex;gap:7px;flex-wrap:wrap;margin-top:10px}.nlac-missing span{font-size:12px;background:#FFF7ED;color:#9A3412;border:1px solid #FED7AA;border-radius:999px;padding:4px 9px}
 .nlac-card-actions{display:flex;gap:9px;flex-wrap:wrap;margin-top:14px}.nlac-split{display:grid;grid-template-columns:minmax(0,1fr) minmax(280px,.45fr);gap:16px}.nlac-list{display:grid;gap:10px}
 .nlac-order,.nlac-step{border:1px solid rgba(27,26,23,.1);border-radius:8px;padding:13px;background:#fff}.nlac-step b{display:block;margin-bottom:4px}.nlac-empty{background:#FBF9F5;border:1px dashed #D8CDB8;border-radius:8px;padding:24px;text-align:center;color:#5A5A5A}
+.nlac-leads-panel{background:linear-gradient(135deg,#fff,#FBF9F5);border:1px solid rgba(156,122,60,.22);border-radius:8px;padding:18px}.nlac-leads{display:grid;gap:10px}
+.nlac-lead{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:12px;align-items:start;background:#fff;border:1px solid rgba(27,26,23,.1);border-radius:8px;padding:14px}
+.nlac-lead-title{font-weight:900;font-size:15px}.nlac-lead-meta,.nlac-lead-contact{font-size:12.5px;color:#6B7280;margin-top:5px}.nlac-lead-contact{display:flex;gap:10px;flex-wrap:wrap}.nlac-lead-msg{margin-top:8px;font-size:13px;line-height:1.55;color:#374151}
 .nlac-products{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:12px}.nlac-product{background:#fff;border:1px solid rgba(27,26,23,.12);border-radius:8px;padding:16px}.nlac-product strong{display:block;font-size:17px}.nlac-product small{color:#6B7280}
 @media(max-width:860px){.nlac-hero,.nlac-split{grid-template-columns:1fr}.nlac-actions{justify-content:flex-start}.nlac-grid,.nlac-facts{grid-template-columns:repeat(2,minmax(0,1fr))}}
-@media(max-width:520px){.nlac{padding-inline:14px}.nlac-grid,.nlac-facts{grid-template-columns:1fr}.nlac-card-head{display:block}.nlac-btn{width:100%}}
+@media(max-width:520px){.nlac{padding-inline:14px}.nlac-grid,.nlac-facts{grid-template-columns:1fr}.nlac-card-head{display:block}.nlac-btn{width:100%}.nlac-lead{grid-template-columns:1fr}}
 </style>';
 	}
 }
@@ -231,6 +281,7 @@ if ( ! function_exists( 'nadlan_ac_render_inner' ) ) {
 			$total_inquiries += nadlan_ac_lead_count( $card->ID );
 			$total_reviews += (int) get_post_meta( $card->ID, 'reviews_count', true );
 		}
+		$recent_leads = nadlan_ac_recent_leads( $cards, 12 );
 		ob_start();
 		echo nadlan_ac_css();
 		?>
@@ -252,6 +303,48 @@ if ( ! function_exists( 'nadlan_ac_render_inner' ) ) {
 		<div class="nlac-metric"><b><?php echo number_format_i18n( $total_views ); ?></b><span>צפיות מזוהות</span></div>
 		<div class="nlac-metric"><b><?php echo number_format_i18n( $total_inquiries ); ?></b><span>פניות מזוהות</span></div>
 		<div class="nlac-metric"><b><?php echo number_format_i18n( $total_reviews ); ?></b><span>ביקורות</span></div>
+	</section>
+
+	<section class="nlac-section nlac-leads-panel" aria-label="הפניות שקיבלתי">
+		<h2>הפניות שקיבלתי</h2>
+		<?php if ( ! $cards ) : ?>
+			<div class="nlac-empty">הפניות יופיעו כאן אחרי שיוך כרטיס לחשבון.</div>
+		<?php elseif ( ! $recent_leads ) : ?>
+			<div class="nlac-empty">פירוט הפניות יופיע כאן עבור כרטיסים במסלול פעיל.</div>
+		<?php else : ?>
+			<div class="nlac-leads">
+				<?php foreach ( $recent_leads as $lead ) :
+					$lead_id = (int) $lead->ID;
+					$lead_card_id = (int) get_post_meta( $lead_id, 'lead_card_id', true );
+					$lead_name = (string) get_post_meta( $lead_id, 'name', true );
+					$lead_phone = (string) get_post_meta( $lead_id, 'phone', true );
+					$lead_email = (string) get_post_meta( $lead_id, 'email', true );
+					$lead_goal = (string) get_post_meta( $lead_id, 'goal', true );
+					$lead_message = (string) get_post_meta( $lead_id, 'message', true );
+					if ( $lead_message === '' ) { $lead_message = (string) $lead->post_content; }
+					$phone_href = preg_replace( '/[^0-9+]/', '', $lead_phone );
+					?>
+					<article class="nlac-lead">
+						<div>
+							<div class="nlac-lead-title"><?php echo esc_html( $lead_name ?: 'פנייה חדשה' ); ?></div>
+							<div class="nlac-lead-meta">
+								<?php echo esc_html( get_the_date( 'd/m/Y H:i', $lead ) ); ?>
+								<?php if ( $lead_card_id ) : ?> · <?php echo esc_html( get_the_title( $lead_card_id ) ); ?><?php endif; ?>
+								<?php if ( $lead_goal ) : ?> · <?php echo esc_html( $lead_goal ); ?><?php endif; ?>
+							</div>
+							<div class="nlac-lead-contact">
+								<?php if ( $phone_href ) : ?><a href="<?php echo esc_url( 'tel:' . $phone_href ); ?>"><?php echo esc_html( $lead_phone ); ?></a><?php endif; ?>
+								<?php if ( is_email( $lead_email ) ) : ?><a href="<?php echo esc_url( 'mailto:' . $lead_email ); ?>"><?php echo esc_html( $lead_email ); ?></a><?php endif; ?>
+							</div>
+							<?php if ( $lead_message ) : ?>
+								<div class="nlac-lead-msg"><?php echo esc_html( wp_trim_words( wp_strip_all_tags( $lead_message ), 22, '...' ) ); ?></div>
+							<?php endif; ?>
+						</div>
+						<span class="nlac-pill good"><?php echo esc_html( nadlan_ac_lead_status_label( $lead_id ) ); ?></span>
+					</article>
+				<?php endforeach; ?>
+			</div>
+		<?php endif; ?>
 	</section>
 
 	<div class="nlac-split">
