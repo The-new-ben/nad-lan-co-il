@@ -47,6 +47,34 @@ if ( ! function_exists( 'nadlan_meta_norm' ) ) {
 	function nadlan_meta_norm( $s ) { return trim( preg_replace( '/\s+/u', ' ', (string) $s ) ); }
 }
 
+if ( ! function_exists( 'nadlan_dir_use_paid_placement_boost' ) ) {
+	function nadlan_dir_use_paid_placement_boost( $args ) {
+		$args['orderby']                      = 'none';
+		$args['nadlan_paid_placement_boost'] = 1;
+		return $args;
+	}
+}
+
+if ( ! function_exists( 'nadlan_dir_paid_placement_clauses' ) ) {
+	function nadlan_dir_paid_placement_clauses( $clauses, $query ) {
+		if ( ! $query->get( 'nadlan_paid_placement_boost' ) ) {
+			return $clauses;
+		}
+
+		global $wpdb;
+		$alias = 'nadlan_paid_tier_pm';
+		if ( strpos( $clauses['join'], " AS {$alias} " ) === false ) {
+			$clauses['join'] .= $wpdb->prepare(
+				" LEFT JOIN {$wpdb->postmeta} AS {$alias} ON ({$wpdb->posts}.ID = {$alias}.post_id AND {$alias}.meta_key = %s)",
+				'paid_tier'
+			);
+		}
+		$clauses['orderby'] = "CASE {$alias}.meta_value WHEN 'premier' THEN 2 WHEN 'pro' THEN 1 ELSE 0 END DESC, {$wpdb->posts}.menu_order ASC, {$wpdb->posts}.post_date DESC, {$wpdb->posts}.ID DESC";
+		return $clauses;
+	}
+}
+add_filter( 'posts_clauses', 'nadlan_dir_paid_placement_clauses', 20, 2 );
+
 /* ---------------------------------------------------------------------------
  * Query — used by BOTH the server render and the REST endpoint (single source)
  * ------------------------------------------------------------------------- */
@@ -78,9 +106,7 @@ if ( ! function_exists( 'nadlan_dir_query' ) ) {
 			case 'newest':  $args['orderby'] = 'date';  $args['order'] = 'DESC'; break;
 			case 'featured':
 			default:
-				// verified + (later) paid tiers float up, then newest. Uses a LEFT-join
-				// safe approach: order by claim_status meta presence then date.
-				$args['orderby'] = array( 'menu_order' => 'ASC', 'date' => 'DESC' );
+				$args = nadlan_dir_use_paid_placement_boost( $args );
 				break;
 		}
 		return new WP_Query( $args );
@@ -565,7 +591,7 @@ if ( ! function_exists( 'nadlan_dir_project_query' ) ) {
 			case 'units':  $args['meta_key'] = 'num_units'; $args['orderby'] = 'meta_value_num'; $args['order'] = 'DESC'; break;
 			case 'newest': $args['orderby'] = 'date'; $args['order'] = 'DESC'; break;
 			case 'name':   $args['orderby'] = 'title'; $args['order'] = 'ASC'; break;
-			default:       $args['orderby'] = array( 'menu_order' => 'ASC', 'date' => 'DESC' );
+			default:       $args = nadlan_dir_use_paid_placement_boost( $args );
 		}
 		return new WP_Query( $args );
 	}
