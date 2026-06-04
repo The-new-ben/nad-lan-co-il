@@ -24,21 +24,21 @@ if ( ! defined( 'ABSPATH' ) ) { exit; }
 if ( ! function_exists( 'nadlan_dir_professions' ) ) {
 	function nadlan_dir_professions() {
 		return array(
-			'kablan'     => array( 'label' => 'קבלן',            'color' => '#2563EB', 'soft' => '#EFF4FF', 'icon' => '🏗️' ),
-			'shamai'     => array( 'label' => 'שמאי מקרקעין',    'color' => '#059669', 'soft' => '#ECFDF5', 'icon' => '📊' ),
-			'bedek_bait' => array( 'label' => 'בדק בית',         'color' => '#EA580C', 'soft' => '#FFF4ED', 'icon' => '🔍' ),
-			'mashkanta'  => array( 'label' => 'יועץ משכנתאות',   'color' => '#0D9488', 'soft' => '#EFFCFB', 'icon' => '🏦' ),
-			'architect'  => array( 'label' => 'אדריכל',          'color' => '#7C3AED', 'soft' => '#F5F0FF', 'icon' => '📐' ),
-			'lawyer'     => array( 'label' => 'עו״ד מקרקעין',    'color' => '#4F46E5', 'soft' => '#EEF0FF', 'icon' => '⚖️' ),
-			'mefakeach'  => array( 'label' => 'מפקח בנייה',      'color' => '#0891B2', 'soft' => '#ECFAFF', 'icon' => '👷' ),
-			'metavech'   => array( 'label' => 'מתווך',           'color' => '#DB2777', 'soft' => '#FFF0F7', 'icon' => '🤝' ),
+			'kablan'     => array( 'label' => 'קבלן',            'color' => '#334236', 'soft' => '#F1F4EE', 'icon' => 'profession-contractor' ),
+			'shamai'     => array( 'label' => 'שמאי מקרקעין',    'color' => '#183C3C', 'soft' => '#EFF4F4', 'icon' => 'profession-appraiser' ),
+			'bedek_bait' => array( 'label' => 'בדק בית',         'color' => '#9F6F54', 'soft' => '#F8F0EA', 'icon' => 'profession-inspector' ),
+			'mashkanta'  => array( 'label' => 'יועץ משכנתאות',   'color' => '#334236', 'soft' => '#F1F4EE', 'icon' => 'profession-mortgage' ),
+			'architect'  => array( 'label' => 'אדריכל',          'color' => '#183C3C', 'soft' => '#EFF4F4', 'icon' => 'profession-architect' ),
+			'lawyer'     => array( 'label' => 'עו״ד מקרקעין',    'color' => '#11110F', 'soft' => '#EFEDE7', 'icon' => 'profession-lawyer' ),
+			'mefakeach'  => array( 'label' => 'מפקח בנייה',      'color' => '#9F6F54', 'soft' => '#F8F0EA', 'icon' => 'profession-inspector' ),
+			'metavech'   => array( 'label' => 'מתווך',           'color' => '#9C7A3C', 'soft' => '#FBF6EE', 'icon' => 'profession-broker' ),
 		);
 	}
 }
 if ( ! function_exists( 'nadlan_dir_prof_meta' ) ) {
 	function nadlan_dir_prof_meta( $key ) {
 		$all = nadlan_dir_professions();
-		return $all[ $key ] ?? array( 'label' => $key ?: 'בעל מקצוע', 'color' => '#9C7A3C', 'soft' => '#FBF6EE', 'icon' => '🏠' );
+		return $all[ $key ] ?? array( 'label' => $key ?: 'בעל מקצוע', 'color' => '#9C7A3C', 'soft' => '#FBF6EE', 'icon' => 'profession-broker' );
 	}
 }
 
@@ -123,7 +123,7 @@ if ( ! function_exists( 'nadlan_dir_card' ) ) {
 <a class="nldc<?php echo $featured ? ' is-featured' : ''; ?>" href="<?php echo esc_url( $url ); ?>" style="--pc:<?php echo esc_attr( $pm['color'] ); ?>;--ps:<?php echo esc_attr( $pm['soft'] ); ?>">
 	<?php if ( $featured ) : ?><span class="nldc-sponsor">מקודם</span><?php endif; ?>
 	<div class="nldc-top">
-		<span class="nldc-av"><?php echo esc_html( $pm['icon'] ); ?></span>
+		<span class="nldc-av" aria-hidden="true"><svg class="nl-mark" viewBox="0 0 48 48"><use href="#<?php echo esc_attr( $pm['icon'] ); ?>"></use></svg></span>
 		<div class="nldc-id">
 			<h3 class="nldc-name"><?php echo esc_html( $title ); ?></h3>
 			<span class="nldc-pill"><?php echo esc_html( $pm['label'] ); ?></span>
@@ -132,11 +132,11 @@ if ( ! function_exists( 'nadlan_dir_card' ) ) {
 	</div>
 	<?php echo $stars; ?>
 	<div class="nldc-meta">
-		<?php if ( $city ) : ?><span class="nldc-city">📍 <?php echo esc_html( $city ); ?></span><?php endif; ?>
+		<?php if ( $city ) : ?><span class="nldc-city"><svg class="nl-ico" aria-hidden="true" viewBox="0 0 16 16"><path fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" d="M8 14s5-4.5 5-8.5A5 5 0 1 0 3 5.5C3 9.5 8 14 8 14z"/><circle cx="8" cy="5.5" r="1.8" fill="none" stroke="currentColor" stroke-width="1.4"/></svg><?php echo esc_html( $city ); ?></span><?php endif; ?>
 		<?php if ( $cls ) : ?><span class="nldc-cls"><?php echo esc_html( $cls ); ?></span><?php endif; ?>
 	</div>
 	<div class="nldc-foot">
-		<?php if ( $reg ) : ?><span class="nldc-reg">🛡️ רשם הקבלנים #<?php echo esc_html( $reg ); ?></span><?php endif; ?>
+		<?php if ( $reg ) : ?><span class="nldc-reg"><svg class="nl-ico" aria-hidden="true" viewBox="0 0 16 16"><path fill="none" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round" d="M8 1.5l5.5 2v4c0 3.5-2.5 6-5.5 7-3-1-5.5-3.5-5.5-7v-4l5.5-2z"/><path fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" d="M5.5 8l2 2 3-4"/></svg>רשם הקבלנים #<?php echo esc_html( $reg ); ?></span><?php endif; ?>
 		<span class="nldc-go">לפרופיל ←</span>
 	</div>
 </a>
@@ -523,11 +523,11 @@ add_filter( 'the_content', function ( $content ) {
 if ( ! function_exists( 'nadlan_dir_project_types' ) ) {
 	function nadlan_dir_project_types() {
 		return array(
-			'tama38'      => array( 'label' => 'תמ״א 38',        'color' => '#DB2777', 'soft' => '#FFE9F1', 'icon' => '🏘️' ),
-			'pinui_binui' => array( 'label' => 'פינוי בינוי',     'color' => '#7C3AED', 'soft' => '#F2EAFF', 'icon' => '🏗️' ),
-			'new_build'   => array( 'label' => 'בנייה חדשה',      'color' => '#2563EB', 'soft' => '#EAF2FF', 'icon' => '🏢' ),
-			'urban'       => array( 'label' => 'התחדשות עירונית', 'color' => '#059669', 'soft' => '#E7FFF3', 'icon' => '🌆' ),
-			'other'       => array( 'label' => 'אחר',             'color' => '#0891B2', 'soft' => '#E6FAFF', 'icon' => '🏗️' ),
+			'tama38'      => array( 'label' => 'תמ״א 38',        'color' => '#9F6F54', 'soft' => '#F8F0EA', 'icon' => 'category-project' ),
+			'pinui_binui' => array( 'label' => 'פינוי בינוי',     'color' => '#183C3C', 'soft' => '#EFF4F4', 'icon' => 'category-project' ),
+			'new_build'   => array( 'label' => 'בנייה חדשה',      'color' => '#334236', 'soft' => '#F1F4EE', 'icon' => 'profession-developer' ),
+			'urban'       => array( 'label' => 'התחדשות עירונית', 'color' => '#334236', 'soft' => '#F1F4EE', 'icon' => 'category-project' ),
+			'other'       => array( 'label' => 'אחר',             'color' => '#9C7A3C', 'soft' => '#FBF6EE', 'icon' => 'category-project' ),
 		);
 	}
 }
@@ -580,19 +580,19 @@ if ( ! function_exists( 'nadlan_dir_project_card' ) ) {
 <a class="nldc<?php echo $featured ? ' is-featured' : ''; ?>" href="<?php echo esc_url( get_permalink( $id ) ); ?>" style="--pc:<?php echo esc_attr( $pm['color'] ); ?>;--ps:<?php echo esc_attr( $pm['soft'] ); ?>">
 	<?php if ( $featured ) : ?><span class="nldc-sponsor">מקודם</span><?php endif; ?>
 	<div class="nldc-top">
-		<span class="nldc-av"><?php echo esc_html( $pm['icon'] ); ?></span>
+		<span class="nldc-av" aria-hidden="true"><svg class="nl-mark" viewBox="0 0 48 48"><use href="#<?php echo esc_attr( $pm['icon'] ); ?>"></use></svg></span>
 		<div class="nldc-id">
 			<h3 class="nldc-name"><?php echo esc_html( get_the_title( $id ) ); ?></h3>
 			<span class="nldc-pill"><?php echo esc_html( $pm['label'] ); ?></span>
 		</div>
 	</div>
 	<div class="nldc-meta">
-		<?php if ( $city ) : ?><span class="nldc-city">📍 <?php echo esc_html( $city ); ?></span><?php endif; ?>
-		<?php if ( $units > 0 ) : ?><span class="nldc-cls">🏠 <?php echo number_format( $units ); ?> יח״ד<?php echo $status ? ' · ' . esc_html( $status ) : ''; ?></span><?php endif; ?>
-		<?php if ( $dev ) : ?><span class="nldc-cls">👤 <?php echo esc_html( $dev ); ?></span><?php endif; ?>
+		<?php if ( $city ) : ?><span class="nldc-city"><svg class="nl-ico" aria-hidden="true" viewBox="0 0 16 16"><path fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" d="M8 14s5-4.5 5-8.5A5 5 0 1 0 3 5.5C3 9.5 8 14 8 14z"/><circle cx="8" cy="5.5" r="1.8" fill="none" stroke="currentColor" stroke-width="1.4"/></svg><?php echo esc_html( $city ); ?></span><?php endif; ?>
+		<?php if ( $units > 0 ) : ?><span class="nldc-cls"><svg class="nl-ico" aria-hidden="true" viewBox="0 0 16 16"><path fill="none" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round" d="M2 7l6-5 6 5v7H2zM6.5 14v-4h3v4"/></svg><?php echo number_format( $units ); ?> יח״ד<?php echo $status ? ' · ' . esc_html( $status ) : ''; ?></span><?php endif; ?>
+		<?php if ( $dev ) : ?><span class="nldc-cls"><svg class="nl-ico" aria-hidden="true" viewBox="0 0 16 16"><circle cx="8" cy="5.5" r="2.5" fill="none" stroke="currentColor" stroke-width="1.4"/><path fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" d="M3 14c.5-2.5 2.5-4 5-4s4.5 1.5 5 4"/></svg><?php echo esc_html( $dev ); ?></span><?php endif; ?>
 	</div>
 	<div class="nldc-foot">
-		<span class="nldc-reg">🛡️ data.gov.il</span>
+		<span class="nldc-reg"><svg class="nl-ico" aria-hidden="true" viewBox="0 0 16 16"><path fill="none" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round" d="M8 1.5l5.5 2v4c0 3.5-2.5 6-5.5 7-3-1-5.5-3.5-5.5-7v-4l5.5-2z"/><path fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" d="M5.5 8l2 2 3-4"/></svg>data.gov.il</span>
 		<span class="nldc-go">לפרטים ←</span>
 	</div>
 </a>

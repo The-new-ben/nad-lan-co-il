@@ -1,0 +1,80 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <defs>
+    <symbol id="chip-clear" viewBox="0 0 24 24">
+      <circle fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round" cx="12" cy="12" r="8.25"/>
+      <path fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round" d="M9 9l6 6M15 9l-6 6"/>
+    </symbol>
+
+    <symbol id="close" viewBox="0 0 24 24">
+      <path fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round" d="M6.5 6.5l11 11M17.5 6.5l-11 11"/>
+    </symbol>
+
+    <symbol id="help" viewBox="0 0 24 24">
+      <circle fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round" cx="12" cy="12" r="8.75"/>
+      <path fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round" d="M9.7 9.4A2.55 2.55 0 0 1 12.2 7c1.55 0 2.75.95 2.75 2.35 0 1.18-.65 1.9-1.85 2.6-.9.52-1.15.95-1.15 1.78"/>
+      <path fill="currentColor" stroke="none" d="M11.1 17.15a.9.9 0 1 0 1.8 0 .9.9 0 0 0-1.8 0"/>
+    </symbol>
+
+    <symbol id="info" viewBox="0 0 24 24">
+      <circle fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round" cx="12" cy="12" r="8.75"/>
+      <path fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round" d="M12 10.75v5.5"/>
+      <path fill="currentColor" stroke="none" d="M11.1 7.6a.9.9 0 1 0 1.8 0 .9.9 0 0 0-1.8 0"/>
+    </symbol>
+
+    <symbol id="upload" viewBox="0 0 24 24">
+      <path fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round" d="M5 16.25v1.7A2.05 2.05 0 0 0 7.05 20h9.9A2.05 2.05 0 0 0 19 17.95v-1.7"/>
+      <path fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v10M8.45 8.1L12 4.5l3.55 3.6"/>
+    </symbol>
+
+    <symbol id="delete-overlay" viewBox="0 0 24 24">
+      <path fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round" d="M8 8h8M10 8V6.65c0-.8.55-1.35 1.35-1.35h1.3c.8 0 1.35.55 1.35 1.35V8"/>
+      <path fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round" d="M9 10.25l.62 7.25c.08.92.68 1.5 1.6 1.5h1.56c.92 0 1.52-.58 1.6-1.5l.62-7.25"/>
+      <path fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round" d="M11 12v4M13 12v4"/>
+    </symbol>
+
+    <symbol id="save" viewBox="0 0 24 24">
+      <path fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round" d="M6.5 4.75h9.35L18.5 7.4v11.85H6.5z"/>
+      <path fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round" d="M9 4.75v5h5.25v-5M9 19.25v-5h6v5"/>
+    </symbol>
+
+    <symbol id="preview-external" viewBox="0 0 24 24">
+      <path fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round" d="M10.5 6H6.8A1.8 1.8 0 0 0 5 7.8v9.4A1.8 1.8 0 0 0 6.8 19h9.4a1.8 1.8 0 0 0 1.8-1.8v-3.7"/>
+      <path fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round" d="M13.5 5H19v5.5M18.75 5.25l-8.25 8.25"/>
+    </symbol>
+
+    <symbol id="fab-contact" viewBox="0 0 24 24">
+      <path fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round" d="M7.5 16.7l-2.15 2.4.65-3.45A7.65 7.65 0 1 1 7.5 16.7z"/>
+      <path fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round" d="M9 10.2h6M9 13.2h4.25"/>
+    </symbol>
+
+    <symbol id="filter" viewBox="0 0 24 24">
+      <path fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round" d="M5 7h14M7.5 12h9M10 17h4"/>
+      <circle fill="currentColor" stroke="none" cx="15.5" cy="7" r="1.25"/>
+      <circle fill="currentColor" stroke="none" cx="9" cy="12" r="1.25"/>
+      <circle fill="currentColor" stroke="none" cx="13" cy="17" r="1.25"/>
+    </symbol>
+
+    <symbol id="sort" viewBox="0 0 24 24">
+      <path fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round" d="M8 5v14M5.7 16.7L8 19l2.3-2.3M16 19V5M13.7 7.3L16 5l2.3 2.3"/>
+    </symbol>
+
+    <symbol id="call" viewBox="0 0 24 24">
+      <path fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round" d="M8.15 5.25l1.45 3.3-1.4 1.15c.95 2.15 2.35 3.55 4.5 4.5l1.15-1.4 3.3 1.45-.35 2.8c-.12.9-.82 1.55-1.72 1.55C9.78 18.6 5.4 14.22 5.4 8.92c0-.9.65-1.6 1.55-1.72z"/>
+    </symbol>
+
+    <symbol id="quote" viewBox="0 0 24 24">
+      <path fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round" d="M5.75 6.5h12.5v8.75H9.2L5.75 18.5z"/>
+      <path fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round" d="M9 10h6M9 12.75h4.2"/>
+    </symbol>
+
+    <symbol id="whatsapp" viewBox="0 0 24 24">
+      <path fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round" d="M7.55 17.05l-2.1.62.62-2.05a7.15 7.15 0 1 1 1.48 1.43z"/>
+      <path fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round" d="M9.25 8.35c.3-.32.72-.3.95.08l.7 1.15c.16.28.12.62-.1.86l-.42.45c.42.85 1.05 1.48 1.9 1.9l.45-.42c.24-.22.58-.26.86-.1l1.15.7c.38.23.4.65.08.95-.5.48-1.12.72-1.86.52-1.9-.52-3.88-2.5-4.4-4.4-.2-.74.04-1.36.69-1.69z"/>
+    </symbol>
+
+    <symbol id="claim" viewBox="0 0 24 24">
+      <path fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round" d="M12 4.75l6.25 2.35v4.85c0 3.6-2.4 6.45-6.25 7.3-3.85-.85-6.25-3.7-6.25-7.3V7.1z"/>
+      <path fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round" d="M8.8 12.1l2.05 2.05 4.45-4.45"/>
+    </symbol>
+  </defs>
+</svg>

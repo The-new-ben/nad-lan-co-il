@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" role="img" aria-labelledby="title desc">
+  <title id="title">Premium professional profile background fallback</title>
+  <desc id="desc">Original editorial background for professional profiles without legal photography or a logo.</desc>
+  <defs>
+    <linearGradient id="paper" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#fffdf8"/>
+      <stop offset=".65" stop-color="#f5eee2"/>
+      <stop offset="1" stop-color="#eadfce"/>
+    </linearGradient>
+    <radialGradient id="glow" cx=".18" cy=".15" r=".75">
+      <stop offset="0" stop-color="#d7c08a" stop-opacity=".34"/>
+      <stop offset=".5" stop-color="#d7c08a" stop-opacity=".08"/>
+      <stop offset="1" stop-color="#d7c08a" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="1600" height="900" fill="url(#paper)"/>
+  <rect width="1600" height="900" fill="url(#glow)"/>
+  <g fill="none" stroke="#1b1a17" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M150 694h1300" stroke-opacity=".12" stroke-width="2"/>
+    <path d="M244 694V300h182v394M426 694V212h258v482M684 694V350h212v344M896 694V276h344v418" stroke-opacity=".24" stroke-width="2"/>
+    <path d="M300 368h72M300 442h72M300 516h72M300 590h72" stroke-opacity=".16" stroke-width="2"/>
+    <path d="M500 286h108M500 370h108M500 454h108M500 538h108M500 622h108" stroke-opacity=".16" stroke-width="2"/>
+    <path d="M974 360h184M974 438h184M974 516h184M974 594h184" stroke-opacity=".14" stroke-width="2"/>
+  </g>
+  <g fill="none" stroke="#9c7a3c" stroke-linecap="round">
+    <path d="M206 188h230M206 226h142" stroke-width="4" stroke-opacity=".72"/>
+    <path d="M1168 166h210" stroke-width="4" stroke-opacity=".48"/>
+    <path d="M1240 214h138" stroke-width="3" stroke-opacity=".34"/>
+  </g>
+  <circle cx="1260" cy="250" r="96" fill="none" stroke="#9c7a3c" stroke-opacity=".18" stroke-width="2"/>
+  <circle cx="1260" cy="250" r="52" fill="none" stroke="#1b1a17" stroke-opacity=".08" stroke-width="2"/>
+</svg>
