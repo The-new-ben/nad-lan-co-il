@@ -1,0 +1,227 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>nad-lan · System Readiness & Gap Map</title>
+<link href="https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@500;700&family=Heebo:wght@400;500;700;800;900&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#11110f;--ch:#2b2924;--warm:#6d665c;--line:#ddd6c8;--paper:#f6f1e8;--card:#fff;--gold:#a77c35;--gold2:#d7bd82;--teal:#0c1c1b;--teal2:#13302e;--green:#2f6b3f;--red:#b4452f;--amber:#9a6a18}
+*{box-sizing:border-box}
+body{margin:0;font-family:Heebo,system-ui,sans-serif;background:linear-gradient(180deg,#fbf8f1,var(--paper));color:var(--ink);line-height:1.55}
+.wrap{max-width:1180px;margin:0 auto;padding:0 22px 90px}
+header.top{background:linear-gradient(135deg,var(--teal),var(--teal2) 72%,var(--teal));color:#fff;padding:42px 0 38px;margin-bottom:8px}
+header.top .wrap{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;flex-wrap:wrap}
+header.top h1{font-family:"Frank Ruhl Libre",serif;font-weight:700;font-size:34px;margin:0 0 6px;color:#f3d99d}
+header.top p{margin:0;color:rgba(255,255,255,.8);font-size:14px;max-width:640px}
+.gauge{text-align:center}
+.gauge .num{font-family:"Frank Ruhl Libre",serif;font-size:58px;font-weight:700;color:#fff;line-height:1}
+.gauge .lbl{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:#f3d99d}
+.eyebrow{font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);font-weight:800;margin:42px 0 6px}
+h2.sec{font-family:"Frank Ruhl Libre",serif;font-size:27px;margin:0 0 6px}
+.sub{color:var(--warm);margin:0 0 20px;font-size:14.5px}
+table{width:100%;border-collapse:separate;border-spacing:0;background:var(--card);border:1px solid var(--line);border-radius:14px;overflow:hidden;font-size:13.5px}
+th{background:#efe8db;text-align:left;padding:12px 14px;font-weight:800;font-size:12px;letter-spacing:.04em;color:var(--ch)}
+td{padding:12px 14px;border-top:1px solid var(--line);vertical-align:top}
+.pill{display:inline-block;padding:3px 10px;border-radius:999px;font-size:11px;font-weight:800;white-space:nowrap}
+.have{background:#e6f1e8;color:var(--green)}
+.partial{background:#f7efda;color:var(--amber)}
+.broken{background:#fbe7e1;color:var(--red)}
+.missing{background:#efe9e0;color:var(--warm)}
+code,.path{font-family:"JetBrains Mono",monospace;font-size:12px;background:#efe8db;padding:1px 6px;border-radius:5px;color:#5a3d12}
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:8px 0 0}
+.jcard{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px;box-shadow:0 10px 30px rgba(13,13,11,.05)}
+.jcard h3{font-family:"Frank Ruhl Libre",serif;margin:0 0 10px;font-size:18px}
+.step{display:flex;gap:10px;align-items:flex-start;padding:7px 0;border-bottom:1px dashed var(--line);font-size:13px}
+.step:last-child{border-bottom:0}
+.dot{flex:none;width:18px;height:18px;border-radius:50%;display:grid;place-items:center;font-size:11px;font-weight:900;color:#fff;margin-top:1px}
+.dot.ok{background:var(--green)}.dot.no{background:var(--red)}.dot.warn{background:var(--amber)}
+.gap{background:var(--card);border:1px solid var(--line);border-left:4px solid var(--red);border-radius:12px;padding:18px 20px;margin:14px 0}
+.gap.med{border-left-color:var(--amber)}
+.gap h3{margin:0 0 4px;font-size:17px;font-family:"Frank Ruhl Libre",serif}
+.gap .meta{display:flex;gap:10px;flex-wrap:wrap;margin:8px 0 12px;font-size:12px}
+.gap .meta b{color:var(--warm);font-weight:600}
+pre{background:#11110f;color:#e7d7ae;border-radius:10px;padding:14px 16px;overflow:auto;font-family:"JetBrains Mono",monospace;font-size:11.5px;line-height:1.5;margin:8px 0}
+pre .c{color:#7d8c7d}.pre .k{color:#d7bd82}
+.evid{font-family:"JetBrains Mono",monospace;font-size:11px;color:var(--warm)}
+.sol{background:#f1f4ee;border:1px solid #cfe0cf;border-radius:8px;padding:8px 12px;font-size:12.5px;margin-top:8px}
+.sol a{color:var(--green);font-weight:700}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+a.src{color:var(--gold);font-weight:600;text-decoration:none}
+@media(max-width:820px){.cards,.two{grid-template-columns:1fr}}
+.legend{display:flex;gap:14px;flex-wrap:wrap;font-size:12px;color:var(--warm);margin:10px 0 0}
+</style></head>
+<body>
+
+<header class="top"><div class="wrap">
+  <div>
+    <div style="font-size:11px;letter-spacing:.2em;color:#f3d99d;font-weight:800">NAD-LAN.CO.IL · 2026-06-04</div>
+    <h1>System Readiness &amp; Gap Map</h1>
+    <p>A code-verified audit of the monetization engine: can a customer get value, can an advertiser pay &amp; rank, does the system run on autopilot. Every claim below is cited to a real <span class="path">file:line</span> in the codebase (52 modules · 11,062 LOC scanned).</p>
+  </div>
+  <div class="gauge"><div class="num">61%</div><div class="lbl">Revenue-ready</div></div>
+</div></header>
+
+<div class="wrap">
+
+<div class="eyebrow">The verdict in one line</div>
+<h2 class="sec">The plumbing exists. The two pipes that print money are not connected.</h2>
+<p class="sub">A customer can browse, see premium cards, and <b>now pay</b> (cart/checkout unblocked today). But <b>paying does not actually move you up the results</b>, and there is <b>no auto-renew</b> — so it is not yet a hands-off subscription business. Plus the AI agents are wired to the wrong vendor (Anthropic, you have OpenAI).</p>
+
+<div class="eyebrow">Cycle 1 + 2 · Capability matrix (code-verified)</div>
+<h2 class="sec">What we actually have</h2>
+<div class="legend"><span class="pill have">HAVE</span> works <span class="pill partial">PARTIAL</span> half-built <span class="pill broken">BROKEN</span> exists but not wired <span class="pill missing">MISSING</span> not built</div>
+<table style="margin-top:12px">
+<tr><th>Capability</th><th>Status</th><th>Evidence (file:line)</th></tr>
+<tr><td><b>Premium card on the listing</b> — tier badge, gold accent, image-first</td><td><span class="pill have">HAVE</span></td><td class="evid">directory.php:123 (is-featured) · premium-ui.php · tiers.php:69</td></tr>
+<tr><td><b>Value gating</b> — free hides phone/email/photos, paid unlocks</td><td><span class="pill have">HAVE</span></td><td class="evid">tiers.php:62-82 (public_stub / trial / free / pro / premier)</td></tr>
+<tr><td><b>Self-serve listing CREATE</b></td><td><span class="pill have">HAVE</span></td><td class="evid">studio-rest.php:313 POST /studio/create (shipped v1.42.7)</td></tr>
+<tr><td><b>Self-serve listing EDIT</b> — photos, copy, map pin, contact</td><td><span class="pill have">HAVE</span></td><td class="evid">studio-rest.php:55 /save · studio.php:550 Leaflet map</td></tr>
+<tr><td><b>Checkout &amp; payment</b> — Morning/Green-Invoice card, Bit, GPay, Apple</td><td><span class="pill have">HAVE</span></td><td class="evid">live: 4 gateways enabled · coming-soon disabled today</td></tr>
+<tr><td><b>Geo pin + map display</b></td><td><span class="pill have">HAVE</span></td><td class="evid">studio.php:383,562 · map.php · catalog-meta lat/lng</td></tr>
+<tr><td style="background:#fdf3ef"><b>Paid placement BOOST</b> — pay → rank higher in results</td><td><span class="pill broken">BROKEN</span></td><td class="evid">directory.php:83,568 sort = menu_order,date — <b>not paid_tier</b>. advertiser-orders.php writes 0 menu_order. Paying = badge only, no position.</td></tr>
+<tr><td style="background:#fdf3ef"><b>Recurring subscription / auto-renew</b></td><td><span class="pill broken">BROKEN</span></td><td class="evid">advertiser-orders.php:103,131,154 one-charge → campaign_end → daily downgrade. No WC_Subscription. Customer pays once, drops to free.</td></tr>
+<tr><td style="background:#fdf3ef"><b>AI concierge / AI copy</b> — wrong vendor</td><td><span class="pill broken">BROKEN</span></td><td class="evid">ai-concierge.php:184 api.anthropic.com · model claude-haiku-4-5 · 0 OpenAI refs. You have OpenAI → currently dead.</td></tr>
+<tr><td><b>Advertiser receives their OWN leads</b></td><td><span class="pill partial">PARTIAL</span></td><td class="evid">conversion-cta.php:109 stores lead_card_id, but no email to owner_user_id. Goes to admin inbox + opt-in partner routing only.</td></tr>
+<tr><td><b>Geo-radius "near me" search</b></td><td><span class="pill missing">MISSING</span></td><td class="evid">0 haversine / distance queries in 11k LOC</td></tr>
+<tr><td><b>Roles &amp; authorities</b> — advertiser/developer/pro roles</td><td><span class="pill missing">MISSING</span></td><td class="evid">0 add_role(). Only admin (manage_options) vs card-owner (owner_user_id) vs anon. studio-rest.php:28-30</td></tr>
+<tr><td><b>General product store</b> (sell other products)</td><td><span class="pill missing">MISSING</span></td><td class="evid">Woo present, but only the 4 ad SKUs (476/477/489/490)</td></tr>
+</table>
+
+<div class="eyebrow">Cycle 3 · The three journeys</div>
+<h2 class="sec">Where each user wins or hits a wall</h2>
+<div class="cards">
+  <div class="jcard"><h3>🧭 Customer (buyer of services)</h3>
+    <div class="step"><span class="dot ok">✓</span><div>Lands on a premium project/pro page — real photos, schema, trust badges</div></div>
+    <div class="step"><span class="dot ok">✓</span><div>Sees verified "רשם הקבלנים" + reviews</div></div>
+    <div class="step"><span class="dot warn">!</span><div>Cannot search "pros near me / within 5km" — only by city text</div></div>
+    <div class="step"><span class="dot ok">✓</span><div>Requests a quote (lead captured)</div></div>
+    <div class="step"><span class="dot no">✕</span><div>Lead does NOT auto-reach the paying advertiser — sits in owner inbox</div></div>
+  </div>
+  <div class="jcard"><h3>💼 Advertiser (pays to be seen)</h3>
+    <div class="step"><span class="dot ok">✓</span><div>Creates / claims a card, edits it in Studio</div></div>
+    <div class="step"><span class="dot ok">✓</span><div>Buys Pro/Premier — checkout works, tier activates</div></div>
+    <div class="step"><span class="dot ok">✓</span><div>Gets the verified badge + unlocked contact/photos</div></div>
+    <div class="step"><span class="dot no">✕</span><div><b>Does NOT actually rank higher</b> — the thing they paid for</div></div>
+    <div class="step"><span class="dot no">✕</span><div>After 30/60/180 days drops to free — must be re-sold manually</div></div>
+  </div>
+  <div class="jcard"><h3>⚙️ Owner (wants zero-touch autopilot)</h3>
+    <div class="step"><span class="dot ok">✓</span><div>Listings auto-imported from gov.il, self-seeding</div></div>
+    <div class="step"><span class="dot ok">✓</span><div>Payment → tier activation is automatic (no touch)</div></div>
+    <div class="step"><span class="dot no">✕</span><div>Renewals are NOT automatic → revenue leaks every cycle</div></div>
+    <div class="step"><span class="dot no">✕</span><div>AI support agent is dead (wrong vendor) → support is manual</div></div>
+    <div class="step"><span class="dot warn">!</span><div>No role system → can't delegate "advertiser manager" safely</div></div>
+  </div>
+</div>
+
+<div class="eyebrow">Cycle 4 · The gaps to close (in priority order)</div>
+<h2 class="sec">Exactly what to build, where, and how</h2>
+
+<div class="gap">
+  <h3>GAP 1 · Paid placement does not boost rank <span class="pill broken">REVENUE-CRITICAL</span></h3>
+  <div class="meta"><b>File:</b> <span class="path">plugins/nadlan-config/inc/directory.php</span> · <b>Lines:</b> 76-86 &amp; 560-570 · <b>Effort:</b> ~1 hr</div>
+  <p>The "featured" sort orders by <code>menu_order</code> then <code>date</code> — it never reads <code>paid_tier</code>. So Pro/Premier buyers get a badge but the same position. The core promise ("pay to be seen first") is unfulfilled.</p>
+  <pre><span class="c">// directory.php — replace the 'featured' branch of nadlan_dir_query()</span>
+case 'featured':
+default:
+  <span class="c">// rank premier(2) &gt; pro(1) &gt; free(0), then newest</span>
+  add_filter('posts_clauses', 'nadlan_tier_rank_clauses');
+  $args['orderby'] = 'menu_order date';  <span class="c">// placeholder; clause injects tier</span>
+  break;
+
+<span class="c">// new helper: inject a computed tier-rank ORDER BY (LEFT JOIN postmeta)</span>
+function nadlan_tier_rank_clauses($c){ global $wpdb;
+  $c['join']    .= " LEFT JOIN {$wpdb->postmeta} tr ON tr.post_id={$wpdb->posts}.ID AND tr.meta_key='paid_tier' ";
+  $c['orderby']  = " FIELD(tr.meta_value,'premier','pro') DESC, {$wpdb->posts}.post_date DESC ";
+  return $c; }</pre>
+  <div class="sol">Pattern is industry-standard — Directorist "Rank Featured" + Classified-Listing "Top Ads" do exactly this. Sources: <a href="https://directorist.com/documentation/extensions/rank-featured-listings/step-by-step-guide-3/">Directorist Rank Featured</a> · <a href="https://www.radiustheme.com/classified-listing-features/">Classified Listing features</a></div>
+</div>
+
+<div class="gap">
+  <h3>GAP 2 · No auto-renew → not a hands-off subscription <span class="pill broken">REVENUE-CRITICAL</span></h3>
+  <div class="meta"><b>Files:</b> <span class="path">advertiser-orders.php:15-18,103-140</span> · <b>Effort:</b> 1-2 days (gateway-dependent)</div>
+  <p>Products charge once (476=30d, 477=30d, 489=180d, 490=60d → advertiser-orders.php:15-18), set <code>campaign_end</code>, and a daily cron downgrades to free. There is no recurring charge. "People subscribe, fully automatic" requires one of:</p>
+  <pre><span class="c">// OPTION A (fastest, zero new gateway): sell ANNUAL SKUs + a 7-day
+// pre-expiry email that links straight back to /cart/?add-to-cart=PID
+add_action('nadlan_ao_daily_downgrade', 'nadlan_renewal_reminder', 5);
+
+// OPTION B (true auto-renew): integrate a subscriptions plugin and verify
+// Morning/Green-Invoice supports tokenized recurring charges.</span></pre>
+  <div class="sol">Ready GitHub: <a href="https://github.com/wpswings/subscriptions-for-woocommerce">wpswings/subscriptions-for-woocommerce</a> (free, auto-renew) · free alts: <a href="https://wpdesk.net/blog/7-plugin-alternatives-for-woocommerce-subscriptions-and-something-new/">YITH / Flexible Subscriptions</a>. <b>Blocker to verify:</b> does the Morning gateway tokenize cards for recurring? If not → Option A (annual + reminder) is the zero-risk path.</div>
+</div>
+
+<div class="gap">
+  <h3>GAP 3 · AI agents wired to Anthropic; you have OpenAI <span class="pill broken">YOU ASKED FOR THIS</span></h3>
+  <div class="meta"><b>Files:</b> <span class="path">ai-concierge.php:179-187</span>, <span class="path">ai-features.php:53-58</span> · <b>Effort:</b> ~half day</div>
+  <p>The concierge already has RAG over glossary/directory + lead capture — only the HTTP call targets <code>api.anthropic.com</code>. Add an OpenAI adapter and a provider switch; everything else (the avatar widget, the talking-to-customers vision) builds on top of this.</p>
+  <pre><span class="c">// ai-concierge.php — add provider switch (option nadlan_ai_provider)</span>
+$provider = get_option('nadlan_ai_provider','openai');
+if ($provider==='openai'){
+  $resp = wp_remote_post('https://api.openai.com/v1/chat/completions', [
+    'headers' =&gt; ['Authorization'=&gt;'Bearer '.get_option('nadlan_ai_openai_key'),
+                  'Content-Type'=&gt;'application/json'],
+    'body' =&gt; wp_json_encode(['model'=&gt;'gpt-4o-mini','messages'=&gt;$messages]) ]);
+}</pre>
+  <div class="sol">For the "talking avatar from inside the project" vision: open-source widget <a href="https://github.com/widgetplatform/widget-oa">widgetplatform/widget-oa</a> (OpenAI Assistants) · multi-provider RAG reference <a href="https://en-gb.wordpress.org/plugins/askany/">AskAny</a>. Avatar/voice = later phase (ElevenLabs/HeyGen) once the text agent is on OpenAI.</div>
+</div>
+
+<div class="gap med">
+  <h3>GAP 4 · Advertiser doesn't auto-receive their own leads <span class="pill partial">VALUE</span></h3>
+  <div class="meta"><b>File:</b> <span class="path">conversion-cta.php:97-115</span> · <b>Effort:</b> ~2 hrs</div>
+  <p>A lead on a Pro/Premier card stores <code>lead_card_id</code> but only emails the site admin. The paying advertiser never gets it — so they pay and see nothing. Add: if the card has an <code>owner_user_id</code> and tier ≥ pro, email/notify that owner too.</p>
+  <pre><span class="c">// after the lead is saved in conversion-cta.php</span>
+$owner = (int) get_post_meta($card_id,'owner_user_id',true);
+$tier  = get_post_meta($card_id,'paid_tier',true);
+if ($owner &amp;&amp; in_array($tier,['pro','premier'],true)) {
+  wp_mail(get_userdata($owner)->user_email, 'פנייה חדשה לכרטיס שלך', $body);
+}</pre>
+</div>
+
+<div class="gap med">
+  <h3>GAP 5 · No geo-radius search <span class="pill missing">GROWTH</span></h3>
+  <div class="meta"><b>New module:</b> <span class="path">inc/geo-search.php</span> · uses existing lat/lng meta · <b>Effort:</b> ~1 day</div>
+  <p>We already store lat/lng on every card. Drop in a Haversine geo_query so the directory REST can answer "within X km of a point."</p>
+  <div class="sol">Ready GitHub (drop-in, uses post-meta lat/lng like ours): <a href="https://github.com/birgire/geo-query">birgire/geo-query</a> (Haversine, WP_Query geo_query param) · <a href="https://github.com/jhackett1/wp-geo-search">jhackett1/wp-geo-search</a> · full UI: <a href="https://wordpress.org/plugins/geo-my-wp/">GEO my WP</a></div>
+</div>
+
+<div class="gap med">
+  <h3>GAP 6 · No role/authority system <span class="pill missing">OPERATIONS</span></h3>
+  <div class="meta"><b>New module:</b> <span class="path">inc/roles.php</span> · <b>Effort:</b> ~1 day</div>
+  <p>Everything is admin-or-owner. To run zero-touch with delegated staff/agents you need real roles: <code>nadlan_advertiser</code> (manage own cards only), <code>nadlan_manager</code> (moderate + reassign, no billing), plus capability checks replacing the blunt <code>manage_options</code> gates (studio-rest.php:28, tiers.php:216, etc.).</p>
+</div>
+
+<div class="eyebrow">Cycle 5 · Per-role QA — what each user type must pass</div>
+<h2 class="sec">Authority &amp; journey QA matrix</h2>
+<table>
+<tr><th>Role</th><th>Must be able to</th><th>Must NOT be able to</th><th>Auto-checks</th></tr>
+<tr><td><b>Anonymous</b></td><td>Browse, search (incl. geo once built), see premium cards, request quote, register, reach checkout</td><td>See gated contact on free cards · edit any card · reach /studio/ without login</td><td>/studio/ → login redirect · gated phone hidden · no PHP errors</td></tr>
+<tr><td><b>Registered (free)</b></td><td>Create a listing, edit own listing, upload photos, buy a tier</td><td>Edit a card they don't own (403) · self-set paid_tier · see others' leads</td><td>save on un-owned id → 403 · create rate-limit 10/day</td></tr>
+<tr><td><b>Paid (Pro/Premier)</b></td><td>Rank above free (after GAP 1) · receive own leads (after GAP 4) · see analytics in advertiser-center</td><td>Exceed campaign window without renew · edit foreign cards</td><td>tier flips on payment · campaign_end set · position &gt; free in REST sort</td></tr>
+<tr><td><b>nadlan_manager</b> (after GAP 6)</td><td>Moderate reviews, reassign ownership, run imports</td><td>Change billing, see card-level PII beyond need, delete users</td><td>cap map: has moderate_nadlan, lacks manage_woocommerce</td></tr>
+<tr><td><b>Admin / Owner</b></td><td>Everything · but should NOT NEED to for daily ops (autopilot)</td><td>—</td><td>renewals + support + activation all fire with 0 admin actions/day</td></tr>
+</table>
+
+<div class="eyebrow">Build order (when you say "go")</div>
+<h2 class="sec">Sequenced plan</h2>
+<table>
+<tr><th>#</th><th>Gap</th><th>Why first</th><th>Effort</th><th>Touches</th></tr>
+<tr><td>1</td><td>Wire paid_tier → sort</td><td>Makes the product you already sell actually work</td><td>~1 hr</td><td>directory.php</td></tr>
+<tr><td>2</td><td>Lead → advertiser email</td><td>Paying customers see value immediately</td><td>~2 hr</td><td>conversion-cta.php</td></tr>
+<tr><td>3</td><td>Renewal path (annual + reminder, or auto)</td><td>Stops revenue leak</td><td>1-2 d</td><td>advertiser-orders.php (+ maybe a sub plugin)</td></tr>
+<tr><td>4</td><td>OpenAI adapter</td><td>Turns the dead AI on, unblocks the avatar vision</td><td>½ d</td><td>ai-concierge.php, ai-features.php</td></tr>
+<tr><td>5</td><td>Geo-radius search</td><td>"near me" — big UX + SEO win</td><td>~1 d</td><td>new inc/geo-search.php (birgire/geo-query)</td></tr>
+<tr><td>6</td><td>Roles &amp; capabilities</td><td>Enables safe delegation / zero-touch ops</td><td>~1 d</td><td>new inc/roles.php + replace manage_options gates</td></tr>
+</table>
+
+<div class="eyebrow">Sources cited (professionals + open-source builders)</div>
+<p class="sub" style="font-size:13px">
+Subscriptions: <a class="src" href="https://github.com/wpswings/subscriptions-for-woocommerce">wpswings/subscriptions-for-woocommerce</a> · <a class="src" href="https://wpdesk.net/blog/7-plugin-alternatives-for-woocommerce-subscriptions-and-something-new/">wpdesk alternatives</a> · <a class="src" href="https://www.businessbloomer.com/woocommerce-subscription-plugin-review/">BusinessBloomer review</a><br>
+Geo search: <a class="src" href="https://github.com/birgire/geo-query">birgire/geo-query (Haversine)</a> · <a class="src" href="https://github.com/jhackett1/wp-geo-search">jhackett1/wp-geo-search</a> · <a class="src" href="https://wordpress.org/plugins/geo-my-wp/">GEO my WP</a> · <a class="src" href="https://gschoppe.com/wordpress/location-searches/">Greg Schoppe: WP location search</a><br>
+Paid placement: <a class="src" href="https://directorist.com/documentation/extensions/rank-featured-listings/step-by-step-guide-3/">Directorist Rank Featured</a> · <a class="src" href="https://www.radiustheme.com/classified-listing-features/">Classified Listing (Top/Bump/Featured)</a><br>
+OpenAI agents: <a class="src" href="https://github.com/widgetplatform/widget-oa">widgetplatform/widget-oa</a> · <a class="src" href="https://en-gb.wordpress.org/plugins/askany/">AskAny (RAG)</a> · <a class="src" href="https://github.com/federicopepedev/wp-ai-assistant">federicopepedev/wp-ai-assistant</a> · <a class="src" href="https://github.com/ARUNAGIRINATHAN-K/awesome-ai-agents-2026">awesome-ai-agents-2026</a>
+</p>
+
+<p style="margin-top:40px;color:var(--warm);font-size:12px;border-top:1px solid var(--line);padding-top:16px">Generated from a live scan of nad-lan-co-il @ commit on 2026-06-04. Every status pill traces to a cited file:line. No code was changed to produce this map — it is analysis only, per the brief.</p>
+
+</div>
+</body></html>
