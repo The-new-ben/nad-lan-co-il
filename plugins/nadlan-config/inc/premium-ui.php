@@ -167,6 +167,26 @@ if ( ! function_exists( 'nadlan_premium_css' ) ) {
 	box-shadow:inset 0 1px 0 rgba(255,255,255,.2);
 }
 .nldc-media-mark .nl-mark{width:24px!important;height:24px!important}
+/* Mark-only tile: a professional with no owner photo — profession mark on the
+   premium blueprint backdrop, never a stock face. */
+.nldc-media.is-markonly{
+	background:
+		radial-gradient(120% 100% at 50% 0%,rgba(216,183,99,.18),transparent 60%),
+		linear-gradient(160deg,#15302F,#0B1717 70%)!important;
+	display:grid!important;place-items:center!important;
+}
+.nldc-media.is-markonly::after{
+	background:linear-gradient(180deg,transparent 40%,rgba(5,13,13,.5))!important;
+}
+.nldc-media-bigmark{
+	position:relative;z-index:3;
+	width:78px;height:78px;display:grid;place-items:center;
+	color:#E7D7AE;
+	border-radius:18px;
+	background:rgba(255,255,255,.04);
+	box-shadow:inset 0 0 0 1px rgba(231,215,174,.28);
+}
+.nldc-media-bigmark .nl-mark{width:46px;height:46px;color:#E7D7AE;display:block}
 .nldir-results .nldc.has-media .nldc-top,
 .nldir-results .nldc.has-media .nldc-rate,
 .nldir-results .nldc.has-media .nldc-meta,
@@ -703,7 +723,7 @@ CSS;
 			'{{NL_REAL_HERO}}'         => esc_url( $asset( 'hero-tel-aviv-coast.jpg' ) ),
 			'{{NL_REAL_PROJECT}}'      => esc_url( $asset( 'fallback-project-coast.jpg' ) ),
 			'{{NL_REAL_PROPERTY}}'     => esc_url( $asset( 'fallback-property-interior.jpg' ) ),
-			'{{NL_REAL_PROFESSIONAL}}' => esc_url( $asset( 'fallback-professional-consultant.jpg' ) ),
+			'{{NL_REAL_PROFESSIONAL}}' => esc_url( $asset( 'fallback-property-interior.jpg' ) ),
 		) );
 	}
 }

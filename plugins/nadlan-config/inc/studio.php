@@ -130,7 +130,7 @@ if ( ! function_exists( 'nadlan_studio_render_denied' ) ) {
 
 if ( ! function_exists( 'nadlan_studio_render_picker' ) ) {
 	function nadlan_studio_render_picker() {
-		$studio_photo = function_exists( 'nadlan_real_photo_asset_url' ) ? nadlan_real_photo_asset_url( 'fallback-professional-consultant.jpg' ) : '';
+		$studio_photo = function_exists( 'nadlan_real_photo_asset_url' ) ? nadlan_real_photo_asset_url( 'fallback-property-interior.jpg' ) : '';
 		get_header();
 		echo nadlan_studio_css();
 		?>
@@ -180,7 +180,7 @@ if ( ! function_exists( 'nadlan_studio_render_editor' ) ) {
 		$nonce = wp_create_nonce( 'wp_rest' );
 		$rest_root = esc_url( rest_url( 'nadlan/v1/studio/' . $id ) );
 		$studio_photo = function_exists( 'nadlan_card_photo_url' ) ? nadlan_card_photo_url( $id ) : array( 'url' => '', 'real' => false );
-		$studio_photo_url = ! empty( $studio_photo['url'] ) ? $studio_photo['url'] : ( function_exists( 'nadlan_real_photo_asset_url' ) ? nadlan_real_photo_asset_url( 'fallback-professional-consultant.jpg' ) : '' );
+		$studio_photo_url = ! empty( $studio_photo['url'] ) ? $studio_photo['url'] : ( function_exists( 'nadlan_real_photo_asset_url' ) ? nadlan_real_photo_asset_url( 'fallback-property-interior.jpg' ) : '' );
 		get_header();
 		echo nadlan_studio_css();
 		?>

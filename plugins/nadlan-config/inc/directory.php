@@ -71,12 +71,14 @@ if ( ! function_exists( 'nadlan_card_photo_url' ) ) {
 		if ( $type === 'nadlan_property' ) {
 			$files = array( 'fallback-property-interior.jpg', 'fallback-project-coast.jpg' );
 		} elseif ( $type === 'nadlan_project' ) {
-			$files = array( 'fallback-project-coast.jpg', 'fallback-project-model.jpg' );
+			// Projects are buildings — only architectural, face-free fallbacks.
+			$files = array( 'fallback-project-coast.jpg', 'fallback-property-interior.jpg' );
 		} else {
-			$prof = (string) get_post_meta( $post_id, 'profession', true );
-			$files = in_array( $prof, array( 'architect', 'kablan', 'mefakeach' ), true )
-				? array( 'fallback-project-model.jpg', 'fallback-professional-consultant.jpg' )
-				: array( 'fallback-professional-consultant.jpg', 'fallback-project-model.jpg' );
+			// Professionals are PEOPLE. Never put a stock photo of a stranger's face on
+			// a professional card — it implies that person is the professional (deceptive,
+			// and against our no-fake-faces rule). With no owner photo, the card falls
+			// back to the SVG profession mark (handled by the card renderer), not a photo.
+			return array( 'url' => '', 'real' => false );
 		}
 		$file = $files[ absint( $post_id ) % count( $files ) ];
 		return array( 'url' => nadlan_real_photo_asset_url( $file ), 'real' => false );
@@ -86,7 +88,19 @@ if ( ! function_exists( 'nadlan_card_photo_url' ) ) {
 if ( ! function_exists( 'nadlan_card_media_html' ) ) {
 	function nadlan_card_media_html( $post_id, $label = '', $icon = '' ) {
 		$photo = nadlan_card_photo_url( $post_id );
-		if ( empty( $photo['url'] ) ) { return ''; }
+		// No photo (e.g. a professional with no owner image): render a branded
+		// mark-only tile — the profession SVG mark on the premium blueprint
+		// background — instead of a stock face. Honest and premium.
+		if ( empty( $photo['url'] ) ) {
+			if ( $icon === '' ) { return ''; }
+			$out  = '<div class="nldc-media is-markonly">';
+			if ( $label !== '' ) {
+				$out .= '<span class="nldc-media-label">' . esc_html( $label ) . '</span>';
+			}
+			$out .= '<span class="nldc-media-bigmark" aria-hidden="true"><svg class="nl-mark" viewBox="0 0 48 48"><use href="#' . esc_attr( $icon ) . '"></use></svg></span>';
+			$out .= '</div>';
+			return $out;
+		}
 		$class = ! empty( $photo['real'] ) ? ' has-real-photo' : ' has-fallback-photo';
 		$out  = '<div class="nldc-media' . esc_attr( $class ) . '">';
 		$out .= '<img src="' . esc_url( $photo['url'] ) . '" alt="" loading="lazy" decoding="async">';
