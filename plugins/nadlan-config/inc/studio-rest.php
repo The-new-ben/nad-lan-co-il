@@ -209,8 +209,8 @@ add_action( 'rest_api_init', function () {
 			$src = sanitize_textarea_field( (string) ( $p['source'] ?? '' ) );
 			$mode= sanitize_key( (string) ( $p['mode'] ?? 'improve' ) );
 			if ( mb_strlen( $src ) < 5 ) { return new WP_Error( 'too_short', 'too_short', array( 'status' => 400 ) ); }
-			if ( ! function_exists( 'nadlan_ai_enabled' ) || ! nadlan_ai_enabled() ) {
-				return new WP_REST_Response( array( 'ok' => false, 'error' => 'AI_DISABLED', 'message' => 'הצ\'אט החכם לא פעיל. הזינו מפתח Anthropic ב-Settings → NadLan AI כדי להפעיל את עוזר הכתיבה.' ), 503 );
+			if ( ! function_exists( 'nadlan_ai_chat' ) || ! function_exists( 'nadlan_ai_enabled' ) || ! nadlan_ai_enabled() ) {
+				return new WP_REST_Response( array( 'ok' => false, 'error' => 'AI_DISABLED', 'message' => 'עוזר הכתיבה אינו פעיל כרגע. הגדירו ספק ומפתח ב-Settings -> NadLan AI.' ), 503 );
 			}
 			$prompts = array(
 				'improve' => 'שפר את הטקסט הבא לתיאור מקצועי, חם, אמין ותמציתי (3-5 משפטים) לעסק נדל"ן. שמור על העובדות. אל תוסיף בלוטים שלא במקור. עברית פשוטה.',
@@ -220,26 +220,13 @@ add_action( 'rest_api_init', function () {
 				'friendly'=> 'הפוך את הטקסט הבא לחם ואנושי יותר.',
 			);
 			$instruction = $prompts[ $mode ] ?? $prompts['improve'];
-			$body = array(
-				'model'      => apply_filters( 'nadlan_ai_model', 'claude-haiku-4-5' ),
-				'max_tokens' => 600,
-				'system'     => $instruction . " החזר רק את הטקסט המתוקן, בלי מבוא, בלי הסבר.",
-				'messages'   => array( array( 'role' => 'user', 'content' => $src ) ),
+			$out = nadlan_ai_chat(
+				$instruction . " החזר רק את הטקסט המתוקן, בלי מבוא, בלי הסבר.",
+				array( array( 'role' => 'user', 'content' => $src ) ),
+				600
 			);
-			$resp = wp_remote_post( 'https://api.anthropic.com/v1/messages', array(
-				'headers' => array(
-					'x-api-key' => nadlan_ai_key(),
-					'anthropic-version' => '2023-06-01',
-					'content-type' => 'application/json',
-				),
-				'body' => wp_json_encode( $body, JSON_UNESCAPED_UNICODE ),
-				'timeout' => 30,
-			) );
-			if ( is_wp_error( $resp ) ) { return new WP_Error( 'upstream', $resp->get_error_message() ); }
-			$data = json_decode( wp_remote_retrieve_body( $resp ), true );
-			$out  = '';
-			foreach ( (array) ( $data['content'] ?? array() ) as $block ) {
-				if ( ( $block['type'] ?? '' ) === 'text' ) { $out .= $block['text']; }
+			if ( is_wp_error( $out ) ) {
+				return new WP_REST_Response( array( 'ok' => false, 'error' => $out->get_error_code(), 'message' => 'עוזר הכתיבה אינו זמין כרגע. נסו שוב מאוחר יותר.' ), 503 );
 			}
 			return array( 'ok' => true, 'text' => trim( $out ) );
 		},

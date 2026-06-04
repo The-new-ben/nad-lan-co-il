@@ -99,6 +99,7 @@ rename CPT, redefine the category taxonomy + colours, point `import.php` at the 
 | `inc/advertiser-center.php` | DNA·CODE | Customer-facing paid advertiser center: owned assets, completion, orders, views, inquiries, Studio links, upgrade paths. |
 | `inc/advertiser-orders.php` | DNA·CODE | Woo paid order bridge: `card_id` to `paid_tier`, `campaign_end`, paid order/product ids, and daily expiry downgrade. |
 | `inc/lead-drip.php` | DNA·CODE | 6-step nurture sequence. Portable. |
+| `inc/ai-provider.php` | DNA·CODE | Provider-agnostic AI adapter for concierge, Studio copy, listing description, and NL search. Default OpenAI, Anthropic fallback, cost guard, usage trace. |
 | `lead-funnel.md` | DNA·DOC | Funnel design. Portable. |
 | `advertiser-monetization-system.md` | DNA·DOC | Self-serve advertiser journey standard: pay, edit, upload, report, renew. |
 | `monetization-lawyer-angle.md` | SITE·DOC | RE-lawyer lead angle (owner is the expert). |

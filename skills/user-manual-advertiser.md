@@ -33,7 +33,7 @@ videos, and an exact map pin — all without ever entering wp-admin.
 | Section | What it does | Saved on |
 |---|---|---|
 | **תמונות** | Drag-and-drop photo upload; first photo becomes the cover; click ✕ to delete. JPG/PNG/WEBP up to 10MB. | Each upload — auto-save |
-| **סיפור העסק** | Tagline + full description. Five "AI assist" buttons (improve / shorter / longer / professional / friendly) call our Claude concierge to rewrite the text. | Click "שמירה" |
+| **סיפור העסק** | Tagline + full description. Five "AI assist" buttons (improve / shorter / longer / professional / friendly) call the NadLan AI adapter to rewrite the text. | Click "שמירה" |
 | **מפה** | Leaflet + OpenStreetMap map. **Drag the pin** to your exact location — lat/lng update automatically. | Click "שמירה" |
 | **פרטי הפרויקט / פרטי בעל המקצוע / פרטי הנכס** | Type-specific fields (units / status / יזם · התמחות / ותק · מחיר / חדרים / מ״ר). | Click "שמירה" |
 | **מיקום ויצירת קשר** | עיר, כתובת, טלפון, אימייל, אתר. | Click "שמירה" |
@@ -67,11 +67,13 @@ Below the description there are 5 buttons:
 | רשמי | More professional/formal tone. |
 | חם ואנושי | Warmer, more human tone. |
 
-**Requirements:** the owner must configure an Anthropic API key in
-*wp-admin → Settings → NadLan AI*. Without it the buttons return a friendly
-error explaining how to enable.
+**Requirements:** the owner must configure an AI provider and key in
+*wp-admin -> Settings -> NadLan AI*. Default provider is OpenAI; Anthropic remains
+available as a fallback. Without a key the buttons return a friendly error
+explaining how to enable.
 
-**Cost:** ~$0.001 per call (Claude Haiku).
+**Cost:** tracked by the monthly usage counter in Settings -> NadLan AI. Exact
+cost depends on the selected provider and model.
 
 ---
 
@@ -104,7 +106,7 @@ After Save, the public profile page renders:
 | "אין הרשאה" page when entering /studio/?id=N | Card owner ID does not match the logged-in user | Verify the claim was approved + the WP user matches |
 | Photo upload fails with "bad_type" | File is not JPG/PNG/WEBP/GIF | Convert to JPG |
 | Photo upload fails with "too_big" | File > 10MB | Resize before upload |
-| AI buttons return "AI_DISABLED" | No Anthropic API key set | wp-admin → Settings → NadLan AI → paste key |
+| AI buttons return "AI_DISABLED" | No active provider key set | wp-admin -> Settings -> NadLan AI -> choose provider and paste key |
 | Map shows blank tiles | OpenStreetMap CDN blocked by network | Try another network; OSM has no API key needed |
 | Save returns red toast | A field failed sanitization | Open browser DevTools → Network → see which field |
 | Public profile doesn't show new photos | Page caching (Yoast/host) | Clear cache; the studio invalidates the social-proof transient automatically but not 3rd-party page caches |
@@ -151,3 +153,5 @@ When running Journey 2 (the Rainbow Project advertiser):
 ## Revision log
 - 2026-06-03 — Created (Claude). Pairs with `inc/studio.php`,
   `inc/studio-rest.php`, `inc/profile-extras.php` in plugin v1.41.0.
+- 2026-06-05 - GAP 4 update (Codex). Studio AI assist now uses the shared
+  provider adapter. Default provider is OpenAI; Anthropic is fallback only.
