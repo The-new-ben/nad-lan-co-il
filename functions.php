@@ -74,6 +74,73 @@ if ( ! function_exists( 'nadlan_revenue_enqueue_styles' ) ) :
 endif;
 add_action( 'wp_enqueue_scripts', 'nadlan_revenue_enqueue_styles' );
 
+/* ---------------------------------------------------------------------------
+ * Accessibility widget (IS 5568 / WCAG) — self-contained JS, front-end only.
+ * ------------------------------------------------------------------------- */
+if ( ! function_exists( 'nadlan_revenue_enqueue_accessibility' ) ) :
+	function nadlan_revenue_enqueue_accessibility() {
+		if ( is_admin() ) { return; }
+		$path = get_parent_theme_file_path( 'assets/js/nadlan-accessibility.js' );
+		if ( ! file_exists( $path ) ) { return; }
+		wp_enqueue_script(
+			'nadlan-accessibility',
+			get_parent_theme_file_uri( 'assets/js/nadlan-accessibility.js' ),
+			array(),
+			(string) filemtime( $path ),
+			true
+		);
+	}
+endif;
+add_action( 'wp_enqueue_scripts', 'nadlan_revenue_enqueue_accessibility' );
+
+/* ---------------------------------------------------------------------------
+ * CMS-editable hero image. Adds a Customizer control (Appearance → Customize →
+ * "נדל״ן — תמונת שער") so the owner can swap the homepage/hero image without code.
+ * When set, it overrides the CSS --nlx-hero variable via an inline <style>.
+ * ------------------------------------------------------------------------- */
+if ( ! function_exists( 'nadlan_revenue_customize_hero' ) ) :
+	function nadlan_revenue_customize_hero( $wp_customize ) {
+		$wp_customize->add_section( 'nadlan_premium_media', array(
+			'title'    => 'נדל״ן — תמונות פרימיום',
+			'priority' => 30,
+		) );
+		$fields = array(
+			'nadlan_hero_image'     => 'תמונת שער (עמוד הבית / ארכיונים)',
+			'nadlan_coast_image'    => 'תמונת קו חוף (כרטיסי פרויקטים)',
+			'nadlan_interior_image' => 'תמונת פנים (נכסים)',
+		);
+		foreach ( $fields as $key => $label ) {
+			$wp_customize->add_setting( $key, array(
+				'default'           => '',
+				'sanitize_callback' => 'esc_url_raw',
+				'transport'         => 'refresh',
+			) );
+			$wp_customize->add_control( new WP_Customize_Image_Control( $wp_customize, $key, array(
+				'label'   => $label,
+				'section' => 'nadlan_premium_media',
+				'settings'=> $key,
+			) ) );
+		}
+	}
+endif;
+add_action( 'customize_register', 'nadlan_revenue_customize_hero' );
+
+if ( ! function_exists( 'nadlan_revenue_hero_inline_css' ) ) :
+	function nadlan_revenue_hero_inline_css() {
+		$hero     = esc_url( (string) get_theme_mod( 'nadlan_hero_image', '' ) );
+		$coast    = esc_url( (string) get_theme_mod( 'nadlan_coast_image', '' ) );
+		$interior = esc_url( (string) get_theme_mod( 'nadlan_interior_image', '' ) );
+		if ( ! $hero && ! $coast && ! $interior ) { return; }
+		$vars = '';
+		if ( $hero )     { $vars .= '--nlx-hero:url("' . $hero . '");'; }
+		if ( $coast )    { $vars .= '--nlx-coast:url("' . $coast . '");'; }
+		if ( $interior ) { $vars .= '--nlx-interior:url("' . $interior . '");'; }
+		echo "\n<style id=\"nadlan-hero-cms\">:root{" . $vars . "}</style>\n";
+	}
+endif;
+add_action( 'wp_head', 'nadlan_revenue_hero_inline_css', 99 );
+
+
 if ( ! function_exists( 'nadlan_revenue_block_styles' ) ) :
 	/**
 	 * Registers custom block styles.
