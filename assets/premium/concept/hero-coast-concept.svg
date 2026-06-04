@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 840" role="img" aria-labelledby="title desc">
+  <title id="title">Homepage coastal skyline hero concept</title>
+  <desc id="desc">Original wide hero concept of an Israeli coastal skyline, sea horizon, towers, and architectural blueprint drafting lines.</desc>
+  <defs>
+    <linearGradient id="field" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#071313"/>
+      <stop offset=".44" stop-color="#113332"/>
+      <stop offset="1" stop-color="#071010"/>
+    </linearGradient>
+    <radialGradient id="champagne-glow" cx=".76" cy=".22" r=".65">
+      <stop offset="0" stop-color="#d7c39a" stop-opacity=".28"/>
+      <stop offset=".42" stop-color="#d7c39a" stop-opacity=".07"/>
+      <stop offset="1" stop-color="#d7c39a" stop-opacity="0"/>
+    </radialGradient>
+    <pattern id="grid" width="96" height="96" patternUnits="userSpaceOnUse">
+      <path d="M96 0H0v96" fill="none" stroke="#d7c39a" stroke-opacity=".07" stroke-width="1"/>
+      <path d="M0 48h96M48 0v96" fill="none" stroke="#d7c39a" stroke-opacity=".032" stroke-width="1"/>
+    </pattern>
+  </defs>
+  <rect width="1920" height="840" fill="url(#field)"/>
+  <rect width="1920" height="840" fill="url(#champagne-glow)"/>
+  <rect width="1920" height="840" fill="url(#grid)"/>
+  <path d="M0 540c220-38 390-24 590-56 238-38 404-116 664-82 238 31 406 112 666 56v382H0z" fill="#091919" opacity=".45"/>
+  <g fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M112 540c204-30 352-28 552-52 224-27 394-82 630-50 194 26 334 70 512 40" stroke="#f4dfaa" stroke-opacity=".23" stroke-width="2"/>
+    <path d="M96 616c192-22 362-20 562-34 214-15 388-46 584-30 222 18 384 48 582 18" stroke="#f4dfaa" stroke-opacity=".17" stroke-width="2"/>
+    <path d="M96 704c140 14 274 14 412 0s274-14 414 0 274 14 412 0 274-14 414 0" stroke="#d7c39a" stroke-opacity=".16" stroke-width="2"/>
+    <path d="M316 512V350l50-36 50 36v162M416 512V260l82-38 82 38v252M580 512V318l66-34 66 34v194M760 512V204l102-66 102 66v308M964 512V292l70-32 70 32v220M1142 512V176l120-58 120 58v336M1382 512V336l72-42 72 42v176M1526 512V392l48-30 48 30v120" stroke="#f4dfaa" stroke-opacity=".58" stroke-width="3"/>
+    <path d="M458 292h78M458 336h78M458 380h78M458 424h78M804 250h116M804 304h116M804 358h116M804 412h116M1188 226h142M1188 284h142M1188 342h142M1188 400h142" stroke="#d7c39a" stroke-opacity=".24" stroke-width="2"/>
+    <path d="M248 580h1416" stroke="#f4dfaa" stroke-opacity=".26" stroke-width="2.4"/>
+    <path d="M204 186h210M204 218h126" stroke="#d7c39a" stroke-opacity=".43" stroke-width="3"/>
+    <path d="M1532 136l96-96M1627 42l38 124-134-32" stroke="#d7c39a" stroke-opacity=".44" stroke-width="3"/>
+    <circle cx="1626" cy="136" r="96" stroke="#d7c39a" stroke-opacity=".22" stroke-width="2"/>
+  </g>
+</svg>
