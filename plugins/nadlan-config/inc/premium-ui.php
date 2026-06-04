@@ -236,10 +236,17 @@ if ( ! function_exists( 'nadlan_premium_css' ) ) {
 	border-bottom:1px solid var(--nl-hairline)!important;
 }
 .nlpf-av{
-	background:var(--nl-card)!important;
-	border:1px solid var(--nl-hairline)!important;
+	background:var(--nl-band)!important;
+	border:4px solid #fff!important;
 	box-shadow:var(--nl-shadow-md);
+	color:var(--pc,var(--nl-ink));
+	font-size:0!important; /* kills the leftover sprite-id text node */
+	display:grid;place-items:center;
 }
+.nlpf-av .nl-mark{width:46px;height:46px;color:var(--pc,var(--nl-ink));display:block}
+.nlpf-sub span{display:inline-flex;align-items:center;gap:6px}
+.nlpf-reg .nl-ico{color:var(--nl-olive)}
+.nlpf-call .nl-ico{width:16px;height:16px}
 .nlpf-pill{
 	background:transparent!important;color:var(--nl-warm)!important;
 	border-bottom:1px solid var(--nl-gold)!important;

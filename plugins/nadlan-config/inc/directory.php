@@ -367,22 +367,22 @@ if ( ! function_exists( 'nadlan_dir_profile_header' ) ) {
 <div class="nlpf" dir="rtl" style="--pc:<?php echo esc_attr( $pm['color'] ); ?>;--ps:<?php echo esc_attr( $pm['soft'] ); ?>">
 	<div class="nlpf-banner"></div>
 	<div class="nlpf-head">
-		<span class="nlpf-av"><?php echo esc_html( $pm['icon'] ); ?></span>
+		<span class="nlpf-av" aria-hidden="true"><svg class="nl-mark" viewBox="0 0 48 48"><use href="#<?php echo esc_attr( $pm['icon'] ); ?>"></use></svg></span>
 		<div class="nlpf-id">
 			<div class="nlpf-badges">
 				<span class="nlpf-pill"><?php echo esc_html( $pm['label'] ); ?></span>
 				<?php if ( $verified ) : ?><span class="nlpf-vf">✓ בעלות מאומתת</span><?php endif; ?>
-				<?php if ( $reg ) : ?><span class="nlpf-reg">🛡️ רשם הקבלנים #<?php echo esc_html( $reg ); ?></span><?php endif; ?>
+				<?php if ( $reg ) : ?><span class="nlpf-reg"><svg class="nl-ico" aria-hidden="true" viewBox="0 0 16 16"><path fill="none" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round" d="M8 1.5l5.5 2v4c0 3.5-2.5 6-5.5 7-3-1-5.5-3.5-5.5-7v-4l5.5-2z"/><path fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" d="M5.5 8l2 2 3-4"/></svg>רשם הקבלנים #<?php echo esc_html( $reg ); ?></span><?php endif; ?>
 			</div>
 			<h1 class="nlpf-name"><?php echo esc_html( $title ); ?></h1>
 			<div class="nlpf-sub">
-				<?php if ( $city ) : ?><span>📍 <?php echo esc_html( $city ); ?></span><?php endif; ?>
+				<?php if ( $city ) : ?><span><svg class="nl-ico" aria-hidden="true" viewBox="0 0 16 16"><path fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" d="M8 14s5-4.5 5-8.5A5 5 0 1 0 3 5.5C3 9.5 8 14 8 14z"/><circle cx="8" cy="5.5" r="1.8" fill="none" stroke="currentColor" stroke-width="1.4"/></svg><?php echo esc_html( $city ); ?></span><?php endif; ?>
 				<?php if ( $cls ) : ?><span><?php echo esc_html( $cls ); ?></span><?php endif; ?>
 			</div>
 			<div class="nlpf-rate"><?php echo $stars; ?></div>
 		</div>
 		<div class="nlpf-cta">
-			<?php if ( $phone ) : ?><a class="nlpf-call" href="tel:<?php echo esc_attr( preg_replace( '/[^0-9+]/', '', $phone ) ); ?>">📞 התקשרו</a><?php endif; ?>
+			<?php if ( $phone ) : ?><a class="nlpf-call" href="tel:<?php echo esc_attr( preg_replace( '/[^0-9+]/', '', $phone ) ); ?>"><svg class="nl-ico" aria-hidden="true" viewBox="0 0 16 16"><path fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" d="M5.5 2.5c.3 1 .7 2 1.2 2.8.2.3.1.7-.1 1l-.9.9c.7 1.4 1.8 2.5 3.2 3.2l.9-.9c.3-.2.7-.3 1-.1.8.5 1.8.9 2.8 1.2.4.1.6.5.6.9V14a1 1 0 0 1-1.1 1A11.5 11.5 0 0 1 2 4.1 1 1 0 0 1 3 3h1.6c.4 0 .8.2.9.6z"/></svg>התקשרו</a><?php endif; ?>
 			<button type="button" class="nlpf-quote" onclick="nadlanProQuote(<?php echo (int) $id; ?>,'<?php echo esc_js( $title ); ?>')">בקשת הצעת מחיר</button>
 		</div>
 	</div>
@@ -470,18 +470,18 @@ if ( ! function_exists( 'nadlan_dir_project_profile_header' ) ) {
 <div class="nlpf" dir="rtl" style="--pc:<?php echo esc_attr( $pm['color'] ); ?>;--ps:<?php echo esc_attr( $pm['soft'] ); ?>">
 	<div class="nlpf-banner"></div>
 	<div class="nlpf-head">
-		<span class="nlpf-av"><?php echo esc_html( $pm['icon'] ); ?></span>
+		<span class="nlpf-av" aria-hidden="true"><svg class="nl-mark" viewBox="0 0 48 48"><use href="#<?php echo esc_attr( $pm['icon'] ); ?>"></use></svg></span>
 		<div class="nlpf-id">
 			<div class="nlpf-badges">
 				<span class="nlpf-pill"><?php echo esc_html( $pm['label'] ); ?></span>
-				<span class="nlpf-reg">🛡️ מאגר התחדשות עירונית · data.gov.il</span>
+				<span class="nlpf-reg"><svg class="nl-ico" aria-hidden="true" viewBox="0 0 16 16"><path fill="none" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round" d="M8 1.5l5.5 2v4c0 3.5-2.5 6-5.5 7-3-1-5.5-3.5-5.5-7v-4l5.5-2z"/><path fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" d="M5.5 8l2 2 3-4"/></svg>מאגר התחדשות עירונית · data.gov.il</span>
 			</div>
 			<h1 class="nlpf-name"><?php echo esc_html( $title ); ?></h1>
 			<div class="nlpf-sub">
-				<?php if ( $city ) : ?><span>📍 <?php echo esc_html( $city ); ?><?php echo $addr ? ', ' . esc_html( $addr ) : ''; ?></span><?php endif; ?>
-				<?php if ( $units > 0 ) : ?><span>🏠 <?php echo number_format( $units ); ?> יח״ד</span><?php endif; ?>
-				<?php if ( $status ) : ?><span>📋 <?php echo esc_html( $status ); ?></span><?php endif; ?>
-				<?php if ( $dev ) : ?><span>👤 <?php echo esc_html( $dev ); ?></span><?php endif; ?>
+				<?php if ( $city ) : ?><span><svg class="nl-ico" aria-hidden="true" viewBox="0 0 16 16"><path fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" d="M8 14s5-4.5 5-8.5A5 5 0 1 0 3 5.5C3 9.5 8 14 8 14z"/><circle cx="8" cy="5.5" r="1.8" fill="none" stroke="currentColor" stroke-width="1.4"/></svg><?php echo esc_html( $city ); ?><?php echo $addr ? ', ' . esc_html( $addr ) : ''; ?></span><?php endif; ?>
+				<?php if ( $units > 0 ) : ?><span><svg class="nl-ico" aria-hidden="true" viewBox="0 0 16 16"><path fill="none" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round" d="M2 7l6-5 6 5v7H2zM6.5 14v-4h3v4"/></svg><?php echo number_format( $units ); ?> יח״ד</span><?php endif; ?>
+				<?php if ( $status ) : ?><span><svg class="nl-ico" aria-hidden="true" viewBox="0 0 16 16"><rect x="3" y="2" width="10" height="12" rx="1.5" fill="none" stroke="currentColor" stroke-width="1.4"/><path fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" d="M6 6h4M6 9h4"/></svg><?php echo esc_html( $status ); ?></span><?php endif; ?>
+				<?php if ( $dev ) : ?><span><svg class="nl-ico" aria-hidden="true" viewBox="0 0 16 16"><circle cx="8" cy="5.5" r="2.5" fill="none" stroke="currentColor" stroke-width="1.4"/><path fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" d="M3 14c.5-2.5 2.5-4 5-4s4.5 1.5 5 4"/></svg><?php echo esc_html( $dev ); ?></span><?php endif; ?>
 			</div>
 		</div>
 		<div class="nlpf-cta">
