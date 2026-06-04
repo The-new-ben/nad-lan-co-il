@@ -532,6 +532,67 @@ if ( ! function_exists( 'nadlan_premium_css' ) ) {
 	.nldir-results .nldc:hover{transform:none!important}
 	.nldir-results .nldc.has-media:hover .nldc-media img{transform:none!important}
 }
+
+/* ===== 1.42.3 polish (post-QA fixes) ===== */
+
+/* Hero pill SVG mark (replaces the leaked sprite-ID text) */
+.nldir-pill-mark{
+	display:inline-flex;align-items:center;justify-content:center;
+	width:18px;height:18px;
+	margin-inline-end:6px;
+	vertical-align:-3px;
+}
+.nldir-pill-mark svg{width:16px;height:16px;color:currentColor;display:block;fill:none;stroke:currentColor}
+.nldir-pill{min-height:40px}
+.nldir-pill i{margin-inline-start:6px}
+
+/* Hero H1 contrast — light ink/cream on the dark blueprint hero (was dark on dark) */
+.nldir-hero h1{
+	color:#FAF8F3!important;
+	text-shadow:0 2px 24px rgba(0,0,0,.4);
+}
+.nldir-lead{color:rgba(250,248,243,.84)!important}
+.nldir-lead strong{color:#F4DFAA!important}
+.nldir-crumbs,.nldir-crumbs a{color:rgba(250,248,243,.7)!important}
+
+/* Duplicate H1 on single project/professional profiles:
+   the theme prints <h1 class="wp-block-post-title"> AND the plugin prints
+   <h1 class="nlpf-name"> with the same title. Demote the theme block-title
+   visually + semantically so there's one visible H1. */
+body.single-nadlan_project .wp-block-post-title,
+body.single-nadlan_professional .wp-block-post-title,
+body.single-nadlan_property .wp-block-post-title{
+	position:absolute!important;
+	width:1px!important;height:1px!important;
+	padding:0!important;margin:-1px!important;
+	overflow:hidden!important;clip:rect(0 0 0 0)!important;
+	white-space:nowrap!important;border:0!important;
+}
+
+/* Right-rail facet polish — premium quiet panel (was plain default) */
+.nldir-side{background:#fff;border:1px solid var(--nl-hairline);border-radius:14px;padding:18px}
+.nldir-fgroup + .nldir-fgroup{margin-top:18px;padding-top:18px;border-top:1px solid var(--nl-hairline)}
+.nldir-fgroup h4{margin-bottom:10px!important}
+.nldir-cityb i{color:var(--nl-warm);font-weight:600}
+
+/* Header global-nav submenu chevron — bump tap target while keeping the visual */
+.wp-block-navigation__submenu-icon{
+	min-width:24px!important;min-height:24px!important;
+	padding:8px!important;
+	display:inline-grid;place-items:center;
+}
+
+/* Strip generic theme post-meta on CPT profiles (Rainbow showed "Written by / in") */
+body.single-nadlan_project .wp-block-post-author,
+body.single-nadlan_project .wp-block-post-author-name,
+body.single-nadlan_project .wp-block-post-date,
+body.single-nadlan_project .wp-block-post-terms,
+body.single-nadlan_professional .wp-block-post-author,
+body.single-nadlan_professional .wp-block-post-author-name,
+body.single-nadlan_professional .wp-block-post-date,
+body.single-nadlan_property .wp-block-post-author,
+body.single-nadlan_property .wp-block-post-date{display:none!important}
+
 </style>
 CSS;
 		return strtr( $css, array(
