@@ -140,17 +140,58 @@ if ( ! function_exists( 'nadlan_studio_render_picker' ) ) {
 				<h1 style="font-family:var(--font-serif,serif)">סטודיו פרסום</h1>
 				<p style="color:#5a5a5a">העריכה הכי קלה של כרטיס נדל״ן. בלי קוד, בלי כאב ראש.</p>
 			</div>
-			<div id="nlst-my-cards" data-rest="<?php echo esc_url( rest_url( 'nadlan/v1/studio/mine' ) ); ?>">טוען…</div>
+			<!-- CREATE NEW LISTING (self-serve) -->
+			<div class="nlst-create" style="background:linear-gradient(135deg,#0c1c1b,#13302e 75%,#0c1c1b);color:#fff;border-radius:16px;padding:24px;margin-bottom:24px">
+				<h2 style="font-family:var(--font-serif,'Frank Ruhl Libre',serif);margin:0 0 6px;font-size:22px;color:#f3d99d">פרסום חדש</h2>
+				<p style="margin:0 0 16px;color:rgba(255,255,255,.78);font-size:14px">בחרו מה לפרסם, ותעברו ישר לעריכה: תמונות, תיאור, מפה ופרטי קשר.</p>
+				<div style="display:flex;gap:10px;flex-wrap:wrap;margin-bottom:14px">
+					<button type="button" class="nlst-ct" data-type="property" style="flex:1;min-width:150px;min-height:48px;border:1px solid rgba(243,217,157,.4);background:rgba(255,255,255,.06);color:#fff;border-radius:12px;font:inherit;font-weight:700;cursor:pointer">נכס למכירה / השכרה</button>
+					<button type="button" class="nlst-ct" data-type="project" style="flex:1;min-width:150px;min-height:48px;border:1px solid rgba(243,217,157,.4);background:rgba(255,255,255,.06);color:#fff;border-radius:12px;font:inherit;font-weight:700;cursor:pointer">פרויקט / יזם</button>
+					<button type="button" class="nlst-ct" data-type="professional" style="flex:1;min-width:150px;min-height:48px;border:1px solid rgba(243,217,157,.4);background:rgba(255,255,255,.06);color:#fff;border-radius:12px;font:inherit;font-weight:700;cursor:pointer">כרטיס בעל מקצוע</button>
+				</div>
+				<div style="display:flex;gap:8px;flex-wrap:wrap">
+					<input type="text" id="nlst-new-title" placeholder="שם הפרסום (אפשר לשנות אחר כך)" style="flex:1;min-width:200px;min-height:48px;border:0;border-radius:12px;padding:0 16px;font:inherit;font-size:15px;color:#11110f">
+					<button type="button" id="nlst-create-go" style="min-height:48px;padding:0 26px;border:0;border-radius:12px;background:linear-gradient(135deg,#a77c35,#d7bd82);color:#15120e;font:inherit;font-weight:800;cursor:pointer">צרו פרסום ←</button>
+				</div>
+				<p id="nlst-create-msg" style="margin:12px 0 0;font-size:13px;color:#f3d99d;min-height:18px"></p>
+			</div>
+
+			<div id="nlst-my-cards" data-rest="<?php echo esc_url( rest_url( 'nadlan/v1/studio/mine' ) ); ?>" data-create="<?php echo esc_url( rest_url( 'nadlan/v1/studio/create' ) ); ?>">טוען…</div>
 			<script>
 				(function(){
-					var el=document.getElementById('nlst-my-cards');
-					fetch(el.dataset.rest,{credentials:'include',headers:{'X-WP-Nonce':'<?php echo esc_js( wp_create_nonce( 'wp_rest' ) ); ?>'}})
+					var nonce='<?php echo esc_js( wp_create_nonce( 'wp_rest' ) ); ?>';
+					var my=document.getElementById('nlst-my-cards');
+					// --- create new listing ---
+					var chosen='property';
+					document.querySelectorAll('.nlst-ct').forEach(function(btn){
+						btn.addEventListener('click',function(){
+							chosen=btn.dataset.type;
+							document.querySelectorAll('.nlst-ct').forEach(function(b){b.style.background='rgba(255,255,255,.06)';b.style.borderColor='rgba(243,217,157,.4)';});
+							btn.style.background='rgba(243,217,157,.22)';btn.style.borderColor='#f3d99d';
+						});
+					});
+					document.querySelector('.nlst-ct').click();
+					var goBtn=document.getElementById('nlst-create-go'), msg=document.getElementById('nlst-create-msg');
+					goBtn.addEventListener('click',function(){
+						goBtn.disabled=true; msg.textContent='יוצר פרסום…';
+						fetch(my.dataset.create,{method:'POST',credentials:'include',headers:{'Content-Type':'application/json','X-WP-Nonce':nonce},body:JSON.stringify({type:chosen,title:document.getElementById('nlst-new-title').value})})
+							.then(function(r){return r.json();})
+							.then(function(d){
+								if(d&&d.ok&&d.edit_url){msg.textContent='✓ נוצר! מעבירים לעריכה…';location.href=d.edit_url;}
+								else{goBtn.disabled=false;msg.textContent=(d&&d.message)||'שגיאה ביצירת הפרסום.';}
+							})
+							.catch(function(){goBtn.disabled=false;msg.textContent='שגיאת רשת. נסו שוב.';});
+					});
+					// --- my cards ---
+					var el=my;
+					fetch(el.dataset.rest,{credentials:'include',headers:{'X-WP-Nonce':nonce}})
 						.then(function(r){return r.json();})
 						.then(function(d){
 							if(!d||!d.ok||!d.cards||d.cards.length===0){
-								el.innerHTML='<div style="text-align:center;padding:40px;background:#FBF9F5;border-radius:14px"><p>עדיין אין כרטיס מזוהה עליך. <a href="<?php echo esc_js( home_url( '/professionals/' ) ); ?>">חפש את הכרטיס שלך</a> ובקש בעלות.</p></div>';
+								el.innerHTML='<div style="text-align:center;padding:30px;background:#FBF9F5;border-radius:14px;color:#5a5a5a"><p>עדיין אין לכם פרסומים. צרו פרסום חדש למעלה, או <a href="<?php echo esc_js( home_url( '/professionals/' ) ); ?>" style="color:#9C7A3C">חפשו כרטיס קיים</a> ובקשו עליו בעלות.</p></div>';
 								return;
 							}
+							el.insertAdjacentHTML('beforebegin','<h2 style="font-family:var(--font-serif,serif);font-size:20px;margin:8px 0 14px">הפרסומים שלי</h2>');
 							var html='<div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:14px">';
 							d.cards.forEach(function(c){
 								var photoHint=c.photos_count===0?'<span style="color:#DC2626">⚠ אין תמונות</span>':'<span style="color:#059669">'+c.photos_count+' תמונות</span>';
