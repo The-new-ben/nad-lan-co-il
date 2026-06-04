@@ -303,4 +303,61 @@ add_action( 'rest_api_init', function () {
 			return array( 'ok' => true, 'cards' => $out );
 		},
 	) );
+
+	/* CREATE — a logged-in user creates a brand-new listing they own.
+	 * The "list your asset" entry point: a new advertiser who is NOT in the
+	 * gov.il import can publish a property / project / professional card from
+	 * scratch, then edit it in Studio. Owned immediately (owner_user_id +
+	 * claim_status=verified) and starts as a stub (data_quality=stub →
+	 * schema.php noindex guard keeps it out of the index until enriched). */
+	register_rest_route( 'nadlan/v1', '/studio/create', array(
+		'methods'             => 'POST',
+		'permission_callback' => function () {
+			return is_user_logged_in() ? true : new WP_Error( 'forbidden', 'יש להתחבר כדי לפרסם.', array( 'status' => 403 ) );
+		},
+		'callback'            => function ( $req ) {
+			$uid = get_current_user_id();
+			$p   = $req->get_json_params() ?: array();
+			$type_map = array(
+				'property'     => 'nadlan_property',
+				'project'      => 'nadlan_project',
+				'professional' => 'nadlan_professional',
+			);
+			$type = sanitize_key( (string) ( $p['type'] ?? '' ) );
+			if ( ! isset( $type_map[ $type ] ) ) {
+				return new WP_Error( 'bad_type', 'יש לבחור סוג פרסום.', array( 'status' => 400 ) );
+			}
+			$post_type = $type_map[ $type ];
+			$title = trim( mb_substr( sanitize_text_field( (string) ( $p['title'] ?? '' ) ), 0, 120 ) );
+			if ( $title === '' ) {
+				$defaults = array( 'property' => 'נכס חדש', 'project' => 'פרויקט חדש', 'professional' => 'כרטיס בעל מקצוע' );
+				$title = $defaults[ $type ];
+			}
+			// anti-abuse: max 10 new listings per user per day
+			$rk = 'nadlan_studio_create_' . $uid;
+			$ct = (int) get_transient( $rk );
+			if ( $ct >= 10 && ! current_user_can( 'manage_options' ) ) {
+				return new WP_Error( 'rate', 'הגעתם למספר הפרסומים המרבי להיום. נסו שוב מחר.', array( 'status' => 429 ) );
+			}
+			$new_id = wp_insert_post( array(
+				'post_type'   => $post_type,
+				'post_status' => 'publish',
+				'post_title'  => $title,
+				'post_author' => $uid,
+			), true );
+			if ( is_wp_error( $new_id ) ) { return $new_id; }
+			update_post_meta( $new_id, 'owner_user_id', (int) $uid );
+			update_post_meta( $new_id, 'claim_status', 'verified' );
+			update_post_meta( $new_id, 'data_quality', 'stub' );
+			update_post_meta( $new_id, 'paid_tier', 'free' );
+			update_post_meta( $new_id, 'created_via', 'studio_self_serve' );
+			set_transient( $rk, $ct + 1, DAY_IN_SECONDS );
+			return array(
+				'ok'        => true,
+				'id'        => $new_id,
+				'post_type' => $post_type,
+				'edit_url'  => home_url( '/studio/?id=' . $new_id ),
+			);
+		},
+	) );
 } );
