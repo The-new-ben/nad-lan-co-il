@@ -135,9 +135,9 @@ add_shortcode( 'nadlan_calc_capital_gains', function () {
 function nadlanCgt(){
 	var s=+document.getElementById('cgt-sell').value||0,b=+document.getElementById('cgt-buy').value||0,e=+document.getElementById('cgt-exp').value||0;
 	var gain=Math.max(0,s-b-e), tax=gain*0.25;
-	document.querySelector('#nlcgt .nlcalc-out').innerHTML='שבח (אומדן): ₪'+Math.round(gain).toLocaleString()+'<br>מס שבח משוער (25%): <span class="nlcalc-big">₪'+Math.round(tax).toLocaleString()+'</span><br><small style="color:#b4623f">לפני בדיקת פטורים — ייתכן שתהיו פטורים לחלוטין.</small>';
+	document.querySelector('#nlcgt .nlcalc-out').innerHTML='שבח (אומדן): ₪'+Math.round(gain).toLocaleString()+'<br>מס שבח משוער (25%): <span class="nlcalc-big">₪'+Math.round(tax).toLocaleString()+'</span><br><small style="color:#b4623f">לפני בדיקת פטורים. ייתכן שתהיו פטורים לחלוטין.</small>';
 }
-var nlCgtLead=<?php echo nadlan_calc_lead_js( 'מס שבח — בדיקת פטור' ); ?>;
+var nlCgtLead=<?php echo nadlan_calc_lead_js( 'מס שבח: בדיקת פטור' ); ?>;
 function nadlanCgtLead(){var n=document.getElementById('cgt-name').value,p=document.getElementById('cgt-phone').value;if(!p){alert('נא להשאיר טלפון');return;}nlCgtLead(n,p,'מס שבח calculator');document.querySelector('#nlcgt .nlcalc-cta').innerHTML='✓ הבקשה התקבלה, ניצור קשר לבדיקת זכאות.';}
 nadlanCgt();
 </script>
