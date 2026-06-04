@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1800 1600" role="img" aria-labelledby="title desc">
+  <title id="title">Premium concept art contact sheet</title>
+  <desc id="desc">Preview sheet for the original Nadlan blueprint concept SVG assets.</desc>
+  <defs>
+    <linearGradient id="sheet-bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#faf8f3"/>
+      <stop offset="1" stop-color="#efe7d8"/>
+    </linearGradient>
+    <filter id="shadow" x="-10%" y="-10%" width="120%" height="125%">
+      <feDropShadow dx="0" dy="18" stdDeviation="18" flood-color="#11110f" flood-opacity=".14"/>
+    </filter>
+  </defs>
+  <rect width="1800" height="1600" fill="url(#sheet-bg)"/>
+  <text x="120" y="116" fill="#1b1a17" font-family="Arial, sans-serif" font-size="38" font-weight="700">Nadlan premium concept art</text>
+  <text x="120" y="158" fill="#6d665c" font-family="Arial, sans-serif" font-size="20">Original SVG line art, no stock photos, no faces, no raster generation.</text>
+
+  <g filter="url(#shadow)">
+    <rect x="120" y="220" width="760" height="475" rx="24" fill="#0b1f1f"/>
+    <image href="skyline-telaviv-line.svg" x="120" y="220" width="760" height="475" preserveAspectRatio="xMidYMid slice"/>
+  </g>
+  <text x="120" y="735" fill="#1b1a17" font-family="Arial, sans-serif" font-size="22" font-weight="700">skyline-telaviv-line.svg</text>
+
+  <g filter="url(#shadow)">
+    <rect x="920" y="220" width="760" height="475" rx="24" fill="#0b1f1f"/>
+    <image href="hero-coast-concept.svg" x="920" y="220" width="760" height="475" preserveAspectRatio="xMidYMid slice"/>
+  </g>
+  <text x="920" y="735" fill="#1b1a17" font-family="Arial, sans-serif" font-size="22" font-weight="700">hero-coast-concept.svg</text>
+
+  <g filter="url(#shadow)">
+    <rect x="120" y="820" width="500" height="312" rx="22" fill="#0b1f1f"/>
+    <image href="project-concept.svg" x="120" y="820" width="500" height="312" preserveAspectRatio="xMidYMid slice"/>
+  </g>
+  <text x="120" y="1170" fill="#1b1a17" font-family="Arial, sans-serif" font-size="20" font-weight="700">project-concept.svg</text>
+
+  <g filter="url(#shadow)">
+    <rect x="650" y="820" width="500" height="312" rx="22" fill="#0b1f1f"/>
+    <image href="property-concept.svg" x="650" y="820" width="500" height="312" preserveAspectRatio="xMidYMid slice"/>
+  </g>
+  <text x="650" y="1170" fill="#1b1a17" font-family="Arial, sans-serif" font-size="20" font-weight="700">property-concept.svg</text>
+
+  <g filter="url(#shadow)">
+    <rect x="1180" y="820" width="500" height="312" rx="22" fill="#0b1f1f"/>
+    <image href="blueprint-texture.svg" x="1180" y="820" width="500" height="312" preserveAspectRatio="xMidYMid slice"/>
+  </g>
+  <text x="1180" y="1170" fill="#1b1a17" font-family="Arial, sans-serif" font-size="20" font-weight="700">blueprint-texture.svg</text>
+
+  <path d="M120 1286h1560" fill="none" stroke="#d7c39a" stroke-width="2"/>
+  <text x="120" y="1340" fill="#6d665c" font-family="Arial, sans-serif" font-size="19">Claude wiring target: replace stock-photo fallbacks in inc/premium-ui.php and inc/directory.php with these original concept assets.</text>
+  <text x="120" y="1376" fill="#6d665c" font-family="Arial, sans-serif" font-size="19">Palette: blueprint teal, ink, champagne. Visual language: architectural drawing, coastal Israeli real estate, restrained editorial luxury.</text>
+</svg>

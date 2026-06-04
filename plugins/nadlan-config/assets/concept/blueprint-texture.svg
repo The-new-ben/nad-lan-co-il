@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 240" role="img" aria-labelledby="title desc">
+  <title id="title">Blueprint texture</title>
+  <desc id="desc">Original tileable architectural blueprint texture in deep teal, champagne, and ink.</desc>
+  <defs>
+    <pattern id="minor-grid" width="24" height="24" patternUnits="userSpaceOnUse">
+      <path d="M24 0H0v24" fill="none" stroke="#d7c39a" stroke-opacity=".055" stroke-width="1"/>
+    </pattern>
+    <pattern id="major-grid" width="120" height="120" patternUnits="userSpaceOnUse">
+      <path d="M120 0H0v120" fill="none" stroke="#d7c39a" stroke-opacity=".14" stroke-width="1.2"/>
+      <path d="M0 60h120M60 0v120" fill="none" stroke="#d7c39a" stroke-opacity=".07" stroke-width="1"/>
+    </pattern>
+  </defs>
+  <rect width="240" height="240" fill="#0b1f1f"/>
+  <rect width="240" height="240" fill="url(#minor-grid)"/>
+  <rect width="240" height="240" fill="url(#major-grid)"/>
+  <g fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M18 42h42M18 52h24" stroke="#d7c39a" stroke-opacity=".18" stroke-width="1.6"/>
+    <path d="M188 32l24 24M212 56l8-30-32 6" stroke="#d7c39a" stroke-opacity=".24" stroke-width="1.6"/>
+    <circle cx="188" cy="56" r="24" stroke="#d7c39a" stroke-opacity=".12" stroke-width="1.2"/>
+    <path d="M42 192h60M42 202h32" stroke="#f4dfaa" stroke-opacity=".12" stroke-width="1.6"/>
+    <path d="M154 176l32-32M185 145l12 42-44-10" stroke="#f4dfaa" stroke-opacity=".18" stroke-width="1.6"/>
+  </g>
+</svg>

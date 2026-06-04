@@ -567,6 +567,12 @@ if ( ! function_exists( 'nadlan_dir_project_query' ) ) {
 	}
 }
 
+if ( ! function_exists( 'nadlan_concept_asset_url' ) ) {
+	function nadlan_concept_asset_url( $file ) {
+		return plugins_url( 'assets/concept/' . ltrim( (string) $file, '/' ), dirname( __DIR__ ) . '/nadlan-config.php' );
+	}
+}
+
 if ( ! function_exists( 'nadlan_dir_project_card' ) ) {
 	function nadlan_dir_project_card( $id ) {
 		$pm     = nadlan_dir_pt_meta( (string) get_post_meta( $id, 'project_type', true ) );
@@ -576,9 +582,31 @@ if ( ! function_exists( 'nadlan_dir_project_card' ) ) {
 		$dev    = nadlan_meta_norm( get_post_meta( $id, 'developer_name', true ) );
 		$tier   = (string) get_post_meta( $id, 'paid_tier', true );
 		$featured = in_array( $tier, array( 'pro', 'premier' ), true );
+
+		// owner-uploaded photo wins; otherwise we render an original architectural
+		// concept SVG (no stock photo, no faces). Alternate skyline vs tower by ID
+		// for visual variety across the grid.
+		$photo_url = '';
+		if ( has_post_thumbnail( $id ) ) {
+			$photo_url = get_the_post_thumbnail_url( $id, 'medium_large' );
+		} else {
+			$photos = array_filter( array_map( 'trim', explode( ',', (string) get_post_meta( $id, 'photos_csv', true ) ) ) );
+			foreach ( $photos as $p ) {
+				if ( preg_match( '~^https?://~i', $p ) ) { $photo_url = $p; break; }
+			}
+		}
+		$is_real_photo = $photo_url !== '';
+		if ( ! $is_real_photo ) {
+			$concept_files = array( 'skyline-telaviv-line.svg', 'project-concept.svg' );
+			$photo_url = nadlan_concept_asset_url( $concept_files[ absint( $id ) % count( $concept_files ) ] );
+		}
 		ob_start(); ?>
-<a class="nldc<?php echo $featured ? ' is-featured' : ''; ?>" href="<?php echo esc_url( get_permalink( $id ) ); ?>" style="--pc:<?php echo esc_attr( $pm['color'] ); ?>;--ps:<?php echo esc_attr( $pm['soft'] ); ?>">
+<a class="nldc has-media<?php echo $featured ? ' is-featured' : ''; ?>" href="<?php echo esc_url( get_permalink( $id ) ); ?>" style="--pc:<?php echo esc_attr( $pm['color'] ); ?>;--ps:<?php echo esc_attr( $pm['soft'] ); ?>">
 	<?php if ( $featured ) : ?><span class="nldc-sponsor">מקודם</span><?php endif; ?>
+	<div class="nldc-media<?php echo $is_real_photo ? ' has-real-photo' : ' has-concept-art'; ?>">
+		<img src="<?php echo esc_url( $photo_url ); ?>" alt="" loading="lazy" decoding="async">
+		<span class="nldc-media-label"><?php echo esc_html( $pm['label'] ); ?></span>
+	</div>
 	<div class="nldc-top">
 		<span class="nldc-av" aria-hidden="true"><svg class="nl-mark" viewBox="0 0 48 48"><use href="#<?php echo esc_attr( $pm['icon'] ); ?>"></use></svg></span>
 		<div class="nldc-id">

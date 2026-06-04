@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1000" role="img" aria-labelledby="title desc">
+  <title id="title">Tel Aviv coastal skyline line concept</title>
+  <desc id="desc">Original Tel Aviv-style coastal skyline concept, drawn as architectural linework with sea, horizon, towers, and blueprint marks.</desc>
+  <defs>
+    <linearGradient id="field" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#081919"/>
+      <stop offset=".52" stop-color="#102f2f"/>
+      <stop offset="1" stop-color="#071111"/>
+    </linearGradient>
+    <radialGradient id="light" cx=".72" cy=".26" r=".62">
+      <stop offset="0" stop-color="#d7c39a" stop-opacity=".22"/>
+      <stop offset=".48" stop-color="#d7c39a" stop-opacity=".06"/>
+      <stop offset="1" stop-color="#d7c39a" stop-opacity="0"/>
+    </radialGradient>
+    <pattern id="grid" width="80" height="80" patternUnits="userSpaceOnUse">
+      <path d="M80 0H0v80" fill="none" stroke="#d7c39a" stroke-opacity=".075" stroke-width="1"/>
+      <path d="M0 40h80M40 0v80" fill="none" stroke="#d7c39a" stroke-opacity=".035" stroke-width="1"/>
+    </pattern>
+  </defs>
+  <rect width="1600" height="1000" fill="url(#field)"/>
+  <rect width="1600" height="1000" fill="url(#light)"/>
+  <rect width="1600" height="1000" fill="url(#grid)"/>
+  <g fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M86 670c162-30 273-22 425-44 176-26 302-82 500-58 182 22 314 72 503 35" stroke="#f4dfaa" stroke-opacity=".22" stroke-width="2"/>
+    <path d="M70 740c172-22 308-18 475-34 178-17 322-48 492-33 194 17 326 48 492 16" stroke="#f4dfaa" stroke-opacity=".18" stroke-width="2"/>
+    <path d="M92 812c114 16 225 15 336 0s224-16 338 0 224 15 336 0 225-16 338 0" stroke="#d7c39a" stroke-opacity=".2" stroke-width="2"/>
+    <path d="M92 856c114 12 225 12 336 0s224-12 338 0 224 12 336 0 225-12 338 0" stroke="#d7c39a" stroke-opacity=".12" stroke-width="2"/>
+  </g>
+  <g fill="none" stroke="#f4dfaa" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M252 642V478l56-42 56 42v164" stroke-opacity=".44" stroke-width="3"/>
+    <path d="M308 642V324l94-44 94 44v318" stroke-opacity=".64" stroke-width="3"/>
+    <path d="M496 642V408l72-38 72 38v234" stroke-opacity=".42" stroke-width="3"/>
+    <path d="M678 642V254l96-70 96 70v388" stroke-opacity=".7" stroke-width="3.2"/>
+    <path d="M870 642V356l66-32 66 32v286" stroke-opacity=".48" stroke-width="3"/>
+    <path d="M1030 642V220l116-58 116 58v422" stroke-opacity=".76" stroke-width="3.2"/>
+    <path d="M1262 642V424l66-46 66 46v218" stroke-opacity=".44" stroke-width="3"/>
+    <path d="M1394 642V504l42-28 42 28v138" stroke-opacity=".34" stroke-width="3"/>
+  </g>
+  <g fill="none" stroke="#d7c39a" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
+    <path d="M338 352h54M338 394h54M338 436h54M338 478h54M338 520h54M338 562h54" stroke-opacity=".24"/>
+    <path d="M724 296h88M724 350h88M724 404h88M724 458h88M724 512h88M724 566h88" stroke-opacity=".28"/>
+    <path d="M1086 266h120M1086 324h120M1086 382h120M1086 440h120M1086 498h120M1086 556h120" stroke-opacity=".28"/>
+    <path d="M223 704h1154" stroke-opacity=".32" stroke-width="2.4"/>
+    <path d="M180 256h160M180 286h92" stroke-opacity=".38" stroke-width="3"/>
+    <path d="M1274 182l88-88M1362 94l35 110-122-26" stroke-opacity=".44" stroke-width="3"/>
+    <circle cx="1360" cy="178" r="86" stroke-opacity=".24" stroke-width="2"/>
+  </g>
+</svg>
