@@ -650,7 +650,7 @@ if ( ! function_exists( 'nadlan_revenue_premium_front_page' ) ) :
 		<div class="nlux-hero-copy">
 			<p class="nlux-kicker">נדל״ן חכם · ישראל</p>
 			<h1>נדל״ן חכם: קנייה, מכירה והשקעה בעסקת נדל״ן מבוססת נתונים</h1>
-			<p class="nlux-lead">פרויקטים חדשים, אנשי מקצוע רשומים, מדריכים וכלים לבדיקת עסקת נדל״ן במקום אחד — מס רכישה, משכנתא, טאבו וליווי עו״ד מקרקעין. חוויה נקייה, ויזואלית ומבוססת נתונים.</p>
+			<p class="nlux-lead">פרויקטים חדשים, אנשי מקצוע מאומתים, מדריכים ומחשבונים לבדיקת עסקת נדל״ן — מס רכישה, משכנתא, טאבו וליווי עו״ד מקרקעין. הכול במקום אחד, חינם.</p>
 			<form class="nlux-search" method="get" action="<?php echo esc_url( $project_url ); ?>">
 				<input type="search" name="q" placeholder="חפשו פרויקט, עיר, יזם או בעל מקצוע">
 				<input type="text" name="city" placeholder="עיר">
@@ -673,13 +673,13 @@ if ( ! function_exists( 'nadlan_revenue_premium_front_page' ) ) :
 		<a class="nlux-path" href="<?php echo esc_url( $project_url ); ?>"><span>01</span><h2>מחפשים פרויקט</h2><p>ראו פרויקטים חדשים והתחדשות עירונית עם עיר, יזם, סטטוס ותמונות.</p></a>
 		<a class="nlux-path" href="<?php echo esc_url( $pro_url ); ?>"><span>02</span><h2>בודקים אנשי מקצוע</h2><p>קבלנים, שמאים, עורכי דין ויועצים עם מקור רשמי ופרטי קשר מסודרים.</p></a>
 		<a class="nlux-path" href="<?php echo esc_url( nadlan_revenue_page_url( 'mortgage-calculator', '/mortgage-calculator/' ) ); ?>"><span>03</span><h2>מחשבים עלויות</h2><p>משכנתא, מס רכישה, עלויות עסקה והשוואות לפני החלטה.</p></a>
-		<a class="nlux-path" href="<?php echo esc_url( $join_url ); ?>"><span>04</span><h2>מפרסמים נכס או פרויקט</h2><p>חשיפה נקייה ומכובדת לפרויקטים, נכסים ואנשי מקצוע שרוצים להיראות רציני.</p></a>
+		<a class="nlux-path" href="<?php echo esc_url( $join_url ); ?>"><span>04</span><h2>מפרסמים נכס או פרויקט</h2><p>חשיפה לפרויקטים, נכסים ואנשי מקצוע מול קונים, שוכרים ומשקיעים.</p></a>
 	</section>
 
 	<section class="nlux-showcase" aria-label="פרויקטים נבחרים">
 		<div class="nlux-section-head">
-			<p class="nlux-kicker">תצוגת פרויקטים</p>
-			<h2>כרטיסים חיים מתוך המאגר, עם תמונה במקום ריק</h2>
+			<p class="nlux-kicker">פרויקטים חדשים</p>
+			<h2>פרויקטים חדשים והתחדשות עירונית בכל הארץ</h2>
 			<a href="<?php echo esc_url( $project_url ); ?>">לכל הפרויקטים</a>
 		</div>
 		<div class="nlux-project-grid">
@@ -703,16 +703,16 @@ if ( ! function_exists( 'nadlan_revenue_premium_front_page' ) ) :
 		</div>
 	</section>
 
-	<section class="nlux-data-band" aria-label="אמון ונתונים">
-		<div><strong>data.gov.il</strong><span>מקורות רשמיים כשאפשר</span></div>
-		<div><strong>מאגר חי</strong><span>כרטיסים, פרויקטים, מדריכים וכלים</span></div>
-		<div><strong>פרימיום</strong><span>תמונה, היררכיה, טיפוגרפיה ותנועה שקטה</span></div>
+	<section class="nlux-data-band" aria-label="למה נדל״ן חכם">
+		<div><strong>מאומת מול רשם הקבלנים</strong><span>נתונים ממקורות ממשלתיים רשמיים</span></div>
+		<div><strong>אלפי פרויקטים ובעלי מקצוע</strong><span>מאגר מתעדכן מכל רחבי הארץ</span></div>
+		<div><strong>מידע חינמי ושקוף</strong><span>כל מה שצריך לבדוק לפני שחותמים</span></div>
 	</section>
 
 	<section class="nlux-tools" aria-label="כלים ומדריכים">
 		<div class="nlux-section-head">
-			<p class="nlux-kicker">לפני חתימה</p>
-			<h2>כלים שמרגישים כמו מערכת, לא כמו תבנית</h2>
+			<p class="nlux-kicker">לפני שחותמים</p>
+			<h2>מחשבונים וכלים חינמיים לבדיקת העסקה</h2>
 		</div>
 		<div class="nlux-tool-grid">
 			<a href="<?php echo esc_url( nadlan_revenue_page_url( 'purchase-tax-calculator', '/purchase-tax-calculator/' ) ); ?>">מס רכישה</a>
@@ -726,8 +726,8 @@ if ( ! function_exists( 'nadlan_revenue_premium_front_page' ) ) :
 
 	<section class="nlux-pros" aria-label="אנשי מקצוע נבחרים">
 		<div class="nlux-section-head">
-			<p class="nlux-kicker">מאגר מקצועי</p>
-			<h2>בעלי מקצוע שמופיעים מתוך המערכת</h2>
+			<p class="nlux-kicker">אינדקס בעלי מקצוע</p>
+			<h2>בעלי מקצוע מאומתים לנדל״ן</h2>
 			<a href="<?php echo esc_url( $pro_url ); ?>">לכל אנשי המקצוע</a>
 		</div>
 		<div class="nlux-pro-grid">
@@ -748,9 +748,9 @@ if ( ! function_exists( 'nadlan_revenue_premium_front_page' ) ) :
 
 	<section class="nlux-final-cta" aria-label="פרסום פרימיום">
 		<div>
-			<p class="nlux-kicker">נראות שמוכרת אמון</p>
-			<h2>יש לכם פרויקט, נכס או כרטיס מקצועי?</h2>
-			<p>המערכת צריכה לעזור לכם להיראות כמו גוף רציני: תמונות, טקסט, מפה, חשיפה ומעקב במקום אחד.</p>
+			<p class="nlux-kicker">פרסום בנדל״ן חכם</p>
+			<h2>יש לכם פרויקט, נכס או עסק בתחום הנדל״ן?</h2>
+			<p>פרסמו אצלנו וקבלו חשיפה לקונים, שוכרים ומשקיעים — עמוד נכס מעוצב, תמונות, מפה ופניות ישירות אליכם.</p>
 		</div>
 		<div class="nlux-actions">
 			<a href="<?php echo esc_url( $join_url ); ?>">מסלולי פרסום</a>
