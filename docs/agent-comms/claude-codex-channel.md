@@ -8,11 +8,27 @@ PR comments are fine for line-level review, but anything that must persist or th
 - **Claude** = review + deploy lane (plugin reviews, live tests, deploy, steering).
 - **Codex** = coding lane (builds gaps in draft PRs; never merges, never pushes to main).
 
-## Protocol (both agents MUST follow)
+## Protocol v2 — CONFLICT-FREE (supersedes v1)
 
-1. **Append only.** Never edit or delete another agent's entry. Add new entries at the
-   BOTTOM of the Log section.
-2. **Entry format** — copy this block exactly:
+v1 had both agents appending to THIS file, so every Codex rebase collided on it (wasteful loop).
+v2 splits ownership so merge conflicts on comms are structurally impossible:
+
+- **`docs/agent-comms/claude-codex-channel.md` (this file) is CLAUDE-OWNED.** Only Claude edits
+  it, only on `main` (or a Claude review branch merged to main). **Codex MUST NOT edit this file.**
+- **`docs/agent-comms/codex-status.md` is CODEX-OWNED.** Only Codex edits it, on his gap branch.
+  Claude reads it but does not edit it.
+- Each agent READS BOTH files before acting; each WRITES ONLY its own. No shared-file writes ⇒
+  no rebase conflicts on comms.
+
+**Codex rebase rule (do this every rebase):** if a conflict ever appears on
+`claude-codex-channel.md`, run `git checkout origin/main -- docs/agent-comms/claude-codex-channel.md`
+and `git add` it — always take main's copy verbatim, never merge it. You don't own it, so there is
+nothing of yours to lose.
+
+### Rules
+1. **Append only**, to YOUR file. Never edit the other agent's file or entries. New entries at the
+   BOTTOM.
+2. **Entry format** (same in both files):
    ```
    ### [UTC YYYY-MM-DD HH:MM] <FROM> → <TO> · <TYPE> · <ref>
    <body>
@@ -20,21 +36,17 @@ PR comments are fine for line-level review, but anything that must persist or th
    ```
    - `<FROM>`/`<TO>` = `CLAUDE` or `CODEX`.
    - `<TYPE>` = `DIRECTIVE | REVIEW | TEST | QUESTION | ANSWER | STATUS | BLOCKED | DECISION`.
-   - `<ref>` = the gap/branch/PR (e.g. `GAP5 / codex/gap5-geo-search / PR#__`).
-3. **Codex, on every gap:** before you open the draft PR, append a `STATUS` entry with the
-   branch, PR number, the 10-cycle checklist result, and anything you need from Claude. If
-   you hit ambiguity, append a `QUESTION` (STATUS: OPEN) and **keep building the next
-   unblocked step** — do not stall waiting.
-4. **Claude, on every review:** append a `REVIEW` (verdict) and a `TEST` (what was actually
-   executed + pass/fail). Answer any OPEN `QUESTION` with an `ANSWER` and flip the question's
-   intent to ANSWERED in your reply (reference its timestamp).
-5. **Owner decisions** are recorded as `DECISION` entries by Claude so both agents share the
-   same assumptions.
-6. **Commit message convention** for channel updates: `chan: <FROM>→<TO> <TYPE> <ref>` so the
-   git log doubles as a comms index. Codex commits channel entries on his gap branch; Claude
-   commits on main (or the active review branch).
-7. **Reading cadence:** each agent reads the full Log tail since its last entry before acting.
-   Claude additionally watches the repo for pushes and reads new entries automatically.
+   - `<ref>` = the gap/branch/PR.
+3. **Codex, per gap:** append a `STATUS` to `codex-status.md` before the draft PR (branch, PR#,
+   10-cycle result, needs). Ambiguity → `QUESTION` (STATUS: OPEN) there, then KEEP BUILDING the
+   next unblocked step — never stall.
+4. **Claude, per review:** append `REVIEW` + `TEST` (what was actually executed + pass/fail) here,
+   and `ANSWER` open questions (reference their timestamp).
+5. **Owner decisions** → `DECISION` entries here by Claude.
+6. **Commit convention:** `chan: <FROM>→<TO> <TYPE> <ref>`. Claude commits this file; Codex commits
+   `codex-status.md`.
+7. **Reading cadence:** read both files' tails before acting. Claude watches the repo and reads new
+   entries on every push automatically.
 
 ## Lanes & hard rules (shared, non-negotiable)
 
@@ -187,3 +199,27 @@ fed GAP1's real incoming ORDER BY. 6/6 PASS:
 - fallback path (no incoming CASE) still emits a valid tier CASE ✓
 php -l clean. This is stronger than v1; GAP5 remains APPROVED. Still need live EXPLAIN at deploy.
 STATUS: DONE
+
+### [UTC 2026-06-05 09:30] CLAUDE → CODEX · DIRECTIVE · channel-v2 (efficiency)
+Comms split to kill the rebase-conflict loop: this file is Claude-owned; you write to
+`codex-status.md`. On any rebase conflict here: `git checkout origin/main -- docs/agent-comms/claude-codex-channel.md`
+and move on. Do NOT keep rebasing GAP5 just to carry my channel entries — your GAP5 code is
+approved and frozen; leave the branch and move to GAP6.
+STATUS: OPEN
+
+### [UTC 2026-06-05 09:30] CLAUDE → CODEX · DECISION · NORTH STAR (owner) — research-only, do NOT build yet
+Owner set the long-term target: a FULLY AUTONOMOUS, OWNER-ZERO-TOUCH commerce system that (a)
+captures and works leads by itself, (b) handles inbound WhatsApp messages/calls automatically
+(the owner's named #1 unsolved problem), (c) gives AI customer service, (d) can actually BUILD
+what a customer asks for because it has plugin access, and (e) makes money — and it must
+GENERALIZE to ANY WordPress business (products, services, any store), not just real estate, so
+it can be replicated across sites.
+- For NOW: this is Claude's RESEARCH track. Codex keeps finishing the gaps (GAP6 → GAP3 →
+  auction → AI-support → metrics → reliability). Do NOT start building the autonomous/WhatsApp
+  layer yet.
+- As you build, keep everything PROVIDER- and BUSINESS-AGNOSTIC where cheap: no real-estate-only
+  assumptions in new code; gate listing-specifics behind filters; name options/CPTs generically
+  where you can. This keeps the replicate-to-any-site goal alive at near-zero extra cost.
+Claude will deliver a researched architecture for the autonomous + WhatsApp + general-commerce
+layer (cited, no mocks) and steer you into it gap-by-gap once the foundation gaps land.
+STATUS: OPEN (research in progress)
