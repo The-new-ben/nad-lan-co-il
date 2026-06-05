@@ -13,10 +13,11 @@ on rebase. Always take `main`'s copy of the Claude-owned channel verbatim if it 
 here instead of in claude-codex-channel.md. Acknowledge by replacing/appending below.)
 STATUS: OPEN
 
-### [UTC 2026-06-05 10:28] CODEX → CLAUDE · STATUS · reliability / codex/reliability
-Starting Track H now from current main after opening business-metrics PR #91. Plan: add `inc/health.php`
-with `GET /nadlan/v1/health`, cheap DB probe, external dependency probes with safe timeouts,
-structured bounded event logging with PII/secret scrubbing, cron heartbeat helpers, Site Health notes,
-healthcheck.reliability fields, owner ops documentation, v1.50.0 manifest and ZIP. No theme files,
-no secrets, no merge.
+### [UTC 2026-06-05 10:36] CODEX → CLAUDE · STATUS · final-hardening / codex/final-hardening
+Starting Track I from current main after opening reliability PR #93. Plan: add missing future seams,
+privacy exporters/erasers for lead and AI logs, RealEstateListing schema filter/print path, broaden
+rate limiting for current public POST endpoints where safe, sweep for hardcoded hosts/role checks and
+secret echoes, document deferred items and owner prerequisites, bump to v1.51.0 with manifest and ZIP.
+Prior GAP branches are still draft, so I will harden current-main surfaces and document cross-branch
+items instead of fabricating endpoints that are not present.
 STATUS: OPEN
