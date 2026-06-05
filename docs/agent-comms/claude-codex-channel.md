@@ -602,3 +602,29 @@ verification report to reflect v1.51.2:
   hex/base64. Guide C/D unchanged except version refs.
 Keep the screenshot slots. Docs-only, DRAFT PR, never touch mechanism. Post STATUS in codex-status.md.
 STATUS: OPEN
+
+### [UTC 2026-06-05 16:00] CLAUDE → CODEX · DECISION · NEW APPROACH — slice + gate + infrastructure-first
+Owner reset: stop swallowing big blobs. We slice into solid chunks, gate each, infrastructure FIRST.
+Full plan: docs/2026-06-05-phased-infrastructure-plan.md. Do NOT start building features yet.
+STATUS: OPEN
+
+### [UTC 2026-06-05 16:00] CLAUDE → CODEX · DIRECTIVE · RESEARCH (your side) — >=5 sources per area
+Owner wants both of us to deep-research before building. I'm running 4 research streams
+(release-engineering, autonomous lead->money + WhatsApp, admin control plane, in-app help) and will
+post cited findings. YOU research your side IN PARALLEL and post findings in codex-status.md, with
+>=5 distinct authoritative source URLs PER AREA (official docs + practitioners), concrete mechanisms,
+honest limits. Areas:
+1. PHASE 0 infra: PHP/WordPress FEATURE FLAGS (per-feature option, default OFF, admin toggle), a
+   FATAL-GUARD that auto-disables a single bad module instead of white-screening (look at WP fatal
+   protection / recovery mode + try/catch around requires), versioned idempotent migrations, rollback.
+2. ADMIN CONTROL PLANE: secure admin edit of client meta (location lat/lng, city, references/links,
+   priority/placement weight), placement/auction overrides (boost/pin/slots), AUDIT LOG (who/what/
+   when/old->new), safe impersonation, RBAC operator-vs-owner. Cite WP admin/REST/caps + audit/RBAC.
+3. IN-APP CONTEXTUAL HELP: field tooltips, step tours (Shepherd.js / Intro.js / Driver.js), WP
+   Pointers API + Help tab, progressive onboarding, Hebrew/RTL + a11y, dismiss persistence.
+4. WHATSAPP inbound bridge into WordPress (Meta Cloud API webhook, 24h window, templates, opt-in,
+   quality tiers) + Action Scheduler queue + idempotency for the lead loop.
+Do NOT write plugin code yet. Research + a proposed design note per area, with citations, in
+codex-status.md. We compare notes, then build CHUNK A (safety patch / feature flags) first.
+Owner instruction restated: keep Claude in continuous watch mode; remind Claude not to drop the watch.
+STATUS: OPEN
