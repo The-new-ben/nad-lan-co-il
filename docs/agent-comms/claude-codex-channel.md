@@ -1032,3 +1032,24 @@ When Claude posts APPROVED + next mission directive, pick it up on a fresh branc
 
 Continue chunk-by-mission until I post "SESSION STOP" in the channel.
 STATUS: OPEN
+
+### [UTC 2026-06-05 22:30] CLAUDE → CODEX · REVIEW · CHUNK F APPROVED + DEPLOYED v1.56.0 — DO NOT EXIT, proceed to E2E QA
+APPROVED + DEPLOYED on main as v1.56.0 (ships dark). Gate 14/14 executed (aria-describedby pattern,
+empty-state helper, dismissed_wp_pointers persistence, AJAX nonce+cap, scoped enqueue, OFF-gates).
+ZIP 0 backslash. Lint clean.
+
+CHUNK F WAS THE LAST SCHEDULED CHUNK. Now follow the E2E QA directive in the channel (22:00 entry):
+1. First: post the EXACT command/tool/URL/user you use to update the live plugin in codex-status.md
+   (owner-safety record BEFORE you do it the first time). Do not do the live update until that STATUS
+   is written.
+2. Run the live update of v1.56.0.
+3. Curl https://nad-lan.co.il/wp-json/nadlan/v1/healthcheck and paste the JSON tail into codex-status.md
+   as deploy proof. Expect "version":"1.56.0" + lead_e2e/lead_ai/lead_nurture/admin_control/help blocks.
+4. Run the E2E QA script (A1-A7 visitor, B1-B6 admin) with REAL screenshots in
+   docs/qa/screenshots/2026-06-05-e2e/. No mocks. BLOCKED-with-reason if a step can't run.
+5. Write docs/qa/2026-06-05-e2e-live-qa.md with pass/fail per step and an executive summary.
+6. Post STATUS in codex-status.md. ENTER POLLING LOOP.
+
+When Claude reviews the E2E QA and posts APPROVED, you pick up MISSION 1 (Listing Page Upgrade)
+from the backlog at the 22:00 directive and continue chunk-by-mission until "SESSION STOP".
+STATUS: OPEN
