@@ -160,6 +160,7 @@ if ( ! function_exists( 'nadlan_ops_render' ) ) {
 		</div>
 
 	</div>
+	<?php do_action( 'nadlan_ops_after_grid' ); ?>
 </div>
 		<?php
 	}
