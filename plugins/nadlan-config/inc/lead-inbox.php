@@ -103,7 +103,10 @@ foreach ( $recent as $l ) {
 	echo '<td><small>' . esc_html( $src ) . '</small></td>';
 	echo '<td><a href="' . esc_url( get_edit_post_link( $l->ID ) ) . '">פתח →</a></td></tr>';
 }
-if ( ! $recent ) { echo '<tr><td colspan="6">אין לידים עדיין</td></tr>'; }
+if ( ! $recent ) {
+	$empty = function_exists( 'nadlan_help_empty_state' ) ? nadlan_help_empty_state( 'toplevel_page_nadlan-inbox', 'recent_leads_empty' ) : '';
+	echo '<tr><td colspan="6">' . ( $empty ? $empty : esc_html( 'אין לידים עדיין' ) ) . '</td></tr>';
+}
 ?>
 </tbody></table>
 </div>
