@@ -131,7 +131,7 @@ Banned phrases (non-exhaustive; reviewed list lives in code):
 - Exclusionary: "exclusive neighborhood".
 
 What v1.9.0 ships:
-- `nadlan_llm_request($system,$user,$opts)` — pluggable LLM adapter (default Anthropic, gated on `NADLAN_LLM_API_KEY`; swap via filter for OpenAI/DeepSeek). Never fails open: returns `WP_Error` on missing key.
+- `nadlan_llm_request($system,$user,$opts)` delegates to the shared `nadlan_ai_chat()` provider adapter (default OpenAI, Anthropic fallback). Never fails open: returns `WP_Error` on missing key.
 - **AI description generator** (admin meta box on `nadlan_property`): reads facts → prompts the LLM with the guardrails → runs `nadlan_compliance_scan()` → if hits, stores as DRAFT + flags for editor; if clean, editor still must click "Approve & write to content". Never auto-publishes.
 - **Natural-language search** (`GET /nadlan/v1/nl-search?q=...` + `[nadlan_nl_search]`): LLM parses Hebrew → strict-JSON filter → reuses `nadlan_ss_meta_query()` → returns items + the parsed filter for transparency. **Deterministic regex fallback** for Hebrew patterns (`N חדרים`, `עד N מיליון`, `ב<עיר>`, `שכירות`/`מכירה`) keeps it working even if LLM is down. 1-hour transient cache per query.
 

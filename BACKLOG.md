@@ -96,9 +96,10 @@
 
 ## P4 — AI / automation (the "zero-friction, I don't manage people" goal)
 
-- 🔴 **AI concierge.** Embedded assistant that knows glossary + directory + calculators,
-  answers visitors, qualifies + routes leads before they reach the owner. **Research GitHub
-  for existing WP AI-chat / RAG plugins — do NOT build from zero.** Owner approved.
+- 🟡 **GAP 4 OpenAI provider adapter.** Branch `codex/gap4-openai-agent` makes the
+  concierge, Studio copy assist, listing-description generator, and NL search provider
+  agnostic with OpenAI default, Anthropic fallback, daily token cap, and usage trace.
+  Draft PR/review pending; not live until merged + owner plugin update.
 - 🧊 **100% AI support layer** so the owner doesn't deal with people directly. Long-term.
 
 ## P5 — Assets
