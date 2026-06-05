@@ -19,7 +19,7 @@ if ( ! function_exists( 'nadlan_media_register_meta' ) ) {
 		foreach ( array( 'tour_url' => 'string', 'video_url' => 'string', 'floorplan_url' => 'string' ) as $k => $t ) {
 			register_post_meta( 'nadlan_property', $k, array(
 				'show_in_rest' => true, 'single' => true, 'type' => $t,
-				'auth_callback' => function () { return current_user_can( 'edit_posts' ); },
+				'auth_callback' => function ( $allowed, $meta_key, $post_id ) { return current_user_can( 'edit_post', (int) $post_id ); },
 			) );
 		}
 	}

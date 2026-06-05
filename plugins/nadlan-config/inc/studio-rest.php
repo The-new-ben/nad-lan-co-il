@@ -9,8 +9,9 @@
  *   POST   /nadlan/v1/studio/<id>/gallery/delete  — remove a photo
  *   POST   /nadlan/v1/studio/<id>/ai-copy         — AI copy assist (uses concierge if configured)
  *
- * Auth: caller must be logged-in (app password OK) AND own the card (post meta
- * `owner_user_id` matches current user, OR they have `manage_options`).
+ * Auth: caller must be logged-in (app password OK) and pass edit_post for the
+ * card. Ownership still lives in owner_user_id + claim_status and is mapped by
+ * map_meta_cap, so owners can edit only their own listings.
  * The 2,700 imported cold contractors are unaffected — only claimed cards have
  * an owner; only those can be edited.
  */
@@ -26,8 +27,7 @@ if ( ! function_exists( 'nadlan_studio_can_edit' ) ) {
 		$uid = get_current_user_id();
 		if ( $uid < 1 ) { return false; }
 		if ( current_user_can( 'manage_options' ) ) { return true; }
-		$owner = (int) get_post_meta( $post_id, 'owner_user_id', true );
-		return $owner > 0 && $owner === $uid;
+		return current_user_can( 'edit_post', $post_id );
 	}
 }
 
@@ -351,6 +351,9 @@ add_action( 'rest_api_init', function () {
 			update_post_meta( $new_id, 'data_quality', 'stub' );
 			update_post_meta( $new_id, 'paid_tier', 'free' );
 			update_post_meta( $new_id, 'created_via', 'studio_self_serve' );
+			if ( function_exists( 'nadlan_roles_assign_user' ) ) {
+				nadlan_roles_assign_user( (int) $uid, true );
+			}
 			set_transient( $rk, $ct + 1, DAY_IN_SECONDS );
 			return array(
 				'ok'        => true,

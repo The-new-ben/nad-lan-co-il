@@ -2,7 +2,7 @@
 /**
  * Plugin Name: NadLan Config
  * Description: Lead-capture foundation: nadlan_lead CPT + lead-form handler + healthcheck. Read skills/nadlan-config-plugin.md.
- * Version: 1.44.0
+ * Version: 1.45.0
  * Author: nad-lan.co.il
  * License: GPL-2.0+
  * Requires PHP: 7.4
@@ -22,7 +22,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  *   auction.php       — timed auctions: proxy bid, soft-close, custom bids table, REST
  * See skills/listings-auction-directory-architecture.md for the full design.
  */
-foreach ( array( 'catalog-meta', 'claim', 'import', 'schema', 'cards-render', 'auction', 'listings-ux', 'avm-deals', 'saved-search', 'ai-features', 'city-hubs', 'media', 'compare', 'nearby-poi', 'esign', 'map', 'lead-drip', 'ops-dashboard', 'facets', 'breadcrumbs', 'autocomplete', 'tiers', 'glossary', 'glossary-autolink', 'homepage', 'directory', 'reviews', 'lead-ledger', 'ai-concierge', 'archive-grid', 'calculators', 'catalog-shine', 'conversion-cta', 'lead-routing', 'lead-inbox', 'preferred-partners', 'featured-upsell', 'sponsored-spot', 'pricing-schema', 'claim-prompt', 'ga4-events', 'sitemap-ping', 'social-proof', 'term-faq-schema', 'og-image', 'owner-config-rest', 'studio', 'studio-rest', 'profile-extras', 'advertiser-center', 'advertiser-orders', 'premium-ui', 'geo-search' ) as $nadlan_mod ) {
+foreach ( array( 'catalog-meta', 'claim', 'import', 'schema', 'cards-render', 'auction', 'listings-ux', 'avm-deals', 'saved-search', 'ai-features', 'city-hubs', 'media', 'compare', 'nearby-poi', 'esign', 'map', 'lead-drip', 'ops-dashboard', 'facets', 'breadcrumbs', 'autocomplete', 'tiers', 'glossary', 'glossary-autolink', 'homepage', 'directory', 'reviews', 'lead-ledger', 'ai-concierge', 'archive-grid', 'calculators', 'catalog-shine', 'conversion-cta', 'lead-routing', 'lead-inbox', 'preferred-partners', 'featured-upsell', 'sponsored-spot', 'pricing-schema', 'claim-prompt', 'ga4-events', 'sitemap-ping', 'social-proof', 'term-faq-schema', 'og-image', 'owner-config-rest', 'studio', 'studio-rest', 'profile-extras', 'advertiser-center', 'advertiser-orders', 'premium-ui', 'geo-search', 'roles' ) as $nadlan_mod ) {
 	$nadlan_mod_file = __DIR__ . '/inc/' . $nadlan_mod . '.php';
 	if ( file_exists( $nadlan_mod_file ) ) {
 		require_once $nadlan_mod_file;
@@ -70,7 +70,7 @@ if ( ! function_exists( 'nadlan_config_healthcheck_response' ) ) {
 	function nadlan_config_healthcheck_response() {
 		$out = array(
 			'plugin'              => 'nadlan-config',
-			'version'             => '1.44.0',
+			'version'             => '1.45.0',
 			'cpt_present'         => post_type_exists( 'nadlan_lead' ),
 			'lead_handler_loaded' => (bool) has_action( 'admin_post_nadlan_lead' ),
 			'php_version'         => PHP_VERSION,
@@ -228,7 +228,12 @@ add_action( 'init', 'nadlan_config_register_yoast_meta', 11 );
  */
 if ( ! function_exists( 'nadlan_config_register_catalog_cpts' ) ) {
     function nadlan_config_register_catalog_cpts() {
-        register_post_type( 'nadlan_property', array(
+		$listing_cap_args = array(
+			'capability_type' => array( 'listing', 'listings' ),
+			'map_meta_cap'    => true,
+			'capabilities'    => function_exists( 'nadlan_listing_capabilities' ) ? nadlan_listing_capabilities() : array(),
+		);
+        register_post_type( 'nadlan_property', array_merge( array(
             'labels' => array(
                 'name' => 'NadLan Properties', 'singular_name' => 'NadLan Property',
                 'menu_name' => 'NadLan Properties',
@@ -237,8 +242,8 @@ if ( ! function_exists( 'nadlan_config_register_catalog_cpts' ) ) {
             'has_archive' => 'properties', 'rewrite' => array( 'slug' => 'properties' ),
             'menu_icon' => 'dashicons-admin-home', 'menu_position' => 26,
             'supports' => array( 'title', 'editor', 'thumbnail', 'custom-fields', 'excerpt' ),
-        ) );
-        register_post_type( 'nadlan_project', array(
+        ), $listing_cap_args ) );
+        register_post_type( 'nadlan_project', array_merge( array(
             'labels' => array(
                 'name' => 'NadLan Projects', 'singular_name' => 'NadLan Project',
             ),
@@ -246,8 +251,8 @@ if ( ! function_exists( 'nadlan_config_register_catalog_cpts' ) ) {
             'has_archive' => 'projects', 'rewrite' => array( 'slug' => 'projects' ),
             'menu_icon' => 'dashicons-building', 'menu_position' => 27,
             'supports' => array( 'title', 'editor', 'thumbnail', 'custom-fields', 'excerpt' ),
-        ) );
-        register_post_type( 'nadlan_professional', array(
+        ), $listing_cap_args ) );
+        register_post_type( 'nadlan_professional', array_merge( array(
             'labels' => array(
                 'name' => 'NadLan Professionals', 'singular_name' => 'NadLan Professional',
             ),
@@ -255,7 +260,7 @@ if ( ! function_exists( 'nadlan_config_register_catalog_cpts' ) ) {
             'has_archive' => 'professionals', 'rewrite' => array( 'slug' => 'professionals' ),
             'menu_icon' => 'dashicons-businessperson', 'menu_position' => 28,
             'supports' => array( 'title', 'editor', 'thumbnail', 'custom-fields', 'excerpt' ),
-        ) );
+        ), $listing_cap_args ) );
         register_taxonomy( 'nadlan_city', array( 'nadlan_property', 'nadlan_project' ),
             array( 'public' => true, 'hierarchical' => true, 'show_in_rest' => true,
                 'rewrite' => array( 'slug' => 'cities' ),
@@ -448,7 +453,7 @@ if ( ! function_exists( 'nadlan_config_register_property_meta' ) ) {
 				'show_in_rest'  => true,
 				'single'        => true,
 				'type'          => $type,
-				'auth_callback' => function() { return current_user_can( 'edit_posts' ); },
+				'auth_callback' => function( $allowed, $meta_key, $post_id ) { return current_user_can( 'edit_post', (int) $post_id ); },
 			) );
 		}
 	}

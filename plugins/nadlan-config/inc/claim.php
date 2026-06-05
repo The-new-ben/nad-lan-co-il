@@ -150,6 +150,9 @@ if ( ! function_exists( 'nadlan_claim_approve' ) ) {
 			update_post_meta( $card_id, 'claim_status', 'verified' );
 			update_post_meta( $card_id, 'verified_at', time() );
 			update_post_meta( $claim_id, 'claim_state', 'approved' );
+			if ( function_exists( 'nadlan_roles_assign_user' ) ) {
+				nadlan_roles_assign_user( (int) $user->ID, true );
+			}
 		}
 		wp_safe_redirect( admin_url( 'post.php?post=' . $claim_id . '&action=edit&claim=approved' ) );
 		exit;

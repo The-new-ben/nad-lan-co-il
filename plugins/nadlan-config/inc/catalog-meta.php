@@ -9,7 +9,7 @@
  * that powers the free-card → claim → upgrade funnel.
  *
  * Design: parallels nadlan_config_register_property_meta(). Public read meta is
- * show_in_rest true; write auth requires edit_posts EXCEPT claim_status/owner which
+ * show_in_rest true; writable listing meta requires edit_post on that listing EXCEPT claim_status/owner which
  * are managed server-side via the claim flow (inc/claim.php), so they are read-only
  * over REST (auth_callback false for writes).
  */
@@ -22,7 +22,7 @@ if ( ! function_exists( 'nadlan_cards_register_meta_set' ) ) {
 	 *
 	 * @param string $post_type
 	 * @param array  $fields   key => WP meta type
-	 * @param bool   $writable whether REST clients with edit_posts may write
+	 * @param bool   $writable whether REST clients with edit_post on the listing may write
 	 */
 	function nadlan_cards_register_meta_set( $post_type, $fields, $writable = true ) {
 		foreach ( $fields as $key => $type ) {
@@ -31,7 +31,7 @@ if ( ! function_exists( 'nadlan_cards_register_meta_set' ) ) {
 				'single'        => true,
 				'type'          => $type,
 				'auth_callback' => $writable
-					? function () { return current_user_can( 'edit_posts' ); }
+					? function ( $allowed, $meta_key, $post_id ) { return current_user_can( 'edit_post', (int) $post_id ); }
 					: '__return_false',
 			) );
 		}
