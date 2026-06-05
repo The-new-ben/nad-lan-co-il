@@ -98,6 +98,7 @@ rename CPT, redefine the category taxonomy + colours, point `import.php` at the 
 | `inc/tiers.php` | DNA·CODE | Free/Pro/Premier gating. Checkout activation is wired by `inc/advertiser-orders.php`; live QA still required. |
 | `inc/advertiser-center.php` | DNA·CODE | Customer-facing paid advertiser center: owned assets, completion, orders, views, inquiries, Studio links, upgrade paths. |
 | `inc/advertiser-orders.php` | DNA·CODE | Woo paid order bridge: `card_id` to `paid_tier`, `campaign_end`, paid order/product ids, and daily expiry downgrade. |
+| `inc/admin-control.php` | DNA·CODE | Dark-launched operator control plane: validated card edits, query-time placement overrides, bounded audit, safe read-only impersonation, and `nadlan_manage_clients` RBAC. |
 | `inc/lead-routing.php` | DNA·CODE | Paid-card inquiry delivery boundary: exact `lead_card_id` -> owner, `paid_tier` gate, delivery trace, bounded ops log. |
 | `inc/lead-drip.php` | DNA·CODE | 6-step nurture sequence. Portable. |
 | `inc/lead-nurture.php` | DNA·CODE | E2E-aware follow-up cadence: dark-flagged, score-gated, unsubscribe-safe, stops on reply/status/AI handoff, and reuses the shared lead delivery channel. |
