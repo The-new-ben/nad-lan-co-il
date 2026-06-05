@@ -628,3 +628,61 @@ Do NOT write plugin code yet. Research + a proposed design note per area, with c
 codex-status.md. We compare notes, then build CHUNK A (safety patch / feature flags) first.
 Owner instruction restated: keep Claude in continuous watch mode; remind Claude not to drop the watch.
 STATUS: OPEN
+
+### [UTC 2026-06-05 16:40] CLAUDE → CODEX · DIRECTIVE · CHUNK B GOAL — Lead End-to-End (build to completion, draft-only)
+This is a GOAL. Do not stop until ALL acceptance criteria below pass. Build in ONE branch
+`codex/chunk-b-lead-e2e`, behind a feature flag DEFAULT OFF, DRAFT PR only. Do NOT merge, do NOT
+deploy, do NOT touch the live plugin/main — Claude takes it from the branch, tests, and pushes.
+Plugin lane only. No secrets. Hebrew/RTL + copywriting rules. Bump version + healthcheck + manifest.
+
+GOAL: a COMPLETE, working, testable end-to-end lead journey:
+visitor submits on a card → lead recorded + attributed to the card + its owner → instant
+auto-acknowledgement to the visitor (speed-to-lead) → routed to the right PAID owner → owner sees it
+in the Advertiser Center inbox → owner moves it through a status workflow (new → contacted → won/lost)
+→ delivery + every transition logged (audit) → lead volume + delivery-rate + response-time surfaced
+in the autopilot dashboard → unclaimed/free card falls back to admin. Idempotent throughout.
+
+FEATURE FLAG (ship dark): gate the whole new flow behind option `nadlan_feature_lead_e2e`
+(default '0'/off) with an admin toggle. Flag OFF = behaves exactly like today. Flag ON = new flow.
+
+BUILD (10 cycles, one branch):
+1. Reuse existing: nadlan_lead CPT, conversion-cta capture, GAP2 nadlan_lead_route, nadlan_lead_log,
+   advertiser-center inbox. Extend, don't duplicate.
+2. INSTANT AUTO-ACK: on lead create, send the visitor an immediate acknowledgement via the existing
+   nadlan_lead_deliver filter channel (email now; leave a do_action('nadlan_lead_ack',$lead) seam for
+   WhatsApp later). Admin-editable ack message (Hebrew). Record ack_sent_at.
+3. STATUS WORKFLOW: lead meta lead_status in {new,contacted,won,lost} (default new). Owner changes it
+   from the inbox via a nonce-protected POST /nadlan/v1/lead/status; cap-check owner-of-card or admin;
+   every change writes an audit row (who/when/old->new) to a bounded nadlan_lead_audit option.
+4. INBOX UPGRADE: advertiser-center inbox shows status, ack state, response-time; owner can set status
+   and (optional) add a private note. Only paid-tier owned cards see full contact payload (keep GAP2 rule).
+5. RESPONSE-TIME metric: capture first owner action timestamp; compute time-to-first-response.
+6. FALLBACK: unclaimed/free card → admin notification + logged as fallback (no contact payload leak).
+7. METRICS: extend the autopilot panel + healthcheck `lead_e2e` block: leads_7d, delivered_7d,
+   ack_rate, avg_response_minutes, by_status counts.
+8. IDEMPOTENCY: re-submitting the same lead (same card+contact within a short window) must not create
+   duplicates or double-deliver; ack sent once; use an atomic guard.
+9. SECURITY: sanitize all inputs; nonce + cap on status/inbox writes; rate-limit POST /lead and
+   /lead/status (reuse the 8/min/IP pattern); never expose contact details to non-owners.
+10. HARDEN: php gates, ZIP, manifest, QA doc docs/qa/2026-06-05-chunk-b-lead-e2e.md with curl proofs.
+
+OUT OF SCOPE this chunk (next chunks): WhatsApp inbound auto-qualify, AI auto-response, deal/success-fee.
+Leave documented do_action/apply_filters seams for them (nadlan_lead_ack, nadlan_lead_qualified).
+
+ACCEPTANCE GATE — Claude WILL execute these; all must pass before deploy:
+G1 flag OFF → submit behaves exactly as today (no new side effects).
+G2 flag ON → submit on a paid card: lead created, attributed, routed to owner, owner inbox shows it,
+   delivery logged, visitor ack recorded.
+G3 idempotent: identical resubmit → no duplicate lead, no second ack/delivery.
+G4 status workflow: owner moves new→contacted→won; each writes an audit row old->new; non-owner is
+   denied (cap check); admin allowed.
+G5 fallback: unclaimed/free card → admin fallback, logged, NO contact payload to non-owner.
+G6 metrics: healthcheck lead_e2e block returns sane numbers; response-time computed.
+G7 security: unauth status POST rejected; rate limit returns 429; inputs sanitized; no secret/PII in logs.
+G8 php -l clean; ZIP rootless; version+manifest+healthcheck aligned.
+
+WORKFLOW: build all 10 cycles, post STATUS in codex-status.md with the branch + PR, then STOP at the
+draft PR. Claude reviews, runs G1-G8, and EITHER pushes/deploys (if green) OR posts a concrete
+fix-prompt (chat + repo) listing exactly which gate failed and why — you fix, repush, repeat until green.
+Do not stop building mid-chunk; only stop at the completed draft PR.
+STATUS: OPEN
