@@ -162,6 +162,7 @@ if ( ! function_exists( 'nadlan_ac_recent_leads' ) ) {
 	function nadlan_ac_recent_leads( $cards, $limit = 12 ) {
 		$card_ids = array();
 		$user_id = get_current_user_id();
+		$paid_tiers = function_exists( 'nadlan_lead_route_paid_tiers' ) ? nadlan_lead_route_paid_tiers() : array( 'pro', 'premier' );
 		foreach ( (array) $cards as $card ) {
 			if ( is_object( $card ) && ! empty( $card->ID ) ) {
 				$owner_id = (int) get_post_meta( (int) $card->ID, 'owner_user_id', true );
@@ -169,7 +170,7 @@ if ( ! function_exists( 'nadlan_ac_recent_leads' ) ) {
 					continue;
 				}
 				$tier = (string) get_post_meta( (int) $card->ID, 'paid_tier', true );
-				if ( in_array( $tier, array( 'pro', 'premier' ), true ) ) {
+				if ( in_array( $tier, $paid_tiers, true ) ) {
 					$card_ids[] = (int) $card->ID;
 				}
 			}
@@ -199,7 +200,7 @@ if ( ! function_exists( 'nadlan_ac_recent_leads' ) ) {
 			$owner_id = (int) get_post_meta( $lead_card_id, 'owner_user_id', true );
 			if ( $owner_id !== (int) $user_id && ! current_user_can( 'manage_options' ) ) { continue; }
 			$tier = (string) get_post_meta( $lead_card_id, 'paid_tier', true );
-			if ( ! in_array( $tier, array( 'pro', 'premier' ), true ) ) { continue; }
+			if ( ! in_array( $tier, $paid_tiers, true ) ) { continue; }
 			$leads[] = $lead;
 		}
 		wp_reset_postdata();
@@ -209,6 +210,12 @@ if ( ! function_exists( 'nadlan_ac_recent_leads' ) ) {
 
 if ( ! function_exists( 'nadlan_ac_lead_status_label' ) ) {
 	function nadlan_ac_lead_status_label( $lead_id ) {
+		if ( function_exists( 'nadlan_lead_e2e_enabled' ) && nadlan_lead_e2e_enabled() && function_exists( 'nadlan_lead_e2e_status_label' ) ) {
+			$workflow_status = (string) get_post_meta( (int) $lead_id, 'lead_status', true );
+			if ( $workflow_status !== '' ) {
+				return nadlan_lead_e2e_status_label( $workflow_status );
+			}
+		}
 		$status = (string) get_post_meta( (int) $lead_id, 'lead_route_status', true );
 		$labels = array(
 			'delivered_owner' => 'נמסרה אליכם',
@@ -266,9 +273,10 @@ if ( ! function_exists( 'nadlan_ac_css' ) ) {
 .nlac-leads-panel{background:linear-gradient(135deg,#fff,#FBF9F5);border:1px solid rgba(156,122,60,.22);border-radius:8px;padding:18px}.nlac-leads{display:grid;gap:10px}
 .nlac-lead{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:12px;align-items:start;background:#fff;border:1px solid rgba(27,26,23,.1);border-radius:8px;padding:14px}
 .nlac-lead-title{font-weight:900;font-size:15px}.nlac-lead-meta,.nlac-lead-contact{font-size:12.5px;color:#6B7280;margin-top:5px}.nlac-lead-contact{display:flex;gap:10px;flex-wrap:wrap}.nlac-lead-msg{margin-top:8px;font-size:13px;line-height:1.55;color:#374151}
+.nlac-lead-e2e{margin-top:10px;display:grid;gap:8px}.nlac-lead-state{display:flex;gap:8px;flex-wrap:wrap;align-items:center;font-size:12px;color:#5A5A5A}.nlac-lead-status-form{display:grid;grid-template-columns:minmax(120px,.5fr) minmax(160px,1fr) auto;gap:8px;align-items:center}.nlac-lead-status-form select,.nlac-lead-status-form input{min-height:40px;border:1px solid #D8CDB8;border-radius:6px;padding:7px 9px;background:#fff;color:#1B1A17}.nlac-lead-status-form button{min-height:40px;border:0;border-radius:6px;padding:8px 12px;background:#1B1A17;color:#fff;font-weight:800;cursor:pointer}.nlac-lead-status-msg{font-size:12px;color:#047857;min-height:16px}
 .nlac-products{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:12px}.nlac-product{background:#fff;border:1px solid rgba(27,26,23,.12);border-radius:8px;padding:16px}.nlac-product strong{display:block;font-size:17px}.nlac-product small{color:#6B7280}
 @media(max-width:860px){.nlac-hero,.nlac-split{grid-template-columns:1fr}.nlac-actions{justify-content:flex-start}.nlac-grid,.nlac-facts{grid-template-columns:repeat(2,minmax(0,1fr))}}
-@media(max-width:520px){.nlac{padding-inline:14px}.nlac-grid,.nlac-facts{grid-template-columns:1fr}.nlac-card-head{display:block}.nlac-btn{width:100%}.nlac-lead{grid-template-columns:1fr}}
+@media(max-width:520px){.nlac{padding-inline:14px}.nlac-grid,.nlac-facts{grid-template-columns:1fr}.nlac-card-head{display:block}.nlac-btn{width:100%}.nlac-lead{grid-template-columns:1fr}.nlac-lead-status-form{grid-template-columns:1fr}}
 </style>';
 	}
 }
@@ -338,6 +346,12 @@ if ( ! function_exists( 'nadlan_ac_render_inner' ) ) {
 					$lead_message = (string) get_post_meta( $lead_id, 'message', true );
 					if ( $lead_message === '' ) { $lead_message = (string) $lead->post_content; }
 					$phone_href = preg_replace( '/[^0-9+]/', '', $lead_phone );
+					$lead_e2e_on = function_exists( 'nadlan_lead_e2e_enabled' ) && nadlan_lead_e2e_enabled();
+					$lead_workflow_status = (string) get_post_meta( $lead_id, 'lead_status', true );
+					if ( $lead_workflow_status === '' ) { $lead_workflow_status = 'new'; }
+					$lead_ack_label = (int) get_post_meta( $lead_id, 'ack_sent_at', true ) > 0 ? 'אישור נשלח ללקוח' : 'אישור לא נשלח';
+					$lead_response_label = function_exists( 'nadlan_lead_e2e_response_label' ) ? nadlan_lead_e2e_response_label( $lead_id ) : '';
+					$lead_can_manage = $lead_e2e_on && function_exists( 'nadlan_lead_e2e_user_can_manage_lead' ) && nadlan_lead_e2e_user_can_manage_lead( $lead_id );
 					?>
 					<article class="nlac-lead">
 						<div>
@@ -354,6 +368,27 @@ if ( ! function_exists( 'nadlan_ac_render_inner' ) ) {
 							<?php if ( $lead_message ) : ?>
 								<div class="nlac-lead-msg"><?php echo esc_html( wp_trim_words( wp_strip_all_tags( $lead_message ), 22, '...' ) ); ?></div>
 							<?php endif; ?>
+							<?php if ( $lead_e2e_on ) : ?>
+								<div class="nlac-lead-e2e">
+									<div class="nlac-lead-state">
+										<span><?php echo esc_html( $lead_ack_label ); ?></span>
+										<?php if ( $lead_response_label ) : ?><span><?php echo esc_html( $lead_response_label ); ?></span><?php endif; ?>
+									</div>
+									<?php if ( $lead_can_manage ) : ?>
+										<form class="nlac-lead-status-form" data-lead-status-form>
+											<input type="hidden" name="lead_id" value="<?php echo (int) $lead_id; ?>">
+											<select name="status" aria-label="סטטוס פנייה">
+												<?php foreach ( nadlan_lead_e2e_valid_statuses() as $status_key ) : ?>
+													<option value="<?php echo esc_attr( $status_key ); ?>" <?php selected( $lead_workflow_status, $status_key ); ?>><?php echo esc_html( nadlan_lead_e2e_status_label( $status_key ) ); ?></option>
+												<?php endforeach; ?>
+											</select>
+											<input type="text" name="note" maxlength="500" placeholder="הערה פרטית">
+											<button type="submit">שמור</button>
+											<div class="nlac-lead-status-msg" aria-live="polite"></div>
+										</form>
+									<?php endif; ?>
+								</div>
+							<?php endif; ?>
 						</div>
 						<span class="nlac-pill good"><?php echo esc_html( nadlan_ac_lead_status_label( $lead_id ) ); ?></span>
 					</article>
@@ -361,6 +396,30 @@ if ( ! function_exists( 'nadlan_ac_render_inner' ) ) {
 			</div>
 		<?php endif; ?>
 	</section>
+	<?php if ( function_exists( 'nadlan_lead_e2e_enabled' ) && nadlan_lead_e2e_enabled() ) : ?>
+	<script>
+	(function(){
+		var endpoint=<?php echo wp_json_encode( rest_url( 'nadlan/v1/lead/status' ) ); ?>;
+		var nonce=<?php echo wp_json_encode( wp_create_nonce( 'wp_rest' ) ); ?>;
+		document.querySelectorAll('[data-lead-status-form]').forEach(function(form){
+			form.addEventListener('submit',function(e){
+				e.preventDefault();
+				var msg=form.querySelector('.nlac-lead-status-msg');
+				var payload={
+					lead_id:form.querySelector('[name="lead_id"]').value,
+					status:form.querySelector('[name="status"]').value,
+					note:form.querySelector('[name="note"]').value
+				};
+				if(msg)msg.textContent='שומר...';
+				fetch(endpoint,{method:'POST',credentials:'same-origin',headers:{'Content-Type':'application/json','X-WP-Nonce':nonce},body:JSON.stringify(payload)})
+					.then(function(r){return r.json().then(function(j){if(!r.ok){throw j;}return j;});})
+					.then(function(j){if(msg)msg.textContent='נשמר'; var pill=form.closest('.nlac-lead').querySelector('.nlac-pill'); if(pill&&j.label){pill.textContent=j.label;}})
+					.catch(function(){if(msg)msg.textContent='לא נשמר. נסו שוב.';});
+			});
+		});
+	})();
+	</script>
+	<?php endif; ?>
 
 	<div class="nlac-split">
 		<section class="nlac-section">

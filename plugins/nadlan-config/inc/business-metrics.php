@@ -403,6 +403,7 @@ if ( ! function_exists( 'nadlan_metrics_render_ops_panel' ) ) {
 	function nadlan_metrics_render_ops_panel() {
 		if ( ! current_user_can( 'manage_options' ) ) { return; }
 		$m = nadlan_metrics_snapshot();
+		$lead_e2e = isset( $m['lead_e2e'] ) && is_array( $m['lead_e2e'] ) ? $m['lead_e2e'] : ( function_exists( 'nadlan_lead_e2e_metrics' ) ? nadlan_lead_e2e_metrics( 7 ) : array() );
 		?>
 		<h2 style="margin-top:28px">Autopilot</h2>
 		<p class="description">Snapshot יומי: הכנסות חוזרות, סיכון נטישה, פניות, הפעלה, AI ומכרזי חשיפה.</p>
@@ -426,6 +427,8 @@ if ( ! function_exists( 'nadlan_metrics_render_ops_panel' ) ) {
 				<div class="nlops-row"><span>Activation 7d</span><strong><?php echo esc_html( nadlan_metrics_pct( $m['activation_rate_7d'] ) ); ?></strong></div>
 				<div class="nlops-row"><span>Leads 7d</span><strong><?php echo (int) $m['lead_volume_7d']; ?></strong></div>
 				<div class="nlops-row"><span>Lead delivery</span><strong><?php echo esc_html( nadlan_metrics_pct( $m['lead_delivery_rate_7d'] ) ); ?></strong></div>
+				<div class="nlops-row"><span>אישור ללקוח</span><strong><?php echo esc_html( nadlan_metrics_pct( $lead_e2e['ack_rate'] ?? null ) ); ?></strong></div>
+				<div class="nlops-row"><span>תגובה ממוצעת</span><strong><?php echo isset( $lead_e2e['avg_response_minutes'] ) && $lead_e2e['avg_response_minutes'] !== null ? esc_html( number_format_i18n( (float) $lead_e2e['avg_response_minutes'], 1 ) . ' דקות' ) : 'אין נתונים'; ?></strong></div>
 				<div class="nlops-row"><span>AI deflection</span><strong><?php echo esc_html( nadlan_metrics_pct( $m['ai_deflection_7d'] ) ); ?></strong></div>
 			</div>
 			<div class="nlops-card">
