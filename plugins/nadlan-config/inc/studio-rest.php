@@ -226,7 +226,9 @@ add_action( 'rest_api_init', function () {
 				'system'     => $instruction . " החזר רק את הטקסט המתוקן, בלי מבוא, בלי הסבר.",
 				'messages'   => array( array( 'role' => 'user', 'content' => $src ) ),
 			);
-			$resp = wp_remote_post( 'https://api.anthropic.com/v1/messages', array(
+			$url = function_exists( 'nadlan_anthropic_messages_url' ) ? nadlan_anthropic_messages_url() : '';
+			if ( ! $url ) { return new WP_Error( 'no_endpoint', 'AI endpoint not configured' ); }
+			$resp = wp_remote_post( $url, array(
 				'headers' => array(
 					'x-api-key' => nadlan_ai_key(),
 					'anthropic-version' => '2023-06-01',
@@ -234,6 +236,7 @@ add_action( 'rest_api_init', function () {
 				),
 				'body' => wp_json_encode( $body, JSON_UNESCAPED_UNICODE ),
 				'timeout' => 30,
+				'sslverify' => true,
 			) );
 			if ( is_wp_error( $resp ) ) { return new WP_Error( 'upstream', $resp->get_error_message() ); }
 			$data = json_decode( wp_remote_retrieve_body( $resp ), true );

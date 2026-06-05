@@ -7,7 +7,17 @@
 >
 > Status keys: 🔴 not started · 🟡 in progress · 🟢 shipped · 🧊 future/parked · ❓ needs owner decision
 >
-> Last updated: 2026-06-03
+> Last updated: 2026-06-05
+
+---
+
+## Finish-line draft PR train - 2026-06-05
+
+- In draft review: GAP 5 geo search, GAP 6 roles, GAP 3 recurring, placement auction, AI support, business metrics, reliability, and seams/final hardening.
+- Current final-hardening branch adds the future seams `nadlan_after_lead_closed`, `nadlan_search_executed`, `nadlan_real_estate_listing_jsonld`, `nadlan_card_jsonld`, and `nadlan_card_jsonld_ready`.
+- Deferred after these PRs: review invitation workflow, saved-search alert productization, native MySQL POINT/SRID 4326 migration, and board-grade expansion/contraction/reactivation accounting.
+- Owner prerequisites before recurring revenue deploy: set `nadlan_gi_ipn_secret`, configure Morning recurring webhook and links, decide cycle days, set server cron, set uptime monitor, and set heartbeat URLs.
+- Business metrics caveat: churn and NRR are directional owner-dashboard numbers until event-level expansion, contraction, reactivation, and signup cohorts are tracked separately.
 
 ---
 

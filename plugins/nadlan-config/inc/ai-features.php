@@ -55,12 +55,14 @@ if ( ! function_exists( 'nadlan_llm_request' ) ) {
 			'system'     => $system,
 			'messages'   => array( array( 'role' => 'user', 'content' => $user ) ),
 		) );
-		$res = wp_remote_post( 'https://api.anthropic.com/v1/messages', array(
+		$url = function_exists( 'nadlan_anthropic_messages_url' ) ? nadlan_anthropic_messages_url() : '';
+		if ( ! $url ) { return new WP_Error( 'no_endpoint', 'LLM endpoint not configured' ); }
+		$res = wp_remote_post( $url, array(
 			'timeout' => 30, 'headers' => array(
 				'Content-Type' => 'application/json',
 				'x-api-key'    => $key,
 				'anthropic-version' => '2023-06-01',
-			), 'body' => $body,
+			), 'body' => $body, 'sslverify' => true,
 		) );
 		if ( is_wp_error( $res ) ) { return $res; }
 		$code = (int) wp_remote_retrieve_response_code( $res );

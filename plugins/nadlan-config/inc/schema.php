@@ -103,20 +103,13 @@ if ( ! function_exists( 'nadlan_card_jsonld' ) ) {
 				) ),
 			) );
 		} elseif ( $type === 'nadlan_property' ) {
-			$data = array_filter( array(
-				'@context' => 'https://schema.org', '@type' => 'RealEstateListing',
-				'name' => $name, 'url' => $url,
-				'datePosted' => get_the_date( 'c', $id ),
-			) );
-			if ( (float) $g( 'price' ) > 0 ) {
-				$data['offers'] = array(
-					'@type' => 'Offer', 'price' => (float) $g( 'price' ),
-					'priceCurrency' => 'ILS', 'availability' => 'https://schema.org/InStock',
-				);
-			}
-			if ( (float) $g( 'lat' ) && (float) $g( 'lng' ) ) {
-				$data['geo'] = array( '@type' => 'GeoCoordinates', 'latitude' => (float) $g( 'lat' ), 'longitude' => (float) $g( 'lng' ) );
-			}
+			$data = function_exists( 'nadlan_build_real_estate_listing_jsonld' )
+				? nadlan_build_real_estate_listing_jsonld( $id )
+				: array_filter( array(
+					'@context' => 'https://schema.org', '@type' => 'RealEstateListing',
+					'name' => $name, 'url' => $url,
+					'datePosted' => get_the_date( 'c', $id ),
+				) );
 		} elseif ( $type === 'nadlan_auction' ) {
 			$data = array_filter( array(
 				'@context' => 'https://schema.org', '@type' => 'Event',
@@ -127,6 +120,8 @@ if ( ! function_exists( 'nadlan_card_jsonld' ) ) {
 		}
 
 		if ( $data ) {
+			$data = apply_filters( 'nadlan_card_jsonld', $data, $id, $type );
+			do_action( 'nadlan_card_jsonld_ready', $data, $id, $type );
 			echo "\n<script type=\"application/ld+json\">" . wp_json_encode( array_filter( $data ), JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES ) . "</script>\n";
 		}
 	}
