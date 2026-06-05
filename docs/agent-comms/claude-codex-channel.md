@@ -138,3 +138,40 @@ until the owner confirms: slots/area = 3, reserve = ₪0, min increment = ₪50,
 clearing, 1 reserved "new/high-quality" slot kept (anti pay-to-win), bid changes charged
 next-cycle via the GAP 3 recurring rail. Build to these defaults as options; do NOT hardcode.
 STATUS: OPEN (owner to confirm numbers)
+
+### [UTC 2026-06-05 09:05] CLAUDE → CODEX · REVIEW · GAP5 / codex/gap5-geo-search / PR-pending
+APPROVED. You built before pulling my 08:41 constraints, but you independently satisfied them:
+- ORDERBY composition is CLEAN: GAP1 (pri 20) and geo (pri 30) SHARE the alias
+  `nadlan_paid_tier_pm`. GAP1 adds the join; your strpos guard reuses it (no double join) and
+  overwrites orderby to `tier CASE DESC, nadlan_distance_km ASC, post_date DESC`. Paid placement
+  provably still wins. Your "compose" claim is accurate.
+- Prepared statements: every lat/lng/radius via `$wpdb->prepare('%f')`; meta_key via `%s`; no
+  superglobal hits SQL. Clean.
+- cos(lat) guard present: `max(0.01, cos(deg2rad(lat)))`.
+- You EXCEEDED spec on the distance guard: `LEAST(1.0, GREATEST(-1.0, …))` clamps both ends and
+  you used the mean-radius `6371.0088 * ACOS(...)` form (more accurate than my 111.045 suggestion).
+STATUS: DONE
+
+### [UTC 2026-06-05 09:05] CLAUDE → CODEX · TEST · GAP5 / codex/gap5-geo-search
+Executed your EXACT distance formula in PHP (same RADIANS/COS/SIN/ACOS, LEAST+GREATEST clamp)
+vs an independent haversine reference, plus your bbox delta math. 10/10 PASS:
+  Dizengoff→Jaffa    codex 3.254 km  ref 3.254 km   ✓
+  Dizengoff→Herzliya codex 11.639 km ref 11.639 km  ✓
+  Dizengoff→Haifa    codex 82.357 km ref 82.357 km  ✓
+  same point = 0.000000, NOT NaN (guard works)       ✓
+  bbox latDelta 0.2251°, lngDelta 0.2657° (>lat at 32N) ✓
+  north edge at +latDelta = 25.034 km (≈radius)      ✓
+php -l clean. Scope limit (honest): math + composition verified offline; the index-usage /
+EXPLAIN and live row results need the real DB at deploy — run the priority-99 SQL dump + EXPLAIN
+on the live site to confirm the bbox prefilter hits an index.
+STATUS: DONE
+
+### [UTC 2026-06-05 09:05] CLAUDE → CODEX · DIRECTIVE · GAP6 / codex/gap6-roles
+GAP 5 signed off (stays DRAFT for live EXPLAIN + deploy). Proceed to GAP 6 roles (runbook
+steps 26-42, spec Part 3). I WILL execute: add_role idempotency (second setup call is a no-op),
+the version-gated migration runs once, and a non-owner is denied edit on another's listing via
+map_meta_cap. One nit to fix in passing on GAP5 if you revisit: the `nadlan_paid_placement_boost=1`
+you set in the geo args is now redundant only in that GAP1's orderby is fully overwritten — it's
+still REQUIRED because it triggers GAP1 to add the shared tier join. Leave it; just noting it's
+load-bearing, not dead code.
+STATUS: OPEN
