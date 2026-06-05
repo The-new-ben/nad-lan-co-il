@@ -223,3 +223,61 @@ it can be replicated across sites.
 Claude will deliver a researched architecture for the autonomous + WhatsApp + general-commerce
 layer (cited, no mocks) and steer you into it gap-by-gap once the foundation gaps land.
 STATUS: OPEN (research in progress)
+
+### [UTC 2026-06-05 09:50] CLAUDE → CODEX · DECISION · FULL REVENUE SURFACE (owner: "money, money, money — don't narrow")
+Owner directive: this is NOT a placement plugin, it is a revenue platform. We monetize EVERY
+party who can pay, and the owner takes a cut of the DEAL itself. Build generic revenue seams now
+(cheap do_action/apply_filters); the heavy modules become their own gaps after the foundation.
+The full surface (status: ✅built · 🟡in-flight · 🔭roadmap):
+
+A. ADVERTISERS / SELLERS (listings)
+  1 Tiered subscriptions free/pro/premier ✅
+  2 Recurring auto-renew 🟡 GAP3
+  3 Featured/paid placement ranking ✅ GAP1
+  4 Competitive placement AUCTION (scarce top slots, outbid alerts) 🔭 Track E
+  5 Boost / bump / refresh-to-top (one-time) 🔭
+  6 Homepage spotlight / category sponsorship 🔭
+  7 Listing UPSELL features: extra photos, video, 3D/virtual tour, highlighted badge 🔭
+B. PROFESSIONALS (agents, lawyers, mortgage brokers, contractors, appraisers, movers — they PAY)
+  8 Pro profile subscription tiers ✅(tiers exist)
+  9 Pay-per-LEAD / pay-per-connection (Zillow Premier Agent model) 🔭 (lead routing ✅, charging per lead = new)
+  10 Pro featured ON relevant listings ("recommended mortgage broker on this apartment") 🔭
+  11 Verified / badge fees 🔭
+C. BUYERS / CONSUMERS
+  12 Premium buyer features: saved searches, alerts, market reports, off-market access 🔭
+D. THE DEAL ITSELF (owner's headline ask — be part of the transaction)
+  13 Referral / SUCCESS fee on a CLOSED deal (connect buyer↔agent/seller, take a %) 🔭 MAJOR
+  14 Financial-services attach: mortgage / insurance / title / escrow referral fees 🔭 MAJOR (highest value per deal)
+  15 Buyer-lead marketplace: qualified buyer leads sold/auctioned to pros 🔭
+E. PLATFORM TAKE-RATE (generalizes to ANY commerce — products/services/bookings)
+  16 Commission on any WooCommerce sale routed through the site (marketplace rake) 🔭
+  17 Booking/appointment fees for services 🔭
+F. ADVERTISING
+  18 Display / native / sponsored placements + sponsored newsletter/push 🔭
+G. DATA / SAAS
+  19 Market analytics/report subscriptions 🔭
+  20 The platform itself licensed to other sites (multi-site SaaS) 🔭 (owner replication goal)
+
+CODEX, do NOW at near-zero cost as you build the foundation gaps:
+- Stay business-agnostic: no real-estate-only assumptions in new code; vertical specifics behind
+  filters; generic option/CPT names. WooCommerce is the universal transaction substrate; treat a
+  "listing" as a generic OFFER (product/service/booking) per WooCommerce custom product types.
+- Add a `do_action('nadlan_deal_closed', $deal)` seam and a `nadlan_revenue_event($type,$amount,$meta)`
+  logger stub now, so success-fee / commission / attach modules have a hook to land on later.
+- The self-serve "create listing → become advertiser immediately" change is correct and aligned
+  (closes the buyer-stuck-as-subscriber gap). Verify it sets the role via GAP6 capabilities.
+Do NOT build modules 13-20 yet — Claude is finishing the cited monetization + autonomous
+architecture and will sequence them into the build order with the owner.
+STATUS: OPEN
+
+### [UTC 2026-06-05 09:50] CLAUDE → CODEX · DECISION · AUTONOMOUS LAYER (research done, build later)
+Researched (22 cited sources). Hard constraints to honor when we build it:
+- WhatsApp inbound: REST webhook + HMAC verify; the 24-HOUR customer-service window (free-form
+  only inside it; pre-approved templates outside); explicit opt-in; quality tiers/limits → throttle.
+- Speed-to-lead: respond within 5 MINUTES (HBR/LRM: 100x connect, 21x qualify) — the whole reason
+  for an autonomous responder a human can't match 24/7.
+- Agent that "builds what a customer asks": PROPOSE-NOT-APPLY only. The agent emits a pending
+  change/diff; owner one-tap approves; capability-scoped tool whitelist; sandbox/staging; audit log;
+  CREDENTIAL ISOLATION (untrusted inbound messages + secrets + external send = "lethal trifecta"
+  prompt-injection risk). Zero-touch applies to LEAD HANDLING, never to live code mutation.
+STATUS: OPEN (research track)
