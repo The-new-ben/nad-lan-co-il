@@ -1039,6 +1039,9 @@ if ( ! function_exists( 'nadlan_admin_control_render_screen' ) ) {
 								<td><?php $until = (int) get_post_meta( $card->ID, 'promo_until', true ); echo esc_html( $until ? gmdate( 'Y-m-d', $until ) : 'ללא' ); ?></td>
 							</tr>
 						<?php endforeach; ?>
+						<?php if ( ! $cards ) : ?>
+							<tr><td colspan="6"><?php $empty = function_exists( 'nadlan_help_empty_state' ) ? nadlan_help_empty_state( 'nadlan-ops_page_nadlan-admin-control', 'cards_empty' ) : ''; echo $empty ? $empty : esc_html( 'אין כרטיסים להצגה' ); ?></td></tr>
+						<?php endif; ?>
 						</tbody>
 					</table>
 					<p>
@@ -1116,6 +1119,9 @@ if ( ! function_exists( 'nadlan_admin_control_render_screen' ) ) {
 						<td><?php echo esc_html( $row['new'] ?? '' ); ?></td>
 					</tr>
 				<?php endforeach; ?>
+				<?php if ( ! $audit ) : ?>
+					<tr><td colspan="7"><?php $empty = function_exists( 'nadlan_help_empty_state' ) ? nadlan_help_empty_state( 'nadlan-ops_page_nadlan-admin-control', 'audit_empty' ) : ''; echo $empty ? $empty : esc_html( 'אין עדיין שינויים ביומן' ); ?></td></tr>
+				<?php endif; ?>
 				</tbody>
 			</table>
 		</div>
