@@ -1,6 +1,6 @@
 <?php
 /**
- * nadlan-config - reliability health endpoint + bounded event log (v1.53.0).
+ * nadlan-config - reliability health endpoint + bounded event log (v1.54.0).
  */
 
 if ( ! defined( 'ABSPATH' ) ) { exit; }
@@ -132,7 +132,7 @@ if ( ! function_exists( 'nadlan_health_probe_http' ) ) {
 			'redirection'         => 1,
 			'limit_response_size' => 256,
 			'sslverify'           => true,
-			'user-agent'          => 'NadLanHealth/1.53.0; ' . home_url( '/' ),
+			'user-agent'          => 'NadLanHealth/1.54.0; ' . home_url( '/' ),
 		) );
 		$latency = round( ( microtime( true ) - $start ) * 1000, 1 );
 		if ( is_wp_error( $res ) ) {
@@ -187,12 +187,13 @@ if ( ! function_exists( 'nadlan_health_rest' ) ) {
 		}
 		return new WP_REST_Response( array(
 			'plugin'       => 'nadlan-config',
-			'version'      => '1.53.0',
+			'version'      => '1.54.0',
 			'status'       => $aggregate,
 			'generated_at' => gmdate( 'c' ),
 			'dependencies' => $deps,
 			'lead_e2e'     => function_exists( 'nadlan_lead_e2e_metrics' ) ? nadlan_lead_e2e_metrics( 7 ) : array( 'enabled' => false, 'loaded' => false ),
 			'lead_ai'      => function_exists( 'nadlan_lead_ai_metrics' ) ? nadlan_lead_ai_metrics( 7 ) : array( 'enabled' => false, 'loaded' => false ),
+			'lead_nurture' => function_exists( 'nadlan_lead_nurture_metrics' ) ? nadlan_lead_nurture_metrics( 7 ) : array( 'enabled' => false, 'loaded' => false ),
 			'slo'          => array(
 				'target' => '99.9',
 				'alerting' => 'multi-window multi-burn-rate, symptom first',
@@ -223,7 +224,7 @@ if ( ! function_exists( 'nadlan_reliability_ping_heartbeat' ) ) {
 			'timeout'     => 4,
 			'blocking'    => false,
 			'sslverify'   => true,
-			'user-agent'  => 'NadLanCronHeartbeat/1.53.0; ' . home_url( '/' ),
+			'user-agent'  => 'NadLanCronHeartbeat/1.54.0; ' . home_url( '/' ),
 		) );
 		nadlan_log_event( 'cron', $name, 'heartbeat_sent', array( 'heartbeat_configured' => true ) );
 		return true;
