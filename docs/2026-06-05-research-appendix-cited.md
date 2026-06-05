@@ -32,4 +32,19 @@ Key rules we will implement:
 - **RBAC**: least-privilege `client_operator` distinct from owner/super-admin; separation of duties (editor of placement ≠ approver of billing); role hierarchy/inheritance; map to NIST AC-2/3/5. (https://blog.securelayer7.net/role-based-access-control/ , https://hoop.dev/blog/nist-800-53-database-roles-implementing-least-privilege-and-strong-separation-of-duties/)
 - **Operator UX**: bulk = prefer UNDO toast over modal; reserve confirm-friction (type-to-confirm) for destructive/irreversible; don't over-confirm; scoped search/filter before bulk. (https://www.eleken.co/blog-posts/bulk-actions-ux , https://medium.com/design-bootcamp/a-ux-guide-to-destructive-actions-their-use-cases-and-best-practices-f1d8a9478d03)
 
-## D. IN-APP CONTEXTUAL HELP (Chunk F) — pending (stream still running; appended next).
+## D. IN-APP CONTEXTUAL HELP (Chunk F + Phase 0.5 framework) — 15 sources
+- **Inline hints for must-read info; tooltips only for optional/supplementary.** Tooltips vanish on blur, so format/validation/decision-critical text stays inline. Don't ship a tooltip unless it adds non-obvious value. (NN/g https://www.nngroup.com/articles/tooltip-guidelines/ , https://www.nngroup.com/articles/info-tips-bad/)
+- **A11y (mandatory)**: container `role="tooltip"`, trigger `aria-describedby`, show on hover AND focus, dismiss on Escape, focus stays on trigger, NEVER use bare `title`. (W3C WAI APG https://www.w3.org/WAI/ARIA/apg/patterns/tooltip/)
+- **Tours**: Driver.js (MIT, ~tiny, lazy-load) is the safe default for a commercial product; Shepherd.js (AGPL) for heavy theming/branching; Intro.js for quick declarative. (https://driverjs.com/docs/configuration , https://docs.shepherdjs.dev/ , https://introjs.com/docs , https://inlinemanual.com/blog/driverjs-vs-introjs-vs-shepherdjs-vs-reactour/)
+- **WordPress-native FIRST**: Admin Pointers (`wp.pointer`) with BUILT-IN per-user dismissal (`dismissed_wp_pointers` user meta via `dismiss-wp-pointer` ajax) — free "don't show again"; `get_current_screen()->add_help_tab()` for screen-level help; dismissible `admin_notices` for nudges. (https://developer.wordpress.org/reference/classes/wp_internal_pointers/ , https://developer.wordpress.org/reference/classes/wp_screen/add_help_tab/)
+- **Progressive onboarding**: empty states are the primary onboarding surface (status + cue + action button); "pull" reveals over "push" interruptions; getting-started checklist; always provide skip/dismiss + persist it. (https://www.nngroup.com/articles/empty-state-interface-design/ , https://www.useronboard.com/onboarding-ux-patterns/empty-states/)
+- **Hebrew/RTL**: mirror the whole UI (tooltips/arrows flip sides), bump RTL font ~2pt, transcreate not translate; keep ALL help strings in ONE i18n source feeding inline+tooltip+tour. (https://www.tomedes.com/translator-hub/hebrew-ui-strings-translation , https://centus.com/blog/right-to-left-languages-translation , https://uxwritinghub.com/optimizing-content-for-getting-stuff-done/)
+- **Perf**: lazy-load tour assets only when triggered; one reusable tooltip component bound via `aria-describedby`, not duplicated DOM per field. (https://blog.logrocket.com/best-product-tour-js-libraries-frontend-apps/)
+
+## Plan impact (what the research changes in our build)
+- Phase 0.1 feature flags = the SINGLE decision layer pattern (Fowler) → every chunk ships dark.
+- Phase 0.2 fatal-guard = our per-module try/disable on top of WP recovery mode.
+- Phase 0.5 help framework = WP-native pointers/help-tab FIRST + Driver.js (MIT) only where a tour is needed, all strings in one RTL-aware i18n source.
+- Chunk C invoicing = fire on PAID event, idempotency table we own (Israeli docs immutable).
+- Chunk E control plane = separate override signals + OWASP audit log + safe impersonation.
+- Chunk G = keep the 4 human gates (close, money-auth, KYC, referral/RESPA).
