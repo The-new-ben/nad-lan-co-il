@@ -215,6 +215,8 @@ add_action( 'admin_menu', function () {
 			update_option( 'nadlan_ai_enabled', ! empty( $_POST['enabled'] ) ? 1 : 0 );
 			$cap = isset( $_POST['daily_token_cap'] ) ? absint( wp_unslash( $_POST['daily_token_cap'] ) ) : 30000;
 			update_option( 'nadlan_ai_daily_token_cap', max( 1000, min( 1000000, $cap ) ) );
+			$global_cap = isset( $_POST['daily_token_cap_global'] ) ? absint( wp_unslash( $_POST['daily_token_cap_global'] ) ) : 200000;
+			update_option( 'nadlan_ai_daily_token_cap_global', max( 10000, min( 10000000, $global_cap ) ) );
 			$openai_key = isset( $_POST['openai_key'] ) ? sanitize_text_field( wp_unslash( $_POST['openai_key'] ) ) : '';
 			$anthropic_key = isset( $_POST['anthropic_key'] ) ? sanitize_text_field( wp_unslash( $_POST['anthropic_key'] ) ) : '';
 			if ( ! empty( $_POST['clear_openai_key'] ) ) { delete_option( 'nadlan_ai_openai_key' ); }
@@ -228,6 +230,8 @@ add_action( 'admin_menu', function () {
 		$anthropic_present = function_exists( 'nadlan_ai_anthropic_key' ) && nadlan_ai_anthropic_key() !== '';
 		$en = (int) get_option( 'nadlan_ai_enabled', 1 );
 		$cap = (int) get_option( 'nadlan_ai_daily_token_cap', 30000 );
+		$global_cap = (int) get_option( 'nadlan_ai_daily_token_cap_global', 200000 );
+		$tokens_today = (int) get_option( 'nadlan_ai_tokens_today_' . gmdate( 'Ymd' ), 0 );
 		$month = gmdate( 'Ym' );
 		$usage = get_option( 'nadlan_ai_usage_' . $month, array() );
 		if ( ! is_array( $usage ) ) { $usage = array(); }
@@ -242,6 +246,7 @@ add_action( 'admin_menu', function () {
 		echo '<tr><th>OpenAI API Key</th><td><input type="password" name="openai_key" value="" style="width:480px" placeholder="' . esc_attr( $openai_present ? 'מפתח שמור. הדביקו מפתח חדש רק אם מחליפים.' : 'sk-proj-...' ) . '"> <br><small>מצב: ' . esc_html( $openai_present ? 'מפתח שמור' : 'לא הוגדר' ) . '. אפשר גם להגדיר ב-wp-config.php: <code>OPENAI_API_KEY</code> או <code>NADLAN_OPENAI_API_KEY</code>.</small> <br><label><input type="checkbox" name="clear_openai_key" value="1"> מחק מפתח OpenAI שמור</label></td></tr>';
 		echo '<tr><th>Anthropic API Key</th><td><input type="password" name="anthropic_key" value="" style="width:480px" placeholder="' . esc_attr( $anthropic_present ? 'מפתח שמור. הדביקו מפתח חדש רק אם מחליפים.' : 'sk-ant-...' ) . '"> <br><small>מצב: ' . esc_html( $anthropic_present ? 'מפתח שמור' : 'לא הוגדר' ) . '. נשמר רק כאפשרות גיבוי.</small> <br><label><input type="checkbox" name="clear_anthropic_key" value="1"> מחק מפתח Anthropic שמור</label></td></tr>';
 		echo '<tr><th>תקרת שימוש יומית לפי IP</th><td><input type="number" min="1000" max="1000000" step="1000" name="daily_token_cap" value="' . esc_attr( $cap ) . '"> <br><small>מונע שימוש חריג לפני קריאה לספק.</small></td></tr>';
+		echo '<tr><th>תקרה יומית כללית</th><td><input type="number" min="10000" max="10000000" step="10000" name="daily_token_cap_global" value="' . esc_attr( $global_cap ) . '"> <br><small>שימוש היום: ' . esc_html( number_format( $tokens_today ) ) . ' מתוך ' . esc_html( number_format( $global_cap ) ) . ' טוקנים.</small></td></tr>';
 		echo '<tr><th>פעיל</th><td><label><input type="checkbox" name="enabled" ' . checked( $en, 1, false ) . '> הצג ווידג\'ט באתר</label></td></tr></table>';
 		echo '<p class="submit"><button type="submit" name="nadlan_ai_save" class="button-primary">שמור</button></p></form>';
 		echo '<h2>שימוש מצטבר</h2><p>חודש: <b>' . esc_html( $month ) . '</b> · הודעות: <b>' . esc_html( $msgs ) . '</b> · טוקנים מצטברים: <b>' . esc_html( number_format( $tot ) ) . '</b> · עלות מוערכת החודש: <b>$' . esc_html( number_format( $est_usd, 4 ) ) . '</b></p>';

@@ -1,6 +1,6 @@
 <?php
 /**
- * nadlan-config - provider-agnostic AI adapter (GAP 4, v1.43.1).
+ * nadlan-config - provider-agnostic AI adapter (GAP 4, v1.43.2).
  *
  * Default provider is OpenAI. Anthropic stays available as a fallback so older
  * installs with an existing key keep working. Secrets are read only from server
@@ -97,9 +97,15 @@ if ( ! function_exists( 'nadlan_ai_request_ip' ) ) {
 
 if ( ! function_exists( 'nadlan_ai_guard' ) ) {
 	function nadlan_ai_guard( $ip, $estimated_tokens = 0 ) {
+		$estimated_tokens = max( 1, (int) $estimated_tokens );
+		$global_cap = (int) get_option( 'nadlan_ai_daily_token_cap_global', 200000 );
+		if ( $global_cap < 10000 ) { $global_cap = 200000; }
+		$global_used = (int) get_option( 'nadlan_ai_tokens_today_' . gmdate( 'Ymd' ), 0 );
+		if ( $global_used + $estimated_tokens > $global_cap ) {
+			return new WP_Error( 'ai_global_cap', 'daily budget reached' );
+		}
 		$cap = (int) get_option( 'nadlan_ai_daily_token_cap', 30000 );
 		if ( $cap < 1000 ) { $cap = 30000; }
-		$estimated_tokens = max( 1, (int) $estimated_tokens );
 		$key = 'nadlan_ai_daily_' . gmdate( 'Ymd' ) . '_' . md5( (string) $ip );
 		$used = (int) get_transient( $key );
 		if ( $used + $estimated_tokens > $cap ) {
@@ -107,6 +113,36 @@ if ( ! function_exists( 'nadlan_ai_guard' ) ) {
 		}
 		set_transient( $key, $used + $estimated_tokens, DAY_IN_SECONDS + HOUR_IN_SECONDS );
 		return true;
+	}
+}
+
+if ( ! function_exists( 'nadlan_ai_prune_daily_counters' ) ) {
+	function nadlan_ai_prune_daily_counters() {
+		if ( get_transient( 'nadlan_ai_pruned_' . gmdate( 'Ymd' ) ) ) { return; }
+		global $wpdb;
+		$prefix = 'nadlan_ai_tokens_today_';
+		$cutoff = gmdate( 'Ymd', time() - 7 * DAY_IN_SECONDS );
+		$names = $wpdb->get_col( $wpdb->prepare(
+			"SELECT option_name FROM {$wpdb->options} WHERE option_name LIKE %s",
+			$wpdb->esc_like( $prefix ) . '%'
+		) );
+		foreach ( (array) $names as $name ) {
+			$day = substr( (string) $name, strlen( $prefix ), 8 );
+			if ( preg_match( '/^\d{8}$/', $day ) && $day < $cutoff ) {
+				delete_option( $name );
+			}
+		}
+		set_transient( 'nadlan_ai_pruned_' . gmdate( 'Ymd' ), 1, DAY_IN_SECONDS );
+	}
+}
+
+if ( ! function_exists( 'nadlan_ai_increment_global_tokens' ) ) {
+	function nadlan_ai_increment_global_tokens( $tokens ) {
+		$tokens = max( 0, (int) $tokens );
+		if ( $tokens <= 0 ) { return; }
+		$key = 'nadlan_ai_tokens_today_' . gmdate( 'Ymd' );
+		update_option( $key, (int) get_option( $key, 0 ) + $tokens, false );
+		nadlan_ai_prune_daily_counters();
 	}
 }
 
@@ -167,6 +203,9 @@ if ( ! function_exists( 'nadlan_ai_record_usage' ) ) {
 		$stats['last_status'] = $status;
 		$stats['last_at'] = time();
 		update_option( $key, $stats, false );
+		if ( $status === 'ok' ) {
+			nadlan_ai_increment_global_tokens( $total );
+		}
 		update_option( 'nadlan_ai_total_tokens', (int) get_option( 'nadlan_ai_total_tokens', 0 ) + $total, false );
 		update_option( 'nadlan_ai_total_msgs', (int) get_option( 'nadlan_ai_total_msgs', 0 ) + 1, false );
 		$GLOBALS['nadlan_ai_last_usage'] = array(
@@ -195,7 +234,7 @@ if ( ! function_exists( 'nadlan_ai_note_error' ) ) {
 }
 
 if ( ! function_exists( 'nadlan_ai_chat_openai' ) ) {
-	function nadlan_ai_chat_openai( $system, $messages, $max_tokens = 600 ) {
+	function nadlan_ai_chat_openai( $system, $messages, $max_tokens = 600, $estimated_tokens = 0 ) {
 		$key = nadlan_ai_openai_key();
 		$model = nadlan_ai_openai_model();
 		if ( $key === '' ) { return new WP_Error( 'nokey', 'OpenAI key missing' ); }
@@ -216,6 +255,7 @@ if ( ! function_exists( 'nadlan_ai_chat_openai' ) ) {
 				'X-Client-Request-Id' => function_exists( 'wp_generate_uuid4' ) ? wp_generate_uuid4() : uniqid( 'nadlan-ai-', true ),
 			),
 			'body' => wp_json_encode( $payload, JSON_UNESCAPED_UNICODE ),
+			'sslverify' => true,
 		) );
 		if ( is_wp_error( $resp ) ) {
 			nadlan_ai_note_error( 'openai', $model, $resp->get_error_code(), $resp->get_error_message() );
@@ -233,13 +273,13 @@ if ( ! function_exists( 'nadlan_ai_chat_openai' ) ) {
 			nadlan_ai_note_error( 'openai', $model, 'empty', 'empty response' );
 			return new WP_Error( 'openai_empty', 'OpenAI returned no content' );
 		}
-		nadlan_ai_record_usage( 'openai', $model, (array) ( $data['usage'] ?? array() ), 0, 'ok' );
+		nadlan_ai_record_usage( 'openai', $model, (array) ( $data['usage'] ?? array() ), $estimated_tokens, 'ok' );
 		return $text;
 	}
 }
 
 if ( ! function_exists( 'nadlan_ai_chat_anthropic' ) ) {
-	function nadlan_ai_chat_anthropic( $system, $messages, $max_tokens = 600 ) {
+	function nadlan_ai_chat_anthropic( $system, $messages, $max_tokens = 600, $estimated_tokens = 0 ) {
 		$key = nadlan_ai_anthropic_key();
 		$model = nadlan_ai_anthropic_model();
 		if ( $key === '' ) { return new WP_Error( 'nokey', 'Anthropic key missing' ); }
@@ -257,6 +297,7 @@ if ( ! function_exists( 'nadlan_ai_chat_anthropic' ) ) {
 				'content-type'      => 'application/json',
 			),
 			'body' => wp_json_encode( $body, JSON_UNESCAPED_UNICODE ),
+			'sslverify' => true,
 		) );
 		if ( is_wp_error( $resp ) ) {
 			nadlan_ai_note_error( 'anthropic', $model, $resp->get_error_code(), $resp->get_error_message() );
@@ -278,7 +319,7 @@ if ( ! function_exists( 'nadlan_ai_chat_anthropic' ) ) {
 			nadlan_ai_note_error( 'anthropic', $model, 'empty', 'empty response' );
 			return new WP_Error( 'anthropic_empty', 'Anthropic returned no content' );
 		}
-		nadlan_ai_record_usage( 'anthropic', $model, (array) ( $data['usage'] ?? array() ), 0, 'ok' );
+		nadlan_ai_record_usage( 'anthropic', $model, (array) ( $data['usage'] ?? array() ), $estimated_tokens, 'ok' );
 		return $text;
 	}
 }
@@ -304,9 +345,9 @@ if ( ! function_exists( 'nadlan_ai_chat' ) ) {
 		if ( is_wp_error( $guard ) ) { return $guard; }
 		$provider = nadlan_ai_provider();
 		if ( $provider === 'anthropic' ) {
-			return nadlan_ai_chat_anthropic( $system, $messages, $max_tokens );
+			return nadlan_ai_chat_anthropic( $system, $messages, $max_tokens, $estimated );
 		}
-		return nadlan_ai_chat_openai( $system, $messages, $max_tokens );
+		return nadlan_ai_chat_openai( $system, $messages, $max_tokens, $estimated );
 	}
 }
 
@@ -319,6 +360,8 @@ add_filter( 'nadlan_config_healthcheck', function ( $out ) {
 		'openai_key_present'    => nadlan_ai_openai_key() !== '',
 		'anthropic_key_present' => nadlan_ai_anthropic_key() !== '',
 		'daily_token_cap'       => (int) get_option( 'nadlan_ai_daily_token_cap', 30000 ),
+		'daily_token_cap_global'=> (int) get_option( 'nadlan_ai_daily_token_cap_global', 200000 ),
+		'tokens_today'          => (int) get_option( 'nadlan_ai_tokens_today_' . gmdate( 'Ymd' ), 0 ),
 		'usage_month'           => $month,
 		'usage_calls'           => is_array( $usage ) ? (int) ( $usage['calls'] ?? 0 ) : 0,
 		'usage_tokens'          => is_array( $usage ) ? (int) ( $usage['tokens_total'] ?? 0 ) : 0,
