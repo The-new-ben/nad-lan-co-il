@@ -7,12 +7,26 @@
 >
 > Status keys: 🔴 not started · 🟡 in progress · 🟢 shipped · 🧊 future/parked · ❓ needs owner decision
 >
-> Last updated: 2026-06-03
+> Last updated: 2026-06-05
+
+---
+
+## Finish-line draft PR train - 2026-06-05
+
+- In draft review: GAP 5 geo search, GAP 6 roles, GAP 3 recurring, placement auction, AI support, business metrics, reliability, and seams/final hardening.
+- Current final-hardening branch adds the future seams `nadlan_after_lead_closed`, `nadlan_search_executed`, `nadlan_real_estate_listing_jsonld`, `nadlan_card_jsonld`, and `nadlan_card_jsonld_ready`.
+- Deferred after these PRs: review invitation workflow, saved-search alert productization, native MySQL POINT/SRID 4326 migration, and board-grade expansion/contraction/reactivation accounting.
+- Owner prerequisites before recurring revenue deploy: set `nadlan_gi_ipn_secret`, configure Morning recurring webhook and links, decide cycle days, set server cron, set uptime monitor, and set heartbeat URLs.
+- Business metrics caveat: churn and NRR are directional owner-dashboard numbers until event-level expansion, contraction, reactivation, and signup cohorts are tracked separately.
 
 ---
 
 ## P0 — Revenue (do first; the site earns ₪0 today)
 
+- 🟡 **GAP 2 lead routing to paying card owners (Codex branch `codex/gap2-lead-routing`).**
+  Draft PR in progress for `nadlan-config` v1.42.9: route exact `lead_card_id`
+  inquiries to the paid card owner, add owner inbox in Advertiser Center, and
+  expose delivery trace in NadLan Ops. Claude reviews and ships after PR.
 - 🟡 **Advertiser Center / post-payment handoff (v1.41.2 Codex branch).** New
   `/advertiser-center/` module gives logged-in advertisers one place for owned
   cards/projects, completion score, views, inquiries, reviews, recent orders,
@@ -92,9 +106,10 @@
 
 ## P4 — AI / automation (the "zero-friction, I don't manage people" goal)
 
-- 🔴 **AI concierge.** Embedded assistant that knows glossary + directory + calculators,
-  answers visitors, qualifies + routes leads before they reach the owner. **Research GitHub
-  for existing WP AI-chat / RAG plugins — do NOT build from zero.** Owner approved.
+- 🟡 **GAP 4 OpenAI provider adapter.** Branch `codex/gap4-openai-agent` makes the
+  concierge, Studio copy assist, listing-description generator, and NL search provider
+  agnostic with OpenAI default, Anthropic fallback, daily token cap, and usage trace.
+  Draft PR/review pending; not live until merged + owner plugin update.
 - 🧊 **100% AI support layer** so the owner doesn't deal with people directly. Long-term.
 
 ## P5 — Assets

@@ -82,6 +82,7 @@ if ( ! function_exists( 'nadlan_dir_css' ) ) {
 .nldc-norate{color:#b9b4a9;font-size:12px;font-style:italic}
 .nldc-meta{display:flex;flex-direction:column;gap:5px;font-size:13px;color:#5a5a5a}
 .nldc-city{font-weight:600;color:var(--ink)}
+.nldc-distance{display:inline-flex;align-items:center;width:max-content;border:1px solid color-mix(in srgb,var(--pc,#9C7A3C) 24%,transparent);background:var(--ps,#FBF6EE);color:var(--pc,#9C7A3C);border-radius:999px;padding:2px 9px;font-size:11.5px;font-weight:700}
 .nldc-cls{line-height:1.45;color:#6b6b6b}
 .nldc-foot{margin-top:auto;display:flex;align-items:center;justify-content:space-between;gap:8px;padding-top:11px;border-top:1px solid var(--line)}
 .nldc-reg{font-size:10.5px;color:#7a7a7a;font-weight:600}

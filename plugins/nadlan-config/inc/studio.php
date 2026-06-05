@@ -542,7 +542,7 @@ if ( ! function_exists( 'nadlan_studio_js' ) ) {
 				.then(function(r){
 					btn.disabled=false;
 					if(r.data&&r.data.ok){ta.value=r.data.text;toast('ok','✨ הטקסט עודכן ע"י העוזר.');}
-					else{toast('err',(r.data&&r.data.message)||'העוזר החכם אינו פעיל. הזינו מפתח Anthropic ב-Settings → NadLan AI.');}
+					else{toast('err',(r.data&&r.data.message)||'העוזר החכם אינו פעיל. הגדירו ספק ומפתח ב-Settings -> NadLan AI.');}
 				});
 		});
 	});

@@ -69,6 +69,13 @@ if ( ! function_exists( 'nadlan_ops_render' ) ) {
 		$bids_count   = (int) $wpdb->get_var( "SELECT COUNT(*) FROM {$wpdb->prefix}nadlan_bids" );
 		$ss_total     = nadlan_ops_count( 'nadlan_saved_search' );
 		$esign_total  = nadlan_ops_count( 'nadlan_esign' );
+		$lead_route   = function_exists( 'nadlan_lead_routing_stats' ) ? nadlan_lead_routing_stats( 7 ) : array(
+			'attempted' => 0,
+			'routed'   => 0,
+			'fallback' => 0,
+			'failed'   => 0,
+			'last'     => array(),
+		);
 		?>
 <style>
 .nlops{max-width:1100px}
@@ -95,6 +102,17 @@ if ( ! function_exists( 'nadlan_ops_render' ) ) {
 			<div class="nlops-row"><span>long (6-18mo)</span><strong><?php echo (int) $drip['long']; ?></strong></div>
 			<div class="nlops-row"><span>opted-out</span><strong><?php echo (int) $drip['optout']; ?></strong></div>
 			<p class="nlops-links"><a href="<?php echo esc_url( admin_url( 'edit.php?post_type=nadlan_lead' ) ); ?>">Manage leads →</a></p>
+		</div>
+
+		<div class="nlops-card">
+			<h2>Autopilot - advertiser delivery</h2>
+			<div class="nlops-row"><span>attempted, 7d</span><strong><?php echo (int) $lead_route['attempted']; ?></strong></div>
+			<div class="nlops-row"><span>delivered to owner</span><strong><?php echo (int) $lead_route['routed']; ?></strong></div>
+			<div class="nlops-row"><span>admin fallback</span><strong><?php echo (int) $lead_route['fallback']; ?></strong></div>
+			<div class="nlops-row"><span>failed</span><strong class="<?php echo (int) $lead_route['failed'] > 0 ? 'nlops-warn' : ''; ?>"><?php echo (int) $lead_route['failed']; ?></strong></div>
+			<?php if ( ! empty( $lead_route['last']['status'] ) ) : ?>
+				<div class="nlops-row"><span>latest status</span><strong><?php echo esc_html( $lead_route['last']['status'] ); ?></strong></div>
+			<?php endif; ?>
 		</div>
 
 		<div class="nlops-card">
@@ -142,6 +160,7 @@ if ( ! function_exists( 'nadlan_ops_render' ) ) {
 		</div>
 
 	</div>
+	<?php do_action( 'nadlan_ops_after_grid' ); ?>
 </div>
 		<?php
 	}

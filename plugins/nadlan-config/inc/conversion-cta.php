@@ -107,6 +107,16 @@ add_action( 'rest_api_init', function () {
 			update_post_meta( $lid, 'goal', $goal );
 			if ( $src ) { update_post_meta( $lid, 'utm_source', $src ); }
 			if ( $card_id ) { update_post_meta( $lid, 'lead_card_id', $card_id ); }
+			if ( function_exists( 'nadlan_lead_route' ) ) {
+				nadlan_lead_route( $lid, $card_id, array(
+					'name'    => $name,
+					'phone'   => $phone,
+					'email'   => $email,
+					'goal'    => $goal,
+					'message' => $msg,
+					'source'  => $src,
+				), 'rest' );
+			}
 			$admin = get_option( 'admin_email' );
 			if ( $admin ) {
 				$body  = "ליד חדש מהאתר\n\nשם: $name\nטלפון: $phone\nאימייל: $email\nנושא: $goal\nמקור: $src\n\nהודעה: $msg\n\n";

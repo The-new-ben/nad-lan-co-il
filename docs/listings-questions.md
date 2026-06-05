@@ -13,7 +13,7 @@
 4. **Auction defaults** — buyer's premium %, default reserve policy, auction duration (current code defaults: 5%-ish premium field, 120s soft-close window/extend, ₪1,000 increment).
 5. **Pricing/positioning** — how the free directory + lawyer-marketplace + auctions + listings tie together commercially.
 6. **nadlan.gov.il price scraping** — needs legal sign-off (no official API, ToS-sensitive). Approve before deals ETL.
-7. **LLM provider for AI features** (v1.9.0) — default Anthropic via `NADLAN_LLM_API_KEY`. Owner: choose provider + add the key to wp-config.php (or swap via `nadlan_llm_request` filter).
+7. **LLM provider for AI features** (updated in GAP 4 / v1.43.1) — default OpenAI via Settings -> NadLan AI or server constant; Anthropic remains available as fallback.
 8. **e-Sign provider** (v1.11.0) — default = email-only (no provider). Pick BoldSign / Dropbox Sign / DocuSign / Israeli Comda etc. and wire via `nadlan_esign_create_request` filter. Document scope (offer letter only — see §B6).
 9. **SMS/WhatsApp drip channel** (v1.12.0) — current drip is email-only. SMS has ~98% open rate; choose Twilio / local IL provider. Privacy/consent rules apply.
 10. **Engagement tracking pixel** — open/click tracking in drip emails: IL Privacy Protection Law decision required. Off by default.

@@ -181,7 +181,9 @@ add_action( 'rest_api_init', function () {
 				'system'     => $sys,
 				'messages'   => $clean,
 			);
-			$resp = wp_remote_post( 'https://api.anthropic.com/v1/messages', array(
+			$url = function_exists( 'nadlan_anthropic_messages_url' ) ? nadlan_anthropic_messages_url() : '';
+			if ( ! $url ) { return new WP_Error( 'no_endpoint', 'AI endpoint not configured' ); }
+			$resp = wp_remote_post( $url, array(
 				'headers' => array(
 					'x-api-key'         => nadlan_ai_key(),
 					'anthropic-version' => '2023-06-01',
@@ -189,6 +191,7 @@ add_action( 'rest_api_init', function () {
 				),
 				'body'    => wp_json_encode( $body, JSON_UNESCAPED_UNICODE ),
 				'timeout' => 30,
+				'sslverify' => true,
 			) );
 			if ( is_wp_error( $resp ) ) { return new WP_Error( 'upstream', $resp->get_error_message() ); }
 			$code = (int) wp_remote_retrieve_response_code( $resp );
@@ -245,7 +248,10 @@ add_action( 'admin_menu', function () {
 	add_options_page( 'NadLan AI Concierge', 'NadLan AI', 'manage_options', 'nadlan-ai', function () {
 		if ( ! current_user_can( 'manage_options' ) ) { return; }
 		if ( ! empty( $_POST['nadlan_ai_save'] ) && check_admin_referer( 'nadlan_ai_save' ) ) {
-			update_option( 'nadlan_ai_anthropic_key', sanitize_text_field( wp_unslash( $_POST['key'] ?? '' ) ) );
+			$new_key = sanitize_text_field( wp_unslash( $_POST['key'] ?? '' ) );
+			if ( $new_key !== '' ) {
+				update_option( 'nadlan_ai_anthropic_key', $new_key, false );
+			}
 			update_option( 'nadlan_ai_enabled', ! empty( $_POST['enabled'] ) ? 1 : 0 );
 			echo '<div class="notice notice-success"><p>נשמר.</p></div>';
 		}
@@ -257,7 +263,7 @@ add_action( 'admin_menu', function () {
 		echo '<div class="wrap" style="direction:rtl;font-family:Heebo,sans-serif"><h1>NadLan AI Concierge</h1>';
 		echo '<form method="post">';
 		wp_nonce_field( 'nadlan_ai_save' );
-		echo '<table class="form-table"><tr><th>Anthropic API Key</th><td><input type="password" name="key" value="' . esc_attr( $key ) . '" style="width:480px" placeholder="sk-ant-..."> <br><small>או הגדר ב-wp-config.php: <code>define(\'ANTHROPIC_API_KEY\', \'sk-ant-...\');</code></small></td></tr>';
+		echo '<table class="form-table"><tr><th>Anthropic API Key</th><td><input type="password" name="key" value="" style="width:480px" placeholder="' . esc_attr( $key ? 'מפתח שמור, הזינו חדש כדי להחליף' : 'הזינו מפתח API' ) . '"> <br><small>או הגדירו ב-wp-config.php את הקבוע ANTHROPIC_API_KEY. המפתח השמור אינו מוצג חזרה במסך.</small></td></tr>';
 		echo '<tr><th>פעיל</th><td><label><input type="checkbox" name="enabled" ' . checked( $en, 1, false ) . '> הצג ווידג\'ט באתר</label></td></tr></table>';
 		echo '<p class="submit"><button type="submit" name="nadlan_ai_save" class="button-primary">שמור</button></p></form>';
 		echo '<h2>שימוש מצטבר</h2><p>הודעות: <b>' . $msgs . '</b> · טוקנים: <b>' . number_format( $tot ) . '</b> · עלות מוערכת (Haiku): <b>$' . number_format( $est_usd, 2 ) . '</b></p>';
