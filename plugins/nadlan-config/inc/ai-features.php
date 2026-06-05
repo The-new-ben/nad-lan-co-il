@@ -18,25 +18,19 @@
  *     amenities[]}) → WP_Query → results. Deterministic regex fallback for the
  *     common Hebrew patterns so it works even if LLM is unavailable.
  *
- * LLM adapter (provider-agnostic): nadlan_llm_request($prompt, $opts) — by
- * default hits Anthropic Claude if NADLAN_LLM_API_KEY constant is set; owner
- * can swap providers via the nadlan_llm_request filter. NEVER fails open: if
- * no key + no override, returns WP_Error so callers degrade gracefully.
+ * LLM adapter: nadlan_llm_request($prompt, $opts) now delegates to the shared
+ * GAP 4 provider adapter, nadlan_ai_chat(). Default provider is OpenAI with
+ * Anthropic fallback. NEVER fails open: if no key + no override, returns
+ * WP_Error so callers degrade gracefully.
  *
- * BLANK (owner): pick provider + add NADLAN_LLM_API_KEY to wp-config.php (or
- * set option 'nadlan_llm_key'). Compliance phrase list is conservative; review
- * with counsel before public NL search rollout (docs/listings-questions.md).
+ * BLANK (owner): set provider + key in Settings -> NadLan AI. Compliance phrase
+ * list is conservative; review with counsel before public NL search rollout
+ * (docs/listings-questions.md).
  */
 
 if ( ! defined( 'ABSPATH' ) ) { exit; }
 
 /* ---- LLM adapter (pluggable) ---- */
-if ( ! function_exists( 'nadlan_llm_key' ) ) {
-	function nadlan_llm_key() {
-		if ( defined( 'NADLAN_LLM_API_KEY' ) && NADLAN_LLM_API_KEY ) { return NADLAN_LLM_API_KEY; }
-		return (string) get_option( 'nadlan_llm_key', '' );
-	}
-}
 if ( ! function_exists( 'nadlan_llm_request' ) ) {
 	/**
 	 * @param string $system System prompt.
@@ -47,30 +41,11 @@ if ( ! function_exists( 'nadlan_llm_request' ) ) {
 	function nadlan_llm_request( $system, $user, $opts = array() ) {
 		$override = apply_filters( 'nadlan_llm_request', null, $system, $user, $opts );
 		if ( $override !== null ) { return $override; }
-		$key = nadlan_llm_key();
-		if ( ! $key ) { return new WP_Error( 'no_key', 'LLM key not configured (define NADLAN_LLM_API_KEY or set option nadlan_llm_key)' ); }
-		$body = wp_json_encode( array(
-			'model'      => $opts['model'] ?? 'claude-haiku-4-5-20251001',
-			'max_tokens' => (int) ( $opts['max_tokens'] ?? 600 ),
-			'system'     => $system,
-			'messages'   => array( array( 'role' => 'user', 'content' => $user ) ),
-		) );
-		$url = function_exists( 'nadlan_anthropic_messages_url' ) ? nadlan_anthropic_messages_url() : '';
-		if ( ! $url ) { return new WP_Error( 'no_endpoint', 'LLM endpoint not configured' ); }
-		$res = wp_remote_post( $url, array(
-			'timeout' => 30, 'headers' => array(
-				'Content-Type' => 'application/json',
-				'x-api-key'    => $key,
-				'anthropic-version' => '2023-06-01',
-			), 'body' => $body, 'sslverify' => true,
-		) );
-		if ( is_wp_error( $res ) ) { return $res; }
-		$code = (int) wp_remote_retrieve_response_code( $res );
-		if ( $code < 200 || $code >= 300 ) { return new WP_Error( 'llm_http', 'HTTP ' . $code . ': ' . wp_remote_retrieve_body( $res ) ); }
-		$j = json_decode( wp_remote_retrieve_body( $res ), true );
-		$text = $j['content'][0]['text'] ?? '';
-		if ( $text === '' ) { return new WP_Error( 'llm_empty', 'Empty response' ); }
-		return trim( $text );
+		if ( ! function_exists( 'nadlan_ai_chat' ) ) {
+			return new WP_Error( 'no_adapter', 'AI adapter not loaded' );
+		}
+		$max_tokens = (int) ( $opts['max_tokens'] ?? 600 );
+		return nadlan_ai_chat( $system, array( array( 'role' => 'user', 'content' => $user ) ), $max_tokens );
 	}
 }
 
@@ -258,7 +233,7 @@ function nadlanNlSearch(f){
 		if(j.count===0){out.innerHTML='לא נמצאו תוצאות. '+(j.parsed.city?'נסו עיר אחרת.':'נסו לפרט עיר ומחיר.');return;}
 		var h='<p class="nlnls-meta">'+j.count+' תוצאות (פירוש: '+JSON.stringify(j.parsed)+')</p><ul class="nlnls-list">';
 		j.items.forEach(function(it){
-			h+='<li><a href="'+it.url+'">'+it.title+'</a> — '+(it.price?'₪'+it.price.toLocaleString():'')+' · '+it.rooms+' חד׳ · '+it.sqm+' מ"ר · '+(it.city||'')+'</li>';
+			h+='<li><a href="'+it.url+'">'+it.title+'</a> · '+(it.price?'₪'+it.price.toLocaleString():'')+' · '+it.rooms+' חד׳ · '+it.sqm+' מ"ר · '+(it.city||'')+'</li>';
 		});
 		out.innerHTML=h+'</ul>';
 	}).catch(function(){out.textContent='שגיאת רשת.';});

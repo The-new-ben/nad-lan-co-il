@@ -60,6 +60,10 @@ if ( ! function_exists( 'nadlan_roles_assign_user' ) ) {
 		if ( $user_id < 1 ) { return false; }
 		$user = new WP_User( $user_id );
 		if ( ! $user || ! $user->exists() ) { return false; }
+		// Owner-safety: never modify administrators / super admins. They keep full access untouched.
+		if ( user_can( $user, 'manage_options' ) || ( function_exists( 'is_super_admin' ) && is_super_admin( $user_id ) ) ) {
+			return false;
+		}
 		if ( $owns_listing === null ) {
 			$owned = get_posts( array(
 				'post_type'      => nadlan_roles_card_cpts(),
