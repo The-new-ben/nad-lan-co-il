@@ -94,6 +94,16 @@ add_action( 'rest_api_init', function () {
 			$ct = (int) get_transient( $tk );
 			if ( $ct >= 8 ) { return new WP_Error( 'rate', 'יותר מדי בקשות.' ); }
 			set_transient( $tk, $ct + 1, HOUR_IN_SECONDS );
+			if ( function_exists( 'nadlan_lead_e2e_enabled' ) && nadlan_lead_e2e_enabled() && function_exists( 'nadlan_lead_e2e_capture' ) ) {
+				return nadlan_lead_e2e_capture( array(
+					'name'    => $name,
+					'phone'   => $phone,
+					'email'   => $email,
+					'goal'    => $goal,
+					'message' => $msg,
+					'source'  => $src,
+				), $card_id, 'rest' );
+			}
 			$lid = wp_insert_post( array(
 				'post_type'    => 'nadlan_lead',
 				'post_status'  => 'private',
