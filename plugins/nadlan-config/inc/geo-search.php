@@ -144,13 +144,20 @@ if ( ! function_exists( 'nadlan_geo_clauses' ) ) {
 			$clauses['where'] .= $wpdb->prepare( " AND {$distance_expr} <= %f", $radius_km );
 		}
 		$clauses['distinct'] = 'DISTINCT';
-		$paid_order = "CASE {$tier_alias}.meta_value WHEN 'premier' THEN 2 WHEN 'pro' THEN 1 ELSE 0 END DESC";
+		$fallback_order = "CASE {$tier_alias}.meta_value WHEN 'premier' THEN 2 WHEN 'pro' THEN 1 ELSE 0 END DESC";
 		$incoming_order = trim( (string) ( $clauses['orderby'] ?? '' ) );
-		if ( strpos( $incoming_order, "CASE {$tier_alias}.meta_value" ) !== false ) {
-			$parts = explode( ',', $incoming_order, 2 );
-			$paid_order = trim( $parts[0] );
+		$segments = $incoming_order === '' ? array() : preg_split( '/,\s*/', $incoming_order );
+		$leading_cases = array();
+		foreach ( $segments as $segment ) {
+			$segment = trim( (string) $segment );
+			if ( stripos( $segment, 'CASE ' ) === 0 ) {
+				$leading_cases[] = $segment;
+				continue;
+			}
+			break;
 		}
-		$clauses['orderby'] = $paid_order . ", nadlan_distance_km ASC, {$wpdb->posts}.post_date DESC, {$wpdb->posts}.ID DESC";
+		$prefix = $leading_cases ? implode( ', ', $leading_cases ) : $fallback_order;
+		$clauses['orderby'] = $prefix . ", nadlan_distance_km ASC, {$wpdb->posts}.post_date DESC, {$wpdb->posts}.ID DESC";
 		return $clauses;
 	}
 }

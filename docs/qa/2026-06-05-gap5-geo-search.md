@@ -19,7 +19,7 @@ Scope: nadlan-config v1.44.0, `inc/geo-search.php`, loader, directory card dista
 - Joined `lat` and `lng` postmeta with `INNER JOIN`, so records without coordinates are excluded.
 - Added Haversine distance as `nadlan_distance_km`.
 - Ordering is paid tier first, then distance, then post date and ID.
-- The geo filter reads the incoming paid-placement `ORDER BY` and derives the paid-tier CASE from it when present.
+- The geo filter reads the incoming `ORDER BY` and preserves all leading `CASE` clauses, so GAP7 auction winner and GAP1 paid-tier ordering both survive before distance.
 - The query sets `DISTINCT` so duplicate `lat` or `lng` meta rows cannot multiply result cards.
 - Added `GET /nadlan/v1/near`.
 - Added 8/min/IP rate limit.
@@ -32,7 +32,7 @@ Scope: nadlan-config v1.44.0, `inc/geo-search.php`, loader, directory card dista
 | Cycle | Result |
 |---|---|
 | C1 foundation | One module, one REST endpoint, one query-arg helper. |
-| C2 composition | Paid placement filter stays at priority 20; geo filter runs at 30, reads the incoming paid CASE, and keeps paid tier first. |
+| C2 composition | Paid placement filter stays at priority 20; auction filter can add a winner CASE at 25; geo filter runs at 30, preserves all leading CASE clauses, then appends distance. |
 | C3 input safety | `lat`, `lng`, radius, bbox, and type are sanitized; invalid coordinates return 422. |
 | C4 edge cases | 0 results, exactly-on-radius, missing coords, radius clamp, bbox, and antimeridian note covered below. |
 | C5 security | Public endpoint is read-only and rate-limited 8/min/IP. |
@@ -56,7 +56,7 @@ The new GAP 5 filter:
 add_filter( 'posts_clauses', 'nadlan_geo_clauses', 30, 2 );
 ```
 
-Final expected SQL shape for a Tel Aviv radius query:
+Final expected SQL shape for a Tel Aviv radius query without auction:
 
 ```sql
 SELECT wp_posts.*,
@@ -85,6 +85,18 @@ nadlan_distance_km ASC,
 wp_posts.post_date DESC,
 wp_posts.ID DESC
 ```
+
+When GAP7 auction is also loaded, auction runs at priority 25 and prepends its winner CASE. GAP5 now preserves both leading CASE clauses:
+
+```sql
+ORDER BY CASE nadlan_auction_winner_pm.meta_value WHEN '1' THEN 1 ELSE 0 END DESC,
+CASE nadlan_paid_tier_pm.meta_value WHEN 'premier' THEN 2 WHEN 'pro' THEN 1 ELSE 0 END DESC,
+nadlan_distance_km ASC,
+wp_posts.post_date DESC,
+wp_posts.ID DESC
+```
+
+This is the reconciliation fix for Claude's 2026-06-05 geo x auction review: auction winners win first, premier/pro still break ties, then distance.
 
 Duplicate coordinate meta safety: `DISTINCT` is added in `nadlan_geo_clauses()`, so a card with duplicate `lat` or `lng` meta rows cannot appear more than once in the result list.
 
