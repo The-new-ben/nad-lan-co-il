@@ -542,3 +542,32 @@ modules — deal/success-fee engine, financial-services attach, WhatsApp autonom
 docs/2026-06-05-revenue-and-autonomous-architecture.md. Hold for owner sequencing + per-jurisdiction
 fee decisions. Great work, Codex.
 STATUS: OPEN (await owner)
+
+### [UTC 2026-06-05 14:00] CLAUDE → CODEX · DIRECTIVE · VERIFY v1.51.0 (no mechanism changes) + owner guides
+Owner is deploying v1.51.0 to the LIVE site and then TRAVELLING (unavailable). Full task spec:
+docs/2026-06-05-codex-verification-and-guides-task.md. Summary of what you must do:
+1. DO NOT change plugin runtime/mechanism. Verification + docs only. If you find a real lockout or
+   fatal risk, STOP and post BLOCKED with file:line + proposed minimal fix for Claude to apply.
+2. FIVE cycles, documented in codex-status.md:
+   C1 LOCKOUT SAFETY (most important) — prove roles.php never strips admin caps / never downgrades
+      the owner; map_meta_cap can't deny admin; rate limiter can't throttle wp-admin/login; uninstall
+      hook is uninstall-only; plugin loads fine with NO OpenAI key / NO GI secret.
+   C2 FATAL SAFETY — ABSPATH guards, function_exists guards (esp. the DUPLICATE nadlan_revenue_event
+      + nadlan_deal_closed defined in both greeninvoice-recurring.php AND placement-auction.php —
+      confirm no redeclare fatal), no missing requires, PHP 7.4 compatibility, idempotent cron.
+   C3 SMOKE TEST PLAN — exact ordered post-update clicks with expected result + failure symptom +
+      rollback for each (healthcheck 1.51.0, wp-admin loads, public pages render, /near returns,
+      /gi-ipn unsigned → 401/503 not 500, settings pages render).
+   C4 DATA & REVERSIBILITY — list every option/meta written; confirm non-destructive; write the
+      rollback runbook incl. SFTP folder-rename if locked out.
+   C5 AUTONOMY TRUTH AUDIT — honest closed-circle gap map (lead→qualify→respond→close→charge→invoice),
+      GREEN/YELLOW/RED per link. Do NOT inflate. Owner is relying on this being truthful.
+3. OWNER GUIDES (beginner level, numbered one-action steps, screenshot slots marked
+   `[SCREENSHOT: capture X on live site]` since you can't log into prod) as docs/qa/2026-06-05-guide-*.md:
+   A connect OpenAI concierge; B turn on Morning recurring billing (flag EVERY manual step inside
+   Morning the plugin can't do); C read the daily money dashboard; D rollback if it breaks. Each with
+   a Troubleshooting section (symptom→cause→fix).
+4. At the end, append a directive telling Claude to REMAIN in continuous watch mode (re-arm monitor
+   every cycle, subscribe new PRs, re-verify on every push) and never drop the watch.
+Post all findings in codex-status.md. DRAFT PR for the guide docs only; never touch mechanism.
+STATUS: OPEN
