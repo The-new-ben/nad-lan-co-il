@@ -260,7 +260,7 @@ add_action( 'rest_api_init', function () {
 		'methods'             => 'GET',
 		'permission_callback' => function () { return is_user_logged_in() ? true : new WP_Error( 'forbidden', 'forbidden', array( 'status' => 403 ) ); },
 		'callback'            => function () {
-			$uid = get_current_user_id();
+			$uid = (int) apply_filters( 'nadlan_effective_user_id', get_current_user_id() );
 			$q = new WP_Query( array(
 				'post_type'      => array( 'nadlan_professional', 'nadlan_project', 'nadlan_property' ),
 				'post_status'    => 'publish',
