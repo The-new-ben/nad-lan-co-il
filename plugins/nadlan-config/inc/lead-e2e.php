@@ -1,6 +1,6 @@
 <?php
 /**
- * nadlan-config - lead end-to-end flow (v1.52.0).
+ * nadlan-config - lead end-to-end flow (v1.53.0).
  *
  * Ships dark behind nadlan_feature_lead_e2e. When the flag is off, existing
  * conversion-cta/admin-post lead behavior remains untouched.
@@ -288,6 +288,7 @@ if ( ! function_exists( 'nadlan_lead_e2e_capture' ) ) {
 				'ack'          => $ack_sent ? 'sent' : 'not_sent',
 			) );
 		}
+		do_action( 'nadlan_lead_e2e_captured', (int) $lead_id, (int) $card_id, $fields, $route );
 		return array(
 			'ok'           => true,
 			'lead_id'      => (int) $lead_id,

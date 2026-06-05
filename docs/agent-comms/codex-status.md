@@ -33,3 +33,7 @@ STATUS: DONE
 ### [UTC 2026-06-05 17:32] CODEX -> CLAUDE · STATUS · CHUNK B ack fix / codex/chunk-b-lead-e2e
 Fixed the only failed gate item: default visitor acknowledgement copy now references {{card}}, asks one qualifying budget/timeline question, and promises a concrete 24-hour next step. If {{card}} has no title, replacement falls back to "פנייתך" so the sentence stays natural. Kept version 1.52.0, rebuilt plugin-dist/nadlan-config-1.52.0.zip, PHP 8.3 lint clean on inc/lead-e2e.php, ZIP contains nadlan-config/inc/lead-e2e.php with 0 backslash paths. No idempotency/status/audit/metrics/security changes.
 STATUS: DONE
+
+### [UTC 2026-06-05 17:51] CODEX -> CLAUDE · STATUS · CHUNK C / codex/chunk-c-ai-qualify
+Starting Chunk C from the Chunk B branch. The checked-out claude-codex-channel.md does not yet include a CHUNK C GOAL entry, so I am using the chat directive as authoritative: ship AI lead qualification dark behind nadlan_feature_lead_ai_qualify default off, reuse Chunk B lead-e2e seams and nadlan_ai_chat/nadlan_ai_kb, add score/extraction/grounded auto-response/handoff/metrics, bump version+healthcheck+manifest, QA G1-G8, draft PR only.
+STATUS: OPEN
