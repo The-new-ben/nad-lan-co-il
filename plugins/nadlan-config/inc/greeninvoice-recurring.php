@@ -11,14 +11,48 @@ if ( ! function_exists( 'nadlan_revenue_event' ) ) {
 	}
 }
 
+if ( ! function_exists( 'nadlan_deal_closed' ) ) {
+	function nadlan_deal_closed( $deal ) {
+		do_action( 'nadlan_deal_closed', $deal );
+	}
+}
+
 if ( ! function_exists( 'nadlan_gi_card_post_types' ) ) {
 	function nadlan_gi_card_post_types() {
 		return array( 'nadlan_professional', 'nadlan_project', 'nadlan_property' );
 	}
 }
 
-if ( ! function_exists( 'nadlan_gi_verify' ) ) {
-	function nadlan_gi_verify( $raw, $sig_header, $secret, $tolerance = 300 ) {
+if ( ! function_exists( 'nadlan_gi_sig_scheme' ) ) {
+	function nadlan_gi_sig_scheme() {
+		$scheme = sanitize_key( (string) get_option( 'nadlan_gi_sig_scheme', 'morning' ) );
+		return in_array( $scheme, array( 'morning', 'stripe' ), true ) ? $scheme : 'morning';
+	}
+}
+
+if ( ! function_exists( 'nadlan_gi_verify_morning' ) ) {
+	function nadlan_gi_verify_morning( $raw, $sig_header, $secret ) {
+		$raw        = (string) $raw;
+		$sig_header = trim( (string) $sig_header );
+		$secret     = (string) $secret;
+		if ( $raw === '' || $sig_header === '' || $secret === '' ) { return false; }
+
+		if ( strpos( $sig_header, 'sha256=' ) === 0 ) {
+			$sig_header = substr( $sig_header, 7 );
+		}
+
+		$expected_hex = hash_hmac( 'sha256', $raw, $secret );
+		if ( preg_match( '/^[a-f0-9]{64}$/i', $sig_header ) ) {
+			return hash_equals( strtolower( $expected_hex ), strtolower( $sig_header ) );
+		}
+
+		$expected_b64 = base64_encode( hash_hmac( 'sha256', $raw, $secret, true ) );
+		return hash_equals( $expected_b64, $sig_header );
+	}
+}
+
+if ( ! function_exists( 'nadlan_gi_verify_stripe' ) ) {
+	function nadlan_gi_verify_stripe( $raw, $sig_header, $secret, $tolerance = 300 ) {
 		$raw        = (string) $raw;
 		$sig_header = (string) $sig_header;
 		$secret     = (string) $secret;
@@ -38,6 +72,16 @@ if ( ! function_exists( 'nadlan_gi_verify' ) ) {
 
 		$expected = hash_hmac( 'sha256', $t . '.' . $raw, $secret );
 		return hash_equals( $expected, $v1 );
+	}
+}
+
+if ( ! function_exists( 'nadlan_gi_verify' ) ) {
+	function nadlan_gi_verify( $raw, $sig_header, $secret, $tolerance = 300, $scheme = null ) {
+		$scheme = $scheme ? sanitize_key( (string) $scheme ) : nadlan_gi_sig_scheme();
+		if ( $scheme === 'stripe' ) {
+			return nadlan_gi_verify_stripe( $raw, $sig_header, $secret, $tolerance );
+		}
+		return nadlan_gi_verify_morning( $raw, $sig_header, $secret );
 	}
 }
 
@@ -245,7 +289,7 @@ if ( ! function_exists( 'nadlan_gi_apply_event' ) ) {
 
 if ( ! function_exists( 'nadlan_gi_signature_header' ) ) {
 	function nadlan_gi_signature_header( $request ) {
-		foreach ( array( 'x-gi-signature', 'x-greeninvoice-signature', 'x-morning-signature', 'x-nadlan-signature' ) as $header ) {
+		foreach ( array( 'x-data-signature', 'x-gi-signature', 'x-greeninvoice-signature', 'x-morning-signature', 'x-nadlan-signature' ) as $header ) {
 			$value = $request->get_header( $header );
 			if ( $value ) { return $value; }
 		}
@@ -261,7 +305,7 @@ if ( ! function_exists( 'nadlan_gi_ipn_handler' ) ) {
 		}
 		$raw = (string) $request->get_body();
 		if ( $raw === '' ) { $raw = (string) file_get_contents( 'php://input' ); }
-		if ( ! nadlan_gi_verify( $raw, nadlan_gi_signature_header( $request ), $secret, 300 ) ) {
+		if ( ! nadlan_gi_verify( $raw, nadlan_gi_signature_header( $request ), $secret, 300, nadlan_gi_sig_scheme() ) ) {
 			return new WP_REST_Response( array( 'ok' => false, 'error' => 'bad_signature' ), 401 );
 		}
 		$payload = json_decode( $raw, true );
@@ -366,6 +410,9 @@ if ( ! function_exists( 'nadlan_gi_admin_render' ) ) {
 	function nadlan_gi_admin_render() {
 		if ( ! current_user_can( 'manage_options' ) ) { return; }
 		if ( isset( $_POST['nadlan_gi_save'] ) && check_admin_referer( 'nadlan_gi_settings' ) ) {
+			$scheme = isset( $_POST['nadlan_gi_sig_scheme'] ) ? sanitize_key( wp_unslash( $_POST['nadlan_gi_sig_scheme'] ) ) : 'morning';
+			if ( ! in_array( $scheme, array( 'morning', 'stripe' ), true ) ) { $scheme = 'morning'; }
+			update_option( 'nadlan_gi_sig_scheme', $scheme, false );
 			$secret = isset( $_POST['nadlan_gi_ipn_secret_new'] ) ? trim( sanitize_text_field( wp_unslash( $_POST['nadlan_gi_ipn_secret_new'] ) ) ) : '';
 			if ( $secret !== '' ) { update_option( 'nadlan_gi_ipn_secret', $secret, false ); }
 			$api_key = isset( $_POST['nadlan_gi_api_key_new'] ) ? trim( sanitize_text_field( wp_unslash( $_POST['nadlan_gi_api_key_new'] ) ) ) : '';
@@ -389,6 +436,7 @@ if ( ! function_exists( 'nadlan_gi_admin_render' ) ) {
 				<?php wp_nonce_field( 'nadlan_gi_settings' ); ?>
 				<input type="hidden" name="nadlan_gi_save" value="1">
 				<table class="form-table" role="presentation">
+					<tr><th scope="row">Signature scheme</th><td><select name="nadlan_gi_sig_scheme"><option value="morning" <?php selected( nadlan_gi_sig_scheme(), 'morning' ); ?>>Morning X-Data-Signature</option><option value="stripe" <?php selected( nadlan_gi_sig_scheme(), 'stripe' ); ?>>Stripe-style t/v1 signature</option></select></td></tr>
 					<tr><th scope="row">IPN secret</th><td><input type="password" name="nadlan_gi_ipn_secret_new" value="" class="regular-text" autocomplete="new-password"> <p class="description"><?php echo get_option( 'nadlan_gi_ipn_secret' ) ? 'Configured. Enter a new value only to replace it.' : 'Not configured.'; ?></p></td></tr>
 					<tr><th scope="row">API key for reconciliation</th><td><input type="password" name="nadlan_gi_api_key_new" value="" class="regular-text" autocomplete="new-password"> <p class="description"><?php echo get_option( 'nadlan_gi_api_key' ) ? 'Configured. Enter a new value only to replace it.' : 'Optional, required for daily reconciliation.'; ?></p></td></tr>
 					<tr><th scope="row">Reconciliation URL</th><td><input type="url" name="nadlan_gi_reconcile_url" value="<?php echo esc_attr( (string) get_option( 'nadlan_gi_reconcile_url', '' ) ); ?>" class="large-text"></td></tr>
@@ -445,6 +493,7 @@ add_filter( 'nadlan_config_healthcheck', function ( $out ) {
 	) );
 	$out['gi'] = array(
 		'recurring_loaded' => true,
+		'sig_scheme'       => nadlan_gi_sig_scheme(),
 		'charges_30d'      => $paid,
 		'in_dunning'       => (int) $dunning->found_posts,
 		'lapsed_30d'       => (int) $lapsed->found_posts,

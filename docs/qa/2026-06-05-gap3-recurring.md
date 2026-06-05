@@ -8,11 +8,12 @@ Implementation track: free Green Invoice / Morning signed IPN rail from the runb
 
 - Added `inc/greeninvoice-recurring.php`.
 - Added `POST /nadlan/v1/gi-ipn` with `permission_callback => __return_true`; authentication is the HMAC signature.
-- Added `nadlan_gi_verify( $raw, $sigHeader, $secret, 300 )`:
-  - parses `t=...,v1=...`
-  - rejects timestamps outside a 300 second replay window
-  - verifies `hash_hmac( 'sha256', $t . '.' . $raw, $secret )`
-  - uses `hash_equals()`
+- Added `nadlan_gi_verify( $raw, $sigHeader, $secret, 300, $scheme )`:
+  - default scheme is `morning`
+  - Morning mode reads `X-Data-Signature` and verifies HMAC-SHA256 over the raw body
+  - Morning mode accepts hex or base64 HMAC output because the live account must confirm the exact encoding before go-live
+  - optional `stripe` mode keeps the runbook `t=...,v1=...` replay-window format for portability/tests
+  - both modes use `hash_equals()`
 - Reads the raw request body before JSON parsing.
 - Rejects bad/missing signature before any business logic.
 - Requires an event id and stores processed ids in bounded `nadlan_gi_charge_log`.
@@ -22,22 +23,21 @@ Implementation track: free Green Invoice / Morning signed IPN rail from the runb
 - On `failed`, sets `dunning_state=retrying`, `dunning_since`, and `dunning_tier`.
 - Adds daily `nadlan_gi_dunning_tick` with 2, 4, 7, and 14 day notice hooks, 27 day grace, then downgrade to free plus `nadlan_subscription_lapsed`.
 - Adds daily `nadlan_gi_reconcile`, using `nadlan_gi_api_key` and `nadlan_gi_reconcile_url` with `sslverify => true`.
-- Adds Settings -> NadLan GI for IPN secret, API key, cycle days, Morning recurring links, reconciliation URL, and a charge log table.
+- Adds Settings -> NadLan GI for signature scheme, IPN secret, API key, cycle days, Morning recurring links, reconciliation URL, and a charge log table.
 - Secret values are never echoed back into HTML.
-- Healthcheck reports `gi.recurring_loaded`, `gi.charges_30d`, `gi.in_dunning`, and `gi.lapsed_30d`.
+- Healthcheck reports `gi.recurring_loaded`, `gi.sig_scheme`, `gi.charges_30d`, `gi.in_dunning`, and `gi.lapsed_30d`.
 
 ## Simulated IPN curl
 
-Set the secret in Settings -> NadLan GI first. Replace the `card_<owned-card-id>_user_<owner-user-id>` placeholders with a real card and its owner, then run this from a shell that has `openssl`.
+Set the secret in Settings -> NadLan GI first and keep the default `Morning X-Data-Signature` scheme. Replace the `card_<owned-card-id>_user_<owner-user-id>` placeholders with a real card and its owner, then run this from a shell that has `openssl`.
 
 ```bash
 SECRET='replace-with-the-configured-secret'
 BODY='{"id":"evt_gap3_paid_001","status":"paid","ref":"card_<owned-card-id>_user_<owner-user-id>_tier_premier","amount":749}'
-TS=$(date +%s)
-SIG=$(printf "%s.%s" "$TS" "$BODY" | openssl dgst -sha256 -hmac "$SECRET" -binary | xxd -p -c 256)
+SIG=$(printf "%s" "$BODY" | openssl dgst -sha256 -hmac "$SECRET" -binary | xxd -p -c 256)
 curl -i -X POST "https://nad-lan.co.il/wp-json/nadlan/v1/gi-ipn" \
   -H "Content-Type: application/json" \
-  -H "X-GI-Signature: t=$TS,v1=$SIG" \
+  -H "X-Data-Signature: $SIG" \
   --data "$BODY"
 ```
 
@@ -47,12 +47,23 @@ Expected:
 {"ok":true,"event_id":"evt_gap3_paid_001","status":"paid","action":"extended","card_id":123}
 ```
 
-Run the same curl again with the same body and signature inside the replay window.
+Run the same curl again with the same body and signature.
 
 Expected:
 
 ```json
 {"ok":true,"idempotent":true,"event_id":"evt_gap3_paid_001"}
+```
+
+Optional Stripe-style compatibility mode:
+
+```bash
+TS=$(date +%s)
+SIG=$(printf "%s.%s" "$TS" "$BODY" | openssl dgst -sha256 -hmac "$SECRET" -binary | xxd -p -c 256)
+curl -i -X POST "https://nad-lan.co.il/wp-json/nadlan/v1/gi-ipn" \
+  -H "Content-Type: application/json" \
+  -H "X-GI-Signature: t=$TS,v1=$SIG" \
+  --data "$BODY"
 ```
 
 ## Edge tests
@@ -61,7 +72,8 @@ Expected:
 | --- | --- | --- |
 | Missing secret | IPN before `nadlan_gi_ipn_secret` is set | `503 not_configured` |
 | Bad signature | Correct body, wrong `v1` | `401 bad_signature`, no side effects |
-| Replayed old event | `t` older than 300 seconds | `401 bad_signature`, no side effects |
+| Morning duplicate event | same `X-Data-Signature` and event id repeated | second response is idempotent, no second extension |
+| Stripe replayed old event | `t` older than 300 seconds while scheme is `stripe` | `401 bad_signature`, no side effects |
 | Duplicate event id | Same event id twice | second response is idempotent and does not extend twice |
 | Unknown ref | `ref=bad` | `422 bad_ref` |
 | Unknown card | `card_999999_user_1_tier_pro` | `422 bad_card` |
@@ -77,12 +89,12 @@ Expected:
 - C2 versioning: plugin header, healthcheck, manifest, and ZIP bumped to `1.46.0`.
 - C3 loader: `greeninvoice-recurring` added after `advertiser-orders`.
 - C4 edge cases: listed above.
-- C5 security: signature verified before JSON business logic; secret never logged or echoed.
+- C5 security: signature verified before JSON business logic; secret never logged or echoed; Morning replay safety relies on event-id idempotency because the real header has no timestamp.
 - C6 idempotency: event id is stored in `nadlan_gi_charge_log`; duplicates return 200 with no side effects.
 - C7 lifecycle: paid extends, failed enters dunning, recovered clears dunning, lapsed downgrades.
 - C8 performance: handler work is small; reconciliation and dunning run daily; log is bounded while keeping all entries younger than three days.
 - C9 copy: admin-only labels, no public marketing copy added.
-- C10 seams: emits `nadlan_subscription_renewed`, `nadlan_subscription_lapsed`, and generic `nadlan_revenue_event`.
+- C10 seams: emits `nadlan_subscription_renewed`, `nadlan_subscription_lapsed`, and generic `nadlan_revenue_event`; defines guarded `nadlan_deal_closed()` for the future success-fee layer.
 
 ## Local verification
 
@@ -95,8 +107,8 @@ find plugins/nadlan-config -name '*.php' -print0 | xargs -0 -n1 php -l
 Static gates to run before review:
 
 ```bash
-rg -n "register_rest_route\\( 'nadlan/v1', '/gi-ipn'|hash_hmac|hash_equals|sslverify' => true|nadlan_gi_dunning_tick|nadlan_gi_reconcile|nadlan_subscription_renewed|nadlan_subscription_lapsed|nadlan_revenue_event" plugins/nadlan-config/inc/greeninvoice-recurring.php
-rg -n "nadlan_gi_ipn_secret|nadlan_gi_api_key" plugins/nadlan-config/inc/greeninvoice-recurring.php
+rg -n "register_rest_route\\( 'nadlan/v1', '/gi-ipn'|x-data-signature|nadlan_gi_sig_scheme|hash_hmac|hash_equals|sslverify' => true|nadlan_gi_dunning_tick|nadlan_gi_reconcile|nadlan_subscription_renewed|nadlan_subscription_lapsed|nadlan_revenue_event" plugins/nadlan-config/inc/greeninvoice-recurring.php
+rg -n "nadlan_gi_ipn_secret|nadlan_gi_api_key|nadlan_gi_sig_scheme" plugins/nadlan-config/inc/greeninvoice-recurring.php
 ```
 
 Manual secret check:
@@ -107,4 +119,4 @@ Manual secret check:
 ## Source note
 
 - Morning API docs confirm API access uses OAuth/Bearer tokens and callback/webhook notifications exist: https://developers.morning.co/
-- Morning's legacy Apiary payment docs mention `X-Data-Signature` HMAC-SHA256 over the received body. This PR implements the runbook-required `t=...,v1=...` replay-window format. If Morning cannot emit that exact format, Claude should decide whether to adapt the verifier or place a tiny signed-webhook adapter in front of this endpoint.
+- Morning's legacy Apiary payment docs mention `X-Data-Signature` HMAC-SHA256 over the received body. This review update makes Morning the default scheme and keeps the previous `t=...,v1=...` verifier as optional `stripe` compatibility mode. The owner/Claude still needs to confirm the exact Morning encoding in the live account before go-live; the code accepts hex and base64 HMAC output until that is pinned down.
