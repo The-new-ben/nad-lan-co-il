@@ -161,7 +161,7 @@ if ( ! function_exists( 'nadlan_ac_lead_count' ) ) {
 if ( ! function_exists( 'nadlan_ac_recent_leads' ) ) {
 	function nadlan_ac_recent_leads( $cards, $limit = 12 ) {
 		$card_ids = array();
-		$user_id = get_current_user_id();
+		$user_id = (int) apply_filters( 'nadlan_effective_user_id', get_current_user_id() );
 		$paid_tiers = function_exists( 'nadlan_lead_route_paid_tiers' ) ? nadlan_lead_route_paid_tiers() : array( 'pro', 'premier' );
 		foreach ( (array) $cards as $card ) {
 			if ( is_object( $card ) && ! empty( $card->ID ) ) {
@@ -293,7 +293,7 @@ if ( ! function_exists( 'nadlan_ac_render_page' ) ) {
 
 if ( ! function_exists( 'nadlan_ac_render_inner' ) ) {
 	function nadlan_ac_render_inner() {
-		$user_id = get_current_user_id();
+		$user_id = (int) apply_filters( 'nadlan_effective_user_id', get_current_user_id() );
 		$cards = nadlan_ac_owned_cards( $user_id );
 		$orders = nadlan_ac_orders( $user_id );
 		$total_views = 0;
