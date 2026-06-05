@@ -40,7 +40,7 @@ if ( ! function_exists( 'nadlan_lead_e2e_status_label' ) ) {
 
 if ( ! function_exists( 'nadlan_lead_e2e_default_ack_message' ) ) {
 	function nadlan_lead_e2e_default_ack_message() {
-		return "שלום {{name}},\n\nהפנייה שלך התקבלה בנדלן חכם. העברנו אותה לגורם המתאים ונחזור אליך בהקדם.\n\nאם יש לך פרט חשוב להוסיף, אפשר להשיב למייל הזה.";
+		return "שלום {{name}},\n\nקיבלנו את פנייתך לגבי {{card}} בנדלן חכם. נציג יחזור אליך בתוך 24 שעות.\n\nכדי שנוכל לעזור מהר יותר, אפשר להשיב למייל הזה עם מסגרת התקציב והאם זה רלוונטי לחודש הקרוב או מאוחר יותר.\n\n{{site}}";
 	}
 }
 
@@ -176,7 +176,7 @@ if ( ! function_exists( 'nadlan_lead_e2e_send_ack' ) ) {
 		}
 		$replacements = array(
 			'{{name}}'  => $fields['name'] !== '' ? $fields['name'] : 'שלום',
-			'{{card}}'  => $card_id ? get_the_title( (int) $card_id ) : '',
+			'{{card}}'  => $card_id && get_the_title( (int) $card_id ) !== '' ? get_the_title( (int) $card_id ) : 'פנייתך',
 			'{{site}}'  => get_bloginfo( 'name' ),
 			'{{url}}'   => home_url( '/' ),
 		);
