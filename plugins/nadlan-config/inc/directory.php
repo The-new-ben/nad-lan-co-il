@@ -126,6 +126,7 @@ if ( ! function_exists( 'nadlan_dir_card' ) ) {
 		$reg  = nadlan_meta_norm( get_post_meta( $id, 'registry_number', true ) );
 		$verified = get_post_meta( $id, 'claim_status', true ) === 'verified';
 		$tier     = (string) get_post_meta( $id, 'paid_tier', true );
+		$distance = apply_filters( 'nadlan_geo_card_distance', null, $id );
 		$rating   = (float) get_post_meta( $id, 'rating', true );
 		$reviews  = (int) get_post_meta( $id, 'reviews_count', true );
 		$title    = get_the_title( $id );
@@ -159,6 +160,7 @@ if ( ! function_exists( 'nadlan_dir_card' ) ) {
 	<?php echo $stars; ?>
 	<div class="nldc-meta">
 		<?php if ( $city ) : ?><span class="nldc-city"><svg class="nl-ico" aria-hidden="true" viewBox="0 0 16 16"><path fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" d="M8 14s5-4.5 5-8.5A5 5 0 1 0 3 5.5C3 9.5 8 14 8 14z"/><circle cx="8" cy="5.5" r="1.8" fill="none" stroke="currentColor" stroke-width="1.4"/></svg><?php echo esc_html( $city ); ?></span><?php endif; ?>
+		<?php if ( $distance !== null && $distance !== '' ) : ?><span class="nldc-distance"><?php echo esc_html( number_format_i18n( (float) $distance, 1 ) ); ?> ק״מ</span><?php endif; ?>
 		<?php if ( $cls ) : ?><span class="nldc-cls"><?php echo esc_html( $cls ); ?></span><?php endif; ?>
 	</div>
 	<div class="nldc-foot">
@@ -611,6 +613,7 @@ if ( ! function_exists( 'nadlan_dir_project_card' ) ) {
 		$status = nadlan_meta_norm( get_post_meta( $id, 'project_status', true ) );
 		$dev    = nadlan_meta_norm( get_post_meta( $id, 'developer_name', true ) );
 		$tier   = (string) get_post_meta( $id, 'paid_tier', true );
+		$distance = apply_filters( 'nadlan_geo_card_distance', null, $id );
 		$featured = in_array( $tier, array( 'pro', 'premier' ), true );
 
 		// owner-uploaded photo wins; otherwise we render an original architectural
@@ -664,6 +667,7 @@ if ( ! function_exists( 'nadlan_dir_project_card' ) ) {
 	</div>
 	<div class="nldc-meta">
 		<?php if ( $city ) : ?><span class="nldc-city"><svg class="nl-ico" aria-hidden="true" viewBox="0 0 16 16"><path fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" d="M8 14s5-4.5 5-8.5A5 5 0 1 0 3 5.5C3 9.5 8 14 8 14z"/><circle cx="8" cy="5.5" r="1.8" fill="none" stroke="currentColor" stroke-width="1.4"/></svg><?php echo esc_html( $city ); ?></span><?php endif; ?>
+		<?php if ( $distance !== null && $distance !== '' ) : ?><span class="nldc-distance"><?php echo esc_html( number_format_i18n( (float) $distance, 1 ) ); ?> ק״מ</span><?php endif; ?>
 		<?php if ( $units > 0 ) : ?><span class="nldc-cls"><svg class="nl-ico" aria-hidden="true" viewBox="0 0 16 16"><path fill="none" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round" d="M2 7l6-5 6 5v7H2zM6.5 14v-4h3v4"/></svg><?php echo number_format( $units ); ?> יח״ד<?php echo $status ? ' · ' . esc_html( $status ) : ''; ?></span><?php endif; ?>
 		<?php if ( $dev ) : ?><span class="nldc-cls"><svg class="nl-ico" aria-hidden="true" viewBox="0 0 16 16"><circle cx="8" cy="5.5" r="2.5" fill="none" stroke="currentColor" stroke-width="1.4"/><path fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" d="M3 14c.5-2.5 2.5-4 5-4s4.5 1.5 5 4"/></svg><?php echo esc_html( $dev ); ?></span><?php endif; ?>
 	</div>
