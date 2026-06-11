@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Rainbow Tel Aviv - 3D prototype preview</title>
+  <style>
+    *{box-sizing:border-box}
+    body{margin:0;background:#eee9df;color:#16140f;font-family:Arial,"Noto Sans Hebrew",sans-serif}
+    .page{max-width:1440px;margin:0 auto;padding:24px}
+    .nlp3d{--ink:#f6efe2;--muted:#c9bd9f;--gold:#c4a15a;--gold2:#ead8a3;--panel:rgba(7,15,16,.74);width:100%;color:var(--ink);position:relative;overflow:hidden;background:radial-gradient(circle at 18% 8%,rgba(25,105,105,.55),transparent 31%),linear-gradient(135deg,#061313,#102d2d 54%,#17140e);box-shadow:0 28px 80px rgba(0,0,0,.24)}
+    .grid{position:absolute;inset:0;background-image:linear-gradient(rgba(234,216,163,.07) 1px,transparent 1px),linear-gradient(90deg,rgba(234,216,163,.07) 1px,transparent 1px);background-size:34px 34px;pointer-events:none}
+    .shell{position:relative;z-index:1;display:grid;grid-template-columns:minmax(280px,.9fr) minmax(360px,1.35fr) minmax(300px,.85fr);gap:22px;min-height:720px;padding:34px}
+    .copy{align-self:end}
+    .kicker{margin:0 0 12px;color:var(--gold2);font-size:13px}
+    h1{font-family:Georgia,"Times New Roman",serif;font-size:clamp(34px,5vw,76px);line-height:.98;margin:0 0 18px;font-weight:500;letter-spacing:0}
+    .lead{font-size:18px;line-height:1.75;color:rgba(246,239,226,.84);max-width:38ch;margin:0}
+    .metrics{display:grid;gap:8px;margin-top:22px}
+    .metrics span{display:inline-flex;width:max-content;max-width:100%;min-height:34px;align-items:center;border:1px solid rgba(234,216,163,.22);background:rgba(255,255,255,.055);padding:7px 12px;color:#fff7e6;font-size:13px}
+    .note{margin:18px 0 0;color:#f1dba0;font-size:13px;line-height:1.55;border-right:2px solid var(--gold);padding-right:12px}
+    .stage-wrap{position:relative;min-height:640px}
+    .toolbar{position:absolute;top:12px;right:12px;z-index:8;display:flex;gap:8px;flex-wrap:wrap}
+    button{font:inherit;min-width:44px;min-height:44px}
+    .toolbar button,.floor{border:1px solid rgba(234,216,163,.34);background:rgba(7,24,24,.72);color:var(--ink);padding:8px 14px;cursor:pointer}
+    .toolbar button.active,.floor.active{background:linear-gradient(135deg,var(--gold2),#b99043);color:#10100c}
+    .drag-note{display:inline-flex;align-items:center;min-height:44px;color:rgba(246,239,226,.72);font-size:12px;padding:0 6px}
+    .scene{position:absolute;inset:0;border:1px solid rgba(234,216,163,.2);background:linear-gradient(180deg,rgba(15,48,50,.4),rgba(8,18,18,.86));overflow:hidden;perspective:1100px;touch-action:none;cursor:grab}
+    .scene.dragging{cursor:grabbing}
+    .horizon{position:absolute;inset:14% -8% auto;height:1px;background:linear-gradient(90deg,transparent,rgba(234,216,163,.32),transparent)}
+    .sea{position:absolute;left:-12%;right:52%;bottom:8%;height:44%;background:linear-gradient(135deg,rgba(43,119,139,.5),rgba(7,31,42,.08));transform:skewY(-10deg)}
+    .park{position:absolute;right:-8%;bottom:20%;width:56%;height:24%;background:linear-gradient(135deg,rgba(93,127,83,.26),rgba(196,161,90,.08));transform:skewY(10deg)}
+    .runway{position:absolute;right:8%;left:18%;bottom:24%;height:46px;border-top:1px solid rgba(234,216,163,.18);border-bottom:1px solid rgba(234,216,163,.18);transform:rotate(-7deg)}
+    .tower{position:absolute;right:50%;bottom:118px;width:min(230px,40%);height:420px;transform-style:preserve-3d;transform:translateX(50%) rotateX(62deg) rotateZ(var(--angle,-32deg));transition:transform .55s cubic-bezier(.2,.8,.2,1)}
+    .scene.orbit .tower{animation:orbit 14s linear infinite}
+    .plate{position:absolute;right:0;left:0;height:12px;border:1px solid rgba(234,216,163,.24);background:linear-gradient(135deg,rgba(255,255,255,.16),rgba(196,161,90,.12));box-shadow:0 3px 0 rgba(0,0,0,.16);transform:translateZ(calc(var(--i)*3px));cursor:pointer}
+    .plate.has{background:linear-gradient(135deg,rgba(234,216,163,.34),rgba(255,255,255,.08))}
+    .plate.active,.plate:hover,.plate:focus-visible{outline:none;border-color:#fff0b8;background:linear-gradient(135deg,#f4dd98,rgba(255,255,255,.2));box-shadow:0 0 0 2px rgba(234,216,163,.2),0 0 24px rgba(234,216,163,.22)}
+    .shadow{position:absolute;right:27%;bottom:14%;width:44%;height:10%;background:radial-gradient(ellipse,rgba(0,0,0,.44),transparent 72%);filter:blur(9px)}
+    .console{background:var(--panel);border:1px solid rgba(234,216,163,.24);backdrop-filter:blur(16px);padding:20px;display:flex;flex-direction:column;gap:16px}
+    .console-head{display:flex;justify-content:space-between;align-items:center;gap:12px;border-bottom:1px solid rgba(234,216,163,.16);padding-bottom:12px}
+    .console-head p{font-family:Georgia,"Times New Roman",serif;font-size:22px;margin:0}
+    .chip{border:1px solid rgba(234,216,163,.3);color:#fff3c0;padding:5px 9px;font-size:12px}
+    .floors{display:flex;flex-wrap:wrap;gap:8px}
+    .units{display:grid;gap:9px}
+    .unit{width:100%;min-height:58px;text-align:right;border:1px solid rgba(234,216,163,.2);background:rgba(255,255,255,.055);color:var(--ink);padding:11px 12px;cursor:pointer}
+    .unit strong{display:block;font-size:15px}
+    .unit span{display:block;color:var(--muted);font-size:12px;margin-top:4px}
+    .unit.active{border-color:#ead8a3;background:rgba(234,216,163,.18)}
+    .detail{background:rgba(255,255,255,.06);border:1px solid rgba(234,216,163,.16);padding:16px}
+    h2{margin:0 0 12px;font-size:21px;font-family:Georgia,"Times New Roman",serif;font-weight:500}
+    dl{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;margin:0}
+    dl div{border-top:1px solid rgba(234,216,163,.18);padding-top:8px}
+    dt{font-size:12px;color:var(--muted)}
+    dd{margin:2px 0 0;color:#fff;font-weight:700}
+    form{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:auto}
+    form p,.actions,.payload{grid-column:1/-1;margin:0}
+    input{min-height:46px;border:1px solid rgba(234,216,163,.26);background:rgba(255,255,255,.9);color:#16140f;padding:10px 12px}
+    .actions{display:grid;grid-template-columns:1fr;gap:10px}
+    .send{border:0;background:linear-gradient(135deg,#ead8a3,#b99043);color:#15120c;font-weight:800;padding:13px 14px;cursor:pointer}
+    .send.alt{background:transparent;color:#ffe8a6;border:1px solid rgba(234,216,163,.42)}
+    .legal{font-size:12px;color:var(--muted);line-height:1.45}
+    .payload{background:rgba(255,255,255,.9);color:#17140e;padding:12px;white-space:pre-wrap;direction:ltr;text-align:left;font-size:12px;max-height:180px;overflow:auto}
+    .view-toggle{margin-top:12px;border:1px solid rgba(234,216,163,.36);background:rgba(255,255,255,.06);color:#ffe8a6;padding:9px 12px;cursor:pointer}
+    .view-toggle.active{background:rgba(234,216,163,.18);color:#fff}
+    .viewframe{position:relative;margin-top:12px;min-height:150px;overflow:hidden;border:1px solid rgba(234,216,163,.18);background:linear-gradient(180deg,rgba(41,112,139,.58),rgba(8,25,25,.92))}
+    .viewframe::before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 18% 22%,rgba(255,255,255,.24),transparent 18%),linear-gradient(135deg,rgba(39,107,130,.42),rgba(18,50,43,.1));opacity:.86}
+    .viewframe::after{content:"";position:absolute;inset:auto -8% 18% -8%;height:46%;border-top:1px solid rgba(234,216,163,.28);background:linear-gradient(160deg,rgba(234,216,163,.1),transparent 54%);transform:skewY(-8deg)}
+    .viewframe p{position:absolute;right:14px;left:14px;bottom:12px;margin:0;color:#fff8dc;font-size:13px;line-height:1.5;text-shadow:0 1px 12px rgba(0,0,0,.55);z-index:1}
+    @keyframes orbit{from{transform:translateX(50%) rotateX(62deg) rotateZ(-40deg)}to{transform:translateX(50%) rotateX(62deg) rotateZ(320deg)}}
+    @media(max-width:1240px){.shell{grid-template-columns:1fr 1.2fr}.console{grid-column:1/-1}.copy{align-self:start}.stage-wrap{min-height:560px}}
+    @media(max-width:900px){.page{padding:12px}.shell{grid-template-columns:1fr;padding:20px}.copy{order:1}.stage-wrap{order:2;min-height:520px}.console{order:3}h1{font-size:42px}.lead{font-size:16px}}
+    @media(max-width:600px){.page{padding:0}.shell{padding:14px;gap:16px}.stage-wrap{min-height:auto}.toolbar{position:relative;top:auto;right:auto;margin-bottom:10px}.drag-note{flex-basis:100%;min-height:24px}.scene{position:relative;height:430px}.tower{width:205px;height:350px;bottom:92px}.copy,.console{min-width:0}.metrics span{width:100%}dl,form,.actions{grid-template-columns:1fr}h1{font-size:34px;line-height:1.04}.lead{font-size:15px}.console{padding:16px}.toolbar button{padding:7px 10px}.floor{padding:8px 10px}}
+  </style>
+</head>
+<body>
+  <div class="page">
+    <section class="nlp3d" data-project="4464">
+      <div class="grid"></div>
+      <div class="shell">
+        <div class="copy">
+          <p class="kicker">אב טיפוס חוזר · לא נתוני מלאי אמיתיים</p>
+          <h1>Rainbow Tel Aviv</h1>
+          <p class="lead">מודל מכירה אינטראקטיבי לפרויקט דגל בשדה דב: מבט בניין, בחירת קומה ודירה, פרטי יחידה, ופנייה שמתחברת ל-card 4464 במערכת הלידים.</p>
+          <div class="metrics"><span>יזם: ישראל קנדה</span><span>מתחם: רובע שדה דב</span><span>מחיר: לפי פנייה</span></div>
+          <p class="note">הדירות והמחירים בתצוגה הם הדגמה בלבד. נתונים רשמיים יוזנו רק אחרי אישור יזם או מנהל פרויקט.</p>
+        </div>
+        <div class="stage-wrap">
+          <div class="toolbar"><button class="active" data-angle="-32">חזית</button><button data-angle="0">ים</button><button data-angle="32">עיר</button><button data-orbit="1">סיבוב</button><span class="drag-note">גררו את המודל</span></div>
+          <div class="scene" style="--angle:-32deg"><div class="horizon"></div><div class="sea"></div><div class="park"></div><div class="runway"></div><div class="tower"></div><div class="shadow"></div></div>
+        </div>
+        <aside class="console">
+          <div class="console-head"><p>בחירת דירה</p><span class="chip">Premier showcase</span></div>
+          <div class="floors"></div>
+          <div class="units"></div>
+          <div class="detail"><h2>בחרו דירה</h2><dl></dl><button class="view-toggle" type="button">מבט מהדירה</button><div class="viewframe" hidden><p></p></div></div>
+          <form>
+            <p>פנייה על היחידה</p>
+            <input name="name" placeholder="שם">
+            <input name="phone" placeholder="טלפון">
+            <div class="actions"><button class="send" data-intent="callback">דברו איתי על הדירה</button><button class="send alt" data-intent="purchase">בקשת רכישה עקרונית</button></div>
+            <p class="legal">הפנייה אינה עסקה מחייבת. נציג יאמת זמינות, מחיר ותנאים לפני כל התקדמות.</p>
+            <pre class="payload"></pre>
+          </form>
+        </aside>
+      </div>
+    </section>
+  </div>
+  <script>
+    const units=[
+      {id:'demo-12-a',title:'קו A',floor:12,rooms:4,sqm:105,balcony:12,dir:'צפון מערב',view:'ים ושדרה ירוקה',status:'available'},
+      {id:'demo-18-b',title:'קו B',floor:18,rooms:5,sqm:132,balcony:16,dir:'מערב',view:'חזית לים',status:'available'},
+      {id:'demo-24-c',title:'קו C',floor:24,rooms:4,sqm:118,balcony:14,dir:'דרום מערב',view:'קו החוף והמרינה',status:'reserved'},
+      {id:'demo-30-d',title:'קו D',floor:30,rooms:5,sqm:146,balcony:20,dir:'מערב',view:'ים פתוח וקו רקיע',status:'available'},
+      {id:'demo-34-e',title:'קו E',floor:34,rooms:5,sqm:158,balcony:22,dir:'צפון מערב',view:'ים, פארק ושדה דב',status:'available'},
+      {id:'demo-38-p',title:'פנטהאוז הדגמה',floor:38,rooms:6,sqm:214,balcony:44,dir:'מערב וצפון',view:'קו ראשון לים',status:'available'}
+    ];
+    const floors=[...new Set(units.map(u=>u.floor))].sort((a,b)=>b-a);
+    let active=units.find(u=>u.floor===34)||units[0], activeFloor=active.floor, currentAngle=-32, drag=null;
+    const scene=document.querySelector('.scene'), tower=document.querySelector('.tower'), floorBox=document.querySelector('.floors'), unitBox=document.querySelector('.units'), title=document.querySelector('h2'), facts=document.querySelector('dl'), payload=document.querySelector('.payload'), viewToggle=document.querySelector('.view-toggle'), viewFrame=document.querySelector('.viewframe'), viewText=document.querySelector('.viewframe p');
+    function statusLabel(s){return s==='reserved'?'בתהליך בדיקה':s==='sold'?'לא זמינה':'זמינה'}
+    function name(u){return `${u.title} · קומה ${u.floor}`}
+    function drawTower(){tower.innerHTML='';for(let i=1;i<=39;i++){const b=document.createElement('div');b.className='plate'+(floors.includes(i)?' has':'')+(i===activeFloor?' active':'');b.style.setProperty('--i',i);b.style.bottom=(i*8)+'px';b.style.width=(72+Math.sin(i/3)*8)+'%';b.style.right=(14+Math.cos(i/4)*5)+'%';b.dataset.floor=i;tower.appendChild(b)}}
+    function drawFloors(){floorBox.innerHTML='';floors.forEach(f=>{const b=document.createElement('button');b.type='button';b.className='floor'+(f===activeFloor?' active':'');b.textContent='קומה '+f;b.onclick=()=>selectFloor(f);floorBox.appendChild(b)})}
+    function drawUnits(){unitBox.innerHTML='';units.filter(u=>u.floor===activeFloor).forEach(u=>{const b=document.createElement('button');b.type='button';b.className='unit'+(u.id===active.id?' active':'');b.innerHTML=`<strong>${name(u)}</strong><span>${u.rooms} חדרים · ${u.sqm} מ"ר · ${u.view} · ${statusLabel(u.status)}</span>`;b.onclick=()=>{active=u;activeFloor=u.floor;render(false)};unitBox.appendChild(b)})}
+    function drawFacts(){title.textContent=name(active);facts.innerHTML='';[['סטטוס',statusLabel(active.status)],['חדרים',active.rooms],['שטח',active.sqm+' מ"ר'],['מרפסת',active.balcony+' מ"ר'],['כיוון',active.dir],['מחיר','לפי פנייה']].forEach(r=>{const d=document.createElement('div');d.innerHTML=`<dt>${r[0]}</dt><dd>${r[1]}</dd>`;facts.appendChild(d)});viewText.textContent='מבט המחשה מהיחידה: '+active.view+'. זהו מצב תצוגה תכנוני עד שיוזנו הדמיות ותוכניות מאושרות.';payload.textContent=JSON.stringify({card_id:4464,source:'project_3d',unit:active.id,floor:active.floor,rooms:active.rooms,sqm:active.sqm,purchase_intent:false},null,2)}
+    function selectFloor(f){activeFloor=f;active=units.find(u=>u.floor===f)||active;render(false)}
+    function render(all=true){if(all)drawTower();else document.querySelectorAll('.plate').forEach(p=>p.classList.toggle('active',+p.dataset.floor===activeFloor));drawFloors();drawUnits();drawFacts()}
+    function setAngle(a){currentAngle=Math.max(-68,Math.min(68,a));scene.style.setProperty('--angle',currentAngle+'deg')}
+    document.querySelectorAll('.toolbar button').forEach(b=>b.onclick=()=>{if(b.dataset.orbit){scene.classList.toggle('orbit');b.classList.toggle('active');return}document.querySelectorAll('.toolbar button').forEach(x=>x.classList.remove('active'));b.classList.add('active');setAngle(parseFloat(b.dataset.angle));scene.classList.remove('orbit')});
+    viewToggle.onclick=()=>{viewFrame.hidden=!viewFrame.hidden;viewToggle.classList.toggle('active',!viewFrame.hidden)};
+    scene.addEventListener('pointerdown',e=>{drag={x:e.clientX,angle:currentAngle,id:e.pointerId};scene.classList.add('dragging');scene.classList.remove('orbit');scene.setPointerCapture?.(e.pointerId)});
+    scene.addEventListener('pointermove',e=>{if(drag)setAngle(drag.angle+(e.clientX-drag.x)*0.22)});
+    function endDrag(){drag=null;scene.classList.remove('dragging')}
+    scene.addEventListener('pointerup',endDrag);scene.addEventListener('pointercancel',endDrag);
+    document.querySelector('form').onsubmit=e=>{e.preventDefault();payload.textContent=JSON.stringify({card_id:4464,source:'project_3d',unit:active.id,floor:active.floor,rooms:active.rooms,sqm:active.sqm,purchase_intent:e.submitter?.dataset.intent==='purchase'},null,2)};
+    render();
+  </script>
+</body>
+</html>
