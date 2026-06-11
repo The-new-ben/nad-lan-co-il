@@ -46,3 +46,17 @@ A compound map is not a decorative map. It is a sales and due-diligence surface:
 ## Data Boundary
 
 The compound map is infrastructure. Content agents or the owner must populate the actual project cards, coordinates, media and per-project facts. If the data is not sourced, show less. Never invent live prices, availability, permits or unit status.
+
+## Seeding Pattern
+
+When a flagship compound is dark-launched before all project content is imported, add a tiny idempotent seed instead of creating demo posts. The seed may ensure the real compound term exists and assign an already-existing, validated `nadlan_project` to it, but it must not create project posts, overwrite other taxonomy terms, or run when the feature flag is off.
+
+For Sde Dov, the safe pattern is:
+
+- gate on `nadlan_feature_compound_map === '1'`
+- gate once with an integer seed option such as `nadlan_compound_seeded`
+- ensure `{ slug: sde-dov, name: "רובע שדה דב" }` in `nadlan_compound`
+- find Rainbow by existing title/meta markers such as `Rainbow`, `ריינבו` or `קשת`
+- only fall back to a known post ID after checking the post exists and is `nadlan_project`
+- assign with `wp_set_object_terms(..., true)` so existing terms stay untouched
+- if the project is absent, do nothing and retry later rather than fabricating content
