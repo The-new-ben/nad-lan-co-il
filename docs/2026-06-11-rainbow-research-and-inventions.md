@@ -56,18 +56,121 @@ Other constraints worth carrying:
 
 ---
 
-## Strand 2 — View-from-unit 3D tech (preliminary; redo in flight)
+## Strand 2 — View-from-unit 3D tech (FULL, cited; recommendation revised)
 
-The reliable findings I can ship now without the redo:
+### The headline finding that changes the recommendation
+> *"While official GIS for Tel Aviv contains height data for all buildings, OpenStreetMap has only few buildings with height data."* — Israeli OSM community thread [S2.OSM-TA-heights]
 
-- **Mapbox GL JS v3 Standard** ships 3D buildings via `fill-extrusion` from OSM heights — heights in Tel Aviv are usable but generic. Camera placement via `setCamera({center,zoom,pitch,bearing})` with `cameraOptions.position[2]` altitude in meters.
-- **Google Photorealistic 3D Tiles** (GA mid-2024) gives high-quality photogrammetry of Tel Aviv including the coastline, with a Cesium-compatible 3D Tiles endpoint. Better visuals than Mapbox for "view from a high floor"; pricing is per-tile and adds up fast at scale.
-- **WebGPU** is now on by default on iOS 26 / macOS 26 Safari [S4 — see strand 4] — Gaussian-splat viewers on phones with no app, end of 2025.
-- The math for floor altitude: `altitude_m = ground_elevation_m + floor × 3.1` (residential default; 3.3m for premium; 4.0m for ground/mech). Ground elevation from Mapbox `queryTerrainElevation()` or Google Elevation API.
+Mapbox GL JS v3's 3D buildings are extruded from OSM `height` / `building:levels × 3m`. **Tel Aviv is not in Mapbox's curated landmark city list** (Munich/Berlin/Stuttgart/SF/NYC/Las Vegas/Helsinki/Tokyo got new facades in 2025; TA didn't). At floor 24 looking west, surrounding TA extrusions will be a mix of accurate, level-derived, and zero-height polygons. **Mapbox alone cannot render a credible Tel Aviv view from a high floor.**
 
-**Recommendation (preliminary):** start with Mapbox (we have the token) for **View-From-My-Apartment**. Add a Google Photorealistic 3D Tiles overlay as a v2 visual upgrade once we know it converts. Capture the *finished* Rainbow tower as a Gaussian splat (Luma AI capture from a single drone pass on the model) for the indoor demo, but keep the outdoor view rendered live from Mapbox so it stays accurate as the city changes.
+> *"Google's Photorealistic 3D Tiles is a 3D mesh model of the real world, textured with high-res RGB optical imagery, with the same 3D map source as Google Earth, available in 2,500+ cities across 49 countries."* — Cesium learn page [S2.cesium-p3dt]
 
-*[Full cited 3D recipe coming when the redo agent returns — does not change strategy.]*
+**Tel Aviv is in Google's photogrammetry mesh** with real coastline, Azrieli, Sarona, hotel strip — verified at the public 3d-tiles.web.app demo. This is the only platform where a westward Tel Aviv view at 80m+ altitude looks photographically right out of the box.
+
+> *"Achieving this required high-definition, 3D-compatible map data that was also loaded quickly."* — Takumi Yoshida, STYLE PORT / ROOV.space, [Google Maps Platform real-estate case study](https://mapsplatform.google.com/resources/blog/helping-buyers-make-more-confident-real-estate-decisions-with-photorealistic-3d-tiles/) — the closest documented off-plan precedent (130+ Japanese developers, 900+ projects, including the 2024 BLUE FRONT SHIBAURA mixed-use launch).
+
+### Pricing the platforms (2025 post-March SKU restructure)
+| Path | Marginal cost / 1k views | Fixed |
+|---|---|---|
+| Google Photorealistic 3D Tiles direct | **$6.00/1k** root-tile events (1k free/mo, then $6 → $5.10 → $4.20 → $3.30 → $2.40 across tiers) [S2.google-billing] | none |
+| Cesium ion Commercial (individual) | included up to 5,000 root tiles/mo | **$149/mo** [S2.cesium-pricing] |
+| Cesium ion Commercial (team) | included up to 5,000 root tiles/mo | **$524/mo** [S2.cesium-pricing] |
+| Mapbox GL JS (locator map only) | $5.00/1k loads above 50k free [S2.mapbox-pricing] | none |
+| Splat hosting (50MB SPZ × 1k = 50GB egress) | ~$2.50/1k | none |
+
+**Total blended hero-view cost: ~$13.50/1k views direct-to-Google + Mapbox locator; break-even with Cesium ion Commercial at ~25k views/mo.** A tower listing driving 10,000 hero views costs ~$135 in cloud — trivial vs. the marketing budget of a single off-plan unit sale.
+
+### Commercial use license: explicitly green-lit
+> *"We updated Map Tiles policies to allow you to create promotional videos of the experiences you build, with… guidelines around how to display the Google logo and follow brand and data attribution policies."* — Google Maps Platform blog [S2.google-policy-update]
+
+Required: visible Google attribution + an in-viewport disclosure like *"Surroundings: Google Earth photogrammetry, captured [date]. Interior: architectural rendering."* This both satisfies Google's policy and pre-empts buyer disputes when a neighboring lot redevelops.
+
+EU/EEA billing-address projects created after 8 July 2025 are blocked from 3D Tiles [S2.eu-block]. **An Israeli (.IL) billing entity is unaffected.** Don't proxy through a Frankfurt subsidiary.
+
+### Gaussian splatting state of play (2025 inflection)
+> *"2025 will be remembered as the year 3D Gaussian Splatting truly became real for Media & Entertainment. Not as a promise, not as a research breakthrough, but as a technology professionals could finally trust in production."* — Radiance Fields year-end wrap [S2.rf-yearend]
+
+**Zillow SkyTour (July 2025)** is the first major real-estate platform shipping splats at scale — drone-captured exteriors for "Showcase" listings [S2.zillow-skytour]. **Matterport 3D Exteriors via CoStar (post-$1.6B acquisition Feb 2025)** followed for exteriors; interiors remain depth+photogrammetry [S2.future3d-matterport-vs-splats].
+
+Capture economics:
+- Capture: 5-15 min on-site (drone 200+ frames from a 30-60s orbit per Heliguy's guide).
+- Training: 30-90 min for ~1M Gaussians on an RTX 4090; 2-3h on a 3060.
+- File sizes: raw PLY 300MB-1GB; **SPZ compression cuts to ~25MB** (Khronos glTF standard).
+- Viewer FPS: 60+ desktop / 45-60 laptop / 30-45 mobile (200K-optimized splats).
+
+**The off-plan caveat (honest):** splats capture what exists, so they cannot render the *interior* of an unbuilt apartment. The credible shipped pattern is **hybrid**: splat the SURROUNDINGS (rooftops, beach, skyline) + CG-render the future tower as a glTF model placed in the scene. This is what STYLE PORT/ROOV.space ships on Google P3DT.
+
+### WebGPU status, end of 2025
+> *"WebGPU is officially Baseline."* — web.dev [S2.webgpu-baseline]
+
+iOS 26 / Safari 26 (Sept 2025) turned WebGPU on by default — last gating constraint cleared. three.js r171+ ships `WebGPURenderer` with one-line swap and automatic WebGL2 fallback; 2-10× perf improvement on draw-call-heavy scenes. **Mapbox GL JS has no public WebGPU roadmap — assume WebGL2 through 2026.** MapLibre (the fork) has an experimental WebGPU branch at 80% test coverage.
+
+### Camera math at floor altitude — production recipe
+```
+camera_altitude_m = ground_elevation_m + base_offset + (floor − 1) × floor_height_m + eye_height_m
+```
+- `ground_elevation_m`: Tel Aviv coast ~5-25m above MSL. Get from Mapbox `map.queryTerrainElevation({lng,lat}, {exaggerated:false})` (free, client-side) or Google Elevation API. **`exaggerated:false` is critical** — terrain exaggeration silently inflates camera height.
+- `base_offset`: 4.0m for lobby/ground floor.
+- `floor_height_m`: **Israeli residential standard is 2.75m ceiling-to-ceiling; 3.0-3.1m floor-to-floor including slab. Luxury TA towers run 3.1-3.3m.** Use 3.05m as the safe default; expose as per-tower CMS config.
+- `eye_height_m`: 1.5-1.6m standing at the window.
+- Worked example, floor 24 west-facing at 32.1108/34.7805: `~20 (ground) + 4.0 + 23 × 3.05 + 1.5 = ~95m ellipsoidal altitude`.
+
+Cesium camera API (the right call for our case):
+```js
+viewer.camera.setView({
+  destination: Cesium.Cartesian3.fromDegrees(lng, lat, altitude_m),
+  orientation: {
+    heading: Cesium.Math.toRadians(unit_bearing_deg), // west = 270
+    pitch:   Cesium.Math.toRadians(-2),                // near-horizontal, slight downward
+    roll:    0
+  }
+});
+```
+Tighten FOV to ~50-60° (window view, not wide-angle). Cap pitch ±10° so users can't tilt to bird's-eye that exposes the mesh from above (mesh quality degrades sharply near vertical).
+
+### Revised recommendation
+**Cesium ion + Google Photorealistic 3D Tiles** for the hero "view from apartment" — NOT Mapbox alone. Keep Mapbox GL JS v3 for the compound locator/overview map (free 50k loads/mo, already wired). Composite the off-plan interior (window frame, balcony rail, optional CG living room) as a three.js layer in front of the Cesium canvas. Optional: drone-capture the *site* (where the tower will stand) as a Luma/Polycam splat for an exterior fly-around panel while construction is in progress.
+
+This revises Invention #2's stack from "extend compound-map.php" to "new module `inc/view-from-unit.php` loading CesiumJS + Google P3DT, with compound-map.php staying on Mapbox for the locator." The Sun Slider logic (SunCalc + shadow overlay) is platform-agnostic and bolts onto either.
+
+### Strand 2 sources (consolidated)
+S2.mapbox-v3 — docs.mapbox.com/mapbox-gl-js/guides/migrate-to-v3 + mapbox.com/blog/powerful-elegant-3d-visualizations
+S2.mapbox-model-layer — docs.mapbox.com/style-spec/guides/using-3d-models
+S2.mapbox-landmarks — mapbox.com/blog/global-cities-3d-landmarks
+S2.OSM-TA-heights — community.openstreetmap.org/t/using-gis-tel-aviv-for-buildings-heights/85546
+S2.mapbox-streets-v8 — blog.mapbox.com/building-heights-in-mapbox-streets-14bc7399a4e8 + docs.mapbox.com/data/tilesets/reference/mapbox-streets-v8
+S2.mapbox-pricing — mapbox.com/pricing + docs.mapbox.com/mapbox-gl-js/guides/pricing
+S2.cesium-p3dt — cesium.com/learn/photorealistic-3d-tiles-learn
+S2.google-3dtiles-overview — developers.google.com/maps/documentation/tile/3d-tiles-overview
+S2.google-billing — developers.google.com/maps/documentation/tile/usage-and-billing + developers.google.com/maps/billing-and-pricing/pricing + blog.afi.io/blog/what-is-the-google-photorealistic-3d-tiles-api
+S2.google-policy-update — mapsplatform.google.com/resources/blog/photorealistic-3d-tiles-now-preview-updated-daily-quotas
+S2.styleport-case — mapsplatform.google.com/resources/blog/helping-buyers-make-more-confident-real-estate-decisions-with-photorealistic-3d-tiles
+S2.cesium-pricing — cesium.com/platform/cesium-ion/pricing
+S2.cesium-pl3dt-included — prnewswire.com/news-releases/photorealistic-3d-tiles-from-google-maps-platform-now-included-in-cesium-ion + dronesworldmag
+S2.eu-block — github.com/vvoovv/blosm/issues/644
+S2.itwin — developer.bentley.com/apis/visualization/overview + itwinjs.org
+S2.rf-yearend — radiancefields.substack.com/p/gaussian-splatting-year-end-wrap
+S2.zillow-skytour — zillow.com/news/take-home-listings-to-new-heights-with-skytour + geekwire.com/2025/zillow-uses-drone-imagery-for-new-exterior-3d-tour-feature
+S2.future3d-matterport-vs-splats — thefuture3d.com/blog/gaussian-splatting-vs-matterport + thefuture3d.com/equipment/compare/gaussian-splatting-vs-matterport
+S2.splatlabs — splatlabs.ai/blog/virtual-tours-real-estate-gaussian-splatting
+S2.utsubo-splats — utsubo.com/blog/gaussian-splatting-guide
+S2.spz-format — thefuture3d.com/answers/gaussian-splatting-file-formats
+S2.lumalabs-web — github.com/lumalabs/luma-web-examples + lumalabs.ai/luma-web-library
+S2.giraffe360 — giraffe360.com
+S2.r2u-vision-pro — r2u.io/en/blog/apple-vision-pro-real-estate-guide
+S2.zillow-immerse — prnewswire.com/news-releases/experience-the-future-of-home-tours-with-zillow-immerse-on-apple-vision-pro-302050031.html
+S2.heliguy-drone-splats — heliguy.com/blogs/posts/drones-for-gaussian-splatting
+S2.skysplat-blender — conference.blender.org/2025/presentations/3999 + blendernation.com/2025/05/29/skysplat-drone-video-to-3d-gaussian-splat-workflow-addon
+S2.israeli-floor-heights — ronkin-list.com/israeli-apartment-sizes-explained-the-complete-guide-for-international-buyers + remaxjerusalem.com/en/blog/news/fulfilling-your-vision + buyitinisrael.com/news/safe-room-saves-lives-in-israel
+S2.mapbox-altitude — docs.mapbox.com/mapbox-gl-js/example/free-camera-path + docs.mapbox.com/mapbox-gl-js/example/free-camera-point + docs.mapbox.com/mapbox-gl-js/example/query-terrain-elevation
+S2.cesium-camera — cesium.com/learn/cesiumjs/ref-doc/Camera.html + cesium.com/learn/cesiumjs-learn/cesiumjs-camera
+S2.webgpu-baseline — web.dev/blog/webgpu-supported-major-browsers + caniuse.com/webgpu + vr.org/articles/webgpu-baseline-2026-three-js-webxr-default + webgpu.com/news/webgpu-hits-critical-mass-all-major-browsers
+S2.threejs-webgpu — threejs.org/docs/pages/WebGPURenderer.html + utsubo.com/blog/webgpu-threejs-migration-guide + discourse.threejs.org/t/webgpu-r181-fyi-stats-gl-no-longer-compatible-with-webgpu/87944
+S2.maplibre-webgpu — maplibre.org/roadmap/maplibre-native/webgpu + blog.brightcoding.dev/2025/10/05/maplibre-gl-js
+S2.zillow-3d-home — zillow.com/z/3d-home/guide + zillow.com/z/3d-home/floor-plans
+S2.askalocal-tel-aviv — askalocalapp.com/Tel_Aviv/EN/3d-map-of-tel-aviv-like-you-never-saw-it-before
+S2.localize-madlan — proptechzone.com/startups/localize-madlan
+S2.rocket-vision-pro — nasdaq.com/articles/rocket-homes-teams-up-with-apple-vision-pro-for-immersive-house-tours
 
 ---
 
