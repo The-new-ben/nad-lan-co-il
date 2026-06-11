@@ -13,6 +13,8 @@ if ( ! function_exists( 'nadlan_feature_flags_list' ) ) {
 			'nadlan_feature_lead_ai_qualify' => array( 'label' => 'סיווג לידים חכם (AI)', 'desc' => 'דירוג אוטומטי, מענה מבוסס תוכן האתר והעברה לנציג בעת הצורך. דורש מפתח OpenAI ומסלול הלידים פעיל.' ),
 			'nadlan_feature_lead_nurture'    => array( 'label' => 'מעקב אוטומטי אחרי לידים', 'desc' => 'רצף הודעות המשך בימים 1/3/7/14 עם עצירה אוטומטית בכל תגובה.' ),
 			'nadlan_feature_admin_control'   => array( 'label' => 'מסך ניהול לקוחות', 'desc' => 'עריכת מיקום, קישורים ועדיפויות לכל כרטיס, יומן שינויים וצפייה כלקוח.' ),
+			'nadlan_feature_project_3d'  => array( 'label' => 'בחירת דירות אינטראקטיבית', 'desc' => 'מפת דירות לחיצה על הדמיית הפרויקט: פרטי דירה, סטטוס ושליחת פנייה ישירה ליזם.' ),
+			'nadlan_feature_offers'      => array( 'label' => 'הצעות מחיר לנכסים', 'desc' => 'קונים מגישים הצעות לא מחייבות, המוכר משווה ובוחר. ללא עמלת הצלחה.' ),
 			'nadlan_feature_help'            => array( 'label' => 'עזרה מובנית במסכים', 'desc' => 'הסברים קצרים ליד כל שדה ומדריכי מסך.' ),
 		);
 	}
