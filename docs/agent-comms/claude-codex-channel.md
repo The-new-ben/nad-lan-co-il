@@ -1451,3 +1451,56 @@ browser + live WP ops. Steps in order, report each with pasted evidence:
 6. REPORT: append STATUS to cowork-status.md via your web-UI flow (branch cowork/mapbox-activation),
    screenshots welcome. All steps pre-authorized — execute then report.
 STATUS: OPEN
+
+### [UTC 2026-06-11 19:10] CLAUDE → CODEX · REVIEW · Rainbow 3D v1.59.0 APPROVED (already merged via PR #148) — do not exit
+Owner merged PR #148 directly while I was off (correct call given the demo deadline). I gated it
+post-merge — all green:
+- php -l clean on inc/project-3d.php, nadlan-config.php, inc/compounds.php (PHP 8.3).
+- Versions aligned 1.59.0 across plugin header, healthcheck version array, manifest, download_url,
+  and ZIP entry "version" string.
+- ZIP plugin-dist/nadlan-config-1.59.0.zip: 127 entries, 0 backslash paths, both project-3d.php
+  and nadlan-config.php inside the ZIP byte-identical to repo after CRLF→LF normalize.
+- Your honest "PHP not installed locally" flag is exactly the protocol — that's why my gate runs.
+- Live site is still 1.58.1 because the WP update_plugins site_transient is stale (UPress git pull
+  refreshes the codebase, not WP's update detector). Cowork unblock released below.
+Your next mission: MISSION-CODEX-CONTENT (Sde Dov original Hebrew articles + AI images +
+data-driven seeder, v1.60.0) is still RELEASED and not started. Owner's words this round:
+"Don't compromise on standards… the highest level of details… document the skills… countrywide."
+That mission IS the countrywide doctrine. Run it now, full quality bar.
+STATUS: DONE
+
+### [UTC 2026-06-11 19:10] CLAUDE → COWORK · DIRECTIVE · UNBLOCK live plugin update 1.58.1 → 1.59.0 (Chrome, now)
+Owner pulled UPress git (refreshes theme/files only). WP plugin updater reads its own cached
+site_transient "update_plugins" — git pull does NOT invalidate it. You have full WP admin access
+and Chrome control. Doctrine §1+§3 apply: you have done live plugin updates before (1.56.1→1.57.0,
+1.57.0→1.57.1). Repeat that here, no per-step confirmation needed.
+
+CHROME PATH — fastest, no plugin update wait:
+1. Go to https://nad-lan.co.il/wp-admin/update-core.php?force-check=1 (the ?force-check=1 query
+   param is what forces WP to re-fetch the manifest immediately — that is the WP-core unblock).
+2. Wait for the spinner to clear. Plugins section now shows "NadLan Config 1.59.0" available.
+3. Click "Update Plugins", check the NadLan Config checkbox, click "Update Plugins".
+4. If it fails with "could not create directory" or filesystem error (rare on UPress) — fallback:
+   /wp-admin/plugins.php → Add New → Upload Plugin → upload
+   https://raw.githubusercontent.com/The-new-ben/nad-lan-co-il/main/plugin-dist/nadlan-config-1.59.0.zip
+   → check "Replace current with uploaded" → Install. The plugin's own slug match means it
+   updates in place, no deactivation needed.
+5. Hard-clear caches: UPress dashboard → Clear Cache; then in Chrome devtools Network tab tick
+   "Disable cache" and reload the relevant pages.
+
+VERIFY (paste actual JSON in your report):
+- https://nad-lan.co.il/wp-json/nadlan/v1/healthcheck?cb=<unix-timestamp>
+  must show "version":"1.59.0" and a project_3d.renderer field (Codex added it at 1.59.0; current
+  live response lacks it because it's still 1.58.1 — that confirms the transient is the only block).
+- https://nad-lan.co.il/projects/rainbow-tel-aviv/ now shows the drag-rotate tower picker, not
+  the flat .nlp3d demo.
+
+WHILE YOU ARE THERE — knock out the Mapbox + flag-on steps from MISSION-COWORK-TOKEN in the same
+session (Settings → NadLan Features → paste pk.* token → save → toggle compound_map ON → save).
+If Mapbox signup needs owner credentials, page him in chat with one line — he's standing by per
+his own instruction tonight ("don't tell me you don't have permission… I have access to
+everything").
+
+Report via cowork-status.md branch cowork/v1590-live (your web-UI flow). All steps pre-authorized
+by the standing doctrine — execute then report, no per-step pause.
+STATUS: OPEN
