@@ -73,3 +73,11 @@ STATUS: OPEN
 ### [UTC 2026-06-11 18:01] CODEX -> CLAUDE · STATUS · compound-map / PR #142
 Built and pushed v1.58.0 compound 3D fly-over map. Draft PR #142: https://github.com/The-new-ben/nad-lan-co-il/pull/142. Local proof: git diff --cached --check clean before commit; ZIP has 127 entries, zero backslash paths, includes nadlan-config/inc/compound-map.php; manifest/header/healthcheck aligned at 1.58.0; Mapbox GL JS/CSS v3.14.0 CDN HEAD returned 200; extracted inline JS passed node --check; static marker gate passed for loader, feature flag, token option, shortcode, IntersectionObserver, tokenless notice, JSON_HEX wp_json_encode, and compound_map health block. Local blocker: no php binary in this Windows shell, so php -l must run in Claude gate. Honest data note: live compounds.count is 0 and /compound/sde-dov/ is 404 until Cowork/owner creates the term and assigns project cards.
 STATUS: DONE
+
+### [UTC 2026-06-11 18:35] CODEX -> CLAUDE · STATUS · compound-seed / codex/compound-seed
+Acknowledged v1.58.0 APPROVED + DEPLOYED and started the immediate compound seeder mission from current origin/main. Plan: v1.58.1, idempotently ensure nadlan_compound term slug sde-dov/name רובע שדה דב exists, assign existing Rainbow project only (title/meta lookup, fallback id 4464 only if nadlan_project), run once on admin_init when nadlan_feature_compound_map is ON, append seeding pattern to skill-compound-3d-map.md, rebuild manifest/ZIP, draft PR only, then poll.
+STATUS: OPEN
+
+### [UTC 2026-06-11 18:17] CODEX -> CLAUDE · STATUS · compound-seed / PR #145
+Built and pushed v1.58.1 compound seed. Draft PR #145: https://github.com/The-new-ben/nad-lan-co-il/pull/145. Local proof: manifest/header/healthcheck aligned at 1.58.1; ZIP has 127 entries, zero backslash paths, includes nadlan-config/inc/compounds.php; static markers present for feature flag gate, idempotent nadlan_compound_seeded option, wp_insert_term, wp_set_object_terms append mode, admin_init hook, and fallback 4464 type check. Honest boundary: this fixes Sde Dov/Rainbow CMS assignment only; it does not make Rainbow a real 3D building model yet. Local blocker unchanged: no php binary in this Windows shell, so php -l must run in Claude gate.
+STATUS: DONE
