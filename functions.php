@@ -699,7 +699,7 @@ if ( ! function_exists( 'nadlan_revenue_premium_front_page' ) ) :
 		<a class="nlux-path" href="<?php echo esc_url( $project_url ); ?>"><span>01</span><h2>מחפשים פרויקט</h2><p>ראו פרויקטים חדשים והתחדשות עירונית עם עיר, יזם, סטטוס ותמונות.</p></a>
 		<a class="nlux-path" href="<?php echo esc_url( $pro_url ); ?>"><span>02</span><h2>בודקים אנשי מקצוע</h2><p>קבלנים, שמאים, עורכי דין ויועצים עם מקור רשמי ופרטי קשר מסודרים.</p></a>
 		<a class="nlux-path" href="<?php echo esc_url( nadlan_revenue_page_url( 'mortgage-calculator', '/mortgage-calculator/' ) ); ?>"><span>03</span><h2>מחשבים עלויות</h2><p>משכנתא, מס רכישה, עלויות עסקה והשוואות לפני החלטה.</p></a>
-		<a class="nlux-path" href="<?php echo esc_url( $join_url ); ?>"><span>04</span><h2>מפרסמים נכס או פרויקט</h2><p>חשיפה לפרויקטים, נכסים ואנשי מקצוע מול קונים, שוכרים ומשקיעים.</p></a>
+		<a class="nlux-path" href="<?php echo esc_url( $join_url ); ?>"><span>04</span><h2>מפרסמים נכס או פרויקט</h2><p>הנכס או הפרויקט שלכם מול אלפי קונים, שוכרים ומשקיעים. פרסום ראשון חינם לתקופה מוגבלת.</p></a>
 	</section>
 
 	<section class="nlux-showcase" aria-label="פרויקטים נבחרים">

@@ -23,7 +23,7 @@ if ( ! function_exists( 'nadlan_ss_card' ) ) {
 		$pricing = esc_url( home_url( '/join-pro/' ) );
 		$cart    = $mode === 'project' ? esc_url( home_url( '/?add-to-cart=489&ref=ss' ) ) : esc_url( home_url( '/?add-to-cart=476&ref=ss' ) );
 		$copy_h  = $mode === 'project' ? 'הציגו את הפרויקט שלכם כאן' : 'הכרטיס שלכם יכול להיות במקום זה';
-		$copy_p  = $mode === 'project' ? 'חשיפה מועדפת ליזמים מולנו ולקוחות פוטנציאליים. ₪3,990 לקמפיין.' : 'הופיעו לפני 2,700 קבלנים אחרים. Pro מ-₪349/חודש.';
+		$copy_p  = $mode === 'project' ? 'הפרויקט שלכם בקדמת הבמה, מול קונים ומשקיעים פעילים. ₪3,990 לקמפיין.' : 'הצטרפו למאגר אנשי המקצוע המוביל בישראל. תוכנית Pro מ-₪349 לחודש.';
 		// Plain string — NO ob_start (safe to call anywhere, incl. filters).
 		return '<a class="nldc nldc-sponsored-spot" href="' . $cart . '">'
 			. '<span class="nldc-sponsor nldc-sponsor-slot">מקודם · פנוי</span>'
