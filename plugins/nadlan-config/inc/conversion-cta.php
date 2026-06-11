@@ -152,6 +152,6 @@ add_action( 'admin_menu', function () {
 		echo '<form method="post">';
 		wp_nonce_field( 'nadlan_cta_save' );
 		echo '<table class="form-table"><tr><th>WhatsApp Number (E.164)</th><td><input type="text" name="wa" value="' . esc_attr( $wa ) . '" style="width:280px" placeholder="972501234567"> <br><small>מספר טלפון להפנייה ל-WhatsApp. ריק = הכפתור יוסתר.</small></td></tr></table>';
-		echo '<p class="submit"><button type="submit" name="nadlan_cta_save" class="button-primary">שמור</button></p></form></div>';
+		echo '<p class="submit"><button type="submit" name="nadlan_cta_save" value="1" class="button-primary">שמור</button></p></form></div>';
 	} );
 } );

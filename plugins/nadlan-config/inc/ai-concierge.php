@@ -551,7 +551,7 @@ add_action( 'admin_menu', function () {
 		echo '<tr><th>תקרת שימוש יומית לפי IP</th><td><input type="number" min="1000" max="1000000" step="1000" name="daily_token_cap" value="' . esc_attr( $cap ) . '"> <br><small>מונע שימוש חריג לפני קריאה לספק.</small></td></tr>';
 		echo '<tr><th>תקרה יומית כללית</th><td><input type="number" min="10000" max="10000000" step="10000" name="daily_token_cap_global" value="' . esc_attr( $global_cap ) . '"> <br><small>שימוש היום: ' . esc_html( number_format( $tokens_today ) ) . ' מתוך ' . esc_html( number_format( $global_cap ) ) . ' טוקנים.</small></td></tr>';
 		echo '<tr><th>פעיל</th><td><label><input type="checkbox" name="enabled" ' . checked( $en, 1, false ) . '> הצג ווידג\'ט באתר</label></td></tr></table>';
-		echo '<p class="submit"><button type="submit" name="nadlan_ai_save" class="button-primary">שמור</button></p></form>';
+		echo '<p class="submit"><button type="submit" name="nadlan_ai_save" value="1" class="button-primary">שמור</button></p></form>';
 		echo '<h2>שימוש ואיכות</h2><p>חודש: <b>' . esc_html( $month ) . '</b> · הודעות: <b>' . esc_html( $msgs ) . '</b> · טוקנים מצטברים: <b>' . esc_html( number_format( $tot ) ) . '</b> · עלות מוערכת החודש: <b>$' . esc_html( number_format( $est_usd, 4 ) ) . '</b></p>';
 		echo '<p>7 ימים: פניות לבדיקה אנושית <b>' . esc_html( (string) $stats['escalations'] ) . '</b> · שיעור תשובות עם מקור <b>' . esc_html( $stats['grounded_rate'] === null ? 'אין נתונים' : number_format( $stats['grounded_rate'] * 100, 1 ) . '%' ) . '</b> · Deflection <b>' . esc_html( $stats['deflection'] === null ? 'אין נתונים' : number_format( $stats['deflection'] * 100, 1 ) . '%' ) . '</b></p>';
 		echo '<p><small>ברירת מחדל: OpenAI <code>gpt-4o-mini</code>. שינוי דרך הפילטר <code>nadlan_ai_openai_model</code>. Anthropic נשאר דרך <code>nadlan_ai_anthropic_model</code>.</small></p></div>';
@@ -581,7 +581,7 @@ add_action( 'wp_footer', function () {
 		<span>שאלו אותנו</span>
 	</button>
 	<div class="nlai-panel" hidden>
-		<header class="nlai-head"><span class="nlai-dot"></span><div><b>העוזר החכם</b><small>תשובות ממקורות האתר</small></div><button class="nlai-close" aria-label="סגור">×</button></header>
+		<header class="nlai-head"><span class="nlai-dot"></span><div><b>מענה מהיר - נדל"ן חכם</b><small>כל פנייה מלווה ונבדקת על ידי נציג אנושי</small></div><button class="nlai-close" aria-label="סגור">×</button></header>
 		<div class="nlai-msgs" id="nlai-msgs"></div>
 		<form class="nlai-form" onsubmit="return nlaiSend(event)">
 			<input type="text" id="nlai-input" placeholder="לדוגמה: כמה מס רכישה על דירה ראשונה?" autocomplete="off">

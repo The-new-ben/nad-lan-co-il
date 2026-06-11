@@ -111,7 +111,7 @@ if ( ! function_exists( 'nadlan_pp_admin_render' ) ) {
 	<?php endforeach; ?>
 	<tr><td colspan="6" style="text-align:center"><button type="button" class="button" onclick="var t=this.closest('table'),tr=t.querySelector('tbody tr').cloneNode(true),i=t.querySelectorAll('tbody tr').length;tr.querySelectorAll('input,select').forEach(function(el){el.value='';el.name=el.name.replace(/p\[\d+\]/, 'p['+i+']');});t.querySelector('tbody').insertBefore(tr,this.parentNode.parentNode);">+ שורה נוספת</button></td></tr>
 	</tbody></table>
-	<p class="submit"><button type="submit" name="nadlan_pp_save" class="button-primary">שמור</button></p>
+	<p class="submit"><button type="submit" name="nadlan_pp_save" value="1" class="button-primary">שמור</button></p>
 </form>
 </div>
 		<?php
