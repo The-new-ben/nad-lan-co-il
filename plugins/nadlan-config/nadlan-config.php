@@ -2,7 +2,7 @@
 /**
  * Plugin Name: NadLan Config
  * Description: Lead-capture foundation: nadlan_lead CPT + lead-form handler + healthcheck. Read skills/nadlan-config-plugin.md.
- * Version: 1.57.0
+ * Version: 1.57.1
  * Author: nad-lan.co.il
  * License: GPL-2.0+
  * Requires PHP: 7.4
@@ -22,7 +22,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  *   auction.php       — timed auctions: proxy bid, soft-close, custom bids table, REST
  * See skills/listings-auction-directory-architecture.md for the full design.
  */
-foreach ( array( 'catalog-meta', 'claim', 'import', 'schema', 'cards-render', 'auction', 'listings-ux', 'avm-deals', 'saved-search', 'ai-provider', 'ai-features', 'city-hubs', 'media', 'compare', 'nearby-poi', 'esign', 'map', 'lead-drip', 'ops-dashboard', 'facets', 'breadcrumbs', 'autocomplete', 'tiers', 'glossary', 'glossary-autolink', 'homepage', 'directory', 'reviews', 'lead-ledger', 'ai-concierge', 'archive-grid', 'calculators', 'catalog-shine', 'conversion-cta', 'lead-routing', 'feature-flags', 'project-3d', 'offers', 'lead-e2e', 'lead-inbox', 'preferred-partners', 'featured-upsell', 'sponsored-spot', 'pricing-schema', 'claim-prompt', 'ga4-events', 'sitemap-ping', 'social-proof', 'term-faq-schema', 'og-image', 'owner-config-rest', 'studio', 'studio-rest', 'profile-extras', 'advertiser-center', 'advertiser-orders', 'premium-ui', 'geo-search', 'roles', 'greeninvoice-recurring', 'placement-auction', 'admin-control', 'contextual-help', 'business-metrics', 'health', 'final-hardening', 'lead-ai-qualify', 'lead-nurture' ) as $nadlan_mod ) {
+foreach ( array( 'catalog-meta', 'claim', 'import', 'schema', 'cards-render', 'auction', 'listings-ux', 'avm-deals', 'saved-search', 'ai-provider', 'ai-features', 'city-hubs', 'media', 'compare', 'nearby-poi', 'esign', 'map', 'lead-drip', 'ops-dashboard', 'facets', 'breadcrumbs', 'autocomplete', 'tiers', 'glossary', 'glossary-autolink', 'homepage', 'directory', 'reviews', 'lead-ledger', 'ai-concierge', 'archive-grid', 'calculators', 'catalog-shine', 'conversion-cta', 'lead-routing', 'feature-flags', 'compounds', 'project-3d', 'offers', 'lead-e2e', 'lead-inbox', 'preferred-partners', 'featured-upsell', 'sponsored-spot', 'pricing-schema', 'claim-prompt', 'ga4-events', 'sitemap-ping', 'social-proof', 'term-faq-schema', 'og-image', 'owner-config-rest', 'studio', 'studio-rest', 'profile-extras', 'advertiser-center', 'advertiser-orders', 'premium-ui', 'geo-search', 'roles', 'greeninvoice-recurring', 'placement-auction', 'admin-control', 'contextual-help', 'business-metrics', 'health', 'final-hardening', 'lead-ai-qualify', 'lead-nurture' ) as $nadlan_mod ) {
 	$nadlan_mod_file = __DIR__ . '/inc/' . $nadlan_mod . '.php';
 	if ( file_exists( $nadlan_mod_file ) ) {
 		require_once $nadlan_mod_file;
@@ -70,7 +70,7 @@ if ( ! function_exists( 'nadlan_config_healthcheck_response' ) ) {
 	function nadlan_config_healthcheck_response() {
 		$out = array(
 			'plugin'              => 'nadlan-config',
-			'version'             => '1.57.0',
+			'version'             => '1.57.1',
 			'cpt_present'         => post_type_exists( 'nadlan_lead' ),
 			'lead_handler_loaded' => (bool) has_action( 'admin_post_nadlan_lead' ),
 			'php_version'         => PHP_VERSION,
