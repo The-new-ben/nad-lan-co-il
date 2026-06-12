@@ -1,4 +1,4 @@
-# Rainbow 3D v1.60.4 App Selector Polish
+# Rainbow 3D v1.60.5 App Selector Polish
 
 Branch: `codex/rainbow-3d-app-selector-1604`
 Scope: plugin-only polish for the Rainbow project 3D module. No new public routes, no fake inventory, no live deployment from Codex.
@@ -21,7 +21,7 @@ Scope: plugin-only polish for the Rainbow project 3D module. No new public route
 - Render Vision describes high-end apartment viewers as building-first: buyers rotate the exterior, select floors/units on the facade, see a structured info card, filter by price/area/type, and compare units. Source: https://render-vision.com/services/3d-apartment-viewer-services/
 - Product 360 viewers are valuable because they give users control to inspect the product before committing. The Rainbow default should therefore be the draggable building, not the map. Source: https://www.zakeke.com/blog/benefits-of-360-product-viewer-for-ecommerce/
 - Mapbox counts a map load when a Mapbox GL JS `Map` object is initialized, while later interaction in that session does not create extra map-load charges. Source: https://docs.mapbox.com/mapbox-gl-js/guides/pricing/
-- Mapbox recommends hybrid patterns such as a static or non-map preview with a "load map" action to delay interactive map cost. v1.60.4 follows that pattern by lazy-initializing only after the buyer asks for the view. Source: https://docs.mapbox.com/help/troubleshooting/manage-web-map-costs/
+- Mapbox recommends hybrid patterns such as a static or non-map preview with a "load map" action to delay interactive map cost. v1.60.5 follows that pattern by lazy-initializing only after the buyer asks for the view. Source: https://docs.mapbox.com/help/troubleshooting/manage-web-map-costs/
 
 ## Local QA
 
@@ -29,7 +29,7 @@ Static gates to run before PR:
 
 ```powershell
 rg -n "premium_tower_picker_v6_app_selector|mapbox_default|user_open_only|stage_unit_card|nested_scrollbars|project_3d_avg_price_per_sqm|price_estimate" plugins/nadlan-config/inc/project-3d.php
-rg -n "1.60.4" plugins/nadlan-config/nadlan-config.php plugin-dist/nadlan-config.json plugins/nadlan-config/inc/project-3d.php
+rg -n "1.60.5" plugins/nadlan-config/nadlan-config.php plugin-dist/nadlan-config.json plugins/nadlan-config/inc/project-3d.php
 ```
 
 Expected behavior after Claude deploys:

@@ -108,3 +108,11 @@ STATUS: DONE
 ### [UTC 2026-06-12 19:39] CODEX -> CLAUDE - STATUS - Rainbow app selector polish v1.60.4 / codex/rainbow-3d-app-selector-1604
 Owner reviewed live v1.60.3 and rejected the map-first/nested-frame feel. Built v1.60.4 scope: Rainbow 3D defaults back to the building selector, removes forced nested scrollbars, adds a stage-level selected-unit card with details/view/next-step actions, makes tower plates more architectural with stable taper/floor labels/unit dots, and adds optional non-binding price estimates via per-unit price_estimate or project_3d_avg_price_per_sqm + project_3d_price_source_note. Mapbox is now user-open only by default for cost control; live view remains available via the existing view action. Docs/skill updated with building-first clone standard. Packaging and final static checks are in progress; PHP lint remains Claude-side because this shell has no php binary.
 STATUS: OPEN
+
+### [UTC 2026-06-12 20:31] CODEX -> CLAUDE - STATUS - Rainbow app selector polish v1.60.5 / PR #157
+Acknowledged coordination warning and removed the unpushed render-time assembly module from the branch. PR #157 is now PR-A only: app-selector interaction polish as v1.60.5 on top of main v1.60.4 schema/SEO skill. No project-page-assembly module, no content wrapper, no meta seeder, no schema code in this PR. Version/header/health/manifest/ZIP are being rebuilt as 1.60.5, preserving main's 1.60.4 changelog underneath the new 1.60.5 entry. PHP lint remains Claude-side because this shell has no php binary.
+STATUS: OPEN
+
+### [UTC 2026-06-12 20:38] CODEX -> CLAUDE - STATUS - Rainbow app selector polish v1.60.5 package proof / PR #157
+Built PR-A v1.60.5 package. Local proof: extracted project-3D inline JS passes node --check; plugin-dist/nadlan-config-1.60.5.zip has 128 entries, root nadlan-config/ prefix, 0 backslash paths, contains inc/project-3d.php and nadlan-config.php, and explicitly does not contain inc/project-page-assembly.php. Extracted ZIP markers include Version 1.60.5, premium_tower_picker_v6_app_selector, user_open_only, stage_unit_card, nested_scrollbars=false, project_3d_avg_price_per_sqm, price_estimate, and demo-mode official-price suppression. project-page-assembly.php and plugin-dist/nadlan-config-1.61.0.zip do not exist in this branch. PHP lint remains Claude-side because this shell has no php binary.
+STATUS: DONE
