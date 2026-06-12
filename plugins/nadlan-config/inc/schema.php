@@ -91,10 +91,30 @@ if ( ! function_exists( 'nadlan_card_jsonld' ) ) {
 				);
 			}
 		} elseif ( $type === 'nadlan_project' ) {
+			$lat = (float) $g( 'lat' );
+			$lng = (float) $g( 'lng' );
+			$amenities = array_filter( array_map( 'trim', explode( ',', (string) $g( 'amenities' ) ) ) );
+			$same_as   = array_filter( array_map( 'trim', explode( ',', (string) $g( 'official_site_url' ) ) ) );
+			$compound  = get_the_terms( $id, 'nadlan_compound' );
+			$compound  = ( $compound && ! is_wp_error( $compound ) ) ? $compound[0] : null;
 			$data = array_filter( array(
 				'@context' => 'https://schema.org', '@type' => 'ApartmentComplex',
 				'name' => $name, 'url' => $url,
+				'description' => wp_strip_all_tags( get_the_excerpt( $id ) ) ?: null,
+				'image' => get_the_post_thumbnail_url( $id, 'large' ) ?: null,
 				'numberOfAccommodationUnits' => (int) $g( 'num_units' ) ?: null,
+				'sameAs' => $same_as ?: null,
+				'containedInPlace' => $compound ? array(
+					'@type' => 'Place',
+					'name'  => $compound->name,
+					'url'   => get_term_link( $compound ),
+				) : null,
+				'geo' => ( $lat && $lng ) ? array(
+					'@type' => 'GeoCoordinates', 'latitude' => $lat, 'longitude' => $lng,
+				) : null,
+				'amenityFeature' => $amenities ? array_map( function ( $a ) {
+					return array( '@type' => 'LocationFeatureSpecification', 'name' => $a, 'value' => true );
+				}, $amenities ) : null,
 				'address' => array_filter( array(
 					'@type' => 'PostalAddress',
 					'streetAddress' => $g( 'address' ) ?: null,
@@ -102,6 +122,42 @@ if ( ! function_exists( 'nadlan_card_jsonld' ) ) {
 					'addressCountry' => 'IL',
 				) ),
 			) );
+			if ( $g( 'price_range' ) !== '' && $g( 'price_range' ) !== false ) {
+				$data['offers'] = array(
+					'@type'         => 'AggregateOffer',
+					'priceCurrency' => 'ILS',
+					'lowPrice'      => (float) $g( 'price_min' ) ?: null,
+					'highPrice'     => (float) $g( 'price_max' ) ?: null,
+					'description'   => sanitize_text_field( (string) $g( 'price_range' ) ),
+					'availability'  => 'https://schema.org/InStock',
+				);
+				$data['offers'] = array_filter( $data['offers'] );
+			}
+			$faq_raw = (string) $g( 'project_faq_json' );
+			if ( $faq_raw !== '' ) {
+				$faq = json_decode( $faq_raw, true );
+				if ( is_array( $faq ) && $faq ) {
+					$entities = array();
+					foreach ( $faq as $qa ) {
+						if ( empty( $qa['q'] ) || empty( $qa['a'] ) ) { continue; }
+						$entities[] = array(
+							'@type' => 'Question',
+							'name'  => sanitize_text_field( $qa['q'] ),
+							'acceptedAnswer' => array(
+								'@type' => 'Answer',
+								'text'  => sanitize_text_field( $qa['a'] ),
+							),
+						);
+					}
+					if ( $entities ) {
+						echo "\n<script type=\"application/ld+json\">" . wp_json_encode( array(
+							'@context'   => 'https://schema.org',
+							'@type'      => 'FAQPage',
+							'mainEntity' => $entities,
+						), JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES ) . "</script>\n";
+					}
+				}
+			}
 		} elseif ( $type === 'nadlan_property' ) {
 			$data = function_exists( 'nadlan_build_real_estate_listing_jsonld' )
 				? nadlan_build_real_estate_listing_jsonld( $id )
