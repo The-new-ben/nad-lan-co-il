@@ -78,3 +78,60 @@ For countrywide expansion:
 - `bim`: real BIM/IFC/glTF/3D Tiles source connected to project/unit data.
 
 Only `inventory` and `bim` can show specific prices or availability.
+
+## v1.60.0 — Fully interactive buyer layer (Claude)
+
+What shipped on top of the v1.59.x picker (all inside `inc/project-3d.php`, same look/borders):
+
+- **FIX**: floor strip rendered zero buttons since 1.59.0 (`[].slice.call(new Set(...))` returns
+  `[]` — Set is not array-like). Floor navigation works now. Lesson: never spread a Set with
+  `slice.call`; use an indexOf-dedupe or `Array.from`.
+- **Live view-from-unit**: when `nadlan_mapbox_token` option is set AND the project has `lat`/`lng`
+  meta, the "מבט מהדירה" panel lazy-loads Mapbox GL v3.14.0 and places a free camera at
+  `ground_elevation + 4.0 + (floor-1) × floor_height + 1.55` meters, looking 900m along the
+  facade bearing, with 3D building extrusions. Honest fallback (gradient + "יופעל כאשר מפתח
+  המפות יוזן") when tokenless. Camera math documented in
+  docs/2026-06-11-rainbow-research-and-inventions.md (strand 2).
+- **Sun insight (אור ושמש tool)**: pure-JS solar position (SunCalc-core formulas, no API), direct
+  sun windows for summer/winter solstice per facade bearing (±70° cone, >8° elevation, Israel
+  clock). Validated against NOAA: TA solstice noon elevation 81.3° exact. Sun hours also appear
+  in the comparison table.
+- **Compare**: up to 3 units, chips tray + overlay table (floor/rooms/sqm/balcony/dir/view/sun/
+  status), "בחר" from table selects the unit. Persisted in localStorage per project.
+- **Lead wizard**: 2 steps with progress dots (contact → progression details), multi-select
+  advisors checkboxes (lawyer/mortgage/inspection/designer) joined into the lead payload
+  (`advisor`, plus full list in message). Research basis: multi-step forms convert ~37% better.
+- **Plan lightbox**: image plans open in-overlay; PDFs in iframe; other URLs default.
+- **Deal-step tracker**: after successful submit, "בחירה" (and "ליווי" if advisors chosen) are
+  marked done; lead reference id shown when the REST response includes one.
+- **Selection persistence**: last selected unit restored per visitor (localStorage).
+
+### Replication playbook — onboarding the NEXT project (fill-in-the-details)
+
+No code changes needed per project. Per-building checklist:
+
+1. Create/locate the `nadlan_project` post. Set post meta:
+   - `lat`, `lng` (decimal WGS84) — enables live view + sun insight.
+   - `project_3d_floor_height_m` (default 3.05; luxury towers 3.1–3.3).
+   - `project_3d_ground_elevation_m` (coastal TA ≈ 5–25; from Google Elevation or city GIS).
+   - `developer_name`, `project_status`, `num_units`, `city`, `address`.
+2. Facade: upload an ORIGINAL elevation render → set `project_3d_image` + `project_3d_viewbox`
+   (e.g. `0 0 1000 1000`). Trace per-unit polygons in those viewBox coordinates.
+3. Units: fill `project_3d_units` JSON (one object per sellable line/unit). Template:
+   `docs/templates/project-3d-units-template.json`. Required: `id`, `floor`. Strongly
+   recommended: `dir` (Hebrew compass words — drives camera bearing AND sun calc), `points`
+   (facade polygon), `plan` (drawing URL → lightbox), `rooms`, `sqm`, `balcony`, `view`,
+   `building`, `availability`, `status` (available|reserved|sold).
+4. If no verified inventory yet: tick `project_3d_demo` — prices show "לפי פנייה" and the demo
+   disclaimer renders. NEVER enter invented prices.
+5. Flag: `nadlan_feature_project_3d` must be ON; Mapbox token once globally in NadLan Features.
+6. Verify: healthcheck `project_3d` block shows `renderer: premium_tower_picker_v4`,
+   `view_from_unit: mapbox_live` (or `awaiting_token`), `sun_insight/unit_compare/lead_wizard:
+   true`. On the page: click a floor on the tower, click a facade polygon, open אור ושמש (real
+   hours appear if lat/lng set), compare 2 units, run the 2-step form, confirm the lead arrives
+   with unit/floor/advisors/camera params.
+
+### Countrywide note
+Everything above is data-driven from post meta — the Sde Dov content seeder (MISSION-CODEX-
+CONTENT) can populate steps 1–3 for every compound project programmatically. The same template
+serves any tower in Israel.

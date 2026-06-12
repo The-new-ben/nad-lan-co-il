@@ -1,0 +1,22 @@
+[
+  {
+    "id": "PROJ-24-A",
+    "title": "קו A",
+    "building": "מגדל ראשי",
+    "floor": 24,
+    "rooms": 4,
+    "sqm": 112,
+    "balcony": 14,
+    "dir": "מערב",
+    "line": "A",
+    "view": "ים וקו רקיע",
+    "availability": "זמינות לפי פנייה",
+    "status": "available",
+    "price": 0,
+    "plan": "https://example.com/plans/proj-24-a.png",
+    "points": "408,578 486,578 486,594 408,594",
+    "note": "תיאור קצר של טיפוס הדירה",
+    "market_note": "",
+    "source_note": "מקור הנתונים: יזם / מנהל פרויקט"
+  }
+]
