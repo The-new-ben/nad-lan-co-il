@@ -2,7 +2,7 @@
 
 Date: 2026-06-12
 Branch: `codex/rainbow-3d-hotfix`
-Scope: v1.59.1 Rainbow 3D hotfix follow-up
+Scope: v1.59.2 Rainbow 3D visual follow-up
 
 ## What Was Inspected
 
@@ -84,7 +84,7 @@ For public display:
 
 ## Current Implementation
 
-The v1.59.1 patch now:
+The v1.59.2 patch now:
 
 - Adds building, availability, note, market_note, and source_note to unit JSON.
 - Shows these fields in the unit drawer.

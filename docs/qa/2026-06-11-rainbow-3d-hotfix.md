@@ -1,4 +1,4 @@
-# Rainbow 3D Hotfix QA - v1.59.1
+# Rainbow 3D Hotfix QA - v1.59.2
 
 ## Live Problem Confirmed
 
@@ -64,13 +64,13 @@ Follow-up patch in this PR:
 - Inline project 3D JavaScript extracted from the PHP heredoc passed `node --check`.
 - `git diff --check` passed. Only CRLF conversion warnings were emitted by Windows.
 - PHP lint could not run locally because `php` is not installed in this Windows session. Claude gate should run PHP 8.3 lint before deploy, as in the previous release.
-- ZIP must be rebuilt as `plugin-dist/nadlan-config-1.59.1.zip` after final code changes.
+- ZIP must be rebuilt as `plugin-dist/nadlan-config-1.59.2.zip` after final code changes.
 
 ## Manual Live Gate After Install
 
-1. Update NadLan Config to `1.59.1`.
+1. Update NadLan Config to `1.59.2`.
 2. Open `https://nad-lan.co.il/wp-json/nadlan/v1/healthcheck`.
-3. Confirm `version=1.59.1`.
+3. Confirm `version=1.59.2`.
 4. Confirm `project_3d.renderer=premium_tower_picker_v3`.
 5. Confirm `project_3d.facade_polygons=true`.
 6. Confirm `project_3d.lead_unit_payload=true`.
