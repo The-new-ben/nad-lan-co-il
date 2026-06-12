@@ -385,6 +385,15 @@ if ( ! function_exists( 'nadlan_p3d_render' ) ) {
 		</div>
 
 		<aside class="nlp3d-console" aria-label="בחירת דירה">
+			<div class="nlp3d-selection-dock" aria-live="polite">
+				<span>בחירה נוכחית</span>
+				<strong class="nlp3d-dock-title">בחרו דירה</strong>
+				<small class="nlp3d-dock-meta"></small>
+				<div class="nlp3d-dock-actions">
+					<button type="button" class="nlp3d-dock-spin" data-action="dock-360">סיבוב 360</button>
+					<button type="button" class="nlp3d-dock-action" data-action="dock-inquiry">התקדמות</button>
+				</div>
+			</div>
 			<div class="nlp3d-console-head">
 				<p>בחרו קומה ודירה</p>
 				<span class="nlp3d-status-chip">מודל פעיל</span>
@@ -453,6 +462,49 @@ if ( ! function_exists( 'nadlan_p3d_render' ) ) {
 			</form>
 		</aside>
 	</div>
+	<div class="nlp3d-showcase" aria-label="תצוגת עומק לפרויקט">
+		<div class="nlp3d-showcase-copy">
+			<p class="nlp3d-kicker">מעמוד פרויקט לעמדת בחירה</p>
+			<h3>כל החלטה מתחילה ממבט ברור יותר על הדירה</h3>
+			<p>העמוד מחבר בין חזית לחיצה, מבט מגובה הדירה, שעות שמש, השוואת יחידות ובקשת ליווי מקצועי. המידע מוצג כשכבה תכנונית עדינה, עם סימון ברור של נתונים שמחייבים אימות מול היזם.</p>
+		</div>
+		<div class="nlp3d-showcase-cards" aria-label="יכולות תצוגה">
+			<article>
+				<span>01</span>
+				<strong>חזית לחיצה</strong>
+				<p>בחירת קומה ודירה ישירות מהמודל, כולל קו, שטח, כיוון ונוף.</p>
+			</article>
+			<article>
+				<span>02</span>
+				<strong>מבט מהדירה</strong>
+				<p>מצלמה חיה לפי גובה הקומה וכיוון הדירה, כאשר נתוני המפה זמינים.</p>
+			</article>
+			<article>
+				<span>03</span>
+				<strong>בדיקת אור ושמש</strong>
+				<p>חישוב עונתי של שמש ישירה לפי מיקום הפרויקט וכיוון החזית.</p>
+			</article>
+			<article>
+				<span>04</span>
+				<strong>מסלול התקדמות</strong>
+				<p>פנייה ממוקדת עם הדירה שנבחרה, תקציב, מועד וליווי מקצועי רצוי.</p>
+			</article>
+		</div>
+		<form class="nlp3d-owner-form" aria-label="בקשה להצגת פרויקט">
+			<div>
+				<p class="nlp3d-owner-title">מציגים פרויקט חדש?</p>
+				<p>אפשר לבנות עמוד תצוגה דומה לפרויקט שלכם, עם קומות, דירות, מבט מהדירה ופנייה מסודרת למתעניינים.</p>
+			</div>
+			<input type="text" name="name" placeholder="שם מלא" autocomplete="name" required>
+			<input type="tel" name="phone" placeholder="טלפון" autocomplete="tel" required>
+			<input type="email" name="email" placeholder="אימייל" autocomplete="email">
+			<input type="text" name="project_name" placeholder="שם הפרויקט">
+			<input type="text" name="city" placeholder="עיר או אזור">
+			<input type="text" name="company" class="nlp3d-hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+			<button type="submit" data-action="owner-showcase-request">בדיקת התאמה לפרויקט</button>
+			<p class="nlp3d-owner-ok" hidden></p>
+		</form>
+	</div>
 	<div class="nlp3d-overlay nlp3d-compare-overlay" hidden role="dialog" aria-modal="true" aria-label="השוואת דירות">
 		<div class="nlp3d-overlay-box">
 			<button type="button" class="nlp3d-overlay-close" data-action="close-compare" aria-label="סגירה">×</button>
@@ -483,6 +535,42 @@ add_shortcode(
 	}
 );
 
+if ( ! function_exists( 'nadlan_p3d_is_project_profile' ) ) {
+	function nadlan_p3d_is_project_profile() {
+		if ( ! nadlan_p3d_enabled() || ! is_singular( 'nadlan_project' ) ) {
+			return false;
+		}
+		$post_id = (int) get_queried_object_id();
+		return $post_id > 0 && nadlan_p3d_has_data( $post_id );
+	}
+}
+
+if ( ! function_exists( 'nadlan_p3d_seo_title' ) ) {
+	function nadlan_p3d_seo_title( $title ) {
+		if ( ! nadlan_p3d_is_project_profile() ) {
+			return $title;
+		}
+		$name = wp_strip_all_tags( get_the_title( get_queried_object_id() ) );
+		return sprintf( '%s | בחירת דירות, מבט מהדירה ושדה דב | נדלן חכם', $name );
+	}
+}
+
+if ( ! function_exists( 'nadlan_p3d_seo_description' ) ) {
+	function nadlan_p3d_seo_description( $description ) {
+		if ( ! nadlan_p3d_is_project_profile() ) {
+			return $description;
+		}
+		$name = wp_strip_all_tags( get_the_title( get_queried_object_id() ) );
+		return sprintf( '%s: בחירת דירות אינטראקטיבית, מבט מהדירה, אור ושמש, השוואת יחידות וליווי רכישה ראשוני בשדה דב תל אביב.', $name );
+	}
+}
+
+add_filter( 'wpseo_title', 'nadlan_p3d_seo_title', 20 );
+add_filter( 'pre_get_document_title', 'nadlan_p3d_seo_title', 20 );
+add_filter( 'wpseo_metadesc', 'nadlan_p3d_seo_description', 20 );
+add_filter( 'wpseo_opengraph_desc', 'nadlan_p3d_seo_description', 20 );
+add_filter( 'wpseo_twitter_description', 'nadlan_p3d_seo_description', 20 );
+
 if ( ! function_exists( 'nadlan_p3d_inline_css' ) ) {
 	function nadlan_p3d_inline_css() {
 		return <<<'CSS'
@@ -495,6 +583,14 @@ if ( ! function_exists( 'nadlan_p3d_experience_css' ) ) {
 	function nadlan_p3d_experience_css() {
 		return <<<'CSS'
 .entry-content>.nlp3d,.wp-block-post-content>.nlp3d{width:min(1180px,calc(100vw - 48px));max-width:none;margin-block:22px 38px;margin-inline:calc(50% - min(590px,calc(50vw - 24px)));border-radius:28px}.nlp3d{border:1px solid rgba(234,216,163,.2)}.nlp3d-shop-path{display:grid;grid-template-columns:1fr;gap:7px;margin:16px 0 0}.nlp3d-shop-path span{display:flex;align-items:center;min-height:34px;width:max-content;max-width:100%;padding:6px 11px;border:1px solid rgba(234,216,163,.2);background:rgba(255,255,255,.06);color:#fff3d0;font-size:12.5px}.nlp3d-tools{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:7px;margin-top:14px}.nlp3d-tool{border:1px solid rgba(234,216,163,.24);background:rgba(255,255,255,.06);color:#ffe8a6;padding:8px 10px;cursor:pointer}.nlp3d-tool.is-active,.nlp3d-tool:hover,.nlp3d-tool:focus-visible{background:rgba(234,216,163,.2);color:#fff;outline:2px solid rgba(234,216,163,.42);outline-offset:2px}.nlp3d-tool-panel{margin-top:10px;border:1px solid rgba(234,216,163,.16);background:rgba(0,0,0,.18);padding:12px 13px;color:#f7edd2;line-height:1.55}.nlp3d-tool-panel strong{display:block;color:#fff3bd;margin-bottom:4px}.nlp3d-tool-panel p{margin:0;font-size:13px}.nlp3d-lead-form select{min-height:46px;border:1px solid rgba(234,216,163,.26);background:rgba(255,255,255,.9);color:#16140f;padding:10px 12px;border-radius:0;font:inherit}.nlp3d-lead-form select:focus{outline:2px solid #ead8a3;outline-offset:2px}.nlp3d-send-alt{font-weight:800}@media(max-width:900px){.entry-content>.nlp3d,.wp-block-post-content>.nlp3d{width:min(100%,calc(100vw - 28px));margin-inline:calc(50% - min(50%,calc(50vw - 14px)));border-radius:22px}.nlp3d-shop-path{grid-template-columns:repeat(2,minmax(0,1fr))}.nlp3d-shop-path span{width:100%}}@media(max-width:600px){.entry-content>.nlp3d,.wp-block-post-content>.nlp3d{width:calc(100vw - 22px);margin-inline:calc(50% - 50vw + 11px);margin-block:18px 30px;border-radius:18px}.nlp3d-tools{grid-template-columns:1fr}.nlp3d-shop-path{grid-template-columns:1fr}.nlp3d-tool-panel{font-size:13px}.nlp3d-lead-form select{width:100%}}
+CSS;
+	}
+}
+
+if ( ! function_exists( 'nadlan_p3d_flagship_css' ) ) {
+	function nadlan_p3d_flagship_css() {
+		return <<<'CSS'
+.entry-content>.nlp3d,.wp-block-post-content>.nlp3d{width:min(1380px,calc(100vw - 32px));margin-inline:calc(50% - min(690px,calc(50vw - 16px)));border-radius:30px;background:radial-gradient(circle at 72% 8%,rgba(234,216,163,.18),transparent 24%),radial-gradient(circle at 18% 18%,rgba(55,139,142,.38),transparent 30%),linear-gradient(135deg,#061313,#102d2d 54%,#17140e)}.nlp3d:before{content:"";position:absolute;inset:0;background:linear-gradient(115deg,rgba(255,255,255,.06),transparent 28%,rgba(234,216,163,.08) 62%,transparent 76%);pointer-events:none}.nlp3d-shell{grid-template-columns:minmax(260px,.86fr) minmax(560px,1.35fr) minmax(360px,.96fr);grid-template-areas:"copy stage console";gap:24px}.nlp3d-copy{grid-area:copy}.nlp3d-stage-wrap{grid-area:stage;min-height:820px}.nlp3d-console{grid-area:console;background:linear-gradient(180deg,rgba(7,15,16,.84),rgba(7,15,16,.68));box-shadow:inset 0 1px 0 rgba(255,255,255,.1),0 18px 46px rgba(0,0,0,.18)}.nlp3d-viewframe{min-height:clamp(320px,30vw,480px);border-color:rgba(234,216,163,.42);background:radial-gradient(circle at 18% 20%,rgba(255,255,255,.18),transparent 24%),linear-gradient(135deg,rgba(31,91,108,.72),rgba(7,20,22,.94));box-shadow:0 24px 62px rgba(0,0,0,.36)}.nlp3d-view-map[hidden]{display:none!important}.nlp3d-viewframe:not([hidden]) .nlp3d-view-map{display:block!important;position:absolute;inset:0;width:100%!important;height:100%!important;min-height:100%;z-index:2}.nlp3d-viewframe:not([hidden]) .mapboxgl-canvas-container,.nlp3d-viewframe:not([hidden]) .mapboxgl-canvas{width:100%!important;height:100%!important}.nlp3d-viewframe:not([hidden]) .mapboxgl-control-container{position:absolute;inset:0;z-index:5;pointer-events:none}.nlp3d-viewframe:not([hidden]) .mapboxgl-control-container *{pointer-events:auto}.nlp3d-view-badge{border-radius:999px}.nlp3d-showcase{position:relative;z-index:1;display:grid;grid-template-columns:minmax(260px,.82fr) minmax(420px,1.1fr) minmax(320px,.86fr);gap:18px;padding:0 28px 30px;align-items:stretch}.nlp3d-showcase-copy,.nlp3d-showcase-cards,.nlp3d-owner-form{border:1px solid rgba(234,216,163,.22);background:linear-gradient(135deg,rgba(255,255,255,.085),rgba(255,255,255,.035));box-shadow:inset 0 1px 0 rgba(255,255,255,.07);backdrop-filter:blur(14px)}.nlp3d-showcase-copy{padding:22px}.nlp3d-showcase-copy h3{margin:0 0 12px;font-family:Georgia,"Times New Roman",serif;font-size:clamp(24px,2.4vw,38px);font-weight:500;line-height:1.15;color:#fff7df}.nlp3d-showcase-copy p:last-child{margin:0;color:#f5ead0;line-height:1.75}.nlp3d-showcase-cards{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1px;padding:1px;background:rgba(234,216,163,.18)}.nlp3d-showcase-cards article{padding:18px;background:rgba(7,21,21,.82)}.nlp3d-showcase-cards span{display:block;color:#c4a15a;font-family:Georgia,"Times New Roman",serif;font-size:21px;margin-bottom:10px}.nlp3d-showcase-cards strong{display:block;color:#fff3c8;font-size:16px;margin-bottom:8px}.nlp3d-showcase-cards p{margin:0;color:#d8ccb0;font-size:13px;line-height:1.55}.nlp3d-owner-form{display:grid;grid-template-columns:1fr 1fr;gap:10px;padding:20px}.nlp3d-owner-form>div{grid-column:1/-1}.nlp3d-owner-title{margin:0 0 6px;font-family:Georgia,"Times New Roman",serif;font-size:25px;color:#fff7df}.nlp3d-owner-form p{margin:0;color:#e9ddc2;line-height:1.55}.nlp3d-owner-form input{min-height:46px;border:1px solid rgba(234,216,163,.24);background:rgba(255,255,255,.93);color:#15120c;padding:10px 12px;font:inherit;min-width:0}.nlp3d-owner-form button{grid-column:1/-1;border:0;background:linear-gradient(135deg,#ead8a3,#b99043);color:#15120c;font-weight:800;min-height:48px;cursor:pointer}.nlp3d-owner-form button:hover,.nlp3d-owner-form button:focus-visible{filter:brightness(1.05);outline:2px solid rgba(255,255,255,.7);outline-offset:2px}.nlp3d-owner-ok{grid-column:1/-1;margin:0;color:#fff2b9;font-weight:700}.nlp3d-owner-form input:disabled,.nlp3d-owner-form button:disabled{opacity:.68}@media(max-width:1240px){.nlp3d-shell{grid-template-columns:1fr 1.15fr;grid-template-areas:"copy stage" "console console"}.nlp3d-console{display:grid;grid-template-columns:minmax(260px,.72fr) minmax(420px,1fr);align-items:start}.nlp3d-showcase{grid-template-columns:1fr 1fr}.nlp3d-owner-form{grid-column:1/-1}}@media(max-width:760px){.entry-content>.nlp3d,.wp-block-post-content>.nlp3d{width:calc(100vw - 18px);margin-inline:calc(50% - 50vw + 9px);border-radius:20px}.nlp3d-shell{grid-template-columns:1fr;grid-template-areas:"copy" "stage" "console"}.nlp3d-stage-wrap{min-height:600px}.nlp3d-console{display:flex}.nlp3d-viewframe{min-height:330px}.nlp3d-showcase{grid-template-columns:1fr;padding:0 16px 20px}.nlp3d-showcase-cards{grid-template-columns:1fr}.nlp3d-owner-form{grid-template-columns:1fr}.nlp3d h2{font-size:clamp(31px,9vw,46px)}}@media(max-width:420px){.nlp3d-viewframe{min-height:280px}.nlp3d-showcase-copy,.nlp3d-owner-form{padding:16px}.nlp3d-showcase-cards article{padding:15px}}
 CSS;
 	}
 }
@@ -605,6 +701,8 @@ if ( ! function_exists( 'nadlan_p3d_inline_js' ) ) {
 		var plan=root.querySelector('.nlp3d-plan');
 		var form=root.querySelector('.nlp3d-lead-form');
 		var ok=root.querySelector('.nlp3d-ok');
+		var ownerForm=root.querySelector('.nlp3d-owner-form');
+		var ownerOk=root.querySelector('.nlp3d-owner-ok');
 		var viewToggle=root.querySelector('.nlp3d-view-toggle');
 		var viewFrame=root.querySelector('.nlp3d-viewframe');
 		var viewCopy=root.querySelector('.nlp3d-view-copy');
@@ -620,6 +718,10 @@ if ( ! function_exists( 'nadlan_p3d_inline_js' ) ) {
 		var planBody=root.querySelector('.nlp3d-plan-body');
 		var dealSteps=root.querySelector('.nlp3d-deal-steps');
 		var wdots=[].slice.call(root.querySelectorAll('.nlp3d-wdots span'));
+		var dockTitle=root.querySelector('.nlp3d-dock-title');
+		var dockMeta=root.querySelector('.nlp3d-dock-meta');
+		var dockSpin=root.querySelector('.nlp3d-dock-spin');
+		var dockInquiry=root.querySelector('.nlp3d-dock-action');
 		var storeKey='nlp3d-'+root.dataset.project;
 		var compareIds=[];
 		try{compareIds=JSON.parse(storageGet(storeKey+'-compare')||'[]')||[]}catch(e){compareIds=[]}
@@ -841,6 +943,14 @@ if ( ! function_exists( 'nadlan_p3d_inline_js' ) ) {
 			root.querySelectorAll('.nlp3d-wstep').forEach(function(s){s.hidden=parseInt(s.dataset.wstep,10)!==n});
 			wdots.forEach(function(d,i){d.classList.toggle('is-on',i<n)});
 		}
+		function renderSelectionDock(){
+			if(!activeUnit||!dockTitle){return}
+			dockTitle.textContent=selectedTitle(activeUnit);
+			if(dockMeta){
+				var metaText=unitText(activeUnit);
+				dockMeta.textContent=(metaText?metaText+' · ':'')+statusLabel(activeUnit.status);
+			}
+		}
 		function renderDetail(){
 			if(!activeUnit){return}
 			title.textContent=selectedTitle(activeUnit);
@@ -855,6 +965,7 @@ if ( ! function_exists( 'nadlan_p3d_inline_js' ) ) {
 				wrap.appendChild(dd);
 				facts.appendChild(wrap);
 			});
+			renderSelectionDock();
 			if(activeUnit.plan){plan.href=activeUnit.plan;plan.hidden=false}else{plan.hidden=true}
 			renderUnitView();
 			renderToolPanel();
@@ -915,13 +1026,15 @@ if ( ! function_exists( 'nadlan_p3d_inline_js' ) ) {
 			if(!viewMap||!viewFrame||viewFrame.hidden){return}
 			if(!canLiveView()){viewMap.hidden=true;return}
 			viewMap.hidden=false;
+			viewMap.removeAttribute('hidden');
+			viewMap.style.display='block';
 			loadMapboxGl(function(){
 				if(!window.mapboxgl){viewMap.hidden=true;return}
 				try{
 					if(!liveMap){
 						mapboxgl.accessToken=meta.mapbox_token;
 						liveMap=new mapboxgl.Map({container:viewMap,style:'mapbox://styles/mapbox/standard',center:[Number(meta.lng),Number(meta.lat)],zoom:14.5,pitch:62,bearing:0,antialias:true,attributionControl:true,dragRotate:true,touchPitch:true,touchZoomRotate:true,pitchWithRotate:true});
-					liveMap.addControl(new mapboxgl.NavigationControl({visualizePitch:true,showCompass:true,showZoom:true}),'top-left');
+						liveMap.addControl(new mapboxgl.NavigationControl({visualizePitch:true,showCompass:true,showZoom:true}),'top-left');
 						liveMap.on('load',function(){
 							try{
 								liveMap.addLayer({id:'nlp3d-3d-buildings',source:'composite','source-layer':'building',filter:['==','extrude','true'],type:'fill-extrusion',minzoom:13,paint:{'fill-extrusion-color':'#c9c0ad','fill-extrusion-height':['coalesce',['get','height'],14],'fill-extrusion-base':['coalesce',['get','min_height'],0],'fill-extrusion-opacity':0.7}});
@@ -929,11 +1042,12 @@ if ( ! function_exists( 'nadlan_p3d_inline_js' ) ) {
 							liveMap.resize();
 							applyLiveCamera();
 						});
-						liveMap.on('error',function(){viewMap.hidden=true});
 					}else{
 						liveMap.resize();
 						applyLiveCamera();
 					}
+					window.requestAnimationFrame(function(){if(liveMap){liveMap.resize();applyLiveCamera()}});
+					window.setTimeout(function(){if(liveMap){liveMap.resize();applyLiveCamera()}},260);
 				}catch(err){viewMap.hidden=true}
 			});
 		}
@@ -991,6 +1105,21 @@ if ( ! function_exists( 'nadlan_p3d_inline_js' ) ) {
 		});
 		var orbit=root.querySelector('.nlp3d-orbit');
 		if(orbit){orbit.addEventListener('click',function(){scene.classList.toggle('is-orbit');orbit.classList.toggle('is-active');track('orbit',{active:scene.classList.contains('is-orbit')})})}
+		if(dockSpin){
+			dockSpin.addEventListener('click',function(){
+				scene.classList.add('is-orbit');
+				var orbit=root.querySelector('.nlp3d-orbit');
+				if(orbit){orbit.classList.add('is-active')}
+				track('dock_360',{unit:activeUnit&&activeUnit.id});
+			});
+		}
+		if(dockInquiry&&form){
+			dockInquiry.addEventListener('click',function(){
+				setWStep(2);
+				form.scrollIntoView({behavior:'smooth',block:'center'});
+				track('dock_inquiry',{unit:activeUnit&&activeUnit.id});
+			});
+		}
 		if(viewToggle&&viewFrame){
 			viewToggle.addEventListener('click',function(){
 				viewFrame.hidden=!viewFrame.hidden;
@@ -1088,10 +1217,36 @@ if ( ! function_exists( 'nadlan_p3d_inline_js' ) ) {
 				})
 				.catch(function(){ok.textContent='השליחה נכשלה. אפשר לנסות שוב או לפנות דרך כפתור יצירת הקשר באתר.';form.querySelectorAll('button[type="submit"]').forEach(function(b){b.disabled=false})});
 		});
+		if(ownerForm){
+			ownerForm.addEventListener('submit',function(e){
+				e.preventDefault();
+				var fd=new FormData(ownerForm);
+				var projectName=(fd.get('project_name')||'').toString().trim();
+				var city=(fd.get('city')||'').toString().trim();
+				var payload={
+					card_id:parseInt(root.dataset.project,10),
+					name:fd.get('name'),
+					phone:fd.get('phone'),
+					email:fd.get('email'),
+					company:fd.get('company'),
+					source:'project_3d_showcase',
+					goal:'בקשה להצגת פרויקט אינטראקטיבי',
+					message:'בקשה לבדיקת התאמה לעמוד תצוגה אינטראקטיבי. פרויקט: '+(projectName||'לא נמסר')+'. אזור: '+(city||'לא נמסר')+'. מקור: עמוד '+(meta.title||'פרויקט')+'.'
+				};
+				track('owner_showcase_submit',{project_name:projectName,city:city});
+				if(ownerOk){ownerOk.textContent='שולחים את הבקשה...';ownerOk.hidden=false}
+				ownerForm.querySelectorAll('button,input').forEach(function(el){if(el.type!=='hidden'){el.disabled=true}});
+				fetch('__NLP3D_REST__',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload)})
+					.then(function(r){if(!r.ok){throw new Error('owner lead failed')}return r.json()})
+					.then(function(){if(ownerOk){ownerOk.textContent='קיבלנו את הפרטים. נחזור אליכם בתוך יום עסקים עם בדיקת התאמה ראשונית.'}})
+					.catch(function(){if(ownerOk){ownerOk.textContent='השליחה נכשלה. אפשר לנסות שוב בעוד רגע.'}ownerForm.querySelectorAll('button,input').forEach(function(el){el.disabled=false})});
+			});
+		}
 		renderAll(true);
 		renderCompareTray();
 		if(viewFrame&&viewToggle&&canLiveView()){
 			viewFrame.hidden=false;
+			viewFrame.removeAttribute('hidden');
 			viewToggle.classList.add('is-active');
 			viewToggle.textContent='סגירת מבט מהדירה';
 			renderUnitView();
@@ -1112,7 +1267,7 @@ add_action(
 			return;
 		}
 
-		wp_register_style( 'nadlan-p3d', '', array(), '1.60.1' );
+		wp_register_style( 'nadlan-p3d', '', array(), '1.60.2' );
 		wp_enqueue_style( 'nadlan-p3d' );
 		wp_add_inline_style( 'nadlan-p3d', nadlan_p3d_inline_css() );
 		wp_add_inline_style( 'nadlan-p3d', '.nlp3d-drag-note{display:inline-flex;align-items:center;min-height:44px;color:rgba(246,239,226,.72);font-size:12px;padding:0 6px}.nlp3d-scene{touch-action:none;cursor:grab}.nlp3d-scene.is-dragging{cursor:grabbing}.nlp3d-actions{grid-template-columns:1fr}.nlp3d-view-toggle{margin-top:12px;border:1px solid rgba(234,216,163,.36);background:rgba(255,255,255,.06);color:#ffe8a6;padding:9px 12px;cursor:pointer}.nlp3d-view-toggle.is-active{background:rgba(234,216,163,.18);color:#fff}.nlp3d-viewframe{position:relative;margin-top:12px;min-height:150px;overflow:hidden;border:1px solid rgba(234,216,163,.18);background:linear-gradient(180deg,rgba(41,112,139,.58),rgba(8,25,25,.92));isolation:isolate}.nlp3d-view-sky{position:absolute;inset:0;background:radial-gradient(circle at 18% 22%,rgba(255,255,255,.24),transparent 18%),linear-gradient(135deg,rgba(39,107,130,.42),rgba(18,50,43,.1));opacity:.86}.nlp3d-view-lines{position:absolute;inset:auto -8% 18% -8%;height:46%;border-top:1px solid rgba(234,216,163,.28);background:linear-gradient(160deg,rgba(234,216,163,.1),transparent 54%);transform:skewY(-8deg)}.nlp3d-view-copy{position:absolute;right:14px;left:14px;bottom:12px;margin:0;color:#fff8dc;font-size:13px;line-height:1.5;text-shadow:0 1px 12px rgba(0,0,0,.55)}@media(max-width:600px){.nlp3d-drag-note{flex-basis:100%;min-height:24px}.nlp3d-viewframe{min-height:130px}}' );
@@ -1121,8 +1276,10 @@ add_action(
 		wp_add_inline_style( 'nadlan-p3d', '.entry-content>.nlp3d,.wp-block-post-content>.nlp3d{width:min(1280px,calc(100vw - 36px));margin-inline:calc(50% - min(640px,calc(50vw - 18px)));overflow:clip}.nlp3d-shell{grid-template-columns:minmax(220px,.72fr) minmax(520px,1.45fr);grid-template-areas:"copy stage" "console stage";align-items:start;min-height:0;padding:28px}.nlp3d-copy{grid-area:copy;align-self:start;padding-bottom:0}.nlp3d-stage-wrap{grid-area:stage;min-height:760px}.nlp3d-console{grid-area:console;min-width:0}.nlp3d h2{max-width:15ch;font-size:clamp(28px,3vw,46px)}.nlp3d-lead-text{font-size:15px;line-height:1.65}.nlp3d-facade{inset:72px 5% 58px;display:flex;align-items:center;justify-content:center;background:radial-gradient(circle at 50% 32%,rgba(234,216,163,.08),transparent 42%),rgba(4,16,18,.55)}.nlp3d-facade img{object-fit:contain;object-position:center center;padding:12px;opacity:.97}.nlp3d-facade-hotspots{inset:12px;width:calc(100% - 24px);height:calc(100% - 24px)}.nlp3d-scene.has-facade .nlp3d-tower{opacity:.18}.nlp3d-detail{max-height:none}.nlp3d-facts{grid-template-columns:repeat(2,minmax(0,1fr));max-height:360px;overflow:auto;padding-inline-end:4px}.nlp3d-facts div:nth-last-child(-n+2){grid-column:1/-1}.nlp3d-facts dd{overflow-wrap:anywhere}.nlp3d-lead-form input,.nlp3d-lead-form select{min-width:0}.nlp3d-actions{gap:8px}.nlp3d-tool-panel{max-height:170px;overflow:auto}.nlp3d-tower:before{content:"";position:absolute;inset:-8px 6%;border:1px solid rgba(234,216,163,.22);background:linear-gradient(90deg,rgba(234,216,163,.05),transparent 45%,rgba(234,216,163,.08));transform:translateZ(-18px)}.nlp3d-plate{border-radius:2px}.nlp3d-plate:after{content:"";position:absolute;inset:3px 12%;background:repeating-linear-gradient(90deg,rgba(234,216,163,.45) 0 6px,transparent 6px 13px);opacity:.42}@media(max-width:1180px){.nlp3d-shell{grid-template-columns:1fr;grid-template-areas:"copy" "stage" "console"}.nlp3d-stage-wrap{min-height:680px}.nlp3d h2{max-width:100%}.nlp3d-lead-text{max-width:62ch}.nlp3d-console{display:grid;grid-template-columns:minmax(220px,.68fr) minmax(320px,1fr);align-items:start}.nlp3d-console-head,.nlp3d-floor-strip,.nlp3d-units{grid-column:1}.nlp3d-detail,.nlp3d-lead-form{grid-column:2}.nlp3d-detail{grid-row:1 / span 3}.nlp3d-lead-form{grid-row:4}}@media(max-width:760px){.entry-content>.nlp3d,.wp-block-post-content>.nlp3d{width:calc(100vw - 18px);margin-inline:calc(50% - 50vw + 9px)}.nlp3d-shell{padding:16px}.nlp3d-stage-wrap{min-height:560px}.nlp3d-scene{height:540px}.nlp3d-facade{inset:64px 3% 46px}.nlp3d-facade img{padding:6px}.nlp3d-facade-hotspots{inset:6px;width:calc(100% - 12px);height:calc(100% - 12px)}.nlp3d-console{display:flex}.nlp3d-facts{grid-template-columns:1fr;max-height:none}.nlp3d-facts div:nth-last-child(-n+2){grid-column:auto}.nlp3d-toolbar{position:relative;top:auto;right:auto;margin-bottom:10px}.nlp3d-scene{position:relative}.nlp3d-copy{padding-inline:2px}.nlp3d-shop-path span{font-size:12px}}@media(max-width:420px){.nlp3d-stage-wrap{min-height:500px}.nlp3d-scene{height:500px}.nlp3d h2{font-size:28px}.nlp3d-metrics span{width:100%}}' );
 
 		wp_add_inline_style( 'nadlan-p3d', '.nlp3d-plate{cursor:pointer}.nlp3d-plate:hover,.nlp3d-plate:focus-visible{border-color:#ffe9ad;background:linear-gradient(135deg,rgba(234,216,163,.5),rgba(255,255,255,.16));box-shadow:0 0 14px rgba(234,216,163,.3);outline:none}.nlp3d-scene:after{content:"";position:absolute;inset:0;pointer-events:none;background:radial-gradient(ellipse at 50% 38%,transparent 46%,rgba(2,10,10,.42) 100%)}.nlp3d-scene .nlp3d-horizon{box-shadow:0 0 38px 6px rgba(234,216,163,.1)}.nlp3d-viewframe{min-height:340px;border:1px solid rgba(234,216,163,.32);box-shadow:0 18px 48px rgba(0,0,0,.32)}.nlp3d-view-map{position:absolute;inset:0;z-index:2;cursor:grab}.nlp3d-view-map:active{cursor:grabbing}.nlp3d-view-map .mapboxgl-canvas{outline:none}.nlp3d-view-map .mapboxgl-cooperative-gesture-screen{display:none!important}.nlp3d-view-map .mapboxgl-ctrl-top-left{margin:10px}.nlp3d-view-map .mapboxgl-ctrl-group{background:rgba(7,15,16,.78);border:1px solid rgba(234,216,163,.34);box-shadow:0 4px 14px rgba(0,0,0,.42)}.nlp3d-view-map .mapboxgl-ctrl-group button{background:transparent;color:#fff;filter:invert(.92) hue-rotate(180deg)}.nlp3d-view-map .mapboxgl-ctrl-attrib{background:rgba(7,15,16,.62);color:#cfc29e;font-size:10px}.nlp3d-view-map .mapboxgl-ctrl-attrib a{color:#ffe8a6}.nlp3d-view-badge{position:absolute;z-index:4;top:10px;right:10px;background:linear-gradient(135deg,#ead8a3,#b99043);color:#15120c;font-weight:800;font-size:12px;padding:6px 10px;letter-spacing:.02em;box-shadow:0 6px 18px rgba(0,0,0,.42);pointer-events:none}.nlp3d-view-badge[hidden]{display:none}.nlp3d-view-copy{position:absolute;z-index:3;right:12px;left:12px;bottom:8px;margin:0;padding:9px 12px;background:linear-gradient(180deg,rgba(7,15,16,0),rgba(7,15,16,.82));color:#fff8dc;font-size:12.5px;line-height:1.5}.nlp3d-view-map .mapboxgl-canvas{outline:none}.nlp3d-viewframe{min-height:240px}.nlp3d-view-copy{z-index:3}.nlp3d-unit-row{display:grid;grid-template-columns:1fr auto;gap:7px;align-items:stretch}.nlp3d-compare-add{border:1px solid rgba(234,216,163,.26);background:rgba(255,255,255,.05);color:#e9dcb4;font-size:12px;padding:6px 9px;cursor:pointer;min-width:58px}.nlp3d-compare-add.is-on,.nlp3d-compare-add:hover,.nlp3d-compare-add:focus-visible{background:rgba(234,216,163,.22);color:#fff;outline:none}.nlp3d-compare-tray{display:flex;flex-wrap:wrap;align-items:center;gap:8px;border:1px solid rgba(234,216,163,.2);background:rgba(0,0,0,.18);padding:9px 11px;margin-top:2px}.nlp3d-compare-tray[hidden]{display:none}.nlp3d-compare-label{color:#cfc29e;font-size:12px}.nlp3d-compare-chip{border:1px solid rgba(234,216,163,.3);background:rgba(234,216,163,.14);color:#fff3c8;font-size:12px;padding:5px 9px;cursor:pointer}.nlp3d-compare-open{border:1px solid rgba(234,216,163,.4);background:linear-gradient(135deg,rgba(234,216,163,.28),rgba(185,144,67,.22));color:#fff;font-size:13px;padding:7px 12px;cursor:pointer;margin-inline-start:auto}.nlp3d-compare-open:disabled{opacity:.5;cursor:default}.nlp3d-overlay{position:fixed;inset:0;z-index:99990;display:flex;align-items:center;justify-content:center;background:rgba(4,12,12,.78);backdrop-filter:blur(6px);padding:18px}.nlp3d-overlay[hidden]{display:none}.nlp3d-overlay-box{position:relative;width:min(860px,100%);max-height:86vh;overflow:auto;background:linear-gradient(135deg,#0a1d1d,#13100b);border:1px solid rgba(234,216,163,.32);box-shadow:0 32px 90px rgba(0,0,0,.5);padding:22px;color:#f6efe2}.nlp3d-overlay-box h3{margin:0 0 14px;font-family:Georgia,"Times New Roman",serif;font-weight:500;font-size:24px;color:#ffe9ad}.nlp3d-overlay-close{position:absolute;top:10px;left:12px;border:1px solid rgba(234,216,163,.34);background:rgba(255,255,255,.06);color:#ffe8a6;width:38px;height:38px;font-size:19px;cursor:pointer}.nlp3d-compare-table table{width:100%;border-collapse:collapse}.nlp3d-compare-table th,.nlp3d-compare-table td{border:1px solid rgba(234,216,163,.18);padding:9px 10px;text-align:right;font-size:13.5px}.nlp3d-compare-table td:first-child{color:#cfc29e;font-size:12.5px;width:120px}.nlp3d-compare-pick{border:1px solid rgba(234,216,163,.36);background:rgba(234,216,163,.14);color:#fff;font-weight:700;padding:8px 10px;cursor:pointer;width:100%}.nlp3d-compare-pick:hover,.nlp3d-compare-pick:focus-visible{background:rgba(234,216,163,.3);outline:none}.nlp3d-plan-body img{display:block;width:100%;height:auto;background:#fff}.nlp3d-plan-body iframe{display:block;width:100%;height:64vh;border:0;background:#fff}.nlp3d-wdots{grid-column:1/-1;display:flex;gap:7px;margin:0 0 2px}.nlp3d-wdots span{width:26px;height:5px;background:rgba(234,216,163,.18)}.nlp3d-wdots span.is-on{background:linear-gradient(90deg,#ead8a3,#b99043)}.nlp3d-wstep{grid-column:1/-1;display:grid;grid-template-columns:1fr 1fr;gap:10px}.nlp3d-wstep[hidden]{display:none}.nlp3d-wnext{grid-column:1/-1;border:0;background:linear-gradient(135deg,#ead8a3,#b99043);color:#15120c;font-weight:800;padding:12px 14px;cursor:pointer}.nlp3d-wback{grid-column:1/-1;border:0;background:transparent;color:#cfc29e;font-size:12.5px;cursor:pointer;text-decoration:underline;padding:4px}.nlp3d-advisors{grid-column:1/-1;border:1px solid rgba(234,216,163,.2);padding:10px 12px;margin:0;display:grid;grid-template-columns:1fr 1fr;gap:8px}.nlp3d-advisors legend{color:#e9dcb4;font-size:12.5px;padding:0 6px}.nlp3d-advisors label{display:flex;align-items:center;gap:7px;color:#fff3d0;font-size:13px;min-height:30px;cursor:pointer}.nlp3d-advisors input{width:17px;height:17px;accent-color:#c4a15a}.nlp3d-deal-steps span.is-done{background:rgba(120,180,120,.2);border-color:rgba(160,220,160,.45);color:#dfffe0}.nlp3d-deal-steps span.is-done:before{content:"✓ "}@media(max-width:600px){.nlp3d-wstep,.nlp3d-advisors{grid-template-columns:1fr}.nlp3d-overlay{padding:8px}.nlp3d-overlay-box{padding:16px;max-height:92vh}.nlp3d-compare-table th,.nlp3d-compare-table td{padding:7px 7px;font-size:12.5px}.nlp3d-viewframe{min-height:200px}}' );
+		wp_add_inline_style( 'nadlan-p3d', nadlan_p3d_flagship_css() );
+		wp_add_inline_style( 'nadlan-p3d', '.nlp3d-selection-dock{border:1px solid rgba(234,216,163,.24);background:linear-gradient(135deg,rgba(255,255,255,.09),rgba(255,255,255,.035));box-shadow:inset 0 1px 0 rgba(255,255,255,.08),0 16px 34px rgba(0,0,0,.16);padding:14px 14px;margin-bottom:14px;display:grid;grid-template-columns:1fr auto;gap:8px 12px;align-items:center}.nlp3d-selection-dock span{grid-column:1/-1;color:#c4a15a;font-size:12px;letter-spacing:.04em}.nlp3d-dock-title{font-family:Georgia,"Times New Roman",serif;color:#fff5cf;font-size:21px;font-weight:500;line-height:1.15}.nlp3d-dock-meta{display:block;color:#d8ccb0;line-height:1.45}.nlp3d-dock-actions{display:flex;gap:8px;align-items:center;justify-content:flex-end}.nlp3d-dock-actions button{border:1px solid rgba(234,216,163,.34);background:rgba(255,255,255,.055);color:#ffe8a6;min-height:38px;padding:7px 11px;cursor:pointer}.nlp3d-dock-actions .nlp3d-dock-action{background:linear-gradient(135deg,#ead8a3,#b99043);border:0;color:#15120c;font-weight:800}.nlp3d-dock-actions button:hover,.nlp3d-dock-actions button:focus-visible{outline:2px solid rgba(255,255,255,.68);outline-offset:2px;filter:brightness(1.06)}@media(max-width:760px){.nlp3d-selection-dock{grid-template-columns:1fr}.nlp3d-dock-actions{justify-content:stretch}.nlp3d-dock-actions button{flex:1}}' );
 
-		wp_register_script( 'nadlan-p3d', '', array(), '1.60.1', true );
+		wp_register_script( 'nadlan-p3d', '', array(), '1.60.2', true );
 		wp_enqueue_script( 'nadlan-p3d' );
 		wp_add_inline_script( 'nadlan-p3d', nadlan_p3d_inline_js( esc_url_raw( rest_url( 'nadlan/v1/lead' ) ) ) );
 	}
@@ -1218,11 +1375,15 @@ add_filter(
 		);
 		$out['project_3d'] = array(
 			'enabled'          => nadlan_p3d_enabled(),
-			'renderer'         => 'premium_tower_picker_v4',
+			'renderer'         => 'premium_tower_picker_v5',
 			'lead_endpoint'    => '/nadlan/v1/lead',
 			'facade_polygons'  => true,
 			'lead_unit_payload' => true,
 			'view_from_unit'   => trim( (string) get_option( 'nadlan_mapbox_token', '' ) ) !== '' ? 'mapbox_live' : 'awaiting_token',
+			'mapbox_canvas_fix' => true,
+			'flagship_showcase' => true,
+			'owner_request_form' => true,
+			'selection_dock'   => true,
 			'sun_insight'      => true,
 			'unit_compare'     => true,
 			'lead_wizard'      => true,
