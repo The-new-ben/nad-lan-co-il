@@ -50,6 +50,7 @@ if ( ! function_exists( 'nadlan_reviews_recompute' ) ) {
 		update_post_meta( $target_id, 'rating', $avg );
 		update_post_meta( $target_id, 'reviews_count', $n );
 		delete_transient( 'nadlan_reviews_block_' . $target_id );
+		delete_transient( 'nadlan_reviews_block_1603_' . $target_id );
 	}
 }
 add_action( 'save_post_nadlan_review', function ( $post_id, $post ) {
@@ -131,12 +132,75 @@ add_action( 'rest_api_init', function () {
 	) );
 } );
 
+if ( ! function_exists( 'nadlan_reviews_inline_js' ) ) {
+	function nadlan_reviews_inline_js( $rest_url ) {
+		$js = <<<'JS'
+(function(){
+	function boot(){
+		document.querySelectorAll('.nlrev-stars-pick').forEach(function(g){
+			var input=g.querySelector('input[name=rating]');
+			g.querySelectorAll('.nlrev-star').forEach(function(b){
+				b.addEventListener('click',function(){
+					var v=parseInt(b.dataset.v,10);
+					input.value=v;
+					g.querySelectorAll('.nlrev-star').forEach(function(s){s.classList.toggle('is-on',parseInt(s.dataset.v,10)<=v);});
+				});
+			});
+		});
+	}
+	if(!window.nadlanReviewSubmit){
+		window.nadlanReviewSubmit=function(form){
+			var fd=new FormData(form),data={target_id:parseInt(form.dataset.target,10)};
+			fd.forEach(function(v,k){data[k]=v;});
+			data.rating=parseInt(data.rating||0,10);
+			var msg=form.querySelector('.nlrev-msg');
+			msg.className='nlrev-msg';
+			msg.textContent='\u05e9\u05d5\u05dc\u05d7...';
+			fetch('__NLREV_REST__',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(data)})
+				.then(function(r){return r.json();})
+				.then(function(d){
+					if(d ? d.ok : false){
+						msg.className='nlrev-msg is-ok';
+						msg.textContent=d.message||'\u05e0\u05e9\u05dc\u05d7';
+						form.reset();
+						form.querySelectorAll('.nlrev-star').forEach(function(s){s.classList.remove('is-on');});
+					}else{
+						msg.className='nlrev-msg is-err';
+						msg.textContent=(d ? d.message : '')||'\u05e9\u05d2\u05d9\u05d0\u05d4. \u05e0\u05e1\u05d5 \u05e9\u05d5\u05d1.';
+					}
+				})
+				.catch(function(){
+					msg.className='nlrev-msg is-err';
+					msg.textContent='\u05e9\u05d2\u05d9\u05d0\u05d4. \u05e0\u05e1\u05d5 \u05e9\u05d5\u05d1.';
+				});
+			return false;
+		};
+	}
+	if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded',boot)}else{boot()}
+})();
+JS;
+		return str_replace( '__NLREV_REST__', esc_js( $rest_url ), $js );
+	}
+}
+
+add_action(
+	'wp_enqueue_scripts',
+	function () {
+		if ( ! is_singular( array( 'nadlan_professional', 'nadlan_project' ) ) ) {
+			return;
+		}
+		wp_register_script( 'nadlan-reviews', '', array(), '1.60.3', true );
+		wp_enqueue_script( 'nadlan-reviews' );
+		wp_add_inline_script( 'nadlan-reviews', nadlan_reviews_inline_js( rest_url( 'nadlan/v1/review-submit' ) ) );
+	}
+);
+
 /* ---------- Render block: summary + list + form ---------- */
 if ( ! function_exists( 'nadlan_reviews_render' ) ) {
 	function nadlan_reviews_render( $target_id ) {
 		$target_id = (int) $target_id;
 		if ( ! $target_id ) { return ''; }
-		$ck = 'nadlan_reviews_block_' . $target_id;
+		$ck = 'nadlan_reviews_block_1603_' . $target_id;
 		$cache = get_transient( $ck );
 		if ( $cache !== false ) { return $cache; }
 		$avg = (float) get_post_meta( $target_id, 'rating', true );
@@ -247,34 +311,6 @@ if ( ! function_exists( 'nadlan_reviews_render' ) ) {
 .nlrev-msg{font-size:13px;padding:6px 0}
 .nlrev-msg.is-ok{color:#059669}.nlrev-msg.is-err{color:#B91C1C}
 </style>
-<script>
-(function(){
-	if(window.nadlanReviewSubmit)return;
-	document.querySelectorAll('.nlrev-stars-pick').forEach(function(g){
-		var input=g.querySelector('input[name=rating]');
-		g.querySelectorAll('.nlrev-star').forEach(function(b){
-			b.addEventListener('click',function(){
-				var v=parseInt(b.dataset.v,10);input.value=v;
-				g.querySelectorAll('.nlrev-star').forEach(function(s){s.classList.toggle('is-on',parseInt(s.dataset.v,10)<=v);});
-			});
-		});
-	});
-	window.nadlanReviewSubmit=function(form){
-		var fd=new FormData(form),data={target_id:parseInt(form.dataset.target,10)};
-		fd.forEach(function(v,k){data[k]=v;});
-		data.rating=parseInt(data.rating||0,10);
-		var msg=form.querySelector('.nlrev-msg');msg.className='nlrev-msg';msg.textContent='שולח…';
-		fetch('<?php echo esc_js( rest_url( 'nadlan/v1/review-submit' ) ); ?>',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(data)})
-			.then(function(r){return r.json();})
-			.then(function(d){
-				if(d&&d.ok){msg.className='nlrev-msg is-ok';msg.textContent=d.message||'✓ נשלח';form.reset();form.querySelectorAll('.nlrev-star').forEach(function(s){s.classList.remove('is-on');});}
-				else{msg.className='nlrev-msg is-err';msg.textContent=(d&&d.message)||'שגיאה. נסו שוב.';}
-			})
-			.catch(function(){msg.className='nlrev-msg is-err';msg.textContent='שגיאה. נסו שוב.';});
-		return false;
-	};
-})();
-</script>
 </section>
 		<?php
 		$html = ob_get_clean();
