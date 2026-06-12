@@ -1,0 +1,66 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000" role="img" aria-labelledby="title desc">
+  <title id="title">Illustrative coastal tower facade concept</title>
+  <desc id="desc">Original line drawing concept for an interactive new-build apartment selector. Not an official architectural drawing.</desc>
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#092425"/>
+      <stop offset=".55" stop-color="#123c3e"/>
+      <stop offset="1" stop-color="#071515"/>
+    </linearGradient>
+    <linearGradient id="gold" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#f2dfaa"/>
+      <stop offset=".55" stop-color="#b99552"/>
+      <stop offset="1" stop-color="#6f5529"/>
+    </linearGradient>
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M40 0H0v40" fill="none" stroke="#ead8a3" stroke-opacity=".08" stroke-width="1"/>
+    </pattern>
+    <filter id="glow" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="6" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+  <rect width="1000" height="1000" fill="url(#sky)"/>
+  <rect width="1000" height="1000" fill="url(#grid)"/>
+  <path d="M80 650c160-60 300-78 460-58 150 18 262-8 380-70v98c-130 54-245 72-390 55-164-20-306-2-450 58z" fill="#2c8193" opacity=".18"/>
+  <path d="M64 785c220-74 405-92 600-54 101 20 177 10 276-28" fill="none" stroke="#ead8a3" stroke-opacity=".25" stroke-width="2"/>
+  <path d="M720 140l48 680M326 812l66-690" fill="none" stroke="#f0dfb0" stroke-opacity=".32" stroke-width="2"/>
+  <path d="M384 150 648 110l84 704-414 34z" fill="#0d1f20" opacity=".74"/>
+  <path d="M392 142 650 102l80 704-414 34z" fill="none" stroke="url(#gold)" stroke-width="4" filter="url(#glow)"/>
+  <path d="M430 178 614 150l54 604-292 24z" fill="#ffffff" opacity=".035" stroke="#ead8a3" stroke-opacity=".22" stroke-width="1"/>
+  <g stroke="#ead8a3" stroke-opacity=".38" stroke-width="1">
+    <path d="M407 228 661 201"/>
+    <path d="M402 280 666 253"/>
+    <path d="M397 332 672 305"/>
+    <path d="M392 384 678 356"/>
+    <path d="M387 436 684 408"/>
+    <path d="M382 488 690 459"/>
+    <path d="M377 540 696 510"/>
+    <path d="M372 592 702 562"/>
+    <path d="M367 644 708 613"/>
+    <path d="M362 696 714 664"/>
+    <path d="M357 748 720 715"/>
+  </g>
+  <g stroke="#ead8a3" stroke-opacity=".24" stroke-width="1">
+    <path d="M460 156 430 792"/>
+    <path d="M522 146 520 782"/>
+    <path d="M590 136 610 772"/>
+    <path d="M650 126 696 762"/>
+  </g>
+  <g fill="none" stroke="#f8e8b6" stroke-opacity=".5" stroke-width="2">
+    <path d="M352 815 734 784"/>
+    <path d="M378 196 410 170"/>
+    <path d="M650 104 692 128"/>
+  </g>
+  <g fill="#ead8a3" opacity=".8">
+    <circle cx="138" cy="202" r="2"/>
+    <circle cx="178" cy="246" r="1.5"/>
+    <circle cx="846" cy="182" r="2"/>
+    <circle cx="902" cy="236" r="1.5"/>
+  </g>
+  <path d="M170 852h660" stroke="#ead8a3" stroke-opacity=".28" stroke-width="2"/>
+  <text x="500" y="910" text-anchor="middle" fill="#ead8a3" fill-opacity=".74" font-family="Arial, sans-serif" font-size="20">Illustrative facade for apartment selection</text>
+</svg>

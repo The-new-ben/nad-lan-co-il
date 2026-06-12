@@ -122,6 +122,17 @@ if ( ! function_exists( 'nadlan_lead_route_email_body' ) ) {
 		if ( $fields['phone'] !== '' ) { $lines[] = 'טלפון: ' . $fields['phone']; }
 		if ( $fields['email'] !== '' ) { $lines[] = 'אימייל: ' . $fields['email']; }
 		if ( $fields['goal'] !== '' ) { $lines[] = 'נושא: ' . $fields['goal']; }
+		if ( ! empty( $fields['unit'] ) || ! empty( $fields['floor'] ) || ! empty( $fields['advisor'] ) ) {
+			$lines[] = '';
+			$lines[] = 'פרטי בחירת דירה:';
+			if ( ! empty( $fields['unit'] ) ) { $lines[] = 'דירה/קו: ' . $fields['unit']; }
+			if ( ! empty( $fields['floor'] ) ) { $lines[] = 'קומה: ' . $fields['floor']; }
+			if ( ! empty( $fields['rooms'] ) ) { $lines[] = 'חדרים: ' . $fields['rooms']; }
+			if ( ! empty( $fields['sqm'] ) ) { $lines[] = 'שטח: ' . $fields['sqm']; }
+			if ( ! empty( $fields['timeline'] ) ) { $lines[] = 'מועד התקדמות: ' . $fields['timeline']; }
+			if ( ! empty( $fields['advisor'] ) ) { $lines[] = 'ליווי מבוקש: ' . $fields['advisor']; }
+			if ( ! empty( $fields['purchase_intent'] ) ) { $lines[] = 'סוג פנייה: בדיקת רכישה לא מחייבת'; }
+		}
 		if ( $fields['message'] !== '' ) {
 			$lines[] = '';
 			$lines[] = 'הודעה:';

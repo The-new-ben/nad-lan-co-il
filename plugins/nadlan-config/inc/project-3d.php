@@ -91,7 +91,7 @@ if ( ! function_exists( 'nadlan_p3d_demo_units' ) ) {
 				'price'   => 0,
 				'status'  => 'available',
 				'plan'    => '',
-				'points'  => '',
+				'points'  => '360,690 475,690 475,735 360,735',
 			),
 			array(
 				'id'      => 'demo-18-b',
@@ -106,7 +106,7 @@ if ( ! function_exists( 'nadlan_p3d_demo_units' ) ) {
 				'price'   => 0,
 				'status'  => 'available',
 				'plan'    => '',
-				'points'  => '',
+				'points'  => '500,590 620,590 620,640 500,640',
 			),
 			array(
 				'id'      => 'demo-24-c',
@@ -121,7 +121,7 @@ if ( ! function_exists( 'nadlan_p3d_demo_units' ) ) {
 				'price'   => 0,
 				'status'  => 'reserved',
 				'plan'    => '',
-				'points'  => '',
+				'points'  => '360,480 475,480 475,530 360,530',
 			),
 			array(
 				'id'      => 'demo-30-d',
@@ -136,7 +136,7 @@ if ( ! function_exists( 'nadlan_p3d_demo_units' ) ) {
 				'price'   => 0,
 				'status'  => 'available',
 				'plan'    => '',
-				'points'  => '',
+				'points'  => '500,370 620,370 620,420 500,420',
 			),
 			array(
 				'id'      => 'demo-34-e',
@@ -151,7 +151,7 @@ if ( ! function_exists( 'nadlan_p3d_demo_units' ) ) {
 				'price'   => 0,
 				'status'  => 'available',
 				'plan'    => '',
-				'points'  => '',
+				'points'  => '360,295 475,295 475,345 360,345',
 			),
 			array(
 				'id'      => 'demo-38-p',
@@ -166,7 +166,7 @@ if ( ! function_exists( 'nadlan_p3d_demo_units' ) ) {
 				'price'   => 0,
 				'status'  => 'available',
 				'plan'    => '',
-				'points'  => '',
+				'points'  => '430,185 600,185 600,260 430,260',
 			),
 		);
 	}
@@ -180,6 +180,13 @@ if ( ! function_exists( 'nadlan_p3d_meta' ) ) {
 		$units     = sanitize_text_field( (string) get_post_meta( $post_id, 'num_units', true ) );
 		$city      = sanitize_text_field( (string) get_post_meta( $post_id, 'city', true ) );
 		$address   = sanitize_text_field( (string) get_post_meta( $post_id, 'address', true ) );
+		$lat       = nadlan_p3d_sanitize_decimal( get_post_meta( $post_id, 'lat', true ) );
+		$lng       = nadlan_p3d_sanitize_decimal( get_post_meta( $post_id, 'lng', true ) );
+		$floor_h   = nadlan_p3d_sanitize_decimal( get_post_meta( $post_id, 'project_3d_floor_height_m', true ) );
+		if ( $floor_h <= 0 ) {
+			$floor_h = 3.05;
+		}
+		$ground_m = nadlan_p3d_sanitize_decimal( get_post_meta( $post_id, 'project_3d_ground_elevation_m', true ) );
 
 		return array(
 			'title'     => $title ?: 'הפרויקט',
@@ -188,6 +195,10 @@ if ( ! function_exists( 'nadlan_p3d_meta' ) ) {
 			'units'     => $units,
 			'city'      => $city,
 			'address'   => $address,
+			'lat'       => $lat,
+			'lng'       => $lng,
+			'floor_height_m'     => $floor_h,
+			'ground_elevation_m' => $ground_m,
 			'url'       => get_permalink( $post_id ),
 			'demo'      => (bool) $demo,
 		);
@@ -201,6 +212,42 @@ if ( ! function_exists( 'nadlan_p3d_json' ) ) {
 	}
 }
 
+if ( ! function_exists( 'nadlan_p3d_has_data' ) ) {
+	function nadlan_p3d_has_data( $post_id ) {
+		$post_id = (int) $post_id;
+		return get_post_meta( $post_id, 'project_3d_image', true ) !== ''
+			|| get_post_meta( $post_id, 'project_3d_units', true ) !== ''
+			|| get_post_meta( $post_id, 'project_3d_demo', true ) === '1';
+	}
+}
+
+if ( ! function_exists( 'nadlan_p3d_insert_after_project_header' ) ) {
+	function nadlan_p3d_insert_after_project_header( $content, $block ) {
+		if ( strpos( $content, 'nlp3d-premium' ) !== false ) {
+			return $content;
+		}
+
+		$header_pos = strpos( $content, 'class="nlpf"' );
+		if ( $header_pos === false ) {
+			return $block . $content;
+		}
+
+		$script_end = strpos( $content, '</script>', $header_pos );
+		if ( $script_end !== false && $script_end < $header_pos + 12000 ) {
+			$insert_at = $script_end + strlen( '</script>' );
+			return substr( $content, 0, $insert_at ) . $block . substr( $content, $insert_at );
+		}
+
+		$header_end = strpos( $content, '</div>', $header_pos );
+		if ( $header_end !== false ) {
+			$insert_at = $header_end + strlen( '</div>' );
+			return substr( $content, 0, $insert_at ) . $block . substr( $content, $insert_at );
+		}
+
+		return $block . $content;
+	}
+}
+
 if ( ! function_exists( 'nadlan_p3d_render' ) ) {
 	function nadlan_p3d_render( $post_id ) {
 		if ( ! nadlan_p3d_enabled() ) {
@@ -209,11 +256,18 @@ if ( ! function_exists( 'nadlan_p3d_render' ) ) {
 
 		$post_id = (int) $post_id;
 		$image   = esc_url( (string) get_post_meta( $post_id, 'project_3d_image', true ) );
+		$viewbox = sanitize_text_field( (string) get_post_meta( $post_id, 'project_3d_viewbox', true ) );
+		if ( $viewbox === '' ) {
+			$viewbox = '0 0 1000 1000';
+		}
 		$units   = nadlan_p3d_units( $post_id );
 		$demo    = false;
 		if ( ! $units ) {
 			$units = nadlan_p3d_demo_units();
 			$demo  = true;
+		}
+		if ( $image === '' && $demo ) {
+			$image = esc_url( plugins_url( '../assets/concept/rainbow-facade-demo.svg', __FILE__ ) );
 		}
 
 		$meta      = nadlan_p3d_meta( $post_id, $demo );
@@ -230,6 +284,12 @@ if ( ! function_exists( 'nadlan_p3d_render' ) ) {
 			<p class="nlp3d-kicker">תצוגת פרויקט אינטראקטיבית</p>
 			<h2 id="<?php echo esc_attr( $uid ); ?>-title"><?php echo esc_html( $meta['title'] ); ?> · בחירת דירה בתלת ממד</h2>
 			<p class="nlp3d-lead-text">מודל עבודה אדריכלי שמאפשר להבין קומות, כיווני אוויר, שטחים וקו נוף, ואז לשלוח פנייה ממוקדת על הדירה שנבחרה.</p>
+			<div class="nlp3d-shop-path" aria-label="תהליך בחירה">
+				<span>1. מסובבים</span>
+				<span>2. בוחרים דירה</span>
+				<span>3. בודקים ליווי</span>
+				<span>4. מבקשים התקדמות</span>
+			</div>
 			<div class="nlp3d-metrics" aria-label="פרטי פרויקט">
 				<span><?php echo $meta['developer'] ? esc_html( $meta['developer'] ) : 'יזם יימסר בפנייה'; ?></span>
 				<span><?php echo $meta['status'] ? esc_html( $meta['status'] ) : 'סטטוס בבדיקה'; ?></span>
@@ -242,22 +302,23 @@ if ( ! function_exists( 'nadlan_p3d_render' ) ) {
 
 		<div class="nlp3d-stage-wrap">
 			<div class="nlp3d-toolbar" aria-label="שליטה במודל">
-				<button type="button" class="nlp3d-angle is-active" data-angle="-32">חזית</button>
-				<button type="button" class="nlp3d-angle" data-angle="0">ים</button>
-				<button type="button" class="nlp3d-angle" data-angle="32">עיר</button>
-				<button type="button" class="nlp3d-orbit" data-orbit="1">סיבוב</button>
+				<button type="button" class="nlp3d-angle is-active" data-angle="-32" data-action="angle-facade">חזית</button>
+				<button type="button" class="nlp3d-angle" data-angle="0" data-action="angle-sea">ים</button>
+				<button type="button" class="nlp3d-angle" data-angle="32" data-action="angle-city">עיר</button>
+				<button type="button" class="nlp3d-orbit" data-orbit="1" data-action="orbit-building">סיבוב</button>
 				<span class="nlp3d-drag-note">אפשר לגרור את המודל</span>
 			</div>
-			<div class="nlp3d-scene" style="--angle:-32deg" role="img" aria-label="מודל תלת ממדי סכמטי של מגדל מגורים">
+			<div class="nlp3d-scene" style="--angle:-32deg" role="group" aria-label="מודל תלת ממדי סכמטי של מגדל מגורים">
 				<div class="nlp3d-horizon"></div>
 				<div class="nlp3d-sea"></div>
 				<div class="nlp3d-park"></div>
 				<div class="nlp3d-runway"></div>
-				<div class="nlp3d-tower" aria-hidden="true"></div>
+				<div class="nlp3d-tower" role="group" aria-label="בחירת קומה ישירות מהמגדל"></div>
 				<div class="nlp3d-shadow" aria-hidden="true"></div>
 				<?php if ( $image ) : ?>
-					<figure class="nlp3d-reference">
+					<figure class="nlp3d-facade" data-viewbox="<?php echo esc_attr( $viewbox ); ?>">
 						<img src="<?php echo $image; ?>" alt="חומר מקור של הפרויקט" loading="lazy">
+						<svg class="nlp3d-facade-hotspots" viewBox="<?php echo esc_attr( $viewbox ); ?>" preserveAspectRatio="none" aria-label="בחירת דירה על גבי החזית"></svg>
 						<figcaption>חומר מקור</figcaption>
 					</figure>
 				<?php endif; ?>
@@ -275,11 +336,23 @@ if ( ! function_exists( 'nadlan_p3d_render' ) ) {
 				<h3 class="nlp3d-selected-title">בחרו דירה</h3>
 				<dl class="nlp3d-facts"></dl>
 				<a class="nlp3d-plan" href="#" target="_blank" rel="noopener" hidden>פתיחת תוכנית דירה</a>
-				<button type="button" class="nlp3d-view-toggle">מבט מהדירה</button>
+				<button type="button" class="nlp3d-view-toggle" data-action="view-from-unit">מבט מהדירה</button>
 				<div class="nlp3d-viewframe" hidden>
 					<div class="nlp3d-view-sky"></div>
 					<div class="nlp3d-view-lines"></div>
 					<p class="nlp3d-view-copy"></p>
+				</div>
+				<div class="nlp3d-tools" aria-label="מידע נוסף על הדירה">
+					<button type="button" class="nlp3d-tool is-active" data-tool="spec" data-action="unit-spec">מפרט</button>
+					<button type="button" class="nlp3d-tool" data-tool="drawing" data-action="unit-drawing">תוכנית</button>
+					<button type="button" class="nlp3d-tool" data-tool="advisors" data-action="unit-advisors">יועצים</button>
+				</div>
+				<div class="nlp3d-tool-panel" aria-live="polite"></div>
+				<div class="nlp3d-deal-steps" aria-label="מסלול בדיקת רכישה">
+					<span>בחירה</span>
+					<span>אימות</span>
+					<span>ליווי</span>
+					<span>אישור יזם</span>
 				</div>
 			</div>
 			<form class="nlp3d-lead-form">
@@ -288,12 +361,20 @@ if ( ! function_exists( 'nadlan_p3d_render' ) ) {
 				<input type="tel" name="phone" placeholder="טלפון" autocomplete="tel" required>
 				<input type="email" name="email" placeholder="אימייל" autocomplete="email">
 				<input type="text" name="budget" placeholder="מסגרת תקציב, אם ידועה">
+				<input type="text" name="timeline" placeholder="מתי רלוונטי להתקדם?">
+				<select name="advisor" aria-label="ליווי מקצועי מבוקש">
+					<option value="">איזה ליווי תרצו לצרף?</option>
+					<option value="lawyer">עורך דין רכישה</option>
+					<option value="mortgage">יועץ משכנתאות</option>
+					<option value="designer">מעצב פנים</option>
+					<option value="inspector">בדק בית</option>
+				</select>
 				<input type="text" name="company" class="nlp3d-hp" tabindex="-1" autocomplete="off" aria-hidden="true">
 				<div class="nlp3d-actions">
-					<button type="submit" class="nlp3d-send" data-intent="callback">דברו איתי על הדירה</button>
-					<button type="submit" class="nlp3d-send nlp3d-send-alt" data-intent="purchase">בקשת רכישה עקרונית</button>
+					<button type="submit" class="nlp3d-send" data-intent="callback" data-action="lead-callback">דברו איתי על הדירה</button>
+					<button type="submit" class="nlp3d-send nlp3d-send-alt" data-intent="purchase" data-action="nonbinding-purchase-check">התחל בדיקת רכישה - לא מחייב</button>
 				</div>
-				<p class="nlp3d-legal">הפנייה אינה עסקה מחייבת. נציג יאמת זמינות, מחיר ותנאים לפני כל התקדמות.</p>
+				<p class="nlp3d-legal">הפנייה אינה עסקה מחייבת, אינה זכרון דברים ואינה שריון רשמי. נציג יאמת זמינות, מחיר ותנאים עם היזם לפני כל התקדמות.</p>
 				<p class="nlp3d-ok" hidden></p>
 			</form>
 		</aside>
@@ -322,6 +403,14 @@ CSS;
 	}
 }
 
+if ( ! function_exists( 'nadlan_p3d_experience_css' ) ) {
+	function nadlan_p3d_experience_css() {
+		return <<<'CSS'
+.entry-content>.nlp3d,.wp-block-post-content>.nlp3d{width:min(1180px,calc(100vw - 48px));max-width:none;margin-block:22px 38px;margin-inline:calc(50% - min(590px,calc(50vw - 24px)));border-radius:28px}.nlp3d{border:1px solid rgba(234,216,163,.2)}.nlp3d-shop-path{display:grid;grid-template-columns:1fr;gap:7px;margin:16px 0 0}.nlp3d-shop-path span{display:flex;align-items:center;min-height:34px;width:max-content;max-width:100%;padding:6px 11px;border:1px solid rgba(234,216,163,.2);background:rgba(255,255,255,.06);color:#fff3d0;font-size:12.5px}.nlp3d-tools{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:7px;margin-top:14px}.nlp3d-tool{border:1px solid rgba(234,216,163,.24);background:rgba(255,255,255,.06);color:#ffe8a6;padding:8px 10px;cursor:pointer}.nlp3d-tool.is-active,.nlp3d-tool:hover,.nlp3d-tool:focus-visible{background:rgba(234,216,163,.2);color:#fff;outline:2px solid rgba(234,216,163,.42);outline-offset:2px}.nlp3d-tool-panel{margin-top:10px;border:1px solid rgba(234,216,163,.16);background:rgba(0,0,0,.18);padding:12px 13px;color:#f7edd2;line-height:1.55}.nlp3d-tool-panel strong{display:block;color:#fff3bd;margin-bottom:4px}.nlp3d-tool-panel p{margin:0;font-size:13px}.nlp3d-lead-form select{min-height:46px;border:1px solid rgba(234,216,163,.26);background:rgba(255,255,255,.9);color:#16140f;padding:10px 12px;border-radius:0;font:inherit}.nlp3d-lead-form select:focus{outline:2px solid #ead8a3;outline-offset:2px}.nlp3d-send-alt{font-weight:800}@media(max-width:900px){.entry-content>.nlp3d,.wp-block-post-content>.nlp3d{width:min(100%,calc(100vw - 28px));margin-inline:calc(50% - min(50%,calc(50vw - 14px)));border-radius:22px}.nlp3d-shop-path{grid-template-columns:repeat(2,minmax(0,1fr))}.nlp3d-shop-path span{width:100%}}@media(max-width:600px){.entry-content>.nlp3d,.wp-block-post-content>.nlp3d{width:calc(100vw - 22px);margin-inline:calc(50% - 50vw + 11px);margin-block:18px 30px;border-radius:18px}.nlp3d-tools{grid-template-columns:1fr}.nlp3d-shop-path{grid-template-columns:1fr}.nlp3d-tool-panel{font-size:13px}.nlp3d-lead-form select{width:100%}}
+CSS;
+	}
+}
+
 if ( ! function_exists( 'nadlan_p3d_inline_js' ) ) {
 	function nadlan_p3d_inline_js( $rest_url ) {
 		$js = <<<'JS'
@@ -333,12 +422,27 @@ if ( ! function_exists( 'nadlan_p3d_inline_js' ) ) {
 	function selectedTitle(u){if(!u){return 'בחרו דירה'}var base=u.title || ('קו '+(u.line||u.id));return base+' · קומה '+(u.floor||'-')}
 	function unitText(u){var parts=[];if(u.rooms){parts.push(u.rooms+' חדרים')}if(u.sqm){parts.push(fmt(u.sqm)+' מ"ר')}if(u.view){parts.push(u.view)}return parts.join(' · ')}
 	function detailRows(u,meta){var price=(meta.demo||!u.price)?'לפי פנייה':('₪'+fmt(u.price));return [['סטטוס',statusLabel(u.status)],['חדרים',u.rooms?u.rooms:'לפי פנייה'],['שטח',u.sqm?fmt(u.sqm)+' מ"ר':'לפי פנייה'],['מרפסת',u.balcony?fmt(u.balcony)+' מ"ר':'לפי פנייה'],['כיוון',u.dir||'לפי פנייה'],['נוף',u.view||'לפי פנייה'],['מחיר',price],['יזם',meta.developer||'לפי פנייה']]}
+	function bearingForDirection(dir){
+		dir=(dir||'').toString();
+		var north=dir.indexOf('צפון')>-1,south=dir.indexOf('דרום')>-1,east=dir.indexOf('מזרח')>-1,west=dir.indexOf('מערב')>-1;
+		if(north&&west){return 315} if(south&&west){return 225} if(north&&east){return 45} if(south&&east){return 135}
+		if(west){return 270} if(east){return 90} if(south){return 180} return 0;
+	}
+	function cameraParams(u,meta){
+		var floor=Math.max(1,parseInt(u&&u.floor||1,10));
+		var floorHeight=Number(meta.floor_height_m||3.05)||3.05;
+		var ground=Number(meta.ground_elevation_m||0)||0;
+		var altitude=ground+4+((floor-1)*floorHeight)+1.55;
+		return {lat:Number(meta.lat||0)||0,lng:Number(meta.lng||0)||0,bearing:bearingForDirection(u&&u.dir),altitude_m:Math.round(altitude*10)/10,floor_height_m:floorHeight};
+	}
 	function init(root){
 		var units=readJson(root.querySelector('.nlp3d-data'),[]);
 		var meta=readJson(root.querySelector('.nlp3d-meta'),{});
 		if(!Array.isArray(units)||!units.length){return}
 		var scene=root.querySelector('.nlp3d-scene');
 		var tower=root.querySelector('.nlp3d-tower');
+		var facade=root.querySelector('.nlp3d-facade');
+		var hotspots=root.querySelector('.nlp3d-facade-hotspots');
 		var floors=[].slice.call(new Set(units.map(function(u){return parseInt(u.floor||0,10)}).filter(Boolean))).sort(function(a,b){return b-a});
 		var maxFloor=Math.max.apply(null,floors.concat([39]));
 		var minFloor=Math.max(1,Math.min.apply(null,floors.concat([1])));
@@ -354,10 +458,21 @@ if ( ! function_exists( 'nadlan_p3d_inline_js' ) ) {
 		var viewToggle=root.querySelector('.nlp3d-view-toggle');
 		var viewFrame=root.querySelector('.nlp3d-viewframe');
 		var viewCopy=root.querySelector('.nlp3d-view-copy');
+		var toolPanel=root.querySelector('.nlp3d-tool-panel');
+		var toolButtons=[].slice.call(root.querySelectorAll('.nlp3d-tool'));
 		var currentAngle=-32;
 		var dragState=null;
+		var activeTool='spec';
+		function track(action,extra){
+			window.dataLayer=window.dataLayer||[];
+			var payload={event:'project_3d_interaction',action:action,card_id:parseInt(root.dataset.project,10)};
+			if(extra){Object.keys(extra).forEach(function(k){payload[k]=extra[k]})}
+			window.dataLayer.push(payload);
+		}
 		function floorHasUnits(f){return units.some(function(u){return parseInt(u.floor||0,10)===f})}
 		function unitForFloor(f){return units.find(function(u){return parseInt(u.floor||0,10)===f&&u.status!=='sold'})||units.find(function(u){return parseInt(u.floor||0,10)===f})}
+		function unitById(id){return units.find(function(u){return u.id===id})}
+		function hasPoints(u){return u&&typeof u.points==='string'&&u.points.trim().split(/\s+/).length>=3}
 		function renderTower(){
 			tower.innerHTML='';
 			var count=Math.max(22,Math.min(45,maxFloor));
@@ -372,8 +487,42 @@ if ( ! function_exists( 'nadlan_p3d_inline_js' ) ) {
 				b.style.width=(72+Math.sin(i/3)*8)+'%';
 				b.style.right=(14+Math.cos(i/4)*5)+'%';
 				b.dataset.floor=floor;
+				b.dataset.action='select-floor';
+				b.title='קומה '+floor;
+				b.setAttribute('role','button');
+				b.setAttribute('tabindex','0');
+				b.setAttribute('aria-label','בחרו קומה '+floor);
+				b.addEventListener('click',function(e){e.stopPropagation();selectFloor(parseInt(this.dataset.floor,10))});
+				b.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();selectFloor(parseInt(this.dataset.floor,10))}});
 				tower.appendChild(b);
 			}
+		}
+		function renderFacade(){
+			if(!hotspots){return}
+			hotspots.innerHTML='';
+			var any=false;
+			units.filter(hasPoints).forEach(function(u){
+				any=true;
+				var poly=document.createElementNS('http://www.w3.org/2000/svg','polygon');
+				poly.setAttribute('points',u.points);
+				poly.setAttribute('class','nlp3d-hotspot nlp3d-status-'+u.status+(activeUnit&&u.id===activeUnit.id?' is-active':''));
+				poly.setAttribute('tabindex','0');
+				poly.setAttribute('role','button');
+				poly.setAttribute('aria-label',selectedTitle(u)+' · '+statusLabel(u.status));
+				poly.dataset.unit=u.id;
+				poly.dataset.action='select-unit-facade';
+				var t=document.createElementNS('http://www.w3.org/2000/svg','title');
+				t.textContent=selectedTitle(u)+' · '+unitText(u);
+				poly.appendChild(t);
+				poly.addEventListener('click',function(e){e.stopPropagation();selectUnit(u.id,'facade')});
+				poly.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();selectUnit(u.id,'facade-keyboard')}});
+				hotspots.appendChild(poly);
+			});
+			if(facade){facade.hidden=!any}
+			scene.classList.toggle('has-facade',any);
+		}
+		function syncFacade(){
+			root.querySelectorAll('.nlp3d-hotspot').forEach(function(p){p.classList.toggle('is-active',activeUnit&&p.dataset.unit===activeUnit.id)});
 		}
 		function renderFloors(){
 			floorStrip.innerHTML='';
@@ -383,6 +532,7 @@ if ( ! function_exists( 'nadlan_p3d_inline_js' ) ) {
 				b.className='nlp3d-floor'+(f===activeFloor?' is-active':'');
 				b.textContent='קומה '+f;
 				b.dataset.floor=f;
+				b.dataset.action='select-floor';
 				b.addEventListener('click',function(){selectFloor(parseInt(this.dataset.floor,10))});
 				floorStrip.appendChild(b);
 			});
@@ -395,7 +545,8 @@ if ( ! function_exists( 'nadlan_p3d_inline_js' ) ) {
 				b.className='nlp3d-unit-card nlp3d-status-'+u.status+(activeUnit&&u.id===activeUnit.id?' is-active':'')+(u.status==='sold'?' is-sold':'');
 				b.innerHTML='<strong>'+selectedTitle(u)+'</strong><span>'+unitText(u)+' · '+statusLabel(u.status)+'</span>';
 				b.dataset.unit=u.id;
-				b.addEventListener('click',function(){selectUnit(u.id)});
+				b.dataset.action='select-unit-card';
+				b.addEventListener('click',function(){selectUnit(u.id,'card')});
 				unitList.appendChild(b);
 			});
 		}
@@ -415,13 +566,36 @@ if ( ! function_exists( 'nadlan_p3d_inline_js' ) ) {
 			});
 			if(activeUnit.plan){plan.href=activeUnit.plan;plan.hidden=false}else{plan.hidden=true}
 			renderUnitView();
+			renderToolPanel();
 			ok.hidden=true;
 			form.querySelectorAll('button[type="submit"]').forEach(function(b){b.disabled=false});
+		}
+		function renderToolPanel(){
+			if(!toolPanel||!activeUnit){return}
+			var headline='מפרט הדירה';
+			var copy='הדירה שנבחרה מוצגת לפי נתוני ההמחשה: '+(activeUnit.rooms||'')+' חדרים, '+(activeUnit.sqm?fmt(activeUnit.sqm)+' מ"ר':'שטח לפי פנייה')+', קומה '+(activeUnit.floor||'לפי פנייה')+'. מפרט רשמי יימסר לאחר בדיקת זמינות מול היזם.';
+			if(activeTool==='drawing'){
+				headline='תוכנית ומדידות';
+				copy=activeUnit.plan?'ניתן לפתוח את תוכנית הדירה המקושרת ולבקש בדיקה של המידות, המרפסת והכיוונים.':'תוכנית רשמית עדיין לא נטענה לכרטיס. אפשר לשלוח בקשה ולקבל תוכנית, מדידות וחומר מכירה כאשר הם זמינים ומאומתים.';
+			}
+			if(activeTool==='advisors'){
+				headline='ליווי מקצועי';
+				copy='אפשר לבקש לצרף עורך דין רכישה, יועץ משכנתאות, בדק בית או מעצב פנים. הבקשה תישלח עם הדירה שנבחרה כדי לחזור אליכם עם ליווי מתאים.';
+			}
+			toolPanel.innerHTML='';
+			var strong=document.createElement('strong');
+			var p=document.createElement('p');
+			strong.textContent=headline;
+			p.textContent=copy;
+			toolPanel.appendChild(strong);
+			toolPanel.appendChild(p);
 		}
 		function renderUnitView(){
 			if(!viewCopy||!activeUnit){return}
 			var view=activeUnit.view||activeUnit.dir||'הסביבה הקרובה';
-			viewCopy.textContent='מבט המחשה מהיחידה: '+view+'. זהו מצב תצוגה תכנוני עד שיוזנו הדמיות ותוכניות מאושרות.';
+			var cam=cameraParams(activeUnit,meta);
+			var cameraNote=(cam.lat&&cam.lng)?(' פרמטרי המבט נשמרים להכנת תצוגת תלת ממד: גובה '+cam.altitude_m+' מ׳, כיוון '+cam.bearing+'°.'):'';
+			viewCopy.textContent='מבט המחשה מהיחידה: '+view+'. זהו מצב תצוגה תכנוני עד שיוזנו הדמיות ותוכניות מאושרות.'+cameraNote;
 			if(viewFrame){viewFrame.dataset.view=(activeUnit.view||'city').toLowerCase()}
 		}
 		function setAngle(angle){
@@ -433,14 +607,16 @@ if ( ! function_exists( 'nadlan_p3d_inline_js' ) ) {
 			var next=unitForFloor(f);
 			if(next){activeUnit=next}
 			renderAll(false);
+			track('select_floor',{floor:f,unit:activeUnit&&activeUnit.id});
 		}
-		function selectUnit(id){
-			var next=units.find(function(u){return u.id===id});
+		function selectUnit(id,source){
+			var next=unitById(id);
 			if(next){activeUnit=next;activeFloor=parseInt(next.floor||activeFloor,10)}
 			renderAll(false);
+			track('select_unit',{floor:activeFloor,unit:id,source:source||'unknown'});
 		}
 		function renderAll(includeTower){
-			if(includeTower){renderTower()}else{root.querySelectorAll('.nlp3d-plate').forEach(function(p){p.classList.toggle('is-active',parseInt(p.dataset.floor,10)===activeFloor)})}
+			if(includeTower){renderTower();renderFacade()}else{root.querySelectorAll('.nlp3d-plate').forEach(function(p){p.classList.toggle('is-active',parseInt(p.dataset.floor,10)===activeFloor)});syncFacade()}
 			renderFloors();
 			renderUnits();
 			renderDetail();
@@ -453,19 +629,29 @@ if ( ! function_exists( 'nadlan_p3d_inline_js' ) ) {
 				scene.classList.remove('is-orbit');
 				var orbit=root.querySelector('.nlp3d-orbit');
 				if(orbit){orbit.classList.remove('is-active')}
+				track('angle',{angle:b.textContent});
 			});
 		});
 		var orbit=root.querySelector('.nlp3d-orbit');
-		if(orbit){orbit.addEventListener('click',function(){scene.classList.toggle('is-orbit');orbit.classList.toggle('is-active')})}
+		if(orbit){orbit.addEventListener('click',function(){scene.classList.toggle('is-orbit');orbit.classList.toggle('is-active');track('orbit',{active:scene.classList.contains('is-orbit')})})}
 		if(viewToggle&&viewFrame){
 			viewToggle.addEventListener('click',function(){
 				viewFrame.hidden=!viewFrame.hidden;
 				viewToggle.classList.toggle('is-active',!viewFrame.hidden);
 				renderUnitView();
+				track('view_from_unit',{unit:activeUnit&&activeUnit.id,open:!viewFrame.hidden});
 			});
 		}
+		toolButtons.forEach(function(b){
+			b.addEventListener('click',function(){
+				activeTool=b.dataset.tool||'spec';
+				toolButtons.forEach(function(x){x.classList.toggle('is-active',x===b)});
+				renderToolPanel();
+				track('tool_panel',{tool:activeTool,unit:activeUnit&&activeUnit.id});
+			});
+		});
 		scene.addEventListener('pointerdown',function(e){
-			if(e.target.closest('button,a,input')){return}
+			if(e.target.closest('button,a,input,.nlp3d-hotspot')){return}
 			dragState={x:e.clientX,angle:currentAngle,id:e.pointerId};
 			scene.classList.add('is-dragging');
 			scene.classList.remove('is-orbit');
@@ -490,9 +676,14 @@ if ( ! function_exists( 'nadlan_p3d_inline_js' ) ) {
 			var submitter=e.submitter || form.querySelector('.nlp3d-send');
 			var intent=submitter&&submitter.dataset.intent==='purchase'?'purchase':'callback';
 			var fd=new FormData(form);
-			var intentText=intent==='purchase'?'בקשת רכישה עקרונית':'בקשת שיחה';
-			var message=intentText+' מתוך מודל תלת ממדי של '+(meta.title||'הפרויקט')+'. יחידה: '+selectedTitle(activeUnit)+'. '+unitText(activeUnit)+'. תקציב: '+(fd.get('budget')||'לא נמסר')+'. נא לאמת זמינות, מחיר ותנאים מול היזם לפני כל התקדמות.';
-			var payload={card_id:parseInt(root.dataset.project,10),name:fd.get('name'),phone:fd.get('phone'),email:fd.get('email'),goal:intentText,message:message,company:fd.get('company'),source:'project_3d',unit:activeUnit.id,floor:activeUnit.floor,rooms:activeUnit.rooms,sqm:activeUnit.sqm,purchase_intent:intent==='purchase'};
+			var intentText=intent==='purchase'?'בדיקת רכישה ושמירה':'בקשת שיחה';
+			var advisor=fd.get('advisor')||'לא נבחר';
+			var timeline=fd.get('timeline')||'לא נמסר';
+			var cam=cameraParams(activeUnit,meta);
+			var reservationState=intent==='purchase'?'non_binding_inquiry':'lead_request';
+			var message=intentText+' מתוך מודל תלת ממדי של '+(meta.title||'הפרויקט')+'. יחידה: '+selectedTitle(activeUnit)+'. '+unitText(activeUnit)+'. תקציב: '+(fd.get('budget')||'לא נמסר')+'. מועד התקדמות: '+timeline+'. ליווי מבוקש: '+advisor+'. נא לאמת זמינות, מחיר ותנאים מול היזם לפני כל התקדמות. סטטוס: '+reservationState+'.';
+			var payload={card_id:parseInt(root.dataset.project,10),name:fd.get('name'),phone:fd.get('phone'),email:fd.get('email'),goal:intentText,message:message,company:fd.get('company'),source:'project_3d',budget:fd.get('budget'),unit:activeUnit.id,floor:activeUnit.floor,rooms:activeUnit.rooms,sqm:activeUnit.sqm,timeline:timeline,advisor:advisor,purchase_intent:intent==='purchase',reservation_state:reservationState,view_bearing:cam.bearing,view_altitude_m:cam.altitude_m};
+			track('submit',{intent:intent,unit:activeUnit.id,floor:activeUnit.floor,advisor:advisor,reservation_state:reservationState,view_bearing:cam.bearing,view_altitude_m:cam.altitude_m});
 			form.querySelectorAll('button[type="submit"]').forEach(function(b){b.disabled=true});
 			ok.textContent='שולחים את הפנייה...';
 			ok.hidden=false;
@@ -518,12 +709,14 @@ add_action(
 			return;
 		}
 
-		wp_register_style( 'nadlan-p3d', '', array(), '1.59.0' );
+		wp_register_style( 'nadlan-p3d', '', array(), '1.59.1' );
 		wp_enqueue_style( 'nadlan-p3d' );
 		wp_add_inline_style( 'nadlan-p3d', nadlan_p3d_inline_css() );
 		wp_add_inline_style( 'nadlan-p3d', '.nlp3d-drag-note{display:inline-flex;align-items:center;min-height:44px;color:rgba(246,239,226,.72);font-size:12px;padding:0 6px}.nlp3d-scene{touch-action:none;cursor:grab}.nlp3d-scene.is-dragging{cursor:grabbing}.nlp3d-actions{grid-template-columns:1fr}.nlp3d-view-toggle{margin-top:12px;border:1px solid rgba(234,216,163,.36);background:rgba(255,255,255,.06);color:#ffe8a6;padding:9px 12px;cursor:pointer}.nlp3d-view-toggle.is-active{background:rgba(234,216,163,.18);color:#fff}.nlp3d-viewframe{position:relative;margin-top:12px;min-height:150px;overflow:hidden;border:1px solid rgba(234,216,163,.18);background:linear-gradient(180deg,rgba(41,112,139,.58),rgba(8,25,25,.92));isolation:isolate}.nlp3d-view-sky{position:absolute;inset:0;background:radial-gradient(circle at 18% 22%,rgba(255,255,255,.24),transparent 18%),linear-gradient(135deg,rgba(39,107,130,.42),rgba(18,50,43,.1));opacity:.86}.nlp3d-view-lines{position:absolute;inset:auto -8% 18% -8%;height:46%;border-top:1px solid rgba(234,216,163,.28);background:linear-gradient(160deg,rgba(234,216,163,.1),transparent 54%);transform:skewY(-8deg)}.nlp3d-view-copy{position:absolute;right:14px;left:14px;bottom:12px;margin:0;color:#fff8dc;font-size:13px;line-height:1.5;text-shadow:0 1px 12px rgba(0,0,0,.55)}@media(max-width:600px){.nlp3d-drag-note{flex-basis:100%;min-height:24px}.nlp3d-viewframe{min-height:130px}}' );
+		wp_add_inline_style( 'nadlan-p3d', nadlan_p3d_experience_css() );
+		wp_add_inline_style( 'nadlan-p3d', '.nlp3d-facade{position:absolute;z-index:6;inset:58px 13% 54px;margin:0;display:block;border:1px solid rgba(234,216,163,.22);background:linear-gradient(135deg,rgba(4,16,18,.44),rgba(255,255,255,.04));box-shadow:0 24px 64px rgba(0,0,0,.34);overflow:hidden;pointer-events:none}.nlp3d-facade[hidden]{display:none}.nlp3d-facade img{display:block;width:100%;height:100%;object-fit:cover;filter:saturate(.82) contrast(1.08) sepia(.08);opacity:.86}.nlp3d-facade:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(234,216,163,.08),transparent 34%,rgba(0,0,0,.22));pointer-events:none}.nlp3d-facade figcaption{position:absolute;right:10px;bottom:9px;left:10px;z-index:3;color:#fff3c6;font-size:11px;line-height:1.4;text-shadow:0 1px 10px rgba(0,0,0,.72)}.nlp3d-facade-hotspots{position:absolute;z-index:2;inset:0;width:100%;height:100%;pointer-events:auto}.nlp3d-hotspot{fill:rgba(234,216,163,.08);stroke:rgba(234,216,163,.64);stroke-width:2;vector-effect:non-scaling-stroke;cursor:pointer;transition:fill .16s,stroke .16s,filter .16s}.nlp3d-hotspot:hover,.nlp3d-hotspot:focus-visible{fill:rgba(234,216,163,.24);stroke:#fff2ba;outline:none;filter:drop-shadow(0 0 8px rgba(234,216,163,.42))}.nlp3d-hotspot.is-active{fill:rgba(234,216,163,.34);stroke:#fff2ba;filter:drop-shadow(0 0 14px rgba(234,216,163,.5))}.nlp3d-scene.has-facade .nlp3d-tower{opacity:.34}.nlp3d-deal-steps{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:6px;margin-top:12px}.nlp3d-deal-steps span{min-height:32px;display:flex;align-items:center;justify-content:center;border:1px solid rgba(234,216,163,.18);background:rgba(255,255,255,.045);color:#fff3c8;font-size:12px}.nlp3d-deal-steps span:first-child{background:rgba(234,216,163,.16);border-color:rgba(234,216,163,.36)}@media(max-width:900px){.nlp3d-facade{inset:62px 8% 42px}}@media(max-width:600px){.nlp3d-facade{inset:70px 7% 34px}.nlp3d-deal-steps{grid-template-columns:repeat(2,minmax(0,1fr))}}' );
 
-		wp_register_script( 'nadlan-p3d', '', array(), '1.59.0', true );
+		wp_register_script( 'nadlan-p3d', '', array(), '1.59.1', true );
 		wp_enqueue_script( 'nadlan-p3d' );
 		wp_add_inline_script( 'nadlan-p3d', nadlan_p3d_inline_js( esc_url_raw( rest_url( 'nadlan/v1/lead' ) ) ) );
 	}
@@ -537,13 +730,13 @@ add_filter(
 		}
 
 		$pid = get_the_ID();
-		if ( get_post_meta( $pid, 'project_3d_image', true ) === '' && get_post_meta( $pid, 'project_3d_units', true ) === '' && get_post_meta( $pid, 'project_3d_demo', true ) !== '1' ) {
+		if ( ! nadlan_p3d_has_data( $pid ) ) {
 			return $content;
 		}
 
-		return $content . nadlan_p3d_render( $pid );
+		return nadlan_p3d_insert_after_project_header( $content, nadlan_p3d_render( $pid ) );
 	},
-	30
+	6
 );
 
 add_action(
@@ -560,10 +753,14 @@ add_action(
 				wp_nonce_field( 'nadlan_p3d_save', 'nadlan_p3d_nonce' );
 				$img = esc_attr( (string) get_post_meta( $post->ID, 'project_3d_image', true ) );
 				$vb  = esc_attr( (string) get_post_meta( $post->ID, 'project_3d_viewbox', true ) );
+				$fh  = esc_attr( (string) get_post_meta( $post->ID, 'project_3d_floor_height_m', true ) );
+				$gm  = esc_attr( (string) get_post_meta( $post->ID, 'project_3d_ground_elevation_m', true ) );
 				$js  = esc_textarea( (string) get_post_meta( $post->ID, 'project_3d_units', true ) );
 				$dm  = get_post_meta( $post->ID, 'project_3d_demo', true ) === '1';
 				echo '<p><label>כתובת תמונת מקור או הדמיה מאושרת<br><input type="url" name="project_3d_image" value="' . $img . '" class="widefat"></label></p>';
 				echo '<p><label>viewBox למצב שכבת SVG ישנה, אם קיים<br><input type="text" name="project_3d_viewbox" value="' . $vb . '" class="widefat"></label></p>';
+				echo '<p><label>גובה קומה במטרים לחישוב מבט מהדירה<br><input type="number" step="0.01" min="2.4" max="5" name="project_3d_floor_height_m" value="' . $fh . '" class="widefat" placeholder="3.05"></label></p>';
+				echo '<p><label>גובה קרקע משוער במטרים, אם ידוע<br><input type="number" step="0.1" min="-50" max="400" name="project_3d_ground_elevation_m" value="' . $gm . '" class="widefat" placeholder="0"></label></p>';
 				echo '<p><label>יחידות JSON: id, title, floor, rooms, sqm, balcony, dir, line, view, price, status, plan<br><textarea name="project_3d_units" rows="10" class="widefat code">' . $js . '</textarea></label></p>';
 				echo '<p><label><input type="checkbox" name="project_3d_demo" value="1" ' . checked( $dm, true, false ) . '> הצג מודל הדגמה כאשר אין מלאי רשמי</label></p>';
 				echo '<p class="description">במצב הדגמה המחיר מוצג "לפי פנייה" כדי לא להציג נתוני מכירה לא מאומתים.</p>';
@@ -589,6 +786,8 @@ add_action(
 
 		update_post_meta( $post_id, 'project_3d_image', esc_url_raw( wp_unslash( $_POST['project_3d_image'] ?? '' ) ) );
 		update_post_meta( $post_id, 'project_3d_viewbox', sanitize_text_field( wp_unslash( $_POST['project_3d_viewbox'] ?? '' ) ) );
+		update_post_meta( $post_id, 'project_3d_floor_height_m', nadlan_p3d_sanitize_decimal( wp_unslash( $_POST['project_3d_floor_height_m'] ?? '' ) ) );
+		update_post_meta( $post_id, 'project_3d_ground_elevation_m', nadlan_p3d_sanitize_decimal( wp_unslash( $_POST['project_3d_ground_elevation_m'] ?? '' ) ) );
 		$units = (string) wp_unslash( $_POST['project_3d_units'] ?? '' );
 		update_post_meta( $post_id, 'project_3d_units', json_decode( $units ) !== null || $units === '' ? $units : '' );
 		update_post_meta( $post_id, 'project_3d_demo', ! empty( $_POST['project_3d_demo'] ) ? '1' : '0' );
@@ -613,8 +812,12 @@ add_filter(
 		);
 		$out['project_3d'] = array(
 			'enabled'          => nadlan_p3d_enabled(),
-			'renderer'         => 'premium_tower_picker',
+			'renderer'         => 'premium_tower_picker_v3',
 			'lead_endpoint'    => '/nadlan/v1/lead',
+			'facade_polygons'  => true,
+			'lead_unit_payload' => true,
+			'view_from_unit_seam' => 'cesium_ready',
+			'reservation_state' => 'non_binding_inquiry',
 			'projects_with_3d' => (int) $q->found_posts,
 		);
 		wp_reset_postdata();

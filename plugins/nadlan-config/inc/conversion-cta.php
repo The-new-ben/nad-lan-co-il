@@ -94,15 +94,27 @@ add_action( 'rest_api_init', function () {
 			$ct = (int) get_transient( $tk );
 			if ( $ct >= 8 ) { return new WP_Error( 'rate', 'יותר מדי בקשות.' ); }
 			set_transient( $tk, $ct + 1, HOUR_IN_SECONDS );
+			$lead_payload = array(
+				'name'              => $name,
+				'phone'             => $phone,
+				'email'             => $email,
+				'goal'              => $goal,
+				'message'           => $msg,
+				'source'            => $src,
+				'budget'            => sanitize_text_field( (string) ( $p['budget'] ?? '' ) ),
+				'timeline'          => sanitize_text_field( (string) ( $p['timeline'] ?? '' ) ),
+				'unit'              => sanitize_text_field( (string) ( $p['unit'] ?? '' ) ),
+				'floor'             => isset( $p['floor'] ) ? (int) $p['floor'] : '',
+				'rooms'             => sanitize_text_field( (string) ( $p['rooms'] ?? '' ) ),
+				'sqm'               => sanitize_text_field( (string) ( $p['sqm'] ?? '' ) ),
+				'advisor'           => sanitize_key( (string) ( $p['advisor'] ?? '' ) ),
+				'purchase_intent'   => ! empty( $p['purchase_intent'] ) ? 1 : '',
+				'reservation_state' => sanitize_key( (string) ( $p['reservation_state'] ?? '' ) ),
+				'view_bearing'      => isset( $p['view_bearing'] ) ? (float) $p['view_bearing'] : '',
+				'view_altitude_m'   => isset( $p['view_altitude_m'] ) ? (float) $p['view_altitude_m'] : '',
+			);
 			if ( function_exists( 'nadlan_lead_e2e_enabled' ) && nadlan_lead_e2e_enabled() && function_exists( 'nadlan_lead_e2e_capture' ) ) {
-				return nadlan_lead_e2e_capture( array(
-					'name'    => $name,
-					'phone'   => $phone,
-					'email'   => $email,
-					'goal'    => $goal,
-					'message' => $msg,
-					'source'  => $src,
-				), $card_id, 'rest' );
+				return nadlan_lead_e2e_capture( $lead_payload, $card_id, 'rest' );
 			}
 			$lid = wp_insert_post( array(
 				'post_type'    => 'nadlan_lead',
@@ -117,15 +129,16 @@ add_action( 'rest_api_init', function () {
 			update_post_meta( $lid, 'goal', $goal );
 			if ( $src ) { update_post_meta( $lid, 'utm_source', $src ); }
 			if ( $card_id ) { update_post_meta( $lid, 'lead_card_id', $card_id ); }
+			foreach ( array( 'budget', 'timeline', 'unit', 'floor', 'rooms', 'sqm', 'advisor', 'purchase_intent', 'reservation_state', 'view_bearing', 'view_altitude_m' ) as $extra_key ) {
+				if ( isset( $lead_payload[ $extra_key ] ) && $lead_payload[ $extra_key ] !== '' ) {
+					update_post_meta( $lid, $extra_key, $lead_payload[ $extra_key ] );
+				}
+			}
 			if ( function_exists( 'nadlan_lead_route' ) ) {
-				nadlan_lead_route( $lid, $card_id, array(
-					'name'    => $name,
-					'phone'   => $phone,
-					'email'   => $email,
-					'goal'    => $goal,
-					'message' => $msg,
-					'source'  => $src,
-				), 'rest' );
+				nadlan_lead_route( $lid, $card_id, $lead_payload, 'rest' );
+			}
+			if ( function_exists( 'nadlan_offers_capture_nonbinding_inquiry' ) && ( $lead_payload['reservation_state'] ?? '' ) === 'non_binding_inquiry' ) {
+				nadlan_offers_capture_nonbinding_inquiry( $lid, $card_id, $lead_payload );
 			}
 			$admin = get_option( 'admin_email' );
 			if ( $admin ) {
