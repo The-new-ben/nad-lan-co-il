@@ -135,3 +135,99 @@ No code changes needed per project. Per-building checklist:
 Everything above is data-driven from post meta — the Sde Dov content seeder (MISSION-CODEX-
 CONTENT) can populate steps 1–3 for every compound project programmatically. The same template
 serves any tower in Israel.
+
+## v1.60.2 Flagship Clone Standard
+
+Use this section as the repeatable standard for every future premium project page and every
+building that later appears inside a compound map.
+
+### Page Placement
+
+- The interactive model belongs near the top of the project page, after a compact project heading
+  and before the long article body. Do not bury it below thousands of words.
+- Keep one short keyword-rich intro around the model so search engines understand the page:
+  project name, city, district, developer, apartment selection, view from apartment, sun, unit
+  comparison, and purchase guidance.
+- Long-form article content stays below the model. Visitors must reach the interaction on first
+  glance or within a very short scroll.
+
+### Reusable Data Contract
+
+Every cloned project must use the same post meta contract:
+
+- `lat`, `lng`
+- `project_3d_image`
+- `project_3d_viewbox`
+- `project_3d_units`
+- `project_3d_floor_height_m`
+- `project_3d_ground_elevation_m`
+- `project_3d_demo`
+
+Each unit object should be stable enough to sync with the future compound map:
+
+- `id`: stable public-safe unit id.
+- `building`: tower or boutique building name.
+- `floor`: numeric floor.
+- `line`: line/stack.
+- `rooms`, `sqm`, `balcony`.
+- `dir`: Hebrew compass direction, used for camera bearing and sun logic.
+- `view`: human-readable view.
+- `points`: SVG polygon points in `project_3d_viewbox` coordinates.
+- `plan`: official or owner-approved drawing URL.
+- `status`: `available`, `reserved`, or `sold`.
+- `availability`, `market_note`, `source_note`.
+
+Only verified owner/developer inventory may set a real `price`. Demo or researched-but-unverified
+rows must use price 0 and display "price by inquiry" behavior.
+
+### Compound Map Linkage
+
+- The project page and the compound map must read from the same `nadlan_project` card and the same
+  unit JSON. Do not maintain a separate map-only copy of inventory.
+- Compound pins use project-level `lat` and `lng`; unit views use the same coordinates plus
+  `floor_height_m`, `ground_elevation_m`, and unit direction.
+- The future map can deep-link into a selected unit by URL state, for example:
+  `/projects/project-slug/?unit=R-24-W`.
+- A project should not be promoted in the map unless healthcheck confirms `project_3d.enabled`,
+  `facade_polygons`, `lead_unit_payload`, and the current renderer.
+
+### Public Copy Rules
+
+- Public page copy must speak to buyers, investors, project owners, and advisors. Never mention
+  internal terms such as prompt, SEO task, CRM, route, REST, lead endpoint, Claude, Codex, or plugin.
+- CTAs must be clear and non-binding unless a real legal/purchase rail exists.
+- Show uncertainty honestly: use "requires developer verification" language for price,
+  availability, drawings, and purchase terms unless the source is official.
+
+### Visual Standard
+
+- Use dark blueprint, restrained champagne linework, glass panels, precise spacing, and large
+  calm surfaces.
+- No stock faces, no fake logos, no fantasy towers, no cartoon houses.
+- Keep the map draggable and visible when token and coordinates exist. Non-fatal map style warnings
+  must not hide the container.
+- At 390px mobile, there must be no horizontal overflow, all controls must be 44px or larger, and
+  the model, unit facts, comparison, and form must stack cleanly.
+
+### Verification Before Replication
+
+For every cloned project, verify:
+
+- Healthcheck exposes the expected renderer and capability flags.
+- Model appears before the long content body.
+- Selecting a unit updates selected-unit facts, camera altitude, sun insight, compare tray, and lead
+  payload.
+- Owner/project request form uses the existing lead route with `source=project_3d_showcase`.
+- No invented prices, drawings, apartment numbers, or availability appear publicly.
+
+### Ecommerce Patterns To Reuse Carefully
+
+- Use 360/product-spin behavior as an inspection affordance: the visitor should understand that
+  the model can be rotated and explored.
+- Keep a selected-unit dock visible, similar to a selected product state in premium commerce. It
+  should show the current unit, status, and next step.
+- Use guided progression rather than a fake cart. Until provider pricing, terms, invoices,
+  cancellation language, and routing are real, interior design, legal, mortgage, and inspection
+  services should remain advisor/package options inside the inquiry flow.
+- Do not add a payment button for apartments or services unless the legal, billing, fulfillment,
+  and owner/developer authorization rails are already implemented.
