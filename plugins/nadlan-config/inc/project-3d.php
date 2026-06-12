@@ -70,7 +70,9 @@ if ( ! function_exists( 'nadlan_p3d_units' ) ) {
 				'note'          => sanitize_textarea_field( (string) ( $u['note'] ?? '' ) ),
 				'market_note'   => sanitize_textarea_field( (string) ( $u['market_note'] ?? '' ) ),
 				'source_note'   => sanitize_textarea_field( (string) ( $u['source_note'] ?? '' ) ),
-				'price'   => nadlan_p3d_sanitize_decimal( $u['price'] ?? 0 ),
+				'price'          => nadlan_p3d_sanitize_decimal( $u['price'] ?? 0 ),
+				'price_estimate' => nadlan_p3d_sanitize_decimal( $u['price_estimate'] ?? 0 ),
+				'price_source'   => sanitize_text_field( (string) ( $u['price_source'] ?? '' ) ),
 				'status'  => $status,
 				'plan'    => esc_url_raw( (string) ( $u['plan'] ?? '' ) ),
 			);
@@ -241,8 +243,10 @@ if ( ! function_exists( 'nadlan_p3d_meta' ) ) {
 		if ( $floor_h <= 0 ) {
 			$floor_h = 3.05;
 		}
-		$ground_m = nadlan_p3d_sanitize_decimal( get_post_meta( $post_id, 'project_3d_ground_elevation_m', true ) );
-		$token    = trim( (string) get_option( 'nadlan_mapbox_token', '' ) );
+		$ground_m          = nadlan_p3d_sanitize_decimal( get_post_meta( $post_id, 'project_3d_ground_elevation_m', true ) );
+		$avg_price_per_sqm = nadlan_p3d_sanitize_decimal( get_post_meta( $post_id, 'project_3d_avg_price_per_sqm', true ) );
+		$price_source_note = sanitize_text_field( (string) get_post_meta( $post_id, 'project_3d_price_source_note', true ) );
+		$token             = trim( (string) get_option( 'nadlan_mapbox_token', '' ) );
 
 		return array(
 			'title'     => $title ?: 'הפרויקט',
@@ -255,6 +259,8 @@ if ( ! function_exists( 'nadlan_p3d_meta' ) ) {
 			'lng'       => $lng,
 			'floor_height_m'     => $floor_h,
 			'ground_elevation_m' => $ground_m,
+			'avg_price_per_sqm'  => $avg_price_per_sqm,
+			'price_source_note'  => $price_source_note,
 			'mapbox_token'       => $token,
 			'url'       => get_permalink( $post_id ),
 			'demo'      => (bool) $demo,
@@ -389,6 +395,21 @@ if ( ! function_exists( 'nadlan_p3d_render' ) ) {
 				<span class="nlp3d-view-badge" hidden>3D חי · גרירה לסיבוב</span>
 				<button type="button" class="nlp3d-stage-return" data-action="return-model">חזרה למודל</button>
 				<p class="nlp3d-view-copy"></p>
+			</div>
+			<div class="nlp3d-stage-card" aria-live="polite">
+				<span class="nlp3d-stage-kicker">הדירה שנבחרה</span>
+				<strong class="nlp3d-stage-card-title">בחרו דירה על הבניין</strong>
+				<small class="nlp3d-stage-card-meta">גררו לסיבוב, בחרו קומה והתקדמו רק כאשר הפרטים מתאימים.</small>
+				<div class="nlp3d-stage-card-stats" aria-label="פרטי דירה נבחרת">
+					<span class="nlp3d-stage-price">לפי פנייה</span>
+					<span class="nlp3d-stage-status">בחירה פתוחה</span>
+					<span class="nlp3d-stage-view">מבט לפי כיוון</span>
+				</div>
+				<div class="nlp3d-stage-card-actions">
+					<button type="button" class="nlp3d-stage-details" data-action="stage-details">פרטים</button>
+					<button type="button" class="nlp3d-stage-view-btn" data-action="stage-view">מבט</button>
+					<button type="button" class="nlp3d-stage-inquiry" data-action="stage-inquiry">התקדמות</button>
+				</div>
 			</div>
 		</div>
 
@@ -604,6 +625,14 @@ CSS;
 	}
 }
 
+if ( ! function_exists( 'nadlan_p3d_app_selector_css' ) ) {
+	function nadlan_p3d_app_selector_css() {
+		return <<<'CSS'
+.nlp3d.nlp3d-premium{--stage-glow:rgba(234,216,163,.26);--stage-shadow:rgba(0,0,0,.42)}.nlp3d.nlp3d-premium .nlp3d-shell{grid-template-columns:minmax(640px,1fr) minmax(330px,.46fr)!important;grid-template-areas:"copy copy" "stage console"!important;align-items:start!important;gap:18px!important}.nlp3d.nlp3d-premium .nlp3d-copy{display:grid!important;grid-template-columns:minmax(0,1.2fr) minmax(310px,.8fr)!important;gap:12px 22px!important;align-items:end!important;padding:0!important}.nlp3d.nlp3d-premium .nlp3d-copy .nlp3d-kicker,.nlp3d.nlp3d-premium .nlp3d-copy h2,.nlp3d.nlp3d-premium .nlp3d-copy .nlp3d-lead-text{grid-column:1!important}.nlp3d.nlp3d-premium .nlp3d-shop-path,.nlp3d.nlp3d-premium .nlp3d-metrics,.nlp3d.nlp3d-premium .nlp3d-demo-note{grid-column:2!important}.nlp3d.nlp3d-premium .nlp3d-shop-path{grid-template-columns:repeat(2,minmax(0,1fr))!important;margin:0!important}.nlp3d.nlp3d-premium .nlp3d-shop-path span{width:100%!important;min-height:32px!important}.nlp3d.nlp3d-premium .nlp3d-metrics{display:flex!important;flex-wrap:wrap!important;gap:8px!important;margin:8px 0 0!important}.nlp3d.nlp3d-premium .nlp3d-metrics span{width:auto!important}.nlp3d.nlp3d-premium h2{max-width:22ch!important;font-size:clamp(32px,3.2vw,52px)!important}.nlp3d.nlp3d-premium .nlp3d-lead-text{max-width:68ch!important}.nlp3d.nlp3d-premium .nlp3d-stage-wrap{min-height:min(760px,62vw)!important}.nlp3d.nlp3d-premium .nlp3d-stage-wrap:not(.is-live-view) .nlp3d-stage-viewframe{display:none!important}.nlp3d.nlp3d-premium .nlp3d-stage-card{position:absolute;z-index:11;right:18px;bottom:18px;width:min(382px,calc(100% - 36px));padding:16px;border:1px solid rgba(234,216,163,.36);background:linear-gradient(145deg,rgba(8,20,20,.86),rgba(7,13,12,.72));box-shadow:0 22px 48px var(--stage-shadow),inset 0 1px 0 rgba(255,255,255,.1);backdrop-filter:blur(18px);display:grid;gap:9px;color:#fff7df}.nlp3d.nlp3d-premium .nlp3d-stage-wrap.is-live-view .nlp3d-stage-card{display:none!important}.nlp3d.nlp3d-premium .nlp3d-stage-kicker{color:#c4a15a;font-size:12px;font-weight:800;letter-spacing:.04em}.nlp3d.nlp3d-premium .nlp3d-stage-card-title{font-family:Georgia,"Times New Roman",serif;font-size:clamp(22px,2vw,30px);font-weight:500;line-height:1.12}.nlp3d.nlp3d-premium .nlp3d-stage-card-meta{color:#dfd2b6;line-height:1.45;font-size:13px}.nlp3d.nlp3d-premium .nlp3d-stage-card-stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:7px}.nlp3d.nlp3d-premium .nlp3d-stage-card-stats span{min-height:44px;border:1px solid rgba(234,216,163,.2);background:rgba(255,255,255,.055);display:flex;align-items:center;justify-content:center;text-align:center;padding:6px 8px;color:#fff3c8;font-size:12px;line-height:1.25}.nlp3d.nlp3d-premium .nlp3d-stage-card-stats span[data-kind="estimate"]{border-color:rgba(234,216,163,.42);background:linear-gradient(135deg,rgba(234,216,163,.2),rgba(255,255,255,.06));color:#fff8dc}.nlp3d.nlp3d-premium .nlp3d-stage-card-stats span[data-kind="estimate"]:after{content:"לא מחייב";display:inline-flex;margin-inline-start:5px;font-size:10px;color:#d8ccb0}.nlp3d.nlp3d-premium .nlp3d-stage-card-actions{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}.nlp3d.nlp3d-premium .nlp3d-stage-card-actions button{border:1px solid rgba(234,216,163,.36);background:rgba(255,255,255,.06);color:#ffe8a6;font-weight:800;min-height:42px;cursor:pointer}.nlp3d.nlp3d-premium .nlp3d-stage-card-actions .nlp3d-stage-inquiry{border:0;background:linear-gradient(135deg,#ead8a3,#b99043);color:#15120c}.nlp3d.nlp3d-premium .nlp3d-stage-card-actions button:hover,.nlp3d.nlp3d-premium .nlp3d-stage-card-actions button:focus-visible{outline:2px solid rgba(255,255,255,.68);outline-offset:2px;filter:brightness(1.06)}.nlp3d.nlp3d-premium .nlp3d-console,.nlp3d.nlp3d-premium .nlp3d-floor-strip,.nlp3d.nlp3d-premium .nlp3d-units,.nlp3d.nlp3d-premium .nlp3d-facts,.nlp3d.nlp3d-premium .nlp3d-tool-panel{max-height:none!important;overflow:visible!important;scrollbar-width:none!important}.nlp3d.nlp3d-premium .nlp3d-console::-webkit-scrollbar,.nlp3d.nlp3d-premium .nlp3d-floor-strip::-webkit-scrollbar,.nlp3d.nlp3d-premium .nlp3d-units::-webkit-scrollbar,.nlp3d.nlp3d-premium .nlp3d-facts::-webkit-scrollbar,.nlp3d.nlp3d-premium .nlp3d-tool-panel::-webkit-scrollbar{display:none!important}.nlp3d.nlp3d-premium .nlp3d-console{align-self:start!important;overflow:visible!important}.nlp3d.nlp3d-premium .nlp3d-floor-strip{display:grid!important;grid-template-columns:repeat(3,minmax(0,1fr))!important}.nlp3d.nlp3d-premium .nlp3d-floor{width:100%!important}.nlp3d.nlp3d-premium .nlp3d-tool-panel{min-height:126px}.nlp3d.nlp3d-premium .nlp3d-facade{border:0!important;background:transparent!important;box-shadow:none!important;inset:58px 4% 74px!important}.nlp3d.nlp3d-premium .nlp3d-facade img{filter:drop-shadow(0 22px 42px rgba(0,0,0,.48)) saturate(.94) contrast(1.08)!important}.nlp3d.nlp3d-premium .nlp3d-facade figcaption{right:auto!important;left:14px!important;bottom:14px!important;width:max-content;max-width:calc(100% - 28px);padding:5px 8px;border:1px solid rgba(234,216,163,.24);background:rgba(7,15,16,.68);backdrop-filter:blur(10px)}.nlp3d.nlp3d-premium .nlp3d-scene.has-facade .nlp3d-tower{opacity:.28!important}.nlp3d.nlp3d-premium .nlp3d-plate{border-radius:3px!important}.nlp3d.nlp3d-premium .nlp3d-plate.has-units:before{background:linear-gradient(90deg,rgba(255,255,255,.34),transparent 18%,transparent 76%,rgba(234,216,163,.3))!important}.nlp3d.nlp3d-premium .nlp3d-plate-label{position:absolute;right:-46px;top:-5px;min-width:34px;color:#ffe9ad;font-size:11px;text-align:left;opacity:.72;transform:rotateZ(calc(var(--angle, -32deg) * -1));pointer-events:none}.nlp3d.nlp3d-premium .nlp3d-plate:not(.is-active):not(:hover) .nlp3d-plate-label{opacity:.32}.nlp3d.nlp3d-premium .nlp3d-plate-dot{position:absolute;left:10px;top:50%;width:7px;height:7px;border-radius:999px;background:#ead8a3;box-shadow:0 0 12px var(--stage-glow);transform:translateY(-50%)}.nlp3d.nlp3d-premium .nlp3d-scene{touch-action:none!important;overscroll-behavior:contain;background:radial-gradient(circle at 50% 22%,rgba(234,216,163,.1),transparent 30%),linear-gradient(180deg,rgba(15,48,50,.48),rgba(8,18,18,.9))!important}.nlp3d.nlp3d-premium .nlp3d-scene.is-zoomed .nlp3d-tower,.nlp3d.nlp3d-premium .nlp3d-scene.is-zoomed .nlp3d-facade{filter:drop-shadow(0 30px 54px rgba(0,0,0,.5)) saturate(1.04)}@media(max-width:1180px){.nlp3d.nlp3d-premium .nlp3d-shell{grid-template-columns:1fr!important;grid-template-areas:"copy" "stage" "console"!important}.nlp3d.nlp3d-premium .nlp3d-copy{grid-template-columns:1fr!important}.nlp3d.nlp3d-premium .nlp3d-copy .nlp3d-kicker,.nlp3d.nlp3d-premium .nlp3d-copy h2,.nlp3d.nlp3d-premium .nlp3d-copy .nlp3d-lead-text,.nlp3d.nlp3d-premium .nlp3d-shop-path,.nlp3d.nlp3d-premium .nlp3d-metrics,.nlp3d.nlp3d-premium .nlp3d-demo-note{grid-column:1!important}.nlp3d.nlp3d-premium .nlp3d-stage-wrap{min-height:640px!important}.nlp3d.nlp3d-premium .nlp3d-console{display:grid!important;grid-template-columns:minmax(250px,.68fr) minmax(380px,1fr)!important;gap:14px!important}.nlp3d.nlp3d-premium .nlp3d-selection-dock,.nlp3d.nlp3d-premium .nlp3d-console-head,.nlp3d.nlp3d-premium .nlp3d-floor-strip,.nlp3d.nlp3d-premium .nlp3d-units{grid-column:1!important}.nlp3d.nlp3d-premium .nlp3d-detail,.nlp3d.nlp3d-premium .nlp3d-lead-form,.nlp3d.nlp3d-premium .nlp3d-compare-tray{grid-column:2!important}}@media(max-width:760px){.nlp3d.nlp3d-premium .nlp3d-shell{padding:12px!important}.nlp3d.nlp3d-premium .nlp3d-stage-wrap{min-height:560px!important}.nlp3d.nlp3d-premium .nlp3d-scene{height:560px!important}.nlp3d.nlp3d-premium .nlp3d-stage-card{right:10px;left:10px;bottom:10px;width:auto;padding:12px}.nlp3d.nlp3d-premium .nlp3d-stage-card-stats{grid-template-columns:1fr 1fr}.nlp3d.nlp3d-premium .nlp3d-stage-view{grid-column:1/-1}.nlp3d.nlp3d-premium .nlp3d-console{display:flex!important}.nlp3d.nlp3d-premium .nlp3d-floor-strip{grid-template-columns:repeat(2,minmax(0,1fr))!important}.nlp3d.nlp3d-premium .nlp3d-shop-path{grid-template-columns:1fr!important}.nlp3d.nlp3d-premium .nlp3d-facade{inset:64px 2% 138px!important}.nlp3d.nlp3d-premium .nlp3d-toolbar{z-index:13}}@media(max-width:420px){.nlp3d.nlp3d-premium .nlp3d-stage-wrap{min-height:520px!important}.nlp3d.nlp3d-premium .nlp3d-scene{height:520px!important}.nlp3d.nlp3d-premium .nlp3d-stage-card-actions{grid-template-columns:1fr}.nlp3d.nlp3d-premium .nlp3d-stage-card-stats{grid-template-columns:1fr}.nlp3d.nlp3d-premium .nlp3d-facade{inset:68px 0 190px!important}}
+CSS;
+	}
+}
+
 if ( ! function_exists( 'nadlan_p3d_inline_js' ) ) {
 	function nadlan_p3d_inline_js( $rest_url ) {
 		$js = <<<'JS'
@@ -614,9 +643,21 @@ if ( ! function_exists( 'nadlan_p3d_inline_js' ) ) {
 	function firstAvailable(units){return units.find(function(u){return u.status!=='sold'}) || units[0] || null}
 	function selectedTitle(u){if(!u){return 'בחרו דירה'}var base=u.title || ('קו '+(u.line||u.id));return base+' · קומה '+(u.floor||'-')}
 	function unitText(u){var parts=[];if(u.rooms){parts.push(u.rooms+' חדרים')}if(u.sqm){parts.push(fmt(u.sqm)+' מ"ר')}if(u.view){parts.push(u.view)}return parts.join(' · ')}
+	function unitPriceInfo(u,meta){
+		if(!u){return {text:'לפי פנייה',kind:'none',note:''}}
+		if(!meta.demo&&u.price){return {text:'₪'+fmt(u.price),kind:'official',note:u.source_note||''}}
+		if(u.price_estimate){return {text:'אומדן ₪'+fmt(u.price_estimate),kind:'estimate',note:u.price_source||u.source_note||'אומדן לא מחייב'}}
+		var avg=Number(meta.avg_price_per_sqm||0)||0;
+		var sqm=Number(u.sqm||0)||0;
+		if(avg>0&&sqm>0){return {text:'אומדן ₪'+fmt(Math.round(avg*sqm)),kind:'estimate',note:meta.price_source_note||'לפי ממוצע אזורי, לא הצעה מחייבת'}}
+		return {text:'לפי פנייה',kind:'none',note:''};
+	}
+	function unitPriceText(u,meta){return unitPriceInfo(u,meta).text}
 	function detailRows(u,meta){
-		var price=(meta.demo||!u.price)?'לפי פנייה':('₪'+fmt(u.price));
+		var priceInfo=unitPriceInfo(u,meta);
+		var price=priceInfo.text+(priceInfo.kind==='estimate'?' · לא מחייב':'');
 		var rows=[['סטטוס',statusLabel(u.status)],['בניין',u.building||'לפי פנייה'],['קו',u.line||'לפי פנייה'],['חדרים',u.rooms?u.rooms:'לפי פנייה'],['שטח',u.sqm?fmt(u.sqm)+' מ"ר':'לפי פנייה'],['מרפסת',u.balcony?fmt(u.balcony)+' מ"ר':'לפי פנייה'],['כיוון',u.dir||'לפי פנייה'],['נוף',u.view||'לפי פנייה'],['מחיר',price],['זמינות',u.availability||'לא מאומתת'],['יזם',meta.developer||'לפי פנייה']];
+		if(priceInfo.kind==='estimate'&&priceInfo.note){rows.push(['הערת מחיר',priceInfo.note])}
 		if(u.market_note){rows.push(['נתוני שוק',u.market_note])}
 		if(u.source_note){rows.push(['מקור',u.source_note])}
 		return rows;
@@ -694,6 +735,7 @@ if ( ! function_exists( 'nadlan_p3d_inline_js' ) ) {
 		var units=readJson(root.querySelector('.nlp3d-data'),[]);
 		var meta=readJson(root.querySelector('.nlp3d-meta'),{});
 		if(!Array.isArray(units)||!units.length){return}
+		root.classList.add('is-model-first');
 		var scene=root.querySelector('.nlp3d-scene');
 		var tower=root.querySelector('.nlp3d-tower');
 		var facade=root.querySelector('.nlp3d-facade');
@@ -717,6 +759,15 @@ if ( ! function_exists( 'nadlan_p3d_inline_js' ) ) {
 		var viewCopy=root.querySelector('.nlp3d-view-copy');
 		var stageWrap=root.querySelector('.nlp3d-stage-wrap');
 		var stageReturn=root.querySelector('.nlp3d-stage-return');
+		var stageCard=root.querySelector('.nlp3d-stage-card');
+		var stageCardTitle=root.querySelector('.nlp3d-stage-card-title');
+		var stageCardMeta=root.querySelector('.nlp3d-stage-card-meta');
+		var stageCardPrice=root.querySelector('.nlp3d-stage-price');
+		var stageCardStatus=root.querySelector('.nlp3d-stage-status');
+		var stageCardView=root.querySelector('.nlp3d-stage-view');
+		var stageDetails=root.querySelector('.nlp3d-stage-details');
+		var stageViewBtn=root.querySelector('.nlp3d-stage-view-btn');
+		var stageInquiry=root.querySelector('.nlp3d-stage-inquiry');
 		var toolPanel=root.querySelector('.nlp3d-tool-panel');
 		var toolButtons=[].slice.call(root.querySelectorAll('.nlp3d-tool'));
 		var viewMap=root.querySelector('.nlp3d-view-map');
@@ -764,10 +815,13 @@ if ( ! function_exists( 'nadlan_p3d_inline_js' ) ) {
 				b.className='nlp3d-plate'+(floorHasUnits(floor)?' has-units':'')+(floor===activeFloor?' is-active':'');
 				var uf=unitForFloor(floor);
 				if(uf&&uf.status==='sold'){b.className+=' is-sold'}
+				var stackRatio=(i-1)/Math.max(1,count-1);
+				var plateWidth=78-(stackRatio*20);
+				var plateOffset=9+(stackRatio*9);
 				b.style.setProperty('--i',i);
 				b.style.bottom=(i*8)+'px';
-				b.style.width=(72+Math.sin(i/3)*8)+'%';
-				b.style.right=(14+Math.cos(i/4)*5)+'%';
+				b.style.width=plateWidth+'%';
+				b.style.right=plateOffset+'%';
 				b.dataset.floor=floor;
 				b.dataset.action='select-floor';
 				b.title='קומה '+floor;
@@ -776,6 +830,17 @@ if ( ! function_exists( 'nadlan_p3d_inline_js' ) ) {
 				b.setAttribute('aria-label','בחרו קומה '+floor);
 				b.addEventListener('click',function(e){e.stopPropagation();selectFloor(parseInt(this.dataset.floor,10))});
 				b.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();selectFloor(parseInt(this.dataset.floor,10))}});
+				if(floorHasUnits(floor)||floor===activeFloor||floor%5===0){
+					var label=document.createElement('span');
+					label.className='nlp3d-plate-label';
+					label.textContent=floor;
+					b.appendChild(label);
+				}
+				if(floorHasUnits(floor)){
+					var dot=document.createElement('span');
+					dot.className='nlp3d-plate-dot';
+					b.appendChild(dot);
+				}
 				tower.appendChild(b);
 			}
 		}
@@ -961,6 +1026,24 @@ if ( ! function_exists( 'nadlan_p3d_inline_js' ) ) {
 				var metaText=unitText(activeUnit);
 				dockMeta.textContent=(metaText?metaText+' · ':'')+statusLabel(activeUnit.status);
 			}
+			renderStageCard();
+		}
+		function renderStageCard(){
+			if(!stageCard||!activeUnit){return}
+			stageCard.dataset.status=activeUnit.status||'available';
+			if(stageCardTitle){stageCardTitle.textContent=selectedTitle(activeUnit)}
+			if(stageCardMeta){
+				var metaText=unitText(activeUnit);
+				stageCardMeta.textContent=(metaText?metaText+' · ':'')+(activeUnit.availability||statusLabel(activeUnit.status));
+			}
+			var priceInfo=unitPriceInfo(activeUnit,meta);
+			if(stageCardPrice){
+				stageCardPrice.textContent=priceInfo.text;
+				stageCardPrice.dataset.kind=priceInfo.kind;
+				stageCardPrice.title=priceInfo.kind==='estimate'?(priceInfo.note||'אומדן לא מחייב'):'';
+			}
+			if(stageCardStatus){stageCardStatus.textContent=statusLabel(activeUnit.status)}
+			if(stageCardView){stageCardView.textContent=activeUnit.view||activeUnit.dir||'מבט לפי כיוון'}
 		}
 		function renderDetail(){
 			if(!activeUnit){return}
@@ -1156,6 +1239,27 @@ if ( ! function_exists( 'nadlan_p3d_inline_js' ) ) {
 				track('dock_inquiry',{unit:activeUnit&&activeUnit.id});
 			});
 		}
+		if(stageDetails&&detail){
+			stageDetails.addEventListener('click',function(){
+				setLiveView(false,'stage-details');
+				detail.scrollIntoView({behavior:'smooth',block:'center'});
+				track('stage_details',{unit:activeUnit&&activeUnit.id});
+			});
+		}
+		if(stageViewBtn&&viewFrame){
+			stageViewBtn.addEventListener('click',function(){
+				setLiveView(true,'stage-card');
+				track('stage_view',{unit:activeUnit&&activeUnit.id,live:canLiveView()});
+			});
+		}
+		if(stageInquiry&&form){
+			stageInquiry.addEventListener('click',function(){
+				setLiveView(false,'stage-inquiry');
+				setWStep(2);
+				form.scrollIntoView({behavior:'smooth',block:'center'});
+				track('stage_inquiry',{unit:activeUnit&&activeUnit.id});
+			});
+		}
 		if(viewToggle&&viewFrame){
 			viewToggle.addEventListener('click',function(){
 				setLiveView(viewFrame.hidden,'toggle');
@@ -1279,9 +1383,6 @@ if ( ! function_exists( 'nadlan_p3d_inline_js' ) ) {
 		}
 		renderAll(true);
 		renderCompareTray();
-		if(viewFrame&&viewToggle&&canLiveView()){
-			setLiveView(true,'auto');
-		}
 	}
 	function boot(){document.querySelectorAll('.nlp3d-premium').forEach(init)}
 	if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded',boot)}else{boot()}
@@ -1298,7 +1399,7 @@ add_action(
 			return;
 		}
 
-		wp_register_style( 'nadlan-p3d', '', array(), '1.60.3' );
+		wp_register_style( 'nadlan-p3d', '', array(), '1.60.5' );
 		wp_enqueue_style( 'nadlan-p3d' );
 		wp_add_inline_style( 'nadlan-p3d', nadlan_p3d_inline_css() );
 		wp_add_inline_style( 'nadlan-p3d', '.nlp3d-drag-note{display:inline-flex;align-items:center;min-height:44px;color:rgba(246,239,226,.72);font-size:12px;padding:0 6px}.nlp3d-scene{touch-action:none;cursor:grab}.nlp3d-scene.is-dragging{cursor:grabbing}.nlp3d-actions{grid-template-columns:1fr}.nlp3d-view-toggle{margin-top:12px;border:1px solid rgba(234,216,163,.36);background:rgba(255,255,255,.06);color:#ffe8a6;padding:9px 12px;cursor:pointer}.nlp3d-view-toggle.is-active{background:rgba(234,216,163,.18);color:#fff}.nlp3d-viewframe{position:relative;margin-top:12px;min-height:150px;overflow:hidden;border:1px solid rgba(234,216,163,.18);background:linear-gradient(180deg,rgba(41,112,139,.58),rgba(8,25,25,.92));isolation:isolate}.nlp3d-view-sky{position:absolute;inset:0;background:radial-gradient(circle at 18% 22%,rgba(255,255,255,.24),transparent 18%),linear-gradient(135deg,rgba(39,107,130,.42),rgba(18,50,43,.1));opacity:.86}.nlp3d-view-lines{position:absolute;inset:auto -8% 18% -8%;height:46%;border-top:1px solid rgba(234,216,163,.28);background:linear-gradient(160deg,rgba(234,216,163,.1),transparent 54%);transform:skewY(-8deg)}.nlp3d-view-copy{position:absolute;right:14px;left:14px;bottom:12px;margin:0;color:#fff8dc;font-size:13px;line-height:1.5;text-shadow:0 1px 12px rgba(0,0,0,.55)}@media(max-width:600px){.nlp3d-drag-note{flex-basis:100%;min-height:24px}.nlp3d-viewframe{min-height:130px}}' );
@@ -1310,8 +1411,9 @@ add_action(
 		wp_add_inline_style( 'nadlan-p3d', nadlan_p3d_flagship_css() );
 		wp_add_inline_style( 'nadlan-p3d', '.nlp3d-selection-dock{border:1px solid rgba(234,216,163,.24);background:linear-gradient(135deg,rgba(255,255,255,.09),rgba(255,255,255,.035));box-shadow:inset 0 1px 0 rgba(255,255,255,.08),0 16px 34px rgba(0,0,0,.16);padding:14px 14px;margin-bottom:14px;display:grid;grid-template-columns:1fr auto;gap:8px 12px;align-items:center}.nlp3d-selection-dock span{grid-column:1/-1;color:#c4a15a;font-size:12px;letter-spacing:.04em}.nlp3d-dock-title{font-family:Georgia,"Times New Roman",serif;color:#fff5cf;font-size:21px;font-weight:500;line-height:1.15}.nlp3d-dock-meta{display:block;color:#d8ccb0;line-height:1.45}.nlp3d-dock-actions{display:flex;gap:8px;align-items:center;justify-content:flex-end}.nlp3d-dock-actions button{border:1px solid rgba(234,216,163,.34);background:rgba(255,255,255,.055);color:#ffe8a6;min-height:38px;padding:7px 11px;cursor:pointer}.nlp3d-dock-actions .nlp3d-dock-action{background:linear-gradient(135deg,#ead8a3,#b99043);border:0;color:#15120c;font-weight:800}.nlp3d-dock-actions button:hover,.nlp3d-dock-actions button:focus-visible{outline:2px solid rgba(255,255,255,.68);outline-offset:2px;filter:brightness(1.06)}@media(max-width:760px){.nlp3d-selection-dock{grid-template-columns:1fr}.nlp3d-dock-actions{justify-content:stretch}.nlp3d-dock-actions button{flex:1}}' );
 		wp_add_inline_style( 'nadlan-p3d', nadlan_p3d_stability_css() );
+		wp_add_inline_style( 'nadlan-p3d', nadlan_p3d_app_selector_css() );
 
-		wp_register_script( 'nadlan-p3d', '', array(), '1.60.3', true );
+		wp_register_script( 'nadlan-p3d', '', array(), '1.60.5', true );
 		wp_enqueue_script( 'nadlan-p3d' );
 		wp_add_inline_script( 'nadlan-p3d', nadlan_p3d_inline_js( esc_url_raw( rest_url( 'nadlan/v1/lead' ) ) ) );
 	}
@@ -1350,13 +1452,17 @@ add_action(
 				$vb  = esc_attr( (string) get_post_meta( $post->ID, 'project_3d_viewbox', true ) );
 				$fh  = esc_attr( (string) get_post_meta( $post->ID, 'project_3d_floor_height_m', true ) );
 				$gm  = esc_attr( (string) get_post_meta( $post->ID, 'project_3d_ground_elevation_m', true ) );
+				$ap  = esc_attr( (string) get_post_meta( $post->ID, 'project_3d_avg_price_per_sqm', true ) );
+				$psn = esc_attr( (string) get_post_meta( $post->ID, 'project_3d_price_source_note', true ) );
 				$js  = esc_textarea( (string) get_post_meta( $post->ID, 'project_3d_units', true ) );
 				$dm  = get_post_meta( $post->ID, 'project_3d_demo', true ) === '1';
 				echo '<p><label>כתובת תמונת מקור או הדמיה מאושרת<br><input type="url" name="project_3d_image" value="' . $img . '" class="widefat"></label></p>';
 				echo '<p><label>viewBox למצב שכבת SVG ישנה, אם קיים<br><input type="text" name="project_3d_viewbox" value="' . $vb . '" class="widefat"></label></p>';
 				echo '<p><label>גובה קומה במטרים לחישוב מבט מהדירה<br><input type="number" step="0.01" min="2.4" max="5" name="project_3d_floor_height_m" value="' . $fh . '" class="widefat" placeholder="3.05"></label></p>';
 				echo '<p><label>גובה קרקע משוער במטרים, אם ידוע<br><input type="number" step="0.1" min="-50" max="400" name="project_3d_ground_elevation_m" value="' . $gm . '" class="widefat" placeholder="0"></label></p>';
-				echo '<p><label>יחידות JSON: id, title, floor, rooms, sqm, balcony, dir, line, view, price, status, plan<br><textarea name="project_3d_units" rows="10" class="widefat code">' . $js . '</textarea></label></p>';
+				echo '<p><label>אומדן מחיר ממוצע למ"ר, אופציונלי בלבד<br><input type="number" step="1" min="0" name="project_3d_avg_price_per_sqm" value="' . $ap . '" class="widefat" placeholder="0"></label></p>';
+				echo '<p><label>מקור/הערה לאומדן מחיר<br><input type="text" name="project_3d_price_source_note" value="' . $psn . '" class="widefat" placeholder="אומדן לא מחייב לפי מקור מאושר"></label></p>';
+				echo '<p><label>יחידות JSON: id, title, floor, rooms, sqm, balcony, dir, line, view, price, price_estimate, status, plan<br><textarea name="project_3d_units" rows="10" class="widefat code">' . $js . '</textarea></label></p>';
 				echo '<p><label><input type="checkbox" name="project_3d_demo" value="1" ' . checked( $dm, true, false ) . '> הצג מודל הדגמה כאשר אין מלאי רשמי</label></p>';
 				echo '<p class="description">במצב הדגמה המחיר מוצג "לפי פנייה" כדי לא להציג נתוני מכירה לא מאומתים.</p>';
 			},
@@ -1383,6 +1489,8 @@ add_action(
 		update_post_meta( $post_id, 'project_3d_viewbox', sanitize_text_field( wp_unslash( $_POST['project_3d_viewbox'] ?? '' ) ) );
 		update_post_meta( $post_id, 'project_3d_floor_height_m', nadlan_p3d_sanitize_decimal( wp_unslash( $_POST['project_3d_floor_height_m'] ?? '' ) ) );
 		update_post_meta( $post_id, 'project_3d_ground_elevation_m', nadlan_p3d_sanitize_decimal( wp_unslash( $_POST['project_3d_ground_elevation_m'] ?? '' ) ) );
+		update_post_meta( $post_id, 'project_3d_avg_price_per_sqm', nadlan_p3d_sanitize_decimal( wp_unslash( $_POST['project_3d_avg_price_per_sqm'] ?? '' ) ) );
+		update_post_meta( $post_id, 'project_3d_price_source_note', sanitize_text_field( wp_unslash( $_POST['project_3d_price_source_note'] ?? '' ) ) );
 		$units = (string) wp_unslash( $_POST['project_3d_units'] ?? '' );
 		update_post_meta( $post_id, 'project_3d_units', json_decode( $units ) !== null || $units === '' ? $units : '' );
 		update_post_meta( $post_id, 'project_3d_demo', ! empty( $_POST['project_3d_demo'] ) ? '1' : '0' );
@@ -1407,13 +1515,17 @@ add_filter(
 		);
 		$out['project_3d'] = array(
 			'enabled'          => nadlan_p3d_enabled(),
-			'renderer'         => 'premium_tower_picker_v5',
+			'renderer'         => 'premium_tower_picker_v6_app_selector',
 			'lead_endpoint'    => '/nadlan/v1/lead',
 			'facade_polygons'  => true,
 			'lead_unit_payload' => true,
 			'view_from_unit'   => trim( (string) get_option( 'nadlan_mapbox_token', '' ) ) !== '' ? 'mapbox_live' : 'awaiting_token',
 			'mapbox_canvas_fix' => true,
+			'mapbox_default'   => 'user_open_only',
 			'layout_contained'  => true,
+			'app_selector'     => true,
+			'stage_unit_card'  => true,
+			'nested_scrollbars' => false,
 			'stage_live_view'   => true,
 			'flagship_showcase' => true,
 			'owner_request_form' => true,
