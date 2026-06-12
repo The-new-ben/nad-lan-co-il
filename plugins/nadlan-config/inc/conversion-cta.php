@@ -107,6 +107,9 @@ add_action( 'rest_api_init', function () {
 				'floor'             => isset( $p['floor'] ) ? (int) $p['floor'] : '',
 				'rooms'             => sanitize_text_field( (string) ( $p['rooms'] ?? '' ) ),
 				'sqm'               => sanitize_text_field( (string) ( $p['sqm'] ?? '' ) ),
+				'building'          => sanitize_text_field( (string) ( $p['building'] ?? '' ) ),
+				'availability'      => sanitize_text_field( (string) ( $p['availability'] ?? '' ) ),
+				'market_note'       => sanitize_textarea_field( (string) ( $p['market_note'] ?? '' ) ),
 				'advisor'           => sanitize_key( (string) ( $p['advisor'] ?? '' ) ),
 				'purchase_intent'   => ! empty( $p['purchase_intent'] ) ? 1 : '',
 				'reservation_state' => sanitize_key( (string) ( $p['reservation_state'] ?? '' ) ),
@@ -129,7 +132,7 @@ add_action( 'rest_api_init', function () {
 			update_post_meta( $lid, 'goal', $goal );
 			if ( $src ) { update_post_meta( $lid, 'utm_source', $src ); }
 			if ( $card_id ) { update_post_meta( $lid, 'lead_card_id', $card_id ); }
-			foreach ( array( 'budget', 'timeline', 'unit', 'floor', 'rooms', 'sqm', 'advisor', 'purchase_intent', 'reservation_state', 'view_bearing', 'view_altitude_m' ) as $extra_key ) {
+			foreach ( array( 'budget', 'timeline', 'unit', 'floor', 'rooms', 'sqm', 'building', 'availability', 'market_note', 'advisor', 'purchase_intent', 'reservation_state', 'view_bearing', 'view_altitude_m' ) as $extra_key ) {
 				if ( isset( $lead_payload[ $extra_key ] ) && $lead_payload[ $extra_key ] !== '' ) {
 					update_post_meta( $lid, $extra_key, $lead_payload[ $extra_key ] );
 				}

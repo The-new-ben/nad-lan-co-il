@@ -65,6 +65,11 @@ if ( ! function_exists( 'nadlan_p3d_units' ) ) {
 				'dir'     => sanitize_text_field( (string) ( $u['dir'] ?? '' ) ),
 				'line'    => sanitize_text_field( (string) ( $u['line'] ?? '' ) ),
 				'view'    => sanitize_text_field( (string) ( $u['view'] ?? '' ) ),
+				'building'      => sanitize_text_field( (string) ( $u['building'] ?? '' ) ),
+				'availability'  => sanitize_text_field( (string) ( $u['availability'] ?? '' ) ),
+				'note'          => sanitize_textarea_field( (string) ( $u['note'] ?? '' ) ),
+				'market_note'   => sanitize_textarea_field( (string) ( $u['market_note'] ?? '' ) ),
+				'source_note'   => sanitize_textarea_field( (string) ( $u['source_note'] ?? '' ) ),
 				'price'   => nadlan_p3d_sanitize_decimal( $u['price'] ?? 0 ),
 				'status'  => $status,
 				'plan'    => esc_url_raw( (string) ( $u['plan'] ?? '' ) ),
@@ -88,10 +93,15 @@ if ( ! function_exists( 'nadlan_p3d_demo_units' ) ) {
 				'dir'     => 'צפון מערב',
 				'line'    => 'A',
 				'view'    => 'ים ושדרה ירוקה',
+				'building'      => 'מגדל Rainbow',
+				'availability'  => 'להמחשה, זמינות ומחיר לפי אישור יזם',
+				'note'          => 'טיפוס דירה מערבי נמוך יחסית, מתאים להשוואת כיוון אוויר, מרפסת ונגישות למתחם הפנימי.',
+				'market_note'   => 'אין מחיר רשמי במערכת. כאשר יוזן מקור מאושר, השדה יכול לשאת מחיר, עסקה אחרונה או טווח שיווק.',
+				'source_note'   => 'הדגמה מקורית על בסיס נתוני פרויקט ציבוריים: מגדל גבוה, בנייני בוטיק, חצר פנימית וקרבה לים.',
 				'price'   => 0,
 				'status'  => 'available',
 				'plan'    => '',
-				'points'  => '360,690 475,690 475,735 360,735',
+				'points'  => '408,578 486,578 486,594 408,594',
 			),
 			array(
 				'id'      => 'demo-18-b',
@@ -103,10 +113,15 @@ if ( ! function_exists( 'nadlan_p3d_demo_units' ) ) {
 				'dir'     => 'מערב',
 				'line'    => 'B',
 				'view'    => 'חזית לים',
+				'building'      => 'מגדל Rainbow',
+				'availability'  => 'להמחשה, נדרש אימות מלאי',
+				'note'          => 'דירת חמישה חדרים בקו מערבי, מוצגת כטיפוס משפחתי עם מרפסת ונוף פתוח יותר מהקומות הנמוכות.',
+				'market_note'   => 'מחיר לפי פנייה בלבד. ניתן לקשור כאן עסקאות מדלן או נתוני יזם לאחר הרשאה ואימות.',
+				'source_note'   => 'הקומות והכיוונים הם הדגמה תכנונית, לא תכנית מכר.',
 				'price'   => 0,
 				'status'  => 'available',
 				'plan'    => '',
-				'points'  => '500,590 620,590 620,640 500,640',
+				'points'  => '492,479 570,479 570,495 492,495',
 			),
 			array(
 				'id'      => 'demo-24-c',
@@ -118,10 +133,15 @@ if ( ! function_exists( 'nadlan_p3d_demo_units' ) ) {
 				'dir'     => 'דרום מערב',
 				'line'    => 'C',
 				'view'    => 'קו החוף והמרינה',
+				'building'      => 'מגדל Rainbow',
+				'availability'  => 'בתהליך בדיקה',
+				'note'          => 'קו דרום מערבי להמחשה, מתאים לבדיקת נוף, חשיפה לשמש ומיקום ביחס לקו החוף.',
+				'market_note'   => 'אפשר להציג כאן עסקה דומה, מחיר למ"ר או הערת זמינות כאשר מקור מאושר מוזן למערכת.',
+				'source_note'   => 'הדגמה בלבד, ללא מחיר רשמי.',
 				'price'   => 0,
 				'status'  => 'reserved',
 				'plan'    => '',
-				'points'  => '360,480 475,480 475,530 360,530',
+				'points'  => '576,380 654,380 654,396 576,396',
 			),
 			array(
 				'id'      => 'demo-30-d',
@@ -133,10 +153,15 @@ if ( ! function_exists( 'nadlan_p3d_demo_units' ) ) {
 				'dir'     => 'מערב',
 				'line'    => 'D',
 				'view'    => 'ים פתוח וקו רקיע',
+				'building'      => 'מגדל Rainbow',
+				'availability'  => 'זמינות לפי פנייה',
+				'note'          => 'קומה גבוהה יותר, מיועדת להמחיש את שכבת הנוף ואת מעבר המשתמש מהחזית אל מבט מהדירה.',
+				'market_note'   => 'שדה מחיר נשאר ריק עד קבלת מלאי מאומת.',
+				'source_note'   => 'לא תכנית מכר ולא הבטחת זמינות.',
 				'price'   => 0,
 				'status'  => 'available',
 				'plan'    => '',
-				'points'  => '500,370 620,370 620,420 500,420',
+				'points'  => '492,281 570,281 570,297 492,297',
 			),
 			array(
 				'id'      => 'demo-34-e',
@@ -148,10 +173,15 @@ if ( ! function_exists( 'nadlan_p3d_demo_units' ) ) {
 				'dir'     => 'צפון מערב',
 				'line'    => 'E',
 				'view'    => 'ים, פארק ושדה דב',
+				'building'      => 'מגדל Rainbow',
+				'availability'  => 'זמינות לפי פנייה',
+				'note'          => 'קומה גבוהה בקו צפוני מערבי, להמחשת חיבור בין הים, הפארק והמתחם החדש.',
+				'market_note'   => 'נתוני שוק יוצגו רק לאחר הזנת מקור מורשה.',
+				'source_note'   => 'המחשה תכנונית לממשק בלבד.',
 				'price'   => 0,
 				'status'  => 'available',
 				'plan'    => '',
-				'points'  => '360,295 475,295 475,345 360,345',
+				'points'  => '408,215 486,215 486,231 408,231',
 			),
 			array(
 				'id'      => 'demo-38-p',
@@ -163,10 +193,35 @@ if ( ! function_exists( 'nadlan_p3d_demo_units' ) ) {
 				'dir'     => 'מערב וצפון',
 				'line'    => 'P',
 				'view'    => 'קו ראשון לים',
+				'building'      => 'מגדל Rainbow',
+				'availability'  => 'להמחשה בלבד',
+				'note'          => 'קומת פרימיום להמחשת תרחיש רכישה מתקדם, בדיקת ליווי מקצועי ואיסוף עניין ממוקד.',
+				'market_note'   => 'מחיר וזמינות אינם מוצגים ללא אישור מקור.',
+				'source_note'   => 'לא מלאי רשמי.',
 				'price'   => 0,
 				'status'  => 'available',
 				'plan'    => '',
-				'points'  => '430,185 600,185 600,260 430,260',
+				'points'  => '408,149 654,149 654,179 408,179',
+			),
+			array(
+				'id'      => 'demo-07-g',
+				'title'   => 'בניין בוטיק · קו G',
+				'floor'   => 7,
+				'rooms'   => 3,
+				'sqm'     => 86,
+				'balcony' => 10,
+				'dir'     => 'מזרח',
+				'line'    => 'G',
+				'view'    => 'חצר פנימית ומרחבי המתחם',
+				'building'      => 'בניין בוטיק',
+				'availability'  => 'זמינות לפי פנייה',
+				'note'          => 'דירת בוטיק נמוכה יותר להמחשת ששת המבנים המרקמיים והחצר הפנימית של המתחם.',
+				'market_note'   => 'אפשר לשייך כאן מכירה דומה או טווח מחיר כאשר מקור מאומת זמין.',
+				'source_note'   => 'הדגמה שמטרתה להראות שהפרויקט כולל גם בנייני בוטיק, לא רק מגדל.',
+				'price'   => 0,
+				'status'  => 'available',
+				'plan'    => '',
+				'points'  => '705,705 790,705 790,730 705,730',
 			),
 		);
 	}
@@ -269,6 +324,8 @@ if ( ! function_exists( 'nadlan_p3d_render' ) ) {
 		if ( $image === '' && $demo ) {
 			$image = esc_url( plugins_url( '../assets/concept/rainbow-facade-demo.svg', __FILE__ ) );
 		}
+		$image_alt = $demo ? 'המחשת חזית מקורית של מגדל ובנייני בוטיק לבחירת דירה' : 'חומר מקור של הפרויקט';
+		$image_cap = $demo ? 'המחשה מקורית, לא תכנית מכר רשמית' : 'חומר מקור';
 
 		$meta      = nadlan_p3d_meta( $post_id, $demo );
 		$uid       = 'nlp3d-' . $post_id;
@@ -317,9 +374,9 @@ if ( ! function_exists( 'nadlan_p3d_render' ) ) {
 				<div class="nlp3d-shadow" aria-hidden="true"></div>
 				<?php if ( $image ) : ?>
 					<figure class="nlp3d-facade" data-viewbox="<?php echo esc_attr( $viewbox ); ?>">
-						<img src="<?php echo $image; ?>" alt="חומר מקור של הפרויקט" loading="lazy">
+						<img src="<?php echo $image; ?>" alt="<?php echo esc_attr( $image_alt ); ?>" loading="lazy">
 						<svg class="nlp3d-facade-hotspots" viewBox="<?php echo esc_attr( $viewbox ); ?>" preserveAspectRatio="none" aria-label="בחירת דירה על גבי החזית"></svg>
-						<figcaption>חומר מקור</figcaption>
+						<figcaption><?php echo esc_html( $image_cap ); ?></figcaption>
 					</figure>
 				<?php endif; ?>
 			</div>
@@ -421,7 +478,13 @@ if ( ! function_exists( 'nadlan_p3d_inline_js' ) ) {
 	function firstAvailable(units){return units.find(function(u){return u.status!=='sold'}) || units[0] || null}
 	function selectedTitle(u){if(!u){return 'בחרו דירה'}var base=u.title || ('קו '+(u.line||u.id));return base+' · קומה '+(u.floor||'-')}
 	function unitText(u){var parts=[];if(u.rooms){parts.push(u.rooms+' חדרים')}if(u.sqm){parts.push(fmt(u.sqm)+' מ"ר')}if(u.view){parts.push(u.view)}return parts.join(' · ')}
-	function detailRows(u,meta){var price=(meta.demo||!u.price)?'לפי פנייה':('₪'+fmt(u.price));return [['סטטוס',statusLabel(u.status)],['חדרים',u.rooms?u.rooms:'לפי פנייה'],['שטח',u.sqm?fmt(u.sqm)+' מ"ר':'לפי פנייה'],['מרפסת',u.balcony?fmt(u.balcony)+' מ"ר':'לפי פנייה'],['כיוון',u.dir||'לפי פנייה'],['נוף',u.view||'לפי פנייה'],['מחיר',price],['יזם',meta.developer||'לפי פנייה']]}
+	function detailRows(u,meta){
+		var price=(meta.demo||!u.price)?'לפי פנייה':('₪'+fmt(u.price));
+		var rows=[['סטטוס',statusLabel(u.status)],['בניין',u.building||'לפי פנייה'],['קו',u.line||'לפי פנייה'],['חדרים',u.rooms?u.rooms:'לפי פנייה'],['שטח',u.sqm?fmt(u.sqm)+' מ"ר':'לפי פנייה'],['מרפסת',u.balcony?fmt(u.balcony)+' מ"ר':'לפי פנייה'],['כיוון',u.dir||'לפי פנייה'],['נוף',u.view||'לפי פנייה'],['מחיר',price],['זמינות',u.availability||'לא מאומתת'],['יזם',meta.developer||'לפי פנייה']];
+		if(u.market_note){rows.push(['נתוני שוק',u.market_note])}
+		if(u.source_note){rows.push(['מקור',u.source_note])}
+		return rows;
+	}
 	function bearingForDirection(dir){
 		dir=(dir||'').toString();
 		var north=dir.indexOf('צפון')>-1,south=dir.indexOf('דרום')>-1,east=dir.indexOf('מזרח')>-1,west=dir.indexOf('מערב')>-1;
@@ -573,14 +636,14 @@ if ( ! function_exists( 'nadlan_p3d_inline_js' ) ) {
 		function renderToolPanel(){
 			if(!toolPanel||!activeUnit){return}
 			var headline='מפרט הדירה';
-			var copy='הדירה שנבחרה מוצגת לפי נתוני ההמחשה: '+(activeUnit.rooms||'')+' חדרים, '+(activeUnit.sqm?fmt(activeUnit.sqm)+' מ"ר':'שטח לפי פנייה')+', קומה '+(activeUnit.floor||'לפי פנייה')+'. מפרט רשמי יימסר לאחר בדיקת זמינות מול היזם.';
+			var copy='הדירה שנבחרה מוצגת לפי נתוני ההמחשה: '+(activeUnit.rooms||'')+' חדרים, '+(activeUnit.sqm?fmt(activeUnit.sqm)+' מ"ר':'שטח לפי פנייה')+', קומה '+(activeUnit.floor||'לפי פנייה')+', '+(activeUnit.building||'בניין לפי פנייה')+'. '+(activeUnit.note||'מפרט רשמי יימסר לאחר בדיקת זמינות מול היזם.');
 			if(activeTool==='drawing'){
 				headline='תוכנית ומדידות';
-				copy=activeUnit.plan?'ניתן לפתוח את תוכנית הדירה המקושרת ולבקש בדיקה של המידות, המרפסת והכיוונים.':'תוכנית רשמית עדיין לא נטענה לכרטיס. אפשר לשלוח בקשה ולקבל תוכנית, מדידות וחומר מכירה כאשר הם זמינים ומאומתים.';
+				copy=activeUnit.plan?'ניתן לפתוח את תוכנית הדירה המקושרת ולבקש בדיקה של המידות, המרפסת והכיוונים.':'תוכנית רשמית עדיין לא נטענה לכרטיס. אפשר לשלוח בקשה ולקבל תוכנית, מדידות, כיווני אוויר וחומר מכירה כאשר הם זמינים ומאומתים. המערכת כבר שומרת את היחידה, הקומה והקו כדי לקשור אליהם תוכנית רשמית בהמשך.';
 			}
 			if(activeTool==='advisors'){
 				headline='ליווי מקצועי';
-				copy='אפשר לבקש לצרף עורך דין רכישה, יועץ משכנתאות, בדק בית או מעצב פנים. הבקשה תישלח עם הדירה שנבחרה כדי לחזור אליכם עם ליווי מתאים.';
+				copy='אפשר לבקש לצרף עורך דין רכישה, יועץ משכנתאות, בדק בית או מעצב פנים. הבקשה תישלח עם הדירה שנבחרה, כולל קומה, שטח, כיוון ונוף, כדי לחזור אליכם עם ליווי מתאים לפני כל התחייבות.';
 			}
 			toolPanel.innerHTML='';
 			var strong=document.createElement('strong');
@@ -681,8 +744,8 @@ if ( ! function_exists( 'nadlan_p3d_inline_js' ) ) {
 			var timeline=fd.get('timeline')||'לא נמסר';
 			var cam=cameraParams(activeUnit,meta);
 			var reservationState=intent==='purchase'?'non_binding_inquiry':'lead_request';
-			var message=intentText+' מתוך מודל תלת ממדי של '+(meta.title||'הפרויקט')+'. יחידה: '+selectedTitle(activeUnit)+'. '+unitText(activeUnit)+'. תקציב: '+(fd.get('budget')||'לא נמסר')+'. מועד התקדמות: '+timeline+'. ליווי מבוקש: '+advisor+'. נא לאמת זמינות, מחיר ותנאים מול היזם לפני כל התקדמות. סטטוס: '+reservationState+'.';
-			var payload={card_id:parseInt(root.dataset.project,10),name:fd.get('name'),phone:fd.get('phone'),email:fd.get('email'),goal:intentText,message:message,company:fd.get('company'),source:'project_3d',budget:fd.get('budget'),unit:activeUnit.id,floor:activeUnit.floor,rooms:activeUnit.rooms,sqm:activeUnit.sqm,timeline:timeline,advisor:advisor,purchase_intent:intent==='purchase',reservation_state:reservationState,view_bearing:cam.bearing,view_altitude_m:cam.altitude_m};
+			var message=intentText+' מתוך מודל תלת ממדי של '+(meta.title||'הפרויקט')+'. יחידה: '+selectedTitle(activeUnit)+'. '+unitText(activeUnit)+'. בניין: '+(activeUnit.building||'לא נמסר')+'. זמינות: '+(activeUnit.availability||'לא מאומתת')+'. תקציב: '+(fd.get('budget')||'לא נמסר')+'. מועד התקדמות: '+timeline+'. ליווי מבוקש: '+advisor+'. נא לאמת זמינות, מחיר ותנאים מול היזם לפני כל התקדמות. סטטוס: '+reservationState+'.';
+			var payload={card_id:parseInt(root.dataset.project,10),name:fd.get('name'),phone:fd.get('phone'),email:fd.get('email'),goal:intentText,message:message,company:fd.get('company'),source:'project_3d',budget:fd.get('budget'),unit:activeUnit.id,floor:activeUnit.floor,rooms:activeUnit.rooms,sqm:activeUnit.sqm,building:activeUnit.building||'',availability:activeUnit.availability||'',market_note:activeUnit.market_note||'',timeline:timeline,advisor:advisor,purchase_intent:intent==='purchase',reservation_state:reservationState,view_bearing:cam.bearing,view_altitude_m:cam.altitude_m};
 			track('submit',{intent:intent,unit:activeUnit.id,floor:activeUnit.floor,advisor:advisor,reservation_state:reservationState,view_bearing:cam.bearing,view_altitude_m:cam.altitude_m});
 			form.querySelectorAll('button[type="submit"]').forEach(function(b){b.disabled=true});
 			ok.textContent='שולחים את הפנייה...';
@@ -715,6 +778,7 @@ add_action(
 		wp_add_inline_style( 'nadlan-p3d', '.nlp3d-drag-note{display:inline-flex;align-items:center;min-height:44px;color:rgba(246,239,226,.72);font-size:12px;padding:0 6px}.nlp3d-scene{touch-action:none;cursor:grab}.nlp3d-scene.is-dragging{cursor:grabbing}.nlp3d-actions{grid-template-columns:1fr}.nlp3d-view-toggle{margin-top:12px;border:1px solid rgba(234,216,163,.36);background:rgba(255,255,255,.06);color:#ffe8a6;padding:9px 12px;cursor:pointer}.nlp3d-view-toggle.is-active{background:rgba(234,216,163,.18);color:#fff}.nlp3d-viewframe{position:relative;margin-top:12px;min-height:150px;overflow:hidden;border:1px solid rgba(234,216,163,.18);background:linear-gradient(180deg,rgba(41,112,139,.58),rgba(8,25,25,.92));isolation:isolate}.nlp3d-view-sky{position:absolute;inset:0;background:radial-gradient(circle at 18% 22%,rgba(255,255,255,.24),transparent 18%),linear-gradient(135deg,rgba(39,107,130,.42),rgba(18,50,43,.1));opacity:.86}.nlp3d-view-lines{position:absolute;inset:auto -8% 18% -8%;height:46%;border-top:1px solid rgba(234,216,163,.28);background:linear-gradient(160deg,rgba(234,216,163,.1),transparent 54%);transform:skewY(-8deg)}.nlp3d-view-copy{position:absolute;right:14px;left:14px;bottom:12px;margin:0;color:#fff8dc;font-size:13px;line-height:1.5;text-shadow:0 1px 12px rgba(0,0,0,.55)}@media(max-width:600px){.nlp3d-drag-note{flex-basis:100%;min-height:24px}.nlp3d-viewframe{min-height:130px}}' );
 		wp_add_inline_style( 'nadlan-p3d', nadlan_p3d_experience_css() );
 		wp_add_inline_style( 'nadlan-p3d', '.nlp3d-facade{position:absolute;z-index:6;inset:58px 13% 54px;margin:0;display:block;border:1px solid rgba(234,216,163,.22);background:linear-gradient(135deg,rgba(4,16,18,.44),rgba(255,255,255,.04));box-shadow:0 24px 64px rgba(0,0,0,.34);overflow:hidden;pointer-events:none}.nlp3d-facade[hidden]{display:none}.nlp3d-facade img{display:block;width:100%;height:100%;object-fit:cover;filter:saturate(.82) contrast(1.08) sepia(.08);opacity:.86}.nlp3d-facade:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(234,216,163,.08),transparent 34%,rgba(0,0,0,.22));pointer-events:none}.nlp3d-facade figcaption{position:absolute;right:10px;bottom:9px;left:10px;z-index:3;color:#fff3c6;font-size:11px;line-height:1.4;text-shadow:0 1px 10px rgba(0,0,0,.72)}.nlp3d-facade-hotspots{position:absolute;z-index:2;inset:0;width:100%;height:100%;pointer-events:auto}.nlp3d-hotspot{fill:rgba(234,216,163,.08);stroke:rgba(234,216,163,.64);stroke-width:2;vector-effect:non-scaling-stroke;cursor:pointer;transition:fill .16s,stroke .16s,filter .16s}.nlp3d-hotspot:hover,.nlp3d-hotspot:focus-visible{fill:rgba(234,216,163,.24);stroke:#fff2ba;outline:none;filter:drop-shadow(0 0 8px rgba(234,216,163,.42))}.nlp3d-hotspot.is-active{fill:rgba(234,216,163,.34);stroke:#fff2ba;filter:drop-shadow(0 0 14px rgba(234,216,163,.5))}.nlp3d-scene.has-facade .nlp3d-tower{opacity:.34}.nlp3d-deal-steps{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:6px;margin-top:12px}.nlp3d-deal-steps span{min-height:32px;display:flex;align-items:center;justify-content:center;border:1px solid rgba(234,216,163,.18);background:rgba(255,255,255,.045);color:#fff3c8;font-size:12px}.nlp3d-deal-steps span:first-child{background:rgba(234,216,163,.16);border-color:rgba(234,216,163,.36)}@media(max-width:900px){.nlp3d-facade{inset:62px 8% 42px}}@media(max-width:600px){.nlp3d-facade{inset:70px 7% 34px}.nlp3d-deal-steps{grid-template-columns:repeat(2,minmax(0,1fr))}}' );
+		wp_add_inline_style( 'nadlan-p3d', '.entry-content>.nlp3d,.wp-block-post-content>.nlp3d{width:min(1280px,calc(100vw - 36px));margin-inline:calc(50% - min(640px,calc(50vw - 18px)));overflow:clip}.nlp3d-shell{grid-template-columns:minmax(220px,.72fr) minmax(520px,1.45fr);grid-template-areas:"copy stage" "console stage";align-items:start;min-height:0;padding:28px}.nlp3d-copy{grid-area:copy;align-self:start;padding-bottom:0}.nlp3d-stage-wrap{grid-area:stage;min-height:760px}.nlp3d-console{grid-area:console;min-width:0}.nlp3d h2{max-width:15ch;font-size:clamp(28px,3vw,46px)}.nlp3d-lead-text{font-size:15px;line-height:1.65}.nlp3d-facade{inset:72px 5% 58px;display:flex;align-items:center;justify-content:center;background:radial-gradient(circle at 50% 32%,rgba(234,216,163,.08),transparent 42%),rgba(4,16,18,.55)}.nlp3d-facade img{object-fit:contain;object-position:center center;padding:12px;opacity:.97}.nlp3d-facade-hotspots{inset:12px;width:calc(100% - 24px);height:calc(100% - 24px)}.nlp3d-scene.has-facade .nlp3d-tower{opacity:.18}.nlp3d-detail{max-height:none}.nlp3d-facts{grid-template-columns:repeat(2,minmax(0,1fr));max-height:360px;overflow:auto;padding-inline-end:4px}.nlp3d-facts div:nth-last-child(-n+2){grid-column:1/-1}.nlp3d-facts dd{overflow-wrap:anywhere}.nlp3d-lead-form input,.nlp3d-lead-form select{min-width:0}.nlp3d-actions{gap:8px}.nlp3d-tool-panel{max-height:170px;overflow:auto}.nlp3d-tower:before{content:"";position:absolute;inset:-8px 6%;border:1px solid rgba(234,216,163,.22);background:linear-gradient(90deg,rgba(234,216,163,.05),transparent 45%,rgba(234,216,163,.08));transform:translateZ(-18px)}.nlp3d-plate{border-radius:2px}.nlp3d-plate:after{content:"";position:absolute;inset:3px 12%;background:repeating-linear-gradient(90deg,rgba(234,216,163,.45) 0 6px,transparent 6px 13px);opacity:.42}@media(max-width:1180px){.nlp3d-shell{grid-template-columns:1fr;grid-template-areas:"copy" "stage" "console"}.nlp3d-stage-wrap{min-height:680px}.nlp3d h2{max-width:100%}.nlp3d-lead-text{max-width:62ch}.nlp3d-console{display:grid;grid-template-columns:minmax(220px,.68fr) minmax(320px,1fr);align-items:start}.nlp3d-console-head,.nlp3d-floor-strip,.nlp3d-units{grid-column:1}.nlp3d-detail,.nlp3d-lead-form{grid-column:2}.nlp3d-detail{grid-row:1 / span 3}.nlp3d-lead-form{grid-row:4}}@media(max-width:760px){.entry-content>.nlp3d,.wp-block-post-content>.nlp3d{width:calc(100vw - 18px);margin-inline:calc(50% - 50vw + 9px)}.nlp3d-shell{padding:16px}.nlp3d-stage-wrap{min-height:560px}.nlp3d-scene{height:540px}.nlp3d-facade{inset:64px 3% 46px}.nlp3d-facade img{padding:6px}.nlp3d-facade-hotspots{inset:6px;width:calc(100% - 12px);height:calc(100% - 12px)}.nlp3d-console{display:flex}.nlp3d-facts{grid-template-columns:1fr;max-height:none}.nlp3d-facts div:nth-last-child(-n+2){grid-column:auto}.nlp3d-toolbar{position:relative;top:auto;right:auto;margin-bottom:10px}.nlp3d-scene{position:relative}.nlp3d-copy{padding-inline:2px}.nlp3d-shop-path span{font-size:12px}}@media(max-width:420px){.nlp3d-stage-wrap{min-height:500px}.nlp3d-scene{height:500px}.nlp3d h2{font-size:28px}.nlp3d-metrics span{width:100%}}' );
 
 		wp_register_script( 'nadlan-p3d', '', array(), '1.59.1', true );
 		wp_enqueue_script( 'nadlan-p3d' );

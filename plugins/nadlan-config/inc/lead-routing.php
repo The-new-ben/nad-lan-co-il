@@ -126,9 +126,12 @@ if ( ! function_exists( 'nadlan_lead_route_email_body' ) ) {
 			$lines[] = '';
 			$lines[] = 'פרטי בחירת דירה:';
 			if ( ! empty( $fields['unit'] ) ) { $lines[] = 'דירה/קו: ' . $fields['unit']; }
+			if ( ! empty( $fields['building'] ) ) { $lines[] = 'בניין: ' . $fields['building']; }
 			if ( ! empty( $fields['floor'] ) ) { $lines[] = 'קומה: ' . $fields['floor']; }
 			if ( ! empty( $fields['rooms'] ) ) { $lines[] = 'חדרים: ' . $fields['rooms']; }
 			if ( ! empty( $fields['sqm'] ) ) { $lines[] = 'שטח: ' . $fields['sqm']; }
+			if ( ! empty( $fields['availability'] ) ) { $lines[] = 'זמינות: ' . $fields['availability']; }
+			if ( ! empty( $fields['market_note'] ) ) { $lines[] = 'נתוני שוק: ' . $fields['market_note']; }
 			if ( ! empty( $fields['timeline'] ) ) { $lines[] = 'מועד התקדמות: ' . $fields['timeline']; }
 			if ( ! empty( $fields['advisor'] ) ) { $lines[] = 'ליווי מבוקש: ' . $fields['advisor']; }
 			if ( ! empty( $fields['purchase_intent'] ) ) { $lines[] = 'סוג פנייה: בדיקת רכישה לא מחייבת'; }
