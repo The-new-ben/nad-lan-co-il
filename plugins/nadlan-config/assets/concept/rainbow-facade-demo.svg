@@ -1,66 +1,108 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000" role="img" aria-labelledby="title desc">
-  <title id="title">Illustrative coastal tower facade concept</title>
-  <desc id="desc">Original line drawing concept for an interactive new-build apartment selector. Not an official architectural drawing.</desc>
+  <title id="title">Rainbow Tel Aviv illustrative apartment selector facade</title>
+  <desc id="desc">Original schematic visualization of a coastal residential tower with boutique buildings and apartment-selection bays. Illustrative only, not an official sales plan.</desc>
   <defs>
-    <linearGradient id="sky" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0" stop-color="#092425"/>
-      <stop offset=".55" stop-color="#123c3e"/>
-      <stop offset="1" stop-color="#071515"/>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#071718"/>
+      <stop offset=".45" stop-color="#0e3538"/>
+      <stop offset="1" stop-color="#11100c"/>
     </linearGradient>
-    <linearGradient id="gold" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0" stop-color="#f2dfaa"/>
-      <stop offset=".55" stop-color="#b99552"/>
-      <stop offset="1" stop-color="#6f5529"/>
+    <linearGradient id="tower" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#182c2d"/>
+      <stop offset=".55" stop-color="#0b1e1f"/>
+      <stop offset="1" stop-color="#061213"/>
     </linearGradient>
-    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
-      <path d="M40 0H0v40" fill="none" stroke="#ead8a3" stroke-opacity=".08" stroke-width="1"/>
+    <linearGradient id="champagne" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#fff1bf"/>
+      <stop offset=".55" stop-color="#c2a15d"/>
+      <stop offset="1" stop-color="#72572b"/>
+    </linearGradient>
+    <pattern id="grid" width="34" height="34" patternUnits="userSpaceOnUse">
+      <path d="M34 0H0v34" fill="none" stroke="#ead8a3" stroke-opacity=".065" stroke-width="1"/>
     </pattern>
-    <filter id="glow" x="-30%" y="-30%" width="160%" height="160%">
-      <feGaussianBlur stdDeviation="6" result="blur"/>
-      <feMerge>
-        <feMergeNode in="blur"/>
-        <feMergeNode in="SourceGraphic"/>
-      </feMerge>
+    <filter id="soft" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="3" result="b"/>
+      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
     </filter>
   </defs>
-  <rect width="1000" height="1000" fill="url(#sky)"/>
+
+  <rect width="1000" height="1000" fill="url(#bg)"/>
   <rect width="1000" height="1000" fill="url(#grid)"/>
-  <path d="M80 650c160-60 300-78 460-58 150 18 262-8 380-70v98c-130 54-245 72-390 55-164-20-306-2-450 58z" fill="#2c8193" opacity=".18"/>
-  <path d="M64 785c220-74 405-92 600-54 101 20 177 10 276-28" fill="none" stroke="#ead8a3" stroke-opacity=".25" stroke-width="2"/>
-  <path d="M720 140l48 680M326 812l66-690" fill="none" stroke="#f0dfb0" stroke-opacity=".32" stroke-width="2"/>
-  <path d="M384 150 648 110l84 704-414 34z" fill="#0d1f20" opacity=".74"/>
-  <path d="M392 142 650 102l80 704-414 34z" fill="none" stroke="url(#gold)" stroke-width="4" filter="url(#glow)"/>
-  <path d="M430 178 614 150l54 604-292 24z" fill="#ffffff" opacity=".035" stroke="#ead8a3" stroke-opacity=".22" stroke-width="1"/>
-  <g stroke="#ead8a3" stroke-opacity=".38" stroke-width="1">
-    <path d="M407 228 661 201"/>
-    <path d="M402 280 666 253"/>
-    <path d="M397 332 672 305"/>
-    <path d="M392 384 678 356"/>
-    <path d="M387 436 684 408"/>
-    <path d="M382 488 690 459"/>
-    <path d="M377 540 696 510"/>
-    <path d="M372 592 702 562"/>
-    <path d="M367 644 708 613"/>
-    <path d="M362 696 714 664"/>
-    <path d="M357 748 720 715"/>
+
+  <path d="M40 645c122-41 250-50 383-26 138 25 286-7 525-101v125c-221 83-383 107-539 74-122-26-244-12-369 38z" fill="#2f8a9c" opacity=".2"/>
+  <path d="M65 755c170-55 302-66 452-29 144 35 258 10 414-55" fill="none" stroke="#ead8a3" stroke-opacity=".27" stroke-width="2"/>
+  <path d="M94 810h812" stroke="#ead8a3" stroke-opacity=".32" stroke-width="2"/>
+
+  <g opacity=".98">
+    <path d="M364 130 654 102 704 790 338 824z" fill="url(#tower)"/>
+    <path d="M364 130 654 102 704 790 338 824z" fill="none" stroke="url(#champagne)" stroke-width="4" filter="url(#soft)"/>
+    <path d="M403 161 621 140 664 755 382 781z" fill="#ffffff" opacity=".035"/>
+
+    <g stroke="#ead8a3" stroke-opacity=".42" stroke-width="1">
+      <path d="M395 194 660 169"/>
+      <path d="M392 216 662 191"/>
+      <path d="M389 238 664 213"/>
+      <path d="M386 260 666 235"/>
+      <path d="M383 282 668 257"/>
+      <path d="M380 304 670 279"/>
+      <path d="M377 326 672 301"/>
+      <path d="M374 348 674 323"/>
+      <path d="M371 370 676 345"/>
+      <path d="M368 392 678 367"/>
+      <path d="M365 414 680 389"/>
+      <path d="M362 436 682 411"/>
+      <path d="M359 458 684 433"/>
+      <path d="M356 480 686 455"/>
+      <path d="M353 502 688 477"/>
+      <path d="M350 524 690 499"/>
+      <path d="M347 546 692 521"/>
+      <path d="M344 568 694 543"/>
+      <path d="M341 590 696 565"/>
+      <path d="M338 612 698 587"/>
+      <path d="M335 634 700 609"/>
+      <path d="M332 656 702 631"/>
+      <path d="M329 678 704 653"/>
+      <path d="M326 700 706 675"/>
+      <path d="M323 722 708 697"/>
+      <path d="M320 744 710 719"/>
+      <path d="M317 766 712 741"/>
+    </g>
+
+    <g stroke="#ead8a3" stroke-opacity=".24" stroke-width="1">
+      <path d="M405 162 383 782"/>
+      <path d="M486 154 486 772"/>
+      <path d="M571 146 590 762"/>
+      <path d="M645 138 682 752"/>
+    </g>
+
+    <g fill="#ead8a3" opacity=".28">
+      <rect x="408" y="149" width="78" height="30" rx="2"/>
+      <rect x="492" y="149" width="78" height="30" rx="2"/>
+      <rect x="576" y="149" width="78" height="30" rx="2"/>
+      <rect x="408" y="215" width="78" height="16" rx="2"/>
+      <rect x="492" y="281" width="78" height="16" rx="2"/>
+      <rect x="576" y="380" width="78" height="16" rx="2"/>
+      <rect x="492" y="479" width="78" height="16" rx="2"/>
+      <rect x="408" y="578" width="78" height="16" rx="2"/>
+    </g>
   </g>
-  <g stroke="#ead8a3" stroke-opacity=".24" stroke-width="1">
-    <path d="M460 156 430 792"/>
-    <path d="M522 146 520 782"/>
-    <path d="M590 136 610 772"/>
-    <path d="M650 126 696 762"/>
+
+  <g stroke="#ead8a3" stroke-opacity=".6" stroke-width="2" fill="#0a1d1e">
+    <path d="M120 680h112v90H120z"/>
+    <path d="M246 650h118v120H246z"/>
+    <path d="M650 660h110v110H650z"/>
+    <path d="M774 626h112v144H774z"/>
+    <path d="M138 636h86v44H138z"/>
+    <path d="M790 585h80v41H790z"/>
   </g>
-  <g fill="none" stroke="#f8e8b6" stroke-opacity=".5" stroke-width="2">
-    <path d="M352 815 734 784"/>
-    <path d="M378 196 410 170"/>
-    <path d="M650 104 692 128"/>
+  <g stroke="#ead8a3" stroke-opacity=".28" stroke-width="1">
+    <path d="M130 708h92M130 734h92M258 680h94M258 710h94M258 740h94M660 690h90M660 720h90M784 656h92M784 686h92M784 716h92M784 746h92"/>
+    <path d="M152 650h58M804 600h52"/>
   </g>
-  <g fill="#ead8a3" opacity=".8">
-    <circle cx="138" cy="202" r="2"/>
-    <circle cx="178" cy="246" r="1.5"/>
-    <circle cx="846" cy="182" r="2"/>
-    <circle cx="902" cy="236" r="1.5"/>
-  </g>
-  <path d="M170 852h660" stroke="#ead8a3" stroke-opacity=".28" stroke-width="2"/>
-  <text x="500" y="910" text-anchor="middle" fill="#ead8a3" fill-opacity=".74" font-family="Arial, sans-serif" font-size="20">Illustrative facade for apartment selection</text>
+  <rect x="705" y="705" width="85" height="25" rx="2" fill="#ead8a3" opacity=".22"/>
+
+  <path d="M130 588c70-26 146-30 228-12 74 17 127 9 206-30 102-51 208-67 322-39" fill="none" stroke="#ead8a3" stroke-opacity=".28" stroke-width="2"/>
+  <path d="M115 872h770" stroke="#ead8a3" stroke-opacity=".18"/>
+  <text x="500" y="902" text-anchor="middle" fill="#ead8a3" fill-opacity=".82" font-family="Arial, sans-serif" font-size="19">Rainbow Tel Aviv · tower + boutique buildings · illustrative selection model</text>
+  <text x="500" y="930" text-anchor="middle" fill="#f6efe2" fill-opacity=".54" font-family="Arial, sans-serif" font-size="13">Not an official architectural drawing or sales plan</text>
 </svg>

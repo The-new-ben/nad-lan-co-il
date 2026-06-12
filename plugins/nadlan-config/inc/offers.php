@@ -91,6 +91,9 @@ if ( ! function_exists( 'nadlan_offers_capture_nonbinding_inquiry' ) ) {
 			'offer_floor'         => isset( $fields['floor'] ) && $fields['floor'] !== '' ? (int) $fields['floor'] : '',
 			'offer_rooms'         => sanitize_text_field( (string) ( $fields['rooms'] ?? '' ) ),
 			'offer_sqm'           => sanitize_text_field( (string) ( $fields['sqm'] ?? '' ) ),
+			'offer_building'      => sanitize_text_field( (string) ( $fields['building'] ?? '' ) ),
+			'offer_availability'  => sanitize_text_field( (string) ( $fields['availability'] ?? '' ) ),
+			'offer_market_note'   => sanitize_textarea_field( (string) ( $fields['market_note'] ?? '' ) ),
 			'offer_advisor'       => sanitize_key( (string) ( $fields['advisor'] ?? '' ) ),
 			'offer_created_at'    => time(),
 		) as $k => $v ) {

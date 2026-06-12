@@ -1,4 +1,4 @@
-# Rainbow 3D Hotfix QA - v1.59.1
+# Rainbow 3D Hotfix QA - v1.59.2
 
 ## Live Problem Confirmed
 
@@ -38,18 +38,39 @@ The Rainbow content body is long, so the apartment selector was effectively buri
 - Added Cesium-ready camera parameters without claiming the current placeholder is a real apartment view.
 - Healthcheck renderer marker becomes `premium_tower_picker_v3`.
 
+## 2026-06-12 Owner Screenshot Follow-Up
+
+Owner flagged the first v1.59.1 preview as still too weak:
+
+- Module was visually cut off on the left.
+- The stage was too tall and narrow relative to the project page.
+- The facade did not read as a residential building with floors and apartments.
+- Clicking a unit needed richer apartment context.
+- Madlan subscription data should inform the model mapping.
+
+Follow-up patch in this PR:
+
+- Added a late CSS override so the module no longer forces a three-column layout into a narrow article column.
+- The selector now uses a two-zone desktop layout and stacks below 1180px.
+- Facade image uses `object-fit: contain` with matching SVG hotspot insets, preventing left-side crop.
+- New concept SVG shows one tower plus boutique buildings, floor lines, apartment bays, coastal context, and explicit illustrative labeling.
+- Unit JSON now supports `building`, `availability`, `note`, `market_note`, and `source_note`.
+- The unit drawer displays the richer fields.
+- Lead payload, owner routing email, and optional non-binding offer seam carry building/availability/market context.
+- Added `docs/2026-06-12-rainbow-madlan-model-mapping.md`.
+
 ## Local Verification
 
 - Inline project 3D JavaScript extracted from the PHP heredoc passed `node --check`.
 - `git diff --check` passed. Only CRLF conversion warnings were emitted by Windows.
 - PHP lint could not run locally because `php` is not installed in this Windows session. Claude gate should run PHP 8.3 lint before deploy, as in the previous release.
-- ZIP must be rebuilt as `plugin-dist/nadlan-config-1.59.1.zip` after final code changes.
+- ZIP must be rebuilt as `plugin-dist/nadlan-config-1.59.2.zip` after final code changes.
 
 ## Manual Live Gate After Install
 
-1. Update NadLan Config to `1.59.1`.
+1. Update NadLan Config to `1.59.2`.
 2. Open `https://nad-lan.co.il/wp-json/nadlan/v1/healthcheck`.
-3. Confirm `version=1.59.1`.
+3. Confirm `version=1.59.2`.
 4. Confirm `project_3d.renderer=premium_tower_picker_v3`.
 5. Confirm `project_3d.facade_polygons=true`.
 6. Confirm `project_3d.lead_unit_payload=true`.
@@ -57,12 +78,15 @@ The Rainbow content body is long, so the apartment selector was effectively buri
 8. Open `https://nad-lan.co.il/projects/rainbow-tel-aviv/`.
 9. Confirm the 3D block appears immediately after the project profile header and before the article body.
 10. Confirm no horizontal overflow at 390px and 1440px.
-11. Click a tower plate and confirm it selects the matching floor.
-12. If the facade SVG is visible, click a facade polygon and confirm it selects the same unit as the console card.
-13. Select a unit, open the view panel, click spec, drawing, and advisors.
-14. Submit a test lead and confirm the lead contains `card_id`, `unit`, `floor`, `rooms`, `sqm`, `budget`, `timeline`, `advisor`, `purchase_intent`, `reservation_state`, `view_bearing`, and `view_altitude_m`.
-15. Confirm the owner email includes the unit details.
-16. If `nadlan_feature_offers` is ON, confirm a private `nadlan_offer` was created with `offer_status=non_binding_inquiry`, `offer_source_lead_id=<lead_id>`, and `offer_amount=0`.
+11. Confirm the facade is not cropped on the left at desktop or mobile widths.
+12. Confirm apartment bays/floor bands are legible enough to read as a residential selector, not abstract decoration.
+13. Click a tower plate and confirm it selects the matching floor.
+14. If the facade SVG is visible, click a facade polygon and confirm it selects the same unit as the console card.
+15. Select a unit, open the view panel, click spec, drawing, and advisors.
+16. Confirm the drawer shows building, availability, market/source context when present.
+17. Submit a test lead and confirm the lead contains `card_id`, `unit`, `floor`, `rooms`, `sqm`, `building`, `availability`, `market_note`, `budget`, `timeline`, `advisor`, `purchase_intent`, `reservation_state`, `view_bearing`, and `view_altitude_m`.
+18. Confirm the owner email includes the unit details.
+19. If `nadlan_feature_offers` is ON, confirm a private `nadlan_offer` was created with `offer_status=non_binding_inquiry`, `offer_source_lead_id=<lead_id>`, `offer_amount=0`, and unit/building context.
 
 ## Honest Boundary
 

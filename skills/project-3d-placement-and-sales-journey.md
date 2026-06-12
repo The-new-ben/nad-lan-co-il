@@ -60,3 +60,29 @@ Locked direction:
 - v1.60.0 is the first real commerce phase: Purchase Screen, non-binding reservation state through offers, WhatsApp OTP, optional KYC seam, optional developer-side refundable hold, e-sign summary, buyer status, and professionals panel.
 - For real high-floor Tel Aviv views, use a future CesiumJS + Google Photorealistic 3D Tiles module. Mapbox remains good for locator/overview maps, but Tel Aviv OSM height coverage is not enough for a credible apartment-view demo by itself.
 - After v1.60.0, build Buying Copilot before Bidding Round because the buyer-side magic is more important for project-manager demos than the professional-auction revenue mechanic.
+
+## Madlan / Market Data Mapping - 2026-06-12
+
+The Rainbow model now supports richer unit fields so Madlan-style project facts, developer inventory, or official/open transaction rows can be mapped without changing code:
+
+- `building`
+- `availability`
+- `note`
+- `market_note`
+- `source_note`
+
+Use these fields as follows:
+
+- `building`: tower, boutique building, block, lot, or entrance.
+- `availability`: public label such as `זמינות לפי פנייה`, `בתהליך בדיקה`, or a developer-approved status.
+- `note`: buyer-facing description of the unit type, view, line, or planning consideration.
+- `market_note`: market context such as comparable transaction, average price per sqm, or verified price note.
+- `source_note`: source class and reliability, for example developer inventory, official/open transaction, Madlan subscription, permit, or illustrative demo.
+
+Rights rule:
+
+- Developer or owner-approved inventory can drive live availability.
+- Official/open transaction data can be shown as market context.
+- Paid subscription rows can be used internally for mapping and QA unless the owner confirms publication rights.
+- Never infer current availability from a historic transaction row.
+- Never show exact price or exact transaction rows publicly unless the source rights and meaning are clear.
