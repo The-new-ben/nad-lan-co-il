@@ -382,6 +382,14 @@ if ( ! function_exists( 'nadlan_p3d_render' ) ) {
 					</figure>
 				<?php endif; ?>
 			</div>
+			<div class="nlp3d-viewframe nlp3d-stage-viewframe" hidden>
+				<div class="nlp3d-view-sky"></div>
+				<div class="nlp3d-view-lines"></div>
+				<div class="nlp3d-view-map" hidden aria-label="מבט חי מגובה הדירה"></div>
+				<span class="nlp3d-view-badge" hidden>3D חי · גרירה לסיבוב</span>
+				<button type="button" class="nlp3d-stage-return" data-action="return-model">חזרה למודל</button>
+				<p class="nlp3d-view-copy"></p>
+			</div>
 		</div>
 
 		<aside class="nlp3d-console" aria-label="בחירת דירה">
@@ -405,13 +413,6 @@ if ( ! function_exists( 'nadlan_p3d_render' ) ) {
 				<dl class="nlp3d-facts"></dl>
 				<a class="nlp3d-plan" href="#" target="_blank" rel="noopener" hidden>פתיחת תוכנית דירה</a>
 				<button type="button" class="nlp3d-view-toggle" data-action="view-from-unit">מבט מהדירה</button>
-				<div class="nlp3d-viewframe" hidden>
-					<div class="nlp3d-view-sky"></div>
-					<div class="nlp3d-view-lines"></div>
-					<div class="nlp3d-view-map" hidden aria-label="מבט חי מגובה הדירה"></div>
-					<span class="nlp3d-view-badge" hidden>3D חי · גרירה לסיבוב, Ctrl לזום</span>
-					<p class="nlp3d-view-copy"></p>
-				</div>
 				<div class="nlp3d-tools" aria-label="מידע נוסף על הדירה">
 					<button type="button" class="nlp3d-tool is-active" data-tool="spec" data-action="unit-spec">מפרט</button>
 					<button type="button" class="nlp3d-tool" data-tool="drawing" data-action="unit-drawing">תוכנית</button>
@@ -595,6 +596,14 @@ CSS;
 	}
 }
 
+if ( ! function_exists( 'nadlan_p3d_stability_css' ) ) {
+	function nadlan_p3d_stability_css() {
+		return <<<'CSS'
+@media(max-width:1411px){.nlp3d.nlp3d-premium{width:calc(100vw - 32px)!important;max-width:none!important;margin-left:calc(50% - 50vw + 16px)!important;margin-right:calc(50% - 50vw + 16px)!important}}@media(min-width:1412px){.nlp3d.nlp3d-premium{width:1380px!important;max-width:1380px!important;margin-left:calc(50% - 690px)!important;margin-right:calc(50% - 690px)!important}}.nlp3d.nlp3d-premium{margin-block:24px 46px!important;border-radius:30px!important;overflow:hidden!important}.nlp3d.nlp3d-premium .nlp3d-shell{grid-template-columns:minmax(230px,.78fr) minmax(520px,1.24fr) minmax(320px,.92fr)!important;grid-template-areas:"copy stage console"!important;gap:18px!important;padding:28px!important;align-items:start!important}.nlp3d.nlp3d-premium .nlp3d-copy,.nlp3d.nlp3d-premium .nlp3d-stage-wrap,.nlp3d.nlp3d-premium .nlp3d-console{min-width:0!important}.nlp3d.nlp3d-premium .nlp3d-stage-wrap{position:relative!important;min-height:min(820px,68vw)!important;overflow:hidden!important;isolation:isolate!important}.nlp3d.nlp3d-premium .nlp3d-console{max-height:min(820px,68vw)!important;overflow:auto!important;overscroll-behavior:contain;align-self:start!important}.nlp3d.nlp3d-premium .nlp3d-detail,.nlp3d.nlp3d-premium .nlp3d-lead-form,.nlp3d.nlp3d-premium .nlp3d-selection-dock{width:100%!important;max-width:100%!important}.nlp3d.nlp3d-premium .nlp3d-stage-viewframe{position:absolute!important;inset:0!important;z-index:12!important;width:100%!important;height:100%!important;min-height:0!important;margin:0!important;contain:layout paint;isolation:isolate;border:1px solid rgba(234,216,163,.42)!important;background:radial-gradient(circle at 18% 20%,rgba(255,255,255,.16),transparent 24%),linear-gradient(135deg,rgba(31,91,108,.72),rgba(7,20,22,.96))!important;box-shadow:0 24px 62px rgba(0,0,0,.36)!important}.nlp3d.nlp3d-premium .nlp3d-stage-viewframe[hidden]{display:none!important}.nlp3d.nlp3d-premium .nlp3d-stage-wrap.is-live-view .nlp3d-scene{opacity:0!important;pointer-events:none!important}.nlp3d.nlp3d-premium .nlp3d-stage-viewframe .nlp3d-view-map,.nlp3d.nlp3d-premium .nlp3d-stage-viewframe .mapboxgl-map,.nlp3d.nlp3d-premium .nlp3d-stage-viewframe .mapboxgl-canvas-container,.nlp3d.nlp3d-premium .nlp3d-stage-viewframe .mapboxgl-canvas{position:absolute!important;inset:0!important;width:100%!important;height:100%!important;max-width:100%!important}.nlp3d.nlp3d-premium .nlp3d-stage-return{position:absolute;z-index:6;top:14px;left:62px;border:1px solid rgba(234,216,163,.42);background:rgba(7,15,16,.78);color:#ffe8a6;min-height:40px;padding:8px 13px;font-weight:800;cursor:pointer;backdrop-filter:blur(12px)}.nlp3d.nlp3d-premium .nlp3d-stage-return:hover,.nlp3d.nlp3d-premium .nlp3d-stage-return:focus-visible{outline:2px solid rgba(255,255,255,.68);outline-offset:2px;background:rgba(234,216,163,.18)}.nlp3d-map-error{position:absolute;inset:0;z-index:3;display:grid;place-items:center;text-align:center;padding:22px;color:#fff3c8;background:linear-gradient(135deg,rgba(7,20,22,.92),rgba(17,14,8,.86));font-size:14px;line-height:1.6}.nlp3d.nlp3d-premium .nlp3d-facade{inset:46px 6% 42px!important}.nlp3d.nlp3d-premium .nlp3d-facade img{max-width:100%;max-height:100%;object-fit:contain!important}.nlp3d.nlp3d-premium .nlp3d-tower{height:min(520px,58vw);bottom:92px;filter:drop-shadow(0 26px 32px rgba(0,0,0,.34))}.nlp3d.nlp3d-premium .nlp3d-tower:before{content:"";position:absolute;left:4%;right:4%;bottom:-44px;height:54px;border:1px solid rgba(234,216,163,.28);background:linear-gradient(180deg,rgba(234,216,163,.15),rgba(12,30,30,.72));box-shadow:inset 0 1px 0 rgba(255,255,255,.12);transform:translateZ(18px) skewX(-8deg)}.nlp3d.nlp3d-premium .nlp3d-tower:after{content:"";position:absolute;left:15%;right:15%;top:-28px;height:30px;border:1px solid rgba(234,216,163,.34);background:linear-gradient(90deg,rgba(234,216,163,.18),rgba(255,255,255,.08),rgba(234,216,163,.12));box-shadow:0 0 22px rgba(234,216,163,.12);transform:translateZ(80px) skewX(-6deg)}.nlp3d.nlp3d-premium .nlp3d-plate{height:13px;border-color:rgba(234,216,163,.34);box-shadow:inset 1px 0 rgba(255,255,255,.18),inset -1px 0 rgba(234,216,163,.22),0 4px 10px rgba(0,0,0,.25)}.nlp3d.nlp3d-premium .nlp3d-plate:after{opacity:.72!important;background:repeating-linear-gradient(90deg,rgba(234,216,163,.72) 0 5px,rgba(255,255,255,.18) 5px 7px,transparent 7px 13px)!important}.nlp3d.nlp3d-premium .nlp3d-plate:before{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(255,255,255,.28),transparent 18%,transparent 76%,rgba(234,216,163,.24));pointer-events:none}.nlp3d.nlp3d-premium .nlp3d-floor-strip{max-height:156px;overflow:auto;padding-inline-end:3px}.nlp3d.nlp3d-premium .nlp3d-units{max-height:260px;overflow:auto;padding-inline-end:3px}@media(max-width:1180px){.nlp3d.nlp3d-premium{width:calc(100vw - 26px)!important;margin-left:calc(50% - 50vw + 13px)!important;margin-right:calc(50% - 50vw + 13px)!important}.nlp3d.nlp3d-premium .nlp3d-shell{grid-template-columns:1fr minmax(420px,.95fr)!important;grid-template-areas:"copy stage" "console console"!important}.nlp3d.nlp3d-premium .nlp3d-stage-wrap{min-height:620px!important}.nlp3d.nlp3d-premium .nlp3d-console{display:grid!important;grid-template-columns:minmax(240px,.72fr) minmax(360px,1fr)!important;max-height:none!important;overflow:visible!important}.nlp3d.nlp3d-premium .nlp3d-selection-dock,.nlp3d.nlp3d-premium .nlp3d-console-head,.nlp3d.nlp3d-premium .nlp3d-floor-strip,.nlp3d.nlp3d-premium .nlp3d-units{grid-column:1!important}.nlp3d.nlp3d-premium .nlp3d-detail,.nlp3d.nlp3d-premium .nlp3d-lead-form{grid-column:2!important}}@media(max-width:760px){.nlp3d.nlp3d-premium{width:calc(100vw - 16px)!important;margin-left:calc(50% - 50vw + 8px)!important;margin-right:calc(50% - 50vw + 8px)!important;border-radius:20px!important}.nlp3d.nlp3d-premium .nlp3d-shell{display:grid!important;grid-template-columns:1fr!important;grid-template-areas:"copy" "stage" "console"!important;padding:14px!important;gap:14px!important}.nlp3d.nlp3d-premium .nlp3d-copy{grid-area:copy!important}.nlp3d.nlp3d-premium .nlp3d-stage-wrap{grid-area:stage!important;min-height:540px!important}.nlp3d.nlp3d-premium .nlp3d-console{grid-area:console!important;display:flex!important;max-height:none!important;overflow:visible!important}.nlp3d.nlp3d-premium .nlp3d-scene{height:540px!important}.nlp3d.nlp3d-premium .nlp3d-facade{inset:58px 4% 42px!important}.nlp3d.nlp3d-premium .nlp3d-stage-viewframe{min-height:0!important}.nlp3d.nlp3d-premium .nlp3d-floor-strip,.nlp3d.nlp3d-premium .nlp3d-units{max-height:none!important;overflow:visible!important}.nlp3d.nlp3d-premium .nlp3d-showcase{padding:0 14px 18px!important}}@media(max-width:420px){.nlp3d.nlp3d-premium .nlp3d-stage-wrap{min-height:500px!important}.nlp3d.nlp3d-premium .nlp3d-scene{height:500px!important}}
+CSS;
+	}
+}
+
 if ( ! function_exists( 'nadlan_p3d_inline_js' ) ) {
 	function nadlan_p3d_inline_js( $rest_url ) {
 		$js = <<<'JS'
@@ -706,6 +715,8 @@ if ( ! function_exists( 'nadlan_p3d_inline_js' ) ) {
 		var viewToggle=root.querySelector('.nlp3d-view-toggle');
 		var viewFrame=root.querySelector('.nlp3d-viewframe');
 		var viewCopy=root.querySelector('.nlp3d-view-copy');
+		var stageWrap=root.querySelector('.nlp3d-stage-wrap');
+		var stageReturn=root.querySelector('.nlp3d-stage-return');
 		var toolPanel=root.querySelector('.nlp3d-tool-panel');
 		var toolButtons=[].slice.call(root.querySelectorAll('.nlp3d-tool'));
 		var viewMap=root.querySelector('.nlp3d-view-map');
@@ -1029,9 +1040,14 @@ if ( ! function_exists( 'nadlan_p3d_inline_js' ) ) {
 			viewMap.removeAttribute('hidden');
 			viewMap.style.display='block';
 			loadMapboxGl(function(){
-				if(!window.mapboxgl){viewMap.hidden=true;return}
+				if(!window.mapboxgl){
+					viewMap.hidden=false;
+					viewMap.innerHTML='<div class="nlp3d-map-error">המפה התלת ממדית לא נטענה כרגע. אפשר עדיין לבחור דירה, להשוות נתונים ולשלוח פנייה.</div>';
+					return;
+				}
 				try{
 					if(!liveMap){
+						viewMap.innerHTML='';
 						mapboxgl.accessToken=meta.mapbox_token;
 						liveMap=new mapboxgl.Map({container:viewMap,style:'mapbox://styles/mapbox/standard',center:[Number(meta.lng),Number(meta.lat)],zoom:14.5,pitch:62,bearing:0,antialias:true,attributionControl:true,dragRotate:true,touchPitch:true,touchZoomRotate:true,pitchWithRotate:true});
 						liveMap.addControl(new mapboxgl.NavigationControl({visualizePitch:true,showCompass:true,showZoom:true}),'top-left');
@@ -1048,7 +1064,10 @@ if ( ! function_exists( 'nadlan_p3d_inline_js' ) ) {
 					}
 					window.requestAnimationFrame(function(){if(liveMap){liveMap.resize();applyLiveCamera()}});
 					window.setTimeout(function(){if(liveMap){liveMap.resize();applyLiveCamera()}},260);
-				}catch(err){viewMap.hidden=true}
+				}catch(err){
+					viewMap.hidden=false;
+					viewMap.innerHTML='<div class="nlp3d-map-error">המפה התלת ממדית לא נטענה כרגע. אפשר עדיין לבחור דירה, להשוות נתונים ולשלוח פנייה.</div>';
+				}
 			});
 		}
 		function renderUnitView(){
@@ -1059,13 +1078,30 @@ if ( ! function_exists( 'nadlan_p3d_inline_js' ) ) {
 			var badge=root.querySelector('.nlp3d-view-badge');
 			if(badge){badge.hidden=!live}
 			if(live){
-				viewCopy.textContent='גובה מצלמה '+cam.altitude_m+' מ׳, כיוון '+cam.bearing+'° ('+view+'). גררו לסיבוב, החזיקו Ctrl לזום. בניינים מסביב מבוססים על מודל מפה ציבורי.';
+				viewCopy.textContent='גובה מצלמה '+cam.altitude_m+' מ׳, כיוון '+cam.bearing+'° ('+view+'). גררו לסיבוב, גללו או צבטו לזום. בניינים מסביב מבוססים על מודל מפה ציבורי.';
 			}else{
 				var cameraNote=(cam.lat&&cam.lng)?(' פרמטרי המבט מוכנים: גובה '+cam.altitude_m+' מ׳, כיוון '+cam.bearing+'°. המבט החי יופעל כאשר מפתח המפות יוזן במערכת.'):'';
 				viewCopy.textContent='מבט המחשה מהיחידה: '+view+'. זהו מצב תצוגה תכנוני עד שיוזנו הדמיות ותוכניות מאושרות.'+cameraNote;
 			}
 			if(viewFrame){viewFrame.dataset.view=(activeUnit.view||'city').toLowerCase()}
 			renderLiveView();
+		}
+		function setLiveView(open,source){
+			if(!viewFrame||!stageWrap){return}
+			viewFrame.hidden=!open;
+			stageWrap.classList.toggle('is-live-view',open);
+			root.classList.toggle('is-live-view',open);
+			if(viewToggle){
+				viewToggle.classList.toggle('is-active',open);
+				viewToggle.setAttribute('aria-pressed',open?'true':'false');
+				viewToggle.textContent=open?'\u05d7\u05d6\u05e8\u05d4 \u05dc\u05de\u05d5\u05d3\u05dc':'\u05de\u05d1\u05d8 \u05de\u05d4\u05d3\u05d9\u05e8\u05d4';
+			}
+			if(open){
+				renderUnitView();
+				window.requestAnimationFrame(function(){if(liveMap){liveMap.resize();applyLiveCamera()}});
+				window.setTimeout(function(){if(liveMap){liveMap.resize();applyLiveCamera()}},120);
+			}
+			track('view_from_unit',{unit:activeUnit&&activeUnit.id,open:open,live:canLiveView(),source:source||'toggle'});
 		}
 		function setAngle(angle){
 			currentAngle=Math.max(-68,Math.min(68,angle));
@@ -1122,12 +1158,11 @@ if ( ! function_exists( 'nadlan_p3d_inline_js' ) ) {
 		}
 		if(viewToggle&&viewFrame){
 			viewToggle.addEventListener('click',function(){
-				viewFrame.hidden=!viewFrame.hidden;
-				viewToggle.classList.toggle('is-active',!viewFrame.hidden);
-				viewToggle.textContent=viewFrame.hidden?'מבט מהדירה':'סגירת מבט מהדירה';
-				renderUnitView();
-				track('view_from_unit',{unit:activeUnit&&activeUnit.id,open:!viewFrame.hidden,live:canLiveView()});
+				setLiveView(viewFrame.hidden,'toggle');
 			});
+		}
+		if(stageReturn){
+			stageReturn.addEventListener('click',function(){setLiveView(false,'return')});
 		}
 		var wnext=root.querySelector('.nlp3d-wnext');
 		var wback=root.querySelector('.nlp3d-wback');
@@ -1245,11 +1280,7 @@ if ( ! function_exists( 'nadlan_p3d_inline_js' ) ) {
 		renderAll(true);
 		renderCompareTray();
 		if(viewFrame&&viewToggle&&canLiveView()){
-			viewFrame.hidden=false;
-			viewFrame.removeAttribute('hidden');
-			viewToggle.classList.add('is-active');
-			viewToggle.textContent='סגירת מבט מהדירה';
-			renderUnitView();
+			setLiveView(true,'auto');
 		}
 	}
 	function boot(){document.querySelectorAll('.nlp3d-premium').forEach(init)}
@@ -1267,7 +1298,7 @@ add_action(
 			return;
 		}
 
-		wp_register_style( 'nadlan-p3d', '', array(), '1.60.2' );
+		wp_register_style( 'nadlan-p3d', '', array(), '1.60.3' );
 		wp_enqueue_style( 'nadlan-p3d' );
 		wp_add_inline_style( 'nadlan-p3d', nadlan_p3d_inline_css() );
 		wp_add_inline_style( 'nadlan-p3d', '.nlp3d-drag-note{display:inline-flex;align-items:center;min-height:44px;color:rgba(246,239,226,.72);font-size:12px;padding:0 6px}.nlp3d-scene{touch-action:none;cursor:grab}.nlp3d-scene.is-dragging{cursor:grabbing}.nlp3d-actions{grid-template-columns:1fr}.nlp3d-view-toggle{margin-top:12px;border:1px solid rgba(234,216,163,.36);background:rgba(255,255,255,.06);color:#ffe8a6;padding:9px 12px;cursor:pointer}.nlp3d-view-toggle.is-active{background:rgba(234,216,163,.18);color:#fff}.nlp3d-viewframe{position:relative;margin-top:12px;min-height:150px;overflow:hidden;border:1px solid rgba(234,216,163,.18);background:linear-gradient(180deg,rgba(41,112,139,.58),rgba(8,25,25,.92));isolation:isolate}.nlp3d-view-sky{position:absolute;inset:0;background:radial-gradient(circle at 18% 22%,rgba(255,255,255,.24),transparent 18%),linear-gradient(135deg,rgba(39,107,130,.42),rgba(18,50,43,.1));opacity:.86}.nlp3d-view-lines{position:absolute;inset:auto -8% 18% -8%;height:46%;border-top:1px solid rgba(234,216,163,.28);background:linear-gradient(160deg,rgba(234,216,163,.1),transparent 54%);transform:skewY(-8deg)}.nlp3d-view-copy{position:absolute;right:14px;left:14px;bottom:12px;margin:0;color:#fff8dc;font-size:13px;line-height:1.5;text-shadow:0 1px 12px rgba(0,0,0,.55)}@media(max-width:600px){.nlp3d-drag-note{flex-basis:100%;min-height:24px}.nlp3d-viewframe{min-height:130px}}' );
@@ -1278,8 +1309,9 @@ add_action(
 		wp_add_inline_style( 'nadlan-p3d', '.nlp3d-plate{cursor:pointer}.nlp3d-plate:hover,.nlp3d-plate:focus-visible{border-color:#ffe9ad;background:linear-gradient(135deg,rgba(234,216,163,.5),rgba(255,255,255,.16));box-shadow:0 0 14px rgba(234,216,163,.3);outline:none}.nlp3d-scene:after{content:"";position:absolute;inset:0;pointer-events:none;background:radial-gradient(ellipse at 50% 38%,transparent 46%,rgba(2,10,10,.42) 100%)}.nlp3d-scene .nlp3d-horizon{box-shadow:0 0 38px 6px rgba(234,216,163,.1)}.nlp3d-viewframe{min-height:340px;border:1px solid rgba(234,216,163,.32);box-shadow:0 18px 48px rgba(0,0,0,.32)}.nlp3d-view-map{position:absolute;inset:0;z-index:2;cursor:grab}.nlp3d-view-map:active{cursor:grabbing}.nlp3d-view-map .mapboxgl-canvas{outline:none}.nlp3d-view-map .mapboxgl-cooperative-gesture-screen{display:none!important}.nlp3d-view-map .mapboxgl-ctrl-top-left{margin:10px}.nlp3d-view-map .mapboxgl-ctrl-group{background:rgba(7,15,16,.78);border:1px solid rgba(234,216,163,.34);box-shadow:0 4px 14px rgba(0,0,0,.42)}.nlp3d-view-map .mapboxgl-ctrl-group button{background:transparent;color:#fff;filter:invert(.92) hue-rotate(180deg)}.nlp3d-view-map .mapboxgl-ctrl-attrib{background:rgba(7,15,16,.62);color:#cfc29e;font-size:10px}.nlp3d-view-map .mapboxgl-ctrl-attrib a{color:#ffe8a6}.nlp3d-view-badge{position:absolute;z-index:4;top:10px;right:10px;background:linear-gradient(135deg,#ead8a3,#b99043);color:#15120c;font-weight:800;font-size:12px;padding:6px 10px;letter-spacing:.02em;box-shadow:0 6px 18px rgba(0,0,0,.42);pointer-events:none}.nlp3d-view-badge[hidden]{display:none}.nlp3d-view-copy{position:absolute;z-index:3;right:12px;left:12px;bottom:8px;margin:0;padding:9px 12px;background:linear-gradient(180deg,rgba(7,15,16,0),rgba(7,15,16,.82));color:#fff8dc;font-size:12.5px;line-height:1.5}.nlp3d-view-map .mapboxgl-canvas{outline:none}.nlp3d-viewframe{min-height:240px}.nlp3d-view-copy{z-index:3}.nlp3d-unit-row{display:grid;grid-template-columns:1fr auto;gap:7px;align-items:stretch}.nlp3d-compare-add{border:1px solid rgba(234,216,163,.26);background:rgba(255,255,255,.05);color:#e9dcb4;font-size:12px;padding:6px 9px;cursor:pointer;min-width:58px}.nlp3d-compare-add.is-on,.nlp3d-compare-add:hover,.nlp3d-compare-add:focus-visible{background:rgba(234,216,163,.22);color:#fff;outline:none}.nlp3d-compare-tray{display:flex;flex-wrap:wrap;align-items:center;gap:8px;border:1px solid rgba(234,216,163,.2);background:rgba(0,0,0,.18);padding:9px 11px;margin-top:2px}.nlp3d-compare-tray[hidden]{display:none}.nlp3d-compare-label{color:#cfc29e;font-size:12px}.nlp3d-compare-chip{border:1px solid rgba(234,216,163,.3);background:rgba(234,216,163,.14);color:#fff3c8;font-size:12px;padding:5px 9px;cursor:pointer}.nlp3d-compare-open{border:1px solid rgba(234,216,163,.4);background:linear-gradient(135deg,rgba(234,216,163,.28),rgba(185,144,67,.22));color:#fff;font-size:13px;padding:7px 12px;cursor:pointer;margin-inline-start:auto}.nlp3d-compare-open:disabled{opacity:.5;cursor:default}.nlp3d-overlay{position:fixed;inset:0;z-index:99990;display:flex;align-items:center;justify-content:center;background:rgba(4,12,12,.78);backdrop-filter:blur(6px);padding:18px}.nlp3d-overlay[hidden]{display:none}.nlp3d-overlay-box{position:relative;width:min(860px,100%);max-height:86vh;overflow:auto;background:linear-gradient(135deg,#0a1d1d,#13100b);border:1px solid rgba(234,216,163,.32);box-shadow:0 32px 90px rgba(0,0,0,.5);padding:22px;color:#f6efe2}.nlp3d-overlay-box h3{margin:0 0 14px;font-family:Georgia,"Times New Roman",serif;font-weight:500;font-size:24px;color:#ffe9ad}.nlp3d-overlay-close{position:absolute;top:10px;left:12px;border:1px solid rgba(234,216,163,.34);background:rgba(255,255,255,.06);color:#ffe8a6;width:38px;height:38px;font-size:19px;cursor:pointer}.nlp3d-compare-table table{width:100%;border-collapse:collapse}.nlp3d-compare-table th,.nlp3d-compare-table td{border:1px solid rgba(234,216,163,.18);padding:9px 10px;text-align:right;font-size:13.5px}.nlp3d-compare-table td:first-child{color:#cfc29e;font-size:12.5px;width:120px}.nlp3d-compare-pick{border:1px solid rgba(234,216,163,.36);background:rgba(234,216,163,.14);color:#fff;font-weight:700;padding:8px 10px;cursor:pointer;width:100%}.nlp3d-compare-pick:hover,.nlp3d-compare-pick:focus-visible{background:rgba(234,216,163,.3);outline:none}.nlp3d-plan-body img{display:block;width:100%;height:auto;background:#fff}.nlp3d-plan-body iframe{display:block;width:100%;height:64vh;border:0;background:#fff}.nlp3d-wdots{grid-column:1/-1;display:flex;gap:7px;margin:0 0 2px}.nlp3d-wdots span{width:26px;height:5px;background:rgba(234,216,163,.18)}.nlp3d-wdots span.is-on{background:linear-gradient(90deg,#ead8a3,#b99043)}.nlp3d-wstep{grid-column:1/-1;display:grid;grid-template-columns:1fr 1fr;gap:10px}.nlp3d-wstep[hidden]{display:none}.nlp3d-wnext{grid-column:1/-1;border:0;background:linear-gradient(135deg,#ead8a3,#b99043);color:#15120c;font-weight:800;padding:12px 14px;cursor:pointer}.nlp3d-wback{grid-column:1/-1;border:0;background:transparent;color:#cfc29e;font-size:12.5px;cursor:pointer;text-decoration:underline;padding:4px}.nlp3d-advisors{grid-column:1/-1;border:1px solid rgba(234,216,163,.2);padding:10px 12px;margin:0;display:grid;grid-template-columns:1fr 1fr;gap:8px}.nlp3d-advisors legend{color:#e9dcb4;font-size:12.5px;padding:0 6px}.nlp3d-advisors label{display:flex;align-items:center;gap:7px;color:#fff3d0;font-size:13px;min-height:30px;cursor:pointer}.nlp3d-advisors input{width:17px;height:17px;accent-color:#c4a15a}.nlp3d-deal-steps span.is-done{background:rgba(120,180,120,.2);border-color:rgba(160,220,160,.45);color:#dfffe0}.nlp3d-deal-steps span.is-done:before{content:"✓ "}@media(max-width:600px){.nlp3d-wstep,.nlp3d-advisors{grid-template-columns:1fr}.nlp3d-overlay{padding:8px}.nlp3d-overlay-box{padding:16px;max-height:92vh}.nlp3d-compare-table th,.nlp3d-compare-table td{padding:7px 7px;font-size:12.5px}.nlp3d-viewframe{min-height:200px}}' );
 		wp_add_inline_style( 'nadlan-p3d', nadlan_p3d_flagship_css() );
 		wp_add_inline_style( 'nadlan-p3d', '.nlp3d-selection-dock{border:1px solid rgba(234,216,163,.24);background:linear-gradient(135deg,rgba(255,255,255,.09),rgba(255,255,255,.035));box-shadow:inset 0 1px 0 rgba(255,255,255,.08),0 16px 34px rgba(0,0,0,.16);padding:14px 14px;margin-bottom:14px;display:grid;grid-template-columns:1fr auto;gap:8px 12px;align-items:center}.nlp3d-selection-dock span{grid-column:1/-1;color:#c4a15a;font-size:12px;letter-spacing:.04em}.nlp3d-dock-title{font-family:Georgia,"Times New Roman",serif;color:#fff5cf;font-size:21px;font-weight:500;line-height:1.15}.nlp3d-dock-meta{display:block;color:#d8ccb0;line-height:1.45}.nlp3d-dock-actions{display:flex;gap:8px;align-items:center;justify-content:flex-end}.nlp3d-dock-actions button{border:1px solid rgba(234,216,163,.34);background:rgba(255,255,255,.055);color:#ffe8a6;min-height:38px;padding:7px 11px;cursor:pointer}.nlp3d-dock-actions .nlp3d-dock-action{background:linear-gradient(135deg,#ead8a3,#b99043);border:0;color:#15120c;font-weight:800}.nlp3d-dock-actions button:hover,.nlp3d-dock-actions button:focus-visible{outline:2px solid rgba(255,255,255,.68);outline-offset:2px;filter:brightness(1.06)}@media(max-width:760px){.nlp3d-selection-dock{grid-template-columns:1fr}.nlp3d-dock-actions{justify-content:stretch}.nlp3d-dock-actions button{flex:1}}' );
+		wp_add_inline_style( 'nadlan-p3d', nadlan_p3d_stability_css() );
 
-		wp_register_script( 'nadlan-p3d', '', array(), '1.60.2', true );
+		wp_register_script( 'nadlan-p3d', '', array(), '1.60.3', true );
 		wp_enqueue_script( 'nadlan-p3d' );
 		wp_add_inline_script( 'nadlan-p3d', nadlan_p3d_inline_js( esc_url_raw( rest_url( 'nadlan/v1/lead' ) ) ) );
 	}
@@ -1381,6 +1413,8 @@ add_filter(
 			'lead_unit_payload' => true,
 			'view_from_unit'   => trim( (string) get_option( 'nadlan_mapbox_token', '' ) ) !== '' ? 'mapbox_live' : 'awaiting_token',
 			'mapbox_canvas_fix' => true,
+			'layout_contained'  => true,
+			'stage_live_view'   => true,
 			'flagship_showcase' => true,
 			'owner_request_form' => true,
 			'selection_dock'   => true,

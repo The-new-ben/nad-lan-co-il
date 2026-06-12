@@ -231,3 +231,25 @@ For every cloned project, verify:
   services should remain advisor/package options inside the inquiry flow.
 - Do not add a payment button for apartments or services unless the legal, billing, fulfillment,
   and owner/developer authorization rails are already implemented.
+
+### WordPress Container Gate
+
+- Do not rely only on selectors like `.entry-content > .nlp3d`. The project model can be inserted
+  inside plugin profile wrappers, theme blocks, or shortcode containers. The final layout override
+  must also target `.nlp3d.nlp3d-premium` directly.
+- At desktop width, measure `.nlp3d`, `.nlp3d-shell`, `.nlp3d-stage-wrap`, `.nlp3d-console`,
+  `.nlp3d-viewframe`, and `.nlp3d-view-map`. No child may have a negative x coordinate and the
+  live view map must be in the main stage, not trapped inside the side console. Gate: the live
+  `.nlp3d-view-map` should be at least 60% of the stage width when open.
+- Mapbox warnings are not failures by themselves. A real failure is no `.mapboxgl-canvas`, a hidden
+  `.nlp3d-view-map`, or an off-canvas map rectangle. If Mapbox cannot load, show an honest inline
+  fallback while keeping unit selection, comparison, sun insight, and inquiry working.
+
+### Clone And Translation Standard
+
+- Treat the 3D module as a replicable product template for every large project. Data changes per
+  project; the interaction model stays stable.
+- Before scaling beyond Rainbow/Sde Dov, extract public UI labels into translation-ready strings or
+  filters so Hebrew, English, French, and Russian pages can share one data contract.
+- Do not hard-code project-specific marketing text into the 3D engine. Project copy belongs in the
+  card body/meta; the engine renders labels, states, units, views, and actions.
