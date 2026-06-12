@@ -60,6 +60,52 @@ if ( ! function_exists( 'nadlan_offers_extend_window' ) ) {
 	}
 }
 
+if ( ! function_exists( 'nadlan_offers_capture_nonbinding_inquiry' ) ) {
+	function nadlan_offers_capture_nonbinding_inquiry( $lead_id, $card_id, $fields ) {
+		$lead_id = (int) $lead_id;
+		$card_id = (int) $card_id;
+		if ( $lead_id <= 0 || $card_id <= 0 || ! nadlan_offers_enabled() ) { return 0; }
+		if ( sanitize_key( (string) ( $fields['reservation_state'] ?? '' ) ) !== 'non_binding_inquiry' ) { return 0; }
+		$card = get_post( $card_id );
+		if ( ! $card || ! in_array( $card->post_type, nadlan_offers_card_types(), true ) ) { return 0; }
+		if ( ! add_post_meta( $lead_id, 'nonbinding_offer_attempted', 1, true ) ) {
+			return (int) get_post_meta( $lead_id, 'nonbinding_offer_id', true );
+		}
+		$oid = wp_insert_post( array(
+			'post_type'   => 'nadlan_offer',
+			'post_status' => 'private',
+			'post_title'  => sprintf( 'בדיקת רכישה לא מחייבת #%d לנכס %d', $lead_id, $card_id ),
+		), true );
+		if ( ! $oid || is_wp_error( $oid ) ) { return 0; }
+		foreach ( array(
+			'offer_card_id'       => $card_id,
+			'offer_amount'        => 0,
+			'offer_name'          => sanitize_text_field( (string) ( $fields['name'] ?? '' ) ),
+			'offer_phone'         => preg_replace( '/[^0-9+\-]/', '', (string) ( $fields['phone'] ?? '' ) ),
+			'offer_email'         => sanitize_email( (string) ( $fields['email'] ?? '' ) ),
+			'offer_message'       => sanitize_textarea_field( (string) ( $fields['message'] ?? '' ) ),
+			'offer_status'        => 'non_binding_inquiry',
+			'offer_source'        => 'project_3d',
+			'offer_source_lead_id'=> $lead_id,
+			'offer_unit'          => sanitize_text_field( (string) ( $fields['unit'] ?? '' ) ),
+			'offer_floor'         => isset( $fields['floor'] ) && $fields['floor'] !== '' ? (int) $fields['floor'] : '',
+			'offer_rooms'         => sanitize_text_field( (string) ( $fields['rooms'] ?? '' ) ),
+			'offer_sqm'           => sanitize_text_field( (string) ( $fields['sqm'] ?? '' ) ),
+			'offer_advisor'       => sanitize_key( (string) ( $fields['advisor'] ?? '' ) ),
+			'offer_created_at'    => time(),
+		) as $k => $v ) {
+			if ( $v !== '' ) { update_post_meta( $oid, $k, $v ); }
+		}
+		update_post_meta( $lead_id, 'nonbinding_offer_id', (int) $oid );
+		do_action( 'nadlan_offer_nonbinding_inquiry', (int) $oid, $lead_id, $card_id, $fields );
+		return (int) $oid;
+	}
+}
+
+add_action( 'nadlan_lead_e2e_captured', function ( $lead_id, $card_id, $fields ) {
+	nadlan_offers_capture_nonbinding_inquiry( $lead_id, $card_id, is_array( $fields ) ? $fields : array() );
+}, 10, 3 );
+
 add_action( 'rest_api_init', function () {
 	register_rest_route( 'nadlan/v1', '/offers', array(
 		'methods' => 'POST', 'permission_callback' => '__return_true',
@@ -145,7 +191,18 @@ add_filter( 'nadlan_hardening_public_post_routes', function ( $routes ) {
 
 add_filter( 'nadlan_config_healthcheck', function ( $out ) {
 	$q = new WP_Query( array( 'post_type' => 'nadlan_offer', 'post_status' => 'private', 'fields' => 'ids', 'posts_per_page' => 1 ) );
-	$out['offers'] = array( 'enabled' => nadlan_offers_enabled(), 'total_offers' => (int) $q->found_posts );
+	$nb = new WP_Query( array(
+		'post_type'      => 'nadlan_offer',
+		'post_status'    => 'private',
+		'fields'         => 'ids',
+		'posts_per_page' => 1,
+		'meta_query'     => array( array( 'key' => 'offer_status', 'value' => 'non_binding_inquiry' ) ),
+	) );
+	$out['offers'] = array(
+		'enabled'              => nadlan_offers_enabled(),
+		'total_offers'         => (int) $q->found_posts,
+		'nonbinding_inquiries' => (int) $nb->found_posts,
+	);
 	wp_reset_postdata();
 	return $out;
 } );
