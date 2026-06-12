@@ -253,3 +253,24 @@ For every cloned project, verify:
   filters so Hebrew, English, French, and Russian pages can share one data contract.
 - Do not hard-code project-specific marketing text into the 3D engine. Project copy belongs in the
   card body/meta; the engine renders labels, states, units, views, and actions.
+
+### v1.60.4 App Selector Standard
+
+- Default state must be the building selector, not the map. The buyer should immediately understand
+  that the building is the product: drag/spin, choose floor, choose unit, then inspect.
+- Mapbox/Cesium/Google views are high-value but cost-bearing. Lazy-init them only after a user asks
+  for `מבט`; do not instantiate map objects on page load.
+- Keep selected-unit state visible on the main stage, not only in a side rail. The stage card should
+  show title, status, view, price/estimate state, and next actions.
+- Avoid nested browser scrollbars inside the module. Panels may wrap or stack, but `.nlp3d-console`,
+  `.nlp3d-units`, `.nlp3d-facts`, and `.nlp3d-tool-panel` must not look like embedded iframes.
+- Floor plates should read as architecture: stable taper, visible active floor, unit markers, and
+  keyboard/focus support. Avoid decorative random-width silhouettes.
+- Pricing is optional and source-aware:
+  - Official unit `price` may display as price.
+  - Unit `price_estimate` or project `project_3d_avg_price_per_sqm` may display only as
+    `אומדן` with a short non-binding note.
+  - If no approved source exists, display `לפי פנייה`.
+- Future authorized market data should map into the existing unit JSON or project-level average
+  estimate fields. Do not publish paid-source transaction rows blindly or imply official developer
+  availability without approval.
