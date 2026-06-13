@@ -33,6 +33,7 @@ def main() -> int:
 
     units = meta.get("project_3d_units", [])
     drawings = meta.get("project_3d_drawings_json", [])
+    environment = meta.get("project_3d_environment_json", {})
 
     print("# Rainbow Tel Aviv CMS Payload")
     print()
@@ -46,6 +47,9 @@ def main() -> int:
     print()
     print("project_3d_drawings_json:")
     print(json.dumps(drawings, ensure_ascii=False, indent=2))
+    print()
+    print("project_3d_environment_json:")
+    print(json.dumps(environment, ensure_ascii=False, indent=2))
     print()
     print("QA after write:")
     print("- Clear cache and hard refresh /projects/rainbow-tel-aviv/.")

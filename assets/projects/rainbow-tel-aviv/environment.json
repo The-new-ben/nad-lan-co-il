@@ -1,16 +1,210 @@
 {
-  "status": "starter",
-  "location": {
-    "lat": 32.1108,
-    "lng": 34.7805,
-    "source": "Sde Dov center placeholder"
+  "status": "prototype_sourced",
+  "updated": "2026-06-14",
+  "project": {
+    "name": "Rainbow Tel Aviv",
+    "district": "רובע שדה דב",
+    "center": {
+      "lat": 32.1108,
+      "lng": 34.7805,
+      "precision": "prototype",
+      "source_note": "Approximate Sde Dov / Rainbow showroom center. Replace with verified project survey pin."
+    }
+  },
+  "source_policy": "Public district and marketing facts only. No paid-source transaction rows, no official inventory claims and no unsourced exact pins.",
+  "district_context": {
+    "planned_units": 16000,
+    "planning_area_dunam": 1300,
+    "planned_population": 40000,
+    "planned_commerce_sqm": 126000,
+    "planned_employment_sqm": 330000,
+    "planned_hotel_rooms": 2000,
+    "planning_status": "Master plan approved in August 2020; detailed plans and permits are project-specific.",
+    "boundaries": {
+      "west": "חוף הים",
+      "north": "רחוב פרופס",
+      "east": "רחוב לוי אשכול",
+      "south": "רחוב ש\"י עגנון"
+    },
+    "sources": [
+      {
+        "label": "עיריית תל אביב-יפו - רובע שדה דב",
+        "url": "https://www.tel-aviv.gov.il/Residents/Development/Pages/SdeDov.aspx",
+        "notes": "Master-plan scale, mixed-use program, parks, public buildings and transport principles."
+      },
+      {
+        "label": "אתר המידע רובע שדה דב - שאלות ותשובות",
+        "url": "https://sdedov.co.il/faq/",
+        "notes": "District boundaries, 16,000 planned homes and division into Eshkol, Central and North areas."
+      },
+      {
+        "label": "Gov.il - תכנית המתאר לרובע שדה דב",
+        "url": "https://www.gov.il/he/pages/sdedov-pr-22072020",
+        "notes": "Government planning announcement: 16,000 homes, public areas, commerce, employment, hotels and green areas."
+      }
+    ]
   },
   "layers": [
-    "sea",
-    "future Sde Dov district",
-    "light rail / transport",
-    "schools and kindergartens",
-    "parks"
+    {
+      "id": "neighbor_projects",
+      "label": "פרויקטים בסביבה",
+      "ui": "clickable_project_chips",
+      "items": [
+        {
+          "id": "rainbow",
+          "name": "Rainbow Tel Aviv",
+          "area": "אשכול",
+          "status": "בשיווק / היתר בנייה לפי אתר המידע",
+          "map_status": "has_project_page",
+          "source_url": "https://sdedov.co.il/projects/",
+          "source_note": "Listed by the Sde Dov information site as a marketed project."
+        },
+        {
+          "id": "dimri-yama",
+          "name": "DIMRI YAMA",
+          "area": "אשכול",
+          "status": "בשיווק",
+          "map_status": "needs_precise_pin",
+          "source_url": "https://sdedov.co.il/projects/",
+          "source_note": "Listed by the Sde Dov information site as a marketed project."
+        },
+        {
+          "id": "gindi-vogue",
+          "name": "GINDI VOGUE",
+          "area": "מרכז",
+          "status": "בשיווק",
+          "map_status": "needs_precise_pin",
+          "source_url": "https://sdedov.co.il/projects/",
+          "source_note": "Listed by the Sde Dov information site as a marketed project."
+        },
+        {
+          "id": "ashira",
+          "name": "ASHIRA BY AVISROR",
+          "area": "אשכול",
+          "status": "בשיווק / הבנייה בעיצומה לפי אתר המידע",
+          "map_status": "needs_precise_pin",
+          "source_url": "https://sdedov.co.il/projects/",
+          "source_note": "Listed by the Sde Dov information site as a marketed project."
+        },
+        {
+          "id": "first-by-hagag",
+          "name": "FIRST BY HAGAG",
+          "area": "מרכז",
+          "status": "בשיווק",
+          "map_status": "needs_precise_pin",
+          "source_url": "https://sdedov.co.il/projects/",
+          "source_note": "Listed by the Sde Dov information site as a marketed project."
+        },
+        {
+          "id": "zohi",
+          "name": "זוהי",
+          "area": "אשכול",
+          "status": "בשיווק",
+          "map_status": "needs_precise_pin",
+          "source_url": "https://sdedov.co.il/projects/",
+          "source_note": "Listed by the Sde Dov information site as a marketed project."
+        },
+        {
+          "id": "utopia",
+          "name": "UTOPIA",
+          "area": "אשכול",
+          "status": "בשיווק",
+          "map_status": "needs_precise_pin",
+          "source_url": "https://sdedov.co.il/projects/",
+          "source_note": "Listed by the Sde Dov information site as a marketed project."
+        }
+      ]
+    },
+    {
+      "id": "parks_and_coast",
+      "label": "ים, פארקים וטיילת",
+      "ui": "environment_cards",
+      "items": [
+        {
+          "id": "coastal_park",
+          "name": "פארק חופי",
+          "type": "planned_park",
+          "status": "מתוכנן",
+          "source_url": "https://www.tel-aviv.gov.il/Residents/Development/Pages/SdeDov.aspx",
+          "source_note": "The municipal district page describes a coastal park and a broad open-space network."
+        },
+        {
+          "id": "runway_park",
+          "name": "פארק המסלול",
+          "type": "planned_park",
+          "status": "מתוכנן",
+          "source_url": "https://timeout.co.il/%D7%A8%D7%95%D7%91%D7%A2-%D7%A9%D7%93%D7%94-%D7%93%D7%91-%D7%A4%D7%90%D7%A8%D7%A7%D7%99%D7%9D/",
+          "source_note": "Public report on three approved park design plans, including the runway park."
+        },
+        {
+          "id": "linear_park",
+          "name": "פארק ליניארי",
+          "type": "planned_park",
+          "status": "מתוכנן",
+          "source_url": "https://www.tel-aviv.gov.il/Residents/Development/Pages/SdeDov.aspx",
+          "source_note": "The municipal page lists the linear park among planned green spaces."
+        }
+      ]
+    },
+    {
+      "id": "mobility",
+      "label": "נגישות ותחבורה",
+      "ui": "mobility_facts",
+      "items": [
+        {
+          "id": "green_line",
+          "name": "הקו הירוק של הרכבת הקלה",
+          "type": "planned_light_rail",
+          "status": "מקודם / בעבודות הכנה לפי העירייה",
+          "source_url": "https://www.tel-aviv.gov.il/Residents/Development/Pages/SdeDov.aspx",
+          "source_note": "The municipal page says the Green Line is planned to cross the district south-north and connect toward Holon/Rishon, Herzliya and Ramat HaHayal."
+        },
+        {
+          "id": "ibn_gabirol_extension",
+          "name": "המשך אבן גבירול",
+          "type": "planned_street_axis",
+          "status": "מתוכנן",
+          "source_url": "https://www.tel-aviv.gov.il/Residents/Development/Pages/SdeDov.aspx",
+          "source_note": "The municipal page describes the north-south axis and mixed movement options."
+        },
+        {
+          "id": "walk_bike_grid",
+          "name": "רשת הליכה ואופניים",
+          "type": "public_realm",
+          "status": "מתוכנן",
+          "source_url": "https://www.tel-aviv.gov.il/Residents/Development/Pages/SdeDov.aspx",
+          "source_note": "The municipal page emphasizes walking, cycling and non-motorized mobility."
+        }
+      ]
+    },
+    {
+      "id": "public_services",
+      "label": "שירותים ציבוריים",
+      "ui": "service_cards",
+      "items": [
+        {
+          "id": "education_public_buildings",
+          "name": "חינוך ומבני ציבור",
+          "type": "planned_public_services",
+          "status": "מתוכנן ברמת רובע",
+          "source_url": "https://www.tel-aviv.gov.il/Residents/Development/Pages/SdeDov.aspx",
+          "source_note": "The municipal page lists public buildings including education, culture, leisure and neighborhood health services."
+        },
+        {
+          "id": "commerce_employment",
+          "name": "מסחר ותעסוקה",
+          "type": "mixed_use",
+          "status": "מתוכנן",
+          "source_url": "https://www.tel-aviv.gov.il/Residents/Development/Pages/SdeDov.aspx",
+          "source_note": "The municipal page lists planned commerce and employment floorspace at district scale."
+        }
+      ]
+    }
   ],
-  "next_step": "Replace with sourced POI/map layer and Cesium/Google Photorealistic 3D Tiles view when approved."
+  "implementation_notes": [
+    "Use `map_status: needs_precise_pin` to prevent fake clickable map pins.",
+    "Promote only sourced, verified coordinates into Mapbox/Cesium pins.",
+    "Render planned facilities with planned/future labels until built and verified.",
+    "Keep this environment JSON separate from unit inventory and pricing."
+  ]
 }

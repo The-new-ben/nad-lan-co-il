@@ -39,6 +39,7 @@ Set:
 - `project_model_usdz`: empty for now.
 - `project_3d_units`: JSON array from `project-meta-example.json`.
 - `project_3d_drawings_json`: JSON array from `project-meta-example.json`.
+- `project_3d_environment_json`: JSON object from `project-meta-example.json`.
 
 Keep all demo unit copy source-aware. Do not remove:
 
@@ -68,6 +69,7 @@ The script prints:
 - the exact model URLs,
 - the full `project_3d_units` JSON,
 - the `project_3d_drawings_json` JSON,
+- the `project_3d_environment_json` JSON,
 - a safe copy/paste checklist.
 
 It does not write to WordPress.
@@ -85,6 +87,7 @@ Desktop 1440:
 - Drag rotates the model.
 - Zoom controls work.
 - Hotspot click selects a unit and updates the selected-unit card.
+- Surroundings/environment panel can read nearby-project, parks, mobility and services data.
 - Lead form payload still includes card, unit, floor, sqm and inquiry context.
 - No horizontal overflow.
 - No raw code text visible.
