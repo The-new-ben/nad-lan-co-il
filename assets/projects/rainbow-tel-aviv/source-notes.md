@@ -40,6 +40,7 @@ trusted map/source.
 ## Public Safety
 
 - Label this model as illustrative until official developer material replaces it.
+- The `plans/*.svg` files are original schematic showroom aids, not official sale plans.
 - Do not present the demo units as available stock.
 - Do not present exact prices unless the owner approves a public or licensed source.
 - Replace `project_model_glb` with an official BIM/GLB when Israel Canada or the project manager supplies one.

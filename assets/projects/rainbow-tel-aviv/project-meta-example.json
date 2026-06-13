@@ -20,6 +20,8 @@
       "price_note": "אומדן מחיר יוצג רק לאחר אישור מקור נתונים. לא הצעה ולא התחייבות.",
       "note": "יחידת הדגמה למיפוי חוויית showroom. להחלפה בתוכנית מכר רשמית.",
       "source_note": "מודל אבטיפוס מקורי על בסיס מקורות פומביים, לא BIM רשמי.",
+      "plan": "https://raw.githubusercontent.com/The-new-ben/nad-lan-co-il/main/assets/projects/rainbow-tel-aviv/plans/plan-3br.svg",
+      "view_note": "תוכנית המחשה מקורית לדירת 3 חדרים. יש להחליף בתוכנית מכר רשמית.",
       "hotspot_position": "0 31 6",
       "hotspot_normal": "0 0 1",
       "camera_orbit": "45deg 66deg auto"
@@ -41,6 +43,8 @@
       "price_note": "אומדן מחיר יוצג רק לאחר אישור מקור נתונים. לא הצעה ולא התחייבות.",
       "note": "יחידת הדגמה למיפוי חוויית showroom. להחלפה בתוכנית מכר רשמית.",
       "source_note": "מודל אבטיפוס מקורי על בסיס מקורות פומביים, לא BIM רשמי.",
+      "plan": "https://raw.githubusercontent.com/The-new-ben/nad-lan-co-il/main/assets/projects/rainbow-tel-aviv/plans/plan-4br.svg",
+      "view_note": "תוכנית המחשה מקורית לדירת 4 חדרים עם מרפסת מערבית. יש להחליף בתוכנית מכר רשמית.",
       "hotspot_position": "-5 55 7",
       "hotspot_normal": "0 0 1",
       "camera_orbit": "35deg 63deg auto"
@@ -62,6 +66,8 @@
       "price_note": "אומדן מחיר יוצג רק לאחר אישור מקור נתונים. לא הצעה ולא התחייבות.",
       "note": "יחידת הדגמה למיפוי חוויית showroom. להחלפה בתוכנית מכר רשמית.",
       "source_note": "מודל אבטיפוס מקורי על בסיס מקורות פומביים, לא BIM רשמי.",
+      "plan": "https://raw.githubusercontent.com/The-new-ben/nad-lan-co-il/main/assets/projects/rainbow-tel-aviv/plans/plan-4br.svg",
+      "view_note": "תוכנית המחשה מקורית לדירת 4 חדרים גבוהה. יש להחליף בתוכנית מכר רשמית.",
       "hotspot_position": "-6 80 5",
       "hotspot_normal": "0 0 1",
       "camera_orbit": "24deg 61deg auto"
@@ -83,6 +89,8 @@
       "price_note": "אומדן מחיר יוצג רק לאחר אישור מקור נתונים. לא הצעה ולא התחייבות.",
       "note": "יחידת הדגמה למיפוי חוויית showroom. להחלפה בתוכנית מכר רשמית.",
       "source_note": "מודל אבטיפוס מקורי על בסיס מקורות פומביים, לא BIM רשמי.",
+      "plan": "https://raw.githubusercontent.com/The-new-ben/nad-lan-co-il/main/assets/projects/rainbow-tel-aviv/plans/plan-5br.svg",
+      "view_note": "תוכנית המחשה מקורית לדירת 5 חדרים. יש להחליף בתוכנית מכר רשמית.",
       "hotspot_position": "6 101 -5",
       "hotspot_normal": "0 0 1",
       "camera_orbit": "310deg 64deg auto"
@@ -104,6 +112,8 @@
       "price_note": "אומדן מחיר יוצג רק לאחר אישור מקור נתונים. לא הצעה ולא התחייבות.",
       "note": "יחידת הדגמה למיפוי חוויית showroom. להחלפה בתוכנית מכר רשמית.",
       "source_note": "מודל אבטיפוס מקורי על בסיס מקורות פומביים, לא BIM רשמי.",
+      "plan": "https://raw.githubusercontent.com/The-new-ben/nad-lan-co-il/main/assets/projects/rainbow-tel-aviv/plans/plan-penthouse.svg",
+      "view_note": "תוכנית פנטהאוז להמחשה בלבד. לא תוכנית מכר ולא התחייבות.",
       "hotspot_position": "0 124 7",
       "hotspot_normal": "0 0 1",
       "camera_orbit": "32deg 58deg auto"
@@ -125,6 +135,8 @@
       "price_note": "אומדן מחיר יוצג רק לאחר אישור מקור נתונים. לא הצעה ולא התחייבות.",
       "note": "יחידת הדגמה למיפוי חוויית showroom. להחלפה בתוכנית מכר רשמית.",
       "source_note": "מודל אבטיפוס מקורי על בסיס מקורות פומביים, לא BIM רשמי.",
+      "plan": "https://raw.githubusercontent.com/The-new-ben/nad-lan-co-il/main/assets/projects/rainbow-tel-aviv/plans/plan-boutique.svg",
+      "view_note": "תוכנית המחשה לבניין הבוטיק סביב הלגונה. יש להחליף בתוכנית מכר רשמית.",
       "hotspot_position": "-42 25 24",
       "hotspot_normal": "0 0 1",
       "camera_orbit": "55deg 67deg auto"
@@ -132,16 +144,22 @@
   ],
   "project_3d_drawings_json": [
     {
-      "label": "חזית מגדל",
-      "type": "elevation",
-      "url": "",
-      "source": "להשלמה מתוכנית מכר / חומר יזם"
+      "label": "תרשים מיקום וסביבה",
+      "type": "site_orientation",
+      "url": "https://raw.githubusercontent.com/The-new-ben/nad-lan-co-il/main/assets/projects/rainbow-tel-aviv/plans/site-orientation.svg",
+      "source": "המחשה מקורית לא רשמית על בסיס מקורות פומביים"
     },
     {
-      "label": "תוכנית טיפוסית",
+      "label": "תוכנית טיפוסית 4 חדרים",
       "type": "floor_plan",
-      "url": "",
-      "source": "להשלמה מתוכנית מכר / חומר יזם"
+      "url": "https://raw.githubusercontent.com/The-new-ben/nad-lan-co-il/main/assets/projects/rainbow-tel-aviv/plans/plan-4br.svg",
+      "source": "המחשה מקורית לא רשמית. להחלפה בתוכנית מכר רשמית"
+    },
+    {
+      "label": "תוכנית פנטהאוז",
+      "type": "floor_plan",
+      "url": "https://raw.githubusercontent.com/The-new-ben/nad-lan-co-il/main/assets/projects/rainbow-tel-aviv/plans/plan-penthouse.svg",
+      "source": "המחשה מקורית לא רשמית. להחלפה בתוכנית מכר רשמית"
     }
   ],
   "project_3d_environment_json": {

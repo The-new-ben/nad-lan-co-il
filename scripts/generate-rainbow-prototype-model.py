@@ -22,6 +22,7 @@ ROOT = Path(__file__).resolve().parents[1]
 OUT = ROOT / "assets" / "projects" / "rainbow-tel-aviv"
 BRANCH = os.getenv("RAINBOW_MODEL_REF", "main")
 RAW_BASE = f"https://raw.githubusercontent.com/The-new-ben/nad-lan-co-il/{BRANCH}/assets/projects/rainbow-tel-aviv"
+PLAN_BASE = f"{RAW_BASE}/plans"
 
 
 MATERIALS = [
@@ -371,14 +372,14 @@ def write_png(path: Path, width: int = 1600, height: int = 1000) -> None:
 def unit_records() -> list[dict[str, object]]:
     records = []
     seed = [
-        ("unit-08-sw", 8, 3, 82, 10, "דרום מערב", "מבט לחצר ולים", "0 31 6", "45deg 66deg auto"),
-        ("unit-16-w", 16, 4, 112, 14, "מערב", "קו החוף ושדה דב", "-5 55 7", "35deg 63deg auto"),
-        ("unit-24-nw", 24, 4, 128, 16, "צפון מערב", "ים, פארק וצפון תל אביב", "-6 80 5", "24deg 61deg auto"),
-        ("unit-31-se", 31, 5, 156, 22, "דרום מזרח", "קו הרקיע והחצר הפנימית", "6 101 -5", "310deg 64deg auto"),
-        ("unit-38-penthouse", 38, 5, 210, 42, "מערב", "פנטהאוז גבוה לכיוון הים", "0 124 7", "32deg 58deg auto"),
-        ("unit-boutique-07", 7, 4, 118, 18, "מערב", "בניין בוטיק סביב הלגונה", "-42 25 24", "55deg 67deg auto"),
+        ("unit-08-sw", 8, 3, 82, 10, "דרום מערב", "מבט לחצר ולים", "0 31 6", "45deg 66deg auto", "plan-3br.svg", "תוכנית המחשה מקורית לדירת 3 חדרים. יש להחליף בתוכנית מכר רשמית."),
+        ("unit-16-w", 16, 4, 112, 14, "מערב", "קו החוף ושדה דב", "-5 55 7", "35deg 63deg auto", "plan-4br.svg", "תוכנית המחשה מקורית לדירת 4 חדרים עם מרפסת מערבית. יש להחליף בתוכנית מכר רשמית."),
+        ("unit-24-nw", 24, 4, 128, 16, "צפון מערב", "ים, פארק וצפון תל אביב", "-6 80 5", "24deg 61deg auto", "plan-4br.svg", "תוכנית המחשה מקורית לדירת 4 חדרים גבוהה. יש להחליף בתוכנית מכר רשמית."),
+        ("unit-31-se", 31, 5, 156, 22, "דרום מזרח", "קו הרקיע והחצר הפנימית", "6 101 -5", "310deg 64deg auto", "plan-5br.svg", "תוכנית המחשה מקורית לדירת 5 חדרים. יש להחליף בתוכנית מכר רשמית."),
+        ("unit-38-penthouse", 38, 5, 210, 42, "מערב", "פנטהאוז גבוה לכיוון הים", "0 124 7", "32deg 58deg auto", "plan-penthouse.svg", "תוכנית פנטהאוז להמחשה בלבד. לא תוכנית מכר ולא התחייבות."),
+        ("unit-boutique-07", 7, 4, 118, 18, "מערב", "בניין בוטיק סביב הלגונה", "-42 25 24", "55deg 67deg auto", "plan-boutique.svg", "תוכנית המחשה לבניין הבוטיק סביב הלגונה. יש להחליף בתוכנית מכר רשמית."),
     ]
-    for uid, floor, rooms, sqm, balcony, direction, view, position, orbit in seed:
+    for uid, floor, rooms, sqm, balcony, direction, view, position, orbit, plan_file, view_note in seed:
         records.append(
             {
                 "id": uid,
@@ -397,6 +398,8 @@ def unit_records() -> list[dict[str, object]]:
                 "price_note": "אומדן מחיר יוצג רק לאחר אישור מקור נתונים. לא הצעה ולא התחייבות.",
                 "note": "יחידת הדגמה למיפוי חוויית showroom. להחלפה בתוכנית מכר רשמית.",
                 "source_note": "מודל אבטיפוס מקורי על בסיס מקורות פומביים, לא BIM רשמי.",
+                "plan": f"{PLAN_BASE}/{plan_file}",
+                "view_note": view_note,
                 "hotspot_position": position,
                 "hotspot_normal": "0 0 1",
                 "camera_orbit": orbit,
@@ -446,7 +449,8 @@ It is not official Rainbow BIM, not an official sale plan and not live inventory
 - `poster.png`: lightweight poster for `<model-viewer>` before the GLB reveals.
 - `unit-map.json`: demo unit records with model-viewer hotspot coordinates.
 - `project-meta-example.json`: copy/paste map for the CMS fields added in v1.63.0.
-- `drawings.json`: placeholder slots for official elevation/floor/site drawings.
+- `plans/*.svg`: original schematic unit/site plans for the prototype plan overlay.
+- `drawings.json`: prototype drawing map plus slots for official elevation/floor/site drawings.
 - `environment.json`: surroundings starter data to be replaced by the map/POI layer.
 
 ## Local Validation
@@ -463,7 +467,7 @@ Expected:
 - Magic: `glTF`
 - Version: `2`
 - File size under 8 MB.
-- `project_3d_units` JSON has `hotspot_position`, `hotspot_normal`, `camera_orbit` for each demo unit.
+- `project_3d_units` JSON has `hotspot_position`, `hotspot_normal`, `camera_orbit` and `plan` for each demo unit.
 
 ## Browser Gate After v1.63.0 Is Installed
 
@@ -497,16 +501,22 @@ def main() -> None:
             "project_3d_units": units,
             "project_3d_drawings_json": [
                 {
-                    "label": "חזית מגדל",
-                    "type": "elevation",
-                    "url": "",
-                    "source": "להשלמה מתוכנית מכר / חומר יזם",
+                    "label": "תרשים מיקום וסביבה",
+                    "type": "site_orientation",
+                    "url": f"{PLAN_BASE}/site-orientation.svg",
+                    "source": "המחשה מקורית לא רשמית על בסיס מקורות פומביים",
                 },
                 {
-                    "label": "תוכנית טיפוסית",
+                    "label": "תוכנית טיפוסית 4 חדרים",
                     "type": "floor_plan",
-                    "url": "",
-                    "source": "להשלמה מתוכנית מכר / חומר יזם",
+                    "url": f"{PLAN_BASE}/plan-4br.svg",
+                    "source": "המחשה מקורית לא רשמית. להחלפה בתוכנית מכר רשמית",
+                },
+                {
+                    "label": "תוכנית פנטהאוז",
+                    "type": "floor_plan",
+                    "url": f"{PLAN_BASE}/plan-penthouse.svg",
+                    "source": "המחשה מקורית לא רשמית. להחלפה בתוכנית מכר רשמית",
                 },
             ],
         },
@@ -514,9 +524,47 @@ def main() -> None:
     write_json(
         OUT / "drawings.json",
         {
-            "status": "placeholder-slots",
-            "required": ["official_elevation", "typical_floor_plan", "site_plan", "unit_plan"],
-            "note": "Attach only approved developer drawings or owner-licensed material.",
+            "status": "prototype_schematic",
+            "items": [
+                {
+                    "label": "תרשים מיקום וסביבה",
+                    "type": "site_orientation",
+                    "url": f"{PLAN_BASE}/site-orientation.svg",
+                    "source": "המחשה מקורית לא רשמית על בסיס מקורות פומביים",
+                },
+                {
+                    "label": "תוכנית 3 חדרים",
+                    "type": "floor_plan",
+                    "url": f"{PLAN_BASE}/plan-3br.svg",
+                    "source": "המחשה מקורית לא רשמית. להחלפה בתוכנית מכר רשמית",
+                },
+                {
+                    "label": "תוכנית 4 חדרים",
+                    "type": "floor_plan",
+                    "url": f"{PLAN_BASE}/plan-4br.svg",
+                    "source": "המחשה מקורית לא רשמית. להחלפה בתוכנית מכר רשמית",
+                },
+                {
+                    "label": "תוכנית 5 חדרים",
+                    "type": "floor_plan",
+                    "url": f"{PLAN_BASE}/plan-5br.svg",
+                    "source": "המחשה מקורית לא רשמית. להחלפה בתוכנית מכר רשמית",
+                },
+                {
+                    "label": "תוכנית פנטהאוז",
+                    "type": "floor_plan",
+                    "url": f"{PLAN_BASE}/plan-penthouse.svg",
+                    "source": "המחשה מקורית לא רשמית. להחלפה בתוכנית מכר רשמית",
+                },
+                {
+                    "label": "תוכנית בוטיק",
+                    "type": "floor_plan",
+                    "url": f"{PLAN_BASE}/plan-boutique.svg",
+                    "source": "המחשה מקורית לא רשמית. להחלפה בתוכנית מכר רשמית",
+                },
+            ],
+            "required_official_replacements": ["official_elevation", "typical_floor_plan", "site_plan", "unit_plan"],
+            "note": "Attach only approved developer drawings or owner-licensed material before removing the illustrative labels.",
         },
     )
     write_json(

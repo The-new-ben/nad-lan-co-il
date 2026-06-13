@@ -104,7 +104,7 @@ def check_meta(path: Path, gate: Gate) -> None:
     else:
         gate.fail("project_3d_units count", "missing or empty")
         units = []
-    required_unit_fields = ["id", "floor", "hotspot_position", "hotspot_normal", "source_note"]
+    required_unit_fields = ["id", "floor", "hotspot_position", "hotspot_normal", "source_note", "plan"]
     missing: list[str] = []
     for unit in units:
         if not isinstance(unit, dict):
@@ -132,6 +132,22 @@ def check_meta(path: Path, gate: Gate) -> None:
         gate.fail("unit price disclaimer", ", ".join(disclaimer_missing[:12]))
     else:
         gate.pass_("unit price disclaimer", "all demo units carry non-binding price/source language")
+    plan_bad = []
+    for unit in units:
+        if not isinstance(unit, dict):
+            continue
+        plan = str(unit.get("plan", ""))
+        if not plan.startswith("https://") or "raw.githubusercontent.com/The-new-ben/nad-lan-co-il/main/" not in plan:
+            plan_bad.append(str(unit.get("id", "<missing id>")))
+    if plan_bad:
+        gate.fail("unit plan URLs", ", ".join(plan_bad[:12]))
+    else:
+        gate.pass_("unit plan URLs", "all demo units point at durable schematic plan URLs")
+    drawings = meta.get("project_3d_drawings_json", [])
+    if isinstance(drawings, list) and any(isinstance(item, dict) and item.get("url") for item in drawings):
+        gate.pass_("drawing material URLs", f"{sum(1 for item in drawings if isinstance(item, dict) and item.get('url'))} linked items")
+    else:
+        gate.fail("drawing material URLs", "no linked drawing/site material in CMS payload")
     env = meta.get("project_3d_environment_json")
     if isinstance(env, dict):
         layers = env.get("layers", [])

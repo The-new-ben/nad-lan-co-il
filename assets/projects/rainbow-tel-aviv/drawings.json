@@ -1,10 +1,48 @@
 {
-  "status": "placeholder-slots",
-  "required": [
+  "status": "prototype_schematic",
+  "items": [
+    {
+      "label": "תרשים מיקום וסביבה",
+      "type": "site_orientation",
+      "url": "https://raw.githubusercontent.com/The-new-ben/nad-lan-co-il/main/assets/projects/rainbow-tel-aviv/plans/site-orientation.svg",
+      "source": "המחשה מקורית לא רשמית על בסיס מקורות פומביים"
+    },
+    {
+      "label": "תוכנית 3 חדרים",
+      "type": "floor_plan",
+      "url": "https://raw.githubusercontent.com/The-new-ben/nad-lan-co-il/main/assets/projects/rainbow-tel-aviv/plans/plan-3br.svg",
+      "source": "המחשה מקורית לא רשמית. להחלפה בתוכנית מכר רשמית"
+    },
+    {
+      "label": "תוכנית 4 חדרים",
+      "type": "floor_plan",
+      "url": "https://raw.githubusercontent.com/The-new-ben/nad-lan-co-il/main/assets/projects/rainbow-tel-aviv/plans/plan-4br.svg",
+      "source": "המחשה מקורית לא רשמית. להחלפה בתוכנית מכר רשמית"
+    },
+    {
+      "label": "תוכנית 5 חדרים",
+      "type": "floor_plan",
+      "url": "https://raw.githubusercontent.com/The-new-ben/nad-lan-co-il/main/assets/projects/rainbow-tel-aviv/plans/plan-5br.svg",
+      "source": "המחשה מקורית לא רשמית. להחלפה בתוכנית מכר רשמית"
+    },
+    {
+      "label": "תוכנית פנטהאוז",
+      "type": "floor_plan",
+      "url": "https://raw.githubusercontent.com/The-new-ben/nad-lan-co-il/main/assets/projects/rainbow-tel-aviv/plans/plan-penthouse.svg",
+      "source": "המחשה מקורית לא רשמית. להחלפה בתוכנית מכר רשמית"
+    },
+    {
+      "label": "תוכנית בוטיק",
+      "type": "floor_plan",
+      "url": "https://raw.githubusercontent.com/The-new-ben/nad-lan-co-il/main/assets/projects/rainbow-tel-aviv/plans/plan-boutique.svg",
+      "source": "המחשה מקורית לא רשמית. להחלפה בתוכנית מכר רשמית"
+    }
+  ],
+  "required_official_replacements": [
     "official_elevation",
     "typical_floor_plan",
     "site_plan",
     "unit_plan"
   ],
-  "note": "Attach only approved developer drawings or owner-licensed material."
+  "note": "Attach only approved developer drawings or owner-licensed material before removing the illustrative labels."
 }

@@ -24,6 +24,8 @@ After merge, the production asset URLs are:
   `https://raw.githubusercontent.com/The-new-ben/nad-lan-co-il/main/assets/projects/rainbow-tel-aviv/model.glb`
 - Poster:
   `https://raw.githubusercontent.com/The-new-ben/nad-lan-co-il/main/assets/projects/rainbow-tel-aviv/poster.png`
+- Prototype plans:
+  `https://raw.githubusercontent.com/The-new-ben/nad-lan-co-il/main/assets/projects/rainbow-tel-aviv/plans/`
 - Metadata source:
   `assets/projects/rainbow-tel-aviv/project-meta-example.json`
 
@@ -54,12 +56,13 @@ it safely through REST with `edit_post` auth and a unit sanitizer. The apply hel
 healthcheck before writing units and falls back to printing the metabox value when the marker is
 missing.
 
-Keep all demo unit copy source-aware. Do not remove:
+Keep all demo unit and drawing copy source-aware. Do not remove:
 
 - "לפי פנייה"
 - "אומדן"
 - "לא הצעה ולא התחייבות"
 - "לא BIM רשמי"
+- "המחשה מקורית לא רשמית"
 
 Those phrases are part of the legal/product honesty boundary.
 
@@ -134,8 +137,9 @@ python scripts\check-rainbow-showroom-readiness.py
 ```
 
 Expected now: local assets pass, asset URLs are durable (`main` or custom hosted), demo units carry
-non-binding price/source language, live `model_viewer_ready` passes, and `projects_with_glb` is a
-warning because the live Rainbow post is not wired yet.
+non-binding price/source language, every unit has a plan URL, drawing material has linked URLs, live
+`model_viewer_ready` passes, and `projects_with_glb` is a warning because the live Rainbow post is
+not wired yet.
 
 After merge and after the CMS fields are populated, run:
 
@@ -213,6 +217,9 @@ If the GLB fails to load:
 3. Confirm the model file size remains small enough for public delivery.
 4. Confirm the fallback tower still appears. A blank stage is a failure.
 5. If GitHub raw is blocked or slow, upload the GLB to Media/CDN and update `project_model_glb`.
+6. Keep the schematic plan URLs until official plans arrive; once official plans are approved,
+   replace the URLs but keep the same `plan` and `project_3d_drawings_json` fields so the buyer
+   journey does not change.
 
 ## Replication To The Next Project
 
@@ -237,6 +244,7 @@ For each future project:
    - `status`,
    - `hotspot_position`,
    - `hotspot_normal`,
+   - `plan`,
    - optional `camera_orbit`,
    - `source_note`.
 6. If official inventory is missing, show inquiry-only pricing and label the model illustrative.

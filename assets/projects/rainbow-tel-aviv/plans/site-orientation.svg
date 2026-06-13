@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" role="img" aria-label="Illustrative Sde Dov orientation diagram">
+  <defs>
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M40 0H0V40" fill="none" stroke="#d7c07b" stroke-opacity=".08" stroke-width="1"/>
+    </pattern>
+    <radialGradient id="glow" cx=".22" cy=".2" r=".85">
+      <stop offset="0" stop-color="#2b8a8d" stop-opacity=".55"/>
+      <stop offset=".58" stop-color="#102f2d" stop-opacity=".9"/>
+      <stop offset="1" stop-color="#061817"/>
+    </radialGradient>
+  </defs>
+  <rect width="1600" height="900" fill="url(#glow)"/>
+  <rect width="1600" height="900" fill="url(#grid)"/>
+  <path d="M58 116c220 60 430 58 620-26 210-92 382-78 526 34 100 78 196 116 326 116v604H58z" fill="#0d2725" stroke="#d7c07b" stroke-opacity=".22" stroke-width="3"/>
+  <path d="M1140 72c94 126 140 270 138 430-2 142-42 248-118 318" fill="none" stroke="#2a7b89" stroke-width="96" stroke-linecap="round" opacity=".55"/>
+  <path d="M1120 72c98 126 146 270 144 430-2 142-44 248-122 318" fill="none" stroke="#8bd2dd" stroke-width="4" stroke-linecap="round" opacity=".75"/>
+  <path d="M212 742c118-134 282-218 492-252 190-32 322-112 402-240" fill="none" stroke="#d7c07b" stroke-opacity=".52" stroke-width="7" stroke-linecap="round" stroke-dasharray="22 18"/>
+  <path d="M480 498h180l70 118-96 126H448l-72-116z" fill="#143735" stroke="#d7c07b" stroke-width="5"/>
+  <path d="M536 440h70v246h-70z" fill="#d7c07b" opacity=".75"/>
+  <path d="M438 604h262" stroke="#f5e7b5" stroke-width="4" opacity=".7"/>
+  <circle cx="572" cy="560" r="72" fill="none" stroke="#f5e7b5" stroke-width="5" stroke-opacity=".65"/>
+  <path d="M1328 184h120v70h-120zM1248 326h168v70h-168zM1188 484h146v70h-146z" fill="#173d3b" stroke="#d7c07b" stroke-opacity=".45"/>
+  <path d="M260 228h108v58H260zM390 186h132v58H390zM286 332h160v58H286z" fill="#173d3b" stroke="#d7c07b" stroke-opacity=".35"/>
+  <path d="M112 820h1360" stroke="#d7c07b" stroke-width="2" stroke-dasharray="12 14" opacity=".45"/>
+  <text x="1460" y="846" text-anchor="end" fill="#d7c07b" font-family="Arial, sans-serif" font-size="30">ILLUSTRATIVE ORIENTATION</text>
+  <text x="168" y="146" fill="#e9dcb4" font-family="Arial, sans-serif" font-size="28">SEA</text>
+  <text x="522" y="414" fill="#f5e7b5" font-family="Arial, sans-serif" font-size="28">RAINBOW</text>
+</svg>
