@@ -160,14 +160,22 @@ add_action( 'admin_menu', function () {
 		if ( ! current_user_can( 'manage_options' ) ) { return; }
 		if ( ! empty( $_POST['nadlan_cta_save'] ) && check_admin_referer( 'nadlan_cta_save' ) ) {
 			update_option( 'nadlan_owner_whatsapp', preg_replace( '/[^0-9+]/', '', sanitize_text_field( wp_unslash( $_POST['wa'] ?? '' ) ) ) );
+			$new_secret = sanitize_text_field( wp_unslash( $_POST['wa_ingest_secret'] ?? '' ) );
+			if ( ! empty( $_POST['clear_wa_ingest_secret'] ) ) {
+				delete_option( 'nadlan_wa_ingest_secret' );
+			} elseif ( $new_secret !== '' ) {
+				update_option( 'nadlan_wa_ingest_secret', $new_secret, false );
+			}
 			echo '<div class="notice notice-success"><p>נשמר.</p></div>';
 		}
 		$wa = (string) get_option( 'nadlan_owner_whatsapp', '' );
+		$wa_secret_set = (string) get_option( 'nadlan_wa_ingest_secret', '' ) !== '';
 		echo '<div class="wrap" style="direction:rtl;font-family:Heebo,sans-serif"><h1>NadLan CTA + WhatsApp</h1>';
 		echo '<p style="background:#fff;border-inline-start:4px solid #DC2626;padding:10px 14px;color:#5a5a5a">הסטיקי-בר וה-pop-up בוטלו ב-v1.40.3 לבקשת הבעלים. נשאר רק כפתור WhatsApp צף.</p>';
 		echo '<form method="post">';
 		wp_nonce_field( 'nadlan_cta_save' );
-		echo '<table class="form-table"><tr><th>WhatsApp Number (E.164)</th><td><input type="text" name="wa" value="' . esc_attr( $wa ) . '" style="width:280px" placeholder="972501234567"> <br><small>מספר טלפון להפנייה ל-WhatsApp. ריק = הכפתור יוסתר.</small></td></tr></table>';
+		echo '<table class="form-table"><tr><th>WhatsApp Number (E.164)</th><td><input type="text" name="wa" value="' . esc_attr( $wa ) . '" style="width:280px" placeholder="972501234567"> <br><small>מספר טלפון להפנייה ל-WhatsApp. ריק = הכפתור יוסתר.</small></td></tr>';
+		echo '<tr><th>WhatsApp lead ingest secret</th><td><input type="password" name="wa_ingest_secret" value="" style="width:360px" placeholder="' . esc_attr( $wa_secret_set ? 'סוד שמור. הדביקו חדש רק אם מחליפים.' : 'הגדירו סוד ל-/wp-json/nadlan/v1/wa-lead' ) . '"> <br><small>משמש ל-iPhone Shortcut, Android share או Cloud API relay. הסוד לא מוצג במסך ולא נשמר כ-autoload.</small> <br><label><input type="checkbox" name="clear_wa_ingest_secret" value="1"> מחק סוד קיים</label></td></tr></table>';
 		echo '<p class="submit"><button type="submit" name="nadlan_cta_save" value="1" class="button-primary">שמור</button></p></form></div>';
 	} );
 } );

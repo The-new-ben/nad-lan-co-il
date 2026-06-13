@@ -575,6 +575,49 @@ body.single-nadlan_property .wp-block-post-title{
 .nldir-fgroup h4{margin-bottom:10px!important}
 .nldir-cityb i{color:var(--nl-warm);font-weight:600}
 
+/* Contact action polish: keep AI/WhatsApp controls premium, reachable, and out of content. */
+#nlai,#nlcta{
+	z-index:99980!important;
+}
+#nlai .nlai-fab,.nlcta-wa{
+	min-width:54px!important;
+	min-height:54px!important;
+	border:1px solid rgba(221,214,200,.45)!important;
+	box-shadow:0 18px 42px rgba(27,26,23,.22)!important;
+}
+#nlai .nlai-fab:focus-visible,.nlcta-wa:focus-visible{
+	outline:3px solid rgba(196,161,90,.55)!important;
+	outline-offset:3px!important;
+}
+#nlai .nlai-panel{
+	border-radius:18px!important;
+	border:1px solid rgba(27,26,23,.12)!important;
+	box-shadow:0 28px 80px rgba(27,26,23,.28)!important;
+}
+@media(max-width:760px){
+	#nlai{
+		inset-inline-start:max(12px,env(safe-area-inset-left,12px))!important;
+		bottom:calc(env(safe-area-inset-bottom,0px) + 78px)!important;
+	}
+	#nlcta{
+		inset-inline-end:max(12px,env(safe-area-inset-right,12px))!important;
+		bottom:calc(env(safe-area-inset-bottom,0px) + 78px)!important;
+	}
+	#nlai .nlai-fab,.nlcta-wa{
+		width:52px!important;
+		height:52px!important;
+	}
+	#nlai .nlai-panel{
+		position:fixed!important;
+		inset:auto 10px calc(env(safe-area-inset-bottom,0px) + 12px) 10px!important;
+		width:auto!important;
+		max-width:none!important;
+		height:min(72vh,620px)!important;
+		max-height:min(72vh,620px)!important;
+		border-radius:18px!important;
+	}
+}
+
 /* Header global-nav submenu chevron — bump tap target while keeping the visual */
 .wp-block-navigation__submenu-icon{
 	min-width:24px!important;min-height:24px!important;

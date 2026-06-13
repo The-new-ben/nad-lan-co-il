@@ -99,6 +99,8 @@ Everything else is on-demand by category below.
 | ✅🟪 | `skills/accessibility-israel-is5568.md` | Israeli accessibility law compliance | Required on every IL site |
 | ✅🟪 | `skills/image-pipeline.md` | Image generation + optimization pipeline | When attaching images |
 | ✅🟪 | `skills/interactive-widgets.md` | Calculator/widget component patterns | Building interactive tools |
+| ✅🟪 | `skills/project-3d-sales-experience.md` | Interactive project showroom standards: building-first, unit picker, map/sun/lead seams | Before changing any project 3D or apartment-selection page |
+| ✅🟪 | `skills/project-page-premium-showroom-runbook.md` | A-to-Z repeatable project page runbook: research, assembly, schema, 3D, WhatsApp funnel, QA, deploy | Before cloning Rainbow quality to another project |
 | 🟡 | `skills/theme-fork-decision.md` | When to fork the theme vs extend the plugin | Architectural decision |
 
 ## 5. MONETIZATION + REVENUE
