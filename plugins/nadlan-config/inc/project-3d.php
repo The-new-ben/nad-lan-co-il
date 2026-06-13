@@ -104,10 +104,8 @@ if ( ! function_exists( 'nadlan_p3d_sanitize_material_json' ) ) {
 	}
 }
 
-if ( ! function_exists( 'nadlan_p3d_units' ) ) {
-	function nadlan_p3d_units( $post_id ) {
-		$raw   = trim( (string) get_post_meta( (int) $post_id, 'project_3d_units', true ) );
-		$units = $raw !== '' ? json_decode( $raw, true ) : array();
+if ( ! function_exists( 'nadlan_p3d_clean_unit_items' ) ) {
+	function nadlan_p3d_clean_unit_items( $units ) {
 		if ( ! is_array( $units ) || ! $units ) {
 			return array();
 		}
@@ -154,6 +152,29 @@ if ( ! function_exists( 'nadlan_p3d_units' ) ) {
 		}
 
 		return $out;
+	}
+}
+
+if ( ! function_exists( 'nadlan_p3d_sanitize_units_json' ) ) {
+	function nadlan_p3d_sanitize_units_json( $raw ) {
+		$raw = trim( (string) wp_unslash( $raw ) );
+		if ( $raw === '' ) {
+			return '';
+		}
+		$decoded = json_decode( $raw, true );
+		if ( ! is_array( $decoded ) ) {
+			return '';
+		}
+		$clean = nadlan_p3d_clean_unit_items( $decoded );
+		return $clean ? wp_json_encode( $clean, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES ) : '';
+	}
+}
+
+if ( ! function_exists( 'nadlan_p3d_units' ) ) {
+	function nadlan_p3d_units( $post_id ) {
+		$raw   = trim( (string) get_post_meta( (int) $post_id, 'project_3d_units', true ) );
+		$units = $raw !== '' ? json_decode( $raw, true ) : array();
+		return nadlan_p3d_clean_unit_items( $units );
 	}
 }
 
@@ -362,6 +383,7 @@ add_action(
 			'project_3d_cesium_tiles_url' => 'esc_url_raw',
 			'project_3d_drawings_json'    => 'nadlan_p3d_sanitize_material_json',
 			'project_3d_environment_json' => 'nadlan_p3d_sanitize_material_json',
+			'project_3d_units'            => 'nadlan_p3d_sanitize_units_json',
 		);
 
 		foreach ( $fields as $key => $sanitize_callback ) {
@@ -1900,7 +1922,7 @@ add_action(
 			return;
 		}
 
-		wp_register_style( 'nadlan-p3d', '', array(), '1.63.1' );
+		wp_register_style( 'nadlan-p3d', '', array(), '1.63.2' );
 		wp_enqueue_style( 'nadlan-p3d' );
 		wp_add_inline_style( 'nadlan-p3d', nadlan_p3d_inline_css() );
 		wp_add_inline_style( 'nadlan-p3d', '.nlp3d-drag-note{display:inline-flex;align-items:center;min-height:44px;color:rgba(246,239,226,.72);font-size:12px;padding:0 6px}.nlp3d-scene{touch-action:none;cursor:grab}.nlp3d-scene.is-dragging{cursor:grabbing}.nlp3d-actions{grid-template-columns:1fr}.nlp3d-view-toggle{margin-top:12px;border:1px solid rgba(234,216,163,.36);background:rgba(255,255,255,.06);color:#ffe8a6;padding:9px 12px;cursor:pointer}.nlp3d-view-toggle.is-active{background:rgba(234,216,163,.18);color:#fff}.nlp3d-viewframe{position:relative;margin-top:12px;min-height:150px;overflow:hidden;border:1px solid rgba(234,216,163,.18);background:linear-gradient(180deg,rgba(41,112,139,.58),rgba(8,25,25,.92));isolation:isolate}.nlp3d-view-sky{position:absolute;inset:0;background:radial-gradient(circle at 18% 22%,rgba(255,255,255,.24),transparent 18%),linear-gradient(135deg,rgba(39,107,130,.42),rgba(18,50,43,.1));opacity:.86}.nlp3d-view-lines{position:absolute;inset:auto -8% 18% -8%;height:46%;border-top:1px solid rgba(234,216,163,.28);background:linear-gradient(160deg,rgba(234,216,163,.1),transparent 54%);transform:skewY(-8deg)}.nlp3d-view-copy{position:absolute;right:14px;left:14px;bottom:12px;margin:0;color:#fff8dc;font-size:13px;line-height:1.5;text-shadow:0 1px 12px rgba(0,0,0,.55)}@media(max-width:600px){.nlp3d-drag-note{flex-basis:100%;min-height:24px}.nlp3d-viewframe{min-height:130px}}' );
@@ -1929,7 +1951,7 @@ add_action(
 			wp_enqueue_script( 'nadlan-model-viewer' );
 		}
 
-		wp_register_script( 'nadlan-p3d', '', array(), '1.63.1', true );
+		wp_register_script( 'nadlan-p3d', '', array(), '1.63.2', true );
 		wp_enqueue_script( 'nadlan-p3d' );
 		wp_add_inline_script( 'nadlan-p3d', nadlan_p3d_inline_js( esc_url_raw( rest_url( 'nadlan/v1/lead' ) ) ) );
 	}
@@ -2034,8 +2056,7 @@ add_action(
 		update_post_meta( $post_id, 'project_3d_cesium_tiles_url', esc_url_raw( wp_unslash( $_POST['project_3d_cesium_tiles_url'] ?? '' ) ) );
 		update_post_meta( $post_id, 'project_3d_drawings_json', nadlan_p3d_sanitize_material_json( wp_unslash( $_POST['project_3d_drawings_json'] ?? '' ) ) );
 		update_post_meta( $post_id, 'project_3d_environment_json', nadlan_p3d_sanitize_material_json( wp_unslash( $_POST['project_3d_environment_json'] ?? '' ) ) );
-		$units = (string) wp_unslash( $_POST['project_3d_units'] ?? '' );
-		update_post_meta( $post_id, 'project_3d_units', json_decode( $units ) !== null || $units === '' ? $units : '' );
+		update_post_meta( $post_id, 'project_3d_units', nadlan_p3d_sanitize_units_json( wp_unslash( $_POST['project_3d_units'] ?? '' ) ) );
 		update_post_meta( $post_id, 'project_3d_demo', ! empty( $_POST['project_3d_demo'] ) ? '1' : '0' );
 	}
 );
@@ -2087,6 +2108,7 @@ add_filter(
 			'cms_material_fields' => true,
 			'cms_material_cards'  => true,
 			'cms_material_sanitized' => true,
+			'unit_meta_rest' => true,
 			'hit_targets'      => true,
 			'tap_target_min_px' => 44,
 			'model_zoom_tilt'  => true,

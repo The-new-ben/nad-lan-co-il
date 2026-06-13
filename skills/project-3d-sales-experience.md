@@ -378,3 +378,18 @@ For every cloned project, verify:
   architectural drawing while expanding the control geometry.
 - Any cloned project page must pass a tap-target scan against `.nlp3d button`, `.nlp3d a`,
   `.nlp3d input`, and `.nlp3d [role="button"]` before deployment.
+
+### v1.63.2 CMS Unit REST Gate
+
+- Future project showroom assets must be wireable without manual metabox paste. The unit JSON
+  field `project_3d_units` is REST-writable only when healthcheck reports
+  `project_3d.unit_meta_rest=true`.
+- REST writes must require `current_user_can( 'edit_post', $project_id )`. Never expose unit,
+  availability, price, floorplan, tour or hotspot updates through a public endpoint.
+- The REST sanitizer must canonicalize the same unit fields the frontend reads: `id`, `title`,
+  `floor`, `rooms`, `sqm`, `balcony`, `dir`, `line`, `view`, `building`, availability/notes,
+  non-binding price fields, floorplan/tour/interior URLs, and model hotspot/camera fields.
+- Store only JSON arrays of sanitized unit objects. Invalid JSON, empty arrays or objects without a
+  stable `id` should resolve to an empty string instead of preserving junk.
+- Asset handoff scripts may write `project_3d_units` only after the target site proves this
+  healthcheck flag. Before that, scripts must stay dry-run/manual for unit data.
