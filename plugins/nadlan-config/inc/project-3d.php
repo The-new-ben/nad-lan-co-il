@@ -120,6 +120,7 @@ if ( ! function_exists( 'nadlan_p3d_clean_unit_items' ) ) {
 			if ( ! in_array( $status, array( 'available', 'reserved', 'sold' ), true ) ) {
 				$status = 'available';
 			}
+			$price_note = sanitize_textarea_field( (string) ( $u['price_note'] ?? '' ) );
 
 			$out[] = array(
 				'id'      => sanitize_key( (string) $u['id'] ),
@@ -138,11 +139,12 @@ if ( ! function_exists( 'nadlan_p3d_clean_unit_items' ) ) {
 				'building'      => sanitize_text_field( (string) ( $u['building'] ?? '' ) ),
 				'availability'  => sanitize_text_field( (string) ( $u['availability'] ?? '' ) ),
 				'note'          => sanitize_textarea_field( (string) ( $u['note'] ?? '' ) ),
-				'market_note'   => sanitize_textarea_field( (string) ( $u['market_note'] ?? '' ) ),
+				'market_note'   => sanitize_textarea_field( (string) ( $u['market_note'] ?? $price_note ) ),
 				'source_note'   => sanitize_textarea_field( (string) ( $u['source_note'] ?? '' ) ),
 				'price'          => nadlan_p3d_sanitize_decimal( $u['price'] ?? 0 ),
 				'price_estimate' => nadlan_p3d_sanitize_decimal( $u['price_estimate'] ?? 0 ),
-				'price_source'   => sanitize_text_field( (string) ( $u['price_source'] ?? '' ) ),
+				'price_source'   => sanitize_text_field( (string) ( $u['price_source'] ?? $price_note ) ),
+				'price_note'     => $price_note,
 				'interior_url'    => esc_url_raw( (string) ( $u['interior_url'] ?? '' ) ),
 				'tour_url'        => esc_url_raw( (string) ( $u['tour_url'] ?? '' ) ),
 				'view_note'       => sanitize_textarea_field( (string) ( $u['view_note'] ?? '' ) ),

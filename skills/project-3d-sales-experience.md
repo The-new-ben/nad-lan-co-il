@@ -389,6 +389,9 @@ For every cloned project, verify:
 - The REST sanitizer must canonicalize the same unit fields the frontend reads: `id`, `title`,
   `floor`, `rooms`, `sqm`, `balcony`, `dir`, `line`, `view`, `building`, availability/notes,
   non-binding price fields, floorplan/tour/interior URLs, and model hotspot/camera fields.
+- Asset payloads may use `price_note` for the legal/market disclaimer. The CMS sanitizer must not
+  drop it; map it into the buyer-visible `market_note` / `price_source` path when those fields are
+  missing.
 - Store only JSON arrays of sanitized unit objects. Invalid JSON, empty arrays or objects without a
   stable `id` should resolve to an empty string instead of preserving junk.
 - Asset handoff scripts may write `project_3d_units` only after the target site proves this

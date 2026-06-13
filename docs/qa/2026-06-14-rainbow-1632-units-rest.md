@@ -10,6 +10,8 @@ Scope: `plugins/nadlan-config/inc/project-3d.php`, plugin version metadata, mani
 - Unit JSON is canonicalized at write time by `nadlan_p3d_sanitize_units_json()`.
 - The public render path and the admin metabox now share `nadlan_p3d_clean_unit_items()`, so REST,
   admin save and frontend output read the same sanitized unit schema.
+- `price_note` is preserved and mapped into `market_note` / `price_source` when those fields are
+  absent, so non-binding price disclaimers from asset payloads do not disappear during REST writes.
 - Healthcheck now reports `project_3d.unit_meta_rest = true`.
 
 ## Why This Matters
@@ -55,7 +57,7 @@ $base='https://nad-lan.co.il'
 $auth=[Convert]::ToBase64String([Text.Encoding]::UTF8.GetBytes("$env:WP_USER`:$env:WP_APP_PASSWORD"))
 $payload = @{
   meta = @{
-    project_3d_units = '[{"id":"qa-rest-unit","title":"QA unit","floor":9,"rooms":4,"sqm":110,"status":"available","hotspot_position":"0 25 4","hotspot_normal":"0 0 1","camera_orbit":"40deg 65deg auto","plan":"javascript:bad"}]'
+    project_3d_units = '[{"id":"qa-rest-unit","title":"QA unit","floor":9,"rooms":4,"sqm":110,"status":"available","price_note":"אומדן בלבד, לא הצעה ולא התחייבות","hotspot_position":"0 25 4","hotspot_normal":"0 0 1","camera_orbit":"40deg 65deg auto","plan":"javascript:bad"}]'
   }
 } | ConvertTo-Json -Depth 8
 Invoke-RestMethod -Method Post -Uri "$base/wp-json/wp/v2/nadlan_project/4464?context=edit" -Headers @{Authorization="Basic $auth"} -ContentType 'application/json; charset=utf-8' -Body $payload
@@ -65,6 +67,7 @@ Expected:
 
 - request succeeds only for a user who can `edit_post` on project `4464`,
 - saved meta contains `id`, title/floor/sqm/status/hotspot/camera fields,
+- `price_note` is preserved and available to the showroom as price/market context,
 - bad `plan` URL is sanitized away,
 - healthcheck reports `project_3d.unit_meta_rest: true`.
 
