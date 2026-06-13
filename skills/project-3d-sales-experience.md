@@ -362,3 +362,19 @@ For every cloned project, verify:
   building-product model and should stay user-opened unless cost governance changes.
 - For the full modeling runbook, use `skills/skill-3d-model-pipeline.md` before creating the next
   project showroom.
+
+### v1.63.1 Showroom Hit-Target Gate
+
+- Do not make every decorative floor band a button. Only floors with selectable units should expose
+  `role="button"` and keyboard focus; decorative floors must stay visual so the model can drag
+  cleanly.
+- Visible apartment polygons are visual affordances. The accessible control should be a larger
+  invisible hit shape behind or around the visual polygon, with the visible polygon set
+  `aria-hidden`/pointer-inert.
+- The minimum interactive target for showroom controls is 44px on desktop and mobile: stage card
+  actions, dock actions, return buttons, compare chips, tool buttons, advisor check rows, model
+  hotspots, facade hit areas and selectable floor plates.
+- If a visual mark is intentionally thin, separate visual size from hit size. Preserve the premium
+  architectural drawing while expanding the control geometry.
+- Any cloned project page must pass a tap-target scan against `.nlp3d button`, `.nlp3d a`,
+  `.nlp3d input`, and `.nlp3d [role="button"]` before deployment.
