@@ -52,6 +52,31 @@ plain WordPress article.
    - or `לפי פנייה`.
    Anything estimated must say `אומדן` and `לא מחייב`.
 
+## C2. Product Showroom Fields
+
+Every flagship project page must expose the following before it is considered clone-ready:
+
+1. `project_3d_model_type` for the model source quality (`procedural`, `facade`, `sprite360`,
+   `gltf`, `bim`).
+2. `project_3d_video_url` for developer sales video or meeting recording.
+3. `project_3d_tour_url` for a 3D/interior walkthrough when supplied.
+4. `project_3d_cesium_tiles_url` as the future photorealistic 3D city-view seam.
+5. `project_3d_drawings_json` for approved plans, elevations and site drawings.
+6. `project_3d_environment_json` for nearby projects, schools, parks, transit and public services.
+7. Per-unit `interior_url`, `tour_url` and `view_note`.
+
+Material fields are not complete until they appear in the buyer UI:
+
+- drawing items must surface in the plan/drawing panel,
+- video and tour URLs must surface in the media panel,
+- environment items must surface in the surroundings panel,
+- future Cesium/3D city-view URLs must be exposed as a ready seam in the view panel,
+- nested material URLs must be sanitized before rendering as links.
+
+The default model can be schematic, but the user experience must still feel like a product
+showroom: building-first, drag to rotate/tilt, visible zoom controls, large unit hit areas, no
+nested scrollbars and source-aware price/availability wording.
+
 ## D. Lead And WhatsApp Funnel
 
 1. Every CTA must enter the same lead CPT and routing rails.

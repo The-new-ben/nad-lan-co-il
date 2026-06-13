@@ -295,3 +295,32 @@ For every cloned project, verify:
   mobile viewport height. They must not cover the 3D stage, lead form or footer.
 - After every merge: pull/sync the uPress/server Git copy first, then update or upload the
   WordPress plugin. Merging GitHub alone does not update production.
+
+### v1.62.0 Product Showroom Contract
+
+- Treat the building as the product, like a premium ecommerce configurator: the default state is a
+  single full-stage selector, not a map, not a side panel and not a document body.
+- Drag must rotate the model horizontally and tilt it vertically. Double tap / double click can zoom;
+  explicit zoom buttons must exist for keyboard and accessibility.
+- Clickable unit targets must be larger than the visible polygons. Use invisible SVG hit polygons or
+  equivalent hit areas so users can press the apartment, not only a thin line.
+- No nested visible scrollbars inside the showroom. If there is too much information, stack panels
+  below the stage or split into clear cards. The module must feel like an app surface, not an iframe.
+- CMS fields required for every future flagship project:
+  - `project_3d_model_type` (`procedural`, `facade`, `sprite360`, `gltf`, `bim`),
+  - `project_3d_video_url`,
+  - `project_3d_tour_url`,
+  - `project_3d_cesium_tiles_url`,
+  - `project_3d_drawings_json`,
+  - `project_3d_environment_json`,
+  - per-unit `interior_url`, `tour_url`, `view_note`.
+- CMS material fields are only useful if the buyer can act on them. Render approved drawings,
+  tours, videos, surroundings and future city-view links as source-aware material cards inside the
+  relevant showroom panel, with sanitized URLs and honest empty states.
+- Data quality must be explicit. Procedural/demo geometry is allowed for a sales prototype, but the
+  public copy must not imply it is official BIM, official floor plans or verified availability.
+- Zillow-style parity for project pages means: unit picker, floor plans/drawings when provided,
+  photos/video/tour slots, view/surroundings layer, source-aware price context, comparison and a
+  lead path that preserves the selected unit.
+- Cesium / Google Photorealistic 3D Tiles remains a lazy, user-opened view layer until cost and token
+  governance are approved. Do not instantiate it on page load.

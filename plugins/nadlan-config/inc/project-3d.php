@@ -35,6 +35,75 @@ if ( ! function_exists( 'nadlan_p3d_sanitize_decimal' ) ) {
 	}
 }
 
+if ( ! function_exists( 'nadlan_p3d_clean_material_items' ) ) {
+	function nadlan_p3d_clean_material_items( $items ) {
+		if ( ! is_array( $items ) ) {
+			return array();
+		}
+
+		$out = array();
+		foreach ( $items as $item ) {
+			if ( ! is_array( $item ) ) {
+				continue;
+			}
+
+			$clean = array();
+			foreach ( array( 'label', 'name', 'title' ) as $key ) {
+				if ( isset( $item[ $key ] ) ) {
+					$clean[ $key ] = sanitize_text_field( (string) $item[ $key ] );
+				}
+			}
+			foreach ( array( 'detail', 'source', 'note' ) as $key ) {
+				if ( isset( $item[ $key ] ) ) {
+					$clean[ $key ] = sanitize_textarea_field( (string) $item[ $key ] );
+				}
+			}
+			if ( isset( $item['type'] ) ) {
+				$clean['type'] = sanitize_key( (string) $item['type'] );
+			}
+			if ( isset( $item['category'] ) ) {
+				$clean['category'] = sanitize_key( (string) $item['category'] );
+			}
+			if ( isset( $item['url'] ) ) {
+				$clean['url'] = esc_url_raw( (string) $item['url'] );
+			}
+			if ( isset( $item['distance'] ) ) {
+				$clean['distance'] = sanitize_text_field( (string) $item['distance'] );
+			}
+			if ( isset( $item['lat'] ) && is_numeric( $item['lat'] ) ) {
+				$clean['lat'] = (float) $item['lat'];
+			}
+			if ( isset( $item['lng'] ) && is_numeric( $item['lng'] ) ) {
+				$clean['lng'] = (float) $item['lng'];
+			}
+
+			if ( array_filter( $clean ) ) {
+				$out[] = $clean;
+			}
+			if ( count( $out ) >= 40 ) {
+				break;
+			}
+		}
+
+		return $out;
+	}
+}
+
+if ( ! function_exists( 'nadlan_p3d_sanitize_material_json' ) ) {
+	function nadlan_p3d_sanitize_material_json( $raw ) {
+		$raw = trim( (string) $raw );
+		if ( $raw === '' ) {
+			return '';
+		}
+		$decoded = json_decode( $raw, true );
+		if ( ! is_array( $decoded ) ) {
+			return '';
+		}
+		$clean = nadlan_p3d_clean_material_items( $decoded );
+		return $clean ? wp_json_encode( $clean, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES ) : '';
+	}
+}
+
 if ( ! function_exists( 'nadlan_p3d_units' ) ) {
 	function nadlan_p3d_units( $post_id ) {
 		$raw   = trim( (string) get_post_meta( (int) $post_id, 'project_3d_units', true ) );
@@ -73,6 +142,9 @@ if ( ! function_exists( 'nadlan_p3d_units' ) ) {
 				'price'          => nadlan_p3d_sanitize_decimal( $u['price'] ?? 0 ),
 				'price_estimate' => nadlan_p3d_sanitize_decimal( $u['price_estimate'] ?? 0 ),
 				'price_source'   => sanitize_text_field( (string) ( $u['price_source'] ?? '' ) ),
+				'interior_url'    => esc_url_raw( (string) ( $u['interior_url'] ?? '' ) ),
+				'tour_url'        => esc_url_raw( (string) ( $u['tour_url'] ?? '' ) ),
+				'view_note'       => sanitize_textarea_field( (string) ( $u['view_note'] ?? '' ) ),
 				'status'  => $status,
 				'plan'    => esc_url_raw( (string) ( $u['plan'] ?? '' ) ),
 			);
@@ -229,6 +301,70 @@ if ( ! function_exists( 'nadlan_p3d_demo_units' ) ) {
 	}
 }
 
+if ( ! function_exists( 'nadlan_p3d_json_meta' ) ) {
+	function nadlan_p3d_json_meta( $post_id, $key, $fallback = array() ) {
+		$raw = trim( (string) get_post_meta( (int) $post_id, (string) $key, true ) );
+		if ( $raw === '' ) {
+			return $fallback;
+		}
+		$decoded = json_decode( $raw, true );
+		return is_array( $decoded ) ? $decoded : $fallback;
+	}
+}
+
+if ( ! function_exists( 'nadlan_p3d_sanitize_model_type' ) ) {
+	function nadlan_p3d_sanitize_model_type( $value ) {
+		$value   = sanitize_key( (string) $value );
+		$allowed = array( 'procedural', 'facade', 'sprite360', 'gltf', 'bim' );
+		return in_array( $value, $allowed, true ) ? $value : 'procedural';
+	}
+}
+
+if ( ! function_exists( 'nadlan_p3d_sanitize_json_text' ) ) {
+	function nadlan_p3d_sanitize_json_text( $value ) {
+		$raw = trim( (string) wp_unslash( $value ) );
+		if ( $raw === '' ) {
+			return '';
+		}
+		$decoded = json_decode( $raw, true );
+		return is_array( $decoded ) ? $raw : '';
+	}
+}
+
+add_action(
+	'init',
+	function () {
+		$auth = function ( $allowed, $meta_key, $post_id ) {
+			unset( $allowed, $meta_key );
+			return current_user_can( 'edit_post', (int) $post_id );
+		};
+
+		$fields = array(
+			'project_3d_model_type'       => 'nadlan_p3d_sanitize_model_type',
+			'project_3d_video_url'        => 'esc_url_raw',
+			'project_3d_tour_url'         => 'esc_url_raw',
+			'project_3d_cesium_tiles_url' => 'esc_url_raw',
+			'project_3d_drawings_json'    => 'nadlan_p3d_sanitize_material_json',
+			'project_3d_environment_json' => 'nadlan_p3d_sanitize_material_json',
+		);
+
+		foreach ( $fields as $key => $sanitize_callback ) {
+			register_post_meta(
+				'nadlan_project',
+				$key,
+				array(
+					'type'              => 'string',
+					'single'            => true,
+					'show_in_rest'      => true,
+					'sanitize_callback' => $sanitize_callback,
+					'auth_callback'     => $auth,
+				)
+			);
+		}
+	},
+	12
+);
+
 if ( ! function_exists( 'nadlan_p3d_meta' ) ) {
 	function nadlan_p3d_meta( $post_id, $demo ) {
 		$title     = wp_strip_all_tags( get_the_title( $post_id ) );
@@ -247,6 +383,10 @@ if ( ! function_exists( 'nadlan_p3d_meta' ) ) {
 		$avg_price_per_sqm = nadlan_p3d_sanitize_decimal( get_post_meta( $post_id, 'project_3d_avg_price_per_sqm', true ) );
 		$price_source_note = sanitize_text_field( (string) get_post_meta( $post_id, 'project_3d_price_source_note', true ) );
 		$token             = trim( (string) get_option( 'nadlan_mapbox_token', '' ) );
+		$model_type        = nadlan_p3d_sanitize_model_type( get_post_meta( $post_id, 'project_3d_model_type', true ) );
+		$video_url         = esc_url_raw( (string) get_post_meta( $post_id, 'project_3d_video_url', true ) );
+		$tour_url          = esc_url_raw( (string) get_post_meta( $post_id, 'project_3d_tour_url', true ) );
+		$cesium_url        = esc_url_raw( (string) get_post_meta( $post_id, 'project_3d_cesium_tiles_url', true ) );
 
 		return array(
 			'title'     => $title ?: 'הפרויקט',
@@ -262,6 +402,12 @@ if ( ! function_exists( 'nadlan_p3d_meta' ) ) {
 			'avg_price_per_sqm'  => $avg_price_per_sqm,
 			'price_source_note'  => $price_source_note,
 			'mapbox_token'       => $token,
+			'model_type'         => $model_type ?: 'procedural',
+			'video_url'          => $video_url,
+			'tour_url'           => $tour_url,
+			'cesium_tiles_url'   => $cesium_url,
+			'drawings'           => nadlan_p3d_clean_material_items( nadlan_p3d_json_meta( $post_id, 'project_3d_drawings_json', array() ) ),
+			'environment'        => nadlan_p3d_clean_material_items( nadlan_p3d_json_meta( $post_id, 'project_3d_environment_json', array() ) ),
 			'url'       => get_permalink( $post_id ),
 			'demo'      => (bool) $demo,
 		);
@@ -363,6 +509,8 @@ if ( ! function_exists( 'nadlan_p3d_render' ) ) {
 				<button type="button" class="nlp3d-angle" data-angle="0" data-action="angle-sea">ים</button>
 				<button type="button" class="nlp3d-angle" data-angle="32" data-action="angle-city">עיר</button>
 				<button type="button" class="nlp3d-orbit" data-orbit="1" data-action="orbit-building">סיבוב</button>
+				<button type="button" class="nlp3d-zoom" data-zoom="in" data-action="zoom-in">קרב</button>
+				<button type="button" class="nlp3d-zoom" data-zoom="out" data-action="zoom-out">הרחק</button>
 				<span class="nlp3d-drag-note">אפשר לגרור את המודל</span>
 			</div>
 			<div class="nlp3d-scene" style="--angle:-32deg" role="group" aria-label="מודל תלת ממדי סכמטי של מגדל מגורים">
@@ -429,7 +577,10 @@ if ( ! function_exists( 'nadlan_p3d_render' ) ) {
 				<div class="nlp3d-tools" aria-label="מידע נוסף על הדירה">
 					<button type="button" class="nlp3d-tool is-active" data-tool="spec" data-action="unit-spec">מפרט</button>
 					<button type="button" class="nlp3d-tool" data-tool="drawing" data-action="unit-drawing">תוכנית</button>
+					<button type="button" class="nlp3d-tool" data-tool="view" data-action="unit-view">מבט</button>
 					<button type="button" class="nlp3d-tool" data-tool="sun" data-action="unit-sun">אור ושמש</button>
+					<button type="button" class="nlp3d-tool" data-tool="surroundings" data-action="unit-surroundings">סביבה</button>
+					<button type="button" class="nlp3d-tool" data-tool="media" data-action="unit-media">מדיה</button>
 					<button type="button" class="nlp3d-tool" data-tool="advisors" data-action="unit-advisors">יועצים</button>
 				</div>
 				<div class="nlp3d-tool-panel" aria-live="polite"></div>
@@ -634,6 +785,30 @@ CSS;
 	}
 }
 
+if ( ! function_exists( 'nadlan_p3d_showroom_v162_css' ) ) {
+	function nadlan_p3d_showroom_v162_css() {
+		return <<<'CSS'
+.nlp3d.nlp3d-premium{--model-zoom:1;--tilt:62deg;margin-block:12px 42px!important}.nlp3d.nlp3d-premium .nlp3d-shell{grid-template-columns:minmax(0,1fr)!important;grid-template-areas:"copy" "stage" "console"!important;gap:16px!important;padding:18px!important}.nlp3d.nlp3d-premium .nlp3d-copy{grid-area:copy!important;display:grid!important;grid-template-columns:minmax(0,1fr) minmax(260px,.42fr)!important;gap:10px 18px!important;align-items:end!important;border-top:0!important;border-bottom:1px solid rgba(234,216,163,.16);padding:0 0 14px!important}.nlp3d.nlp3d-premium .nlp3d-copy .nlp3d-kicker,.nlp3d.nlp3d-premium .nlp3d-copy h2,.nlp3d.nlp3d-premium .nlp3d-copy .nlp3d-lead-text{grid-column:1!important}.nlp3d.nlp3d-premium .nlp3d-copy h2{max-width:28ch!important}.nlp3d.nlp3d-premium .nlp3d-shop-path,.nlp3d.nlp3d-premium .nlp3d-metrics,.nlp3d.nlp3d-premium .nlp3d-demo-note{grid-column:2!important}.nlp3d.nlp3d-premium .nlp3d-stage-wrap{grid-area:stage!important;min-height:clamp(560px,54vw,760px)!important}.nlp3d.nlp3d-premium .nlp3d-scene{height:100%!important;min-height:inherit!important}.nlp3d.nlp3d-premium .nlp3d-console{grid-area:console!important;display:grid!important;grid-template-columns:minmax(220px,.68fr) minmax(360px,1fr) minmax(280px,.72fr)!important;gap:14px!important;max-height:none!important;overflow:visible!important;scrollbar-width:none!important;padding:16px!important}.nlp3d.nlp3d-premium .nlp3d-console::-webkit-scrollbar,.nlp3d.nlp3d-premium .nlp3d-floor-strip::-webkit-scrollbar,.nlp3d.nlp3d-premium .nlp3d-units::-webkit-scrollbar,.nlp3d.nlp3d-premium .nlp3d-facts::-webkit-scrollbar,.nlp3d.nlp3d-premium .nlp3d-tool-panel::-webkit-scrollbar{display:none!important}.nlp3d.nlp3d-premium .nlp3d-selection-dock,.nlp3d.nlp3d-premium .nlp3d-console-head,.nlp3d.nlp3d-premium .nlp3d-floor-strip,.nlp3d.nlp3d-premium .nlp3d-units{grid-column:1!important}.nlp3d.nlp3d-premium .nlp3d-detail,.nlp3d.nlp3d-premium .nlp3d-compare-tray{grid-column:2!important}.nlp3d.nlp3d-premium .nlp3d-lead-form{grid-column:3!important;align-self:start!important;margin-top:0!important}.nlp3d.nlp3d-premium .nlp3d-facts,.nlp3d.nlp3d-premium .nlp3d-floor-strip,.nlp3d.nlp3d-premium .nlp3d-tool-panel,.nlp3d.nlp3d-premium .nlp3d-units{max-height:none!important;overflow:visible!important}.nlp3d.nlp3d-premium .nlp3d-tools{grid-template-columns:repeat(4,minmax(0,1fr))!important}.nlp3d.nlp3d-premium .nlp3d-angle,.nlp3d.nlp3d-premium .nlp3d-orbit,.nlp3d.nlp3d-premium .nlp3d-zoom{border-radius:999px!important;border:1px solid rgba(234,216,163,.34)!important;background:rgba(7,24,24,.72)!important;color:#f6efe2!important;padding:8px 13px!important;cursor:pointer!important}.nlp3d.nlp3d-premium .nlp3d-zoom:hover,.nlp3d.nlp3d-premium .nlp3d-zoom:focus-visible{outline:2px solid rgba(255,255,255,.68);outline-offset:2px;background:rgba(234,216,163,.18)!important}.nlp3d.nlp3d-premium .nlp3d-tower{transform:translateX(50%) rotateX(var(--tilt,62deg)) rotateZ(var(--angle,-32deg)) scale(var(--model-zoom,1))!important;transform-origin:center bottom!important;will-change:transform!important}.nlp3d.nlp3d-premium .nlp3d-facade{transform:scale(var(--model-zoom,1))!important;transform-origin:center bottom!important;will-change:transform!important}.nlp3d.nlp3d-premium .nlp3d-hotspot-hit{fill:rgba(255,255,255,0);stroke:rgba(255,255,255,0);stroke-width:28;vector-effect:non-scaling-stroke;cursor:pointer;pointer-events:stroke}.nlp3d.nlp3d-premium .nlp3d-hotspot-hit:hover+.nlp3d-hotspot,.nlp3d.nlp3d-premium .nlp3d-hotspot-hit:focus-visible+.nlp3d-hotspot{fill:rgba(234,216,163,.28);stroke:#fff2ba;filter:drop-shadow(0 0 10px rgba(234,216,163,.52))}.nlp3d.nlp3d-premium .nlp3d-hotspot-hit:focus-visible{outline:none}.nlp3d.nlp3d-premium .nlp3d-stage-card:not([hidden]){right:18px!important;left:auto!important;bottom:18px!important;top:auto!important;width:min(390px,calc(100% - 36px))!important;max-height:none!important;overflow:visible!important}.nlp3d.nlp3d-premium .nlp3d-stage-card-actions{grid-template-columns:repeat(3,minmax(0,1fr))!important}.nlp3d.nlp3d-premium .nlp3d-showcase{padding-top:0!important}.nlp3d.nlp3d-premium .nlp3d-stage-wrap.is-live-view .nlp3d-scene{opacity:0!important;pointer-events:none!important}.nlp3d.nlp3d-premium .nlp3d-stage-viewframe{inset:0!important}.nlp3d.nlp3d-premium .nlp3d-view-copy{unicode-bidi:plaintext}@media(max-width:980px){.nlp3d.nlp3d-premium .nlp3d-console{grid-template-columns:minmax(220px,.72fr) minmax(320px,1fr)!important}.nlp3d.nlp3d-premium .nlp3d-selection-dock,.nlp3d.nlp3d-premium .nlp3d-console-head,.nlp3d.nlp3d-premium .nlp3d-floor-strip,.nlp3d.nlp3d-premium .nlp3d-units{grid-column:1!important}.nlp3d.nlp3d-premium .nlp3d-detail,.nlp3d.nlp3d-premium .nlp3d-compare-tray,.nlp3d.nlp3d-premium .nlp3d-lead-form{grid-column:2!important}.nlp3d.nlp3d-premium .nlp3d-lead-form{margin-top:0!important}}@media(max-width:760px){.nlp3d.nlp3d-premium .nlp3d-shell{padding:10px!important;gap:12px!important}.nlp3d.nlp3d-premium .nlp3d-copy{grid-template-columns:1fr!important}.nlp3d.nlp3d-premium .nlp3d-copy .nlp3d-kicker,.nlp3d.nlp3d-premium .nlp3d-copy h2,.nlp3d.nlp3d-premium .nlp3d-copy .nlp3d-lead-text,.nlp3d.nlp3d-premium .nlp3d-shop-path,.nlp3d.nlp3d-premium .nlp3d-metrics,.nlp3d.nlp3d-premium .nlp3d-demo-note{grid-column:1!important}.nlp3d.nlp3d-premium .nlp3d-stage-wrap{min-height:min(590px,130vw)!important}.nlp3d.nlp3d-premium .nlp3d-scene{height:100%!important;min-height:min(560px,126vw)!important}.nlp3d.nlp3d-premium .nlp3d-console{display:grid!important;grid-template-columns:1fr!important;max-height:none!important;overflow:visible!important;padding:12px!important}.nlp3d.nlp3d-premium .nlp3d-selection-dock,.nlp3d.nlp3d-premium .nlp3d-console-head,.nlp3d.nlp3d-premium .nlp3d-floor-strip,.nlp3d.nlp3d-premium .nlp3d-units,.nlp3d.nlp3d-premium .nlp3d-detail,.nlp3d.nlp3d-premium .nlp3d-compare-tray,.nlp3d.nlp3d-premium .nlp3d-lead-form{grid-column:1!important}.nlp3d.nlp3d-premium .nlp3d-tools{grid-template-columns:repeat(2,minmax(0,1fr))!important}.nlp3d.nlp3d-premium .nlp3d-toolbar{right:8px!important;left:8px!important;top:8px!important;gap:6px!important}.nlp3d.nlp3d-premium .nlp3d-angle,.nlp3d.nlp3d-premium .nlp3d-orbit,.nlp3d.nlp3d-premium .nlp3d-zoom{padding:7px 9px!important;font-size:12px!important}.nlp3d.nlp3d-premium .nlp3d-stage-card:not([hidden]){position:relative!important;right:auto!important;left:auto!important;top:auto!important;bottom:auto!important;width:auto!important;margin-top:10px!important}.nlp3d.nlp3d-premium .nlp3d-stage-card-stats{grid-template-columns:1fr 1fr!important}.nlp3d.nlp3d-premium .nlp3d-stage-card-actions{grid-template-columns:1fr!important}.nlp3d.nlp3d-premium .nlp3d-facade{inset:64px 1% 124px!important}}@media(max-width:420px){.nlp3d.nlp3d-premium .nlp3d-stage-wrap{min-height:520px!important}.nlp3d.nlp3d-premium .nlp3d-scene{min-height:500px!important}.nlp3d.nlp3d-premium .nlp3d-facade{inset:68px 0 164px!important}}
+CSS;
+	}
+}
+
+if ( ! function_exists( 'nadlan_p3d_showroom_v162_mobile_card_css' ) ) {
+	function nadlan_p3d_showroom_v162_mobile_card_css() {
+		return <<<'CSS'
+@media(max-width:760px){.nlp3d.nlp3d-premium .nlp3d-stage-wrap.has-stage-selection{min-height:min(780px,172vw)!important}.nlp3d.nlp3d-premium .nlp3d-stage-wrap.has-stage-selection .nlp3d-scene{bottom:224px!important;height:auto!important;min-height:0!important}.nlp3d.nlp3d-premium .nlp3d-stage-card:not([hidden]){position:absolute!important;right:10px!important;left:10px!important;top:auto!important;bottom:10px!important;width:auto!important;max-height:none!important;overflow:visible!important;margin-top:0!important}.nlp3d.nlp3d-premium .nlp3d-stage-card-actions button{min-height:44px!important}}@media(max-width:420px){.nlp3d.nlp3d-premium .nlp3d-stage-wrap.has-stage-selection{min-height:780px!important}.nlp3d.nlp3d-premium .nlp3d-stage-wrap.has-stage-selection .nlp3d-scene{bottom:250px!important}}
+CSS;
+	}
+}
+
+if ( ! function_exists( 'nadlan_p3d_showroom_v162_material_css' ) ) {
+	function nadlan_p3d_showroom_v162_material_css() {
+		return <<<'CSS'
+.nlp3d.nlp3d-premium .nlp3d-material-links{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;margin-top:10px}.nlp3d.nlp3d-premium .nlp3d-material-card{position:relative;display:grid;gap:4px;min-height:62px;padding:10px 11px;border:1px solid rgba(234,216,163,.22);background:linear-gradient(135deg,rgba(255,255,255,.075),rgba(255,255,255,.035));color:#fff3c8;text-decoration:none}.nlp3d.nlp3d-premium .nlp3d-material-card strong{font-size:13px;line-height:1.3;color:#fff7df}.nlp3d.nlp3d-premium .nlp3d-material-card small{font-size:11.5px;line-height:1.35;color:#d8ccb0}.nlp3d.nlp3d-premium .nlp3d-material-card em{position:absolute;top:7px;left:8px;font-style:normal;font-size:10px;color:#15120c;background:linear-gradient(135deg,#ead8a3,#b99043);padding:2px 6px;border-radius:999px}.nlp3d.nlp3d-premium a.nlp3d-material-card:hover,.nlp3d.nlp3d-premium a.nlp3d-material-card:focus-visible{outline:2px solid rgba(255,255,255,.68);outline-offset:2px;border-color:rgba(234,216,163,.55);background:linear-gradient(135deg,rgba(234,216,163,.16),rgba(255,255,255,.05))}@media(max-width:760px){.nlp3d.nlp3d-premium .nlp3d-material-links{grid-template-columns:1fr}.nlp3d.nlp3d-premium .nlp3d-material-card{min-height:58px}}
+CSS;
+	}
+}
+
 if ( ! function_exists( 'nadlan_p3d_inline_js' ) ) {
 	function nadlan_p3d_inline_js( $rest_url ) {
 		$js = <<<'JS'
@@ -793,11 +968,14 @@ if ( ! function_exists( 'nadlan_p3d_inline_js' ) ) {
 		compareIds=compareIds.filter(function(id){return units.some(function(u){return u.id===id})}).slice(0,3);
 		var savedUnit=storageGet(storeKey+'-unit');
 		var currentAngle=-32;
+		var currentTilt=62;
+		var currentZoom=1;
 		var dragState=null;
+		var lastTapAt=0;
 		var activeTool='spec';
 		if(savedUnit){
 			var restored=units.find(function(u){return u.id===savedUnit});
-			if(restored){activeUnit=restored;activeFloor=parseInt(restored.floor||activeFloor,10);hasStageSelection=true}
+			if(restored){activeUnit=restored;activeFloor=parseInt(restored.floor||activeFloor,10)}
 		}
 		function track(action,extra){
 			window.dataLayer=window.dataLayer||[];
@@ -805,10 +983,70 @@ if ( ! function_exists( 'nadlan_p3d_inline_js' ) ) {
 			if(extra){Object.keys(extra).forEach(function(k){payload[k]=extra[k]})}
 			window.dataLayer.push(payload);
 		}
+		function safeUrl(url){
+			if(!url){return ''}
+			try{
+				var u=new URL(String(url),window.location.origin);
+				return /^https?:$/.test(u.protocol)?u.href:'';
+			}catch(e){return ''}
+		}
+		function materialLabel(item,fallback){
+			return (item&&(item.label||item.name||item.title))||fallback||'מידע נוסף';
+		}
+		function materialDetail(item){
+			if(!item){return ''}
+			var out=item.detail||item.note||item.source||'';
+			if(item.distance){out+=(out?' · ':'')+item.distance}
+			return out;
+		}
+		function appendMaterialCards(items,source){
+			if(!toolPanel||!items||!items.length){return}
+			var wrap=document.createElement('div');
+			wrap.className='nlp3d-material-links';
+			items.slice(0,6).forEach(function(item){
+				var href=safeUrl(item.url);
+				var el=document.createElement(href?'a':'span');
+				el.className='nlp3d-material-card';
+				if(href){
+					el.href=href;
+					el.target='_blank';
+					el.rel='noopener';
+				}
+				var label=document.createElement('strong');
+				var detail=document.createElement('small');
+				label.textContent=materialLabel(item,'מידע נוסף');
+				detail.textContent=materialDetail(item)||(href?'פתיחה בחלון חדש':'יופיע כאשר החומר יאושר');
+				el.appendChild(label);
+				el.appendChild(detail);
+				if(item.type||item.category){
+					var chip=document.createElement('em');
+					chip.textContent=item.type||item.category;
+					el.appendChild(chip);
+				}
+				if(href){
+					el.addEventListener('click',function(){track('material_open',{source:source||activeTool,label:label.textContent})});
+				}
+				wrap.appendChild(el);
+			});
+			toolPanel.appendChild(wrap);
+		}
 		function floorHasUnits(f){return units.some(function(u){return parseInt(u.floor||0,10)===f})}
 		function unitForFloor(f){return units.find(function(u){return parseInt(u.floor||0,10)===f&&u.status!=='sold'})||units.find(function(u){return parseInt(u.floor||0,10)===f})}
 		function unitById(id){return units.find(function(u){return u.id===id})}
 		function hasPoints(u){return u&&typeof u.points==='string'&&u.points.trim().split(/\s+/).length>=3}
+		function makeHitPolygon(u){
+			var hit=document.createElementNS('http://www.w3.org/2000/svg','polygon');
+			hit.setAttribute('points',u.points);
+			hit.setAttribute('class','nlp3d-hotspot-hit nlp3d-status-'+u.status);
+			hit.setAttribute('tabindex','0');
+			hit.setAttribute('role','button');
+			hit.setAttribute('aria-label',selectedTitle(u)+' · '+statusLabel(u.status));
+			hit.dataset.unit=u.id;
+			hit.dataset.action='select-unit-facade-hit';
+			hit.addEventListener('click',function(e){e.stopPropagation();selectUnit(u.id,'facade-hit')});
+			hit.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();selectUnit(u.id,'facade-hit-keyboard')}});
+			return hit;
+		}
 		function renderTower(){
 			tower.innerHTML='';
 			var count=Math.max(22,Math.min(45,maxFloor));
@@ -853,6 +1091,7 @@ if ( ! function_exists( 'nadlan_p3d_inline_js' ) ) {
 			var any=false;
 			units.filter(hasPoints).forEach(function(u){
 				any=true;
+				hotspots.appendChild(makeHitPolygon(u));
 				var poly=document.createElementNS('http://www.w3.org/2000/svg','polygon');
 				poly.setAttribute('points',u.points);
 				poly.setAttribute('class','nlp3d-hotspot nlp3d-status-'+u.status+(activeUnit&&u.id===activeUnit.id?' is-active':''));
@@ -872,7 +1111,7 @@ if ( ! function_exists( 'nadlan_p3d_inline_js' ) ) {
 			scene.classList.toggle('has-facade',any);
 		}
 		function syncFacade(){
-			root.querySelectorAll('.nlp3d-hotspot').forEach(function(p){p.classList.toggle('is-active',activeUnit&&p.dataset.unit===activeUnit.id)});
+			root.querySelectorAll('.nlp3d-hotspot,.nlp3d-hotspot-hit').forEach(function(p){p.classList.toggle('is-active',activeUnit&&p.dataset.unit===activeUnit.id)});
 		}
 		function renderFloors(){
 			floorStrip.innerHTML='';
@@ -1074,11 +1313,20 @@ if ( ! function_exists( 'nadlan_p3d_inline_js' ) ) {
 		}
 		function renderToolPanel(){
 			if(!toolPanel||!activeUnit){return}
+			var materialItems=[];
 			var headline='מפרט הדירה';
 			var copy='הדירה שנבחרה מוצגת לפי נתוני ההמחשה: '+(activeUnit.rooms||'')+' חדרים, '+(activeUnit.sqm?fmt(activeUnit.sqm)+' מ"ר':'שטח לפי פנייה')+', קומה '+(activeUnit.floor||'לפי פנייה')+', '+(activeUnit.building||'בניין לפי פנייה')+'. '+(activeUnit.note||'מפרט רשמי יימסר לאחר בדיקת זמינות מול היזם.');
 			if(activeTool==='drawing'){
 				headline='תוכנית ומדידות';
 				copy=activeUnit.plan?'ניתן לפתוח את תוכנית הדירה המקושרת ולבקש בדיקה של המידות, המרפסת והכיוונים.':'תוכנית רשמית עדיין לא נטענה לכרטיס. אפשר לשלוח בקשה ולקבל תוכנית, מדידות, כיווני אוויר וחומר מכירה כאשר הם זמינים ומאומתים. המערכת כבר שומרת את היחידה, הקומה והקו כדי לקשור אליהם תוכנית רשמית בהמשך.';
+				if(activeUnit.plan){materialItems.push({label:'תוכנית הדירה שנבחרה',url:activeUnit.plan,type:'plan'})}
+				if(Array.isArray(meta.drawings)){materialItems=materialItems.concat(meta.drawings)}
+			}
+			if(activeTool==='view'){
+				headline='מבט מהדירה';
+				var cam=cameraParams(activeUnit,meta);
+				copy=(activeUnit.view_note||activeUnit.view||activeUnit.dir||'מבט לפי כיוון היחידה')+'. גובה מצלמה מחושב: '+cam.altitude_m+' מ׳, כיוון '+cam.bearing+'°. כאשר שכבת מפה או הדמיית עיר מאושרת זמינה, הכפתור "מבט מהדירה" מציג את הסביבה במצלמה חיה.';
+				if(meta.cesium_tiles_url){materialItems.push({label:'שכבת עיר תלת ממדית עתידית',url:meta.cesium_tiles_url,type:'3d-city',detail:'מיועדת לחיבור Cesium / Google 3D Tiles כאשר החשבון וההרשאות מוכנים'})}
 			}
 			if(activeTool==='sun'){
 				headline='אור ושמש בדירה';
@@ -1093,6 +1341,29 @@ if ( ! function_exists( 'nadlan_p3d_inline_js' ) ) {
 					copy=parts.join(' ');
 				}
 			}
+			if(activeTool==='surroundings'){
+				headline='סביבה ושירותים סביב הפרויקט';
+				var env=Array.isArray(meta.environment)?meta.environment:[];
+				if(env.length){
+					copy=env.slice(0,5).map(function(item){return (item.label||item.name||'נקודת עניין')+(item.detail?' - '+item.detail:'')}).join(' · ');
+					materialItems=env;
+				}else{
+					copy='שדה דב מתוכנן כרובע חופי חדש עם פארקים, שבילי הליכה, מסחר שכונתי, מוסדות ציבור, חיבור לים ולצירי תחבורה. בשלב הבא אפשר להזין נקודות עניין מאושרות: בתי ספר, גנים, תחבורה, פארקים ופרויקטים שכנים.';
+				}
+			}
+			if(activeTool==='media'){
+				headline='מדיה, סיור וחומרים';
+				var bits=[];
+				if(activeUnit.interior_url){materialItems.push({label:'המחשת פנים ליחידה',url:activeUnit.interior_url,type:'interior'})}
+				if(activeUnit.tour_url){materialItems.push({label:'סיור 3D ליחידה',url:activeUnit.tour_url,type:'tour'})}
+				if(meta.tour_url){materialItems.push({label:'סיור פרויקט',url:meta.tour_url,type:'tour'})}
+				if(meta.video_url){materialItems.push({label:'סרטון פרויקט',url:meta.video_url,type:'video'})}
+				if(activeUnit.tour_url||meta.tour_url){bits.push('סיור פנימי או קישור 3D זמין לפתיחה מתוך חומרי הפרויקט')}
+				if(activeUnit.interior_url){bits.push('המחשת פנים מקושרת ליחידה שנבחרה')}
+				if(meta.video_url){bits.push('סרטון מכירה או שיחת וידאו יכולים להופיע כאן')}
+				if(Array.isArray(meta.drawings)&&meta.drawings.length){bits.push('נטענו '+meta.drawings.length+' חומרים ותוכניות לפרויקט')}
+				copy=bits.length?bits.join(' · '):'כאן יופיעו סרטון מכירה, סיור פנימי, תוכנית קומתית, תוכנית דירה וחומרים מאושרים של היזם. אם אין חומרים מאושרים, המערכת מציגה בקשת חומרים ולא מייצרת תוכנית רשמית.';
+			}
 			if(activeTool==='advisors'){
 				headline='ליווי מקצועי';
 				copy='אפשר לבקש לצרף עורך דין רכישה, יועץ משכנתאות, בדק בית או מעצב פנים. הבקשה תישלח עם הדירה שנבחרה, כולל קומה, שטח, כיוון ונוף, כדי לחזור אליכם עם ליווי מתאים לפני כל התחייבות.';
@@ -1104,6 +1375,7 @@ if ( ! function_exists( 'nadlan_p3d_inline_js' ) ) {
 			p.textContent=copy;
 			toolPanel.appendChild(strong);
 			toolPanel.appendChild(p);
+			appendMaterialCards(materialItems,activeTool);
 		}
 		function canLiveView(){
 			var cam=cameraParams(activeUnit,meta);
@@ -1201,6 +1473,15 @@ if ( ! function_exists( 'nadlan_p3d_inline_js' ) ) {
 			currentAngle=Math.max(-68,Math.min(68,angle));
 			scene.style.setProperty('--angle',currentAngle+'deg');
 		}
+		function setTilt(tilt){
+			currentTilt=Math.max(48,Math.min(72,tilt));
+			scene.style.setProperty('--tilt',currentTilt+'deg');
+		}
+		function setZoom(zoom){
+			currentZoom=Math.max(0.86,Math.min(1.34,zoom));
+			scene.style.setProperty('--model-zoom',currentZoom);
+			scene.classList.toggle('is-zoomed',currentZoom>1.04);
+		}
 		function selectFloor(f){
 			activeFloor=f;
 			var next=unitForFloor(f);
@@ -1237,6 +1518,12 @@ if ( ! function_exists( 'nadlan_p3d_inline_js' ) ) {
 		});
 		var orbit=root.querySelector('.nlp3d-orbit');
 		if(orbit){orbit.addEventListener('click',function(){scene.classList.toggle('is-orbit');orbit.classList.toggle('is-active');track('orbit',{active:scene.classList.contains('is-orbit')})})}
+		root.querySelectorAll('.nlp3d-zoom').forEach(function(b){
+			b.addEventListener('click',function(){
+				setZoom(currentZoom+(b.dataset.zoom==='in'?0.12:-0.12));
+				track('model_zoom',{zoom:Math.round(currentZoom*100)/100});
+			});
+		});
 		if(dockSpin){
 			dockSpin.addEventListener('click',function(){
 				scene.classList.add('is-orbit');
@@ -1322,8 +1609,8 @@ if ( ! function_exists( 'nadlan_p3d_inline_js' ) ) {
 			});
 		});
 		scene.addEventListener('pointerdown',function(e){
-			if(e.target.closest('button,a,input,.nlp3d-hotspot,.nlp3d-stage-card,.nlp3d-stage-viewframe')){return}
-			dragState={x:e.clientX,angle:currentAngle,id:e.pointerId};
+			if(e.target.closest('button,a,input,.nlp3d-hotspot,.nlp3d-hotspot-hit,.nlp3d-stage-card,.nlp3d-stage-viewframe')){return}
+			dragState={x:e.clientX,y:e.clientY,angle:currentAngle,tilt:currentTilt,id:e.pointerId};
 			scene.classList.add('is-dragging');
 			scene.classList.remove('is-orbit');
 			if(orbit){orbit.classList.remove('is-active')}
@@ -1332,12 +1619,20 @@ if ( ! function_exists( 'nadlan_p3d_inline_js' ) ) {
 		scene.addEventListener('pointermove',function(e){
 			if(!dragState){return}
 			setAngle(dragState.angle+(e.clientX-dragState.x)*0.22);
+			setTilt(dragState.tilt-(e.clientY-dragState.y)*0.08);
 		});
 		function endDrag(e){
 			if(!dragState){return}
+			var moved=Math.abs(e.clientX-dragState.x)+Math.abs(e.clientY-dragState.y);
 			if(scene.releasePointerCapture){try{scene.releasePointerCapture(dragState.id)}catch(err){}}
 			dragState=null;
 			scene.classList.remove('is-dragging');
+			var now=Date.now();
+			if(moved<8&&now-lastTapAt<320){
+				setZoom(currentZoom>1.05?1:1.22);
+				track('model_double_tap_zoom',{zoom:Math.round(currentZoom*100)/100});
+			}
+			if(moved<8){lastTapAt=now}
 		}
 		scene.addEventListener('pointerup',endDrag);
 		scene.addEventListener('pointercancel',endDrag);
@@ -1394,6 +1689,8 @@ if ( ! function_exists( 'nadlan_p3d_inline_js' ) ) {
 					.catch(function(){if(ownerOk){ownerOk.textContent='השליחה נכשלה. אפשר לנסות שוב בעוד רגע.'}ownerForm.querySelectorAll('button,input').forEach(function(el){el.disabled=false})});
 			});
 		}
+		setTilt(currentTilt);
+		setZoom(currentZoom);
 		renderAll(true);
 		renderCompareTray();
 	}
@@ -1412,7 +1709,7 @@ add_action(
 			return;
 		}
 
-		wp_register_style( 'nadlan-p3d', '', array(), '1.61.1' );
+		wp_register_style( 'nadlan-p3d', '', array(), '1.62.0' );
 		wp_enqueue_style( 'nadlan-p3d' );
 		wp_add_inline_style( 'nadlan-p3d', nadlan_p3d_inline_css() );
 		wp_add_inline_style( 'nadlan-p3d', '.nlp3d-drag-note{display:inline-flex;align-items:center;min-height:44px;color:rgba(246,239,226,.72);font-size:12px;padding:0 6px}.nlp3d-scene{touch-action:none;cursor:grab}.nlp3d-scene.is-dragging{cursor:grabbing}.nlp3d-actions{grid-template-columns:1fr}.nlp3d-view-toggle{margin-top:12px;border:1px solid rgba(234,216,163,.36);background:rgba(255,255,255,.06);color:#ffe8a6;padding:9px 12px;cursor:pointer}.nlp3d-view-toggle.is-active{background:rgba(234,216,163,.18);color:#fff}.nlp3d-viewframe{position:relative;margin-top:12px;min-height:150px;overflow:hidden;border:1px solid rgba(234,216,163,.18);background:linear-gradient(180deg,rgba(41,112,139,.58),rgba(8,25,25,.92));isolation:isolate}.nlp3d-view-sky{position:absolute;inset:0;background:radial-gradient(circle at 18% 22%,rgba(255,255,255,.24),transparent 18%),linear-gradient(135deg,rgba(39,107,130,.42),rgba(18,50,43,.1));opacity:.86}.nlp3d-view-lines{position:absolute;inset:auto -8% 18% -8%;height:46%;border-top:1px solid rgba(234,216,163,.28);background:linear-gradient(160deg,rgba(234,216,163,.1),transparent 54%);transform:skewY(-8deg)}.nlp3d-view-copy{position:absolute;right:14px;left:14px;bottom:12px;margin:0;color:#fff8dc;font-size:13px;line-height:1.5;text-shadow:0 1px 12px rgba(0,0,0,.55)}@media(max-width:600px){.nlp3d-drag-note{flex-basis:100%;min-height:24px}.nlp3d-viewframe{min-height:130px}}' );
@@ -1427,8 +1724,11 @@ add_action(
 		wp_add_inline_style( 'nadlan-p3d', nadlan_p3d_app_selector_css() );
 		wp_add_inline_style( 'nadlan-p3d', nadlan_p3d_showroom_css() );
 		wp_add_inline_style( 'nadlan-p3d', '.nlp3d.nlp3d-premium .nlp3d-stage-card[hidden]{display:none!important}.nlp3d.nlp3d-premium .nlp3d-stage-card{pointer-events:none!important;top:76px!important;right:18px!important;left:auto!important;bottom:auto!important;width:min(360px,calc(100% - 36px))!important;grid-template-columns:1fr!important}.nlp3d.nlp3d-premium .nlp3d-stage-card-actions button,.nlp3d.nlp3d-premium .nlp3d-stage-card a{pointer-events:auto!important}.nlp3d.nlp3d-premium .nlp3d-stage-card-stats,.nlp3d.nlp3d-premium .nlp3d-stage-card-actions{grid-column:1!important}@media(max-width:760px){.nlp3d.nlp3d-premium .nlp3d-stage-card:not([hidden]){position:relative!important;top:auto!important;right:auto!important;left:auto!important;bottom:auto!important;width:auto!important;max-height:none!important;overflow:visible!important;margin-top:10px!important}.nlp3d.nlp3d-premium .nlp3d-stage-card-stats,.nlp3d.nlp3d-premium .nlp3d-stage-card-actions{grid-template-columns:1fr!important}}' );
+		wp_add_inline_style( 'nadlan-p3d', nadlan_p3d_showroom_v162_css() );
+		wp_add_inline_style( 'nadlan-p3d', nadlan_p3d_showroom_v162_mobile_card_css() );
+		wp_add_inline_style( 'nadlan-p3d', nadlan_p3d_showroom_v162_material_css() );
 
-		wp_register_script( 'nadlan-p3d', '', array(), '1.61.1', true );
+		wp_register_script( 'nadlan-p3d', '', array(), '1.62.0', true );
 		wp_enqueue_script( 'nadlan-p3d' );
 		wp_add_inline_script( 'nadlan-p3d', nadlan_p3d_inline_js( esc_url_raw( rest_url( 'nadlan/v1/lead' ) ) ) );
 	}
@@ -1469,6 +1769,12 @@ add_action(
 				$gm  = esc_attr( (string) get_post_meta( $post->ID, 'project_3d_ground_elevation_m', true ) );
 				$ap  = esc_attr( (string) get_post_meta( $post->ID, 'project_3d_avg_price_per_sqm', true ) );
 				$psn = esc_attr( (string) get_post_meta( $post->ID, 'project_3d_price_source_note', true ) );
+				$mt  = esc_attr( (string) get_post_meta( $post->ID, 'project_3d_model_type', true ) );
+				$vu  = esc_attr( (string) get_post_meta( $post->ID, 'project_3d_video_url', true ) );
+				$tu  = esc_attr( (string) get_post_meta( $post->ID, 'project_3d_tour_url', true ) );
+				$cu  = esc_attr( (string) get_post_meta( $post->ID, 'project_3d_cesium_tiles_url', true ) );
+				$dr  = esc_textarea( (string) get_post_meta( $post->ID, 'project_3d_drawings_json', true ) );
+				$env = esc_textarea( (string) get_post_meta( $post->ID, 'project_3d_environment_json', true ) );
 				$js  = esc_textarea( (string) get_post_meta( $post->ID, 'project_3d_units', true ) );
 				$dm  = get_post_meta( $post->ID, 'project_3d_demo', true ) === '1';
 				echo '<p><label>כתובת תמונת מקור או הדמיה מאושרת<br><input type="url" name="project_3d_image" value="' . $img . '" class="widefat"></label></p>';
@@ -1477,7 +1783,13 @@ add_action(
 				echo '<p><label>גובה קרקע משוער במטרים, אם ידוע<br><input type="number" step="0.1" min="-50" max="400" name="project_3d_ground_elevation_m" value="' . $gm . '" class="widefat" placeholder="0"></label></p>';
 				echo '<p><label>אומדן מחיר ממוצע למ"ר, אופציונלי בלבד<br><input type="number" step="1" min="0" name="project_3d_avg_price_per_sqm" value="' . $ap . '" class="widefat" placeholder="0"></label></p>';
 				echo '<p><label>מקור/הערה לאומדן מחיר<br><input type="text" name="project_3d_price_source_note" value="' . $psn . '" class="widefat" placeholder="אומדן לא מחייב לפי מקור מאושר"></label></p>';
-				echo '<p><label>יחידות JSON: id, title, floor, rooms, sqm, balcony, dir, line, view, price, price_estimate, status, plan<br><textarea name="project_3d_units" rows="10" class="widefat code">' . $js . '</textarea></label></p>';
+				echo '<p><label>Model type: procedural / facade / sprite360 / gltf / bim<br><input type="text" name="project_3d_model_type" value="' . $mt . '" class="widefat" placeholder="procedural"></label></p>';
+				echo '<p><label>Sales video URL<br><input type="url" name="project_3d_video_url" value="' . $vu . '" class="widefat"></label></p>';
+				echo '<p><label>Interior or 3D tour URL<br><input type="url" name="project_3d_tour_url" value="' . $tu . '" class="widefat"></label></p>';
+				echo '<p><label>Future Cesium / Google 3D Tiles URL<br><input type="url" name="project_3d_cesium_tiles_url" value="' . $cu . '" class="widefat"></label></p>';
+				echo '<p><label>Drawings JSON: [{"label":"...","url":"...","type":"plan"}]<br><textarea name="project_3d_drawings_json" rows="5" class="widefat code">' . $dr . '</textarea></label></p>';
+				echo '<p><label>Environment JSON: [{"label":"...","detail":"...","url":"..."}]<br><textarea name="project_3d_environment_json" rows="5" class="widefat code">' . $env . '</textarea></label></p>';
+				echo '<p><label>יחידות JSON: id, title, floor, rooms, sqm, balcony, dir, line, view, price, price_estimate, status, plan, interior_url, tour_url, view_note<br><textarea name="project_3d_units" rows="10" class="widefat code">' . $js . '</textarea></label></p>';
 				echo '<p><label><input type="checkbox" name="project_3d_demo" value="1" ' . checked( $dm, true, false ) . '> הצג מודל הדגמה כאשר אין מלאי רשמי</label></p>';
 				echo '<p class="description">במצב הדגמה המחיר מוצג "לפי פנייה" כדי לא להציג נתוני מכירה לא מאומתים.</p>';
 			},
@@ -1506,6 +1818,12 @@ add_action(
 		update_post_meta( $post_id, 'project_3d_ground_elevation_m', nadlan_p3d_sanitize_decimal( wp_unslash( $_POST['project_3d_ground_elevation_m'] ?? '' ) ) );
 		update_post_meta( $post_id, 'project_3d_avg_price_per_sqm', nadlan_p3d_sanitize_decimal( wp_unslash( $_POST['project_3d_avg_price_per_sqm'] ?? '' ) ) );
 		update_post_meta( $post_id, 'project_3d_price_source_note', sanitize_text_field( wp_unslash( $_POST['project_3d_price_source_note'] ?? '' ) ) );
+		update_post_meta( $post_id, 'project_3d_model_type', nadlan_p3d_sanitize_model_type( wp_unslash( $_POST['project_3d_model_type'] ?? '' ) ) );
+		update_post_meta( $post_id, 'project_3d_video_url', esc_url_raw( wp_unslash( $_POST['project_3d_video_url'] ?? '' ) ) );
+		update_post_meta( $post_id, 'project_3d_tour_url', esc_url_raw( wp_unslash( $_POST['project_3d_tour_url'] ?? '' ) ) );
+		update_post_meta( $post_id, 'project_3d_cesium_tiles_url', esc_url_raw( wp_unslash( $_POST['project_3d_cesium_tiles_url'] ?? '' ) ) );
+		update_post_meta( $post_id, 'project_3d_drawings_json', nadlan_p3d_sanitize_material_json( wp_unslash( $_POST['project_3d_drawings_json'] ?? '' ) ) );
+		update_post_meta( $post_id, 'project_3d_environment_json', nadlan_p3d_sanitize_material_json( wp_unslash( $_POST['project_3d_environment_json'] ?? '' ) ) );
 		$units = (string) wp_unslash( $_POST['project_3d_units'] ?? '' );
 		update_post_meta( $post_id, 'project_3d_units', json_decode( $units ) !== null || $units === '' ? $units : '' );
 		update_post_meta( $post_id, 'project_3d_demo', ! empty( $_POST['project_3d_demo'] ) ? '1' : '0' );
@@ -1530,7 +1848,7 @@ add_filter(
 		);
 		$out['project_3d'] = array(
 			'enabled'          => nadlan_p3d_enabled(),
-			'renderer'         => 'premium_tower_picker_v6_app_selector',
+			'renderer'         => 'premium_showroom_v7_product_stage',
 			'lead_endpoint'    => '/nadlan/v1/lead',
 			'facade_polygons'  => true,
 			'lead_unit_payload' => true,
@@ -1539,6 +1857,20 @@ add_filter(
 			'mapbox_default'   => 'user_open_only',
 			'layout_contained'  => true,
 			'app_selector'     => true,
+			'showroom_v2'      => true,
+			'cms_material_fields' => true,
+			'cms_material_cards'  => true,
+			'cms_material_sanitized' => true,
+			'hit_targets'      => true,
+			'model_zoom_tilt'  => true,
+			'cesium_ready'     => true,
+			'zillow_parity'    => array(
+				'floor_plans'  => true,
+				'unit_picker'  => true,
+				'view_layer'   => true,
+				'media'        => true,
+				'surroundings' => true,
+			),
 			'stage_unit_card'  => true,
 			'nested_scrollbars' => false,
 			'stage_live_view'   => true,
