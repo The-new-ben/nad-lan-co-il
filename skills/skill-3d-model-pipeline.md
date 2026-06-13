@@ -26,6 +26,23 @@ Use the highest trust source available:
 Never copy paid-source photos, paid transaction tables, or licensed marketing renders into public
 assets without explicit permission.
 
+## Massing Now, Swap Later
+
+When official BIM is not available but the owner needs a working showroom demo:
+
+1. Create an original low-poly massing model from public facts and clearly label it illustrative.
+2. Keep scale intuitive: 1 model unit = approximately 1 meter, origin at building-base center, Y up.
+3. Model the product structure, not a fantasy render: tower, podium, boutique blocks, amenity court,
+   roof crown, floor rhythm and window bands.
+4. Keep the first GLB lightweight. Target under 4 MB for a massing model.
+5. Store demo units with `source_note` and non-binding price/availability copy.
+6. When official BIM/developer GLB arrives, optimize it and replace `project_model_glb` while keeping
+   the same origin/scale where possible. If origin/scale changes, regenerate `hotspot_position`,
+   `hotspot_normal`, and `camera_orbit`.
+
+This "massing now, swap later" path is valid for a contractor demo, but the public page must never
+present it as the official architectural model.
+
 ## Modeling Pipeline
 
 Recommended path for a real project model:
@@ -144,4 +161,3 @@ For every future project, create a project asset folder containing:
 
 The plugin should consume URLs and JSON only. Large raw modeling files should live outside the
 plugin ZIP and outside the WordPress plugin repository unless explicitly approved.
-

@@ -1,0 +1,168 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Rainbow Tel Aviv prototype GLB preview</title>
+  <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/4.3.1/model-viewer.min.js"></script>
+  <style>
+    :root {
+      color-scheme: dark;
+      --bg: #061819;
+      --panel: rgba(10, 30, 31, .78);
+      --gold: #d8b36d;
+      --ink: #f6f1e7;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background:
+        radial-gradient(circle at 24% 12%, rgba(216, 179, 109, .22), transparent 26rem),
+        linear-gradient(145deg, #031012, #0a2727 58%, #14100c);
+      color: var(--ink);
+      display: grid;
+      place-items: center;
+      padding: 28px;
+    }
+    main {
+      width: min(1180px, 100%);
+      display: grid;
+      gap: 16px;
+    }
+    header {
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      align-items: end;
+    }
+    h1 {
+      margin: 0;
+      font-size: clamp(28px, 5vw, 56px);
+      letter-spacing: 0;
+      line-height: 1.02;
+    }
+    p { margin: 6px 0 0; color: rgba(246, 241, 231, .72); max-width: 760px; }
+    .stage {
+      position: relative;
+      min-height: min(78vh, 780px);
+      border: 1px solid rgba(216, 179, 109, .34);
+      border-radius: 28px;
+      overflow: hidden;
+      background: linear-gradient(180deg, rgba(255,255,255,.04), rgba(0,0,0,.2));
+      box-shadow: 0 30px 90px rgba(0,0,0,.44);
+    }
+    model-viewer {
+      width: 100%;
+      height: min(78vh, 780px);
+      --poster-color: transparent;
+      background:
+        linear-gradient(180deg, rgba(8, 42, 44, .92), rgba(2, 12, 13, .96)),
+        url("/assets/projects/rainbow-tel-aviv/poster.png") center/cover no-repeat;
+    }
+    .note {
+      position: absolute;
+      inset-inline: 24px auto;
+      top: 22px;
+      max-width: 330px;
+      padding: 14px 16px;
+      border: 1px solid rgba(216, 179, 109, .24);
+      border-radius: 18px;
+      background: var(--panel);
+      backdrop-filter: blur(18px);
+      color: rgba(246, 241, 231, .8);
+      font-size: 14px;
+      line-height: 1.5;
+    }
+    button[slot^="hotspot"] {
+      border: 1px solid rgba(255, 248, 215, .72);
+      background: rgba(216, 179, 109, .88);
+      color: #071617;
+      border-radius: 999px;
+      min-width: 38px;
+      min-height: 38px;
+      padding: 0 10px;
+      font-weight: 800;
+      box-shadow: 0 8px 24px rgba(0,0,0,.38);
+      cursor: pointer;
+    }
+    button[slot^="hotspot"]:focus-visible {
+      outline: 3px solid #fff3c9;
+      outline-offset: 3px;
+    }
+    .readout {
+      position: absolute;
+      inset-inline: auto 24px;
+      bottom: 24px;
+      width: min(360px, calc(100% - 48px));
+      padding: 18px;
+      border: 1px solid rgba(216, 179, 109, .24);
+      border-radius: 20px;
+      background: var(--panel);
+      backdrop-filter: blur(18px);
+    }
+    .readout strong { color: var(--gold); display: block; margin-bottom: 6px; }
+    @media (max-width: 760px) {
+      body { padding: 12px; }
+      header { display: block; }
+      .stage, model-viewer { min-height: 620px; height: 620px; border-radius: 20px; }
+      .note, .readout { position: static; width: auto; margin: 12px; }
+      .stage { display: flex; flex-direction: column; }
+      model-viewer { flex: 1; min-height: 430px; }
+    }
+  </style>
+</head>
+<body>
+<main>
+  <header>
+    <div>
+      <h1>Rainbow Tel Aviv</h1>
+      <p>תצוגת אבטיפוס מקורית למודל GLB. מיועד לבדוק את מסילת ה-showroom החדשה, לא להחליף BIM רשמי של היזם.</p>
+    </div>
+  </header>
+  <section class="stage" aria-label="Rainbow model viewer prototype">
+    <model-viewer
+      id="rainbow-model"
+      src="/assets/projects/rainbow-tel-aviv/model.glb"
+      poster="/assets/projects/rainbow-tel-aviv/poster.png"
+      camera-controls
+      auto-rotate
+      reveal="interaction"
+      shadow-intensity="1"
+      exposure=".92"
+      camera-orbit="35deg 63deg auto">
+      <button slot="hotspot-unit-08-sw" data-position="0 31 6" data-normal="0 0 1" data-visibility-attribute="visible" data-unit="unit-08-sw" aria-label="דירת 3 חדרים קומה 8">8</button>
+      <button slot="hotspot-unit-16-w" data-position="-5 55 7" data-normal="0 0 1" data-visibility-attribute="visible" data-unit="unit-16-w" aria-label="דירת 4 חדרים קומה 16">16</button>
+      <button slot="hotspot-unit-24-nw" data-position="-6 80 5" data-normal="0 0 1" data-visibility-attribute="visible" data-unit="unit-24-nw" aria-label="דירת 4 חדרים קומה 24">24</button>
+      <button slot="hotspot-unit-31-se" data-position="6 101 -5" data-normal="0 0 1" data-visibility-attribute="visible" data-unit="unit-31-se" aria-label="דירת 5 חדרים קומה 31">31</button>
+      <button slot="hotspot-unit-38-penthouse" data-position="0 124 7" data-normal="0 0 1" data-visibility-attribute="visible" data-unit="unit-38-penthouse" aria-label="פנטהאוז קומה 38">38</button>
+      <button slot="hotspot-unit-boutique-07" data-position="-42 25 24" data-normal="0 0 1" data-visibility-attribute="visible" data-unit="unit-boutique-07" aria-label="דירת בוטיק קומה 7">B</button>
+    </model-viewer>
+    <div class="note">
+      אבטיפוס מסחרי בלבד: מגדל, בנייני בוטיק וחצר מרכזית בקנה מידה קליל לטעינה. להחלפה במודל יזם מאושר.
+    </div>
+    <div class="readout" id="readout">
+      <strong>בחרו נקודה על המודל</strong>
+      גררו לסיבוב, לחצו על קומה כדי לדמות בחירת דירה.
+    </div>
+  </section>
+</main>
+<script>
+  const units = {
+    "unit-08-sw": "דירת 3 חדרים, קומה 8 · מבט לחצר ולים",
+    "unit-16-w": "דירת 4 חדרים, קומה 16 · קו החוף ושדה דב",
+    "unit-24-nw": "דירת 4 חדרים, קומה 24 · ים, פארק וצפון תל אביב",
+    "unit-31-se": "דירת 5 חדרים, קומה 31 · קו הרקיע והחצר הפנימית",
+    "unit-38-penthouse": "פנטהאוז, קומה 38 · מבט גבוה לכיוון הים",
+    "unit-boutique-07": "דירת בוטיק, קומה 7 · סביב הלגונה"
+  };
+  const readout = document.getElementById("readout");
+  document.querySelectorAll("[data-unit]").forEach((button) => {
+    button.addEventListener("click", () => {
+      readout.innerHTML = `<strong>${units[button.dataset.unit]}</strong>אומדן, זמינות ותוכניות ייטענו ממקור מאושר דרך ה-CMS.`;
+    });
+  });
+</script>
+</body>
+</html>

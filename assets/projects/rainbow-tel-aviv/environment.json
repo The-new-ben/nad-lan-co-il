@@ -1,0 +1,16 @@
+{
+  "status": "starter",
+  "location": {
+    "lat": 32.1108,
+    "lng": 34.7805,
+    "source": "Sde Dov center placeholder"
+  },
+  "layers": [
+    "sea",
+    "future Sde Dov district",
+    "light rail / transport",
+    "schools and kindergartens",
+    "parks"
+  ],
+  "next_step": "Replace with sourced POI/map layer and Cesium/Google Photorealistic 3D Tiles view when approved."
+}

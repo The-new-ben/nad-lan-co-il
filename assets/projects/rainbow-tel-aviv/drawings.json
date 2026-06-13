@@ -1,0 +1,10 @@
+{
+  "status": "placeholder-slots",
+  "required": [
+    "official_elevation",
+    "typical_floor_plan",
+    "site_plan",
+    "unit_plan"
+  ],
+  "note": "Attach only approved developer drawings or owner-licensed material."
+}
