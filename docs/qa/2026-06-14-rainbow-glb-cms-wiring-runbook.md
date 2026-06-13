@@ -5,8 +5,10 @@ into a visible 3D model on the live Rainbow Tel Aviv page.
 
 ## Preconditions
 
-- Live plugin healthcheck reports `version: 1.63.0`.
+- Live plugin healthcheck reports `version: 1.63.0` or newer.
 - Healthcheck reports `project_3d.model_viewer_ready: true`.
+- For fully automated unit wiring, healthcheck reports `project_3d.unit_meta_rest: true`
+  (v1.63.2 or newer). If not, use the metabox fallback for `project_3d_units`.
 - PR #163 is merged to `main`.
 - The UPress/server Git copy has been pulled or synced after the merge.
 - Cache can be cleared after the write.
@@ -38,14 +40,15 @@ Set:
 - `project_model_poster`: hosted poster URL.
 - `project_model_usdz`: empty for now.
 - `project_3d_model_type`: `gltf`.
-- `project_3d_units`: JSON array from `project-meta-example.json` through the Rainbow 3D metabox.
+- `project_3d_units`: JSON array from `project-meta-example.json`.
 - `project_3d_drawings_json`: JSON array from `project-meta-example.json`.
 - `project_3d_environment_json`: flattened JSON array generated from the rich environment object in
   `project-meta-example.json`.
 
-Important v1.63.0 limitation: `project_3d_units` is saved by the admin metabox but is not registered
-with `show_in_rest`. Do not assume the standard WordPress REST meta endpoint can write it until a
-later plugin patch explicitly exposes that key.
+Version boundary: v1.63.0 saves `project_3d_units` through the admin metabox only. v1.63.2 exposes
+it safely through REST with `edit_post` auth and a unit sanitizer. The apply helper checks
+healthcheck before writing units and falls back to printing the metabox value when the marker is
+missing.
 
 Keep all demo unit copy source-aware. Do not remove:
 
@@ -82,13 +85,14 @@ It does not write to WordPress.
 
 ## Optional REST Apply Helper
 
-To write only the REST-registered v1.63.0 fields, use the dry-run-first helper:
+To write the REST-registered fields, use the dry-run-first helper:
 
 ```powershell
 python scripts\apply-rainbow-cms-payload.py --branch main
 ```
 
-Dry run prints the exact fields and the unit JSON that still needs the metabox.
+Dry run prints the exact fields and the unit JSON. In apply mode, the helper checks the live
+healthcheck before deciding whether to include `project_3d_units`.
 
 To apply:
 
@@ -107,9 +111,10 @@ The helper writes:
 - `project_model_usdz`
 - `project_3d_drawings_json`
 - `project_3d_environment_json`
+- `project_3d_units` only when healthcheck reports `project_3d.unit_meta_rest=true`
 
-It does not print credentials and it does not write `project_3d_units` until that key is safely
-REST-registered.
+It does not print credentials. On older plugin versions it skips `project_3d_units` and prints the
+metabox fallback instead of forcing a write that WordPress will reject or ignore.
 
 ## Readiness Check
 

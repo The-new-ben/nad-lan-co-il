@@ -9,9 +9,10 @@ Environment for --apply:
   WP_USER           WordPress username
   WP_APP_PASSWORD   WordPress application password
 
-The script never logs credentials. It writes only REST-registered v1.63.0 meta.
-project_3d_units is still printed for the admin metabox because v1.63.0 does
-not expose that key through register_post_meta(... show_in_rest => true).
+The script never logs credentials. It writes only REST-registered meta.
+project_3d_units is included only when the live healthcheck reports
+project_3d.unit_meta_rest=true (v1.63.2+). Older plugin versions keep the safe
+manual metabox fallback.
 """
 
 from __future__ import annotations
@@ -105,10 +106,10 @@ def flatten_environment(value: Any) -> list[dict[str, Any]]:
     return items
 
 
-def build_rest_meta(source: dict[str, Any]) -> dict[str, str]:
+def build_rest_meta(source: dict[str, Any], *, include_units: bool = False) -> dict[str, str]:
     drawings = source.get("project_3d_drawings_json", [])
     environment = flatten_environment(source.get("project_3d_environment_json", []))
-    return {
+    meta = {
         "project_3d_model_type": "gltf",
         "project_model_glb": str(source.get("project_model_glb", "")),
         "project_model_poster": str(source.get("project_model_poster", "")),
@@ -116,6 +117,10 @@ def build_rest_meta(source: dict[str, Any]) -> dict[str, str]:
         "project_3d_drawings_json": json.dumps(drawings, ensure_ascii=False, separators=(",", ":")),
         "project_3d_environment_json": json.dumps(environment, ensure_ascii=False, separators=(",", ":")),
     }
+    if include_units:
+        units = source.get("project_3d_units", [])
+        meta["project_3d_units"] = json.dumps(units if isinstance(units, list) else [], ensure_ascii=False, separators=(",", ":"))
+    return meta
 
 
 def auth_header(user: str, password: str) -> str:
@@ -154,7 +159,7 @@ def endpoint(base_url: str, path: str) -> str:
     return urllib.parse.urljoin(base_url.rstrip("/") + "/", path.lstrip("/"))
 
 
-def print_summary(rest_meta: dict[str, str], source: dict[str, Any], post_id: int) -> None:
+def print_summary(rest_meta: dict[str, str], source: dict[str, Any], post_id: int, *, include_units: bool = False) -> None:
     units = source.get("project_3d_units", [])
     print("# Rainbow CMS apply summary")
     print(f"Post ID: {post_id}")
@@ -169,11 +174,14 @@ def print_summary(rest_meta: dict[str, str], source: dict[str, Any], post_id: in
         else:
             print(f"- {key}: {value or '(empty)'}")
     print()
-    print("Manual admin-metabox field still required in v1.63.0:")
+    print("Unit payload:")
     print(f"- project_3d_units: {len(units) if isinstance(units, list) else 0} units")
-    print("  Reason: project_3d_units is not REST-registered in v1.63.0.")
-    print("  Paste this value in the Rainbow 3D metabox until a later plugin patch exposes it safely:")
-    print(json.dumps(units, ensure_ascii=False, indent=2))
+    if include_units:
+        print("  Included in REST payload because healthcheck reported project_3d.unit_meta_rest=true.")
+    else:
+        print("  Conditional: --apply writes this field only when healthcheck reports project_3d.unit_meta_rest=true.")
+        print("  If the live plugin is older, paste this value in the Rainbow 3D metabox:")
+        print(json.dumps(units, ensure_ascii=False, indent=2))
 
 
 def main() -> int:
@@ -185,8 +193,8 @@ def main() -> int:
     args = parser.parse_args()
 
     source = load_source_meta(args.branch)
-    rest_meta = build_rest_meta(source)
-    print_summary(rest_meta, source, args.post_id)
+    rest_meta = build_rest_meta(source, include_units=False)
+    print_summary(rest_meta, source, args.post_id, include_units=False)
 
     if not args.apply:
         print()
@@ -205,10 +213,31 @@ def main() -> int:
         args.base_url,
         f"/wp-json/wp/v2/nadlan_project/{args.post_id}?context=edit&_fields=id,slug,status,meta",
     )
+    health_url = endpoint(args.base_url, "/wp-json/nadlan/v1/healthcheck")
 
     me = request_json("GET", me_url, auth=auth)
     print()
     print(f"Authenticated as WordPress user id {me.get('id')} ({me.get('name', 'unknown')}).")
+
+    unit_meta_rest = False
+    health: dict[str, Any] = {}
+    try:
+        health = request_json("GET", health_url)
+        project_3d = health.get("project_3d", {}) if isinstance(health, dict) else {}
+        unit_meta_rest = bool(project_3d.get("unit_meta_rest"))
+        print(
+            "Healthcheck before write: "
+            f"version={health.get('version', 'unknown')} "
+            f"unit_meta_rest={unit_meta_rest}"
+        )
+    except RuntimeError as exc:
+        print(f"WARNING: healthcheck read failed before write; skipping project_3d_units: {exc}", file=sys.stderr)
+
+    if unit_meta_rest:
+        rest_meta = build_rest_meta(source, include_units=True)
+        print("project_3d_units is REST-enabled; including unit payload in this write.")
+    else:
+        print("project_3d_units is not REST-enabled on this site yet; leaving unit JSON for the metabox fallback.")
 
     before = request_json("GET", project_url, auth=auth)
     print(f"Target project before write: id={before.get('id')} slug={before.get('slug')} status={before.get('status')}")
@@ -220,20 +249,23 @@ def main() -> int:
         current = str(updated_meta.get(key, ""))
         print(f"- {key}: {'present' if current else 'empty'}")
 
-    health_url = endpoint(args.base_url, "/wp-json/nadlan/v1/healthcheck")
     try:
         health = request_json("GET", health_url)
         project_3d = health.get("project_3d", {}) if isinstance(health, dict) else {}
         print(
             "Healthcheck: "
             f"version={health.get('version', 'unknown')} "
+            f"unit_meta_rest={project_3d.get('unit_meta_rest', 'unknown')} "
             f"projects_with_glb={project_3d.get('projects_with_glb', 'unknown')}"
         )
     except RuntimeError as exc:
         print(f"WARNING: healthcheck read failed after write: {exc}", file=sys.stderr)
 
     print()
-    print("Next: paste project_3d_units through the Rainbow 3D admin metabox, clear cache, and hard refresh.")
+    if unit_meta_rest:
+        print("Next: clear cache, hard refresh, and run the live DOM GLB gate.")
+    else:
+        print("Next: paste project_3d_units through the Rainbow 3D admin metabox, clear cache, and hard refresh.")
     return 0
 
 
