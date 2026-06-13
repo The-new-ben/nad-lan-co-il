@@ -724,6 +724,14 @@ CSS;
 	}
 }
 
+if ( ! function_exists( 'nadlan_p3d_showroom_v162_mobile_card_css' ) ) {
+	function nadlan_p3d_showroom_v162_mobile_card_css() {
+		return <<<'CSS'
+@media(max-width:760px){.nlp3d.nlp3d-premium .nlp3d-stage-wrap.has-stage-selection{min-height:min(780px,172vw)!important}.nlp3d.nlp3d-premium .nlp3d-stage-wrap.has-stage-selection .nlp3d-scene{bottom:224px!important;height:auto!important;min-height:0!important}.nlp3d.nlp3d-premium .nlp3d-stage-card:not([hidden]){position:absolute!important;right:10px!important;left:10px!important;top:auto!important;bottom:10px!important;width:auto!important;max-height:none!important;overflow:visible!important;margin-top:0!important}.nlp3d.nlp3d-premium .nlp3d-stage-card-actions button{min-height:44px!important}}@media(max-width:420px){.nlp3d.nlp3d-premium .nlp3d-stage-wrap.has-stage-selection{min-height:780px!important}.nlp3d.nlp3d-premium .nlp3d-stage-wrap.has-stage-selection .nlp3d-scene{bottom:250px!important}}
+CSS;
+	}
+}
+
 if ( ! function_exists( 'nadlan_p3d_inline_js' ) ) {
 	function nadlan_p3d_inline_js( $rest_url ) {
 		$js = <<<'JS'
@@ -1583,6 +1591,7 @@ add_action(
 		wp_add_inline_style( 'nadlan-p3d', nadlan_p3d_showroom_css() );
 		wp_add_inline_style( 'nadlan-p3d', '.nlp3d.nlp3d-premium .nlp3d-stage-card[hidden]{display:none!important}.nlp3d.nlp3d-premium .nlp3d-stage-card{pointer-events:none!important;top:76px!important;right:18px!important;left:auto!important;bottom:auto!important;width:min(360px,calc(100% - 36px))!important;grid-template-columns:1fr!important}.nlp3d.nlp3d-premium .nlp3d-stage-card-actions button,.nlp3d.nlp3d-premium .nlp3d-stage-card a{pointer-events:auto!important}.nlp3d.nlp3d-premium .nlp3d-stage-card-stats,.nlp3d.nlp3d-premium .nlp3d-stage-card-actions{grid-column:1!important}@media(max-width:760px){.nlp3d.nlp3d-premium .nlp3d-stage-card:not([hidden]){position:relative!important;top:auto!important;right:auto!important;left:auto!important;bottom:auto!important;width:auto!important;max-height:none!important;overflow:visible!important;margin-top:10px!important}.nlp3d.nlp3d-premium .nlp3d-stage-card-stats,.nlp3d.nlp3d-premium .nlp3d-stage-card-actions{grid-template-columns:1fr!important}}' );
 		wp_add_inline_style( 'nadlan-p3d', nadlan_p3d_showroom_v162_css() );
+		wp_add_inline_style( 'nadlan-p3d', nadlan_p3d_showroom_v162_mobile_card_css() );
 
 		wp_register_script( 'nadlan-p3d', '', array(), '1.62.0', true );
 		wp_enqueue_script( 'nadlan-p3d' );

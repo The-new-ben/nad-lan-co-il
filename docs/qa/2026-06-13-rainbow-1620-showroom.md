@@ -65,8 +65,8 @@ Browser checks:
 - 1440px desktop: no horizontal overflow; module sits inside viewport; no visible raw class/script
   text; console has no gray inner scrollbar.
 - 760px tablet: stage first, console stacks cleanly, unit/detail/form panels do not overlap.
-- 390px mobile: no horizontal overflow; buttons and unit targets are usable; selected card appears
-  below the stage instead of covering the whole building.
+- 390px mobile: no horizontal overflow; buttons and unit targets are usable; selected card docks at
+  the bottom of the stage only after selection, with model space reserved above it.
 - Building-first default: map is not auto-opened.
 - Drag on the building changes angle; vertical drag changes tilt.
 - Double tap/click or zoom controls changes model scale.
@@ -74,6 +74,21 @@ Browser checks:
 - "View" opens the map only on user request; Mapbox RTL plugin should keep Hebrew labels readable
   where Mapbox supports them.
 - Price language remains estimate/source-aware or "by inquiry"; no fake official availability.
+
+## Live 1.61.1 Baseline Captured Before Merge
+
+Checked production on 2026-06-13 before this branch is installed. Live healthcheck still reported
+`1.61.1`, so these are baseline defects this PR is intended to improve, not proof that `1.62.0`
+is live.
+
+- Desktop 1440px: no horizontal page overflow and no raw `class="..."` leak. The current live
+  module still has a console inner scrollbar and does not include widened SVG hit polygons.
+- Mobile 390px: no horizontal page overflow, but the live module is too tall, the console scrolls
+  internally, the old static profile card is slightly off the left edge, and no widened hit
+  polygons are present.
+- Desktop drag on the live stage changes the tower transform, but the interaction still feels like
+  a schematic selector rather than a product spinner. This branch adds tilt/zoom and larger hit
+  targets so the model is the default product surface.
 
 ## What This Does Not Claim
 
