@@ -37,9 +37,15 @@ Set:
 - `project_model_glb`: hosted GLB URL.
 - `project_model_poster`: hosted poster URL.
 - `project_model_usdz`: empty for now.
-- `project_3d_units`: JSON array from `project-meta-example.json`.
+- `project_3d_model_type`: `gltf`.
+- `project_3d_units`: JSON array from `project-meta-example.json` through the Rainbow 3D metabox.
 - `project_3d_drawings_json`: JSON array from `project-meta-example.json`.
-- `project_3d_environment_json`: JSON object from `project-meta-example.json`.
+- `project_3d_environment_json`: flattened JSON array generated from the rich environment object in
+  `project-meta-example.json`.
+
+Important v1.63.0 limitation: `project_3d_units` is saved by the admin metabox but is not registered
+with `show_in_rest`. Do not assume the standard WordPress REST meta endpoint can write it until a
+later plugin patch explicitly exposes that key.
 
 Keep all demo unit copy source-aware. Do not remove:
 
@@ -69,10 +75,41 @@ The script prints:
 - the exact model URLs,
 - the full `project_3d_units` JSON,
 - the `project_3d_drawings_json` JSON,
-- the `project_3d_environment_json` JSON,
+- the flattened `project_3d_environment_json` JSON,
 - a safe copy/paste checklist.
 
 It does not write to WordPress.
+
+## Optional REST Apply Helper
+
+To write only the REST-registered v1.63.0 fields, use the dry-run-first helper:
+
+```powershell
+python scripts\apply-rainbow-cms-payload.py --branch main
+```
+
+Dry run prints the exact fields and the unit JSON that still needs the metabox.
+
+To apply:
+
+```powershell
+$env:WP_BASE_URL='https://nad-lan.co.il'
+$env:WP_USER='<wordpress-user>'
+$env:WP_APP_PASSWORD='<application-password>'
+python scripts\apply-rainbow-cms-payload.py --branch main --apply
+```
+
+The helper writes:
+
+- `project_3d_model_type`
+- `project_model_glb`
+- `project_model_poster`
+- `project_model_usdz`
+- `project_3d_drawings_json`
+- `project_3d_environment_json`
+
+It does not print credentials and it does not write `project_3d_units` until that key is safely
+REST-registered.
 
 ## Readiness Check
 
