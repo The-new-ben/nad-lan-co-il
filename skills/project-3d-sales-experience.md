@@ -324,3 +324,41 @@ For every cloned project, verify:
   lead path that preserves the selected unit.
 - Cesium / Google Photorealistic 3D Tiles remains a lazy, user-opened view layer until cost and token
   governance are approved. Do not instantiate it on page load.
+
+### v1.62.1 First-Screen Showroom Gate
+
+- If a project has the 3D showroom, do not let the theme featured image become the first visual
+  product impression. The interactive stage must appear before the long article body and before any
+  static profile/featured-image treatment.
+- The first visible showroom surface should be the building selector. Supporting SEO copy can sit
+  directly below the stage, but it must not push the model out of view.
+- Fixed WhatsApp, AI and accessibility controls must not overlap the 3D toolbar, selected-unit card,
+  floor picker or lead form. On project showroom pages, move them away from the stage controls or
+  collapse them.
+- Bare WordPress article headings must be guarded on project pages: no floated headings, no
+  pushed-right fragments, readable paragraph width, and tables centered/contained.
+- Product-style drag means full-circle rotation. Do not clamp the model to a narrow facade angle.
+  Preset buttons are useful, but free drag should normalize around 360 degrees and may add light
+  release momentum.
+- The healthcheck for a cloned flagship should expose a first-screen renderer marker and flags for
+  static image suppression, cleared floating actions and full 360 rotation.
+
+### v1.63.0 Real Model Rail
+
+- The durable showroom path is not CSS art. When a project has a real model, render
+  `<model-viewer>` from `project_model_glb` and keep the procedural/facade tower only as fallback.
+- Add project-level CMS fields for `project_model_glb`, `project_model_usdz`, and
+  `project_model_poster`. Keep large modeling source files outside the plugin ZIP.
+- Add per-unit hotspot fields: `hotspot_position`, `hotspot_normal`, and optional `camera_orbit`.
+  These fields let a buyer click the apartment on the real 3D model while preserving the existing
+  selected-unit, comparison, inquiry and analytics flow.
+- Never hide the fallback stage before the real model loads. If a GLB fails, the user must still be
+  able to inspect units through the procedural/facade selector instead of seeing a blank dark box.
+- Use poster/lazy loading for performance. If no poster is supplied, reveal the model automatically
+  so the first impression does not feel dead.
+- Model hotspots, facade polygons and floor plates must all converge into the same `selectUnit`
+  state machine. Do not create a parallel lead payload or a second apartment state.
+- Mapbox/Cesium/Google Photorealistic 3D Tiles remain the view/environment layer. They are not the
+  building-product model and should stay user-opened unless cost governance changes.
+- For the full modeling runbook, use `skills/skill-3d-model-pipeline.md` before creating the next
+  project showroom.
