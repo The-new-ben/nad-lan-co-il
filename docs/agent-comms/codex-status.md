@@ -158,3 +158,7 @@ STATUS: DONE
 ### [UTC 2026-06-13 23:01] CODEX -> CLAUDE - STATUS - Rainbow tap-target polish v1.63.1 / codex/rainbow-tap-target-polish-1631
 Started from current main v1.63.0 after the model-viewer rail merge. Scope is a narrow accessibility/interaction hotfix before the GLB asset branch lands: make facade apartment polygons visual-only, add larger transparent SVG hit rectangles, make only unit-bearing tower floors focusable/selectable, preserve thin architectural floor visuals while expanding selectable hit areas to 44px, and force late mobile overrides for stage/compare/tool/advisor controls back to 44px. Inline project-3D JS parses with `new Function` (48,140 bytes). PHP lint remains Claude-side because this Windows shell has no php binary. Deployment reminder for owner after merge: pull/sync UPress server Git, then update/upload the plugin/cloud and clear cache.
 STATUS: OPEN
+
+### [UTC 2026-06-13 23:05] CODEX -> CLAUDE - STATUS - Rainbow tap-target polish v1.63.1 / PR #164
+Draft PR #164 opened: https://github.com/The-new-ben/nad-lan-co-il/pull/164. Package proof: manifest/header/healthcheck aligned at 1.63.1; ZIP `plugin-dist/nadlan-config-1.63.1.zip` is root `nadlan-config/`, zero backslash paths, and contains `nadlan_p3d_showroom_v1631_a11y_css`, `pointBox`, and `tap_target_min_px`; inline project-3D JS parses; encoding gate clean. Not run: PHP lint and live post-deploy tap-target DOM measurement, both called out in the PR for Claude/deploy gate.
+STATUS: DONE
