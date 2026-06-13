@@ -20,7 +20,7 @@ import numpy as np
 
 ROOT = Path(__file__).resolve().parents[1]
 OUT = ROOT / "assets" / "projects" / "rainbow-tel-aviv"
-BRANCH = "codex/rainbow-prototype-model-1631"
+BRANCH = os.getenv("RAINBOW_MODEL_REF", "main")
 RAW_BASE = f"https://raw.githubusercontent.com/The-new-ben/nad-lan-co-il/{BRANCH}/assets/projects/rainbow-tel-aviv"
 
 

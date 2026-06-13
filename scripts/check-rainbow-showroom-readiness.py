@@ -92,6 +92,12 @@ def check_meta(path: Path, gate: Gate) -> None:
             gate.pass_(field, "present")
         else:
             gate.fail(field, "missing from CMS payload")
+    for field in ["project_model_glb", "project_model_poster"]:
+        value = str(meta.get(field, ""))
+        if "raw.githubusercontent.com/The-new-ben/nad-lan-co-il/" in value and "/main/" not in value:
+            gate.fail(field, "raw GitHub asset URL must point at main after merge, not a draft branch")
+        elif value:
+            gate.pass_(f"{field} URL durability", "main raw URL or custom hosted URL")
     units = meta.get("project_3d_units", [])
     if isinstance(units, list) and units:
         gate.pass_("project_3d_units count", str(len(units)))
@@ -112,6 +118,20 @@ def check_meta(path: Path, gate: Gate) -> None:
         gate.fail("unit hotspot/source fields", ", ".join(missing[:12]))
     else:
         gate.pass_("unit hotspot/source fields", f"{len(units)} units complete")
+    disclaimer_missing = []
+    for unit in units:
+        if not isinstance(unit, dict):
+            continue
+        note = " ".join(
+            str(unit.get(key, ""))
+            for key in ("price_note", "market_note", "price_source", "source_note")
+        )
+        if "לא הצעה" not in note and "אומדן" not in note:
+            disclaimer_missing.append(str(unit.get("id", "<missing id>")))
+    if disclaimer_missing:
+        gate.fail("unit price disclaimer", ", ".join(disclaimer_missing[:12]))
+    else:
+        gate.pass_("unit price disclaimer", "all demo units carry non-binding price/source language")
     env = meta.get("project_3d_environment_json")
     if isinstance(env, dict):
         layers = env.get("layers", [])

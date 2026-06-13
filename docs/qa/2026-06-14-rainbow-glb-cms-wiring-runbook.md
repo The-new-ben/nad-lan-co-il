@@ -30,6 +30,10 @@ After merge, the production asset URLs are:
 If GitHub raw is too slow or blocked by cache policy, upload `model.glb` and `poster.png` to
 WordPress Media or a CDN and use those URLs instead.
 
+Do not leave the live card pointing at a draft branch raw URL. The readiness script fails
+`raw.githubusercontent.com/The-new-ben/nad-lan-co-il/<branch>/...` URLs unless the ref is `main`,
+because draft branches can be deleted after merge and would break the public model.
+
 ## WordPress Meta To Set
 
 Rainbow post id: `4464`.
@@ -83,6 +87,11 @@ The script prints:
 
 It does not write to WordPress.
 
+The generator also defaults `project-meta-example.json` to `main` URLs. For a throwaway pre-merge
+QA artifact only, set `RAINBOW_MODEL_REF=codex/rainbow-prototype-model-1631` before running
+`scripts\generate-rainbow-prototype-model.py`; do not commit or publish branch-scoped URLs to the
+live CMS payload.
+
 ## Optional REST Apply Helper
 
 To write the REST-registered fields, use the dry-run-first helper:
@@ -124,7 +133,8 @@ Before merge or before CMS wire-in, run:
 python scripts\check-rainbow-showroom-readiness.py
 ```
 
-Expected now: local assets pass, live `model_viewer_ready` passes, and `projects_with_glb` is a
+Expected now: local assets pass, asset URLs are durable (`main` or custom hosted), demo units carry
+non-binding price/source language, live `model_viewer_ready` passes, and `projects_with_glb` is a
 warning because the live Rainbow post is not wired yet.
 
 After merge and after the CMS fields are populated, run:
