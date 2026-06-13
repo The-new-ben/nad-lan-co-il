@@ -119,3 +119,25 @@ After a PR is merged:
 4. Check `/wp-json/nadlan/v1/healthcheck` for the new version and feature blocks.
 
 GitHub merge alone does not update production.
+
+## G. Model Asset Wire-In
+
+When the model-viewer rail is live but `projects_with_glb` is still `0`, the next step is not a
+plugin rebuild. It is CMS wiring.
+
+For Rainbow, use:
+
+- `docs/qa/2026-06-14-rainbow-glb-cms-wiring-runbook.md`
+- `scripts/prepare-rainbow-cms-payload.py`
+
+For future projects, create the same asset folder and payload helper pattern:
+
+1. `assets/projects/<slug>/model.glb`
+2. `assets/projects/<slug>/poster.png`
+3. `assets/projects/<slug>/project-meta-example.json`
+4. A QA/runbook doc that lists the exact post id, model URLs, unit JSON, healthcheck proof and
+   browser QA gates.
+
+Do not wire a public page to a draft branch asset unless the owner explicitly approves a temporary
+QA pass. After merge, use `main` raw URLs, WordPress Media URLs or a CDN, then clear cache and
+verify healthcheck `project_3d.projects_with_glb >= 1`.
