@@ -274,3 +274,24 @@ For every cloned project, verify:
 - Future authorized market data should map into the existing unit JSON or project-level average
   estimate fields. Do not publish paid-source transaction rows blindly or imply official developer
   availability without approval.
+
+### v1.61.0 Premium Showroom Standard
+
+- The interactive model belongs immediately after breadcrumbs and before the old static profile
+  card. If the buyer must scroll through a hero image/profile card first, the page feels like a
+  document rather than a showroom.
+- Stage-first layout: the building selector is the first usable surface, with facts, filters and
+  forms as supporting panels. SEO copy can follow the stage, but it must not push the interactive
+  product below the fold.
+- Use stable markers around the module: `<!-- nlp3d-start -->` and `<!-- nlp3d-end -->`. Content
+  migration and future translation tooling must split by markers rather than guessing DOM order.
+- Map labels must support RTL. Register the Mapbox RTL text plugin before creating the live map.
+- Price estimates are allowed only as `אומדן` with a short source note. If the source is public
+  market reporting, state the source/date class in the note and keep the value non-binding.
+- WhatsApp is not a funnel by itself. A premium project page needs a secret-gated ingestion path
+  that can turn WhatsApp messages or shortcuts into the same lead CPT and owner routing used by
+  the site forms.
+- Floating contact controls must respect safe-area insets, 44px tap targets, focus outlines and
+  mobile viewport height. They must not cover the 3D stage, lead form or footer.
+- After every merge: pull/sync the uPress/server Git copy first, then update or upload the
+  WordPress plugin. Merging GitHub alone does not update production.

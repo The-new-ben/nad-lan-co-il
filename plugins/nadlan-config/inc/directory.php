@@ -379,6 +379,24 @@ if ( ! function_exists( 'nadlan_dir_render_page' ) ) {
  * Single professional PROFILE — premium colour header + "similar pros"
  * (prepended/appended around the existing facts table from cards-render.php)
  * ------------------------------------------------------------------------- */
+if ( ! function_exists( 'nadlan_dir_enqueue_professional_quote_script' ) ) {
+	function nadlan_dir_enqueue_professional_quote_script() {
+		static $done = false;
+		if ( $done ) {
+			return;
+		}
+		$done = true;
+		$rest = esc_url_raw( rest_url( 'nadlan/v1/referral/route' ) );
+		wp_register_script( 'nadlan-professional-quote', '', array(), '1.61.0', true );
+		wp_enqueue_script( 'nadlan-professional-quote' );
+		wp_add_inline_script(
+			'nadlan-professional-quote',
+			'window.nadlanProQuote=window.nadlanProQuote||function(id,name){var n=window.prompt("שמכם:");if(!n)return;var p=window.prompt("טלפון ליצירת קשר:");if(!p)return;window.fetch("' . esc_js( $rest ) . '",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({customer_name:n,customer_phone:p,partner_id:id,topic:"הצעת מחיר - "+name,source_url:window.location.href,notify_partner:0})}).then(function(r){return r.json();}).then(function(d){window.alert((d&&d.ok)?"הבקשה נשלחה. נחזור אליכם עם פרטים.":"שגיאה, נסו שוב.");}).catch(function(){window.alert("שגיאה, נסו שוב.");});};document.addEventListener("click",function(e){var btn=e.target.closest("[data-nadlan-professional-quote]");if(!btn)return;window.nadlanProQuote(parseInt(btn.dataset.partnerId||"0",10),btn.dataset.partnerTitle||"בעל המקצוע");});',
+			'after'
+		);
+	}
+}
+
 if ( ! function_exists( 'nadlan_dir_profile_header' ) ) {
 	function nadlan_dir_profile_header( $id ) {
 		$pm   = nadlan_dir_prof_meta( (string) get_post_meta( $id, 'profession', true ) );
@@ -390,6 +408,7 @@ if ( ! function_exists( 'nadlan_dir_profile_header' ) ) {
 		$rating   = (float) get_post_meta( $id, 'rating', true );
 		$reviews  = (int) get_post_meta( $id, 'reviews_count', true );
 		$title    = get_the_title( $id );
+		nadlan_dir_enqueue_professional_quote_script();
 
 		$stars = ( $reviews > 0 && $rating > 0 )
 			? '<span class="nlpf-stars">' . str_repeat( '★', (int) round( $rating ) ) . str_repeat( '☆', max( 0, 5 - (int) round( $rating ) ) ) . '</span> <b>' . number_format( $rating, 1 ) . '</b> <span class="nlpf-rev">(' . $reviews . ' חוות דעת)</span>'
@@ -415,7 +434,7 @@ if ( ! function_exists( 'nadlan_dir_profile_header' ) ) {
 		</div>
 		<div class="nlpf-cta">
 			<?php if ( $phone ) : ?><a class="nlpf-call" href="tel:<?php echo esc_attr( preg_replace( '/[^0-9+]/', '', $phone ) ); ?>"><svg class="nl-ico" aria-hidden="true" viewBox="0 0 16 16"><path fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" d="M5.5 2.5c.3 1 .7 2 1.2 2.8.2.3.1.7-.1 1l-.9.9c.7 1.4 1.8 2.5 3.2 3.2l.9-.9c.3-.2.7-.3 1-.1.8.5 1.8.9 2.8 1.2.4.1.6.5.6.9V14a1 1 0 0 1-1.1 1A11.5 11.5 0 0 1 2 4.1 1 1 0 0 1 3 3h1.6c.4 0 .8.2.9.6z"/></svg>התקשרו</a><?php endif; ?>
-			<button type="button" class="nlpf-quote" onclick="nadlanProQuote(<?php echo (int) $id; ?>,'<?php echo esc_js( $title ); ?>')">בקשת הצעת מחיר</button>
+			<button type="button" class="nlpf-quote" data-nadlan-professional-quote data-partner-id="<?php echo (int) $id; ?>" data-partner-title="<?php echo esc_attr( $title ); ?>">בקשת הצעת מחיר</button>
 		</div>
 	</div>
 </div>
@@ -440,7 +459,6 @@ if ( ! function_exists( 'nadlan_dir_profile_header' ) ) {
 .nlpf-call:hover,.nlpf-quote:hover{transform:translateY(-2px);filter:brightness(1.05)}
 @media(max-width:640px){.nlpf-cta{width:100%;flex-direction:row}.nlpf-call,.nlpf-quote{flex:1}}
 </style>
-<script>function nadlanProQuote(id,name){var n=prompt('שמכם:');if(!n)return;var p=prompt('טלפון ליצירת קשר:');if(!p)return;fetch('<?php echo esc_js( rest_url( 'nadlan/v1/referral/route' ) ); ?>',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({customer_name:n,customer_phone:p,partner_id:id,topic:'הצעת מחיר — '+name,source_url:location.href,notify_partner:0})}).then(function(r){return r.json();}).then(function(d){alert((d&&d.ok)?'✓ הבקשה נשלחה. נחזור אליכם בהקדם.':'שגיאה, נסו שוב.');}).catch(function(){alert('שגיאה, נסו שוב.');});}</script>
 		<?php
 		return ob_get_clean();
 	}
@@ -489,8 +507,26 @@ add_filter( 'pre_get_document_title', function ( $t ) {
 /* v1.37.0: premium profile header for single PROJECT pages (parity with
  * professionals — they were rendering bare). Uses nadlan_dir_pt_meta defined
  * in the projects section below (runtime call, so order is fine). */
+if ( ! function_exists( 'nadlan_dir_enqueue_project_quote_script' ) ) {
+	function nadlan_dir_enqueue_project_quote_script() {
+		static $done = false;
+		if ( $done ) {
+			return;
+		}
+		$done = true;
+		wp_register_script( 'nadlan-project-profile-quote', '', array(), '1.61.0', true );
+		wp_enqueue_script( 'nadlan-project-profile-quote' );
+		$rest = esc_url_raw( rest_url( 'nadlan/v1/lead' ) );
+		wp_add_inline_script(
+			'nadlan-project-profile-quote',
+			'window.nadlanProjQuote=window.nadlanProjQuote||function(id,name){var n=window.prompt("שמכם:");if(!n)return;var p=window.prompt("טלפון ליצירת קשר:");if(!p)return;window.fetch("' . esc_js( $rest ) . '",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({name:n,phone:p,topic:"מידע על פרויקט",message:"פנייה לגבי: "+name+" (#"+id+")",source:"project-profile",card_id:id})}).then(function(){window.alert("הבקשה נשלחה. נחזור אליכם עם פרטים.");}).catch(function(){window.alert("שגיאה, נסו שוב.");});};document.addEventListener("click",function(e){var btn=e.target.closest("[data-nadlan-project-quote]");if(!btn)return;window.nadlanProjQuote(parseInt(btn.dataset.cardId||"0",10),btn.dataset.cardTitle||"הפרויקט");});',
+			'after'
+		);
+	}
+}
 if ( ! function_exists( 'nadlan_dir_project_profile_header' ) ) {
 	function nadlan_dir_project_profile_header( $id ) {
+		nadlan_dir_enqueue_project_quote_script();
 		$pm     = nadlan_dir_pt_meta( (string) get_post_meta( $id, 'project_type', true ) );
 		$city   = nadlan_meta_norm( get_post_meta( $id, 'city', true ) );
 		$units  = (int) get_post_meta( $id, 'num_units', true );
@@ -517,7 +553,7 @@ if ( ! function_exists( 'nadlan_dir_project_profile_header' ) ) {
 			</div>
 		</div>
 		<div class="nlpf-cta">
-			<button type="button" class="nlpf-quote" onclick="nadlanProjQuote(<?php echo (int) $id; ?>,'<?php echo esc_js( $title ); ?>')">קבלת מידע על הפרויקט</button>
+			<button type="button" class="nlpf-quote" data-nadlan-project-quote data-card-id="<?php echo (int) $id; ?>" data-card-title="<?php echo esc_attr( $title ); ?>">קבלת מידע על הפרויקט</button>
 		</div>
 	</div>
 </div>
@@ -538,7 +574,6 @@ if ( ! function_exists( 'nadlan_dir_project_profile_header' ) ) {
 .nlpf-quote:hover{transform:translateY(-2px);filter:brightness(1.05)}
 @media(max-width:640px){.nlpf-cta{width:100%}.nlpf-quote{flex:1}}
 </style>
-<script>function nadlanProjQuote(id,name){var n=prompt('שמכם:');if(!n)return;var p=prompt('טלפון ליצירת קשר:');if(!p)return;fetch('<?php echo esc_js( rest_url( 'nadlan/v1/lead' ) ); ?>',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({name:n,phone:p,topic:'מידע על פרויקט',message:'פנייה לגבי: '+name+' (#'+id+')',source:'project-profile',card_id:id})}).then(function(){alert('✓ הבקשה נשלחה. נחזור אליכם עם פרטים.');}).catch(function(){alert('שגיאה, נסו שוב.');});}</script>
 <?php
 		return ob_get_clean();
 	}
