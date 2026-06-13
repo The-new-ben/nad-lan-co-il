@@ -74,6 +74,25 @@ The script prints:
 
 It does not write to WordPress.
 
+## Readiness Check
+
+Before merge or before CMS wire-in, run:
+
+```powershell
+python scripts\check-rainbow-showroom-readiness.py
+```
+
+Expected now: local assets pass, live `model_viewer_ready` passes, and `projects_with_glb` is a
+warning because the live Rainbow post is not wired yet.
+
+After merge and after the CMS fields are populated, run:
+
+```powershell
+python scripts\check-rainbow-showroom-readiness.py --expect-live-glb
+```
+
+Expected after wire-in: every check passes, including `projects_with_glb >= 1`.
+
 ## Browser QA After Wiring
 
 Open:
