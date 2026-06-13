@@ -67,6 +67,8 @@ Browser checks:
 - 760px tablet: stage first, console stacks cleanly, unit/detail/form panels do not overlap.
 - 390px mobile: no horizontal overflow; buttons and unit targets are usable; selected card docks at
   the bottom of the stage only after selection, with model space reserved above it.
+- Saved localStorage unit selection may prefill the detail panel, but must not show the stage card
+  until the buyer explicitly taps/clicks a floor or apartment in the current visit.
 - Building-first default: map is not auto-opened.
 - Drag on the building changes angle; vertical drag changes tilt.
 - Double tap/click or zoom controls changes model scale.

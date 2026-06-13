@@ -898,7 +898,7 @@ if ( ! function_exists( 'nadlan_p3d_inline_js' ) ) {
 		var activeTool='spec';
 		if(savedUnit){
 			var restored=units.find(function(u){return u.id===savedUnit});
-			if(restored){activeUnit=restored;activeFloor=parseInt(restored.floor||activeFloor,10);hasStageSelection=true}
+			if(restored){activeUnit=restored;activeFloor=parseInt(restored.floor||activeFloor,10)}
 		}
 		function track(action,extra){
 			window.dataLayer=window.dataLayer||[];
