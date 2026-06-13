@@ -93,6 +93,34 @@ python scripts\check-rainbow-showroom-readiness.py --expect-live-glb
 
 Expected after wire-in: every check passes, including `projects_with_glb >= 1`.
 
+## Live DOM / Visual Gate
+
+Before and after CMS wire-in, run:
+
+```powershell
+node scripts\check-rainbow-live-dom.mjs --out docs\qa\screenshots-rainbow-live-dom-current
+```
+
+After GLB wire-in:
+
+```powershell
+node scripts\check-rainbow-live-dom.mjs --expect-glb --out docs\qa\screenshots-rainbow-live-dom-after-glb
+```
+
+This gate checks the rendered page at 1440px and 390px for:
+
+- one H1,
+- showroom presence,
+- horizontal overflow,
+- raw code leaks,
+- visible PHP/JS error text,
+- featured-image suppression,
+- model-viewer/fallback state,
+- visible showroom tap targets below 44px.
+
+Current live pre-wire evidence is recorded in
+`docs/qa/2026-06-14-rainbow-live-dom-current.md`.
+
 ## Browser QA After Wiring
 
 Open:
