@@ -38,10 +38,14 @@ scrollbars, and CMS fields for future developer-supplied material.
   authenticated editors.
 - Unit JSON accepts `interior_url`, `tour_url`, and `view_note`.
 - `project_3d_drawings_json` and `project_3d_environment_json` only save if they decode to JSON
-  arrays.
+  arrays, and nested `url` values are sanitized before they can render as links.
+- Drawing, surroundings, view and media panels render CMS-driven material cards when approved URLs
+  are present; otherwise they keep the existing non-invented request-for-material copy.
 - Healthcheck should report:
   - `project_3d.renderer = premium_showroom_v7_product_stage`
   - `project_3d.cms_material_fields = true`
+  - `project_3d.cms_material_cards = true`
+  - `project_3d.cms_material_sanitized = true`
   - `project_3d.hit_targets = true`
   - `project_3d.model_zoom_tilt = true`
   - `project_3d.cesium_ready = true`
@@ -73,6 +77,8 @@ Browser checks:
 - Drag on the building changes angle; vertical drag changes tilt.
 - Double tap/click or zoom controls changes model scale.
 - Clicking an apartment/floor updates the stage card, facts, compare tray and lead payload.
+- If drawings/media/environment JSON is filled, matching cards appear inside the relevant tool
+  panel and open only sanitized `http(s)` links.
 - "View" opens the map only on user request; Mapbox RTL plugin should keep Hebrew labels readable
   where Mapbox supports them.
 - Price language remains estimate/source-aware or "by inquiry"; no fake official availability.

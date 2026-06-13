@@ -35,6 +35,75 @@ if ( ! function_exists( 'nadlan_p3d_sanitize_decimal' ) ) {
 	}
 }
 
+if ( ! function_exists( 'nadlan_p3d_clean_material_items' ) ) {
+	function nadlan_p3d_clean_material_items( $items ) {
+		if ( ! is_array( $items ) ) {
+			return array();
+		}
+
+		$out = array();
+		foreach ( $items as $item ) {
+			if ( ! is_array( $item ) ) {
+				continue;
+			}
+
+			$clean = array();
+			foreach ( array( 'label', 'name', 'title' ) as $key ) {
+				if ( isset( $item[ $key ] ) ) {
+					$clean[ $key ] = sanitize_text_field( (string) $item[ $key ] );
+				}
+			}
+			foreach ( array( 'detail', 'source', 'note' ) as $key ) {
+				if ( isset( $item[ $key ] ) ) {
+					$clean[ $key ] = sanitize_textarea_field( (string) $item[ $key ] );
+				}
+			}
+			if ( isset( $item['type'] ) ) {
+				$clean['type'] = sanitize_key( (string) $item['type'] );
+			}
+			if ( isset( $item['category'] ) ) {
+				$clean['category'] = sanitize_key( (string) $item['category'] );
+			}
+			if ( isset( $item['url'] ) ) {
+				$clean['url'] = esc_url_raw( (string) $item['url'] );
+			}
+			if ( isset( $item['distance'] ) ) {
+				$clean['distance'] = sanitize_text_field( (string) $item['distance'] );
+			}
+			if ( isset( $item['lat'] ) && is_numeric( $item['lat'] ) ) {
+				$clean['lat'] = (float) $item['lat'];
+			}
+			if ( isset( $item['lng'] ) && is_numeric( $item['lng'] ) ) {
+				$clean['lng'] = (float) $item['lng'];
+			}
+
+			if ( array_filter( $clean ) ) {
+				$out[] = $clean;
+			}
+			if ( count( $out ) >= 40 ) {
+				break;
+			}
+		}
+
+		return $out;
+	}
+}
+
+if ( ! function_exists( 'nadlan_p3d_sanitize_material_json' ) ) {
+	function nadlan_p3d_sanitize_material_json( $raw ) {
+		$raw = trim( (string) $raw );
+		if ( $raw === '' ) {
+			return '';
+		}
+		$decoded = json_decode( $raw, true );
+		if ( ! is_array( $decoded ) ) {
+			return '';
+		}
+		$clean = nadlan_p3d_clean_material_items( $decoded );
+		return $clean ? wp_json_encode( $clean, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES ) : '';
+	}
+}
+
 if ( ! function_exists( 'nadlan_p3d_units' ) ) {
 	function nadlan_p3d_units( $post_id ) {
 		$raw   = trim( (string) get_post_meta( (int) $post_id, 'project_3d_units', true ) );
@@ -275,8 +344,8 @@ add_action(
 			'project_3d_video_url'        => 'esc_url_raw',
 			'project_3d_tour_url'         => 'esc_url_raw',
 			'project_3d_cesium_tiles_url' => 'esc_url_raw',
-			'project_3d_drawings_json'    => 'nadlan_p3d_sanitize_json_text',
-			'project_3d_environment_json' => 'nadlan_p3d_sanitize_json_text',
+			'project_3d_drawings_json'    => 'nadlan_p3d_sanitize_material_json',
+			'project_3d_environment_json' => 'nadlan_p3d_sanitize_material_json',
 		);
 
 		foreach ( $fields as $key => $sanitize_callback ) {
@@ -337,8 +406,8 @@ if ( ! function_exists( 'nadlan_p3d_meta' ) ) {
 			'video_url'          => $video_url,
 			'tour_url'           => $tour_url,
 			'cesium_tiles_url'   => $cesium_url,
-			'drawings'           => nadlan_p3d_json_meta( $post_id, 'project_3d_drawings_json', array() ),
-			'environment'        => nadlan_p3d_json_meta( $post_id, 'project_3d_environment_json', array() ),
+			'drawings'           => nadlan_p3d_clean_material_items( nadlan_p3d_json_meta( $post_id, 'project_3d_drawings_json', array() ) ),
+			'environment'        => nadlan_p3d_clean_material_items( nadlan_p3d_json_meta( $post_id, 'project_3d_environment_json', array() ) ),
 			'url'       => get_permalink( $post_id ),
 			'demo'      => (bool) $demo,
 		);
@@ -732,6 +801,14 @@ CSS;
 	}
 }
 
+if ( ! function_exists( 'nadlan_p3d_showroom_v162_material_css' ) ) {
+	function nadlan_p3d_showroom_v162_material_css() {
+		return <<<'CSS'
+.nlp3d.nlp3d-premium .nlp3d-material-links{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;margin-top:10px}.nlp3d.nlp3d-premium .nlp3d-material-card{position:relative;display:grid;gap:4px;min-height:62px;padding:10px 11px;border:1px solid rgba(234,216,163,.22);background:linear-gradient(135deg,rgba(255,255,255,.075),rgba(255,255,255,.035));color:#fff3c8;text-decoration:none}.nlp3d.nlp3d-premium .nlp3d-material-card strong{font-size:13px;line-height:1.3;color:#fff7df}.nlp3d.nlp3d-premium .nlp3d-material-card small{font-size:11.5px;line-height:1.35;color:#d8ccb0}.nlp3d.nlp3d-premium .nlp3d-material-card em{position:absolute;top:7px;left:8px;font-style:normal;font-size:10px;color:#15120c;background:linear-gradient(135deg,#ead8a3,#b99043);padding:2px 6px;border-radius:999px}.nlp3d.nlp3d-premium a.nlp3d-material-card:hover,.nlp3d.nlp3d-premium a.nlp3d-material-card:focus-visible{outline:2px solid rgba(255,255,255,.68);outline-offset:2px;border-color:rgba(234,216,163,.55);background:linear-gradient(135deg,rgba(234,216,163,.16),rgba(255,255,255,.05))}@media(max-width:760px){.nlp3d.nlp3d-premium .nlp3d-material-links{grid-template-columns:1fr}.nlp3d.nlp3d-premium .nlp3d-material-card{min-height:58px}}
+CSS;
+	}
+}
+
 if ( ! function_exists( 'nadlan_p3d_inline_js' ) ) {
 	function nadlan_p3d_inline_js( $rest_url ) {
 		$js = <<<'JS'
@@ -905,6 +982,53 @@ if ( ! function_exists( 'nadlan_p3d_inline_js' ) ) {
 			var payload={event:'project_3d_interaction',action:action,card_id:parseInt(root.dataset.project,10)};
 			if(extra){Object.keys(extra).forEach(function(k){payload[k]=extra[k]})}
 			window.dataLayer.push(payload);
+		}
+		function safeUrl(url){
+			if(!url){return ''}
+			try{
+				var u=new URL(String(url),window.location.origin);
+				return /^https?:$/.test(u.protocol)?u.href:'';
+			}catch(e){return ''}
+		}
+		function materialLabel(item,fallback){
+			return (item&&(item.label||item.name||item.title))||fallback||'מידע נוסף';
+		}
+		function materialDetail(item){
+			if(!item){return ''}
+			var out=item.detail||item.note||item.source||'';
+			if(item.distance){out+=(out?' · ':'')+item.distance}
+			return out;
+		}
+		function appendMaterialCards(items,source){
+			if(!toolPanel||!items||!items.length){return}
+			var wrap=document.createElement('div');
+			wrap.className='nlp3d-material-links';
+			items.slice(0,6).forEach(function(item){
+				var href=safeUrl(item.url);
+				var el=document.createElement(href?'a':'span');
+				el.className='nlp3d-material-card';
+				if(href){
+					el.href=href;
+					el.target='_blank';
+					el.rel='noopener';
+				}
+				var label=document.createElement('strong');
+				var detail=document.createElement('small');
+				label.textContent=materialLabel(item,'מידע נוסף');
+				detail.textContent=materialDetail(item)||(href?'פתיחה בחלון חדש':'יופיע כאשר החומר יאושר');
+				el.appendChild(label);
+				el.appendChild(detail);
+				if(item.type||item.category){
+					var chip=document.createElement('em');
+					chip.textContent=item.type||item.category;
+					el.appendChild(chip);
+				}
+				if(href){
+					el.addEventListener('click',function(){track('material_open',{source:source||activeTool,label:label.textContent})});
+				}
+				wrap.appendChild(el);
+			});
+			toolPanel.appendChild(wrap);
 		}
 		function floorHasUnits(f){return units.some(function(u){return parseInt(u.floor||0,10)===f})}
 		function unitForFloor(f){return units.find(function(u){return parseInt(u.floor||0,10)===f&&u.status!=='sold'})||units.find(function(u){return parseInt(u.floor||0,10)===f})}
@@ -1189,16 +1313,20 @@ if ( ! function_exists( 'nadlan_p3d_inline_js' ) ) {
 		}
 		function renderToolPanel(){
 			if(!toolPanel||!activeUnit){return}
+			var materialItems=[];
 			var headline='מפרט הדירה';
 			var copy='הדירה שנבחרה מוצגת לפי נתוני ההמחשה: '+(activeUnit.rooms||'')+' חדרים, '+(activeUnit.sqm?fmt(activeUnit.sqm)+' מ"ר':'שטח לפי פנייה')+', קומה '+(activeUnit.floor||'לפי פנייה')+', '+(activeUnit.building||'בניין לפי פנייה')+'. '+(activeUnit.note||'מפרט רשמי יימסר לאחר בדיקת זמינות מול היזם.');
 			if(activeTool==='drawing'){
 				headline='תוכנית ומדידות';
 				copy=activeUnit.plan?'ניתן לפתוח את תוכנית הדירה המקושרת ולבקש בדיקה של המידות, המרפסת והכיוונים.':'תוכנית רשמית עדיין לא נטענה לכרטיס. אפשר לשלוח בקשה ולקבל תוכנית, מדידות, כיווני אוויר וחומר מכירה כאשר הם זמינים ומאומתים. המערכת כבר שומרת את היחידה, הקומה והקו כדי לקשור אליהם תוכנית רשמית בהמשך.';
+				if(activeUnit.plan){materialItems.push({label:'תוכנית הדירה שנבחרה',url:activeUnit.plan,type:'plan'})}
+				if(Array.isArray(meta.drawings)){materialItems=materialItems.concat(meta.drawings)}
 			}
 			if(activeTool==='view'){
 				headline='מבט מהדירה';
 				var cam=cameraParams(activeUnit,meta);
 				copy=(activeUnit.view_note||activeUnit.view||activeUnit.dir||'מבט לפי כיוון היחידה')+'. גובה מצלמה מחושב: '+cam.altitude_m+' מ׳, כיוון '+cam.bearing+'°. כאשר שכבת מפה או הדמיית עיר מאושרת זמינה, הכפתור "מבט מהדירה" מציג את הסביבה במצלמה חיה.';
+				if(meta.cesium_tiles_url){materialItems.push({label:'שכבת עיר תלת ממדית עתידית',url:meta.cesium_tiles_url,type:'3d-city',detail:'מיועדת לחיבור Cesium / Google 3D Tiles כאשר החשבון וההרשאות מוכנים'})}
 			}
 			if(activeTool==='sun'){
 				headline='אור ושמש בדירה';
@@ -1218,6 +1346,7 @@ if ( ! function_exists( 'nadlan_p3d_inline_js' ) ) {
 				var env=Array.isArray(meta.environment)?meta.environment:[];
 				if(env.length){
 					copy=env.slice(0,5).map(function(item){return (item.label||item.name||'נקודת עניין')+(item.detail?' - '+item.detail:'')}).join(' · ');
+					materialItems=env;
 				}else{
 					copy='שדה דב מתוכנן כרובע חופי חדש עם פארקים, שבילי הליכה, מסחר שכונתי, מוסדות ציבור, חיבור לים ולצירי תחבורה. בשלב הבא אפשר להזין נקודות עניין מאושרות: בתי ספר, גנים, תחבורה, פארקים ופרויקטים שכנים.';
 				}
@@ -1225,6 +1354,10 @@ if ( ! function_exists( 'nadlan_p3d_inline_js' ) ) {
 			if(activeTool==='media'){
 				headline='מדיה, סיור וחומרים';
 				var bits=[];
+				if(activeUnit.interior_url){materialItems.push({label:'המחשת פנים ליחידה',url:activeUnit.interior_url,type:'interior'})}
+				if(activeUnit.tour_url){materialItems.push({label:'סיור 3D ליחידה',url:activeUnit.tour_url,type:'tour'})}
+				if(meta.tour_url){materialItems.push({label:'סיור פרויקט',url:meta.tour_url,type:'tour'})}
+				if(meta.video_url){materialItems.push({label:'סרטון פרויקט',url:meta.video_url,type:'video'})}
 				if(activeUnit.tour_url||meta.tour_url){bits.push('סיור פנימי או קישור 3D זמין לפתיחה מתוך חומרי הפרויקט')}
 				if(activeUnit.interior_url){bits.push('המחשת פנים מקושרת ליחידה שנבחרה')}
 				if(meta.video_url){bits.push('סרטון מכירה או שיחת וידאו יכולים להופיע כאן')}
@@ -1242,6 +1375,7 @@ if ( ! function_exists( 'nadlan_p3d_inline_js' ) ) {
 			p.textContent=copy;
 			toolPanel.appendChild(strong);
 			toolPanel.appendChild(p);
+			appendMaterialCards(materialItems,activeTool);
 		}
 		function canLiveView(){
 			var cam=cameraParams(activeUnit,meta);
@@ -1592,6 +1726,7 @@ add_action(
 		wp_add_inline_style( 'nadlan-p3d', '.nlp3d.nlp3d-premium .nlp3d-stage-card[hidden]{display:none!important}.nlp3d.nlp3d-premium .nlp3d-stage-card{pointer-events:none!important;top:76px!important;right:18px!important;left:auto!important;bottom:auto!important;width:min(360px,calc(100% - 36px))!important;grid-template-columns:1fr!important}.nlp3d.nlp3d-premium .nlp3d-stage-card-actions button,.nlp3d.nlp3d-premium .nlp3d-stage-card a{pointer-events:auto!important}.nlp3d.nlp3d-premium .nlp3d-stage-card-stats,.nlp3d.nlp3d-premium .nlp3d-stage-card-actions{grid-column:1!important}@media(max-width:760px){.nlp3d.nlp3d-premium .nlp3d-stage-card:not([hidden]){position:relative!important;top:auto!important;right:auto!important;left:auto!important;bottom:auto!important;width:auto!important;max-height:none!important;overflow:visible!important;margin-top:10px!important}.nlp3d.nlp3d-premium .nlp3d-stage-card-stats,.nlp3d.nlp3d-premium .nlp3d-stage-card-actions{grid-template-columns:1fr!important}}' );
 		wp_add_inline_style( 'nadlan-p3d', nadlan_p3d_showroom_v162_css() );
 		wp_add_inline_style( 'nadlan-p3d', nadlan_p3d_showroom_v162_mobile_card_css() );
+		wp_add_inline_style( 'nadlan-p3d', nadlan_p3d_showroom_v162_material_css() );
 
 		wp_register_script( 'nadlan-p3d', '', array(), '1.62.0', true );
 		wp_enqueue_script( 'nadlan-p3d' );
@@ -1687,8 +1822,8 @@ add_action(
 		update_post_meta( $post_id, 'project_3d_video_url', esc_url_raw( wp_unslash( $_POST['project_3d_video_url'] ?? '' ) ) );
 		update_post_meta( $post_id, 'project_3d_tour_url', esc_url_raw( wp_unslash( $_POST['project_3d_tour_url'] ?? '' ) ) );
 		update_post_meta( $post_id, 'project_3d_cesium_tiles_url', esc_url_raw( wp_unslash( $_POST['project_3d_cesium_tiles_url'] ?? '' ) ) );
-		update_post_meta( $post_id, 'project_3d_drawings_json', nadlan_p3d_sanitize_json_text( wp_unslash( $_POST['project_3d_drawings_json'] ?? '' ) ) );
-		update_post_meta( $post_id, 'project_3d_environment_json', nadlan_p3d_sanitize_json_text( wp_unslash( $_POST['project_3d_environment_json'] ?? '' ) ) );
+		update_post_meta( $post_id, 'project_3d_drawings_json', nadlan_p3d_sanitize_material_json( wp_unslash( $_POST['project_3d_drawings_json'] ?? '' ) ) );
+		update_post_meta( $post_id, 'project_3d_environment_json', nadlan_p3d_sanitize_material_json( wp_unslash( $_POST['project_3d_environment_json'] ?? '' ) ) );
 		$units = (string) wp_unslash( $_POST['project_3d_units'] ?? '' );
 		update_post_meta( $post_id, 'project_3d_units', json_decode( $units ) !== null || $units === '' ? $units : '' );
 		update_post_meta( $post_id, 'project_3d_demo', ! empty( $_POST['project_3d_demo'] ) ? '1' : '0' );
@@ -1724,6 +1859,8 @@ add_filter(
 			'app_selector'     => true,
 			'showroom_v2'      => true,
 			'cms_material_fields' => true,
+			'cms_material_cards'  => true,
+			'cms_material_sanitized' => true,
 			'hit_targets'      => true,
 			'model_zoom_tilt'  => true,
 			'cesium_ready'     => true,

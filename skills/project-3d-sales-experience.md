@@ -314,6 +314,9 @@ For every cloned project, verify:
   - `project_3d_drawings_json`,
   - `project_3d_environment_json`,
   - per-unit `interior_url`, `tour_url`, `view_note`.
+- CMS material fields are only useful if the buyer can act on them. Render approved drawings,
+  tours, videos, surroundings and future city-view links as source-aware material cards inside the
+  relevant showroom panel, with sanitized URLs and honest empty states.
 - Data quality must be explicit. Procedural/demo geometry is allowed for a sales prototype, but the
   public copy must not imply it is official BIM, official floor plans or verified availability.
 - Zillow-style parity for project pages means: unit picker, floor plans/drawings when provided,

@@ -65,6 +65,14 @@ Every flagship project page must expose the following before it is considered cl
 6. `project_3d_environment_json` for nearby projects, schools, parks, transit and public services.
 7. Per-unit `interior_url`, `tour_url` and `view_note`.
 
+Material fields are not complete until they appear in the buyer UI:
+
+- drawing items must surface in the plan/drawing panel,
+- video and tour URLs must surface in the media panel,
+- environment items must surface in the surroundings panel,
+- future Cesium/3D city-view URLs must be exposed as a ready seam in the view panel,
+- nested material URLs must be sanitized before rendering as links.
+
 The default model can be schematic, but the user experience must still feel like a product
 showroom: building-first, drag to rotate/tilt, visible zoom controls, large unit hit areas, no
 nested scrollbars and source-aware price/availability wording.
