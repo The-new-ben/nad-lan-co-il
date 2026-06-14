@@ -190,7 +190,8 @@ Before shipping a project:
 - Before live CMS wire-in, run the local model preview browser gate:
   `node scripts/check-rainbow-prototype-preview.mjs` (or the project-specific equivalent). It must
   prove the GLB loads at 1440px and 390px, hotspots exist, hotspot tap/click changes the unit
-  readout, tap targets are at least 44px, and screenshots are captured.
+  readout, tap targets are at least 44px, drawings/environment/media slots render from the project
+  JSON, Mapbox/Cesium view policy remains user-opened/lazy, and screenshots are captured.
 - Confirm the local model preview screenshot shows `loaded:true` / actual GLB visible, not only the
   poster image.
 - Confirm the page still has one H1 and the article body remains readable below the showroom.

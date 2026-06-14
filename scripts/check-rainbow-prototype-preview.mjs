@@ -210,6 +210,17 @@ const WAIT_MODEL_EXPRESSION = `(async () => {
   return false;
 })()`;
 
+const WAIT_DATA_EXPRESSION = `(async () => {
+  const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
+  const start = Date.now();
+  while (Date.now() - start < 10000) {
+    if (window.__rainbowPreviewDataReady === true) return true;
+    if (window.__rainbowPreviewDataReady === false) return false;
+    await sleep(150);
+  }
+  return false;
+})()`;
+
 const METRICS_EXPRESSION = `(() => {
   const rect = (el) => {
     if (!el) return null;
@@ -259,6 +270,13 @@ const METRICS_EXPRESSION = `(() => {
     smallTargets,
     errors: window.__rainbowPreviewErrors || [],
     bodyHasFatal: /Fatal error|Parse error|Warning:/.test(document.body?.innerText || ''),
+    dataReady: window.__rainbowPreviewDataReady === true,
+    insightsRect: rect(document.querySelector('.insights')),
+    drawingCards: document.querySelectorAll('[data-preview-drawing]').length,
+    environmentCards: document.querySelectorAll('[data-preview-environment-item]').length,
+    mediaSlots: document.querySelectorAll('[data-preview-media-slot]').length,
+    pendingMediaSlots: document.querySelectorAll('[data-preview-media-slot][data-state="pending"]').length,
+    viewLayerUserOpenOnly: document.querySelector('[data-preview-view-layer]')?.dataset.userOpenOnly === 'true',
   };
 })()`;
 
@@ -292,6 +310,13 @@ function evaluate(metrics, interaction) {
   add(interaction.changed ? 'PASS' : 'FAIL', 'hotspot click updates readout', JSON.stringify(interaction));
   add(metrics.errors.length === 0 ? 'PASS' : 'FAIL', 'no browser errors', metrics.errors.join(' | ') || 'none');
   add(metrics.bodyHasFatal ? 'FAIL' : 'PASS', 'no visible fatal text', metrics.bodyHasFatal ? 'fatal text found' : 'none');
+  add(metrics.dataReady ? 'PASS' : 'FAIL', 'CMS-backed preview data loaded', String(metrics.dataReady));
+  const insightsVisible = metrics.insightsRect && metrics.insightsRect.width >= 320 && metrics.insightsRect.height >= 160;
+  add(insightsVisible ? 'PASS' : 'FAIL', 'material insight panels visible', JSON.stringify(metrics.insightsRect));
+  add(metrics.drawingCards >= 3 ? 'PASS' : 'FAIL', 'drawing cards rendered', `${metrics.drawingCards}`);
+  add(metrics.environmentCards >= 6 ? 'PASS' : 'FAIL', 'surroundings cards rendered', `${metrics.environmentCards}`);
+  add(metrics.mediaSlots === 3 ? 'PASS' : 'FAIL', 'media/view slots rendered', `${metrics.mediaSlots} slots, ${metrics.pendingMediaSlots} pending`);
+  add(metrics.viewLayerUserOpenOnly ? 'PASS' : 'FAIL', 'view layer stays user-opened/lazy', String(metrics.viewLayerUserOpenOnly));
   return checks;
 }
 
@@ -314,6 +339,11 @@ async function runViewport(chromePort, url, outDir, viewport) {
   await cdp.send('Page.navigate', { url });
   await cdp.send('Runtime.evaluate', {
     expression: WAIT_MODEL_EXPRESSION,
+    awaitPromise: true,
+    returnByValue: true,
+  });
+  await cdp.send('Runtime.evaluate', {
+    expression: WAIT_DATA_EXPRESSION,
     awaitPromise: true,
     returnByValue: true,
   });

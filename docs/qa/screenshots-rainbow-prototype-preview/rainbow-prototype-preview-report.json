@@ -1,5 +1,5 @@
 {
-  "url": "http://127.0.0.1:53550/docs/previews/rainbow-model-viewer-prototype.html",
+  "url": "http://127.0.0.1:54006/docs/previews/rainbow-model-viewer-prototype.html",
   "results": [
     {
       "viewport": "prototype-desktop-1440",
@@ -12,14 +12,14 @@
           "width": 1440,
           "height": 1000
         },
-        "scrollWidth": 1440,
-        "overflowX": 0,
+        "scrollWidth": 1425,
+        "overflowX": -15,
         "h1": [
           "Rainbow Tel Aviv"
         ],
         "stageRect": {
-          "x": 130,
-          "y": 170,
+          "x": 123,
+          "y": 149,
           "width": 1180,
           "height": 782,
           "display": "block",
@@ -27,8 +27,8 @@
           "opacity": 1
         },
         "modelRect": {
-          "x": 131,
-          "y": 171,
+          "x": 124,
+          "y": 150,
           "width": 1178,
           "height": 780,
           "display": "block",
@@ -41,7 +41,22 @@
         "visibleHotspots": 6,
         "smallTargets": [],
         "errors": [],
-        "bodyHasFatal": false
+        "bodyHasFatal": false,
+        "dataReady": true,
+        "insightsRect": {
+          "x": 123,
+          "y": 947,
+          "width": 1180,
+          "height": 384,
+          "display": "grid",
+          "visibility": "visible",
+          "opacity": 1
+        },
+        "drawingCards": 5,
+        "environmentCards": 6,
+        "mediaSlots": 3,
+        "pendingMediaSlots": 3,
+        "viewLayerUserOpenOnly": true
       },
       "interaction": {
         "attempted": true,
@@ -64,7 +79,7 @@
         {
           "status": "PASS",
           "name": "no horizontal overflow",
-          "detail": "0px"
+          "detail": "-15px"
         },
         {
           "status": "PASS",
@@ -74,7 +89,7 @@
         {
           "status": "PASS",
           "name": "model-viewer visible area",
-          "detail": "{\"x\":131,\"y\":171,\"width\":1178,\"height\":780,\"display\":\"block\",\"visibility\":\"visible\",\"opacity\":1}"
+          "detail": "{\"x\":124,\"y\":150,\"width\":1178,\"height\":780,\"display\":\"block\",\"visibility\":\"visible\",\"opacity\":1}"
         },
         {
           "status": "PASS",
@@ -110,6 +125,36 @@
           "status": "PASS",
           "name": "no visible fatal text",
           "detail": "none"
+        },
+        {
+          "status": "PASS",
+          "name": "CMS-backed preview data loaded",
+          "detail": "true"
+        },
+        {
+          "status": "PASS",
+          "name": "material insight panels visible",
+          "detail": "{\"x\":123,\"y\":947,\"width\":1180,\"height\":384,\"display\":\"grid\",\"visibility\":\"visible\",\"opacity\":1}"
+        },
+        {
+          "status": "PASS",
+          "name": "drawing cards rendered",
+          "detail": "5"
+        },
+        {
+          "status": "PASS",
+          "name": "surroundings cards rendered",
+          "detail": "6"
+        },
+        {
+          "status": "PASS",
+          "name": "media/view slots rendered",
+          "detail": "3 slots, 3 pending"
+        },
+        {
+          "status": "PASS",
+          "name": "view layer stays user-opened/lazy",
+          "detail": "true"
         }
       ]
     },
@@ -131,7 +176,7 @@
         ],
         "stageRect": {
           "x": 12,
-          "y": 247,
+          "y": 126,
           "width": 366,
           "height": 620,
           "display": "flex",
@@ -140,7 +185,7 @@
         },
         "modelRect": {
           "x": 13,
-          "y": 248,
+          "y": 127,
           "width": 364,
           "height": 430,
           "display": "block",
@@ -153,7 +198,22 @@
         "visibleHotspots": 6,
         "smallTargets": [],
         "errors": [],
-        "bodyHasFatal": false
+        "bodyHasFatal": false,
+        "dataReady": true,
+        "insightsRect": {
+          "x": 12,
+          "y": 762,
+          "width": 366,
+          "height": 1016,
+          "display": "grid",
+          "visibility": "visible",
+          "opacity": 1
+        },
+        "drawingCards": 5,
+        "environmentCards": 6,
+        "mediaSlots": 3,
+        "pendingMediaSlots": 3,
+        "viewLayerUserOpenOnly": true
       },
       "interaction": {
         "attempted": true,
@@ -186,7 +246,7 @@
         {
           "status": "PASS",
           "name": "model-viewer visible area",
-          "detail": "{\"x\":13,\"y\":248,\"width\":364,\"height\":430,\"display\":\"block\",\"visibility\":\"visible\",\"opacity\":1}"
+          "detail": "{\"x\":13,\"y\":127,\"width\":364,\"height\":430,\"display\":\"block\",\"visibility\":\"visible\",\"opacity\":1}"
         },
         {
           "status": "PASS",
@@ -222,6 +282,36 @@
           "status": "PASS",
           "name": "no visible fatal text",
           "detail": "none"
+        },
+        {
+          "status": "PASS",
+          "name": "CMS-backed preview data loaded",
+          "detail": "true"
+        },
+        {
+          "status": "PASS",
+          "name": "material insight panels visible",
+          "detail": "{\"x\":12,\"y\":762,\"width\":366,\"height\":1016,\"display\":\"grid\",\"visibility\":\"visible\",\"opacity\":1}"
+        },
+        {
+          "status": "PASS",
+          "name": "drawing cards rendered",
+          "detail": "5"
+        },
+        {
+          "status": "PASS",
+          "name": "surroundings cards rendered",
+          "detail": "6"
+        },
+        {
+          "status": "PASS",
+          "name": "media/view slots rendered",
+          "detail": "3 slots, 3 pending"
+        },
+        {
+          "status": "PASS",
+          "name": "view layer stays user-opened/lazy",
+          "detail": "true"
         }
       ]
     }

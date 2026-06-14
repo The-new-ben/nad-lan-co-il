@@ -279,6 +279,10 @@ headless Chrome or Edge, and checks desktop 1440px plus mobile 390px:
 - six hotspots present,
 - visible hotspot targets at least 44px,
 - hotspot click updates the readout,
+- drawings and plans panel renders from `drawings.json`,
+- surroundings panel renders from `environment.json`,
+- media/view slots render from `project-meta-example.json` and remain honest when pending,
+- view-layer policy is user-opened/lazy according to `view-layer-config.json`,
 - no browser errors or visible fatal text.
 
 Current evidence:
