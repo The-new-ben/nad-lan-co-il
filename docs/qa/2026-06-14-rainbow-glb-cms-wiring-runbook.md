@@ -284,10 +284,13 @@ must not be used as a live CMS URL strategy.
 After the plugin stack is deployed through v1.63.4 and before applying the Rainbow CMS payload, run:
 
 ```powershell
+python scripts\check-rainbow-deploy-sequence.py
 python scripts\check-rainbow-showroom-readiness.py --require-plugin-stack
 ```
 
-This must pass:
+The deploy-sequence checker shows exactly whether the blocker is an unmerged branch, an outdated
+live plugin, a missing healthcheck marker, or `projects_with_glb=0`. Then the readiness checker must
+pass:
 
 - live plugin version at least `1.63.4`,
 - `project_3d.unit_meta_rest=true` from v1.63.2,

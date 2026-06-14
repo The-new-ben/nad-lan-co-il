@@ -175,6 +175,15 @@ python scripts\apply-rainbow-cms-payload.py --project-slug <latin-slug> --post-i
 In `--apply` mode, it must prove the live plugin stack is ready before asking for WordPress
 credentials. Do not bypass that preflight for a final public page.
 
+When there is confusion about what has actually merged or deployed, run:
+
+```powershell
+python scripts\check-rainbow-deploy-sequence.py
+```
+
+The deploy-sequence checker is read-only. It should name the exact gap: stack branches not merged
+to `main`, live healthcheck version too old, missing feature markers, or `projects_with_glb=0`.
+
 After writing, the helper must verify the REST response, not only trust that the request succeeded:
 exact GLB/poster/model values, drawing/environment counts, and, when unit REST support is live, unit
 count plus unit ids. A mismatch means the project is not CMS-wired yet.
