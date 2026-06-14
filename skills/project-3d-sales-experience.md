@@ -396,3 +396,18 @@ For every cloned project, verify:
   stable `id` should resolve to an empty string instead of preserving junk.
 - Asset handoff scripts may write `project_3d_units` only after the target site proves this
   healthcheck flag. Before that, scripts must stay dry-run/manual for unit data.
+
+### v1.63.3 Contact Rail Gate
+
+- A project showroom is an app surface. Fixed WhatsApp, call, accessibility and AI controls must
+  not sit as wide blocks over the model, toolbar, hotspot layer or selected-unit card.
+- While the showroom is visible, convert global floating controls into a compact edge rail with
+  preserved tap targets, keyboard focus, safe-area offsets, and hover/focus labels.
+- Do not remove lead capture. The rail may become visually quiet during model interaction, but it
+  must remain reachable and must return to the normal sitewide behavior when the user scrolls away
+  from the showroom.
+- Use `IntersectionObserver` or an equivalent viewport-aware state instead of permanently hiding
+  contact controls on project pages.
+- The clone gate for every future project page: 1440px and 390px screenshots must show the central
+  building/model unobstructed by global floating widgets, with no horizontal overflow and no
+  control smaller than 44px.
