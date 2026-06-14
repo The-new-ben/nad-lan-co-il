@@ -26,6 +26,9 @@ registered as REST meta.
   `assets/projects/rainbow-tel-aviv/showroom-payload.json`.
 - The payload contains 17 allowed `meta` fields, 6 unit records, 6 drawing records, GLB URL,
   poster URL, surroundings JSON and no unknown showroom fields.
+- `node scripts/import-project-showroom-payload.mjs --post-id 4464 --payload assets/projects/rainbow-tel-aviv/showroom-payload.json --dry-run`
+  validates the payload and refuses live write attempts when the healthcheck is below `1.65.2`
+  or the payload route marker is missing.
 - ZIP root is `nadlan-config/`.
 - ZIP has zero backslash paths.
 - Package contains:
@@ -43,5 +46,7 @@ After the plugin update:
 1. Healthcheck reports `version: 1.65.2`.
 2. `project_3d.showroom_payload_api_v1652` is true.
 3. Authenticated GET for Rainbow returns meta and `units_count`.
-4. Authenticated POST with a harmless test field updates that field and returns `updated_n`.
+4. Authenticated POST can be run through:
+   `node scripts/import-project-showroom-payload.mjs --site https://nad-lan.co.il --post-id 4464 --payload assets/projects/rainbow-tel-aviv/showroom-payload.json --apply`.
+   The script must return `updated_n`, `after_units: 6` and `after_has_glb: true`.
 5. Public Rainbow page still renders and uses the saved fields.

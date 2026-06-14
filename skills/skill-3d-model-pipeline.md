@@ -204,6 +204,9 @@ manually. The canonical contract is:
 - Every project asset folder should have a generated `showroom-payload.json` built by
   `node scripts/build-project-showroom-payload.mjs <project-slug> --write`. This file is the
   single handoff from research/modeling into the CMS and must validate before WordPress import.
+- Apply the payload with `scripts/import-project-showroom-payload.mjs` only after live healthcheck
+  proves the plugin version and payload route marker are ready. The script must use environment
+  variables for WordPress application-password auth and must not store secrets in the repo.
 
 `project_3d_drawings_json` may be either a flat array of material items or an object with an
 `items` array. `project_3d_environment_json` may be a flat array or a structured object with

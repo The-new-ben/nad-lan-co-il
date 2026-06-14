@@ -28,6 +28,7 @@ Run:
 python scripts/generate-rainbow-prototype-model.py
 node -e "const fs=require('fs'); const b=fs.readFileSync('assets/projects/rainbow-tel-aviv/model.glb'); console.log(b.subarray(0,4).toString(), b.readUInt32LE(4), b.readUInt32LE(8), b.length)"
 node scripts/build-project-showroom-payload.mjs rainbow-tel-aviv --write
+node scripts/import-project-showroom-payload.mjs --post-id 4464 --payload assets/projects/rainbow-tel-aviv/showroom-payload.json --dry-run
 ```
 
 Expected:
@@ -48,6 +49,8 @@ Expected:
   pin for items that still need a precise verified coordinate.
 - `showroom-payload.json` validates with 17 `meta` fields, 6 demo units, GLB URL, poster URL,
   drawings JSON and environment JSON.
+- Dry run returns the live plugin version and refuses to proceed as a write unless the live
+  healthcheck is at least `1.65.2` and exposes `project_3d.showroom_payload_api_v1652`.
 
 ## Browser Gate After The Full v1.63.4 Stack Is Installed
 

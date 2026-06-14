@@ -269,6 +269,40 @@ Rainbow reference payload:
 
 `assets/projects/rainbow-tel-aviv/showroom-payload.json`
 
+### Safe Import Command
+
+After the live plugin update shows `version: 1.65.2` or higher in the healthcheck, use the import
+script to validate or apply the payload.
+
+Dry run, no write:
+
+```powershell
+node scripts/import-project-showroom-payload.mjs `
+  --site https://nad-lan.co.il `
+  --post-id 4464 `
+  --payload assets/projects/rainbow-tel-aviv/showroom-payload.json `
+  --dry-run
+```
+
+Apply, requires a WordPress application password in environment variables:
+
+```powershell
+$env:WP_USER='your-wp-user'
+$env:WP_APP_PASSWORD='your-application-password'
+node scripts/import-project-showroom-payload.mjs `
+  --site https://nad-lan.co.il `
+  --post-id 4464 `
+  --payload assets/projects/rainbow-tel-aviv/showroom-payload.json `
+  --apply
+```
+
+The script refuses to write when:
+
+- live healthcheck is below `1.65.2`;
+- `project_3d.showroom_payload_api_v1652` is missing;
+- `WP_USER` or `WP_APP_PASSWORD` is missing;
+- the payload does not match the allowed showroom field contract.
+
 ## Classic Editor Question
 
 Classic Editor can make old metaboxes easier to see, but it should not be the long-term answer.
