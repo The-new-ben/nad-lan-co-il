@@ -15,6 +15,11 @@ plain WordPress article.
    count. Truth-first is part of the NadLan brand.
 5. Do not publish paid-source rows or subscription-only data until the owner approves the license
    and public wording.
+6. Before writing the short intro above the model, read the first organic result snippets and
+   extract the language users and competitors already recognize. For Rainbow this means:
+   `Rainbow Tel Aviv`, `ריינבו תל אביב`, `שדה דב`, `ישראל קנדה`, `דירות`, `מחיר`, `זמינות`,
+   `ריזורט מגורים`, `קרוב לים`, and amenities language. Use those naturally, not as a keyword
+   list.
 
 ## B. Page Assembly
 
@@ -64,6 +69,11 @@ plain WordPress article.
    - project average per sqm estimate,
    - or `לפי פנייה`.
    Anything estimated must say `אומדן` and `לא מחייב`.
+10. If a real GLB is loaded, the fallback procedural tower must disappear. Seeing both the old tower
+    and the GLB together is a hard visual failure. Keep the fallback only for `no model` or `model
+    error`.
+11. The model should open close enough for unit selection and rotate slowly. Fast spin, wide camera
+    and tiny markers make the experience feel like a technical demo instead of a buyer showroom.
 
 ## C2. Product Showroom Fields
 

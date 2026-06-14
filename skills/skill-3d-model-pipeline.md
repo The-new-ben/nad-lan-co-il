@@ -68,6 +68,20 @@ Project fields:
 - `project_3d_tour_url`: interior or apartment tour.
 - `project_3d_cesium_tiles_url`: future approved 3D Tiles/environment layer.
 
+## Runtime Display Rules
+
+- Load `model-viewer` as an ES module with a `script_loader_tag` filter. A plain script tag breaks
+  model-viewer 4.x because the browser sees `export` in a classic script.
+- Use `reveal="auto"` and a poster image so the buyer sees the building without first clicking a
+  blank frame.
+- When the GLB `load` event fires, hide the procedural tower, facade, sea, runway and horizon
+  layers completely. They are fallback layers only. If the GLB errors, show the fallback again.
+- Start the camera close enough for apartment picking: narrow field of view, gentle auto-rotate,
+  and a target near the occupied floors. Avoid fast spinning because it reads like a demo, not a
+  sales showroom.
+- Apartment markers must be status-coded and usable before the user opens any side panel:
+  available, reserved, sold and recommended states are part of the model contract.
+
 Unit JSON fields:
 
 - `id`
