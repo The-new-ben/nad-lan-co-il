@@ -199,6 +199,15 @@ python scripts\project-showroom-go-live.py --project-slug <latin-slug> --post-id
 The first command is read-only and must pass before the second is allowed. The second command still
 does not merge, deploy, clear cache or invent credentials; it only writes CMS meta after the live
 plugin stack and remote assets are proven, then runs the finish-line browser gate.
+When the project asset package is on a feature branch, include it explicitly:
+
+```powershell
+python scripts\project-showroom-go-live.py --project-slug <latin-slug> --post-id <project-id> --asset-branch origin/codex/<project-asset-branch>
+```
+
+The deploy checker is project-slug aware and checks `assets/projects/<latin-slug>/model.glb` on
+`origin/main`, so the same command can be used for the next Israeli project instead of carrying a
+Rainbow-specific asset path.
 
 ## Page Assembly And SEO Gate
 

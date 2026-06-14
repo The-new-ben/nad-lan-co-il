@@ -233,6 +233,14 @@ deployed, it should stop passing, and the normal preflight/apply path above beco
 The deploy-sequence checker is squash-aware: it accepts either branch ancestry or the expected
 marker/file on `origin/main`, because GitHub squash merges do not leave the feature branch commit as
 a direct ancestor of main.
+For future projects, pass the project slug and that project's asset branch:
+
+```powershell
+python scripts\project-showroom-go-live.py --project-slug <latin-slug> --post-id <project-id> --asset-branch origin/codex/<project-asset-branch>
+```
+
+The checker then looks for `assets/projects/<latin-slug>/model.glb` on `origin/main` instead of the
+Rainbow path, while keeping the same shared plugin-stack markers.
 
 ## Readiness Check
 

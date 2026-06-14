@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Report the exact deploy sequence state for the Rainbow showroom stack.
+"""Report the exact deploy sequence state for a project showroom stack.
 
 This is a read-only coordination gate. It answers the practical question:
 "What still has to merge/deploy before the GLB CMS payload can be applied?"
@@ -19,6 +19,8 @@ from typing import Any
 
 ROOT = Path(__file__).resolve().parents[1]
 DEFAULT_BASE_URL = "https://nad-lan.co.il"
+DEFAULT_PROJECT_SLUG = "rainbow-tel-aviv"
+DEFAULT_ASSET_BRANCH = "origin/codex/rainbow-prototype-model-1631"
 REQUIRED_VERSION = (1, 63, 4)
 
 
@@ -38,7 +40,7 @@ class StackBranch:
     main_pattern: str | None = None
 
 
-STACK_BRANCHES = [
+PLUGIN_STACK_BRANCHES = [
     StackBranch(
         "1.63.2",
         "origin/codex/rainbow-cms-units-rest-1632",
@@ -59,12 +61,6 @@ STACK_BRANCHES = [
         "project_page_assembly.rainbow_seo_v1634",
         "plugins/nadlan-config/inc/project-page-assembly.php",
         "rainbow_seo_v1634",
-    ),
-    StackBranch(
-        "GLB assets",
-        "origin/codex/rainbow-prototype-model-1631",
-        "project_3d.projects_with_glb >= 1 after CMS apply",
-        "assets/projects/rainbow-tel-aviv/model.glb",
     ),
 ]
 
@@ -126,7 +122,19 @@ def main_marker_present(ref: str, path: str, pattern: str | None = None) -> bool
     return result.returncode == 0
 
 
-def status_rows(base_url: str, should_fetch: bool, main_ref: str) -> list[Row]:
+def stack_branches(project_slug: str, asset_branch: str) -> list[StackBranch]:
+    return [
+        *PLUGIN_STACK_BRANCHES,
+        StackBranch(
+            "GLB assets",
+            asset_branch,
+            "project_3d.projects_with_glb >= 1 after CMS apply",
+            f"assets/projects/{project_slug}/model.glb",
+        ),
+    ]
+
+
+def status_rows(base_url: str, should_fetch: bool, main_ref: str, project_slug: str, asset_branch: str) -> list[Row]:
     rows: list[Row] = []
     if should_fetch:
         result = run_git(["fetch", "origin", "main", "--prune"])
@@ -136,7 +144,7 @@ def status_rows(base_url: str, should_fetch: bool, main_ref: str) -> list[Row]:
     main_sha = git_ref(main_ref)
     rows.append(Row("PASS" if main_sha else "FAIL", main_ref, main_sha[:12] if main_sha else "missing"))
 
-    for item in STACK_BRANCHES:
+    for item in stack_branches(project_slug, asset_branch):
         sha = git_ref(item.branch)
         if not sha:
             rows.append(Row("FAIL", f"{item.label} branch", f"{item.branch} missing locally; run git fetch --all"))
@@ -198,8 +206,8 @@ def status_rows(base_url: str, should_fetch: bool, main_ref: str) -> list[Row]:
     return rows
 
 
-def print_rows(rows: list[Row]) -> None:
-    print("# Rainbow deploy sequence status")
+def print_rows(rows: list[Row], project_slug: str) -> None:
+    print(f"# Project showroom deploy sequence status: {project_slug}")
     print()
     for row in rows:
         print(f"[{row.status}] {row.name}: {row.detail}")
@@ -215,6 +223,8 @@ def print_rows(rows: list[Row]) -> None:
 def main() -> int:
     parser = argparse.ArgumentParser()
     parser.add_argument("--base-url", default=DEFAULT_BASE_URL)
+    parser.add_argument("--project-slug", default=DEFAULT_PROJECT_SLUG)
+    parser.add_argument("--asset-branch", default=DEFAULT_ASSET_BRANCH)
     parser.add_argument("--fetch", action="store_true", help="Fetch origin/main before checking local remote refs.")
     parser.add_argument("--main-ref", default="origin/main", help="Remote main ref to inspect. Defaults to origin/main.")
     parser.add_argument(
@@ -224,8 +234,8 @@ def main() -> int:
     )
     args = parser.parse_args()
 
-    rows = status_rows(args.base_url, args.fetch, args.main_ref)
-    print_rows(rows)
+    rows = status_rows(args.base_url, args.fetch, args.main_ref, args.project_slug, args.asset_branch)
+    print_rows(rows, args.project_slug)
     blocked = any(row.status in {"FAIL", "BLOCKED"} for row in rows)
     if args.expect_incomplete:
         return 0 if blocked else 2

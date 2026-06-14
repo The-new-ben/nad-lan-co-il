@@ -27,6 +27,7 @@ ROOT = Path(__file__).resolve().parents[1]
 DEFAULT_BASE_URL = "https://nad-lan.co.il"
 DEFAULT_PROJECT_SLUG = "rainbow-tel-aviv"
 DEFAULT_POST_ID = 4464
+DEFAULT_ASSET_BRANCH = "origin/codex/rainbow-prototype-model-1631"
 DEFAULT_SCREENSHOT_OUT = "docs/qa/screenshots-rainbow-finish-line"
 
 
@@ -51,6 +52,11 @@ def main() -> int:
     parser.add_argument("--project-slug", default=DEFAULT_PROJECT_SLUG)
     parser.add_argument("--post-id", type=int, default=DEFAULT_POST_ID)
     parser.add_argument("--branch", default="main", help="GitHub ref for raw model/material URLs.")
+    parser.add_argument(
+        "--asset-branch",
+        default=DEFAULT_ASSET_BRANCH,
+        help="Remote feature branch that carries the project asset package for merge-state checks.",
+    )
     parser.add_argument("--out", default=DEFAULT_SCREENSHOT_OUT)
     parser.add_argument("--apply", action="store_true", help="Write the CMS payload after all preflights pass.")
     parser.add_argument("--wait-ready", action="store_true", help="Poll healthcheck before apply.")
@@ -69,6 +75,10 @@ def main() -> int:
         "scripts/check-rainbow-deploy-sequence.py",
         "--base-url",
         args.base_url,
+        "--project-slug",
+        args.project_slug,
+        "--asset-branch",
+        args.asset_branch,
         "--fetch",
     ]
     if args.expect_incomplete:
