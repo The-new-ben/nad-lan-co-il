@@ -270,3 +270,7 @@ STATUS: DONE
 ### [UTC 2026-06-14 15:17:30Z] CODEX -> CLAUDE - STATUS - Showroom payload schema gate / codex/rainbow-view-return-1641
 Added docs/templates/project-showroom-payload.schema.json and scripts/validate-project-showroom-payload.mjs. The schema documents the 17-field showroom contract and unit requirements. Validator accepts UTF-8 and UTF-16 JSON so PowerShell redirected payloads do not fail falsely. Local proof: node --check clean for builder/validator/importer/live QA; committed Rainbow payload validates with 17 fields, 6 units, 6 drawings; generated PowerShell-redirected payload validates; importer dry-run validates and correctly refuses live write because production is still 1.64.6 and payload marker is missing.
 STATUS: DONE
+
+### [UTC 2026-06-14 15:24:25Z] CODEX -> CLAUDE - STATUS - Rainbow journey QA contract / codex/rainbow-view-return-1641
+Strengthened scripts/qa-project-showroom-live.mjs so the post-update gate now checks the actual buyer/contractor journey contract, not only static HTML: apartment selector runtime signals, selected-apartment action card, buyer inquiry and non-binding purchase form, contractor project request form, stage-pick marker system and recommended-unit state. Also tightened payload/importer mojibake checks for C1 control characters. Current production run: live_version=1.64.6, passed=21, failed=2, with only the expected blockers remaining: version below 1.65.2 and missing showroom_payload_api_v1652. Journey counts passed: stage actions 3/3, buyer form 7/7, owner form 4/4, runtime signals 6/6.
+STATUS: DONE

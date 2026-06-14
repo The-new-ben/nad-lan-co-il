@@ -122,6 +122,10 @@ function scriptTagForModelViewer(html) {
   return scripts[0] || '';
 }
 
+function countMatches(html, re) {
+  return (String(html || '').match(re) || []).length;
+}
+
 function add(result, ok, name, detail = '') {
   result.checks.push({ ok, name, detail });
 }
@@ -148,6 +152,34 @@ async function main() {
   const h1s = h1sOf(html);
   const mvScript = scriptTagForModelViewer(html);
   const hotspotSlots = (html.match(/slot=["']hotspot-/g) || []).length;
+  const stageActionCount = [
+    'data-action="stage-details"',
+    'data-action="stage-view"',
+    'data-action="stage-inquiry"',
+  ].filter((needle) => html.includes(needle)).length;
+  const buyerFormFieldCount = [
+    'class="nlp3d-lead-form"',
+    'name="name"',
+    'name="phone"',
+    'name="budget"',
+    'name="timeline"',
+    'data-intent="purchase"',
+    'class="nlp3d-advisors"',
+  ].filter((needle) => html.includes(needle)).length;
+  const ownerFormFieldCount = [
+    'class="nlp3d-owner-form"',
+    'name="project_name"',
+    'name="city"',
+    'data-action="owner-showcase-request"',
+  ].filter((needle) => html.includes(needle)).length;
+  const journeyRuntimeSignals = [
+    'function renderStagePicks',
+    "className='nlp3d-stage-picks'",
+    'function renderStageCard',
+    'selectedTitle(activeUnit)',
+    'stageCard.dataset.status',
+    'data-unit',
+  ].filter((needle) => html.includes(needle)).length;
 
   result.page = {
     title,
@@ -156,6 +188,14 @@ async function main() {
     has_nlp3d: html.includes('nlp3d-premium'),
     has_model_viewer: html.includes('<model-viewer'),
     hotspot_slots: hotspotSlots,
+    journey_contract: {
+      stage_action_count: stageActionCount,
+      buyer_form_field_count: buyerFormFieldCount,
+      owner_form_field_count: ownerFormFieldCount,
+      runtime_signal_count: journeyRuntimeSignals,
+      stage_pick_css_mentions: countMatches(html, /nlp3d-stage-pick/g),
+      recommended_mentions: countMatches(html, /is-recommended/g),
+    },
   };
 
   add(result, h1s.length === 1, 'exactly one H1', `${h1s.length}: ${h1s.join(' | ')}`);
@@ -165,6 +205,12 @@ async function main() {
   add(result, /<model-viewer[\s\S]*\bloading=["']auto["']/i.test(html), 'model-viewer loading auto', 'loading="auto"');
   add(result, mvScript !== '' && /\btype=["']module["']/i.test(mvScript), 'model-viewer script is type module', mvScript || 'missing');
   add(result, hotspotSlots >= 3, 'model-viewer hotspots exist', `${hotspotSlots} hotspot slots`);
+  add(result, journeyRuntimeSignals >= 5, 'apartment selector runtime contract exists', `${journeyRuntimeSignals}/6 runtime signals`);
+  add(result, html.includes('nlp3d-stage-card') && stageActionCount === 3, 'selected apartment action card exists', `${stageActionCount}/3 stage actions`);
+  add(result, buyerFormFieldCount >= 7, 'buyer inquiry and non-binding purchase form exists', `${buyerFormFieldCount}/7 buyer form signals`);
+  add(result, ownerFormFieldCount >= 4, 'contractor project request form exists', `${ownerFormFieldCount}/4 owner form signals`);
+  add(result, countMatches(html, /nlp3d-stage-pick/g) >= 4, 'visible stage-pick marker system is present', `${countMatches(html, /nlp3d-stage-pick/g)} mentions`);
+  add(result, html.includes('is-recommended'), 'recommended apartment pulse state is present', 'is-recommended');
   add(result, title.includes('Rainbow') && title.includes('שדה דב'), 'SEO title has Rainbow and Sde Dov', title);
   add(result, /מחיר|מחירים|למכירה/.test(title), 'SEO title is transaction-led', title);
   add(result, description.includes('Rainbow') && description.includes('שדה דב'), 'meta description has Rainbow and Sde Dov', description);

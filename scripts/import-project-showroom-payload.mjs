@@ -132,6 +132,13 @@ function validatePayload(payload) {
   for (const key of ['project_model_glb', 'project_model_poster', 'project_model_usdz', 'project_3d_image', 'project_3d_video_url', 'project_3d_tour_url', 'project_3d_cesium_tiles_url']) {
     validateUrl(payload.meta[key], key, errors);
   }
+  const raw = JSON.stringify(payload);
+  if (!/[\u0590-\u05FF]/.test(raw)) errors.push('payload contains no Hebrew characters');
+  if (/[ï¿½]/.test(raw)) errors.push('payload contains Unicode replacement character');
+  if (/Ãƒ|Ã‚|Ã—/.test(raw)) errors.push('payload may contain mojibake markers');
+  if (/[\u0080-\u009F]/.test(raw)) errors.push('payload contains C1 control characters, often caused by mojibake');
+  if (/×[\u0080-\u009F]/.test(raw)) errors.push('payload contains Windows-1252-style Hebrew mojibake');
+  if (/\?\?\?\?/.test(raw)) errors.push('payload contains repeated question marks');
   return { errors, required };
 }
 

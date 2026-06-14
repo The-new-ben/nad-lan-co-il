@@ -34,6 +34,9 @@ registered as REST meta.
 - `node scripts/qa-project-showroom-live.mjs --site https://nad-lan.co.il --slug rainbow-tel-aviv --post-id 4464`
   checks the public page and reports the precise blockers before `--strict` is used in the
   post-deploy gate.
+  The public-page gate also verifies the buyer/contractor journey contract: stage apartment
+  actions, the selected-apartment card, the inquiry/purchase form, the contractor project request
+  form, the runtime stage-pick system and recommended-unit state.
 - ZIP root is `nadlan-config/`.
 - ZIP has zero backslash paths.
 - Package contains:
@@ -63,9 +66,11 @@ After the plugin update:
 On 2026-06-14, the live-readiness script ran against production and correctly reported:
 
 - live version: `1.64.6`
-- passed: 15
+- passed: 21
 - failed: 2
 - blockers: live plugin version below `1.65.2` and missing `showroom_payload_api_v1652`.
+- journey contract: stage actions `3/3`, buyer form `7/7`, owner form `4/4`, runtime signals
+  `6/6`, stage-pick mentions `38`, recommended-state mentions `4`.
 
 The H1 check ignores `script`, `style`, `noscript` and `template` blocks before counting visible
 headings. This prevents CSS comments that mention `<h1>` from becoming false duplicate-H1 failures.

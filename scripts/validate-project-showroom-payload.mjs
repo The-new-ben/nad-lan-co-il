@@ -158,6 +158,8 @@ function validatePayload(schema, payload) {
   if (!/[\u0590-\u05FF]/.test(raw)) errors.push('payload contains no Hebrew characters');
   if (/[�]/.test(raw)) errors.push('payload contains Unicode replacement character');
   if (/Ã|Â|×/.test(raw)) errors.push('payload may contain mojibake markers');
+  if (/[\u0080-\u009F]/.test(raw)) errors.push('payload contains C1 control characters, often caused by mojibake');
+  if (/×[\u0080-\u009F]/.test(raw)) errors.push('payload contains Windows-1252-style Hebrew mojibake');
   if (/\?\?\?\?/.test(raw)) errors.push('payload contains repeated question marks');
   return errors;
 }
