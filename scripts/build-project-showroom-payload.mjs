@@ -120,6 +120,7 @@ function buildPayload(slug) {
   });
 
   return {
+    $schema: 'docs/templates/project-showroom-payload.schema.json',
     schema: 'nadlan-project-showroom-payload/v1',
     project_slug: slug,
     post_id: Number(viewLayer.post_id || 0) || (slug === 'rainbow-tel-aviv' ? 4464 : 0),

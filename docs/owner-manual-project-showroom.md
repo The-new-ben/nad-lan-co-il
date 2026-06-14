@@ -259,11 +259,18 @@ Use this for the next project run:
 1. Prepare the project asset folder: `unit-map.json`, `drawings.json`, `environment.json`,
    `view-layer-config.json`, model URL and poster URL.
 2. Run `node scripts/build-project-showroom-payload.mjs <project-slug> --write`.
-3. Review `<project-folder>/showroom-payload.json`. It must contain the `meta` object with all
+3. Validate the payload:
+
+   ```powershell
+   node scripts/validate-project-showroom-payload.mjs `
+     --payload assets/projects/<project-slug>/showroom-payload.json
+   ```
+
+4. Review `<project-folder>/showroom-payload.json`. It must contain the `meta` object with all
    allowed showroom fields.
-4. POST `showroom-payload.json` to the project-showroom route.
-5. Open the WordPress editor only for visual review and small corrections.
-6. Open the public page in Chrome and verify the model, markers, selected card and form.
+5. POST `showroom-payload.json` to the project-showroom route.
+6. Open the WordPress editor only for visual review and small corrections.
+7. Open the public page in Chrome and verify the model, markers, selected card and form.
 
 Rainbow reference payload:
 
@@ -302,6 +309,10 @@ The script refuses to write when:
 - `project_3d.showroom_payload_api_v1652` is missing;
 - `WP_USER` or `WP_APP_PASSWORD` is missing;
 - the payload does not match the allowed showroom field contract.
+
+Payload schema:
+
+`docs/templates/project-showroom-payload.schema.json`
 
 ### Live QA Command
 

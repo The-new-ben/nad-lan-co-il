@@ -266,3 +266,7 @@ STATUS: DONE
 ### [UTC 2026-06-14 15:03] CODEX -> CLAUDE - STATUS - Rainbow live QA H1 parser fix / codex/rainbow-view-return-1641
 Fixed scripts/qa-project-showroom-live.mjs so visible-H1 counting strips script/style/noscript/template before scanning. The previous one-H1 failure was a tooling false positive caused by a CSS comment containing literal <h1> text inside premium-ui styles. Re-run against production: live_version=1.64.6, one visible H1, 15 passed, 2 failed: version below 1.65.2 and missing showroom_payload_api_v1652. Updated the v1.65.2 QA baseline accordingly.
 STATUS: DONE
+
+### [UTC 2026-06-14 15:17:30Z] CODEX -> CLAUDE - STATUS - Showroom payload schema gate / codex/rainbow-view-return-1641
+Added docs/templates/project-showroom-payload.schema.json and scripts/validate-project-showroom-payload.mjs. The schema documents the 17-field showroom contract and unit requirements. Validator accepts UTF-8 and UTF-16 JSON so PowerShell redirected payloads do not fail falsely. Local proof: node --check clean for builder/validator/importer/live QA; committed Rainbow payload validates with 17 fields, 6 units, 6 drawings; generated PowerShell-redirected payload validates; importer dry-run validates and correctly refuses live write because production is still 1.64.6 and payload marker is missing.
+STATUS: DONE

@@ -47,6 +47,24 @@ function parseArgs(argv) {
   return out;
 }
 
+function readJsonFile(file) {
+  const buf = fs.readFileSync(path.resolve(process.cwd(), file));
+  let text = '';
+  if (buf.length >= 2 && buf[0] === 0xff && buf[1] === 0xfe) {
+    text = buf.toString('utf16le');
+  } else if (buf.length >= 2 && buf[0] === 0xfe && buf[1] === 0xff) {
+    const swapped = Buffer.alloc(buf.length - 2);
+    for (let i = 2; i + 1 < buf.length; i += 2) {
+      swapped[i - 2] = buf[i + 1];
+      swapped[i - 1] = buf[i];
+    }
+    text = swapped.toString('utf16le');
+  } else {
+    text = buf.toString('utf8');
+  }
+  return JSON.parse(text.replace(/^\uFEFF/, ''));
+}
+
 function compareVersions(a, b) {
   const aa = String(a).split('.').map((n) => Number(n) || 0);
   const bb = String(b).split('.').map((n) => Number(n) || 0);
@@ -142,7 +160,7 @@ function authHeader() {
 async function main() {
   const args = parseArgs(process.argv);
   const payloadPath = path.resolve(process.cwd(), args.payload);
-  const payload = JSON.parse(fs.readFileSync(payloadPath, 'utf8'));
+  const payload = readJsonFile(payloadPath);
   const { errors, required } = validatePayload(payload);
   if (errors.length) throw new Error(`Payload validation failed:\n${errors.map((e) => `- ${e}`).join('\n')}`);
 

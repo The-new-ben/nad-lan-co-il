@@ -24,6 +24,8 @@ registered as REST meta.
 - Admin metabox script parses.
 - `node scripts/build-project-showroom-payload.mjs rainbow-tel-aviv --write` creates
   `assets/projects/rainbow-tel-aviv/showroom-payload.json`.
+- `node scripts/validate-project-showroom-payload.mjs --payload assets/projects/rainbow-tel-aviv/showroom-payload.json`
+  validates the payload against `docs/templates/project-showroom-payload.schema.json`.
 - The payload contains 17 allowed `meta` fields, 6 unit records, 6 drawing records, GLB URL,
   poster URL, surroundings JSON and no unknown showroom fields.
 - `node scripts/import-project-showroom-payload.mjs --post-id 4464 --payload assets/projects/rainbow-tel-aviv/showroom-payload.json --dry-run`

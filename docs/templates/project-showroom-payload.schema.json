@@ -1,0 +1,199 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://nad-lan.co.il/schemas/project-showroom-payload.schema.json",
+  "title": "NadLan Project Showroom Payload",
+  "type": "object",
+  "required": ["schema", "project_slug", "post_id", "meta"],
+  "additionalProperties": true,
+  "properties": {
+    "schema": {
+      "const": "nadlan-project-showroom-payload/v1"
+    },
+    "project_slug": {
+      "type": "string",
+      "minLength": 1,
+      "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"
+    },
+    "post_id": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "public_use_policy": {
+      "type": "string"
+    },
+    "generated_from": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "meta": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "project_3d_image",
+        "project_3d_viewbox",
+        "project_3d_floor_height_m",
+        "project_3d_ground_elevation_m",
+        "project_3d_avg_price_per_sqm",
+        "project_3d_price_source_note",
+        "project_3d_model_type",
+        "project_model_glb",
+        "project_model_usdz",
+        "project_model_poster",
+        "project_3d_video_url",
+        "project_3d_tour_url",
+        "project_3d_cesium_tiles_url",
+        "project_3d_drawings_json",
+        "project_3d_environment_json",
+        "project_3d_units",
+        "project_3d_demo"
+      ],
+      "properties": {
+        "project_3d_image": {
+          "type": "string"
+        },
+        "project_3d_viewbox": {
+          "type": "string"
+        },
+        "project_3d_floor_height_m": {
+          "type": ["string", "number"]
+        },
+        "project_3d_ground_elevation_m": {
+          "type": ["string", "number"]
+        },
+        "project_3d_avg_price_per_sqm": {
+          "type": ["string", "number"]
+        },
+        "project_3d_price_source_note": {
+          "type": "string"
+        },
+        "project_3d_model_type": {
+          "enum": ["procedural", "facade", "sprite360", "gltf", "bim"]
+        },
+        "project_model_glb": {
+          "type": "string"
+        },
+        "project_model_usdz": {
+          "type": "string"
+        },
+        "project_model_poster": {
+          "type": "string"
+        },
+        "project_3d_video_url": {
+          "type": "string"
+        },
+        "project_3d_tour_url": {
+          "type": "string"
+        },
+        "project_3d_cesium_tiles_url": {
+          "type": "string"
+        },
+        "project_3d_drawings_json": {
+          "type": ["array", "object"]
+        },
+        "project_3d_environment_json": {
+          "type": ["array", "object"]
+        },
+        "project_3d_units": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "$ref": "#/$defs/unit"
+          }
+        },
+        "project_3d_demo": {
+          "type": ["string", "number", "boolean"]
+        }
+      }
+    }
+  },
+  "$defs": {
+    "unit": {
+      "type": "object",
+      "required": ["id", "title", "floor", "rooms", "sqm", "status", "hotspot_position", "hotspot_normal"],
+      "additionalProperties": true,
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "title": {
+          "type": "string",
+          "minLength": 1
+        },
+        "floor": {
+          "type": ["integer", "number", "string"]
+        },
+        "rooms": {
+          "type": ["integer", "number", "string"]
+        },
+        "sqm": {
+          "type": ["integer", "number", "string"]
+        },
+        "balcony": {
+          "type": ["integer", "number", "string", "null"]
+        },
+        "dir": {
+          "type": "string"
+        },
+        "line": {
+          "type": "string"
+        },
+        "view": {
+          "type": "string"
+        },
+        "building": {
+          "type": "string"
+        },
+        "status": {
+          "enum": ["available", "reserved", "sold", "in_review", "demo", "unknown"]
+        },
+        "availability": {
+          "type": "string"
+        },
+        "price_estimate": {
+          "type": ["integer", "number", "string", "null"]
+        },
+        "price_note": {
+          "type": "string"
+        },
+        "price_source": {
+          "type": "string"
+        },
+        "source_note": {
+          "type": "string"
+        },
+        "plan": {
+          "type": "string"
+        },
+        "interior_url": {
+          "type": "string"
+        },
+        "tour_url": {
+          "type": "string"
+        },
+        "view_note": {
+          "type": "string"
+        },
+        "hotspot_position": {
+          "type": "string",
+          "pattern": "^-?\\d+(?:\\.\\d+)?\\s+-?\\d+(?:\\.\\d+)?\\s+-?\\d+(?:\\.\\d+)?$"
+        },
+        "hotspot_normal": {
+          "type": "string",
+          "pattern": "^-?\\d+(?:\\.\\d+)?\\s+-?\\d+(?:\\.\\d+)?\\s+-?\\d+(?:\\.\\d+)?$"
+        },
+        "camera_orbit": {
+          "type": "string"
+        },
+        "label": {
+          "type": "string"
+        },
+        "recommended": {
+          "type": ["boolean", "string", "number"]
+        }
+      }
+    }
+  }
+}

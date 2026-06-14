@@ -28,6 +28,7 @@ Run:
 python scripts/generate-rainbow-prototype-model.py
 node -e "const fs=require('fs'); const b=fs.readFileSync('assets/projects/rainbow-tel-aviv/model.glb'); console.log(b.subarray(0,4).toString(), b.readUInt32LE(4), b.readUInt32LE(8), b.length)"
 node scripts/build-project-showroom-payload.mjs rainbow-tel-aviv --write
+node scripts/validate-project-showroom-payload.mjs --payload assets/projects/rainbow-tel-aviv/showroom-payload.json
 node scripts/import-project-showroom-payload.mjs --post-id 4464 --payload assets/projects/rainbow-tel-aviv/showroom-payload.json --dry-run
 ```
 

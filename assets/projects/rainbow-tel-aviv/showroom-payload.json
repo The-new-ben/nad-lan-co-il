@@ -1,4 +1,5 @@
 {
+  "$schema": "docs/templates/project-showroom-payload.schema.json",
   "schema": "nadlan-project-showroom-payload/v1",
   "project_slug": "rainbow-tel-aviv",
   "post_id": 4464,
