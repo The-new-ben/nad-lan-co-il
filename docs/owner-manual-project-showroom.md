@@ -18,6 +18,25 @@ If the metabox is not visible, open the editor options and enable it:
 5. Turn on `בחירת דירות אינטראקטיבית` and `Custom Fields` / `שדות מיוחדים` if they appear.
 6. Scroll under the main editor. The metabox usually appears below the content area.
 
+## What The Public Page Should Show
+
+When a real GLB is configured, the buyer should see one clear building model, not the old schematic
+tower on top of it. The schematic tower is only a fallback for projects with no model or when the
+model fails to load.
+
+The first visible text above the showroom should be short and search-relevant: project name, city or
+district, developer, apartment availability, price estimate language, and a clear invitation to
+choose an apartment. For Rainbow, that means phrases such as `דירות למכירה ב-Rainbow Tel Aviv`,
+`שדה דב`, `ישראל קנדה`, `מחירים`, `זמינות`, and `בחירת דירה`.
+
+The buyer flow is:
+
+1. Read the short project intro.
+2. Open the model already close enough to see apartments.
+3. Tap or hover an apartment marker to preview the unit.
+4. Tap again or choose the unit to open the selected-apartment card.
+5. Continue to details, view from apartment, or developer contact.
+
 ## Fields
 
 ### Real 3D Model

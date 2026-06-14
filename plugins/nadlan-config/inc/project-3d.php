@@ -709,6 +709,14 @@ if ( ! function_exists( 'nadlan_p3d_render' ) ) {
 		ob_start();
 		?>
 <!-- nlp3d-start -->
+<section class="nadlan-guide nlp3d-intro" dir="rtl" aria-label="פתיחת תצוגת דירות">
+	<div class="wrap">
+		<span class="eyebrow">פרויקט חדש בשדה דב</span>
+		<h2>דירות למכירה ב-<bdi>Rainbow Tel Aviv</bdi> בשדה דב: מחירים, זמינות ובחירת דירה</h2>
+		<p>ריינבו תל אביב של <bdi>ישראל קנדה</bdi> הוא פרויקט מגורים יוקרתי במתחם אשכול ברובע שדה דב, עם מגדל מרכזי, בנייני בוטיק, קרבה לים ומתקני ריזורט. כאן בוחרים דירה על המודל לפי קומה, חדרים, כיוון ונוף, ורואים אומדן מחיר וזמינות לא מחייבים לפני פנייה ליזם.</p>
+		<p class="nlp3d-intro-cta"><a href="#nlp3d-stage" class="btn">בחרו דירה עכשיו</a></p>
+	</div>
+</section>
 <section class="nlp3d nlp3d-premium" dir="rtl" data-project="<?php echo esc_attr( $post_id ); ?>" aria-labelledby="<?php echo esc_attr( $uid ); ?>-title">
 	<div class="nlp3d-grid" aria-hidden="true"></div>
 	<div class="nlp3d-shell">
@@ -732,12 +740,12 @@ if ( ! function_exists( 'nadlan_p3d_render' ) ) {
 			<?php endif; ?>
 		</div>
 
-		<div class="nlp3d-stage-wrap">
+		<div class="nlp3d-stage-wrap" id="nlp3d-stage">
 			<div class="nlp3d-toolbar" aria-label="שליטה במודל">
-				<button type="button" class="nlp3d-angle is-active" data-angle="-32" data-action="angle-facade">חזית</button>
+				<button type="button" class="nlp3d-angle is-active" data-angle="-32" data-action="angle-facade">איפוס מבט</button>
 				<button type="button" class="nlp3d-angle" data-angle="0" data-action="angle-sea">ים</button>
 				<button type="button" class="nlp3d-angle" data-angle="32" data-action="angle-city">עיר</button>
-				<button type="button" class="nlp3d-orbit" data-orbit="1" data-action="orbit-building">סיבוב</button>
+				<button type="button" class="nlp3d-orbit" data-orbit="1" data-action="orbit-building">סובב מודל</button>
 				<button type="button" class="nlp3d-zoom" data-zoom="in" data-action="zoom-in">קרב</button>
 				<button type="button" class="nlp3d-zoom" data-zoom="out" data-action="zoom-out">הרחק</button>
 				<span class="nlp3d-drag-note">בחרו דירה על המגדל</span>
@@ -754,12 +762,12 @@ if ( ! function_exists( 'nadlan_p3d_render' ) ) {
 						loading="auto"
 						camera-controls
 						auto-rotate
-						auto-rotate-delay="2500"
-						rotation-per-second="18deg"
+						auto-rotate-delay="3500"
+						rotation-per-second="8deg"
 						min-camera-orbit="-Infinity 0deg auto"
 						max-camera-orbit="Infinity 180deg auto"
-						field-of-view="30deg"
-						camera-target="0m 68m 0m"
+						field-of-view="24deg"
+						camera-target="0m 56m 0m"
 						environment-image="neutral"
 						exposure="1.45"
 						shadow-intensity="1"
@@ -776,18 +784,28 @@ if ( ! function_exists( 'nadlan_p3d_render' ) ) {
 							if ( $hotspot_normal === '' ) {
 								$hotspot_normal = '0 0 1';
 							}
+							$unit_status       = sanitize_key( (string) ( $unit['status'] ?? 'available' ) );
+							$unit_status_label = nadlan_p3d_status_label( $unit_status );
 							$hotspot_title = $unit['title'] ? $unit['title'] : $unit['id'];
 							?>
 							<button
 								type="button"
-								class="nlp3d-mv-hotspot nlp3d-status-<?php echo esc_attr( $unit['status'] ?? 'available' ); ?><?php echo ! empty( $unit['recommended'] ) ? ' is-recommended' : ''; ?>"
+								class="nlp3d-mv-hotspot nlp3d-hotspot-hit nlp3d-status-<?php echo esc_attr( $unit_status ); ?> is-<?php echo esc_attr( $unit_status ); ?><?php echo ! empty( $unit['recommended'] ) ? ' is-recommended' : ''; ?>"
 								slot="<?php echo esc_attr( 'hotspot-' . sanitize_html_class( (string) $unit['id'] ) ); ?>"
 								data-position="<?php echo esc_attr( $hotspot_position ); ?>"
 								data-normal="<?php echo esc_attr( $hotspot_normal ); ?>"
 								data-visibility-attribute="visible"
-								data-unit="<?php echo esc_attr( $unit['id'] ); ?>">
+								data-unit="<?php echo esc_attr( $unit['id'] ); ?>"
+								aria-label="<?php echo esc_attr( sprintf( 'דירה %s, קומה %s, %s חדרים, %s', $unit['id'], $unit['floor'] ?? '', $unit['rooms'] ?? '', $unit_status_label ) ); ?>"
+								<?php echo $unit_status === 'sold' ? 'aria-disabled="true" tabindex="-1"' : ''; ?>>
 								<span class="nlp3d-hotspot-dot" aria-hidden="true"></span>
-								<span class="nlp3d-mv-label"><?php echo esc_html( $hotspot_title ); ?></span>
+								<span class="nlp3d-mv-label nlp3d-hotspot-tag"><?php echo esc_html( $hotspot_title ); ?></span>
+								<span class="nlp3d-hotspot-tip" role="tooltip">
+									<strong><?php echo esc_html( $hotspot_title ); ?> · <?php echo esc_html( $unit['rooms'] ?? '' ); ?> חד׳</strong>
+									<small><?php echo esc_html( $unit['sqm'] ?? '' ); ?> מ"ר · <?php echo esc_html( $unit['view'] ?? ( $unit['dir'] ?? '' ) ); ?></small>
+									<small><?php echo esc_html( $unit_status_label ); ?><?php echo ! empty( $unit['recommended'] ) ? ' · ' . esc_html( $unit['recommended_label'] ?? 'פופולרי' ) : ''; ?></small>
+									<?php if ( ! empty( $unit['price_estimate'] ) ) : ?><small class="nlp3d-price">אומדן <?php echo esc_html( (string) $unit['price_estimate'] ); ?> · לא מחייב</small><?php endif; ?>
+								</span>
 							</button>
 						<?php endforeach; ?>
 					</model-viewer>
@@ -816,6 +834,7 @@ if ( ! function_exists( 'nadlan_p3d_render' ) ) {
 				<p class="nlp3d-view-copy"></p>
 			</div>
 			<div class="nlp3d-stage-card" aria-live="polite" hidden>
+				<button type="button" class="nlp3d-stage-card-handle" aria-expanded="false" data-action="stage-card-expand"><span>פתחו את פרטי הדירה</span></button>
 				<span class="nlp3d-stage-kicker">הדירה שנבחרה</span>
 				<strong class="nlp3d-stage-card-title">בחרו דירה על הבניין</strong>
 				<small class="nlp3d-stage-card-meta">גררו לסיבוב, בחרו קומה והתקדמו רק כאשר הפרטים מתאימים.</small>
@@ -831,6 +850,12 @@ if ( ! function_exists( 'nadlan_p3d_render' ) ) {
 					<button type="button" class="nlp3d-stage-view-btn" data-action="stage-view">מבט מהדירה</button>
 					<button type="button" class="nlp3d-stage-inquiry" data-action="stage-inquiry">דברו עם היזם</button>
 				</div>
+				<nav class="nlp3d-stage-tabs" role="tablist" aria-label="מידע נוסף על הדירה">
+					<button type="button" role="tab" data-stage-tab="spec" aria-selected="true">פרטים</button>
+					<button type="button" role="tab" data-stage-tab="view" aria-selected="false">מבט מהדירה</button>
+					<button type="button" role="tab" data-stage-tab="sun" aria-selected="false">שמש</button>
+					<button type="button" role="tab" data-stage-tab="surroundings" aria-selected="false">סביבה</button>
+				</nav>
 			</div>
 		</div>
 
@@ -1339,6 +1364,8 @@ if ( ! function_exists( 'nadlan_p3d_inline_js' ) ) {
 		var stageCardStatus=root.querySelector('.nlp3d-stage-status');
 		var stageCardView=root.querySelector('.nlp3d-stage-view');
 		var stageCardNote=root.querySelector('.nlp3d-stage-card-note');
+		var stageCardHandle=root.querySelector('.nlp3d-stage-card-handle');
+		var stageTabs=[].slice.call(root.querySelectorAll('.nlp3d-stage-tabs [data-stage-tab]'));
 		var stageDetails=root.querySelector('.nlp3d-stage-details');
 		var stageViewBtn=root.querySelector('.nlp3d-stage-view-btn');
 		var stageInquiry=root.querySelector('.nlp3d-stage-inquiry');
@@ -1538,6 +1565,22 @@ if ( ! function_exists( 'nadlan_p3d_inline_js' ) ) {
 			if(id.indexOf('-w')>-1){return -112}
 			return 0;
 		}
+		function closeStagePickTips(except){
+			if(!stagePicks){return}
+			stagePicks.querySelectorAll('.nlp3d-stage-pick.is-open').forEach(function(node){
+				if(node!==except){node.classList.remove('is-open')}
+			});
+		}
+		function activateStagePick(button,u,source){
+			if(!button||!u||u.status==='sold'||button.getAttribute('aria-disabled')==='true'){
+				if(button){button.classList.remove('is-open')}
+				return;
+			}
+			closeStagePickTips(button);
+			button.classList.add('is-open');
+			track('stage_pick_preview',{unit:u.id,source:source||'stage-pick'});
+			selectUnit(u.id,source||'stage-pick');
+		}
 		function renderStagePicks(){
 			if(!stagePicks){return}
 			stagePicks.innerHTML='';
@@ -1548,14 +1591,19 @@ if ( ! function_exists( 'nadlan_p3d_inline_js' ) ) {
 				var top=Math.max(20,Math.min(76,77-(norm*56)));
 				var recommended=isRecommendedUnit(u);
 				var label=u.label||u.title||('קומה '+(u.floor||'-'));
+				var status=u.status||'available';
 				var b=document.createElement('button');
 				b.type='button';
-				b.className='nlp3d-stage-pick nlp3d-status-'+(u.status||'available')+(recommended?' is-recommended':'')+(activeUnit&&u.id===activeUnit.id?' is-active':'');
+				b.className='nlp3d-stage-pick nlp3d-status-'+status+' is-'+status+(recommended?' is-recommended':'')+(activeUnit&&u.id===activeUnit.id?' is-active':'');
 				b.dataset.unit=u.id;
 				b.dataset.action='select-unit-stage';
 				b.style.top=top+'%';
 				b.style.left='calc(50% + '+stagePickOffset(u)+'px)';
 				b.setAttribute('aria-label',selectedTitle(u)+' · '+stageTipText(u,meta));
+				if(status==='sold'){
+					b.setAttribute('aria-disabled','true');
+					b.setAttribute('tabindex','-1');
+				}
 				var hit=document.createElement('span');
 				hit.className='nlp3d-hotspot-hit';
 				hit.setAttribute('aria-hidden','true');
@@ -1572,12 +1620,27 @@ if ( ! function_exists( 'nadlan_p3d_inline_js' ) ) {
 				text.appendChild(small);
 				var tip=document.createElement('span');
 				tip.className='nlp3d-hotspot-tip';
-				tip.textContent=label+' · '+stageTipText(u,meta);
+				var tipTitle=document.createElement('strong');
+				var tipMeta=document.createElement('small');
+				var tipStatus=document.createElement('small');
+				tipTitle.textContent=label+' · '+(u.rooms?u.rooms+' חד׳':'דירה');
+				tipMeta.textContent=(u.sqm?fmt(u.sqm)+' מ"ר · ':'')+(u.view||u.dir||'מבט לפי כיוון');
+				tipStatus.textContent=statusLabel(status)+(recommended?' · '+(u.recommended_label||'פופולרי'):'');
+				tip.appendChild(tipTitle);
+				tip.appendChild(tipMeta);
+				tip.appendChild(tipStatus);
+				var priceInfo=unitPriceInfo(u,meta);
+				if(priceInfo&&priceInfo.kind!=='empty'){
+					var tipPrice=document.createElement('small');
+					tipPrice.className='nlp3d-price';
+					tipPrice.textContent=priceInfo.text+' · לא מחייב';
+					tip.appendChild(tipPrice);
+				}
 				b.appendChild(hit);
 				b.appendChild(dot);
 				b.appendChild(text);
 				b.appendChild(tip);
-				b.addEventListener('click',function(e){e.preventDefault();e.stopPropagation();if(Date.now()<suppressUnitClickUntil){return}selectUnit(u.id,'stage-pick')});
+				b.addEventListener('click',function(e){e.preventDefault();e.stopPropagation();if(Date.now()<suppressUnitClickUntil){return}activateStagePick(b,u,'stage-pick')});
 				stagePicks.appendChild(b);
 			});
 		}
@@ -1786,18 +1849,32 @@ if ( ! function_exists( 'nadlan_p3d_inline_js' ) ) {
 			wdots.forEach(function(d,i){d.classList.toggle('is-on',i<n)});
 		}
 		function renderSelectionDock(){
-			if(!activeUnit||!dockTitle){return}
-			dockTitle.textContent=selectedTitle(activeUnit);
+			if(!activeUnit){return}
+			if(dockTitle){dockTitle.textContent=selectedTitle(activeUnit)}
 			if(dockMeta){
 				var metaText=unitText(activeUnit);
 				dockMeta.textContent=(metaText?metaText+' · ':'')+statusLabel(activeUnit.status);
 			}
 			renderStageCard();
 		}
+		function setStageCardExpanded(expanded){
+			if(!stageCard){return}
+			stageCard.classList.toggle('is-expanded',!!expanded);
+			if(stageCardHandle){stageCardHandle.setAttribute('aria-expanded',expanded?'true':'false')}
+		}
+		function syncStageTabs(active){
+			var tab=active||activeTool||'spec';
+			stageTabs.forEach(function(btn){
+				var on=btn.dataset.stageTab===tab;
+				btn.classList.toggle('is-active',on);
+				btn.setAttribute('aria-selected',on?'true':'false');
+			});
+		}
 		function renderStageCard(){
 			if(!stageCard||!activeUnit){return}
 			stageCard.hidden=!hasStageSelection;
 			if(stageWrap){stageWrap.classList.toggle('has-stage-selection',hasStageSelection)}
+			root.classList.toggle('has-stage-selection',hasStageSelection);
 			if(!hasStageSelection){return}
 			stageCard.dataset.status=activeUnit.status||'available';
 			stageCard.dataset.recommended=isRecommendedUnit(activeUnit)?'1':'0';
@@ -1826,6 +1903,7 @@ if ( ! function_exists( 'nadlan_p3d_inline_js' ) ) {
 			}
 			if(stageCardView){stageCardView.textContent=activeUnit.view||activeUnit.dir||'מבט לפי כיוון'}
 			if(stageCardNote){stageCardNote.textContent=unitBuyerNote(activeUnit,meta)}
+			syncStageTabs(activeTool);
 		}
 		function renderDetail(){
 			if(!activeUnit){return}
@@ -2033,7 +2111,7 @@ if ( ! function_exists( 'nadlan_p3d_inline_js' ) ) {
 			scene.style.setProperty('--model-zoom',currentZoom);
 			scene.classList.toggle('is-zoomed',currentZoom>1.04);
 			if(modelViewer){
-				modelViewer.setAttribute('field-of-view',Math.round(30/currentZoom)+'deg');
+				modelViewer.setAttribute('field-of-view',Math.round(24/currentZoom)+'deg');
 			}
 		}
 		function selectFloor(f){
@@ -2050,6 +2128,7 @@ if ( ! function_exists( 'nadlan_p3d_inline_js' ) ) {
 			var next=unitById(id);
 			if(next){activeUnit=next;activeFloor=parseInt(next.floor||activeFloor,10)}
 			hasStageSelection=!!next||hasStageSelection;
+			closeStagePickTips();
 			renderAll(false);
 			syncModelViewerCamera();
 			if(activeUnit){storageSet(storeKey+'-unit',activeUnit.id)}
@@ -2130,6 +2209,33 @@ if ( ! function_exists( 'nadlan_p3d_inline_js' ) ) {
 				track('stage_inquiry',{unit:activeUnit&&activeUnit.id});
 			});
 		}
+		if(stageCardHandle){
+			stageCardHandle.addEventListener('click',function(e){
+				e.preventDefault();
+				e.stopPropagation();
+				var next=!stageCard.classList.contains('is-expanded');
+				setStageCardExpanded(next);
+				track('stage_card_sheet',{expanded:next,unit:activeUnit&&activeUnit.id});
+			});
+		}
+		stageTabs.forEach(function(btn){
+			btn.addEventListener('click',function(e){
+				e.preventDefault();
+				e.stopPropagation();
+				var tab=btn.dataset.stageTab||'spec';
+				if(tab==='view'){
+					setLiveView(true,'stage-tab');
+				}else{
+					setLiveView(false,'stage-tab');
+					activeTool=tab;
+					toolButtons.forEach(function(x){x.classList.toggle('is-active',x.dataset.tool===tab)});
+					renderToolPanel();
+				}
+				syncStageTabs(tab);
+				setStageCardExpanded(true);
+				track('stage_card_tab',{tab:tab,unit:activeUnit&&activeUnit.id});
+			});
+		});
 		if(viewToggle&&viewFrame){
 			viewToggle.addEventListener('click',function(){
 				setLiveView(viewFrame.hidden,'toggle');
@@ -2140,6 +2246,7 @@ if ( ! function_exists( 'nadlan_p3d_inline_js' ) ) {
 				e.preventDefault();
 				e.stopPropagation();
 				if(Date.now()<suppressUnitClickUntil){return}
+				if(h.getAttribute('aria-disabled')==='true'){return}
 				selectUnit(h.dataset.unit,'model-viewer-hotspot');
 			});
 		});
@@ -2195,7 +2302,7 @@ if ( ! function_exists( 'nadlan_p3d_inline_js' ) ) {
 			ov.addEventListener('click',function(e){if(e.target===ov){closeCompare();closePlan()}});
 		});
 		document.addEventListener('keydown',function(e){
-			if(e.key==='Escape'){closeCompare();closePlan()}
+			if(e.key==='Escape'){closeCompare();closePlan();closeStagePickTips();setStageCardExpanded(false)}
 		});
 		if(plan){
 			plan.addEventListener('click',function(e){
@@ -2210,6 +2317,7 @@ if ( ! function_exists( 'nadlan_p3d_inline_js' ) ) {
 				activeTool=b.dataset.tool||'spec';
 				toolButtons.forEach(function(x){x.classList.toggle('is-active',x===b)});
 				renderToolPanel();
+				syncStageTabs(activeTool);
 				track('tool_panel',{tool:activeTool,unit:activeUnit&&activeUnit.id});
 			});
 		});
@@ -2374,7 +2482,7 @@ add_action(
 			return;
 		}
 
-		wp_register_style( 'nadlan-p3d', '', array(), '1.65.2' );
+		wp_register_style( 'nadlan-p3d', '', array(), '1.65.3' );
 		wp_enqueue_style( 'nadlan-p3d' );
 		wp_add_inline_style( 'nadlan-p3d', nadlan_p3d_inline_css() );
 		wp_add_inline_style( 'nadlan-p3d', '.nlp3d-drag-note{display:inline-flex;align-items:center;min-height:44px;color:rgba(246,239,226,.72);font-size:12px;padding:0 6px}.nlp3d-scene{touch-action:none;cursor:grab}.nlp3d-scene.is-dragging{cursor:grabbing}.nlp3d-actions{grid-template-columns:1fr}.nlp3d-view-toggle{margin-top:12px;border:1px solid rgba(234,216,163,.36);background:rgba(255,255,255,.06);color:#ffe8a6;padding:9px 12px;cursor:pointer}.nlp3d-view-toggle.is-active{background:rgba(234,216,163,.18);color:#fff}.nlp3d-viewframe{position:relative;margin-top:12px;min-height:150px;overflow:hidden;border:1px solid rgba(234,216,163,.18);background:linear-gradient(180deg,rgba(41,112,139,.58),rgba(8,25,25,.92));isolation:isolate}.nlp3d-view-sky{position:absolute;inset:0;background:radial-gradient(circle at 18% 22%,rgba(255,255,255,.24),transparent 18%),linear-gradient(135deg,rgba(39,107,130,.42),rgba(18,50,43,.1));opacity:.86}.nlp3d-view-lines{position:absolute;inset:auto -8% 18% -8%;height:46%;border-top:1px solid rgba(234,216,163,.28);background:linear-gradient(160deg,rgba(234,216,163,.1),transparent 54%);transform:skewY(-8deg)}.nlp3d-view-copy{position:absolute;right:14px;left:14px;bottom:12px;margin:0;color:#fff8dc;font-size:13px;line-height:1.5;text-shadow:0 1px 12px rgba(0,0,0,.55)}@media(max-width:600px){.nlp3d-drag-note{flex-basis:100%;min-height:24px}.nlp3d-viewframe{min-height:130px}}' );
@@ -2402,6 +2510,12 @@ add_action(
 		wp_add_inline_style( 'nadlan-p3d', nadlan_p3d_showroom_v1644_marker_css() );
 		wp_add_inline_style( 'nadlan-p3d', nadlan_p3d_showroom_v1649_buyer_card_css() );
 		wp_add_inline_style( 'nadlan-p3d', '.nlp3d.nlp3d-premium{transform:translateX(var(--nlp3d-mobile-nudge,0px));transition:transform .18s ease-out}.nlp3d.nlp3d-premium.is-mobile-edge-fixed{outline:1px solid rgba(234,216,163,.08)}@media(max-width:760px){.entry-content>.nlp3d,.wp-block-post-content>.nlp3d{max-width:calc(100vw - 16px)!important}.nlp3d.nlp3d-premium .nlp3d-model-viewer .nlp3d-mv-hotspot{display:none!important;pointer-events:none!important}.nlp3d.nlp3d-premium .nlp3d-stage-picks{display:block!important}.nlp3d.nlp3d-premium .nlp3d-stage-pick{touch-action:none}.nlp3d.nlp3d-premium .nlp3d-scene{overscroll-behavior:contain}}' );
+		wp_add_inline_style(
+			'nadlan-p3d',
+			<<<'CSS'
+.nlp3d-intro{width:min(1040px,calc(100% - 32px));margin:28px auto 12px;padding:18px 20px;border:1px solid rgba(185,144,67,.18);background:linear-gradient(135deg,rgba(255,255,255,.92),rgba(250,246,236,.86));box-shadow:0 16px 40px rgba(28,22,14,.08);border-radius:16px;color:#173329}.nlp3d-intro .wrap{max-width:860px;margin:0 auto}.nlp3d-intro .eyebrow{display:block;margin:0 0 7px;color:#9b742f;font-size:12px;font-weight:800;letter-spacing:.04em}.nlp3d-intro h2{margin:0 0 8px!important;color:#102b23!important;text-shadow:none!important;font-size:clamp(22px,3vw,34px)!important;line-height:1.2!important;font-family:Georgia,"Times New Roman",serif;font-weight:600}.nlp3d-intro p{margin:0;color:#263f35;font-size:clamp(15px,1.55vw,17px);line-height:1.7}.nlp3d-intro .nlp3d-intro-cta{margin-top:12px}.nlp3d-intro .btn{display:inline-flex;align-items:center;justify-content:center;min-height:42px;padding:9px 15px;border-radius:999px;background:#1b2e29;color:#fff7df;text-decoration:none;font-weight:800;box-shadow:0 10px 24px rgba(18,34,29,.18)}.nlp3d.nlp3d-premium .nlp3d-stage-wrap{min-height:clamp(420px,52vw,640px)!important}.nlp3d.nlp3d-premium .nlp3d-scene{height:100%!important}.nlp3d.nlp3d-premium .nlp3d-model-viewer{pointer-events:auto!important;--poster-color:transparent}.nlp3d.nlp3d-premium.has-model-viewer-loaded:not(.has-model-viewer-error) .nlp3d-scene.has-model-viewer .nlp3d-tower,.nlp3d.nlp3d-premium.has-model-viewer-loaded:not(.has-model-viewer-error) .nlp3d-scene.has-model-viewer .nlp3d-facade,.nlp3d.nlp3d-premium.has-model-viewer-loaded:not(.has-model-viewer-error) .nlp3d-scene.has-model-viewer .nlp3d-horizon,.nlp3d.nlp3d-premium.has-model-viewer-loaded:not(.has-model-viewer-error) .nlp3d-scene.has-model-viewer .nlp3d-sea,.nlp3d.nlp3d-premium.has-model-viewer-loaded:not(.has-model-viewer-error) .nlp3d-scene.has-model-viewer .nlp3d-park,.nlp3d.nlp3d-premium.has-model-viewer-loaded:not(.has-model-viewer-error) .nlp3d-scene.has-model-viewer .nlp3d-runway,.nlp3d.nlp3d-premium.has-model-viewer-loaded:not(.has-model-viewer-error) .nlp3d-scene.has-model-viewer .nlp3d-shadow{display:none!important;opacity:0!important;visibility:hidden!important;pointer-events:none!important}.nlp3d.nlp3d-premium.has-model-viewer-error .nlp3d-scene.has-model-viewer .nlp3d-tower,.nlp3d.nlp3d-premium.has-model-viewer-error .nlp3d-scene.has-model-viewer .nlp3d-facade{display:block!important;visibility:visible!important;opacity:.92!important}.nlp3d-context-caption{position:absolute;left:16px;right:16px;bottom:10px;z-index:16;margin:0;color:#d9c99a;font-size:12px;line-height:1.35;text-align:center;text-shadow:0 2px 8px rgba(0,0,0,.55);pointer-events:none}.nlp3d.nlp3d-premium:not(.has-stage-selection) .nlp3d-toolbar .nlp3d-angle:not([data-action="angle-facade"]),.nlp3d.nlp3d-premium:not(.has-stage-selection) .nlp3d-toolbar .nlp3d-zoom,.nlp3d.nlp3d-premium:not(.has-stage-selection) .nlp3d-toolbar .nlp3d-drag-note{display:none!important}.nlp3d.nlp3d-premium .nlp3d-toolbar .nlp3d-angle[data-action="angle-facade"],.nlp3d.nlp3d-premium .nlp3d-toolbar .nlp3d-orbit{min-width:44px;min-height:44px}.nlp3d.nlp3d-premium .nlp3d-stage-pick,.nlp3d.nlp3d-premium .nlp3d-hotspot-hit,.nlp3d.nlp3d-premium .nlp3d-mv-hotspot{width:54px!important;min-width:54px!important;height:54px!important;min-height:54px!important}.nlp3d.nlp3d-premium .nlp3d-stage-pick .nlp3d-hotspot-dot,.nlp3d.nlp3d-premium .nlp3d-hotspot-hit .nlp3d-hotspot-dot{width:16px;height:16px;border:2px solid #fff;border-radius:999px;margin:0 auto}.nlp3d.nlp3d-premium .nlp3d-stage-pick.is-available .nlp3d-hotspot-dot,.nlp3d.nlp3d-premium .nlp3d-hotspot-hit.is-available .nlp3d-hotspot-dot{background:#3ddc84}.nlp3d.nlp3d-premium .nlp3d-stage-pick.is-reserved .nlp3d-hotspot-dot,.nlp3d.nlp3d-premium .nlp3d-hotspot-hit.is-reserved .nlp3d-hotspot-dot{background:#f2c14e}.nlp3d.nlp3d-premium .nlp3d-stage-pick.is-sold .nlp3d-hotspot-dot,.nlp3d.nlp3d-premium .nlp3d-hotspot-hit.is-sold .nlp3d-hotspot-dot{background:#9aa0a6;opacity:.58}.nlp3d.nlp3d-premium .nlp3d-stage-pick.is-sold,.nlp3d.nlp3d-premium .nlp3d-hotspot-hit.is-sold{cursor:default!important;opacity:.62}.nlp3d.nlp3d-premium .nlp3d-stage-pick.is-recommended.is-available .nlp3d-hotspot-dot,.nlp3d.nlp3d-premium .nlp3d-hotspot-hit.is-recommended.is-available .nlp3d-hotspot-dot{box-shadow:0 0 0 0 rgba(61,220,132,.72);animation:nlpulse 1.8s infinite}.nlp3d.nlp3d-premium .nlp3d-stage-pick.is-recommended:not(.is-available) .nlp3d-hotspot-dot,.nlp3d.nlp3d-premium .nlp3d-hotspot-hit.is-recommended:not(.is-available) .nlp3d-hotspot-dot{animation:none!important}.nlp3d.nlp3d-premium .nlp3d-stage-pick.is-open .nlp3d-hotspot-tip{display:grid!important;opacity:1!important;visibility:visible!important;transform:translateY(-50%) translateX(0)!important;pointer-events:none!important}.nlp3d.nlp3d-premium .nlp3d-stage-card{top:18px!important;left:18px!important;right:auto!important;bottom:auto!important;width:min(380px,calc(50% - 36px))!important;pointer-events:auto!important;grid-template-columns:1fr!important}.nlp3d-stage-card-handle{display:none}.nlp3d-stage-tabs{grid-column:1/-1;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:6px;margin-top:8px}.nlp3d-stage-tabs button{min-height:40px;border:1px solid rgba(234,216,163,.24);background:rgba(255,255,255,.05);color:#e8dcb5;font-weight:700;cursor:pointer}.nlp3d-stage-tabs button.is-active,.nlp3d-stage-tabs button:hover,.nlp3d-stage-tabs button:focus-visible{background:linear-gradient(135deg,#ead8a3,#b99043);color:#17120a;outline:none}.single-nadlan_project .wp-block-post-content>h2,.single-nadlan_project .entry-content>h2,.single-nadlan_project .wp-block-post-content>h3,.single-nadlan_project .entry-content>h3,.single-nadlan_project .nlpf-name{color:#14211c!important;text-shadow:none!important}.single-nadlan_project .wp-block-post-content>p,.single-nadlan_project .entry-content>p{color:#30453d}@keyframes nlpulse{0%{box-shadow:0 0 0 0 rgba(61,220,132,.62)}70%{box-shadow:0 0 0 14px rgba(61,220,132,0)}100%{box-shadow:0 0 0 0 rgba(61,220,132,0)}}@media(max-width:760px){.nlp3d-intro{width:calc(100% - 24px);margin:18px auto 10px;padding:15px 14px;border-radius:14px}.nlp3d-intro h2{font-size:clamp(21px,6.3vw,28px)!important}.nlp3d-intro p{font-size:14.5px;line-height:1.62}.nlp3d.nlp3d-premium .nlp3d-stage-wrap{min-height:clamp(380px,96vw,520px)!important}.nlp3d.nlp3d-premium .nlp3d-scene{height:clamp(360px,92vw,500px)!important}.nlp3d.nlp3d-premium .nlp3d-model-viewer{pointer-events:auto!important}.nlp3d.nlp3d-premium .nlp3d-stage-pick,.nlp3d.nlp3d-premium .nlp3d-hotspot-hit{width:56px!important;min-width:56px!important;height:56px!important;min-height:56px!important}.nlp3d.nlp3d-premium .nlp3d-stage-pick.is-open .nlp3d-hotspot-tip{right:auto!important;left:50%!important;top:auto!important;bottom:calc(100% + 8px)!important;max-width:min(270px,82vw)!important;transform:translateX(-50%)!important}.nlp3d.nlp3d-premium .nlp3d-stage-card:not([hidden]){position:fixed!important;left:max(0px,env(safe-area-inset-left))!important;right:max(0px,env(safe-area-inset-right))!important;bottom:0!important;top:auto!important;width:auto!important;max-height:62vh!important;overflow:auto!important;border-radius:18px 18px 0 0!important;transform:translateY(calc(100% - 118px))!important;transition:transform .22s ease!important;z-index:9990!important;margin:0!important}.nlp3d.nlp3d-premium .nlp3d-stage-card.is-expanded{transform:translateY(0)!important}.nlp3d-stage-card-handle{position:relative;display:flex;align-items:center;justify-content:center;gap:8px;min-height:42px;border:0;border-bottom:1px solid rgba(234,216,163,.18);background:rgba(255,255,255,.05);color:#fff2c8;font-weight:800;cursor:pointer}.nlp3d-stage-card-handle:before{content:"";width:44px;height:4px;border-radius:999px;background:rgba(234,216,163,.55);position:absolute;top:8px}.nlp3d-stage-card-actions{grid-template-columns:1fr 1fr!important}.nlp3d-stage-card-actions .nlp3d-stage-inquiry{grid-column:1/-1!important;order:-1!important}.nlp3d-stage-tabs{grid-template-columns:repeat(2,minmax(0,1fr))}.nlp3d-context-caption{font-size:11.5px;bottom:8px}}
+CSS
+		);
 
 		$post_id = is_singular( 'nadlan_project' ) ? (int) get_queried_object_id() : 0;
 		if ( $post_id > 0 && get_post_meta( $post_id, 'project_model_glb', true ) !== '' ) {
@@ -2410,7 +2524,7 @@ add_action(
 			wp_enqueue_script( 'nadlan-model-viewer' );
 		}
 
-		wp_register_script( 'nadlan-p3d', '', array(), '1.65.2', true );
+		wp_register_script( 'nadlan-p3d', '', array(), '1.65.3', true );
 		wp_enqueue_script( 'nadlan-p3d' );
 		wp_add_inline_script( 'nadlan-p3d', nadlan_p3d_inline_js( esc_url_raw( rest_url( 'nadlan/v1/lead' ) ) ) );
 	}
@@ -2796,6 +2910,11 @@ add_filter(
 			'admin_callback_clean_v1651' => true,
 			'rest_showroom_fields_v1651' => true,
 			'showroom_payload_api_v1652' => true,
+			'stage_card_render_v1653' => true,
+			'serp_intro_copy_v1653' => true,
+			'model_fallback_hides_after_glb_v1653' => true,
+			'hotspot_tap_preview_v1653' => true,
+			'heading_contrast_v1653' => true,
 			'showroom_payload_fields' => count( nadlan_p3d_showroom_fields() ),
 			'showroom_first_view' => true,
 			'static_featured_image_suppressed' => true,
