@@ -12,8 +12,10 @@ Environment for --apply:
 
 The script never logs credentials. It writes only REST-registered meta.
 project_3d_units is included only when the live healthcheck reports
-project_3d.unit_meta_rest=true (v1.63.2+). Older plugin versions keep the safe
-manual metabox fallback.
+project_3d.unit_meta_rest=true (v1.63.2+). The write path also requires the
+v1.63.4 page-assembly SEO gate so the model is not wired onto an unfinished
+flagship page. Dry-run still prints the payload for review; --apply refuses
+older plugin versions before any write.
 """
 
 from __future__ import annotations
@@ -38,7 +40,8 @@ DEFAULT_POST_ID = 4464
 GITHUB_RAW_HOST = "raw.githubusercontent.com"
 GITHUB_RAW_OWNER = "The-new-ben"
 GITHUB_RAW_REPO = "nad-lan-co-il"
-REQUIRED_PLUGIN_STACK_VERSION = (1, 63, 3)
+REQUIRED_PLUGIN_STACK_VERSION = (1, 63, 4)
+REQUIRED_PLUGIN_STACK_LABEL = "1.63.4"
 
 
 def meta_path(project_slug: str) -> Path:
@@ -277,14 +280,17 @@ def plugin_stack_errors(health: dict[str, Any]) -> list[str]:
     errors: list[str] = []
     version = str(health.get("version", ""))
     project_3d = health.get("project_3d", {}) if isinstance(health, dict) else {}
+    assembly = health.get("project_page_assembly", {}) if isinstance(health, dict) else {}
     if version_tuple(version) < REQUIRED_PLUGIN_STACK_VERSION:
-        errors.append(f"version {version or 'unknown'} < 1.63.3")
+        errors.append(f"version {version or 'unknown'} < {REQUIRED_PLUGIN_STACK_LABEL}")
     if not (isinstance(project_3d, dict) and project_3d.get("model_viewer_ready") is True):
         errors.append("project_3d.model_viewer_ready is not true")
     if not (isinstance(project_3d, dict) and project_3d.get("unit_meta_rest") is True):
         errors.append("project_3d.unit_meta_rest is not true")
     if not (isinstance(project_3d, dict) and project_3d.get("floating_action_rail_v1633") is True):
         errors.append("project_3d.floating_action_rail_v1633 is not true")
+    if not (isinstance(assembly, dict) and assembly.get("rainbow_seo_v1634") is True):
+        errors.append("project_page_assembly.rainbow_seo_v1634 is not true")
     return errors
 
 
@@ -329,24 +335,30 @@ def main() -> int:
     parser.add_argument(
         "--skip-plugin-stack-check",
         action="store_true",
-        help="Permit --apply without live v1.63.3 stack markers. Use only for explicit manual fallback QA.",
+        help="Permit --apply without live v1.63.4 stack markers. Use only for explicit manual fallback QA.",
     )
     args = parser.parse_args()
 
     source = load_source_meta(args.branch, args.project_slug)
     rest_meta = build_rest_meta(source, include_units=False)
-    print_summary(rest_meta, source, args.post_id, args.project_slug, include_units=False)
     unsafe_urls = unsafe_branch_raw_urls(source)
+
+    if not args.apply:
+        print_summary(rest_meta, source, args.post_id, args.project_slug, include_units=False)
+        if unsafe_urls:
+            print()
+            print("WARNING: payload contains draft/non-main GitHub raw asset URLs:")
+            for url in unsafe_urls:
+                print(f"- {url}")
+        print()
+        print("DRY RUN ONLY. Add --apply with WP_USER and WP_APP_PASSWORD to write REST fields.")
+        return 0
+
     if unsafe_urls:
         print()
         print("WARNING: payload contains draft/non-main GitHub raw asset URLs:")
         for url in unsafe_urls:
             print(f"- {url}")
-
-    if not args.apply:
-        print()
-        print("DRY RUN ONLY. Add --apply with WP_USER and WP_APP_PASSWORD to write REST fields.")
-        return 0
 
     if unsafe_urls and not args.allow_branch_assets:
         print(
@@ -377,12 +389,14 @@ def main() -> int:
             print("ERROR: refusing --apply until the live plugin stack is ready:", file=sys.stderr)
             for error in errors:
                 print(f"- {error}", file=sys.stderr)
-            print("Deploy PRs #164, #165 and #166 first, clear cache, then rerun.", file=sys.stderr)
+            print("Deploy PRs #164, #165, #166 and #167 first, clear cache, then rerun.", file=sys.stderr)
             return 4
         if errors and args.skip_plugin_stack_check:
             print("WARNING: --skip-plugin-stack-check is active despite:", file=sys.stderr)
             for error in errors:
                 print(f"- {error}", file=sys.stderr)
+
+    print_summary(rest_meta, source, args.post_id, args.project_slug, include_units=False)
 
     user = os.getenv("WP_USER", "")
     password = os.getenv("WP_APP_PASSWORD", "")

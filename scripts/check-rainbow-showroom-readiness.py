@@ -23,7 +23,8 @@ DEFAULT_PROJECT_SLUG = "rainbow-tel-aviv"
 MAX_GLB_BYTES = 4 * 1024 * 1024
 MAX_POSTER_BYTES = 80 * 1024
 REMOTE_READ_BYTES = 4096
-REQUIRED_PLUGIN_STACK_VERSION = (1, 63, 3)
+REQUIRED_PLUGIN_STACK_VERSION = (1, 63, 4)
+REQUIRED_PLUGIN_STACK_LABEL = "1.63.4"
 
 
 class Gate:
@@ -322,6 +323,7 @@ def check_healthcheck(url: str, expect_live_glb: bool, require_plugin_stack: boo
         return
     version = str(health.get("version", ""))
     project_3d = health.get("project_3d", {})
+    assembly = health.get("project_page_assembly", {})
     parsed_version = version_tuple(version)
     if parsed_version >= (1, 63, 0):
         gate.pass_("live plugin version", version)
@@ -335,7 +337,7 @@ def check_healthcheck(url: str, expect_live_glb: bool, require_plugin_stack: boo
         if parsed_version >= REQUIRED_PLUGIN_STACK_VERSION:
             gate.pass_("plugin stack version", version)
         else:
-            gate.fail("plugin stack version", f"{version} < 1.63.3; deploy PRs #164, #165 and #166 before CMS apply")
+            gate.fail("plugin stack version", f"{version} < {REQUIRED_PLUGIN_STACK_LABEL}; deploy PRs #164, #165, #166 and #167 before CMS apply")
         if isinstance(project_3d, dict) and project_3d.get("unit_meta_rest") is True:
             gate.pass_("unit_meta_rest", "true")
         else:
@@ -344,6 +346,10 @@ def check_healthcheck(url: str, expect_live_glb: bool, require_plugin_stack: boo
             gate.pass_("floating_action_rail_v1633", "true")
         else:
             gate.fail("floating_action_rail_v1633", "not true; v1.63.3 contact rail clearance is required before showroom review")
+        if isinstance(assembly, dict) and assembly.get("rainbow_seo_v1634") is True:
+            gate.pass_("rainbow_seo_v1634", "true")
+        else:
+            gate.fail("rainbow_seo_v1634", "not true; v1.63.4 page SEO gate closure is required before showroom review")
     glb_count = project_3d.get("projects_with_glb") if isinstance(project_3d, dict) else None
     if expect_live_glb:
         if isinstance(glb_count, int) and glb_count >= 1:
@@ -363,7 +369,7 @@ def main() -> int:
     parser.add_argument(
         "--require-plugin-stack",
         action="store_true",
-        help="Require the deployed v1.63.1-v1.63.3 plugin markers before CMS apply.",
+        help="Require the deployed v1.63.1-v1.63.4 plugin markers before CMS apply.",
     )
     parser.add_argument("--check-remote-assets", action="store_true", help="Fetch raw/CDN asset URLs and verify signatures.")
     parser.add_argument(

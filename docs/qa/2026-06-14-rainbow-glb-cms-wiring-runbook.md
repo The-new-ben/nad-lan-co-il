@@ -5,10 +5,11 @@ into a visible 3D model on the live Rainbow Tel Aviv page.
 
 ## Preconditions
 
-- Live plugin healthcheck reports `version: 1.63.0` or newer.
+- Live plugin healthcheck reports `version: 1.63.4` or newer.
 - Healthcheck reports `project_3d.model_viewer_ready: true`.
-- For fully automated unit wiring, healthcheck reports `project_3d.unit_meta_rest: true`
-  (v1.63.2 or newer). If not, use the metabox fallback for `project_3d_units`.
+- Healthcheck reports `project_3d.unit_meta_rest: true` (v1.63.2 or newer).
+- Healthcheck reports `project_3d.floating_action_rail_v1633: true`.
+- Healthcheck reports `project_page_assembly.rainbow_seo_v1634: true`.
 - PR #163 is merged to `main`.
 - The UPress/server Git copy has been pulled or synced after the merge.
 - Cache can be cleared after the write.
@@ -54,10 +55,10 @@ Set:
 - `project_3d_environment_json`: flattened JSON array generated from the rich environment object in
   `project-meta-example.json`.
 
-Version boundary: v1.63.0 saves `project_3d_units` through the admin metabox only. v1.63.2 exposes
-it safely through REST with `edit_post` auth and a unit sanitizer. The apply helper checks
-healthcheck before writing units and falls back to printing the metabox value when the marker is
-missing.
+Version boundary: v1.63.0 can show the model-viewer rail, but public GLB wiring should wait for
+the full v1.63.4 stack. v1.63.2 exposes `project_3d_units` safely through REST with `edit_post`
+auth and a unit sanitizer; v1.63.3 clears the floating contact rail; v1.63.4 closes the page
+assembly/title/meta gate. The apply helper checks all of those healthcheck markers before writing.
 
 Keep all demo unit and drawing copy source-aware. Do not remove:
 
@@ -121,10 +122,11 @@ python scripts\apply-rainbow-cms-payload.py --branch main --apply
 The apply helper also enforces the plugin-stack preflight before asking for credentials. It refuses
 to write unless live healthcheck proves:
 
-- plugin version at least `1.63.3`,
+- plugin version at least `1.63.4`,
 - `project_3d.model_viewer_ready=true`,
 - `project_3d.unit_meta_rest=true`,
-- `project_3d.floating_action_rail_v1633=true`.
+- `project_3d.floating_action_rail_v1633=true`,
+- `project_page_assembly.rainbow_seo_v1634=true`.
 
 For a future project using the same asset contract:
 
@@ -160,10 +162,10 @@ The helper writes:
 - `project_model_usdz`
 - `project_3d_drawings_json`
 - `project_3d_environment_json`
-- `project_3d_units` only when healthcheck reports `project_3d.unit_meta_rest=true`
+- `project_3d_units` only when healthcheck reports the full v1.63.4 stack is live
 
-It does not print credentials. On older plugin versions it skips `project_3d_units` and prints the
-metabox fallback instead of forcing a write that WordPress will reject or ignore.
+It does not print credentials. On older plugin versions it refuses `--apply` before writing; use
+dry-run output only for review until the plugin stack is actually deployed.
 
 ## Readiness Check
 
@@ -189,7 +191,7 @@ python scripts\check-rainbow-showroom-readiness.py --skip-live --check-remote-as
 `--remote-ref` changes only what the checker fetches for QA. It does not change the payload file and
 must not be used as a live CMS URL strategy.
 
-After the plugin stack is deployed through v1.63.3 and before applying the Rainbow CMS payload, run:
+After the plugin stack is deployed through v1.63.4 and before applying the Rainbow CMS payload, run:
 
 ```powershell
 python scripts\check-rainbow-showroom-readiness.py --require-plugin-stack
@@ -197,14 +199,15 @@ python scripts\check-rainbow-showroom-readiness.py --require-plugin-stack
 
 This must pass:
 
-- live plugin version at least `1.63.3`,
+- live plugin version at least `1.63.4`,
 - `project_3d.unit_meta_rest=true` from v1.63.2,
 - `project_3d.floating_action_rail_v1633=true` from v1.63.3,
-- `project_3d.model_viewer_ready=true` from v1.63.0.
+- `project_3d.model_viewer_ready=true` from v1.63.0,
+- `project_page_assembly.rainbow_seo_v1634=true` from v1.63.4.
 
 If this fails, stop and finish the plugin deploy sequence first. Do not apply the CMS payload to an
-older plugin, because unit JSON will either require manual metabox fallback or the floating contact
-rail may still cover the showroom controls.
+older plugin, because unit JSON may not write through REST, the floating contact rail may still cover
+the showroom controls, or the page may still fail the flagship SEO/title/meta gate.
 
 After PR #163 is merged to `main`, but before applying the CMS payload, run the remote URL gate:
 

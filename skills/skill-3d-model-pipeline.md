@@ -145,6 +145,9 @@ Before shipping a project:
 - Confirm mobile has no horizontal overflow and no nested gray scrollbars.
 - Confirm source notes/disclaimers distinguish official data from illustrative/demo data.
 - Confirm the page still has one H1 and the article body remains readable below the showroom.
+- Confirm the page assembly/SEO gate passes before wiring the public GLB: transaction-led title,
+  price-aware non-binding meta description, visible buyer phrasing, FAQ/schema meta and no raw
+  code leak. A model is not enough if the page shell still reads unfinished.
 
 ## Countrywide Replication
 
