@@ -25,6 +25,7 @@ import base64
 import json
 import os
 import sys
+import time
 import urllib.error
 import urllib.parse
 import urllib.request
@@ -311,6 +312,37 @@ def plugin_stack_errors(health: dict[str, Any]) -> list[str]:
     return errors
 
 
+def wait_for_plugin_stack(health_url: str, timeout_seconds: int, poll_seconds: int) -> dict[str, Any]:
+    """Poll healthcheck until the safe GLB-apply markers are live."""
+    deadline = time.monotonic() + max(0, timeout_seconds)
+    poll = max(1, poll_seconds)
+    attempt = 1
+    last_errors: list[str] = []
+
+    while True:
+        health: dict[str, Any] = {}
+        try:
+            health = request_json("GET", health_url)
+            last_errors = plugin_stack_errors(health)
+        except RuntimeError as exc:
+            last_errors = [f"healthcheck unavailable: {exc}"]
+
+        if not last_errors:
+            print(f"Plugin stack ready after {attempt} check(s).")
+            return health
+
+        remaining = deadline - time.monotonic()
+        if remaining <= 0:
+            raise RuntimeError("timed out waiting for plugin stack:\n- " + "\n- ".join(last_errors))
+
+        print("Waiting for live plugin stack before CMS apply:")
+        for error in last_errors:
+            print(f"- {error}")
+        print(f"Next check in {min(poll, int(remaining))}s.")
+        time.sleep(min(poll, max(1, int(remaining))))
+        attempt += 1
+
+
 def print_summary(rest_meta: dict[str, str], source: dict[str, Any], post_id: int, project_slug: str, *, include_units: bool = False) -> None:
     units = source.get("project_3d_units", [])
     print("# Project showroom CMS apply summary")
@@ -354,6 +386,23 @@ def main() -> int:
         action="store_true",
         help="Permit --apply without live v1.63.4 stack markers. Use only for explicit manual fallback QA.",
     )
+    parser.add_argument(
+        "--wait-ready",
+        action="store_true",
+        help="With --apply, poll healthcheck until the live plugin stack is ready before writing.",
+    )
+    parser.add_argument(
+        "--wait-timeout",
+        type=int,
+        default=900,
+        help="Maximum seconds to wait for --wait-ready. Default: 900.",
+    )
+    parser.add_argument(
+        "--poll-seconds",
+        type=int,
+        default=20,
+        help="Polling interval for --wait-ready. Default: 20.",
+    )
     args = parser.parse_args()
 
     source = load_source_meta(args.branch, args.project_slug)
@@ -392,26 +441,40 @@ def main() -> int:
 
     health_url = endpoint(args.base_url, "/wp-json/nadlan/v1/healthcheck")
     health: dict[str, Any] = {}
-    try:
-        health = request_json("GET", health_url)
-    except RuntimeError as exc:
-        if not args.skip_plugin_stack_check:
+    if args.wait_ready and args.skip_plugin_stack_check:
+        print("WARNING: --wait-ready ignored because --skip-plugin-stack-check is active.", file=sys.stderr)
+
+    if args.wait_ready and not args.skip_plugin_stack_check:
+        try:
+            health = wait_for_plugin_stack(health_url, args.wait_timeout, args.poll_seconds)
+        except RuntimeError as exc:
             print(f"ERROR: cannot verify live plugin stack before apply: {exc}", file=sys.stderr)
             return 4
-        print(f"WARNING: plugin stack healthcheck failed but override is active: {exc}", file=sys.stderr)
+    else:
+        try:
+            health = request_json("GET", health_url)
+        except RuntimeError as exc:
+            if not args.skip_plugin_stack_check:
+                print(f"ERROR: cannot verify live plugin stack before apply: {exc}", file=sys.stderr)
+                return 4
+            print(f"WARNING: plugin stack healthcheck failed but override is active: {exc}", file=sys.stderr)
 
-    if health:
-        errors = plugin_stack_errors(health)
-        if errors and not args.skip_plugin_stack_check:
-            print("ERROR: refusing --apply until the live plugin stack is ready:", file=sys.stderr)
-            for error in errors:
-                print(f"- {error}", file=sys.stderr)
-            print("Deploy PRs #164, #165, #166 and #167 first, clear cache, then rerun.", file=sys.stderr)
-            return 4
-        if errors and args.skip_plugin_stack_check:
-            print("WARNING: --skip-plugin-stack-check is active despite:", file=sys.stderr)
-            for error in errors:
-                print(f"- {error}", file=sys.stderr)
+        if health:
+            errors = plugin_stack_errors(health)
+            if errors and not args.skip_plugin_stack_check:
+                print("ERROR: refusing --apply until the live plugin stack is ready:", file=sys.stderr)
+                for error in errors:
+                    print(f"- {error}", file=sys.stderr)
+                print(
+                    "Run scripts\\check-rainbow-deploy-sequence.py, merge/deploy the missing stack, "
+                    "clear cache, then rerun.",
+                    file=sys.stderr,
+                )
+                return 4
+            if errors and args.skip_plugin_stack_check:
+                print("WARNING: --skip-plugin-stack-check is active despite:", file=sys.stderr)
+                for error in errors:
+                    print(f"- {error}", file=sys.stderr)
 
     print_summary(rest_meta, source, args.post_id, args.project_slug, include_units=False)
 

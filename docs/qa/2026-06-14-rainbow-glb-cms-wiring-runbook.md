@@ -134,6 +134,15 @@ $env:WP_APP_PASSWORD='<application-password>'
 python scripts\apply-rainbow-cms-payload.py --branch main --apply
 ```
 
+If the plugin update is still propagating or cache is being cleared, use the safe wait mode:
+
+```powershell
+python scripts\apply-rainbow-cms-payload.py --branch main --apply --wait-ready --wait-timeout 900 --poll-seconds 20
+```
+
+This polls healthcheck before reading WordPress credentials into a write request. It still refuses
+to write unless the same v1.63.4 stack markers are live.
+
 The apply helper also enforces the plugin-stack preflight before asking for credentials. It refuses
 to write unless live healthcheck proves:
 
