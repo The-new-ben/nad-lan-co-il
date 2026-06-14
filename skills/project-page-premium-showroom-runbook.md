@@ -161,3 +161,7 @@ python scripts\apply-rainbow-cms-payload.py --project-slug <latin-slug> --post-i
 
 In `--apply` mode, it must prove the live plugin stack is ready before asking for WordPress
 credentials. Do not bypass that preflight for a final public page.
+
+After writing, the helper must verify the REST response, not only trust that the request succeeded:
+exact GLB/poster/model values, drawing/environment counts, and, when unit REST support is live, unit
+count plus unit ids. A mismatch means the project is not CMS-wired yet.

@@ -135,6 +135,11 @@ python scripts\apply-rainbow-cms-payload.py --project-slug <latin-slug> --post-i
 Only use `--skip-plugin-stack-check` for an explicit temporary QA fallback. Do not use it for the
 final public showroom wire-in.
 
+After a REST write, the helper performs a strict returned-meta verification. It fails with exit `5`
+if WordPress does not return the expected GLB/poster values, drawing count, environment count or,
+when `project_3d.unit_meta_rest=true`, the expected unit count and unit ids. Do not treat a write as
+complete if this verification fails.
+
 Safety guard: `--apply` refuses to write any `raw.githubusercontent.com/The-new-ben/nad-lan-co-il/<branch>/...`
 asset URL unless the ref is `main`. This prevents a public Rainbow page from depending on a
 temporary PR branch that may be deleted after merge. If an operator intentionally wants a temporary

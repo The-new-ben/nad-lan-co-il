@@ -162,6 +162,72 @@ def build_rest_meta(source: dict[str, Any], *, include_units: bool = False) -> d
     return meta
 
 
+def parse_meta_json(value: Any) -> Any:
+    if isinstance(value, (list, dict)):
+        return value
+    if value is None:
+        return None
+    raw = str(value).strip()
+    if raw == "":
+        return None
+    try:
+        return json.loads(raw)
+    except json.JSONDecodeError:
+        return None
+
+
+def item_count(value: Any) -> int:
+    parsed = parse_meta_json(value)
+    if isinstance(parsed, list):
+        return len(parsed)
+    if isinstance(parsed, dict):
+        return len(parsed)
+    return 0
+
+
+def item_ids(value: Any) -> list[str]:
+    parsed = parse_meta_json(value)
+    if not isinstance(parsed, list):
+        return []
+    ids: list[str] = []
+    for item in parsed:
+        if isinstance(item, dict) and item.get("id"):
+            ids.append(str(item["id"]))
+    return ids
+
+
+def verify_updated_meta(updated_meta: dict[str, Any], expected_meta: dict[str, str]) -> list[str]:
+    errors: list[str] = []
+    exact_keys = (
+        "project_3d_model_type",
+        "project_model_glb",
+        "project_model_poster",
+        "project_model_usdz",
+    )
+    for key in exact_keys:
+        expected = str(expected_meta.get(key, ""))
+        actual = str(updated_meta.get(key, ""))
+        if actual != expected:
+            errors.append(f"{key}: expected {expected or '(empty)'}, got {actual or '(empty)'}")
+
+    for key in ("project_3d_drawings_json", "project_3d_environment_json", "project_3d_units"):
+        if key not in expected_meta:
+            continue
+        expected_count = item_count(expected_meta.get(key, ""))
+        actual_count = item_count(updated_meta.get(key, ""))
+        if actual_count != expected_count:
+            errors.append(f"{key}: expected {expected_count} items, got {actual_count}")
+
+    if "project_3d_units" in expected_meta:
+        expected_ids = item_ids(expected_meta["project_3d_units"])
+        actual_ids = item_ids(updated_meta.get("project_3d_units", ""))
+        missing = [unit_id for unit_id in expected_ids if unit_id not in actual_ids]
+        if missing:
+            errors.append("project_3d_units: missing unit ids " + ", ".join(missing[:8]))
+
+    return errors
+
+
 def auth_header(user: str, password: str) -> str:
     token = base64.b64encode(f"{user}:{password}".encode("utf-8")).decode("ascii")
     return f"Basic {token}"
@@ -363,6 +429,14 @@ def main() -> int:
     for key in rest_meta:
         current = str(updated_meta.get(key, ""))
         print(f"- {key}: {'present' if current else 'empty'}")
+
+    verify_errors = verify_updated_meta(updated_meta, rest_meta)
+    if verify_errors:
+        print("ERROR: REST write verification failed:", file=sys.stderr)
+        for error in verify_errors:
+            print(f"- {error}", file=sys.stderr)
+        return 5
+    print("REST write verification passed.")
 
     try:
         health = request_json("GET", health_url)
