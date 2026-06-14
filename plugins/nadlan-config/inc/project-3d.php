@@ -173,6 +173,10 @@ if ( ! function_exists( 'nadlan_p3d_clean_unit_items' ) ) {
 				'id'      => sanitize_key( (string) $u['id'] ),
 				'title'   => sanitize_text_field( (string) ( $u['title'] ?? '' ) ),
 				'points'  => preg_replace( '/[^0-9,. \-]/', '', (string) ( $u['points'] ?? '' ) ),
+				'stage_x' => ( isset( $u['stage_x'] ) && $u['stage_x'] !== '' ) ? max( 0, min( 100, (float) $u['stage_x'] ) ) : '',
+				'stage_y' => ( isset( $u['stage_y'] ) && $u['stage_y'] !== '' ) ? max( 0, min( 100, (float) $u['stage_y'] ) ) : '',
+				'stage_w' => ( isset( $u['stage_w'] ) && $u['stage_w'] !== '' ) ? max( 0, min( 100, (float) $u['stage_w'] ) ) : '',
+				'stage_h' => ( isset( $u['stage_h'] ) && $u['stage_h'] !== '' ) ? max( 0, min( 100, (float) $u['stage_h'] ) ) : '',
 				'floor'   => max( 0, (int) ( $u['floor'] ?? 0 ) ),
 				'rooms'   => nadlan_p3d_sanitize_decimal( $u['rooms'] ?? 0 ),
 				'sqm'     => nadlan_p3d_sanitize_decimal( $u['sqm'] ?? 0 ),
@@ -1188,6 +1192,36 @@ CSS;
 	}
 }
 
+if ( ! function_exists( 'nadlan_p3d_facade_cell_selector_css' ) ) {
+	function nadlan_p3d_facade_cell_selector_css() {
+		// v1.66.0 embedded apartment-cell selector: a flat facade plane with each
+		// apartment a clickable cell sitting ON the building face (no floating markers,
+		// no rotation). Cells are positioned in % of the plane so they always track the wall.
+		return <<<'CSS'
+.nlp3d.nlp3d-premium.is-facade-select .nlp3d-tower,.nlp3d.nlp3d-premium.is-facade-select .nlp3d-facade,.nlp3d.nlp3d-premium.is-facade-select .nlp3d-shadow,.nlp3d.nlp3d-premium.is-facade-select .nlp3d-stage-picks{display:none!important}
+.nlp3d.nlp3d-premium.is-facade-select .nlp3d-angle,.nlp3d.nlp3d-premium.is-facade-select .nlp3d-orbit,.nlp3d.nlp3d-premium.is-facade-select .nlp3d-zoom{display:none!important}
+.nlp3d.nlp3d-premium.is-facade-select .nlp3d-scene{cursor:default!important}
+.nlp3d-facade-plane{position:absolute;left:48%;top:5%;transform:translateX(-50%);width:min(56%,460px);height:86%;z-index:6;filter:drop-shadow(0 40px 80px rgba(0,0,0,.55))}
+.nlp3d-fp-roof{position:absolute;left:-4%;right:-4%;top:0;height:14px;border-radius:6px 6px 0 0;background:linear-gradient(180deg,#41636b,#22424a);box-shadow:inset 0 1px 0 rgba(255,255,255,.28)}
+.nlp3d-fp-body{position:absolute;left:0;right:0;top:12px;bottom:0;border-radius:0 0 4px 4px;background:linear-gradient(180deg,rgba(31,92,102,.96),rgba(9,28,32,.98));box-shadow:inset 0 0 0 1px rgba(234,216,163,.2)}
+.nlp3d-fp-body:before{content:"";position:absolute;inset:0;border-radius:inherit;background:repeating-linear-gradient(180deg,rgba(255,255,255,.05) 0 1px,transparent 1px 26px),repeating-linear-gradient(90deg,rgba(0,0,0,.16) 0 1px,transparent 1px 16.6%);opacity:.7}
+.nlp3d-fp-glow{position:absolute;inset:12px 0 0;border-radius:0 0 4px 4px;background:radial-gradient(circle at 28% 16%,rgba(255,255,255,.16),transparent 44%);pointer-events:none}
+.nlp3d-cells{position:absolute;left:0;right:0;top:12px;bottom:0;z-index:7}
+.nlp3d-cell{position:absolute;box-sizing:border-box;border:1.5px solid rgba(61,220,132,.92);background:rgba(61,220,132,.18);border-radius:3px;cursor:pointer;padding:0;margin:0;display:flex;align-items:center;justify-content:center;min-width:14px;min-height:14px;transition:background .15s,box-shadow .15s,border-color .15s,transform .12s}
+.nlp3d-cell.nlp3d-status-reserved{border-color:rgba(242,193,78,.92);background:rgba(242,193,78,.18)}
+.nlp3d-cell.nlp3d-status-sold{border-color:rgba(154,160,166,.7);background:rgba(154,160,166,.12);cursor:not-allowed}
+.nlp3d-cell:hover,.nlp3d-cell:focus-visible{outline:none;border-color:#fff7c6;background:rgba(255,255,255,.22);box-shadow:0 0 0 2px rgba(255,247,198,.6),0 0 16px rgba(234,216,163,.55);z-index:9}
+.nlp3d-cell.is-active{border-color:#fff7c6;background:rgba(244,221,152,.36);box-shadow:0 0 0 2px #fff7c6,0 0 24px rgba(234,216,163,.72);z-index:10;transform:scale(1.03)}
+.nlp3d-cell.is-recommended::after{content:"\2605";position:absolute;top:-8px;left:50%;transform:translateX(-50%);font-size:10px;color:#ffe8a6;text-shadow:0 1px 3px rgba(0,0,0,.6)}
+.nlp3d-cell-tag{font-size:9px;font-weight:800;color:#fff;opacity:0;pointer-events:none;text-shadow:0 1px 2px rgba(0,0,0,.7);transition:opacity .15s;white-space:nowrap}
+.nlp3d-cell.is-active .nlp3d-cell-tag,.nlp3d-cell:hover .nlp3d-cell-tag{opacity:.95}
+.nlp3d-fp-legend{position:absolute;left:12px;bottom:12px;z-index:8;display:flex;gap:10px;flex-wrap:wrap;font-size:11px;color:#dfeae6;background:rgba(6,16,18,.66);border:1px solid rgba(234,216,163,.2);border-radius:8px;padding:6px 9px}
+.nlp3d-fp-legend i{display:inline-block;width:10px;height:10px;border-radius:2px;margin-inline-end:4px;vertical-align:-1px}
+@media(max-width:760px){.nlp3d-facade-plane{width:80%;left:50%}.nlp3d-cell{min-height:16px;min-width:16px}.nlp3d-fp-legend{font-size:10px;left:8px;bottom:8px;gap:7px}}
+CSS;
+	}
+}
+
 if ( ! function_exists( 'nadlan_p3d_inline_js' ) ) {
 	function nadlan_p3d_inline_js( $rest_url ) {
 		$js = <<<'JS'
@@ -1331,11 +1365,32 @@ if ( ! function_exists( 'nadlan_p3d_inline_js' ) ) {
 		var modelViewer=root.querySelector('.nlp3d-model-viewer');
 		var modelHotspots=[].slice.call(root.querySelectorAll('.nlp3d-mv-hotspot'));
 		var stagePicks=null;
+		var facadePlane=null;
 		if(scene){
 			stagePicks=document.createElement('div');
 			stagePicks.className='nlp3d-stage-picks';
 			stagePicks.setAttribute('aria-label','בחירת דירה על המודל');
-			scene.appendChild(stagePicks);
+			if(!modelViewer){
+				/* No real per-apartment 3D model: lock to a flat facade plane so apartments
+				   read as part of the building, not markers floating over a rotating scene.
+				   Cells are positioned in % of THIS plane, so they always sit on the tower face. */
+				facadePlane=document.createElement('div');
+				facadePlane.className='nlp3d-facade-plane';
+				facadePlane.innerHTML='<span class="nlp3d-fp-roof" aria-hidden="true"></span><span class="nlp3d-fp-body" aria-hidden="true"></span><span class="nlp3d-fp-glow" aria-hidden="true"></span>';
+				stagePicks.className='nlp3d-cells';
+				stagePicks.setAttribute('role','group');
+				stagePicks.setAttribute('aria-label','בחירת דירה על חזית הבניין');
+				facadePlane.appendChild(stagePicks);
+				scene.appendChild(facadePlane);
+				var fpLegend=document.createElement('div');
+				fpLegend.className='nlp3d-fp-legend';
+				fpLegend.setAttribute('aria-hidden','true');
+				fpLegend.innerHTML='<span><i style="background:#3ddc84"></i>זמינה</span><span><i style="background:#f2c14e"></i>בהזמנה</span><span><i style="background:#9aa0a6"></i>נמכרה</span>';
+				scene.appendChild(fpLegend);
+				root.classList.add('is-facade-select');
+			}else{
+				scene.appendChild(stagePicks);
+			}
 		}
 		function fitMobileShowroom(){
 			if(!root){return}
@@ -1597,8 +1652,46 @@ if ( ! function_exists( 'nadlan_p3d_inline_js' ) ) {
 			track('stage_pick_preview',{unit:u.id,source:source||'stage-pick'});
 			selectUnit(u.id,source||'stage-pick');
 		}
+		function nlpClamp(v,a,b){v=parseFloat(v);if(isNaN(v)){return null}return Math.max(a,Math.min(b,v))}
+		function renderApartmentCells(){
+			stagePicks.innerHTML='';
+			var span=Math.max(1,maxFloor-minFloor);
+			var byFloor={};
+			units.forEach(function(u){var f=parseInt(u.floor||minFloor,10)||minFloor;(byFloor[f]=byFloor[f]||[]).push(u)});
+			var rowH=Math.max(3.2,86/Math.max(1,(floors.length||1)));
+			units.forEach(function(u){
+				var floor=parseInt(u.floor||minFloor,10)||minFloor;
+				var sib=byFloor[floor]||[u];var ci=sib.indexOf(u);if(ci<0){ci=0}var cn=sib.length||1;
+				var status=u.status||'available';
+				var recommended=isRecommendedUnit(u);
+				var norm=(floor-minFloor)/span;
+				var top=Math.max(3,Math.min(92,90-norm*84));
+				var w=nlpClamp(u.stage_w,4,96);if(w===null){w=Math.min(30,(92/cn)*0.84)}
+				var cx=nlpClamp(u.stage_x,1,99);if(cx===null){var slot=92/cn;cx=4+slot*(ci+0.5)}
+				var left=Math.max(1,Math.min(99-w,cx-w/2));
+				var h=Math.max(3,rowH*0.82);
+				var b=document.createElement('button');
+				b.type='button';
+				b.className='nlp3d-cell nlp3d-status-'+status+(recommended?' is-recommended':'')+(activeUnit&&u.id===activeUnit.id?' is-active':'');
+				b.dataset.unit=u.id;
+				b.dataset.action='select-unit-cell';
+				b.style.left=left+'%';b.style.top=top+'%';b.style.width=w+'%';b.style.height=h+'%';
+				var priceInfo=unitPriceInfo(u,meta);
+				b.setAttribute('aria-label',selectedTitle(u)+' · '+statusLabel(status)+(priceInfo&&priceInfo.kind!=='empty'?' · '+priceInfo.text:''));
+				b.setAttribute('aria-pressed',activeUnit&&u.id===activeUnit.id?'true':'false');
+				if(status==='sold'){b.setAttribute('aria-disabled','true');b.tabIndex=-1}
+				var tag=document.createElement('span');
+				tag.className='nlp3d-cell-tag';
+				tag.textContent=(u.line||u.label||u.id);
+				b.appendChild(tag);
+				b.addEventListener('click',function(e){e.preventDefault();e.stopPropagation();if(status==='sold'){return}selectUnit(u.id,'facade-cell')});
+				b.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();if(status!=='sold'){selectUnit(u.id,'facade-cell-key')}}});
+				stagePicks.appendChild(b);
+			});
+		}
 		function renderStagePicks(){
 			if(!stagePicks){return}
+			if(facadePlane){renderApartmentCells();return}
 			stagePicks.innerHTML='';
 			var span=Math.max(1,maxFloor-minFloor);
 			units.forEach(function(u){
@@ -1662,7 +1755,7 @@ if ( ! function_exists( 'nadlan_p3d_inline_js' ) ) {
 		}
 		function syncStagePicks(){
 			if(!stagePicks){return}
-			stagePicks.querySelectorAll('.nlp3d-stage-pick').forEach(function(p){
+			stagePicks.querySelectorAll('.nlp3d-stage-pick,.nlp3d-cell').forEach(function(p){
 				var on=!!(activeUnit&&p.dataset.unit===activeUnit.id);
 				p.classList.toggle('is-active',on);
 				p.setAttribute('aria-pressed',on?'true':'false');
@@ -2377,7 +2470,7 @@ if ( ! function_exists( 'nadlan_p3d_inline_js' ) ) {
 			if(moved>=8){track('drag',{angle:currentAngle})}
 		}
 		scene.addEventListener('pointerdown',function(e){
-			if(dragExcludedTarget(e.target)){return}
+			if(facadePlane||dragExcludedTarget(e.target)){return}
 			startDragAt({x:e.clientX,y:e.clientY},e.pointerId,e.target);
 			if(scene.setPointerCapture){scene.setPointerCapture(e.pointerId)}
 		});
@@ -2392,7 +2485,7 @@ if ( ! function_exists( 'nadlan_p3d_inline_js' ) ) {
 		scene.addEventListener('pointerup',endDrag);
 		scene.addEventListener('pointercancel',endDrag);
 		scene.addEventListener('touchstart',function(e){
-			if(dragExcludedTarget(e.target)||!e.touches||!e.touches[0]){return}
+			if(facadePlane||dragExcludedTarget(e.target)||!e.touches||!e.touches[0]){return}
 			e.preventDefault();
 			startDragAt(eventPoint(e),0,e.target);
 		},{passive:false});
@@ -2498,7 +2591,7 @@ add_action(
 			return;
 		}
 
-		wp_register_style( 'nadlan-p3d', '', array(), '1.65.6' );
+		wp_register_style( 'nadlan-p3d', '', array(), '1.66.0' );
 		wp_enqueue_style( 'nadlan-p3d' );
 		wp_add_inline_style( 'nadlan-p3d', nadlan_p3d_inline_css() );
 		wp_add_inline_style( 'nadlan-p3d', '.nlp3d-drag-note{display:inline-flex;align-items:center;min-height:44px;color:rgba(246,239,226,.72);font-size:12px;padding:0 6px}.nlp3d-scene{touch-action:none;cursor:grab}.nlp3d-scene.is-dragging{cursor:grabbing}.nlp3d-actions{grid-template-columns:1fr}.nlp3d-view-toggle{margin-top:12px;border:1px solid rgba(234,216,163,.36);background:rgba(255,255,255,.06);color:#ffe8a6;padding:9px 12px;cursor:pointer}.nlp3d-view-toggle.is-active{background:rgba(234,216,163,.18);color:#fff}.nlp3d-viewframe{position:relative;margin-top:12px;min-height:150px;overflow:hidden;border:1px solid rgba(234,216,163,.18);background:linear-gradient(180deg,rgba(41,112,139,.58),rgba(8,25,25,.92));isolation:isolate}.nlp3d-view-sky{position:absolute;inset:0;background:radial-gradient(circle at 18% 22%,rgba(255,255,255,.24),transparent 18%),linear-gradient(135deg,rgba(39,107,130,.42),rgba(18,50,43,.1));opacity:.86}.nlp3d-view-lines{position:absolute;inset:auto -8% 18% -8%;height:46%;border-top:1px solid rgba(234,216,163,.28);background:linear-gradient(160deg,rgba(234,216,163,.1),transparent 54%);transform:skewY(-8deg)}.nlp3d-view-copy{position:absolute;right:14px;left:14px;bottom:12px;margin:0;color:#fff8dc;font-size:13px;line-height:1.5;text-shadow:0 1px 12px rgba(0,0,0,.55)}@media(max-width:600px){.nlp3d-drag-note{flex-basis:100%;min-height:24px}.nlp3d-viewframe{min-height:130px}}' );
@@ -2526,6 +2619,7 @@ add_action(
 		wp_add_inline_style( 'nadlan-p3d', nadlan_p3d_showroom_v1644_marker_css() );
 		wp_add_inline_style( 'nadlan-p3d', nadlan_p3d_showroom_v1649_buyer_card_css() );
 		wp_add_inline_style( 'nadlan-p3d', nadlan_p3d_layout_constrained_fix_css() );
+		wp_add_inline_style( 'nadlan-p3d', nadlan_p3d_facade_cell_selector_css() );
 		wp_add_inline_style( 'nadlan-p3d', '.nlp3d.nlp3d-premium{transform:translateX(var(--nlp3d-mobile-nudge,0px));transition:transform .18s ease-out}.nlp3d.nlp3d-premium.is-mobile-edge-fixed{outline:1px solid rgba(234,216,163,.08)}@media(max-width:760px){.entry-content>.nlp3d,.wp-block-post-content>.nlp3d{max-width:calc(100vw - 16px)!important}.nlp3d.nlp3d-premium .nlp3d-model-viewer .nlp3d-mv-hotspot{display:none!important;pointer-events:none!important}.nlp3d.nlp3d-premium .nlp3d-stage-picks{display:block!important}.nlp3d.nlp3d-premium .nlp3d-stage-pick{touch-action:none}.nlp3d.nlp3d-premium .nlp3d-scene{overscroll-behavior:contain}}' );
 		wp_add_inline_style(
 			'nadlan-p3d',
@@ -2559,7 +2653,7 @@ CSS
 			wp_enqueue_script( 'nadlan-model-viewer' );
 		}
 
-		wp_register_script( 'nadlan-p3d', '', array(), '1.65.6', true );
+		wp_register_script( 'nadlan-p3d', '', array(), '1.66.0', true );
 		wp_enqueue_script( 'nadlan-p3d' );
 		wp_add_inline_script( 'nadlan-p3d', nadlan_p3d_inline_js( esc_url_raw( rest_url( 'nadlan/v1/lead' ) ) ) );
 	}
