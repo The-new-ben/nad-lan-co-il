@@ -1,8 +1,9 @@
 #!/usr/bin/env python3
 """Dry-run or apply Rainbow's prototype model payload through WordPress REST.
 
-Default mode is read-only. Use --apply only after PR #163 is merged, the server
-Git copy has been pulled, and you are ready to wire the live Rainbow card.
+Default mode is read-only. Use --apply only after the asset PR is merged, the
+server Git copy has been pulled, the required plugin stack is live, and you are
+ready to wire the live project card.
 
 Environment for --apply:
   WP_BASE_URL       Defaults to https://nad-lan.co.il
@@ -30,18 +31,26 @@ from typing import Any
 
 
 ROOT = Path(__file__).resolve().parents[1]
-META_PATH = ROOT / "assets" / "projects" / "rainbow-tel-aviv" / "project-meta-example.json"
-RAW_BASE = "https://raw.githubusercontent.com/The-new-ben/nad-lan-co-il/{branch}/assets/projects/rainbow-tel-aviv"
+RAW_BASE = "https://raw.githubusercontent.com/The-new-ben/nad-lan-co-il/{branch}/assets/projects/{project_slug}"
+DEFAULT_PROJECT_SLUG = "rainbow-tel-aviv"
 DEFAULT_BASE_URL = "https://nad-lan.co.il"
 DEFAULT_POST_ID = 4464
 GITHUB_RAW_HOST = "raw.githubusercontent.com"
 GITHUB_RAW_OWNER = "The-new-ben"
 GITHUB_RAW_REPO = "nad-lan-co-il"
+REQUIRED_PLUGIN_STACK_VERSION = (1, 63, 3)
 
 
-def load_source_meta(branch: str) -> dict[str, Any]:
-    meta = json.loads(META_PATH.read_text(encoding="utf-8"))
-    raw_base = RAW_BASE.format(branch=branch)
+def meta_path(project_slug: str) -> Path:
+    return ROOT / "assets" / "projects" / project_slug / "project-meta-example.json"
+
+
+def load_source_meta(branch: str, project_slug: str) -> dict[str, Any]:
+    path = meta_path(project_slug)
+    if not path.exists():
+        raise FileNotFoundError(f"Missing project meta file: {path}")
+    meta = json.loads(path.read_text(encoding="utf-8"))
+    raw_base = RAW_BASE.format(branch=branch, project_slug=project_slug)
     meta["project_model_glb"] = f"{raw_base}/model.glb"
     meta["project_model_poster"] = f"{raw_base}/poster.png"
     meta.setdefault("project_model_usdz", "")
@@ -189,9 +198,34 @@ def endpoint(base_url: str, path: str) -> str:
     return urllib.parse.urljoin(base_url.rstrip("/") + "/", path.lstrip("/"))
 
 
-def print_summary(rest_meta: dict[str, str], source: dict[str, Any], post_id: int, *, include_units: bool = False) -> None:
+def version_tuple(value: object) -> tuple[int, ...]:
+    parts: list[int] = []
+    for part in str(value or "").split("."):
+        if not part.isdigit():
+            break
+        parts.append(int(part))
+    return tuple(parts)
+
+
+def plugin_stack_errors(health: dict[str, Any]) -> list[str]:
+    errors: list[str] = []
+    version = str(health.get("version", ""))
+    project_3d = health.get("project_3d", {}) if isinstance(health, dict) else {}
+    if version_tuple(version) < REQUIRED_PLUGIN_STACK_VERSION:
+        errors.append(f"version {version or 'unknown'} < 1.63.3")
+    if not (isinstance(project_3d, dict) and project_3d.get("model_viewer_ready") is True):
+        errors.append("project_3d.model_viewer_ready is not true")
+    if not (isinstance(project_3d, dict) and project_3d.get("unit_meta_rest") is True):
+        errors.append("project_3d.unit_meta_rest is not true")
+    if not (isinstance(project_3d, dict) and project_3d.get("floating_action_rail_v1633") is True):
+        errors.append("project_3d.floating_action_rail_v1633 is not true")
+    return errors
+
+
+def print_summary(rest_meta: dict[str, str], source: dict[str, Any], post_id: int, project_slug: str, *, include_units: bool = False) -> None:
     units = source.get("project_3d_units", [])
-    print("# Rainbow CMS apply summary")
+    print("# Project showroom CMS apply summary")
+    print(f"Project slug: {project_slug}")
     print(f"Post ID: {post_id}")
     print("REST-writable fields:")
     for key, value in rest_meta.items():
@@ -217,7 +251,8 @@ def print_summary(rest_meta: dict[str, str], source: dict[str, Any], post_id: in
 def main() -> int:
     parser = argparse.ArgumentParser()
     parser.add_argument("--branch", default="main", help="GitHub branch/ref for raw asset URLs.")
-    parser.add_argument("--post-id", default=DEFAULT_POST_ID, type=int, help="Rainbow post id.")
+    parser.add_argument("--project-slug", default=DEFAULT_PROJECT_SLUG, help="Asset folder under assets/projects/.")
+    parser.add_argument("--post-id", default=DEFAULT_POST_ID, type=int, help="Target nadlan_project post id.")
     parser.add_argument("--base-url", default=os.getenv("WP_BASE_URL", DEFAULT_BASE_URL))
     parser.add_argument("--apply", action="store_true", help="Write REST-registered fields to WordPress.")
     parser.add_argument(
@@ -225,11 +260,16 @@ def main() -> int:
         action="store_true",
         help="Permit --apply with non-main raw GitHub URLs for explicit temporary QA only.",
     )
+    parser.add_argument(
+        "--skip-plugin-stack-check",
+        action="store_true",
+        help="Permit --apply without live v1.63.3 stack markers. Use only for explicit manual fallback QA.",
+    )
     args = parser.parse_args()
 
-    source = load_source_meta(args.branch)
+    source = load_source_meta(args.branch, args.project_slug)
     rest_meta = build_rest_meta(source, include_units=False)
-    print_summary(rest_meta, source, args.post_id, include_units=False)
+    print_summary(rest_meta, source, args.post_id, args.project_slug, include_units=False)
     unsafe_urls = unsafe_branch_raw_urls(source)
     if unsafe_urls:
         print()
@@ -251,9 +291,32 @@ def main() -> int:
         return 3
     if unsafe_urls and args.allow_branch_assets:
         print(
-            "WARNING: --allow-branch-assets is active. Do not leave the live Rainbow card pointing at draft URLs.",
+            "WARNING: --allow-branch-assets is active. Do not leave the live project card pointing at draft URLs.",
             file=sys.stderr,
         )
+
+    health_url = endpoint(args.base_url, "/wp-json/nadlan/v1/healthcheck")
+    health: dict[str, Any] = {}
+    try:
+        health = request_json("GET", health_url)
+    except RuntimeError as exc:
+        if not args.skip_plugin_stack_check:
+            print(f"ERROR: cannot verify live plugin stack before apply: {exc}", file=sys.stderr)
+            return 4
+        print(f"WARNING: plugin stack healthcheck failed but override is active: {exc}", file=sys.stderr)
+
+    if health:
+        errors = plugin_stack_errors(health)
+        if errors and not args.skip_plugin_stack_check:
+            print("ERROR: refusing --apply until the live plugin stack is ready:", file=sys.stderr)
+            for error in errors:
+                print(f"- {error}", file=sys.stderr)
+            print("Deploy PRs #164, #165 and #166 first, clear cache, then rerun.", file=sys.stderr)
+            return 4
+        if errors and args.skip_plugin_stack_check:
+            print("WARNING: --skip-plugin-stack-check is active despite:", file=sys.stderr)
+            for error in errors:
+                print(f"- {error}", file=sys.stderr)
 
     user = os.getenv("WP_USER", "")
     password = os.getenv("WP_APP_PASSWORD", "")
@@ -267,16 +330,14 @@ def main() -> int:
         args.base_url,
         f"/wp-json/wp/v2/nadlan_project/{args.post_id}?context=edit&_fields=id,slug,status,meta",
     )
-    health_url = endpoint(args.base_url, "/wp-json/nadlan/v1/healthcheck")
-
     me = request_json("GET", me_url, auth=auth)
     print()
     print(f"Authenticated as WordPress user id {me.get('id')} ({me.get('name', 'unknown')}).")
 
     unit_meta_rest = False
-    health: dict[str, Any] = {}
     try:
-        health = request_json("GET", health_url)
+        if not health:
+            health = request_json("GET", health_url)
         project_3d = health.get("project_3d", {}) if isinstance(health, dict) else {}
         unit_meta_rest = bool(project_3d.get("unit_meta_rest"))
         print(

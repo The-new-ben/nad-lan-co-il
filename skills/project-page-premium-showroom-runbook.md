@@ -152,3 +152,12 @@ Despite the historical Rainbow filename, the checker validates any `assets/proje
 folder that follows the same contract. GitHub raw URLs from this repo must point to `main`; custom
 WordPress Media/CDN HTTPS URLs are acceptable and should be verified with `--check-remote-assets`
 before public CMS wiring.
+
+The shared apply helper follows the same future-project pattern:
+
+```powershell
+python scripts\apply-rainbow-cms-payload.py --project-slug <latin-slug> --post-id <project-id> --branch main
+```
+
+In `--apply` mode, it must prove the live plugin stack is ready before asking for WordPress
+credentials. Do not bypass that preflight for a final public page.

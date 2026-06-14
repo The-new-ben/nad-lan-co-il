@@ -118,6 +118,23 @@ $env:WP_APP_PASSWORD='<application-password>'
 python scripts\apply-rainbow-cms-payload.py --branch main --apply
 ```
 
+The apply helper also enforces the plugin-stack preflight before asking for credentials. It refuses
+to write unless live healthcheck proves:
+
+- plugin version at least `1.63.3`,
+- `project_3d.model_viewer_ready=true`,
+- `project_3d.unit_meta_rest=true`,
+- `project_3d.floating_action_rail_v1633=true`.
+
+For a future project using the same asset contract:
+
+```powershell
+python scripts\apply-rainbow-cms-payload.py --project-slug <latin-slug> --post-id <project-id> --branch main
+```
+
+Only use `--skip-plugin-stack-check` for an explicit temporary QA fallback. Do not use it for the
+final public showroom wire-in.
+
 Safety guard: `--apply` refuses to write any `raw.githubusercontent.com/The-new-ben/nad-lan-co-il/<branch>/...`
 asset URL unless the ref is `main`. This prevents a public Rainbow page from depending on a
 temporary PR branch that may be deleted after merge. If an operator intentionally wants a temporary
