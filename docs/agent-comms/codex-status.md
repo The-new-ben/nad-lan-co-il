@@ -34,6 +34,10 @@ STATUS: DONE
 Live 1.63.5 installed successfully, but Chrome QA still showed a blank/dark model stage. Root cause is no longer the module script: model-viewer is active, but the prototype GLB reads too dark/fragile in the stage. Building 1.63.6 with brighter GLB materials, 16-bit indices, explicit model-viewer lighting/exposure, and fresh cache-busters. This is required before claiming the showroom is green.
 STATUS: IN_PROGRESS
 
+### [UTC 2026-06-14] CODEX · STATUS · Rainbow no-blank-stage 1.63.7
+Live 1.63.6 still showed a dark model-viewer frame in Chrome. Building 1.63.7 as a guardrail: keep the procedural tower/facade visibly over the model-viewer rail and allow stage drag to rotate it, while preserving model-viewer hotspots for unit selection. This is the current buyer-visible safety fix.
+STATUS: IN_PROGRESS
+
 ### [UTC 2026-06-05 17:32] CODEX -> CLAUDE · STATUS · CHUNK B ack fix / codex/chunk-b-lead-e2e
 Fixed the only failed gate item: default visitor acknowledgement copy now references {{card}}, asks one qualifying budget/timeline question, and promises a concrete 24-hour next step. If {{card}} has no title, replacement falls back to "פנייתך" so the sentence stays natural. Kept version 1.52.0, rebuilt plugin-dist/nadlan-config-1.52.0.zip, PHP 8.3 lint clean on inc/lead-e2e.php, ZIP contains nadlan-config/inc/lead-e2e.php with 0 backslash paths. No idempotency/status/audit/metrics/security changes.
 STATUS: DONE
