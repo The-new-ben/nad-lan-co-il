@@ -193,6 +193,15 @@ model/facade image, viewBox, floor height, ground elevation, average price estim
 note, model type, GLB, USDZ, poster, video, tour, Cesium/3D Tiles seam, drawings JSON,
 environment JSON, unit JSON and demo flag.
 
+For one-shot project assembly, use the project showroom payload route instead of writing each field
+manually. The canonical contract is:
+
+- `GET /wp-json/nadlan/v1/project-showroom/<project_id>` to export the current payload.
+- `POST /wp-json/nadlan/v1/project-showroom/<project_id>` with either flat fields or
+  `{ "meta": { ... } }` to apply a project data file.
+- The route must be authenticated and must require `current_user_can( 'edit_post', $project_id )`.
+- The route must reuse the same sanitizers as the metabox and registered REST meta.
+
 `project_3d_drawings_json` may be either a flat array of material items or an object with an
 `items` array. `project_3d_environment_json` may be a flat array or a structured object with
 `layers[].items[]`; the plugin must flatten it into safe buyer-facing cards and keep source labels.

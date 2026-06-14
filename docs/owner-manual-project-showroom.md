@@ -242,6 +242,25 @@ important showroom fields are REST-writable and sanitized:
 The project factory should write these fields from one project data file, then the public page must
 still be checked in Chrome.
 
+## One-Payload Project Factory
+
+Developers can export or apply the full showroom payload through the plugin route:
+
+`GET /wp-json/nadlan/v1/project-showroom/<project_id>`
+
+`POST /wp-json/nadlan/v1/project-showroom/<project_id>`
+
+The route requires an authenticated editor who can edit that project. It returns the project title,
+slug, permalink, the allowed showroom fields, current meta values and unit count. A `POST` accepts
+either a flat object with the allowed field names or `{ "meta": { ... } }`.
+
+Use this for the next project run:
+
+1. Prepare `project-meta-example.json` for the project.
+2. POST the payload to the project-showroom route.
+3. Open the WordPress editor only for visual review and small corrections.
+4. Open the public page in Chrome and verify the model, markers, selected card and form.
+
 ## Classic Editor Question
 
 Classic Editor can make old metaboxes easier to see, but it should not be the long-term answer.
