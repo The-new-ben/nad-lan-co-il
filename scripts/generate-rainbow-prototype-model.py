@@ -106,6 +106,39 @@ MATERIALS = [
         "alphaMode": "BLEND",
         "doubleSided": True,
     },
+    {
+        "name": "champagne facade glow",
+        "pbrMetallicRoughness": {
+            "baseColorFactor": [1.0, 0.82, 0.45, 1.0],
+            "metallicFactor": 0.28,
+            "roughnessFactor": 0.32,
+        },
+    },
+    {
+        "name": "coastal sand",
+        "pbrMetallicRoughness": {
+            "baseColorFactor": [0.72, 0.66, 0.52, 1.0],
+            "metallicFactor": 0.0,
+            "roughnessFactor": 0.82,
+        },
+    },
+    {
+        "name": "promenade paving",
+        "pbrMetallicRoughness": {
+            "baseColorFactor": [0.42, 0.47, 0.43, 1.0],
+            "metallicFactor": 0.0,
+            "roughnessFactor": 0.72,
+        },
+    },
+    {
+        "name": "future district silhouette",
+        "pbrMetallicRoughness": {
+            "baseColorFactor": [0.08, 0.18, 0.18, 0.42],
+            "metallicFactor": 0.0,
+            "roughnessFactor": 0.78,
+        },
+        "alphaMode": "BLEND",
+    },
 ]
 
 
@@ -217,6 +250,15 @@ def add_tower(builder: MeshBuilder) -> None:
             for bay in (-0.36, -0.12, 0.12, 0.36):
                 builder.add_box(3, (x + side * (sx / 2 + 0.07), y + 1.32, z + bay * sz), (0.08, 1.45, sz * 0.12), rot_y=rot)
 
+        if floor % 2 == 0:
+            # Thin champagne ribs keep the schematic tower readable while spinning.
+            builder.add_box(8, (x - sx / 2 - 0.12, y + 1.35, z), (0.12, 2.35, sz * 0.72), rot_y=rot)
+            builder.add_box(8, (x + sx / 2 + 0.12, y + 1.35, z), (0.12, 2.35, sz * 0.72), rot_y=rot)
+
+        if floor in {8, 16, 24, 31, 38}:
+            # Demo-unit bands align with the CMS hotspot set without claiming real inventory.
+            builder.add_box(8, (x, y + 1.62, z + sz / 2 + 0.38), (sx * 0.55, 0.26, 0.18), rot_y=rot)
+
     top_y = base_y + floors * floor_h
     # Rooftop crown and amenity terrace.
     builder.add_box(1, (0.6, top_y + 0.9, 0.2), (18.5, 1.1, 13.2), rot_y=0.44)
@@ -250,6 +292,7 @@ def add_boutique_ring(builder: MeshBuilder) -> None:
                 builder.add_box(3, (x + side * (sx / 2 + 0.05), y + 1.15, z), (0.06, 1.25, sz * 0.58), rot_y=rot)
         builder.add_box(6, (x, h + 3.0, z), (sx * 1.04, 0.22, sz * 1.08), rot_y=rot)
         builder.add_box(4, (x + sx * 0.18, h + 3.18, z - sz * 0.14), (sx * 0.24, 0.08, sz * 0.22), rot_y=rot)
+        builder.add_box(8, (x, 2.1, z + sz / 2 + 0.35), (sx * 0.72, 0.18, 0.16), rot_y=rot)
 
 
 def add_site(builder: MeshBuilder) -> None:
@@ -260,8 +303,33 @@ def add_site(builder: MeshBuilder) -> None:
     builder.add_box(4, (0, 0.04, 0), (46, 0.1, 24), rot_y=0.03)
     builder.add_box(4, (-9, 0.06, 3), (22, 0.1, 13), rot_y=0.45)
     builder.add_box(4, (24, 0.05, -7), (12, 0.1, 4.5), rot_y=-0.22)
-    builder.add_box(4, (0, 0.02, 55), (130, 0.08, 14), rot_y=0)
-    builder.add_box(6, (0, 0.08, 43), (112, 0.08, 4.2), rot_y=0)
+    builder.add_box(4, (0, 0.02, 64), (154, 0.08, 26), rot_y=0)
+    builder.add_box(9, (0, 0.055, 49.5), (142, 0.08, 8.5), rot_y=0)
+    builder.add_box(10, (0, 0.10, 41.8), (120, 0.08, 4.2), rot_y=0)
+    builder.add_box(5, (-37, 0.12, 35), (32, 0.08, 5.5), rot_y=0.08)
+    builder.add_box(5, (38, 0.12, 35), (34, 0.08, 5.0), rot_y=-0.07)
+    builder.add_box(10, (-58, 0.13, -4), (3.2, 0.08, 86), rot_y=-0.05)
+    builder.add_box(10, (58, 0.13, -6), (3.2, 0.08, 82), rot_y=0.06)
+
+    # Low surrounding district masses frame the project without fake exact pins.
+    for x, z, sx, sz, h, rot in [
+        (-72, -18, 18, 16, 22, 0.04),
+        (-70, 18, 22, 14, 28, -0.05),
+        (72, -20, 20, 15, 24, -0.04),
+        (74, 17, 24, 14, 30, 0.05),
+        (-26, -58, 30, 12, 18, 0.02),
+        (24, -58, 32, 12, 20, -0.02),
+    ]:
+        builder.add_box(11, (x, h / 2, z), (sx, h, sz), rot_y=rot)
+        for floor_y in range(5, int(h), 7):
+            builder.add_box(7, (x, floor_y, z + sz / 2 + 0.08), (sx * 0.72, 0.18, 0.08), rot_y=rot)
+
+    # Entry court, deck seams and water-edge lines make the model read as an
+    # inspectable showroom object rather than an isolated tower icon.
+    for offset in (-20, -10, 10, 20):
+        builder.add_box(10, (offset, 0.16, -39), (1.2, 0.08, 36), rot_y=0.22)
+    for offset in (-16, 0, 16):
+        builder.add_box(8, (offset, 0.22, 13), (18, 0.08, 0.28), rot_y=0.03)
 
     # Landscape markers / palm-like verticals. Abstract enough to avoid clip-art,
     # but enough to cue the resort setting at model-viewer scale.
@@ -562,7 +630,9 @@ trusted map/source.
 
 - Tower massing: original 42-level spiral-inspired stack, based on public descriptions of a spiral-designed Rainbow tower. It is not traced from any render.
 - Boutique ring: six 8-floor blocks around a central resort court, based on the public complex description.
-- Resort layer: lagoon/pool court, roof amenity hints, landscape markers and coastal strip are schematic cues only.
+- Resort layer: lagoon/pool court, roof amenity hints, landscape markers, coastal strip, promenade and park ribbons are schematic cues only.
+- Context masses: low surrounding silhouettes suggest the future Sde Dov district scale, but are not exact neighboring project pins or approved 3D city data.
+- Facade cues: champagne ribs and highlighted demo-unit bands are interaction/readability aids for the prototype spinner, not official sale elevations.
 - No faces, no copied stock, no copied developer images, no official inventory claims.
 """
     (OUT / "source-notes.md").write_text(source_notes, encoding="utf-8")

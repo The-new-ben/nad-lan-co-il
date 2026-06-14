@@ -55,5 +55,7 @@ trusted map/source.
 
 - Tower massing: original 42-level spiral-inspired stack, based on public descriptions of a spiral-designed Rainbow tower. It is not traced from any render.
 - Boutique ring: six 8-floor blocks around a central resort court, based on the public complex description.
-- Resort layer: lagoon/pool court, roof amenity hints, landscape markers and coastal strip are schematic cues only.
+- Resort layer: lagoon/pool court, roof amenity hints, landscape markers, coastal strip, promenade and park ribbons are schematic cues only.
+- Context masses: low surrounding silhouettes suggest the future Sde Dov district scale, but are not exact neighboring project pins or approved 3D city data.
+- Facade cues: champagne ribs and highlighted demo-unit bands are interaction/readability aids for the prototype spinner, not official sale elevations.
 - No faces, no copied stock, no copied developer images, no official inventory claims.

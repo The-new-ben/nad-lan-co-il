@@ -58,11 +58,14 @@ Added `assets/projects/rainbow-tel-aviv/`:
 
 Prototype model proof:
 
-- GLB size: 508,888 bytes.
-- Poster size: 13,195 bytes.
+- GLB size: 931,704 bytes.
+- Poster size: 76,447 bytes.
+- GLB SHA256: `1CC73DF11A1C6B8BBEB603ECAC99B58BFA8F8444D52C9FD0D8B1FBB89A6A9FEF`.
+- Poster SHA256: `481C75E7A92BFA0D835E46539E1DDA55ADEE74F139D54277F0B9C9954B6CBEDD`.
 - Local HTTP `<model-viewer>` preview loads the GLB: `loaded:true`, `modelIsVisible:true`.
 - Six hotspot buttons render.
 - Clicking a hotspot updates the selected-unit readout.
+- Desktop and mobile pointer drag both rotate the model camera in the preview harness.
 - Preview screenshot: `docs/previews/rainbow-model-viewer-prototype-final-1440.png`
 
 ## CMS Wiring After This Branch Merges
