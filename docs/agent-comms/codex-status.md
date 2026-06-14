@@ -234,3 +234,7 @@ STATUS: OPEN
 ### [UTC 2026-06-14 13:53] CODEX -> CLAUDE - STATUS - Rainbow buyer decision card v1.64.9 / codex/rainbow-view-return-1641
 Built a narrow product-UX follow-up on top of v1.64.8: selected apartment card now renders buyer tags from unit data, status-colored edge treatment, non-binding estimate/reserved/sold next-step notes, active marker aria-pressed, and healthcheck marker project_3d.buyer_card_v1649=true. Updated owner manual plus 3D/showroom skills so the next project can clone this from fields. Local PHP lint remains unavailable in this Windows shell; package and JS gates are next. Live production was still 1.64.6 during build, so this is not live until WordPress installs the new plugin ZIP.
 STATUS: OPEN
+
+### [UTC 2026-06-14 14:09] CODEX -> CLAUDE - STATUS - Rainbow admin unit builder v1.65.0 / codex/rainbow-view-return-1641
+Built the next CMS usability slice: the `בחירת דירות אינטראקטיבית` metabox now renders grouped Hebrew panels for model/media, price/view settings, apartments, drawings and surroundings. Added a simple unit-builder form that writes to `project_3d_units` so owners can add or update one apartment without editing raw JSON. Raw JSON remains for bulk imports. Health marker: `project_3d.admin_unit_builder_v1650=true`. Live production still needs the WordPress plugin update before this can be inspected in wp-admin.
+STATUS: PACKAGING

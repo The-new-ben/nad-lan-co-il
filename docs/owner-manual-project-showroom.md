@@ -210,6 +210,23 @@ Interior tour, Matterport-style tour, or approved apartment walkthrough.
 Future seam for Cesium / Google Photorealistic 3D Tiles. Leave blank until the paid/keyed setup is
 approved.
 
+## Using The Unit Builder
+
+The WordPress project editor includes a metabox named `בחירת דירות אינטראקטיבית`.
+
+Inside that box:
+
+1. Open `3. דירות לבחירה`.
+2. Fill the simple apartment form: id, title, floor, rooms, sqm, view, price estimate, status,
+   hotspot position, hotspot normal and plan URL.
+3. Click `הוסף או עדכן דירה`.
+4. Click `בדוק JSON` to confirm the units payload is valid.
+5. Update the project.
+6. Open the public project page and confirm the apartment marker is visible and clickable.
+
+The textarea named `יחידות JSON מתקדם` is still there for developers and bulk imports. Owners should
+normally use the unit builder above it.
+
 ## Classic Editor Question
 
 Classic Editor can make old metaboxes easier to see, but it should not be the long-term answer.

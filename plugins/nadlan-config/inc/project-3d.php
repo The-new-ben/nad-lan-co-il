@@ -2243,7 +2243,7 @@ add_action(
 			return;
 		}
 
-		wp_register_style( 'nadlan-p3d', '', array(), '1.64.9' );
+		wp_register_style( 'nadlan-p3d', '', array(), '1.65.0' );
 		wp_enqueue_style( 'nadlan-p3d' );
 		wp_add_inline_style( 'nadlan-p3d', nadlan_p3d_inline_css() );
 		wp_add_inline_style( 'nadlan-p3d', '.nlp3d-drag-note{display:inline-flex;align-items:center;min-height:44px;color:rgba(246,239,226,.72);font-size:12px;padding:0 6px}.nlp3d-scene{touch-action:none;cursor:grab}.nlp3d-scene.is-dragging{cursor:grabbing}.nlp3d-actions{grid-template-columns:1fr}.nlp3d-view-toggle{margin-top:12px;border:1px solid rgba(234,216,163,.36);background:rgba(255,255,255,.06);color:#ffe8a6;padding:9px 12px;cursor:pointer}.nlp3d-view-toggle.is-active{background:rgba(234,216,163,.18);color:#fff}.nlp3d-viewframe{position:relative;margin-top:12px;min-height:150px;overflow:hidden;border:1px solid rgba(234,216,163,.18);background:linear-gradient(180deg,rgba(41,112,139,.58),rgba(8,25,25,.92));isolation:isolate}.nlp3d-view-sky{position:absolute;inset:0;background:radial-gradient(circle at 18% 22%,rgba(255,255,255,.24),transparent 18%),linear-gradient(135deg,rgba(39,107,130,.42),rgba(18,50,43,.1));opacity:.86}.nlp3d-view-lines{position:absolute;inset:auto -8% 18% -8%;height:46%;border-top:1px solid rgba(234,216,163,.28);background:linear-gradient(160deg,rgba(234,216,163,.1),transparent 54%);transform:skewY(-8deg)}.nlp3d-view-copy{position:absolute;right:14px;left:14px;bottom:12px;margin:0;color:#fff8dc;font-size:13px;line-height:1.5;text-shadow:0 1px 12px rgba(0,0,0,.55)}@media(max-width:600px){.nlp3d-drag-note{flex-basis:100%;min-height:24px}.nlp3d-viewframe{min-height:130px}}' );
@@ -2279,7 +2279,7 @@ add_action(
 			wp_enqueue_script( 'nadlan-model-viewer' );
 		}
 
-		wp_register_script( 'nadlan-p3d', '', array(), '1.64.9', true );
+		wp_register_script( 'nadlan-p3d', '', array(), '1.65.0', true );
 		wp_enqueue_script( 'nadlan-p3d' );
 		wp_add_inline_script( 'nadlan-p3d', nadlan_p3d_inline_js( esc_url_raw( rest_url( 'nadlan/v1/lead' ) ) ) );
 	}
@@ -2302,6 +2302,238 @@ add_filter(
 	6
 );
 
+if ( ! function_exists( 'nadlan_p3d_render_admin_metabox' ) ) {
+	function nadlan_p3d_render_admin_metabox( $post ) {
+		wp_nonce_field( 'nadlan_p3d_save', 'nadlan_p3d_nonce' );
+
+		$img    = esc_attr( (string) get_post_meta( $post->ID, 'project_3d_image', true ) );
+		$vb     = esc_attr( (string) get_post_meta( $post->ID, 'project_3d_viewbox', true ) );
+		$fh     = esc_attr( (string) get_post_meta( $post->ID, 'project_3d_floor_height_m', true ) );
+		$gm     = esc_attr( (string) get_post_meta( $post->ID, 'project_3d_ground_elevation_m', true ) );
+		$ap     = esc_attr( (string) get_post_meta( $post->ID, 'project_3d_avg_price_per_sqm', true ) );
+		$psn    = esc_attr( (string) get_post_meta( $post->ID, 'project_3d_price_source_note', true ) );
+		$mt     = esc_attr( (string) get_post_meta( $post->ID, 'project_3d_model_type', true ) );
+		$glb    = esc_attr( (string) get_post_meta( $post->ID, 'project_model_glb', true ) );
+		$usdz   = esc_attr( (string) get_post_meta( $post->ID, 'project_model_usdz', true ) );
+		$poster = esc_attr( (string) get_post_meta( $post->ID, 'project_model_poster', true ) );
+		$vu     = esc_attr( (string) get_post_meta( $post->ID, 'project_3d_video_url', true ) );
+		$tu     = esc_attr( (string) get_post_meta( $post->ID, 'project_3d_tour_url', true ) );
+		$cu     = esc_attr( (string) get_post_meta( $post->ID, 'project_3d_cesium_tiles_url', true ) );
+		$dr     = esc_textarea( (string) get_post_meta( $post->ID, 'project_3d_drawings_json', true ) );
+		$env    = esc_textarea( (string) get_post_meta( $post->ID, 'project_3d_environment_json', true ) );
+		$js     = esc_textarea( (string) get_post_meta( $post->ID, 'project_3d_units', true ) );
+		$dm     = get_post_meta( $post->ID, 'project_3d_demo', true ) === '1';
+		?>
+		<style>
+			.nadlan-p3d-admin{direction:rtl;text-align:right;color:#1d2327}
+			.nadlan-p3d-admin *{box-sizing:border-box}
+			.nadlan-p3d-admin-hero{border:1px solid #d6c189;background:linear-gradient(135deg,#fffaf0,#f7f1df);padding:16px 18px;margin:0 0 14px}
+			.nadlan-p3d-admin-hero h3{margin:0 0 6px;font-size:18px}
+			.nadlan-p3d-admin-hero p{margin:0;color:#51483a}
+			.nadlan-p3d-panel{border:1px solid #dcdcde;background:#fff;margin:12px 0}
+			.nadlan-p3d-panel summary{cursor:pointer;font-weight:700;padding:12px 14px;background:#f6f7f7}
+			.nadlan-p3d-panel-inner{padding:14px;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+			.nadlan-p3d-admin label{font-weight:600}
+			.nadlan-p3d-admin label span{display:block;margin-bottom:4px}
+			.nadlan-p3d-admin .widefat{margin-top:3px}
+			.nadlan-p3d-full{grid-column:1/-1}
+			.nadlan-p3d-help{color:#646970;font-size:12px;margin:5px 0 0;line-height:1.45}
+			.nadlan-p3d-builder{border:1px solid #c3c4c7;background:#fbfbfb;padding:12px;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}
+			.nadlan-p3d-builder-actions{grid-column:1/-1;display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+			.nadlan-p3d-unit-list{grid-column:1/-1;display:flex;flex-wrap:wrap;gap:7px;margin-top:4px}
+			.nadlan-p3d-unit-list button{border:1px solid #c3c4c7;background:#fff;padding:6px 9px;cursor:pointer}
+			.nadlan-p3d-unit-list button:hover,.nadlan-p3d-unit-list button:focus{border-color:#8c6d23;box-shadow:0 0 0 1px #8c6d23;outline:none}
+			.nadlan-p3d-json-status{font-weight:700}
+			.nadlan-p3d-json-status.is-ok{color:#007017}
+			.nadlan-p3d-json-status.is-bad{color:#b32d2e}
+			@media(max-width:782px){.nadlan-p3d-panel-inner,.nadlan-p3d-builder{grid-template-columns:1fr}}
+		</style>
+		<div class="nadlan-p3d-admin" data-post-id="<?php echo esc_attr( (string) $post->ID ); ?>">
+			<div class="nadlan-p3d-admin-hero">
+				<h3>מרכז תצוגת הפרויקט</h3>
+				<p>כאן מחברים מודל תלת ממד, תמונת פתיחה, תוכניות, סרטון, סביבת הפרויקט ודירות לבחירה. השדות נשמרים על הפרויקט ומפעילים את תצוגת הבחירה בעמוד הציבורי.</p>
+			</div>
+
+			<details class="nadlan-p3d-panel" open>
+				<summary>1. מודל, תמונה וסרטון</summary>
+				<div class="nadlan-p3d-panel-inner">
+					<label><span>סוג תצוגה</span>
+						<select name="project_3d_model_type" class="widefat">
+							<?php
+							$options = array(
+								'procedural' => 'מודל בסיסי כאשר אין חומר רשמי',
+								'facade'     => 'חזית דו ממדית עם נקודות בחירה',
+								'sprite360'  => 'רצף תמונות 360',
+								'gltf'       => 'GLB אמיתי לדפדפן',
+								'bim'        => 'BIM רשמי של היזם',
+							);
+							foreach ( $options as $value => $label ) {
+								echo '<option value="' . esc_attr( $value ) . '"' . selected( $mt, $value, false ) . '>' . esc_html( $label ) . '</option>';
+							}
+							?>
+						</select>
+					</label>
+					<label><span>תמונת מקור או הדמיה מאושרת</span><input type="url" name="project_3d_image" value="<?php echo $img; ?>" class="widefat" placeholder="https://.../facade.webp"></label>
+					<label class="nadlan-p3d-full"><span>קובץ GLB למודל מסתובב</span><input type="url" name="project_model_glb" value="<?php echo $glb; ?>" class="widefat" placeholder="https://.../rainbow.glb"><p class="nadlan-p3d-help">קישור ישיר לקובץ GLB. בעתיד מחליפים אותו בקובץ BIM/GLB רשמי מהיזם.</p></label>
+					<label><span>Poster קל לפני טעינת המודל</span><input type="url" name="project_model_poster" value="<?php echo $poster; ?>" class="widefat" placeholder="https://.../poster.webp"></label>
+					<label><span>USDZ לאייפון, אופציונלי</span><input type="url" name="project_model_usdz" value="<?php echo $usdz; ?>" class="widefat" placeholder="https://.../project.usdz"></label>
+					<label><span>סרטון מכירה</span><input type="url" name="project_3d_video_url" value="<?php echo $vu; ?>" class="widefat" placeholder="https://youtube.com/..."></label>
+					<label><span>סיור פנים או דירה לדוגמה</span><input type="url" name="project_3d_tour_url" value="<?php echo $tu; ?>" class="widefat" placeholder="https://..."></label>
+					<label class="nadlan-p3d-full"><span>Cesium / Google 3D Tiles עתידי</span><input type="url" name="project_3d_cesium_tiles_url" value="<?php echo $cu; ?>" class="widefat" placeholder="https://..."></label>
+				</div>
+			</details>
+
+			<details class="nadlan-p3d-panel" open>
+				<summary>2. מחיר, גובה ומבט מהדירה</summary>
+				<div class="nadlan-p3d-panel-inner">
+					<label><span>גובה קומה במטרים</span><input type="number" step="0.01" min="2.4" max="5" name="project_3d_floor_height_m" value="<?php echo $fh; ?>" class="widefat" placeholder="3.05"></label>
+					<label><span>גובה קרקע משוער במטרים</span><input type="number" step="0.1" min="-50" max="400" name="project_3d_ground_elevation_m" value="<?php echo $gm; ?>" class="widefat" placeholder="0"></label>
+					<label><span>אומדן מחיר ממוצע למטר</span><input type="number" step="1" min="0" name="project_3d_avg_price_per_sqm" value="<?php echo $ap; ?>" class="widefat" placeholder="0"></label>
+					<label><span>הערה גלויה לאומדן</span><input type="text" name="project_3d_price_source_note" value="<?php echo $psn; ?>" class="widefat" placeholder="אומדן לא מחייב לפי מקור מאושר"></label>
+					<label class="nadlan-p3d-full"><span>viewBox לשכבת SVG ישנה</span><input type="text" name="project_3d_viewbox" value="<?php echo $vb; ?>" class="widefat" placeholder="0 0 1000 1000"></label>
+				</div>
+			</details>
+
+			<details class="nadlan-p3d-panel" open>
+				<summary>3. דירות לבחירה</summary>
+				<div class="nadlan-p3d-panel-inner">
+					<div class="nadlan-p3d-full nadlan-p3d-builder" data-p3d-builder>
+						<label><span>מזהה</span><input type="text" class="widefat" data-u-field="id" placeholder="31A"></label>
+						<label><span>כותרת</span><input type="text" class="widefat" data-u-field="title" placeholder="דירה 31A"></label>
+						<label><span>קומה</span><input type="number" class="widefat" data-u-field="floor" placeholder="12"></label>
+						<label><span>חדרים</span><input type="number" step="0.5" class="widefat" data-u-field="rooms" placeholder="5"></label>
+						<label><span>מטרים</span><input type="number" class="widefat" data-u-field="sqm" placeholder="124"></label>
+						<label><span>כיוון או נוף</span><input type="text" class="widefat" data-u-field="view" placeholder="מערב, נוף לים"></label>
+						<label><span>אומדן מחיר</span><input type="number" class="widefat" data-u-field="price_estimate" placeholder="0"></label>
+						<label><span>סטטוס</span><select class="widefat" data-u-field="status"><option value="available">זמינה</option><option value="reserved">בבדיקה</option><option value="sold">לא זמינה</option></select></label>
+						<label><span>מיקום נקודה במודל</span><input type="text" class="widefat" data-u-field="hotspot_position" placeholder="0m 20m 0m"></label>
+						<label><span>כיוון נקודה במודל</span><input type="text" class="widefat" data-u-field="hotspot_normal" placeholder="0m 0m 1m"></label>
+						<label><span>תוכנית דירה</span><input type="url" class="widefat" data-u-field="plan" placeholder="https://..."></label>
+						<label><span>דירה מומלצת</span><select class="widefat" data-u-field="recommended"><option value="">לא</option><option value="1">כן</option></select></label>
+						<div class="nadlan-p3d-builder-actions">
+							<button type="button" class="button button-primary" data-p3d-add-unit>הוסף או עדכן דירה</button>
+							<button type="button" class="button" data-p3d-clear-unit>נקה טופס</button>
+							<button type="button" class="button" data-p3d-check-json>בדוק JSON</button>
+							<span class="nadlan-p3d-json-status" data-p3d-json-status></span>
+						</div>
+						<div class="nadlan-p3d-unit-list" data-p3d-unit-list></div>
+					</div>
+					<label class="nadlan-p3d-full"><span>יחידות JSON מתקדם</span><textarea name="project_3d_units" rows="10" class="widefat code" data-p3d-units-json><?php echo $js; ?></textarea><p class="nadlan-p3d-help">אפשר לערוך ידנית או להשתמש בטופס מעל. חובה לשמור מזהה, קומה, חדרים, מטרים, סטטוס ומיקום נקודה כדי שהדירה תהיה קליקה על המודל.</p></label>
+				</div>
+			</details>
+
+			<details class="nadlan-p3d-panel">
+				<summary>4. תוכניות, סביבת הפרויקט וחומרי שיווק</summary>
+				<div class="nadlan-p3d-panel-inner">
+					<label class="nadlan-p3d-full"><span>תוכניות JSON</span><textarea name="project_3d_drawings_json" rows="5" class="widefat code"><?php echo $dr; ?></textarea><p class="nadlan-p3d-help">מבנה: [{"label":"תוכנית קומה 12","url":"https://...","type":"plan"}]</p></label>
+					<label class="nadlan-p3d-full"><span>סביבת הפרויקט JSON</span><textarea name="project_3d_environment_json" rows="5" class="widefat code"><?php echo $env; ?></textarea><p class="nadlan-p3d-help">מבנה: [{"label":"פארק החוף","detail":"מרחק הליכה","url":"https://..."}]</p></label>
+				</div>
+			</details>
+
+			<p><label><input type="checkbox" name="project_3d_demo" value="1" <?php checked( $dm, true ); ?>> הצג מודל הדגמה כאשר אין מלאי רשמי</label></p>
+			<p class="description">במצב הדגמה המחיר מוצג כאומדן או לפי פנייה כדי לא להציג נתוני מכירה לא מאומתים.</p>
+		</div>
+		<script>
+		(function(){
+			var script = document.currentScript;
+			var box = script ? script.previousElementSibling : null;
+			if (!box || !box.classList.contains('nadlan-p3d-admin')) { return; }
+			var textarea = box.querySelector('[data-p3d-units-json]');
+			var status = box.querySelector('[data-p3d-json-status]');
+			var list = box.querySelector('[data-p3d-unit-list]');
+			var fields = box.querySelectorAll('[data-u-field]');
+			function readUnits(){
+				var raw = textarea.value.trim();
+				if (!raw) { return []; }
+				var parsed = JSON.parse(raw);
+				return Array.isArray(parsed) ? parsed : [];
+			}
+			function writeUnits(units){
+				textarea.value = JSON.stringify(units, null, 2);
+				renderList();
+				showStatus('JSON תקין, לא לשכוח לעדכן את הפרויקט', true);
+			}
+			function showStatus(text, ok){
+				if (!status) { return; }
+				status.textContent = text;
+				status.className = 'nadlan-p3d-json-status ' + (ok ? 'is-ok' : 'is-bad');
+			}
+			function getField(name){
+				return box.querySelector('[data-u-field="' + name + '"]');
+			}
+			function collectUnit(){
+				var out = {};
+				Array.prototype.forEach.call(fields, function(field){
+					var key = field.getAttribute('data-u-field');
+					var val = (field.value || '').trim();
+					if (val === '') { return; }
+					if (key === 'floor' || key === 'sqm' || key === 'price_estimate' || key === 'rooms') { val = parseFloat(val); }
+					if (key === 'recommended') { val = val === '1'; }
+					out[key] = val;
+				});
+				if (!out.id) { out.id = 'unit-' + Date.now(); }
+				if (!out.title) { out.title = 'דירה ' + out.id; }
+				if (!out.status) { out.status = 'available'; }
+				return out;
+			}
+			function fillUnit(unit){
+				Array.prototype.forEach.call(fields, function(field){
+					var key = field.getAttribute('data-u-field');
+					var val = unit[key];
+					if (key === 'recommended') { field.value = val ? '1' : ''; return; }
+					field.value = val === undefined || val === null ? '' : String(val);
+				});
+			}
+			function clearUnit(){
+				Array.prototype.forEach.call(fields, function(field){ field.value = ''; });
+				var st = getField('status');
+				if (st) { st.value = 'available'; }
+			}
+			function renderList(){
+				if (!list) { return; }
+				var units = [];
+				try { units = readUnits(); } catch(e) { list.innerHTML = ''; return; }
+				list.innerHTML = '';
+				units.forEach(function(unit){
+					var b = document.createElement('button');
+					b.type = 'button';
+					b.textContent = (unit.title || unit.id || 'דירה') + ' · ' + (unit.status || 'available');
+					b.setAttribute('data-unit-id', unit.id || '');
+					b.addEventListener('click', function(){ fillUnit(unit); });
+					list.appendChild(b);
+				});
+			}
+			var add = box.querySelector('[data-p3d-add-unit]');
+			if (add) {
+				add.addEventListener('click', function(){
+					var units;
+					try { units = readUnits(); } catch(e) { showStatus('JSON לא תקין, תקנו לפני הוספה', false); return; }
+					var unit = collectUnit();
+					var replaced = false;
+					units = units.map(function(oldUnit){
+						if (String(oldUnit.id) === String(unit.id)) { replaced = true; return unit; }
+						return oldUnit;
+					});
+					if (!replaced) { units.push(unit); }
+					writeUnits(units);
+				});
+			}
+			var clear = box.querySelector('[data-p3d-clear-unit]');
+			if (clear) { clear.addEventListener('click', clearUnit); }
+			var check = box.querySelector('[data-p3d-check-json]');
+			if (check) {
+				check.addEventListener('click', function(){
+					try { showStatus('JSON תקין: ' + readUnits().length + ' דירות', true); renderList(); }
+					catch(e) { showStatus('JSON לא תקין: ' + e.message, false); }
+				});
+			}
+			renderList();
+		})();
+		</script>
+		<?php
+	}
+}
+
 add_action(
 	'add_meta_boxes',
 	function () {
@@ -2313,6 +2545,9 @@ add_action(
 			'nadlan-p3d',
 			'בחירת דירות אינטראקטיבית',
 			function ( $post ) {
+				nadlan_p3d_render_admin_metabox( $post );
+				return;
+
 				wp_nonce_field( 'nadlan_p3d_save', 'nadlan_p3d_nonce' );
 				$img = esc_attr( (string) get_post_meta( $post->ID, 'project_3d_image', true ) );
 				$vb  = esc_attr( (string) get_post_meta( $post->ID, 'project_3d_viewbox', true ) );
@@ -2466,6 +2701,7 @@ add_filter(
 			'stage_pick_tap_select_v1647' => true,
 			'mobile_edge_guard_v1648' => true,
 			'buyer_card_v1649' => true,
+			'admin_unit_builder_v1650' => true,
 			'showroom_first_view' => true,
 			'static_featured_image_suppressed' => true,
 			'floating_actions_clear' => true,

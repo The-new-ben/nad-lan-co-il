@@ -183,7 +183,9 @@ Owner manual standard:
 2. The manual must explain where the `בחירת דירות אינטראקטיבית` metabox lives in WordPress.
 3. The manual must list the exact fields for GLB, poster, USDZ, unit JSON, drawings, surroundings,
    video, tours, Cesium/3D Tiles seam and price notes.
-4. Classic Editor is only a temporary visibility aid. The durable fix is a clear plugin-owned
+4. The owner path must use a simple unit-builder UI before raw JSON. Raw `project_3d_units` remains
+   for import/debug, not for normal contractor edits.
+5. Classic Editor is only a temporary visibility aid. The durable fix is a clear plugin-owned
    metabox/sidebar plus REST-writable fields.
-5. GitHub merge, plugin update, and field save are not final proof. The buyer-facing page and
+6. GitHub merge, plugin update, and field save are not final proof. The buyer-facing page and
    Chrome screenshots are the proof.

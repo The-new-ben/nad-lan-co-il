@@ -182,6 +182,11 @@ temporary owner comfort tool, but the durable standard is the plugin-owned
 not considered usable until a non-technical owner can find it in the WordPress edit screen and a
 buyer can see the rendered result on the public page.
 
+The metabox must expose a plain unit builder above the raw `project_3d_units` JSON textarea. The
+builder is the owner path for one-off edits: add or update a unit by id, floor, rooms, sqm, status,
+view, estimate, plan URL and model hotspot vectors, then write the sanitized JSON back to the same
+meta field. Raw JSON remains only for bulk import and developer/debug use.
+
 `project_3d_drawings_json` may be either a flat array of material items or an object with an
 `items` array. `project_3d_environment_json` may be a flat array or a structured object with
 `layers[].items[]`; the plugin must flatten it into safe buyer-facing cards and keep source labels.
