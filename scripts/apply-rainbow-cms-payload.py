@@ -96,7 +96,8 @@ def flatten_environment(value: Any) -> list[dict[str, Any]]:
 
     items: list[dict[str, Any]] = []
     district = value.get("district_context")
-    if isinstance(district, dict):
+    if isinstance(district, dict) and district:
+        project = value.get("project") if isinstance(value.get("project"), dict) else {}
         detail_bits = []
         if district.get("planned_units"):
             detail_bits.append(f"{district.get('planned_units'):,} דירות מתוכננות")
@@ -116,6 +117,12 @@ def flatten_environment(value: Any) -> list[dict[str, Any]]:
                 "source": "עיריית תל אביב-יפו / Gov.il / אתר רובע שדה דב",
             }
         )
+        sources = district.get("sources") if isinstance(district.get("sources"), list) else []
+        source_labels = [str(item.get("label")) for item in sources if isinstance(item, dict) and item.get("label")]
+        items[-1]["label"] = str(
+            district.get("label") or district.get("name") or project.get("district") or "District context"
+        )
+        items[-1]["source"] = " / ".join(source_labels) if source_labels else ""
 
     for layer in value.get("layers", []):
         if not isinstance(layer, dict):

@@ -406,15 +406,23 @@ If the GLB fails to load:
 
 For each future project:
 
-1. Create `assets/projects/<latin-slug>/`.
+1. Create the contract scaffold:
+
+```powershell
+python scripts\scaffold-project-showroom.py --project-slug <latin-slug> --project-name "<Project Name>" --post-id <project-id> --city "<city>" --lat <lat> --lng <lng>
+```
+
 2. Generate or receive a model as `model.glb`.
 3. Generate a `poster.png`.
-4. Create `project-meta-example.json` with:
+4. Fill `project-meta-example.json` with:
    - `project_model_glb`,
    - `project_model_poster`,
    - `project_model_usdz`,
    - `project_3d_units`,
-   - `project_3d_drawings_json`.
+   - `project_3d_drawings_json`,
+   - `project_3d_video_url`,
+   - `project_3d_tour_url`,
+   - `project_3d_cesium_tiles_url`.
 5. Every unit must include:
    - stable `id`,
    - `title`,
@@ -430,6 +438,12 @@ For each future project:
    - `source_note`.
 6. If official inventory is missing, show inquiry-only pricing and label the model illustrative.
 7. Run the same 1440/390 browser QA before publishing.
+
+Before applying to WordPress, print the copy/paste payload and review the model/media URLs:
+
+```powershell
+python scripts\prepare-rainbow-cms-payload.py --project-slug <latin-slug> --post-id <project-id> --branch main
+```
 
 The readiness checker defaults to Rainbow. For the next project, keep the same asset contract and
 pass the project slug:

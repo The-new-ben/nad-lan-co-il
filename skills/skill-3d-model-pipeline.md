@@ -203,15 +203,24 @@ Before shipping a project:
 
 ## Countrywide Replication
 
-For every future project, create a project asset folder containing:
+For every future project, create the asset folder with the scaffold helper first:
+
+```powershell
+python scripts\scaffold-project-showroom.py --project-slug <latin-slug> --project-name "<Project Name>" --post-id <project-id> --city "<city>" --lat <lat> --lng <lng>
+```
+
+That command creates the day-zero contract. It is intentionally not public-ready until model assets,
+unit data, source notes and QA are filled. Every future project asset folder must then contain:
 
 - `source-notes.md`
 - `model.glb`
 - `model.usdz` if needed
-- `poster.webp`
+- `poster.png`
 - `unit-map.json`
 - `drawings.json`
 - `environment.json`
+- `material-intake-template.json`
+- `view-layer-config.json`
 - `qa.md`
 
 The plugin should consume URLs and JSON only. Large raw modeling files should live outside the

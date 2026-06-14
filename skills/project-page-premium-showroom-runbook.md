@@ -130,12 +130,24 @@ For Rainbow, use:
 - `docs/qa/2026-06-14-rainbow-glb-cms-wiring-runbook.md`
 - `scripts/prepare-rainbow-cms-payload.py`
 
-For future projects, create the same asset folder and payload helper pattern:
+For future projects, start with the scaffold helper so the project is born with the same data
+contract as Rainbow:
+
+```powershell
+python scripts\scaffold-project-showroom.py --project-slug <latin-slug> --project-name "<Project Name>" --post-id <project-id> --city "<city>" --lat <lat> --lng <lng>
+```
+
+The scaffold is not public-ready. It creates the folder and the required CMS/material contracts so
+official or prototype assets can be filled without inventing a new structure.
+
+Every future project folder should then contain:
 
 1. `assets/projects/<slug>/model.glb`
 2. `assets/projects/<slug>/poster.png`
 3. `assets/projects/<slug>/project-meta-example.json`
-4. A QA/runbook doc that lists the exact post id, model URLs, unit JSON, healthcheck proof and
+4. `unit-map.json`, `drawings.json`, `environment.json`, `material-intake-template.json` and
+   `view-layer-config.json`
+5. A QA/runbook doc that lists the exact post id, model URLs, unit JSON, healthcheck proof and
    browser QA gates.
 
 Do not wire a public page to a draft branch asset unless the owner explicitly approves a temporary
@@ -156,6 +168,7 @@ before public CMS wiring.
 The shared apply helper follows the same future-project pattern:
 
 ```powershell
+python scripts\prepare-rainbow-cms-payload.py --project-slug <latin-slug> --post-id <project-id> --branch main
 python scripts\apply-rainbow-cms-payload.py --project-slug <latin-slug> --post-id <project-id> --branch main
 ```
 

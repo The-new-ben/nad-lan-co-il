@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Print the CMS payload for wiring Rainbow's prototype GLB after PR merge.
+"""Print a project showroom CMS payload after its asset PR merge.
 
 This script is intentionally read-only. It does not call WordPress and does not
 write live metadata. Use it to copy reviewed values into the Studio/admin flow.
@@ -13,8 +13,10 @@ from pathlib import Path
 
 
 ROOT = Path(__file__).resolve().parents[1]
-META_PATH = ROOT / "assets" / "projects" / "rainbow-tel-aviv" / "project-meta-example.json"
-RAW_BASE = "https://raw.githubusercontent.com/The-new-ben/nad-lan-co-il/{branch}/assets/projects/rainbow-tel-aviv"
+DEFAULT_PROJECT_SLUG = "rainbow-tel-aviv"
+DEFAULT_POST_ID = 4464
+DEFAULT_ASSET_ROOT = ROOT / "assets" / "projects"
+RAW_BASE = "https://raw.githubusercontent.com/The-new-ben/nad-lan-co-il/{branch}/assets/projects/{project_slug}"
 
 
 def flatten_environment(value):
@@ -26,7 +28,8 @@ def flatten_environment(value):
 
     items = []
     district = value.get("district_context")
-    if isinstance(district, dict):
+    if isinstance(district, dict) and district:
+        project = value.get("project") if isinstance(value.get("project"), dict) else {}
         detail_bits = []
         if district.get("planned_units"):
             detail_bits.append(f"{district.get('planned_units'):,} דירות מתוכננות")
@@ -46,6 +49,12 @@ def flatten_environment(value):
                 "source": "עיריית תל אביב-יפו / Gov.il / אתר רובע שדה דב",
             }
         )
+        sources = district.get("sources") if isinstance(district.get("sources"), list) else []
+        source_labels = [str(item.get("label")) for item in sources if isinstance(item, dict) and item.get("label")]
+        items[-1]["label"] = str(
+            district.get("label") or district.get("name") or project.get("district") or "District context"
+        )
+        items[-1]["source"] = " / ".join(source_labels) if source_labels else ""
 
     for layer in value.get("layers", []):
         if not isinstance(layer, dict):
@@ -81,26 +90,50 @@ def flatten_environment(value):
 def main() -> int:
     parser = argparse.ArgumentParser()
     parser.add_argument(
+        "--project-slug",
+        default=DEFAULT_PROJECT_SLUG,
+        help="Asset folder under assets/projects/.",
+    )
+    parser.add_argument(
+        "--post-id",
+        type=int,
+        default=DEFAULT_POST_ID,
+        help="Target nadlan_project post id for the copy/paste note.",
+    )
+    parser.add_argument(
         "--branch",
         default="main",
         help="GitHub branch/ref for raw asset URLs. Use main after merge.",
     )
+    parser.add_argument(
+        "--asset-root",
+        type=Path,
+        default=DEFAULT_ASSET_ROOT,
+        help="Folder that contains project asset folders.",
+    )
     args = parser.parse_args()
 
-    meta = json.loads(META_PATH.read_text(encoding="utf-8"))
-    raw_base = RAW_BASE.format(branch=args.branch)
-    meta["project_model_glb"] = f"{raw_base}/model.glb"
-    meta["project_model_poster"] = f"{raw_base}/poster.png"
+    asset_dir = args.asset_root / args.project_slug
+    meta_path = asset_dir / "project-meta-example.json"
+    if not meta_path.exists():
+        raise FileNotFoundError(f"Missing project meta file: {meta_path}")
+
+    meta = json.loads(meta_path.read_text(encoding="utf-8"))
+    raw_base = RAW_BASE.format(branch=args.branch, project_slug=args.project_slug)
+    if (asset_dir / "model.glb").exists():
+        meta["project_model_glb"] = f"{raw_base}/model.glb"
+    if (asset_dir / "poster.png").exists():
+        meta["project_model_poster"] = f"{raw_base}/poster.png"
 
     units = meta.get("project_3d_units", [])
     drawings = meta.get("project_3d_drawings_json", [])
     environment = flatten_environment(meta.get("project_3d_environment_json", []))
 
-    print("# Rainbow Tel Aviv CMS Payload")
+    print(f"# {args.project_slug} CMS Payload")
     print()
-    print("Post ID: 4464")
-    print(f"project_model_glb: {meta['project_model_glb']}")
-    print(f"project_model_poster: {meta['project_model_poster']}")
+    print(f"Post ID: {args.post_id}")
+    print(f"project_model_glb: {meta.get('project_model_glb', '')}")
+    print(f"project_model_poster: {meta.get('project_model_poster', '')}")
     print(f"project_model_usdz: {meta.get('project_model_usdz', '')}")
     print(f"project_3d_video_url: {meta.get('project_3d_video_url', '')}")
     print(f"project_3d_tour_url: {meta.get('project_3d_tour_url', '')}")
@@ -116,7 +149,7 @@ def main() -> int:
     print(json.dumps(environment, ensure_ascii=False, indent=2))
     print()
     print("View layer note:")
-    print("- See assets/projects/rainbow-tel-aviv/view-layer-config.json for Mapbox/Cesium camera,")
+    print(f"- See assets/projects/{args.project_slug}/view-layer-config.json for Mapbox/Cesium camera,")
     print("  unit altitude/bearing, overlay and cost-control rules. It is a handoff/QA contract, not")
     print("  a separate CMS field.")
     print()
@@ -127,10 +160,14 @@ def main() -> int:
     print("- project_3d_units is REST-writable when healthcheck reports project_3d.unit_meta_rest=true.")
     print("- The apply helper intentionally requires the full v1.63.4 stack before public GLB wiring:")
     print("  model_viewer_ready, unit_meta_rest, floating_action_rail_v1633 and rainbow_seo_v1634.")
-    print("- Optional helper after that stack is live: python scripts\\apply-rainbow-cms-payload.py --branch main --apply")
+    print(
+        "- Optional helper after that stack is live: "
+        f"python scripts\\apply-rainbow-cms-payload.py --project-slug {args.project_slug} "
+        f"--post-id {args.post_id} --branch main --apply"
+    )
     print()
     print("QA after write:")
-    print("- Clear cache and hard refresh /projects/rainbow-tel-aviv/.")
+    print("- Clear cache and hard refresh the target project URL.")
     print("- Confirm <model-viewer> renders and hotspots select units.")
     print("- Confirm /wp-json/nadlan/v1/healthcheck reports projects_with_glb >= 1.")
     print("- Keep inquiry-only and illustrative-model disclaimers until official BIM/inventory arrives.")
