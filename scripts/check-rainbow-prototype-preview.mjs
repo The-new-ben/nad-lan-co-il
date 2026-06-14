@@ -294,7 +294,64 @@ const INTERACTION_EXPRESSION = `(() => {
   };
 })()`;
 
-function evaluate(metrics, interaction) {
+const MODEL_ORBIT_EXPRESSION = `(() => {
+  const model = document.querySelector('model-viewer');
+  if (!model || typeof model.getCameraOrbit !== 'function') return null;
+  const orbit = model.getCameraOrbit();
+  const toNumber = (value) => {
+    if (typeof value === 'number') return value;
+    if (value && typeof value.number === 'number') return value.number;
+    const parsed = Number.parseFloat(String(value));
+    return Number.isFinite(parsed) ? parsed : null;
+  };
+  return {
+    theta: toNumber(orbit.theta),
+    phi: toNumber(orbit.phi),
+    radius: toNumber(orbit.radius),
+    text: String(orbit.theta) + ' ' + String(orbit.phi) + ' ' + String(orbit.radius),
+  };
+})()`;
+
+async function dragModel(cdp) {
+  const probe = await cdp.send('Runtime.evaluate', {
+    expression: `(() => {
+      const model = document.querySelector('model-viewer');
+      if (!model) return null;
+      const r = model.getBoundingClientRect();
+      return { x: Math.round(r.x + r.width * 0.5), y: Math.round(r.y + r.height * 0.5), width: Math.round(r.width), height: Math.round(r.height) };
+    })()`,
+    returnByValue: true,
+  });
+  const rect = probe.result.value;
+  const beforeResult = await cdp.send('Runtime.evaluate', { expression: MODEL_ORBIT_EXPRESSION, returnByValue: true });
+  const before = beforeResult.result.value;
+  if (!rect || rect.width < 20 || rect.height < 20 || !before) {
+    return { attempted: false, before, after: null, changed: false, rect };
+  }
+  const startX = rect.x;
+  const startY = rect.y;
+  await cdp.send('Input.dispatchMouseEvent', { type: 'mouseMoved', x: startX, y: startY, button: 'none' });
+  await cdp.send('Input.dispatchMouseEvent', { type: 'mousePressed', x: startX, y: startY, button: 'left', clickCount: 1 });
+  await cdp.send('Input.dispatchMouseEvent', { type: 'mouseMoved', x: startX + 170, y: startY + 18, button: 'left', buttons: 1 });
+  await cdp.send('Input.dispatchMouseEvent', { type: 'mouseMoved', x: startX + 230, y: startY + 24, button: 'left', buttons: 1 });
+  await cdp.send('Input.dispatchMouseEvent', { type: 'mouseReleased', x: startX + 230, y: startY + 24, button: 'left', clickCount: 1 });
+  await new Promise((resolve) => setTimeout(resolve, 700));
+  const afterResult = await cdp.send('Runtime.evaluate', { expression: MODEL_ORBIT_EXPRESSION, returnByValue: true });
+  const after = afterResult.result.value;
+  const numericDelta = before && after && Number.isFinite(before.theta) && Number.isFinite(after.theta)
+    ? Math.abs(after.theta - before.theta)
+    : 0;
+  return {
+    attempted: true,
+    rect,
+    before,
+    after,
+    thetaDelta: numericDelta,
+    changed: Boolean(after && (numericDelta > 0.01 || after.text !== before.text)),
+  };
+}
+
+function evaluate(metrics, interaction, drag) {
   const checks = [];
   const add = (status, name, detail) => checks.push({ status, name, detail });
   add(metrics.h1.length === 1 ? 'PASS' : 'FAIL', 'single preview H1', `${metrics.h1.length}`);
@@ -307,6 +364,7 @@ function evaluate(metrics, interaction) {
   add(metrics.hotspots >= 6 ? 'PASS' : 'FAIL', 'hotspots present', `${metrics.hotspots}`);
   add(metrics.visibleHotspots >= 1 ? 'PASS' : 'WARN', 'at least one visible hotspot', `${metrics.visibleHotspots}`);
   add(metrics.smallTargets.length === 0 ? 'PASS' : 'FAIL', '44px hotspot targets', metrics.smallTargets.length ? JSON.stringify(metrics.smallTargets) : 'all visible hotspots >=44px');
+  add(drag && drag.changed ? 'PASS' : 'FAIL', 'drag rotates model camera', JSON.stringify(drag));
   add(interaction.changed ? 'PASS' : 'FAIL', 'hotspot click updates readout', JSON.stringify(interaction));
   add(metrics.errors.length === 0 ? 'PASS' : 'FAIL', 'no browser errors', metrics.errors.join(' | ') || 'none');
   add(metrics.bodyHasFatal ? 'FAIL' : 'PASS', 'no visible fatal text', metrics.bodyHasFatal ? 'fatal text found' : 'none');
@@ -347,6 +405,7 @@ async function runViewport(chromePort, url, outDir, viewport) {
     awaitPromise: true,
     returnByValue: true,
   });
+  const drag = await dragModel(cdp);
   const interactionResult = await cdp.send('Runtime.evaluate', {
     expression: INTERACTION_EXPRESSION,
     returnByValue: true,
@@ -366,7 +425,8 @@ async function runViewport(chromePort, url, outDir, viewport) {
     screenshot: path.relative(ROOT, screenshotPath).replaceAll('\\', '/'),
     metrics,
     interaction,
-    checks: evaluate(metrics, interaction),
+    drag,
+    checks: evaluate(metrics, interaction, drag),
   };
 }
 

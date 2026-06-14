@@ -1,5 +1,5 @@
 {
-  "url": "http://127.0.0.1:54006/docs/previews/rainbow-model-viewer-prototype.html",
+  "url": "http://127.0.0.1:54246/docs/previews/rainbow-model-viewer-prototype.html",
   "results": [
     {
       "viewport": "prototype-desktop-1440",
@@ -65,6 +65,29 @@
         "after": "דירת 3 חדרים, קומה 8 · מבט לחצר ולים\nאומדן, זמינות ותוכניות ייטענו ממקור מאושר דרך ה-CMS.",
         "changed": true
       },
+      "drag": {
+        "attempted": true,
+        "rect": {
+          "x": 713,
+          "y": 540,
+          "width": 1178,
+          "height": 780
+        },
+        "before": {
+          "theta": 0.6108652381980153,
+          "phi": 1.0995574287564276,
+          "radius": 448.7908984247469,
+          "text": "0.6108652381980153 1.0995574287564276 448.7908984247469"
+        },
+        "after": {
+          "theta": -1.2418688908421192,
+          "phi": 0.9062286500739788,
+          "radius": 448.7908984247469,
+          "text": "-1.2418688908421192 0.9062286500739788 448.7908984247469"
+        },
+        "thetaDelta": 1.8527341290401345,
+        "changed": true
+      },
       "checks": [
         {
           "status": "PASS",
@@ -110,6 +133,11 @@
           "status": "PASS",
           "name": "44px hotspot targets",
           "detail": "all visible hotspots >=44px"
+        },
+        {
+          "status": "PASS",
+          "name": "drag rotates model camera",
+          "detail": "{\"attempted\":true,\"rect\":{\"x\":713,\"y\":540,\"width\":1178,\"height\":780},\"before\":{\"theta\":0.6108652381980153,\"phi\":1.0995574287564276,\"radius\":448.7908984247469,\"text\":\"0.6108652381980153 1.0995574287564276 448.7908984247469\"},\"after\":{\"theta\":-1.2418688908421192,\"phi\":0.9062286500739788,\"radius\":448.7908984247469,\"text\":\"-1.2418688908421192 0.9062286500739788 448.7908984247469\"},\"thetaDelta\":1.8527341290401345,\"changed\":true}"
         },
         {
           "status": "PASS",
@@ -222,6 +250,29 @@
         "after": "דירת 3 חדרים, קומה 8 · מבט לחצר ולים\nאומדן, זמינות ותוכניות ייטענו ממקור מאושר דרך ה-CMS.",
         "changed": true
       },
+      "drag": {
+        "attempted": true,
+        "rect": {
+          "x": 195,
+          "y": 342,
+          "width": 364,
+          "height": 430
+        },
+        "before": {
+          "theta": 0.6108652381980153,
+          "phi": 1.0995574287564276,
+          "radius": 448.7908984247469,
+          "text": "0.6108652381980153 1.0995574287564276 448.7908984247469"
+        },
+        "after": {
+          "theta": -2.749908298200368,
+          "phi": 0.7488680162626832,
+          "radius": 448.7908984247469,
+          "text": "-2.749908298200368 0.7488680162626832 448.7908984247469"
+        },
+        "thetaDelta": 3.3607735363983835,
+        "changed": true
+      },
       "checks": [
         {
           "status": "PASS",
@@ -267,6 +318,11 @@
           "status": "PASS",
           "name": "44px hotspot targets",
           "detail": "all visible hotspots >=44px"
+        },
+        {
+          "status": "PASS",
+          "name": "drag rotates model camera",
+          "detail": "{\"attempted\":true,\"rect\":{\"x\":195,\"y\":342,\"width\":364,\"height\":430},\"before\":{\"theta\":0.6108652381980153,\"phi\":1.0995574287564276,\"radius\":448.7908984247469,\"text\":\"0.6108652381980153 1.0995574287564276 448.7908984247469\"},\"after\":{\"theta\":-2.749908298200368,\"phi\":0.7488680162626832,\"radius\":448.7908984247469,\"text\":\"-2.749908298200368 0.7488680162626832 448.7908984247469\"},\"thetaDelta\":3.3607735363983835,\"changed\":true}"
         },
         {
           "status": "PASS",

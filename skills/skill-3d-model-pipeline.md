@@ -189,9 +189,10 @@ Before shipping a project:
   unit a numeric altitude and bearing for view-from-apartment QA.
 - Before live CMS wire-in, run the local model preview browser gate:
   `node scripts/check-rainbow-prototype-preview.mjs` (or the project-specific equivalent). It must
-  prove the GLB loads at 1440px and 390px, hotspots exist, hotspot tap/click changes the unit
-  readout, tap targets are at least 44px, drawings/environment/media slots render from the project
-  JSON, Mapbox/Cesium view policy remains user-opened/lazy, and screenshots are captured.
+  prove the GLB loads at 1440px and 390px, a real browser drag changes the model camera orbit,
+  hotspots exist, hotspot tap/click changes the unit readout, tap targets are at least 44px,
+  drawings/environment/media slots render from the project JSON, Mapbox/Cesium view policy remains
+  user-opened/lazy, and screenshots are captured.
 - Confirm the local model preview screenshot shows `loaded:true` / actual GLB visible, not only the
   poster image.
 - Confirm the page still has one H1 and the article body remains readable below the showroom.
@@ -201,8 +202,9 @@ Before shipping a project:
 - For Rainbow-style projects, the final proof should be one combined command such as
   `python scripts/check-rainbow-finish-line.py`: healthcheck prerequisites, page assembly,
   GLB readiness and real-browser DOM must pass together. The live DOM gate must include the
-  material layer (`--expect-materials` or the project-specific equivalent): selecting a unit and
-  opening drawings, surroundings and media must render CMS-backed cards, not only a spinning shell.
+  product interaction and material layer (`--expect-glb --expect-materials` or the project-specific
+  equivalent): a real browser drag must change the model camera, and selecting a unit then opening
+  drawings, surroundings and media must render CMS-backed cards, not only a static shell.
 
 ## Countrywide Replication
 

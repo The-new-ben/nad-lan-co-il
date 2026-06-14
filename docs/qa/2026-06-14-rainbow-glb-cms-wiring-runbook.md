@@ -367,6 +367,7 @@ This gate checks the rendered page at 1440px and 390px for:
 - model-viewer/fallback state,
 - visible showroom tap targets below 44px,
 - model-viewer hotspot presence when `--expect-glb` is used,
+- real product interaction: a browser-level drag over `<model-viewer>` changes the camera orbit,
 - buyer action: tapping a hotspot/facade/unit target updates the selected-unit title, stage card and
   active state,
 - material action: after selecting a unit, the drawing, surroundings and media tools are reachable;

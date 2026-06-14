@@ -312,7 +312,64 @@ const INTERACTION_EXPRESSION = `(async () => {
   };
 })()`;
 
-function evaluateChecks(metrics, expectGlb, expectMaterials, interaction) {
+const MODEL_ORBIT_EXPRESSION = `(() => {
+  const model = document.querySelector('model-viewer');
+  if (!model || typeof model.getCameraOrbit !== 'function') return null;
+  const orbit = model.getCameraOrbit();
+  const toNumber = (value) => {
+    if (typeof value === 'number') return value;
+    if (value && typeof value.number === 'number') return value.number;
+    const parsed = Number.parseFloat(String(value));
+    return Number.isFinite(parsed) ? parsed : null;
+  };
+  return {
+    theta: toNumber(orbit.theta),
+    phi: toNumber(orbit.phi),
+    radius: toNumber(orbit.radius),
+    text: String(orbit.theta) + ' ' + String(orbit.phi) + ' ' + String(orbit.radius),
+  };
+})()`;
+
+async function dragModel(cdp) {
+  const probe = await cdp.send('Runtime.evaluate', {
+    expression: `(() => {
+      const model = document.querySelector('model-viewer');
+      if (!model) return null;
+      const r = model.getBoundingClientRect();
+      return { x: Math.round(r.x + r.width * 0.5), y: Math.round(r.y + r.height * 0.5), width: Math.round(r.width), height: Math.round(r.height) };
+    })()`,
+    returnByValue: true,
+  });
+  const rect = probe.result.value;
+  const beforeResult = await cdp.send('Runtime.evaluate', { expression: MODEL_ORBIT_EXPRESSION, returnByValue: true });
+  const before = beforeResult.result.value;
+  if (!rect || rect.width < 20 || rect.height < 20 || !before) {
+    return { attempted: false, before, after: null, changed: false, rect };
+  }
+  const startX = rect.x;
+  const startY = rect.y;
+  await cdp.send('Input.dispatchMouseEvent', { type: 'mouseMoved', x: startX, y: startY, button: 'none' });
+  await cdp.send('Input.dispatchMouseEvent', { type: 'mousePressed', x: startX, y: startY, button: 'left', clickCount: 1 });
+  await cdp.send('Input.dispatchMouseEvent', { type: 'mouseMoved', x: startX + 170, y: startY + 18, button: 'left', buttons: 1 });
+  await cdp.send('Input.dispatchMouseEvent', { type: 'mouseMoved', x: startX + 230, y: startY + 24, button: 'left', buttons: 1 });
+  await cdp.send('Input.dispatchMouseEvent', { type: 'mouseReleased', x: startX + 230, y: startY + 24, button: 'left', clickCount: 1 });
+  await new Promise((resolve) => setTimeout(resolve, 700));
+  const afterResult = await cdp.send('Runtime.evaluate', { expression: MODEL_ORBIT_EXPRESSION, returnByValue: true });
+  const after = afterResult.result.value;
+  const numericDelta = before && after && Number.isFinite(before.theta) && Number.isFinite(after.theta)
+    ? Math.abs(after.theta - before.theta)
+    : 0;
+  return {
+    attempted: true,
+    rect,
+    before,
+    after,
+    thetaDelta: numericDelta,
+    changed: Boolean(after && (numericDelta > 0.01 || after.text !== before.text)),
+  };
+}
+
+function evaluateChecks(metrics, expectGlb, expectMaterials, interaction, drag) {
   const checks = [];
   const add = (status, name, detail) => checks.push({ status, name, detail });
   add(metrics.h1.length === 1 ? 'PASS' : 'FAIL', 'single H1', `${metrics.h1.length}`);
@@ -325,8 +382,12 @@ function evaluateChecks(metrics, expectGlb, expectMaterials, interaction) {
     add(goodModel ? 'PASS' : 'FAIL', 'model-viewer visible', JSON.stringify(metrics.modelViewerRect));
     add(metrics.modelViewerError ? 'FAIL' : 'PASS', 'model-viewer did not error', metrics.modelViewerError ? 'has-model-viewer-error present' : 'no error class');
     add(metrics.modelHotspots > 0 ? 'PASS' : 'FAIL', 'model-viewer hotspots present', `${metrics.modelHotspots}`);
+    add(drag && drag.changed ? 'PASS' : 'FAIL', 'drag rotates model camera', JSON.stringify(drag));
   } else {
     add(metrics.hasModelViewer ? 'PASS' : 'WARN', 'model-viewer visible', metrics.hasModelViewer ? JSON.stringify(metrics.modelViewerRect) : 'not wired yet');
+    if (metrics.hasModelViewer) {
+      add(drag && drag.changed ? 'PASS' : 'WARN', 'drag rotates model camera', JSON.stringify(drag));
+    }
   }
   add(metrics.hasFallbackTower || metrics.hasModelViewer ? 'PASS' : 'FAIL', 'model or fallback visible', `fallback=${metrics.hasFallbackTower}, model=${metrics.hasModelViewer}`);
   add(metrics.featuredImageVisible ? 'WARN' : 'PASS', 'static featured image suppressed', metrics.featuredImageVisible ? JSON.stringify(metrics.featuredImageRect) : 'not visible');
@@ -367,6 +428,7 @@ async function runViewport(browserPort, url, outDir, viewport, expectGlb, expect
     awaitPromise: true,
   });
   const interaction = evalResult.result.value;
+  const drag = await dragModel(cdp);
   const metricsResult = await cdp.send('Runtime.evaluate', {
     expression: METRICS_EXPRESSION,
     returnByValue: true,
@@ -385,7 +447,8 @@ async function runViewport(browserPort, url, outDir, viewport, expectGlb, expect
     screenshot: screenshotPath.replaceAll('\\\\', '/'),
     metrics,
     interaction,
-    checks: evaluateChecks(metrics, expectGlb, expectMaterials, interaction),
+    drag,
+    checks: evaluateChecks(metrics, expectGlb, expectMaterials, interaction, drag),
   };
 }
 
