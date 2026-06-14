@@ -165,3 +165,19 @@ credentials. Do not bypass that preflight for a final public page.
 After writing, the helper must verify the REST response, not only trust that the request succeeded:
 exact GLB/poster/model values, drawing/environment counts, and, when unit REST support is live, unit
 count plus unit ids. A mismatch means the project is not CMS-wired yet.
+
+## Page Assembly And SEO Gate
+
+A project showroom is not finished when the 3D model works. The page also needs a premium indexed
+content shell with one visible H1, guide assembly, transactional title/meta, FAQ schema, price/schema
+disclaimers and enough buyer-language depth.
+
+For Rainbow, run:
+
+```powershell
+python scripts\check-rainbow-page-assembly.py --strict
+```
+
+The checker validates the public page, healthcheck assembly flags, JSON-LD, visible word count,
+transactional keyword counts, title/meta direction and public rendering leaks. Future cloned projects
+should get the same checker generalized to their slug and post id before launch.
