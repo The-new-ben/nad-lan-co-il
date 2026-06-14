@@ -43,9 +43,12 @@ plain WordPress article.
    payload.
 4. Map view is user-opened and lazy-loaded to control Mapbox costs.
 5. Register Mapbox RTL text plugin before creating a map with Hebrew labels.
-6. Drawings, floor plans and real inventory are optional CMS fields. If absent, show a clear request
+6. Nearby projects without verified coordinates may use bounded `showroom_position` values for
+   schematic model-side labels only. Never promote those values into Mapbox, Cesium or public map
+   pins.
+7. Drawings, floor plans and real inventory are optional CMS fields. If absent, show a clear request
    path instead of faking a plan.
-7. Price can be:
+8. Price can be:
    - official unit price,
    - explicit unit estimate,
    - project average per sqm estimate,

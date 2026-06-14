@@ -113,7 +113,7 @@
     {
       "id": "neighbor_projects",
       "source": "project_3d_environment_json",
-      "render_policy": "Only show clickable pins for verified coordinates; otherwise show source-aware cards."
+      "render_policy": "Use showroom_position for schematic model-side labels; only show Mapbox/Cesium pins for verified coordinates."
     },
     {
       "id": "parks_and_coast",

@@ -32,6 +32,15 @@ RAINBOW_LAT = 32.1108
 RAINBOW_LNG = 34.7805
 RAINBOW_GROUND_ELEVATION_M = 8.0
 RAINBOW_FLOOR_HEIGHT_M = 3.05
+SHOWROOM_PROJECT_POSITIONS = {
+    "rainbow": {"x": 0, "z": 0, "scale": 1.0, "precision": "current_project"},
+    "dimri-yama": {"x": -48, "z": -18, "scale": 0.72, "precision": "illustrative_relative"},
+    "gindi-vogue": {"x": 48, "z": -22, "scale": 0.78, "precision": "illustrative_relative"},
+    "ashira": {"x": -38, "z": 26, "scale": 0.68, "precision": "illustrative_relative"},
+    "first-by-hagag": {"x": 38, "z": 28, "scale": 0.74, "precision": "illustrative_relative"},
+    "zohi": {"x": -18, "z": -45, "scale": 0.62, "precision": "illustrative_relative"},
+    "utopia": {"x": 20, "z": -46, "scale": 0.62, "precision": "illustrative_relative"},
+}
 
 
 MATERIALS = [
@@ -330,6 +339,18 @@ def add_site(builder: MeshBuilder) -> None:
         builder.add_box(10, (offset, 0.16, -39), (1.2, 0.08, 36), rot_y=0.22)
     for offset in (-16, 0, 16):
         builder.add_box(8, (offset, 0.22, 13), (18, 0.08, 0.28), rot_y=0.03)
+
+    # Schematic nearby-project markers. These are relative showroom positions,
+    # not survey coordinates or clickable map pins.
+    for project_id, pos in SHOWROOM_PROJECT_POSITIONS.items():
+        if project_id == "rainbow":
+            continue
+        x = float(pos["x"])
+        z = float(pos["z"])
+        scale = float(pos.get("scale", 0.7))
+        builder.add_box(8, (x, 0.52, z), (3.0 * scale, 0.42, 3.0 * scale), rot_y=0.1)
+        builder.add_box(1, (x, 2.1 + scale, z), (1.2 * scale, 3.0 * scale, 1.2 * scale), rot_y=0.18)
+        builder.add_box(2, (x, 3.82 + scale * 2.0, z), (4.6 * scale, 0.16, 1.1 * scale), rot_y=-0.12)
 
     # Landscape markers / palm-like verticals. Abstract enough to avoid clip-art,
     # but enough to cue the resort setting at model-viewer scale.
@@ -631,7 +652,7 @@ trusted map/source.
 - Tower massing: original 42-level spiral-inspired stack, based on public descriptions of a spiral-designed Rainbow tower. It is not traced from any render.
 - Boutique ring: six 8-floor blocks around a central resort court, based on the public complex description.
 - Resort layer: lagoon/pool court, roof amenity hints, landscape markers, coastal strip, promenade and park ribbons are schematic cues only.
-- Context masses: low surrounding silhouettes suggest the future Sde Dov district scale, but are not exact neighboring project pins or approved 3D city data.
+- Context masses: low surrounding silhouettes and champagne project markers suggest the future Sde Dov district scale, but are not exact neighboring project pins or approved 3D city data.
 - Facade cues: champagne ribs and highlighted demo-unit bands are interaction/readability aids for the prototype spinner, not official sale elevations.
 - No faces, no copied stock, no copied developer images, no official inventory claims.
 """
@@ -644,7 +665,8 @@ trusted map/source.
 - `model.glb`: original lightweight architectural massing of the Rainbow tower, boutique ring and central amenity court.
 - `poster.png`: lightweight poster for `<model-viewer>` before the GLB reveals.
 - `unit-map.json`: demo unit records with model-viewer hotspot coordinates.
-- `project-meta-example.json`: copy/paste map for the CMS fields added in v1.63.0.
+- `project-meta-example.json`: CMS payload map for the model fields in v1.63.0 and the REST unit
+  write gate added in the follow-up v1.63.2 stack.
 - `plans/*.svg`: original schematic unit/site plans for the prototype plan overlay.
 - `drawings.json`: prototype drawing map plus slots for official elevation/floor/site drawings.
 - `environment.json`: surroundings starter data to be replaced by the map/POI layer.
@@ -679,16 +701,19 @@ Expected:
 - `view-layer-config.json` keeps the default state building-first, defines user-opened map/tiles
   behavior, and gives each unit a derived altitude and bearing for view-from-apartment QA.
 
-## Browser Gate After v1.63.0 Is Installed
+## Browser Gate After The Full v1.63.4 Stack Is Installed
 
-1. Upload `model.glb` and `poster.png` to WordPress Media or serve from GitHub raw/CDN.
-2. Set `project_model_glb`, `project_model_poster`, `project_3d_units`, `project_3d_drawings_json` and `project_3d_environment_json` from `project-meta-example.json`.
-3. Open `/projects/rainbow-tel-aviv/`.
-4. Confirm the procedural fallback remains visible until the model loads.
-5. Confirm the GLB becomes the stage, drag rotates the building, and each hotspot selects the matching unit.
-6. Confirm the plan overlay opens the relevant schematic plan for each selected unit.
-7. Confirm lead/compare/map actions still carry the selected unit.
-8. Confirm mobile has no horizontal overflow and no nested gray scrollbars.
+1. Merge/deploy the full stack: v1.63.1 tap targets, v1.63.2 unit REST wiring,
+   v1.63.3 contact-rail containment and v1.63.4 page assembly/SEO.
+2. Pull/sync the UPress server Git copy, update/upload the plugin, clear cache and verify healthcheck.
+3. Upload `model.glb` and `poster.png` to WordPress Media or serve from GitHub raw/CDN.
+4. Set `project_model_glb`, `project_model_poster`, `project_3d_units`, `project_3d_drawings_json` and `project_3d_environment_json` from `project-meta-example.json`.
+5. Open `/projects/rainbow-tel-aviv/`.
+6. Confirm the procedural fallback remains visible until the model loads.
+7. Confirm the GLB becomes the stage, drag rotates the building, and each hotspot selects the matching unit.
+8. Confirm the plan overlay opens the relevant schematic plan for each selected unit.
+9. Confirm lead/compare/map actions still carry the selected unit.
+10. Confirm mobile has no horizontal overflow, no nested gray scrollbars, and no showroom tap target below 44px.
 
 ## Honest Boundary
 
@@ -707,6 +732,19 @@ def environment_payload() -> dict[str, object]:
 
     sde_dov_projects_url = "https://sdedov.co.il/projects/"
     municipal_url = "https://www.tel-aviv.gov.il/Residents/Development/Pages/SdeDov.aspx"
+
+    def showroom_position(project_id: str) -> dict[str, object]:
+        pos = dict(SHOWROOM_PROJECT_POSITIONS[project_id])
+        pos.update(
+            {
+                "space": "relative_showroom",
+                "unit": "model_meters",
+                "relative_to": "rainbow-stage-origin",
+                "do_not_use_as_map_pin": True,
+            }
+        )
+        return pos
+
     return {
         "status": "prototype_sourced",
         "updated": "2026-06-14",
@@ -765,6 +803,7 @@ def environment_payload() -> dict[str, object]:
                         "area": "אשכול",
                         "status": "בשיווק / היתר בנייה לפי אתר המידע",
                         "map_status": "has_project_page",
+                        "showroom_position": showroom_position("rainbow"),
                         "source_url": sde_dov_projects_url,
                         "source_note": "Listed by the Sde Dov information site as a marketed project.",
                     },
@@ -774,6 +813,7 @@ def environment_payload() -> dict[str, object]:
                         "area": "אשכול",
                         "status": "בשיווק",
                         "map_status": "needs_precise_pin",
+                        "showroom_position": showroom_position("dimri-yama"),
                         "source_url": sde_dov_projects_url,
                         "source_note": "Listed by the Sde Dov information site as a marketed project.",
                     },
@@ -783,6 +823,7 @@ def environment_payload() -> dict[str, object]:
                         "area": "מרכז",
                         "status": "בשיווק",
                         "map_status": "needs_precise_pin",
+                        "showroom_position": showroom_position("gindi-vogue"),
                         "source_url": sde_dov_projects_url,
                         "source_note": "Listed by the Sde Dov information site as a marketed project.",
                     },
@@ -792,6 +833,7 @@ def environment_payload() -> dict[str, object]:
                         "area": "אשכול",
                         "status": "בשיווק / הבנייה בעיצומה לפי אתר המידע",
                         "map_status": "needs_precise_pin",
+                        "showroom_position": showroom_position("ashira"),
                         "source_url": sde_dov_projects_url,
                         "source_note": "Listed by the Sde Dov information site as a marketed project.",
                     },
@@ -801,6 +843,7 @@ def environment_payload() -> dict[str, object]:
                         "area": "מרכז",
                         "status": "בשיווק",
                         "map_status": "needs_precise_pin",
+                        "showroom_position": showroom_position("first-by-hagag"),
                         "source_url": sde_dov_projects_url,
                         "source_note": "Listed by the Sde Dov information site as a marketed project.",
                     },
@@ -810,6 +853,7 @@ def environment_payload() -> dict[str, object]:
                         "area": "אשכול",
                         "status": "בשיווק",
                         "map_status": "needs_precise_pin",
+                        "showroom_position": showroom_position("zohi"),
                         "source_url": sde_dov_projects_url,
                         "source_note": "Listed by the Sde Dov information site as a marketed project.",
                     },
@@ -819,6 +863,7 @@ def environment_payload() -> dict[str, object]:
                         "area": "אשכול",
                         "status": "בשיווק",
                         "map_status": "needs_precise_pin",
+                        "showroom_position": showroom_position("utopia"),
                         "source_url": sde_dov_projects_url,
                         "source_note": "Listed by the Sde Dov information site as a marketed project.",
                     },
@@ -912,6 +957,7 @@ def environment_payload() -> dict[str, object]:
         ],
         "implementation_notes": [
             "Use `map_status: needs_precise_pin` to prevent fake clickable map pins.",
+            "Use `showroom_position` only for schematic model-side labels; never treat it as survey/map coordinates.",
             "Promote only sourced, verified coordinates into Mapbox/Cesium pins.",
             "Render planned facilities with planned/future labels until built and verified.",
             "Keep this environment JSON separate from unit inventory and pricing.",
@@ -1148,7 +1194,7 @@ def view_layer_payload(units: list[dict[str, object]]) -> dict[str, object]:
             {
                 "id": "neighbor_projects",
                 "source": "project_3d_environment_json",
-                "render_policy": "Only show clickable pins for verified coordinates; otherwise show source-aware cards.",
+                "render_policy": "Use showroom_position for schematic model-side labels; only show Mapbox/Cesium pins for verified coordinates.",
             },
             {
                 "id": "parks_and_coast",

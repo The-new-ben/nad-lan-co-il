@@ -401,6 +401,35 @@ def check_environment(path: Path, gate: Gate) -> None:
     neighbor = next((layer for layer in layers if isinstance(layer, dict) and layer.get("id") == "neighbor_projects"), None)
     if isinstance(neighbor, dict) and isinstance(neighbor.get("items"), list):
         gate.pass_("neighbor project layer", f"{len(neighbor['items'])} items")
+        missing_positions: list[str] = []
+        bad_positions: list[str] = []
+        for item in neighbor["items"]:
+            if not isinstance(item, dict):
+                bad_positions.append("<non-object>")
+                continue
+            item_id = str(item.get("id", "<unknown>"))
+            position = item.get("showroom_position")
+            if not isinstance(position, dict):
+                missing_positions.append(item_id)
+                continue
+            x = position.get("x")
+            z = position.get("z")
+            precision = position.get("precision")
+            if not isinstance(x, (int, float)) or not isinstance(z, (int, float)):
+                bad_positions.append(f"{item_id}.x/z")
+                continue
+            if not (-100 <= float(x) <= 100 and -100 <= float(z) <= 100):
+                bad_positions.append(f"{item_id}.bounds")
+            if precision not in {"current_project", "illustrative_relative"}:
+                bad_positions.append(f"{item_id}.precision")
+            if position.get("do_not_use_as_map_pin") is not True:
+                bad_positions.append(f"{item_id}.map-pin-policy")
+        if missing_positions:
+            gate.fail("neighbor showroom positions", "missing: " + ", ".join(missing_positions[:12]))
+        elif bad_positions:
+            gate.fail("neighbor showroom positions", "invalid: " + ", ".join(bad_positions[:12]))
+        else:
+            gate.pass_("neighbor showroom positions", "all neighbor projects have bounded schematic positions")
     else:
         gate.fail("neighbor project layer", "missing")
     fake_pins = []

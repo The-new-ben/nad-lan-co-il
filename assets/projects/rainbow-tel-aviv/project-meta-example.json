@@ -237,6 +237,16 @@
             "area": "אשכול",
             "status": "בשיווק / היתר בנייה לפי אתר המידע",
             "map_status": "has_project_page",
+            "showroom_position": {
+              "x": 0,
+              "z": 0,
+              "scale": 1.0,
+              "precision": "current_project",
+              "space": "relative_showroom",
+              "unit": "model_meters",
+              "relative_to": "rainbow-stage-origin",
+              "do_not_use_as_map_pin": true
+            },
             "source_url": "https://sdedov.co.il/projects/",
             "source_note": "Listed by the Sde Dov information site as a marketed project."
           },
@@ -246,6 +256,16 @@
             "area": "אשכול",
             "status": "בשיווק",
             "map_status": "needs_precise_pin",
+            "showroom_position": {
+              "x": -48,
+              "z": -18,
+              "scale": 0.72,
+              "precision": "illustrative_relative",
+              "space": "relative_showroom",
+              "unit": "model_meters",
+              "relative_to": "rainbow-stage-origin",
+              "do_not_use_as_map_pin": true
+            },
             "source_url": "https://sdedov.co.il/projects/",
             "source_note": "Listed by the Sde Dov information site as a marketed project."
           },
@@ -255,6 +275,16 @@
             "area": "מרכז",
             "status": "בשיווק",
             "map_status": "needs_precise_pin",
+            "showroom_position": {
+              "x": 48,
+              "z": -22,
+              "scale": 0.78,
+              "precision": "illustrative_relative",
+              "space": "relative_showroom",
+              "unit": "model_meters",
+              "relative_to": "rainbow-stage-origin",
+              "do_not_use_as_map_pin": true
+            },
             "source_url": "https://sdedov.co.il/projects/",
             "source_note": "Listed by the Sde Dov information site as a marketed project."
           },
@@ -264,6 +294,16 @@
             "area": "אשכול",
             "status": "בשיווק / הבנייה בעיצומה לפי אתר המידע",
             "map_status": "needs_precise_pin",
+            "showroom_position": {
+              "x": -38,
+              "z": 26,
+              "scale": 0.68,
+              "precision": "illustrative_relative",
+              "space": "relative_showroom",
+              "unit": "model_meters",
+              "relative_to": "rainbow-stage-origin",
+              "do_not_use_as_map_pin": true
+            },
             "source_url": "https://sdedov.co.il/projects/",
             "source_note": "Listed by the Sde Dov information site as a marketed project."
           },
@@ -273,6 +313,16 @@
             "area": "מרכז",
             "status": "בשיווק",
             "map_status": "needs_precise_pin",
+            "showroom_position": {
+              "x": 38,
+              "z": 28,
+              "scale": 0.74,
+              "precision": "illustrative_relative",
+              "space": "relative_showroom",
+              "unit": "model_meters",
+              "relative_to": "rainbow-stage-origin",
+              "do_not_use_as_map_pin": true
+            },
             "source_url": "https://sdedov.co.il/projects/",
             "source_note": "Listed by the Sde Dov information site as a marketed project."
           },
@@ -282,6 +332,16 @@
             "area": "אשכול",
             "status": "בשיווק",
             "map_status": "needs_precise_pin",
+            "showroom_position": {
+              "x": -18,
+              "z": -45,
+              "scale": 0.62,
+              "precision": "illustrative_relative",
+              "space": "relative_showroom",
+              "unit": "model_meters",
+              "relative_to": "rainbow-stage-origin",
+              "do_not_use_as_map_pin": true
+            },
             "source_url": "https://sdedov.co.il/projects/",
             "source_note": "Listed by the Sde Dov information site as a marketed project."
           },
@@ -291,6 +351,16 @@
             "area": "אשכול",
             "status": "בשיווק",
             "map_status": "needs_precise_pin",
+            "showroom_position": {
+              "x": 20,
+              "z": -46,
+              "scale": 0.62,
+              "precision": "illustrative_relative",
+              "space": "relative_showroom",
+              "unit": "model_meters",
+              "relative_to": "rainbow-stage-origin",
+              "do_not_use_as_map_pin": true
+            },
             "source_url": "https://sdedov.co.il/projects/",
             "source_note": "Listed by the Sde Dov information site as a marketed project."
           }
@@ -384,6 +454,7 @@
     ],
     "implementation_notes": [
       "Use `map_status: needs_precise_pin` to prevent fake clickable map pins.",
+      "Use `showroom_position` only for schematic model-side labels; never treat it as survey/map coordinates.",
       "Promote only sourced, verified coordinates into Mapbox/Cesium pins.",
       "Render planned facilities with planned/future labels until built and verified.",
       "Keep this environment JSON separate from unit inventory and pricing."
