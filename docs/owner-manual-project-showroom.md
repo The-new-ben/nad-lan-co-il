@@ -406,3 +406,23 @@ The work is done only when the public buyer page shows:
 - project-relevant first paragraph,
 - non-binding price wording,
 - Chrome screenshots proving the rendered result.
+
+## Apartment Cells, Not Dots
+
+The public selector should look like apartments on the building.
+
+When you edit `project_3d_units`, each unit becomes a selectable apartment cell on the model or
+facade. The buyer should be able to see:
+
+- where the apartment sits in the building,
+- whether it is available, reserved or sold,
+- floor, rooms, sqm, view and non-binding estimate after selecting it,
+- a clear next action to ask about that exact apartment.
+
+Do not treat abstract dots as the final design. Dots can be used only as a technical fallback before
+a facade, floor plate or GLB hotspot map is ready. The finished project page should show
+apartment-shaped cells or polygons that make the location of the apartment obvious.
+
+Mobile check: open the page at 390px. Every apartment cell must be comfortable to tap, at least
+44px by 44px, and selecting a unit must show the apartment card without pushing the model out of
+view.

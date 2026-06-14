@@ -114,6 +114,11 @@ rectangles/cells with status color and subtle window rhythm as the default. Use 
 last-resort fallback when the actual model geometry is too dense or the viewport is too small. The
 full details belong in the selected-apartment card, especially on mobile.
 
+Apartment-cell rule: if a buyer says "these are just dots", the design failed. The visual target is
+closer to a product configurator plus a tower sales plan: visible apartment rectangles on the
+building, each with availability color and a large invisible touch zone. The cell should answer
+"where is this apartment in the building?" before the tooltip or side panel opens.
+
 Gesture rule: the same large hit area must support both buyer actions. A tap selects the apartment,
 but a drag that starts on the marker rotates the building. Never exclude the unit hit area from the
 model drag path.

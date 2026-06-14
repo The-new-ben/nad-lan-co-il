@@ -190,6 +190,27 @@ Before shipping a project:
 - Confirm source notes/disclaimers distinguish official data from illustrative/demo data.
 - Confirm the page still has one H1 and the article body remains readable below the showroom.
 
+## Apartment Cell Selector Standard
+
+The buyer-facing selector must read as apartments on the building, not as abstract map pins.
+
+The primary marker should be a facade-like cell:
+
+- rectangular, aligned to the visible building/facade/model,
+- status stripe: available green, reserved amber, sold grey,
+- short label or floor/unit clue,
+- optional recommended pulse only for owner-approved available units,
+- hover/tap tooltip with floor, rooms, sqm, view and non-binding estimate,
+- minimum 44px by 44px hit target on mobile.
+
+Dots are permitted only as a fallback when no facade, floor plate, GLB hotspot or image geometry is
+available. If the buyer cannot understand where the apartment sits in the building, the selector has
+failed even if the click handler works.
+
+Mobile rule: selected-apartment details must be a controlled sheet or inline card that stays visible
+without shrinking the model scene. Never let a selected card collapse the 3D stage height or appear
+off-screen.
+
 ## CMS Owner Rule
 
 Do not make Classic Editor the long-term answer for finding showroom fields. It can be used as a
