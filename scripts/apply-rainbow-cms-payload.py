@@ -34,6 +34,9 @@ META_PATH = ROOT / "assets" / "projects" / "rainbow-tel-aviv" / "project-meta-ex
 RAW_BASE = "https://raw.githubusercontent.com/The-new-ben/nad-lan-co-il/{branch}/assets/projects/rainbow-tel-aviv"
 DEFAULT_BASE_URL = "https://nad-lan.co.il"
 DEFAULT_POST_ID = 4464
+GITHUB_RAW_HOST = "raw.githubusercontent.com"
+GITHUB_RAW_OWNER = "The-new-ben"
+GITHUB_RAW_REPO = "nad-lan-co-il"
 
 
 def load_source_meta(branch: str) -> dict[str, Any]:
@@ -43,6 +46,33 @@ def load_source_meta(branch: str) -> dict[str, Any]:
     meta["project_model_poster"] = f"{raw_base}/poster.png"
     meta.setdefault("project_model_usdz", "")
     return meta
+
+
+def iter_urls(value: Any) -> list[str]:
+    urls: list[str] = []
+    if isinstance(value, dict):
+        for item in value.values():
+            urls.extend(iter_urls(item))
+    elif isinstance(value, list):
+        for item in value:
+            urls.extend(iter_urls(item))
+    elif isinstance(value, str) and value.startswith(("http://", "https://")):
+        urls.append(value)
+    return urls
+
+
+def unsafe_branch_raw_urls(value: Any) -> list[str]:
+    unsafe: list[str] = []
+    for url in iter_urls(value):
+        parsed = urllib.parse.urlparse(url)
+        if parsed.netloc != GITHUB_RAW_HOST:
+            continue
+        parts = [part for part in parsed.path.split("/") if part]
+        if len(parts) < 3:
+            continue
+        if parts[0] == GITHUB_RAW_OWNER and parts[1] == GITHUB_RAW_REPO and parts[2] != "main":
+            unsafe.append(url)
+    return sorted(set(unsafe))
 
 
 def flatten_environment(value: Any) -> list[dict[str, Any]]:
@@ -190,16 +220,40 @@ def main() -> int:
     parser.add_argument("--post-id", default=DEFAULT_POST_ID, type=int, help="Rainbow post id.")
     parser.add_argument("--base-url", default=os.getenv("WP_BASE_URL", DEFAULT_BASE_URL))
     parser.add_argument("--apply", action="store_true", help="Write REST-registered fields to WordPress.")
+    parser.add_argument(
+        "--allow-branch-assets",
+        action="store_true",
+        help="Permit --apply with non-main raw GitHub URLs for explicit temporary QA only.",
+    )
     args = parser.parse_args()
 
     source = load_source_meta(args.branch)
     rest_meta = build_rest_meta(source, include_units=False)
     print_summary(rest_meta, source, args.post_id, include_units=False)
+    unsafe_urls = unsafe_branch_raw_urls(source)
+    if unsafe_urls:
+        print()
+        print("WARNING: payload contains draft/non-main GitHub raw asset URLs:")
+        for url in unsafe_urls:
+            print(f"- {url}")
 
     if not args.apply:
         print()
         print("DRY RUN ONLY. Add --apply with WP_USER and WP_APP_PASSWORD to write REST fields.")
         return 0
+
+    if unsafe_urls and not args.allow_branch_assets:
+        print(
+            "ERROR: refusing --apply with draft/non-main raw asset URLs. "
+            "Merge the assets to main or pass --allow-branch-assets for a temporary QA write.",
+            file=sys.stderr,
+        )
+        return 3
+    if unsafe_urls and args.allow_branch_assets:
+        print(
+            "WARNING: --allow-branch-assets is active. Do not leave the live Rainbow card pointing at draft URLs.",
+            file=sys.stderr,
+        )
 
     user = os.getenv("WP_USER", "")
     password = os.getenv("WP_APP_PASSWORD", "")

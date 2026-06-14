@@ -11,6 +11,7 @@ from __future__ import annotations
 import argparse
 import json
 import sys
+import urllib.error
 import urllib.parse
 import urllib.request
 from pathlib import Path
@@ -20,6 +21,7 @@ ROOT = Path(__file__).resolve().parents[1]
 DEFAULT_HEALTHCHECK = "https://nad-lan.co.il/wp-json/nadlan/v1/healthcheck"
 MAX_GLB_BYTES = 4 * 1024 * 1024
 MAX_POSTER_BYTES = 80 * 1024
+REMOTE_READ_BYTES = 4096
 
 
 class Gate:
@@ -69,6 +71,43 @@ def check_raw_url_local_file(url: str, root: Path, gate: Gate, label: str) -> No
         gate.fail(f"{label} local file", f"missing local file for raw URL: {local.relative_to(root)}")
 
 
+def fetch_remote_prefix(url: str, byte_count: int = REMOTE_READ_BYTES) -> tuple[bytes, str, str]:
+    request = urllib.request.Request(url, headers={"User-Agent": "nadlan-rainbow-readiness/1.0"})
+    with urllib.request.urlopen(request, timeout=20) as response:
+        content_type = response.headers.get("Content-Type", "")
+        content_length = response.headers.get("Content-Length", "")
+        return response.read(byte_count), content_type, content_length
+
+
+def check_remote_asset(url: str, gate: Gate, label: str, kind: str) -> None:
+    try:
+        prefix, content_type, content_length = fetch_remote_prefix(url)
+    except urllib.error.HTTPError as exc:
+        gate.fail(f"{label} remote URL", f"HTTP {exc.code}: {url}")
+        return
+    except urllib.error.URLError as exc:
+        gate.fail(f"{label} remote URL", f"{exc.reason}: {url}")
+        return
+    except TimeoutError:
+        gate.fail(f"{label} remote URL", f"timeout: {url}")
+        return
+
+    normalized = prefix.lstrip().lower()
+    if kind == "glb" and prefix[:4] != b"glTF":
+        gate.fail(f"{label} remote signature", "first bytes are not GLB/glTF")
+        return
+    if kind == "png" and prefix[:8] != b"\x89PNG\r\n\x1a\n":
+        gate.fail(f"{label} remote signature", "first bytes are not PNG")
+        return
+    if kind == "svg" and b"<svg" not in normalized[:REMOTE_READ_BYTES]:
+        gate.fail(f"{label} remote signature", "first bytes do not contain <svg")
+        return
+    detail = f"type={content_type or 'unknown'}"
+    if content_length:
+        detail += f", bytes={content_length}"
+    gate.pass_(f"{label} remote URL", detail)
+
+
 def check_glb(path: Path, gate: Gate) -> None:
     if not path.exists():
         gate.fail("model.glb", "missing")
@@ -101,7 +140,7 @@ def check_poster(path: Path, gate: Gate) -> None:
         gate.fail("poster.png size", f"{size} bytes exceeds {MAX_POSTER_BYTES}")
 
 
-def check_meta(path: Path, root: Path, gate: Gate) -> None:
+def check_meta(path: Path, root: Path, gate: Gate, *, check_remote_assets: bool = False) -> None:
     if not path.exists():
         gate.fail("project-meta-example.json", "missing")
         return
@@ -121,6 +160,8 @@ def check_meta(path: Path, root: Path, gate: Gate) -> None:
         elif value:
             gate.pass_(f"{field} URL durability", "main raw URL or custom hosted URL")
             check_raw_url_local_file(value, root, gate, field)
+            if check_remote_assets:
+                check_remote_asset(value, gate, field, "glb" if field.endswith("_glb") else "png")
     units = meta.get("project_3d_units", [])
     if isinstance(units, list) and units:
         gate.pass_("project_3d_units count", str(len(units)))
@@ -164,6 +205,8 @@ def check_meta(path: Path, root: Path, gate: Gate) -> None:
             plan_bad.append(str(unit.get("id", "<missing id>")))
         else:
             check_raw_url_local_file(plan, root, gate, f"{unit.get('id', '<missing id>')}.plan")
+            if check_remote_assets:
+                check_remote_asset(plan, gate, f"{unit.get('id', '<missing id>')}.plan", "svg")
     if plan_bad:
         gate.fail("unit plan URLs", ", ".join(plan_bad[:12]))
     else:
@@ -174,7 +217,11 @@ def check_meta(path: Path, root: Path, gate: Gate) -> None:
         for item in drawings:
             if not isinstance(item, dict) or not item.get("url"):
                 continue
-            check_raw_url_local_file(str(item.get("url", "")), root, gate, f"drawing.{item.get('type', 'item')}")
+            drawing_url = str(item.get("url", ""))
+            drawing_label = f"drawing.{item.get('type', 'item')}"
+            check_raw_url_local_file(drawing_url, root, gate, drawing_label)
+            if check_remote_assets:
+                check_remote_asset(drawing_url, gate, drawing_label, "svg")
     else:
         gate.fail("drawing material URLs", "no linked drawing/site material in CMS payload")
     env = meta.get("project_3d_environment_json")
@@ -257,6 +304,7 @@ def main() -> int:
     parser.add_argument("--root", default=str(ROOT), help="Repository root")
     parser.add_argument("--skip-live", action="store_true", help="Skip live healthcheck")
     parser.add_argument("--expect-live-glb", action="store_true", help="Require healthcheck projects_with_glb >= 1")
+    parser.add_argument("--check-remote-assets", action="store_true", help="Fetch raw/CDN asset URLs and verify signatures.")
     parser.add_argument("--healthcheck-url", default=DEFAULT_HEALTHCHECK)
     args = parser.parse_args()
 
@@ -265,7 +313,7 @@ def main() -> int:
     gate = Gate()
     check_glb(asset_dir / "model.glb", gate)
     check_poster(asset_dir / "poster.png", gate)
-    check_meta(asset_dir / "project-meta-example.json", root, gate)
+    check_meta(asset_dir / "project-meta-example.json", root, gate, check_remote_assets=args.check_remote_assets)
     check_environment(asset_dir / "environment.json", gate)
     if not args.skip_live:
         check_healthcheck(args.healthcheck_url, args.expect_live_glb, gate)

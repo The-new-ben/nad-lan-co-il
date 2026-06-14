@@ -118,6 +118,18 @@ $env:WP_APP_PASSWORD='<application-password>'
 python scripts\apply-rainbow-cms-payload.py --branch main --apply
 ```
 
+Safety guard: `--apply` refuses to write any `raw.githubusercontent.com/The-new-ben/nad-lan-co-il/<branch>/...`
+asset URL unless the ref is `main`. This prevents a public Rainbow page from depending on a
+temporary PR branch that may be deleted after merge. If an operator intentionally wants a temporary
+pre-merge QA write, the explicit override is:
+
+```powershell
+python scripts\apply-rainbow-cms-payload.py --branch codex/rainbow-prototype-model-1631 --apply --allow-branch-assets
+```
+
+Do not leave that override state on the live page. Replace it with `main`, WordPress Media, or CDN
+URLs before public review.
+
 The helper writes:
 
 - `project_3d_model_type`
@@ -145,10 +157,19 @@ non-binding price/source language, every unit has a plan URL, drawing material h
 not wired yet.
 Any `main` raw URL in the payload must also resolve to a local committed file.
 
+After PR #163 is merged to `main`, but before applying the CMS payload, run the remote URL gate:
+
+```powershell
+python scripts\check-rainbow-showroom-readiness.py --check-remote-assets
+```
+
+This fetches the GLB, poster, schematic plan and drawing URLs and verifies the file signatures
+before any public CMS write depends on them.
+
 After merge and after the CMS fields are populated, run:
 
 ```powershell
-python scripts\check-rainbow-showroom-readiness.py --expect-live-glb
+python scripts\check-rainbow-showroom-readiness.py --check-remote-assets --expect-live-glb
 ```
 
 Expected after wire-in: every check passes, including `projects_with_glb >= 1`.
