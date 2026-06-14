@@ -998,6 +998,14 @@ CSS;
 	}
 }
 
+if ( ! function_exists( 'nadlan_p3d_showroom_v1644_marker_css' ) ) {
+	function nadlan_p3d_showroom_v1644_marker_css() {
+		return <<<'CSS'
+.nlp3d.nlp3d-premium .nlp3d-stage-pick{width:58px!important;min-width:58px!important;height:58px!important;min-height:58px!important;border:0!important;background:transparent!important;box-shadow:none!important;color:#fff!important;padding:0!important;overflow:visible!important;display:grid!important;place-items:center!important}.nlp3d.nlp3d-premium .nlp3d-stage-pick:hover,.nlp3d.nlp3d-premium .nlp3d-stage-pick:focus-visible,.nlp3d.nlp3d-premium .nlp3d-stage-pick.is-active{transform:translate(-50%,-50%) scale(1.04)!important;box-shadow:none!important;outline:none!important}.nlp3d.nlp3d-premium .nlp3d-stage-pick .nlp3d-hotspot-hit{position:absolute!important;inset:0!important;border-radius:999px!important;background:transparent!important}.nlp3d.nlp3d-premium .nlp3d-stage-pick .nlp3d-hotspot-dot{display:block!important;width:18px!important;height:18px!important;border-radius:999px!important;border:2px solid rgba(255,255,255,.96)!important;background:#3ddc84!important;box-shadow:0 0 0 8px rgba(61,220,132,.15),0 10px 24px rgba(0,0,0,.4)!important}.nlp3d.nlp3d-premium .nlp3d-stage-pick.nlp3d-status-reserved .nlp3d-hotspot-dot{background:#f2c14e!important;box-shadow:0 0 0 8px rgba(242,193,78,.16),0 10px 24px rgba(0,0,0,.4)!important}.nlp3d.nlp3d-premium .nlp3d-stage-pick.nlp3d-status-sold .nlp3d-hotspot-dot{background:#9aa0a6!important;opacity:.62!important;box-shadow:0 0 0 8px rgba(154,160,166,.12),0 10px 24px rgba(0,0,0,.34)!important}.nlp3d.nlp3d-premium .nlp3d-stage-pick.is-recommended .nlp3d-hotspot-dot{animation:nlp3dPickPulse 1.8s infinite}.nlp3d.nlp3d-premium .nlp3d-stage-pick.is-active .nlp3d-hotspot-dot{width:22px!important;height:22px!important;border-color:#fff7c6!important;box-shadow:0 0 0 9px rgba(255,247,198,.18),0 0 28px rgba(234,216,163,.38),0 14px 28px rgba(0,0,0,.45)!important}.nlp3d.nlp3d-premium .nlp3d-stage-pick .nlp3d-pick-label{display:none!important}.nlp3d.nlp3d-premium .nlp3d-stage-pick .nlp3d-hotspot-tip{position:absolute!important;top:50%!important;right:calc(100% + 10px)!important;transform:translateY(-50%) translateX(4px)!important;width:max-content!important;max-width:230px!important;padding:8px 10px!important;border:1px solid rgba(234,216,163,.32)!important;background:rgba(7,15,16,.9)!important;color:#fff7df!important;font-size:12px!important;line-height:1.35!important;text-align:right!important;box-shadow:0 12px 30px rgba(0,0,0,.38)!important;opacity:0!important;pointer-events:none!important;transition:opacity .16s,transform .16s!important;z-index:50!important}.nlp3d.nlp3d-premium .nlp3d-stage-pick:hover .nlp3d-hotspot-tip,.nlp3d.nlp3d-premium .nlp3d-stage-pick:focus-visible .nlp3d-hotspot-tip{opacity:1!important;transform:translateY(-50%) translateX(0)!important}@keyframes nlp3dPickPulse{0%{box-shadow:0 0 0 0 rgba(61,220,132,.54),0 10px 24px rgba(0,0,0,.4)}70%{box-shadow:0 0 0 16px rgba(61,220,132,0),0 10px 24px rgba(0,0,0,.4)}100%{box-shadow:0 0 0 0 rgba(61,220,132,0),0 10px 24px rgba(0,0,0,.4)}}@media(max-width:760px){.nlp3d.nlp3d-premium .nlp3d-stage-pick{width:56px!important;min-width:56px!important;height:56px!important;min-height:56px!important}.nlp3d.nlp3d-premium .nlp3d-stage-pick .nlp3d-hotspot-tip{display:none!important}.nlp3d.nlp3d-premium .nlp3d-stage-pick .nlp3d-hotspot-dot{width:17px!important;height:17px!important}.nlp3d.nlp3d-premium .nlp3d-stage-pick.is-active .nlp3d-hotspot-dot{width:21px!important;height:21px!important}}
+CSS;
+	}
+}
+
 if ( ! function_exists( 'nadlan_p3d_inline_js' ) ) {
 	function nadlan_p3d_inline_js( $rest_url ) {
 		$js = <<<'JS'
@@ -2010,29 +2018,29 @@ if ( ! function_exists( 'nadlan_p3d_inline_js' ) ) {
 				track('tool_panel',{tool:activeTool,unit:activeUnit&&activeUnit.id});
 			});
 		});
-		scene.addEventListener('pointerdown',function(e){
-			if(e.target.closest('button,a,input,.nlp3d-hotspot,.nlp3d-hotspot-hit,.nlp3d-mv-hotspot,.nlp3d-stage-card,.nlp3d-stage-viewframe')){return}
-			dragState={x:e.clientX,y:e.clientY,angle:currentAngle,tilt:currentTilt,id:e.pointerId,lastX:e.clientX,lastT:Date.now(),vx:0};
+		function dragExcludedTarget(target){
+			return target&&target.closest&&target.closest('button,a,input,.nlp3d-hotspot,.nlp3d-hotspot-hit,.nlp3d-mv-hotspot,.nlp3d-stage-card,.nlp3d-stage-viewframe');
+		}
+		function startDragAt(p,id){
+			dragState={x:p.x,y:p.y,angle:currentAngle,tilt:currentTilt,id:id||0,lastX:p.x,lastT:Date.now(),vx:0};
 			scene.classList.add('is-dragging');
 			scene.classList.remove('is-orbit');
 			if(orbit){orbit.classList.remove('is-active')}
-			if(scene.setPointerCapture){scene.setPointerCapture(e.pointerId)}
-		});
-		scene.addEventListener('pointermove',function(e){
+		}
+		function moveDragAt(p){
 			if(!dragState){return}
 			var t=Date.now();
 			var dt=Math.max(16,t-dragState.lastT);
-			dragState.vx=(e.clientX-dragState.lastX)/dt;
-			dragState.lastX=e.clientX;
+			dragState.vx=(p.x-dragState.lastX)/dt;
+			dragState.lastX=p.x;
 			dragState.lastT=t;
-			setAngle(dragState.angle+(e.clientX-dragState.x)*0.22);
-			setTilt(dragState.tilt-(e.clientY-dragState.y)*0.08);
-		});
-		function endDrag(e){
+			setAngle(dragState.angle+(p.x-dragState.x)*0.22);
+			setTilt(dragState.tilt-(p.y-dragState.y)*0.08);
+		}
+		function endDragAt(p){
 			if(!dragState){return}
-			var moved=Math.abs(e.clientX-dragState.x)+Math.abs(e.clientY-dragState.y);
+			var moved=Math.abs(p.x-dragState.x)+Math.abs(p.y-dragState.y);
 			var momentum=Math.max(-120,Math.min(120,(dragState.vx||0)*180));
-			if(scene.releasePointerCapture){try{scene.releasePointerCapture(dragState.id)}catch(err){}}
 			dragState=null;
 			scene.classList.remove('is-dragging');
 			var now=Date.now();
@@ -2044,8 +2052,36 @@ if ( ! function_exists( 'nadlan_p3d_inline_js' ) ) {
 			if(moved>=8&&Math.abs(momentum)>4){setAngle(currentAngle+momentum)}
 			if(moved>=8){track('drag',{angle:currentAngle})}
 		}
+		scene.addEventListener('pointerdown',function(e){
+			if(dragExcludedTarget(e.target)){return}
+			startDragAt({x:e.clientX,y:e.clientY},e.pointerId);
+			if(scene.setPointerCapture){scene.setPointerCapture(e.pointerId)}
+		});
+		scene.addEventListener('pointermove',function(e){
+			moveDragAt({x:e.clientX,y:e.clientY});
+		});
+		function endDrag(e){
+			if(!dragState){return}
+			if(scene.releasePointerCapture){try{scene.releasePointerCapture(dragState.id)}catch(err){}}
+			endDragAt({x:e.clientX,y:e.clientY});
+		}
 		scene.addEventListener('pointerup',endDrag);
 		scene.addEventListener('pointercancel',endDrag);
+		scene.addEventListener('touchstart',function(e){
+			if(dragExcludedTarget(e.target)||!e.touches||!e.touches[0]){return}
+			e.preventDefault();
+			startDragAt(eventPoint(e),0);
+		},{passive:false});
+		scene.addEventListener('touchmove',function(e){
+			if(!dragState){return}
+			e.preventDefault();
+			moveDragAt(eventPoint(e));
+		},{passive:false});
+		scene.addEventListener('touchend',function(e){
+			if(!dragState){return}
+			e.preventDefault();
+			endDragAt(eventPoint(e));
+		},{passive:false});
 		form.addEventListener('submit',function(e){
 			e.preventDefault();
 			if(!activeUnit){return}
@@ -2134,7 +2170,7 @@ add_action(
 			return;
 		}
 
-		wp_register_style( 'nadlan-p3d', '', array(), '1.64.3' );
+		wp_register_style( 'nadlan-p3d', '', array(), '1.64.4' );
 		wp_enqueue_style( 'nadlan-p3d' );
 		wp_add_inline_style( 'nadlan-p3d', nadlan_p3d_inline_css() );
 		wp_add_inline_style( 'nadlan-p3d', '.nlp3d-drag-note{display:inline-flex;align-items:center;min-height:44px;color:rgba(246,239,226,.72);font-size:12px;padding:0 6px}.nlp3d-scene{touch-action:none;cursor:grab}.nlp3d-scene.is-dragging{cursor:grabbing}.nlp3d-actions{grid-template-columns:1fr}.nlp3d-view-toggle{margin-top:12px;border:1px solid rgba(234,216,163,.36);background:rgba(255,255,255,.06);color:#ffe8a6;padding:9px 12px;cursor:pointer}.nlp3d-view-toggle.is-active{background:rgba(234,216,163,.18);color:#fff}.nlp3d-viewframe{position:relative;margin-top:12px;min-height:150px;overflow:hidden;border:1px solid rgba(234,216,163,.18);background:linear-gradient(180deg,rgba(41,112,139,.58),rgba(8,25,25,.92));isolation:isolate}.nlp3d-view-sky{position:absolute;inset:0;background:radial-gradient(circle at 18% 22%,rgba(255,255,255,.24),transparent 18%),linear-gradient(135deg,rgba(39,107,130,.42),rgba(18,50,43,.1));opacity:.86}.nlp3d-view-lines{position:absolute;inset:auto -8% 18% -8%;height:46%;border-top:1px solid rgba(234,216,163,.28);background:linear-gradient(160deg,rgba(234,216,163,.1),transparent 54%);transform:skewY(-8deg)}.nlp3d-view-copy{position:absolute;right:14px;left:14px;bottom:12px;margin:0;color:#fff8dc;font-size:13px;line-height:1.5;text-shadow:0 1px 12px rgba(0,0,0,.55)}@media(max-width:600px){.nlp3d-drag-note{flex-basis:100%;min-height:24px}.nlp3d-viewframe{min-height:130px}}' );
@@ -2159,6 +2195,7 @@ add_action(
 		wp_add_inline_style( 'nadlan-p3d', nadlan_p3d_showroom_v1631_a11y_css() );
 		wp_add_inline_style( 'nadlan-p3d', nadlan_p3d_showroom_v1633_contact_css() );
 		wp_add_inline_style( 'nadlan-p3d', nadlan_p3d_showroom_v1641_product_css() );
+		wp_add_inline_style( 'nadlan-p3d', nadlan_p3d_showroom_v1644_marker_css() );
 
 		$post_id = is_singular( 'nadlan_project' ) ? (int) get_queried_object_id() : 0;
 		if ( $post_id > 0 && get_post_meta( $post_id, 'project_model_glb', true ) !== '' ) {
@@ -2167,7 +2204,7 @@ add_action(
 			wp_enqueue_script( 'nadlan-model-viewer' );
 		}
 
-		wp_register_script( 'nadlan-p3d', '', array(), '1.64.3', true );
+		wp_register_script( 'nadlan-p3d', '', array(), '1.64.4', true );
 		wp_enqueue_script( 'nadlan-p3d' );
 		wp_add_inline_script( 'nadlan-p3d', nadlan_p3d_inline_js( esc_url_raw( rest_url( 'nadlan/v1/lead' ) ) ) );
 	}
@@ -2347,6 +2384,8 @@ add_filter(
 			'mobile_hotspot_declutter_v1643' => true,
 			'mobile_safe_width_v1643' => true,
 			'mobile_model_drag_fallback_v1643' => true,
+			'premium_dot_markers_v1644' => true,
+			'mobile_touch_drag_v1644' => true,
 			'showroom_first_view' => true,
 			'static_featured_image_suppressed' => true,
 			'floating_actions_clear' => true,

@@ -122,8 +122,9 @@ model annotation script. Store only coordinates, not private source files.
 - Keep procedural/facade fallback visible until the model loads.
 - If the model errors, do not leave a blank stage.
 - Model hotspots must call the same selected-unit flow as facade/SVG clicks.
-- Unit markers must be buyer-obvious: status color, 44px+ target, label, hover/focus/tap info and
-  optional recommended pulse.
+- Unit markers must be buyer-obvious without becoming text blobs on the model: use clean
+  status-colored dots with 44px+ invisible hit areas, hover/focus tooltip on desktop, selected-card
+  details on mobile, and optional recommended pulse.
 - `recommended` is a CMS/business flag. It should identify units worth attention, not fake urgency.
 - The lead payload must preserve the selected unit.
 - Mapbox or Cesium environment views stay lazy and user-opened.

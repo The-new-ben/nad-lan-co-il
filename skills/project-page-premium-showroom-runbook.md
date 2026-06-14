@@ -96,6 +96,10 @@ Per-unit fields required for a buyer-ready selector:
 4. `price_estimate` plus source note when an approximate price is shown.
 5. `hotspot_position` and `hotspot_normal` for GLB hotspots.
 
+Marker design rule: the model surface should not carry stacked text labels. Use status-colored dots
+with large invisible hit areas, a short desktop hover/focus tooltip, and a selected-apartment card
+for the full details. Mobile details belong in the card, not over the building.
+
 ## D. Lead And WhatsApp Funnel
 
 1. Every CTA must enter the same lead CPT and routing rails.
