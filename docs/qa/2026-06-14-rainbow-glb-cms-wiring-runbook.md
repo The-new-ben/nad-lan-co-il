@@ -157,6 +157,16 @@ non-binding price/source language, every unit has a plan URL, drawing material h
 not wired yet.
 Any `main` raw URL in the payload must also resolve to a local committed file.
 
+To prove the remote files on this PR branch before merge without changing the durable CMS payload,
+run:
+
+```powershell
+python scripts\check-rainbow-showroom-readiness.py --skip-live --check-remote-assets --remote-ref codex/rainbow-prototype-model-1631
+```
+
+`--remote-ref` changes only what the checker fetches for QA. It does not change the payload file and
+must not be used as a live CMS URL strategy.
+
 After PR #163 is merged to `main`, but before applying the CMS payload, run the remote URL gate:
 
 ```powershell
