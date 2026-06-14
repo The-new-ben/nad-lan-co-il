@@ -46,6 +46,9 @@ trusted map/source.
 - Do not present the demo units as available stock.
 - Do not present exact prices unless the owner approves a public or licensed source.
 - Any public estimate must carry the visible non-binding source note in `project_3d_price_source_note`.
+- Keep `project_3d_video_url`, `project_3d_tour_url`, `project_3d_cesium_tiles_url`,
+  and unit-level `interior_url`/`tour_url` empty until the owner or developer supplies
+  approved material. Do not use fake tours, copied developer media, or stock interiors.
 - Replace `project_model_glb` with an official BIM/GLB when Israel Canada or the project manager supplies one.
 
 ## Prototype Design Basis

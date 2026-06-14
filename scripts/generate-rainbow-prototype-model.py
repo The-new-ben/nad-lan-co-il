@@ -485,6 +485,8 @@ def unit_records() -> list[dict[str, object]]:
                 "note": "יחידת הדגמה למיפוי חוויית showroom. להחלפה בתוכנית מכר רשמית.",
                 "source_note": "מודל אבטיפוס מקורי על בסיס מקורות פומביים, לא BIM רשמי.",
                 "plan": f"{PLAN_BASE}/{plan_file}",
+                "interior_url": "",
+                "tour_url": "",
                 "view_note": view_note,
                 "hotspot_position": position,
                 "hotspot_normal": "0 0 1",
@@ -547,6 +549,9 @@ trusted map/source.
 - Do not present the demo units as available stock.
 - Do not present exact prices unless the owner approves a public or licensed source.
 - Any public estimate must carry the visible non-binding source note in `project_3d_price_source_note`.
+- Keep `project_3d_video_url`, `project_3d_tour_url`, `project_3d_cesium_tiles_url`,
+  and unit-level `interior_url`/`tour_url` empty until the owner or developer supplies
+  approved material. Do not use fake tours, copied developer media, or stock interiors.
 - Replace `project_model_glb` with an official BIM/GLB when Israel Canada or the project manager supplies one.
 
 ## Prototype Design Basis
@@ -569,6 +574,9 @@ trusted map/source.
 - `plans/*.svg`: original schematic unit/site plans for the prototype plan overlay.
 - `drawings.json`: prototype drawing map plus slots for official elevation/floor/site drawings.
 - `environment.json`: surroundings starter data to be replaced by the map/POI layer.
+- Media/tour slots: `project_3d_video_url`, `project_3d_tour_url`,
+  `project_3d_cesium_tiles_url`, and per-unit `interior_url`/`tour_url` are present
+  but intentionally blank until official or owner-approved material is supplied.
 
 ## Local Validation
 
@@ -586,6 +594,8 @@ Expected:
 - `model.glb` under 4 MB for the prototype massing.
 - `poster.png` under 80 KB for a repo-committed lightweight poster.
 - `project_3d_units` JSON has `hotspot_position`, `hotspot_normal`, `camera_orbit` and `plan` for each demo unit.
+- Each unit has empty `interior_url` and `tour_url` keys so the CMS contract is ready
+  for approved unit media without changing the data shape later.
 
 ## Browser Gate After v1.63.0 Is Installed
 
@@ -840,6 +850,9 @@ def main() -> None:
             "project_model_glb": f"{RAW_BASE}/model.glb",
             "project_model_poster": f"{RAW_BASE}/poster.png",
             "project_model_usdz": "",
+            "project_3d_video_url": "",
+            "project_3d_tour_url": "",
+            "project_3d_cesium_tiles_url": "",
             "project_3d_avg_price_per_sqm": RAINBOW_INDICATIVE_AVG_PRICE_PER_SQM,
             "project_3d_price_source_note": RAINBOW_PRICE_SOURCE_NOTE,
             "project_3d_units": units,

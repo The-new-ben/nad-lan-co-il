@@ -139,6 +139,16 @@ def check_remote_asset(url: str, gate: Gate, label: str, kind: str) -> None:
     gate.pass_(f"{label} remote URL", detail)
 
 
+def optional_https_url_state(value: object) -> str:
+    raw = str(value or "").strip()
+    if raw == "":
+        return "empty"
+    parsed = urllib.parse.urlparse(raw)
+    if parsed.scheme != "https" or not parsed.netloc:
+        return "bad"
+    return "ok"
+
+
 def check_glb(path: Path, gate: Gate) -> None:
     if not path.exists():
         gate.fail("model.glb", "missing")
@@ -194,6 +204,30 @@ def check_meta(path: Path, root: Path, gate: Gate, *, check_remote_assets: bool 
             check_raw_url_local_file(value, root, gate, field)
             if check_remote_assets:
                 check_remote_asset(raw_url_for_ref(value, remote_ref), gate, field, "glb" if field.endswith("_glb") else "png")
+    media_fields = ["project_3d_video_url", "project_3d_tour_url", "project_3d_cesium_tiles_url"]
+    missing_media_fields = [field for field in media_fields if field not in meta]
+    if missing_media_fields:
+        gate.fail("project media slots", "missing: " + ", ".join(missing_media_fields))
+    else:
+        filled_media = []
+        bad_media = []
+        empty_media = []
+        for field in media_fields:
+            state = optional_https_url_state(meta.get(field))
+            if state == "ok":
+                filled_media.append(field)
+            elif state == "bad":
+                bad_media.append(field)
+            else:
+                empty_media.append(field)
+        if bad_media:
+            gate.fail("project media slot URLs", "must be empty or HTTPS: " + ", ".join(bad_media))
+        elif filled_media:
+            gate.pass_("project media slot URLs", "approved HTTPS slots present: " + ", ".join(filled_media))
+            if empty_media:
+                gate.warn("project media slots pending", "empty: " + ", ".join(empty_media))
+        else:
+            gate.warn("project media slots pending", "official video/tour/Cesium tiles not supplied yet")
     avg_price = meta.get("project_3d_avg_price_per_sqm", 0)
     try:
         avg_price_number = float(avg_price)
@@ -258,6 +292,35 @@ def check_meta(path: Path, root: Path, gate: Gate, *, check_remote_assets: bool 
         gate.fail("unit plan URLs", ", ".join(plan_bad[:12]))
     else:
         gate.pass_("unit plan URLs", "all demo units point at durable schematic plan URLs")
+    unit_media_missing: list[str] = []
+    unit_media_bad: list[str] = []
+    unit_media_filled = 0
+    unit_media_empty = 0
+    for unit in units:
+        if not isinstance(unit, dict):
+            continue
+        unit_id = str(unit.get("id", "<missing id>"))
+        for field in ("interior_url", "tour_url"):
+            if field not in unit:
+                unit_media_missing.append(f"{unit_id}.{field}")
+                continue
+            state = optional_https_url_state(unit.get(field))
+            if state == "bad":
+                unit_media_bad.append(f"{unit_id}.{field}")
+            elif state == "ok":
+                unit_media_filled += 1
+            else:
+                unit_media_empty += 1
+    if unit_media_missing:
+        gate.fail("unit media slots", "missing: " + ", ".join(unit_media_missing[:12]))
+    elif unit_media_bad:
+        gate.fail("unit media slot URLs", "must be empty or HTTPS: " + ", ".join(unit_media_bad[:12]))
+    elif unit_media_filled:
+        gate.pass_("unit media slot URLs", f"{unit_media_filled} approved HTTPS unit media URLs present")
+        if unit_media_empty:
+            gate.warn("unit media slots pending", f"{unit_media_empty} empty unit media slots")
+    else:
+        gate.warn("unit media slots pending", f"{unit_media_empty} official interior/tour URLs not supplied yet")
     drawings = meta.get("project_3d_drawings_json", [])
     if isinstance(drawings, list) and any(isinstance(item, dict) and item.get("url") for item in drawings):
         gate.pass_("drawing material URLs", f"{sum(1 for item in drawings if isinstance(item, dict) and item.get('url'))} linked items")

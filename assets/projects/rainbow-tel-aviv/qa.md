@@ -9,6 +9,9 @@
 - `plans/*.svg`: original schematic unit/site plans for the prototype plan overlay.
 - `drawings.json`: prototype drawing map plus slots for official elevation/floor/site drawings.
 - `environment.json`: surroundings starter data to be replaced by the map/POI layer.
+- Media/tour slots: `project_3d_video_url`, `project_3d_tour_url`,
+  `project_3d_cesium_tiles_url`, and per-unit `interior_url`/`tour_url` are present
+  but intentionally blank until official or owner-approved material is supplied.
 
 ## Local Validation
 
@@ -26,6 +29,8 @@ Expected:
 - `model.glb` under 4 MB for the prototype massing.
 - `poster.png` under 80 KB for a repo-committed lightweight poster.
 - `project_3d_units` JSON has `hotspot_position`, `hotspot_normal`, `camera_orbit` and `plan` for each demo unit.
+- Each unit has empty `interior_url` and `tour_url` keys so the CMS contract is ready
+  for approved unit media without changing the data shape later.
 
 ## Browser Gate After v1.63.0 Is Installed
 

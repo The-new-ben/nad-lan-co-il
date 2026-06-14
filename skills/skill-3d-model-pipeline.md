@@ -111,6 +111,15 @@ Unit JSON fields:
 - `view_note`
 - `source_note`
 
+Media and tour rules:
+
+- Create the fields even when no official media exists yet; empty slots are an honest CMS contract.
+- Use only owner-approved `https://` URLs for video, tour, Cesium/3D Tiles, interior media and unit tours.
+- Do not fill the slots with copied developer assets, stock interiors, AI-generated fake interiors, or
+  unlicensed screenshots.
+- Keep Mapbox/Cesium/3D Tiles lazy and user-opened. The project page must not spend paid map/tiles
+  quota before a buyer requests the view layer.
+
 ## Price Context
 
 Buyers expect price context inside a showroom, but it must not turn a prototype into an invented
@@ -151,6 +160,8 @@ model annotation script. Store only coordinates, not private source files.
 - Model hotspots must call the same selected-unit flow as facade/SVG clicks.
 - The lead payload must preserve the selected unit.
 - Mapbox or Cesium environment views stay lazy and user-opened.
+- Empty video/tour/Cesium slots should hide their controls or show a clear "material pending" state,
+  never a broken button.
 
 ## QA Gate
 
@@ -163,6 +174,7 @@ Before shipping a project:
 - Confirm keyboard/focus access to unit selection remains available.
 - Confirm mobile has no horizontal overflow and no nested gray scrollbars.
 - Confirm source notes/disclaimers distinguish official data from illustrative/demo data.
+- Confirm video/tour/Cesium/unit-media URLs are empty or valid approved HTTPS links; malformed URLs fail.
 - Confirm the local model preview screenshot shows `loaded:true` / actual GLB visible, not only the
   poster image.
 - Confirm the page still has one H1 and the article body remains readable below the showroom.

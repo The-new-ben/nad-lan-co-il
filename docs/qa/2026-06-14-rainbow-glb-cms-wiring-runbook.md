@@ -50,6 +50,9 @@ Set:
 - `project_model_poster`: hosted poster URL.
 - `project_model_usdz`: empty for now.
 - `project_3d_model_type`: `gltf`.
+- `project_3d_video_url`: empty until an approved developer/project video is supplied.
+- `project_3d_tour_url`: empty until an approved virtual tour is supplied.
+- `project_3d_cesium_tiles_url`: empty until an approved Cesium/3D Tiles environment is supplied.
 - `project_3d_avg_price_per_sqm`: optional, sourced indicative average used only for non-binding
   estimates.
 - `project_3d_price_source_note`: visible source/disclaimer for any computed estimate.
@@ -96,6 +99,7 @@ python scripts\prepare-rainbow-cms-payload.py --branch codex/rainbow-prototype-m
 The script prints:
 
 - the exact model URLs,
+- the empty official media/tour/Cesium slots,
 - the full `project_3d_units` JSON,
 - the `project_3d_drawings_json` JSON,
 - the flattened `project_3d_environment_json` JSON,
@@ -169,6 +173,9 @@ The helper writes:
 - `project_model_glb`
 - `project_model_poster`
 - `project_model_usdz`
+- `project_3d_video_url`
+- `project_3d_tour_url`
+- `project_3d_cesium_tiles_url`
 - `project_3d_avg_price_per_sqm`
 - `project_3d_price_source_note`
 - `project_3d_drawings_json`
@@ -187,10 +194,21 @@ python scripts\check-rainbow-showroom-readiness.py
 ```
 
 Expected now: local assets pass, asset URLs are durable (`main` or custom hosted), demo units carry
-non-binding price/source language, every unit has a plan URL, drawing material has linked URLs, live
-`model_viewer_ready` passes, and `projects_with_glb` is a warning because the live Rainbow post is
-not wired yet.
+non-binding price/source language, every unit has a plan URL plus empty `interior_url` and
+`tour_url` slots, drawing material has linked URLs, project-level video/tour/Cesium fields are
+present, live `model_viewer_ready` passes, and `projects_with_glb` is a warning because the live
+Rainbow post is not wired yet.
 Any `main` raw URL in the payload must also resolve to a local committed file.
+
+Empty media/tour/Cesium slots are intentional. Fill them only with approved `https://` URLs:
+
+- official project video or a licensed sales video,
+- owner-approved Matterport/virtual-tour style link,
+- approved Cesium 3D Tiles / Google Photorealistic 3D Tiles view layer,
+- unit-level official interior media or a licensed virtual tour.
+
+Do not use copied developer media, stock interiors, fake tours or unlicensed screenshots. The
+readiness gate warns on empty slots but fails malformed or non-HTTPS URLs.
 
 To prove the remote files on this PR branch before merge without changing the durable CMS payload,
 run:
