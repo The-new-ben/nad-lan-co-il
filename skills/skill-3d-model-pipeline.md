@@ -79,8 +79,10 @@ Project fields:
 - Start the camera close enough for apartment picking: narrow field of view, gentle auto-rotate,
   and a target near the occupied floors. Avoid fast spinning because it reads like a demo, not a
   sales showroom.
-- Apartment markers must be status-coded and usable before the user opens any side panel:
-  available, reserved, sold and recommended states are part of the model contract.
+- Apartment selectors must read as apartment inventory before the user opens any side panel:
+  use status-coded apartment cells/rectangles on the building wherever possible. Dots are only a
+  fallback for very small geometry. Available, reserved, sold and recommended states are part of
+  the model contract.
 
 Unit JSON fields:
 
@@ -137,8 +139,8 @@ model annotation script. Store only coordinates, not private source files.
 - If the model errors, do not leave a blank stage.
 - Model hotspots must call the same selected-unit flow as facade/SVG clicks.
 - Unit markers must be buyer-obvious without becoming text blobs on the model: use clean
-  status-colored dots with 44px+ invisible hit areas, hover/focus tooltip on desktop, selected-card
-  details on mobile, and optional recommended pulse.
+  apartment cells/rectangles with 44px+ hit areas, status color, hover/focus tooltip on desktop,
+  selected-card details on mobile, and optional recommended pulse.
 - Those invisible hit areas must not block the primary product gesture. A tap on a unit marker
   selects it; a drag that starts on the same marker rotates the building and suppresses the
   accidental click at the end of the swipe.
