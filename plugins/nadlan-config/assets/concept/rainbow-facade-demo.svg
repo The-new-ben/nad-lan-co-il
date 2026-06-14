@@ -1,108 +1,132 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000" role="img" aria-labelledby="title desc">
-  <title id="title">Rainbow Tel Aviv illustrative apartment selector facade</title>
-  <desc id="desc">Original schematic visualization of a coastal residential tower with boutique buildings and apartment-selection bays. Illustrative only, not an official sales plan.</desc>
+  <title id="title">Rainbow Tel Aviv illustrative facade apartment selector</title>
+  <desc id="desc">Original non-official concept image: a white sculptural coastal tower, boutique buildings, lagoon and sea context, prepared for apartment-cell selection overlays.</desc>
   <defs>
-    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0" stop-color="#071718"/>
-      <stop offset=".45" stop-color="#0e3538"/>
-      <stop offset="1" stop-color="#11100c"/>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#062327"/>
+      <stop offset=".42" stop-color="#0b3940"/>
+      <stop offset=".76" stop-color="#102a2a"/>
+      <stop offset="1" stop-color="#0b1615"/>
     </linearGradient>
-    <linearGradient id="tower" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0" stop-color="#182c2d"/>
-      <stop offset=".55" stop-color="#0b1e1f"/>
-      <stop offset="1" stop-color="#061213"/>
+    <radialGradient id="coastGlow" cx=".28" cy=".22" r=".68">
+      <stop offset="0" stop-color="#fff2c3" stop-opacity=".24"/>
+      <stop offset=".34" stop-color="#6ecad7" stop-opacity=".16"/>
+      <stop offset="1" stop-color="#071312" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="sea" x1="0" y1="0" x2="1" y2=".2">
+      <stop offset="0" stop-color="#1f7e94" stop-opacity=".32"/>
+      <stop offset=".55" stop-color="#2aa6b7" stop-opacity=".26"/>
+      <stop offset="1" stop-color="#0a2830" stop-opacity=".18"/>
+    </linearGradient>
+    <linearGradient id="glass" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#eaf7f6"/>
+      <stop offset=".38" stop-color="#c7e4e5"/>
+      <stop offset=".72" stop-color="#8fb7ba"/>
+      <stop offset="1" stop-color="#37595d"/>
+    </linearGradient>
+    <linearGradient id="whiteShell" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#fff9e7"/>
+      <stop offset=".32" stop-color="#f0efe6"/>
+      <stop offset=".72" stop-color="#bfcfd0"/>
+      <stop offset="1" stop-color="#75888a"/>
     </linearGradient>
     <linearGradient id="champagne" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0" stop-color="#fff1bf"/>
-      <stop offset=".55" stop-color="#c2a15d"/>
-      <stop offset="1" stop-color="#72572b"/>
+      <stop offset="0" stop-color="#fff4bf"/>
+      <stop offset=".52" stop-color="#d9bd76"/>
+      <stop offset="1" stop-color="#8c6b32"/>
     </linearGradient>
-    <pattern id="grid" width="34" height="34" patternUnits="userSpaceOnUse">
-      <path d="M34 0H0v34" fill="none" stroke="#ead8a3" stroke-opacity=".065" stroke-width="1"/>
-    </pattern>
-    <filter id="soft" x="-20%" y="-20%" width="140%" height="140%">
-      <feGaussianBlur stdDeviation="3" result="b"/>
-      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    <filter id="softShadow" x="-25%" y="-25%" width="150%" height="150%">
+      <feDropShadow dx="0" dy="24" stdDeviation="18" flood-color="#020808" flood-opacity=".42"/>
     </filter>
+    <filter id="glow" x="-40%" y="-40%" width="180%" height="180%">
+      <feGaussianBlur stdDeviation="4" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <pattern id="blueprint" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M40 0H0v40" fill="none" stroke="#ead8a3" stroke-opacity=".055" stroke-width="1"/>
+    </pattern>
   </defs>
 
-  <rect width="1000" height="1000" fill="url(#bg)"/>
-  <rect width="1000" height="1000" fill="url(#grid)"/>
+  <rect width="1000" height="1000" fill="url(#sky)"/>
+  <rect width="1000" height="1000" fill="url(#coastGlow)"/>
+  <rect width="1000" height="1000" fill="url(#blueprint)"/>
 
-  <path d="M40 645c122-41 250-50 383-26 138 25 286-7 525-101v125c-221 83-383 107-539 74-122-26-244-12-369 38z" fill="#2f8a9c" opacity=".2"/>
-  <path d="M65 755c170-55 302-66 452-29 144 35 258 10 414-55" fill="none" stroke="#ead8a3" stroke-opacity=".27" stroke-width="2"/>
-  <path d="M94 810h812" stroke="#ead8a3" stroke-opacity=".32" stroke-width="2"/>
+  <path d="M0 565c130-45 232-46 341-16 143 39 247 15 356-42 87-46 174-65 303-39v194c-156-16-276 6-400 58-126 52-265 69-405 32-74-19-137-18-195 1z" fill="url(#sea)"/>
+  <path d="M54 643c135-45 252-48 377-12 128 37 254 12 398-62" fill="none" stroke="#e9d49a" stroke-opacity=".45" stroke-width="3"/>
+  <path d="M0 790c188-55 337-58 488-24 174 39 318 20 512-61v295H0z" fill="#0d1f1d" opacity=".82"/>
 
-  <g opacity=".98">
-    <path d="M364 130 654 102 704 790 338 824z" fill="url(#tower)"/>
-    <path d="M364 130 654 102 704 790 338 824z" fill="none" stroke="url(#champagne)" stroke-width="4" filter="url(#soft)"/>
-    <path d="M403 161 621 140 664 755 382 781z" fill="#ffffff" opacity=".035"/>
+  <g opacity=".7">
+    <path d="M65 805h96v74H65zM178 775h116v104H178zM314 750h96v129H314zM686 768h112v111H686zM814 728h118v151H814z" fill="#112b2b" stroke="#ead8a3" stroke-opacity=".28"/>
+    <path d="M82 825h62M82 850h62M195 800h80M195 829h80M195 858h80M330 779h64M330 812h64M330 845h64M702 798h80M702 830h80M702 862h80M831 759h84M831 792h84M831 825h84M831 858h84" stroke="#d8c482" stroke-opacity=".34"/>
+    <path d="M92 764h62v41H92zM834 681h80v47H834z" fill="#142f2f" stroke="#ead8a3" stroke-opacity=".38"/>
+  </g>
 
+  <g filter="url(#softShadow)">
+    <path d="M346 830C369 661 372 413 365 129c54-33 112-44 176-45 65-1 119 14 158 44-20 270-7 505 34 701-56 26-127 37-199 36-72-1-140-13-188-35z" fill="url(#whiteShell)" opacity=".98"/>
+    <path d="M390 804c16-169 18-398 10-627 35-25 81-34 129-35 50-1 94 9 127 34-15 230-3 457 27 628-83 26-207 27-293 0z" fill="url(#glass)" opacity=".78"/>
+    <path d="M365 129c59 23 124 33 194 31 54-2 101-12 140-32" fill="none" stroke="#fff8d5" stroke-opacity=".8" stroke-width="5"/>
+    <path d="M346 830c48 22 116 34 188 35 72 1 143-10 199-36" fill="none" stroke="#e8d79a" stroke-opacity=".56" stroke-width="4"/>
+
+    <path d="M385 160c39 70 62 160 69 270 8 118-4 237-36 360" fill="none" stroke="#fff8df" stroke-opacity=".62" stroke-width="18"/>
+    <path d="M650 164c-37 78-55 170-51 277 5 127 31 249 82 366" fill="none" stroke="#fff7dc" stroke-opacity=".46" stroke-width="16"/>
+    <path d="M481 144c-12 201-12 424-1 681" fill="none" stroke="#ffffff" stroke-opacity=".3" stroke-width="10"/>
+    <path d="M572 145c6 189 22 408 49 672" fill="none" stroke="#ffffff" stroke-opacity=".26" stroke-width="9"/>
+
+    <g stroke="#123234" stroke-opacity=".28" stroke-width="1">
+      <path d="M402 178c82 13 167 12 254-1"/>
+      <path d="M399 201c84 13 171 13 260-1"/>
+      <path d="M397 224c85 13 174 13 263-1"/>
+      <path d="M394 247c88 13 178 13 269 0"/>
+      <path d="M392 270c90 13 181 13 274 0"/>
+      <path d="M389 293c92 13 185 13 280 0"/>
+      <path d="M387 316c93 13 188 13 283 0"/>
+      <path d="M384 339c95 13 191 13 289 1"/>
+      <path d="M382 362c97 13 195 13 294 1"/>
+      <path d="M379 385c99 13 198 14 299 1"/>
+      <path d="M377 408c101 13 201 14 304 1"/>
+      <path d="M374 431c102 13 205 14 309 2"/>
+      <path d="M372 454c104 13 208 14 314 2"/>
+      <path d="M369 477c106 13 212 15 320 2"/>
+      <path d="M367 500c108 13 215 15 325 2"/>
+      <path d="M364 523c110 13 219 15 330 3"/>
+      <path d="M362 546c111 13 222 15 335 3"/>
+      <path d="M359 569c113 13 226 16 340 3"/>
+      <path d="M357 592c115 13 229 16 346 3"/>
+      <path d="M354 615c117 13 233 16 351 4"/>
+      <path d="M352 638c118 13 236 17 356 4"/>
+      <path d="M349 661c120 13 240 17 361 4"/>
+      <path d="M347 684c122 13 243 17 366 5"/>
+      <path d="M344 707c124 13 247 18 371 5"/>
+      <path d="M342 730c125 13 250 18 377 5"/>
+      <path d="M339 753c127 13 254 18 382 5"/>
+      <path d="M337 776c129 13 257 19 387 5"/>
+    </g>
+
+    <g fill="#ffffff" opacity=".42">
+      <rect x="408" y="149" width="246" height="30" rx="5"/>
+      <rect x="408" y="215" width="78" height="16" rx="3"/>
+      <rect x="492" y="281" width="78" height="16" rx="3"/>
+      <rect x="576" y="380" width="78" height="16" rx="3"/>
+      <rect x="492" y="479" width="78" height="16" rx="3"/>
+      <rect x="408" y="578" width="78" height="16" rx="3"/>
+    </g>
     <g stroke="#ead8a3" stroke-opacity=".42" stroke-width="1">
-      <path d="M395 194 660 169"/>
-      <path d="M392 216 662 191"/>
-      <path d="M389 238 664 213"/>
-      <path d="M386 260 666 235"/>
-      <path d="M383 282 668 257"/>
-      <path d="M380 304 670 279"/>
-      <path d="M377 326 672 301"/>
-      <path d="M374 348 674 323"/>
-      <path d="M371 370 676 345"/>
-      <path d="M368 392 678 367"/>
-      <path d="M365 414 680 389"/>
-      <path d="M362 436 682 411"/>
-      <path d="M359 458 684 433"/>
-      <path d="M356 480 686 455"/>
-      <path d="M353 502 688 477"/>
-      <path d="M350 524 690 499"/>
-      <path d="M347 546 692 521"/>
-      <path d="M344 568 694 543"/>
-      <path d="M341 590 696 565"/>
-      <path d="M338 612 698 587"/>
-      <path d="M335 634 700 609"/>
-      <path d="M332 656 702 631"/>
-      <path d="M329 678 704 653"/>
-      <path d="M326 700 706 675"/>
-      <path d="M323 722 708 697"/>
-      <path d="M320 744 710 719"/>
-      <path d="M317 766 712 741"/>
-    </g>
-
-    <g stroke="#ead8a3" stroke-opacity=".24" stroke-width="1">
-      <path d="M405 162 383 782"/>
-      <path d="M486 154 486 772"/>
-      <path d="M571 146 590 762"/>
-      <path d="M645 138 682 752"/>
-    </g>
-
-    <g fill="#ead8a3" opacity=".28">
-      <rect x="408" y="149" width="78" height="30" rx="2"/>
-      <rect x="492" y="149" width="78" height="30" rx="2"/>
-      <rect x="576" y="149" width="78" height="30" rx="2"/>
-      <rect x="408" y="215" width="78" height="16" rx="2"/>
-      <rect x="492" y="281" width="78" height="16" rx="2"/>
-      <rect x="576" y="380" width="78" height="16" rx="2"/>
-      <rect x="492" y="479" width="78" height="16" rx="2"/>
-      <rect x="408" y="578" width="78" height="16" rx="2"/>
+      <rect x="408" y="149" width="246" height="30" rx="5" fill="none"/>
+      <rect x="408" y="215" width="78" height="16" rx="3" fill="none"/>
+      <rect x="492" y="281" width="78" height="16" rx="3" fill="none"/>
+      <rect x="576" y="380" width="78" height="16" rx="3" fill="none"/>
+      <rect x="492" y="479" width="78" height="16" rx="3" fill="none"/>
+      <rect x="408" y="578" width="78" height="16" rx="3" fill="none"/>
     </g>
   </g>
 
-  <g stroke="#ead8a3" stroke-opacity=".6" stroke-width="2" fill="#0a1d1e">
-    <path d="M120 680h112v90H120z"/>
-    <path d="M246 650h118v120H246z"/>
-    <path d="M650 660h110v110H650z"/>
-    <path d="M774 626h112v144H774z"/>
-    <path d="M138 636h86v44H138z"/>
-    <path d="M790 585h80v41H790z"/>
+  <g filter="url(#softShadow)">
+    <path d="M696 690h113v96H696z" fill="#f3f0e3" opacity=".9" stroke="#ead8a3" stroke-opacity=".6"/>
+    <path d="M704 705h86v25H704z" fill="#e6f1ef" stroke="#d5bf74" stroke-opacity=".55"/>
+    <path d="M708 740h82M708 760h82" stroke="#103337" stroke-opacity=".35"/>
   </g>
-  <g stroke="#ead8a3" stroke-opacity=".28" stroke-width="1">
-    <path d="M130 708h92M130 734h92M258 680h94M258 710h94M258 740h94M660 690h90M660 720h90M784 656h92M784 686h92M784 716h92M784 746h92"/>
-    <path d="M152 650h58M804 600h52"/>
-  </g>
-  <rect x="705" y="705" width="85" height="25" rx="2" fill="#ead8a3" opacity=".22"/>
 
-  <path d="M130 588c70-26 146-30 228-12 74 17 127 9 206-30 102-51 208-67 322-39" fill="none" stroke="#ead8a3" stroke-opacity=".28" stroke-width="2"/>
-  <path d="M115 872h770" stroke="#ead8a3" stroke-opacity=".18"/>
-  <text x="500" y="902" text-anchor="middle" fill="#ead8a3" fill-opacity=".82" font-family="Arial, sans-serif" font-size="19">Rainbow Tel Aviv · tower + boutique buildings · illustrative selection model</text>
-  <text x="500" y="930" text-anchor="middle" fill="#f6efe2" fill-opacity=".54" font-family="Arial, sans-serif" font-size="13">Not an official architectural drawing or sales plan</text>
+  <path d="M176 610c80-30 162-33 246-8 70 21 137 10 218-34 94-51 176-63 275-36" fill="none" stroke="url(#champagne)" stroke-opacity=".38" stroke-width="3"/>
+  <circle cx="805" cy="178" r="58" fill="#ead8a3" opacity=".12" filter="url(#glow)"/>
+  <path d="M250 918h500" stroke="#ead8a3" stroke-opacity=".18"/>
 </svg>

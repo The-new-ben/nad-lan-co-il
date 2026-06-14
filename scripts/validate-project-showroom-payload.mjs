@@ -175,6 +175,7 @@ const summary = {
   meta_fields: payload.meta ? Object.keys(payload.meta).length : 0,
   expected_fields: schema.properties.meta.required.length,
   units: payload.meta && Array.isArray(payload.meta.project_3d_units) ? payload.meta.project_3d_units.length : 0,
+  units_with_points: payload.meta && Array.isArray(payload.meta.project_3d_units) ? payload.meta.project_3d_units.filter((unit) => String(unit.points || '').trim() !== '').length : 0,
   drawings: payload.meta && Array.isArray(payload.meta.project_3d_drawings_json) ? payload.meta.project_3d_drawings_json.length : 0,
   errors,
 };

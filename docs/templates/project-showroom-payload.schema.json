@@ -111,7 +111,7 @@
   "$defs": {
     "unit": {
       "type": "object",
-      "required": ["id", "title", "floor", "rooms", "sqm", "status", "hotspot_position", "hotspot_normal"],
+      "required": ["id", "title", "floor", "rooms", "sqm", "status", "hotspot_position", "hotspot_normal", "points", "stage_x", "stage_w"],
       "additionalProperties": true,
       "properties": {
         "id": {
@@ -186,6 +186,17 @@
         },
         "camera_orbit": {
           "type": "string"
+        },
+        "stage_x": {
+          "type": ["integer", "number", "string"]
+        },
+        "stage_w": {
+          "type": ["integer", "number", "string"]
+        },
+        "points": {
+          "type": "string",
+          "minLength": 7,
+          "pattern": "^-?\\d+(?:\\.\\d+)?,-?\\d+(?:\\.\\d+)?(?:\\s+-?\\d+(?:\\.\\d+)?,-?\\d+(?:\\.\\d+)?){2,}$"
         },
         "label": {
           "type": "string"

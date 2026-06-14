@@ -12,7 +12,7 @@
   ],
   "public_use_policy": "Prototype showroom data. Replace GLB, drawings, prices and inventory with developer-approved material before removing illustrative labels.",
   "meta": {
-    "project_3d_image": "",
+    "project_3d_image": "https://raw.githubusercontent.com/The-new-ben/nad-lan-co-il/main/plugins/nadlan-config/assets/concept/rainbow-facade-demo.svg",
     "project_3d_viewbox": "0 0 1000 1000",
     "project_3d_floor_height_m": "3.05",
     "project_3d_ground_elevation_m": "8",
@@ -370,7 +370,10 @@
         "hotspot_normal": "0 0 1",
         "camera_orbit": "45deg 66deg auto",
         "label": "דירת 3 חדרים, קומה 8",
-        "recommended": false
+        "recommended": false,
+        "stage_x": 38,
+        "stage_w": 9,
+        "points": "408,578 486,578 486,594 408,594"
       },
       {
         "id": "unit-16-w",
@@ -397,7 +400,10 @@
         "hotspot_normal": "0 0 1",
         "camera_orbit": "35deg 63deg auto",
         "label": "דירת 4 חדרים, קומה 16",
-        "recommended": false
+        "recommended": false,
+        "stage_x": 45,
+        "stage_w": 9,
+        "points": "492,479 570,479 570,495 492,495"
       },
       {
         "id": "unit-24-nw",
@@ -424,7 +430,10 @@
         "hotspot_normal": "0 0 1",
         "camera_orbit": "24deg 61deg auto",
         "label": "דירת 4 חדרים, קומה 24",
-        "recommended": true
+        "recommended": true,
+        "stage_x": 42,
+        "stage_w": 9,
+        "points": "576,380 654,380 654,396 576,396"
       },
       {
         "id": "unit-31-se",
@@ -451,7 +460,10 @@
         "hotspot_normal": "0 0 1",
         "camera_orbit": "310deg 64deg auto",
         "label": "דירת 5 חדרים, קומה 31",
-        "recommended": false
+        "recommended": false,
+        "stage_x": 63,
+        "stage_w": 9,
+        "points": "492,281 570,281 570,297 492,297"
       },
       {
         "id": "unit-38-penthouse",
@@ -478,7 +490,10 @@
         "hotspot_normal": "0 0 1",
         "camera_orbit": "32deg 58deg auto",
         "label": "דירת 5 חדרים, קומה 38",
-        "recommended": true
+        "recommended": true,
+        "stage_x": 51,
+        "stage_w": 13,
+        "points": "408,149 654,149 654,179 408,179"
       },
       {
         "id": "unit-boutique-07",
@@ -505,7 +520,10 @@
         "hotspot_normal": "0 0 1",
         "camera_orbit": "55deg 67deg auto",
         "label": "דירת 4 חדרים, קומה 7",
-        "recommended": false
+        "recommended": false,
+        "stage_x": 22,
+        "stage_w": 9,
+        "points": "705,705 790,705 790,730 705,730"
       }
     ],
     "project_3d_demo": "1"

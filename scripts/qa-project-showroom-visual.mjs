@@ -218,10 +218,14 @@ function metricsExpression() {
     const stage = document.querySelector('.nlp3d-stage-wrap');
     const scene = document.querySelector('.nlp3d-scene');
     const card = document.querySelector('.nlp3d-stage-card');
-    const picks = Array.from(document.querySelectorAll('.nlp3d-stage-pick')).filter(visible);
+    const facadeHits = Array.from(document.querySelectorAll('.nlp3d-facade-hit')).filter(visible);
+    const facadeCells = Array.from(document.querySelectorAll('.nlp3d-facade-cell')).filter(visible);
+    const facadeLabels = Array.from(document.querySelectorAll('.nlp3d-facade-label')).filter(visible);
+    const stagePicks = Array.from(document.querySelectorAll('.nlp3d-stage-pick')).filter(visible);
+    const picks = facadeHits.length ? facadeHits : (facadeCells.length ? facadeCells : stagePicks);
     const firstPick = picks[0] || null;
     const firstPickRect = firstPick ? firstPick.getBoundingClientRect() : null;
-    const tapTargets = Array.from(document.querySelectorAll('.nlp3d-stage-pick,.nlp3d-stage-card-actions button,.nlp3d-lead-form button,.nlp3d-owner-form button,.nlp3d-tool,.nlp3d-view-toggle')).filter(visible).map((el) => {
+    const tapTargets = Array.from(document.querySelectorAll('.nlp3d-facade-hit,.nlp3d-facade-cell,.nlp3d-stage-pick,.nlp3d-stage-card-actions button,.nlp3d-lead-form button,.nlp3d-owner-form button,.nlp3d-tool,.nlp3d-view-toggle')).filter(visible).map((el) => {
       const r = el.getBoundingClientRect();
       return { selector: el.className || el.getAttribute('data-action') || el.tagName, width: r.width, height: r.height };
     });
@@ -243,6 +247,10 @@ function metricsExpression() {
       cardRect: rect(card),
       cardHidden: !card || card.hidden || !visible(card),
       pickCount: picks.length,
+      facadeHitCount: facadeHits.length,
+      facadeCellCount: facadeCells.length,
+      facadeLabelCount: facadeLabels.length,
+      stagePickCount: stagePicks.length,
       recommendedPickCount: picks.filter((p) => p.classList.contains('is-recommended')).length,
       firstPickCenter: firstPickRect ? { x: Math.round(firstPickRect.left + firstPickRect.width / 2), y: Math.round(firstPickRect.top + firstPickRect.height / 2) } : null,
       modelViewerDefined: !!customElements.get('model-viewer'),
@@ -314,7 +322,8 @@ async function runViewport(client, args, viewport, outDir, pageErrors) {
   if (!after.rootRect) failures.push('showroom root missing');
   if (after.scroll.overflow > 2) failures.push(`horizontal overflow ${after.scroll.overflow}px`);
   if (after.h1s.length !== 1) failures.push(`expected one H1, found ${after.h1s.length}`);
-  if (after.pickCount < 1) failures.push('no visible apartment stage picks');
+  if (after.pickCount < 1) failures.push('no visible facade/stage apartment selectors');
+  if (after.facadeCellCount > 0 && after.facadeLabelCount < Math.min(2, after.facadeCellCount)) failures.push(`facade labels missing (${after.facadeLabelCount}/${after.facadeCellCount})`);
   if (after.firstPickCenter && after.cardHidden) failures.push('clicking apartment did not reveal selected card');
   if (after.tapTargets.count && after.tapTargets.min < 44) failures.push(`tap target below 44px (${after.tapTargets.min}px)`);
   if (after.rootRect && viewport.width <= 768 && (after.rootRect.x < -2 || after.rootRect.right > viewport.width + 2)) failures.push(`showroom cropped on mobile/tablet: ${JSON.stringify(after.rootRect)}`);

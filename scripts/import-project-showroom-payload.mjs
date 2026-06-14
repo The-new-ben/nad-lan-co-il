@@ -2,7 +2,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 
 const DEFAULT_SITE = 'https://nad-lan.co.il';
-const MIN_PLUGIN_VERSION = '1.65.2';
+const MIN_PLUGIN_VERSION = '1.65.7';
 
 function usage() {
   return `Usage:
@@ -121,7 +121,7 @@ function validatePayload(payload) {
     errors.push('project_3d_units must be a non-empty array');
   } else {
     units.forEach((u, i) => {
-      for (const key of ['id', 'title', 'floor', 'rooms', 'sqm', 'status', 'hotspot_position', 'hotspot_normal']) {
+      for (const key of ['id', 'title', 'floor', 'rooms', 'sqm', 'status', 'hotspot_position', 'hotspot_normal', 'points', 'stage_x', 'stage_w']) {
         if (u[key] === undefined || u[key] === '') errors.push(`unit ${i} missing ${key}`);
       }
       validateUrl(u.plan, `unit ${i} plan`, errors);
@@ -174,6 +174,7 @@ async function main() {
   const health = await getJson(`${args.site}/wp-json/nadlan/v1/healthcheck?cb=${Date.now()}`);
   const liveVersion = String(health.version || '');
   const routeReady = !!(health.project_3d && health.project_3d.showroom_payload_api_v1652);
+  const facadeReady = !!(health.project_3d && health.project_3d.facade_points_builder_v1657 && health.project_3d.facade_hides_placeholder_glb_v1657);
   const versionReady = compareVersions(liveVersion, MIN_PLUGIN_VERSION) >= 0;
 
   const summary = {
@@ -185,6 +186,7 @@ async function main() {
     required_version: MIN_PLUGIN_VERSION,
     version_ready: versionReady,
     route_marker_ready: routeReady,
+    facade_cell_marker_ready: facadeReady,
     meta_fields: Object.keys(payload.meta).length,
     expected_fields: required.length,
     units: payload.meta.project_3d_units.length,
@@ -194,14 +196,14 @@ async function main() {
 
   if (!args.apply) {
     console.log(JSON.stringify(summary, null, 2));
-    if (!versionReady || !routeReady) {
+    if (!versionReady || !routeReady || !facadeReady) {
       process.exitCode = 2;
     }
     return;
   }
 
-  if (!versionReady || !routeReady) {
-    throw new Error(`Live plugin is not ready for showroom import. Healthcheck=${liveVersion}, route_marker=${routeReady}`);
+  if (!versionReady || !routeReady || !facadeReady) {
+    throw new Error(`Live plugin is not ready for showroom import. Healthcheck=${liveVersion}, route_marker=${routeReady}, facade_marker=${facadeReady}`);
   }
   const auth = authHeader();
   if (!auth) {

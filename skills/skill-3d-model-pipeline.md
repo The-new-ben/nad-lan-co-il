@@ -100,6 +100,8 @@ Unit JSON fields:
 - `points` for SVG/facade fallback polygons
 - `hotspot_position` for model-viewer hotspots
 - `hotspot_normal` for model-viewer hotspots
+- `stage_x` for horizontal facade/stage-cell placement, from `0` left to `100` right
+- `stage_w` for the visible facade/stage-cell width, from `4` to `22`
 - `camera_orbit` optional per-unit camera orbit
 - `plan_url`
 - `interior_url`
@@ -141,9 +143,27 @@ model annotation script. Store only coordinates, not private source files.
 - Unit markers must be buyer-obvious without becoming text blobs on the model: use clean
   apartment cells/rectangles with 44px+ hit areas, status color, hover/focus tooltip on desktop,
   selected-card details on mobile, and optional recommended pulse.
-- Those invisible hit areas must not block the primary product gesture. A tap on a unit marker
-  selects it; a drag that starts on the same marker rotates the building and suppresses the
-  accidental click at the end of the swipe.
+- Prefer facade/elevation `points` when available. They make the apartment shape itself the
+  button, which is the sales-center pattern the owner wants. `stage_x`/`stage_w` are only the
+  fallback when no polygon/elevation exists yet.
+- Expose `points` in the project unit editor, not only in raw JSON. The owner/contractor should
+  be able to paste one polygon per unit in the `תא דירה על חזית SVG` field.
+- Provide an admin facade-point helper wherever possible: show the configured facade image, let the
+  operator click four corners, then copy the generated polygon into the same `points` field. The
+  helper must not bypass the sanitized `project_3d_units` JSON path.
+- When retrofitting an already-published flagship page, add a one-shot versioned seed that only
+  fills missing polygon data. Do not rely on an old seed option to run again, and do not overwrite
+  units that already contain contractor-supplied `points`.
+- Keep the project showroom payload schema strict: `points`, `stage_x` and `stage_w` are required
+  per unit for the facade-selector path. A payload that validates without facade cells is not a
+  buyer-ready project page.
+- If a project has facade `points` and only a placeholder/massing GLB, keep the facade selector
+  primary and hide the GLB behind it. Do not visually stack two towers. A 360 GLB selector becomes
+  primary only after the model contains real apartment-level meshes or verified unit hotspots.
+- The primary action of an apartment cell is selection. A tap/click on a cell must select that
+  apartment and open the selected-unit card. Dragging on empty building surface rotates the model.
+  Do not make apartment cells feel like dead drag handles unless a tested drag-vs-tap
+  disambiguation layer is present.
 - `recommended` is a CMS/business flag. It should identify units worth attention, not fake urgency.
 - The lead payload must preserve the selected unit.
 - Mapbox or Cesium environment views stay lazy and user-opened.
