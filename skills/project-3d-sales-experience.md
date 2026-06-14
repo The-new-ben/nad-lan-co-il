@@ -373,6 +373,12 @@ For every cloned project, verify:
 - Contact, AI, WhatsApp and call buttons must be checked geometrically against visible showroom
   controls. They may sit at a safe viewport edge, but they must not cover toolbar controls,
   hotspots, the selected-unit card, the live-view return button or form fields.
-- Run the gate at desktop 1440px and mobile 390px. A pass at one size does not prove the other.
+- Showroom controls must not be clipped or rendered off-viewport. During fallback/prototype review
+  this can be a warning, but when `--expect-glb` is used it is a deploy blocker.
+- Run the gate at desktop 1440px, mobile 390px and Edge-mobile 390px. A pass at one size or one
+  mobile user agent does not prove the other.
 - Treat 44px tap target warnings as deploy blockers for the final showroom review, even if they are
   acceptable warnings while the fallback/prototype is still live.
+- The live DOM gate must also fail visible internal/code tokens such as `floor_plan`,
+  `site_orientation`, `project_3d`, `nlp3d` or `class=`. A premium buyer page cannot leak field
+  names or implementation class names into visible UI.

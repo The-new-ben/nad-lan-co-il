@@ -184,6 +184,22 @@ const METRICS_EXPRESSION = `(() => {
   const selectedTitle = q('.nlp3d-selected-title');
   const stageCard = q('.nlp3d-stage-card');
   const stageControls = qa('.nlp3d-toolbar button, .nlp3d-mv-hotspot, .nlp3d-hotspot, .nlp3d-hotspot-hit, .nlp3d-stage-card button, .nlp3d-stage-card a, .nlp3d-viewframe button, .nlp3d-lead-form input, .nlp3d-lead-form button').filter(visible).map(rect).filter(Boolean);
+  const showroomBox = nlp3d ? nlp3d.getBoundingClientRect() : null;
+  const clippedShowroomControls = qa('.nlp3d button, .nlp3d a, .nlp3d input, .nlp3d [role="button"]').filter(visible).map((el) => {
+    const r = el.getBoundingClientRect();
+    const viewportClipped = r.left < -1 || r.right > innerWidth + 1;
+    const showroomClipped = showroomBox && (r.left < showroomBox.left - 1 || r.right > showroomBox.right + 1);
+    if (!viewportClipped && !showroomClipped) return null;
+    return {
+      tag: el.tagName.toLowerCase(),
+      text: (el.innerText || el.getAttribute('aria-label') || el.getAttribute('title') || '').trim().slice(0, 44),
+      x: Math.round(r.left),
+      right: Math.round(r.right),
+      width: Math.round(r.width),
+      viewportWidth: innerWidth,
+      className: String(el.className || '').slice(0, 80),
+    };
+  }).filter(Boolean).slice(0, 12);
   const fixedWidgets = qa('.nlfab, #nlai, #nla-btn, [data-nadlan-floating], a[href^="tel:"], a[href*="wa.me"]').filter((el) => {
     const s = getComputedStyle(el);
     return visible(el) && (s.position === 'fixed' || s.position === 'sticky');
@@ -197,6 +213,13 @@ const METRICS_EXPRESSION = `(() => {
     };
   });
   const rawLeakPatterns = ['class="nlpf', "class='nlpf", 'function(', 'const ', '<script', '</div>'];
+  const internalTokenPatterns = [
+    /\bsite_orientation\b/g,
+    /\bfloor_plan\b/g,
+    /\bproject_3d\b/g,
+    /\bnlp3d\b/g,
+    /class=/g,
+  ];
   const tapSmall = qa('.nlp3d button, .nlp3d a, .nlp3d input, .nlp3d [role="button"]').filter((el) => {
     if (!visible(el)) return false;
     const r = el.getBoundingClientRect();
@@ -242,6 +265,8 @@ const METRICS_EXPRESSION = `(() => {
     fixedWidgets,
     fixedOverlapsStageControls: fixedWidgets.filter((item) => item.overlapsStageControl),
     rawLeak: rawLeakPatterns.filter((pattern) => bodyText.includes(pattern)),
+    visibleInternalTokens: internalTokenPatterns.flatMap((pattern) => bodyText.match(pattern) || []).slice(0, 12),
+    clippedShowroomControls,
     smallTapTargets: tapSmall,
     pageErrorsVisible: bodyText.includes('Fatal error') || bodyText.includes('Warning:') || bodyText.includes('Parse error'),
   };
@@ -376,6 +401,8 @@ function evaluateChecks(metrics, expectGlb, expectMaterials, interaction, drag) 
   add(metrics.hasNlp3d ? 'PASS' : 'FAIL', 'showroom present', String(metrics.hasNlp3d));
   add(metrics.scroll.overflowX <= 2 ? 'PASS' : 'FAIL', 'no horizontal overflow', `${metrics.scroll.overflowX}px`);
   add(metrics.rawLeak.length === 0 ? 'PASS' : 'FAIL', 'no raw code leak', metrics.rawLeak.join(', ') || 'none');
+  add(metrics.visibleInternalTokens.length === 0 ? 'PASS' : 'FAIL', 'no visible internal tokens', metrics.visibleInternalTokens.join(', ') || 'none');
+  add(metrics.clippedShowroomControls.length === 0 ? 'PASS' : (expectGlb ? 'FAIL' : 'WARN'), 'no clipped showroom controls', metrics.clippedShowroomControls.length ? JSON.stringify(metrics.clippedShowroomControls.slice(0, 5)) : 'none');
   add(metrics.pageErrorsVisible ? 'FAIL' : 'PASS', 'no visible PHP/JS error text', metrics.pageErrorsVisible ? 'error text found' : 'none');
   if (expectGlb) {
     const goodModel = metrics.hasModelViewer && metrics.modelViewerRect && metrics.modelViewerRect.width >= 300 && metrics.modelViewerRect.height >= 280;
@@ -391,7 +418,7 @@ function evaluateChecks(metrics, expectGlb, expectMaterials, interaction, drag) 
   }
   add(metrics.hasFallbackTower || metrics.hasModelViewer ? 'PASS' : 'FAIL', 'model or fallback visible', `fallback=${metrics.hasFallbackTower}, model=${metrics.hasModelViewer}`);
   add(metrics.featuredImageVisible ? 'WARN' : 'PASS', 'static featured image suppressed', metrics.featuredImageVisible ? JSON.stringify(metrics.featuredImageRect) : 'not visible');
-  add(metrics.smallTapTargets.length === 0 ? 'PASS' : 'WARN', '44px tap targets in showroom', metrics.smallTapTargets.length ? JSON.stringify(metrics.smallTapTargets.slice(0, 5)) : 'all visible targets >=44px');
+  add(metrics.smallTapTargets.length === 0 ? 'PASS' : (expectGlb ? 'FAIL' : 'WARN'), '44px tap targets in showroom', metrics.smallTapTargets.length ? JSON.stringify(metrics.smallTapTargets.slice(0, 5)) : 'all visible targets >=44px');
   const interactionStatus = interaction && interaction.changed && interaction.stageCardVisible && interaction.activeCount > 0;
   add(interactionStatus ? 'PASS' : (expectGlb ? 'FAIL' : 'WARN'), 'unit selection updates UI', interaction ? JSON.stringify(interaction) : 'interaction not run');
   if (expectMaterials) {
@@ -480,6 +507,14 @@ async function main() {
         scale: 2,
         mobile: true,
         userAgent: 'Mozilla/5.0 (iPhone; CPU iPhone OS 17_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.0 Mobile/15E148 Safari/604.1',
+      },
+      {
+        name: 'edge-mobile-390',
+        width: 390,
+        height: 1200,
+        scale: 2.75,
+        mobile: true,
+        userAgent: 'Mozilla/5.0 (Linux; Android 14; Pixel 8 Pro) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Mobile Safari/537.36 EdgA/126.0.0.0',
       },
     ];
     const results = [];

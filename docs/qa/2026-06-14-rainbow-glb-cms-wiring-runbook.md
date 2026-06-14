@@ -322,7 +322,7 @@ node scripts\check-rainbow-prototype-preview.mjs
 ```
 
 The command serves the repo locally, opens `docs/previews/rainbow-model-viewer-prototype.html` in
-headless Chrome or Edge, and checks desktop 1440px plus mobile 390px:
+headless Chrome or Edge, and checks desktop 1440px, mobile 390px and Edge-mobile 390px:
 
 - one H1 and RTL document,
 - no horizontal overflow,
@@ -335,12 +335,15 @@ headless Chrome or Edge, and checks desktop 1440px plus mobile 390px:
 - surroundings panel renders from `environment.json`,
 - media/view slots render from `project-meta-example.json` and remain honest when pending,
 - view-layer policy is user-opened/lazy according to `view-layer-config.json`,
+- no visible internal/code tokens such as `floor_plan`, `site_orientation`, `project_3d`, `nlp3d`
+  or `class=`,
 - no browser errors or visible fatal text.
 
 Current evidence:
 
 - `docs/qa/screenshots-rainbow-prototype-preview/prototype-desktop-1440.png`
 - `docs/qa/screenshots-rainbow-prototype-preview/prototype-mobile-390.png`
+- `docs/qa/screenshots-rainbow-prototype-preview/prototype-edge-mobile-390.png`
 - `docs/qa/screenshots-rainbow-prototype-preview/rainbow-prototype-preview-report.json`
 
 `--remote-ref` changes only what the checker fetches for QA. It does not change the payload file and
@@ -409,12 +412,15 @@ After GLB wire-in:
 node scripts\check-rainbow-live-dom.mjs --expect-glb --expect-materials --out docs\qa\screenshots-rainbow-live-dom-after-glb
 ```
 
-This gate checks the rendered page at 1440px and 390px for:
+This gate checks the rendered page at desktop 1440px, mobile 390px and Edge-mobile 390px for:
 
 - one H1,
 - showroom presence,
 - horizontal overflow,
 - raw code leaks,
+- visible internal/code tokens such as `floor_plan`, `site_orientation`, `project_3d`, `nlp3d`
+  or `class=`,
+- clipped/off-viewport showroom controls,
 - visible PHP/JS error text,
 - featured-image suppression,
 - model-viewer/fallback state,
@@ -427,6 +433,11 @@ This gate checks the rendered page at 1440px and 390px for:
   when `--expect-materials` is used, drawings must render linked cards and surroundings must render
   several source-aware cards,
 - fixed WhatsApp/AI/contact widgets do not overlap visible showroom controls.
+
+Before the GLB/CMS wire-in, small fallback floor targets and off-viewport fallback SVG polygons are
+reported as warnings because the live page is still on the pre-stack fallback. Once `--expect-glb`
+is used, those same sub-44px or clipped controls become failures. The final showroom may not pass
+with accessibility or clipping warnings hidden as "known".
 
 Current live pre-wire evidence is recorded in
 `docs/qa/2026-06-14-rainbow-live-dom-current.md`.
