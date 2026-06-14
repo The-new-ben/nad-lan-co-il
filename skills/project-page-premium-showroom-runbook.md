@@ -53,8 +53,9 @@ plain WordPress article.
 2. The buyer can drag or tap angle controls to rotate/spin.
 3. Clickable floors/units update the selected-unit card, facts, compare tray, sun insight and lead
    payload.
-4. Apartment markers must be obvious without explanation: 44px+ target, color-coded availability,
-   label, hover/tap info and optional recommended pulse.
+4. Apartment markers must be obvious without explanation: the default visual target is an
+   apartment cell/rectangle on the building, not an abstract dot. It needs a 44px+ target,
+   color-coded availability, label, hover/tap info and optional recommended pulse.
 5. The selected-apartment card is the hero after a click: title, status, view, non-binding price
    estimate and actions for details, view and developer contact.
    The card must also include buyer tags, a short next-step note, status-color edge treatment and
@@ -108,9 +109,10 @@ Per-unit fields required for a buyer-ready selector:
 4. `price_estimate` plus source note when an approximate price is shown.
 5. `hotspot_position` and `hotspot_normal` for GLB hotspots.
 
-Marker design rule: the model surface should not carry stacked text labels. Use status-colored dots
-with large invisible hit areas, a short desktop hover/focus tooltip, and a selected-apartment card
-for the full details. Mobile details belong in the card, not over the building.
+Marker design rule: the model surface should read as apartment inventory. Use facade-like
+rectangles/cells with status color and subtle window rhythm as the default. Use dots only as a
+last-resort fallback when the actual model geometry is too dense or the viewport is too small. The
+full details belong in the selected-apartment card, especially on mobile.
 
 Gesture rule: the same large hit area must support both buyer actions. A tap selects the apartment,
 but a drag that starts on the marker rotates the building. Never exclude the unit hit area from the

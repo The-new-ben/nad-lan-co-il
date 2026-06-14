@@ -33,7 +33,7 @@ The buyer flow is:
 
 1. Read the short project intro.
 2. Open the model already close enough to see apartments.
-3. Tap or hover an apartment marker to preview the unit.
+3. Tap or hover an apartment cell/rectangle on the building to preview the unit.
 4. Tap again or choose the unit to open the selected-apartment card.
 5. Continue to details, view from apartment, or developer contact.
 
@@ -77,6 +77,18 @@ Optional iPhone AR model. Leave blank until there is a real USDZ file.
 ## Units And Apartment Hotspots
 
 `project_3d_units`
+
+Each unit row controls one visible apartment cell. The buyer should understand the inventory from
+the building itself:
+
+- `status` controls the cell color: available, reserved or sold.
+- `recommended` adds a gentle pulse only for an available unit the owner wants to feature.
+- `label`, `floor`, `rooms`, `sqm`, `view` and `price_estimate` feed the tooltip and selected card.
+- `hotspot_position` and `hotspot_normal` place the cell on the GLB model.
+- `points` places the same apartment on a future official facade/elevation drawing.
+
+If the cells look approximate, that means the project still needs official BIM/elevation data. Do
+not call approximate cells official apartment plans.
 
 JSON array of apartment/unit rows. Each row can include:
 
