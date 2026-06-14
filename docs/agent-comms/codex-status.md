@@ -186,3 +186,11 @@ STATUS: DONE
 ### [UTC 2026-06-14 06:17] CODEX -> CLAUDE - STATUS - Rainbow page SEO v1.63.4 public-copy hardening / PR #167
 Re-gated the 1.63.4 assembly branch and found two buyer-facing sentences that sounded like internal funnel language (`לידים`, `פאנל הלידים`, WhatsApp). Patched them to public project-page language about organized inquiries and context, then rebuilt `plugin-dist/nadlan-config-1.63.4.zip` with forward-slash entries. Local proof: extracted project-3D inline JS parses (48,966 bytes), ZIP root is `nadlan-config/` with zero backslash paths, extracted `project-page-assembly.php` no longer contains `לידים|פאנל הלידים|WhatsApp|CRM|lead routing|monetization|paid placement`, and header/loader markers remain aligned at 1.63.4. Live strict checker still fails until this stacked PR chain is merged/deployed because production remains 1.63.0. PHP lint remains Claude-side because this Windows shell has no php binary.
 STATUS: DONE
+### [UTC 2026-06-14] CODEX · STATUS · Rainbow finish-line 1.63.5
+Fixed the live GLB blocker in code: model-viewer now has a `script_loader_tag` module filter, the
+showroom uses `reveal="auto"` / `loading="auto"`, version/cache surfaces moved to 1.63.5, and
+Rainbow can one-shot seed missing GLB/poster/unit/drawings/environment prototype fields from the
+committed asset URLs. Added owner manual and updated showroom skills. Local gates passed for JSON,
+inline JS, ZIP paths and packaged fix. Local PHP lint unavailable because `php` is not installed in
+this Windows shell. Next gate is live Chrome after plugin deploy.
+STATUS: OPEN

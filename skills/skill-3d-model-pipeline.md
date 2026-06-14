@@ -110,6 +110,13 @@ model annotation script. Store only coordinates, not private source files.
 ## Runtime Standard
 
 - Render `<model-viewer>` only when `project_model_glb` exists.
+- The `nadlan-model-viewer` script tag must render as `type="module"`. In WordPress this requires
+  a `script_loader_tag` filter for that handle; `wp_script_add_data( $handle, 'type', 'module' )`
+  alone is not a sufficient live gate on this site.
+- In Chrome, `customElements.get('model-viewer')` must return a function before anyone claims that
+  the GLB rail works.
+- Use `reveal="auto"` and `loading="auto"` for near-top flagship showroom models, with a poster
+  image so the stage is never blank while the GLB streams.
 - Keep procedural/facade fallback visible until the model loads.
 - If the model errors, do not leave a blank stage.
 - Model hotspots must call the same selected-unit flow as facade/SVG clicks.
@@ -123,11 +130,25 @@ Before shipping a project:
 - Confirm no blank stage without GLB.
 - Confirm no blank stage with a broken GLB.
 - Confirm GLB loads and has camera controls.
+- Confirm the rendered model-viewer script tag includes `type="module"` and Chrome has no
+  `Unexpected token 'export'` console error.
 - Confirm at least one hotspot selects the matching unit.
 - Confirm keyboard/focus access to unit selection remains available.
 - Confirm mobile has no horizontal overflow and no nested gray scrollbars.
 - Confirm source notes/disclaimers distinguish official data from illustrative/demo data.
 - Confirm the page still has one H1 and the article body remains readable below the showroom.
+
+## CMS Owner Rule
+
+Do not make Classic Editor the long-term answer for finding showroom fields. It can be used as a
+temporary owner comfort tool, but the durable standard is the plugin-owned
+`בחירת דירות אינטראקטיבית` metabox, REST-writable project meta, and a plain owner manual. A field is
+not considered usable until a non-technical owner can find it in the WordPress edit screen and a
+buyer can see the rendered result on the public page.
+
+`project_3d_drawings_json` may be either a flat array of material items or an object with an
+`items` array. `project_3d_environment_json` may be a flat array or a structured object with
+`layers[].items[]`; the plugin must flatten it into safe buyer-facing cards and keep source labels.
 
 ## Countrywide Replication
 

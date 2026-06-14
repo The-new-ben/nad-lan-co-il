@@ -126,3 +126,38 @@ After a PR is merged:
 4. Check `/wp-json/nadlan/v1/healthcheck` for the new version and feature blocks.
 
 GitHub merge alone does not update production.
+
+## H. 2026-06-14 Rainbow GLB Finish-Line Addendum
+
+For any project page that uses a GLB/model-viewer showroom, the live gate is buyer-rendered Chrome,
+not saved meta fields.
+
+Required runtime proof:
+
+1. The rendered `nadlan-model-viewer` script tag includes `type="module"`. In WordPress, enforce it
+   with a `script_loader_tag` filter for that handle.
+2. Chrome console returns a function for `customElements.get('model-viewer')`.
+3. The `<model-viewer>` element uses `reveal="auto"` and `loading="auto"` with a poster, so the
+   building appears without a first click and without a blank frame.
+4. The public page has no `Unexpected token 'export'`, no raw `class=`, no visible JavaScript/HTML
+   fragments, no horizontal overflow, and one H1.
+5. The first paragraph above the model names the project, location, developer and non-binding
+   price/availability rule before generic showroom language.
+
+Material JSON standard:
+
+1. `project_3d_drawings_json` may be a flat item array or an object with an `items` array.
+2. `project_3d_environment_json` may be a flat array or a sourced object with `layers[].items[]`.
+3. The runtime must flatten structured environment layers into safe buyer-facing cards.
+4. Illustrative relative positions are not survey pins and must not be displayed as exact map data.
+
+Owner manual standard:
+
+1. Every flagship project ships `docs/owner-manual-project-showroom.md`.
+2. The manual must explain where the `בחירת דירות אינטראקטיבית` metabox lives in WordPress.
+3. The manual must list the exact fields for GLB, poster, USDZ, unit JSON, drawings, surroundings,
+   video, tours, Cesium/3D Tiles seam and price notes.
+4. Classic Editor is only a temporary visibility aid. The durable fix is a clear plugin-owned
+   metabox/sidebar plus REST-writable fields.
+5. GitHub merge, plugin update, and field save are not final proof. The buyer-facing page and
+   Chrome screenshots are the proof.

@@ -41,6 +41,53 @@ if ( ! function_exists( 'nadlan_p3d_clean_material_items' ) ) {
 			return array();
 		}
 
+		if ( isset( $items['items'] ) && is_array( $items['items'] ) ) {
+			$items = $items['items'];
+		}
+
+		if ( isset( $items['layers'] ) && is_array( $items['layers'] ) ) {
+			$flat = array();
+			foreach ( $items['layers'] as $layer ) {
+				if ( ! is_array( $layer ) || empty( $layer['items'] ) || ! is_array( $layer['items'] ) ) {
+					continue;
+				}
+				$layer_id    = isset( $layer['id'] ) ? sanitize_key( (string) $layer['id'] ) : '';
+				$layer_label = isset( $layer['label'] ) ? sanitize_text_field( (string) $layer['label'] ) : '';
+				foreach ( $layer['items'] as $item ) {
+					if ( ! is_array( $item ) ) {
+						continue;
+					}
+					if ( ! isset( $item['label'] ) && isset( $item['name'] ) ) {
+						$item['label'] = $item['name'];
+					}
+					if ( ! isset( $item['url'] ) && isset( $item['source_url'] ) ) {
+						$item['url'] = $item['source_url'];
+					}
+					if ( ! isset( $item['source'] ) ) {
+						$item['source'] = $item['source_note'] ?? ( $item['notes'] ?? '' );
+					}
+					if ( ! isset( $item['type'] ) && $layer_id !== '' ) {
+						$item['type'] = $layer_id;
+					}
+					if ( ! isset( $item['category'] ) && $layer_id !== '' ) {
+						$item['category'] = $layer_id;
+					}
+					if ( ! isset( $item['detail'] ) ) {
+						$detail_bits = array_filter(
+							array(
+								$layer_label,
+								$item['status'] ?? '',
+								$item['distance'] ?? '',
+							)
+						);
+						$item['detail'] = implode( ' · ', $detail_bits );
+					}
+					$flat[] = $item;
+				}
+			}
+			$items = $flat;
+		}
+
 		$out = array();
 		foreach ( $items as $item ) {
 			if ( ! is_array( $item ) ) {
@@ -533,9 +580,9 @@ if ( ! function_exists( 'nadlan_p3d_render' ) ) {
 	<div class="nlp3d-grid" aria-hidden="true"></div>
 	<div class="nlp3d-shell">
 		<div class="nlp3d-copy">
-			<p class="nlp3d-kicker">תצוגת פרויקט אינטראקטיבית</p>
-			<h2 id="<?php echo esc_attr( $uid ); ?>-title"><?php echo esc_html( $meta['title'] ); ?> · בחירת דירה בתלת ממד</h2>
-			<p class="nlp3d-lead-text">מודל עבודה אדריכלי שמאפשר להבין קומות, כיווני אוויר, שטחים וקו נוף, ואז לשלוח פנייה ממוקדת על הדירה שנבחרה.</p>
+			<p class="nlp3d-kicker">Rainbow תל אביב · שדה דב</p>
+			<h2 id="<?php echo esc_attr( $uid ); ?>-title">דירות למכירה ב-<?php echo esc_html( $meta['title'] ); ?>: בחירת דירה בתלת ממד</h2>
+			<p class="nlp3d-lead-text">פרויקט Rainbow Tel Aviv של ישראל קנדה במתחם שדה דב מציג בחירה אינטראקטיבית של קומה, כיוון, שטח, אור ונוף. המחירים והזמינות מוצגים כאומדן לא מחייב ודורשים אימות מול היזם לפני כל התקדמות.</p>
 			<div class="nlp3d-shop-path" aria-label="תהליך בחירה">
 				<span>1. מסובבים</span>
 				<span>2. בוחרים דירה</span>
@@ -570,11 +617,11 @@ if ( ! function_exists( 'nadlan_p3d_render' ) ) {
 						<?php if ( ! empty( $meta['model_poster'] ) ) : ?>poster="<?php echo esc_url( $meta['model_poster'] ); ?>"<?php endif; ?>
 						<?php if ( ! empty( $meta['model_usdz'] ) ) : ?>ios-src="<?php echo esc_url( $meta['model_usdz'] ); ?>"<?php endif; ?>
 						alt="<?php echo esc_attr( $meta['title'] . ' 3D model' ); ?>"
-						reveal="<?php echo ! empty( $meta['model_poster'] ) ? 'interaction' : 'auto'; ?>"
-						loading="lazy"
+						reveal="auto"
+						loading="auto"
 						camera-controls
 						auto-rotate
-						auto-rotate-delay="3000"
+						auto-rotate-delay="2500"
 						rotation-per-second="18deg"
 						min-camera-orbit="-Infinity 0deg auto"
 						max-camera-orbit="Infinity 180deg auto"
@@ -1939,6 +1986,19 @@ JS;
 	}
 }
 
+add_filter(
+	'script_loader_tag',
+	function ( $tag, $handle, $src ) {
+		if ( 'nadlan-model-viewer' !== $handle ) {
+			return $tag;
+		}
+
+		return '<script type="module" src="' . esc_url( $src ) . '" id="nadlan-model-viewer-js"></script>' . "\n";
+	},
+	10,
+	3
+);
+
 add_action(
 	'wp_enqueue_scripts',
 	function () {
@@ -1946,7 +2006,7 @@ add_action(
 			return;
 		}
 
-		wp_register_style( 'nadlan-p3d', '', array(), '1.63.4' );
+		wp_register_style( 'nadlan-p3d', '', array(), '1.63.5' );
 		wp_enqueue_style( 'nadlan-p3d' );
 		wp_add_inline_style( 'nadlan-p3d', nadlan_p3d_inline_css() );
 		wp_add_inline_style( 'nadlan-p3d', '.nlp3d-drag-note{display:inline-flex;align-items:center;min-height:44px;color:rgba(246,239,226,.72);font-size:12px;padding:0 6px}.nlp3d-scene{touch-action:none;cursor:grab}.nlp3d-scene.is-dragging{cursor:grabbing}.nlp3d-actions{grid-template-columns:1fr}.nlp3d-view-toggle{margin-top:12px;border:1px solid rgba(234,216,163,.36);background:rgba(255,255,255,.06);color:#ffe8a6;padding:9px 12px;cursor:pointer}.nlp3d-view-toggle.is-active{background:rgba(234,216,163,.18);color:#fff}.nlp3d-viewframe{position:relative;margin-top:12px;min-height:150px;overflow:hidden;border:1px solid rgba(234,216,163,.18);background:linear-gradient(180deg,rgba(41,112,139,.58),rgba(8,25,25,.92));isolation:isolate}.nlp3d-view-sky{position:absolute;inset:0;background:radial-gradient(circle at 18% 22%,rgba(255,255,255,.24),transparent 18%),linear-gradient(135deg,rgba(39,107,130,.42),rgba(18,50,43,.1));opacity:.86}.nlp3d-view-lines{position:absolute;inset:auto -8% 18% -8%;height:46%;border-top:1px solid rgba(234,216,163,.28);background:linear-gradient(160deg,rgba(234,216,163,.1),transparent 54%);transform:skewY(-8deg)}.nlp3d-view-copy{position:absolute;right:14px;left:14px;bottom:12px;margin:0;color:#fff8dc;font-size:13px;line-height:1.5;text-shadow:0 1px 12px rgba(0,0,0,.55)}@media(max-width:600px){.nlp3d-drag-note{flex-basis:100%;min-height:24px}.nlp3d-viewframe{min-height:130px}}' );
@@ -1976,7 +2036,7 @@ add_action(
 			wp_enqueue_script( 'nadlan-model-viewer' );
 		}
 
-		wp_register_script( 'nadlan-p3d', '', array(), '1.63.4', true );
+		wp_register_script( 'nadlan-p3d', '', array(), '1.63.5', true );
 		wp_enqueue_script( 'nadlan-p3d' );
 		wp_add_inline_script( 'nadlan-p3d', nadlan_p3d_inline_js( esc_url_raw( rest_url( 'nadlan/v1/lead' ) ) ) );
 	}
@@ -2139,6 +2199,9 @@ add_filter(
 			'model_zoom_tilt'  => true,
 			'model_full_360'   => true,
 			'model_viewer_ready' => true,
+			'model_viewer_module_tag' => true,
+			'model_viewer_reveal' => 'auto',
+			'model_viewer_loading' => 'auto',
 			'model_viewer_version' => '4.3.1',
 			'model_viewer_lazy' => true,
 			'model_viewer_hotspots' => true,
