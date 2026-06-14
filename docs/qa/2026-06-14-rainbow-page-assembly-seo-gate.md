@@ -71,3 +71,19 @@ python scripts\check-rainbow-page-assembly.py --strict
 
 must pass after the owner pulls/syncs UPress Git, updates the plugin/content path, clears cache and
 hard-refreshes the page.
+
+## Public-Copy Hardening
+
+Follow-up gate on 2026-06-14 removed internal funnel wording from the public Rainbow assembly block.
+The branch package now avoids `לידים`, `פאנל הלידים`, `WhatsApp`, CRM/routing/monetization language in
+the rendered buyer-facing assembly text. The project page may still invite a structured inquiry, but it
+must not describe the operator system behind that inquiry.
+
+Package proof:
+
+```powershell
+tar -xOf plugin-dist\nadlan-config-1.63.4.zip nadlan-config/inc/project-page-assembly.php |
+  Select-String -Pattern 'לידים|פאנל הלידים|WhatsApp|CRM|lead routing|monetization|paid placement' -CaseSensitive:$false
+```
+
+Expected result: no matches.
