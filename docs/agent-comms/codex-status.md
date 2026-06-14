@@ -238,3 +238,7 @@ STATUS: OPEN
 ### [UTC 2026-06-14 14:09] CODEX -> CLAUDE - STATUS - Rainbow admin unit builder v1.65.0 / codex/rainbow-view-return-1641
 Built the next CMS usability slice: the `בחירת דירות אינטראקטיבית` metabox now renders grouped Hebrew panels for model/media, price/view settings, apartments, drawings and surroundings. Added a simple unit-builder form that writes to `project_3d_units` so owners can add or update one apartment without editing raw JSON. Raw JSON remains for bulk imports. Health marker: `project_3d.admin_unit_builder_v1650=true`. Live production still needs the WordPress plugin update before this can be inspected in wp-admin.
 STATUS: PACKAGING
+
+### [UTC 2026-06-14 14:24] CODEX -> CLAUDE - STATUS - Rainbow REST showroom field contract v1.65.1 / codex/rainbow-view-return-1641
+Hardening follow-up: removed the old unreachable metabox callback body and made the REST meta contract match the showroom metabox contract, including facade image, viewBox, floor height, ground elevation, price estimate/source note and demo flag. This lets the next-project factory fill the same fields by script that the owner can edit manually. Health markers: `admin_callback_clean_v1651` and `rest_showroom_fields_v1651`.
+STATUS: PACKAGING

@@ -416,6 +416,12 @@ if ( ! function_exists( 'nadlan_p3d_sanitize_json_text' ) ) {
 	}
 }
 
+if ( ! function_exists( 'nadlan_p3d_sanitize_checkbox' ) ) {
+	function nadlan_p3d_sanitize_checkbox( $value ) {
+		return ! empty( $value ) && $value !== '0' && $value !== 'false' ? '1' : '0';
+	}
+}
+
 add_action(
 	'init',
 	function () {
@@ -425,6 +431,12 @@ add_action(
 		};
 
 		$fields = array(
+			'project_3d_image'             => 'esc_url_raw',
+			'project_3d_viewbox'           => 'sanitize_text_field',
+			'project_3d_floor_height_m'    => 'nadlan_p3d_sanitize_decimal',
+			'project_3d_ground_elevation_m' => 'nadlan_p3d_sanitize_decimal',
+			'project_3d_avg_price_per_sqm' => 'nadlan_p3d_sanitize_decimal',
+			'project_3d_price_source_note' => 'sanitize_text_field',
 			'project_3d_model_type'       => 'nadlan_p3d_sanitize_model_type',
 			'project_model_glb'           => 'esc_url_raw',
 			'project_model_usdz'          => 'esc_url_raw',
@@ -435,6 +447,7 @@ add_action(
 			'project_3d_drawings_json'    => 'nadlan_p3d_sanitize_material_json',
 			'project_3d_environment_json' => 'nadlan_p3d_sanitize_material_json',
 			'project_3d_units'            => 'nadlan_p3d_sanitize_units_json',
+			'project_3d_demo'             => 'nadlan_p3d_sanitize_checkbox',
 		);
 
 		foreach ( $fields as $key => $sanitize_callback ) {
@@ -2243,7 +2256,7 @@ add_action(
 			return;
 		}
 
-		wp_register_style( 'nadlan-p3d', '', array(), '1.65.0' );
+		wp_register_style( 'nadlan-p3d', '', array(), '1.65.1' );
 		wp_enqueue_style( 'nadlan-p3d' );
 		wp_add_inline_style( 'nadlan-p3d', nadlan_p3d_inline_css() );
 		wp_add_inline_style( 'nadlan-p3d', '.nlp3d-drag-note{display:inline-flex;align-items:center;min-height:44px;color:rgba(246,239,226,.72);font-size:12px;padding:0 6px}.nlp3d-scene{touch-action:none;cursor:grab}.nlp3d-scene.is-dragging{cursor:grabbing}.nlp3d-actions{grid-template-columns:1fr}.nlp3d-view-toggle{margin-top:12px;border:1px solid rgba(234,216,163,.36);background:rgba(255,255,255,.06);color:#ffe8a6;padding:9px 12px;cursor:pointer}.nlp3d-view-toggle.is-active{background:rgba(234,216,163,.18);color:#fff}.nlp3d-viewframe{position:relative;margin-top:12px;min-height:150px;overflow:hidden;border:1px solid rgba(234,216,163,.18);background:linear-gradient(180deg,rgba(41,112,139,.58),rgba(8,25,25,.92));isolation:isolate}.nlp3d-view-sky{position:absolute;inset:0;background:radial-gradient(circle at 18% 22%,rgba(255,255,255,.24),transparent 18%),linear-gradient(135deg,rgba(39,107,130,.42),rgba(18,50,43,.1));opacity:.86}.nlp3d-view-lines{position:absolute;inset:auto -8% 18% -8%;height:46%;border-top:1px solid rgba(234,216,163,.28);background:linear-gradient(160deg,rgba(234,216,163,.1),transparent 54%);transform:skewY(-8deg)}.nlp3d-view-copy{position:absolute;right:14px;left:14px;bottom:12px;margin:0;color:#fff8dc;font-size:13px;line-height:1.5;text-shadow:0 1px 12px rgba(0,0,0,.55)}@media(max-width:600px){.nlp3d-drag-note{flex-basis:100%;min-height:24px}.nlp3d-viewframe{min-height:130px}}' );
@@ -2279,7 +2292,7 @@ add_action(
 			wp_enqueue_script( 'nadlan-model-viewer' );
 		}
 
-		wp_register_script( 'nadlan-p3d', '', array(), '1.65.0', true );
+		wp_register_script( 'nadlan-p3d', '', array(), '1.65.1', true );
 		wp_enqueue_script( 'nadlan-p3d' );
 		wp_add_inline_script( 'nadlan-p3d', nadlan_p3d_inline_js( esc_url_raw( rest_url( 'nadlan/v1/lead' ) ) ) );
 	}
@@ -2544,47 +2557,7 @@ add_action(
 		add_meta_box(
 			'nadlan-p3d',
 			'בחירת דירות אינטראקטיבית',
-			function ( $post ) {
-				nadlan_p3d_render_admin_metabox( $post );
-				return;
-
-				wp_nonce_field( 'nadlan_p3d_save', 'nadlan_p3d_nonce' );
-				$img = esc_attr( (string) get_post_meta( $post->ID, 'project_3d_image', true ) );
-				$vb  = esc_attr( (string) get_post_meta( $post->ID, 'project_3d_viewbox', true ) );
-				$fh  = esc_attr( (string) get_post_meta( $post->ID, 'project_3d_floor_height_m', true ) );
-				$gm  = esc_attr( (string) get_post_meta( $post->ID, 'project_3d_ground_elevation_m', true ) );
-				$ap  = esc_attr( (string) get_post_meta( $post->ID, 'project_3d_avg_price_per_sqm', true ) );
-				$psn = esc_attr( (string) get_post_meta( $post->ID, 'project_3d_price_source_note', true ) );
-				$mt  = esc_attr( (string) get_post_meta( $post->ID, 'project_3d_model_type', true ) );
-				$glb = esc_attr( (string) get_post_meta( $post->ID, 'project_model_glb', true ) );
-				$usdz = esc_attr( (string) get_post_meta( $post->ID, 'project_model_usdz', true ) );
-				$poster = esc_attr( (string) get_post_meta( $post->ID, 'project_model_poster', true ) );
-				$vu  = esc_attr( (string) get_post_meta( $post->ID, 'project_3d_video_url', true ) );
-				$tu  = esc_attr( (string) get_post_meta( $post->ID, 'project_3d_tour_url', true ) );
-				$cu  = esc_attr( (string) get_post_meta( $post->ID, 'project_3d_cesium_tiles_url', true ) );
-				$dr  = esc_textarea( (string) get_post_meta( $post->ID, 'project_3d_drawings_json', true ) );
-				$env = esc_textarea( (string) get_post_meta( $post->ID, 'project_3d_environment_json', true ) );
-				$js  = esc_textarea( (string) get_post_meta( $post->ID, 'project_3d_units', true ) );
-				$dm  = get_post_meta( $post->ID, 'project_3d_demo', true ) === '1';
-				echo '<p><label>כתובת תמונת מקור או הדמיה מאושרת<br><input type="url" name="project_3d_image" value="' . $img . '" class="widefat"></label></p>';
-				echo '<p><label>viewBox למצב שכבת SVG ישנה, אם קיים<br><input type="text" name="project_3d_viewbox" value="' . $vb . '" class="widefat"></label></p>';
-				echo '<p><label>גובה קומה במטרים לחישוב מבט מהדירה<br><input type="number" step="0.01" min="2.4" max="5" name="project_3d_floor_height_m" value="' . $fh . '" class="widefat" placeholder="3.05"></label></p>';
-				echo '<p><label>גובה קרקע משוער במטרים, אם ידוע<br><input type="number" step="0.1" min="-50" max="400" name="project_3d_ground_elevation_m" value="' . $gm . '" class="widefat" placeholder="0"></label></p>';
-				echo '<p><label>אומדן מחיר ממוצע למ"ר, אופציונלי בלבד<br><input type="number" step="1" min="0" name="project_3d_avg_price_per_sqm" value="' . $ap . '" class="widefat" placeholder="0"></label></p>';
-				echo '<p><label>מקור/הערה לאומדן מחיר<br><input type="text" name="project_3d_price_source_note" value="' . $psn . '" class="widefat" placeholder="אומדן לא מחייב לפי מקור מאושר"></label></p>';
-				echo '<p><label>Model type: procedural / facade / sprite360 / gltf / bim<br><input type="text" name="project_3d_model_type" value="' . $mt . '" class="widefat" placeholder="procedural"></label></p>';
-				echo '<p><label>GLB model URL for real 3D showroom<br><input type="url" name="project_model_glb" value="' . $glb . '" class="widefat" placeholder="https://.../project.glb"></label></p>';
-				echo '<p><label>USDZ model URL for iOS AR, optional<br><input type="url" name="project_model_usdz" value="' . $usdz . '" class="widefat" placeholder="https://.../project.usdz"></label></p>';
-				echo '<p><label>Model poster image URL, optional lightweight WebP/JPG<br><input type="url" name="project_model_poster" value="' . $poster . '" class="widefat" placeholder="https://.../poster.webp"></label></p>';
-				echo '<p><label>Sales video URL<br><input type="url" name="project_3d_video_url" value="' . $vu . '" class="widefat"></label></p>';
-				echo '<p><label>Interior or 3D tour URL<br><input type="url" name="project_3d_tour_url" value="' . $tu . '" class="widefat"></label></p>';
-				echo '<p><label>Future Cesium / Google 3D Tiles URL<br><input type="url" name="project_3d_cesium_tiles_url" value="' . $cu . '" class="widefat"></label></p>';
-				echo '<p><label>Drawings JSON: [{"label":"...","url":"...","type":"plan"}]<br><textarea name="project_3d_drawings_json" rows="5" class="widefat code">' . $dr . '</textarea></label></p>';
-				echo '<p><label>Environment JSON: [{"label":"...","detail":"...","url":"..."}]<br><textarea name="project_3d_environment_json" rows="5" class="widefat code">' . $env . '</textarea></label></p>';
-				echo '<p><label>יחידות JSON: id, title, label, floor, rooms, sqm, balcony, dir, line, view, price, price_estimate, status, recommended, plan, interior_url, tour_url, view_note, hotspot_position, hotspot_normal, camera_orbit<br><textarea name="project_3d_units" rows="10" class="widefat code">' . $js . '</textarea></label></p>';
-				echo '<p><label><input type="checkbox" name="project_3d_demo" value="1" ' . checked( $dm, true, false ) . '> הצג מודל הדגמה כאשר אין מלאי רשמי</label></p>';
-				echo '<p class="description">במצב הדגמה המחיר מוצג "לפי פנייה" כדי לא להציג נתוני מכירה לא מאומתים.</p>';
-			},
+			'nadlan_p3d_render_admin_metabox',
 			'nadlan_project',
 			'normal'
 		);
@@ -2702,6 +2675,8 @@ add_filter(
 			'mobile_edge_guard_v1648' => true,
 			'buyer_card_v1649' => true,
 			'admin_unit_builder_v1650' => true,
+			'admin_callback_clean_v1651' => true,
+			'rest_showroom_fields_v1651' => true,
 			'showroom_first_view' => true,
 			'static_featured_image_suppressed' => true,
 			'floating_actions_clear' => true,

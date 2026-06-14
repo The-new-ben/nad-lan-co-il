@@ -187,6 +187,12 @@ builder is the owner path for one-off edits: add or update a unit by id, floor, 
 view, estimate, plan URL and model hotspot vectors, then write the sanitized JSON back to the same
 meta field. Raw JSON remains only for bulk import and developer/debug use.
 
+The REST contract must match the metabox contract. Do not expose a field only in wp-admin if a
+future project factory needs to write it. At minimum, REST-writable sanitized meta must include:
+model/facade image, viewBox, floor height, ground elevation, average price estimate, price source
+note, model type, GLB, USDZ, poster, video, tour, Cesium/3D Tiles seam, drawings JSON,
+environment JSON, unit JSON and demo flag.
+
 `project_3d_drawings_json` may be either a flat array of material items or an object with an
 `items` array. `project_3d_environment_json` may be a flat array or a structured object with
 `layers[].items[]`; the plugin must flatten it into safe buyer-facing cards and keep source labels.

@@ -227,6 +227,21 @@ Inside that box:
 The textarea named `יחידות JSON מתקדם` is still there for developers and bulk imports. Owners should
 normally use the unit builder above it.
 
+## Automated Import Fields
+
+For a future project, the same fields can be filled by an authenticated REST/import script. The
+important showroom fields are REST-writable and sanitized:
+
+`project_3d_image`, `project_3d_viewbox`, `project_3d_floor_height_m`,
+`project_3d_ground_elevation_m`, `project_3d_avg_price_per_sqm`,
+`project_3d_price_source_note`, `project_3d_model_type`, `project_model_glb`,
+`project_model_usdz`, `project_model_poster`, `project_3d_video_url`, `project_3d_tour_url`,
+`project_3d_cesium_tiles_url`, `project_3d_drawings_json`, `project_3d_environment_json`,
+`project_3d_units`, `project_3d_demo`.
+
+The project factory should write these fields from one project data file, then the public page must
+still be checked in Chrome.
+
 ## Classic Editor Question
 
 Classic Editor can make old metaboxes easier to see, but it should not be the long-term answer.
