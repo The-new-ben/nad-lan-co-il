@@ -19,7 +19,7 @@
       "line": "SW",
       "view": "מבט לחצר ולים",
       "building": "Rainbow Tel Aviv",
-      "status": "לפי פנייה",
+      "status": "available",
       "availability": "זמינות להדגמה בלבד עד לקבלת מלאי רשמי מהיזם",
       "price_estimate": 0,
       "price_note": "אומדן מחיר יוצג רק לאחר אישור מקור נתונים. לא הצעה ולא התחייבות.",
@@ -31,7 +31,9 @@
       "view_note": "תוכנית המחשה מקורית לדירת 3 חדרים. יש להחליף בתוכנית מכר רשמית.",
       "hotspot_position": "0 31 6",
       "hotspot_normal": "0 0 1",
-      "camera_orbit": "45deg 66deg auto"
+      "camera_orbit": "45deg 66deg auto",
+      "label": "דירת 3 חדרים, קומה 8",
+      "recommended": false
     },
     {
       "id": "unit-16-w",
@@ -44,7 +46,7 @@
       "line": "W",
       "view": "קו החוף ושדה דב",
       "building": "Rainbow Tel Aviv",
-      "status": "לפי פנייה",
+      "status": "available",
       "availability": "זמינות להדגמה בלבד עד לקבלת מלאי רשמי מהיזם",
       "price_estimate": 0,
       "price_note": "אומדן מחיר יוצג רק לאחר אישור מקור נתונים. לא הצעה ולא התחייבות.",
@@ -56,7 +58,9 @@
       "view_note": "תוכנית המחשה מקורית לדירת 4 חדרים עם מרפסת מערבית. יש להחליף בתוכנית מכר רשמית.",
       "hotspot_position": "-5 55 7",
       "hotspot_normal": "0 0 1",
-      "camera_orbit": "35deg 63deg auto"
+      "camera_orbit": "35deg 63deg auto",
+      "label": "דירת 4 חדרים, קומה 16",
+      "recommended": false
     },
     {
       "id": "unit-24-nw",
@@ -69,7 +73,7 @@
       "line": "NW",
       "view": "ים, פארק וצפון תל אביב",
       "building": "Rainbow Tel Aviv",
-      "status": "לפי פנייה",
+      "status": "available",
       "availability": "זמינות להדגמה בלבד עד לקבלת מלאי רשמי מהיזם",
       "price_estimate": 0,
       "price_note": "אומדן מחיר יוצג רק לאחר אישור מקור נתונים. לא הצעה ולא התחייבות.",
@@ -81,7 +85,9 @@
       "view_note": "תוכנית המחשה מקורית לדירת 4 חדרים גבוהה. יש להחליף בתוכנית מכר רשמית.",
       "hotspot_position": "-6 80 5",
       "hotspot_normal": "0 0 1",
-      "camera_orbit": "24deg 61deg auto"
+      "camera_orbit": "24deg 61deg auto",
+      "label": "דירת 4 חדרים, קומה 24",
+      "recommended": true
     },
     {
       "id": "unit-31-se",
@@ -94,7 +100,7 @@
       "line": "SE",
       "view": "קו הרקיע והחצר הפנימית",
       "building": "Rainbow Tel Aviv",
-      "status": "לפי פנייה",
+      "status": "available",
       "availability": "זמינות להדגמה בלבד עד לקבלת מלאי רשמי מהיזם",
       "price_estimate": 0,
       "price_note": "אומדן מחיר יוצג רק לאחר אישור מקור נתונים. לא הצעה ולא התחייבות.",
@@ -106,7 +112,9 @@
       "view_note": "תוכנית המחשה מקורית לדירת 5 חדרים. יש להחליף בתוכנית מכר רשמית.",
       "hotspot_position": "6 101 -5",
       "hotspot_normal": "0 0 1",
-      "camera_orbit": "310deg 64deg auto"
+      "camera_orbit": "310deg 64deg auto",
+      "label": "דירת 5 חדרים, קומה 31",
+      "recommended": false
     },
     {
       "id": "unit-38-penthouse",
@@ -119,7 +127,7 @@
       "line": "PENTHOUSE",
       "view": "פנטהאוז גבוה לכיוון הים",
       "building": "Rainbow Tel Aviv",
-      "status": "לפי פנייה",
+      "status": "available",
       "availability": "זמינות להדגמה בלבד עד לקבלת מלאי רשמי מהיזם",
       "price_estimate": 0,
       "price_note": "אומדן מחיר יוצג רק לאחר אישור מקור נתונים. לא הצעה ולא התחייבות.",
@@ -131,7 +139,9 @@
       "view_note": "תוכנית פנטהאוז להמחשה בלבד. לא תוכנית מכר ולא התחייבות.",
       "hotspot_position": "0 124 7",
       "hotspot_normal": "0 0 1",
-      "camera_orbit": "32deg 58deg auto"
+      "camera_orbit": "32deg 58deg auto",
+      "label": "דירת 5 חדרים, קומה 38",
+      "recommended": true
     },
     {
       "id": "unit-boutique-07",
@@ -144,7 +154,7 @@
       "line": "07",
       "view": "בניין בוטיק סביב הלגונה",
       "building": "Rainbow Tel Aviv",
-      "status": "לפי פנייה",
+      "status": "reserved",
       "availability": "זמינות להדגמה בלבד עד לקבלת מלאי רשמי מהיזם",
       "price_estimate": 0,
       "price_note": "אומדן מחיר יוצג רק לאחר אישור מקור נתונים. לא הצעה ולא התחייבות.",
@@ -156,7 +166,9 @@
       "view_note": "תוכנית המחשה לבניין הבוטיק סביב הלגונה. יש להחליף בתוכנית מכר רשמית.",
       "hotspot_position": "-42 25 24",
       "hotspot_normal": "0 0 1",
-      "camera_orbit": "55deg 67deg auto"
+      "camera_orbit": "55deg 67deg auto",
+      "label": "דירת 4 חדרים, קומה 7",
+      "recommended": false
     }
   ],
   "project_3d_drawings_json": [
@@ -240,7 +252,7 @@
             "showroom_position": {
               "x": 0,
               "z": 0,
-              "scale": 1.0,
+              "scale": 1,
               "precision": "current_project",
               "space": "relative_showroom",
               "unit": "model_meters",

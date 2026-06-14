@@ -63,6 +63,7 @@ JSON array of apartment/unit rows. Each row can include:
 
 - `id`
 - `title`
+- `label`
 - `floor`
 - `rooms`
 - `sqm`
@@ -70,6 +71,7 @@ JSON array of apartment/unit rows. Each row can include:
 - `dir`
 - `view`
 - `status`
+- `recommended`
 - `availability`
 - `price_estimate`
 - `price_note`
@@ -83,6 +85,10 @@ JSON array of apartment/unit rows. Each row can include:
 
 The important model fields are:
 
+- `label`: short buyer label shown on the clickable marker or tooltip.
+- `status`: `available`, `reserved`, or `sold`; this controls marker color.
+- `recommended`: `true` marks a strong unit with a subtle pulse. Use it only for units the owner
+  wants to feature, such as sea view, high floor or limited availability.
 - `hotspot_position`: where the clickable apartment marker appears on the 3D model.
 - `hotspot_normal`: the direction the marker faces.
 - `camera_orbit`: optional camera angle when the apartment is selected.
@@ -93,6 +99,17 @@ Rainbow prototype unit file:
 
 The plugin can seed this file automatically for Rainbow. For the next project, prepare the same
 `unit-map.json` file and paste or import it into the field.
+
+## Buyer Flow Standard
+
+The public showroom should read in this order:
+
+1. Short SEO intro above the model: project, location, developer, price/availability disclaimer.
+2. Compact model stage with obvious color-coded apartment markers.
+3. Selected-apartment card with title, status, view, price estimate and actions.
+4. Lead form and advisor choices carrying the selected unit into the lead funnel.
+
+If the page does not follow that order on mobile, the project is not ready for publication.
 
 ## Drawings, Plans And Materials
 

@@ -48,11 +48,15 @@ plain WordPress article.
 2. The buyer can drag or tap angle controls to rotate/spin.
 3. Clickable floors/units update the selected-unit card, facts, compare tray, sun insight and lead
    payload.
-4. Map view is user-opened and lazy-loaded to control Mapbox costs.
-5. Register Mapbox RTL text plugin before creating a map with Hebrew labels.
-6. Drawings, floor plans and real inventory are optional CMS fields. If absent, show a clear request
+4. Apartment markers must be obvious without explanation: 44px+ target, color-coded availability,
+   label, hover/tap info and optional recommended pulse.
+5. The selected-apartment card is the hero after a click: title, status, view, non-binding price
+   estimate and actions for details, view and developer contact.
+6. Map view is user-opened and lazy-loaded to control Mapbox costs.
+7. Register Mapbox RTL text plugin before creating a map with Hebrew labels.
+8. Drawings, floor plans and real inventory are optional CMS fields. If absent, show a clear request
    path instead of faking a plan.
-7. Price can be:
+9. Price can be:
    - official unit price,
    - explicit unit estimate,
    - project average per sqm estimate,
@@ -83,6 +87,14 @@ Material fields are not complete until they appear in the buyer UI:
 The default model can be schematic, but the user experience must still feel like a product
 showroom: building-first, drag to rotate/tilt, visible zoom controls, large unit hit areas, no
 nested scrollbars and source-aware price/availability wording.
+
+Per-unit fields required for a buyer-ready selector:
+
+1. `label` for short marker/tool-tip copy.
+2. `status` in `available`, `reserved`, `sold`, controlling marker color.
+3. `recommended` boolean for owner-approved featured units.
+4. `price_estimate` plus source note when an approximate price is shown.
+5. `hotspot_position` and `hotspot_normal` for GLB hotspots.
 
 ## D. Lead And WhatsApp Funnel
 

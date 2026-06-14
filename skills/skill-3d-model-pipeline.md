@@ -72,11 +72,13 @@ Unit JSON fields:
 
 - `id`
 - `title`
+- `label`
 - `floor`
 - `rooms`
 - `sqm`
 - `dir`
 - `status`
+- `recommended`
 - `price` or `price_estimate`
 - `price_note`
 - `points` for SVG/facade fallback polygons
@@ -120,8 +122,25 @@ model annotation script. Store only coordinates, not private source files.
 - Keep procedural/facade fallback visible until the model loads.
 - If the model errors, do not leave a blank stage.
 - Model hotspots must call the same selected-unit flow as facade/SVG clicks.
+- Unit markers must be buyer-obvious: status color, 44px+ target, label, hover/focus/tap info and
+  optional recommended pulse.
+- `recommended` is a CMS/business flag. It should identify units worth attention, not fake urgency.
 - The lead payload must preserve the selected unit.
 - Mapbox or Cesium environment views stay lazy and user-opened.
+
+## Product Selector Standard
+
+The apartment selector is the product hero, not a decoration.
+
+1. The first visible order is intro, compact model, selected unit, CTA.
+2. Availability is visible before copy: available, reserved and sold must have different marker
+   colors.
+3. Price may be official, estimated or hidden, but estimated values must say `אומדן` and
+   `לא מחייב`.
+4. On desktop, the selected-apartment card docks near the model. On mobile, it becomes a clear
+   panel in the vertical flow.
+5. Advanced tools such as sun, surroundings, Mapbox and Cesium are opened after the buyer selects
+   a unit. Do not flood first view with every control.
 
 ## QA Gate
 
