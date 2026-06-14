@@ -22,6 +22,7 @@ DEFAULT_HEALTHCHECK = "https://nad-lan.co.il/wp-json/nadlan/v1/healthcheck"
 MAX_GLB_BYTES = 4 * 1024 * 1024
 MAX_POSTER_BYTES = 80 * 1024
 REMOTE_READ_BYTES = 4096
+REQUIRED_PLUGIN_STACK_VERSION = (1, 63, 3)
 
 
 class Gate:
@@ -288,7 +289,16 @@ def fetch_healthcheck(url: str) -> dict | None:
         return json.loads(response.read().decode("utf-8"))
 
 
-def check_healthcheck(url: str, expect_live_glb: bool, gate: Gate) -> None:
+def version_tuple(value: object) -> tuple[int, ...]:
+    parts: list[int] = []
+    for part in str(value or "").split("."):
+        if not part.isdigit():
+            break
+        parts.append(int(part))
+    return tuple(parts)
+
+
+def check_healthcheck(url: str, expect_live_glb: bool, require_plugin_stack: bool, gate: Gate) -> None:
     try:
         health = fetch_healthcheck(url)
     except Exception as exc:  # noqa: BLE001 - report network failure as warning for local asset gate.
@@ -299,7 +309,8 @@ def check_healthcheck(url: str, expect_live_glb: bool, gate: Gate) -> None:
         return
     version = str(health.get("version", ""))
     project_3d = health.get("project_3d", {})
-    if version >= "1.63.0":
+    parsed_version = version_tuple(version)
+    if parsed_version >= (1, 63, 0):
         gate.pass_("live plugin version", version)
     else:
         gate.fail("live plugin version", f"{version} < 1.63.0")
@@ -307,6 +318,19 @@ def check_healthcheck(url: str, expect_live_glb: bool, gate: Gate) -> None:
         gate.pass_("model_viewer_ready", "true")
     else:
         gate.fail("model_viewer_ready", "not true")
+    if require_plugin_stack:
+        if parsed_version >= REQUIRED_PLUGIN_STACK_VERSION:
+            gate.pass_("plugin stack version", version)
+        else:
+            gate.fail("plugin stack version", f"{version} < 1.63.3; deploy PRs #164, #165 and #166 before CMS apply")
+        if isinstance(project_3d, dict) and project_3d.get("unit_meta_rest") is True:
+            gate.pass_("unit_meta_rest", "true")
+        else:
+            gate.fail("unit_meta_rest", "not true; v1.63.2 REST unit registration is required before automated unit write")
+        if isinstance(project_3d, dict) and project_3d.get("floating_action_rail_v1633") is True:
+            gate.pass_("floating_action_rail_v1633", "true")
+        else:
+            gate.fail("floating_action_rail_v1633", "not true; v1.63.3 contact rail clearance is required before showroom review")
     glb_count = project_3d.get("projects_with_glb") if isinstance(project_3d, dict) else None
     if expect_live_glb:
         if isinstance(glb_count, int) and glb_count >= 1:
@@ -322,6 +346,11 @@ def main() -> int:
     parser.add_argument("--root", default=str(ROOT), help="Repository root")
     parser.add_argument("--skip-live", action="store_true", help="Skip live healthcheck")
     parser.add_argument("--expect-live-glb", action="store_true", help="Require healthcheck projects_with_glb >= 1")
+    parser.add_argument(
+        "--require-plugin-stack",
+        action="store_true",
+        help="Require the deployed v1.63.1-v1.63.3 plugin markers before CMS apply.",
+    )
     parser.add_argument("--check-remote-assets", action="store_true", help="Fetch raw/CDN asset URLs and verify signatures.")
     parser.add_argument(
         "--remote-ref",
@@ -345,7 +374,7 @@ def main() -> int:
     )
     check_environment(asset_dir / "environment.json", gate)
     if not args.skip_live:
-        check_healthcheck(args.healthcheck_url, args.expect_live_glb, gate)
+        check_healthcheck(args.healthcheck_url, args.expect_live_glb, args.require_plugin_stack, gate)
     gate.print()
     return 1 if gate.failed else 0
 

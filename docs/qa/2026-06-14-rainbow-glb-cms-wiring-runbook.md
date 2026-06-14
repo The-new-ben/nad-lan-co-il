@@ -167,6 +167,23 @@ python scripts\check-rainbow-showroom-readiness.py --skip-live --check-remote-as
 `--remote-ref` changes only what the checker fetches for QA. It does not change the payload file and
 must not be used as a live CMS URL strategy.
 
+After the plugin stack is deployed through v1.63.3 and before applying the Rainbow CMS payload, run:
+
+```powershell
+python scripts\check-rainbow-showroom-readiness.py --require-plugin-stack
+```
+
+This must pass:
+
+- live plugin version at least `1.63.3`,
+- `project_3d.unit_meta_rest=true` from v1.63.2,
+- `project_3d.floating_action_rail_v1633=true` from v1.63.3,
+- `project_3d.model_viewer_ready=true` from v1.63.0.
+
+If this fails, stop and finish the plugin deploy sequence first. Do not apply the CMS payload to an
+older plugin, because unit JSON will either require manual metabox fallback or the floating contact
+rail may still cover the showroom controls.
+
 After PR #163 is merged to `main`, but before applying the CMS payload, run the remote URL gate:
 
 ```powershell
@@ -179,7 +196,7 @@ before any public CMS write depends on them.
 After merge and after the CMS fields are populated, run:
 
 ```powershell
-python scripts\check-rainbow-showroom-readiness.py --check-remote-assets --expect-live-glb
+python scripts\check-rainbow-showroom-readiness.py --require-plugin-stack --check-remote-assets --expect-live-glb
 ```
 
 Expected after wire-in: every check passes, including `projects_with_glb >= 1`.
