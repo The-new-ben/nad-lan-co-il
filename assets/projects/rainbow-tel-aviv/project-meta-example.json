@@ -2,6 +2,8 @@
   "project_model_glb": "https://raw.githubusercontent.com/The-new-ben/nad-lan-co-il/main/assets/projects/rainbow-tel-aviv/model.glb",
   "project_model_poster": "https://raw.githubusercontent.com/The-new-ben/nad-lan-co-il/main/assets/projects/rainbow-tel-aviv/poster.png",
   "project_model_usdz": "",
+  "project_3d_avg_price_per_sqm": 76000,
+  "project_3d_price_source_note": "אומדן לא מחייב לפי מחיר ממוצע למ\"ר שמוצג במדלן לפרויקט/סביבה, נבדק 14.6.2026. לא הצעה ולא התחייבות; יש לאמת מחיר, זמינות ותנאים מול היזם.",
   "project_3d_units": [
     {
       "id": "unit-08-sw",

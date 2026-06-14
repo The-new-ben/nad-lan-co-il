@@ -156,6 +156,8 @@ def build_rest_meta(source: dict[str, Any], *, include_units: bool = False) -> d
         "project_model_glb": str(source.get("project_model_glb", "")),
         "project_model_poster": str(source.get("project_model_poster", "")),
         "project_model_usdz": str(source.get("project_model_usdz", "")),
+        "project_3d_avg_price_per_sqm": str(source.get("project_3d_avg_price_per_sqm", "") or ""),
+        "project_3d_price_source_note": str(source.get("project_3d_price_source_note", "") or ""),
         "project_3d_drawings_json": json.dumps(drawings, ensure_ascii=False, separators=(",", ":")),
         "project_3d_environment_json": json.dumps(environment, ensure_ascii=False, separators=(",", ":")),
     }
@@ -206,6 +208,8 @@ def verify_updated_meta(updated_meta: dict[str, Any], expected_meta: dict[str, s
         "project_model_glb",
         "project_model_poster",
         "project_model_usdz",
+        "project_3d_avg_price_per_sqm",
+        "project_3d_price_source_note",
     )
     for key in exact_keys:
         expected = str(expected_meta.get(key, ""))

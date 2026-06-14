@@ -111,6 +111,20 @@ Unit JSON fields:
 - `view_note`
 - `source_note`
 
+## Price Context
+
+Buyers expect price context inside a showroom, but it must not turn a prototype into an invented
+offer:
+
+- Prefer project-level `project_3d_avg_price_per_sqm` plus `project_3d_price_source_note` when
+  official apartment inventory is missing. The runtime can compute a non-binding unit estimate from
+  sqm without claiming availability.
+- Use per-unit `price_estimate` only when the owner approves the source and the visible note still
+  says it is not an offer or commitment.
+- Do not paste paid transaction rows, licensed tables, or exact availability into public CMS fields
+  unless the owner has explicitly approved the source/license.
+- Exact `price` is reserved for official developer inventory or a formally approved source.
+
 ## Hotspot Capture
 
 For `<model-viewer>`, each unit hotspot needs model coordinates:

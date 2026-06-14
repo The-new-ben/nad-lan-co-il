@@ -23,6 +23,11 @@ OUT = ROOT / "assets" / "projects" / "rainbow-tel-aviv"
 BRANCH = os.getenv("RAINBOW_MODEL_REF", "main")
 RAW_BASE = f"https://raw.githubusercontent.com/The-new-ben/nad-lan-co-il/{BRANCH}/assets/projects/rainbow-tel-aviv"
 PLAN_BASE = f"{RAW_BASE}/plans"
+RAINBOW_INDICATIVE_AVG_PRICE_PER_SQM = 76000
+RAINBOW_PRICE_SOURCE_NOTE = (
+    "אומדן לא מחייב לפי מחיר ממוצע למ\"ר שמוצג במדלן לפרויקט/סביבה, "
+    "נבדק 14.6.2026. לא הצעה ולא התחייבות; יש לאמת מחיר, זמינות ותנאים מול היזם."
+)
 
 
 MATERIALS = [
@@ -504,6 +509,7 @@ It is not official Rainbow BIM, not an official sale plan and not live inventory
 - Official/marketing sources describe Rainbow as a Sde Dov coastal project by Israel Canada with six boutique buildings, a spiral / spiral-like residential tower, lagoon/resort positioning and coastal views.
 - Developer/architect sources describe 6 boutique buildings and a 42-story spiral-designed tower; press/planning-style sources describe a 40-story tower, 6 additional 8-floor buildings and 459 units. The public page must keep that truth-first discrepancy disclosure.
 - Sde Dov/Rainbow public materials mention pools, spa, fitness, cafe/workspaces, sea proximity and resort-style positioning.
+- For the prototype only, `project_3d_avg_price_per_sqm` uses a public Madlan-style average of 76,000 NIS per sqm as an indicative calculation basis. It is not official stock, not an offer and not a commitment.
 
 ## Sources To Recheck Before Public Claims
 
@@ -540,6 +546,7 @@ trusted map/source.
 - The `plans/*.svg` files are original schematic showroom aids, not official sale plans.
 - Do not present the demo units as available stock.
 - Do not present exact prices unless the owner approves a public or licensed source.
+- Any public estimate must carry the visible non-binding source note in `project_3d_price_source_note`.
 - Replace `project_model_glb` with an official BIM/GLB when Israel Canada or the project manager supplies one.
 
 ## Prototype Design Basis
@@ -833,6 +840,8 @@ def main() -> None:
             "project_model_glb": f"{RAW_BASE}/model.glb",
             "project_model_poster": f"{RAW_BASE}/poster.png",
             "project_model_usdz": "",
+            "project_3d_avg_price_per_sqm": RAINBOW_INDICATIVE_AVG_PRICE_PER_SQM,
+            "project_3d_price_source_note": RAINBOW_PRICE_SOURCE_NOTE,
             "project_3d_units": units,
             "project_3d_drawings_json": [
                 {

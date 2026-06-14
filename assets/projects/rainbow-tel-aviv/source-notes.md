@@ -8,6 +8,7 @@ It is not official Rainbow BIM, not an official sale plan and not live inventory
 - Official/marketing sources describe Rainbow as a Sde Dov coastal project by Israel Canada with six boutique buildings, a spiral / spiral-like residential tower, lagoon/resort positioning and coastal views.
 - Developer/architect sources describe 6 boutique buildings and a 42-story spiral-designed tower; press/planning-style sources describe a 40-story tower, 6 additional 8-floor buildings and 459 units. The public page must keep that truth-first discrepancy disclosure.
 - Sde Dov/Rainbow public materials mention pools, spa, fitness, cafe/workspaces, sea proximity and resort-style positioning.
+- For the prototype only, `project_3d_avg_price_per_sqm` uses a public Madlan-style average of 76,000 NIS per sqm as an indicative calculation basis. It is not official stock, not an offer and not a commitment.
 
 ## Sources To Recheck Before Public Claims
 
@@ -44,6 +45,7 @@ trusted map/source.
 - The `plans/*.svg` files are original schematic showroom aids, not official sale plans.
 - Do not present the demo units as available stock.
 - Do not present exact prices unless the owner approves a public or licensed source.
+- Any public estimate must carry the visible non-binding source note in `project_3d_price_source_note`.
 - Replace `project_model_glb` with an official BIM/GLB when Israel Canada or the project manager supplies one.
 
 ## Prototype Design Basis

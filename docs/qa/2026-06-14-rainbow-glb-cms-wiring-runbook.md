@@ -50,6 +50,9 @@ Set:
 - `project_model_poster`: hosted poster URL.
 - `project_model_usdz`: empty for now.
 - `project_3d_model_type`: `gltf`.
+- `project_3d_avg_price_per_sqm`: optional, sourced indicative average used only for non-binding
+  estimates.
+- `project_3d_price_source_note`: visible source/disclaimer for any computed estimate.
 - `project_3d_units`: JSON array from `project-meta-example.json`.
 - `project_3d_drawings_json`: JSON array from `project-meta-example.json`.
 - `project_3d_environment_json`: flattened JSON array generated from the rich environment object in
@@ -69,6 +72,12 @@ Keep all demo unit and drawing copy source-aware. Do not remove:
 - "המחשה מקורית לא רשמית"
 
 Those phrases are part of the legal/product honesty boundary.
+
+The current prototype uses `project_3d_avg_price_per_sqm = 76000` as an indicative calculation basis
+from public Madlan-style average price-per-sqm context. It is not official sale inventory. Do not
+paste paid transaction rows, exact apartment availability or exact public prices unless the owner has
+approved the source/license and the visible note still says the estimate is not an offer or
+commitment.
 
 ## Generate The Payload
 
@@ -160,6 +169,8 @@ The helper writes:
 - `project_model_glb`
 - `project_model_poster`
 - `project_model_usdz`
+- `project_3d_avg_price_per_sqm`
+- `project_3d_price_source_note`
 - `project_3d_drawings_json`
 - `project_3d_environment_json`
 - `project_3d_units` only when healthcheck reports the full v1.63.4 stack is live

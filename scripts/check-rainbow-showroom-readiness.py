@@ -194,6 +194,20 @@ def check_meta(path: Path, root: Path, gate: Gate, *, check_remote_assets: bool 
             check_raw_url_local_file(value, root, gate, field)
             if check_remote_assets:
                 check_remote_asset(raw_url_for_ref(value, remote_ref), gate, field, "glb" if field.endswith("_glb") else "png")
+    avg_price = meta.get("project_3d_avg_price_per_sqm", 0)
+    try:
+        avg_price_number = float(avg_price)
+    except (TypeError, ValueError):
+        avg_price_number = 0
+    price_source_note = str(meta.get("project_3d_price_source_note", ""))
+    if avg_price_number > 0:
+        gate.pass_("avg price per sqm", f"{avg_price_number:,.0f}")
+        if "אומדן" in price_source_note and "לא הצעה" in price_source_note and "לא התחייבות" in price_source_note:
+            gate.pass_("avg price source note", "non-binding source note present")
+        else:
+            gate.fail("avg price source note", "must include אומדן + לא הצעה + לא התחייבות")
+    else:
+        gate.warn("avg price per sqm", "empty; buyer price estimate will show לפי פנייה unless project meta is filled")
     units = meta.get("project_3d_units", [])
     if isinstance(units, list) and units:
         gate.pass_("project_3d_units count", str(len(units)))
