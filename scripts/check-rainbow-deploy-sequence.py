@@ -20,12 +20,6 @@ from typing import Any
 ROOT = Path(__file__).resolve().parents[1]
 DEFAULT_BASE_URL = "https://nad-lan.co.il"
 REQUIRED_VERSION = (1, 63, 4)
-STACK_BRANCHES = [
-    ("1.63.2", "origin/codex/rainbow-cms-units-rest-1632", "project_3d.unit_meta_rest"),
-    ("1.63.3", "origin/codex/rainbow-mobile-contact-polish-1633", "project_3d.floating_action_rail_v1633"),
-    ("1.63.4", "origin/codex/rainbow-page-seo-1634", "project_page_assembly.rainbow_seo_v1634"),
-    ("GLB assets", "origin/codex/rainbow-prototype-model-1631", "project_3d.projects_with_glb >= 1 after CMS apply"),
-]
 
 
 @dataclass
@@ -33,6 +27,46 @@ class Row:
     status: str
     name: str
     detail: str
+
+
+@dataclass(frozen=True)
+class StackBranch:
+    label: str
+    branch: str
+    marker: str
+    main_path: str
+    main_pattern: str | None = None
+
+
+STACK_BRANCHES = [
+    StackBranch(
+        "1.63.2",
+        "origin/codex/rainbow-cms-units-rest-1632",
+        "project_3d.unit_meta_rest",
+        "plugins/nadlan-config/inc/project-3d.php",
+        "unit_meta_rest",
+    ),
+    StackBranch(
+        "1.63.3",
+        "origin/codex/rainbow-mobile-contact-polish-1633",
+        "project_3d.floating_action_rail_v1633",
+        "plugins/nadlan-config/inc/project-3d.php",
+        "floating_action_rail_v1633",
+    ),
+    StackBranch(
+        "1.63.4",
+        "origin/codex/rainbow-page-seo-1634",
+        "project_page_assembly.rainbow_seo_v1634",
+        "plugins/nadlan-config/inc/project-page-assembly.php",
+        "rainbow_seo_v1634",
+    ),
+    StackBranch(
+        "GLB assets",
+        "origin/codex/rainbow-prototype-model-1631",
+        "project_3d.projects_with_glb >= 1 after CMS apply",
+        "assets/projects/rainbow-tel-aviv/model.glb",
+    ),
+]
 
 
 def run_git(args: list[str]) -> subprocess.CompletedProcess[str]:
@@ -82,27 +116,45 @@ def is_ancestor(ancestor: str, descendant: str) -> bool:
     return result.returncode == 0
 
 
-def status_rows(base_url: str, should_fetch: bool) -> list[Row]:
+def main_marker_present(ref: str, path: str, pattern: str | None = None) -> bool:
+    result = run_git(["cat-file", "-e", f"{ref}:{path}"])
+    if result.returncode != 0:
+        return False
+    if pattern is None:
+        return True
+    result = run_git(["grep", "-q", pattern, ref, "--", path])
+    return result.returncode == 0
+
+
+def status_rows(base_url: str, should_fetch: bool, main_ref: str) -> list[Row]:
     rows: list[Row] = []
     if should_fetch:
         result = run_git(["fetch", "origin", "main", "--prune"])
         detail = result.stderr.strip() or result.stdout.strip() or "ok"
         rows.append(Row("PASS" if result.returncode == 0 else "FAIL", "git fetch origin main", detail))
 
-    main_sha = git_ref("origin/main")
-    rows.append(Row("PASS" if main_sha else "FAIL", "origin/main", main_sha[:12] if main_sha else "missing"))
+    main_sha = git_ref(main_ref)
+    rows.append(Row("PASS" if main_sha else "FAIL", main_ref, main_sha[:12] if main_sha else "missing"))
 
-    for label, branch, marker in STACK_BRANCHES:
-        sha = git_ref(branch)
+    for item in STACK_BRANCHES:
+        sha = git_ref(item.branch)
         if not sha:
-            rows.append(Row("FAIL", f"{label} branch", f"{branch} missing locally; run git fetch --all"))
+            rows.append(Row("FAIL", f"{item.label} branch", f"{item.branch} missing locally; run git fetch --all"))
             continue
-        merged = is_ancestor(branch, "origin/main")
+        merged_by_ancestry = is_ancestor(item.branch, main_ref)
+        merged_by_marker = main_marker_present(main_ref, item.main_path, item.main_pattern)
+        merged = merged_by_ancestry or merged_by_marker
+        if merged_by_ancestry:
+            merge_detail = "branch commit is an ancestor of main"
+        elif merged_by_marker:
+            merge_detail = "main contains the marker/file, likely squash-merged"
+        else:
+            merge_detail = "not found on main by ancestry or marker"
         rows.append(
             Row(
                 "PASS" if merged else "BLOCKED",
-                f"{label} merged to main",
-                f"{branch}@{sha[:12]} {'is on main' if merged else 'is not on main'}; marker {marker}",
+                f"{item.label} merged to main",
+                f"{item.branch}@{sha[:12]}: {merge_detail}; marker {item.marker}",
             )
         )
 
@@ -164,6 +216,7 @@ def main() -> int:
     parser = argparse.ArgumentParser()
     parser.add_argument("--base-url", default=DEFAULT_BASE_URL)
     parser.add_argument("--fetch", action="store_true", help="Fetch origin/main before checking local remote refs.")
+    parser.add_argument("--main-ref", default="origin/main", help="Remote main ref to inspect. Defaults to origin/main.")
     parser.add_argument(
         "--expect-incomplete",
         action="store_true",
@@ -171,7 +224,7 @@ def main() -> int:
     )
     args = parser.parse_args()
 
-    rows = status_rows(args.base_url, args.fetch)
+    rows = status_rows(args.base_url, args.fetch, args.main_ref)
     print_rows(rows)
     blocked = any(row.status in {"FAIL", "BLOCKED"} for row in rows)
     if args.expect_incomplete:

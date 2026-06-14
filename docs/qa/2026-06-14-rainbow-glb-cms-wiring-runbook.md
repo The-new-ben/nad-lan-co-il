@@ -230,6 +230,9 @@ python scripts\project-showroom-go-live.py --expect-incomplete
 
 That command should pass only while the live stack is incomplete. Once the stack is merged and
 deployed, it should stop passing, and the normal preflight/apply path above becomes the correct gate.
+The deploy-sequence checker is squash-aware: it accepts either branch ancestry or the expected
+marker/file on `origin/main`, because GitHub squash merges do not leave the feature branch commit as
+a direct ancestor of main.
 
 ## Readiness Check
 
