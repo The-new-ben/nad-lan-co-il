@@ -123,6 +123,10 @@ Media and tour rules:
   model/video/tour/drawings/unit/environment materials to CMS fields, accepted formats, current
   status and public-use policy. This is the project-manager handoff document and the countrywide
   replication checklist.
+- Each flagship asset folder should include `view-layer-config.json` for Mapbox-now / Cesium-ready
+  views: project center, provider policy, cost controls, unit altitude/bearing records, overlay
+  policy and QA requirements. The default state remains building-first; map/tiles are inspection
+  tools opened by the buyer.
 
 ## Price Context
 
@@ -181,6 +185,8 @@ Before shipping a project:
 - Confirm video/tour/Cesium/unit-media URLs are empty or valid approved HTTPS links; malformed URLs fail.
 - Confirm `material-intake-template.json` exists and records the official replacement path before
   calling a project clone-ready.
+- Confirm `view-layer-config.json` exists, is user-opened/lazy for Mapbox and Cesium, and gives every
+  unit a numeric altitude and bearing for view-from-apartment QA.
 - Before live CMS wire-in, run the local model preview browser gate:
   `node scripts/check-rainbow-prototype-preview.mjs` (or the project-specific equivalent). It must
   prove the GLB loads at 1440px and 390px, hotspots exist, hotspot tap/click changes the unit

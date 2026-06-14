@@ -11,6 +11,8 @@
 - `environment.json`: surroundings starter data to be replaced by the map/POI layer.
 - `material-intake-template.json`: contractor/developer handoff checklist mapping each official
   material to its CMS field, accepted formats and public-use policy.
+- `view-layer-config.json`: Mapbox-now / Cesium-ready view-from-apartment contract with
+  camera formulas, per-unit altitude/bearing, overlays and cost controls.
 - Media/tour slots: `project_3d_video_url`, `project_3d_tour_url`,
   `project_3d_cesium_tiles_url`, and per-unit `interior_url`/`tour_url` are present
   but intentionally blank until official or owner-approved material is supplied.
@@ -22,7 +24,6 @@ Run:
 ```powershell
 python scripts/generate-rainbow-prototype-model.py
 node -e "const fs=require('fs'); const b=fs.readFileSync('assets/projects/rainbow-tel-aviv/model.glb'); console.log(b.subarray(0,4).toString(), b.readUInt32LE(4), b.readUInt32LE(8), b.length)"
-node scripts/check-rainbow-prototype-preview.mjs
 ```
 
 Expected:
@@ -36,8 +37,8 @@ Expected:
   for approved unit media without changing the data shape later.
 - `material-intake-template.json` lists at least eight handoff slots and keeps prototype material
   separate from official/developer-approved material.
-- Browser preview gate passes at desktop 1440px and mobile 390px with GLB loaded, six hotspots,
-  44px tap targets, readout update on click and screenshots captured.
+- `view-layer-config.json` keeps the default state building-first, defines user-opened map/tiles
+  behavior, and gives each unit a derived altitude and bearing for view-from-apartment QA.
 
 ## Browser Gate After v1.63.0 Is Installed
 

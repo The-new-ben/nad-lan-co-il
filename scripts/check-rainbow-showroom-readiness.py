@@ -181,14 +181,14 @@ def check_poster(path: Path, gate: Gate) -> None:
         gate.fail("poster.png size", f"{size} bytes exceeds {MAX_POSTER_BYTES}")
 
 
-def check_meta(path: Path, root: Path, gate: Gate, *, check_remote_assets: bool = False, remote_ref: str | None = None) -> None:
+def check_meta(path: Path, root: Path, gate: Gate, *, check_remote_assets: bool = False, remote_ref: str | None = None) -> int:
     if not path.exists():
         gate.fail("project-meta-example.json", "missing")
-        return
+        return 0
     meta = read_json(path)
     if not isinstance(meta, dict):
         gate.fail("project-meta-example.json", "root is not object")
-        return
+        return 0
     for field in ["project_model_glb", "project_model_poster", "project_3d_units"]:
         if field in meta:
             gate.pass_(field, "present")
@@ -343,6 +343,7 @@ def check_meta(path: Path, root: Path, gate: Gate, *, check_remote_assets: bool 
             gate.fail("project_3d_environment_json", "missing layers")
     else:
         gate.fail("project_3d_environment_json", "missing from CMS payload")
+    return len(units)
 
 
 def check_environment(path: Path, gate: Gate) -> None:
@@ -433,6 +434,85 @@ def check_material_intake(path: Path, gate: Gate) -> None:
         gate.fail("material intake Zillow parity map", "missing one or more core capability mappings")
 
 
+def check_view_layer(path: Path, expected_unit_count: int, gate: Gate) -> None:
+    if not path.exists():
+        gate.fail("view-layer-config.json", "missing")
+        return
+    config = read_json(path)
+    if not isinstance(config, dict):
+        gate.fail("view-layer-config.json", "root is not object")
+        return
+
+    center = config.get("project_center", {})
+    if isinstance(center, dict) and isinstance(center.get("lat"), (int, float)) and isinstance(center.get("lng"), (int, float)):
+        lat = float(center["lat"])
+        lng = float(center["lng"])
+        if -90 <= lat <= 90 and -180 <= lng <= 180:
+            gate.pass_("view-layer project center", f"lat={lat}, lng={lng}, precision={center.get('precision', 'unknown')}")
+        else:
+            gate.fail("view-layer project center", f"out of range lat={lat}, lng={lng}")
+    else:
+        gate.fail("view-layer project center", "missing numeric lat/lng")
+
+    providers = config.get("providers", {})
+    mapbox = providers.get("mapbox", {}) if isinstance(providers, dict) else {}
+    cesium = providers.get("cesium", {}) if isinstance(providers, dict) else {}
+    if isinstance(mapbox, dict) and mapbox.get("load_policy") == "user_open_only" and mapbox.get("rtl_text_plugin_required") is True:
+        gate.pass_("view-layer Mapbox policy", "user_open_only + RTL plugin required")
+    else:
+        gate.fail("view-layer Mapbox policy", "must be user_open_only and require RTL text plugin")
+    if isinstance(cesium, dict) and cesium.get("load_policy") == "user_open_only":
+        state = optional_https_url_state(cesium.get("tiles_url", ""))
+        if state == "bad":
+            gate.fail("view-layer Cesium tiles URL", "must be empty or HTTPS")
+        elif state == "ok":
+            gate.pass_("view-layer Cesium tiles URL", "approved HTTPS seam present")
+        else:
+            gate.warn("view-layer Cesium tiles URL", "pending approved tiles/config")
+    else:
+        gate.fail("view-layer Cesium policy", "must be user_open_only")
+
+    cost = config.get("cost_controls", {})
+    if (
+        isinstance(cost, dict)
+        and cost.get("instantiate_on_page_load") is False
+        and cost.get("lazy_on_user_gesture") is True
+        and cost.get("do_not_autoplay_tiles") is True
+    ):
+        gate.pass_("view-layer cost controls", "lazy/user-opened controls present")
+    else:
+        gate.fail("view-layer cost controls", "must prevent page-load map/tiles spend")
+
+    unit_views = config.get("unit_views", [])
+    if not isinstance(unit_views, list) or len(unit_views) != expected_unit_count:
+        gate.fail("view-layer unit views", f"{len(unit_views) if isinstance(unit_views, list) else 'invalid'}; expected {expected_unit_count}")
+    else:
+        bad_units: list[str] = []
+        for item in unit_views:
+            if not isinstance(item, dict):
+                bad_units.append("<non-object>")
+                continue
+            unit_id = str(item.get("unit_id", "<missing>"))
+            bearing = item.get("bearing_degrees")
+            altitude = item.get("altitude_m")
+            if not isinstance(bearing, (int, float)) or not (0 <= float(bearing) <= 360):
+                bad_units.append(f"{unit_id}.bearing")
+            if not isinstance(altitude, (int, float)) or float(altitude) <= 0:
+                bad_units.append(f"{unit_id}.altitude")
+            if not item.get("source_note"):
+                bad_units.append(f"{unit_id}.source_note")
+        if bad_units:
+            gate.fail("view-layer unit views", ", ".join(bad_units[:12]))
+        else:
+            gate.pass_("view-layer unit views", f"{len(unit_views)} units have altitude/bearing/source notes")
+
+    overlays = config.get("overlays", [])
+    if isinstance(overlays, list) and len(overlays) >= 3 and all(isinstance(item, dict) and item.get("render_policy") for item in overlays):
+        gate.pass_("view-layer overlays", f"{len(overlays)} overlay policies")
+    else:
+        gate.fail("view-layer overlays", "missing source-aware overlay policies")
+
+
 def fetch_healthcheck(url: str) -> dict | None:
     with urllib.request.urlopen(url, timeout=15) as response:
         return json.loads(response.read().decode("utf-8"))
@@ -520,7 +600,7 @@ def main() -> int:
     gate = Gate()
     check_glb(asset_dir / "model.glb", gate)
     check_poster(asset_dir / "poster.png", gate)
-    check_meta(
+    unit_count = check_meta(
         asset_dir / "project-meta-example.json",
         root,
         gate,
@@ -529,6 +609,7 @@ def main() -> int:
     )
     check_environment(asset_dir / "environment.json", gate)
     check_material_intake(asset_dir / "material-intake-template.json", gate)
+    check_view_layer(asset_dir / "view-layer-config.json", unit_count, gate)
     if not args.skip_live:
         check_healthcheck(args.healthcheck_url, args.expect_live_glb, args.require_plugin_stack, gate)
     gate.print()

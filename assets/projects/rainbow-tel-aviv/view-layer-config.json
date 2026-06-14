@@ -1,0 +1,136 @@
+{
+  "project_slug": "rainbow-tel-aviv",
+  "post_id": 4464,
+  "version": 1,
+  "status": "mapbox_live_cesium_ready",
+  "project_center": {
+    "lat": 32.1108,
+    "lng": 34.7805,
+    "precision": "prototype",
+    "source_note": "Approximate Sde Dov / Rainbow showroom center. Replace with verified survey pin before official launch."
+  },
+  "cms_inputs": {
+    "lat": 32.1108,
+    "lng": 34.7805,
+    "project_3d_units": "unit-map.json",
+    "project_3d_environment_json": "environment.json",
+    "project_3d_cesium_tiles_url": ""
+  },
+  "providers": {
+    "mapbox": {
+      "state": "current_live_provider",
+      "load_policy": "user_open_only",
+      "rtl_text_plugin_required": true,
+      "camera_formula": "ground_elevation_m + 4.0 + (floor - 1) * floor_height_m + 1.55",
+      "ground_elevation_m": 8.0,
+      "floor_height_m": 3.05,
+      "camera_distance_m": 900,
+      "pitch_degrees": 65,
+      "bearing_source": "unit direction -> bearing_degrees"
+    },
+    "cesium": {
+      "state": "ready_seam_pending_approved_tiles",
+      "load_policy": "user_open_only",
+      "tiles_url": "",
+      "accepted_sources": [
+        "Cesium ion asset",
+        "Google Photorealistic 3D Tiles config",
+        "approved 3D Tiles endpoint"
+      ],
+      "public_policy": "Do not enable until token/cost governance and public-use rights are approved."
+    }
+  },
+  "cost_controls": {
+    "instantiate_on_page_load": false,
+    "lazy_on_user_gesture": true,
+    "dedupe_per_session": true,
+    "static_preview_fallback": true,
+    "do_not_autoplay_tiles": true
+  },
+  "unit_views": [
+    {
+      "unit_id": "unit-08-sw",
+      "floor": 8,
+      "direction": "דרום מערב",
+      "bearing_degrees": 225,
+      "altitude_m": 34.9,
+      "camera_distance_m": 900,
+      "camera_pitch_degrees": 65,
+      "source_note": "Prototype camera params derived from unit floor/direction. Replace with survey/BIM view data when supplied."
+    },
+    {
+      "unit_id": "unit-16-w",
+      "floor": 16,
+      "direction": "מערב",
+      "bearing_degrees": 270,
+      "altitude_m": 59.3,
+      "camera_distance_m": 900,
+      "camera_pitch_degrees": 65,
+      "source_note": "Prototype camera params derived from unit floor/direction. Replace with survey/BIM view data when supplied."
+    },
+    {
+      "unit_id": "unit-24-nw",
+      "floor": 24,
+      "direction": "צפון מערב",
+      "bearing_degrees": 315,
+      "altitude_m": 83.7,
+      "camera_distance_m": 900,
+      "camera_pitch_degrees": 65,
+      "source_note": "Prototype camera params derived from unit floor/direction. Replace with survey/BIM view data when supplied."
+    },
+    {
+      "unit_id": "unit-31-se",
+      "floor": 31,
+      "direction": "דרום מזרח",
+      "bearing_degrees": 135,
+      "altitude_m": 105.05,
+      "camera_distance_m": 900,
+      "camera_pitch_degrees": 65,
+      "source_note": "Prototype camera params derived from unit floor/direction. Replace with survey/BIM view data when supplied."
+    },
+    {
+      "unit_id": "unit-38-penthouse",
+      "floor": 38,
+      "direction": "מערב",
+      "bearing_degrees": 270,
+      "altitude_m": 126.4,
+      "camera_distance_m": 900,
+      "camera_pitch_degrees": 65,
+      "source_note": "Prototype camera params derived from unit floor/direction. Replace with survey/BIM view data when supplied."
+    },
+    {
+      "unit_id": "unit-boutique-07",
+      "floor": 7,
+      "direction": "מערב",
+      "bearing_degrees": 270,
+      "altitude_m": 31.85,
+      "camera_distance_m": 900,
+      "camera_pitch_degrees": 65,
+      "source_note": "Prototype camera params derived from unit floor/direction. Replace with survey/BIM view data when supplied."
+    }
+  ],
+  "overlays": [
+    {
+      "id": "neighbor_projects",
+      "source": "project_3d_environment_json",
+      "render_policy": "Only show clickable pins for verified coordinates; otherwise show source-aware cards."
+    },
+    {
+      "id": "parks_and_coast",
+      "source": "project_3d_environment_json",
+      "render_policy": "Planned/future labels required until built and verified."
+    },
+    {
+      "id": "mobility",
+      "source": "project_3d_environment_json",
+      "render_policy": "Transport items must show current/planned status."
+    }
+  ],
+  "qa_requirements": [
+    "Default page state remains building selector, not map/tiles.",
+    "View layer opens only after buyer action.",
+    "Hebrew map labels require RTL plugin before Mapbox init.",
+    "Unit selection recomputes altitude and bearing from selected unit.",
+    "Cesium/3D Tiles controls stay hidden or pending until an approved tiles URL exists."
+  ]
+}

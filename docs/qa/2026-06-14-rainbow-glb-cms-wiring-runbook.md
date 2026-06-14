@@ -101,6 +101,7 @@ The script prints:
 - the exact model URLs,
 - the empty official media/tour/Cesium slots,
 - the `material-intake-template.json` handoff list for the project manager/developer,
+- the `view-layer-config.json` Mapbox/Cesium view-from-apartment contract,
 - the full `project_3d_units` JSON,
 - the `project_3d_drawings_json` JSON,
 - the flattened `project_3d_environment_json` JSON,
@@ -229,6 +230,20 @@ field it powers:
 
 The file also records the public-use rule for each item. Keep a slot empty until the source and
 rights are approved. Empty slots are a valid state; fake media is not.
+
+## View Layer Contract
+
+The asset folder includes `view-layer-config.json`. This is the repeatable contract for the
+apartment-view layer:
+
+- Mapbox is the current live provider and must stay `user_open_only`.
+- Cesium/3D Tiles is a ready seam, but `project_3d_cesium_tiles_url` stays empty until approved
+  token/cost governance and public-use rights exist.
+- Camera altitude is derived from `ground_elevation_m + 4.0 + (floor - 1) * floor_height_m + 1.55`.
+- Unit bearing comes from the unit direction and is stored per unit for QA.
+- Environment overlays are source-aware: verified pins can be clickable, unverified projects remain
+  cards until coordinates are approved.
+- The default first view remains the building selector, not map or tiles.
 
 To prove the remote files on this PR branch before merge without changing the durable CMS payload,
 run:

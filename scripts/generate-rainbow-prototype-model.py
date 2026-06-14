@@ -28,6 +28,10 @@ RAINBOW_PRICE_SOURCE_NOTE = (
     "אומדן לא מחייב לפי מחיר ממוצע למ\"ר שמוצג במדלן לפרויקט/סביבה, "
     "נבדק 14.6.2026. לא הצעה ולא התחייבות; יש לאמת מחיר, זמינות ותנאים מול היזם."
 )
+RAINBOW_LAT = 32.1108
+RAINBOW_LNG = 34.7805
+RAINBOW_GROUND_ELEVATION_M = 8.0
+RAINBOW_FLOOR_HEIGHT_M = 3.05
 
 
 MATERIALS = [
@@ -576,6 +580,8 @@ trusted map/source.
 - `environment.json`: surroundings starter data to be replaced by the map/POI layer.
 - `material-intake-template.json`: contractor/developer handoff checklist mapping each official
   material to its CMS field, accepted formats and public-use policy.
+- `view-layer-config.json`: Mapbox-now / Cesium-ready view-from-apartment contract with
+  camera formulas, per-unit altitude/bearing, overlays and cost controls.
 - Media/tour slots: `project_3d_video_url`, `project_3d_tour_url`,
   `project_3d_cesium_tiles_url`, and per-unit `interior_url`/`tour_url` are present
   but intentionally blank until official or owner-approved material is supplied.
@@ -600,6 +606,8 @@ Expected:
   for approved unit media without changing the data shape later.
 - `material-intake-template.json` lists at least eight handoff slots and keeps prototype material
   separate from official/developer-approved material.
+- `view-layer-config.json` keeps the default state building-first, defines user-opened map/tiles
+  behavior, and gives each unit a derived altitude and bearing for view-from-apartment QA.
 
 ## Browser Gate After v1.63.0 Is Installed
 
@@ -972,6 +980,127 @@ def material_intake_payload() -> dict[str, object]:
     }
 
 
+def bearing_for_direction(direction: str) -> int:
+    """Approximate compass bearing for current Hebrew direction labels."""
+    north = "צפון" in direction
+    south = "דרום" in direction
+    east = "מזרח" in direction
+    west = "מערב" in direction
+    if north and west:
+        return 315
+    if north and east:
+        return 45
+    if south and west:
+        return 225
+    if south and east:
+        return 135
+    if west:
+        return 270
+    if east:
+        return 90
+    if north:
+        return 0
+    if south:
+        return 180
+    return 270
+
+
+def unit_view_records(units: list[dict[str, object]]) -> list[dict[str, object]]:
+    records = []
+    for unit in units:
+        floor = float(unit.get("floor", 0) or 0)
+        direction = str(unit.get("dir", ""))
+        altitude = RAINBOW_GROUND_ELEVATION_M + 4.0 + max(0.0, floor - 1.0) * RAINBOW_FLOOR_HEIGHT_M + 1.55
+        records.append(
+            {
+                "unit_id": unit.get("id"),
+                "floor": unit.get("floor"),
+                "direction": direction,
+                "bearing_degrees": bearing_for_direction(direction),
+                "altitude_m": round(altitude, 2),
+                "camera_distance_m": 900,
+                "camera_pitch_degrees": 65,
+                "source_note": "Prototype camera params derived from unit floor/direction. Replace with survey/BIM view data when supplied.",
+            }
+        )
+    return records
+
+
+def view_layer_payload(units: list[dict[str, object]]) -> dict[str, object]:
+    """Mapbox-now / Cesium-ready view-from-apartment contract."""
+    return {
+        "project_slug": "rainbow-tel-aviv",
+        "post_id": 4464,
+        "version": 1,
+        "status": "mapbox_live_cesium_ready",
+        "project_center": {
+            "lat": RAINBOW_LAT,
+            "lng": RAINBOW_LNG,
+            "precision": "prototype",
+            "source_note": "Approximate Sde Dov / Rainbow showroom center. Replace with verified survey pin before official launch.",
+        },
+        "cms_inputs": {
+            "lat": RAINBOW_LAT,
+            "lng": RAINBOW_LNG,
+            "project_3d_units": "unit-map.json",
+            "project_3d_environment_json": "environment.json",
+            "project_3d_cesium_tiles_url": "",
+        },
+        "providers": {
+            "mapbox": {
+                "state": "current_live_provider",
+                "load_policy": "user_open_only",
+                "rtl_text_plugin_required": True,
+                "camera_formula": "ground_elevation_m + 4.0 + (floor - 1) * floor_height_m + 1.55",
+                "ground_elevation_m": RAINBOW_GROUND_ELEVATION_M,
+                "floor_height_m": RAINBOW_FLOOR_HEIGHT_M,
+                "camera_distance_m": 900,
+                "pitch_degrees": 65,
+                "bearing_source": "unit direction -> bearing_degrees",
+            },
+            "cesium": {
+                "state": "ready_seam_pending_approved_tiles",
+                "load_policy": "user_open_only",
+                "tiles_url": "",
+                "accepted_sources": ["Cesium ion asset", "Google Photorealistic 3D Tiles config", "approved 3D Tiles endpoint"],
+                "public_policy": "Do not enable until token/cost governance and public-use rights are approved.",
+            },
+        },
+        "cost_controls": {
+            "instantiate_on_page_load": False,
+            "lazy_on_user_gesture": True,
+            "dedupe_per_session": True,
+            "static_preview_fallback": True,
+            "do_not_autoplay_tiles": True,
+        },
+        "unit_views": unit_view_records(units),
+        "overlays": [
+            {
+                "id": "neighbor_projects",
+                "source": "project_3d_environment_json",
+                "render_policy": "Only show clickable pins for verified coordinates; otherwise show source-aware cards.",
+            },
+            {
+                "id": "parks_and_coast",
+                "source": "project_3d_environment_json",
+                "render_policy": "Planned/future labels required until built and verified.",
+            },
+            {
+                "id": "mobility",
+                "source": "project_3d_environment_json",
+                "render_policy": "Transport items must show current/planned status.",
+            },
+        ],
+        "qa_requirements": [
+            "Default page state remains building selector, not map/tiles.",
+            "View layer opens only after buyer action.",
+            "Hebrew map labels require RTL plugin before Mapbox init.",
+            "Unit selection recomputes altitude and bearing from selected unit.",
+            "Cesium/3D Tiles controls stay hidden or pending until an approved tiles URL exists.",
+        ],
+    }
+
+
 def main() -> None:
     OUT.mkdir(parents=True, exist_ok=True)
     build_glb(OUT / "model.glb")
@@ -1062,6 +1191,7 @@ def main() -> None:
     )
     write_json(OUT / "environment.json", environment)
     write_json(OUT / "material-intake-template.json", material_intake_payload())
+    write_json(OUT / "view-layer-config.json", view_layer_payload(units))
     write_docs()
     size = os.path.getsize(OUT / "model.glb")
     print(f"Wrote {OUT / 'model.glb'} ({size:,} bytes)")
