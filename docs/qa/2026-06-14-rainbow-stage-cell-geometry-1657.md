@@ -81,6 +81,8 @@ Run on the live Rainbow page after deploy:
 1. Desktop 1440px: apartment selectors look like embedded apartment-sized facade/elevation cells,
    not dots, floating squares or thin decorative lines.
 2. Mobile 390px: every cell remains easy to tap and does not create horizontal overflow.
+   The visual cell must not collapse into a decorative line, and the transparent hit target must
+   remain at least 44px by 44px.
 3. Click/tap a cell once: the selected-apartment card updates with the correct unit.
 4. Drag empty model surface: the building rotates.
 5. Drag/click on a cell: it does not feel jammed; selection wins predictably.
@@ -105,10 +107,14 @@ Local factory validation:
 node --check scripts/build-project-showroom-payload.mjs
 node --check scripts/validate-project-showroom-payload.mjs
 node --check scripts/import-project-showroom-payload.mjs
+node --check scripts/qa-project-showroom-visual.mjs
 node scripts/build-project-showroom-payload.mjs rainbow-tel-aviv > plugin-dist/_showroom-payload-check.json
 node scripts/validate-project-showroom-payload.mjs --payload plugin-dist/_showroom-payload-check.json
 node scripts/validate-project-showroom-payload.mjs --payload assets/projects/rainbow-tel-aviv/showroom-payload.json
 ```
+
+The visual QA script now fails a deployed project if facade cells are only thin decorative lines or
+if their transparent hit boxes fall below the 44px tap-target gate.
 
 Both generated and committed payloads passed with `units = 6`, `units_with_points = 6`,
 `drawings = 6` and no validation errors.

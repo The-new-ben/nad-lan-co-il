@@ -225,6 +225,18 @@ function metricsExpression() {
     const picks = facadeHits.length ? facadeHits : (facadeCells.length ? facadeCells : stagePicks);
     const firstPick = picks[0] || null;
     const firstPickRect = firstPick ? firstPick.getBoundingClientRect() : null;
+    const facadeCellRects = facadeCells.map((el) => {
+      const r = el.getBoundingClientRect();
+      return { width: r.width, height: r.height };
+    });
+    const facadeHitRects = facadeHits.map((el) => {
+      const r = el.getBoundingClientRect();
+      return { width: r.width, height: r.height };
+    });
+    const minFacadeCellWidth = facadeCellRects.reduce((min, r) => Math.min(min, r.width), facadeCellRects.length ? Infinity : 0);
+    const minFacadeCellHeight = facadeCellRects.reduce((min, r) => Math.min(min, r.height), facadeCellRects.length ? Infinity : 0);
+    const minFacadeHitWidth = facadeHitRects.reduce((min, r) => Math.min(min, r.width), facadeHitRects.length ? Infinity : 0);
+    const minFacadeHitHeight = facadeHitRects.reduce((min, r) => Math.min(min, r.height), facadeHitRects.length ? Infinity : 0);
     const tapTargets = Array.from(document.querySelectorAll('.nlp3d-facade-hit,.nlp3d-facade-cell,.nlp3d-stage-pick,.nlp3d-stage-card-actions button,.nlp3d-lead-form button,.nlp3d-owner-form button,.nlp3d-tool,.nlp3d-view-toggle')).filter(visible).map((el) => {
       const r = el.getBoundingClientRect();
       return { selector: el.className || el.getAttribute('data-action') || el.tagName, width: r.width, height: r.height };
@@ -250,6 +262,14 @@ function metricsExpression() {
       facadeHitCount: facadeHits.length,
       facadeCellCount: facadeCells.length,
       facadeLabelCount: facadeLabels.length,
+      facadeCells: {
+        minWidth: Math.round(minFacadeCellWidth * 10) / 10,
+        minHeight: Math.round(minFacadeCellHeight * 10) / 10
+      },
+      facadeHits: {
+        minWidth: Math.round(minFacadeHitWidth * 10) / 10,
+        minHeight: Math.round(minFacadeHitHeight * 10) / 10
+      },
       stagePickCount: stagePicks.length,
       recommendedPickCount: picks.filter((p) => p.classList.contains('is-recommended')).length,
       firstPickCenter: firstPickRect ? { x: Math.round(firstPickRect.left + firstPickRect.width / 2), y: Math.round(firstPickRect.top + firstPickRect.height / 2) } : null,
@@ -324,6 +344,16 @@ async function runViewport(client, args, viewport, outDir, pageErrors) {
   if (after.h1s.length !== 1) failures.push(`expected one H1, found ${after.h1s.length}`);
   if (after.pickCount < 1) failures.push('no visible facade/stage apartment selectors');
   if (after.facadeCellCount > 0 && after.facadeLabelCount < Math.min(2, after.facadeCellCount)) failures.push(`facade labels missing (${after.facadeLabelCount}/${after.facadeCellCount})`);
+  if (after.facadeCellCount > 0) {
+    const minVisualW = viewport.width <= 390 ? 24 : 36;
+    const minVisualH = viewport.width <= 390 ? 10 : 14;
+    if (after.facadeCells.minWidth < minVisualW || after.facadeCells.minHeight < minVisualH) {
+      failures.push(`facade cells too thin (${after.facadeCells.minWidth}x${after.facadeCells.minHeight}px)`);
+    }
+  }
+  if (after.facadeHitCount > 0 && (after.facadeHits.minWidth < 44 || after.facadeHits.minHeight < 44)) {
+    failures.push(`facade hit target below 44px (${after.facadeHits.minWidth}x${after.facadeHits.minHeight}px)`);
+  }
   if (after.firstPickCenter && after.cardHidden) failures.push('clicking apartment did not reveal selected card');
   if (after.tapTargets.count && after.tapTargets.min < 44) failures.push(`tap target below 44px (${after.tapTargets.min}px)`);
   if (after.rootRect && viewport.width <= 768 && (after.rootRect.x < -2 || after.rootRect.right > viewport.width + 2)) failures.push(`showroom cropped on mobile/tablet: ${JSON.stringify(after.rootRect)}`);

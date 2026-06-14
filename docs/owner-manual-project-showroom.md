@@ -485,3 +485,7 @@ apartment-shaped cells or polygons that make the location of the apartment obvio
 Mobile check: open the page at 390px. Every apartment cell must be comfortable to tap, at least
 44px by 44px, and selecting a unit must show the apartment card without pushing the model out of
 view.
+
+Visual check: do not draw apartment polygons as very thin highlight strips. A buyer should be able
+to read each target as a real apartment zone on the facade. The visible cell can be smaller than the
+hidden tap box, but it must still look like a selectable apartment, not a decorative underline.
