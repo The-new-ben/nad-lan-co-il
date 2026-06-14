@@ -53,6 +53,8 @@ and six boutique buildings:
 - Replaced the darker generic facade demo with an original white/glass coastal tower concept that
   reads closer to Rainbow's public "spiral/sculptural tower + boutique buildings" positioning,
   while staying clearly illustrative and non-official.
+- Added an architectural window/apartment-band layer to that original facade asset so the
+  clickable cells sit on a believable tower skin instead of floating over a smooth illustration.
 
 ## Local Preview Proof
 
@@ -65,6 +67,7 @@ Screenshots:
 - `docs/qa/screenshots/rainbow-facade-selector-1657/chrome-mobile-390-selected.png`
 - `docs/qa/screenshots/rainbow-facade-selector-1657/chrome-after-click-viewport.png`
 - `docs/qa/screenshots/rainbow-facade-selector-1657/chrome-desktop-1440-new-facade.png`
+- `docs/qa/screenshots/rainbow-facade-selector-1657/chrome-desktop-1440-architectural-facade.png`
 
 Chrome interaction proof on the local preview:
 

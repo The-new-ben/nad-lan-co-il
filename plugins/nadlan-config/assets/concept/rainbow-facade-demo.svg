@@ -35,6 +35,16 @@
       <stop offset=".52" stop-color="#d9bd76"/>
       <stop offset="1" stop-color="#8c6b32"/>
     </linearGradient>
+    <linearGradient id="unitGlass" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#ffffff" stop-opacity=".68"/>
+      <stop offset=".45" stop-color="#bde7e5" stop-opacity=".5"/>
+      <stop offset="1" stop-color="#496c70" stop-opacity=".38"/>
+    </linearGradient>
+    <linearGradient id="balconyEdge" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#fff6c9" stop-opacity=".8"/>
+      <stop offset=".52" stop-color="#d6bd77" stop-opacity=".45"/>
+      <stop offset="1" stop-color="#fff6c9" stop-opacity=".62"/>
+    </linearGradient>
     <filter id="softShadow" x="-25%" y="-25%" width="150%" height="150%">
       <feDropShadow dx="0" dy="24" stdDeviation="18" flood-color="#020808" flood-opacity=".42"/>
     </filter>
@@ -100,6 +110,61 @@
       <path d="M342 730c125 13 250 18 377 5"/>
       <path d="M339 753c127 13 254 18 382 5"/>
       <path d="M337 776c129 13 257 19 387 5"/>
+    </g>
+
+    <g id="apartment-window-stack" opacity=".92">
+      <g fill="url(#unitGlass)" stroke="url(#balconyEdge)" stroke-opacity=".58" stroke-width="1.4">
+        <rect x="408" y="142" width="76" height="28" rx="4"/>
+        <rect x="492" y="142" width="82" height="28" rx="4"/>
+        <rect x="582" y="142" width="74" height="28" rx="4"/>
+        <rect x="407" y="196" width="78" height="24" rx="4"/>
+        <rect x="493" y="196" width="83" height="24" rx="4"/>
+        <rect x="584" y="196" width="75" height="24" rx="4"/>
+        <rect x="403" y="246" width="83" height="24" rx="4"/>
+        <rect x="494" y="246" width="86" height="24" rx="4"/>
+        <rect x="588" y="246" width="77" height="24" rx="4"/>
+        <rect x="398" y="296" width="88" height="24" rx="4"/>
+        <rect x="494" y="296" width="89" height="24" rx="4"/>
+        <rect x="591" y="296" width="80" height="24" rx="4"/>
+        <rect x="392" y="346" width="94" height="25" rx="4"/>
+        <rect x="494" y="346" width="93" height="25" rx="4"/>
+        <rect x="596" y="346" width="82" height="25" rx="4"/>
+        <rect x="386" y="396" width="100" height="25" rx="4"/>
+        <rect x="493" y="396" width="98" height="25" rx="4"/>
+        <rect x="600" y="396" width="84" height="25" rx="4"/>
+        <rect x="381" y="446" width="104" height="26" rx="4"/>
+        <rect x="493" y="446" width="102" height="26" rx="4"/>
+        <rect x="604" y="446" width="87" height="26" rx="4"/>
+        <rect x="376" y="496" width="109" height="27" rx="4"/>
+        <rect x="493" y="496" width="106" height="27" rx="4"/>
+        <rect x="608" y="496" width="90" height="27" rx="4"/>
+        <rect x="371" y="546" width="113" height="28" rx="4"/>
+        <rect x="493" y="546" width="110" height="28" rx="4"/>
+        <rect x="612" y="546" width="93" height="28" rx="4"/>
+        <rect x="365" y="596" width="118" height="29" rx="4"/>
+        <rect x="493" y="596" width="115" height="29" rx="4"/>
+        <rect x="617" y="596" width="96" height="29" rx="4"/>
+        <rect x="360" y="646" width="123" height="30" rx="4"/>
+        <rect x="493" y="646" width="119" height="30" rx="4"/>
+        <rect x="621" y="646" width="99" height="30" rx="4"/>
+        <rect x="354" y="696" width="128" height="31" rx="4"/>
+        <rect x="493" y="696" width="124" height="31" rx="4"/>
+        <rect x="626" y="696" width="103" height="31" rx="4"/>
+      </g>
+      <g stroke="#ffffff" stroke-opacity=".28" stroke-width=".9">
+        <path d="M446 142v28M533 142v28M620 142v28M446 196v24M535 196v24M622 196v24"/>
+        <path d="M445 246v24M537 246v24M625 246v24M443 296v24M539 296v24M628 296v24"/>
+        <path d="M441 346v25M541 346v25M632 346v25M438 396v25M543 396v25M635 396v25"/>
+        <path d="M435 446v26M545 446v26M640 446v26M431 496v27M547 496v27M644 496v27"/>
+        <path d="M427 546v28M549 546v28M649 546v28M422 596v29M551 596v29M654 596v29"/>
+        <path d="M418 646v30M553 646v30M659 646v30M414 696v31M555 696v31M665 696v31"/>
+      </g>
+      <g stroke="#0f2c2d" stroke-opacity=".44" stroke-width="2">
+        <path d="M397 185c86 11 177 11 268-1"/>
+        <path d="M389 335c96 12 193 12 291 0"/>
+        <path d="M378 485c108 13 216 14 324 0"/>
+        <path d="M361 635c124 14 245 16 364 2"/>
+      </g>
     </g>
 
     <g fill="#ffffff" opacity=".42">
