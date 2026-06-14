@@ -43,9 +43,14 @@ plain WordPress article.
    payload.
 4. Map view is user-opened and lazy-loaded to control Mapbox costs.
 5. Register Mapbox RTL text plugin before creating a map with Hebrew labels.
-6. Drawings, floor plans and real inventory are optional CMS fields. If absent, show a clear request
+6. Nearby projects without verified coordinates may use bounded `showroom_position` values for
+   schematic model-side labels only. Never promote those values into Mapbox, Cesium or public map
+   pins.
+   In the CMS `project_3d_environment_json` payload, preserve `source_note` as a public `note` and
+   omit `lat`/`lng` for anything marked `map_status: needs_precise_pin`.
+7. Drawings, floor plans and real inventory are optional CMS fields. If absent, show a clear request
    path instead of faking a plan.
-7. Price can be:
+8. Price can be:
    - official unit price,
    - explicit unit estimate,
    - project average per sqm estimate,
@@ -119,3 +124,113 @@ After a PR is merged:
 4. Check `/wp-json/nadlan/v1/healthcheck` for the new version and feature blocks.
 
 GitHub merge alone does not update production.
+
+## G. Model Asset Wire-In
+
+When the model-viewer rail is live but `projects_with_glb` is still `0`, the next step is not a
+plugin rebuild. It is CMS wiring.
+
+For Rainbow, use:
+
+- `docs/qa/2026-06-14-rainbow-glb-cms-wiring-runbook.md`
+- `scripts/prepare-rainbow-cms-payload.py`
+
+For future projects, start with the scaffold helper so the project is born with the same data
+contract as Rainbow:
+
+```powershell
+python scripts\scaffold-project-showroom.py --project-slug <latin-slug> --project-name "<Project Name>" --post-id <project-id> --city "<city>" --lat <lat> --lng <lng>
+```
+
+The scaffold is not public-ready. It creates the folder and the required CMS/material contracts so
+official or prototype assets can be filled without inventing a new structure.
+
+Every future project folder should then contain:
+
+1. `assets/projects/<slug>/model.glb`
+2. `assets/projects/<slug>/poster.png`
+3. `assets/projects/<slug>/project-meta-example.json`
+4. `unit-map.json`, `drawings.json`, `environment.json`, `material-intake-template.json` and
+   `view-layer-config.json`
+5. A QA/runbook doc that lists the exact post id, model URLs, unit JSON, healthcheck proof and
+   browser QA gates.
+
+Do not wire a public page to a draft branch asset unless the owner explicitly approves a temporary
+QA pass. After merge, use `main` raw URLs, WordPress Media URLs or a CDN, then clear cache and
+verify healthcheck `project_3d.projects_with_glb >= 1`.
+
+Use the shared readiness checker for every future asset folder:
+
+```powershell
+python scripts\check-rainbow-showroom-readiness.py --project-slug <latin-slug> --skip-live
+```
+
+Despite the historical Rainbow filename, the checker validates any `assets/projects/<latin-slug>/`
+folder that follows the same contract. GitHub raw URLs from this repo must point to `main`; custom
+WordPress Media/CDN HTTPS URLs are acceptable and should be verified with `--check-remote-assets`
+before public CMS wiring.
+
+The shared apply helper follows the same future-project pattern:
+
+```powershell
+python scripts\prepare-rainbow-cms-payload.py --project-slug <latin-slug> --post-id <project-id> --branch main
+python scripts\apply-rainbow-cms-payload.py --project-slug <latin-slug> --post-id <project-id> --branch main
+```
+
+In `--apply` mode, it must prove the live plugin stack is ready before asking for WordPress
+credentials. Do not bypass that preflight for a final public page.
+
+When there is confusion about what has actually merged or deployed, run:
+
+```powershell
+python scripts\check-rainbow-deploy-sequence.py
+```
+
+The deploy-sequence checker is read-only. It should name the exact gap: stack branches not merged
+to `main`, live healthcheck version too old, missing feature markers, or `projects_with_glb=0`.
+For Rainbow's first GLB rollout the required stack is explicit: v1.63.1 tap targets, v1.63.2 unit
+REST CMS wiring, v1.63.3 contact-rail containment, v1.63.4 page SEO/assembly, then the project
+asset package and CMS payload.
+
+After writing, the helper must verify the REST response, not only trust that the request succeeded:
+exact GLB/poster/model values, drawing/environment counts, and, when unit REST support is live, unit
+count plus unit ids. A mismatch means the project is not CMS-wired yet.
+
+For final operator handoff, prefer the orchestrated wrapper so the stack, assets, REST write and
+finish-line gate run in the correct order:
+
+```powershell
+python scripts\project-showroom-go-live.py --project-slug <latin-slug> --post-id <project-id>
+python scripts\project-showroom-go-live.py --project-slug <latin-slug> --post-id <project-id> --apply --wait-ready
+```
+
+The first command is read-only and must pass before the second is allowed. The second command still
+does not merge, deploy, clear cache or invent credentials; it only writes CMS meta after the live
+plugin stack and remote assets are proven, then runs the finish-line browser gate.
+When the project asset package is on a feature branch, include it explicitly:
+
+```powershell
+python scripts\project-showroom-go-live.py --project-slug <latin-slug> --post-id <project-id> --asset-branch origin/codex/<project-asset-branch>
+```
+
+The deploy checker is project-slug aware and checks `assets/projects/<latin-slug>/model.glb` on
+`origin/main`, so the same command can be used for the next Israeli project instead of carrying a
+Rainbow-specific asset path.
+The wrapper asks the deploy checker to run `git fetch origin --prune`, so stale local copies of the
+stack branches do not create a false merge-state report.
+
+## Page Assembly And SEO Gate
+
+A project showroom is not finished when the 3D model works. The page also needs a premium indexed
+content shell with one visible H1, guide assembly, transactional title/meta, FAQ schema, price/schema
+disclaimers and enough buyer-language depth.
+
+For Rainbow, run:
+
+```powershell
+python scripts\check-rainbow-page-assembly.py --strict
+```
+
+The checker validates the public page, healthcheck assembly flags, JSON-LD, visible word count,
+transactional keyword counts, title/meta direction and public rendering leaks. Future cloned projects
+should get the same checker generalized to their slug and post id before launch.

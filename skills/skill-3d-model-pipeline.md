@@ -26,6 +26,26 @@ Use the highest trust source available:
 Never copy paid-source photos, paid transaction tables, or licensed marketing renders into public
 assets without explicit permission.
 
+## Massing Now, Swap Later
+
+When official BIM is not available but the owner needs a working showroom demo:
+
+1. Create an original low-poly massing model from public facts and clearly label it illustrative.
+2. Keep scale intuitive: 1 model unit = approximately 1 meter, origin at building-base center, Y up.
+3. Model the product structure, not a fantasy render: tower, podium, boutique blocks, amenity court,
+   roof crown, floor rhythm and window bands.
+4. Avoid flat stacked-box placeholders. Even prototype massing must show the architectural idea:
+   spiral/stepped form when sourced, facade rhythm, podium/lobby, roof amenity hints, surroundings
+   and a first-glance residential read.
+5. Keep the first GLB lightweight. Target under 4 MB for a massing model.
+6. Store demo units with `source_note` and non-binding price/availability copy.
+7. When official BIM/developer GLB arrives, optimize it and replace `project_model_glb` while keeping
+   the same origin/scale where possible. If origin/scale changes, regenerate `hotspot_position`,
+   `hotspot_normal`, and `camera_orbit`.
+
+This "massing now, swap later" path is valid for a contractor demo, but the public page must never
+present it as the official architectural model.
+
 ## Modeling Pipeline
 
 Recommended path for a real project model:
@@ -49,8 +69,10 @@ gltf-transform inspect project.optimized.glb
 
 Target budgets:
 
-- Poster: under 350 KB.
-- GLB first version: under 8 MB if possible.
+- Prototype poster used before first load: under 80 KB when committed to the repo.
+- Poster uploaded to media/CDN for richer official model: under 350 KB.
+- GLB first massing version: under 4 MB.
+- GLB first official export: under 8 MB if possible.
 - Hero-grade GLB: under 15 MB only when the model quality justifies it.
 - Texture sizes: prefer 1024 or 2048, avoid 4096 unless visually necessary.
 
@@ -89,6 +111,37 @@ Unit JSON fields:
 - `view_note`
 - `source_note`
 
+Media and tour rules:
+
+- Create the fields even when no official media exists yet; empty slots are an honest CMS contract.
+- Use only owner-approved `https://` URLs for video, tour, Cesium/3D Tiles, interior media and unit tours.
+- Do not fill the slots with copied developer assets, stock interiors, AI-generated fake interiors, or
+  unlicensed screenshots.
+- Keep Mapbox/Cesium/3D Tiles lazy and user-opened. The project page must not spend paid map/tiles
+  quota before a buyer requests the view layer.
+- Each flagship asset folder should include `material-intake-template.json` mapping official
+  model/video/tour/drawings/unit/environment materials to CMS fields, accepted formats, current
+  status and public-use policy. This is the project-manager handoff document and the countrywide
+  replication checklist.
+- Each flagship asset folder should include `view-layer-config.json` for Mapbox-now / Cesium-ready
+  views: project center, provider policy, cost controls, unit altitude/bearing records, overlay
+  policy and QA requirements. The default state remains building-first; map/tiles are inspection
+  tools opened by the buyer.
+
+## Price Context
+
+Buyers expect price context inside a showroom, but it must not turn a prototype into an invented
+offer:
+
+- Prefer project-level `project_3d_avg_price_per_sqm` plus `project_3d_price_source_note` when
+  official apartment inventory is missing. The runtime can compute a non-binding unit estimate from
+  sqm without claiming availability.
+- Use per-unit `price_estimate` only when the owner approves the source and the visible note still
+  says it is not an offer or commitment.
+- Do not paste paid transaction rows, licensed tables, or exact availability into public CMS fields
+  unless the owner has explicitly approved the source/license.
+- Exact `price` is reserved for official developer inventory or a formally approved source.
+
 ## Hotspot Capture
 
 For `<model-viewer>`, each unit hotspot needs model coordinates:
@@ -115,6 +168,8 @@ model annotation script. Store only coordinates, not private source files.
 - Model hotspots must call the same selected-unit flow as facade/SVG clicks.
 - The lead payload must preserve the selected unit.
 - Mapbox or Cesium environment views stay lazy and user-opened.
+- Empty video/tour/Cesium slots should hide their controls or show a clear "material pending" state,
+  never a broken button.
 
 ## QA Gate
 
@@ -127,21 +182,51 @@ Before shipping a project:
 - Confirm keyboard/focus access to unit selection remains available.
 - Confirm mobile has no horizontal overflow and no nested gray scrollbars.
 - Confirm source notes/disclaimers distinguish official data from illustrative/demo data.
+- Confirm video/tour/Cesium/unit-media URLs are empty or valid approved HTTPS links; malformed URLs fail.
+- Confirm `material-intake-template.json` exists and records the official replacement path before
+  calling a project clone-ready.
+- Confirm `view-layer-config.json` exists, is user-opened/lazy for Mapbox and Cesium, and gives every
+  unit a numeric altitude and bearing for view-from-apartment QA.
+- Before live CMS wire-in, run the local model preview browser gate:
+  `node scripts/check-rainbow-prototype-preview.mjs` (or the project-specific equivalent). It must
+  prove the GLB loads at 1440px and 390px, a real browser drag changes the model camera orbit,
+  hotspots exist, hotspot tap/click changes the unit readout, tap targets are at least 44px,
+  drawings/environment/media slots render from the project JSON, Mapbox/Cesium view policy remains
+  user-opened/lazy, and screenshots are captured.
+- Confirm the local model preview screenshot shows `loaded:true` / actual GLB visible, not only the
+  poster image.
 - Confirm the page still has one H1 and the article body remains readable below the showroom.
+- Confirm the page assembly/SEO gate passes before wiring the public GLB: transaction-led title,
+  price-aware non-binding meta description, visible buyer phrasing, FAQ/schema meta and no raw
+  code leak. A model is not enough if the page shell still reads unfinished.
+- For Rainbow-style projects, the final proof should be one combined command such as
+  `python scripts/check-rainbow-finish-line.py`: healthcheck prerequisites, page assembly,
+  GLB readiness and real-browser DOM must pass together. The live DOM gate must include the
+  product interaction and material layer (`--expect-glb --expect-materials` or the project-specific
+  equivalent): a real browser drag must change the model camera, and selecting a unit then opening
+  drawings, surroundings and media must render CMS-backed cards, not only a static shell.
 
 ## Countrywide Replication
 
-For every future project, create a project asset folder containing:
+For every future project, create the asset folder with the scaffold helper first:
+
+```powershell
+python scripts\scaffold-project-showroom.py --project-slug <latin-slug> --project-name "<Project Name>" --post-id <project-id> --city "<city>" --lat <lat> --lng <lng>
+```
+
+That command creates the day-zero contract. It is intentionally not public-ready until model assets,
+unit data, source notes and QA are filled. Every future project asset folder must then contain:
 
 - `source-notes.md`
 - `model.glb`
 - `model.usdz` if needed
-- `poster.webp`
+- `poster.png`
 - `unit-map.json`
 - `drawings.json`
 - `environment.json`
+- `material-intake-template.json`
+- `view-layer-config.json`
 - `qa.md`
 
 The plugin should consume URLs and JSON only. Large raw modeling files should live outside the
 plugin ZIP and outside the WordPress plugin repository unless explicitly approved.
-
