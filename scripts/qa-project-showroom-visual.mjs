@@ -218,10 +218,11 @@ function metricsExpression() {
     const stage = document.querySelector('.nlp3d-stage-wrap');
     const scene = document.querySelector('.nlp3d-scene');
     const card = document.querySelector('.nlp3d-stage-card');
-    const picks = Array.from(document.querySelectorAll('.nlp3d-stage-pick')).filter(visible);
+    const picks = Array.from(document.querySelectorAll('.nlp3d-cell,.nlp3d-stage-pick')).filter(visible);
+    const cells = Array.from(document.querySelectorAll('.nlp3d-cell')).filter(visible);
     const firstPick = picks[0] || null;
     const firstPickRect = firstPick ? firstPick.getBoundingClientRect() : null;
-    const tapTargets = Array.from(document.querySelectorAll('.nlp3d-stage-pick,.nlp3d-stage-card-actions button,.nlp3d-lead-form button,.nlp3d-owner-form button,.nlp3d-tool,.nlp3d-view-toggle')).filter(visible).map((el) => {
+    const tapTargets = Array.from(document.querySelectorAll('.nlp3d-cell,.nlp3d-stage-pick,.nlp3d-stage-card-actions button,.nlp3d-lead-form button,.nlp3d-owner-form button,.nlp3d-tool,.nlp3d-view-toggle')).filter(visible).map((el) => {
       const r = el.getBoundingClientRect();
       return { selector: el.className || el.getAttribute('data-action') || el.tagName, width: r.width, height: r.height };
     });
@@ -243,6 +244,10 @@ function metricsExpression() {
       cardRect: rect(card),
       cardHidden: !card || card.hidden || !visible(card),
       pickCount: picks.length,
+      cellCount: cells.length,
+      dualShowroom: !!root?.classList.contains('is-dual-showroom'),
+      facadeSelect: !!root?.classList.contains('is-facade-select'),
+      activePressedCount: picks.filter((p) => p.getAttribute('aria-pressed') === 'true').length,
       recommendedPickCount: picks.filter((p) => p.classList.contains('is-recommended')).length,
       firstPickCenter: firstPickRect ? { x: Math.round(firstPickRect.left + firstPickRect.width / 2), y: Math.round(firstPickRect.top + firstPickRect.height / 2) } : null,
       modelViewerDefined: !!customElements.get('model-viewer'),
@@ -314,8 +319,10 @@ async function runViewport(client, args, viewport, outDir, pageErrors) {
   if (!after.rootRect) failures.push('showroom root missing');
   if (after.scroll.overflow > 2) failures.push(`horizontal overflow ${after.scroll.overflow}px`);
   if (after.h1s.length !== 1) failures.push(`expected one H1, found ${after.h1s.length}`);
-  if (after.pickCount < 1) failures.push('no visible apartment stage picks');
+  if (after.pickCount < 1) failures.push('no visible apartment picks');
+  if (after.modelViewerCount > 0 && after.cellCount < 1) failures.push('model exists but embedded facade apartment cells are missing');
   if (after.firstPickCenter && after.cardHidden) failures.push('clicking apartment did not reveal selected card');
+  if (after.firstPickCenter && after.activePressedCount < 1) failures.push('clicking apartment did not mark a selected unit');
   if (after.tapTargets.count && after.tapTargets.min < 44) failures.push(`tap target below 44px (${after.tapTargets.min}px)`);
   if (after.rootRect && viewport.width <= 768 && (after.rootRect.x < -2 || after.rootRect.right > viewport.width + 2)) failures.push(`showroom cropped on mobile/tablet: ${JSON.stringify(after.rootRect)}`);
   if (after.textSignals.hasInternalWords) failures.push('public text contains internal wording');

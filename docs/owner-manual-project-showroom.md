@@ -20,6 +20,13 @@ If the metabox is not visible, open the editor options and enable it:
 
 ## What The Public Page Should Show
 
+## Dual Model + Facade Rule
+
+If the GLB is only a massing or prototype model, it is used for the premium rotating showroom view.
+Apartment selection should happen on the locked facade/elevation selector beside it, where each
+unit is a visible cell on the building face. This is the correct setup until the developer supplies
+official BIM/GLB geometry where every apartment is a separate clickable surface.
+
 When a real GLB is configured, the buyer should see one clear building model, not the old schematic
 tower on top of it. The schematic tower is only a fallback for projects with no model or when the
 model fails to load.
