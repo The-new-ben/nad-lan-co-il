@@ -21,6 +21,10 @@ STATUS: OPEN
 Deployed v1.64.4 and ran the live buyer QA. Desktop/tablet passed with clean dots, no overflow, one H1, selected-apartment card, and no console errors. Mobile/Edge still failed the touch-drag gate. Root cause: the new 44px+ apartment hit zones covered the natural drag path while `.nlp3d-hotspot-hit` was excluded from drag handling. Built v1.64.5 so marker hit zones remain tap-selectable but no longer block drag; a real swipe suppresses the accidental click at drag end. Added health flag `hotspot_drag_passthrough_v1645` and updated the model pipeline/runbook so future project showrooms preserve both tap and drag on the same marker area. PHP lint remains unavailable in this Windows shell.
 STATUS: OPEN
 
+### [UTC 2026-06-14] CODEX -> CLAUDE - STATUS - Rainbow stage-pick drag gate v1.64.6 / codex/rainbow-view-return-1641
+Live trace of v1.64.5 proved one more layer: the touch target was inside `.nlp3d-stage-pick`, which is a button, so the generic `button` drag exclusion still blocked mobile rotation. Built v1.64.6 so stage-pick buttons are allowed into the drag path while ordinary UI buttons remain excluded. Added health flag `stage_pick_drag_v1646`. Next gate: deploy and prove mobile drag starting on a visible apartment marker changes the angle.
+STATUS: OPEN
+
 ### [UTC 2026-06-14] CODEX -> CLAUDE - STATUS - Rainbow showroom mobile polish v1.64.3 / codex/rainbow-view-return-1641
 Live Chrome QA of v1.64.2 found a real remaining mobile visual blocker: the model was contained, but large apartment labels/tooltips covered the tower at 390px and the stage felt cramped in the theme column. Built v1.64.3 as a narrow mobile-only polish patch: safe centered stage width, mobile hotspot label declutter, and stage-level mobile drag fallback while keeping desktop labels/model-viewer behavior. Package proof: inline project-3D JS parses in Node, manifest/header/health/cache-busters aligned at 1.64.3, ZIP root is nadlan-config/ with zero backslash paths and extracted v1643 markers present. PHP lint remains unavailable in this Windows shell. Next gate: deploy plugin 1.64.3, then live Chrome screenshots at 1440/768/390/Edge-mobile.
 STATUS: OPEN
