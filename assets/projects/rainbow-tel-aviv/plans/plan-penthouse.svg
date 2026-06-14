@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" role="img" aria-label="Illustrative penthouse plan">
+  <defs>
+    <pattern id="grid" width="32" height="32" patternUnits="userSpaceOnUse">
+      <path d="M32 0H0V32" fill="none" stroke="#d7c07b" stroke-opacity=".08" stroke-width="1"/>
+    </pattern>
+    <filter id="soft" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="20" stdDeviation="16" flood-color="#000" flood-opacity=".34"/>
+    </filter>
+  </defs>
+  <rect width="1200" height="800" fill="#061817"/>
+  <rect width="1200" height="800" fill="url(#grid)"/>
+  <path d="M96 122h1008v456H862v110H96z" fill="#102f2d" stroke="#d7c07b" stroke-width="10" filter="url(#soft)"/>
+  <path d="M96 322h314V122M410 322v366M410 488h310M720 122v566M720 322h384M862 322v256M560 122v200" fill="none" stroke="#d7c07b" stroke-width="8"/>
+  <path d="M96 322h108M410 322h-78M410 488h132M720 322h128M862 322v86M720 488h102" stroke="#061817" stroke-width="20" stroke-linecap="round"/>
+  <rect x="132" y="154" width="236" height="122" rx="4" fill="#183f3d" stroke="#d7c07b" stroke-opacity=".45"/>
+  <rect x="450" y="154" width="228" height="122" rx="4" fill="#173d3b" stroke="#d7c07b" stroke-opacity=".45"/>
+  <rect x="760" y="154" width="300" height="122" rx="4" fill="#153735" stroke="#d7c07b" stroke-opacity=".45"/>
+  <rect x="760" y="368" width="78" height="164" rx="4" fill="#143635" stroke="#d7c07b" stroke-opacity=".45"/>
+  <rect x="902" y="368" width="160" height="164" rx="4" fill="#153735" stroke="#d7c07b" stroke-opacity=".45"/>
+  <rect x="450" y="534" width="228" height="108" rx="4" fill="#123230" stroke="#d7c07b" stroke-opacity=".45"/>
+  <rect x="132" y="372" width="236" height="270" rx="4" fill="#123230" stroke="#d7c07b" stroke-opacity=".45"/>
+  <path d="M94 690h770v54H94z" fill="#2a7b89" opacity=".72"/>
+  <path d="M92 684c250 58 520 58 774 0" fill="none" stroke="#8bd2dd" stroke-width="4" opacity=".7"/>
+  <path d="M1104 126h54v450h-54z" fill="#2a7b89" opacity=".75"/>
+  <path d="M1106 122c78 150 78 300 0 460" fill="none" stroke="#8bd2dd" stroke-width="4" opacity=".7"/>
+  <circle cx="982" cy="252" r="42" fill="none" stroke="#d7c07b" stroke-width="5" stroke-opacity=".55"/>
+  <path d="M192 520h122M500 214h128M822 214h164M956 452h76M502 592h126" stroke="#f5e7b5" stroke-width="5" stroke-linecap="round" opacity=".72"/>
+  <text x="1082" y="744" text-anchor="end" fill="#d7c07b" font-family="Arial, sans-serif" font-size="28">ILLUSTRATIVE PENTHOUSE</text>
+</svg>
