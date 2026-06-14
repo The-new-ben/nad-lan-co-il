@@ -141,3 +141,14 @@ For future projects, create the same asset folder and payload helper pattern:
 Do not wire a public page to a draft branch asset unless the owner explicitly approves a temporary
 QA pass. After merge, use `main` raw URLs, WordPress Media URLs or a CDN, then clear cache and
 verify healthcheck `project_3d.projects_with_glb >= 1`.
+
+Use the shared readiness checker for every future asset folder:
+
+```powershell
+python scripts\check-rainbow-showroom-readiness.py --project-slug <latin-slug> --skip-live
+```
+
+Despite the historical Rainbow filename, the checker validates any `assets/projects/<latin-slug>/`
+folder that follows the same contract. GitHub raw URLs from this repo must point to `main`; custom
+WordPress Media/CDN HTTPS URLs are acceptable and should be verified with `--check-remote-assets`
+before public CMS wiring.

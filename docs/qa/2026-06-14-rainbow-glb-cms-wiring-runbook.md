@@ -306,4 +306,16 @@ For each future project:
 6. If official inventory is missing, show inquiry-only pricing and label the model illustrative.
 7. Run the same 1440/390 browser QA before publishing.
 
+The readiness checker defaults to Rainbow. For the next project, keep the same asset contract and
+pass the project slug:
+
+```powershell
+python scripts\check-rainbow-showroom-readiness.py --project-slug <latin-slug> --skip-live
+```
+
+If the project uses WordPress Media or a CDN for plans/drawings instead of GitHub raw URLs, HTTPS
+URLs are valid. When `--check-remote-assets` is used, the checker fetches those hosted files and
+validates their signatures. GitHub raw URLs from this repository must still point to `main` before a
+public CMS write.
+
 This is the repeatable handoff from model asset to live CMS-driven showroom.

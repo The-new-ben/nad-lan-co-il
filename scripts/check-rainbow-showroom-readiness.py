@@ -19,6 +19,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 DEFAULT_HEALTHCHECK = "https://nad-lan.co.il/wp-json/nadlan/v1/healthcheck"
+DEFAULT_PROJECT_SLUG = "rainbow-tel-aviv"
 MAX_GLB_BYTES = 4 * 1024 * 1024
 MAX_POSTER_BYTES = 80 * 1024
 REMOTE_READ_BYTES = 4096
@@ -60,6 +61,16 @@ def local_path_for_raw_url(url: str, root: Path) -> Path | None:
     if len(parts) < 5 or parts[0] != "The-new-ben" or parts[1] != "nad-lan-co-il":
         return None
     return root.joinpath(*parts[3:])
+
+
+def repo_raw_ref(url: str) -> str | None:
+    parsed = urllib.parse.urlparse(url)
+    if parsed.netloc != "raw.githubusercontent.com":
+        return None
+    parts = [part for part in parsed.path.split("/") if part]
+    if len(parts) < 5 or parts[0] != "The-new-ben" or parts[1] != "nad-lan-co-il":
+        return None
+    return parts[2]
 
 
 def check_raw_url_local_file(url: str, root: Path, gate: Gate, label: str) -> None:
@@ -174,7 +185,8 @@ def check_meta(path: Path, root: Path, gate: Gate, *, check_remote_assets: bool 
             gate.fail(field, "missing from CMS payload")
     for field in ["project_model_glb", "project_model_poster"]:
         value = str(meta.get(field, ""))
-        if "raw.githubusercontent.com/The-new-ben/nad-lan-co-il/" in value and "/main/" not in value:
+        raw_ref = repo_raw_ref(value)
+        if raw_ref and raw_ref != "main":
             gate.fail(field, "raw GitHub asset URL must point at main after merge, not a draft branch")
         elif value:
             gate.pass_(f"{field} URL durability", "main raw URL or custom hosted URL")
@@ -220,7 +232,8 @@ def check_meta(path: Path, root: Path, gate: Gate, *, check_remote_assets: bool 
         if not isinstance(unit, dict):
             continue
         plan = str(unit.get("plan", ""))
-        if not plan.startswith("https://") or "raw.githubusercontent.com/The-new-ben/nad-lan-co-il/main/" not in plan:
+        raw_ref = repo_raw_ref(plan)
+        if not plan.startswith("https://") or (raw_ref and raw_ref != "main"):
             plan_bad.append(str(unit.get("id", "<missing id>")))
         else:
             check_raw_url_local_file(plan, root, gate, f"{unit.get('id', '<missing id>')}.plan")
@@ -344,6 +357,7 @@ def check_healthcheck(url: str, expect_live_glb: bool, require_plugin_stack: boo
 def main() -> int:
     parser = argparse.ArgumentParser()
     parser.add_argument("--root", default=str(ROOT), help="Repository root")
+    parser.add_argument("--project-slug", default=DEFAULT_PROJECT_SLUG, help="Asset folder under assets/projects/")
     parser.add_argument("--skip-live", action="store_true", help="Skip live healthcheck")
     parser.add_argument("--expect-live-glb", action="store_true", help="Require healthcheck projects_with_glb >= 1")
     parser.add_argument(
@@ -361,7 +375,7 @@ def main() -> int:
     args = parser.parse_args()
 
     root = Path(args.root)
-    asset_dir = root / "assets" / "projects" / "rainbow-tel-aviv"
+    asset_dir = root / "assets" / "projects" / args.project_slug
     gate = Gate()
     check_glb(asset_dir / "model.glb", gate)
     check_poster(asset_dir / "poster.png", gate)
