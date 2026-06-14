@@ -61,7 +61,9 @@ After the plugin update:
 On 2026-06-14, the live-readiness script ran against production and correctly reported:
 
 - live version: `1.64.6`
-- passed: 14
-- failed: 3
-- blockers: live plugin version below `1.65.2`, missing `showroom_payload_api_v1652`, and one-H1
-  public-page gate not yet green on production.
+- passed: 15
+- failed: 2
+- blockers: live plugin version below `1.65.2` and missing `showroom_payload_api_v1652`.
+
+The H1 check ignores `script`, `style`, `noscript` and `template` blocks before counting visible
+headings. This prevents CSS comments that mention `<h1>` from becoming false duplicate-H1 failures.

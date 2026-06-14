@@ -60,6 +60,14 @@ function stripTags(value) {
   return decodeEntities(String(value || '').replace(/<[^>]+>/g, ' ')).replace(/\s+/g, ' ').trim();
 }
 
+function htmlForVisibleChecks(html) {
+  return String(html || '')
+    .replace(/<script\b[\s\S]*?<\/script>/gi, ' ')
+    .replace(/<style\b[\s\S]*?<\/style>/gi, ' ')
+    .replace(/<noscript\b[\s\S]*?<\/noscript>/gi, ' ')
+    .replace(/<template\b[\s\S]*?<\/template>/gi, ' ');
+}
+
 async function fetchText(url, options = {}) {
   const res = await fetch(url, {
     ...options,
@@ -102,9 +110,10 @@ function metaDescriptionOf(html) {
 
 function h1sOf(html) {
   const found = [];
+  const visibleHtml = htmlForVisibleChecks(html);
   const re = /<h1\b[^>]*>([\s\S]*?)<\/h1>/gi;
   let m;
-  while ((m = re.exec(html))) found.push(stripTags(m[1]));
+  while ((m = re.exec(visibleHtml))) found.push(stripTags(m[1]));
   return found.filter(Boolean);
 }
 

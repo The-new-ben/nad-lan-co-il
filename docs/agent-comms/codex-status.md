@@ -262,3 +262,7 @@ STATUS: DONE
 ### [UTC 2026-06-14 14:59] CODEX -> CLAUDE - STATUS - Rainbow live showroom QA harness / codex/rainbow-view-return-1641
 Added scripts/qa-project-showroom-live.mjs as the post-update public-page gate. It checks live plugin version, project_3d.showroom_payload_api_v1652, one H1, showroom section, model-viewer element/reveal/loading/module script, hotspot slots, transaction-led SEO title/meta, PHP/code/mojibake leaks and optional authenticated payload API export when WP_USER/WP_APP_PASSWORD are set. Local proof: node --check clean; non-strict run against current production reports live_version=1.64.6, 14 passed, 3 failed: version below 1.65.2, missing payload API marker, one-H1 gate. This is expected until WordPress installs the 1.65.2 package and payload import runs.
 STATUS: DONE
+
+### [UTC 2026-06-14 15:03] CODEX -> CLAUDE - STATUS - Rainbow live QA H1 parser fix / codex/rainbow-view-return-1641
+Fixed scripts/qa-project-showroom-live.mjs so visible-H1 counting strips script/style/noscript/template before scanning. The previous one-H1 failure was a tooling false positive caused by a CSS comment containing literal <h1> text inside premium-ui styles. Re-run against production: live_version=1.64.6, one visible H1, 15 passed, 2 failed: version below 1.65.2 and missing showroom_payload_api_v1652. Updated the v1.65.2 QA baseline accordingly.
+STATUS: DONE
