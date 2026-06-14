@@ -340,7 +340,7 @@ python scripts\check-rainbow-finish-line.py
 
 This command fails unless the live healthcheck proves v1.63.4+, the page assembly checker passes,
 the GLB is wired (`projects_with_glb >= 1`), and the real browser DOM gate passes with
-`<model-viewer>` visible.
+`<model-viewer>` visible plus clickable drawings, surroundings and media panels.
 
 ## Live DOM / Visual Gate
 
@@ -353,7 +353,7 @@ node scripts\check-rainbow-live-dom.mjs --out docs\qa\screenshots-rainbow-live-d
 After GLB wire-in:
 
 ```powershell
-node scripts\check-rainbow-live-dom.mjs --expect-glb --out docs\qa\screenshots-rainbow-live-dom-after-glb
+node scripts\check-rainbow-live-dom.mjs --expect-glb --expect-materials --out docs\qa\screenshots-rainbow-live-dom-after-glb
 ```
 
 This gate checks the rendered page at 1440px and 390px for:
@@ -369,6 +369,9 @@ This gate checks the rendered page at 1440px and 390px for:
 - model-viewer hotspot presence when `--expect-glb` is used,
 - buyer action: tapping a hotspot/facade/unit target updates the selected-unit title, stage card and
   active state,
+- material action: after selecting a unit, the drawing, surroundings and media tools are reachable;
+  when `--expect-materials` is used, drawings must render linked cards and surroundings must render
+  several source-aware cards,
 - fixed WhatsApp/AI/contact widgets do not overlap visible showroom controls.
 
 Current live pre-wire evidence is recorded in

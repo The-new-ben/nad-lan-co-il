@@ -151,6 +151,7 @@ def main() -> int:
                 "--out",
                 args.out,
                 "--expect-glb",
+                "--expect-materials",
             ],
         ) and all_passed
     else:

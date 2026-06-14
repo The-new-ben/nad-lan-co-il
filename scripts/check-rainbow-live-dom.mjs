@@ -20,6 +20,7 @@ function parseArgs(argv) {
     url: `${DEFAULT_URL}?cb=${Date.now()}`,
     out: DEFAULT_OUT,
     expectGlb: false,
+    expectMaterials: false,
     keepBrowser: false,
     fullPage: false,
   };
@@ -28,10 +29,11 @@ function parseArgs(argv) {
     if (arg === '--url') args.url = argv[++i];
     else if (arg === '--out') args.out = argv[++i];
     else if (arg === '--expect-glb') args.expectGlb = true;
+    else if (arg === '--expect-materials') args.expectMaterials = true;
     else if (arg === '--keep-browser') args.keepBrowser = true;
     else if (arg === '--full-page') args.fullPage = true;
     else if (arg === '--help') {
-      console.log(`Usage: node scripts/check-rainbow-live-dom.mjs [--url URL] [--out DIR] [--expect-glb] [--full-page]`);
+      console.log(`Usage: node scripts/check-rainbow-live-dom.mjs [--url URL] [--out DIR] [--expect-glb] [--expect-materials] [--full-page]`);
       process.exit(0);
     }
   }
@@ -268,6 +270,33 @@ const INTERACTION_EXPRESSION = `(async () => {
   const targetUnit = target ? (target.getAttribute('data-unit') || '') : '';
   const clickedIsActive = Boolean(targetUnit && document.querySelector('.nlp3d-mv-hotspot.is-active[data-unit="'+CSS.escape(targetUnit)+'"], .nlp3d-hotspot.is-active[data-unit="'+CSS.escape(targetUnit)+'"], .nlp3d-hotspot-hit.is-active[data-unit="'+CSS.escape(targetUnit)+'"], .nlp3d-unit-card.is-active[data-unit="'+CSS.escape(targetUnit)+'"]'));
   const targetClass = target ? (typeof target.className === 'string' ? target.className : (target.getAttribute('class') || target.tagName.toLowerCase())) : '';
+  const clickTool = async (action) => {
+    const button = q('[data-action="'+action+'"]');
+    if (!button || !visible(button)) {
+      return {
+        action,
+        clicked: false,
+        headline: '',
+        cardCount: 0,
+        cardTexts: [],
+      };
+    }
+    button.dispatchEvent(new MouseEvent('click', { bubbles: true, cancelable: true, view: window }));
+    await new Promise((resolve) => setTimeout(resolve, 350));
+    const cards = Array.from(document.querySelectorAll('.nlp3d-tool-panel .nlp3d-material-card')).filter(visible);
+    return {
+      action,
+      clicked: true,
+      headline: (q('.nlp3d-tool-panel strong')?.innerText || '').trim(),
+      cardCount: cards.length,
+      cardTexts: cards.slice(0, 6).map((card) => (card.innerText || '').trim().replace(/\\s+/g, ' ').slice(0, 90)),
+    };
+  };
+  const toolChecks = {
+    drawing: await clickTool('unit-drawing'),
+    surroundings: await clickTool('unit-surroundings'),
+    media: await clickTool('unit-media'),
+  };
   return {
     attempted: Boolean(target),
     targetSelector: targetClass.trim().slice(0, 80),
@@ -278,11 +307,12 @@ const INTERACTION_EXPRESSION = `(async () => {
     stageCardVisible: Boolean(stageCard && visible(stageCard) && !stageCard.hidden),
     activeCount: active,
     clickedIsActive,
+    toolChecks,
     changed: Boolean(target && after && !/^בחרו דירה/.test(after) && (after !== before || clickedIsActive)),
   };
 })()`;
 
-function evaluateChecks(metrics, expectGlb, interaction) {
+function evaluateChecks(metrics, expectGlb, expectMaterials, interaction) {
   const checks = [];
   const add = (status, name, detail) => checks.push({ status, name, detail });
   add(metrics.h1.length === 1 ? 'PASS' : 'FAIL', 'single H1', `${metrics.h1.length}`);
@@ -303,11 +333,20 @@ function evaluateChecks(metrics, expectGlb, interaction) {
   add(metrics.smallTapTargets.length === 0 ? 'PASS' : 'WARN', '44px tap targets in showroom', metrics.smallTapTargets.length ? JSON.stringify(metrics.smallTapTargets.slice(0, 5)) : 'all visible targets >=44px');
   const interactionStatus = interaction && interaction.changed && interaction.stageCardVisible && interaction.activeCount > 0;
   add(interactionStatus ? 'PASS' : (expectGlb ? 'FAIL' : 'WARN'), 'unit selection updates UI', interaction ? JSON.stringify(interaction) : 'interaction not run');
+  if (expectMaterials) {
+    const tools = interaction && interaction.toolChecks ? interaction.toolChecks : {};
+    const drawing = tools.drawing || {};
+    const surroundings = tools.surroundings || {};
+    const media = tools.media || {};
+    add(drawing.clicked && drawing.cardCount >= 2 ? 'PASS' : 'FAIL', 'drawing materials render after click', JSON.stringify(drawing));
+    add(surroundings.clicked && surroundings.cardCount >= 4 ? 'PASS' : 'FAIL', 'surroundings materials render after click', JSON.stringify(surroundings));
+    add(media.clicked ? 'PASS' : 'FAIL', 'media panel is reachable', JSON.stringify(media));
+  }
   add(metrics.fixedOverlapsStageControls.length === 0 ? 'PASS' : (expectGlb ? 'FAIL' : 'WARN'), 'fixed contact widgets clear showroom controls', metrics.fixedOverlapsStageControls.length ? JSON.stringify(metrics.fixedOverlapsStageControls.slice(0, 5)) : 'no overlap with visible controls');
   return checks;
 }
 
-async function runViewport(browserPort, url, outDir, viewport, expectGlb, fullPage) {
+async function runViewport(browserPort, url, outDir, viewport, expectGlb, expectMaterials, fullPage) {
   const target = await createTarget(browserPort, 'about:blank');
   const cdp = new CdpTarget(target.webSocketDebuggerUrl);
   await cdp.open();
@@ -346,7 +385,7 @@ async function runViewport(browserPort, url, outDir, viewport, expectGlb, fullPa
     screenshot: screenshotPath.replaceAll('\\\\', '/'),
     metrics,
     interaction,
-    checks: evaluateChecks(metrics, expectGlb, interaction),
+    checks: evaluateChecks(metrics, expectGlb, expectMaterials, interaction),
   };
 }
 
@@ -382,10 +421,10 @@ async function main() {
     ];
     const results = [];
     for (const viewport of viewports) {
-      results.push(await runViewport(port, args.url, args.out, viewport, args.expectGlb, args.fullPage));
+      results.push(await runViewport(port, args.url, args.out, viewport, args.expectGlb, args.expectMaterials, args.fullPage));
     }
     const reportPath = path.join(args.out, 'rainbow-live-dom-report.json');
-    await writeFile(reportPath, `${JSON.stringify({ url: args.url, expectGlb: args.expectGlb, results }, null, 2)}\n`, 'utf8');
+    await writeFile(reportPath, `${JSON.stringify({ url: args.url, expectGlb: args.expectGlb, expectMaterials: args.expectMaterials, results }, null, 2)}\n`, 'utf8');
     let failed = false;
     for (const result of results) {
       console.log(`\n# ${result.viewport}`);

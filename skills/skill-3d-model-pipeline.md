@@ -200,7 +200,9 @@ Before shipping a project:
   code leak. A model is not enough if the page shell still reads unfinished.
 - For Rainbow-style projects, the final proof should be one combined command such as
   `python scripts/check-rainbow-finish-line.py`: healthcheck prerequisites, page assembly,
-  GLB readiness and real-browser DOM must pass together.
+  GLB readiness and real-browser DOM must pass together. The live DOM gate must include the
+  material layer (`--expect-materials` or the project-specific equivalent): selecting a unit and
+  opening drawings, surroundings and media must render CMS-backed cards, not only a spinning shell.
 
 ## Countrywide Replication
 
