@@ -43,10 +43,34 @@ GITHUB_RAW_OWNER = "The-new-ben"
 GITHUB_RAW_REPO = "nad-lan-co-il"
 REQUIRED_PLUGIN_STACK_VERSION = (1, 63, 4)
 REQUIRED_PLUGIN_STACK_LABEL = "1.63.4"
+MIN_PUBLIC_PAYLOAD_HEBREW_CHARS = 1000
 
 
 def meta_path(project_slug: str) -> Path:
     return ROOT / "assets" / "projects" / project_slug / "project-meta-example.json"
+
+
+def hebrew_char_count(value: str) -> int:
+    return sum(0x0590 <= ord(char) <= 0x05FF for char in value)
+
+
+def mojibake_control_count(value: str) -> int:
+    return sum(0x0080 <= ord(char) <= 0x009F for char in value)
+
+
+def payload_text_sanity_errors(value: Any) -> list[str]:
+    text = json.dumps(value, ensure_ascii=False)
+    replacement = text.count("\ufffd")
+    controls = mojibake_control_count(text)
+    hebrew = hebrew_char_count(text)
+    errors: list[str] = []
+    if replacement or controls:
+        errors.append(f"possible encoding corruption: replacement={replacement}, c1_controls={controls}")
+    if hebrew < MIN_PUBLIC_PAYLOAD_HEBREW_CHARS:
+        errors.append(
+            f"public payload has only {hebrew} Hebrew chars; expected at least {MIN_PUBLIC_PAYLOAD_HEBREW_CHARS}"
+        )
+    return errors
 
 
 def load_source_meta(branch: str, project_slug: str) -> dict[str, Any]:
@@ -406,6 +430,13 @@ def main() -> int:
     args = parser.parse_args()
 
     source = load_source_meta(args.branch, args.project_slug)
+    text_errors = payload_text_sanity_errors(source)
+    if text_errors:
+        print("ERROR: refusing to use a public payload that failed text sanity:", file=sys.stderr)
+        for error in text_errors:
+            print(f"- {error}", file=sys.stderr)
+        return 6
+
     rest_meta = build_rest_meta(source, include_units=False)
     unsafe_urls = unsafe_branch_raw_urls(source)
 

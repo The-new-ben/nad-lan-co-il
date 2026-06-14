@@ -25,6 +25,13 @@ MAX_POSTER_BYTES = 80 * 1024
 REMOTE_READ_BYTES = 4096
 REQUIRED_PLUGIN_STACK_VERSION = (1, 63, 4)
 REQUIRED_PLUGIN_STACK_LABEL = "1.63.4"
+PUBLIC_TEXT_MIN_HEBREW = {
+    "project-meta-example.json": 1000,
+    "unit-map.json": 500,
+    "drawings.json": 100,
+    "environment.json": 100,
+    "view-layer-config.json": 10,
+}
 
 
 class Gate:
@@ -51,6 +58,39 @@ class Gate:
 
 def read_json(path: Path) -> object:
     return json.loads(path.read_text(encoding="utf-8"))
+
+
+def hebrew_char_count(value: str) -> int:
+    return sum(0x0590 <= ord(char) <= 0x05FF for char in value)
+
+
+def mojibake_control_count(value: str) -> int:
+    return sum(0x0080 <= ord(char) <= 0x009F for char in value)
+
+
+def check_text_sanity(path: Path, gate: Gate, min_hebrew: int) -> None:
+    if not path.exists():
+        gate.fail(f"{path.name} text sanity", "missing")
+        return
+    try:
+        text = path.read_text(encoding="utf-8")
+    except UnicodeDecodeError as exc:
+        gate.fail(f"{path.name} text sanity", f"not valid UTF-8: {exc}")
+        return
+
+    replacement = text.count("\ufffd")
+    controls = mojibake_control_count(text)
+    hebrew = hebrew_char_count(text)
+    if replacement or controls:
+        gate.fail(
+            f"{path.name} text sanity",
+            f"replacement={replacement}, c1_controls={controls}; possible encoding corruption",
+        )
+        return
+    if hebrew < min_hebrew:
+        gate.fail(f"{path.name} text sanity", f"only {hebrew} Hebrew chars; expected at least {min_hebrew}")
+        return
+    gate.pass_(f"{path.name} text sanity", f"UTF-8 clean, Hebrew chars={hebrew}")
 
 
 def local_path_for_raw_url(url: str, root: Path) -> Path | None:
@@ -598,6 +638,8 @@ def main() -> int:
     root = Path(args.root)
     asset_dir = root / "assets" / "projects" / args.project_slug
     gate = Gate()
+    for filename, min_hebrew in PUBLIC_TEXT_MIN_HEBREW.items():
+        check_text_sanity(asset_dir / filename, gate, min_hebrew)
     check_glb(asset_dir / "model.glb", gate)
     check_poster(asset_dir / "poster.png", gate)
     unit_count = check_meta(

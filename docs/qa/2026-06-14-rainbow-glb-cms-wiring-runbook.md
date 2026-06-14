@@ -196,6 +196,11 @@ The helper writes:
 It does not print credentials. On older plugin versions it refuses `--apply` before writing; use
 dry-run output only for review until the plugin stack is actually deployed.
 
+The helper also refuses any payload that looks text-corrupted before credentials or writes are used.
+It checks for replacement characters, C1 mojibake controls and an unexpectedly low Hebrew-character
+count in the public showroom payload. If this fails, regenerate the JSON from source instead of
+copying terminal output that may have been damaged by a Windows code-page view.
+
 ## Readiness Check
 
 Before merge or before CMS wire-in, run:
@@ -207,8 +212,8 @@ python scripts\check-rainbow-showroom-readiness.py
 Expected now: local assets pass, asset URLs are durable (`main` or custom hosted), demo units carry
 non-binding price/source language, every unit has a plan URL plus empty `interior_url` and
 `tour_url` slots, drawing material has linked URLs, project-level video/tour/Cesium fields are
-present, live `model_viewer_ready` passes, and `projects_with_glb` is a warning because the live
-Rainbow post is not wired yet.
+present, public JSON files pass the UTF-8/Hebrew text-sanity check, live `model_viewer_ready`
+passes, and `projects_with_glb` is a warning because the live Rainbow post is not wired yet.
 Any `main` raw URL in the payload must also resolve to a local committed file.
 
 Empty media/tour/Cesium slots are intentional. Fill them only with approved `https://` URLs:
