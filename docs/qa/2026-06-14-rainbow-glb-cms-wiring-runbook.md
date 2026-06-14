@@ -226,6 +226,16 @@ python scripts\check-rainbow-showroom-readiness.py --require-plugin-stack --chec
 
 Expected after wire-in: every check passes, including `projects_with_glb >= 1`.
 
+For the final combined gate, run:
+
+```powershell
+python scripts\check-rainbow-finish-line.py
+```
+
+This command fails unless the live healthcheck proves v1.63.4+, the page assembly checker passes,
+the GLB is wired (`projects_with_glb >= 1`), and the real browser DOM gate passes with
+`<model-viewer>` visible.
+
 ## Live DOM / Visual Gate
 
 Before and after CMS wire-in, run:

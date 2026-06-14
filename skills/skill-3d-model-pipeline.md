@@ -148,6 +148,9 @@ Before shipping a project:
 - Confirm the page assembly/SEO gate passes before wiring the public GLB: transaction-led title,
   price-aware non-binding meta description, visible buyer phrasing, FAQ/schema meta and no raw
   code leak. A model is not enough if the page shell still reads unfinished.
+- For Rainbow-style projects, the final proof should be one combined command such as
+  `python scripts/check-rainbow-finish-line.py`: healthcheck prerequisites, page assembly,
+  GLB readiness and real-browser DOM must pass together.
 
 ## Countrywide Replication
 
