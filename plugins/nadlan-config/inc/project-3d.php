@@ -727,13 +727,13 @@ if ( ! function_exists( 'nadlan_p3d_render' ) ) {
 	<div class="nlp3d-shell">
 		<div class="nlp3d-copy">
 			<p class="nlp3d-kicker">Rainbow תל אביב · שדה דב</p>
-			<h2 id="<?php echo esc_attr( $uid ); ?>-title">דירות למכירה ב-<?php echo esc_html( $meta['title'] ); ?>: בחירת דירה בתלת ממד</h2>
+			<h2 id="<?php echo esc_attr( $uid ); ?>-title">דירות למכירה ב-<?php echo esc_html( $meta['title'] ); ?>: בחירת דירה על חזית הפרויקט</h2>
 			<p class="nlp3d-lead-text">דירות למכירה ב-Rainbow Tel Aviv בשדה דב מוצגות כאן לפי קומה, חדרים, שטח, כיוון ונוף. זהו פרויקט של ישראל קנדה, עם אומדן מחיר וזמינות לא מחייבים עד אימות מול היזם.</p>
 			<div class="nlp3d-shop-path" aria-label="תהליך בחירה">
-				<span>1. מסובבים</span>
-				<span>2. בוחרים דירה</span>
-				<span>3. בודקים ליווי</span>
-				<span>4. מבקשים התקדמות</span>
+				<span>1. בוחרים על החזית</span>
+				<span>2. רואים דירה</span>
+				<span>3. בודקים מבט</span>
+				<span>4. פונים ליזם</span>
 			</div>
 			<div class="nlp3d-metrics" aria-label="פרטי פרויקט">
 				<span><?php echo $meta['developer'] ? esc_html( $meta['developer'] ) : 'יזם יימסר בפנייה'; ?></span>
@@ -746,16 +746,16 @@ if ( ! function_exists( 'nadlan_p3d_render' ) ) {
 		</div>
 
 		<div class="nlp3d-stage-wrap" id="nlp3d-stage">
-			<div class="nlp3d-toolbar" aria-label="שליטה במודל">
+			<div class="nlp3d-toolbar" aria-label="שליטה בתצוגת הפרויקט">
 				<button type="button" class="nlp3d-angle is-active" data-angle="-32" data-action="angle-facade">איפוס מבט</button>
 				<button type="button" class="nlp3d-angle" data-angle="0" data-action="angle-sea">ים</button>
 				<button type="button" class="nlp3d-angle" data-angle="32" data-action="angle-city">עיר</button>
-				<button type="button" class="nlp3d-orbit" data-orbit="1" data-action="orbit-building">סובב מודל</button>
+				<button type="button" class="nlp3d-orbit" data-orbit="1" data-action="orbit-building">תצוגת 360</button>
 				<button type="button" class="nlp3d-zoom" data-zoom="in" data-action="zoom-in">קרב</button>
 				<button type="button" class="nlp3d-zoom" data-zoom="out" data-action="zoom-out">הרחק</button>
-				<span class="nlp3d-drag-note">בחרו דירה על המגדל</span>
+				<span class="nlp3d-drag-note">לחצו על תא דירה בחזית</span>
 			</div>
-			<div class="nlp3d-scene<?php echo $has_model_viewer ? ' has-model-viewer' : ''; ?>" style="--angle:-32deg" role="group" aria-label="מודל תלת ממדי סכמטי של מגדל מגורים">
+			<div class="nlp3d-scene<?php echo $has_model_viewer ? ' has-model-viewer' : ''; ?>" style="--angle:-32deg" role="group" aria-label="תצוגת פרויקט אינטראקטיבית לבחירת דירה">
 				<?php if ( $has_model_viewer ) : ?>
 					<model-viewer
 						class="nlp3d-model-viewer"
@@ -842,7 +842,7 @@ if ( ! function_exists( 'nadlan_p3d_render' ) ) {
 				<button type="button" class="nlp3d-stage-card-handle" aria-expanded="false" data-action="stage-card-expand"><span>פתחו את פרטי הדירה</span></button>
 				<span class="nlp3d-stage-kicker">הדירה שנבחרה</span>
 				<strong class="nlp3d-stage-card-title">בחרו דירה על הבניין</strong>
-				<small class="nlp3d-stage-card-meta">גררו לסיבוב, בחרו קומה והתקדמו רק כאשר הפרטים מתאימים.</small>
+				<small class="nlp3d-stage-card-meta">בחרו תא דירה על החזית, בדקו קומה, שטח, כיוון ונוף, והתקדמו רק כאשר הפרטים מתאימים.</small>
 				<div class="nlp3d-stage-card-tags" aria-label="סימוני דירה"></div>
 				<div class="nlp3d-stage-card-stats" aria-label="פרטי דירה נבחרת">
 					<span class="nlp3d-stage-price">לפי פנייה</span>
@@ -870,13 +870,13 @@ if ( ! function_exists( 'nadlan_p3d_render' ) ) {
 				<strong class="nlp3d-dock-title">בחרו דירה</strong>
 				<small class="nlp3d-dock-meta"></small>
 				<div class="nlp3d-dock-actions">
-					<button type="button" class="nlp3d-dock-spin" data-action="dock-360">סיבוב 360</button>
+					<button type="button" class="nlp3d-dock-spin" data-action="dock-360">תצוגת 360</button>
 					<button type="button" class="nlp3d-dock-action" data-action="dock-inquiry">התקדמות</button>
 				</div>
 			</div>
 			<div class="nlp3d-console-head">
 				<p>בחרו קומה ודירה</p>
-				<span class="nlp3d-status-chip">מודל פעיל</span>
+				<span class="nlp3d-status-chip">בחירה פעילה</span>
 			</div>
 			<div class="nlp3d-floor-strip" aria-label="קומות זמינות"></div>
 			<div class="nlp3d-units" aria-label="דירות בקומה"></div>

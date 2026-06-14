@@ -41,6 +41,8 @@ and six boutique buildings:
   with stronger availability colour, selected-state glow and label contrast.
 - Added buyer-readable labels to the embedded facade cells, generated from the same CMS unit data
   (`floor` + `rooms`) and synced with the selected apartment state.
+- Corrected the public mental model: the first visible path now says the buyer chooses an apartment
+  on the facade. The 360 view remains secondary until a real apartment-level BIM/GLB exists.
 - Added an admin facade-point helper in the project metabox. The operator can click four corners on
   the configured facade image and copy the generated polygon into the existing `points` field.
 - When facade polygons exist and a placeholder GLB also loads, the facade selector stays primary
@@ -84,19 +86,21 @@ Run on the live Rainbow page after deploy:
    The visual cell must not collapse into a decorative line, and the transparent hit target must
    remain at least 44px by 44px.
 3. Click/tap a cell once: the selected-apartment card updates with the correct unit.
-4. Drag empty model surface: the building rotates.
-5. Drag/click on a cell: it does not feel jammed; selection wins predictably.
-6. Recommended unit pulses subtly, but no fake urgency copy appears.
-7. Console has no page errors.
-8. Healthcheck reports version `1.65.7`, `project_3d.stage_cell_geometry_v1657 = true` and
+4. Public copy leads with facade apartment selection. It must not start with "spin the model" or
+   promise true 3D apartment picking before a per-apartment BIM/GLB exists.
+5. Drag empty model surface: the building rotates.
+6. Drag/click on a cell: it does not feel jammed; selection wins predictably.
+7. Recommended unit pulses subtly, but no fake urgency copy appears.
+8. Console has no page errors.
+9. Healthcheck reports version `1.65.7`, `project_3d.stage_cell_geometry_v1657 = true` and
    `project_3d.facade_polygon_primary_v1657 = true`.
-9. Healthcheck also reports `project_3d.facade_points_builder_v1657 = true` and
+10. Healthcheck also reports `project_3d.facade_points_builder_v1657 = true` and
    `project_3d.facade_hides_placeholder_glb_v1657 = true`.
-10. Healthcheck reports `project_3d.facade_cell_labels_v1657 = true`.
-11. Healthcheck reports `project_3d.facade_point_helper_v1657 = true`.
-12. Healthcheck reports `project_page_assembly.rainbow_showroom_v1657 = true` and
+11. Healthcheck reports `project_3d.facade_cell_labels_v1657 = true`.
+12. Healthcheck reports `project_3d.facade_point_helper_v1657 = true`.
+13. Healthcheck reports `project_page_assembly.rainbow_showroom_v1657 = true` and
     `project_page_assembly.rainbow_units_have_facade_points = true`.
-13. `node scripts/validate-project-showroom-payload.mjs --payload assets/projects/rainbow-tel-aviv/showroom-payload.json`
+14. `node scripts/validate-project-showroom-payload.mjs --payload assets/projects/rainbow-tel-aviv/showroom-payload.json`
     reports `units_with_points = 6`.
 
 ## Factory Payload Gate
@@ -113,8 +117,9 @@ node scripts/validate-project-showroom-payload.mjs --payload plugin-dist/_showro
 node scripts/validate-project-showroom-payload.mjs --payload assets/projects/rainbow-tel-aviv/showroom-payload.json
 ```
 
-The visual QA script now fails a deployed project if facade cells are only thin decorative lines or
-if their transparent hit boxes fall below the 44px tap-target gate.
+The visual QA script now fails a deployed project if facade cells are only thin decorative lines,
+if their transparent hit boxes fall below the 44px tap-target gate, or if public copy still leads
+with spinning/3D wording before apartment-level BIM exists.
 
 Both generated and committed payloads passed with `units = 6`, `units_with_points = 6`,
 `drawings = 6` and no validation errors.

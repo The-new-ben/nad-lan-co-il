@@ -160,6 +160,10 @@ model annotation script. Store only coordinates, not private source files.
 - If a project has facade `points` and only a placeholder/massing GLB, keep the facade selector
   primary and hide the GLB behind it. Do not visually stack two towers. A 360 GLB selector becomes
   primary only after the model contains real apartment-level meshes or verified unit hotspots.
+- Public copy must match that truth. If the current selector is facade/elevation based, do not lead
+  with "spin the model" or "choose in 3D". Lead with "choose on the facade" and keep 360/drag as a
+  secondary view. Overpromising true 360 apartment picking without apartment-level BIM causes the
+  buyer confusion that the owner explicitly rejected.
 - The primary action of an apartment cell is selection. A tap/click on a cell must select that
   apartment and open the selected-unit card. Dragging on empty building surface rotates the model.
   Do not make apartment cells feel like dead drag handles unless a tested drag-vs-tap
@@ -209,6 +213,9 @@ Before shipping a project:
 - Confirm mobile has no horizontal overflow and no nested gray scrollbars.
 - Confirm source notes/disclaimers distinguish official data from illustrative/demo data.
 - Confirm the page still has one H1 and the article body remains readable below the showroom.
+- Confirm public showroom copy leads with facade apartment selection when facade polygons are the
+  real selector. The QA must fail if the first path says "spin" or if the title promises true 3D
+  apartment selection before a per-apartment BIM/GLB exists.
 
 ## Apartment Cell Selector Standard
 

@@ -282,6 +282,8 @@ function metricsExpression() {
         hasBuyerCta: text.includes('דברו איתי על הדירה'),
         hasNonBindingPurchase: text.includes('לא מחייב'),
         hasOwnerCta: text.includes('מציגים פרויקט חדש'),
+        hasFacadePrimaryCopy: text.includes('בוחרים על החזית') || text.includes('לחצו על תא דירה בחזית'),
+        overpromisesSpinFirst: text.includes('1. מסובבים') || text.includes('בחירת דירה בתלת ממד'),
         hasInternalWords: /לידים|פאנל|CRM|monetization|paid placement/.test(text)
       },
       errors
@@ -357,6 +359,8 @@ async function runViewport(client, args, viewport, outDir, pageErrors) {
   if (after.firstPickCenter && after.cardHidden) failures.push('clicking apartment did not reveal selected card');
   if (after.tapTargets.count && after.tapTargets.min < 44) failures.push(`tap target below 44px (${after.tapTargets.min}px)`);
   if (after.rootRect && viewport.width <= 768 && (after.rootRect.x < -2 || after.rootRect.right > viewport.width + 2)) failures.push(`showroom cropped on mobile/tablet: ${JSON.stringify(after.rootRect)}`);
+  if (!after.textSignals.hasFacadePrimaryCopy) failures.push('showroom copy does not lead with facade apartment selection');
+  if (after.textSignals.overpromisesSpinFirst) failures.push('showroom copy still leads with spin/3D wording before true per-apartment BIM exists');
   if (after.textSignals.hasInternalWords) failures.push('public text contains internal wording');
   if (after.errors.length) failures.push(`HTML leak markers: ${after.errors.join(', ')}`);
   const viewportErrors = pageErrors.splice(0, pageErrors.length);

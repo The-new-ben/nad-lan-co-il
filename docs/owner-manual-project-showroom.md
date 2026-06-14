@@ -120,6 +120,11 @@ polygon per apartment.
 If the cells look approximate, that means the project still needs official BIM/elevation data. Do
 not call approximate cells official apartment plans.
 
+Public wording must match the configured asset. If the project uses facade/elevation `points`,
+describe the experience as choosing an apartment on the facade. Do not make the first public step
+"spin the model" and do not call it exact 3D apartment selection until the project has a real
+apartment-level BIM/GLB model.
+
 The quality ladder is:
 
 1. `points` on a facade/elevation image: best current path for a real sales-center style selector.
