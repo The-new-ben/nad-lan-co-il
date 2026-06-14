@@ -237,6 +237,32 @@ run:
 python scripts\check-rainbow-showroom-readiness.py --skip-live --check-remote-assets --remote-ref codex/rainbow-prototype-model-1631
 ```
 
+## Local Prototype Browser Gate
+
+Before the GLB is wired into the live CMS, prove the committed model package in a real browser:
+
+```powershell
+node scripts\check-rainbow-prototype-preview.mjs
+```
+
+The command serves the repo locally, opens `docs/previews/rainbow-model-viewer-prototype.html` in
+headless Chrome or Edge, and checks desktop 1440px plus mobile 390px:
+
+- one H1 and RTL document,
+- no horizontal overflow,
+- `<model-viewer>` custom element defined,
+- GLB loaded/revealed,
+- six hotspots present,
+- visible hotspot targets at least 44px,
+- hotspot click updates the readout,
+- no browser errors or visible fatal text.
+
+Current evidence:
+
+- `docs/qa/screenshots-rainbow-prototype-preview/prototype-desktop-1440.png`
+- `docs/qa/screenshots-rainbow-prototype-preview/prototype-mobile-390.png`
+- `docs/qa/screenshots-rainbow-prototype-preview/rainbow-prototype-preview-report.json`
+
 `--remote-ref` changes only what the checker fetches for QA. It does not change the payload file and
 must not be used as a live CMS URL strategy.
 

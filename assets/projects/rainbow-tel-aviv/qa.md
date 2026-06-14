@@ -22,6 +22,7 @@ Run:
 ```powershell
 python scripts/generate-rainbow-prototype-model.py
 node -e "const fs=require('fs'); const b=fs.readFileSync('assets/projects/rainbow-tel-aviv/model.glb'); console.log(b.subarray(0,4).toString(), b.readUInt32LE(4), b.readUInt32LE(8), b.length)"
+node scripts/check-rainbow-prototype-preview.mjs
 ```
 
 Expected:
@@ -35,6 +36,8 @@ Expected:
   for approved unit media without changing the data shape later.
 - `material-intake-template.json` lists at least eight handoff slots and keeps prototype material
   separate from official/developer-approved material.
+- Browser preview gate passes at desktop 1440px and mobile 390px with GLB loaded, six hotspots,
+  44px tap targets, readout update on click and screenshots captured.
 
 ## Browser Gate After v1.63.0 Is Installed
 
