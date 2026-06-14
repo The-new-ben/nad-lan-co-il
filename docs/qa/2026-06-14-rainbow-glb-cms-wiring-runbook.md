@@ -201,6 +201,36 @@ It checks for replacement characters, C1 mojibake controls and an unexpectedly l
 count in the public showroom payload. If this fails, regenerate the JSON from source instead of
 copying terminal output that may have been damaged by a Windows code-page view.
 
+## One-Command Operator Sequence
+
+After PR #163 and the required plugin stack are merged, use the orchestrator to avoid applying the
+CMS payload out of order:
+
+```powershell
+python scripts\project-showroom-go-live.py --project-slug rainbow-tel-aviv --post-id 4464
+```
+
+This is read-only by default. It runs the deploy-sequence preflight, remote asset/signature checks
+and CMS payload dry run, then stops before any WordPress write.
+
+To apply and immediately run the finish-line gate:
+
+```powershell
+$env:WP_BASE_URL='https://nad-lan.co.il'
+$env:WP_USER='<wordpress-user>'
+$env:WP_APP_PASSWORD='<application-password>'
+python scripts\project-showroom-go-live.py --project-slug rainbow-tel-aviv --post-id 4464 --apply --wait-ready
+```
+
+For the current incomplete live state, the negative-control proof is:
+
+```powershell
+python scripts\project-showroom-go-live.py --expect-incomplete
+```
+
+That command should pass only while the live stack is incomplete. Once the stack is merged and
+deployed, it should stop passing, and the normal preflight/apply path above becomes the correct gate.
+
 ## Readiness Check
 
 Before merge or before CMS wire-in, run:

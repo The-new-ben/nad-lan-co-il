@@ -188,6 +188,18 @@ After writing, the helper must verify the REST response, not only trust that the
 exact GLB/poster/model values, drawing/environment counts, and, when unit REST support is live, unit
 count plus unit ids. A mismatch means the project is not CMS-wired yet.
 
+For final operator handoff, prefer the orchestrated wrapper so the stack, assets, REST write and
+finish-line gate run in the correct order:
+
+```powershell
+python scripts\project-showroom-go-live.py --project-slug <latin-slug> --post-id <project-id>
+python scripts\project-showroom-go-live.py --project-slug <latin-slug> --post-id <project-id> --apply --wait-ready
+```
+
+The first command is read-only and must pass before the second is allowed. The second command still
+does not merge, deploy, clear cache or invent credentials; it only writes CMS meta after the live
+plugin stack and remote assets are proven, then runs the finish-line browser gate.
+
 ## Page Assembly And SEO Gate
 
 A project showroom is not finished when the 3D model works. The page also needs a premium indexed
