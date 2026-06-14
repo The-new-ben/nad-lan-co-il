@@ -73,7 +73,11 @@ plain WordPress article.
 10. If a real GLB is loaded, the fallback procedural tower must disappear. Seeing both the old tower
     and the GLB together is a hard visual failure. Keep the fallback only for `no model` or `model
     error`.
-11. The model should open close enough for unit selection and rotate slowly. Fast spin, wide camera
+11. If the GLB is not apartment-level BIM, keep it as the rotating product object and add a static
+    facade/elevation selector beside it for apartment picking. This is not a downgrade: it is the
+    honest product architecture until every apartment exists as its own GLB mesh. The buyer clicks
+    cells embedded in the facade, not dots floating around the 3D object.
+12. The model should open close enough for unit selection and rotate slowly. Fast spin, wide camera
     and tiny markers make the experience feel like a technical demo instead of a buyer showroom.
 
 ## C2. Product Showroom Fields

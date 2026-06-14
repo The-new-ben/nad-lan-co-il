@@ -76,6 +76,10 @@ Project fields:
   blank frame.
 - When the GLB `load` event fires, hide the procedural tower, facade, sea, runway and horizon
   layers completely. They are fallback layers only. If the GLB errors, show the fallback again.
+- If the GLB is a massing/prototype model and does not contain apartment-level meshes, do not place
+  free-floating dots around it and pretend those are apartments. Keep the GLB as the premium
+  rotating showroom object, and place a locked facade/elevation selector beside it. The facade
+  selector is the precise apartment-picking surface until official BIM/GLB unit geometry exists.
 - Start the camera close enough for apartment picking: narrow field of view, gentle auto-rotate,
   and a target near the occupied floors. Avoid fast spinning because it reads like a demo, not a
   sales showroom.
