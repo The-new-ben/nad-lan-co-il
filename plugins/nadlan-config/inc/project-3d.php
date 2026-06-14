@@ -181,6 +181,8 @@ if ( ! function_exists( 'nadlan_p3d_clean_unit_items' ) ) {
 				'dir'     => sanitize_text_field( (string) ( $u['dir'] ?? '' ) ),
 				'line'    => sanitize_text_field( (string) ( $u['line'] ?? '' ) ),
 				'view'    => sanitize_text_field( (string) ( $u['view'] ?? '' ) ),
+				'stage_x' => isset( $u['stage_x'] ) && $u['stage_x'] !== '' ? max( 0, min( 100, (float) $u['stage_x'] ) ) : '',
+				'stage_w' => isset( $u['stage_w'] ) && $u['stage_w'] !== '' ? max( 0, min( 100, (float) $u['stage_w'] ) ) : '',
 				'hotspot_position' => nadlan_p3d_hotspot_vector( $u['hotspot_position'] ?? ( $u['model_position'] ?? '' ) ),
 				'hotspot_normal'   => nadlan_p3d_hotspot_vector( $u['hotspot_normal'] ?? ( $u['model_normal'] ?? '' ) ),
 				'camera_orbit'     => sanitize_text_field( (string) ( $u['camera_orbit'] ?? '' ) ),
@@ -250,7 +252,7 @@ if ( ! function_exists( 'nadlan_p3d_demo_units' ) ) {
 				'price'   => 0,
 				'status'  => 'available',
 				'plan'    => '',
-				'points'  => '408,578 486,578 486,594 408,594',
+				'points'  => '402,565 494,565 494,600 402,600',
 			),
 			array(
 				'id'      => 'demo-18-b',
@@ -270,7 +272,7 @@ if ( ! function_exists( 'nadlan_p3d_demo_units' ) ) {
 				'price'   => 0,
 				'status'  => 'available',
 				'plan'    => '',
-				'points'  => '492,479 570,479 570,495 492,495',
+				'points'  => '486,466 578,466 578,501 486,501',
 			),
 			array(
 				'id'      => 'demo-24-c',
@@ -290,7 +292,7 @@ if ( ! function_exists( 'nadlan_p3d_demo_units' ) ) {
 				'price'   => 0,
 				'status'  => 'reserved',
 				'plan'    => '',
-				'points'  => '576,380 654,380 654,396 576,396',
+				'points'  => '570,367 662,367 662,402 570,402',
 			),
 			array(
 				'id'      => 'demo-30-d',
@@ -310,7 +312,7 @@ if ( ! function_exists( 'nadlan_p3d_demo_units' ) ) {
 				'price'   => 0,
 				'status'  => 'available',
 				'plan'    => '',
-				'points'  => '492,281 570,281 570,297 492,297',
+				'points'  => '486,268 578,268 578,303 486,303',
 			),
 			array(
 				'id'      => 'demo-34-e',
@@ -330,7 +332,7 @@ if ( ! function_exists( 'nadlan_p3d_demo_units' ) ) {
 				'price'   => 0,
 				'status'  => 'available',
 				'plan'    => '',
-				'points'  => '408,215 486,215 486,231 408,231',
+				'points'  => '402,202 494,202 494,237 402,237',
 			),
 			array(
 				'id'      => 'demo-38-p',
@@ -350,7 +352,7 @@ if ( ! function_exists( 'nadlan_p3d_demo_units' ) ) {
 				'price'   => 0,
 				'status'  => 'available',
 				'plan'    => '',
-				'points'  => '408,149 654,149 654,179 408,179',
+				'points'  => '402,136 660,136 660,182 402,182',
 			),
 			array(
 				'id'      => 'demo-07-g',
@@ -370,7 +372,7 @@ if ( ! function_exists( 'nadlan_p3d_demo_units' ) ) {
 				'price'   => 0,
 				'status'  => 'available',
 				'plan'    => '',
-				'points'  => '705,705 790,705 790,730 705,730',
+				'points'  => '696,693 798,693 798,737 696,737',
 			),
 		);
 	}
@@ -694,11 +696,14 @@ if ( ! function_exists( 'nadlan_p3d_render' ) ) {
 			$units = nadlan_p3d_demo_units();
 			$demo  = true;
 		}
-		if ( $image === '' && $demo ) {
+		$uses_demo_facade = false;
+		$slug             = (string) get_post_field( 'post_name', $post_id );
+		if ( $image === '' && ( $demo || $slug === 'rainbow-tel-aviv' ) ) {
 			$image = esc_url( plugins_url( '../assets/concept/rainbow-facade-demo.svg', __FILE__ ) );
+			$uses_demo_facade = true;
 		}
-		$image_alt = $demo ? 'המחשת חזית מקורית של מגדל ובנייני בוטיק לבחירת דירה' : 'חומר מקור של הפרויקט';
-		$image_cap = $demo ? 'המחשה מקורית, לא תכנית מכר רשמית' : 'חומר מקור';
+		$image_alt = $uses_demo_facade ? 'המחשת חזית מקורית של מגדל ובנייני בוטיק לבחירת דירה' : 'חומר מקור של הפרויקט';
+		$image_cap = $uses_demo_facade ? 'המחשה מקורית, לא תכנית מכר רשמית' : 'חומר מקור';
 
 		$meta      = nadlan_p3d_meta( $post_id, $demo );
 		$uid       = 'nlp3d-' . $post_id;
@@ -722,13 +727,13 @@ if ( ! function_exists( 'nadlan_p3d_render' ) ) {
 	<div class="nlp3d-shell">
 		<div class="nlp3d-copy">
 			<p class="nlp3d-kicker">Rainbow תל אביב · שדה דב</p>
-			<h2 id="<?php echo esc_attr( $uid ); ?>-title">דירות למכירה ב-<?php echo esc_html( $meta['title'] ); ?>: בחירת דירה בתלת ממד</h2>
+			<h2 id="<?php echo esc_attr( $uid ); ?>-title">דירות למכירה ב-<?php echo esc_html( $meta['title'] ); ?>: בחירת דירה על חזית הפרויקט</h2>
 			<p class="nlp3d-lead-text">דירות למכירה ב-Rainbow Tel Aviv בשדה דב מוצגות כאן לפי קומה, חדרים, שטח, כיוון ונוף. זהו פרויקט של ישראל קנדה, עם אומדן מחיר וזמינות לא מחייבים עד אימות מול היזם.</p>
 			<div class="nlp3d-shop-path" aria-label="תהליך בחירה">
-				<span>1. מסובבים</span>
-				<span>2. בוחרים דירה</span>
-				<span>3. בודקים ליווי</span>
-				<span>4. מבקשים התקדמות</span>
+				<span>1. בוחרים על החזית</span>
+				<span>2. רואים דירה</span>
+				<span>3. בודקים מבט</span>
+				<span>4. פונים ליזם</span>
 			</div>
 			<div class="nlp3d-metrics" aria-label="פרטי פרויקט">
 				<span><?php echo $meta['developer'] ? esc_html( $meta['developer'] ) : 'יזם יימסר בפנייה'; ?></span>
@@ -741,16 +746,16 @@ if ( ! function_exists( 'nadlan_p3d_render' ) ) {
 		</div>
 
 		<div class="nlp3d-stage-wrap" id="nlp3d-stage">
-			<div class="nlp3d-toolbar" aria-label="שליטה במודל">
+			<div class="nlp3d-toolbar" aria-label="שליטה בתצוגת הפרויקט">
 				<button type="button" class="nlp3d-angle is-active" data-angle="-32" data-action="angle-facade">איפוס מבט</button>
 				<button type="button" class="nlp3d-angle" data-angle="0" data-action="angle-sea">ים</button>
 				<button type="button" class="nlp3d-angle" data-angle="32" data-action="angle-city">עיר</button>
-				<button type="button" class="nlp3d-orbit" data-orbit="1" data-action="orbit-building">סובב מודל</button>
+				<button type="button" class="nlp3d-orbit" data-orbit="1" data-action="orbit-building">תצוגת 360</button>
 				<button type="button" class="nlp3d-zoom" data-zoom="in" data-action="zoom-in">קרב</button>
 				<button type="button" class="nlp3d-zoom" data-zoom="out" data-action="zoom-out">הרחק</button>
-				<span class="nlp3d-drag-note">בחרו דירה על המגדל</span>
+				<span class="nlp3d-drag-note">לחצו על תא דירה בחזית</span>
 			</div>
-			<div class="nlp3d-scene<?php echo $has_model_viewer ? ' has-model-viewer' : ''; ?>" style="--angle:-32deg" role="group" aria-label="מודל תלת ממדי סכמטי של מגדל מגורים">
+			<div class="nlp3d-scene<?php echo $has_model_viewer ? ' has-model-viewer' : ''; ?>" style="--angle:-32deg" role="group" aria-label="תצוגת פרויקט אינטראקטיבית לבחירת דירה">
 				<?php if ( $has_model_viewer ) : ?>
 					<model-viewer
 						class="nlp3d-model-viewer"
@@ -837,7 +842,7 @@ if ( ! function_exists( 'nadlan_p3d_render' ) ) {
 				<button type="button" class="nlp3d-stage-card-handle" aria-expanded="false" data-action="stage-card-expand"><span>פתחו את פרטי הדירה</span></button>
 				<span class="nlp3d-stage-kicker">הדירה שנבחרה</span>
 				<strong class="nlp3d-stage-card-title">בחרו דירה על הבניין</strong>
-				<small class="nlp3d-stage-card-meta">גררו לסיבוב, בחרו קומה והתקדמו רק כאשר הפרטים מתאימים.</small>
+				<small class="nlp3d-stage-card-meta">בחרו תא דירה על החזית, בדקו קומה, שטח, כיוון ונוף, והתקדמו רק כאשר הפרטים מתאימים.</small>
 				<div class="nlp3d-stage-card-tags" aria-label="סימוני דירה"></div>
 				<div class="nlp3d-stage-card-stats" aria-label="פרטי דירה נבחרת">
 					<span class="nlp3d-stage-price">לפי פנייה</span>
@@ -865,13 +870,13 @@ if ( ! function_exists( 'nadlan_p3d_render' ) ) {
 				<strong class="nlp3d-dock-title">בחרו דירה</strong>
 				<small class="nlp3d-dock-meta"></small>
 				<div class="nlp3d-dock-actions">
-					<button type="button" class="nlp3d-dock-spin" data-action="dock-360">סיבוב 360</button>
+					<button type="button" class="nlp3d-dock-spin" data-action="dock-360">תצוגת 360</button>
 					<button type="button" class="nlp3d-dock-action" data-action="dock-inquiry">התקדמות</button>
 				</div>
 			</div>
 			<div class="nlp3d-console-head">
 				<p>בחרו קומה ודירה</p>
-				<span class="nlp3d-status-chip">מודל פעיל</span>
+				<span class="nlp3d-status-chip">בחירה פעילה</span>
 			</div>
 			<div class="nlp3d-floor-strip" aria-label="קומות זמינות"></div>
 			<div class="nlp3d-units" aria-label="דירות בקומה"></div>
@@ -1339,19 +1344,8 @@ if ( ! function_exists( 'nadlan_p3d_inline_js' ) ) {
 		}
 		function fitMobileShowroom(){
 			if(!root){return}
-			if(window.innerWidth>760){
-				root.style.removeProperty('--nlp3d-mobile-nudge');
-				root.classList.remove('is-mobile-edge-fixed');
-				return;
-			}
 			root.style.setProperty('--nlp3d-mobile-nudge','0px');
-			var rect=root.getBoundingClientRect();
-			var nudge=0;
-			var pad=8;
-			if(rect.left<pad){nudge+=pad-rect.left}
-			if(rect.right+nudge>window.innerWidth-pad){nudge-=rect.right+nudge-(window.innerWidth-pad)}
-			root.style.setProperty('--nlp3d-mobile-nudge',Math.round(nudge)+'px');
-			root.classList.toggle('is-mobile-edge-fixed',Math.abs(nudge)>0);
+			root.classList.remove('is-mobile-edge-fixed');
 		}
 		var floors=units.map(function(u){return parseInt(u.floor||0,10)}).filter(function(v,i,arr){return v>0&&arr.indexOf(v)===i}).sort(function(a,b){return b-a});
 		var maxFloor=Math.max.apply(null,floors.concat([39]));
@@ -1381,6 +1375,7 @@ if ( ! function_exists( 'nadlan_p3d_inline_js' ) ) {
 		var stageCardView=root.querySelector('.nlp3d-stage-view');
 		var stageCardNote=root.querySelector('.nlp3d-stage-card-note');
 		var stageCardHandle=root.querySelector('.nlp3d-stage-card-handle');
+		var stageCardScrolledUnit='';
 		var stageTabs=[].slice.call(root.querySelectorAll('.nlp3d-stage-tabs [data-stage-tab]'));
 		var stageDetails=root.querySelector('.nlp3d-stage-details');
 		var stageViewBtn=root.querySelector('.nlp3d-stage-view-btn');
@@ -1501,6 +1496,13 @@ if ( ! function_exists( 'nadlan_p3d_inline_js' ) ) {
 			var maxY=Math.max.apply(null,coords.map(function(p){return p.y}));
 			return {x:minX,y:minY,w:Math.max(1,maxX-minX),h:Math.max(1,maxY-minY)};
 		}
+		function facadeLabelText(u){
+			if(!u){return ''}
+			var floor=u.floor?'קומה '+u.floor:'';
+			var rooms=u.rooms?u.rooms+' חד׳':'';
+			if(floor&&rooms){return floor+' · '+rooms}
+			return floor||rooms||'דירה';
+		}
 		function makeHitPolygon(u){
 			var box=pointBox(u.points);
 			var hit=document.createElementNS('http://www.w3.org/2000/svg',box?'rect':'polygon');
@@ -1516,10 +1518,11 @@ if ( ! function_exists( 'nadlan_p3d_inline_js' ) ) {
 			}else{
 				hit.setAttribute('points',u.points);
 			}
-			hit.setAttribute('class','nlp3d-hotspot-hit nlp3d-status-'+u.status);
+			hit.setAttribute('class','nlp3d-hotspot-hit nlp3d-facade-hit nlp3d-status-'+u.status+' is-'+(u.status||'available')+(isRecommendedUnit(u)?' is-recommended':''));
 			hit.setAttribute('tabindex','0');
 			hit.setAttribute('role','button');
 			hit.setAttribute('aria-label',selectedTitle(u)+' · '+statusLabel(u.status));
+			hit.setAttribute('aria-pressed',(activeUnit&&activeUnit.id===u.id)?'true':'false');
 			hit.dataset.unit=u.id;
 			hit.dataset.action='select-unit-facade-hit';
 			hit.addEventListener('click',function(e){e.stopPropagation();if(Date.now()<suppressUnitClickUntil){e.preventDefault();return}selectUnit(u.id,'facade-hit')});
@@ -1572,7 +1575,7 @@ if ( ! function_exists( 'nadlan_p3d_inline_js' ) ) {
 				tower.appendChild(b);
 			}
 		}
-		function stagePickOffset(u){
+		function legacyStagePickOffset(u){
 			var id=String(u&&u.id||'').toLowerCase();
 			if(id.indexOf('boutique')>-1){return -245}
 			if(id.indexOf('sw')>-1){return -128}
@@ -1580,6 +1583,29 @@ if ( ! function_exists( 'nadlan_p3d_inline_js' ) ) {
 			if(id.indexOf('se')>-1){return 118}
 			if(id.indexOf('-w')>-1){return -112}
 			return 0;
+		}
+		function numericPercent(value,min,max){
+			if(value===undefined||value===null||value===''){return null}
+			var n=parseFloat(value);
+			if(!isFinite(n)){return null}
+			return Math.max(min,Math.min(max,n));
+		}
+		function unitFloorKey(u){
+			return String(parseInt(u&&u.floor||minFloor,10)||minFloor);
+		}
+		function stageCellX(u,idxInFloor,countInFloor){
+			var authored=numericPercent(u&&u.stage_x,2,98);
+			if(authored!==null){return authored+'%'}
+			if(countInFloor>1){
+				var step=Math.min(26,64/countInFloor);
+				var offset=(idxInFloor-(countInFloor-1)/2)*step;
+				return 'calc(50% + '+offset+'px)';
+			}
+			return 'calc(50% + '+legacyStagePickOffset(u)+'px)';
+		}
+		function stageCellWidth(u){
+			var authored=numericPercent(u&&u.stage_w,4,22);
+			return authored===null?'':authored+'%';
 		}
 		function closeStagePickTips(except){
 			if(!stagePicks){return}
@@ -1601,10 +1627,19 @@ if ( ! function_exists( 'nadlan_p3d_inline_js' ) ) {
 			if(!stagePicks){return}
 			stagePicks.innerHTML='';
 			var span=Math.max(1,maxFloor-minFloor);
+			var byFloor={};
+			units.forEach(function(unit){
+				var key=unitFloorKey(unit);
+				if(!byFloor[key]){byFloor[key]=[]}
+				byFloor[key].push(unit);
+			});
 			units.forEach(function(u){
 				var floor=parseInt(u.floor||minFloor,10)||minFloor;
 				var norm=(floor-minFloor)/span;
 				var top=Math.max(20,Math.min(76,77-(norm*56)));
+				var bucket=byFloor[unitFloorKey(u)]||[u];
+				var idxInFloor=Math.max(0,bucket.indexOf(u));
+				var cellWidth=stageCellWidth(u);
 				var recommended=isRecommendedUnit(u);
 				var label=u.label||u.title||('קומה '+(u.floor||'-'));
 				var status=u.status||'available';
@@ -1614,7 +1649,8 @@ if ( ! function_exists( 'nadlan_p3d_inline_js' ) ) {
 				b.dataset.unit=u.id;
 				b.dataset.action='select-unit-stage';
 				b.style.top=top+'%';
-				b.style.left='calc(50% + '+stagePickOffset(u)+'px)';
+				b.style.left=stageCellX(u,idxInFloor,bucket.length);
+				if(cellWidth){b.style.setProperty('--nlp3d-stage-cell-w',cellWidth)}
 				b.setAttribute('aria-label',selectedTitle(u)+' · '+stageTipText(u,meta));
 				if(status==='sold'){
 					b.setAttribute('aria-disabled','true');
@@ -1675,12 +1711,15 @@ if ( ! function_exists( 'nadlan_p3d_inline_js' ) ) {
 			units.filter(hasPoints).forEach(function(u){
 				any=true;
 				hotspots.appendChild(makeHitPolygon(u));
+				var status=u.status||'available';
+				var recommended=isRecommendedUnit(u);
 				var poly=document.createElementNS('http://www.w3.org/2000/svg','polygon');
 				poly.setAttribute('points',u.points);
-				poly.setAttribute('class','nlp3d-hotspot nlp3d-status-'+u.status+(activeUnit&&u.id===activeUnit.id?' is-active':''));
+				poly.setAttribute('class','nlp3d-hotspot nlp3d-facade-cell nlp3d-status-'+status+' is-'+status+(recommended?' is-recommended':'')+(activeUnit&&u.id===activeUnit.id?' is-active':''));
 				poly.setAttribute('tabindex','0');
 				poly.setAttribute('role','button');
-				poly.setAttribute('aria-label',selectedTitle(u)+' · '+statusLabel(u.status));
+				poly.setAttribute('aria-label',selectedTitle(u)+' · '+statusLabel(status));
+				poly.setAttribute('aria-pressed',(activeUnit&&activeUnit.id===u.id)?'true':'false');
 				poly.dataset.unit=u.id;
 				poly.dataset.action='select-unit-facade';
 				var t=document.createElementNS('http://www.w3.org/2000/svg','title');
@@ -1688,19 +1727,37 @@ if ( ! function_exists( 'nadlan_p3d_inline_js' ) ) {
 				poly.appendChild(t);
 				poly.addEventListener('click',function(e){e.stopPropagation();if(Date.now()<suppressUnitClickUntil){e.preventDefault();return}selectUnit(u.id,'facade')});
 				poly.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();selectUnit(u.id,'facade-keyboard')}});
-				poly.removeAttribute('role');
-				poly.removeAttribute('tabindex');
-				poly.removeAttribute('aria-label');
-				poly.setAttribute('aria-hidden','true');
-				poly.style.pointerEvents='none';
 				hotspots.appendChild(poly);
+				var box=pointBox(u.points);
+				if(box){
+					var label=document.createElementNS('http://www.w3.org/2000/svg','text');
+					label.setAttribute('class','nlp3d-facade-label nlp3d-status-'+status+' is-'+status+(recommended?' is-recommended':'')+(activeUnit&&u.id===activeUnit.id?' is-active':''));
+					label.setAttribute('x',box.x+(box.w/2));
+					label.setAttribute('y',box.y+(box.h/2));
+					label.setAttribute('text-anchor','middle');
+					label.setAttribute('dominant-baseline','central');
+					label.setAttribute('aria-hidden','true');
+					label.dataset.unit=u.id;
+					label.textContent=facadeLabelText(u);
+					hotspots.appendChild(label);
+				}
 			});
 			if(facade){facade.hidden=!any}
 			scene.classList.toggle('has-facade',any);
+			root.classList.toggle('has-facade-polygons',any);
 		}
 		function syncFacade(){
-			root.querySelectorAll('.nlp3d-hotspot,.nlp3d-hotspot-hit').forEach(function(p){p.classList.toggle('is-active',activeUnit&&p.dataset.unit===activeUnit.id)});
-			modelHotspots.forEach(function(p){p.classList.toggle('is-active',activeUnit&&p.dataset.unit===activeUnit.id)});
+			root.querySelectorAll('.nlp3d-hotspot,.nlp3d-hotspot-hit').forEach(function(p){
+				var on=!!(activeUnit&&p.dataset.unit===activeUnit.id);
+				p.classList.toggle('is-active',on);
+				p.setAttribute('aria-pressed',on?'true':'false');
+			});
+			root.querySelectorAll('.nlp3d-facade-label').forEach(function(p){p.classList.toggle('is-active',activeUnit&&p.dataset.unit===activeUnit.id)});
+			modelHotspots.forEach(function(p){
+				var on=!!(activeUnit&&p.dataset.unit===activeUnit.id);
+				p.classList.toggle('is-active',on);
+				p.setAttribute('aria-pressed',on?'true':'false');
+			});
 			if(modelViewer&&activeUnit){
 				modelViewer.dataset.activeUnit=activeUnit.id;
 			}
@@ -1919,6 +1976,10 @@ if ( ! function_exists( 'nadlan_p3d_inline_js' ) ) {
 			}
 			if(stageCardView){stageCardView.textContent=activeUnit.view||activeUnit.dir||'מבט לפי כיוון'}
 			if(stageCardNote){stageCardNote.textContent=unitBuyerNote(activeUnit,meta)}
+			if(window.innerWidth<=760&&stageCardScrolledUnit!==activeUnit.id&&stageCard.scrollIntoView){
+				stageCardScrolledUnit=activeUnit.id;
+				window.setTimeout(function(){stageCard.scrollIntoView({block:'nearest',behavior:'smooth'})},30);
+			}
 			syncStageTabs(activeTool);
 		}
 		function renderDetail(){
@@ -2338,7 +2399,7 @@ if ( ! function_exists( 'nadlan_p3d_inline_js' ) ) {
 			});
 		});
 		function dragExcludedTarget(target){
-			if(target&&target.closest&&target.closest('.nlp3d-stage-pick,.nlp3d-hotspot,.nlp3d-hotspot-hit')){return false}
+			if(target&&target.closest&&target.closest('.nlp3d-stage-pick,.nlp3d-hotspot,.nlp3d-hotspot-hit')){return true}
 			return target&&target.closest&&target.closest('button,a,input,.nlp3d-mv-hotspot,.nlp3d-stage-card,.nlp3d-stage-viewframe');
 		}
 		function startDragAt(p,id,target){
@@ -2362,12 +2423,10 @@ if ( ! function_exists( 'nadlan_p3d_inline_js' ) ) {
 			if(!dragState){return}
 			var moved=Math.abs(p.x-dragState.x)+Math.abs(p.y-dragState.y);
 			var momentum=Math.max(-120,Math.min(120,(dragState.vx||0)*180));
-			var tappedUnit=dragState.unitId||'';
 			dragState=null;
 			scene.classList.remove('is-dragging');
 			var now=Date.now();
 			if(moved>=8){suppressUnitClickUntil=now+450}
-			if(moved<8&&tappedUnit){selectUnit(tappedUnit,'stage-pick-tap');return}
 			if(moved<8&&now-lastTapAt<320){
 				setZoom(currentZoom>1.05?1:1.22);
 				track('model_double_tap_zoom',{zoom:Math.round(currentZoom*100)/100});
@@ -2498,7 +2557,7 @@ add_action(
 			return;
 		}
 
-		wp_register_style( 'nadlan-p3d', '', array(), '1.65.6' );
+		wp_register_style( 'nadlan-p3d', '', array(), '1.65.7' );
 		wp_enqueue_style( 'nadlan-p3d' );
 		wp_add_inline_style( 'nadlan-p3d', nadlan_p3d_inline_css() );
 		wp_add_inline_style( 'nadlan-p3d', '.nlp3d-drag-note{display:inline-flex;align-items:center;min-height:44px;color:rgba(246,239,226,.72);font-size:12px;padding:0 6px}.nlp3d-scene{touch-action:none;cursor:grab}.nlp3d-scene.is-dragging{cursor:grabbing}.nlp3d-actions{grid-template-columns:1fr}.nlp3d-view-toggle{margin-top:12px;border:1px solid rgba(234,216,163,.36);background:rgba(255,255,255,.06);color:#ffe8a6;padding:9px 12px;cursor:pointer}.nlp3d-view-toggle.is-active{background:rgba(234,216,163,.18);color:#fff}.nlp3d-viewframe{position:relative;margin-top:12px;min-height:150px;overflow:hidden;border:1px solid rgba(234,216,163,.18);background:linear-gradient(180deg,rgba(41,112,139,.58),rgba(8,25,25,.92));isolation:isolate}.nlp3d-view-sky{position:absolute;inset:0;background:radial-gradient(circle at 18% 22%,rgba(255,255,255,.24),transparent 18%),linear-gradient(135deg,rgba(39,107,130,.42),rgba(18,50,43,.1));opacity:.86}.nlp3d-view-lines{position:absolute;inset:auto -8% 18% -8%;height:46%;border-top:1px solid rgba(234,216,163,.28);background:linear-gradient(160deg,rgba(234,216,163,.1),transparent 54%);transform:skewY(-8deg)}.nlp3d-view-copy{position:absolute;right:14px;left:14px;bottom:12px;margin:0;color:#fff8dc;font-size:13px;line-height:1.5;text-shadow:0 1px 12px rgba(0,0,0,.55)}@media(max-width:600px){.nlp3d-drag-note{flex-basis:100%;min-height:24px}.nlp3d-viewframe{min-height:130px}}' );
@@ -2551,6 +2610,123 @@ CSS
 @media(max-width:760px){.single-nadlan_project .entry-content>.nlp3d.nlp3d-premium,.single-nadlan_project .wp-block-post-content>.nlp3d.nlp3d-premium{width:calc(100vw - 28px)!important;max-width:calc(100vw - 28px)!important;margin-left:calc(50% - 50vw + 14px)!important;margin-right:calc(50% - 50vw + 14px)!important;transform:none!important}.nlp3d.nlp3d-premium.is-mobile-edge-fixed{transform:none!important}.nlp3d.nlp3d-premium .nlp3d-stage-wrap{min-height:560px!important;display:block!important;position:relative!important;overflow:visible!important}.nlp3d.nlp3d-premium .nlp3d-scene{position:relative!important;display:block!important;height:min(520px,124vw)!important;min-height:380px!important;overflow:hidden!important}.nlp3d.nlp3d-premium .nlp3d-stage-pick,.nlp3d.nlp3d-premium .nlp3d-mv-hotspot{width:86px!important;min-width:86px!important;height:48px!important;min-height:48px!important}.nlp3d.nlp3d-premium .nlp3d-stage-pick>.nlp3d-hotspot-hit{inset:-10px!important}.nlp3d.nlp3d-premium .nlp3d-stage-card:not([hidden]){position:fixed!important;left:max(10px,env(safe-area-inset-left))!important;right:max(10px,env(safe-area-inset-right))!important;bottom:0!important;top:auto!important;width:auto!important;max-width:none!important;max-height:58vh!important;overflow:auto!important;z-index:9990!important;border-radius:18px 18px 0 0!important;transform:translateY(calc(100% - 132px))!important;transition:transform .22s ease!important;margin:0!important}.nlp3d.nlp3d-premium .nlp3d-stage-card.is-expanded{transform:translateY(0)!important}.nlp3d-stage-card-handle{display:flex!important;min-height:44px!important}.nlp3d.nlp3d-premium .nlp3d-stage-card-actions button{min-height:44px!important}.nlp3d.nlp3d-premium .nlp3d-stage-card-stats span{min-height:44px!important}.nlp3d.nlp3d-premium .nlp3d-stage-pick:hover,.nlp3d.nlp3d-premium .nlp3d-stage-pick:focus-visible,.nlp3d.nlp3d-premium .nlp3d-stage-pick.is-open,.nlp3d.nlp3d-premium .nlp3d-stage-pick.is-active{transform:translate(-50%,-50%) scale(1.03)!important}}
 CSS
 		);
+		wp_add_inline_style(
+			'nadlan-p3d',
+			<<<'CSS'
+.nlp3d.nlp3d-premium .nlp3d-stage-pick{
+	width:max(92px,var(--nlp3d-stage-cell-w,0px))!important;
+	min-width:92px!important;
+	height:42px!important;
+	min-height:42px!important;
+	border-radius:2px!important;
+	border:1px solid rgba(255,249,219,.72)!important;
+	background:linear-gradient(180deg,rgba(255,248,210,.34),rgba(198,166,82,.22))!important;
+	box-shadow:0 0 0 1px rgba(2,10,10,.42),inset 0 1px 0 rgba(255,255,255,.42)!important;
+	backdrop-filter:blur(1px);
+}
+.nlp3d.nlp3d-premium .nlp3d-stage-picks{
+	inset:14% 30% 22% 30%!important;
+	z-index:22!important;
+	transform:perspective(720px) rotateY(-4deg);
+	transform-origin:50% 55%;
+}
+.nlp3d.nlp3d-premium .nlp3d-scene.has-model-viewer .nlp3d-stage-picks{
+	inset:15% 31% 24% 31%!important;
+}
+.nlp3d.nlp3d-premium .nlp3d-stage-pick:before{
+	width:5px!important;
+	box-shadow:0 0 10px currentColor!important;
+}
+.nlp3d.nlp3d-premium .nlp3d-stage-pick:after{
+	inset:5px 9px 5px 13px!important;
+	opacity:.72!important;
+	background:repeating-linear-gradient(90deg,rgba(255,255,255,.34) 0 1px,transparent 1px 12px),linear-gradient(180deg,rgba(255,255,255,.22),transparent 64%)!important;
+}
+.nlp3d.nlp3d-premium .nlp3d-stage-pick .nlp3d-pick-label{opacity:.86!important}
+.nlp3d.nlp3d-premium .nlp3d-stage-pick:hover,
+.nlp3d.nlp3d-premium .nlp3d-stage-pick:focus-visible,
+.nlp3d.nlp3d-premium .nlp3d-stage-pick.is-open,
+.nlp3d.nlp3d-premium .nlp3d-stage-pick.is-active{
+	border-color:#fff4b8!important;
+	background:linear-gradient(180deg,rgba(255,249,219,.52),rgba(207,174,90,.34))!important;
+	box-shadow:0 0 0 3px rgba(234,216,163,.16),0 0 24px rgba(234,216,163,.34),inset 0 1px 0 rgba(255,255,255,.58)!important;
+}
+.nlp3d.nlp3d-premium .nlp3d-stage-pick:focus-visible{outline:3px solid rgba(255,255,255,.92)!important;outline-offset:4px!important}
+@media(max-width:760px){.nlp3d.nlp3d-premium .nlp3d-stage-pick{width:max(86px,var(--nlp3d-stage-cell-w,0px))!important;min-width:86px!important;min-height:48px!important}}
+@media(max-width:760px){.nlp3d.nlp3d-premium .nlp3d-stage-picks{inset:14% 22% 22% 22%!important}.nlp3d.nlp3d-premium .nlp3d-scene.has-model-viewer .nlp3d-stage-picks{inset:15% 23% 24% 23%!important}}
+CSS
+		);
+		wp_add_inline_style(
+			'nadlan-p3d',
+			<<<'CSS'
+.nlp3d.nlp3d-premium.has-facade-polygons .nlp3d-stage-picks{display:none!important}
+.nlp3d.nlp3d-premium.has-facade-polygons.has-model-viewer-loaded:not(.has-model-viewer-error) .nlp3d-scene.has-model-viewer .nlp3d-facade{
+	display:block!important;
+	visibility:visible!important;
+	opacity:.96!important;
+	pointer-events:auto!important;
+	z-index:24!important;
+}
+.nlp3d.nlp3d-premium.has-facade-polygons.has-model-viewer-loaded:not(.has-model-viewer-error) .nlp3d-scene.has-model-viewer .nlp3d-model-viewer{
+	opacity:0!important;
+	visibility:hidden!important;
+	pointer-events:none!important;
+}
+.nlp3d.nlp3d-premium.has-facade-polygons.has-model-viewer-loaded:not(.has-model-viewer-error) .nlp3d-scene.has-model-viewer .nlp3d-facade img{
+	opacity:.68!important;
+	filter:drop-shadow(0 26px 48px rgba(0,0,0,.54)) saturate(.92) contrast(1.1)!important;
+}
+.nlp3d.nlp3d-premium.has-facade-polygons .nlp3d-facade-hotspots{z-index:8!important;pointer-events:auto!important}
+.nlp3d.nlp3d-premium .nlp3d-facade-hotspots .nlp3d-facade-hit{
+	fill:transparent!important;
+	stroke:transparent!important;
+	pointer-events:all!important;
+	cursor:pointer!important;
+}
+.nlp3d.nlp3d-premium .nlp3d-facade-hotspots .nlp3d-facade-cell{
+	pointer-events:all!important;
+	cursor:pointer!important;
+	fill:rgba(61,220,132,.38)!important;
+	stroke:rgba(255,250,216,.94)!important;
+	stroke-width:4!important;
+	vector-effect:non-scaling-stroke;
+	filter:drop-shadow(0 0 12px rgba(61,220,132,.42)) drop-shadow(0 2px 5px rgba(0,0,0,.38));
+	paint-order:stroke fill;
+	transition:fill .16s ease,stroke .16s ease,filter .16s ease,opacity .16s ease;
+}
+.nlp3d.nlp3d-premium .nlp3d-facade-hotspots .nlp3d-facade-cell.is-reserved{fill:rgba(242,193,78,.46)!important;filter:drop-shadow(0 0 13px rgba(242,193,78,.4)) drop-shadow(0 2px 5px rgba(0,0,0,.38))}
+.nlp3d.nlp3d-premium .nlp3d-facade-hotspots .nlp3d-facade-cell.is-sold{fill:rgba(154,160,166,.27)!important;stroke:rgba(230,236,236,.76)!important;filter:none;opacity:.68}
+.nlp3d.nlp3d-premium .nlp3d-facade-hotspots .nlp3d-facade-cell.is-recommended.is-available{animation:nlfacadepulse 2s infinite}
+.nlp3d.nlp3d-premium .nlp3d-facade-hotspots .nlp3d-facade-cell:hover,
+.nlp3d.nlp3d-premium .nlp3d-facade-hotspots .nlp3d-facade-cell:focus-visible,
+.nlp3d.nlp3d-premium .nlp3d-facade-hotspots .nlp3d-facade-cell.is-active{
+	fill:rgba(234,216,163,.68)!important;
+	stroke:#fffbe0!important;
+	stroke-width:5!important;
+	filter:drop-shadow(0 0 24px rgba(234,216,163,.82)) drop-shadow(0 5px 14px rgba(0,0,0,.58));
+	outline:none!important;
+}
+.nlp3d.nlp3d-premium .nlp3d-facade-hotspots .nlp3d-facade-label{
+	pointer-events:none!important;
+	fill:#fff9d8!important;
+	stroke:#071514!important;
+	stroke-width:5px!important;
+	paint-order:stroke;
+	font-size:23px!important;
+	font-weight:900!important;
+	letter-spacing:0!important;
+	filter:drop-shadow(0 2px 8px rgba(0,0,0,.7));
+	opacity:.96;
+}
+.nlp3d.nlp3d-premium .nlp3d-facade-hotspots .nlp3d-facade-label.is-sold{opacity:.45}
+.nlp3d.nlp3d-premium .nlp3d-facade-hotspots .nlp3d-facade-label.is-active{
+	fill:#fff2a8!important;
+	opacity:1;
+	filter:drop-shadow(0 0 13px rgba(234,216,163,.72)) drop-shadow(0 2px 7px rgba(0,0,0,.7));
+}
+@keyframes nlfacadepulse{0%{filter:drop-shadow(0 0 8px rgba(61,220,132,.3))}55%{filter:drop-shadow(0 0 22px rgba(61,220,132,.66))}100%{filter:drop-shadow(0 0 8px rgba(61,220,132,.3))}}
+CSS
+		);
 
 		$post_id = is_singular( 'nadlan_project' ) ? (int) get_queried_object_id() : 0;
 		if ( $post_id > 0 && get_post_meta( $post_id, 'project_model_glb', true ) !== '' ) {
@@ -2559,7 +2735,7 @@ CSS
 			wp_enqueue_script( 'nadlan-model-viewer' );
 		}
 
-		wp_register_script( 'nadlan-p3d', '', array(), '1.65.6', true );
+		wp_register_script( 'nadlan-p3d', '', array(), '1.65.7', true );
 		wp_enqueue_script( 'nadlan-p3d' );
 		wp_add_inline_script( 'nadlan-p3d', nadlan_p3d_inline_js( esc_url_raw( rest_url( 'nadlan/v1/lead' ) ) ) );
 	}
@@ -2626,6 +2802,16 @@ if ( ! function_exists( 'nadlan_p3d_render_admin_metabox' ) ) {
 			.nadlan-p3d-json-status{font-weight:700}
 			.nadlan-p3d-json-status.is-ok{color:#007017}
 			.nadlan-p3d-json-status.is-bad{color:#b32d2e}
+			.nadlan-p3d-facade-helper{border:1px solid #d6c189;background:#fffaf0;padding:12px;display:grid;gap:10px}
+			.nadlan-p3d-facade-head{display:flex;flex-wrap:wrap;gap:8px;align-items:center;justify-content:space-between}
+			.nadlan-p3d-facade-stage{position:relative;min-height:360px;border:1px solid #c3c4c7;background:#0d2628;overflow:hidden;isolation:isolate;cursor:crosshair}
+			.nadlan-p3d-facade-stage img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;padding:10px}
+			.nadlan-p3d-facade-stage svg{position:absolute;inset:0;width:100%;height:100%;z-index:2}
+			.nadlan-p3d-facade-stage[data-empty="1"]{display:grid;place-items:center;color:#fff8dc;text-align:center;padding:20px;cursor:default}
+			.nadlan-p3d-facade-stage[data-empty="1"] svg,.nadlan-p3d-facade-stage[data-empty="1"] img{display:none}
+			.nadlan-p3d-facade-point{fill:#00a32a;stroke:#fff;stroke-width:3;vector-effect:non-scaling-stroke}
+			.nadlan-p3d-facade-poly{fill:rgba(0,163,42,.22);stroke:#fff3b0;stroke-width:3;vector-effect:non-scaling-stroke}
+			.nadlan-p3d-facade-actions{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
 			@media(max-width:782px){.nadlan-p3d-panel-inner,.nadlan-p3d-builder{grid-template-columns:1fr}}
 		</style>
 		<div class="nadlan-p3d-admin" data-post-id="<?php echo esc_attr( (string) $post->ID ); ?>">
@@ -2688,6 +2874,28 @@ if ( ! function_exists( 'nadlan_p3d_render_admin_metabox' ) ) {
 						<label><span>סטטוס</span><select class="widefat" data-u-field="status"><option value="available">זמינה</option><option value="reserved">בבדיקה</option><option value="sold">לא זמינה</option></select></label>
 						<label><span>מיקום נקודה במודל</span><input type="text" class="widefat" data-u-field="hotspot_position" placeholder="0m 20m 0m"></label>
 						<label><span>כיוון נקודה במודל</span><input type="text" class="widefat" data-u-field="hotspot_normal" placeholder="0m 0m 1m"></label>
+						<label class="nadlan-p3d-full"><span>תא דירה על חזית SVG</span><input type="text" class="widefat" data-u-field="points" placeholder="570,367 662,367 662,402 570,402"><p class="nadlan-p3d-help">זהו השדה המדויק לבחירת דירה על תמונת חזית: ארבע נקודות או יותר בתוך ה-viewBox. כאשר הוא מלא, הדירה נלחצת על החזית עצמה ולא כנקודה מרחפת.</p></label>
+						<div class="nadlan-p3d-full nadlan-p3d-facade-helper" data-p3d-facade-helper>
+							<div class="nadlan-p3d-facade-head">
+								<strong>עוזר סימון חזית</strong>
+								<span class="nadlan-p3d-help">בחרו יחידה, לחצו 4 פינות על החזית, ואז העתיקו לשדה תא הדירה.</span>
+							</div>
+							<div class="nadlan-p3d-facade-stage" data-p3d-facade-stage data-empty="<?php echo $img === '' ? '1' : '0'; ?>" data-viewbox="<?php echo $vb !== '' ? $vb : '0 0 1000 1000'; ?>">
+								<?php if ( $img !== '' ) : ?>
+									<img src="<?php echo $img; ?>" alt="">
+									<svg data-p3d-facade-svg viewBox="<?php echo $vb !== '' ? $vb : '0 0 1000 1000'; ?>" preserveAspectRatio="none" aria-hidden="true"></svg>
+								<?php else : ?>
+									<span>כדי להשתמש בעוזר, מלאו קודם תמונת חזית ו-viewBox בחלק 1-2.</span>
+								<?php endif; ?>
+							</div>
+							<div class="nadlan-p3d-facade-actions">
+								<button type="button" class="button" data-p3d-facade-reset>נקה סימון</button>
+								<button type="button" class="button button-secondary" data-p3d-facade-apply>העתק לשדה תא דירה</button>
+								<span class="nadlan-p3d-help" data-p3d-facade-status>0/4 נקודות</span>
+							</div>
+						</div>
+						<label><span>מיקום תא על הבניין, 0-100</span><input type="number" step="0.1" min="0" max="100" class="widefat" data-u-field="stage_x" placeholder="50"></label>
+						<label><span>רוחב תא על הבניין, 0-100</span><input type="number" step="0.1" min="0" max="100" class="widefat" data-u-field="stage_w" placeholder="8"></label>
 						<label><span>תוכנית דירה</span><input type="url" class="widefat" data-u-field="plan" placeholder="https://..."></label>
 						<label><span>דירה מומלצת</span><select class="widefat" data-u-field="recommended"><option value="">לא</option><option value="1">כן</option></select></label>
 						<div class="nadlan-p3d-builder-actions">
@@ -2698,7 +2906,7 @@ if ( ! function_exists( 'nadlan_p3d_render_admin_metabox' ) ) {
 						</div>
 						<div class="nadlan-p3d-unit-list" data-p3d-unit-list></div>
 					</div>
-					<label class="nadlan-p3d-full"><span>יחידות JSON מתקדם</span><textarea name="project_3d_units" rows="10" class="widefat code" data-p3d-units-json><?php echo $js; ?></textarea><p class="nadlan-p3d-help">אפשר לערוך ידנית או להשתמש בטופס מעל. חובה לשמור מזהה, קומה, חדרים, מטרים, סטטוס ומיקום נקודה כדי שהדירה תהיה קליקה על המודל.</p></label>
+					<label class="nadlan-p3d-full"><span>יחידות JSON מתקדם</span><textarea name="project_3d_units" rows="10" class="widefat code" data-p3d-units-json><?php echo $js; ?></textarea><p class="nadlan-p3d-help">אפשר לערוך ידנית או להשתמש בטופס מעל. לבחירת דירה על חזית, מלאו `points` לפי תמונת חזית מאושרת. `stage_x` ו-`stage_w` הם גיבוי כאשר אין פוליגון חזית מדויק.</p></label>
 				</div>
 			</details>
 
@@ -2722,6 +2930,12 @@ if ( ! function_exists( 'nadlan_p3d_render_admin_metabox' ) ) {
 			var status = box.querySelector('[data-p3d-json-status]');
 			var list = box.querySelector('[data-p3d-unit-list]');
 			var fields = box.querySelectorAll('[data-u-field]');
+			var facadeStage = box.querySelector('[data-p3d-facade-stage]');
+			var facadeSvg = box.querySelector('[data-p3d-facade-svg]');
+			var facadeReset = box.querySelector('[data-p3d-facade-reset]');
+			var facadeApply = box.querySelector('[data-p3d-facade-apply]');
+			var facadeStatus = box.querySelector('[data-p3d-facade-status]');
+			var facadePoints = [];
 			function readUnits(){
 				var raw = textarea.value.trim();
 				if (!raw) { return []; }
@@ -2741,13 +2955,63 @@ if ( ! function_exists( 'nadlan_p3d_render_admin_metabox' ) ) {
 			function getField(name){
 				return box.querySelector('[data-u-field="' + name + '"]');
 			}
+			function facadeViewBox(){
+				var raw = facadeStage ? (facadeStage.getAttribute('data-viewbox') || '') : '';
+				var nums = raw.trim().split(/\s+/).map(parseFloat).filter(function(n){ return isFinite(n); });
+				return nums.length === 4 ? nums : [0, 0, 1000, 1000];
+			}
+			function facadePointText(points){
+				return points.map(function(p){ return Math.round(p.x) + ',' + Math.round(p.y); }).join(' ');
+			}
+			function setFacadeStatus(text){
+				if (facadeStatus) { facadeStatus.textContent = text; }
+			}
+			function renderFacadeDraft(){
+				if (!facadeSvg) { return; }
+				facadeSvg.innerHTML = '';
+				if (!facadePoints.length) { setFacadeStatus('0/4 נקודות'); return; }
+				var poly = document.createElementNS('http://www.w3.org/2000/svg', facadePoints.length >= 4 ? 'polygon' : 'polyline');
+				poly.setAttribute('class', 'nadlan-p3d-facade-poly');
+				poly.setAttribute('points', facadePointText(facadePoints));
+				facadeSvg.appendChild(poly);
+				facadePoints.forEach(function(p){
+					var c = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+					c.setAttribute('class', 'nadlan-p3d-facade-point');
+					c.setAttribute('cx', Math.round(p.x));
+					c.setAttribute('cy', Math.round(p.y));
+					c.setAttribute('r', '7');
+					facadeSvg.appendChild(c);
+				});
+				setFacadeStatus(Math.min(facadePoints.length, 4) + '/4 נקודות' + (facadePoints.length >= 4 ? ' · מוכן להעתקה' : ''));
+			}
+			function loadFacadePoints(raw){
+				facadePoints = [];
+				String(raw || '').trim().split(/\s+/).forEach(function(pair){
+					var xy = pair.split(',');
+					var x = parseFloat(xy[0]);
+					var y = parseFloat(xy[1]);
+					if (isFinite(x) && isFinite(y)) { facadePoints.push({ x: x, y: y }); }
+				});
+				renderFacadeDraft();
+			}
+			function addFacadePoint(event){
+				if (!facadeStage || !facadeSvg || facadeStage.getAttribute('data-empty') === '1') { return; }
+				var rect = facadeStage.getBoundingClientRect();
+				if (!rect.width || !rect.height) { return; }
+				if (facadePoints.length >= 4) { facadePoints = []; }
+				var vb = facadeViewBox();
+				var x = vb[0] + ((event.clientX - rect.left) / rect.width) * vb[2];
+				var y = vb[1] + ((event.clientY - rect.top) / rect.height) * vb[3];
+				facadePoints.push({ x: x, y: y });
+				renderFacadeDraft();
+			}
 			function collectUnit(){
 				var out = {};
 				Array.prototype.forEach.call(fields, function(field){
 					var key = field.getAttribute('data-u-field');
 					var val = (field.value || '').trim();
 					if (val === '') { return; }
-					if (key === 'floor' || key === 'sqm' || key === 'price_estimate' || key === 'rooms') { val = parseFloat(val); }
+					if (key === 'floor' || key === 'sqm' || key === 'price_estimate' || key === 'rooms' || key === 'stage_x' || key === 'stage_w') { val = parseFloat(val); }
 					if (key === 'recommended') { val = val === '1'; }
 					out[key] = val;
 				});
@@ -2763,11 +3027,13 @@ if ( ! function_exists( 'nadlan_p3d_render_admin_metabox' ) ) {
 					if (key === 'recommended') { field.value = val ? '1' : ''; return; }
 					field.value = val === undefined || val === null ? '' : String(val);
 				});
+				loadFacadePoints(unit.points || '');
 			}
 			function clearUnit(){
 				Array.prototype.forEach.call(fields, function(field){ field.value = ''; });
 				var st = getField('status');
 				if (st) { st.value = 'available'; }
+				loadFacadePoints('');
 			}
 			function renderList(){
 				if (!list) { return; }
@@ -2807,7 +3073,19 @@ if ( ! function_exists( 'nadlan_p3d_render_admin_metabox' ) ) {
 					catch(e) { showStatus('JSON לא תקין: ' + e.message, false); }
 				});
 			}
+			if (facadeStage) { facadeStage.addEventListener('click', addFacadePoint); }
+			if (facadeReset) { facadeReset.addEventListener('click', function(){ loadFacadePoints(''); }); }
+			if (facadeApply) {
+				facadeApply.addEventListener('click', function(){
+					var field = getField('points');
+					if (!field) { return; }
+					if (facadePoints.length < 4) { setFacadeStatus('צריך לסמן 4 נקודות לפני העתקה'); return; }
+					field.value = facadePointText(facadePoints.slice(0, 4));
+					setFacadeStatus('הועתק לשדה תא דירה. עכשיו לחצו הוסף או עדכן דירה');
+				});
+			}
 			renderList();
+			loadFacadePoints((getField('points') && getField('points').value) || '');
 		})();
 		</script>
 		<?php
@@ -2952,6 +3230,12 @@ add_filter(
 			'heading_contrast_v1653' => true,
 			'apartment_cell_selector_v1655' => true,
 			'mobile_cell_polish_v1656' => true,
+			'stage_cell_geometry_v1657' => true,
+			'facade_polygon_primary_v1657' => true,
+			'facade_points_builder_v1657' => true,
+			'facade_hides_placeholder_glb_v1657' => true,
+			'facade_cell_labels_v1657' => true,
+			'facade_point_helper_v1657' => true,
 			'showroom_payload_fields' => count( nadlan_p3d_showroom_fields() ),
 			'showroom_first_view' => true,
 			'static_featured_image_suppressed' => true,

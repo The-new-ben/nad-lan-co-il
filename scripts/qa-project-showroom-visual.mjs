@@ -218,10 +218,27 @@ function metricsExpression() {
     const stage = document.querySelector('.nlp3d-stage-wrap');
     const scene = document.querySelector('.nlp3d-scene');
     const card = document.querySelector('.nlp3d-stage-card');
-    const picks = Array.from(document.querySelectorAll('.nlp3d-stage-pick')).filter(visible);
+    const facadeHits = Array.from(document.querySelectorAll('.nlp3d-facade-hit')).filter(visible);
+    const facadeCells = Array.from(document.querySelectorAll('.nlp3d-facade-cell')).filter(visible);
+    const facadeLabels = Array.from(document.querySelectorAll('.nlp3d-facade-label')).filter(visible);
+    const stagePicks = Array.from(document.querySelectorAll('.nlp3d-stage-pick')).filter(visible);
+    const picks = facadeHits.length ? facadeHits : (facadeCells.length ? facadeCells : stagePicks);
     const firstPick = picks[0] || null;
     const firstPickRect = firstPick ? firstPick.getBoundingClientRect() : null;
-    const tapTargets = Array.from(document.querySelectorAll('.nlp3d-stage-pick,.nlp3d-stage-card-actions button,.nlp3d-lead-form button,.nlp3d-owner-form button,.nlp3d-tool,.nlp3d-view-toggle')).filter(visible).map((el) => {
+    const activePressedCount = Array.from(document.querySelectorAll('.nlp3d-facade-hit[aria-pressed="true"],.nlp3d-facade-cell[aria-pressed="true"],.nlp3d-stage-pick[aria-pressed="true"]')).filter(visible).length;
+    const facadeCellRects = facadeCells.map((el) => {
+      const r = el.getBoundingClientRect();
+      return { width: r.width, height: r.height };
+    });
+    const facadeHitRects = facadeHits.map((el) => {
+      const r = el.getBoundingClientRect();
+      return { width: r.width, height: r.height };
+    });
+    const minFacadeCellWidth = facadeCellRects.reduce((min, r) => Math.min(min, r.width), facadeCellRects.length ? Infinity : 0);
+    const minFacadeCellHeight = facadeCellRects.reduce((min, r) => Math.min(min, r.height), facadeCellRects.length ? Infinity : 0);
+    const minFacadeHitWidth = facadeHitRects.reduce((min, r) => Math.min(min, r.width), facadeHitRects.length ? Infinity : 0);
+    const minFacadeHitHeight = facadeHitRects.reduce((min, r) => Math.min(min, r.height), facadeHitRects.length ? Infinity : 0);
+    const tapTargets = Array.from(document.querySelectorAll('.nlp3d-facade-hit,.nlp3d-facade-cell,.nlp3d-stage-pick,.nlp3d-stage-card-actions button,.nlp3d-lead-form button,.nlp3d-owner-form button,.nlp3d-tool,.nlp3d-view-toggle')).filter(visible).map((el) => {
       const r = el.getBoundingClientRect();
       return { selector: el.className || el.getAttribute('data-action') || el.tagName, width: r.width, height: r.height };
     });
@@ -243,6 +260,19 @@ function metricsExpression() {
       cardRect: rect(card),
       cardHidden: !card || card.hidden || !visible(card),
       pickCount: picks.length,
+      facadeHitCount: facadeHits.length,
+      facadeCellCount: facadeCells.length,
+      facadeLabelCount: facadeLabels.length,
+      activePressedCount,
+      facadeCells: {
+        minWidth: Math.round(minFacadeCellWidth * 10) / 10,
+        minHeight: Math.round(minFacadeCellHeight * 10) / 10
+      },
+      facadeHits: {
+        minWidth: Math.round(minFacadeHitWidth * 10) / 10,
+        minHeight: Math.round(minFacadeHitHeight * 10) / 10
+      },
+      stagePickCount: stagePicks.length,
       recommendedPickCount: picks.filter((p) => p.classList.contains('is-recommended')).length,
       firstPickCenter: firstPickRect ? { x: Math.round(firstPickRect.left + firstPickRect.width / 2), y: Math.round(firstPickRect.top + firstPickRect.height / 2) } : null,
       modelViewerDefined: !!customElements.get('model-viewer'),
@@ -254,6 +284,8 @@ function metricsExpression() {
         hasBuyerCta: text.includes('דברו איתי על הדירה'),
         hasNonBindingPurchase: text.includes('לא מחייב'),
         hasOwnerCta: text.includes('מציגים פרויקט חדש'),
+        hasFacadePrimaryCopy: text.includes('בוחרים על החזית') || text.includes('לחצו על תא דירה בחזית'),
+        overpromisesSpinFirst: text.includes('1. מסובבים') || text.includes('בחירת דירה בתלת ממד'),
         hasInternalWords: /לידים|פאנל|CRM|monetization|paid placement/.test(text)
       },
       errors
@@ -314,10 +346,24 @@ async function runViewport(client, args, viewport, outDir, pageErrors) {
   if (!after.rootRect) failures.push('showroom root missing');
   if (after.scroll.overflow > 2) failures.push(`horizontal overflow ${after.scroll.overflow}px`);
   if (after.h1s.length !== 1) failures.push(`expected one H1, found ${after.h1s.length}`);
-  if (after.pickCount < 1) failures.push('no visible apartment stage picks');
+  if (after.pickCount < 1) failures.push('no visible facade/stage apartment selectors');
+  if (after.facadeCellCount > 0 && after.facadeLabelCount < Math.min(2, after.facadeCellCount)) failures.push(`facade labels missing (${after.facadeLabelCount}/${after.facadeCellCount})`);
+  if (after.facadeCellCount > 0) {
+    const minVisualW = viewport.width <= 390 ? 24 : 36;
+    const minVisualH = viewport.width <= 390 ? 10 : 14;
+    if (after.facadeCells.minWidth < minVisualW || after.facadeCells.minHeight < minVisualH) {
+      failures.push(`facade cells too thin (${after.facadeCells.minWidth}x${after.facadeCells.minHeight}px)`);
+    }
+  }
+  if (after.facadeHitCount > 0 && (after.facadeHits.minWidth < 44 || after.facadeHits.minHeight < 44)) {
+    failures.push(`facade hit target below 44px (${after.facadeHits.minWidth}x${after.facadeHits.minHeight}px)`);
+  }
   if (after.firstPickCenter && after.cardHidden) failures.push('clicking apartment did not reveal selected card');
+  if (after.firstPickCenter && after.activePressedCount < 1) failures.push('clicking apartment did not mark a selected apartment control');
   if (after.tapTargets.count && after.tapTargets.min < 44) failures.push(`tap target below 44px (${after.tapTargets.min}px)`);
   if (after.rootRect && viewport.width <= 768 && (after.rootRect.x < -2 || after.rootRect.right > viewport.width + 2)) failures.push(`showroom cropped on mobile/tablet: ${JSON.stringify(after.rootRect)}`);
+  if (!after.textSignals.hasFacadePrimaryCopy) failures.push('showroom copy does not lead with facade apartment selection');
+  if (after.textSignals.overpromisesSpinFirst) failures.push('showroom copy still leads with spin/3D wording before true per-apartment BIM exists');
   if (after.textSignals.hasInternalWords) failures.push('public text contains internal wording');
   if (after.errors.length) failures.push(`HTML leak markers: ${after.errors.join(', ')}`);
   const viewportErrors = pageErrors.splice(0, pageErrors.length);

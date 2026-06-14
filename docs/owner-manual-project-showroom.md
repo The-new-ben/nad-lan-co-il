@@ -85,10 +85,58 @@ the building itself:
 - `recommended` adds a gentle pulse only for an available unit the owner wants to feature.
 - `label`, `floor`, `rooms`, `sqm`, `view` and `price_estimate` feed the tooltip and selected card.
 - `hotspot_position` and `hotspot_normal` place the cell on the GLB model.
-- `points` places the same apartment on a future official facade/elevation drawing.
+- `stage_x` places the same cell horizontally on the facade/stage layer, from `0` at the left side
+  of the building to `100` at the right side.
+- `stage_w` controls the visible apartment-cell width on that facade/stage layer.
+- `points` places the same apartment directly on the facade/elevation drawing. When `points`
+  exists, this is the preferred buyer selector because the apartment itself becomes the clickable
+  shape on the building.
+
+In the WordPress editor this is the field named `תא דירה על חזית SVG` inside the
+`בחירת דירות אינטראקטיבית` box. Paste polygon coordinates such as
+`402,565 494,565 494,600 402,600`. Use a real facade/elevation image and a consistent
+`project_3d_viewbox` when moving from prototype to official developer material.
+
+### Facade Point Helper
+
+Version 1.65.7 adds a small helper inside the same unit builder:
+
+1. Fill `תמונת מקור או הדמיה מאושרת` and `viewBox` first.
+2. Open `3. דירות לבחירה`.
+3. Click an existing unit in the unit list, or fill a new unit.
+4. In `עוזר סימון חזית`, click the four corners of the apartment on the facade image.
+5. Click `העתק לשדה תא דירה`.
+6. Click `הוסף או עדכן דירה`.
+7. Update the project and check the public page.
+
+The helper does not save by itself. It only fills the `points` field so the normal sanitized unit
+JSON path remains the source of truth. If the facade image changes, re-check the polygons.
+
+For Rainbow only, version 1.65.7 includes a one-shot safety seed that backfills the prototype
+facade cells if the older 1.63.5 showroom data was already installed before the `points` field
+existed. For every new project, treat this as normal CMS data: image, viewBox and one `points`
+polygon per apartment.
 
 If the cells look approximate, that means the project still needs official BIM/elevation data. Do
 not call approximate cells official apartment plans.
+
+Public wording must match the configured asset. If the project uses facade/elevation `points`,
+describe the experience as choosing an apartment on the facade. Do not make the first public step
+"spin the model" and do not call it exact 3D apartment selection until the project has a real
+apartment-level BIM/GLB model.
+
+The quality ladder is:
+
+1. `points` on a facade/elevation image: best current path for a real sales-center style selector.
+2. `hotspot_position` on a GLB: useful for 3D model annotations, but not exact apartment geometry
+   unless the model was built with apartment-level coordinates.
+3. separate apartment meshes in BIM/GLB: the future perfect state for true 360-degree apartment
+   picking on every side of the tower.
+
+If both `points` and a placeholder GLB exist, the facade selector should stay primary. Do not stack
+an approximate GLB behind the facade cells in a way that makes two towers appear at once. A rotating
+GLB becomes the primary selector only when it contains real apartment-level meshes or verified
+hotspot coordinates supplied by the project team.
 
 JSON array of apartment/unit rows. Each row can include:
 
@@ -112,6 +160,9 @@ JSON array of apartment/unit rows. Each row can include:
 - `view_note`
 - `hotspot_position`
 - `hotspot_normal`
+- `stage_x`
+- `stage_w`
+- `points`
 - `camera_orbit`
 
 The important model fields are:
@@ -122,6 +173,12 @@ The important model fields are:
   wants to feature, such as sea view, high floor or limited availability.
 - `hotspot_position`: where the clickable apartment marker appears on the 3D model.
 - `hotspot_normal`: the direction the marker faces.
+- `stage_x`: where the facade cell appears left-to-right on the building, from `0` to `100`.
+- `stage_w`: how wide the facade cell appears, from `4` to `22`; use wider values for penthouses
+  or combined lines.
+- `points`: polygon coordinates in the `project_3d_viewbox`, for example
+  `402,565 494,565 494,600 402,600`. Use this when you have an elevation/facade image or a traced
+  sales plan.
 - `camera_orbit`: optional camera angle when the apartment is selected.
 
 Rainbow prototype unit file:
@@ -298,7 +355,8 @@ Use this for the next project run:
    ```
 
 4. Review `<project-folder>/showroom-payload.json`. It must contain the `meta` object with all
-   allowed showroom fields.
+   allowed showroom fields. Each unit must include `points`, `stage_x` and `stage_w`; without
+   those fields the project is not ready for the facade apartment selector.
 5. POST `showroom-payload.json` to the project-showroom route.
 6. Open the WordPress editor only for visual review and small corrections.
 7. Open the public page in Chrome and verify the model, markers, selected card and form.
@@ -309,7 +367,7 @@ Rainbow reference payload:
 
 ### Safe Import Command
 
-After the live plugin update shows `version: 1.65.2` or higher in the healthcheck, use the import
+After the live plugin update shows `version: 1.65.7` or higher in the healthcheck, use the import
 script to validate or apply the payload.
 
 Dry run, no write:
@@ -336,14 +394,20 @@ node scripts/import-project-showroom-payload.mjs `
 
 The script refuses to write when:
 
-- live healthcheck is below `1.65.2`;
+- live healthcheck is below `1.65.7`;
 - `project_3d.showroom_payload_api_v1652` is missing;
+- `project_3d.facade_points_builder_v1657` or `project_3d.facade_hides_placeholder_glb_v1657`
+  is missing;
 - `WP_USER` or `WP_APP_PASSWORD` is missing;
 - the payload does not match the allowed showroom field contract.
 
 Payload schema:
 
 `docs/templates/project-showroom-payload.schema.json`
+
+The schema intentionally requires facade-cell fields. If a future official BIM/GLB contains real
+apartment meshes, create a separate BIM-specific contract. Do not weaken this selector contract,
+because it is what prevents a project from shipping as dots or floating markers.
 
 ### Live QA Command
 
@@ -426,3 +490,7 @@ apartment-shaped cells or polygons that make the location of the apartment obvio
 Mobile check: open the page at 390px. Every apartment cell must be comfortable to tap, at least
 44px by 44px, and selecting a unit must show the apartment card without pushing the model out of
 view.
+
+Visual check: do not draw apartment polygons as very thin highlight strips. A buyer should be able
+to read each target as a real apartment zone on the facade. The visible cell can be smaller than the
+hidden tap box, but it must still look like a selectable apartment, not a decorative underline.

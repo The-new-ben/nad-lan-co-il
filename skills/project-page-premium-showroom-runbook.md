@@ -108,20 +108,42 @@ Per-unit fields required for a buyer-ready selector:
 3. `recommended` boolean for owner-approved featured units.
 4. `price_estimate` plus source note when an approximate price is shown.
 5. `hotspot_position` and `hotspot_normal` for GLB hotspots.
+6. `points` for the facade/elevation apartment polygon. This is the preferred selector when a
+   true per-apartment GLB mesh is not yet available.
+7. `stage_x` and `stage_w` for facade/stage-cell placement when exact polygon points are
+   not yet available.
 
 Marker design rule: the model surface should read as apartment inventory. Use facade-like
 rectangles/cells with status color and subtle window rhythm as the default. Use dots only as a
 last-resort fallback when the actual model geometry is too dense or the viewport is too small. The
 full details belong in the selected-apartment card, especially on mobile.
 
+Facade rule: if a facade/elevation image and `points` polygons exist, that layer is the primary
+selector. The buyer clicks the apartment shape on the building. `stage_x`/`stage_w` are fallback
+placement hints for projects that do not yet have a traced facade. True 360-degree picking needs a
+BIM/GLB where apartments are separate selectable meshes.
+
+Do not stack a placeholder/massing GLB and a facade selector so two towers appear at once. If
+`points` exist and the GLB is not apartment-mesh accurate, hide the GLB in the selector view and
+let the facade be the truthful product surface. A 360 GLB selector becomes primary only after the
+model carries real apartment meshes or verified unit hotspots.
+
+For a live retrofit, add a new versioned one-shot seed that checks the existing unit JSON first.
+If any unit already has `points`, leave the contractor data alone. If no unit has `points`, apply
+the approved project payload and expose a healthcheck flag proving the post now has facade cells.
+
+The project payload validator must require `points`, `stage_x` and `stage_w` per unit for this
+facade-selector path. The next project should fail in the script before it ever reaches WordPress if
+it would render as generic dots or floating markers.
+
 Apartment-cell rule: if a buyer says "these are just dots", the design failed. The visual target is
 closer to a product configurator plus a tower sales plan: visible apartment rectangles on the
 building, each with availability color and a large invisible touch zone. The cell should answer
 "where is this apartment in the building?" before the tooltip or side panel opens.
 
-Gesture rule: the same large hit area must support both buyer actions. A tap selects the apartment,
-but a drag that starts on the marker rotates the building. Never exclude the unit hit area from the
-model drag path.
+Gesture rule: a tap/click on an apartment cell selects that apartment. Dragging on empty building
+surface rotates the model. Do not let the cell itself start a scene drag unless there is a tested
+drag-vs-tap disambiguation layer; otherwise buyers feel that the selector is jammed.
 
 Selected-card rule: once a unit is selected, the card must answer the buyer's first four questions:
 is it available, what is the approximate price context, what view/direction does it have, and what

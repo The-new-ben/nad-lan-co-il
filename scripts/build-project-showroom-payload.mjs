@@ -66,7 +66,7 @@ function validatePayload(payload) {
     errors.push('project_3d_units must be a non-empty array');
   } else {
     units.forEach((unit, index) => {
-      for (const key of ['id', 'title', 'floor', 'rooms', 'sqm', 'status', 'hotspot_position', 'hotspot_normal']) {
+      for (const key of ['id', 'title', 'floor', 'rooms', 'sqm', 'status', 'hotspot_position', 'hotspot_normal', 'points', 'stage_x', 'stage_w']) {
         if (unit[key] === undefined || unit[key] === '') errors.push(`unit ${index} missing ${key}`);
       }
       validateUrl(unit.plan, `unit ${index} plan`, errors);

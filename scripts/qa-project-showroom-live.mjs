@@ -1,7 +1,7 @@
 const DEFAULT_SITE = 'https://nad-lan.co.il';
 const DEFAULT_SLUG = 'rainbow-tel-aviv';
 const DEFAULT_POST_ID = 4464;
-const DEFAULT_MIN_VERSION = '1.65.2';
+const DEFAULT_MIN_VERSION = '1.65.7';
 
 function parseArgs(argv) {
   const out = {
@@ -145,6 +145,12 @@ async function main() {
   result.live_version = liveVersion;
   add(result, compareVersions(liveVersion, args.minVersion) >= 0, 'live plugin version is new enough', `${liveVersion} >= ${args.minVersion}`);
   add(result, !!(health.project_3d && health.project_3d.showroom_payload_api_v1652), 'payload API health marker is present', 'project_3d.showroom_payload_api_v1652');
+  add(result, !!(health.project_3d && health.project_3d.facade_points_builder_v1657), 'facade points builder health marker is present', 'project_3d.facade_points_builder_v1657');
+  add(result, !!(health.project_3d && health.project_3d.facade_hides_placeholder_glb_v1657), 'facade hides placeholder GLB marker is present', 'project_3d.facade_hides_placeholder_glb_v1657');
+  add(result, !!(health.project_3d && health.project_3d.facade_cell_labels_v1657), 'facade cell labels health marker is present', 'project_3d.facade_cell_labels_v1657');
+  add(result, !!(health.project_3d && health.project_3d.facade_point_helper_v1657), 'facade point helper health marker is present', 'project_3d.facade_point_helper_v1657');
+  add(result, !!(health.project_page_assembly && health.project_page_assembly.rainbow_showroom_v1657), 'Rainbow v1.65.7 seed has run', 'project_page_assembly.rainbow_showroom_v1657');
+  add(result, !!(health.project_page_assembly && health.project_page_assembly.rainbow_units_have_facade_points), 'Rainbow units have facade points', 'project_page_assembly.rainbow_units_have_facade_points');
 
   const html = await fetchText(`${args.site}/projects/${args.slug}/?cb=${Date.now()}`);
   const title = titleOf(html);
@@ -180,6 +186,15 @@ async function main() {
     'stageCard.dataset.status',
     'data-unit',
   ].filter((needle) => html.includes(needle)).length;
+  const facadeRuntimeSignals = [
+    'function renderFacade',
+    'nlp3d-facade-cell',
+    'nlp3d-facade-hit',
+    'nlp3d-facade-label',
+    'has-facade-polygons',
+    'select-unit-facade-hit',
+    'facade_polygon_primary_v1657',
+  ].filter((needle) => html.includes(needle)).length;
 
   result.page = {
     title,
@@ -193,7 +208,11 @@ async function main() {
       buyer_form_field_count: buyerFormFieldCount,
       owner_form_field_count: ownerFormFieldCount,
       runtime_signal_count: journeyRuntimeSignals,
+      facade_runtime_signal_count: facadeRuntimeSignals,
       stage_pick_css_mentions: countMatches(html, /nlp3d-stage-pick/g),
+      facade_cell_mentions: countMatches(html, /nlp3d-facade-cell/g),
+      facade_hit_mentions: countMatches(html, /nlp3d-facade-hit/g),
+      facade_label_mentions: countMatches(html, /nlp3d-facade-label/g),
       recommended_mentions: countMatches(html, /is-recommended/g),
     },
   };
@@ -206,10 +225,13 @@ async function main() {
   add(result, mvScript !== '' && /\btype=["']module["']/i.test(mvScript), 'model-viewer script is type module', mvScript || 'missing');
   add(result, hotspotSlots >= 3, 'model-viewer hotspots exist', `${hotspotSlots} hotspot slots`);
   add(result, journeyRuntimeSignals >= 5, 'apartment selector runtime contract exists', `${journeyRuntimeSignals}/6 runtime signals`);
+  add(result, facadeRuntimeSignals >= 5, 'facade-cell runtime contract exists', `${facadeRuntimeSignals}/6 runtime signals`);
   add(result, html.includes('nlp3d-stage-card') && stageActionCount === 3, 'selected apartment action card exists', `${stageActionCount}/3 stage actions`);
   add(result, buyerFormFieldCount >= 7, 'buyer inquiry and non-binding purchase form exists', `${buyerFormFieldCount}/7 buyer form signals`);
   add(result, ownerFormFieldCount >= 4, 'contractor project request form exists', `${ownerFormFieldCount}/4 owner form signals`);
-  add(result, countMatches(html, /nlp3d-stage-pick/g) >= 4, 'visible stage-pick marker system is present', `${countMatches(html, /nlp3d-stage-pick/g)} mentions`);
+  add(result, countMatches(html, /nlp3d-facade-cell/g) >= 4, 'facade-cell marker system is present', `${countMatches(html, /nlp3d-facade-cell/g)} mentions`);
+  add(result, countMatches(html, /nlp3d-facade-hit/g) >= 2, 'facade-cell hit target system is present', `${countMatches(html, /nlp3d-facade-hit/g)} mentions`);
+  add(result, countMatches(html, /nlp3d-facade-label/g) >= 2, 'facade-cell labels are present', `${countMatches(html, /nlp3d-facade-label/g)} mentions`);
   add(result, html.includes('is-recommended'), 'recommended apartment pulse state is present', 'is-recommended');
   add(result, title.includes('Rainbow') && title.includes('שדה דב'), 'SEO title has Rainbow and Sde Dov', title);
   add(result, /מחיר|מחירים|למכירה/.test(title), 'SEO title is transaction-led', title);

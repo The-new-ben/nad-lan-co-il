@@ -24,7 +24,10 @@
     "hotspot_normal": "0 0 1",
     "camera_orbit": "45deg 66deg auto",
     "label": "דירת 3 חדרים, קומה 8",
-    "recommended": false
+    "recommended": false,
+    "stage_x": 38,
+    "stage_w": 9,
+    "points": "402,565 494,565 494,600 402,600"
   },
   {
     "id": "unit-16-w",
@@ -51,7 +54,10 @@
     "hotspot_normal": "0 0 1",
     "camera_orbit": "35deg 63deg auto",
     "label": "דירת 4 חדרים, קומה 16",
-    "recommended": false
+    "recommended": false,
+    "stage_x": 45,
+    "stage_w": 9,
+    "points": "486,466 578,466 578,501 486,501"
   },
   {
     "id": "unit-24-nw",
@@ -78,7 +84,10 @@
     "hotspot_normal": "0 0 1",
     "camera_orbit": "24deg 61deg auto",
     "label": "דירת 4 חדרים, קומה 24",
-    "recommended": true
+    "recommended": true,
+    "stage_x": 42,
+    "stage_w": 9,
+    "points": "570,367 662,367 662,402 570,402"
   },
   {
     "id": "unit-31-se",
@@ -105,7 +114,10 @@
     "hotspot_normal": "0 0 1",
     "camera_orbit": "310deg 64deg auto",
     "label": "דירת 5 חדרים, קומה 31",
-    "recommended": false
+    "recommended": false,
+    "stage_x": 63,
+    "stage_w": 9,
+    "points": "486,268 578,268 578,303 486,303"
   },
   {
     "id": "unit-38-penthouse",
@@ -132,7 +144,10 @@
     "hotspot_normal": "0 0 1",
     "camera_orbit": "32deg 58deg auto",
     "label": "דירת 5 חדרים, קומה 38",
-    "recommended": true
+    "recommended": true,
+    "stage_x": 51,
+    "stage_w": 13,
+    "points": "402,136 660,136 660,182 402,182"
   },
   {
     "id": "unit-boutique-07",
@@ -159,6 +174,9 @@
     "hotspot_normal": "0 0 1",
     "camera_orbit": "55deg 67deg auto",
     "label": "דירת 4 חדרים, קומה 7",
-    "recommended": false
+    "recommended": false,
+    "stage_x": 22,
+    "stage_w": 9,
+    "points": "696,693 798,693 798,737 696,737"
   }
 ]

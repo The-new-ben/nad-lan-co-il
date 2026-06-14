@@ -302,6 +302,62 @@ if ( ! function_exists( 'nadlan_project_page_seed_rainbow_showroom_v1635' ) ) {
 }
 add_action( 'init', 'nadlan_project_page_seed_rainbow_showroom_v1635', 32 );
 
+if ( ! function_exists( 'nadlan_project_page_units_have_facade_points' ) ) {
+	function nadlan_project_page_units_have_facade_points( $json ) {
+		$units = json_decode( (string) $json, true );
+		if ( ! is_array( $units ) ) {
+			return false;
+		}
+		foreach ( $units as $unit ) {
+			if ( is_array( $unit ) && trim( (string) ( $unit['points'] ?? '' ) ) !== '' ) {
+				return true;
+			}
+		}
+		return false;
+	}
+}
+
+if ( ! function_exists( 'nadlan_project_page_seed_rainbow_showroom_v1657' ) ) {
+	function nadlan_project_page_seed_rainbow_showroom_v1657() {
+		if ( get_option( 'nadlan_rainbow_showroom_v1657' ) ) {
+			return;
+		}
+		$post = nadlan_project_page_find_by_slug( 'rainbow-tel-aviv' );
+		if ( ! $post ) {
+			return;
+		}
+
+		$post_id = (int) $post->ID;
+		$base    = 'https://raw.githubusercontent.com/The-new-ben/nad-lan-co-il/main/assets/projects/rainbow-tel-aviv/';
+
+		$units_existing = (string) get_post_meta( $post_id, 'project_3d_units', true );
+		if ( ! nadlan_project_page_units_have_facade_points( $units_existing ) ) {
+			$units_json = nadlan_project_page_fetch_rainbow_asset_json( $base . 'unit-map.json' );
+			if ( $units_json === '' || ! nadlan_project_page_units_have_facade_points( $units_json ) ) {
+				return;
+			}
+			update_post_meta( $post_id, 'project_3d_units', nadlan_p3d_sanitize_units_json( $units_json ) );
+		}
+
+		if ( get_post_meta( $post_id, 'project_3d_image', true ) === '' ) {
+			update_post_meta(
+				$post_id,
+				'project_3d_image',
+				esc_url_raw( plugins_url( '../assets/concept/rainbow-facade-demo.svg', __FILE__ ) )
+			);
+		}
+		if ( get_post_meta( $post_id, 'project_3d_viewbox', true ) === '' ) {
+			update_post_meta( $post_id, 'project_3d_viewbox', '0 0 1000 1000' );
+		}
+		if ( get_post_meta( $post_id, 'project_3d_demo', true ) === '' ) {
+			update_post_meta( $post_id, 'project_3d_demo', '1' );
+		}
+
+		update_option( 'nadlan_rainbow_showroom_v1657', time(), false );
+	}
+}
+add_action( 'init', 'nadlan_project_page_seed_rainbow_showroom_v1657', 33 );
+
 add_filter( 'nadlan_config_healthcheck', function ( $out ) {
 	$post = nadlan_project_page_find_by_slug( 'rainbow-tel-aviv' );
 	$out['project_page_assembly'] = array(
@@ -310,6 +366,8 @@ add_filter( 'nadlan_config_healthcheck', function ( $out ) {
 		'rainbow_seed'       => (bool) get_option( 'nadlan_rainbow_seed_v1610' ),
 		'rainbow_seo_v1634'  => (bool) get_option( 'nadlan_rainbow_seo_v1634' ),
 		'rainbow_showroom_v1635' => (bool) get_option( 'nadlan_rainbow_showroom_v1635' ),
+		'rainbow_showroom_v1657' => (bool) get_option( 'nadlan_rainbow_showroom_v1657' ),
+		'rainbow_units_have_facade_points' => $post ? nadlan_project_page_units_have_facade_points( get_post_meta( (int) $post->ID, 'project_3d_units', true ) ) : false,
 		'faq_meta'           => $post ? ( get_post_meta( (int) $post->ID, 'project_faq_json', true ) !== '' ) : false,
 		'price_meta'         => $post ? ( get_post_meta( (int) $post->ID, 'price_range', true ) !== '' ) : false,
 		'title_override'     => nadlan_project_page_rainbow_seo_title_text(),

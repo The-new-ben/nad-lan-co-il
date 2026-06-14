@@ -69,7 +69,7 @@ Top visible rows included recent 2026 transactions with prices, sqm, and room co
   "price": 0,
   "status": "available",
   "plan": "",
-  "points": "576,380 654,380 654,396 576,396"
+  "points": "570,367 662,367 662,402 570,402"
 }
 ```
 
