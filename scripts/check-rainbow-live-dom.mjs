@@ -169,6 +169,7 @@ const METRICS_EXPRESSION = `(() => {
     const s = getComputedStyle(el);
     return r.width > 1 && r.height > 1 && s.display !== 'none' && s.visibility !== 'hidden' && Number(s.opacity || 0) > 0.01;
   };
+  const overlaps = (a, b) => Boolean(a && b && a.width > 0 && b.width > 0 && a.x < b.x + b.width && a.x + a.width > b.x && a.y < b.y + b.height && a.y + a.height > b.y);
   const q = (s) => document.querySelector(s);
   const qa = (s) => Array.from(document.querySelectorAll(s));
   const bodyText = document.body ? document.body.innerText || '' : '';
@@ -176,6 +177,23 @@ const METRICS_EXPRESSION = `(() => {
   const stage = q('.nlp3d-stage-wrap, .nlp3d-stage, .nlp3d-model-shell, .nlp3d-model-viewer, .nlp3d');
   const model = q('model-viewer');
   const featured = q('.wp-block-post-featured-image');
+  const modelHotspots = qa('.nlp3d-mv-hotspot[data-unit]');
+  const facadeHotspots = qa('.nlp3d-hotspot[data-unit], .nlp3d-hotspot-hit[data-unit]');
+  const selectedTitle = q('.nlp3d-selected-title');
+  const stageCard = q('.nlp3d-stage-card');
+  const stageControls = qa('.nlp3d-toolbar button, .nlp3d-mv-hotspot, .nlp3d-hotspot, .nlp3d-hotspot-hit, .nlp3d-stage-card button, .nlp3d-stage-card a, .nlp3d-viewframe button, .nlp3d-lead-form input, .nlp3d-lead-form button').filter(visible).map(rect).filter(Boolean);
+  const fixedWidgets = qa('.nlfab, #nlai, #nla-btn, [data-nadlan-floating], a[href^="tel:"], a[href*="wa.me"]').filter((el) => {
+    const s = getComputedStyle(el);
+    return visible(el) && (s.position === 'fixed' || s.position === 'sticky');
+  }).map((el) => {
+    const r = rect(el);
+    return {
+      selector: el.id ? '#'+el.id : (el.className ? '.'+String(el.className).trim().split(/\\s+/).slice(0, 2).join('.') : el.tagName.toLowerCase()),
+      text: (el.innerText || el.getAttribute('aria-label') || el.getAttribute('title') || '').trim().slice(0, 48),
+      rect: r,
+      overlapsStageControl: stageControls.some((control) => overlaps(r, control)),
+    };
+  });
   const rawLeakPatterns = ['class="nlpf', "class='nlpf", 'function(', 'const ', '<script', '</div>'];
   const tapSmall = qa('.nlp3d button, .nlp3d a, .nlp3d input, .nlp3d [role="button"]').filter((el) => {
     if (!visible(el)) return false;
@@ -207,18 +225,64 @@ const METRICS_EXPRESSION = `(() => {
     stageRect: rect(stage),
     hasModelViewer: Boolean(model),
     modelViewerRect: rect(model),
+    modelViewerLoaded: Boolean(nlp3d && nlp3d.classList.contains('has-model-viewer-loaded')),
+    modelViewerError: Boolean(nlp3d && nlp3d.classList.contains('has-model-viewer-error')),
+    modelHotspots: modelHotspots.length,
+    visibleModelHotspots: modelHotspots.filter(visible).length,
+    facadeHotspots: facadeHotspots.length,
+    selectedTitle: selectedTitle ? (selectedTitle.innerText || '').trim() : '',
+    stageCardHidden: stageCard ? (stageCard.hidden || !visible(stageCard)) : null,
     hasFallbackTower: Boolean(q('.nlp3d-building, .nlp3d-tower, .nlp3d-facade, .nlp3d-floor-stack')),
     hasMapboxCanvas: Boolean(q('.mapboxgl-canvas')),
     hasUnitButtons: qa('.nlp3d button, .nlp3d [role="button"]').length,
     featuredImageRect: rect(featured),
     featuredImageVisible: Boolean(featured && visible(featured)),
+    fixedWidgets,
+    fixedOverlapsStageControls: fixedWidgets.filter((item) => item.overlapsStageControl),
     rawLeak: rawLeakPatterns.filter((pattern) => bodyText.includes(pattern)),
     smallTapTargets: tapSmall,
     pageErrorsVisible: bodyText.includes('Fatal error') || bodyText.includes('Warning:') || bodyText.includes('Parse error'),
   };
 })()`;
 
-function evaluateChecks(metrics, expectGlb) {
+const INTERACTION_EXPRESSION = `(async () => {
+  const visible = (el) => {
+    if (!el) return false;
+    const r = el.getBoundingClientRect();
+    const s = getComputedStyle(el);
+    return r.width > 1 && r.height > 1 && s.display !== 'none' && s.visibility !== 'hidden' && Number(s.opacity || 0) > 0.01;
+  };
+  const q = (s) => document.querySelector(s);
+  const before = (q('.nlp3d-selected-title')?.innerText || '').trim();
+  const activeBefore = q('.nlp3d-mv-hotspot.is-active[data-unit], .nlp3d-hotspot.is-active[data-unit], .nlp3d-hotspot-hit.is-active[data-unit], .nlp3d-unit-card.is-active[data-unit]')?.getAttribute('data-unit') || '';
+  const candidates = Array.from(document.querySelectorAll('.nlp3d-mv-hotspot[data-unit], .nlp3d-hotspot[data-unit], .nlp3d-hotspot-hit[data-unit], .nlp3d-unit-card[data-unit]'));
+  const target = candidates.find((el) => (el.getAttribute('data-unit') || '') && el.getAttribute('data-unit') !== activeBefore) || candidates[0] || null;
+  if (target) {
+    target.dispatchEvent(new MouseEvent('click', { bubbles: true, cancelable: true, view: window }));
+    await new Promise((resolve) => setTimeout(resolve, 500));
+  }
+  const after = (q('.nlp3d-selected-title')?.innerText || '').trim();
+  const stageTitle = (q('.nlp3d-stage-card-title')?.innerText || '').trim();
+  const stageCard = q('.nlp3d-stage-card');
+  const active = Array.from(document.querySelectorAll('.nlp3d-mv-hotspot.is-active, .nlp3d-hotspot.is-active, .nlp3d-hotspot-hit.is-active, .nlp3d-unit-card.is-active')).length;
+  const targetUnit = target ? (target.getAttribute('data-unit') || '') : '';
+  const clickedIsActive = Boolean(targetUnit && document.querySelector('.nlp3d-mv-hotspot.is-active[data-unit="'+CSS.escape(targetUnit)+'"], .nlp3d-hotspot.is-active[data-unit="'+CSS.escape(targetUnit)+'"], .nlp3d-hotspot-hit.is-active[data-unit="'+CSS.escape(targetUnit)+'"], .nlp3d-unit-card.is-active[data-unit="'+CSS.escape(targetUnit)+'"]'));
+  const targetClass = target ? (typeof target.className === 'string' ? target.className : (target.getAttribute('class') || target.tagName.toLowerCase())) : '';
+  return {
+    attempted: Boolean(target),
+    targetSelector: targetClass.trim().slice(0, 80),
+    targetUnit,
+    beforeTitle: before,
+    afterTitle: after,
+    stageTitle,
+    stageCardVisible: Boolean(stageCard && visible(stageCard) && !stageCard.hidden),
+    activeCount: active,
+    clickedIsActive,
+    changed: Boolean(target && after && !/^בחרו דירה/.test(after) && (after !== before || clickedIsActive)),
+  };
+})()`;
+
+function evaluateChecks(metrics, expectGlb, interaction) {
   const checks = [];
   const add = (status, name, detail) => checks.push({ status, name, detail });
   add(metrics.h1.length === 1 ? 'PASS' : 'FAIL', 'single H1', `${metrics.h1.length}`);
@@ -229,12 +293,17 @@ function evaluateChecks(metrics, expectGlb) {
   if (expectGlb) {
     const goodModel = metrics.hasModelViewer && metrics.modelViewerRect && metrics.modelViewerRect.width >= 300 && metrics.modelViewerRect.height >= 280;
     add(goodModel ? 'PASS' : 'FAIL', 'model-viewer visible', JSON.stringify(metrics.modelViewerRect));
+    add(metrics.modelViewerError ? 'FAIL' : 'PASS', 'model-viewer did not error', metrics.modelViewerError ? 'has-model-viewer-error present' : 'no error class');
+    add(metrics.modelHotspots > 0 ? 'PASS' : 'FAIL', 'model-viewer hotspots present', `${metrics.modelHotspots}`);
   } else {
     add(metrics.hasModelViewer ? 'PASS' : 'WARN', 'model-viewer visible', metrics.hasModelViewer ? JSON.stringify(metrics.modelViewerRect) : 'not wired yet');
   }
   add(metrics.hasFallbackTower || metrics.hasModelViewer ? 'PASS' : 'FAIL', 'model or fallback visible', `fallback=${metrics.hasFallbackTower}, model=${metrics.hasModelViewer}`);
   add(metrics.featuredImageVisible ? 'WARN' : 'PASS', 'static featured image suppressed', metrics.featuredImageVisible ? JSON.stringify(metrics.featuredImageRect) : 'not visible');
   add(metrics.smallTapTargets.length === 0 ? 'PASS' : 'WARN', '44px tap targets in showroom', metrics.smallTapTargets.length ? JSON.stringify(metrics.smallTapTargets.slice(0, 5)) : 'all visible targets >=44px');
+  const interactionStatus = interaction && interaction.changed && interaction.stageCardVisible && interaction.activeCount > 0;
+  add(interactionStatus ? 'PASS' : (expectGlb ? 'FAIL' : 'WARN'), 'unit selection updates UI', interaction ? JSON.stringify(interaction) : 'interaction not run');
+  add(metrics.fixedOverlapsStageControls.length === 0 ? 'PASS' : (expectGlb ? 'FAIL' : 'WARN'), 'fixed contact widgets clear showroom controls', metrics.fixedOverlapsStageControls.length ? JSON.stringify(metrics.fixedOverlapsStageControls.slice(0, 5)) : 'no overlap with visible controls');
   return checks;
 }
 
@@ -254,11 +323,17 @@ async function runViewport(browserPort, url, outDir, viewport, expectGlb, fullPa
   await cdp.send('Page.navigate', { url });
   await waitForLoad(cdp);
   const evalResult = await cdp.send('Runtime.evaluate', {
+    expression: INTERACTION_EXPRESSION,
+    returnByValue: true,
+    awaitPromise: true,
+  });
+  const interaction = evalResult.result.value;
+  const metricsResult = await cdp.send('Runtime.evaluate', {
     expression: METRICS_EXPRESSION,
     returnByValue: true,
     awaitPromise: true,
   });
-  const metrics = evalResult.result.value;
+  const metrics = metricsResult.result.value;
   const screenshot = await cdp.send('Page.captureScreenshot', {
     format: 'png',
     captureBeyondViewport: Boolean(fullPage),
@@ -270,7 +345,8 @@ async function runViewport(browserPort, url, outDir, viewport, expectGlb, fullPa
     viewport: viewport.name,
     screenshot: screenshotPath.replaceAll('\\\\', '/'),
     metrics,
-    checks: evaluateChecks(metrics, expectGlb),
+    interaction,
+    checks: evaluateChecks(metrics, expectGlb, interaction),
   };
 }
 

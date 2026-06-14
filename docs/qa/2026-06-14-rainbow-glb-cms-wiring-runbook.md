@@ -224,7 +224,11 @@ This gate checks the rendered page at 1440px and 390px for:
 - visible PHP/JS error text,
 - featured-image suppression,
 - model-viewer/fallback state,
-- visible showroom tap targets below 44px.
+- visible showroom tap targets below 44px,
+- model-viewer hotspot presence when `--expect-glb` is used,
+- buyer action: tapping a hotspot/facade/unit target updates the selected-unit title, stage card and
+  active state,
+- fixed WhatsApp/AI/contact widgets do not overlap visible showroom controls.
 
 Current live pre-wire evidence is recorded in
 `docs/qa/2026-06-14-rainbow-live-dom-current.md`.

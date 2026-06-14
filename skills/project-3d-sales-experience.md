@@ -362,3 +362,17 @@ For every cloned project, verify:
   building-product model and should stay user-opened unless cost governance changes.
 - For the full modeling runbook, use `skills/skill-3d-model-pipeline.md` before creating the next
   project showroom.
+
+### Live DOM Buyer-Action Gate
+
+- A showroom is not verified merely because the markup exists. The browser gate must prove the
+  buyer action loop: click or tap a model hotspot, facade polygon or unit target, then confirm the
+  selected-unit title, stage card and active state update.
+- When `--expect-glb` is used, require visible `<model-viewer>` dimensions, no model error class,
+  and at least one model hotspot. If this fails, the page is still in fallback mode.
+- Contact, AI, WhatsApp and call buttons must be checked geometrically against visible showroom
+  controls. They may sit at a safe viewport edge, but they must not cover toolbar controls,
+  hotspots, the selected-unit card, the live-view return button or form fields.
+- Run the gate at desktop 1440px and mobile 390px. A pass at one size does not prove the other.
+- Treat 44px tap target warnings as deploy blockers for the final showroom review, even if they are
+  acceptable warnings while the fallback/prototype is still live.
