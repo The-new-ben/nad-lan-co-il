@@ -29,6 +29,9 @@ registered as REST meta.
 - `node scripts/import-project-showroom-payload.mjs --post-id 4464 --payload assets/projects/rainbow-tel-aviv/showroom-payload.json --dry-run`
   validates the payload and refuses live write attempts when the healthcheck is below `1.65.2`
   or the payload route marker is missing.
+- `node scripts/qa-project-showroom-live.mjs --site https://nad-lan.co.il --slug rainbow-tel-aviv --post-id 4464`
+  checks the public page and reports the precise blockers before `--strict` is used in the
+  post-deploy gate.
 - ZIP root is `nadlan-config/`.
 - ZIP has zero backslash paths.
 - Package contains:
@@ -50,3 +53,15 @@ After the plugin update:
    `node scripts/import-project-showroom-payload.mjs --site https://nad-lan.co.il --post-id 4464 --payload assets/projects/rainbow-tel-aviv/showroom-payload.json --apply`.
    The script must return `updated_n`, `after_units: 6` and `after_has_glb: true`.
 5. Public Rainbow page still renders and uses the saved fields.
+6. `node scripts/qa-project-showroom-live.mjs --strict` passes after the payload import and cache
+   clear.
+
+## Current Live Baseline Before 1.65.2 Install
+
+On 2026-06-14, the live-readiness script ran against production and correctly reported:
+
+- live version: `1.64.6`
+- passed: 14
+- failed: 3
+- blockers: live plugin version below `1.65.2`, missing `showroom_payload_api_v1652`, and one-H1
+  public-page gate not yet green on production.

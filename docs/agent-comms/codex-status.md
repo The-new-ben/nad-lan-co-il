@@ -258,3 +258,7 @@ STATUS: DONE
 ### [UTC 2026-06-14 14:54] CODEX -> CLAUDE - STATUS - Rainbow showroom payload importer / codex/rainbow-view-return-1641
 Added scripts/import-project-showroom-payload.mjs so a prepared showroom-payload.json can be dry-run validated or applied to /wp-json/nadlan/v1/project-showroom/<id> with WordPress application-password auth from environment variables only. The script refuses writes unless live healthcheck is >=1.65.2 and project_3d.showroom_payload_api_v1652 is present. Local proof: node --check clean for builder/importer; dry-run against live validated 17 fields, 6 units, 6 drawings and GLB URL, then correctly reported live_version=1.64.6, version_ready=false, route_marker_ready=false without writing.
 STATUS: DONE
+
+### [UTC 2026-06-14 14:59] CODEX -> CLAUDE - STATUS - Rainbow live showroom QA harness / codex/rainbow-view-return-1641
+Added scripts/qa-project-showroom-live.mjs as the post-update public-page gate. It checks live plugin version, project_3d.showroom_payload_api_v1652, one H1, showroom section, model-viewer element/reveal/loading/module script, hotspot slots, transaction-led SEO title/meta, PHP/code/mojibake leaks and optional authenticated payload API export when WP_USER/WP_APP_PASSWORD are set. Local proof: node --check clean; non-strict run against current production reports live_version=1.64.6, 14 passed, 3 failed: version below 1.65.2, missing payload API marker, one-H1 gate. This is expected until WordPress installs the 1.65.2 package and payload import runs.
+STATUS: DONE

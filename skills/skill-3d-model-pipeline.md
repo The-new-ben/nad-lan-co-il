@@ -207,6 +207,9 @@ manually. The canonical contract is:
 - Apply the payload with `scripts/import-project-showroom-payload.mjs` only after live healthcheck
   proves the plugin version and payload route marker are ready. The script must use environment
   variables for WordPress application-password auth and must not store secrets in the repo.
+- After import, run `node scripts/qa-project-showroom-live.mjs --strict` against the public URL.
+  A project is not factory-complete until healthcheck, public HTML, model-viewer module loading,
+  hotspots, one H1, title/meta intent and payload API checks are green.
 
 `project_3d_drawings_json` may be either a flat array of material items or an object with an
 `items` array. `project_3d_environment_json` may be a flat array or a structured object with

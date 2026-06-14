@@ -303,6 +303,22 @@ The script refuses to write when:
 - `WP_USER` or `WP_APP_PASSWORD` is missing;
 - the payload does not match the allowed showroom field contract.
 
+### Live QA Command
+
+After the plugin update and payload import, run the public page gate:
+
+```powershell
+node scripts/qa-project-showroom-live.mjs `
+  --site https://nad-lan.co.il `
+  --slug rainbow-tel-aviv `
+  --post-id 4464 `
+  --strict
+```
+
+This checks the live healthcheck, the public project page, one-H1 rule, model-viewer module tag,
+hotspots, transaction-led SEO title/meta, public error leaks and the authenticated payload API when
+`WP_USER` / `WP_APP_PASSWORD` are set.
+
 ## Classic Editor Question
 
 Classic Editor can make old metaboxes easier to see, but it should not be the long-term answer.
