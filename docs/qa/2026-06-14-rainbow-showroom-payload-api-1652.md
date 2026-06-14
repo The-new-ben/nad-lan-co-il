@@ -22,6 +22,10 @@ registered as REST meta.
 
 - Frontend inline JS parses.
 - Admin metabox script parses.
+- `node scripts/build-project-showroom-payload.mjs rainbow-tel-aviv --write` creates
+  `assets/projects/rainbow-tel-aviv/showroom-payload.json`.
+- The payload contains 17 allowed `meta` fields, 6 unit records, 6 drawing records, GLB URL,
+  poster URL, surroundings JSON and no unknown showroom fields.
 - ZIP root is `nadlan-config/`.
 - ZIP has zero backslash paths.
 - Package contains:
@@ -41,4 +45,3 @@ After the plugin update:
 3. Authenticated GET for Rainbow returns meta and `units_count`.
 4. Authenticated POST with a harmless test field updates that field and returns `updated_n`.
 5. Public Rainbow page still renders and uses the saved fields.
-

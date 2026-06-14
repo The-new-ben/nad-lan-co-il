@@ -7,6 +7,8 @@
 - `unit-map.json`: demo unit records with model-viewer hotspot coordinates.
 - `project-meta-example.json`: CMS payload map for the model fields in v1.63.0 and the REST unit
   write gate added in the follow-up v1.63.2 stack.
+- `showroom-payload.json`: canonical v1.65.2 one-payload import file for
+  `/wp-json/nadlan/v1/project-showroom/4464`.
 - `plans/*.svg`: original schematic unit/site plans for the prototype plan overlay.
 - `drawings.json`: prototype drawing map plus slots for official elevation/floor/site drawings.
 - `environment.json`: surroundings starter data to be replaced by the map/POI layer.
@@ -25,6 +27,7 @@ Run:
 ```powershell
 python scripts/generate-rainbow-prototype-model.py
 node -e "const fs=require('fs'); const b=fs.readFileSync('assets/projects/rainbow-tel-aviv/model.glb'); console.log(b.subarray(0,4).toString(), b.readUInt32LE(4), b.readUInt32LE(8), b.length)"
+node scripts/build-project-showroom-payload.mjs rainbow-tel-aviv --write
 ```
 
 Expected:
@@ -43,6 +46,8 @@ Expected:
 - The CMS payload flattens `environment.json` into renderer-safe surroundings cards. Source notes
   must survive as `note`; `showroom_position` must stay schematic only and must never become a map
   pin for items that still need a precise verified coordinate.
+- `showroom-payload.json` validates with 17 `meta` fields, 6 demo units, GLB URL, poster URL,
+  drawings JSON and environment JSON.
 
 ## Browser Gate After The Full v1.63.4 Stack Is Installed
 
@@ -50,7 +55,8 @@ Expected:
    v1.63.3 contact-rail containment and v1.63.4 page assembly/SEO.
 2. Pull/sync the UPress server Git copy, update/upload the plugin, clear cache and verify healthcheck.
 3. Upload `model.glb` and `poster.png` to WordPress Media or serve from GitHub raw/CDN.
-4. Set `project_model_glb`, `project_model_poster`, `project_3d_units`, `project_3d_drawings_json` and `project_3d_environment_json` from `project-meta-example.json`.
+4. POST `assets/projects/rainbow-tel-aviv/showroom-payload.json` to
+   `/wp-json/nadlan/v1/project-showroom/4464`, or set the same fields manually from that file.
 5. Open `/projects/rainbow-tel-aviv/`.
 6. Confirm the procedural fallback remains visible until the model loads.
 7. Confirm the GLB becomes the stage, drag rotates the building, and each hotspot selects the matching unit.

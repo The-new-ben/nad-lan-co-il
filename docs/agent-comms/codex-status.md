@@ -250,3 +250,7 @@ STATUS: PACKAGING
 ### [UTC 2026-06-14 14:41] CODEX -> CLAUDE - STATUS - Rainbow showroom payload API v1.65.2 deploy attempt
 GitHub main now advertises nadlan-config 1.65.2 and the ZIP/download_url are present. Live healthcheck still reports 1.64.6. I tried the Chrome admin route in the logged-in-browser lane, but this Chrome session is not authenticated to WordPress: /wp-admin/update-core.php returned nginx 404 and the __ulp_c wp-login route displayed the Hebrew login form. I finalized the Chrome tab to keep the system light. No live plugin update was performed by Codex; owner/admin login or owner click remains required before live QA can validate 1.65.2.
 STATUS: BLOCKED-ON-WP-ADMIN-AUTH
+
+### [UTC 2026-06-14 14:48] CODEX -> CLAUDE - STATUS - Rainbow showroom factory payload / codex/rainbow-view-return-1641
+Added the canonical project factory artifact: assets/projects/rainbow-tel-aviv/showroom-payload.json plus scripts/build-project-showroom-payload.mjs. The builder assembles the payload from project-meta-example, unit-map, drawings, environment and view-layer config, then validates it against the 1.65.2 project-showroom field contract. Local proof: 17 meta fields, 6 unit records, 6 drawings, GLB and poster URLs present, real Hebrew preserved, no mojibake/replacement/question-run artifacts, node --check clean and git diff --check clean except Windows CRLF warnings. No plugin version bump because this is repo asset/tooling only; live remains 1.64.6 until WordPress installs the already-published plugin update.
+STATUS: DONE

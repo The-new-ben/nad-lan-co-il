@@ -201,6 +201,9 @@ manually. The canonical contract is:
   `{ "meta": { ... } }` to apply a project data file.
 - The route must be authenticated and must require `current_user_can( 'edit_post', $project_id )`.
 - The route must reuse the same sanitizers as the metabox and registered REST meta.
+- Every project asset folder should have a generated `showroom-payload.json` built by
+  `node scripts/build-project-showroom-payload.mjs <project-slug> --write`. This file is the
+  single handoff from research/modeling into the CMS and must validate before WordPress import.
 
 `project_3d_drawings_json` may be either a flat array of material items or an object with an
 `items` array. `project_3d_environment_json` may be a flat array or a structured object with
@@ -217,6 +220,7 @@ For every future project, create a project asset folder containing:
 - `unit-map.json`
 - `drawings.json`
 - `environment.json`
+- `showroom-payload.json`
 - `qa.md`
 
 The plugin should consume URLs and JSON only. Large raw modeling files should live outside the

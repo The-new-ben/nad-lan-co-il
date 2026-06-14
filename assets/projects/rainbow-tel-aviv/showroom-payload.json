@@ -1,0 +1,512 @@
+{
+  "schema": "nadlan-project-showroom-payload/v1",
+  "project_slug": "rainbow-tel-aviv",
+  "post_id": 4464,
+  "generated_from": [
+    "project-meta-example.json",
+    "unit-map.json",
+    "drawings.json",
+    "environment.json",
+    "view-layer-config.json"
+  ],
+  "public_use_policy": "Prototype showroom data. Replace GLB, drawings, prices and inventory with developer-approved material before removing illustrative labels.",
+  "meta": {
+    "project_3d_image": "",
+    "project_3d_viewbox": "0 0 1000 1000",
+    "project_3d_floor_height_m": "3.05",
+    "project_3d_ground_elevation_m": "8",
+    "project_3d_avg_price_per_sqm": "76000",
+    "project_3d_price_source_note": "אומדן לא מחייב לפי מחיר ממוצע למ\"ר שמוצג במדלן לפרויקט/סביבה, נבדק 14.6.2026. לא הצעה ולא התחייבות; יש לאמת מחיר, זמינות ותנאים מול היזם.",
+    "project_3d_model_type": "gltf",
+    "project_model_glb": "https://raw.githubusercontent.com/The-new-ben/nad-lan-co-il/main/assets/projects/rainbow-tel-aviv/model.glb",
+    "project_model_usdz": "",
+    "project_model_poster": "https://raw.githubusercontent.com/The-new-ben/nad-lan-co-il/main/assets/projects/rainbow-tel-aviv/poster.png",
+    "project_3d_video_url": "",
+    "project_3d_tour_url": "",
+    "project_3d_cesium_tiles_url": "",
+    "project_3d_drawings_json": [
+      {
+        "label": "תרשים מיקום וסביבה",
+        "type": "site_orientation",
+        "url": "https://raw.githubusercontent.com/The-new-ben/nad-lan-co-il/main/assets/projects/rainbow-tel-aviv/plans/site-orientation.svg",
+        "source": "המחשה מקורית לא רשמית על בסיס מקורות פומביים"
+      },
+      {
+        "label": "תוכנית 3 חדרים",
+        "type": "floor_plan",
+        "url": "https://raw.githubusercontent.com/The-new-ben/nad-lan-co-il/main/assets/projects/rainbow-tel-aviv/plans/plan-3br.svg",
+        "source": "המחשה מקורית לא רשמית. להחלפה בתוכנית מכר רשמית"
+      },
+      {
+        "label": "תוכנית 4 חדרים",
+        "type": "floor_plan",
+        "url": "https://raw.githubusercontent.com/The-new-ben/nad-lan-co-il/main/assets/projects/rainbow-tel-aviv/plans/plan-4br.svg",
+        "source": "המחשה מקורית לא רשמית. להחלפה בתוכנית מכר רשמית"
+      },
+      {
+        "label": "תוכנית 5 חדרים",
+        "type": "floor_plan",
+        "url": "https://raw.githubusercontent.com/The-new-ben/nad-lan-co-il/main/assets/projects/rainbow-tel-aviv/plans/plan-5br.svg",
+        "source": "המחשה מקורית לא רשמית. להחלפה בתוכנית מכר רשמית"
+      },
+      {
+        "label": "תוכנית פנטהאוז",
+        "type": "floor_plan",
+        "url": "https://raw.githubusercontent.com/The-new-ben/nad-lan-co-il/main/assets/projects/rainbow-tel-aviv/plans/plan-penthouse.svg",
+        "source": "המחשה מקורית לא רשמית. להחלפה בתוכנית מכר רשמית"
+      },
+      {
+        "label": "תוכנית בוטיק",
+        "type": "floor_plan",
+        "url": "https://raw.githubusercontent.com/The-new-ben/nad-lan-co-il/main/assets/projects/rainbow-tel-aviv/plans/plan-boutique.svg",
+        "source": "המחשה מקורית לא רשמית. להחלפה בתוכנית מכר רשמית"
+      }
+    ],
+    "project_3d_environment_json": {
+      "status": "prototype_sourced",
+      "updated": "2026-06-14",
+      "project": {
+        "name": "Rainbow Tel Aviv",
+        "district": "רובע שדה דב",
+        "center": {
+          "lat": 32.1108,
+          "lng": 34.7805,
+          "precision": "prototype",
+          "source_note": "Approximate Sde Dov / Rainbow showroom center. Replace with verified project survey pin."
+        }
+      },
+      "source_policy": "Public district and marketing facts only. No paid-source transaction rows, no official inventory claims and no unsourced exact pins.",
+      "district_context": {
+        "planned_units": 16000,
+        "planning_area_dunam": 1300,
+        "planned_population": 40000,
+        "planned_commerce_sqm": 126000,
+        "planned_employment_sqm": 330000,
+        "planned_hotel_rooms": 2000,
+        "planning_status": "Master plan approved in August 2020; detailed plans and permits are project-specific.",
+        "boundaries": {
+          "west": "חוף הים",
+          "north": "רחוב פרופס",
+          "east": "רחוב לוי אשכול",
+          "south": "רחוב ש\"י עגנון"
+        },
+        "sources": [
+          {
+            "label": "עיריית תל אביב-יפו - רובע שדה דב",
+            "url": "https://www.tel-aviv.gov.il/Residents/Development/Pages/SdeDov.aspx",
+            "notes": "Master-plan scale, mixed-use program, parks, public buildings and transport principles."
+          },
+          {
+            "label": "אתר המידע רובע שדה דב - שאלות ותשובות",
+            "url": "https://sdedov.co.il/faq/",
+            "notes": "District boundaries, 16,000 planned homes and division into Eshkol, Central and North areas."
+          },
+          {
+            "label": "Gov.il - תכנית המתאר לרובע שדה דב",
+            "url": "https://www.gov.il/he/pages/sdedov-pr-22072020",
+            "notes": "Government planning announcement: 16,000 homes, public areas, commerce, employment, hotels and green areas."
+          }
+        ]
+      },
+      "layers": [
+        {
+          "id": "neighbor_projects",
+          "label": "פרויקטים בסביבה",
+          "ui": "clickable_project_chips",
+          "items": [
+            {
+              "id": "rainbow",
+              "name": "Rainbow Tel Aviv",
+              "area": "אשכול",
+              "status": "בשיווק / היתר בנייה לפי אתר המידע",
+              "map_status": "has_project_page",
+              "showroom_position": {
+                "x": 0,
+                "z": 0,
+                "scale": 1,
+                "precision": "current_project",
+                "space": "relative_showroom",
+                "unit": "model_meters",
+                "relative_to": "rainbow-stage-origin",
+                "do_not_use_as_map_pin": true
+              },
+              "source_url": "https://sdedov.co.il/projects/",
+              "source_note": "Listed by the Sde Dov information site as a marketed project."
+            },
+            {
+              "id": "dimri-yama",
+              "name": "DIMRI YAMA",
+              "area": "אשכול",
+              "status": "בשיווק",
+              "map_status": "needs_precise_pin",
+              "showroom_position": {
+                "x": -48,
+                "z": -18,
+                "scale": 0.72,
+                "precision": "illustrative_relative",
+                "space": "relative_showroom",
+                "unit": "model_meters",
+                "relative_to": "rainbow-stage-origin",
+                "do_not_use_as_map_pin": true
+              },
+              "source_url": "https://sdedov.co.il/projects/",
+              "source_note": "Listed by the Sde Dov information site as a marketed project."
+            },
+            {
+              "id": "gindi-vogue",
+              "name": "GINDI VOGUE",
+              "area": "מרכז",
+              "status": "בשיווק",
+              "map_status": "needs_precise_pin",
+              "showroom_position": {
+                "x": 48,
+                "z": -22,
+                "scale": 0.78,
+                "precision": "illustrative_relative",
+                "space": "relative_showroom",
+                "unit": "model_meters",
+                "relative_to": "rainbow-stage-origin",
+                "do_not_use_as_map_pin": true
+              },
+              "source_url": "https://sdedov.co.il/projects/",
+              "source_note": "Listed by the Sde Dov information site as a marketed project."
+            },
+            {
+              "id": "ashira",
+              "name": "ASHIRA BY AVISROR",
+              "area": "אשכול",
+              "status": "בשיווק / הבנייה בעיצומה לפי אתר המידע",
+              "map_status": "needs_precise_pin",
+              "showroom_position": {
+                "x": -38,
+                "z": 26,
+                "scale": 0.68,
+                "precision": "illustrative_relative",
+                "space": "relative_showroom",
+                "unit": "model_meters",
+                "relative_to": "rainbow-stage-origin",
+                "do_not_use_as_map_pin": true
+              },
+              "source_url": "https://sdedov.co.il/projects/",
+              "source_note": "Listed by the Sde Dov information site as a marketed project."
+            },
+            {
+              "id": "first-by-hagag",
+              "name": "FIRST BY HAGAG",
+              "area": "מרכז",
+              "status": "בשיווק",
+              "map_status": "needs_precise_pin",
+              "showroom_position": {
+                "x": 38,
+                "z": 28,
+                "scale": 0.74,
+                "precision": "illustrative_relative",
+                "space": "relative_showroom",
+                "unit": "model_meters",
+                "relative_to": "rainbow-stage-origin",
+                "do_not_use_as_map_pin": true
+              },
+              "source_url": "https://sdedov.co.il/projects/",
+              "source_note": "Listed by the Sde Dov information site as a marketed project."
+            },
+            {
+              "id": "zohi",
+              "name": "זוהי",
+              "area": "אשכול",
+              "status": "בשיווק",
+              "map_status": "needs_precise_pin",
+              "showroom_position": {
+                "x": -18,
+                "z": -45,
+                "scale": 0.62,
+                "precision": "illustrative_relative",
+                "space": "relative_showroom",
+                "unit": "model_meters",
+                "relative_to": "rainbow-stage-origin",
+                "do_not_use_as_map_pin": true
+              },
+              "source_url": "https://sdedov.co.il/projects/",
+              "source_note": "Listed by the Sde Dov information site as a marketed project."
+            },
+            {
+              "id": "utopia",
+              "name": "UTOPIA",
+              "area": "אשכול",
+              "status": "בשיווק",
+              "map_status": "needs_precise_pin",
+              "showroom_position": {
+                "x": 20,
+                "z": -46,
+                "scale": 0.62,
+                "precision": "illustrative_relative",
+                "space": "relative_showroom",
+                "unit": "model_meters",
+                "relative_to": "rainbow-stage-origin",
+                "do_not_use_as_map_pin": true
+              },
+              "source_url": "https://sdedov.co.il/projects/",
+              "source_note": "Listed by the Sde Dov information site as a marketed project."
+            }
+          ]
+        },
+        {
+          "id": "parks_and_coast",
+          "label": "ים, פארקים וטיילת",
+          "ui": "environment_cards",
+          "items": [
+            {
+              "id": "coastal_park",
+              "name": "פארק חופי",
+              "type": "planned_park",
+              "status": "מתוכנן",
+              "source_url": "https://www.tel-aviv.gov.il/Residents/Development/Pages/SdeDov.aspx",
+              "source_note": "The municipal district page describes a coastal park and a broad open-space network."
+            },
+            {
+              "id": "runway_park",
+              "name": "פארק המסלול",
+              "type": "planned_park",
+              "status": "מתוכנן",
+              "source_url": "https://timeout.co.il/%D7%A8%D7%95%D7%91%D7%A2-%D7%A9%D7%93%D7%94-%D7%93%D7%91-%D7%A4%D7%90%D7%A8%D7%A7%D7%99%D7%9D/",
+              "source_note": "Public report on three approved park design plans, including the runway park."
+            },
+            {
+              "id": "linear_park",
+              "name": "פארק ליניארי",
+              "type": "planned_park",
+              "status": "מתוכנן",
+              "source_url": "https://www.tel-aviv.gov.il/Residents/Development/Pages/SdeDov.aspx",
+              "source_note": "The municipal page lists the linear park among planned green spaces."
+            }
+          ]
+        },
+        {
+          "id": "mobility",
+          "label": "נגישות ותחבורה",
+          "ui": "mobility_facts",
+          "items": [
+            {
+              "id": "green_line",
+              "name": "הקו הירוק של הרכבת הקלה",
+              "type": "planned_light_rail",
+              "status": "מקודם / בעבודות הכנה לפי העירייה",
+              "source_url": "https://www.tel-aviv.gov.il/Residents/Development/Pages/SdeDov.aspx",
+              "source_note": "The municipal page says the Green Line is planned to cross the district south-north and connect toward Holon/Rishon, Herzliya and Ramat HaHayal."
+            },
+            {
+              "id": "ibn_gabirol_extension",
+              "name": "המשך אבן גבירול",
+              "type": "planned_street_axis",
+              "status": "מתוכנן",
+              "source_url": "https://www.tel-aviv.gov.il/Residents/Development/Pages/SdeDov.aspx",
+              "source_note": "The municipal page describes the north-south axis and mixed movement options."
+            },
+            {
+              "id": "walk_bike_grid",
+              "name": "רשת הליכה ואופניים",
+              "type": "public_realm",
+              "status": "מתוכנן",
+              "source_url": "https://www.tel-aviv.gov.il/Residents/Development/Pages/SdeDov.aspx",
+              "source_note": "The municipal page emphasizes walking, cycling and non-motorized mobility."
+            }
+          ]
+        },
+        {
+          "id": "public_services",
+          "label": "שירותים ציבוריים",
+          "ui": "service_cards",
+          "items": [
+            {
+              "id": "education_public_buildings",
+              "name": "חינוך ומבני ציבור",
+              "type": "planned_public_services",
+              "status": "מתוכנן ברמת רובע",
+              "source_url": "https://www.tel-aviv.gov.il/Residents/Development/Pages/SdeDov.aspx",
+              "source_note": "The municipal page lists public buildings including education, culture, leisure and neighborhood health services."
+            },
+            {
+              "id": "commerce_employment",
+              "name": "מסחר ותעסוקה",
+              "type": "mixed_use",
+              "status": "מתוכנן",
+              "source_url": "https://www.tel-aviv.gov.il/Residents/Development/Pages/SdeDov.aspx",
+              "source_note": "The municipal page lists planned commerce and employment floorspace at district scale."
+            }
+          ]
+        }
+      ],
+      "implementation_notes": [
+        "Use `map_status: needs_precise_pin` to prevent fake clickable map pins.",
+        "Use `showroom_position` only for schematic model-side labels; never treat it as survey/map coordinates.",
+        "Promote only sourced, verified coordinates into Mapbox/Cesium pins.",
+        "Render planned facilities with planned/future labels until built and verified.",
+        "Keep this environment JSON separate from unit inventory and pricing."
+      ]
+    },
+    "project_3d_units": [
+      {
+        "id": "unit-08-sw",
+        "title": "דירת 3 חדרים, קומה 8",
+        "floor": 8,
+        "rooms": 3,
+        "sqm": 82,
+        "balcony": 10,
+        "dir": "דרום מערב",
+        "line": "SW",
+        "view": "מבט לחצר ולים",
+        "building": "Rainbow Tel Aviv",
+        "status": "available",
+        "availability": "זמינות להדגמה בלבד עד לקבלת מלאי רשמי מהיזם",
+        "price_estimate": 0,
+        "price_note": "אומדן מחיר יוצג רק לאחר אישור מקור נתונים. לא הצעה ולא התחייבות.",
+        "note": "יחידת הדגמה למיפוי חוויית showroom. להחלפה בתוכנית מכר רשמית.",
+        "source_note": "מודל אבטיפוס מקורי על בסיס מקורות פומביים, לא BIM רשמי.",
+        "plan": "https://raw.githubusercontent.com/The-new-ben/nad-lan-co-il/main/assets/projects/rainbow-tel-aviv/plans/plan-3br.svg",
+        "interior_url": "",
+        "tour_url": "",
+        "view_note": "תוכנית המחשה מקורית לדירת 3 חדרים. יש להחליף בתוכנית מכר רשמית.",
+        "hotspot_position": "0 31 6",
+        "hotspot_normal": "0 0 1",
+        "camera_orbit": "45deg 66deg auto",
+        "label": "דירת 3 חדרים, קומה 8",
+        "recommended": false
+      },
+      {
+        "id": "unit-16-w",
+        "title": "דירת 4 חדרים, קומה 16",
+        "floor": 16,
+        "rooms": 4,
+        "sqm": 112,
+        "balcony": 14,
+        "dir": "מערב",
+        "line": "W",
+        "view": "קו החוף ושדה דב",
+        "building": "Rainbow Tel Aviv",
+        "status": "available",
+        "availability": "זמינות להדגמה בלבד עד לקבלת מלאי רשמי מהיזם",
+        "price_estimate": 0,
+        "price_note": "אומדן מחיר יוצג רק לאחר אישור מקור נתונים. לא הצעה ולא התחייבות.",
+        "note": "יחידת הדגמה למיפוי חוויית showroom. להחלפה בתוכנית מכר רשמית.",
+        "source_note": "מודל אבטיפוס מקורי על בסיס מקורות פומביים, לא BIM רשמי.",
+        "plan": "https://raw.githubusercontent.com/The-new-ben/nad-lan-co-il/main/assets/projects/rainbow-tel-aviv/plans/plan-4br.svg",
+        "interior_url": "",
+        "tour_url": "",
+        "view_note": "תוכנית המחשה מקורית לדירת 4 חדרים עם מרפסת מערבית. יש להחליף בתוכנית מכר רשמית.",
+        "hotspot_position": "-5 55 7",
+        "hotspot_normal": "0 0 1",
+        "camera_orbit": "35deg 63deg auto",
+        "label": "דירת 4 חדרים, קומה 16",
+        "recommended": false
+      },
+      {
+        "id": "unit-24-nw",
+        "title": "דירת 4 חדרים, קומה 24",
+        "floor": 24,
+        "rooms": 4,
+        "sqm": 128,
+        "balcony": 16,
+        "dir": "צפון מערב",
+        "line": "NW",
+        "view": "ים, פארק וצפון תל אביב",
+        "building": "Rainbow Tel Aviv",
+        "status": "available",
+        "availability": "זמינות להדגמה בלבד עד לקבלת מלאי רשמי מהיזם",
+        "price_estimate": 0,
+        "price_note": "אומדן מחיר יוצג רק לאחר אישור מקור נתונים. לא הצעה ולא התחייבות.",
+        "note": "יחידת הדגמה למיפוי חוויית showroom. להחלפה בתוכנית מכר רשמית.",
+        "source_note": "מודל אבטיפוס מקורי על בסיס מקורות פומביים, לא BIM רשמי.",
+        "plan": "https://raw.githubusercontent.com/The-new-ben/nad-lan-co-il/main/assets/projects/rainbow-tel-aviv/plans/plan-4br.svg",
+        "interior_url": "",
+        "tour_url": "",
+        "view_note": "תוכנית המחשה מקורית לדירת 4 חדרים גבוהה. יש להחליף בתוכנית מכר רשמית.",
+        "hotspot_position": "-6 80 5",
+        "hotspot_normal": "0 0 1",
+        "camera_orbit": "24deg 61deg auto",
+        "label": "דירת 4 חדרים, קומה 24",
+        "recommended": true
+      },
+      {
+        "id": "unit-31-se",
+        "title": "דירת 5 חדרים, קומה 31",
+        "floor": 31,
+        "rooms": 5,
+        "sqm": 156,
+        "balcony": 22,
+        "dir": "דרום מזרח",
+        "line": "SE",
+        "view": "קו הרקיע והחצר הפנימית",
+        "building": "Rainbow Tel Aviv",
+        "status": "available",
+        "availability": "זמינות להדגמה בלבד עד לקבלת מלאי רשמי מהיזם",
+        "price_estimate": 0,
+        "price_note": "אומדן מחיר יוצג רק לאחר אישור מקור נתונים. לא הצעה ולא התחייבות.",
+        "note": "יחידת הדגמה למיפוי חוויית showroom. להחלפה בתוכנית מכר רשמית.",
+        "source_note": "מודל אבטיפוס מקורי על בסיס מקורות פומביים, לא BIM רשמי.",
+        "plan": "https://raw.githubusercontent.com/The-new-ben/nad-lan-co-il/main/assets/projects/rainbow-tel-aviv/plans/plan-5br.svg",
+        "interior_url": "",
+        "tour_url": "",
+        "view_note": "תוכנית המחשה מקורית לדירת 5 חדרים. יש להחליף בתוכנית מכר רשמית.",
+        "hotspot_position": "6 101 -5",
+        "hotspot_normal": "0 0 1",
+        "camera_orbit": "310deg 64deg auto",
+        "label": "דירת 5 חדרים, קומה 31",
+        "recommended": false
+      },
+      {
+        "id": "unit-38-penthouse",
+        "title": "דירת 5 חדרים, קומה 38",
+        "floor": 38,
+        "rooms": 5,
+        "sqm": 210,
+        "balcony": 42,
+        "dir": "מערב",
+        "line": "PENTHOUSE",
+        "view": "פנטהאוז גבוה לכיוון הים",
+        "building": "Rainbow Tel Aviv",
+        "status": "available",
+        "availability": "זמינות להדגמה בלבד עד לקבלת מלאי רשמי מהיזם",
+        "price_estimate": 0,
+        "price_note": "אומדן מחיר יוצג רק לאחר אישור מקור נתונים. לא הצעה ולא התחייבות.",
+        "note": "יחידת הדגמה למיפוי חוויית showroom. להחלפה בתוכנית מכר רשמית.",
+        "source_note": "מודל אבטיפוס מקורי על בסיס מקורות פומביים, לא BIM רשמי.",
+        "plan": "https://raw.githubusercontent.com/The-new-ben/nad-lan-co-il/main/assets/projects/rainbow-tel-aviv/plans/plan-penthouse.svg",
+        "interior_url": "",
+        "tour_url": "",
+        "view_note": "תוכנית פנטהאוז להמחשה בלבד. לא תוכנית מכר ולא התחייבות.",
+        "hotspot_position": "0 124 7",
+        "hotspot_normal": "0 0 1",
+        "camera_orbit": "32deg 58deg auto",
+        "label": "דירת 5 חדרים, קומה 38",
+        "recommended": true
+      },
+      {
+        "id": "unit-boutique-07",
+        "title": "דירת 4 חדרים, קומה 7",
+        "floor": 7,
+        "rooms": 4,
+        "sqm": 118,
+        "balcony": 18,
+        "dir": "מערב",
+        "line": "07",
+        "view": "בניין בוטיק סביב הלגונה",
+        "building": "Rainbow Tel Aviv",
+        "status": "reserved",
+        "availability": "זמינות להדגמה בלבד עד לקבלת מלאי רשמי מהיזם",
+        "price_estimate": 0,
+        "price_note": "אומדן מחיר יוצג רק לאחר אישור מקור נתונים. לא הצעה ולא התחייבות.",
+        "note": "יחידת הדגמה למיפוי חוויית showroom. להחלפה בתוכנית מכר רשמית.",
+        "source_note": "מודל אבטיפוס מקורי על בסיס מקורות פומביים, לא BIM רשמי.",
+        "plan": "https://raw.githubusercontent.com/The-new-ben/nad-lan-co-il/main/assets/projects/rainbow-tel-aviv/plans/plan-boutique.svg",
+        "interior_url": "",
+        "tour_url": "",
+        "view_note": "תוכנית המחשה לבניין הבוטיק סביב הלגונה. יש להחליף בתוכנית מכר רשמית.",
+        "hotspot_position": "-42 25 24",
+        "hotspot_normal": "0 0 1",
+        "camera_orbit": "55deg 67deg auto",
+        "label": "דירת 4 חדרים, קומה 7",
+        "recommended": false
+      }
+    ],
+    "project_3d_demo": "1"
+  }
+}
