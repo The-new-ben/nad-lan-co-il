@@ -1,0 +1,172 @@
+{
+  "project_slug": "rainbow-tel-aviv",
+  "post_id": 4464,
+  "version": 1,
+  "purpose": "Developer handoff checklist for turning the prototype showroom into an official project showroom.",
+  "current_public_state": "prototype_model_with_source_aware_demo_units",
+  "url_rules": {
+    "approved_https_only": true,
+    "no_stock_interiors": true,
+    "no_copied_developer_media_without_permission": true,
+    "empty_slot_behavior": "Hide the control or show material pending; never render a broken button.",
+    "cost_control": "Mapbox/Cesium/3D Tiles must stay lazy and user-opened."
+  },
+  "official_materials": [
+    {
+      "id": "official_3d_model",
+      "label": "Official BIM / optimized GLB",
+      "cms_field": "project_model_glb",
+      "accepted_formats": [
+        "glb",
+        "gltf",
+        "ifc",
+        "rvt",
+        "fbx",
+        "obj",
+        "skp"
+      ],
+      "current_status": "provided_prototype",
+      "current_asset": "https://raw.githubusercontent.com/The-new-ben/nad-lan-co-il/main/assets/projects/rainbow-tel-aviv/model.glb",
+      "public_policy": "Keep illustrative label until developer-approved model replaces the prototype."
+    },
+    {
+      "id": "model_poster",
+      "label": "Official model poster / still frame",
+      "cms_field": "project_model_poster",
+      "accepted_formats": [
+        "png",
+        "jpg",
+        "webp"
+      ],
+      "current_status": "provided_prototype",
+      "current_asset": "https://raw.githubusercontent.com/The-new-ben/nad-lan-co-il/main/assets/projects/rainbow-tel-aviv/poster.png",
+      "public_policy": "Use as loading poster only; optimize before upload."
+    },
+    {
+      "id": "sales_video",
+      "label": "Project sales video",
+      "cms_field": "project_3d_video_url",
+      "accepted_formats": [
+        "youtube",
+        "vimeo",
+        "mp4_https"
+      ],
+      "current_status": "pending_official",
+      "current_asset": "",
+      "public_policy": "Use only owner/developer-approved video. Do not scrape or copy embedded video."
+    },
+    {
+      "id": "virtual_tour",
+      "label": "Interior or apartment virtual tour",
+      "cms_field": "project_3d_tour_url",
+      "accepted_formats": [
+        "matterport",
+        "kuula",
+        "cloudpano",
+        "custom_https"
+      ],
+      "current_status": "pending_official",
+      "current_asset": "",
+      "public_policy": "Use only approved tours. Do not generate fake interiors for public unit claims."
+    },
+    {
+      "id": "photorealistic_city_view",
+      "label": "Cesium / 3D Tiles city-view layer",
+      "cms_field": "project_3d_cesium_tiles_url",
+      "accepted_formats": [
+        "3d_tiles_endpoint",
+        "cesium_ion_asset",
+        "google_p3dt_config"
+      ],
+      "current_status": "pending_official",
+      "current_asset": "",
+      "public_policy": "Lazy-load only after user opens the view layer and cost governance is approved."
+    },
+    {
+      "id": "approved_drawings",
+      "label": "Approved elevation, site plan and floor plans",
+      "cms_field": "project_3d_drawings_json",
+      "accepted_formats": [
+        "pdf",
+        "svg",
+        "png",
+        "jpg",
+        "webp"
+      ],
+      "current_status": "provided_prototype",
+      "current_asset": "plans/*.svg",
+      "public_policy": "Prototype drawings must keep illustrative labels until official sale plans arrive."
+    },
+    {
+      "id": "unit_inventory",
+      "label": "Unit inventory and availability feed",
+      "cms_field": "project_3d_units",
+      "accepted_formats": [
+        "json",
+        "csv",
+        "xlsx"
+      ],
+      "current_status": "provided_prototype",
+      "current_asset": "unit-map.json",
+      "public_policy": "Do not show real prices or availability until source/license and owner approval are recorded."
+    },
+    {
+      "id": "unit_interiors",
+      "label": "Per-unit interior media",
+      "cms_field": "project_3d_units[].interior_url",
+      "accepted_formats": [
+        "image_gallery_https",
+        "webp",
+        "jpg",
+        "png"
+      ],
+      "current_status": "pending_official",
+      "current_asset": "",
+      "public_policy": "Leave empty unless the interior belongs to that unit/type and is approved for public use."
+    },
+    {
+      "id": "unit_tours",
+      "label": "Per-unit tour links",
+      "cms_field": "project_3d_units[].tour_url",
+      "accepted_formats": [
+        "matterport",
+        "kuula",
+        "cloudpano",
+        "custom_https"
+      ],
+      "current_status": "pending_official",
+      "current_asset": "",
+      "public_policy": "Leave empty unless the tour is official or owner-approved."
+    },
+    {
+      "id": "surroundings_and_pins",
+      "label": "Nearby projects, parks, schools, transport and public services",
+      "cms_field": "project_3d_environment_json",
+      "accepted_formats": [
+        "json",
+        "csv",
+        "geojson"
+      ],
+      "current_status": "provided_prototype",
+      "current_asset": "environment.json",
+      "public_policy": "Use precise pins only when verified. Planned facilities need planned/future labels."
+    }
+  ],
+  "zillow_parity_map": {
+    "building_spin": "project_model_glb + model hotspots",
+    "unit_picker": "project_3d_units",
+    "floor_plans": "project_3d_drawings_json and unit plan URLs",
+    "video_and_tour": "project_3d_video_url, project_3d_tour_url, unit interior/tour URLs",
+    "view_layer": "Mapbox now, Cesium/3D Tiles seam when approved",
+    "surroundings": "project_3d_environment_json",
+    "price_context": "project_3d_avg_price_per_sqm + project_3d_price_source_note or approved unit price",
+    "lead_capture": "existing lead funnel with selected unit payload"
+  },
+  "owner_questions_before_official_launch": [
+    "Which developer/project materials are approved for public use?",
+    "Can project video/tour URLs be embedded publicly?",
+    "Which unit rows are live inventory and which are examples?",
+    "May approximate price context be shown, and from which source?",
+    "Which surroundings pins have verified coordinates?"
+  ]
+}

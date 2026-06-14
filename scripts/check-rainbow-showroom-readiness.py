@@ -375,6 +375,64 @@ def check_environment(path: Path, gate: Gate) -> None:
         gate.pass_("environment pin honesty", "no fake coordinates on needs_precise_pin items")
 
 
+def check_material_intake(path: Path, gate: Gate) -> None:
+    if not path.exists():
+        gate.fail("material-intake-template.json", "missing")
+        return
+    intake = read_json(path)
+    if not isinstance(intake, dict):
+        gate.fail("material-intake-template.json", "root is not object")
+        return
+    required_root = ["project_slug", "post_id", "url_rules", "official_materials", "zillow_parity_map"]
+    missing_root = [field for field in required_root if field not in intake]
+    if missing_root:
+        gate.fail("material intake root fields", "missing: " + ", ".join(missing_root))
+    else:
+        gate.pass_("material intake root fields", "present")
+
+    rules = intake.get("url_rules", {})
+    if isinstance(rules, dict) and rules.get("approved_https_only") is True and rules.get("no_stock_interiors") is True:
+        gate.pass_("material intake URL rules", "approved HTTPS only + no stock interiors")
+    else:
+        gate.fail("material intake URL rules", "must require approved HTTPS and forbid stock interiors")
+
+    materials = intake.get("official_materials", [])
+    if not isinstance(materials, list) or len(materials) < 8:
+        gate.fail("material intake items", f"{len(materials) if isinstance(materials, list) else 'invalid'} items; expected at least 8")
+        materials = []
+    else:
+        gate.pass_("material intake items", f"{len(materials)} official/prototype material slots")
+
+    allowed_status = {"provided_prototype", "pending_official", "owner_approval_required", "not_applicable"}
+    item_errors: list[str] = []
+    official_without_source: list[str] = []
+    for item in materials:
+        if not isinstance(item, dict):
+            item_errors.append("<non-object item>")
+            continue
+        item_id = str(item.get("id", "<missing id>"))
+        for field in ("id", "label", "cms_field", "accepted_formats", "current_status", "public_policy"):
+            if not item.get(field):
+                item_errors.append(f"{item_id}.{field}")
+        status = str(item.get("current_status", ""))
+        if status not in allowed_status:
+            item_errors.append(f"{item_id}.current_status={status}")
+        if status in {"official_ready", "approved"} and not item.get("source_url"):
+            official_without_source.append(item_id)
+    if item_errors:
+        gate.fail("material intake item shape", ", ".join(item_errors[:12]))
+    else:
+        gate.pass_("material intake item shape", "all items have CMS field, status, formats and public policy")
+    if official_without_source:
+        gate.fail("material intake source proof", "official items missing source_url: " + ", ".join(official_without_source[:12]))
+
+    parity = intake.get("zillow_parity_map", {})
+    if isinstance(parity, dict) and all(key in parity for key in ("building_spin", "unit_picker", "floor_plans", "video_and_tour", "view_layer", "surroundings", "price_context", "lead_capture")):
+        gate.pass_("material intake Zillow parity map", "core showroom capabilities mapped")
+    else:
+        gate.fail("material intake Zillow parity map", "missing one or more core capability mappings")
+
+
 def fetch_healthcheck(url: str) -> dict | None:
     with urllib.request.urlopen(url, timeout=15) as response:
         return json.loads(response.read().decode("utf-8"))
@@ -470,6 +528,7 @@ def main() -> int:
         remote_ref=args.remote_ref or None,
     )
     check_environment(asset_dir / "environment.json", gate)
+    check_material_intake(asset_dir / "material-intake-template.json", gate)
     if not args.skip_live:
         check_healthcheck(args.healthcheck_url, args.expect_live_glb, args.require_plugin_stack, gate)
     gate.print()

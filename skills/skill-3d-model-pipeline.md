@@ -119,6 +119,10 @@ Media and tour rules:
   unlicensed screenshots.
 - Keep Mapbox/Cesium/3D Tiles lazy and user-opened. The project page must not spend paid map/tiles
   quota before a buyer requests the view layer.
+- Each flagship asset folder should include `material-intake-template.json` mapping official
+  model/video/tour/drawings/unit/environment materials to CMS fields, accepted formats, current
+  status and public-use policy. This is the project-manager handoff document and the countrywide
+  replication checklist.
 
 ## Price Context
 
@@ -175,6 +179,8 @@ Before shipping a project:
 - Confirm mobile has no horizontal overflow and no nested gray scrollbars.
 - Confirm source notes/disclaimers distinguish official data from illustrative/demo data.
 - Confirm video/tour/Cesium/unit-media URLs are empty or valid approved HTTPS links; malformed URLs fail.
+- Confirm `material-intake-template.json` exists and records the official replacement path before
+  calling a project clone-ready.
 - Confirm the local model preview screenshot shows `loaded:true` / actual GLB visible, not only the
   poster image.
 - Confirm the page still has one H1 and the article body remains readable below the showroom.

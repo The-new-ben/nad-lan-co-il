@@ -100,6 +100,7 @@ The script prints:
 
 - the exact model URLs,
 - the empty official media/tour/Cesium slots,
+- the `material-intake-template.json` handoff list for the project manager/developer,
 - the full `project_3d_units` JSON,
 - the `project_3d_drawings_json` JSON,
 - the flattened `project_3d_environment_json` JSON,
@@ -209,6 +210,25 @@ Empty media/tour/Cesium slots are intentional. Fill them only with approved `htt
 
 Do not use copied developer media, stock interiors, fake tours or unlicensed screenshots. The
 readiness gate warns on empty slots but fails malformed or non-HTTPS URLs.
+
+## Contractor / Developer Material Handoff
+
+The asset folder includes `material-intake-template.json`. Use it as the handoff checklist when the
+project manager or developer supplies official material. It maps every requested asset to the CMS
+field it powers:
+
+- official BIM/GLB or convertible source model,
+- official poster/still frame,
+- project sales video,
+- virtual tour,
+- Cesium/3D Tiles view layer,
+- approved drawings and floor plans,
+- unit inventory and availability feed,
+- unit interior media and unit tour links,
+- surroundings/project pins.
+
+The file also records the public-use rule for each item. Keep a slot empty until the source and
+rights are approved. Empty slots are a valid state; fake media is not.
 
 To prove the remote files on this PR branch before merge without changing the durable CMS payload,
 run:
