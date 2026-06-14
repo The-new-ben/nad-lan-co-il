@@ -62,6 +62,20 @@ Set:
 - `project_3d_environment_json`: flattened JSON array generated from the rich environment object in
   `project-meta-example.json`.
 
+Environment safety boundary:
+
+- Keep the rich `environment.json` / `project-meta-example.json` object as the source-of-truth for
+  research, relative showroom labels and future map/Cesium work.
+- The live CMS `project_3d_environment_json` field is intentionally flattened to renderer-safe
+  cards only: `label`, `type`, `category`, `detail`, `url`, `note`, `source`, optional verified
+  `lat`/`lng`, and `distance`.
+- `source_note` is preserved as the public `note` field so every surroundings card keeps its
+  provenance.
+- `showroom_position` is not a map coordinate. The apply/prepare helpers never promote schematic
+  `showroom_position` values into `lat`/`lng`.
+- Items marked `map_status: needs_precise_pin` must not carry live map coordinates until a survey,
+  official project map, or owner-approved data source verifies the pin.
+
 Version boundary: v1.63.0 can show the model-viewer rail, but public GLB wiring should wait for
 the full v1.63.4 stack. v1.63.1 restores 44px apartment/unit tap targets; v1.63.2 exposes
 `project_3d_units` safely through REST with `edit_post` auth and a unit sanitizer; v1.63.3 clears
@@ -106,7 +120,8 @@ The script prints:
 - the `view-layer-config.json` Mapbox/Cesium view-from-apartment contract,
 - the full `project_3d_units` JSON,
 - the `project_3d_drawings_json` JSON,
-- the flattened `project_3d_environment_json` JSON,
+- the flattened `project_3d_environment_json` JSON with source notes preserved and unverified
+  schematic pins withheld,
 - a safe copy/paste checklist.
 
 It does not write to WordPress.

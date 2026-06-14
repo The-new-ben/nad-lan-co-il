@@ -46,6 +46,8 @@ plain WordPress article.
 6. Nearby projects without verified coordinates may use bounded `showroom_position` values for
    schematic model-side labels only. Never promote those values into Mapbox, Cesium or public map
    pins.
+   In the CMS `project_3d_environment_json` payload, preserve `source_note` as a public `note` and
+   omit `lat`/`lng` for anything marked `map_status: needs_precise_pin`.
 7. Drawings, floor plans and real inventory are optional CMS fields. If absent, show a clear request
    path instead of faking a plan.
 8. Price can be:

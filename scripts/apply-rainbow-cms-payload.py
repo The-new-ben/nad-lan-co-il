@@ -113,7 +113,12 @@ def unsafe_branch_raw_urls(value: Any) -> list[str]:
 
 
 def flatten_environment(value: Any) -> list[dict[str, Any]]:
-    """Convert the rich research object into the list shape v1.63.0 renders."""
+    """Convert the rich research object into the list shape v1.63.0 renders.
+
+    The live plugin sanitizes this meta to renderer-safe card fields only. Keep
+    provenance in `note`, keep links in `url`, and never turn schematic
+    showroom positions into map coordinates.
+    """
     if isinstance(value, list):
         return [item for item in value if isinstance(item, dict)]
     if not isinstance(value, dict):
@@ -171,9 +176,16 @@ def flatten_environment(value: Any) -> list[dict[str, Any]]:
                 "detail": " | ".join(detail_parts) or layer_label,
                 "url": str(entry.get("url") or entry.get("source_url") or ""),
             }
-            for key in ("lat", "lng", "distance"):
-                if key in entry:
-                    clean[key] = entry[key]
+            if entry.get("source_note"):
+                clean["note"] = str(entry["source_note"])
+            if entry.get("source"):
+                clean["source"] = str(entry["source"])
+            if entry.get("map_status") != "needs_precise_pin":
+                for key in ("lat", "lng"):
+                    if key in entry:
+                        clean[key] = entry[key]
+            if "distance" in entry:
+                clean["distance"] = entry["distance"]
             items.append(clean)
             if len(items) >= 40:
                 return items
@@ -236,6 +248,17 @@ def item_ids(value: Any) -> list[str]:
     return ids
 
 
+def item_notes(value: Any) -> list[str]:
+    parsed = parse_meta_json(value)
+    if not isinstance(parsed, list):
+        return []
+    notes: list[str] = []
+    for item in parsed:
+        if isinstance(item, dict) and item.get("note"):
+            notes.append(str(item["note"]))
+    return notes
+
+
 def verify_updated_meta(updated_meta: dict[str, Any], expected_meta: dict[str, str]) -> list[str]:
     errors: list[str] = []
     exact_keys = (
@@ -269,6 +292,16 @@ def verify_updated_meta(updated_meta: dict[str, Any], expected_meta: dict[str, s
         missing = [unit_id for unit_id in expected_ids if unit_id not in actual_ids]
         if missing:
             errors.append("project_3d_units: missing unit ids " + ", ".join(missing[:8]))
+
+    if "project_3d_environment_json" in expected_meta:
+        expected_notes = item_notes(expected_meta["project_3d_environment_json"])
+        actual_notes = item_notes(updated_meta.get("project_3d_environment_json", ""))
+        missing_notes = [note for note in expected_notes if note not in actual_notes]
+        if missing_notes:
+            errors.append(
+                "project_3d_environment_json: missing source/provenance notes "
+                + "; ".join(missing_notes[:3])
+            )
 
     return errors
 

@@ -40,6 +40,9 @@ Expected:
   separate from official/developer-approved material.
 - `view-layer-config.json` keeps the default state building-first, defines user-opened map/tiles
   behavior, and gives each unit a derived altitude and bearing for view-from-apartment QA.
+- The CMS payload flattens `environment.json` into renderer-safe surroundings cards. Source notes
+  must survive as `note`; `showroom_position` must stay schematic only and must never become a map
+  pin for items that still need a precise verified coordinate.
 
 ## Browser Gate After The Full v1.63.4 Stack Is Installed
 
@@ -54,6 +57,7 @@ Expected:
 8. Confirm the plan overlay opens the relevant schematic plan for each selected unit.
 9. Confirm lead/compare/map actions still carry the selected unit.
 10. Confirm mobile has no horizontal overflow, no nested gray scrollbars, and no showroom tap target below 44px.
+11. Confirm surroundings cards show source/provenance notes, and no unverified nearby project appears as a precise map pin.
 
 ## Honest Boundary
 

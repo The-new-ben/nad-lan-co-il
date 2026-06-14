@@ -20,7 +20,12 @@ RAW_BASE = "https://raw.githubusercontent.com/The-new-ben/nad-lan-co-il/{branch}
 
 
 def flatten_environment(value):
-    """Convert the rich research object into the list shape v1.63.0 renders."""
+    """Convert the rich research object into the list shape v1.63.0 renders.
+
+    The live plugin sanitizes this meta to renderer-safe card fields only. Keep
+    provenance in `note`, keep links in `url`, and never turn schematic
+    showroom positions into map coordinates.
+    """
     if isinstance(value, list):
         return [item for item in value if isinstance(item, dict)]
     if not isinstance(value, dict):
@@ -78,9 +83,16 @@ def flatten_environment(value):
                 "detail": " | ".join(detail_parts) or layer_label,
                 "url": str(entry.get("url") or entry.get("source_url") or ""),
             }
-            for key in ("lat", "lng", "distance"):
-                if key in entry:
-                    clean[key] = entry[key]
+            if entry.get("source_note"):
+                clean["note"] = str(entry["source_note"])
+            if entry.get("source"):
+                clean["source"] = str(entry["source"])
+            if entry.get("map_status") != "needs_precise_pin":
+                for key in ("lat", "lng"):
+                    if key in entry:
+                        clean[key] = entry[key]
+            if "distance" in entry:
+                clean["distance"] = entry["distance"]
             items.append(clean)
             if len(items) >= 40:
                 return items
