@@ -709,7 +709,7 @@ if ( ! function_exists( 'nadlan_p3d_render' ) ) {
 		ob_start();
 		?>
 <!-- nlp3d-start -->
-<section class="nlp3d nlp3d-premium" dir="rtl" data-project="<?php echo esc_attr( $post_id ); ?>" aria-labelledby="<?php echo esc_attr( $uid ); ?>-title">
+<section class="nlp3d nlp3d-premium alignfull" dir="rtl" data-project="<?php echo esc_attr( $post_id ); ?>" aria-labelledby="<?php echo esc_attr( $uid ); ?>-title">
 	<div class="nlp3d-grid" aria-hidden="true"></div>
 	<div class="nlp3d-shell">
 		<div class="nlp3d-copy">
@@ -1143,6 +1143,22 @@ if ( ! function_exists( 'nadlan_p3d_showroom_v1649_buyer_card_css' ) ) {
 	function nadlan_p3d_showroom_v1649_buyer_card_css() {
 		return <<<'CSS'
 .nlp3d.nlp3d-premium .nlp3d-stage-card:not([hidden]){z-index:18!important;border-color:rgba(234,216,163,.48)!important;background:linear-gradient(145deg,rgba(8,22,22,.94),rgba(10,13,10,.84))!important;box-shadow:0 26px 70px rgba(0,0,0,.42),0 0 0 1px rgba(255,255,255,.06) inset!important}.nlp3d.nlp3d-premium .nlp3d-stage-card[data-recommended="1"]{border-color:rgba(255,232,166,.72)!important;box-shadow:0 28px 78px rgba(0,0,0,.46),0 0 0 1px rgba(255,246,203,.12) inset,0 0 34px rgba(234,216,163,.18)!important}.nlp3d.nlp3d-premium .nlp3d-stage-card[data-status="available"]{--nlp3d-card-status:#3ddc84}.nlp3d.nlp3d-premium .nlp3d-stage-card[data-status="reserved"]{--nlp3d-card-status:#f2c14e}.nlp3d.nlp3d-premium .nlp3d-stage-card[data-status="sold"]{--nlp3d-card-status:#9aa0a6}.nlp3d.nlp3d-premium .nlp3d-stage-card:not([hidden]):before{content:"";position:absolute;inset:0 auto 0 0;width:5px;background:var(--nlp3d-card-status,#c4a15a);box-shadow:0 0 22px var(--nlp3d-card-status,#c4a15a);opacity:.92}.nlp3d.nlp3d-premium .nlp3d-stage-card-tags{display:flex;flex-wrap:wrap;gap:6px;min-height:28px}.nlp3d.nlp3d-premium .nlp3d-stage-card-tags span{display:inline-flex;align-items:center;min-height:28px;border:1px solid rgba(234,216,163,.26);background:rgba(255,255,255,.065);color:#fff5cf;border-radius:999px;padding:4px 9px;font-size:12px;line-height:1}.nlp3d.nlp3d-premium .nlp3d-stage-card[data-recommended="1"] .nlp3d-stage-card-tags span:first-child{background:linear-gradient(135deg,#ead8a3,#b99043);color:#17120a;border:0;font-weight:900}.nlp3d.nlp3d-premium .nlp3d-stage-card-note{grid-column:1/-1;margin:0;color:#e7dcc0;font-size:12.5px;line-height:1.5}.nlp3d.nlp3d-premium .nlp3d-stage-status[data-status="available"]{color:#e6ffe8!important;border-color:rgba(61,220,132,.42)!important}.nlp3d.nlp3d-premium .nlp3d-stage-status[data-status="reserved"]{color:#fff0bd!important;border-color:rgba(242,193,78,.46)!important}.nlp3d.nlp3d-premium .nlp3d-stage-status[data-status="sold"]{color:#e4e5e7!important;border-color:rgba(154,160,166,.42)!important}.nlp3d.nlp3d-premium .nlp3d-stage-pick.is-active:after{content:"נבחר";position:absolute;right:calc(100% + 8px);top:50%;transform:translateY(-50%);border:1px solid rgba(234,216,163,.36);background:rgba(7,15,16,.9);color:#fff5cf;border-radius:999px;padding:4px 8px;font-size:11px;font-weight:800;box-shadow:0 10px 24px rgba(0,0,0,.34);white-space:nowrap}.nlp3d.nlp3d-premium .nlp3d-stage-card-actions .nlp3d-stage-inquiry{box-shadow:0 12px 28px rgba(185,144,67,.25)!important}@media(max-width:760px){.nlp3d.nlp3d-premium .nlp3d-stage-card:not([hidden]){border-radius:16px!important}.nlp3d.nlp3d-premium .nlp3d-stage-card-tags{min-height:0}.nlp3d.nlp3d-premium .nlp3d-stage-card-tags span{font-size:11px;min-height:25px;padding:4px 8px}.nlp3d.nlp3d-premium .nlp3d-stage-card-note{font-size:12px}.nlp3d.nlp3d-premium .nlp3d-stage-pick.is-active:after{display:none!important}}@media(max-width:420px){.nlp3d.nlp3d-premium .nlp3d-stage-card-tags span:nth-child(n+4){display:none}.nlp3d.nlp3d-premium .nlp3d-stage-card-note{display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}}
+CSS;
+	}
+}
+
+if ( ! function_exists( 'nadlan_p3d_layout_constrained_fix_css' ) ) {
+	function nadlan_p3d_layout_constrained_fix_css() {
+		// Block-themes (Twenty Twenty-Five and similar) ship:
+		//   .is-layout-constrained > :where(:not(.alignleft):not(.alignright):not(.alignfull))
+		//     { max-width: var(--wp--style--global--content-size) }
+		// That caps the .nlp3d block at the theme's content size (often 620-840px),
+		// overriding our width:min(1420px,...) because the cap targets the parent's
+		// child selector. We add `alignfull` to the wrapper (server-side) and this
+		// belt-and-suspenders rule so the block reaches its intended width on any
+		// block theme.
+		return <<<'CSS'
+.is-layout-constrained > .nlp3d.nlp3d-premium,.entry-content > .nlp3d.nlp3d-premium,.wp-block-post-content > .nlp3d.nlp3d-premium{max-width:none!important}
 CSS;
 	}
 }
@@ -2374,7 +2390,7 @@ add_action(
 			return;
 		}
 
-		wp_register_style( 'nadlan-p3d', '', array(), '1.65.2' );
+		wp_register_style( 'nadlan-p3d', '', array(), '1.65.3' );
 		wp_enqueue_style( 'nadlan-p3d' );
 		wp_add_inline_style( 'nadlan-p3d', nadlan_p3d_inline_css() );
 		wp_add_inline_style( 'nadlan-p3d', '.nlp3d-drag-note{display:inline-flex;align-items:center;min-height:44px;color:rgba(246,239,226,.72);font-size:12px;padding:0 6px}.nlp3d-scene{touch-action:none;cursor:grab}.nlp3d-scene.is-dragging{cursor:grabbing}.nlp3d-actions{grid-template-columns:1fr}.nlp3d-view-toggle{margin-top:12px;border:1px solid rgba(234,216,163,.36);background:rgba(255,255,255,.06);color:#ffe8a6;padding:9px 12px;cursor:pointer}.nlp3d-view-toggle.is-active{background:rgba(234,216,163,.18);color:#fff}.nlp3d-viewframe{position:relative;margin-top:12px;min-height:150px;overflow:hidden;border:1px solid rgba(234,216,163,.18);background:linear-gradient(180deg,rgba(41,112,139,.58),rgba(8,25,25,.92));isolation:isolate}.nlp3d-view-sky{position:absolute;inset:0;background:radial-gradient(circle at 18% 22%,rgba(255,255,255,.24),transparent 18%),linear-gradient(135deg,rgba(39,107,130,.42),rgba(18,50,43,.1));opacity:.86}.nlp3d-view-lines{position:absolute;inset:auto -8% 18% -8%;height:46%;border-top:1px solid rgba(234,216,163,.28);background:linear-gradient(160deg,rgba(234,216,163,.1),transparent 54%);transform:skewY(-8deg)}.nlp3d-view-copy{position:absolute;right:14px;left:14px;bottom:12px;margin:0;color:#fff8dc;font-size:13px;line-height:1.5;text-shadow:0 1px 12px rgba(0,0,0,.55)}@media(max-width:600px){.nlp3d-drag-note{flex-basis:100%;min-height:24px}.nlp3d-viewframe{min-height:130px}}' );
@@ -2401,6 +2417,7 @@ add_action(
 		wp_add_inline_style( 'nadlan-p3d', nadlan_p3d_showroom_v1641_product_css() );
 		wp_add_inline_style( 'nadlan-p3d', nadlan_p3d_showroom_v1644_marker_css() );
 		wp_add_inline_style( 'nadlan-p3d', nadlan_p3d_showroom_v1649_buyer_card_css() );
+		wp_add_inline_style( 'nadlan-p3d', nadlan_p3d_layout_constrained_fix_css() );
 		wp_add_inline_style( 'nadlan-p3d', '.nlp3d.nlp3d-premium{transform:translateX(var(--nlp3d-mobile-nudge,0px));transition:transform .18s ease-out}.nlp3d.nlp3d-premium.is-mobile-edge-fixed{outline:1px solid rgba(234,216,163,.08)}@media(max-width:760px){.entry-content>.nlp3d,.wp-block-post-content>.nlp3d{max-width:calc(100vw - 16px)!important}.nlp3d.nlp3d-premium .nlp3d-model-viewer .nlp3d-mv-hotspot{display:none!important;pointer-events:none!important}.nlp3d.nlp3d-premium .nlp3d-stage-picks{display:block!important}.nlp3d.nlp3d-premium .nlp3d-stage-pick{touch-action:none}.nlp3d.nlp3d-premium .nlp3d-scene{overscroll-behavior:contain}}' );
 
 		$post_id = is_singular( 'nadlan_project' ) ? (int) get_queried_object_id() : 0;
@@ -2410,7 +2427,7 @@ add_action(
 			wp_enqueue_script( 'nadlan-model-viewer' );
 		}
 
-		wp_register_script( 'nadlan-p3d', '', array(), '1.65.2', true );
+		wp_register_script( 'nadlan-p3d', '', array(), '1.65.3', true );
 		wp_enqueue_script( 'nadlan-p3d' );
 		wp_add_inline_script( 'nadlan-p3d', nadlan_p3d_inline_js( esc_url_raw( rest_url( 'nadlan/v1/lead' ) ) ) );
 	}
