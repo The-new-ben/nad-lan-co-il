@@ -270,6 +270,7 @@ const METRICS_EXPRESSION = `(() => {
     smallTargets,
     errors: window.__rainbowPreviewErrors || [],
     bodyHasFatal: /Fatal error|Parse error|Warning:/.test(document.body?.innerText || ''),
+    visibleRawTokens: ((document.body?.innerText || '').match(/(?:\\bsite_orientation\\b|\\bfloor_plan\\b|\\bproject_3d\\b|\\bnlp3d\\b|class=)/g) || []).slice(0, 8),
     dataReady: window.__rainbowPreviewDataReady === true,
     insightsRect: rect(document.querySelector('.insights')),
     drawingCards: document.querySelectorAll('[data-preview-drawing]').length,
@@ -368,6 +369,7 @@ function evaluate(metrics, interaction, drag) {
   add(interaction.changed ? 'PASS' : 'FAIL', 'hotspot click updates readout', JSON.stringify(interaction));
   add(metrics.errors.length === 0 ? 'PASS' : 'FAIL', 'no browser errors', metrics.errors.join(' | ') || 'none');
   add(metrics.bodyHasFatal ? 'FAIL' : 'PASS', 'no visible fatal text', metrics.bodyHasFatal ? 'fatal text found' : 'none');
+  add(metrics.visibleRawTokens.length === 0 ? 'PASS' : 'FAIL', 'no visible internal tokens', metrics.visibleRawTokens.join(', ') || 'none');
   add(metrics.dataReady ? 'PASS' : 'FAIL', 'CMS-backed preview data loaded', String(metrics.dataReady));
   const insightsVisible = metrics.insightsRect && metrics.insightsRect.width >= 320 && metrics.insightsRect.height >= 160;
   add(insightsVisible ? 'PASS' : 'FAIL', 'material insight panels visible', JSON.stringify(metrics.insightsRect));
@@ -461,6 +463,14 @@ async function main() {
         scale: 2,
         mobile: true,
         userAgent: 'Mozilla/5.0 (iPhone; CPU iPhone OS 17_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.0 Mobile/15E148 Safari/604.1',
+      },
+      {
+        name: 'prototype-edge-mobile-390',
+        width: 390,
+        height: 1000,
+        scale: 2.75,
+        mobile: true,
+        userAgent: 'Mozilla/5.0 (Linux; Android 14; Pixel 8 Pro) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Mobile Safari/537.36 EdgA/126.0.0.0',
       },
     ];
     const results = [];

@@ -199,15 +199,15 @@
   </section>
   <section class="insights" aria-label="Project showroom data layers">
     <article class="insight-card">
-      <h2>Drawings and plans</h2>
+      <h2>תוכניות ושרטוטים</h2>
       <ul class="preview-list" id="drawings-panel" data-preview-drawings></ul>
     </article>
     <article class="insight-card">
-      <h2>Surroundings</h2>
+      <h2>סביבה ושכונה</h2>
       <ul class="preview-list" id="environment-panel" data-preview-environment></ul>
     </article>
     <article class="insight-card">
-      <h2>Media and view layer</h2>
+      <h2>מדיה ומבט מהדירה</h2>
       <div class="preview-list" id="media-panel" data-preview-media></div>
       <p id="view-layer-panel" data-preview-view-layer></p>
     </article>
@@ -256,8 +256,14 @@
       ]);
 
       const drawingsPanel = document.getElementById("drawings-panel");
+      const drawingTypeLabel = (type) => {
+        if (type === "site_orientation") return "מיקום וסביבה";
+        if (type === "floor_plan") return "תוכנית דירה";
+        if (type === "official_elevation") return "חזית רשמית";
+        return "חומר עזר";
+      };
       (drawings.items || []).slice(0, 5).forEach((item) => {
-        appendItem(drawingsPanel, item.label || item.type || "Drawing", item.type || "plan", {
+        appendItem(drawingsPanel, item.label || drawingTypeLabel(item.type), drawingTypeLabel(item.type), {
           "data-preview-drawing": item.type || "drawing"
         });
       });
@@ -290,8 +296,8 @@
       const lazyCost = viewLayer.cost_controls?.lazy_on_user_gesture === true && viewLayer.cost_controls?.instantiate_on_page_load === false;
       viewPanel.dataset.userOpenOnly = String(mapboxUserOpened && cesiumUserOpened && lazyCost);
       viewPanel.textContent = mapboxUserOpened && lazyCost
-        ? "View layer is lazy and user-opened; Cesium slot remains pending approved tiles."
-        : "View layer policy needs review before public use.";
+        ? "שכבת המבט נטענת רק לאחר פעולה של המשתמש; Cesium ממתין לחומר מאושר."
+        : "מדיניות שכבת המבט דורשת בדיקה לפני שימוש ציבורי.";
       window.__rainbowPreviewDataReady = true;
     } catch (error) {
       window.__rainbowPreviewDataReady = false;

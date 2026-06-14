@@ -1,5 +1,5 @@
 {
-  "url": "http://127.0.0.1:55043/docs/previews/rainbow-model-viewer-prototype.html",
+  "url": "http://127.0.0.1:55274/docs/previews/rainbow-model-viewer-prototype.html",
   "results": [
     {
       "viewport": "prototype-desktop-1440",
@@ -42,6 +42,7 @@
         "smallTargets": [],
         "errors": [],
         "bodyHasFatal": false,
+        "visibleRawTokens": [],
         "dataReady": true,
         "insightsRect": {
           "x": 123,
@@ -156,6 +157,11 @@
         },
         {
           "status": "PASS",
+          "name": "no visible internal tokens",
+          "detail": "none"
+        },
+        {
+          "status": "PASS",
           "name": "CMS-backed preview data loaded",
           "detail": "true"
         },
@@ -227,6 +233,7 @@
         "smallTargets": [],
         "errors": [],
         "bodyHasFatal": false,
+        "visibleRawTokens": [],
         "dataReady": true,
         "insightsRect": {
           "x": 12,
@@ -337,6 +344,202 @@
         {
           "status": "PASS",
           "name": "no visible fatal text",
+          "detail": "none"
+        },
+        {
+          "status": "PASS",
+          "name": "no visible internal tokens",
+          "detail": "none"
+        },
+        {
+          "status": "PASS",
+          "name": "CMS-backed preview data loaded",
+          "detail": "true"
+        },
+        {
+          "status": "PASS",
+          "name": "material insight panels visible",
+          "detail": "{\"x\":12,\"y\":762,\"width\":366,\"height\":1016,\"display\":\"grid\",\"visibility\":\"visible\",\"opacity\":1}"
+        },
+        {
+          "status": "PASS",
+          "name": "drawing cards rendered",
+          "detail": "5"
+        },
+        {
+          "status": "PASS",
+          "name": "surroundings cards rendered",
+          "detail": "6"
+        },
+        {
+          "status": "PASS",
+          "name": "media/view slots rendered",
+          "detail": "3 slots, 3 pending"
+        },
+        {
+          "status": "PASS",
+          "name": "view layer stays user-opened/lazy",
+          "detail": "true"
+        }
+      ]
+    },
+    {
+      "viewport": "prototype-edge-mobile-390",
+      "screenshot": "docs/qa/screenshots-rainbow-prototype-preview/prototype-edge-mobile-390.png",
+      "metrics": {
+        "title": "Rainbow Tel Aviv prototype GLB preview",
+        "lang": "he",
+        "dir": "rtl",
+        "viewport": {
+          "width": 390,
+          "height": 1000
+        },
+        "scrollWidth": 390,
+        "overflowX": 0,
+        "h1": [
+          "Rainbow Tel Aviv"
+        ],
+        "stageRect": {
+          "x": 12,
+          "y": 126,
+          "width": 366,
+          "height": 620,
+          "display": "flex",
+          "visibility": "visible",
+          "opacity": 1
+        },
+        "modelRect": {
+          "x": 13,
+          "y": 127,
+          "width": 364,
+          "height": 430,
+          "display": "block",
+          "visibility": "visible",
+          "opacity": 1
+        },
+        "modelDefined": true,
+        "modelLoaded": true,
+        "hotspots": 6,
+        "visibleHotspots": 6,
+        "smallTargets": [],
+        "errors": [],
+        "bodyHasFatal": false,
+        "visibleRawTokens": [],
+        "dataReady": true,
+        "insightsRect": {
+          "x": 12,
+          "y": 762,
+          "width": 366,
+          "height": 1016,
+          "display": "grid",
+          "visibility": "visible",
+          "opacity": 1
+        },
+        "drawingCards": 5,
+        "environmentCards": 6,
+        "mediaSlots": 3,
+        "pendingMediaSlots": 3,
+        "viewLayerUserOpenOnly": true
+      },
+      "interaction": {
+        "attempted": true,
+        "targetUnit": "unit-08-sw",
+        "before": "בחרו נקודה על המודל\nגררו לסיבוב, לחצו על קומה כדי לדמות בחירת דירה.",
+        "after": "דירת 3 חדרים, קומה 8 · מבט לחצר ולים\nאומדן, זמינות ותוכניות ייטענו ממקור מאושר דרך ה-CMS.",
+        "changed": true
+      },
+      "drag": {
+        "attempted": true,
+        "rect": {
+          "x": 195,
+          "y": 342,
+          "width": 364,
+          "height": 430
+        },
+        "before": {
+          "theta": 0.6108652381980153,
+          "phi": 1.0995574287564276,
+          "radius": 514.3881852208066,
+          "text": "0.6108652381980153 1.0995574287564276 514.3881852208066"
+        },
+        "after": {
+          "theta": -2.6397879356842573,
+          "phi": 0.7488680162626832,
+          "radius": 514.3881852208066,
+          "text": "-2.6397879356842573 0.7488680162626832 514.3881852208066"
+        },
+        "thetaDelta": 3.250653173882273,
+        "changed": true
+      },
+      "checks": [
+        {
+          "status": "PASS",
+          "name": "single preview H1",
+          "detail": "1"
+        },
+        {
+          "status": "PASS",
+          "name": "RTL document",
+          "detail": "rtl"
+        },
+        {
+          "status": "PASS",
+          "name": "no horizontal overflow",
+          "detail": "0px"
+        },
+        {
+          "status": "PASS",
+          "name": "model-viewer custom element defined",
+          "detail": "true"
+        },
+        {
+          "status": "PASS",
+          "name": "model-viewer visible area",
+          "detail": "{\"x\":13,\"y\":127,\"width\":364,\"height\":430,\"display\":\"block\",\"visibility\":\"visible\",\"opacity\":1}"
+        },
+        {
+          "status": "PASS",
+          "name": "GLB loaded/revealed",
+          "detail": "true"
+        },
+        {
+          "status": "PASS",
+          "name": "hotspots present",
+          "detail": "6"
+        },
+        {
+          "status": "PASS",
+          "name": "at least one visible hotspot",
+          "detail": "6"
+        },
+        {
+          "status": "PASS",
+          "name": "44px hotspot targets",
+          "detail": "all visible hotspots >=44px"
+        },
+        {
+          "status": "PASS",
+          "name": "drag rotates model camera",
+          "detail": "{\"attempted\":true,\"rect\":{\"x\":195,\"y\":342,\"width\":364,\"height\":430},\"before\":{\"theta\":0.6108652381980153,\"phi\":1.0995574287564276,\"radius\":514.3881852208066,\"text\":\"0.6108652381980153 1.0995574287564276 514.3881852208066\"},\"after\":{\"theta\":-2.6397879356842573,\"phi\":0.7488680162626832,\"radius\":514.3881852208066,\"text\":\"-2.6397879356842573 0.7488680162626832 514.3881852208066\"},\"thetaDelta\":3.250653173882273,\"changed\":true}"
+        },
+        {
+          "status": "PASS",
+          "name": "hotspot click updates readout",
+          "detail": "{\"attempted\":true,\"targetUnit\":\"unit-08-sw\",\"before\":\"בחרו נקודה על המודל\\nגררו לסיבוב, לחצו על קומה כדי לדמות בחירת דירה.\",\"after\":\"דירת 3 חדרים, קומה 8 · מבט לחצר ולים\\nאומדן, זמינות ותוכניות ייטענו ממקור מאושר דרך ה-CMS.\",\"changed\":true}"
+        },
+        {
+          "status": "PASS",
+          "name": "no browser errors",
+          "detail": "none"
+        },
+        {
+          "status": "PASS",
+          "name": "no visible fatal text",
+          "detail": "none"
+        },
+        {
+          "status": "PASS",
+          "name": "no visible internal tokens",
           "detail": "none"
         },
         {
