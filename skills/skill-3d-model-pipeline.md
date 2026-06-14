@@ -34,9 +34,12 @@ When official BIM is not available but the owner needs a working showroom demo:
 2. Keep scale intuitive: 1 model unit = approximately 1 meter, origin at building-base center, Y up.
 3. Model the product structure, not a fantasy render: tower, podium, boutique blocks, amenity court,
    roof crown, floor rhythm and window bands.
-4. Keep the first GLB lightweight. Target under 4 MB for a massing model.
-5. Store demo units with `source_note` and non-binding price/availability copy.
-6. When official BIM/developer GLB arrives, optimize it and replace `project_model_glb` while keeping
+4. Avoid flat stacked-box placeholders. Even prototype massing must show the architectural idea:
+   spiral/stepped form when sourced, facade rhythm, podium/lobby, roof amenity hints, surroundings
+   and a first-glance residential read.
+5. Keep the first GLB lightweight. Target under 4 MB for a massing model.
+6. Store demo units with `source_note` and non-binding price/availability copy.
+7. When official BIM/developer GLB arrives, optimize it and replace `project_model_glb` while keeping
    the same origin/scale where possible. If origin/scale changes, regenerate `hotspot_position`,
    `hotspot_normal`, and `camera_orbit`.
 
@@ -66,8 +69,10 @@ gltf-transform inspect project.optimized.glb
 
 Target budgets:
 
-- Poster: under 350 KB.
-- GLB first version: under 8 MB if possible.
+- Prototype poster used before first load: under 80 KB when committed to the repo.
+- Poster uploaded to media/CDN for richer official model: under 350 KB.
+- GLB first massing version: under 4 MB.
+- GLB first official export: under 8 MB if possible.
 - Hero-grade GLB: under 15 MB only when the model quality justifies it.
 - Texture sizes: prefer 1024 or 2048, avoid 4096 unless visually necessary.
 
@@ -144,6 +149,8 @@ Before shipping a project:
 - Confirm keyboard/focus access to unit selection remains available.
 - Confirm mobile has no horizontal overflow and no nested gray scrollbars.
 - Confirm source notes/disclaimers distinguish official data from illustrative/demo data.
+- Confirm the local model preview screenshot shows `loaded:true` / actual GLB visible, not only the
+  poster image.
 - Confirm the page still has one H1 and the article body remains readable below the showroom.
 - Confirm the page assembly/SEO gate passes before wiring the public GLB: transaction-led title,
   price-aware non-binding meta description, visible buyer phrasing, FAQ/schema meta and no raw

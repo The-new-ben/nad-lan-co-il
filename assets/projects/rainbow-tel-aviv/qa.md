@@ -23,7 +23,8 @@ Expected:
 
 - Magic: `glTF`
 - Version: `2`
-- File size under 8 MB.
+- `model.glb` under 4 MB for the prototype massing.
+- `poster.png` under 80 KB for a repo-committed lightweight poster.
 - `project_3d_units` JSON has `hotspot_position`, `hotspot_normal`, `camera_orbit` and `plan` for each demo unit.
 
 ## Browser Gate After v1.63.0 Is Installed

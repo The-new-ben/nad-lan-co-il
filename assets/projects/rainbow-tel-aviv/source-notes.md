@@ -5,13 +5,14 @@ It is not official Rainbow BIM, not an official sale plan and not live inventory
 
 ## Public Facts Used
 
-- Official/marketing sources describe Rainbow as a Sde Dov coastal project by Israel Canada with a tower and surrounding boutique buildings.
-- Public sources disagree on exact counts: developer/marketing material commonly says 480 units; planning/Madlan-style sources show 459 units and 7 buildings / 8-40 floors. The public page must keep that truth-first discrepancy disclosure.
+- Official/marketing sources describe Rainbow as a Sde Dov coastal project by Israel Canada with six boutique buildings, a spiral / spiral-like residential tower, lagoon/resort positioning and coastal views.
+- Developer/architect sources describe 6 boutique buildings and a 42-story spiral-designed tower; press/planning-style sources describe a 40-story tower, 6 additional 8-floor buildings and 459 units. The public page must keep that truth-first discrepancy disclosure.
 - Sde Dov/Rainbow public materials mention pools, spa, fitness, cafe/workspaces, sea proximity and resort-style positioning.
 
 ## Sources To Recheck Before Public Claims
 
 - https://rainbow-telaviv.com/
+- https://www.blk.co.il/rainbow
 - https://www.israel-canada.co.il/projects/tel-aviv/rainbow
 - https://sdedov.co.il/project/rainbow/
 - https://sdedov.co.il/projects/
@@ -44,3 +45,10 @@ trusted map/source.
 - Do not present the demo units as available stock.
 - Do not present exact prices unless the owner approves a public or licensed source.
 - Replace `project_model_glb` with an official BIM/GLB when Israel Canada or the project manager supplies one.
+
+## Prototype Design Basis
+
+- Tower massing: original 42-level spiral-inspired stack, based on public descriptions of a spiral-designed Rainbow tower. It is not traced from any render.
+- Boutique ring: six 8-floor blocks around a central resort court, based on the public complex description.
+- Resort layer: lagoon/pool court, roof amenity hints, landscape markers and coastal strip are schematic cues only.
+- No faces, no copied stock, no copied developer images, no official inventory claims.

@@ -27,11 +27,11 @@ PLAN_BASE = f"{RAW_BASE}/plans"
 
 MATERIALS = [
     {
-        "name": "deep blueprint glass",
+        "name": "deep teal low iron glass",
         "pbrMetallicRoughness": {
-            "baseColorFactor": [0.035, 0.18, 0.18, 0.92],
-            "metallicFactor": 0.05,
-            "roughnessFactor": 0.28,
+            "baseColorFactor": [0.025, 0.20, 0.21, 0.9],
+            "metallicFactor": 0.02,
+            "roughnessFactor": 0.18,
         },
         "alphaMode": "BLEND",
         "doubleSided": False,
@@ -45,19 +45,19 @@ MATERIALS = [
         },
     },
     {
-        "name": "soft concrete shell",
+        "name": "warm stone shell",
         "pbrMetallicRoughness": {
-            "baseColorFactor": [0.72, 0.70, 0.64, 1.0],
+            "baseColorFactor": [0.82, 0.78, 0.68, 1.0],
             "metallicFactor": 0.0,
-            "roughnessFactor": 0.68,
+            "roughnessFactor": 0.62,
         },
     },
     {
-        "name": "clear window rhythm",
+        "name": "sea reflection glazing",
         "pbrMetallicRoughness": {
-            "baseColorFactor": [0.26, 0.63, 0.72, 0.72],
+            "baseColorFactor": [0.38, 0.72, 0.78, 0.62],
             "metallicFactor": 0.0,
-            "roughnessFactor": 0.18,
+            "roughnessFactor": 0.12,
         },
         "alphaMode": "BLEND",
     },
@@ -74,10 +74,28 @@ MATERIALS = [
     {
         "name": "site landscape",
         "pbrMetallicRoughness": {
-            "baseColorFactor": [0.18, 0.28, 0.20, 1.0],
+            "baseColorFactor": [0.16, 0.25, 0.19, 1.0],
             "metallicFactor": 0.0,
             "roughnessFactor": 0.8,
         },
+    },
+    {
+        "name": "pool deck porcelain",
+        "pbrMetallicRoughness": {
+            "baseColorFactor": [0.80, 0.74, 0.62, 1.0],
+            "metallicFactor": 0.0,
+            "roughnessFactor": 0.5,
+        },
+    },
+    {
+        "name": "soft shadow massing",
+        "pbrMetallicRoughness": {
+            "baseColorFactor": [0.05, 0.09, 0.08, 0.58],
+            "metallicFactor": 0.0,
+            "roughnessFactor": 0.9,
+        },
+        "alphaMode": "BLEND",
+        "doubleSided": True,
     },
 ]
 
@@ -146,46 +164,61 @@ class MeshBuilder:
 
 
 def floor_shape(floor: int) -> tuple[float, float, float, float, float]:
-    angle = floor * 0.085
-    sx = 18.0 + 1.2 * math.sin(angle)
-    sz = 12.6 + 0.8 * math.cos(angle * 0.8)
-    x = 1.3 * math.sin(angle * 0.9)
-    z = 0.9 * math.cos(angle * 0.7)
-    rot = angle * 0.38
+    # Public sources describe the tower as spiral-shaped. This is a stylized,
+    # original massing curve, not a traced or official facade.
+    angle = floor * 0.145
+    sx = 16.2 + 2.0 * math.sin(angle * 0.9)
+    sz = 10.6 + 1.1 * math.cos(angle * 0.7)
+    x = 1.85 * math.sin(angle * 0.82)
+    z = 1.25 * math.cos(angle * 0.72)
+    rot = angle * 0.58
     return sx, sz, x, z, rot
 
 
 def add_tower(builder: MeshBuilder) -> None:
     floor_h = 3.05
-    base_y = 6.2
+    base_y = 7.0
+    floors = 42
 
-    builder.add_box(2, (0, 2.15, 0), (28, 4.3, 18), rot_y=0.04)
-    builder.add_box(0, (0, base_y + 58, 0), (14.8, 112, 9.8), rot_y=0.18)
+    # Double-height resort lobby and podium base.
+    builder.add_box(2, (0, 2.0, 0), (34, 4.0, 20), rot_y=0.04)
+    builder.add_box(6, (0, 4.4, 0), (29, 1.0, 17), rot_y=0.04)
+    builder.add_box(0, (0.3, base_y + floors * floor_h / 2, 0.1), (12.7, floors * floor_h, 7.9), rot_y=0.18)
+    builder.add_box(7, (0.8, 1.8, -2.8), (42, 0.12, 31), rot_y=0.04)
 
-    for floor in range(1, 40):
+    for floor in range(1, floors + 1):
         y = base_y + floor * floor_h
         sx, sz, x, z, rot = floor_shape(floor)
-        builder.add_box(1, (x, y, z), (sx, 0.16, sz), rot_y=rot)
+        slab_h = 0.13 if floor % 3 else 0.19
+        builder.add_box(1, (x, y, z), (sx, slab_h, sz), rot_y=rot)
 
-        if floor % 2 == 0:
-            builder.add_box(2, (x, y + 0.18, z), (sx * 0.92, 0.12, sz * 0.9), rot_y=rot)
+        if floor % 4 == 0:
+            builder.add_box(2, (x, y + 0.18, z), (sx * 0.78, 0.09, sz * 0.72), rot_y=rot)
+
+        # Horizontal balcony rails and window rhythm. The west/east bands are
+        # deliberately stronger than the old fallback so the model reads as a
+        # residential tower at first glance.
+        for side in (-1, 1):
+            for bay in (-0.38, -0.13, 0.13, 0.38):
+                builder.add_box(3, (x + bay * sx, y + 1.38, z + side * (sz / 2 + 0.06)), (sx * 0.13, 1.62, 0.08), rot_y=rot)
+            builder.add_box(1, (x, y + 2.08, z + side * (sz / 2 + 0.18)), (sx * 0.92, 0.07, 0.18), rot_y=rot)
+            builder.add_box(3, (x, y + 0.62, z + side * (sz / 2 + 0.2)), (sx * 0.82, 0.42, 0.08), rot_y=rot)
 
         for side in (-1, 1):
-            for bay in (-0.32, 0.0, 0.32):
-                builder.add_box(3, (x + bay * sx, y + 1.35, z + side * (sz / 2 + 0.04)), (sx * 0.18, 1.55, 0.06), rot_y=rot)
-            builder.add_box(1, (x, y + 2.15, z + side * (sz / 2 + 0.13)), (sx * 0.86, 0.08, 0.16), rot_y=rot)
+            for bay in (-0.36, -0.12, 0.12, 0.36):
+                builder.add_box(3, (x + side * (sx / 2 + 0.07), y + 1.32, z + bay * sz), (0.08, 1.45, sz * 0.12), rot_y=rot)
 
-        for side in (-1, 1):
-            for bay in (-0.28, 0.28):
-                builder.add_box(3, (x + side * (sx / 2 + 0.04), y + 1.35, z + bay * sz), (0.06, 1.55, sz * 0.22), rot_y=rot)
-
-    top_y = base_y + 40 * floor_h
-    builder.add_box(1, (0.6, top_y + 1.2, 0.2), (18.5, 2.2, 13.2), rot_y=0.34)
-    builder.add_box(0, (0.6, top_y + 2.7, 0.2), (15.5, 0.9, 10.8), rot_y=0.34)
+    top_y = base_y + floors * floor_h
+    # Rooftop crown and amenity terrace.
+    builder.add_box(1, (0.6, top_y + 0.9, 0.2), (18.5, 1.1, 13.2), rot_y=0.44)
+    builder.add_box(6, (0.6, top_y + 1.62, 0.2), (16.8, 0.38, 11.2), rot_y=0.44)
+    builder.add_box(4, (3.8, top_y + 1.9, -1.2), (7.8, 0.12, 3.0), rot_y=0.44)
+    builder.add_box(1, (0.6, top_y + 2.65, 0.2), (15.8, 0.78, 10.8), rot_y=0.44)
 
 
 def add_boutique_ring(builder: MeshBuilder) -> None:
-    # Six 8-9 floor boutique blocks around the inner court, matching public project language.
+    # Six 8-floor boutique blocks around the inner court, matching the public
+    # developer language while keeping this as an original schematic massing.
     blocks = [
         (-42, 18, 30, 12, -0.08),
         (-23, 37, 28, 12, 0.18),
@@ -195,21 +228,37 @@ def add_boutique_ring(builder: MeshBuilder) -> None:
         (-27, -33, 34, 12, -0.18),
     ]
     for idx, (x, z, sx, sz, rot) in enumerate(blocks):
-        floors = 8 if idx in (1, 4) else 9
+        floors = 8
         h = floors * 3.05
         builder.add_box(2, (x, h / 2 + 2.0, z), (sx, h, sz), rot_y=rot)
+        builder.add_box(0, (x, h / 2 + 2.1, z + 0.08), (sx * 0.82, h * 0.96, sz * 0.78), rot_y=rot)
         for floor in range(1, floors + 1):
             y = 2.0 + floor * 3.05
             builder.add_box(1, (x, y, z), (sx * 1.02, 0.12, sz * 1.05), rot_y=rot)
             for side in (-1, 1):
                 builder.add_box(3, (x, y + 1.2, z + side * (sz / 2 + 0.05)), (sx * 0.72, 1.35, 0.06), rot_y=rot)
+            for side in (-1, 1):
+                builder.add_box(3, (x + side * (sx / 2 + 0.05), y + 1.15, z), (0.06, 1.25, sz * 0.58), rot_y=rot)
+        builder.add_box(6, (x, h + 3.0, z), (sx * 1.04, 0.22, sz * 1.08), rot_y=rot)
+        builder.add_box(4, (x + sx * 0.18, h + 3.18, z - sz * 0.14), (sx * 0.24, 0.08, sz * 0.22), rot_y=rot)
 
 
 def add_site(builder: MeshBuilder) -> None:
-    builder.add_box(5, (0, -0.08, 0), (110, 0.12, 95), rot_y=0)
-    builder.add_box(4, (0, 0.03, 0), (42, 0.1, 22), rot_y=0.03)
-    for x, z in [(-29, 0), (-18, 15), (17, -14), (31, 3), (0, 23), (0, -24)]:
-        builder.add_box(1, (x, 0.7, z), (0.7, 1.4, 0.7), rot_y=0)
+    builder.add_box(5, (0, -0.08, 0), (120, 0.12, 104), rot_y=0)
+    builder.add_box(7, (0, -0.01, 0), (104, 0.06, 84), rot_y=0)
+
+    # Central lagoon / pool court plus a coastal water strip behind the complex.
+    builder.add_box(4, (0, 0.04, 0), (46, 0.1, 24), rot_y=0.03)
+    builder.add_box(4, (-9, 0.06, 3), (22, 0.1, 13), rot_y=0.45)
+    builder.add_box(4, (24, 0.05, -7), (12, 0.1, 4.5), rot_y=-0.22)
+    builder.add_box(4, (0, 0.02, 55), (130, 0.08, 14), rot_y=0)
+    builder.add_box(6, (0, 0.08, 43), (112, 0.08, 4.2), rot_y=0)
+
+    # Landscape markers / palm-like verticals. Abstract enough to avoid clip-art,
+    # but enough to cue the resort setting at model-viewer scale.
+    for x, z in [(-36, -5), (-29, 0), (-18, 15), (17, -14), (31, 3), (38, -18), (0, 23), (0, -24), (14, 22), (-12, -18)]:
+        builder.add_box(1, (x, 0.72, z), (0.55, 1.45, 0.55), rot_y=0)
+        builder.add_box(5, (x, 1.55, z), (1.65, 0.26, 1.65), rot_y=0.35)
 
 
 def build_glb(path: Path) -> None:
@@ -317,42 +366,74 @@ def build_glb(path: Path) -> None:
         f.write(buffer)
 
 
-def write_png(path: Path, width: int = 1600, height: int = 1000) -> None:
+def write_png(path: Path, width: int = 1280, height: int = 800) -> None:
     canvas = np.zeros((height, width, 3), dtype=np.uint8)
     for y in range(height):
         t = y / max(1, height - 1)
-        top = np.array([12, 41, 45])
-        bottom = np.array([218, 194, 143])
-        canvas[y, :, :] = (top * (1 - t) + bottom * t).astype(np.uint8)
+        top = np.array([8, 35, 39])
+        mid = np.array([42, 65, 58])
+        bottom = np.array([223, 199, 151])
+        if t < 0.62:
+            local = t / 0.62
+            color = top * (1 - local) + mid * local
+        else:
+            local = (t - 0.62) / 0.38
+            color = mid * (1 - local) + bottom * local
+        canvas[y, :, :] = color.astype(np.uint8)
 
-    horizon = int(height * 0.64)
-    canvas[horizon:, :, :] = np.maximum(canvas[horizon:, :, :], np.array([28, 54, 45], dtype=np.uint8))
+    # Subtle vignette so the poster feels like a showroom hero, not a flat icon.
+    yy, xx = np.mgrid[0:height, 0:width]
+    d = ((xx - width * 0.52) / (width * 0.72)) ** 2 + ((yy - height * 0.48) / (height * 0.86)) ** 2
+    vignette = np.clip(1.18 - d * 0.5, 0.68, 1.0)
+    canvas = np.clip(canvas.astype(float) * vignette[..., None], 0, 255).astype(np.uint8)
+
     sea_y = int(height * 0.55)
-    canvas[sea_y : sea_y + 55, :, :] = np.array([25, 89, 106], dtype=np.uint8)
+    canvas[sea_y : sea_y + 70, :, :] = np.array([20, 87, 105], dtype=np.uint8)
+    canvas[sea_y + 6 : sea_y + 10, :, :] = np.array([79, 139, 148], dtype=np.uint8)
 
     def rect(x0: int, y0: int, x1: int, y1: int, color: tuple[int, int, int]) -> None:
+        x0 = int(round(x0 * width / 1600))
+        x1 = int(round(x1 * width / 1600))
+        y0 = int(round(y0 * height / 1000))
+        y1 = int(round(y1 * height / 1000))
         x0, x1 = sorted((max(0, x0), min(width, x1)))
         y0, y1 = sorted((max(0, y0), min(height, y1)))
         canvas[y0:y1, x0:x1, :] = color
 
-    # Boutique blocks.
-    for x in [290, 420, 980, 1110, 1240]:
-        rect(x, 505, x + 120, 700, (170, 160, 135))
-        for yy in range(525, 690, 24):
-            rect(x + 10, yy, x + 110, yy + 4, (218, 190, 120))
+    # Main shadow / podium.
+    rect(500, 718, 1040, 780, (28, 48, 42))
+    rect(545, 690, 995, 724, (70, 82, 70))
+    rect(585, 646, 955, 676, (179, 158, 103))
+
+    # Boutique blocks, staggered around the inner court.
+    for x, y0, w, h in [(255, 520, 132, 190), (405, 500, 130, 205), (1050, 500, 138, 205), (1210, 522, 130, 188), (350, 690, 168, 92), (1080, 690, 168, 92)]:
+        rect(x + 12, y0 + 10, x + w + 12, y0 + h + 10, (65, 83, 77))
+        rect(x, y0, x + w, y0 + h, (188, 176, 148))
+        rect(x, y0, x + w, y0 + 5, (220, 184, 100))
+        for yy2 in range(y0 + 24, y0 + h - 12, 26):
+            rect(x + 12, yy2, x + w - 12, yy2 + 5, (225, 194, 121))
+            rect(x + 28, yy2 + 7, x + w - 28, yy2 + 12, (66, 124, 132))
+
+    # Lagoon / resort court.
+    rect(590, 680, 950, 710, (22, 112, 125))
+    rect(690, 650, 880, 674, (35, 139, 151))
+    rect(735, 630, 825, 644, (236, 204, 128))
 
     # Main tower silhouette with a subtle spiral offset.
-    for i in range(40):
-        y = 685 - i * 11
-        w = int(165 + math.sin(i * 0.2) * 12)
-        x = int(720 + math.sin(i * 0.18) * 22 - w / 2)
-        rect(x, y, x + w, y + 9, (42, 77, 77))
-        rect(x, y, x + w, y + 2, (221, 177, 94))
-        for bx in range(x + 18, x + w - 18, 28):
-            rect(bx, y + 3, bx + 12, y + 8, (82, 145, 154))
-    rect(675, 235, 840, 252, (221, 177, 94))
-    rect(700, 700, 835, 730, (54, 68, 61))
-    rect(540, 710, 980, 750, (37, 57, 47))
+    for i in range(42):
+        y = 704 - i * 11
+        w = int(160 + math.sin(i * 0.24) * 20)
+        x = int(770 + math.sin(i * 0.18) * 30 - w / 2)
+        shade = 54 + int(i * 0.7)
+        rect(x + 12, y + 3, x + w + 12, y + 12, (22, 43, 42))
+        rect(x, y, x + w, y + 9, (34, shade, 70))
+        rect(x, y, x + w, y + 2, (222, 178, 93))
+        rect(x + 4, y + 3, x + 14, y + 8, (214, 199, 157))
+        for bx in range(x + 24, x + w - 18, 30):
+            rect(bx, y + 3, bx + 13, y + 8, (88, 157, 166))
+    rect(682, 218, 875, 236, (223, 185, 102))
+    rect(713, 236, 848, 246, (94, 126, 120))
+    rect(708, 704, 850, 738, (55, 73, 64))
 
     raw = bytearray()
     for row in canvas:
@@ -420,24 +501,53 @@ It is not official Rainbow BIM, not an official sale plan and not live inventory
 
 ## Public Facts Used
 
-- Official/marketing sources describe Rainbow as a Sde Dov coastal project by Israel Canada with a tower and surrounding boutique buildings.
-- Public sources disagree on exact counts: developer/marketing material commonly says 480 units; planning/Madlan-style sources show 459 units and 7 buildings / 8-40 floors. The public page must keep that truth-first discrepancy disclosure.
+- Official/marketing sources describe Rainbow as a Sde Dov coastal project by Israel Canada with six boutique buildings, a spiral / spiral-like residential tower, lagoon/resort positioning and coastal views.
+- Developer/architect sources describe 6 boutique buildings and a 42-story spiral-designed tower; press/planning-style sources describe a 40-story tower, 6 additional 8-floor buildings and 459 units. The public page must keep that truth-first discrepancy disclosure.
 - Sde Dov/Rainbow public materials mention pools, spa, fitness, cafe/workspaces, sea proximity and resort-style positioning.
 
 ## Sources To Recheck Before Public Claims
 
 - https://rainbow-telaviv.com/
+- https://www.blk.co.il/rainbow
 - https://www.israel-canada.co.il/projects/tel-aviv/rainbow
 - https://sdedov.co.il/project/rainbow/
+- https://sdedov.co.il/projects/
+- https://sdedov.co.il/faq/
+- https://www.tel-aviv.gov.il/Residents/Development/Pages/SdeDov.aspx
+- https://www.gov.il/he/pages/sdedov-pr-22072020
+- https://timeout.co.il/%D7%A8%D7%95%D7%91%D7%A2-%D7%A9%D7%93%D7%94-%D7%93%D7%91-%D7%A4%D7%90%D7%A8%D7%A7%D7%99%D7%9D/
 - https://www.madlan.co.il/projects/%D7%97%D7%9C%D7%A7%D7%94_15_%D7%A9%D7%93%D7%94_%D7%93%D7%91_%D7%AA%D7%9C_%D7%90%D7%91%D7%99%D7%91
 - https://en.globes.co.il/en/article-eyal-waldman-buys-sde-dov-apartments-for-nis-50m-1001483936
+
+## Environment Layer Sources
+
+- Sde Dov information site project index: names the marketed projects used in
+  `environment.json` (`Rainbow`, `DIMRI YAMA`, `GINDI VOGUE`, `ASHIRA BY AVISROR`,
+  `FIRST BY HAGAG`, `זוהי`, `UTOPIA`).
+- Tel Aviv municipality Sde Dov page: district scale, master-plan status, parks, transport,
+  commerce/employment and public-services framing.
+- Gov.il planning announcement: 16,000 homes and district-scale public/commercial/employment
+  program.
+- Time Out Tel Aviv parks report: public report on park design-plan approval for the coastal,
+  runway and linear parks.
+
+Do not turn nearby project names into exact map pins until their coordinates are verified from a
+trusted map/source.
 
 ## Public Safety
 
 - Label this model as illustrative until official developer material replaces it.
+- The `plans/*.svg` files are original schematic showroom aids, not official sale plans.
 - Do not present the demo units as available stock.
 - Do not present exact prices unless the owner approves a public or licensed source.
 - Replace `project_model_glb` with an official BIM/GLB when Israel Canada or the project manager supplies one.
+
+## Prototype Design Basis
+
+- Tower massing: original 42-level spiral-inspired stack, based on public descriptions of a spiral-designed Rainbow tower. It is not traced from any render.
+- Boutique ring: six 8-floor blocks around a central resort court, based on the public complex description.
+- Resort layer: lagoon/pool court, roof amenity hints, landscape markers and coastal strip are schematic cues only.
+- No faces, no copied stock, no copied developer images, no official inventory claims.
 """
     (OUT / "source-notes.md").write_text(source_notes, encoding="utf-8")
 
@@ -466,18 +576,20 @@ Expected:
 
 - Magic: `glTF`
 - Version: `2`
-- File size under 8 MB.
+- `model.glb` under 4 MB for the prototype massing.
+- `poster.png` under 80 KB for a repo-committed lightweight poster.
 - `project_3d_units` JSON has `hotspot_position`, `hotspot_normal`, `camera_orbit` and `plan` for each demo unit.
 
 ## Browser Gate After v1.63.0 Is Installed
 
 1. Upload `model.glb` and `poster.png` to WordPress Media or serve from GitHub raw/CDN.
-2. Set `project_model_glb`, `project_model_poster`, and `project_3d_units` from `project-meta-example.json`.
+2. Set `project_model_glb`, `project_model_poster`, `project_3d_units`, `project_3d_drawings_json` and `project_3d_environment_json` from `project-meta-example.json`.
 3. Open `/projects/rainbow-tel-aviv/`.
 4. Confirm the procedural fallback remains visible until the model loads.
 5. Confirm the GLB becomes the stage, drag rotates the building, and each hotspot selects the matching unit.
-6. Confirm lead/compare/map actions still carry the selected unit.
-7. Confirm mobile has no horizontal overflow and no nested gray scrollbars.
+6. Confirm the plan overlay opens the relevant schematic plan for each selected unit.
+7. Confirm lead/compare/map actions still carry the selected unit.
+8. Confirm mobile has no horizontal overflow and no nested gray scrollbars.
 
 ## Honest Boundary
 
@@ -486,11 +598,234 @@ This is a contractor-demo model package. It proves the CMS rail and interaction 
     (OUT / "qa.md").write_text(qa, encoding="utf-8")
 
 
+def environment_payload() -> dict[str, object]:
+    """Source-aware surroundings data for the prototype showroom.
+
+    This intentionally separates sourced district/project facts from exact map
+    pins. Nearby project names can render as cards/chips now; exact clickable
+    coordinates must wait for verified pins.
+    """
+
+    sde_dov_projects_url = "https://sdedov.co.il/projects/"
+    municipal_url = "https://www.tel-aviv.gov.il/Residents/Development/Pages/SdeDov.aspx"
+    return {
+        "status": "prototype_sourced",
+        "updated": "2026-06-14",
+        "project": {
+            "name": "Rainbow Tel Aviv",
+            "district": "רובע שדה דב",
+            "center": {
+                "lat": 32.1108,
+                "lng": 34.7805,
+                "precision": "prototype",
+                "source_note": "Approximate Sde Dov / Rainbow showroom center. Replace with verified project survey pin.",
+            },
+        },
+        "source_policy": "Public district and marketing facts only. No paid-source transaction rows, no official inventory claims and no unsourced exact pins.",
+        "district_context": {
+            "planned_units": 16000,
+            "planning_area_dunam": 1300,
+            "planned_population": 40000,
+            "planned_commerce_sqm": 126000,
+            "planned_employment_sqm": 330000,
+            "planned_hotel_rooms": 2000,
+            "planning_status": "Master plan approved in August 2020; detailed plans and permits are project-specific.",
+            "boundaries": {
+                "west": "חוף הים",
+                "north": "רחוב פרופס",
+                "east": "רחוב לוי אשכול",
+                "south": "רחוב ש\"י עגנון",
+            },
+            "sources": [
+                {
+                    "label": "עיריית תל אביב-יפו - רובע שדה דב",
+                    "url": municipal_url,
+                    "notes": "Master-plan scale, mixed-use program, parks, public buildings and transport principles.",
+                },
+                {
+                    "label": "אתר המידע רובע שדה דב - שאלות ותשובות",
+                    "url": "https://sdedov.co.il/faq/",
+                    "notes": "District boundaries, 16,000 planned homes and division into Eshkol, Central and North areas.",
+                },
+                {
+                    "label": "Gov.il - תכנית המתאר לרובע שדה דב",
+                    "url": "https://www.gov.il/he/pages/sdedov-pr-22072020",
+                    "notes": "Government planning announcement: 16,000 homes, public areas, commerce, employment, hotels and green areas.",
+                },
+            ],
+        },
+        "layers": [
+            {
+                "id": "neighbor_projects",
+                "label": "פרויקטים בסביבה",
+                "ui": "clickable_project_chips",
+                "items": [
+                    {
+                        "id": "rainbow",
+                        "name": "Rainbow Tel Aviv",
+                        "area": "אשכול",
+                        "status": "בשיווק / היתר בנייה לפי אתר המידע",
+                        "map_status": "has_project_page",
+                        "source_url": sde_dov_projects_url,
+                        "source_note": "Listed by the Sde Dov information site as a marketed project.",
+                    },
+                    {
+                        "id": "dimri-yama",
+                        "name": "DIMRI YAMA",
+                        "area": "אשכול",
+                        "status": "בשיווק",
+                        "map_status": "needs_precise_pin",
+                        "source_url": sde_dov_projects_url,
+                        "source_note": "Listed by the Sde Dov information site as a marketed project.",
+                    },
+                    {
+                        "id": "gindi-vogue",
+                        "name": "GINDI VOGUE",
+                        "area": "מרכז",
+                        "status": "בשיווק",
+                        "map_status": "needs_precise_pin",
+                        "source_url": sde_dov_projects_url,
+                        "source_note": "Listed by the Sde Dov information site as a marketed project.",
+                    },
+                    {
+                        "id": "ashira",
+                        "name": "ASHIRA BY AVISROR",
+                        "area": "אשכול",
+                        "status": "בשיווק / הבנייה בעיצומה לפי אתר המידע",
+                        "map_status": "needs_precise_pin",
+                        "source_url": sde_dov_projects_url,
+                        "source_note": "Listed by the Sde Dov information site as a marketed project.",
+                    },
+                    {
+                        "id": "first-by-hagag",
+                        "name": "FIRST BY HAGAG",
+                        "area": "מרכז",
+                        "status": "בשיווק",
+                        "map_status": "needs_precise_pin",
+                        "source_url": sde_dov_projects_url,
+                        "source_note": "Listed by the Sde Dov information site as a marketed project.",
+                    },
+                    {
+                        "id": "zohi",
+                        "name": "זוהי",
+                        "area": "אשכול",
+                        "status": "בשיווק",
+                        "map_status": "needs_precise_pin",
+                        "source_url": sde_dov_projects_url,
+                        "source_note": "Listed by the Sde Dov information site as a marketed project.",
+                    },
+                    {
+                        "id": "utopia",
+                        "name": "UTOPIA",
+                        "area": "אשכול",
+                        "status": "בשיווק",
+                        "map_status": "needs_precise_pin",
+                        "source_url": sde_dov_projects_url,
+                        "source_note": "Listed by the Sde Dov information site as a marketed project.",
+                    },
+                ],
+            },
+            {
+                "id": "parks_and_coast",
+                "label": "ים, פארקים וטיילת",
+                "ui": "environment_cards",
+                "items": [
+                    {
+                        "id": "coastal_park",
+                        "name": "פארק חופי",
+                        "type": "planned_park",
+                        "status": "מתוכנן",
+                        "source_url": municipal_url,
+                        "source_note": "The municipal district page describes a coastal park and a broad open-space network.",
+                    },
+                    {
+                        "id": "runway_park",
+                        "name": "פארק המסלול",
+                        "type": "planned_park",
+                        "status": "מתוכנן",
+                        "source_url": "https://timeout.co.il/%D7%A8%D7%95%D7%91%D7%A2-%D7%A9%D7%93%D7%94-%D7%93%D7%91-%D7%A4%D7%90%D7%A8%D7%A7%D7%99%D7%9D/",
+                        "source_note": "Public report on three approved park design plans, including the runway park.",
+                    },
+                    {
+                        "id": "linear_park",
+                        "name": "פארק ליניארי",
+                        "type": "planned_park",
+                        "status": "מתוכנן",
+                        "source_url": municipal_url,
+                        "source_note": "The municipal page lists the linear park among planned green spaces.",
+                    },
+                ],
+            },
+            {
+                "id": "mobility",
+                "label": "נגישות ותחבורה",
+                "ui": "mobility_facts",
+                "items": [
+                    {
+                        "id": "green_line",
+                        "name": "הקו הירוק של הרכבת הקלה",
+                        "type": "planned_light_rail",
+                        "status": "מקודם / בעבודות הכנה לפי העירייה",
+                        "source_url": municipal_url,
+                        "source_note": "The municipal page says the Green Line is planned to cross the district south-north and connect toward Holon/Rishon, Herzliya and Ramat HaHayal.",
+                    },
+                    {
+                        "id": "ibn_gabirol_extension",
+                        "name": "המשך אבן גבירול",
+                        "type": "planned_street_axis",
+                        "status": "מתוכנן",
+                        "source_url": municipal_url,
+                        "source_note": "The municipal page describes the north-south axis and mixed movement options.",
+                    },
+                    {
+                        "id": "walk_bike_grid",
+                        "name": "רשת הליכה ואופניים",
+                        "type": "public_realm",
+                        "status": "מתוכנן",
+                        "source_url": municipal_url,
+                        "source_note": "The municipal page emphasizes walking, cycling and non-motorized mobility.",
+                    },
+                ],
+            },
+            {
+                "id": "public_services",
+                "label": "שירותים ציבוריים",
+                "ui": "service_cards",
+                "items": [
+                    {
+                        "id": "education_public_buildings",
+                        "name": "חינוך ומבני ציבור",
+                        "type": "planned_public_services",
+                        "status": "מתוכנן ברמת רובע",
+                        "source_url": municipal_url,
+                        "source_note": "The municipal page lists public buildings including education, culture, leisure and neighborhood health services.",
+                    },
+                    {
+                        "id": "commerce_employment",
+                        "name": "מסחר ותעסוקה",
+                        "type": "mixed_use",
+                        "status": "מתוכנן",
+                        "source_url": municipal_url,
+                        "source_note": "The municipal page lists planned commerce and employment floorspace at district scale.",
+                    },
+                ],
+            },
+        ],
+        "implementation_notes": [
+            "Use `map_status: needs_precise_pin` to prevent fake clickable map pins.",
+            "Promote only sourced, verified coordinates into Mapbox/Cesium pins.",
+            "Render planned facilities with planned/future labels until built and verified.",
+            "Keep this environment JSON separate from unit inventory and pricing.",
+        ],
+    }
+
+
 def main() -> None:
     OUT.mkdir(parents=True, exist_ok=True)
     build_glb(OUT / "model.glb")
     write_png(OUT / "poster.png")
     units = unit_records()
+    environment = environment_payload()
     write_json(OUT / "unit-map.json", units)
     write_json(
         OUT / "project-meta-example.json",
@@ -519,6 +854,7 @@ def main() -> None:
                     "source": "המחשה מקורית לא רשמית. להחלפה בתוכנית מכר רשמית",
                 },
             ],
+            "project_3d_environment_json": environment,
         },
     )
     write_json(
@@ -567,15 +903,7 @@ def main() -> None:
             "note": "Attach only approved developer drawings or owner-licensed material before removing the illustrative labels.",
         },
     )
-    write_json(
-        OUT / "environment.json",
-        {
-            "status": "starter",
-            "location": {"lat": 32.1108, "lng": 34.7805, "source": "Sde Dov center placeholder"},
-            "layers": ["sea", "future Sde Dov district", "light rail / transport", "schools and kindergartens", "parks"],
-            "next_step": "Replace with sourced POI/map layer and Cesium/Google Photorealistic 3D Tiles view when approved.",
-        },
-    )
+    write_json(OUT / "environment.json", environment)
     write_docs()
     size = os.path.getsize(OUT / "model.glb")
     print(f"Wrote {OUT / 'model.glb'} ({size:,} bytes)")
