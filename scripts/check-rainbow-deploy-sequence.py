@@ -38,6 +38,7 @@ class StackBranch:
     marker: str
     main_path: str
     main_pattern: str | None = None
+    pr_number: int | None = None
 
 
 PLUGIN_STACK_BRANCHES = [
@@ -47,6 +48,7 @@ PLUGIN_STACK_BRANCHES = [
         "project_3d.tap_target_min_px >= 44",
         "plugins/nadlan-config/inc/project-3d.php",
         "tap_target_min_px",
+        164,
     ),
     StackBranch(
         "1.63.2",
@@ -54,6 +56,7 @@ PLUGIN_STACK_BRANCHES = [
         "project_3d.unit_meta_rest",
         "plugins/nadlan-config/inc/project-3d.php",
         "unit_meta_rest",
+        165,
     ),
     StackBranch(
         "1.63.3",
@@ -61,6 +64,7 @@ PLUGIN_STACK_BRANCHES = [
         "project_3d.floating_action_rail_v1633",
         "plugins/nadlan-config/inc/project-3d.php",
         "floating_action_rail_v1633",
+        166,
     ),
     StackBranch(
         "1.63.4",
@@ -68,6 +72,7 @@ PLUGIN_STACK_BRANCHES = [
         "project_page_assembly.rainbow_seo_v1634",
         "plugins/nadlan-config/inc/project-page-assembly.php",
         "rainbow_seo_v1634",
+        167,
     ),
 ]
 
@@ -137,6 +142,7 @@ def stack_branches(project_slug: str, asset_branch: str) -> list[StackBranch]:
             asset_branch,
             "project_3d.projects_with_glb >= 1 after CMS apply",
             f"assets/projects/{project_slug}/model.glb",
+            pr_number=163,
         ),
     ]
 
@@ -165,10 +171,11 @@ def status_rows(base_url: str, should_fetch: bool, main_ref: str, project_slug: 
             merge_detail = "main contains the marker/file, likely squash-merged"
         else:
             merge_detail = "not found on main by ancestry or marker"
+        pr_label = f" PR #{item.pr_number}" if item.pr_number else ""
         rows.append(
             Row(
                 "PASS" if merged else "BLOCKED",
-                f"{item.label} merged to main",
+                f"{item.label}{pr_label} merged to main",
                 f"{item.branch}@{sha[:12]}: {merge_detail}; marker {item.marker}",
             )
         )
@@ -224,6 +231,34 @@ def print_rows(rows: list[Row], project_slug: str) -> None:
     for row in rows:
         print(f"[{row.status}] {row.name}: {row.detail}")
     print()
+    blocked = [row for row in rows if row.status in {"FAIL", "BLOCKED"}]
+    if blocked:
+        first = blocked[0]
+        print("Next action:")
+        if "1.63.1" in first.name:
+            print("- Do not update the plugin or apply the GLB payload yet.")
+            print("- Merge/deploy PR #164 first, then continue in order: #165, #166, #167, #163.")
+        elif "1.63.2" in first.name:
+            print("- Do not apply the GLB payload yet.")
+            print("- Merge/deploy PR #165 next, then continue in order: #166, #167, #163.")
+        elif "1.63.3" in first.name:
+            print("- Do not apply the GLB payload yet.")
+            print("- Merge/deploy PR #166 next, then continue in order: #167, #163.")
+        elif "1.63.4" in first.name:
+            print("- Do not apply the GLB payload yet.")
+            print("- Merge/deploy PR #167 next, then merge PR #163 and apply the CMS payload.")
+        elif "GLB assets" in first.name:
+            print("- Merge PR #163, pull/sync UPress Git, then apply the Rainbow CMS payload.")
+        elif "live plugin version" in first.name or "project_3d." in first.name or "project_page_assembly." in first.name:
+            print("- The code may be merged, but the live site is not updated enough yet.")
+            print("- Pull/sync UPress server Git, update/upload the NadLan Config plugin, clear cache, then rerun this checker.")
+        else:
+            print(f"- Resolve: {first.name}.")
+        print()
+    else:
+        print("Next action:")
+        print("- Stack and live markers are ready. Apply the Rainbow CMS payload, then run the finish-line checker.")
+        print()
     print("Required owner/deploy order after merges:")
     print("1. Merge/deploy plugin stack through 1.63.4.")
     print("2. Pull/sync UPress server Git and update/upload the NadLan Config plugin.")
