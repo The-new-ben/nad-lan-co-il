@@ -120,22 +120,23 @@
     }
     .cell {
       cursor: pointer;
-      fill: rgba(61,220,132,.26);
-      stroke: #fff6cb;
-      stroke-width: 3;
+      fill: rgba(61,220,132,.38);
+      stroke: rgba(255,250,216,.94);
+      stroke-width: 4;
       vector-effect: non-scaling-stroke;
-      filter: drop-shadow(0 0 12px rgba(61,220,132,.35));
+      filter: drop-shadow(0 0 12px rgba(61,220,132,.42)) drop-shadow(0 2px 5px rgba(0,0,0,.38));
+      paint-order: stroke fill;
       transition: fill .16s ease, stroke .16s ease, filter .16s ease;
     }
     .cell.reserved {
-      fill: rgba(242,193,78,.34);
-      filter: drop-shadow(0 0 12px rgba(242,193,78,.34));
+      fill: rgba(242,193,78,.46);
+      filter: drop-shadow(0 0 13px rgba(242,193,78,.4)) drop-shadow(0 2px 5px rgba(0,0,0,.38));
     }
     .cell.sold {
-      fill: rgba(154,160,166,.18);
-      stroke: rgba(230,235,235,.66);
+      fill: rgba(154,160,166,.27);
+      stroke: rgba(230,236,236,.76);
       filter: none;
-      opacity: .7;
+      opacity: .68;
     }
     .cell.recommended {
       animation: pulse 2s infinite;
@@ -143,23 +144,24 @@
     .cell.active,
     .cell:hover,
     .cell:focus {
-      fill: rgba(234,216,163,.54);
-      stroke: #fff9d4;
-      filter: drop-shadow(0 0 22px rgba(234,216,163,.8));
+      fill: rgba(234,216,163,.68);
+      stroke: #fffbe0;
+      stroke-width: 5;
+      filter: drop-shadow(0 0 24px rgba(234,216,163,.82)) drop-shadow(0 5px 14px rgba(0,0,0,.58));
       outline: none;
     }
     .cell-label {
       pointer-events: none;
-      fill: #fff7cf;
+      fill: #fff9d8;
       stroke: #071514;
-      stroke-width: 4px;
+      stroke-width: 5px;
       paint-order: stroke;
       font-weight: 900;
-      font-size: 21px;
+      font-size: 23px;
       text-anchor: middle;
       dominant-baseline: central;
-      filter: drop-shadow(0 2px 7px rgba(0,0,0,.62));
-      opacity: .88;
+      filter: drop-shadow(0 2px 8px rgba(0,0,0,.7));
+      opacity: .96;
     }
     .cell-label.sold { opacity: .45; }
     .cell-label.active {
@@ -267,16 +269,16 @@
         <figure class="facade">
           <img src="../../../plugins/nadlan-config/assets/concept/rainbow-facade-demo.svg" alt="Illustrative Rainbow facade">
           <svg viewBox="0 0 1000 1000" preserveAspectRatio="none" aria-label="Clickable apartment facade">
-            <polygon tabindex="0" class="cell available" data-unit="unit-08-sw" points="408,578 486,578 486,594 408,594"></polygon>
-            <polygon tabindex="0" class="cell available" data-unit="unit-16-w" points="492,479 570,479 570,495 492,495"></polygon>
-            <polygon tabindex="0" class="cell available recommended active" data-unit="unit-24-nw" points="576,380 654,380 654,396 576,396"></polygon>
-            <polygon tabindex="0" class="cell available" data-unit="unit-31-se" points="492,281 570,281 570,297 492,297"></polygon>
-            <polygon tabindex="0" class="cell available recommended" data-unit="unit-38-penthouse" points="408,149 654,149 654,179 408,179"></polygon>
-            <polygon tabindex="0" class="cell reserved" data-unit="unit-boutique-07" points="705,705 790,705 790,730 705,730"></polygon>
-            <text class="cell-label" data-unit="unit-08-sw" x="447" y="586">8 · 3 חד׳</text>
-            <text class="cell-label" data-unit="unit-16-w" x="531" y="487">16 · 4 חד׳</text>
-            <text class="cell-label active" data-unit="unit-24-nw" x="615" y="388">24 · 4 חד׳</text>
-            <text class="cell-label" data-unit="unit-31-se" x="531" y="289">31 · 5 חד׳</text>
+            <polygon tabindex="0" class="cell available" data-unit="unit-08-sw" points="402,565 494,565 494,600 402,600"></polygon>
+            <polygon tabindex="0" class="cell available" data-unit="unit-16-w" points="486,466 578,466 578,501 486,501"></polygon>
+            <polygon tabindex="0" class="cell available recommended active" data-unit="unit-24-nw" points="570,367 662,367 662,402 570,402"></polygon>
+            <polygon tabindex="0" class="cell available" data-unit="unit-31-se" points="486,268 578,268 578,303 486,303"></polygon>
+            <polygon tabindex="0" class="cell available recommended" data-unit="unit-38-penthouse" points="402,136 660,136 660,182 402,182"></polygon>
+            <polygon tabindex="0" class="cell reserved" data-unit="unit-boutique-07" points="696,693 798,693 798,737 696,737"></polygon>
+            <text class="cell-label" data-unit="unit-08-sw" x="448" y="583">8 · 3 חד׳</text>
+            <text class="cell-label" data-unit="unit-16-w" x="532" y="484">16 · 4 חד׳</text>
+            <text class="cell-label active" data-unit="unit-24-nw" x="616" y="385">24 · 4 חד׳</text>
+            <text class="cell-label" data-unit="unit-31-se" x="532" y="286">31 · 5 חד׳</text>
             <text class="cell-label" data-unit="unit-38-penthouse" x="531" y="164">38 · 5 חד׳</text>
             <text class="cell-label" data-unit="unit-boutique-07" x="747" y="717">7 · 4 חד׳</text>
           </svg>

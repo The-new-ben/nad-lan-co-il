@@ -373,7 +373,7 @@
         "recommended": false,
         "stage_x": 38,
         "stage_w": 9,
-        "points": "408,578 486,578 486,594 408,594"
+        "points": "402,565 494,565 494,600 402,600"
       },
       {
         "id": "unit-16-w",
@@ -403,7 +403,7 @@
         "recommended": false,
         "stage_x": 45,
         "stage_w": 9,
-        "points": "492,479 570,479 570,495 492,495"
+        "points": "486,466 578,466 578,501 486,501"
       },
       {
         "id": "unit-24-nw",
@@ -433,7 +433,7 @@
         "recommended": true,
         "stage_x": 42,
         "stage_w": 9,
-        "points": "576,380 654,380 654,396 576,396"
+        "points": "570,367 662,367 662,402 570,402"
       },
       {
         "id": "unit-31-se",
@@ -463,7 +463,7 @@
         "recommended": false,
         "stage_x": 63,
         "stage_w": 9,
-        "points": "492,281 570,281 570,297 492,297"
+        "points": "486,268 578,268 578,303 486,303"
       },
       {
         "id": "unit-38-penthouse",
@@ -493,7 +493,7 @@
         "recommended": true,
         "stage_x": 51,
         "stage_w": 13,
-        "points": "408,149 654,149 654,179 408,179"
+        "points": "402,136 660,136 660,182 402,182"
       },
       {
         "id": "unit-boutique-07",
@@ -523,7 +523,7 @@
         "recommended": false,
         "stage_x": 22,
         "stage_w": 9,
-        "points": "705,705 790,705 790,730 705,730"
+        "points": "696,693 798,693 798,737 696,737"
       }
     ],
     "project_3d_demo": "1"

@@ -94,7 +94,7 @@ the building itself:
 
 In the WordPress editor this is the field named `תא דירה על חזית SVG` inside the
 `בחירת דירות אינטראקטיבית` box. Paste polygon coordinates such as
-`408,578 486,578 486,594 408,594`. Use a real facade/elevation image and a consistent
+`402,565 494,565 494,600 402,600`. Use a real facade/elevation image and a consistent
 `project_3d_viewbox` when moving from prototype to official developer material.
 
 ### Facade Point Helper
@@ -172,7 +172,7 @@ The important model fields are:
 - `stage_w`: how wide the facade cell appears, from `4` to `22`; use wider values for penthouses
   or combined lines.
 - `points`: polygon coordinates in the `project_3d_viewbox`, for example
-  `408,578 486,578 486,594 408,594`. Use this when you have an elevation/facade image or a traced
+  `402,565 494,565 494,600 402,600`. Use this when you have an elevation/facade image or a traced
   sales plan.
 - `camera_orbit`: optional camera angle when the apartment is selected.
 

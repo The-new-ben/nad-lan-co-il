@@ -37,6 +37,8 @@ and six boutique buildings:
 - Updated cell width with `stage_w`, while keeping a minimum mobile-friendly hit size.
 - Promoted facade/elevation `points` polygons to the primary selector when they exist.
 - Keeps the stage-cell layer as a fallback only when no facade polygons are available.
+- Enlarged the Rainbow prototype polygons from thin highlight bands into apartment-sized cells,
+  with stronger availability colour, selected-state glow and label contrast.
 - Added buyer-readable labels to the embedded facade cells, generated from the same CMS unit data
   (`floor` + `rooms`) and synced with the selected apartment state.
 - Added an admin facade-point helper in the project metabox. The operator can click four corners on
@@ -76,7 +78,8 @@ Chrome interaction proof on the local preview:
 
 Run on the live Rainbow page after deploy:
 
-1. Desktop 1440px: apartment selectors look like embedded facade/elevation cells, not dots.
+1. Desktop 1440px: apartment selectors look like embedded apartment-sized facade/elevation cells,
+   not dots, floating squares or thin decorative lines.
 2. Mobile 390px: every cell remains easy to tap and does not create horizontal overflow.
 3. Click/tap a cell once: the selected-apartment card updates with the correct unit.
 4. Drag empty model surface: the building rotates.

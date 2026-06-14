@@ -252,7 +252,7 @@ if ( ! function_exists( 'nadlan_p3d_demo_units' ) ) {
 				'price'   => 0,
 				'status'  => 'available',
 				'plan'    => '',
-				'points'  => '408,578 486,578 486,594 408,594',
+				'points'  => '402,565 494,565 494,600 402,600',
 			),
 			array(
 				'id'      => 'demo-18-b',
@@ -272,7 +272,7 @@ if ( ! function_exists( 'nadlan_p3d_demo_units' ) ) {
 				'price'   => 0,
 				'status'  => 'available',
 				'plan'    => '',
-				'points'  => '492,479 570,479 570,495 492,495',
+				'points'  => '486,466 578,466 578,501 486,501',
 			),
 			array(
 				'id'      => 'demo-24-c',
@@ -292,7 +292,7 @@ if ( ! function_exists( 'nadlan_p3d_demo_units' ) ) {
 				'price'   => 0,
 				'status'  => 'reserved',
 				'plan'    => '',
-				'points'  => '576,380 654,380 654,396 576,396',
+				'points'  => '570,367 662,367 662,402 570,402',
 			),
 			array(
 				'id'      => 'demo-30-d',
@@ -312,7 +312,7 @@ if ( ! function_exists( 'nadlan_p3d_demo_units' ) ) {
 				'price'   => 0,
 				'status'  => 'available',
 				'plan'    => '',
-				'points'  => '492,281 570,281 570,297 492,297',
+				'points'  => '486,268 578,268 578,303 486,303',
 			),
 			array(
 				'id'      => 'demo-34-e',
@@ -332,7 +332,7 @@ if ( ! function_exists( 'nadlan_p3d_demo_units' ) ) {
 				'price'   => 0,
 				'status'  => 'available',
 				'plan'    => '',
-				'points'  => '408,215 486,215 486,231 408,231',
+				'points'  => '402,202 494,202 494,237 402,237',
 			),
 			array(
 				'id'      => 'demo-38-p',
@@ -352,7 +352,7 @@ if ( ! function_exists( 'nadlan_p3d_demo_units' ) ) {
 				'price'   => 0,
 				'status'  => 'available',
 				'plan'    => '',
-				'points'  => '408,149 654,149 654,179 408,179',
+				'points'  => '402,136 660,136 660,182 402,182',
 			),
 			array(
 				'id'      => 'demo-07-g',
@@ -372,7 +372,7 @@ if ( ! function_exists( 'nadlan_p3d_demo_units' ) ) {
 				'price'   => 0,
 				'status'  => 'available',
 				'plan'    => '',
-				'points'  => '705,705 790,705 790,730 705,730',
+				'points'  => '696,693 798,693 798,737 696,737',
 			),
 		);
 	}
@@ -2675,35 +2675,37 @@ CSS
 .nlp3d.nlp3d-premium .nlp3d-facade-hotspots .nlp3d-facade-cell{
 	pointer-events:all!important;
 	cursor:pointer!important;
-	fill:rgba(61,220,132,.26)!important;
-	stroke:#f8f0ca!important;
-	stroke-width:3!important;
+	fill:rgba(61,220,132,.38)!important;
+	stroke:rgba(255,250,216,.94)!important;
+	stroke-width:4!important;
 	vector-effect:non-scaling-stroke;
-	filter:drop-shadow(0 0 10px rgba(61,220,132,.28));
+	filter:drop-shadow(0 0 12px rgba(61,220,132,.42)) drop-shadow(0 2px 5px rgba(0,0,0,.38));
+	paint-order:stroke fill;
 	transition:fill .16s ease,stroke .16s ease,filter .16s ease,opacity .16s ease;
 }
-.nlp3d.nlp3d-premium .nlp3d-facade-hotspots .nlp3d-facade-cell.is-reserved{fill:rgba(242,193,78,.32)!important;filter:drop-shadow(0 0 10px rgba(242,193,78,.28))}
-.nlp3d.nlp3d-premium .nlp3d-facade-hotspots .nlp3d-facade-cell.is-sold{fill:rgba(154,160,166,.2)!important;stroke:rgba(220,226,226,.68)!important;filter:none;opacity:.66}
+.nlp3d.nlp3d-premium .nlp3d-facade-hotspots .nlp3d-facade-cell.is-reserved{fill:rgba(242,193,78,.46)!important;filter:drop-shadow(0 0 13px rgba(242,193,78,.4)) drop-shadow(0 2px 5px rgba(0,0,0,.38))}
+.nlp3d.nlp3d-premium .nlp3d-facade-hotspots .nlp3d-facade-cell.is-sold{fill:rgba(154,160,166,.27)!important;stroke:rgba(230,236,236,.76)!important;filter:none;opacity:.68}
 .nlp3d.nlp3d-premium .nlp3d-facade-hotspots .nlp3d-facade-cell.is-recommended.is-available{animation:nlfacadepulse 2s infinite}
 .nlp3d.nlp3d-premium .nlp3d-facade-hotspots .nlp3d-facade-cell:hover,
 .nlp3d.nlp3d-premium .nlp3d-facade-hotspots .nlp3d-facade-cell:focus-visible,
 .nlp3d.nlp3d-premium .nlp3d-facade-hotspots .nlp3d-facade-cell.is-active{
-	fill:rgba(234,216,163,.48)!important;
-	stroke:#fff8ca!important;
-	filter:drop-shadow(0 0 18px rgba(234,216,163,.72));
+	fill:rgba(234,216,163,.68)!important;
+	stroke:#fffbe0!important;
+	stroke-width:5!important;
+	filter:drop-shadow(0 0 24px rgba(234,216,163,.82)) drop-shadow(0 5px 14px rgba(0,0,0,.58));
 	outline:none!important;
 }
 .nlp3d.nlp3d-premium .nlp3d-facade-hotspots .nlp3d-facade-label{
 	pointer-events:none!important;
-	fill:#fff7cf!important;
+	fill:#fff9d8!important;
 	stroke:#071514!important;
-	stroke-width:4px!important;
+	stroke-width:5px!important;
 	paint-order:stroke;
-	font-size:21px!important;
+	font-size:23px!important;
 	font-weight:900!important;
 	letter-spacing:0!important;
-	filter:drop-shadow(0 2px 7px rgba(0,0,0,.62));
-	opacity:.88;
+	filter:drop-shadow(0 2px 8px rgba(0,0,0,.7));
+	opacity:.96;
 }
 .nlp3d.nlp3d-premium .nlp3d-facade-hotspots .nlp3d-facade-label.is-sold{opacity:.45}
 .nlp3d.nlp3d-premium .nlp3d-facade-hotspots .nlp3d-facade-label.is-active{
@@ -2861,7 +2863,7 @@ if ( ! function_exists( 'nadlan_p3d_render_admin_metabox' ) ) {
 						<label><span>סטטוס</span><select class="widefat" data-u-field="status"><option value="available">זמינה</option><option value="reserved">בבדיקה</option><option value="sold">לא זמינה</option></select></label>
 						<label><span>מיקום נקודה במודל</span><input type="text" class="widefat" data-u-field="hotspot_position" placeholder="0m 20m 0m"></label>
 						<label><span>כיוון נקודה במודל</span><input type="text" class="widefat" data-u-field="hotspot_normal" placeholder="0m 0m 1m"></label>
-						<label class="nadlan-p3d-full"><span>תא דירה על חזית SVG</span><input type="text" class="widefat" data-u-field="points" placeholder="576,380 654,380 654,396 576,396"><p class="nadlan-p3d-help">זהו השדה המדויק לבחירת דירה על תמונת חזית: ארבע נקודות או יותר בתוך ה-viewBox. כאשר הוא מלא, הדירה נלחצת על החזית עצמה ולא כנקודה מרחפת.</p></label>
+						<label class="nadlan-p3d-full"><span>תא דירה על חזית SVG</span><input type="text" class="widefat" data-u-field="points" placeholder="570,367 662,367 662,402 570,402"><p class="nadlan-p3d-help">זהו השדה המדויק לבחירת דירה על תמונת חזית: ארבע נקודות או יותר בתוך ה-viewBox. כאשר הוא מלא, הדירה נלחצת על החזית עצמה ולא כנקודה מרחפת.</p></label>
 						<div class="nadlan-p3d-full nadlan-p3d-facade-helper" data-p3d-facade-helper>
 							<div class="nadlan-p3d-facade-head">
 								<strong>עוזר סימון חזית</strong>
