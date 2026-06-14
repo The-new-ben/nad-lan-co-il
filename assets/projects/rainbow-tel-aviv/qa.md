@@ -5,7 +5,8 @@
 - `model.glb`: original lightweight architectural massing of the Rainbow tower, boutique ring and central amenity court.
 - `poster.png`: lightweight poster for `<model-viewer>` before the GLB reveals.
 - `unit-map.json`: demo unit records with model-viewer hotspot coordinates.
-- `project-meta-example.json`: copy/paste map for the CMS fields added in v1.63.0.
+- `project-meta-example.json`: CMS payload map for the model fields in v1.63.0 and the REST unit
+  write gate added in the follow-up v1.63.2 stack.
 - `plans/*.svg`: original schematic unit/site plans for the prototype plan overlay.
 - `drawings.json`: prototype drawing map plus slots for official elevation/floor/site drawings.
 - `environment.json`: surroundings starter data to be replaced by the map/POI layer.
@@ -40,16 +41,19 @@ Expected:
 - `view-layer-config.json` keeps the default state building-first, defines user-opened map/tiles
   behavior, and gives each unit a derived altitude and bearing for view-from-apartment QA.
 
-## Browser Gate After v1.63.0 Is Installed
+## Browser Gate After The Full v1.63.4 Stack Is Installed
 
-1. Upload `model.glb` and `poster.png` to WordPress Media or serve from GitHub raw/CDN.
-2. Set `project_model_glb`, `project_model_poster`, `project_3d_units`, `project_3d_drawings_json` and `project_3d_environment_json` from `project-meta-example.json`.
-3. Open `/projects/rainbow-tel-aviv/`.
-4. Confirm the procedural fallback remains visible until the model loads.
-5. Confirm the GLB becomes the stage, drag rotates the building, and each hotspot selects the matching unit.
-6. Confirm the plan overlay opens the relevant schematic plan for each selected unit.
-7. Confirm lead/compare/map actions still carry the selected unit.
-8. Confirm mobile has no horizontal overflow and no nested gray scrollbars.
+1. Merge/deploy the full stack: v1.63.1 tap targets, v1.63.2 unit REST wiring,
+   v1.63.3 contact-rail containment and v1.63.4 page assembly/SEO.
+2. Pull/sync the UPress server Git copy, update/upload the plugin, clear cache and verify healthcheck.
+3. Upload `model.glb` and `poster.png` to WordPress Media or serve from GitHub raw/CDN.
+4. Set `project_model_glb`, `project_model_poster`, `project_3d_units`, `project_3d_drawings_json` and `project_3d_environment_json` from `project-meta-example.json`.
+5. Open `/projects/rainbow-tel-aviv/`.
+6. Confirm the procedural fallback remains visible until the model loads.
+7. Confirm the GLB becomes the stage, drag rotates the building, and each hotspot selects the matching unit.
+8. Confirm the plan overlay opens the relevant schematic plan for each selected unit.
+9. Confirm lead/compare/map actions still carry the selected unit.
+10. Confirm mobile has no horizontal overflow, no nested gray scrollbars, and no showroom tap target below 44px.
 
 ## Honest Boundary
 

@@ -13,7 +13,7 @@ Environment for --apply:
 The script never logs credentials. It writes only REST-registered meta.
 project_3d_units is included only when the live healthcheck reports
 project_3d.unit_meta_rest=true (v1.63.2+). The write path also requires the
-v1.63.4 page-assembly SEO gate so the model is not wired onto an unfinished
+v1.63.1 tap-target gate and v1.63.4 page-assembly SEO gate so the model is not wired onto an unfinished
 flagship page. Dry-run still prints the payload for review; --apply refuses
 older plugin versions before any write.
 """
@@ -327,6 +327,12 @@ def plugin_stack_errors(health: dict[str, Any]) -> list[str]:
         errors.append(f"version {version or 'unknown'} < {REQUIRED_PLUGIN_STACK_LABEL}")
     if not (isinstance(project_3d, dict) and project_3d.get("model_viewer_ready") is True):
         errors.append("project_3d.model_viewer_ready is not true")
+    if not (
+        isinstance(project_3d, dict)
+        and isinstance(project_3d.get("tap_target_min_px"), int)
+        and project_3d.get("tap_target_min_px") >= 44
+    ):
+        errors.append("project_3d.tap_target_min_px is not >= 44")
     if not (isinstance(project_3d, dict) and project_3d.get("unit_meta_rest") is True):
         errors.append("project_3d.unit_meta_rest is not true")
     if not (isinstance(project_3d, dict) and project_3d.get("floating_action_rail_v1633") is True):

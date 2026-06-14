@@ -71,6 +71,7 @@ def check_health(base_url: str) -> bool:
     rows = {
         "version": health.get("version"),
         "model_viewer_ready": project_3d.get("model_viewer_ready"),
+        "tap_target_min_px": project_3d.get("tap_target_min_px"),
         "unit_meta_rest": project_3d.get("unit_meta_rest"),
         "floating_action_rail_v1633": project_3d.get("floating_action_rail_v1633"),
         "rainbow_seo_v1634": assembly.get("rainbow_seo_v1634"),
@@ -84,6 +85,8 @@ def check_health(base_url: str) -> bool:
     for key in ("model_viewer_ready", "unit_meta_rest", "floating_action_rail_v1633", "rainbow_seo_v1634"):
         if rows.get(key) is not True:
             errors.append(f"{key} is not true")
+    if not isinstance(rows.get("tap_target_min_px"), int) or int(rows["tap_target_min_px"]) < 44:
+        errors.append(f"tap_target_min_px is {rows.get('tap_target_min_px')}, expected >= 44")
     if not isinstance(rows.get("projects_with_glb"), int) or int(rows["projects_with_glb"]) < 1:
         errors.append(f"projects_with_glb is {rows.get('projects_with_glb')}, expected >= 1")
 

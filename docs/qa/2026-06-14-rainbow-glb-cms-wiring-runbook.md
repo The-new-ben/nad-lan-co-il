@@ -7,6 +7,7 @@ into a visible 3D model on the live Rainbow Tel Aviv page.
 
 - Live plugin healthcheck reports `version: 1.63.4` or newer.
 - Healthcheck reports `project_3d.model_viewer_ready: true`.
+- Healthcheck reports `project_3d.tap_target_min_px: 44` or greater (v1.63.1 or newer).
 - Healthcheck reports `project_3d.unit_meta_rest: true` (v1.63.2 or newer).
 - Healthcheck reports `project_3d.floating_action_rail_v1633: true`.
 - Healthcheck reports `project_page_assembly.rainbow_seo_v1634: true`.
@@ -62,9 +63,10 @@ Set:
   `project-meta-example.json`.
 
 Version boundary: v1.63.0 can show the model-viewer rail, but public GLB wiring should wait for
-the full v1.63.4 stack. v1.63.2 exposes `project_3d_units` safely through REST with `edit_post`
-auth and a unit sanitizer; v1.63.3 clears the floating contact rail; v1.63.4 closes the page
-assembly/title/meta gate. The apply helper checks all of those healthcheck markers before writing.
+the full v1.63.4 stack. v1.63.1 restores 44px apartment/unit tap targets; v1.63.2 exposes
+`project_3d_units` safely through REST with `edit_post` auth and a unit sanitizer; v1.63.3 clears
+the floating contact rail; v1.63.4 closes the page assembly/title/meta gate. The apply helper checks
+all of those healthcheck markers before writing.
 
 Keep all demo unit and drawing copy source-aware. Do not remove:
 
@@ -148,6 +150,7 @@ to write unless live healthcheck proves:
 
 - plugin version at least `1.63.4`,
 - `project_3d.model_viewer_ready=true`,
+- `project_3d.tap_target_min_px >= 44`,
 - `project_3d.unit_meta_rest=true`,
 - `project_3d.floating_action_rail_v1633=true`,
 - `project_page_assembly.rainbow_seo_v1634=true`.
@@ -355,6 +358,7 @@ live plugin, a missing healthcheck marker, or `projects_with_glb=0`. Then the re
 pass:
 
 - live plugin version at least `1.63.4`,
+- `project_3d.tap_target_min_px >= 44` from v1.63.1,
 - `project_3d.unit_meta_rest=true` from v1.63.2,
 - `project_3d.floating_action_rail_v1633=true` from v1.63.3,
 - `project_3d.model_viewer_ready=true` from v1.63.0,

@@ -42,6 +42,13 @@ class StackBranch:
 
 PLUGIN_STACK_BRANCHES = [
     StackBranch(
+        "1.63.1",
+        "origin/codex/rainbow-tap-target-polish-1631",
+        "project_3d.tap_target_min_px >= 44",
+        "plugins/nadlan-config/inc/project-3d.php",
+        "tap_target_min_px",
+    ),
+    StackBranch(
         "1.63.2",
         "origin/codex/rainbow-cms-units-rest-1632",
         "project_3d.unit_meta_rest",
@@ -184,6 +191,11 @@ def status_rows(base_url: str, should_fetch: bool, main_ref: str, project_slug: 
     )
     live_checks = [
         ("project_3d.model_viewer_ready", project_3d.get("model_viewer_ready") is True, project_3d.get("model_viewer_ready")),
+        (
+            "project_3d.tap_target_min_px",
+            isinstance(project_3d.get("tap_target_min_px"), int) and project_3d.get("tap_target_min_px") >= 44,
+            project_3d.get("tap_target_min_px"),
+        ),
         ("project_3d.unit_meta_rest", project_3d.get("unit_meta_rest") is True, project_3d.get("unit_meta_rest")),
         (
             "project_3d.floating_action_rail_v1633",

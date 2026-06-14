@@ -183,6 +183,9 @@ python scripts\check-rainbow-deploy-sequence.py
 
 The deploy-sequence checker is read-only. It should name the exact gap: stack branches not merged
 to `main`, live healthcheck version too old, missing feature markers, or `projects_with_glb=0`.
+For Rainbow's first GLB rollout the required stack is explicit: v1.63.1 tap targets, v1.63.2 unit
+REST CMS wiring, v1.63.3 contact-rail containment, v1.63.4 page SEO/assembly, then the project
+asset package and CMS payload.
 
 After writing, the helper must verify the REST response, not only trust that the request succeeded:
 exact GLB/poster/model values, drawing/environment counts, and, when unit REST support is live, unit
