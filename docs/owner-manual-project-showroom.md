@@ -111,6 +111,18 @@ The public showroom should read in this order:
 
 If the page does not follow that order on mobile, the project is not ready for publication.
 
+The selected-apartment card is controlled by the unit JSON:
+
+- `status` controls the marker color and the card status.
+- `recommended: true` adds a recommendation tag and pulse.
+- `view`, `dir`, `rooms`, `sqm` and `floor` become the buyer summary.
+- `price` is treated as official only when approved. `price_estimate` is shown as an estimate and
+  must stay non-binding.
+- `price_source` / `price_note` should explain where the estimate came from.
+
+If those fields are empty, the public page falls back to `לפי פנייה`. Do not publish fake inventory
+or fake official prices.
+
 ## Drawings, Plans And Materials
 
 `project_3d_drawings_json`

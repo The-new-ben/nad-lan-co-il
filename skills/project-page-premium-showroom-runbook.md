@@ -52,6 +52,8 @@ plain WordPress article.
    label, hover/tap info and optional recommended pulse.
 5. The selected-apartment card is the hero after a click: title, status, view, non-binding price
    estimate and actions for details, view and developer contact.
+   The card must also include buyer tags, a short next-step note, status-color edge treatment and
+   estimate wording when prices are not official.
 6. Map view is user-opened and lazy-loaded to control Mapbox costs.
 7. Register Mapbox RTL text plugin before creating a map with Hebrew labels.
 8. Drawings, floor plans and real inventory are optional CMS fields. If absent, show a clear request
@@ -103,6 +105,10 @@ for the full details. Mobile details belong in the card, not over the building.
 Gesture rule: the same large hit area must support both buyer actions. A tap selects the apartment,
 but a drag that starts on the marker rotates the building. Never exclude the unit hit area from the
 model drag path.
+
+Selected-card rule: once a unit is selected, the card must answer the buyer's first four questions:
+is it available, what is the approximate price context, what view/direction does it have, and what
+is the next step. The language must be public and buyer-facing, never internal operations wording.
 
 ## D. Lead And WhatsApp Funnel
 

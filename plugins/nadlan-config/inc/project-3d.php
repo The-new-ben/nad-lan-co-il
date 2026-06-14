@@ -688,11 +688,13 @@ if ( ! function_exists( 'nadlan_p3d_render' ) ) {
 				<span class="nlp3d-stage-kicker">הדירה שנבחרה</span>
 				<strong class="nlp3d-stage-card-title">בחרו דירה על הבניין</strong>
 				<small class="nlp3d-stage-card-meta">גררו לסיבוב, בחרו קומה והתקדמו רק כאשר הפרטים מתאימים.</small>
+				<div class="nlp3d-stage-card-tags" aria-label="סימוני דירה"></div>
 				<div class="nlp3d-stage-card-stats" aria-label="פרטי דירה נבחרת">
 					<span class="nlp3d-stage-price">לפי פנייה</span>
 					<span class="nlp3d-stage-status">בחירה פתוחה</span>
 					<span class="nlp3d-stage-view">מבט לפי כיוון</span>
 				</div>
+				<p class="nlp3d-stage-card-note">בחרו דירה כדי לראות את פעולות ההמשך.</p>
 				<div class="nlp3d-stage-card-actions">
 					<button type="button" class="nlp3d-stage-details" data-action="stage-details">פרטים מלאים</button>
 					<button type="button" class="nlp3d-stage-view-btn" data-action="stage-view">מבט מהדירה</button>
@@ -1006,6 +1008,14 @@ CSS;
 	}
 }
 
+if ( ! function_exists( 'nadlan_p3d_showroom_v1649_buyer_card_css' ) ) {
+	function nadlan_p3d_showroom_v1649_buyer_card_css() {
+		return <<<'CSS'
+.nlp3d.nlp3d-premium .nlp3d-stage-card:not([hidden]){z-index:18!important;border-color:rgba(234,216,163,.48)!important;background:linear-gradient(145deg,rgba(8,22,22,.94),rgba(10,13,10,.84))!important;box-shadow:0 26px 70px rgba(0,0,0,.42),0 0 0 1px rgba(255,255,255,.06) inset!important}.nlp3d.nlp3d-premium .nlp3d-stage-card[data-recommended="1"]{border-color:rgba(255,232,166,.72)!important;box-shadow:0 28px 78px rgba(0,0,0,.46),0 0 0 1px rgba(255,246,203,.12) inset,0 0 34px rgba(234,216,163,.18)!important}.nlp3d.nlp3d-premium .nlp3d-stage-card[data-status="available"]{--nlp3d-card-status:#3ddc84}.nlp3d.nlp3d-premium .nlp3d-stage-card[data-status="reserved"]{--nlp3d-card-status:#f2c14e}.nlp3d.nlp3d-premium .nlp3d-stage-card[data-status="sold"]{--nlp3d-card-status:#9aa0a6}.nlp3d.nlp3d-premium .nlp3d-stage-card:not([hidden]):before{content:"";position:absolute;inset:0 auto 0 0;width:5px;background:var(--nlp3d-card-status,#c4a15a);box-shadow:0 0 22px var(--nlp3d-card-status,#c4a15a);opacity:.92}.nlp3d.nlp3d-premium .nlp3d-stage-card-tags{display:flex;flex-wrap:wrap;gap:6px;min-height:28px}.nlp3d.nlp3d-premium .nlp3d-stage-card-tags span{display:inline-flex;align-items:center;min-height:28px;border:1px solid rgba(234,216,163,.26);background:rgba(255,255,255,.065);color:#fff5cf;border-radius:999px;padding:4px 9px;font-size:12px;line-height:1}.nlp3d.nlp3d-premium .nlp3d-stage-card[data-recommended="1"] .nlp3d-stage-card-tags span:first-child{background:linear-gradient(135deg,#ead8a3,#b99043);color:#17120a;border:0;font-weight:900}.nlp3d.nlp3d-premium .nlp3d-stage-card-note{grid-column:1/-1;margin:0;color:#e7dcc0;font-size:12.5px;line-height:1.5}.nlp3d.nlp3d-premium .nlp3d-stage-status[data-status="available"]{color:#e6ffe8!important;border-color:rgba(61,220,132,.42)!important}.nlp3d.nlp3d-premium .nlp3d-stage-status[data-status="reserved"]{color:#fff0bd!important;border-color:rgba(242,193,78,.46)!important}.nlp3d.nlp3d-premium .nlp3d-stage-status[data-status="sold"]{color:#e4e5e7!important;border-color:rgba(154,160,166,.42)!important}.nlp3d.nlp3d-premium .nlp3d-stage-pick.is-active:after{content:"נבחר";position:absolute;right:calc(100% + 8px);top:50%;transform:translateY(-50%);border:1px solid rgba(234,216,163,.36);background:rgba(7,15,16,.9);color:#fff5cf;border-radius:999px;padding:4px 8px;font-size:11px;font-weight:800;box-shadow:0 10px 24px rgba(0,0,0,.34);white-space:nowrap}.nlp3d.nlp3d-premium .nlp3d-stage-card-actions .nlp3d-stage-inquiry{box-shadow:0 12px 28px rgba(185,144,67,.25)!important}@media(max-width:760px){.nlp3d.nlp3d-premium .nlp3d-stage-card:not([hidden]){border-radius:16px!important}.nlp3d.nlp3d-premium .nlp3d-stage-card-tags{min-height:0}.nlp3d.nlp3d-premium .nlp3d-stage-card-tags span{font-size:11px;min-height:25px;padding:4px 8px}.nlp3d.nlp3d-premium .nlp3d-stage-card-note{font-size:12px}.nlp3d.nlp3d-premium .nlp3d-stage-pick.is-active:after{display:none!important}}@media(max-width:420px){.nlp3d.nlp3d-premium .nlp3d-stage-card-tags span:nth-child(n+4){display:none}.nlp3d.nlp3d-premium .nlp3d-stage-card-note{display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}}
+CSS;
+	}
+}
+
 if ( ! function_exists( 'nadlan_p3d_inline_js' ) ) {
 	function nadlan_p3d_inline_js( $rest_url ) {
 		$js = <<<'JS'
@@ -1016,6 +1026,25 @@ if ( ! function_exists( 'nadlan_p3d_inline_js' ) ) {
 	function firstAvailable(units){return units.find(function(u){return u.status!=='sold'}) || units[0] || null}
 	function selectedTitle(u){if(!u){return 'בחרו דירה'}var base=u.title || ('קו '+(u.line||u.id));return base+' · קומה '+(u.floor||'-')}
 	function unitText(u){var parts=[];if(u.rooms){parts.push(u.rooms+' חדרים')}if(u.sqm){parts.push(fmt(u.sqm)+' מ"ר')}if(u.view){parts.push(u.view)}return parts.join(' · ')}
+	function unitBuyerTags(u,meta){
+		var tags=[];
+		if(!u){return tags}
+		if(isRecommendedUnit(u)){tags.push('מומלצת לבדיקה')}
+		if(u.status==='available'){tags.push('זמינה לפנייה')}
+		if(u.status==='reserved'){tags.push('בתהליך בדיקה')}
+		if(u.status==='sold'){tags.push('לא זמינה')}
+		if(u.view){tags.push(u.view)}
+		if(u.price||u.price_estimate||(Number(meta&&meta.avg_price_per_sqm||0)>0&&Number(u.sqm||0)>0)){tags.push('כולל אומדן')}
+		return tags.slice(0,4);
+	}
+	function unitBuyerNote(u,meta){
+		if(!u){return 'בחרו דירה על המגדל כדי לראות מחיר, נוף, כיוון ופעולות המשך.'}
+		var priceInfo=unitPriceInfo(u,meta);
+		if(u.status==='sold'){return 'הדירה מסומנת כלא זמינה. אפשר להשתמש בה להשוואה ולבחור יחידה פנויה אחרת.'}
+		if(u.status==='reserved'){return 'הדירה בתהליך בדיקה. אפשר להשאיר פרטים כדי לוודא זמינות או לקבל חלופה דומה.'}
+		if(priceInfo.kind==='estimate'){return 'האומדן עוזר להשוואה ראשונית בלבד. המחיר, הזמינות ותנאי העסקה יאומתו מול היזם לפני כל התקדמות.'}
+		return 'בדקו קומה, כיוון ונוף, ואז בקשו שיחה עם היזם על הדירה שנבחרה.';
+	}
 	function isRecommendedUnit(u){
 		if(!u){return false}
 		return !!(u.recommended||u.is_recommended);
@@ -1174,9 +1203,11 @@ if ( ! function_exists( 'nadlan_p3d_inline_js' ) ) {
 		var stageCard=root.querySelector('.nlp3d-stage-card');
 		var stageCardTitle=root.querySelector('.nlp3d-stage-card-title');
 		var stageCardMeta=root.querySelector('.nlp3d-stage-card-meta');
+		var stageCardTags=root.querySelector('.nlp3d-stage-card-tags');
 		var stageCardPrice=root.querySelector('.nlp3d-stage-price');
 		var stageCardStatus=root.querySelector('.nlp3d-stage-status');
 		var stageCardView=root.querySelector('.nlp3d-stage-view');
+		var stageCardNote=root.querySelector('.nlp3d-stage-card-note');
 		var stageDetails=root.querySelector('.nlp3d-stage-details');
 		var stageViewBtn=root.querySelector('.nlp3d-stage-view-btn');
 		var stageInquiry=root.querySelector('.nlp3d-stage-inquiry');
@@ -1422,7 +1453,9 @@ if ( ! function_exists( 'nadlan_p3d_inline_js' ) ) {
 		function syncStagePicks(){
 			if(!stagePicks){return}
 			stagePicks.querySelectorAll('.nlp3d-stage-pick').forEach(function(p){
-				p.classList.toggle('is-active',activeUnit&&p.dataset.unit===activeUnit.id);
+				var on=!!(activeUnit&&p.dataset.unit===activeUnit.id);
+				p.classList.toggle('is-active',on);
+				p.setAttribute('aria-pressed',on?'true':'false');
 			});
 		}
 		function renderFacade(){
@@ -1636,10 +1669,19 @@ if ( ! function_exists( 'nadlan_p3d_inline_js' ) ) {
 			if(stageWrap){stageWrap.classList.toggle('has-stage-selection',hasStageSelection)}
 			if(!hasStageSelection){return}
 			stageCard.dataset.status=activeUnit.status||'available';
+			stageCard.dataset.recommended=isRecommendedUnit(activeUnit)?'1':'0';
 			if(stageCardTitle){stageCardTitle.textContent=selectedTitle(activeUnit)}
 			if(stageCardMeta){
 				var metaText=unitText(activeUnit);
 				stageCardMeta.textContent=(metaText?metaText+' · ':'')+(activeUnit.availability||statusLabel(activeUnit.status));
+			}
+			if(stageCardTags){
+				stageCardTags.innerHTML='';
+				unitBuyerTags(activeUnit,meta).forEach(function(tag){
+					var chip=document.createElement('span');
+					chip.textContent=tag;
+					stageCardTags.appendChild(chip);
+				});
 			}
 			var priceInfo=unitPriceInfo(activeUnit,meta);
 			if(stageCardPrice){
@@ -1647,8 +1689,12 @@ if ( ! function_exists( 'nadlan_p3d_inline_js' ) ) {
 				stageCardPrice.dataset.kind=priceInfo.kind;
 				stageCardPrice.title=priceInfo.kind==='estimate'?(priceInfo.note||'אומדן לא מחייב'):'';
 			}
-			if(stageCardStatus){stageCardStatus.textContent=statusLabel(activeUnit.status)}
+			if(stageCardStatus){
+				stageCardStatus.textContent=statusLabel(activeUnit.status);
+				stageCardStatus.dataset.status=activeUnit.status||'available';
+			}
 			if(stageCardView){stageCardView.textContent=activeUnit.view||activeUnit.dir||'מבט לפי כיוון'}
+			if(stageCardNote){stageCardNote.textContent=unitBuyerNote(activeUnit,meta)}
 		}
 		function renderDetail(){
 			if(!activeUnit){return}
@@ -2197,7 +2243,7 @@ add_action(
 			return;
 		}
 
-		wp_register_style( 'nadlan-p3d', '', array(), '1.64.8' );
+		wp_register_style( 'nadlan-p3d', '', array(), '1.64.9' );
 		wp_enqueue_style( 'nadlan-p3d' );
 		wp_add_inline_style( 'nadlan-p3d', nadlan_p3d_inline_css() );
 		wp_add_inline_style( 'nadlan-p3d', '.nlp3d-drag-note{display:inline-flex;align-items:center;min-height:44px;color:rgba(246,239,226,.72);font-size:12px;padding:0 6px}.nlp3d-scene{touch-action:none;cursor:grab}.nlp3d-scene.is-dragging{cursor:grabbing}.nlp3d-actions{grid-template-columns:1fr}.nlp3d-view-toggle{margin-top:12px;border:1px solid rgba(234,216,163,.36);background:rgba(255,255,255,.06);color:#ffe8a6;padding:9px 12px;cursor:pointer}.nlp3d-view-toggle.is-active{background:rgba(234,216,163,.18);color:#fff}.nlp3d-viewframe{position:relative;margin-top:12px;min-height:150px;overflow:hidden;border:1px solid rgba(234,216,163,.18);background:linear-gradient(180deg,rgba(41,112,139,.58),rgba(8,25,25,.92));isolation:isolate}.nlp3d-view-sky{position:absolute;inset:0;background:radial-gradient(circle at 18% 22%,rgba(255,255,255,.24),transparent 18%),linear-gradient(135deg,rgba(39,107,130,.42),rgba(18,50,43,.1));opacity:.86}.nlp3d-view-lines{position:absolute;inset:auto -8% 18% -8%;height:46%;border-top:1px solid rgba(234,216,163,.28);background:linear-gradient(160deg,rgba(234,216,163,.1),transparent 54%);transform:skewY(-8deg)}.nlp3d-view-copy{position:absolute;right:14px;left:14px;bottom:12px;margin:0;color:#fff8dc;font-size:13px;line-height:1.5;text-shadow:0 1px 12px rgba(0,0,0,.55)}@media(max-width:600px){.nlp3d-drag-note{flex-basis:100%;min-height:24px}.nlp3d-viewframe{min-height:130px}}' );
@@ -2223,6 +2269,7 @@ add_action(
 		wp_add_inline_style( 'nadlan-p3d', nadlan_p3d_showroom_v1633_contact_css() );
 		wp_add_inline_style( 'nadlan-p3d', nadlan_p3d_showroom_v1641_product_css() );
 		wp_add_inline_style( 'nadlan-p3d', nadlan_p3d_showroom_v1644_marker_css() );
+		wp_add_inline_style( 'nadlan-p3d', nadlan_p3d_showroom_v1649_buyer_card_css() );
 		wp_add_inline_style( 'nadlan-p3d', '.nlp3d.nlp3d-premium{transform:translateX(var(--nlp3d-mobile-nudge,0px));transition:transform .18s ease-out}.nlp3d.nlp3d-premium.is-mobile-edge-fixed{outline:1px solid rgba(234,216,163,.08)}@media(max-width:760px){.entry-content>.nlp3d,.wp-block-post-content>.nlp3d{max-width:calc(100vw - 16px)!important}.nlp3d.nlp3d-premium .nlp3d-model-viewer .nlp3d-mv-hotspot{display:none!important;pointer-events:none!important}.nlp3d.nlp3d-premium .nlp3d-stage-picks{display:block!important}.nlp3d.nlp3d-premium .nlp3d-stage-pick{touch-action:none}.nlp3d.nlp3d-premium .nlp3d-scene{overscroll-behavior:contain}}' );
 
 		$post_id = is_singular( 'nadlan_project' ) ? (int) get_queried_object_id() : 0;
@@ -2232,7 +2279,7 @@ add_action(
 			wp_enqueue_script( 'nadlan-model-viewer' );
 		}
 
-		wp_register_script( 'nadlan-p3d', '', array(), '1.64.8', true );
+		wp_register_script( 'nadlan-p3d', '', array(), '1.64.9', true );
 		wp_enqueue_script( 'nadlan-p3d' );
 		wp_add_inline_script( 'nadlan-p3d', nadlan_p3d_inline_js( esc_url_raw( rest_url( 'nadlan/v1/lead' ) ) ) );
 	}
@@ -2418,6 +2465,7 @@ add_filter(
 			'stage_pick_drag_v1646' => true,
 			'stage_pick_tap_select_v1647' => true,
 			'mobile_edge_guard_v1648' => true,
+			'buyer_card_v1649' => true,
 			'showroom_first_view' => true,
 			'static_featured_image_suppressed' => true,
 			'floating_actions_clear' => true,

@@ -146,6 +146,19 @@ The apartment selector is the product hero, not a decoration.
 5. Advanced tools such as sun, surroundings, Mapbox and Cesium are opened after the buyer selects
    a unit. Do not flood first view with every control.
 
+## Selected Apartment Card Standard
+
+The selected-apartment card is the buyer decision surface. It must not feel like a debug panel.
+
+- Show buyer-facing tags from CMS data: recommended, availability/status, view and price-estimate
+  context.
+- Color the card status edge consistently with the marker status: available, reserved, sold.
+- If the price is an estimate, the card must say it is an estimate and not binding.
+- If the unit is reserved or sold, explain the next useful action without pretending it is available.
+- The active marker should expose `aria-pressed="true"` so keyboard and assistive-tech users know
+  which apartment is selected.
+- Do not use internal words such as lead, funnel, CRM, supplier or monetization in public card copy.
+
 ## QA Gate
 
 Before shipping a project:

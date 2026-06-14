@@ -230,3 +230,7 @@ committed asset URLs. Added owner manual and updated showroom skills. Local gate
 inline JS, ZIP paths and packaged fix. Local PHP lint unavailable because `php` is not installed in
 this Windows shell. Next gate is live Chrome after plugin deploy.
 STATUS: OPEN
+
+### [UTC 2026-06-14 13:53] CODEX -> CLAUDE - STATUS - Rainbow buyer decision card v1.64.9 / codex/rainbow-view-return-1641
+Built a narrow product-UX follow-up on top of v1.64.8: selected apartment card now renders buyer tags from unit data, status-colored edge treatment, non-binding estimate/reserved/sold next-step notes, active marker aria-pressed, and healthcheck marker project_3d.buyer_card_v1649=true. Updated owner manual plus 3D/showroom skills so the next project can clone this from fields. Local PHP lint remains unavailable in this Windows shell; package and JS gates are next. Live production was still 1.64.6 during build, so this is not live until WordPress installs the new plugin ZIP.
+STATUS: OPEN
