@@ -41,11 +41,53 @@ if ( ! function_exists( 'nadlan_project_page_rainbow_faq' ) ) {
 			),
 			array(
 				'q' => 'למי מתאים עמוד כזה?',
-				'a' => 'העמוד מתאים לרוכשים, משקיעים, תושבי חוץ וליזמים שרוצים להציג פרויקט בצורה אינטראקטיבית, מדידה ומחוברת ללידים.',
+				'a' => 'העמוד מתאים לרוכשים, משקיעים ותושבי חוץ שרוצים לבדוק פרויקט בצורה חזותית ומסודרת, וגם ליזמים שמבקשים להציג מידע אמין, תוכניות, מבטים ופנייה נוחה במקום אחד.',
 			),
 		);
 	}
 }
+
+if ( ! function_exists( 'nadlan_project_page_is_rainbow' ) ) {
+	function nadlan_project_page_is_rainbow() {
+		if ( ! is_singular( 'nadlan_project' ) ) {
+			return false;
+		}
+		$post_id = (int) get_queried_object_id();
+		return $post_id > 0 && get_post_field( 'post_name', $post_id ) === 'rainbow-tel-aviv';
+	}
+}
+
+if ( ! function_exists( 'nadlan_project_page_rainbow_seo_title_text' ) ) {
+	function nadlan_project_page_rainbow_seo_title_text() {
+		return 'דירות למכירה ב-Rainbow תל אביב | מחירים, תוכניות ובחירת דירה בשדה דב | נדלן חכם';
+	}
+}
+
+if ( ! function_exists( 'nadlan_project_page_rainbow_seo_description_text' ) ) {
+	function nadlan_project_page_rainbow_seo_description_text() {
+		return 'Rainbow Tel Aviv - ריינבו תל אביב בשדה דב: מחירים מדווחים ואומדן לא מחייב, בחירת דירה בתלת ממד, תוכניות, מבט מהדירה וליווי בדיקה לפני פנייה ליזם.';
+	}
+}
+
+if ( ! function_exists( 'nadlan_project_page_rainbow_title_filter' ) ) {
+	function nadlan_project_page_rainbow_title_filter( $title ) {
+		return nadlan_project_page_is_rainbow() ? nadlan_project_page_rainbow_seo_title_text() : $title;
+	}
+}
+
+if ( ! function_exists( 'nadlan_project_page_rainbow_description_filter' ) ) {
+	function nadlan_project_page_rainbow_description_filter( $description ) {
+		return nadlan_project_page_is_rainbow() ? nadlan_project_page_rainbow_seo_description_text() : $description;
+	}
+}
+
+add_filter( 'wpseo_title', 'nadlan_project_page_rainbow_title_filter', 50 );
+add_filter( 'pre_get_document_title', 'nadlan_project_page_rainbow_title_filter', 50 );
+add_filter( 'wpseo_opengraph_title', 'nadlan_project_page_rainbow_title_filter', 50 );
+add_filter( 'wpseo_twitter_title', 'nadlan_project_page_rainbow_title_filter', 50 );
+add_filter( 'wpseo_metadesc', 'nadlan_project_page_rainbow_description_filter', 50 );
+add_filter( 'wpseo_opengraph_desc', 'nadlan_project_page_rainbow_description_filter', 50 );
+add_filter( 'wpseo_twitter_description', 'nadlan_project_page_rainbow_description_filter', 50 );
 
 if ( ! function_exists( 'nadlan_project_page_rainbow_seo_block' ) ) {
 	function nadlan_project_page_rainbow_seo_block() {
@@ -90,7 +132,7 @@ if ( ! function_exists( 'nadlan_project_page_rainbow_seo_block' ) ) {
 	<section class="nadlan-guide__section">
 		<h2>למה המודל התלת ממדי חשוב לרוכשים וליזמים</h2>
 		<p>רוכש לא קונה רק מספר חדרים. הוא מנסה להבין איפה הדירה יושבת במגדל, לאיזה כיוון היא פונה, מה רואים מהמרפסת, כמה אור יש, ומה השלב הבא אם זה מתאים. לכן תצוגת הפרויקט מחברת בין המודל, בחירת יחידה, אומדן לא מחייב, ליווי מקצועי ופנייה מסודרת.</p>
-		<p>ליזם או מנהל שיווק, זה יוצר עמוד מכירה מדיד: כל לחיצה על דירה, צפייה במבט, בקשת תוכנית או בדיקת רכישה יכולה להיכנס לפאנל הלידים במקום להיעלם בשיחת WhatsApp לא מתועדת.</p>
+		<p>ליזם או מנהל שיווק, זה יוצר עמוד מכירה ברור: כל לחיצה על דירה, צפייה במבט, בקשת תוכנית או בדיקת רכישה יכולה להפוך לפנייה מסודרת עם הקשר מלא, במקום להיעלם בשיחה שלא נשמרת.</p>
 	</section>
 	<section class="nadlan-guide__section">
 		<h2>שאלות נפוצות על Rainbow Tel Aviv</h2>
@@ -149,14 +191,54 @@ if ( ! function_exists( 'nadlan_project_page_seed_rainbow' ) ) {
 }
 add_action( 'init', 'nadlan_project_page_seed_rainbow', 30 );
 
+if ( ! function_exists( 'nadlan_project_page_seed_rainbow_v1634' ) ) {
+	function nadlan_project_page_seed_rainbow_v1634() {
+		if ( get_option( 'nadlan_rainbow_seo_v1634' ) ) {
+			return;
+		}
+		$post = nadlan_project_page_find_by_slug( 'rainbow-tel-aviv' );
+		if ( ! $post ) {
+			return;
+		}
+
+		$post_id = (int) $post->ID;
+		update_post_meta( $post_id, '_yoast_wpseo_title', nadlan_project_page_rainbow_seo_title_text() );
+		update_post_meta( $post_id, '_yoast_wpseo_metadesc', nadlan_project_page_rainbow_seo_description_text() );
+		update_post_meta( $post_id, '_yoast_wpseo_focuskw', 'ריינבו תל אביב מחיר' );
+
+		$content = (string) $post->post_content;
+		if ( strpos( $content, 'nadlan-rainbow-seo-v1634-note' ) === false ) {
+			$note = '<div class="nadlan-guide__note" id="nadlan-rainbow-seo-v1634-note"><p>מי שבודק דירות למכירה ב-Rainbow תל אביב יכול להשתמש במודל כדי להשוות קומה, כיוון, שטח ומבט, ואז לשלוח פנייה לבדיקה לא מחייבת של זמינות ומחיר מול היזם.</p></div>';
+			$needle = '<div class="nadlan-guide__disclaimer">';
+			if ( strpos( $content, $needle ) !== false ) {
+				$content = str_replace( $needle, $note . "\n\t" . $needle, $content );
+			} else {
+				$content .= "\n\n" . $note;
+			}
+			wp_update_post(
+				array(
+					'ID'           => $post_id,
+					'post_content' => $content,
+				)
+			);
+		}
+
+		update_option( 'nadlan_rainbow_seo_v1634', time(), false );
+	}
+}
+add_action( 'init', 'nadlan_project_page_seed_rainbow_v1634', 31 );
+
 add_filter( 'nadlan_config_healthcheck', function ( $out ) {
 	$post = nadlan_project_page_find_by_slug( 'rainbow-tel-aviv' );
 	$out['project_page_assembly'] = array(
-		'loaded'       => true,
-		'rainbow_id'   => $post ? (int) $post->ID : 0,
-		'rainbow_seed' => (bool) get_option( 'nadlan_rainbow_seed_v1610' ),
-		'faq_meta'     => $post ? ( get_post_meta( (int) $post->ID, 'project_faq_json', true ) !== '' ) : false,
-		'price_meta'   => $post ? ( get_post_meta( (int) $post->ID, 'price_range', true ) !== '' ) : false,
+		'loaded'             => true,
+		'rainbow_id'         => $post ? (int) $post->ID : 0,
+		'rainbow_seed'       => (bool) get_option( 'nadlan_rainbow_seed_v1610' ),
+		'rainbow_seo_v1634'  => (bool) get_option( 'nadlan_rainbow_seo_v1634' ),
+		'faq_meta'           => $post ? ( get_post_meta( (int) $post->ID, 'project_faq_json', true ) !== '' ) : false,
+		'price_meta'         => $post ? ( get_post_meta( (int) $post->ID, 'price_range', true ) !== '' ) : false,
+		'title_override'     => nadlan_project_page_rainbow_seo_title_text(),
+		'description_override' => nadlan_project_page_rainbow_seo_description_text(),
 	);
 	return $out;
 } );

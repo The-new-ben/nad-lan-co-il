@@ -104,10 +104,8 @@ if ( ! function_exists( 'nadlan_p3d_sanitize_material_json' ) ) {
 	}
 }
 
-if ( ! function_exists( 'nadlan_p3d_units' ) ) {
-	function nadlan_p3d_units( $post_id ) {
-		$raw   = trim( (string) get_post_meta( (int) $post_id, 'project_3d_units', true ) );
-		$units = $raw !== '' ? json_decode( $raw, true ) : array();
+if ( ! function_exists( 'nadlan_p3d_clean_unit_items' ) ) {
+	function nadlan_p3d_clean_unit_items( $units ) {
 		if ( ! is_array( $units ) || ! $units ) {
 			return array();
 		}
@@ -122,6 +120,7 @@ if ( ! function_exists( 'nadlan_p3d_units' ) ) {
 			if ( ! in_array( $status, array( 'available', 'reserved', 'sold' ), true ) ) {
 				$status = 'available';
 			}
+			$price_note = sanitize_textarea_field( (string) ( $u['price_note'] ?? '' ) );
 
 			$out[] = array(
 				'id'      => sanitize_key( (string) $u['id'] ),
@@ -140,11 +139,12 @@ if ( ! function_exists( 'nadlan_p3d_units' ) ) {
 				'building'      => sanitize_text_field( (string) ( $u['building'] ?? '' ) ),
 				'availability'  => sanitize_text_field( (string) ( $u['availability'] ?? '' ) ),
 				'note'          => sanitize_textarea_field( (string) ( $u['note'] ?? '' ) ),
-				'market_note'   => sanitize_textarea_field( (string) ( $u['market_note'] ?? '' ) ),
+				'market_note'   => sanitize_textarea_field( (string) ( $u['market_note'] ?? $price_note ) ),
 				'source_note'   => sanitize_textarea_field( (string) ( $u['source_note'] ?? '' ) ),
 				'price'          => nadlan_p3d_sanitize_decimal( $u['price'] ?? 0 ),
 				'price_estimate' => nadlan_p3d_sanitize_decimal( $u['price_estimate'] ?? 0 ),
-				'price_source'   => sanitize_text_field( (string) ( $u['price_source'] ?? '' ) ),
+				'price_source'   => sanitize_text_field( (string) ( $u['price_source'] ?? $price_note ) ),
+				'price_note'     => $price_note,
 				'interior_url'    => esc_url_raw( (string) ( $u['interior_url'] ?? '' ) ),
 				'tour_url'        => esc_url_raw( (string) ( $u['tour_url'] ?? '' ) ),
 				'view_note'       => sanitize_textarea_field( (string) ( $u['view_note'] ?? '' ) ),
@@ -154,6 +154,29 @@ if ( ! function_exists( 'nadlan_p3d_units' ) ) {
 		}
 
 		return $out;
+	}
+}
+
+if ( ! function_exists( 'nadlan_p3d_sanitize_units_json' ) ) {
+	function nadlan_p3d_sanitize_units_json( $raw ) {
+		$raw = trim( (string) wp_unslash( $raw ) );
+		if ( $raw === '' ) {
+			return '';
+		}
+		$decoded = json_decode( $raw, true );
+		if ( ! is_array( $decoded ) ) {
+			return '';
+		}
+		$clean = nadlan_p3d_clean_unit_items( $decoded );
+		return $clean ? wp_json_encode( $clean, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES ) : '';
+	}
+}
+
+if ( ! function_exists( 'nadlan_p3d_units' ) ) {
+	function nadlan_p3d_units( $post_id ) {
+		$raw   = trim( (string) get_post_meta( (int) $post_id, 'project_3d_units', true ) );
+		$units = $raw !== '' ? json_decode( $raw, true ) : array();
+		return nadlan_p3d_clean_unit_items( $units );
 	}
 }
 
@@ -362,6 +385,7 @@ add_action(
 			'project_3d_cesium_tiles_url' => 'esc_url_raw',
 			'project_3d_drawings_json'    => 'nadlan_p3d_sanitize_material_json',
 			'project_3d_environment_json' => 'nadlan_p3d_sanitize_material_json',
+			'project_3d_units'            => 'nadlan_p3d_sanitize_units_json',
 		);
 
 		foreach ( $fields as $key => $sanitize_callback ) {
@@ -895,6 +919,22 @@ CSS;
 	}
 }
 
+if ( ! function_exists( 'nadlan_p3d_showroom_v1631_a11y_css' ) ) {
+	function nadlan_p3d_showroom_v1631_a11y_css() {
+		return <<<'CSS'
+.nlp3d.nlp3d-premium .nlp3d-hotspot{pointer-events:none!important;cursor:default!important}.nlp3d.nlp3d-premium .nlp3d-hotspot-hit{fill:rgba(255,255,255,.001)!important;stroke:transparent!important;stroke-width:0!important;vector-effect:non-scaling-stroke;pointer-events:all!important;cursor:pointer!important}.nlp3d.nlp3d-premium .nlp3d-hotspot-hit:hover+.nlp3d-hotspot,.nlp3d.nlp3d-premium .nlp3d-hotspot-hit:focus-visible+.nlp3d-hotspot{fill:rgba(234,216,163,.3)!important;stroke:#fff2ba!important;filter:drop-shadow(0 0 12px rgba(234,216,163,.58))}.nlp3d.nlp3d-premium .nlp3d-hotspot-hit:focus-visible{outline:none!important;filter:drop-shadow(0 0 16px rgba(255,242,186,.72))}.nlp3d.nlp3d-premium .nlp3d-plate:not(.is-selectable){cursor:grab!important}.nlp3d.nlp3d-premium .nlp3d-plate.is-selectable{z-index:var(--i);height:44px!important;min-height:44px!important;background:transparent!important;border-color:transparent!important;box-shadow:none!important;display:flex!important;align-items:center!important;justify-content:center!important;cursor:pointer!important}.nlp3d.nlp3d-premium .nlp3d-plate.is-selectable:before{content:"";position:absolute;left:0;right:0;top:15px;height:14px;border:1px solid rgba(234,216,163,.34);border-radius:3px;background:linear-gradient(135deg,rgba(234,216,163,.34),rgba(255,255,255,.08));box-shadow:inset 1px 0 rgba(255,255,255,.18),inset -1px 0 rgba(234,216,163,.22),0 4px 10px rgba(0,0,0,.25)}.nlp3d.nlp3d-premium .nlp3d-plate.is-selectable.is-active:before{border-color:#fff0b8;background:linear-gradient(135deg,#f4dd98,rgba(255,255,255,.2));box-shadow:0 0 0 2px rgba(234,216,163,.2),0 0 24px rgba(234,216,163,.22)}.nlp3d.nlp3d-premium .nlp3d-plate.is-selectable:after{top:18px!important;height:8px!important;bottom:auto!important}.nlp3d.nlp3d-premium .nlp3d-plate-label,.nlp3d.nlp3d-premium .nlp3d-plate-dot{pointer-events:none!important}.nlp3d.nlp3d-premium .nlp3d-stage-card-actions button,.nlp3d.nlp3d-premium .nlp3d-dock-actions button,.nlp3d.nlp3d-premium .nlp3d-stage-return,.nlp3d.nlp3d-premium .nlp3d-overlay-close,.nlp3d.nlp3d-premium .nlp3d-tool,.nlp3d.nlp3d-premium .nlp3d-compare-add,.nlp3d.nlp3d-premium .nlp3d-compare-open,.nlp3d.nlp3d-premium .nlp3d-compare-chip,.nlp3d.nlp3d-premium .nlp3d-advisors label{min-height:44px!important}.nlp3d.nlp3d-premium .nlp3d-overlay-close{min-width:44px!important;width:44px!important;height:44px!important}.nlp3d.nlp3d-premium .nlp3d-stage-card-actions button{padding-block:9px!important}
+CSS;
+	}
+}
+
+if ( ! function_exists( 'nadlan_p3d_showroom_v1633_contact_css' ) ) {
+	function nadlan_p3d_showroom_v1633_contact_css() {
+		return <<<'CSS'
+body.single-nadlan_project{--nlp3d-float-left:max(12px,calc(env(safe-area-inset-left,0px) + 8px));--nlp3d-float-bottom:calc(env(safe-area-inset-bottom,0px) + 14px)}body.nadlan-p3d-stage-active.single-nadlan_project .nlfab,body.nadlan-p3d-stage-active.single-nadlan_project #nlai,body.nadlan-p3d-stage-active.single-nadlan_project #nla-btn{transition:opacity .18s ease,transform .18s ease,filter .18s ease!important;will-change:transform,opacity}body.nadlan-p3d-stage-active.single-nadlan_project .nlfab{left:var(--nlp3d-float-left)!important;right:auto!important;bottom:var(--nlp3d-float-bottom)!important;top:auto!important;width:54px!important;max-width:54px!important;display:grid!important;grid-template-columns:1fr!important;gap:8px!important;padding:0!important;background:transparent!important;box-shadow:none!important;z-index:8860!important;transform:translateX(-38px) scale(.92);opacity:.7}body.nadlan-p3d-stage-active.single-nadlan_project .nlfab:hover,body.nadlan-p3d-stage-active.single-nadlan_project .nlfab:focus-within{transform:none;opacity:1;filter:none}body.nadlan-p3d-stage-active.single-nadlan_project .nlfab-btn{position:relative!important;width:52px!important;min-width:52px!important;height:52px!important;min-height:52px!important;border-radius:999px!important;padding:0!important;display:grid!important;place-items:center!important;overflow:visible!important;border:1px solid rgba(234,216,163,.42)!important;background:linear-gradient(135deg,rgba(21,19,14,.94),rgba(46,41,30,.9))!important;color:#fff4ca!important;box-shadow:0 14px 32px rgba(0,0,0,.3),inset 0 1px 0 rgba(255,255,255,.12)!important;text-decoration:none!important}.single-nadlan_project .nlfab-wa:before{content:"WA";font-size:11px;font-weight:900;letter-spacing:.02em}.single-nadlan_project .nlfab-btn[href^="tel:"]:before{content:"TEL";font-size:10px;font-weight:900;letter-spacing:.03em}.single-nadlan_project .nlfab-btn:not(.nlfab-wa):not([href^="tel:"]):before{content:"+";font-size:17px;font-weight:900}.single-nadlan_project .nlfab-btn .dot{display:none!important}body.nadlan-p3d-stage-active.single-nadlan_project .nlfab-btn .t,body.nadlan-p3d-stage-active.single-nadlan_project #nlai .nlai-fab span{position:absolute!important;left:calc(100% + 9px)!important;right:auto!important;top:50%!important;transform:translateY(-50%) translateX(-4px)!important;white-space:nowrap!important;max-width:210px!important;overflow:hidden!important;text-overflow:ellipsis!important;border:1px solid rgba(234,216,163,.3)!important;background:rgba(9,16,15,.88)!important;color:#fff4ca!important;border-radius:999px!important;padding:7px 11px!important;font-size:12px!important;line-height:1.1!important;box-shadow:0 14px 34px rgba(0,0,0,.28)!important;opacity:0!important;pointer-events:none!important}.single-nadlan_project .nlfab-btn:hover .t,.single-nadlan_project .nlfab-btn:focus-visible .t,.single-nadlan_project #nlai .nlai-fab:hover span,.single-nadlan_project #nlai .nlai-fab:focus-visible span{opacity:1!important;transform:translateY(-50%)!important}body.nadlan-p3d-stage-active.single-nadlan_project #nlai{left:var(--nlp3d-float-left)!important;right:auto!important;bottom:calc(var(--nlp3d-float-bottom) + 188px)!important;top:auto!important;z-index:8865!important;transform:translateX(-38px) scale(.92);opacity:.7}body.nadlan-p3d-stage-active.single-nadlan_project #nlai:hover,body.nadlan-p3d-stage-active.single-nadlan_project #nlai:focus-within,body.nadlan-p3d-stage-active.single-nadlan_project #nlai:has(.nlai-panel:not([hidden])){transform:none;opacity:1}body.nadlan-p3d-stage-active.single-nadlan_project #nlai .nlai-fab{position:relative!important;width:52px!important;min-width:52px!important;height:52px!important;min-height:52px!important;border-radius:999px!important;padding:0!important;display:grid!important;place-items:center!important}body.nadlan-p3d-stage-active.single-nadlan_project #nlai .nlai-fab svg{width:22px!important;height:22px!important}body.nadlan-p3d-stage-active.single-nadlan_project #nla-btn{left:var(--nlp3d-float-left)!important;right:auto!important;bottom:calc(var(--nlp3d-float-bottom) + 126px)!important;top:auto!important;width:52px!important;min-width:52px!important;height:52px!important;min-height:52px!important;border-radius:999px!important;z-index:8870!important;transform:translateX(-38px) scale(.92);opacity:.7;box-shadow:0 14px 32px rgba(0,0,0,.3)!important}body.nadlan-p3d-stage-active.single-nadlan_project #nla-btn:hover,body.nadlan-p3d-stage-active.single-nadlan_project #nla-btn:focus-within{transform:none;opacity:1}@media(max-width:760px){body.single-nadlan_project{--nlp3d-float-left:max(10px,calc(env(safe-area-inset-left,0px) + 6px));--nlp3d-float-bottom:calc(env(safe-area-inset-bottom,0px) + 10px)}body.nadlan-p3d-stage-active.single-nadlan_project .nlfab,body.nadlan-p3d-stage-active.single-nadlan_project #nlai,body.nadlan-p3d-stage-active.single-nadlan_project #nla-btn{transform:translateX(-40px) scale(.88);opacity:.62}.single-nadlan_project .nlp3d.nlp3d-premium{scroll-margin-top:84px}.single-nadlan_project .nlp3d.nlp3d-premium .nlp3d-stage-wrap{overflow:hidden!important}.single-nadlan_project .nlp3d.nlp3d-premium .nlp3d-copy{padding-inline:2px!important}.single-nadlan_project .nlp3d.nlp3d-premium .nlp3d-shop-path{gap:6px!important}.single-nadlan_project .nlp3d.nlp3d-premium .nlp3d-shop-path span{min-width:0!important;overflow:hidden!important;text-overflow:ellipsis!important}.single-nadlan_project .nlp3d.nlp3d-premium .nlp3d-lead-text{font-size:14px!important;line-height:1.65!important}}@media(prefers-reduced-motion:reduce){body.single-nadlan_project .nlfab,body.single-nadlan_project #nlai,body.single-nadlan_project #nla-btn{transition:none!important}}
+CSS;
+	}
+}
+
 if ( ! function_exists( 'nadlan_p3d_inline_js' ) ) {
 	function nadlan_p3d_inline_js( $rest_url ) {
 		$js = <<<'JS'
@@ -1071,6 +1111,19 @@ if ( ! function_exists( 'nadlan_p3d_inline_js' ) ) {
 			if(extra){Object.keys(extra).forEach(function(k){payload[k]=extra[k]})}
 			window.dataLayer.push(payload);
 		}
+		function watchShowroomContactRail(){
+			if(!('IntersectionObserver' in window)||!document.body){return}
+			var active=false;
+			var observer=new IntersectionObserver(function(entries){
+				entries.forEach(function(entry){
+					if(entry.target!==root){return}
+					active=entry.isIntersecting&&entry.intersectionRatio>0.12;
+					document.body.classList.toggle('nadlan-p3d-stage-active',active);
+				});
+			},{threshold:[0,0.12,0.35,0.7]});
+			observer.observe(root);
+			window.addEventListener('pagehide',function(){document.body.classList.remove('nadlan-p3d-stage-active')},{once:true});
+		}
 		function safeUrl(url){
 			if(!url){return ''}
 			try{
@@ -1122,9 +1175,33 @@ if ( ! function_exists( 'nadlan_p3d_inline_js' ) ) {
 		function unitForFloor(f){return units.find(function(u){return parseInt(u.floor||0,10)===f&&u.status!=='sold'})||units.find(function(u){return parseInt(u.floor||0,10)===f})}
 		function unitById(id){return units.find(function(u){return u.id===id})}
 		function hasPoints(u){return u&&typeof u.points==='string'&&u.points.trim().split(/\s+/).length>=3}
+		function pointBox(points){
+			var coords=(points||'').trim().split(/\s+/).map(function(pair){
+				var xy=pair.split(',');
+				return {x:parseFloat(xy[0]),y:parseFloat(xy[1])};
+			}).filter(function(p){return isFinite(p.x)&&isFinite(p.y)});
+			if(!coords.length){return null}
+			var minX=Math.min.apply(null,coords.map(function(p){return p.x}));
+			var maxX=Math.max.apply(null,coords.map(function(p){return p.x}));
+			var minY=Math.min.apply(null,coords.map(function(p){return p.y}));
+			var maxY=Math.max.apply(null,coords.map(function(p){return p.y}));
+			return {x:minX,y:minY,w:Math.max(1,maxX-minX),h:Math.max(1,maxY-minY)};
+		}
 		function makeHitPolygon(u){
-			var hit=document.createElementNS('http://www.w3.org/2000/svg','polygon');
-			hit.setAttribute('points',u.points);
+			var box=pointBox(u.points);
+			var hit=document.createElementNS('http://www.w3.org/2000/svg',box?'rect':'polygon');
+			if(box){
+				var minW=Math.max(96,box.w+28);
+				var minH=Math.max(96,box.h+28);
+				hit.setAttribute('x',Math.max(0,box.x+(box.w/2)-(minW/2)));
+				hit.setAttribute('y',Math.max(0,box.y+(box.h/2)-(minH/2)));
+				hit.setAttribute('width',minW);
+				hit.setAttribute('height',minH);
+				hit.setAttribute('rx','18');
+				hit.setAttribute('ry','18');
+			}else{
+				hit.setAttribute('points',u.points);
+			}
 			hit.setAttribute('class','nlp3d-hotspot-hit nlp3d-status-'+u.status);
 			hit.setAttribute('tabindex','0');
 			hit.setAttribute('role','button');
@@ -1141,7 +1218,8 @@ if ( ! function_exists( 'nadlan_p3d_inline_js' ) ) {
 			for(var i=1;i<=count;i++){
 				var floor=Math.round(minFloor+((maxFloor-minFloor)*(i-1)/Math.max(1,count-1)));
 				var b=document.createElement('div');
-				b.className='nlp3d-plate'+(floorHasUnits(floor)?' has-units':'')+(floor===activeFloor?' is-active':'');
+				var selectable=floorHasUnits(floor);
+				b.className='nlp3d-plate'+(selectable?' has-units is-selectable':'')+(floor===activeFloor?' is-active':'');
 				var uf=unitForFloor(floor);
 				if(uf&&uf.status==='sold'){b.className+=' is-sold'}
 				var stackRatio=(i-1)/Math.max(1,count-1);
@@ -1159,6 +1237,13 @@ if ( ! function_exists( 'nadlan_p3d_inline_js' ) ) {
 				b.setAttribute('aria-label','בחרו קומה '+floor);
 				b.addEventListener('click',function(e){e.stopPropagation();selectFloor(parseInt(this.dataset.floor,10))});
 				b.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();selectFloor(parseInt(this.dataset.floor,10))}});
+				if(!selectable){
+					b.removeAttribute('role');
+					b.removeAttribute('tabindex');
+					b.removeAttribute('aria-label');
+					b.setAttribute('aria-hidden','true');
+					b.style.pointerEvents='none';
+				}
 				if(floorHasUnits(floor)||floor===activeFloor||floor%5===0){
 					var label=document.createElement('span');
 					label.className='nlp3d-plate-label';
@@ -1193,6 +1278,11 @@ if ( ! function_exists( 'nadlan_p3d_inline_js' ) ) {
 				poly.appendChild(t);
 				poly.addEventListener('click',function(e){e.stopPropagation();selectUnit(u.id,'facade')});
 				poly.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();selectUnit(u.id,'facade-keyboard')}});
+				poly.removeAttribute('role');
+				poly.removeAttribute('tabindex');
+				poly.removeAttribute('aria-label');
+				poly.setAttribute('aria-hidden','true');
+				poly.style.pointerEvents='none';
 				hotspots.appendChild(poly);
 			});
 			if(facade){facade.hidden=!any}
@@ -1836,6 +1926,7 @@ if ( ! function_exists( 'nadlan_p3d_inline_js' ) ) {
 		}
 		setTilt(currentTilt);
 		setZoom(currentZoom);
+		watchShowroomContactRail();
 		renderAll(true);
 		syncModelViewerCamera();
 		renderCompareTray();
@@ -1855,7 +1946,7 @@ add_action(
 			return;
 		}
 
-		wp_register_style( 'nadlan-p3d', '', array(), '1.63.0' );
+		wp_register_style( 'nadlan-p3d', '', array(), '1.63.4' );
 		wp_enqueue_style( 'nadlan-p3d' );
 		wp_add_inline_style( 'nadlan-p3d', nadlan_p3d_inline_css() );
 		wp_add_inline_style( 'nadlan-p3d', '.nlp3d-drag-note{display:inline-flex;align-items:center;min-height:44px;color:rgba(246,239,226,.72);font-size:12px;padding:0 6px}.nlp3d-scene{touch-action:none;cursor:grab}.nlp3d-scene.is-dragging{cursor:grabbing}.nlp3d-actions{grid-template-columns:1fr}.nlp3d-view-toggle{margin-top:12px;border:1px solid rgba(234,216,163,.36);background:rgba(255,255,255,.06);color:#ffe8a6;padding:9px 12px;cursor:pointer}.nlp3d-view-toggle.is-active{background:rgba(234,216,163,.18);color:#fff}.nlp3d-viewframe{position:relative;margin-top:12px;min-height:150px;overflow:hidden;border:1px solid rgba(234,216,163,.18);background:linear-gradient(180deg,rgba(41,112,139,.58),rgba(8,25,25,.92));isolation:isolate}.nlp3d-view-sky{position:absolute;inset:0;background:radial-gradient(circle at 18% 22%,rgba(255,255,255,.24),transparent 18%),linear-gradient(135deg,rgba(39,107,130,.42),rgba(18,50,43,.1));opacity:.86}.nlp3d-view-lines{position:absolute;inset:auto -8% 18% -8%;height:46%;border-top:1px solid rgba(234,216,163,.28);background:linear-gradient(160deg,rgba(234,216,163,.1),transparent 54%);transform:skewY(-8deg)}.nlp3d-view-copy{position:absolute;right:14px;left:14px;bottom:12px;margin:0;color:#fff8dc;font-size:13px;line-height:1.5;text-shadow:0 1px 12px rgba(0,0,0,.55)}@media(max-width:600px){.nlp3d-drag-note{flex-basis:100%;min-height:24px}.nlp3d-viewframe{min-height:130px}}' );
@@ -1875,6 +1966,8 @@ add_action(
 		wp_add_inline_style( 'nadlan-p3d', nadlan_p3d_showroom_v162_material_css() );
 		wp_add_inline_style( 'nadlan-p3d', nadlan_p3d_showroom_v1621_css() );
 		wp_add_inline_style( 'nadlan-p3d', nadlan_p3d_model_viewer_css() );
+		wp_add_inline_style( 'nadlan-p3d', nadlan_p3d_showroom_v1631_a11y_css() );
+		wp_add_inline_style( 'nadlan-p3d', nadlan_p3d_showroom_v1633_contact_css() );
 
 		$post_id = is_singular( 'nadlan_project' ) ? (int) get_queried_object_id() : 0;
 		if ( $post_id > 0 && get_post_meta( $post_id, 'project_model_glb', true ) !== '' ) {
@@ -1883,7 +1976,7 @@ add_action(
 			wp_enqueue_script( 'nadlan-model-viewer' );
 		}
 
-		wp_register_script( 'nadlan-p3d', '', array(), '1.63.0', true );
+		wp_register_script( 'nadlan-p3d', '', array(), '1.63.4', true );
 		wp_enqueue_script( 'nadlan-p3d' );
 		wp_add_inline_script( 'nadlan-p3d', nadlan_p3d_inline_js( esc_url_raw( rest_url( 'nadlan/v1/lead' ) ) ) );
 	}
@@ -1988,8 +2081,7 @@ add_action(
 		update_post_meta( $post_id, 'project_3d_cesium_tiles_url', esc_url_raw( wp_unslash( $_POST['project_3d_cesium_tiles_url'] ?? '' ) ) );
 		update_post_meta( $post_id, 'project_3d_drawings_json', nadlan_p3d_sanitize_material_json( wp_unslash( $_POST['project_3d_drawings_json'] ?? '' ) ) );
 		update_post_meta( $post_id, 'project_3d_environment_json', nadlan_p3d_sanitize_material_json( wp_unslash( $_POST['project_3d_environment_json'] ?? '' ) ) );
-		$units = (string) wp_unslash( $_POST['project_3d_units'] ?? '' );
-		update_post_meta( $post_id, 'project_3d_units', json_decode( $units ) !== null || $units === '' ? $units : '' );
+		update_post_meta( $post_id, 'project_3d_units', nadlan_p3d_sanitize_units_json( wp_unslash( $_POST['project_3d_units'] ?? '' ) ) );
 		update_post_meta( $post_id, 'project_3d_demo', ! empty( $_POST['project_3d_demo'] ) ? '1' : '0' );
 	}
 );
@@ -2041,7 +2133,9 @@ add_filter(
 			'cms_material_fields' => true,
 			'cms_material_cards'  => true,
 			'cms_material_sanitized' => true,
+			'unit_meta_rest' => true,
 			'hit_targets'      => true,
+			'tap_target_min_px' => 44,
 			'model_zoom_tilt'  => true,
 			'model_full_360'   => true,
 			'model_viewer_ready' => true,
@@ -2051,6 +2145,7 @@ add_filter(
 			'showroom_first_view' => true,
 			'static_featured_image_suppressed' => true,
 			'floating_actions_clear' => true,
+			'floating_action_rail_v1633' => true,
 			'cesium_ready'     => true,
 			'zillow_parity'    => array(
 				'floor_plans'  => true,

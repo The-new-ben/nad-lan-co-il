@@ -362,3 +362,52 @@ For every cloned project, verify:
   building-product model and should stay user-opened unless cost governance changes.
 - For the full modeling runbook, use `skills/skill-3d-model-pipeline.md` before creating the next
   project showroom.
+
+### v1.63.1 Showroom Hit-Target Gate
+
+- Do not make every decorative floor band a button. Only floors with selectable units should expose
+  `role="button"` and keyboard focus; decorative floors must stay visual so the model can drag
+  cleanly.
+- Visible apartment polygons are visual affordances. The accessible control should be a larger
+  invisible hit shape behind or around the visual polygon, with the visible polygon set
+  `aria-hidden`/pointer-inert.
+- The minimum interactive target for showroom controls is 44px on desktop and mobile: stage card
+  actions, dock actions, return buttons, compare chips, tool buttons, advisor check rows, model
+  hotspots, facade hit areas and selectable floor plates.
+- If a visual mark is intentionally thin, separate visual size from hit size. Preserve the premium
+  architectural drawing while expanding the control geometry.
+- Any cloned project page must pass a tap-target scan against `.nlp3d button`, `.nlp3d a`,
+  `.nlp3d input`, and `.nlp3d [role="button"]` before deployment.
+
+### v1.63.2 CMS Unit REST Gate
+
+- Future project showroom assets must be wireable without manual metabox paste. The unit JSON
+  field `project_3d_units` is REST-writable only when healthcheck reports
+  `project_3d.unit_meta_rest=true`.
+- REST writes must require `current_user_can( 'edit_post', $project_id )`. Never expose unit,
+  availability, price, floorplan, tour or hotspot updates through a public endpoint.
+- The REST sanitizer must canonicalize the same unit fields the frontend reads: `id`, `title`,
+  `floor`, `rooms`, `sqm`, `balcony`, `dir`, `line`, `view`, `building`, availability/notes,
+  non-binding price fields, floorplan/tour/interior URLs, and model hotspot/camera fields.
+- Asset payloads may use `price_note` for the legal/market disclaimer. The CMS sanitizer must not
+  drop it; map it into the buyer-visible `market_note` / `price_source` path when those fields are
+  missing.
+- Store only JSON arrays of sanitized unit objects. Invalid JSON, empty arrays or objects without a
+  stable `id` should resolve to an empty string instead of preserving junk.
+- Asset handoff scripts may write `project_3d_units` only after the target site proves this
+  healthcheck flag. Before that, scripts must stay dry-run/manual for unit data.
+
+### v1.63.3 Contact Rail Gate
+
+- A project showroom is an app surface. Fixed WhatsApp, call, accessibility and AI controls must
+  not sit as wide blocks over the model, toolbar, hotspot layer or selected-unit card.
+- While the showroom is visible, convert global floating controls into a compact edge rail with
+  preserved tap targets, keyboard focus, safe-area offsets, and hover/focus labels.
+- Do not remove lead capture. The rail may become visually quiet during model interaction, but it
+  must remain reachable and must return to the normal sitewide behavior when the user scrolls away
+  from the showroom.
+- Use `IntersectionObserver` or an equivalent viewport-aware state instead of permanently hiding
+  contact controls on project pages.
+- The clone gate for every future project page: 1440px and 390px screenshots must show the central
+  building/model unobstructed by global floating widgets, with no horizontal overflow and no
+  control smaller than 44px.

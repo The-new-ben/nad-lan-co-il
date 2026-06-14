@@ -34,6 +34,13 @@ plain WordPress article.
    - `price_min`,
    - `price_max`,
    - `project_faq_json`.
+7. Transactional project SEO must be verified separately from the 3D module:
+   - public title leads with buyer language such as `דירות למכירה` and `מחירים`,
+   - meta description mentions price only as sourced or non-binding,
+   - visible body contains natural buyer phrases, not keyword stuffing,
+   - run the project page assembly checker when one exists.
+8. If a one-shot content seed already ran, never re-run the old seed. Add a new dated/numbered
+   idempotent option for the delta, for example `nadlan_<project>_seo_vXXXX`.
 
 ## C. 3D And Buyer Interaction
 
