@@ -1192,6 +1192,7 @@ if ( ! function_exists( 'nadlan_p3d_inline_js' ) ) {
 		var currentZoom=1;
 		var dragState=null;
 		var lastTapAt=0;
+		var suppressUnitClickUntil=0;
 		var activeTool='spec';
 		if(savedUnit){
 			var restored=units.find(function(u){return u.id===savedUnit});
@@ -1300,7 +1301,7 @@ if ( ! function_exists( 'nadlan_p3d_inline_js' ) ) {
 			hit.setAttribute('aria-label',selectedTitle(u)+' · '+statusLabel(u.status));
 			hit.dataset.unit=u.id;
 			hit.dataset.action='select-unit-facade-hit';
-			hit.addEventListener('click',function(e){e.stopPropagation();selectUnit(u.id,'facade-hit')});
+			hit.addEventListener('click',function(e){e.stopPropagation();if(Date.now()<suppressUnitClickUntil){e.preventDefault();return}selectUnit(u.id,'facade-hit')});
 			hit.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();selectUnit(u.id,'facade-hit-keyboard')}});
 			return hit;
 		}
@@ -1398,7 +1399,7 @@ if ( ! function_exists( 'nadlan_p3d_inline_js' ) ) {
 				b.appendChild(dot);
 				b.appendChild(text);
 				b.appendChild(tip);
-				b.addEventListener('click',function(e){e.preventDefault();e.stopPropagation();selectUnit(u.id,'stage-pick')});
+				b.addEventListener('click',function(e){e.preventDefault();e.stopPropagation();if(Date.now()<suppressUnitClickUntil){return}selectUnit(u.id,'stage-pick')});
 				stagePicks.appendChild(b);
 			});
 		}
@@ -1426,7 +1427,7 @@ if ( ! function_exists( 'nadlan_p3d_inline_js' ) ) {
 				var t=document.createElementNS('http://www.w3.org/2000/svg','title');
 				t.textContent=selectedTitle(u)+' · '+unitText(u);
 				poly.appendChild(t);
-				poly.addEventListener('click',function(e){e.stopPropagation();selectUnit(u.id,'facade')});
+				poly.addEventListener('click',function(e){e.stopPropagation();if(Date.now()<suppressUnitClickUntil){e.preventDefault();return}selectUnit(u.id,'facade')});
 				poly.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();selectUnit(u.id,'facade-keyboard')}});
 				poly.removeAttribute('role');
 				poly.removeAttribute('tabindex');
@@ -1945,6 +1946,7 @@ if ( ! function_exists( 'nadlan_p3d_inline_js' ) ) {
 			h.addEventListener('click',function(e){
 				e.preventDefault();
 				e.stopPropagation();
+				if(Date.now()<suppressUnitClickUntil){return}
 				selectUnit(h.dataset.unit,'model-viewer-hotspot');
 			});
 		});
@@ -2019,7 +2021,7 @@ if ( ! function_exists( 'nadlan_p3d_inline_js' ) ) {
 			});
 		});
 		function dragExcludedTarget(target){
-			return target&&target.closest&&target.closest('button,a,input,.nlp3d-hotspot,.nlp3d-hotspot-hit,.nlp3d-mv-hotspot,.nlp3d-stage-card,.nlp3d-stage-viewframe');
+			return target&&target.closest&&target.closest('button,a,input,.nlp3d-mv-hotspot,.nlp3d-stage-card,.nlp3d-stage-viewframe');
 		}
 		function startDragAt(p,id){
 			dragState={x:p.x,y:p.y,angle:currentAngle,tilt:currentTilt,id:id||0,lastX:p.x,lastT:Date.now(),vx:0};
@@ -2044,6 +2046,7 @@ if ( ! function_exists( 'nadlan_p3d_inline_js' ) ) {
 			dragState=null;
 			scene.classList.remove('is-dragging');
 			var now=Date.now();
+			if(moved>=8){suppressUnitClickUntil=now+450}
 			if(moved<8&&now-lastTapAt<320){
 				setZoom(currentZoom>1.05?1:1.22);
 				track('model_double_tap_zoom',{zoom:Math.round(currentZoom*100)/100});
@@ -2170,7 +2173,7 @@ add_action(
 			return;
 		}
 
-		wp_register_style( 'nadlan-p3d', '', array(), '1.64.4' );
+		wp_register_style( 'nadlan-p3d', '', array(), '1.64.5' );
 		wp_enqueue_style( 'nadlan-p3d' );
 		wp_add_inline_style( 'nadlan-p3d', nadlan_p3d_inline_css() );
 		wp_add_inline_style( 'nadlan-p3d', '.nlp3d-drag-note{display:inline-flex;align-items:center;min-height:44px;color:rgba(246,239,226,.72);font-size:12px;padding:0 6px}.nlp3d-scene{touch-action:none;cursor:grab}.nlp3d-scene.is-dragging{cursor:grabbing}.nlp3d-actions{grid-template-columns:1fr}.nlp3d-view-toggle{margin-top:12px;border:1px solid rgba(234,216,163,.36);background:rgba(255,255,255,.06);color:#ffe8a6;padding:9px 12px;cursor:pointer}.nlp3d-view-toggle.is-active{background:rgba(234,216,163,.18);color:#fff}.nlp3d-viewframe{position:relative;margin-top:12px;min-height:150px;overflow:hidden;border:1px solid rgba(234,216,163,.18);background:linear-gradient(180deg,rgba(41,112,139,.58),rgba(8,25,25,.92));isolation:isolate}.nlp3d-view-sky{position:absolute;inset:0;background:radial-gradient(circle at 18% 22%,rgba(255,255,255,.24),transparent 18%),linear-gradient(135deg,rgba(39,107,130,.42),rgba(18,50,43,.1));opacity:.86}.nlp3d-view-lines{position:absolute;inset:auto -8% 18% -8%;height:46%;border-top:1px solid rgba(234,216,163,.28);background:linear-gradient(160deg,rgba(234,216,163,.1),transparent 54%);transform:skewY(-8deg)}.nlp3d-view-copy{position:absolute;right:14px;left:14px;bottom:12px;margin:0;color:#fff8dc;font-size:13px;line-height:1.5;text-shadow:0 1px 12px rgba(0,0,0,.55)}@media(max-width:600px){.nlp3d-drag-note{flex-basis:100%;min-height:24px}.nlp3d-viewframe{min-height:130px}}' );
@@ -2204,7 +2207,7 @@ add_action(
 			wp_enqueue_script( 'nadlan-model-viewer' );
 		}
 
-		wp_register_script( 'nadlan-p3d', '', array(), '1.64.4', true );
+		wp_register_script( 'nadlan-p3d', '', array(), '1.64.5', true );
 		wp_enqueue_script( 'nadlan-p3d' );
 		wp_add_inline_script( 'nadlan-p3d', nadlan_p3d_inline_js( esc_url_raw( rest_url( 'nadlan/v1/lead' ) ) ) );
 	}
@@ -2386,6 +2389,7 @@ add_filter(
 			'mobile_model_drag_fallback_v1643' => true,
 			'premium_dot_markers_v1644' => true,
 			'mobile_touch_drag_v1644' => true,
+			'hotspot_drag_passthrough_v1645' => true,
 			'showroom_first_view' => true,
 			'static_featured_image_suppressed' => true,
 			'floating_actions_clear' => true,

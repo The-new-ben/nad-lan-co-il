@@ -100,6 +100,10 @@ Marker design rule: the model surface should not carry stacked text labels. Use 
 with large invisible hit areas, a short desktop hover/focus tooltip, and a selected-apartment card
 for the full details. Mobile details belong in the card, not over the building.
 
+Gesture rule: the same large hit area must support both buyer actions. A tap selects the apartment,
+but a drag that starts on the marker rotates the building. Never exclude the unit hit area from the
+model drag path.
+
 ## D. Lead And WhatsApp Funnel
 
 1. Every CTA must enter the same lead CPT and routing rails.

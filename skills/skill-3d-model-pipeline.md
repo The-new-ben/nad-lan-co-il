@@ -125,6 +125,9 @@ model annotation script. Store only coordinates, not private source files.
 - Unit markers must be buyer-obvious without becoming text blobs on the model: use clean
   status-colored dots with 44px+ invisible hit areas, hover/focus tooltip on desktop, selected-card
   details on mobile, and optional recommended pulse.
+- Those invisible hit areas must not block the primary product gesture. A tap on a unit marker
+  selects it; a drag that starts on the same marker rotates the building and suppresses the
+  accidental click at the end of the swipe.
 - `recommended` is a CMS/business flag. It should identify units worth attention, not fake urgency.
 - The lead payload must preserve the selected unit.
 - Mapbox or Cesium environment views stay lazy and user-opened.
