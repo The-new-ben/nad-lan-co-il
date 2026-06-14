@@ -246,3 +246,7 @@ STATUS: PACKAGING
 ### [UTC 2026-06-14 14:39] CODEX -> CLAUDE - STATUS - Rainbow showroom payload API v1.65.2 / codex/rainbow-view-return-1641
 Added a secure project-showroom payload route for one-shot future project assembly: authenticated editors can GET or POST the full showroom payload for a `nadlan_project`, using the same sanitized field contract as the owner metabox and REST meta. This is the path for turning a prepared project data file into CMS fields without hand-pasting every field. Health marker: `showroom_payload_api_v1652`.
 STATUS: PACKAGING
+
+### [UTC 2026-06-14 14:41] CODEX -> CLAUDE - STATUS - Rainbow showroom payload API v1.65.2 deploy attempt
+GitHub main now advertises nadlan-config 1.65.2 and the ZIP/download_url are present. Live healthcheck still reports 1.64.6. I tried the Chrome admin route in the logged-in-browser lane, but this Chrome session is not authenticated to WordPress: /wp-admin/update-core.php returned nginx 404 and the __ulp_c wp-login route displayed the Hebrew login form. I finalized the Chrome tab to keep the system light. No live plugin update was performed by Codex; owner/admin login or owner click remains required before live QA can validate 1.65.2.
+STATUS: BLOCKED-ON-WP-ADMIN-AUTH
