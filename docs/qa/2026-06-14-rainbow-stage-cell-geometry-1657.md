@@ -55,6 +55,9 @@ and six boutique buildings:
   while staying clearly illustrative and non-official.
 - Added an architectural window/apartment-band layer to that original facade asset so the
   clickable cells sit on a believable tower skin instead of floating over a smooth illustration.
+- Added selected-state semantics to the facade polygons and their 44px hit areas. After a click,
+  the active apartment control exposes `aria-pressed="true"` so QA can prove the apartment itself
+  is the selected control.
 
 ## Local Preview Proof
 
@@ -89,21 +92,22 @@ Run on the live Rainbow page after deploy:
    The visual cell must not collapse into a decorative line, and the transparent hit target must
    remain at least 44px by 44px.
 3. Click/tap a cell once: the selected-apartment card updates with the correct unit.
-4. Public copy leads with facade apartment selection. It must not start with "spin the model" or
+4. The clicked apartment control exposes `aria-pressed="true"` after selection.
+5. Public copy leads with facade apartment selection. It must not start with "spin the model" or
    promise true 3D apartment picking before a per-apartment BIM/GLB exists.
-5. Drag empty model surface: the building rotates.
-6. Drag/click on a cell: it does not feel jammed; selection wins predictably.
-7. Recommended unit pulses subtly, but no fake urgency copy appears.
-8. Console has no page errors.
-9. Healthcheck reports version `1.65.7`, `project_3d.stage_cell_geometry_v1657 = true` and
+6. Drag empty model surface: the building rotates.
+7. Drag/click on a cell: it does not feel jammed; selection wins predictably.
+8. Recommended unit pulses subtly, but no fake urgency copy appears.
+9. Console has no page errors.
+10. Healthcheck reports version `1.65.7`, `project_3d.stage_cell_geometry_v1657 = true` and
    `project_3d.facade_polygon_primary_v1657 = true`.
-10. Healthcheck also reports `project_3d.facade_points_builder_v1657 = true` and
+11. Healthcheck also reports `project_3d.facade_points_builder_v1657 = true` and
    `project_3d.facade_hides_placeholder_glb_v1657 = true`.
-11. Healthcheck reports `project_3d.facade_cell_labels_v1657 = true`.
-12. Healthcheck reports `project_3d.facade_point_helper_v1657 = true`.
-13. Healthcheck reports `project_page_assembly.rainbow_showroom_v1657 = true` and
+12. Healthcheck reports `project_3d.facade_cell_labels_v1657 = true`.
+13. Healthcheck reports `project_3d.facade_point_helper_v1657 = true`.
+14. Healthcheck reports `project_page_assembly.rainbow_showroom_v1657 = true` and
     `project_page_assembly.rainbow_units_have_facade_points = true`.
-14. `node scripts/validate-project-showroom-payload.mjs --payload assets/projects/rainbow-tel-aviv/showroom-payload.json`
+15. `node scripts/validate-project-showroom-payload.mjs --payload assets/projects/rainbow-tel-aviv/showroom-payload.json`
     reports `units_with_points = 6`.
 
 ## Factory Payload Gate

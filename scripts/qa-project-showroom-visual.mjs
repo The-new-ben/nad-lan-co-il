@@ -225,6 +225,7 @@ function metricsExpression() {
     const picks = facadeHits.length ? facadeHits : (facadeCells.length ? facadeCells : stagePicks);
     const firstPick = picks[0] || null;
     const firstPickRect = firstPick ? firstPick.getBoundingClientRect() : null;
+    const activePressedCount = Array.from(document.querySelectorAll('.nlp3d-facade-hit[aria-pressed="true"],.nlp3d-facade-cell[aria-pressed="true"],.nlp3d-stage-pick[aria-pressed="true"]')).filter(visible).length;
     const facadeCellRects = facadeCells.map((el) => {
       const r = el.getBoundingClientRect();
       return { width: r.width, height: r.height };
@@ -262,6 +263,7 @@ function metricsExpression() {
       facadeHitCount: facadeHits.length,
       facadeCellCount: facadeCells.length,
       facadeLabelCount: facadeLabels.length,
+      activePressedCount,
       facadeCells: {
         minWidth: Math.round(minFacadeCellWidth * 10) / 10,
         minHeight: Math.round(minFacadeCellHeight * 10) / 10
@@ -357,6 +359,7 @@ async function runViewport(client, args, viewport, outDir, pageErrors) {
     failures.push(`facade hit target below 44px (${after.facadeHits.minWidth}x${after.facadeHits.minHeight}px)`);
   }
   if (after.firstPickCenter && after.cardHidden) failures.push('clicking apartment did not reveal selected card');
+  if (after.firstPickCenter && after.activePressedCount < 1) failures.push('clicking apartment did not mark a selected apartment control');
   if (after.tapTargets.count && after.tapTargets.min < 44) failures.push(`tap target below 44px (${after.tapTargets.min}px)`);
   if (after.rootRect && viewport.width <= 768 && (after.rootRect.x < -2 || after.rootRect.right > viewport.width + 2)) failures.push(`showroom cropped on mobile/tablet: ${JSON.stringify(after.rootRect)}`);
   if (!after.textSignals.hasFacadePrimaryCopy) failures.push('showroom copy does not lead with facade apartment selection');

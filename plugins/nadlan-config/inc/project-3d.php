@@ -1522,6 +1522,7 @@ if ( ! function_exists( 'nadlan_p3d_inline_js' ) ) {
 			hit.setAttribute('tabindex','0');
 			hit.setAttribute('role','button');
 			hit.setAttribute('aria-label',selectedTitle(u)+' · '+statusLabel(u.status));
+			hit.setAttribute('aria-pressed',(activeUnit&&activeUnit.id===u.id)?'true':'false');
 			hit.dataset.unit=u.id;
 			hit.dataset.action='select-unit-facade-hit';
 			hit.addEventListener('click',function(e){e.stopPropagation();if(Date.now()<suppressUnitClickUntil){e.preventDefault();return}selectUnit(u.id,'facade-hit')});
@@ -1718,6 +1719,7 @@ if ( ! function_exists( 'nadlan_p3d_inline_js' ) ) {
 				poly.setAttribute('tabindex','0');
 				poly.setAttribute('role','button');
 				poly.setAttribute('aria-label',selectedTitle(u)+' · '+statusLabel(status));
+				poly.setAttribute('aria-pressed',(activeUnit&&activeUnit.id===u.id)?'true':'false');
 				poly.dataset.unit=u.id;
 				poly.dataset.action='select-unit-facade';
 				var t=document.createElementNS('http://www.w3.org/2000/svg','title');
@@ -1745,8 +1747,17 @@ if ( ! function_exists( 'nadlan_p3d_inline_js' ) ) {
 			root.classList.toggle('has-facade-polygons',any);
 		}
 		function syncFacade(){
-			root.querySelectorAll('.nlp3d-hotspot,.nlp3d-hotspot-hit,.nlp3d-facade-label').forEach(function(p){p.classList.toggle('is-active',activeUnit&&p.dataset.unit===activeUnit.id)});
-			modelHotspots.forEach(function(p){p.classList.toggle('is-active',activeUnit&&p.dataset.unit===activeUnit.id)});
+			root.querySelectorAll('.nlp3d-hotspot,.nlp3d-hotspot-hit').forEach(function(p){
+				var on=!!(activeUnit&&p.dataset.unit===activeUnit.id);
+				p.classList.toggle('is-active',on);
+				p.setAttribute('aria-pressed',on?'true':'false');
+			});
+			root.querySelectorAll('.nlp3d-facade-label').forEach(function(p){p.classList.toggle('is-active',activeUnit&&p.dataset.unit===activeUnit.id)});
+			modelHotspots.forEach(function(p){
+				var on=!!(activeUnit&&p.dataset.unit===activeUnit.id);
+				p.classList.toggle('is-active',on);
+				p.setAttribute('aria-pressed',on?'true':'false');
+			});
 			if(modelViewer&&activeUnit){
 				modelViewer.dataset.activeUnit=activeUnit.id;
 			}
