@@ -11,6 +11,7 @@ from __future__ import annotations
 import argparse
 import json
 import sys
+import urllib.parse
 import urllib.request
 from pathlib import Path
 
@@ -47,6 +48,27 @@ def read_json(path: Path) -> object:
     return json.loads(path.read_text(encoding="utf-8"))
 
 
+def local_path_for_raw_url(url: str, root: Path) -> Path | None:
+    """Map a GitHub raw URL in this repo to the expected local file path."""
+    parsed = urllib.parse.urlparse(url)
+    if parsed.netloc != "raw.githubusercontent.com":
+        return None
+    parts = [part for part in parsed.path.split("/") if part]
+    if len(parts) < 5 or parts[0] != "The-new-ben" or parts[1] != "nad-lan-co-il":
+        return None
+    return root.joinpath(*parts[3:])
+
+
+def check_raw_url_local_file(url: str, root: Path, gate: Gate, label: str) -> None:
+    local = local_path_for_raw_url(url, root)
+    if local is None:
+        return
+    if local.exists() and local.is_file():
+        gate.pass_(f"{label} local file", str(local.relative_to(root)))
+    else:
+        gate.fail(f"{label} local file", f"missing local file for raw URL: {local.relative_to(root)}")
+
+
 def check_glb(path: Path, gate: Gate) -> None:
     if not path.exists():
         gate.fail("model.glb", "missing")
@@ -79,7 +101,7 @@ def check_poster(path: Path, gate: Gate) -> None:
         gate.fail("poster.png size", f"{size} bytes exceeds {MAX_POSTER_BYTES}")
 
 
-def check_meta(path: Path, gate: Gate) -> None:
+def check_meta(path: Path, root: Path, gate: Gate) -> None:
     if not path.exists():
         gate.fail("project-meta-example.json", "missing")
         return
@@ -98,6 +120,7 @@ def check_meta(path: Path, gate: Gate) -> None:
             gate.fail(field, "raw GitHub asset URL must point at main after merge, not a draft branch")
         elif value:
             gate.pass_(f"{field} URL durability", "main raw URL or custom hosted URL")
+            check_raw_url_local_file(value, root, gate, field)
     units = meta.get("project_3d_units", [])
     if isinstance(units, list) and units:
         gate.pass_("project_3d_units count", str(len(units)))
@@ -139,6 +162,8 @@ def check_meta(path: Path, gate: Gate) -> None:
         plan = str(unit.get("plan", ""))
         if not plan.startswith("https://") or "raw.githubusercontent.com/The-new-ben/nad-lan-co-il/main/" not in plan:
             plan_bad.append(str(unit.get("id", "<missing id>")))
+        else:
+            check_raw_url_local_file(plan, root, gate, f"{unit.get('id', '<missing id>')}.plan")
     if plan_bad:
         gate.fail("unit plan URLs", ", ".join(plan_bad[:12]))
     else:
@@ -146,6 +171,10 @@ def check_meta(path: Path, gate: Gate) -> None:
     drawings = meta.get("project_3d_drawings_json", [])
     if isinstance(drawings, list) and any(isinstance(item, dict) and item.get("url") for item in drawings):
         gate.pass_("drawing material URLs", f"{sum(1 for item in drawings if isinstance(item, dict) and item.get('url'))} linked items")
+        for item in drawings:
+            if not isinstance(item, dict) or not item.get("url"):
+                continue
+            check_raw_url_local_file(str(item.get("url", "")), root, gate, f"drawing.{item.get('type', 'item')}")
     else:
         gate.fail("drawing material URLs", "no linked drawing/site material in CMS payload")
     env = meta.get("project_3d_environment_json")
@@ -236,7 +265,7 @@ def main() -> int:
     gate = Gate()
     check_glb(asset_dir / "model.glb", gate)
     check_poster(asset_dir / "poster.png", gate)
-    check_meta(asset_dir / "project-meta-example.json", gate)
+    check_meta(asset_dir / "project-meta-example.json", root, gate)
     check_environment(asset_dir / "environment.json", gate)
     if not args.skip_live:
         check_healthcheck(args.healthcheck_url, args.expect_live_glb, gate)

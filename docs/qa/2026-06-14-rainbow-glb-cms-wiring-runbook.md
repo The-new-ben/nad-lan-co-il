@@ -35,6 +35,9 @@ WordPress Media or a CDN and use those URLs instead.
 Do not leave the live card pointing at a draft branch raw URL. The readiness script fails
 `raw.githubusercontent.com/The-new-ben/nad-lan-co-il/<branch>/...` URLs unless the ref is `main`,
 because draft branches can be deleted after merge and would break the public model.
+For GitHub raw URLs on `main`, the readiness script also checks that the corresponding local file
+exists in the repo, so a typo in a GLB/poster/plan/drawing URL is caught before it becomes a public
+404.
 
 ## WordPress Meta To Set
 
@@ -140,6 +143,7 @@ Expected now: local assets pass, asset URLs are durable (`main` or custom hosted
 non-binding price/source language, every unit has a plan URL, drawing material has linked URLs, live
 `model_viewer_ready` passes, and `projects_with_glb` is a warning because the live Rainbow post is
 not wired yet.
+Any `main` raw URL in the payload must also resolve to a local committed file.
 
 After merge and after the CMS fields are populated, run:
 
