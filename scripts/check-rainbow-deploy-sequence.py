@@ -137,9 +137,9 @@ def stack_branches(project_slug: str, asset_branch: str) -> list[StackBranch]:
 def status_rows(base_url: str, should_fetch: bool, main_ref: str, project_slug: str, asset_branch: str) -> list[Row]:
     rows: list[Row] = []
     if should_fetch:
-        result = run_git(["fetch", "origin", "main", "--prune"])
+        result = run_git(["fetch", "origin", "--prune"])
         detail = result.stderr.strip() or result.stdout.strip() or "ok"
-        rows.append(Row("PASS" if result.returncode == 0 else "FAIL", "git fetch origin main", detail))
+        rows.append(Row("PASS" if result.returncode == 0 else "FAIL", "git fetch origin --prune", detail))
 
     main_sha = git_ref(main_ref)
     rows.append(Row("PASS" if main_sha else "FAIL", main_ref, main_sha[:12] if main_sha else "missing"))
@@ -225,7 +225,7 @@ def main() -> int:
     parser.add_argument("--base-url", default=DEFAULT_BASE_URL)
     parser.add_argument("--project-slug", default=DEFAULT_PROJECT_SLUG)
     parser.add_argument("--asset-branch", default=DEFAULT_ASSET_BRANCH)
-    parser.add_argument("--fetch", action="store_true", help="Fetch origin/main before checking local remote refs.")
+    parser.add_argument("--fetch", action="store_true", help="Fetch/prune origin before checking local remote refs.")
     parser.add_argument("--main-ref", default="origin/main", help="Remote main ref to inspect. Defaults to origin/main.")
     parser.add_argument(
         "--expect-incomplete",

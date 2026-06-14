@@ -208,6 +208,8 @@ python scripts\project-showroom-go-live.py --project-slug <latin-slug> --post-id
 The deploy checker is project-slug aware and checks `assets/projects/<latin-slug>/model.glb` on
 `origin/main`, so the same command can be used for the next Israeli project instead of carrying a
 Rainbow-specific asset path.
+The wrapper asks the deploy checker to run `git fetch origin --prune`, so stale local copies of the
+stack branches do not create a false merge-state report.
 
 ## Page Assembly And SEO Gate
 

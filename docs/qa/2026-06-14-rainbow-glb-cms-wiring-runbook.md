@@ -241,6 +241,9 @@ python scripts\project-showroom-go-live.py --project-slug <latin-slug> --post-id
 
 The checker then looks for `assets/projects/<latin-slug>/model.glb` on `origin/main` instead of the
 Rainbow path, while keeping the same shared plugin-stack markers.
+When `--fetch` is used, the checker runs `git fetch origin --prune`, not a main-only fetch, because
+the diagnosis depends on the latest remote refs for the stacked plugin branches and the project
+asset branch.
 
 ## Readiness Check
 
