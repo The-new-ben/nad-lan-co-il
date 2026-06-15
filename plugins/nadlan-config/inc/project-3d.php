@@ -1227,7 +1227,7 @@ if ( ! function_exists( 'nadlan_p3d_facade_cell_selector_css' ) ) {
 .nlp3d-cells{position:absolute;left:0;right:0;top:12px;bottom:0;z-index:7}
 .nlp3d-cell{position:absolute;box-sizing:border-box;border:1.5px solid rgba(61,220,132,.92);background:rgba(61,220,132,.18);border-radius:3px;cursor:pointer;padding:0;margin:0;display:flex;align-items:center;justify-content:center;min-width:14px;min-height:14px;transition:background .15s,box-shadow .15s,border-color .15s,transform .12s}
 .nlp3d-cell.nlp3d-status-reserved{border-color:rgba(242,193,78,.92);background:rgba(242,193,78,.18)}
-.nlp3d-cell.nlp3d-status-sold{border-color:rgba(154,160,166,.7);background:rgba(154,160,166,.12);cursor:not-allowed}
+.nlp3d-cell.nlp3d-status-sold{border-color:rgba(217,74,67,.86);background:rgba(217,74,67,.14);cursor:not-allowed}
 .nlp3d-cell:hover,.nlp3d-cell:focus-visible{outline:none;border-color:#fff7c6;background:rgba(255,255,255,.22);box-shadow:0 0 0 2px rgba(255,247,198,.6),0 0 16px rgba(234,216,163,.55);z-index:9}
 .nlp3d-cell.is-active{border-color:#fff7c6;background:rgba(244,221,152,.36);box-shadow:0 0 0 2px #fff7c6,0 0 24px rgba(234,216,163,.72);z-index:10;transform:scale(1.03)}
 .nlp3d-cell.is-recommended::after{content:"\2605";position:absolute;top:-8px;left:50%;transform:translateX(-50%);font-size:10px;color:#ffe8a6;text-shadow:0 1px 3px rgba(0,0,0,.6)}
@@ -1259,7 +1259,7 @@ if ( ! function_exists( 'nadlan_p3d_showroom_dna_v1664_css' ) ) {
 .nlp3d.nlp3d-premium .nlp3d-cell{border-width:1.5px!important;border-radius:3px!important;box-shadow:inset 0 1px 0 rgba(255,255,255,.16),0 7px 16px rgba(0,0,0,.24);overflow:visible}
 .nlp3d.nlp3d-premium .nlp3d-cell:not(.nlp3d-status-sold){background:linear-gradient(180deg,rgba(61,220,132,.27),rgba(61,220,132,.09))!important}
 .nlp3d.nlp3d-premium .nlp3d-cell.nlp3d-status-reserved{background:linear-gradient(180deg,rgba(242,193,78,.3),rgba(242,193,78,.1))!important}
-.nlp3d.nlp3d-premium .nlp3d-cell.nlp3d-status-sold{background:linear-gradient(180deg,rgba(154,160,166,.18),rgba(154,160,166,.08))!important}
+.nlp3d.nlp3d-premium .nlp3d-cell.nlp3d-status-sold{border-color:rgba(217,74,67,.92)!important;background:linear-gradient(180deg,rgba(217,74,67,.26),rgba(217,74,67,.08))!important;opacity:.82!important}
 .nlp3d.nlp3d-premium .nlp3d-cell-tag{display:grid!important;grid-template-rows:auto auto;align-content:center;justify-items:center;gap:1px;max-width:100%;padding:2px 3px;color:#fff7dc!important;text-shadow:0 1px 5px rgba(0,0,0,.8);font-size:clamp(8px,.72vw,11px)!important;line-height:1.05!important;opacity:.92!important;white-space:normal!important}
 .nlp3d.nlp3d-premium .nlp3d-cell-tag strong{font-size:inherit;font-weight:900;max-width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .nlp3d.nlp3d-premium .nlp3d-cell-tag small{font-size:.82em;font-weight:700;opacity:.9;max-width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
@@ -1290,6 +1290,23 @@ if ( ! function_exists( 'nadlan_p3d_mobile_containment_v1668_css' ) ) {
 		// the 390px viewport; overflow visible prevents parent clipping.
 		return <<<'CSS'
 @media(max-width:760px){.nlp3d.nlp3d-premium.is-dual-showroom .nlp3d-stage-wrap{overflow:hidden!important}.nlp3d.nlp3d-premium.is-dual-showroom .nlp3d-scene{width:100%!important;max-width:100%!important}.nlp3d.nlp3d-premium.is-dual-showroom .nlp3d-facade-plane{right:10px!important;left:10px!important;width:auto!important;max-width:none!important}.nlp3d.nlp3d-premium.is-dual-showroom .nlp3d-fp-legend{right:12px!important;left:12px!important}}@media(max-width:600px){.single-nadlan_project .entry-content.wp-block-post-content{overflow:visible!important}.single-nadlan_project .entry-content>.nlp3d.nlp3d-premium,.single-nadlan_project .wp-block-post-content>.nlp3d.nlp3d-premium{box-sizing:border-box!important;position:relative!important;left:auto!important;right:auto!important;width:calc(100vw - 28px)!important;max-width:calc(100vw - 28px)!important;margin-left:-50px!important;margin-right:0!important;transform:none!important}.single-nadlan_project .entry-content>.nlp3d.nlp3d-premium.is-mobile-edge-fixed,.single-nadlan_project .wp-block-post-content>.nlp3d.nlp3d-premium.is-mobile-edge-fixed{left:auto!important;transform:none!important}}
+CSS;
+	}
+}
+
+if ( ! function_exists( 'nadlan_p3d_inventory_status_v1669_css' ) ) {
+	function nadlan_p3d_inventory_status_v1669_css() {
+		// v1.66.9: final inventory semantics. The facade is the buyer's
+		// apartment availability surface: green = available, amber = checking,
+		// red = unavailable.
+		return <<<'CSS'
+.nlp3d.nlp3d-premium .nlp3d-cell.nlp3d-status-sold{border-color:rgba(217,74,67,.94)!important;background:linear-gradient(180deg,rgba(217,74,67,.28),rgba(217,74,67,.08))!important;opacity:.86!important}
+.nlp3d.nlp3d-premium .nlp3d-cell.nlp3d-status-sold .nlp3d-cell-tag{color:#ffe3df!important}
+.nlp3d.nlp3d-premium .nlp3d-stage-card[data-status="sold"]{--nlp3d-card-status:#d94a43!important}
+.nlp3d.nlp3d-premium .nlp3d-stage-status[data-status="sold"]{color:#ffd5d2!important;border-color:rgba(217,74,67,.52)!important}
+.nlp3d.nlp3d-premium .nlp3d-stage-pick.is-sold:before,.nlp3d.nlp3d-premium .nlp3d-mv-hotspot.is-sold:before{background:#d94a43!important;box-shadow:0 0 14px rgba(217,74,67,.28)!important}
+.nlp3d.nlp3d-premium .nlp3d-stage-pick.is-sold .nlp3d-hotspot-dot,.nlp3d.nlp3d-premium .nlp3d-hotspot-hit.is-sold .nlp3d-hotspot-dot{background:#d94a43!important;opacity:.82!important}
+.nlp3d.nlp3d-premium .nlp3d-facade-hotspots .nlp3d-hotspot.nlp3d-status-sold{fill:rgba(217,74,67,.2)!important;stroke:rgba(255,213,210,.86)!important}
 CSS;
 	}
 }
@@ -1456,7 +1473,7 @@ if ( ! function_exists( 'nadlan_p3d_inline_js' ) ) {
 				var fpLegend=document.createElement('div');
 				fpLegend.className='nlp3d-fp-legend';
 				fpLegend.setAttribute('aria-hidden','true');
-				fpLegend.innerHTML='<span><i style="background:#3ddc84"></i>זמינה</span><span><i style="background:#f2c14e"></i>בהזמנה</span><span><i style="background:#9aa0a6"></i>נמכרה</span>';
+				fpLegend.innerHTML='<span><i style="background:#3ddc84"></i>זמינה</span><span><i style="background:#f2c14e"></i>בבדיקה</span><span><i style="background:#d94a43"></i>לא זמינה</span>';
 				scene.appendChild(fpLegend);
 				root.classList.add(modelViewer?'is-dual-showroom':'is-facade-select');
 			}else{
@@ -1759,7 +1776,9 @@ if ( ! function_exists( 'nadlan_p3d_inline_js' ) ) {
 				var tagMain=document.createElement('strong');
 				var tagSub=document.createElement('small');
 				tagMain.textContent=(u.line||u.label||u.id)+' · '+(u.floor||'-');
-				tagSub.textContent=(u.rooms?u.rooms+' חד׳':'דירה')+(u.sqm?' · '+fmt(u.sqm)+' מ"ר':'');
+				var cellInfo=(u.rooms?u.rooms+' חד׳':'דירה')+(u.sqm?' · '+fmt(u.sqm)+' מ"ר':'');
+				if(status!=='available'){cellInfo=statusLabel(status)+' - '+cellInfo}
+				tagSub.textContent=cellInfo;
 				tag.appendChild(tagMain);
 				tag.appendChild(tagSub);
 				b.appendChild(tag);
@@ -2681,7 +2700,7 @@ add_action(
 			return;
 		}
 
-		wp_register_style( 'nadlan-p3d', '', array(), '1.66.8' );
+		wp_register_style( 'nadlan-p3d', '', array(), '1.66.9' );
 		wp_enqueue_style( 'nadlan-p3d' );
 		wp_add_inline_style( 'nadlan-p3d', nadlan_p3d_inline_css() );
 		wp_add_inline_style( 'nadlan-p3d', '.nlp3d-drag-note{display:inline-flex;align-items:center;min-height:44px;color:rgba(246,239,226,.72);font-size:12px;padding:0 6px}.nlp3d-scene{touch-action:none;cursor:grab}.nlp3d-scene.is-dragging{cursor:grabbing}.nlp3d-actions{grid-template-columns:1fr}.nlp3d-view-toggle{margin-top:12px;border:1px solid rgba(234,216,163,.36);background:rgba(255,255,255,.06);color:#ffe8a6;padding:9px 12px;cursor:pointer}.nlp3d-view-toggle.is-active{background:rgba(234,216,163,.18);color:#fff}.nlp3d-viewframe{position:relative;margin-top:12px;min-height:150px;overflow:hidden;border:1px solid rgba(234,216,163,.18);background:linear-gradient(180deg,rgba(41,112,139,.58),rgba(8,25,25,.92));isolation:isolate}.nlp3d-view-sky{position:absolute;inset:0;background:radial-gradient(circle at 18% 22%,rgba(255,255,255,.24),transparent 18%),linear-gradient(135deg,rgba(39,107,130,.42),rgba(18,50,43,.1));opacity:.86}.nlp3d-view-lines{position:absolute;inset:auto -8% 18% -8%;height:46%;border-top:1px solid rgba(234,216,163,.28);background:linear-gradient(160deg,rgba(234,216,163,.1),transparent 54%);transform:skewY(-8deg)}.nlp3d-view-copy{position:absolute;right:14px;left:14px;bottom:12px;margin:0;color:#fff8dc;font-size:13px;line-height:1.5;text-shadow:0 1px 12px rgba(0,0,0,.55)}@media(max-width:600px){.nlp3d-drag-note{flex-basis:100%;min-height:24px}.nlp3d-viewframe{min-height:130px}}' );
@@ -2745,6 +2764,7 @@ CSS
 
 		wp_add_inline_style( 'nadlan-p3d', nadlan_p3d_showroom_dna_v1664_css() );
 		wp_add_inline_style( 'nadlan-p3d', nadlan_p3d_mobile_containment_v1668_css() );
+		wp_add_inline_style( 'nadlan-p3d', nadlan_p3d_inventory_status_v1669_css() );
 
 		$post_id = is_singular( 'nadlan_project' ) ? (int) get_queried_object_id() : 0;
 		if ( $post_id > 0 && get_post_meta( $post_id, 'project_model_glb', true ) !== '' ) {
@@ -2753,7 +2773,7 @@ CSS
 			wp_enqueue_script( 'nadlan-model-viewer' );
 		}
 
-		wp_register_script( 'nadlan-p3d', '', array(), '1.66.8', true );
+		wp_register_script( 'nadlan-p3d', '', array(), '1.66.9', true );
 		wp_enqueue_script( 'nadlan-p3d' );
 		wp_add_inline_script( 'nadlan-p3d', nadlan_p3d_inline_js( esc_url_raw( rest_url( 'nadlan/v1/lead' ) ) ) );
 	}
@@ -3155,6 +3175,7 @@ add_filter(
 			'context_pins_v1664' => true,
 			'poster_social_v1664' => true,
 			'mobile_containment_v1668' => true,
+			'inventory_status_semantics_v1669' => true,
 			'showroom_payload_fields' => count( nadlan_p3d_showroom_fields() ),
 			'showroom_first_view' => true,
 			'static_featured_image_suppressed' => true,

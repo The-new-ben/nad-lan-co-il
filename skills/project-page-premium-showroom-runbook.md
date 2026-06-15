@@ -239,7 +239,7 @@ Use the same hierarchy for every project page:
    first, facade picker immediately below, then selected apartment card.
 3. Fixed facade/elevation apartment cells are the primary selector. The cells should show useful
    labels, not anonymous dots.
-4. Status colors are stable: available = green, reserved/checking = amber, sold/unavailable = gray.
+4. Status colors are stable: available = green, reserved/checking = amber, sold/unavailable = red.
    Recommended/high-demand units may pulse only when they are available.
 5. The selected-apartment card contains price estimate, rooms, sqm, floor, view, status, and three
    buyer actions: full details, view from apartment, and contact the developer.
@@ -250,3 +250,14 @@ Use the same hierarchy for every project page:
 This is the factory standard: one model, one facade/unit map, one environment file, one poster, one
 SEO/content pack. Do not create a new plugin feature for each project unless the reusable payload
 contract cannot express it.
+
+## J. Inventory Semantics v1.66.9
+
+The facade picker is the buyer's inventory surface. It must answer "can I ask about this apartment?"
+before the buyer opens the card:
+
+1. Available cells are green and may pulse only when recommended.
+2. Reserved/checking cells are amber and still selectable for follow-up.
+3. Sold/unavailable cells are red, lower-emphasis, and not selectable.
+4. Non-available cell labels should include the status text inside the cell where space allows.
+5. The same status must be mirrored in the selected-apartment card edge color and status chip.
