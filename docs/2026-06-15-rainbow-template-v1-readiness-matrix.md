@@ -159,18 +159,19 @@ changes are justified only when the template itself lacks a reusable capability.
 For the next Sde Dov project, do this in order:
 
 1. Research SERP and official/developer/municipal facts.
-2. Create `assets/projects/<slug>/source-notes.md`.
-3. Build or collect approved model/facade/poster assets.
-4. Create `unit-map.json`, `drawings.json`, `environment.json`.
-5. Generate `showroom-payload.json`.
-6. Validate the payload against `docs/templates/project-showroom-payload.schema.json`.
-7. Create or update the `nadlan_project` post with ASCII slug.
-8. Import the payload through `/wp-json/nadlan/v1/project-showroom/<id>`.
-9. Fill Yoast title/meta and schema meta.
-10. Run visual QA at 1440, 768, 390 and Edge-mobile.
-11. Check one H1, no internal public wording, no overflow, clickable apartment cells, lead payload,
+2. Initialize the project folder with `node scripts/init-project-showroom.mjs <slug> --post-id <id>`.
+3. Fill `assets/projects/<slug>/source-notes.md`.
+4. Build or collect approved model/facade/poster assets.
+5. Replace starter `unit-map.json`, `drawings.json`, `environment.json`.
+6. Generate `showroom-payload.json`.
+7. Validate the payload against `docs/templates/project-showroom-payload.schema.json`.
+8. Create or update the `nadlan_project` post with ASCII slug.
+9. Import the payload through `/wp-json/nadlan/v1/project-showroom/<id>`.
+10. Fill Yoast title/meta and schema meta.
+11. Run visual QA at 1440, 768, 390 and Edge-mobile.
+12. Check one H1, no internal public wording, no overflow, clickable apartment cells, lead payload,
     schema, title/meta and image/poster visibility.
-12. Publish only after the screenshots prove the buyer page, not just the saved fields.
+13. Publish only after the screenshots prove the buyer page, not just the saved fields.
 
 ## Owner / Developer Inputs Still Needed
 

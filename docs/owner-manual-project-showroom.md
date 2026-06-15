@@ -483,6 +483,27 @@ For the next project, prepare a project folder before touching WordPress:
 - `showroom-payload.json`
 - `qa.md`
 
+Start that folder with:
+
+```powershell
+node scripts/init-project-showroom.mjs <project-slug> --post-id <post-id>
+```
+
+Example:
+
+```powershell
+node scripts/init-project-showroom.mjs migdalei-hayam-sde-dov --post-id 0
+```
+
+The script creates safe placeholder files under `assets/projects/<project-slug>/`. It does not
+publish anything. Replace the placeholder model, poster, units, prices, drawings and source notes
+with sourced or developer-approved material, then build the payload:
+
+```powershell
+node scripts/build-project-showroom-payload.mjs <project-slug> --write
+node scripts/validate-project-showroom-payload.mjs --payload assets/projects/<project-slug>/showroom-payload.json
+```
+
 The developer or contractor should provide, when possible:
 
 - official BIM/GLB or source model,

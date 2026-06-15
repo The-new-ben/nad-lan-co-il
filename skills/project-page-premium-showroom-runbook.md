@@ -245,6 +245,16 @@ Do not clone a project by copying rendered HTML from Rainbow. Clone the data con
 - model/facade/poster assets
 - QA screenshots and notes
 
+Start the data contract with:
+
+```bash
+node scripts/init-project-showroom.mjs <project-slug> --post-id <post-id>
+```
+
+Then replace placeholders with real sources and run the payload builder and validator. The starter
+folder is a scaffold, not a license to publish fake prices, fake availability or unapproved project
+art.
+
 Multilingual pages are not automatic. Before publishing `/en/`, `/fr/`, `/ru/` or other language
 versions, get an approved language architecture, create real equivalent content, and add `hreflang`
 only after each translated URL is live and accurate. Translation must preserve legal boundaries,
