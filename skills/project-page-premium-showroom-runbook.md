@@ -4,6 +4,9 @@ Use this skill when turning a real-estate project page into a flagship, replicab
 for NadLan. The target is a buyer-ready, investor-search-ready, contractor-demo-ready page, not a
 plain WordPress article.
 
+Read `project-showroom-governance.md` first when deciding whether a change belongs in plugin code,
+WordPress content, the theme, or the project asset folder.
+
 ## A. Source And Intent Research
 
 1. Search Hebrew and English SERP for the project name, developer, neighborhood and price intent.
@@ -46,6 +49,11 @@ plain WordPress article.
    - run the project page assembly checker when one exists.
 8. If a one-shot content seed already ran, never re-run the old seed. Add a new dated/numbered
    idempotent option for the delta, for example `nadlan_<project>_seo_vXXXX`.
+
+Typography rule: H2/H3 headings must sit in the same readable column as the paragraphs they
+introduce. A heading thrown to the right while the text appears in a different column is a visual
+failure even when the words are correct. Check the rendered public page, not the editor, at 1440,
+768 and 390 px before calling the page premium.
 
 ## C. 3D And Buyer Interaction
 
@@ -182,6 +190,9 @@ After a PR is merged:
 2. Trigger or upload the WordPress plugin update.
 3. Hard refresh the page.
 4. Check `/wp-json/nadlan/v1/healthcheck` for the new version and feature blocks.
+
+Before telling the owner to update, run `python scripts/verify-plugin-release.py <version>`.
+Never ship this plugin with ad-hoc Windows ZIP tooling.
 
 GitHub merge alone does not update production.
 

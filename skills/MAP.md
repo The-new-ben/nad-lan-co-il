@@ -59,6 +59,7 @@ Everything else is on-demand by category below.
 | ✅🟪 | `skills/plugin-auto-update.md` | How the self-hosted update channel works (plugin-update-checker + manifest) | If the updater misbehaves |
 | ✅🟪 | `skills/plugin-release-preflight.md` | Mandatory package/version/ZIP safety gate using build-plugin-zip and verify-plugin-release | Before committing or handing off any plugin update |
 | ✅🟪 | `skills/SKILLS-TREE.md` | Sorts every skill + every code module into 6 portable DNA branches | When opening a NEW site in the network |
+| ✅🟪 | `skills/project-showroom-governance.md` | Boundary and safety rules for premium project showrooms | Before deciding whether a showroom issue needs plugin, theme, content, asset or QA work |
 
 ## 3. SEO + CONTENT ENGINE
 
@@ -102,6 +103,7 @@ Everything else is on-demand by category below.
 | ✅🟪 | `skills/image-pipeline.md` | Image generation + optimization pipeline | When attaching images |
 | ✅🟪 | `skills/interactive-widgets.md` | Calculator/widget component patterns | Building interactive tools |
 | ✅🟪 | `skills/project-3d-sales-experience.md` | Interactive project showroom standards: building-first, unit picker, map/sun/lead seams | Before changing any project 3D or apartment-selection page |
+| ✅🟪 | `skills/project-showroom-governance.md` | Project showroom governance: plugin boundaries, release safety, typography, images, translation, clone readiness | Before cloning Rainbow or making more plugin-heavy showroom changes |
 | ✅🟪 | `skills/skill-3d-model-pipeline.md` | 3D showroom asset and CMS pipeline: GLB, poster, facade, unit JSON, payload validation, buyer-visible gates | Before creating model assets or cloning a showroom to another project |
 | ✅🟪 | `skills/skill-interactive-apartment-picker.md` | Apartment selector standard: cells/polygons embedded on the building with unit data and lead payload | Before changing apartment selection behavior |
 | ✅🟪 | `skills/project-page-premium-showroom-runbook.md` | A-to-Z repeatable project page runbook: research, assembly, schema, 3D, WhatsApp funnel, QA, deploy | Before cloning Rainbow quality to another project |

@@ -37,6 +37,7 @@ The contract layer. Identical on every site.
 | `security-public-repo.md` | DNA·DOC | What never goes in a public repo. |
 | `plugin-discipline.md` / `plugin-auto-update.md` | DNA·DOC | One-capability modules + self-hosted update channel. |
 | `plugin-release-preflight.md` | DNA·DOC | Required package/version/ZIP preflight before any plugin release handoff. |
+| `project-showroom-governance.md` | DNA·DOC | Boundary rule for showroom projects: plugin vs content vs theme vs assets, with release safety and clone gates. |
 | `nadlan-config-plugin.md` | DNA·DOC | Plugin lessons (rename per site). |
 | `codex-plugin-access-and-deploy.md` | DNA·DOC | **The deploy pipeline operator guide** — how ANY agent (Codex/Claude/Cowork) changes the plugin and ships it live. Portable to every site (swap names/URLs). Read before touching plugin code. |
 
@@ -153,10 +154,11 @@ cells, selected-unit lead payload, owner-editable CMS fields, visual QA and depl
 Required reading order:
 
 1. `project-page-premium-showroom-runbook.md`
-2. `skill-project-page-seo-and-assembly.md`
-3. `skill-3d-model-pipeline.md`
-4. `skill-interactive-apartment-picker.md`
-5. `docs/2026-06-15-rainbow-template-v1-readiness-matrix.md`
+2. `project-showroom-governance.md`
+3. `skill-project-page-seo-and-assembly.md`
+4. `skill-3d-model-pipeline.md`
+5. `skill-interactive-apartment-picker.md`
+6. `docs/2026-06-15-rainbow-template-v1-readiness-matrix.md`
 
 Executable factory path:
 
@@ -209,3 +211,6 @@ capture requirements in BACKLOG under "Network".
 - 2026-06-15 — Added the Project Showroom Factory cluster and executable one-shot path so future
   `nadlan_project` pages reuse the Rainbow data/asset/QA contract instead of starting new plugin
   rewrites.
+- 2026-06-15 — Added `project-showroom-governance.md` to prevent plugin-heavy showroom work,
+  document ownership boundaries, and require typography/image/translation/release gates before
+  cloning Rainbow to another project.

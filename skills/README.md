@@ -32,10 +32,11 @@ Every agent (Claude, Codex, Antigravity, Cowork) reads from here before acting a
 **Before creating or cloning a premium project showroom:**
 
 17. `project-page-premium-showroom-runbook.md` — A-to-Z project page workflow: research, assets, CMS payload, QA, deploy
-18. `skill-3d-model-pipeline.md` — GLB/poster/facade/unit-map pipeline and buyer-facing model rules
-19. `skill-interactive-apartment-picker.md` — clickable apartment cells/polygons on the building
-20. `skill-project-page-seo-and-assembly.md` — project SEO, schema fields, visible content blocks, international intent
-21. `docs/2026-06-15-rainbow-template-v1-readiness-matrix.md` — current Rainbow clone-readiness state and exact gate
+18. `project-showroom-governance.md` — ownership boundaries: plugin vs content vs theme vs assets, safe release rules
+19. `skill-3d-model-pipeline.md` — GLB/poster/facade/unit-map pipeline and buyer-facing model rules
+20. `skill-interactive-apartment-picker.md` — clickable apartment cells/polygons on the building
+21. `skill-project-page-seo-and-assembly.md` — project SEO, schema fields, visible content blocks, international intent
+22. `docs/2026-06-15-rainbow-template-v1-readiness-matrix.md` — current Rainbow clone-readiness state and exact gate
 
 ## Index (current as of 2026-05-30)
 
@@ -111,6 +112,7 @@ Every agent (Claude, Codex, Antigravity, Cowork) reads from here before acting a
 | `abilities-api.md` | WP 7.0 Abilities API usage |
 | `interactive-widgets.md` | Vanilla JS calculator widgets |
 | `project-page-premium-showroom-runbook.md` | A-to-Z premium project showroom workflow |
+| `project-showroom-governance.md` | Boundary rules for project showrooms: what belongs in plugin, content, theme, assets, QA |
 | `skill-3d-model-pipeline.md` | 3D showroom asset/CMS pipeline: GLB, poster, facade, unit data, payload validation |
 | `skill-interactive-apartment-picker.md` | Apartment selector standard: cells/polygons on the building, not abstract dots |
 | `properties-catalog.md` | nadlan_property CPT + MapLibre archive |

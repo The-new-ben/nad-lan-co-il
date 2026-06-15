@@ -3,6 +3,9 @@
 
 Use this skill whenever creating or upgrading a `nadlan_project` page. It encodes the full method: audit → SERP → intent map (incl. international) → paste assets → schema meta → design wrapper. Companion skills: `article-guide-design-pattern.md` (the framed body design), `project-3d-sales-experience.md` (the interactive module), `copywriting-skill.md`.
 
+Also read `project-showroom-governance.md` before turning SEO findings into plugin work. Most SEO,
+copy, image, schema-meta and translation fixes should be content/field work, not renderer rewrites.
+
 ## 1. Page assembly standard (what a complete project page IS)
 Order on the page:
 1. `nlpf` profile header (one visible H1 = `{English name} – {Hebrew name}`).
@@ -43,6 +46,7 @@ Assign the `nadlan_compound` term → schema emits containedInPlace + internal-l
 ## 5. Definition of done (gate checklist per project page)
 - [ ] Title + meta description per formulas; one visible H1.
 - [ ] Body in `nadlan-guide` wrapper (framed, cards, notes — not bare bold).
+- [ ] H2/H3 headings align visually with their paragraphs on desktop, tablet and mobile.
 - [ ] Blocks A/B/C present with citations; FAQ section + `project_faq_json`.
 - [ ] All §3 meta filled; Rich Results Test passes ApartmentComplex + FAQPage.
 - [ ] Transactional keyword check: למכירה ≥3, מחיר ≥8 occurrences.
