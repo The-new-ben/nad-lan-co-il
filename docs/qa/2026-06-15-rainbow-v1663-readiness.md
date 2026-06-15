@@ -129,6 +129,9 @@ close the first four failures after deployment; then the visual gate must be rer
 6. Rerun:
 
 ```powershell
+node scripts\qa-rainbow-postdeploy.mjs --version 1.66.3 --out docs/qa/rainbow-postdeploy-1.66.3.json
+
+# Or run the individual gates:
 node scripts\qa-project-showroom-live.mjs --site https://nad-lan.co.il --slug rainbow-tel-aviv --post-id 4464
 node scripts\qa-project-showroom-visual.mjs --site https://nad-lan.co.il --slug rainbow-tel-aviv
 node scripts\qa-project-template-gate.mjs --site https://nad-lan.co.il --slug rainbow-tel-aviv --post-id 4464 --min-version 1.66.3 --visual --strict
