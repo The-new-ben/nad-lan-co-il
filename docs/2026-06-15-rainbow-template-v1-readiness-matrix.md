@@ -32,7 +32,7 @@ each new project.
 | CMS editability | `admin_unit_builder_v1650: true`, `rest_showroom_fields_v1651: true`, `showroom_payload_api_v1652: true`, `showroom_payload_fields: 17`. | Live |
 | SEO/schema | `project_page_assembly.rainbow_seo_v1634: true`, `faq_meta: true`, `price_meta: true`, title and description overrides present. | Live |
 | Lead journey | `lead_unit_payload: true`, `lead_e2e.enabled: true`, `whatsapp_funnel.loaded: true`. | Live |
-| QA blocker pending | PR #187 adds v1.66.3 mobile containment and public-copy cleanup. | Pending deploy |
+| QA blocker pending | PR #187 adds v1.66.3 mobile containment, public-copy cleanup and same-site OG-image HTTPS normalization. | Pending deploy |
 
 ## Pending Patch Before Rainbow Can Be Cloned
 
@@ -42,7 +42,8 @@ Why it matters:
 
 - the 390px and Edge-mobile visual harness measured the showroom root shifted off-screen;
 - after selecting an apartment, the mobile scene collapsed to a 2px strip;
-- old public wording still contained internal words around leads / lead panel.
+- old public wording still contained internal words around leads / lead panel;
+- the rendered same-site `og:image` URL was HTTP, which blocks the template gate.
 
 Do not use Rainbow as the clone source for the next project until the post-deploy gate proves:
 
@@ -50,7 +51,8 @@ Do not use Rainbow as the clone source for the next project until the post-deplo
 2. `project_page_assembly.rainbow_public_copy_v1663` is true;
 3. the visual harness passes or shows only accepted non-blocking findings at 1440, 768, 390 and
    Edge-mobile;
-4. public copy contains no internal operations terms.
+4. public copy contains no internal operations terms;
+5. rendered `og:image` uses `https://`.
 
 ## Executable Template Gate
 
@@ -75,7 +77,7 @@ failures are exactly the expected ones:
 
 1. live plugin is still `1.66.2`, below the `1.66.3` template gate;
 2. `project_page_assembly.rainbow_public_copy_v1663` has not run on production;
-3. the OG image URL is HTTP instead of HTTPS;
+3. the OG image URL is HTTP instead of HTTPS, and PR #187 now contains the intended normalizer;
 4. public text still contains internal lead wording from the old copy;
 5. the visual Chrome gate was not run in that command.
 
@@ -103,7 +105,7 @@ quality is not ready.
 | Official per-apartment 3D geometry | A true 360-degree rotating building where every apartment surface is clickable requires a BIM/GLB where units are separate meshes. The current prototype model is not that. | Keep the GLB as emotional 3D and use facade/elevation cells for precise apartment picking until developer BIM exists. |
 | Official facade/elevation | The current facade selector can place cells, but a real contractor page should use the developer's approved elevation or a licensed/original illustration. | Ask the developer for elevation/front render/floor stack, then map `stage_x/y/w/h` cells to that image. |
 | Real inventory and prices | Estimates are useful but cannot be sold as official availability or official price. | Store status and prices only with source note and owner approval. Default to `אומדן לא מחייב` or `לפי פנייה`. |
-| Mobile final polish | PR #187 targets a specific mobile containment failure, but live green proof must come after deploy. | Merge/update/cache-clear, then rerun visual QA. |
+| Mobile/social final polish | PR #187 targets the mobile containment failure, public-copy cleanup and same-site OG HTTPS normalization, but live green proof must come after deploy. | Merge/update/cache-clear, then rerun visual and template QA. |
 | International pages | Live Rainbow is Hebrew. No proven EN/FR/RU page, hreflang set, translated schema, or foreign-buyer CTA exists yet. | Decide translation architecture before creating routes. Start with English as a pilot after Hebrew template is green. |
 | Yoast 100% proof | Title/meta/schema exist, but a Yoast green-light screenshot or API proof is not stored in the repo. | Add Yoast/readability proof to the project QA packet before declaring SEO complete. |
 | SERP/rank proof | IndexNow pings exist, but ranking for project terms is not proven. | Track queries: `ריינבו תל אביב`, `Rainbow Tel Aviv`, `ריינבו שדה דב`, `דירות למכירה Rainbow תל אביב`, `מחיר ריינבו תל אביב`. |

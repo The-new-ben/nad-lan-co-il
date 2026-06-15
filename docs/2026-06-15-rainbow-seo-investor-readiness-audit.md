@@ -49,7 +49,7 @@ The failures are real and expected at this stage:
 
 - live plugin is below the v1.66.3 template gate;
 - `project_page_assembly.rainbow_public_copy_v1663` is not live yet;
-- `og:image` uses HTTP;
+- `og:image` uses HTTP on current production; PR #187 now contains the same-site HTTPS normalizer;
 - old public text still contains internal lead wording;
 - the visual Chrome gate was not run in that command.
 
@@ -68,7 +68,7 @@ Rendered page extraction from public HTML:
 | Robots | `index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1` | Good. |
 | H1 | `Rainbow Tel Aviv – ריינבו תל אביב` | Good, one visible H1 per QA script. |
 | H2 count | 20 | Strong depth, but monitor readability and headline alignment visually. |
-| OG image | `http://nad-lan.co.il/wp-content/uploads/2026/06/rainbow-tel-aviv-hero.jpg` | Minor issue: should be HTTPS if possible. |
+| OG image | `http://nad-lan.co.il/wp-content/uploads/2026/06/rainbow-tel-aviv-hero.jpg` on live 1.66.2 | Pending PR #187; expected to normalize same-site images to HTTPS after deploy. |
 | JSON-LD count | 4 | Good. |
 | Schema types | WebPage, ImageObject, BreadcrumbList, WebSite, Organization, FAQPage, ApartmentComplex | Strong. |
 | Hreflang | none | Not multilingual-ready yet. |
@@ -129,7 +129,7 @@ This is why the current title/meta direction is right: `דירות למכירה`
 | Apartment selector | Live healthcheck reports model-viewer, dual showroom, unit picker, stage card and payload API. | Done structurally |
 | FAQ schema | `FAQPage` in JSON-LD and `faq_meta: true`. | Done |
 | ApartmentComplex schema | `ApartmentComplex` in JSON-LD and `price_meta: true`. | Done |
-| Social image | OG image present, dimensions present. | Mostly done, but switch OG URL to HTTPS. |
+| Social image | OG image present, dimensions present; live URL is currently HTTP. | Pending PR #187 HTTPS normalizer |
 | Foreign-buyer signals | English competitor pages exist; no hreflang or translated NadLan page exists. | Missing |
 | Real inventory | Unit picker exists, but official inventory/availability source is not proven. | Missing owner/developer input |
 | Real prices | Estimate framing exists; official current price list is not proven. | Missing owner/developer input |
@@ -154,8 +154,8 @@ labels, tax/legal disclaimers, non-binding price wording and developer-contact p
 
 ## High-Priority Next Actions
 
-1. Merge/deploy PR #187, then run the visual QA harness again.
-2. Change OG image URL to HTTPS if WordPress/media settings allow it.
+1. Merge/deploy PR #187, then run the visual QA harness and the template gate again.
+2. Confirm rendered `og:image` changed to HTTPS after PR #187 is live.
 3. Add a small rank-tracking note for target queries:
    - `ריינבו תל אביב`
    - `Rainbow Tel Aviv`
