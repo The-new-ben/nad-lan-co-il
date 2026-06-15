@@ -59,6 +59,24 @@ After the 1.66.x package incident, no plugin update is allowed without this sequ
 8. If the live site is damaged, stop feature work and restore a known clean plugin folder before
    continuing.
 
+## Continuous Skill Capture
+
+Every showroom task must leave reusable knowledge behind for the next project.
+
+- Do not leave durable decisions only in chat, PR comments or screenshots.
+- If a mistake happened, record the root cause and the gate that would have caught it.
+- If a pattern worked, record the smallest repeatable version of it.
+- Update the narrowest relevant skill:
+  - `project-showroom-governance.md` for ownership boundaries, safety and release rules.
+  - `project-page-premium-showroom-runbook.md` for the A-to-Z project page workflow.
+  - `skill-3d-model-pipeline.md` for GLB, facade, poster, unit-map and payload rules.
+  - `skill-interactive-apartment-picker.md` for selector behavior and buyer UX.
+  - `skill-project-page-seo-and-assembly.md` for content, schema, Yoast and SERP rules.
+  - `plugin-release-preflight.md` for ZIP, version and deploy hazards.
+- Add source research to `docs/`, then distill only the actionable rule into `skills/`.
+- Before calling a project clone-ready, confirm that the relevant skill files now describe how a
+  fresh agent would reproduce the result without reading the old chat.
+
 ## Visual And Typography Gate
 
 Project pages fail the premium gate if headings and paragraphs do not live in the same readable
