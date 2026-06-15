@@ -142,3 +142,15 @@ Only #1–#5 are in our control from git. #6 is the owner's deploy click. **Say 
 ## 5. WHEN YOU MAKE A NEW MISTAKE
 Append it to §1 as `M#` with: what happened, why it hurt, the rule, the fix command.
 This file is the memory that stops us repeating days of pain.
+### M9 - Healthcheck green is not visual green
+**What happened:** v1.66.4 deployed correctly and `/wp-json/nadlan/v1/healthcheck` reported the new version, but the post-deploy visual gate caught a real 390px mobile crop on the Rainbow showroom.
+**Why it hurt:** a live update can be technically installed while still failing the buyer experience. Healthcheck proves the plugin loaded; it does not prove the page is usable.
+**Rule:** after every live plugin update, run the live visual gate before saying "done." If it fails, ship the smallest possible patch version and deploy that patch.
+**Fix command:**
+```powershell
+.\scripts\nadlan-release-gate.ps1 -Version <VERSION>
+```
+For a visual-only live check:
+```powershell
+node scripts\qa-rainbow-postdeploy.mjs --version <VERSION> --out docs\qa\rainbow-postdeploy-<VERSION>.json
+```
