@@ -36,6 +36,8 @@ The contract layer. Identical on every site.
 | `honesty-statement.md` | DNA·DOC | **Core DNA.** No-flattery, cite-or-flag. Non-negotiable on every site. |
 | `security-public-repo.md` | DNA·DOC | What never goes in a public repo. |
 | `plugin-discipline.md` / `plugin-auto-update.md` | DNA·DOC | One-capability modules + self-hosted update channel. |
+| `plugin-release-preflight.md` | DNA·DOC | Required package/version/ZIP preflight before any plugin release handoff. |
+| `project-showroom-governance.md` | DNA·DOC | Boundary rule for showroom projects: plugin vs content vs theme vs assets, with release safety and clone gates. |
 | `nadlan-config-plugin.md` | DNA·DOC | Plugin lessons (rename per site). |
 | `codex-plugin-access-and-deploy.md` | DNA·DOC | **The deploy pipeline operator guide** — how ANY agent (Codex/Claude/Cowork) changes the plugin and ships it live. Portable to every site (swap names/URLs). Read before touching plugin code. |
 
@@ -54,6 +56,7 @@ The contract layer. Identical on every site.
 | `article-guide-design-pattern.md` | DNA·DOC | Guide/pillar layout. Portable. |
 | `copywriting-skill.md` | DNA·DOC | Voice, em-dash ban, forbidden phrases. Portable. |
 | `yoast-config.md` | DNA·DOC | Required meta + Person schema. Portable. |
+| `skill-project-page-seo-and-assembly.md` | SITE·DOC | Project-page SEO and schema assembly. Use before creating or upgrading any `nadlan_project` page; re-run the SERP method per project. |
 | `content-encyclopedia-glossary-plan.md` | DNA·DOC | Glossary/encyclopedia model. Portable concept — **needs rework, see BACKLOG**. |
 | `strategy-master.md` | SITE·DOC | Israeli RE keyword strategy. Re-derive per site. |
 | `lovable-competitor-blueprint-2026-06.md` | SITE·DOC | RE competitor teardown. Re-run method per niche. |
@@ -135,8 +138,39 @@ Portable look-and-feel. Re-skin colours per brand, keep the structure.
 | `accessibility-israel-is5568.md` | DNA·DOC (IL legal requirement) |
 | `theme-fork-decision.md` | DNA·DOC |
 | `image-pipeline.md` / `interactive-widgets.md` | DNA·DOC |
+| `project-3d-sales-experience.md` | SITE·DOC |
+| `project-page-premium-showroom-runbook.md` | SITE·DOC |
+| `skill-3d-model-pipeline.md` | SITE·DOC |
+| `skill-interactive-apartment-picker.md` | SITE·DOC |
 
 ---
+
+### Project Showroom Factory — SITE DNA
+
+Use this cluster before cloning Rainbow quality to another project. It is not generic page design;
+it is the NadLan project-sales product: SERP-backed project copy, model/facade assets, apartment
+cells, selected-unit lead payload, owner-editable CMS fields, visual QA and deploy proof.
+
+Required reading order:
+
+1. `project-page-premium-showroom-runbook.md`
+2. `project-showroom-governance.md`
+3. `skill-project-page-seo-and-assembly.md`
+4. `skill-3d-model-pipeline.md`
+5. `skill-interactive-apartment-picker.md`
+6. `docs/2026-06-15-rainbow-template-v1-readiness-matrix.md`
+
+Executable factory path:
+
+```bash
+node scripts/init-project-showroom.mjs <project-slug> --post-id <post-id>
+node scripts/build-project-showroom-payload.mjs <project-slug> --write
+node scripts/validate-project-showroom-payload.mjs --payload assets/projects/<project-slug>/showroom-payload.json
+node scripts/qa-project-template-gate.mjs --site <site> --slug <slug> --post-id <id> --min-version <version> --visual --strict
+```
+
+Do not use Rainbow as the source for another paid project while the template gate is red. A future
+project should be fields/assets plus payload import, not a fresh plugin rewrite.
 
 ## BRANCH 6 — Off-site growth & business presence 🧬 DNA  *(thin — see BACKLOG)*
 
@@ -169,3 +203,14 @@ When we open a new domain in the network:
 group — a legal portal, travel/relocation verticals, and regional desks — intended to
 cross-link and share leads. Cross-site lead-sharing + shared identity is a future program;
 capture requirements in BACKLOG under "Network".
+
+---
+
+## Revision log
+
+- 2026-06-15 — Added the Project Showroom Factory cluster and executable one-shot path so future
+  `nadlan_project` pages reuse the Rainbow data/asset/QA contract instead of starting new plugin
+  rewrites.
+- 2026-06-15 — Added `project-showroom-governance.md` to prevent plugin-heavy showroom work,
+  document ownership boundaries, and require typography/image/translation/release gates before
+  cloning Rainbow to another project.

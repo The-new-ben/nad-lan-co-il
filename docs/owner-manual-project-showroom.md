@@ -233,6 +233,32 @@ Recommended wording:
 
 `אומדן לא מחייב לפי מקור מאושר. יש לאמת מחיר, זמינות ותנאים מול היזם לפני כל התקדמות.`
 
+## Investor And International Readiness
+
+Rainbow can be prepared for foreign buyers and investors, but translation is not automatic.
+
+Before publishing an English, French, Russian or other language version:
+
+1. Decide the URL pattern, for example `/en/projects/rainbow-tel-aviv/`.
+2. Translate the visible project copy, FAQ, price disclaimers, contact copy and legal notes.
+3. Keep the same sourced facts as the Hebrew page. Do not invent prices, tax rules, availability,
+   financing terms or official status in translation.
+4. Keep investor signals visible: developer, location, project status, price-estimate disclaimer,
+   apartment mix, view, transport, parks, nearby projects, buying-process note and source dates.
+5. Add `hreflang` only after the translated page is live and reviewed.
+6. Run the template gate again. A Hebrew page with no real translated URL is not multilingual-ready.
+
+For investor SEO, the page should answer:
+
+- what is available now, or how availability is checked;
+- what the price context is, with source and date;
+- why the location matters;
+- what the buyer can inspect in the showroom;
+- how to contact the project with the selected unit attached.
+
+If any of those are missing, the project can be a prototype, but it is not ready to clone as an
+international investor template.
+
 ## Media Fields
 
 `project_3d_video_url`
@@ -294,21 +320,32 @@ either a flat object with the allowed field names or `{ "meta": { ... } }`.
 
 Use this for the next project run:
 
-1. Prepare the project asset folder: `unit-map.json`, `drawings.json`, `environment.json`,
-   `view-layer-config.json`, model URL and poster URL.
-2. Run `node scripts/build-project-showroom-payload.mjs <project-slug> --write`.
-3. Validate the payload:
+1. Create the project asset folder:
+
+   ```powershell
+   node scripts/init-project-showroom.mjs <project-slug> --post-id <id> --title "Project Name"
+   ```
+
+   The script creates `source-notes.md`, `unit-map.json`, `drawings.json`, `environment.json`,
+   `view-layer-config.json`, `project-meta-example.json`, `material-intake-template.json`,
+   `showroom-payload.json`, `qa.md`, and a `plans/` folder. It refuses to overwrite an existing
+   project folder unless `--force` is passed.
+
+2. Replace the starter files with real sources: approved unit inventory, drawings, environment,
+   model URL and poster URL.
+3. Run `node scripts/build-project-showroom-payload.mjs <project-slug> --write`.
+4. Validate the payload:
 
    ```powershell
    node scripts/validate-project-showroom-payload.mjs `
      --payload assets/projects/<project-slug>/showroom-payload.json
    ```
 
-4. Review `<project-folder>/showroom-payload.json`. It must contain the `meta` object with all
+5. Review `<project-folder>/showroom-payload.json`. It must contain the `meta` object with all
    allowed showroom fields.
-5. POST `showroom-payload.json` to the project-showroom route.
-6. Open the WordPress editor only for visual review and small corrections.
-7. Open the public page in Chrome and verify the model, markers, selected card and form.
+6. POST `showroom-payload.json` to the project-showroom route.
+7. Open the WordPress editor only for visual review and small corrections.
+8. Open the public page in Chrome and verify the model, markers, selected card and form.
 
 Rainbow reference payload:
 
@@ -367,6 +404,28 @@ node scripts/qa-project-showroom-live.mjs `
 This checks the live healthcheck, the public project page, one-H1 rule, model-viewer module tag,
 hotspots, transaction-led SEO title/meta, public error leaks and the authenticated payload API when
 `WP_USER` / `WP_APP_PASSWORD` are set.
+
+### Template-Ready Gate
+
+Before using Rainbow as the source for the next project, run the stricter template gate:
+
+```powershell
+node scripts/qa-project-template-gate.mjs `
+  --site https://nad-lan.co.il `
+  --slug rainbow-tel-aviv `
+  --post-id 4464 `
+  --min-version 1.66.3 `
+  --visual `
+  --strict `
+  --out docs/qa/rainbow-template-gate-live.json
+```
+
+This gate checks more than saved fields. It verifies the live plugin version, model-viewer health,
+GLB/project markers, public title/meta/canonical/robots, FAQ and ApartmentComplex schema, OG image,
+internal wording leaks, translation state and the visual Chrome showroom harness.
+
+If the command fails, do not clone the project yet. Fix the failing items first, then rerun the
+same command and store the JSON output in `docs/qa/`.
 
 ## Classic Editor Question
 
@@ -433,3 +492,65 @@ apartment-shaped cells or polygons that make the location of the apartment obvio
 Mobile check: open the page at 390px. Every apartment cell must be comfortable to tap, at least
 44px by 44px, and selecting a unit must show the apartment card without pushing the model out of
 view.
+
+## When To Clone Rainbow To The Next Project
+
+Rainbow is ready to clone only after the public page passes the live visual QA gate. Do not start a
+new project from a version that still has mobile crop, collapsed model stage, hidden apartment
+selection, or internal public wording.
+
+The exact clone gate is:
+
+```powershell
+node scripts/qa-project-template-gate.mjs --site https://nad-lan.co.il --slug rainbow-tel-aviv --post-id 4464 --min-version 1.66.3 --visual --strict
+```
+
+Passing the older structural gate alone is not enough. The stricter template gate must pass because
+it catches public-copy, OG-image, translation and visual-readiness issues that can still make a page
+look unfinished to a buyer or contractor.
+
+For the next project, prepare a project folder before touching WordPress:
+
+- `source-notes.md`
+- `model.glb` or approved model URL
+- `poster.webp` or `poster.png`
+- `unit-map.json`
+- `drawings.json`
+- `environment.json`
+- `showroom-payload.json`
+- `qa.md`
+
+Start that folder with:
+
+```powershell
+node scripts/init-project-showroom.mjs <project-slug> --post-id <post-id>
+```
+
+Example:
+
+```powershell
+node scripts/init-project-showroom.mjs migdalei-hayam-sde-dov --post-id 0
+```
+
+The script creates safe placeholder files under `assets/projects/<project-slug>/`. It does not
+publish anything. Replace the placeholder model, poster, units, prices, drawings and source notes
+with sourced or developer-approved material, then build the payload:
+
+```powershell
+node scripts/build-project-showroom-payload.mjs <project-slug> --write
+node scripts/validate-project-showroom-payload.mjs --payload assets/projects/<project-slug>/showroom-payload.json
+```
+
+The developer or contractor should provide, when possible:
+
+- official BIM/GLB or source model,
+- facade/elevation drawing,
+- available/reserved/sold inventory,
+- approved price or price-range wording,
+- floor plans and apartment plans,
+- approved video or tour,
+- sales phone, WhatsApp and email.
+
+If multilingual pages are needed, create them only after the Hebrew page is stable. English,
+French, Russian or other language pages need real translated content, matching source notes,
+matching legal disclaimers and a clear URL structure before `hreflang` is added.

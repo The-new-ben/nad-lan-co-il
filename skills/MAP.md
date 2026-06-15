@@ -57,7 +57,9 @@ Everything else is on-demand by category below.
 | ✅🟪 | `skills/nadlan-config-plugin.md` | Plugin lessons + one-capability-per-module rule + coding conventions | Before writing a new `inc/<module>.php` |
 | ✅🟪 | `skills/plugin-discipline.md` | What belongs in a plugin module vs the theme | Architectural decisions |
 | ✅🟪 | `skills/plugin-auto-update.md` | How the self-hosted update channel works (plugin-update-checker + manifest) | If the updater misbehaves |
+| ✅🟪 | `skills/plugin-release-preflight.md` | Mandatory package/version/ZIP safety gate using build-plugin-zip and verify-plugin-release | Before committing or handing off any plugin update |
 | ✅🟪 | `skills/SKILLS-TREE.md` | Sorts every skill + every code module into 6 portable DNA branches | When opening a NEW site in the network |
+| ✅🟪 | `skills/project-showroom-governance.md` | Boundary and safety rules for premium project showrooms | Before deciding whether a showroom issue needs plugin, theme, content, asset or QA work |
 
 ## 3. SEO + CONTENT ENGINE
 
@@ -74,6 +76,7 @@ Everything else is on-demand by category below.
 | ✅ | `skills/content-encyclopedia-glossary-plan.md` | Glossary architecture + term selection | Before adding glossary terms |
 | ✅ | `skills/wordpress-content-types.md` | When to use Page vs Post vs CPT | Any new content type decision |
 | ✅ | `skills/yoast-config.md` | Required meta + Person schema | Per-page SEO settings |
+| ✅🟪 | `skills/skill-project-page-seo-and-assembly.md` | Project-page SEO replication: SERP, title/meta, schema fields, FAQ, investor/international blocks | Before creating or upgrading any `nadlan_project` page |
 | ✅ | `skills/strategy-master.md` | nad-lan SEO/business master strategy (Hebrew) | Strategic decisions about keyword targeting |
 | ✅ | `skills/nadlan-seo-content-design-monetization-rulebook.md` | The rulebook (Hebrew) | Strategic alignment check |
 | 🟡 | `skills/lovable-competitor-blueprint-2026-06.md` | Competitor teardown (Madlan / Yad2 / Nadlanmaster) | Strategic moves vs competitors |
@@ -100,6 +103,9 @@ Everything else is on-demand by category below.
 | ✅🟪 | `skills/image-pipeline.md` | Image generation + optimization pipeline | When attaching images |
 | ✅🟪 | `skills/interactive-widgets.md` | Calculator/widget component patterns | Building interactive tools |
 | ✅🟪 | `skills/project-3d-sales-experience.md` | Interactive project showroom standards: building-first, unit picker, map/sun/lead seams | Before changing any project 3D or apartment-selection page |
+| ✅🟪 | `skills/project-showroom-governance.md` | Project showroom governance: plugin boundaries, release safety, typography, images, translation, clone readiness | Before cloning Rainbow or making more plugin-heavy showroom changes |
+| ✅🟪 | `skills/skill-3d-model-pipeline.md` | 3D showroom asset and CMS pipeline: GLB, poster, facade, unit JSON, payload validation, buyer-visible gates | Before creating model assets or cloning a showroom to another project |
+| ✅🟪 | `skills/skill-interactive-apartment-picker.md` | Apartment selector standard: cells/polygons embedded on the building with unit data and lead payload | Before changing apartment selection behavior |
 | ✅🟪 | `skills/project-page-premium-showroom-runbook.md` | A-to-Z repeatable project page runbook: research, assembly, schema, 3D, WhatsApp funnel, QA, deploy | Before cloning Rainbow quality to another project |
 | 🟡 | `skills/theme-fork-decision.md` | When to fork the theme vs extend the plugin | Architectural decision |
 
@@ -185,3 +191,6 @@ tooling is required — `git`, `cat`, and `grep` are all an agent needs to read 
   Categorises the 61 existing skill files + 20 docs into 9 functional sections, marks ACTIVE vs
   REFERENCE vs DEPRECATED, and lists the 10-minute reading order. Pairs with new
   `skills/ACCUMULATION.md` (protocol for adding/updating skills) and the upgraded `AGENTS.md`.
+- 2026-06-15 — Added the project-showroom factory skills to the discoverability map:
+  `project-page-premium-showroom-runbook.md`, `skill-3d-model-pipeline.md`,
+  `skill-interactive-apartment-picker.md`, and `skill-project-page-seo-and-assembly.md`.

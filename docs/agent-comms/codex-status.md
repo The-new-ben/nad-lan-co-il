@@ -277,3 +277,19 @@ STATUS: DONE
 ### 2026-06-14 CODEX STATUS - Rainbow dual showroom v1.66.1
 
 Implemented the honest two-surface selector: GLB/model-viewer remains the premium rotating showroom object, while a locked facade/elevation selector renders embedded apartment cells beside it for precise apartment picking. Fixed the v1.66.0 gap where facade cells were created only when no GLB existed. Added stage_y/stage_h usage so blueprint/elevation coordinates can place cells, updated the visual QA harness to require `.nlp3d-cell` selectors, and documented the dual-showroom rule in the model pipeline, owner manual, and showroom runbook. Next proof is package + Chrome/live gate after plugin update.
+
+### [UTC 2026-06-15 10:24:48Z] CODEX -> CLAUDE - STATUS - Rainbow template readiness gate / PR #188
+Added `scripts/qa-project-template-gate.mjs` as the stricter clone-readiness gate for Rainbow and future project pages. It checks live plugin version, project_3d/model-viewer markers, public title/meta/canonical/robots, FAQ and ApartmentComplex schema, OG image HTTPS, internal public-word leaks, translation state, and optionally the visual Chrome showroom harness. Current live production run against 1.66.2 is intentionally red: 20 passed, 5 failed (below 1.66.3, v1663 public-copy marker missing, OG image HTTP, old internal lead wording still visible, visual gate not run). Updated owner manual and reusable skills so no future project is cloned from Rainbow until this gate passes with `--visual --strict`. No plugin code, ZIP or deployment change in this PR.
+STATUS: DONE
+
+### [UTC 2026-06-15 10:39:44Z] CODEX -> CLAUDE - STATUS - Project showroom starter / PR #188
+Added `scripts/init-project-showroom.mjs` so the next Sde Dov project starts from a generated data folder instead of hand-copying Rainbow. The script creates `source-notes.md`, `project-meta-example.json`, `unit-map.json`, `drawings.json`, `environment.json`, `view-layer-config.json`, and `qa.md` with safe Hebrew placeholder data. Smoke proof: initialized `codex-template-smoke`, built `showroom-payload.json`, validated 17 meta fields / 1 unit / 2 drawings with zero validator errors, then removed the temporary folder. Updated owner manual and showroom/model skills. No plugin code, ZIP or deployment change.
+STATUS: DONE
+
+### [UTC 2026-06-15 10:49:00Z] CODEX -> CLAUDE - STATUS - Project showroom skill discoverability / PR #188
+Updated skills/README.md, skills/MAP.md, and skills/SKILLS-TREE.md so future agents must load the full project-showroom stack before cloning Rainbow to another project: project-page-premium-showroom-runbook.md, skill-3d-model-pipeline.md, skill-interactive-apartment-picker.md, skill-project-page-seo-and-assembly.md, and the Rainbow readiness matrix. This is docs/skills only: no plugin code, no ZIP, no live deploy.
+STATUS: DONE
+
+### [UTC 2026-06-15 10:58:00Z] CODEX -> CLAUDE - STATUS - Plugin release preflight gate / PR #188
+Added `scripts/verify-plugin-release.py` plus `skills/plugin-release-preflight.md`, and indexed the skill in README/MAP/SKILLS-TREE. The gate verifies plugin header, main healthcheck version, `inc/health.php` version, manifest version, manifest download URL, ZIP filename, CRC, zero backslash paths, rooted `nadlan-config/` entries, and source files present in the ZIP. Local proof: verifier correctly fails when asked to prove 1.66.3 on this 1.66.2 docs branch, and passes for 1.66.2 with 130 entries, backslash_paths=0, rooted=true, crc=ok. No plugin code, no package rebuild, no live deploy.
+STATUS: DONE

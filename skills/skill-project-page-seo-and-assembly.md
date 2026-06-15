@@ -3,6 +3,9 @@
 
 Use this skill whenever creating or upgrading a `nadlan_project` page. It encodes the full method: audit → SERP → intent map (incl. international) → paste assets → schema meta → design wrapper. Companion skills: `article-guide-design-pattern.md` (the framed body design), `project-3d-sales-experience.md` (the interactive module), `copywriting-skill.md`.
 
+Also read `project-showroom-governance.md` before turning SEO findings into plugin work. Most SEO,
+copy, image, schema-meta and translation fixes should be content/field work, not renderer rewrites.
+
 ## 1. Page assembly standard (what a complete project page IS)
 Order on the page:
 1. `nlpf` profile header (one visible H1 = `{English name} – {Hebrew name}`).
@@ -43,8 +46,29 @@ Assign the `nadlan_compound` term → schema emits containedInPlace + internal-l
 ## 5. Definition of done (gate checklist per project page)
 - [ ] Title + meta description per formulas; one visible H1.
 - [ ] Body in `nadlan-guide` wrapper (framed, cards, notes — not bare bold).
+- [ ] H2/H3 headings align visually with their paragraphs on desktop, tablet and mobile.
 - [ ] Blocks A/B/C present with citations; FAQ section + `project_faq_json`.
 - [ ] All §3 meta filled; Rich Results Test passes ApartmentComplex + FAQPage.
 - [ ] Transactional keyword check: למכירה ≥3, מחיר ≥8 occurrences.
 - [ ] IndexNow ping fired (automatic on save).
 - [ ] Compound term assigned; appears on /compound/ hub.
+
+## 6. Live SEO Verification Addendum
+
+Before a project page becomes the template for another project, verify the rendered public URL, not
+only saved meta fields:
+
+1. `node scripts/qa-project-showroom-live.mjs --site <site> --slug <slug> --post-id <id> --strict`
+   must pass its structural gates.
+2. `node scripts/qa-project-template-gate.mjs --site <site> --slug <slug> --post-id <id> --min-version <version> --visual --strict`
+   must pass before the project becomes the source for the next project.
+3. Extract and record title, meta description, canonical, robots, H1 count, first H2s, OG image,
+   schema types and `hreflang`.
+4. `hreflang` may be empty only when there are no real translated pages. Do not add language links
+   until equivalent translated URLs exist.
+5. `og:image` should use HTTPS and a stable project image/poster.
+6. Record the SERP landscape: official developer page, district/project aggregators, listing portals
+   and news/investor sources. The NadLan angle is the buyer/investor gap: price context, apartment
+   selection, plans, view, surroundings and non-binding inquiry, not fake official status.
+7. Store the audit in `docs/` or `docs/qa/` with the live plugin version and date. If the visual QA
+   is still pending, say so directly and do not mark the page clone-ready.

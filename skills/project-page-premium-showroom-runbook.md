@@ -4,6 +4,9 @@ Use this skill when turning a real-estate project page into a flagship, replicab
 for NadLan. The target is a buyer-ready, investor-search-ready, contractor-demo-ready page, not a
 plain WordPress article.
 
+Read `project-showroom-governance.md` first when deciding whether a change belongs in plugin code,
+WordPress content, the theme, or the project asset folder.
+
 ## A. Source And Intent Research
 
 1. Search Hebrew and English SERP for the project name, developer, neighborhood and price intent.
@@ -46,6 +49,11 @@ plain WordPress article.
    - run the project page assembly checker when one exists.
 8. If a one-shot content seed already ran, never re-run the old seed. Add a new dated/numbered
    idempotent option for the delta, for example `nadlan_<project>_seo_vXXXX`.
+
+Typography rule: H2/H3 headings must sit in the same readable column as the paragraphs they
+introduce. A heading thrown to the right while the text appears in a different column is a visual
+failure even when the words are correct. Check the rendered public page, not the editor, at 1440,
+768 and 390 px before calling the page premium.
 
 ## C. 3D And Buyer Interaction
 
@@ -163,6 +171,17 @@ Pass criteria:
 - floating buttons do not cover forms or footer,
 - schema contains visible FAQ-aligned data.
 
+Run the reusable template gate before declaring the project clone-ready:
+
+```bash
+node scripts/qa-project-template-gate.mjs --site <site> --slug <slug> --post-id <id> --min-version <version> --visual --strict
+```
+
+The template gate is stricter than the showroom structural gate. It must verify live plugin version,
+model-viewer health, GLB/project markers, public title/meta/canonical/robots, FAQ and
+ApartmentComplex schema, OG image, public-copy leaks, translation state and the visual Chrome
+showroom pass. Store its JSON output in `docs/qa/`.
+
 ## F. Deployment Reminder
 
 After a PR is merged:
@@ -171,6 +190,9 @@ After a PR is merged:
 2. Trigger or upload the WordPress plugin update.
 3. Hard refresh the page.
 4. Check `/wp-json/nadlan/v1/healthcheck` for the new version and feature blocks.
+
+Before telling the owner to update, run `python scripts/verify-plugin-release.py <version>`.
+Never ship this plugin with ad-hoc Windows ZIP tooling.
 
 GitHub merge alone does not update production.
 
@@ -210,3 +232,42 @@ Owner manual standard:
    metabox/sidebar plus REST-writable fields.
 6. GitHub merge, plugin update, and field save are not final proof. The buyer-facing page and
    Chrome screenshots are the proof.
+
+## I. Template Readiness And Translation Gate
+
+Treat a flagship showroom as clone-ready only after two separate gates:
+
+1. **Technical base gate:** live healthcheck confirms the model, schema, payload API, unit editor,
+   lead payload, and mobile containment markers; visual QA passes at 1440, 768, 390 and Edge-mobile.
+2. **Sales-quality asset gate:** the project has approved facade/elevation/BIM material, real or
+   owner-approved inventory status, source-aware price wording, and a project-specific QA packet.
+
+Use `scripts/qa-project-template-gate.mjs` as the executable version of this rule. A project fails
+clone readiness if that script reports any blocker, even when the older structural showroom gate
+passes.
+
+Do not clone a project by copying rendered HTML from Rainbow. Clone the data contract:
+
+- `source-notes.md`
+- `unit-map.json`
+- `drawings.json`
+- `environment.json`
+- `showroom-payload.json`
+- model/facade/poster assets
+- QA screenshots and notes
+
+Start the data contract with:
+
+```bash
+node scripts/init-project-showroom.mjs <project-slug> --post-id <post-id>
+```
+
+Then replace placeholders with real sources and run the payload builder and validator. The starter
+folder is a scaffold, not a license to publish fake prices, fake availability or unapproved project
+art.
+
+Multilingual pages are not automatic. Before publishing `/en/`, `/fr/`, `/ru/` or other language
+versions, get an approved language architecture, create real equivalent content, and add `hreflang`
+only after each translated URL is live and accurate. Translation must preserve legal boundaries,
+price disclaimers, source labels and buyer-facing copy. Never let translated pages invent
+availability, financing terms, tax rates or official pricing.
