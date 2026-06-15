@@ -160,3 +160,8 @@ node scripts\qa-rainbow-postdeploy.mjs --version <VERSION> --out docs\qa\rainbow
 **Why it hurt:** the patch was technically loaded, but the buyer still saw a cropped showroom.
 **Rule:** for full-bleed mobile blocks inside constrained WordPress content, prefer midpoint centering: `left:50%; transform:translateX(-50%); width:calc(100vw - 28px);`.
 **Fix command:** run the live visual gate and inspect `rootRect`, not only `scrollWidth`.
+
+### M11 - Do not treat a theoretical CSS formula as verified
+**What happened:** v1.66.6 used midpoint centering, but relative positioning centered against the theme column, not the viewport, so the measured 390px crop stayed unchanged.
+**Why it hurt:** it burned another deploy cycle because the fix was plausible but not proven on the live geometry.
+**Rule:** when a visual bug is measured in pixels, patch the measured viewport first, then generalize only after the gate passes. For this case: phone-only `margin-left:-25px`, tablet untouched.
