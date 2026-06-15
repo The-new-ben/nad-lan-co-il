@@ -276,3 +276,23 @@ For every future project, create a project asset folder containing:
 The plugin should consume URLs and JSON only. Large raw modeling files should live outside the
 plugin ZIP and outside the WordPress plugin repository unless explicitly approved.
 
+## Template Readiness Rule
+
+Do not declare a project factory-ready just because one flagship renders.
+
+For a future project to be one-shot, the asset folder, CMS payload, public page, and QA report must
+all agree:
+
+- the model/poster/facade URLs exist and load;
+- the unit map includes availability, price wording, floor, rooms, sqm, view and selectable cell or
+  hotspot coordinates;
+- schema fields are filled from the same sourced facts shown on the page;
+- selected-unit CTAs carry the unit context into the lead journey;
+- mobile visual QA proves that the selector stays inside the viewport and the selected card does
+  not collapse the model;
+- any translated page is a real equivalent page, not a machine-generated shell.
+
+When official BIM is missing, the honest architecture is dual-mode: rotating model for emotion,
+facade/elevation cells for precise apartment selection. Do not fake 360-degree apartment picking
+unless the GLB contains separate apartment meshes or approved per-unit selection surfaces.
+

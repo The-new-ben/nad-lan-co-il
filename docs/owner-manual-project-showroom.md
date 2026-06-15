@@ -433,3 +433,34 @@ apartment-shaped cells or polygons that make the location of the apartment obvio
 Mobile check: open the page at 390px. Every apartment cell must be comfortable to tap, at least
 44px by 44px, and selecting a unit must show the apartment card without pushing the model out of
 view.
+
+## When To Clone Rainbow To The Next Project
+
+Rainbow is ready to clone only after the public page passes the live visual QA gate. Do not start a
+new project from a version that still has mobile crop, collapsed model stage, hidden apartment
+selection, or internal public wording.
+
+For the next project, prepare a project folder before touching WordPress:
+
+- `source-notes.md`
+- `model.glb` or approved model URL
+- `poster.webp` or `poster.png`
+- `unit-map.json`
+- `drawings.json`
+- `environment.json`
+- `showroom-payload.json`
+- `qa.md`
+
+The developer or contractor should provide, when possible:
+
+- official BIM/GLB or source model,
+- facade/elevation drawing,
+- available/reserved/sold inventory,
+- approved price or price-range wording,
+- floor plans and apartment plans,
+- approved video or tour,
+- sales phone, WhatsApp and email.
+
+If multilingual pages are needed, create them only after the Hebrew page is stable. English,
+French, Russian or other language pages need real translated content, matching source notes,
+matching legal disclaimers and a clear URL structure before `hreflang` is added.

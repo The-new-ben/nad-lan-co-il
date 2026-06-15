@@ -210,3 +210,28 @@ Owner manual standard:
    metabox/sidebar plus REST-writable fields.
 6. GitHub merge, plugin update, and field save are not final proof. The buyer-facing page and
    Chrome screenshots are the proof.
+
+## I. Template Readiness And Translation Gate
+
+Treat a flagship showroom as clone-ready only after two separate gates:
+
+1. **Technical base gate:** live healthcheck confirms the model, schema, payload API, unit editor,
+   lead payload, and mobile containment markers; visual QA passes at 1440, 768, 390 and Edge-mobile.
+2. **Sales-quality asset gate:** the project has approved facade/elevation/BIM material, real or
+   owner-approved inventory status, source-aware price wording, and a project-specific QA packet.
+
+Do not clone a project by copying rendered HTML from Rainbow. Clone the data contract:
+
+- `source-notes.md`
+- `unit-map.json`
+- `drawings.json`
+- `environment.json`
+- `showroom-payload.json`
+- model/facade/poster assets
+- QA screenshots and notes
+
+Multilingual pages are not automatic. Before publishing `/en/`, `/fr/`, `/ru/` or other language
+versions, get an approved language architecture, create real equivalent content, and add `hreflang`
+only after each translated URL is live and accurate. Translation must preserve legal boundaries,
+price disclaimers, source labels and buyer-facing copy. Never let translated pages invent
+availability, financing terms, tax rates or official pricing.
