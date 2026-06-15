@@ -174,6 +174,38 @@ After a PR is merged:
 
 GitHub merge alone does not update production.
 
+## F2. Rainbow Template v1 Control Gate
+
+Do not clone Rainbow into another project until the current control gate passes:
+
+`docs/2026-06-15-rainbow-template-v1-control-gate.md`
+
+This gate is stricter than "the plugin works." It requires the live buyer page to pass desktop,
+tablet, mobile and Edge-mobile visual QA, with a usable apartment-cell selector, no mobile crop,
+clean heading/body alignment, no internal public wording, working contact payload, verified media
+and a documented replication path. If a next project still requires editing `project-3d.php`, the
+template is not finished.
+
+## F3. Clone Readiness Rule
+
+Before writing another project page in this format, prove Rainbow is clone-ready with current live
+evidence:
+
+1. Run the visual QA harness at desktop, tablet, mobile and Edge-mobile.
+2. Verify the media layer separately: direct image URL returns 200, `og:image` exists, and the image
+   is visible in the rendered page.
+3. Verify public copy has no internal business language. The Rainbow page previously exposed a
+   phrase equivalent to "lead panel"; this is a public-copy failure even if the product logic works.
+4. Verify headings and paragraphs share the same visual column. A heading shifted to one side while
+   its paragraph starts elsewhere makes the article feel broken and is not acceptable for a
+   premium project page.
+5. Verify mobile after selecting an apartment. The scene must stay visible; the selected-card sheet
+   must not push the model out of view or leave only a few pixels of model height.
+6. Verify the next project can be created by filling the project showroom payload, not by changing
+   `project-3d.php`.
+
+If any item fails, keep working on Rainbow. Do not open a new project-production lane yet.
+
 ## H. 2026-06-14 Rainbow GLB Finish-Line Addendum
 
 For any project page that uses a GLB/model-viewer showroom, the live gate is buyer-rendered Chrome,
