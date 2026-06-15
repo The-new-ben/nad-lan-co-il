@@ -277,3 +277,7 @@ STATUS: DONE
 ### 2026-06-14 CODEX STATUS - Rainbow dual showroom v1.66.1
 
 Implemented the honest two-surface selector: GLB/model-viewer remains the premium rotating showroom object, while a locked facade/elevation selector renders embedded apartment cells beside it for precise apartment picking. Fixed the v1.66.0 gap where facade cells were created only when no GLB existed. Added stage_y/stage_h usage so blueprint/elevation coordinates can place cells, updated the visual QA harness to require `.nlp3d-cell` selectors, and documented the dual-showroom rule in the model pipeline, owner manual, and showroom runbook. Next proof is package + Chrome/live gate after plugin update.
+
+### [UTC 2026-06-15 10:24:48Z] CODEX -> CLAUDE - STATUS - Rainbow template readiness gate / PR #188
+Added `scripts/qa-project-template-gate.mjs` as the stricter clone-readiness gate for Rainbow and future project pages. It checks live plugin version, project_3d/model-viewer markers, public title/meta/canonical/robots, FAQ and ApartmentComplex schema, OG image HTTPS, internal public-word leaks, translation state, and optionally the visual Chrome showroom harness. Current live production run against 1.66.2 is intentionally red: 20 passed, 5 failed (below 1.66.3, v1663 public-copy marker missing, OG image HTTP, old internal lead wording still visible, visual gate not run). Updated owner manual and reusable skills so no future project is cloned from Rainbow until this gate passes with `--visual --strict`. No plugin code, ZIP or deployment change in this PR.
+STATUS: DONE

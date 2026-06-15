@@ -35,6 +35,27 @@ Important passing signals:
 This is a structural/render contract pass. It does not replace the visual/mobile gate. PR #187 still
 needs live deployment and visual QA for the 390px containment issue.
 
+## Template Gate Result
+
+Command:
+
+```bash
+node scripts/qa-project-template-gate.mjs --site https://nad-lan.co.il --slug rainbow-tel-aviv --post-id 4464 --out docs/qa/rainbow-template-gate-live-1662.json
+```
+
+Result against current live `1.66.2`: `20 passed / 5 failed`, `template_ready: false`.
+
+The failures are real and expected at this stage:
+
+- live plugin is below the v1.66.3 template gate;
+- `project_page_assembly.rainbow_public_copy_v1663` is not live yet;
+- `og:image` uses HTTP;
+- old public text still contains internal lead wording;
+- the visual Chrome gate was not run in that command.
+
+This is the correct state before PR #187 is deployed. Do not mark Rainbow clone-ready until this
+template gate passes with `--visual --strict` after the live update.
+
 ## Live SEO Extraction
 
 Rendered page extraction from public HTML:

@@ -368,6 +368,28 @@ This checks the live healthcheck, the public project page, one-H1 rule, model-vi
 hotspots, transaction-led SEO title/meta, public error leaks and the authenticated payload API when
 `WP_USER` / `WP_APP_PASSWORD` are set.
 
+### Template-Ready Gate
+
+Before using Rainbow as the source for the next project, run the stricter template gate:
+
+```powershell
+node scripts/qa-project-template-gate.mjs `
+  --site https://nad-lan.co.il `
+  --slug rainbow-tel-aviv `
+  --post-id 4464 `
+  --min-version 1.66.3 `
+  --visual `
+  --strict `
+  --out docs/qa/rainbow-template-gate-live.json
+```
+
+This gate checks more than saved fields. It verifies the live plugin version, model-viewer health,
+GLB/project markers, public title/meta/canonical/robots, FAQ and ApartmentComplex schema, OG image,
+internal wording leaks, translation state and the visual Chrome showroom harness.
+
+If the command fails, do not clone the project yet. Fix the failing items first, then rerun the
+same command and store the JSON output in `docs/qa/`.
+
 ## Classic Editor Question
 
 Classic Editor can make old metaboxes easier to see, but it should not be the long-term answer.
@@ -439,6 +461,16 @@ view.
 Rainbow is ready to clone only after the public page passes the live visual QA gate. Do not start a
 new project from a version that still has mobile crop, collapsed model stage, hidden apartment
 selection, or internal public wording.
+
+The exact clone gate is:
+
+```powershell
+node scripts/qa-project-template-gate.mjs --site https://nad-lan.co.il --slug rainbow-tel-aviv --post-id 4464 --min-version 1.66.3 --visual --strict
+```
+
+Passing the older structural gate alone is not enough. The stricter template gate must pass because
+it catches public-copy, OG-image, translation and visual-readiness issues that can still make a page
+look unfinished to a buyer or contractor.
 
 For the next project, prepare a project folder before touching WordPress:
 

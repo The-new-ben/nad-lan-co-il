@@ -52,6 +52,37 @@ Do not use Rainbow as the clone source for the next project until the post-deplo
    Edge-mobile;
 4. public copy contains no internal operations terms.
 
+## Executable Template Gate
+
+Use this command before Rainbow, or any future project, is declared ready to clone:
+
+```powershell
+node scripts/qa-project-template-gate.mjs `
+  --site https://nad-lan.co.il `
+  --slug rainbow-tel-aviv `
+  --post-id 4464 `
+  --min-version 1.66.3 `
+  --visual `
+  --strict `
+  --out docs/qa/rainbow-template-gate-live.json
+```
+
+For translation projects, add `--require-translations` only after real translated URLs exist.
+
+Current live production proof, before PR #187 is deployed: `docs/qa/rainbow-template-gate-live-1662.json`.
+It reports `20 passed / 5 failed`, so the page is **not template-ready yet**. The current blocking
+failures are exactly the expected ones:
+
+1. live plugin is still `1.66.2`, below the `1.66.3` template gate;
+2. `project_page_assembly.rainbow_public_copy_v1663` has not run on production;
+3. the OG image URL is HTTP instead of HTTPS;
+4. public text still contains internal lead wording from the old copy;
+5. the visual Chrome gate was not run in that command.
+
+This gate is intentionally stricter than the structural showroom gate. A project can be structurally
+healthy and still fail the template gate if the buyer-facing visual page, public copy or SEO asset
+quality is not ready.
+
 ## What Is Done Enough To Reuse
 
 | Capability | Clone rule |

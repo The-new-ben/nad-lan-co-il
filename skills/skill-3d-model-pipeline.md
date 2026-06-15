@@ -254,6 +254,10 @@ manually. The canonical contract is:
 - After import, run `node scripts/qa-project-showroom-live.mjs --strict` against the public URL.
   A project is not factory-complete until healthcheck, public HTML, model-viewer module loading,
   hotspots, one H1, title/meta intent and payload API checks are green.
+- Before cloning the project as a template, run the stricter template gate:
+  `node scripts/qa-project-template-gate.mjs --site <site> --slug <slug> --post-id <id> --min-version <version> --visual --strict`.
+  This catches the things the structural gate intentionally does not own: OG image quality, public
+  internal-word leaks, translation readiness, current plugin marker and the visual Chrome pass.
 
 `project_3d_drawings_json` may be either a flat array of material items or an object with an
 `items` array. `project_3d_environment_json` may be a flat array or a structured object with
@@ -296,3 +300,5 @@ When official BIM is missing, the honest architecture is dual-mode: rotating mod
 facade/elevation cells for precise apartment selection. Do not fake 360-degree apartment picking
 unless the GLB contains separate apartment meshes or approved per-unit selection surfaces.
 
+The template gate must be saved as a project artifact in `docs/qa/`. If it is red, the project can
+remain a prototype, but it is not a factory source for the next project.

@@ -163,6 +163,17 @@ Pass criteria:
 - floating buttons do not cover forms or footer,
 - schema contains visible FAQ-aligned data.
 
+Run the reusable template gate before declaring the project clone-ready:
+
+```bash
+node scripts/qa-project-template-gate.mjs --site <site> --slug <slug> --post-id <id> --min-version <version> --visual --strict
+```
+
+The template gate is stricter than the showroom structural gate. It must verify live plugin version,
+model-viewer health, GLB/project markers, public title/meta/canonical/robots, FAQ and
+ApartmentComplex schema, OG image, public-copy leaks, translation state and the visual Chrome
+showroom pass. Store its JSON output in `docs/qa/`.
+
 ## F. Deployment Reminder
 
 After a PR is merged:
@@ -219,6 +230,10 @@ Treat a flagship showroom as clone-ready only after two separate gates:
    lead payload, and mobile containment markers; visual QA passes at 1440, 768, 390 and Edge-mobile.
 2. **Sales-quality asset gate:** the project has approved facade/elevation/BIM material, real or
    owner-approved inventory status, source-aware price wording, and a project-specific QA packet.
+
+Use `scripts/qa-project-template-gate.mjs` as the executable version of this rule. A project fails
+clone readiness if that script reports any blocker, even when the older structural showroom gate
+passes.
 
 Do not clone a project by copying rendered HTML from Rainbow. Clone the data contract:
 
