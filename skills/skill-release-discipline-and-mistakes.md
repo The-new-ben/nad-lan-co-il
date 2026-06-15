@@ -154,3 +154,9 @@ For a visual-only live check:
 ```powershell
 node scripts\qa-rainbow-postdeploy.mjs --version <VERSION> --out docs\qa\rainbow-postdeploy-<VERSION>.json
 ```
+
+### M10 - Margin-based mobile containment can still inherit theme offset
+**What happened:** v1.66.5 tried to fix the Rainbow 390px crop with `margin-left: calc(50% - 50vw + 14px)`, but the live block theme still rendered the root at `x=39.5 width=362 right=401.5` on a 390px viewport.
+**Why it hurt:** the patch was technically loaded, but the buyer still saw a cropped showroom.
+**Rule:** for full-bleed mobile blocks inside constrained WordPress content, prefer midpoint centering: `left:50%; transform:translateX(-50%); width:calc(100vw - 28px);`.
+**Fix command:** run the live visual gate and inspect `rootRect`, not only `scrollWidth`.
