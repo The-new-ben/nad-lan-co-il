@@ -104,6 +104,7 @@ Every agent (Claude, Codex, Antigravity, Cowork) reads from here before acting a
 | `nadlan-config-plugin.md` | Plugin journey v1.0.0→v1.2.1; one-capability rule; lessons |
 | `codex-plugin-access-and-deploy.md` | **Complete deploy operator guide** — locations, links, the 9-step ship loop, obstacle→solution table, multi-agent etiquette. Start here to change the plugin. |
 | `plugin-auto-update.md` | PUC self-hosted JSON; ship workflow |
+| `plugin-release-preflight.md` | Mandatory package/version/ZIP safety gate before plugin update handoff |
 | `plugin-discipline.md` | Mandatory guards (function_exists, no Hebrew in activation, no mu-plugins) |
 | `theme-fork-decision.md` | Why we forked Twenty Twenty-Five instead of child theme |
 | `wordpress-content-types.md` | Page vs Post vs CPT decisions |

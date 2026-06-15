@@ -36,6 +36,7 @@ The contract layer. Identical on every site.
 | `honesty-statement.md` | DNA·DOC | **Core DNA.** No-flattery, cite-or-flag. Non-negotiable on every site. |
 | `security-public-repo.md` | DNA·DOC | What never goes in a public repo. |
 | `plugin-discipline.md` / `plugin-auto-update.md` | DNA·DOC | One-capability modules + self-hosted update channel. |
+| `plugin-release-preflight.md` | DNA·DOC | Required package/version/ZIP preflight before any plugin release handoff. |
 | `nadlan-config-plugin.md` | DNA·DOC | Plugin lessons (rename per site). |
 | `codex-plugin-access-and-deploy.md` | DNA·DOC | **The deploy pipeline operator guide** — how ANY agent (Codex/Claude/Cowork) changes the plugin and ships it live. Portable to every site (swap names/URLs). Read before touching plugin code. |
 

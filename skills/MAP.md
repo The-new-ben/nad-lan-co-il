@@ -57,6 +57,7 @@ Everything else is on-demand by category below.
 | ✅🟪 | `skills/nadlan-config-plugin.md` | Plugin lessons + one-capability-per-module rule + coding conventions | Before writing a new `inc/<module>.php` |
 | ✅🟪 | `skills/plugin-discipline.md` | What belongs in a plugin module vs the theme | Architectural decisions |
 | ✅🟪 | `skills/plugin-auto-update.md` | How the self-hosted update channel works (plugin-update-checker + manifest) | If the updater misbehaves |
+| ✅🟪 | `skills/plugin-release-preflight.md` | Mandatory package/version/ZIP safety gate using build-plugin-zip and verify-plugin-release | Before committing or handing off any plugin update |
 | ✅🟪 | `skills/SKILLS-TREE.md` | Sorts every skill + every code module into 6 portable DNA branches | When opening a NEW site in the network |
 
 ## 3. SEO + CONTENT ENGINE
