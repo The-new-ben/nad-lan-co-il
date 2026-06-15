@@ -341,11 +341,20 @@ Use this for the next project run:
      --payload assets/projects/<project-slug>/showroom-payload.json
    ```
 
-5. Review `<project-folder>/showroom-payload.json`. It must contain the `meta` object with all
+5. Before creating a real project folder for publication, run the factory smoke test once:
+
+   ```powershell
+   node scripts/qa-project-factory-smoke.mjs
+   ```
+
+   It creates a temporary showroom folder, builds and validates its payload, then deletes the
+   temporary folder. This proves the field/assets pipeline works without touching WordPress.
+
+6. Review `<project-folder>/showroom-payload.json`. It must contain the `meta` object with all
    allowed showroom fields.
-6. POST `showroom-payload.json` to the project-showroom route.
-7. Open the WordPress editor only for visual review and small corrections.
-8. Open the public page in Chrome and verify the model, markers, selected card and form.
+7. POST `showroom-payload.json` to the project-showroom route.
+8. Open the WordPress editor only for visual review and small corrections.
+9. Open the public page in Chrome and verify the model, markers, selected card and form.
 
 Rainbow reference payload:
 

@@ -284,6 +284,16 @@ The initializer creates only safe placeholders and refuses to overwrite an exist
 unit data, drawings, environment, price notes and source notes with sourced/developer-approved
 material before importing anything into WordPress.
 
+Before relying on the factory for a real project, run:
+
+```bash
+node scripts/qa-project-factory-smoke.mjs
+```
+
+This creates a temporary project folder, builds `showroom-payload.json`, validates it against the
+schema, checks that the expected scaffold files exist, and removes the temporary folder. If this
+smoke test is red, do not start the next Sde Dov project yet.
+
 The plugin should consume URLs and JSON only. Large raw modeling files should live outside the
 plugin ZIP and outside the WordPress plugin repository unless explicitly approved.
 
