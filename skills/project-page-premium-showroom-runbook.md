@@ -174,6 +174,18 @@ After a PR is merged:
 
 GitHub merge alone does not update production.
 
+## F2. Rainbow Template v1 Control Gate
+
+Do not clone Rainbow into another project until the current control gate passes:
+
+`docs/2026-06-15-rainbow-template-v1-control-gate.md`
+
+This gate is stricter than "the plugin works." It requires the live buyer page to pass desktop,
+tablet, mobile and Edge-mobile visual QA, with a usable apartment-cell selector, no mobile crop,
+clean heading/body alignment, no internal public wording, working contact payload, verified media
+and a documented replication path. If a next project still requires editing `project-3d.php`, the
+template is not finished.
+
 ## H. 2026-06-14 Rainbow GLB Finish-Line Addendum
 
 For any project page that uses a GLB/model-viewer showroom, the live gate is buyer-rendered Chrome,
