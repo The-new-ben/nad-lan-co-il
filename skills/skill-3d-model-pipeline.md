@@ -215,6 +215,32 @@ Mobile rule: selected-apartment details must be a controlled sheet or inline car
 without shrinking the model scene. Never let a selected card collapse the 3D stage height or appear
 off-screen.
 
+## 2026-06-15 Rainbow Template Lessons
+
+These are hard-won rules from the Rainbow recovery and must be applied before cloning the showroom
+to another project:
+
+- A working click handler is not enough. The cell must visually answer "where is this apartment in
+  the building?" before the user opens a card. If the marker reads as a floating label, pin, or dot,
+  the selector is not finished.
+- Keep the GLB and the facade selector as two coordinated surfaces until official apartment-level
+  BIM exists. The GLB gives product presence and rotation; the facade/elevation gives precise unit
+  selection. Do not discard the GLB, and do not pretend a massing GLB contains apartment geometry.
+- The selected-apartment card must not cover the cells the buyer needs to click. On desktop it
+  should dock away from the active facade; on mobile it should become a controlled sheet or inline
+  panel without collapsing the model stage.
+- Mobile crop fixes must be tested after all late inline CSS is applied. A JavaScript nudge such as
+  `--nlp3d-mobile-nudge` is useless if a later mobile rule sets `transform:none!important`.
+- Never let a selected state collapse the scene to a few pixels high. After selecting a unit, the
+  model/facade remains visible and the card appears beside or below it.
+- Public copy must not say internal words such as "lead panel", "funnel", "CRM", "paid placement" or
+  "monetization". Say "organized inquiry", "developer follow-up", "project contact request", or
+  similar buyer/contractor language.
+- If the hero/project image appears missing, verify both the rendered page and the direct media URL.
+  A 200 image URL plus a missing visual often means layout, cache, or placement, not deleted media.
+- Large GLB, video, original Blender files and raw contractor materials stay outside the plugin ZIP.
+  The plugin consumes URLs and sanitized JSON. The project factory owns the assets.
+
 ## CMS Owner Rule
 
 Do not make Classic Editor the long-term answer for finding showroom fields. It can be used as a
