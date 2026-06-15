@@ -127,6 +127,14 @@ You may not:
 
 If a task taught you something reusable (a Yoast quirk, a plugin conflict, an RTL gotcha, a SERP shift, a Cowork failure mode), that goes into the relevant skill. If a task only changed the site, that goes into `site-state.md`. If both, do both.
 
+## Rule: install local blockers, do not route around them
+
+In Codex desktop, assume local machine access is available. If a required local tool is missing
+(`gh`, Node package, browser helper, ZIP builder dependency), install it, verify it, and continue.
+If the blocker is owner-only (password, 2FA, paid subscription, private API key, legal/business
+approval), stop and give the owner one physical action. Do not keep producing indirect work while
+the real blocker remains.
+
 ## Rule: cross-reference, do not duplicate
 
 A skill that covers a topic also covered elsewhere should _link to the other skill_, not repeat its content. Single source of truth per topic. The cross-reference map:

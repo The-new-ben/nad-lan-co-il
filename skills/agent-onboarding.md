@@ -67,3 +67,11 @@ Cowork (with manual-click tools) can do several of these that a pure-REST agent 
 
 ---
 _Created 2026-05-29 by Claude Code (claude-opus-4-8) for the Cowork handoff._
+
+## Revision 2026-06-15 — Codex desktop access rule
+
+When running on the owner's desktop, first assume the machine and browser may already have the
+needed access. Use Chrome/in-app browser/UPress/WP-admin if the owner says the session is logged in.
+Do not answer "I cannot access it" until you have actually checked the browser state. If a local tool
+is missing, install it and verify it. If the blocker is a secret, 2FA prompt, paid purchase, or
+owner-only legal/business choice, stop and ask the owner for one exact physical action.

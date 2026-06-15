@@ -49,5 +49,14 @@ The 2026-05 brief uploaded by the owner cites Semrush IL data: keyword volumes, 
 
 Future agents adding to strategy or content: if you add a number, add a source line beside it. If you cannot, write "(inferred, needs source)" in plain text. Numbers without sources rot the brief.
 
+## Operational honesty rule
+
+Do not use a missing local tool as a reason to continue with weaker workaround work. In Codex
+desktop, install missing local tools when safe, verify the installation, and continue. If the
+blocker is owner-only (login secret, 2FA, paid purchase, private API key, legal/business approval),
+stop and ask for exactly one physical action. Be precise: "I need you to click X" or "I need the
+Mapbox token pasted into Y." Do not blur this into "no access" if the browser or machine already
+has access.
+
 ---
 _Last reviewed: 2026-05-28 — Claude Code (claude-opus-4-7)._

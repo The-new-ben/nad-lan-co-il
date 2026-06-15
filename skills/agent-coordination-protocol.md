@@ -90,3 +90,11 @@ When the owner uploads files via UPress's file manager (rather than UPress Git),
 - Page count and a few page content lengths haven't changed.
 
 Document findings in `site-state.md`.
+
+## Revision 2026-06-15 — Tool/auth blocker protocol
+
+Do not continue around a real blocker. If it is local and installable, install it and verify it. If
+it is owner-only (password, 2FA, paid account, private API key, legal/business approval), stop and
+ask the owner for one physical action. In Codex desktop, use the owner's logged-in browser session
+when the owner says it is available, and verify with screenshots or live checks instead of assuming
+no access.

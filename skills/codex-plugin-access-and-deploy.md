@@ -295,3 +295,16 @@ git add -A && git commit -m "v$NEW ..." && git push -u origin ship/$NEW
 - 2026-06-02 — Created (Claude). Pipeline as of plugin v1.34.0: WooCommerce + Green
   Invoice payments, directory/reviews/lead-ledger/ai-concierge modules live. Auto-update
   via vendored plugin-update-checker reading the manifest on `main`.
+
+## Revision 2026-06-15 — Codex desktop access + blocker rule
+
+The older text says agents have no WP-admin/UPress access. That is not always true in Codex desktop.
+When the owner says the browser is logged in, first check and use the logged-in browser carefully.
+If a local tool is missing (`gh`, Node helper, ZIP dependency), install it, verify `--version`, and
+continue. If a step needs a password, 2FA, private key, paid purchase, or legal/business decision,
+stop and give the owner one exact physical action. Do not produce more workaround work while the
+real blocker remains.
+
+Current deploy definition: code is not live until `main` has the ZIP/manifest, the server Git copy is
+synced if needed, WordPress installs the new `nadlan-config` version, cache is cleared, and the live
+healthcheck reports that exact version.

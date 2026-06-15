@@ -12,6 +12,11 @@
 
 The single most expensive recurring confusion: **pushing/merging code is not deploying it.**
 
+- **Assume local operator access in Codex desktop.** If a local tool is missing, install it,
+  verify it, and continue. Use the logged-in Chrome/WordPress/UPress browser when the owner says
+  it is available. Stop only for owner-only secrets, 2FA, paid purchases, or legal/business
+  decisions, and then give exactly one physical action.
+
 - The live site updates **only** when WordPress installs the new plugin ZIP (auto-updater notice → Update, or manual upload). Until then, `main` can be 5 versions ahead and **buyers see none of it**.
 - **Definition of Done = deployed AND verified live**, not "pushed" / "PR open" / "ZIP built".
 - Always state two versions separately: **git/main version** and **live healthcheck version** (`/wp-json/nadlan/v1/healthcheck` → `version`). If they differ, the task is **not done** — the next action is *deploy*, not more code.
@@ -82,6 +87,15 @@ EOF
 **Fix command:**
 ```bash
 grep -R "skill-release-discipline-and-mistakes" skills/README.md skills/MAP.md skills/SKILLS-TREE.md
+```
+
+### M10 — Hiding behind missing tools or expired auth
+**What happened:** the agent said a tool was missing or a connector token was expired, then kept producing indirect work instead of fixing the blocker or asking the owner for one exact action.
+**Rule:** if a required local tool is missing and can be installed safely, install it and verify it. If the blocker requires owner action, stop and say one physical step the owner must do. Do not continue with workaround work that can cause more confusion.
+**Fix command:**
+```bash
+command -v gh || winget install --id GitHub.cli -e --source winget --accept-source-agreements --accept-package-agreements
+gh auth status
 ```
 
 ---
