@@ -414,6 +414,22 @@ The work is done only when the public buyer page shows:
 - non-binding price wording,
 - Chrome screenshots proving the rendered result.
 
+## Mobile Containment And Public Copy Check
+
+Before cloning Rainbow into another project, run the visual QA at 390px and Edge mobile. A passing
+project must keep the whole showroom inside the viewport before and after an apartment is selected.
+If the model scene becomes only a few pixels tall after a click, the selected-apartment card is
+collapsing the product view and the page is not ready.
+
+Public project pages must not use internal operations words. Avoid terms such as lead panel,
+funnel, CRM, monetization, paid placement, or similar back-office language. The buyer-facing words
+are inquiry, project contact, selected apartment, availability check, developer follow-up, and
+non-binding purchase check.
+
+The durable content fix is always the WordPress project body. A plugin seed may clean an old
+Rainbow phrase once, but future project pages should be written correctly in the source content
+before publication.
+
 ## Apartment Cells, Not Dots
 
 The public selector should look like apartments on the building.

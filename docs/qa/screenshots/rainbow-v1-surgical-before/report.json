@@ -1,0 +1,634 @@
+{
+  "site": "https://nad-lan.co.il",
+  "slug": "rainbow-tel-aviv",
+  "generated_at": "2026-06-15T09:49:30.005Z",
+  "out_dir": "docs/qa/screenshots/rainbow-v1-surgical-before",
+  "summary": {
+    "passed": 0,
+    "failed": 4
+  },
+  "viewports": [
+    {
+      "name": "desktop-1440",
+      "screenshot": "C:\\Users\\pro\\Documents\\websites\\.codex-tmp\\nadlan-rainbow-v1-surgical\\docs\\qa\\screenshots\\rainbow-v1-surgical-before\\desktop-1440.png",
+      "before": {
+        "title": "דירות למכירה ב-Rainbow תל אביב | מחירים, תוכניות ובחירת דירה בשדה דב | נדלן חכם",
+        "url": "https://nad-lan.co.il/projects/rainbow-tel-aviv/?cb=1781516937656-desktop-1440",
+        "viewport": {
+          "width": 1440,
+          "height": 1000
+        },
+        "scroll": {
+          "x": 1425,
+          "client": 1425,
+          "overflow": 0
+        },
+        "h1s": [
+          "Rainbow Tel Aviv – ריינבו תל אביב"
+        ],
+        "rootRect": {
+          "x": 6.5,
+          "y": -0.2,
+          "width": 1412,
+          "height": 3207.7,
+          "right": 1418.5,
+          "bottom": 3207.4
+        },
+        "stageRect": {
+          "x": 25.5,
+          "y": 18.8,
+          "width": 1374,
+          "height": 640,
+          "right": 1399.5,
+          "bottom": 658.8
+        },
+        "sceneRect": {
+          "x": 25.5,
+          "y": 18.8,
+          "width": 1374,
+          "height": 640,
+          "right": 1399.5,
+          "bottom": 658.8
+        },
+        "cardRect": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0,
+          "right": 0,
+          "bottom": 0
+        },
+        "cardHidden": true,
+        "pickCount": 6,
+        "cellCount": 6,
+        "dualShowroom": true,
+        "facadeSelect": false,
+        "activePressedCount": 1,
+        "recommendedPickCount": 2,
+        "firstPickCenter": {
+          "x": 1187,
+          "y": 487
+        },
+        "modelViewerDefined": true,
+        "modelViewerCount": 1,
+        "ownerFormVisible": true,
+        "leadFormVisible": true,
+        "tapTargets": {
+          "count": 16,
+          "min": 48.3
+        },
+        "textSignals": {
+          "hasBuyerCta": false,
+          "hasNonBindingPurchase": true,
+          "hasOwnerCta": true,
+          "hasInternalWords": true
+        },
+        "errors": []
+      },
+      "after": {
+        "title": "דירות למכירה ב-Rainbow תל אביב | מחירים, תוכניות ובחירת דירה בשדה דב | נדלן חכם",
+        "url": "https://nad-lan.co.il/projects/rainbow-tel-aviv/?cb=1781516937656-desktop-1440",
+        "viewport": {
+          "width": 1440,
+          "height": 1000
+        },
+        "scroll": {
+          "x": 1425,
+          "client": 1425,
+          "overflow": 0
+        },
+        "h1s": [
+          "Rainbow Tel Aviv – ריינבו תל אביב"
+        ],
+        "rootRect": {
+          "x": 6.5,
+          "y": -0.2,
+          "width": 1412,
+          "height": 3207.7,
+          "right": 1418.5,
+          "bottom": 3207.4
+        },
+        "stageRect": {
+          "x": 25.5,
+          "y": 18.8,
+          "width": 1374,
+          "height": 640,
+          "right": 1399.5,
+          "bottom": 658.8
+        },
+        "sceneRect": {
+          "x": 25.5,
+          "y": 18.8,
+          "width": 1374,
+          "height": 640,
+          "right": 1399.5,
+          "bottom": 658.8
+        },
+        "cardRect": {
+          "x": 991.5,
+          "y": 261.8,
+          "width": 390,
+          "height": 379,
+          "right": 1381.5,
+          "bottom": 640.8
+        },
+        "cardHidden": false,
+        "pickCount": 6,
+        "cellCount": 6,
+        "dualShowroom": true,
+        "facadeSelect": false,
+        "activePressedCount": 1,
+        "recommendedPickCount": 2,
+        "firstPickCenter": {
+          "x": 1187,
+          "y": 487
+        },
+        "modelViewerDefined": true,
+        "modelViewerCount": 1,
+        "ownerFormVisible": true,
+        "leadFormVisible": true,
+        "tapTargets": {
+          "count": 19,
+          "min": 48.3
+        },
+        "textSignals": {
+          "hasBuyerCta": false,
+          "hasNonBindingPurchase": true,
+          "hasOwnerCta": true,
+          "hasInternalWords": true
+        },
+        "errors": []
+      },
+      "failures": [
+        "public text contains internal wording"
+      ]
+    },
+    {
+      "name": "tablet-768",
+      "screenshot": "C:\\Users\\pro\\Documents\\websites\\.codex-tmp\\nadlan-rainbow-v1-surgical\\docs\\qa\\screenshots\\rainbow-v1-surgical-before\\tablet-768.png",
+      "before": {
+        "title": "דירות למכירה ב-Rainbow תל אביב | מחירים, תוכניות ובחירת דירה בשדה דב | נדלן חכם",
+        "url": "https://nad-lan.co.il/projects/rainbow-tel-aviv/?cb=1781516947874-tablet-768",
+        "viewport": {
+          "width": 768,
+          "height": 1000
+        },
+        "scroll": {
+          "x": 753,
+          "client": 753,
+          "overflow": 0
+        },
+        "h1s": [
+          "Rainbow Tel Aviv – ריינבו תל אביב"
+        ],
+        "rootRect": {
+          "x": 6.5,
+          "y": -0.3,
+          "width": 740,
+          "height": 3826.6,
+          "right": 746.5,
+          "bottom": 3826.3
+        },
+        "stageRect": {
+          "x": 25.5,
+          "y": 18.7,
+          "width": 702,
+          "height": 420,
+          "right": 727.5,
+          "bottom": 438.7
+        },
+        "sceneRect": {
+          "x": 25.5,
+          "y": 18.7,
+          "width": 702,
+          "height": 420,
+          "right": 727.5,
+          "bottom": 438.7
+        },
+        "cardRect": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0,
+          "right": 0,
+          "bottom": 0
+        },
+        "cardHidden": true,
+        "pickCount": 6,
+        "cellCount": 6,
+        "dualShowroom": true,
+        "facadeSelect": false,
+        "activePressedCount": 1,
+        "recommendedPickCount": 2,
+        "firstPickCenter": {
+          "x": 601,
+          "y": 329
+        },
+        "modelViewerDefined": true,
+        "modelViewerCount": 1,
+        "ownerFormVisible": true,
+        "leadFormVisible": true,
+        "tapTargets": {
+          "count": 16,
+          "min": 44
+        },
+        "textSignals": {
+          "hasBuyerCta": false,
+          "hasNonBindingPurchase": true,
+          "hasOwnerCta": true,
+          "hasInternalWords": true
+        },
+        "errors": []
+      },
+      "after": {
+        "title": "דירות למכירה ב-Rainbow תל אביב | מחירים, תוכניות ובחירת דירה בשדה דב | נדלן חכם",
+        "url": "https://nad-lan.co.il/projects/rainbow-tel-aviv/?cb=1781516947874-tablet-768",
+        "viewport": {
+          "width": 768,
+          "height": 1000
+        },
+        "scroll": {
+          "x": 753,
+          "client": 753,
+          "overflow": 0
+        },
+        "h1s": [
+          "Rainbow Tel Aviv – ריינבו תל אביב"
+        ],
+        "rootRect": {
+          "x": 6.5,
+          "y": -0.3,
+          "width": 740,
+          "height": 3826.6,
+          "right": 746.5,
+          "bottom": 3826.3
+        },
+        "stageRect": {
+          "x": 25.5,
+          "y": 18.7,
+          "width": 702,
+          "height": 420,
+          "right": 727.5,
+          "bottom": 438.7
+        },
+        "sceneRect": {
+          "x": 25.5,
+          "y": 18.7,
+          "width": 702,
+          "height": 420,
+          "right": 727.5,
+          "bottom": 438.7
+        },
+        "cardRect": {
+          "x": 319.5,
+          "y": 48.4,
+          "width": 390,
+          "height": 372.3,
+          "right": 709.5,
+          "bottom": 420.7
+        },
+        "cardHidden": false,
+        "pickCount": 6,
+        "cellCount": 6,
+        "dualShowroom": true,
+        "facadeSelect": false,
+        "activePressedCount": 1,
+        "recommendedPickCount": 2,
+        "firstPickCenter": {
+          "x": 601,
+          "y": 329
+        },
+        "modelViewerDefined": true,
+        "modelViewerCount": 1,
+        "ownerFormVisible": true,
+        "leadFormVisible": true,
+        "tapTargets": {
+          "count": 19,
+          "min": 44
+        },
+        "textSignals": {
+          "hasBuyerCta": false,
+          "hasNonBindingPurchase": true,
+          "hasOwnerCta": true,
+          "hasInternalWords": true
+        },
+        "errors": []
+      },
+      "failures": [
+        "public text contains internal wording"
+      ]
+    },
+    {
+      "name": "mobile-390",
+      "screenshot": "C:\\Users\\pro\\Documents\\websites\\.codex-tmp\\nadlan-rainbow-v1-surgical\\docs\\qa\\screenshots\\rainbow-v1-surgical-before\\mobile-390.png",
+      "before": {
+        "title": "דירות למכירה ב-Rainbow תל אביב | מחירים, תוכניות ובחירת דירה בשדה דב | נדלן חכם",
+        "url": "https://nad-lan.co.il/projects/rainbow-tel-aviv/?cb=1781516954629-mobile-390",
+        "viewport": {
+          "width": 390,
+          "height": 900
+        },
+        "scroll": {
+          "x": 390,
+          "client": 390,
+          "overflow": 0
+        },
+        "h1s": [
+          "Rainbow Tel Aviv – ריינבו תל אביב"
+        ],
+        "rootRect": {
+          "x": 183.5,
+          "y": 83.8,
+          "width": 362,
+          "height": 5597.5,
+          "right": 545.5,
+          "bottom": 5681.4
+        },
+        "stageRect": {
+          "x": 194.5,
+          "y": 94.8,
+          "width": 340,
+          "height": 560,
+          "right": 534.5,
+          "bottom": 654.8
+        },
+        "sceneRect": {
+          "x": 194.5,
+          "y": 148.8,
+          "width": 340,
+          "height": 483.6,
+          "right": 534.5,
+          "bottom": 632.4
+        },
+        "cardRect": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0,
+          "right": 0,
+          "bottom": 0
+        },
+        "cardHidden": true,
+        "pickCount": 6,
+        "cellCount": 6,
+        "dualShowroom": true,
+        "facadeSelect": false,
+        "activePressedCount": 1,
+        "recommendedPickCount": 2,
+        "firstPickCenter": {
+          "x": 364,
+          "y": 572
+        },
+        "modelViewerDefined": true,
+        "modelViewerCount": 1,
+        "ownerFormVisible": true,
+        "leadFormVisible": true,
+        "tapTargets": {
+          "count": 16,
+          "min": 44
+        },
+        "textSignals": {
+          "hasBuyerCta": false,
+          "hasNonBindingPurchase": true,
+          "hasOwnerCta": true,
+          "hasInternalWords": true
+        },
+        "errors": []
+      },
+      "after": {
+        "title": "דירות למכירה ב-Rainbow תל אביב | מחירים, תוכניות ובחירת דירה בשדה דב | נדלן חכם",
+        "url": "https://nad-lan.co.il/projects/rainbow-tel-aviv/?cb=1781516954629-mobile-390",
+        "viewport": {
+          "width": 390,
+          "height": 900
+        },
+        "scroll": {
+          "x": 390,
+          "client": 390,
+          "overflow": 0
+        },
+        "h1s": [
+          "Rainbow Tel Aviv – ריינבו תל אביב"
+        ],
+        "rootRect": {
+          "x": 183.5,
+          "y": 83.8,
+          "width": 362,
+          "height": 5817.5,
+          "right": 545.5,
+          "bottom": 5901.4
+        },
+        "stageRect": {
+          "x": 194.5,
+          "y": 94.8,
+          "width": 340,
+          "height": 780,
+          "right": 534.5,
+          "bottom": 874.8
+        },
+        "sceneRect": {
+          "x": 194.5,
+          "y": 228.8,
+          "width": 340,
+          "height": 2,
+          "right": 534.5,
+          "bottom": 230.8
+        },
+        "cardRect": {
+          "x": 10,
+          "y": 768,
+          "width": 370,
+          "height": 522,
+          "right": 380,
+          "bottom": 1290
+        },
+        "cardHidden": false,
+        "pickCount": 6,
+        "cellCount": 6,
+        "dualShowroom": true,
+        "facadeSelect": false,
+        "activePressedCount": 1,
+        "recommendedPickCount": 2,
+        "firstPickCenter": {
+          "x": 364,
+          "y": 264
+        },
+        "modelViewerDefined": true,
+        "modelViewerCount": 1,
+        "ownerFormVisible": true,
+        "leadFormVisible": true,
+        "tapTargets": {
+          "count": 19,
+          "min": 44
+        },
+        "textSignals": {
+          "hasBuyerCta": false,
+          "hasNonBindingPurchase": true,
+          "hasOwnerCta": true,
+          "hasInternalWords": true
+        },
+        "errors": []
+      },
+      "failures": [
+        "showroom cropped on mobile/tablet: {\"x\":183.5,\"y\":83.8,\"width\":362,\"height\":5817.5,\"right\":545.5,\"bottom\":5901.4}",
+        "public text contains internal wording"
+      ]
+    },
+    {
+      "name": "edge-mobile-390",
+      "screenshot": "C:\\Users\\pro\\Documents\\websites\\.codex-tmp\\nadlan-rainbow-v1-surgical\\docs\\qa\\screenshots\\rainbow-v1-surgical-before\\edge-mobile-390.png",
+      "before": {
+        "title": "דירות למכירה ב-Rainbow תל אביב | מחירים, תוכניות ובחירת דירה בשדה דב | נדלן חכם",
+        "url": "https://nad-lan.co.il/projects/rainbow-tel-aviv/?cb=1781516961041-edge-mobile-390",
+        "viewport": {
+          "width": 390,
+          "height": 900
+        },
+        "scroll": {
+          "x": 390,
+          "client": 390,
+          "overflow": 0
+        },
+        "h1s": [
+          "Rainbow Tel Aviv – ריינבו תל אביב"
+        ],
+        "rootRect": {
+          "x": 183.5,
+          "y": 83.8,
+          "width": 362,
+          "height": 5597.5,
+          "right": 545.5,
+          "bottom": 5681.4
+        },
+        "stageRect": {
+          "x": 194.5,
+          "y": 94.8,
+          "width": 340,
+          "height": 560,
+          "right": 534.5,
+          "bottom": 654.8
+        },
+        "sceneRect": {
+          "x": 194.5,
+          "y": 148.8,
+          "width": 340,
+          "height": 483.6,
+          "right": 534.5,
+          "bottom": 632.4
+        },
+        "cardRect": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0,
+          "right": 0,
+          "bottom": 0
+        },
+        "cardHidden": true,
+        "pickCount": 6,
+        "cellCount": 6,
+        "dualShowroom": true,
+        "facadeSelect": false,
+        "activePressedCount": 1,
+        "recommendedPickCount": 2,
+        "firstPickCenter": {
+          "x": 364,
+          "y": 572
+        },
+        "modelViewerDefined": true,
+        "modelViewerCount": 1,
+        "ownerFormVisible": true,
+        "leadFormVisible": true,
+        "tapTargets": {
+          "count": 16,
+          "min": 44
+        },
+        "textSignals": {
+          "hasBuyerCta": false,
+          "hasNonBindingPurchase": true,
+          "hasOwnerCta": true,
+          "hasInternalWords": true
+        },
+        "errors": []
+      },
+      "after": {
+        "title": "דירות למכירה ב-Rainbow תל אביב | מחירים, תוכניות ובחירת דירה בשדה דב | נדלן חכם",
+        "url": "https://nad-lan.co.il/projects/rainbow-tel-aviv/?cb=1781516961041-edge-mobile-390",
+        "viewport": {
+          "width": 390,
+          "height": 900
+        },
+        "scroll": {
+          "x": 390,
+          "client": 390,
+          "overflow": 0
+        },
+        "h1s": [
+          "Rainbow Tel Aviv – ריינבו תל אביב"
+        ],
+        "rootRect": {
+          "x": 183.5,
+          "y": 83.8,
+          "width": 362,
+          "height": 5817.5,
+          "right": 545.5,
+          "bottom": 5901.4
+        },
+        "stageRect": {
+          "x": 194.5,
+          "y": 94.8,
+          "width": 340,
+          "height": 780,
+          "right": 534.5,
+          "bottom": 874.8
+        },
+        "sceneRect": {
+          "x": 194.5,
+          "y": 228.8,
+          "width": 340,
+          "height": 2,
+          "right": 534.5,
+          "bottom": 230.8
+        },
+        "cardRect": {
+          "x": 10,
+          "y": 768,
+          "width": 370,
+          "height": 522,
+          "right": 380,
+          "bottom": 1290
+        },
+        "cardHidden": false,
+        "pickCount": 6,
+        "cellCount": 6,
+        "dualShowroom": true,
+        "facadeSelect": false,
+        "activePressedCount": 1,
+        "recommendedPickCount": 2,
+        "firstPickCenter": {
+          "x": 364,
+          "y": 264
+        },
+        "modelViewerDefined": true,
+        "modelViewerCount": 1,
+        "ownerFormVisible": true,
+        "leadFormVisible": true,
+        "tapTargets": {
+          "count": 19,
+          "min": 44
+        },
+        "textSignals": {
+          "hasBuyerCta": false,
+          "hasNonBindingPurchase": true,
+          "hasOwnerCta": true,
+          "hasInternalWords": true
+        },
+        "errors": []
+      },
+      "failures": [
+        "showroom cropped on mobile/tablet: {\"x\":183.5,\"y\":83.8,\"width\":362,\"height\":5817.5,\"right\":545.5,\"bottom\":5901.4}",
+        "public text contains internal wording"
+      ]
+    }
+  ]
+}

@@ -228,6 +228,51 @@ if ( ! function_exists( 'nadlan_project_page_seed_rainbow_v1634' ) ) {
 }
 add_action( 'init', 'nadlan_project_page_seed_rainbow_v1634', 31 );
 
+if ( ! function_exists( 'nadlan_project_page_seed_rainbow_public_copy_v1663' ) ) {
+	function nadlan_project_page_seed_rainbow_public_copy_v1663() {
+		if ( get_option( 'nadlan_rainbow_public_copy_v1663' ) ) {
+			return;
+		}
+		$post = nadlan_project_page_find_by_slug( 'rainbow-tel-aviv' );
+		if ( ! $post ) {
+			return;
+		}
+
+		$content = (string) $post->post_content;
+		$updated = str_replace(
+			array(
+				'כל לחיצה על דירה, צפייה במבט, בקשת תוכנית או בדיקת רכישה יכולה להיכנס לפאנל הלידים במקום להיעלם בשיחת WhatsApp לא מתועדת.',
+				'כל לחיצה על דירה, צפייה במבט, בקשת תוכנית או בדיקת רכישה יכולה להיכנס לפאנל לידים במקום להיעלם בשיחה שלא נשמרת.',
+				'כל לחיצה על דירה, צפייה במבט, בקשת תוכנית או בדיקת רכישה יכולה להיכנס לפאנל הלידים במקום להיעלם בשיחה שלא נשמרת.',
+				'פאנל הלידים',
+				'פאנל לידים',
+				'לידים',
+			),
+			array(
+				'כל לחיצה על דירה, צפייה במבט, בקשת תוכנית או בדיקת רכישה יכולה להפוך לפנייה מסודרת עם הקשר מלא, במקום להיעלם בשיחה שלא נשמרת.',
+				'כל לחיצה על דירה, צפייה במבט, בקשת תוכנית או בדיקת רכישה יכולה להפוך לפנייה מסודרת עם הקשר מלא, במקום להיעלם בשיחה שלא נשמרת.',
+				'כל לחיצה על דירה, צפייה במבט, בקשת תוכנית או בדיקת רכישה יכולה להפוך לפנייה מסודרת עם הקשר מלא, במקום להיעלם בשיחה שלא נשמרת.',
+				'מרכז הפניות',
+				'מרכז פניות',
+				'פניות',
+			),
+			$content
+		);
+
+		if ( $updated !== $content ) {
+			wp_update_post(
+				array(
+					'ID'           => (int) $post->ID,
+					'post_content' => $updated,
+				)
+			);
+		}
+
+		update_option( 'nadlan_rainbow_public_copy_v1663', time(), false );
+	}
+}
+add_action( 'init', 'nadlan_project_page_seed_rainbow_public_copy_v1663', 33 );
+
 if ( ! function_exists( 'nadlan_project_page_fetch_rainbow_asset_json' ) ) {
 	function nadlan_project_page_fetch_rainbow_asset_json( $url ) {
 		$response = wp_remote_get(
@@ -309,6 +354,7 @@ add_filter( 'nadlan_config_healthcheck', function ( $out ) {
 		'rainbow_id'         => $post ? (int) $post->ID : 0,
 		'rainbow_seed'       => (bool) get_option( 'nadlan_rainbow_seed_v1610' ),
 		'rainbow_seo_v1634'  => (bool) get_option( 'nadlan_rainbow_seo_v1634' ),
+		'rainbow_public_copy_v1663' => (bool) get_option( 'nadlan_rainbow_public_copy_v1663' ),
 		'rainbow_showroom_v1635' => (bool) get_option( 'nadlan_rainbow_showroom_v1635' ),
 		'faq_meta'           => $post ? ( get_post_meta( (int) $post->ID, 'project_faq_json', true ) !== '' ) : false,
 		'price_meta'         => $post ? ( get_post_meta( (int) $post->ID, 'price_range', true ) !== '' ) : false,
