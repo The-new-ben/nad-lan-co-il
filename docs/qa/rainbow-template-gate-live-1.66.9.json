@@ -1,0 +1,233 @@
+{
+  "generated_at": "2026-06-15T18:07:14.420Z",
+  "site": "https://nad-lan.co.il",
+  "slug": "rainbow-tel-aviv",
+  "post_id": 4464,
+  "min_version": "1.66.9",
+  "strict": true,
+  "require_translations": false,
+  "checks": [
+    {
+      "ok": true,
+      "name": "plugin version meets template gate",
+      "detail": "1.66.9 >= 1.66.9",
+      "severity": "blocker"
+    },
+    {
+      "ok": true,
+      "name": "model-viewer health marker is ready",
+      "detail": "",
+      "severity": "blocker"
+    },
+    {
+      "ok": true,
+      "name": "model-viewer module tag marker is ready",
+      "detail": "",
+      "severity": "blocker"
+    },
+    {
+      "ok": true,
+      "name": "at least one project has a GLB",
+      "detail": "",
+      "severity": "blocker"
+    },
+    {
+      "ok": true,
+      "name": "dual GLB plus embedded facade selector is live",
+      "detail": "",
+      "severity": "blocker"
+    },
+    {
+      "ok": true,
+      "name": "apartment-cell selector marker is live",
+      "detail": "",
+      "severity": "blocker"
+    },
+    {
+      "ok": true,
+      "name": "payload and REST showroom contract is live",
+      "detail": "",
+      "severity": "blocker"
+    },
+    {
+      "ok": true,
+      "name": "owner unit builder is live",
+      "detail": "",
+      "severity": "blocker"
+    },
+    {
+      "ok": true,
+      "name": "Rainbow public-copy cleanup v1.66.3 has run",
+      "detail": "healthcheck project_page_assembly.rainbow_public_copy_v1663",
+      "severity": "blocker"
+    },
+    {
+      "ok": true,
+      "name": "exactly one visible H1",
+      "detail": "1: Rainbow Tel Aviv - ריינבו תל אביב",
+      "severity": "blocker"
+    },
+    {
+      "ok": true,
+      "name": "title is transaction-led and project-specific",
+      "detail": "דירות למכירה ב-Rainbow תל אביב | מחירים, תוכניות ובחירת דירה בשדה דב | נדלן חכם",
+      "severity": "blocker"
+    },
+    {
+      "ok": true,
+      "name": "meta description length is search-friendly",
+      "detail": "145 chars",
+      "severity": "blocker"
+    },
+    {
+      "ok": true,
+      "name": "meta description has price or sale intent",
+      "detail": "Rainbow Tel Aviv - ריינבו תל אביב בשדה דב: מחירים מדווחים ואומדן לא מחייב, בחירת דירה בתלת ממד, תוכניות, מבט מהדירה וליווי בדיקה לפני פנייה ליזם.",
+      "severity": "blocker"
+    },
+    {
+      "ok": true,
+      "name": "canonical is self-referencing",
+      "detail": "https://nad-lan.co.il/projects/rainbow-tel-aviv/",
+      "severity": "blocker"
+    },
+    {
+      "ok": true,
+      "name": "robots allows index/follow",
+      "detail": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1",
+      "severity": "blocker"
+    },
+    {
+      "ok": true,
+      "name": "FAQPage schema exists",
+      "detail": "",
+      "severity": "blocker"
+    },
+    {
+      "ok": true,
+      "name": "ApartmentComplex schema exists",
+      "detail": "",
+      "severity": "blocker"
+    },
+    {
+      "ok": true,
+      "name": "OG image exists",
+      "detail": "https://raw.githubusercontent.com/The-new-ben/nad-lan-co-il/main/assets/projects/rainbow-tel-aviv/rainbow-showroom-hero-v1664.jpg",
+      "severity": "blocker"
+    },
+    {
+      "ok": true,
+      "name": "OG image uses HTTPS",
+      "detail": "https://raw.githubusercontent.com/The-new-ben/nad-lan-co-il/main/assets/projects/rainbow-tel-aviv/rainbow-showroom-hero-v1664.jpg",
+      "severity": "major"
+    },
+    {
+      "ok": true,
+      "name": "no PHP error leak in HTML",
+      "detail": "",
+      "severity": "blocker"
+    },
+    {
+      "ok": true,
+      "name": "no obvious visible code/class leak",
+      "detail": "",
+      "severity": "blocker"
+    },
+    {
+      "ok": true,
+      "name": "no mojibake/replacement characters",
+      "detail": "",
+      "severity": "blocker"
+    },
+    {
+      "ok": true,
+      "name": "public visible text has no internal operations words",
+      "detail": "",
+      "severity": "blocker"
+    },
+    {
+      "ok": true,
+      "name": "hreflang absent until real translated pages exist",
+      "detail": "0 alternates",
+      "severity": "info"
+    },
+    {
+      "ok": true,
+      "name": "visual Chrome showroom gate passes",
+      "detail": "exit 0; out docs\\qa\\screenshots\\rainbow-tel-aviv-template-gate-visual",
+      "severity": "blocker"
+    }
+  ],
+  "live": {
+    "version": "1.66.9",
+    "project_3d": {
+      "model_viewer_ready": true,
+      "model_viewer_module_tag": true,
+      "model_viewer_reveal": "auto",
+      "model_viewer_loading": "auto",
+      "dual_showroom_v1661": true,
+      "embedded_selector_with_glb_v1661": true,
+      "apartment_cell_selector_v1655": true,
+      "mobile_cell_polish_v1656": true,
+      "projects_with_glb": 1,
+      "showroom_payload_api_v1652": true,
+      "admin_unit_builder_v1650": true,
+      "rest_showroom_fields_v1651": true
+    },
+    "assembly": {
+      "rainbow_id": 4464,
+      "rainbow_seo_v1634": true,
+      "rainbow_showroom_v1635": true,
+      "rainbow_public_copy_v1663": true,
+      "faq_meta": true,
+      "price_meta": true
+    },
+    "seo": {
+      "title": "דירות למכירה ב-Rainbow תל אביב | מחירים, תוכניות ובחירת דירה בשדה דב | נדלן חכם",
+      "description": "Rainbow Tel Aviv - ריינבו תל אביב בשדה דב: מחירים מדווחים ואומדן לא מחייב, בחירת דירה בתלת ממד, תוכניות, מבט מהדירה וליווי בדיקה לפני פנייה ליזם.",
+      "canonical": "https://nad-lan.co.il/projects/rainbow-tel-aviv/",
+      "robots": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1",
+      "h1s": [
+        "Rainbow Tel Aviv - ריינבו תל אביב"
+      ],
+      "h2_count": 20,
+      "h2_first": [
+        "דירות למכירה ב- Rainbow Tel Aviv בשדה דב: מחירים, זמינות ובחירת דירה",
+        "דירות למכירה ב-Rainbow Tel Aviv - ריינבו תל אביב: בחירת דירה בתלת ממד",
+        "דירות למכירה ב-Rainbow Tel Aviv: מחיר, זמינות ובדיקת עסקה",
+        "למה המודל התלת ממדי חשוב לרוכשים וליזמים",
+        "שאלות נפוצות על Rainbow Tel Aviv",
+        "תמונת נתונים קצרה",
+        "סקירה: מה הופך את ריינבו תל אביב לפרויקט יוצא דופן",
+        "מיקום ונגישות: שדה דב, אזור אשכול והחוף הצפוני של תל אביב",
+        "אדריכלות ומפרט: בין מגדל, מבנים מרקמיים וחצר ריזורט",
+        "מתקנים ושירותים: מה כולל קונספט ה-Resort Living"
+      ],
+      "og_image": "https://raw.githubusercontent.com/The-new-ben/nad-lan-co-il/main/assets/projects/rainbow-tel-aviv/rainbow-showroom-hero-v1664.jpg",
+      "hreflang": [],
+      "schema_types": [
+        "WebPage",
+        "ImageObject",
+        "BreadcrumbList",
+        "WebSite",
+        "Organization",
+        "FAQPage",
+        "ApartmentComplex"
+      ],
+      "visible_text_len": 23209
+    }
+  },
+  "visual": {
+    "attempted": true,
+    "exit_code": 0,
+    "out_dir": "docs\\qa\\screenshots\\rainbow-tel-aviv-template-gate-visual",
+    "stdout_tail": "      \"bottom\": 748.8\n        },\n        \"sceneRect\": {\n          \"x\": 13.5,\n          \"y\": 148.8,\n          \"width\": 340,\n          \"height\": 600,\n          \"right\": 353.5,\n          \"bottom\": 748.8\n        },\n        \"cardRect\": {\n          \"x\": 0,\n          \"y\": 0,\n          \"width\": 0,\n          \"height\": 0,\n          \"right\": 0,\n          \"bottom\": 0\n        },\n        \"cardHidden\": true,\n        \"pickCount\": 6,\n        \"cellCount\": 6,\n        \"dualShowroom\": true,\n        \"facadeSelect\": false,\n        \"activePressedCount\": 1,\n        \"recommendedPickCount\": 2,\n        \"firstPickCenter\": {\n          \"x\": 183,\n          \"y\": 665\n        },\n        \"modelViewerDefined\": true,\n        \"modelViewerCount\": 1,\n        \"ownerFormVisible\": true,\n        \"leadFormVisible\": true,\n        \"tapTargets\": {\n          \"count\": 16,\n          \"min\": 44\n        },\n        \"textSignals\": {\n          \"hasBuyerCta\": false,\n          \"hasNonBindingPurchase\": true,\n          \"hasOwnerCta\": true,\n          \"hasInternalWords\": false\n        },\n        \"errors\": []\n      },\n      \"after\": {\n        \"title\": \"דירות למכירה ב-Rainbow תל אביב | מחירים, תוכניות ובחירת דירה בשדה דב | נדלן חכם\",\n        \"url\": \"https://nad-lan.co.il/projects/rainbow-tel-aviv/?cb=1781546867776-edge-mobile-390\",\n        \"viewport\": {\n          \"width\": 390,\n          \"height\": 900\n        },\n        \"scroll\": {\n          \"x\": 390,\n          \"client\": 390,\n          \"overflow\": 0\n        },\n        \"h1s\": [\n          \"Rainbow Tel Aviv – ריינבו תל אביב\"\n        ],\n        \"rootRect\": {\n          \"x\": 2.5,\n          \"y\": 83.8,\n          \"width\": 362,\n          \"height\": 6103.3,\n          \"right\": 364.5,\n          \"bottom\": 6187.1\n        },\n        \"stageRect\": {\n          \"x\": 13.5,\n          \"y\": 94.8,\n          \"width\": 340,\n          \"height\": 1065.8,\n          \"right\": 353.5,\n          \"bottom\": 1160.6\n        },\n        \"sceneRect\": {\n          \"x\": 13.5,\n          \"y\": 228.8,\n          \"width\": 340,\n          \"height\": 483.6,\n          \"right\": 353.5,\n          \"bottom\": 712.4\n        },\n        \"cardRect\": {\n          \"x\": 13.5,\n          \"y\": 1028.6,\n          \"width\": 340,\n          \"height\": 436.2,\n          \"right\": 353.5,\n          \"bottom\": 1464.8\n        },\n        \"cardHidden\": false,\n        \"pickCount\": 6,\n        \"cellCount\": 6,\n        \"dualShowroom\": true,\n        \"facadeSelect\": false,\n        \"activePressedCount\": 1,\n        \"recommendedPickCount\": 2,\n        \"firstPickCenter\": {\n          \"x\": 183,\n          \"y\": 649\n        },\n        \"modelViewerDefined\": true,\n        \"modelViewerCount\": 1,\n        \"ownerFormVisible\": true,\n        \"leadFormVisible\": true,\n        \"tapTargets\": {\n          \"count\": 19,\n          \"min\": 44\n        },\n        \"textSignals\": {\n          \"hasBuyerCta\": false,\n          \"hasNonBindingPurchase\": true,\n          \"hasOwnerCta\": true,\n          \"hasInternalWords\": false\n        },\n        \"errors\": []\n      },\n      \"failures\": []\n    }\n  ]\n}\n",
+    "stderr_tail": ""
+  },
+  "summary": {
+    "passed": 25,
+    "failed": 0,
+    "informational": 1,
+    "template_ready": true
+  }
+}
