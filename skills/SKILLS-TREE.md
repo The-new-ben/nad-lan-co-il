@@ -35,6 +35,7 @@ The contract layer. Identical on every site.
 | `agent-tooling-strategy.md` | DNA·DOC | Which agent does what. |
 | `honesty-statement.md` | DNA·DOC | **Core DNA.** No-flattery, cite-or-flag. Non-negotiable on every site. |
 | `security-public-repo.md` | DNA·DOC | What never goes in a public repo. |
+| `skill-release-discipline-and-mistakes.md` | DNA·DOC | **Mandatory release-memory layer.** Copy to every plugin-powered site so packaging/version/deploy mistakes are logged and not repeated. |
 | `plugin-discipline.md` / `plugin-auto-update.md` | DNA·DOC | One-capability modules + self-hosted update channel. |
 | `nadlan-config-plugin.md` | DNA·DOC | Plugin lessons (rename per site). |
 | `codex-plugin-access-and-deploy.md` | DNA·DOC | **The deploy pipeline operator guide** — how ANY agent (Codex/Claude/Cowork) changes the plugin and ships it live. Portable to every site (swap names/URLs). Read before touching plugin code. |

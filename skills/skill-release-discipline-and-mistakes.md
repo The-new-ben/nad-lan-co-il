@@ -76,6 +76,14 @@ EOF
 ### M8 — Calling a non-deploy a "deploy"
 **Rule:** "merged to main" → say *merged*. "live healthcheck shows new version" → say *deployed*. Never blur the two (see M0).
 
+### M9 — Creating a safety skill but not wiring it into the read order
+**What happened:** the mistake bible existed on `main`, but the main skill indexes did not point to it, so a future agent could still start plugin work without reading it.
+**Rule:** any new safety skill must be linked from `skills/README.md`, `skills/MAP.md`, and `skills/SKILLS-TREE.md` in the same PR/commit that creates it.
+**Fix command:**
+```bash
+grep -R "skill-release-discipline-and-mistakes" skills/README.md skills/MAP.md skills/SKILLS-TREE.md
+```
+
 ---
 
 ## 2. RELEASE PRE-FLIGHT (copy-paste, run in order)

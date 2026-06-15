@@ -24,10 +24,11 @@ Every agent (Claude, Codex, Antigravity, Cowork) reads from here before acting a
 
 **Before shipping plugin or theme:**
 
-13. `nadlan-config-plugin.md` — plugin lessons, one-capability rule
-14. `codex-plugin-access-and-deploy.md` — **THE step-by-step deploy pipeline** (any agent: how to change the plugin and get it live; pre-solved blockers)
-15. `plugin-auto-update.md` — self-hosted update channel
-16. `agent-coordination-protocol.md` — UPress sync constraints
+13. `skill-release-discipline-and-mistakes.md` — **MANDATORY mistake bible**: version discipline, ZIP poison prevention, "git != live", and the stop rules after prior production damage
+14. `nadlan-config-plugin.md` — plugin lessons, one-capability rule
+15. `codex-plugin-access-and-deploy.md` — **THE step-by-step deploy pipeline** (any agent: how to change the plugin and get it live; pre-solved blockers)
+16. `plugin-auto-update.md` — self-hosted update channel
+17. `agent-coordination-protocol.md` — UPress sync constraints
 
 ## Index (current as of 2026-05-30)
 
@@ -93,6 +94,7 @@ Every agent (Claude, Codex, Antigravity, Cowork) reads from here before acting a
 | File | Purpose |
 |---|---|
 | `nadlan-config-plugin.md` | Plugin journey v1.0.0→v1.2.1; one-capability rule; lessons |
+| `skill-release-discipline-and-mistakes.md` | **Mandatory before any nadlan-config release:** mistake catalog, version gate, ZIP poison prevention, deploy-vs-merge distinction |
 | `codex-plugin-access-and-deploy.md` | **Complete deploy operator guide** — locations, links, the 9-step ship loop, obstacle→solution table, multi-agent etiquette. Start here to change the plugin. |
 | `plugin-auto-update.md` | PUC self-hosted JSON; ship workflow |
 | `plugin-discipline.md` | Mandatory guards (function_exists, no Hebrew in activation, no mu-plugins) |

@@ -21,12 +21,13 @@ If you have only 10 minutes (a fresh agent walking in), read these in this order
 2. **`/BACKLOG.md`** ✅ — what we're doing right now (newest decisions win)
 3. **`skills/MAP.md`** ✅ — this file
 4. **`skills/site-state.md`** ✅ — append-only situation report; **read the last 6 blocks**
-5. **`skills/codex-plugin-access-and-deploy.md`** ✅ — the deploy pipeline (mandatory before any plugin change)
-6. **`skills/honesty-statement.md`** ✅ — no-flattery + cite-or-flag policy
-7. **`skills/url-namespace-contract.md`** ✅ — slug/URL rules (mandatory before publishing any page)
-8. **`skills/copywriting-skill.md`** ✅ — voice, forbidden phrases, em-dash ban
-9. **`skills/SKILLS-TREE.md`** ✅ — the portable DNA branches (for stamping new sites)
-10. **`skills/ACCUMULATION.md`** ✅ — how to add/update a skill (when you learn something)
+5. **`skills/skill-release-discipline-and-mistakes.md`** ✅ — mandatory before any `nadlan-config` release, packaging, deploy handoff, or project-3D change
+6. **`skills/codex-plugin-access-and-deploy.md`** ✅ — the deploy pipeline (mandatory before any plugin change)
+7. **`skills/honesty-statement.md`** ✅ — no-flattery + cite-or-flag policy
+8. **`skills/url-namespace-contract.md`** ✅ — slug/URL rules (mandatory before publishing any page)
+9. **`skills/copywriting-skill.md`** ✅ — voice, forbidden phrases, em-dash ban
+10. **`skills/SKILLS-TREE.md`** ✅ — the portable DNA branches (for stamping new sites)
+11. **`skills/ACCUMULATION.md`** ✅ — how to add/update a skill (when you learn something)
 
 Everything else is on-demand by category below.
 
@@ -53,6 +54,7 @@ Everything else is on-demand by category below.
 | Status | File | Purpose | When to open |
 |---|---|---|---|
 | ✅🟪 | `docs/codex-onboarding-and-mission-brief.md` | **THE one-shot onboarding** — repo access, every feature/module/REST endpoint, user journeys, coding examples, the Last-Mile Contract anti-premature-completion checklist | Paste-to-Codex (or any new agent) at session start |
+| ✅🟪 | `skills/skill-release-discipline-and-mistakes.md` | **Release discipline + Bible of Mistakes:** "git != live", stale-base prevention, version gates, ZIP poison prevention, exact blocker language | **MANDATORY** before touching versions, ZIPs, `project-3d.php`, or telling the owner to update |
 | ✅🟪 | `skills/codex-plugin-access-and-deploy.md` | **THE deploy pipeline** — 9-step ship loop, every blocker pre-solved, multi-agent etiquette | **MANDATORY** before touching any plugin code |
 | ✅🟪 | `skills/nadlan-config-plugin.md` | Plugin lessons + one-capability-per-module rule + coding conventions | Before writing a new `inc/<module>.php` |
 | ✅🟪 | `skills/plugin-discipline.md` | What belongs in a plugin module vs the theme | Architectural decisions |
