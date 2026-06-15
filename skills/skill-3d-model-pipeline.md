@@ -273,6 +273,17 @@ For every future project, create a project asset folder containing:
 - `showroom-payload.json`
 - `qa.md`
 
+Initialize that folder with:
+
+```bash
+node scripts/init-project-showroom.mjs <project-slug> --post-id <post-id> --title "Project Name"
+```
+
+The initializer creates only safe placeholders and refuses to overwrite an existing folder unless
+`--force` is passed. It is a scaffold, not publication proof. Replace the starter model, poster,
+unit data, drawings, environment, price notes and source notes with sourced/developer-approved
+material before importing anything into WordPress.
+
 The plugin should consume URLs and JSON only. Large raw modeling files should live outside the
 plugin ZIP and outside the WordPress plugin repository unless explicitly approved.
 
