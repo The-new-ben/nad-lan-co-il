@@ -233,6 +233,32 @@ Recommended wording:
 
 `אומדן לא מחייב לפי מקור מאושר. יש לאמת מחיר, זמינות ותנאים מול היזם לפני כל התקדמות.`
 
+## Investor And International Readiness
+
+Rainbow can be prepared for foreign buyers and investors, but translation is not automatic.
+
+Before publishing an English, French, Russian or other language version:
+
+1. Decide the URL pattern, for example `/en/projects/rainbow-tel-aviv/`.
+2. Translate the visible project copy, FAQ, price disclaimers, contact copy and legal notes.
+3. Keep the same sourced facts as the Hebrew page. Do not invent prices, tax rules, availability,
+   financing terms or official status in translation.
+4. Keep investor signals visible: developer, location, project status, price-estimate disclaimer,
+   apartment mix, view, transport, parks, nearby projects, buying-process note and source dates.
+5. Add `hreflang` only after the translated page is live and reviewed.
+6. Run the template gate again. A Hebrew page with no real translated URL is not multilingual-ready.
+
+For investor SEO, the page should answer:
+
+- what is available now, or how availability is checked;
+- what the price context is, with source and date;
+- why the location matters;
+- what the buyer can inspect in the showroom;
+- how to contact the project with the selected unit attached.
+
+If any of those are missing, the project can be a prototype, but it is not ready to clone as an
+international investor template.
+
 ## Media Fields
 
 `project_3d_video_url`
@@ -294,21 +320,41 @@ either a flat object with the allowed field names or `{ "meta": { ... } }`.
 
 Use this for the next project run:
 
-1. Prepare the project asset folder: `unit-map.json`, `drawings.json`, `environment.json`,
-   `view-layer-config.json`, model URL and poster URL.
-2. Run `node scripts/build-project-showroom-payload.mjs <project-slug> --write`.
-3. Validate the payload:
+1. Create the project asset folder:
+
+   ```powershell
+   node scripts/init-project-showroom.mjs <project-slug> --post-id <id> --title "Project Name"
+   ```
+
+   The script creates `source-notes.md`, `unit-map.json`, `drawings.json`, `environment.json`,
+   `view-layer-config.json`, `project-meta-example.json`, `material-intake-template.json`,
+   `showroom-payload.json`, `qa.md`, and a `plans/` folder. It refuses to overwrite an existing
+   project folder unless `--force` is passed.
+
+2. Replace the starter files with real sources: approved unit inventory, drawings, environment,
+   model URL and poster URL.
+3. Run `node scripts/build-project-showroom-payload.mjs <project-slug> --write`.
+4. Validate the payload:
 
    ```powershell
    node scripts/validate-project-showroom-payload.mjs `
      --payload assets/projects/<project-slug>/showroom-payload.json
    ```
 
-4. Review `<project-folder>/showroom-payload.json`. It must contain the `meta` object with all
+5. Before creating a real project folder for publication, run the factory smoke test once:
+
+   ```powershell
+   node scripts/qa-project-factory-smoke.mjs
+   ```
+
+   It creates a temporary showroom folder, builds and validates its payload, then deletes the
+   temporary folder. This proves the field/assets pipeline works without touching WordPress.
+
+6. Review `<project-folder>/showroom-payload.json`. It must contain the `meta` object with all
    allowed showroom fields.
-5. POST `showroom-payload.json` to the project-showroom route.
-6. Open the WordPress editor only for visual review and small corrections.
-7. Open the public page in Chrome and verify the model, markers, selected card and form.
+7. POST `showroom-payload.json` to the project-showroom route.
+8. Open the WordPress editor only for visual review and small corrections.
+9. Open the public page in Chrome and verify the model, markers, selected card and form.
 
 Rainbow reference payload:
 
@@ -413,6 +459,22 @@ The work is done only when the public buyer page shows:
 - project-relevant first paragraph,
 - non-binding price wording,
 - Chrome screenshots proving the rendered result.
+
+## Mobile Containment And Public Copy Check
+
+Before cloning Rainbow into another project, run the visual QA at 390px and Edge mobile. A passing
+project must keep the whole showroom inside the viewport before and after an apartment is selected.
+If the model scene becomes only a few pixels tall after a click, the selected-apartment card is
+collapsing the product view and the page is not ready.
+
+Public project pages must not use internal operations words. Avoid terms such as lead panel,
+funnel, CRM, monetization, paid placement, or similar back-office language. The buyer-facing words
+are inquiry, project contact, selected apartment, availability check, developer follow-up, and
+non-binding purchase check.
+
+The durable content fix is always the WordPress project body. A plugin seed may clean an old
+Rainbow phrase once, but future project pages should be written correctly in the source content
+before publication.
 
 ## Apartment Cells, Not Dots
 

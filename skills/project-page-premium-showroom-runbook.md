@@ -174,6 +174,24 @@ After a PR is merged:
 
 GitHub merge alone does not update production.
 
+## G. Rainbow Template v1 Gate
+
+Before using Rainbow as the template for another project, the page must pass the small-product gate,
+not only the content gate:
+
+1. The 390px mobile view keeps the entire showroom inside the viewport before and after unit
+   selection.
+2. The selected-apartment card does not collapse the model scene, hide the building, or cover the
+   first-choice action.
+3. Apartment markers read as apartments on a building. Dots are acceptable only as a temporary
+   fallback before a facade image, apartment-cell overlay, or real per-unit GLB is available.
+4. The first public paragraph and all public labels use buyer language only. Never publish internal
+   words such as lead panel, funnel, CRM, monetization or paid placement.
+5. The healthcheck exposes any one-shot content cleanup marker, because a production DB seed is not
+   proven until the live endpoint reports that it ran.
+6. The final proof is a Chrome screenshot and a visual QA report. Saved fields, imported JSON and
+   ZIP integrity are necessary, but not sufficient.
+
 ## H. 2026-06-14 Rainbow GLB Finish-Line Addendum
 
 For any project page that uses a GLB/model-viewer showroom, the live gate is buyer-rendered Chrome,

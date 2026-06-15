@@ -273,6 +273,45 @@ For every future project, create a project asset folder containing:
 - `showroom-payload.json`
 - `qa.md`
 
+Initialize that folder with:
+
+```bash
+node scripts/init-project-showroom.mjs <project-slug> --post-id <post-id> --title "Project Name"
+```
+
+The initializer creates only safe placeholders and refuses to overwrite an existing folder unless
+`--force` is passed. It is a scaffold, not publication proof. Replace the starter model, poster,
+unit data, drawings, environment, price notes and source notes with sourced/developer-approved
+material before importing anything into WordPress.
+
+Before relying on the factory for a real project, run:
+
+```bash
+node scripts/qa-project-factory-smoke.mjs
+```
+
+This creates a temporary project folder, builds `showroom-payload.json`, validates it against the
+schema, checks that the expected scaffold files exist, and removes the temporary folder. If this
+smoke test is red, do not start the next Sde Dov project yet.
+
 The plugin should consume URLs and JSON only. Large raw modeling files should live outside the
 plugin ZIP and outside the WordPress plugin repository unless explicitly approved.
+
+## Rainbow v1.66.3 QA Lesson: Mobile Product Integrity
+
+Mobile containment is a product requirement, not a CSS detail. The 390px and Edge-mobile gates must
+measure the rendered showroom root before and after selecting an apartment. The selector fails if:
+
+- the root is shifted outside the viewport even when the document has no horizontal scrollbar;
+- the selected-apartment card collapses the model scene to a tiny strip;
+- the card covers the apartment selector before the buyer understands what was selected;
+- the first apartment tap does not leave a visible selected state and a readable next step.
+
+When a JavaScript nudge variable exists, late CSS must not cancel it with `transform:none!important`.
+If a selected-card mobile sheet is used, it must preserve the model scene height and expose only a
+small collapsed handle until the buyer opens it.
+
+Public product copy must stay buyer-facing. Do not publish back-office terms such as lead panel,
+funnel, CRM, monetization, or paid placement. The visible page should say inquiry, selected
+apartment, developer contact, availability check, and non-binding estimate.
 
