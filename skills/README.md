@@ -29,6 +29,14 @@ Every agent (Claude, Codex, Antigravity, Cowork) reads from here before acting a
 15. `plugin-auto-update.md` — self-hosted update channel
 16. `agent-coordination-protocol.md` — UPress sync constraints
 
+**Before creating or cloning a premium project showroom:**
+
+17. `project-page-premium-showroom-runbook.md` — A-to-Z project page workflow: research, assets, CMS payload, QA, deploy
+18. `skill-3d-model-pipeline.md` — GLB/poster/facade/unit-map pipeline and buyer-facing model rules
+19. `skill-interactive-apartment-picker.md` — clickable apartment cells/polygons on the building
+20. `skill-project-page-seo-and-assembly.md` — project SEO, schema fields, visible content blocks, international intent
+21. `docs/2026-06-15-rainbow-template-v1-readiness-matrix.md` — current Rainbow clone-readiness state and exact gate
+
 ## Index (current as of 2026-05-30)
 
 ### Onboarding + contract
@@ -71,6 +79,7 @@ Every agent (Claude, Codex, Antigravity, Cowork) reads from here before acting a
 | `spoke-prompts-short-rent-abroad.md` | System block + 7 country prompts for ChatGPT |
 | `short-term-rentals-abroad.md` | Pillar source data + 7-country regulation research |
 | `yoast-config.md` | Yoast meta requirements; Person schema for lawyer E-E-A-T |
+| `skill-project-page-seo-and-assembly.md` | Project-page SEO replication standard: SERP, transactional title/meta, schema fields, FAQ, investor/international blocks |
 
 ### Design system
 
@@ -100,6 +109,9 @@ Every agent (Claude, Codex, Antigravity, Cowork) reads from here before acting a
 | `wordpress-content-types.md` | Page vs Post vs CPT decisions |
 | `abilities-api.md` | WP 7.0 Abilities API usage |
 | `interactive-widgets.md` | Vanilla JS calculator widgets |
+| `project-page-premium-showroom-runbook.md` | A-to-Z premium project showroom workflow |
+| `skill-3d-model-pipeline.md` | 3D showroom asset/CMS pipeline: GLB, poster, facade, unit data, payload validation |
+| `skill-interactive-apartment-picker.md` | Apartment selector standard: cells/polygons on the building, not abstract dots |
 | `properties-catalog.md` | nadlan_property CPT + MapLibre archive |
 
 ### Living log
@@ -140,3 +152,7 @@ If you find yourself writing about one of these in another skill, replace your t
 
 ---
 _Created 2026-05-28 by Claude Code (claude-opus-4-7). Reindexed 2026-05-30 to cover all 35+ skills + add the publishing workflow loop._
+
+_Revised 2026-06-15 by Codex: added the premium project-showroom reading path and linked the 3D
+model pipeline, apartment picker, project SEO assembly skill, and Rainbow readiness matrix so the
+next Sde Dov project starts from reusable skills instead of improvisation._
