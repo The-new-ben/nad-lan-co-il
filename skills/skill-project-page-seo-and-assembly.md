@@ -48,3 +48,21 @@ Assign the `nadlan_compound` term → schema emits containedInPlace + internal-l
 - [ ] Transactional keyword check: למכירה ≥3, מחיר ≥8 occurrences.
 - [ ] IndexNow ping fired (automatic on save).
 - [ ] Compound term assigned; appears on /compound/ hub.
+
+## 6. Live SEO Verification Addendum
+
+Before a project page becomes the template for another project, verify the rendered public URL, not
+only saved meta fields:
+
+1. `node scripts/qa-project-showroom-live.mjs --site <site> --slug <slug> --post-id <id> --strict`
+   must pass its structural gates.
+2. Extract and record title, meta description, canonical, robots, H1 count, first H2s, OG image,
+   schema types and `hreflang`.
+3. `hreflang` may be empty only when there are no real translated pages. Do not add language links
+   until equivalent translated URLs exist.
+4. `og:image` should use HTTPS and a stable project image/poster.
+5. Record the SERP landscape: official developer page, district/project aggregators, listing portals
+   and news/investor sources. The NadLan angle is the buyer/investor gap: price context, apartment
+   selection, plans, view, surroundings and non-binding inquiry, not fake official status.
+6. Store the audit in `docs/` or `docs/qa/` with the live plugin version and date. If the visual QA
+   is still pending, say so directly and do not mark the page clone-ready.
