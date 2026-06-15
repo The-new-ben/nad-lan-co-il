@@ -3,11 +3,12 @@
 ## Scope
 
 This is a surgical patch only. It does not redesign the Rainbow showroom and it does not change the
-project data model. It fixes three verified live failures:
+project data model. It fixes four verified live/template failures:
 
 1. The 390px and Edge-mobile showroom root is shifted outside the viewport.
 2. After selecting an apartment on mobile, the model scene collapses to a 2px strip.
 3. The live Rainbow body still contains old internal public wording such as lead panel / leads.
+4. The rendered social image URL is same-site HTTP instead of HTTPS.
 
 ## Live Baseline Before Patch
 
@@ -57,7 +58,8 @@ Screenshots are saved under:
    inquiry language.
 4. Adds `project_page_assembly.rainbow_public_copy_v1663` to healthcheck so the live seed can be
    verified after deployment.
-5. Aligns plugin header, healthcheck, manifest, ZIP and showroom cache-busters at 1.66.3.
+5. Normalizes same-site Yoast/dynamic `og:image` and `twitter:image` URLs to HTTPS.
+6. Aligns plugin header, healthcheck, manifest, ZIP and showroom cache-busters at 1.66.3.
 
 ## Local Package Checks
 
@@ -100,6 +102,9 @@ After merge and plugin update:
 ```json
 {
   "version": "1.66.3",
+  "og_image": {
+    "https_normalizer": true
+  },
   "project_page_assembly": {
     "rainbow_public_copy_v1663": true
   }
@@ -117,6 +122,7 @@ Expected live improvements:
 - mobile root starts near x 0 and right edge stays inside the viewport;
 - mobile scene remains at least 380px high after apartment selection;
 - public text no longer contains internal wording;
+- rendered `og:image` uses `https://`;
 - no new console errors;
 - one visible H1 remains;
 - apartment cells and model-viewer remain present.
