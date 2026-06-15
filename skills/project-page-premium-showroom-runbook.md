@@ -228,3 +228,25 @@ Owner manual standard:
    metabox/sidebar plus REST-writable fields.
 6. GitHub merge, plugin update, and field save are not final proof. The buyer-facing page and
    Chrome screenshots are the proof.
+
+## I. Showroom DNA For Cloned Project Pages
+
+Use the same hierarchy for every project page:
+
+1. Short SEO intro above the showroom: project name, neighborhood, developer, non-binding price or
+   availability rule, and "choose an apartment" intent.
+2. Rotating 3D model beside the facade picker on desktop. On mobile, stack them tightly: model
+   first, facade picker immediately below, then selected apartment card.
+3. Fixed facade/elevation apartment cells are the primary selector. The cells should show useful
+   labels, not anonymous dots.
+4. Status colors are stable: available = green, reserved/checking = amber, sold/unavailable = gray.
+   Recommended/high-demand units may pulse only when they are available.
+5. The selected-apartment card contains price estimate, rooms, sqm, floor, view, status, and three
+   buyer actions: full details, view from apartment, and contact the developer.
+6. The card must have a dismiss button and must not hide the facade permanently.
+7. The environment layer is project-relative. For Sde Dov it may show sea/coast/Reading/nearby
+   projects; for Ramat Aviv it should show that neighborhood's parks, roads, schools and transit.
+
+This is the factory standard: one model, one facade/unit map, one environment file, one poster, one
+SEO/content pack. Do not create a new plugin feature for each project unless the reusable payload
+contract cannot express it.

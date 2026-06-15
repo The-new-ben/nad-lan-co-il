@@ -495,3 +495,19 @@ apartment-shaped cells or polygons that make the location of the apartment obvio
 Mobile check: open the page at 390px. Every apartment cell must be comfortable to tap, at least
 44px by 44px, and selecting a unit must show the apartment card without pushing the model out of
 view.
+
+## Two-Panel Showroom DNA
+
+For Rainbow and every future project, use this structure:
+
+1. The rotating 3D model shows the project in context: building mass, surroundings, sun/orientation
+   and the premium showroom feeling.
+2. The fixed facade/elevation beside it is where buyers choose apartments. This is where status,
+   floor, rooms, sqm, price estimate and availability become clickable.
+3. On mobile, the model and facade may stack one above the other, but they must stay close so the
+   buyer understands they belong to the same product.
+4. If a contractor later provides official BIM/GLB with real apartment meshes, the same unit data can
+   be upgraded into true 3D apartment picking. Until then, do not pretend a massing model contains
+   real clickable apartments.
+5. Environment data is project-specific. Sde Dov can show coast, parks and nearby projects; another
+   neighborhood should show its own streets, schools, transit and local context.

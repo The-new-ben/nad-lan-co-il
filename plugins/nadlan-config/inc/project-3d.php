@@ -770,7 +770,8 @@ if ( ! function_exists( 'nadlan_p3d_render' ) ) {
 						rotation-per-second="8deg"
 						min-camera-orbit="-Infinity 0deg auto"
 						max-camera-orbit="Infinity 180deg auto"
-						field-of-view="24deg"
+						camera-orbit="34deg 62deg 32m"
+						field-of-view="18deg"
 						camera-target="0m 56m 0m"
 						environment-image="neutral"
 						exposure="1.45"
@@ -828,6 +829,17 @@ if ( ! function_exists( 'nadlan_p3d_render' ) ) {
 					</figure>
 				<?php endif; ?>
 				<p class="nlp3d-context-caption">הדמיית סביבת שדה דב, להמחשה.</p>
+				<div class="nlp3d-sun-orbit" aria-hidden="true"><span class="nlp3d-sun-dot"></span></div>
+				<?php
+				$context_items = array_slice( (array) ( $meta['environment'] ?? array() ), 0, 4 );
+				if ( $context_items ) :
+					?>
+					<div class="nlp3d-context-pins" aria-hidden="true">
+						<?php foreach ( $context_items as $index => $item ) : ?>
+							<span class="nlp3d-context-pin nlp3d-context-pin-<?php echo esc_attr( (string) ( $index + 1 ) ); ?>"><?php echo esc_html( (string) ( $item['label'] ?? $item['name'] ?? $item['title'] ?? 'סביבה' ) ); ?></span>
+						<?php endforeach; ?>
+					</div>
+				<?php endif; ?>
 			</div>
 			<div class="nlp3d-viewframe nlp3d-stage-viewframe" hidden>
 				<div class="nlp3d-view-sky"></div>
@@ -839,6 +851,7 @@ if ( ! function_exists( 'nadlan_p3d_render' ) ) {
 			</div>
 			<div class="nlp3d-stage-card" aria-live="polite" hidden>
 				<button type="button" class="nlp3d-stage-card-handle" aria-expanded="false" data-action="stage-card-expand"><span>פתחו את פרטי הדירה</span></button>
+				<button type="button" class="nlp3d-stage-card-close" data-action="stage-card-close" aria-label="סגירת פרטי הדירה">×</button>
 				<span class="nlp3d-stage-kicker">הדירה שנבחרה</span>
 				<strong class="nlp3d-stage-card-title">בחרו דירה על הבניין</strong>
 				<small class="nlp3d-stage-card-meta">גררו לסיבוב, בחרו קומה והתקדמו רק כאשר הפרטים מתאימים.</small>
@@ -1228,6 +1241,47 @@ CSS;
 	}
 }
 
+if ( ! function_exists( 'nadlan_p3d_showroom_dna_v1664_css' ) ) {
+	function nadlan_p3d_showroom_dna_v1664_css() {
+		// v1.66.4 showroom DNA: GLB = context/spin; facade = apartment picking.
+		// Keep this as a final override so older release slices do not fight the
+		// new product hierarchy.
+		return <<<'CSS'
+.nlp3d.nlp3d-premium.is-dual-showroom .nlp3d-stage-wrap{min-height:clamp(620px,68vh,760px)!important}
+.nlp3d.nlp3d-premium.is-dual-showroom .nlp3d-scene{height:100%!important;min-height:clamp(600px,66vh,740px)!important;background:radial-gradient(circle at 30% 18%,rgba(234,216,163,.16),transparent 34%),radial-gradient(circle at 76% 20%,rgba(61,220,132,.08),transparent 27%),linear-gradient(180deg,#073335,#061312 82%)!important}
+.nlp3d.nlp3d-premium.is-dual-showroom .nlp3d-model-viewer{left:0!important;right:42%!important;top:0!important;bottom:0!important;width:auto!important;height:auto!important;border-inline-end:1px solid rgba(234,216,163,.2)}
+.nlp3d.nlp3d-premium.is-dual-showroom .nlp3d-facade-plane{right:3%!important;left:auto!important;top:6%!important;width:min(38%,420px)!important;height:84%!important;transform:none!important;z-index:26!important;border:1px solid rgba(234,216,163,.34);border-radius:12px;background:linear-gradient(180deg,rgba(8,31,34,.88),rgba(4,15,16,.96));box-shadow:0 30px 74px rgba(0,0,0,.48),inset 0 1px 0 rgba(255,255,255,.08)}
+.nlp3d-fp-title{position:absolute;top:10px;right:12px;z-index:9;display:inline-flex;align-items:center;min-height:28px;padding:4px 10px;border:1px solid rgba(234,216,163,.36);border-radius:999px;background:rgba(6,18,19,.74);color:#fff2bd;font-size:12px;font-weight:900;letter-spacing:0}
+.nlp3d.nlp3d-premium.is-dual-showroom .nlp3d-fp-roof{top:40px;left:7%;right:7%;height:12px;border-radius:999px;background:linear-gradient(90deg,#1b545c,#d9c176 52%,#1b545c)}
+.nlp3d.nlp3d-premium.is-dual-showroom .nlp3d-fp-body{top:50px;left:7%;right:7%;bottom:18px;border-radius:4px;background:linear-gradient(180deg,rgba(35,93,102,.98),rgba(7,24,28,.98));box-shadow:inset 0 0 0 1px rgba(234,216,163,.2),inset 18px 0 38px rgba(255,255,255,.05)}
+.nlp3d.nlp3d-premium.is-dual-showroom .nlp3d-fp-body:before{background:repeating-linear-gradient(180deg,rgba(255,255,255,.075) 0 1px,transparent 1px 30px),repeating-linear-gradient(90deg,rgba(234,216,163,.14) 0 1px,transparent 1px 33.333%);opacity:.86}
+.nlp3d.nlp3d-premium.is-dual-showroom .nlp3d-cells{top:50px;left:7%;right:7%;bottom:18px}
+.nlp3d.nlp3d-premium .nlp3d-cell{border-width:1.5px!important;border-radius:3px!important;box-shadow:inset 0 1px 0 rgba(255,255,255,.16),0 7px 16px rgba(0,0,0,.24);overflow:visible}
+.nlp3d.nlp3d-premium .nlp3d-cell:not(.nlp3d-status-sold){background:linear-gradient(180deg,rgba(61,220,132,.27),rgba(61,220,132,.09))!important}
+.nlp3d.nlp3d-premium .nlp3d-cell.nlp3d-status-reserved{background:linear-gradient(180deg,rgba(242,193,78,.3),rgba(242,193,78,.1))!important}
+.nlp3d.nlp3d-premium .nlp3d-cell.nlp3d-status-sold{background:linear-gradient(180deg,rgba(154,160,166,.18),rgba(154,160,166,.08))!important}
+.nlp3d.nlp3d-premium .nlp3d-cell-tag{display:grid!important;grid-template-rows:auto auto;align-content:center;justify-items:center;gap:1px;max-width:100%;padding:2px 3px;color:#fff7dc!important;text-shadow:0 1px 5px rgba(0,0,0,.8);font-size:clamp(8px,.72vw,11px)!important;line-height:1.05!important;opacity:.92!important;white-space:normal!important}
+.nlp3d.nlp3d-premium .nlp3d-cell-tag strong{font-size:inherit;font-weight:900;max-width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.nlp3d.nlp3d-premium .nlp3d-cell-tag small{font-size:.82em;font-weight:700;opacity:.9;max-width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.nlp3d.nlp3d-premium .nlp3d-cell.is-recommended:not(.nlp3d-status-sold){animation:nlcellpulse 1.9s infinite}
+.nlp3d.nlp3d-premium .nlp3d-cell.is-active{transform:scale(1.045)!important;box-shadow:0 0 0 2px #fff7c6,0 0 28px rgba(234,216,163,.72),0 14px 26px rgba(0,0,0,.34)!important}
+.nlp3d.nlp3d-premium.is-dual-showroom .nlp3d-fp-legend{right:calc(3% + 12px)!important;left:auto!important;bottom:20px!important;max-width:min(36%,390px)!important;background:rgba(5,14,15,.78);backdrop-filter:blur(8px)}
+.nlp3d.nlp3d-premium.is-dual-showroom .nlp3d-stage-card:not([hidden]){left:22px!important;right:auto!important;top:auto!important;bottom:22px!important;width:min(370px,calc(58% - 44px))!important;max-width:370px!important;max-height:calc(100% - 44px)!important;overflow:auto!important;pointer-events:auto!important;border-radius:14px!important}
+.nlp3d-stage-card-close{position:absolute;top:8px;left:8px;z-index:4;display:grid;place-items:center;width:44px;min-width:44px;height:44px;min-height:44px;border:1px solid rgba(234,216,163,.3);border-radius:999px;background:rgba(6,16,17,.78);color:#fff0bd;font-size:22px;line-height:1;cursor:pointer;box-shadow:0 10px 24px rgba(0,0,0,.28)}
+.nlp3d-stage-card-close:hover,.nlp3d-stage-card-close:focus-visible{outline:2px solid rgba(255,255,255,.68);outline-offset:2px;background:rgba(234,216,163,.18)}
+.nlp3d-sun-orbit{position:absolute;left:10%;right:44%;top:9%;height:28%;z-index:18;border-top:1px dashed rgba(234,216,163,.34);border-radius:50% 50% 0 0;pointer-events:none;opacity:.88}
+.nlp3d-sun-dot{position:absolute;left:58%;top:-10px;width:22px;height:22px;border-radius:999px;background:radial-gradient(circle,#fff7bc 0 28%,#e7b84a 58%,rgba(231,184,74,.1) 72%);box-shadow:0 0 34px rgba(234,216,163,.72)}
+.nlp3d-context-pins{position:absolute;inset:0;z-index:17;pointer-events:none}
+.nlp3d-context-pin{position:absolute;display:inline-flex;align-items:center;min-height:26px;max-width:180px;padding:4px 9px;border:1px solid rgba(234,216,163,.24);border-radius:999px;background:rgba(6,18,19,.66);color:#f5e8bd;font-size:11px;font-weight:800;box-shadow:0 9px 22px rgba(0,0,0,.26);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.nlp3d-context-pin-1{left:8%;top:18%}.nlp3d-context-pin-2{left:24%;bottom:18%}.nlp3d-context-pin-3{left:5%;bottom:34%}.nlp3d-context-pin-4{left:34%;top:42%}
+.single-nadlan_project .wp-block-post-content>h2,.single-nadlan_project .entry-content>h2,.single-nadlan_project .wp-block-post-content>h3,.single-nadlan_project .entry-content>h3{display:block!important;float:none!important;clear:both!important;width:min(860px,calc(100vw - 40px))!important;margin:38px auto 12px!important;text-align:center!important;color:#1d211c!important;text-shadow:none!important;line-height:1.26!important}
+.single-nadlan_project .wp-block-post-content>p,.single-nadlan_project .entry-content>p,.single-nadlan_project .wp-block-post-content>ul,.single-nadlan_project .entry-content>ul,.single-nadlan_project .wp-block-post-content>ol,.single-nadlan_project .entry-content>ol{display:block!important;float:none!important;clear:both!important;width:min(820px,calc(100vw - 40px))!important;margin:0 auto 16px!important;text-align:right!important;color:#30453d!important;line-height:1.82!important}
+@media(max-width:980px){.nlp3d.nlp3d-premium.is-dual-showroom .nlp3d-model-viewer{right:0!important;bottom:45%!important}.nlp3d.nlp3d-premium.is-dual-showroom .nlp3d-facade-plane{top:57%!important;right:5%!important;left:5%!important;width:auto!important;height:38%!important}.nlp3d.nlp3d-premium.is-dual-showroom .nlp3d-cells{top:48px}.nlp3d.nlp3d-premium.is-dual-showroom .nlp3d-stage-card:not([hidden]){position:relative!important;left:auto!important;right:auto!important;bottom:auto!important;top:auto!important;width:auto!important;max-width:none!important;margin-top:12px!important}.nlp3d-sun-orbit{right:8%;left:8%;height:18%}.nlp3d-context-pin{display:none}.nlp3d.nlp3d-premium.is-dual-showroom .nlp3d-fp-legend{right:14px!important;left:14px!important;bottom:14px!important;max-width:none!important}}
+@media(max-width:520px){.nlp3d.nlp3d-premium.is-dual-showroom .nlp3d-stage-wrap{min-height:620px!important}.nlp3d.nlp3d-premium.is-dual-showroom .nlp3d-scene{min-height:600px!important;height:600px!important}.nlp3d.nlp3d-premium.is-dual-showroom .nlp3d-model-viewer{bottom:50%!important}.nlp3d.nlp3d-premium.is-dual-showroom .nlp3d-facade-plane{top:53%!important;height:40%!important}.nlp3d.nlp3d-premium .nlp3d-cell-tag{font-size:8.5px!important}.nlp3d-fp-title{font-size:11px;min-height:26px}.nlp3d-stage-card-close{top:6px;left:6px}.single-nadlan_project .wp-block-post-content>h2,.single-nadlan_project .entry-content>h2,.single-nadlan_project .wp-block-post-content>h3,.single-nadlan_project .entry-content>h3{width:calc(100vw - 34px)!important}.single-nadlan_project .wp-block-post-content>p,.single-nadlan_project .entry-content>p{width:calc(100vw - 34px)!important}}
+CSS;
+	}
+}
+
 if ( ! function_exists( 'nadlan_p3d_inline_js' ) ) {
 	function nadlan_p3d_inline_js( $rest_url ) {
 		$js = <<<'JS'
@@ -1381,7 +1435,7 @@ if ( ! function_exists( 'nadlan_p3d_inline_js' ) ) {
 				   With a GLB it sits beside the rotating model; without a GLB it owns the scene. */
 				facadePlane=document.createElement('div');
 				facadePlane.className='nlp3d-facade-plane';
-				facadePlane.innerHTML='<span class="nlp3d-fp-roof" aria-hidden="true"></span><span class="nlp3d-fp-body" aria-hidden="true"></span><span class="nlp3d-fp-glow" aria-hidden="true"></span>';
+				facadePlane.innerHTML='<span class="nlp3d-fp-title">בחירת דירות</span><span class="nlp3d-fp-roof" aria-hidden="true"></span><span class="nlp3d-fp-body" aria-hidden="true"></span><span class="nlp3d-fp-glow" aria-hidden="true"></span>';
 				stagePicks.className='nlp3d-cells';
 				stagePicks.setAttribute('role','group');
 				stagePicks.setAttribute('aria-label','בחירת דירה על חזית הבניין');
@@ -1441,6 +1495,7 @@ if ( ! function_exists( 'nadlan_p3d_inline_js' ) ) {
 		var stageCardView=root.querySelector('.nlp3d-stage-view');
 		var stageCardNote=root.querySelector('.nlp3d-stage-card-note');
 		var stageCardHandle=root.querySelector('.nlp3d-stage-card-handle');
+		var stageCardClose=root.querySelector('.nlp3d-stage-card-close');
 		var stageTabs=[].slice.call(root.querySelectorAll('.nlp3d-stage-tabs [data-stage-tab]'));
 		var stageDetails=root.querySelector('.nlp3d-stage-details');
 		var stageViewBtn=root.querySelector('.nlp3d-stage-view-btn');
@@ -1474,6 +1529,7 @@ if ( ! function_exists( 'nadlan_p3d_inline_js' ) ) {
 		var dragState=null;
 		var lastTapAt=0;
 		var suppressUnitClickUntil=0;
+		var stageCardDismissed=false;
 		var activeTool='spec';
 		if(savedUnit){
 			var restored=units.find(function(u){return u.id===savedUnit});
@@ -1688,7 +1744,12 @@ if ( ! function_exists( 'nadlan_p3d_inline_js' ) ) {
 				if(status==='sold'){b.setAttribute('aria-disabled','true');b.tabIndex=-1}
 				var tag=document.createElement('span');
 				tag.className='nlp3d-cell-tag';
-				tag.textContent=(u.line||u.label||u.id);
+				var tagMain=document.createElement('strong');
+				var tagSub=document.createElement('small');
+				tagMain.textContent=(u.line||u.label||u.id)+' · '+(u.floor||'-');
+				tagSub.textContent=(u.rooms?u.rooms+' חד׳':'דירה')+(u.sqm?' · '+fmt(u.sqm)+' מ"ר':'');
+				tag.appendChild(tagMain);
+				tag.appendChild(tagSub);
 				b.appendChild(tag);
 				b.addEventListener('click',function(e){e.preventDefault();e.stopPropagation();if(status==='sold'){return}selectUnit(u.id,'facade-cell')});
 				b.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();if(status!=='sold'){selectUnit(u.id,'facade-cell-key')}}});
@@ -1987,10 +2048,10 @@ if ( ! function_exists( 'nadlan_p3d_inline_js' ) ) {
 		}
 		function renderStageCard(){
 			if(!stageCard||!activeUnit){return}
-			stageCard.hidden=!hasStageSelection;
+			stageCard.hidden=!hasStageSelection||stageCardDismissed;
 			if(stageWrap){stageWrap.classList.toggle('has-stage-selection',hasStageSelection)}
 			root.classList.toggle('has-stage-selection',hasStageSelection);
-			if(!hasStageSelection){return}
+			if(!hasStageSelection||stageCardDismissed){return}
 			stageCard.dataset.status=activeUnit.status||'available';
 			stageCard.dataset.recommended=isRecommendedUnit(activeUnit)?'1':'0';
 			if(stageCardTitle){stageCardTitle.textContent=selectedTitle(activeUnit)}
@@ -2243,6 +2304,7 @@ if ( ! function_exists( 'nadlan_p3d_inline_js' ) ) {
 			var next=unitById(id);
 			if(next){activeUnit=next;activeFloor=parseInt(next.floor||activeFloor,10)}
 			hasStageSelection=!!next||hasStageSelection;
+			if(next){stageCardDismissed=false}
 			closeStagePickTips();
 			renderAll(false);
 			syncModelViewerCamera();
@@ -2331,6 +2393,16 @@ if ( ! function_exists( 'nadlan_p3d_inline_js' ) ) {
 				var next=!stageCard.classList.contains('is-expanded');
 				setStageCardExpanded(next);
 				track('stage_card_sheet',{expanded:next,unit:activeUnit&&activeUnit.id});
+			});
+		}
+		if(stageCardClose&&stageCard){
+			stageCardClose.addEventListener('click',function(e){
+				e.preventDefault();
+				e.stopPropagation();
+				stageCardDismissed=true;
+				stageCard.hidden=true;
+				setStageCardExpanded(false);
+				track('stage_card_close',{unit:activeUnit&&activeUnit.id});
 			});
 		}
 		stageTabs.forEach(function(btn){
@@ -2597,7 +2669,7 @@ add_action(
 			return;
 		}
 
-		wp_register_style( 'nadlan-p3d', '', array(), '1.66.3' );
+		wp_register_style( 'nadlan-p3d', '', array(), '1.66.4' );
 		wp_enqueue_style( 'nadlan-p3d' );
 		wp_add_inline_style( 'nadlan-p3d', nadlan_p3d_inline_css() );
 		wp_add_inline_style( 'nadlan-p3d', '.nlp3d-drag-note{display:inline-flex;align-items:center;min-height:44px;color:rgba(246,239,226,.72);font-size:12px;padding:0 6px}.nlp3d-scene{touch-action:none;cursor:grab}.nlp3d-scene.is-dragging{cursor:grabbing}.nlp3d-actions{grid-template-columns:1fr}.nlp3d-view-toggle{margin-top:12px;border:1px solid rgba(234,216,163,.36);background:rgba(255,255,255,.06);color:#ffe8a6;padding:9px 12px;cursor:pointer}.nlp3d-view-toggle.is-active{background:rgba(234,216,163,.18);color:#fff}.nlp3d-viewframe{position:relative;margin-top:12px;min-height:150px;overflow:hidden;border:1px solid rgba(234,216,163,.18);background:linear-gradient(180deg,rgba(41,112,139,.58),rgba(8,25,25,.92));isolation:isolate}.nlp3d-view-sky{position:absolute;inset:0;background:radial-gradient(circle at 18% 22%,rgba(255,255,255,.24),transparent 18%),linear-gradient(135deg,rgba(39,107,130,.42),rgba(18,50,43,.1));opacity:.86}.nlp3d-view-lines{position:absolute;inset:auto -8% 18% -8%;height:46%;border-top:1px solid rgba(234,216,163,.28);background:linear-gradient(160deg,rgba(234,216,163,.1),transparent 54%);transform:skewY(-8deg)}.nlp3d-view-copy{position:absolute;right:14px;left:14px;bottom:12px;margin:0;color:#fff8dc;font-size:13px;line-height:1.5;text-shadow:0 1px 12px rgba(0,0,0,.55)}@media(max-width:600px){.nlp3d-drag-note{flex-basis:100%;min-height:24px}.nlp3d-viewframe{min-height:130px}}' );
@@ -2659,6 +2731,8 @@ CSS
 CSS
 		);
 
+		wp_add_inline_style( 'nadlan-p3d', nadlan_p3d_showroom_dna_v1664_css() );
+
 		$post_id = is_singular( 'nadlan_project' ) ? (int) get_queried_object_id() : 0;
 		if ( $post_id > 0 && get_post_meta( $post_id, 'project_model_glb', true ) !== '' ) {
 			wp_register_script( 'nadlan-model-viewer', 'https://ajax.googleapis.com/ajax/libs/model-viewer/4.3.1/model-viewer.min.js', array(), '4.3.1', true );
@@ -2666,7 +2740,7 @@ CSS
 			wp_enqueue_script( 'nadlan-model-viewer' );
 		}
 
-		wp_register_script( 'nadlan-p3d', '', array(), '1.66.3', true );
+		wp_register_script( 'nadlan-p3d', '', array(), '1.66.4', true );
 		wp_enqueue_script( 'nadlan-p3d' );
 		wp_add_inline_script( 'nadlan-p3d', nadlan_p3d_inline_js( esc_url_raw( rest_url( 'nadlan/v1/lead' ) ) ) );
 	}
@@ -3062,6 +3136,11 @@ add_filter(
 			'dual_showroom_v1661' => true,
 			'embedded_selector_with_glb_v1661' => true,
 			'stage_xywh_fields_v1661' => true,
+			'showroom_dna_v1664' => true,
+			'facade_picker_side_by_side_v1664' => true,
+			'stage_card_dismiss_v1664' => true,
+			'context_pins_v1664' => true,
+			'poster_social_v1664' => true,
 			'showroom_payload_fields' => count( nadlan_p3d_showroom_fields() ),
 			'showroom_first_view' => true,
 			'static_featured_image_suppressed' => true,

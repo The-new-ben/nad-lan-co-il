@@ -347,6 +347,28 @@ if ( ! function_exists( 'nadlan_project_page_seed_rainbow_showroom_v1635' ) ) {
 }
 add_action( 'init', 'nadlan_project_page_seed_rainbow_showroom_v1635', 32 );
 
+if ( ! function_exists( 'nadlan_project_page_seed_rainbow_showroom_v1664' ) ) {
+	function nadlan_project_page_seed_rainbow_showroom_v1664() {
+		if ( get_option( 'nadlan_rainbow_showroom_v1664' ) ) {
+			return;
+		}
+		$post = nadlan_project_page_find_by_slug( 'rainbow-tel-aviv' );
+		if ( ! $post ) {
+			return;
+		}
+
+		$post_id = (int) $post->ID;
+		$poster  = 'https://raw.githubusercontent.com/The-new-ben/nad-lan-co-il/main/assets/projects/rainbow-tel-aviv/rainbow-showroom-hero-v1664.jpg';
+
+		update_post_meta( $post_id, 'project_model_poster', esc_url_raw( $poster ) );
+		update_post_meta( $post_id, '_yoast_wpseo_opengraph-image', esc_url_raw( $poster ) );
+		update_post_meta( $post_id, '_yoast_wpseo_twitter-image', esc_url_raw( $poster ) );
+
+		update_option( 'nadlan_rainbow_showroom_v1664', time(), false );
+	}
+}
+add_action( 'init', 'nadlan_project_page_seed_rainbow_showroom_v1664', 34 );
+
 add_filter( 'nadlan_config_healthcheck', function ( $out ) {
 	$post = nadlan_project_page_find_by_slug( 'rainbow-tel-aviv' );
 	$out['project_page_assembly'] = array(
@@ -356,6 +378,7 @@ add_filter( 'nadlan_config_healthcheck', function ( $out ) {
 		'rainbow_seo_v1634'  => (bool) get_option( 'nadlan_rainbow_seo_v1634' ),
 		'rainbow_public_copy_v1663' => (bool) get_option( 'nadlan_rainbow_public_copy_v1663' ),
 		'rainbow_showroom_v1635' => (bool) get_option( 'nadlan_rainbow_showroom_v1635' ),
+		'rainbow_showroom_v1664' => (bool) get_option( 'nadlan_rainbow_showroom_v1664' ),
 		'faq_meta'           => $post ? ( get_post_meta( (int) $post->ID, 'project_faq_json', true ) !== '' ) : false,
 		'price_meta'         => $post ? ( get_post_meta( (int) $post->ID, 'price_range', true ) !== '' ) : false,
 		'title_override'     => nadlan_project_page_rainbow_seo_title_text(),

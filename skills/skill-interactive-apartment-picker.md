@@ -15,3 +15,9 @@ Proven pattern (nad-lan v1.57.0, inc/project-3d.php). What the SaaS vendors actu
    -> paste as JSON. 30-60 min per building.
 7. NEXT TIERS: Mapbox GL fly-in intro (city -> project), per-floor stacking plans, vendor 3D twin
    (Smplrspace JS SDK) when the developer funds assets.
+
+2026 Rainbow clarification: when a GLB/model-viewer massing exists, do not replace the facade
+picker with floating dots. Keep the GLB as the rotating context model and place the fixed facade
+picker beside it. Apartment cells should be embedded in the facade/elevation plane, show status and
+basic unit facts, and open the existing selected-unit card. Only move picking into the GLB when the
+asset contains real per-apartment meshes/BIM IDs.

@@ -315,3 +315,31 @@ Public product copy must stay buyer-facing. Do not publish back-office terms suc
 funnel, CRM, monetization, or paid placement. The visible page should say inquiry, selected
 apartment, developer contact, availability check, and non-binding estimate.
 
+## Rainbow v1.66.4 QA Lesson: Showroom DNA
+
+The reusable product pattern is two surfaces, close together:
+
+- The rotating `model.glb` is the context surface. It gives the buyer the building massing,
+  surrounding area, sun/orientation cues, and premium spatial impression.
+- The fixed facade/elevation picker is the transaction surface. Apartment cells live on that
+  facade, are color-coded by status, and open the selected-apartment card.
+
+Do not try to make a massing GLB behave like a per-apartment sales model. True 360-degree
+apartment picking requires a developer BIM/GLB where each apartment is its own mesh. Until that
+asset exists, keep GLB rotation for context and use an adjacent facade/elevation picker for exact
+apartment choice.
+
+For every future project, the factory payload must include:
+
+- `project_model_glb` and `project_model_poster` for the rotating context model.
+- `project_3d_units` with `stage_x`, `stage_y`, `stage_w`, `stage_h`, status, rooms, sqm, view,
+  floor, label, price estimate, and optional tour/plan URLs.
+- `project_3d_environment_json` with project-relative context labels such as parks, coast,
+  transit, schools, neighboring projects, or civic services. These labels must be local to the
+  project; do not hard-code Rainbow/Sde Dov words into the runtime.
+- `project_3d_tour_url`, `project_3d_drawings_json`, and per-unit `tour_url`/`interior_url`
+  when a Matterport-style or Zillow/Homes.com-style interior tour is available.
+
+The selected-apartment card must never permanently block the facade picker. It needs a close
+control and must reopen when a new apartment is selected.
+
