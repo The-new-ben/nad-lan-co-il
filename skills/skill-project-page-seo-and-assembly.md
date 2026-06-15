@@ -22,6 +22,12 @@ Order on the page:
    - C: "מדריך לרוכשים מחו"ל" (מס רכישה לתושב חוץ [owner-lawyer verifies rates], ~50% LTV, ייפוי כוח, multilingual lawyer). This block targets the EN/FR/RU/AR "buying property in Israel as a foreigner" query family when translated.
 6. **International intent packing**: structure Hebrew around intents that exist in EN ("tel aviv apartments for sale", "israel real estate investment"), FR ("acheter appartement tel aviv"), RU ("купить квартиру в тель-авиве"), AR ("شقق فاخرة تل أبيب"). Numbers stay language-neutral (meta-driven, `Intl.NumberFormat` later). Keep ₪ + m² figures — international buyers search by m².
 
+International intent is not the same as multilingual readiness. A project is multilingual-ready only
+when each language has a real reviewed URL, translated buyer copy, translated FAQ, matching schema
+facts, legal/price disclaimers preserved, and `hreflang` added after publication. Until then, the
+Hebrew page can target foreign-buyer intent, but the template gate should treat translations as not
+ready.
+
 ## 3. Schema meta fields (v1.60.4+ emits automatically — just fill the meta)
 | Meta key | What | Example (Rainbow) |
 |---|---|---|
@@ -48,3 +54,5 @@ Assign the `nadlan_compound` term → schema emits containedInPlace + internal-l
 - [ ] Transactional keyword check: למכירה ≥3, מחיר ≥8 occurrences.
 - [ ] IndexNow ping fired (automatic on save).
 - [ ] Compound term assigned; appears on /compound/ hub.
+- [ ] If multilingual is claimed: reviewed translated URLs exist, `hreflang` is live, schema facts
+      match the Hebrew source, and no translated page invents price, availability or legal terms.

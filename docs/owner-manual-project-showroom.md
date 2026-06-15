@@ -233,6 +233,32 @@ Recommended wording:
 
 `אומדן לא מחייב לפי מקור מאושר. יש לאמת מחיר, זמינות ותנאים מול היזם לפני כל התקדמות.`
 
+## Investor And International Readiness
+
+Rainbow can be prepared for foreign buyers and investors, but translation is not automatic.
+
+Before publishing an English, French, Russian or other language version:
+
+1. Decide the URL pattern, for example `/en/projects/rainbow-tel-aviv/`.
+2. Translate the visible project copy, FAQ, price disclaimers, contact copy and legal notes.
+3. Keep the same sourced facts as the Hebrew page. Do not invent prices, tax rules, availability,
+   financing terms or official status in translation.
+4. Keep investor signals visible: developer, location, project status, price-estimate disclaimer,
+   apartment mix, view, transport, parks, nearby projects, buying-process note and source dates.
+5. Add `hreflang` only after the translated page is live and reviewed.
+6. Run the template gate again. A Hebrew page with no real translated URL is not multilingual-ready.
+
+For investor SEO, the page should answer:
+
+- what is available now, or how availability is checked;
+- what the price context is, with source and date;
+- why the location matters;
+- what the buyer can inspect in the showroom;
+- how to contact the project with the selected unit attached.
+
+If any of those are missing, the project can be a prototype, but it is not ready to clone as an
+international investor template.
+
 ## Media Fields
 
 `project_3d_video_url`
