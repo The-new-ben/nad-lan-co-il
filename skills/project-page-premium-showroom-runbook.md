@@ -261,3 +261,15 @@ before the buyer opens the card:
 3. Sold/unavailable cells are red, lower-emphasis, and not selectable.
 4. Non-available cell labels should include the status text inside the cell where space allows.
 5. The same status must be mirrored in the selected-apartment card edge color and status chip.
+
+## K. Hierarchy Standard v1.67.0
+
+For the clone-ready project showroom, keep the visible hierarchy stable:
+
+1. A real project media image or poster appears above the showroom and before the short SEO intro.
+2. The rotating GLB/model-viewer is context only unless the asset is true per-apartment BIM.
+3. The fixed facade/elevation is the primary apartment picker. Hide old floating model squares and model-viewer hotspots when the facade picker is present.
+4. The selected-apartment card docks below the scene on desktop, tablet and mobile. It must never permanently cover the model, facade, cells or lead form.
+5. On mobile, stack tightly: media image, intro, model, facade, selected card, then article.
+6. Article H2/H3 headings must share the same reading column as the paragraphs. Do not let theme-side headings drift to the far right while paragraphs sit in the center.
+7. Clone this as one layout contract for every project: poster, short intro, rotating context model, fixed inventory facade, selected-apartment card, structured article.

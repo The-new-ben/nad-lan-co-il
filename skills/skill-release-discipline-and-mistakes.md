@@ -170,3 +170,9 @@ node scripts\qa-rainbow-postdeploy.mjs --version <VERSION> --out docs\qa\rainbow
 **What happened:** v1.66.7 still failed because the root lived inside `.entry-content.wp-block-post-content` at `x=51`, and the parent had `overflow:hidden auto`.
 **Rule:** before another crop patch, capture the ancestor chain with `getBoundingClientRect()` and computed `overflow`, `marginLeft`, `width`, and `transform`. Patch the parent only if the parent is what clips the child.
 **Fix:** for Rainbow at 390px, set phone-only parent `overflow:visible` and root `margin-left:-50px`.
+
+### M13 - Do not let old selector layers fight the accepted architecture
+**What happened:** after the fixed facade picker was accepted as the buyer selector, older release CSS still rendered floating model squares and fixed/mobile cards that could cover the model or facade.
+**Why it hurt:** the buyer saw two competing selection systems and overlapping surfaces, so the product felt confusing even when the data was wired.
+**Rule:** once a project has the dual-showroom contract, the GLB is context and the facade is the picker. Add final scoped overrides after older CSS slices: hide `.nlp3d-stage-picks` and `.nlp3d-mv-hotspot` only in `.is-dual-showroom`, and dock `.nlp3d-stage-card` below the scene.
+**Fix command:** after deploy, click a facade cell at 1440/768/390 and verify the selected card does not overlap the model or facade.
