@@ -21,8 +21,11 @@ Result:
 - rooted under `nadlan-config/`: true
 - CRC: ok
 
-Inline verification, because `scripts/verify-plugin-release.py` is queued on the docs/readiness PR
-and is not yet present on this runtime branch:
+Release verification:
+
+```powershell
+python scripts\verify-plugin-release.py 1.66.3
+```
 
 - plugin header: `1.66.3`
 - main healthcheck version: `1.66.3`
@@ -92,7 +95,7 @@ the evidence that the goal is not yet complete on production.
 
 ## Template Gate On Production 1.66.2
 
-Command, from the docs/readiness branch where the stricter gate exists:
+Command:
 
 ```powershell
 node scripts\qa-project-template-gate.mjs --site https://nad-lan.co.il --slug rainbow-tel-aviv --post-id 4464 --min-version 1.66.3 --strict
