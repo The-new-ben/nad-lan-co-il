@@ -165,3 +165,8 @@ node scripts\qa-rainbow-postdeploy.mjs --version <VERSION> --out docs\qa\rainbow
 **What happened:** v1.66.6 used midpoint centering, but relative positioning centered against the theme column, not the viewport, so the measured 390px crop stayed unchanged.
 **Why it hurt:** it burned another deploy cycle because the fix was plausible but not proven on the live geometry.
 **Rule:** when a visual bug is measured in pixels, patch the measured viewport first, then generalize only after the gate passes. For this case: phone-only `margin-left:-25px`, tablet untouched.
+
+### M12 - Inspect the parent geometry before a third CSS patch
+**What happened:** v1.66.7 still failed because the root lived inside `.entry-content.wp-block-post-content` at `x=51`, and the parent had `overflow:hidden auto`.
+**Rule:** before another crop patch, capture the ancestor chain with `getBoundingClientRect()` and computed `overflow`, `marginLeft`, `width`, and `transform`. Patch the parent only if the parent is what clips the child.
+**Fix:** for Rainbow at 390px, set phone-only parent `overflow:visible` and root `margin-left:-50px`.
