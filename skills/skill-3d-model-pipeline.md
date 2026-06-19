@@ -343,3 +343,25 @@ For every future project, the factory payload must include:
 The selected-apartment card must never permanently block the facade picker. It needs a close
 control and must reopen when a new apartment is selected.
 
+## Dimri Yama Theme-First Lesson: Selected Unit To Lead Funnel
+
+For the next project, do not create a new plugin module just to render the showroom. Prefer a
+theme block pattern or theme template part for presentation, and keep the plugin as the shared
+data and REST rail.
+
+Minimum reusable markup contract:
+
+- Root wrapper: `data-nlps-showroom`, `data-nlps-project-title`, and `data-nlps-endpoint`.
+- Unit cells: `data-nlps-unit`, `data-unit-id`, `data-building`, `data-title`, `data-status`,
+  `data-rooms`, `data-sqm`, `data-floor`, `data-view`, and `data-note`.
+- Selected card: `data-nlps-card` plus fields for title, status, rooms, sqm, floor, view, note,
+  media panel, and a close button.
+- Buyer form: `data-nlps-lead-form`, posting to `/nadlan/v1/lead` with the selected apartment
+  context. It should support callback and non-binding purchase-check intents.
+
+Public copy still says "פנייה", "דברו איתנו", and "בדיקת רכישה לא מחייבת". It must not leak
+internal words such as lead, funnel, CRM, owner routing, automation, or monetization.
+
+Publishing requirement: when owner routing matters, publish the page as a real `nadlan_project`
+post or pass a valid `data-nlps-card-id`, so the shared lead endpoint can attribute the inquiry
+to the selected project.

@@ -84,6 +84,59 @@ if ( ! function_exists( 'nadlan_revenue_enqueue_styles' ) ) :
 endif;
 add_action( 'wp_enqueue_scripts', 'nadlan_revenue_enqueue_styles' );
 
+if ( ! function_exists( 'nadlan_revenue_enqueue_project_showroom_assets' ) ) :
+	function nadlan_revenue_enqueue_project_showroom_assets() {
+		if ( is_admin() || ! is_singular() ) {
+			return;
+		}
+
+		$post = get_post();
+		if ( ! $post || false === strpos( (string) $post->post_content, 'data-nlps-showroom' ) ) {
+			return;
+		}
+
+		$showroom_path = get_parent_theme_file_path( 'assets/css/nadlan-project-showroom.css' );
+		if ( file_exists( $showroom_path ) ) {
+			wp_enqueue_style(
+				'nadlan-project-showroom',
+				get_parent_theme_file_uri( 'assets/css/nadlan-project-showroom.css' ),
+				array( 'nadlan-revenue-style' ),
+				(string) filemtime( $showroom_path )
+			);
+		}
+
+		if ( ! wp_script_is( 'nadlan-model-viewer', 'registered' ) ) {
+			wp_register_script( 'nadlan-model-viewer', 'https://ajax.googleapis.com/ajax/libs/model-viewer/4.3.1/model-viewer.min.js', array(), '4.3.1', true );
+		}
+		wp_enqueue_script( 'nadlan-model-viewer' );
+
+		$script_path = get_parent_theme_file_path( 'assets/js/nadlan-project-showroom.js' );
+		if ( file_exists( $script_path ) ) {
+			wp_enqueue_script(
+				'nadlan-project-showroom',
+				get_parent_theme_file_uri( 'assets/js/nadlan-project-showroom.js' ),
+				array(),
+				(string) filemtime( $script_path ),
+				true
+			);
+		}
+	}
+endif;
+add_action( 'wp_enqueue_scripts', 'nadlan_revenue_enqueue_project_showroom_assets', 20 );
+
+add_filter(
+	'script_loader_tag',
+	function ( $tag, $handle, $src ) {
+		if ( 'nadlan-model-viewer' !== $handle ) {
+			return $tag;
+		}
+
+		return '<script type="module" src="' . esc_url( $src ) . '" id="nadlan-model-viewer-js"></script>' . "\n";
+	},
+	10,
+	3
+);
+
 /* ---------------------------------------------------------------------------
  * Accessibility widget (IS 5568 / WCAG) — self-contained JS, front-end only.
  * ------------------------------------------------------------------------- */

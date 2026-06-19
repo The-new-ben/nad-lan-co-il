@@ -1,0 +1,24 @@
+{
+  "source_policy": "Prototype only. Replace placeholders with approved developer drawings before commercial publication.",
+  "items": [
+    {
+      "label": "Building A sample plan",
+      "type": "floor_plan",
+      "url": "",
+      "source": "Public plan category confirmed; actual drawing pending permission."
+    },
+    {
+      "label": "Building B sample plan",
+      "type": "floor_plan",
+      "url": "",
+      "source": "Public plan category confirmed; actual drawing pending permission."
+    },
+    {
+      "label": "Compound orientation",
+      "type": "site_plan",
+      "url": "",
+      "source": "To be generated as illustrative orientation until official site plan is approved."
+    }
+  ]
+}
+
