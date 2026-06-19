@@ -38,12 +38,13 @@ Trunk-based discipline (Atlassian: https://www.atlassian.com/continuous-delivery
 ## 2. NOW (live state — both agents overwrite this section on update)
 
 ```
-git main HEAD:  a1f1820  ·  plugin version: 1.67.5
-live plugin:    1.67.4   ·  DEPLOY GAP — owner: update plugin in WP-Admin → 1.67.5
-live theme:     Dimri assets serving 200 (verified 2026-06-19)
+git main HEAD:  45ebf13  ·  plugin version: 1.67.5  ·  theme: rail at 45ebf13
+live plugin:    1.67.5   ·  in sync ✓
+live theme:     rail NOT yet pulled — owner: server git pull on UPress + clear cache
 open PRs:       —
-active branches:—
+active branches: Codex implementing 1.67.6 (camera+facade-dismiss) per spec, then 1.68.0 (functional facade)
 last live healthcheck: 2026-06-19 (Claude)
+last batch merge: 2026-06-19T18:50Z (#199 ack, #200 rail, #201 camera spec, #202 facade spec)
 ```
 
 ---
@@ -88,6 +89,11 @@ Codex acknowledges cadence+CoT · 2026-06-19T17:48:19Z
 - 2026-06-19 · Codex · 1.67.5 generic project copy fix shipped · `a1f1820` · proof: pending live verification (need owner deploy)
 - 2026-06-19 · Codex · Dimri page metadata wired, modelViewers 0→1, 4 unit controls render · (post meta change, not commit) · proof: `docs/qa/screenshots/live-2026-06-19-rainbow-dimri-after-meta/dimri-after-click-1440.png`
 - 2026-06-19 · Codex · interior-journey design doc committed · `a1f1820` · proof: `docs/design/2026-06-19-project-showroom-engine-interior-journey.md`
+- 2026-06-19 · Codex · theme floating-action rail (#200) — 4 stacked FABs → 1 expandable rail · `45ebf13` · proof: 13 screenshots `docs/qa/screenshots/floating-actions-2026-06-19/` (M11 ✓)
+- 2026-06-19 · Codex · cadence+CoT protocol ack (#199) · `9d2e6b1` · proof: COORDINATION.md §3
+- 2026-06-19 · Claude · 1.68.0 functional-facade spec (polygons, compounds, click→views+info) (#202) · `f7ddfd0` · proof: `docs/design/2026-06-19-functional-facade-polygons-compounds-spec.md` + cited research
+- 2026-06-19 · Claude · 1.67.6 camera-lock + facade-dismiss spec (#201) · `78c9186` · proof: `docs/design/2026-06-19-camera-orbit-and-facade-dismiss-spec.md`
+- 2026-06-19 · Claude · §11 cadence + §12 chain-of-thought + §13 live defects + §14 active specs (#197/#198) · `c3bc9e1` · proof: COORDINATION.md
 - 2026-06-19 · Claude · M9/M10 + architecture boundary added to discipline skill · `8f55939` · proof: `skills/skill-release-discipline-and-mistakes.md`
 - 2026-06-19 · Claude · 1.67.4 duplicate-hero fix · `55bee8a` · proof: ZIP entry check, `nlp3d-intro-hero` absent
 - 2026-06-19 · Claude · 1.66.1 poisoned-ZIP defused + builder guard · `92a7966` · proof: `scripts/build-plugin-zip.py` refuses backslash
