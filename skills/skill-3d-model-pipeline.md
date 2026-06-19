@@ -75,7 +75,10 @@ Project fields:
 - Use `reveal="auto"` and a poster image so the buyer sees the building without first clicking a
   blank frame.
 - When the GLB `load` event fires, hide the procedural tower, facade, sea, runway and horizon
-  layers completely. They are fallback layers only. If the GLB errors, show the fallback again.
+  layers completely. They are legacy/prototype layers only, not silent recovery layers.
+- No silent showroom fallbacks: if the GLB, facade image, tour, drawing or other showroom asset
+  fails, show a visible failure state and log the defect. Do not silently reload the old tower,
+  old facade or fake material as a substitute.
 - If the GLB is a massing/prototype model and does not contain apartment-level meshes, do not place
   free-floating dots around it and pretend those are apartments. Keep the GLB as the premium
   rotating showroom object, and place a locked facade/elevation selector beside it. The facade
@@ -144,8 +147,9 @@ model annotation script. Store only coordinates, not private source files.
   the GLB rail works.
 - Use `reveal="auto"` and `loading="auto"` for near-top flagship showroom models, with a poster
   image so the stage is never blank while the GLB streams.
-- Keep procedural/facade fallback visible until the model loads.
-- If the model errors, do not leave a blank stage.
+- Keep a poster or explicit loading state visible until the model loads.
+- If the model errors, show a clear visible model-error state. Do not resurrect the procedural
+  tower or legacy facade as a hidden fallback.
 - Model hotspots must call the same selected-unit flow as facade/SVG clicks.
 - Unit markers must be buyer-obvious without becoming text blobs on the model: use clean
   apartment cells/rectangles with 44px+ hit areas, status color, hover/focus tooltip on desktop,

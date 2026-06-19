@@ -53,6 +53,22 @@ last batch merge: 2026-06-19T18:50Z (#199 ack, #200 rail, #201 camera spec, #202
 
 Codex acknowledges cadence+CoT · 2026-06-19T17:48:19Z
 
+### Codex plan · UTC 2026-06-19T19:05:00Z
+Goal in one sentence: ship the showroom core polish as a safe plugin PR that locks building camera movement horizontally by default, makes the facade dismissible/recoverable, exposes the controls in CMS/REST, and adds the functional facade hooks for richer unit views without merging or deploying myself.
+1. [x] Add CMS/REST fields and sanitizers for camera lock, facade images, site plan image, and site plan polygons. (touches: plugins/nadlan-config/inc/project-3d.php) (deploy-path: PLUGIN)
+2. [x] Drive model-viewer camera attributes from per-project meta so default projects cannot tumble underneath the building, while free orbit remains opt-in. (touches: plugins/nadlan-config/inc/project-3d.php) (deploy-path: PLUGIN)
+3. [x] Add facade dismiss/restore controls, session persistence, and mobile-safe CSS so the selector can be hidden if it crowds the model. (touches: plugins/nadlan-config/inc/project-3d.php) (deploy-path: PLUGIN)
+4. [x] Enrich the selected-apartment journey with visible tour/drawing/media tabs and cell labels that surface floor, rooms, area, view, and non-binding price where available. (touches: plugins/nadlan-config/inc/project-3d.php) (deploy-path: PLUGIN)
+5. [x] Bump to 1.68.0, rebuild the plugin ZIP with the canonical builder, and commit screenshots at 1440/768/390 plus version proof. Screenshots are current-live 1.67.5 baseline evidence; post-deploy screenshots must rerun after 1.68.0 is live. (touches: plugins/nadlan-config/*, plugin-dist/*, docs/qa/screenshots/showroom-core-1680/*) (deploy-path: PLUGIN)
+Acceptance gate I will satisfy: php -l clean, inline JS node --check clean, ZIP guard clean/rootless/no backslashes, version surfaces aligned at 1.68.0, selector markers survive, screenshots committed at 1440/768/390, and PR opened ready-for-review for Claude.
+Blockers I see: none for code/QA. Live deployment remains owner-only after Claude merges.
+
+REASONING
+- SAW: main/worktree base f42f3de and live healthcheck 1.67.5 are in sync; COORDINATION.md §14 has 1.67.6 and 1.68.0 specs.
+- THOUGHT: combining the camera/dismiss slice with the light functional-facade hooks is safer as one versioned plugin release because the same runtime and healthcheck surfaces are touched.
+- DID: declared a small additive plugin plan before editing.
+- CHECKED: branch is `codex/showroom-core-polish-2026-06-19` and starts clean from origin/main.
+
 > Template Codex pastes:
 > ```
 > ### Codex plan · UTC <time>
@@ -208,6 +224,7 @@ Verified from live HTML of `/projects/dimri-yama-sde-dov/` (server-side; Codex m
 
 ## 14. ACTIVE SPECS (Codex implements; Claude provides)
 
+- **2026-06-20 — No silent showroom fallbacks** → if a model, facade or asset fails, show a visible failure state. Do not silently load the old tower/facade as a substitute. Legacy facade markup may render only when it is the intentional primary surface for an old project.
 - **2026-06-19 — 3D camera lock + facade dismissible + CMS wiring** → `docs/design/2026-06-19-camera-orbit-and-facade-dismiss-spec.md` · target version **1.67.6** · Codex builds, Claude reviews/gates/merges. Owner verbatim citations in §1 of the spec.
 - *(M11 reminder: PR must include screenshots at 1440 / 768 / 390 under `docs/qa/screenshots/v1676-camera-facade/`.)*
 - **2026-06-19 — Functional facade (polygons not squares, compounds, click→views+info)** → `docs/design/2026-06-19-functional-facade-polygons-compounds-spec.md` · target **1.68.0** · research-cited (Interactive Real Estate, Render Vision, VisEngine). Sequence: after 1.67.6.

@@ -86,8 +86,8 @@ open a second feature/PR/deploy path while the current proof is unresolved.
    - or `לפי פנייה`.
    Anything estimated must say `אומדן` and `לא מחייב`.
 10. If a real GLB is loaded, the fallback procedural tower must disappear. Seeing both the old tower
-    and the GLB together is a hard visual failure. Keep the fallback only for `no model` or `model
-    error`.
+    and the GLB together is a hard visual failure. A model error must show a visible error state,
+    not silently bring back the old tower or old facade.
 11. If the GLB is not apartment-level BIM, keep it as the rotating product object and add a static
     facade/elevation selector beside it for apartment picking. This is not a downgrade: it is the
     honest product architecture until every apartment exists as its own GLB mesh. The buyer clicks
