@@ -204,4 +204,5 @@ Verified from live HTML of `/projects/dimri-yama-sde-dov/` (server-side; Codex m
 
 - **2026-06-19 — 3D camera lock + facade dismissible + CMS wiring** → `docs/design/2026-06-19-camera-orbit-and-facade-dismiss-spec.md` · target version **1.67.6** · Codex builds, Claude reviews/gates/merges. Owner verbatim citations in §1 of the spec.
 - *(M11 reminder: PR must include screenshots at 1440 / 768 / 390 under `docs/qa/screenshots/v1676-camera-facade/`.)*
+- **2026-06-19 — Functional facade (polygons not squares, compounds, click→views+info)** → `docs/design/2026-06-19-functional-facade-polygons-compounds-spec.md` · target **1.68.0** · research-cited (Interactive Real Estate, Render Vision, VisEngine). Sequence: after 1.67.6.
 - Engelmore & Morgan, *Blackboard Systems* (1988) — classic foundation; see also Hayes-Roth, *A blackboard architecture for control* (1985).
