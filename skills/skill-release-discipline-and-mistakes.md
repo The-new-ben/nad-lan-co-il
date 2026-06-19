@@ -19,6 +19,53 @@ The single most expensive recurring confusion: **pushing/merging code is not dep
 
 ---
 
+## 0a. SESSION-START SYNC — run this every time, both agents, 60 seconds
+
+Before reading the user's request, before writing any code, before opening any branch:
+
+```bash
+cd /path/to/your/ONE/canonical/checkout    # Codex: C:\Users\pro\nad-lan-co-il (NOT .codex-tmp)
+git fetch origin main && git checkout main && git reset --hard origin/main
+
+# A. CURRENT GIT STATE
+echo "main HEAD: $(git rev-parse --short HEAD)"
+echo "git version: $(grep -m1 'Version:' plugins/nadlan-config/nadlan-config.php)"
+
+# B. CURRENT LIVE STATE (the only truth that matters for 'done')
+curl -s https://nad-lan.co.il/wp-json/nadlan/v1/healthcheck | python3 -c "import json,sys;d=json.load(sys.stdin);print('live version:',d.get('version'));print('live flags:',[k for k,v in d.get('project_3d',{}).items() if v is True][:6])"
+
+# C. OPEN PRs (what the OTHER agent is doing)
+# look at github.com/The-new-ben/nad-lan-co-il/pulls
+
+# D. THE ONE SENTENCE
+# "main is X. Live is Y. Open PRs touching project-3d.php: [list]. Real blocker right now: ___."
+```
+
+If `git version > live version`, **the next action is deploy, not more code.** Do not start a new feature on top of an undeployed stack — that is M0 + M6 compounded.
+
+Both agents must paste this state at the **top** of any "what I'm going to do" message. If you can't paste it, you haven't synched.
+
+---
+
+## 0b. SYMMETRY CONTRACT — both agents are bound, not just Codex
+
+This is not a Codex lecture. **Claude has made every one of these mistakes too** in this codebase. The contract is mutual:
+
+| | Claude commits to | Codex commits to |
+|---|---|---|
+| One checkout | work only in `/home/user/nad-lan-co-il` | work only in `C:\Users\pro\nad-lan-co-il` (never `.codex-tmp`) |
+| `project-3d.php` | edit it (owner per 2026-06-14) — but only after §0a | **never** edit it; propose via PR comment / spec |
+| Theme files | propose via PR comment / spec | edit them (owner per 2026-06-19) |
+| Pre-work | run §0a + grep main for what's already done before writing anything | same |
+| Done | "merged" vs "deployed" — state which (M0/M8) | same |
+| Verification | every integrity claim backed by a command pasted in the PR (M5) | same |
+| Stop rule | when blocked on deploy, stop and say so (M6) — don't ship docs to look busy | same |
+| Sync | post §0a state at the top of status updates | same |
+
+Either agent calling out a violation by the other is welcome. The owner should not have to be the referee.
+
+---
+
 ## 1. THE MISTAKE CATALOG
 
 ### M1 — Version racing / picking a number ≤ main  *(caused PR #181 = a regression)*
