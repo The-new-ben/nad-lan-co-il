@@ -1,0 +1,727 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>DIMRI YAMA · תצוגת פרויקט</title>
+  <!-- Layout QA preview: production loads model-viewer through the theme when the pattern is rendered. -->
+  <style>
+    :root {
+      --ink: #071d1d;
+      --deep: #082b2b;
+      --panel: #0b3130;
+      --gold: #dfbd73;
+      --gold-soft: #f2dfa7;
+      --line: rgba(242, 223, 167, .32);
+      --text: #f7f1dc;
+      --muted: #bfd0ca;
+      --paper: #f7f1e8;
+      --body: #20231f;
+      --green: #34d986;
+      --amber: #e7b952;
+      --grey: #9aa7a7;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    * { box-sizing: border-box; }
+    html, body {
+      width: 100%;
+      max-width: 100%;
+      overflow-x: hidden;
+      direction: ltr;
+    }
+    body {
+      margin: 0;
+      background: var(--paper);
+      color: var(--body);
+      line-height: 1.7;
+    }
+
+    .page {
+      direction: rtl;
+      width: 100%;
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 22px clamp(10px, 3.2vw, 24px) 72px;
+    }
+    .page *,
+    .showroom *,
+    .intro * {
+      min-width: 0;
+    }
+
+    .breadcrumbs {
+      margin: 0 0 14px;
+      color: #756d5c;
+      font-size: 13px;
+      overflow-wrap: anywhere;
+    }
+
+    .poster {
+      position: relative;
+      margin: 0;
+      overflow: hidden;
+      border-radius: 16px;
+      box-shadow: 0 20px 52px rgba(12, 27, 24, .22);
+      border: 1px solid rgba(95, 73, 34, .18);
+      background: var(--deep);
+    }
+    .poster img {
+      display: block;
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      object-fit: cover;
+    }
+    .poster figcaption {
+      position: absolute;
+      inset-inline: 18px;
+      bottom: 16px;
+      display: flex;
+      justify-content: space-between;
+      gap: 14px;
+      align-items: center;
+      padding: 10px 14px;
+      border: 1px solid rgba(242, 223, 167, .46);
+      border-radius: 999px;
+      background: rgba(4, 24, 24, .78);
+      color: var(--text);
+      backdrop-filter: blur(8px);
+      font-size: 14px;
+    }
+
+    .intro {
+      width: min(900px, 100%);
+      margin: 24px auto 18px;
+      text-align: center;
+    }
+    .intro .eyebrow {
+      color: #a67d30;
+      font-size: 13px;
+      font-weight: 700;
+    }
+    .intro h1 {
+      margin: 8px 0 10px;
+      color: #171b17;
+      font-size: clamp(29px, 4.4vw, 54px);
+      line-height: 1.08;
+      letter-spacing: 0;
+      overflow-wrap: anywhere;
+    }
+    .intro p {
+      margin: 0 auto;
+      color: #3f413a;
+      font-size: clamp(16px, 1.75vw, 19px);
+      max-width: 820px;
+    }
+
+    .showroom {
+      width: 100%;
+      margin: 26px 0;
+      border-radius: 18px;
+      background:
+        radial-gradient(circle at 20% 18%, rgba(242, 223, 167, .16), transparent 25%),
+        linear-gradient(135deg, #051f21, #0c3836 58%, #071b1c);
+      color: var(--text);
+      border: 1px solid rgba(242, 223, 167, .28);
+      box-shadow: 0 30px 70px rgba(6, 29, 28, .34);
+      overflow: hidden;
+    }
+    .showroom-head {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 18px;
+      padding: 22px 24px 12px;
+      border-bottom: 1px solid rgba(242, 223, 167, .16);
+    }
+    .showroom-head h2 {
+      margin: 0;
+      color: var(--text);
+      font-size: clamp(22px, 2.35vw, 34px);
+      line-height: 1.2;
+      overflow-wrap: anywhere;
+    }
+    .showroom-head p {
+      margin: 6px 0 0;
+      color: var(--muted);
+      max-width: 720px;
+    }
+    .status-legend {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      flex: 0 0 auto;
+      color: var(--muted);
+      font-size: 13px;
+    }
+    .status-legend span { display: inline-flex; gap: 6px; align-items: center; }
+    .swatch {
+      width: 12px;
+      height: 12px;
+      border-radius: 3px;
+      border: 1px solid currentColor;
+    }
+    .swatch.available { background: var(--green); color: var(--green); }
+    .swatch.reserved { background: var(--amber); color: var(--amber); }
+    .swatch.sold { background: var(--grey); color: var(--grey); }
+
+    .showroom-grid {
+      direction: ltr;
+      display: grid;
+      grid-template-columns: minmax(0, 1.05fr) minmax(330px, .95fr);
+      gap: 18px;
+      padding: 20px;
+      align-items: stretch;
+      overflow: hidden;
+    }
+    .stage, .facade {
+      direction: rtl;
+      min-width: 0;
+      background: rgba(0, 0, 0, .18);
+      border: 1px solid rgba(242, 223, 167, .2);
+      border-radius: 14px;
+      overflow: hidden;
+    }
+    .stage {
+      display: grid;
+      grid-template-rows: minmax(360px, 52vh) auto;
+    }
+    model-viewer {
+      display: block;
+      width: 100%;
+      height: 100%;
+      background:
+        linear-gradient(180deg, rgba(42, 93, 92, .42), transparent),
+        radial-gradient(circle at 35% 28%, rgba(242, 223, 167, .16), transparent 25%);
+    }
+    .stage-caption {
+      padding: 14px 16px;
+      border-top: 1px solid rgba(242, 223, 167, .15);
+      color: var(--muted);
+      font-size: 14px;
+    }
+    .stage-caption strong {
+      display: block;
+      color: var(--gold-soft);
+      font-size: 16px;
+      margin-bottom: 2px;
+    }
+
+    .facade { padding: 16px; }
+    .facade-title {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      align-items: flex-start;
+      margin-bottom: 12px;
+    }
+    .facade-title h3 {
+      margin: 0;
+      color: var(--text);
+      font-size: 22px;
+    }
+    .facade-title p {
+      margin: 4px 0 0;
+      color: var(--muted);
+      font-size: 13px;
+    }
+    .chip {
+      display: inline-flex;
+      align-items: center;
+      min-height: 30px;
+      padding: 4px 10px;
+      border: 1px solid rgba(242, 223, 167, .32);
+      border-radius: 999px;
+      color: var(--gold-soft);
+      white-space: nowrap;
+      font-size: 12px;
+      font-weight: 700;
+    }
+    .facade-plane {
+      position: relative;
+      aspect-ratio: 4 / 3;
+      border-radius: 12px;
+      overflow: hidden;
+      background: rgba(3, 21, 21, .6);
+      border: 1px solid rgba(242, 223, 167, .18);
+    }
+    .facade-plane img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      pointer-events: none;
+    }
+    .unit-cell {
+      position: absolute;
+      transform: translate(-50%, -50%);
+      min-width: 46px;
+      min-height: 46px;
+      border-radius: 10px;
+      border: 2px solid var(--green);
+      background: rgba(52, 217, 134, .18);
+      color: var(--text);
+      display: grid;
+      place-items: center;
+      font-weight: 800;
+      font-size: 12px;
+      cursor: pointer;
+      box-shadow: 0 0 0 0 rgba(52, 217, 134, .34);
+      transition: transform .16s ease, box-shadow .16s ease, background .16s ease;
+    }
+    .unit-cell:hover,
+    .unit-cell:focus-visible,
+    .unit-cell.is-active {
+      outline: none;
+      transform: translate(-50%, -50%) scale(1.08);
+      box-shadow: 0 0 0 8px rgba(52, 217, 134, .14);
+      background: rgba(52, 217, 134, .28);
+    }
+    .unit-cell.is-recommended { animation: pulse 1.9s infinite; }
+    .unit-cell.status-reserved {
+      border-color: var(--amber);
+      background: rgba(231, 185, 82, .18);
+    }
+    .unit-cell.status-sold {
+      border-color: var(--grey);
+      background: rgba(154, 167, 167, .18);
+      color: #d7dddd;
+    }
+    @keyframes pulse {
+      0% { box-shadow: 0 0 0 0 rgba(52, 217, 134, .45); }
+      70% { box-shadow: 0 0 0 13px rgba(52, 217, 134, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(52, 217, 134, 0); }
+    }
+
+    .selected-card {
+      margin-top: 14px;
+      padding: 16px;
+      border-radius: 14px;
+      border: 1px solid rgba(242, 223, 167, .28);
+      background: rgba(3, 20, 20, .64);
+    }
+    .selected-card[hidden] { display: none; }
+    .selected-card header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 12px;
+    }
+    .selected-card h3 {
+      margin: 8px 0 0;
+      color: var(--text);
+      font-size: 24px;
+      line-height: 1.28;
+      overflow-wrap: anywhere;
+    }
+    .dismiss {
+      width: 44px;
+      height: 44px;
+      border-radius: 999px;
+      border: 1px solid rgba(242, 223, 167, .3);
+      background: transparent;
+      color: var(--text);
+      cursor: pointer;
+      font-size: 20px;
+    }
+    .facts {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px;
+      margin: 14px 0;
+    }
+    .fact {
+      padding: 10px;
+      border-radius: 10px;
+      background: rgba(255, 255, 255, .045);
+      color: var(--muted);
+      font-size: 13px;
+    }
+    .fact strong {
+      display: block;
+      color: var(--text);
+      font-size: 17px;
+    }
+    .selected-card p {
+      margin: 0 0 12px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+    .tabs {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 6px;
+      margin-top: 12px;
+    }
+    .tabs button,
+    .cta {
+      min-height: 44px;
+      border: 1px solid rgba(242, 223, 167, .28);
+      border-radius: 10px;
+      background: rgba(255, 255, 255, .06);
+      color: var(--text);
+      cursor: pointer;
+      font-weight: 700;
+      overflow-wrap: anywhere;
+    }
+    .tabs button.is-active,
+    .cta {
+      background: linear-gradient(180deg, #f0d999, #c99c49);
+      color: #12130f;
+      border-color: transparent;
+    }
+    .media-panel {
+      margin-top: 10px;
+      min-height: 118px;
+      border-radius: 12px;
+      border: 1px dashed rgba(242, 223, 167, .35);
+      display: grid;
+      place-items: center;
+      padding: 14px;
+      color: var(--muted);
+      text-align: center;
+      background: rgba(255, 255, 255, .035);
+    }
+
+    .lead-form {
+      margin-top: 14px;
+      padding-top: 14px;
+      border-top: 1px solid rgba(242, 223, 167, .16);
+    }
+    .form-title {
+      margin: 0 0 10px !important;
+      color: var(--text) !important;
+      font-weight: 800;
+    }
+    .form-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 8px;
+    }
+    .form-grid label {
+      display: grid;
+      gap: 5px;
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 700;
+    }
+    .form-grid input,
+    .form-grid select {
+      box-sizing: border-box;
+      width: 100%;
+      min-height: 42px;
+      padding: 8px 10px;
+      border: 1px solid rgba(242, 223, 167, .22);
+      border-radius: 10px;
+      background: rgba(255, 255, 255, .08);
+      color: var(--text);
+      font: inherit;
+    }
+    .form-grid input::placeholder { color: rgba(247, 241, 220, .46); }
+    .lead-actions {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 8px;
+      margin-top: 10px;
+    }
+    .lead-actions button {
+      min-height: 44px;
+      border: 1px solid rgba(242, 223, 167, .34);
+      border-radius: 10px;
+      background: rgba(255, 255, 255, .06);
+      color: var(--text);
+      cursor: pointer;
+      font-weight: 800;
+    }
+    .lead-actions .primary {
+      border-color: transparent;
+      background: linear-gradient(180deg, #f0d999, #c99c49);
+      color: #12130f;
+    }
+    .legal,
+    .ok {
+      margin-top: 9px !important;
+      font-size: 12px !important;
+    }
+    .ok {
+      padding: 9px 10px;
+      border-radius: 10px;
+      background: rgba(52, 217, 134, .12);
+      color: #e9f9ee !important;
+    }
+
+    .lower-content {
+      width: min(900px, 100%);
+      margin: 30px auto 0;
+    }
+    .lower-content h2,
+    .lower-content h3 {
+      color: #191c18;
+      margin: 34px 0 10px;
+      text-align: right;
+      max-width: 100%;
+    }
+    .lower-content p,
+    .lower-content ul {
+      margin: 0 0 16px;
+      color: #36382f;
+      font-size: 17px;
+    }
+    .note {
+      border-right: 4px solid #c99c49;
+      padding: 14px 16px;
+      background: #fffaf0;
+      border-radius: 10px 0 0 10px;
+    }
+
+    @media (max-width: 900px) {
+      .showroom-head { display: block; }
+      .status-legend { margin-top: 12px; }
+      .showroom-grid {
+        grid-template-columns: minmax(0, 1fr);
+        padding: 12px;
+      }
+      .stage { grid-template-rows: minmax(280px, 44vh) auto; }
+      .tabs { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .poster figcaption {
+        position: static;
+        border: 0;
+        border-radius: 0;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .page {
+        width: 100%;
+        max-width: 100%;
+        padding: 10px 9px 54px;
+        overflow-x: hidden;
+      }
+      .poster,
+      .intro,
+      .showroom,
+      .lower-content {
+        width: calc(100vw - 18px);
+        max-width: calc(100vw - 18px);
+        margin-right: auto;
+        margin-left: auto;
+      }
+      .showroom-grid,
+      .stage,
+      .facade,
+      .facade-plane,
+      .selected-card {
+        width: 100%;
+        max-width: 100%;
+        overflow-x: hidden;
+      }
+      .intro { margin-top: 18px; }
+      .intro h1 { font-size: 24px; line-height: 1.18; }
+      .intro p { font-size: 15px; }
+      .poster { border-radius: 13px; }
+      .poster img { object-fit: contain; background: #062828; }
+      .poster figcaption { display: grid; gap: 4px; font-size: 12px; }
+      .showroom { border-radius: 14px; }
+      .showroom-head { padding: 16px 14px 8px; }
+      .showroom-head h2 { font-size: 21px; line-height: 1.25; }
+      .status-legend { gap: 8px; font-size: 12px; }
+      .stage { grid-template-rows: 270px auto; }
+      .facade { padding: 12px; }
+      .facade-title { display: block; }
+      .facade-title h3 { font-size: 20px; }
+      .facade-plane { aspect-ratio: 1 / 1.1; }
+      .selected-card { padding: 13px; }
+      .form-grid,
+      .lead-actions { grid-template-columns: 1fr; }
+      .selected-card header { display: block; }
+      .dismiss { margin-bottom: 10px; }
+      .selected-card h3 { font-size: 19px; line-height: 1.35; }
+      .facts { grid-template-columns: 1fr; }
+      .unit-cell { min-width: 44px; min-height: 44px; font-size: 11px; }
+      .lower-content p, .lower-content ul { font-size: 15px; }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <p class="breadcrumbs">נדל״ן חכם / פרויקטים / DIMRI YAMA</p>
+    <figure class="poster">
+      <img src="../../assets/projects/dimri-yama/poster-prototype.webp" alt="דמרי ימה בשדה דב - הדמיה רעיונית עם מודל תלת ממד ובחירת דירה">
+      <figcaption><strong>דמרי ימה · שדה דב</strong><span>הדמיה רעיונית להמחשה בלבד</span></figcaption>
+    </figure>
+
+    <section class="intro" aria-labelledby="page-title">
+      <span class="eyebrow">פרויקט חדש ברובע שדה דב</span>
+      <h1 id="page-title">דמרי ימה · בחירת דירה במודל פרויקט</h1>
+      <p>דמרי ימה ממוקם בין חוף תל אביב לפארק הירקון, עם ארבעה מבנים ושכבת תצוגה שמאפשרת לבחור דירה, לבדוק כיוון ונוף, ולפנות עם פרטי הדירה שנבחרה.</p>
+    </section>
+
+    <section class="showroom" aria-labelledby="showroom-title">
+      <div class="showroom-head">
+        <div>
+          <h2 id="showroom-title">תצוגת דירות: מודל וסימון חזית</h2>
+          <p>המודל מציג את ההקשר: ים, שמש, פארק ומבנים. בחירת הדירה נעשית על חזית קבועה, כדי שהדירה תהיה חלק מהבניין ולא סימון צף.</p>
+        </div>
+        <div class="status-legend" aria-label="מקרא זמינות">
+          <span><i class="swatch available"></i> זמינה</span>
+          <span><i class="swatch reserved"></i> בבדיקה</span>
+          <span><i class="swatch sold"></i> לא זמינה</span>
+        </div>
+      </div>
+
+      <div class="showroom-grid">
+        <section class="stage" aria-label="מודל תלת ממד של סביבת הפרויקט">
+          <model-viewer
+            src="../../assets/projects/dimri-yama/model-prototype.glb"
+            poster="../../assets/projects/dimri-yama/poster-prototype.webp"
+            camera-controls
+            auto-rotate
+            auto-rotate-delay="1800"
+            rotation-per-second="10deg"
+            reveal="auto"
+            loading="auto"
+            min-camera-orbit="-Infinity 45deg auto"
+            max-camera-orbit="Infinity 78deg auto"
+            camera-orbit="35deg 62deg 70m"
+            shadow-intensity="0.8"
+            interaction-prompt="none"
+            ar-status="not-presenting">
+          </model-viewer>
+          <div class="stage-caption">
+            <strong>מודל הקשר, לא בחירת דירה</strong>
+            סובבו את המודל כדי להבין ים, פארק, שמש ומיקום. הדירות נבחרות בחזית הקבועה לידו.
+          </div>
+        </section>
+
+        <section class="facade" aria-label="בחירת דירה על חזית הפרויקט">
+          <div class="facade-title">
+            <div>
+              <h3>בחרו דירה על החזית</h3>
+              <p>הנתונים כאן הם דוגמה בלבד עד קבלת מלאי רשמי מהיזם.</p>
+            </div>
+            <span class="chip">אב־טיפוס</span>
+          </div>
+          <div class="facade-plane">
+            <img src="../../assets/projects/dimri-yama/facade-prototype.svg" alt="">
+            <button class="unit-cell is-recommended is-active status-available" style="left:20.2%;top:53%;" data-unit="a-08-03">A-8</button>
+            <button class="unit-cell is-recommended status-reserved" style="left:46%;top:34.5%;" data-unit="b-15-05">B-15</button>
+            <button class="unit-cell status-reserved" style="left:69.8%;top:64%;" data-unit="c-06-04">C-6</button>
+            <button class="unit-cell status-available" style="left:86.5%;top:76%;" data-unit="d-04-studio">D-4</button>
+          </div>
+
+          <article class="selected-card" id="selected-card" aria-live="polite">
+            <header>
+              <div>
+                <span class="chip" id="unit-status">זמינה לפנייה</span>
+                <h3 id="unit-title">A-8 · קומה 8 · 3 חדרים</h3>
+              </div>
+              <button class="dismiss" type="button" aria-label="סגירת כרטיס הדירה">×</button>
+            </header>
+            <div class="facts">
+              <div class="fact">חדרים<strong id="unit-rooms">3</strong></div>
+              <div class="fact">שטח<strong id="unit-sqm">82 מ״ר</strong></div>
+              <div class="fact">קומה<strong id="unit-floor">8</strong></div>
+              <div class="fact">נוף<strong id="unit-view">כיוון ים</strong></div>
+            </div>
+            <p id="unit-note">אומדן לא מחייב. יש להחליף במחיר ומלאי מאושרים לפני פרסום מסחרי.</p>
+            <div class="tabs" role="tablist" aria-label="מידע על הדירה">
+              <button class="is-active" type="button" data-tab="plan">תכנית</button>
+              <button type="button" data-tab="tour">סיור פנים</button>
+              <button type="button" data-tab="view">מבט מהדירה</button>
+              <button class="cta" type="button" data-tab="contact">דברו איתנו</button>
+            </div>
+            <div class="media-panel" id="media-panel">תכנית הדירה תופיע כאן לאחר העלאת חומר מאושר. בינתיים זהו מקום שמור לתצוגה בסגנון Homes.com / Zillow.</div>
+            <form class="lead-form" id="lead-form">
+              <p class="form-title">רוצים להתקדם עם הדירה שנבחרה?</p>
+              <div class="form-grid">
+                <label>שם מלא<input name="name" type="text" autocomplete="name" required></label>
+                <label>טלפון<input name="phone" type="tel" autocomplete="tel"></label>
+                <label>אימייל<input name="email" type="email" autocomplete="email"></label>
+                <label>מסגרת תקציב<input name="budget" type="text" inputmode="numeric" placeholder="לדוגמה 4.5-5.2 מיליון"></label>
+                <label>מועד רלוונטי<input name="timeline" type="text" placeholder="חודש קרוב / בהמשך"></label>
+                <label>עם מי תרצו לדבר?
+                  <select name="advisor">
+                    <option value="יזם">היזם</option>
+                    <option value="יועץ רכישה">יועץ רכישה</option>
+                    <option value="משכנתאות">משכנתאות</option>
+                    <option value="עו״ד נדל״ן">עו״ד נדל״ן</option>
+                  </select>
+                </label>
+              </div>
+              <div class="lead-actions">
+                <button class="primary" type="submit" data-intent="callback">דברו איתנו על הדירה</button>
+                <button type="submit" data-intent="purchase">בדיקת רכישה לא מחייבת</button>
+              </div>
+              <p class="legal">הפנייה נשלחת עם פרטי הדירה שנבחרה. הנתונים בעמוד הם להמחשה עד אימות מול היזם.</p>
+              <p class="ok" id="lead-ok" hidden></p>
+            </form>
+          </article>
+        </section>
+      </div>
+    </section>
+
+    <section class="lower-content" aria-label="מידע על הפרויקט">
+      <h2>מה בודקים לפני שבוחרים דירה בדמרי ימה?</h2>
+      <p>בדיקה טובה מתחילה במיקום הדירה בתוך הבניין, כיוון האוויר, המרפסת, המבט לים או לפארק, והמרחק מהחלקים הציבוריים של המתחם. לכן תצוגת הדירות צריכה לחבר בין מודל הפרויקט לבין חזית בחירה ברורה.</p>
+      <h2>מי עומד מאחורי הפרויקט?</h2>
+      <p>לפי מקורות הפרויקט, דמרי ימה משויך לקבוצת דמרי, עם תכנון אדריכלי של רני זיס אדריכלים ועיצוב פנים מאת Kelly Hoppen CBE. יש לאמת כל פרט מסחרי מול היזם לפני קבלת החלטה.</p>
+      <h2>מה חסר כדי להפוך את האב־טיפוס לרשמי?</h2>
+      <p class="note">נדרשים מודל BIM או GLB רשמי, תכניות מאושרות, מלאי דירות, זמינות ומחירים מאושרים. עד אז, המודל והחזית הם המחשה שמראה את חוויית הבחירה העתידית.</p>
+    </section>
+  </main>
+
+  <script>
+    const units = {
+      'a-08-03': { title: 'A-8 · קומה 8 · 3 חדרים', status: 'זמינה לפנייה', rooms: '3', sqm: '82 מ״ר', floor: '8', view: 'כיוון ים', note: 'דירת דוגמה עם כיוון מערבי. אומדן לא מחייב עד קבלת מקור מאושר.' },
+      'b-15-05': { title: 'B-15 · קומה 15 · 5 חדרים', status: 'בבדיקת זמינות', rooms: '5', sqm: '132 מ״ר', floor: '15', view: 'ים ורובע שדה דב', note: 'דירה משפחתית גדולה באגף גבוה. יש להחליף במלאי רשמי.' },
+      'c-06-04': { title: 'C-6 · קומה 6 · 4 חדרים', status: 'שמורה לבדיקה', rooms: '4', sqm: '104 מ״ר', floor: '6', view: 'חצר וכיוון ים', note: 'סימון המחשה. לא מלאי רשמי ולא הבטחת זמינות.' },
+      'd-04-studio': { title: 'D-4 · קומה 4 · סטודיו', status: 'זמינה לפנייה', rooms: 'סטודיו', sqm: '42 מ״ר', floor: '4', view: 'מרקם עירוני', note: 'דירת סטודיו לדוגמה לפי קטגוריות ציבוריות. נדרש אישור יזם.' }
+    };
+    const fields = {
+      title: document.getElementById('unit-title'),
+      status: document.getElementById('unit-status'),
+      rooms: document.getElementById('unit-rooms'),
+      sqm: document.getElementById('unit-sqm'),
+      floor: document.getElementById('unit-floor'),
+      view: document.getElementById('unit-view'),
+      note: document.getElementById('unit-note'),
+      media: document.getElementById('media-panel'),
+      card: document.getElementById('selected-card')
+    };
+    function selectUnit(id) {
+      const unit = units[id] || units['a-08-03'];
+      fields.title.textContent = unit.title;
+      fields.status.textContent = unit.status;
+      fields.rooms.textContent = unit.rooms;
+      fields.sqm.textContent = unit.sqm;
+      fields.floor.textContent = unit.floor;
+      fields.view.textContent = unit.view;
+      fields.note.textContent = unit.note;
+      fields.card.hidden = false;
+      document.querySelectorAll('.unit-cell').forEach((button) => button.classList.toggle('is-active', button.dataset.unit === id));
+    }
+    document.querySelectorAll('.unit-cell').forEach((button) => button.addEventListener('click', () => selectUnit(button.dataset.unit)));
+    document.querySelector('.dismiss').addEventListener('click', () => { fields.card.hidden = true; });
+    document.querySelectorAll('[data-tab]').forEach((button) => {
+      button.addEventListener('click', () => {
+        document.querySelectorAll('[data-tab]').forEach((b) => b.classList.toggle('is-active', b === button));
+        const copy = {
+          plan: 'כאן תופיע תכנית הדירה המאושרת או תכנית אבטיפוס להמחשה.',
+          tour: 'כאן יופיע סיור פנים בסגנון Matterport / Homes.com כאשר יוזן קישור מאושר.',
+          view: 'כאן יופיע מבט מהדירה לפי קומה וכיוון, לאחר אימות מיקום וקואורדינטות.',
+          contact: 'פנייה תישלח עם מזהה הדירה, קומה, חדרים, שטח וכיוון.'
+        };
+        fields.media.textContent = copy[button.dataset.tab] || copy.plan;
+      });
+    });
+    document.getElementById('lead-form').addEventListener('submit', (event) => {
+      event.preventDefault();
+      const active = document.querySelector('.unit-cell.is-active');
+      const ok = document.getElementById('lead-ok');
+      ok.hidden = false;
+      ok.textContent = `תצוגת בדיקה: הפנייה תישלח עם הדירה ${active ? active.textContent : 'שנבחרה'} ועם פרטי התקציב/מועד.`;
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,137 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" role="img" aria-labelledby="title desc">
+  <title id="title">DIMRI YAMA prototype facade apartment selector</title>
+  <desc id="desc">Illustrative four-building facade with apartment cells for available, reserved and sold units.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#062326"/>
+      <stop offset="1" stop-color="#113f3e"/>
+    </linearGradient>
+    <linearGradient id="tower" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#d8e2dc"/>
+      <stop offset=".5" stop-color="#f4ead0"/>
+      <stop offset="1" stop-color="#92aaa7"/>
+    </linearGradient>
+    <filter id="glow" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="5" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    <style>
+      .frame{fill:url(#bg)}
+      .building{fill:rgba(255,255,255,.06);stroke:#d8c07d;stroke-width:2}
+      .mass{fill:url(#tower);opacity:.22}
+      .cell{rx:5;stroke-width:2}
+      .available{fill:rgba(38,214,131,.20);stroke:#26d683}
+      .reserved{fill:rgba(231,185,82,.24);stroke:#e7b952}
+      .sold{fill:rgba(150,164,166,.18);stroke:#96a4a6}
+      .selected{stroke:#fff1b8;stroke-width:4;filter:url(#glow)}
+      .grid{stroke:rgba(255,255,255,.12);stroke-width:1}
+      .label{font-family:Arial, sans-serif;font-weight:700;fill:#f7edd0;font-size:18px}
+      .small{font-family:Arial, sans-serif;fill:#c8d6d2;font-size:14px}
+      .legend{font-family:Arial, sans-serif;fill:#f7edd0;font-size:15px}
+      .sea{fill:#0b6d83;opacity:.45}
+      .sun{fill:#e9c46a}
+    </style>
+  </defs>
+
+  <rect class="frame" x="0" y="0" width="1200" height="900"/>
+  <path class="sea" d="M0 700 C250 650 420 720 690 675 C910 640 1030 665 1200 610 L1200 900 L0 900 Z"/>
+  <circle class="sun" cx="1030" cy="112" r="34"/>
+  <text class="label" x="70" y="70">DIMRI YAMA · facade apartment picker</text>
+  <text class="small" x="70" y="98">Prototype cells embedded in the facade · illustrative only</text>
+
+  <!-- Building D low wing -->
+  <g id="building-d" transform="translate(90 445)">
+    <rect class="building" x="0" y="0" width="225" height="270"/>
+    <text class="label" x="16" y="-18">D · studio / 2 / 3 rooms</text>
+    <rect class="mass" x="10" y="12" width="205" height="245"/>
+    <g>
+      <rect class="cell available" x="20" y="28" width="85" height="42"/>
+      <rect class="cell reserved" x="118" y="28" width="85" height="42"/>
+      <rect class="cell available" x="20" y="82" width="85" height="42"/>
+      <rect class="cell sold" x="118" y="82" width="85" height="42"/>
+      <rect class="cell available selected" x="20" y="136" width="85" height="42"/>
+      <rect class="cell available" x="118" y="136" width="85" height="42"/>
+      <rect class="cell sold" x="20" y="190" width="85" height="42"/>
+      <rect class="cell available" x="118" y="190" width="85" height="42"/>
+    </g>
+  </g>
+
+  <!-- Building A mid wing -->
+  <g id="building-a" transform="translate(350 300)">
+    <rect class="building" x="0" y="0" width="230" height="415"/>
+    <text class="label" x="12" y="-18">A · 2 / 3 / 4 rooms</text>
+    <rect class="mass" x="10" y="12" width="210" height="390"/>
+    <g>
+      <rect class="cell available" x="22" y="28" width="86" height="42"/>
+      <rect class="cell available" x="122" y="28" width="86" height="42"/>
+      <rect class="cell reserved" x="22" y="86" width="86" height="42"/>
+      <rect class="cell available" x="122" y="86" width="86" height="42"/>
+      <rect class="cell available" x="22" y="144" width="86" height="42"/>
+      <rect class="cell sold" x="122" y="144" width="86" height="42"/>
+      <rect class="cell available" x="22" y="202" width="86" height="42"/>
+      <rect class="cell available" x="122" y="202" width="86" height="42"/>
+      <rect class="cell reserved" x="22" y="260" width="86" height="42"/>
+      <rect class="cell available" x="122" y="260" width="86" height="42"/>
+      <rect class="cell available" x="22" y="318" width="86" height="42"/>
+      <rect class="cell sold" x="122" y="318" width="86" height="42"/>
+    </g>
+  </g>
+
+  <!-- Building B tower -->
+  <g id="building-b" transform="translate(620 115)">
+    <rect class="building" x="0" y="0" width="250" height="600"/>
+    <text class="label" x="12" y="-18">B · 2 / 3 / 5 rooms</text>
+    <rect class="mass" x="12" y="14" width="226" height="570"/>
+    <g>
+      <rect class="cell available" x="25" y="30" width="92" height="38"/>
+      <rect class="cell available" x="132" y="30" width="92" height="38"/>
+      <rect class="cell reserved selected" x="25" y="82" width="92" height="38"/>
+      <rect class="cell available" x="132" y="82" width="92" height="38"/>
+      <rect class="cell available" x="25" y="134" width="92" height="38"/>
+      <rect class="cell sold" x="132" y="134" width="92" height="38"/>
+      <rect class="cell available" x="25" y="186" width="92" height="38"/>
+      <rect class="cell available" x="132" y="186" width="92" height="38"/>
+      <rect class="cell reserved" x="25" y="238" width="92" height="38"/>
+      <rect class="cell available" x="132" y="238" width="92" height="38"/>
+      <rect class="cell available" x="25" y="290" width="92" height="38"/>
+      <rect class="cell sold" x="132" y="290" width="92" height="38"/>
+      <rect class="cell available" x="25" y="342" width="92" height="38"/>
+      <rect class="cell available" x="132" y="342" width="92" height="38"/>
+      <rect class="cell reserved" x="25" y="394" width="92" height="38"/>
+      <rect class="cell available" x="132" y="394" width="92" height="38"/>
+      <rect class="cell available" x="25" y="446" width="92" height="38"/>
+      <rect class="cell sold" x="132" y="446" width="92" height="38"/>
+      <rect class="cell available" x="25" y="498" width="92" height="38"/>
+      <rect class="cell available" x="132" y="498" width="92" height="38"/>
+    </g>
+  </g>
+
+  <!-- Building C low/mid wing -->
+  <g id="building-c" transform="translate(910 360)">
+    <rect class="building" x="0" y="0" width="220" height="355"/>
+    <text class="label" x="10" y="-18">C · 2 / 3 / 4 rooms</text>
+    <rect class="mass" x="10" y="12" width="200" height="330"/>
+    <g>
+      <rect class="cell available" x="22" y="28" width="78" height="42"/>
+      <rect class="cell reserved" x="118" y="28" width="78" height="42"/>
+      <rect class="cell sold" x="22" y="88" width="78" height="42"/>
+      <rect class="cell available" x="118" y="88" width="78" height="42"/>
+      <rect class="cell available" x="22" y="148" width="78" height="42"/>
+      <rect class="cell available" x="118" y="148" width="78" height="42"/>
+      <rect class="cell reserved selected" x="22" y="208" width="78" height="42"/>
+      <rect class="cell available" x="118" y="208" width="78" height="42"/>
+      <rect class="cell sold" x="22" y="268" width="78" height="42"/>
+      <rect class="cell available" x="118" y="268" width="78" height="42"/>
+    </g>
+  </g>
+
+  <g transform="translate(70 805)">
+    <text class="legend" x="0" y="0">Legend:</text>
+    <rect class="cell available" x="85" y="-18" width="26" height="18"/><text class="legend" x="120" y="-3">Available</text>
+    <rect class="cell reserved" x="230" y="-18" width="26" height="18"/><text class="legend" x="265" y="-3">Reserved / demand</text>
+    <rect class="cell sold" x="450" y="-18" width="26" height="18"/><text class="legend" x="485" y="-3">Sold / unavailable</text>
+  </g>
+</svg>

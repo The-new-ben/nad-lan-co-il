@@ -1,0 +1,52 @@
+{
+  "source_policy": "Public/context layer for prototype. Verify exact coordinates before publication.",
+  "orientation": {
+    "west": "Tel Aviv coastline",
+    "east": "Sde Dov district grid",
+    "south": "Yarkon / north Tel Aviv direction",
+    "north": "future district continuation"
+  },
+  "layers": [
+    {
+      "id": "nearby-projects",
+      "label": "Nearby Sde Dov projects",
+      "items": [
+        {
+          "id": "rainbow-tel-aviv",
+          "label": "Rainbow Tel Aviv",
+          "type": "project",
+          "source": "Sde Dov project directory"
+        },
+        {
+          "id": "gindi-vogue",
+          "label": "Gindi Vogue",
+          "type": "project",
+          "source": "Sde Dov project directory"
+        },
+        {
+          "id": "ashira",
+          "label": "Ashira",
+          "type": "project",
+          "source": "Sde Dov project directory"
+        }
+      ]
+    },
+    {
+      "id": "daily-life",
+      "label": "Daily-life context",
+      "items": [
+        {
+          "label": "Sea promenade",
+          "type": "open_space",
+          "source": "Sde Dov district public descriptions"
+        },
+        {
+          "label": "Yarkon Park direction",
+          "type": "park",
+          "source": "Dimri official project copy"
+        }
+      ]
+    }
+  ]
+}
+

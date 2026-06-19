@@ -4,6 +4,10 @@ Use this skill when turning a real-estate project page into a flagship, replicab
 for NadLan. The target is a buyer-ready, investor-search-ready, contractor-demo-ready page, not a
 plain WordPress article.
 
+Before starting, read `skills/goal-discipline-anti-drift.md`. One project must move through one
+verified slice at a time: target, proof, smallest step, Chrome evidence, then next step. Do not
+open a second feature/PR/deploy path while the current proof is unresolved.
+
 ## A. Source And Intent Research
 
 1. Search Hebrew and English SERP for the project name, developer, neighborhood and price intent.
@@ -46,6 +50,17 @@ plain WordPress article.
    - run the project page assembly checker when one exists.
 8. If a one-shot content seed already ran, never re-run the old seed. Add a new dated/numbered
    idempotent option for the delta, for example `nadlan_<project>_seo_vXXXX`.
+
+## B2. Child Theme Versus Plugin Boundary
+
+1. Put reusable data contracts, meta registration, sanitization, REST endpoints, lead/WhatsApp
+   routing, model-viewer runtime loading and importer/validator scripts in the plugin.
+2. Put project page hierarchy, breadcrumbs, showroom placement, article heading alignment,
+   paragraph width, visual wrappers and responsive layout CSS in the child theme when possible.
+3. Do not ship a plugin ZIP for a one-page visual alignment issue if a child-theme template/CSS
+   layer can solve it more safely.
+4. Heavy project media such as GLB, poster, facade, drawings and tours belong in Media Library,
+   CDN, or project asset URLs during prototype. Do not bloat the plugin ZIP with per-project media.
 
 ## C. 3D And Buyer Interaction
 

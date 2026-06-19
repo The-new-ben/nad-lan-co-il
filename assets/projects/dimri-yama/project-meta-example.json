@@ -1,0 +1,16 @@
+{
+  "project_3d_image": "",
+  "project_3d_viewbox": "0 0 1200 900",
+  "project_3d_floor_height_m": "3.05",
+  "project_3d_ground_elevation_m": "0",
+  "project_3d_avg_price_per_sqm": "",
+  "project_3d_price_source_note": "אומדן לא מחייב. יש להחליף במקור מאושר לפני הצגת מחיר לציבור.",
+  "project_3d_model_type": "gltf",
+  "project_model_glb": "",
+  "project_model_usdz": "",
+  "project_model_poster": "",
+  "project_3d_video_url": "",
+  "project_3d_tour_url": "",
+  "project_3d_cesium_tiles_url": "",
+  "project_3d_demo": "1"
+}

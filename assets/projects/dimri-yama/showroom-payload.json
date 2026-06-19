@@ -1,0 +1,207 @@
+{
+  "$schema": "docs/templates/project-showroom-payload.schema.json",
+  "schema": "nadlan-project-showroom-payload/v1",
+  "project_slug": "dimri-yama",
+  "post_id": 0,
+  "generated_from": [
+    "project-meta-example.json",
+    "unit-map.json",
+    "drawings.json",
+    "environment.json",
+    "view-layer-config.json"
+  ],
+  "public_use_policy": "Prototype showroom data. Replace GLB, drawings, prices and inventory with developer-approved material before removing illustrative labels.",
+  "meta": {
+    "project_3d_image": "",
+    "project_3d_viewbox": "0 0 1200 900",
+    "project_3d_floor_height_m": "3.05",
+    "project_3d_ground_elevation_m": "0",
+    "project_3d_avg_price_per_sqm": "",
+    "project_3d_price_source_note": "אומדן לא מחייב. יש להחליף במקור מאושר לפני הצגת מחיר לציבור.",
+    "project_3d_model_type": "gltf",
+    "project_model_glb": "",
+    "project_model_usdz": "",
+    "project_model_poster": "",
+    "project_3d_video_url": "",
+    "project_3d_tour_url": "",
+    "project_3d_cesium_tiles_url": "",
+    "project_3d_drawings_json": [
+      {
+        "label": "Building A sample plan",
+        "type": "floor_plan",
+        "url": "",
+        "source": "Public plan category confirmed; actual drawing pending permission."
+      },
+      {
+        "label": "Building B sample plan",
+        "type": "floor_plan",
+        "url": "",
+        "source": "Public plan category confirmed; actual drawing pending permission."
+      },
+      {
+        "label": "Compound orientation",
+        "type": "site_plan",
+        "url": "",
+        "source": "To be generated as illustrative orientation until official site plan is approved."
+      }
+    ],
+    "project_3d_environment_json": {
+      "source_policy": "Public/context layer for prototype. Verify exact coordinates before publication.",
+      "orientation": {
+        "west": "Tel Aviv coastline",
+        "east": "Sde Dov district grid",
+        "south": "Yarkon / north Tel Aviv direction",
+        "north": "future district continuation"
+      },
+      "layers": [
+        {
+          "id": "nearby-projects",
+          "label": "Nearby Sde Dov projects",
+          "items": [
+            {
+              "id": "rainbow-tel-aviv",
+              "label": "Rainbow Tel Aviv",
+              "type": "project",
+              "source": "Sde Dov project directory"
+            },
+            {
+              "id": "gindi-vogue",
+              "label": "Gindi Vogue",
+              "type": "project",
+              "source": "Sde Dov project directory"
+            },
+            {
+              "id": "ashira",
+              "label": "Ashira",
+              "type": "project",
+              "source": "Sde Dov project directory"
+            }
+          ]
+        },
+        {
+          "id": "daily-life",
+          "label": "Daily-life context",
+          "items": [
+            {
+              "label": "Sea promenade",
+              "type": "open_space",
+              "source": "Sde Dov district public descriptions"
+            },
+            {
+              "label": "Yarkon Park direction",
+              "type": "park",
+              "source": "Dimri official project copy"
+            }
+          ]
+        }
+      ]
+    },
+    "project_3d_units": [
+      {
+        "id": "a-08-03",
+        "title": "Building A · Floor 8 · 3 rooms",
+        "label": "A-8",
+        "building": "A",
+        "floor": 8,
+        "rooms": 3,
+        "sqm": 82,
+        "balcony": 11,
+        "dir": "west",
+        "view": "sea direction",
+        "status": "available",
+        "availability": "Prototype availability",
+        "recommended": true,
+        "price_estimate": "",
+        "price_note": "Non-binding prototype. Replace with approved price or show inquiry-only.",
+        "source_note": "Room category based on public Sde Dov project plan list; exact unit is illustrative.",
+        "plan": "",
+        "interior_url": "",
+        "tour_url": "",
+        "view_note": "Sea-facing estimate, pending official orientation.",
+        "hotspot_position": "0 24 0",
+        "hotspot_normal": "0 0 1",
+        "camera_orbit": "35deg 66deg auto",
+        "points": "155,450 330,450 330,505 155,505"
+      },
+      {
+        "id": "b-15-05",
+        "title": "Building B · Floor 15 · 5 rooms",
+        "label": "B-15",
+        "building": "B",
+        "floor": 15,
+        "rooms": 5,
+        "sqm": 132,
+        "balcony": 18,
+        "dir": "west",
+        "view": "sea and district",
+        "status": "reserved",
+        "availability": "Prototype reserved/high-demand marker",
+        "recommended": true,
+        "price_estimate": "",
+        "price_note": "Non-binding prototype. Replace with approved price or show inquiry-only.",
+        "source_note": "Room category based on public Sde Dov project plan list; exact unit is illustrative.",
+        "plan": "",
+        "interior_url": "",
+        "tour_url": "",
+        "view_note": "Upper-floor view estimate, pending official orientation.",
+        "hotspot_position": "8 46 0",
+        "hotspot_normal": "0 0 1",
+        "camera_orbit": "42deg 64deg auto",
+        "points": "455,280 650,280 650,342 455,342"
+      },
+      {
+        "id": "c-06-04",
+        "title": "Building C · Floor 6 · 4 rooms",
+        "label": "C-6",
+        "building": "C",
+        "floor": 6,
+        "rooms": 4,
+        "sqm": 104,
+        "balcony": 14,
+        "dir": "south-west",
+        "view": "courtyard and sea direction",
+        "status": "reserved",
+        "availability": "Prototype reserved marker",
+        "recommended": false,
+        "price_estimate": "",
+        "price_note": "Non-binding prototype. Replace with approved price or show inquiry-only.",
+        "source_note": "Room category based on public Sde Dov project plan list; exact unit is illustrative.",
+        "plan": "",
+        "interior_url": "",
+        "tour_url": "",
+        "view_note": "Illustrative courtyard/sea orientation.",
+        "hotspot_position": "-8 18 0",
+        "hotspot_normal": "0 0 1",
+        "camera_orbit": "25deg 68deg auto",
+        "points": "735,535 940,535 940,592 735,592"
+      },
+      {
+        "id": "d-04-studio",
+        "title": "Building D · Floor 4 · studio",
+        "label": "D-4",
+        "building": "D",
+        "floor": 4,
+        "rooms": 1,
+        "sqm": 42,
+        "balcony": 6,
+        "dir": "east",
+        "view": "urban district",
+        "status": "available",
+        "availability": "Prototype availability",
+        "recommended": false,
+        "price_estimate": "",
+        "price_note": "Non-binding prototype. Replace with approved price or show inquiry-only.",
+        "source_note": "Studio category based on public Sde Dov project plan list; exact unit is illustrative.",
+        "plan": "",
+        "interior_url": "",
+        "tour_url": "",
+        "view_note": "Illustrative urban orientation.",
+        "hotspot_position": "-14 12 0",
+        "hotspot_normal": "0 0 1",
+        "camera_orbit": "18deg 70deg auto",
+        "points": "965,640 1110,640 1110,692 965,692"
+      }
+    ],
+    "project_3d_demo": "1"
+  }
+}

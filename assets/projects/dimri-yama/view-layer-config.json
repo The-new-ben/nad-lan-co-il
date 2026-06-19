@@ -1,0 +1,16 @@
+{
+  "post_id": 0,
+  "map_provider": "mapbox",
+  "coordinates_status": "pending_verification",
+  "camera": {
+    "floor_height_m": 3.05,
+    "default_bearing": 270,
+    "default_pitch": 62,
+    "horizontal_spin_lock": true
+  },
+  "notes": [
+    "Use verified project coordinates before enabling live view.",
+    "Do not auto-load expensive map/3D tiles until user asks for the view."
+  ]
+}
+
