@@ -1,0 +1,956 @@
+[
+  {
+    "page": "dimri-yama-sde-dov",
+    "viewport": "desktop-1440",
+    "before": {
+      "url": "https://nad-lan.co.il/projects/dimri-yama-sde-dov/?railqa=1781894940679",
+      "title": "DIMRI YAMA שדה דב - י.ח דמרי | בחירת דירות, מבט מהדירה ושדה דב | נדלן חכם",
+      "width": 1440,
+      "height": 900,
+      "overflowX": 0,
+      "railExists": false,
+      "railOpen": false,
+      "launcher": null,
+      "fixedCount": 4,
+      "fixed": [
+        {
+          "tag": "DIV",
+          "id": "",
+          "cls": "nlfab",
+          "text": "וואטסאפ\n  חיוג\n  ייעוץ ראשוני בחינם",
+          "left": 18,
+          "top": 701,
+          "width": 186,
+          "height": 181,
+          "z": "8880"
+        },
+        {
+          "tag": "DIV",
+          "id": "nlai",
+          "cls": "",
+          "text": "שאלו אותנו\n\t\n\t\n\t\tמענה מהיר - נדל\"ן חכםכל",
+          "left": 18,
+          "top": 573,
+          "width": 137,
+          "height": 54,
+          "z": "8885"
+        },
+        {
+          "tag": "DIV",
+          "id": "",
+          "cls": "wc-block-mini-cart__drawer wc-block-components-drawer is-mobile",
+          "text": "עגלת הקניות שלך\t\t\n\t\t\t\t(פריטים: 0)\n\t\t\t\t\t\n",
+          "left": -480,
+          "top": 0,
+          "width": 480,
+          "height": 900,
+          "z": "auto"
+        },
+        {
+          "tag": "BUTTON",
+          "id": "nla-btn",
+          "cls": "",
+          "text": "",
+          "left": 18,
+          "top": 639,
+          "width": 54,
+          "height": 54,
+          "z": "8890"
+        }
+      ],
+      "consoleErrorCount": 0,
+      "consoleErrors": []
+    },
+    "collapsed": {
+      "url": "https://nad-lan.co.il/projects/dimri-yama-sde-dov/?railqa=1781894940679",
+      "title": "DIMRI YAMA שדה דב - י.ח דמרי | בחירת דירות, מבט מהדירה ושדה דב | נדלן חכם",
+      "width": 1440,
+      "height": 900,
+      "overflowX": 0,
+      "railExists": true,
+      "railOpen": false,
+      "launcher": {
+        "x": 55,
+        "y": 824,
+        "width": 125,
+        "height": 58,
+        "top": 824,
+        "right": 180,
+        "bottom": 882,
+        "left": 55
+      },
+      "fixedCount": 2,
+      "fixed": [
+        {
+          "tag": "DIV",
+          "id": "",
+          "cls": "wc-block-mini-cart__drawer wc-block-components-drawer is-mobile",
+          "text": "עגלת הקניות שלך\t\t\n\t\t\t\t(פריטים: 0)\n\t\t\t\t\t\n",
+          "left": -480,
+          "top": 0,
+          "width": 480,
+          "height": 900,
+          "z": "auto"
+        },
+        {
+          "tag": "DIV",
+          "id": "nlrx-action-rail",
+          "cls": "nlrx-action-rail",
+          "text": "שאלו אותנו\n\t\n\t\n\t\tמענה מהיר - נדל\"ן חכםכל",
+          "left": 18,
+          "top": 814,
+          "width": 162,
+          "height": 68,
+          "z": "2147483000"
+        }
+      ],
+      "consoleErrorCount": 0,
+      "consoleErrors": []
+    },
+    "open": {
+      "url": "https://nad-lan.co.il/projects/dimri-yama-sde-dov/?railqa=1781894940679",
+      "title": "DIMRI YAMA שדה דב - י.ח דמרי | בחירת דירות, מבט מהדירה ושדה דב | נדלן חכם",
+      "width": 1440,
+      "height": 900,
+      "overflowX": 0,
+      "railExists": true,
+      "railOpen": true,
+      "launcher": {
+        "x": 55,
+        "y": 824,
+        "width": 125,
+        "height": 58,
+        "top": 824,
+        "right": 180,
+        "bottom": 882,
+        "left": 55
+      },
+      "fixedCount": 2,
+      "fixed": [
+        {
+          "tag": "DIV",
+          "id": "",
+          "cls": "wc-block-mini-cart__drawer wc-block-components-drawer is-mobile",
+          "text": "עגלת הקניות שלך\t\t\n\t\t\t\t(פריטים: 0)\n\t\t\t\t\t\n",
+          "left": -480,
+          "top": 0,
+          "width": 480,
+          "height": 900,
+          "z": "auto"
+        },
+        {
+          "tag": "DIV",
+          "id": "nlrx-action-rail",
+          "cls": "nlrx-action-rail is-open",
+          "text": "שאלו אותנו\n\t\n\t\n\t\tמענה מהיר - נדל\"ן חכםכל",
+          "left": 18,
+          "top": 512,
+          "width": 162,
+          "height": 370,
+          "z": "2147483000"
+        }
+      ],
+      "consoleErrorCount": 0,
+      "consoleErrors": []
+    },
+    "screenshots": {
+      "collapsed": "docs/qa/screenshots/floating-actions-2026-06-19/dimri-yama-sde-dov-desktop-1440-collapsed.png",
+      "open": "docs/qa/screenshots/floating-actions-2026-06-19/dimri-yama-sde-dov-desktop-1440-open.png"
+    }
+  },
+  {
+    "page": "dimri-yama-sde-dov",
+    "viewport": "tablet-768",
+    "before": {
+      "url": "https://nad-lan.co.il/projects/dimri-yama-sde-dov/?railqa=1781894947338",
+      "title": "DIMRI YAMA שדה דב - י.ח דמרי | בחירת דירות, מבט מהדירה ושדה דב | נדלן חכם",
+      "width": 768,
+      "height": 900,
+      "overflowX": 0,
+      "railExists": false,
+      "railOpen": false,
+      "launcher": null,
+      "fixedCount": 4,
+      "fixed": [
+        {
+          "tag": "DIV",
+          "id": "",
+          "cls": "nlfab",
+          "text": "וואטסאפ\n  חיוג\n  ייעוץ ראשוני בחינם",
+          "left": 10,
+          "top": 718,
+          "width": 54,
+          "height": 172,
+          "z": "8860"
+        },
+        {
+          "tag": "DIV",
+          "id": "nlai",
+          "cls": "",
+          "text": "שאלו אותנו\n\t\n\t\n\t\tמענה מהיר - נדל\"ן חכםכל",
+          "left": 10,
+          "top": 650,
+          "width": 52,
+          "height": 52,
+          "z": "8865"
+        },
+        {
+          "tag": "DIV",
+          "id": "",
+          "cls": "wc-block-mini-cart__drawer wc-block-components-drawer is-mobile",
+          "text": "עגלת הקניות שלך\t\t\n\t\t\t\t(פריטים: 0)\n\t\t\t\t\t\n",
+          "left": -480,
+          "top": 0,
+          "width": 480,
+          "height": 900,
+          "z": "auto"
+        },
+        {
+          "tag": "BUTTON",
+          "id": "nla-btn",
+          "cls": "",
+          "text": "",
+          "left": 10,
+          "top": 712,
+          "width": 52,
+          "height": 52,
+          "z": "8870"
+        }
+      ],
+      "consoleErrorCount": 0,
+      "consoleErrors": []
+    },
+    "collapsed": {
+      "url": "https://nad-lan.co.il/projects/dimri-yama-sde-dov/?railqa=1781894947338",
+      "title": "DIMRI YAMA שדה דב - י.ח דמרי | בחירת דירות, מבט מהדירה ושדה דב | נדלן חכם",
+      "width": 768,
+      "height": 900,
+      "overflowX": 0,
+      "railExists": true,
+      "railOpen": false,
+      "launcher": {
+        "x": 55,
+        "y": 824,
+        "width": 125,
+        "height": 58,
+        "top": 824,
+        "right": 180,
+        "bottom": 882,
+        "left": 55
+      },
+      "fixedCount": 2,
+      "fixed": [
+        {
+          "tag": "DIV",
+          "id": "",
+          "cls": "wc-block-mini-cart__drawer wc-block-components-drawer is-mobile",
+          "text": "עגלת הקניות שלך\t\t\n\t\t\t\t(פריטים: 0)\n\t\t\t\t\t\n",
+          "left": -480,
+          "top": 0,
+          "width": 480,
+          "height": 900,
+          "z": "auto"
+        },
+        {
+          "tag": "DIV",
+          "id": "nlrx-action-rail",
+          "cls": "nlrx-action-rail",
+          "text": "שאלו אותנו\n\t\n\t\n\t\tמענה מהיר - נדל\"ן חכםכל",
+          "left": 18,
+          "top": 814,
+          "width": 162,
+          "height": 68,
+          "z": "2147483000"
+        }
+      ],
+      "consoleErrorCount": 0,
+      "consoleErrors": []
+    },
+    "open": {
+      "url": "https://nad-lan.co.il/projects/dimri-yama-sde-dov/?railqa=1781894947338",
+      "title": "DIMRI YAMA שדה דב - י.ח דמרי | בחירת דירות, מבט מהדירה ושדה דב | נדלן חכם",
+      "width": 768,
+      "height": 900,
+      "overflowX": 0,
+      "railExists": true,
+      "railOpen": true,
+      "launcher": {
+        "x": 55,
+        "y": 824,
+        "width": 125,
+        "height": 58,
+        "top": 824,
+        "right": 180,
+        "bottom": 882,
+        "left": 55
+      },
+      "fixedCount": 2,
+      "fixed": [
+        {
+          "tag": "DIV",
+          "id": "",
+          "cls": "wc-block-mini-cart__drawer wc-block-components-drawer is-mobile",
+          "text": "עגלת הקניות שלך\t\t\n\t\t\t\t(פריטים: 0)\n\t\t\t\t\t\n",
+          "left": -480,
+          "top": 0,
+          "width": 480,
+          "height": 900,
+          "z": "auto"
+        },
+        {
+          "tag": "DIV",
+          "id": "nlrx-action-rail",
+          "cls": "nlrx-action-rail is-open",
+          "text": "שאלו אותנו\n\t\n\t\n\t\tמענה מהיר - נדל\"ן חכםכל",
+          "left": 18,
+          "top": 512,
+          "width": 162,
+          "height": 370,
+          "z": "2147483000"
+        }
+      ],
+      "consoleErrorCount": 0,
+      "consoleErrors": []
+    },
+    "screenshots": {
+      "collapsed": "docs/qa/screenshots/floating-actions-2026-06-19/dimri-yama-sde-dov-tablet-768-collapsed.png",
+      "open": "docs/qa/screenshots/floating-actions-2026-06-19/dimri-yama-sde-dov-tablet-768-open.png"
+    }
+  },
+  {
+    "page": "dimri-yama-sde-dov",
+    "viewport": "mobile-390",
+    "before": {
+      "url": "https://nad-lan.co.il/projects/dimri-yama-sde-dov/?railqa=1781894952778",
+      "title": "DIMRI YAMA שדה דב - י.ח דמרי | בחירת דירות, מבט מהדירה ושדה דב | נדלן חכם",
+      "width": 390,
+      "height": 820,
+      "overflowX": 0,
+      "railExists": false,
+      "railOpen": false,
+      "launcher": null,
+      "fixedCount": 4,
+      "fixed": [
+        {
+          "tag": "DIV",
+          "id": "",
+          "cls": "nlfab",
+          "text": "וואטסאפ\n  חיוג\n  ייעוץ ראשוני בחינם",
+          "left": -32,
+          "top": 654,
+          "width": 49,
+          "height": 156,
+          "z": "8860"
+        },
+        {
+          "tag": "DIV",
+          "id": "nlai",
+          "cls": "",
+          "text": "שאלו אותנו\n\t\n\t\n\t\tמענה מהיר - נדל\"ן חכםכל",
+          "left": -29,
+          "top": 573,
+          "width": 47,
+          "height": 47,
+          "z": "8865"
+        },
+        {
+          "tag": "DIV",
+          "id": "",
+          "cls": "wc-block-mini-cart__drawer wc-block-components-drawer is-mobile",
+          "text": "עגלת הקניות שלך\t\t\n\t\t\t\t(פריטים: 0)\n\t\t\t\t\t\n",
+          "left": -390,
+          "top": 0,
+          "width": 390,
+          "height": 820,
+          "z": "auto"
+        },
+        {
+          "tag": "BUTTON",
+          "id": "nla-btn",
+          "cls": "",
+          "text": "",
+          "left": -29,
+          "top": 635,
+          "width": 47,
+          "height": 47,
+          "z": "8870"
+        }
+      ],
+      "consoleErrorCount": 0,
+      "consoleErrors": []
+    },
+    "collapsed": {
+      "url": "https://nad-lan.co.il/projects/dimri-yama-sde-dov/?railqa=1781894952778",
+      "title": "DIMRI YAMA שדה דב - י.ח דמרי | בחירת דירות, מבט מהדירה ושדה דב | נדלן חכם",
+      "width": 390,
+      "height": 820,
+      "overflowX": 0,
+      "railExists": true,
+      "railOpen": false,
+      "launcher": {
+        "x": 96,
+        "y": 752,
+        "width": 56,
+        "height": 56,
+        "top": 752,
+        "right": 152,
+        "bottom": 808,
+        "left": 96
+      },
+      "fixedCount": 2,
+      "fixed": [
+        {
+          "tag": "DIV",
+          "id": "",
+          "cls": "wc-block-mini-cart__drawer wc-block-components-drawer is-mobile",
+          "text": "עגלת הקניות שלך\t\t\n\t\t\t\t(פריטים: 0)\n\t\t\t\t\t\n",
+          "left": -390,
+          "top": 0,
+          "width": 390,
+          "height": 820,
+          "z": "auto"
+        },
+        {
+          "tag": "DIV",
+          "id": "nlrx-action-rail",
+          "cls": "nlrx-action-rail",
+          "text": "שאלו אותנו\n\t\n\t\n\t\tמענה מהיר - נדל\"ן חכםכל",
+          "left": 12,
+          "top": 742,
+          "width": 140,
+          "height": 66,
+          "z": "2147483000"
+        }
+      ],
+      "consoleErrorCount": 0,
+      "consoleErrors": []
+    },
+    "open": {
+      "url": "https://nad-lan.co.il/projects/dimri-yama-sde-dov/?railqa=1781894952778",
+      "title": "DIMRI YAMA שדה דב - י.ח דמרי | בחירת דירות, מבט מהדירה ושדה דב | נדלן חכם",
+      "width": 390,
+      "height": 820,
+      "overflowX": 0,
+      "railExists": true,
+      "railOpen": true,
+      "launcher": {
+        "x": 237,
+        "y": 752,
+        "width": 117,
+        "height": 56,
+        "top": 752,
+        "right": 354,
+        "bottom": 808,
+        "left": 237
+      },
+      "fixedCount": 2,
+      "fixed": [
+        {
+          "tag": "DIV",
+          "id": "",
+          "cls": "wc-block-mini-cart__drawer wc-block-components-drawer is-mobile",
+          "text": "עגלת הקניות שלך\t\t\n\t\t\t\t(פריטים: 0)\n\t\t\t\t\t\n",
+          "left": -390,
+          "top": 0,
+          "width": 390,
+          "height": 820,
+          "z": "auto"
+        },
+        {
+          "tag": "DIV",
+          "id": "nlrx-action-rail",
+          "cls": "nlrx-action-rail is-open",
+          "text": "שאלו אותנו\n\t\n\t\n\t\tמענה מהיר - נדל\"ן חכםכל",
+          "left": 12,
+          "top": 566,
+          "width": 342,
+          "height": 242,
+          "z": "2147483000"
+        }
+      ],
+      "consoleErrorCount": 0,
+      "consoleErrors": []
+    },
+    "screenshots": {
+      "collapsed": "docs/qa/screenshots/floating-actions-2026-06-19/dimri-yama-sde-dov-mobile-390-collapsed.png",
+      "open": "docs/qa/screenshots/floating-actions-2026-06-19/dimri-yama-sde-dov-mobile-390-open.png"
+    }
+  },
+  {
+    "page": "rainbow-tel-aviv",
+    "viewport": "desktop-1440",
+    "before": {
+      "url": "https://nad-lan.co.il/projects/rainbow-tel-aviv/?railqa=1781894958369",
+      "title": "דירות למכירה ב-Rainbow תל אביב | מחירים, תוכניות ובחירת דירה בשדה דב | נדלן חכם",
+      "width": 1440,
+      "height": 900,
+      "overflowX": 0,
+      "railExists": false,
+      "railOpen": false,
+      "launcher": null,
+      "fixedCount": 4,
+      "fixed": [
+        {
+          "tag": "DIV",
+          "id": "",
+          "cls": "nlfab",
+          "text": "וואטסאפ\n  חיוג\n  ייעוץ ראשוני בחינם",
+          "left": 18,
+          "top": 701,
+          "width": 186,
+          "height": 181,
+          "z": "8880"
+        },
+        {
+          "tag": "DIV",
+          "id": "nlai",
+          "cls": "",
+          "text": "שאלו אותנו\n\t\n\t\n\t\tמענה מהיר - נדל\"ן חכםכל",
+          "left": 18,
+          "top": 573,
+          "width": 137,
+          "height": 54,
+          "z": "8885"
+        },
+        {
+          "tag": "DIV",
+          "id": "",
+          "cls": "wc-block-mini-cart__drawer wc-block-components-drawer is-mobile",
+          "text": "עגלת הקניות שלך\t\t\n\t\t\t\t(פריטים: 0)\n\t\t\t\t\t\n",
+          "left": -480,
+          "top": 0,
+          "width": 480,
+          "height": 900,
+          "z": "auto"
+        },
+        {
+          "tag": "BUTTON",
+          "id": "nla-btn",
+          "cls": "",
+          "text": "",
+          "left": 18,
+          "top": 639,
+          "width": 54,
+          "height": 54,
+          "z": "8890"
+        }
+      ],
+      "consoleErrorCount": 0,
+      "consoleErrors": []
+    },
+    "collapsed": {
+      "url": "https://nad-lan.co.il/projects/rainbow-tel-aviv/?railqa=1781894958369",
+      "title": "דירות למכירה ב-Rainbow תל אביב | מחירים, תוכניות ובחירת דירה בשדה דב | נדלן חכם",
+      "width": 1440,
+      "height": 900,
+      "overflowX": 0,
+      "railExists": true,
+      "railOpen": false,
+      "launcher": {
+        "x": 55,
+        "y": 824,
+        "width": 125,
+        "height": 58,
+        "top": 824,
+        "right": 180,
+        "bottom": 882,
+        "left": 55
+      },
+      "fixedCount": 2,
+      "fixed": [
+        {
+          "tag": "DIV",
+          "id": "",
+          "cls": "wc-block-mini-cart__drawer wc-block-components-drawer is-mobile",
+          "text": "עגלת הקניות שלך\t\t\n\t\t\t\t(פריטים: 0)\n\t\t\t\t\t\n",
+          "left": -480,
+          "top": 0,
+          "width": 480,
+          "height": 900,
+          "z": "auto"
+        },
+        {
+          "tag": "DIV",
+          "id": "nlrx-action-rail",
+          "cls": "nlrx-action-rail",
+          "text": "שאלו אותנו\n\t\n\t\n\t\tמענה מהיר - נדל\"ן חכםכל",
+          "left": 18,
+          "top": 814,
+          "width": 162,
+          "height": 68,
+          "z": "2147483000"
+        }
+      ],
+      "consoleErrorCount": 0,
+      "consoleErrors": []
+    },
+    "open": {
+      "url": "https://nad-lan.co.il/projects/rainbow-tel-aviv/?railqa=1781894958369",
+      "title": "דירות למכירה ב-Rainbow תל אביב | מחירים, תוכניות ובחירת דירה בשדה דב | נדלן חכם",
+      "width": 1440,
+      "height": 900,
+      "overflowX": 0,
+      "railExists": true,
+      "railOpen": true,
+      "launcher": {
+        "x": 55,
+        "y": 824,
+        "width": 125,
+        "height": 58,
+        "top": 824,
+        "right": 180,
+        "bottom": 882,
+        "left": 55
+      },
+      "fixedCount": 2,
+      "fixed": [
+        {
+          "tag": "DIV",
+          "id": "",
+          "cls": "wc-block-mini-cart__drawer wc-block-components-drawer is-mobile",
+          "text": "עגלת הקניות שלך\t\t\n\t\t\t\t(פריטים: 0)\n\t\t\t\t\t\n",
+          "left": -480,
+          "top": 0,
+          "width": 480,
+          "height": 900,
+          "z": "auto"
+        },
+        {
+          "tag": "DIV",
+          "id": "nlrx-action-rail",
+          "cls": "nlrx-action-rail is-open",
+          "text": "שאלו אותנו\n\t\n\t\n\t\tמענה מהיר - נדל\"ן חכםכל",
+          "left": 18,
+          "top": 512,
+          "width": 162,
+          "height": 370,
+          "z": "2147483000"
+        }
+      ],
+      "consoleErrorCount": 0,
+      "consoleErrors": []
+    },
+    "screenshots": {
+      "collapsed": "docs/qa/screenshots/floating-actions-2026-06-19/rainbow-tel-aviv-desktop-1440-collapsed.png",
+      "open": "docs/qa/screenshots/floating-actions-2026-06-19/rainbow-tel-aviv-desktop-1440-open.png"
+    }
+  },
+  {
+    "page": "rainbow-tel-aviv",
+    "viewport": "tablet-768",
+    "before": {
+      "url": "https://nad-lan.co.il/projects/rainbow-tel-aviv/?railqa=1781894963556",
+      "title": "דירות למכירה ב-Rainbow תל אביב | מחירים, תוכניות ובחירת דירה בשדה דב | נדלן חכם",
+      "width": 768,
+      "height": 900,
+      "overflowX": 0,
+      "railExists": false,
+      "railOpen": false,
+      "launcher": null,
+      "fixedCount": 4,
+      "fixed": [
+        {
+          "tag": "DIV",
+          "id": "",
+          "cls": "nlfab",
+          "text": "וואטסאפ\n  חיוג\n  ייעוץ ראשוני בחינם",
+          "left": 10,
+          "top": 718,
+          "width": 54,
+          "height": 172,
+          "z": "8860"
+        },
+        {
+          "tag": "DIV",
+          "id": "nlai",
+          "cls": "",
+          "text": "שאלו אותנו\n\t\n\t\n\t\tמענה מהיר - נדל\"ן חכםכל",
+          "left": 10,
+          "top": 650,
+          "width": 52,
+          "height": 52,
+          "z": "8865"
+        },
+        {
+          "tag": "DIV",
+          "id": "",
+          "cls": "wc-block-mini-cart__drawer wc-block-components-drawer is-mobile",
+          "text": "עגלת הקניות שלך\t\t\n\t\t\t\t(פריטים: 0)\n\t\t\t\t\t\n",
+          "left": -480,
+          "top": 0,
+          "width": 480,
+          "height": 900,
+          "z": "auto"
+        },
+        {
+          "tag": "BUTTON",
+          "id": "nla-btn",
+          "cls": "",
+          "text": "",
+          "left": 10,
+          "top": 712,
+          "width": 52,
+          "height": 52,
+          "z": "8870"
+        }
+      ],
+      "consoleErrorCount": 0,
+      "consoleErrors": []
+    },
+    "collapsed": {
+      "url": "https://nad-lan.co.il/projects/rainbow-tel-aviv/?railqa=1781894963556",
+      "title": "דירות למכירה ב-Rainbow תל אביב | מחירים, תוכניות ובחירת דירה בשדה דב | נדלן חכם",
+      "width": 768,
+      "height": 900,
+      "overflowX": 0,
+      "railExists": true,
+      "railOpen": false,
+      "launcher": {
+        "x": 55,
+        "y": 824,
+        "width": 125,
+        "height": 58,
+        "top": 824,
+        "right": 180,
+        "bottom": 882,
+        "left": 55
+      },
+      "fixedCount": 2,
+      "fixed": [
+        {
+          "tag": "DIV",
+          "id": "",
+          "cls": "wc-block-mini-cart__drawer wc-block-components-drawer is-mobile",
+          "text": "עגלת הקניות שלך\t\t\n\t\t\t\t(פריטים: 0)\n\t\t\t\t\t\n",
+          "left": -480,
+          "top": 0,
+          "width": 480,
+          "height": 900,
+          "z": "auto"
+        },
+        {
+          "tag": "DIV",
+          "id": "nlrx-action-rail",
+          "cls": "nlrx-action-rail",
+          "text": "שאלו אותנו\n\t\n\t\n\t\tמענה מהיר - נדל\"ן חכםכל",
+          "left": 18,
+          "top": 814,
+          "width": 162,
+          "height": 68,
+          "z": "2147483000"
+        }
+      ],
+      "consoleErrorCount": 0,
+      "consoleErrors": []
+    },
+    "open": {
+      "url": "https://nad-lan.co.il/projects/rainbow-tel-aviv/?railqa=1781894963556",
+      "title": "דירות למכירה ב-Rainbow תל אביב | מחירים, תוכניות ובחירת דירה בשדה דב | נדלן חכם",
+      "width": 768,
+      "height": 900,
+      "overflowX": 0,
+      "railExists": true,
+      "railOpen": true,
+      "launcher": {
+        "x": 55,
+        "y": 824,
+        "width": 125,
+        "height": 58,
+        "top": 824,
+        "right": 180,
+        "bottom": 882,
+        "left": 55
+      },
+      "fixedCount": 2,
+      "fixed": [
+        {
+          "tag": "DIV",
+          "id": "",
+          "cls": "wc-block-mini-cart__drawer wc-block-components-drawer is-mobile",
+          "text": "עגלת הקניות שלך\t\t\n\t\t\t\t(פריטים: 0)\n\t\t\t\t\t\n",
+          "left": -480,
+          "top": 0,
+          "width": 480,
+          "height": 900,
+          "z": "auto"
+        },
+        {
+          "tag": "DIV",
+          "id": "nlrx-action-rail",
+          "cls": "nlrx-action-rail is-open",
+          "text": "שאלו אותנו\n\t\n\t\n\t\tמענה מהיר - נדל\"ן חכםכל",
+          "left": 18,
+          "top": 512,
+          "width": 162,
+          "height": 370,
+          "z": "2147483000"
+        }
+      ],
+      "consoleErrorCount": 0,
+      "consoleErrors": []
+    },
+    "screenshots": {
+      "collapsed": "docs/qa/screenshots/floating-actions-2026-06-19/rainbow-tel-aviv-tablet-768-collapsed.png",
+      "open": "docs/qa/screenshots/floating-actions-2026-06-19/rainbow-tel-aviv-tablet-768-open.png"
+    }
+  },
+  {
+    "page": "rainbow-tel-aviv",
+    "viewport": "mobile-390",
+    "before": {
+      "url": "https://nad-lan.co.il/projects/rainbow-tel-aviv/?railqa=1781894968652",
+      "title": "דירות למכירה ב-Rainbow תל אביב | מחירים, תוכניות ובחירת דירה בשדה דב | נדלן חכם",
+      "width": 390,
+      "height": 820,
+      "overflowX": 0,
+      "railExists": false,
+      "railOpen": false,
+      "launcher": null,
+      "fixedCount": 4,
+      "fixed": [
+        {
+          "tag": "DIV",
+          "id": "",
+          "cls": "nlfab",
+          "text": "וואטסאפ\n  חיוג\n  ייעוץ ראשוני בחינם",
+          "left": -32,
+          "top": 654,
+          "width": 49,
+          "height": 156,
+          "z": "8860"
+        },
+        {
+          "tag": "DIV",
+          "id": "nlai",
+          "cls": "",
+          "text": "שאלו אותנו\n\t\n\t\n\t\tמענה מהיר - נדל\"ן חכםכל",
+          "left": -29,
+          "top": 573,
+          "width": 47,
+          "height": 47,
+          "z": "8865"
+        },
+        {
+          "tag": "DIV",
+          "id": "",
+          "cls": "wc-block-mini-cart__drawer wc-block-components-drawer is-mobile",
+          "text": "עגלת הקניות שלך\t\t\n\t\t\t\t(פריטים: 0)\n\t\t\t\t\t\n",
+          "left": -390,
+          "top": 0,
+          "width": 390,
+          "height": 820,
+          "z": "auto"
+        },
+        {
+          "tag": "BUTTON",
+          "id": "nla-btn",
+          "cls": "",
+          "text": "",
+          "left": -29,
+          "top": 635,
+          "width": 47,
+          "height": 47,
+          "z": "8870"
+        }
+      ],
+      "consoleErrorCount": 0,
+      "consoleErrors": []
+    },
+    "collapsed": {
+      "url": "https://nad-lan.co.il/projects/rainbow-tel-aviv/?railqa=1781894968652",
+      "title": "דירות למכירה ב-Rainbow תל אביב | מחירים, תוכניות ובחירת דירה בשדה דב | נדלן חכם",
+      "width": 390,
+      "height": 820,
+      "overflowX": 0,
+      "railExists": true,
+      "railOpen": false,
+      "launcher": {
+        "x": 96,
+        "y": 752,
+        "width": 56,
+        "height": 56,
+        "top": 752,
+        "right": 152,
+        "bottom": 808,
+        "left": 96
+      },
+      "fixedCount": 2,
+      "fixed": [
+        {
+          "tag": "DIV",
+          "id": "",
+          "cls": "wc-block-mini-cart__drawer wc-block-components-drawer is-mobile",
+          "text": "עגלת הקניות שלך\t\t\n\t\t\t\t(פריטים: 0)\n\t\t\t\t\t\n",
+          "left": -390,
+          "top": 0,
+          "width": 390,
+          "height": 820,
+          "z": "auto"
+        },
+        {
+          "tag": "DIV",
+          "id": "nlrx-action-rail",
+          "cls": "nlrx-action-rail",
+          "text": "שאלו אותנו\n\t\n\t\n\t\tמענה מהיר - נדל\"ן חכםכל",
+          "left": 12,
+          "top": 742,
+          "width": 140,
+          "height": 66,
+          "z": "2147483000"
+        }
+      ],
+      "consoleErrorCount": 0,
+      "consoleErrors": []
+    },
+    "open": {
+      "url": "https://nad-lan.co.il/projects/rainbow-tel-aviv/?railqa=1781894968652",
+      "title": "דירות למכירה ב-Rainbow תל אביב | מחירים, תוכניות ובחירת דירה בשדה דב | נדלן חכם",
+      "width": 390,
+      "height": 820,
+      "overflowX": 0,
+      "railExists": true,
+      "railOpen": true,
+      "launcher": {
+        "x": 237,
+        "y": 752,
+        "width": 117,
+        "height": 56,
+        "top": 752,
+        "right": 354,
+        "bottom": 808,
+        "left": 237
+      },
+      "fixedCount": 2,
+      "fixed": [
+        {
+          "tag": "DIV",
+          "id": "",
+          "cls": "wc-block-mini-cart__drawer wc-block-components-drawer is-mobile",
+          "text": "עגלת הקניות שלך\t\t\n\t\t\t\t(פריטים: 0)\n\t\t\t\t\t\n",
+          "left": -390,
+          "top": 0,
+          "width": 390,
+          "height": 820,
+          "z": "auto"
+        },
+        {
+          "tag": "DIV",
+          "id": "nlrx-action-rail",
+          "cls": "nlrx-action-rail is-open",
+          "text": "שאלו אותנו\n\t\n\t\n\t\tמענה מהיר - נדל\"ן חכםכל",
+          "left": 12,
+          "top": 566,
+          "width": 342,
+          "height": 242,
+          "z": "2147483000"
+        }
+      ],
+      "consoleErrorCount": 0,
+      "consoleErrors": []
+    },
+    "screenshots": {
+      "collapsed": "docs/qa/screenshots/floating-actions-2026-06-19/rainbow-tel-aviv-mobile-390-collapsed.png",
+      "open": "docs/qa/screenshots/floating-actions-2026-06-19/rainbow-tel-aviv-mobile-390-open.png"
+    }
+  }
+]
