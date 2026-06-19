@@ -116,6 +116,13 @@ Material fields are not complete until they appear in the buyer UI:
 - future Cesium/3D city-view URLs must be exposed as a ready seam in the view panel,
 - nested material URLs must be sanitized before rendering as links.
 
+Interior journey rule: after a buyer selects an apartment, the product must offer a clear path to
+step inside the apartment when media exists. The sequence is selected apartment card, floor plan,
+interior render or room carousel, 360/Matterport/Marzipano tour if supplied, video if supplied, and
+request-full-plan/contact CTA. If official assets are missing, generated prototype media is allowed
+only with an illustrative/non-binding label. Do not present generated interiors as official
+developer material.
+
 The default model can be schematic, but the user experience must still feel like a product
 showroom: building-first, drag to rotate/tilt, visible zoom controls, large unit hit areas, no
 nested scrollbars and source-aware price/availability wording.
@@ -288,3 +295,19 @@ For the clone-ready project showroom, keep the visible hierarchy stable:
 5. On mobile, stack tightly: media image, intro, model, facade, selected card, then article.
 6. Article H2/H3 headings must share the same reading column as the paragraphs. Do not let theme-side headings drift to the far right while paragraphs sit in the center.
 7. Clone this as one layout contract for every project: poster, short intro, rotating context model, fixed inventory facade, selected-apartment card, structured article.
+
+## L. Interior Journey Contract
+
+The model/facade selector is not the end of the buyer journey. It is the door into the apartment.
+Use the engine documented in `docs/design/2026-06-19-project-showroom-engine-interior-journey.md`.
+
+Minimum for a prototype:
+
+1. Every selectable unit may include `plan_url`, `interior_url`, `tour_url` and `view_note`.
+2. The selected-apartment card must expose "view from apartment" and "inside the apartment" when
+   those fields exist.
+3. Project-level `project_3d_tour_url` and `project_3d_video_url` are fallbacks when a unit-specific
+   tour does not exist.
+4. Prototype interiors must be marked illustrative until contractor-approved assets arrive.
+5. The lead payload must keep the selected unit id/title/floor/rooms/sqm/status so the contractor
+   knows which apartment the buyer explored.

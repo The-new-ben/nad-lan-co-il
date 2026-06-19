@@ -111,6 +111,11 @@ Unit JSON fields:
 - `view_note`
 - `source_note`
 
+Interior fields are part of the product contract, not optional decoration. A selected apartment
+should be able to open its floor plan, interior render or 360 walkthrough when the asset exists.
+For pre-construction projects without official interiors, generated prototype media is acceptable
+only when clearly labeled as illustrative and replaceable.
+
 ## Hotspot Capture
 
 For `<model-viewer>`, each unit hotspot needs model coordinates:
@@ -165,6 +170,8 @@ The apartment selector is the product hero, not a decoration.
    panel in the vertical flow.
 5. Advanced tools such as sun, surroundings, Mapbox and Cesium are opened after the buyer selects
    a unit. Do not flood first view with every control.
+6. Interior tour is the next buyer step after the selected-apartment card. Follow the
+   Homes.com/Matterport pattern: floor plan, room media, 360 or walkthrough, dimensions, then CTA.
 
 ## Selected Apartment Card Standard
 
