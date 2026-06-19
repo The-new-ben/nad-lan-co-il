@@ -153,7 +153,43 @@ Cross-referenced to the discipline skill mistake catalog:
 
 ---
 
-## Sources cited above
+## 11. COMMUNICATION CADENCE — initiate, never block *(owner directive 2026-06-19)*
+
+There is **no live socket** between Claude and Codex — the owner relays asynchronously. So classic heartbeat/timeout polling doesn't map directly; the rule that does is **graceful degradation + idempotency** (Maxim, *MAS reliability*; gossip-protocol literature): never hang waiting for the other agent.
+
+**Rules:**
+1. **Both initiate. Neither waits silently.** If you have a unit of work and a safe default, do it and log it. Don't poll "is the other agent done yet."
+2. **Never block on the other agent for a *reversible* action** (a branch, a draft, a screenshot). Act on the documented safe default, leave a reconciliation note in §5, move on.
+3. **Always require the second key for *irreversible* actions** — merge to main, deploy, publish content, destructive ops. These wait for the other agent / owner. (Two-key rule, §1.)
+4. **Heartbeat = a timestamped line.** On starting and finishing any unit, append to §6 DONE (finished) or §3/§4 (starting). That line IS your "I'm alive" signal. Silence with no line = treat as stalled.
+5. **Don't re-ping faster than one work cycle.** Consensus literature calibrates election timers to **2–2.5× the commit interval** to avoid thundering-herd ([MultiPaxos](https://arxiv.org/pdf/2405.11183)); analogously, don't re-ask a question you already posted until a full cycle passed — read §5 first, the answer may already be there.
+6. **Review window:** when Codex posts a §3 plan, Claude reviews at next sync. If Claude hasn't flagged a blocker and the change is reversible, Codex proceeds and owns the assumption. Claude still gates + merges (two-key).
+
+## 12. CHAIN-OF-THOUGHT DISCLOSURE — mandatory in every update *(owner directive 2026-06-19)*
+
+Every status update, PR body, and §6 DONE entry MUST carry a short **REASONING** block so the other agent and owner can audit decisions and catch drift early:
+
+```
+REASONING
+- SAW:     the evidence I observed (command output / screenshot path / healthcheck field)
+- THOUGHT: why that evidence led to my conclusion
+- DID:     the action I took, and why this approach over the alternative(s)
+- CHECKED: how I verified it worked (the exact command / live URL / committed screenshot)
+```
+
+This is not optional narration. "I fixed X" without SAW/CHECKED is rejected at review (ties to M5/M11). If you can't fill CHECKED with a real artifact, the work isn't done.
+
+## 13. OPEN DEFECTS — live Dimri/Rainbow (Claude, 2026-06-19, evidence-based)
+
+Verified from live HTML of `/projects/dimri-yama-sde-dov/` (server-side; Codex must confirm visually + console):
+
+1. **Floating buttons stacked** — `11` `position:fixed` elements; lead FAB + AI bot (`#nlai`) + WhatsApp(×2) all anchored to one corner at `bottom:10/18/20/62/145/205/207/273px`, `left:10px`. On mobile this is an overlapping tower. → Collapse into ONE expandable action rail (single FAB → expands). `compact_floating_actions_v1672` did not fully solve it on this page.
+2. **Mapbox present but not rendering** — assets ARE there (`3` mapbox-gl script refs, token present, `5` `nlp3d-view-map` els) → it's a **runtime** failure, not a missing-asset failure. Codex (Chrome): capture console errors — likely token rejected (401), or container has 0 height, or it only inits behind a broken "live view" toggle.
+3. **Model "weird spin"** — `model-prototype.glb` is an 8.5 KB generated *massing box*, not a real building; `auto-rotate` on a crude box looks wrong, and it tumbles because polar (vertical) orbit isn't locked. → Constrain orbit to azimuth-only + lock `min/max-camera-orbit` polar to a single angle, OR drop auto-rotate, until a real GLB exists. This is a placeholder-asset problem first, a config problem second.
+4. **Facade not user-practical** — SVG prototype facade; `48` cells render but the mapping to a believable building face is weak. → Needs a real elevation image with traced polygons, or much better cell geometry. Same honest limit as Rainbow: 2.5D facade until BIM.
+
+---
+
 
 - Anthropic — *Building effective agents* (Dec 2024): https://www.anthropic.com/engineering/building-effective-agents
 - Anthropic — *How we built our multi-agent research system* (Jun 2025): https://www.anthropic.com/engineering/multi-agent-research-system
