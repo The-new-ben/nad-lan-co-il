@@ -76,6 +76,24 @@ EOF
 ### M8 — Calling a non-deploy a "deploy"
 **Rule:** "merged to main" → say *merged*. "live healthcheck shows new version" → say *deployed*. Never blur the two (see M0).
 
+### M9 — Working in throwaway temp folders instead of the repo  *(the root cause of most chaos)*
+**What happened:** work was done in `C:\Users\pro\Documents\websites\.codex-tmp\nadlan-rainbow-showroom-dna-1664\` — a hidden, disposable clone. Result: assets/QA/screenshots lived outside git, branches were cut from stale copies (→ M1/M2 regressions), commits were lost to branch-name reuse, and the owner couldn't find the files.
+**Rule:** **If it's not committed to the repo, it does not exist.** Use ONE canonical, findable checkout — `C:\Users\pro\nad-lan-co-il` (NOT under `.codex-tmp`, NOT a per-task clone). Every durable artifact (project assets, payloads, QA screenshots, docs) goes in git under a stable path (`assets/projects/<slug>/`, `docs/qa/…`). Never report a "proof file" that lives only in a temp dir — commit it or it's not proof.
+**Fix:** one repo, one working dir, everything in git.
+
+### M10 — Forgetting the THEME has a different deploy path than the plugin
+**What happened (new risk with theme-first):** presentation is moving from the plugin into the theme (repo root + `patterns/`, `assets/css|js/`, `functions.php`). The plugin deploys via the WordPress auto-updater (ZIP). **The theme deploys via `git pull` on the UPress server** — a *different* pipeline. Merging theme code to `main` puts **nothing** live until someone pulls on the server.
+**Rule:** state the deploy path explicitly per change. Plugin change → "update plugin to vX". Theme change → "git pull on UPress server + clear cache". A theme PR with no server pull is M0 all over again. Keep a `THEME` vs `PLUGIN` label on every release note.
+
+---
+
+## 1b. ARCHITECTURE BOUNDARY (theme-first, decided 2026-06-19)
+- **Plugin** = infrastructure only: CPTs, REST endpoints, lead capture, data contracts, sanitization, AI/payment/business logic, healthcheck. No page layout, no showroom CSS.
+- **Theme** = all presentation: project-page layout, showroom pattern, responsive CSS/JS, article hierarchy, breadcrumbs.
+- **Project folder** (`assets/projects/<slug>/`, committed) = unit data, source notes, model/facade/poster/tour assets, validated `showroom-payload.json`.
+- **WordPress draft** = the editable CMS page, created from the committed payload.
+- Rule: a presentation tweak must NOT require a plugin ZIP release (that's what poisoned the server). If you're editing the plugin to change how the page *looks*, stop — it belongs in the theme.
+
 ---
 
 ## 2. RELEASE PRE-FLIGHT (copy-paste, run in order)
