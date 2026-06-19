@@ -197,4 +197,11 @@ Verified from live HTML of `/projects/dimri-yama-sde-dov/` (server-side; Codex m
 - *Exploring Advanced LLM Multi-Agent Systems Based on Blackboard Architecture* (arXiv:2507.01701, Jul 2025): https://arxiv.org/pdf/2507.01701
 - *CodeCRDT: Observation-Driven Coordination for Multi-Agent LLM Code Generation* (arXiv:2510.18893, Oct 2025): https://arxiv.org/pdf/2510.18893
 - Atlassian — *Trunk-based Development*: https://www.atlassian.com/continuous-delivery/continuous-integration/trunk-based-development
+
+---
+
+## 14. ACTIVE SPECS (Codex implements; Claude provides)
+
+- **2026-06-19 — 3D camera lock + facade dismissible + CMS wiring** → `docs/design/2026-06-19-camera-orbit-and-facade-dismiss-spec.md` · target version **1.67.6** · Codex builds, Claude reviews/gates/merges. Owner verbatim citations in §1 of the spec.
+- *(M11 reminder: PR must include screenshots at 1440 / 768 / 390 under `docs/qa/screenshots/v1676-camera-facade/`.)*
 - Engelmore & Morgan, *Blackboard Systems* (1988) — classic foundation; see also Hayes-Roth, *A blackboard architecture for control* (1985).
