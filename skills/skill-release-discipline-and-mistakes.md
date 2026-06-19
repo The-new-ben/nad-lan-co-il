@@ -116,12 +116,24 @@ EOF
 **What happened:** many readiness matrices, QA scripts, and manual edits were produced across hours while the only real blocker stayed "live not updated."
 **Rule:** when blocked on an external state (deploy, owner action), **state the one blocker and stop**, or do work that *removes* the blocker. Don't add the 6th QA script. One sentence: "Blocked on deploy of X; nothing else ships value until then."
 
-### M7 — Two agents editing one file
-**What happened:** Claude and Codex both edited `project-3d.php` and pushed to main → collisions, regressions, renumbering.
-**Rule:** **`project-3d.php` is owned by Claude** (owner's decision, 2026-06-14). Codex: do not edit it. Propose changes as a spec/PR comment, or hand off. One file, one owner.
+### M7 — Two agents editing one file *(superseded 2026-06-19)*
+**Original problem:** Claude and Codex both edited `project-3d.php` and pushed to main → collisions, regressions, renumbering.
+**Original rule (2026-06-14):** `project-3d.php` is owned by Claude.
+**Updated rule (2026-06-19, owner decision):** Role split is now **Codex implements (incl. project-3d.php) · Claude reviews & merges**. To prevent the original collision pattern from returning, use the **two-key rule** and the **shared billboard** instead of file-level lock:
+1. Implementer ≠ merger. Codex commits & pushes; Claude reviews & merges.
+2. Both agents declare the file they're touching in `COORDINATION.md` §3/§4 BEFORE editing. If the other agent has it open, hold or split the work.
+3. The mitigation that actually worked: see `COORDINATION.md` at repo root — the shared billboard.
 
-### M8 — Calling a non-deploy a "deploy"
-**Rule:** "merged to main" → say *merged*. "live healthcheck shows new version" → say *deployed*. Never blur the two (see M0).
+### M11 — "Proof" that lives only in chat or a local file *(new — 2026-06-19)*
+**What happened:** "I rebuilt the ZIP" / "screenshots look good" was reported, but the artifact was never in the repo so the other agent couldn't verify. M5 said *every integrity claim needs a command on the actual artifact*; this extends it: **every visual-change claim needs a screenshot committed to the repo** at a stable path (`docs/qa/screenshots/<run>/<viewport>.png`) — not pasted in chat, not on a Windows desktop. If it isn't in git, it didn't happen.
+**Rule:** for any CSS / layout / copy / hierarchy change, the PR must include screenshots at **1440 / 768 / 390** committed under `docs/qa/screenshots/`, AND a healthcheck JSON committed under `docs/qa/healthcheck-<version>.json` after live deploy.
+**Fix:** Codex (who has Chrome) captures and commits the screenshots. Claude verifies they exist in the PR before merging.
+
+### M12 — Building a coordination framework instead of using the simplest one *(new — 2026-06-19, meta-mistake)*
+**What happened (would have happened):** the temptation to write a complex multi-agent framework, a new state machine, custom MCP servers, etc.
+**Rule:** Anthropic's own guidance — *"finding the simplest solution possible, and only increasing complexity when needed"* (Building effective agents, Dec 2024). Our solution is one Markdown file (`COORDINATION.md`) + the discipline skill + trunk-based merging. That's it. No new abstractions until that proven inadequate by measurement, not by feeling.
+
+---
 
 ### M9 — Working in throwaway temp folders instead of the repo  *(the root cause of most chaos)*
 **What happened:** work was done in `C:\Users\pro\Documents\websites\.codex-tmp\nadlan-rainbow-showroom-dna-1664\` — a hidden, disposable clone. Result: assets/QA/screenshots lived outside git, branches were cut from stale copies (→ M1/M2 regressions), commits were lost to branch-name reuse, and the owner couldn't find the files.
