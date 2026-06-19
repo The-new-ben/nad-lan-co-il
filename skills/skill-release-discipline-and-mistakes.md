@@ -253,3 +253,9 @@ node scripts\qa-rainbow-postdeploy.mjs --version <VERSION> --out docs\qa\rainbow
 **Why it hurt:** the buyer saw two competing selection systems and overlapping surfaces, so the product felt confusing even when the data was wired.
 **Rule:** once a project has the dual-showroom contract, the GLB is context and the facade is the picker. Add final scoped overrides after older CSS slices: hide `.nlp3d-stage-picks` and `.nlp3d-mv-hotspot` only in `.is-dual-showroom`, and dock `.nlp3d-stage-card` below the scene.
 **Fix command:** after deploy, click a facade cell at 1440/768/390 and verify the selected card does not overlap the model or facade.
+
+### M14 - No silent showroom fallbacks
+**What happened:** a failed or late-loading showroom surface could silently fall back to the old procedural tower or legacy facade. That hid the real failure and made the page look like two systems were fighting.
+**Why it hurt:** the owner could not see the actual failure, buyers saw unstable UI, and future agents kept polishing the fallback instead of fixing the broken asset.
+**Rule:** failures must be visible. If the GLB, facade image, drawing, tour or map fails, show a clear failure state and log it. Do not silently resurrect old tower/facade layers as a substitute. Legacy markup may render only when it is the intentional primary surface for an old project.
+**Fix command:** after deploy, inspect the live HTML for dual-showroom pages. `.nlp3d-facade` and `.nlp3d-facade-hotspots` must be absent when the embedded facade plane is active, and a forced model error must show `.nlp3d-model-error`.

@@ -151,6 +151,65 @@ if ( ! function_exists( 'nadlan_p3d_sanitize_material_json' ) ) {
 	}
 }
 
+if ( ! function_exists( 'nadlan_p3d_clean_facade_images' ) ) {
+	function nadlan_p3d_clean_facade_images( $items ) {
+		if ( ! is_array( $items ) ) {
+			return array();
+		}
+
+		$out = array();
+		foreach ( $items as $item ) {
+			if ( ! is_array( $item ) ) {
+				continue;
+			}
+			$src = esc_url_raw( (string) ( $item['src'] ?? $item['url'] ?? '' ) );
+			if ( $src === '' ) {
+				continue;
+			}
+			$out[] = array(
+				'building' => sanitize_text_field( (string) ( $item['building'] ?? $item['label'] ?? '' ) ),
+				'label'    => sanitize_text_field( (string) ( $item['label'] ?? $item['building'] ?? '' ) ),
+				'src'      => $src,
+				'viewbox'  => preg_replace( '/[^0-9,. \-]/', '', (string) ( $item['viewbox'] ?? '0 0 1000 1000' ) ),
+			);
+			if ( count( $out ) >= 12 ) {
+				break;
+			}
+		}
+
+		return $out;
+	}
+}
+
+if ( ! function_exists( 'nadlan_p3d_clean_site_plan_polygons' ) ) {
+	function nadlan_p3d_clean_site_plan_polygons( $items ) {
+		if ( ! is_array( $items ) ) {
+			return array();
+		}
+
+		$out = array();
+		foreach ( $items as $item ) {
+			if ( ! is_array( $item ) ) {
+				continue;
+			}
+			$points = preg_replace( '/[^0-9,. \-]/', '', (string) ( $item['points'] ?? '' ) );
+			if ( $points === '' ) {
+				continue;
+			}
+			$out[] = array(
+				'building' => sanitize_text_field( (string) ( $item['building'] ?? $item['label'] ?? '' ) ),
+				'label'    => sanitize_text_field( (string) ( $item['label'] ?? $item['building'] ?? '' ) ),
+				'points'   => $points,
+			);
+			if ( count( $out ) >= 30 ) {
+				break;
+			}
+		}
+
+		return $out;
+	}
+}
+
 if ( ! function_exists( 'nadlan_p3d_clean_unit_items' ) ) {
 	function nadlan_p3d_clean_unit_items( $units ) {
 		if ( ! is_array( $units ) || ! $units ) {
@@ -426,6 +485,36 @@ if ( ! function_exists( 'nadlan_p3d_sanitize_checkbox' ) ) {
 	}
 }
 
+if ( ! function_exists( 'nadlan_p3d_sanitize_camera_lock' ) ) {
+	function nadlan_p3d_sanitize_camera_lock( $value ) {
+		$value = sanitize_key( (string) $value );
+		return in_array( $value, array( 'horizontal', 'free' ), true ) ? $value : 'horizontal';
+	}
+}
+
+if ( ! function_exists( 'nadlan_p3d_sanitize_degree' ) ) {
+	function nadlan_p3d_sanitize_degree( $value ) {
+		$value = trim( (string) $value );
+		if ( preg_match( '/^-?\d{1,3}(?:\.\d+)?deg$/', $value ) ) {
+			return $value;
+		}
+		if ( is_numeric( $value ) ) {
+			return max( -180, min( 180, (float) $value ) ) . 'deg';
+		}
+		return '';
+	}
+}
+
+if ( ! function_exists( 'nadlan_p3d_degree_number' ) ) {
+	function nadlan_p3d_degree_number( $value, $fallback ) {
+		$value = nadlan_p3d_sanitize_degree( $value );
+		if ( $value === '' ) {
+			return (float) $fallback;
+		}
+		return (float) str_replace( 'deg', '', $value );
+	}
+}
+
 if ( ! function_exists( 'nadlan_p3d_showroom_fields' ) ) {
 	function nadlan_p3d_showroom_fields() {
 		return array(
@@ -439,11 +528,19 @@ if ( ! function_exists( 'nadlan_p3d_showroom_fields' ) ) {
 			'project_model_glb'             => 'esc_url_raw',
 			'project_model_usdz'            => 'esc_url_raw',
 			'project_model_poster'          => 'esc_url_raw',
+			'project_3d_camera_lock'        => 'nadlan_p3d_sanitize_camera_lock',
+			'project_3d_camera_min_polar'   => 'nadlan_p3d_sanitize_degree',
+			'project_3d_camera_max_polar'   => 'nadlan_p3d_sanitize_degree',
+			'project_3d_camera_auto_rotate' => 'nadlan_p3d_sanitize_checkbox',
+			'project_3d_camera_rotation_per_second' => 'nadlan_p3d_sanitize_degree',
 			'project_3d_video_url'          => 'esc_url_raw',
 			'project_3d_tour_url'           => 'esc_url_raw',
 			'project_3d_cesium_tiles_url'   => 'esc_url_raw',
 			'project_3d_drawings_json'      => 'nadlan_p3d_sanitize_material_json',
 			'project_3d_environment_json'   => 'nadlan_p3d_sanitize_material_json',
+			'project_3d_facade_images'      => 'nadlan_p3d_sanitize_json_text',
+			'project_3d_site_plan_image'    => 'esc_url_raw',
+			'project_3d_site_plan_polygons' => 'nadlan_p3d_sanitize_json_text',
 			'project_3d_units'              => 'nadlan_p3d_sanitize_units_json',
 			'project_3d_demo'               => 'nadlan_p3d_sanitize_checkbox',
 		);
@@ -483,7 +580,7 @@ if ( ! function_exists( 'nadlan_p3d_is_project' ) ) {
 
 if ( ! function_exists( 'nadlan_p3d_prepare_rest_value' ) ) {
 	function nadlan_p3d_prepare_rest_value( $key, $value ) {
-		if ( is_array( $value ) && in_array( $key, array( 'project_3d_units', 'project_3d_drawings_json', 'project_3d_environment_json' ), true ) ) {
+		if ( is_array( $value ) && in_array( $key, array( 'project_3d_units', 'project_3d_drawings_json', 'project_3d_environment_json', 'project_3d_facade_images', 'project_3d_site_plan_polygons' ), true ) ) {
 			$value = wp_json_encode( $value, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES );
 		}
 		return $value;
@@ -614,6 +711,19 @@ if ( ! function_exists( 'nadlan_p3d_meta' ) ) {
 		$video_url         = esc_url_raw( (string) get_post_meta( $post_id, 'project_3d_video_url', true ) );
 		$tour_url          = esc_url_raw( (string) get_post_meta( $post_id, 'project_3d_tour_url', true ) );
 		$cesium_url        = esc_url_raw( (string) get_post_meta( $post_id, 'project_3d_cesium_tiles_url', true ) );
+		$camera_lock       = nadlan_p3d_sanitize_camera_lock( get_post_meta( $post_id, 'project_3d_camera_lock', true ) );
+		$preset_min        = $camera_lock === 'free' ? '0deg' : '78deg';
+		$preset_max        = $camera_lock === 'free' ? '180deg' : '85deg';
+		$camera_min_polar  = nadlan_p3d_sanitize_degree( get_post_meta( $post_id, 'project_3d_camera_min_polar', true ) );
+		$camera_max_polar  = nadlan_p3d_sanitize_degree( get_post_meta( $post_id, 'project_3d_camera_max_polar', true ) );
+		$camera_rotation   = nadlan_p3d_sanitize_degree( get_post_meta( $post_id, 'project_3d_camera_rotation_per_second', true ) );
+		$camera_auto_raw   = get_post_meta( $post_id, 'project_3d_camera_auto_rotate', true );
+		$camera_min_polar  = $camera_min_polar !== '' ? $camera_min_polar : $preset_min;
+		$camera_max_polar  = $camera_max_polar !== '' ? $camera_max_polar : $preset_max;
+		$camera_rotation   = $camera_rotation !== '' ? $camera_rotation : '8deg';
+		$camera_auto       = $camera_auto_raw === '' ? $camera_lock === 'free' : nadlan_p3d_sanitize_checkbox( $camera_auto_raw ) === '1';
+		$camera_mid        = ( nadlan_p3d_degree_number( $camera_min_polar, 78 ) + nadlan_p3d_degree_number( $camera_max_polar, 85 ) ) / 2;
+		$site_plan_image   = esc_url_raw( (string) get_post_meta( $post_id, 'project_3d_site_plan_image', true ) );
 
 		return array(
 			'title'     => $title ?: 'הפרויקט',
@@ -634,11 +744,20 @@ if ( ! function_exists( 'nadlan_p3d_meta' ) ) {
 			'model_usdz'         => $model_usdz,
 			'model_poster'       => $model_poster,
 			'model_viewer'       => $model_glb !== '',
+			'camera_lock'        => $camera_lock,
+			'camera_min_polar'   => $camera_min_polar,
+			'camera_max_polar'   => $camera_max_polar,
+			'camera_mid_polar'   => rtrim( rtrim( number_format( $camera_mid, 1, '.', '' ), '0' ), '.' ) . 'deg',
+			'camera_auto_rotate' => (bool) $camera_auto,
+			'camera_rotation_per_second' => $camera_rotation,
 			'video_url'          => $video_url,
 			'tour_url'           => $tour_url,
 			'cesium_tiles_url'   => $cesium_url,
 			'drawings'           => nadlan_p3d_clean_material_items( nadlan_p3d_json_meta( $post_id, 'project_3d_drawings_json', array() ) ),
 			'environment'        => nadlan_p3d_clean_material_items( nadlan_p3d_json_meta( $post_id, 'project_3d_environment_json', array() ) ),
+			'facade_images'      => nadlan_p3d_clean_facade_images( nadlan_p3d_json_meta( $post_id, 'project_3d_facade_images', array() ) ),
+			'site_plan_image'    => $site_plan_image,
+			'site_plan_polygons' => nadlan_p3d_clean_site_plan_polygons( nadlan_p3d_json_meta( $post_id, 'project_3d_site_plan_polygons', array() ) ),
 			'url'       => get_permalink( $post_id ),
 			'demo'      => (bool) $demo,
 		);
@@ -709,6 +828,9 @@ if ( ! function_exists( 'nadlan_p3d_render' ) ) {
 		$unit_json = nadlan_p3d_json( $units, '[]' );
 		$meta_json = nadlan_p3d_json( $meta, '{}' );
 		$has_model_viewer = ! empty( $meta['model_glb'] );
+		$has_embedded_facade = ! empty( $meta['facade_images'] ) || ! empty( $meta['site_plan_image'] ) || ! empty( $meta['site_plan_polygons'] ) || $has_model_viewer;
+		// No silent fallbacks: emit the legacy facade only when it is the intentional primary surface.
+		$render_legacy_facade = $image !== '' && ! $has_embedded_facade;
 		$showroom_poster = esc_url( (string) ( $meta['model_poster'] ?? '' ) );
 		$project_title = $meta['title'] ? (string) $meta['title'] : 'הפרויקט';
 		$project_place = $meta['address'] ? (string) $meta['address'] : ( $meta['city'] ? (string) $meta['city'] : '' );
@@ -717,6 +839,12 @@ if ( ! function_exists( 'nadlan_p3d_render' ) ) {
 		$project_kicker = $project_title . ( $project_place !== '' ? ' · ' . $project_place : '' );
 		$project_intro_copy = $project_title . ' מוצג כאן כתצוגת דירות אינטראקטיבית' . $project_place_phrase . '. בוחרים דירה על המודל לפי קומה, חדרים, כיוון ונוף, ורואים אומדן מחיר וזמינות לא מחייבים לפני פנייה ליזם.' . $project_developer_sentence;
 		$project_lead_copy = 'דירות למכירה ב-' . $project_title . $project_place_phrase . ' מוצגות כאן לפי קומה, חדרים, שטח, כיוון ונוף. המחירים והזמינות הם אומדן לא מחייב עד אימות מול היזם, והפנייה נשמרת עם הדירה שנבחרה.';
+
+		$camera_min_polar = esc_attr( (string) ( $meta['camera_min_polar'] ?? '78deg' ) );
+		$camera_max_polar = esc_attr( (string) ( $meta['camera_max_polar'] ?? '85deg' ) );
+		$camera_mid_polar = esc_attr( (string) ( $meta['camera_mid_polar'] ?? '81.5deg' ) );
+		$camera_rotation  = esc_attr( (string) ( $meta['camera_rotation_per_second'] ?? '8deg' ) );
+		$camera_auto      = ! empty( $meta['camera_auto_rotate'] );
 
 		ob_start();
 		?>
@@ -767,6 +895,7 @@ if ( ! function_exists( 'nadlan_p3d_render' ) ) {
 				<button type="button" class="nlp3d-zoom" data-zoom="in" data-action="zoom-in">קרב</button>
 				<button type="button" class="nlp3d-zoom" data-zoom="out" data-action="zoom-out">הרחק</button>
 				<span class="nlp3d-drag-note">בחרו דירה על המגדל</span>
+				<button type="button" class="nlp3d-fp-restore" data-action="facade-restore" hidden>הצג חזית</button>
 			</div>
 			<div class="nlp3d-scene<?php echo $has_model_viewer ? ' has-model-viewer' : ''; ?>" style="--angle:-32deg" role="group" aria-label="מודל תלת ממדי סכמטי של מגדל מגורים">
 				<?php if ( $has_model_viewer ) : ?>
@@ -779,12 +908,14 @@ if ( ! function_exists( 'nadlan_p3d_render' ) ) {
 						reveal="auto"
 						loading="auto"
 						camera-controls
+						<?php if ( $camera_auto ) : ?>
 						auto-rotate
 						auto-rotate-delay="3500"
-						rotation-per-second="8deg"
-						min-camera-orbit="-Infinity 0deg auto"
-						max-camera-orbit="Infinity 180deg auto"
-						camera-orbit="34deg 62deg 32m"
+						rotation-per-second="<?php echo $camera_rotation; ?>"
+						<?php endif; ?>
+						min-camera-orbit="-Infinity <?php echo $camera_min_polar; ?> auto"
+						max-camera-orbit="Infinity <?php echo $camera_max_polar; ?> auto"
+						camera-orbit="34deg <?php echo $camera_mid_polar; ?> 32m"
 						field-of-view="18deg"
 						camera-target="0m 56m 0m"
 						environment-image="neutral"
@@ -828,6 +959,7 @@ if ( ! function_exists( 'nadlan_p3d_render' ) ) {
 							</button>
 						<?php endforeach; ?>
 					</model-viewer>
+					<div class="nlp3d-model-error" role="status" aria-live="polite" hidden>התצוגה התלת־ממדית לא נטענה. בדקו את קובץ המודל של הפרויקט.</div>
 				<?php endif; ?>
 				<div class="nlp3d-horizon"></div>
 				<div class="nlp3d-sea"></div>
@@ -835,8 +967,9 @@ if ( ! function_exists( 'nadlan_p3d_render' ) ) {
 				<div class="nlp3d-runway"></div>
 				<div class="nlp3d-tower" role="group" aria-label="בחירת קומה ישירות מהמגדל"></div>
 				<div class="nlp3d-shadow" aria-hidden="true"></div>
-				<?php if ( $image ) : ?>
+				<?php if ( $render_legacy_facade ) : ?>
 					<figure class="nlp3d-facade" data-viewbox="<?php echo esc_attr( $viewbox ); ?>">
+						<button type="button" class="nlp3d-fp-close" data-action="facade-dismiss" aria-label="הסתר חזית">×</button>
 						<img src="<?php echo $image; ?>" alt="<?php echo esc_attr( $image_alt ); ?>" loading="lazy">
 						<svg class="nlp3d-facade-hotspots" viewBox="<?php echo esc_attr( $viewbox ); ?>" preserveAspectRatio="none" aria-label="בחירת דירה על גבי החזית"></svg>
 						<figcaption><?php echo esc_html( $image_cap ); ?></figcaption>
@@ -879,13 +1012,16 @@ if ( ! function_exists( 'nadlan_p3d_render' ) ) {
 				<div class="nlp3d-stage-card-actions">
 					<button type="button" class="nlp3d-stage-details" data-action="stage-details">פרטים מלאים</button>
 					<button type="button" class="nlp3d-stage-view-btn" data-action="stage-view">מבט מהדירה</button>
+					<button type="button" class="nlp3d-stage-tour" data-action="stage-tour">סיור ותוכניות</button>
 					<button type="button" class="nlp3d-stage-inquiry" data-action="stage-inquiry">דברו עם היזם</button>
 				</div>
 				<nav class="nlp3d-stage-tabs" role="tablist" aria-label="מידע נוסף על הדירה">
 					<button type="button" role="tab" data-stage-tab="spec" aria-selected="true">פרטים</button>
 					<button type="button" role="tab" data-stage-tab="view" aria-selected="false">מבט מהדירה</button>
+					<button type="button" role="tab" data-stage-tab="drawing" aria-selected="false">תוכניות</button>
 					<button type="button" role="tab" data-stage-tab="sun" aria-selected="false">שמש</button>
 					<button type="button" role="tab" data-stage-tab="surroundings" aria-selected="false">סביבה</button>
+					<button type="button" role="tab" data-stage-tab="media" aria-selected="false">סיור</button>
 				</nav>
 			</div>
 		</div>
@@ -1497,6 +1633,81 @@ CSS;
 	}
 }
 
+if ( ! function_exists( 'nadlan_p3d_showroom_core_v1680_css' ) ) {
+	function nadlan_p3d_showroom_core_v1680_css() {
+		return <<<'CSS'
+/* v1.68.0 showroom core: final layer. The GLB is context; the facade plane owns picking. */
+.nlp3d.nlp3d-premium.is-dual-showroom .nlp3d-scene>.nlp3d-facade,
+.nlp3d.nlp3d-premium.is-dual-showroom .nlp3d-scene>.nlp3d-tower,
+.nlp3d.nlp3d-premium.is-dual-showroom .nlp3d-scene.has-model-viewer>.nlp3d-facade,
+.nlp3d.nlp3d-premium.is-dual-showroom .nlp3d-scene.has-model-viewer>.nlp3d-tower,
+.nlp3d.nlp3d-premium.is-dual-showroom.has-model-viewer-loaded .nlp3d-scene.has-model-viewer>.nlp3d-facade,
+.nlp3d.nlp3d-premium.is-dual-showroom.has-model-viewer-loaded .nlp3d-scene.has-model-viewer>.nlp3d-tower,
+.nlp3d.nlp3d-premium.is-dual-showroom.has-model-viewer-error .nlp3d-scene>.nlp3d-facade,
+.nlp3d.nlp3d-premium.is-dual-showroom.has-model-viewer-error .nlp3d-scene>.nlp3d-tower{
+display:none!important;opacity:0!important;visibility:hidden!important;pointer-events:none!important;z-index:-1!important;
+}
+.nlp3d.nlp3d-premium.has-model-viewer-error .nlp3d-scene.has-model-viewer>.nlp3d-facade,
+.nlp3d.nlp3d-premium.has-model-viewer-error .nlp3d-scene.has-model-viewer>.nlp3d-tower{
+display:none!important;opacity:0!important;visibility:hidden!important;pointer-events:none!important;z-index:-1!important;
+}
+.nlp3d.nlp3d-premium .nlp3d-model-error[hidden]{display:none!important}
+.nlp3d.nlp3d-premium .nlp3d-model-error{
+position:absolute;inset-block-start:72px;inset-inline-start:18px;z-index:54;
+max-width:min(420px,calc(100% - 36px));padding:12px 14px;border:1px solid rgba(255,198,128,.72);
+background:rgba(32,16,10,.92);color:#fff7df;font-size:14px;line-height:1.45;font-weight:800;
+box-shadow:0 16px 38px rgba(0,0,0,.36);
+}
+.nlp3d.nlp3d-premium .nlp3d-fp-close{
+position:absolute;top:8px;inset-inline-start:8px;z-index:45;width:38px;height:38px;border-radius:999px;
+border:1px solid rgba(255,247,198,.46);background:rgba(7,15,16,.84);color:#fff7df;
+font-size:20px;line-height:1;display:grid;place-items:center;cursor:pointer;box-shadow:0 10px 24px rgba(0,0,0,.28);
+}
+.nlp3d.nlp3d-premium .nlp3d-fp-close:hover,
+.nlp3d.nlp3d-premium .nlp3d-fp-close:focus-visible{background:rgba(7,15,16,.98);outline:2px solid rgba(255,247,198,.62);outline-offset:2px}
+.nlp3d.nlp3d-premium .nlp3d-fp-restore{
+min-height:38px;padding:7px 12px;border-radius:999px;border:1px solid rgba(234,216,163,.42);
+background:rgba(7,15,16,.82);color:#fff7df;font-size:13px;font-weight:800;cursor:pointer;
+}
+.nlp3d.nlp3d-premium .nlp3d-fp-restore[hidden]{display:none!important}
+.nlp3d.nlp3d-premium.nlp3d-facade-dismissed .nlp3d-facade-plane,
+.nlp3d.nlp3d-premium.nlp3d-facade-dismissed .nlp3d-fp-legend{display:none!important}
+.nlp3d.nlp3d-premium.is-dual-showroom.nlp3d-facade-dismissed .nlp3d-model-viewer{
+inset:0!important;left:0!important;right:0!important;top:0!important;bottom:0!important;width:100%!important;height:100%!important;
+}
+.nlp3d.nlp3d-premium .nlp3d-stage-tabs{grid-template-columns:repeat(auto-fit,minmax(92px,1fr))!important}
+.nlp3d.nlp3d-premium .nlp3d-stage-card-actions{grid-template-columns:repeat(auto-fit,minmax(128px,1fr))!important}
+.nlp3d.nlp3d-premium .nlp3d-cell-tag strong,
+.nlp3d.nlp3d-premium .nlp3d-cell-tag small{display:block;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.nlp3d.nlp3d-premium .nlp3d-cell-tag small+small{opacity:.82}
+@media(max-width:760px){
+.nlp3d.nlp3d-premium.is-dual-showroom:not(.nlp3d-facade-dismissed) .nlp3d-stage-wrap{min-height:auto!important;overflow:visible!important}
+.nlp3d.nlp3d-premium.is-dual-showroom:not(.nlp3d-facade-dismissed) .nlp3d-scene{
+position:relative!important;display:grid!important;grid-template-rows:auto auto!important;gap:10px!important;
+height:auto!important;min-height:0!important;overflow:visible!important;padding:10px!important;
+}
+.nlp3d.nlp3d-premium.is-dual-showroom:not(.nlp3d-facade-dismissed) .nlp3d-model-viewer{
+position:relative!important;inset:auto!important;left:auto!important;right:auto!important;top:auto!important;bottom:auto!important;
+width:100%!important;height:clamp(220px,58vw,310px)!important;min-height:0!important;opacity:1!important;
+border:1px solid rgba(234,216,163,.22)!important;border-radius:12px!important;background:rgba(5,18,18,.86)!important;
+}
+.nlp3d.nlp3d-premium.is-dual-showroom:not(.nlp3d-facade-dismissed) .nlp3d-facade-plane{
+position:relative!important;inset:auto!important;left:auto!important;right:auto!important;top:auto!important;bottom:auto!important;
+transform:none!important;width:100%!important;height:clamp(320px,90vw,430px)!important;margin:0!important;z-index:16!important;
+}
+.nlp3d.nlp3d-premium.is-dual-showroom:not(.nlp3d-facade-dismissed) .nlp3d-fp-legend{
+position:relative!important;left:auto!important;right:auto!important;bottom:auto!important;max-width:none!important;
+justify-content:center;margin:0 10px 10px!important;z-index:17!important;
+}
+.nlp3d.nlp3d-premium.is-dual-showroom:not(.nlp3d-facade-dismissed) .nlp3d-context-caption{position:relative!important;bottom:auto!important;margin:4px 0 0!important}
+.nlp3d.nlp3d-premium .nlp3d-model-error{position:relative;inset:auto;margin:8px 0 0;max-width:none}
+.nlp3d.nlp3d-premium .nlp3d-fp-close{width:42px;height:42px}
+.nlp3d.nlp3d-premium .nlp3d-stage-tabs{grid-template-columns:repeat(2,minmax(0,1fr))!important}
+}
+CSS;
+	}
+}
+
 if ( ! function_exists( 'nadlan_p3d_inline_js' ) ) {
 	function nadlan_p3d_inline_js( $rest_url ) {
 		$js = <<<'JS'
@@ -1638,6 +1849,7 @@ if ( ! function_exists( 'nadlan_p3d_inline_js' ) ) {
 		var facade=root.querySelector('.nlp3d-facade');
 		var hotspots=root.querySelector('.nlp3d-facade-hotspots');
 		var modelViewer=root.querySelector('.nlp3d-model-viewer');
+		var modelError=root.querySelector('.nlp3d-model-error');
 		var modelHotspots=[].slice.call(root.querySelectorAll('.nlp3d-mv-hotspot'));
 		var stagePicks=null;
 		var facadePlane=null;
@@ -1650,7 +1862,7 @@ if ( ! function_exists( 'nadlan_p3d_inline_js' ) ) {
 				   With a GLB it sits beside the rotating model; without a GLB it owns the scene. */
 				facadePlane=document.createElement('div');
 				facadePlane.className='nlp3d-facade-plane';
-				facadePlane.innerHTML='<span class="nlp3d-fp-title">בחירת דירות</span><span class="nlp3d-fp-roof" aria-hidden="true"></span><span class="nlp3d-fp-body" aria-hidden="true"></span><span class="nlp3d-fp-glow" aria-hidden="true"></span>';
+				facadePlane.innerHTML='<button type="button" class="nlp3d-fp-close" data-action="facade-dismiss" aria-label="הסתר חזית">×</button><span class="nlp3d-fp-title">בחירת דירות</span><span class="nlp3d-fp-roof" aria-hidden="true"></span><span class="nlp3d-fp-body" aria-hidden="true"></span><span class="nlp3d-fp-glow" aria-hidden="true"></span>';
 				stagePicks.className='nlp3d-cells';
 				stagePicks.setAttribute('role','group');
 				stagePicks.setAttribute('aria-label','בחירת דירה על חזית הבניין');
@@ -1714,7 +1926,10 @@ if ( ! function_exists( 'nadlan_p3d_inline_js' ) ) {
 		var stageTabs=[].slice.call(root.querySelectorAll('.nlp3d-stage-tabs [data-stage-tab]'));
 		var stageDetails=root.querySelector('.nlp3d-stage-details');
 		var stageViewBtn=root.querySelector('.nlp3d-stage-view-btn');
+		var stageTour=root.querySelector('.nlp3d-stage-tour');
 		var stageInquiry=root.querySelector('.nlp3d-stage-inquiry');
+		var facadeRestore=root.querySelector('.nlp3d-fp-restore');
+		var facadeClose=facadePlane?facadePlane.querySelector('.nlp3d-fp-close'):root.querySelector('.nlp3d-fp-close');
 		var detail=root.querySelector('.nlp3d-detail');
 		var toolPanel=root.querySelector('.nlp3d-tool-panel');
 		var toolButtons=[].slice.call(root.querySelectorAll('.nlp3d-tool'));
@@ -1733,6 +1948,7 @@ if ( ! function_exists( 'nadlan_p3d_inline_js' ) ) {
 		var dockSpin=root.querySelector('.nlp3d-dock-spin');
 		var dockInquiry=root.querySelector('.nlp3d-dock-action');
 		var storeKey='nlp3d-'+root.dataset.project;
+		var facadeDismissKey=storeKey+'-facade-dismissed';
 		var compareIds=[];
 		var hasStageSelection=false;
 		try{compareIds=JSON.parse(storageGet(storeKey+'-compare')||'[]')||[]}catch(e){compareIds=[]}
@@ -1746,6 +1962,8 @@ if ( ! function_exists( 'nadlan_p3d_inline_js' ) ) {
 		var suppressUnitClickUntil=0;
 		var stageCardDismissed=false;
 		var activeTool='spec';
+		var cameraLock=(meta.camera_lock||'horizontal').toString();
+		var horizontalCamera=cameraLock!=='free';
 		if(savedUnit){
 			var restored=units.find(function(u){return u.id===savedUnit});
 			if(restored){activeUnit=restored;activeFloor=parseInt(restored.floor||activeFloor,10)}
@@ -1756,6 +1974,15 @@ if ( ! function_exists( 'nadlan_p3d_inline_js' ) ) {
 			if(extra){Object.keys(extra).forEach(function(k){payload[k]=extra[k]})}
 			window.dataLayer.push(payload);
 		}
+		function setFacadeDismissed(on,source){
+			root.classList.toggle('nlp3d-facade-dismissed',!!on);
+			if(facadePlane){facadePlane.hidden=!!on}
+			if(facadeRestore){facadeRestore.hidden=!on}
+			try{sessionStorage.setItem(facadeDismissKey,on?'1':'0')}catch(e){}
+			if(source){track('facade_visibility',{hidden:!!on,source:source})}
+			window.requestAnimationFrame(fitMobileShowroom);
+		}
+		try{if(sessionStorage.getItem(facadeDismissKey)==='1'){setFacadeDismissed(true,'restore-session')}}catch(e){}
 		function watchShowroomContactRail(){
 			if(!('IntersectionObserver' in window)||!document.body){return}
 			var active=false;
@@ -2492,10 +2719,15 @@ if ( ! function_exists( 'nadlan_p3d_inline_js' ) ) {
 			scene.style.setProperty('--angle',currentAngle+'deg');
 			if(modelViewer){
 				modelViewer.removeAttribute('auto-rotate');
-				modelViewer.setAttribute('camera-orbit',Math.round(currentAngle)+'deg 68deg auto');
+				modelViewer.setAttribute('camera-orbit',Math.round(currentAngle)+'deg '+(meta.camera_mid_polar||'81.5deg')+' auto');
 			}
 		}
 		function setTilt(tilt){
+			if(horizontalCamera){
+				currentTilt=62;
+				scene.style.setProperty('--tilt',currentTilt+'deg');
+				return;
+			}
 			currentTilt=Math.max(48,Math.min(72,tilt));
 			scene.style.setProperty('--tilt',currentTilt+'deg');
 		}
@@ -2595,12 +2827,38 @@ if ( ! function_exists( 'nadlan_p3d_inline_js' ) ) {
 				track('stage_view',{unit:activeUnit&&activeUnit.id,live:canLiveView()});
 			});
 		}
+		if(stageTour){
+			stageTour.addEventListener('click',function(){
+				setLiveView(false,'stage-tour');
+				activeTool='media';
+				toolButtons.forEach(function(x){x.classList.toggle('is-active',x.dataset.tool==='media')});
+				renderToolPanel();
+				syncStageTabs('media');
+				setStageCardExpanded(true);
+				if(detail){detail.scrollIntoView({behavior:'smooth',block:'center'})}
+				track('stage_tour',{unit:activeUnit&&activeUnit.id});
+			});
+		}
 		if(stageInquiry&&form){
 			stageInquiry.addEventListener('click',function(){
 				setLiveView(false,'stage-inquiry');
 				setWStep(2);
 				form.scrollIntoView({behavior:'smooth',block:'center'});
 				track('stage_inquiry',{unit:activeUnit&&activeUnit.id});
+			});
+		}
+		if(facadeClose){
+			facadeClose.addEventListener('click',function(e){
+				e.preventDefault();
+				e.stopPropagation();
+				setFacadeDismissed(true,'close-button');
+			});
+		}
+		if(facadeRestore){
+			facadeRestore.addEventListener('click',function(e){
+				e.preventDefault();
+				e.stopPropagation();
+				setFacadeDismissed(false,'restore-button');
 			});
 		}
 		if(stageCardHandle){
@@ -2655,8 +2913,8 @@ if ( ! function_exists( 'nadlan_p3d_inline_js' ) ) {
 			});
 		});
 		if(modelViewer){
-			modelViewer.addEventListener('load',function(){root.classList.add('has-model-viewer-loaded');syncModelViewerCamera();track('model_viewer_load',{model:true})});
-			modelViewer.addEventListener('error',function(){root.classList.add('has-model-viewer-error');track('model_viewer_error',{model:true})});
+			modelViewer.addEventListener('load',function(){root.classList.add('has-model-viewer-loaded');root.classList.remove('has-model-viewer-error');if(modelError){modelError.hidden=true}syncModelViewerCamera();track('model_viewer_load',{model:true})});
+			modelViewer.addEventListener('error',function(){root.classList.add('has-model-viewer-error');if(modelError){modelError.hidden=false}track('model_viewer_error',{model:true})});
 		}
 		function eventPoint(e){
 			var t=e.touches&&e.touches[0]?e.touches[0]:(e.changedTouches&&e.changedTouches[0]?e.changedTouches[0]:e);
@@ -2744,7 +3002,7 @@ if ( ! function_exists( 'nadlan_p3d_inline_js' ) ) {
 			dragState.lastX=p.x;
 			dragState.lastT=t;
 			setAngle(dragState.angle+(p.x-dragState.x)*0.22);
-			setTilt(dragState.tilt-(p.y-dragState.y)*0.08);
+			if(!horizontalCamera){setTilt(dragState.tilt-(p.y-dragState.y)*0.08)}
 		}
 		function endDragAt(p){
 			if(!dragState){return}
@@ -2886,7 +3144,7 @@ add_action(
 			return;
 		}
 
-		wp_register_style( 'nadlan-p3d', '', array(), '1.67.5' );
+		wp_register_style( 'nadlan-p3d', '', array(), '1.68.0' );
 		wp_enqueue_style( 'nadlan-p3d' );
 		wp_add_inline_style( 'nadlan-p3d', nadlan_p3d_inline_css() );
 		wp_add_inline_style( 'nadlan-p3d', '.nlp3d-drag-note{display:inline-flex;align-items:center;min-height:44px;color:rgba(246,239,226,.72);font-size:12px;padding:0 6px}.nlp3d-scene{touch-action:none;cursor:grab}.nlp3d-scene.is-dragging{cursor:grabbing}.nlp3d-actions{grid-template-columns:1fr}.nlp3d-view-toggle{margin-top:12px;border:1px solid rgba(234,216,163,.36);background:rgba(255,255,255,.06);color:#ffe8a6;padding:9px 12px;cursor:pointer}.nlp3d-view-toggle.is-active{background:rgba(234,216,163,.18);color:#fff}.nlp3d-viewframe{position:relative;margin-top:12px;min-height:150px;overflow:hidden;border:1px solid rgba(234,216,163,.18);background:linear-gradient(180deg,rgba(41,112,139,.58),rgba(8,25,25,.92));isolation:isolate}.nlp3d-view-sky{position:absolute;inset:0;background:radial-gradient(circle at 18% 22%,rgba(255,255,255,.24),transparent 18%),linear-gradient(135deg,rgba(39,107,130,.42),rgba(18,50,43,.1));opacity:.86}.nlp3d-view-lines{position:absolute;inset:auto -8% 18% -8%;height:46%;border-top:1px solid rgba(234,216,163,.28);background:linear-gradient(160deg,rgba(234,216,163,.1),transparent 54%);transform:skewY(-8deg)}.nlp3d-view-copy{position:absolute;right:14px;left:14px;bottom:12px;margin:0;color:#fff8dc;font-size:13px;line-height:1.5;text-shadow:0 1px 12px rgba(0,0,0,.55)}@media(max-width:600px){.nlp3d-drag-note{flex-basis:100%;min-height:24px}.nlp3d-viewframe{min-height:130px}}' );
@@ -2919,7 +3177,7 @@ add_action(
 		wp_add_inline_style(
 			'nadlan-p3d',
 			<<<'CSS'
-.nlp3d-intro{width:min(1040px,calc(100% - 32px));margin:28px auto 12px;padding:18px 20px;border:1px solid rgba(185,144,67,.18);background:linear-gradient(135deg,rgba(255,255,255,.92),rgba(250,246,236,.86));box-shadow:0 16px 40px rgba(28,22,14,.08);border-radius:16px;color:#173329}.nlp3d-intro .wrap{max-width:860px;margin:0 auto}.nlp3d-intro .eyebrow{display:block;margin:0 0 7px;color:#9b742f;font-size:12px;font-weight:800;letter-spacing:.04em}.nlp3d-intro h2{margin:0 0 8px!important;color:#102b23!important;text-shadow:none!important;font-size:clamp(22px,3vw,34px)!important;line-height:1.2!important;font-family:Georgia,"Times New Roman",serif;font-weight:600}.nlp3d-intro p{margin:0;color:#263f35;font-size:clamp(15px,1.55vw,17px);line-height:1.7}.nlp3d-intro .nlp3d-intro-cta{margin-top:12px}.nlp3d-intro .btn{display:inline-flex;align-items:center;justify-content:center;min-height:42px;padding:9px 15px;border-radius:999px;background:#1b2e29;color:#fff7df;text-decoration:none;font-weight:800;box-shadow:0 10px 24px rgba(18,34,29,.18)}.nlp3d.nlp3d-premium .nlp3d-stage-wrap{min-height:clamp(420px,52vw,640px)!important}.nlp3d.nlp3d-premium .nlp3d-scene{height:100%!important}.nlp3d.nlp3d-premium .nlp3d-model-viewer{pointer-events:auto!important;--poster-color:transparent}.nlp3d.nlp3d-premium.has-model-viewer-loaded:not(.has-model-viewer-error) .nlp3d-scene.has-model-viewer .nlp3d-tower,.nlp3d.nlp3d-premium.has-model-viewer-loaded:not(.has-model-viewer-error) .nlp3d-scene.has-model-viewer .nlp3d-facade,.nlp3d.nlp3d-premium.has-model-viewer-loaded:not(.has-model-viewer-error) .nlp3d-scene.has-model-viewer .nlp3d-horizon,.nlp3d.nlp3d-premium.has-model-viewer-loaded:not(.has-model-viewer-error) .nlp3d-scene.has-model-viewer .nlp3d-sea,.nlp3d.nlp3d-premium.has-model-viewer-loaded:not(.has-model-viewer-error) .nlp3d-scene.has-model-viewer .nlp3d-park,.nlp3d.nlp3d-premium.has-model-viewer-loaded:not(.has-model-viewer-error) .nlp3d-scene.has-model-viewer .nlp3d-runway,.nlp3d.nlp3d-premium.has-model-viewer-loaded:not(.has-model-viewer-error) .nlp3d-scene.has-model-viewer .nlp3d-shadow{display:none!important;opacity:0!important;visibility:hidden!important;pointer-events:none!important}.nlp3d.nlp3d-premium.has-model-viewer-error .nlp3d-scene.has-model-viewer .nlp3d-tower,.nlp3d.nlp3d-premium.has-model-viewer-error .nlp3d-scene.has-model-viewer .nlp3d-facade{display:block!important;visibility:visible!important;opacity:.92!important}.nlp3d-context-caption{position:absolute;left:16px;right:16px;bottom:10px;z-index:16;margin:0;color:#d9c99a;font-size:12px;line-height:1.35;text-align:center;text-shadow:0 2px 8px rgba(0,0,0,.55);pointer-events:none}.nlp3d.nlp3d-premium:not(.has-stage-selection) .nlp3d-toolbar .nlp3d-angle:not([data-action="angle-facade"]),.nlp3d.nlp3d-premium:not(.has-stage-selection) .nlp3d-toolbar .nlp3d-zoom,.nlp3d.nlp3d-premium:not(.has-stage-selection) .nlp3d-toolbar .nlp3d-drag-note{display:none!important}.nlp3d.nlp3d-premium .nlp3d-toolbar .nlp3d-angle[data-action="angle-facade"],.nlp3d.nlp3d-premium .nlp3d-toolbar .nlp3d-orbit{min-width:44px;min-height:44px}.nlp3d.nlp3d-premium .nlp3d-stage-pick,.nlp3d.nlp3d-premium .nlp3d-hotspot-hit,.nlp3d.nlp3d-premium .nlp3d-mv-hotspot{width:54px!important;min-width:54px!important;height:54px!important;min-height:54px!important}.nlp3d.nlp3d-premium .nlp3d-stage-pick .nlp3d-hotspot-dot,.nlp3d.nlp3d-premium .nlp3d-hotspot-hit .nlp3d-hotspot-dot{width:16px;height:16px;border:2px solid #fff;border-radius:999px;margin:0 auto}.nlp3d.nlp3d-premium .nlp3d-stage-pick.is-available .nlp3d-hotspot-dot,.nlp3d.nlp3d-premium .nlp3d-hotspot-hit.is-available .nlp3d-hotspot-dot{background:#3ddc84}.nlp3d.nlp3d-premium .nlp3d-stage-pick.is-reserved .nlp3d-hotspot-dot,.nlp3d.nlp3d-premium .nlp3d-hotspot-hit.is-reserved .nlp3d-hotspot-dot{background:#f2c14e}.nlp3d.nlp3d-premium .nlp3d-stage-pick.is-sold .nlp3d-hotspot-dot,.nlp3d.nlp3d-premium .nlp3d-hotspot-hit.is-sold .nlp3d-hotspot-dot{background:#9aa0a6;opacity:.58}.nlp3d.nlp3d-premium .nlp3d-stage-pick.is-sold,.nlp3d.nlp3d-premium .nlp3d-hotspot-hit.is-sold{cursor:default!important;opacity:.62}.nlp3d.nlp3d-premium .nlp3d-stage-pick.is-recommended.is-available .nlp3d-hotspot-dot,.nlp3d.nlp3d-premium .nlp3d-hotspot-hit.is-recommended.is-available .nlp3d-hotspot-dot{box-shadow:0 0 0 0 rgba(61,220,132,.72);animation:nlpulse 1.8s infinite}.nlp3d.nlp3d-premium .nlp3d-stage-pick.is-recommended:not(.is-available) .nlp3d-hotspot-dot,.nlp3d.nlp3d-premium .nlp3d-hotspot-hit.is-recommended:not(.is-available) .nlp3d-hotspot-dot{animation:none!important}.nlp3d.nlp3d-premium .nlp3d-stage-pick.is-open .nlp3d-hotspot-tip{display:grid!important;opacity:1!important;visibility:visible!important;transform:translateY(-50%) translateX(0)!important;pointer-events:none!important}.nlp3d.nlp3d-premium .nlp3d-stage-card{top:18px!important;left:18px!important;right:auto!important;bottom:auto!important;width:min(380px,calc(50% - 36px))!important;pointer-events:auto!important;grid-template-columns:1fr!important}.nlp3d-stage-card-handle{display:none}.nlp3d-stage-tabs{grid-column:1/-1;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:6px;margin-top:8px}.nlp3d-stage-tabs button{min-height:40px;border:1px solid rgba(234,216,163,.24);background:rgba(255,255,255,.05);color:#e8dcb5;font-weight:700;cursor:pointer}.nlp3d-stage-tabs button.is-active,.nlp3d-stage-tabs button:hover,.nlp3d-stage-tabs button:focus-visible{background:linear-gradient(135deg,#ead8a3,#b99043);color:#17120a;outline:none}.single-nadlan_project .wp-block-post-content>h2,.single-nadlan_project .entry-content>h2,.single-nadlan_project .wp-block-post-content>h3,.single-nadlan_project .entry-content>h3,.single-nadlan_project .nlpf-name{color:#14211c!important;text-shadow:none!important}.single-nadlan_project .wp-block-post-content>p,.single-nadlan_project .entry-content>p{color:#30453d}@keyframes nlpulse{0%{box-shadow:0 0 0 0 rgba(61,220,132,.62)}70%{box-shadow:0 0 0 14px rgba(61,220,132,0)}100%{box-shadow:0 0 0 0 rgba(61,220,132,0)}}@media(max-width:760px){.nlp3d-intro{width:calc(100% - 24px);margin:18px auto 10px;padding:15px 14px;border-radius:14px}.nlp3d-intro h2{font-size:clamp(21px,6.3vw,28px)!important}.nlp3d-intro p{font-size:14.5px;line-height:1.62}.nlp3d.nlp3d-premium .nlp3d-stage-wrap{min-height:clamp(380px,96vw,520px)!important}.nlp3d.nlp3d-premium .nlp3d-scene{height:clamp(360px,92vw,500px)!important}.nlp3d.nlp3d-premium .nlp3d-model-viewer{pointer-events:auto!important}.nlp3d.nlp3d-premium .nlp3d-stage-pick,.nlp3d.nlp3d-premium .nlp3d-hotspot-hit{width:56px!important;min-width:56px!important;height:56px!important;min-height:56px!important}.nlp3d.nlp3d-premium .nlp3d-stage-pick.is-open .nlp3d-hotspot-tip{right:auto!important;left:50%!important;top:auto!important;bottom:calc(100% + 8px)!important;max-width:min(270px,82vw)!important;transform:translateX(-50%)!important}.nlp3d.nlp3d-premium .nlp3d-stage-card:not([hidden]){position:fixed!important;left:max(0px,env(safe-area-inset-left))!important;right:max(0px,env(safe-area-inset-right))!important;bottom:0!important;top:auto!important;width:auto!important;max-height:62vh!important;overflow:auto!important;border-radius:18px 18px 0 0!important;transform:translateY(calc(100% - 118px))!important;transition:transform .22s ease!important;z-index:9990!important;margin:0!important}.nlp3d.nlp3d-premium .nlp3d-stage-card.is-expanded{transform:translateY(0)!important}.nlp3d-stage-card-handle{position:relative;display:flex;align-items:center;justify-content:center;gap:8px;min-height:42px;border:0;border-bottom:1px solid rgba(234,216,163,.18);background:rgba(255,255,255,.05);color:#fff2c8;font-weight:800;cursor:pointer}.nlp3d-stage-card-handle:before{content:"";width:44px;height:4px;border-radius:999px;background:rgba(234,216,163,.55);position:absolute;top:8px}.nlp3d-stage-card-actions{grid-template-columns:1fr 1fr!important}.nlp3d-stage-card-actions .nlp3d-stage-inquiry{grid-column:1/-1!important;order:-1!important}.nlp3d-stage-tabs{grid-template-columns:repeat(2,minmax(0,1fr))}.nlp3d-context-caption{font-size:11.5px;bottom:8px}}
+.nlp3d-intro{width:min(1040px,calc(100% - 32px));margin:28px auto 12px;padding:18px 20px;border:1px solid rgba(185,144,67,.18);background:linear-gradient(135deg,rgba(255,255,255,.92),rgba(250,246,236,.86));box-shadow:0 16px 40px rgba(28,22,14,.08);border-radius:16px;color:#173329}.nlp3d-intro .wrap{max-width:860px;margin:0 auto}.nlp3d-intro .eyebrow{display:block;margin:0 0 7px;color:#9b742f;font-size:12px;font-weight:800;letter-spacing:.04em}.nlp3d-intro h2{margin:0 0 8px!important;color:#102b23!important;text-shadow:none!important;font-size:clamp(22px,3vw,34px)!important;line-height:1.2!important;font-family:Georgia,"Times New Roman",serif;font-weight:600}.nlp3d-intro p{margin:0;color:#263f35;font-size:clamp(15px,1.55vw,17px);line-height:1.7}.nlp3d-intro .nlp3d-intro-cta{margin-top:12px}.nlp3d-intro .btn{display:inline-flex;align-items:center;justify-content:center;min-height:42px;padding:9px 15px;border-radius:999px;background:#1b2e29;color:#fff7df;text-decoration:none;font-weight:800;box-shadow:0 10px 24px rgba(18,34,29,.18)}.nlp3d.nlp3d-premium .nlp3d-stage-wrap{min-height:clamp(420px,52vw,640px)!important}.nlp3d.nlp3d-premium .nlp3d-scene{height:100%!important}.nlp3d.nlp3d-premium .nlp3d-model-viewer{pointer-events:auto!important;--poster-color:transparent}.nlp3d.nlp3d-premium.has-model-viewer-loaded:not(.has-model-viewer-error) .nlp3d-scene.has-model-viewer .nlp3d-tower,.nlp3d.nlp3d-premium.has-model-viewer-loaded:not(.has-model-viewer-error) .nlp3d-scene.has-model-viewer .nlp3d-facade,.nlp3d.nlp3d-premium.has-model-viewer-loaded:not(.has-model-viewer-error) .nlp3d-scene.has-model-viewer .nlp3d-horizon,.nlp3d.nlp3d-premium.has-model-viewer-loaded:not(.has-model-viewer-error) .nlp3d-scene.has-model-viewer .nlp3d-sea,.nlp3d.nlp3d-premium.has-model-viewer-loaded:not(.has-model-viewer-error) .nlp3d-scene.has-model-viewer .nlp3d-park,.nlp3d.nlp3d-premium.has-model-viewer-loaded:not(.has-model-viewer-error) .nlp3d-scene.has-model-viewer .nlp3d-runway,.nlp3d.nlp3d-premium.has-model-viewer-loaded:not(.has-model-viewer-error) .nlp3d-scene.has-model-viewer .nlp3d-shadow{display:none!important;opacity:0!important;visibility:hidden!important;pointer-events:none!important}.nlp3d.nlp3d-premium.has-model-viewer-error .nlp3d-scene.has-model-viewer .nlp3d-tower,.nlp3d.nlp3d-premium.has-model-viewer-error .nlp3d-scene.has-model-viewer .nlp3d-facade{display:none!important;visibility:hidden!important;opacity:0!important;pointer-events:none!important}.nlp3d-context-caption{position:absolute;left:16px;right:16px;bottom:10px;z-index:16;margin:0;color:#d9c99a;font-size:12px;line-height:1.35;text-align:center;text-shadow:0 2px 8px rgba(0,0,0,.55);pointer-events:none}.nlp3d.nlp3d-premium:not(.has-stage-selection) .nlp3d-toolbar .nlp3d-angle:not([data-action="angle-facade"]),.nlp3d.nlp3d-premium:not(.has-stage-selection) .nlp3d-toolbar .nlp3d-zoom,.nlp3d.nlp3d-premium:not(.has-stage-selection) .nlp3d-toolbar .nlp3d-drag-note{display:none!important}.nlp3d.nlp3d-premium .nlp3d-toolbar .nlp3d-angle[data-action="angle-facade"],.nlp3d.nlp3d-premium .nlp3d-toolbar .nlp3d-orbit{min-width:44px;min-height:44px}.nlp3d.nlp3d-premium .nlp3d-stage-pick,.nlp3d.nlp3d-premium .nlp3d-hotspot-hit,.nlp3d.nlp3d-premium .nlp3d-mv-hotspot{width:54px!important;min-width:54px!important;height:54px!important;min-height:54px!important}.nlp3d.nlp3d-premium .nlp3d-stage-pick .nlp3d-hotspot-dot,.nlp3d.nlp3d-premium .nlp3d-hotspot-hit .nlp3d-hotspot-dot{width:16px;height:16px;border:2px solid #fff;border-radius:999px;margin:0 auto}.nlp3d.nlp3d-premium .nlp3d-stage-pick.is-available .nlp3d-hotspot-dot,.nlp3d.nlp3d-premium .nlp3d-hotspot-hit.is-available .nlp3d-hotspot-dot{background:#3ddc84}.nlp3d.nlp3d-premium .nlp3d-stage-pick.is-reserved .nlp3d-hotspot-dot,.nlp3d.nlp3d-premium .nlp3d-hotspot-hit.is-reserved .nlp3d-hotspot-dot{background:#f2c14e}.nlp3d.nlp3d-premium .nlp3d-stage-pick.is-sold .nlp3d-hotspot-dot,.nlp3d.nlp3d-premium .nlp3d-hotspot-hit.is-sold .nlp3d-hotspot-dot{background:#9aa0a6;opacity:.58}.nlp3d.nlp3d-premium .nlp3d-stage-pick.is-sold,.nlp3d.nlp3d-premium .nlp3d-hotspot-hit.is-sold{cursor:default!important;opacity:.62}.nlp3d.nlp3d-premium .nlp3d-stage-pick.is-recommended.is-available .nlp3d-hotspot-dot,.nlp3d.nlp3d-premium .nlp3d-hotspot-hit.is-recommended.is-available .nlp3d-hotspot-dot{box-shadow:0 0 0 0 rgba(61,220,132,.72);animation:nlpulse 1.8s infinite}.nlp3d.nlp3d-premium .nlp3d-stage-pick.is-recommended:not(.is-available) .nlp3d-hotspot-dot,.nlp3d.nlp3d-premium .nlp3d-hotspot-hit.is-recommended:not(.is-available) .nlp3d-hotspot-dot{animation:none!important}.nlp3d.nlp3d-premium .nlp3d-stage-pick.is-open .nlp3d-hotspot-tip{display:grid!important;opacity:1!important;visibility:visible!important;transform:translateY(-50%) translateX(0)!important;pointer-events:none!important}.nlp3d.nlp3d-premium .nlp3d-stage-card{top:18px!important;left:18px!important;right:auto!important;bottom:auto!important;width:min(380px,calc(50% - 36px))!important;pointer-events:auto!important;grid-template-columns:1fr!important}.nlp3d-stage-card-handle{display:none}.nlp3d-stage-tabs{grid-column:1/-1;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:6px;margin-top:8px}.nlp3d-stage-tabs button{min-height:40px;border:1px solid rgba(234,216,163,.24);background:rgba(255,255,255,.05);color:#e8dcb5;font-weight:700;cursor:pointer}.nlp3d-stage-tabs button.is-active,.nlp3d-stage-tabs button:hover,.nlp3d-stage-tabs button:focus-visible{background:linear-gradient(135deg,#ead8a3,#b99043);color:#17120a;outline:none}.single-nadlan_project .wp-block-post-content>h2,.single-nadlan_project .entry-content>h2,.single-nadlan_project .wp-block-post-content>h3,.single-nadlan_project .entry-content>h3,.single-nadlan_project .nlpf-name{color:#14211c!important;text-shadow:none!important}.single-nadlan_project .wp-block-post-content>p,.single-nadlan_project .entry-content>p{color:#30453d}@keyframes nlpulse{0%{box-shadow:0 0 0 0 rgba(61,220,132,.62)}70%{box-shadow:0 0 0 14px rgba(61,220,132,0)}100%{box-shadow:0 0 0 0 rgba(61,220,132,0)}}@media(max-width:760px){.nlp3d-intro{width:calc(100% - 24px);margin:18px auto 10px;padding:15px 14px;border-radius:14px}.nlp3d-intro h2{font-size:clamp(21px,6.3vw,28px)!important}.nlp3d-intro p{font-size:14.5px;line-height:1.62}.nlp3d.nlp3d-premium .nlp3d-stage-wrap{min-height:clamp(380px,96vw,520px)!important}.nlp3d.nlp3d-premium .nlp3d-scene{height:clamp(360px,92vw,500px)!important}.nlp3d.nlp3d-premium .nlp3d-model-viewer{pointer-events:auto!important}.nlp3d.nlp3d-premium .nlp3d-stage-pick,.nlp3d.nlp3d-premium .nlp3d-hotspot-hit{width:56px!important;min-width:56px!important;height:56px!important;min-height:56px!important}.nlp3d.nlp3d-premium .nlp3d-stage-pick.is-open .nlp3d-hotspot-tip{right:auto!important;left:50%!important;top:auto!important;bottom:calc(100% + 8px)!important;max-width:min(270px,82vw)!important;transform:translateX(-50%)!important}.nlp3d.nlp3d-premium .nlp3d-stage-card:not([hidden]){position:fixed!important;left:max(0px,env(safe-area-inset-left))!important;right:max(0px,env(safe-area-inset-right))!important;bottom:0!important;top:auto!important;width:auto!important;max-height:62vh!important;overflow:auto!important;border-radius:18px 18px 0 0!important;transform:translateY(calc(100% - 118px))!important;transition:transform .22s ease!important;z-index:9990!important;margin:0!important}.nlp3d.nlp3d-premium .nlp3d-stage-card.is-expanded{transform:translateY(0)!important}.nlp3d-stage-card-handle{position:relative;display:flex;align-items:center;justify-content:center;gap:8px;min-height:42px;border:0;border-bottom:1px solid rgba(234,216,163,.18);background:rgba(255,255,255,.05);color:#fff2c8;font-weight:800;cursor:pointer}.nlp3d-stage-card-handle:before{content:"";width:44px;height:4px;border-radius:999px;background:rgba(234,216,163,.55);position:absolute;top:8px}.nlp3d-stage-card-actions{grid-template-columns:1fr 1fr!important}.nlp3d-stage-card-actions .nlp3d-stage-inquiry{grid-column:1/-1!important;order:-1!important}.nlp3d-stage-tabs{grid-template-columns:repeat(2,minmax(0,1fr))}.nlp3d-context-caption{font-size:11.5px;bottom:8px}}
 CSS
 		);
 		wp_add_inline_style(
@@ -2955,6 +3213,7 @@ CSS
 		wp_add_inline_style( 'nadlan-p3d', nadlan_p3d_article_alignment_v1671_css() );
 		wp_add_inline_style( 'nadlan-p3d', nadlan_p3d_compact_floating_actions_v1672_css() );
 		wp_add_inline_style( 'nadlan-p3d', nadlan_p3d_finishing_layer_v1673_css() );
+		wp_add_inline_style( 'nadlan-p3d', nadlan_p3d_showroom_core_v1680_css() );
 
 		$post_id = is_singular( 'nadlan_project' ) ? (int) get_queried_object_id() : 0;
 		if ( $post_id > 0 && get_post_meta( $post_id, 'project_model_glb', true ) !== '' ) {
@@ -2963,7 +3222,7 @@ CSS
 			wp_enqueue_script( 'nadlan-model-viewer' );
 		}
 
-		wp_register_script( 'nadlan-p3d', '', array(), '1.67.5', true );
+		wp_register_script( 'nadlan-p3d', '', array(), '1.68.0', true );
 		wp_enqueue_script( 'nadlan-p3d' );
 		wp_add_inline_script( 'nadlan-p3d', nadlan_p3d_inline_js( esc_url_raw( rest_url( 'nadlan/v1/lead' ) ) ) );
 	}
@@ -3015,8 +3274,16 @@ if ( ! function_exists( 'nadlan_p3d_render_admin_metabox' ) ) {
 		$vu     = esc_attr( (string) get_post_meta( $post->ID, 'project_3d_video_url', true ) );
 		$tu     = esc_attr( (string) get_post_meta( $post->ID, 'project_3d_tour_url', true ) );
 		$cu     = esc_attr( (string) get_post_meta( $post->ID, 'project_3d_cesium_tiles_url', true ) );
+		$cl     = nadlan_p3d_sanitize_camera_lock( get_post_meta( $post->ID, 'project_3d_camera_lock', true ) );
+		$cmin   = esc_attr( (string) get_post_meta( $post->ID, 'project_3d_camera_min_polar', true ) );
+		$cmax   = esc_attr( (string) get_post_meta( $post->ID, 'project_3d_camera_max_polar', true ) );
+		$cauto  = get_post_meta( $post->ID, 'project_3d_camera_auto_rotate', true ) === '1';
+		$crot   = esc_attr( (string) get_post_meta( $post->ID, 'project_3d_camera_rotation_per_second', true ) );
 		$dr     = esc_textarea( (string) get_post_meta( $post->ID, 'project_3d_drawings_json', true ) );
 		$env    = esc_textarea( (string) get_post_meta( $post->ID, 'project_3d_environment_json', true ) );
+		$fi     = esc_textarea( (string) get_post_meta( $post->ID, 'project_3d_facade_images', true ) );
+		$spi    = esc_attr( (string) get_post_meta( $post->ID, 'project_3d_site_plan_image', true ) );
+		$spp    = esc_textarea( (string) get_post_meta( $post->ID, 'project_3d_site_plan_polygons', true ) );
 		$js     = esc_textarea( (string) get_post_meta( $post->ID, 'project_3d_units', true ) );
 		$dm     = get_post_meta( $post->ID, 'project_3d_demo', true ) === '1';
 		?>
@@ -3076,6 +3343,17 @@ if ( ! function_exists( 'nadlan_p3d_render_admin_metabox' ) ) {
 					<label><span>סרטון מכירה</span><input type="url" name="project_3d_video_url" value="<?php echo $vu; ?>" class="widefat" placeholder="https://youtube.com/..."></label>
 					<label><span>סיור פנים או דירה לדוגמה</span><input type="url" name="project_3d_tour_url" value="<?php echo $tu; ?>" class="widefat" placeholder="https://..."></label>
 					<label class="nadlan-p3d-full"><span>Cesium / Google 3D Tiles עתידי</span><input type="url" name="project_3d_cesium_tiles_url" value="<?php echo $cu; ?>" class="widefat" placeholder="https://..."></label>
+					<label><span>מצב סיבוב מודל</span>
+						<select name="project_3d_camera_lock" class="widefat">
+							<option value="horizontal" <?php selected( $cl, 'horizontal' ); ?>>אופקי בלבד, ברירת מחדל לבניין</option>
+							<option value="free" <?php selected( $cl, 'free' ); ?>>סיבוב חופשי, רק אם יש מודל מתאים</option>
+						</select>
+						<p class="nadlan-p3d-help">בניין אינו נעל. ברירת המחדל נועלת את המצלמה לסיבוב אופקי כדי שלא יראו את תחתית המודל.</p>
+					</label>
+					<label><span>מהירות סיבוב</span><input type="text" name="project_3d_camera_rotation_per_second" value="<?php echo $crot; ?>" class="widefat" placeholder="10deg"></label>
+					<label><span>זווית אנכית מינימלית</span><input type="text" name="project_3d_camera_min_polar" value="<?php echo $cmin; ?>" class="widefat" placeholder="78deg"></label>
+					<label><span>זווית אנכית מקסימלית</span><input type="text" name="project_3d_camera_max_polar" value="<?php echo $cmax; ?>" class="widefat" placeholder="85deg"></label>
+					<label class="nadlan-p3d-full"><input type="checkbox" name="project_3d_camera_auto_rotate" value="1" <?php checked( $cauto, true ); ?>> הפעל סיבוב אוטומטי עדין כאשר הפרויקט מבקש זאת</label>
 				</div>
 			</details>
 
@@ -3123,6 +3401,9 @@ if ( ! function_exists( 'nadlan_p3d_render_admin_metabox' ) ) {
 				<div class="nadlan-p3d-panel-inner">
 					<label class="nadlan-p3d-full"><span>תוכניות JSON</span><textarea name="project_3d_drawings_json" rows="5" class="widefat code"><?php echo $dr; ?></textarea><p class="nadlan-p3d-help">מבנה: [{"label":"תוכנית קומה 12","url":"https://...","type":"plan"}]</p></label>
 					<label class="nadlan-p3d-full"><span>סביבת הפרויקט JSON</span><textarea name="project_3d_environment_json" rows="5" class="widefat code"><?php echo $env; ?></textarea><p class="nadlan-p3d-help">מבנה: [{"label":"פארק החוף","detail":"מרחק הליכה","url":"https://..."}]</p></label>
+					<label class="nadlan-p3d-full"><span>חזיתות לבחירת דירות JSON</span><textarea name="project_3d_facade_images" rows="5" class="widefat code"><?php echo $fi; ?></textarea><p class="nadlan-p3d-help">מבנה: [{"building":"A","label":"חזית מערבית","src":"https://...","viewbox":"0 0 1000 1200"}]</p></label>
+					<label class="nadlan-p3d-full"><span>תוכנית מתחם או אתר</span><input type="url" name="project_3d_site_plan_image" value="<?php echo $spi; ?>" class="widefat" placeholder="https://.../site-plan.webp"></label>
+					<label class="nadlan-p3d-full"><span>פוליגונים לתוכנית מתחם JSON</span><textarea name="project_3d_site_plan_polygons" rows="5" class="widefat code"><?php echo $spp; ?></textarea><p class="nadlan-p3d-help">מבנה: [{"building":"A","label":"בניין מערבי","points":"10,10 40,10 40,50 10,50"}]</p></label>
 				</div>
 			</details>
 
@@ -3273,8 +3554,16 @@ add_action(
 		update_post_meta( $post_id, 'project_3d_video_url', esc_url_raw( wp_unslash( $_POST['project_3d_video_url'] ?? '' ) ) );
 		update_post_meta( $post_id, 'project_3d_tour_url', esc_url_raw( wp_unslash( $_POST['project_3d_tour_url'] ?? '' ) ) );
 		update_post_meta( $post_id, 'project_3d_cesium_tiles_url', esc_url_raw( wp_unslash( $_POST['project_3d_cesium_tiles_url'] ?? '' ) ) );
+		update_post_meta( $post_id, 'project_3d_camera_lock', nadlan_p3d_sanitize_camera_lock( wp_unslash( $_POST['project_3d_camera_lock'] ?? '' ) ) );
+		update_post_meta( $post_id, 'project_3d_camera_min_polar', nadlan_p3d_sanitize_degree( wp_unslash( $_POST['project_3d_camera_min_polar'] ?? '' ) ) );
+		update_post_meta( $post_id, 'project_3d_camera_max_polar', nadlan_p3d_sanitize_degree( wp_unslash( $_POST['project_3d_camera_max_polar'] ?? '' ) ) );
+		update_post_meta( $post_id, 'project_3d_camera_auto_rotate', ! empty( $_POST['project_3d_camera_auto_rotate'] ) ? '1' : '0' );
+		update_post_meta( $post_id, 'project_3d_camera_rotation_per_second', nadlan_p3d_sanitize_degree( wp_unslash( $_POST['project_3d_camera_rotation_per_second'] ?? '' ) ) );
 		update_post_meta( $post_id, 'project_3d_drawings_json', nadlan_p3d_sanitize_material_json( wp_unslash( $_POST['project_3d_drawings_json'] ?? '' ) ) );
 		update_post_meta( $post_id, 'project_3d_environment_json', nadlan_p3d_sanitize_material_json( wp_unslash( $_POST['project_3d_environment_json'] ?? '' ) ) );
+		update_post_meta( $post_id, 'project_3d_facade_images', nadlan_p3d_sanitize_json_text( wp_unslash( $_POST['project_3d_facade_images'] ?? '' ) ) );
+		update_post_meta( $post_id, 'project_3d_site_plan_image', esc_url_raw( wp_unslash( $_POST['project_3d_site_plan_image'] ?? '' ) ) );
+		update_post_meta( $post_id, 'project_3d_site_plan_polygons', nadlan_p3d_sanitize_json_text( wp_unslash( $_POST['project_3d_site_plan_polygons'] ?? '' ) ) );
 		update_post_meta( $post_id, 'project_3d_units', nadlan_p3d_sanitize_units_json( wp_unslash( $_POST['project_3d_units'] ?? '' ) ) );
 		update_post_meta( $post_id, 'project_3d_demo', ! empty( $_POST['project_3d_demo'] ) ? '1' : '0' );
 	}
@@ -3331,7 +3620,9 @@ add_filter(
 			'hit_targets'      => true,
 			'tap_target_min_px' => 44,
 			'model_zoom_tilt'  => true,
-			'model_full_360'   => true,
+			'model_full_360'   => false,
+			'camera_lock_default' => 'horizontal',
+			'camera_lock_cms_v1680' => true,
 			'model_viewer_ready' => true,
 			'model_viewer_module_tag' => true,
 			'model_viewer_reveal' => 'auto',
@@ -3344,6 +3635,13 @@ add_filter(
 			'recommended_unit_pulse' => true,
 			'stage_intro_above_model' => true,
 			'generic_project_copy_v1675' => true,
+			'facade_dismissible_v1680' => true,
+			'facade_restore_v1680' => true,
+			'legacy_facade_not_emitted_in_dual_v1680' => true,
+			'no_silent_showroom_fallbacks_v1680' => true,
+			'model_error_notice_v1680' => true,
+			'facade_polygons_compounds_v1680' => true,
+			'unit_panel_tabs_v1680' => true,
 			'stage_return_capture_fix' => true,
 			'mobile_containment_v1642' => true,
 			'headline_contrast_v1642' => true,
