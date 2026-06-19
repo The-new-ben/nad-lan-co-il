@@ -56,3 +56,136 @@
 	}
 	window.addEventListener('resize', setViewportUnit, { passive: true });
 }());
+
+/* Unified floating action rail: gathers WhatsApp, call, AI and accessibility into one launcher. */
+(function () {
+	'use strict';
+	if (window.__nadlanActionRailLoaded) {
+		return;
+	}
+	window.__nadlanActionRailLoaded = true;
+
+	var doc = document;
+	var labels = {
+		region: '\u05e4\u05e2\u05d5\u05dc\u05d5\u05ea \u05d9\u05e6\u05d9\u05e8\u05ea \u05e7\u05e9\u05e8',
+		open: '\u05e4\u05ea\u05d9\u05d7\u05ea \u05e4\u05e2\u05d5\u05dc\u05d5\u05ea \u05d9\u05e6\u05d9\u05e8\u05ea \u05e7\u05e9\u05e8',
+		close: '\u05e1\u05d2\u05d9\u05e8\u05ea \u05e4\u05e2\u05d5\u05dc\u05d5\u05ea \u05d9\u05e6\u05d9\u05e8\u05ea \u05e7\u05e9\u05e8',
+		a11y: '\u05e0\u05d2\u05d9\u05e9\u05d5\u05ea',
+		launcher: '\u05d3\u05d1\u05e8\u05d5 \u05d0\u05d9\u05ea\u05e0\u05d5'
+	};
+
+	function ready(fn) {
+		if (doc.readyState === 'loading') {
+			doc.addEventListener('DOMContentLoaded', fn, { once: true });
+			return;
+		}
+		fn();
+	}
+
+	function setOpen(rail, open) {
+		var launcher = rail.querySelector('.nlrx-action-launcher');
+		rail.classList.toggle('is-open', !!open);
+		launcher.setAttribute('aria-expanded', open ? 'true' : 'false');
+		launcher.setAttribute('aria-label', open ? labels.close : labels.open);
+		if (!open) {
+			var aiPanel = rail.querySelector('#nlai .nlai-panel');
+			if (aiPanel) {
+				aiPanel.hidden = true;
+			}
+			var a11yPanel = doc.getElementById('nla-panel');
+			if (a11yPanel) {
+				a11yPanel.classList.remove('open');
+			}
+			var a11yButton = doc.getElementById('nla-btn');
+			if (a11yButton) {
+				a11yButton.setAttribute('aria-expanded', 'false');
+			}
+		}
+	}
+
+	function mountRail() {
+		if (doc.getElementById('nlrx-action-rail')) {
+			return true;
+		}
+
+		var fab = doc.querySelector('.nlfab');
+		var ai = doc.getElementById('nlai');
+		var a11y = doc.getElementById('nla-btn');
+		if (!fab && !ai && !a11y) {
+			return false;
+		}
+
+		var rail = doc.createElement('div');
+		rail.id = 'nlrx-action-rail';
+		rail.className = 'nlrx-action-rail';
+		rail.dir = 'rtl';
+		rail.setAttribute('role', 'region');
+		rail.setAttribute('aria-label', labels.region);
+
+		var items = doc.createElement('div');
+		items.id = 'nlrx-action-items';
+		items.className = 'nlrx-action-items';
+
+		var launcher = doc.createElement('button');
+		launcher.type = 'button';
+		launcher.className = 'nlrx-action-launcher';
+		launcher.setAttribute('aria-controls', 'nlrx-action-items');
+		launcher.setAttribute('aria-expanded', 'false');
+		launcher.setAttribute('aria-label', labels.open);
+		launcher.innerHTML = '<span class="nlrx-action-plus" aria-hidden="true">+</span><span class="nlrx-action-text">' + labels.launcher + '</span>';
+
+		if (ai) {
+			items.appendChild(ai);
+		}
+		if (fab) {
+			Array.prototype.slice.call(fab.querySelectorAll('.nlfab-btn')).forEach(function (button) {
+				items.appendChild(button);
+			});
+			fab.remove();
+		}
+		if (a11y) {
+			a11y.setAttribute('data-nlrx-label', labels.a11y);
+			items.appendChild(a11y);
+		}
+
+		rail.appendChild(items);
+		rail.appendChild(launcher);
+		doc.body.appendChild(rail);
+		doc.body.classList.add('nlrx-action-rail-ready');
+
+		launcher.addEventListener('click', function () {
+			setOpen(rail, !rail.classList.contains('is-open'));
+		});
+		doc.addEventListener('keydown', function (event) {
+			if (event.key === 'Escape' && rail.classList.contains('is-open')) {
+				setOpen(rail, false);
+				launcher.focus();
+			}
+		});
+		doc.addEventListener('click', function (event) {
+			if (!rail.classList.contains('is-open') || rail.contains(event.target)) {
+				return;
+			}
+			if (event.target.closest('#nlai .nlai-panel, #nla-panel, .nlmodal')) {
+				return;
+			}
+			setOpen(rail, false);
+		});
+
+		return true;
+	}
+
+	ready(function () {
+		var attempts = 0;
+		function tick() {
+			if (mountRail()) {
+				return;
+			}
+			attempts += 1;
+			if (attempts < 32) {
+				window.setTimeout(tick, 250);
+			}
+		}
+		tick();
+	});
+}());
