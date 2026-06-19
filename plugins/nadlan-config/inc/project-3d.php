@@ -828,9 +828,11 @@ if ( ! function_exists( 'nadlan_p3d_render' ) ) {
 		$unit_json = nadlan_p3d_json( $units, '[]' );
 		$meta_json = nadlan_p3d_json( $meta, '{}' );
 		$has_model_viewer = ! empty( $meta['model_glb'] );
-		$has_embedded_facade = ! empty( $meta['facade_images'] ) || ! empty( $meta['site_plan_image'] ) || ! empty( $meta['site_plan_polygons'] ) || $has_model_viewer;
+		$has_real_facade_asset = ! empty( $meta['facade_images'] );
+		$has_embedded_facade = $has_real_facade_asset || ! empty( $meta['site_plan_image'] ) || ! empty( $meta['site_plan_polygons'] );
 		// No silent fallbacks: emit the legacy facade only when it is the intentional primary surface.
-		$render_legacy_facade = $image !== '' && ! $has_embedded_facade;
+		$image_is_placeholder = $image !== '' && (bool) preg_match( '/(?:prototype|placeholder|rainbow-facade-demo|facade-demo)/i', $image );
+		$render_legacy_facade = $image !== '' && ! $has_embedded_facade && ! $image_is_placeholder;
 		$showroom_poster = esc_url( (string) ( $meta['model_poster'] ?? '' ) );
 		$project_title = $meta['title'] ? (string) $meta['title'] : 'הפרויקט';
 		$project_place = $meta['address'] ? (string) $meta['address'] : ( $meta['city'] ? (string) $meta['city'] : '' );
@@ -1708,6 +1710,133 @@ CSS;
 	}
 }
 
+if ( ! function_exists( 'nadlan_p3d_facade_overflow_v1681_css' ) ) {
+	function nadlan_p3d_facade_overflow_v1681_css() {
+		return <<<'CSS'
+/* v1.68.1: one final dual-showroom facade-plane rule per mobile breakpoint. */
+.nlp3d.nlp3d-premium{
+--nlp3d-mobile-nudge:0px!important;
+}
+.nlp3d.nlp3d-premium.is-mobile-edge-fixed{
+transform:none!important;
+}
+.nlp3d.nlp3d-premium .nlp3d-facade-plane.has-real-facade{
+overflow:hidden!important;
+background:#061313!important;
+}
+.nlp3d.nlp3d-premium .nlp3d-facade-plane.has-real-facade .nlp3d-fp-image{
+position:absolute!important;
+inset:0!important;
+width:100%!important;
+height:100%!important;
+object-fit:cover!important;
+z-index:1!important;
+filter:saturate(1.04) contrast(1.04)!important;
+}
+.nlp3d.nlp3d-premium .nlp3d-facade-plane.has-real-facade .nlp3d-fp-roof,
+.nlp3d.nlp3d-premium .nlp3d-facade-plane.has-real-facade .nlp3d-fp-body,
+.nlp3d.nlp3d-premium .nlp3d-facade-plane.has-real-facade .nlp3d-fp-glow{
+display:none!important;
+}
+.nlp3d.nlp3d-premium .nlp3d-facade-plane.has-real-facade .nlp3d-cells{
+inset:0!important;
+z-index:7!important;
+}
+.nlp3d.nlp3d-premium .nlp3d-facade-plane.nlp3d-facade-missing{
+display:grid!important;
+align-content:center!important;
+justify-items:start!important;
+gap:10px!important;
+padding:54px 18px 18px!important;
+border:1px solid rgba(255,198,128,.74)!important;
+background:linear-gradient(145deg,rgba(47,18,11,.92),rgba(7,17,17,.96))!important;
+color:#fff7df!important;
+box-shadow:0 26px 70px rgba(0,0,0,.42),inset 0 1px 0 rgba(255,255,255,.09)!important;
+}
+.nlp3d.nlp3d-premium .nlp3d-facade-plane.nlp3d-facade-missing strong{
+font-size:clamp(18px,2vw,26px)!important;
+line-height:1.16!important;
+color:#ffe8a6!important;
+}
+.nlp3d.nlp3d-premium .nlp3d-facade-plane.nlp3d-facade-missing p,
+.nlp3d.nlp3d-premium .nlp3d-facade-plane.nlp3d-facade-missing small{
+margin:0!important;
+font-size:14px!important;
+line-height:1.55!important;
+color:#f7e7c8!important;
+text-align:right!important;
+}
+.nlp3d.nlp3d-premium.is-facade-asset-missing .nlp3d-fp-legend,
+.nlp3d.nlp3d-premium.is-facade-asset-missing .nlp3d-cells,
+.nlp3d.nlp3d-premium.is-facade-asset-missing .nlp3d-stage-picks{
+display:none!important;
+}
+@media(max-width:760px){
+.single-nadlan_project .entry-content>.nlp3d.nlp3d-premium,
+.single-nadlan_project .wp-block-post-content>.nlp3d.nlp3d-premium,
+.single-nadlan_project .entry-content>.nlp3d.nlp3d-premium.is-mobile-edge-fixed,
+.single-nadlan_project .wp-block-post-content>.nlp3d.nlp3d-premium.is-mobile-edge-fixed{
+transform:none!important;
+}
+.nlp3d.nlp3d-premium.is-dual-showroom:not(.nlp3d-facade-dismissed) .nlp3d-stage-wrap{
+min-height:560px!important;
+overflow:visible!important;
+}
+.nlp3d.nlp3d-premium.is-dual-showroom:not(.nlp3d-facade-dismissed) .nlp3d-scene{
+position:relative!important;
+display:block!important;
+height:min(560px,138vw)!important;
+min-height:520px!important;
+overflow:hidden!important;
+padding:10px!important;
+}
+.nlp3d.nlp3d-premium.is-dual-showroom:not(.nlp3d-facade-dismissed) .nlp3d-model-viewer{
+position:absolute!important;
+left:10px!important;
+right:10px!important;
+top:10px!important;
+bottom:52%!important;
+width:auto!important;
+height:auto!important;
+min-height:0!important;
+opacity:1!important;
+border:1px solid rgba(234,216,163,.22)!important;
+border-radius:12px!important;
+background:rgba(5,18,18,.86)!important;
+}
+.nlp3d.nlp3d-premium.is-dual-showroom:not(.nlp3d-facade-dismissed) .nlp3d-facade-plane{
+position:absolute!important;
+left:50%!important;
+right:auto!important;
+top:49%!important;
+bottom:auto!important;
+width:min(calc(100vw - 28px),360px)!important;
+max-width:calc(100vw - 28px)!important;
+height:45%!important;
+transform:translateX(-50%)!important;
+box-sizing:border-box!important;
+z-index:16!important;
+}
+.nlp3d.nlp3d-premium.is-dual-showroom:not(.nlp3d-facade-dismissed) .nlp3d-fp-legend{
+position:absolute!important;
+left:14px!important;
+right:14px!important;
+bottom:14px!important;
+max-width:none!important;
+justify-content:center!important;
+z-index:17!important;
+}
+.nlp3d.nlp3d-premium.is-dual-showroom:not(.nlp3d-facade-dismissed) .nlp3d-context-caption{
+position:absolute!important;
+left:14px!important;
+right:14px!important;
+bottom:4px!important;
+}
+}
+CSS;
+	}
+}
+
 if ( ! function_exists( 'nadlan_p3d_inline_js' ) ) {
 	function nadlan_p3d_inline_js( $rest_url ) {
 		$js = <<<'JS'
@@ -1839,6 +1968,13 @@ if ( ! function_exists( 'nadlan_p3d_inline_js' ) ) {
 	}
 	function storageGet(key){try{return window.localStorage.getItem(key)}catch(e){return null}}
 	function storageSet(key,value){try{window.localStorage.setItem(key,value)}catch(e){}}
+	function assetUrl(url){
+		if(!url){return ''}
+		try{
+			var u=new URL(String(url),window.location.origin);
+			return /^https?:$/.test(u.protocol)?u.href:'';
+		}catch(e){return ''}
+	}
 	function init(root){
 		var units=readJson(root.querySelector('.nlp3d-data'),[]);
 		var meta=readJson(root.querySelector('.nlp3d-meta'),{});
@@ -1853,16 +1989,44 @@ if ( ! function_exists( 'nadlan_p3d_inline_js' ) ) {
 		var modelHotspots=[].slice.call(root.querySelectorAll('.nlp3d-mv-hotspot'));
 		var stagePicks=null;
 		var facadePlane=null;
+		var facadeAssets=(Array.isArray(meta.facade_images)?meta.facade_images:[]).filter(function(item){
+			return item&&assetUrl(item.src||item.url||item.image);
+		});
+		var primaryFacade=facadeAssets[0]||null;
+		var primaryFacadeUrl=primaryFacade?assetUrl(primaryFacade.src||primaryFacade.url||primaryFacade.image):'';
+		var hasRealFacade=!!primaryFacadeUrl;
 		if(scene){
-			stagePicks=document.createElement('div');
-			stagePicks.className='nlp3d-stage-picks';
-			stagePicks.setAttribute('aria-label','בחירת דירה על המודל');
-			if(true){
-				/* Precision selector: the facade/elevation plane owns apartment picking.
-				   With a GLB it sits beside the rotating model; without a GLB it owns the scene. */
+			if(hasRealFacade){
+				/* Precision selector: a real facade/elevation image owns apartment picking.
+				   No real image means no fake facade is rendered. */
 				facadePlane=document.createElement('div');
-				facadePlane.className='nlp3d-facade-plane';
-				facadePlane.innerHTML='<button type="button" class="nlp3d-fp-close" data-action="facade-dismiss" aria-label="הסתר חזית">×</button><span class="nlp3d-fp-title">בחירת דירות</span><span class="nlp3d-fp-roof" aria-hidden="true"></span><span class="nlp3d-fp-body" aria-hidden="true"></span><span class="nlp3d-fp-glow" aria-hidden="true"></span>';
+				facadePlane.className='nlp3d-facade-plane has-real-facade';
+				var closeBtn=document.createElement('button');
+				closeBtn.type='button';
+				closeBtn.className='nlp3d-fp-close';
+				closeBtn.dataset.action='facade-dismiss';
+				closeBtn.setAttribute('aria-label','הסתר חזית');
+				closeBtn.textContent='×';
+				var titleEl=document.createElement('span');
+				titleEl.className='nlp3d-fp-title';
+				titleEl.textContent=primaryFacade.label||'בחירת דירות על חזית הפרויקט';
+				var imageEl=document.createElement('img');
+				imageEl.className='nlp3d-fp-image';
+				imageEl.src=primaryFacadeUrl;
+				imageEl.alt=primaryFacade.alt||primaryFacade.label||((meta.title||'הפרויקט')+' - חזית לבחירת דירות');
+				imageEl.loading='lazy';
+				imageEl.addEventListener('error',function(){
+					root.classList.add('is-facade-asset-missing');
+					facadePlane.classList.remove('has-real-facade');
+					facadePlane.classList.add('nlp3d-facade-missing');
+					facadePlane.innerHTML='<button type="button" class="nlp3d-fp-close" data-action="facade-dismiss" aria-label="הסתר הודעת חזית">×</button><strong>חזית הפרויקט לא נטענה</strong><p>קובץ החזית שהוגדר בפרויקט נכשל. לא מוצגת חזית חלופית כדי שלא להטעות את המשתמשים.</p>';
+					if(stagePicks){stagePicks.remove()}
+					if(fpLegend){fpLegend.hidden=true}
+				});
+				facadePlane.appendChild(closeBtn);
+				facadePlane.appendChild(titleEl);
+				facadePlane.appendChild(imageEl);
+				stagePicks=document.createElement('div');
 				stagePicks.className='nlp3d-cells';
 				stagePicks.setAttribute('role','group');
 				stagePicks.setAttribute('aria-label','בחירת דירה על חזית הבניין');
@@ -1875,24 +2039,18 @@ if ( ! function_exists( 'nadlan_p3d_inline_js' ) ) {
 				scene.appendChild(fpLegend);
 				root.classList.add(modelViewer?'is-dual-showroom':'is-facade-select');
 			}else{
-				scene.appendChild(stagePicks);
+				facadePlane=document.createElement('div');
+				facadePlane.className='nlp3d-facade-plane nlp3d-facade-missing';
+				facadePlane.innerHTML='<button type="button" class="nlp3d-fp-close" data-action="facade-dismiss" aria-label="הסתר הודעת חזית">×</button><strong>חזית אמיתית חסרה</strong><p>לא הוגדר בפרויקט קובץ חזית או הדמיית חזית מאושרת בשדה project_3d_facade_images. לכן המערכת לא מציגה לוח דירות מזויף על גבי הבניין.</p><small>יש להעלות הדמיית חזית אמיתית ואז למפות עליה את הדירות.</small>';
+				scene.appendChild(facadePlane);
+				root.classList.add(modelViewer?'is-dual-showroom':'is-facade-asset-missing');
+				root.classList.add('is-facade-asset-missing');
 			}
 		}
 		function fitMobileShowroom(){
 			if(!root){return}
-			if(window.innerWidth>760){
-				root.style.removeProperty('--nlp3d-mobile-nudge');
-				root.classList.remove('is-mobile-edge-fixed');
-				return;
-			}
 			root.style.setProperty('--nlp3d-mobile-nudge','0px');
-			var rect=root.getBoundingClientRect();
-			var nudge=0;
-			var pad=8;
-			if(rect.left<pad){nudge+=pad-rect.left}
-			if(rect.right+nudge>window.innerWidth-pad){nudge-=rect.right+nudge-(window.innerWidth-pad)}
-			root.style.setProperty('--nlp3d-mobile-nudge',Math.round(nudge)+'px');
-			root.classList.toggle('is-mobile-edge-fixed',Math.abs(nudge)>0);
+			root.classList.remove('is-mobile-edge-fixed');
 		}
 		var floors=units.map(function(u){return parseInt(u.floor||0,10)}).filter(function(v,i,arr){return v>0&&arr.indexOf(v)===i}).sort(function(a,b){return b-a});
 		var maxFloor=Math.max.apply(null,floors.concat([39]));
@@ -3144,7 +3302,7 @@ add_action(
 			return;
 		}
 
-		wp_register_style( 'nadlan-p3d', '', array(), '1.68.0' );
+		wp_register_style( 'nadlan-p3d', '', array(), '1.68.1' );
 		wp_enqueue_style( 'nadlan-p3d' );
 		wp_add_inline_style( 'nadlan-p3d', nadlan_p3d_inline_css() );
 		wp_add_inline_style( 'nadlan-p3d', '.nlp3d-drag-note{display:inline-flex;align-items:center;min-height:44px;color:rgba(246,239,226,.72);font-size:12px;padding:0 6px}.nlp3d-scene{touch-action:none;cursor:grab}.nlp3d-scene.is-dragging{cursor:grabbing}.nlp3d-actions{grid-template-columns:1fr}.nlp3d-view-toggle{margin-top:12px;border:1px solid rgba(234,216,163,.36);background:rgba(255,255,255,.06);color:#ffe8a6;padding:9px 12px;cursor:pointer}.nlp3d-view-toggle.is-active{background:rgba(234,216,163,.18);color:#fff}.nlp3d-viewframe{position:relative;margin-top:12px;min-height:150px;overflow:hidden;border:1px solid rgba(234,216,163,.18);background:linear-gradient(180deg,rgba(41,112,139,.58),rgba(8,25,25,.92));isolation:isolate}.nlp3d-view-sky{position:absolute;inset:0;background:radial-gradient(circle at 18% 22%,rgba(255,255,255,.24),transparent 18%),linear-gradient(135deg,rgba(39,107,130,.42),rgba(18,50,43,.1));opacity:.86}.nlp3d-view-lines{position:absolute;inset:auto -8% 18% -8%;height:46%;border-top:1px solid rgba(234,216,163,.28);background:linear-gradient(160deg,rgba(234,216,163,.1),transparent 54%);transform:skewY(-8deg)}.nlp3d-view-copy{position:absolute;right:14px;left:14px;bottom:12px;margin:0;color:#fff8dc;font-size:13px;line-height:1.5;text-shadow:0 1px 12px rgba(0,0,0,.55)}@media(max-width:600px){.nlp3d-drag-note{flex-basis:100%;min-height:24px}.nlp3d-viewframe{min-height:130px}}' );
@@ -3214,6 +3372,7 @@ CSS
 		wp_add_inline_style( 'nadlan-p3d', nadlan_p3d_compact_floating_actions_v1672_css() );
 		wp_add_inline_style( 'nadlan-p3d', nadlan_p3d_finishing_layer_v1673_css() );
 		wp_add_inline_style( 'nadlan-p3d', nadlan_p3d_showroom_core_v1680_css() );
+		wp_add_inline_style( 'nadlan-p3d', nadlan_p3d_facade_overflow_v1681_css() );
 
 		$post_id = is_singular( 'nadlan_project' ) ? (int) get_queried_object_id() : 0;
 		if ( $post_id > 0 && get_post_meta( $post_id, 'project_model_glb', true ) !== '' ) {
@@ -3222,7 +3381,7 @@ CSS
 			wp_enqueue_script( 'nadlan-model-viewer' );
 		}
 
-		wp_register_script( 'nadlan-p3d', '', array(), '1.68.0', true );
+		wp_register_script( 'nadlan-p3d', '', array(), '1.68.1', true );
 		wp_enqueue_script( 'nadlan-p3d' );
 		wp_add_inline_script( 'nadlan-p3d', nadlan_p3d_inline_js( esc_url_raw( rest_url( 'nadlan/v1/lead' ) ) ) );
 	}
@@ -3641,6 +3800,9 @@ add_filter(
 			'no_silent_showroom_fallbacks_v1680' => true,
 			'model_error_notice_v1680' => true,
 			'facade_polygons_compounds_v1680' => true,
+			'facade_plane_mobile_overflow_v1681' => true,
+			'real_facade_asset_required_v1681' => true,
+			'fake_facade_grid_removed_v1681' => true,
 			'unit_panel_tabs_v1680' => true,
 			'stage_return_capture_fix' => true,
 			'mobile_containment_v1642' => true,
