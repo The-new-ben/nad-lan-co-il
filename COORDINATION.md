@@ -53,6 +53,23 @@ last batch merge: 2026-06-19T18:50Z (#199 ack, #200 rail, #201 camera spec, #202
 
 Codex acknowledges cadence+CoT · 2026-06-19T17:48:19Z
 
+### Codex plan - UTC 2026-06-20T00:12:00Z
+Goal in one sentence: ship v1.68.1 as a surgical plugin patch that keeps the embedded facade plane inside mobile/tablet viewports and stops calling/rendering a schematic grid as a real facade when no real facade asset exists.
+1. [x] Add one final mobile dual-showroom facade-plane CSS rule and neutralize the old mobile edge nudge. (touches: plugins/nadlan-config/inc/project-3d.php) (deploy-path: PLUGIN)
+2. [x] Add healthcheck marker facade_plane_mobile_overflow_v1681 and align plugin/header/health/style/script/manifest surfaces to 1.68.1. (touches: plugins/nadlan-config/*, plugin-dist/*) (deploy-path: PLUGIN)
+3. [x] Remove fake facade creation when project_3d_facade_images has no real src; render visible missing-asset state instead of a schematic grid. (touches: plugins/nadlan-config/inc/project-3d.php, skills/skill-release-discipline-and-mistakes.md) (deploy-path: PLUGIN)
+4. [x] Capture Dimri live-before screenshots at 1440/768/390/Edge-mobile and record the fake-grid failure. (touches: docs/qa/screenshots/v1681-facade-truth-live-before/*, scripts/qa-project-showroom-visual.mjs) (deploy-path: NONE)
+5. [x] Run php -l, inline JS node --check, ZIP build/guard, version audit, and diff check. (touches: plugin-dist/nadlan-config-1.68.1.zip) (deploy-path: PLUGIN)
+6. [ ] Push ready-for-review PR for Claude gate; Codex does not merge. (touches: GitHub PR only) (deploy-path: NONE)
+Acceptance gate I will satisfy: no legacy facade regression, no fake facade grid when real facade asset is missing, visible missing-asset state, facade-plane rect inside 390/768 viewport in QA report, health flags present, version surfaces aligned, ZIP rootless/no backslashes, php/js clean.
+Blockers I see: screenshots are against the current live site until deployed; the CSS rule is deterministic in the shipping ZIP, and live screenshot proof must rerun after owner updates plugin.
+
+REASONING
+- SAW: live 1.68.0 removed the old facade DOM, but the visible picker was still a schematic grid when no project_3d_facade_images asset existed.
+- THOUGHT: overflow CSS is not enough; a real facade picker needs a real facade/elevation image. Missing asset must be visible, not silently replaced by generated rectangles.
+- DID: scoped the implementation to mobile containment plus a no-fake-facade truth guard.
+- CHECKED: target spec is docs/design/2026-06-19-1681-facade-overflow-fix-spec.md; live-before QA now fails on purpose with "fake facade grid: apartment cells visible without a real facade image"; no Mapbox, penthouse data, or GLB quality changes are included.
+
 ### Codex plan · UTC 2026-06-19T19:05:00Z
 Goal in one sentence: ship the showroom core polish as a safe plugin PR that locks building camera movement horizontally by default, makes the facade dismissible/recoverable, exposes the controls in CMS/REST, and adds the functional facade hooks for richer unit views without merging or deploying myself.
 1. [x] Add CMS/REST fields and sanitizers for camera lock, facade images, site plan image, and site plan polygons. (touches: plugins/nadlan-config/inc/project-3d.php) (deploy-path: PLUGIN)
@@ -99,6 +116,8 @@ REASONING
 ---
 
 ## 6. DONE (proof-backed log — append-only)
+
+- 2026-06-20 · Codex · 1.68.1 fake-facade guard + mobile facade containment prepared for Claude gate · `f65cf4f` · proof: `docs/qa/screenshots/v1681-facade-truth-live-before/` shows live fake-grid failure; ZIP guard/version audit clean locally
 
 *(format: `UTC · agent · one line · commit SHA · proof: live URL / screenshot path / healthcheck JSON path`)*
 

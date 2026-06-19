@@ -259,3 +259,9 @@ node scripts\qa-rainbow-postdeploy.mjs --version <VERSION> --out docs\qa\rainbow
 **Why it hurt:** the owner could not see the actual failure, buyers saw unstable UI, and future agents kept polishing the fallback instead of fixing the broken asset.
 **Rule:** failures must be visible. If the GLB, facade image, drawing, tour or map fails, show a clear failure state and log it. Do not silently resurrect old tower/facade layers as a substitute. Legacy markup may render only when it is the intentional primary surface for an old project.
 **Fix command:** after deploy, inspect the live HTML for dual-showroom pages. `.nlp3d-facade` and `.nlp3d-facade-hotspots` must be absent when the embedded facade plane is active, and a forced model error must show `.nlp3d-model-error`.
+
+### M15 - A prototype grid is not a real facade
+**What happened:** a schematic SVG/grid was labeled and treated as a facade. Agents kept fixing overflow, z-index and mobile rules while the buyer was still seeing a fake building surface.
+**Why it hurt:** it burned cycles on layout while the core product problem remained: apartment picking must sit on a real elevation/render/photo, not on generated rectangles.
+**Rule:** the facade picker may render apartment cells only when `project_3d_facade_images` contains a real facade/elevation image. If the asset is missing or fails to load, show a visible missing-asset state. Do not emit a fake grid, legacy prototype SVG, or old procedural tower as a substitute.
+**Fix command:** inspect the live DOM. A real facade picker must have `.nlp3d-fp-image` and `.nlp3d-cell`; a missing facade must have `.nlp3d-facade-missing` and zero visible `.nlp3d-cell`.

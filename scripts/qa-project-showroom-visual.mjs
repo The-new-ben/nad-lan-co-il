@@ -27,6 +27,7 @@ function parseArgs(argv) {
     slug: DEFAULT_SLUG,
     outDir: DEFAULT_OUT,
     strict: false,
+    injectV1681Css: false,
   };
   for (let i = 2; i < argv.length; i += 1) {
     const a = argv[i];
@@ -34,10 +35,12 @@ function parseArgs(argv) {
     else if (a === '--slug') out.slug = argv[++i] || out.slug;
     else if (a === '--out') out.outDir = argv[++i] || out.outDir;
     else if (a === '--strict') out.strict = true;
+    else if (a === '--inject-v1681-css') out.injectV1681Css = true;
     else if (a === '--help' || a === '-h') {
       console.log(`Usage:
   node scripts/qa-project-showroom-visual.mjs --site https://nad-lan.co.il --slug rainbow-tel-aviv
   node scripts/qa-project-showroom-visual.mjs --strict
+  node scripts/qa-project-showroom-visual.mjs --slug dimri-yama-sde-dov --inject-v1681-css
 
 Uses local Chrome/Edge headless through the Chrome DevTools Protocol. Set CHROME_PATH to override
 the browser executable. Screenshots and report are written under ${DEFAULT_OUT}.`);
@@ -218,6 +221,9 @@ function metricsExpression() {
     const stage = document.querySelector('.nlp3d-stage-wrap');
     const scene = document.querySelector('.nlp3d-scene');
     const card = document.querySelector('.nlp3d-stage-card');
+    const facadePlane = document.querySelector('.nlp3d-facade-plane');
+    const facadeMissing = !!root?.classList.contains('is-facade-asset-missing') || !!document.querySelector('.nlp3d-facade-missing');
+    const realFacadeImageCount = document.querySelectorAll('.nlp3d-fp-image').length;
     const picks = Array.from(document.querySelectorAll('.nlp3d-cell,.nlp3d-stage-pick')).filter(visible);
     const cells = Array.from(document.querySelectorAll('.nlp3d-cell')).filter(visible);
     const firstPick = picks[0] || null;
@@ -242,6 +248,10 @@ function metricsExpression() {
       stageRect: rect(stage),
       sceneRect: rect(scene),
       cardRect: rect(card),
+      facadePlaneRect: rect(facadePlane),
+      facadePlaneVisible: visible(facadePlane),
+      facadeAssetMissing: facadeMissing,
+      realFacadeImageCount,
       cardHidden: !card || card.hidden || !visible(card),
       pickCount: picks.length,
       cellCount: cells.length,
@@ -264,6 +274,13 @@ function metricsExpression() {
       errors
     };
   })()`;
+}
+
+function extractV1681Css() {
+  const source = fs.readFileSync(path.resolve(process.cwd(), 'plugins/nadlan-config/inc/project-3d.php'), 'utf8');
+  const match = source.match(/function nadlan_p3d_facade_overflow_v1681_css\(\) \{\s*return <<<'CSS'\r?\n([\s\S]*?)\r?\nCSS;/);
+  if (!match) throw new Error('Could not extract nadlan_p3d_facade_overflow_v1681_css from project-3d.php');
+  return match[1];
 }
 
 async function evaluateJson(client, expression) {
@@ -302,6 +319,21 @@ async function runViewport(client, args, viewport, outDir, pageErrors) {
     awaitPromise: true,
   });
   await waitForIdle(client, 900);
+  if (args.injectV1681Css) {
+    const css = extractV1681Css();
+    await client.send('Runtime.evaluate', {
+      expression: `(() => {
+        const old = document.getElementById('nadlan-v1681-preview-css');
+        if (old) old.remove();
+        const style = document.createElement('style');
+        style.id = 'nadlan-v1681-preview-css';
+        style.textContent = ${JSON.stringify(css)};
+        document.head.appendChild(style);
+      })()`,
+      awaitPromise: true,
+    });
+    await waitForIdle(client, 250);
+  }
 
   const before = await evaluateJson(client, metricsExpression());
   if (before.firstPickCenter) {
@@ -319,12 +351,16 @@ async function runViewport(client, args, viewport, outDir, pageErrors) {
   if (!after.rootRect) failures.push('showroom root missing');
   if (after.scroll.overflow > 2) failures.push(`horizontal overflow ${after.scroll.overflow}px`);
   if (after.h1s.length !== 1) failures.push(`expected one H1, found ${after.h1s.length}`);
-  if (after.pickCount < 1) failures.push('no visible apartment picks');
-  if (after.modelViewerCount > 0 && after.cellCount < 1) failures.push('model exists but embedded facade apartment cells are missing');
+  if (!after.facadeAssetMissing && after.pickCount < 1) failures.push('no visible apartment picks');
+  if (!after.facadeAssetMissing && after.modelViewerCount > 0 && after.cellCount < 1) failures.push('model exists but embedded facade apartment cells are missing');
+  if (!after.facadeAssetMissing && after.realFacadeImageCount < 1 && after.cellCount > 0) failures.push('fake facade grid: apartment cells visible without a real facade image');
+  if (after.facadeAssetMissing && after.cellCount > 0) failures.push('facade asset missing but fake apartment cells are still visible');
+  if (after.facadeAssetMissing && after.realFacadeImageCount > 0) failures.push('facade asset missing while real facade image is present');
   if (after.firstPickCenter && after.cardHidden) failures.push('clicking apartment did not reveal selected card');
   if (after.firstPickCenter && after.activePressedCount < 1) failures.push('clicking apartment did not mark a selected unit');
   if (after.tapTargets.count && after.tapTargets.min < 44) failures.push(`tap target below 44px (${after.tapTargets.min}px)`);
   if (after.rootRect && viewport.width <= 768 && (after.rootRect.x < -2 || after.rootRect.right > viewport.width + 2)) failures.push(`showroom cropped on mobile/tablet: ${JSON.stringify(after.rootRect)}`);
+  if (after.facadePlaneVisible && viewport.width <= 768 && after.facadePlaneRect && (after.facadePlaneRect.x < -2 || after.facadePlaneRect.right > viewport.width + 2)) failures.push(`facade plane cropped on mobile/tablet: ${JSON.stringify(after.facadePlaneRect)}`);
   if (after.textSignals.hasInternalWords) failures.push('public text contains internal wording');
   if (after.errors.length) failures.push(`HTML leak markers: ${after.errors.join(', ')}`);
   const viewportErrors = pageErrors.splice(0, pageErrors.length);
@@ -365,6 +401,7 @@ async function main() {
     const report = {
       site: args.site,
       slug: args.slug,
+      injected_v1681_css: args.injectV1681Css,
       generated_at: new Date().toISOString(),
       out_dir: args.outDir,
       summary: { passed: viewports.length - failed.length, failed: failed.length },
