@@ -117,6 +117,8 @@ REASONING
 
 ## 6. DONE (proof-backed log — append-only)
 
+- 2026-06-20 · Codex · 1.68.1 fake-facade guard + mobile facade containment prepared for Claude gate · `f65cf4f` · proof: `docs/qa/screenshots/v1681-facade-truth-live-before/` shows live fake-grid failure; ZIP guard/version audit clean locally
+
 *(format: `UTC · agent · one line · commit SHA · proof: live URL / screenshot path / healthcheck JSON path`)*
 
 - 2026-06-19 · Codex · 1.67.5 generic project copy fix shipped · `a1f1820` · proof: pending live verification (need owner deploy)
