@@ -854,7 +854,11 @@ add_filter( 'the_content', function ( $content ) {
 }, 99 );
 
 add_filter( 'render_block', function ( $block_content, $block ) {
-	if ( is_front_page() && isset( $block['blockName'] ) && $block['blockName'] === 'core/post-title' ) {
+	if (
+		isset( $block['blockName'] )
+		&& $block['blockName'] === 'core/post-title'
+		&& ( is_front_page() || is_page( array( 'join-pro', 'sitemap' ) ) )
+	) {
 		return '';
 	}
 	return $block_content;
@@ -910,6 +914,52 @@ if ( ! function_exists( 'nadlan_revenue_is_money_path' ) ) :
 	}
 endif;
 
+if ( ! function_exists( 'nadlan_revenue_is_commerce_screen' ) ) :
+	function nadlan_revenue_is_commerce_screen() {
+		$path = nadlan_revenue_request_path();
+		$commerce_prefixes = array( '/cart', '/checkout', '/my-account', '/shop', '/product' );
+		foreach ( $commerce_prefixes as $prefix ) {
+			if ( strpos( $path, $prefix ) === 0 ) {
+				return true;
+			}
+		}
+
+		if ( function_exists( 'is_cart' ) && is_cart() ) { return true; }
+		if ( function_exists( 'is_checkout' ) && is_checkout() ) { return true; }
+		if ( function_exists( 'is_account_page' ) && is_account_page() ) { return true; }
+		if ( function_exists( 'is_product' ) && is_product() ) { return true; }
+		if ( function_exists( 'is_shop' ) && is_shop() ) { return true; }
+		if ( function_exists( 'is_product_taxonomy' ) && is_product_taxonomy() ) { return true; }
+
+		return false;
+	}
+endif;
+
+add_action( 'template_redirect', function () {
+	if ( ! is_admin() && ! nadlan_revenue_is_commerce_screen() && function_exists( 'wc_clear_notices' ) ) {
+		wc_clear_notices();
+	}
+}, 0 );
+
+add_filter( 'render_block', function ( $block_content, $block ) {
+	$block_name = isset( $block['blockName'] ) ? (string) $block['blockName'] : '';
+	$slug       = isset( $block['attrs']['slug'] ) ? (string) $block['attrs']['slug'] : '';
+
+	if ( ! is_admin() && ! nadlan_revenue_is_commerce_screen() && strpos( $block_name, 'woocommerce/' ) === 0 ) {
+		return '';
+	}
+
+	if (
+		$block_name === 'core/pattern'
+		&& $slug === 'nadlan-revenue/more-posts'
+		&& is_singular( array( 'nadlan_project', 'nadlan_professional', 'nadlan_property' ) )
+	) {
+		return '';
+	}
+
+	return $block_content;
+}, 20, 2 );
+
 add_filter( 'woocommerce_coming_soon_exclude', function ( $is_excluded ) {
 	if ( nadlan_revenue_is_money_path() ) {
 		return true;
@@ -958,7 +1008,7 @@ if ( ! function_exists( 'nadlan_revenue_premium_gateway_markup' ) ) :
 			<div><span>01</span><strong>יוצרים חשבון</strong><p>שם, אימייל וסיסמה. אין צורך לדעת וורדפרס.</p></div>
 			<div><span>02</span><strong>בוחרים או תובעים כרטיס</strong><p>פרויקט, נכס או כרטיס מקצועי שכבר קיים במאגר.</p></div>
 			<div><span>03</span><strong>מעלים תמונות ומידע</strong><p>סטודיו עריכה עם שדות ברורים ותצוגה ציבורית.</p></div>
-			<div><span>04</span><strong>משדרגים חשיפה</strong><p>Pro, Premier, פרויקט או נכס מקודם דרך WooCommerce.</p></div>
+			<div><span>04</span><strong>משדרגים חשיפה</strong><p>Pro, Premier, פרויקט או נכס מקודם במסלול תשלום מאובטח.</p></div>
 		</div>
 	</section>
 	<section class="nlrx-gate-proof">
@@ -1040,7 +1090,7 @@ if ( ! function_exists( 'nadlan_revenue_premium_join_page' ) ) :
 			<p>בונים נוכחות שמרגישה כמו נכס יוקרתי: עמוד עשיר, תמונות, פרטי קשר, מיקום, פניות ומרכז ניהול אחד. המטרה פשוטה: להפוך מבקר למתעניין אמיתי.</p>
 		</div>
 		<div class="nlrx-pricing-proof">
-			<strong>WooCommerce + חשבונית</strong>
+			<strong>תשלום מאובטח + חשבונית</strong>
 			<span>תשלום מאובטח, הזמנה מסודרת, חיבור לכרטיס לאחר רכישה.</span>
 		</div>
 	</section>
@@ -1061,13 +1111,9 @@ if ( ! function_exists( 'nadlan_revenue_premium_join_page' ) ) :
 	</section>
 	<section class="nlrx-revenue-flow" aria-label="איך זה עובד">
 		<div><span>1</span><strong>בוחרים מסלול</strong><p>הכרטיס או הפרויקט מקבל את מסלול החשיפה הנכון.</p></div>
-		<div><span>2</span><strong>משלימים תשלום</strong><p>WooCommerce פותח הזמנה וחשבונית לפי ההגדרות באתר.</p></div>
+		<div><span>2</span><strong>משלימים תשלום</strong><p>המערכת פותחת הזמנה מסודרת ומחברת אותה לכרטיס לאחר הרכישה.</p></div>
 		<div><span>3</span><strong>מחברים לכרטיס</strong><p>אם כבר יש כרטיס, מחברים אותו. אם לא, מרכז הפרסום מאפשר בחירה.</p></div>
 		<div><span>4</span><strong>מעלים תמונות ומידע</strong><p>הסטודיו מציג שדות ברורים, גלריה ומפה.</p></div>
-	</section>
-	<section class="nlrx-pricing-note">
-		<h2>לפני שמפעילים לקוחות אמיתיים</h2>
-		<p>הבדיקה החיה מצאה שעמודי התשלום של WooCommerce עדיין מוצגים כ-coming soon. הקוד כאן מוסיף שכבת ביטחון למסלולי הכסף, אבל בהתקנה חייבים גם לוודא ב-WooCommerce שהחנות מוגדרת גלויה לציבור.</p>
 	</section>
 </div>
 		<?php

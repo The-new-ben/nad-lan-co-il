@@ -70,6 +70,23 @@ REASONING
 - DID: recorded the working goal and gates here so both agents have the same target.
 - CHECKED: the existing app goal is paused but still present; creating a duplicate would be dishonest.
 
+### Codex Stage 1 public trust cleanup - UTC 2026-06-20T21:20:00Z
+Goal in one sentence: remove public trust leaks from the non-commerce pages named by the supervisor before any Dimri showroom work.
+1. [x] Baseline browser QA captured at 1440/768/390 for `/`, `/join-pro/`, `/sitemap/`, `/professionals/`, and `/projects/dimri-yama-sde-dov/`. (proof: `docs/qa/screenshots/stage1-public-trust-before/`) (deploy-path: NONE)
+2. [x] Source cleanup implemented in theme: hide WooCommerce blocks/notices on non-commerce public pages while preserving cart/checkout/account/shop/product screens. (touches: `functions.php`) (deploy-path: THEME)
+3. [x] Source cleanup implemented in theme: remove internal WooCommerce/coming-soon wording from `/join-pro/` public copy. (touches: `functions.php`) (deploy-path: THEME)
+4. [x] Source cleanup implemented in theme: suppress `More posts` pattern on project/property/professional singles and remove duplicate page-title H1 on `/join-pro/` and `/sitemap/`. (touches: `functions.php`) (deploy-path: THEME)
+5. [x] QA harness added/refined to report raw and visible leak counts with full-page screenshots. (touches: `scripts/qa-stage1-public-trust.mjs`) (deploy-path: NONE)
+6. [ ] True after screenshots wait for merge + UPress server git pull + cache clear, because this is a theme release and the QA target is the live site. Do not present baseline screenshots as proof-of-fix.
+Acceptance gate I will satisfy before handing off: `php -l functions.php`, `node --check scripts/qa-stage1-public-trust.mjs`, `git diff --check`, baseline screenshots committed, and PR text explicitly states the post-merge theme-pull requirement for after screenshots.
+Blockers I see: none for PR preparation. Live after-proof requires the irreversible deploy path: Claude merge, then UPress server git pull/cache clear.
+
+REASONING
+- SAW: baseline report shows 15 screenshots, visibleLeakCount 120, visible mini-cart/button leaks on all target pages, `/join-pro/` public WooCommerce/coming-soon wording, duplicate H1s on `/join-pro/` and `/sitemap/`, and `More posts` on Dimri.
+- THOUGHT: the cleanest trust slice is source-level removal of public Woo chrome/copy on non-commerce pages, not CSS hiding, while preserving actual commerce pages.
+- DID: implemented the theme source filters and copy cleanup; did not touch Dimri showroom/facade/Mapbox.
+- CHECKED: `php -l functions.php`, `node --check scripts/qa-stage1-public-trust.mjs`, and refreshed baseline screenshot QA all ran.
+
 ### Codex plan - UTC 2026-06-20T01:05:00Z
 Goal in one sentence: ship v1.68.2 as a Dimri-only premium concept facade release that replaces the missing-facade panel with a packaged bitmap concept while preserving the rule that official CMS facade assets always override prototypes.
 1. [x] Verify the supplied 1.68.2 ZIP/checks/preview and reject the earlier raw-GitHub/Rainbow seed draft. (touches: plugin/package review) (deploy-path: NONE)
