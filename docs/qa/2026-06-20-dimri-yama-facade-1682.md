@@ -27,6 +27,18 @@ Replace the Dimri missing-facade state with a packaged, original concept facade 
 - `python scripts/verify-plugin-release.py 1.68.2` clean.
 - ZIP contains both facade assets.
 
+## Live Baseline Before Deploy
+
+Captured current production `1.68.1` before this PR is merged/deployed:
+
+- `docs/qa/screenshots/v1682-dimri-live-before/desktop-1440.png`
+- `docs/qa/screenshots/v1682-dimri-live-before/tablet-768.png`
+- `docs/qa/screenshots/v1682-dimri-live-before/mobile-390.png`
+- `docs/qa/screenshots/v1682-dimri-live-before/edge-mobile-390.png`
+- `docs/qa/screenshots/v1682-dimri-live-before/report.json`
+
+Baseline report confirms the pre-deploy state: `facadeAssetMissing: true`, `realFacadeImageCount: 0`, and no horizontal overflow. Post-deploy QA must prove the opposite for the facade asset: concept image rendered, not missing.
+
 ## Product References Checked
 
 - Render Vision apartment viewer: building/future-environment view with apartment-level information in a few clicks. https://render-vision.com/apartment-selector/
