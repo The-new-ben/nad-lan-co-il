@@ -7,3 +7,7 @@ plugin-build/
 plugin-dist/*
 !plugin-dist/nadlan-config.json
 !plugin-dist/*.zip
+
+# Local JS QA tooling dependencies. Keep installed tools local, never commit them.
+node_modules/
+.seo-cache/

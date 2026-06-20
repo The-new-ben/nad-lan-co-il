@@ -209,6 +209,11 @@ Before shipping a project:
 - Confirm mobile has no horizontal overflow and no nested gray scrollbars.
 - Confirm source notes/disclaimers distinguish official data from illustrative/demo data.
 - Confirm the page still has one H1 and the article body remains readable below the showroom.
+- Confirm with a Playwright geometry report, not only screenshots, that model, facade, selected
+  card, dismiss buttons, floating action rail, lead form and footer do not overlap incorrectly.
+  The report must save bounding boxes for the key elements, document horizontal overflow, parent
+  containment failures, overlap areas and minimum tap-target sizes. If the geometry report says a
+  control overlaps the facade, form or footer, the screenshot is not allowed to pass by eye.
 
 ## Apartment Cell Selector Standard
 
@@ -230,6 +235,24 @@ failed even if the click handler works.
 Mobile rule: selected-apartment details must be a controlled sheet or inline card that stays visible
 without shrinking the model scene. Never let a selected card collapse the 3D stage height or appear
 off-screen.
+
+## Facade Engine Tooling Standard
+
+For all future project facades, use the installed local toolchain documented in
+`docs/design/2026-06-20-facade-engine-tooling-and-goal.md`:
+
+- Playwright + Chromium for 1440 / 768 / 390 / Edge-mobile screenshot proof.
+- Lighthouse for external performance, SEO, accessibility and best-practice audits.
+- ImageMagick for image optimization, JPG/WebP conversion and visual diff checks.
+- Blender for repeatable model/facade/poster generation when official BIM or elevation material is
+  missing.
+- glTF Transform for GLB inspection, optimization and texture compression.
+- axe Playwright for accessibility checks on facade cells, buttons, selected cards and mobile sheets.
+
+Do not ship a "facade" that is just a fake stack of rectangles. A facade release is acceptable only
+when the clickable zones sit on a real or clearly labeled illustrative bitmap/elevation surface,
+and the selected unit journey proves that the facade is an app surface: facts, view, tour/media
+where available, price context and contact path.
 
 ## CMS Owner Rule
 
