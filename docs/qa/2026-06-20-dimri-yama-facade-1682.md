@@ -39,6 +39,26 @@ Captured current production `1.68.1` before this PR is merged/deployed:
 
 Baseline report confirms the pre-deploy state: `facadeAssetMissing: true`, `realFacadeImageCount: 0`, and no horizontal overflow. Post-deploy QA must prove the opposite for the facade asset: concept image rendered, not missing.
 
+## Live Verification After Deploy
+
+Captured production after PR #207 was merged and NadLan Config was updated to `1.68.2`:
+
+- `docs/qa/healthcheck-1.68.2-live.json`
+- `docs/qa/screenshots/v1682-dimri-live-after/desktop-1440.png`
+- `docs/qa/screenshots/v1682-dimri-live-after/tablet-768.png`
+- `docs/qa/screenshots/v1682-dimri-live-after/mobile-390.png`
+- `docs/qa/screenshots/v1682-dimri-live-after/edge-mobile-390.png`
+- `docs/qa/screenshots/v1682-dimri-live-after/report.json`
+- `docs/qa/screenshots/v1682-rainbow-live-after/desktop-1440.png`
+- `docs/qa/screenshots/v1682-rainbow-live-after/tablet-768.png`
+- `docs/qa/screenshots/v1682-rainbow-live-after/mobile-390.png`
+- `docs/qa/screenshots/v1682-rainbow-live-after/edge-mobile-390.png`
+- `docs/qa/screenshots/v1682-rainbow-live-after/report.json`
+
+Dimri after-deploy report confirms: `facadeAssetMissing: false`, `realFacadeImageCount: 1`, `pickCount: 4`, `cellCount: 4`, no horizontal overflow, and 4/4 viewport passes.
+
+Rainbow after-deploy report confirms no regression in layout: no horizontal overflow, one H1, and 4/4 viewport passes. Rainbow still has `facadeAssetMissing: true` because this release is Dimri-only.
+
 ## Product References Checked
 
 - Render Vision apartment viewer: building/future-environment view with apartment-level information in a few clicks. https://render-vision.com/apartment-selector/
