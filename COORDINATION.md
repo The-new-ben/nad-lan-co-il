@@ -60,7 +60,7 @@ Goal in one sentence: ship v1.68.2 as a Dimri-only premium concept facade releas
 3. [x] Keep the project factory aligned by allowing `project_3d_facade_images` in the payload schema and pointing Dimri's payload at the plugin-contained concept asset. (touches: docs/templates/project-showroom-payload.schema.json, assets/projects/dimri-yama/showroom-payload.json, scripts/validate-project-showroom-payload.mjs) (deploy-path: NONE)
 4. [x] Bump plugin/health/cache/manifest surfaces to 1.68.2 and rebuild the ZIP with the canonical builder. (touches: plugins/nadlan-config/*, plugin-dist/*) (deploy-path: PLUGIN)
 5. [x] Run gates: php -l x3, inline JS node --check, payload validator, plugin ZIP builder, release verifier, ZIP asset presence check. (touches: docs/qa/2026-06-20-dimri-yama-facade-1682.md) (deploy-path: NONE)
-6. [ ] Push ready-for-review PR for Claude gate; Codex does not merge. (touches: GitHub PR only) (deploy-path: NONE)
+6. [x] Push ready-for-review PR for Claude gate; Codex does not merge. (touches: GitHub PR only) (deploy-path: NONE)
 Acceptance gate I will satisfy: live after deploy reports 1.68.2 and project_3d flags `dimri_yama_concept_facade_v1682` + `concept_facade_label_v1682`; Dimri renders a concept bitmap facade instead of the missing-facade panel; no old fake grid is revived; ZIP has 0 backslash paths.
 Blockers I see: live screenshot proof waits until the PR is merged and the plugin is updated on WordPress.
 
@@ -135,6 +135,7 @@ REASONING
 ## 6. DONE (proof-backed log — append-only)
 
 - 2026-06-20 · Codex · 1.68.1 fake-facade guard + mobile facade containment prepared for Claude gate · `f65cf4f` · proof: `docs/qa/screenshots/v1681-facade-truth-live-before/` shows live fake-grid failure; ZIP guard/version audit clean locally
+- 2026-06-20 · Codex · 1.68.2 Dimri premium concept facade PR opened ready-for-review · `330738a` · proof: PR #207 https://github.com/The-new-ben/nad-lan-co-il/pull/207 and `docs/qa/2026-06-20-dimri-yama-facade-1682.md`
 
 *(format: `UTC · agent · one line · commit SHA · proof: live URL / screenshot path / healthcheck JSON path`)*
 
