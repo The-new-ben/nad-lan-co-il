@@ -94,6 +94,10 @@ open a second feature/PR/deploy path while the current proof is unresolved.
     cells embedded in the facade, not dots floating around the 3D object.
 12. The model should open close enough for unit selection and rotate slowly. Fast spin, wide camera
     and tiny markers make the experience feel like a technical demo instead of a buyer showroom.
+13. If no official facade/elevation render exists yet, create an original high-quality bitmap
+    prototype and label it as illustrative. Wire it only through `project_3d_facade_images`; do not
+    revive fake CSS/SVG grids, and do not overwrite an existing official contractor-supplied facade.
+    The upgrade path must stay field-only: replace the prototype URL with the official render later.
 
 ## C2. Product Showroom Fields
 

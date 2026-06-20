@@ -117,7 +117,8 @@ function validateObject(schema, value, pathLabel, errors, rootSchema) {
 }
 
 function resolveRef(schema, ref) {
-  if (ref === '#/$defs/unit') return schema.$defs.unit;
+  const match = String(ref).match(/^#\/\$defs\/([A-Za-z0-9_-]+)$/);
+  if (match && schema.$defs && schema.$defs[match[1]]) return schema.$defs[match[1]];
   throw new Error(`Unsupported schema ref ${ref}`);
 }
 

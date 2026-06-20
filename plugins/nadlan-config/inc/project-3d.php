@@ -166,18 +166,62 @@ if ( ! function_exists( 'nadlan_p3d_clean_facade_images' ) ) {
 			if ( $src === '' ) {
 				continue;
 			}
-			$out[] = array(
+			$facade = array(
 				'building' => sanitize_text_field( (string) ( $item['building'] ?? $item['label'] ?? '' ) ),
 				'label'    => sanitize_text_field( (string) ( $item['label'] ?? $item['building'] ?? '' ) ),
 				'src'      => $src,
 				'viewbox'  => preg_replace( '/[^0-9,. \-]/', '', (string) ( $item['viewbox'] ?? '0 0 1000 1000' ) ),
 			);
+			foreach ( array( 'alt', 'source', 'notice', 'kind' ) as $text_key ) {
+				if ( isset( $item[ $text_key ] ) ) {
+					$facade[ $text_key ] = sanitize_text_field( (string) $item[ $text_key ] );
+				}
+			}
+			if ( isset( $item['concept'] ) ) {
+				$facade['concept'] = ! empty( $item['concept'] ) && $item['concept'] !== '0' && $item['concept'] !== 'false';
+			}
+			if ( isset( $item['approved'] ) ) {
+				$facade['approved'] = ! empty( $item['approved'] ) && $item['approved'] !== '0' && $item['approved'] !== 'false';
+			}
+			$out[] = $facade;
 			if ( count( $out ) >= 12 ) {
 				break;
 			}
 		}
 
 		return $out;
+	}
+}
+
+if ( ! function_exists( 'nadlan_p3d_matches_dimri_yama' ) ) {
+	function nadlan_p3d_matches_dimri_yama( $title, $developer = '', $city = '', $address = '' ) {
+		$haystack = trim( implode( ' ', array( (string) $title, (string) $developer, (string) $city, (string) $address ) ) );
+		$haystack = function_exists( 'mb_strtolower' ) ? mb_strtolower( $haystack ) : strtolower( $haystack );
+		if ( $haystack === '' ) {
+			return false;
+		}
+		$has_dimri = false !== strpos( $haystack, 'dimri' ) || false !== strpos( $haystack, 'דמרי' );
+		$has_yama  = false !== strpos( $haystack, 'yama' ) || false !== strpos( $haystack, 'ימה' ) || false !== strpos( $haystack, 'sde dov' ) || false !== strpos( $haystack, 'שדה דב' );
+		return $has_dimri && $has_yama;
+	}
+}
+
+if ( ! function_exists( 'nadlan_p3d_dimri_yama_concept_facade_images' ) ) {
+	function nadlan_p3d_dimri_yama_concept_facade_images() {
+		return array(
+			array(
+				'building' => 'DIMRI YAMA',
+				'label'    => 'חזית קונספט פרימיום · להמחשה בלבד',
+				'alt'      => 'הדמיית קונספט מקורית של חזית דמרי ימה לבחירת דירות - לא חומר רשמי של היזם',
+				'src'      => esc_url_raw( plugins_url( '../assets/projects/dimri-yama/dimri-yama-premium-facade-concept.jpg', __FILE__ ) ),
+				'viewbox'  => '0 0 1200 900',
+				'kind'     => 'generated-concept',
+				'concept'  => true,
+				'approved' => false,
+				'notice'   => 'הדמיית קונספט מקורית עד לקבלת חזית רשמית מהיזם',
+				'source'   => 'Original generated asset packaged in nadlan-config 1.68.2; replace with official developer elevation when available.',
+			),
+		);
 	}
 }
 
@@ -724,6 +768,10 @@ if ( ! function_exists( 'nadlan_p3d_meta' ) ) {
 		$camera_auto       = $camera_auto_raw === '' ? $camera_lock === 'free' : nadlan_p3d_sanitize_checkbox( $camera_auto_raw ) === '1';
 		$camera_mid        = ( nadlan_p3d_degree_number( $camera_min_polar, 78 ) + nadlan_p3d_degree_number( $camera_max_polar, 85 ) ) / 2;
 		$site_plan_image   = esc_url_raw( (string) get_post_meta( $post_id, 'project_3d_site_plan_image', true ) );
+		$facade_images     = nadlan_p3d_clean_facade_images( nadlan_p3d_json_meta( $post_id, 'project_3d_facade_images', array() ) );
+		if ( ! $facade_images && nadlan_p3d_matches_dimri_yama( $title, $developer, $city, $address ) ) {
+			$facade_images = nadlan_p3d_dimri_yama_concept_facade_images();
+		}
 
 		return array(
 			'title'     => $title ?: 'הפרויקט',
@@ -755,7 +803,7 @@ if ( ! function_exists( 'nadlan_p3d_meta' ) ) {
 			'cesium_tiles_url'   => $cesium_url,
 			'drawings'           => nadlan_p3d_clean_material_items( nadlan_p3d_json_meta( $post_id, 'project_3d_drawings_json', array() ) ),
 			'environment'        => nadlan_p3d_clean_material_items( nadlan_p3d_json_meta( $post_id, 'project_3d_environment_json', array() ) ),
-			'facade_images'      => nadlan_p3d_clean_facade_images( nadlan_p3d_json_meta( $post_id, 'project_3d_facade_images', array() ) ),
+			'facade_images'      => $facade_images,
 			'site_plan_image'    => $site_plan_image,
 			'site_plan_polygons' => nadlan_p3d_clean_site_plan_polygons( nadlan_p3d_json_meta( $post_id, 'project_3d_site_plan_polygons', array() ) ),
 			'url'       => get_permalink( $post_id ),
@@ -3302,7 +3350,7 @@ add_action(
 			return;
 		}
 
-		wp_register_style( 'nadlan-p3d', '', array(), '1.68.1' );
+		wp_register_style( 'nadlan-p3d', '', array(), '1.68.2' );
 		wp_enqueue_style( 'nadlan-p3d' );
 		wp_add_inline_style( 'nadlan-p3d', nadlan_p3d_inline_css() );
 		wp_add_inline_style( 'nadlan-p3d', '.nlp3d-drag-note{display:inline-flex;align-items:center;min-height:44px;color:rgba(246,239,226,.72);font-size:12px;padding:0 6px}.nlp3d-scene{touch-action:none;cursor:grab}.nlp3d-scene.is-dragging{cursor:grabbing}.nlp3d-actions{grid-template-columns:1fr}.nlp3d-view-toggle{margin-top:12px;border:1px solid rgba(234,216,163,.36);background:rgba(255,255,255,.06);color:#ffe8a6;padding:9px 12px;cursor:pointer}.nlp3d-view-toggle.is-active{background:rgba(234,216,163,.18);color:#fff}.nlp3d-viewframe{position:relative;margin-top:12px;min-height:150px;overflow:hidden;border:1px solid rgba(234,216,163,.18);background:linear-gradient(180deg,rgba(41,112,139,.58),rgba(8,25,25,.92));isolation:isolate}.nlp3d-view-sky{position:absolute;inset:0;background:radial-gradient(circle at 18% 22%,rgba(255,255,255,.24),transparent 18%),linear-gradient(135deg,rgba(39,107,130,.42),rgba(18,50,43,.1));opacity:.86}.nlp3d-view-lines{position:absolute;inset:auto -8% 18% -8%;height:46%;border-top:1px solid rgba(234,216,163,.28);background:linear-gradient(160deg,rgba(234,216,163,.1),transparent 54%);transform:skewY(-8deg)}.nlp3d-view-copy{position:absolute;right:14px;left:14px;bottom:12px;margin:0;color:#fff8dc;font-size:13px;line-height:1.5;text-shadow:0 1px 12px rgba(0,0,0,.55)}@media(max-width:600px){.nlp3d-drag-note{flex-basis:100%;min-height:24px}.nlp3d-viewframe{min-height:130px}}' );
@@ -3381,7 +3429,7 @@ CSS
 			wp_enqueue_script( 'nadlan-model-viewer' );
 		}
 
-		wp_register_script( 'nadlan-p3d', '', array(), '1.68.1', true );
+		wp_register_script( 'nadlan-p3d', '', array(), '1.68.2', true );
 		wp_enqueue_script( 'nadlan-p3d' );
 		wp_add_inline_script( 'nadlan-p3d', nadlan_p3d_inline_js( esc_url_raw( rest_url( 'nadlan/v1/lead' ) ) ) );
 	}
@@ -3803,6 +3851,8 @@ add_filter(
 			'facade_plane_mobile_overflow_v1681' => true,
 			'real_facade_asset_required_v1681' => true,
 			'fake_facade_grid_removed_v1681' => true,
+			'dimri_yama_concept_facade_v1682' => true,
+			'concept_facade_label_v1682' => true,
 			'unit_panel_tabs_v1680' => true,
 			'stage_return_capture_fix' => true,
 			'mobile_containment_v1642' => true,

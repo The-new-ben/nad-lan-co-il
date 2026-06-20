@@ -53,6 +53,12 @@
         "project_3d_image": {
           "type": "string"
         },
+        "project_3d_facade_images": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/facadeImage"
+          }
+        },
         "project_3d_viewbox": {
           "type": "string"
         },
@@ -109,6 +115,44 @@
     }
   },
   "$defs": {
+    "facadeImage": {
+      "type": "object",
+      "required": ["src"],
+      "additionalProperties": true,
+      "properties": {
+        "building": {
+          "type": "string"
+        },
+        "label": {
+          "type": "string"
+        },
+        "alt": {
+          "type": "string"
+        },
+        "src": {
+          "type": "string",
+          "format": "uri"
+        },
+        "viewbox": {
+          "type": "string"
+        },
+        "kind": {
+          "type": "string"
+        },
+        "concept": {
+          "type": ["boolean", "string", "number"]
+        },
+        "approved": {
+          "type": ["boolean", "string", "number"]
+        },
+        "notice": {
+          "type": "string"
+        },
+        "source": {
+          "type": "string"
+        }
+      }
+    },
     "unit": {
       "type": "object",
       "required": ["id", "title", "floor", "rooms", "sqm", "status", "hotspot_position", "hotspot_normal"],
