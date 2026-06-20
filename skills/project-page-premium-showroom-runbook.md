@@ -189,6 +189,21 @@ Pass criteria:
 - floating buttons do not cover forms or footer,
 - schema contains visible FAQ-aligned data.
 
+For overflow or overlap work, run the geometry harness and commit its screenshots:
+
+```bash
+node scripts/qa-showroom-geometry.mjs --slug <project-slug> --out docs/qa/screenshots/<run-name> --strict
+```
+
+If the fix is CSS-only and not deployed yet, preview it on the live DOM first:
+
+```bash
+node scripts/qa-showroom-geometry.mjs --slug <project-slug> --out docs/qa/screenshots/<run-name> --strict --inject-css docs/qa/fixtures/<fix>.css
+```
+
+This is not a replacement for post-deploy QA. It is a pre-deploy proof that the proposed CSS fixes
+the measured rectangles before we package another plugin.
+
 ## F. Deployment Reminder
 
 After a PR is merged:

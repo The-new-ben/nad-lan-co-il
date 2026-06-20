@@ -21,24 +21,27 @@ const VIEWPORTS = [
 ];
 
 function parseArgs(argv) {
-  const args = { site: DEFAULT_SITE, slug: DEFAULT_SLUG, outDir: DEFAULT_OUT, strict: false };
+  const args = { site: DEFAULT_SITE, slug: DEFAULT_SLUG, outDir: DEFAULT_OUT, strict: false, injectCss: '' };
   for (let i = 2; i < argv.length; i += 1) {
     const a = argv[i];
     if (a === '--site') args.site = argv[++i] || args.site;
     else if (a === '--slug') args.slug = argv[++i] || args.slug;
     else if (a === '--out') args.outDir = argv[++i] || args.outDir;
+    else if (a === '--inject-css') args.injectCss = argv[++i] || args.injectCss;
     else if (a === '--strict') args.strict = true;
     else if (a === '--help' || a === '-h') {
       console.log(`Usage:
   node scripts/qa-showroom-geometry.mjs --slug dimri-yama-sde-dov --strict
 
-Captures viewport screenshots and a JSON geometry report for core showroom surfaces.`);
+Captures viewport screenshots and a JSON geometry report for core showroom surfaces.
+Use --inject-css path/to/file.css to preview an unreleased containment layer on the live DOM.`);
       process.exit(0);
     } else {
       throw new Error(`Unknown argument: ${a}`);
     }
   }
   args.site = args.site.replace(/\/+$/, '');
+  if (args.injectCss) args.injectCss = path.resolve(process.cwd(), args.injectCss);
   return args;
 }
 
@@ -98,7 +101,7 @@ async function collectGeometry(page) {
       card: rect(document.querySelector('.nlp3d-stage-card:not([hidden])')),
       leadForm: rect(document.querySelector('.nlp3d-lead-form')),
       ownerForm: rect(document.querySelector('.nlp3d-owner-form')),
-      floatingRail: rect(document.querySelector('.nlaction-rail,.nl-floating-actions,.nlai-widget,#nlai')),
+      floatingRail: rect(document.querySelector('.nlaction-rail,#nlrx-action-rail,.nlrx-action-rail,.nl-floating-actions,.nlai-widget,#nlai')),
       closeButtons: rects('.nlp3d-fp-close,.nlp3d-stage-card button,[data-nlps-close]', 20),
       cells: rects('.nlp3d-cell,.nlp3d-stage-pick', 80),
       media: rects('.nlp3d img,.nlp3d-premium img,.nlp3d video,.nlp3d model-viewer,.nlp3d-fp-image,.nlp3d-model-viewer', 80),
@@ -181,6 +184,9 @@ async function runViewport(browser, args, viewport, outDir) {
   });
   const url = `${args.site}/projects/${args.slug}/?cb=geometry-${Date.now()}-${viewport.name}`;
   await page.goto(url, { waitUntil: 'networkidle', timeout: 60000 });
+  if (args.injectCss) {
+    await page.addStyleTag({ content: fs.readFileSync(args.injectCss, 'utf8') });
+  }
   await page.locator('.nlp3d-premium,.nlp3d').scrollIntoViewIfNeeded({ timeout: 15000 }).catch(() => {});
   await page.waitForTimeout(900);
   const firstCell = page.locator('.nlp3d-cell,.nlp3d-stage-pick').first();
@@ -213,6 +219,7 @@ async function main() {
       slug: args.slug,
       generated_at: new Date().toISOString(),
       out_dir: args.outDir,
+      injected_css: args.injectCss ? path.relative(process.cwd(), args.injectCss) : null,
       summary: { passed: viewports.length - failed.length, failed: failed.length },
       viewports,
     };

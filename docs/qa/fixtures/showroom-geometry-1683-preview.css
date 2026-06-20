@@ -1,0 +1,54 @@
+/* v1.68.3 geometry preview: mirrors nadlan_p3d_geometry_gate_v1683_css(). */
+.nlp3d.nlp3d-premium .nlp3d-stage-tabs button,
+.nlp3d.nlp3d-premium .nlp3d-stage-card-actions button,
+.nlp3d.nlp3d-premium .nlp3d-dock-actions button,
+.nlp3d.nlp3d-premium .nlp3d-tool,
+.nlp3d.nlp3d-premium .nlp3d-view-toggle {
+  min-height: 44px !important;
+}
+
+body.nadlan-p3d-stage-active.single-nadlan_project .nlaction-rail,
+body.nadlan-p3d-stage-active.single-nadlan_project #nlrx-action-rail,
+body.nadlan-p3d-stage-active.single-nadlan_project .nlrx-action-rail,
+body.nadlan-p3d-stage-active.single-nadlan_project .nl-floating-actions,
+body.nadlan-p3d-stage-active.single-nadlan_project .nlfab,
+body.nadlan-p3d-stage-active.single-nadlan_project .nlfab-btn,
+body.nadlan-p3d-stage-active.single-nadlan_project #nlai,
+body.nadlan-p3d-stage-active.single-nadlan_project #nla-btn {
+  opacity: 0 !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
+  transform: translateX(-120vw) scale(.86) !important;
+}
+
+@media (max-width: 760px) {
+  .nlp3d.nlp3d-premium.is-dual-showroom:not(.nlp3d-facade-dismissed) .nlp3d-stage-wrap {
+    overflow: hidden !important;
+    box-sizing: border-box !important;
+  }
+
+  .nlp3d.nlp3d-premium.is-dual-showroom:not(.nlp3d-facade-dismissed) .nlp3d-scene {
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+  }
+
+  .nlp3d.nlp3d-premium.is-dual-showroom:not(.nlp3d-facade-dismissed) .nlp3d-facade-plane {
+    left: 10px !important;
+    right: 10px !important;
+    width: auto !important;
+    max-width: none !important;
+    transform: none !important;
+    box-sizing: border-box !important;
+  }
+
+  .nlp3d.nlp3d-premium.is-dual-showroom:not(.nlp3d-facade-dismissed) .nlp3d-facade-plane .nlp3d-fp-image {
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+
+  .nlp3d.nlp3d-premium.is-dual-showroom:not(.nlp3d-facade-dismissed) .nlp3d-stage-pick,
+  .nlp3d.nlp3d-premium.is-dual-showroom:not(.nlp3d-facade-dismissed) .nlp3d-mv-hotspot {
+    min-height: 44px !important;
+  }
+}
