@@ -53,6 +53,23 @@ last batch merge: 2026-06-19T18:50Z (#199 ack, #200 rail, #201 camera spec, #202
 
 Codex acknowledges cadence+CoT · 2026-06-19T17:48:19Z
 
+### Codex plan - UTC 2026-06-20T01:05:00Z
+Goal in one sentence: ship v1.68.2 as a Dimri-only premium concept facade release that replaces the missing-facade panel with a packaged bitmap concept while preserving the rule that official CMS facade assets always override prototypes.
+1. [x] Verify the supplied 1.68.2 ZIP/checks/preview and reject the earlier raw-GitHub/Rainbow seed draft. (touches: plugin/package review) (deploy-path: NONE)
+2. [x] Add the Dimri concept facade JPG/WEBP inside the plugin asset tree and inject it only at render time when Dimri has no `project_3d_facade_images`. (touches: plugins/nadlan-config/inc/project-3d.php, plugins/nadlan-config/assets/projects/dimri-yama/*) (deploy-path: PLUGIN)
+3. [x] Keep the project factory aligned by allowing `project_3d_facade_images` in the payload schema and pointing Dimri's payload at the plugin-contained concept asset. (touches: docs/templates/project-showroom-payload.schema.json, assets/projects/dimri-yama/showroom-payload.json, scripts/validate-project-showroom-payload.mjs) (deploy-path: NONE)
+4. [x] Bump plugin/health/cache/manifest surfaces to 1.68.2 and rebuild the ZIP with the canonical builder. (touches: plugins/nadlan-config/*, plugin-dist/*) (deploy-path: PLUGIN)
+5. [x] Run gates: php -l x3, inline JS node --check, payload validator, plugin ZIP builder, release verifier, ZIP asset presence check. (touches: docs/qa/2026-06-20-dimri-yama-facade-1682.md) (deploy-path: NONE)
+6. [x] Push ready-for-review PR for Claude gate; Codex does not merge. (touches: GitHub PR only) (deploy-path: NONE)
+Acceptance gate I will satisfy: live after deploy reports 1.68.2 and project_3d flags `dimri_yama_concept_facade_v1682` + `concept_facade_label_v1682`; Dimri renders a concept bitmap facade instead of the missing-facade panel; no old fake grid is revived; ZIP has 0 backslash paths.
+Blockers I see: live screenshot proof waits until the PR is merged and the plugin is updated on WordPress.
+
+REASONING
+- SAW: live/main 1.68.1 had the honest missing-facade state, and the supplied handoff included a packaged Dimri concept facade asset.
+- THOUGHT: the correct short-term product step is a Dimri-only packaged concept bitmap, not a CSS grid, not a raw-GitHub meta seed, and not touching Rainbow.
+- DID: adopted the plugin-contained asset path, preserved official CMS override behavior, updated the factory schema, and ran release gates.
+- CHECKED: `docs/qa/2026-06-20-dimri-yama-facade-1682.md` records the gate output and honest limitation.
+
 ### Codex plan - UTC 2026-06-20T00:12:00Z
 Goal in one sentence: ship v1.68.1 as a surgical plugin patch that keeps the embedded facade plane inside mobile/tablet viewports and stops calling/rendering a schematic grid as a real facade when no real facade asset exists.
 1. [x] Add one final mobile dual-showroom facade-plane CSS rule and neutralize the old mobile edge nudge. (touches: plugins/nadlan-config/inc/project-3d.php) (deploy-path: PLUGIN)
@@ -118,6 +135,7 @@ REASONING
 ## 6. DONE (proof-backed log — append-only)
 
 - 2026-06-20 · Codex · 1.68.1 fake-facade guard + mobile facade containment prepared for Claude gate · `f65cf4f` · proof: `docs/qa/screenshots/v1681-facade-truth-live-before/` shows live fake-grid failure; ZIP guard/version audit clean locally
+- 2026-06-20 · Codex · 1.68.2 Dimri premium concept facade PR opened ready-for-review · `330738a` · proof: PR #207 https://github.com/The-new-ben/nad-lan-co-il/pull/207 and `docs/qa/2026-06-20-dimri-yama-facade-1682.md`
 
 *(format: `UTC · agent · one line · commit SHA · proof: live URL / screenshot path / healthcheck JSON path`)*
 

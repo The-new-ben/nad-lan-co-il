@@ -13,6 +13,20 @@
   "public_use_policy": "Prototype showroom data. Replace GLB, drawings, prices and inventory with developer-approved material before removing illustrative labels.",
   "meta": {
     "project_3d_image": "",
+    "project_3d_facade_images": [
+      {
+        "building": "DIMRI YAMA",
+        "label": "חזית קונספט פרימיום · להמחשה בלבד",
+        "alt": "הדמיית קונספט מקורית של חזית דמרי ימה לבחירת דירות - לא חומר רשמי של היזם",
+        "src": "https://nad-lan.co.il/wp-content/plugins/nadlan-config/assets/projects/dimri-yama/dimri-yama-premium-facade-concept.jpg",
+        "viewbox": "0 0 1200 900",
+        "kind": "generated-concept",
+        "concept": true,
+        "approved": false,
+        "notice": "הדמיית קונספט מקורית עד לקבלת חזית רשמית מהיזם",
+        "source": "Original generated asset packaged in nadlan-config 1.68.2; replace with official developer elevation when available."
+      }
+    ],
     "project_3d_viewbox": "0 0 1200 900",
     "project_3d_floor_height_m": "3.05",
     "project_3d_ground_elevation_m": "0",
@@ -21,7 +35,7 @@
     "project_3d_model_type": "gltf",
     "project_model_glb": "",
     "project_model_usdz": "",
-    "project_model_poster": "",
+    "project_model_poster": "https://nad-lan.co.il/wp-content/plugins/nadlan-config/assets/projects/dimri-yama/dimri-yama-premium-facade-concept.jpg",
     "project_3d_video_url": "",
     "project_3d_tour_url": "",
     "project_3d_cesium_tiles_url": "",

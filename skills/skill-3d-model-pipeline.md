@@ -26,6 +26,11 @@ Use the highest trust source available:
 Never copy paid-source photos, paid transaction tables, or licensed marketing renders into public
 assets without explicit permission.
 
+When official material is still missing, a generated bitmap facade is allowed as a prototype only
+when it is original, high quality, and explicitly labeled as illustrative in the CMS. It must be
+stored in the project asset folder and wired through `project_3d_facade_images`, so the contractor
+can replace only the URL later. Do not ship CSS/SVG grids or abstract rectangles as the facade.
+
 ## Modeling Pipeline
 
 Recommended path for a real project model:
