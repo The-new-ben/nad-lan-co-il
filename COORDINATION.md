@@ -53,6 +53,23 @@ last batch merge: 2026-06-19T18:50Z (#199 ack, #200 rail, #201 camera spec, #202
 
 Codex acknowledges cadence+CoT · 2026-06-19T17:48:19Z
 
+### Supervisor-confirmed working goal - UTC 2026-06-20T17:10:00Z
+Goal in one sentence: proceed under the existing paused showroom-engine app goal and complete Stage 1 as small, verifiable slices: public trust cleanup first, then Dimri showroom Mapbox/walkaround/facade containment, with screenshots at 1440/768/390 and no fake facade, no silent fallback, no stacked renderer layers.
+Supervisor decision: do not create a duplicate app goal. The paused app goal is a coordination-state issue, not a blocker to implementation unless the app technically prevents file edits, tests, commits, or screenshots.
+1. [ ] Public trust cleanup: remove public WooCommerce/cart/notification/debug leakage from non-shop pages called out in the Stage 1 handoff. (touches: theme/templates/CSS or narrowly scoped plugin/theme filters after inspection) (deploy-path: THEME or PLUGIN, decided after source inspection)
+2. [ ] Verify Join Pro and Sitemap public pages against the Stage 1 checklist: no internal QA copy, no placeholders, no "More posts" leakage, and no incomplete public trust surfaces. (touches: theme/content/CMS docs if needed) (deploy-path: THEME or NONE)
+3. [ ] Dimri showroom runtime QA: capture current 1440/768/390 screenshots and DOM evidence for Mapbox, walkaround/tour, model error state, facade state, and overflow before changing code. (touches: docs/qa/screenshots/stage1-current/*) (deploy-path: NONE)
+4. [ ] Fix only verified source defects: visible Mapbox/tour/model failure states, mobile docking/overflow, and real asset-state handling. Do not add CSS stacking or fake facades. (touches: source file identified by QA, with one clear owner) (deploy-path: PLUGIN or THEME)
+5. [ ] Re-run visual + technical gates: Playwright screenshots at 1440/768/390, no horizontal overflow, console/network errors recorded, php/js/ZIP checks if plugin touched, and live healthcheck after deploy. (touches: docs/qa/screenshots/stage1-after/* and docs/qa report) (deploy-path: NONE after deploy)
+Acceptance gate I will satisfy: each slice has screenshots or command proof committed in git; no claim of "fixed" without after-proof; no fake facade or silent fallback; no baseline screenshot presented as proof-of-fix.
+Blockers I see: none for local inspection, screenshots, planning, or source edits. If Chrome, GitHub, install, API, or deploy risks appear, I will escalate to the supervising ChatGPT thread using the COORDINATION.md section 15 format before moving to the next step.
+
+REASONING
+- SAW: supervising ChatGPT responded visibly: proceed under the existing paused goal, do not create a duplicate app goal, and continue Stage 1 immediately.
+- THOUGHT: the achievable goal must be Stage 1, not the full "all projects in the world" engine in one pass.
+- DID: recorded the working goal and gates here so both agents have the same target.
+- CHECKED: the existing app goal is paused but still present; creating a duplicate would be dishonest.
+
 ### Codex plan - UTC 2026-06-20T01:05:00Z
 Goal in one sentence: ship v1.68.2 as a Dimri-only premium concept facade release that replaces the missing-facade panel with a packaged bitmap concept while preserving the rule that official CMS facade assets always override prototypes.
 1. [x] Verify the supplied 1.68.2 ZIP/checks/preview and reject the earlier raw-GitHub/Rainbow seed draft. (touches: plugin/package review) (deploy-path: NONE)
