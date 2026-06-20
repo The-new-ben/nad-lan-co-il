@@ -214,6 +214,9 @@ Before shipping a project:
   The report must save bounding boxes for the key elements, document horizontal overflow, parent
   containment failures, overlap areas and minimum tap-target sizes. If the geometry report says a
   control overlaps the facade, form or footer, the screenshot is not allowed to pass by eye.
+- For CSS-only containment fixes that are not deployed yet, run the same geometry harness with
+  `--inject-css` against the live page and commit the screenshots/report. This proves the intended
+  rectangle behavior before packaging. After deploy, rerun the same harness without injection.
 
 ## Apartment Cell Selector Standard
 
