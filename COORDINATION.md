@@ -266,3 +266,29 @@ Verified from live HTML of `/projects/dimri-yama-sde-dov/` (server-side; Codex m
 - *(M11 reminder: PR must include screenshots at 1440 / 768 / 390 under `docs/qa/screenshots/v1676-camera-facade/`.)*
 - **2026-06-19 — Functional facade (polygons not squares, compounds, click→views+info)** → `docs/design/2026-06-19-functional-facade-polygons-compounds-spec.md` · target **1.68.0** · research-cited (Interactive Real Estate, Render Vision, VisEngine). Sequence: after 1.67.6.
 - Engelmore & Morgan, *Blackboard Systems* (1988) — classic foundation; see also Hayes-Roth, *A blackboard architecture for control* (1985).
+
+---
+
+## 15. SUPERVISING CHATGPT STEP CHECK - no silent stall *(owner directive 2026-06-20)*
+
+The earlier 5-minute schedule was deleted. The rule is now **step-based**, not clock-based.
+
+Supervising ChatGPT conversation:
+
+`https://chatgpt.com/c/6a35c375-9b18-83eb-8ee5-0a8ceb6a7cb4`
+
+Rule: Codex is not allowed to stop work silently. Before moving to each next implementation / QA / deploy / PR step, Codex must check whether there is any blocker, uncertainty, missing permission, tool issue, install need, API problem, build failure, unclear architecture choice, deployment risk, or lack of progress. If yes, Codex must pause only long enough to prepare a precise escalation for the supervising ChatGPT thread.
+
+Escalation format:
+
+```
+SUPERVISOR ESCALATION
+- Attempted:
+- Exact blocker:
+- Evidence:
+- Options:
+- Recommended next action:
+- Needed to unblock:
+```
+
+If there is no blocker, Codex records a concise step-transition note: current step, latest checked artifact, and next action.
