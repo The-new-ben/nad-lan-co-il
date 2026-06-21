@@ -1,4 +1,296 @@
-﻿keyword,language,cluster,subcluster,audience,country_market,intent,funnel_stage,priority,recommended_page_type,suggested_slug,primary_kpi,content_angle,trust_requirement,verification_flag,notes
+Report 2 — Keyword Master Universe + Workbook Division Plan
+
+Plan-only. ~190 keyword rows across 9 clusters. All volumes/KD/CPC deliberately omitted — they belong in Report 3 (Semrush HE) and Report 4 (Semrush EN/intl) so we don't burn credits on uncalibrated guesses. Every row carries a verification flag; nothing here is publish-ready until Stage 1 trust cleanup passes.
+
+
+
+A. Strategy Summary — What This Universe Is Trying To Win
+
+NadLan's keyword universe is built to win three compounding positions at once:
+
+
+
+
+
+Trusted Israeli real-estate intelligence layer — own informational + comparison + due-diligence queries that Yad2/Madlan under-serve (urban renewal, tax/mortgage explainers, project verification, professional vetting). This is where E-E-A-T + AI-search (AEO) wins; it's the moat.
+
+
+
+Programmatic local marketplace surface — city × neighborhood × intent templates (buy / rent / new projects / yields) that scale once data + trust are real. Held at P2 until the trust gate passes; building these early would replay the fake-facade failure at city scale.
+
+
+
+International investor funnel — English-language, high-CPC, high-LTV queries (Tel Aviv apartments, foreign-buyer tax, Sde Dov, Aliyah real estate). Smaller volume, outsized commercial value; requires LEGAL_REVIEW and an EN surface that doesn't exist yet.
+
+Cross-cutting wins: AEO (questions in HE + EN structured as FAQPage / HowTo), tool-led acquisition (calculators with honest methodology), and a professional directory that is vetted, not seeded with demos.
+
+What we are explicitly NOT trying to win in v1: listing-level long-tail ("3 חדרים רמת אביב להשכרה 4500 שח") — that is Yad2's commodity layer and requires real supply before SEO.
+
+
+
+B. Workbook Tab Plan (Excel)
+
+Workbook file: audits/keyword-universe/nadlan-keyword-workbook.xlsx.
+
+
+
+
+
+
+
+Tab
+
+
+
+Purpose
+
+
+
+Source
+
+
+
+
+
+00_README
+
+
+
+Legend, flags, color codes, owners, refresh cadence, link to Report 0/1/2
+
+
+
+Manual
+
+
+
+
+
+01_Master
+
+
+
+Full universe (this CSV). Single source of truth. Never edit downstream tabs — filter from here.
+
+
+
+Section C CSV
+
+
+
+
+
+02_HE_Buyer_Seller
+
+
+
+Cluster 1 rows
+
+
+
+Filter cluster=buyer_seller_core
+
+
+
+
+
+03_Projects_Developers
+
+
+
+Cluster 2 rows
+
+
+
+Filter cluster=projects_developers
+
+
+
+
+
+04_Intl_Investor_EN
+
+
+
+Cluster 3 rows
+
+
+
+Filter cluster=intl_investor
+
+
+
+
+
+05_Tools_Calculators
+
+
+
+Cluster 4 rows
+
+
+
+Filter cluster=tools_calculators
+
+
+
+
+
+06_Professionals
+
+
+
+Cluster 5 rows
+
+
+
+Filter cluster=professionals_directory
+
+
+
+
+
+07_Urban_Renewal
+
+
+
+Cluster 6 rows
+
+
+
+Filter cluster=urban_renewal
+
+
+
+
+
+08_Showroom_3D
+
+
+
+Cluster 7 rows
+
+
+
+Filter cluster=showroom_3d
+
+
+
+
+
+09_Trust_Comparison
+
+
+
+Cluster 8 rows
+
+
+
+Filter cluster=trust_comparison
+
+
+
+
+
+10_Local_Programmatic
+
+
+
+Cluster 9 rows + city/neighborhood template grid
+
+
+
+Filter cluster=local_programmatic
+
+
+
+
+
+11_Semrush_HE
+
+
+
+To be filled in Report 3: volume, KD, CPC, SERP features (HE database il)
+
+
+
+Semrush
+
+
+
+
+
+12_Semrush_EN_Intl
+
+
+
+To be filled in Report 4: EN-language volumes (us, gb, il)
+
+
+
+Semrush
+
+
+
+
+
+13_Hub_Spoke_Map
+
+
+
+After Semrush: hub URL ← spoke URLs, cannibalization check
+
+
+
+Manual + Report 7
+
+
+
+
+
+14_Editorial_Calendar
+
+
+
+Sequenced publishing plan, owner, status, trust gate
+
+
+
+Manual + Report 9
+
+
+
+
+
+15_Legal_Review_Queue
+
+
+
+All LEGAL_REVIEW rows pulled out for counsel sign-off
+
+
+
+Filter on flag
+
+
+
+
+
+16_Asset_Request_Queue
+
+
+
+All REQUIRES_OFFICIAL_ASSET rows — developer/marketer outreach list
+
+
+
+Filter on flag
+
+
+
+C. Master CSV
+
+keyword,language,cluster,subcluster,audience,country_market,intent,funnel_stage,priority,recommended_page_type,suggested_slug,primary_kpi,content_angle,trust_requirement,verification_flag,notes
 דירות למכירה,he,buyer_seller_core,buy_general,buyer,IL,transactional,decision,P1,hub,/buy,organic_sessions,national buy hub linking to city hubs,real listings or honest empty-state,NEEDS_VERIFICATION,Yad2 territory; do not launch without supply
 דירות למכירה תל אביב,he,buyer_seller_core,buy_city,buyer,IL,transactional,decision,P1,city_hub,/buy/tel-aviv,organic_sessions,Tel Aviv buy hub with neighborhoods,real supply,NEEDS_VERIFICATION,
 דירות למכירה רמת גן,he,buyer_seller_core,buy_city,buyer,IL,transactional,decision,P1,city_hub,/buy/ramat-gan,organic_sessions,,real supply,NEEDS_VERIFICATION,
@@ -121,7 +413,7 @@ purchase tax calculator israel,en,intl_investor,intl_tools,investor,INTL,commerc
 התחדשות עירונית רמת גן,he,urban_renewal,renewal_city,owner,IL,local,consideration,P2,city_hub,/urban-renewal/ramat-gan,organic_sessions,,municipal data,OFFICIAL_SOURCE_REQUIRED,
 היתר בניה,he,urban_renewal,permits,owner,IL,informational,consideration,P1,guide,/guides/building-permit,organic_sessions,,municipal + attorney,LEGAL_REVIEW|OFFICIAL_SOURCE_REQUIRED,
 תוכנית בניין עיר,he,urban_renewal,planning,owner,IL,informational,consideration,P1,guide,/guides/city-master-plan,organic_sessions,,municipal,OFFICIAL_SOURCE_REQUIRED,
-"תב""ע",he,urban_renewal,planning,owner,IL,informational,consideration,P1,guide,/guides/tabaa,organic_sessions,,municipal,OFFICIAL_SOURCE_REQUIRED,
+תב"ע,he,urban_renewal,planning,owner,IL,informational,consideration,P1,guide,/guides/tabaa,organic_sessions,,municipal,OFFICIAL_SOURCE_REQUIRED,
 ועדה מקומית לתכנון ובניה,he,urban_renewal,planning,owner,IL,informational,consideration,P2,guide,/guides/local-planning-committee,organic_sessions,,municipal,OFFICIAL_SOURCE_REQUIRED,
 חוק התחדשות עירונית,he,urban_renewal,renewal_law,owner,IL,informational,consideration,P2,guide,/urban-renewal/law,organic_sessions,,attorney-reviewed,LEGAL_REVIEW,
 דייר סרבן,he,urban_renewal,pinui_binui_rights,owner,IL,informational,consideration,P1,guide,/urban-renewal/refusing-tenant,organic_sessions,,attorney-reviewed,LEGAL_REVIEW,
@@ -138,7 +430,7 @@ interactive map israel real estate,en,showroom_3d,map_discovery,investor,INTL,co
 האתר הטוב ביותר לחיפוש דירה,he,trust_comparison,platform_compare,buyer,IL,comparison,consideration,P1,guide,/compare/best-real-estate-sites,organic_sessions,,editorial,NEEDS_VERIFICATION,
 ביקורות יד2,he,trust_comparison,platform_reviews,buyer,IL,due_diligence,consideration,P2,guide,/reviews/yad2,organic_sessions,,editorial,NEEDS_VERIFICATION,
 ביקורות מדלן,he,trust_comparison,platform_reviews,buyer,IL,due_diligence,consideration,P2,guide,/reviews/madlan,organic_sessions,,editorial,NEEDS_VERIFICATION,
-"הונאות נדל""ן",he,trust_comparison,scams,buyer,IL,due_diligence,awareness,P0,guide,/guides/real-estate-scams,organic_sessions,top scam patterns,attorney + police data,LEGAL_REVIEW,
+הונאות נדל"ן,he,trust_comparison,scams,buyer,IL,due_diligence,awareness,P0,guide,/guides/real-estate-scams,organic_sessions,top scam patterns,attorney + police data,LEGAL_REVIEW,
 הונאת שכירות,he,trust_comparison,scams,renter,IL,due_diligence,awareness,P1,guide,/guides/rental-scams,organic_sessions,,editorial,LEGAL_REVIEW,
 איך לבדוק קבלן,he,trust_comparison,due_diligence,buyer,IL,due_diligence,decision,P0,guide,/guides/vet-developer,organic_sessions,,Registrar of Contractors,LEGAL_REVIEW|OFFICIAL_SOURCE_REQUIRED,
 פנקס קבלנים,he,trust_comparison,due_diligence,buyer,IL,navigational,decision,P1,guide,/guides/contractor-registry,organic_sessions,,Registrar of Contractors,OFFICIAL_SOURCE_REQUIRED,
@@ -194,7 +486,7 @@ how to get an israeli mortgage,en,intl_investor,intl_finance,investor,INTL,infor
 israeli property tax for foreigners,en,intl_investor,intl_tax,investor,INTL,informational,consideration,P1,guide,/en/tax/foreign-property-tax,organic_sessions,,attorney + CPA,LEGAL_REVIEW|OFFICIAL_SOURCE_REQUIRED,
 inheritance tax israel real estate,en,intl_investor,intl_tax,investor,INTL,informational,consideration,P2,guide,/en/tax/inheritance,organic_sessions,,attorney + CPA,LEGAL_REVIEW|OFFICIAL_SOURCE_REQUIRED,
 power of attorney israel real estate,en,intl_investor,intl_process,investor,INTL,informational,consideration,P2,guide,/en/process/power-of-attorney,organic_sessions,,attorney,LEGAL_REVIEW,
-"בורסת נדל""ן",he,buyer_seller_core,category,investor,IL,informational,awareness,P3,guide,/guides/real-estate-market,organic_sessions,,editorial,NEEDS_VERIFICATION,
+בורסת נדל"ן,he,buyer_seller_core,category,investor,IL,informational,awareness,P3,guide,/guides/real-estate-market,organic_sessions,,editorial,NEEDS_VERIFICATION,
 קרן ריט,he,buyer_seller_core,investing,investor,IL,informational,awareness,P2,guide,/guides/reit,organic_sessions,,licensed advisor,LEGAL_REVIEW,
 קבוצת רכישה,he,projects_developers,group_purchase,buyer,IL,informational,consideration,P1,guide,/guides/purchase-group,organic_sessions,,attorney,LEGAL_REVIEW,
 מיסוי קבוצת רכישה,he,projects_developers,group_purchase,buyer,IL,informational,consideration,P2,guide,/guides/purchase-group-tax,organic_sessions,,CPA + attorney,LEGAL_REVIEW|OFFICIAL_SOURCE_REQUIRED,
@@ -224,3 +516,369 @@ arnona tel aviv,en,intl_investor,intl_ownership,investor,INTL,informational,cons
 cost of living tel aviv,en,intl_investor,intl_overview,investor,INTL,informational,awareness,P2,guide,/en/lifestyle/cost-of-living-tel-aviv,organic_sessions,,CBS + survey,OFFICIAL_SOURCE_REQUIRED,
 best neighborhoods tel aviv,en,intl_investor,intl_neighborhoods,investor,INTL,informational,consideration,P1,guide,/en/neighborhoods/tel-aviv,organic_sessions,Anglo-relevant,editorial + data,NEEDS_VERIFICATION,
 best neighborhoods jerusalem,en,intl_investor,intl_neighborhoods,investor,INTL,informational,consideration,P2,guide,/en/neighborhoods/jerusalem,organic_sessions,,editorial,NEEDS_VERIFICATION,
+
+(Total rows: ~190.)
+
+
+
+D. Division Instructions — How To Split Master Into Tabs + Color/Flag Rows
+
+Split rule: never duplicate rows. Each cluster tab (02_… through 10_…) is a filtered view of 01_Master by the cluster column — implemented as a real Excel filter, a FILTER() formula in modern Excel, or a power-query pull. If a row's cluster changes, edit 01_Master; views refresh.
+
+Row-level conditional formatting (apply on 01_Master, inherited by tabs):
+
+
+
+
+
+
+
+Condition
+
+
+
+Fill color
+
+
+
+Meaning
+
+
+
+
+
+priority = P0
+
+
+
+Red #FCA5A5
+
+
+
+Highest leverage; ship first after trust gate
+
+
+
+
+
+priority = P1
+
+
+
+Amber #FCD34D
+
+
+
+Next wave
+
+
+
+
+
+priority = P2
+
+
+
+Green #A7F3D0
+
+
+
+Scale layer
+
+
+
+
+
+priority = P3
+
+
+
+Gray #E5E7EB
+
+
+
+Long-tail / template expansion
+
+
+
+
+
+verification_flag contains LEGAL_REVIEW
+
+
+
+Left border red #B91C1C
+
+
+
+Blocked until counsel signs off
+
+
+
+
+
+verification_flag contains REQUIRES_OFFICIAL_ASSET
+
+
+
+Left border purple #7C3AED
+
+
+
+Blocked until developer/marketer/registry asset received
+
+
+
+
+
+verification_flag contains OFFICIAL_SOURCE_REQUIRED
+
+
+
+Left border blue #1D4ED8
+
+
+
+Blocked until CBS/Tax/BoI/municipal source linked
+
+
+
+
+
+recommended_page_type = tool
+
+
+
+Cell background language col cyan #CFFAFE
+
+
+
+Calculator — needs methodology + disclaimer
+
+
+
+
+
+cluster = local_programmatic AND priority ≤ P2
+
+
+
+Strikethrough until trust gate passes
+
+
+
+Programmatic launch requires real supply
+
+Status column to add downstream (in Report 7+): status ∈ {backlog, drafting, review, legal, ready, published, holding}. Don't add yet; keep 01_Master clean.
+
+Owner column to add in 14_Editorial_Calendar: owner_editorial, owner_legal, owner_data, owner_dev.
+
+Refresh cadence: Semrush HE tab refreshed monthly; EN tab quarterly. Master keyword list reviewed every release of Report 7 (hub map).
+
+
+
+E. Top 25 Immediate SEO Content Opportunities (after Stage 1 trust cleanup passes)
+
+Ranked by leverage (intent strength × feasibility × trust-readiness × commercial value). All require their listed flags resolved before publish.
+
+
+
+
+
+מחשבון משכנתא — flagship calculator, repeat-traffic + AEO. (LEGAL_REVIEW)
+
+
+
+מחשבון מס רכישה — high transactional + first/second-home brackets. (LEGAL_REVIEW + OFFICIAL_SOURCE_REQUIRED)
+
+
+
+מחשבון מס שבח — seller-side counterpart. (LEGAL_REVIEW + OFFICIAL_SOURCE_REQUIRED)
+
+
+
+תהליך קניית דירה — pillar guide, internal-link spine. (LEGAL_REVIEW)
+
+
+
+תמא 38 — pillar; routes to TAMA 38/1, 38/2, rights, tax. (LEGAL_REVIEW)
+
+
+
+פינוי בינוי — pillar; routes to rights, refusing-tenant, tax. (LEGAL_REVIEW)
+
+
+
+התחדשות עירונית — hub above TAMA + Pinui-Binui pillars. (LEGAL_REVIEW)
+
+
+
+כמה שווה הדירה שלי — existing estimator URL, fix per Report 1 then promote.
+
+
+
+איך לבדוק קבלן — high-trust due-diligence; Registrar of Contractors integration. (LEGAL_REVIEW + OFFICIAL_SOURCE_REQUIRED)
+
+
+
+הונאות נדל"ן — definitive Hebrew scams guide; AEO + brand-trust. (LEGAL_REVIEW)
+
+
+
+מס רכישה דירה ראשונה — companion to calculator. (LEGAL_REVIEW + OFFICIAL_SOURCE_REQUIRED)
+
+
+
+מס רכישה דירה שניה — investor-intent traffic. (LEGAL_REVIEW + OFFICIAL_SOURCE_REQUIRED)
+
+
+
+זיכרון דברים דירה — transactional moment; download template. (LEGAL_REVIEW)
+
+
+
+חוזה שכירות לדוגמא — high-volume template download → email capture. (LEGAL_REVIEW)
+
+
+
+מחירי דירות 2026 — annual market report; PR + backlink magnet. (OFFICIAL_SOURCE_REQUIRED)
+
+
+
+שוק הנדלן בישראל — evergreen overview pairing with #15. (OFFICIAL_SOURCE_REQUIRED)
+
+
+
+buying property in israel — EN intl pillar; opens international funnel. (LEGAL_REVIEW)
+
+
+
+foreign buyer purchase tax israel — highest commercial intent EN. (LEGAL_REVIEW + OFFICIAL_SOURCE_REQUIRED)
+
+
+
+mortgage in israel for foreigners — EN finance pillar. (LEGAL_REVIEW)
+
+
+
+tel aviv apartments for sale (EN) — intl city hub; needs real supply.
+
+
+
+purchase tax calculator israel (EN) — EN calculator; high commercial intent. (LEGAL_REVIEW + OFFICIAL_SOURCE_REQUIRED)
+
+
+
+פרויקטים חדשים שדה דב — existing flagship area; only after Sde Dov asset gate. (REQUIRES_OFFICIAL_ASSET + OFFICIAL_SOURCE_REQUIRED)
+
+
+
+מחשבון תשואה דירה — investor calculator, repeat traffic.
+
+
+
+יד2 או מדלן — high-intent comparison; brand-defining if editorial integrity holds.
+
+
+
+הגרלות דירות (Mehir LaMishtaken lottery list) — recurring high-intent traffic. (OFFICIAL_SOURCE_REQUIRED)
+
+
+
+F. Keywords That Must NOT Be Targeted Yet
+
+Blocked on Stage 1 trust cleanup (Report 1):
+
+
+
+
+
+All cluster=local_programmatic rows (P2/P3 templates) — programmatic scaling on top of a leaky site multiplies failure.
+
+
+
+All P1 city דירות למכירה {city} / דירות להשכרה {city} rows — Yad2-class queries with no real supply guarantee a bounce/quality-signal loss.
+
+
+
+פרויקט דמרי שדה דב, פרויקט רינבו תל אביב — must pass the showroom state-machine + REQUIRES_OFFICIAL_ASSET gate before any promotion or schema work.
+
+Blocked on LEGAL_REVIEW (must not publish without counsel sign-off):
+
+
+
+
+
+All tax queries: מס רכישה …, מס שבח …, מחשבון מס רכישה, מחשבון מס שבח, איך לחסוך במס שבח, פטור ממס שבח דירה יחידה, and EN equivalents (foreign buyer purchase tax …, inheritance tax israel real estate).
+
+
+
+All mortgage explainers and calculators: מחשבון משכנתא, מחשבון יכולת החזר, מחשבון עמלת פירעון מוקדם, מסלולי משכנתא, israeli mortgage calculator english, how to get a mashkanta.
+
+
+
+All urban-renewal pillars and sub-guides: תמא 38 …, פינוי בינוי …, דייר סרבן, היטל השבחה, דמי הסכמה, חכירה מהוונת, טופס 4, רישום בית משותף.
+
+
+
+All buyer-rights / contract content: זכויות קונה דירה מקבלן, זיכרון דברים דירה, ביטול עסקת דירה, חוזה שכירות לדוגמא, דירה עם עיקול.
+
+
+
+All EN intl legal/tax/finance pages (/en/tax/*, /en/mortgage/*, /en/legal/*, /en/process/power-of-attorney).
+
+
+
+Comparative / "recommended" professional directories (מתווכים מומלצים, יועץ משכנתאות מומלץ, דירוג חברות בניה) — methodology + defamation risk.
+
+Blocked on REQUIRES_OFFICIAL_ASSET (developer/registry data):
+
+
+
+
+
+All cluster=projects_developers project- and developer-specific pages.
+
+
+
+All professionals_directory rows without verified license/bar/registry data — including city templates.
+
+
+
+showroom_3d rows depending on real tour or render assets (no concept-as-official fallback).
+
+Blocked on OFFICIAL_SOURCE_REQUIRED (CBS / Tax Authority / Bank of Israel / Land Registry / Housing Ministry / ILA / municipal):
+
+
+
+
+
+All market-data pages (מחירי דירות 2026, מדד מחירי דירות, שוק הנדלן בישראל, city price/yield/rent-price reports, EN market reports).
+
+
+
+הגרלות דירות, מחיר למשתכן, דיור בהישג יד.
+
+
+
+ריבית משכנתא היום — daily data dependency.
+
+
+
+נסח טאבו אונליין, פנקס קבלנים, מנהל מקרקעי ישראל reference pages.
+
+Brand-risk / out of scope for v1:
+
+
+
+
+
+Lead-gen pages for קבוצת רכישה until partnership + legal model exists (LEGAL_REVIEW).
+
+
+
+nefesh b'nefesh real estate — do not target until partnership / disclosure is real.
+
+
+
+Any "best X in Israel" superlative without published methodology — exposes us to the same trust collapse we're trying to solve.
