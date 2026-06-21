@@ -1,0 +1,126 @@
+# Repository Map - NadLan
+
+## Root
+
+`C:\Users\pro\Documents\websites\nad-lan-co-il-showroom-1680`
+
+The repo is a WordPress block theme plus a custom plugin. It is not a typical single Node app. The root is the active theme source. The plugin lives inside `plugins/nadlan-config/`.
+
+## Important Folders
+
+### Theme source at repo root
+
+- `functions.php` - active theme hooks, public trust cleanup filters, asset enqueue/dequeue logic, templates glue. Recent Stage 1 trust work is here.
+- `style.css` - theme stylesheet and WordPress theme header.
+- `style.min.css` - generated minified CSS from the npm build script.
+- `theme.json` - WordPress block theme settings.
+- `templates/` - block theme templates.
+- `parts/` - block theme template parts.
+- `patterns/` - block patterns.
+- `styles/` - theme style variations.
+- `assets/` - theme/project assets, including per-project materials under `assets/projects/`.
+
+### Plugin
+
+- `plugins/nadlan-config/nadlan-config.php` - plugin entry point, module loader, primary healthcheck route.
+- `plugins/nadlan-config/inc/` - plugin modules. Key modules:
+  - `project-3d.php` - showroom/model/facade runtime, CMS fields, model-viewer, Mapbox/view layer, buyer selectors.
+  - `health.php` - reliability health endpoint `/wp-json/nadlan/v1/health`.
+  - `schema.php` - JSON-LD/schema output.
+  - `lead-ledger.php`, `lead-routing.php`, `whatsapp-lead-ingestion.php`, `lead-e2e.php`, `lead-ai-qualify.php`, `lead-nurture.php` - lead funnel.
+  - `compound-map.php`, `compounds.php` - compound/neighborhood/project mapping.
+  - `reviews.php` - review rendering/schema.
+  - `project-page-assembly.php` - project page seed/assembly logic.
+- `plugins/nadlan-config/assets/` - plugin-contained assets. Use carefully; do not bloat plugin ZIP with large project media unless intentionally packaged.
+
+### Plugin distribution
+
+- `plugin-dist/nadlan-config.json` - self-update manifest for WordPress updater. Version and `download_url` must match the ZIP.
+- `plugin-dist/nadlan-config-<version>.zip` - generated plugin releases. Build with `scripts/build-plugin-zip.py`, never by hand on Windows.
+
+### Project assets/data
+
+- `assets/projects/rainbow-tel-aviv/` - Rainbow prototype materials and payloads.
+- `assets/projects/dimri-yama/` - Dimri Yama materials and showroom payload.
+- `docs/templates/project-showroom-payload.schema.json` - JSON schema for project showroom payloads.
+- `assets/projects/<slug>/showroom-payload.json` - intended source data for cloneable project pages.
+
+### Documentation and coordination
+
+- `AGENTS.md` - global agent contract. Read first.
+- `COORDINATION.md` - shared Claude/Codex billboard. Currently useful but has stale sections; confirm with Git/live state.
+- `BACKLOG.md` - older priority queue and shipped log.
+- `START-HERE.md` - older project orientation; partially stale.
+- `skills/` - reusable project skills and mistake catalog.
+- `docs/design/` - product/design specs.
+- `docs/qa/` - QA reports, screenshots, release gates.
+- `docs/codex-handoff/` - this transfer packet.
+
+### Scripts
+
+- `scripts/build-plugin-zip.py` - canonical plugin ZIP builder. It rejects backslash-path poison.
+- `scripts/qa-stage1-public-trust.mjs` - Chrome/CDP QA harness for public trust pages.
+- Other `scripts/qa-*` files - visual and release gates; inspect before use.
+- `scripts/validate-project-showroom-payload.mjs` - validates showroom payloads.
+
+## Entry Points
+
+### Public site
+
+- `https://nad-lan.co.il/`
+- `https://nad-lan.co.il/join-pro/`
+- `https://nad-lan.co.il/sitemap/`
+- `https://nad-lan.co.il/professionals/`
+- `https://nad-lan.co.il/projects/rainbow-tel-aviv/`
+- `https://nad-lan.co.il/projects/dimri-yama-sde-dov/`
+
+### Health endpoints
+
+- Plugin status: `https://nad-lan.co.il/wp-json/nadlan/v1/healthcheck`
+- Reliability status: `https://nad-lan.co.il/wp-json/nadlan/v1/health`
+
+### Admin/deploy
+
+- WordPress admin updates the `nadlan-config` plugin from the manifest/ZIP.
+- UPress server Git pull deploys theme files.
+
+## Data And Content Sources
+
+- WordPress database: project posts, post meta, Yoast meta, lead CPTs, settings.
+- `assets/projects/<slug>/showroom-payload.json`: intended project showroom seed data.
+- Public project/developer sources for factual copy and project data.
+- data.gov.il imports for professionals and urban renewal/project directory data.
+- Mapbox for view/map surfaces, configured through WordPress/plugin settings.
+- OpenAI key stored in WordPress settings, not in repo.
+- WhatsApp lead bridge secret may be stored in WordPress settings, not in repo.
+
+## Generated Artifacts Vs Source Of Truth
+
+Source of truth:
+
+- PHP/JS/CSS source files.
+- `assets/projects/<slug>/showroom-payload.json`.
+- `docs/design/`, `skills/`, and committed QA reports.
+- `plugin-dist/nadlan-config.json` manifest.
+
+Generated or deploy artifacts:
+
+- `plugin-dist/nadlan-config-<version>.zip` - generated but committed for the updater.
+- `style.min.css` - generated by npm build from `style.css`.
+- `docs/qa/screenshots/**` - generated QA evidence, intentionally committed when proving visual work.
+
+Do not commit:
+
+- `node_modules/`
+- `.env` or credential files
+- browser profiles, cookies, session stores
+- local cache folders
+- raw downloaded contractor/private materials unless approved
+- local `Downloads` files unless copied intentionally into repo
+
+## Important But Often Misleading Files
+
+- `START-HERE.md` and parts of `skills/nadlan-config-plugin.md` are historically useful but version-stale.
+- `COORDINATION.md` has critical protocol/history but the "NOW" section may be stale; verify with `git fetch` and live healthcheck.
+- Old worktrees under `.codex-tmp` and `*-repair` exist on the original PC. They are history, not source of truth.
+- Stale draft PRs (#181, #186, #188 and others) may conflict with current main. Do not merge without rebasing and reviewing.
