@@ -53,6 +53,40 @@ last batch merge: 2026-06-19T18:50Z (#199 ack, #200 rail, #201 camera spec, #202
 
 Codex acknowledges cadence+CoT · 2026-06-19T17:48:19Z
 
+### Supervisor-confirmed working goal - UTC 2026-06-20T17:10:00Z
+Goal in one sentence: proceed under the existing paused showroom-engine app goal and complete Stage 1 as small, verifiable slices: public trust cleanup first, then Dimri showroom Mapbox/walkaround/facade containment, with screenshots at 1440/768/390 and no fake facade, no silent fallback, no stacked renderer layers.
+Supervisor decision: do not create a duplicate app goal. The paused app goal is a coordination-state issue, not a blocker to implementation unless the app technically prevents file edits, tests, commits, or screenshots.
+1. [ ] Public trust cleanup: remove public WooCommerce/cart/notification/debug leakage from non-shop pages called out in the Stage 1 handoff. (touches: theme/templates/CSS or narrowly scoped plugin/theme filters after inspection) (deploy-path: THEME or PLUGIN, decided after source inspection)
+2. [ ] Verify Join Pro and Sitemap public pages against the Stage 1 checklist: no internal QA copy, no placeholders, no "More posts" leakage, and no incomplete public trust surfaces. (touches: theme/content/CMS docs if needed) (deploy-path: THEME or NONE)
+3. [ ] Dimri showroom runtime QA: capture current 1440/768/390 screenshots and DOM evidence for Mapbox, walkaround/tour, model error state, facade state, and overflow before changing code. (touches: docs/qa/screenshots/stage1-current/*) (deploy-path: NONE)
+4. [ ] Fix only verified source defects: visible Mapbox/tour/model failure states, mobile docking/overflow, and real asset-state handling. Do not add CSS stacking or fake facades. (touches: source file identified by QA, with one clear owner) (deploy-path: PLUGIN or THEME)
+5. [ ] Re-run visual + technical gates: Playwright screenshots at 1440/768/390, no horizontal overflow, console/network errors recorded, php/js/ZIP checks if plugin touched, and live healthcheck after deploy. (touches: docs/qa/screenshots/stage1-after/* and docs/qa report) (deploy-path: NONE after deploy)
+Acceptance gate I will satisfy: each slice has screenshots or command proof committed in git; no claim of "fixed" without after-proof; no fake facade or silent fallback; no baseline screenshot presented as proof-of-fix.
+Blockers I see: none for local inspection, screenshots, planning, or source edits. If Chrome, GitHub, install, API, or deploy risks appear, I will escalate to the supervising ChatGPT thread using the COORDINATION.md section 15 format before moving to the next step.
+
+REASONING
+- SAW: supervising ChatGPT responded visibly: proceed under the existing paused goal, do not create a duplicate app goal, and continue Stage 1 immediately.
+- THOUGHT: the achievable goal must be Stage 1, not the full "all projects in the world" engine in one pass.
+- DID: recorded the working goal and gates here so both agents have the same target.
+- CHECKED: the existing app goal is paused but still present; creating a duplicate would be dishonest.
+
+### Codex Stage 1 public trust cleanup - UTC 2026-06-20T21:20:00Z
+Goal in one sentence: remove public trust leaks from the non-commerce pages named by the supervisor before any Dimri showroom work.
+1. [x] Baseline browser QA captured at 1440/768/390 for `/`, `/join-pro/`, `/sitemap/`, `/professionals/`, and `/projects/dimri-yama-sde-dov/`. (proof: `docs/qa/screenshots/stage1-public-trust-before/`) (deploy-path: NONE)
+2. [x] Source cleanup implemented in theme: hide WooCommerce blocks/notices on non-commerce public pages while preserving cart/checkout/account/shop/product screens. (touches: `functions.php`) (deploy-path: THEME)
+3. [x] Source cleanup implemented in theme: remove internal WooCommerce/coming-soon wording from `/join-pro/` public copy. (touches: `functions.php`) (deploy-path: THEME)
+4. [x] Source cleanup implemented in theme: suppress `More posts` pattern on project/property/professional singles and remove duplicate page-title H1 on `/join-pro/` and `/sitemap/`. (touches: `functions.php`) (deploy-path: THEME)
+5. [x] QA harness added/refined to report raw and visible leak counts with full-page screenshots. (touches: `scripts/qa-stage1-public-trust.mjs`) (deploy-path: NONE)
+6. [ ] True after screenshots wait for merge + UPress server git pull + cache clear, because this is a theme release and the QA target is the live site. Do not present baseline screenshots as proof-of-fix.
+Acceptance gate I will satisfy before handing off: `php -l functions.php`, `node --check scripts/qa-stage1-public-trust.mjs`, `git diff --check`, baseline screenshots committed, and PR text explicitly states the post-merge theme-pull requirement for after screenshots.
+Blockers I see: none for PR preparation. Live after-proof requires the irreversible deploy path: Claude merge, then UPress server git pull/cache clear.
+
+REASONING
+- SAW: baseline report shows 15 screenshots, visibleLeakCount 120, visible mini-cart/button leaks on all target pages, `/join-pro/` public WooCommerce/coming-soon wording, duplicate H1s on `/join-pro/` and `/sitemap/`, and `More posts` on Dimri.
+- THOUGHT: the cleanest trust slice is source-level removal of public Woo chrome/copy on non-commerce pages, not CSS hiding, while preserving actual commerce pages.
+- DID: implemented the theme source filters and copy cleanup; did not touch Dimri showroom/facade/Mapbox.
+- CHECKED: `php -l functions.php`, `node --check scripts/qa-stage1-public-trust.mjs`, and refreshed baseline screenshot QA all ran.
+
 ### Codex plan - UTC 2026-06-20T01:05:00Z
 Goal in one sentence: ship v1.68.2 as a Dimri-only premium concept facade release that replaces the missing-facade panel with a packaged bitmap concept while preserving the rule that official CMS facade assets always override prototypes.
 1. [x] Verify the supplied 1.68.2 ZIP/checks/preview and reject the earlier raw-GitHub/Rainbow seed draft. (touches: plugin/package review) (deploy-path: NONE)
@@ -266,3 +300,29 @@ Verified from live HTML of `/projects/dimri-yama-sde-dov/` (server-side; Codex m
 - *(M11 reminder: PR must include screenshots at 1440 / 768 / 390 under `docs/qa/screenshots/v1676-camera-facade/`.)*
 - **2026-06-19 — Functional facade (polygons not squares, compounds, click→views+info)** → `docs/design/2026-06-19-functional-facade-polygons-compounds-spec.md` · target **1.68.0** · research-cited (Interactive Real Estate, Render Vision, VisEngine). Sequence: after 1.67.6.
 - Engelmore & Morgan, *Blackboard Systems* (1988) — classic foundation; see also Hayes-Roth, *A blackboard architecture for control* (1985).
+
+---
+
+## 15. SUPERVISING CHATGPT STEP CHECK - no silent stall *(owner directive 2026-06-20)*
+
+The earlier 5-minute schedule was deleted. The rule is now **step-based**, not clock-based.
+
+Supervising ChatGPT conversation:
+
+`https://chatgpt.com/c/6a35c375-9b18-83eb-8ee5-0a8ceb6a7cb4`
+
+Rule: Codex is not allowed to stop work silently. Before moving to each next implementation / QA / deploy / PR step, Codex must check whether there is any blocker, uncertainty, missing permission, tool issue, install need, API problem, build failure, unclear architecture choice, deployment risk, or lack of progress. If yes, Codex must pause only long enough to prepare a precise escalation for the supervising ChatGPT thread.
+
+Escalation format:
+
+```
+SUPERVISOR ESCALATION
+- Attempted:
+- Exact blocker:
+- Evidence:
+- Options:
+- Recommended next action:
+- Needed to unblock:
+```
+
+If there is no blocker, Codex records a concise step-transition note: current step, latest checked artifact, and next action.
