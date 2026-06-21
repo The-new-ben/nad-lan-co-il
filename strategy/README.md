@@ -12,13 +12,15 @@ Source status:
 - Legal, outreach, pricing, and consent items are marked `LEGAL_REVIEW` where applicable.
 - Official project media, GLB/BIM, facade/elevation, tour, and inventory dependencies are marked `REQUIRES_OFFICIAL_ASSET`.
 - The active strategic rule is [23-money-keyword-expansion-mandate.md](23-money-keyword-expansion-mandate.md): NadLan does not drop money keywords because competitors are strong.
+- The source-of-truth operating system is [24-source-of-truth-cannibalization-system.md](24-source-of-truth-cannibalization-system.md), with a readable Hebrew version at [source-of-truth-cannibalization-system-rtl.html](source-of-truth-cannibalization-system-rtl.html).
 
 How to read:
 1. Start with [00-executive-summary.md](00-executive-summary.md).
 2. Read [01-current-site-audit.md](01-current-site-audit.md) and [02-trust-and-technical-gaps.md](02-trust-and-technical-gaps.md) before any growth work.
 3. Use [19-roadmap.md](19-roadmap.md), [20-codex-backlog.md](20-codex-backlog.md), and [implementation-plan.md](implementation-plan.md) for execution order.
 4. Use [23-money-keyword-expansion-mandate.md](23-money-keyword-expansion-mandate.md) before commissioning any keyword, content, UX, or Lovable research.
-5. Use [21-playwright-qa-gates.md](21-playwright-qa-gates.md) as the visual gate for future PRs.
+5. Use [24-source-of-truth-cannibalization-system.md](24-source-of-truth-cannibalization-system.md) before allowing any writer, AI tool, or admin user to create public SEO content.
+6. Use [21-playwright-qa-gates.md](21-playwright-qa-gates.md) as the visual gate for future PRs.
 
 P0:
 - Public trust fixes before growth.
@@ -56,5 +58,6 @@ Next actions:
 
 Readable Lovable outputs:
 - [lovable/nadlan-report-2-keyword-master-rtl.html](lovable/nadlan-report-2-keyword-master-rtl.html)
+- [source-of-truth-cannibalization-system-rtl.html](source-of-truth-cannibalization-system-rtl.html)
 - [lovable/nadlan-lovable-keyword-workbook.xlsx](lovable/nadlan-lovable-keyword-workbook.xlsx)
 - [lovable/2026-06-21-report-2-keyword-master-universe.clean.csv](lovable/2026-06-21-report-2-keyword-master-universe.clean.csv)
