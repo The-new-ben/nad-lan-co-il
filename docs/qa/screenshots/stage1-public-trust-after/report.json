@@ -1,0 +1,914 @@
+{
+  "phase": "after",
+  "generatedAt": "2026-06-21T06:57:45.665Z",
+  "outDir": "docs/qa/screenshots/stage1-public-trust-after",
+  "pages": [
+    "/",
+    "/join-pro/",
+    "/sitemap/",
+    "/professionals/",
+    "/projects/dimri-yama-sde-dov/"
+  ],
+  "viewports": [
+    "desktop-1440",
+    "tablet-768",
+    "mobile-390"
+  ],
+  "leakCount": 78,
+  "visibleLeakCount": 33,
+  "overflowCount": 0,
+  "consoleErrorCount": 3,
+  "results": [
+    {
+      "page": "home",
+      "viewport": "desktop-1440",
+      "screenshot": "docs/qa/screenshots/stage1-public-trust-after/home-desktop-1440.png",
+      "audit": {
+        "title": "נדלן חכם: קנייה, מכירה והשקעה עם נתונים - נדלן חכם",
+        "url": "https://nad-lan.co.il/?stage1qa=after-1782024960844-desktop-1440",
+        "viewport": {
+          "width": 1440,
+          "height": 1000
+        },
+        "scrollWidth": 1425,
+        "clientWidth": 1425,
+        "horizontalOverflow": 0,
+        "h1s": [
+          "נדל״ן חכם: קנייה, מכירה והשקעה בעסקת נדל״ן מבוססת נתונים"
+        ],
+        "matches": [
+          {
+            "term": "woocommerce",
+            "source": "html",
+            "snippet": "/wp-includes/css/dist/block-library/common.min.css */ </style> <link rel=\"stylesheet\" id=\"woocommerce-blocktheme-rtl-css\" href=\"https://nad-lan.co.il/wp-content/plugins/woocommerce/assets/css/woocommerce-blocktheme-rtl.cs"
+          },
+          {
+            "term": "cart",
+            "source": "html",
+            "snippet": "jquery-blockui/jquery.blockUI.min.js?ver=2.7.0-wc.10.8.1\"></script> <script id=\"wc-add-to-cart-js-extra\"> var wc_add_to_cart_params = {\"ajax_url\":\"/wp-admin/admin-ajax.php\",\"wc_ajax_url\":\"/?wc-ajax=%%endpoint%%\",\"i"
+          },
+          {
+            "term": "checkout",
+            "source": "html",
+            "snippet": "ce/mini-cart\":{\"displayCartPriceIncludingTax\":false,\"onCartClickBehaviour\":\"open_drawer\",\"checkoutUrl\":\"https://nad-lan.co.il/checkout/\",\"buttonAriaLabelTemplate\":\"מספר הפריטים בעגלת הקניות: %d\"}},\"state\":{\"woocommerce"
+          }
+        ],
+        "components": [
+          {
+            "selector": "[class*=\"woocommerce\"]",
+            "count": 1,
+            "samples": [
+              "לדלג לתוכן\nנ\nנדל״ן חכם\nידע · כלים · החלטות\nקניית דירה\nמכירת דירה\nהשקעה\nאזורים ושכונות\nפרויקטים חדשים\nמשכנתא\nמשפט ומיסוי\nכלים\nאנשי מקצוע\nבדיקת עסקה\nמילון נדל״ן\nדף הבית\n\nנדל״ן חכם · "
+            ]
+          }
+        ],
+        "suspiciousButtons": [],
+        "bodyTextStart": "לדלג לתוכן נ נדל״ן חכם ידע · כלים · החלטות קניית דירה מכירת דירה השקעה אזורים ושכונות פרויקטים חדשים משכנתא משפט ומיסוי כלים אנשי מקצוע בדיקת עסקה מילון נדל״ן דף הבית נדל״ן חכם · ישראל נדל״ן חכם: קנייה, מכירה והשקעה בעסקת נדל״ן מבוססת נתונים פרויקטים חדשים, אנשי מקצוע מאומתים, מדריכים ומחשבונים לבדיקת עסקת נדל״ן: מס רכישה, משכנתא, טאבו וליווי עו״ד מקרקעין. הכול במקום אחד, חינם. התחילו חיפוש פרויקטים חדשים אנשי מקצוע פרסמו נכס 961 פרויקטים 2,711 בעלי מקצוע 27 מונחים ומדריכים 01 מחפשים פרויקט",
+        "visibleLeakCount": 1
+      },
+      "consoleErrors": [],
+      "networkFailures": [
+        {
+          "url": "10260.101",
+          "errorText": "net::ERR_ABORTED",
+          "canceled": true
+        }
+      ]
+    },
+    {
+      "page": "home",
+      "viewport": "tablet-768",
+      "screenshot": "docs/qa/screenshots/stage1-public-trust-after/home-tablet-768.png",
+      "audit": {
+        "title": "נדלן חכם: קנייה, מכירה והשקעה עם נתונים - נדלן חכם",
+        "url": "https://nad-lan.co.il/?stage1qa=after-1782024973039-tablet-768",
+        "viewport": {
+          "width": 768,
+          "height": 1000
+        },
+        "scrollWidth": 753,
+        "clientWidth": 753,
+        "horizontalOverflow": 0,
+        "h1s": [
+          "נדל״ן חכם: קנייה, מכירה והשקעה בעסקת נדל״ן מבוססת נתונים"
+        ],
+        "matches": [
+          {
+            "term": "woocommerce",
+            "source": "html",
+            "snippet": "/wp-includes/css/dist/block-library/common.min.css */ </style> <link rel=\"stylesheet\" id=\"woocommerce-blocktheme-rtl-css\" href=\"https://nad-lan.co.il/wp-content/plugins/woocommerce/assets/css/woocommerce-blocktheme-rtl.cs"
+          },
+          {
+            "term": "cart",
+            "source": "html",
+            "snippet": "jquery-blockui/jquery.blockUI.min.js?ver=2.7.0-wc.10.8.1\"></script> <script id=\"wc-add-to-cart-js-extra\"> var wc_add_to_cart_params = {\"ajax_url\":\"/wp-admin/admin-ajax.php\",\"wc_ajax_url\":\"/?wc-ajax=%%endpoint%%\",\"i"
+          },
+          {
+            "term": "checkout",
+            "source": "html",
+            "snippet": "ce/mini-cart\":{\"displayCartPriceIncludingTax\":false,\"onCartClickBehaviour\":\"open_drawer\",\"checkoutUrl\":\"https://nad-lan.co.il/checkout/\",\"buttonAriaLabelTemplate\":\"מספר הפריטים בעגלת הקניות: %d\"}},\"state\":{\"woocommerce"
+          }
+        ],
+        "components": [
+          {
+            "selector": "[class*=\"woocommerce\"]",
+            "count": 1,
+            "samples": [
+              "לדלג לתוכן\nנ\nנדל״ן חכם\nידע · כלים · החלטות\nקניית דירה\nמכירת דירה\nהשקעה\nאזורים ושכונות\nפרויקטים חדשים\nמשכנתא\nמשפט ומיסוי\nכלים\nאנשי מקצוע\nבדיקת עסקה\nמילון נדל״ן\nדף הבית\n\nנדל״ן חכם · "
+            ]
+          }
+        ],
+        "suspiciousButtons": [],
+        "bodyTextStart": "לדלג לתוכן נ נדל״ן חכם ידע · כלים · החלטות קניית דירה מכירת דירה השקעה אזורים ושכונות פרויקטים חדשים משכנתא משפט ומיסוי כלים אנשי מקצוע בדיקת עסקה מילון נדל״ן דף הבית נדל״ן חכם · ישראל נדל״ן חכם: קנייה, מכירה והשקעה בעסקת נדל״ן מבוססת נתונים פרויקטים חדשים, אנשי מקצוע מאומתים, מדריכים ומחשבונים לבדיקת עסקת נדל״ן: מס רכישה, משכנתא, טאבו וליווי עו״ד מקרקעין. הכול במקום אחד, חינם. התחילו חיפוש פרויקטים חדשים אנשי מקצוע פרסמו נכס 961 פרויקטים 2,711 בעלי מקצוע 27 מונחים ומדריכים 01 מחפשים פרויקט",
+        "visibleLeakCount": 1
+      },
+      "consoleErrors": [],
+      "networkFailures": []
+    },
+    {
+      "page": "home",
+      "viewport": "mobile-390",
+      "screenshot": "docs/qa/screenshots/stage1-public-trust-after/home-mobile-390.png",
+      "audit": {
+        "title": "נדלן חכם: קנייה, מכירה והשקעה עם נתונים - נדלן חכם",
+        "url": "https://nad-lan.co.il/?stage1qa=after-1782024979573-mobile-390",
+        "viewport": {
+          "width": 390,
+          "height": 900
+        },
+        "scrollWidth": 390,
+        "clientWidth": 390,
+        "horizontalOverflow": 0,
+        "h1s": [
+          "נדל״ן חכם: קנייה, מכירה והשקעה בעסקת נדל״ן מבוססת נתונים"
+        ],
+        "matches": [
+          {
+            "term": "woocommerce",
+            "source": "html",
+            "snippet": "/wp-includes/css/dist/block-library/common.min.css */ </style> <link rel=\"stylesheet\" id=\"woocommerce-blocktheme-rtl-css\" href=\"https://nad-lan.co.il/wp-content/plugins/woocommerce/assets/css/woocommerce-blocktheme-rtl.cs"
+          },
+          {
+            "term": "cart",
+            "source": "html",
+            "snippet": "jquery-blockui/jquery.blockUI.min.js?ver=2.7.0-wc.10.8.1\"></script> <script id=\"wc-add-to-cart-js-extra\"> var wc_add_to_cart_params = {\"ajax_url\":\"/wp-admin/admin-ajax.php\",\"wc_ajax_url\":\"/?wc-ajax=%%endpoint%%\",\"i"
+          },
+          {
+            "term": "checkout",
+            "source": "html",
+            "snippet": "ce/mini-cart\":{\"displayCartPriceIncludingTax\":false,\"onCartClickBehaviour\":\"open_drawer\",\"checkoutUrl\":\"https://nad-lan.co.il/checkout/\",\"buttonAriaLabelTemplate\":\"מספר הפריטים בעגלת הקניות: %d\"}},\"state\":{\"woocommerce"
+          }
+        ],
+        "components": [
+          {
+            "selector": "[class*=\"woocommerce\"]",
+            "count": 1,
+            "samples": [
+              "לדלג לתוכן\nנ\nנדל״ן חכם\nדף הבית\n\nנדל״ן חכם · ישראל\n\nנדל״ן חכם: קנייה, מכירה והשקעה בעסקת נדל״ן מבוססת נתונים\n\nפרויקטים חדשים, אנשי מקצוע מאומתים, מדריכים ומחשבונים לבדיקת עסקת נדל״ן"
+            ]
+          }
+        ],
+        "suspiciousButtons": [],
+        "bodyTextStart": "לדלג לתוכן נ נדל״ן חכם דף הבית נדל״ן חכם · ישראל נדל״ן חכם: קנייה, מכירה והשקעה בעסקת נדל״ן מבוססת נתונים פרויקטים חדשים, אנשי מקצוע מאומתים, מדריכים ומחשבונים לבדיקת עסקת נדל״ן: מס רכישה, משכנתא, טאבו וליווי עו״ד מקרקעין. הכול במקום אחד, חינם. התחילו חיפוש פרויקטים חדשים אנשי מקצוע פרסמו נכס 961 פרויקטים 2,711 בעלי מקצוע 27 מונחים ומדריכים 01 מחפשים פרויקט ראו פרויקטים חדשים והתחדשות עירונית עם עיר, יזם, סטטוס ותמונות. 02 בודקים אנשי מקצוע קבלנים, שמאים, עורכי דין ויועצים עם מקור רשמי ופ",
+        "visibleLeakCount": 1
+      },
+      "consoleErrors": [],
+      "networkFailures": [
+        {
+          "url": "10260.173",
+          "errorText": "net::ERR_ABORTED",
+          "canceled": true
+        }
+      ]
+    },
+    {
+      "page": "join-pro",
+      "viewport": "desktop-1440",
+      "screenshot": "docs/qa/screenshots/stage1-public-trust-after/join-pro-desktop-1440.png",
+      "audit": {
+        "title": "הצטרפו כמקצוען — Pro / Premier / קמפיין פרויקט | נדל\"ן חכם",
+        "url": "https://nad-lan.co.il/join-pro/?stage1qa=after-1782024986920-desktop-1440",
+        "viewport": {
+          "width": 1440,
+          "height": 1000
+        },
+        "scrollWidth": 1440,
+        "clientWidth": 1440,
+        "horizontalOverflow": 0,
+        "h1s": [
+          "מסלולי חשיפה לפרויקטים, נכסים ואנשי מקצוע"
+        ],
+        "matches": [
+          {
+            "term": "woocommerce",
+            "source": "html",
+            "snippet": "/wp-includes/css/dist/block-library/common.min.css */ </style> <link rel=\"stylesheet\" id=\"woocommerce-blocktheme-rtl-css\" href=\"https://nad-lan.co.il/wp-content/plugins/woocommerce/assets/css/woocommerce-blocktheme-rtl.cs"
+          },
+          {
+            "term": "cart",
+            "source": "html",
+            "snippet": "jquery-blockui/jquery.blockUI.min.js?ver=2.7.0-wc.10.8.1\"></script> <script id=\"wc-add-to-cart-js-extra\"> var wc_add_to_cart_params = {\"ajax_url\":\"/wp-admin/admin-ajax.php\",\"wc_ajax_url\":\"/?wc-ajax=%%endpoint%%\",\"i"
+          },
+          {
+            "term": "checkout",
+            "source": "html",
+            "snippet": "ce/mini-cart\":{\"displayCartPriceIncludingTax\":false,\"onCartClickBehaviour\":\"open_drawer\",\"checkoutUrl\":\"https://nad-lan.co.il/checkout/\",\"buttonAriaLabelTemplate\":\"מספר הפריטים בעגלת הקניות: %d\"}},\"state\":{\"woocommerce"
+          }
+        ],
+        "components": [
+          {
+            "selector": "[class*=\"woocommerce\"]",
+            "count": 1,
+            "samples": [
+              "לדלג לתוכן\nנ\nנדל״ן חכם\nידע · כלים · החלטות\nקניית דירה\nמכירת דירה\nהשקעה\nאזורים ושכונות\nפרויקטים חדשים\nמשכנתא\nמשפט ומיסוי\nכלים\nאנשי מקצוע\nבדיקת עסקה\nמילון נדל״ן\nדף הבית » הצטרפו כמקצ"
+            ]
+          }
+        ],
+        "suspiciousButtons": [
+          {
+            "text": "בחירת מסלול",
+            "href": "https://nad-lan.co.il/cart/?add-to-cart=476",
+            "className": "nlrx-btn nlrx-btn-secondary"
+          },
+          {
+            "text": "בחירת מסלול",
+            "href": "https://nad-lan.co.il/cart/?add-to-cart=477",
+            "className": "nlrx-btn nlrx-btn-primary"
+          },
+          {
+            "text": "בחירת מסלול",
+            "href": "https://nad-lan.co.il/cart/?add-to-cart=489",
+            "className": "nlrx-btn nlrx-btn-primary"
+          },
+          {
+            "text": "בחירת מסלול",
+            "href": "https://nad-lan.co.il/cart/?add-to-cart=490",
+            "className": "nlrx-btn nlrx-btn-secondary"
+          }
+        ],
+        "bodyTextStart": "לדלג לתוכן נ נדל״ן חכם ידע · כלים · החלטות קניית דירה מכירת דירה השקעה אזורים ושכונות פרויקטים חדשים משכנתא משפט ומיסוי כלים אנשי מקצוע בדיקת עסקה מילון נדל״ן דף הבית » הצטרפו כמקצוען – מסלולים, פרסום פרויקטים ומודעות נכסים פרסום נדל״ן פרימיום מסלולי חשיפה לפרויקטים, נכסים ואנשי מקצוע בונים נוכחות שמרגישה כמו נכס יוקרתי: עמוד עשיר, תמונות, פרטי קשר, מיקום, פניות ומרכז ניהול אחד. המטרה פשוטה: להפוך מבקר למתעניין אמיתי. תשלום מאובטח + חשבונית תשלום מאובטח, הזמנה מסודרת, חיבור לכרטיס לאחר רכישה",
+        "visibleLeakCount": 5
+      },
+      "consoleErrors": [],
+      "networkFailures": [
+        {
+          "url": "10260.242",
+          "errorText": "net::ERR_ABORTED",
+          "canceled": true
+        }
+      ]
+    },
+    {
+      "page": "join-pro",
+      "viewport": "tablet-768",
+      "screenshot": "docs/qa/screenshots/stage1-public-trust-after/join-pro-tablet-768.png",
+      "audit": {
+        "title": "הצטרפו כמקצוען — Pro / Premier / קמפיין פרויקט | נדל\"ן חכם",
+        "url": "https://nad-lan.co.il/join-pro/?stage1qa=after-1782024992396-tablet-768",
+        "viewport": {
+          "width": 768,
+          "height": 1000
+        },
+        "scrollWidth": 768,
+        "clientWidth": 768,
+        "horizontalOverflow": 0,
+        "h1s": [
+          "מסלולי חשיפה לפרויקטים, נכסים ואנשי מקצוע"
+        ],
+        "matches": [
+          {
+            "term": "woocommerce",
+            "source": "html",
+            "snippet": "/wp-includes/css/dist/block-library/common.min.css */ </style> <link rel=\"stylesheet\" id=\"woocommerce-blocktheme-rtl-css\" href=\"https://nad-lan.co.il/wp-content/plugins/woocommerce/assets/css/woocommerce-blocktheme-rtl.cs"
+          },
+          {
+            "term": "cart",
+            "source": "html",
+            "snippet": "jquery-blockui/jquery.blockUI.min.js?ver=2.7.0-wc.10.8.1\"></script> <script id=\"wc-add-to-cart-js-extra\"> var wc_add_to_cart_params = {\"ajax_url\":\"/wp-admin/admin-ajax.php\",\"wc_ajax_url\":\"/?wc-ajax=%%endpoint%%\",\"i"
+          },
+          {
+            "term": "checkout",
+            "source": "html",
+            "snippet": "ce/mini-cart\":{\"displayCartPriceIncludingTax\":false,\"onCartClickBehaviour\":\"open_drawer\",\"checkoutUrl\":\"https://nad-lan.co.il/checkout/\",\"buttonAriaLabelTemplate\":\"מספר הפריטים בעגלת הקניות: %d\"}},\"state\":{\"woocommerce"
+          }
+        ],
+        "components": [
+          {
+            "selector": "[class*=\"woocommerce\"]",
+            "count": 1,
+            "samples": [
+              "לדלג לתוכן\nנ\nנדל״ן חכם\nידע · כלים · החלטות\nקניית דירה\nמכירת דירה\nהשקעה\nאזורים ושכונות\nפרויקטים חדשים\nמשכנתא\nמשפט ומיסוי\nכלים\nאנשי מקצוע\nבדיקת עסקה\nמילון נדל״ן\nדף הבית » הצטרפו כמקצ"
+            ]
+          }
+        ],
+        "suspiciousButtons": [
+          {
+            "text": "בחירת מסלול",
+            "href": "https://nad-lan.co.il/cart/?add-to-cart=476",
+            "className": "nlrx-btn nlrx-btn-secondary"
+          },
+          {
+            "text": "בחירת מסלול",
+            "href": "https://nad-lan.co.il/cart/?add-to-cart=477",
+            "className": "nlrx-btn nlrx-btn-primary"
+          },
+          {
+            "text": "בחירת מסלול",
+            "href": "https://nad-lan.co.il/cart/?add-to-cart=489",
+            "className": "nlrx-btn nlrx-btn-primary"
+          },
+          {
+            "text": "בחירת מסלול",
+            "href": "https://nad-lan.co.il/cart/?add-to-cart=490",
+            "className": "nlrx-btn nlrx-btn-secondary"
+          }
+        ],
+        "bodyTextStart": "לדלג לתוכן נ נדל״ן חכם ידע · כלים · החלטות קניית דירה מכירת דירה השקעה אזורים ושכונות פרויקטים חדשים משכנתא משפט ומיסוי כלים אנשי מקצוע בדיקת עסקה מילון נדל״ן דף הבית » הצטרפו כמקצוען – מסלולים, פרסום פרויקטים ומודעות נכסים פרסום נדל״ן פרימיום מסלולי חשיפה לפרויקטים, נכסים ואנשי מקצוע בונים נוכחות שמרגישה כמו נכס יוקרתי: עמוד עשיר, תמונות, פרטי קשר, מיקום, פניות ומרכז ניהול אחד. המטרה פשוטה: להפוך מבקר למתעניין אמיתי. תשלום מאובטח + חשבונית תשלום מאובטח, הזמנה מסודרת, חיבור לכרטיס לאחר רכישה",
+        "visibleLeakCount": 5
+      },
+      "consoleErrors": [],
+      "networkFailures": []
+    },
+    {
+      "page": "join-pro",
+      "viewport": "mobile-390",
+      "screenshot": "docs/qa/screenshots/stage1-public-trust-after/join-pro-mobile-390.png",
+      "audit": {
+        "title": "הצטרפו כמקצוען — Pro / Premier / קמפיין פרויקט | נדל\"ן חכם",
+        "url": "https://nad-lan.co.il/join-pro/?stage1qa=after-1782024996823-mobile-390",
+        "viewport": {
+          "width": 390,
+          "height": 900
+        },
+        "scrollWidth": 390,
+        "clientWidth": 390,
+        "horizontalOverflow": 0,
+        "h1s": [
+          "מסלולי חשיפה לפרויקטים, נכסים ואנשי מקצוע"
+        ],
+        "matches": [
+          {
+            "term": "woocommerce",
+            "source": "html",
+            "snippet": "/wp-includes/css/dist/block-library/common.min.css */ </style> <link rel=\"stylesheet\" id=\"woocommerce-blocktheme-rtl-css\" href=\"https://nad-lan.co.il/wp-content/plugins/woocommerce/assets/css/woocommerce-blocktheme-rtl.cs"
+          },
+          {
+            "term": "cart",
+            "source": "html",
+            "snippet": "jquery-blockui/jquery.blockUI.min.js?ver=2.7.0-wc.10.8.1\"></script> <script id=\"wc-add-to-cart-js-extra\"> var wc_add_to_cart_params = {\"ajax_url\":\"/wp-admin/admin-ajax.php\",\"wc_ajax_url\":\"/?wc-ajax=%%endpoint%%\",\"i"
+          },
+          {
+            "term": "checkout",
+            "source": "html",
+            "snippet": "ce/mini-cart\":{\"displayCartPriceIncludingTax\":false,\"onCartClickBehaviour\":\"open_drawer\",\"checkoutUrl\":\"https://nad-lan.co.il/checkout/\",\"buttonAriaLabelTemplate\":\"מספר הפריטים בעגלת הקניות: %d\"}},\"state\":{\"woocommerce"
+          }
+        ],
+        "components": [
+          {
+            "selector": "[class*=\"woocommerce\"]",
+            "count": 1,
+            "samples": [
+              "לדלג לתוכן\nנ\nנדל״ן חכם\nדף הבית » הצטרפו כמקצוען – מסלולים, פרסום פרויקטים ומודעות נכסים\n\nפרסום נדל״ן פרימיום\n\nמסלולי חשיפה לפרויקטים, נכסים ואנשי מקצוע\n\nבונים נוכחות שמרגישה כמו נכ"
+            ]
+          }
+        ],
+        "suspiciousButtons": [
+          {
+            "text": "בחירת מסלול",
+            "href": "https://nad-lan.co.il/cart/?add-to-cart=476",
+            "className": "nlrx-btn nlrx-btn-secondary"
+          },
+          {
+            "text": "בחירת מסלול",
+            "href": "https://nad-lan.co.il/cart/?add-to-cart=477",
+            "className": "nlrx-btn nlrx-btn-primary"
+          },
+          {
+            "text": "בחירת מסלול",
+            "href": "https://nad-lan.co.il/cart/?add-to-cart=489",
+            "className": "nlrx-btn nlrx-btn-primary"
+          },
+          {
+            "text": "בחירת מסלול",
+            "href": "https://nad-lan.co.il/cart/?add-to-cart=490",
+            "className": "nlrx-btn nlrx-btn-secondary"
+          }
+        ],
+        "bodyTextStart": "לדלג לתוכן נ נדל״ן חכם דף הבית » הצטרפו כמקצוען – מסלולים, פרסום פרויקטים ומודעות נכסים פרסום נדל״ן פרימיום מסלולי חשיפה לפרויקטים, נכסים ואנשי מקצוע בונים נוכחות שמרגישה כמו נכס יוקרתי: עמוד עשיר, תמונות, פרטי קשר, מיקום, פניות ומרכז ניהול אחד. המטרה פשוטה: להפוך מבקר למתעניין אמיתי. תשלום מאובטח + חשבונית תשלום מאובטח, הזמנה מסודרת, חיבור לכרטיס לאחר רכישה. לכרטיס מקצועי Pro מקצועי ₪349 לחודש חשיפה כרטיס בולט יותר בתוצאות תמונות ופרטי קשר מסודרים כניסה למרכז הפרסום שדרוג לכרטיס קיים בחיר",
+        "visibleLeakCount": 5
+      },
+      "consoleErrors": [],
+      "networkFailures": []
+    },
+    {
+      "page": "sitemap",
+      "viewport": "desktop-1440",
+      "screenshot": "docs/qa/screenshots/stage1-public-trust-after/sitemap-desktop-1440.png",
+      "audit": {
+        "title": "מפת אתר - נדלן חכם",
+        "url": "https://nad-lan.co.il/sitemap/?stage1qa=after-1782025001490-desktop-1440",
+        "viewport": {
+          "width": 1440,
+          "height": 1000
+        },
+        "scrollWidth": 1440,
+        "clientWidth": 1440,
+        "horizontalOverflow": 0,
+        "h1s": [
+          "מפת האתר"
+        ],
+        "matches": [
+          {
+            "term": "woocommerce",
+            "source": "html",
+            "snippet": "/wp-includes/css/dist/block-library/common.min.css */ </style> <link rel=\"stylesheet\" id=\"woocommerce-blocktheme-rtl-css\" href=\"https://nad-lan.co.il/wp-content/plugins/woocommerce/assets/css/woocommerce-blocktheme-rtl.cs"
+          },
+          {
+            "term": "cart",
+            "source": "html",
+            "snippet": "jquery-blockui/jquery.blockUI.min.js?ver=2.7.0-wc.10.8.1\"></script> <script id=\"wc-add-to-cart-js-extra\"> var wc_add_to_cart_params = {\"ajax_url\":\"/wp-admin/admin-ajax.php\",\"wc_ajax_url\":\"/?wc-ajax=%%endpoint%%\",\"i"
+          },
+          {
+            "term": "checkout",
+            "source": "html",
+            "snippet": "ce/mini-cart\":{\"displayCartPriceIncludingTax\":false,\"onCartClickBehaviour\":\"open_drawer\",\"checkoutUrl\":\"https://nad-lan.co.il/checkout/\",\"buttonAriaLabelTemplate\":\"מספר הפריטים בעגלת הקניות: %d\"}},\"state\":{\"woocommerce"
+          }
+        ],
+        "components": [
+          {
+            "selector": "[class*=\"woocommerce\"]",
+            "count": 1,
+            "samples": [
+              "לדלג לתוכן\nנ\nנדל״ן חכם\nידע · כלים · החלטות\nקניית דירה\nמכירת דירה\nהשקעה\nאזורים ושכונות\nפרויקטים חדשים\nמשכנתא\nמשפט ומיסוי\nכלים\nאנשי מקצוע\nבדיקת עסקה\nמילון נדל״ן\nדף הבית » מפת אתר\n\nמצ"
+            ]
+          }
+        ],
+        "suspiciousButtons": [],
+        "bodyTextStart": "לדלג לתוכן נ נדל״ן חכם ידע · כלים · החלטות קניית דירה מכירת דירה השקעה אזורים ושכונות פרויקטים חדשים משכנתא משפט ומיסוי כלים אנשי מקצוע בדיקת עסקה מילון נדל״ן דף הבית » מפת אתר מצא את הדרך · נדל״ן חכם מפת האתר כל המדריכים, הכלים, ועמודי הערים – מאורגנים לפי אשכולות נושאיים, ממוינים לפי מועד עדכון אחרון. 100 עמודים 8 אשכולות 100 חדש החודש מכירת דירה בישראל: מדריך מחיר, מסמכים ומשא ומתן מכירת דירה · 1 מדריכים מחשבון שווי דירה חדש כלי התחדשות עירונית ופינוי בינוי: מדריך לבעלי דירות התחדשות ע",
+        "visibleLeakCount": 1
+      },
+      "consoleErrors": [],
+      "networkFailures": []
+    },
+    {
+      "page": "sitemap",
+      "viewport": "tablet-768",
+      "screenshot": "docs/qa/screenshots/stage1-public-trust-after/sitemap-tablet-768.png",
+      "audit": {
+        "title": "מפת אתר - נדלן חכם",
+        "url": "https://nad-lan.co.il/sitemap/?stage1qa=after-1782025006153-tablet-768",
+        "viewport": {
+          "width": 768,
+          "height": 1000
+        },
+        "scrollWidth": 768,
+        "clientWidth": 768,
+        "horizontalOverflow": 0,
+        "h1s": [
+          "מפת האתר"
+        ],
+        "matches": [
+          {
+            "term": "woocommerce",
+            "source": "html",
+            "snippet": "/wp-includes/css/dist/block-library/common.min.css */ </style> <link rel=\"stylesheet\" id=\"woocommerce-blocktheme-rtl-css\" href=\"https://nad-lan.co.il/wp-content/plugins/woocommerce/assets/css/woocommerce-blocktheme-rtl.cs"
+          },
+          {
+            "term": "cart",
+            "source": "html",
+            "snippet": "jquery-blockui/jquery.blockUI.min.js?ver=2.7.0-wc.10.8.1\"></script> <script id=\"wc-add-to-cart-js-extra\"> var wc_add_to_cart_params = {\"ajax_url\":\"/wp-admin/admin-ajax.php\",\"wc_ajax_url\":\"/?wc-ajax=%%endpoint%%\",\"i"
+          },
+          {
+            "term": "checkout",
+            "source": "html",
+            "snippet": "ce/mini-cart\":{\"displayCartPriceIncludingTax\":false,\"onCartClickBehaviour\":\"open_drawer\",\"checkoutUrl\":\"https://nad-lan.co.il/checkout/\",\"buttonAriaLabelTemplate\":\"מספר הפריטים בעגלת הקניות: %d\"}},\"state\":{\"woocommerce"
+          }
+        ],
+        "components": [
+          {
+            "selector": "[class*=\"woocommerce\"]",
+            "count": 1,
+            "samples": [
+              "לדלג לתוכן\nנ\nנדל״ן חכם\nידע · כלים · החלטות\nקניית דירה\nמכירת דירה\nהשקעה\nאזורים ושכונות\nפרויקטים חדשים\nמשכנתא\nמשפט ומיסוי\nכלים\nאנשי מקצוע\nבדיקת עסקה\nמילון נדל״ן\nדף הבית » מפת אתר\n\nמצ"
+            ]
+          }
+        ],
+        "suspiciousButtons": [],
+        "bodyTextStart": "לדלג לתוכן נ נדל״ן חכם ידע · כלים · החלטות קניית דירה מכירת דירה השקעה אזורים ושכונות פרויקטים חדשים משכנתא משפט ומיסוי כלים אנשי מקצוע בדיקת עסקה מילון נדל״ן דף הבית » מפת אתר מצא את הדרך · נדל״ן חכם מפת האתר כל המדריכים, הכלים, ועמודי הערים – מאורגנים לפי אשכולות נושאיים, ממוינים לפי מועד עדכון אחרון. 100 עמודים 8 אשכולות 100 חדש החודש מכירת דירה בישראל: מדריך מחיר, מסמכים ומשא ומתן מכירת דירה · 1 מדריכים מחשבון שווי דירה חדש כלי התחדשות עירונית ופינוי בינוי: מדריך לבעלי דירות התחדשות ע",
+        "visibleLeakCount": 1
+      },
+      "consoleErrors": [],
+      "networkFailures": []
+    },
+    {
+      "page": "sitemap",
+      "viewport": "mobile-390",
+      "screenshot": "docs/qa/screenshots/stage1-public-trust-after/sitemap-mobile-390.png",
+      "audit": {
+        "title": "מפת אתר - נדלן חכם",
+        "url": "https://nad-lan.co.il/sitemap/?stage1qa=after-1782025010393-mobile-390",
+        "viewport": {
+          "width": 390,
+          "height": 900
+        },
+        "scrollWidth": 390,
+        "clientWidth": 390,
+        "horizontalOverflow": 0,
+        "h1s": [
+          "מפת האתר"
+        ],
+        "matches": [
+          {
+            "term": "woocommerce",
+            "source": "html",
+            "snippet": "/wp-includes/css/dist/block-library/common.min.css */ </style> <link rel=\"stylesheet\" id=\"woocommerce-blocktheme-rtl-css\" href=\"https://nad-lan.co.il/wp-content/plugins/woocommerce/assets/css/woocommerce-blocktheme-rtl.cs"
+          },
+          {
+            "term": "cart",
+            "source": "html",
+            "snippet": "jquery-blockui/jquery.blockUI.min.js?ver=2.7.0-wc.10.8.1\"></script> <script id=\"wc-add-to-cart-js-extra\"> var wc_add_to_cart_params = {\"ajax_url\":\"/wp-admin/admin-ajax.php\",\"wc_ajax_url\":\"/?wc-ajax=%%endpoint%%\",\"i"
+          },
+          {
+            "term": "checkout",
+            "source": "html",
+            "snippet": "ce/mini-cart\":{\"displayCartPriceIncludingTax\":false,\"onCartClickBehaviour\":\"open_drawer\",\"checkoutUrl\":\"https://nad-lan.co.il/checkout/\",\"buttonAriaLabelTemplate\":\"מספר הפריטים בעגלת הקניות: %d\"}},\"state\":{\"woocommerce"
+          }
+        ],
+        "components": [
+          {
+            "selector": "[class*=\"woocommerce\"]",
+            "count": 1,
+            "samples": [
+              "לדלג לתוכן\nנ\nנדל״ן חכם\nדף הבית » מפת אתר\n\nמצא את הדרך · נדל״ן חכם\n\nמפת האתר\n\nכל המדריכים, הכלים, ועמודי הערים – מאורגנים לפי אשכולות נושאיים, ממוינים לפי מועד עדכון אחרון.\n\n100\nעמו"
+            ]
+          }
+        ],
+        "suspiciousButtons": [],
+        "bodyTextStart": "לדלג לתוכן נ נדל״ן חכם דף הבית » מפת אתר מצא את הדרך · נדל״ן חכם מפת האתר כל המדריכים, הכלים, ועמודי הערים – מאורגנים לפי אשכולות נושאיים, ממוינים לפי מועד עדכון אחרון. 100 עמודים 8 אשכולות 100 חדש החודש מכירת דירה בישראל: מדריך מחיר, מסמכים ומשא ומתן מכירת דירה · 1 מדריכים מחשבון שווי דירה חדש כלי התחדשות עירונית ופינוי בינוי: מדריך לבעלי דירות התחדשות עירונית · 1 מדריכים אדריכל והיתר בנייה: איך בוחרים תכנון נכון לפני שיפוץ, בנייה או הרחבה חדש שאר העמודים 96 עמודים פארקים ושטחים ירוקי",
+        "visibleLeakCount": 1
+      },
+      "consoleErrors": [],
+      "networkFailures": []
+    },
+    {
+      "page": "professionals",
+      "viewport": "desktop-1440",
+      "screenshot": "docs/qa/screenshots/stage1-public-trust-after/professionals-desktop-1440.png",
+      "audit": {
+        "title": "מאגר בעלי מקצוע בנדל״ן — קבלנים, שמאים, יועצים מאומתים | נדל״ן חכם",
+        "url": "https://nad-lan.co.il/professionals/?stage1qa=after-1782025015724-desktop-1440",
+        "viewport": {
+          "width": 1440,
+          "height": 1000
+        },
+        "scrollWidth": 1440,
+        "clientWidth": 1440,
+        "horizontalOverflow": 0,
+        "h1s": [
+          "נדלן חכם",
+          "מצאו בעל מקצוע מאומת לנדל״ן"
+        ],
+        "matches": [
+          {
+            "term": "woocommerce",
+            "source": "html",
+            "snippet": "/wp-includes/css/dist/block-library/common.min.css */ </style> <link rel=\"stylesheet\" id=\"woocommerce-blocktheme-rtl-css\" href=\"https://nad-lan.co.il/wp-content/plugins/woocommerce/assets/css/woocommerce-blocktheme-rtl.cs"
+          },
+          {
+            "term": "cart",
+            "source": "html",
+            "snippet": "jquery-blockui/jquery.blockUI.min.js?ver=2.7.0-wc.10.8.1\"></script> <script id=\"wc-add-to-cart-js-extra\"> var wc_add_to_cart_params = {\"ajax_url\":\"/wp-admin/admin-ajax.php\",\"wc_ajax_url\":\"/?wc-ajax=%%endpoint%%\",\"i"
+          },
+          {
+            "term": "checkout",
+            "source": "html",
+            "snippet": "ce/mini-cart\":{\"displayCartPriceIncludingTax\":false,\"onCartClickBehaviour\":\"open_drawer\",\"checkoutUrl\":\"https://nad-lan.co.il/checkout/\",\"buttonAriaLabelTemplate\":\"מספר הפריטים בעגלת הקניות: %d\"}},\"state\":{\"woocommerce"
+          }
+        ],
+        "components": [
+          {
+            "selector": "[class*=\"woocommerce\"]",
+            "count": 1,
+            "samples": [
+              "נדלן חכם\nבדיקת עסקת נדל״ן, מס רכישה, משכנתא, טאבו ועורך דין מקרקעין לפני חתימה\nנ\nנדל״ן חכם\nידע · כלים · החלטות\nקניית דירה\nמכירת דירה\nהשקעה\nאזורים ושכונות\nפרויקטים חדשים\nמשכנתא\nמשפט"
+            ]
+          }
+        ],
+        "suspiciousButtons": [
+          {
+            "text": "מקודם · פנוי",
+            "href": "https://nad-lan.co.il/?add-to-cart=476&ref=ss",
+            "className": "nldc nldc-sponsored-spot"
+          },
+          {
+            "text": "הכרטיס שלכם יכול להיות במקום זה\n\nהצטרפו למאגר אנשי המקצוע המוביל בישראל. תוכנית ",
+            "href": "https://nad-lan.co.il/?add-to-cart=476&ref=ss",
+            "className": "nldc nldc-sponsored-spot"
+          }
+        ],
+        "bodyTextStart": "נדלן חכם בדיקת עסקת נדל״ן, מס רכישה, משכנתא, טאבו ועורך דין מקרקעין לפני חתימה נ נדל״ן חכם ידע · כלים · החלטות קניית דירה מכירת דירה השקעה אזורים ושכונות פרויקטים חדשים משכנתא משפט ומיסוי כלים אנשי מקצוע בדיקת עסקה מילון נדל״ן בית › בעלי מקצוע מצאו בעל מקצוע מאומת לנדל״ן קבלנים, שמאים, יועצי משכנתאות ועו״ד: 2,711 בעלי מקצוע, מאומתים מול פנקס הקבלנים הרשמי (gov.il). חיפוש הכל קבלן 2,699 סינון מאומתים בלבד ✓ ערים מובילות ירושלים 117 ראשון לציון 96 תל אביב -יפו 92 אם אל-פחם 69 פתח תקוה 67 נתניה 5",
+        "visibleLeakCount": 3
+      },
+      "consoleErrors": [
+        "TypeError: Failed to resolve module specifier \"@wordpress/interactivity\". Relative references must start with either \"/\", \"./\", or \"../\"."
+      ],
+      "networkFailures": [
+        {
+          "url": "10260.618",
+          "errorText": "net::ERR_ABORTED",
+          "canceled": true
+        }
+      ]
+    },
+    {
+      "page": "professionals",
+      "viewport": "tablet-768",
+      "screenshot": "docs/qa/screenshots/stage1-public-trust-after/professionals-tablet-768.png",
+      "audit": {
+        "title": "מאגר בעלי מקצוע בנדל״ן — קבלנים, שמאים, יועצים מאומתים | נדל״ן חכם",
+        "url": "https://nad-lan.co.il/professionals/?stage1qa=after-1782025021470-tablet-768",
+        "viewport": {
+          "width": 768,
+          "height": 1000
+        },
+        "scrollWidth": 768,
+        "clientWidth": 768,
+        "horizontalOverflow": 0,
+        "h1s": [
+          "נדלן חכם",
+          "מצאו בעל מקצוע מאומת לנדל״ן"
+        ],
+        "matches": [
+          {
+            "term": "woocommerce",
+            "source": "html",
+            "snippet": "/wp-includes/css/dist/block-library/common.min.css */ </style> <link rel=\"stylesheet\" id=\"woocommerce-blocktheme-rtl-css\" href=\"https://nad-lan.co.il/wp-content/plugins/woocommerce/assets/css/woocommerce-blocktheme-rtl.cs"
+          },
+          {
+            "term": "cart",
+            "source": "html",
+            "snippet": "jquery-blockui/jquery.blockUI.min.js?ver=2.7.0-wc.10.8.1\"></script> <script id=\"wc-add-to-cart-js-extra\"> var wc_add_to_cart_params = {\"ajax_url\":\"/wp-admin/admin-ajax.php\",\"wc_ajax_url\":\"/?wc-ajax=%%endpoint%%\",\"i"
+          },
+          {
+            "term": "checkout",
+            "source": "html",
+            "snippet": "ce/mini-cart\":{\"displayCartPriceIncludingTax\":false,\"onCartClickBehaviour\":\"open_drawer\",\"checkoutUrl\":\"https://nad-lan.co.il/checkout/\",\"buttonAriaLabelTemplate\":\"מספר הפריטים בעגלת הקניות: %d\"}},\"state\":{\"woocommerce"
+          }
+        ],
+        "components": [
+          {
+            "selector": "[class*=\"woocommerce\"]",
+            "count": 1,
+            "samples": [
+              "נדלן חכם\nבדיקת עסקת נדל״ן, מס רכישה, משכנתא, טאבו ועורך דין מקרקעין לפני חתימה\nנ\nנדל״ן חכם\nידע · כלים · החלטות\nקניית דירה\nמכירת דירה\nהשקעה\nאזורים ושכונות\nפרויקטים חדשים\nמשכנתא\nמשפט"
+            ]
+          }
+        ],
+        "suspiciousButtons": [
+          {
+            "text": "מקודם · פנוי",
+            "href": "https://nad-lan.co.il/?add-to-cart=476&ref=ss",
+            "className": "nldc nldc-sponsored-spot"
+          },
+          {
+            "text": "הכרטיס שלכם יכול להיות במקום זה\n\nהצטרפו למאגר אנשי המקצוע המוביל בישראל. תוכנית ",
+            "href": "https://nad-lan.co.il/?add-to-cart=476&ref=ss",
+            "className": "nldc nldc-sponsored-spot"
+          }
+        ],
+        "bodyTextStart": "נדלן חכם בדיקת עסקת נדל״ן, מס רכישה, משכנתא, טאבו ועורך דין מקרקעין לפני חתימה נ נדל״ן חכם ידע · כלים · החלטות קניית דירה מכירת דירה השקעה אזורים ושכונות פרויקטים חדשים משכנתא משפט ומיסוי כלים אנשי מקצוע בדיקת עסקה מילון נדל״ן בית › בעלי מקצוע מצאו בעל מקצוע מאומת לנדל״ן קבלנים, שמאים, יועצי משכנתאות ועו״ד: 2,711 בעלי מקצוע, מאומתים מול פנקס הקבלנים הרשמי (gov.il). חיפוש הכל קבלן 2,699 סינון מאומתים בלבד ✓ ערים מובילות ירושלים 117 ראשון לציון 96 תל אביב -יפו 92 אם אל-פחם 69 פתח תקוה 67 נתניה 5",
+        "visibleLeakCount": 3
+      },
+      "consoleErrors": [
+        "TypeError: Failed to resolve module specifier \"@wordpress/interactivity\". Relative references must start with either \"/\", \"./\", or \"../\"."
+      ],
+      "networkFailures": []
+    },
+    {
+      "page": "professionals",
+      "viewport": "mobile-390",
+      "screenshot": "docs/qa/screenshots/stage1-public-trust-after/professionals-mobile-390.png",
+      "audit": {
+        "title": "מאגר בעלי מקצוע בנדל״ן — קבלנים, שמאים, יועצים מאומתים | נדל״ן חכם",
+        "url": "https://nad-lan.co.il/professionals/?stage1qa=after-1782025027165-mobile-390",
+        "viewport": {
+          "width": 980,
+          "height": 2262
+        },
+        "scrollWidth": 980,
+        "clientWidth": 980,
+        "horizontalOverflow": 0,
+        "h1s": [
+          "נדלן חכם",
+          "מצאו בעל מקצוע מאומת לנדל״ן"
+        ],
+        "matches": [
+          {
+            "term": "woocommerce",
+            "source": "html",
+            "snippet": "/wp-includes/css/dist/block-library/common.min.css */ </style> <link rel=\"stylesheet\" id=\"woocommerce-blocktheme-rtl-css\" href=\"https://nad-lan.co.il/wp-content/plugins/woocommerce/assets/css/woocommerce-blocktheme-rtl.cs"
+          },
+          {
+            "term": "cart",
+            "source": "html",
+            "snippet": "jquery-blockui/jquery.blockUI.min.js?ver=2.7.0-wc.10.8.1\"></script> <script id=\"wc-add-to-cart-js-extra\"> var wc_add_to_cart_params = {\"ajax_url\":\"/wp-admin/admin-ajax.php\",\"wc_ajax_url\":\"/?wc-ajax=%%endpoint%%\",\"i"
+          },
+          {
+            "term": "checkout",
+            "source": "html",
+            "snippet": "ce/mini-cart\":{\"displayCartPriceIncludingTax\":false,\"onCartClickBehaviour\":\"open_drawer\",\"checkoutUrl\":\"https://nad-lan.co.il/checkout/\",\"buttonAriaLabelTemplate\":\"מספר הפריטים בעגלת הקניות: %d\"}},\"state\":{\"woocommerce"
+          }
+        ],
+        "components": [
+          {
+            "selector": "[class*=\"woocommerce\"]",
+            "count": 1,
+            "samples": [
+              "נדלן חכם\nבדיקת עסקת נדל״ן, מס רכישה, משכנתא, טאבו ועורך דין מקרקעין לפני חתימה\nנ\nנדל״ן חכם\nידע · כלים · החלטות\nקניית דירה\nמכירת דירה\nהשקעה\nאזורים ושכונות\nפרויקטים חדשים\nמשכנתא\nמשפט"
+            ]
+          }
+        ],
+        "suspiciousButtons": [
+          {
+            "text": "מקודם · פנוי",
+            "href": "https://nad-lan.co.il/?add-to-cart=476&ref=ss",
+            "className": "nldc nldc-sponsored-spot"
+          },
+          {
+            "text": "הכרטיס שלכם יכול להיות במקום זה\n\nהצטרפו למאגר אנשי המקצוע המוביל בישראל. תוכנית ",
+            "href": "https://nad-lan.co.il/?add-to-cart=476&ref=ss",
+            "className": "nldc nldc-sponsored-spot"
+          }
+        ],
+        "bodyTextStart": "נדלן חכם בדיקת עסקת נדל״ן, מס רכישה, משכנתא, טאבו ועורך דין מקרקעין לפני חתימה נ נדל״ן חכם ידע · כלים · החלטות קניית דירה מכירת דירה השקעה אזורים ושכונות פרויקטים חדשים משכנתא משפט ומיסוי כלים אנשי מקצוע בדיקת עסקה מילון נדל״ן בית › בעלי מקצוע מצאו בעל מקצוע מאומת לנדל״ן קבלנים, שמאים, יועצי משכנתאות ועו״ד: 2,711 בעלי מקצוע, מאומתים מול פנקס הקבלנים הרשמי (gov.il). חיפוש הכל קבלן 2,699 סינון מאומתים בלבד ✓ ערים מובילות ירושלים 117 ראשון לציון 96 תל אביב -יפו 92 אם אל-פחם 69 פתח תקוה 67 נתניה 5",
+        "visibleLeakCount": 3
+      },
+      "consoleErrors": [
+        "TypeError: Failed to resolve module specifier \"@wordpress/interactivity\". Relative references must start with either \"/\", \"./\", or \"../\"."
+      ],
+      "networkFailures": []
+    },
+    {
+      "page": "dimri-yama-sde-dov",
+      "viewport": "desktop-1440",
+      "screenshot": "docs/qa/screenshots/stage1-public-trust-after/dimri-yama-sde-dov-desktop-1440.png",
+      "audit": {
+        "title": "DIMRI YAMA שדה דב - י.ח דמרי | בחירת דירות, מבט מהדירה ושדה דב | נדלן חכם",
+        "url": "https://nad-lan.co.il/projects/dimri-yama-sde-dov/?stage1qa=after-1782025035465-desktop-1440",
+        "viewport": {
+          "width": 1440,
+          "height": 1000
+        },
+        "scrollWidth": 1440,
+        "clientWidth": 1440,
+        "horizontalOverflow": 0,
+        "h1s": [
+          "DIMRI YAMA שדה דב – י.ח דמרי"
+        ],
+        "matches": [
+          {
+            "term": "woocommerce",
+            "source": "html",
+            "snippet": "rtant; } /*# sourceURL=wp-emoji-styles-inline-css */ </style> <link rel=\"stylesheet\" id=\"woocommerce-blocktheme-rtl-css\" href=\"https://nad-lan.co.il/wp-content/plugins/woocommerce/assets/css/woocommerce-blocktheme-rtl.cs"
+          },
+          {
+            "term": "cart",
+            "source": "html",
+            "snippet": "jquery-blockui/jquery.blockUI.min.js?ver=2.7.0-wc.10.8.1\"></script> <script id=\"wc-add-to-cart-js-extra\"> var wc_add_to_cart_params = {\"ajax_url\":\"/wp-admin/admin-ajax.php\",\"wc_ajax_url\":\"/?wc-ajax=%%endpoint%%\",\"i"
+          },
+          {
+            "term": "checkout",
+            "source": "html",
+            "snippet": "ce/mini-cart\":{\"displayCartPriceIncludingTax\":false,\"onCartClickBehaviour\":\"open_drawer\",\"checkoutUrl\":\"https://nad-lan.co.il/checkout/\",\"buttonAriaLabelTemplate\":\"מספר הפריטים בעגלת הקניות: %d\"}},\"state\":{\"woocommerce"
+          }
+        ],
+        "components": [
+          {
+            "selector": "[class*=\"woocommerce\"]",
+            "count": 1,
+            "samples": [
+              "לדלג לתוכן\nנ\nנדל״ן חכם\nידע · כלים · החלטות\nקניית דירה\nמכירת דירה\nהשקעה\nאזורים ושכונות\nפרויקטים חדשים\nמשכנתא\nמשפט ומיסוי\nכלים\nאנשי מקצוע\nבדיקת עסקה\nמילון נדל״ן\nדף הבית » NadLan Proj"
+            ]
+          }
+        ],
+        "suspiciousButtons": [],
+        "bodyTextStart": "לדלג לתוכן נ נדל״ן חכם ידע · כלים · החלטות קניית דירה מכירת דירה השקעה אזורים ושכונות פרויקטים חדשים משכנתא משפט ומיסוי כלים אנשי מקצוע בדיקת עסקה מילון נדל״ן דף הבית » NadLan Projects » DIMRI YAMA שדה דב – י.ח דמרי DIMRI YAMA שדה דב – י.ח דמרי מודל תלת ממדי ובחירת דירה זמינים בעמוד תצוגת דירות אינטראקטיבית דירות למכירה ב-DIMRI YAMA שדה דב – י.ח דמרי: מחירים, זמינות ובחירת דירה DIMRI YAMA שדה דב – י.ח דמרי מוצג כאן כתצוגת דירות אינטראקטיבית באזור אבן גבירול 220, מתחם אשכול, רובע שדה דב, תל אביב",
+        "visibleLeakCount": 1
+      },
+      "consoleErrors": [],
+      "networkFailures": []
+    },
+    {
+      "page": "dimri-yama-sde-dov",
+      "viewport": "tablet-768",
+      "screenshot": "docs/qa/screenshots/stage1-public-trust-after/dimri-yama-sde-dov-tablet-768.png",
+      "audit": {
+        "title": "DIMRI YAMA שדה דב - י.ח דמרי | בחירת דירות, מבט מהדירה ושדה דב | נדלן חכם",
+        "url": "https://nad-lan.co.il/projects/dimri-yama-sde-dov/?stage1qa=after-1782025043915-tablet-768",
+        "viewport": {
+          "width": 768,
+          "height": 1000
+        },
+        "scrollWidth": 768,
+        "clientWidth": 768,
+        "horizontalOverflow": 0,
+        "h1s": [
+          "DIMRI YAMA שדה דב – י.ח דמרי"
+        ],
+        "matches": [
+          {
+            "term": "woocommerce",
+            "source": "html",
+            "snippet": "rtant; } /*# sourceURL=wp-emoji-styles-inline-css */ </style> <link rel=\"stylesheet\" id=\"woocommerce-blocktheme-rtl-css\" href=\"https://nad-lan.co.il/wp-content/plugins/woocommerce/assets/css/woocommerce-blocktheme-rtl.cs"
+          },
+          {
+            "term": "cart",
+            "source": "html",
+            "snippet": "jquery-blockui/jquery.blockUI.min.js?ver=2.7.0-wc.10.8.1\"></script> <script id=\"wc-add-to-cart-js-extra\"> var wc_add_to_cart_params = {\"ajax_url\":\"/wp-admin/admin-ajax.php\",\"wc_ajax_url\":\"/?wc-ajax=%%endpoint%%\",\"i"
+          },
+          {
+            "term": "checkout",
+            "source": "html",
+            "snippet": "ce/mini-cart\":{\"displayCartPriceIncludingTax\":false,\"onCartClickBehaviour\":\"open_drawer\",\"checkoutUrl\":\"https://nad-lan.co.il/checkout/\",\"buttonAriaLabelTemplate\":\"מספר הפריטים בעגלת הקניות: %d\"}},\"state\":{\"woocommerce"
+          }
+        ],
+        "components": [
+          {
+            "selector": "[class*=\"woocommerce\"]",
+            "count": 1,
+            "samples": [
+              "לדלג לתוכן\nנ\nנדל״ן חכם\nידע · כלים · החלטות\nקניית דירה\nמכירת דירה\nהשקעה\nאזורים ושכונות\nפרויקטים חדשים\nמשכנתא\nמשפט ומיסוי\nכלים\nאנשי מקצוע\nבדיקת עסקה\nמילון נדל״ן\nדף הבית » NadLan Proj"
+            ]
+          }
+        ],
+        "suspiciousButtons": [],
+        "bodyTextStart": "לדלג לתוכן נ נדל״ן חכם ידע · כלים · החלטות קניית דירה מכירת דירה השקעה אזורים ושכונות פרויקטים חדשים משכנתא משפט ומיסוי כלים אנשי מקצוע בדיקת עסקה מילון נדל״ן דף הבית » NadLan Projects » DIMRI YAMA שדה דב – י.ח דמרי DIMRI YAMA שדה דב – י.ח דמרי מודל תלת ממדי ובחירת דירה זמינים בעמוד תצוגת דירות אינטראקטיבית דירות למכירה ב-DIMRI YAMA שדה דב – י.ח דמרי: מחירים, זמינות ובחירת דירה DIMRI YAMA שדה דב – י.ח דמרי מוצג כאן כתצוגת דירות אינטראקטיבית באזור אבן גבירול 220, מתחם אשכול, רובע שדה דב, תל אביב",
+        "visibleLeakCount": 1
+      },
+      "consoleErrors": [],
+      "networkFailures": [
+        {
+          "url": "10260.882",
+          "errorText": "net::ERR_ABORTED",
+          "canceled": true
+        }
+      ]
+    },
+    {
+      "page": "dimri-yama-sde-dov",
+      "viewport": "mobile-390",
+      "screenshot": "docs/qa/screenshots/stage1-public-trust-after/dimri-yama-sde-dov-mobile-390.png",
+      "audit": {
+        "title": "DIMRI YAMA שדה דב - י.ח דמרי | בחירת דירות, מבט מהדירה ושדה דב | נדלן חכם",
+        "url": "https://nad-lan.co.il/projects/dimri-yama-sde-dov/?stage1qa=after-1782025053148-mobile-390",
+        "viewport": {
+          "width": 390,
+          "height": 900
+        },
+        "scrollWidth": 390,
+        "clientWidth": 390,
+        "horizontalOverflow": 0,
+        "h1s": [
+          "DIMRI YAMA שדה דב – י.ח דמרי"
+        ],
+        "matches": [
+          {
+            "term": "woocommerce",
+            "source": "html",
+            "snippet": "rtant; } /*# sourceURL=wp-emoji-styles-inline-css */ </style> <link rel=\"stylesheet\" id=\"woocommerce-blocktheme-rtl-css\" href=\"https://nad-lan.co.il/wp-content/plugins/woocommerce/assets/css/woocommerce-blocktheme-rtl.cs"
+          },
+          {
+            "term": "cart",
+            "source": "html",
+            "snippet": "jquery-blockui/jquery.blockUI.min.js?ver=2.7.0-wc.10.8.1\"></script> <script id=\"wc-add-to-cart-js-extra\"> var wc_add_to_cart_params = {\"ajax_url\":\"/wp-admin/admin-ajax.php\",\"wc_ajax_url\":\"/?wc-ajax=%%endpoint%%\",\"i"
+          },
+          {
+            "term": "checkout",
+            "source": "html",
+            "snippet": "ce/mini-cart\":{\"displayCartPriceIncludingTax\":false,\"onCartClickBehaviour\":\"open_drawer\",\"checkoutUrl\":\"https://nad-lan.co.il/checkout/\",\"buttonAriaLabelTemplate\":\"מספר הפריטים בעגלת הקניות: %d\"}},\"state\":{\"woocommerce"
+          }
+        ],
+        "components": [
+          {
+            "selector": "[class*=\"woocommerce\"]",
+            "count": 1,
+            "samples": [
+              "לדלג לתוכן\nנ\nנדל״ן חכם\nדף הבית » NadLan Projects » DIMRI YAMA שדה דב – י.ח דמרי\nDIMRI YAMA שדה דב – י.ח דמרי\nמודל תלת ממדי ובחירת דירה זמינים בעמוד\nתצוגת דירות אינטראקטיבית\nדירות ל"
+            ]
+          }
+        ],
+        "suspiciousButtons": [],
+        "bodyTextStart": "לדלג לתוכן נ נדל״ן חכם דף הבית » NadLan Projects » DIMRI YAMA שדה דב – י.ח דמרי DIMRI YAMA שדה דב – י.ח דמרי מודל תלת ממדי ובחירת דירה זמינים בעמוד תצוגת דירות אינטראקטיבית דירות למכירה ב-DIMRI YAMA שדה דב – י.ח דמרי: מחירים, זמינות ובחירת דירה DIMRI YAMA שדה דב – י.ח דמרי מוצג כאן כתצוגת דירות אינטראקטיבית באזור אבן גבירול 220, מתחם אשכול, רובע שדה דב, תל אביב-יפו. בוחרים דירה על המודל לפי קומה, חדרים, כיוון ונוף, ורואים אומדן מחיר וזמינות לא מחייבים לפני פנייה ליזם. היזם: י.ח דמרי. בחרו דירה",
+        "visibleLeakCount": 1
+      },
+      "consoleErrors": [],
+      "networkFailures": [
+        {
+          "url": "10260.946",
+          "errorText": "net::ERR_ABORTED",
+          "canceled": true
+        }
+      ]
+    }
+  ]
+}

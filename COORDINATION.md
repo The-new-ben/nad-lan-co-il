@@ -87,6 +87,22 @@ REASONING
 - DID: implemented the theme source filters and copy cleanup; did not touch Dimri showroom/facade/Mapbox.
 - CHECKED: `php -l functions.php`, `node --check scripts/qa-stage1-public-trust.mjs`, and refreshed baseline screenshot QA all ran.
 
+### Codex Stage 1 trust hardening follow-up - UTC 2026-06-21T07:00:00Z
+Goal in one sentence: finish the public trust cleanup by removing remaining WooCommerce asset/script leakage from non-commerce pages after #211 went live.
+1. [x] Ran live after-#211 browser QA at 1440/768/390. (proof: `docs/qa/screenshots/stage1-public-trust-after/`) (deploy-path: NONE)
+2. [x] Confirmed #211 improved live output: visibleLeakCount 120 -> 33, leakCount 183 -> 78, consoleErrorCount 9 -> 3, overflow stays 0. (proof: `docs/qa/screenshots/stage1-public-trust-after/report.json`) (deploy-path: NONE)
+3. [x] Added non-commerce WooCommerce asset dequeue for Woo block/cart scripts and styles, while preserving cart/checkout/account/shop/product screens. (touches: `functions.php`) (deploy-path: THEME)
+4. [x] Local gates passed: `php -l functions.php`, `node --check scripts/qa-stage1-public-trust.mjs`, `git diff --check`. (deploy-path: NONE)
+5. [ ] True final after screenshots wait for merge + UPress theme git pull + cache clear, because this is still a theme release.
+Acceptance gate I will satisfy before Dimri work resumes: no public mini-cart, no public WooCommerce/coming-soon copy, one H1 on target pages, no `More posts` on project singles, no horizontal overflow, and console errors reviewed in live after-QA.
+Blockers I see: none for PR preparation. Live final proof requires Claude merge and UPress theme git pull/cache clear.
+
+REASONING
+- SAW: live after-#211 QA showed the visible mini-cart was gone and Join Pro copy was clean, but raw Woo block CSS/scripts still exposed cart/checkout strings and `/professionals/` still logged an `@wordpress/interactivity` module error.
+- THOUGHT: source rendering cleanup was not enough; public non-commerce pages also need Woo block assets dequeued, while true commerce pages must keep them.
+- DID: added a narrow `wp_enqueue_scripts` cleanup guarded by `nadlan_revenue_is_commerce_screen()`.
+- CHECKED: PHP lint, QA script syntax, diff check, and after-#211 screenshots/report.
+
 ### Codex plan - UTC 2026-06-20T01:05:00Z
 Goal in one sentence: ship v1.68.2 as a Dimri-only premium concept facade release that replaces the missing-facade panel with a packaged bitmap concept while preserving the rule that official CMS facade assets always override prototypes.
 1. [x] Verify the supplied 1.68.2 ZIP/checks/preview and reject the earlier raw-GitHub/Rainbow seed draft. (touches: plugin/package review) (deploy-path: NONE)
