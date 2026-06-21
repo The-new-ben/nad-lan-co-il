@@ -941,6 +941,49 @@ add_action( 'template_redirect', function () {
 	}
 }, 0 );
 
+add_action( 'wp_enqueue_scripts', function () {
+	if ( is_admin() || nadlan_revenue_is_commerce_screen() ) {
+		return;
+	}
+
+	$styles = array(
+		'woocommerce-general',
+		'woocommerce-layout',
+		'woocommerce-smallscreen',
+		'woocommerce-blocktheme',
+		'woocommerce-blocktheme-rtl',
+		'wc-blocks-style',
+		'wc-blocks-style-all-products',
+		'wc-blocks-style-mini-cart',
+		'wc-blocks-style-mini-cart-contents',
+		'wc-blocks-style-mini-cart-contents-rtl',
+		'wc-blocks-packages-style',
+		'wc-blocks-vendors-style',
+		'wc-blocks-style-components',
+		'wc-blocks-style-reviews',
+	);
+	foreach ( $styles as $handle ) {
+		wp_dequeue_style( $handle );
+	}
+
+	$scripts = array(
+		'wc-add-to-cart',
+		'woocommerce',
+		'wc-cart-fragments',
+		'wc-blocks',
+		'wc-blocks-vendors',
+		'wc-blocks-data-store',
+		'wc-blocks-middleware',
+		'wc-block-mini-cart-frontend',
+		'wc-block-mini-cart-contents',
+		'wc-blocks-checkout',
+		'wc-interactivity',
+	);
+	foreach ( $scripts as $handle ) {
+		wp_dequeue_script( $handle );
+	}
+}, 100 );
+
 add_filter( 'render_block', function ( $block_content, $block ) {
 	$block_name = isset( $block['blockName'] ) ? (string) $block['blockName'] : '';
 	$slug       = isset( $block['attrs']['slug'] ) ? (string) $block['attrs']['slug'] : '';
