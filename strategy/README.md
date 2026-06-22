@@ -34,6 +34,7 @@ It exists because previous runs produced partial reports, browser outputs, and i
 13. `12-qa-gates.md`
 14. `13-risk-register.md`
 15. `14-lovable-visual-gallery-plan.md`
+16. `lovable/README.md`
 
 Then read the backlog slices under `strategy/backlog/`.
 
