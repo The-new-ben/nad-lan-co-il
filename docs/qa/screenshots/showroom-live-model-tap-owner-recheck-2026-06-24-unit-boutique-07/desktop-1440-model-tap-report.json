@@ -1,0 +1,54 @@
+{
+  "url": "https://nad-lan.co.il/projects/rainbow-tel-aviv/?codex_qa=owner_recheck_unit-boutique-07&viewport=desktop-1440&t=1782255566736",
+  "viewport": {
+    "width": 1440,
+    "height": 1000
+  },
+  "scrollWidth": 1440,
+  "bodyScrollWidth": 1440,
+  "rootActiveUnit": "unit-boutique-07",
+  "activePicks": [
+    "unit-boutique-07"
+  ],
+  "visibleStagePins": [
+    "unit-08-sw",
+    "unit-16-w",
+    "unit-24-nw",
+    "unit-31-se",
+    "unit-38-penthouse",
+    "unit-boutique-07"
+  ],
+  "visibleModelHotspots": [],
+  "cameraOrbit": "55deg 67deg auto",
+  "cameraTarget": "-42 25 24",
+  "stageCardHidden": false,
+  "stageCardText": "פתחו את פרטי הדירה × הדירה שנבחרה דירת 4 חדרים, קומה 7 4 חדרים · 118 מ\"ר · בניין בוטיק סביב הלגונה · זמינות להדגמה בלבד עד לקבלת מלאי רשמי מהיזם בתהליך בדיקה בניין בוטיק סביב הלגונה כולל אומדן אומדן ₪8,968,000 בתהליך בדיקה בניין בוטיק סביב הלגונה הדירה בתהליך בדיקה. אפשר להשאיר פרטים כדי לוודא זמינות או לקבל חלופה דומה. פרטים מלאים מבט מהדירה תוכניות וסיור דברו עם היזם פרטים מבט מהדירה תוכניות שמש סביבה סיור",
+  "tapPoint": {
+    "x": 730,
+    "y": 649.0625,
+    "unitRect": {
+      "x": 634,
+      "y": 627.0625,
+      "right": 696,
+      "bottom": 671.0625,
+      "width": 62,
+      "height": 44
+    },
+    "sceneRect": {
+      "x": 539,
+      "y": 202.84375,
+      "right": 1281,
+      "bottom": 850.84375,
+      "width": 742,
+      "height": 648
+    },
+    "elementAtPoint": {
+      "tag": "MODEL-VIEWER",
+      "className": "nlp3d-model-viewer",
+      "insideStagePick": false,
+      "insideModelViewer": true
+    }
+  },
+  "expectedUnit": "unit-boutique-07",
+  "pass": true
+}

@@ -1528,6 +1528,10 @@ justify-content:flex-start!important;
 flex-wrap:wrap!important;
 gap:8px!important;
 margin:0 0 10px!important;
+pointer-events:none!important;
+}
+.nlp3d.nlp3d-premium .nlp3d-toolbar button{
+pointer-events:auto!important;
 }
 .nlp3d.nlp3d-premium .nlp3d-drag-note{
 display:inline-flex!important;
@@ -3896,7 +3900,7 @@ add_action(
 			return;
 		}
 
-		wp_register_style( 'nadlan-p3d', '', array(), '1.69.6' );
+		wp_register_style( 'nadlan-p3d', '', array(), '1.69.7' );
 		wp_enqueue_style( 'nadlan-p3d' );
 		wp_add_inline_style( 'nadlan-p3d', nadlan_p3d_lovable_showroom_v1690_css() );
 
@@ -3907,7 +3911,7 @@ add_action(
 			wp_enqueue_script( 'nadlan-model-viewer' );
 		}
 
-		wp_register_script( 'nadlan-p3d', '', array(), '1.69.6', true );
+		wp_register_script( 'nadlan-p3d', '', array(), '1.69.7', true );
 		wp_enqueue_script( 'nadlan-p3d' );
 		wp_add_inline_script( 'nadlan-p3d', nadlan_p3d_inline_js( esc_url_raw( rest_url( 'nadlan/v1/lead' ) ) ) );
 	}
@@ -4306,6 +4310,7 @@ add_filter(
 			'model_viewer_hotspots_hidden_when_overlay_picks_v1694' => true,
 			'model_surface_tap_select_v1695' => true,
 			'model_surface_tap_floor_bias_v1696' => true,
+			'toolbar_empty_space_tap_passthrough_v1697' => true,
 			'product_selector_v1641' => true,
 			'status_colored_unit_picks' => true,
 			'recommended_unit_pulse' => true,

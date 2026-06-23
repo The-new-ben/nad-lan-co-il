@@ -1,0 +1,54 @@
+{
+  "url": "https://nad-lan.co.il/projects/rainbow-tel-aviv/?codex_qa=owner_recheck_unit-08-sw&viewport=mobile-390&t=1782255456874",
+  "viewport": {
+    "width": 390,
+    "height": 900
+  },
+  "scrollWidth": 390,
+  "bodyScrollWidth": 390,
+  "rootActiveUnit": "unit-08-sw",
+  "activePicks": [
+    "unit-08-sw"
+  ],
+  "visibleStagePins": [
+    "unit-08-sw",
+    "unit-16-w",
+    "unit-24-nw",
+    "unit-31-se",
+    "unit-38-penthouse",
+    "unit-boutique-07"
+  ],
+  "visibleModelHotspots": [],
+  "cameraOrbit": "45deg 66deg auto",
+  "cameraTarget": "0 31 6",
+  "stageCardHidden": false,
+  "stageCardText": "פתחו את פרטי הדירה × הדירה שנבחרה דירת 3 חדרים, קומה 8 3 חדרים · 82 מ\"ר · מבט לחצר ולים · זמינות להדגמה בלבד עד לקבלת מלאי רשמי מהיזם זמינה לפנייה מבט לחצר ולים כולל אומדן אומדן ₪6,232,000 זמינה לפנייה מבט לחצר ולים האומדן עוזר להשוואה ראשונית בלבד. המחיר, הזמינות ותנאי העסקה יאומתו מול היזם לפני כל התקדמות. פרטים מלאים מבט מהדירה תוכניות וסיור דברו עם היזם פרטים מבט מהדירה תוכניות שמש סביבה סיור",
+  "tapPoint": {
+    "x": 207.5,
+    "y": 511.1875,
+    "unitRect": {
+      "x": 128.5,
+      "y": 489.1875,
+      "right": 183.5,
+      "bottom": 533.1875,
+      "width": 55,
+      "height": 44
+    },
+    "sceneRect": {
+      "x": 48,
+      "y": 299.484375,
+      "right": 378,
+      "bottom": 601.484375,
+      "width": 330,
+      "height": 302
+    },
+    "elementAtPoint": {
+      "tag": "MODEL-VIEWER",
+      "className": "nlp3d-model-viewer",
+      "insideStagePick": false,
+      "insideModelViewer": true
+    }
+  },
+  "expectedUnit": "unit-08-sw",
+  "pass": true
+}
