@@ -3,83 +3,119 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>NadLan - מפת פערים ל-War Room מלא</title>
+  <title>NadLan - מפת פערים למרכז שליטה מלא</title>
   <style>
-    :root { --ink:#17202a; --muted:#5d6876; --line:#d8e0ea; --brand:#0d4f5c; --deep:#092f39; --soft:#f6f8fa; --ok:#0f6b4f; --warn:#9a5b00; --risk:#a51f1f; }
+    :root {
+      --paper:#f7f1e8;
+      --paper-2:#fffaf2;
+      --ink:#211915;
+      --muted:#746b63;
+      --line:#ded2c3;
+      --accent:#8f5d2a;
+      --ok:#2f654f;
+      --warn:#8f5d2a;
+      --risk:#8f2e24;
+      --shadow:0 18px 55px rgba(44,31,20,.10);
+    }
     * { box-sizing:border-box; }
-    body { margin:0; font-family:Arial,"Noto Sans Hebrew","Segoe UI",sans-serif; color:var(--ink); background:#fff; line-height:1.58; }
-    header { background:var(--deep); color:#fff; padding:30px 34px; }
-    header h1 { margin:0 0 10px; font-size:30px; line-height:1.25; }
-    header p { margin:0; max-width:1120px; color:#dcebed; }
-    main { max-width:1320px; margin:0 auto; padding:28px 24px 64px; }
-    section { border-top:1px solid var(--line); padding:24px 0; }
-    h2 { margin:0 0 14px; color:var(--brand); font-size:22px; }
-    h3 { margin:16px 0 8px; font-size:17px; color:#173743; }
-    .grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:12px; }
-    .card { border:1px solid var(--line); border-radius:8px; background:var(--soft); padding:14px; }
-    .card strong { display:block; color:var(--brand); font-size:27px; line-height:1.15; }
-    .callout { border-right:5px solid var(--warn); background:#fff8e7; padding:14px 16px; border-radius:6px 0 0 6px; margin:14px 0; }
-    .callout.ok { border-right-color:var(--ok); background:#f1faf6; }
-    .table-wrap { border:1px solid var(--line); border-radius:8px; overflow:auto; max-height:760px; }
-    table { width:100%; border-collapse:collapse; font-size:13px; }
-    th,td { border:1px solid var(--line); padding:8px; text-align:right; vertical-align:top; }
-    th { background:var(--brand); color:#fff; position:sticky; top:0; z-index:1; }
-    tbody tr:nth-child(even) { background:#fafbfc; }
+    body { margin:0; font-family:Arial,"Noto Sans Hebrew",sans-serif; color:var(--ink); background:var(--paper); line-height:1.62; }
+    .wrap { width:min(1180px,calc(100% - 30px)); margin:0 auto; }
+    header { padding:34px 0 30px; border-bottom:1px solid var(--line); background:linear-gradient(180deg,#fffaf4 0%,#f7f1e8 100%); }
+    .eyebrow { color:var(--accent); font-weight:700; margin-bottom:12px; }
+    h1 { margin:0; max-width:980px; font-family:Georgia,"Times New Roman",serif; font-size:clamp(34px,5vw,66px); line-height:1.05; letter-spacing:0; }
+    .lead { max-width:940px; color:var(--muted); font-size:20px; margin:18px 0 0; }
+    main { padding:28px 0 60px; }
+    .stats { display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:12px; margin-bottom:24px; }
+    .stat { background:var(--paper-2); border:1px solid var(--line); padding:18px; box-shadow:var(--shadow); min-height:116px; }
+    .stat b { display:block; font-family:Georgia,"Times New Roman",serif; font-size:38px; line-height:1; margin-bottom:10px; }
+    .stat span { color:var(--muted); font-size:15px; }
+    section { background:var(--paper-2); border:1px solid var(--line); box-shadow:var(--shadow); padding:24px; margin-bottom:22px; }
+    h2,h3 { font-family:Georgia,"Times New Roman",serif; margin:0 0 12px; line-height:1.18; }
+    h2 { font-size:30px; }
+    p { margin:0 0 12px; }
+    .callout { border-inline-start:5px solid var(--warn); background:#fff5ef; padding:14px 16px; margin:14px 0; }
+    .callout.ok { border-inline-start-color:var(--ok); background:#f1f8f3; }
+    .table-wrap { overflow:auto; border:1px solid var(--line); background:#fff; }
+    table { width:100%; border-collapse:collapse; min-width:980px; font-size:14px; }
+    th,td { border:1px solid var(--line); padding:10px; text-align:right; vertical-align:top; }
+    th { background:#f1e5d5; color:var(--ink); position:sticky; top:0; z-index:1; }
+    tbody tr:nth-child(even) { background:#fffaf2; }
     .status-done { color:var(--ok); font-weight:700; }
     .status-partial { color:var(--warn); font-weight:700; }
     .status-weak { color:var(--risk); font-weight:700; }
-    .ltr { direction:ltr; text-align:left; unicode-bidi:embed; }
-    code { direction:ltr; unicode-bidi:embed; background:#eef3f5; border-radius:4px; padding:2px 5px; }
+    ol { margin:8px 0 0; padding-inline-start:22px; }
+    li { margin-bottom:8px; }
+    code { direction:ltr; unicode-bidi:embed; background:#f1e5d5; border-radius:4px; padding:2px 5px; }
+    @media (max-width:760px) {
+      .stats { grid-template-columns:1fr; }
+      section { padding:18px; }
+      .wrap { width:min(100% - 22px,1180px); }
+      .table-wrap { overflow:visible; border:0; background:transparent; }
+      table { min-width:0; width:100%; display:block; font-size:14px; }
+      thead { display:none; }
+      tbody, tr, td { display:block; width:100%; }
+      tr { border:1px solid var(--line); background:#fff; margin-bottom:12px; padding:8px 10px; }
+      tbody tr:nth-child(even) { background:#fff; }
+      td { border:0; border-top:1px solid var(--line); padding:9px 0; }
+      td:first-child { border-top:0; font-weight:700; font-size:17px; }
+      td::before { display:block; color:var(--muted); font-size:12px; font-weight:700; margin-bottom:2px; }
+      td:nth-child(1)::before { content:"דרישה"; }
+      td:nth-child(2)::before { content:"מה יש עכשיו"; }
+      td:nth-child(3)::before { content:"מצב"; }
+      td:nth-child(4)::before { content:"מה חסר"; }
+      td:nth-child(5)::before { content:"פעולה הבאה"; }
+      td:nth-child(6)::before { content:"עדיפות"; }
+    }
   </style>
 </head>
 <body>
   <header>
-    <h1>NadLan - מפת פערים ל-War Room מלא</h1>
-    <p>בדיקה מול היעד המלא: ראיות מהאתר, Lovable, ארכיטקטורת עמודים, מיפוי מילות מפתח לעמודים, UX, עיצוב, backlog, ומוצרים קריאים לבעלים. המסקנה: יש בסיס טוב, אבל עדיין לא War Room מלא.</p>
+    <div class="wrap">
+      <div class="eyebrow">מפת פערים למרכז השליטה של NadLan</div>
+      <h1>יש בסיס רחב, אבל עדיין לא קוראים לזה גמור.</h1>
+      <p class="lead">העמוד הזה מציג מה כבר קיים, מה הושלם כמפרט, ומה עדיין חסר לפני שאפשר לטעון שיש מרכז שליטה מלא לבנייה, קידום אורגני, עיצוב, שוורום, מדידה ותפעול.</p>
+    </div>
   </header>
-  <main>
+  <main class="wrap">
+    <div class="stats">
+      <div class="stat"><b>225</b><span>מילות מפתח בבסיס המחקר</span></div>
+      <div class="stat"><b>39</b><span>תבניות עמודים בארכיטקטורה</span></div>
+      <div class="stat"><b>23</b><span>פריטי ראיות במרכז השליטה</span></div>
+      <div class="stat"><b>18</b><span>תחומי פער במפה הזאת</span></div>
+    </div>
+
     <section>
       <h2>שורה תחתונה</h2>
-      <div class="callout ok">
-        מה כבר יש: Report 2 משוחזר עם 225 שורות, חוברת Excel, דוח RTL, מקור אמת נגד קניבליזציה, מנדט לא-מתפשר למילות כסף, מפת ארכיטקטורה עם 39 תבניות, UX spec עם 15 רכיבים, ודוח War Room ויזואלי ראשוני.
-      </div>
-      <div class="callout">
-        מה עדיין חסר כדי לקרוא לזה War Room מלא: מיפוי כל 225 המילים ל־page_id קנוני, backlog ספרינטים עם acceptance criteria, מחקר SERP/מתחרים לפי שאילתה, Lovable Reports 3A-3G, מפרטי מוצר עמוקים לכל אזור, ו־Stage 1 final screenshots אחרי UPress/cache.
-      </div>
-      <div class="grid">
-        <div class="card"><strong>225</strong>שורות keyword master נקיות</div>
-        <div class="card"><strong>39</strong>תבניות עמוד בארכיטקטורה</div>
-        <div class="card"><strong>15</strong>רכיבי UX במפרט</div>
-        <div class="card"><strong>18</strong>תחומי פער במפה הזאת</div>
-      </div>
+      <div class="callout ok">מה כבר יש: מחקר מילות מפתח, חוברת עבודה, בעלות קנונית למילות מפתח, מפת עמודים, ספריית מסכים, חבילת שוורום, חבילת מודעות נדל"ן, חבילת מערכת ניהול, חבילת מדידה, אינדקס בעלים וצילומי מסך לתוצרי המפרט.</div>
+      <div class="callout">מה עדיין חסר: הוכחה חיה אחרונה אחרי פריסה וניקוי מטמון, נכסי פרויקט אמיתיים, יישום שוורום ומודעות נדל"ן באתר החי, מערכת ניהול פעילה, מדידה חיה, חיבור CRM, מחקר מתחרים לפי שאילתות, ותוכן/עמודים מיושמים.</div>
     </section>
 
     <section>
-      <h2>מפת פערים מלאה</h2>
+      <h2>מפת פערים</h2>
       <div class="table-wrap">
         <table>
           <thead>
-            <tr><th>דרישה</th><th>מה יש עכשיו</th><th>מצב</th><th>הפער</th><th>פעולה הבאה</th><th>עדיפות</th></tr>
+            <tr><th>דרישה</th><th>מה יש עכשיו</th><th>מצב</th><th>מה חסר</th><th>פעולה הבאה</th><th>עדיפות</th></tr>
           </thead>
           <tbody>
-            <tr><td>ראיות מהאתר החי</td><td>צילומי בית/פרויקטים/אנשי מקצוע/פרויקט/אומדן ודוחות audit</td><td class="status-partial">חלקי</td><td>אין צילומי Stage 1 סופיים אחרי UPress/cache</td><td>QA ציבורי מלא וצילומים למסכים מרכזיים</td><td>P0</td></tr>
-            <tr><td>Lovable assisted</td><td>Report 0/1/2, Prompt 3A שמור</td><td class="status-partial">חלקי</td><td>אין Report 3A-3G; הפרויקט נתקע ב-Chrome</td><td>לפתוח פרויקט נקי או לשחזר Lovable ואז להריץ 3A</td><td>P0</td></tr>
-            <tr><td>יקום מילות מפתח</td><td>225 שורות Report 2</td><td class="status-partial">חלקי</td><td>לא כל מילות הכסף; אין Semrush/GSC metrics</td><td>הרחבות batch לפי resale/rent/projects/tools/professionals/EN</td><td>P0</td></tr>
-            <tr><td>מיפוי keyword-to-page</td><td>suggested_slug בדוח + 39 page templates</td><td class="status-partial">חלקי</td><td>אין join table לכל 225 שורות עם page_id קנוני</td><td>ליצור <code>keyword-to-page-owner.csv</code></td><td>P0</td></tr>
-            <tr><td>ארכיטקטורת עמודים</td><td><code>page-architecture-map.csv</code></td><td class="status-partial">חלקי</td><td>אין inventory של URLs קיימים וסטטוס noindex/redirect</td><td>מיפוי existing URL to target architecture</td><td>P0</td></tr>
-            <tr><td>מניעת קניבליזציה</td><td>מסמך מקור אמת והמלצת WordPress registry</td><td class="status-partial">חלקי</td><td>עדיין לא ממומש ב-WordPress admin</td><td>לתכנן/ליישם keyword_registry + publish gates</td><td>P0</td></tr>
-            <tr><td>UX לוחות דירות</td><td>מוקאפ + UX rows</td><td class="status-partial">חלקי</td><td>אין schema, lead payload, compare/save, mobile drawer detail</td><td>מפרט מוצר Listings מפורט</td><td>P0</td></tr>
-            <tr><td>UX פרויקטים/Showroom</td><td>מוקאפ + showroom rules</td><td class="status-partial">חלקי</td><td>אין state machine ו-JSON schema ליחידות/נכסים</td><td>State machine + schema</td><td>P0</td></tr>
-            <tr><td>UX אנשי מקצוע</td><td>מוקאפ + UX rows</td><td class="status-partial">חלקי</td><td>אין verification methodology/profile schema/sponsored policy</td><td>Professionals directory product spec</td><td>P0</td></tr>
-            <tr><td>עיצוב ויזואלי</td><td>HTML עם mockups וצילומי אתר</td><td class="status-partial">חלקי</td><td>לא high fidelity; אין design tokens ורספונסיביות מאומתת</td><td>דפי mockup מפורטים לבית/חיפוש/פרויקט/פרופיל</td><td>P1</td></tr>
-            <tr><td>Implementation backlog</td><td>backlog docs + implementation plan</td><td class="status-partial">חלקי</td><td>לא קשור ל-page_id, component, acceptance evidence</td><td>Backlog ספרינטי עם acceptance criteria</td><td>P0</td></tr>
-            <tr><td>Technical SEO / Schema</td><td>תוכניות בסיסיות</td><td class="status-partial">חלקי</td><td>אין matrix לכל page type</td><td>technical-seo-page-matrix.csv</td><td>P1</td></tr>
-            <tr><td>SERP ומתחרים</td><td>Competitor map בסיסי</td><td class="status-weak">חלש</td><td>אין query-by-query teardown ואין metrics</td><td>Lovable/Semrush/SERP batches</td><td>P0</td></tr>
-            <tr><td>משקיעים בינלאומיים</td><td>42 intl rows + /en architecture</td><td class="status-partial">חלקי</td><td>אין EN funnel מפורט, personas, legal workflow</td><td>EN investor funnel spec</td><td>P1</td></tr>
-            <tr><td>כלים ומחשבונים</td><td>29 tools rows + architecture</td><td class="status-partial">חלקי</td><td>אין formulas/inputs/sources/disclaimers</td><td>Calculator spec pack</td><td>P0</td></tr>
-            <tr><td>מוניטיזציה</td><td>מסמך ראשוני</td><td class="status-weak">חלש</td><td>אין pricing/packages/CRM/disclosures</td><td>Monetization operating model</td><td>P1</td></tr>
-            <tr><td>Analytics/KPI</td><td>מסמך ראשוני + אירועים ב-UX CSV</td><td class="status-partial">חלקי</td><td>אין event dictionary ודשבורד</td><td>analytics-event-dictionary.csv</td><td>P1</td></tr>
-            <tr><td>מוצרים קריאים לבעלים</td><td>HTML + Excel ב-outputs</td><td class="status-partial">חלקי</td><td>אין owner index אחד; לא נשלח אימייל</td><td>owner-output-index-rtl.html ואז אימייל באישור</td><td>P0</td></tr>
+            <tr><td>ראיות מהאתר החי</td><td>צילומי אתר ודוח בדיקה ציבורי מ-23 ביוני 2026</td><td class="status-partial">חלקי</td><td>עדיין יש דליפות, שגיאות ותלות בפריסה וניקוי מטמון</td><td>לתקן ולצלם מחדש את סט Stage 1</td><td>P0</td></tr>
+            <tr><td>אסטרטגיה חיצונית</td><td>חבילה מיובאת, דוחות, צילומים ומקור קוד אב טיפוס</td><td class="status-partial">חלקי</td><td>לא כל הדוחות העתידיים נכתבו ואין משתמשים בכלי חיצוני כמקור אמת</td><td>לייבא רק כאשר יש עדכון אמיתי ולשמור את הריפו כמקור אמת</td><td>P0</td></tr>
+            <tr><td>יקום מילות מפתח</td><td>225 שורות בסיסיות ומפת בעלות</td><td class="status-partial">חלקי</td><td>עדיין חסרות הרחבות מלאות לכל מילות הכסף ומדדי Search Console או Semrush</td><td>להוסיף נתוני ביצועים והרחבות לפי תחום</td><td>P0</td></tr>
+            <tr><td>מיפוי מילת מפתח לעמוד</td><td><code>keyword-to-page-owner.csv</code></td><td class="status-done">מפרט קיים</td><td>נדרש אישור בעלים ואימות נתונים לפני כתיבה רחבה</td><td>לאשר ידנית את השורות הרגישות</td><td>P0</td></tr>
+            <tr><td>ארכיטקטורת עמודים</td><td>39 תבניות עמודים</td><td class="status-partial">חלקי</td><td>צריך מלאי כתובות קיים, החלטות הפניה ואינדוקס</td><td>ליצור טבלת כתובות קיימות מול יעד</td><td>P0</td></tr>
+            <tr><td>מניעת קניבליזציה</td><td>מקור אמת, בעלות מילות מפתח וחבילת מערכת ניהול</td><td class="status-partial">מפרט קיים, לא מוטמע</td><td>אין עדיין רישום פעיל בממשק WordPress ושער פרסום חי</td><td>לבנות רישום פרטי ושערי פרסום</td><td>P0</td></tr>
+            <tr><td>מודעות נדל"ן וחיפוש</td><td>חבילת ביצוע לקידום, אמון נתונים, סינון ודפי נכס</td><td class="status-partial">מפרט קיים, לא בנוי</td><td>אין ממשק ייצור, מלאי מאומת או בדיקות חיות</td><td>לבנות את שכבת החיפוש והכרטיסים לפי החבילה</td><td>P0</td></tr>
+            <tr><td>פרויקטים ושוורום</td><td>חבילת שוורום עם מצבי נכס וקלט לקבלנים</td><td class="status-partial">מפרט קיים, לא מוכן לקבלנים</td><td>חסרים נכסים אמיתיים ויישום חי ברמת מכירה</td><td>לבנות שוורום עם אמת נכסים וצילום כל מצב</td><td>P0</td></tr>
+            <tr><td>אנשי מקצוע</td><td>מפת עמודים ותכנון בסיסי</td><td class="status-partial">חלקי</td><td>חסרים פרופילים, אימות, מדיניות פנייה וגילוי מסחרי</td><td>ליצור מפרט ספריית אנשי מקצוע</td><td>P1</td></tr>
+            <tr><td>עיצוב ויזואלי</td><td>ספריית מסכים, טוקנים וצילומי מפרט</td><td class="status-partial">מפרט קיים</td><td>עדיין אין יישום מלא באתר החי ונכסים אמיתיים סופיים</td><td>ליישם לפי סדר: דף בית, מודעות נדל"ן, פרויקט, שוורום</td><td>P0</td></tr>
+            <tr><td>רשימת ביצוע</td><td>17 משימות ספרינט וחבילות ביצוע</td><td class="status-done">מפרט קיים</td><td>המשימות לא בוצעו כולן באתר החי</td><td>להתחיל ביצוע לפי שערי קבלה וצילום</td><td>P0</td></tr>
+            <tr><td>טכני וקידום אורגני</td><td>תוכניות קיימות ומפת עמודים</td><td class="status-partial">חלקי</td><td>חסרה מטריצת schema, קנוניקל, פירורי לחם ואינדוקס לכל סוג עמוד</td><td>ליצור מטריצת SEO טכנית</td><td>P1</td></tr>
+            <tr><td>מחקר מתחרים לפי שאילתות</td><td>מפת מתחרים בסיסית</td><td class="status-weak">חלש</td><td>אין פירוק SERP לפי שאילתה ומדדים מלאים</td><td>להריץ מחקר מתחרים לפי קבוצות כסף</td><td>P0</td></tr>
+            <tr><td>משקיעים מחו"ל</td><td>עמודי יעד בתכנון ושכבת שפה</td><td class="status-partial">חלקי</td><td>חסר משפך אנגלית מלא, בדיקה משפטית ופרסונות לפי מדינה</td><td>ליצור חבילת משפך משקיעים באנגלית</td><td>P1</td></tr>
+            <tr><td>כלים ומחשבונים</td><td>תכנון עמודי כלים</td><td class="status-partial">חלקי</td><td>חסרים נוסחאות, מקורות, הנחות, אזהרות ותצוגת תוצאה</td><td>ליצור חבילת מפרטי מחשבונים</td><td>P0</td></tr>
+            <tr><td>מוניטיזציה</td><td>מסמך ראשוני לערוצי הכנסה</td><td class="status-weak">חלש</td><td>אין חבילות מחיר, CRM, גילוי מסחרי מלא ומסלול מכירה</td><td>ליצור מודל תפעול הכנסות וגילוי מסחרי</td><td>P1</td></tr>
+            <tr><td>מדידה ומרכז מדדים</td><td>מילון אירועים, חבילת מדידה, כרטיסי מדדים, פרטיות ושערי בדיקה</td><td class="status-partial">מפרט קיים, לא מוטמע</td><td>אין עדיין הטמעה חיה, חיבור CRM או מסך מדדים עם נתונים אמיתיים</td><td>להטמיע שכבת אירועים, לצלם בדיקות, ואז לבנות מרכז מדדים</td><td>P1</td></tr>
+            <tr><td>תוצרים קריאים לבעלים</td><td>אינדקס בעלים, HTML, CSV, אקסל וצילומי מסך</td><td class="status-done">מפרט קיים</td><td>עדיין לא נשלח אימייל מתוך המערכת הזאת</td><td>לשלוח רק לאחר אישור כתובת ונוסח</td><td>P0</td></tr>
           </tbody>
         </table>
       </div>
@@ -88,12 +124,11 @@
     <section>
       <h2>סדר עבודה מומלץ</h2>
       <ol>
-        <li><strong>P0-1:</strong> ליצור <code>keyword-to-page-owner.csv</code> לכל 225 השורות.</li>
-        <li><strong>P0-2:</strong> להפוך את ה-backlog לספרינטים עם page_id, component, acceptance criteria וראיית בדיקה.</li>
-        <li><strong>P0-3:</strong> להשלים Stage 1 public trust screenshots אחרי UPress/cache.</li>
-        <li><strong>P0-4:</strong> להריץ Lovable Report 3A בפרויקט תקין, בלי ויתור על מילות כסף.</li>
-        <li><strong>P0-5:</strong> להעמיק מפרטי מוצר: Listings, Project Showroom, Professionals, Calculators.</li>
-        <li><strong>P1:</strong> לעבור לעיצוב high-fidelity, design tokens, SERP teardowns, monetization, analytics.</li>
+        <li>לסגור אמון חי ודליפות ציבוריות, ואז לצלם מחדש.</li>
+        <li>לאשר את בעלות מילות המפתח לפני כתיבה נוספת.</li>
+        <li>לבנות שוורום ומודעות נדל"ן לפי החבילות המצולמות.</li>
+        <li>להטמיע מדידה רק לפי מילון האירועים ולצלם הוכחה לכל אירוע מרכזי.</li>
+        <li>להמשיך לחבילות הבאות: משקיעים מחו"ל, אנשי מקצוע, כלים, מוניטיזציה ומחקר מתחרים.</li>
       </ol>
     </section>
   </main>

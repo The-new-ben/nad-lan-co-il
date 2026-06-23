@@ -13,11 +13,14 @@ Primary owner-facing artifacts:
 - `listing-seo-execution-packet-visual-qa.md` - screenshot review note for the listings and SEO packet.
 - `admin-war-room-execution-packet-rtl.html` - Hebrew RTL admin war-room packet with keyword registry, workflow gates, screenshots, evidence, measurement, and reusable-system decisions.
 - `admin-war-room-execution-packet-visual-qa.md` - screenshot review note for the admin war-room packet.
+- `analytics-kpi-execution-packet-rtl.html` - Hebrew RTL analytics and KPI packet with event dictionary, funnels, privacy rules, owner dashboard cards, and debug evidence gates.
+- `analytics-kpi-execution-packet-visual-qa.md` - screenshot review note for the analytics and KPI packet.
 - `objective-completion-audit-rtl.html` - Hebrew RTL audit against the full war-room objective, showing what is proven, partial, or still missing.
 - `current-site-evidence-2026-06-23-rtl.html` - Hebrew RTL summary of the fresh live public-site screenshot run from 2026-06-23.
 - `current-site-and-objective-audit-visual-qa.md` - screenshot review note for the fresh public evidence and objective audit.
 - `nadlan-war-room-spec-rtl.html` - Hebrew RTL report with current-site evidence, page architecture, UX direction, and visual mockups.
 - `full-war-room-gap-map-rtl.html` - readable Hebrew gap report for the owner.
+- `full-war-room-gap-map-visual-qa.md` - screenshot review note for the refreshed full gap map.
 
 Structured artifacts:
 
@@ -32,6 +35,9 @@ Structured artifacts:
 - `listing-seo-execution-packet.md` - implementation narrative for the next listings and SEO build slice.
 - `admin-war-room-execution-packet.csv` - structured admin governance queue with registry, fields, workflow, publish gates, evidence, analytics, permissions, import/export, and replication package.
 - `admin-war-room-execution-packet.md` - implementation narrative for the WordPress admin war-room and future-site replication system.
+- `analytics-event-dictionary.csv` - structured event dictionary for search, property results, showroom, maps, leads, professionals, tools, contractor intake, and admin gates.
+- `analytics-kpi-execution-packet.csv` - structured analytics and KPI queue with event layer, recommended events, privacy, funnels, dashboard cards, debug evidence, and consent gates.
+- `analytics-kpi-execution-packet.md` - implementation narrative for measurement, dashboards, attribution, privacy, and proof gates.
 - `lovable-design-validation-prompt.md` - controlled no-spend prompt to use only if the owner chooses another Lovable review.
 - `keyword-to-page-owner.csv` - one canonical owner for every keyword row from the recovered Report 2 keyword universe.
 - `current-evidence-register.csv` - evidence, limitations, and next verification actions.
