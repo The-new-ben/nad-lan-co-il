@@ -29,6 +29,7 @@ function parseArgs(argv) {
     strict: false,
     injectV1681Css: false,
     injectV1690Preview: false,
+    replaceLiveP3dCss: false,
   };
   for (let i = 2; i < argv.length; i += 1) {
     const a = argv[i];
@@ -38,12 +39,14 @@ function parseArgs(argv) {
     else if (a === '--strict') out.strict = true;
     else if (a === '--inject-v1681-css') out.injectV1681Css = true;
     else if (a === '--inject-v1690-preview') out.injectV1690Preview = true;
+    else if (a === '--replace-live-p3d-css') out.replaceLiveP3dCss = true;
     else if (a === '--help' || a === '-h') {
       console.log(`Usage:
   node scripts/qa-project-showroom-visual.mjs --site https://nad-lan.co.il --slug rainbow-tel-aviv
   node scripts/qa-project-showroom-visual.mjs --strict
   node scripts/qa-project-showroom-visual.mjs --slug dimri-yama-sde-dov --inject-v1681-css
   node scripts/qa-project-showroom-visual.mjs --slug rainbow-tel-aviv --inject-v1690-preview
+  node scripts/qa-project-showroom-visual.mjs --slug rainbow-tel-aviv --inject-v1690-preview --replace-live-p3d-css
 
 Uses local Chrome/Edge headless through the Chrome DevTools Protocol. Set CHROME_PATH to override
 the browser executable. Screenshots and report are written under ${DEFAULT_OUT}.`);
@@ -253,9 +256,11 @@ function metricsExpression() {
     const firstPickRect = firstPick ? firstPick.getBoundingClientRect() : null;
     const tapTargets = Array.from(document.querySelectorAll('.nlp3d-cell,.nlp3d-stage-pick,.nlp3d-stage-card-actions button,.nlp3d-lead-form button,.nlp3d-owner-form button,.nlp3d-tool,.nlp3d-view-toggle')).filter(visible).map((el) => {
       const r = el.getBoundingClientRect();
-      return { selector: el.className || el.getAttribute('data-action') || el.tagName, width: r.width, height: r.height };
+      const text = (el.innerText || el.getAttribute('aria-label') || '').trim().replace(/\\s+/g, ' ').slice(0, 80);
+      return { selector: el.className || el.getAttribute('data-action') || el.tagName, action: el.getAttribute('data-action') || '', text, width: r.width, height: r.height };
     });
     const minTap = tapTargets.reduce((min, t) => Math.min(min, t.width, t.height), tapTargets.length ? Infinity : 0);
+    const smallTapTargets = tapTargets.filter((t) => Math.min(t.width, t.height) < 44).slice(0, 12);
     const h1s = Array.from(document.querySelectorAll('h1')).filter(visible).map((h) => h.innerText.trim()).filter(Boolean);
     const errors = [];
     if (/Fatal error|Stack trace|Warning:|Notice:|Parse error/.test(document.documentElement.innerHTML)) errors.push('php-error-text');
@@ -287,7 +292,7 @@ function metricsExpression() {
       modelViewerCount: document.querySelectorAll('model-viewer').length,
       ownerFormVisible: visible(document.querySelector('.nlp3d-owner-form')),
       leadFormVisible: visible(document.querySelector('.nlp3d-lead-form')),
-      tapTargets: { count: tapTargets.length, min: Math.round(minTap * 10) / 10 },
+      tapTargets: { count: tapTargets.length, min: Math.round(minTap * 10) / 10, small: smallTapTargets },
       textSignals: {
         hasBuyerCta: text.includes('דברו איתי על הדירה'),
         hasNonBindingPurchase: text.includes('לא מחייב'),
@@ -295,6 +300,10 @@ function metricsExpression() {
         hasInternalWords: /לידים|פאנל|CRM|monetization|paid placement/.test(text)
       },
       publicLeakTerms,
+      previewCss: {
+        removedLiveP3dStyles: Number(document.documentElement.dataset.nadlanRemovedP3dCss || '0'),
+        injectedV1690Preview: !!document.getElementById('nadlan-v1690-preview-css')
+      },
       errors
     };
   })()`;
@@ -316,10 +325,23 @@ function extractV1690Css() {
   return extractCssFunction('nadlan_p3d_lovable_showroom_v1690_css');
 }
 
-function v1690PreviewExpression(css) {
+function v1690PreviewExpression(css, replaceLiveP3dCss = false) {
   return `(() => {
     const old = document.getElementById('nadlan-v1690-preview-css');
     if (old) old.remove();
+    let removedLiveP3dStyles = 0;
+    if (${replaceLiveP3dCss ? 'true' : 'false'}) {
+      Array.from(document.querySelectorAll('style')).forEach((node) => {
+        const id = node.id || '';
+        const text = node.textContent || '';
+        const isLiveShowroomStyle = id === 'nadlan-p3d-inline-css' || id.indexOf('nadlan-p3d') > -1 || text.indexOf('.nlp3d') > -1;
+        if (isLiveShowroomStyle && id !== 'nadlan-v1690-preview-css') {
+          node.remove();
+          removedLiveP3dStyles += 1;
+        }
+      });
+    }
+    document.documentElement.dataset.nadlanRemovedP3dCss = String(removedLiveP3dStyles);
     const style = document.createElement('style');
     style.id = 'nadlan-v1690-preview-css';
     style.textContent = ${JSON.stringify(css)};
@@ -406,7 +428,7 @@ async function runViewport(client, args, viewport, outDir, pageErrors) {
   }
   if (args.injectV1690Preview) {
     await client.send('Runtime.evaluate', {
-      expression: v1690PreviewExpression(extractV1690Css()),
+      expression: v1690PreviewExpression(extractV1690Css(), args.replaceLiveP3dCss),
       awaitPromise: true,
     });
     await waitForIdle(client, 450);
@@ -423,6 +445,14 @@ async function runViewport(client, args, viewport, outDir, pageErrors) {
   const shot = await client.send('Page.captureScreenshot', { format: 'png', fromSurface: true });
   const screenshot = path.join(outDir, `${viewport.name}.png`);
   fs.writeFileSync(screenshot, Buffer.from(shot.data, 'base64'));
+  await client.send('Runtime.evaluate', {
+    expression: `document.querySelector('.nlp3d-stage-wrap')?.scrollIntoView({block:'center', inline:'center'});`,
+    awaitPromise: true,
+  });
+  await waitForIdle(client, 350);
+  const stageShot = await client.send('Page.captureScreenshot', { format: 'png', fromSurface: true });
+  const stageScreenshot = path.join(outDir, `stage-${viewport.name}.png`);
+  fs.writeFileSync(stageScreenshot, Buffer.from(stageShot.data, 'base64'));
 
   const failures = [];
   if (!after.rootRect) failures.push('showroom root missing');
@@ -444,7 +474,7 @@ async function runViewport(client, args, viewport, outDir, pageErrors) {
   const viewportErrors = pageErrors.splice(0, pageErrors.length);
   if (viewportErrors.length) failures.push(`console/page errors: ${viewportErrors.slice(0, 3).join(' | ')}`);
 
-  return { name: viewport.name, screenshot, before, after, failures };
+  return { name: viewport.name, screenshot, stageScreenshot, before, after, failures };
 }
 
 async function main() {
@@ -481,6 +511,7 @@ async function main() {
       slug: args.slug,
       injected_v1681_css: args.injectV1681Css,
       injected_v1690_preview: args.injectV1690Preview,
+      replaced_live_p3d_css: args.replaceLiveP3dCss,
       generated_at: new Date().toISOString(),
       out_dir: args.outDir,
       summary: { passed: viewports.length - failed.length, failed: failed.length },
