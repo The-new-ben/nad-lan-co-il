@@ -56,6 +56,10 @@ Some tap points intentionally landed on visible apartment buttons rather than ra
 
 ## Evidence
 
+Chrome session check:
+
+- `docs/qa/screenshots/showroom-live-model-selection-1697-2026-06-24/chrome-live-tap-report.json`
+
 Marker-center QA:
 
 - `docs/qa/screenshots/showroom-marker-hit-test-live-1697-2026-06-24/showroom-marker-hit-report.json`
@@ -72,4 +76,3 @@ Free model-surface grid QA:
 ## Honest limitation
 
 This is still not true per-window GLB mesh picking. It is marker-center selection plus nearest visible demo-unit selection when the user taps the model surface. True click-any-window selection requires official apartment geometry, BIM data, or a GLB authored with per-unit pickable meshes. The current live showroom proves selection for the six demo units that exist in the payload.
-

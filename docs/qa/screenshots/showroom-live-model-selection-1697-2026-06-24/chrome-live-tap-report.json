@@ -1,0 +1,21 @@
+{
+  "createdAt": "2026-06-24T02:20:00+03:00",
+  "browser": "user Chrome via Codex Chrome extension",
+  "url": "https://nad-lan.co.il/projects/rainbow-tel-aviv/?codex_chrome_live_1697=1782256594022",
+  "action": "targeted tap inside the visible model-viewer area after scrolling to the showroom",
+  "tap": {
+    "x": 745,
+    "y": 98,
+    "elementBeforeTap": {
+      "tag": "MODEL-VIEWER",
+      "className": "nlp3d-model-viewer",
+      "markerUnit": null
+    }
+  },
+  "after": {
+    "cameraOrbit": "32deg 58deg auto",
+    "cameraTarget": "0 124 7",
+    "selectedTextObserved": "Penthouse selected state was visible in the unit panel text. The Chrome DOM selector used for activeUnit did not expose a unit id, so this report does not claim activeUnit by selector."
+  },
+  "honesty": "The Chrome screenshot API was flaky in this session, so the visual proof remains the Playwright screenshot set committed next to this report. This Chrome report is kept as browser-session evidence, not as the primary visual proof."
+}
