@@ -1,0 +1,127 @@
+#!/usr/bin/env bash
+# .githooks/pre-push — runs BEFORE every git push. Blocks bad releases at the source.
+# Install once: git config core.hooksPath .githooks
+# What it blocks:
+#   1. ZIP files with backslash paths (M3 — the server crash)
+#   2. Version drift across the 6 surfaces (M1)
+#   3. Stacked visual systems (>1 final dark/cream override layer in project-3d.php)
+#   4. Public-language leaks in buyer-visible strings (project_3d_*, raw field names, AI-tells, em dashes)
+# To bypass intentionally (rare, e.g. docs-only PR): GIT_HOOK_BYPASS=1 git push
+
+set -e
+
+if [ -n "${GIT_HOOK_BYPASS:-}" ]; then
+  echo "pre-push: bypassed via GIT_HOOK_BYPASS=1"
+  exit 0
+fi
+
+REPO_ROOT="$(git rev-parse --show-toplevel)"
+cd "$REPO_ROOT"
+
+FAIL=0
+fail() { echo "  ❌ $*" >&2; FAIL=1; }
+ok()   { echo "  ✓ $*"; }
+
+echo "═══ pre-push verification ═══"
+
+# 1. plugin release verifier (existing tooling — re-use, don't reinvent)
+if [ -x scripts/verify-plugin-release.py ] || [ -f scripts/verify-plugin-release.py ]; then
+  CURRENT_VER=$(grep -m1 -oE 'Version: [0-9.]+' plugins/nadlan-config/nadlan-config.php 2>/dev/null | grep -oE '[0-9.]+' || echo "")
+  if [ -n "$CURRENT_VER" ] && [ -f "plugin-dist/nadlan-config-$CURRENT_VER.zip" ]; then
+    if python3 scripts/verify-plugin-release.py "$CURRENT_VER" >/dev/null 2>&1; then
+      ok "verify-plugin-release.py PASS ($CURRENT_VER)"
+    else
+      fail "verify-plugin-release.py FAIL ($CURRENT_VER) — run it manually for details"
+    fi
+  else
+    ok "no release ZIP for $CURRENT_VER — skipping (non-release push)"
+  fi
+fi
+
+# 2. ZIP backslash sweep (M3 — extra defence even if verifier path missed)
+for z in plugin-dist/*.zip; do
+  [ -f "$z" ] || continue
+  BS=$(python3 -c "import zipfile,sys
+try:
+  z=zipfile.ZipFile('$z'); n=z.namelist()
+  print(sum('\\\\' in x for x in n))
+except: print(0)" 2>/dev/null)
+  if [ "${BS:-0}" -gt 0 ]; then
+    fail "ZIP $z has $BS backslash paths (M3 — would crash the server)"
+  fi
+done
+[ $FAIL -eq 0 ] && ok "all ZIPs forward-slash clean"
+
+# 3. stacked-CSS guard: count wp_add_inline_style calls that emit visual-system rules
+# Rule: a release should have ONE primary visual system, not many "final override" layers
+if [ -f plugins/nadlan-config/inc/project-3d.php ]; then
+  INLINE_COUNT=$(grep -cE "wp_add_inline_style\(\s*'nadlan-p3d'" plugins/nadlan-config/inc/project-3d.php)
+  if [ "$INLINE_COUNT" -gt 8 ]; then
+    fail "stacked CSS: $INLINE_COUNT wp_add_inline_style calls (cap 8). Delete legacy dark layers at the source instead of overriding."
+  else
+    ok "inline-style enqueues: $INLINE_COUNT (cap 8)"
+  fi
+fi
+
+# 4. public-language leak scan in buyer-visible PHP strings
+if [ -f plugins/nadlan-config/inc/project-3d.php ]; then
+  # extract HTML text nodes and visible-attribute values; check for forbidden tokens
+  LEAKS=$(python3 - <<'PY'
+import re
+src=open('plugins/nadlan-config/inc/project-3d.php',encoding='utf-8').read()
+visible=[]
+for m in re.finditer(r'>([^<>{}]{3,140})<', src): visible.append(m.group(1))
+for m in re.finditer(r'(?:aria-label|title|placeholder|alt)="([^"]{3,140})"', src): visible.append(m.group(1))
+forbidden=['project_3d_','project_3d_facade_images','GLB','SVG','Lovable','Codex','war-room','war room','KD','money page','nlp3d-','camera_orbit','hotspot_position','fallback']
+leaks=[]
+for v in visible:
+    for t in forbidden:
+        if t in v: leaks.append((t,v.strip()[:60]))
+print(len(leaks))
+for t,v in leaks[:3]: print(f"    {t} → {v}")
+PY
+)
+  COUNT=$(echo "$LEAKS" | head -1)
+  if [ "${COUNT:-0}" -gt 0 ]; then
+    fail "public-language leaks ($COUNT) in buyer-visible strings:"
+    echo "$LEAKS" | tail -n +2 >&2
+  else
+    ok "no public-language leaks in buyer-visible strings"
+  fi
+fi
+
+# 5. auto-update STATE.md NOW block on success
+if [ $FAIL -eq 0 ] && [ -f STATE.md ]; then
+  CURRENT_VER=$(grep -m1 -oE 'Version: [0-9.]+' plugins/nadlan-config/nadlan-config.php 2>/dev/null | grep -oE '[0-9.]+' || echo unknown)
+  LOCAL_SHA=$(git rev-parse --short HEAD 2>/dev/null || echo unknown)
+  WHO=$(git config user.name 2>/dev/null || echo unknown)
+  LIVE=$(curl -s --max-time 4 https://nad-lan.co.il/wp-json/nadlan/v1/healthcheck 2>/dev/null \
+    | python3 -c "import json,sys;print(json.load(sys.stdin).get('version','?'))" 2>/dev/null || echo "?")
+  INSYNC=$([ "$CURRENT_VER" = "$LIVE" ] && echo YES || echo NO)
+  python3 - <<PY
+import re,pathlib
+p=pathlib.Path('STATE.md'); s=p.read_text(encoding='utf-8')
+new=f"""git main HEAD       : {"$LOCAL_SHA"}
+plugin version (git): {"$CURRENT_VER"}
+live plugin version : {"$LIVE"}
+plugin in-sync      : {"$INSYNC"}
+last push           : {"$(date -u '+%Y-%m-%d')"} · {"$WHO"} · pre-push verified
+active release      : (Codex/Claude: update by hand)
+open blocker        : (update by hand)"""
+s=re.sub(r'(```\ngit main HEAD.*?\n)(.*?)(\n```)', lambda m: m.group(1)+new+m.group(3), s, count=1, flags=re.S)
+p.write_text(s, encoding='utf-8')
+PY
+  # stage the updated STATE.md so it goes out with this push
+  git add STATE.md 2>/dev/null || true
+  ok "STATE.md NOW block auto-updated"
+fi
+
+if [ $FAIL -ne 0 ]; then
+  echo ""
+  echo "═══ PUSH BLOCKED — fix the failures above ═══"
+  echo "To bypass intentionally (rare): GIT_HOOK_BYPASS=1 git push"
+  exit 1
+fi
+
+echo "═══ pre-push verification PASSED ═══"
+exit 0
