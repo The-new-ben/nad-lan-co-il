@@ -1,0 +1,257 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Stakeholder Input Packet - NadLan</title>
+  <style>
+    :root {
+      --paper: #fbfaf6;
+      --panel: #ffffff;
+      --ink: #18211b;
+      --muted: #566257;
+      --line: #d9dfd8;
+      --accent: #176b57;
+      --warn: #9b5a18;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      background: var(--paper);
+      color: var(--ink);
+      font-family: Arial, Helvetica, sans-serif;
+      line-height: 1.55;
+    }
+    main {
+      width: min(1080px, calc(100% - 30px));
+      margin: 0 auto;
+      padding: 30px 0 56px;
+    }
+    h1 {
+      margin: 0 0 8px;
+      font-size: clamp(28px, 5vw, 46px);
+      line-height: 1.08;
+      letter-spacing: 0;
+    }
+    h2 {
+      margin: 28px 0 12px;
+      font-size: 23px;
+      letter-spacing: 0;
+    }
+    p { margin: 0 0 12px; }
+    ol, ul { padding-left: 24px; }
+    li { margin: 7px 0; }
+    header {
+      border-bottom: 1px solid var(--line);
+      padding-bottom: 20px;
+      margin-bottom: 22px;
+    }
+    .lead {
+      color: var(--muted);
+      font-size: 18px;
+      max-width: 830px;
+    }
+    .callout {
+      background: #edf6f2;
+      border-left: 5px solid var(--accent);
+      border-radius: 8px;
+      padding: 16px 18px;
+      margin: 18px 0;
+    }
+    .warn {
+      background: #fff6e8;
+      border-left-color: var(--warn);
+    }
+    .panel {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 18px;
+      margin: 14px 0;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      overflow: hidden;
+    }
+    th, td {
+      border-bottom: 1px solid var(--line);
+      padding: 10px 12px;
+      text-align: left;
+      vertical-align: top;
+    }
+    th { background: #edf2ee; }
+    code {
+      background: #eef2ee;
+      border: 1px solid #dce3dc;
+      border-radius: 5px;
+      padding: 2px 5px;
+      font-family: Consolas, "Courier New", monospace;
+      font-size: 0.94em;
+    }
+    pre {
+      white-space: pre-wrap;
+      overflow-wrap: anywhere;
+      background: #101511;
+      color: #f6f4eb;
+      padding: 16px;
+      border-radius: 8px;
+      font-size: 14px;
+      line-height: 1.5;
+    }
+    @media (max-width: 760px) {
+      main { width: calc(100% - 22px); padding-top: 22px; }
+      .grid { grid-template-columns: 1fr; }
+      table { font-size: 14px; }
+      th, td { padding: 9px; }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <h1>Stakeholder Input Packet</h1>
+      <p class="lead">A practical call sheet for collecting the facts needed from the relevant decision-maker, advisor, contractor contact, or technical partner before NadLan turns the showroom into a contractor-facing product. This does not pause Lovable or Codex work; it protects the implementation from wrong assumptions.</p>
+    </header>
+
+    <section class="callout">
+      <strong>Goal of the call:</strong>
+      decide which project is the first serious demo, what real assets exist, how leads and monetization work, and whether the implementation stays inside the current WordPress plugin path.
+    </section>
+
+    <section class="grid">
+      <div class="panel">
+        <h2>Asset Questions</h2>
+        <ol>
+          <li>Which project should be the first contractor demo?</li>
+          <li>Do we have a real GLB/3D model, or only facade/photo/plans?</li>
+          <li>Do we have official facade renders?</li>
+          <li>Do we have floor plans per floor and per unit?</li>
+          <li>Do we have coordinates for the project and building entrance?</li>
+          <li>Do we have unit-level price, floor, sqm, rooms, direction, availability, parking, storage, and delivery?</li>
+          <li>Do we have Matterport, Cupix, drone, panorama, interior render, or apartment-tour URLs?</li>
+          <li>Are there restrictions on showing prices, availability, view, or renderings?</li>
+        </ol>
+      </div>
+      <div class="panel">
+        <h2>Product Questions</h2>
+        <ol>
+          <li>What is the minimum impressive flow for a contractor demo?</li>
+          <li>Should the first demo emphasize 3D, view, map, interior, AI, or lead conversion?</li>
+          <li>What is the best mobile order?</li>
+          <li>Should AI be public immediately or start as concierge/lead assistant?</li>
+          <li>What comparison features matter most?</li>
+          <li>What should happen when assets are missing?</li>
+          <li>What proof will make a developer pay?</li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="grid">
+      <div class="panel">
+        <h2>Business Questions</h2>
+        <ol>
+          <li>Who pays first: contractor, buyer, professional, or partner broker?</li>
+          <li>What are the contractor packages?</li>
+          <li>Referral fee, advertising fee, success fee, subscription, or hybrid?</li>
+          <li>Who owns the lead?</li>
+          <li>What lead fields are mandatory?</li>
+          <li>What is the response SLA?</li>
+          <li>WhatsApp first, form first, concierge first, or combined?</li>
+          <li>Which professional verticals should be monetized first?</li>
+        </ol>
+      </div>
+      <div class="panel">
+        <h2>SEO And Market Questions</h2>
+        <ol>
+          <li>Which categories must NadLan win first?</li>
+          <li>Which topics are legally or commercially sensitive?</li>
+          <li>Which Israeli competitors are direct benchmarks?</li>
+          <li>Which commercial pages must exist even if hard to rank?</li>
+          <li>Which outbound markets matter now: Cyprus, Dubai/UAE, Greece, Thailand, or others?</li>
+          <li>What languages matter first?</li>
+          <li>What approval process is required before AI-assisted content is published?</li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="panel">
+      <h2>Technical WordPress Questions</h2>
+      <ol>
+        <li>Should the showroom stay in the existing <code>nadlan-config</code> plugin or become a separate module?</li>
+        <li>What custom post types are final: projects, units, compounds, professionals, guides, cities, neighborhoods, destination countries?</li>
+        <li>Which data belongs in WordPress meta, JSON assets, or external services?</li>
+        <li>Who maintains Mapbox tokens, geocoding, coordinates, and map style?</li>
+        <li>Which multilingual path should be used?</li>
+        <li>Is there an existing CRM, email, WhatsApp, or lead destination?</li>
+        <li>Should leads be stored in WordPress, sent externally, or both?</li>
+        <li>What privacy/security constraints apply to leads?</li>
+        <li>What UPress caching/CDN constraints matter?</li>
+        <li>What mobile performance target is acceptable for 3D?</li>
+      </ol>
+    </section>
+
+    <section>
+      <h2>Decision Impact</h2>
+      <table>
+        <thead>
+          <tr><th>Stakeholder answer</th><th>Build impact</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Real GLB exists</td><td>Build model-first unit hotspot flow.</td></tr>
+          <tr><td>Only facade/plans exist</td><td>Build facade-first premium fallback, no fake 3D.</td></tr>
+          <tr><td>Matterport/Cupix exists</td><td>Add interior-tour tab and deep link flow.</td></tr>
+          <tr><td>No Mapbox token</td><td>Build not-ready map state and admin token checklist.</td></tr>
+          <tr><td>Contractor pays first</td><td>Prioritize contractor package dashboard and showroom readiness score.</td></tr>
+          <tr><td>Outbound markets are strategic now</td><td>Add country/city/project taxonomy and foreign partner intake.</td></tr>
+          <tr><td>Professionals are strategic now</td><td>Add professional vertical pages and referral routing rules.</td></tr>
+          <tr><td>WP plugin path is approved</td><td>Implement inside <code>plugins/nadlan-config/inc/project-3d.php</code> and related assets.</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section>
+      <h2>Call Summary Template</h2>
+      <pre>Date:
+Participants:
+
+Best first demo project:
+Available assets:
+Missing assets:
+Asset restrictions:
+
+Main buyer flow:
+Main contractor pitch:
+Lead routing decision:
+Monetization decision:
+
+SEO categories to prioritize:
+Outbound countries:
+Professional verticals:
+Languages:
+
+Technical direction:
+WordPress/plugin decision:
+CRM/WhatsApp/email decision:
+Mapbox/data decision:
+Performance/caching notes:
+
+Immediate next actions:
+Owner decisions still needed:</pre>
+    </section>
+
+    <section class="callout warn">
+      <strong>Current recommendation:</strong>
+      continue the design/prototype run now. For implementation, start from the current WordPress plugin renderer, use Rainbow as the model-first reference, Dimri as the concept/facade fallback, and urban renewal as the low-asset mode.
+    </section>
+  </main>
+</body>
+</html>
