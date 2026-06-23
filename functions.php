@@ -718,6 +718,7 @@ if ( ! function_exists( 'nadlan_revenue_premium_front_page' ) ) :
 		$property_url   = get_post_type_archive_link( 'nadlan_property' ) ?: home_url( '/properties/' );
 		$join_url       = home_url( '/join-pro/' );
 		$studio_url     = home_url( '/studio/' );
+		$rainbow_url    = home_url( '/projects/rainbow-tel-aviv/' );
 		$projects       = nadlan_revenue_premium_projects();
 		$pros           = nadlan_revenue_premium_professionals();
 
@@ -727,18 +728,18 @@ if ( ! function_exists( 'nadlan_revenue_premium_front_page' ) ) :
 	<section class="nlux-hero" aria-label="נדל״ן חכם">
 		<div class="nlux-hero-media" aria-hidden="true"></div>
 		<div class="nlux-hero-copy">
-			<p class="nlux-kicker">נדל״ן חכם · ישראל</p>
-			<h1>נדל״ן חכם: קנייה, מכירה והשקעה בעסקת נדל״ן מבוססת נתונים</h1>
-			<p class="nlux-lead">פרויקטים חדשים, אנשי מקצוע מאומתים, מדריכים ומחשבונים לבדיקת עסקת נדל״ן: מס רכישה, משכנתא, טאבו וליווי עו״ד מקרקעין. הכול במקום אחד, חינם.</p>
+			<p class="nlux-kicker">פרויקטים חדשים · ישראל</p>
+			<h1>נדל״ן חכם: בוחרים פרויקט ודירה לפני שפונים ליזם</h1>
+			<p class="nlux-intro">סיורי פרויקטים בתלת ממד, בחירת דירה על הבניין, אומדני מחיר, סביבת הפרויקט, מחשבונים ואנשי מקצוע במקום אחד, לרוכשים בישראל ולמשקיעים מחוץ לישראל.</p>
 			<form class="nlux-search" method="get" action="<?php echo esc_url( $project_url ); ?>">
-				<input type="search" name="q" placeholder="חפשו פרויקט, עיר, יזם או בעל מקצוע">
+				<input type="search" name="q" placeholder="חפשו פרויקט, עיר או יזם">
 				<input type="text" name="city" placeholder="עיר">
-				<button type="submit">התחילו חיפוש</button>
+				<button type="submit">חפשו פרויקט</button>
 			</form>
 			<div class="nlux-actions">
-				<a href="<?php echo esc_url( $project_url ); ?>">פרויקטים חדשים</a>
-				<a href="<?php echo esc_url( $pro_url ); ?>">אנשי מקצוע</a>
-				<a href="<?php echo esc_url( $join_url ); ?>">פרסמו נכס</a>
+				<a href="<?php echo esc_url( $rainbow_url ); ?>">ראו בחירת דירה בתלת ממד</a>
+				<a href="<?php echo esc_url( $project_url ); ?>">לכל הפרויקטים</a>
+				<a href="<?php echo esc_url( $join_url ); ?>">מסלולי יזמים</a>
 			</div>
 		</div>
 		<div class="nlux-hero-panel" aria-label="נתוני המאגר">
@@ -749,16 +750,16 @@ if ( ! function_exists( 'nadlan_revenue_premium_front_page' ) ) :
 	</section>
 
 	<section class="nlux-paths" aria-label="מסלולי פעולה">
-		<a class="nlux-path" href="<?php echo esc_url( $project_url ); ?>"><span>01</span><h2>מחפשים פרויקט</h2><p>ראו פרויקטים חדשים והתחדשות עירונית עם עיר, יזם, סטטוס ותמונות.</p></a>
-		<a class="nlux-path" href="<?php echo esc_url( $pro_url ); ?>"><span>02</span><h2>בודקים אנשי מקצוע</h2><p>קבלנים, שמאים, עורכי דין ויועצים עם מקור רשמי ופרטי קשר מסודרים.</p></a>
-		<a class="nlux-path" href="<?php echo esc_url( nadlan_revenue_page_url( 'mortgage-calculator', '/mortgage-calculator/' ) ); ?>"><span>03</span><h2>מחשבים עלויות</h2><p>משכנתא, מס רכישה, עלויות עסקה והשוואות לפני החלטה.</p></a>
-		<a class="nlux-path" href="<?php echo esc_url( $join_url ); ?>"><span>04</span><h2>מפרסמים נכס או פרויקט</h2><p>הנכס או הפרויקט שלכם מול אלפי קונים, שוכרים ומשקיעים. פרסום ראשון חינם לתקופה מוגבלת.</p></a>
+		<a class="nlux-path" href="<?php echo esc_url( $rainbow_url ); ?>"><span>01</span><h2>פותחים סיור פרויקט</h2><p>בחרו דירה על הבניין, בדקו קומה, כיוון ונוף, ורק אחר כך פנו ליזם.</p></a>
+		<a class="nlux-path" href="<?php echo esc_url( $project_url ); ?>"><span>02</span><h2>משווים פרויקטים לפי עיר</h2><p>דירה מקבלן, התחדשות עירונית, סטטוס פרויקט ותמונות במקום אחד.</p></a>
+		<a class="nlux-path" href="<?php echo esc_url( nadlan_revenue_page_url( 'mortgage-calculator', '/mortgage-calculator/' ) ); ?>"><span>03</span><h2>מחשבים עלויות לפני חתימה</h2><p>משכנתא, מס רכישה ועלויות עסקה לפני שמתקדמים לשיחה או חוזה.</p></a>
+		<a class="nlux-path" href="<?php echo esc_url( $join_url ); ?>"><span>04</span><h2>מציגים פרויקט למשקיעים</h2><p>עמוד פרויקט עם תמונות, מפה, בחירת דירות ופנייה מסודרת לקונים בארץ ומחוץ לישראל.</p></a>
 	</section>
 
 	<section class="nlux-showcase" aria-label="פרויקטים נבחרים">
 		<div class="nlux-section-head">
 			<p class="nlux-kicker">פרויקטים חדשים</p>
-			<h2>פרויקטים חדשים והתחדשות עירונית בכל הארץ</h2>
+			<h2>פרויקטים שאפשר להתחיל לבדוק עכשיו</h2>
 			<a href="<?php echo esc_url( $project_url ); ?>">לכל הפרויקטים</a>
 		</div>
 		<div class="nlux-project-grid">
@@ -783,9 +784,9 @@ if ( ! function_exists( 'nadlan_revenue_premium_front_page' ) ) :
 	</section>
 
 	<section class="nlux-data-band" aria-label="למה נדל״ן חכם">
-		<div><strong>מאומת מול רשם הקבלנים</strong><span>נתונים ממקורות ממשלתיים רשמיים</span></div>
-		<div><strong>אלפי פרויקטים ובעלי מקצוע</strong><span>מאגר מתעדכן מכל רחבי הארץ</span></div>
-		<div><strong>מידע חינמי ושקוף</strong><span>כל מה שצריך לבדוק לפני שחותמים</span></div>
+		<div><strong>בחירת דירה חזותית</strong><span>כאשר יש נתונים, רואים קומה, כיוון ונקודת מבט</span></div>
+		<div><strong>מקורות גלויים</strong><span>פרויקטים, יזמים ובעלי מקצוע עם מידע שניתן לבדוק</span></div>
+		<div><strong>פנייה אחרי בדיקה</strong><span>משווים, מחשבים ורק אז מתקדמים לשיחה מסודרת</span></div>
 	</section>
 
 	<section class="nlux-tools" aria-label="כלים ומדריכים">
@@ -827,12 +828,12 @@ if ( ! function_exists( 'nadlan_revenue_premium_front_page' ) ) :
 
 	<section class="nlux-final-cta" aria-label="פרסום פרימיום">
 		<div>
-			<p class="nlux-kicker">פרסום בנדל״ן חכם</p>
-			<h2>יש לכם פרויקט, נכס או עסק בתחום הנדל״ן?</h2>
-			<p>פרסמו אצלנו וקבלו חשיפה לקונים, שוכרים ומשקיעים: עמוד נכס מעוצב, תמונות, מפה ופניות ישירות אליכם.</p>
+			<p class="nlux-kicker">תצוגת פרויקט ליזמים</p>
+			<h2>רוצים להציג פרויקט ברמה שמתאימה למשקיעים?</h2>
+			<p>נבנה עמוד פרויקט עם תמונות, מפה, בחירת דירות, מידע סביבתי ופנייה ישירה. מתאים ליזמים שרוצים להראות את הפרויקט לפני שיחת מכירה.</p>
 		</div>
 		<div class="nlux-actions">
-			<a href="<?php echo esc_url( $join_url ); ?>">מסלולי פרסום</a>
+			<a href="<?php echo esc_url( $join_url ); ?>">מסלולי יזמים</a>
 			<a href="<?php echo esc_url( $studio_url ); ?>">כניסת מפרסמים</a>
 		</div>
 	</section>
@@ -852,6 +853,27 @@ add_filter( 'the_content', function ( $content ) {
 	}
 	return $content;
 }, 99 );
+
+add_filter( 'pre_get_document_title', function ( $title ) {
+	if ( is_front_page() ) {
+		return 'פרויקטים חדשים ודירות בתלת ממד | נדל״ן חכם';
+	}
+	return $title;
+}, 40 );
+
+add_filter( 'wpseo_title', function ( $title ) {
+	if ( is_front_page() ) {
+		return 'פרויקטים חדשים ודירות בתלת ממד | נדל״ן חכם';
+	}
+	return $title;
+}, 40 );
+
+add_filter( 'wpseo_metadesc', function ( $description ) {
+	if ( is_front_page() ) {
+		return 'בדקו פרויקטים חדשים, בחרו דירה בתלת ממד, השוו עלויות ופנו ליזם אחרי בדיקה מסודרת. מיועד לרוכשים בישראל ולמשקיעים מחוץ לישראל.';
+	}
+	return $description;
+}, 40 );
 
 add_filter( 'render_block', function ( $block_content, $block ) {
 	if (

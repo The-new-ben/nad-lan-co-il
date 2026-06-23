@@ -180,7 +180,7 @@ header h1 a::before{
 	overflow-wrap:anywhere;
 	text-shadow:0 2px 18px rgba(0,0,0,.32);
 }
-.nlux-lead{
+.nlux-intro{
 	max-width:760px!important;
 	color:#f4eadb!important;
 	font-size:clamp(17px,1.8vw,23px)!important;
@@ -852,7 +852,7 @@ header h1 a::before{
 		line-height:1.04!important;
 		max-width:100%!important;
 	}
-	.nlux-lead,
+	.nlux-intro,
 	.nlrx-pricing-hero p,
 	.nlrx-gate-hero p{
 		font-size:16px!important;
