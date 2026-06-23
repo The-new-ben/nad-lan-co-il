@@ -3,7 +3,7 @@ Theme Name: NadLan Revenue
 Theme URI: https://nad-lan.co.il
 Author: nad-lan.co.il
 Author URI: https://nad-lan.co.il
-Description: Hebrew RTL real-estate decision and lead-capture theme for nad-lan.co.il. Forked from Twenty Twenty-Five (WordPress core, GPL-2.0+). Adds a private lead post type, the lawyer-owner author signal, and registers WordPress 7.0 Abilities API endpoints under the nadlan/ namespace so AI agents (Codex, ChatGPT Operator, Antigravity, Claude) can introspect the site programmatically. Strategy and skill docs live in skills/ at the theme root — read before editing.
+Description: Hebrew RTL real-estate decision and lead-capture theme for nad-lan.co.il. Forked from Twenty Twenty-Five (WordPress core, GPL-2.0+). Adds a private lead post type, owner trust signals, and programmatic endpoints under the nadlan/ namespace for approved integrations.
 Requires at least: 6.7
 Tested up to: 7.0
 Requires PHP: 7.2
@@ -75,7 +75,7 @@ h1, h2, h3, h4, h5, h6, blockquote, caption, figcaption, p {
 	overflow-x: auto;
 }
 
-/* === NADLAN LUXURY DESIGN SYSTEM (Lovable round 1+2 port) === */
+/* === NADLAN LUXURY DESIGN SYSTEM === */
 /* ============================================================
    נדל״ן חכם · Design System v1.0
    Round 1 + Round 2, WordPress block theme port.
@@ -1391,3 +1391,321 @@ html[dir="rtl"] .drawer { transform: translateX(-100%); }
   .listing-card:hover .listing-media img { transform: none; }
   .listing-card.is-loading .skeleton-bar { animation: none; background: var(--cream-100); }
 }
+
+/* === NADLAN3D LOVABLE TOKENS 2026-06-23 === */
+@font-face {
+  font-family: "Frank Ruhl Libre";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("/wp-content/themes/nadlan-revenue/assets/fonts/frank-ruhl-libre/frl-400.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Frank Ruhl Libre";
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("/wp-content/themes/nadlan-revenue/assets/fonts/frank-ruhl-libre/frl-500.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Frank Ruhl Libre";
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("/wp-content/themes/nadlan-revenue/assets/fonts/frank-ruhl-libre/frl-700.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Frank Ruhl Libre";
+  font-style: normal;
+  font-weight: 900;
+  font-display: swap;
+  src: url("/wp-content/themes/nadlan-revenue/assets/fonts/frank-ruhl-libre/frl-900.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Heebo";
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+  src: url("/wp-content/themes/nadlan-revenue/assets/fonts/heebo/heebo-300.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Heebo";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("/wp-content/themes/nadlan-revenue/assets/fonts/heebo/heebo-400.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Heebo";
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("/wp-content/themes/nadlan-revenue/assets/fonts/heebo/heebo-500.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Heebo";
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("/wp-content/themes/nadlan-revenue/assets/fonts/heebo/heebo-700.woff2") format("woff2");
+}
+
+/* ---- Design tokens ---------------------------------------- */
+:root {
+  /* Brand */
+  --cream:       #FAF7F1;
+  --ink:         #1B1A17;
+  --gold:        #9C7A3C;
+  --terracotta:  #C2563A;
+  --sage:        #7A8F6A;
+
+  /* Semantic surface */
+  --background:           #FAF7F1;
+  --foreground:           #1B1A17;
+  --card:                 #FBF9F4;
+  --card-foreground:      #1B1A17;
+  --popover:              #FBF9F4;
+  --popover-foreground:   #1B1A17;
+  --primary:              #1B1A17;
+  --primary-foreground:   #FAF7F1;
+  --secondary:            #EFEAE0;
+  --secondary-foreground: #1B1A17;
+  --muted:                #EFEAE0;
+  --muted-foreground:     #6B6457;
+  --accent:               #C2563A;
+  --accent-foreground:    #FBF9F4;
+  --destructive:          #B23A1E;
+  --destructive-foreground:#FBF9F4;
+  --border:               #D9D2C4;
+  --input:                #D9D2C4;
+  --ring:                 #9C7A3C;
+
+  /* Radius */
+  --radius:    0.25rem;
+  --radius-sm: 0.125rem;
+  --radius-md: 0.25rem;
+  --radius-lg: 0.375rem;
+  --radius-xl: 0.5rem;
+  --radius-2xl:0.75rem;
+
+  /* Spacing (8pt) */
+  --space-1:  4px;
+  --space-2:  8px;
+  --space-3:  12px;
+  --space-4:  16px;
+  --space-5:  20px;
+  --space-6:  24px;
+  --space-8:  32px;
+  --space-10: 40px;
+  --space-12: 48px;
+  --space-16: 64px;
+  --space-20: 80px;
+  --space-24: 96px;
+
+  /* Shadow (use sparingly — one card hover shadow + one soft shadow) */
+  --shadow-card: 0 8px 24px -12px rgba(27, 26, 23, 0.18);
+  --shadow-soft: 0 1px 2px rgba(27, 26, 23, 0.06);
+
+  /* Typography families */
+  --font-serif-he: "Frank Ruhl Libre", "Frank Ruehl CLM", Georgia, serif;
+  --font-sans-he:  "Heebo", "Assistant", system-ui, sans-serif;
+  --font-serif-en: "Fraunces", "Frank Ruhl Libre", Georgia, serif;
+  --font-sans-en:  "Inter Tight", "Heebo", system-ui, sans-serif;
+
+  /* Type scale (clamp, mobile-first) */
+  --fs-display: clamp(2.25rem, 1.6rem + 3vw, 4rem);
+  --fs-h1:      clamp(1.875rem, 1.4rem + 2.2vw, 3rem);
+  --fs-h2:      clamp(1.5rem, 1.2rem + 1.4vw, 2.25rem);
+  --fs-h3:      clamp(1.25rem, 1.1rem + 0.8vw, 1.625rem);
+  --fs-h4:      1.125rem;
+  --fs-body:    1rem;
+  --fs-small:   0.875rem;
+  --fs-micro:   0.75rem;
+
+  /* Line height + tracking */
+  --lh-tight:   1.15;
+  --lh-snug:    1.35;
+  --lh-normal:  1.55;
+  --lh-loose:   1.75;
+  --tracking-tight:  -0.01em;
+  --tracking-normal: 0;
+  --tracking-wide:    0.08em;
+}
+
+/* ---- Dark mode (optional, toggled via class .dark on <html>) ---- */
+.dark {
+  --background:           #1B1A17;
+  --foreground:           #FAF7F1;
+  --card:                 #232220;
+  --card-foreground:      #FAF7F1;
+  --popover:              #232220;
+  --popover-foreground:   #FAF7F1;
+  --primary:              #FAF7F1;
+  --primary-foreground:   #1B1A17;
+  --secondary:            #2C2A27;
+  --secondary-foreground: #FAF7F1;
+  --muted:                #2C2A27;
+  --muted-foreground:     #B8B1A2;
+  --accent:               #C2563A;
+  --accent-foreground:    #FAF7F1;
+  --destructive:          #D9532E;
+  --destructive-foreground:#FAF7F1;
+  --border:               rgba(255, 255, 255, 0.12);
+  --input:                rgba(255, 255, 255, 0.14);
+  --ring:                 #9C7A3C;
+}
+
+/* ---- Base element rules (scoped; do not reset WP defaults) ---- */
+html { font-family: var(--font-sans-he); }
+html[lang="en"] { font-family: var(--font-sans-en); }
+html[dir="rtl"] { text-align: right; }
+
+body {
+  background-color: var(--background);
+  color: var(--foreground);
+  font-feature-settings: "ss01", "kern";
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1, h2, h3, h4 {
+  font-family: var(--font-serif-he);
+  font-weight: 500;
+  letter-spacing: var(--tracking-tight);
+  line-height: var(--lh-tight);
+}
+html[lang="en"] h1,
+html[lang="en"] h2,
+html[lang="en"] h3,
+html[lang="en"] h4 {
+  font-family: var(--font-serif-en);
+}
+
+h1 { font-size: var(--fs-h1); }
+h2 { font-size: var(--fs-h2); }
+h3 { font-size: var(--fs-h3); }
+h4 { font-size: var(--fs-h4); }
+
+/* ---- Vanilla utility classes ---- */
+.nadlan-hairline   { border: 1px solid var(--border); }
+.nadlan-hairline-b { border-bottom: 1px solid var(--border); }
+.nadlan-hairline-t { border-top: 1px solid var(--border); }
+
+.nadlan-card {
+  background: var(--card);
+  color: var(--card-foreground);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+}
+.nadlan-card:hover { box-shadow: var(--shadow-card); }
+
+.nadlan-btn-primary {
+  background: var(--primary);
+  color: var(--primary-foreground);
+  border: 0;
+  border-radius: var(--radius);
+  padding: 10px 16px;
+  font-family: inherit;
+  font-size: var(--fs-small);
+  cursor: pointer;
+}
+.nadlan-btn-primary:hover { opacity: 0.9; }
+
+.nadlan-btn-accent {
+  background: var(--accent);
+  color: var(--accent-foreground);
+  border: 0;
+  border-radius: var(--radius);
+  padding: 10px 16px;
+  font-family: inherit;
+  font-size: var(--fs-small);
+  cursor: pointer;
+}
+.nadlan-btn-accent:hover { opacity: 0.9; }
+
+.nadlan-btn-ghost {
+  background: transparent;
+  color: var(--foreground);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 10px 16px;
+  font-family: inherit;
+  font-size: var(--fs-small);
+  cursor: pointer;
+}
+.nadlan-btn-ghost:hover { background: var(--secondary); }
+
+.nadlan-badge-featured {
+  background: var(--accent);
+  color: var(--accent-foreground);
+  font-size: 10px;
+  letter-spacing: var(--tracking-wide);
+  text-transform: uppercase;
+  padding: 2px 8px;
+  border-radius: var(--radius-sm);
+  font-weight: 500;
+}
+.nadlan-badge-promoted {
+  background: var(--ink);
+  color: var(--cream);
+  font-size: 10px;
+  letter-spacing: var(--tracking-wide);
+  text-transform: uppercase;
+  padding: 2px 8px;
+  border-radius: var(--radius-sm);
+  font-weight: 500;
+}
+.nadlan-badge-standard {
+  background: var(--card);
+  color: var(--muted-foreground);
+  border: 1px solid var(--border);
+  font-size: 10px;
+  letter-spacing: var(--tracking-wide);
+  text-transform: uppercase;
+  padding: 2px 8px;
+  border-radius: var(--radius-sm);
+  font-weight: 500;
+}
+
+.nadlan-eyebrow {
+  font-family: var(--font-sans-he);
+  font-size: var(--fs-micro);
+  letter-spacing: var(--tracking-wide);
+  text-transform: uppercase;
+  color: var(--muted-foreground);
+}
+html[lang="en"] .nadlan-eyebrow { font-family: var(--font-sans-en); }
+
+.nadlan-gold-rule {
+  display: block;
+  width: 32px;
+  height: 2px;
+  background: var(--gold);
+  border: 0;
+  margin: 0 0 16px;
+}
+
+/* AI-generated content watermark (mandatory on AI plan renders) */
+.nadlan-watermark-ai { position: relative; }
+.nadlan-watermark-ai-overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+  font-family: var(--font-sans-he);
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(75, 65, 52, 0.55);
+  background: repeating-linear-gradient(
+    -45deg,
+    transparent 0,
+    transparent 80px,
+    rgba(156, 122, 60, 0.04) 80px,
+    rgba(156, 122, 60, 0.04) 160px
+  );
+}
+
+/* === END NADLAN3D LOVABLE TOKENS 2026-06-23 === */
