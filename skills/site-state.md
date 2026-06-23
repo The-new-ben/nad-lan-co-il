@@ -837,3 +837,20 @@ Same branch adds `inc/advertiser-orders.php` per owner steer: keep `paid_tier` a
 Knowledge captured in `docs/2026-06-03-advertiser-monetization-research-and-center.md` and new skill `skills/advertiser-monetization-system.md`; indexed in `skills/MAP.md` and `skills/SKILLS-TREE.md`.
 
 Not live yet at time of writing. Requires plugin v1.41.2 ZIP/manifest gate, PR merge to main, owner plugin update, then live `/advertiser-center/` and Journey-2 QA.
+
+### 2026-06-24 - Codex - Rainbow Showroom model tap QA and v1.69.6 live
+
+Owner reported that selecting apartments on the model felt broken and asked for a real critical check. Live QA on 1.69.5 proved a real 390px mobile bug: tapping on the model surface beside `unit-16-w` selected `unit-24-nw`, and tapping beside `unit-24-nw` selected `unit-31-se`. The root cause was the near-pick algorithm using simple center distance on a cramped mobile projection.
+
+Shipped and deployed `nadlan-config` v1.69.6 through WordPress Admin. Release commit: `a15d1a7`. Live healthcheck confirmed `version: 1.69.6` and `project_3d.model_surface_tap_floor_bias_v1696: true`. QA evidence commit: `623bd99`.
+
+The fix biases model-surface near-picking by vertical floor alignment before horizontal distance. Live post-deploy QA passed on desktop and 390px mobile for `unit-08-sw`, `unit-16-w`, `unit-24-nw`, `unit-31-se`, and `unit-38-penthouse`. Each tap point landed on `MODEL-VIEWER`, not inside a visible marker element. Mobile containment after selecting `unit-16-w` passed with `scrollWidth: 390`, `horizontalOverflow: 0`, and `offenderCount: 0`.
+
+QA files:
+
+- `docs/qa/screenshots/showroom-live-model-tap-1696-2026-06-24/QA.md`
+- `docs/qa/screenshots/showroom-live-model-tap-1696-2026-06-24-unit-16-w/`
+- `docs/qa/screenshots/showroom-live-model-tap-1696-2026-06-24-unit-24-nw/`
+- `docs/qa/screenshots/showroom-mobile-containment-live-1696-2026-06-24/`
+
+Honest limitation: this is near-marker model-surface selection, not true per-window GLB mesh picking. True click-any-window selection needs official apartment geometry, BIM, or a GLB authored with per-unit pickable meshes.
