@@ -884,3 +884,26 @@ Live screenshot proof and QA:
 QA result: desktop 1440 and mobile 390 both passed with `horizontalOverflow: 0` and no forbidden visible public-language terms. Visual inspection confirmed the desktop contact rail no longer overlaps the hero search row.
 
 Honest limitations: this was a Home positioning and rail-containment slice, not a full Home visual rebuild. The hero still uses the existing dark coastal visual. Some project images are existing site assets and this pass does not certify all project imagery as official contractor material. Legacy directory modules still contain older class names and language outside this Home slice; cleaning them safely needs a separate plugin release.
+
+### 2026-06-24 - Codex - Rainbow Showroom model selection v1.69.7 live
+
+Owner asked for a serious manual-style check of selecting apartments on the model and warned not to fake it. The live `1.69.6` QA showed that visible apartment bubbles worked, but free taps in the upper mobile model area could hit the empty `.nlp3d-toolbar` wrapper instead of `model-viewer`. This was a real hit-testing bug: the upper toolbar wrapper blocked taps even where there was no visible button.
+
+Shipped and deployed `nadlan-config` v1.69.7 through WordPress Admin after pushing commit `0d9eb81` to `main`. Public healthcheck confirmed `version: 1.69.7` and `project_3d.toolbar_empty_space_tap_passthrough_v1697: true`.
+
+Fix: the active showroom CSS now sets pointer-events passthrough on the toolbar wrapper while preserving pointer events on the real toolbar buttons. No stacked CSS layer was added; the active cream showroom rule was edited in place. ZIP verification passed with 132 entries, zero backslash paths, rooted zip, CRC ok, and all version surfaces at 1.69.7.
+
+Live post-deploy QA:
+
+- Marker-center test passed for all six visible demo units on desktop and 390px mobile: `unit-08-sw`, `unit-16-w`, `unit-24-nw`, `unit-31-se`, `unit-38-penthouse`, `unit-boutique-07`.
+- Mobile free model-surface grid passed with `deadModelSurfacePoints: []`.
+- The formerly blocked upper model points now hit `MODEL-VIEWER`: `tower-upper-left` selected `unit-24-nw`; `tower-upper-center` selected `unit-38-penthouse`.
+
+QA evidence:
+
+- `docs/qa/screenshots/showroom-live-model-selection-1697-2026-06-24/QA.md`
+- `docs/qa/screenshots/showroom-live-model-selection-1697-2026-06-24/QA.html`
+- `docs/qa/screenshots/showroom-marker-hit-test-live-1697-2026-06-24/`
+- `docs/qa/screenshots/showroom-model-free-tap-grid-live-1697-2026-06-24/`
+
+Honest limitation: this is marker-center selection plus nearest visible demo-unit selection when tapping the model surface. It is not true per-window GLB mesh picking. True click-any-window selection requires official apartment geometry, BIM, or a GLB authored with per-unit pickable meshes.

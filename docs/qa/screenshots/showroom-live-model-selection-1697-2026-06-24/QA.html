@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Rainbow showroom live model selection QA - 1.69.7</title>
+  <style>
+    body {
+      margin: 0;
+      background: #faf7f1;
+      color: #1b1a17;
+      font-family: Arial, sans-serif;
+      line-height: 1.55;
+    }
+    main {
+      width: min(1080px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 36px 0 60px;
+    }
+    h1, h2 {
+      margin: 0 0 14px;
+    }
+    h1 {
+      font-size: clamp(28px, 4vw, 48px);
+      line-height: 1.1;
+    }
+    section {
+      border-top: 1px solid #ded2bd;
+      padding: 24px 0;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 18px;
+    }
+    figure {
+      margin: 0;
+      border: 1px solid #ded2bd;
+      background: #fffaf1;
+      padding: 12px;
+    }
+    img {
+      display: block;
+      width: 100%;
+      height: auto;
+      background: #efe7d8;
+    }
+    figcaption {
+      margin-top: 10px;
+      font-size: 14px;
+      color: #675f53;
+    }
+    code {
+      background: #fff2dc;
+      padding: 2px 5px;
+      border-radius: 4px;
+    }
+    .ok {
+      color: #2f6f46;
+      font-weight: 700;
+    }
+    .limit {
+      border: 1px solid #d8b083;
+      background: #fff5e6;
+      padding: 14px;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <h1>Rainbow showroom live model selection QA - 1.69.7</h1>
+    <p><strong>Status:</strong> <span class="ok">Passed after live WordPress plugin update.</span></p>
+    <p>Checked against <code>https://nad-lan.co.il/projects/rainbow-tel-aviv/</code>. The live healthcheck reports <code>nadlan-config 1.69.7</code>.</p>
+
+    <section>
+      <h2>What was fixed</h2>
+      <p>The old mobile problem was real: empty toolbar wrapper space covered the upper model area, so some taps hit <code>.nlp3d-toolbar</code> instead of <code>model-viewer</code>. Release 1.69.7 lets empty toolbar space pass taps through while keeping the real toolbar buttons clickable.</p>
+    </section>
+
+    <section>
+      <h2>Mobile visual proof</h2>
+      <div class="grid">
+        <figure>
+          <img src="../showroom-model-free-tap-grid-live-1697-2026-06-24/mobile-390-after-tower-upper-center.png" alt="Mobile screenshot after tapping upper-center model area">
+          <figcaption>Upper-center model tap now reaches the model and selects the penthouse unit.</figcaption>
+        </figure>
+        <figure>
+          <img src="../showroom-marker-hit-test-live-1697-2026-06-24/mobile-390-after-marker-taps.png" alt="Mobile screenshot after marker-center taps">
+          <figcaption>Visible apartment bubbles are tappable by center point and show the unit panel.</figcaption>
+        </figure>
+        <figure>
+          <img src="../showroom-model-free-tap-grid-live-1697-2026-06-24/mobile-390-after-podium-center.png" alt="Mobile screenshot after tapping podium-center model area">
+          <figcaption>Podium model-surface tap selects the nearest demo unit and opens details.</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section>
+      <h2>Machine checks</h2>
+      <p>Marker-center taps passed for all six visible units on desktop and 390px mobile. The free mobile model-surface grid reported <code>deadModelSurfacePoints: []</code>. The critical upper-left and upper-center points now hit <code>MODEL-VIEWER</code>, not the toolbar wrapper.</p>
+      <p>Reports: <code>../showroom-marker-hit-test-live-1697-2026-06-24/showroom-marker-hit-report.json</code> and <code>../showroom-model-free-tap-grid-live-1697-2026-06-24/showroom-model-free-tap-grid-report.json</code>.</p>
+    </section>
+
+    <section>
+      <h2>Honest limitation</h2>
+      <p class="limit">This is marker-center selection plus nearest visible demo-unit selection when the user taps the model surface. It is not true per-window GLB mesh picking. True click-any-window selection needs official apartment geometry, BIM data, or a GLB authored with per-unit pickable meshes.</p>
+    </section>
+  </main>
+</body>
+</html>
