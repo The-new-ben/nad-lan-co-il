@@ -32,6 +32,22 @@ The NadLan process must be reusable for future WordPress real-estate sites witho
 
 Codex also has a local skill named `nadlan-3d-ai-replication` for bootstrapping the same process in future projects.
 
+## Screenshot Rule
+
+Every UI, showroom, listing, page, admin, or prototype change must follow:
+
+`handoff/shared-knowledge/skills/nadlan-screenshot-first-visual-qa.md`
+
+Do not mark visual work done without repo-saved screenshots and a visual QA note.
+
+## Public Language Rule
+
+Every public page, listing, showroom, card, badge, and CTA must follow:
+
+`handoff/shared-knowledge/skills/nadlan-public-language-cleanup.md`
+
+Do not expose implementation terms such as GLB, RTL, font names, 390px, asset truth, fallback, or internal paid-ranking taxonomies in public UI.
+
 ## Lovable-Specific Rule
 
 Lovable should use this folder as project knowledge when possible. If Lovable creates reusable guidance, it should write it to:
