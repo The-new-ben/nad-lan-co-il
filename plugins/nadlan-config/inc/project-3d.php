@@ -2380,13 +2380,10 @@ if ( ! function_exists( 'nadlan_p3d_inline_js' ) ) {
 	function unitBuyerTags(u,meta){
 		var tags=[];
 		if(!u){return tags}
-		if(isRecommendedUnit(u)){tags.push('מומלצת לבדיקה')}
-		if(u.status==='available'){tags.push('זמינה לפנייה')}
-		if(u.status==='reserved'){tags.push('בתהליך בדיקה')}
-		if(u.status==='sold'){tags.push('לא זמינה')}
-		if(u.view){tags.push(u.view)}
-		if(u.price||u.price_estimate||(Number(meta&&meta.avg_price_per_sqm||0)>0&&Number(u.sqm||0)>0)){tags.push('כולל אומדן')}
-		return tags.slice(0,4);
+		if(isRecommendedUnit(u)){tags.push(u.recommended_label||'מומלצת לבדיקה')}
+		if(u.plan){tags.push('תוכנית זמינה')}
+		if(u.tour_url||u.interior_url){tags.push('סיור או הדמיה זמינים')}
+		return tags.slice(0,3);
 	}
 	function unitBuyerNote(u,meta){
 		if(!u){return 'בחרו דירה על המגדל כדי לראות מחיר, נוף, כיוון ופעולות המשך.'}
@@ -3243,7 +3240,7 @@ if ( ! function_exists( 'nadlan_p3d_inline_js' ) ) {
 			if(stageCardTitle){stageCardTitle.textContent=selectedTitle(activeUnit)}
 			if(stageCardMeta){
 				var metaText=unitText(activeUnit);
-				stageCardMeta.textContent=(metaText?metaText+' · ':'')+(activeUnit.availability||statusLabel(activeUnit.status));
+				stageCardMeta.textContent=metaText||'פרטי דירה לפי בחירה';
 			}
 			if(stageCardTags){
 				stageCardTags.innerHTML='';
@@ -3900,7 +3897,7 @@ add_action(
 			return;
 		}
 
-		wp_register_style( 'nadlan-p3d', '', array(), '1.69.7' );
+		wp_register_style( 'nadlan-p3d', '', array(), '1.69.8' );
 		wp_enqueue_style( 'nadlan-p3d' );
 		wp_add_inline_style( 'nadlan-p3d', nadlan_p3d_lovable_showroom_v1690_css() );
 
@@ -3911,7 +3908,7 @@ add_action(
 			wp_enqueue_script( 'nadlan-model-viewer' );
 		}
 
-		wp_register_script( 'nadlan-p3d', '', array(), '1.69.7', true );
+		wp_register_script( 'nadlan-p3d', '', array(), '1.69.8', true );
 		wp_enqueue_script( 'nadlan-p3d' );
 		wp_add_inline_script( 'nadlan-p3d', nadlan_p3d_inline_js( esc_url_raw( rest_url( 'nadlan/v1/lead' ) ) ) );
 	}
