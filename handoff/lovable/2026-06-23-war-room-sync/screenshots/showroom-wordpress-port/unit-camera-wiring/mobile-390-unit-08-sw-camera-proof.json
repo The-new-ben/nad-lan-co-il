@@ -1,0 +1,13 @@
+{
+  "generated_at": "2026-06-23T17:34:03.776Z",
+  "screenshot": "C:\\Users\\janana\\Documents\\Codex\\2026-06-21\\i-created-a-safe-codex-transfer\\work\\nad-lan-co-il\\handoff\\lovable\\2026-06-23-war-room-sync\\screenshots\\showroom-wordpress-port\\unit-camera-wiring\\mobile-390-unit-08-sw-camera-proof.png",
+  "result": {
+    "unit": "unit-08-sw",
+    "expectedOrbit": "45deg 66deg auto",
+    "expectedTarget": "0 31 6",
+    "actualOrbit": "45deg 66deg auto",
+    "actualTarget": "0 31 6",
+    "hasJump": true
+  },
+  "notes": "pre-release proof: live Rainbow page with branch camera behavior applied in browser; old live missing-facade panel removed from proof screenshot"
+}
