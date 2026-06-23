@@ -1,0 +1,190 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>משקיעים מחו"ל והתרחבות בינלאומית</title>
+  <style>
+    :root {
+      --paper:#f7f1e8;
+      --paper-2:#fffaf2;
+      --ink:#211915;
+      --muted:#71685f;
+      --line:#ded2c3;
+      --accent:#8f5d2a;
+      --green:#24483f;
+      --red:#8f2e24;
+      --blue:#243e68;
+      --shadow:0 18px 55px rgba(44,31,20,.10);
+    }
+    * { box-sizing:border-box; }
+    body { margin:0; background:var(--paper); color:var(--ink); font-family:Arial,"Noto Sans Hebrew",sans-serif; line-height:1.65; }
+    a { color:inherit; }
+    .wrap { width:min(1160px,calc(100% - 30px)); margin:0 auto; }
+    header { padding:34px 0 30px; border-bottom:1px solid var(--line); background:linear-gradient(180deg,#fffaf4 0%,#f7f1e8 100%); }
+    .eyebrow { color:var(--accent); font-weight:700; margin-bottom:12px; }
+    h1 { margin:0; max-width:980px; font-family:Georgia,"Times New Roman",serif; font-size:clamp(34px,5vw,68px); line-height:1.05; letter-spacing:0; }
+    .lead { max-width:920px; color:var(--muted); font-size:20px; margin:18px 0 0; }
+    .meta { display:flex; flex-wrap:wrap; gap:10px; margin-top:22px; color:var(--muted); }
+    .pill { border:1px solid var(--line); background:rgba(255,255,255,.6); padding:7px 12px; border-radius:999px; font-size:14px; }
+    main { padding:28px 0 60px; }
+    .stats { display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:12px; margin:0 0 24px; }
+    .stat { background:var(--paper-2); border:1px solid var(--line); padding:18px; box-shadow:var(--shadow); min-height:116px; }
+    .stat b { display:block; font-family:Georgia,"Times New Roman",serif; font-size:38px; line-height:1; margin-bottom:10px; }
+    .stat span { color:var(--muted); font-size:15px; }
+    .grid { display:grid; grid-template-columns:1.08fr .92fr; gap:22px; align-items:start; }
+    section { background:var(--paper-2); border:1px solid var(--line); box-shadow:var(--shadow); padding:24px; margin-bottom:22px; }
+    h2,h3 { font-family:Georgia,"Times New Roman",serif; margin:0 0 12px; line-height:1.18; }
+    h2 { font-size:30px; }
+    h3 { font-size:21px; }
+    p { margin:0 0 12px; }
+    .muted { color:var(--muted); }
+    .decision { border-inline-start:5px solid var(--green); background:#f1f8f3; padding:14px 16px; margin:14px 0; }
+    .warning { border-inline-start:5px solid var(--red); background:#fff5ef; padding:14px 16px; margin:14px 0; }
+    .blue { border-inline-start:5px solid var(--blue); background:#f0f4fb; padding:14px 16px; margin:14px 0; }
+    .steps { display:grid; gap:12px; }
+    .step { display:grid; grid-template-columns:auto 1fr; gap:12px; align-items:start; border-top:1px solid var(--line); padding-top:12px; }
+    .step:first-child { border-top:0; padding-top:0; }
+    .num { width:34px; height:34px; border:1px solid var(--line); background:#fff; display:grid; place-items:center; color:var(--accent); font-weight:700; border-radius:50%; }
+    .cards { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:12px; }
+    .card { border:1px solid var(--line); background:rgba(255,255,255,.48); padding:14px; min-height:132px; }
+    .table { display:grid; border:1px solid var(--line); overflow:hidden; }
+    .row { display:grid; grid-template-columns:1fr 1.2fr 1.2fr; border-top:1px solid var(--line); }
+    .row:first-child { border-top:0; background:#f1e5d5; font-weight:700; }
+    .cell { padding:11px 12px; border-inline-start:1px solid var(--line); }
+    .cell:first-child { border-inline-start:0; }
+    ul,ol { margin:8px 0 0; padding-inline-start:22px; }
+    li { margin-bottom:7px; }
+    .links { display:grid; gap:10px; margin-top:14px; }
+    .linkrow { display:grid; grid-template-columns:1fr auto; gap:14px; align-items:center; border-top:1px solid var(--line); padding-top:12px; text-decoration:none; }
+    .linkrow:first-child { border-top:0; padding-top:0; }
+    .open { color:white; background:var(--ink); padding:8px 12px; border-radius:2px; white-space:nowrap; }
+    .source-list a { overflow-wrap:anywhere; }
+    .ltr { direction:ltr; unicode-bidi:embed; font-family:Consolas,"Courier New",monospace; font-size:14px; }
+    .foot { color:var(--muted); font-size:13px; margin-top:16px; }
+    @media (max-width:920px) {
+      .stats { grid-template-columns:repeat(2,minmax(0,1fr)); }
+      .grid { grid-template-columns:1fr; }
+    }
+    @media (max-width:620px) {
+      .wrap { width:min(100% - 22px,1160px); }
+      header { padding:24px 0 20px; }
+      main { padding-top:18px; }
+      .stats,.cards { grid-template-columns:1fr; }
+      section { padding:18px; }
+      .row { grid-template-columns:1fr; }
+      .cell { border-inline-start:0; border-top:1px solid var(--line); }
+      .cell:first-child { border-top:0; }
+      .linkrow { grid-template-columns:1fr; }
+      .open { width:fit-content; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="wrap">
+      <div class="eyebrow">משקיעים מחו"ל, עמודים באנגלית והתרחבות למדינות נוספות</div>
+      <h1>קודם מנצחים את ישראל באנגלית. אחר כך פותחים מדינות בלי לדלל את האתר.</h1>
+      <p class="lead">זה מפרט בנייה. הוא לא טוען שקיים כבר משפך בינלאומי חי. המטרה היא להגדיר בדיוק אילו עמודים באנגלית בונים, מה אסור לטעון בלי מקור, איך מחברים שוורום וקבלנים למשקיעים מחו"ל, ואיך בוחנים בהמשך קפריסין, יוון, דובאי ותאילנד בלי להפוך את NadLan לאתר לא ממוקד.</p>
+      <div class="meta">
+        <span class="pill">עודכן: 23 ביוני 2026</span>
+        <span class="pill">מצב: מפרט מוכן לבנייה</span>
+        <span class="pill">לא משנה קוד חי</span>
+      </div>
+    </div>
+  </header>
+  <main class="wrap">
+    <div class="stats">
+      <div class="stat"><b>24</b><span>עמודי יעד במפת המשקיעים</span></div>
+      <div class="stat"><b>6</b><span>עמודים ראשונים באנגלית</span></div>
+      <div class="stat"><b>4</b><span>מדינות עתידיות לבדיקת השקעה</span></div>
+      <div class="stat"><b>0</b><span>טענות מס או משפט בלי שער בדיקה</span></div>
+    </div>
+
+    <div class="grid">
+      <div>
+        <section>
+          <h2>החלטת בסיס</h2>
+          <p>המשפך הראשון הוא לא תרגום. הוא מוצר באנגלית לרוכשים שמסתכלים על ישראל מבחוץ: תהליך קנייה, מס, משכנתא, אנשי מקצוע, פרויקטים, שוורום, אמון ופנייה לאדם.</p>
+          <div class="decision"><strong>הכיוון הנכון:</strong> לבנות קודם את שכבת ישראל באנגלית, עם עמודי כסף ועמודי אמון, ואז לפתוח מדינות נוספות במסלול נפרד ומבוקר.</div>
+          <div class="warning"><strong>מה לא עושים:</strong> לא מפרסמים מס, משכנתא, בעלות זרה או תשואות בלי מקור רשמי, תאריך, ואישור מקצועי. לא פותחים עמודי קפריסין, יוון, דובאי או תאילנד לאינדוקס לפני חבילת מקורות מקומית.</div>
+        </section>
+
+        <section>
+          <h2>ששת העמודים הראשונים</h2>
+          <div class="steps">
+            <div class="step"><div class="num">1</div><div><h3>מרכז אנגלית</h3><p>שער כניסה לרוכש מחו"ל: פרויקטים, ערים, מס, משכנתא, אנשי מקצוע ופנייה מונחית.</p></div></div>
+            <div class="step"><div class="num">2</div><div><h3>מדריך קנייה בישראל</h3><p>מסלול ברור מרחוק: מה בודקים, מי צריך להיות מעורב, מה נשמר לשיחה עם עורך דין או יועץ.</p></div></div>
+            <div class="step"><div class="num">3</div><div><h3>תל אביב לרוכשים מחו"ל</h3><p>עמוד כסף ראשון עם פרויקטים, נכסים, שכונות, אנשי מקצוע ופנייה.</p></div></div>
+            <div class="step"><div class="num">4</div><div><h3>פרויקטים חדשים בתל אביב</h3><p>עמוד קבלנים בינלאומי: פרויקטים מאומתים, מצב נכסים, שוורום ופנייה למשקיע.</p></div></div>
+            <div class="step"><div class="num">5</div><div><h3>מס רכישה לתושב חוץ</h3><p>עמוד מקור ואזהרה, עם קישור רשמי ואישור מקצועי לפני פרסום.</p></div></div>
+            <div class="step"><div class="num">6</div><div><h3>משכנתא לרוכשים מחו"ל</h3><p>עמוד שאלות ותהליך, בלי הבטחת אישור, שיעור מימון או ריבית.</p></div></div>
+          </div>
+        </section>
+
+        <section>
+          <h2>מה צריך להיות בכל עמוד בינלאומי</h2>
+          <div class="cards">
+            <div class="card"><h3>מקורות ותאריך</h3><p>כל טענה רגישה מציינת מקור, תאריך בדיקה ומצב אישור.</p></div>
+            <div class="card"><h3>פנייה מונחית</h3><p>מדינה, שפה, טווח תקציב, עיר או פרויקט, כוונה, לוח זמנים וערוץ קשר מועדף.</p></div>
+            <div class="card"><h3>אמת נכסים</h3><p>פרויקט, דירה, תכנית, מבט או סיור מוצגים רק לפי מצב נכס ברור: אמיתי, מאושר, המחשה או חסר.</p></div>
+            <div class="card"><h3>מסלול אנשי מקצוע</h3><p>עורכי דין, יועצי משכנתא, ניהול נכסים ומתווכים רק עם שפה, עיר, גילוי מסחרי ואימות.</p></div>
+          </div>
+        </section>
+
+        <section>
+          <h2>מסלול מדינות עתידי</h2>
+          <p>קפריסין, יוון, דובאי ותאילנד נשארות במסלול נפרד לרוכשים ישראלים שמשקיעים בחו"ל. הן לא חלק מהמשפך האנגלי של רוכשים שבאים לישראל.</p>
+          <ul>
+            <li>כל מדינה מתחילה ללא אינדוקס.</li>
+            <li>נדרש מקור רשמי או רגולטורי מקומי.</li>
+            <li>נדרש אישור יועץ מקומי לפני טענות משפט, מס או בעלות.</li>
+            <li>נדרש אימות פרויקט ושותף לפני הצגת נכסים.</li>
+            <li>קישורים פנימיים למדינות נשמרים מצומצמים כדי לא לדלל את סמכות ישראל.</li>
+          </ul>
+        </section>
+      </div>
+
+      <aside>
+        <section>
+          <h2>גבולות מס ומשפט</h2>
+          <p>העמודים יכולים להסביר שאלות ושערי בדיקה. הם לא מחליפים עורך דין, רואה חשבון, יועץ מס או יועץ משכנתאות.</p>
+          <div class="blue">כל עמוד מס, משכנתא או מדינה חייב להציג סטטוס מקור ואישור לפני שהוא הופך לעמוד ציבורי שמקודם.</div>
+        </section>
+
+        <section>
+          <h2>טבלת החלטות</h2>
+          <div class="table">
+            <div class="row"><div class="cell">נושא</div><div class="cell">החלטה</div><div class="cell">סיבה</div></div>
+            <div class="row"><div class="cell">אנגלית</div><div class="cell">עמודים ייעודיים, לא תרגום</div><div class="cell">רוכש מחו"ל שואל שאלות אחרות מרוכש מקומי.</div></div>
+            <div class="row"><div class="cell">מס ומשכנתא</div><div class="cell">מקור רשמי ואישור מקצועי</div><div class="cell">טעות כאן מסוכנת ומורידה אמון.</div></div>
+            <div class="row"><div class="cell">שוורום</div><div class="cell">רק עם אמת נכסים גלויה</div><div class="cell">משקיע מרחוק חייב לדעת מה אמיתי ומה חסר.</div></div>
+            <div class="row"><div class="cell">מדינות בחו"ל</div><div class="cell">מסלול נפרד וללא אינדוקס בתחילה</div><div class="cell">שומרים על מרכז הכובד של האתר בישראל.</div></div>
+          </div>
+        </section>
+
+        <section>
+          <h2>מקורות בדיקה</h2>
+          <p class="muted">המודל נשען על מקורות רשמיים והנחיות מנוע חיפוש, לא על הבטחות שיווקיות.</p>
+          <div class="links source-list">
+            <a class="linkrow" href="https://www.gov.il/en/departments/topics/realty_taxation"><span><strong>מיסוי מקרקעין</strong><small>מקור רשמי לשערי בדיקה בעמודי מס.</small></span><span class="open">מקור</span></a>
+            <a class="linkrow" href="https://www.gov.il/en/service/real_eatate_taxsimulator"><span><strong>סימולטור מס רכישה</strong><small>מקור רשמי להפניה ולאימות חישוב.</small></span><span class="open">מקור</span></a>
+            <a class="linkrow" href="https://www.boi.org.il/en/"><span><strong>בנק ישראל</strong><small>מקור רשמי לרקע פיננסי ושערי מטבע.</small></span><span class="open">מקור</span></a>
+            <a class="linkrow" href="https://developers.google.com/search/docs/specialty/international/managing-multi-regional-sites"><span><strong>קידום בינלאומי</strong><small>הנחיות לשפות וכתובות נפרדות.</small></span><span class="open">מקור</span></a>
+          </div>
+        </section>
+
+        <section>
+          <h2>קבצים בחבילה</h2>
+          <div class="links">
+            <a class="linkrow" href="international-investor-page-map.csv"><span><strong>מפת עמודים</strong><small>24 עמודי יעד: אנגלית לישראל ומסלול מדינות עתידי.</small></span><span class="open">פתח</span></a>
+            <a class="linkrow" href="international-investor-execution-packet.csv"><span><strong>טבלת ביצוע</strong><small>16 החלטות בנייה ושערי קבלה למשפך הבינלאומי.</small></span><span class="open">פתח</span></a>
+            <a class="linkrow" href="international-investor-execution-packet.md"><span><strong>מפרט טכני</strong><small>הסבר מלא לבנייה עתידית.</small></span><span class="open">פתח</span></a>
+          </div>
+          <p class="foot">החבילה הזאת לא נוגעת בקוד האתר החי. היא מגדירה את שכבת המשקיעים לפני שמיישמים עמודים באנגלית או מדינות נוספות.</p>
+        </section>
+      </aside>
+    </div>
+  </main>
+</body>
+</html>

@@ -15,6 +15,8 @@ Primary owner-facing artifacts:
 - `admin-war-room-execution-packet-visual-qa.md` - screenshot review note for the admin war-room packet.
 - `analytics-kpi-execution-packet-rtl.html` - Hebrew RTL analytics and KPI packet with event dictionary, funnels, privacy rules, owner dashboard cards, and debug evidence gates.
 - `analytics-kpi-execution-packet-visual-qa.md` - screenshot review note for the analytics and KPI packet.
+- `international-investor-execution-packet-rtl.html` - Hebrew RTL international investor packet with English page plan, foreign-buyer funnel, source gates, concierge flow, and future country expansion guardrails.
+- `international-investor-execution-packet-visual-qa.md` - screenshot review note for the international investor packet.
 - `objective-completion-audit-rtl.html` - Hebrew RTL audit against the full war-room objective, showing what is proven, partial, or still missing.
 - `current-site-evidence-2026-06-23-rtl.html` - Hebrew RTL summary of the fresh live public-site screenshot run from 2026-06-23.
 - `current-site-and-objective-audit-visual-qa.md` - screenshot review note for the fresh public evidence and objective audit.
@@ -38,6 +40,9 @@ Structured artifacts:
 - `analytics-event-dictionary.csv` - structured event dictionary for search, property results, showroom, maps, leads, professionals, tools, contractor intake, and admin gates.
 - `analytics-kpi-execution-packet.csv` - structured analytics and KPI queue with event layer, recommended events, privacy, funnels, dashboard cards, debug evidence, and consent gates.
 - `analytics-kpi-execution-packet.md` - implementation narrative for measurement, dashboards, attribution, privacy, and proof gates.
+- `international-investor-page-map.csv` - structured page map for English Israel buyer pages and future Israelis-investing-abroad country pages.
+- `international-investor-execution-packet.csv` - structured international investor queue with English funnel, source gates, project showroom rules, concierge, language, and abroad expansion guardrails.
+- `international-investor-execution-packet.md` - implementation narrative for international investor pages and controlled country expansion.
 - `lovable-design-validation-prompt.md` - controlled no-spend prompt to use only if the owner chooses another Lovable review.
 - `keyword-to-page-owner.csv` - one canonical owner for every keyword row from the recovered Report 2 keyword universe.
 - `current-evidence-register.csv` - evidence, limitations, and next verification actions.
