@@ -24,6 +24,14 @@ If an agent creates a rule, design decision, prompt, workflow, glossary entry, a
 6. If the rule affects design, include mobile behavior and asset truth rules.
 7. If the rule affects implementation, include WordPress file targets and acceptance tests.
 
+## Replication Rule
+
+The NadLan process must be reusable for future WordPress real-estate sites without depending on Lovable. The active reusable workflow is:
+
+`handoff/shared-knowledge/skills/nadlan-3d-ai-replication-system.md`
+
+Codex also has a local skill named `nadlan-3d-ai-replication` for bootstrapping the same process in future projects.
+
 ## Lovable-Specific Rule
 
 Lovable should use this folder as project knowledge when possible. If Lovable creates reusable guidance, it should write it to:
