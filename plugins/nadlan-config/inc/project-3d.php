@@ -1263,7 +1263,7 @@ add_filter( 'wpseo_twitter_description', 'nadlan_p3d_seo_description', 20 );
 if ( ! function_exists( 'nadlan_p3d_lovable_showroom_v1690_css' ) ) {
 	function nadlan_p3d_lovable_showroom_v1690_css() {
 		return <<<'CSS'
-/* v1.69.2: public showroom surface. */
+/* v1.69.3: public showroom surface. */
 @font-face{font-family:"Frank Ruhl Libre";font-style:normal;font-weight:400;font-display:swap;src:url("/wp-content/themes/nadlan-revenue/assets/fonts/frank-ruhl-libre/frl-400.woff2") format("woff2")}
 @font-face{font-family:"Frank Ruhl Libre";font-style:normal;font-weight:500;font-display:swap;src:url("/wp-content/themes/nadlan-revenue/assets/fonts/frank-ruhl-libre/frl-500.woff2") format("woff2")}
 @font-face{font-family:"Frank Ruhl Libre";font-style:normal;font-weight:700;font-display:swap;src:url("/wp-content/themes/nadlan-revenue/assets/fonts/frank-ruhl-libre/frl-700.woff2") format("woff2")}
@@ -2010,6 +2010,7 @@ backdrop-filter:none!important;
 display:grid!important;
 gap:10px!important;
 padding:16px!important;
+align-items:start!important;
 }
 .nlp3d.nlp3d-premium .nlp3d-view-toggle,
 .nlp3d.nlp3d-premium .nlp3d-tool,
@@ -2071,6 +2072,16 @@ border:1px solid var(--nlp3d-line)!important;
 border-radius:var(--radius)!important;
 box-shadow:none!important;
 }
+.nlp3d.nlp3d-premium .nlp3d-stage-card-tags,
+.nlp3d.nlp3d-premium .nlp3d-stage-card-stats,
+.nlp3d.nlp3d-premium .nlp3d-stage-card-actions,
+.nlp3d.nlp3d-premium .nlp3d-stage-tabs,
+.nlp3d.nlp3d-premium .nlp3d-dock-actions{
+display:flex!important;
+flex-wrap:wrap!important;
+gap:8px!important;
+align-items:stretch!important;
+}
 .nlp3d.nlp3d-premium .nlp3d-floor.is-active,
 .nlp3d.nlp3d-premium .nlp3d-unit-card.is-active,
 .nlp3d.nlp3d-premium .nlp3d-tool.is-active,
@@ -2114,6 +2125,40 @@ box-shadow:none!important;
 .nlp3d.nlp3d-premium .nlp3d-orbit.is-active{
 background:var(--nlp3d-ink)!important;
 color:var(--nlp3d-cream)!important;
+}
+.nlp3d.nlp3d-premium .nlp3d-stage-card-actions button,
+.nlp3d.nlp3d-premium .nlp3d-stage-tabs button,
+.nlp3d.nlp3d-premium .nlp3d-dock-actions button,
+.nlp3d.nlp3d-premium .nlp3d-stage-card-close,
+.nlp3d.nlp3d-premium .nlp3d-stage-card-handle,
+.nlp3d.nlp3d-premium .nlp3d-floor,
+.nlp3d.nlp3d-premium .nlp3d-compare-add,
+.nlp3d.nlp3d-premium .nlp3d-plan{
+display:inline-flex!important;
+align-items:center!important;
+justify-content:center!important;
+min-height:44px!important;
+padding:10px 14px!important;
+line-height:1.25!important;
+text-align:center!important;
+white-space:normal!important;
+}
+.nlp3d.nlp3d-premium .nlp3d-stage-card-close{
+width:44px!important;
+min-width:44px!important;
+padding:0!important;
+justify-self:start!important;
+}
+.nlp3d.nlp3d-premium .nlp3d-stage-card-handle{
+width:100%!important;
+justify-self:stretch!important;
+}
+.nlp3d.nlp3d-premium .nlp3d-stage-card-tags span,
+.nlp3d.nlp3d-premium .nlp3d-stage-card-stats span{
+min-height:34px!important;
+padding:7px 10px!important;
+line-height:1.25!important;
+overflow-wrap:anywhere!important;
 }
 .nlp3d.nlp3d-premium .nlp3d-lead-form input,
 .nlp3d.nlp3d-premium .nlp3d-lead-form select,
@@ -2306,6 +2351,16 @@ display:flex!important;
 background:#fffaf2!important;
 color:var(--nlp3d-ink)!important;
 border-bottom:1px solid var(--nlp3d-line)!important;
+}
+.nlp3d.nlp3d-premium .nlp3d-stage-card-actions,
+.nlp3d.nlp3d-premium .nlp3d-stage-tabs{
+display:grid!important;
+grid-template-columns:repeat(2,minmax(0,1fr))!important;
+gap:8px!important;
+}
+.nlp3d.nlp3d-premium .nlp3d-stage-card-actions button,
+.nlp3d.nlp3d-premium .nlp3d-stage-tabs button{
+width:100%!important;
 }
 .nlp3d.nlp3d-premium .nlp3d-stage-card-handle:before{
 background:var(--nlp3d-line)!important;
@@ -2963,6 +3018,12 @@ if ( ! function_exists( 'nadlan_p3d_inline_js' ) ) {
 			modelHotspots.forEach(function(p){p.classList.toggle('is-active',activeUnit&&p.dataset.unit===activeUnit.id)});
 			if(modelViewer&&activeUnit){
 				modelViewer.dataset.activeUnit=activeUnit.id;
+			}
+			if(activeUnit&&activeUnit.id){
+				root.dataset.activeUnit=activeUnit.id;
+			}else{
+				root.removeAttribute('data-active-unit');
+				if(modelViewer){modelViewer.removeAttribute('data-active-unit')}
 			}
 		}
 		function syncModelViewerCamera(){
@@ -3807,7 +3868,7 @@ add_action(
 			return;
 		}
 
-		wp_register_style( 'nadlan-p3d', '', array(), '1.69.2' );
+		wp_register_style( 'nadlan-p3d', '', array(), '1.69.3' );
 		wp_enqueue_style( 'nadlan-p3d' );
 		wp_add_inline_style( 'nadlan-p3d', nadlan_p3d_lovable_showroom_v1690_css() );
 
@@ -3818,7 +3879,7 @@ add_action(
 			wp_enqueue_script( 'nadlan-model-viewer' );
 		}
 
-		wp_register_script( 'nadlan-p3d', '', array(), '1.69.2', true );
+		wp_register_script( 'nadlan-p3d', '', array(), '1.69.3', true );
 		wp_enqueue_script( 'nadlan-p3d' );
 		wp_add_inline_script( 'nadlan-p3d', nadlan_p3d_inline_js( esc_url_raw( rest_url( 'nadlan/v1/lead' ) ) ) );
 	}
