@@ -2,16 +2,21 @@
 
 This folder contains the current owner-facing build specification slice.
 
-Visible artifact:
+Primary owner-facing artifacts:
 
+- `owner-output-index-rtl.html` - Hebrew RTL index for the current execution layer, with links to the key specs, CSVs, evidence, workbook, and screenshot references.
 - `nadlan-war-room-spec-rtl.html` - Hebrew RTL report with current-site evidence, page architecture, UX direction, and visual mockups.
+- `full-war-room-gap-map-rtl.html` - readable Hebrew gap report for the owner.
 
 Structured artifacts:
 
+- `master-war-room-execution-spec.md` - execution-level source of truth connecting strategy, evidence, SEO ownership, UX, showroom, backlog, and next steps.
 - `page-architecture-map.csv` - canonical URL/page-role map for money and support pages.
 - `ux-build-spec.csv` - build-level UX requirements for homepage, listings, projects, professionals, tools, trust, and international investor surfaces.
+- `keyword-to-page-owner.csv` - one canonical owner for every keyword row from the recovered Report 2 keyword universe.
+- `current-evidence-register.csv` - evidence, limitations, and next verification actions.
+- `sprint-ready-backlog.csv` - prioritized execution backlog with acceptance, screenshot, SEO, analytics, risk, rollback, and owner gates.
 - `full-war-room-gap-map.csv` - requirement-by-requirement gap map against the full objective.
-- `full-war-room-gap-map-rtl.html` - readable Hebrew gap report for the owner.
 
 Rule:
 

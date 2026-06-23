@@ -1,0 +1,185 @@
+﻿<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>NadLan War Room - אינדקס ביצוע</title>
+  <style>
+    :root {
+      --paper: #f7f1e8;
+      --paper-2: #fffaf2;
+      --ink: #211915;
+      --muted: #746b63;
+      --line: #ded2c3;
+      --accent: #8f5d2a;
+      --accent-2: #24483f;
+      --danger: #8f2e24;
+      --ok: #2f654f;
+      --shadow: 0 24px 70px rgba(44, 31, 20, .12);
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      background: var(--paper);
+      color: var(--ink);
+      font-family: Arial, 'Noto Sans Hebrew', sans-serif;
+      line-height: 1.65;
+    }
+    a { color: inherit; text-decoration: none; }
+    .wrap { width: min(1180px, calc(100% - 32px)); margin: 0 auto; }
+    header {
+      padding: 34px 0 28px;
+      border-bottom: 1px solid var(--line);
+      background: linear-gradient(180deg, #fffaf4 0%, #f7f1e8 100%);
+    }
+    .eyebrow { color: var(--accent); font-weight: 700; letter-spacing: 0; margin-bottom: 12px; }
+    h1 {
+      margin: 0;
+      max-width: 980px;
+      font-family: Georgia, 'Times New Roman', serif;
+      font-size: clamp(34px, 5vw, 70px);
+      line-height: 1.05;
+      letter-spacing: 0;
+    }
+    .lead { max-width: 900px; color: var(--muted); font-size: 20px; margin: 20px 0 0; }
+    .meta { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 22px; color: var(--muted); }
+    .pill { border: 1px solid var(--line); background: rgba(255,255,255,.55); padding: 7px 12px; border-radius: 999px; font-size: 14px; }
+    main { padding: 28px 0 56px; }
+    .stats { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 12px; margin: 0 0 24px; }
+    .stat { background: var(--paper-2); border: 1px solid var(--line); padding: 18px; box-shadow: var(--shadow); min-height: 118px; }
+    .stat b { display: block; font-family: Georgia, 'Times New Roman', serif; font-size: 38px; line-height: 1; margin-bottom: 10px; }
+    .stat span { color: var(--muted); font-size: 15px; }
+    .grid { display: grid; grid-template-columns: 1.25fr .75fr; gap: 22px; align-items: start; }
+    section { background: var(--paper-2); border: 1px solid var(--line); box-shadow: var(--shadow); padding: 24px; margin-bottom: 22px; }
+    h2 { font-size: 28px; line-height: 1.2; margin: 0 0 14px; font-family: Georgia, 'Times New Roman', serif; }
+    h3 { font-size: 18px; margin: 0 0 8px; }
+    p { margin: 0 0 12px; }
+    .muted { color: var(--muted); }
+    .links { display: grid; gap: 10px; margin-top: 14px; }
+    .linkrow { display: grid; grid-template-columns: 1fr auto; gap: 14px; align-items: center; border-top: 1px solid var(--line); padding-top: 12px; }
+    .linkrow:first-child { border-top: 0; padding-top: 0; }
+    .linkrow strong { display: block; }
+    .linkrow small { display: block; color: var(--muted); }
+    .open { color: white; background: var(--ink); padding: 8px 12px; border-radius: 2px; white-space: nowrap; }
+    .warn { border-inline-start: 4px solid var(--danger); background: #fff5ef; padding: 14px 16px; margin-top: 12px; }
+    .ok { border-inline-start: 4px solid var(--ok); background: #f1f8f3; padding: 14px 16px; margin-top: 12px; }
+    .shots { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; margin-top: 12px; }
+    figure { margin: 0; border: 1px solid var(--line); background: #fff; overflow: hidden; }
+    figure img { width: 100%; display: block; aspect-ratio: 16 / 10; object-fit: cover; object-position: top center; }
+    figcaption { padding: 10px 12px; color: var(--muted); font-size: 14px; }
+    ol { padding-inline-start: 22px; margin: 10px 0 0; }
+    li { margin-bottom: 8px; }
+    .footer { color: var(--muted); font-size: 13px; margin-top: 20px; }
+    @media (max-width: 900px) {
+      .stats { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .grid { grid-template-columns: 1fr; }
+      .shots { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 520px) {
+      .wrap { width: min(100% - 22px, 1180px); }
+      header { padding: 24px 0 20px; }
+      main { padding-top: 18px; }
+      .stats { grid-template-columns: 1fr; }
+      section { padding: 18px; }
+      .linkrow { grid-template-columns: 1fr; }
+      .open { width: fit-content; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="wrap">
+      <div class="eyebrow">מרכז השליטה של NadLan - 23 ביוני 2026</div>
+      <h1>מרכז שליטה לבנייה, קידום אורגני, עיצוב, שוורום ותיעוד ראייתי.</h1>
+      <p class="lead">זהו אינדקס קריא שמרכז את הקבצים החדשים שנוצרו לביצוע. הוא לא מחליף בדיקות חיות באתר, ולא טוען שהשוורום מוכן למכירה לקבלנים לפני שיש נכסים אמיתיים וצילומי QA.</p>
+      <div class="meta">
+        <span class="pill">branch: strategy/nadlan-seo-product-war-plan</span>
+        <span class="pill">commit בסיס: 2c6620e</span>
+        <span class="pill">עודכן: 2026-06-23 14:38</span>
+      </div>
+    </div>
+  </header>
+  <main class="wrap">
+    <div class="stats">
+      <div class="stat"><b>225</b><span>מילות מפתח עם בעלים קנוני</span></div>
+      <div class="stat"><b>39</b><span>תבניות עמודים בארכיטקטורה</span></div>
+      <div class="stat"><b>15</b><span>משטחי UX לבנייה</span></div>
+      <div class="stat"><b>17</b><span>משימות ביצוע מוכנות לספרינט</span></div>
+      <div class="stat"><b>15</b><span>פריטי ראיות ומגבלות</span></div>
+    </div>
+    <div class="grid">
+      <div>
+        <section>
+          <h2>מה נוצר עכשיו</h2>
+          <p>נוצרה שכבת ביצוע שמחברת בין המחקר, מפת העמודים, מילות המפתח, השוורום, ה-listings, המערכת נגד קניבליזציה, והדרישה לצילומי מסך לפני שמגדירים עבודה כגמורה.</p>
+          <div class="ok">כל 225 מילות המפתח קיבלו כתובת בעלות קנונית ותבנית עמוד. אין שורות בלי בעלים.</div>
+          <div class="warn">עדיין אין כאן הוכחת אתר חיה אחרי UPress pull וניקוי cache. זה נשאר שער פתוח ולא מסומן כגמור.</div>
+        </section>
+        <section>
+          <h2>קבצי ביצוע מרכזיים</h2>
+          <div class="links">
+            <a class="linkrow" href="master-war-room-execution-spec.md"><span><strong>מפרט ביצוע ראשי</strong><small>הסבר אחד שמחבר מטרה, מצב, קידום אורגני, חוויית משתמש, שוורום, ראיות וצעדי בנייה. קובץ: master-war-room-execution-spec.md</small></span><span class="open">פתח</span></a>
+            <a class="linkrow" href="keyword-to-page-owner.csv"><span><strong>מפת בעלות מילות מפתח</strong><small>225 שורות. לכל מילת מפתח יש בעלים קנוני, תבנית עמוד, סטטוס מוכנות וכלל קישורים פנימיים.</small></span><span class="open">פתח CSV</span></a>
+            <a class="linkrow" href="sprint-ready-backlog.csv"><span><strong>משימות ספרינט מוכנות</strong><small>פריטי עבודה עם בדיקות קבלה, ראיות ויזואליות, בדיקות קידום אורגני, סיכון ושער בעלים.</small></span><span class="open">פתח CSV</span></a>
+            <a class="linkrow" href="current-evidence-register.csv"><span><strong>רישום ראיות ומגבלות</strong><small>מה מוכח, מה חלקי, מה שייך לאב טיפוס, ומה חייב בדיקה חוזרת.</small></span><span class="open">פתח CSV</span></a>
+          </div>
+        </section>
+        <section>
+          <h2>דוחות ותצוגות קריאות</h2>
+          <div class="links">
+            <a class="linkrow" href="nadlan-war-room-spec-rtl.html"><span><strong>מפרט War Room קריא</strong><small>מפרט הבנייה הקיים בשפה קריאה.</small></span><span class="open">פתח</span></a>
+            <a class="linkrow" href="full-war-room-gap-map-rtl.html"><span><strong>מפת פערים מלאה</strong><small>מפת פערים מלאה של מה קיים ומה חסר.</small></span><span class="open">פתח</span></a>
+            <a class="linkrow" href="../source-of-truth-cannibalization-system-rtl.html"><span><strong>מערכת נגד קניבליזציה</strong><small>הסבר בעברית על מקור האמת לכתיבה, SEO ופרסום.</small></span><span class="open">פתח</span></a>
+            <a class="linkrow" href="../lovable/nadlan-report-2-keyword-master-rtl.html"><span><strong>דוח מילות מפתח 2</strong><small>דוח מילות המפתח המקורי בפורמט קריא.</small></span><span class="open">פתח</span></a>
+            <a class="linkrow" href="../lovable/nadlan-lovable-keyword-workbook.xlsx"><span><strong>חוברת אקסל</strong><small>קובץ אקסל לעבודה על מחקר מילות המפתח.</small></span><span class="open">פתח XLSX</span></a>
+          </div>
+        </section>
+        <section>
+          <h2>הצעדים הבאים</h2>
+          <ol>
+            <li>להריץ הוכחת Stage 1 חיה אחרי עדכון UPress וניקוי cache.</li>
+            <li>לאשר את מפת הבעלות הקנונית לפני כתיבת עמודים נוספים.</li>
+            <li>לבנות את מודל השוורום עם מצבי נכס אמיתיים ולא עם נפילות שקטות.</li>
+            <li>לצלם כל מסך בשולחן עבודה וב-390px ולבדוק שפה, חריגת רוחב, תמונות ונכסים.</li>
+            <li>לקדם את listings, homepage, projects, professionals, tools ו-international לפי משימות הספרינט.</li>
+          </ol>
+        </section>
+      </div>
+      <aside>
+        <section>
+          <h2>מצב כנות</h2>
+          <p><strong>מוכן:</strong> שכבת ארגון, בעלות מילות מפתח, משימות ביצוע, רישום ראיות, אינדקס קריא.</p>
+          <p><strong>לא מוכן:</strong> הוכחה חיה אחרונה, נכסי פרויקט אמיתיים, שוורום למכירה לקבלנים, מערכת ניהול בתוך WordPress.</p>
+          <p><strong>אסור:</strong> להציג תמונות דמה כאילו הן מקור, להדליף שפה פנימית למשתמש, או לפרסם תוכן בלי בעלות קנונית.</p>
+        </section>
+        <section>
+          <h2>תצוגות קיימות</h2>
+          <div class="shots">
+            <figure>
+              <img src="../../handoff/codex/2026-06-23-public-language-cleanup/exports/public-language-cleanup-gallery-preview.png" alt="תצוגת בדיקה ויזואלית של אב טיפוס">
+              <figcaption>בדיקה ויזואלית לאב הטיפוס אחרי ניקוי שפה ציבורית.</figcaption>
+            </figure>
+            <figure>
+              <img src="../lovable/nadlan-lovable-keyword-workbook-summary-preview.png" alt="תצוגת חוברת עבודה מילות מפתח">
+              <figcaption>תצוגת חוברת עבודה למחקר מילות מפתח.</figcaption>
+            </figure>
+            <figure>
+              <img src="../lovable/preview-3d-map-showroom.png" alt="כיוון מוקדם לשוורום ומפה">
+              <figcaption>כיוון מוקדם לשוורום ומפה. לא הוכחת ייצור.</figcaption>
+            </figure>
+            <figure>
+              <img src="../lovable/preview-report-index.png" alt="אינדקס דוחות קודם">
+              <figcaption>אינדקס דוחות קודם מתוך החבילה.</figcaption>
+            </figure>
+          </div>
+        </section>
+        <section>
+          <h2>כלל צילום מסך</h2>
+          <p>כל עבודה ויזואלית חדשה חייבת להישמר עם צילום מסך, בדיקת מובייל, בדיקת טקסט ציבורי, בדיקת נכסים אמיתיים ובדיקת חריגת רוחב.</p>
+          <p class="footer">הקובץ הזה הוא אינדקס קריא לבעלים. קבצי הבנייה עצמם נשארים ב-CSV וב-MD כדי שסוכנים וכלי בנייה יוכלו לקרוא אותם.</p>
+        </section>
+      </aside>
+    </div>
+  </main>
+</body>
+</html>
