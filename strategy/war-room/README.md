@@ -7,6 +7,8 @@ Primary owner-facing artifacts:
 - `owner-output-index-rtl.html` - Hebrew RTL index for the current execution layer, with links to the key specs, CSVs, evidence, workbook, and screenshot references.
 - `design-system-screen-library-rtl.html` - Hebrew RTL design-system and screen-library report with tokens, product references, and 12 build surfaces.
 - `design-system-screen-library-visual-qa.md` - screenshot review note for the design-system screen library.
+- `showroom-rebuild-execution-packet-rtl.html` - Hebrew RTL showroom rebuild packet with live/prototype screenshots, asset-truth rules, target screens, contractor inputs, and screenshot gates.
+- `showroom-rebuild-execution-packet-visual-qa.md` - screenshot review note for the showroom rebuild packet.
 - `objective-completion-audit-rtl.html` - Hebrew RTL audit against the full war-room objective, showing what is proven, partial, or still missing.
 - `current-site-evidence-2026-06-23-rtl.html` - Hebrew RTL summary of the fresh live public-site screenshot run from 2026-06-23.
 - `current-site-and-objective-audit-visual-qa.md` - screenshot review note for the fresh public evidence and objective audit.
@@ -20,6 +22,8 @@ Structured artifacts:
 - `ux-build-spec.csv` - build-level UX requirements for homepage, listings, projects, professionals, tools, trust, and international investor surfaces.
 - `design-system-screen-library.csv` - structured screen library for brand, homepage, listings, projects, showroom, professionals, tools, international, contractor intake, and admin war room.
 - `design-system-screen-library.md` - detailed design system and implementation gate narrative.
+- `showroom-rebuild-execution-packet.csv` - structured showroom rebuild queue with asset-truth, visual-stage, unit-selection, map, interior, lead, performance, and SEO gates.
+- `showroom-rebuild-execution-packet.md` - implementation narrative for the next project showroom build slice.
 - `lovable-design-validation-prompt.md` - controlled no-spend prompt to use only if the owner chooses another Lovable review.
 - `keyword-to-page-owner.csv` - one canonical owner for every keyword row from the recovered Report 2 keyword universe.
 - `current-evidence-register.csv` - evidence, limitations, and next verification actions.

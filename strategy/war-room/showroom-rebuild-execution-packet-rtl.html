@@ -1,0 +1,193 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>NadLan - חבילת בנייה לשואורום פרויקט</title>
+  <style>
+    :root{
+      --paper:#f7f1e8;
+      --panel:#fffaf2;
+      --ink:#211915;
+      --muted:#74685f;
+      --line:#e2d6c7;
+      --green:#0f332c;
+      --gold:#a7793b;
+      --red:#8f2e24;
+      --soft:#efe5d7;
+    }
+    *{box-sizing:border-box}
+    body{margin:0;background:var(--paper);color:var(--ink);font-family:Arial,"Noto Sans Hebrew",sans-serif;line-height:1.75}
+    .wrap{max-width:1180px;margin:0 auto;padding:42px 24px 72px}
+    header{padding:48px 0 34px;border-bottom:1px solid var(--line);text-align:center}
+    .eyebrow{font-size:13px;color:var(--gold);font-weight:700;letter-spacing:0}
+    h1{font-family:Georgia,"Times New Roman",serif;font-size:clamp(34px,6vw,76px);line-height:1.02;margin:18px 0 16px;letter-spacing:0}
+    h2{font-family:Georgia,"Times New Roman",serif;font-size:clamp(26px,3vw,42px);line-height:1.16;margin:0 0 18px;letter-spacing:0}
+    h3{font-size:20px;margin:0 0 10px}
+    p{margin:0 0 14px}
+    a{color:var(--green);font-weight:700}
+    .intro{max-width:820px;margin:0 auto;color:var(--muted);font-size:18px}
+    .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:28px 0}
+    .stat{background:var(--panel);border:1px solid var(--line);padding:20px;text-align:center}
+    .stat strong{display:block;font-family:Georgia,"Times New Roman",serif;font-size:38px}
+    section{margin-top:28px;background:var(--panel);border:1px solid var(--line);padding:28px}
+    .grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+    .three{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+    .card{background:#fffdf8;border:1px solid var(--line);padding:20px;min-height:100%}
+    .ok{border-right:5px solid var(--green)}
+    .warn{border-right:5px solid var(--gold)}
+    .bad{border-right:5px solid var(--red)}
+    .shot{background:#fff;border:1px solid var(--line);padding:12px}
+    .shot img{display:block;width:100%;height:auto;border:1px solid var(--line);background:#f4eadc}
+    .shot img.crop{height:620px;object-fit:cover;object-position:top}
+    .caption{font-size:14px;color:var(--muted);margin-top:10px}
+    .decision{display:grid;grid-template-columns:1.2fr .8fr;gap:22px;align-items:start}
+    .flow{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin-top:14px}
+    .step{border:1px solid var(--line);background:var(--soft);padding:14px;min-height:112px}
+    .step b{display:block;color:var(--green);margin-bottom:6px}
+    table{width:100%;border-collapse:collapse;background:#fffdf8}
+    th,td{border:1px solid var(--line);padding:12px;text-align:right;vertical-align:top}
+    th{background:var(--soft);font-weight:800}
+    .pill{display:inline-block;border:1px solid var(--line);background:#fffdf8;padding:5px 9px;margin:3px;font-size:13px}
+    .source-list{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+    .source-list a{display:block;border:1px solid var(--line);background:#fffdf8;padding:12px;text-decoration:none}
+    .small{font-size:14px;color:var(--muted)}
+    @media(max-width:760px){
+      .wrap{padding:24px 16px 48px}
+      header{text-align:right;padding-top:28px}
+      .stats,.grid,.three,.decision,.flow,.source-list{grid-template-columns:1fr}
+      section{padding:18px}
+      .step{min-height:auto}
+      table{font-size:14px}
+      th,td{padding:9px}
+      .shot img.crop{height:760px}
+      table,thead,tbody,tr,td{display:block;width:100%}
+      thead{display:none}
+      tr{margin-bottom:12px;border:1px solid var(--line);background:#fffdf8}
+      td{border:0;border-bottom:1px solid var(--line)}
+      td:last-child{border-bottom:0}
+      td[data-label]::before{content:attr(data-label);display:block;font-weight:800;color:var(--green);margin-bottom:4px}
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <div class="eyebrow">2026-06-23 - NadLan - שואורום פרויקטים</div>
+      <h1>חבילת בנייה לשואורום שמוכר פרויקט, לא דמו.</h1>
+      <p class="intro">המטרה היא להפוך את השואורום למוצר שאפשר להראות לקבלן ולמשקיע: נכסים אמיתיים, מסע בחירת דירה, נוף, תכנון, סיור פנים, פנייה מסודרת, ושפה ציבורית נקייה. מה שאין לו מקור מאושר מוצג כחסר או כקונספט, לא כעובדה.</p>
+    </header>
+
+    <div class="stats">
+      <div class="stat"><strong>12</strong><span>שורות ביצוע</span></div>
+      <div class="stat"><strong>7</strong><span>מצבי צילום חובה</span></div>
+      <div class="stat"><strong>5</strong><span>טאבים לדירה</span></div>
+      <div class="stat"><strong>390</strong><span>שער מובייל</span></div>
+    </div>
+
+    <section>
+      <h2>מה ראינו בצילומים</h2>
+      <div class="grid">
+        <div class="shot">
+          <img class="crop" src="../../docs/qa/screenshots/stage1-public-trust-current-2026-06-23/dimri-yama-sde-dov-desktop-1440.png" alt="צילום חי של עמוד דימרי ימה">
+          <p class="caption">עמוד חי, חיתוך עליון של צילום מלא: יש עומק, תוכן וטפסים, אבל אזור השואורום עדיין מרגיש כמו מודול כבד ולא כמו חוויית מכירה מדויקת.</p>
+        </div>
+        <div class="shot">
+          <img class="crop" src="../../handoff/codex/2026-06-23-public-language-cleanup/screenshots/showroom-rainbow--he--desktop-1440.png" alt="צילום prototype אחרי ניקוי שפה">
+          <p class="caption">אב הטיפוס נקי יותר מבחינת שפה, אבל החזית סכמטית והמותג חלש. זה טוב כהוכחת מבנה, לא כמשטח מכירה לקבלן.</p>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2>החלטת מוצר</h2>
+      <div class="decision">
+        <div class="card ok">
+          <h3>הקו המחייב</h3>
+          <p>השואורום מציג רק אחד מארבעה מצבים ברורים: נכס רשמי, הדמיית קונספט מאושרת, מצב חסר נכסים, או מצב תקלה נקי. אין חזרה שקטה למגדל סכמטי, אין תמונות לא קשורות, ואין טענה שמידע הוא רשמי אם הוא לא.</p>
+          <span class="pill">הדמיה רשמית</span>
+          <span class="pill">הדמיית קונספט</span>
+          <span class="pill">ממתין להעלאה</span>
+          <span class="pill">לא זמין כרגע</span>
+        </div>
+        <div class="card bad">
+          <h3>מה לא עובר הלאה</h3>
+          <p>לא מעבירים למסך ציבורי מונחי קבצים, שמות פונטים, שפת בנייה, תגיות דירוג פנימיות, או תמונות שנראות כמו מלאי כללי. אם אין תמונת פרויקט אמיתית, עדיף מצב חסר אלגנטי מאשר תמונה מטעה.</p>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2>מסע השואורום החדש</h2>
+      <div class="flow">
+        <div class="step"><b>01 זהות</b>שם פרויקט, עיר, יזם, מקור, משפט אמינות קצר ופעולה ראשית אחת.</div>
+        <div class="step"><b>02 במה חזותית</b>מודל או חזית אמיתית. אם אין, מצב העלאה נקי עם רשימת חסרים לקבלן.</div>
+        <div class="step"><b>03 בחירת דירה</b>טבלת יחידות ופיקר חזותי. בחירה פותחת כרטיס דירה ברור.</div>
+        <div class="step"><b>04 עומק דירה</b>תכנון, נוף וסביבה, סיור פנים, עלויות ויועצים.</div>
+        <div class="step"><b>05 ליד</b>טופס או WhatsApp עם הקשר מלא: פרויקט, דירה, שפה, מקור ועניין.</div>
+      </div>
+    </section>
+
+    <section>
+      <h2>מצבי הדירה במובייל</h2>
+      <div class="grid">
+        <div class="shot">
+          <img class="crop" src="../../handoff/codex/2026-06-23-public-language-cleanup/screenshots/showroom-rainbow--he--unit-drawer--mobile-390.png" alt="בחירת דירה במובייל">
+          <p class="caption">המבנה הנכון: בחירה פותחת גיליון תחתון קריא, אבל צריך להחליף את השרטוט הסכמטי בנכס אמיתי או בקונספט מאושר.</p>
+        </div>
+        <div class="card warn">
+          <h3>שער מובייל</h3>
+          <p>ב־390px הבמה, כרטיס הדירה והפעולות חייבים להישאר בתוך רוחב המסך. אין כרטיס קבוע שמכסה את החזית. אין כפתור WhatsApp שמסתיר פוטר או טופס. כל יעד לחיצה לפחות 44px.</p>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2>מסכי יעד לבנייה</h2>
+      <table>
+        <thead>
+          <tr><th>מסך</th><th>מה המשתמש רואה</th><th>מה חייב להיות מאחורי הקלעים</th><th>בדיקת צילום</th></tr>
+        </thead>
+        <tbody>
+          <tr><td data-label="מסך">מסך ראשון</td><td data-label="מה המשתמש רואה">פרויקט, יזם, מיקום, במה חזותית ופעולה אחת.</td><td data-label="מאחורי הקלעים">מקור פרויקט, נכס חזותי, סטטוס נכס, נתוני פנייה.</td><td data-label="בדיקת צילום">1440 ו־390 לפני גלילה.</td></tr>
+          <tr><td data-label="מסך">בחירת דירה</td><td data-label="מה המשתמש רואה">יחידות זמינות עם מחיר, שטח, חדרים, קומה וסטטוס.</td><td data-label="מאחורי הקלעים">טבלת יחידות מובנית, מקור מחיר, מקור זמינות, מיפוי חזותי.</td><td data-label="בדיקת צילום">דירה נבחרת פתוחה בדסקטופ ובמובייל.</td></tr>
+          <tr><td data-label="מסך">נוף וסביבה</td><td data-label="מה המשתמש רואה">מפה או הסבר נקי שהמידע לא זמין.</td><td data-label="מאחורי הקלעים">טוקן מפה, קואורדינטות, כיוון דירה, נתוני סביבה.</td><td data-label="בדיקת צילום">מצב מפה פעילה ומצב מפה לא זמינה.</td></tr>
+          <tr><td data-label="מסך">סיור פנים</td><td data-label="מה המשתמש רואה">תוכנית, סיור, תמונות או הצעת ייעוץ.</td><td data-label="מאחורי הקלעים">קבצי תוכנית, סיור, תמונות, סטטוס אישור.</td><td data-label="בדיקת צילום">טאב פתוח במובייל בלי גלישה.</td></tr>
+          <tr><td data-label="מסך">פנייה</td><td data-label="מה המשתמש רואה">בקשת שיחה או WhatsApp כחלק מאותה חוויה.</td><td data-label="מאחורי הקלעים">מזהה פרויקט, מזהה דירה, שפה, מקור פנייה ומצב הנכס החזותי.</td><td data-label="בדיקת צילום">פוטר עם פעולה גלויה בלי כיסוי.</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section>
+      <h2>חבילת נכסים לקבלן</h2>
+      <div class="three">
+        <div class="card ok"><h3>חובה</h3><p>לוגו יזם, שם פרויקט, עיר, מיקום, איש קשר, תמונת פרויקט או הדמיה רשמית, טבלת יחידות, סטטוס זמינות, מקור מחיר.</p></div>
+        <div class="card warn"><h3>רצוי</h3><p>מודל תלת ממד, חזית עם מיפוי דירות, תוכניות דירה, סיור פנים, כיוון נוף, תמונות סביבתיות, סרטון.</p></div>
+        <div class="card bad"><h3>אסור להמציא</h3><p>זמינות, מחיר, תמונת בניין, נוף מהדירה, סיור פנים, או שיוך דירה לחזית בלי מקור או אישור.</p></div>
+      </div>
+    </section>
+
+    <section>
+      <h2>קישורי מקור למוצר</h2>
+      <div class="source-list">
+        <a href="https://www.zillow.com/3d-home/">Zillow 3D Home</a>
+        <a href="https://www.zillow.com/agents/showcase/">Zillow Showcase</a>
+        <a href="https://www.zillow.com/news/zillow-showcase-brings-listings-to-life/">Zillow SkyTour</a>
+        <a href="https://matterport.com/">Matterport</a>
+        <a href="https://www.homes.com/solutions/matterport">Homes.com Matterport</a>
+        <a href="https://www.jamesedition.com/real_estate">JamesEdition</a>
+      </div>
+      <p class="small">המקורות משמשים כנקודת ייחוס למבנה מוצר: סיור, תוכנית, חזית, סביבת נכס, שפה פרימיום ואמון בינלאומי. הם לא מקור לתמונות של פרויקטים ספציפיים.</p>
+    </section>
+
+    <section>
+      <h2>בדיקת קבלה לכל שינוי</h2>
+      <div class="three">
+        <div class="card"><h3>צילום</h3><p>כל שינוי בשואורום חייב לשמור צילום 1440, 390, דירה נבחרת, מצב חסר נכס, מצב תקלה ופוטר עם CTA.</p></div>
+        <div class="card"><h3>טקסט</h3><p>סריקת טקסט מרונדר חייבת לאתר שפה פנימית, מונחי בנייה, תוויות דירוג פנימיות ומילים שלא אמורות להופיע ללקוח.</p></div>
+        <div class="card"><h3>אמת נכסים</h3><p>הצילום חייב להוכיח שהמסך לא מציג נכס כאמיתי בלי מקור. אם חסר נכס, זה חייב להיות ברור ונקי.</p></div>
+      </div>
+    </section>
+  </div>
+</body>
+</html>
