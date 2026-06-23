@@ -10,6 +10,28 @@ Do not leave final work only inside `.lovable/`.
 Do not output a thin Markdown-only report.
 Do not claim completion without screenshots, prototype, design tokens, and a source manifest.
 
+## Operating Mode And Credit Gate
+
+This is a two-step Lovable run.
+
+Step 1, before spending heavily:
+
+- read the repo files listed below
+- inspect the current public website
+- capture/record what you inspected
+- explain the exact intended scope
+- explain which parts are high-credit/high-processing
+- list the outputs you will create
+- list any blocking questions
+- then wait for the owner to write exactly: `PROCEED FULL RUN`
+
+Step 2, only after the owner writes `PROCEED FULL RUN`:
+
+- produce the full prototype, screenshots, reports, structured data, exports, and source manifest
+- commit and push everything to GitHub
+
+Do not begin the heavy prototype/screenshot generation until the owner confirms the full run.
+
 ## Required Output Folder
 
 Create this exact folder at the root of the Lovable hub repo:
@@ -53,6 +75,34 @@ handoff/lovable/2026-06-23-war-room-sync/reports/rest-api-map.md
 handoff/lovable/2026-06-23-war-room-sync/reports/advisor-notes.md
 ```
 
+Also read Codex's latest request package if present:
+
+```text
+handoff/codex/2026-06-23-showroom-redesign-readout.md
+handoff/codex/2026-06-23-stakeholder-input-packet.md
+handoff/codex/lovable-prompts/2026-06-23-showroom-visual-redesign-prompt.md
+handoff/codex/exports/2026-06-23-showroom-redesign-next-lovable-prompt.html
+handoff/codex/exports/2026-06-23-stakeholder-input-packet.html
+```
+
+Inspect the current public site:
+
+```text
+https://nad-lan.co.il
+```
+
+Capture current-state evidence before proposing the redesign:
+
+- homepage desktop screenshot
+- homepage mobile screenshot
+- showroom/project page desktop screenshot if publicly reachable
+- showroom/project page mobile screenshot if publicly reachable
+- navigation/menu screenshot
+- current contact/WhatsApp/dial CTA screenshot
+- any map/facade/showroom failure state you can see
+
+If a page is not reachable, record the exact URL tried and why it failed. Do not invent a screenshot.
+
 Then use these WordPress repo facts as hard constraints:
 
 - Source-of-truth repo: `https://github.com/The-new-ben/nad-lan-co-il`
@@ -79,6 +129,8 @@ Produce an implementation-grade visual and UX package for the NadLan showroom re
 The first priority is the project showroom, because this is what sells contractors.
 
 The wider website redesign matters, but do not spread yourself thin. Deliver a deep showroom package first, with enough sitewide design system and IA to prevent rework.
+
+The listing arm exists but should not dominate the first public hierarchy until it is strong enough. The initial navigation and homepage should lead with premium projects, 3D/project showroom, investor confidence, foreign-buyer/investor support, and professional trust. Listings can be present as a system component, but not as the main promise if the inventory is not yet strong.
 
 NadLan's ambition:
 
@@ -130,6 +182,10 @@ Also include outbound investment markets for Israeli investors:
 - additional destinations that clearly fit Israeli real-estate investment demand
 
 For each outbound market, define the SEO architecture and the technical product model: country pages, city/project pages, 3D/project showroom eligibility, local professional network, FX display, tax/legal disclaimer, partner-intake workflow, and concierge lead routing.
+
+Brand/name exploration is required.
+
+The owner says "Nadlan Chakam" appears occupied, so do not assume it is available. Explore premium, credible naming directions such as NadLan AI, NadLan 3D, NadLan Pro, NadLan Global, or stronger alternatives. Check naming fit for Hebrew, English, foreign investors, contractors, SEO, favicon/logo, and legal/domain/social availability risk. Do not make a legal claim; give a shortlist and what must be checked.
 
 ## External Benchmarks To Research
 
@@ -275,6 +331,7 @@ Each report must be practical and implementation-grade.
 `02-design-system.md` must include:
 
 - brand thesis
+- brand/name options and recommendation
 - typography system for Hebrew and English
 - color tokens
 - spacing tokens
@@ -282,6 +339,7 @@ Each report must be practical and implementation-grade.
 - status colors
 - icon system
 - favicon/OG direction
+- logo mark direction
 - RTL/LTR rules
 - accessibility rules
 - component inventory
@@ -308,6 +366,7 @@ Each report must be practical and implementation-grade.
 - homepage direction
 - project page direction
 - intelligent listing page direction
+- current listing-arm hierarchy recommendation: visible but not primary until inventory is stronger
 - professionals page direction
 - foreign buyer pages
 - city money pages
@@ -317,7 +376,9 @@ Each report must be practical and implementation-grade.
 - page headline formulas
 - schema/SEO notes
 - internal linking rules
+- external link acquisition strategy: who to get links from, why they would link, and which pages should receive authority
 - no-cannibalization rules
+- anti-cannibalization source-of-truth workflow so agents and writers do not damage money pages
 
 `10-wordpress-war-room-dashboard-spec.md` must specify the WordPress admin dashboard for the owner:
 
@@ -332,11 +393,14 @@ Each report must be practical and implementation-grade.
 - SEO page backlog
 - content approval workflow
 - contractor package pipeline
+- contractor-facing premium dashboard / demo experience
+- contractor onboarding and asset-intake workflow
 - international destination pipeline
 - professional vertical pipeline
 - lead/concierge ops status
 - export buttons
 - AI drafting tools with approval gates
+- WhatsApp/call/email CTA health and routing overview
 
 `11-codex-implementation-backlog.md` must be a precise build plan for Codex:
 
@@ -347,6 +411,8 @@ Each report must be practical and implementation-grade.
 - mobile QA checklist
 - public trust checklist
 - what not to touch yet
+- technical split between theme, child theme, plugin, data files, REST, admin dashboard, and public assets
+- specific notes for `plugins/nadlan-config/inc/project-3d.php`, `assets/css/nadlan-project-showroom.css`, `assets/js/nadlan-project-showroom.js`, and project asset folders
 
 `12-full-market-money-keyword-expansion.md` must prove that the strategy is not avoiding the market:
 
@@ -369,6 +435,7 @@ Each report must be practical and implementation-grade.
 - legal/tax/mortgage disclaimer approach
 - partner-intake and verification workflow
 - technical implementation options in WordPress
+- whether each market needs projects, guides, partner pages, local professional pages, or 3D showroom support first
 
 `14-stakeholder-input-packet.md` must prepare the owner to call the relevant business/technical stakeholder:
 
@@ -394,6 +461,9 @@ data/full-market-keyword-universe.csv
 data/international-destination-page-map.csv
 data/professional-verticals-map.csv
 data/stakeholder-input-checklist.csv
+data/brand-name-options.csv
+data/current-site-screenshot-inventory.csv
+data/link-acquisition-targets.csv
 ```
 
 These must be usable by Codex. Do not bury structured data only in prose.
@@ -437,6 +507,7 @@ Include:
 - AI content drafting inside WordPress admin, but with human approval before publishing
 - lead qualification summary
 - suggested follow-up messages for WhatsApp/email
+- polished WhatsApp, call, save, share, and concierge CTAs as one coherent contact system
 
 Do not present AI as legal, tax, mortgage, or investment advice. It is a guided assistant and lead qualification layer.
 
