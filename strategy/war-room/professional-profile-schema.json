@@ -1,0 +1,181 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "NadLan Professional Profile",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "profile_id",
+    "display_name",
+    "category",
+    "service_areas",
+    "languages",
+    "verification",
+    "disclosure",
+    "contact",
+    "governance"
+  ],
+  "properties": {
+    "profile_id": {
+      "type": "string",
+      "pattern": "^pro_[a-z0-9_\\-]+$"
+    },
+    "display_name": {
+      "type": "string",
+      "minLength": 2
+    },
+    "public_slug": {
+      "type": "string",
+      "pattern": "^[a-z0-9\\-]+$"
+    },
+    "category": {
+      "type": "string",
+      "enum": [
+        "real_estate_lawyer",
+        "appraiser",
+        "mortgage_advisor",
+        "tax_advisor",
+        "interior_designer",
+        "architect",
+        "inspector_engineer",
+        "broker_agent",
+        "property_manager",
+        "foreign_buyer_concierge",
+        "contractor_developer_contact",
+        "insurance_advisor"
+      ]
+    },
+    "service_areas": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["city_or_area", "country"],
+        "additionalProperties": false,
+        "properties": {
+          "city_or_area": { "type": "string" },
+          "country": { "type": "string" },
+          "is_primary": { "type": "boolean" }
+        }
+      }
+    },
+    "languages": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "string",
+        "enum": ["he", "en", "fr", "ru", "ar", "es", "de", "other"]
+      }
+    },
+    "credentials": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "license_number_public": { "type": ["string", "null"] },
+        "official_registry_name": { "type": ["string", "null"] },
+        "official_registry_url": { "type": ["string", "null"], "format": "uri" },
+        "credential_notes_private": { "type": ["string", "null"] },
+        "credential_review_required": { "type": "boolean" }
+      }
+    },
+    "verification": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["status", "reviewed_by", "reviewed_at", "next_review_at", "evidence_refs"],
+      "properties": {
+        "status": {
+          "type": "string",
+          "enum": [
+            "pending",
+            "claimed",
+            "document_verified",
+            "license_verified",
+            "owner_approved",
+            "rejected",
+            "suspended",
+            "stale"
+          ]
+        },
+        "reviewed_by": { "type": ["string", "null"] },
+        "reviewed_at": { "type": ["string", "null"], "format": "date" },
+        "next_review_at": { "type": ["string", "null"], "format": "date" },
+        "evidence_refs": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "public_verification_label": { "type": ["string", "null"] }
+      }
+    },
+    "disclosure": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["commercial_position_state", "public_disclosure_required", "public_disclosure_text"],
+      "properties": {
+        "commercial_position_state": {
+          "type": "string",
+          "enum": ["none", "paid_position", "partner", "owned_relationship", "unknown"]
+        },
+        "public_disclosure_required": { "type": "boolean" },
+        "public_disclosure_text": { "type": ["string", "null"] },
+        "ranking_explanation_private": { "type": ["string", "null"] }
+      }
+    },
+    "contact": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["lead_destination", "allowed_channels", "fallback_destination"],
+      "properties": {
+        "lead_destination": { "type": "string" },
+        "fallback_destination": { "type": "string" },
+        "allowed_channels": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "enum": ["form", "phone", "whatsapp", "email", "concierge"]
+          }
+        },
+        "consent_required": { "type": "boolean" },
+        "last_contact_test_at": { "type": ["string", "null"], "format": "date" }
+      }
+    },
+    "content": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "short_summary": { "type": ["string", "null"] },
+        "service_notes": { "type": ["string", "null"] },
+        "review_policy_state": {
+          "type": "string",
+          "enum": ["no_reviews", "reviews_private", "reviews_moderated_public"]
+        },
+        "legal_finance_disclaimer_required": { "type": "boolean" }
+      }
+    },
+    "linked_surfaces": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["page_id", "role"],
+        "properties": {
+          "page_id": { "type": "string" },
+          "role": { "type": "string", "enum": ["primary", "supporting", "contextual_cta"] }
+        }
+      }
+    },
+    "governance": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["created_at", "updated_at", "owner_approval_status", "public_indexing_allowed"],
+      "properties": {
+        "created_at": { "type": "string", "format": "date" },
+        "updated_at": { "type": "string", "format": "date" },
+        "owner_approval_status": {
+          "type": "string",
+          "enum": ["draft", "approved", "blocked", "needs_review"]
+        },
+        "public_indexing_allowed": { "type": "boolean" },
+        "canonical_page_id": { "type": ["string", "null"] }
+      }
+    }
+  }
+}

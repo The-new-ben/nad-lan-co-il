@@ -13,13 +13,15 @@ Artifact: `strategy/war-room/owner-output-index-rtl.html`
 Desktop review:
 
 - The page renders as a readable RTL owner dashboard.
-- The key counts are visible above the fold: 225 keyword rows, 39 page templates, 15 UX surfaces, 17 sprint tasks, 27 evidence items.
+- The key counts are visible above the fold: 225 keyword rows, 39 page templates, 15 UX surfaces, 18 sprint tasks, 28 evidence items.
 - The main execution links are visible and separated from the evidence and report links.
 - The project showroom state-machine packet is linked from the readable reports list.
 - The technical SEO and schema packet is linked from the readable reports list.
 - The competitor and search-arena packet is linked from the readable reports list.
+- The professionals and verification packet is linked from the readable reports list.
 - The page states the main limitation clearly: final live proof after UPress pull and cache clear is still pending.
 - Existing preview images load in the evidence panel.
+- The mobile screenshot was recaptured at 390px width after the new professionals link and counts were added.
 
 Mobile review:
 

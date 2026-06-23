@@ -14,10 +14,11 @@ Review notes:
 - The previous HTML was replaced with clean readable Hebrew because the source text was damaged.
 - Desktop screenshot renders the full gap table with updated measurement and KPI status.
 - Mobile screenshot at 390px uses stacked cards instead of a horizontal table, so the owner can read each gap without dragging sideways.
-- The refreshed screenshots now show 27 evidence items.
+- The refreshed screenshots now show 28 evidence items.
 - The showroom row now includes the state-machine packet: 15 product states, 20 admin fields, and a unit/asset data contract.
 - The technical SEO row now shows a 39-page-family matrix as a build-ready specification that is not yet implemented.
 - The competitor research row now shows 14 public sources, 14 target queries, and a competitor feature matrix, with paid performance metrics still open.
+- The professionals row now shows a build-ready packet with categories, verification states, profile schema, commercial disclosure, lead routing, and SEO ownership rules, while the live directory remains open.
 - The international investor row remains a build-ready specification that is not yet implemented.
 - The page states clearly that several areas are specifications only and not live implementation proof.
 
