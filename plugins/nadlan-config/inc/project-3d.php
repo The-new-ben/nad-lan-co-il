@@ -2440,7 +2440,7 @@ if ( ! function_exists( 'nadlan_p3d_inline_js' ) ) {
 	function fmt(n){return new Intl.NumberFormat('he-IL').format(n)}
 	function statusLabel(status){return status==='sold'?'לא זמינה':(status==='reserved'?'בתהליך בדיקה':'זמינה לפנייה')}
 	function firstAvailable(units){return units.find(function(u){return u.status!=='sold'}) || units[0] || null}
-	function selectedTitle(u){if(!u){return 'בחרו דירה'}var base=u.title || ('קו '+(u.line||u.id));return base+' · קומה '+(u.floor||'-')}
+	function selectedTitle(u){if(!u){return 'בחרו דירה'}var base=u.title || ('קו '+(u.line||u.id));var floor=u.floor||'-';return (floor!=='-'&&base.indexOf('קומה '+floor)>-1)?base:base+' · קומה '+floor}
 	function unitText(u){var parts=[];if(u.rooms){parts.push(u.rooms+' חדרים')}if(u.sqm){parts.push(fmt(u.sqm)+' מ"ר')}if(u.view){parts.push(u.view)}return parts.join(' · ')}
 	function unitBuyerTags(u,meta){
 		var tags=[];
@@ -2611,6 +2611,14 @@ if ( ! function_exists( 'nadlan_p3d_inline_js' ) ) {
 				imageEl.alt=primaryFacade.alt||primaryFacade.label||((meta.title||'הפרויקט')+' - חזית לבחירת דירות');
 				imageEl.loading='lazy';
 				imageEl.addEventListener('error',function(){
+					if(modelViewer){
+						if(facadePlane){facadePlane.remove()}
+						if(stagePicks){stagePicks.remove()}
+						if(fpLegend){fpLegend.hidden=true}
+						root.classList.add('is-dual-showroom');
+						root.classList.remove('is-facade-asset-missing');
+						return;
+					}
 					root.classList.add('is-facade-asset-missing');
 					facadePlane.classList.remove('has-real-facade');
 					facadePlane.classList.add('nlp3d-facade-missing');
@@ -2633,12 +2641,14 @@ if ( ! function_exists( 'nadlan_p3d_inline_js' ) ) {
 				fpLegend.innerHTML='<span><i style="background:#3ddc84"></i>זמינה</span><span><i style="background:#f2c14e"></i>בבדיקה</span><span><i style="background:#d94a43"></i>לא זמינה</span>';
 				scene.appendChild(fpLegend);
 				root.classList.add(modelViewer?'is-dual-showroom':'is-facade-select');
+			}else if(modelViewer){
+				root.classList.add('is-dual-showroom');
+				root.classList.remove('is-facade-asset-missing');
 			}else{
 				facadePlane=document.createElement('div');
 				facadePlane.className='nlp3d-facade-plane nlp3d-facade-missing';
 				facadePlane.innerHTML='<button type="button" class="nlp3d-fp-close" data-action="facade-dismiss" aria-label="הסתר הודעת חזית">×</button><strong>ממתין לחזית ותוכניות מהיזם</strong><p>המודל התלת ממדי מוצג, אבל בחירת דירה על חזית הבניין תיפתח רק אחרי העלאת חזית מאושרת ותוכניות רשמיות.</p><small>קבלנים ויזמים יכולים להעביר חזית, תוכניות ומלאי כדי להפוך את הסיור לעמוד מכירה מלא.</small>';
 				scene.appendChild(facadePlane);
-				root.classList.add(modelViewer?'is-dual-showroom':'is-facade-asset-missing');
 				root.classList.add('is-facade-asset-missing');
 			}
 		}
