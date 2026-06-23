@@ -168,6 +168,7 @@ Codex pulled Lovable source commit `b275f7a`, installed dependencies locally wit
 - `screenshots/city-tel-aviv--en--default--desktop-1440.png`
 - `screenshots/owner-lovable-preview-homepage-2026-06-23.png`
 - `screenshots/owner-lovable-sync-dialog-2026-06-23.png`
+- `screenshots/owner-lovable-credit-decision-2026-06-23.png`
 
 ### Prototype source snapshot added
 
@@ -195,6 +196,7 @@ Codex pulled Lovable source commit `b275f7a`, installed dependencies locally wit
 - `handoff/shared-knowledge/skills/nadlan-public-language-cleanup.md`
 - `handoff/codex/lovable-prompts/2026-06-23-public-language-visual-cleanup-prompt.md`
 - Owner Lovable sync dialog decision: wait for GitHub sync. Do not rebuild and do not spend another 45-65 credits for the same prototype.
+- Owner Lovable credit decision: stop spending Lovable credits for now. Codex can continue from GitHub, local screenshots, prototype-source, and visual QA. Use Lovable again only if Codex identifies a specific blocker that cannot be resolved locally.
 - [x] Screenshots — added by Codex verification in this handoff folder
 - [ ] Real `rainbow.glb` payload ג€” slot prepared at `public/models/`, file mirrors from WP repo in next sync
 
