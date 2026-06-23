@@ -1,0 +1,224 @@
+{
+  "activeUnit": null,
+  "body": {
+    "clientWidth": 1335,
+    "scrollWidth": 1335
+  },
+  "cameraOrbit": "45deg 66deg auto",
+  "cameraTarget": "0 31 6",
+  "cardHidden": true,
+  "clickablePickCount": 0,
+  "model": {
+    "bottom": 783,
+    "cx": 858,
+    "cy": 479,
+    "height": 608,
+    "right": 1228,
+    "width": 741,
+    "x": 487,
+    "y": 175
+  },
+  "modelPickerCount": 6,
+  "picker": {
+    "bottom": 765,
+    "cx": 858,
+    "cy": 497,
+    "height": 536,
+    "right": 1212,
+    "width": 709,
+    "x": 503,
+    "y": 229
+  },
+  "pickerStyle": {
+    "display": "block",
+    "opacity": "1",
+    "pointerEvents": "none",
+    "position": "absolute",
+    "visibility": "visible"
+  },
+  "picks": [
+    {
+      "active": true,
+      "elementAtCenter": null,
+      "inViewport": false,
+      "rect": {
+        "bottom": 609,
+        "cx": 730,
+        "cy": 587,
+        "height": 44,
+        "right": 760,
+        "width": 60,
+        "x": 700,
+        "y": 565
+      },
+      "style": {
+        "display": "flex",
+        "opacity": "1",
+        "pointerEvents": "auto",
+        "position": "absolute",
+        "visibility": "visible"
+      },
+      "text": "8\n3 ח\nדירת 3 חדרים, קומה 8 · 3 חד׳82 מ\"ר · מבט לחצר וליםזמינה לפנייהאומדן ₪6,232,000 · לא מחייב",
+      "unit": "unit-08-sw"
+    },
+    {
+      "active": false,
+      "elementAtCenter": null,
+      "inViewport": false,
+      "rect": {
+        "bottom": 546,
+        "cx": 746,
+        "cy": 524,
+        "height": 44,
+        "right": 780,
+        "width": 68,
+        "x": 712,
+        "y": 502
+      },
+      "style": {
+        "display": "flex",
+        "opacity": "1",
+        "pointerEvents": "auto",
+        "position": "absolute",
+        "visibility": "visible"
+      },
+      "text": "16\n4 ח\nדירת 4 חדרים, קומה 16 · 4 חד׳112 מ\"ר · קו החוף ושדה דבזמינה לפנייהאומדן ₪8,512,000 · לא מחייב",
+      "unit": "unit-16-w"
+    },
+    {
+      "active": false,
+      "elementAtCenter": {
+        "className": "",
+        "tag": "STRONG",
+        "unit": null
+      },
+      "inViewport": true,
+      "rect": {
+        "bottom": 482,
+        "cx": 766,
+        "cy": 460,
+        "height": 44,
+        "right": 800,
+        "width": 68,
+        "x": 732,
+        "y": 438
+      },
+      "style": {
+        "display": "flex",
+        "opacity": "1",
+        "pointerEvents": "auto",
+        "position": "absolute",
+        "visibility": "visible"
+      },
+      "text": "24\n4 ח\nדירת 4 חדרים, קומה 24 · 4 חד׳128 מ\"ר · ים, פארק וצפון תל אביבזמינה לפנייה · פופולריאומדן ₪9,728,000 · לא מחייב",
+      "unit": "unit-24-nw"
+    },
+    {
+      "active": false,
+      "elementAtCenter": {
+        "className": "",
+        "tag": "STRONG",
+        "unit": null
+      },
+      "inViewport": true,
+      "rect": {
+        "bottom": 427,
+        "cx": 976,
+        "cy": 405,
+        "height": 44,
+        "right": 1010,
+        "width": 68,
+        "x": 942,
+        "y": 383
+      },
+      "style": {
+        "display": "flex",
+        "opacity": "1",
+        "pointerEvents": "auto",
+        "position": "absolute",
+        "visibility": "visible"
+      },
+      "text": "31\n5 ח\nדירת 5 חדרים, קומה 31 · 5 חד׳156 מ\"ר · קו הרקיע והחצר הפנימיתזמינה לפנייהאומדן ₪11,856,000 · לא מחייב",
+      "unit": "unit-31-se"
+    },
+    {
+      "active": false,
+      "elementAtCenter": {
+        "className": "",
+        "tag": "STRONG",
+        "unit": null
+      },
+      "inViewport": true,
+      "rect": {
+        "bottom": 372,
+        "cx": 976,
+        "cy": 350,
+        "height": 44,
+        "right": 1010,
+        "width": 68,
+        "x": 942,
+        "y": 328
+      },
+      "style": {
+        "display": "flex",
+        "opacity": "1",
+        "pointerEvents": "auto",
+        "position": "absolute",
+        "visibility": "visible"
+      },
+      "text": "38\n5 ח\nדירת 5 חדרים, קומה 38 · 5 חד׳210 מ\"ר · פנטהאוז גבוה לכיוון היםזמינה לפנייה · פופולריאומדן ₪15,960,000 · לא מחייב",
+      "unit": "unit-38-penthouse"
+    },
+    {
+      "active": false,
+      "elementAtCenter": null,
+      "inViewport": false,
+      "rect": {
+        "bottom": 617,
+        "cx": 613,
+        "cy": 595,
+        "height": 44,
+        "right": 643,
+        "width": 60,
+        "x": 583,
+        "y": 573
+      },
+      "style": {
+        "display": "flex",
+        "opacity": "1",
+        "pointerEvents": "auto",
+        "position": "absolute",
+        "visibility": "visible"
+      },
+      "text": "7\n4 ח\nדירת 4 חדרים, קומה 7 · 4 חד׳118 מ\"ר · בניין בוטיק סביב הלגונהבתהליך בדיקהאומדן ₪8,968,000 · לא מחייב",
+      "unit": "unit-boutique-07"
+    }
+  ],
+  "publicLeakSample": null,
+  "rootClasses": "nlp3d nlp3d-premium alignfull is-model-first is-dual-showroom has-model-picker has-model-viewer-loaded",
+  "scene": {
+    "bottom": 784,
+    "cx": 858,
+    "cy": 479,
+    "height": 610,
+    "right": 1229,
+    "width": 743,
+    "x": 486,
+    "y": 174
+  },
+  "stage": {
+    "bottom": 784,
+    "cx": 858,
+    "cy": 452,
+    "height": 664,
+    "right": 1229,
+    "width": 743,
+    "x": 486,
+    "y": 120
+  },
+  "url": "https://nad-lan.co.il/projects/rainbow-tel-aviv/?codex_live_1692=1782246929611",
+  "viewport": {
+    "h": 476,
+    "w": 1355
+  }
+}
