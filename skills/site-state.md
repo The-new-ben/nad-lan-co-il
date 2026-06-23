@@ -854,3 +854,33 @@ QA files:
 - `docs/qa/screenshots/showroom-mobile-containment-live-1696-2026-06-24/`
 
 Honest limitation: this is near-marker model-surface selection, not true per-window GLB mesh picking. True click-any-window selection needs official apartment geometry, BIM, or a GLB authored with per-unit pickable meshes.
+
+### 2026-06-24 - Codex - Home page project-first positioning live
+
+Owner wanted the public site to move away from a generic directory/tools opening and toward the real product: projects, apartment selection, 3D showroom proof, foreign investors, and contractor-ready presentation.
+
+Shipped and deployed theme commits through UPress Git pull:
+
+- `4516d0a` theme: make home project-first
+- `35d3577` theme: keep home contact rail off search
+
+The active Home source is the theme front-page renderer, not the disabled plugin homepage module. The live H1 is now:
+
+`נדל״ן חכם: בוחרים פרויקט ודירה לפני שפונים ליזם`
+
+The primary CTA now points to Rainbow:
+
+`https://nad-lan.co.il/projects/rainbow-tel-aviv/`
+
+The SEO title and description were updated for projects, 3D apartment choice, Israeli buyers, and investors outside Israel. The floating contact rail was reduced to icon-only while closed on the Home page so it no longer covers the hero search row.
+
+Live screenshot proof and QA:
+
+- `docs/qa/screenshots/home-live-project-first-2026-06-24/QA.md`
+- `docs/qa/screenshots/home-live-project-first-2026-06-24/desktop-1440.png`
+- `docs/qa/screenshots/home-live-project-first-2026-06-24/mobile-390.png`
+- `docs/qa/screenshots/home-live-project-first-2026-06-24/home-live-report.json`
+
+QA result: desktop 1440 and mobile 390 both passed with `horizontalOverflow: 0` and no forbidden visible public-language terms. Visual inspection confirmed the desktop contact rail no longer overlaps the hero search row.
+
+Honest limitations: this was a Home positioning and rail-containment slice, not a full Home visual rebuild. The hero still uses the existing dark coastal visual. Some project images are existing site assets and this pass does not certify all project imagery as official contractor material. Legacy directory modules still contain older class names and language outside this Home slice; cleaning them safely needs a separate plugin release.
