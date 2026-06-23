@@ -14,6 +14,7 @@ Source status:
 - The active strategic rule is [23-money-keyword-expansion-mandate.md](23-money-keyword-expansion-mandate.md): NadLan does not drop money keywords because competitors are strong.
 - The source-of-truth operating system is [24-source-of-truth-cannibalization-system.md](24-source-of-truth-cannibalization-system.md), with a readable Hebrew version at [source-of-truth-cannibalization-system-rtl.html](source-of-truth-cannibalization-system-rtl.html).
 - The current build-level war-room slice is [war-room/nadlan-war-room-spec-rtl.html](war-room/nadlan-war-room-spec-rtl.html), backed by [war-room/page-architecture-map.csv](war-room/page-architecture-map.csv) and [war-room/ux-build-spec.csv](war-room/ux-build-spec.csv).
+- The current full-scope gap map is [war-room/full-war-room-gap-map-rtl.html](war-room/full-war-room-gap-map-rtl.html), backed by [war-room/full-war-room-gap-map.csv](war-room/full-war-room-gap-map.csv).
 
 How to read:
 1. Start with [00-executive-summary.md](00-executive-summary.md).
@@ -22,7 +23,8 @@ How to read:
 4. Use [23-money-keyword-expansion-mandate.md](23-money-keyword-expansion-mandate.md) before commissioning any keyword, content, UX, or Lovable research.
 5. Use [24-source-of-truth-cannibalization-system.md](24-source-of-truth-cannibalization-system.md) before allowing any writer, AI tool, or admin user to create public SEO content.
 6. Use [war-room/nadlan-war-room-spec-rtl.html](war-room/nadlan-war-room-spec-rtl.html) for the current page architecture, UX, and visual direction.
-7. Use [21-playwright-qa-gates.md](21-playwright-qa-gates.md) as the visual gate for future PRs.
+7. Use [war-room/full-war-room-gap-map-rtl.html](war-room/full-war-room-gap-map-rtl.html) to decide the next missing war-room slice.
+8. Use [21-playwright-qa-gates.md](21-playwright-qa-gates.md) as the visual gate for future PRs.
 
 P0:
 - Public trust fixes before growth.
@@ -62,5 +64,6 @@ Readable Lovable outputs:
 - [lovable/nadlan-report-2-keyword-master-rtl.html](lovable/nadlan-report-2-keyword-master-rtl.html)
 - [source-of-truth-cannibalization-system-rtl.html](source-of-truth-cannibalization-system-rtl.html)
 - [war-room/nadlan-war-room-spec-rtl.html](war-room/nadlan-war-room-spec-rtl.html)
+- [war-room/full-war-room-gap-map-rtl.html](war-room/full-war-room-gap-map-rtl.html)
 - [lovable/nadlan-lovable-keyword-workbook.xlsx](lovable/nadlan-lovable-keyword-workbook.xlsx)
 - [lovable/2026-06-21-report-2-keyword-master-universe.clean.csv](lovable/2026-06-21-report-2-keyword-master-universe.clean.csv)

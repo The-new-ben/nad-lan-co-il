@@ -10,6 +10,8 @@ Structured artifacts:
 
 - `page-architecture-map.csv` - canonical URL/page-role map for money and support pages.
 - `ux-build-spec.csv` - build-level UX requirements for homepage, listings, projects, professionals, tools, trust, and international investor surfaces.
+- `full-war-room-gap-map.csv` - requirement-by-requirement gap map against the full objective.
+- `full-war-room-gap-map-rtl.html` - readable Hebrew gap report for the owner.
 
 Rule:
 

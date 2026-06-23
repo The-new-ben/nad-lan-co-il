@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>NadLan - מפת פערים ל-War Room מלא</title>
+  <style>
+    :root { --ink:#17202a; --muted:#5d6876; --line:#d8e0ea; --brand:#0d4f5c; --deep:#092f39; --soft:#f6f8fa; --ok:#0f6b4f; --warn:#9a5b00; --risk:#a51f1f; }
+    * { box-sizing:border-box; }
+    body { margin:0; font-family:Arial,"Noto Sans Hebrew","Segoe UI",sans-serif; color:var(--ink); background:#fff; line-height:1.58; }
+    header { background:var(--deep); color:#fff; padding:30px 34px; }
+    header h1 { margin:0 0 10px; font-size:30px; line-height:1.25; }
+    header p { margin:0; max-width:1120px; color:#dcebed; }
+    main { max-width:1320px; margin:0 auto; padding:28px 24px 64px; }
+    section { border-top:1px solid var(--line); padding:24px 0; }
+    h2 { margin:0 0 14px; color:var(--brand); font-size:22px; }
+    h3 { margin:16px 0 8px; font-size:17px; color:#173743; }
+    .grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:12px; }
+    .card { border:1px solid var(--line); border-radius:8px; background:var(--soft); padding:14px; }
+    .card strong { display:block; color:var(--brand); font-size:27px; line-height:1.15; }
+    .callout { border-right:5px solid var(--warn); background:#fff8e7; padding:14px 16px; border-radius:6px 0 0 6px; margin:14px 0; }
+    .callout.ok { border-right-color:var(--ok); background:#f1faf6; }
+    .table-wrap { border:1px solid var(--line); border-radius:8px; overflow:auto; max-height:760px; }
+    table { width:100%; border-collapse:collapse; font-size:13px; }
+    th,td { border:1px solid var(--line); padding:8px; text-align:right; vertical-align:top; }
+    th { background:var(--brand); color:#fff; position:sticky; top:0; z-index:1; }
+    tbody tr:nth-child(even) { background:#fafbfc; }
+    .status-done { color:var(--ok); font-weight:700; }
+    .status-partial { color:var(--warn); font-weight:700; }
+    .status-weak { color:var(--risk); font-weight:700; }
+    .ltr { direction:ltr; text-align:left; unicode-bidi:embed; }
+    code { direction:ltr; unicode-bidi:embed; background:#eef3f5; border-radius:4px; padding:2px 5px; }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>NadLan - מפת פערים ל-War Room מלא</h1>
+    <p>בדיקה מול היעד המלא: ראיות מהאתר, Lovable, ארכיטקטורת עמודים, מיפוי מילות מפתח לעמודים, UX, עיצוב, backlog, ומוצרים קריאים לבעלים. המסקנה: יש בסיס טוב, אבל עדיין לא War Room מלא.</p>
+  </header>
+  <main>
+    <section>
+      <h2>שורה תחתונה</h2>
+      <div class="callout ok">
+        מה כבר יש: Report 2 משוחזר עם 225 שורות, חוברת Excel, דוח RTL, מקור אמת נגד קניבליזציה, מנדט לא-מתפשר למילות כסף, מפת ארכיטקטורה עם 39 תבניות, UX spec עם 15 רכיבים, ודוח War Room ויזואלי ראשוני.
+      </div>
+      <div class="callout">
+        מה עדיין חסר כדי לקרוא לזה War Room מלא: מיפוי כל 225 המילים ל־page_id קנוני, backlog ספרינטים עם acceptance criteria, מחקר SERP/מתחרים לפי שאילתה, Lovable Reports 3A-3G, מפרטי מוצר עמוקים לכל אזור, ו־Stage 1 final screenshots אחרי UPress/cache.
+      </div>
+      <div class="grid">
+        <div class="card"><strong>225</strong>שורות keyword master נקיות</div>
+        <div class="card"><strong>39</strong>תבניות עמוד בארכיטקטורה</div>
+        <div class="card"><strong>15</strong>רכיבי UX במפרט</div>
+        <div class="card"><strong>18</strong>תחומי פער במפה הזאת</div>
+      </div>
+    </section>
+
+    <section>
+      <h2>מפת פערים מלאה</h2>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr><th>דרישה</th><th>מה יש עכשיו</th><th>מצב</th><th>הפער</th><th>פעולה הבאה</th><th>עדיפות</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>ראיות מהאתר החי</td><td>צילומי בית/פרויקטים/אנשי מקצוע/פרויקט/אומדן ודוחות audit</td><td class="status-partial">חלקי</td><td>אין צילומי Stage 1 סופיים אחרי UPress/cache</td><td>QA ציבורי מלא וצילומים למסכים מרכזיים</td><td>P0</td></tr>
+            <tr><td>Lovable assisted</td><td>Report 0/1/2, Prompt 3A שמור</td><td class="status-partial">חלקי</td><td>אין Report 3A-3G; הפרויקט נתקע ב-Chrome</td><td>לפתוח פרויקט נקי או לשחזר Lovable ואז להריץ 3A</td><td>P0</td></tr>
+            <tr><td>יקום מילות מפתח</td><td>225 שורות Report 2</td><td class="status-partial">חלקי</td><td>לא כל מילות הכסף; אין Semrush/GSC metrics</td><td>הרחבות batch לפי resale/rent/projects/tools/professionals/EN</td><td>P0</td></tr>
+            <tr><td>מיפוי keyword-to-page</td><td>suggested_slug בדוח + 39 page templates</td><td class="status-partial">חלקי</td><td>אין join table לכל 225 שורות עם page_id קנוני</td><td>ליצור <code>keyword-to-page-owner.csv</code></td><td>P0</td></tr>
+            <tr><td>ארכיטקטורת עמודים</td><td><code>page-architecture-map.csv</code></td><td class="status-partial">חלקי</td><td>אין inventory של URLs קיימים וסטטוס noindex/redirect</td><td>מיפוי existing URL to target architecture</td><td>P0</td></tr>
+            <tr><td>מניעת קניבליזציה</td><td>מסמך מקור אמת והמלצת WordPress registry</td><td class="status-partial">חלקי</td><td>עדיין לא ממומש ב-WordPress admin</td><td>לתכנן/ליישם keyword_registry + publish gates</td><td>P0</td></tr>
+            <tr><td>UX לוחות דירות</td><td>מוקאפ + UX rows</td><td class="status-partial">חלקי</td><td>אין schema, lead payload, compare/save, mobile drawer detail</td><td>מפרט מוצר Listings מפורט</td><td>P0</td></tr>
+            <tr><td>UX פרויקטים/Showroom</td><td>מוקאפ + showroom rules</td><td class="status-partial">חלקי</td><td>אין state machine ו-JSON schema ליחידות/נכסים</td><td>State machine + schema</td><td>P0</td></tr>
+            <tr><td>UX אנשי מקצוע</td><td>מוקאפ + UX rows</td><td class="status-partial">חלקי</td><td>אין verification methodology/profile schema/sponsored policy</td><td>Professionals directory product spec</td><td>P0</td></tr>
+            <tr><td>עיצוב ויזואלי</td><td>HTML עם mockups וצילומי אתר</td><td class="status-partial">חלקי</td><td>לא high fidelity; אין design tokens ורספונסיביות מאומתת</td><td>דפי mockup מפורטים לבית/חיפוש/פרויקט/פרופיל</td><td>P1</td></tr>
+            <tr><td>Implementation backlog</td><td>backlog docs + implementation plan</td><td class="status-partial">חלקי</td><td>לא קשור ל-page_id, component, acceptance evidence</td><td>Backlog ספרינטי עם acceptance criteria</td><td>P0</td></tr>
+            <tr><td>Technical SEO / Schema</td><td>תוכניות בסיסיות</td><td class="status-partial">חלקי</td><td>אין matrix לכל page type</td><td>technical-seo-page-matrix.csv</td><td>P1</td></tr>
+            <tr><td>SERP ומתחרים</td><td>Competitor map בסיסי</td><td class="status-weak">חלש</td><td>אין query-by-query teardown ואין metrics</td><td>Lovable/Semrush/SERP batches</td><td>P0</td></tr>
+            <tr><td>משקיעים בינלאומיים</td><td>42 intl rows + /en architecture</td><td class="status-partial">חלקי</td><td>אין EN funnel מפורט, personas, legal workflow</td><td>EN investor funnel spec</td><td>P1</td></tr>
+            <tr><td>כלים ומחשבונים</td><td>29 tools rows + architecture</td><td class="status-partial">חלקי</td><td>אין formulas/inputs/sources/disclaimers</td><td>Calculator spec pack</td><td>P0</td></tr>
+            <tr><td>מוניטיזציה</td><td>מסמך ראשוני</td><td class="status-weak">חלש</td><td>אין pricing/packages/CRM/disclosures</td><td>Monetization operating model</td><td>P1</td></tr>
+            <tr><td>Analytics/KPI</td><td>מסמך ראשוני + אירועים ב-UX CSV</td><td class="status-partial">חלקי</td><td>אין event dictionary ודשבורד</td><td>analytics-event-dictionary.csv</td><td>P1</td></tr>
+            <tr><td>מוצרים קריאים לבעלים</td><td>HTML + Excel ב-outputs</td><td class="status-partial">חלקי</td><td>אין owner index אחד; לא נשלח אימייל</td><td>owner-output-index-rtl.html ואז אימייל באישור</td><td>P0</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section>
+      <h2>סדר עבודה מומלץ</h2>
+      <ol>
+        <li><strong>P0-1:</strong> ליצור <code>keyword-to-page-owner.csv</code> לכל 225 השורות.</li>
+        <li><strong>P0-2:</strong> להפוך את ה-backlog לספרינטים עם page_id, component, acceptance criteria וראיית בדיקה.</li>
+        <li><strong>P0-3:</strong> להשלים Stage 1 public trust screenshots אחרי UPress/cache.</li>
+        <li><strong>P0-4:</strong> להריץ Lovable Report 3A בפרויקט תקין, בלי ויתור על מילות כסף.</li>
+        <li><strong>P0-5:</strong> להעמיק מפרטי מוצר: Listings, Project Showroom, Professionals, Calculators.</li>
+        <li><strong>P1:</strong> לעבור לעיצוב high-fidelity, design tokens, SERP teardowns, monetization, analytics.</li>
+      </ol>
+    </section>
+  </main>
+</body>
+</html>
