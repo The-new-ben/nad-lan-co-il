@@ -1462,6 +1462,13 @@ body.page-id-491 .plan-row{
 }
 #nlrx-action-rail.is-open .nlrx-action-plus{transform:rotate(45deg)}
 #nlrx-action-rail .nlrx-action-text{font-size:14px;white-space:nowrap}
+body.home #nlrx-action-rail:not(.is-open) .nlrx-action-text,
+body.front-page #nlrx-action-rail:not(.is-open) .nlrx-action-text{display:none}
+body.home #nlrx-action-rail:not(.is-open) .nlrx-action-launcher,
+body.front-page #nlrx-action-rail:not(.is-open) .nlrx-action-launcher{
+	min-width:58px;
+	padding:0;
+}
 #nlrx-action-rail .nlrx-action-items{
 	display:flex;
 	flex-direction:column;
