@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>NadLan - מערכת מקור אמת ומניעת קניבליזציה</title>
+  <style>
+    :root { --ink:#17202a; --muted:#5d6876; --line:#d7dee8; --brand:#0d4f5c; --soft:#f6f8fa; --warn:#a64b17; }
+    * { box-sizing: border-box; }
+    body { margin:0; font-family: Arial, "Noto Sans Hebrew", "Segoe UI", sans-serif; color:var(--ink); background:#fff; line-height:1.6; }
+    header { background:#0b3943; color:#fff; padding:30px 34px; }
+    header h1 { margin:0 0 10px; font-size:30px; line-height:1.25; }
+    header p { margin:0; max-width:1050px; color:#dcebed; }
+    main { max-width:1180px; margin:0 auto; padding:28px 24px 60px; }
+    section { border-top:1px solid var(--line); padding:24px 0; }
+    h2 { margin:0 0 14px; color:var(--brand); font-size:22px; }
+    h3 { margin:18px 0 8px; color:#173743; font-size:17px; }
+    .callout { border-right:5px solid var(--warn); background:#fff6f1; padding:14px 16px; border-radius:6px 0 0 6px; margin:14px 0; }
+    .grid { display:grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap:12px; }
+    .card { border:1px solid var(--line); border-radius:8px; background:var(--soft); padding:14px; }
+    table { width:100%; border-collapse:collapse; font-size:14px; }
+    th, td { border:1px solid var(--line); padding:9px; text-align:right; vertical-align:top; }
+    th { background:var(--brand); color:#fff; }
+    tbody tr:nth-child(even) { background:#fafbfc; }
+    a { color:#0d4f5c; }
+    .small { color:var(--muted); font-size:13px; }
+    code { direction:ltr; unicode-bidi:embed; background:#eef3f5; padding:2px 5px; border-radius:4px; }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>NadLan - מערכת מקור אמת ומניעת קניבליזציה</h1>
+    <p>הדוח הזה מתרגם את מחקר מילות המפתח למנגנון עבודה: מי רשאי לכתוב, על איזו מילה, לאיזה URL קנוני, ובאיזה שער אמון לפני פרסום.</p>
+  </header>
+  <main>
+    <section>
+      <h2>החלטה מרכזית</h2>
+      <div class="callout">
+        לא מספיק לשמור דוחות בגיטהאב או באקסל. צריך Registry אחד שמחזיק בעלות על כל מילת כסף, ואז WordPress Admin אוכף את הרג׳יסטרי לפני כתיבה ופרסום.
+      </div>
+      <p>המקור הראשון הוא <code>01_Master</code> בחוברת העבודה. וורדפרס צריך להיות שכבת אכיפה ותפעול, לא המקום היחיד שבו האסטרטגיה חיה.</p>
+    </section>
+
+    <section>
+      <h2>למה זה קריטי</h2>
+      <p>קניבליזציה נוצרת כשכמה עמודים מכוונים לאותה מילת מפתח או לכוונה דומה. עבור NadLan זה יכול לפגוע ישירות בעמודי כסף: עיר, שכונה, פרויקט, איש מקצוע, מחשבון או עמוד משקיעים באנגלית.</p>
+      <p>לכן אין כתיבה חופשית. כל עמוד מתחיל משורת Registry.</p>
+    </section>
+
+    <section>
+      <h2>מבנה המערכת</h2>
+      <div class="grid">
+        <div class="card"><h3>שכבה 1: Master</h3><p>אקסל/CSV הוא מקור האמת: מילת מפתח, URL קנוני, תפקיד עמוד, שערים, סטטוס ובעלים.</p></div>
+        <div class="card"><h3>שכבה 2: WordPress</h3><p>וורדפרס מציג, מסנן, מנהל סטטוסים וחוסם פרסום אם שדות חובה חסרים.</p></div>
+        <div class="card"><h3>שכבה 3: תפעול</h3><p>PublishPress/Project Manager מנהלים משימות, לא מחליפים את ה־Registry.</p></div>
+      </div>
+    </section>
+
+    <section>
+      <h2>שדות חובה ב־Registry</h2>
+      <table>
+        <thead><tr><th>שדה</th><th>למה הוא נדרש</th></tr></thead>
+        <tbody>
+          <tr><td><code>keyword_id</code></td><td>מזהה קבוע לכל שורה, כדי שכותב/AI/מפתח לא ייצרו כפילויות.</td></tr>
+          <tr><td><code>primary_keyword</code></td><td>מילת המפתח הראשית שהעמוד מחזיק.</td></tr>
+          <tr><td><code>canonical_url_owner</code></td><td>URL אחד שמחזיק את הכוונה המרכזית.</td></tr>
+          <tr><td><code>page_role</code></td><td>money, support, trust, data, directory, tool, local, project, AEO.</td></tr>
+          <tr><td><code>parent_hub</code></td><td>לאיזה עמוד כסף/רכזת העמוד מחובר.</td></tr>
+          <tr><td><code>readiness_status</code></td><td>backlog, drafting, review, legal, ready, published, holding.</td></tr>
+          <tr><td><code>legal_gate</code></td><td>חוסם פרסום לתוכן מס, משכנתא, חוזים, דירוגים או השוואות רגישות.</td></tr>
+          <tr><td><code>official_source_gate</code></td><td>חובה למקורות עירייה/רשות/יזם/בנק/רשם לפני פרסום.</td></tr>
+          <tr><td><code>asset_gate</code></td><td>חובה לנכסי פרויקט רשמיים או סימון ברור official/concept/missing.</td></tr>
+          <tr><td><code>internal_link_rule</code></td><td>עמוד תומך מזין עמוד כסף ולא מתחרה בו.</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section>
+      <h2>סטאק מומלץ</h2>
+      <table>
+        <thead><tr><th>רכיב</th><th>תפקיד</th><th>הערה</th></tr></thead>
+        <tbody>
+          <tr><td>PublishPress Planner</td><td>Calendar, Kanban, notifications, workflow</td><td>טוב לניהול תוכן בתוך וורדפרס.</td></tr>
+          <tr><td>PublishPress Statuses / Capabilities</td><td>סטטוסים והרשאות</td><td>legal / holding / ready צריכים הרשאות.</td></tr>
+          <tr><td>ACF / Secure Custom Fields</td><td>שדות Registry</td><td>הופך כל עמוד/רשומת keyword לטופס מובנה.</td></tr>
+          <tr><td>Admin Columns Pro</td><td>תצוגות ניהול</td><td>סינון, מיון, עריכה וייצוא של שדות ACF.</td></tr>
+          <tr><td>WP Project Manager</td><td>משימות ומיילסטונים</td><td>לא מקור אמת SEO, רק תפעול.</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section>
+      <h2>שער פרסום</h2>
+      <ol>
+        <li>אין פרסום בלי <code>keyword_id</code>.</li>
+        <li>אין פרסום בלי <code>canonical_url_owner</code>.</li>
+        <li>אם מילת המפתח כבר שייכת לעמוד אחר, העמוד החדש חייב להיות support page ולא money page.</li>
+        <li>אם יש legal/source/asset gate, הסטטוס לא עובר ל־ready לפני אישור.</li>
+        <li>כל עמוד תומך חייב לקשר לעמוד הכסף הקנוני.</li>
+      </ol>
+    </section>
+
+    <section>
+      <h2>מקורות שנבדקו</h2>
+      <ul>
+        <li><a href="https://publishpress.com/planner/">PublishPress Planner</a> - Calendar, Kanban, notifications.</li>
+        <li><a href="https://publishpress.com/knowledge-base/statuses-calendar/">PublishPress Statuses + Planner Calendar</a> - סטטוסים וצבעים בלוח התוכן.</li>
+        <li><a href="https://www.advancedcustomfields.com/">Advanced Custom Fields</a> - שדות מותאמים במסכי עריכה.</li>
+        <li><a href="https://www.admincolumns.com/advanced-custom-fields/">Admin Columns + ACF</a> - הצגת, סינון, מיון וייצוא שדות ב־wp-admin.</li>
+        <li><a href="https://wordpress.org/plugins/wedevs-project-manager/">WP Project Manager</a> - ניהול משימות, Kanban, Gantt ומיילסטונים.</li>
+        <li><a href="https://yoast.com/keyword-cannibalization/">Yoast על Keyword Cannibalization</a> - למה עמודים מתחרים אחד בשני.</li>
+      </ul>
+      <p class="small">המלצה: לא להתקין שום פלאגין לפני Stage 1 public trust gate ולפני גיבוי/בדיקת staging.</p>
+    </section>
+  </main>
+</body>
+</html>

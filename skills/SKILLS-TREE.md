@@ -33,13 +33,26 @@ The contract layer. Identical on every site.
 | `agent-onboarding.md` | DNA·DOC | Credential handshake pattern. |
 | `agent-coordination-protocol.md` | DNA·DOC | Multi-agent sync rules. |
 | `agent-tooling-strategy.md` | DNA·DOC | Which agent does what. |
+| `nadlan-autonomous-execution-master.md` | DNA·DOC | Master execution loop for NadLan and new sites: no stacking, screenshots, release gates, Lovable sync, public language, and replication. |
+| `adopted-codex-goal-bundle.md` | DNA·DOC | Converts vague requests into one bounded autonomous slice with verification and stop conditions. |
+| `adopted-codex-instruction-chain.md` | DNA·DOC | Keeps AGENTS, commands, done definitions, and escalation rules explicit. |
+| `adopted-codex-progressive-disclosure.md` | DNA·DOC | Prevents context flooding by loading only relevant reports, skills, and references. |
+| `adopted-codex-visual-proof-loop.md` | DNA·DOC | Makes screenshots, public-language review, responsive checks, and no-stacking proof mandatory. |
+| `adopted-wp-playground-verification.md` | DNA·DOC | Adds WordPress runtime feedback loops before trusting code. |
+| `adopted-wp-plugin-quality-gate.md` | DNA·DOC | Adds plugin release quality gates for packaging, version surfaces, i18n, and Plugin Check. |
+| `adopted-wp-security-threat-gate.md` | DNA·DOC | Adds security review for inputs, outputs, REST, AJAX, SQL, files, nonces, and capabilities. |
+| `adopted-wp-performance-gate.md` | DNA·DOC | Adds performance review for assets, queries, duplicate CSS/JS, and public routes. |
+| `adopted-wp-accessibility-rtl-gate.md` | DNA·DOC | Adds accessibility plus Hebrew RTL checks for public UI. |
+| `adopted-wp-release-agent-gate.md` | DNA·DOC | Separates implementation, verification, packaging, deploy, and rollback. |
+| `adopted-wp-rest-api-contract-gate.md` | DNA·DOC | Adds REST schema, permission, validation, and consumer-contract checks. |
+| `adopted-wp-mcp-abilities-map.md` | DNA·DOC | Maps existing plugin/admin/MCP abilities before inventing duplicate code. |
 | `honesty-statement.md` | DNA·DOC | **Core DNA.** No-flattery, cite-or-flag. Non-negotiable on every site. |
 | `security-public-repo.md` | DNA·DOC | What never goes in a public repo. |
 | `plugin-discipline.md` / `plugin-auto-update.md` | DNA·DOC | One-capability modules + self-hosted update channel. |
 | `nadlan-config-plugin.md` | DNA·DOC | Plugin lessons (rename per site). |
 | `codex-plugin-access-and-deploy.md` | DNA·DOC | **The deploy pipeline operator guide** — how ANY agent (Codex/Claude/Cowork) changes the plugin and ships it live. Portable to every site (swap names/URLs). Read before touching plugin code. |
 
-**New-site action:** copy this whole branch first. It is the spine.
+**New-site action:** copy this whole branch first. It is the spine. Read `nadlan-autonomous-execution-master.md` before starting the first visual or plugin slice.
 
 ---
 
@@ -169,3 +182,7 @@ When we open a new domain in the network:
 group — a legal portal, travel/relocation verticals, and regional desks — intended to
 cross-link and share leads. Cross-site lead-sharing + shared identity is a future program;
 capture requirements in BACKLOG under "Network".
+
+## Revision log
+
+- 2026-06-23 - Codex added the adopted Codex and WordPress skill pack to Branch 1 as portable DNA for NadLan and future WordPress sites.

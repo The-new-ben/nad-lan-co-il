@@ -1,0 +1,170 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>חבילת אנשי מקצוע ואימות ספקים</title>
+  <style>
+    :root{--paper:#f7f1e8;--card:#fffaf2;--ink:#211915;--muted:#71685f;--line:#ded2c3;--accent:#8f5d2a;--green:#24483f;--red:#8f2e24;--shadow:0 18px 55px rgba(44,31,20,.10)}
+    *{box-sizing:border-box}
+    body{margin:0;background:var(--paper);color:var(--ink);font-family:Arial,"Noto Sans Hebrew",sans-serif;line-height:1.66}
+    a{color:inherit;text-decoration:none}
+    .wrap{width:min(1160px,calc(100% - 30px));margin:0 auto}
+    header{padding:34px 0 30px;border-bottom:1px solid var(--line);background:linear-gradient(180deg,#fffaf4 0%,#f7f1e8 100%)}
+    .eyebrow{color:var(--accent);font-weight:700;margin-bottom:12px}
+    h1{margin:0;max-width:990px;font-family:Georgia,"Times New Roman",serif;font-size:clamp(34px,5vw,68px);line-height:1.05;letter-spacing:0}
+    .lead{max-width:930px;color:var(--muted);font-size:20px;margin:18px 0 0}
+    .meta{display:flex;flex-wrap:wrap;gap:10px;margin-top:22px;color:var(--muted)}
+    .pill{border:1px solid var(--line);background:rgba(255,255,255,.62);padding:7px 12px;border-radius:999px;font-size:14px}
+    main{padding:28px 0 60px}
+    .stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin:0 0 24px}
+    .stat{background:var(--card);border:1px solid var(--line);padding:18px;box-shadow:var(--shadow);min-height:116px}
+    .stat b{display:block;font-family:Georgia,"Times New Roman",serif;font-size:38px;line-height:1;margin-bottom:10px}
+    .stat span{color:var(--muted);font-size:15px}
+    .grid{display:grid;grid-template-columns:1.05fr .95fr;gap:22px;align-items:start}
+    section{background:var(--card);border:1px solid var(--line);box-shadow:var(--shadow);padding:24px;margin-bottom:22px}
+    h2,h3{font-family:Georgia,"Times New Roman",serif;margin:0 0 12px;line-height:1.18}
+    h2{font-size:30px}
+    h3{font-size:21px}
+    p{margin:0 0 12px}
+    .callout{border-inline-start:5px solid var(--green);background:#eef7f1;padding:14px 16px;margin:16px 0}
+    .warn{border-inline-start:5px solid var(--red);background:#fff3ee;padding:14px 16px;margin:16px 0}
+    .cards{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+    .card{border:1px solid var(--line);background:#fffdf8;padding:16px;min-height:148px}
+    .card strong{display:block;font-size:18px;margin-bottom:6px}
+    .card small{display:block;color:var(--muted);font-size:14px}
+    .steps{counter-reset:item;display:grid;gap:12px}
+    .step{display:grid;grid-template-columns:auto 1fr;gap:12px;align-items:start;border-top:1px solid var(--line);padding-top:14px}
+    .step:before{counter-increment:item;content:counter(item);width:30px;height:30px;border:1px solid var(--line);border-radius:50%;display:grid;place-items:center;color:var(--accent);background:#fff}
+    .matrix{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+    .cell{border:1px solid var(--line);padding:14px;background:#fffdf8}
+    .cell b{display:block;margin-bottom:6px}
+    table{width:100%;border-collapse:collapse;background:#fffdf8;border:1px solid var(--line)}
+    th,td{border-bottom:1px solid var(--line);padding:10px;text-align:right;vertical-align:top;font-size:14px}
+    th{background:#efe5d8;font-weight:700}
+    .files a{display:flex;justify-content:space-between;gap:12px;border-top:1px solid var(--line);padding:10px 0}
+    .open{background:var(--ink);color:#fff;padding:5px 10px;font-size:13px;white-space:nowrap}
+    .note{color:var(--muted);font-size:14px}
+    @media(max-width:860px){.grid,.stats,.cards,.matrix{grid-template-columns:1fr}h1{font-size:38px}.lead{font-size:17px}section{padding:18px}.wrap{width:min(100% - 22px,1160px)}table,thead,tbody,tr,td{display:block;width:100%}thead{display:none}tr{border:1px solid var(--line);margin:10px 0;background:#fffdf8}td{display:grid;grid-template-columns:42% 58%;gap:8px;padding:8px;overflow-wrap:anywhere;font-size:13px}td:nth-child(1)::before{content:"שכבה";font-weight:700}td:nth-child(2)::before{content:"תפקיד";font-weight:700}td:nth-child(3)::before{content:"תנאי פרסום";font-weight:700}td:nth-child(4)::before{content:"סיכון";font-weight:700}}
+  </style>
+</head>
+<body>
+  <header>
+    <div class="wrap">
+      <div class="eyebrow">חבילת אנשי מקצוע ואימות ספקים</div>
+      <h1>אנשי מקצוע הם שכבת אמון, לא רשימת פרסומות.</h1>
+      <p class="lead">החבילה מגדירה איך NadLan מציג עורכי דין, שמאים, יועצי משכנתאות, מעצבים, אדריכלים, בודקי דירות, מתווכים וספקים נוספים בלי להמציא דירוגים, בלי לערבב בין כסף לאמון, ובלי לפגוע בעמודי הכסף של האתר.</p>
+      <div class="meta">
+        <span class="pill">עודכן: 23 ביוני 2026</span>
+        <span class="pill">12 קטגוריות שירות</span>
+        <span class="pill">8 מצבי אימות</span>
+        <span class="pill">12 נקודות ניתוב לפנייה</span>
+      </div>
+    </div>
+  </header>
+  <main class="wrap">
+    <div class="stats">
+      <div class="stat"><b>12</b><span>סוגי אנשי מקצוע ראשונים</span></div>
+      <div class="stat"><b>8</b><span>מצבי בדיקה ואישור</span></div>
+      <div class="stat"><b>4</b><span>תבניות עמודים</span></div>
+      <div class="stat"><b>0</b><span>דירוגים או ביקורות מומצאים</span></div>
+    </div>
+    <div class="grid">
+      <div>
+        <section>
+          <h2>החלטת בסיס</h2>
+          <p>NadLan צריך להכניס אנשי מקצוע לתוך מסלול ההחלטה של קונה, מוכר, משקיע וקבלן. לא כספר טלפונים כללי, אלא כשכבת עזרה שמופיעה ברגע הנכון: בפרויקט, בדירה, בעיר, במדריך, במחשבון ובמסלול משקיע מחו"ל.</p>
+          <div class="callout"><strong>הכיוון הנכון:</strong> להציג התאמה לפי שירות, עיר, שפה, שלב עסקה ומצב בדיקה. פנייה לאיש מקצוע נמדדת כחלק מהערך העסקי של האתר, אבל לא קונים אמון בכסף.</div>
+          <div class="warn"><strong>מה אסור:</strong> לא להציג המלצה בלי מתודולוגיה, לא להמציא ביקורות, לא להציג אישור מקצועי בלי מקור, ולא להסתיר מיקום בתשלום כאשר הוא משפיע על סדר ההופעה.</div>
+        </section>
+        <section>
+          <h2>תבניות העמודים</h2>
+          <table>
+            <thead><tr><th>שכבה</th><th>תפקיד</th><th>תנאי פרסום</th><th>סיכון</th></tr></thead>
+            <tbody>
+              <tr><td>מרכז אנשי מקצוע</td><td>כניסה לפי קטגוריה, עיר, שפה ושלב עסקה</td><td>מדיניות אימות ברורה ומספיק ערך ניווט</td><td>עמוד כללי מדי שלא ממיר</td></tr>
+              <tr><td>קטגוריית שירות</td><td>למצוא עורך דין, שמאי, יועץ משכנתאות או ספק אחר</td><td>פרופילים אמיתיים או הסבר שימושי עם טופס בקשה</td><td>עמוד דק בלי היצע אמיתי</td></tr>
+              <tr><td>קטגוריה בעיר</td><td>למצוא שירות באזור מסוים</td><td>לא לפרסם אם אין היצע או ערך מקומי אמיתי</td><td>התנגשות עם עמודי דירות ופרויקטים בעיר</td></tr>
+              <tr><td>פרופיל איש מקצוע</td><td>להציג ספק אחד עם אימות, גילוי ופנייה</td><td>אישור בעלים, בדיקת מקור, פרטי קשר ומועד רענון</td><td>טענת אמון לא מוכחת או פרטי קשר לא פעילים</td></tr>
+            </tbody>
+          </table>
+        </section>
+        <section>
+          <h2>קטגוריות פתיחה</h2>
+          <div class="cards">
+            <div class="card"><strong>עורך דין מקרקעין</strong><small>נדרש אימות מול מקור מקצועי או תיעוד מתאים. הטקסט באתר לא מחליף ייעוץ משפטי.</small></div>
+            <div class="card"><strong>שמאי מקרקעין</strong><small>נדרש מקור רשמי או מסמך מתאים לפני הצגת טענת רישום או מומחיות.</small></div>
+            <div class="card"><strong>יועץ משכנתאות</strong><small>התאמה לפי שפה, אזור וסוג עסקה. אין הבטחת תנאי מימון.</small></div>
+            <div class="card"><strong>יועץ מס</strong><small>מופיע במסלולי קנייה, השקעה וחו"ל רק עם ניסוח זהיר ובדיקת תוכן מקצועית.</small></div>
+            <div class="card"><strong>מעצב פנים</strong><small>מתחבר לשלב תכנון הדירה, חומרים, תקציב וספקים, בלי להציג הדמיה כמוצר סופי.</small></div>
+            <div class="card"><strong>אדריכל</strong><small>מתאים לשיפוץ, תכנון, שינוי דירה, הרחבה ובדיקות תכנוניות.</small></div>
+            <div class="card"><strong>בודק דירות או מהנדס</strong><small>מתחבר לבדק, מסירה, ליקויי בנייה ודירות חדשות.</small></div>
+            <div class="card"><strong>מתווך או סוכן</strong><small>דורש גילוי ברור בין בעלות מלאי, תיווך, עמלה ומיקום בתשלום.</small></div>
+            <div class="card"><strong>מנהל נכס</strong><small>חשוב למשקיעים, במיוחד כאשר הקונה אינו גר בישראל.</small></div>
+            <div class="card"><strong>ליווי קונה מחו"ל</strong><small>מסלול שפה, פנייה מרחוק, מסמכים, גורמי מקצוע ומעקב.</small></div>
+            <div class="card"><strong>קבלן או איש קשר יזם</strong><small>לא מחליף עמוד פרויקט. משמש קשר מסחרי ומסלול נכסים.</small></div>
+            <div class="card"><strong>ביטוח</strong><small>שכבה משלימה לעסקאות, משכנתא וניהול נכס, בלי הבטחת מחיר.</small></div>
+          </div>
+        </section>
+        <section>
+          <h2>כללי קידום בלי קניבליזציה</h2>
+          <p>עמודי אנשי מקצוע לא צריכים להילחם בעמודי דירות, פרויקטים או מדריכים. לכל כוונה יש בעלים אחד.</p>
+          <div class="matrix">
+            <div class="cell"><b>עמוד עיר לקנייה</b><span>בעלים של ביקוש לדירות ופרויקטים בעיר.</span></div>
+            <div class="cell"><b>קטגוריית איש מקצוע בעיר</b><span>בעלים של ביקוש לשירות בעיר, למשל שמאי או עורך דין.</span></div>
+            <div class="cell"><b>מדריך מקצועי</b><span>מסביר תהליך וסיכונים, ואז מקשר לעמוד הכסף או לשירות מתאים.</span></div>
+            <div class="cell"><b>פרופיל ספק</b><span>בעלים של שם הספק והפרטים המאושרים שלו בלבד.</span></div>
+          </div>
+        </section>
+      </div>
+      <aside>
+        <section>
+          <h2>מצבי אימות</h2>
+          <div class="steps">
+            <div class="step"><div><h3>ממתין לבדיקה</h3><p>יש בקשה או חומר ראשוני, אבל אין הצגה ציבורית.</p></div></div>
+            <div class="step"><div><h3>פרופיל נדרש</h3><p>הספק פנה או דרש בעלות על הפרופיל, אך המסמכים עדיין לא מספיקים.</p></div></div>
+            <div class="step"><div><h3>מסמכים נבדקו</h3><p>התקבלו מסמכים או חומרים, אבל לא בהכרח נבדקו מול מקור רשמי.</p></div></div>
+            <div class="step"><div><h3>רישיון אומת</h3><p>בדיקה מול מקור מתאים או תיעוד רשמי, עם תאריך רענון.</p></div></div>
+            <div class="step"><div><h3>מאושר לפרסום</h3><p>הבעלים אישר טקסט, גילוי, יעד פנייה ומצב בדיקה.</p></div></div>
+            <div class="step"><div><h3>נדחה, מושהה או צריך רענון</h3><p>הפרופיל לא מוצג, או מוצג בזהירות רק אם אין סיכון.</p></div></div>
+          </div>
+        </section>
+        <section>
+          <h2>נקודות ניתוב</h2>
+          <div class="cards">
+            <div class="card"><strong>עמוד פרויקט</strong><small>עזרה משפטית, מימון, שמאות, בדק ותכנון.</small></div>
+            <div class="card"><strong>בחירת דירה</strong><small>הקשר בין הדירה, התקציב, בדיקה ופנייה.</small></div>
+            <div class="card"><strong>מודעת נכס</strong><small>בדיקה, תיווך, מימון ופנייה לפי הקשר הנכס.</small></div>
+            <div class="card"><strong>עמוד עיר</strong><small>שירות מקומי בלי להתחרות בביקוש לדירות בעיר.</small></div>
+            <div class="card"><strong>התחדשות עירונית</strong><small>עורך דין, שמאי, אדריכל ובדיקת סיכונים.</small></div>
+            <div class="card"><strong>מחשבון ומדריך</strong><small>הפניה לבדיקה מקצועית, לא הבטחה או ייעוץ מחייב.</small></div>
+          </div>
+        </section>
+        <section>
+          <h2>מקורות בדיקה</h2>
+          <p>המערכת צריכה לשמור לכל פרופיל מקור, תאריך בדיקה ותאריך רענון. המקורות משתנים לפי מקצוע.</p>
+          <div class="files">
+            <a href="https://www.israelbar.biz/hatzibor_harahv/sefer_orchey_hadin/"><span>ספר עורכי הדין</span><span class="open">פתח</span></a>
+            <a href="https://www.gov.il/he/Departments/DynamicCollectors/search-appraisers"><span>מאגר שמאי מקרקעין</span><span class="open">פתח</span></a>
+            <a href="https://www.gov.il/he/Departments/DynamicCollectors/search-real-estate-broker"><span>פנקס מתווכים מורשים</span><span class="open">פתח</span></a>
+            <a href="https://www.gov.il/apps/moch/rasham/home"><span>פנקס הקבלנים</span><span class="open">פתח</span></a>
+          </div>
+          <p class="note">זה לא אישור מקצועי מצד NadLan. זה מגדיר איזה מקור צריך להיבדק לפני הצגה חזקה לציבור.</p>
+        </section>
+        <section class="files">
+          <h2>קבצי עבודה בחבילה</h2>
+          <a href="professionals-directory-product-spec.csv"><span>מפרט שכבות וחוויית משתמש</span><span class="open">טבלה</span></a>
+          <a href="professionals-verification-policy.csv"><span>מדיניות בדיקה ואישור</span><span class="open">טבלה</span></a>
+          <a href="professionals-routing-matrix.csv"><span>מטריצת ניתוב פניות</span><span class="open">טבלה</span></a>
+          <a href="professional-profile-schema.json"><span>מבנה פרופיל לאנשי פיתוח</span><span class="open">מבנה</span></a>
+          <a href="professionals-directory-execution-packet.md"><span>מפרט ביצוע מפורט</span><span class="open">מסמך</span></a>
+        </section>
+        <section>
+          <h2>מה עדיין לא קיים</h2>
+          <p>אין עדיין ספריית אנשי מקצוע חיה, אין מאגר פרופילים מאומת, אין מסלול פנייה פעיל, ואין אישור משפטי או פיננסי לתוכן רגיש. זו חבילת הבנייה, לא הוכחת ייצור.</p>
+        </section>
+      </aside>
+    </div>
+  </main>
+</body>
+</html>

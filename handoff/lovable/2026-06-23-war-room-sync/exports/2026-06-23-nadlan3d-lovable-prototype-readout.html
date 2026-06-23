@@ -1,0 +1,225 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Nadlan3D - סיכום אבטיפוס Lovable</title>
+  <style>
+    :root {
+      --cream: #faf7f1;
+      --paper: #fffdf8;
+      --ink: #1b1a17;
+      --muted: #6d665c;
+      --line: #d9cfc1;
+      --terracotta: #c2563a;
+    }
+    body {
+      margin: 0;
+      background: var(--cream);
+      color: var(--ink);
+      font-family: "Heebo", "Arial", sans-serif;
+      line-height: 1.65;
+    }
+    main {
+      width: min(1180px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 42px 0 72px;
+    }
+    h1, h2, h3 {
+      margin: 0;
+      line-height: 1.15;
+      font-family: "Frank Ruhl Libre", "Times New Roman", serif;
+      font-weight: 700;
+    }
+    h1 {
+      max-width: 900px;
+      font-size: clamp(34px, 6vw, 72px);
+    }
+    h2 {
+      margin-top: 44px;
+      font-size: clamp(24px, 3vw, 36px);
+    }
+    h3 {
+      margin-bottom: 8px;
+      font-size: 21px;
+    }
+    p {
+      margin: 10px 0 0;
+      color: var(--muted);
+    }
+    .meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin: 18px 0 28px;
+    }
+    .chip {
+      border: 1px solid var(--line);
+      padding: 6px 10px;
+      border-radius: 4px;
+      background: var(--paper);
+      color: var(--muted);
+      font-size: 13px;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 14px;
+      margin-top: 18px;
+    }
+    .card {
+      border: 1px solid var(--line);
+      background: var(--paper);
+      border-radius: 4px;
+      padding: 18px;
+    }
+    .ok {
+      color: #2f6846;
+    }
+    .warn {
+      color: var(--terracotta);
+    }
+    ul {
+      margin: 10px 0 0;
+      padding: 0 22px 0 0;
+    }
+    li {
+      margin: 6px 0;
+    }
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 16px;
+      margin-top: 18px;
+    }
+    figure {
+      margin: 0;
+      border: 1px solid var(--line);
+      background: var(--paper);
+      border-radius: 4px;
+      overflow: hidden;
+    }
+    img {
+      display: block;
+      width: 100%;
+      height: auto;
+      background: #eee7dc;
+    }
+    figcaption {
+      padding: 10px 12px;
+      color: var(--muted);
+      font-size: 13px;
+      border-top: 1px solid var(--line);
+    }
+    code {
+      direction: ltr;
+      unicode-bidi: embed;
+      background: #eee7dc;
+      padding: 1px 5px;
+      border-radius: 3px;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <p class="chip">Nadlan3D / Lovable / Codex verification / 2026-06-23</p>
+    <h1>סיכום אבטיפוס השוורום והליסטינגים</h1>
+    <p>זהו קובץ קריא לבעלים שמרכז את מה ש-Lovable בנה, מה Codex אימת, ומה עדיין לא אמיתי או חסר לפני פורטינג ל-WordPress.</p>
+
+    <div class="meta">
+      <span class="chip">Lovable source commit: <code>b275f7a</code></span>
+      <span class="chip">Build local: <span class="ok">עבר</span></span>
+      <span class="chip">Screenshots: <span class="ok">נוצרו על ידי Codex</span></span>
+      <span class="chip">Rainbow GLB: <span class="warn">עדיין חסר payload</span></span>
+    </div>
+
+    <section class="grid">
+      <div class="card">
+        <h3>מה יש עכשיו</h3>
+        <ul>
+          <li>אפליקציית TanStack Start מלאה עם 8 routes.</li>
+          <li>עיצוב cream-luxury עם טיפוגרפיה עברית נכונה.</li>
+          <li>ליסטינגים עם סימון שקוף: Featured / Sponsored / Promoted.</li>
+          <li>Showroom עם שלושה מצבי אמת: GLB, facade fallback, empty/upload state.</li>
+          <li>4 דוחות Lovable חדשים ו-3 skills משותפים.</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>מה לא לספר לעצמנו שהוא גמור</h3>
+        <ul>
+          <li>אין עדיין קובץ <code>rainbow.glb</code> אמיתי בריפו Lovable.</li>
+          <li>ה-GLB במסכים הוא מצב UI, לא הוכחת מודל תלת-ממד אמיתי.</li>
+          <li>אין backend, תשלומים, WhatsApp ingestion או AI generation אמיתי.</li>
+          <li>המסכים צריכים ביקורת עיצוב לפני פורטינג מלא ל-WordPress.</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>מה Codex הוסיף</h3>
+        <ul>
+          <li>הריץ build מקומי.</li>
+          <li>הקים preview מקומי.</li>
+          <li>צילם mobile 390px ו-desktop 1440px.</li>
+          <li>הוסיף source snapshot תחת <code>prototype-source/</code>.</li>
+          <li>עדכן את <code>source-manifest.md</code> בפערים האמיתיים.</li>
+        </ul>
+      </div>
+    </section>
+
+    <h2>צילומי מסך</h2>
+    <div class="gallery">
+      <figure>
+        <img src="../screenshots/home-mobile-390.png" alt="Home mobile 390">
+        <figcaption>Home / Mobile 390px</figcaption>
+      </figure>
+      <figure>
+        <img src="../screenshots/home-desktop-1440.png" alt="Home desktop 1440">
+        <figcaption>Home / Desktop 1440px</figcaption>
+      </figure>
+      <figure>
+        <img src="../screenshots/listings-mobile-390.png" alt="Listings mobile 390">
+        <figcaption>Listings / Mobile 390px</figcaption>
+      </figure>
+      <figure>
+        <img src="../screenshots/listings-desktop-1440.png" alt="Listings desktop 1440">
+        <figcaption>Listings / Desktop 1440px</figcaption>
+      </figure>
+      <figure>
+        <img src="../screenshots/showroom-rainbow-mobile-390.png" alt="Rainbow showroom mobile">
+        <figcaption>Rainbow / GLB state / Mobile</figcaption>
+      </figure>
+      <figure>
+        <img src="../screenshots/showroom-rainbow-desktop-1440.png" alt="Rainbow showroom desktop">
+        <figcaption>Rainbow / GLB state / Desktop</figcaption>
+      </figure>
+      <figure>
+        <img src="../screenshots/showroom-dimri-mobile-390.png" alt="Dimri showroom mobile">
+        <figcaption>Dimri / Facade fallback / Mobile</figcaption>
+      </figure>
+      <figure>
+        <img src="../screenshots/showroom-dimri-desktop-1440.png" alt="Dimri showroom desktop">
+        <figcaption>Dimri / Facade fallback / Desktop</figcaption>
+      </figure>
+      <figure>
+        <img src="../screenshots/showroom-empty-mobile-390.png" alt="Empty showroom mobile">
+        <figcaption>Empty asset / Contractor upload / Mobile</figcaption>
+      </figure>
+      <figure>
+        <img src="../screenshots/showroom-empty-desktop-1440.png" alt="Empty showroom desktop">
+        <figcaption>Empty asset / Contractor upload / Desktop</figcaption>
+      </figure>
+    </div>
+
+    <h2>קבצים חשובים להמשך</h2>
+    <ul>
+      <li><code>reports/02-showroom-prototype.md</code></li>
+      <li><code>reports/03-listings-ia.md</code></li>
+      <li><code>reports/04-brand-nadlan3d.md</code></li>
+      <li><code>reports/05-fallback-floorplan-spec.md</code></li>
+      <li><code>prototype-source/src/components/nadlan/ShowroomViewer.tsx</code></li>
+      <li><code>prototype-source/src/components/nadlan/MagazineCard.tsx</code></li>
+      <li><code>prototype-source/src/lib/projects.mock.ts</code></li>
+      <li><code>prototype-source/src/styles.css</code></li>
+    </ul>
+  </main>
+</body>
+</html>

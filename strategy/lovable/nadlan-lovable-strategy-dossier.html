@@ -1,0 +1,1292 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>NadLan - דוח 2: יקום מילות מפתח ותוכנית עבודה</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --ink: #18222f;
+      --muted: #5c6675;
+      --line: #d8dee8;
+      --panel: #f6f8fa;
+      --brand: #0d4f5c;
+      --accent: #b84618;
+      --ok: #0f6b4f;
+      --warn: #9a5b00;
+      --risk: #a51f1f;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: Arial, "Noto Sans Hebrew", "Segoe UI", sans-serif;
+      color: var(--ink);
+      background: #fff;
+      line-height: 1.55;
+    }
+    header {
+      background: #0b3943;
+      color: #fff;
+      padding: 30px 34px;
+    }
+    header h1 { margin: 0 0 10px; font-size: 30px; line-height: 1.25; }
+    header p { margin: 0; max-width: 1040px; color: #dcebed; }
+    main { max-width: 1320px; margin: 0 auto; padding: 28px 24px 64px; }
+    section { border-top: 1px solid var(--line); padding: 24px 0; }
+    h2 { margin: 0 0 14px; font-size: 22px; color: var(--brand); }
+    h3 { margin: 18px 0 8px; font-size: 17px; color: #173743; }
+    p { margin: 8px 0; }
+    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 12px; }
+    .card {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--panel);
+      padding: 14px;
+      min-height: 98px;
+    }
+    .card strong { display: block; color: var(--brand); font-size: 28px; line-height: 1.1; }
+    .card span { color: var(--muted); }
+    .callout {
+      border-right: 5px solid var(--accent);
+      background: #fff6f1;
+      padding: 13px 16px;
+      margin: 14px 0;
+      border-radius: 6px 0 0 6px;
+    }
+    .callout.ok { border-right-color: var(--ok); background: #f1fbf7; }
+    .callout.warn { border-right-color: var(--warn); background: #fff8e7; }
+    .screens {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 14px;
+    }
+    figure {
+      margin: 0;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fff;
+      overflow: hidden;
+    }
+    figure img { display: block; width: 100%; height: 210px; object-fit: cover; object-position: top; }
+    figcaption { padding: 10px 12px; color: var(--muted); font-size: 13px; }
+    table { width: 100%; border-collapse: collapse; font-size: 13px; direction: rtl; }
+    th, td { border: 1px solid var(--line); padding: 8px; vertical-align: top; text-align: right; }
+    th { background: var(--brand); color: #fff; position: sticky; top: 0; z-index: 1; }
+    tbody tr:nth-child(even) { background: #fafbfc; }
+    .table-wrap { border: 1px solid var(--line); border-radius: 8px; overflow: auto; max-height: 760px; }
+    .ltr { direction: ltr; text-align: left; }
+    .pill { display: inline-block; padding: 3px 8px; border-radius: 999px; background: #eef3f4; margin: 2px; font-size: 12px; }
+    .p0 { background: #e6f5ee; color: var(--ok); font-weight: 700; }
+    .risk { color: var(--risk); font-weight: 700; }
+    details { border: 1px solid var(--line); border-radius: 8px; margin: 10px 0; background: #fff; }
+    summary { cursor: pointer; padding: 12px 14px; font-weight: 700; color: var(--brand); }
+    pre {
+      white-space: pre-wrap;
+      overflow-wrap: anywhere;
+      margin: 0;
+      padding: 14px;
+      background: #fafbfc;
+      border-top: 1px solid var(--line);
+      direction: rtl;
+      text-align: right;
+      font-family: Arial, "Noto Sans Hebrew", sans-serif;
+    }
+    .small { color: var(--muted); font-size: 12px; }
+    ol, ul { padding-inline-start: 24px; }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>NadLan - דוח 2: יקום מילות מפתח, חלוקת חוברת עבודה ומנגנון אי-קניבליזציה</h1>
+    <p>זהו דוח בעלים קריא בעברית ובכיוון ימין-לשמאל. הוא מבוסס על Report 2 של Lovable, אבל מתקן נקודת גישה חשובה: NadLan לא מוותרת על שום זירת נדל"ן בגלל שקשה להתחרות בה. אנחנו מדרגים לפי מוכנות נתונים, אמון, מוצר ובקרה משפטית - לא לפי פחד מתחרות.</p>
+  </header>
+  <main>
+    <section>
+      <h2>שורה תחתונה לבעלים</h2>
+      <div class="callout ok">
+        <strong>העמדה האסטרטגית המחייבת:</strong>
+        NadLan מכוונת להיות מספר 1 בכל זירת נדל"ן בישראל: לוחות, פרויקטים, שכונות, אנשי מקצוע, משקיעים מחו"ל, מחשבונים, התחדשות עירונית, דירות חדשות, תלת-ממד ומפות. אם נושא עושה כסף או תומך בעמוד שעושה כסף, הוא נכנס למפת העבודה. השאלה היחידה היא סדר, מקור אמת ומוכנות.
+      </div>
+      <div class="callout warn">
+        <strong>מה Report 2 כן ומה הוא לא:</strong>
+        Report 2 הוא בסיס עבודה חשוב עם 225 שורות נקיות, אבל הוא לא יקום סופי של כל מילות הכסף. הוא צריך להתרחב במחקרי המשך לפי אשכולות, עם כלים חיצוניים ומדדים אמיתיים. בדוח הזה אני מסמן גם את הפערים כדי שלא נזייף שלמות.
+      </div>
+      <div class="grid">
+        <div class="card"><strong>225</strong><span>שורות מילות מפתח נקיות מתוך Report 2</span></div>
+        <div class="card"><strong>31</strong><span>הזדמנויות P0 אחרי ניקוי אמון של Stage 1</span></div>
+        <div class="card"><strong>9</strong><span>אשכולות עבודה מרכזיים</span></div>
+        <div class="card"><strong>159</strong><span>שורות שמחייבות מקור רשמי, נכס רשמי או בדיקה משפטית</span></div>
+      </div>
+    </section>
+
+    <section>
+      <h2>פערי כיסוי שחייבים להרחיב - לא סיסמה</h2>
+      <p>אלה זירות הכסף והתמיכה שחייבות להיכנס למחקר הבא. אף אחת מהן לא מסומנת כ”לא רלוונטית” בגלל מתחרים. כל אחת מקבלת בעלות, דרישת נתונים וסדר עדיפות.</p>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>זירה</th><th>סוג</th><th>מה חייב להיאסף</th><th>שער מוכנות לפני פרסום</th><th>עדיפות</th></tr></thead>
+          <tbody>
+            <tr><td>לוחות מכירה יד שנייה</td><td class="ltr">money</td><td>כל עיר, שכונה, סוג נכס, מספר חדרים, טווח מחיר, ממ&quot;ד, חניה, מעלית, קרבה לרכבת/ים/אוניברסיטה</td><td>מלאי אמיתי, freshness, dedupe, canonical city/neighborhood pages</td><td>P0</td></tr>
+<tr><td>לוחות שכירות</td><td class="ltr">money</td><td>דירות להשכרה לפי עיר/שכונה/חדרים/מחיר/טווח חוזה/שותפים/מרוהט</td><td>מלאי אמיתי, הסרת מודעות ישנות, disclosure מתווך/בעלים</td><td>P0</td></tr>
+<tr><td>פרויקטים חדשים וקבלנים</td><td class="ltr">money</td><td>פרויקט, יזם, שכונה, עיר, מחיר משוער, שלב בנייה, מסירה, תמהיל דירות, נוף, קומה</td><td>מקורות רשמיים, נכסים מורשים, סטטוס official/concept/missing</td><td>P0</td></tr>
+<tr><td>שכונות וערים</td><td class="ltr">money/support</td><td>מחירי דירות, שכירות, תשואה, בתי ספר, תחבורה, תוכניות עתידיות, התחדשות עירונית, סיכון/אמון</td><td>מקורות רשמיים ומתודולוגיה, קישור לעמודי קנייה/שכירות/פרויקטים</td><td>P0</td></tr>
+<tr><td>מחירי נדל&quot;ן ושווי דירה</td><td class="ltr">money/support</td><td>כמה שווה הדירה שלי, מחיר למ&quot;ר, עסקאות אחרונות, מגמות, אומדן, שמאי</td><td>מתודולוגיה, מקורות, טווח ביטחון, תאריך עדכון, לא שמאות רשמית</td><td>P0</td></tr>
+<tr><td>משכנתאות ומימון</td><td class="ltr">money/support</td><td>מחשבון משכנתא, יכולת החזר, ריביות, מסלולים, גרייס, פירעון מוקדם, משכנתא לזרים</td><td>LEGAL_REVIEW, מקורות בנק ישראל, גילוי שאין ייעוץ פיננסי</td><td>P0</td></tr>
+<tr><td>מסים ועלויות עסקה</td><td class="ltr">money/support</td><td>מס רכישה, מס שבח, היטל השבחה, שכר טרחה, דמי תיווך, עלויות קנייה/מכירה, משקיעים וזרים</td><td>LEGAL_REVIEW, רשות המסים/מקורות רשמיים, עדכון תדיר</td><td>P0</td></tr>
+<tr><td>אנשי מקצוע</td><td class="ltr">money</td><td>מתווכים, עורכי דין, יועצי משכנתאות, שמאים, בדק בית, אדריכלים, מעצבים, קבלנים, מנהלי פרויקט</td><td>אימות רישיון/לשכה/רשם/ביטוח, שיטת דירוג גלויה</td><td>P0</td></tr>
+<tr><td>התחדשות עירונית</td><td class="ltr">money/support</td><td>תמ&quot;א 38, פינוי בינוי, דייר סרבן, היטלי השבחה, זכויות דיירים, יזמים, מתחמים לפי עיר</td><td>LEGAL_REVIEW, מקורות עירייה/תכנון, לא ייעוץ משפטי</td><td>P0</td></tr>
+<tr><td>השקעות ותשואות</td><td class="ltr">money</td><td>דירה להשקעה, תשואה לפי עיר/שכונה, cash flow, סיכון, אזורי ביקוש, משקיע זר</td><td>מתודולוגיה, מקורות רשמיים, ללא הבטחות תשואה</td><td>P0</td></tr>
+<tr><td>משקיעים בינלאומיים</td><td class="ltr">money</td><td>English buyer guides, Tel Aviv/Jerusalem/Herzliya apartments, foreign buyer tax, mortgage, lawyer, aliyah, remote buying</td><td>EN surface, LEGAL_REVIEW, official sources, trust center</td><td>P0</td></tr>
+<tr><td>יוקרה ונכסים מיוחדים</td><td class="ltr">money</td><td>דירות יוקרה, פנטהאוזים, קו ים, מגדלים, נוף, פרויקטי פרימיום, private sales</td><td>מלאי אמיתי, מקור נכסים, בלי claim לא מאומת</td><td>P1</td></tr>
+<tr><td>נדל&quot;ן מסחרי וקרקעות</td><td class="ltr">money</td><td>משרדים, חנויות, קרקע לבנייה, מגרשים, זכויות בנייה, שינוי ייעוד, אזורי תעסוקה</td><td>מקורות תכנון/רשות מקרקעי ישראל/עירייה, בדיקה משפטית</td><td>P1</td></tr>
+<tr><td>תוכן אמון והשוואות</td><td class="ltr">support</td><td>יד2 מול מדלן, איך לזהות מודעה מזויפת, איך לבדוק קבלן, איך לבדוק נסח טאבו, ביקורות פורטלים</td><td>מדיניות עריכה, ראיות, הימנעות מהשמצה, canonical comparison pages</td><td>P0</td></tr>
+<tr><td>AEO / AI Search</td><td class="ltr">support</td><td>שאלות ותשובות קצרות בעברית/אנגלית לכל money page, HowTo, FAQ, glossary, schema</td><td>תשובות מבוססות מקור, קישור לעמוד קנוני, לא ליצור עמודים מתחרים</td><td>P1</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section>
+      <h2>מה יש לנו בפועל מדוח 2</h2>
+      <p>הדוח איננו “רשימת לונגטייל קלה”. הוא מגדיר יקום מילות מפתח מסודר לנדל"ן ישראלי, כולל עברית, אנגלית למשקיעים מחו"ל, מחשבונים, אנשי מקצוע, התחדשות עירונית, פרויקטים חדשים, תלת-ממד, אמון והשוואות.</p>
+      <p>הדוח גם נותן עיקרון עבודה נכון: <strong>01_Master הוא מקור האמת היחיד</strong>. כל טאב אחר הוא סינון או תצוגה ממנו. זה הבסיס למניעת קניבליזציה: לא כותבים מאמר או עמוד חדש לפני שבודקים למי מילת המפתח שייכת, איזה URL הוא הקנוני, ומה הקשר שלו לעמודי כסף.</p>
+    </section>
+
+    <section>
+      <h2>חלוקה לפי אשכולות</h2>
+      <div class="grid">
+        <div class="card"><strong>46</strong><span class="ltr">buyer_seller_core</span></div>
+<div class="card"><strong>22</strong><span class="ltr">projects_developers</span></div>
+<div class="card"><strong>42</strong><span class="ltr">intl_investor</span></div>
+<div class="card"><strong>29</strong><span class="ltr">tools_calculators</span></div>
+<div class="card"><strong>21</strong><span class="ltr">professionals_directory</span></div>
+<div class="card"><strong>25</strong><span class="ltr">urban_renewal</span></div>
+<div class="card"><strong>9</strong><span class="ltr">showroom_3d</span></div>
+<div class="card"><strong>15</strong><span class="ltr">trust_comparison</span></div>
+<div class="card"><strong>16</strong><span class="ltr">local_programmatic</span></div>
+      </div>
+    </section>
+
+    <section>
+      <h2>עדיפות לפי שלבי עבודה</h2>
+      <div class="grid">
+        <div class="card"><strong>105</strong><span>P1 - חשוב מאוד, דורש מוכנות</span></div>
+<div class="card"><strong>72</strong><span>P2 - תכנון ותשתית לפני פרסום</span></div>
+<div class="card"><strong>31</strong><span>P0 - ליבה גבוהה אחרי Stage 1</span></div>
+<div class="card"><strong>17</strong><span>P3 - מאוחר יותר או תלוי שותפות/נתונים</span></div>
+      </div>
+      <p class="small">P0 אינו אומר “קל”. הוא אומר “חשוב במיוחד כששער האמון עובר”. P2/P3 אינם ויתור, אלא תזמון נכון כדי לא לבנות על בסיס חלש.</p>
+    </section>
+
+    <section>
+      <h2>הזדמנויות P0 ראשונות</h2>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>מילת מפתח</th><th>אשכול</th><th>סוג עמוד</th><th>URL מוצע</th><th>דרישת אמון</th><th>דגל</th></tr></thead>
+          <tbody>
+            <tr><td>כמה שווה הדירה שלי</td><td class="ltr">buyer_seller_core</td><td class="ltr">tool</td><td class="ltr">/property-value-estimator</td><td>methodology + disclaimer</td><td class="risk">LEGAL_REVIEW|NEEDS_VERIFICATION</td></tr>
+<tr><td>פרויקטים חדשים</td><td class="ltr">projects_developers</td><td class="ltr">hub</td><td class="ltr">/projects</td><td>developer-verified data</td><td class="risk">REQUIRES_OFFICIAL_ASSET</td></tr>
+<tr><td>פרויקטים חדשים תל אביב</td><td class="ltr">projects_developers</td><td class="ltr">city_hub</td><td class="ltr">/projects/tel-aviv</td><td>developer-verified</td><td class="risk">REQUIRES_OFFICIAL_ASSET</td></tr>
+<tr><td>פרויקטים חדשים שדה דב</td><td class="ltr">projects_developers</td><td class="ltr">area_hub</td><td class="ltr">/projects/sde-dov</td><td>official municipal + developer</td><td class="risk">REQUIRES_OFFICIAL_ASSET|OFFICIAL_SOURCE_REQUIRED</td></tr>
+<tr><td>פרויקט דמרי שדה דב</td><td class="ltr">projects_developers</td><td class="ltr">project_page</td><td class="ltr">/projects/dimri-yama-sde-dov</td><td>official developer data</td><td class="risk">REQUIRES_OFFICIAL_ASSET</td></tr>
+<tr><td>פרויקט רינבו תל אביב</td><td class="ltr">projects_developers</td><td class="ltr">project_page</td><td class="ltr">/projects/rainbow-tel-aviv</td><td>official developer data</td><td class="risk">REQUIRES_OFFICIAL_ASSET</td></tr>
+<tr><td>buying property in israel</td><td class="ltr">intl_investor</td><td class="ltr">guide</td><td class="ltr">/en/buy-property-israel</td><td>attorney-reviewed</td><td class="risk">LEGAL_REVIEW</td></tr>
+<tr><td>real estate israel</td><td class="ltr">intl_investor</td><td class="ltr">hub</td><td class="ltr">/en</td><td>EN site stub required</td><td class="risk">NEEDS_VERIFICATION</td></tr>
+<tr><td>tel aviv apartments for sale</td><td class="ltr">intl_investor</td><td class="ltr">city_hub</td><td class="ltr">/en/buy/tel-aviv</td><td>real supply</td><td class="risk">NEEDS_VERIFICATION</td></tr>
+<tr><td>sde dov tel aviv project</td><td class="ltr">intl_investor</td><td class="ltr">project_page</td><td class="ltr">/en/projects/sde-dov</td><td>official developer</td><td class="risk">REQUIRES_OFFICIAL_ASSET</td></tr>
+<tr><td>new construction tel aviv</td><td class="ltr">intl_investor</td><td class="ltr">hub</td><td class="ltr">/en/new-construction/tel-aviv</td><td>developer-verified</td><td class="risk">REQUIRES_OFFICIAL_ASSET</td></tr>
+<tr><td>foreign buyer purchase tax israel</td><td class="ltr">intl_investor</td><td class="ltr">guide</td><td class="ltr">/en/tax/foreign-buyer-purchase-tax</td><td>attorney + CPA reviewed</td><td class="risk">LEGAL_REVIEW|OFFICIAL_SOURCE_REQUIRED</td></tr>
+<tr><td>mortgage in israel for foreigners</td><td class="ltr">intl_investor</td><td class="ltr">guide</td><td class="ltr">/en/mortgage/foreign-buyers</td><td>licensed advisor reviewed</td><td class="risk">LEGAL_REVIEW</td></tr>
+<tr><td>purchase tax calculator israel</td><td class="ltr">intl_investor</td><td class="ltr">tool</td><td class="ltr">/en/tools/purchase-tax-calculator</td><td>Tax Authority brackets</td><td class="risk">LEGAL_REVIEW|OFFICIAL_SOURCE_REQUIRED</td></tr>
+<tr><td>מחשבון משכנתא</td><td class="ltr">tools_calculators</td><td class="ltr">tool</td><td class="ltr">/tools/mortgage-calculator</td><td>licensed advisor disclaimer</td><td class="risk">LEGAL_REVIEW</td></tr>
+<tr><td>מחשבון מס רכישה</td><td class="ltr">tools_calculators</td><td class="ltr">tool</td><td class="ltr">/tools/purchase-tax-calculator</td><td>Tax Authority brackets</td><td class="risk">LEGAL_REVIEW|OFFICIAL_SOURCE_REQUIRED</td></tr>
+<tr><td>מס רכישה דירה ראשונה</td><td class="ltr">tools_calculators</td><td class="ltr">guide</td><td class="ltr">/tax/purchase-tax-first-home</td><td>Tax Authority</td><td class="risk">LEGAL_REVIEW|OFFICIAL_SOURCE_REQUIRED</td></tr>
+<tr><td>מס רכישה דירה שניה</td><td class="ltr">tools_calculators</td><td class="ltr">guide</td><td class="ltr">/tax/purchase-tax-second-home</td><td>Tax Authority</td><td class="risk">LEGAL_REVIEW|OFFICIAL_SOURCE_REQUIRED</td></tr>
+<tr><td>מס שבח</td><td class="ltr">tools_calculators</td><td class="ltr">guide</td><td class="ltr">/tax/capital-gains</td><td>Tax Authority</td><td class="risk">LEGAL_REVIEW|OFFICIAL_SOURCE_REQUIRED</td></tr>
+<tr><td>מחשבון מס שבח</td><td class="ltr">tools_calculators</td><td class="ltr">tool</td><td class="ltr">/tools/capital-gains-calculator</td><td>Tax Authority</td><td class="risk">LEGAL_REVIEW|OFFICIAL_SOURCE_REQUIRED</td></tr>
+<tr><td>מחשבון תשואה דירה</td><td class="ltr">tools_calculators</td><td class="ltr">tool</td><td class="ltr">/tools/rental-yield-calculator</td><td>methodology disclosure</td><td class="risk">NEEDS_VERIFICATION</td></tr>
+<tr><td>תהליך קניית דירה</td><td class="ltr">tools_calculators</td><td class="ltr">pillar</td><td class="ltr">/guides/buying-process</td><td>attorney-reviewed</td><td class="risk">LEGAL_REVIEW</td></tr>
+<tr><td>תמא 38</td><td class="ltr">urban_renewal</td><td class="ltr">pillar</td><td class="ltr">/urban-renewal/tama-38</td><td>attorney-reviewed</td><td class="risk">LEGAL_REVIEW</td></tr>
+<tr><td>תמא 38 זכויות דיירים</td><td class="ltr">urban_renewal</td><td class="ltr">guide</td><td class="ltr">/urban-renewal/tama-38-tenant-rights</td><td>attorney-reviewed</td><td class="risk">LEGAL_REVIEW</td></tr>
+<tr><td>פינוי בינוי</td><td class="ltr">urban_renewal</td><td class="ltr">pillar</td><td class="ltr">/urban-renewal/pinui-binui</td><td>attorney-reviewed</td><td class="risk">LEGAL_REVIEW</td></tr>
+<tr><td>פינוי בינוי זכויות דיירים</td><td class="ltr">urban_renewal</td><td class="ltr">guide</td><td class="ltr">/urban-renewal/pinui-binui-tenant-rights</td><td>attorney-reviewed</td><td class="risk">LEGAL_REVIEW</td></tr>
+<tr><td>התחדשות עירונית</td><td class="ltr">urban_renewal</td><td class="ltr">hub</td><td class="ltr">/urban-renewal</td><td>attorney + municipal</td><td class="risk">LEGAL_REVIEW</td></tr>
+<tr><td>הונאות נדל&quot;ן</td><td class="ltr">trust_comparison</td><td class="ltr">guide</td><td class="ltr">/guides/real-estate-scams</td><td>attorney + police data</td><td class="risk">LEGAL_REVIEW</td></tr>
+<tr><td>איך לבדוק קבלן</td><td class="ltr">trust_comparison</td><td class="ltr">guide</td><td class="ltr">/guides/vet-developer</td><td>Registrar of Contractors</td><td class="risk">LEGAL_REVIEW|OFFICIAL_SOURCE_REQUIRED</td></tr>
+<tr><td>איך לבדוק דירה לפני קניה</td><td class="ltr">trust_comparison</td><td class="ltr">guide</td><td class="ltr">/guides/pre-purchase-checklist</td><td>attorney + inspector</td><td class="risk">LEGAL_REVIEW</td></tr>
+<tr><td>משכנתא לדירה ראשונה</td><td class="ltr">tools_calculators</td><td class="ltr">guide</td><td class="ltr">/mortgage/first-home</td><td>advisor + Bank of Israel</td><td class="risk">LEGAL_REVIEW|OFFICIAL_SOURCE_REQUIRED</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section>
+      <h2>נושאים שמחזיקים עד מוכנות - לא מוחקים</h2>
+      <p>הטבלה הזו אינה רשימת ויתור. היא רשימת נושאים שצריך להחזיק עד שיש להם מקור, משפט, נכס, מתודולוגיה או מוצר מתאים. כל אחד מהם עדיין יכול להיות חלק מהדרך למקום ראשון.</p>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>מילת מפתח</th><th>אשכול</th><th>עדיפות</th><th>דגל מוכנות</th><th>דרישת אמון</th><th>URL מוצע</th></tr></thead>
+          <tbody>
+            <tr><td>איך למכור דירה</td><td class="ltr">buyer_seller_core</td><td>P1</td><td class="risk">NEEDS_VERIFICATION|LEGAL_REVIEW</td><td>reviewed by licensed agent</td><td class="ltr">/sell/how-to-sell-apartment</td></tr>
+<tr><td>מחיר דירה ממוצע</td><td class="ltr">buyer_seller_core</td><td>P1</td><td class="risk">OFFICIAL_SOURCE_REQUIRED</td><td>CBS / official data</td><td class="ltr">/market/average-prices</td></tr>
+<tr><td>מחירי דירות 2026</td><td class="ltr">buyer_seller_core</td><td>P1</td><td class="risk">OFFICIAL_SOURCE_REQUIRED</td><td>CBS / official data</td><td class="ltr">/market/prices-2026</td></tr>
+<tr><td>מדד מחירי דירות</td><td class="ltr">buyer_seller_core</td><td>P2</td><td class="risk">OFFICIAL_SOURCE_REQUIRED</td><td>CBS</td><td class="ltr">/market/price-index</td></tr>
+<tr><td>שמאות דירה</td><td class="ltr">buyer_seller_core</td><td>P1</td><td class="risk">LEGAL_REVIEW</td><td>licensed appraiser disclaimer</td><td class="ltr">/valuation</td></tr>
+<tr><td>כמה שווה הדירה שלי</td><td class="ltr">buyer_seller_core</td><td>P0</td><td class="risk">LEGAL_REVIEW|NEEDS_VERIFICATION</td><td>methodology + disclaimer</td><td class="ltr">/property-value-estimator</td></tr>
+<tr><td>חוזה שכירות לדוגמא</td><td class="ltr">buyer_seller_core</td><td>P1</td><td class="risk">LEGAL_REVIEW</td><td>attorney-reviewed template</td><td class="ltr">/rent/lease-template</td></tr>
+<tr><td>זיכרון דברים דירה</td><td class="ltr">buyer_seller_core</td><td>P1</td><td class="risk">LEGAL_REVIEW</td><td>attorney-reviewed</td><td class="ltr">/buy/memorandum-of-understanding</td></tr>
+<tr><td>ביטול עסקת דירה</td><td class="ltr">buyer_seller_core</td><td>P2</td><td class="risk">LEGAL_REVIEW</td><td>attorney-reviewed</td><td class="ltr">/buy/cancel-contract</td></tr>
+<tr><td>זכויות קונה דירה מקבלן</td><td class="ltr">buyer_seller_core</td><td>P1</td><td class="risk">LEGAL_REVIEW</td><td>attorney-reviewed</td><td class="ltr">/buy/rights-from-developer</td></tr>
+<tr><td>פרויקטים חדשים</td><td class="ltr">projects_developers</td><td>P0</td><td class="risk">REQUIRES_OFFICIAL_ASSET</td><td>developer-verified data</td><td class="ltr">/projects</td></tr>
+<tr><td>פרויקטים חדשים תל אביב</td><td class="ltr">projects_developers</td><td>P0</td><td class="risk">REQUIRES_OFFICIAL_ASSET</td><td>developer-verified</td><td class="ltr">/projects/tel-aviv</td></tr>
+<tr><td>פרויקטים חדשים שדה דב</td><td class="ltr">projects_developers</td><td>P0</td><td class="risk">REQUIRES_OFFICIAL_ASSET|OFFICIAL_SOURCE_REQUIRED</td><td>official municipal + developer</td><td class="ltr">/projects/sde-dov</td></tr>
+<tr><td>פרויקטים חדשים רמת גן</td><td class="ltr">projects_developers</td><td>P1</td><td class="risk">REQUIRES_OFFICIAL_ASSET</td><td>developer-verified</td><td class="ltr">/projects/ramat-gan</td></tr>
+<tr><td>פרויקטים חדשים ירושלים</td><td class="ltr">projects_developers</td><td>P1</td><td class="risk">REQUIRES_OFFICIAL_ASSET</td><td>developer-verified</td><td class="ltr">/projects/jerusalem</td></tr>
+<tr><td>פרויקטים חדשים חיפה</td><td class="ltr">projects_developers</td><td>P1</td><td class="risk">REQUIRES_OFFICIAL_ASSET</td><td>developer-verified</td><td class="ltr">/projects/haifa</td></tr>
+<tr><td>פרויקטים חדשים נתניה</td><td class="ltr">projects_developers</td><td>P1</td><td class="risk">REQUIRES_OFFICIAL_ASSET</td><td>developer-verified</td><td class="ltr">/projects/netanya</td></tr>
+<tr><td>פרויקטים חדשים הרצליה</td><td class="ltr">projects_developers</td><td>P1</td><td class="risk">REQUIRES_OFFICIAL_ASSET</td><td>developer-verified</td><td class="ltr">/projects/herzliya</td></tr>
+<tr><td>דירות מקבלן</td><td class="ltr">projects_developers</td><td>P1</td><td class="risk">REQUIRES_OFFICIAL_ASSET</td><td>developer-verified</td><td class="ltr">/from-developer</td></tr>
+<tr><td>דירות על הנייר</td><td class="ltr">projects_developers</td><td>P1</td><td class="risk">LEGAL_REVIEW</td><td>attorney-reviewed</td><td class="ltr">/pre-sale</td></tr>
+<tr><td>פרויקט דמרי שדה דב</td><td class="ltr">projects_developers</td><td>P0</td><td class="risk">REQUIRES_OFFICIAL_ASSET</td><td>official developer data</td><td class="ltr">/projects/dimri-yama-sde-dov</td></tr>
+<tr><td>פרויקט רינבו תל אביב</td><td class="ltr">projects_developers</td><td>P0</td><td class="risk">REQUIRES_OFFICIAL_ASSET</td><td>official developer data</td><td class="ltr">/projects/rainbow-tel-aviv</td></tr>
+<tr><td>חברות בניה בישראל</td><td class="ltr">projects_developers</td><td>P2</td><td class="risk">OFFICIAL_SOURCE_REQUIRED</td><td>company registry</td><td class="ltr">/developers</td></tr>
+<tr><td>דירוג חברות בניה</td><td class="ltr">projects_developers</td><td>P2</td><td class="risk">OFFICIAL_SOURCE_REQUIRED|LEGAL_REVIEW</td><td>methodology + data</td><td class="ltr">/developers/ranking</td></tr>
+<tr><td>חברת דמרי</td><td class="ltr">projects_developers</td><td>P1</td><td class="risk">OFFICIAL_SOURCE_REQUIRED</td><td>official + public filings</td><td class="ltr">/developers/dimri</td></tr>
+<tr><td>מחירון דירות חדשות</td><td class="ltr">projects_developers</td><td>P1</td><td class="risk">REQUIRES_OFFICIAL_ASSET</td><td>developer pricing</td><td class="ltr">/projects/price-list</td></tr>
+<tr><td>buying property in israel</td><td class="ltr">intl_investor</td><td>P0</td><td class="risk">LEGAL_REVIEW</td><td>attorney-reviewed</td><td class="ltr">/en/buy-property-israel</td></tr>
+<tr><td>sde dov tel aviv project</td><td class="ltr">intl_investor</td><td>P0</td><td class="risk">REQUIRES_OFFICIAL_ASSET</td><td>official developer</td><td class="ltr">/en/projects/sde-dov</td></tr>
+<tr><td>new construction tel aviv</td><td class="ltr">intl_investor</td><td>P0</td><td class="risk">REQUIRES_OFFICIAL_ASSET</td><td>developer-verified</td><td class="ltr">/en/new-construction/tel-aviv</td></tr>
+<tr><td>foreign buyer purchase tax israel</td><td class="ltr">intl_investor</td><td>P0</td><td class="risk">LEGAL_REVIEW|OFFICIAL_SOURCE_REQUIRED</td><td>attorney + CPA reviewed</td><td class="ltr">/en/tax/foreign-buyer-purchase-tax</td></tr>
+<tr><td>mortgage in israel for foreigners</td><td class="ltr">intl_investor</td><td>P0</td><td class="risk">LEGAL_REVIEW</td><td>licensed advisor reviewed</td><td class="ltr">/en/mortgage/foreign-buyers</td></tr>
+<tr><td>israeli real estate lawyer english</td><td class="ltr">intl_investor</td><td>P1</td><td class="risk">REQUIRES_OFFICIAL_ASSET</td><td>license verification</td><td class="ltr">/en/professionals/lawyers</td></tr>
+<tr><td>buying apartment israel aliyah</td><td class="ltr">intl_investor</td><td>P1</td><td class="risk">LEGAL_REVIEW</td><td>partner with Nefesh / org review</td><td class="ltr">/en/aliyah/buying-apartment</td></tr>
+<tr><td>investing in tel aviv real estate</td><td class="ltr">intl_investor</td><td>P1</td><td class="risk">OFFICIAL_SOURCE_REQUIRED</td><td>OFFICIAL CBS data</td><td class="ltr">/en/invest/tel-aviv</td></tr>
+<tr><td>rental yield israel</td><td class="ltr">intl_investor</td><td>P1</td><td class="risk">OFFICIAL_SOURCE_REQUIRED</td><td>CBS + market data</td><td class="ltr">/en/invest/rental-yields</td></tr>
+<tr><td>israel property market 2026</td><td class="ltr">intl_investor</td><td>P1</td><td class="risk">OFFICIAL_SOURCE_REQUIRED</td><td>CBS + Bank of Israel</td><td class="ltr">/en/market/2026</td></tr>
+<tr><td>tama 38 explained</td><td class="ltr">intl_investor</td><td>P1</td><td class="risk">LEGAL_REVIEW</td><td>attorney-reviewed</td><td class="ltr">/en/urban-renewal/tama-38</td></tr>
+<tr><td>pinui binui meaning</td><td class="ltr">intl_investor</td><td>P2</td><td class="risk">LEGAL_REVIEW</td><td>attorney-reviewed</td><td class="ltr">/en/urban-renewal/pinui-binui</td></tr>
+<tr><td>how to buy property in israel from usa</td><td class="ltr">intl_investor</td><td>P1</td><td class="risk">LEGAL_REVIEW</td><td>attorney + CPA reviewed</td><td class="ltr">/en/buy/from-usa</td></tr>
+<tr><td>how to buy property in israel from uk</td><td class="ltr">intl_investor</td><td>P2</td><td class="risk">LEGAL_REVIEW</td><td>attorney reviewed</td><td class="ltr">/en/buy/from-uk</td></tr>
+<tr><td>how to buy property in israel from france</td><td class="ltr">intl_investor</td><td>P2</td><td class="risk">LEGAL_REVIEW</td><td>attorney reviewed</td><td class="ltr">/en/buy/from-france</td></tr>
+<tr><td>israeli mortgage calculator english</td><td class="ltr">intl_investor</td><td>P1</td><td class="risk">LEGAL_REVIEW</td><td>disclaimer</td><td class="ltr">/en/tools/mortgage-calculator</td></tr>
+<tr><td>purchase tax calculator israel</td><td class="ltr">intl_investor</td><td>P0</td><td class="risk">LEGAL_REVIEW|OFFICIAL_SOURCE_REQUIRED</td><td>Tax Authority brackets</td><td class="ltr">/en/tools/purchase-tax-calculator</td></tr>
+<tr><td>מחשבון משכנתא</td><td class="ltr">tools_calculators</td><td>P0</td><td class="risk">LEGAL_REVIEW</td><td>licensed advisor disclaimer</td><td class="ltr">/tools/mortgage-calculator</td></tr>
+<tr><td>החזר משכנתא חודשי</td><td class="ltr">tools_calculators</td><td>P1</td><td class="risk">LEGAL_REVIEW</td><td>disclaimer</td><td class="ltr">/tools/monthly-payment</td></tr>
+<tr><td>מחשבון מס רכישה</td><td class="ltr">tools_calculators</td><td>P0</td><td class="risk">LEGAL_REVIEW|OFFICIAL_SOURCE_REQUIRED</td><td>Tax Authority brackets</td><td class="ltr">/tools/purchase-tax-calculator</td></tr>
+<tr><td>מס רכישה דירה ראשונה</td><td class="ltr">tools_calculators</td><td>P0</td><td class="risk">LEGAL_REVIEW|OFFICIAL_SOURCE_REQUIRED</td><td>Tax Authority</td><td class="ltr">/tax/purchase-tax-first-home</td></tr>
+<tr><td>מס רכישה דירה שניה</td><td class="ltr">tools_calculators</td><td>P0</td><td class="risk">LEGAL_REVIEW|OFFICIAL_SOURCE_REQUIRED</td><td>Tax Authority</td><td class="ltr">/tax/purchase-tax-second-home</td></tr>
+<tr><td>מס שבח</td><td class="ltr">tools_calculators</td><td>P0</td><td class="risk">LEGAL_REVIEW|OFFICIAL_SOURCE_REQUIRED</td><td>Tax Authority</td><td class="ltr">/tax/capital-gains</td></tr>
+<tr><td>מחשבון מס שבח</td><td class="ltr">tools_calculators</td><td>P0</td><td class="risk">LEGAL_REVIEW|OFFICIAL_SOURCE_REQUIRED</td><td>Tax Authority</td><td class="ltr">/tools/capital-gains-calculator</td></tr>
+<tr><td>תשואה ממוצעת דירה תל אביב</td><td class="ltr">tools_calculators</td><td>P1</td><td class="risk">OFFICIAL_SOURCE_REQUIRED</td><td>CBS + market data</td><td class="ltr">/data/yields/tel-aviv</td></tr>
+<tr><td>מחשבון הון עצמי</td><td class="ltr">tools_calculators</td><td>P1</td><td class="risk">LEGAL_REVIEW|OFFICIAL_SOURCE_REQUIRED</td><td>Bank of Israel LTV rules</td><td class="ltr">/tools/equity-calculator</td></tr>
+<tr><td>מחשבון יכולת החזר</td><td class="ltr">tools_calculators</td><td>P1</td><td class="risk">LEGAL_REVIEW</td><td>disclaimer</td><td class="ltr">/tools/affordability-calculator</td></tr>
+<tr><td>מחשבון עמלת פירעון מוקדם</td><td class="ltr">tools_calculators</td><td>P1</td><td class="risk">LEGAL_REVIEW|OFFICIAL_SOURCE_REQUIRED</td><td>Bank of Israel formula</td><td class="ltr">/tools/early-repayment-fee</td></tr>
+<tr><td>תהליך קניית דירה</td><td class="ltr">tools_calculators</td><td>P0</td><td class="risk">LEGAL_REVIEW</td><td>attorney-reviewed</td><td class="ltr">/guides/buying-process</td></tr>
+<tr><td>שלבים בקניית דירה</td><td class="ltr">tools_calculators</td><td>P1</td><td class="risk">LEGAL_REVIEW</td><td>attorney-reviewed</td><td class="ltr">/guides/buying-steps</td></tr>
+<tr><td>מסמכים לקניית דירה</td><td class="ltr">tools_calculators</td><td>P1</td><td class="risk">LEGAL_REVIEW</td><td>attorney-reviewed</td><td class="ltr">/guides/buying-documents</td></tr>
+<tr><td>בדיקת נסח טאבו</td><td class="ltr">tools_calculators</td><td>P1</td><td class="risk">LEGAL_REVIEW|OFFICIAL_SOURCE_REQUIRED</td><td>attorney-reviewed</td><td class="ltr">/guides/tabu-extract</td></tr>
+<tr><td>נסח טאבו אונליין</td><td class="ltr">tools_calculators</td><td>P2</td><td class="risk">OFFICIAL_SOURCE_REQUIRED</td><td>Land Registry</td><td class="ltr">/guides/tabu-online</td></tr>
+<tr><td>מתווכים תל אביב</td><td class="ltr">professionals_directory</td><td>P1</td><td class="risk">REQUIRES_OFFICIAL_ASSET</td><td>license verification</td><td class="ltr">/professionals/realtors/tel-aviv</td></tr>
+<tr><td>מתווך דירות</td><td class="ltr">professionals_directory</td><td>P1</td><td class="risk">REQUIRES_OFFICIAL_ASSET</td><td>license verification</td><td class="ltr">/professionals/realtors</td></tr>
+<tr><td>מתווכים מומלצים</td><td class="ltr">professionals_directory</td><td>P1</td><td class="risk">REQUIRES_OFFICIAL_ASSET|LEGAL_REVIEW</td><td>license + review policy</td><td class="ltr">/professionals/realtors/recommended</td></tr>
+<tr><td>דמי תיווך</td><td class="ltr">professionals_directory</td><td>P1</td><td class="risk">LEGAL_REVIEW</td><td>attorney-reviewed</td><td class="ltr">/guides/realtor-fees</td></tr>
+<tr><td>עורך דין מקרקעין</td><td class="ltr">professionals_directory</td><td>P1</td><td class="risk">REQUIRES_OFFICIAL_ASSET</td><td>bar association verification</td><td class="ltr">/professionals/lawyers</td></tr>
+<tr><td>עורך דין מקרקעין תל אביב</td><td class="ltr">professionals_directory</td><td>P1</td><td class="risk">REQUIRES_OFFICIAL_ASSET</td><td>bar verification</td><td class="ltr">/professionals/lawyers/tel-aviv</td></tr>
+<tr><td>עורך דין מקרקעין ירושלים</td><td class="ltr">professionals_directory</td><td>P2</td><td class="risk">REQUIRES_OFFICIAL_ASSET</td><td>bar verification</td><td class="ltr">/professionals/lawyers/jerusalem</td></tr>
+<tr><td>שכר טרחת עורך דין דירה</td><td class="ltr">professionals_directory</td><td>P1</td><td class="risk">LEGAL_REVIEW</td><td>bar guidance</td><td class="ltr">/guides/lawyer-fees-apartment</td></tr>
+<tr><td>יועץ משכנתאות</td><td class="ltr">professionals_directory</td><td>P1</td><td class="risk">REQUIRES_OFFICIAL_ASSET</td><td>license verification</td><td class="ltr">/professionals/mortgage-advisors</td></tr>
+<tr><td>יועץ משכנתאות מומלץ</td><td class="ltr">professionals_directory</td><td>P1</td><td class="risk">REQUIRES_OFFICIAL_ASSET</td><td>license + reviews</td><td class="ltr">/professionals/mortgage-advisors/recommended</td></tr>
+<tr><td>שמאי מקרקעין</td><td class="ltr">professionals_directory</td><td>P1</td><td class="risk">REQUIRES_OFFICIAL_ASSET</td><td>council of appraisers verification</td><td class="ltr">/professionals/appraisers</td></tr>
+<tr><td>בודק דירות</td><td class="ltr">professionals_directory</td><td>P1</td><td class="risk">REQUIRES_OFFICIAL_ASSET</td><td>credentials check</td><td class="ltr">/professionals/inspectors</td></tr>
+<tr><td>בדק בית</td><td class="ltr">professionals_directory</td><td>P1</td><td class="risk">REQUIRES_OFFICIAL_ASSET</td><td>credentials check</td><td class="ltr">/professionals/home-inspection</td></tr>
+<tr><td>ליקויי בנייה</td><td class="ltr">professionals_directory</td><td>P2</td><td class="risk">LEGAL_REVIEW</td><td>attorney + engineer</td><td class="ltr">/guides/construction-defects</td></tr>
+<tr><td>אדריכל דירה</td><td class="ltr">professionals_directory</td><td>P2</td><td class="risk">REQUIRES_OFFICIAL_ASSET</td><td>architects registry</td><td class="ltr">/professionals/architects</td></tr>
+<tr><td>קבלן שיפוצים</td><td class="ltr">professionals_directory</td><td>P1</td><td class="risk">REQUIRES_OFFICIAL_ASSET</td><td>contractor registry</td><td class="ltr">/professionals/renovation-contractors</td></tr>
+<tr><td>קבלן שיפוצים תל אביב</td><td class="ltr">professionals_directory</td><td>P2</td><td class="risk">REQUIRES_OFFICIAL_ASSET</td><td>contractor registry</td><td class="ltr">/professionals/renovation-contractors/tel-aviv</td></tr>
+<tr><td>איך לבחור עורך דין מקרקעין</td><td class="ltr">professionals_directory</td><td>P1</td><td class="risk">LEGAL_REVIEW</td><td>editorial</td><td class="ltr">/guides/choose-real-estate-lawyer</td></tr>
+<tr><td>תמא 38</td><td class="ltr">urban_renewal</td><td>P0</td><td class="risk">LEGAL_REVIEW</td><td>attorney-reviewed</td><td class="ltr">/urban-renewal/tama-38</td></tr>
+<tr><td>תמא 38 1</td><td class="ltr">urban_renewal</td><td>P1</td><td class="risk">LEGAL_REVIEW</td><td>attorney-reviewed</td><td class="ltr">/urban-renewal/tama-38-1</td></tr>
+<tr><td>תמא 38 2</td><td class="ltr">urban_renewal</td><td>P1</td><td class="risk">LEGAL_REVIEW</td><td>attorney-reviewed</td><td class="ltr">/urban-renewal/tama-38-2</td></tr>
+<tr><td>תמא 38 זכויות דיירים</td><td class="ltr">urban_renewal</td><td>P0</td><td class="risk">LEGAL_REVIEW</td><td>attorney-reviewed</td><td class="ltr">/urban-renewal/tama-38-tenant-rights</td></tr>
+<tr><td>תמא 38 מיסוי</td><td class="ltr">urban_renewal</td><td>P1</td><td class="risk">LEGAL_REVIEW|OFFICIAL_SOURCE_REQUIRED</td><td>CPA + attorney</td><td class="ltr">/urban-renewal/tama-38-tax</td></tr>
+<tr><td>פינוי בינוי</td><td class="ltr">urban_renewal</td><td>P0</td><td class="risk">LEGAL_REVIEW</td><td>attorney-reviewed</td><td class="ltr">/urban-renewal/pinui-binui</td></tr>
+<tr><td>פינוי בינוי זכויות דיירים</td><td class="ltr">urban_renewal</td><td>P0</td><td class="risk">LEGAL_REVIEW</td><td>attorney-reviewed</td><td class="ltr">/urban-renewal/pinui-binui-tenant-rights</td></tr>
+<tr><td>התחדשות עירונית</td><td class="ltr">urban_renewal</td><td>P0</td><td class="risk">LEGAL_REVIEW</td><td>attorney + municipal</td><td class="ltr">/urban-renewal</td></tr>
+<tr><td>התחדשות עירונית תל אביב</td><td class="ltr">urban_renewal</td><td>P1</td><td class="risk">OFFICIAL_SOURCE_REQUIRED</td><td>municipal data</td><td class="ltr">/urban-renewal/tel-aviv</td></tr>
+<tr><td>התחדשות עירונית רמת גן</td><td class="ltr">urban_renewal</td><td>P2</td><td class="risk">OFFICIAL_SOURCE_REQUIRED</td><td>municipal data</td><td class="ltr">/urban-renewal/ramat-gan</td></tr>
+<tr><td>היתר בניה</td><td class="ltr">urban_renewal</td><td>P1</td><td class="risk">LEGAL_REVIEW|OFFICIAL_SOURCE_REQUIRED</td><td>municipal + attorney</td><td class="ltr">/guides/building-permit</td></tr>
+<tr><td>תוכנית בניין עיר</td><td class="ltr">urban_renewal</td><td>P1</td><td class="risk">OFFICIAL_SOURCE_REQUIRED</td><td>municipal</td><td class="ltr">/guides/city-master-plan</td></tr>
+<tr><td>תב&quot;ע</td><td class="ltr">urban_renewal</td><td>P1</td><td class="risk">OFFICIAL_SOURCE_REQUIRED</td><td>municipal</td><td class="ltr">/guides/tabaa</td></tr>
+<tr><td>ועדה מקומית לתכנון ובניה</td><td class="ltr">urban_renewal</td><td>P2</td><td class="risk">OFFICIAL_SOURCE_REQUIRED</td><td>municipal</td><td class="ltr">/guides/local-planning-committee</td></tr>
+<tr><td>חוק התחדשות עירונית</td><td class="ltr">urban_renewal</td><td>P2</td><td class="risk">LEGAL_REVIEW</td><td>attorney-reviewed</td><td class="ltr">/urban-renewal/law</td></tr>
+<tr><td>דייר סרבן</td><td class="ltr">urban_renewal</td><td>P1</td><td class="risk">LEGAL_REVIEW</td><td>attorney-reviewed</td><td class="ltr">/urban-renewal/refusing-tenant</td></tr>
+<tr><td>סיור וירטואלי דירה</td><td class="ltr">showroom_3d</td><td>P1</td><td class="risk">REQUIRES_OFFICIAL_ASSET</td><td>real tour assets</td><td class="ltr">/features/virtual-tours</td></tr>
+<tr><td>מפת פרויקטים</td><td class="ltr">showroom_3d</td><td>P1</td><td class="risk">REQUIRES_OFFICIAL_ASSET</td><td>verified project data</td><td class="ltr">/map</td></tr>
+<tr><td>מפת התחדשות עירונית</td><td class="ltr">showroom_3d</td><td>P1</td><td class="risk">OFFICIAL_SOURCE_REQUIRED</td><td>municipal data</td><td class="ltr">/urban-renewal/map</td></tr>
+<tr><td>מפת מחירי דירות</td><td class="ltr">showroom_3d</td><td>P1</td><td class="risk">OFFICIAL_SOURCE_REQUIRED</td><td>CBS / transaction data</td><td class="ltr">/map/prices</td></tr>
+<tr><td>הדמיה תלת מימד דירה</td><td class="ltr">showroom_3d</td><td>P2</td><td class="risk">REQUIRES_OFFICIAL_ASSET</td><td>disclaimer mandatory</td><td class="ltr">/guides/3d-renders</td></tr>
+<tr><td>showroom פרויקט</td><td class="ltr">showroom_3d</td><td>P1</td><td class="risk">REQUIRES_OFFICIAL_ASSET</td><td>state-machine compliant</td><td class="ltr">/features/showroom</td></tr>
+<tr><td>3d apartment tour israel</td><td class="ltr">showroom_3d</td><td>P2</td><td class="risk">REQUIRES_OFFICIAL_ASSET</td><td>real assets</td><td class="ltr">/en/features/virtual-tours</td></tr>
+<tr><td>interactive map israel real estate</td><td class="ltr">showroom_3d</td><td>P2</td><td class="risk">REQUIRES_OFFICIAL_ASSET</td><td>verified data</td><td class="ltr">/en/map</td></tr>
+<tr><td>הונאות נדל&quot;ן</td><td class="ltr">trust_comparison</td><td>P0</td><td class="risk">LEGAL_REVIEW</td><td>attorney + police data</td><td class="ltr">/guides/real-estate-scams</td></tr>
+<tr><td>הונאת שכירות</td><td class="ltr">trust_comparison</td><td>P1</td><td class="risk">LEGAL_REVIEW</td><td>editorial</td><td class="ltr">/guides/rental-scams</td></tr>
+<tr><td>איך לבדוק קבלן</td><td class="ltr">trust_comparison</td><td>P0</td><td class="risk">LEGAL_REVIEW|OFFICIAL_SOURCE_REQUIRED</td><td>Registrar of Contractors</td><td class="ltr">/guides/vet-developer</td></tr>
+<tr><td>פנקס קבלנים</td><td class="ltr">trust_comparison</td><td>P1</td><td class="risk">OFFICIAL_SOURCE_REQUIRED</td><td>Registrar of Contractors</td><td class="ltr">/guides/contractor-registry</td></tr>
+<tr><td>איך לבדוק דירה לפני קניה</td><td class="ltr">trust_comparison</td><td>P0</td><td class="risk">LEGAL_REVIEW</td><td>attorney + inspector</td><td class="ltr">/guides/pre-purchase-checklist</td></tr>
+<tr><td>דירה עם עיקול</td><td class="ltr">trust_comparison</td><td>P1</td><td class="risk">LEGAL_REVIEW</td><td>attorney</td><td class="ltr">/guides/apartment-with-lien</td></tr>
+<tr><td>is it safe to buy property in israel</td><td class="ltr">trust_comparison</td><td>P1</td><td class="risk">LEGAL_REVIEW</td><td>attorney + editorial</td><td class="ltr">/en/guides/safety-buying-israel</td></tr>
+<tr><td>real estate scams israel</td><td class="ltr">trust_comparison</td><td>P1</td><td class="risk">LEGAL_REVIEW</td><td>attorney + editorial</td><td class="ltr">/en/guides/scams</td></tr>
+<tr><td>פרויקטים חדשים {city}</td><td class="ltr">local_programmatic</td><td>P2</td><td class="risk">REQUIRES_OFFICIAL_ASSET</td><td>developer-verified</td><td class="ltr">/projects/{city}</td></tr>
+<tr><td>מחירי דירות {city}</td><td class="ltr">local_programmatic</td><td>P2</td><td class="risk">OFFICIAL_SOURCE_REQUIRED</td><td>CBS</td><td class="ltr">/market/prices/{city}</td></tr>
+<tr><td>תשואה ממוצעת {city}</td><td class="ltr">local_programmatic</td><td>P2</td><td class="risk">OFFICIAL_SOURCE_REQUIRED</td><td>CBS + market</td><td class="ltr">/data/yields/{city}</td></tr>
+<tr><td>מתווכים {city}</td><td class="ltr">local_programmatic</td><td>P2</td><td class="risk">REQUIRES_OFFICIAL_ASSET</td><td>license verification</td><td class="ltr">/professionals/realtors/{city}</td></tr>
+<tr><td>עורך דין מקרקעין {city}</td><td class="ltr">local_programmatic</td><td>P2</td><td class="risk">REQUIRES_OFFICIAL_ASSET</td><td>bar verification</td><td class="ltr">/professionals/lawyers/{city}</td></tr>
+<tr><td>שמאי מקרקעין {city}</td><td class="ltr">local_programmatic</td><td>P3</td><td class="risk">REQUIRES_OFFICIAL_ASSET</td><td>council verification</td><td class="ltr">/professionals/appraisers/{city}</td></tr>
+<tr><td>התחדשות עירונית {city}</td><td class="ltr">local_programmatic</td><td>P2</td><td class="risk">OFFICIAL_SOURCE_REQUIRED</td><td>municipal data</td><td class="ltr">/urban-renewal/{city}</td></tr>
+<tr><td>new projects {city} israel</td><td class="ltr">local_programmatic</td><td>P3</td><td class="risk">REQUIRES_OFFICIAL_ASSET</td><td>developer-verified</td><td class="ltr">/en/projects/{city}</td></tr>
+<tr><td>real estate lawyer {city} israel</td><td class="ltr">local_programmatic</td><td>P3</td><td class="risk">REQUIRES_OFFICIAL_ASSET</td><td>bar verification</td><td class="ltr">/en/professionals/lawyers/{city}</td></tr>
+<tr><td>mortgage advisor {city} israel</td><td class="ltr">local_programmatic</td><td>P3</td><td class="risk">REQUIRES_OFFICIAL_ASSET</td><td>license</td><td class="ltr">/en/professionals/mortgage-advisors/{city}</td></tr>
+<tr><td>שוק הנדלן בישראל</td><td class="ltr">buyer_seller_core</td><td>P1</td><td class="risk">OFFICIAL_SOURCE_REQUIRED</td><td>CBS + Bank of Israel</td><td class="ltr">/market/overview</td></tr>
+<tr><td>מחירי שכירות תל אביב</td><td class="ltr">buyer_seller_core</td><td>P1</td><td class="risk">OFFICIAL_SOURCE_REQUIRED</td><td>CBS</td><td class="ltr">/market/rent-prices/tel-aviv</td></tr>
+<tr><td>מחירי שכירות ירושלים</td><td class="ltr">buyer_seller_core</td><td>P2</td><td class="risk">OFFICIAL_SOURCE_REQUIRED</td><td>CBS</td><td class="ltr">/market/rent-prices/jerusalem</td></tr>
+<tr><td>שטח דירה ברוטו נטו</td><td class="ltr">buyer_seller_core</td><td>P2</td><td class="risk">LEGAL_REVIEW</td><td>attorney + appraiser</td><td class="ltr">/guides/gross-vs-net-area</td></tr>
+<tr><td>ועד בית</td><td class="ltr">buyer_seller_core</td><td>P2</td><td class="risk">LEGAL_REVIEW</td><td>attorney</td><td class="ltr">/guides/building-committee</td></tr>
+<tr><td>ארנונה</td><td class="ltr">buyer_seller_core</td><td>P2</td><td class="risk">LEGAL_REVIEW|OFFICIAL_SOURCE_REQUIRED</td><td>municipal + attorney</td><td class="ltr">/guides/property-tax</td></tr>
+<tr><td>ביטוח דירה</td><td class="ltr">buyer_seller_core</td><td>P2</td><td class="risk">LEGAL_REVIEW</td><td>licensed insurer</td><td class="ltr">/guides/home-insurance</td></tr>
+<tr><td>משכנתא לדירה ראשונה</td><td class="ltr">tools_calculators</td><td>P0</td><td class="risk">LEGAL_REVIEW|OFFICIAL_SOURCE_REQUIRED</td><td>advisor + Bank of Israel</td><td class="ltr">/mortgage/first-home</td></tr>
+<tr><td>משכנתא לדירה שניה</td><td class="ltr">tools_calculators</td><td>P1</td><td class="risk">LEGAL_REVIEW</td><td>advisor</td><td class="ltr">/mortgage/second-home</td></tr>
+<tr><td>מסלולי משכנתא</td><td class="ltr">tools_calculators</td><td>P1</td><td class="risk">LEGAL_REVIEW</td><td>advisor</td><td class="ltr">/mortgage/tracks</td></tr>
+<tr><td>ריבית משכנתא היום</td><td class="ltr">tools_calculators</td><td>P1</td><td class="risk">OFFICIAL_SOURCE_REQUIRED</td><td>Bank of Israel daily</td><td class="ltr">/mortgage/rates-today</td></tr>
+<tr><td>מחיר למשתכן</td><td class="ltr">projects_developers</td><td>P1</td><td class="risk">OFFICIAL_SOURCE_REQUIRED|LEGAL_REVIEW</td><td>Housing Ministry</td><td class="ltr">/guides/mehir-lamishtaken</td></tr>
+<tr><td>דיור בהישג יד</td><td class="ltr">projects_developers</td><td>P2</td><td class="risk">OFFICIAL_SOURCE_REQUIRED</td><td>Housing Ministry</td><td class="ltr">/guides/affordable-housing</td></tr>
+<tr><td>הגרלות דירות</td><td class="ltr">projects_developers</td><td>P1</td><td class="risk">OFFICIAL_SOURCE_REQUIRED</td><td>Housing Ministry</td><td class="ltr">/lottery/apartments</td></tr>
+<tr><td>how to get an israeli mortgage</td><td class="ltr">intl_investor</td><td>P1</td><td class="risk">LEGAL_REVIEW</td><td>advisor</td><td class="ltr">/en/mortgage/process</td></tr>
+<tr><td>israeli property tax for foreigners</td><td class="ltr">intl_investor</td><td>P1</td><td class="risk">LEGAL_REVIEW|OFFICIAL_SOURCE_REQUIRED</td><td>attorney + CPA</td><td class="ltr">/en/tax/foreign-property-tax</td></tr>
+<tr><td>inheritance tax israel real estate</td><td class="ltr">intl_investor</td><td>P2</td><td class="risk">LEGAL_REVIEW|OFFICIAL_SOURCE_REQUIRED</td><td>attorney + CPA</td><td class="ltr">/en/tax/inheritance</td></tr>
+<tr><td>power of attorney israel real estate</td><td class="ltr">intl_investor</td><td>P2</td><td class="risk">LEGAL_REVIEW</td><td>attorney</td><td class="ltr">/en/process/power-of-attorney</td></tr>
+<tr><td>קרן ריט</td><td class="ltr">buyer_seller_core</td><td>P2</td><td class="risk">LEGAL_REVIEW</td><td>licensed advisor</td><td class="ltr">/guides/reit</td></tr>
+<tr><td>קבוצת רכישה</td><td class="ltr">projects_developers</td><td>P1</td><td class="risk">LEGAL_REVIEW</td><td>attorney</td><td class="ltr">/guides/purchase-group</td></tr>
+<tr><td>מיסוי קבוצת רכישה</td><td class="ltr">projects_developers</td><td>P2</td><td class="risk">LEGAL_REVIEW|OFFICIAL_SOURCE_REQUIRED</td><td>CPA + attorney</td><td class="ltr">/guides/purchase-group-tax</td></tr>
+<tr><td>איך לחסוך במס שבח</td><td class="ltr">tools_calculators</td><td>P1</td><td class="risk">LEGAL_REVIEW</td><td>CPA + attorney</td><td class="ltr">/guides/capital-gains-savings</td></tr>
+<tr><td>פטור ממס שבח דירה יחידה</td><td class="ltr">tools_calculators</td><td>P1</td><td class="risk">LEGAL_REVIEW|OFFICIAL_SOURCE_REQUIRED</td><td>CPA + attorney</td><td class="ltr">/guides/single-home-exemption</td></tr>
+<tr><td>היתר בניה תוספת</td><td class="ltr">urban_renewal</td><td>P2</td><td class="risk">LEGAL_REVIEW|OFFICIAL_SOURCE_REQUIRED</td><td>municipal + attorney</td><td class="ltr">/guides/extension-permit</td></tr>
+<tr><td>חריגות בניה</td><td class="ltr">urban_renewal</td><td>P2</td><td class="risk">LEGAL_REVIEW</td><td>attorney</td><td class="ltr">/guides/building-violations</td></tr>
+<tr><td>טופס 4</td><td class="ltr">urban_renewal</td><td>P1</td><td class="risk">LEGAL_REVIEW|OFFICIAL_SOURCE_REQUIRED</td><td>attorney + municipal</td><td class="ltr">/guides/form-4</td></tr>
+<tr><td>רישום בית משותף</td><td class="ltr">urban_renewal</td><td>P2</td><td class="risk">LEGAL_REVIEW|OFFICIAL_SOURCE_REQUIRED</td><td>attorney + Land Registry</td><td class="ltr">/guides/condominium-registration</td></tr>
+<tr><td>פרצלציה</td><td class="ltr">urban_renewal</td><td>P3</td><td class="risk">LEGAL_REVIEW</td><td>attorney</td><td class="ltr">/guides/parcellation</td></tr>
+<tr><td>היטל השבחה</td><td class="ltr">urban_renewal</td><td>P1</td><td class="risk">LEGAL_REVIEW|OFFICIAL_SOURCE_REQUIRED</td><td>attorney + appraiser</td><td class="ltr">/guides/betterment-levy</td></tr>
+<tr><td>דמי הסכמה</td><td class="ltr">urban_renewal</td><td>P2</td><td class="risk">LEGAL_REVIEW|OFFICIAL_SOURCE_REQUIRED</td><td>attorney</td><td class="ltr">/guides/consent-fee</td></tr>
+<tr><td>חכירה מהוונת</td><td class="ltr">urban_renewal</td><td>P2</td><td class="risk">LEGAL_REVIEW|OFFICIAL_SOURCE_REQUIRED</td><td>attorney</td><td class="ltr">/guides/capitalized-lease</td></tr>
+<tr><td>מנהל מקרקעי ישראל</td><td class="ltr">urban_renewal</td><td>P2</td><td class="risk">OFFICIAL_SOURCE_REQUIRED</td><td>ILA</td><td class="ltr">/guides/ila</td></tr>
+<tr><td>how does tama 38 work</td><td class="ltr">intl_investor</td><td>P2</td><td class="risk">LEGAL_REVIEW</td><td>attorney</td><td class="ltr">/en/urban-renewal/tama-38-how-it-works</td></tr>
+<tr><td>property management israel</td><td class="ltr">intl_investor</td><td>P2</td><td class="risk">REQUIRES_OFFICIAL_ASSET</td><td>vetting</td><td class="ltr">/en/professionals/property-management</td></tr>
+<tr><td>short term rental israel laws</td><td class="ltr">intl_investor</td><td>P2</td><td class="risk">LEGAL_REVIEW|OFFICIAL_SOURCE_REQUIRED</td><td>attorney</td><td class="ltr">/en/legal/short-term-rentals</td></tr>
+<tr><td>airbnb tel aviv regulations</td><td class="ltr">intl_investor</td><td>P2</td><td class="risk">LEGAL_REVIEW|OFFICIAL_SOURCE_REQUIRED</td><td>attorney + municipal</td><td class="ltr">/en/legal/airbnb-tel-aviv</td></tr>
+<tr><td>real estate agents tel aviv english speaking</td><td class="ltr">intl_investor</td><td>P1</td><td class="risk">REQUIRES_OFFICIAL_ASSET</td><td>license verification</td><td class="ltr">/en/professionals/realtors/tel-aviv</td></tr>
+<tr><td>how to get a mashkanta</td><td class="ltr">intl_investor</td><td>P2</td><td class="risk">LEGAL_REVIEW</td><td>advisor</td><td class="ltr">/en/mortgage/mashkanta-explained</td></tr>
+<tr><td>arnona tel aviv</td><td class="ltr">intl_investor</td><td>P2</td><td class="risk">OFFICIAL_SOURCE_REQUIRED</td><td>municipal</td><td class="ltr">/en/ownership/arnona-tel-aviv</td></tr>
+<tr><td>cost of living tel aviv</td><td class="ltr">intl_investor</td><td>P2</td><td class="risk">OFFICIAL_SOURCE_REQUIRED</td><td>CBS + survey</td><td class="ltr">/en/lifestyle/cost-of-living-tel-aviv</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section>
+      <h2>ראיות מהאתר החי שצריכות להשפיע על הבנייה</h2>
+      <p>הבדיקה הוויזואלית של האתר החי מראה שכבר יש בסיס אמיתי: עמודי פרויקט, קטלוג פרויקטים, אנשי מקצוע, אומדן שווי וסייטמאפ. אבל צריך להפוך את זה ממראה של אתר תוכן/כרטיסים למערכת נדל"ן צפופה, אמינה, ניתנת להשוואה ומבוססת פעולה.</p>
+      <div class="screens">
+        <figure><img src="nadlan-report2-rtl-assets/home-desktop.png" alt="עמוד הבית הנוכחי - יש בסיס מותגי, אבל צריך להפוך לחוויית פורטל שימושית וצפופה יותר."><figcaption>עמוד הבית הנוכחי - יש בסיס מותגי, אבל צריך להפוך לחוויית פורטל שימושית וצפופה יותר.</figcaption></figure>
+<figure><img src="nadlan-report2-rtl-assets/projects-desktop.png" alt="קטלוג פרויקטים - צריך מעבר מכרטיסים מעוצבים למערכת חיפוש, סינון והשוואה."><figcaption>קטלוג פרויקטים - צריך מעבר מכרטיסים מעוצבים למערכת חיפוש, סינון והשוואה.</figcaption></figure>
+<figure><img src="nadlan-report2-rtl-assets/professionals-mobile.png" alt="אנשי מקצוע במובייל - צריך אינדקס החלטה עם אמון, רישיונות והשוואה."><figcaption>אנשי מקצוע במובייל - צריך אינדקס החלטה עם אמון, רישיונות והשוואה.</figcaption></figure>
+<figure><img src="nadlan-report2-rtl-assets/dimri-yama-mobile.png" alt="עמוד פרויקט במובייל - צריך מצב תצוגה ברור לנכסים רשמיים/קונספט/חסר."><figcaption>עמוד פרויקט במובייל - צריך מצב תצוגה ברור לנכסים רשמיים/קונספט/חסר.</figcaption></figure>
+<figure><img src="nadlan-report2-rtl-assets/estimator-desktop.png" alt="אומדן שווי - צריך מתודולוגיה, מקורות, טווח ביטחון והבהרה משפטית."><figcaption>אומדן שווי - צריך מתודולוגיה, מקורות, טווח ביטחון והבהרה משפטית.</figcaption></figure>
+      </div>
+    </section>
+
+    <section>
+      <h2>מנגנון אי-קניבליזציה המיידי</h2>
+      <ol>
+        <li><strong>01_Master הוא התנ"ך:</strong> שום כתיבה או עמוד חדש לא מתחילים בלי שורה קיימת או שורה חדשה מאושרת בטאב המקור.</li>
+        <li><strong>לכל מילת מפתח יש URL קנוני אחד:</strong> אם יש עמוד כסף, כל מדריך תומך מקשר אליו ולא מתחרה בו.</li>
+        <li><strong>עמודי כסף קודמים למאמרים:</strong> עיר, שכונה, פרויקט, איש מקצוע, מחשבון וכלי החלטה מקבלים בעלות ברורה לפני תוכן בלוג.</li>
+        <li><strong>תוכן תומך מקבל תפקיד:</strong> מדריך, FAQ, השוואה או מסמך אמון. אין “עוד מאמר” בלי תפקיד במבנה.</li>
+        <li><strong>סטטוס מוכנות:</strong> backlog, drafting, review, legal, ready, published, holding. לא מפרסמים כשהסטטוס אינו ready/published.</li>
+      </ol>
+    </section>
+
+    <section>
+      <h2>טבלת המאסטר המלאה</h2>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th class="ltr">keyword</th><th class="ltr">language</th><th class="ltr">cluster</th><th class="ltr">subcluster</th><th class="ltr">audience</th><th class="ltr">country_market</th><th class="ltr">intent</th><th class="ltr">funnel_stage</th><th class="ltr">priority</th><th class="ltr">recommended_page_type</th><th class="ltr">suggested_slug</th><th class="ltr">primary_kpi</th><th class="ltr">content_angle</th><th class="ltr">trust_requirement</th><th class="ltr">verification_flag</th><th class="ltr">notes</th></tr></thead>
+          <tbody>
+            <tr><td class=" ">דירות למכירה</td><td class="ltr ">he</td><td class="ltr ">buyer_seller_core</td><td class="ltr ">buy_general</td><td class=" ">buyer</td><td class="ltr ">IL</td><td class="ltr ">transactional</td><td class="ltr ">decision</td><td class="ltr ">P1</td><td class="ltr ">hub</td><td class="ltr ">/buy</td><td class="ltr ">organic_sessions</td><td class=" ">national buy hub linking to city hubs</td><td class=" ">real listings or honest empty-state</td><td class="ltr ">NEEDS_VERIFICATION</td><td class=" ">Yad2 territory; do not launch without supply</td></tr>
+<tr><td class=" ">דירות למכירה תל אביב</td><td class="ltr ">he</td><td class="ltr ">buyer_seller_core</td><td class="ltr ">buy_city</td><td class=" ">buyer</td><td class="ltr ">IL</td><td class="ltr ">transactional</td><td class="ltr ">decision</td><td class="ltr ">P1</td><td class="ltr ">city_hub</td><td class="ltr ">/buy/tel-aviv</td><td class="ltr ">organic_sessions</td><td class=" ">Tel Aviv buy hub with neighborhoods</td><td class=" ">real supply</td><td class="ltr ">NEEDS_VERIFICATION</td><td class=" "></td></tr>
+<tr><td class=" ">דירות למכירה רמת גן</td><td class="ltr ">he</td><td class="ltr ">buyer_seller_core</td><td class="ltr ">buy_city</td><td class=" ">buyer</td><td class="ltr ">IL</td><td class="ltr ">transactional</td><td class="ltr ">decision</td><td class="ltr ">P1</td><td class="ltr ">city_hub</td><td class="ltr ">/buy/ramat-gan</td><td class="ltr ">organic_sessions</td><td class=" "></td><td class=" ">real supply</td><td class="ltr ">NEEDS_VERIFICATION</td><td class=" "></td></tr>
+<tr><td class=" ">דירות למכירה ירושלים</td><td class="ltr ">he</td><td class="ltr ">buyer_seller_core</td><td class="ltr ">buy_city</td><td class=" ">buyer</td><td class="ltr ">IL</td><td class="ltr ">transactional</td><td class="ltr ">decision</td><td class="ltr ">P1</td><td class="ltr ">city_hub</td><td class="ltr ">/buy/jerusalem</td><td class="ltr ">organic_sessions</td><td class=" "></td><td class=" ">real supply</td><td class="ltr ">NEEDS_VERIFICATION</td><td class=" "></td></tr>
+<tr><td class=" ">דירות למכירה חיפה</td><td class="ltr ">he</td><td class="ltr ">buyer_seller_core</td><td class="ltr ">buy_city</td><td class=" ">buyer</td><td class="ltr ">IL</td><td class="ltr ">transactional</td><td class="ltr ">decision</td><td class="ltr ">P1</td><td class="ltr ">city_hub</td><td class="ltr ">/buy/haifa</td><td class="ltr ">organic_sessions</td><td class=" "></td><td class=" ">real supply</td><td class="ltr ">NEEDS_VERIFICATION</td><td class=" "></td></tr>
+<tr><td class=" ">דירות למכירה הרצליה</td><td class="ltr ">he</td><td class="ltr ">buyer_seller_core</td><td class="ltr ">buy_city</td><td class=" ">buyer</td><td class="ltr ">IL</td><td class="ltr ">transactional</td><td class="ltr ">decision</td><td class="ltr ">P1</td><td class="ltr ">city_hub</td><td class="ltr ">/buy/herzliya</td><td class="ltr ">organic_sessions</td><td class=" "></td><td class=" ">real supply</td><td class="ltr ">NEEDS_VERIFICATION</td><td class=" "></td></tr>
+<tr><td class=" ">דירות למכירה רעננה</td><td class="ltr ">he</td><td class="ltr ">buyer_seller_core</td><td class="ltr ">buy_city</td><td class=" ">buyer</td><td class="ltr ">IL</td><td class="ltr ">transactional</td><td class="ltr ">decision</td><td class="ltr ">P2</td><td class="ltr ">city_hub</td><td class="ltr ">/buy/raanana</td><td class="ltr ">organic_sessions</td><td class=" "></td><td class=" ">real supply</td><td class="ltr ">NEEDS_VERIFICATION</td><td class=" "></td></tr>
+<tr><td class=" ">דירות למכירה כפר סבא</td><td class="ltr ">he</td><td class="ltr ">buyer_seller_core</td><td class="ltr ">buy_city</td><td class=" ">buyer</td><td class="ltr ">IL</td><td class="ltr ">transactional</td><td class="ltr ">decision</td><td class="ltr ">P2</td><td class="ltr ">city_hub</td><td class="ltr ">/buy/kfar-saba</td><td class="ltr ">organic_sessions</td><td class=" "></td><td class=" ">real supply</td><td class="ltr ">NEEDS_VERIFICATION</td><td class=" "></td></tr>
+<tr><td class=" ">דירות למכירה פתח תקווה</td><td class="ltr ">he</td><td class="ltr ">buyer_seller_core</td><td class="ltr ">buy_city</td><td class=" ">buyer</td><td class="ltr ">IL</td><td class="ltr ">transactional</td><td class="ltr ">decision</td><td class="ltr ">P2</td><td class="ltr ">city_hub</td><td class="ltr ">/buy/petah-tikva</td><td class="ltr ">organic_sessions</td><td class=" "></td><td class=" ">real supply</td><td class="ltr ">NEEDS_VERIFICATION</td><td class=" "></td></tr>
+<tr><td class=" ">דירות למכירה ראשון לציון</td><td class="ltr ">he</td><td class="ltr ">buyer_seller_core</td><td class="ltr ">buy_city</td><td class=" ">buyer</td><td class="ltr ">IL</td><td class="ltr ">transactional</td><td class="ltr ">decision</td><td class="ltr ">P2</td><td class="ltr ">city_hub</td><td class="ltr ">/buy/rishon-lezion</td><td class="ltr ">organic_sessions</td><td class=" "></td><td class=" ">real supply</td><td class="ltr ">NEEDS_VERIFICATION</td><td class=" "></td></tr>
+<tr><td class=" ">דירות למכירה נתניה</td><td class="ltr ">he</td><td class="ltr ">buyer_seller_core</td><td class="ltr ">buy_city</td><td class=" ">buyer</td><td class="ltr ">IL</td><td class="ltr ">transactional</td><td class="ltr ">decision</td><td class="ltr ">P2</td><td class="ltr ">city_hub</td><td class="ltr ">/buy/netanya</td><td class="ltr ">organic_sessions</td><td class=" "></td><td class=" ">real supply</td><td class="ltr ">NEEDS_VERIFICATION</td><td class=" "></td></tr>
+<tr><td class=" ">דירות למכירה באר שבע</td><td class="ltr ">he</td><td class="ltr ">buyer_seller_core</td><td class="ltr ">buy_city</td><td class=" ">buyer</td><td class="ltr ">IL</td><td class="ltr ">transactional</td><td class="ltr ">decision</td><td class="ltr ">P2</td><td class="ltr ">city_hub</td><td class="ltr ">/buy/beer-sheva</td><td class="ltr ">organic_sessions</td><td class=" "></td><td class=" ">real supply</td><td class="ltr ">NEEDS_VERIFICATION</td><td class=" "></td></tr>
+<tr><td class=" ">דירות למכירה אשדוד</td><td class="ltr ">he</td><td class="ltr ">buyer_seller_core</td><td class="ltr ">buy_city</td><td class=" ">buyer</td><td class="ltr ">IL</td><td class="ltr ">transactional</td><td class="ltr ">decision</td><td class="ltr ">P2</td><td class="ltr ">city_hub</td><td class="ltr ">/buy/ashdod</td><td class="ltr ">organic_sessions</td><td class=" "></td><td class=" ">real supply</td><td class="ltr ">NEEDS_VERIFICATION</td><td class=" "></td></tr>
+<tr><td class=" ">דירות להשכרה</td><td class="ltr ">he</td><td class="ltr ">buyer_seller_core</td><td class="ltr ">rent_general</td><td class=" ">renter</td><td class="ltr ">IL</td><td class="ltr ">transactional</td><td class="ltr ">decision</td><td class="ltr ">P1</td><td class="ltr ">hub</td><td class="ltr ">/rent</td><td class="ltr ">organic_sessions</td><td class=" "></td><td class=" ">real supply</td><td class="ltr ">NEEDS_VERIFICATION</td><td class=" "></td></tr>
+<tr><td class=" ">דירות להשכרה תל אביב</td><td class="ltr ">he</td><td class="ltr ">buyer_seller_core</td><td class="ltr ">rent_city</td><td class=" ">renter</td><td class="ltr ">IL</td><td class="ltr ">transactional</td><td class="ltr ">decision</td><td class="ltr ">P1</td><td class="ltr ">city_hub</td><td class="ltr ">/rent/tel-aviv</td><td class="ltr ">organic_sessions</td><td class=" "></td><td class=" ">real supply</td><td class="ltr ">NEEDS_VERIFICATION</td><td class=" "></td></tr>
+<tr><td class=" ">דירות להשכרה רמת גן</td><td class="ltr ">he</td><td class="ltr ">buyer_seller_core</td><td class="ltr ">rent_city</td><td class=" ">renter</td><td class="ltr ">IL</td><td class="ltr ">transactional</td><td class="ltr ">decision</td><td class="ltr ">P2</td><td class="ltr ">city_hub</td><td class="ltr ">/rent/ramat-gan</td><td class="ltr ">organic_sessions</td><td class=" "></td><td class=" ">real supply</td><td class="ltr ">NEEDS_VERIFICATION</td><td class=" "></td></tr>
+<tr><td class=" ">דירות להשכרה ירושלים</td><td class="ltr ">he</td><td class="ltr ">buyer_seller_core</td><td class="ltr ">rent_city</td><td class=" ">renter</td><td class="ltr ">IL</td><td class="ltr ">transactional</td><td class="ltr ">decision</td><td class="ltr ">P2</td><td class="ltr ">city_hub</td><td class="ltr ">/rent/jerusalem</td><td class="ltr ">organic_sessions</td><td class=" "></td><td class=" ">real supply</td><td class="ltr ">NEEDS_VERIFICATION</td><td class=" "></td></tr>
+<tr><td class=" ">דירות להשכרה חיפה</td><td class="ltr ">he</td><td class="ltr ">buyer_seller_core</td><td class="ltr ">rent_city</td><td class=" ">renter</td><td class="ltr ">IL</td><td class="ltr ">transactional</td><td class="ltr ">decision</td><td class="ltr ">P2</td><td class="ltr ">city_hub</td><td class="ltr ">/rent/haifa</td><td class="ltr ">organic_sessions</td><td class=" "></td><td class=" ">real supply</td><td class="ltr ">NEEDS_VERIFICATION</td><td class=" "></td></tr>
+<tr><td class=" ">דירות מציאה</td><td class="ltr ">he</td><td class="ltr ">buyer_seller_core</td><td class="ltr ">deal_finder</td><td class=" ">buyer</td><td class="ltr ">IL</td><td class="ltr ">commercial</td><td class="ltr ">consideration</td><td class="ltr ">P2</td><td class="ltr ">feature</td><td class="ltr ">/deals</td><td class="ltr ">signups</td><td class=" ">smart-filter deals page</td><td class=" ">real supply</td><td class="ltr ">NEEDS_VERIFICATION</td><td class=" "></td></tr>
+<tr><td class=" ">דירות מתחת למחיר שוק</td><td class="ltr ">he</td><td class="ltr ">buyer_seller_core</td><td class="ltr ">deal_finder</td><td class=" ">buyer</td><td class="ltr ">IL</td><td class="ltr ">commercial</td><td class="ltr ">consideration</td><td class="ltr ">P2</td><td class="ltr ">feature</td><td class="ltr ">/below-market</td><td class="ltr ">signups</td><td class=" ">requires estimator integration</td><td class=" ">real supply + valid estimator</td><td class="ltr ">NEEDS_VERIFICATION</td><td class=" "></td></tr>
+<tr><td class=" ">איך למכור דירה</td><td class="ltr ">he</td><td class="ltr ">buyer_seller_core</td><td class="ltr ">seller_guide</td><td class=" ">seller</td><td class="ltr ">IL</td><td class="ltr ">informational</td><td class="ltr ">awareness</td><td class="ltr ">P1</td><td class="ltr ">guide</td><td class="ltr ">/sell/how-to-sell-apartment</td><td class="ltr ">organic_sessions</td><td class=" ">end-to-end seller playbook</td><td class=" ">reviewed by licensed agent</td><td class="ltr ">NEEDS_VERIFICATION|LEGAL_REVIEW</td><td class=" "></td></tr>
+<tr><td class=" ">מחיר דירה ממוצע</td><td class="ltr ">he</td><td class="ltr ">buyer_seller_core</td><td class="ltr ">market_data</td><td class=" ">buyer</td><td class="ltr ">IL</td><td class="ltr ">informational</td><td class="ltr ">awareness</td><td class="ltr ">P1</td><td class="ltr ">data_page</td><td class="ltr ">/market/average-prices</td><td class="ltr ">organic_sessions</td><td class=" "></td><td class=" ">CBS / official data</td><td class="ltr ">OFFICIAL_SOURCE_REQUIRED</td><td class=" "></td></tr>
+<tr><td class=" ">מחירי דירות 2026</td><td class="ltr ">he</td><td class="ltr ">buyer_seller_core</td><td class="ltr ">market_data</td><td class=" ">buyer</td><td class="ltr ">IL</td><td class="ltr ">informational</td><td class="ltr ">awareness</td><td class="ltr ">P1</td><td class="ltr ">report</td><td class="ltr ">/market/prices-2026</td><td class="ltr ">organic_sessions</td><td class=" "></td><td class=" ">CBS / official data</td><td class="ltr ">OFFICIAL_SOURCE_REQUIRED</td><td class=" "></td></tr>
+<tr><td class=" ">מדד מחירי דירות</td><td class="ltr ">he</td><td class="ltr ">buyer_seller_core</td><td class="ltr ">market_data</td><td class=" ">buyer</td><td class="ltr ">IL</td><td class="ltr ">informational</td><td class="ltr ">awareness</td><td class="ltr ">P2</td><td class="ltr ">data_page</td><td class="ltr ">/market/price-index</td><td class="ltr ">organic_sessions</td><td class=" "></td><td class=" ">CBS</td><td class="ltr ">OFFICIAL_SOURCE_REQUIRED</td><td class=" "></td></tr>
+<tr><td class=" ">שמאות דירה</td><td class="ltr ">he</td><td class="ltr ">buyer_seller_core</td><td class="ltr ">valuation</td><td class=" ">seller</td><td class="ltr ">IL</td><td class="ltr ">commercial</td><td class="ltr ">consideration</td><td class="ltr ">P1</td><td class="ltr ">tool_landing</td><td class="ltr ">/valuation</td><td class="ltr ">tool_starts</td><td class=" ">routes into estimator</td><td class=" ">licensed appraiser disclaimer</td><td class="ltr ">LEGAL_REVIEW</td><td class=" "></td></tr>
+<tr><td class=" ">כמה שווה הדירה שלי</td><td class="ltr ">he</td><td class="ltr ">buyer_seller_core</td><td class="ltr ">valuation</td><td class=" ">seller</td><td class="ltr ">IL</td><td class="ltr ">commercial</td><td class="ltr ">decision</td><td class="ltr p0">P0</td><td class="ltr ">tool</td><td class="ltr ">/property-value-estimator</td><td class="ltr ">tool_completions</td><td class=" ">seller-facing estimator</td><td class=" ">methodology + disclaimer</td><td class="ltr ">LEGAL_REVIEW|NEEDS_VERIFICATION</td><td class=" ">Existing URL — fix per Report 1 first</td></tr>
+<tr><td class=" ">חוזה שכירות לדוגמא</td><td class="ltr ">he</td><td class="ltr ">buyer_seller_core</td><td class="ltr ">seller_guide</td><td class=" ">renter</td><td class="ltr ">IL</td><td class="ltr ">informational</td><td class="ltr ">consideration</td><td class="ltr ">P1</td><td class="ltr ">template</td><td class="ltr ">/rent/lease-template</td><td class="ltr ">downloads</td><td class=" ">downloadable template</td><td class=" ">attorney-reviewed template</td><td class="ltr ">LEGAL_REVIEW</td><td class=" "></td></tr>
+<tr><td class=" ">זיכרון דברים דירה</td><td class="ltr ">he</td><td class="ltr ">buyer_seller_core</td><td class="ltr ">seller_guide</td><td class=" ">buyer</td><td class="ltr ">IL</td><td class="ltr ">informational</td><td class="ltr ">consideration</td><td class="ltr ">P1</td><td class="ltr ">guide</td><td class="ltr ">/buy/memorandum-of-understanding</td><td class="ltr ">organic_sessions</td><td class=" "></td><td class=" ">attorney-reviewed</td><td class="ltr ">LEGAL_REVIEW</td><td class=" "></td></tr>
+<tr><td class=" ">ביטול עסקת דירה</td><td class="ltr ">he</td><td class="ltr ">buyer_seller_core</td><td class="ltr ">seller_guide</td><td class=" ">buyer</td><td class="ltr ">IL</td><td class="ltr ">informational</td><td class="ltr ">decision</td><td class="ltr ">P2</td><td class="ltr ">guide</td><td class="ltr ">/buy/cancel-contract</td><td class="ltr ">organic_sessions</td><td class=" "></td><td class=" ">attorney-reviewed</td><td class="ltr ">LEGAL_REVIEW</td><td class=" "></td></tr>
+<tr><td class=" ">זכויות קונה דירה מקבלן</td><td class="ltr ">he</td><td class="ltr ">buyer_seller_core</td><td class="ltr ">buyer_rights</td><td class=" ">buyer</td><td class="ltr ">IL</td><td class="ltr ">informational</td><td class="ltr ">consideration</td><td class="ltr ">P1</td><td class="ltr ">guide</td><td class="ltr ">/buy/rights-from-developer</td><td class="ltr ">organic_sessions</td><td class=" ">חוק המכר דירות</td><td class=" ">attorney-reviewed</td><td class="ltr ">LEGAL_REVIEW</td><td class=" "></td></tr>
+<tr><td class=" ">פרויקטים חדשים</td><td class="ltr ">he</td><td class="ltr ">projects_developers</td><td class="ltr ">new_projects_general</td><td class=" ">buyer</td><td class="ltr ">IL</td><td class="ltr ">commercial</td><td class="ltr ">consideration</td><td class="ltr p0">P0</td><td class="ltr ">hub</td><td class="ltr ">/projects</td><td class="ltr ">organic_sessions</td><td class=" ">national new-projects hub</td><td class=" ">developer-verified data</td><td class="ltr ">REQUIRES_OFFICIAL_ASSET</td><td class=" "></td></tr>
+<tr><td class=" ">פרויקטים חדשים תל אביב</td><td class="ltr ">he</td><td class="ltr ">projects_developers</td><td class="ltr ">new_projects_city</td><td class=" ">buyer</td><td class="ltr ">IL</td><td class="ltr ">commercial</td><td class="ltr ">consideration</td><td class="ltr p0">P0</td><td class="ltr ">city_hub</td><td class="ltr ">/projects/tel-aviv</td><td class="ltr ">organic_sessions</td><td class=" "></td><td class=" ">developer-verified</td><td class="ltr ">REQUIRES_OFFICIAL_ASSET</td><td class=" "></td></tr>
+<tr><td class=" ">פרויקטים חדשים שדה דב</td><td class="ltr ">he</td><td class="ltr ">projects_developers</td><td class="ltr ">new_projects_neighborhood</td><td class=" ">buyer</td><td class="ltr ">IL</td><td class="ltr ">commercial</td><td class="ltr ">decision</td><td class="ltr p0">P0</td><td class="ltr ">area_hub</td><td class="ltr ">/projects/sde-dov</td><td class="ltr ">organic_sessions</td><td class=" ">Sde Dov master area</td><td class=" ">official municipal + developer</td><td class="ltr ">REQUIRES_OFFICIAL_ASSET|OFFICIAL_SOURCE_REQUIRED</td><td class=" "></td></tr>
+<tr><td class=" ">פרויקטים חדשים רמת גן</td><td class="ltr ">he</td><td class="ltr ">projects_developers</td><td class="ltr ">new_projects_city</td><td class=" ">buyer</td><td class="ltr ">IL</td><td class="ltr ">commercial</td><td class="ltr ">consideration</td><td class="ltr ">P1</td><td class="ltr ">city_hub</td><td class="ltr ">/projects/ramat-gan</td><td class="ltr ">organic_sessions</td><td class=" "></td><td class=" ">developer-verified</td><td class="ltr ">REQUIRES_OFFICIAL_ASSET</td><td class=" "></td></tr>
+<tr><td class=" ">פרויקטים חדשים ירושלים</td><td class="ltr ">he</td><td class="ltr ">projects_developers</td><td class="ltr ">new_projects_city</td><td class=" ">buyer</td><td class="ltr ">IL</td><td class="ltr ">commercial</td><td class="ltr ">consideration</td><td class="ltr ">P1</td><td class="ltr ">city_hub</td><td class="ltr ">/projects/jerusalem</td><td class="ltr ">organic_sessions</td><td class=" "></td><td class=" ">developer-verified</td><td class="ltr ">REQUIRES_OFFICIAL_ASSET</td><td class=" "></td></tr>
+<tr><td class=" ">פרויקטים חדשים חיפה</td><td class="ltr ">he</td><td class="ltr ">projects_developers</td><td class="ltr ">new_projects_city</td><td class=" ">buyer</td><td class="ltr ">IL</td><td class="ltr ">commercial</td><td class="ltr ">consideration</td><td class="ltr ">P1</td><td class="ltr ">city_hub</td><td class="ltr ">/projects/haifa</td><td class="ltr ">organic_sessions</td><td class=" "></td><td class=" ">developer-verified</td><td class="ltr ">REQUIRES_OFFICIAL_ASSET</td><td class=" "></td></tr>
+<tr><td class=" ">פרויקטים חדשים נתניה</td><td class="ltr ">he</td><td class="ltr ">projects_developers</td><td class="ltr ">new_projects_city</td><td class=" ">buyer</td><td class="ltr ">IL</td><td class="ltr ">commercial</td><td class="ltr ">consideration</td><td class="ltr ">P1</td><td class="ltr ">city_hub</td><td class="ltr ">/projects/netanya</td><td class="ltr ">organic_sessions</td><td class=" "></td><td class=" ">developer-verified</td><td class="ltr ">REQUIRES_OFFICIAL_ASSET</td><td class=" "></td></tr>
+<tr><td class=" ">פרויקטים חדשים הרצליה</td><td class="ltr ">he</td><td class="ltr ">projects_developers</td><td class="ltr ">new_projects_city</td><td class=" ">buyer</td><td class="ltr ">IL</td><td class="ltr ">commercial</td><td class="ltr ">consideration</td><td class="ltr ">P1</td><td class="ltr ">city_hub</td><td class="ltr ">/projects/herzliya</td><td class="ltr ">organic_sessions</td><td class=" "></td><td class=" ">developer-verified</td><td class="ltr ">REQUIRES_OFFICIAL_ASSET</td><td class=" "></td></tr>
+<tr><td class=" ">דירות מקבלן</td><td class="ltr ">he</td><td class="ltr ">projects_developers</td><td class="ltr ">from_developer</td><td class=" ">buyer</td><td class="ltr ">IL</td><td class="ltr ">commercial</td><td class="ltr ">decision</td><td class="ltr ">P1</td><td class="ltr ">hub</td><td class="ltr ">/from-developer</td><td class="ltr ">organic_sessions</td><td class=" "></td><td class=" ">developer-verified</td><td class="ltr ">REQUIRES_OFFICIAL_ASSET</td><td class=" "></td></tr>
+<tr><td class=" ">דירה מקבלן או יד שניה</td><td class="ltr ">he</td><td class="ltr ">projects_developers</td><td class="ltr ">from_developer</td><td class=" ">buyer</td><td class="ltr ">IL</td><td class="ltr ">comparison</td><td class="ltr ">consideration</td><td class="ltr ">P1</td><td class="ltr ">guide</td><td class="ltr ">/from-developer/vs-second-hand</td><td class="ltr ">organic_sessions</td><td class=" "></td><td class=" ">balanced editorial</td><td class="ltr ">NEEDS_VERIFICATION</td><td class=" "></td></tr>
+<tr><td class=" ">דירות על הנייר</td><td class="ltr ">he</td><td class="ltr ">projects_developers</td><td class="ltr ">pre_sale</td><td class=" ">buyer</td><td class="ltr ">IL</td><td class="ltr ">commercial</td><td class="ltr ">consideration</td><td class="ltr ">P1</td><td class="ltr ">guide</td><td class="ltr ">/pre-sale</td><td class="ltr ">organic_sessions</td><td class=" "></td><td class=" ">attorney-reviewed</td><td class="ltr ">LEGAL_REVIEW</td><td class=" "></td></tr>
+<tr><td class=" ">פרויקט דמרי שדה דב</td><td class="ltr ">he</td><td class="ltr ">projects_developers</td><td class="ltr ">project_specific</td><td class=" ">buyer</td><td class="ltr ">IL</td><td class="ltr ">navigational</td><td class="ltr ">decision</td><td class="ltr p0">P0</td><td class="ltr ">project_page</td><td class="ltr ">/projects/dimri-yama-sde-dov</td><td class="ltr ">leads</td><td class=" ">Dimri Yama Sde Dov</td><td class=" ">official developer data</td><td class="ltr ">REQUIRES_OFFICIAL_ASSET</td><td class=" ">Existing URL</td></tr>
+<tr><td class=" ">פרויקט רינבו תל אביב</td><td class="ltr ">he</td><td class="ltr ">projects_developers</td><td class="ltr ">project_specific</td><td class=" ">buyer</td><td class="ltr ">IL</td><td class="ltr ">navigational</td><td class="ltr ">decision</td><td class="ltr p0">P0</td><td class="ltr ">project_page</td><td class="ltr ">/projects/rainbow-tel-aviv</td><td class="ltr ">leads</td><td class=" ">Rainbow Tel Aviv</td><td class=" ">official developer data</td><td class="ltr ">REQUIRES_OFFICIAL_ASSET</td><td class=" ">Existing URL</td></tr>
+<tr><td class=" ">חברות בניה בישראל</td><td class="ltr ">he</td><td class="ltr ">projects_developers</td><td class="ltr ">developers</td><td class=" ">buyer</td><td class="ltr ">IL</td><td class="ltr ">informational</td><td class="ltr ">consideration</td><td class="ltr ">P2</td><td class="ltr ">directory</td><td class="ltr ">/developers</td><td class="ltr ">organic_sessions</td><td class=" ">verified developer directory</td><td class=" ">company registry</td><td class="ltr ">OFFICIAL_SOURCE_REQUIRED</td><td class=" "></td></tr>
+<tr><td class=" ">דירוג חברות בניה</td><td class="ltr ">he</td><td class="ltr ">projects_developers</td><td class="ltr ">developers</td><td class=" ">buyer</td><td class="ltr ">IL</td><td class="ltr ">comparison</td><td class="ltr ">consideration</td><td class="ltr ">P2</td><td class="ltr ">report</td><td class="ltr ">/developers/ranking</td><td class="ltr ">organic_sessions</td><td class=" "></td><td class=" ">methodology + data</td><td class="ltr ">OFFICIAL_SOURCE_REQUIRED|LEGAL_REVIEW</td><td class=" "></td></tr>
+<tr><td class=" ">חברת דמרי</td><td class="ltr ">he</td><td class="ltr ">projects_developers</td><td class="ltr ">developers</td><td class=" ">buyer</td><td class="ltr ">IL</td><td class="ltr ">navigational</td><td class="ltr ">consideration</td><td class="ltr ">P1</td><td class="ltr ">developer_page</td><td class="ltr ">/developers/dimri</td><td class="ltr ">organic_sessions</td><td class=" ">Dimri profile</td><td class=" ">official + public filings</td><td class="ltr ">OFFICIAL_SOURCE_REQUIRED</td><td class=" "></td></tr>
+<tr><td class=" ">מחירון דירות חדשות</td><td class="ltr ">he</td><td class="ltr ">projects_developers</td><td class="ltr ">price_list</td><td class=" ">buyer</td><td class="ltr ">IL</td><td class="ltr ">commercial</td><td class="ltr ">decision</td><td class="ltr ">P1</td><td class="ltr ">data_page</td><td class="ltr ">/projects/price-list</td><td class="ltr ">organic_sessions</td><td class=" "></td><td class=" ">developer pricing</td><td class="ltr ">REQUIRES_OFFICIAL_ASSET</td><td class=" "></td></tr>
+<tr><td class=" ">buying property in israel</td><td class="ltr ">en</td><td class="ltr ">intl_investor</td><td class="ltr ">intl_overview</td><td class=" ">investor</td><td class="ltr ">INTL</td><td class="ltr ">informational</td><td class="ltr ">awareness</td><td class="ltr p0">P0</td><td class="ltr ">guide</td><td class="ltr ">/en/buy-property-israel</td><td class="ltr ">organic_sessions</td><td class=" ">top-of-funnel intl pillar</td><td class=" ">attorney-reviewed</td><td class="ltr ">LEGAL_REVIEW</td><td class=" "></td></tr>
+<tr><td class=" ">real estate israel</td><td class="ltr ">en</td><td class="ltr ">intl_investor</td><td class="ltr ">intl_overview</td><td class=" ">investor</td><td class="ltr ">INTL</td><td class="ltr ">informational</td><td class="ltr ">awareness</td><td class="ltr p0">P0</td><td class="ltr ">hub</td><td class="ltr ">/en</td><td class="ltr ">organic_sessions</td><td class=" ">EN homepage</td><td class=" ">EN site stub required</td><td class="ltr ">NEEDS_VERIFICATION</td><td class=" "></td></tr>
+<tr><td class=" ">tel aviv apartments for sale</td><td class="ltr ">en</td><td class="ltr ">intl_investor</td><td class="ltr ">intl_city</td><td class=" ">investor</td><td class="ltr ">INTL</td><td class="ltr ">commercial</td><td class="ltr ">decision</td><td class="ltr p0">P0</td><td class="ltr ">city_hub</td><td class="ltr ">/en/buy/tel-aviv</td><td class="ltr ">leads</td><td class=" ">Tel Aviv intl buy hub</td><td class=" ">real supply</td><td class="ltr ">NEEDS_VERIFICATION</td><td class=" "></td></tr>
+<tr><td class=" ">jerusalem apartments for sale</td><td class="ltr ">en</td><td class="ltr ">intl_investor</td><td class="ltr ">intl_city</td><td class=" ">investor</td><td class="ltr ">INTL</td><td class="ltr ">commercial</td><td class="ltr ">decision</td><td class="ltr ">P1</td><td class="ltr ">city_hub</td><td class="ltr ">/en/buy/jerusalem</td><td class="ltr ">leads</td><td class=" "></td><td class=" ">real supply</td><td class="ltr ">NEEDS_VERIFICATION</td><td class=" "></td></tr>
+<tr><td class=" ">herzliya pituach real estate</td><td class="ltr ">en</td><td class="ltr ">intl_investor</td><td class="ltr ">intl_city</td><td class=" ">investor</td><td class="ltr ">INTL</td><td class="ltr ">commercial</td><td class="ltr ">decision</td><td class="ltr ">P1</td><td class="ltr ">city_hub</td><td class="ltr ">/en/buy/herzliya-pituach</td><td class="ltr ">leads</td><td class=" ">Anglo-friendly neighborhood</td><td class=" ">real supply</td><td class="ltr ">NEEDS_VERIFICATION</td><td class=" "></td></tr>
+<tr><td class=" ">netanya apartments english speakers</td><td class="ltr ">en</td><td class="ltr ">intl_investor</td><td class="ltr ">intl_city</td><td class=" ">investor</td><td class="ltr ">INTL</td><td class="ltr ">commercial</td><td class="ltr ">decision</td><td class="ltr ">P1</td><td class="ltr ">city_hub</td><td class="ltr ">/en/buy/netanya</td><td class="ltr ">leads</td><td class=" "></td><td class=" ">real supply</td><td class="ltr ">NEEDS_VERIFICATION</td><td class=" "></td></tr>
+<tr><td class=" ">raanana real estate english</td><td class="ltr ">en</td><td class="ltr ">intl_investor</td><td class="ltr ">intl_city</td><td class=" ">investor</td><td class="ltr ">INTL</td><td class="ltr ">commercial</td><td class="ltr ">decision</td><td class="ltr ">P1</td><td class="ltr ">city_hub</td><td class="ltr ">/en/buy/raanana</td><td class="ltr ">leads</td><td class=" "></td><td class=" ">real supply</td><td class="ltr ">NEEDS_VERIFICATION</td><td class=" "></td></tr>
+<tr><td class=" ">sde dov tel aviv project</td><td class="ltr ">en</td><td class="ltr ">intl_investor</td><td class="ltr ">intl_project</td><td class=" ">investor</td><td class="ltr ">INTL</td><td class="ltr ">navigational</td><td class="ltr ">decision</td><td class="ltr p0">P0</td><td class="ltr ">project_page</td><td class="ltr ">/en/projects/sde-dov</td><td class="ltr ">leads</td><td class=" ">intl-facing Sde Dov</td><td class=" ">official developer</td><td class="ltr ">REQUIRES_OFFICIAL_ASSET</td><td class=" "></td></tr>
+<tr><td class=" ">new construction tel aviv</td><td class="ltr ">en</td><td class="ltr ">intl_investor</td><td class="ltr ">intl_projects</td><td class=" ">investor</td><td class="ltr ">INTL</td><td class="ltr ">commercial</td><td class="ltr ">consideration</td><td class="ltr p0">P0</td><td class="ltr ">hub</td><td class="ltr ">/en/new-construction/tel-aviv</td><td class="ltr ">leads</td><td class=" "></td><td class=" ">developer-verified</td><td class="ltr ">REQUIRES_OFFICIAL_ASSET</td><td class=" "></td></tr>
+<tr><td class=" ">foreign buyer purchase tax israel</td><td class="ltr ">en</td><td class="ltr ">intl_investor</td><td class="ltr ">intl_tax</td><td class=" ">investor</td><td class="ltr ">INTL</td><td class="ltr ">informational</td><td class="ltr ">consideration</td><td class="ltr p0">P0</td><td class="ltr ">guide</td><td class="ltr ">/en/tax/foreign-buyer-purchase-tax</td><td class="ltr ">organic_sessions</td><td class=" ">מס רכישה לתושב חוץ</td><td class=" ">attorney + CPA reviewed</td><td class="ltr ">LEGAL_REVIEW|OFFICIAL_SOURCE_REQUIRED</td><td class=" "></td></tr>
+<tr><td class=" ">mortgage in israel for foreigners</td><td class="ltr ">en</td><td class="ltr ">intl_investor</td><td class="ltr ">intl_finance</td><td class=" ">investor</td><td class="ltr ">INTL</td><td class="ltr ">informational</td><td class="ltr ">consideration</td><td class="ltr p0">P0</td><td class="ltr ">guide</td><td class="ltr ">/en/mortgage/foreign-buyers</td><td class="ltr ">leads</td><td class=" "></td><td class=" ">licensed advisor reviewed</td><td class="ltr ">LEGAL_REVIEW</td><td class=" "></td></tr>
+<tr><td class=" ">israeli real estate lawyer english</td><td class="ltr ">en</td><td class="ltr ">intl_investor</td><td class="ltr ">intl_professionals</td><td class=" ">investor</td><td class="ltr ">INTL</td><td class="ltr ">commercial</td><td class="ltr ">decision</td><td class="ltr ">P1</td><td class="ltr ">directory</td><td class="ltr ">/en/professionals/lawyers</td><td class="ltr ">leads</td><td class=" ">vetted EN-speaking lawyers</td><td class=" ">license verification</td><td class="ltr ">REQUIRES_OFFICIAL_ASSET</td><td class=" "></td></tr>
+<tr><td class=" ">buying apartment israel aliyah</td><td class="ltr ">en</td><td class="ltr ">intl_investor</td><td class="ltr ">intl_aliyah</td><td class=" ">investor</td><td class="ltr ">INTL</td><td class="ltr ">informational</td><td class="ltr ">awareness</td><td class="ltr ">P1</td><td class="ltr ">guide</td><td class="ltr ">/en/aliyah/buying-apartment</td><td class="ltr ">organic_sessions</td><td class=" "></td><td class=" ">partner with Nefesh / org review</td><td class="ltr ">LEGAL_REVIEW</td><td class=" "></td></tr>
+<tr><td class=" ">investing in tel aviv real estate</td><td class="ltr ">en</td><td class="ltr ">intl_investor</td><td class="ltr ">intl_invest</td><td class=" ">investor</td><td class="ltr ">INTL</td><td class="ltr ">commercial</td><td class="ltr ">consideration</td><td class="ltr ">P1</td><td class="ltr ">guide</td><td class="ltr ">/en/invest/tel-aviv</td><td class="ltr ">leads</td><td class=" ">yield + appreciation data</td><td class=" ">OFFICIAL CBS data</td><td class="ltr ">OFFICIAL_SOURCE_REQUIRED</td><td class=" "></td></tr>
+<tr><td class=" ">rental yield israel</td><td class="ltr ">en</td><td class="ltr ">intl_investor</td><td class="ltr ">intl_invest</td><td class=" ">investor</td><td class="ltr ">INTL</td><td class="ltr ">informational</td><td class="ltr ">consideration</td><td class="ltr ">P1</td><td class="ltr ">data_page</td><td class="ltr ">/en/invest/rental-yields</td><td class="ltr ">organic_sessions</td><td class=" "></td><td class=" ">CBS + market data</td><td class="ltr ">OFFICIAL_SOURCE_REQUIRED</td><td class=" "></td></tr>
+<tr><td class=" ">israel property market 2026</td><td class="ltr ">en</td><td class="ltr ">intl_investor</td><td class="ltr ">intl_market</td><td class=" ">investor</td><td class="ltr ">INTL</td><td class="ltr ">informational</td><td class="ltr ">awareness</td><td class="ltr ">P1</td><td class="ltr ">report</td><td class="ltr ">/en/market/2026</td><td class="ltr ">organic_sessions</td><td class=" ">annual market report</td><td class=" ">CBS + Bank of Israel</td><td class="ltr ">OFFICIAL_SOURCE_REQUIRED</td><td class=" "></td></tr>
+<tr><td class=" ">tama 38 explained</td><td class="ltr ">en</td><td class="ltr ">intl_investor</td><td class="ltr ">intl_renewal</td><td class=" ">investor</td><td class="ltr ">INTL</td><td class="ltr ">informational</td><td class="ltr ">awareness</td><td class="ltr ">P1</td><td class="ltr ">guide</td><td class="ltr ">/en/urban-renewal/tama-38</td><td class="ltr ">organic_sessions</td><td class=" ">EN explainer of TAMA 38</td><td class=" ">attorney-reviewed</td><td class="ltr ">LEGAL_REVIEW</td><td class=" "></td></tr>
+<tr><td class=" ">pinui binui meaning</td><td class="ltr ">en</td><td class="ltr ">intl_investor</td><td class="ltr ">intl_renewal</td><td class=" ">investor</td><td class="ltr ">INTL</td><td class="ltr ">informational</td><td class="ltr ">awareness</td><td class="ltr ">P2</td><td class="ltr ">guide</td><td class="ltr ">/en/urban-renewal/pinui-binui</td><td class="ltr ">organic_sessions</td><td class=" "></td><td class=" ">attorney-reviewed</td><td class="ltr ">LEGAL_REVIEW</td><td class=" "></td></tr>
+<tr><td class=" ">how to buy property in israel from usa</td><td class="ltr ">en</td><td class="ltr ">intl_investor</td><td class="ltr ">intl_process</td><td class=" ">investor</td><td class="ltr ">US</td><td class="ltr ">informational</td><td class="ltr ">consideration</td><td class="ltr ">P1</td><td class="ltr ">guide</td><td class="ltr ">/en/buy/from-usa</td><td class="ltr ">leads</td><td class=" ">US-buyer playbook</td><td class=" ">attorney + CPA reviewed</td><td class="ltr ">LEGAL_REVIEW</td><td class=" "></td></tr>
+<tr><td class=" ">how to buy property in israel from uk</td><td class="ltr ">en</td><td class="ltr ">intl_investor</td><td class="ltr ">intl_process</td><td class=" ">investor</td><td class="ltr ">UK</td><td class="ltr ">informational</td><td class="ltr ">consideration</td><td class="ltr ">P2</td><td class="ltr ">guide</td><td class="ltr ">/en/buy/from-uk</td><td class="ltr ">leads</td><td class=" "></td><td class=" ">attorney reviewed</td><td class="ltr ">LEGAL_REVIEW</td><td class=" "></td></tr>
+<tr><td class=" ">how to buy property in israel from france</td><td class="ltr ">en</td><td class="ltr ">intl_investor</td><td class="ltr ">intl_process</td><td class=" ">investor</td><td class="ltr ">FR</td><td class="ltr ">informational</td><td class="ltr ">consideration</td><td class="ltr ">P2</td><td class="ltr ">guide</td><td class="ltr ">/en/buy/from-france</td><td class="ltr ">leads</td><td class=" "></td><td class=" ">attorney reviewed</td><td class="ltr ">LEGAL_REVIEW</td><td class=" "></td></tr>
+<tr><td class=" ">israeli mortgage calculator english</td><td class="ltr ">en</td><td class="ltr ">intl_investor</td><td class="ltr ">intl_tools</td><td class=" ">investor</td><td class="ltr ">INTL</td><td class="ltr ">commercial</td><td class="ltr ">decision</td><td class="ltr ">P1</td><td class="ltr ">tool</td><td class="ltr ">/en/tools/mortgage-calculator</td><td class="ltr ">tool_completions</td><td class=" "></td><td class=" ">disclaimer</td><td class="ltr ">LEGAL_REVIEW</td><td class=" "></td></tr>
+<tr><td class=" ">purchase tax calculator israel</td><td class="ltr ">en</td><td class="ltr ">intl_investor</td><td class="ltr ">intl_tools</td><td class=" ">investor</td><td class="ltr ">INTL</td><td class="ltr ">commercial</td><td class="ltr ">decision</td><td class="ltr p0">P0</td><td class="ltr ">tool</td><td class="ltr ">/en/tools/purchase-tax-calculator</td><td class="ltr ">tool_completions</td><td class=" "></td><td class=" ">Tax Authority brackets</td><td class="ltr ">LEGAL_REVIEW|OFFICIAL_SOURCE_REQUIRED</td><td class=" "></td></tr>
+<tr><td class=" ">מחשבון משכנתא</td><td class="ltr ">he</td><td class="ltr ">tools_calculators</td><td class="ltr ">mortgage</td><td class=" ">buyer</td><td class="ltr ">IL</td><td class="ltr ">transactional</td><td class="ltr ">decision</td><td class="ltr p0">P0</td><td class="ltr ">tool</td><td class="ltr ">/tools/mortgage-calculator</td><td class="ltr ">tool_completions</td><td class=" ">flagship calculator</td><td class=" ">licensed advisor disclaimer</td><td class="ltr ">LEGAL_REVIEW</td><td class=" "></td></tr>
+<tr><td class=" ">החזר משכנתא חודשי</td><td class="ltr ">he</td><td class="ltr ">tools_calculators</td><td class="ltr ">mortgage</td><td class=" ">buyer</td><td class="ltr ">IL</td><td class="ltr ">informational</td><td class="ltr ">consideration</td><td class="ltr ">P1</td><td class="ltr ">tool</td><td class="ltr ">/tools/monthly-payment</td><td class="ltr ">tool_completions</td><td class=" "></td><td class=" ">disclaimer</td><td class="ltr ">LEGAL_REVIEW</td><td class=" "></td></tr>
+<tr><td class=" ">מחשבון מס רכישה</td><td class="ltr ">he</td><td class="ltr ">tools_calculators</td><td class="ltr ">tax</td><td class=" ">buyer</td><td class="ltr ">IL</td><td class="ltr ">transactional</td><td class="ltr ">decision</td><td class="ltr p0">P0</td><td class="ltr ">tool</td><td class="ltr ">/tools/purchase-tax-calculator</td><td class="ltr ">tool_completions</td><td class=" "></td><td class=" ">Tax Authority brackets</td><td class="ltr ">LEGAL_REVIEW|OFFICIAL_SOURCE_REQUIRED</td><td class=" "></td></tr>
+<tr><td class=" ">מס רכישה דירה ראשונה</td><td class="ltr ">he</td><td class="ltr ">tools_calculators</td><td class="ltr ">tax</td><td class=" ">buyer</td><td class="ltr ">IL</td><td class="ltr ">informational</td><td class="ltr ">consideration</td><td class="ltr p0">P0</td><td class="ltr ">guide</td><td class="ltr ">/tax/purchase-tax-first-home</td><td class="ltr ">organic_sessions</td><td class=" "></td><td class=" ">Tax Authority</td><td class="ltr ">LEGAL_REVIEW|OFFICIAL_SOURCE_REQUIRED</td><td class=" "></td></tr>
+<tr><td class=" ">מס רכישה דירה שניה</td><td class="ltr ">he</td><td class="ltr ">tools_calculators</td><td class="ltr ">tax</td><td class=" ">investor</td><td class="ltr ">IL</td><td class="ltr ">informational</td><td class="ltr ">consideration</td><td class="ltr p0">P0</td><td class="ltr ">guide</td><td class="ltr ">/tax/purchase-tax-second-home</td><td class="ltr ">organic_sessions</td><td class=" "></td><td class=" ">Tax Authority</td><td class="ltr ">LEGAL_REVIEW|OFFICIAL_SOURCE_REQUIRED</td><td class=" "></td></tr>
+<tr><td class=" ">מס שבח</td><td class="ltr ">he</td><td class="ltr ">tools_calculators</td><td class="ltr ">tax</td><td class=" ">seller</td><td class="ltr ">IL</td><td class="ltr ">informational</td><td class="ltr ">consideration</td><td class="ltr p0">P0</td><td class="ltr ">guide</td><td class="ltr ">/tax/capital-gains</td><td class="ltr ">organic_sessions</td><td class=" "></td><td class=" ">Tax Authority</td><td class="ltr ">LEGAL_REVIEW|OFFICIAL_SOURCE_REQUIRED</td><td class=" "></td></tr>
+<tr><td class=" ">מחשבון מס שבח</td><td class="ltr ">he</td><td class="ltr ">tools_calculators</td><td class="ltr ">tax</td><td class=" ">seller</td><td class="ltr ">IL</td><td class="ltr ">transactional</td><td class="ltr ">decision</td><td class="ltr p0">P0</td><td class="ltr ">tool</td><td class="ltr ">/tools/capital-gains-calculator</td><td class="ltr ">tool_completions</td><td class=" "></td><td class=" ">Tax Authority</td><td class="ltr ">LEGAL_REVIEW|OFFICIAL_SOURCE_REQUIRED</td><td class=" "></td></tr>
+<tr><td class=" ">מחשבון תשואה דירה</td><td class="ltr ">he</td><td class="ltr ">tools_calculators</td><td class="ltr ">yield</td><td class=" ">investor</td><td class="ltr ">IL</td><td class="ltr ">transactional</td><td class="ltr ">decision</td><td class="ltr p0">P0</td><td class="ltr ">tool</td><td class="ltr ">/tools/rental-yield-calculator</td><td class="ltr ">tool_completions</td><td class=" "></td><td class=" ">methodology disclosure</td><td class="ltr ">NEEDS_VERIFICATION</td><td class=" "></td></tr>
+<tr><td class=" ">תשואה ממוצעת דירה תל אביב</td><td class="ltr ">he</td><td class="ltr ">tools_calculators</td><td class="ltr ">yield</td><td class=" ">investor</td><td class="ltr ">IL</td><td class="ltr ">informational</td><td class="ltr ">consideration</td><td class="ltr ">P1</td><td class="ltr ">data_page</td><td class="ltr ">/data/yields/tel-aviv</td><td class="ltr ">organic_sessions</td><td class=" "></td><td class=" ">CBS + market data</td><td class="ltr ">OFFICIAL_SOURCE_REQUIRED</td><td class=" "></td></tr>
+<tr><td class=" ">מחשבון עלות שיפוץ</td><td class="ltr ">he</td><td class="ltr ">tools_calculators</td><td class="ltr ">renovation</td><td class=" ">buyer</td><td class="ltr ">IL</td><td class="ltr ">commercial</td><td class="ltr ">consideration</td><td class="ltr ">P1</td><td class="ltr ">tool</td><td class="ltr ">/tools/renovation-calculator</td><td class="ltr ">tool_completions</td><td class=" "></td><td class=" ">contractor data</td><td class="ltr ">NEEDS_VERIFICATION</td><td class=" "></td></tr>
+<tr><td class=" ">עלות שיפוץ דירה לפי מטר</td><td class="ltr ">he</td><td class="ltr ">tools_calculators</td><td class="ltr ">renovation</td><td class=" ">buyer</td><td class="ltr ">IL</td><td class="ltr ">informational</td><td class="ltr ">consideration</td><td class="ltr ">P1</td><td class="ltr ">guide</td><td class="ltr ">/guides/renovation-cost-per-sqm</td><td class="ltr ">organic_sessions</td><td class=" "></td><td class=" ">contractor survey</td><td class="ltr ">NEEDS_VERIFICATION</td><td class=" "></td></tr>
+<tr><td class=" ">מחשבון הון עצמי</td><td class="ltr ">he</td><td class="ltr ">tools_calculators</td><td class="ltr ">mortgage</td><td class=" ">buyer</td><td class="ltr ">IL</td><td class="ltr ">transactional</td><td class="ltr ">decision</td><td class="ltr ">P1</td><td class="ltr ">tool</td><td class="ltr ">/tools/equity-calculator</td><td class="ltr ">tool_completions</td><td class=" "></td><td class=" ">Bank of Israel LTV rules</td><td class="ltr ">LEGAL_REVIEW|OFFICIAL_SOURCE_REQUIRED</td><td class=" "></td></tr>
+<tr><td class=" ">מחשבון יכולת החזר</td><td class="ltr ">he</td><td class="ltr ">tools_calculators</td><td class="ltr ">mortgage</td><td class=" ">buyer</td><td class="ltr ">IL</td><td class="ltr ">transactional</td><td class="ltr ">decision</td><td class="ltr ">P1</td><td class="ltr ">tool</td><td class="ltr ">/tools/affordability-calculator</td><td class="ltr ">tool_completions</td><td class=" "></td><td class=" ">disclaimer</td><td class="ltr ">LEGAL_REVIEW</td><td class=" "></td></tr>
+<tr><td class=" ">מחשבון עמלת פירעון מוקדם</td><td class="ltr ">he</td><td class="ltr ">tools_calculators</td><td class="ltr ">mortgage</td><td class=" ">buyer</td><td class="ltr ">IL</td><td class="ltr ">transactional</td><td class="ltr ">decision</td><td class="ltr ">P1</td><td class="ltr ">tool</td><td class="ltr ">/tools/early-repayment-fee</td><td class="ltr ">tool_completions</td><td class=" "></td><td class=" ">Bank of Israel formula</td><td class="ltr ">LEGAL_REVIEW|OFFICIAL_SOURCE_REQUIRED</td><td class=" "></td></tr>
+<tr><td class=" ">תהליך קניית דירה</td><td class="ltr ">he</td><td class="ltr ">tools_calculators</td><td class="ltr ">buying_process</td><td class=" ">buyer</td><td class="ltr ">IL</td><td class="ltr ">informational</td><td class="ltr ">awareness</td><td class="ltr p0">P0</td><td class="ltr ">pillar</td><td class="ltr ">/guides/buying-process</td><td class="ltr ">organic_sessions</td><td class=" ">step-by-step pillar</td><td class=" ">attorney-reviewed</td><td class="ltr ">LEGAL_REVIEW</td><td class=" "></td></tr>
+<tr><td class=" ">שלבים בקניית דירה</td><td class="ltr ">he</td><td class="ltr ">tools_calculators</td><td class="ltr ">buying_process</td><td class=" ">buyer</td><td class="ltr ">IL</td><td class="ltr ">informational</td><td class="ltr ">awareness</td><td class="ltr ">P1</td><td class="ltr ">guide</td><td class="ltr ">/guides/buying-steps</td><td class="ltr ">organic_sessions</td><td class=" "></td><td class=" ">attorney-reviewed</td><td class="ltr ">LEGAL_REVIEW</td><td class=" "></td></tr>
+<tr><td class=" ">מסמכים לקניית דירה</td><td class="ltr ">he</td><td class="ltr ">tools_calculators</td><td class="ltr ">buying_process</td><td class=" ">buyer</td><td class="ltr ">IL</td><td class="ltr ">informational</td><td class="ltr ">consideration</td><td class="ltr ">P1</td><td class="ltr ">guide</td><td class="ltr ">/guides/buying-documents</td><td class="ltr ">organic_sessions</td><td class=" "></td><td class=" ">attorney-reviewed</td><td class="ltr ">LEGAL_REVIEW</td><td class=" "></td></tr>
+<tr><td class=" ">בדיקת נסח טאבו</td><td class="ltr ">he</td><td class="ltr ">tools_calculators</td><td class="ltr ">due_diligence</td><td class=" ">buyer</td><td class="ltr ">IL</td><td class="ltr ">informational</td><td class="ltr ">decision</td><td class="ltr ">P1</td><td class="ltr ">guide</td><td class="ltr ">/guides/tabu-extract</td><td class="ltr ">organic_sessions</td><td class=" "></td><td class=" ">attorney-reviewed</td><td class="ltr ">LEGAL_REVIEW|OFFICIAL_SOURCE_REQUIRED</td><td class=" "></td></tr>
+<tr><td class=" ">נסח טאבו אונליין</td><td class="ltr ">he</td><td class="ltr ">tools_calculators</td><td class="ltr ">due_diligence</td><td class=" ">buyer</td><td class="ltr ">IL</td><td class="ltr ">navigational</td><td class="ltr ">decision</td><td class="ltr ">P2</td><td class="ltr ">guide</td><td class="ltr ">/guides/tabu-online</td><td class="ltr ">organic_sessions</td><td class=" "></td><td class=" ">Land Registry</td><td class="ltr ">OFFICIAL_SOURCE_REQUIRED</td><td class=" "></td></tr>
+<tr><td class=" ">מתווכים תל אביב</td><td class="ltr ">he</td><td class="ltr ">professionals_directory</td><td class="ltr ">realtors</td><td class=" ">buyer</td><td class="ltr ">IL</td><td class="ltr ">local</td><td class="ltr ">decision</td><td class="ltr ">P1</td><td class="ltr ">directory</td><td class="ltr ">/professionals/realtors/tel-aviv</td><td class="ltr ">leads</td><td class=" "></td><td class=" ">license verification</td><td class="ltr ">REQUIRES_OFFICIAL_ASSET</td><td class=" "></td></tr>
+<tr><td class=" ">מתווך דירות</td><td class="ltr ">he</td><td class="ltr ">professionals_directory</td><td class="ltr ">realtors</td><td class=" ">buyer</td><td class="ltr ">IL</td><td class="ltr ">commercial</td><td class="ltr ">decision</td><td class="ltr ">P1</td><td class="ltr ">directory</td><td class="ltr ">/professionals/realtors</td><td class="ltr ">leads</td><td class=" "></td><td class=" ">license verification</td><td class="ltr ">REQUIRES_OFFICIAL_ASSET</td><td class=" "></td></tr>
+<tr><td class=" ">מתווכים מומלצים</td><td class="ltr ">he</td><td class="ltr ">professionals_directory</td><td class="ltr ">realtors</td><td class=" ">buyer</td><td class="ltr ">IL</td><td class="ltr ">comparison</td><td class="ltr ">decision</td><td class="ltr ">P1</td><td class="ltr ">directory</td><td class="ltr ">/professionals/realtors/recommended</td><td class="ltr ">leads</td><td class=" ">methodology required</td><td class=" ">license + review policy</td><td class="ltr ">REQUIRES_OFFICIAL_ASSET|LEGAL_REVIEW</td><td class=" "></td></tr>
+<tr><td class=" ">דמי תיווך</td><td class="ltr ">he</td><td class="ltr ">professionals_directory</td><td class="ltr ">realtors</td><td class=" ">buyer</td><td class="ltr ">IL</td><td class="ltr ">informational</td><td class="ltr ">consideration</td><td class="ltr ">P1</td><td class="ltr ">guide</td><td class="ltr ">/guides/realtor-fees</td><td class="ltr ">organic_sessions</td><td class=" "></td><td class=" ">attorney-reviewed</td><td class="ltr ">LEGAL_REVIEW</td><td class=" "></td></tr>
+<tr><td class=" ">עורך דין מקרקעין</td><td class="ltr ">he</td><td class="ltr ">professionals_directory</td><td class="ltr ">lawyers</td><td class=" ">buyer</td><td class="ltr ">IL</td><td class="ltr ">commercial</td><td class="ltr ">decision</td><td class="ltr ">P1</td><td class="ltr ">directory</td><td class="ltr ">/professionals/lawyers</td><td class="ltr ">leads</td><td class=" "></td><td class=" ">bar association verification</td><td class="ltr ">REQUIRES_OFFICIAL_ASSET</td><td class=" "></td></tr>
+<tr><td class=" ">עורך דין מקרקעין תל אביב</td><td class="ltr ">he</td><td class="ltr ">professionals_directory</td><td class="ltr ">lawyers</td><td class=" ">buyer</td><td class="ltr ">IL</td><td class="ltr ">local</td><td class="ltr ">decision</td><td class="ltr ">P1</td><td class="ltr ">directory</td><td class="ltr ">/professionals/lawyers/tel-aviv</td><td class="ltr ">leads</td><td class=" "></td><td class=" ">bar verification</td><td class="ltr ">REQUIRES_OFFICIAL_ASSET</td><td class=" "></td></tr>
+<tr><td class=" ">עורך דין מקרקעין ירושלים</td><td class="ltr ">he</td><td class="ltr ">professionals_directory</td><td class="ltr ">lawyers</td><td class=" ">buyer</td><td class="ltr ">IL</td><td class="ltr ">local</td><td class="ltr ">decision</td><td class="ltr ">P2</td><td class="ltr ">directory</td><td class="ltr ">/professionals/lawyers/jerusalem</td><td class="ltr ">leads</td><td class=" "></td><td class=" ">bar verification</td><td class="ltr ">REQUIRES_OFFICIAL_ASSET</td><td class=" "></td></tr>
+<tr><td class=" ">שכר טרחת עורך דין דירה</td><td class="ltr ">he</td><td class="ltr ">professionals_directory</td><td class="ltr ">lawyers</td><td class=" ">buyer</td><td class="ltr ">IL</td><td class="ltr ">informational</td><td class="ltr ">consideration</td><td class="ltr ">P1</td><td class="ltr ">guide</td><td class="ltr ">/guides/lawyer-fees-apartment</td><td class="ltr ">organic_sessions</td><td class=" "></td><td class=" ">bar guidance</td><td class="ltr ">LEGAL_REVIEW</td><td class=" "></td></tr>
+<tr><td class=" ">יועץ משכנתאות</td><td class="ltr ">he</td><td class="ltr ">professionals_directory</td><td class="ltr ">mortgage_advisors</td><td class=" ">buyer</td><td class="ltr ">IL</td><td class="ltr ">commercial</td><td class="ltr ">decision</td><td class="ltr ">P1</td><td class="ltr ">directory</td><td class="ltr ">/professionals/mortgage-advisors</td><td class="ltr ">leads</td><td class=" "></td><td class=" ">license verification</td><td class="ltr ">REQUIRES_OFFICIAL_ASSET</td><td class=" "></td></tr>
+<tr><td class=" ">יועץ משכנתאות מומלץ</td><td class="ltr ">he</td><td class="ltr ">professionals_directory</td><td class="ltr ">mortgage_advisors</td><td class=" ">buyer</td><td class="ltr ">IL</td><td class="ltr ">comparison</td><td class="ltr ">decision</td><td class="ltr ">P1</td><td class="ltr ">directory</td><td class="ltr ">/professionals/mortgage-advisors/recommended</td><td class="ltr ">leads</td><td class=" "></td><td class=" ">license + reviews</td><td class="ltr ">REQUIRES_OFFICIAL_ASSET</td><td class=" "></td></tr>
+<tr><td class=" ">שמאי מקרקעין</td><td class="ltr ">he</td><td class="ltr ">professionals_directory</td><td class="ltr ">appraisers</td><td class=" ">seller</td><td class="ltr ">IL</td><td class="ltr ">commercial</td><td class="ltr ">decision</td><td class="ltr ">P1</td><td class="ltr ">directory</td><td class="ltr ">/professionals/appraisers</td><td class="ltr ">leads</td><td class=" "></td><td class=" ">council of appraisers verification</td><td class="ltr ">REQUIRES_OFFICIAL_ASSET</td><td class=" "></td></tr>
+<tr><td class=" ">שמאי מקרקעין מחיר</td><td class="ltr ">he</td><td class="ltr ">professionals_directory</td><td class="ltr ">appraisers</td><td class=" ">seller</td><td class="ltr ">IL</td><td class="ltr ">informational</td><td class="ltr ">consideration</td><td class="ltr ">P2</td><td class="ltr ">guide</td><td class="ltr ">/guides/appraiser-cost</td><td class="ltr ">organic_sessions</td><td class=" "></td><td class=" ">survey</td><td class="ltr ">NEEDS_VERIFICATION</td><td class=" "></td></tr>
+<tr><td class=" ">בודק דירות</td><td class="ltr ">he</td><td class="ltr ">professionals_directory</td><td class="ltr ">inspectors</td><td class=" ">buyer</td><td class="ltr ">IL</td><td class="ltr ">commercial</td><td class="ltr ">decision</td><td class="ltr ">P1</td><td class="ltr ">directory</td><td class="ltr ">/professionals/inspectors</td><td class="ltr ">leads</td><td class=" ">inspection report standard</td><td class=" ">credentials check</td><td class="ltr ">REQUIRES_OFFICIAL_ASSET</td><td class=" "></td></tr>
+<tr><td class=" ">בדק בית</td><td class="ltr ">he</td><td class="ltr ">professionals_directory</td><td class="ltr ">inspectors</td><td class=" ">buyer</td><td class="ltr ">IL</td><td class="ltr ">commercial</td><td class="ltr ">decision</td><td class="ltr ">P1</td><td class="ltr ">directory</td><td class="ltr ">/professionals/home-inspection</td><td class="ltr ">leads</td><td class=" "></td><td class=" ">credentials check</td><td class="ltr ">REQUIRES_OFFICIAL_ASSET</td><td class=" "></td></tr>
+<tr><td class=" ">ליקויי בנייה</td><td class="ltr ">he</td><td class="ltr ">professionals_directory</td><td class="ltr ">inspectors</td><td class=" ">buyer</td><td class="ltr ">IL</td><td class="ltr ">informational</td><td class="ltr ">consideration</td><td class="ltr ">P2</td><td class="ltr ">guide</td><td class="ltr ">/guides/construction-defects</td><td class="ltr ">organic_sessions</td><td class=" "></td><td class=" ">attorney + engineer</td><td class="ltr ">LEGAL_REVIEW</td><td class=" "></td></tr>
+<tr><td class=" ">מעצב פנים דירה</td><td class="ltr ">he</td><td class="ltr ">professionals_directory</td><td class="ltr ">designers</td><td class=" ">buyer</td><td class="ltr ">IL</td><td class="ltr ">commercial</td><td class="ltr ">decision</td><td class="ltr ">P2</td><td class="ltr ">directory</td><td class="ltr ">/professionals/interior-designers</td><td class="ltr ">leads</td><td class=" "></td><td class=" ">portfolio verification</td><td class="ltr ">NEEDS_VERIFICATION</td><td class=" "></td></tr>
+<tr><td class=" ">אדריכל דירה</td><td class="ltr ">he</td><td class="ltr ">professionals_directory</td><td class="ltr ">designers</td><td class=" ">buyer</td><td class="ltr ">IL</td><td class="ltr ">commercial</td><td class="ltr ">decision</td><td class="ltr ">P2</td><td class="ltr ">directory</td><td class="ltr ">/professionals/architects</td><td class="ltr ">leads</td><td class=" "></td><td class=" ">architects registry</td><td class="ltr ">REQUIRES_OFFICIAL_ASSET</td><td class=" "></td></tr>
+<tr><td class=" ">קבלן שיפוצים</td><td class="ltr ">he</td><td class="ltr ">professionals_directory</td><td class="ltr ">contractors</td><td class=" ">buyer</td><td class="ltr ">IL</td><td class="ltr ">commercial</td><td class="ltr ">decision</td><td class="ltr ">P1</td><td class="ltr ">directory</td><td class="ltr ">/professionals/renovation-contractors</td><td class="ltr ">leads</td><td class=" "></td><td class=" ">contractor registry</td><td class="ltr ">REQUIRES_OFFICIAL_ASSET</td><td class=" "></td></tr>
+<tr><td class=" ">קבלן שיפוצים תל אביב</td><td class="ltr ">he</td><td class="ltr ">professionals_directory</td><td class="ltr ">contractors</td><td class=" ">buyer</td><td class="ltr ">IL</td><td class="ltr ">local</td><td class="ltr ">decision</td><td class="ltr ">P2</td><td class="ltr ">directory</td><td class="ltr ">/professionals/renovation-contractors/tel-aviv</td><td class="ltr ">leads</td><td class=" "></td><td class=" ">contractor registry</td><td class="ltr ">REQUIRES_OFFICIAL_ASSET</td><td class=" "></td></tr>
+<tr><td class=" ">איך לבחור מתווך</td><td class="ltr ">he</td><td class="ltr ">professionals_directory</td><td class="ltr ">realtors</td><td class=" ">buyer</td><td class="ltr ">IL</td><td class="ltr ">informational</td><td class="ltr ">consideration</td><td class="ltr ">P1</td><td class="ltr ">guide</td><td class="ltr ">/guides/choose-realtor</td><td class="ltr ">organic_sessions</td><td class=" "></td><td class=" ">editorial</td><td class="ltr ">NEEDS_VERIFICATION</td><td class=" "></td></tr>
+<tr><td class=" ">איך לבחור עורך דין מקרקעין</td><td class="ltr ">he</td><td class="ltr ">professionals_directory</td><td class="ltr ">lawyers</td><td class=" ">buyer</td><td class="ltr ">IL</td><td class="ltr ">informational</td><td class="ltr ">consideration</td><td class="ltr ">P1</td><td class="ltr ">guide</td><td class="ltr ">/guides/choose-real-estate-lawyer</td><td class="ltr ">organic_sessions</td><td class=" "></td><td class=" ">editorial</td><td class="ltr ">LEGAL_REVIEW</td><td class=" "></td></tr>
+<tr><td class=" ">תמא 38</td><td class="ltr ">he</td><td class="ltr ">urban_renewal</td><td class="ltr ">tama38_general</td><td class=" ">owner</td><td class="ltr ">IL</td><td class="ltr ">informational</td><td class="ltr ">awareness</td><td class="ltr p0">P0</td><td class="ltr ">pillar</td><td class="ltr ">/urban-renewal/tama-38</td><td class="ltr ">organic_sessions</td><td class=" ">TAMA 38 pillar</td><td class=" ">attorney-reviewed</td><td class="ltr ">LEGAL_REVIEW</td><td class=" "></td></tr>
+<tr><td class=" ">תמא 38 1</td><td class="ltr ">he</td><td class="ltr ">urban_renewal</td><td class="ltr ">tama38_variants</td><td class=" ">owner</td><td class="ltr ">IL</td><td class="ltr ">informational</td><td class="ltr ">awareness</td><td class="ltr ">P1</td><td class="ltr ">guide</td><td class="ltr ">/urban-renewal/tama-38-1</td><td class="ltr ">organic_sessions</td><td class=" ">strengthening</td><td class=" ">attorney-reviewed</td><td class="ltr ">LEGAL_REVIEW</td><td class=" "></td></tr>
+<tr><td class=" ">תמא 38 2</td><td class="ltr ">he</td><td class="ltr ">urban_renewal</td><td class="ltr ">tama38_variants</td><td class=" ">owner</td><td class="ltr ">IL</td><td class="ltr ">informational</td><td class="ltr ">awareness</td><td class="ltr ">P1</td><td class="ltr ">guide</td><td class="ltr ">/urban-renewal/tama-38-2</td><td class="ltr ">organic_sessions</td><td class=" ">demolish-rebuild</td><td class=" ">attorney-reviewed</td><td class="ltr ">LEGAL_REVIEW</td><td class=" "></td></tr>
+<tr><td class=" ">תמא 38 זכויות דיירים</td><td class="ltr ">he</td><td class="ltr ">urban_renewal</td><td class="ltr ">tama38_rights</td><td class=" ">owner</td><td class="ltr ">IL</td><td class="ltr ">informational</td><td class="ltr ">consideration</td><td class="ltr p0">P0</td><td class="ltr ">guide</td><td class="ltr ">/urban-renewal/tama-38-tenant-rights</td><td class="ltr ">organic_sessions</td><td class=" "></td><td class=" ">attorney-reviewed</td><td class="ltr ">LEGAL_REVIEW</td><td class=" "></td></tr>
+<tr><td class=" ">תמא 38 מיסוי</td><td class="ltr ">he</td><td class="ltr ">urban_renewal</td><td class="ltr ">tama38_tax</td><td class=" ">owner</td><td class="ltr ">IL</td><td class="ltr ">informational</td><td class="ltr ">consideration</td><td class="ltr ">P1</td><td class="ltr ">guide</td><td class="ltr ">/urban-renewal/tama-38-tax</td><td class="ltr ">organic_sessions</td><td class=" "></td><td class=" ">CPA + attorney</td><td class="ltr ">LEGAL_REVIEW|OFFICIAL_SOURCE_REQUIRED</td><td class=" "></td></tr>
+<tr><td class=" ">פינוי בינוי</td><td class="ltr ">he</td><td class="ltr ">urban_renewal</td><td class="ltr ">pinui_binui_general</td><td class=" ">owner</td><td class="ltr ">IL</td><td class="ltr ">informational</td><td class="ltr ">awareness</td><td class="ltr p0">P0</td><td class="ltr ">pillar</td><td class="ltr ">/urban-renewal/pinui-binui</td><td class="ltr ">organic_sessions</td><td class=" ">Pinui-Binui pillar</td><td class=" ">attorney-reviewed</td><td class="ltr ">LEGAL_REVIEW</td><td class=" "></td></tr>
+<tr><td class=" ">פינוי בינוי זכויות דיירים</td><td class="ltr ">he</td><td class="ltr ">urban_renewal</td><td class="ltr ">pinui_binui_rights</td><td class=" ">owner</td><td class="ltr ">IL</td><td class="ltr ">informational</td><td class="ltr ">consideration</td><td class="ltr p0">P0</td><td class="ltr ">guide</td><td class="ltr ">/urban-renewal/pinui-binui-tenant-rights</td><td class="ltr ">organic_sessions</td><td class=" "></td><td class=" ">attorney-reviewed</td><td class="ltr ">LEGAL_REVIEW</td><td class=" "></td></tr>
+<tr><td class=" ">התחדשות עירונית</td><td class="ltr ">he</td><td class="ltr ">urban_renewal</td><td class="ltr ">renewal_general</td><td class=" ">owner</td><td class="ltr ">IL</td><td class="ltr ">informational</td><td class="ltr ">awareness</td><td class="ltr p0">P0</td><td class="ltr ">hub</td><td class="ltr ">/urban-renewal</td><td class="ltr ">organic_sessions</td><td class=" ">renewal hub</td><td class=" ">attorney + municipal</td><td class="ltr ">LEGAL_REVIEW</td><td class=" "></td></tr>
+<tr><td class=" ">התחדשות עירונית תל אביב</td><td class="ltr ">he</td><td class="ltr ">urban_renewal</td><td class="ltr ">renewal_city</td><td class=" ">owner</td><td class="ltr ">IL</td><td class="ltr ">local</td><td class="ltr ">consideration</td><td class="ltr ">P1</td><td class="ltr ">city_hub</td><td class="ltr ">/urban-renewal/tel-aviv</td><td class="ltr ">organic_sessions</td><td class=" "></td><td class=" ">municipal data</td><td class="ltr ">OFFICIAL_SOURCE_REQUIRED</td><td class=" "></td></tr>
+<tr><td class=" ">התחדשות עירונית רמת גן</td><td class="ltr ">he</td><td class="ltr ">urban_renewal</td><td class="ltr ">renewal_city</td><td class=" ">owner</td><td class="ltr ">IL</td><td class="ltr ">local</td><td class="ltr ">consideration</td><td class="ltr ">P2</td><td class="ltr ">city_hub</td><td class="ltr ">/urban-renewal/ramat-gan</td><td class="ltr ">organic_sessions</td><td class=" "></td><td class=" ">municipal data</td><td class="ltr ">OFFICIAL_SOURCE_REQUIRED</td><td class=" "></td></tr>
+<tr><td class=" ">היתר בניה</td><td class="ltr ">he</td><td class="ltr ">urban_renewal</td><td class="ltr ">permits</td><td class=" ">owner</td><td class="ltr ">IL</td><td class="ltr ">informational</td><td class="ltr ">consideration</td><td class="ltr ">P1</td><td class="ltr ">guide</td><td class="ltr ">/guides/building-permit</td><td class="ltr ">organic_sessions</td><td class=" "></td><td class=" ">municipal + attorney</td><td class="ltr ">LEGAL_REVIEW|OFFICIAL_SOURCE_REQUIRED</td><td class=" "></td></tr>
+<tr><td class=" ">תוכנית בניין עיר</td><td class="ltr ">he</td><td class="ltr ">urban_renewal</td><td class="ltr ">planning</td><td class=" ">owner</td><td class="ltr ">IL</td><td class="ltr ">informational</td><td class="ltr ">consideration</td><td class="ltr ">P1</td><td class="ltr ">guide</td><td class="ltr ">/guides/city-master-plan</td><td class="ltr ">organic_sessions</td><td class=" "></td><td class=" ">municipal</td><td class="ltr ">OFFICIAL_SOURCE_REQUIRED</td><td class=" "></td></tr>
+<tr><td class=" ">תב&quot;ע</td><td class="ltr ">he</td><td class="ltr ">urban_renewal</td><td class="ltr ">planning</td><td class=" ">owner</td><td class="ltr ">IL</td><td class="ltr ">informational</td><td class="ltr ">consideration</td><td class="ltr ">P1</td><td class="ltr ">guide</td><td class="ltr ">/guides/tabaa</td><td class="ltr ">organic_sessions</td><td class=" "></td><td class=" ">municipal</td><td class="ltr ">OFFICIAL_SOURCE_REQUIRED</td><td class=" "></td></tr>
+<tr><td class=" ">ועדה מקומית לתכנון ובניה</td><td class="ltr ">he</td><td class="ltr ">urban_renewal</td><td class="ltr ">planning</td><td class=" ">owner</td><td class="ltr ">IL</td><td class="ltr ">informational</td><td class="ltr ">consideration</td><td class="ltr ">P2</td><td class="ltr ">guide</td><td class="ltr ">/guides/local-planning-committee</td><td class="ltr ">organic_sessions</td><td class=" "></td><td class=" ">municipal</td><td class="ltr ">OFFICIAL_SOURCE_REQUIRED</td><td class=" "></td></tr>
+<tr><td class=" ">חוק התחדשות עירונית</td><td class="ltr ">he</td><td class="ltr ">urban_renewal</td><td class="ltr ">renewal_law</td><td class=" ">owner</td><td class="ltr ">IL</td><td class="ltr ">informational</td><td class="ltr ">consideration</td><td class="ltr ">P2</td><td class="ltr ">guide</td><td class="ltr ">/urban-renewal/law</td><td class="ltr ">organic_sessions</td><td class=" "></td><td class=" ">attorney-reviewed</td><td class="ltr ">LEGAL_REVIEW</td><td class=" "></td></tr>
+<tr><td class=" ">דייר סרבן</td><td class="ltr ">he</td><td class="ltr ">urban_renewal</td><td class="ltr ">pinui_binui_rights</td><td class=" ">owner</td><td class="ltr ">IL</td><td class="ltr ">informational</td><td class="ltr ">consideration</td><td class="ltr ">P1</td><td class="ltr ">guide</td><td class="ltr ">/urban-renewal/refusing-tenant</td><td class="ltr ">organic_sessions</td><td class=" "></td><td class=" ">attorney-reviewed</td><td class="ltr ">LEGAL_REVIEW</td><td class=" "></td></tr>
+<tr><td class=" ">סיור וירטואלי דירה</td><td class="ltr ">he</td><td class="ltr ">showroom_3d</td><td class="ltr ">virtual_tour</td><td class=" ">buyer</td><td class="ltr ">IL</td><td class="ltr ">commercial</td><td class="ltr ">consideration</td><td class="ltr ">P1</td><td class="ltr ">feature</td><td class="ltr ">/features/virtual-tours</td><td class="ltr ">signups</td><td class=" ">3D tour feature page</td><td class=" ">real tour assets</td><td class="ltr ">REQUIRES_OFFICIAL_ASSET</td><td class=" "></td></tr>
+<tr><td class=" ">מפת פרויקטים</td><td class="ltr ">he</td><td class="ltr ">showroom_3d</td><td class="ltr ">map_discovery</td><td class=" ">buyer</td><td class="ltr ">IL</td><td class="ltr ">commercial</td><td class="ltr ">consideration</td><td class="ltr ">P1</td><td class="ltr ">feature</td><td class="ltr ">/map</td><td class="ltr ">signups</td><td class=" ">Mapbox project explorer</td><td class=" ">verified project data</td><td class="ltr ">REQUIRES_OFFICIAL_ASSET</td><td class=" "></td></tr>
+<tr><td class=" ">מפת התחדשות עירונית</td><td class="ltr ">he</td><td class="ltr ">showroom_3d</td><td class="ltr ">map_discovery</td><td class=" ">owner</td><td class="ltr ">IL</td><td class="ltr ">informational</td><td class="ltr ">consideration</td><td class="ltr ">P1</td><td class="ltr ">feature</td><td class="ltr ">/urban-renewal/map</td><td class="ltr ">signups</td><td class=" ">renewal map</td><td class=" ">municipal data</td><td class="ltr ">OFFICIAL_SOURCE_REQUIRED</td><td class=" "></td></tr>
+<tr><td class=" ">מפת מחירי דירות</td><td class="ltr ">he</td><td class="ltr ">showroom_3d</td><td class="ltr ">map_discovery</td><td class=" ">buyer</td><td class="ltr ">IL</td><td class="ltr ">informational</td><td class="ltr ">consideration</td><td class="ltr ">P1</td><td class="ltr ">feature</td><td class="ltr ">/map/prices</td><td class="ltr ">signups</td><td class=" ">price heatmap</td><td class=" ">CBS / transaction data</td><td class="ltr ">OFFICIAL_SOURCE_REQUIRED</td><td class=" "></td></tr>
+<tr><td class=" ">הדמיה תלת מימד דירה</td><td class="ltr ">he</td><td class="ltr ">showroom_3d</td><td class="ltr ">3d_renders</td><td class=" ">buyer</td><td class="ltr ">IL</td><td class="ltr ">informational</td><td class="ltr ">consideration</td><td class="ltr ">P2</td><td class="ltr ">guide</td><td class="ltr ">/guides/3d-renders</td><td class="ltr ">organic_sessions</td><td class=" ">concept vs official explainer</td><td class=" ">disclaimer mandatory</td><td class="ltr ">REQUIRES_OFFICIAL_ASSET</td><td class=" "></td></tr>
+<tr><td class=" ">showroom פרויקט</td><td class="ltr ">he</td><td class="ltr ">showroom_3d</td><td class="ltr ">showroom</td><td class=" ">buyer</td><td class="ltr ">IL</td><td class="ltr ">navigational</td><td class="ltr ">consideration</td><td class="ltr ">P1</td><td class="ltr ">feature</td><td class="ltr ">/features/showroom</td><td class="ltr ">signups</td><td class=" ">project showroom feature</td><td class=" ">state-machine compliant</td><td class="ltr ">REQUIRES_OFFICIAL_ASSET</td><td class=" "></td></tr>
+<tr><td class=" ">3d apartment tour israel</td><td class="ltr ">en</td><td class="ltr ">showroom_3d</td><td class="ltr ">virtual_tour</td><td class=" ">investor</td><td class="ltr ">INTL</td><td class="ltr ">commercial</td><td class="ltr ">consideration</td><td class="ltr ">P2</td><td class="ltr ">feature</td><td class="ltr ">/en/features/virtual-tours</td><td class="ltr ">signups</td><td class=" ">EN intl-facing</td><td class=" ">real assets</td><td class="ltr ">REQUIRES_OFFICIAL_ASSET</td><td class=" "></td></tr>
+<tr><td class=" ">interactive map israel real estate</td><td class="ltr ">en</td><td class="ltr ">showroom_3d</td><td class="ltr ">map_discovery</td><td class=" ">investor</td><td class="ltr ">INTL</td><td class="ltr ">commercial</td><td class="ltr ">consideration</td><td class="ltr ">P2</td><td class="ltr ">feature</td><td class="ltr ">/en/map</td><td class="ltr ">signups</td><td class=" "></td><td class=" ">verified data</td><td class="ltr ">REQUIRES_OFFICIAL_ASSET</td><td class=" "></td></tr>
+<tr><td class=" ">הדמיה לעומת תמונה אמיתית</td><td class="ltr ">he</td><td class="ltr ">showroom_3d</td><td class="ltr ">trust</td><td class=" ">buyer</td><td class="ltr ">IL</td><td class="ltr ">due_diligence</td><td class="ltr ">consideration</td><td class="ltr ">P1</td><td class="ltr ">guide</td><td class="ltr ">/guides/render-vs-photo</td><td class="ltr ">organic_sessions</td><td class=" ">trust explainer</td><td class=" ">editorial</td><td class="ltr ">NEEDS_VERIFICATION</td><td class=" "></td></tr>
+<tr><td class=" ">יד2 או מדלן</td><td class="ltr ">he</td><td class="ltr ">trust_comparison</td><td class="ltr ">platform_compare</td><td class=" ">buyer</td><td class="ltr ">IL</td><td class="ltr ">comparison</td><td class="ltr ">consideration</td><td class="ltr ">P1</td><td class="ltr ">guide</td><td class="ltr ">/compare/yad2-vs-madlan</td><td class="ltr ">organic_sessions</td><td class=" ">balanced comparison</td><td class=" ">editorial integrity</td><td class="ltr ">NEEDS_VERIFICATION</td><td class=" "></td></tr>
+<tr><td class=" ">האתר הטוב ביותר לחיפוש דירה</td><td class="ltr ">he</td><td class="ltr ">trust_comparison</td><td class="ltr ">platform_compare</td><td class=" ">buyer</td><td class="ltr ">IL</td><td class="ltr ">comparison</td><td class="ltr ">consideration</td><td class="ltr ">P1</td><td class="ltr ">guide</td><td class="ltr ">/compare/best-real-estate-sites</td><td class="ltr ">organic_sessions</td><td class=" "></td><td class=" ">editorial</td><td class="ltr ">NEEDS_VERIFICATION</td><td class=" "></td></tr>
+<tr><td class=" ">ביקורות יד2</td><td class="ltr ">he</td><td class="ltr ">trust_comparison</td><td class="ltr ">platform_reviews</td><td class=" ">buyer</td><td class="ltr ">IL</td><td class="ltr ">due_diligence</td><td class="ltr ">consideration</td><td class="ltr ">P2</td><td class="ltr ">guide</td><td class="ltr ">/reviews/yad2</td><td class="ltr ">organic_sessions</td><td class=" "></td><td class=" ">editorial</td><td class="ltr ">NEEDS_VERIFICATION</td><td class=" "></td></tr>
+<tr><td class=" ">ביקורות מדלן</td><td class="ltr ">he</td><td class="ltr ">trust_comparison</td><td class="ltr ">platform_reviews</td><td class=" ">buyer</td><td class="ltr ">IL</td><td class="ltr ">due_diligence</td><td class="ltr ">consideration</td><td class="ltr ">P2</td><td class="ltr ">guide</td><td class="ltr ">/reviews/madlan</td><td class="ltr ">organic_sessions</td><td class=" "></td><td class=" ">editorial</td><td class="ltr ">NEEDS_VERIFICATION</td><td class=" "></td></tr>
+<tr><td class=" ">הונאות נדל&quot;ן</td><td class="ltr ">he</td><td class="ltr ">trust_comparison</td><td class="ltr ">scams</td><td class=" ">buyer</td><td class="ltr ">IL</td><td class="ltr ">due_diligence</td><td class="ltr ">awareness</td><td class="ltr p0">P0</td><td class="ltr ">guide</td><td class="ltr ">/guides/real-estate-scams</td><td class="ltr ">organic_sessions</td><td class=" ">top scam patterns</td><td class=" ">attorney + police data</td><td class="ltr ">LEGAL_REVIEW</td><td class=" "></td></tr>
+<tr><td class=" ">הונאת שכירות</td><td class="ltr ">he</td><td class="ltr ">trust_comparison</td><td class="ltr ">scams</td><td class=" ">renter</td><td class="ltr ">IL</td><td class="ltr ">due_diligence</td><td class="ltr ">awareness</td><td class="ltr ">P1</td><td class="ltr ">guide</td><td class="ltr ">/guides/rental-scams</td><td class="ltr ">organic_sessions</td><td class=" "></td><td class=" ">editorial</td><td class="ltr ">LEGAL_REVIEW</td><td class=" "></td></tr>
+<tr><td class=" ">איך לבדוק קבלן</td><td class="ltr ">he</td><td class="ltr ">trust_comparison</td><td class="ltr ">due_diligence</td><td class=" ">buyer</td><td class="ltr ">IL</td><td class="ltr ">due_diligence</td><td class="ltr ">decision</td><td class="ltr p0">P0</td><td class="ltr ">guide</td><td class="ltr ">/guides/vet-developer</td><td class="ltr ">organic_sessions</td><td class=" "></td><td class=" ">Registrar of Contractors</td><td class="ltr ">LEGAL_REVIEW|OFFICIAL_SOURCE_REQUIRED</td><td class=" "></td></tr>
+<tr><td class=" ">פנקס קבלנים</td><td class="ltr ">he</td><td class="ltr ">trust_comparison</td><td class="ltr ">due_diligence</td><td class=" ">buyer</td><td class="ltr ">IL</td><td class="ltr ">navigational</td><td class="ltr ">decision</td><td class="ltr ">P1</td><td class="ltr ">guide</td><td class="ltr ">/guides/contractor-registry</td><td class="ltr ">organic_sessions</td><td class=" "></td><td class=" ">Registrar of Contractors</td><td class="ltr ">OFFICIAL_SOURCE_REQUIRED</td><td class=" "></td></tr>
+<tr><td class=" ">איך לבדוק דירה לפני קניה</td><td class="ltr ">he</td><td class="ltr ">trust_comparison</td><td class="ltr ">due_diligence</td><td class=" ">buyer</td><td class="ltr ">IL</td><td class="ltr ">due_diligence</td><td class="ltr ">decision</td><td class="ltr p0">P0</td><td class="ltr ">guide</td><td class="ltr ">/guides/pre-purchase-checklist</td><td class="ltr ">organic_sessions</td><td class=" "></td><td class=" ">attorney + inspector</td><td class="ltr ">LEGAL_REVIEW</td><td class=" "></td></tr>
+<tr><td class=" ">דירה עם עיקול</td><td class="ltr ">he</td><td class="ltr ">trust_comparison</td><td class="ltr ">due_diligence</td><td class=" ">buyer</td><td class="ltr ">IL</td><td class="ltr ">due_diligence</td><td class="ltr ">decision</td><td class="ltr ">P1</td><td class="ltr ">guide</td><td class="ltr ">/guides/apartment-with-lien</td><td class="ltr ">organic_sessions</td><td class=" "></td><td class=" ">attorney</td><td class="ltr ">LEGAL_REVIEW</td><td class=" "></td></tr>
+<tr><td class=" ">נדלן ישראל אמין</td><td class="ltr ">he</td><td class="ltr ">trust_comparison</td><td class="ltr ">platform_compare</td><td class=" ">buyer</td><td class="ltr ">IL</td><td class="ltr ">comparison</td><td class="ltr ">consideration</td><td class="ltr ">P2</td><td class="ltr ">guide</td><td class="ltr ">/compare/trusted-real-estate-platforms</td><td class="ltr ">organic_sessions</td><td class=" "></td><td class=" ">editorial</td><td class="ltr ">NEEDS_VERIFICATION</td><td class=" "></td></tr>
+<tr><td class=" ">best real estate website israel</td><td class="ltr ">en</td><td class="ltr ">trust_comparison</td><td class="ltr ">platform_compare</td><td class=" ">investor</td><td class="ltr ">INTL</td><td class="ltr ">comparison</td><td class="ltr ">consideration</td><td class="ltr ">P1</td><td class="ltr ">guide</td><td class="ltr ">/en/compare/best-real-estate-platforms</td><td class="ltr ">organic_sessions</td><td class=" "></td><td class=" ">editorial</td><td class="ltr ">NEEDS_VERIFICATION</td><td class=" "></td></tr>
+<tr><td class=" ">yad2 in english</td><td class="ltr ">en</td><td class="ltr ">trust_comparison</td><td class="ltr ">platform_compare</td><td class=" ">investor</td><td class="ltr ">INTL</td><td class="ltr ">navigational</td><td class="ltr ">consideration</td><td class="ltr ">P2</td><td class="ltr ">guide</td><td class="ltr ">/en/guides/yad2-english</td><td class="ltr ">organic_sessions</td><td class=" "></td><td class=" ">editorial</td><td class="ltr ">NEEDS_VERIFICATION</td><td class=" "></td></tr>
+<tr><td class=" ">is it safe to buy property in israel</td><td class="ltr ">en</td><td class="ltr ">trust_comparison</td><td class="ltr ">intl_due_diligence</td><td class=" ">investor</td><td class="ltr ">INTL</td><td class="ltr ">due_diligence</td><td class="ltr ">awareness</td><td class="ltr ">P1</td><td class="ltr ">guide</td><td class="ltr ">/en/guides/safety-buying-israel</td><td class="ltr ">organic_sessions</td><td class=" "></td><td class=" ">attorney + editorial</td><td class="ltr ">LEGAL_REVIEW</td><td class=" "></td></tr>
+<tr><td class=" ">real estate scams israel</td><td class="ltr ">en</td><td class="ltr ">trust_comparison</td><td class="ltr ">intl_due_diligence</td><td class=" ">investor</td><td class="ltr ">INTL</td><td class="ltr ">due_diligence</td><td class="ltr ">awareness</td><td class="ltr ">P1</td><td class="ltr ">guide</td><td class="ltr ">/en/guides/scams</td><td class="ltr ">organic_sessions</td><td class=" "></td><td class=" ">attorney + editorial</td><td class="ltr ">LEGAL_REVIEW</td><td class=" "></td></tr>
+<tr><td class=" ">דירות למכירה {city}</td><td class="ltr ">he</td><td class="ltr ">local_programmatic</td><td class="ltr ">buy_template</td><td class=" ">buyer</td><td class="ltr ">IL</td><td class="ltr ">transactional</td><td class="ltr ">decision</td><td class="ltr ">P2</td><td class="ltr ">template</td><td class="ltr ">/buy/{city}</td><td class="ltr ">organic_sessions</td><td class=" ">template — Tel Aviv/JLM/Haifa/Ramat Gan/Herzliya/Raanana/Kfar Saba/Petah Tikva/Rishon LeZion/Netanya/Beer Sheva/Ashdod/Ashkelon/Rehovot/Holon/Bat Yam/Givatayim/Modiin/Ramat HaSharon</td><td class=" ">real supply</td><td class="ltr ">NEEDS_VERIFICATION</td><td class=" ">Expand into 20+ rows once trust passes</td></tr>
+<tr><td class=" ">דירות להשכרה {city}</td><td class="ltr ">he</td><td class="ltr ">local_programmatic</td><td class="ltr ">rent_template</td><td class=" ">renter</td><td class="ltr ">IL</td><td class="ltr ">transactional</td><td class="ltr ">decision</td><td class="ltr ">P2</td><td class="ltr ">template</td><td class="ltr ">/rent/{city}</td><td class="ltr ">organic_sessions</td><td class=" ">same city list</td><td class=" ">real supply</td><td class="ltr ">NEEDS_VERIFICATION</td><td class=" "></td></tr>
+<tr><td class=" ">פרויקטים חדשים {city}</td><td class="ltr ">he</td><td class="ltr ">local_programmatic</td><td class="ltr ">projects_template</td><td class=" ">buyer</td><td class="ltr ">IL</td><td class="ltr ">commercial</td><td class="ltr ">consideration</td><td class="ltr ">P2</td><td class="ltr ">template</td><td class="ltr ">/projects/{city}</td><td class="ltr ">organic_sessions</td><td class=" ">same city list</td><td class=" ">developer-verified</td><td class="ltr ">REQUIRES_OFFICIAL_ASSET</td><td class=" "></td></tr>
+<tr><td class=" ">מחירי דירות {city}</td><td class="ltr ">he</td><td class="ltr ">local_programmatic</td><td class="ltr ">prices_template</td><td class=" ">buyer</td><td class="ltr ">IL</td><td class="ltr ">informational</td><td class="ltr ">awareness</td><td class="ltr ">P2</td><td class="ltr ">template</td><td class="ltr ">/market/prices/{city}</td><td class="ltr ">organic_sessions</td><td class=" ">city price report</td><td class=" ">CBS</td><td class="ltr ">OFFICIAL_SOURCE_REQUIRED</td><td class=" "></td></tr>
+<tr><td class=" ">תשואה ממוצעת {city}</td><td class="ltr ">he</td><td class="ltr ">local_programmatic</td><td class="ltr ">yield_template</td><td class=" ">investor</td><td class="ltr ">IL</td><td class="ltr ">informational</td><td class="ltr ">consideration</td><td class="ltr ">P2</td><td class="ltr ">template</td><td class="ltr ">/data/yields/{city}</td><td class="ltr ">organic_sessions</td><td class=" "></td><td class=" ">CBS + market</td><td class="ltr ">OFFICIAL_SOURCE_REQUIRED</td><td class=" "></td></tr>
+<tr><td class=" ">מתווכים {city}</td><td class="ltr ">he</td><td class="ltr ">local_programmatic</td><td class="ltr ">realtors_template</td><td class=" ">buyer</td><td class="ltr ">IL</td><td class="ltr ">local</td><td class="ltr ">decision</td><td class="ltr ">P2</td><td class="ltr ">template</td><td class="ltr ">/professionals/realtors/{city}</td><td class="ltr ">leads</td><td class=" "></td><td class=" ">license verification</td><td class="ltr ">REQUIRES_OFFICIAL_ASSET</td><td class=" "></td></tr>
+<tr><td class=" ">עורך דין מקרקעין {city}</td><td class="ltr ">he</td><td class="ltr ">local_programmatic</td><td class="ltr ">lawyers_template</td><td class=" ">buyer</td><td class="ltr ">IL</td><td class="ltr ">local</td><td class="ltr ">decision</td><td class="ltr ">P2</td><td class="ltr ">template</td><td class="ltr ">/professionals/lawyers/{city}</td><td class="ltr ">leads</td><td class=" "></td><td class=" ">bar verification</td><td class="ltr ">REQUIRES_OFFICIAL_ASSET</td><td class=" "></td></tr>
+<tr><td class=" ">שמאי מקרקעין {city}</td><td class="ltr ">he</td><td class="ltr ">local_programmatic</td><td class="ltr ">appraisers_template</td><td class=" ">seller</td><td class="ltr ">IL</td><td class="ltr ">local</td><td class="ltr ">decision</td><td class="ltr ">P3</td><td class="ltr ">template</td><td class="ltr ">/professionals/appraisers/{city}</td><td class="ltr ">leads</td><td class=" "></td><td class=" ">council verification</td><td class="ltr ">REQUIRES_OFFICIAL_ASSET</td><td class=" "></td></tr>
+<tr><td class=" ">התחדשות עירונית {city}</td><td class="ltr ">he</td><td class="ltr ">local_programmatic</td><td class="ltr ">renewal_template</td><td class=" ">owner</td><td class="ltr ">IL</td><td class="ltr ">local</td><td class="ltr ">consideration</td><td class="ltr ">P2</td><td class="ltr ">template</td><td class="ltr ">/urban-renewal/{city}</td><td class="ltr ">organic_sessions</td><td class=" "></td><td class=" ">municipal data</td><td class="ltr ">OFFICIAL_SOURCE_REQUIRED</td><td class=" "></td></tr>
+<tr><td class=" ">דירות למכירה {neighborhood} {city}</td><td class="ltr ">he</td><td class="ltr ">local_programmatic</td><td class="ltr ">buy_neighborhood_template</td><td class=" ">buyer</td><td class="ltr ">IL</td><td class="ltr ">transactional</td><td class="ltr ">decision</td><td class="ltr ">P3</td><td class="ltr ">template</td><td class="ltr ">/buy/{city}/{neighborhood}</td><td class="ltr ">organic_sessions</td><td class=" ">gen after city hubs</td><td class=" ">real supply</td><td class="ltr ">NEEDS_VERIFICATION</td><td class=" ">Florentin/Neve Tzedek/Sde Dov/Ramat Aviv/Old North/Kiryat Yovel etc.</td></tr>
+<tr><td class=" ">דירות להשכרה {neighborhood} {city}</td><td class="ltr ">he</td><td class="ltr ">local_programmatic</td><td class="ltr ">rent_neighborhood_template</td><td class=" ">renter</td><td class="ltr ">IL</td><td class="ltr ">transactional</td><td class="ltr ">decision</td><td class="ltr ">P3</td><td class="ltr ">template</td><td class="ltr ">/rent/{city}/{neighborhood}</td><td class="ltr ">organic_sessions</td><td class=" "></td><td class=" ">real supply</td><td class="ltr ">NEEDS_VERIFICATION</td><td class=" "></td></tr>
+<tr><td class=" ">{city} apartments for sale</td><td class="ltr ">en</td><td class="ltr ">local_programmatic</td><td class="ltr ">intl_buy_template</td><td class=" ">investor</td><td class="ltr ">INTL</td><td class="ltr ">commercial</td><td class="ltr ">decision</td><td class="ltr ">P3</td><td class="ltr ">template</td><td class="ltr ">/en/buy/{city}</td><td class="ltr ">leads</td><td class=" ">Tel Aviv/JLM/Herzliya/Netanya/Raanana/Haifa</td><td class=" ">real supply</td><td class="ltr ">NEEDS_VERIFICATION</td><td class=" "></td></tr>
+<tr><td class=" ">{city} apartments for rent</td><td class="ltr ">en</td><td class="ltr ">local_programmatic</td><td class="ltr ">intl_rent_template</td><td class=" ">renter</td><td class="ltr ">INTL</td><td class="ltr ">commercial</td><td class="ltr ">decision</td><td class="ltr ">P3</td><td class="ltr ">template</td><td class="ltr ">/en/rent/{city}</td><td class="ltr ">leads</td><td class=" ">same intl cities</td><td class=" ">real supply</td><td class="ltr ">NEEDS_VERIFICATION</td><td class=" "></td></tr>
+<tr><td class=" ">new projects {city} israel</td><td class="ltr ">en</td><td class="ltr ">local_programmatic</td><td class="ltr ">intl_projects_template</td><td class=" ">investor</td><td class="ltr ">INTL</td><td class="ltr ">commercial</td><td class="ltr ">consideration</td><td class="ltr ">P3</td><td class="ltr ">template</td><td class="ltr ">/en/projects/{city}</td><td class="ltr ">leads</td><td class=" "></td><td class=" ">developer-verified</td><td class="ltr ">REQUIRES_OFFICIAL_ASSET</td><td class=" "></td></tr>
+<tr><td class=" ">real estate lawyer {city} israel</td><td class="ltr ">en</td><td class="ltr ">local_programmatic</td><td class="ltr ">intl_lawyers_template</td><td class=" ">investor</td><td class="ltr ">INTL</td><td class="ltr ">local</td><td class="ltr ">decision</td><td class="ltr ">P3</td><td class="ltr ">template</td><td class="ltr ">/en/professionals/lawyers/{city}</td><td class="ltr ">leads</td><td class=" "></td><td class=" ">bar verification</td><td class="ltr ">REQUIRES_OFFICIAL_ASSET</td><td class=" "></td></tr>
+<tr><td class=" ">mortgage advisor {city} israel</td><td class="ltr ">en</td><td class="ltr ">local_programmatic</td><td class="ltr ">intl_mortgage_template</td><td class=" ">investor</td><td class="ltr ">INTL</td><td class="ltr ">local</td><td class="ltr ">decision</td><td class="ltr ">P3</td><td class="ltr ">template</td><td class="ltr ">/en/professionals/mortgage-advisors/{city}</td><td class="ltr ">leads</td><td class=" "></td><td class=" ">license</td><td class="ltr ">REQUIRES_OFFICIAL_ASSET</td><td class=" "></td></tr>
+<tr><td class=" ">nadlan</td><td class="ltr ">he</td><td class="ltr ">buyer_seller_core</td><td class="ltr ">brand</td><td class=" ">buyer</td><td class="ltr ">IL</td><td class="ltr ">navigational</td><td class="ltr ">awareness</td><td class="ltr ">P1</td><td class="ltr ">brand</td><td class="ltr ">/</td><td class="ltr ">direct</td><td class=" ">brand defense</td><td class=" ">brand</td><td class="ltr ">NEEDS_VERIFICATION</td><td class=" "></td></tr>
+<tr><td class=" ">nadlan israel</td><td class="ltr ">en</td><td class="ltr ">intl_investor</td><td class="ltr ">brand</td><td class=" ">investor</td><td class="ltr ">INTL</td><td class="ltr ">navigational</td><td class="ltr ">awareness</td><td class="ltr ">P1</td><td class="ltr ">brand</td><td class="ltr ">/en</td><td class="ltr ">direct</td><td class=" ">brand defense</td><td class=" ">brand</td><td class="ltr ">NEEDS_VERIFICATION</td><td class=" "></td></tr>
+<tr><td class=" ">נדלן</td><td class="ltr ">he</td><td class="ltr ">buyer_seller_core</td><td class="ltr ">category</td><td class=" ">buyer</td><td class="ltr ">IL</td><td class="ltr ">navigational</td><td class="ltr ">awareness</td><td class="ltr ">P1</td><td class="ltr ">hub</td><td class="ltr ">/</td><td class="ltr ">organic_sessions</td><td class=" ">category capture</td><td class=" ">brand</td><td class="ltr ">NEEDS_VERIFICATION</td><td class=" "></td></tr>
+<tr><td class=" ">שוק הנדלן בישראל</td><td class="ltr ">he</td><td class="ltr ">buyer_seller_core</td><td class="ltr ">market_data</td><td class=" ">buyer</td><td class="ltr ">IL</td><td class="ltr ">informational</td><td class="ltr ">awareness</td><td class="ltr ">P1</td><td class="ltr ">report</td><td class="ltr ">/market/overview</td><td class="ltr ">organic_sessions</td><td class=" ">annual overview</td><td class=" ">CBS + Bank of Israel</td><td class="ltr ">OFFICIAL_SOURCE_REQUIRED</td><td class=" "></td></tr>
+<tr><td class=" ">מחירי שכירות תל אביב</td><td class="ltr ">he</td><td class="ltr ">buyer_seller_core</td><td class="ltr ">market_data</td><td class=" ">renter</td><td class="ltr ">IL</td><td class="ltr ">informational</td><td class="ltr ">awareness</td><td class="ltr ">P1</td><td class="ltr ">data_page</td><td class="ltr ">/market/rent-prices/tel-aviv</td><td class="ltr ">organic_sessions</td><td class=" "></td><td class=" ">CBS</td><td class="ltr ">OFFICIAL_SOURCE_REQUIRED</td><td class=" "></td></tr>
+<tr><td class=" ">מחירי שכירות ירושלים</td><td class="ltr ">he</td><td class="ltr ">buyer_seller_core</td><td class="ltr ">market_data</td><td class=" ">renter</td><td class="ltr ">IL</td><td class="ltr ">informational</td><td class="ltr ">awareness</td><td class="ltr ">P2</td><td class="ltr ">data_page</td><td class="ltr ">/market/rent-prices/jerusalem</td><td class="ltr ">organic_sessions</td><td class=" "></td><td class=" ">CBS</td><td class="ltr ">OFFICIAL_SOURCE_REQUIRED</td><td class=" "></td></tr>
+<tr><td class=" ">שטח דירה ברוטו נטו</td><td class="ltr ">he</td><td class="ltr ">buyer_seller_core</td><td class="ltr ">buyer_guide</td><td class=" ">buyer</td><td class="ltr ">IL</td><td class="ltr ">informational</td><td class="ltr ">consideration</td><td class="ltr ">P2</td><td class="ltr ">guide</td><td class="ltr ">/guides/gross-vs-net-area</td><td class="ltr ">organic_sessions</td><td class=" "></td><td class=" ">attorney + appraiser</td><td class="ltr ">LEGAL_REVIEW</td><td class=" "></td></tr>
+<tr><td class=" ">מרפסת שמש</td><td class="ltr ">he</td><td class="ltr ">buyer_seller_core</td><td class="ltr ">buyer_guide</td><td class=" ">buyer</td><td class="ltr ">IL</td><td class="ltr ">informational</td><td class="ltr ">consideration</td><td class="ltr ">P3</td><td class="ltr ">guide</td><td class="ltr ">/guides/sun-balcony</td><td class="ltr ">organic_sessions</td><td class=" "></td><td class=" ">editorial</td><td class="ltr ">NEEDS_VERIFICATION</td><td class=" "></td></tr>
+<tr><td class=" ">דירת גן</td><td class="ltr ">he</td><td class="ltr ">buyer_seller_core</td><td class="ltr ">buyer_guide</td><td class=" ">buyer</td><td class="ltr ">IL</td><td class="ltr ">informational</td><td class="ltr ">consideration</td><td class="ltr ">P3</td><td class="ltr ">guide</td><td class="ltr ">/guides/garden-apartment</td><td class="ltr ">organic_sessions</td><td class=" "></td><td class=" ">editorial</td><td class="ltr ">NEEDS_VERIFICATION</td><td class=" "></td></tr>
+<tr><td class=" ">דירת גג</td><td class="ltr ">he</td><td class="ltr ">buyer_seller_core</td><td class="ltr ">buyer_guide</td><td class=" ">buyer</td><td class="ltr ">IL</td><td class="ltr ">informational</td><td class="ltr ">consideration</td><td class="ltr ">P3</td><td class="ltr ">guide</td><td class="ltr ">/guides/penthouse</td><td class="ltr ">organic_sessions</td><td class=" "></td><td class=" ">editorial</td><td class="ltr ">NEEDS_VERIFICATION</td><td class=" "></td></tr>
+<tr><td class=" ">דירת מיני פנטהאוז</td><td class="ltr ">he</td><td class="ltr ">buyer_seller_core</td><td class="ltr ">buyer_guide</td><td class=" ">buyer</td><td class="ltr ">IL</td><td class="ltr ">informational</td><td class="ltr ">consideration</td><td class="ltr ">P3</td><td class="ltr ">guide</td><td class="ltr ">/guides/mini-penthouse</td><td class="ltr ">organic_sessions</td><td class=" "></td><td class=" ">editorial</td><td class="ltr ">NEEDS_VERIFICATION</td><td class=" "></td></tr>
+<tr><td class=" ">ועד בית</td><td class="ltr ">he</td><td class="ltr ">buyer_seller_core</td><td class="ltr ">buyer_guide</td><td class=" ">owner</td><td class="ltr ">IL</td><td class="ltr ">informational</td><td class="ltr ">consideration</td><td class="ltr ">P2</td><td class="ltr ">guide</td><td class="ltr ">/guides/building-committee</td><td class="ltr ">organic_sessions</td><td class=" "></td><td class=" ">attorney</td><td class="ltr ">LEGAL_REVIEW</td><td class=" "></td></tr>
+<tr><td class=" ">ארנונה</td><td class="ltr ">he</td><td class="ltr ">buyer_seller_core</td><td class="ltr ">ownership</td><td class=" ">owner</td><td class="ltr ">IL</td><td class="ltr ">informational</td><td class="ltr ">consideration</td><td class="ltr ">P2</td><td class="ltr ">guide</td><td class="ltr ">/guides/property-tax</td><td class="ltr ">organic_sessions</td><td class=" "></td><td class=" ">municipal + attorney</td><td class="ltr ">LEGAL_REVIEW|OFFICIAL_SOURCE_REQUIRED</td><td class=" "></td></tr>
+<tr><td class=" ">ביטוח דירה</td><td class="ltr ">he</td><td class="ltr ">buyer_seller_core</td><td class="ltr ">ownership</td><td class=" ">owner</td><td class="ltr ">IL</td><td class="ltr ">commercial</td><td class="ltr ">consideration</td><td class="ltr ">P2</td><td class="ltr ">guide</td><td class="ltr ">/guides/home-insurance</td><td class="ltr ">organic_sessions</td><td class=" "></td><td class=" ">licensed insurer</td><td class="ltr ">LEGAL_REVIEW</td><td class=" "></td></tr>
+<tr><td class=" ">משכנתא לדירה ראשונה</td><td class="ltr ">he</td><td class="ltr ">tools_calculators</td><td class="ltr ">mortgage</td><td class=" ">buyer</td><td class="ltr ">IL</td><td class="ltr ">informational</td><td class="ltr ">consideration</td><td class="ltr p0">P0</td><td class="ltr ">guide</td><td class="ltr ">/mortgage/first-home</td><td class="ltr ">organic_sessions</td><td class=" "></td><td class=" ">advisor + Bank of Israel</td><td class="ltr ">LEGAL_REVIEW|OFFICIAL_SOURCE_REQUIRED</td><td class=" "></td></tr>
+<tr><td class=" ">משכנתא לדירה שניה</td><td class="ltr ">he</td><td class="ltr ">tools_calculators</td><td class="ltr ">mortgage</td><td class=" ">investor</td><td class="ltr ">IL</td><td class="ltr ">informational</td><td class="ltr ">consideration</td><td class="ltr ">P1</td><td class="ltr ">guide</td><td class="ltr ">/mortgage/second-home</td><td class="ltr ">organic_sessions</td><td class=" "></td><td class=" ">advisor</td><td class="ltr ">LEGAL_REVIEW</td><td class=" "></td></tr>
+<tr><td class=" ">מסלולי משכנתא</td><td class="ltr ">he</td><td class="ltr ">tools_calculators</td><td class="ltr ">mortgage</td><td class=" ">buyer</td><td class="ltr ">IL</td><td class="ltr ">informational</td><td class="ltr ">consideration</td><td class="ltr ">P1</td><td class="ltr ">guide</td><td class="ltr ">/mortgage/tracks</td><td class="ltr ">organic_sessions</td><td class=" "></td><td class=" ">advisor</td><td class="ltr ">LEGAL_REVIEW</td><td class=" "></td></tr>
+<tr><td class=" ">ריבית משכנתא היום</td><td class="ltr ">he</td><td class="ltr ">tools_calculators</td><td class="ltr ">mortgage</td><td class=" ">buyer</td><td class="ltr ">IL</td><td class="ltr ">informational</td><td class="ltr ">decision</td><td class="ltr ">P1</td><td class="ltr ">data_page</td><td class="ltr ">/mortgage/rates-today</td><td class="ltr ">organic_sessions</td><td class=" "></td><td class=" ">Bank of Israel daily</td><td class="ltr ">OFFICIAL_SOURCE_REQUIRED</td><td class=" "></td></tr>
+<tr><td class=" ">מחיר למשתכן</td><td class="ltr ">he</td><td class="ltr ">projects_developers</td><td class="ltr ">subsidized</td><td class=" ">buyer</td><td class="ltr ">IL</td><td class="ltr ">informational</td><td class="ltr ">consideration</td><td class="ltr ">P1</td><td class="ltr ">guide</td><td class="ltr ">/guides/mehir-lamishtaken</td><td class="ltr ">organic_sessions</td><td class=" "></td><td class=" ">Housing Ministry</td><td class="ltr ">OFFICIAL_SOURCE_REQUIRED|LEGAL_REVIEW</td><td class=" "></td></tr>
+<tr><td class=" ">דיור בהישג יד</td><td class="ltr ">he</td><td class="ltr ">projects_developers</td><td class="ltr ">subsidized</td><td class=" ">buyer</td><td class="ltr ">IL</td><td class="ltr ">informational</td><td class="ltr ">consideration</td><td class="ltr ">P2</td><td class="ltr ">guide</td><td class="ltr ">/guides/affordable-housing</td><td class="ltr ">organic_sessions</td><td class=" "></td><td class=" ">Housing Ministry</td><td class="ltr ">OFFICIAL_SOURCE_REQUIRED</td><td class=" "></td></tr>
+<tr><td class=" ">הגרלות דירות</td><td class="ltr ">he</td><td class="ltr ">projects_developers</td><td class="ltr ">subsidized</td><td class=" ">buyer</td><td class="ltr ">IL</td><td class="ltr ">navigational</td><td class="ltr ">decision</td><td class="ltr ">P1</td><td class="ltr ">data_page</td><td class="ltr ">/lottery/apartments</td><td class="ltr ">organic_sessions</td><td class=" ">active lottery list</td><td class=" ">Housing Ministry</td><td class="ltr ">OFFICIAL_SOURCE_REQUIRED</td><td class=" "></td></tr>
+<tr><td class=" ">דירות יוקרה תל אביב</td><td class="ltr ">he</td><td class="ltr ">buyer_seller_core</td><td class="ltr ">luxury</td><td class=" ">investor</td><td class="ltr ">IL</td><td class="ltr ">commercial</td><td class="ltr ">decision</td><td class="ltr ">P2</td><td class="ltr ">city_hub</td><td class="ltr ">/buy/tel-aviv/luxury</td><td class="ltr ">leads</td><td class=" ">luxury sub-hub</td><td class=" ">real supply</td><td class="ltr ">NEEDS_VERIFICATION</td><td class=" "></td></tr>
+<tr><td class=" ">luxury apartments tel aviv</td><td class="ltr ">en</td><td class="ltr ">intl_investor</td><td class="ltr ">luxury</td><td class=" ">investor</td><td class="ltr ">INTL</td><td class="ltr ">commercial</td><td class="ltr ">decision</td><td class="ltr ">P1</td><td class="ltr ">city_hub</td><td class="ltr ">/en/buy/tel-aviv/luxury</td><td class="ltr ">leads</td><td class=" "></td><td class=" ">real supply</td><td class="ltr ">NEEDS_VERIFICATION</td><td class=" "></td></tr>
+<tr><td class=" ">penthouse tel aviv for sale</td><td class="ltr ">en</td><td class="ltr ">intl_investor</td><td class="ltr ">luxury</td><td class=" ">investor</td><td class="ltr ">INTL</td><td class="ltr ">commercial</td><td class="ltr ">decision</td><td class="ltr ">P1</td><td class="ltr ">city_hub</td><td class="ltr ">/en/buy/tel-aviv/penthouse</td><td class="ltr ">leads</td><td class=" "></td><td class=" ">real supply</td><td class="ltr ">NEEDS_VERIFICATION</td><td class=" "></td></tr>
+<tr><td class=" ">beachfront apartments israel</td><td class="ltr ">en</td><td class="ltr ">intl_investor</td><td class="ltr ">luxury</td><td class=" ">investor</td><td class="ltr ">INTL</td><td class="ltr ">commercial</td><td class="ltr ">decision</td><td class="ltr ">P2</td><td class="ltr ">hub</td><td class="ltr ">/en/buy/beachfront</td><td class="ltr ">leads</td><td class=" ">coastal hub</td><td class=" ">real supply</td><td class="ltr ">NEEDS_VERIFICATION</td><td class=" "></td></tr>
+<tr><td class=" ">how to get an israeli mortgage</td><td class="ltr ">en</td><td class="ltr ">intl_investor</td><td class="ltr ">intl_finance</td><td class=" ">investor</td><td class="ltr ">INTL</td><td class="ltr ">informational</td><td class="ltr ">consideration</td><td class="ltr ">P1</td><td class="ltr ">guide</td><td class="ltr ">/en/mortgage/process</td><td class="ltr ">organic_sessions</td><td class=" "></td><td class=" ">advisor</td><td class="ltr ">LEGAL_REVIEW</td><td class=" "></td></tr>
+<tr><td class=" ">israeli property tax for foreigners</td><td class="ltr ">en</td><td class="ltr ">intl_investor</td><td class="ltr ">intl_tax</td><td class=" ">investor</td><td class="ltr ">INTL</td><td class="ltr ">informational</td><td class="ltr ">consideration</td><td class="ltr ">P1</td><td class="ltr ">guide</td><td class="ltr ">/en/tax/foreign-property-tax</td><td class="ltr ">organic_sessions</td><td class=" "></td><td class=" ">attorney + CPA</td><td class="ltr ">LEGAL_REVIEW|OFFICIAL_SOURCE_REQUIRED</td><td class=" "></td></tr>
+<tr><td class=" ">inheritance tax israel real estate</td><td class="ltr ">en</td><td class="ltr ">intl_investor</td><td class="ltr ">intl_tax</td><td class=" ">investor</td><td class="ltr ">INTL</td><td class="ltr ">informational</td><td class="ltr ">consideration</td><td class="ltr ">P2</td><td class="ltr ">guide</td><td class="ltr ">/en/tax/inheritance</td><td class="ltr ">organic_sessions</td><td class=" "></td><td class=" ">attorney + CPA</td><td class="ltr ">LEGAL_REVIEW|OFFICIAL_SOURCE_REQUIRED</td><td class=" "></td></tr>
+<tr><td class=" ">power of attorney israel real estate</td><td class="ltr ">en</td><td class="ltr ">intl_investor</td><td class="ltr ">intl_process</td><td class=" ">investor</td><td class="ltr ">INTL</td><td class="ltr ">informational</td><td class="ltr ">consideration</td><td class="ltr ">P2</td><td class="ltr ">guide</td><td class="ltr ">/en/process/power-of-attorney</td><td class="ltr ">organic_sessions</td><td class=" "></td><td class=" ">attorney</td><td class="ltr ">LEGAL_REVIEW</td><td class=" "></td></tr>
+<tr><td class=" ">בורסת נדל&quot;ן</td><td class="ltr ">he</td><td class="ltr ">buyer_seller_core</td><td class="ltr ">category</td><td class=" ">investor</td><td class="ltr ">IL</td><td class="ltr ">informational</td><td class="ltr ">awareness</td><td class="ltr ">P3</td><td class="ltr ">guide</td><td class="ltr ">/guides/real-estate-market</td><td class="ltr ">organic_sessions</td><td class=" "></td><td class=" ">editorial</td><td class="ltr ">NEEDS_VERIFICATION</td><td class=" "></td></tr>
+<tr><td class=" ">קרן ריט</td><td class="ltr ">he</td><td class="ltr ">buyer_seller_core</td><td class="ltr ">investing</td><td class=" ">investor</td><td class="ltr ">IL</td><td class="ltr ">informational</td><td class="ltr ">awareness</td><td class="ltr ">P2</td><td class="ltr ">guide</td><td class="ltr ">/guides/reit</td><td class="ltr ">organic_sessions</td><td class=" "></td><td class=" ">licensed advisor</td><td class="ltr ">LEGAL_REVIEW</td><td class=" "></td></tr>
+<tr><td class=" ">קבוצת רכישה</td><td class="ltr ">he</td><td class="ltr ">projects_developers</td><td class="ltr ">group_purchase</td><td class=" ">buyer</td><td class="ltr ">IL</td><td class="ltr ">informational</td><td class="ltr ">consideration</td><td class="ltr ">P1</td><td class="ltr ">guide</td><td class="ltr ">/guides/purchase-group</td><td class="ltr ">organic_sessions</td><td class=" "></td><td class=" ">attorney</td><td class="ltr ">LEGAL_REVIEW</td><td class=" "></td></tr>
+<tr><td class=" ">מיסוי קבוצת רכישה</td><td class="ltr ">he</td><td class="ltr ">projects_developers</td><td class="ltr ">group_purchase</td><td class=" ">buyer</td><td class="ltr ">IL</td><td class="ltr ">informational</td><td class="ltr ">consideration</td><td class="ltr ">P2</td><td class="ltr ">guide</td><td class="ltr ">/guides/purchase-group-tax</td><td class="ltr ">organic_sessions</td><td class=" "></td><td class=" ">CPA + attorney</td><td class="ltr ">LEGAL_REVIEW|OFFICIAL_SOURCE_REQUIRED</td><td class=" "></td></tr>
+<tr><td class=" ">איך לחסוך במס שבח</td><td class="ltr ">he</td><td class="ltr ">tools_calculators</td><td class="ltr ">tax</td><td class=" ">seller</td><td class="ltr ">IL</td><td class="ltr ">informational</td><td class="ltr ">decision</td><td class="ltr ">P1</td><td class="ltr ">guide</td><td class="ltr ">/guides/capital-gains-savings</td><td class="ltr ">organic_sessions</td><td class=" "></td><td class=" ">CPA + attorney</td><td class="ltr ">LEGAL_REVIEW</td><td class=" "></td></tr>
+<tr><td class=" ">פטור ממס שבח דירה יחידה</td><td class="ltr ">he</td><td class="ltr ">tools_calculators</td><td class="ltr ">tax</td><td class=" ">seller</td><td class="ltr ">IL</td><td class="ltr ">informational</td><td class="ltr ">decision</td><td class="ltr ">P1</td><td class="ltr ">guide</td><td class="ltr ">/guides/single-home-exemption</td><td class="ltr ">organic_sessions</td><td class=" "></td><td class=" ">CPA + attorney</td><td class="ltr ">LEGAL_REVIEW|OFFICIAL_SOURCE_REQUIRED</td><td class=" "></td></tr>
+<tr><td class=" ">שיפוץ מטבח מחיר</td><td class="ltr ">he</td><td class="ltr ">tools_calculators</td><td class="ltr ">renovation</td><td class=" ">buyer</td><td class="ltr ">IL</td><td class="ltr ">commercial</td><td class="ltr ">consideration</td><td class="ltr ">P2</td><td class="ltr ">guide</td><td class="ltr ">/guides/kitchen-renovation-cost</td><td class="ltr ">organic_sessions</td><td class=" "></td><td class=" ">contractor survey</td><td class="ltr ">NEEDS_VERIFICATION</td><td class=" "></td></tr>
+<tr><td class=" ">שיפוץ אמבטיה מחיר</td><td class="ltr ">he</td><td class="ltr ">tools_calculators</td><td class="ltr ">renovation</td><td class=" ">buyer</td><td class="ltr ">IL</td><td class="ltr ">commercial</td><td class="ltr ">consideration</td><td class="ltr ">P2</td><td class="ltr ">guide</td><td class="ltr ">/guides/bathroom-renovation-cost</td><td class="ltr ">organic_sessions</td><td class=" "></td><td class=" ">contractor survey</td><td class="ltr ">NEEDS_VERIFICATION</td><td class=" "></td></tr>
+<tr><td class=" ">מחיר ריצוף למטר</td><td class="ltr ">he</td><td class="ltr ">tools_calculators</td><td class="ltr ">renovation</td><td class=" ">buyer</td><td class="ltr ">IL</td><td class="ltr ">commercial</td><td class="ltr ">consideration</td><td class="ltr ">P3</td><td class="ltr ">guide</td><td class="ltr ">/guides/flooring-cost-per-sqm</td><td class="ltr ">organic_sessions</td><td class=" "></td><td class=" ">contractor survey</td><td class="ltr ">NEEDS_VERIFICATION</td><td class=" "></td></tr>
+<tr><td class=" ">זמן שיפוץ דירה</td><td class="ltr ">he</td><td class="ltr ">tools_calculators</td><td class="ltr ">renovation</td><td class=" ">buyer</td><td class="ltr ">IL</td><td class="ltr ">informational</td><td class="ltr ">consideration</td><td class="ltr ">P3</td><td class="ltr ">guide</td><td class="ltr ">/guides/renovation-timeline</td><td class="ltr ">organic_sessions</td><td class=" "></td><td class=" ">contractor survey</td><td class="ltr ">NEEDS_VERIFICATION</td><td class=" "></td></tr>
+<tr><td class=" ">היתר בניה תוספת</td><td class="ltr ">he</td><td class="ltr ">urban_renewal</td><td class="ltr ">permits</td><td class=" ">owner</td><td class="ltr ">IL</td><td class="ltr ">informational</td><td class="ltr ">consideration</td><td class="ltr ">P2</td><td class="ltr ">guide</td><td class="ltr ">/guides/extension-permit</td><td class="ltr ">organic_sessions</td><td class=" "></td><td class=" ">municipal + attorney</td><td class="ltr ">LEGAL_REVIEW|OFFICIAL_SOURCE_REQUIRED</td><td class=" "></td></tr>
+<tr><td class=" ">חריגות בניה</td><td class="ltr ">he</td><td class="ltr ">urban_renewal</td><td class="ltr ">permits</td><td class=" ">owner</td><td class="ltr ">IL</td><td class="ltr ">informational</td><td class="ltr ">consideration</td><td class="ltr ">P2</td><td class="ltr ">guide</td><td class="ltr ">/guides/building-violations</td><td class="ltr ">organic_sessions</td><td class=" "></td><td class=" ">attorney</td><td class="ltr ">LEGAL_REVIEW</td><td class=" "></td></tr>
+<tr><td class=" ">טופס 4</td><td class="ltr ">he</td><td class="ltr ">urban_renewal</td><td class="ltr ">permits</td><td class=" ">buyer</td><td class="ltr ">IL</td><td class="ltr ">informational</td><td class="ltr ">decision</td><td class="ltr ">P1</td><td class="ltr ">guide</td><td class="ltr ">/guides/form-4</td><td class="ltr ">organic_sessions</td><td class=" ">occupancy permit</td><td class=" ">attorney + municipal</td><td class="ltr ">LEGAL_REVIEW|OFFICIAL_SOURCE_REQUIRED</td><td class=" "></td></tr>
+<tr><td class=" ">רישום בית משותף</td><td class="ltr ">he</td><td class="ltr ">urban_renewal</td><td class="ltr ">permits</td><td class=" ">owner</td><td class="ltr ">IL</td><td class="ltr ">informational</td><td class="ltr ">consideration</td><td class="ltr ">P2</td><td class="ltr ">guide</td><td class="ltr ">/guides/condominium-registration</td><td class="ltr ">organic_sessions</td><td class=" "></td><td class=" ">attorney + Land Registry</td><td class="ltr ">LEGAL_REVIEW|OFFICIAL_SOURCE_REQUIRED</td><td class=" "></td></tr>
+<tr><td class=" ">פרצלציה</td><td class="ltr ">he</td><td class="ltr ">urban_renewal</td><td class="ltr ">planning</td><td class=" ">owner</td><td class="ltr ">IL</td><td class="ltr ">informational</td><td class="ltr ">consideration</td><td class="ltr ">P3</td><td class="ltr ">guide</td><td class="ltr ">/guides/parcellation</td><td class="ltr ">organic_sessions</td><td class=" "></td><td class=" ">attorney</td><td class="ltr ">LEGAL_REVIEW</td><td class=" "></td></tr>
+<tr><td class=" ">היטל השבחה</td><td class="ltr ">he</td><td class="ltr ">urban_renewal</td><td class="ltr ">planning</td><td class=" ">owner</td><td class="ltr ">IL</td><td class="ltr ">informational</td><td class="ltr ">consideration</td><td class="ltr ">P1</td><td class="ltr ">guide</td><td class="ltr ">/guides/betterment-levy</td><td class="ltr ">organic_sessions</td><td class=" "></td><td class=" ">attorney + appraiser</td><td class="ltr ">LEGAL_REVIEW|OFFICIAL_SOURCE_REQUIRED</td><td class=" "></td></tr>
+<tr><td class=" ">דמי הסכמה</td><td class="ltr ">he</td><td class="ltr ">urban_renewal</td><td class="ltr ">planning</td><td class=" ">owner</td><td class="ltr ">IL</td><td class="ltr ">informational</td><td class="ltr ">consideration</td><td class="ltr ">P2</td><td class="ltr ">guide</td><td class="ltr ">/guides/consent-fee</td><td class="ltr ">organic_sessions</td><td class=" ">ILA</td><td class=" ">attorney</td><td class="ltr ">LEGAL_REVIEW|OFFICIAL_SOURCE_REQUIRED</td><td class=" "></td></tr>
+<tr><td class=" ">חכירה מהוונת</td><td class="ltr ">he</td><td class="ltr ">urban_renewal</td><td class="ltr ">planning</td><td class=" ">owner</td><td class="ltr ">IL</td><td class="ltr ">informational</td><td class="ltr ">consideration</td><td class="ltr ">P2</td><td class="ltr ">guide</td><td class="ltr ">/guides/capitalized-lease</td><td class="ltr ">organic_sessions</td><td class=" ">ILA</td><td class=" ">attorney</td><td class="ltr ">LEGAL_REVIEW|OFFICIAL_SOURCE_REQUIRED</td><td class=" "></td></tr>
+<tr><td class=" ">מנהל מקרקעי ישראל</td><td class="ltr ">he</td><td class="ltr ">urban_renewal</td><td class="ltr ">planning</td><td class=" ">owner</td><td class="ltr ">IL</td><td class="ltr ">navigational</td><td class="ltr ">awareness</td><td class="ltr ">P2</td><td class="ltr ">guide</td><td class="ltr ">/guides/ila</td><td class="ltr ">organic_sessions</td><td class=" "></td><td class=" ">ILA</td><td class="ltr ">OFFICIAL_SOURCE_REQUIRED</td><td class=" "></td></tr>
+<tr><td class=" ">how does tama 38 work</td><td class="ltr ">en</td><td class="ltr ">intl_investor</td><td class="ltr ">intl_renewal</td><td class=" ">investor</td><td class="ltr ">INTL</td><td class="ltr ">informational</td><td class="ltr ">awareness</td><td class="ltr ">P2</td><td class="ltr ">guide</td><td class="ltr ">/en/urban-renewal/tama-38-how-it-works</td><td class="ltr ">organic_sessions</td><td class=" "></td><td class=" ">attorney</td><td class="ltr ">LEGAL_REVIEW</td><td class=" "></td></tr>
+<tr><td class=" ">property management israel</td><td class="ltr ">en</td><td class="ltr ">intl_investor</td><td class="ltr ">intl_services</td><td class=" ">investor</td><td class="ltr ">INTL</td><td class="ltr ">commercial</td><td class="ltr ">decision</td><td class="ltr ">P2</td><td class="ltr ">directory</td><td class="ltr ">/en/professionals/property-management</td><td class="ltr ">leads</td><td class=" "></td><td class=" ">vetting</td><td class="ltr ">REQUIRES_OFFICIAL_ASSET</td><td class=" "></td></tr>
+<tr><td class=" ">short term rental israel laws</td><td class="ltr ">en</td><td class="ltr ">intl_investor</td><td class="ltr ">intl_legal</td><td class=" ">investor</td><td class="ltr ">INTL</td><td class="ltr ">informational</td><td class="ltr ">consideration</td><td class="ltr ">P2</td><td class="ltr ">guide</td><td class="ltr ">/en/legal/short-term-rentals</td><td class="ltr ">organic_sessions</td><td class=" "></td><td class=" ">attorney</td><td class="ltr ">LEGAL_REVIEW|OFFICIAL_SOURCE_REQUIRED</td><td class=" "></td></tr>
+<tr><td class=" ">airbnb tel aviv regulations</td><td class="ltr ">en</td><td class="ltr ">intl_investor</td><td class="ltr ">intl_legal</td><td class=" ">investor</td><td class="ltr ">INTL</td><td class="ltr ">informational</td><td class="ltr ">consideration</td><td class="ltr ">P2</td><td class="ltr ">guide</td><td class="ltr ">/en/legal/airbnb-tel-aviv</td><td class="ltr ">organic_sessions</td><td class=" "></td><td class=" ">attorney + municipal</td><td class="ltr ">LEGAL_REVIEW|OFFICIAL_SOURCE_REQUIRED</td><td class=" "></td></tr>
+<tr><td class=" ">real estate agents tel aviv english speaking</td><td class="ltr ">en</td><td class="ltr ">intl_investor</td><td class="ltr ">intl_professionals</td><td class=" ">investor</td><td class="ltr ">INTL</td><td class="ltr ">local</td><td class="ltr ">decision</td><td class="ltr ">P1</td><td class="ltr ">directory</td><td class="ltr ">/en/professionals/realtors/tel-aviv</td><td class="ltr ">leads</td><td class=" "></td><td class=" ">license verification</td><td class="ltr ">REQUIRES_OFFICIAL_ASSET</td><td class=" "></td></tr>
+<tr><td class=" ">nefesh b'nefesh real estate</td><td class="ltr ">en</td><td class="ltr ">intl_investor</td><td class="ltr ">intl_aliyah</td><td class=" ">investor</td><td class="ltr ">US</td><td class="ltr ">navigational</td><td class="ltr ">awareness</td><td class="ltr ">P3</td><td class="ltr ">guide</td><td class="ltr ">/en/aliyah/partners</td><td class="ltr ">organic_sessions</td><td class=" "></td><td class=" ">partnership outreach</td><td class="ltr ">NEEDS_VERIFICATION</td><td class=" "></td></tr>
+<tr><td class=" ">how to get a mashkanta</td><td class="ltr ">en</td><td class="ltr ">intl_investor</td><td class="ltr ">intl_finance</td><td class=" ">investor</td><td class="ltr ">INTL</td><td class="ltr ">informational</td><td class="ltr ">consideration</td><td class="ltr ">P2</td><td class="ltr ">guide</td><td class="ltr ">/en/mortgage/mashkanta-explained</td><td class="ltr ">organic_sessions</td><td class=" "></td><td class=" ">advisor</td><td class="ltr ">LEGAL_REVIEW</td><td class=" "></td></tr>
+<tr><td class=" ">arnona tel aviv</td><td class="ltr ">en</td><td class="ltr ">intl_investor</td><td class="ltr ">intl_ownership</td><td class=" ">investor</td><td class="ltr ">INTL</td><td class="ltr ">informational</td><td class="ltr ">consideration</td><td class="ltr ">P2</td><td class="ltr ">guide</td><td class="ltr ">/en/ownership/arnona-tel-aviv</td><td class="ltr ">organic_sessions</td><td class=" "></td><td class=" ">municipal</td><td class="ltr ">OFFICIAL_SOURCE_REQUIRED</td><td class=" "></td></tr>
+<tr><td class=" ">cost of living tel aviv</td><td class="ltr ">en</td><td class="ltr ">intl_investor</td><td class="ltr ">intl_overview</td><td class=" ">investor</td><td class="ltr ">INTL</td><td class="ltr ">informational</td><td class="ltr ">awareness</td><td class="ltr ">P2</td><td class="ltr ">guide</td><td class="ltr ">/en/lifestyle/cost-of-living-tel-aviv</td><td class="ltr ">organic_sessions</td><td class=" "></td><td class=" ">CBS + survey</td><td class="ltr ">OFFICIAL_SOURCE_REQUIRED</td><td class=" "></td></tr>
+<tr><td class=" ">best neighborhoods tel aviv</td><td class="ltr ">en</td><td class="ltr ">intl_investor</td><td class="ltr ">intl_neighborhoods</td><td class=" ">investor</td><td class="ltr ">INTL</td><td class="ltr ">informational</td><td class="ltr ">consideration</td><td class="ltr ">P1</td><td class="ltr ">guide</td><td class="ltr ">/en/neighborhoods/tel-aviv</td><td class="ltr ">organic_sessions</td><td class=" ">Anglo-relevant</td><td class=" ">editorial + data</td><td class="ltr ">NEEDS_VERIFICATION</td><td class=" "></td></tr>
+<tr><td class=" ">best neighborhoods jerusalem</td><td class="ltr ">en</td><td class="ltr ">intl_investor</td><td class="ltr ">intl_neighborhoods</td><td class=" ">investor</td><td class="ltr ">INTL</td><td class="ltr ">informational</td><td class="ltr ">consideration</td><td class="ltr ">P2</td><td class="ltr ">guide</td><td class="ltr ">/en/neighborhoods/jerusalem</td><td class="ltr ">organic_sessions</td><td class=" "></td><td class=" ">editorial</td><td class="ltr ">NEEDS_VERIFICATION</td><td class=" "></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section>
+      <h2>קטעי מקור מ-Report 2</h2>
+      <details open><summary>סיכום אסטרטגי מקורי</summary><pre>A. Strategy Summary — What This Universe Is Trying To Win
+
+NadLan's keyword universe is built to win three compounding positions at once:
+
+
+
+
+
+Trusted Israeli real-estate intelligence layer — own informational + comparison + due-diligence queries that Yad2/Madlan under-serve (urban renewal, tax/mortgage explainers, project verification, professional vetting). This is where E-E-A-T + AI-search (AEO) wins; it's the moat.
+
+
+
+Programmatic local marketplace surface — city × neighborhood × intent templates (buy / rent / new projects / yields) that scale once data + trust are real. Held at P2 until the trust gate passes; building these early would replay the fake-facade failure at city scale.
+
+
+
+International investor funnel — English-language, high-CPC, high-LTV queries (Tel Aviv apartments, foreign-buyer tax, Sde Dov, Aliyah real estate). Smaller volume, outsized commercial value; requires LEGAL_REVIEW and an EN surface that doesn't exist yet.
+
+Cross-cutting wins: AEO (questions in HE + EN structured as FAQPage / HowTo), tool-led acquisition (calculators with honest methodology), and a professional directory that is vetted, not seeded with demos.
+
+What we are explicitly NOT trying to win in v1: listing-level long-tail (&quot;3 חדרים רמת אביב להשכרה 4500 שח&quot;) — that is Yad2's commodity layer and requires real supply before SEO.</pre></details>
+      <details><summary>תוכנית טאבים מקורית</summary><pre>B. Workbook Tab Plan (Excel)
+
+Workbook file: audits/keyword-universe/nadlan-keyword-workbook.xlsx.
+
+
+
+
+
+
+
+Tab
+
+
+
+Purpose
+
+
+
+Source
+
+
+
+
+
+00_README
+
+
+
+Legend, flags, color codes, owners, refresh cadence, link to Report 0/1/2
+
+
+
+Manual
+
+
+
+
+
+01_Master
+
+
+
+Full universe (this CSV). Single source of truth. Never edit downstream tabs — filter from here.
+
+
+
+Section C CSV
+
+
+
+
+
+02_HE_Buyer_Seller
+
+
+
+Cluster 1 rows
+
+
+
+Filter cluster=buyer_seller_core
+
+
+
+
+
+03_Projects_Developers
+
+
+
+Cluster 2 rows
+
+
+
+Filter cluster=projects_developers
+
+
+
+
+
+04_Intl_Investor_EN
+
+
+
+Cluster 3 rows
+
+
+
+Filter cluster=intl_investor
+
+
+
+
+
+05_Tools_Calculators
+
+
+
+Cluster 4 rows
+
+
+
+Filter cluster=tools_calculators
+
+
+
+
+
+06_Professionals
+
+
+
+Cluster 5 rows
+
+
+
+Filter cluster=professionals_directory
+
+
+
+
+
+07_Urban_Renewal
+
+
+
+Cluster 6 rows
+
+
+
+Filter cluster=urban_renewal
+
+
+
+
+
+08_Showroom_3D
+
+
+
+Cluster 7 rows
+
+
+
+Filter cluster=showroom_3d
+
+
+
+
+
+09_Trust_Comparison
+
+
+
+Cluster 8 rows
+
+
+
+Filter cluster=trust_comparison
+
+
+
+
+
+10_Local_Programmatic
+
+
+
+Cluster 9 rows + city/neighborhood template grid
+
+
+
+Filter cluster=local_programmatic
+
+
+
+
+
+11_Semrush_HE
+
+
+
+To be filled in Report 3: volume, KD, CPC, SERP features (HE database il)
+
+
+
+Semrush
+
+
+
+
+
+12_Semrush_EN_Intl
+
+
+
+To be filled in Report 4: EN-language volumes (us, gb, il)
+
+
+
+Semrush
+
+
+
+
+
+13_Hub_Spoke_Map
+
+
+
+After Semrush: hub URL ← spoke URLs, cannibalization check
+
+
+
+Manual + Report 7
+
+
+
+
+
+14_Editorial_Calendar
+
+
+
+Sequenced publishing plan, owner, status, trust gate
+
+
+
+Manual + Report 9
+
+
+
+
+
+15_Legal_Review_Queue
+
+
+
+All LEGAL_REVIEW rows pulled out for counsel sign-off
+
+
+
+Filter on flag
+
+
+
+
+
+16_Asset_Request_Queue
+
+
+
+All REQUIRES_OFFICIAL_ASSET rows — developer/marketer outreach list
+
+
+
+Filter on flag</pre></details>
+      <details><summary>הוראות חלוקה וצבעים</summary><pre>D. Division Instructions — How To Split Master Into Tabs + Color/Flag Rows
+
+Split rule: never duplicate rows. Each cluster tab (02_… through 10_…) is a filtered view of 01_Master by the cluster column — implemented as a real Excel filter, a FILTER() formula in modern Excel, or a power-query pull. If a row's cluster changes, edit 01_Master; views refresh.
+
+Row-level conditional formatting (apply on 01_Master, inherited by tabs):
+
+
+
+
+
+
+
+Condition
+
+
+
+Fill color
+
+
+
+Meaning
+
+
+
+
+
+priority = P0
+
+
+
+Red #FCA5A5
+
+
+
+Highest leverage; ship first after trust gate
+
+
+
+
+
+priority = P1
+
+
+
+Amber #FCD34D
+
+
+
+Next wave
+
+
+
+
+
+priority = P2
+
+
+
+Green #A7F3D0
+
+
+
+Scale layer
+
+
+
+
+
+priority = P3
+
+
+
+Gray #E5E7EB
+
+
+
+Long-tail / template expansion
+
+
+
+
+
+verification_flag contains LEGAL_REVIEW
+
+
+
+Left border red #B91C1C
+
+
+
+Blocked until counsel signs off
+
+
+
+
+
+verification_flag contains REQUIRES_OFFICIAL_ASSET
+
+
+
+Left border purple #7C3AED
+
+
+
+Blocked until developer/marketer/registry asset received
+
+
+
+
+
+verification_flag contains OFFICIAL_SOURCE_REQUIRED
+
+
+
+Left border blue #1D4ED8
+
+
+
+Blocked until CBS/Tax/BoI/municipal source linked
+
+
+
+
+
+recommended_page_type = tool
+
+
+
+Cell background language col cyan #CFFAFE
+
+
+
+Calculator — needs methodology + disclaimer
+
+
+
+
+
+cluster = local_programmatic AND priority ≤ P2
+
+
+
+Strikethrough until trust gate passes
+
+
+
+Programmatic launch requires real supply
+
+Status column to add downstream (in Report 7+): status ∈ {backlog, drafting, review, legal, ready, published, holding}. Don't add yet; keep 01_Master clean.
+
+Owner column to add in 14_Editorial_Calendar: owner_editorial, owner_legal, owner_data, owner_dev.
+
+Refresh cadence: Semrush HE tab refreshed monthly; EN tab quarterly. Master keyword list reviewed every release of Report 7 (hub map).</pre></details>
+      <details><summary>Top 25 מתוך הדוח</summary><pre>E. Top 25 Immediate SEO Content Opportunities (after Stage 1 trust cleanup passes)
+
+Ranked by leverage (intent strength × feasibility × trust-readiness × commercial value). All require their listed flags resolved before publish.
+
+
+
+
+
+מחשבון משכנתא — flagship calculator, repeat-traffic + AEO. (LEGAL_REVIEW)
+
+
+
+מחשבון מס רכישה — high transactional + first/second-home brackets. (LEGAL_REVIEW + OFFICIAL_SOURCE_REQUIRED)
+
+
+
+מחשבון מס שבח — seller-side counterpart. (LEGAL_REVIEW + OFFICIAL_SOURCE_REQUIRED)
+
+
+
+תהליך קניית דירה — pillar guide, internal-link spine. (LEGAL_REVIEW)
+
+
+
+תמא 38 — pillar; routes to TAMA 38/1, 38/2, rights, tax. (LEGAL_REVIEW)
+
+
+
+פינוי בינוי — pillar; routes to rights, refusing-tenant, tax. (LEGAL_REVIEW)
+
+
+
+התחדשות עירונית — hub above TAMA + Pinui-Binui pillars. (LEGAL_REVIEW)
+
+
+
+כמה שווה הדירה שלי — existing estimator URL, fix per Report 1 then promote.
+
+
+
+איך לבדוק קבלן — high-trust due-diligence; Registrar of Contractors integration. (LEGAL_REVIEW + OFFICIAL_SOURCE_REQUIRED)
+
+
+
+הונאות נדל&quot;ן — definitive Hebrew scams guide; AEO + brand-trust. (LEGAL_REVIEW)
+
+
+
+מס רכישה דירה ראשונה — companion to calculator. (LEGAL_REVIEW + OFFICIAL_SOURCE_REQUIRED)
+
+
+
+מס רכישה דירה שניה — investor-intent traffic. (LEGAL_REVIEW + OFFICIAL_SOURCE_REQUIRED)
+
+
+
+זיכרון דברים דירה — transactional moment; download template. (LEGAL_REVIEW)
+
+
+
+חוזה שכירות לדוגמא — high-volume template download → email capture. (LEGAL_REVIEW)
+
+
+
+מחירי דירות 2026 — annual market report; PR + backlink magnet. (OFFICIAL_SOURCE_REQUIRED)
+
+
+
+שוק הנדלן בישראל — evergreen overview pairing with #15. (OFFICIAL_SOURCE_REQUIRED)
+
+
+
+buying property in israel — EN intl pillar; opens international funnel. (LEGAL_REVIEW)
+
+
+
+foreign buyer purchase tax israel — highest commercial intent EN. (LEGAL_REVIEW + OFFICIAL_SOURCE_REQUIRED)
+
+
+
+mortgage in israel for foreigners — EN finance pillar. (LEGAL_REVIEW)
+
+
+
+tel aviv apartments for sale (EN) — intl city hub; needs real supply.
+
+
+
+purchase tax calculator israel (EN) — EN calculator; high commercial intent. (LEGAL_REVIEW + OFFICIAL_SOURCE_REQUIRED)
+
+
+
+פרויקטים חדשים שדה דב — existing flagship area; only after Sde Dov asset gate. (REQUIRES_OFFICIAL_ASSET + OFFICIAL_SOURCE_REQUIRED)
+
+
+
+מחשבון תשואה דירה — investor calculator, repeat traffic.
+
+
+
+יד2 או מדלן — high-intent comparison; brand-defining if editorial integrity holds.
+
+
+
+הגרלות דירות (Mehir LaMishtaken lottery list) — recurring high-intent traffic. (OFFICIAL_SOURCE_REQUIRED)</pre></details>
+      <details><summary>מה לא לפרסם לפני מוכנות</summary><pre>F. Keywords That Must NOT Be Targeted Yet
+
+Blocked on Stage 1 trust cleanup (Report 1):
+
+
+
+
+
+All cluster=local_programmatic rows (P2/P3 templates) — programmatic scaling on top of a leaky site multiplies failure.
+
+
+
+All P1 city דירות למכירה {city} / דירות להשכרה {city} rows — Yad2-class queries with no real supply guarantee a bounce/quality-signal loss.
+
+
+
+פרויקט דמרי שדה דב, פרויקט רינבו תל אביב — must pass the showroom state-machine + REQUIRES_OFFICIAL_ASSET gate before any promotion or schema work.
+
+Blocked on LEGAL_REVIEW (must not publish without counsel sign-off):
+
+
+
+
+
+All tax queries: מס רכישה …, מס שבח …, מחשבון מס רכישה, מחשבון מס שבח, איך לחסוך במס שבח, פטור ממס שבח דירה יחידה, and EN equivalents (foreign buyer purchase tax …, inheritance tax israel real estate).
+
+
+
+All mortgage explainers and calculators: מחשבון משכנתא, מחשבון יכולת החזר, מחשבון עמלת פירעון מוקדם, מסלולי משכנתא, israeli mortgage calculator english, how to get a mashkanta.
+
+
+
+All urban-renewal pillars and sub-guides: תמא 38 …, פינוי בינוי …, דייר סרבן, היטל השבחה, דמי הסכמה, חכירה מהוונת, טופס 4, רישום בית משותף.
+
+
+
+All buyer-rights / contract content: זכויות קונה דירה מקבלן, זיכרון דברים דירה, ביטול עסקת דירה, חוזה שכירות לדוגמא, דירה עם עיקול.
+
+
+
+All EN intl legal/tax/finance pages (/en/tax/*, /en/mortgage/*, /en/legal/*, /en/process/power-of-attorney).
+
+
+
+Comparative / &quot;recommended&quot; professional directories (מתווכים מומלצים, יועץ משכנתאות מומלץ, דירוג חברות בניה) — methodology + defamation risk.
+
+Blocked on REQUIRES_OFFICIAL_ASSET (developer/registry data):
+
+
+
+
+
+All cluster=projects_developers project- and developer-specific pages.
+
+
+
+All professionals_directory rows without verified license/bar/registry data — including city templates.
+
+
+
+showroom_3d rows depending on real tour or render assets (no concept-as-official fallback).
+
+Blocked on OFFICIAL_SOURCE_REQUIRED (CBS / Tax Authority / Bank of Israel / Land Registry / Housing Ministry / ILA / municipal):
+
+
+
+
+
+All market-data pages (מחירי דירות 2026, מדד מחירי דירות, שוק הנדלן בישראל, city price/yield/rent-price reports, EN market reports).
+
+
+
+הגרלות דירות, מחיר למשתכן, דיור בהישג יד.
+
+
+
+ריבית משכנתא היום — daily data dependency.
+
+
+
+נסח טאבו אונליין, פנקס קבלנים, מנהל מקרקעי ישראל reference pages.
+
+Brand-risk / out of scope for v1:
+
+
+
+
+
+Lead-gen pages for קבוצת רכישה until partnership + legal model exists (LEGAL_REVIEW).
+
+
+
+nefesh b'nefesh real estate — do not target until partnership / disclosure is real.
+
+
+
+Any &quot;best X in Israel&quot; superlative without published methodology — exposes us to the same trust collapse we're trying to solve.</pre></details>
+    </section>
+  </main>
+</body>
+</html>

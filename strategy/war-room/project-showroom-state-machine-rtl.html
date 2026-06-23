@@ -1,0 +1,124 @@
+﻿<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>מכונת מצבים לשוורום פרויקט</title>
+  <style>
+    :root{--paper:#f7f1e8;--card:#fffaf2;--ink:#211915;--muted:#71685f;--line:#ded2c3;--accent:#8f5d2a;--green:#24483f;--red:#8f2e24;--shadow:0 18px 55px rgba(44,31,20,.10)}
+    *{box-sizing:border-box}
+    body{margin:0;background:var(--paper);color:var(--ink);font-family:Arial,"Noto Sans Hebrew",sans-serif;line-height:1.65}
+    a{color:inherit}
+    .wrap{width:min(1160px,calc(100% - 30px));margin:0 auto}
+    header{padding:34px 0 30px;border-bottom:1px solid var(--line);background:linear-gradient(180deg,#fffaf4 0%,#f7f1e8 100%)}
+    .eyebrow{color:var(--accent);font-weight:700;margin-bottom:12px}
+    h1{margin:0;max-width:980px;font-family:Georgia,"Times New Roman",serif;font-size:clamp(34px,5vw,68px);line-height:1.05;letter-spacing:0}
+    .lead{max-width:930px;color:var(--muted);font-size:20px;margin:18px 0 0}
+    .meta{display:flex;flex-wrap:wrap;gap:10px;margin-top:22px;color:var(--muted)}
+    .pill{border:1px solid var(--line);background:rgba(255,255,255,.6);padding:7px 12px;border-radius:999px;font-size:14px}
+    main{padding:28px 0 60px}
+    .stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin:0 0 24px}
+    .stat{background:var(--card);border:1px solid var(--line);padding:18px;box-shadow:var(--shadow);min-height:116px}
+    .stat b{display:block;font-family:Georgia,"Times New Roman",serif;font-size:38px;line-height:1;margin-bottom:10px}
+    .stat span{color:var(--muted);font-size:15px}
+    .grid{display:grid;grid-template-columns:1.04fr .96fr;gap:22px;align-items:start}
+    section{background:var(--card);border:1px solid var(--line);box-shadow:var(--shadow);padding:24px;margin-bottom:22px}
+    h2,h3{font-family:Georgia,"Times New Roman",serif;margin:0 0 12px;line-height:1.18}
+    h2{font-size:30px}
+    h3{font-size:21px}
+    p{margin:0 0 12px}
+    .callout{border-inline-start:5px solid var(--green);background:#eef7f1;padding:14px 16px;margin:16px 0}
+    .warn{border-inline-start:5px solid var(--red);background:#fff3ee;padding:14px 16px;margin:16px 0}
+    .cards{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+    .card{border:1px solid var(--line);background:#fffdf8;padding:16px;min-height:136px}
+    .card strong{display:block;font-size:18px;margin-bottom:6px}
+    .card small{display:block;color:var(--muted);font-size:14px}
+    .flow{display:grid;gap:12px;counter-reset:state}
+    .state{display:grid;grid-template-columns:auto 1fr;gap:12px;border-top:1px solid var(--line);padding-top:14px}
+    .state:before{counter-increment:state;content:counter(state);width:30px;height:30px;border:1px solid var(--line);border-radius:50%;display:grid;place-items:center;color:var(--accent);background:#fff}
+    table{width:100%;border-collapse:collapse;background:#fffdf8;border:1px solid var(--line)}
+    th,td{border-bottom:1px solid var(--line);padding:10px;text-align:right;vertical-align:top;font-size:14px}
+    th{background:#efe5d8;font-weight:700}
+    .files a{display:flex;justify-content:space-between;gap:12px;border-top:1px solid var(--line);padding:10px 0;text-decoration:none}
+    .open{background:var(--ink);color:#fff;padding:5px 10px;font-size:13px;white-space:nowrap}
+    @media(max-width:860px){.grid,.stats,.cards{grid-template-columns:1fr}h1{font-size:38px}.lead{font-size:17px}section{padding:18px}.wrap{width:min(100% - 22px,1160px)}table,thead,tbody,tr,td{display:block;width:100%}thead{display:none}tr{border:1px solid var(--line);margin:10px 0;background:#fffdf8}td{display:grid;grid-template-columns:42% 58%;gap:8px;padding:8px;overflow-wrap:anywhere;font-size:13px}td:nth-child(1)::before{content:"מצב";font-weight:700}td:nth-child(2)::before{content:"מה מפעיל";font-weight:700}td:nth-child(3)::before{content:"חובה";font-weight:700}td:nth-child(4)::before{content:"בדיקת קבלה";font-weight:700}}
+  </style>
+</head>
+<body>
+  <header>
+    <div class="wrap">
+      <div class="eyebrow">שוורום פרויקט · מכונת מצבים וחוזה נתונים</div>
+      <h1>השוורום לא מנחש. הוא מציג אמת נכסים לפי מצב מוכח.</h1>
+      <p class="lead">המסמך הזה הופך את רעיון השוורום למערכת בנייה מדויקת: מה קורה כשיש מודל רשמי, חזית רשמית, חזית להמחשה, חסרים חומרים, נבחרת דירה, המפה לא מוכנה, או נפתחת פנייה.</p>
+      <div class="meta">
+        <span class="pill">עודכן: 23 ביוני 2026</span>
+        <span class="pill">15 מצבי מוצר</span>
+        <span class="pill">20 שדות ניהול</span>
+        <span class="pill">שתי דוגמאות נתונים עוברות בדיקה</span>
+      </div>
+    </div>
+  </header>
+  <main class="wrap">
+    <div class="stats">
+      <div class="stat"><b>15</b><span>מצבים לבנייה ולבדיקה</span></div>
+      <div class="stat"><b>20</b><span>שדות ניהול חובה</span></div>
+      <div class="stat"><b>2</b><span>דוגמאות נתונים שעוברות בדיקה</span></div>
+      <div class="stat"><b>0</b><span>נפילות שקטות שמותרות</span></div>
+    </div>
+    <div class="grid">
+      <div>
+        <section>
+          <h2>החלטת בסיס</h2>
+          <p>השוורום חייב לבחור מצב אחד ברור. אם יש חומר רשמי, משתמשים בו. אם יש חומר להמחשה, מסמנים אותו כך. אם אין חומר, מבקשים מהיזם חומרים ולא ממציאים בניין, נוף, מחיר או מלאי.</p>
+          <div class="callout"><strong>מה כן:</strong> חוויית בחירת דירה שמבוססת על מקור, מצב נכסים, יחידה נבחרת, סביבה, תכנון ופנייה מדידה.</div>
+          <div class="warn"><strong>מה אסור:</strong> חזית מזויפת, מפה מזויפת, דירה מומצאת, מחיר לא מאושר, כפתור מת, או מצב שבור שרואים רק בבדיקת מפתח.</div>
+        </section>
+        <section>
+          <h2>מצבי השוורום</h2>
+          <table>
+            <thead><tr><th>מצב</th><th>מה מפעיל אותו</th><th>חובה</th><th>בדיקת קבלה</th></tr></thead>
+            <tbody>
+              <tr><td>פרטי פרויקט</td><td>כניסה לעמוד</td><td>שם, עיר, מקור, מדיניות שימוש</td><td>הפרטים מופיעים לפני כל פעולה.</td></tr>
+              <tr><td>בדיקת חומרים</td><td>טעינת נתוני הפרויקט</td><td>סטטוס מודל, חזית, דירות, תוכניות, סביבה ופנייה</td><td>נבחר מצב ראשי אחד בלבד.</td></tr>
+              <tr><td>סיור תלת-ממד רשמי</td><td>קיים מודל מאושר</td><td>מודל, תמונת טעינה, נתוני מצלמה לדירות</td><td>בחירת דירה משנה מיקוד או מציגה מצב ברור.</td></tr>
+              <tr><td>חזית רשמית</td><td>קיימת חזית מאושרת</td><td>תמונה, מקור, מיפוי דירות או קומות</td><td>דירה נבחרת מסומנת על החזית.</td></tr>
+              <tr><td>חזית להמחשה</td><td>יש רק חומר קונספט</td><td>תווית המחשה ומקור</td><td>המשתמש לא יכול לחשוב שזה חומר רשמי.</td></tr>
+              <tr><td>ממתין לחומרים</td><td>אין חומר מאושר</td><td>רשימת חומרים נדרשים ודרך העלאה</td><td>העמוד נראה מכוון ולא שבור.</td></tr>
+              <tr><td>דירה נבחרה</td><td>לחיצה על דירה</td><td>קומה, חדרים, שטח, כיוון, סטטוס, הערת מקור</td><td>במובייל נפתח גיליון תחתון שלא מכסה את כל החוויה.</td></tr>
+              <tr><td>סביבה ומפה</td><td>קיימים מקורות סביבתיים</td><td>סטטוס מקור ותוויות מתוכנן/קיים</td><td>אין סיכות מזויפות ואין מיקום מדויק בלי אימות.</td></tr>
+              <tr><td>פנייה</td><td>המשתמש מבקש התאמה או פרטים</td><td>פרויקט, דירה, שפה, הסכמה ויעד פנייה</td><td>הפנייה כוללת הקשר ולא מבטיחה מחיר או זמינות.</td></tr>
+            </tbody>
+          </table>
+        </section>
+      </div>
+      <aside>
+        <section>
+          <h2>בדיקת נתונים קיימת</h2>
+          <div class="cards">
+            <div class="card"><strong>Rainbow Tel Aviv</strong><small>17 שדות meta, שש דירות, שש תוכניות, אפס שגיאות schema. עדיין אבטיפוס עד אישור חומרים רשמיים.</small></div>
+            <div class="card"><strong>Dimri Yama</strong><small>18 שדות meta, ארבע דירות, שלוש תוכניות, אפס שגיאות schema. חזית הקונספט חייבת להישאר מסומנת כהמחשה.</small></div>
+          </div>
+        </section>
+        <section>
+          <h2>שערי צילום חובה</h2>
+          <div class="flow">
+            <div class="state"><div><h3>דסקטופ ומובייל</h3><p>כל מצב מוצר מצולם ב-1440px וב-390px.</p></div></div>
+            <div class="state"><div><h3>דירה נבחרת</h3><p>חובה צילום של כרטיס דירה פתוח, כולל מובייל.</p></div></div>
+            <div class="state"><div><h3>חסר חומר</h3><p>חובה להוכיח שהמצב החסר נראה מכוון ומוכר, לא שבור.</p></div></div>
+            <div class="state"><div><h3>תקלת נכס</h3><p>חובה צילום של מודל, חזית או מפה שאינם זמינים.</p></div></div>
+            <div class="state"><div><h3>פנייה</h3><p>חובה צילום של טופס או כפתור פנייה עם הקשר פרויקט ודירה.</p></div></div>
+          </div>
+        </section>
+        <section class="files">
+          <h2>קבצים בחבילה</h2>
+          <a href="project-showroom-state-machine.csv"><span>מכונת מצבים</span><span class="open">CSV</span></a>
+          <a href="project-showroom-admin-field-matrix.csv"><span>שדות ניהול</span><span class="open">CSV</span></a>
+          <a href="project-showroom-unit-schema.json"><span>חוזה נתוני דירה ונכסים</span><span class="open">JSON</span></a>
+          <a href="project-showroom-state-machine.md"><span>מפרט ביצוע</span><span class="open">MD</span></a>
+        </section>
+      </aside>
+    </div>
+  </main>
+</body>
+</html>
+

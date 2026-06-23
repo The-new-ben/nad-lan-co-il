@@ -1,0 +1,149 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>מפת מתחרים וזירות חיפוש</title>
+  <style>
+    :root{--paper:#f7f1e8;--card:#fffaf2;--ink:#211915;--muted:#71685f;--line:#ded2c3;--accent:#8f5d2a;--green:#24483f;--red:#8f2e24;--shadow:0 18px 55px rgba(44,31,20,.10)}
+    *{box-sizing:border-box}
+    body{margin:0;background:var(--paper);color:var(--ink);font-family:Arial,"Noto Sans Hebrew",sans-serif;line-height:1.65}
+    a{color:inherit}
+    .wrap{width:min(1160px,calc(100% - 30px));margin:0 auto}
+    header{padding:34px 0 30px;border-bottom:1px solid var(--line);background:linear-gradient(180deg,#fffaf4 0%,#f7f1e8 100%)}
+    .eyebrow{color:var(--accent);font-weight:700;margin-bottom:12px}
+    h1{margin:0;max-width:980px;font-family:Georgia,"Times New Roman",serif;font-size:clamp(34px,5vw,68px);line-height:1.05;letter-spacing:0}
+    .lead{max-width:920px;color:var(--muted);font-size:20px;margin:18px 0 0}
+    .meta{display:flex;flex-wrap:wrap;gap:10px;margin-top:22px;color:var(--muted)}
+    .pill{border:1px solid var(--line);background:rgba(255,255,255,.6);padding:7px 12px;border-radius:999px;font-size:14px}
+    main{padding:28px 0 60px}
+    .stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin:0 0 24px}
+    .stat{background:var(--card);border:1px solid var(--line);padding:18px;box-shadow:var(--shadow);min-height:116px}
+    .stat b{display:block;font-family:Georgia,"Times New Roman",serif;font-size:38px;line-height:1;margin-bottom:10px}
+    .stat span{color:var(--muted);font-size:15px}
+    .grid{display:grid;grid-template-columns:1.04fr .96fr;gap:22px;align-items:start}
+    section{background:var(--card);border:1px solid var(--line);box-shadow:var(--shadow);padding:24px;margin-bottom:22px}
+    h2,h3{font-family:Georgia,"Times New Roman",serif;margin:0 0 12px;line-height:1.18}
+    h2{font-size:30px}
+    h3{font-size:21px}
+    p{margin:0 0 12px}
+    .callout{border-inline-start:5px solid var(--green);background:#eef7f1;padding:14px 16px;margin:16px 0}
+    .warn{border-inline-start:5px solid var(--red);background:#fff3ee;padding:14px 16px;margin:16px 0}
+    .cards{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+    .card{border:1px solid var(--line);background:#fffdf8;padding:16px;min-height:150px}
+    .card strong{display:block;font-size:18px;margin-bottom:6px}
+    .card small{display:block;color:var(--muted);font-size:14px}
+    .steps{counter-reset:item;display:grid;gap:12px}
+    .step{display:grid;grid-template-columns:auto 1fr;gap:12px;align-items:start;border-top:1px solid var(--line);padding-top:14px}
+    .step:before{counter-increment:item;content:counter(item);width:30px;height:30px;border:1px solid var(--line);border-radius:50%;display:grid;place-items:center;color:var(--accent);background:#fff}
+    .matrix{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+    .cell{border:1px solid var(--line);padding:14px;background:#fffdf8}
+    .cell b{display:block;margin-bottom:6px}
+    table{width:100%;border-collapse:collapse;background:#fffdf8;border:1px solid var(--line)}
+    th,td{border-bottom:1px solid var(--line);padding:10px;text-align:right;vertical-align:top;font-size:14px}
+    th{background:#efe5d8;font-weight:700}
+    .sources a,.files a{display:flex;justify-content:space-between;gap:12px;border-top:1px solid var(--line);padding:10px 0;text-decoration:none}
+    .open{background:var(--ink);color:#fff;padding:5px 10px;font-size:13px;white-space:nowrap}
+    @media(max-width:860px){.grid,.stats,.cards,.matrix{grid-template-columns:1fr}h1{font-size:38px}.lead{font-size:17px}section{padding:18px}.wrap{width:min(100% - 22px,1160px)}table,thead,tbody,tr,td{display:block;width:100%}thead{display:none}tr{border:1px solid var(--line);margin:10px 0;background:#fffdf8}td{display:grid;grid-template-columns:42% 58%;gap:8px;padding:8px;overflow-wrap:anywhere;font-size:13px}td:nth-child(1)::before{content:"שאילתה";font-weight:700}td:nth-child(2)::before{content:"מתחרים";font-weight:700}td:nth-child(3)::before{content:"בעלים";font-weight:700}td:nth-child(4)::before{content:"דרישת בנייה";font-weight:700}}
+  </style>
+</head>
+<body>
+  <header>
+    <div class="wrap">
+      <div class="eyebrow">מפת מתחרים וזירות חיפוש</div>
+      <h1>לא בורחים מהכסף. בונים שכבת החלטה טובה יותר מהמתחרים.</h1>
+      <p class="lead">הדוח הזה בודק מי שולט בזירות הנדל"ן החשובות היום ומה נדרש מ-NadLan כדי להתחרות בכל השוק: מודעות, פרויקטים, מפה, שוורום, כלים, אנשי מקצוע ומשקיעים מחו"ל.</p>
+      <div class="meta">
+        <span class="pill">עודכן: 23 ביוני 2026</span>
+        <span class="pill">14 מקורות ציבוריים</span>
+        <span class="pill">14 שאילתות יעד</span>
+        <span class="pill">לא כולל נתוני נפח בתשלום</span>
+      </div>
+    </div>
+  </header>
+  <main class="wrap">
+    <div class="stats">
+      <div class="stat"><b>14</b><span>מקורות ומתחרים שנבדקו</span></div>
+      <div class="stat"><b>14</b><span>שאילתות יעד ממופות</span></div>
+      <div class="stat"><b>10</b><span>משטחי תחרות עיקריים</span></div>
+      <div class="stat"><b>0</b><span>טענות נפח או דירוג שלא הוכחו</span></div>
+    </div>
+    <div class="grid">
+      <div>
+        <section>
+          <h2>החלטת בסיס</h2>
+          <p>אין כאן אסטרטגיית פחד. NadLan צריך להתחרות במילים הגדולות ובתחומים שמייצרים כסף, אבל לא באמצעות עמודים דקים. כל עמוד כסף חייב לבוא עם יתרון מוצרי, מקור נתונים, תפקיד במשפך, וקישור פנימי נכון.</p>
+          <div class="callout"><strong>הכיוון הנכון:</strong> פרויקטים, דירות, מפה, כלים, אנשי מקצוע ומשקיעים מחו"ל מתחברים למערכת החלטה אחת. זה היתרון מול פורטלים שמחזקים רק שכבה אחת.</div>
+          <div class="warn"><strong>מה לא עושים:</strong> לא מעלים עמודי עיר או מסננים בלי מלאי אמיתי, לא מציגים הדמיה כאילו היא נכס רשמי, ולא מפרסמים מדריך שמתחרה בעמוד כסף במקום לתמוך בו.</div>
+        </section>
+        <section>
+          <h2>זירות התחרות</h2>
+          <div class="cards">
+            <div class="card"><strong>לוחות דירות</strong><small>יד2, מדלן ו-OnMap מציבים רף של מלאי, סינון, מפה והרגל משתמש. NadLan חייב שער מלאי לפני אינדוקס.</small></div>
+            <div class="card"><strong>פרויקטים וקבלנים</strong><small>יד1, מדלן ו-Nadlan.com מתחרים ישירות על פרויקטים. כאן צריך מוצר עמוק יותר: יחידות, נוף, תכנון, מימון ופנייה מדידה.</small></div>
+            <div class="card"><strong>מפה וסביבה</strong><small>OnMap ו-Nadlan.com מוכיחים שמפה וסביבת נכס הן לא קישוט. הן חלק מקבלת ההחלטה.</small></div>
+            <div class="card"><strong>כלים ומימון</strong><small>בנקים מחזיקים אמון במחשבוני משכנתא. NadLan חייב שקיפות הנחות, לא הבטחה פיננסית.</small></div>
+            <div class="card"><strong>אנשי מקצוע</strong><small>אתרי ביקורות וספקים מחזיקים דירוגים ופניות. NadLan צריך לחבר ספקים לשלב העסקה והעיר.</small></div>
+            <div class="card"><strong>משקיעים מחו"ל</strong><small>פורטלים ומדריכים באנגלית מחזיקים נגישות. NadLan צריך לחבר שפה, מטבע, זהירות משפטית, פרויקט ופנייה מרחוק.</small></div>
+          </div>
+        </section>
+        <section>
+          <h2>שאילתות שמכתיבות בנייה</h2>
+          <table>
+            <thead><tr><th>שאילתה</th><th>מתחרים שנצפו</th><th>בעלים ב-NadLan</th><th>דרישת בנייה</th></tr></thead>
+            <tbody>
+              <tr><td>דירות למכירה</td><td>יד2, מדלן, OnMap</td><td>מרכז קנייה</td><td>מלאי אמיתי, מסננים, מפה, שקיפות קידום ופנייה מדידה.</td></tr>
+              <tr><td>דירות למכירה תל אביב</td><td>יד2, מדלן, OnMap</td><td>עמוד עיר לקנייה</td><td>מלאי עירוני, שכונות, טריות, קישורים לפרויקטים וכלים.</td></tr>
+              <tr><td>פרויקטים חדשים</td><td>יד1, מדלן, Nadlan.com</td><td>מרכז פרויקטים</td><td>כרטיסי פרויקט, מצב נכסים, שוורום, השוואה ותיעוד פניות.</td></tr>
+              <tr><td>פינוי בינוי תל אביב</td><td>מרכז הנדל"ן, עירייה, יזמים</td><td>עמוד התחדשות עירונית בעיר</td><td>מקורות רשמיים, סטטוס, סיכונים, אנשי מקצוע וקישור לפרויקטים.</td></tr>
+              <tr><td>מחשבון משכנתא</td><td>בנקים ואתרי תוכן</td><td>מחשבון משכנתא</td><td>הנחות גלויות, תוצאה לא מחייבת, פנייה ליועץ ומעקב אירועים.</td></tr>
+              <tr><td>עורך דין מקרקעין תל אביב</td><td>LawReviews ואתרי משרדים</td><td>קטגוריית איש מקצוע בעיר</td><td>אימות, שפות, תחומי שירות, ביקורות, פנייה וקישור מעמודי עסקה.</td></tr>
+              <tr><td>buy apartment in Israel</td><td>NBN, Realtor, מדריכי קונים</td><td>מדריך קנייה באנגלית</td><td>חינוך, פרויקטים, מטבע, פנייה מרחוק ואזהרות משפטיות/מס.</td></tr>
+            </tbody>
+          </table>
+        </section>
+      </div>
+      <aside>
+        <section>
+          <h2>מה זה אומר לבנייה</h2>
+          <div class="steps">
+            <div class="step"><div><h3>לאנדקס רק מה שמוכן</h3><p>עמודי עיר, מסננים ומדינות חו"ל לא עולים לאינדקס בלי מלאי, מקור, או ערך ייחודי.</p></div></div>
+            <div class="step"><div><h3>להפוך פרויקט למוצר</h3><p>עמוד פרויקט חייב לעבור מגלריה לדיאלוג החלטה: יחידה, נוף, סביבה, תכנון, מימון, איש מקצוע ופנייה.</p></div></div>
+            <div class="step"><div><h3>לשמור על בעלות מילות מפתח</h3><p>כל מדריך תומך בעמוד כסף מוגדר. אין שני עמודים שמתחרים על אותה כוונה.</p></div></div>
+            <div class="step"><div><h3>להפוך אנשי מקצוע לשכבת אמון</h3><p>ספקים מוצגים לפי שלב עסקה, עיר, שפה ואימות, לא כרשימה כללית בלבד.</p></div></div>
+            <div class="step"><div><h3>למדוד ערך לקבלן</h3><p>כל קליק, צפייה בשוורום, בחירת יחידה ופנייה חייבים להיכנס לדוח שמראה לקבלן למה לשלם.</p></div></div>
+          </div>
+        </section>
+        <section>
+          <h2>יתרון NadLan הנדרש</h2>
+          <div class="matrix">
+            <div class="cell"><b>מול לוחות</b><span>אמון, עומק פרויקט ושער מלאי.</span></div>
+            <div class="cell"><b>מול פורטלי פרויקטים</b><span>יחידת החלטה מלאה, לא רק כרטיס פרויקט.</span></div>
+            <div class="cell"><b>מול מפות</b><span>מפה שמחוברת לנוף, סביבה, תנועה ופנייה.</span></div>
+            <div class="cell"><b>מול מדריכים</b><span>תוכן שמוביל לעמוד כסף ולא נשאר מנותק.</span></div>
+            <div class="cell"><b>מול מחשבונים</b><span>שקיפות הנחות ופנייה מקצועית.</span></div>
+            <div class="cell"><b>מול אתרי חו"ל</b><span>שפה, מטבע, פרויקט, אנשי מקצוע ותהליך מרחוק.</span></div>
+          </div>
+        </section>
+        <section class="files">
+          <h2>קבצים בחבילה</h2>
+          <a href="competitor-serp-source-map.csv"><span>מפת מקורות ומתחרים</span><span class="open">CSV</span></a>
+          <a href="competitor-serp-query-teardown.csv"><span>פירוק שאילתות לזירות בנייה</span><span class="open">CSV</span></a>
+          <a href="competitor-feature-matrix.csv"><span>מטריצת יכולות מתחרים</span><span class="open">CSV</span></a>
+          <a href="competitor-serp-execution-packet.md"><span>מפרט ביצוע באנגלית</span><span class="open">MD</span></a>
+        </section>
+        <section class="sources">
+          <h2>מקורות שנבדקו</h2>
+          <a href="https://www.yad2.co.il/">יד2 <span class="open">פתח</span></a>
+          <a href="https://www.yad2.co.il/yad1">יד1 <span class="open">פתח</span></a>
+          <a href="https://www.madlan.co.il/for-sale/%D7%99%D7%A9%D7%A8%D7%90%D7%9C">מדלן <span class="open">פתח</span></a>
+          <a href="https://www.onmap.co.il/">OnMap <span class="open">פתח</span></a>
+          <a href="https://www.nadlan.com/project/%D7%91%D7%A6%D7%9C%D7%90%D7%9C">Nadlan.com <span class="open">פתח</span></a>
+          <a href="https://www.realtor.com/international/il/israel/apartment/">Realtor.com <span class="open">פתח</span></a>
+          <a href="https://www.nbn.org.il/life-in-israel/community-and-housing/buying-and-renting/a-10-step-guide-to-purchasing-an-apartment-in-israel/">מדריך קנייה באנגלית <span class="open">פתח</span></a>
+        </section>
+      </aside>
+    </div>
+  </main>
+</body>
+</html>

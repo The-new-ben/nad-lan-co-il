@@ -8,7 +8,7 @@
 > background or pattern reuse) · 🟪 DNA (portable to other sites in the network) ·
 > ⚠️ DEPRECATED (kept for history; do not act on without checking the active replacement)
 >
-> **Last updated:** 2026-06-03 (Claude). When you change a skill, append a Revision
+> **Last updated:** 2026-06-23 (Codex). When you change a skill, append a Revision
 > line at the bottom of THAT skill and update this MAP if the status changes.
 
 ---
@@ -20,13 +20,14 @@ If you have only 10 minutes (a fresh agent walking in), read these in this order
 1. **`/AGENTS.md`** ✅ — the prime directive: how agents work in this repo
 2. **`/BACKLOG.md`** ✅ — what we're doing right now (newest decisions win)
 3. **`skills/MAP.md`** ✅ — this file
-4. **`skills/site-state.md`** ✅ — append-only situation report; **read the last 6 blocks**
-5. **`skills/codex-plugin-access-and-deploy.md`** ✅ — the deploy pipeline (mandatory before any plugin change)
-6. **`skills/honesty-statement.md`** ✅ — no-flattery + cite-or-flag policy
-7. **`skills/url-namespace-contract.md`** ✅ — slug/URL rules (mandatory before publishing any page)
-8. **`skills/copywriting-skill.md`** ✅ — voice, forbidden phrases, em-dash ban
-9. **`skills/SKILLS-TREE.md`** ✅ — the portable DNA branches (for stamping new sites)
-10. **`skills/ACCUMULATION.md`** ✅ — how to add/update a skill (when you learn something)
+4. **`skills/nadlan-autonomous-execution-master.md`** ✅ — autonomous loop, no-stacking rule, screenshots, release gates
+5. **`skills/site-state.md`** ✅ — append-only situation report; **read the last 6 blocks**
+6. **`skills/codex-plugin-access-and-deploy.md`** ✅ — the deploy pipeline (mandatory before any plugin change)
+7. **`skills/honesty-statement.md`** ✅ — no-flattery + cite-or-flag policy
+8. **`skills/url-namespace-contract.md`** ✅ — slug/URL rules (mandatory before publishing any page)
+9. **`skills/copywriting-skill.md`** ✅ — voice, forbidden phrases, em-dash ban
+10. **`skills/SKILLS-TREE.md`** ✅ — the portable DNA branches (for stamping new sites)
+11. **`skills/ACCUMULATION.md`** ✅ — how to add/update a skill (when you learn something)
 
 Everything else is on-demand by category below.
 
@@ -42,6 +43,19 @@ Everything else is on-demand by category below.
 | ✅🟪 | `skills/agent-onboarding.md` | Secure credential handshake; what env vars and app passwords exist | Once at session start to confirm auth |
 | ✅🟪 | `skills/agent-coordination-protocol.md` | Multi-agent sync rules; how Claude/Codex/Cowork avoid stepping on each other | Before starting work parallel to another agent |
 | ✅🟪 | `skills/agent-tooling-strategy.md` | Which agent does what (Codex = orchestration; Cowork = content; Claude = code) | When deciding to delegate vs do |
+| ✅🟪 | `skills/nadlan-autonomous-execution-master.md` | Master autonomous execution loop: no stacking, screenshots, release gates, Lovable sync, cross-site replication | Every NadLan implementation session |
+| ✅🟪 | `skills/adopted-codex-goal-bundle.md` | Turns broad owner requests into one bounded autonomous slice with verification and stop conditions | When the task is broad, urgent, or must run standalone |
+| ✅🟪 | `skills/adopted-codex-instruction-chain.md` | Checks AGENTS/project guidance, done definition, commands, and escalation rules | Before starting long autonomous work or changing repo conventions |
+| ✅🟪 | `skills/adopted-codex-progressive-disclosure.md` | Loads only the relevant reports, skills, and references instead of flooding context | When many handoff reports or skills exist |
+| ✅🟪 | `skills/adopted-codex-visual-proof-loop.md` | Screenshot-first UI proof loop with public-language and no-stacking checks | Any visible page, component, or responsive change |
+| ✅🟪 | `skills/adopted-wp-playground-verification.md` | WordPress runtime verification using Playground or wp-env style feedback loops | Before trusting plugin or theme behavior without live deploy |
+| ✅🟪 | `skills/adopted-wp-plugin-quality-gate.md` | Plugin quality gate: packaging, i18n, version surfaces, Plugin Check mindset | Any plugin release or ZIP artifact |
+| ✅🟪 | `skills/adopted-wp-security-threat-gate.md` | Security gate for input, output, REST, AJAX, SQL, uploads, nonces, capabilities | Any code touching user input or permissions |
+| ✅🟪 | `skills/adopted-wp-performance-gate.md` | Performance gate for route-scoped assets, duplicate CSS/JS, queries, and REST calls | Any public page or asset-loading change |
+| ✅🟪 | `skills/adopted-wp-accessibility-rtl-gate.md` | Accessibility plus Hebrew RTL gate | Any public UI, mobile, focus, contrast, or Hebrew layout change |
+| ✅🟪 | `skills/adopted-wp-release-agent-gate.md` | Separates implementation, verification, packaging, deploy, and rollback responsibilities | Before release PRs or production-bound packages |
+| ✅🟪 | `skills/adopted-wp-rest-api-contract-gate.md` | REST API schema, permission, validation, and consumer contract gate | Any REST endpoint or API consumer change |
+| ✅🟪 | `skills/adopted-wp-mcp-abilities-map.md` | Maps existing plugin/admin/MCP capabilities before inventing new code | Before adding automation, admin surfaces, or AI integration |
 | ✅🟪 | `skills/honesty-statement.md` | No flattery, cite-or-flag, refusal to claim without verification | Any time you're tempted to make a confident claim — re-read it |
 | ✅🟪 | `skills/security-public-repo.md` | What NEVER goes into the public repo (secrets, partner names, prices, client data) | Before committing any new file |
 | ✅🟪 | `skills/ACCUMULATION.md` | Protocol for adding/updating skills (this file's sibling) | When you've learned something worth keeping |
@@ -180,6 +194,7 @@ tooling is required — `git`, `cat`, and `grep` are all an agent needs to read 
 ---
 
 ## Revision log
+- 2026-06-23 - Codex added the adopted Codex and WordPress skill pack from external research: goal bundle, instruction chain, progressive disclosure, visual proof, Playground verification, plugin quality, security, performance, accessibility, release, REST, and abilities-map gates.
 - 2026-06-03 — Created (Claude). Built after web research of the AGENTS.md open spec, Claude Code
   skills convention, and Knowledge-as-Code pattern (see AGENTS.md "Sources" section for citations).
   Categorises the 61 existing skill files + 20 docs into 9 functional sections, marks ACTIVE vs
