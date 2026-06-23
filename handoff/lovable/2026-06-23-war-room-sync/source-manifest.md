@@ -11,19 +11,19 @@ Lovable project URL:
 https://lovable.dev/projects/a7493b94-2e46-4d38-9c6a-80dcf0905f45
 
 Source GitHub repository:
-https://github.com/The-new-ben/nadlan-strategy-hub.git
+https://github.com/The-new-ben/nadlan-strategy-hub
 
 Source branch:
 `main`
 
 Source commit:
-`28f8e15bc3a3ef9f328e9b3552d05b0eef71c578`
+`33ab090537eef001da6414c82c9b3977dbdb76bf`
 
 Source commit message:
-`Synced Lovable repo files`
+`Updated manifest to Hub repo`
 
-Source author:
-`gpt-engineer-app[bot]`
+Previous imported source commit:
+`28f8e15bc3a3ef9f328e9b3552d05b0eef71c578`
 
 ## Destination
 
@@ -57,7 +57,16 @@ Folders:
 - `screenshots/.gitkeep`
 - `data/.gitkeep`
 
-## Codex-Added Files After Import
+## Changes In This Import
+
+Lovable commit `33ab090537eef001da6414c82c9b3977dbdb76bf` updated:
+
+- `reports/advisor-notes.md` with GitHub mirror confirmation.
+- `source-manifest.md` with the Lovable GitHub repository URL and fetch instructions.
+
+Lovable also changed internal `.lovable/plan.md`, but the canonical handoff file `reports/plan.md` in this folder was not changed by this source commit.
+
+## Codex-Added Files
 
 - `README.md` - destination-folder instructions created before Lovable sync.
 - `data/lovable-project.json` - copied from the Lovable repo `.lovable/project.json`.
@@ -92,7 +101,7 @@ Folders:
 
 Before continuing NadLan SEO, design, showroom, or war-room work, Codex should fetch:
 
-`https://github.com/The-new-ben/nadlan-strategy-hub.git`
+`https://github.com/The-new-ben/nadlan-strategy-hub`
 
 Then compare `origin/main` against the latest source commit recorded here. If Lovable pushed a newer commit, import the updated `handoff/lovable/2026-06-23-war-room-sync/` contents or create a new dated run folder under `handoff/lovable/`.
 

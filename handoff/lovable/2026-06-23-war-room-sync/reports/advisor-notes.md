@@ -2,6 +2,11 @@
 
 Running log so context survives across chats. Newest at top.
 
+## 2026-06-23 — Lovable→GitHub mirror confirmed
+
+Lovable GitHub integration is live. The mirror repo is **https://github.com/The-new-ben/nadlan-strategy-hub** on branch `main`. The handoff folder `handoff/lovable/2026-06-23-war-room-sync/` is now committed at the **root** of that repo (verbatim path so Codex does a 1:1 copy with no rewriting). `source-manifest.md` updated with the URL and a copy-paste fetch block for Codex. Codex: pull from `main`, `rsync -a` the handoff folder into `The-new-ben/nad-lan-co-il` on branch `strategy/nadlan-seo-product-war-plan`, commit, push.
+
+
 ## 2026-06-22 — redesign plan approved, reports 00 + 01 drafted
 
 User approved the 8-report plan. Picked **urban-renewal / תמא 38** as the 3rd pilot (Dimri Yama and Rainbow Tel Aviv locked). Slug still TBD — needs pick from existing WP catalog.
