@@ -1,0 +1,54 @@
+{
+  "url": "https://nad-lan.co.il/projects/rainbow-tel-aviv/?codex_qa=model_tap_recheck_2026_06_24_unit-31-se&viewport=desktop-1440&t=1782252670928",
+  "viewport": {
+    "width": 1440,
+    "height": 1000
+  },
+  "scrollWidth": 1440,
+  "bodyScrollWidth": 1440,
+  "rootActiveUnit": "unit-31-se",
+  "activePicks": [
+    "unit-31-se"
+  ],
+  "visibleStagePins": [
+    "unit-08-sw",
+    "unit-16-w",
+    "unit-24-nw",
+    "unit-31-se",
+    "unit-38-penthouse",
+    "unit-boutique-07"
+  ],
+  "visibleModelHotspots": [],
+  "cameraOrbit": "310deg 64deg auto",
+  "cameraTarget": "6 101 -5",
+  "stageCardHidden": false,
+  "stageCardText": "פתחו את פרטי הדירה × הדירה שנבחרה דירת 5 חדרים, קומה 31 5 חדרים · 156 מ\"ר · קו הרקיע והחצר הפנימית · זמינות להדגמה בלבד עד לקבלת מלאי רשמי מהיזם זמינה לפנייה קו הרקיע והחצר הפנימית כולל אומדן אומדן ₪11,856,000 זמינה לפנייה קו הרקיע והחצר הפנימית האומדן עוזר להשוואה ראשונית בלבד. המחיר, הזמינות ותנאי העסקה יאומתו מול היזם לפני כל התקדמות. פרטים מלאים מבט מהדירה תוכניות וסיור דברו עם היזם פרטים מבט מהדירה תוכניות שמש סביבה סיור",
+  "tapPoint": {
+    "x": 1097,
+    "y": 445.8125,
+    "unitRect": {
+      "x": 993,
+      "y": 423.8125,
+      "right": 1063,
+      "bottom": 467.8125,
+      "width": 70,
+      "height": 44
+    },
+    "sceneRect": {
+      "x": 539,
+      "y": 202.609375,
+      "right": 1281,
+      "bottom": 850.609375,
+      "width": 742,
+      "height": 648
+    },
+    "elementAtPoint": {
+      "tag": "MODEL-VIEWER",
+      "className": "nlp3d-model-viewer",
+      "insideStagePick": false,
+      "insideModelViewer": true
+    }
+  },
+  "expectedUnit": "unit-31-se",
+  "pass": true
+}
