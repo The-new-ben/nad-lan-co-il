@@ -13,6 +13,12 @@ const tierBadge: Record<Project["paid_tier"], { key: string; classes: string }> 
   standard: { key: "badge.standard", classes: "hairline bg-card text-muted-foreground" },
 };
 
+const assetLabelKey: Record<Project["asset_state"], string> = {
+  "real-glb": "asset.short.model",
+  "facade-svg": "asset.short.visual",
+  empty: "asset.short.pending",
+};
+
 export function MagazineCard({ project }: Props) {
   const { lang, t } = useLang();
   const [tab, setTab] = useState<"facade" | "floor">("facade");
@@ -43,21 +49,20 @@ export function MagazineCard({ project }: Props) {
               <rect x="10" y="10" width="180" height="130" fill="none" stroke="currentColor" strokeWidth="0.8" />
               <line x1="80" y1="10" x2="80" y2="140" stroke="currentColor" strokeWidth="0.6" />
               <line x1="10" y1="75" x2="190" y2="75" stroke="currentColor" strokeWidth="0.6" />
-              <text x="100" y="80" textAnchor="middle" fontSize="6" fill="currentColor">FLOOR PLAN</text>
+              <text x="100" y="80" textAnchor="middle" fontSize="6" fill="currentColor">
+                {lang === "he" ? "תכנית" : "PLAN"}
+              </text>
             </svg>
             <div className="watermark-ai-overlay">{t("watermark.ai")}</div>
           </div>
         )}
-        <div className="absolute start-3 top-3 flex gap-2">
-          <span className={`rounded-sm px-2 py-0.5 text-[10px] font-medium uppercase tracking-wider ${tier.classes}`}>
-            {t(tier.key)}
-          </span>
-          {project.paid_tier !== "standard" && (
-            <span className="rounded-sm bg-background/85 px-2 py-0.5 text-[10px] font-medium uppercase tracking-wider text-muted-foreground">
-              {t("badge.sponsored")}
+        {project.paid_tier !== "standard" && (
+          <div className="absolute start-3 top-3 flex gap-2">
+            <span className={`rounded-sm px-2 py-0.5 text-[10px] font-medium uppercase tracking-wider ${tier.classes}`}>
+              {t(tier.key)}
             </span>
-          )}
-        </div>
+          </div>
+        )}
         <div className="absolute end-3 top-3 flex hairline overflow-hidden bg-background/90 text-[10px]">
           <button
             type="button"
@@ -116,7 +121,7 @@ export function MagazineCard({ project }: Props) {
                   : t("showroom.assetEmpty")
             }
           >
-            {project.asset_state === "real-glb" ? "● GLB" : project.asset_state === "facade-svg" ? "○ SVG" : "· empty"}
+            {t(assetLabelKey[project.asset_state])}
           </span>
         </div>
       </div>

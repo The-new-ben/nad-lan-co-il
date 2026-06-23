@@ -30,9 +30,11 @@ export function UnitSelector({ project }: Props) {
               onClick={() => setSelected(u)}
               className="grid w-full grid-cols-[auto_1fr_auto] items-center gap-3 px-4 py-3 text-start hover:bg-secondary sm:px-5"
             >
-              <span className="font-mono text-xs text-muted-foreground">F{u.floor}</span>
+              <span className="font-mono text-xs text-muted-foreground">
+                {lang === "he" ? `קומה ${u.floor}` : `Floor ${u.floor}`}
+              </span>
               <span className="text-sm">
-                {u.rooms} {lang === "he" ? "חדרים" : "rms"} · {u.sqm}m²
+                {u.rooms} {lang === "he" ? "חדרים" : "rooms"} / {u.sqm}m²
               </span>
               <span className="text-end text-sm font-medium">{fmt.format(u.priceILS)}</span>
             </button>
@@ -64,10 +66,10 @@ function UnitDrawer({ unit, project, onClose }: { unit: Unit; project: Project; 
         <div className="flex items-start justify-between gap-3">
           <div>
             <p className="text-xs uppercase tracking-wider text-muted-foreground">
-              {lang === "he" ? project.name_he : project.name_en} · F{unit.floor}
+              {lang === "he" ? project.name_he : project.name_en} / {lang === "he" ? `קומה ${unit.floor}` : `Floor ${unit.floor}`}
             </p>
             <h4 className="mt-1 text-xl">
-              {unit.rooms} {lang === "he" ? "חדרים" : "rooms"} · {unit.sqm}m²
+              {unit.rooms} {lang === "he" ? "חדרים" : "rooms"} / {unit.sqm}m²
             </h4>
             <p className="mt-1 text-lg font-medium text-foreground">{fmt.format(unit.priceILS)}</p>
           </div>
@@ -79,10 +81,10 @@ function UnitDrawer({ unit, project, onClose }: { unit: Unit; project: Project; 
             <rect x="10" y="10" width="180" height="130" fill="none" stroke="currentColor" strokeWidth="0.8" />
             <line x1="80" y1="10" x2="80" y2="140" stroke="currentColor" strokeWidth="0.6" />
             <line x1="10" y1="75" x2="190" y2="75" stroke="currentColor" strokeWidth="0.6" />
-            <text x="40" y="50" fontSize="6" fill="currentColor">SALON</text>
-            <text x="120" y="50" fontSize="6" fill="currentColor">BED 1</text>
-            <text x="40" y="110" fontSize="6" fill="currentColor">KIT</text>
-            <text x="120" y="110" fontSize="6" fill="currentColor">BED 2</text>
+            <text x="40" y="50" fontSize="6" fill="currentColor">{lang === "he" ? "סלון" : "LIVING"}</text>
+            <text x="120" y="50" fontSize="6" fill="currentColor">{lang === "he" ? "חדר 1" : "BED 1"}</text>
+            <text x="40" y="110" fontSize="6" fill="currentColor">{lang === "he" ? "מטבח" : "KIT"}</text>
+            <text x="120" y="110" fontSize="6" fill="currentColor">{lang === "he" ? "חדר 2" : "BED 2"}</text>
           </svg>
           <div className="watermark-ai-overlay">{t("watermark.ai")}</div>
         </div>

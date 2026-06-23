@@ -14,9 +14,9 @@ export const Route = createFileRoute("/showroom/$projectId")({
     const name = loaderData?.project.name_en ?? params.projectId;
     return {
       meta: [
-        { title: `${name} · Showroom · Nadlan3D` },
-        { name: "description", content: loaderData?.project.tagline_en ?? "3D showroom on Nadlan3D." },
-        { property: "og:title", content: `${name} · Nadlan3D Showroom` },
+        { title: `${name} - Project tour - Nadlan3D` },
+        { name: "description", content: loaderData?.project.tagline_en ?? "Visual project tour on Nadlan3D." },
+        { property: "og:title", content: `${name} - Nadlan3D project tour` },
         { property: "og:description", content: loaderData?.project.tagline_en ?? "" },
         { property: "og:url", content: `/showroom/${params.projectId}` },
         { property: "og:type", content: "product" },
@@ -31,7 +31,7 @@ export const Route = createFileRoute("/showroom/$projectId")({
   },
   notFoundComponent: () => (
     <div className="mx-auto max-w-2xl px-4 py-20 text-center">
-      <h1 className="text-3xl">Showroom not found</h1>
+      <h1 className="text-3xl">Project tour not found</h1>
       <p className="mt-3 text-muted-foreground">This project doesn't exist yet.</p>
       <Link to="/listings" className="mt-6 inline-block hairline rounded-sm px-4 py-2 text-sm">
         View all projects
@@ -40,7 +40,7 @@ export const Route = createFileRoute("/showroom/$projectId")({
   ),
   errorComponent: ({ error, reset }) => (
     <div className="mx-auto max-w-2xl px-4 py-20 text-center">
-      <h1 className="text-2xl">Couldn't load this showroom</h1>
+      <h1 className="text-2xl">Couldn't load this project tour</h1>
       <pre className="mt-3 text-xs text-muted-foreground">{error.message}</pre>
       <button onClick={reset} className="mt-6 hairline rounded-sm px-4 py-2 text-sm">Try again</button>
     </div>
@@ -70,7 +70,7 @@ function Showroom() {
 
       <header className="mt-4 flex items-end justify-between gap-4">
         <div className="min-w-0">
-          <p className="text-xs uppercase tracking-wider text-muted-foreground">{city} · {project.developer}</p>
+          <p className="text-xs uppercase tracking-wider text-muted-foreground">{city} / {project.developer}</p>
           <h1 className="mt-1 truncate text-3xl sm:text-4xl">{name}</h1>
           <p className="mt-2 max-w-2xl text-sm text-muted-foreground">{tagline}</p>
         </div>
@@ -99,7 +99,7 @@ function Showroom() {
       <div className="hairline-t fixed inset-x-0 bottom-0 z-30 bg-background/95 backdrop-blur">
         <div className="mx-auto flex max-w-6xl items-center gap-2 px-4 py-3 sm:px-6">
           <p className="hidden flex-1 truncate text-sm text-muted-foreground sm:block">
-            {name} · {city}
+            {name} / {city}
           </p>
           <button className="hairline rounded-sm px-3 py-2 text-sm hover:bg-secondary">{t("cta.whatsapp")}</button>
           <button className="rounded-sm bg-accent px-3 py-2 text-sm text-accent-foreground hover:opacity-90">

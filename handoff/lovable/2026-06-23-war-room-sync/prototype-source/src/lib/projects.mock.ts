@@ -1,4 +1,4 @@
-// Nadlan3D mock project data — single source of truth for this prototype run.
+// Nadlan3D demo project data. Keep this as the source of truth for this run.
 // Schema is intentionally portable so Codex can mirror it into the WordPress
 // `nadlan/v1/projects` endpoint without renaming fields.
 
@@ -27,17 +27,17 @@ export interface Project {
   paid_tier: PaidTier;
   priceFromILS: number;
   rooms: number[];
-  // Asset truth
+  // Visual asset status
   asset_state: AssetState;
-  model_url?: string;             // GLB
-  facade_svg?: string;            // inline SVG id for fallback
-  hero_image: string;             // CDN/placeholder
+  model_url?: string;             // production model file
+  facade_svg?: string;            // inline facade id
+  hero_image: string;             // public image URL
   plan_image: string;             // floor plan or AI watermark placeholder
   // Ranking signals
-  completeness: number;           // 0..1 — share of (glb, plan, photos, price, rooms)
-  engagement: number;             // 0..1 — mock CTR proxy
+  completeness: number;           // 0..1 share of model, plan, photos, price, rooms
+  engagement: number;             // 0..1 engagement proxy
   updated_at: string;             // ISO
-  city_boost: number;             // 0..1 — affinity
+  city_boost: number;             // 0..1 affinity
   units: Unit[];
   tagline_he: string;
   tagline_en: string;
@@ -67,8 +67,8 @@ export const projects: Project[] = [
     engagement: 0.82,
     updated_at: "2026-06-20T10:00:00Z",
     city_boost: 0.9,
-    tagline_he: "47 קומות מעל רוטשילד — דירות בוטיק עם מודל תלת־ממד אמיתי.",
-    tagline_en: "47 floors above Rothschild — boutique residences with a real 3D model.",
+    tagline_he: "47 קומות מעל רוטשילד. דירות בוטיק עם מודל תלת-ממד.",
+    tagline_en: "47 floors above Rothschild. Boutique residences with a 3D model.",
     units: [
       { id: "r-12-a", floor: 12, rooms: 3, sqm: 78, priceILS: 3_950_000, status: "available" },
       { id: "r-12-b", floor: 12, rooms: 4, sqm: 104, priceILS: 5_200_000, status: "available" },
@@ -96,8 +96,8 @@ export const projects: Project[] = [
     engagement: 0.61,
     updated_at: "2026-06-18T09:00:00Z",
     city_boost: 0.65,
-    tagline_he: "פרויקט חוף ים בהקמה — חזית סכמטית עד שה־GLB יעלה.",
-    tagline_en: "Seafront project under construction — schematic facade until the GLB ships.",
+    tagline_he: "פרויקט חוף ים בהקמה. חזית להמחשה עד שהיזם מעלה מודל תלת-ממד.",
+    tagline_en: "Seafront project under construction. Illustrative facade until the developer uploads a 3D model.",
     units: [
       { id: "d-04-a", floor: 4, rooms: 3, sqm: 82, priceILS: 2_180_000, status: "available" },
       { id: "d-08-a", floor: 8, rooms: 4, sqm: 108, priceILS: 2_790_000, status: "available" },
@@ -123,8 +123,8 @@ export const projects: Project[] = [
     engagement: 0.44,
     updated_at: "2026-05-30T09:00:00Z",
     city_boost: 0.5,
-    tagline_he: "פיילוט פינוי־בינוי — ממתין להעלאת חזות מהיזם.",
-    tagline_en: "Urban-renewal pilot — awaiting developer asset upload.",
+    tagline_he: "פיילוט פינוי-בינוי. ממתין להעלאת חומרים מהיזם.",
+    tagline_en: "Urban-renewal pilot. Awaiting developer assets.",
     units: [
       { id: "ky-1", floor: 3, rooms: 3, sqm: 76, priceILS: 1_650_000, status: "available" },
       { id: "ky-2", floor: 6, rooms: 4, sqm: 98, priceILS: 2_080_000, status: "available" },
@@ -150,8 +150,8 @@ export const projects: Project[] = [
     engagement: 0.55,
     updated_at: "2026-06-15T09:00:00Z",
     city_boost: 0.6,
-    tagline_he: "20 קומות מעל המפרץ — נוף 270 מעלות.",
-    tagline_en: "20 floors above the bay — 270° panorama.",
+    tagline_he: "20 קומות מעל המפרץ. נוף 270 מעלות.",
+    tagline_en: "20 floors above the bay. 270 degree panorama.",
     units: [
       { id: "ch-7-a", floor: 7, rooms: 4, sqm: 112, priceILS: 2_450_000, status: "available" },
       { id: "ch-14-a", floor: 14, rooms: 5, sqm: 142, priceILS: 3_180_000, status: "available" },
@@ -204,8 +204,8 @@ export const projects: Project[] = [
     engagement: 0.49,
     updated_at: "2026-06-08T09:00:00Z",
     city_boost: 0.55,
-    tagline_he: "מול הים, חניית רכב + יאכטה.",
-    tagline_en: "On the seafront, car + yacht berth.",
+    tagline_he: "מול הים, קרוב לטיילת ולמרינה.",
+    tagline_en: "On the seafront, close to the promenade and marina.",
     units: [
       { id: "nm-3-a", floor: 3, rooms: 3, sqm: 88, priceILS: 2_980_000, status: "available" },
       { id: "nm-9-a", floor: 9, rooms: 4, sqm: 118, priceILS: 3_780_000, status: "available" },
@@ -216,7 +216,7 @@ export const projects: Project[] = [
 export const projectBySlug = (slug: string) =>
   projects.find((p) => p.slug === slug);
 
-// Ranking hierarchy — deterministic client-side sort.
+// Ranking hierarchy, deterministic client-side sort.
 // 1. Paid tier  2. Completeness  3. Engagement  4. Freshness  5. City boost.
 const tierWeight: Record<PaidTier, number> = {
   featured: 3,

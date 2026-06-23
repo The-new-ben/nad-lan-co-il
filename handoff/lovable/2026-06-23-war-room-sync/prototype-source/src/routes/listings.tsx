@@ -7,10 +7,10 @@ import { MagazineCard } from "@/components/nadlan/MagazineCard";
 export const Route = createFileRoute("/listings")({
   head: () => ({
     meta: [
-      { title: "פרויקטים · Nadlan3D" },
-      { name: "description", content: "כל הפרויקטים — Featured, Promoted ו-Standard מסומנים בשקיפות. מיון לפי שלמות נכס, מעורבות, רעננות וקרבת אזור." },
-      { property: "og:title", content: "Projects · Nadlan3D" },
-      { property: "og:description", content: "Transparent ranking: Featured / Sponsored / Promoted labelled, then completeness, engagement, freshness." },
+      { title: "פרויקטים / Nadlan3D" },
+      { name: "description", content: "כל הפרויקטים החדשים עם סימון ברור למיקומים בתשלום ומיון לפי שלמות מידע, עדכניות והתאמה לאזור." },
+      { property: "og:title", content: "Projects / Nadlan3D" },
+      { property: "og:description", content: "Projects ranked with clear paid-placement labels and visible asset status." },
       { property: "og:url", content: "/listings" },
     ],
     links: [
@@ -103,8 +103,8 @@ function Listings() {
       <aside className="hairline mt-12 bg-card p-5 text-xs text-muted-foreground">
         <strong className="text-foreground">{lang === "he" ? "שקיפות דירוג:" : "Ranking transparency:"}</strong>{" "}
         {lang === "he"
-          ? "Featured, Sponsored ו-Promoted הם מיקומים בתשלום מהקבלן. הם תמיד מסומנים. שאר הסדר נקבע לפי שלמות נכס, מעורבות, רעננות וקרבת אזור."
-          : "Featured, Sponsored, and Promoted slots are paid by the developer and always labelled. The rest of the order is asset completeness, engagement, freshness, and location boost."}
+          ? "חלק מהמיקומים הם בתשלום ומסומנים כמודעה או כמקודם. שאר הסדר נקבע לפי שלמות המידע, עדכניות והתאמה לאזור."
+          : "Some placements are paid and labelled as ads. The rest of the order uses available information, freshness, and location fit."}
       </aside>
     </div>
   );

@@ -27,7 +27,7 @@ export function SiteFooter() {
             {lang === "he" ? "משפטי" : "Legal"}
           </h4>
           <p className="text-muted-foreground leading-relaxed">{t("footer.disclaim")}</p>
-          <p className="mt-3 text-xs text-muted-foreground">© {new Date().getFullYear()} Nadlan3D · prototype</p>
+          <p className="mt-3 text-xs text-muted-foreground">© {new Date().getFullYear()} Nadlan3D / demo</p>
         </div>
       </div>
     </footer>

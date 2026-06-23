@@ -20,9 +20,9 @@ export const Route = createFileRoute("/cities/$city")({
   },
   head: ({ params, loaderData }) => ({
     meta: [
-      { title: `${loaderData?.city.en ?? params.city} · Nadlan3D` },
-      { name: "description", content: `פרויקטים חדשים ב-${loaderData?.city.he ?? params.city}. Showroom תלת־ממדי לכל פרויקט.` },
-      { property: "og:title", content: `${loaderData?.city.en ?? params.city} new developments · Nadlan3D` },
+      { title: `${loaderData?.city.en ?? params.city} / Nadlan3D` },
+      { name: "description", content: `פרויקטים חדשים ב-${loaderData?.city.he ?? params.city} עם חוויה חזותית ומידע ברור לרוכשים.` },
+      { property: "og:title", content: `${loaderData?.city.en ?? params.city} new developments / Nadlan3D` },
       { property: "og:url", content: `/cities/${params.city}` },
     ],
     links: [

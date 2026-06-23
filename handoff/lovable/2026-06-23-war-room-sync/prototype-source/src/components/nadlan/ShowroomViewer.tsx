@@ -6,36 +6,55 @@ interface Props {
   project: Project;
 }
 
-// Asset-truth showroom viewer.
-// real-glb  → dynamic-import <model-viewer> client-side.
-// facade-svg → schematic CSS extrude.
-// empty     → "awaiting contractor upload" empty state.
+// Buyer-facing visual viewer. It never claims a model is live unless the file loads.
 export function ShowroomViewer({ project }: Props) {
   const { t, lang } = useLang();
   const ref = useRef<HTMLDivElement>(null);
   const [mvReady, setMvReady] = useState(false);
+  const [modelFailed, setModelFailed] = useState(false);
 
   useEffect(() => {
+    setMvReady(false);
+    setModelFailed(false);
     if (project.asset_state !== "real-glb") return;
     let cancelled = false;
-    // Dynamically import model-viewer; if it fails (offline/CDN), facade
-    // remains a graceful fallback message below.
     const mvUrl = "https://unpkg.com/@google/model-viewer@4.0.0/dist/model-viewer.min.js";
-    import(/* @vite-ignore */ /* webpackIgnore: true */ mvUrl)
-      .then(() => { if (!cancelled) setMvReady(true); })
-      .catch(() => { /* fallback handled below */ });
+
+    async function loadModelViewer() {
+      try {
+        if (project.model_url) {
+          const res = await fetch(project.model_url, { method: "HEAD" });
+          if (!res.ok) throw new Error("model asset is missing");
+        }
+        await import(/* @vite-ignore */ /* webpackIgnore: true */ mvUrl);
+        if (!cancelled) setMvReady(true);
+      } catch {
+        if (!cancelled) setModelFailed(true);
+      }
+    }
+
+    loadModelViewer();
     return () => { cancelled = true; };
-  }, [project.asset_state]);
+  }, [project.asset_state, project.model_url]);
 
   const stateLabel =
-    project.asset_state === "real-glb" ? t("showroom.assetReal")
+    project.asset_state === "real-glb" && modelFailed ? t("asset.stage.modelPending")
+    : project.asset_state === "real-glb" && !mvReady ? t("asset.loading")
+    : project.asset_state === "real-glb" ? t("showroom.assetReal")
     : project.asset_state === "facade-svg" ? t("showroom.assetFacade")
     : t("showroom.assetEmpty");
+  const statusLabel =
+    project.asset_state === "real-glb" && modelFailed ? t("asset.stage.modelPending")
+    : project.asset_state === "real-glb" && mvReady ? t("asset.stage.model")
+    : project.asset_state === "real-glb" ? t("asset.loading")
+    : project.asset_state === "facade-svg" ? t("asset.stage.visual")
+    : t("asset.stage.pending");
+  const canShowModel = project.asset_state === "real-glb" && mvReady && !modelFailed;
 
   return (
     <div className="hairline relative overflow-hidden bg-card">
       <div ref={ref} className="aspect-[16/10] w-full sm:aspect-[16/9]">
-        {project.asset_state === "real-glb" && mvReady && (
+        {canShowModel && (
           /* @ts-expect-error - custom element */
           <model-viewer
             src={project.model_url}
@@ -44,13 +63,18 @@ export function ShowroomViewer({ project }: Props) {
             shadow-intensity="0.6"
             exposure="1.0"
             style={{ width: "100%", height: "100%", background: "transparent" }}
+            onError={() => setModelFailed(true)}
           />
         )}
-        {project.asset_state === "real-glb" && !mvReady && (
-          <FacadeSVG label={lang === "he" ? project.name_he : project.name_en} loading />
+        {project.asset_state === "real-glb" && !canShowModel && (
+          <FacadeSVG
+            label={lang === "he" ? project.name_he : project.name_en}
+            stageLabel={modelFailed ? t("asset.stage.modelPending") : t("asset.loading")}
+            loading={!modelFailed}
+          />
         )}
         {project.asset_state === "facade-svg" && (
-          <FacadeSVG label={lang === "he" ? project.name_he : project.name_en} />
+          <FacadeSVG label={lang === "he" ? project.name_he : project.name_en} stageLabel={t("asset.schematic")} />
         )}
         {project.asset_state === "empty" && (
           <div className="flex h-full w-full flex-col items-center justify-center gap-3 p-6 text-center">
@@ -68,15 +92,13 @@ export function ShowroomViewer({ project }: Props) {
       </div>
       <div className="hairline-t flex items-center justify-between gap-2 px-4 py-2 text-xs text-muted-foreground">
         <span>{stateLabel}</span>
-        <span className="font-mono uppercase tracking-wider">
-          {project.asset_state === "real-glb" ? "GLB · live" : project.asset_state === "facade-svg" ? "SVG · schematic" : "—"}
-        </span>
+        <span className="uppercase tracking-wider">{statusLabel}</span>
       </div>
     </div>
   );
 }
 
-function FacadeSVG({ label, loading = false }: { label: string; loading?: boolean }) {
+function FacadeSVG({ label, loading = false, stageLabel }: { label: string; loading?: boolean; stageLabel: string }) {
   return (
     <div className="relative h-full w-full bg-gradient-to-b from-secondary to-card">
       <svg viewBox="0 0 320 200" className="h-full w-full" preserveAspectRatio="xMidYMid meet">
@@ -106,7 +128,7 @@ function FacadeSVG({ label, loading = false }: { label: string; loading?: boolea
       </svg>
       <div className="pointer-events-none absolute inset-0 flex items-end justify-between p-3 text-[10px] uppercase tracking-wider text-muted-foreground">
         <span>{label}</span>
-        <span>{loading ? "loading GLB…" : "schematic"}</span>
+        <span>{loading ? stageLabel : stageLabel}</span>
       </div>
     </div>
   );

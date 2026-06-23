@@ -6,10 +6,10 @@ import { MagazineCard } from "@/components/nadlan/MagazineCard";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Nadlan3D — נדל״ן שרואים לפני שקונים" },
-      { name: "description", content: "Showroom תלת־ממדי לכל פרויקט נדל״ן. אמת חזותית מול היזם — ללא מצגות מטעות, ללא תוכניות מומצאות." },
-      { property: "og:title", content: "Nadlan3D — Real Estate, Rendered Real" },
-      { property: "og:description", content: "A 3D showroom for every project. Verified asset truth." },
+      { title: "Nadlan3D - נדל״ן שרואים לפני שקונים" },
+      { name: "description", content: "סיור תלת-ממד לכל פרויקט נדל״ן. מציגים רק מה שקיים ומסמנים בבירור מה להמחשה." },
+      { property: "og:title", content: "Nadlan3D - Real Estate, Rendered Real" },
+      { property: "og:description", content: "Visual project tours with clear asset status and no invented plans." },
       { property: "og:url", content: "/" },
     ],
     links: [
@@ -31,7 +31,7 @@ function Index() {
       <section className="hairline-b">
         <div className="mx-auto max-w-6xl px-4 py-12 sm:px-6 sm:py-20">
           <p className="text-xs uppercase tracking-[0.2em] text-muted-foreground">
-            {lang === "he" ? "נדל״ן · ישראל · 2026" : "Real Estate · Israel · 2026"}
+            {lang === "he" ? "נדל״ן / ישראל / 2026" : "Real Estate / Israel / 2026"}
           </p>
           <h1 className="mt-4 text-3xl leading-tight sm:text-5xl md:text-6xl">{t("home.heroTitle")}</h1>
           <p className="mt-5 max-w-2xl text-base text-muted-foreground sm:text-lg">{t("home.heroSub")}</p>
@@ -47,7 +47,7 @@ function Index() {
               params={{ projectId: "rainbow-tlv" }}
               className="hairline rounded-sm px-5 py-3 text-sm hover:bg-secondary"
             >
-              {t("cta.viewShowroom")} — Rainbow Tower
+              {t("cta.viewShowroom")} - {lang === "he" ? "מגדל הקשת" : "Rainbow Tower"}
             </Link>
           </div>
         </div>
@@ -70,7 +70,7 @@ function Index() {
         </div>
       </section>
 
-      {/* Featured projects */}
+      {/* Selected projects */}
       <section>
         <div className="mx-auto max-w-6xl px-4 py-12 sm:px-6">
           <div className="flex items-baseline justify-between">

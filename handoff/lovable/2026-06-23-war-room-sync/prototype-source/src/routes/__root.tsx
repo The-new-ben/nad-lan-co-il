@@ -20,7 +20,7 @@ function NotFoundComponent() {
     <div className="flex min-h-screen items-center justify-center bg-background px-4">
       <div className="max-w-md text-center">
         <h1 className="text-7xl">404</h1>
-        <h2 className="mt-4 text-xl">Page not found · הדף לא נמצא</h2>
+        <h2 className="mt-4 text-xl">Page not found / הדף לא נמצא</h2>
         <div className="mt-6">
           <Link to="/" className="rounded-sm bg-foreground px-4 py-2 text-sm text-background hover:bg-foreground/90">
             Go home
@@ -61,12 +61,12 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Nadlan3D — נדל״ן שרואים לפני שקונים" },
-      { name: "description", content: "Showroom תלת־ממדי לכל פרויקט נדל״ן בישראל. Real Estate, Rendered Real." },
+      { title: "Nadlan3D - נדל״ן שרואים לפני שקונים" },
+      { name: "description", content: "סיור תלת-ממד לפרויקטי נדל״ן בישראל. Clear visual project tours for local and international buyers." },
       { name: "author", content: "Nadlan3D" },
       { property: "og:site_name", content: "Nadlan3D" },
-      { property: "og:title", content: "Nadlan3D — Real Estate, Rendered Real" },
-      { property: "og:description", content: "A 3D showroom for every project. No misleading decks, no invented floor plans." },
+      { property: "og:title", content: "Nadlan3D - Real Estate, Rendered Real" },
+      { property: "og:description", content: "Visual project tours with clear asset status and no invented plans." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
     ],
