@@ -1265,7 +1265,7 @@ add_filter( 'wpseo_twitter_description', 'nadlan_p3d_seo_description', 20 );
 if ( ! function_exists( 'nadlan_p3d_lovable_showroom_v1690_css' ) ) {
 	function nadlan_p3d_lovable_showroom_v1690_css() {
 		return <<<'CSS'
-/* v1.69.5: public showroom surface. */
+/* v1.69.6: public showroom surface. */
 @font-face{font-family:"Frank Ruhl Libre";font-style:normal;font-weight:400;font-display:swap;src:url("/wp-content/themes/nadlan-revenue/assets/fonts/frank-ruhl-libre/frl-400.woff2") format("woff2")}
 @font-face{font-family:"Frank Ruhl Libre";font-style:normal;font-weight:500;font-display:swap;src:url("/wp-content/themes/nadlan-revenue/assets/fonts/frank-ruhl-libre/frl-500.woff2") format("woff2")}
 @font-face{font-family:"Frank Ruhl Libre";font-style:normal;font-weight:700;font-display:swap;src:url("/wp-content/themes/nadlan-revenue/assets/fonts/frank-ruhl-libre/frl-700.woff2") format("woff2")}
@@ -2854,7 +2854,7 @@ if ( ! function_exists( 'nadlan_p3d_inline_js' ) ) {
 			var sceneRect=scene?scene.getBoundingClientRect():null;
 			if(sceneRect&&(p.x<sceneRect.left||p.x>sceneRect.right||p.y<sceneRect.top||p.y>sceneRect.bottom)){return false}
 			var baseLimit=(window.innerWidth&&window.innerWidth<=480)?92:76;
-			var best=null,bestDistance=Infinity;
+			var best=null,bestScore=Infinity;
 			stagePicks.querySelectorAll('.nlp3d-stage-pick,.nlp3d-cell').forEach(function(node){
 				if(node.getAttribute('aria-disabled')==='true'){return}
 				var cs=window.getComputedStyle(node);
@@ -2863,9 +2863,11 @@ if ( ! function_exists( 'nadlan_p3d_inline_js' ) ) {
 				if(r.width<1||r.height<1){return}
 				var cx=r.left+(r.width/2),cy=r.top+(r.height/2);
 				var dx=p.x-cx,dy=p.y-cy;
+				var ax=Math.abs(dx),ay=Math.abs(dy);
 				var distance=Math.sqrt(dx*dx+dy*dy);
 				var limit=Math.max(baseLimit,Math.min(104,Math.max(r.width,r.height)*1.35));
-				if(distance<=limit&&distance<bestDistance){best=node;bestDistance=distance}
+				var score=(ay*3)+ax+(distance*.12);
+				if(distance<=limit&&score<bestScore){best=node;bestScore=score}
 			});
 			if(!best||!best.dataset||!best.dataset.unit){return false}
 			var unit=unitById(best.dataset.unit);
@@ -3894,7 +3896,7 @@ add_action(
 			return;
 		}
 
-		wp_register_style( 'nadlan-p3d', '', array(), '1.69.5' );
+		wp_register_style( 'nadlan-p3d', '', array(), '1.69.6' );
 		wp_enqueue_style( 'nadlan-p3d' );
 		wp_add_inline_style( 'nadlan-p3d', nadlan_p3d_lovable_showroom_v1690_css() );
 
@@ -3905,7 +3907,7 @@ add_action(
 			wp_enqueue_script( 'nadlan-model-viewer' );
 		}
 
-		wp_register_script( 'nadlan-p3d', '', array(), '1.69.5', true );
+		wp_register_script( 'nadlan-p3d', '', array(), '1.69.6', true );
 		wp_enqueue_script( 'nadlan-p3d' );
 		wp_add_inline_script( 'nadlan-p3d', nadlan_p3d_inline_js( esc_url_raw( rest_url( 'nadlan/v1/lead' ) ) ) );
 	}
@@ -4303,6 +4305,7 @@ add_filter(
 			'model_viewer_hotspots' => true,
 			'model_viewer_hotspots_hidden_when_overlay_picks_v1694' => true,
 			'model_surface_tap_select_v1695' => true,
+			'model_surface_tap_floor_bias_v1696' => true,
 			'product_selector_v1641' => true,
 			'status_colored_unit_picks' => true,
 			'recommended_unit_pulse' => true,
