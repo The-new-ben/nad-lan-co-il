@@ -128,6 +128,11 @@
       Paste the short dispatcher prompt first. Lovable must read the full repo spec, inspect the current website, explain scope and likely credit intensity, then wait for <code>PROCEED FULL RUN</code> before generating the heavy prototype/screenshots package.
     </section>
 
+    <section class="callout">
+      <strong>Shared knowledge:</strong>
+      Codex added prior reports, design docs, QA screenshot inventories, branch inventories, and selected repo skills to the source bundle. Lovable is instructed to use those files and to commit any new reusable rules under <code>handoff/shared-knowledge/</code> or the Lovable run's <code>knowledge/</code> folder.
+    </section>
+
     <section>
       <h2>What Codex Found</h2>
       <div class="grid">
@@ -176,6 +181,7 @@
       <h2>Lovable Must Produce</h2>
       <ul>
         <li>Before the full run: current-site scan evidence and a clear scope/credit plan.</li>
+        <li>Use the source-context bundle, repo skills, and shared-knowledge folder before designing.</li>
         <li>A working Lovable/TanStack/React prototype for mobile, tablet, and desktop showroom states.</li>
         <li>Prototype screenshots, including 390px mobile states and an admin war-room dashboard mockup.</li>
         <li>Design tokens in JSON, not only prose.</li>
@@ -202,6 +208,9 @@
       <p class="path"><code>handoff/codex/lovable-prompts/2026-06-23-showroom-visual-redesign-prompt.md</code></p>
       <p>Lovable must push output here in the strategy hub repo:</p>
       <p class="path"><code>handoff/lovable/2026-06-23-showroom-visual-redesign/</code></p>
+      <p>Source context and shared knowledge to read:</p>
+      <p class="path"><code>handoff/codex/2026-06-23-source-context/README.md</code></p>
+      <p class="path"><code>handoff/shared-knowledge/README.md</code></p>
       <p>Codex will then import that same folder into the WordPress repo and begin implementation from the prototype, screenshots, tokens, and backlog.</p>
     </section>
 

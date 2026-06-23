@@ -80,10 +80,31 @@ Also read Codex's latest request package if present:
 ```text
 handoff/codex/2026-06-23-showroom-redesign-readout.md
 handoff/codex/2026-06-23-stakeholder-input-packet.md
+handoff/codex/2026-06-23-source-context/README.md
+handoff/codex/2026-06-23-source-context/source-manifest.md
+handoff/codex/2026-06-23-source-context/data/repo-research-design-inventory.csv
+handoff/codex/2026-06-23-source-context/data/qa-screenshot-inventory.csv
+handoff/codex/2026-06-23-source-context/data/relevant-remote-branches.csv
+handoff/codex/2026-06-23-source-context/data/skills-inventory.csv
+handoff/codex/2026-06-23-source-context/skills/
+handoff/shared-knowledge/README.md
+handoff/shared-knowledge/skills/nadlan-cross-agent-sync.md
+handoff/shared-knowledge/skills/nadlan-showroom-design-rules.md
 handoff/codex/lovable-prompts/2026-06-23-showroom-visual-redesign-prompt.md
 handoff/codex/exports/2026-06-23-showroom-redesign-next-lovable-prompt.html
 handoff/codex/exports/2026-06-23-stakeholder-input-packet.html
 ```
+
+The source-context folder contains prior Codex, Claude, and Lovable reports. Use it. Do not redesign from a thin prompt when this repo already contains historical research, design specs, QA screenshots, and branch signals.
+
+Use the skill and shared-knowledge files as project memory. If you create reusable guidance, add it to:
+
+```text
+handoff/lovable/2026-06-23-showroom-visual-redesign/knowledge/
+handoff/shared-knowledge/skills/
+```
+
+Commit those files to GitHub. Do not leave reusable skills only in Lovable chat or Lovable Knowledge UI.
 
 Inspect the current public site:
 

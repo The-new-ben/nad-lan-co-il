@@ -10,6 +10,14 @@ Then read this file inside the repo:
 
 `handoff/codex/lovable-prompts/2026-06-23-showroom-visual-redesign-prompt.md`
 
+Also read this source-context bundle:
+
+`handoff/codex/2026-06-23-source-context/README.md`
+
+Also read the shared knowledge rules:
+
+`handoff/shared-knowledge/README.md`
+
 Follow it exactly.
 
 Important operating rule:
@@ -25,6 +33,9 @@ For Step 1, read the synced reports and Codex files, inspect `https://nad-lan.co
 5. any blocking questions
 6. confirmation that the output will be committed to:
    `handoff/lovable/2026-06-23-showroom-visual-redesign/`
+7. confirmation that any reusable rules/skills will be committed under:
+   `handoff/lovable/2026-06-23-showroom-visual-redesign/knowledge/`
+   or `handoff/shared-knowledge/skills/`
 
 Wait for me to write exactly:
 
