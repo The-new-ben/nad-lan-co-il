@@ -14,7 +14,9 @@ Review notes:
 - The previous HTML was replaced with clean readable Hebrew because the source text was damaged.
 - Desktop screenshot renders the full gap table with updated measurement and KPI status.
 - Mobile screenshot at 390px uses stacked cards instead of a horizontal table, so the owner can read each gap without dragging sideways.
-- The refreshed screenshots now show 24 evidence items and the international investor row as a build-ready specification that is not yet implemented.
+- The refreshed screenshots now show 25 evidence items.
+- The technical SEO row now shows a 39-page-family matrix as a build-ready specification that is not yet implemented.
+- The international investor row remains a build-ready specification that is not yet implemented.
 - The page states clearly that several areas are specifications only and not live implementation proof.
 
 Next visual gate:

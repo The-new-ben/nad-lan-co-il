@@ -13,8 +13,9 @@ Artifact: `strategy/war-room/owner-output-index-rtl.html`
 Desktop review:
 
 - The page renders as a readable RTL owner dashboard.
-- The key counts are visible above the fold: 225 keyword rows, 39 page templates, 15 UX surfaces, 17 sprint tasks, 14 evidence rows.
+- The key counts are visible above the fold: 225 keyword rows, 39 page templates, 15 UX surfaces, 17 sprint tasks, 25 evidence items.
 - The main execution links are visible and separated from the evidence and report links.
+- The technical SEO and schema packet is linked from the readable reports list.
 - The page states the main limitation clearly: final live proof after UPress pull and cache clear is still pending.
 - Existing preview images load in the evidence panel.
 
@@ -32,6 +33,7 @@ Cleaned in this pass:
 
 - Replaced visible `SEO` in the headline with Hebrew wording.
 - Replaced unnecessary internal English terms with owner-facing Hebrew wording.
+- Replaced visible browser-console and heading-code jargon with plain Hebrew wording.
 - Kept technical file names only where they identify the artifact being opened.
 
 Static source scan:

@@ -1,4 +1,4 @@
-# Current Site And Objective Audit Visual QA
+﻿# Current Site And Objective Audit Visual QA
 
 Date: 2026-06-23  
 Scope: fresh public-site evidence, objective-completion audit, and updated owner index.
@@ -26,7 +26,9 @@ Fresh public-site run:
 Owner-readable report previews:
 
 - `strategy/war-room/current-site-evidence-2026-06-23-preview.png`
+- `strategy/war-room/current-site-evidence-2026-06-23-preview-mobile.png`
 - `strategy/war-room/objective-completion-audit-preview.png`
+- `strategy/war-room/objective-completion-audit-preview-mobile.png`
 - `strategy/war-room/owner-output-index-preview.png`
 - `strategy/war-room/owner-output-index-preview-mobile.png`
 
@@ -38,7 +40,7 @@ Source: `docs/qa/screenshots/stage1-public-trust-current-2026-06-23/report.json`
 - Total leakage matches: 78.
 - Visible leakage signals: 33.
 - Horizontal overflow count: 0.
-- Console error count: 3.
+- Browser error count: 3.
 
 ## Visual Review
 
@@ -59,9 +61,10 @@ Dimri project page:
 
 Owner reports:
 
-- `current-site-evidence-2026-06-23-rtl.html` is readable and clearly states that the run is not final approval.
-- `objective-completion-audit-rtl.html` is now Hebrew-first and separates proven items from partial items.
-- The owner index links to both new reports.
+- `current-site-evidence-2026-06-23-rtl.html` is readable, shows 15 screenshots, uses Hebrew verdict labels, and clearly states that the run is not final approval.
+- The current-site evidence mobile screenshot was corrected to 390px width after converting the results table into stacked mobile rows.
+- `objective-completion-audit-rtl.html` is Hebrew-first, separates proven items from partial items, and now includes the technical SEO build queue in REQ-10.
+- The owner index links to the evidence report, objective audit, and the technical SEO packet.
 
 ## Verdict
 
