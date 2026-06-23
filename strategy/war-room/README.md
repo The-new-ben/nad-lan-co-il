@@ -11,6 +11,8 @@ Primary owner-facing artifacts:
 - `showroom-rebuild-execution-packet-visual-qa.md` - screenshot review note for the showroom rebuild packet.
 - `listing-seo-execution-packet-rtl.html` - Hebrew RTL listings and SEO packet with keyword ownership, anti-cannibalization, route decisions, data trust, and screenshot gates.
 - `listing-seo-execution-packet-visual-qa.md` - screenshot review note for the listings and SEO packet.
+- `admin-war-room-execution-packet-rtl.html` - Hebrew RTL admin war-room packet with keyword registry, workflow gates, screenshots, evidence, measurement, and reusable-system decisions.
+- `admin-war-room-execution-packet-visual-qa.md` - screenshot review note for the admin war-room packet.
 - `objective-completion-audit-rtl.html` - Hebrew RTL audit against the full war-room objective, showing what is proven, partial, or still missing.
 - `current-site-evidence-2026-06-23-rtl.html` - Hebrew RTL summary of the fresh live public-site screenshot run from 2026-06-23.
 - `current-site-and-objective-audit-visual-qa.md` - screenshot review note for the fresh public evidence and objective audit.
@@ -28,6 +30,8 @@ Structured artifacts:
 - `showroom-rebuild-execution-packet.md` - implementation narrative for the next project showroom build slice.
 - `listing-seo-execution-packet.csv` - structured listings and SEO queue with registry, canonical routes, facets, card trust, asset truth, paid placement, schema, freshness, leads, and release gates.
 - `listing-seo-execution-packet.md` - implementation narrative for the next listings and SEO build slice.
+- `admin-war-room-execution-packet.csv` - structured admin governance queue with registry, fields, workflow, publish gates, evidence, analytics, permissions, import/export, and replication package.
+- `admin-war-room-execution-packet.md` - implementation narrative for the WordPress admin war-room and future-site replication system.
 - `lovable-design-validation-prompt.md` - controlled no-spend prompt to use only if the owner chooses another Lovable review.
 - `keyword-to-page-owner.csv` - one canonical owner for every keyword row from the recovered Report 2 keyword universe.
 - `current-evidence-register.csv` - evidence, limitations, and next verification actions.
