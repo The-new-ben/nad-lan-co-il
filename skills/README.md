@@ -10,9 +10,10 @@ Every agent (Claude, Codex, Antigravity, Cowork) reads from here before acting a
 2. `../HANDOFF.md` — technical access + current state (public-safe)
 3. `agent-onboarding.md` — credentials handshake
 4. `README.md` — this file
-5. `cowork-briefing.md` (or your equivalent agent briefing) — condensed history + voice + guardrails
-6. `site-state.md` — read the **last 6 blocks**, that is the live situation report
-7. `strategy-master.md` — the full Hebrew SEO/business brief
+5. `nadlan-autonomous-execution-master.md` — autonomous execution loop, no-stacking rule, screenshots, release gates
+6. `cowork-briefing.md` (or your equivalent agent briefing) — condensed history + voice + guardrails
+7. `site-state.md` — read the **last 6 blocks**, that is the live situation report
+8. `strategy-master.md` — the full Hebrew SEO/business brief
 
 **Before publishing content:**
 
@@ -41,6 +42,11 @@ Every agent (Claude, Codex, Antigravity, Cowork) reads from here before acting a
 | `cowork-briefing.md` | Condensed history + voice + guardrails for Claude Cowork |
 | `agent-coordination-protocol.md` | Rules for Codex/Antigravity/Claude/Cowork coexistence |
 | `agent-tooling-strategy.md` | Which agent does what work |
+| `nadlan-autonomous-execution-master.md` | Master execution loop: no stacking, screenshots, release gates, Lovable sync, public language, replication |
+| `adopted-codex-goal-bundle.md` | Broad request to bounded autonomous slice with proof |
+| `adopted-codex-instruction-chain.md` | AGENTS, commands, done definition, and escalation discipline |
+| `adopted-codex-progressive-disclosure.md` | Load only relevant reports, skills, and references |
+| `adopted-codex-visual-proof-loop.md` | Screenshot-first visual QA, public-language scan, no-stacking proof |
 | `original-prompt-2026-05-28.md` | The Laravel prompt that started the project |
 | `honesty-statement.md` | Verified vs assumed vs needs-paid-data |
 | `security-public-repo.md` | What MUST NEVER be committed (repo is public) |
@@ -98,6 +104,14 @@ Every agent (Claude, Codex, Antigravity, Cowork) reads from here before acting a
 | `plugin-discipline.md` | Mandatory guards (function_exists, no Hebrew in activation, no mu-plugins) |
 | `theme-fork-decision.md` | Why we forked Twenty Twenty-Five instead of child theme |
 | `wordpress-content-types.md` | Page vs Post vs CPT decisions |
+| `adopted-wp-playground-verification.md` | WordPress runtime verification loop |
+| `adopted-wp-plugin-quality-gate.md` | Plugin quality and release artifact checks |
+| `adopted-wp-security-threat-gate.md` | Input, output, REST, AJAX, SQL, file, nonce, and capability security gate |
+| `adopted-wp-performance-gate.md` | Public performance and duplicate asset gate |
+| `adopted-wp-accessibility-rtl-gate.md` | Accessibility and RTL Hebrew gate |
+| `adopted-wp-release-agent-gate.md` | Implementer/verifier/package/deploy separation |
+| `adopted-wp-rest-api-contract-gate.md` | REST schema, permission, validation, and consumer contract checks |
+| `adopted-wp-mcp-abilities-map.md` | Existing abilities and automation map before new code |
 | `abilities-api.md` | WP 7.0 Abilities API usage |
 | `interactive-widgets.md` | Vanilla JS calculator widgets |
 | `properties-catalog.md` | nadlan_property CPT + MapLibre archive |
@@ -139,4 +153,4 @@ A skill that covers a topic also covered elsewhere should _link to the other ski
 If you find yourself writing about one of these in another skill, replace your text with a `→ see [skill]` pointer.
 
 ---
-_Created 2026-05-28 by Claude Code (claude-opus-4-7). Reindexed 2026-05-30 to cover all 35+ skills + add the publishing workflow loop._
+_Created 2026-05-28 by Claude Code (claude-opus-4-7). Reindexed 2026-05-30 to cover all 35+ skills + add the publishing workflow loop. Updated 2026-06-23 by Codex to index the adopted Codex and WordPress skill pack._

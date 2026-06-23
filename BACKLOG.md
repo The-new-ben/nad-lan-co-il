@@ -146,6 +146,8 @@
 
 ## Shipped log (history — do not delete)
 
+- 🟢 2026-06-23 - adopted Codex and WordPress skill pack added after external research: 12 new small skills, research report, master skill links, MAP, README, and SKILLS-TREE integration.
+- 🟢 2026-06-23 — master autonomous execution skill added: no CSS/element stacking, screenshot-first proof, release gates, Lovable sync, public-language hygiene, and cross-site replication process.
 - 🟢 1.33.0 — projects premium directory + real reviews engine (moderation + schema.org).
 - 🟢 1.32.0 — premium professional profile pages + "similar pros".
 - 🟢 1.31.0 — state-of-the-art professionals directory (live AJAX filter/sort, colour pills,
