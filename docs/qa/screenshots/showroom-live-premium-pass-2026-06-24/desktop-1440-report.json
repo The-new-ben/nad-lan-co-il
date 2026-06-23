@@ -1,0 +1,372 @@
+{
+  "url": "https://nad-lan.co.il/projects/rainbow-tel-aviv/?codex_qa=showroom_live&viewport=desktop-1440&t=1782247775985",
+  "title": "דירות למכירה ב-Rainbow תל אביב | מחירים, תוכניות ובחירת דירה בשדה דב | נדלן חכם",
+  "viewport": {
+    "width": 1440,
+    "height": 1000
+  },
+  "scrollWidth": 1440,
+  "bodyScrollWidth": 1440,
+  "hasRoot": true,
+  "rootClasses": "nlp3d nlp3d-premium alignfull is-model-first is-dual-showroom has-model-picker has-model-viewer-loaded has-stage-selection",
+  "rootActiveUnit": null,
+  "modelViewerCount": 1,
+  "modelPickCount": 6,
+  "activePicks": [
+    "unit-38-penthouse"
+  ],
+  "cameraOrbit": "32deg 58deg auto",
+  "cameraTarget": "0 124 7",
+  "dockText": "בחירה נוכחית דירת 5 חדרים, קומה 38 5 חדרים · 210 מ\"ר · פנטהאוז גבוה לכיוון הים · זמינה לפנייה סיבוב 360 התקדמות",
+  "stageText": "פתחו את פרטי הדירה × הדירה שנבחרה דירת 5 חדרים, קומה 38 5 חדרים · 210 מ\"ר · פנטהאוז גבוה לכיוון הים · זמינות להדגמה בלבד עד לקבלת מלאי רשמי מהיזם מומלצת לבדיקהזמינה לפנייהפנטהאוז גבוה לכיוון היםכולל אומדן אומדן ₪15,960,000 זמינה לפנייה פנטהאוז גבוה לכיוון הים האומדן עוזר להשוואה ראשונית בלבד. המחיר, הזמינות ותנאי העסקה יאומתו מול היזם לפני כל התקדמות. פרטים מלאים מבט מהדירה תוכניות וסיור דברו עם היזם פרטים מבט מהדירה תוכניות שמש סביבה סיור",
+  "detailTitle": "דירת 5 חדרים, קומה 38",
+  "publicLeakSample": null,
+  "offenders": [
+    {
+      "tag": "BUTTON",
+      "cls": "nlp3d-mv-hotspot nlp3d-hotspot-hit nlp3d-status-available is-available",
+      "x": 1579,
+      "right": 1623,
+      "width": 44,
+      "text": "דירת 3 חדרים, קומה 8 דירת 3 חדרים, קומה 8 · 3 חד׳ 82 מ\"ר · מבט לחצר ולים זמינה ל"
+    },
+    {
+      "tag": "SPAN",
+      "cls": "nlp3d-mv-label nlp3d-hotspot-tag",
+      "x": 1541,
+      "right": 1662,
+      "width": 121,
+      "text": "דירת 3 חדרים, קומה 8"
+    },
+    {
+      "tag": "SPAN",
+      "cls": "nlp3d-hotspot-tip",
+      "x": 1580,
+      "right": 1622,
+      "width": 42,
+      "text": "דירת 3 חדרים, קומה 8 · 3 חד׳ 82 מ\"ר · מבט לחצר ולים זמינה לפנייה"
+    },
+    {
+      "tag": "STRONG",
+      "cls": "",
+      "x": 1582,
+      "right": 1620,
+      "width": 38,
+      "text": "דירת 3 חדרים, קומה 8 · 3 חד׳"
+    },
+    {
+      "tag": "SMALL",
+      "cls": "",
+      "x": 1584,
+      "right": 1614,
+      "width": 30,
+      "text": "82 מ\"ר · מבט לחצר ולים"
+    },
+    {
+      "tag": "SMALL",
+      "cls": "",
+      "x": 1585,
+      "right": 1617,
+      "width": 32,
+      "text": "זמינה לפנייה"
+    },
+    {
+      "tag": "BUTTON",
+      "cls": "nlp3d-mv-hotspot nlp3d-hotspot-hit nlp3d-status-available is-available",
+      "x": 1568,
+      "right": 1612,
+      "width": 44,
+      "text": "דירת 4 חדרים, קומה 16 דירת 4 חדרים, קומה 16 · 4 חד׳ 112 מ\"ר · קו החוף ושדה דב זמ"
+    },
+    {
+      "tag": "SPAN",
+      "cls": "nlp3d-mv-label nlp3d-hotspot-tag",
+      "x": 1526,
+      "right": 1653,
+      "width": 127,
+      "text": "דירת 4 חדרים, קומה 16"
+    },
+    {
+      "tag": "SPAN",
+      "cls": "nlp3d-hotspot-tip",
+      "x": 1569,
+      "right": 1611,
+      "width": 42,
+      "text": "דירת 4 חדרים, קומה 16 · 4 חד׳ 112 מ\"ר · קו החוף ושדה דב זמינה לפנייה"
+    },
+    {
+      "tag": "STRONG",
+      "cls": "",
+      "x": 1571,
+      "right": 1609,
+      "width": 38,
+      "text": "דירת 4 חדרים, קומה 16 · 4 חד׳"
+    },
+    {
+      "tag": "SMALL",
+      "cls": "",
+      "x": 1570,
+      "right": 1609,
+      "width": 39,
+      "text": "112 מ\"ר · קו החוף ושדה דב"
+    },
+    {
+      "tag": "SMALL",
+      "cls": "",
+      "x": 1574,
+      "right": 1606,
+      "width": 32,
+      "text": "זמינה לפנייה"
+    },
+    {
+      "tag": "BUTTON",
+      "cls": "nlp3d-mv-hotspot nlp3d-hotspot-hit nlp3d-status-available is-available is-recommended",
+      "x": 1568,
+      "right": 1612,
+      "width": 44,
+      "text": "דירת 4 חדרים, קומה 24 דירת 4 חדרים, קומה 24 · 4 חד׳ 128 מ\"ר · ים, פארק וצפון תל "
+    },
+    {
+      "tag": "SPAN",
+      "cls": "nlp3d-mv-label nlp3d-hotspot-tag",
+      "x": 1526,
+      "right": 1653,
+      "width": 127,
+      "text": "דירת 4 חדרים, קומה 24"
+    },
+    {
+      "tag": "SPAN",
+      "cls": "nlp3d-hotspot-tip",
+      "x": 1569,
+      "right": 1611,
+      "width": 42,
+      "text": "דירת 4 חדרים, קומה 24 · 4 חד׳ 128 מ\"ר · ים, פארק וצפון תל אביב זמינה לפנייה · פו"
+    },
+    {
+      "tag": "STRONG",
+      "cls": "",
+      "x": 1571,
+      "right": 1609,
+      "width": 38,
+      "text": "דירת 4 חדרים, קומה 24 · 4 חד׳"
+    },
+    {
+      "tag": "SMALL",
+      "cls": "",
+      "x": 1570,
+      "right": 1610,
+      "width": 40,
+      "text": "128 מ\"ר · ים, פארק וצפון תל אביב"
+    },
+    {
+      "tag": "SMALL",
+      "cls": "",
+      "x": 1570,
+      "right": 1609,
+      "width": 39,
+      "text": "זמינה לפנייה · פופולרי"
+    },
+    {
+      "tag": "BUTTON",
+      "cls": "nlp3d-mv-hotspot nlp3d-hotspot-hit nlp3d-status-available is-available",
+      "x": 1604,
+      "right": 1648,
+      "width": 44,
+      "text": "דירת 5 חדרים, קומה 31 דירת 5 חדרים, קומה 31 · 5 חד׳ 156 מ\"ר · קו הרקיע והחצר הפנ"
+    },
+    {
+      "tag": "SPAN",
+      "cls": "nlp3d-mv-label nlp3d-hotspot-tag",
+      "x": 1562,
+      "right": 1689,
+      "width": 127,
+      "text": "דירת 5 חדרים, קומה 31"
+    }
+  ],
+  "smallTapTargets": [
+    {
+      "tag": "A",
+      "cls": "nadlan-gloss-link",
+      "unit": "",
+      "width": 40,
+      "height": 18,
+      "visible": true
+    },
+    {
+      "tag": "BUTTON",
+      "cls": "nlp3d-stage-card-handle",
+      "unit": "",
+      "width": 708,
+      "height": 24,
+      "visible": true
+    },
+    {
+      "tag": "BUTTON",
+      "cls": "nlp3d-stage-card-close",
+      "unit": "",
+      "width": 708,
+      "height": 25,
+      "visible": true
+    },
+    {
+      "tag": "BUTTON",
+      "cls": "nlp3d-stage-details",
+      "unit": "",
+      "width": 91,
+      "height": 24,
+      "visible": true
+    },
+    {
+      "tag": "BUTTON",
+      "cls": "nlp3d-stage-view-btn",
+      "unit": "",
+      "width": 83,
+      "height": 24,
+      "visible": true
+    },
+    {
+      "tag": "BUTTON",
+      "cls": "nlp3d-stage-tour",
+      "unit": "",
+      "width": 83,
+      "height": 24,
+      "visible": true
+    },
+    {
+      "tag": "BUTTON",
+      "cls": "nlp3d-stage-inquiry",
+      "unit": "",
+      "width": 87,
+      "height": 24,
+      "visible": true
+    },
+    {
+      "tag": "BUTTON",
+      "cls": "is-active",
+      "unit": "",
+      "width": 50,
+      "height": 24,
+      "visible": true
+    },
+    {
+      "tag": "BUTTON",
+      "cls": "",
+      "unit": "",
+      "width": 83,
+      "height": 24,
+      "visible": true
+    },
+    {
+      "tag": "BUTTON",
+      "cls": "",
+      "unit": "",
+      "width": 54,
+      "height": 24,
+      "visible": true
+    },
+    {
+      "tag": "BUTTON",
+      "cls": "",
+      "unit": "",
+      "width": 45,
+      "height": 24,
+      "visible": true
+    },
+    {
+      "tag": "BUTTON",
+      "cls": "",
+      "unit": "",
+      "width": 48,
+      "height": 24,
+      "visible": true
+    },
+    {
+      "tag": "BUTTON",
+      "cls": "",
+      "unit": "",
+      "width": 36,
+      "height": 24,
+      "visible": true
+    },
+    {
+      "tag": "BUTTON",
+      "cls": "nlp3d-dock-spin",
+      "unit": "",
+      "width": 74,
+      "height": 25,
+      "visible": true
+    },
+    {
+      "tag": "BUTTON",
+      "cls": "nlp3d-dock-action",
+      "unit": "",
+      "width": 66,
+      "height": 24,
+      "visible": true
+    },
+    {
+      "tag": "BUTTON",
+      "cls": "nlp3d-floor is-active",
+      "unit": "",
+      "width": 64,
+      "height": 25,
+      "visible": true
+    },
+    {
+      "tag": "BUTTON",
+      "cls": "nlp3d-floor",
+      "unit": "",
+      "width": 64,
+      "height": 25,
+      "visible": true
+    },
+    {
+      "tag": "BUTTON",
+      "cls": "nlp3d-floor",
+      "unit": "",
+      "width": 64,
+      "height": 25,
+      "visible": true
+    },
+    {
+      "tag": "BUTTON",
+      "cls": "nlp3d-floor",
+      "unit": "",
+      "width": 64,
+      "height": 25,
+      "visible": true
+    },
+    {
+      "tag": "BUTTON",
+      "cls": "nlp3d-floor",
+      "unit": "",
+      "width": 55,
+      "height": 25,
+      "visible": true
+    },
+    {
+      "tag": "BUTTON",
+      "cls": "nlp3d-floor",
+      "unit": "",
+      "width": 55,
+      "height": 25,
+      "visible": true
+    },
+    {
+      "tag": "BUTTON",
+      "cls": "nlp3d-compare-add",
+      "unit": "",
+      "width": 41,
+      "height": 24,
+      "visible": true
+    },
+    {
+      "tag": "A",
+      "cls": "nlp3d-plan",
+      "unit": "",
+      "width": 135,
+      "height": 25,
+      "visible": true
+    }
+  ]
+}

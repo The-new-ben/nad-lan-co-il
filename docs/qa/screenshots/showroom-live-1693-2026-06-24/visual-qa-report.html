@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>NadLan Showroom 1.69.3 Live QA</title>
+  <style>
+    body{margin:0;background:#faf7f1;color:#1b1a17;font-family:Arial,sans-serif;line-height:1.5}
+    main{max-width:1120px;margin:0 auto;padding:32px 18px 48px}
+    h1,h2{line-height:1.15}
+    .grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+    figure{margin:0;padding:12px;background:#fffaf2;border:1px solid #ded2be}
+    img{display:block;max-width:100%;height:auto;border:1px solid #ded2be}
+    code{background:#fffaf2;border:1px solid #ded2be;padding:2px 5px}
+    .pass{color:#4f6f42}
+    .warn{color:#9c5b35}
+    @media(max-width:760px){.grid{grid-template-columns:1fr}}
+  </style>
+</head>
+<body>
+<main>
+  <h1>Showroom 1.69.3 Live QA</h1>
+  <p><strong>Target:</strong> Rainbow Tel Aviv live project page, after updating the live plugin to 1.69.3.</p>
+  <p><strong>Tested unit:</strong> <code>unit-38-penthouse</code>.</p>
+
+  <h2>Result</h2>
+  <ul>
+    <li class="pass">Selected apartment state is now written to the showroom root: <code>unit-38-penthouse</code>.</li>
+    <li class="pass">The model camera moves to the selected unit: <code>camera-orbit: 32deg 58deg auto</code>, <code>camera-target: 0 124 7</code>.</li>
+    <li class="pass">Mobile 390 has no document-level horizontal overflow: <code>scrollWidth: 390</code>.</li>
+    <li class="pass">Mobile 390 showroom controls no longer fail the 44px touch target check.</li>
+    <li class="pass">No internal public-language leak was detected by the QA scan.</li>
+    <li class="warn">Still not final design: the sitewide floating contact button overlaps the lower card area on mobile.</li>
+    <li class="warn">Some model-viewer internal hotspot labels report offstage geometry in the automated scan, although the document itself does not overflow.</li>
+  </ul>
+
+  <h2>Screenshots After Unit Click</h2>
+  <div class="grid">
+    <figure>
+      <img src="desktop-1440-after-click-unit-38-penthouse.png" alt="Desktop live showroom after selecting unit 38">
+      <figcaption>Desktop 1440 after selecting unit 38.</figcaption>
+    </figure>
+    <figure>
+      <img src="mobile-390-after-click-unit-38-penthouse.png" alt="Mobile 390 live showroom after selecting unit 38">
+      <figcaption>Mobile 390 after selecting unit 38.</figcaption>
+    </figure>
+  </div>
+
+  <h2>Raw Evidence</h2>
+  <ul>
+    <li><a href="showroom-live-qa-report.json">Combined QA JSON</a></li>
+    <li><a href="desktop-1440-report.json">Desktop QA JSON</a></li>
+    <li><a href="mobile-390-report.json">Mobile QA JSON</a></li>
+    <li><a href="desktop-1440-before-click.png">Desktop before click</a></li>
+    <li><a href="mobile-390-before-click.png">Mobile before click</a></li>
+  </ul>
+</main>
+</body>
+</html>
