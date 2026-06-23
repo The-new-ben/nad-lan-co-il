@@ -3068,12 +3068,14 @@ if ( ! function_exists( 'nadlan_p3d_inline_js' ) ) {
 			if(!modelViewer||!activeUnit){return}
 			if(activeUnit.camera_orbit){
 				modelViewer.setAttribute('camera-orbit',activeUnit.camera_orbit);
-				return;
 			}
-			var hotspot=modelHotspots.find(function(h){return h.dataset.unit===activeUnit.id});
-			if(hotspot&&hotspot.dataset.position){
-				modelViewer.setAttribute('camera-target',hotspot.dataset.position);
+			var target=activeUnit.hotspot_position||'';
+			if(!target){
+				var hotspot=modelHotspots.find(function(h){return h.dataset.unit===activeUnit.id});
+				if(hotspot&&hotspot.dataset.position){target=hotspot.dataset.position}
 			}
+			if(target){modelViewer.setAttribute('camera-target',target)}
+			if(modelViewer.jumpCameraToGoal){modelViewer.jumpCameraToGoal()}
 		}
 		function renderFloors(){
 			floorStrip.innerHTML='';
@@ -3501,6 +3503,11 @@ if ( ! function_exists( 'nadlan_p3d_inline_js' ) ) {
 			hasStageSelection=!!activeUnit;
 			renderAll(false);
 			syncModelViewerCamera();
+			if(modelViewer){
+				var y=(Number(meta.ground_elevation_m)||0)+((Number(f)||1)-1)*(Number(meta.floor_height_m)||3.05);
+				modelViewer.setAttribute('camera-target','0m '+(Math.round(y*10)/10)+'m 0m');
+				if(modelViewer.jumpCameraToGoal){modelViewer.jumpCameraToGoal()}
+			}
 			if(activeUnit){storageSet(storeKey+'-unit',activeUnit.id)}
 			track('select_floor',{floor:f,unit:activeUnit&&activeUnit.id});
 		}
