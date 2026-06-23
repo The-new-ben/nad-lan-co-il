@@ -9,6 +9,8 @@ Primary owner-facing artifacts:
 - `design-system-screen-library-visual-qa.md` - screenshot review note for the design-system screen library.
 - `showroom-rebuild-execution-packet-rtl.html` - Hebrew RTL showroom rebuild packet with live/prototype screenshots, asset-truth rules, target screens, contractor inputs, and screenshot gates.
 - `showroom-rebuild-execution-packet-visual-qa.md` - screenshot review note for the showroom rebuild packet.
+- `project-showroom-state-machine-rtl.html` - Hebrew RTL project showroom state-machine and unit-contract packet with asset states, admin fields, payload validation evidence, and screenshot gates.
+- `project-showroom-state-machine-visual-qa.md` - screenshot review note for the project showroom state-machine packet.
 - `listing-seo-execution-packet-rtl.html` - Hebrew RTL listings and SEO packet with keyword ownership, anti-cannibalization, route decisions, data trust, and screenshot gates.
 - `listing-seo-execution-packet-visual-qa.md` - screenshot review note for the listings and SEO packet.
 - `admin-war-room-execution-packet-rtl.html` - Hebrew RTL admin war-room packet with keyword registry, workflow gates, screenshots, evidence, measurement, and reusable-system decisions.
@@ -37,6 +39,10 @@ Structured artifacts:
 - `design-system-screen-library.md` - detailed design system and implementation gate narrative.
 - `showroom-rebuild-execution-packet.csv` - structured showroom rebuild queue with asset-truth, visual-stage, unit-selection, map, interior, lead, performance, and SEO gates.
 - `showroom-rebuild-execution-packet.md` - implementation narrative for the next project showroom build slice.
+- `project-showroom-state-machine.csv` - structured 15-state model for the project showroom experience.
+- `project-showroom-admin-field-matrix.csv` - structured 20-field admin/data matrix required for the state machine.
+- `project-showroom-unit-schema.json` - JSON contract for unit, asset, environment, and lead context data.
+- `project-showroom-state-machine.md` - implementation narrative for the state machine and unit contract.
 - `listing-seo-execution-packet.csv` - structured listings and SEO queue with registry, canonical routes, facets, card trust, asset truth, paid placement, schema, freshness, leads, and release gates.
 - `listing-seo-execution-packet.md` - implementation narrative for the next listings and SEO build slice.
 - `admin-war-room-execution-packet.csv` - structured admin governance queue with registry, fields, workflow, publish gates, evidence, analytics, permissions, import/export, and replication package.

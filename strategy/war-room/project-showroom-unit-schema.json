@@ -1,0 +1,149 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://nad-lan.co.il/war-room/project-showroom-unit-schema.json",
+  "title": "NadLan Project Showroom Unit And Asset Contract",
+  "type": "object",
+  "required": [
+    "contract",
+    "project",
+    "asset_truth",
+    "units",
+    "lead_context"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "contract": {
+      "const": "nadlan-project-showroom-unit-contract/v1"
+    },
+    "project": {
+      "type": "object",
+      "required": ["project_slug", "post_id", "title", "public_use_policy"],
+      "additionalProperties": false,
+      "properties": {
+        "project_slug": {"type": "string", "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"},
+        "post_id": {"type": "integer", "minimum": 0},
+        "title": {"type": "string", "minLength": 1},
+        "city": {"type": "string"},
+        "developer_source_note": {"type": "string"},
+        "public_use_policy": {
+          "enum": ["official", "concept", "prototype", "missing_assets", "mixed"]
+        }
+      }
+    },
+    "asset_truth": {
+      "type": "object",
+      "required": ["primary_state", "source_status", "visual_assets"],
+      "additionalProperties": false,
+      "properties": {
+        "primary_state": {
+          "enum": ["official_model", "official_facade", "concept_visual", "missing_asset", "asset_error"]
+        },
+        "source_status": {
+          "enum": ["developer_approved", "public_source", "concept_only", "prototype_only", "missing", "error"]
+        },
+        "public_notice_he": {"type": "string", "minLength": 1},
+        "visual_assets": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["asset_id", "asset_type", "url", "status"],
+            "additionalProperties": false,
+            "properties": {
+              "asset_id": {"type": "string", "minLength": 1},
+              "asset_type": {
+                "enum": ["model_3d", "facade_image", "poster_image", "floor_plan", "tour", "video", "map_layer"]
+              },
+              "url": {"type": "string"},
+              "status": {
+                "enum": ["approved", "concept", "prototype", "missing", "error"]
+              },
+              "source_note": {"type": "string"},
+              "approved_for_public": {"type": "boolean"}
+            }
+          }
+        }
+      }
+    },
+    "units": {
+      "type": "array",
+      "minItems": 0,
+      "items": {
+        "type": "object",
+        "required": [
+          "id",
+          "label",
+          "floor",
+          "rooms",
+          "sqm",
+          "status",
+          "source_note",
+          "selection_target"
+        ],
+        "additionalProperties": false,
+        "properties": {
+          "id": {"type": "string", "minLength": 1},
+          "label": {"type": "string", "minLength": 1},
+          "building": {"type": "string"},
+          "floor": {"type": ["integer", "number", "string"]},
+          "rooms": {"type": ["integer", "number", "string"]},
+          "sqm": {"type": ["integer", "number", "string"]},
+          "balcony": {"type": ["integer", "number", "string", "null"]},
+          "direction": {"type": "string"},
+          "view": {"type": "string"},
+          "status": {
+            "enum": ["available", "reserved", "sold", "in_review", "demo", "unknown"]
+          },
+          "availability_note": {"type": "string"},
+          "price_estimate": {"type": ["integer", "number", "string", "null"]},
+          "price_note": {"type": "string"},
+          "source_note": {"type": "string", "minLength": 1},
+          "plan_url": {"type": "string"},
+          "tour_url": {"type": "string"},
+          "view_note": {"type": "string"},
+          "selection_target": {
+            "type": "object",
+            "required": ["target_type"],
+            "additionalProperties": false,
+            "properties": {
+              "target_type": {
+                "enum": ["camera_hotspot", "facade_polygon", "floor_band", "list_only"]
+              },
+              "hotspot_position": {"type": "string"},
+              "hotspot_normal": {"type": "string"},
+              "camera_orbit": {"type": "string"},
+              "polygon_points": {"type": "string"},
+              "floor_band": {"type": "string"}
+            }
+          }
+        }
+      }
+    },
+    "environment": {
+      "type": "object",
+      "additionalProperties": true,
+      "properties": {
+        "source_policy": {"type": "string"},
+        "coordinate_status": {
+          "enum": ["verified", "approximate", "missing", "not_for_public"]
+        }
+      }
+    },
+    "lead_context": {
+      "type": "object",
+      "required": ["enabled", "destination_type", "required_payload"],
+      "additionalProperties": false,
+      "properties": {
+        "enabled": {"type": "boolean"},
+        "destination_type": {
+          "enum": ["crm", "email", "whatsapp", "phone", "disabled"]
+        },
+        "required_payload": {
+          "type": "array",
+          "items": {"type": "string"},
+          "contains": {"const": "project_slug"}
+        },
+        "consent_required": {"type": "boolean"}
+      }
+    }
+  }
+}
