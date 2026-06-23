@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Rainbow Showroom live selection QA - 2026-06-24</title>
+  <style>
+    :root {
+      --cream: #faf7f1;
+      --paper: #fffdf8;
+      --ink: #1b1a17;
+      --muted: #6f665a;
+      --gold: #9c7a3c;
+      --line: #ded3c3;
+      --ok: #20603d;
+      --warn: #9a5b13;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      background: var(--cream);
+      color: var(--ink);
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      line-height: 1.55;
+    }
+    main {
+      width: min(1120px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 48px 0 72px;
+    }
+    h1 {
+      margin: 0 0 12px;
+      font-size: clamp(32px, 5vw, 58px);
+      line-height: 1;
+      letter-spacing: 0;
+    }
+    h2 {
+      margin: 36px 0 12px;
+      font-size: 24px;
+    }
+    p, li { color: var(--muted); }
+    .status {
+      display: inline-flex;
+      gap: 8px;
+      align-items: center;
+      padding: 8px 12px;
+      border: 1px solid color-mix(in srgb, var(--ok), transparent 65%);
+      background: color-mix(in srgb, var(--ok), transparent 92%);
+      color: var(--ok);
+      font-weight: 700;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px;
+      margin-top: 18px;
+    }
+    figure {
+      margin: 0;
+      background: var(--paper);
+      border: 1px solid var(--line);
+      padding: 12px;
+      box-shadow: 0 18px 50px rgba(40, 31, 18, .08);
+    }
+    img {
+      display: block;
+      width: 100%;
+      height: auto;
+      border: 1px solid var(--line);
+      background: #fff;
+    }
+    figcaption {
+      padding-top: 10px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+    code {
+      background: #fff8ec;
+      border: 1px solid var(--line);
+      padding: 1px 5px;
+      color: var(--ink);
+    }
+    .note {
+      border-inline-start: 4px solid var(--gold);
+      padding: 12px 16px;
+      background: var(--paper);
+      color: var(--muted);
+    }
+    .warn {
+      border-inline-start-color: var(--warn);
+    }
+    @media (max-width: 760px) {
+      main { width: min(100% - 20px, 520px); padding-top: 28px; }
+      .grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+<main>
+  <p class="status">Passed: live apartment selection works for the authored demo units</p>
+  <h1>Rainbow Showroom live selection QA</h1>
+  <p>Checked on the live NadLan site on 2026-06-24. The test tried visible apartment markers and harder mobile taps directly on the model surface.</p>
+
+  <h2>What passed</h2>
+  <p>All six visible apartment markers selected the expected unit on desktop 1440 and mobile 390. The model camera updated with each unit's orbit and target.</p>
+  <p>The mobile free-tap grid returned <code>deadModelSurfacePoints: []</code>. The important upper tower points that were previously blocked now hit the model and select a unit.</p>
+
+  <div class="grid">
+    <figure>
+      <img src="../showroom-marker-hit-test-live-rerun-2026-06-24/mobile-390-after-marker-taps.png" alt="Mobile marker selection after all taps">
+      <figcaption>Mobile 390 marker-center selection. The selected apartment panel is open and the marker is active.</figcaption>
+    </figure>
+    <figure>
+      <img src="../showroom-model-free-tap-grid-live-rerun-2026-06-24/mobile-390-after-tower-upper-center.png" alt="Mobile model-surface tap on upper tower selected penthouse">
+      <figcaption>Mobile model-surface tap near the upper tower selected the penthouse and moved the camera target.</figcaption>
+    </figure>
+    <figure>
+      <img src="../showroom-model-free-tap-grid-live-rerun-2026-06-24/mobile-390-after-podium-right.png" alt="Mobile model-surface tap near podium selected unit 16">
+      <figcaption>Mobile model-surface tap near the podium selected unit 16 and opened the selected-unit panel.</figcaption>
+    </figure>
+    <figure>
+      <img src="../showroom-marker-hit-test-live-rerun-2026-06-24/desktop-1440-after-marker-taps.png" alt="Desktop marker selection after all taps">
+      <figcaption>Desktop 1440 marker-center selection. The same expected-unit path works on desktop.</figcaption>
+    </figure>
+  </div>
+
+  <h2>Honest limitation</h2>
+  <p class="note warn">This proves marker selection and nearest authored demo-unit selection from model-surface taps. It does not prove true click-any-window GLB mesh picking, because the current GLB does not include per-apartment mesh metadata.</p>
+
+  <h2>Needed for real window-level picking</h2>
+  <ul>
+    <li>A GLB authored with per-unit mesh names or node metadata.</li>
+    <li>BIM or facade geometry mapped to unit IDs.</li>
+    <li>An official unit polygon layer aligned to the model or facade.</li>
+  </ul>
+
+  <h2>Separate UX issue noticed</h2>
+  <p>The selected-unit panel works, but some info chips repeat. That is a polish issue for the next showroom cleanup slice. It did not block apartment selection in this test.</p>
+</main>
+</body>
+</html>
+
