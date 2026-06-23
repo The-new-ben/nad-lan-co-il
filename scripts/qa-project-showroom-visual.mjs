@@ -28,6 +28,7 @@ function parseArgs(argv) {
     outDir: DEFAULT_OUT,
     strict: false,
     injectV1681Css: false,
+    injectV1690Preview: false,
   };
   for (let i = 2; i < argv.length; i += 1) {
     const a = argv[i];
@@ -36,11 +37,13 @@ function parseArgs(argv) {
     else if (a === '--out') out.outDir = argv[++i] || out.outDir;
     else if (a === '--strict') out.strict = true;
     else if (a === '--inject-v1681-css') out.injectV1681Css = true;
+    else if (a === '--inject-v1690-preview') out.injectV1690Preview = true;
     else if (a === '--help' || a === '-h') {
       console.log(`Usage:
   node scripts/qa-project-showroom-visual.mjs --site https://nad-lan.co.il --slug rainbow-tel-aviv
   node scripts/qa-project-showroom-visual.mjs --strict
   node scripts/qa-project-showroom-visual.mjs --slug dimri-yama-sde-dov --inject-v1681-css
+  node scripts/qa-project-showroom-visual.mjs --slug rainbow-tel-aviv --inject-v1690-preview
 
 Uses local Chrome/Edge headless through the Chrome DevTools Protocol. Set CHROME_PATH to override
 the browser executable. Screenshots and report are written under ${DEFAULT_OUT}.`);
@@ -217,6 +220,26 @@ function metricsExpression() {
       return { x: Math.round(r.x * 10) / 10, y: Math.round(r.y * 10) / 10, width: Math.round(r.width * 10) / 10, height: Math.round(r.height * 10) / 10, right: Math.round(r.right * 10) / 10, bottom: Math.round(r.bottom * 10) / 10 };
     };
     const text = document.body ? document.body.innerText : '';
+    const publicLeakTerms = [
+      'project_3d',
+      'GLB',
+      'SVG',
+      'fallback',
+      'Featured',
+      'Sponsored',
+      'Promoted',
+      'Lovable',
+      'Codex',
+      'Claude',
+      'war room',
+      'asset truth',
+      'mock',
+      'placeholder',
+      'Showroom',
+      'Frank Ruhl',
+      'Heebo',
+      '—'
+    ].filter((term) => text.includes(term));
     const root = document.querySelector('.nlp3d-premium,.nlp3d');
     const stage = document.querySelector('.nlp3d-stage-wrap');
     const scene = document.querySelector('.nlp3d-scene');
@@ -271,16 +294,63 @@ function metricsExpression() {
         hasOwnerCta: text.includes('מציגים פרויקט חדש'),
         hasInternalWords: /לידים|פאנל|CRM|monetization|paid placement/.test(text)
       },
+      publicLeakTerms,
       errors
     };
   })()`;
 }
 
-function extractV1681Css() {
+function extractCssFunction(functionName) {
   const source = fs.readFileSync(path.resolve(process.cwd(), 'plugins/nadlan-config/inc/project-3d.php'), 'utf8');
-  const match = source.match(/function nadlan_p3d_facade_overflow_v1681_css\(\) \{\s*return <<<'CSS'\r?\n([\s\S]*?)\r?\nCSS;/);
-  if (!match) throw new Error('Could not extract nadlan_p3d_facade_overflow_v1681_css from project-3d.php');
+  const escaped = functionName.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+  const match = source.match(new RegExp(`function ${escaped}\\(\\) \\{\\s*return <<<'CSS'\\r?\\n([\\s\\S]*?)\\r?\\nCSS;`));
+  if (!match) throw new Error(`Could not extract ${functionName} from project-3d.php`);
   return match[1];
+}
+
+function extractV1681Css() {
+  return extractCssFunction('nadlan_p3d_facade_overflow_v1681_css');
+}
+
+function extractV1690Css() {
+  return extractCssFunction('nadlan_p3d_lovable_showroom_v1690_css');
+}
+
+function v1690PreviewExpression(css) {
+  return `(() => {
+    const old = document.getElementById('nadlan-v1690-preview-css');
+    if (old) old.remove();
+    const style = document.createElement('style');
+    style.id = 'nadlan-v1690-preview-css';
+    style.textContent = ${JSON.stringify(css)};
+    document.head.appendChild(style);
+
+    const setText = (selector, value) => {
+      const el = document.querySelector(selector);
+      if (el && value) el.textContent = value;
+    };
+    const title = (document.querySelector('.nlp3d-kicker')?.textContent || document.querySelector('.nlp3d h2')?.textContent || 'הפרויקט').split('·')[0].trim();
+    setText('.nlp3d h2', 'סיור בפרויקט ' + title);
+    setText('.nlp3d-lead-text', 'סיור הפרויקט מחבר בין מודל הבניין, בחירת דירה, מבט מהדירה, תוכניות וליווי מקצועי. כאשר היזם מעלה חומרים רשמיים, הם מתחברים לאותה דירה ולאותה פנייה.');
+    ['1. רואים את הבניין', '2. בוחרים דירה', '3. בודקים נוף ותוכנית', '4. מבקשים שיחה'].forEach((value, index) => {
+      const el = document.querySelectorAll('.nlp3d-shop-path span')[index];
+      if (el) el.textContent = value;
+    });
+    setText('[data-action="angle-facade"]', 'מבט ראשי');
+    setText('.nlp3d-model-error', 'התצוגה התלת ממדית לא נטענה כרגע. נציג חומר מאושר כאשר יעלה לפרויקט.');
+    setText('.nlp3d-view-badge', 'מבט חי · גרירה לסיבוב');
+    setText('.nlp3d-stage-card-meta', 'בחרו קומה ודירה כדי לראות מחיר, נוף ותוכנית כאשר הם זמינים.');
+    setText('[data-action="stage-tour"]', 'תוכניות וסיור');
+    setText('.nlp3d-legal', 'הפנייה נשמרת עם הדירה שנבחרה. נציג יחזור עם זמינות, מחיר ותנאים כפי שיימסרו מהיזם.');
+    setText('.nlp3d-showcase-copy p', 'העמוד מחבר בין מודל הבניין, בחירת דירה, מבט מהדירה, שעות שמש, השוואת יחידות ובקשת ליווי מקצועי. הכל נבנה כדי שהרוכש יבין את הדירה לפני השיחה, והיזם יקבל פנייה מדויקת יותר.');
+    setText('.nlp3d-showcase-cards article:first-child strong', 'בחירת דירה');
+    setText('.nlp3d-showcase-cards article:first-child p', 'בחירת קומה ודירה מתוך הפרויקט, כולל קו, שטח, כיוון ונוף.');
+
+    const missing = document.querySelector('.nlp3d-facade-missing');
+    if (missing) {
+      missing.innerHTML = '<button type="button" class="nlp3d-fp-close" data-action="facade-dismiss" aria-label="הסתר הודעת חזית">×</button><strong>ממתין לחזית ותוכניות מהיזם</strong><p>המודל התלת ממדי מוצג, אבל בחירת דירה על חזית הבניין תיפתח רק אחרי העלאת חזית מאושרת ותוכניות רשמיות.</p><small>קבלנים ויזמים יכולים להעביר חזית, תוכניות ומלאי כדי להפוך את הסיור לעמוד מכירה מלא.</small>';
+    }
+  })()`;
 }
 
 async function evaluateJson(client, expression) {
@@ -334,6 +404,13 @@ async function runViewport(client, args, viewport, outDir, pageErrors) {
     });
     await waitForIdle(client, 250);
   }
+  if (args.injectV1690Preview) {
+    await client.send('Runtime.evaluate', {
+      expression: v1690PreviewExpression(extractV1690Css()),
+      awaitPromise: true,
+    });
+    await waitForIdle(client, 450);
+  }
 
   const before = await evaluateJson(client, metricsExpression());
   if (before.firstPickCenter) {
@@ -362,6 +439,7 @@ async function runViewport(client, args, viewport, outDir, pageErrors) {
   if (after.rootRect && viewport.width <= 768 && (after.rootRect.x < -2 || after.rootRect.right > viewport.width + 2)) failures.push(`showroom cropped on mobile/tablet: ${JSON.stringify(after.rootRect)}`);
   if (after.facadePlaneVisible && viewport.width <= 768 && after.facadePlaneRect && (after.facadePlaneRect.x < -2 || after.facadePlaneRect.right > viewport.width + 2)) failures.push(`facade plane cropped on mobile/tablet: ${JSON.stringify(after.facadePlaneRect)}`);
   if (after.textSignals.hasInternalWords) failures.push('public text contains internal wording');
+  if (after.publicLeakTerms?.length) failures.push(`public text leaks internal terms: ${after.publicLeakTerms.join(', ')}`);
   if (after.errors.length) failures.push(`HTML leak markers: ${after.errors.join(', ')}`);
   const viewportErrors = pageErrors.splice(0, pageErrors.length);
   if (viewportErrors.length) failures.push(`console/page errors: ${viewportErrors.slice(0, 3).join(' | ')}`);
@@ -402,6 +480,7 @@ async function main() {
       site: args.site,
       slug: args.slug,
       injected_v1681_css: args.injectV1681Css,
+      injected_v1690_preview: args.injectV1690Preview,
       generated_at: new Date().toISOString(),
       out_dir: args.outDir,
       summary: { passed: viewports.length - failed.length, failed: failed.length },

@@ -887,8 +887,8 @@ if ( ! function_exists( 'nadlan_p3d_render' ) ) {
 		$project_place_phrase = $project_place !== '' ? ' באזור ' . $project_place : '';
 		$project_developer_sentence = $meta['developer'] ? ' היזם: ' . (string) $meta['developer'] . '.' : '';
 		$project_kicker = $project_title . ( $project_place !== '' ? ' · ' . $project_place : '' );
-		$project_intro_copy = $project_title . ' מוצג כאן כתצוגת דירות אינטראקטיבית' . $project_place_phrase . '. בוחרים דירה על המודל לפי קומה, חדרים, כיוון ונוף, ורואים אומדן מחיר וזמינות לא מחייבים לפני פנייה ליזם.' . $project_developer_sentence;
-		$project_lead_copy = 'דירות למכירה ב-' . $project_title . $project_place_phrase . ' מוצגות כאן לפי קומה, חדרים, שטח, כיוון ונוף. המחירים והזמינות הם אומדן לא מחייב עד אימות מול היזם, והפנייה נשמרת עם הדירה שנבחרה.';
+		$project_intro_copy = $project_title . ' מוצג כאן כסיור פרויקט חי' . $project_place_phrase . '. רואים את הבניין, בוחרים דירה, בודקים קומה, כיוון ונוף, ושולחים פנייה עם הדירה המדויקת שנבחרה.' . $project_developer_sentence;
+		$project_lead_copy = 'סיור הפרויקט של ' . $project_title . $project_place_phrase . ' מחבר בין מודל הבניין, בחירת דירה, מבט מהדירה, תוכניות וליווי מקצועי. כאשר היזם מעלה חומרים רשמיים, הם מתחברים לאותה דירה ולאותה פנייה.';
 
 		$camera_min_polar = esc_attr( (string) ( $meta['camera_min_polar'] ?? '78deg' ) );
 		$camera_max_polar = esc_attr( (string) ( $meta['camera_max_polar'] ?? '85deg' ) );
@@ -907,8 +907,8 @@ if ( ! function_exists( 'nadlan_p3d_render' ) ) {
 <?php endif; ?>
 <section class="nadlan-guide nlp3d-intro" dir="rtl" aria-label="פתיחת תצוגת דירות">
 	<div class="wrap">
-		<span class="eyebrow">תצוגת דירות אינטראקטיבית</span>
-		<h2>דירות למכירה ב-<?php echo esc_html( $project_title ); ?>: מחירים, זמינות ובחירת דירה</h2>
+		<span class="eyebrow">סיור פרויקט למשקיעים ולרוכשים</span>
+		<h2><?php echo esc_html( $project_title ); ?>: בוחרים דירה מתוך הפרויקט</h2>
 		<p><?php echo esc_html( $project_intro_copy ); ?></p>
 		<p class="nlp3d-intro-cta"><a href="#nlp3d-stage" class="btn">בחרו דירה עכשיו</a></p>
 	</div>
@@ -918,13 +918,13 @@ if ( ! function_exists( 'nadlan_p3d_render' ) ) {
 	<div class="nlp3d-shell">
 		<div class="nlp3d-copy">
 			<p class="nlp3d-kicker"><?php echo esc_html( $project_kicker ); ?></p>
-			<h2 id="<?php echo esc_attr( $uid ); ?>-title">דירות למכירה ב-<?php echo esc_html( $meta['title'] ); ?>: בחירת דירה בתלת ממד</h2>
+			<h2 id="<?php echo esc_attr( $uid ); ?>-title">סיור בפרויקט <?php echo esc_html( $meta['title'] ); ?></h2>
 			<p class="nlp3d-lead-text"><?php echo esc_html( $project_lead_copy ); ?></p>
 			<div class="nlp3d-shop-path" aria-label="תהליך בחירה">
-				<span>1. מסובבים</span>
+				<span>1. רואים את הבניין</span>
 				<span>2. בוחרים דירה</span>
-				<span>3. בודקים ליווי</span>
-				<span>4. מבקשים התקדמות</span>
+				<span>3. בודקים נוף ותוכנית</span>
+				<span>4. מבקשים שיחה</span>
 			</div>
 			<div class="nlp3d-metrics" aria-label="פרטי פרויקט">
 				<span><?php echo $meta['developer'] ? esc_html( $meta['developer'] ) : 'יזם יימסר בפנייה'; ?></span>
@@ -938,7 +938,7 @@ if ( ! function_exists( 'nadlan_p3d_render' ) ) {
 
 		<div class="nlp3d-stage-wrap" id="nlp3d-stage">
 			<div class="nlp3d-toolbar" aria-label="שליטה במודל">
-				<button type="button" class="nlp3d-angle is-active" data-angle="-32" data-action="angle-facade">איפוס מבט</button>
+				<button type="button" class="nlp3d-angle is-active" data-angle="-32" data-action="angle-facade">מבט ראשי</button>
 				<button type="button" class="nlp3d-angle" data-angle="0" data-action="angle-sea">ים</button>
 				<button type="button" class="nlp3d-angle" data-angle="32" data-action="angle-city">עיר</button>
 				<button type="button" class="nlp3d-orbit" data-orbit="1" data-action="orbit-building">סובב מודל</button>
@@ -954,7 +954,7 @@ if ( ! function_exists( 'nadlan_p3d_render' ) ) {
 						src="<?php echo esc_url( $meta['model_glb'] ); ?>"
 						<?php if ( ! empty( $meta['model_poster'] ) ) : ?>poster="<?php echo esc_url( $meta['model_poster'] ); ?>"<?php endif; ?>
 						<?php if ( ! empty( $meta['model_usdz'] ) ) : ?>ios-src="<?php echo esc_url( $meta['model_usdz'] ); ?>"<?php endif; ?>
-						alt="<?php echo esc_attr( $meta['title'] . ' 3D model' ); ?>"
+						alt="<?php echo esc_attr( 'מודל תלת ממדי של ' . $meta['title'] ); ?>"
 						reveal="auto"
 						loading="auto"
 						camera-controls
@@ -1009,7 +1009,7 @@ if ( ! function_exists( 'nadlan_p3d_render' ) ) {
 							</button>
 						<?php endforeach; ?>
 					</model-viewer>
-					<div class="nlp3d-model-error" role="status" aria-live="polite" hidden>התצוגה התלת־ממדית לא נטענה. בדקו את קובץ המודל של הפרויקט.</div>
+					<div class="nlp3d-model-error" role="status" aria-live="polite" hidden>התצוגה התלת ממדית לא נטענה כרגע. נציג חומר מאושר כאשר יעלה לפרויקט.</div>
 				<?php endif; ?>
 				<div class="nlp3d-horizon"></div>
 				<div class="nlp3d-sea"></div>
@@ -1042,7 +1042,7 @@ if ( ! function_exists( 'nadlan_p3d_render' ) ) {
 				<div class="nlp3d-view-sky"></div>
 				<div class="nlp3d-view-lines"></div>
 				<div class="nlp3d-view-map" hidden aria-label="מבט חי מגובה הדירה"></div>
-				<span class="nlp3d-view-badge" hidden>3D חי · גרירה לסיבוב</span>
+				<span class="nlp3d-view-badge" hidden>מבט חי · גרירה לסיבוב</span>
 				<button type="button" class="nlp3d-stage-return" data-action="return-model">חזרה למודל</button>
 				<p class="nlp3d-view-copy"></p>
 			</div>
@@ -1051,7 +1051,7 @@ if ( ! function_exists( 'nadlan_p3d_render' ) ) {
 				<button type="button" class="nlp3d-stage-card-close" data-action="stage-card-close" aria-label="סגירת פרטי הדירה">×</button>
 				<span class="nlp3d-stage-kicker">הדירה שנבחרה</span>
 				<strong class="nlp3d-stage-card-title">בחרו דירה על הבניין</strong>
-				<small class="nlp3d-stage-card-meta">גררו לסיבוב, בחרו קומה והתקדמו רק כאשר הפרטים מתאימים.</small>
+				<small class="nlp3d-stage-card-meta">בחרו קומה ודירה כדי לראות מחיר, נוף ותוכנית כאשר הם זמינים.</small>
 				<div class="nlp3d-stage-card-tags" aria-label="סימוני דירה"></div>
 				<div class="nlp3d-stage-card-stats" aria-label="פרטי דירה נבחרת">
 					<span class="nlp3d-stage-price">לפי פנייה</span>
@@ -1062,7 +1062,7 @@ if ( ! function_exists( 'nadlan_p3d_render' ) ) {
 				<div class="nlp3d-stage-card-actions">
 					<button type="button" class="nlp3d-stage-details" data-action="stage-details">פרטים מלאים</button>
 					<button type="button" class="nlp3d-stage-view-btn" data-action="stage-view">מבט מהדירה</button>
-					<button type="button" class="nlp3d-stage-tour" data-action="stage-tour">סיור ותוכניות</button>
+					<button type="button" class="nlp3d-stage-tour" data-action="stage-tour">תוכניות וסיור</button>
 					<button type="button" class="nlp3d-stage-inquiry" data-action="stage-inquiry">דברו עם היזם</button>
 				</div>
 				<nav class="nlp3d-stage-tabs" role="tablist" aria-label="מידע נוסף על הדירה">
@@ -1145,7 +1145,7 @@ if ( ! function_exists( 'nadlan_p3d_render' ) ) {
 					<button type="button" class="nlp3d-wback" data-action="wizard-back">חזרה לפרטי הקשר</button>
 				</div>
 				<input type="text" name="company" class="nlp3d-hp" tabindex="-1" autocomplete="off" aria-hidden="true">
-				<p class="nlp3d-legal">הפנייה אינה עסקה מחייבת, אינה זכרון דברים ואינה שריון רשמי. נציג יאמת זמינות, מחיר ותנאים עם היזם לפני כל התקדמות.</p>
+				<p class="nlp3d-legal">הפנייה נשמרת עם הדירה שנבחרה. נציג יחזור עם זמינות, מחיר ותנאים כפי שיימסרו מהיזם.</p>
 				<p class="nlp3d-ok" hidden></p>
 			</form>
 		</aside>
@@ -1154,13 +1154,13 @@ if ( ! function_exists( 'nadlan_p3d_render' ) ) {
 		<div class="nlp3d-showcase-copy">
 			<p class="nlp3d-kicker">מעמוד פרויקט לעמדת בחירה</p>
 			<h3>כל החלטה מתחילה ממבט ברור יותר על הדירה</h3>
-			<p>העמוד מחבר בין חזית לחיצה, מבט מגובה הדירה, שעות שמש, השוואת יחידות ובקשת ליווי מקצועי. המידע מוצג כשכבה תכנונית עדינה, עם סימון ברור של נתונים שמחייבים אימות מול היזם.</p>
+			<p>העמוד מחבר בין מודל הבניין, בחירת דירה, מבט מהדירה, שעות שמש, השוואת יחידות ובקשת ליווי מקצועי. הכל נבנה כדי שהרוכש יבין את הדירה לפני השיחה, והיזם יקבל פנייה מדויקת יותר.</p>
 		</div>
 		<div class="nlp3d-showcase-cards" aria-label="יכולות תצוגה">
 			<article>
 				<span>01</span>
-				<strong>חזית לחיצה</strong>
-				<p>בחירת קומה ודירה ישירות מהמודל, כולל קו, שטח, כיוון ונוף.</p>
+				<strong>בחירת דירה</strong>
+				<p>בחירת קומה ודירה מתוך הפרויקט, כולל קו, שטח, כיוון ונוף.</p>
 			</article>
 			<article>
 				<span>02</span>
@@ -1885,6 +1885,553 @@ CSS;
 	}
 }
 
+if ( ! function_exists( 'nadlan_p3d_lovable_showroom_v1690_css' ) ) {
+	function nadlan_p3d_lovable_showroom_v1690_css() {
+		return <<<'CSS'
+/* v1.69.0: public showroom surface. */
+.nlp3d.nlp3d-premium{
+--nlp3d-cream:#faf7f1;
+--nlp3d-paper:#fffdf8;
+--nlp3d-ink:#1b1a17;
+--nlp3d-muted:#645c4e;
+--nlp3d-line:#ded4c4;
+--nlp3d-gold:#9c7a3c;
+--nlp3d-terracotta:#c2563a;
+--nlp3d-sage:#7a8f6a;
+background:var(--nlp3d-cream)!important;
+color:var(--nlp3d-ink)!important;
+border:1px solid var(--nlp3d-line)!important;
+border-radius:6px!important;
+box-shadow:0 22px 70px rgba(42,34,22,.12)!important;
+overflow:hidden!important;
+}
+.entry-content>.nlp3d.nlp3d-premium,
+.wp-block-post-content>.nlp3d.nlp3d-premium{
+width:min(1180px,calc(100vw - 32px))!important;
+max-width:none!important;
+margin:24px auto 52px!important;
+transform:none!important;
+}
+.nlp3d.nlp3d-premium .nlp3d-grid,
+.nlp3d.nlp3d-premium .nlp3d-horizon,
+.nlp3d.nlp3d-premium .nlp3d-sea,
+.nlp3d.nlp3d-premium .nlp3d-park,
+.nlp3d.nlp3d-premium .nlp3d-runway,
+.nlp3d.nlp3d-premium .nlp3d-shadow,
+.nlp3d.nlp3d-premium .nlp3d-sun-orbit,
+.nlp3d.nlp3d-premium .nlp3d-tower{display:none!important}
+.nlp3d.nlp3d-premium .nlp3d-shell{
+display:grid!important;
+grid-template-columns:minmax(0,1fr) minmax(300px,360px)!important;
+grid-template-areas:"copy copy" "stage console"!important;
+gap:20px!important;
+padding:28px!important;
+min-height:0!important;
+align-items:start!important;
+}
+.nlp3d.nlp3d-premium .nlp3d-copy{
+grid-area:copy!important;
+display:grid!important;
+grid-template-columns:minmax(0,1fr) minmax(260px,.38fr)!important;
+gap:10px 28px!important;
+align-items:end!important;
+padding:0 0 22px!important;
+border-bottom:1px solid var(--nlp3d-line)!important;
+color:var(--nlp3d-ink)!important;
+}
+.nlp3d.nlp3d-premium .nlp3d-kicker{
+grid-column:1!important;
+margin:0!important;
+color:var(--nlp3d-gold)!important;
+font-size:12px!important;
+font-weight:700!important;
+letter-spacing:0!important;
+}
+.nlp3d.nlp3d-premium h2{
+grid-column:1!important;
+max-width:22ch!important;
+margin:4px 0 0!important;
+color:var(--nlp3d-ink)!important;
+font-family:Georgia,"Times New Roman",serif!important;
+font-size:clamp(34px,4.2vw,58px)!important;
+font-weight:500!important;
+line-height:1.04!important;
+text-shadow:none!important;
+letter-spacing:0!important;
+}
+.nlp3d.nlp3d-premium .nlp3d-lead-text{
+grid-column:1!important;
+max-width:72ch!important;
+margin:0!important;
+color:#3e392f!important;
+font-size:16px!important;
+line-height:1.75!important;
+}
+.nlp3d.nlp3d-premium .nlp3d-shop-path,
+.nlp3d.nlp3d-premium .nlp3d-metrics,
+.nlp3d.nlp3d-premium .nlp3d-demo-note{
+grid-column:2!important;
+}
+.nlp3d.nlp3d-premium .nlp3d-shop-path{
+display:grid!important;
+grid-template-columns:1fr!important;
+gap:7px!important;
+margin:0!important;
+}
+.nlp3d.nlp3d-premium .nlp3d-shop-path span,
+.nlp3d.nlp3d-premium .nlp3d-metrics span{
+width:100%!important;
+min-height:34px!important;
+border:1px solid var(--nlp3d-line)!important;
+background:var(--nlp3d-paper)!important;
+color:#342f27!important;
+padding:7px 10px!important;
+font-size:12.5px!important;
+box-shadow:none!important;
+}
+.nlp3d.nlp3d-premium .nlp3d-metrics{
+display:grid!important;
+gap:7px!important;
+margin:0!important;
+}
+.nlp3d.nlp3d-premium .nlp3d-demo-note{
+margin:0!important;
+border-right:2px solid var(--nlp3d-gold)!important;
+color:#604b22!important;
+font-size:12px!important;
+line-height:1.55!important;
+}
+.nlp3d.nlp3d-premium .nlp3d-stage-wrap{
+grid-area:stage!important;
+display:block!important;
+min-height:0!important;
+height:auto!important;
+overflow:visible!important;
+isolation:isolate!important;
+}
+.nlp3d.nlp3d-premium .nlp3d-scene{
+position:relative!important;
+inset:auto!important;
+display:grid!important;
+grid-template-columns:minmax(0,1fr) minmax(300px,360px)!important;
+height:clamp(500px,45vw,650px)!important;
+min-height:0!important;
+overflow:hidden!important;
+border:1px solid var(--nlp3d-line)!important;
+border-radius:4px!important;
+background:linear-gradient(180deg,#f8f3ea,#f0e6d8)!important;
+box-shadow:none!important;
+cursor:auto!important;
+}
+.nlp3d.nlp3d-premium .nlp3d-scene:after{display:none!important}
+.nlp3d.nlp3d-premium .nlp3d-model-viewer{
+position:relative!important;
+inset:auto!important;
+left:auto!important;
+right:auto!important;
+top:auto!important;
+bottom:auto!important;
+display:block!important;
+width:100%!important;
+height:100%!important;
+min-height:0!important;
+background:#f7f1e7!important;
+border:0!important;
+border-inline-end:1px solid var(--nlp3d-line)!important;
+opacity:1!important;
+}
+.nlp3d.nlp3d-premium .nlp3d-facade-plane{
+position:relative!important;
+inset:auto!important;
+left:auto!important;
+right:auto!important;
+top:auto!important;
+bottom:auto!important;
+width:100%!important;
+height:100%!important;
+max-width:none!important;
+transform:none!important;
+border:0!important;
+border-radius:0!important;
+box-shadow:none!important;
+z-index:4!important;
+}
+.nlp3d.nlp3d-premium .nlp3d-facade-plane.nlp3d-facade-missing{
+display:grid!important;
+align-content:center!important;
+justify-items:start!important;
+gap:12px!important;
+padding:30px 24px!important;
+background:linear-gradient(180deg,#fffaf1,#f7efe2)!important;
+color:var(--nlp3d-ink)!important;
+border-inline-start:1px solid var(--nlp3d-line)!important;
+}
+.nlp3d.nlp3d-premium .nlp3d-facade-plane.nlp3d-facade-missing strong{
+max-width:13ch!important;
+color:var(--nlp3d-ink)!important;
+font-family:Georgia,"Times New Roman",serif!important;
+font-size:clamp(25px,2.7vw,38px)!important;
+font-weight:500!important;
+line-height:1.08!important;
+}
+.nlp3d.nlp3d-premium .nlp3d-facade-plane.nlp3d-facade-missing p,
+.nlp3d.nlp3d-premium .nlp3d-facade-plane.nlp3d-facade-missing small{
+max-width:38ch!important;
+margin:0!important;
+color:#4f4739!important;
+font-size:14.5px!important;
+line-height:1.7!important;
+text-align:right!important;
+}
+.nlp3d.nlp3d-premium .nlp3d-fp-close{
+top:16px!important;
+left:16px!important;
+width:40px!important;
+height:40px!important;
+border:1px solid var(--nlp3d-line)!important;
+background:var(--nlp3d-paper)!important;
+color:var(--nlp3d-ink)!important;
+box-shadow:none!important;
+}
+.nlp3d.nlp3d-premium .nlp3d-facade-plane.nlp3d-facade-missing .nlp3d-fp-close{
+display:none!important;
+}
+.nlp3d.nlp3d-premium .nlp3d-context-caption{
+left:16px!important;
+right:16px!important;
+bottom:12px!important;
+color:#7c715f!important;
+text-shadow:none!important;
+font-size:12px!important;
+}
+.nlp3d.nlp3d-premium .nlp3d-toolbar{
+top:12px!important;
+right:12px!important;
+left:auto!important;
+z-index:20!important;
+display:flex!important;
+gap:8px!important;
+}
+.nlp3d.nlp3d-premium .nlp3d-angle,
+.nlp3d.nlp3d-premium .nlp3d-orbit,
+.nlp3d.nlp3d-premium .nlp3d-zoom,
+.nlp3d.nlp3d-premium .nlp3d-fp-restore{
+min-width:42px!important;
+min-height:38px!important;
+border:1px solid var(--nlp3d-line)!important;
+border-radius:3px!important;
+background:rgba(255,253,248,.92)!important;
+color:var(--nlp3d-ink)!important;
+padding:7px 10px!important;
+box-shadow:none!important;
+font-size:12px!important;
+font-weight:700!important;
+}
+.nlp3d.nlp3d-premium .nlp3d-angle.is-active,
+.nlp3d.nlp3d-premium .nlp3d-orbit.is-active{
+background:var(--nlp3d-ink)!important;
+color:var(--nlp3d-cream)!important;
+}
+.nlp3d.nlp3d-premium .nlp3d-console{
+grid-area:console!important;
+display:flex!important;
+max-height:none!important;
+overflow:visible!important;
+gap:14px!important;
+padding:18px!important;
+background:var(--nlp3d-paper)!important;
+border:1px solid var(--nlp3d-line)!important;
+border-radius:4px!important;
+box-shadow:none!important;
+color:var(--nlp3d-ink)!important;
+backdrop-filter:none!important;
+}
+.nlp3d.nlp3d-premium .nlp3d-console-head{
+border-bottom:1px solid var(--nlp3d-line)!important;
+}
+.nlp3d.nlp3d-premium .nlp3d-console-head p,
+.nlp3d.nlp3d-premium .nlp3d-selected-title,
+.nlp3d.nlp3d-premium .nlp3d-form-title,
+.nlp3d.nlp3d-premium .nlp3d-owner-title{
+color:var(--nlp3d-ink)!important;
+font-family:Georgia,"Times New Roman",serif!important;
+font-weight:500!important;
+}
+.nlp3d.nlp3d-premium .nlp3d-status-chip,
+.nlp3d.nlp3d-premium .nlp3d-floor,
+.nlp3d.nlp3d-premium .nlp3d-unit-card,
+.nlp3d.nlp3d-premium .nlp3d-tool,
+.nlp3d.nlp3d-premium .nlp3d-compare-add{
+border:1px solid var(--nlp3d-line)!important;
+border-radius:3px!important;
+background:#fffaf2!important;
+color:var(--nlp3d-ink)!important;
+box-shadow:none!important;
+}
+.nlp3d.nlp3d-premium .nlp3d-floor.is-active,
+.nlp3d.nlp3d-premium .nlp3d-unit-card.is-active,
+.nlp3d.nlp3d-premium .nlp3d-tool.is-active,
+.nlp3d.nlp3d-premium .nlp3d-floor:hover,
+.nlp3d.nlp3d-premium .nlp3d-unit-card:hover,
+.nlp3d.nlp3d-premium .nlp3d-tool:hover{
+background:var(--nlp3d-ink)!important;
+color:var(--nlp3d-cream)!important;
+border-color:var(--nlp3d-ink)!important;
+}
+.nlp3d.nlp3d-premium .nlp3d-unit-card span,
+.nlp3d.nlp3d-premium .nlp3d-facts dt,
+.nlp3d.nlp3d-premium .nlp3d-legal,
+.nlp3d.nlp3d-premium .nlp3d-tool-panel p,
+.nlp3d.nlp3d-premium .nlp3d-owner-form p,
+.nlp3d.nlp3d-premium .nlp3d-dock-meta{
+color:var(--nlp3d-muted)!important;
+}
+.nlp3d.nlp3d-premium .nlp3d-detail,
+.nlp3d.nlp3d-premium .nlp3d-tool-panel,
+.nlp3d.nlp3d-premium .nlp3d-selection-dock,
+.nlp3d.nlp3d-premium .nlp3d-compare-tray,
+.nlp3d.nlp3d-premium .nlp3d-showcase-copy,
+.nlp3d.nlp3d-premium .nlp3d-showcase-cards,
+.nlp3d.nlp3d-premium .nlp3d-owner-form{
+background:#fffaf2!important;
+border:1px solid var(--nlp3d-line)!important;
+border-radius:4px!important;
+box-shadow:none!important;
+color:var(--nlp3d-ink)!important;
+}
+.nlp3d.nlp3d-premium .nlp3d-facts dd{
+color:var(--nlp3d-ink)!important;
+}
+.nlp3d.nlp3d-premium .nlp3d-plan,
+.nlp3d.nlp3d-premium .nlp3d-tool-panel strong,
+.nlp3d.nlp3d-premium .nlp3d-showcase-cards span,
+.nlp3d.nlp3d-premium .nlp3d-showcase-cards strong{
+color:var(--nlp3d-gold)!important;
+}
+.nlp3d.nlp3d-premium .nlp3d-lead-form input,
+.nlp3d.nlp3d-premium .nlp3d-lead-form select,
+.nlp3d.nlp3d-premium .nlp3d-owner-form input{
+border:1px solid var(--nlp3d-line)!important;
+border-radius:3px!important;
+background:#fff!important;
+color:var(--nlp3d-ink)!important;
+box-shadow:none!important;
+}
+.nlp3d.nlp3d-premium .nlp3d-send,
+.nlp3d.nlp3d-premium .nlp3d-wnext,
+.nlp3d.nlp3d-premium .nlp3d-dock-actions .nlp3d-dock-action,
+.nlp3d.nlp3d-premium .nlp3d-stage-card-actions .nlp3d-stage-inquiry,
+.nlp3d.nlp3d-premium .nlp3d-owner-form button{
+border:1px solid var(--nlp3d-ink)!important;
+border-radius:3px!important;
+background:var(--nlp3d-ink)!important;
+color:var(--nlp3d-cream)!important;
+box-shadow:none!important;
+}
+.nlp3d.nlp3d-premium .nlp3d-send-alt,
+.nlp3d.nlp3d-premium .nlp3d-dock-actions button{
+background:#fffaf2!important;
+color:var(--nlp3d-ink)!important;
+}
+.nlp3d.nlp3d-premium .nlp3d-showcase{
+grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr) minmax(300px,.8fr)!important;
+padding:0 28px 28px!important;
+}
+.nlp3d.nlp3d-premium .nlp3d-showcase-copy h3{
+color:var(--nlp3d-ink)!important;
+text-shadow:none!important;
+}
+.nlp3d.nlp3d-premium .nlp3d-showcase-copy p:last-child,
+.nlp3d.nlp3d-premium .nlp3d-showcase-cards p{
+color:#4f4739!important;
+}
+.nlp3d.nlp3d-premium .nlp3d-copy h2,
+.nlp3d.nlp3d-premium .nlp3d-showcase-copy h3{
+color:var(--nlp3d-ink)!important;
+text-shadow:none!important;
+background:none!important;
+opacity:1!important;
+}
+.nlp3d.nlp3d-premium .nlp3d-scene:before,
+.nlp3d.nlp3d-premium .nlp3d-scene:after{
+display:none!important;
+content:none!important;
+background:none!important;
+box-shadow:none!important;
+}
+.nlp3d.nlp3d-premium .nlp3d-scene.has-model-viewer,
+.nlp3d.nlp3d-premium .nlp3d-model-viewer,
+.nlp3d.nlp3d-premium .nlp3d-model-viewer model-viewer{
+background:linear-gradient(180deg,#fffaf2,#f1e6d8)!important;
+color:var(--nlp3d-ink)!important;
+}
+.nlp3d.nlp3d-premium .nlp3d-scene .nlp3d-facade-plane.nlp3d-facade-missing{
+position:relative!important;
+inset:auto!important;
+left:auto!important;
+right:auto!important;
+top:auto!important;
+bottom:auto!important;
+align-self:stretch!important;
+justify-self:stretch!important;
+width:auto!important;
+min-width:0!important;
+height:auto!important;
+min-height:100%!important;
+transform:none!important;
+}
+@media(max-width:1100px){
+.nlp3d.nlp3d-premium .nlp3d-shell{
+grid-template-columns:1fr!important;
+grid-template-areas:"copy" "stage" "console"!important;
+}
+.nlp3d.nlp3d-premium .nlp3d-copy{
+grid-template-columns:1fr!important;
+}
+.nlp3d.nlp3d-premium .nlp3d-shop-path,
+.nlp3d.nlp3d-premium .nlp3d-metrics,
+.nlp3d.nlp3d-premium .nlp3d-demo-note{
+grid-column:1!important;
+}
+.nlp3d.nlp3d-premium .nlp3d-scene{
+height:auto!important;
+min-height:0!important;
+grid-template-columns:1fr!important;
+grid-template-rows:minmax(300px,48vw) auto!important;
+overflow:visible!important;
+}
+.nlp3d.nlp3d-premium .nlp3d-model-viewer{
+height:100%!important;
+border-inline-end:0!important;
+border-bottom:1px solid var(--nlp3d-line)!important;
+}
+.nlp3d.nlp3d-premium .nlp3d-scene .nlp3d-model-viewer{
+grid-row:1!important;
+}
+.nlp3d.nlp3d-premium .nlp3d-scene .nlp3d-facade-plane,
+.nlp3d.nlp3d-premium .nlp3d-scene .nlp3d-facade-plane.nlp3d-facade-missing{
+grid-row:2!important;
+height:auto!important;
+min-height:250px!important;
+}
+.nlp3d.nlp3d-premium .nlp3d-showcase{
+grid-template-columns:1fr!important;
+}
+}
+@media(max-width:900px){
+.entry-content>.nlp3d.nlp3d-premium,
+.wp-block-post-content>.nlp3d.nlp3d-premium{
+width:calc(100vw - 44px)!important;
+max-width:calc(100vw - 44px)!important;
+margin-left:auto!important;
+margin-right:auto!important;
+}
+}
+@media(max-width:760px){
+.entry-content>.nlp3d.nlp3d-premium,
+.wp-block-post-content>.nlp3d.nlp3d-premium{
+width:calc(100vw - 20px)!important;
+max-width:calc(100vw - 20px)!important;
+margin:18px auto 36px!important;
+}
+.nlp3d.nlp3d-premium .nlp3d-shell{
+gap:12px!important;
+padding:12px!important;
+}
+.nlp3d.nlp3d-premium h2{
+font-size:clamp(30px,10vw,42px)!important;
+max-width:12ch!important;
+}
+.nlp3d.nlp3d-premium .nlp3d-lead-text{
+font-size:14.5px!important;
+line-height:1.65!important;
+}
+.nlp3d.nlp3d-premium .nlp3d-scene{
+grid-template-rows:300px auto!important;
+}
+.nlp3d.nlp3d-premium .nlp3d-model-viewer{
+height:300px!important;
+}
+.nlp3d.nlp3d-premium .nlp3d-scene .nlp3d-facade-plane.nlp3d-facade-missing{
+min-height:260px!important;
+padding:28px 16px 18px!important;
+}
+.nlp3d.nlp3d-premium .nlp3d-facade-plane.nlp3d-facade-missing strong{
+font-size:28px!important;
+max-width:12ch!important;
+}
+.nlp3d.nlp3d-premium .nlp3d-toolbar{
+position:absolute!important;
+top:10px!important;
+right:10px!important;
+left:10px!important;
+display:flex!important;
+flex-wrap:wrap!important;
+}
+.nlp3d.nlp3d-premium .nlp3d-angle,
+.nlp3d.nlp3d-premium .nlp3d-orbit,
+.nlp3d.nlp3d-premium .nlp3d-zoom{
+font-size:11px!important;
+min-height:36px!important;
+padding:6px 8px!important;
+}
+.nlp3d.nlp3d-premium .nlp3d-stage-card:not([hidden]){
+position:relative!important;
+left:auto!important;
+right:auto!important;
+bottom:auto!important;
+top:auto!important;
+width:100%!important;
+max-height:none!important;
+margin:10px 0 0!important;
+transform:none!important;
+border-radius:4px!important;
+}
+.nlp3d.nlp3d-premium .nlp3d-console{
+padding:14px!important;
+}
+.nlp3d.nlp3d-premium .nlp3d-showcase{
+padding:0 12px 16px!important;
+}
+}
+.nlp3d.nlp3d-premium.is-dual-showroom .nlp3d-scene .nlp3d-model-viewer{
+position:relative!important;
+inset:auto!important;
+left:auto!important;
+right:auto!important;
+top:auto!important;
+bottom:auto!important;
+grid-row:1!important;
+width:100%!important;
+height:100%!important;
+}
+.nlp3d.nlp3d-premium.is-dual-showroom .nlp3d-scene .nlp3d-facade-plane.nlp3d-facade-missing{
+position:relative!important;
+inset:auto!important;
+left:auto!important;
+right:auto!important;
+top:auto!important;
+bottom:auto!important;
+grid-row:2!important;
+width:auto!important;
+max-width:none!important;
+height:auto!important;
+min-height:260px!important;
+transform:none!important;
+}
+@media(max-width:760px){
+.nlp3d.nlp3d-premium.is-dual-showroom .nlp3d-scene .nlp3d-model-viewer{
+height:300px!important;
+}
+.nlp3d.nlp3d-premium.is-dual-showroom .nlp3d-scene .nlp3d-facade-plane.nlp3d-facade-missing{
+min-height:260px!important;
+padding:28px 16px 18px!important;
+}
+}
+CSS;
+	}
+}
+
 if ( ! function_exists( 'nadlan_p3d_inline_js' ) ) {
 	function nadlan_p3d_inline_js( $rest_url ) {
 		$js = <<<'JS'
@@ -2067,7 +2614,7 @@ if ( ! function_exists( 'nadlan_p3d_inline_js' ) ) {
 					root.classList.add('is-facade-asset-missing');
 					facadePlane.classList.remove('has-real-facade');
 					facadePlane.classList.add('nlp3d-facade-missing');
-					facadePlane.innerHTML='<button type="button" class="nlp3d-fp-close" data-action="facade-dismiss" aria-label="הסתר הודעת חזית">×</button><strong>חזית הפרויקט לא נטענה</strong><p>קובץ החזית שהוגדר בפרויקט נכשל. לא מוצגת חזית חלופית כדי שלא להטעות את המשתמשים.</p>';
+					facadePlane.innerHTML='<button type="button" class="nlp3d-fp-close" data-action="facade-dismiss" aria-label="הסתר הודעת חזית">×</button><strong>ממתין לחזית מאושרת</strong><p>קובץ החזית של הפרויקט לא נטען כרגע. נציג חזית מאושרת בלבד כדי שהדירות יוצגו מול הבניין הנכון.</p>';
 					if(stagePicks){stagePicks.remove()}
 					if(fpLegend){fpLegend.hidden=true}
 				});
@@ -2089,7 +2636,7 @@ if ( ! function_exists( 'nadlan_p3d_inline_js' ) ) {
 			}else{
 				facadePlane=document.createElement('div');
 				facadePlane.className='nlp3d-facade-plane nlp3d-facade-missing';
-				facadePlane.innerHTML='<button type="button" class="nlp3d-fp-close" data-action="facade-dismiss" aria-label="הסתר הודעת חזית">×</button><strong>חזית אמיתית חסרה</strong><p>לא הוגדר בפרויקט קובץ חזית או הדמיית חזית מאושרת בשדה project_3d_facade_images. לכן המערכת לא מציגה לוח דירות מזויף על גבי הבניין.</p><small>יש להעלות הדמיית חזית אמיתית ואז למפות עליה את הדירות.</small>';
+				facadePlane.innerHTML='<button type="button" class="nlp3d-fp-close" data-action="facade-dismiss" aria-label="הסתר הודעת חזית">×</button><strong>ממתין לחזית ותוכניות מהיזם</strong><p>המודל התלת ממדי מוצג, אבל בחירת דירה על חזית הבניין תיפתח רק אחרי העלאת חזית מאושרת ותוכניות רשמיות.</p><small>קבלנים ויזמים יכולים להעביר חזית, תוכניות ומלאי כדי להפוך את הסיור לעמוד מכירה מלא.</small>';
 				scene.appendChild(facadePlane);
 				root.classList.add(modelViewer?'is-dual-showroom':'is-facade-asset-missing');
 				root.classList.add('is-facade-asset-missing');
@@ -2240,6 +2787,8 @@ if ( ! function_exists( 'nadlan_p3d_inline_js' ) ) {
 				if(item.type||item.category){
 					var chip=document.createElement('em');
 					chip.textContent=item.type||item.category;
+					var typeLabels={plan:'תוכנית',tour:'סיור',video:'וידאו',interior:'פנים','3d-city':'תצוגת עיר'};
+					chip.textContent=typeLabels[item.type]||item.category||item.type;
 					el.appendChild(chip);
 				}
 				if(href){
@@ -3421,6 +3970,7 @@ CSS
 		wp_add_inline_style( 'nadlan-p3d', nadlan_p3d_finishing_layer_v1673_css() );
 		wp_add_inline_style( 'nadlan-p3d', nadlan_p3d_showroom_core_v1680_css() );
 		wp_add_inline_style( 'nadlan-p3d', nadlan_p3d_facade_overflow_v1681_css() );
+		wp_add_inline_style( 'nadlan-p3d', nadlan_p3d_lovable_showroom_v1690_css() );
 
 		$post_id = is_singular( 'nadlan_project' ) ? (int) get_queried_object_id() : 0;
 		if ( $post_id > 0 && get_post_meta( $post_id, 'project_model_glb', true ) !== '' ) {
@@ -3853,6 +4403,9 @@ add_filter(
 			'fake_facade_grid_removed_v1681' => true,
 			'dimri_yama_concept_facade_v1682' => true,
 			'concept_facade_label_v1682' => true,
+			'public_showroom_surface_v1690' => true,
+			'public_language_cleanup_v1690' => true,
+			'visual_qa_preview_v1690' => true,
 			'unit_panel_tabs_v1680' => true,
 			'stage_return_capture_fix' => true,
 			'mobile_containment_v1642' => true,
