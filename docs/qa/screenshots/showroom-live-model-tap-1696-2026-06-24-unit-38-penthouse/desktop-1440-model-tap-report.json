@@ -1,0 +1,54 @@
+{
+  "url": "https://nad-lan.co.il/projects/rainbow-tel-aviv/?codex_qa=model_tap_1696_unit-38-penthouse&viewport=desktop-1440&t=1782253179284",
+  "viewport": {
+    "width": 1440,
+    "height": 1000
+  },
+  "scrollWidth": 1440,
+  "bodyScrollWidth": 1440,
+  "rootActiveUnit": "unit-38-penthouse",
+  "activePicks": [
+    "unit-38-penthouse"
+  ],
+  "visibleStagePins": [
+    "unit-08-sw",
+    "unit-16-w",
+    "unit-24-nw",
+    "unit-31-se",
+    "unit-38-penthouse",
+    "unit-boutique-07"
+  ],
+  "visibleModelHotspots": [],
+  "cameraOrbit": "32deg 58deg auto",
+  "cameraTarget": "0 124 7",
+  "stageCardHidden": false,
+  "stageCardText": "פתחו את פרטי הדירה × הדירה שנבחרה דירת 5 חדרים, קומה 38 5 חדרים · 210 מ\"ר · פנטהאוז גבוה לכיוון הים · זמינות להדגמה בלבד עד לקבלת מלאי רשמי מהיזם מומלצת לבדיקה זמינה לפנייה פנטהאוז גבוה לכיוון הים כולל אומדן אומדן ₪15,960,000 זמינה לפנייה פנטהאוז גבוה לכיוון הים האומדן עוזר להשוואה ראשונית בלבד. המחיר, הזמינות ותנאי העסקה יאומתו מול היזם לפני כל התקדמות. פרטים מלאים מבט מהדירה תוכניות וסיור דברו עם היזם פרטים מבט מהדירה תוכניות שמש סביבה סיור",
+  "tapPoint": {
+    "x": 1097,
+    "y": 386.59375,
+    "unitRect": {
+      "x": 993,
+      "y": 364.59375,
+      "right": 1063,
+      "bottom": 408.59375,
+      "width": 70,
+      "height": 44
+    },
+    "sceneRect": {
+      "x": 539,
+      "y": 202.609375,
+      "right": 1281,
+      "bottom": 850.609375,
+      "width": 742,
+      "height": 648
+    },
+    "elementAtPoint": {
+      "tag": "MODEL-VIEWER",
+      "className": "nlp3d-model-viewer",
+      "insideStagePick": false,
+      "insideModelViewer": true
+    }
+  },
+  "expectedUnit": "unit-38-penthouse",
+  "pass": true
+}
