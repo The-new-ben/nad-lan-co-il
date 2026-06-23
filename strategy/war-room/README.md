@@ -9,6 +9,8 @@ Primary owner-facing artifacts:
 - `design-system-screen-library-visual-qa.md` - screenshot review note for the design-system screen library.
 - `showroom-rebuild-execution-packet-rtl.html` - Hebrew RTL showroom rebuild packet with live/prototype screenshots, asset-truth rules, target screens, contractor inputs, and screenshot gates.
 - `showroom-rebuild-execution-packet-visual-qa.md` - screenshot review note for the showroom rebuild packet.
+- `listing-seo-execution-packet-rtl.html` - Hebrew RTL listings and SEO packet with keyword ownership, anti-cannibalization, route decisions, data trust, and screenshot gates.
+- `listing-seo-execution-packet-visual-qa.md` - screenshot review note for the listings and SEO packet.
 - `objective-completion-audit-rtl.html` - Hebrew RTL audit against the full war-room objective, showing what is proven, partial, or still missing.
 - `current-site-evidence-2026-06-23-rtl.html` - Hebrew RTL summary of the fresh live public-site screenshot run from 2026-06-23.
 - `current-site-and-objective-audit-visual-qa.md` - screenshot review note for the fresh public evidence and objective audit.
@@ -24,6 +26,8 @@ Structured artifacts:
 - `design-system-screen-library.md` - detailed design system and implementation gate narrative.
 - `showroom-rebuild-execution-packet.csv` - structured showroom rebuild queue with asset-truth, visual-stage, unit-selection, map, interior, lead, performance, and SEO gates.
 - `showroom-rebuild-execution-packet.md` - implementation narrative for the next project showroom build slice.
+- `listing-seo-execution-packet.csv` - structured listings and SEO queue with registry, canonical routes, facets, card trust, asset truth, paid placement, schema, freshness, leads, and release gates.
+- `listing-seo-execution-packet.md` - implementation narrative for the next listings and SEO build slice.
 - `lovable-design-validation-prompt.md` - controlled no-spend prompt to use only if the owner chooses another Lovable review.
 - `keyword-to-page-owner.csv` - one canonical owner for every keyword row from the recovered Report 2 keyword universe.
 - `current-evidence-register.csv` - evidence, limitations, and next verification actions.
