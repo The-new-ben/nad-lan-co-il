@@ -1,0 +1,158 @@
+{
+  "activeUnit": null,
+  "body": {
+    "clientWidth": 1335,
+    "scrollWidth": 1335
+  },
+  "cameraOrbit": "45deg 66deg auto",
+  "cameraTarget": "0 31 6",
+  "cardHidden": true,
+  "hotspots": [
+    {
+      "active": false,
+      "ariaDisabled": null,
+      "elementAtCenter": null,
+      "inViewport": false,
+      "rect": {
+        "bottom": 367,
+        "cx": 1372,
+        "cy": 345,
+        "height": 44,
+        "right": 1394,
+        "width": 44,
+        "x": 1350,
+        "y": 323
+      },
+      "unit": "unit-08-sw"
+    },
+    {
+      "active": false,
+      "ariaDisabled": null,
+      "elementAtCenter": null,
+      "inViewport": false,
+      "rect": {
+        "bottom": 331,
+        "cx": 1366,
+        "cy": 309,
+        "height": 44,
+        "right": 1388,
+        "width": 44,
+        "x": 1344,
+        "y": 287
+      },
+      "unit": "unit-16-w"
+    },
+    {
+      "active": false,
+      "ariaDisabled": null,
+      "elementAtCenter": null,
+      "inViewport": false,
+      "rect": {
+        "bottom": 294,
+        "cx": 1367,
+        "cy": 272,
+        "height": 44,
+        "right": 1389,
+        "width": 44,
+        "x": 1345,
+        "y": 250
+      },
+      "unit": "unit-24-nw"
+    },
+    {
+      "active": false,
+      "ariaDisabled": null,
+      "elementAtCenter": null,
+      "inViewport": false,
+      "rect": {
+        "bottom": 263,
+        "cx": 1390,
+        "cy": 241,
+        "height": 44,
+        "right": 1412,
+        "width": 44,
+        "x": 1368,
+        "y": 219
+      },
+      "unit": "unit-31-se"
+    },
+    {
+      "active": false,
+      "ariaDisabled": null,
+      "elementAtCenter": null,
+      "inViewport": false,
+      "rect": {
+        "bottom": 230,
+        "cx": 1371,
+        "cy": 208,
+        "height": 44,
+        "right": 1393,
+        "width": 44,
+        "x": 1349,
+        "y": 186
+      },
+      "unit": "unit-38-penthouse"
+    },
+    {
+      "active": false,
+      "ariaDisabled": null,
+      "elementAtCenter": {
+        "className": "entry-content alignfull wp-block-post-content has-global-padding is-layout-constrained wp-block-post-content-is-layout-constrained",
+        "tag": "DIV",
+        "unit": null
+      },
+      "inViewport": true,
+      "rect": {
+        "bottom": 369,
+        "cx": 1311,
+        "cy": 347,
+        "height": 44,
+        "right": 1333,
+        "width": 44,
+        "x": 1289,
+        "y": 325
+      },
+      "unit": "unit-boutique-07"
+    }
+  ],
+  "model": {
+    "bottom": 585,
+    "cx": 1038,
+    "cy": 281,
+    "height": 608,
+    "right": 1228,
+    "width": 381,
+    "x": 847,
+    "y": -23
+  },
+  "modelLoaded": false,
+  "modelViewerDefined": false,
+  "scene": {
+    "bottom": 586,
+    "cx": 858,
+    "cy": 281,
+    "height": 610,
+    "right": 1229,
+    "width": 743,
+    "x": 486,
+    "y": -24
+  },
+  "scroll": {
+    "x": 0,
+    "y": 2350.6171875
+  },
+  "stage": {
+    "bottom": 586,
+    "cx": 858,
+    "cy": 254,
+    "height": 664,
+    "right": 1229,
+    "width": 743,
+    "x": 486,
+    "y": -78
+  },
+  "viewport": {
+    "h": 476,
+    "w": 1355
+  }
+}

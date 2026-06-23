@@ -1263,7 +1263,7 @@ add_filter( 'wpseo_twitter_description', 'nadlan_p3d_seo_description', 20 );
 if ( ! function_exists( 'nadlan_p3d_lovable_showroom_v1690_css' ) ) {
 	function nadlan_p3d_lovable_showroom_v1690_css() {
 		return <<<'CSS'
-/* v1.69.1: public showroom surface. */
+/* v1.69.2: public showroom surface. */
 @font-face{font-family:"Frank Ruhl Libre";font-style:normal;font-weight:400;font-display:swap;src:url("/wp-content/themes/nadlan-revenue/assets/fonts/frank-ruhl-libre/frl-400.woff2") format("woff2")}
 @font-face{font-family:"Frank Ruhl Libre";font-style:normal;font-weight:500;font-display:swap;src:url("/wp-content/themes/nadlan-revenue/assets/fonts/frank-ruhl-libre/frl-500.woff2") format("woff2")}
 @font-face{font-family:"Frank Ruhl Libre";font-style:normal;font-weight:700;font-display:swap;src:url("/wp-content/themes/nadlan-revenue/assets/fonts/frank-ruhl-libre/frl-700.woff2") format("woff2")}
@@ -2131,6 +2131,66 @@ border:1px solid var(--nlp3d-line)!important;
 border-radius:var(--radius)!important;
 box-shadow:var(--shadow-card)!important;
 }
+.nlp3d.nlp3d-premium.has-model-picker .nlp3d-scene{
+grid-template-columns:1fr!important;
+}
+.nlp3d.nlp3d-premium.has-model-picker .nlp3d-model-viewer{
+grid-column:1!important;
+grid-row:1!important;
+width:100%!important;
+height:100%!important;
+border-inline-end:0!important;
+}
+.nlp3d.nlp3d-premium .nlp3d-model-picks{
+position:absolute!important;
+inset:54px 16px 18px!important;
+z-index:12!important;
+pointer-events:none!important;
+}
+.nlp3d.nlp3d-premium .nlp3d-model-picks .nlp3d-stage-pick{
+position:absolute!important;
+display:inline-flex!important;
+align-items:center!important;
+justify-content:center!important;
+gap:6px!important;
+min-width:54px!important;
+min-height:44px!important;
+padding:6px 9px!important;
+border-radius:999px!important;
+pointer-events:auto!important;
+transform:translate(-50%,-50%)!important;
+}
+.nlp3d.nlp3d-premium .nlp3d-model-picks .nlp3d-pick-label{
+display:inline-flex!important;
+align-items:center!important;
+gap:4px!important;
+font-size:12px!important;
+font-weight:800!important;
+line-height:1!important;
+white-space:nowrap!important;
+}
+.nlp3d.nlp3d-premium .nlp3d-model-picks .nlp3d-pick-label span{
+font-weight:700!important;
+color:var(--nlp3d-muted)!important;
+}
+.nlp3d.nlp3d-premium .nlp3d-model-picks .nlp3d-hotspot-tip{
+position:absolute!important;
+top:calc(100% + 8px)!important;
+right:50%!important;
+min-width:190px!important;
+max-width:240px!important;
+padding:10px!important;
+opacity:0!important;
+pointer-events:none!important;
+transform:translateX(50%) translateY(4px)!important;
+transition:opacity .12s ease,transform .12s ease!important;
+}
+.nlp3d.nlp3d-premium .nlp3d-model-picks .nlp3d-stage-pick:hover .nlp3d-hotspot-tip,
+.nlp3d.nlp3d-premium .nlp3d-model-picks .nlp3d-stage-pick:focus-visible .nlp3d-hotspot-tip,
+.nlp3d.nlp3d-premium .nlp3d-model-picks .nlp3d-stage-pick.is-open .nlp3d-hotspot-tip{
+opacity:1!important;
+transform:translateX(50%) translateY(0)!important;
+}
 .nlp3d.nlp3d-premium .nlp3d-mv-hotspot{
 position:relative!important;
 display:inline-grid!important;
@@ -2218,6 +2278,20 @@ color:var(--nlp3d-cream)!important;
 border-color:var(--nlp3d-terracotta)!important;
 }
 @media(max-width:760px){
+.nlp3d.nlp3d-premium .nlp3d-model-picks{
+inset:64px 10px 16px!important;
+}
+.nlp3d.nlp3d-premium .nlp3d-model-picks .nlp3d-stage-pick{
+min-width:48px!important;
+min-height:44px!important;
+padding:5px 7px!important;
+}
+.nlp3d.nlp3d-premium .nlp3d-model-picks .nlp3d-pick-label{
+font-size:11px!important;
+}
+.nlp3d.nlp3d-premium .nlp3d-model-picks .nlp3d-hotspot-tip{
+display:none!important;
+}
 .nlp3d.nlp3d-premium .nlp3d-stage-card:not([hidden]){
 position:relative!important;
 inset:auto!important;
@@ -2451,7 +2525,13 @@ if ( ! function_exists( 'nadlan_p3d_inline_js' ) ) {
 				scene.appendChild(fpLegend);
 				root.classList.add(modelViewer?'is-dual-showroom':'is-facade-select');
 			}else if(modelViewer){
+				stagePicks=document.createElement('div');
+				stagePicks.className='nlp3d-model-picks';
+				stagePicks.setAttribute('role','group');
+				stagePicks.setAttribute('aria-label','בחירת דירה על המודל');
+				scene.appendChild(stagePicks);
 				root.classList.add('is-dual-showroom');
+				root.classList.add('has-model-picker');
 				root.classList.remove('is-facade-asset-missing');
 			}else{
 				facadePlane=document.createElement('div');
@@ -2706,11 +2786,13 @@ if ( ! function_exists( 'nadlan_p3d_inline_js' ) ) {
 		}
 		function stagePickOffset(u){
 			var id=String(u&&u.id||'').toLowerCase();
-			if(id.indexOf('boutique')>-1){return -245}
-			if(id.indexOf('sw')>-1){return -128}
-			if(id.indexOf('nw')>-1){return -92}
-			if(id.indexOf('se')>-1){return 118}
-			if(id.indexOf('-w')>-1){return -112}
+			var sceneWidth=scene?scene.getBoundingClientRect().width:740;
+			var scale=Math.max(.42,Math.min(1,sceneWidth/740));
+			if(id.indexOf('boutique')>-1){return Math.round(-245*scale)}
+			if(id.indexOf('sw')>-1){return Math.round(-128*scale)}
+			if(id.indexOf('nw')>-1){return Math.round(-92*scale)}
+			if(id.indexOf('se')>-1){return Math.round(118*scale)}
+			if(id.indexOf('-w')>-1){return Math.round(-112*scale)}
 			return 0;
 		}
 		function closeStagePickTips(except){
@@ -3725,7 +3807,7 @@ add_action(
 			return;
 		}
 
-		wp_register_style( 'nadlan-p3d', '', array(), '1.69.1' );
+		wp_register_style( 'nadlan-p3d', '', array(), '1.69.2' );
 		wp_enqueue_style( 'nadlan-p3d' );
 		wp_add_inline_style( 'nadlan-p3d', nadlan_p3d_lovable_showroom_v1690_css() );
 
@@ -3736,7 +3818,7 @@ add_action(
 			wp_enqueue_script( 'nadlan-model-viewer' );
 		}
 
-		wp_register_script( 'nadlan-p3d', '', array(), '1.69.1', true );
+		wp_register_script( 'nadlan-p3d', '', array(), '1.69.2', true );
 		wp_enqueue_script( 'nadlan-p3d' );
 		wp_add_inline_script( 'nadlan-p3d', nadlan_p3d_inline_js( esc_url_raw( rest_url( 'nadlan/v1/lead' ) ) ) );
 	}

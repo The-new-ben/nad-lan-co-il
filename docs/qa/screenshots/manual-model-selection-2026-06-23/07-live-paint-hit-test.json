@@ -1,0 +1,181 @@
+{
+  "firstHotspot": {
+    "rect": {
+      "bottom": 566,
+      "cx": 1372,
+      "cy": 544,
+      "height": 44,
+      "right": 1394,
+      "width": 44,
+      "x": 1350,
+      "y": 522
+    },
+    "style": {
+      "background": "rgba(255, 250, 242, 0.94)",
+      "clipPath": "none",
+      "color": "rgb(27, 26, 23)",
+      "display": "inline-grid",
+      "opacity": "1",
+      "overflow": "visible",
+      "pointerEvents": "auto",
+      "position": "relative",
+      "transform": "none",
+      "visibility": "visible",
+      "zIndex": "auto"
+    },
+    "text": "דירת 3 חדרים, קומה 8\nדירת 3 חדרים, קומה 8 · 3 חד׳ 82 מ\"ר · מבט לחצר ולים זמינה לפנייה",
+    "unit": "unit-08-sw"
+  },
+  "model": {
+    "rect": {
+      "bottom": 783,
+      "cx": 1038,
+      "cy": 479,
+      "height": 608,
+      "right": 1228,
+      "width": 381,
+      "x": 847,
+      "y": 175
+    },
+    "style": {
+      "background": "rgb(255, 250, 242)",
+      "clipPath": "none",
+      "color": "rgb(27, 26, 23)",
+      "display": "block",
+      "opacity": "1",
+      "overflow": "visible",
+      "pointerEvents": "auto",
+      "position": "relative",
+      "transform": "none",
+      "visibility": "visible",
+      "zIndex": "auto"
+    },
+    "text": "דירת 3 חדרים, קומה 8\nדירת 3 חדרים, קומה 8 · 3 חד׳ 82 מ\"ר · מבט לחצר ולים זמינה לפנייה\nדירת 4 חדרים, "
+  },
+  "samples": [
+    {
+      "className": "nlp3d-shell",
+      "tag": "DIV",
+      "text": "Rainbow Tel Aviv – ריינבו תל אביב · רובע שדה דב, אזור אשכול, תל אביב-יפו\n\nסיור ב",
+      "unit": null,
+      "x": 100,
+      "y": 100
+    },
+    {
+      "className": "nlp3d-toolbar",
+      "tag": "DIV",
+      "text": "מבט ראשי\nים\nעיר\nסובב מודל\nקרב\nהרחק\nבחרו דירה על המגדל",
+      "unit": null,
+      "x": 500,
+      "y": 150
+    },
+    {
+      "className": "nlp3d-scene has-model-viewer",
+      "tag": "DIV",
+      "text": "דירת 3 חדרים, קומה 8\nדירת 3 חדרים, קומה 8 · 3 חד׳ 82 מ\"ר · מבט לחצר ולים זמינה ל",
+      "unit": null,
+      "x": 700,
+      "y": 250
+    },
+    {
+      "className": "nlp3d-model-viewer",
+      "tag": "MODEL-VIEWER",
+      "text": "דירת 3 חדרים, קומה 8\nדירת 3 חדרים, קומה 8 · 3 חד׳ 82 מ\"ר · מבט לחצר ולים זמינה ל",
+      "unit": null,
+      "x": 900,
+      "y": 300
+    },
+    {
+      "className": "nlp3d-model-viewer",
+      "tag": "MODEL-VIEWER",
+      "text": "דירת 3 חדרים, קומה 8\nדירת 3 חדרים, קומה 8 · 3 חד׳ 82 מ\"ר · מבט לחצר ולים זמינה ל",
+      "unit": null,
+      "x": 1100,
+      "y": 300
+    },
+    {
+      "className": "entry-content alignfull wp-block-post-content has-global-padding is-layout-constrained wp-block-post-content-is-layout-constrained",
+      "tag": "DIV",
+      "text": "✓ פרופיל מאומת · Premier\nRainbow Tel Aviv – ריינבו תל אביבמודל תלת ממדי ובחירת ד",
+      "unit": null,
+      "x": 1300,
+      "y": 350
+    }
+  ],
+  "scene": {
+    "rect": {
+      "bottom": 784,
+      "cx": 858,
+      "cy": 479,
+      "height": 610,
+      "right": 1229,
+      "width": 743,
+      "x": 486,
+      "y": 174
+    },
+    "style": {
+      "background": "rgb(255, 250, 242)",
+      "clipPath": "none",
+      "color": "rgb(27, 26, 23)",
+      "display": "grid",
+      "opacity": "1",
+      "overflow": "hidden",
+      "pointerEvents": "auto",
+      "position": "relative",
+      "transform": "none",
+      "visibility": "visible",
+      "zIndex": "auto"
+    }
+  },
+  "stage": {
+    "rect": {
+      "bottom": 784,
+      "cx": 858,
+      "cy": 452,
+      "height": 664,
+      "right": 1229,
+      "width": 743,
+      "x": 486,
+      "y": 120
+    },
+    "style": {
+      "background": "rgb(250, 247, 241)",
+      "clipPath": "none",
+      "color": "rgb(27, 26, 23)",
+      "display": "block",
+      "opacity": "1",
+      "overflow": "visible",
+      "pointerEvents": "auto",
+      "position": "static",
+      "transform": "none",
+      "visibility": "visible",
+      "zIndex": "auto"
+    }
+  },
+  "toolbar": {
+    "rect": {
+      "bottom": 164,
+      "cx": 858,
+      "cy": 142,
+      "height": 44,
+      "right": 1229,
+      "width": 743,
+      "x": 486,
+      "y": 120
+    },
+    "style": {
+      "background": "rgba(0, 0, 0, 0)",
+      "clipPath": "none",
+      "color": "rgb(27, 26, 23)",
+      "display": "flex",
+      "opacity": "1",
+      "overflow": "visible",
+      "pointerEvents": "auto",
+      "position": "relative",
+      "transform": "none",
+      "visibility": "visible",
+      "zIndex": "20"
+    },
+    "text": "מבט ראשי\nים\nעיר\nסובב מודל\nקרב\nהרחק\nבחרו דירה על המגדל"
+  }
+}

@@ -1,0 +1,182 @@
+{
+  "activeUnit": null,
+  "cameraOrbit": "45deg 66deg auto",
+  "cameraTarget": "0 31 6",
+  "hotspotCount": 6,
+  "hotspots": [
+    {
+      "active": false,
+      "ariaDisabled": null,
+      "display": "inline-grid",
+      "elementAtCenter": null,
+      "normal": "0 0 1",
+      "opacity": "1",
+      "pointerEvents": "auto",
+      "position": "0 31 6",
+      "rect": {
+        "cx": 1372,
+        "cy": 345,
+        "height": 44,
+        "width": 44,
+        "x": 1350,
+        "y": 323
+      },
+      "slot": "hotspot-unit-08-sw",
+      "unit": "unit-08-sw",
+      "visibility": "visible",
+      "visible": true
+    },
+    {
+      "active": false,
+      "ariaDisabled": null,
+      "display": "inline-grid",
+      "elementAtCenter": null,
+      "normal": "0 0 1",
+      "opacity": "1",
+      "pointerEvents": "auto",
+      "position": "-5 55 7",
+      "rect": {
+        "cx": 1366,
+        "cy": 309,
+        "height": 44,
+        "width": 44,
+        "x": 1344,
+        "y": 287
+      },
+      "slot": "hotspot-unit-16-w",
+      "unit": "unit-16-w",
+      "visibility": "visible",
+      "visible": true
+    },
+    {
+      "active": false,
+      "ariaDisabled": null,
+      "display": "inline-grid",
+      "elementAtCenter": null,
+      "normal": "0 0 1",
+      "opacity": "1",
+      "pointerEvents": "auto",
+      "position": "-6 80 5",
+      "rect": {
+        "cx": 1367,
+        "cy": 272,
+        "height": 44,
+        "width": 44,
+        "x": 1345,
+        "y": 250
+      },
+      "slot": "hotspot-unit-24-nw",
+      "unit": "unit-24-nw",
+      "visibility": "visible",
+      "visible": true
+    },
+    {
+      "active": false,
+      "ariaDisabled": null,
+      "display": "inline-grid",
+      "elementAtCenter": null,
+      "normal": "0 0 1",
+      "opacity": "1",
+      "pointerEvents": "auto",
+      "position": "6 101 -5",
+      "rect": {
+        "cx": 1390,
+        "cy": 241,
+        "height": 44,
+        "width": 44,
+        "x": 1368,
+        "y": 219
+      },
+      "slot": "hotspot-unit-31-se",
+      "unit": "unit-31-se",
+      "visibility": "visible",
+      "visible": true
+    },
+    {
+      "active": false,
+      "ariaDisabled": null,
+      "display": "inline-grid",
+      "elementAtCenter": null,
+      "normal": "0 0 1",
+      "opacity": "1",
+      "pointerEvents": "auto",
+      "position": "0 124 7",
+      "rect": {
+        "cx": 1371,
+        "cy": 208,
+        "height": 44,
+        "width": 44,
+        "x": 1349,
+        "y": 186
+      },
+      "slot": "hotspot-unit-38-penthouse",
+      "unit": "unit-38-penthouse",
+      "visibility": "visible",
+      "visible": true
+    },
+    {
+      "active": false,
+      "ariaDisabled": null,
+      "display": "inline-grid",
+      "elementAtCenter": {
+        "className": "entry-content alignfull wp-block-post-content has-global-padding is-layout-constrained wp-block-post-content-is-layout-constrained",
+        "tag": "DIV",
+        "unit": null
+      },
+      "normal": "0 0 1",
+      "opacity": "1",
+      "pointerEvents": "auto",
+      "position": "-42 25 24",
+      "rect": {
+        "cx": 1311,
+        "cy": 347,
+        "height": 44,
+        "width": 44,
+        "x": 1289,
+        "y": 325
+      },
+      "slot": "hotspot-unit-boutique-07",
+      "unit": "unit-boutique-07",
+      "visibility": "visible",
+      "visible": true
+    }
+  ],
+  "modelLoaded": false,
+  "modelRect": {
+    "cx": 1038,
+    "cy": 281,
+    "height": 608,
+    "width": 381,
+    "x": 847,
+    "y": -23
+  },
+  "modelSrc": "https://raw.githubusercontent.com/The-new-ben/nad-lan-co-il/main/assets/projects/rainbow-tel-aviv/model.glb",
+  "modelViewerDefined": false,
+  "publicLeakSample": null,
+  "rootClasses": null,
+  "sceneRect": {
+    "cx": 858,
+    "cy": 281,
+    "height": 610,
+    "width": 743,
+    "x": 486,
+    "y": -24
+  },
+  "stageCardHidden": true,
+  "stageCardText": "פתחו את פרטי הדירה\n\t\t\t\t×\n\t\t\t\tהדירה שנבחרה\n\t\t\t\tבחרו דירה על הבניין\n\t\t\t\tבחרו קומה ודירה כדי לראות מחיר, נוף ותוכנית כאשר הם זמינים.\n\t\t\t\t\n\t\t\t\t\n\t\t\t\t\tלפי פנייה\n\t\t\t\t\tבחירה פתוחה\n\t\t\t\t\tמבט לפי כיוון\n\t\t\t\t\n\t\t\t\tבחרו דירה כדי לראות את פעולות ההמשך.\n\t\t\t\t\n\t\t\t\t\tפרטים מלאים\n\t\t\t\t\tמבט מהדירה\n\t\t\t\t\tתוכניות וסיור\n\t\t\t\t\tדברו עם היזם\n\t\t\t\t\n\t\t\t\t\n\t\t\t\t\tפרטים\n\t\t\t\t\tמבט מהדירה\n\t\t\t\t\tתוכניות\n\t\t\t\t\tשמש\n\t\t\t\t\tסביבה\n\t\t\t\t\tסיור",
+  "stageRect": {
+    "cx": 858,
+    "cy": 254,
+    "height": 664,
+    "width": 743,
+    "x": 486,
+    "y": -78
+  },
+  "title": "דירות למכירה ב-Rainbow תל אביב | מחירים, תוכניות ובחירת דירה בשדה דב | נדלן חכם",
+  "url": "https://nad-lan.co.il/projects/rainbow-tel-aviv/?codex_live_model_qa=1782245822486",
+  "viewport": {
+    "height": 476,
+    "width": 1355
+  },
+  "visibleHotspotCount": 6
+}

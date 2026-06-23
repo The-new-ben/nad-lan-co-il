@@ -1,0 +1,112 @@
+{
+  "body": {
+    "clientWidth": 1335,
+    "scrollHeight": 19012,
+    "scrollWidth": 1335
+  },
+  "hot": [
+    {
+      "cx": 1372,
+      "cy": 345,
+      "inViewport": false,
+      "unit": "unit-08-sw",
+      "x": 1350,
+      "y": 323
+    },
+    {
+      "cx": 1365,
+      "cy": 310,
+      "inViewport": false,
+      "unit": "unit-16-w",
+      "x": 1343,
+      "y": 288
+    },
+    {
+      "cx": 1366,
+      "cy": 272,
+      "inViewport": false,
+      "unit": "unit-24-nw",
+      "x": 1344,
+      "y": 250
+    },
+    {
+      "cx": 1389,
+      "cy": 241,
+      "inViewport": false,
+      "unit": "unit-31-se",
+      "x": 1367,
+      "y": 219
+    },
+    {
+      "cx": 1371,
+      "cy": 208,
+      "inViewport": false,
+      "unit": "unit-38-penthouse",
+      "x": 1349,
+      "y": 186
+    },
+    {
+      "cx": 1307,
+      "cy": 349,
+      "inViewport": true,
+      "unit": "unit-boutique-07",
+      "x": 1285,
+      "y": 327
+    }
+  ],
+  "model": {
+    "bottom": 585.22926902771,
+    "cx": 1037.7259521484375,
+    "cy": 281.0185146331787,
+    "height": 608.4215087890625,
+    "right": 1228.31787109375,
+    "width": 381.183837890625,
+    "x": 847.134033203125,
+    "y": -23.19223976135254
+  },
+  "modelComputed": {
+    "display": "block",
+    "height": "608.422px",
+    "position": "relative",
+    "transform": "none",
+    "width": "381.184px"
+  },
+  "root": null,
+  "scene": {
+    "bottom": 585.9346904754639,
+    "cx": 857.72705078125,
+    "cy": 281.0184917449951,
+    "height": 609.8323974609375,
+    "right": 1229.0233459472656,
+    "width": 742.5925903320312,
+    "x": 486.4307556152344,
+    "y": -23.897706985473633
+  },
+  "sceneComputed": {
+    "display": "grid",
+    "overflow": "hidden",
+    "position": "relative",
+    "transform": "none"
+  },
+  "scrollX": 0,
+  "scrollY": 2350.6171875,
+  "stage": {
+    "bottom": 585.9347534179688,
+    "cx": 857.72705078125,
+    "cy": 254.02337646484375,
+    "height": 663.82275390625,
+    "right": 1229.0233459472656,
+    "width": 742.5925903320312,
+    "x": 486.4307556152344,
+    "y": -77.88800048828125
+  },
+  "stageComputed": {
+    "display": "block",
+    "overflow": "visible",
+    "position": "static"
+  },
+  "viewport": {
+    "h": 476,
+    "w": 1355
+  }
+}

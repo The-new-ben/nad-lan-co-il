@@ -1,0 +1,108 @@
+{
+  "browserErrors": null,
+  "customElementsExists": false,
+  "fetchChecks": [
+    {
+      "error": "TypeError: fetch is not a function",
+      "src": "https://ajax.googleapis.com/ajax/libs/model-viewer/4.3.1/model-viewer.min.js?ver=4.3.1"
+    },
+    {
+      "error": "TypeError: fetch is not a function",
+      "src": "https://nad-lan.co.il/wp-content/themes/nadlan-revenue/assets/js/nadlan-accessibility.js?ver=1780591562"
+    },
+    {
+      "error": "TypeError: fetch is not a function",
+      "src": "https://nad-lan.co.il/wp-content/themes/nadlan-revenue/assets/js/nadlan-premium-revenue.js?ver=1781904316"
+    }
+  ],
+  "links": [
+    {
+      "as": "",
+      "href": "https://nad-lan.co.il/projects/rainbow-tel-aviv/",
+      "rel": "canonical"
+    },
+    {
+      "as": "",
+      "href": "https://nad-lan.co.il/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fnad-lan.co.il%2Fprojects%2Frainbow-tel-aviv%2F",
+      "rel": "alternate"
+    },
+    {
+      "as": "",
+      "href": "https://nad-lan.co.il/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fnad-lan.co.il%2Fprojects%2Frainbow-tel-aviv%2F&format=xml",
+      "rel": "alternate"
+    },
+    {
+      "as": "",
+      "href": "https://nad-lan.co.il/wp-content/themes/nadlan-revenue/style.min.css?ver=1.1.0",
+      "rel": "stylesheet"
+    },
+    {
+      "as": "",
+      "href": "https://nad-lan.co.il/wp-content/themes/nadlan-revenue/assets/css/nadlan-premium-sitewide.css?ver=1781904316",
+      "rel": "stylesheet"
+    },
+    {
+      "as": "",
+      "href": "https://nad-lan.co.il/wp-content/themes/nadlan-revenue/assets/css/nadlan-premium-revenue.css?ver=1780600542",
+      "rel": "stylesheet"
+    },
+    {
+      "as": "",
+      "href": "https://nad-lan.co.il/wp-json/wp/v2/nadlan_project/4464",
+      "rel": "alternate"
+    },
+    {
+      "as": "",
+      "href": "https://nad-lan.co.il/wp-content/uploads/2026/05/nadlan-favicon-300x300.png",
+      "rel": "apple-touch-icon"
+    }
+  ],
+  "modelOuterStart": "<model-viewer class=\"nlp3d-model-viewer\" src=\"https://raw.githubusercontent.com/The-new-ben/nad-lan-co-il/main/assets/projects/rainbow-tel-aviv/model.glb\" poster=\"https://raw.githubusercontent.com/The-new-ben/nad-lan-co-il/main/assets/projects/rainbow-tel-aviv/rainbow-showroom-hero-v1664.jpg\" alt=\"מודל תלת ממדי של Rainbow Tel Aviv - ריינבו תל אביב\" reveal=\"auto\" loading=\"auto\" camera-controls=\"\" min-camera-orbit=\"-Infinity 78deg auto\" max-camera-orbit=\"Infinity 85deg auto\" camera-orbit=\"45deg 66deg auto\" field-of-view=\"24deg\" camera-target=\"0 31 6\" environment-image=\"neutral\" exposure=\"1.45\" shadow-intensity=\"1\" shadow-softness=\".7\" ar=\"\" ar-modes=\"webxr scene-viewer quick-look\" ar-status=\"not-presenting\">\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<button type=\"button\" class=\"nlp3d-mv-hotspot nlp3d-hotspot-hit nlp3d-status-available is-available\" slot=\"hotspot-unit-08-sw\" data-position=\"0 31 6\" data-normal=\"0 0 1\" data-visibility-attribute=\"visible\" data-unit=\"unit-08-sw\" aria-label=\"דירה unit-08-sw, קומה 8, 3 חדרים, זמינה לפנייה\" data-visible=\"\">\n\t\t\t\t\t\t\t\t<span class=\"nlp3d-hotspot-dot\" aria-hidden=\"true\"></span>\n\t\t\t\t\t\t\t\t<span class=\"nlp3d-mv-label nlp3d-hotspot-tag\">דירת 3 חדרים, קומה 8</span>\n\t\t\t\t\t\t\t\t",
+  "modelTagExists": true,
+  "modelViewerDefined": false,
+  "scripts": [
+    {
+      "async": false,
+      "defer": false,
+      "id": "nadlan-project-profile-quote-js-after",
+      "src": "",
+      "type": ""
+    },
+    {
+      "async": false,
+      "defer": false,
+      "id": "nadlan-reviews-js-after",
+      "src": "",
+      "type": ""
+    },
+    {
+      "async": false,
+      "defer": false,
+      "id": "nadlan-model-viewer-js",
+      "src": "https://ajax.googleapis.com/ajax/libs/model-viewer/4.3.1/model-viewer.min.js?ver=4.3.1",
+      "type": "module"
+    },
+    {
+      "async": false,
+      "defer": false,
+      "id": "nadlan-p3d-js-after",
+      "src": "",
+      "type": ""
+    },
+    {
+      "async": false,
+      "defer": false,
+      "id": "nadlan-accessibility-js",
+      "src": "https://nad-lan.co.il/wp-content/themes/nadlan-revenue/assets/js/nadlan-accessibility.js?ver=1780591562",
+      "type": ""
+    },
+    {
+      "async": false,
+      "defer": false,
+      "id": "nadlan-premium-revenue-js",
+      "src": "https://nad-lan.co.il/wp-content/themes/nadlan-revenue/assets/js/nadlan-premium-revenue.js?ver=1781904316",
+      "type": ""
+    }
+  ],
+  "url": "https://nad-lan.co.il/projects/rainbow-tel-aviv/?codex_live_model_qa=1782245822486"
+}
