@@ -1,0 +1,190 @@
+{
+  "url": "https://nad-lan.co.il/projects/rainbow-tel-aviv/?codex_qa=showroom_live_1694&viewport=desktop-1440&t=1782250195213",
+  "title": "דירות למכירה ב-Rainbow תל אביב | מחירים, תוכניות ובחירת דירה בשדה דב | נדלן חכם",
+  "viewport": {
+    "width": 1440,
+    "height": 1000
+  },
+  "scrollWidth": 1440,
+  "bodyScrollWidth": 1440,
+  "hasRoot": true,
+  "rootClasses": "nlp3d nlp3d-premium alignfull is-model-first is-dual-showroom has-model-picker has-model-viewer-loaded has-stage-selection",
+  "rootActiveUnit": "unit-38-penthouse",
+  "modelViewerCount": 1,
+  "modelPickCount": 6,
+  "activePicks": [
+    "unit-38-penthouse"
+  ],
+  "visibleStagePins": [
+    "unit-08-sw",
+    "unit-16-w",
+    "unit-24-nw",
+    "unit-31-se",
+    "unit-38-penthouse",
+    "unit-boutique-07"
+  ],
+  "stagePins": [
+    {
+      "unit": "unit-08-sw",
+      "visible": true,
+      "active": false,
+      "rect": {
+        "x": 751,
+        "y": 469,
+        "right": 813,
+        "bottom": 513,
+        "width": 62,
+        "height": 44
+      }
+    },
+    {
+      "unit": "unit-16-w",
+      "visible": true,
+      "active": false,
+      "rect": {
+        "x": 763,
+        "y": 402,
+        "right": 833,
+        "bottom": 446,
+        "width": 70,
+        "height": 44
+      }
+    },
+    {
+      "unit": "unit-24-nw",
+      "visible": true,
+      "active": false,
+      "rect": {
+        "x": 783,
+        "y": 334,
+        "right": 853,
+        "bottom": 378,
+        "width": 70,
+        "height": 44
+      }
+    },
+    {
+      "unit": "unit-31-se",
+      "visible": true,
+      "active": false,
+      "rect": {
+        "x": 993,
+        "y": 275,
+        "right": 1063,
+        "bottom": 319,
+        "width": 70,
+        "height": 44
+      }
+    },
+    {
+      "unit": "unit-38-penthouse",
+      "visible": true,
+      "active": true,
+      "rect": {
+        "x": 993,
+        "y": 216,
+        "right": 1063,
+        "bottom": 260,
+        "width": 70,
+        "height": 44
+      }
+    },
+    {
+      "unit": "unit-boutique-07",
+      "visible": true,
+      "active": false,
+      "rect": {
+        "x": 634,
+        "y": 478,
+        "right": 696,
+        "bottom": 522,
+        "width": 62,
+        "height": 44
+      }
+    }
+  ],
+  "visibleModelHotspots": [],
+  "modelHotspots": [
+    {
+      "unit": "unit-08-sw",
+      "visible": false,
+      "rect": {
+        "x": 0,
+        "y": 0,
+        "right": 0,
+        "bottom": 0,
+        "width": 0,
+        "height": 0
+      }
+    },
+    {
+      "unit": "unit-16-w",
+      "visible": false,
+      "rect": {
+        "x": 0,
+        "y": 0,
+        "right": 0,
+        "bottom": 0,
+        "width": 0,
+        "height": 0
+      }
+    },
+    {
+      "unit": "unit-24-nw",
+      "visible": false,
+      "rect": {
+        "x": 0,
+        "y": 0,
+        "right": 0,
+        "bottom": 0,
+        "width": 0,
+        "height": 0
+      }
+    },
+    {
+      "unit": "unit-31-se",
+      "visible": false,
+      "rect": {
+        "x": 0,
+        "y": 0,
+        "right": 0,
+        "bottom": 0,
+        "width": 0,
+        "height": 0
+      }
+    },
+    {
+      "unit": "unit-38-penthouse",
+      "visible": false,
+      "rect": {
+        "x": 0,
+        "y": 0,
+        "right": 0,
+        "bottom": 0,
+        "width": 0,
+        "height": 0
+      }
+    },
+    {
+      "unit": "unit-boutique-07",
+      "visible": false,
+      "rect": {
+        "x": 0,
+        "y": 0,
+        "right": 0,
+        "bottom": 0,
+        "width": 0,
+        "height": 0
+      }
+    }
+  ],
+  "floatingCtaVisible": false,
+  "cameraOrbit": "32deg 58deg auto",
+  "cameraTarget": "0 124 7",
+  "dockText": "בחירה נוכחית דירת 5 חדרים, קומה 38 5 חדרים · 210 מ\"ר · פנטהאוז גבוה לכיוון הים · זמינה לפנייה סיבוב 360 התקדמות",
+  "stageText": "פתחו את פרטי הדירה × הדירה שנבחרה דירת 5 חדרים, קומה 38 5 חדרים · 210 מ\"ר · פנטהאוז גבוה לכיוון הים · זמינות להדגמה בלבד עד לקבלת מלאי רשמי מהיזם מומלצת לבדיקה זמינה לפנייה פנטהאוז גבוה לכיוון הים כולל אומדן אומדן ₪15,960,000 זמינה לפנייה פנטהאוז גבוה לכיוון הים האומדן עוזר להשוואה ראשונית בלבד. המחיר, הזמינות ותנאי העסקה יאומתו מול היזם לפני כל התקדמות. פרטים מלאים מבט מהדירה תוכניות וסיור דברו עם היזם פרטים מבט מהדירה תוכניות שמש סביבה סיור",
+  "detailTitle": "דירת 5 חדרים, קומה 38",
+  "publicLeakSample": null,
+  "offenders": [],
+  "smallTapTargets": []
+}
