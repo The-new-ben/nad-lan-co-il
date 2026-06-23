@@ -27,10 +27,13 @@ if ( ! function_exists( 'nadlan_card_is_indexable' ) ) {
 	}
 }
 
-/* ---- noindex stubs via wp_robots (WP 5.7+) ---- */
+/* ---- noindex stubs via wp_robots (WP 5.7+) ----
+ * Projects are intentionally OUT of this guard (owner directive 2026-06-23):
+ * the showroom must earn traffic while project content matures. Professionals
+ * and properties stay guarded by the word floor. */
 if ( ! function_exists( 'nadlan_card_robots' ) ) {
 	function nadlan_card_robots( $robots ) {
-		if ( ! is_singular( array( 'nadlan_project', 'nadlan_professional', 'nadlan_property' ) ) ) {
+		if ( ! is_singular( array( 'nadlan_professional', 'nadlan_property' ) ) ) {
 			return $robots;
 		}
 		if ( ! nadlan_card_is_indexable( get_queried_object_id() ) ) {
@@ -45,7 +48,7 @@ add_filter( 'wp_robots', 'nadlan_card_robots', 20 );
 
 /* Force the same through Yoast if it's controlling the robots meta */
 add_filter( 'wpseo_robots', function ( $string ) {
-	if ( is_singular( array( 'nadlan_project', 'nadlan_professional', 'nadlan_property' ) )
+	if ( is_singular( array( 'nadlan_professional', 'nadlan_property' ) )
 		&& ! nadlan_card_is_indexable( get_queried_object_id() ) ) {
 		return 'noindex, follow';
 	}
