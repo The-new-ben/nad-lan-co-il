@@ -1265,7 +1265,7 @@ add_filter( 'wpseo_twitter_description', 'nadlan_p3d_seo_description', 20 );
 if ( ! function_exists( 'nadlan_p3d_lovable_showroom_v1690_css' ) ) {
 	function nadlan_p3d_lovable_showroom_v1690_css() {
 		return <<<'CSS'
-/* v1.69.4: public showroom surface. */
+/* v1.69.5: public showroom surface. */
 @font-face{font-family:"Frank Ruhl Libre";font-style:normal;font-weight:400;font-display:swap;src:url("/wp-content/themes/nadlan-revenue/assets/fonts/frank-ruhl-libre/frl-400.woff2") format("woff2")}
 @font-face{font-family:"Frank Ruhl Libre";font-style:normal;font-weight:500;font-display:swap;src:url("/wp-content/themes/nadlan-revenue/assets/fonts/frank-ruhl-libre/frl-500.woff2") format("woff2")}
 @font-face{font-family:"Frank Ruhl Libre";font-style:normal;font-weight:700;font-display:swap;src:url("/wp-content/themes/nadlan-revenue/assets/fonts/frank-ruhl-libre/frl-700.woff2") format("woff2")}
@@ -2849,6 +2849,30 @@ if ( ! function_exists( 'nadlan_p3d_inline_js' ) ) {
 				if(node!==except){node.classList.remove('is-open')}
 			});
 		}
+		function selectNearestModelPickFromPoint(p,source){
+			if(!stagePicks||!p){return false}
+			var sceneRect=scene?scene.getBoundingClientRect():null;
+			if(sceneRect&&(p.x<sceneRect.left||p.x>sceneRect.right||p.y<sceneRect.top||p.y>sceneRect.bottom)){return false}
+			var baseLimit=(window.innerWidth&&window.innerWidth<=480)?92:76;
+			var best=null,bestDistance=Infinity;
+			stagePicks.querySelectorAll('.nlp3d-stage-pick,.nlp3d-cell').forEach(function(node){
+				if(node.getAttribute('aria-disabled')==='true'){return}
+				var cs=window.getComputedStyle(node);
+				if(cs.display==='none'||cs.visibility==='hidden'){return}
+				var r=node.getBoundingClientRect();
+				if(r.width<1||r.height<1){return}
+				var cx=r.left+(r.width/2),cy=r.top+(r.height/2);
+				var dx=p.x-cx,dy=p.y-cy;
+				var distance=Math.sqrt(dx*dx+dy*dy);
+				var limit=Math.max(baseLimit,Math.min(104,Math.max(r.width,r.height)*1.35));
+				if(distance<=limit&&distance<bestDistance){best=node;bestDistance=distance}
+			});
+			if(!best||!best.dataset||!best.dataset.unit){return false}
+			var unit=unitById(best.dataset.unit);
+			if(!unit||unit.status==='sold'){return false}
+			activateStagePick(best,unit,source||'model-near-pick');
+			return true;
+		}
 		function activateStagePick(button,u,source){
 			if(!button||!u||u.status==='sold'||button.getAttribute('aria-disabled')==='true'){
 				if(button){button.classList.remove('is-open')}
@@ -3632,6 +3656,14 @@ if ( ! function_exists( 'nadlan_p3d_inline_js' ) ) {
 		if(modelViewer){
 			modelViewer.addEventListener('load',function(){root.classList.add('has-model-viewer-loaded');root.classList.remove('has-model-viewer-error');if(modelError){modelError.hidden=true}syncModelViewerCamera();track('model_viewer_load',{model:true})});
 			modelViewer.addEventListener('error',function(){root.classList.add('has-model-viewer-error');if(modelError){modelError.hidden=false}track('model_viewer_error',{model:true})});
+			modelViewer.addEventListener('click',function(e){
+				if(Date.now()<suppressUnitClickUntil){return}
+				if(e.target&&e.target.closest&&e.target.closest('.nlp3d-mv-hotspot')){return}
+				if(selectNearestModelPickFromPoint(eventPoint(e),'model-surface-tap')){
+					e.preventDefault();
+					e.stopPropagation();
+				}
+			});
 		}
 		function eventPoint(e){
 			var t=e.touches&&e.touches[0]?e.touches[0]:(e.changedTouches&&e.changedTouches[0]?e.changedTouches[0]:e);
@@ -3731,6 +3763,7 @@ if ( ! function_exists( 'nadlan_p3d_inline_js' ) ) {
 			var now=Date.now();
 			if(moved>=8){suppressUnitClickUntil=now+450}
 			if(moved<8&&tappedUnit){selectUnit(tappedUnit,'stage-pick-tap');return}
+			if(moved<8&&selectNearestModelPickFromPoint(p,'stage-near-pick')){lastTapAt=now;return}
 			if(moved<8&&now-lastTapAt<320){
 				setZoom(currentZoom>1.05?1:1.22);
 				track('model_double_tap_zoom',{zoom:Math.round(currentZoom*100)/100});
@@ -3861,7 +3894,7 @@ add_action(
 			return;
 		}
 
-		wp_register_style( 'nadlan-p3d', '', array(), '1.69.4' );
+		wp_register_style( 'nadlan-p3d', '', array(), '1.69.5' );
 		wp_enqueue_style( 'nadlan-p3d' );
 		wp_add_inline_style( 'nadlan-p3d', nadlan_p3d_lovable_showroom_v1690_css() );
 
@@ -3872,7 +3905,7 @@ add_action(
 			wp_enqueue_script( 'nadlan-model-viewer' );
 		}
 
-		wp_register_script( 'nadlan-p3d', '', array(), '1.69.4', true );
+		wp_register_script( 'nadlan-p3d', '', array(), '1.69.5', true );
 		wp_enqueue_script( 'nadlan-p3d' );
 		wp_add_inline_script( 'nadlan-p3d', nadlan_p3d_inline_js( esc_url_raw( rest_url( 'nadlan/v1/lead' ) ) ) );
 	}
@@ -4269,6 +4302,7 @@ add_filter(
 			'model_viewer_lazy' => true,
 			'model_viewer_hotspots' => true,
 			'model_viewer_hotspots_hidden_when_overlay_picks_v1694' => true,
+			'model_surface_tap_select_v1695' => true,
 			'product_selector_v1641' => true,
 			'status_colored_unit_picks' => true,
 			'recommended_unit_pulse' => true,

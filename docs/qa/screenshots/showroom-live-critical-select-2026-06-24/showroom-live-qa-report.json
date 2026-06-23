@@ -1,0 +1,566 @@
+{
+  "createdAt": "2026-06-23T21:43:40.146Z",
+  "unitId": "unit-08-sw",
+  "url": "https://nad-lan.co.il/projects/rainbow-tel-aviv/?codex_qa=critical_select_1694",
+  "desktop": {
+    "url": "https://nad-lan.co.il/projects/rainbow-tel-aviv/?codex_qa=critical_select_1694&viewport=desktop-1440&t=1782251020304",
+    "title": "דירות למכירה ב-Rainbow תל אביב | מחירים, תוכניות ובחירת דירה בשדה דב | נדלן חכם",
+    "viewport": {
+      "width": 1440,
+      "height": 1000
+    },
+    "scrollWidth": 1440,
+    "bodyScrollWidth": 1440,
+    "hasRoot": true,
+    "rootClasses": "nlp3d nlp3d-premium alignfull is-model-first is-dual-showroom has-model-picker has-model-viewer-loaded has-stage-selection",
+    "rootActiveUnit": "unit-08-sw",
+    "modelViewerCount": 1,
+    "modelPickCount": 6,
+    "activePicks": [
+      "unit-08-sw"
+    ],
+    "visibleStagePins": [
+      "unit-08-sw",
+      "unit-16-w",
+      "unit-24-nw",
+      "unit-31-se",
+      "unit-38-penthouse",
+      "unit-boutique-07"
+    ],
+    "stagePins": [
+      {
+        "unit": "unit-08-sw",
+        "visible": true,
+        "active": true,
+        "rect": {
+          "x": 751,
+          "y": 469,
+          "right": 813,
+          "bottom": 513,
+          "width": 62,
+          "height": 44
+        }
+      },
+      {
+        "unit": "unit-16-w",
+        "visible": true,
+        "active": false,
+        "rect": {
+          "x": 763,
+          "y": 402,
+          "right": 833,
+          "bottom": 446,
+          "width": 70,
+          "height": 44
+        }
+      },
+      {
+        "unit": "unit-24-nw",
+        "visible": true,
+        "active": false,
+        "rect": {
+          "x": 783,
+          "y": 334,
+          "right": 853,
+          "bottom": 378,
+          "width": 70,
+          "height": 44
+        }
+      },
+      {
+        "unit": "unit-31-se",
+        "visible": true,
+        "active": false,
+        "rect": {
+          "x": 993,
+          "y": 275,
+          "right": 1063,
+          "bottom": 319,
+          "width": 70,
+          "height": 44
+        }
+      },
+      {
+        "unit": "unit-38-penthouse",
+        "visible": true,
+        "active": false,
+        "rect": {
+          "x": 993,
+          "y": 216,
+          "right": 1063,
+          "bottom": 260,
+          "width": 70,
+          "height": 44
+        }
+      },
+      {
+        "unit": "unit-boutique-07",
+        "visible": true,
+        "active": false,
+        "rect": {
+          "x": 634,
+          "y": 478,
+          "right": 696,
+          "bottom": 522,
+          "width": 62,
+          "height": 44
+        }
+      }
+    ],
+    "visibleModelHotspots": [],
+    "modelHotspots": [
+      {
+        "unit": "unit-08-sw",
+        "visible": false,
+        "rect": {
+          "x": 0,
+          "y": 0,
+          "right": 0,
+          "bottom": 0,
+          "width": 0,
+          "height": 0
+        }
+      },
+      {
+        "unit": "unit-16-w",
+        "visible": false,
+        "rect": {
+          "x": 0,
+          "y": 0,
+          "right": 0,
+          "bottom": 0,
+          "width": 0,
+          "height": 0
+        }
+      },
+      {
+        "unit": "unit-24-nw",
+        "visible": false,
+        "rect": {
+          "x": 0,
+          "y": 0,
+          "right": 0,
+          "bottom": 0,
+          "width": 0,
+          "height": 0
+        }
+      },
+      {
+        "unit": "unit-31-se",
+        "visible": false,
+        "rect": {
+          "x": 0,
+          "y": 0,
+          "right": 0,
+          "bottom": 0,
+          "width": 0,
+          "height": 0
+        }
+      },
+      {
+        "unit": "unit-38-penthouse",
+        "visible": false,
+        "rect": {
+          "x": 0,
+          "y": 0,
+          "right": 0,
+          "bottom": 0,
+          "width": 0,
+          "height": 0
+        }
+      },
+      {
+        "unit": "unit-boutique-07",
+        "visible": false,
+        "rect": {
+          "x": 0,
+          "y": 0,
+          "right": 0,
+          "bottom": 0,
+          "width": 0,
+          "height": 0
+        }
+      }
+    ],
+    "floatingCtaVisible": false,
+    "cameraOrbit": "45deg 66deg auto",
+    "cameraTarget": "0 31 6",
+    "dockText": "בחירה נוכחית דירת 3 חדרים, קומה 8 3 חדרים · 82 מ\"ר · מבט לחצר ולים · זמינה לפנייה סיבוב 360 התקדמות",
+    "stageText": "פתחו את פרטי הדירה × הדירה שנבחרה דירת 3 חדרים, קומה 8 3 חדרים · 82 מ\"ר · מבט לחצר ולים · זמינות להדגמה בלבד עד לקבלת מלאי רשמי מהיזם זמינה לפנייה מבט לחצר ולים כולל אומדן אומדן ₪6,232,000 זמינה לפנייה מבט לחצר ולים האומדן עוזר להשוואה ראשונית בלבד. המחיר, הזמינות ותנאי העסקה יאומתו מול היזם לפני כל התקדמות. פרטים מלאים מבט מהדירה תוכניות וסיור דברו עם היזם פרטים מבט מהדירה תוכניות שמש סביבה סיור",
+    "detailTitle": "דירת 3 חדרים, קומה 8",
+    "publicLeakSample": null,
+    "offenders": [],
+    "smallTapTargets": []
+  },
+  "mobile": {
+    "url": "https://nad-lan.co.il/projects/rainbow-tel-aviv/?codex_qa=critical_select_1694&viewport=mobile-390&t=1782251034072",
+    "title": "דירות למכירה ב-Rainbow תל אביב | מחירים, תוכניות ובחירת דירה בשדה דב | נדלן חכם",
+    "viewport": {
+      "width": 390,
+      "height": 900
+    },
+    "scrollWidth": 390,
+    "bodyScrollWidth": 390,
+    "hasRoot": true,
+    "rootClasses": "nlp3d nlp3d-premium alignfull is-model-first is-dual-showroom has-model-picker has-stage-selection has-model-viewer-loaded",
+    "rootActiveUnit": "unit-08-sw",
+    "modelViewerCount": 1,
+    "modelPickCount": 6,
+    "activePicks": [
+      "unit-08-sw"
+    ],
+    "visibleStagePins": [
+      "unit-08-sw",
+      "unit-16-w",
+      "unit-24-nw",
+      "unit-31-se",
+      "unit-38-penthouse",
+      "unit-boutique-07"
+    ],
+    "stagePins": [
+      {
+        "unit": "unit-08-sw",
+        "visible": true,
+        "active": true,
+        "rect": {
+          "x": 132,
+          "y": 190,
+          "right": 187,
+          "bottom": 234,
+          "width": 55,
+          "height": 44
+        }
+      },
+      {
+        "unit": "unit-16-w",
+        "visible": true,
+        "active": false,
+        "rect": {
+          "x": 136,
+          "y": 164,
+          "right": 198,
+          "bottom": 208,
+          "width": 62,
+          "height": 44
+        }
+      },
+      {
+        "unit": "unit-24-nw",
+        "visible": true,
+        "active": false,
+        "rect": {
+          "x": 145,
+          "y": 138,
+          "right": 207,
+          "bottom": 182,
+          "width": 62,
+          "height": 44
+        }
+      },
+      {
+        "unit": "unit-31-se",
+        "visible": true,
+        "active": false,
+        "rect": {
+          "x": 239,
+          "y": 115,
+          "right": 301,
+          "bottom": 159,
+          "width": 62,
+          "height": 44
+        }
+      },
+      {
+        "unit": "unit-38-penthouse",
+        "visible": true,
+        "active": false,
+        "rect": {
+          "x": 239,
+          "y": 93,
+          "right": 301,
+          "bottom": 137,
+          "width": 62,
+          "height": 44
+        }
+      },
+      {
+        "unit": "unit-boutique-07",
+        "visible": true,
+        "active": false,
+        "rect": {
+          "x": 80,
+          "y": 193,
+          "right": 135,
+          "bottom": 237,
+          "width": 55,
+          "height": 44
+        }
+      }
+    ],
+    "visibleModelHotspots": [],
+    "modelHotspots": [
+      {
+        "unit": "unit-08-sw",
+        "visible": false,
+        "rect": {
+          "x": 0,
+          "y": 0,
+          "right": 0,
+          "bottom": 0,
+          "width": 0,
+          "height": 0
+        }
+      },
+      {
+        "unit": "unit-16-w",
+        "visible": false,
+        "rect": {
+          "x": 0,
+          "y": 0,
+          "right": 0,
+          "bottom": 0,
+          "width": 0,
+          "height": 0
+        }
+      },
+      {
+        "unit": "unit-24-nw",
+        "visible": false,
+        "rect": {
+          "x": 0,
+          "y": 0,
+          "right": 0,
+          "bottom": 0,
+          "width": 0,
+          "height": 0
+        }
+      },
+      {
+        "unit": "unit-31-se",
+        "visible": false,
+        "rect": {
+          "x": 0,
+          "y": 0,
+          "right": 0,
+          "bottom": 0,
+          "width": 0,
+          "height": 0
+        }
+      },
+      {
+        "unit": "unit-38-penthouse",
+        "visible": false,
+        "rect": {
+          "x": 0,
+          "y": 0,
+          "right": 0,
+          "bottom": 0,
+          "width": 0,
+          "height": 0
+        }
+      },
+      {
+        "unit": "unit-boutique-07",
+        "visible": false,
+        "rect": {
+          "x": 0,
+          "y": 0,
+          "right": 0,
+          "bottom": 0,
+          "width": 0,
+          "height": 0
+        }
+      }
+    ],
+    "floatingCtaVisible": false,
+    "cameraOrbit": "45deg 66deg auto",
+    "cameraTarget": "0 31 6",
+    "dockText": "בחירה נוכחית דירת 3 חדרים, קומה 8 3 חדרים · 82 מ\"ר · מבט לחצר ולים · זמינה לפנייה סיבוב 360 התקדמות",
+    "stageText": "פתחו את פרטי הדירה × הדירה שנבחרה דירת 3 חדרים, קומה 8 3 חדרים · 82 מ\"ר · מבט לחצר ולים · זמינות להדגמה בלבד עד לקבלת מלאי רשמי מהיזם זמינה לפנייה מבט לחצר ולים כולל אומדן אומדן ₪6,232,000 זמינה לפנייה מבט לחצר ולים האומדן עוזר להשוואה ראשונית בלבד. המחיר, הזמינות ותנאי העסקה יאומתו מול היזם לפני כל התקדמות. פרטים מלאים מבט מהדירה תוכניות וסיור דברו עם היזם פרטים מבט מהדירה תוכניות שמש סביבה סיור",
+    "detailTitle": "דירת 3 חדרים, קומה 8",
+    "publicLeakSample": null,
+    "offenders": [
+      {
+        "tag": "DIV",
+        "cls": "nlpremier",
+        "x": 107,
+        "right": 395,
+        "width": 288,
+        "visible": true,
+        "text": "✓ פרופיל מאומת · Premier"
+      },
+      {
+        "tag": "FIGURE",
+        "cls": "nlp3d-hero-media",
+        "x": 107,
+        "right": 395,
+        "width": 288,
+        "visible": true,
+        "text": "Rainbow Tel Aviv – ריינבו תל אביבמודל תלת ממדי ובחירת דירה זמינים בעמוד"
+      },
+      {
+        "tag": "IMG",
+        "cls": "",
+        "x": 107,
+        "right": 395,
+        "width": 288,
+        "visible": true,
+        "text": ""
+      },
+      {
+        "tag": "FIGCAPTION",
+        "cls": "",
+        "x": 107,
+        "right": 395,
+        "width": 288,
+        "visible": true,
+        "text": "Rainbow Tel Aviv – ריינבו תל אביבמודל תלת ממדי ובחירת דירה זמינים בעמוד"
+      },
+      {
+        "tag": "STRONG",
+        "cls": "",
+        "x": 143,
+        "right": 395,
+        "width": 252,
+        "visible": true,
+        "text": "Rainbow Tel Aviv – ריינבו תל אביב"
+      },
+      {
+        "tag": "SPAN",
+        "cls": "",
+        "x": 109,
+        "right": 395,
+        "width": 286,
+        "visible": true,
+        "text": "מודל תלת ממדי ובחירת דירה זמינים בעמוד"
+      },
+      {
+        "tag": "SECTION",
+        "cls": "nadlan-guide nlp3d-intro",
+        "x": 107,
+        "right": 395,
+        "width": 288,
+        "visible": true,
+        "text": "סיור פרויקט למשקיעים ולרוכשים Rainbow Tel Aviv – ריינבו תל אביב: בוחרים דירה מתו"
+      },
+      {
+        "tag": "DIV",
+        "cls": "wrap",
+        "x": 107,
+        "right": 395,
+        "width": 288,
+        "visible": true,
+        "text": "סיור פרויקט למשקיעים ולרוכשים Rainbow Tel Aviv – ריינבו תל אביב: בוחרים דירה מתו"
+      },
+      {
+        "tag": "SPAN",
+        "cls": "eyebrow",
+        "x": 187,
+        "right": 395,
+        "width": 207,
+        "visible": true,
+        "text": "סיור פרויקט למשקיעים ולרוכשים"
+      },
+      {
+        "tag": "H2",
+        "cls": "",
+        "x": 107,
+        "right": 395,
+        "width": 288,
+        "visible": true,
+        "text": "Rainbow Tel Aviv – ריינבו תל אביב: בוחרים דירה מתוך הפרויקט"
+      },
+      {
+        "tag": "P",
+        "cls": "",
+        "x": 107,
+        "right": 395,
+        "width": 288,
+        "visible": true,
+        "text": "Rainbow Tel Aviv – ריינבו תל אביב מוצג כאן כסיור פרויקט חי באזור רובע שדה דב, אז"
+      },
+      {
+        "tag": "P",
+        "cls": "nlp3d-intro-cta",
+        "x": 107,
+        "right": 395,
+        "width": 288,
+        "visible": true,
+        "text": "בחרו דירה עכשיו"
+      },
+      {
+        "tag": "A",
+        "cls": "btn",
+        "x": 231,
+        "right": 395,
+        "width": 164,
+        "visible": true,
+        "text": "בחרו דירה עכשיו"
+      },
+      {
+        "tag": "SECTION",
+        "cls": "nlp3d nlp3d-premium alignfull is-model-first is-dual-showroom has-model-picker has-stage-selection has-model-viewer-load",
+        "x": 39,
+        "right": 395,
+        "width": 356,
+        "visible": true,
+        "text": "Rainbow Tel Aviv – ריינבו תל אביב · רובע שדה דב, אזור אשכול, תל אביב-יפו סיור בפ"
+      },
+      {
+        "tag": "DIV",
+        "cls": "nlp3d-shell",
+        "x": 40,
+        "right": 394,
+        "width": 354,
+        "visible": true,
+        "text": "Rainbow Tel Aviv – ריינבו תל אביב · רובע שדה דב, אזור אשכול, תל אביב-יפו סיור בפ"
+      },
+      {
+        "tag": "DIV",
+        "cls": "nlp3d-showcase",
+        "x": 40,
+        "right": 394,
+        "width": 354,
+        "visible": true,
+        "text": "מעמוד פרויקט לעמדת בחירה כל החלטה מתחילה ממבט ברור יותר על הדירה העמוד מחבר בין "
+      },
+      {
+        "tag": "DIV",
+        "cls": "nlpf",
+        "x": 37,
+        "right": 395,
+        "width": 358,
+        "visible": true,
+        "text": "בנייה חדשה מאגר התחדשות עירונית · data.gov.il Rainbow Tel Aviv – ריינבו תל אביב "
+      },
+      {
+        "tag": "DIV",
+        "cls": "nlpf-banner",
+        "x": 38,
+        "right": 394,
+        "width": 356,
+        "visible": true,
+        "text": ""
+      },
+      {
+        "tag": "DIV",
+        "cls": "nlpf-head",
+        "x": 38,
+        "right": 394,
+        "width": 356,
+        "visible": true,
+        "text": "בנייה חדשה מאגר התחדשות עירונית · data.gov.il Rainbow Tel Aviv – ריינבו תל אביב "
+      },
+      {
+        "tag": "NAV",
+        "cls": "nlbc",
+        "x": 107,
+        "right": 395,
+        "width": 288,
+        "visible": true,
+        "text": "בית › פרויקטים › תל אביב-יפו › Rainbow Tel Aviv – ריינבו תל אביב"
+      }
+    ],
+    "smallTapTargets": []
+  }
+}
