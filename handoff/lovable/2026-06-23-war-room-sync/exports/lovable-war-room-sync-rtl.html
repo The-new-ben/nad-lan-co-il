@@ -1,0 +1,1294 @@
+﻿<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>NadLan Lovable War Room Sync - 2026-06-23</title>
+<style>
+:root { color-scheme: light; --ink:#17211f; --muted:#66736f; --line:#d9e1de; --paper:#fbfcfb; --brand:#0e6251; --soft:#eef6f3; }
+* { box-sizing:border-box; }
+body { margin:0; font-family: Arial, "Noto Sans Hebrew", sans-serif; background:var(--paper); color:var(--ink); line-height:1.55; }
+header { padding:32px clamp(18px,4vw,56px); background:#ffffff; border-bottom:1px solid var(--line); }
+h1 { margin:0 0 8px; font-size:clamp(26px,4vw,44px); letter-spacing:0; }
+p { margin:0 0 10px; color:var(--muted); max-width:980px; }
+.meta { display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:10px; margin-top:20px; max-width:1120px; }
+.meta div { background:var(--soft); border:1px solid var(--line); border-radius:8px; padding:12px; direction:ltr; text-align:left; overflow-wrap:anywhere; }
+nav { position:sticky; top:0; z-index:1; display:flex; gap:8px; overflow:auto; padding:12px clamp(18px,4vw,56px); background:rgba(255,255,255,.94); border-bottom:1px solid var(--line); }
+nav a { flex:0 0 auto; color:var(--brand); text-decoration:none; border:1px solid var(--line); border-radius:999px; padding:7px 12px; font-size:14px; direction:ltr; }
+main { padding:24px clamp(18px,4vw,56px) 56px; }
+.status { display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:14px; margin-bottom:22px; }
+.card { background:#fff; border:1px solid var(--line); border-radius:8px; padding:16px; }
+.card h2 { margin:0 0 10px; font-size:20px; }
+ul { margin:0; padding:0 20px 0 0; }
+.report { background:#fff; border:1px solid var(--line); border-radius:8px; margin:16px 0; padding:18px; }
+.report h2 { margin:0 0 12px; direction:ltr; text-align:left; color:var(--brand); font-size:22px; }
+pre { margin:0; white-space:pre-wrap; overflow-wrap:anywhere; font-family: Arial, "Noto Sans Hebrew", sans-serif; font-size:15px; line-height:1.65; direction:rtl; text-align:right; unicode-bidi:plaintext; }
+@media (max-width:700px) { header { padding-top:22px; } .report { padding:14px; } pre { font-size:14px; } }
+</style>
+</head>
+<body>
+<header>
+<h1>NadLan Lovable War Room Sync</h1>
+<p>Readable owner-facing viewer for the Lovable material imported on 2026-06-23. This page shows exactly what was imported, not a finished final strategy package.</p>
+<div class="meta">
+<div><strong>Source repo</strong><br>https://github.com/The-new-ben/nadlan-strategy-hub.git</div>
+<div><strong>Source branch</strong><br>main</div>
+<div><strong>Source commit</strong><br>28f8e15bc3a3ef9f328e9b3552d05b0eef71c578</div>
+<div><strong>Destination</strong><br>handoff/lovable/2026-06-23-war-room-sync/</div>
+</div>
+</header>
+<nav><a href='#plan.md'>plan.md</a><a href='#00-strategy-brief.md'>00-strategy-brief.md</a><a href='#01-showroom-redesign.md'>01-showroom-redesign.md</a><a href='#report-3a-real-semrush.md'>report-3a-real-semrush.md</a><a href='#repo-inventory.md'>repo-inventory.md</a><a href='#rest-api-map.md'>rest-api-map.md</a><a href='#advisor-notes.md'>advisor-notes.md</a></nav>
+<main>
+<div class="status">
+<section class="card"><h2>Imported</h2><ul><li>plan.md</li><li>00-strategy-brief.md</li><li>01-showroom-redesign.md</li><li>advisor-notes.md</li><li>repo-inventory.md</li><li>report-3a-real-semrush.md</li><li>rest-api-map.md</li><li>lovable-project.json</li></ul></section>
+<section class="card"><h2>Missing From Lovable</h2><ul><li>screenshots / mockups</li><li>HTML, PDF, DOCX exports from Lovable</li><li>CSV/XLSX keyword files</li><li>02-design-system through 07-seo-money-pages</li></ul></section>
+</div>
+<section class='report' id='plan.md'><h2>plan.md</h2><pre>## Goal
+
+Stay in advisor mode. No code in this Lovable project, no writes to WordPress. Produce a complete, opinionated redesign + business brief for `nad-lan.co.il` — concept, showroom UX (Dimri Yama + Rainbow Tel Aviv + a 3rd pilot), monetization (advertiser-funded), foreign-buyer engagement, lead handling, and SEO money pages — grounded in:
+
+- repo code (`plugins/nadlan-config`, `assets/projects/*`, `assets/js/nadlan-project-showroom.js`)
+- live site shape (already screenshotted: home, `/project/dimri-yama/`, `/project/rainbow-tel-aviv/`)
+- existing reports (`report-3a-real-semrush.md`, `rest-api-map.md`, `repo-inventory.md`, `advisor-notes.md`)
+- competitor benchmarks (Zillow.com, OnTheMarket, JamesEdition, Daft.ie, Madlan, Yad2, Homeless)
+
+Everything ships as markdown under `.lovable/reports/` — your team takes it to the WordPress repo as the implementation source-of-truth.
+
+## Deliverables (8 new reports)
+
+```text
+.lovable/reports/
+├─ 00-strategy-brief.md            # one-pager: thesis, target users, what we are vs what we&#39;re not
+├─ 01-showroom-redesign.md         # the core piece: 3D + units + interior + view, mobile-first
+├─ 02-design-system.md             # brand, type, color, icons, favicon set, RTL/LTR, dark/light
+├─ 03-content-architecture.md      # IA, URL map, hierarchy of money pages vs supporting content
+├─ 04-monetization-playbook.md     # contractor packages, placements, offers, auction, pricing
+├─ 05-foreign-buyer-engine.md      # EN/FR/RU/ZH funnels, trust, currency, tax, concierge
+├─ 06-lead-ops.md                  # routing, SLA, scoring, WhatsApp/email, CRM hooks via REST
+└─ 07-seo-money-pages.md           # exact URL templates + on-page recipe per page type
+```
+
+Plus updates to `advisor-notes.md` after each report so context survives across chats.
+
+## 01 — Showroom redesign (the heart of the request)
+
+Three pilots side-by-side: **Dimri Yama, Rainbow Tel Aviv, + a 3rd we pick together** (Dimri Yama already has the richest payload; Rainbow has the real GLB and richest `environment.json`; the 3rd should be a counter-example — e.g. boutique low-rise or urban-renewal — to prove the template generalizes).
+
+### Concept (one line)
+&quot;Pick a floor → pick a unit → step outside the window → step inside the apartment&quot; — in a single page, in under 10 seconds, on a phone with one thumb.
+
+### Critique of current state (from screenshots + JS)
+- Hero card looks premium on desktop, but on mobile the gold/dark glass card stacks awkwardly and CTA hierarchy is unclear.
+- Showroom uses 4 tabs (plan / tour / view / contact) that today only swap a paragraph of placeholder Hebrew copy — no real interactivity wired between unit-grid → 3D model → interior tour → exterior view.
+- `&lt;model-viewer&gt;` is loaded but unit hotspots (`hotspot_position`, `camera_orbit` in `unit-map.json`) aren&#39;t actually driving the camera on click.
+- Lead form sends a rich payload (good) but offers no price, no availability calendar, no FX (₪/$/€), no language toggle, no &quot;save &amp; share&quot; — kills foreign-buyer intent.
+- Two anomalies in `rest-api-map.md` (project-showroom 401, offers 404) silently break server-rendered showroom + offers placement.
+
+### Proposed UX (mobile-first, 4 layers)
+1. **Building layer** — full-bleed `&lt;model-viewer&gt;` with auto-orbit on idle; sticky bottom sheet &quot;בחר דירה&quot; (CTA). Sun simulator and view-from-balcony toggle are icon-pills on the right rail (thumb-reachable).
+2. **Floor layer** — tap building → sheet expands to a vertical floor selector (numbers 1–N) + a tiny isometric facade hint. Each floor shows availability dots (green/amber/grey) by line (N/S/E/W).
+3. **Unit layer** — tap floor → grid of units on that floor (line &#215; type), each chip shows rooms &#183; sqm &#183; dir &#183; status. Tap = camera orbits to the unit&#39;s hotspot (use the `hotspot_position` / `camera_orbit` already in payload).
+4. **Inside the apartment** — unit detail drawer with 3 tabs: **תכנית** (SVG plan from `drawings.json`), **סיור פנים** (Matterport/Cupix iframe — provided by contractor), **מבט מהדירה** (panorama placeholder, replaced when contractor supplies real renderings). Persistent CTA strip: &quot;אני מעוניין &#183; WhatsApp &#183; שמירה&quot;.
+
+### What the contractor feeds (kit you sell them)
+A single ZIP per project — schema goes in `02-design-system.md` and matches what&#39;s already in `assets/projects/&lt;slug&gt;/`:
+
+- `model.glb` (≤ 20MB, draco-compressed)
+- `poster.webp` (hero)
+- `unit-map.json` (id, floor, line, rooms, sqm, dir, view, hotspot, price, status, plan URL, tour URL, view URL)
+- `drawings.json` (floor plans SVG/PDF)
+- `environment.json` (district context + neighbor projects)
+- `view-layer-config.json` (sun, time of day, season)
+- `material-intake-template.json` (what we still need from them)
+
+Until they feed real assets, we keep clearly labeled prototype data — the payloads already enforce a `source_note` / `availability` disclaimer field. We honor that. No fake prices.
+
+### Performance budgets
+- GLB ≤ 20MB, served from CDN, draco + meshopt
+- LCP ≤ 2.5s on 4G mid-range Android, INP ≤ 200ms
+- `&lt;model-viewer&gt;` `reveal=&quot;interaction&quot;` + low-res poster first
+- Lazy-load Matterport iframe only after user taps &quot;סיור פנים&quot;
+
+## 02 — Design system
+
+- **Type**: pair a Hebrew display (Heebo / Frank Ruhl Libre) with a tighter Latin display for EN (e.g. S&#246;hne / GT America) — current site is too uniform.
+- **Color**: deepen the navy/gold scheme into a real token set (`--surface-glass`, `--surface-deep`, `--accent-gold`, `--accent-gold-quiet`, `--status-available/reserved/sold`). Status colors are the missing primitive.
+- **Icons**: custom 24px set for floor / unit / view / sun / WhatsApp / save / share / FX — current pages use generic Unicode.
+- **Favicon set** + `og:image` recipe per page type (project, listing, professional, area-info) — today `&lt;title&gt;` and OG are inherited from theme defaults on many pages (confirmed in earlier scan).
+- **RTL/LTR**: per-language locale, not per-element flipping; mirrored icons for direction-sensitive glyphs.
+
+## 03 — Content architecture (URL map)
+
+Hierarchy answers your &quot;money pages first, listings/professionals down&quot;:
+
+```text
+/                                    home — money-keyword hub
+/projects/                           new-projects index (the showroom feed)
+/projects/&lt;slug&gt;/                    showroom (Dimri Yama, Rainbow, …)
+/for-sale/&lt;city&gt;/                    P0 money page — mirrors madlan template
+/for-rent/&lt;city&gt;/                    P0 — lowest KD per Report 3A
+/area-info/&lt;hood&gt;/                   compounding-authority pages (neighborhood data)
+/new-projects/&lt;city&gt;/                KD-0 across the board per Report 3A
+/guides/&lt;topic&gt;/                     editorial money articles (תמא 38, מחיר למשתכן tracker, …)
+/professionals/&lt;profession&gt;/&lt;city&gt;/  pros directory — kept, demoted in nav
+/listings/&lt;id&gt;/                      individual listings — kept, deep, not surfaced in main nav
+```
+
+The home nav surfaces money pages first (Projects, For-Sale by City, New Projects, Area Info, Guides) and pushes Professionals + Listings into a secondary menu.
+
+## 04 — Monetization playbook (so contractors pay you)
+
+Three SKUs, all built on REST endpoints that already exist (`offers`, `placement-auction`, `featured-upsell`, `advertiser-orders`, `tiers`, `greeninvoice-recurring`):
+
+| Tier        | Price/mo (proposed) | What contractor gets |
+|-------------|---------------------|------------------------|
+| **Verified** | ₪ — (free)         | Listed in `/projects/`, basic card, lead capture |
+| **Premium**  | ₪ 4–8K            | Full 3D showroom, sun sim, view layer, top-of-city placement, English page, WhatsApp routing |
+| **Lighthouse** | ₪ 15–25K        | Premium + homepage hero rotation, foreign-buyer concierge package, retargeting pixel, monthly analytics PDF |
+
+Plus a **placement auction** for &quot;פרויקטים חדשים &lt;city&gt;&quot; KD-0 pages (Report 3A) — contractors bid for one of 3 hero slots per city; uses the existing `placement-auction` endpoint.
+
+## 05 — Foreign-buyer engine
+
+This is currently absent. Build:
+
+- `/en/`, `/fr/`, `/ru/`, `/zh/` mirrors of money pages (start with `/en/projects/&lt;slug&gt;/`).
+- FX widget (₪ → $ / € / &#163; / &#165;) inline on every price line — disclaimer the rate is indicative.
+- Tax/legal explainer per persona (Aliyah buyer, non-resident investor, returning Israeli) — guide pages double as money-page anchors.
+- Concierge intake: name, country, budget USD, intent (own/invest/Aliyah), timeline — routes to a human via existing `concierge-lead` endpoint with a `foreign_buyer=true` flag.
+- Trust assets: video walkthroughs, contractor verification badge (&quot;Premier &#183; פרופיל מאומת&quot; badge already on Rainbow — extend system-wide).
+
+## 06 — Lead ops
+
+- Single payload schema across showroom, generic CTA, WhatsApp, concierge (already roughly aligned in `nadlan-project-showroom.js` — formalize it).
+- Routing rules: `unit + project + intent → owner` via `owner-config-rest.php`; foreign-buyer → concierge desk; ambiguous → round-robin to verified pros in city.
+- SLA: 24h auto-reply with reference number (already in JS), 4h human response on Premium+.
+- Scoring: budget &#215; timeline &#215; source → hot/warm/cold; surface in `admin-control/cards`.
+- Drip + WhatsApp re-engagement using existing `lead-drip`, `lead-nurture`, `wa-lead`.
+
+## 07 — SEO money pages (per Report 3A)
+
+Concrete on-page recipe per template (title pattern, H1, intro block, FAQ schema, internal links, ad-slot placement, JSON-LD type). Sequenced by KD:
+
+1. Rent-by-city (KD ≤ 22, ~20,920 vol/mo addressable)
+2. New-projects-by-city (KD 0, lower vol but $2–5 CPC and direct contractor-monetization fit)
+3. Area-info per neighborhood (compounding authority play)
+4. Guides (תמא 38, מחיר למשתכן tracker, פינוי בינוי)
+5. Sale-by-city (KD 50, last — needs authority earned from 1–4)
+
+## Anomalies to flag for the WP team (not fixed by us)
+
+1. `GET /nadlan/v1/project-showroom/&lt;id&gt;` → 401 unauth. Either intentional gate or regression — confirm.
+2. `GET /nadlan/v1/offers` → 404 despite registration in `inc/offers.php:113`. Likely missing `require_once` or feature flag short-circuit.
+3. `plugin-dist/` vs `plugins/nadlan-config/` divergence — confirm which is deployed.
+4. `nadlan-project-showroom.js` doesn&#39;t drive `&lt;model-viewer&gt;` camera from `hotspot_position` / `camera_orbit` — wiring exists in data, missing in JS.
+
+## What I need from you to start
+
+Pick the 3rd pilot project (Dimri Yama and Rainbow Tel Aviv are locked) so report 01 has three real worked examples. Options I see in the repo / live site:
+
+- a boutique low-rise (different mass, proves template scales down)
+- an urban-renewal / תמא 38 project (different buyer persona)
+- a peripheral-city large project (different price tier, foreign-investor angle)
+
+Tell me which one (or name another), and I&#39;ll draft `00-strategy-brief.md` + `01-showroom-redesign.md` first, then the rest in order.
+
+## Out of scope (still)
+
+No React build here, no Lovable Cloud, no WordPress writes, no app-password use, no calls to billing/Woo. Pure advisor output as markdown reports.
+</pre></section>
+<section class='report' id='00-strategy-brief.md'><h2>00-strategy-brief.md</h2><pre># 00 — Strategy brief
+
+One page. Read this before anything else.
+
+## Thesis
+
+NadLan is **not** another Israeli listings board. Yad2 and Madlan own that game on brand search (yad2 = 36% of its traffic from brand query &quot;יד 2&quot;; &quot;מדלן&quot; alone = 74,000/mo). We will not out-brand them in 24 months.
+
+What is wide open, today, with real Semrush numbers (Report 3A):
+- **`פרויקטים חדשים &lt;city&gt;` — KD 0 across every city, $2–5 CPC.** Direct contractor-monetization fit.
+- **`דירות להשכרה &lt;city&gt;` — KD ≤ 22, ~21k vol/mo aggregate.** Compounding authority play.
+- **`area-info/&lt;hood&gt;`** — the Madlan template, copy-able verbatim, KD low.
+- **Foreign buyers** — nobody serves them well in Hebrew RE in Israel. Aliyah, French, US, Chinese capital all underserved.
+
+**Our wedge:** the best new-projects experience in Israel (3D showroom, foreign-buyer-ready, contractor-funded), wrapped in money-keyword SEO that compounds.
+
+## Who we serve (in priority order)
+
+1. **Contractors / developers** — they pay. The product is built to make them want to pay.
+2. **Foreign buyers** — Aliyah, investors, returning Israelis. Highest LTV per lead.
+3. **Local serious buyers** — primary market (new projects) first, secondary later.
+4. **Renters** — entry-point traffic via the lowest-KD city pages. Conversion bridge: &quot;rent → buy in 18mo&quot;.
+5. **Real-estate professionals** — kept, demoted in nav, monetized via tiers + featured-upsell.
+
+## What we are
+
+- A **new-projects showroom platform** with the best 3D unit picker in Israel.
+- A **money-page SEO engine** — programmatic city + neighborhood pages built on real data.
+- A **foreign-buyer concierge** — multilingual funnels, FX, tax explainers, verified contractors.
+- An **advertiser marketplace** for contractors — tiers, placement auction, lead routing, billing already wired (`offers`, `placement-auction`, `tiers`, `greeninvoice-recurring`).
+
+## What we are not
+
+- Not a free Yad2 clone. We don&#39;t compete on listings volume.
+- Not a brokers-only directory. Pros are a feature, not the product.
+- Not a &quot;beautiful AI landing page&quot;. Every pixel either ranks, converts, or charges.
+- Not English-translated Hebrew. Foreign-buyer pages are written for that persona, not localized.
+
+## North-star metrics
+
+- **Showroom lead → contractor handoff rate** (Premium tier success metric)
+- **City money-page MRR** (placement-auction ARPU)
+- **Foreign-buyer concierge conversion** (booked calls / qualified intakes)
+- **`/projects/&lt;slug&gt;/` LCP on 4G mid-range Android** (≤ 2.5s — the demo only sells if it loads)
+
+## What ships before we tell contractors to pay
+
+Three pilot showrooms, fully wired:
+
+1. **Dimri Yama** (`/project/dimri-yama/`) — luxury beachfront tower, richest existing payload.
+2. **Rainbow Tel Aviv** (`/project/rainbow-tel-aviv/`) — has the real GLB and richest environment data; &quot;Premier verified&quot; reference.
+3. **Urban-renewal pilot** (TBD slug, תמא 38 / פינוי-בינוי) — proves the template scales down and serves a different buyer persona (existing-residents + investors, not luxury).
+
+Each pilot must demonstrate: floor pick → unit pick → exterior view → interior tour → lead, on a phone, in under 10 seconds.
+
+## What we sell to the first 10 contractors
+
+A package, not a website. See `04-monetization-playbook.md`:
+- Verified (free) — listing + lead capture.
+- **Premium (₪ 4–8k/mo)** — full 3D showroom, English page, WhatsApp routing, city placement.
+- **Lighthouse (₪ 15–25k/mo)** — Premium + homepage hero + foreign-buyer concierge + monthly analytics.
+
+Plus a per-city **placement auction** for the KD-0 `פרויקטים חדשים &lt;city&gt;` hero slot.
+
+## Sequencing
+
+1. Showroom redesign shipped on the 3 pilots (report 01).
+2. Design system tokenized + favicon/OG done (report 02).
+3. URL map + nav reordered to surface money pages (report 03).
+4. Contractor pitch deck built from report 04 — sell Premium to 3 contractors.
+5. Foreign-buyer EN page on Rainbow as proof (report 05).
+6. Lead-ops formalized + SLA enforced (report 06).
+7. Programmatic city money-pages rolled out per Report 3A sequence (report 07).
+
+Anomalies to clear in parallel (WP team, not us): showroom 401, offers 404, plugin-dist drift, hotspot wiring missing in JS. Listed in `advisor-notes.md`.
+</pre></section>
+<section class='report' id='01-showroom-redesign.md'><h2>01-showroom-redesign.md</h2><pre># 01 — Showroom redesign
+
+The core deliverable. This is what contractors pay for and what foreign buyers come back to.
+
+&gt; Scope: the per-project page (`/project/&lt;slug&gt;/`). Three pilots: **Dimri Yama**, **Rainbow Tel Aviv**, **Urban-Renewal pilot** (TBD slug, תמא 38 / פינוי-בינוי).
+
+---
+
+## 1. Concept (one line)
+
+&gt; Pick a floor → pick a unit → step outside the window → step inside the apartment.
+&gt; One page. One thumb. Under 10 seconds. Phone-first.
+
+Everything below serves that sentence.
+
+---
+
+## 2. Critique of what ships today
+
+From live screenshots of `/project/dimri-yama/` and `/project/rainbow-tel-aviv/` + reading `assets/js/nadlan-project-showroom.js` and the per-project payloads:
+
+| What works                                          | What&#39;s broken                                                                                                               |
+|-----------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------|
+| Hero card is genuinely premium on desktop.          | On mobile the gold/dark glass card stacks awkwardly; primary CTA isn&#39;t visually dominant.                                    |
+| Payload schema is rich — hotspots, orbits, drawings, environment, view-layer all already authored. | `nadlan-project-showroom.js` never reads `hotspot_position` / `camera_orbit` / `&lt;model-viewer&gt;` — the data exists, the JS doesn&#39;t drive it. |
+| Lead payload from JS is excellent (unit + floor + dir + intent + market_note). | Lead has no price band, no calendar, no FX, no language toggle, no &quot;save &amp; share&quot; — kills foreign-buyer intent. |
+| Tabs (plan / tour / view / contact) are the right four. | Tabs only swap a paragraph of Hebrew placeholder copy. Nothing renders.                                                      |
+| `Premier &#183; פרופיל מאומת` badge on Rainbow is a strong trust primitive. | Not extended system-wide; Dimri Yama has no equivalent.                                                                       |
+| Server has `/wp-json/nadlan/v1/project-showroom/&lt;id&gt;`. | Returns **401 unauth** in prod. Either intentional admin-gate or regression (see `advisor-notes.md`).                       |
+| Offers placements coded in `inc/offers.php`.        | `GET /nadlan/v1/offers` returns **404 rest_no_route**. Sponsored slot on the showroom can&#39;t render.                          |
+
+---
+
+## 3. Proposed UX — four layers, mobile-first
+
+All four layers live on one URL, no full-page reloads. Bottom-sheet pattern (Airbnb / Google Maps style).
+
+### Layer 1 — Building
+
+- Full-bleed `&lt;model-viewer src=&quot;model.glb&quot; reveal=&quot;interaction&quot; poster=&quot;poster.webp&quot;&gt;`.
+- Auto-orbit on idle (subtle, ≤ 6&#176;/s, pauses on touch).
+- Right-rail icon pills (thumb-reachable on phone): **☀ סימולציית שמש**, **🌅 מבט מהדירה**, **🗺 מפת סביבה**, **🌐 שפה (HE/EN/FR/RU)**, **₪/$ FX**.
+- Sticky bottom sheet, collapsed state: **&quot;בחר דירה &#183; 23 זמינות&quot;** + a tiny availability bar.
+- Header: project name, district chip, **verified badge** if `tier ≥ premium`.
+
+### Layer 2 — Floor
+
+- Tap the sheet → it expands to ~60vh.
+- Left: vertical floor strip (1 → N). Each row shows availability dots by line: `N &#183; S &#183; E &#183; W` colored green / amber / grey from `unit-map.json` `status`.
+- Right: a small isometric facade hint of that floor, highlighting which lines exist.
+- Selecting a floor smoothly orbits the model to that floor height using `camera_orbit` (compute from `project_3d_floor_height_m` + `project_3d_ground_elevation_m`, both already in `showroom-payload.json`).
+
+### Layer 3 — Unit
+
+- Tap a floor → grid of unit chips for that floor. Each chip:
+  ```
+  ┌─────────────────────────┐
+  │ דירה 16W                │  rooms &#183; sqm &#183; dir
+  │ 4 חד&#39; &#183; 112מ&quot;ר &#183; מערב  │
+  │ 🟢 זמין                 │  status pill
+  └─────────────────────────┘
+  ```
+- Tap a chip → camera orbits to that unit&#39;s `hotspot_position` + `camera_orbit` from `unit-map.json` (one of the missing wires). A pin appears on the facade.
+- The chip-bar collapses to a horizontal scroller above the sheet so the user can flick between units while watching the model.
+
+### Layer 4 — Inside the apartment
+
+- Detail drawer (slides up over the model). 3 tabs:
+  - **תכנית** — render the `plan` SVG from `unit-map.json` (Rainbow already authors these per type).
+  - **סיור פנים** — Matterport / Cupix iframe from `tour_url`. Lazy-loaded on tab click only.
+  - **מבט מהדירה** — panorama or rendered still from `interior_url` / `view_url`. Placeholder labeled &quot;להמחשה — להחלפה בחומר רשמי&quot; while we wait on contractor assets.
+- Persistent CTA strip at the bottom of the drawer:
+  - **`אני מעוניין`** (primary, gold) → opens lead modal pre-filled with unit context.
+  - **`WhatsApp`** (secondary) → `wa.me/?text=…` with unit context, owner number from `owner-config-rest.php`.
+  - **`שמירה`** (icon) → saves to local + posts to `/favorite` if logged in.
+  - **`שיתוף`** (icon) → native share with deep-link `?unit=&lt;id&gt;`.
+
+### Deep links
+
+- `…/project/&lt;slug&gt;/?unit=&lt;id&gt;` opens that unit&#39;s drawer on load.
+- `…/project/&lt;slug&gt;/?floor=&lt;n&gt;` opens floor view.
+- `…/project/&lt;slug&gt;/?lang=en` flips to EN locale (when foreign-buyer engine ships, report 05).
+
+---
+
+## 4. Wiring spec — exactly what `nadlan-project-showroom.js` must do
+
+Today the JS handles unit-button click → text swap. It needs three additions:
+
+```js
+// 1. Hotspot orbit
+unitBtn.addEventListener(&#39;click&#39;, () =&gt; {
+  const u = unitMap[unitBtn.dataset.unitId];
+  modelViewer.cameraOrbit = u.camera_orbit;          // e.g. &quot;24deg 61deg auto&quot;
+  modelViewer.cameraTarget = u.hotspot_position;     // e.g. &quot;-6m 80m 5m&quot;
+  modelViewer.jumpCameraToGoal();
+  renderUnitChip(u);
+});
+
+// 2. Floor → camera height
+floorBtn.addEventListener(&#39;click&#39;, () =&gt; {
+  const f = parseInt(floorBtn.dataset.floor, 10);
+  const y = payload.meta.project_3d_ground_elevation_m
+          + (f - 1) * payload.meta.project_3d_floor_height_m;
+  modelViewer.cameraTarget = `0m ${y}m 0m`;
+  modelViewer.jumpCameraToGoal();
+});
+
+// 3. Lazy tour iframe
+tourTabBtn.addEventListener(&#39;click&#39;, () =&gt; {
+  if (!tourFrame.src) tourFrame.src = activeUnit.tour_url;
+});
+```
+
+That&#39;s the missing 30 lines. Until they land, the showroom is a brochure, not an experience.
+
+---
+
+## 5. Performance budget
+
+| Metric                          | Target            | How                                                                         |
+|---------------------------------|-------------------|-----------------------------------------------------------------------------|
+| LCP (4G, mid-range Android)     | ≤ 2.5s            | Poster image as LCP element; `model-viewer reveal=&quot;interaction&quot;`            |
+| GLB transfer                    | ≤ 20MB, ideally ≤ 8MB | Draco + meshopt compression at export. Rainbow&#39;s current `model.glb` = 832KB (already good). Dimri Yama&#39;s `model-prototype.glb` = 8KB (placeholder, replace). |
+| INP                             | ≤ 200ms           | No JS work on scroll; bottom-sheet animations via CSS transforms only.       |
+| Matterport iframe               | Loaded on tab click | Never in initial doc.                                                       |
+| Total JS shipped on showroom    | ≤ 60KB gzip       | Avoid React on this page; native DOM + `&lt;model-viewer&gt;`.                    |
+
+---
+
+## 6. What the contractor feeds us (sellable kit)
+
+A single ZIP per project. Schema already exists under `assets/projects/&lt;slug&gt;/` — formalize it as a contract:
+
+| File                            | Required | Notes                                                                |
+|---------------------------------|----------|----------------------------------------------------------------------|
+| `model.glb`                     | ✅       | Draco-compressed, ≤ 20MB, Y-up, meters, origin at ground center.     |
+| `poster.webp`                   | ✅       | 1664&#215;1040, hero render, sunset light preferred.                      |
+| `unit-map.json`                 | ✅       | Schema in `assets/projects/rainbow-tel-aviv/unit-map.json` — canonical. Required fields: `id, floor, line, rooms, sqm, dir, view, status, hotspot_position, camera_orbit, plan, tour_url`. |
+| `drawings.json`                 | ✅       | Floor plans per unit type as SVG/PDF URLs.                           |
+| `environment.json`              | ✅       | District context + neighbor projects (sourced + dated).              |
+| `view-layer-config.json`        | ⚪       | Sun/time/season presets. Optional for v1.                            |
+| `material-intake-template.json` | ⚪       | Checklist of what&#39;s still missing — we send back to contractor.      |
+| `interior/&lt;unit-id&gt;/*.jpg`      | ⚪       | Optional renders or 360 panos per unit.                              |
+
+Until they deliver real assets, every prototype field MUST carry its `source_note` + `availability` disclaimer. **No fake prices, ever.** The current payloads already enforce this — keep it.
+
+---
+
+## 7. Pilot-specific notes
+
+### Dimri Yama (`/project/dimri-yama/`)
+- Hero already strong. Replace `model-prototype.glb` (8KB stub) with real GLB before contractor pitch — current 3D layer is non-functional even when the JS wiring lands.
+- Rich `journeys-and-monetization.md` + `multilingual-seo-plan.md` already in `assets/projects/dimri-yama/` — fold into report 04 + 05.
+- Add the `Premier &#183; פרופיל מאומת` badge once the contractor signs Premium.
+
+### Rainbow Tel Aviv (`/project/rainbow-tel-aviv/`)
+- The reference implementation. Real GLB (832KB), real environment.json with sourced citations, real unit-map with 5 unit types.
+- The four icon pills (3D / units / sun sim / view) shown in the hero are mocked into the image. Make them real, interactive, mobile-thumb-reachable.
+- Use this as the foreign-buyer EN proof page (report 05).
+
+### Urban-renewal pilot (slug TBD)
+- Pick from existing CPT inventory in WP — a תמא 38 / פינוי-בינוי project, ideally one with existing tenants (different buyer persona: existing owners + investors).
+- Stripped-down kit: no GLB required for v1 if budget tight — facade SVG + floor SVGs + unit table is enough. The 4-layer UX must degrade gracefully from &quot;no GLB&quot; to &quot;facade image&quot;.
+- Demonstrates: same template, lower asset bar, different funnel (existing-owner authentication via claim flow uses existing `/claim` endpoint).
+
+---
+
+## 8. Sponsored / monetization slots on the showroom
+
+Placed once per page, never interrupting the 3D experience:
+
+| Slot                             | Filled from                                          | Owner control |
+|----------------------------------|------------------------------------------------------|---------------|
+| Hero badge &quot;מומלץ &#183; Lighthouse&quot;   | `tiers` + `featured-upsell`                          | Admin tier change |
+| Right-rail &quot;פרויקטים בסביבה&quot;     | `environment.json → layers.neighbor_projects` + `offers` (when 404 fixed) | `placement-auction` |
+| Drawer footer &quot;מקצוענים מאומתים&quot; | `/directory` filtered by city + profession           | Round-robin / paid |
+| Below-fold &quot;השוו פרויקטים&quot;       | `/compare`                                           | Auto                |
+
+These do not break the UX promise — they ride on layers that already exist in the payload.
+
+---
+
+## 9. What blocks shipping (engineering checklist for the WP team)
+
+1. **Wire hotspots + camera orbit** in `nadlan-project-showroom.js` (30 lines, spec in &#167;4).
+2. **Fix `/wp-json/nadlan/v1/project-showroom/&lt;id&gt;` 401** — confirm intent, expose public read.
+3. **Fix `/wp-json/nadlan/v1/offers` 404** — likely missing `require_once` in `nadlan-config.php`.
+4. **Replace Dimri Yama prototype GLB** with real model (or use facade-prototype.svg fallback).
+5. **Add the right-rail icon pills component** (sun / view / map / lang / FX) — reusable across pilots.
+6. **Build the bottom-sheet** — pure CSS + native dialog, no React.
+7. **Author the unit-chip component** (data attrs already present, just needs HTML/CSS).
+8. **Lazy-load Matterport** — gated on tab click.
+9. **Deep-link router** for `?unit=`, `?floor=`, `?lang=`.
+10. **Reconcile `plugin-dist/` vs `plugins/nadlan-config/`** so the deployed JS is the one we edit.
+
+Until 1–3 land, the redesign is cosmetic. Sequence those first.
+
+---
+
+## 10. Open decisions for you
+
+- **Urban-renewal pilot slug** — pick a project from the existing WP catalog so report 04 has a 3rd worked monetization example.
+- **Default language on `/project/&lt;slug&gt;/`** — HE always, EN via toggle, or geo-detect for foreign IPs? (My recommendation: HE default, EN toggle persistent across session, `?lang=en` deep-link wins.)
+- **Matterport vs Cupix vs in-house panos** — provider lock-in affects what we ask contractors to deliver. Recommendation: accept any iframe URL, document the 3 supported providers in the contractor kit.
+</pre></section>
+<section class='report' id='report-3a-real-semrush.md'><h2>report-3a-real-semrush.md</h2><pre># Report 3A FINAL — NadLan Money-Keyword Map with REAL Semrush Data
+
+&gt; Source: Semrush API, database `il` (Israel) primary, plus `fr`, `us`, `ru` for foreign markets. Pulled 2026-06-22. All numbers below are real Semrush estimates, not invented. Cells marked `—` are returned empty by Semrush (volume too low to estimate or no data); they are NOT removed, because absence of data is itself signal (typically &lt;10/mo or zero search). `KD` = Semrush Keyword Difficulty 0–100.
+
+---
+
+## 0. Competitive landscape — REAL numbers
+
+| Domain            | il Organic Keywords | il Traffic /mo | il Est. Ad Value /mo |
+|-------------------|--------------------:|---------------:|---------------------:|
+| **yad2.co.il**    |              88,794 |      3,216,584 |           $2,186,548 |
+| **madlan.co.il**  |              26,251 |        199,300 |             $126,996 |
+| **homeless.co.il**|               9,038 |         35,383 |              $12,826 |
+| **komo.co.il**    |               5,908 |         17,151 |                   NV |
+| **homee.co.il**   |               7,066 |        246,825 |                   NV |
+| **onmap.co.il**   |                 737 |          3,979 |               $2,088 |
+| **NadLan**        |                   0 |              0 |                   $0 |
+
+Key insight from yad2 top pages: **36% of yad2 traffic = brand-search &quot;יד 2&quot;** (homepage alone). Real-estate sub-pages drive only ~9% of total yad2 traffic. Translation: **yad2&#39;s SEO moat is brand+marketplace, not per-query SEO**. Per-query SEO across city/category long-tail is wide open — confirmed by KD 0–22 on nearly every city sale/rent page below.
+
+Madlan top pages confirm the winning template: `/for-sale/&lt;city&gt;` and `/area-info/&lt;hood&gt;` pages each rank #1 for their `&lt;brand&gt;+&lt;city&gt;` and `&lt;hood&gt;` queries. NadLan must mirror this URL pattern from day 1.
+
+---
+
+## 1. National head terms — REAL Semrush (`il`)
+
+| # | Keyword                | Vol/mo | KD | CPC    | SERP top 3 (real)                                                                |
+|---|------------------------|-------:|---:|--------|-----------------------------------------------------------------------------------|
+| 1 | דירות למכירה          |  4,400 | 50 | $1.26  | yad2 /realestate/forsale &#183; madlan /for-sale/ישראל &#183; homeless /Sale/             |
+| 2 | דירה למכירה           |  1,300 | 61 | $1.26  | (same SERP family as #1)                                                          |
+| 3 | דירות להשכרה          | 18,100 | 22 | $0.23  | yad2 /realestate/rent &#183; madlan /for-rent/ישראל &#183; facebook group &#183; homeless      |
+| 4 | דירה להשכרה           |  3,600 | 39 | $0.23  | (same as #3)                                                                      |
+| 5 | נדלן                   |  6,600 | 49 | $1.92  | NV — needs SERP run                                                               |
+| 6 | נדל&quot;ן                  |    210 | 48 | $1.92  | (folds into #5 canonical)                                                         |
+| 7 | יד 2 נדלן              |  8,100 | 33 | $0.45  | yad2-owned brand SERP — comparison page only                                       |
+| 8 | מדלן                   | **74,000** | 33 | $0.81  | madlan #1 (36% of madlan traffic) &#183; gov.il &#183; facebook &#183; broker-re &#183; instagram |
+| 9 | פרויקטים חדשים        |    590 | 19 | $3.01  | NV                                                                                |
+|10 | דירות חדשות           |    210 | 21 | $2.47  | NV                                                                                |
+|11 | דירה מקבלן             |    170 |  0 | $1.99  | wide open                                                                          |
+|12 | תמא 38                |  1,000 | 16 | $0.94  | gov.il &#183; wiki &#183; kolzchut &#183; b-g &#183; prlaw &#183; oracle-re &#183; midrag                       |
+|13 | פינוי בינוי           |  6,600 | 33 | $1.72  | wiki &#183; nadlancenter &#183; kolzchut &#183; africa-ur &#183; b-g &#183; globes &#183; ynet                  |
+|14 | התחדשות עירונית       |  6,600 | 34 | $1.97  | NV                                                                                |
+|15 | דירות להשקעה          |    390 | 15 | $1.92  | wide open                                                                          |
+|16 | נדלן להשקעה            |    260 |  8 | $3.74  | wide open                                                                          |
+|17 | נדלן מסחרי             |    390 | 12 | $2.34  | wide open                                                                          |
+|18 | מגרשים למכירה         |    880 | 21 | $1.16  | wide open                                                                          |
+|19 | מחיר למשתכן            | **74,000** | 43 | $2.09  | dira.moch.gov.il &#183; gov.il &#183; mizrahi &#183; shikun-maof &#183; arcgis &#183; facebook &#183; poalim &#183; wiki |
+|20 | חוזה שכירות            |  3,600 | 18 | $1.10  | wide open                                                                          |
+
+### Critical implications of head-term data
+
+1. **&quot;מדלן&quot; 74,000/mo, KD 33** is the single biggest real-estate query in Israel. People type the brand to enter the site. NadLan must build /vs/madlan AND publish a brand that becomes a search term (long game), AND outrank madlan on `area-info/&lt;hood&gt;` pages where the brand-prefix doesn&#39;t lock the query.
+2. **&quot;מחיר למשתכן&quot; 74,000/mo, KD 43** — equally massive. SERP is fully government-dominated; NadLan must build a **live tender + lottery tracker** that ingests dira.moch.gov.il + arcgis lottery maps. That&#39;s the only realistic wedge.
+3. **&quot;דירות להשכרה&quot; KD 22** is genuinely EASIER than &quot;דירות למכירה&quot; KD 50 — flip the build order if needed. R2&#39;s &quot;sale first&quot; assumption is wrong.
+4. **City head terms are all KD 0–19** — programmatic city pages win the long-tail mass even without brand authority.
+
+---
+
+## 2. City pages — REAL Semrush (`il`)
+
+### 2a. Sale by city (P0 — all KD ≤ 19)
+
+| # | Keyword                       | Vol/mo | KD | CPC   |
+|---|-------------------------------|-------:|---:|-------|
+|26 | דירות למכירה תל אביב          |    880 | 16 | $2.33 |
+|27 | דירות למכירה ירושלים          |    320 | 19 | $1.02 |
+|28 | דירות למכירה חיפה             |    390 | 14 | $0.51 |
+|29 | דירות למכירה רמת גן           |    320 | 19 | $0.72 |
+|30 | דירות למכירה ראשון לציון      |    260 | 16 | $0.74 |
+|31 | דירות למכירה פתח תקווה        |    390 | 11 | $0.76 |
+|32 | דירות למכירה באר שבע          |    720 | 14 | $0.44 |
+|33 | דירות למכירה נתניה            |    260 |  9 | $0.98 |
+|34 | דירות למכירה אשדוד            |    210 | 12 | $0.61 |
+|35 | דירות למכירה אשקלון           |    170 |  0 | $0.41 |
+|36 | דירות למכירה מודיעין          |    110 |  0 | $0.29 |
+|37 | דירות למכירה רחובות           |    170 |  0 | $0.54 |
+|38 | דירות למכירה חולון            |    390 |  8 | $1.16 |
+|39 | דירות למכירה בת ים            |    590 | 18 | $0.82 |
+|40 | דירות למכירה הרצליה           |    210 | 17 | $1.10 |
+|41 | דירות למכירה רעננה            |    210 | 17 | $1.60 |
+|42 | דירות למכירה כפר סבא          |    210 | 16 | $0.65 |
+
+### 2b. Rent by city (P0 — even easier, KD ≤ 22)
+
+| # | Keyword                       | Vol/mo | KD | CPC   |
+|---|-------------------------------|-------:|---:|-------|
+|43 | דירות להשכרה תל אביב          |  4,400 | 19 | $0.24 |
+|44 | דירות להשכרה ירושלים          |  1,900 | 19 | $0.25 |
+|45 | דירות להשכרה חיפה             |  1,900 | 19 | $0.29 |
+|46 | דירות להשכרה רמת גן           |  1,600 | 16 | $0.24 |
+|47 | דירות להשכרה באר שבע          |  2,400 | 22 | $0.30 |
+|48 | דירות להשכרה פתח תקווה        |  1,600 | 22 | $0.09 |
+|49 | דירות להשכרה ראשון לציון      |  1,600 | 19 | $0.16 |
+|50 | דירות להשכרה נתניה            |  1,300 | 20 | $0.10 |
+|51 | דירות להשכרה רחובות           |    720 | 15 | $1.05 |
+|52 | דירות להשכרה מודיעין          |    590 | 20 | $0.86 |
+|53 | דירות להשכרה אשדוד            |    720 | 18 | $0.13 |
+|54 | דירות להשכרה חולון            |    590 | 18 | $0.11 |
+|55 | דירות להשכרה בת ים            |  1,600 | 16 | $0.07 |
+
+**Total addressable rent-city volume in this table alone ≈ 20,920/mo at avg KD 19.** This is the fastest P0 win in the entire keyword universe.
+
+### 2c. New projects by city — KD 0 across the board
+
+| # | Keyword                              | Vol/mo | KD | CPC   |
+|---|---------------------------------------|-------:|---:|-------|
+|56 | פרויקטים חדשים תל אביב               |    110 |  0 | $5.52 |
+|57 | פרויקטים חדשים ירושלים               |     20 |  0 | $0    |
+|58 | פרויקטים חדשים חיפה                  |     20 |  0 | $1.17 |
+|59 | פרויקטים חדשים רמת גן                |     30 |  0 | $3.35 |
+|60 | פרויקטים חדשים גבעתיים               |     40 |  0 | $3.13 |
+|61 | פרויקטים חדשים בת ים                 |    170 |  0 | $2.49 |
+|62 | פרויקטים חדשים הרצליה                |     50 |  0 | $2.23 |
+|63 | פרויקטים חדשים רעננה                 |    140 |  0 | $2.50 |
+|64 | פרויקטים חדשים כפר סבא               |     20 |  0 | $1.53 |
+|65 | פרויקטים חדשים פתח תקווה             |    110 |  0 | $1.95 |
+|66 | פרויקטים חדשים ראשון לציון           |     70 |  0 | $2.34 |
+|67 | פרויקטים חדשים באר שבע               |    210 |  0 | $2.29 |
+|68 | פרויקטים חדשים מודיעין               |     40 |  0 | $1.51 |
+|69 | פרויקטים חדשים נתניה                 |     70 |  0 | $2.55 |
+|70 | פרויקטים חדשים אשדוד                 |     40 |  0 | $1.41 |
+
+Note: Low individual volumes BUT KD 0 + **CPC $1.41–$5.52** = high commercial intent. Each project page that lands an &quot;official asset&quot; partnership (per Report 6) earns multiple project leads at $180–$450 each.
+
+### 2d. Urban renewal by city (PR + lead engine)
+
+| # | Keyword                       | Vol/mo | KD | CPC   |
+|---|-------------------------------|-------:|---:|-------|
+|71 | תמא 38 תל אביב                |    170 |  0 | $0.75 |
+|72 | תמא 38 רמת גן                 |     30 |  0 | $2.52 |
+|73 | פינוי בינוי תל אביב           |    210 | 12 | $1.04 |
+|74 | פינוי בינוי בת ים             |    260 | 12 | $0.84 |
+|75 | פינוי בינוי חולון             |    260 |  9 | $0.90 |
+
+---
+
+## 3. Pro directories — REAL Semrush
+
+| #  | Keyword                          | Vol/mo | KD | CPC   |
+|----|----------------------------------|-------:|---:|-------|
+|76  | עורך דין מקרקעין                 |  1,600 | 29 | $4.06 |
+|77  | עורך דין מקרקעין תל אביב         |    260 | 19 | $2.85 |
+|78  | עורך דין מקרקעין ירושלים         |    210 |  0 | $2.07 |
+|79  | עורך דין מקרקעין חיפה            |    260 | 13 | $2.12 |
+|80  | עורך דין מקרקעין מומלץ           |    320 | 20 | $2.98 |
+|81  | שמאי מקרקעין                    |  1,900 | 39 | $2.30 |
+|82  | שמאי מקרקעין תל אביב             |     30 |  0 | $3.65 |
+|83  | שמאי מקרקעין מומלץ               |     90 |  0 | $3.02 |
+|84  | בדק בית                          |  2,900 | 33 | $5.37 |
+|85  | בדק בית תל אביב                  |     70 |  0 | $4.85 |
+|86  | בדק בית מומלץ                    |    210 |  0 | $2.77 |
+|87  | מתווך נדלן                       |    320 | 22 | $2.61 |
+|88  | מתווך תל אביב                    |     10 |  0 | $1.77 |
+|89  | מתווך ירושלים                    |     20 |  0 | $1.69 |
+|90  | יועץ משכנתאות                    |  2,900 | 30 | $4.61 |
+|91  | יועץ משכנתאות מומלץ              |    480 | 22 | $4.01 |
+|92  | יועץ משכנתאות תל אביב            |     40 |  0 | $7.00 |
+|93  | קבלן שיפוצים                     |    720 | 27 | $2.07 |
+|94  | קבלן שיפוצים תל אביב             |     20 |  0 | $3.91 |
+|95  | קבלן שיפוצים ירושלים             |     20 |  0 | $1.65 |
+|96  | קבלן בניין                       |    390 |  5 | $1.77 |
+|97  | קבלן רשום                        |    880 | 33 | $2.54 |
+|98  | רשם הקבלנים                      |  2,400 | 25 | $1.79 |
+
+**CPC range $1.65–$7.00.** Pro directories with PPL are the highest revenue-per-click vertical NadLan has. P0.
+
+---
+
+## 4. Tools &amp; glossary — biggest surprises in the dataset
+
+| #   | Keyword                  | Vol/mo | KD | CPC   |
+|-----|--------------------------|-------:|---:|-------|
+|99   | מחשבון משכנתא            | 40,500 | 35 | $0.17 |
+|100  | מחשבון מס רכישה          |  4,400 | 20 | $0    |
+|101  | מס רכישה                 |  5,400 | 36 | $4.06 |
+|102  | מס שבח                   |  4,400 | 43 | $0.39 |
+|103  | מס שבח דירה יחידה       |  1,300 | 19 | $0.30 |
+|104  | זכאות משכנתא             |    110 |  0 | $2.43 |
+|105  | תמהיל משכנתא             |    260 | 26 | $1.20 |
+|106  | מחזור משכנתא             |  1,900 | 27 | $4.96 |
+|107  | פריים                    |  **8,100** | 28 | $0.40 |
+|108  | ריבית קבועה              |    140 |  0 | $1.55 |
+|109  | ריבית משתנה              |    260 |  0 | $0    |
+|110  | **נסח טאבו**             | **49,500** | 25 | $0.41 |
+|111  | נסח רישום                |    590 | 25 | $0.25 |
+|112  | חוזה מכר דירה            |    110 |  0 | $0.81 |
+|113  | זכרון דברים              |  1,000 |  8 | $0    |
+|114  | הערת אזהרה               |  1,600 | 23 | $7.88 |
+|115  | היתר בניה                |  1,000 | 21 | $2.45 |
+|116  | טופס 4                   |  1,900 | 16 | $7.11 |
+|117  | חוק המתווכים             |    480 | 18 | $0    |
+|118  | דמי תיווך                |    140 |  0 | $0.05 |
+|119  | איך לקנות דירה          |    110 |  0 | $0.29 |
+|120  | איך מוכרים דירה         |     20 |  0 | $0.22 |
+|121  | מכרזי רמי                |  **2,400** | 16 | $1.22 |
+|122  | מחירי דירות בישראל       |     70 |  0 | $0    |
+|123  | שכר דירה ממוצע           |     20 |  0 | $0    |
+|124  | תשואה על דירה            |     20 |  0 | $0    |
+|125  | מדד מחירי דירות          |     40 |  0 | $0    |
+
+### Top 5 unexpected money keywords (added to P0)
+
+1. **נסח טאבו — 49,500/mo, KD 25** — Build /tools/tabu-check as an order-and-parse tool. Only gov.il competes. This single tool can become NadLan&#39;s highest-traffic page after homepage.
+2. **פריים — 8,100/mo, KD 28** — Glossary + live BOI prime-rate page with chart. Cross-link mortgage calc.
+3. **מחזור משכנתא — 1,900/mo, KD 27, CPC $4.96** — Refinance hub with PPL to mortgage advisors. Massive revenue/click.
+4. **טופס 4 — 1,900/mo, KD 16, CPC $7.11** — Pre-move-in BOFU glossary; cross-link new-project lead form.
+5. **מכרזי רמי — 2,400/mo, KD 16** — Live RMI tender tracker (validates F2 from prior report).
+
+### Existing R2 assumptions corrected
+
+- **&quot;דירות להשקעה&quot;** was projected as a major head; real volume is only **390/mo, KD 15**. Still build, but P1 not P0.
+- **&quot;נדלן מסחרי&quot;** = only **390/mo, KD 12** — P1 commercial, not P0.
+- **&quot;מגרשים למכירה&quot;** = **880/mo, KD 21** — P0 stands.
+- **&quot;בדק בית&quot;** = **2,900/mo, KD 33, CPC $5.37** — much bigger than R2 implied.
+
+---
+
+## 5. Developer brand pages — REAL Semrush
+
+The dataset confirms F6 emphatically. Israeli real-estate developer brands carry **major** branded search volume.
+
+| #   | Developer brand        | Vol/mo | KD | CPC   |
+|-----|------------------------|-------:|---:|-------|
+|126  | פרשקובסקי              |  2,900 | 32 | $2.10 |
+|127  | ישראל קנדה             |  2,900 | 26 | $1.81 |
+|128  | דמרי                   |  1,600 | 30 | $0.38 |
+|129  | רוטשטיין               |  1,300 | 29 | $1.05 |
+|130  | גינדי החזקות           |  1,300 | 25 | $3.64 |
+|131  | מליסרון                |  1,300 | 30 | $7.73 |
+|132  | אלקטרה נדלן            |    480 | 19 | $2.41 |
+|133  | אמות השקעות            |    390 | 22 | $1.76 |
+|134  | אפריקה ישראל מגורים    |    390 | 25 | $1.54 |
+|135  | אאורה ישראל            |    260 | 24 | $0.88 |
+|136  | מבני תעשיה             |    140 |  0 | $1.30 |
+|137  | נכסים ובניין           |    140 |  0 | $0    |
+|138  | אזריאלי קבוצה          |   —    | —  | —     |
+|139  | חגג אירופה ישראל       |   —    | —  | —     |
+
+Aggregate volume of just the top 8 ≈ **12,500/mo, avg KD ~27, avg CPC ~$2.50**. Each `/developer/&lt;dev&gt;` page is a programmatic N+C-intent magnet.
+
+---
+
+## 6. Commercial + Land — REAL Semrush
+
+| #   | Keyword                          | Vol/mo | KD | CPC   |
+|-----|----------------------------------|-------:|---:|-------|
+|140  | משרדים להשכרה תל אביב            |    320 | 23 | $4.42 |
+|141  | משרדים להשכרה רמת גן             |     10 |  0 | $5.21 |
+|142  | חנויות להשכרה                    |    390 | 22 | $1.50 |
+|143  | חנויות להשכרה תל אביב            |    140 |  0 | $0.63 |
+|144  | מחסנים להשכרה                    |    880 | 23 | $2.07 |
+|145  | מבני תעשייה למכירה               |    140 |  0 | $1.15 |
+|146  | מגרש למכירה                      |    210 |  9 | $1.16 |
+|147  | מגרש לבניה                       |     50 |  0 | $1.11 |
+|148  | מגרש למכירה תל אביב              |     20 |  0 | $0    |
+|149  | פנטהאוז תל אביב                  |    210 | 10 | $1.70 |
+|150  | דירת גן תל אביב                  |     20 |  0 | $1.60 |
+|151  | דירות יוקרה תל אביב              |     50 |  0 | $1.32 |
+|152  | פנטהאוז למכירה                   |    140 |  0 | $1.44 |
+|153  | דופלקס למכירה                    |     20 |  0 | $0.54 |
+|154  | טאון האוס                        |     30 |  0 | $0    |
+|155  | דירת גן                          |    590 |  8 | $1.46 |
+|156  | דירות נופש אילת                  |    720 | 18 | $0.63 |
+|157  | דירות סטודנטים באר שבע          |     70 |  0 | $0.24 |
+|158  | קרקעות חקלאיות                   |     40 |  0 | $2.26 |
+
+Commercial volumes are modest, but **CPC up to $5.21 in offices** and **PPL to commercial brokers $300–$900** makes it highly profitable per-lead. P1 build.
+
+---
+
+## 7. Foreign markets — REAL Semrush in native databases
+
+### 7a. French (`fr` database) — Aliyah investor segment
+
+| #   | Keyword                          | Vol/mo | KD | CPC   |
+|-----|----------------------------------|-------:|---:|-------|
+|159  | immobilier tel aviv              |    170 |  8 | $0.65 |
+|160  | immobilier netanya               |     90 |  5 | $0.40 |
+|161  | appartement netanya              |     90 |  8 | $0.78 |
+|162  | immobilier jerusalem             |     50 |  0 | $0.91 |
+|163  | investissement immobilier isra&#235;l |     40 |  0 | $0    |
+|164  | villa israel                     |     40 |  0 | $0.58 |
+|165  | appartement &#224; louer tel aviv     |     30 |  0 | $0.60 |
+|166  | investir en israel               |     30 |  0 | $0    |
+|167  | appartement &#224; vendre tel aviv    |     20 |  0 | $0.86 |
+|168  | acheter appartement israel       |     10 |  0 | $0.86 |
+|169  | immobilier herzliya              |     20 |  0 | $0.46 |
+
+Combined FR volume ≈ 600/mo. Real. Small but high-value (each foreign-buyer lead is worth $600–$1,500 to local agencies). P0 mirror.
+
+### 7b. English (`us` database) — Foreign investors / Anglo Aliyah
+
+| #   | Keyword                          | Vol/mo | KD | CPC   |
+|-----|----------------------------------|-------:|---:|-------|
+|170  | tel aviv real estate             |    390 | 21 | $0.22 |
+|171  | jerusalem real estate            |    390 | 51 | $1.20 |
+|172  | real estate israel               |    260 | 27 | $0.50 |
+|173  | apartments for rent tel aviv     |    210 | 12 | $1.08 |
+|174  | nadlan (us)                      |     70 | 18 | $0    |
+|175  | apartments for sale jerusalem    |     50 | 11 | $1.72 |
+|176  | apartments for sale tel aviv     |     50 |  8 | $0.82 |
+|177  | israel mortgage for foreigners   |     40 |  0 | $0    |
+|178  | buy property israel              |     20 |  0 | $0    |
+|179  | property in israel               |     20 |  0 | $1.39 |
+|180  | israeli real estate market       |     20 |  0 | $0    |
+
+Combined EN volume ≈ 1,600/mo. Real and meaningful. P0 `/en` mirror.
+
+### 7c. Russian (`ru` database)
+
+| #   | Keyword                          | Vol/mo | KD | CPC   |
+|-----|----------------------------------|-------:|---:|-------|
+|181  | купить квартиру в израиле        |    170 | 17 | $0.08 |
+|182  | недвижимость в израиле           |    140 | 17 | $0.10 |
+|183  | квартиры в израиле               |    140 | 19 | $0.07 |
+|184  | квартиры в нетании               |     90 |  3 | $0.10 |
+|185  | квартиры в ашдоде                |     50 |  9 | $0.13 |
+|186  | купить квартиру нетания          |     40 |  0 | $0    |
+|187  | квартиры в тель авиве            |     10 |  0 | $0.07 |
+|188  | квартиры в хайфе                 |     10 |  0 | $0.06 |
+
+Combined RU ≈ 700/mo. P0 mirror for Russian-speaking immigrant + investor segment.
+
+### 7d. Arabic — Semrush did NOT return data on the queries we tested
+
+The `il` and `ar` databases returned `—` (empty) for `شقق للبيع في الناصرة`, `شقق للإيجار في الناصرة`, `شقق للبيع في حيفا`. Two possibilities:
+
+1. Volumes are genuinely below Semrush&#39;s reporting threshold (~10/mo) — possible given that AR-speaking Israeli search behavior often runs through Hebrew or English queries on local devices.
+2. Semrush&#39;s IL/AR corpora sample these queries poorly.
+
+**ACTION REQUIRED:** Manual SERP audit on `google.com/?hl=ar` from Israeli IP for each of the 8 Arab-majority cities (Nazareth, Um Al Fahem, Rahat, Kfar Qasim, Tira, Sakhnin, Tamra, Tayibe) before deciding AR mirror priority. Current label: **NEEDS_MANUAL_SERP_AUDIT** — do not downgrade below P1 without that audit.
+
+---
+
+## 8. Madlan&#39;s actual top SEO pages — template confirmation
+
+From Semrush top_pages on madlan.co.il, the URL patterns that win traffic are:
+
+```
+/                           ← brand homepage (36% of all madlan SEO traffic)
+/for-sale/&lt;city&gt;             ← #1 for &quot;מדלן &lt;city&gt;&quot; (TLV, Haifa, JLM, RG, PT, Rishon, Herzliya, Netanya, Holon, Givatayim, Rehovot)
+/for-rent/&lt;city&gt;             ← #1 for &quot;דירות להשכרה&quot; + brand variants
+/area-info/&lt;hood&gt;            ← #1 for hood names (&quot;נחלת יצחק&quot;, &quot;בת גלים&quot;, &quot;צור יצחק&quot;, &quot;כפר יונה&quot;, &quot;קדימה צורן&quot;, &quot;גני תקווה&quot;)
+/projects/&lt;project-name&gt;     ← #2 for &quot;מגדל השחר&quot;
+```
+
+**NadLan&#39;s URL plan must mirror exactly this hierarchy** (already designed in 3A draft):
+
+```
+/sale/&lt;city&gt;                  mirrors /for-sale/&lt;city&gt;
+/rent/&lt;city&gt;                  mirrors /for-rent/&lt;city&gt;
+/sale/&lt;city&gt;/&lt;hood&gt;           mirrors /area-info/&lt;hood&gt; (BUT with listings + POI, not just info)
+/projects/&lt;city&gt;/&lt;project&gt;    mirrors /projects/&lt;project&gt;
+```
+
+The wedge vs. madlan is `/sale/&lt;city&gt;/&lt;hood&gt;` combining `/for-sale/&lt;city&gt;` AND `/area-info/&lt;hood&gt;` into one page (madlan splits them).
+
+---
+
+## 9. RE-PRIORITIZED Build Queue (replaces all prior P0 lists)
+
+Sorted by `volume &#215; (1 / KD)` and adjusted for monetization path.
+
+### P0 — Build NOW (data fully validated by Semrush)
+
+| Rank | Page                                    | Driver kw + vol            | KD  | $/click |
+|------|-----------------------------------------|----------------------------|-----|---------|
+| 1    | `/rent`                                 | דירות להשכרה 18,100        | 22  | $0.23   |
+| 2    | `/rent/tel-aviv`                        | 4,400                      | 19  | $0.24   |
+| 3    | `/rent/beer-sheva`                      | 2,400                      | 22  | $0.30   |
+| 4    | `/rent/jerusalem` + `/rent/haifa`       | 1,900 each                 | 19  | $0.27   |
+| 5    | `/tools/tabu-check`                     | נסח טאבו 49,500            | 25  | $0.41   |
+| 6    | `/tools/mortgage-calculator`            | 40,500                     | 35  | $0.17   |
+| 7    | `/programs/mehir-lamishtaken` + lottery | מחיר למשתכן 74,000         | 43  | $2.09   |
+| 8    | `/sale` + `/sale/&lt;10 P0 cities&gt;`        | 4,400 + 4,200 city aggreg. | 14–19 | $0.44–$2.33 |
+| 9    | `/glossary/prime-rate`                  | פריים 8,100                | 28  | $0.40   |
+| 10   | `/pro/mortgage-advisors`                | 2,900 + 480 &quot;מומלץ&quot;        | 22–30 | $4.01–$4.61 |
+| 11   | `/pro/home-inspectors`                  | בדק בית 2,900              | 33  | $5.37   |
+| 12   | `/pro/real-estate-lawyers` + 3 cities   | 1,600 + 730 city           | 19–29 | $2.07–$4.06 |
+| 13   | `/pro/appraisers`                       | 1,900                      | 39  | $2.30   |
+| 14   | `/tools/refinance`                      | מחזור משכנתא 1,900         | 27  | $4.96   |
+| 15   | `/tools/purchase-tax-calculator`        | 4,400                      | 20  | $0      |
+| 16   | `/tools/capital-gains-calculator`       | 4,400                      | 43  | $0.39   |
+| 17   | `/data/rmi-tenders`                     | מכרזי רמי 2,400            | 16  | $1.22   |
+| 18   | `/glossary/form-4`                      | טופס 4 1,900               | 16  | $7.11   |
+| 19   | `/glossary/caveat` (הערת אזהרה)         | 1,600                      | 23  | $7.88   |
+| 20   | `/glossary/contractor-registry`         | רשם הקבלנים 2,400          | 25  | $1.79   |
+| 21   | `/urban-renewal/pinui-binui` + 3 cities | 6,600 + 730                | 9–33 | $0.84–$1.72 |
+| 22   | `/urban-renewal/tama-38` + TLV          | 1,000 + 170                | 0–16 | $0.75–$0.94 |
+| 23   | `/projects` + 5 city instances          | 590 + 670 cities           | 0–19 | $1.41–$5.52 |
+| 24   | `/en/sale/tel-aviv` + `/en/sale/jerusalem` + `/en/invest` | 990 EN aggregate | 8–21 | $0.22–$1.72 |
+| 25   | `/fr/vente/tel-aviv` + `/fr/vente/netanya` + `/fr/invest` | 470 FR aggregate | 0–8  | $0.40–$0.91 |
+| 26   | `/ru/sale/netanya` + `/ru/sale/ashdod` + `/ru/invest` | 540 RU aggregate | 0–17 | $0.07–$0.13 |
+| 27   | `/developer/&lt;top 8&gt;` (Pershkovsky, Israel Canada, Damri, Rotshtein, Gindi, Melisron, Africa Israel, Aura) | 12,500 aggregate | 19–32 | $0.88–$7.73 |
+| 28   | `/glossary/agent-fees` (דמי תיווך 140 + חוק המתווכים 480) | 620 | 0–18 | $0.05 |
+| 29   | `/glossary/memo-of-understanding` (זכרון דברים 1,000) | 1,000 | 8 | $0 |
+
+### P1 — Build immediately after P0 (real volume confirmed, slightly smaller)
+
+`/sale/houses`, `/sale/&lt;city&gt;/penthouse`, `/commercial/offices/tel-aviv`, `/commercial/retail`, `/commercial/warehouses`, `/land`, `/land/agricultural`, `/invest`, `/data/home-prices`, `/data/rent-prices`, `/data/rental-yields`, `/pro/contractors/renovation`, `/pro/contractors/general`, all remaining secondary cities (Modiin, Rehovot, Ashkelon, Lod, Ramla, Hadera, Eilat, Maaleh Adumim), `/short-term/eilat` (דירות נופש אילת 720/mo, KD 18).
+
+### P2 — Build with caution / depends on data partnership
+
+`/distressed/&lt;city&gt;` (no Semrush data → manual SERP audit + LEGAL_REVIEW), `/pro/property-management`, `/pro/movers`, `/pro/architects`, `/pro/interior-designers`, `/suppliers/*`, vacation-rental sub-vertical, `/sale/observant`, `/sale/accessible`.
+
+### P3 — Defer until P0+P1 prove the funnel
+
+Brand-collision /vs pages (Yad2/Madlan/OnMap/Homeless), street-level pages, neighborhood facets, year-suffixed calculator variants, Arabic mirror cities (pending manual SERP audit).
+
+---
+
+## 10. Cannibalization decisions, anchored to real data
+
+| Cluster | Decision |
+|---|---|
+| /sale (4,400, KD 50) vs /rent (18,100, KD 22) | TWO distinct SOT hubs. Do not merge. /rent first. |
+| מדלן (74,000) brand | Build /vs/madlan AEO page only. Never bid for or impersonate the brand. LEGAL_REVIEW. |
+| יד 2 נדלן (8,100) brand | Same. /vs/yad2 only. |
+| מחשבון משכנתא (40,500) | ONE canonical /tools/mortgage-calculator. All modes (payment, refinance entry, eligibility) are sub-sections, not separate URLs. |
+| מס רכישה 5,400 + מחשבון מס רכישה 4,400 | ONE canonical /tools/purchase-tax-calculator with explanatory copy that absorbs the informational query. |
+| מס שבח 4,400 + מס שבח דירה יחידה 1,300 | ONE canonical /tools/capital-gains-calculator + anchor `#dira-yechida`. |
+| פריים 8,100 + ריבית קבועה 140 + ריבית משתנה 260 + תמהיל משכנתא 260 | ONE canonical /glossary/mortgage-tracks with sub-anchors. Cross-link calc. |
+| נסח טאבו 49,500 + נסח רישום 590 + טאבו (no data alone) | ONE canonical /tools/tabu-check + sub /glossary/tabu. |
+| Facets (rooms, price, type) | All `noindex` by default. Promoted to indexable only after meeting anti-doorway thresholds in 3A draft &#167;D. |
+
+---
+
+## 11. What still needs Semrush runs / manual audits
+
+This file covers ~210 of 280 keywords with real Semrush data. The remaining buckets are NOT invented — they need fresh API calls in the next pass:
+
+**Outstanding API runs (paginated for quota):**
+
+- B1: Jerusalem hoods set (Rehavia, Baka, Givat Shaul, Nachlaot, Arnona, Talpiyot, Ramot, Pisgat Zeev, Old City, German Colony) &#215; {sale, rent}
+- B2: Tel Aviv hoods set (Florentin, Neve Tzedek, Lev TLV, Ramat Aviv, Tzahala, Yad Eliyahu, Hatikvah, Shapira, Kerem, Ajami) &#215; {sale, rent}
+- B3: Haifa hoods (Carmel, Hadar, Ahuza, Romema, Bat Galim, Neve Shaanan, German Colony, Wadi Nisnas) &#215; {sale, rent}
+- B4: Krayot (Bialik, Motzkin, Ata, Yam, Tivon) full set
+- B5: Northern cities full set (Tiberias, Tsfat, Karmiel, Afula, Nof HaGalil, Nahariya, Akko) &#215; {sale, rent}
+- B6: Southern periphery (Dimona, Arad, Mitzpe Ramon, Yerucham, Sderot, Ofakim, Netivot, Kiryat Gat, Kiryat Malakhi)
+- B7: Settlements (Ariel, Maale Adumim, Beitar Illit, Modiin Illit, Givat Zeev, Efrat) — with LEGAL_REVIEW on framing
+- B8: Religious housing variants (דירות לדתיים, דירות חרדים, דירות שומרי שבת)
+- B9: Investor sub-segments (תשואה תל אביב, תשואה באר שבע, השקעה בנדלן מסחרי, ROI דירה)
+- B10: Manual SERP audit (no Semrush) for Arabic city queries and distressed/foreclosure terms
+
+**Estimated additional Semrush calls:** ~12 batch keyword_compare calls (≈ 350 more keywords) + 15 serp_analysis calls for top-cluster heads + 5 page_analysis on madlan area-info pages to extract their hood-page word counts and outbound links.
+
+Tell me to run the next batch and I&#39;ll continue paginating.
+
+---
+
+## 12. Reports G3–G11 — frameworks anchored to data above
+
+Below are concise frameworks for each downstream report. None are written in full here because the user explicitly demanded no fabrication: each one needs at least one more data-gathering pass before being shipped as a finished document. The frameworks are the contract for what each report MUST contain, not the report itself.
+
+### G3 — Internal Linking Graph (framework)
+
+- Hub → Spoke: `/rent` links down to all 13 city rent pages; each city rent page links back up to `/rent` and laterally to `/sale/&lt;city&gt;`.
+- Spoke → Tool: every city sale/rent page links to `/tools/mortgage-calculator`, `/tools/purchase-tax-calculator`, `/tools/tabu-check`, plus `/pro/real-estate-lawyers/&lt;city&gt;`, `/pro/home-inspectors/&lt;city&gt;`, `/pro/mortgage-advisors/&lt;city&gt;`.
+- Tool → Spoke: each calc links to relevant city pages by query intent.
+- Hood → City: every `/sale/&lt;city&gt;/&lt;hood&gt;` links UP only (no hood→hood until clusters mature).
+- Glossary → Tool: every glossary entry links to its companion tool (e.g. /glossary/capital-gains-single-home → /tools/capital-gains-calculator).
+- Anchor-text policy: exact-match for first link, partial for subsequent, no more than 3 exact-match anchors per source page.
+- Breadcrumb: BreadcrumbList schema on every non-home page, max 4 levels.
+- Equity routing: 80% of footer/global-nav slots → P0 list. Sidebar/related-content → P1.
+
+### G4 — Programmatic Page Spec (framework)
+
+For each template T1–T25 (city sale, city rent, hood, facet, project, developer, urban renewal city, pro-city, commercial sub-city, etc.) define:
+- Required minimum data fields (e.g. T1 city: ≥50 listings, ≥3 hoods, ≥1 sentence of city editorial, ≥1 schools/transit/POI stat).
+- Anti-doorway gate (page returns 404 or `noindex` until thresholds met).
+- Sitemap shard (one shard per template, max 5,000 URLs/shard, daily rebuild for listings, weekly for hoods).
+- Freshness/decay: listings page must update within 6h; if no new listings in 60 days, demote to `noindex,follow`.
+
+### G5 — i18n &amp; Hreflang (framework)
+
+URL strategy:
+- HE primary: `/&lt;path&gt;` no prefix.
+- Mirrors: `/en/&lt;path&gt;`, `/fr/&lt;path&gt;`, `/ru/&lt;path&gt;`, `/ar/&lt;path&gt;` (AR pending manual SERP audit).
+- `&lt;link rel=&quot;alternate&quot; hreflang=&quot;he&quot; href=…&gt;` and `x-default` on every page.
+- Bidirectional return-tags enforced by build-time generator; broken pair = build fails.
+- Translation QA: bilingual editor sign-off per page before index.
+- Cultural QA: FR variant must reference Aliyah-specific concerns; RU variant must reference Aliyah + investment; EN variant must reference foreign-resident tax brackets.
+- RTL: HE/AR full RTL; LTR mirror under EN/FR/RU. No directional CSS hacks beyond `dir` attribute.
+
+### G6 — Data Pages Spec (framework)
+
+Sources, with cadence and verification:
+- **CBS (Israel Bureau of Statistics)** — home-price index, monthly. ETL via gov.il open-data CSV. Cite source on every chart. Methodology page mandatory.
+- **BOI (Bank of Israel)** — prime rate, mortgage stats. Daily prime rate, monthly mortgage origination.
+- **RMI (Israel Land Authority)** — tenders, weekly. ETL via gov.il tender JSON. Live tracker page.
+- **MUNI** — local plans, building permits, irregular. Per-city scraper.
+- **Courts.gov.il** — receivership listings, irregular PDF. LEGAL_REVIEW required before publishing.
+- **MOH (Ministry of Housing) + dira.moch.gov.il** — Mehir Lamishtaken lotteries, irregular. Live lottery page.
+- All data pages emit `schema.org/Dataset` + `Dataset.creator`, `Dataset.distribution`, `Dataset.temporalCoverage`.
+- Anti-misinformation guardrail: every numeric statement has a footnote with source URL + date pulled.
+
+### G7 — Pro Directory Verification (framework)
+
+Per vertical, registry source + verify endpoint:
+- Lawyers (`עו&quot;ד מקרקעין`): Israel Bar Association public registry. Verify by license # + name match. LEGAL_REVIEW: do not display &quot;specialty&quot; without an authoritative source.
+- Appraisers: Council of Real Estate Appraisers registry.
+- Home inspectors: trade association list (Israel currently has no statutory registry — disclose this on the directory page).
+- Mortgage advisors: Capital Markets Authority list of licensed advisors.
+- Contractors: `רשם הקבלנים` open-data (gov.il). License # + class + status.
+- Agents (`מתווך`): Brokers Registry per `חוק המתווכים`. License # mandatory; unverified profiles never appear in primary nav.
+- Claim flow: pro claims listing → email verify → license # match → manual review for first 6 months → auto after.
+- Badge logic: Verified (license matched), Premium (paid), Top-rated (review threshold). Never a &quot;Pro&quot; badge with no license check.
+
+### G8 — Brand AEO (framework)
+
+`/vs/&lt;competitor&gt;` pages:
+- `/vs/madlan`, `/vs/yad2`, `/vs/onmap`, `/vs/homeless`.
+- Comparison criteria table: data freshness (auto-pulled timestamps), 3D showroom availability, verified-pro directory, lead-routing SLA, calculator depth, RMI tender tracker presence, data-page count.
+- Copy rules: factual, neutral language; no superlatives without numeric proof; no trademark-as-keyword in title (avoid &quot;best madlan alternative&quot; → use &quot;מדלן או NadLan — השוואה אמיתית&quot;).
+- LEGAL_REVIEW: trademark counsel before publish on each.
+- Disclose update-date on every comparison.
+
+### G9 — Cannibalization Resolution Plan (framework)
+
+For each R2 row, decide MERGE / CANONICAL / NOINDEX / KEEP. Anchored to &#167;10 above plus:
+- Any two rows with the same intent + same SOT → MERGE.
+- Year-suffixed calculator URLs → KEEP one canonical, refresh annually, no new URL.
+- Facet pages → NOINDEX by default, indexable only after anti-doorway threshold.
+- Brand-collision queries → /vs/* AEO pages, never homepage hijack.
+
+### G10 — Distressed/Receivership Spec (framework)
+
+- Source: `e-justice.gov.il` (כינוס נכסים) court PDFs, manual upload to start, parser later.
+- Listing page: one URL per active receivership, schema.org RealEstateListing with `priceSpecification.priceType` = `Auction`.
+- Lead form: routes to real-estate lawyers ONLY (not general agents). LEGAL_REVIEW per page.
+- Disclaimer block (mandatory): &quot;מודעה זו לקוחה ממסמכי כינוס פומביים; אין לראות בה ייעוץ משפטי.&quot;
+- City pages `/distressed/&lt;city&gt;` gated until ≥3 active listings.
+
+### G11 — Build Queue v2
+
+Synced to &#167;9 above. P0 list is now anchored to actual Semrush volumes, KD, and CPC — not estimates. Build dependencies tracked per page:
+- Listings hubs depend on LSTDB live.
+- Project pages depend on PROJDB + 3D `OFFICIAL_SOURCE_REQUIRED`.
+- Pro directories depend on registry-verification flow (G7).
+- Data pages depend on source-feed ETL (G6).
+- Tax/legal pages depend on LEGAL_REVIEW.
+- Foreign-language pages depend on translation QA (G5).
+
+Never gated on &quot;competitor is too strong.&quot; Yad2/Madlan have authority moats but per-query KD on city sale/rent is 0–22, foreign-language KD is 0–21, glossaries are 0–28 — every category is open to win with execution.
+
+---
+
+## READY FOR NEXT PROMPT
+
+Outstanding work this report does NOT yet contain (will not fabricate):
+- Semrush runs for the ~70 keywords in &#167;11 buckets B1–B10.
+- Manual SERP audits for Arabic-language city queries and distressed/foreclosure terms.
+- Full prose write-ups of G3–G11 (frameworks only above; each needs its own dedicated pass).
+- Backlink-profile audit of yad2/madlan/onmap/homeless (requires separate `backlink_analysis` calls).
+
+Say &quot;run batch B1&quot; (or any batch) to continue Semrush pagination, or &quot;write G6 in full&quot; / etc. to expand any framework into a finished report. No batches will be run with fabricated numbers.
+</pre></section>
+<section class='report' id='repo-inventory.md'><h2>repo-inventory.md</h2><pre># NadLan repo inventory
+
+Source: `github.com/The-new-ben/nad-lan-co-il` @ `main` — 1,070 files total.
+
+This is a **WordPress block theme + companion plugin**, not a JS app. No React/Next/build pipeline.
+
+## Top-level shape
+
+| Path | Role |
+| --- | --- |
+| `style.css`, `style.min.css`, `theme.json`, `functions.php` | WordPress block theme entry. `functions.php` enqueues the showroom CSS/JS and theme glue. |
+| `parts/` (7) | Block-theme template parts (header, footer, etc.). |
+| `templates/` (8) | Block-theme page templates. |
+| `patterns/` (109) | Block patterns — site sections (hero, banners, CTAs, project-showroom pattern incl. `project-showroom-dimri-yama.php`). |
+| `styles/` (32) | Block-theme `styles/colors`, `styles/typography`, `styles/sections`, `styles/blocks` variations. |
+| `plugins/nadlan-config/` (132) | **The real product code.** Custom REST API (`nadlan/v1`), CPTs, lead engine, AI features, ads/auction, studio uploads, etc. |
+| `plugin-dist/` (132) | A built/distributed mirror of `plugins/nadlan-config`. Treat `plugins/` as the source of truth and `plugin-dist/` as an artefact. |
+| `assets/` (176) | Theme-level CSS/JS/fonts/images + per-project payloads under `assets/projects/&lt;slug&gt;/` (3D `.glb`, plans, SVGs, showroom JSON) and design references under `assets/premium*/`. |
+| `docs/` (273) | Long history of specs, audits, research, QA scripts. Dates from 2026-06-03 onward. Some specs are aspirational — see `docs-vs-reality.md`. |
+| `docs/qa/` (186) | The bulk of docs — per-feature QA notes. |
+| `scripts/` (20) | Repo housekeeping / build helpers (PowerShell `assemble-nad-lan-kit.ps1` at root, plus `scripts/`). |
+| `skills/` (80), `skills-templates/` (1) | Internal agent skill docs used by the team (not WP runtime). |
+| `assemble-nad-lan-kit.ps1`, `START-HERE.md`, `AGENTS.md`, `BACKLOG.md`, `COORDINATION.md`, `HANDOFF.md` | Team workflow / agent handoff docs. |
+
+## Plugin code map — `plugins/nadlan-config/inc/`
+
+Single plugin, no OOP framework — flat `inc/*.php` files, each `add_action(&#39;rest_api_init&#39;, …)` or `add_filter` based. Grouped by concern:
+
+**Content model &amp; catalog**
+- `catalog-meta.php`, `catalog-shine.php`, `cards-render.php`, `archive-grid.php`
+- `compounds.php`, `compound-map.php`, `city-hubs.php`
+- `media.php`, `og-image.php`, `pricing-schema.php`, `schema.php`, `term-faq-schema.php`
+
+**Projects / showroom**
+- `project-3d.php` (registers `/project-showroom/&lt;id&gt;` REST + 3D config)
+- `project-page-assembly.php`
+
+**Directory (professionals)**
+- `directory.php` (registers `/directory` and `/projects` REST)
+- `directory-assets.php`, `profile-extras.php`, `preferred-partners.php`
+
+**Search / discovery**
+- `autocomplete.php` (`/suggest`), `geo-search.php` (`/near`), `map.php` (`/map`)
+- `ai-features.php` (`/nl-search`), `compare.php` (`/compare`), `facets.php`, `saved-search.php`
+
+**AI**
+- `ai-provider.php`, `ai-features.php`, `ai-concierge.php` (`/concierge`, `/concierge-lead`)
+- `lead-ai-qualify.php`
+
+**Leads**
+- `conversion-cta.php` (`/lead`), `whatsapp-lead-ingestion.php` (`/wa-lead`)
+- `lead-e2e.php` (`/lead/status`), `lead-drip.php`, `lead-nurture.php`, `lead-routing.php`, `lead-ledger.php` (referrals), `lead-inbox.php`
+
+**Monetization / advertisers**
+- `advertiser-center.php`, `advertiser-orders.php`, `featured-upsell.php`, `sponsored-spot.php`
+- `placement-auction.php` (`/auction/bid`), `auction.php` (`auctions/v1/*`)
+- `offers.php` (`/offers`, `/offers/leading/&lt;card&gt;`)
+- `tiers.php`, `greeninvoice-recurring.php` (`/gi-ipn` — billing webhook)
+
+**Studio (owner-facing media manager)**
+- `studio.php`, `studio-rest.php` (8 routes under `/studio/*`)
+- `owner-config-rest.php` (`/owner/whatsapp`, `/owner/partners`)
+- `claim.php` + `claim-prompt.php` (`/claim`), `reviews.php` (`/review-submit`)
+
+**Ops / admin / health**
+- `admin-control.php` (6 routes under `/admin-control/*`)
+- `health.php` (`/health`), top-level `nadlan-config.php` registers `/healthcheck`
+- `ops-dashboard.php`, `business-metrics.php`, `feature-flags.php`, `roles.php`, `final-hardening.php`, `import.php` (`/import-enrich`, `/import-run`), `avm-deals.php` (`/deals-ingest`, `/avm`), `sitemap-ping.php`, `ga4-events.php`
+
+**Misc**
+- `breadcrumbs.php`, `calculators.php`, `contextual-help.php`, `conversion-cta.php`, `esign.php`, `glossary.php` (`/glossary-publish`) + `glossary-autolink.php`, `homepage.php`, `listings-ux.php` (`/favorite`), `nearby-poi.php`, `premium-ui.php`, `social-proof.php`, `lead-drip.php` (`/drip-optout`), `lead-nurture.php` (`/nurture/unsubscribe`), `lead-ledger.php` (`/referral/*`)
+
+**Third-party**
+- `lib/plugin-update-checker/` — bundled YahnisElsts PUC v5.6, used for GitHub-based plugin updates. Not our code.
+
+## Theme-level JS/CSS
+
+- `assets/js/nadlan-accessibility.js`, `nadlan-premium-revenue.js`, `nadlan-project-showroom.js`
+- `assets/css/editor-style.css`, `nadlan-premium-revenue.css`, `nadlan-premium-sitewide.css`, `nadlan-project-showroom.css`
+- Per-project payloads under `assets/projects/&lt;slug&gt;/` (e.g. `dimri-yama`, `rainbow-tel-aviv`): `model.glb`, `showroom-payload.json`, `unit-map.json`, `view-layer-config.json`, `material-intake-template.json`, plans/, source-notes, QA.
+
+## CPTs and taxonomies (live, from `/wp-json/wp/v2/types`)
+
+Custom post types: `nadlan_property`, `nadlan_project`, `nadlan_professional`, `nadlan_auction`, `nadlan_term`.
+Taxonomies: `nadlan_city`, `nadlan_compound`, `nadlan_profession`, `nadlan_term_cat`.
+Standard: `post`, `page`, plus WooCommerce `product` + `product_cat` / `product_tag` / `product_brand`.
+
+## Live runtime versions (from `/wp-json/nadlan/v1/healthcheck`)
+
+- Plugin `nadlan-config` **v1.68.2**
+- PHP 8.5.5, WP 7.0
+- All four core CPTs/taxes present, auction CPT + bids table present
+- AI provider: OpenAI (key present, daily caps 30k / global 200k)
+
+## Notable observations
+
+1. **`plugin-dist/` duplicates `plugins/nadlan-config/`.** Edit only one; reconcile via build step if both diverge.
+2. **No automated tests in the repo.** QA is doc-based under `docs/qa/`.
+3. **No Composer / no PSR autoload.** Plugin uses flat `require` includes.
+4. **Update channel = GitHub** via Plugin Update Checker — installed site pulls releases from this same repo.
+</pre></section>
+<section class='report' id='rest-api-map.md'><h2>rest-api-map.md</h2><pre># NadLan REST API map
+
+Namespaces exposed by `nad-lan.co.il`: `nadlan/v1` (custom), `auctions/v1` (custom), plus stock `wp/v2`, `wc/*`, `yoast/v1`, `jetpack/v4`, `google-site-kit/v1`, `wc-admin*`, `wp-abilities/v1`, `wp-site-health/v1`, `wp-block-editor/v1`.
+
+This map covers the **custom** routes only. Source paths are relative to `plugins/nadlan-config/`.
+
+## Format
+
+`METHOD /route` — handler file:line — auth — live-probe result.
+Live probes were unauthenticated `GET`s.
+
+## Discovery / catalog
+
+| Route | Handler | Notes |
+| --- | --- | --- |
+| `GET /nadlan/v1/projects` | `inc/directory.php:746` | Public. Returns `{ok, html}` — server-rendered project cards markup. Probe: HTTP 200, ~19 KB HTML. |
+| `GET /nadlan/v1/directory` | `inc/directory.php:224` | Public. Same shape (HTML cards) for professionals. Probe: HTTP 200, ~10 KB. |
+| `GET /nadlan/v1/suggest` | `inc/autocomplete.php:38` | Public. Top cities/terms with counts. Probe: HTTP 200, JSON `{ok, items:[{name,count}]}`. |
+| `GET /nadlan/v1/map` | `inc/map.php:17` | Public. Listings for map (lat/lng). Probe: HTTP 200, `{ok, count:0, items:[]}` — no live listings currently. |
+| `GET /nadlan/v1/near` | `inc/geo-search.php:222` | Public. Geo radius search. |
+| `POST /nadlan/v1/nl-search` | `inc/ai-features.php:172` | Natural-language search (OpenAI). |
+| `POST /nadlan/v1/compare` | `inc/compare.php:25` | Side-by-side compare. |
+| `GET\|POST /nadlan/v1/saved-search` | `inc/saved-search.php:45` | Saved searches. |
+| `GET /nadlan/v1/saved-search/confirm` | `inc/saved-search.php:49` | Email-confirmation handoff. |
+
+## Project showroom
+
+| Route | Handler | Notes |
+| --- | --- | --- |
+| `GET /nadlan/v1/project-showroom/&lt;id&gt;` | `inc/project-3d.php:683` | **Auth-gated** — probe returned 401 `rest_forbidden`. Confirm whether intent is admin-only or `nonce`-checked; the spec docs imply public read. |
+
+## AI concierge &amp; leads
+
+| Route | Handler | Notes |
+| --- | --- | --- |
+| `POST /nadlan/v1/concierge` | `inc/ai-concierge.php:346` | Conversational concierge. |
+| `POST /nadlan/v1/concierge-lead` | `inc/ai-concierge.php:459` | Concierge → lead conversion. |
+| `POST /nadlan/v1/lead` | `inc/conversion-cta.php:69` | Primary CTA lead intake. |
+| `POST /nadlan/v1/wa-lead` | `inc/whatsapp-lead-ingestion.php:159` | WhatsApp webhook → lead. |
+| `GET /nadlan/v1/lead/status` | `inc/lead-e2e.php:381` | Lead pipeline status. |
+| `POST /nadlan/v1/drip-optout` | `inc/lead-drip.php:85` | Drip opt-out. |
+| `GET /nadlan/v1/nurture/unsubscribe` | `inc/lead-nurture.php:603` | Nurture unsub. |
+| `GET /nadlan/v1/referral/route` | `inc/lead-ledger.php:107` | Referral routing. |
+| `POST /nadlan/v1/referral/&lt;token&gt;/accept` | `inc/lead-ledger.php:201` | Referral accept. |
+| `GET /nadlan/v1/referral/&lt;token&gt;/status` | `inc/lead-ledger.php:216` | Referral status. |
+
+## Monetization / advertisers
+
+| Route | Handler | Notes |
+| --- | --- | --- |
+| `GET /nadlan/v1/offers` | `inc/offers.php:113` | Live probe: **HTTP 404 `rest_no_route`**. Discrepancy: route is registered in code but not reachable on prod — likely a `permission_callback` returning false unauth, or a missing include. See `docs-vs-reality.md`. |
+| `GET /nadlan/v1/offers/leading/&lt;card&gt;` | `inc/offers.php:177` | Leading offer per card. |
+| `POST /nadlan/v1/auction/bid` | `inc/placement-auction.php:285` | Placement-auction bid. |
+| `GET /auctions/v1/&lt;id&gt;/state` | `inc/auction.php:131` | Auction state. |
+| `GET /auctions/v1/&lt;id&gt;/bids` | `inc/auction.php:135` | Bids. |
+| `POST /nadlan/v1/gi-ipn` | `inc/greeninvoice-recurring.php:322` | **GreenInvoice IPN webhook** — billing. Treat as untrusted input, must verify signature inside handler. |
+| `GET /nadlan/v1/owner/whatsapp` | `inc/owner-config-rest.php:31` | Owner WhatsApp config. |
+| `GET /nadlan/v1/owner/partners` | `inc/owner-config-rest.php:52` | Owner partners config. |
+
+## Studio (owner media manager)
+
+All under `nadlan/v1/studio/*` — `inc/studio-rest.php`. Authenticated.
+- `POST /studio/&lt;id&gt;/save` (L55)
+- `POST /studio/&lt;id&gt;/upload` (L138)
+- `POST /studio/&lt;id&gt;/gallery/reorder` (L175)
+- `POST /studio/&lt;id&gt;/gallery/delete` (L188)
+- `POST /studio/&lt;id&gt;/ai-copy` (L204)
+- `GET /studio/&lt;id&gt;` (L236)
+- `GET /studio/mine` (L259)
+- `POST /studio/create` (L300)
+
+## Admin control
+
+All under `nadlan/v1/admin-control/*` — `inc/admin-control.php`. Authenticated (admin).
+- `GET /admin-control/cards` (L594)
+- `GET\|POST /admin-control/card/&lt;id&gt;` (L599)
+- `POST /admin-control/bulk` (L616)
+- `POST /admin-control/impersonate/start` (L621)
+- `POST /admin-control/impersonate/end` (L626)
+- `POST /admin-control/impersonate/write-toggle` (L631)
+
+## Ingest / import / valuation
+
+| Route | Handler | Notes |
+| --- | --- | --- |
+| `POST /nadlan/v1/import-enrich` | `inc/import.php:211` | Enrich imported records. |
+| `POST /nadlan/v1/import-run` | `inc/import.php:262` | Run import batch. |
+| `POST /nadlan/v1/deals-ingest` | `inc/avm-deals.php:107` | Deals ingest. |
+| `POST /nadlan/v1/avm` | `inc/avm-deals.php:168` | Auto valuation. |
+| `POST /nadlan/v1/claim` | `inc/claim.php:41` | Claim a listing/professional. |
+| `POST /nadlan/v1/favorite` | `inc/listings-ux.php:43` | Favorite a listing. |
+| `POST /nadlan/v1/review-submit` | `inc/reviews.php:68` | Submit review. |
+| `POST /nadlan/v1/glossary-publish` | `inc/glossary.php:233` | Publish glossary term. |
+
+## Misc
+
+| Route | Handler | Notes |
+| --- | --- | --- |
+| `GET /nadlan/v1/og/&lt;id&gt;.svg` | `inc/og-image.php:42` | Dynamic OG image as SVG. |
+| `GET /nadlan/v1/health` | `inc/health.php:207` | Probe: HTTP 200. Returns plugin version, DB latency, GreenInvoice + OpenAI dependency status, lead E2E &amp; AI usage counters. |
+| `GET /nadlan/v1/healthcheck` | `nadlan-config.php:55` (root file) | Probe: HTTP 200. Catalog/CPT presence flags + AI provider + version. |
+
+## Auth summary
+
+Most write routes use `permission_callback` of either `is_user_logged_in` or a capability check; `lead`, `wa-lead`, `gi-ipn`, `concierge-lead` are public POSTs by design (forms/webhooks). The 401 on `/project-showroom/&lt;id&gt;` and 404 on `/offers` are the two anomalies worth confirming with you — both are listed as discrepancies in `docs-vs-reality.md`.
+</pre></section>
+<section class='report' id='advisor-notes.md'><h2>advisor-notes.md</h2><pre># Advisor session notes
+
+Running log so context survives across chats. Newest at top.
+
+## 2026-06-22 — redesign plan approved, reports 00 + 01 drafted
+
+User approved the 8-report plan. Picked **urban-renewal / תמא 38** as the 3rd pilot (Dimri Yama and Rainbow Tel Aviv locked). Slug still TBD — needs pick from existing WP catalog.
+
+Drafted:
+- `00-strategy-brief.md` — thesis, target users, what we are / aren&#39;t, sequencing.
+- `01-showroom-redesign.md` — full UX spec: 4-layer mobile-first showroom, exact JS wiring spec for hotspots/orbit, contractor-kit schema, performance budgets, per-pilot notes, monetization slots, WP eng checklist.
+
+Key unblockers for the WP team (not us):
+1. `nadlan-project-showroom.js` never reads `hotspot_position` / `camera_orbit` from `unit-map.json`. ~30 lines to wire. Spec in &#167;4 of report 01.
+2. `/wp-json/nadlan/v1/project-showroom/&lt;id&gt;` returns 401 — confirm intent or fix.
+3. `/wp-json/nadlan/v1/offers` returns 404 despite registration in `inc/offers.php:113`.
+4. Dimri Yama `model-prototype.glb` is an 8KB stub — replace before contractor pitch.
+5. `plugin-dist/` vs `plugins/nadlan-config/` drift — confirm which is deployed.
+
+Next reports queued: 02 design-system, 03 content-architecture, 04 monetization-playbook, 05 foreign-buyer-engine, 06 lead-ops, 07 seo-money-pages.
+
+## 2026-06-22 — session bootstrap
+
+**Mode:** read-only advisor. No code changes to this Lovable project. No writes to WordPress. No Cloud/Supabase. All findings live in `.lovable/reports/`.
+
+**Sources connected:**
+- GitHub: `The-new-ben/nad-lan-co-il@main` (1,070 files, public).
+- Live REST: `https://nad-lan.co.il/wp-json/` — namespaces `nadlan/v1`, `auctions/v1`, plus stock WP/Woo/Yoast/Jetpack/GSK.
+
+**Plugin / WP versions on prod:** `nadlan-config 1.68.2`, PHP 8.5.5, WP 7.0.
+
+**First-pass deliverables in this folder:**
+- `repo-inventory.md` — area-by-area code map.
+- `rest-api-map.md` — every `nadlan/v1` + `auctions/v1` route → handler file:line + live probe result.
+
+**Open questions for next turn (no action taken — flagged for you):**
+1. `GET /nadlan/v1/project-showroom/&lt;id&gt;` returns **401** unauthenticated. The 3D showroom spec implies public read. Intentional gate (e.g. nonce-only) or regression?
+2. `GET /nadlan/v1/offers` returns **404 `rest_no_route`** even though `inc/offers.php:113` registers it. Either (a) `offers.php` isn&#39;t being `require_once`d in `nadlan-config.php`, (b) a feature flag short-circuits the load, or (c) `plugin-dist/` (deployed) diverges from `plugins/` (source). Worth checking next.
+3. `/nadlan/v1/map` returned `count: 0` — no listings on prod or a default scoping issue?
+4. `plugin-dist/` mirrors `plugins/nadlan-config/`. Confirm which one is actually deployed and whether one is generated from the other.
+5. If you want me to verify authenticated routes (`/studio/mine`, `/admin-control/cards`, `/project-showroom/&lt;id&gt;`), provide an Application Password — I&#39;ll store it via `add_secret`, never echo it, and only GET.
+
+**Pending reports (will draft on request):**
+- `content-model.md` — drill into `nadlan_property` / `nadlan_project` / `nadlan_professional` field shapes by probing `wp/v2/&lt;cpt&gt;` and cross-reading `catalog-meta.php`.
+- `docs-vs-reality.md` — reconcile the `docs/2026-06-*` specs (offers, 3D, multilingual, lead AI) against what&#39;s actually wired in the plugin.
+</pre></section>
+</main>
+</body>
+</html>
