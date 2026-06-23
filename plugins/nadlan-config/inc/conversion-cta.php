@@ -52,6 +52,7 @@ add_action( 'wp_footer', function () {
 .nlcta-wa{display:grid;place-items:center;width:56px;height:56px;border-radius:50%;background:#25D366;box-shadow:0 10px 28px rgba(37,211,102,.5);transition:transform .2s,box-shadow .2s}
 .nlcta-wa:hover{transform:translateY(-3px);box-shadow:0 14px 36px rgba(37,211,102,.6)}
 @media(max-width:520px){#nlcta{bottom:14px;inset-inline-end:14px}.nlcta-wa{width:50px;height:50px}}
+@media(max-width:760px){body.nadlan-p3d-stage-active #nlcta{display:none}}
 </style>
 <script>
 (function(){

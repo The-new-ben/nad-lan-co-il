@@ -1,0 +1,110 @@
+{
+  "activeUnit": null,
+  "cameraOrbit": "32deg 58deg auto",
+  "cameraTarget": "0 124 7",
+  "hotspotCount": 6,
+  "hotspots": [
+    {
+      "ariaDisabled": "",
+      "elementAtCenter": null,
+      "rect": {
+        "cx": 1551,
+        "cy": 409,
+        "h": 44,
+        "w": 44,
+        "x": 1529,
+        "y": 387
+      },
+      "text": "דירת 3 חדרים, קומה 8 דירת 3 חדרים, קומה 8 · 3 חד׳ 82 מ\"ר · מבט לחצר ולים זמינה ל",
+      "unit": "unit-08-sw",
+      "visible": true
+    },
+    {
+      "ariaDisabled": "",
+      "elementAtCenter": null,
+      "rect": {
+        "cx": 1540,
+        "cy": 357,
+        "h": 44,
+        "w": 44,
+        "x": 1518,
+        "y": 335
+      },
+      "text": "דירת 4 חדרים, קומה 16 דירת 4 חדרים, קומה 16 · 4 חד׳ 112 מ\"ר · קו החוף ושדה דב זמ",
+      "unit": "unit-16-w",
+      "visible": true
+    },
+    {
+      "ariaDisabled": "",
+      "elementAtCenter": null,
+      "rect": {
+        "cx": 1540,
+        "cy": 301,
+        "h": 44,
+        "w": 44,
+        "x": 1518,
+        "y": 279
+      },
+      "text": "דירת 4 חדרים, קומה 24 דירת 4 חדרים, קומה 24 · 4 חד׳ 128 מ\"ר · ים, פארק וצפון תל ",
+      "unit": "unit-24-nw",
+      "visible": true
+    },
+    {
+      "ariaDisabled": "",
+      "elementAtCenter": null,
+      "rect": {
+        "cx": 1575,
+        "cy": 254,
+        "h": 44,
+        "w": 44,
+        "x": 1553,
+        "y": 232
+      },
+      "text": "דירת 5 חדרים, קומה 31 דירת 5 חדרים, קומה 31 · 5 חד׳ 156 מ\"ר · קו הרקיע והחצר הפנ",
+      "unit": "unit-31-se",
+      "visible": true
+    },
+    {
+      "ariaDisabled": "",
+      "elementAtCenter": null,
+      "rect": {
+        "cx": 1549,
+        "cy": 205,
+        "h": 44,
+        "w": 44,
+        "x": 1527,
+        "y": 183
+      },
+      "text": "דירת 5 חדרים, קומה 38 דירת 5 חדרים, קומה 38 · 5 חד׳ 210 מ\"ר · פנטהאוז גבוה לכיוו",
+      "unit": "unit-38-penthouse",
+      "visible": true
+    },
+    {
+      "ariaDisabled": "",
+      "elementAtCenter": null,
+      "rect": {
+        "cx": 1452,
+        "cy": 418,
+        "h": 44,
+        "w": 44,
+        "x": 1430,
+        "y": 396
+      },
+      "text": "דירת 4 חדרים, קומה 7 דירת 4 חדרים, קומה 7 · 4 חד׳ 118 מ\"ר · בניין בוטיק סביב הלג",
+      "unit": "unit-boutique-07",
+      "visible": true
+    }
+  ],
+  "scrollY": 2313,
+  "stageRect": {
+    "h": 664,
+    "w": 743,
+    "x": 486,
+    "y": -40
+  },
+  "url": "https://nad-lan.co.il/projects/rainbow-tel-aviv/?codex_chrome_manual=unit_hotspot_1693_1782249109811",
+  "viewport": {
+    "height": 551,
+    "width": 1355
+  }
+}

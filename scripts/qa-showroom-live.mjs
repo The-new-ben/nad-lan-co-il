@@ -44,17 +44,47 @@ async function inspect(page) {
       const node = document.querySelector(sel);
       return node ? node.innerText.replace(/\s+/g, ' ').trim() : '';
     };
+    const isVisible = (el) => {
+      const r = el.getBoundingClientRect();
+      const cs = getComputedStyle(el);
+      return r.width > 0 && r.height > 0 && cs.visibility !== 'hidden' && cs.display !== 'none' && Number(cs.opacity || 1) !== 0;
+    };
+    const rectInfo = (el) => {
+      const r = el.getBoundingClientRect();
+      return {
+        x: Math.round(r.x),
+        y: Math.round(r.y),
+        right: Math.round(r.right),
+        bottom: Math.round(r.bottom),
+        width: Math.round(r.width),
+        height: Math.round(r.height),
+      };
+    };
+    const modelHotspots = Array.from(document.querySelectorAll('.nlp3d-mv-hotspot')).map((el) => ({
+      unit: el.getAttribute('data-unit') || '',
+      visible: isVisible(el),
+      rect: rectInfo(el),
+    }));
+    const stagePins = Array.from(document.querySelectorAll('.nlp3d-model-picks .nlp3d-stage-pick')).map((el) => ({
+      unit: el.getAttribute('data-unit') || '',
+      visible: isVisible(el),
+      active: el.classList.contains('is-active') || el.getAttribute('aria-pressed') === 'true',
+      rect: rectInfo(el),
+    }));
+    const floatingCta = document.querySelector('#nlcta');
     const offenders = Array.from(document.querySelectorAll('body *')).slice(0, 4000).map((el) => {
       const r = el.getBoundingClientRect();
+      const visible = isVisible(el);
       return {
         tag: el.tagName,
         cls: String(el.className || '').slice(0, 120),
         x: Math.round(r.x),
         right: Math.round(r.right),
         width: Math.round(r.width),
+        visible,
         text: (el.innerText || '').replace(/\s+/g, ' ').slice(0, 80),
       };
-    }).filter((o) => o.width > 0 && (o.x < -1 || o.right > window.innerWidth + 1)).slice(0, 20);
+    }).filter((o) => o.visible && o.width > 0 && (o.x < -1 || o.right > window.innerWidth + 1)).slice(0, 20);
 
     const tapTargets = Array.from(document.querySelectorAll('.nlp3d button, .nlp3d a, .nlp3d [role="button"]')).map((el) => {
       const r = el.getBoundingClientRect();
@@ -80,6 +110,11 @@ async function inspect(page) {
       modelViewerCount: document.querySelectorAll('model-viewer').length,
       modelPickCount: document.querySelectorAll('.nlp3d-model-picks .nlp3d-stage-pick').length,
       activePicks: Array.from(document.querySelectorAll('.nlp3d-stage-pick.is-active, .nlp3d-stage-pick[aria-pressed="true"]')).map((el) => el.getAttribute('data-unit')),
+      visibleStagePins: stagePins.filter((pin) => pin.visible).map((pin) => pin.unit),
+      stagePins,
+      visibleModelHotspots: modelHotspots.filter((pin) => pin.visible).map((pin) => pin.unit),
+      modelHotspots,
+      floatingCtaVisible: floatingCta ? isVisible(floatingCta) : false,
       cameraOrbit: mv ? mv.getAttribute('camera-orbit') : null,
       cameraTarget: mv ? mv.getAttribute('camera-target') : null,
       dockText: visibleText('.nlp3d-selection-dock'),

@@ -1,0 +1,103 @@
+{
+  "cameraOrbit": "32deg 58deg auto",
+  "cameraTarget": "0 124 7",
+  "pickCount": 6,
+  "picks": [
+    {
+      "ariaDisabled": "",
+      "elementAtCenter": "SPAN|nlp3d-pick-label|",
+      "rect": {
+        "cx": 680,
+        "cy": 387,
+        "h": 44,
+        "w": 60,
+        "x": 650,
+        "y": 365
+      },
+      "text": "8 3 ח דירת 3 חדרים, קומה 8 · 3 חד׳82 מ\"ר · מבט לחצר וליםזמינה לפנייהאומדן ₪6,232",
+      "unit": "unit-08-sw",
+      "visible": true
+    },
+    {
+      "ariaDisabled": "",
+      "elementAtCenter": "STRONG||",
+      "rect": {
+        "cx": 696,
+        "cy": 329,
+        "h": 44,
+        "w": 68,
+        "x": 662,
+        "y": 307
+      },
+      "text": "16 4 ח דירת 4 חדרים, קומה 16 · 4 חד׳112 מ\"ר · קו החוף ושדה דבזמינה לפנייהאומדן ₪",
+      "unit": "unit-16-w",
+      "visible": true
+    },
+    {
+      "ariaDisabled": "",
+      "elementAtCenter": "STRONG||",
+      "rect": {
+        "cx": 716,
+        "cy": 271,
+        "h": 44,
+        "w": 68,
+        "x": 682,
+        "y": 249
+      },
+      "text": "24 4 ח דירת 4 חדרים, קומה 24 · 4 חד׳128 מ\"ר · ים, פארק וצפון תל אביבזמינה לפנייה",
+      "unit": "unit-24-nw",
+      "visible": true
+    },
+    {
+      "ariaDisabled": "",
+      "elementAtCenter": "STRONG||",
+      "rect": {
+        "cx": 926,
+        "cy": 221,
+        "h": 44,
+        "w": 68,
+        "x": 892,
+        "y": 199
+      },
+      "text": "31 5 ח דירת 5 חדרים, קומה 31 · 5 חד׳156 מ\"ר · קו הרקיע והחצר הפנימיתזמינה לפנייה",
+      "unit": "unit-31-se",
+      "visible": true
+    },
+    {
+      "ariaDisabled": "",
+      "elementAtCenter": "STRONG||",
+      "rect": {
+        "cx": 926,
+        "cy": 170,
+        "h": 44,
+        "w": 68,
+        "x": 892,
+        "y": 148
+      },
+      "text": "38 5 ח דירת 5 חדרים, קומה 38 · 5 חד׳210 מ\"ר · פנטהאוז גבוה לכיוון היםזמינה לפניי",
+      "unit": "unit-38-penthouse",
+      "visible": true
+    },
+    {
+      "ariaDisabled": "",
+      "elementAtCenter": "SPAN|nlp3d-pick-label|",
+      "rect": {
+        "cx": 563,
+        "cy": 395,
+        "h": 44,
+        "w": 60,
+        "x": 533,
+        "y": 373
+      },
+      "text": "7 4 ח דירת 4 חדרים, קומה 7 · 4 חד׳118 מ\"ר · בניין בוטיק סביב הלגונהבתהליך בדיקהא",
+      "unit": "unit-boutique-07",
+      "visible": true
+    }
+  ],
+  "rootActiveUnit": null,
+  "scrollY": 2313,
+  "viewport": {
+    "height": 519,
+    "width": 1256
+  }
+}

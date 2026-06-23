@@ -1,0 +1,48 @@
+{
+  "target": {
+    "ariaDisabled": "",
+    "elementAtCenter": "STRONG||",
+    "rect": {
+      "cx": 926,
+      "cy": 170,
+      "h": 44,
+      "w": 68,
+      "x": 892,
+      "y": 148
+    },
+    "text": "38 5 ח דירת 5 חדרים, קומה 38 · 5 חד׳210 מ\"ר · פנטהאוז גבוה לכיוון היםזמינה לפניי",
+    "unit": "unit-38-penthouse",
+    "visible": true
+  },
+  "after": {
+    "activePicks": [
+      {
+        "cls": "nlp3d-mv-hotspot nlp3d-hotspot-hit nlp3d-status-available is-available is-recomm",
+        "rect": {
+          "h": 44,
+          "w": 44,
+          "x": 1478,
+          "y": 161
+        },
+        "unit": "unit-38-penthouse"
+      },
+      {
+        "cls": "nlp3d-stage-pick nlp3d-status-available is-available is-recommended is-active",
+        "rect": {
+          "h": 44,
+          "w": 68,
+          "x": 892,
+          "y": 148
+        },
+        "unit": "unit-38-penthouse"
+      }
+    ],
+    "bodyScrollWidth": 1237,
+    "cameraOrbit": "32deg 58deg auto",
+    "cameraTarget": "0 124 7",
+    "rootActiveUnit": "unit-38-penthouse",
+    "scrollWidth": 1237,
+    "stageCardHidden": false,
+    "stageCardText": "פתחו את פרטי הדירה × הדירה שנבחרה דירת 5 חדרים, קומה 38 5 חדרים · 210 מ\"ר · פנטהאוז גבוה לכיוון הים · זמינות להדגמה בלבד עד לקבלת מלאי רשמי מהיזם מומלצת לבדיקה זמינה לפנייה פנטהאוז גבוה לכיוון הים כולל אומדן אומדן ₪15,960,000 זמינה לפנייה פנטהאוז גבוה לכיוון הים האומדן עוזר להשוואה ראשונית בלבד. המחיר, הזמינות ותנאי העסקה יאומתו מול היזם לפני כל התקדמות. פרטים מלאים מבט מהדירה תוכניות וסיור דברו עם היזם פרטים מבט מהדירה תוכניות שמש סביבה סיור"
+  }
+}

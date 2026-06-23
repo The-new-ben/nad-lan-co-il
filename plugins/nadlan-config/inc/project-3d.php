@@ -996,8 +996,10 @@ if ( ! function_exists( 'nadlan_p3d_render' ) ) {
 								data-normal="<?php echo esc_attr( $hotspot_normal ); ?>"
 								data-visibility-attribute="visible"
 								data-unit="<?php echo esc_attr( $unit['id'] ); ?>"
+								aria-hidden="true"
+								tabindex="-1"
 								aria-label="<?php echo esc_attr( sprintf( 'דירה %s, קומה %s, %s חדרים, %s', $unit['id'], $unit['floor'] ?? '', $unit['rooms'] ?? '', $unit_status_label ) ); ?>"
-								<?php echo $unit_status === 'sold' ? 'aria-disabled="true" tabindex="-1"' : ''; ?>>
+								<?php echo $unit_status === 'sold' ? 'aria-disabled="true"' : ''; ?>>
 								<span class="nlp3d-hotspot-dot" aria-hidden="true"></span>
 								<span class="nlp3d-mv-label nlp3d-hotspot-tag"><?php echo esc_html( $hotspot_title ); ?></span>
 								<span class="nlp3d-hotspot-tip" role="tooltip">
@@ -1263,7 +1265,7 @@ add_filter( 'wpseo_twitter_description', 'nadlan_p3d_seo_description', 20 );
 if ( ! function_exists( 'nadlan_p3d_lovable_showroom_v1690_css' ) ) {
 	function nadlan_p3d_lovable_showroom_v1690_css() {
 		return <<<'CSS'
-/* v1.69.3: public showroom surface. */
+/* v1.69.4: public showroom surface. */
 @font-face{font-family:"Frank Ruhl Libre";font-style:normal;font-weight:400;font-display:swap;src:url("/wp-content/themes/nadlan-revenue/assets/fonts/frank-ruhl-libre/frl-400.woff2") format("woff2")}
 @font-face{font-family:"Frank Ruhl Libre";font-style:normal;font-weight:500;font-display:swap;src:url("/wp-content/themes/nadlan-revenue/assets/fonts/frank-ruhl-libre/frl-500.woff2") format("woff2")}
 @font-face{font-family:"Frank Ruhl Libre";font-style:normal;font-weight:700;font-display:swap;src:url("/wp-content/themes/nadlan-revenue/assets/fonts/frank-ruhl-libre/frl-700.woff2") format("woff2")}
@@ -2237,16 +2239,7 @@ opacity:1!important;
 transform:translateX(50%) translateY(0)!important;
 }
 .nlp3d.nlp3d-premium .nlp3d-mv-hotspot{
-position:relative!important;
-display:inline-grid!important;
-place-items:center!important;
-width:44px!important;
-height:44px!important;
-min-width:44px!important;
-min-height:44px!important;
-padding:0!important;
-border-radius:999px!important;
-background:rgba(255,250,242,.94)!important;
+display:none!important;
 }
 .nlp3d.nlp3d-premium .nlp3d-mv-label{
 position:absolute!important;
@@ -3868,7 +3861,7 @@ add_action(
 			return;
 		}
 
-		wp_register_style( 'nadlan-p3d', '', array(), '1.69.3' );
+		wp_register_style( 'nadlan-p3d', '', array(), '1.69.4' );
 		wp_enqueue_style( 'nadlan-p3d' );
 		wp_add_inline_style( 'nadlan-p3d', nadlan_p3d_lovable_showroom_v1690_css() );
 
@@ -3879,7 +3872,7 @@ add_action(
 			wp_enqueue_script( 'nadlan-model-viewer' );
 		}
 
-		wp_register_script( 'nadlan-p3d', '', array(), '1.69.3', true );
+		wp_register_script( 'nadlan-p3d', '', array(), '1.69.4', true );
 		wp_enqueue_script( 'nadlan-p3d' );
 		wp_add_inline_script( 'nadlan-p3d', nadlan_p3d_inline_js( esc_url_raw( rest_url( 'nadlan/v1/lead' ) ) ) );
 	}
@@ -4275,6 +4268,7 @@ add_filter(
 			'model_viewer_version' => '4.3.1',
 			'model_viewer_lazy' => true,
 			'model_viewer_hotspots' => true,
+			'model_viewer_hotspots_hidden_when_overlay_picks_v1694' => true,
 			'product_selector_v1641' => true,
 			'status_colored_unit_picks' => true,
 			'recommended_unit_pulse' => true,
