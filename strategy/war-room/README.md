@@ -19,6 +19,8 @@ Primary owner-facing artifacts:
 - `international-investor-execution-packet-visual-qa.md` - screenshot review note for the international investor packet.
 - `technical-seo-execution-packet-rtl.html` - Hebrew RTL technical SEO packet with page-family rules for indexing, canonicals, sitemaps, language alternates, structured data, breadcrumbs, and release gates.
 - `technical-seo-execution-packet-visual-qa.md` - screenshot review note for the technical SEO packet.
+- `competitor-serp-execution-packet-rtl.html` - Hebrew RTL competitor and search-arena packet with current public-source evidence, query teardown, competitor feature matrix, and NadLan build response.
+- `competitor-serp-execution-packet-visual-qa.md` - screenshot review note for the competitor and search-arena packet.
 - `objective-completion-audit-rtl.html` - Hebrew RTL audit against the full war-room objective, showing what is proven, partial, or still missing.
 - `current-site-evidence-2026-06-23-rtl.html` - Hebrew RTL summary of the fresh live public-site screenshot run from 2026-06-23.
 - `current-site-and-objective-audit-visual-qa.md` - screenshot review note for the fresh public evidence and objective audit.
@@ -48,6 +50,10 @@ Structured artifacts:
 - `technical-seo-page-matrix.csv` - route-by-route technical SEO matrix for 39 page families.
 - `technical-seo-execution-packet.csv` - structured technical SEO queue with source of truth, canonicals, noindex rules, sitemaps, structured data, breadcrumbs, language alternates, filters, project assets, international pages, and release gates.
 - `technical-seo-execution-packet.md` - implementation narrative for technical SEO and structured data.
+- `competitor-serp-source-map.csv` - structured current-source map for 14 competitor and reference surfaces.
+- `competitor-serp-query-teardown.csv` - structured mapping of 14 search intents to competitors, NadLan canonical owners, and build requirements.
+- `competitor-feature-matrix.csv` - structured comparison of 10 competitor/source types and NadLan response.
+- `competitor-serp-execution-packet.md` - implementation narrative for competitor and search-arena strategy.
 - `lovable-design-validation-prompt.md` - controlled no-spend prompt to use only if the owner chooses another Lovable review.
 - `keyword-to-page-owner.csv` - one canonical owner for every keyword row from the recovered Report 2 keyword universe.
 - `current-evidence-register.csv` - evidence, limitations, and next verification actions.

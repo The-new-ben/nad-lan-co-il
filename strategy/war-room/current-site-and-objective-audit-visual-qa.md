@@ -63,8 +63,8 @@ Owner reports:
 
 - `current-site-evidence-2026-06-23-rtl.html` is readable, shows 15 screenshots, uses Hebrew verdict labels, and clearly states that the run is not final approval.
 - The current-site evidence mobile screenshot was corrected to 390px width after converting the results table into stacked mobile rows.
-- `objective-completion-audit-rtl.html` is Hebrew-first, separates proven items from partial items, and now includes the technical SEO build queue in REQ-10.
-- The owner index links to the evidence report, objective audit, and the technical SEO packet.
+- `objective-completion-audit-rtl.html` is Hebrew-first, separates proven items from partial items, and now includes the technical SEO and competitor/search build queues in REQ-10.
+- The owner index links to the evidence report, objective audit, technical SEO packet, and competitor/search packet.
 
 ## Verdict
 
