@@ -3111,20 +3111,24 @@ if ( ! function_exists( 'nadlan_p3d_inline_js' ) ) {
 			}
 			return target;
 		}
+		function applyModelViewerCamera(orbit,target){
+			if(!modelViewer){return}
+			if(orbit){modelViewer.setAttribute('camera-orbit',orbit)}
+			if(target){modelViewer.setAttribute('camera-target',target)}
+			if(modelViewer.jumpCameraToGoal){modelViewer.jumpCameraToGoal()}
+		}
 		function syncModelViewerCamera(){
 			if(!modelViewer||!activeUnit){return}
 			var orbit=unitCameraOrbit(activeUnit);
-			if(orbit){
-				modelViewer.setAttribute('camera-orbit',orbit);
-			}
 			var target=activeUnit.hotspot_position||'';
 			if(!target){
 				var hotspot=modelHotspots.find(function(h){return h.dataset.unit===activeUnit.id});
 				if(hotspot&&hotspot.dataset.position){target=hotspot.dataset.position}
 			}
 			target=unitCameraTarget(target);
-			if(target){modelViewer.setAttribute('camera-target',target)}
-			if(modelViewer.jumpCameraToGoal){modelViewer.jumpCameraToGoal()}
+			applyModelViewerCamera(orbit,target);
+			window.requestAnimationFrame(function(){applyModelViewerCamera(orbit,target)});
+			window.setTimeout(function(){applyModelViewerCamera(orbit,target)},280);
 		}
 		function renderFloors(){
 			floorStrip.innerHTML='';
@@ -3934,7 +3938,7 @@ add_action(
 			return;
 		}
 
-		wp_register_style( 'nadlan-p3d', '', array(), '1.69.19' );
+		wp_register_style( 'nadlan-p3d', '', array(), '1.69.20' );
 		wp_enqueue_style( 'nadlan-p3d' );
 		wp_add_inline_style( 'nadlan-p3d', nadlan_p3d_lovable_showroom_v1690_css() );
 
@@ -3945,7 +3949,7 @@ add_action(
 			wp_enqueue_script( 'nadlan-model-viewer' );
 		}
 
-		wp_register_script( 'nadlan-p3d', '', array(), '1.69.19', true );
+		wp_register_script( 'nadlan-p3d', '', array(), '1.69.20', true );
 		wp_enqueue_script( 'nadlan-p3d' );
 		wp_add_inline_script( 'nadlan-p3d', nadlan_p3d_inline_js( esc_url_raw( rest_url( 'nadlan/v1/lead' ) ) ) );
 	}
@@ -4439,6 +4443,7 @@ add_filter(
 			'model_overview_default_v16917' => true,
 			'model_selected_camera_radius_v16918' => true,
 			'model_selected_camera_target_units_v16919' => true,
+			'model_selected_camera_settle_v16920' => true,
 			'projects_with_3d' => (int) $q->found_posts,
 			'projects_with_glb' => (int) $model_q->found_posts,
 		);
