@@ -24,3 +24,15 @@ The raw model-viewer click handler returned early whenever the visible apartment
 Version 1.69.25 keeps the authored marker picker first, then allows unhandled raw model-viewer taps to continue into the mesh-pick path and select the nearest authored apartment point.
 
 Honesty boundary: this is nearest authored unit selection from the real GLB mesh position. It is not exact per-window BIM selection. Exact per-window selection still requires official unit mesh IDs, BIM, IFC, or equivalent per-apartment geometry.
+
+## Live 1.69.25 Retest
+
+After deployment, desktop raw model-viewer tap passed the mesh-pick test. Mobile still selected `unit-08-sw`, but the strict QA remained false because the nearby visible marker fallback ran before the mesh-pick path logged a model hit.
+
+Evidence:
+
+- `docs/qa/screenshots/showroom-surface-mesh-pick-live-16925-2026-06-24/showroom-surface-mesh-pick-report.json`
+
+## Follow-up Fix
+
+Version 1.69.26 changes the raw model-viewer click order: mesh-pick first, visible marker fallback second. This keeps marker selection available but prevents mobile raw model taps from bypassing the real mesh-pick proof path.

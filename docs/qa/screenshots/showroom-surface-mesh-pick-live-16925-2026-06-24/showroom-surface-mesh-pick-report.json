@@ -1,0 +1,737 @@
+{
+  "createdAt": "2026-06-24T04:12:59.016Z",
+  "url": "https://nad-lan.co.il/projects/rainbow-tel-aviv/?codex_qa=surface_mesh_live_16925",
+  "desktop": {
+    "label": "desktop-1440",
+    "viewport": {
+      "width": 1440,
+      "height": 1000
+    },
+    "url": "https://nad-lan.co.il/projects/rainbow-tel-aviv/?codex_qa=surface_mesh_live_16925&viewport=desktop-1440&t=1782274379221",
+    "before": {
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "scrollWidth": 1440,
+      "bodyScrollWidth": 1440,
+      "activeUnit": null,
+      "activePick": null,
+      "cameraOrbit": "34deg 81.5deg 32m",
+      "cameraTarget": "0m 56m 0m",
+      "stageCardHidden": true,
+      "stageCardText": "× הדירה שנבחרה בחרו דירה על הבניין בחרו קומה ודירה כדי לראות מחיר, נוף ותוכנית כאשר הם זמינים. לפי פנייה בחירה פתוחה מבט לפי כיוון בחרו דירה כדי לראות את פעולות ההמשך. פרטים מלאים מבט מהדירה תוכניות וסיור דברו עם היזם",
+      "meshPickLog": []
+    },
+    "scan": {
+      "beforeActiveUnit": null,
+      "candidates": [
+        {
+          "name": "tower-upper-center",
+          "x": 0.5,
+          "y": 0.34,
+          "screen": {
+            "x": 910,
+            "y": 423.16375000000005
+          },
+          "sceneRect": {
+            "x": 539,
+            "y": 202.84375,
+            "width": 742,
+            "height": 648
+          },
+          "modelRect": {
+            "x": 540,
+            "y": 203.84375,
+            "width": 740,
+            "height": 646
+          },
+          "elementAtPoint": {
+            "tag": "MODEL-VIEWER",
+            "className": "nlp3d-model-viewer",
+            "markerUnit": null,
+            "insideModelViewer": true
+          },
+          "hitError": null,
+          "hitPosition": {
+            "x": 3.2362583508503633,
+            "y": 74.86336066744605,
+            "z": 4.797950314993358
+          },
+          "nearest": {
+            "unit": "unit-24-nw",
+            "label": "דירת 4 חדרים, קומה 24 דירת 4 חדרים, קומה 24 · 4 חד׳ 128 מ\"ר · ים, פארק וצפון תל אביב זמינה לפנייה · פופולרי",
+            "score": 11.31905792673679,
+            "yDelta": 5.136639332553955,
+            "horizontal": 9.238468076410957,
+            "vector": {
+              "x": -6,
+              "y": 80,
+              "z": 5
+            }
+          },
+          "selectableSurface": true
+        },
+        {
+          "name": "tower-mid-center",
+          "x": 0.52,
+          "y": 0.52,
+          "screen": {
+            "x": 924.84,
+            "y": 539.80375
+          },
+          "sceneRect": {
+            "x": 539,
+            "y": 202.84375,
+            "width": 742,
+            "height": 648
+          },
+          "modelRect": {
+            "x": 540,
+            "y": 203.84375,
+            "width": 740,
+            "height": 646
+          },
+          "elementAtPoint": {
+            "tag": "MODEL-VIEWER",
+            "className": "nlp3d-model-viewer",
+            "markerUnit": null,
+            "insideModelViewer": true
+          },
+          "hitError": null,
+          "hitPosition": {
+            "x": 1.0309980474606846,
+            "y": 53.342830206112794,
+            "z": -3.219467929503338
+          },
+          "nearest": {
+            "unit": "unit-16-w",
+            "label": "דירת 4 חדרים, קומה 16 דירת 4 חדרים, קומה 16 · 4 חד׳ 112 מ\"ר · קו החוף ושדה דב זמינה לפנייה",
+            "score": 6.1397690079009966,
+            "yDelta": 1.6571697938872063,
+            "horizontal": 11.866358422474093,
+            "vector": {
+              "x": -5,
+              "y": 55,
+              "z": 7
+            }
+          },
+          "selectableSurface": true
+        },
+        {
+          "name": "tower-mid-right",
+          "x": 0.62,
+          "y": 0.5,
+          "screen": {
+            "x": 999.04,
+            "y": 526.84375
+          },
+          "sceneRect": {
+            "x": 539,
+            "y": 202.84375,
+            "width": 742,
+            "height": 648
+          },
+          "modelRect": {
+            "x": 540,
+            "y": 203.84375,
+            "width": 740,
+            "height": 646
+          },
+          "elementAtPoint": {
+            "tag": "MODEL-VIEWER",
+            "className": "nlp3d-model-viewer",
+            "markerUnit": null,
+            "insideModelViewer": true
+          },
+          "hitError": null,
+          "hitPosition": null,
+          "nearest": null,
+          "selectableSurface": false
+        },
+        {
+          "name": "tower-mid-left",
+          "x": 0.39,
+          "y": 0.5,
+          "screen": {
+            "x": 828.38,
+            "y": 526.84375
+          },
+          "sceneRect": {
+            "x": 539,
+            "y": 202.84375,
+            "width": 742,
+            "height": 648
+          },
+          "modelRect": {
+            "x": 540,
+            "y": 203.84375,
+            "width": 740,
+            "height": 646
+          },
+          "elementAtPoint": {
+            "tag": "MODEL-VIEWER",
+            "className": "nlp3d-model-viewer",
+            "markerUnit": null,
+            "insideModelViewer": true
+          },
+          "hitError": null,
+          "hitPosition": null,
+          "nearest": null,
+          "selectableSurface": false
+        },
+        {
+          "name": "podium-center",
+          "x": 0.48,
+          "y": 0.7,
+          "screen": {
+            "x": 895.16,
+            "y": 656.4437499999999
+          },
+          "sceneRect": {
+            "x": 539,
+            "y": 202.84375,
+            "width": 742,
+            "height": 648
+          },
+          "modelRect": {
+            "x": 540,
+            "y": 203.84375,
+            "width": 740,
+            "height": 646
+          },
+          "elementAtPoint": {
+            "tag": "MODEL-VIEWER",
+            "className": "nlp3d-model-viewer",
+            "markerUnit": null,
+            "insideModelViewer": true
+          },
+          "hitError": null,
+          "hitPosition": {
+            "x": -3.7798301198590423,
+            "y": 31.809999465942383,
+            "z": -0.7886024684435426
+          },
+          "nearest": {
+            "unit": "unit-08-sw",
+            "label": "דירת 3 חדרים, קומה 8 דירת 3 חדרים, קומה 8 · 3 חד׳ 82 מ\"ר · מבט לחצר ולים זמינה לפנייה",
+            "score": 3.5525871859352627,
+            "yDelta": 0.8099994659423828,
+            "horizontal": 7.7699574779757565,
+            "vector": {
+              "x": 0,
+              "y": 31,
+              "z": 6
+            }
+          },
+          "selectableSurface": true
+        },
+        {
+          "name": "podium-right",
+          "x": 0.61,
+          "y": 0.67,
+          "screen": {
+            "x": 991.62,
+            "y": 637.0037500000001
+          },
+          "sceneRect": {
+            "x": 539,
+            "y": 202.84375,
+            "width": 742,
+            "height": 648
+          },
+          "modelRect": {
+            "x": 540,
+            "y": 203.84375,
+            "width": 740,
+            "height": 646
+          },
+          "elementAtPoint": {
+            "tag": "MODEL-VIEWER",
+            "className": "nlp3d-model-viewer",
+            "markerUnit": null,
+            "insideModelViewer": true
+          },
+          "hitError": null,
+          "hitPosition": null,
+          "nearest": null,
+          "selectableSurface": false
+        },
+        {
+          "name": "podium-left",
+          "x": 0.31,
+          "y": 0.67,
+          "screen": {
+            "x": 769.02,
+            "y": 637.0037500000001
+          },
+          "sceneRect": {
+            "x": 539,
+            "y": 202.84375,
+            "width": 742,
+            "height": 648
+          },
+          "modelRect": {
+            "x": 540,
+            "y": 203.84375,
+            "width": 740,
+            "height": 646
+          },
+          "elementAtPoint": {
+            "tag": "SPAN",
+            "className": "nlp3d-pick-room-count",
+            "markerUnit": "unit-08-sw",
+            "insideModelViewer": false
+          },
+          "hitError": null,
+          "hitPosition": null,
+          "nearest": null,
+          "selectableSurface": false
+        }
+      ],
+      "chosen": {
+        "name": "podium-center",
+        "x": 0.48,
+        "y": 0.7,
+        "screen": {
+          "x": 895.16,
+          "y": 656.4437499999999
+        },
+        "sceneRect": {
+          "x": 539,
+          "y": 202.84375,
+          "width": 742,
+          "height": 648
+        },
+        "modelRect": {
+          "x": 540,
+          "y": 203.84375,
+          "width": 740,
+          "height": 646
+        },
+        "elementAtPoint": {
+          "tag": "MODEL-VIEWER",
+          "className": "nlp3d-model-viewer",
+          "markerUnit": null,
+          "insideModelViewer": true
+        },
+        "hitError": null,
+        "hitPosition": {
+          "x": -3.7798301198590423,
+          "y": 31.809999465942383,
+          "z": -0.7886024684435426
+        },
+        "nearest": {
+          "unit": "unit-08-sw",
+          "label": "דירת 3 חדרים, קומה 8 דירת 3 חדרים, קומה 8 · 3 חד׳ 82 מ\"ר · מבט לחצר ולים זמינה לפנייה",
+          "score": 3.5525871859352627,
+          "yDelta": 0.8099994659423828,
+          "horizontal": 7.7699574779757565,
+          "vector": {
+            "x": 0,
+            "y": 31,
+            "z": 6
+          }
+        },
+        "selectableSurface": true
+      }
+    },
+    "logger": {
+      "installed": true
+    },
+    "after": {
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "scrollWidth": 1440,
+      "bodyScrollWidth": 1440,
+      "activeUnit": "unit-08-sw",
+      "activePick": "unit-08-sw",
+      "cameraOrbit": "45deg 66deg 38m",
+      "cameraTarget": "0m 31m 6m",
+      "stageCardHidden": false,
+      "stageCardText": "× הדירה שנבחרה דירת 3 חדרים, קומה 8 · 82 מ\"ר · מבט לחצר ולים תוכנית זמינה אומדן ₪6,232,000 זמינה לפנייה מבט לחצר ולים האומדן עוזר להשוואה ראשונית בלבד. המחיר, הזמינות ותנאי העסקה יאומתו מול היזם לפני כל התקדמות. פרטים מלאים מבט מהדירה תוכניות וסיור דברו עם היזם",
+      "meshPickLog": [
+        {
+          "x": 895,
+          "y": 656,
+          "hit": {
+            "position": {
+              "x": 2.0627432834907893,
+              "y": 34.35499954223633,
+              "z": 7.771471764377907
+            },
+            "normal": {
+              "x": 0,
+              "y": 1,
+              "z": 0
+            }
+          },
+          "error": null,
+          "at": 1782274435116
+        }
+      ]
+    },
+    "expectedUnitFromMesh": "unit-08-sw",
+    "pass": true
+  },
+  "mobile": {
+    "label": "mobile-390",
+    "viewport": {
+      "width": 390,
+      "height": 900
+    },
+    "url": "https://nad-lan.co.il/projects/rainbow-tel-aviv/?codex_qa=surface_mesh_live_16925&viewport=mobile-390&t=1782274439243",
+    "before": {
+      "viewport": {
+        "width": 390,
+        "height": 900
+      },
+      "scrollWidth": 390,
+      "bodyScrollWidth": 390,
+      "activeUnit": null,
+      "activePick": null,
+      "cameraOrbit": "34deg 81.5deg 32m",
+      "cameraTarget": "0m 56m 0m",
+      "stageCardHidden": true,
+      "stageCardText": "× הדירה שנבחרה בחרו דירה על הבניין בחרו קומה ודירה כדי לראות מחיר, נוף ותוכנית כאשר הם זמינים. לפי פנייה בחירה פתוחה מבט לפי כיוון בחרו דירה כדי לראות את פעולות ההמשך. פרטים מלאים מבט מהדירה תוכניות וסיור דברו עם היזם",
+      "meshPickLog": []
+    },
+    "scan": {
+      "beforeActiveUnit": null,
+      "candidates": [
+        {
+          "name": "tower-upper-center",
+          "x": 0.5,
+          "y": 0.34,
+          "screen": {
+            "x": 213,
+            "y": 402.164375
+          },
+          "sceneRect": {
+            "x": 48,
+            "y": 299.484375,
+            "width": 330,
+            "height": 302
+          },
+          "modelRect": {
+            "x": 49,
+            "y": 300.484375,
+            "width": 328,
+            "height": 300
+          },
+          "elementAtPoint": {
+            "tag": "MODEL-VIEWER",
+            "className": "nlp3d-model-viewer",
+            "markerUnit": null,
+            "insideModelViewer": true
+          },
+          "hitError": null,
+          "hitPosition": {
+            "x": 3.23625835085042,
+            "y": 74.8009429811486,
+            "z": 4.797950314993528
+          },
+          "nearest": {
+            "unit": "unit-24-nw",
+            "label": "דירת 4 חדרים, קומה 24 דירת 4 חדרים, קומה 24 · 4 חד׳ 128 מ\"ר · ים, פארק וצפון תל אביב זמינה לפנייה · פופולרי",
+            "score": 11.425167993442473,
+            "yDelta": 5.199057018851406,
+            "horizontal": 9.23846807641101,
+            "vector": {
+              "x": -6,
+              "y": 80,
+              "z": 5
+            }
+          },
+          "selectableSurface": true
+        },
+        {
+          "name": "tower-mid-center",
+          "x": 0.52,
+          "y": 0.52,
+          "screen": {
+            "x": 219.6,
+            "y": 456.52437499999996
+          },
+          "sceneRect": {
+            "x": 48,
+            "y": 299.484375,
+            "width": 330,
+            "height": 302
+          },
+          "modelRect": {
+            "x": 49,
+            "y": 300.484375,
+            "width": 328,
+            "height": 300
+          },
+          "elementAtPoint": {
+            "tag": "MODEL-VIEWER",
+            "className": "nlp3d-model-viewer",
+            "markerUnit": null,
+            "insideModelViewer": true
+          },
+          "hitError": null,
+          "hitPosition": {
+            "x": 1.0460530137932835,
+            "y": 53.15999984741211,
+            "z": -3.008845831477771
+          },
+          "nearest": {
+            "unit": "unit-16-w",
+            "label": "דירת 4 חדרים, קומה 16 דירת 4 חדרים, קומה 16 · 4 חד׳ 112 מ\"ר · קו החוף ושדה דב זמינה לפנייה",
+            "score": 6.4021061451081955,
+            "yDelta": 1.8400001525878906,
+            "horizontal": 11.693235306102789,
+            "vector": {
+              "x": -5,
+              "y": 55,
+              "z": 7
+            }
+          },
+          "selectableSurface": true
+        },
+        {
+          "name": "tower-mid-right",
+          "x": 0.62,
+          "y": 0.5,
+          "screen": {
+            "x": 252.6,
+            "y": 450.484375
+          },
+          "sceneRect": {
+            "x": 48,
+            "y": 299.484375,
+            "width": 330,
+            "height": 302
+          },
+          "modelRect": {
+            "x": 49,
+            "y": 300.484375,
+            "width": 328,
+            "height": 300
+          },
+          "elementAtPoint": {
+            "tag": "MODEL-VIEWER",
+            "className": "nlp3d-model-viewer",
+            "markerUnit": null,
+            "insideModelViewer": true
+          },
+          "hitError": null,
+          "hitPosition": null,
+          "nearest": null,
+          "selectableSurface": false
+        },
+        {
+          "name": "tower-mid-left",
+          "x": 0.39,
+          "y": 0.5,
+          "screen": {
+            "x": 176.70000000000002,
+            "y": 450.484375
+          },
+          "sceneRect": {
+            "x": 48,
+            "y": 299.484375,
+            "width": 330,
+            "height": 302
+          },
+          "modelRect": {
+            "x": 49,
+            "y": 300.484375,
+            "width": 328,
+            "height": 300
+          },
+          "elementAtPoint": {
+            "tag": "STRONG",
+            "className": "",
+            "markerUnit": "unit-24-nw",
+            "insideModelViewer": false
+          },
+          "hitError": null,
+          "hitPosition": null,
+          "nearest": null,
+          "selectableSurface": false
+        },
+        {
+          "name": "podium-center",
+          "x": 0.48,
+          "y": 0.7,
+          "screen": {
+            "x": 206.4,
+            "y": 510.884375
+          },
+          "sceneRect": {
+            "x": 48,
+            "y": 299.484375,
+            "width": 330,
+            "height": 302
+          },
+          "modelRect": {
+            "x": 49,
+            "y": 300.484375,
+            "width": 328,
+            "height": 300
+          },
+          "elementAtPoint": {
+            "tag": "MODEL-VIEWER",
+            "className": "nlp3d-model-viewer",
+            "markerUnit": null,
+            "insideModelViewer": true
+          },
+          "hitError": null,
+          "hitPosition": {
+            "x": -3.4257028397495333,
+            "y": 31.555293923112416,
+            "z": -0.459123431894227
+          },
+          "nearest": {
+            "unit": "unit-08-sw",
+            "label": "דירת 3 חדרים, קומה 8 דירת 3 חדרים, קומה 8 · 3 חד׳ 82 מ\"ר · מבט לחצר ולים זמינה לפנייה",
+            "score": 2.9911753070050535,
+            "yDelta": 0.5552939231124157,
+            "horizontal": 7.3113415632640955,
+            "vector": {
+              "x": 0,
+              "y": 31,
+              "z": 6
+            }
+          },
+          "selectableSurface": true
+        },
+        {
+          "name": "podium-right",
+          "x": 0.61,
+          "y": 0.67,
+          "screen": {
+            "x": 249.29999999999998,
+            "y": 501.82437500000003
+          },
+          "sceneRect": {
+            "x": 48,
+            "y": 299.484375,
+            "width": 330,
+            "height": 302
+          },
+          "modelRect": {
+            "x": 49,
+            "y": 300.484375,
+            "width": 328,
+            "height": 300
+          },
+          "elementAtPoint": {
+            "tag": "MODEL-VIEWER",
+            "className": "nlp3d-model-viewer",
+            "markerUnit": null,
+            "insideModelViewer": true
+          },
+          "hitError": null,
+          "hitPosition": null,
+          "nearest": null,
+          "selectableSurface": false
+        },
+        {
+          "name": "podium-left",
+          "x": 0.31,
+          "y": 0.67,
+          "screen": {
+            "x": 150.3,
+            "y": 501.82437500000003
+          },
+          "sceneRect": {
+            "x": 48,
+            "y": 299.484375,
+            "width": 330,
+            "height": 302
+          },
+          "modelRect": {
+            "x": 49,
+            "y": 300.484375,
+            "width": 328,
+            "height": 300
+          },
+          "elementAtPoint": {
+            "tag": "BUTTON",
+            "className": "nlp3d-stage-pick nlp3d-status-available is-available",
+            "markerUnit": "unit-16-w",
+            "insideModelViewer": false
+          },
+          "hitError": null,
+          "hitPosition": null,
+          "nearest": null,
+          "selectableSurface": false
+        }
+      ],
+      "chosen": {
+        "name": "podium-center",
+        "x": 0.48,
+        "y": 0.7,
+        "screen": {
+          "x": 206.4,
+          "y": 510.884375
+        },
+        "sceneRect": {
+          "x": 48,
+          "y": 299.484375,
+          "width": 330,
+          "height": 302
+        },
+        "modelRect": {
+          "x": 49,
+          "y": 300.484375,
+          "width": 328,
+          "height": 300
+        },
+        "elementAtPoint": {
+          "tag": "MODEL-VIEWER",
+          "className": "nlp3d-model-viewer",
+          "markerUnit": null,
+          "insideModelViewer": true
+        },
+        "hitError": null,
+        "hitPosition": {
+          "x": -3.4257028397495333,
+          "y": 31.555293923112416,
+          "z": -0.459123431894227
+        },
+        "nearest": {
+          "unit": "unit-08-sw",
+          "label": "דירת 3 חדרים, קומה 8 דירת 3 חדרים, קומה 8 · 3 חד׳ 82 מ\"ר · מבט לחצר ולים זמינה לפנייה",
+          "score": 2.9911753070050535,
+          "yDelta": 0.5552939231124157,
+          "horizontal": 7.3113415632640955,
+          "vector": {
+            "x": 0,
+            "y": 31,
+            "z": 6
+          }
+        },
+        "selectableSurface": true
+      }
+    },
+    "logger": {
+      "installed": true
+    },
+    "after": {
+      "viewport": {
+        "width": 390,
+        "height": 900
+      },
+      "scrollWidth": 390,
+      "bodyScrollWidth": 390,
+      "activeUnit": "unit-08-sw",
+      "activePick": "unit-08-sw",
+      "cameraOrbit": "45deg 66deg auto",
+      "cameraTarget": "0m 31m 6m",
+      "stageCardHidden": false,
+      "stageCardText": "× הדירה שנבחרה דירת 3 חדרים, קומה 8 · 82 מ\"ר · מבט לחצר ולים תוכנית זמינה אומדן ₪6,232,000 זמינה לפנייה מבט לחצר ולים האומדן עוזר להשוואה ראשונית בלבד. המחיר, הזמינות ותנאי העסקה יאומתו מול היזם לפני כל התקדמות. פרטים מלאים מבט מהדירה תוכניות וסיור דברו עם היזם",
+      "meshPickLog": []
+    },
+    "expectedUnitFromMesh": "unit-08-sw",
+    "pass": false,
+    "reason": "Tap did not fully prove mesh-surface selection, active unit, camera orbit, camera target and visible unit card."
+  },
+  "pass": false
+}

@@ -187,7 +187,7 @@ if ( ! function_exists( 'nadlan_health_rest' ) ) {
 		}
 		return new WP_REST_Response( array(
 			'plugin'       => 'nadlan-config',
-			'version'      => '1.69.25',
+			'version'      => '1.69.26',
 			'status'       => $aggregate,
 			'generated_at' => gmdate( 'c' ),
 			'dependencies' => $deps,
