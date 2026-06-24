@@ -1,0 +1,79 @@
+{
+  "url": "https://nad-lan.co.il/projects/rainbow-tel-aviv/?codex_qa=action_rail_exact_16915",
+  "viewport": {
+    "width": 390,
+    "height": 844
+  },
+  "activeUnit": "unit-38-penthouse",
+  "nativeHotspots": [
+    {
+      "unit": "unit-08-sw",
+      "display": "none",
+      "visibility": "visible",
+      "opacity": "1",
+      "width": 0,
+      "height": 0,
+      "ariaHidden": "true"
+    },
+    {
+      "unit": "unit-16-w",
+      "display": "none",
+      "visibility": "visible",
+      "opacity": "1",
+      "width": 0,
+      "height": 0,
+      "ariaHidden": "true"
+    },
+    {
+      "unit": "unit-24-nw",
+      "display": "none",
+      "visibility": "visible",
+      "opacity": "1",
+      "width": 0,
+      "height": 0,
+      "ariaHidden": "true"
+    },
+    {
+      "unit": "unit-31-se",
+      "display": "none",
+      "visibility": "visible",
+      "opacity": "1",
+      "width": 0,
+      "height": 0,
+      "ariaHidden": "true"
+    },
+    {
+      "unit": "unit-38-penthouse",
+      "display": "none",
+      "visibility": "visible",
+      "opacity": "1",
+      "width": 0,
+      "height": 0,
+      "ariaHidden": "true"
+    },
+    {
+      "unit": "unit-boutique-07",
+      "display": "none",
+      "visibility": "visible",
+      "opacity": "1",
+      "width": 0,
+      "height": 0,
+      "ariaHidden": "true"
+    }
+  ],
+  "actionRailExists": true,
+  "actionRail": {
+    "display": "flex",
+    "opacity": "0",
+    "pointerEvents": "none",
+    "transform": "matrix(1, 0, 0, 1, 0, 14)",
+    "rect": {
+      "x": 12,
+      "y": 780,
+      "width": 143,
+      "height": 66
+    }
+  },
+  "selectedCardVisible": true,
+  "timestamp": "2026-06-24T01:10:20.626Z"
+}

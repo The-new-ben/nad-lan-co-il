@@ -1,0 +1,385 @@
+{
+  "createdAt": "2026-06-24T01:03:52.336Z",
+  "unitId": "unit-38-penthouse",
+  "url": "https://nad-lan.co.il/projects/rainbow-tel-aviv/?codex_qa=showroom_live_action_rail_16915",
+  "desktop": {
+    "url": "https://nad-lan.co.il/projects/rainbow-tel-aviv/?codex_qa=showroom_live_action_rail_16915&viewport=desktop-1440&t=1782263032582",
+    "title": "דירות למכירה ב-Rainbow תל אביב | מחירים, תוכניות ובחירת דירה בשדה דב | נדלן חכם",
+    "viewport": {
+      "width": 1440,
+      "height": 1000
+    },
+    "scrollWidth": 1440,
+    "bodyScrollWidth": 1440,
+    "hasRoot": true,
+    "rootClasses": "nlp3d nlp3d-premium alignfull is-model-first is-dual-showroom has-model-picker has-model-viewer-loaded has-stage-selection",
+    "rootActiveUnit": "unit-38-penthouse",
+    "modelViewerCount": 1,
+    "modelPickCount": 6,
+    "activePicks": [
+      "unit-38-penthouse"
+    ],
+    "visibleStagePins": [
+      "unit-08-sw",
+      "unit-16-w",
+      "unit-24-nw",
+      "unit-31-se",
+      "unit-38-penthouse",
+      "unit-boutique-07"
+    ],
+    "stagePins": [
+      {
+        "unit": "unit-08-sw",
+        "visible": true,
+        "active": false,
+        "rect": {
+          "x": 751,
+          "y": 464,
+          "right": 813,
+          "bottom": 508,
+          "width": 62,
+          "height": 44
+        }
+      },
+      {
+        "unit": "unit-16-w",
+        "visible": true,
+        "active": false,
+        "rect": {
+          "x": 763,
+          "y": 396,
+          "right": 833,
+          "bottom": 440,
+          "width": 70,
+          "height": 44
+        }
+      },
+      {
+        "unit": "unit-24-nw",
+        "visible": true,
+        "active": false,
+        "rect": {
+          "x": 783,
+          "y": 329,
+          "right": 853,
+          "bottom": 373,
+          "width": 70,
+          "height": 44
+        }
+      },
+      {
+        "unit": "unit-31-se",
+        "visible": true,
+        "active": false,
+        "rect": {
+          "x": 993,
+          "y": 269,
+          "right": 1063,
+          "bottom": 313,
+          "width": 70,
+          "height": 44
+        }
+      },
+      {
+        "unit": "unit-38-penthouse",
+        "visible": true,
+        "active": true,
+        "rect": {
+          "x": 993,
+          "y": 210,
+          "right": 1063,
+          "bottom": 254,
+          "width": 70,
+          "height": 44
+        }
+      },
+      {
+        "unit": "unit-boutique-07",
+        "visible": true,
+        "active": false,
+        "rect": {
+          "x": 634,
+          "y": 472,
+          "right": 696,
+          "bottom": 516,
+          "width": 62,
+          "height": 44
+        }
+      }
+    ],
+    "visibleModelHotspots": [],
+    "modelHotspots": [
+      {
+        "unit": "unit-08-sw",
+        "visible": false,
+        "rect": {
+          "x": 0,
+          "y": 0,
+          "right": 0,
+          "bottom": 0,
+          "width": 0,
+          "height": 0
+        }
+      },
+      {
+        "unit": "unit-16-w",
+        "visible": false,
+        "rect": {
+          "x": 0,
+          "y": 0,
+          "right": 0,
+          "bottom": 0,
+          "width": 0,
+          "height": 0
+        }
+      },
+      {
+        "unit": "unit-24-nw",
+        "visible": false,
+        "rect": {
+          "x": 0,
+          "y": 0,
+          "right": 0,
+          "bottom": 0,
+          "width": 0,
+          "height": 0
+        }
+      },
+      {
+        "unit": "unit-31-se",
+        "visible": false,
+        "rect": {
+          "x": 0,
+          "y": 0,
+          "right": 0,
+          "bottom": 0,
+          "width": 0,
+          "height": 0
+        }
+      },
+      {
+        "unit": "unit-38-penthouse",
+        "visible": false,
+        "rect": {
+          "x": 0,
+          "y": 0,
+          "right": 0,
+          "bottom": 0,
+          "width": 0,
+          "height": 0
+        }
+      },
+      {
+        "unit": "unit-boutique-07",
+        "visible": false,
+        "rect": {
+          "x": 0,
+          "y": 0,
+          "right": 0,
+          "bottom": 0,
+          "width": 0,
+          "height": 0
+        }
+      }
+    ],
+    "floatingCtaVisible": false,
+    "cameraOrbit": "32deg 58deg auto",
+    "cameraTarget": "0 124 7",
+    "dockText": "בחירה נוכחית דירת 5 חדרים, קומה 38 · 210 מ\"ר · פנטהאוז גבוה לכיוון הים · זמינה לפנייה סיבוב 360 התקדמות",
+    "stageText": "× הדירה שנבחרה דירת 5 חדרים, קומה 38 · 210 מ\"ר · פנטהאוז גבוה לכיוון הים מומלצת לבדיקה תוכנית זמינה אומדן ₪15,960,000 זמינה לפנייה פנטהאוז גבוה לכיוון הים האומדן עוזר להשוואה ראשונית בלבד. המחיר, הזמינות ותנאי העסקה יאומתו מול היזם לפני כל התקדמות. פרטים מלאים מבט מהדירה תוכניות וסיור דברו עם היזם",
+    "detailTitle": "דירת 5 חדרים, קומה 38",
+    "publicLeakSample": null,
+    "offenders": [],
+    "smallTapTargets": []
+  },
+  "mobile": {
+    "url": "https://nad-lan.co.il/projects/rainbow-tel-aviv/?codex_qa=showroom_live_action_rail_16915&viewport=mobile-390&t=1782263059383",
+    "title": "דירות למכירה ב-Rainbow תל אביב | מחירים, תוכניות ובחירת דירה בשדה דב | נדלן חכם",
+    "viewport": {
+      "width": 390,
+      "height": 900
+    },
+    "scrollWidth": 390,
+    "bodyScrollWidth": 390,
+    "hasRoot": true,
+    "rootClasses": "nlp3d nlp3d-premium alignfull is-model-first is-dual-showroom has-model-picker has-model-viewer-loaded has-stage-selection",
+    "rootActiveUnit": "unit-38-penthouse",
+    "modelViewerCount": 1,
+    "modelPickCount": 6,
+    "activePicks": [
+      "unit-38-penthouse"
+    ],
+    "visibleStagePins": [
+      "unit-08-sw",
+      "unit-16-w",
+      "unit-24-nw",
+      "unit-31-se",
+      "unit-38-penthouse",
+      "unit-boutique-07"
+    ],
+    "stagePins": [
+      {
+        "unit": "unit-08-sw",
+        "visible": true,
+        "active": false,
+        "rect": {
+          "x": 134,
+          "y": 303,
+          "right": 178,
+          "bottom": 347,
+          "width": 44,
+          "height": 44
+        }
+      },
+      {
+        "unit": "unit-16-w",
+        "visible": true,
+        "active": false,
+        "rect": {
+          "x": 141,
+          "y": 270,
+          "right": 185,
+          "bottom": 314,
+          "width": 44,
+          "height": 44
+        }
+      },
+      {
+        "unit": "unit-24-nw",
+        "visible": true,
+        "active": false,
+        "rect": {
+          "x": 150,
+          "y": 238,
+          "right": 194,
+          "bottom": 282,
+          "width": 44,
+          "height": 44
+        }
+      },
+      {
+        "unit": "unit-31-se",
+        "visible": true,
+        "active": false,
+        "rect": {
+          "x": 244,
+          "y": 210,
+          "right": 288,
+          "bottom": 254,
+          "width": 44,
+          "height": 44
+        }
+      },
+      {
+        "unit": "unit-38-penthouse",
+        "visible": true,
+        "active": true,
+        "rect": {
+          "x": 242,
+          "y": 181,
+          "right": 290,
+          "bottom": 225,
+          "width": 48,
+          "height": 44
+        }
+      },
+      {
+        "unit": "unit-boutique-07",
+        "visible": true,
+        "active": false,
+        "rect": {
+          "x": 82,
+          "y": 307,
+          "right": 126,
+          "bottom": 351,
+          "width": 44,
+          "height": 44
+        }
+      }
+    ],
+    "visibleModelHotspots": [],
+    "modelHotspots": [
+      {
+        "unit": "unit-08-sw",
+        "visible": false,
+        "rect": {
+          "x": 0,
+          "y": 0,
+          "right": 0,
+          "bottom": 0,
+          "width": 0,
+          "height": 0
+        }
+      },
+      {
+        "unit": "unit-16-w",
+        "visible": false,
+        "rect": {
+          "x": 0,
+          "y": 0,
+          "right": 0,
+          "bottom": 0,
+          "width": 0,
+          "height": 0
+        }
+      },
+      {
+        "unit": "unit-24-nw",
+        "visible": false,
+        "rect": {
+          "x": 0,
+          "y": 0,
+          "right": 0,
+          "bottom": 0,
+          "width": 0,
+          "height": 0
+        }
+      },
+      {
+        "unit": "unit-31-se",
+        "visible": false,
+        "rect": {
+          "x": 0,
+          "y": 0,
+          "right": 0,
+          "bottom": 0,
+          "width": 0,
+          "height": 0
+        }
+      },
+      {
+        "unit": "unit-38-penthouse",
+        "visible": false,
+        "rect": {
+          "x": 0,
+          "y": 0,
+          "right": 0,
+          "bottom": 0,
+          "width": 0,
+          "height": 0
+        }
+      },
+      {
+        "unit": "unit-boutique-07",
+        "visible": false,
+        "rect": {
+          "x": 0,
+          "y": 0,
+          "right": 0,
+          "bottom": 0,
+          "width": 0,
+          "height": 0
+        }
+      }
+    ],
+    "floatingCtaVisible": false,
+    "cameraOrbit": "32deg 58deg auto",
+    "cameraTarget": "0 124 7",
+    "dockText": "בחירה נוכחית דירת 5 חדרים, קומה 38 · 210 מ\"ר · פנטהאוז גבוה לכיוון הים · זמינה לפנייה סיבוב 360 התקדמות",
+    "stageText": "× הדירה שנבחרה דירת 5 חדרים, קומה 38 · 210 מ\"ר · פנטהאוז גבוה לכיוון הים מומלצת לבדיקה תוכנית זמינה אומדן ₪15,960,000 זמינה לפנייה פנטהאוז גבוה לכיוון הים האומדן עוזר להשוואה ראשונית בלבד. המחיר, הזמינות ותנאי העסקה יאומתו מול היזם לפני כל התקדמות. פרטים מלאים מבט מהדירה תוכניות וסיור דברו עם היזם",
+    "detailTitle": "דירת 5 חדרים, קומה 38",
+    "publicLeakSample": null,
+    "offenders": [],
+    "smallTapTargets": []
+  }
+}
