@@ -188,7 +188,6 @@
 	display: inline-flex;
 	align-items: center;
 	justify-content: center;
-	min-height: 34px;
 	min-width: 44px;
 	border: 1px solid var(--nl3d-border);
 	border-radius: 999px;
@@ -200,6 +199,14 @@
 	font-weight: 500;
 	line-height: 1.25;
 	pointer-events: auto;
+}
+
+.nlp3d.nlp3d-premium .nlp3d-toolbar button {
+	min-height: 44px;
+}
+
+.nlp3d.nlp3d-premium .nlp3d-drag-note {
+	min-height: 34px;
 }
 
 .nlp3d.nlp3d-premium .nlp3d-angle.is-active,
@@ -222,7 +229,7 @@
 	box-shadow: var(--nl3d-shadow-soft);
 }
 
-.nlp3d.nlp3d-premium .nlp3d-scene::before {
+.nlp3d.nlp3d-premium .nlp3d-scene:not(.has-model-viewer)::before {
 	content: "";
 	position: absolute;
 	inset: 34px 8%;
@@ -233,7 +240,7 @@
 	pointer-events: none;
 }
 
-.nlp3d.nlp3d-premium .nlp3d-scene::after {
+.nlp3d.nlp3d-premium .nlp3d-scene:not(.has-model-viewer)::after {
 	content: "";
 	position: absolute;
 	inset: 18% 21% 8% 20%;
