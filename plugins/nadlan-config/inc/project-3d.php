@@ -899,7 +899,21 @@ if ( ! function_exists( 'nadlan_p3d_render' ) ) {
 		ob_start();
 		?>
 <!-- nlp3d-start -->
-<section class="nlp3d nlp3d-premium nl3d-page alignfull" dir="rtl" data-project="<?php echo esc_attr( $post_id ); ?>" aria-labelledby="<?php echo esc_attr( $uid ); ?>-title">
+<?php if ( $showroom_poster ) : ?>
+<figure class="nlp3d-hero-media" dir="rtl" aria-label="תמונת פרויקט עם תצוגת דירות">
+	<img src="<?php echo $showroom_poster; ?>" alt="<?php echo esc_attr( $meta['title'] . ' - הדמיית פרויקט ובחירת דירה בתלת ממד' ); ?>" loading="eager" fetchpriority="high">
+	<figcaption><strong><?php echo esc_html( $meta['title'] ); ?></strong><span>תצוגת תלת ממד ובחירת דירה זמינות בעמוד</span></figcaption>
+</figure>
+<?php endif; ?>
+<section class="nadlan-guide nlp3d-intro" dir="rtl" aria-label="פתיחת תצוגת דירות">
+	<div class="wrap">
+		<span class="eyebrow">סיור פרויקט למשקיעים ולרוכשים</span>
+		<h2><?php echo esc_html( $project_title ); ?>: בוחרים דירה מתוך הפרויקט</h2>
+		<p><?php echo esc_html( $project_intro_copy ); ?></p>
+		<p class="nlp3d-intro-cta"><a href="#nlp3d-stage" class="btn">בחרו דירה עכשיו</a></p>
+	</div>
+</section>
+<section class="nlp3d nlp3d-premium alignfull" dir="rtl" data-project="<?php echo esc_attr( $post_id ); ?>" aria-labelledby="<?php echo esc_attr( $uid ); ?>-title">
 	<div class="nlp3d-grid" aria-hidden="true"></div>
 	<div class="nlp3d-shell">
 		<div class="nlp3d-copy">
@@ -941,7 +955,7 @@ if ( ! function_exists( 'nadlan_p3d_render' ) ) {
 						<?php if ( ! empty( $meta['model_poster'] ) ) : ?>poster="<?php echo esc_url( $meta['model_poster'] ); ?>"<?php endif; ?>
 						<?php if ( ! empty( $meta['model_usdz'] ) ) : ?>ios-src="<?php echo esc_url( $meta['model_usdz'] ); ?>"<?php endif; ?>
 						alt="<?php echo esc_attr( 'תצוגת תלת ממד של ' . $meta['title'] ); ?>"
-						reveal="manual"
+						reveal="auto"
 						loading="auto"
 						camera-controls
 						<?php if ( $camera_auto ) : ?>
@@ -3732,7 +3746,7 @@ if ( ! function_exists( 'nadlan_p3d_inline_js' ) ) {
 			});
 		});
 		if(modelViewer){
-			modelViewer.addEventListener('load',function(){root.classList.add('has-model-viewer-loaded');root.classList.remove('has-model-viewer-error');if(modelError){modelError.hidden=true}syncModelViewerCamera();var revealModel=function(){if(typeof modelViewer.dismissPoster==='function'){modelViewer.dismissPoster()}};if(window.requestAnimationFrame){requestAnimationFrame(function(){requestAnimationFrame(revealModel)});setTimeout(revealModel,1200)}else{revealModel()}track('model_viewer_load',{model:true})});
+			modelViewer.addEventListener('load',function(){root.classList.add('has-model-viewer-loaded');root.classList.remove('has-model-viewer-error');if(modelError){modelError.hidden=true}syncModelViewerCamera();track('model_viewer_load',{model:true})});
 			modelViewer.addEventListener('error',function(){root.classList.add('has-model-viewer-error');if(modelError){modelError.hidden=false}track('model_viewer_error',{model:true})});
 			modelViewer.addEventListener('click',function(e){
 				if(Date.now()<suppressUnitClickUntil){return}
@@ -3980,8 +3994,9 @@ add_action(
 			return;
 		}
 
-		wp_register_style( 'nadlan-p3d', plugins_url( '../assets/css/project-3d-premium.css', __FILE__ ), array(), '1.69.36' );
+		wp_register_style( 'nadlan-p3d', '', array(), '1.69.34' );
 		wp_enqueue_style( 'nadlan-p3d' );
+		wp_add_inline_style( 'nadlan-p3d', nadlan_p3d_lovable_showroom_v1690_css() );
 
 		$post_id = is_singular( 'nadlan_project' ) ? (int) get_queried_object_id() : 0;
 		if ( $post_id > 0 && get_post_meta( $post_id, 'project_model_glb', true ) !== '' ) {
@@ -3990,7 +4005,7 @@ add_action(
 			wp_enqueue_script( 'nadlan-model-viewer' );
 		}
 
-		wp_register_script( 'nadlan-p3d', '', array(), '1.69.36', true );
+		wp_register_script( 'nadlan-p3d', '', array(), '1.69.34', true );
 		wp_enqueue_script( 'nadlan-p3d' );
 		wp_add_inline_script( 'nadlan-p3d', nadlan_p3d_inline_js( esc_url_raw( rest_url( 'nadlan/v1/lead' ) ) ) );
 	}
@@ -4381,7 +4396,8 @@ add_filter(
 			'camera_lock_cms_v1680' => true,
 			'model_viewer_ready' => true,
 			'model_viewer_module_tag' => true,
-			'model_viewer_reveal' => 'manual',
+			'model_viewer_reveal' => 'auto',
+			'model_viewer_manual_reveal_loop_fix_v16934' => true,
 			'model_viewer_loading' => 'auto',
 			'model_viewer_version' => '4.3.1',
 			'model_viewer_lazy' => true,
@@ -4412,10 +4428,6 @@ add_filter(
 			'dimri_yama_concept_facade_v1682' => true,
 			'concept_facade_label_v1682' => true,
 			'public_showroom_surface_v1690' => true,
-			'premium_showroom_stylesheet_v16934' => true,
-			'duplicate_showroom_intro_disabled_v16934' => true,
-			'mobile_touch_targets_v16935' => true,
-			'mobile_toolbar_touch_width_v16936' => true,
 			'public_language_cleanup_v1690' => true,
 			'visual_qa_preview_v1690' => true,
 			'unit_panel_tabs_v1680' => true,
