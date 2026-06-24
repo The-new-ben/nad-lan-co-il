@@ -3096,10 +3096,18 @@ if ( ! function_exists( 'nadlan_p3d_inline_js' ) ) {
 				if(modelViewer){modelViewer.removeAttribute('data-active-unit')}
 			}
 		}
+		function unitCameraOrbit(u){
+			var orbit=u&&u.camera_orbit?String(u.camera_orbit):'';
+			if(orbit&&window.innerWidth>760&&/\sauto\s*$/.test(orbit)){
+				return orbit.replace(/\sauto\s*$/,' 38m');
+			}
+			return orbit;
+		}
 		function syncModelViewerCamera(){
 			if(!modelViewer||!activeUnit){return}
-			if(activeUnit.camera_orbit){
-				modelViewer.setAttribute('camera-orbit',activeUnit.camera_orbit);
+			var orbit=unitCameraOrbit(activeUnit);
+			if(orbit){
+				modelViewer.setAttribute('camera-orbit',orbit);
 			}
 			var target=activeUnit.hotspot_position||'';
 			if(!target){
@@ -3917,7 +3925,7 @@ add_action(
 			return;
 		}
 
-		wp_register_style( 'nadlan-p3d', '', array(), '1.69.17' );
+		wp_register_style( 'nadlan-p3d', '', array(), '1.69.18' );
 		wp_enqueue_style( 'nadlan-p3d' );
 		wp_add_inline_style( 'nadlan-p3d', nadlan_p3d_lovable_showroom_v1690_css() );
 
@@ -3928,7 +3936,7 @@ add_action(
 			wp_enqueue_script( 'nadlan-model-viewer' );
 		}
 
-		wp_register_script( 'nadlan-p3d', '', array(), '1.69.17', true );
+		wp_register_script( 'nadlan-p3d', '', array(), '1.69.18', true );
 		wp_enqueue_script( 'nadlan-p3d' );
 		wp_add_inline_script( 'nadlan-p3d', nadlan_p3d_inline_js( esc_url_raw( rest_url( 'nadlan/v1/lead' ) ) ) );
 	}
@@ -4420,6 +4428,7 @@ add_filter(
 			'stage_action_rail_suppression_v16915' => true,
 			'model_surface_mesh_pick_v16916' => true,
 			'model_overview_default_v16917' => true,
+			'model_selected_camera_radius_v16918' => true,
 			'projects_with_3d' => (int) $q->found_posts,
 			'projects_with_glb' => (int) $model_q->found_posts,
 		);
