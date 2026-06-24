@@ -48,3 +48,14 @@ Evidence:
 ## Scoring Fix
 
 Version 1.69.27 filters first to authored units that are horizontally plausible for the mesh hit, then scores height and distance. This is still nearest authored point selection, not exact per-window BIM picking.
+
+## Live 1.69.27 Retest
+
+The strict live mesh-pick test passed on desktop and 390px mobile. Both viewports produced a mesh-pick log, selected `unit-08-sw`, set camera target `0m 31m 6m`, and showed the selected unit card.
+
+The marker regression test also passed for all six visible demo units on desktop and 390px mobile.
+
+Evidence:
+
+- `docs/qa/screenshots/showroom-surface-mesh-pick-live-16927-2026-06-24/showroom-surface-mesh-pick-report.json`
+- `docs/qa/screenshots/showroom-marker-hit-live-16927-2026-06-24/showroom-marker-hit-report.json`

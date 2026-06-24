@@ -979,3 +979,31 @@ Evidence:
 Chrome screenshot capture timed out twice, so the Chrome tab was kept open on the selected unit state for owner inspection. No code change was made in this rerun because the live issue did not reproduce.
 
 Honest limitation remains: this proves reliable authored target selection and nearby model-area selection. It does not prove exact click-any-window selection inside the GLB. Exact per-window apartment picking still needs apartment-level geometry, BIM or IFC mapping, or a GLB exported with per-unit pickable mesh ids.
+
+### 2026-06-24 - Codex - Strict Rainbow Showroom mesh selection v1.69.27 live
+
+Owner asked for a serious attempt to select apartments on the model and not fake the result. A stricter surface-mesh harness found that the earlier v1.69.24 pass was not enough: visible markers worked, but raw model-viewer taps did not consistently prove the real mesh-pick path.
+
+Shipped and deployed three scoped plugin patches through WordPress Admin:
+
+- v1.69.25 removed an early return that blocked the model-viewer mesh-pick path when visible apartment markers existed.
+- v1.69.26 made raw model-viewer clicks try mesh-pick before falling back to nearby visible markers.
+- v1.69.27 changed nearest-unit scoring to prefer horizontally plausible authored unit points before scoring height, preventing mobile taps on the main tower from jumping to the distant boutique unit.
+
+Live result on v1.69.27:
+
+- Healthcheck confirmed `version: 1.69.27` and `model_surface_horizontal_bias_v16927: true`.
+- Strict surface-mesh QA passed on desktop 1440 and mobile 390.
+- Desktop raw model-viewer tap selected `unit-08-sw`, with mesh-pick log present, camera orbit `45deg 66deg 38m`, and camera target `0m 31m 6m`.
+- Mobile raw model-viewer tap selected `unit-08-sw`, with mesh-pick log present, camera orbit `45deg 66deg auto`, and camera target `0m 31m 6m`.
+- Marker regression passed for all six visible units on desktop and mobile.
+
+QA evidence:
+
+- `docs/qa/2026-06-24-rainbow-model-surface-selection-16925.md`
+- `docs/qa/screenshots/showroom-surface-mesh-pick-live-16927-2026-06-24/showroom-surface-mesh-pick-report.json`
+- `docs/qa/screenshots/showroom-surface-mesh-pick-live-16927-2026-06-24/desktop-1440-after-surface-mesh-pick.png`
+- `docs/qa/screenshots/showroom-surface-mesh-pick-live-16927-2026-06-24/mobile-390-after-surface-mesh-pick.png`
+- `docs/qa/screenshots/showroom-marker-hit-live-16927-2026-06-24/showroom-marker-hit-report.json`
+
+Honest limitation remains: this proves nearest authored unit selection from real model-viewer mesh hits plus visible marker selection. It is still not exact per-window BIM selection. Exact unit-by-window picking requires official apartment-level geometry, BIM or IFC mapping, or GLB meshes exported with per-unit pickable IDs.
