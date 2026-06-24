@@ -1047,57 +1047,13 @@ if ( ! function_exists( 'nadlan_p3d_render' ) ) {
 				</div>
 				<p class="nlp3d-stage-card-note">בחרו דירה כדי לראות את פעולות ההמשך.</p>
 				<div class="nlp3d-stage-card-actions">
-					<button type="button" class="nlp3d-stage-details" data-action="stage-details">פרטים מלאים</button>
 					<button type="button" class="nlp3d-stage-view-btn" data-action="stage-view">מבט מהדירה</button>
-					<button type="button" class="nlp3d-stage-tour" data-action="stage-tour">תוכניות וסיור</button>
 					<button type="button" class="nlp3d-stage-inquiry" data-action="stage-inquiry">דברו עם היזם</button>
 				</div>
 			</div>
 		</div>
 
 		<aside class="nlp3d-console" aria-label="בחירת דירה">
-			<div class="nlp3d-selection-dock" aria-live="polite">
-				<span>בחירה נוכחית</span>
-				<strong class="nlp3d-dock-title">בחרו דירה</strong>
-				<small class="nlp3d-dock-meta"></small>
-				<div class="nlp3d-dock-actions">
-					<button type="button" class="nlp3d-dock-spin" data-action="dock-360">סיבוב 360</button>
-					<button type="button" class="nlp3d-dock-action" data-action="dock-inquiry">התקדמות</button>
-				</div>
-			</div>
-			<div class="nlp3d-console-head">
-				<p>בחרו קומה ודירה</p>
-				<span class="nlp3d-status-chip">תצוגה פעילה</span>
-			</div>
-			<div class="nlp3d-floor-strip" aria-label="קומות זמינות"></div>
-			<div class="nlp3d-units" aria-label="דירות בקומה"></div>
-			<div class="nlp3d-detail" aria-live="polite">
-				<h3 class="nlp3d-selected-title">בחרו דירה</h3>
-				<dl class="nlp3d-facts"></dl>
-				<a class="nlp3d-plan" href="#" target="_blank" rel="noopener" hidden>פתיחת תוכנית דירה</a>
-				<button type="button" class="nlp3d-view-toggle" data-action="view-from-unit">מבט מהדירה</button>
-				<div class="nlp3d-tools" aria-label="מידע נוסף על הדירה">
-					<button type="button" class="nlp3d-tool is-active" data-tool="spec" data-action="unit-spec">מפרט</button>
-					<button type="button" class="nlp3d-tool" data-tool="drawing" data-action="unit-drawing">תוכנית</button>
-					<button type="button" class="nlp3d-tool" data-tool="view" data-action="unit-view">מבט</button>
-					<button type="button" class="nlp3d-tool" data-tool="sun" data-action="unit-sun">אור ושמש</button>
-					<button type="button" class="nlp3d-tool" data-tool="surroundings" data-action="unit-surroundings">סביבה</button>
-					<button type="button" class="nlp3d-tool" data-tool="media" data-action="unit-media">מדיה</button>
-					<button type="button" class="nlp3d-tool" data-tool="advisors" data-action="unit-advisors">יועצים</button>
-				</div>
-				<div class="nlp3d-tool-panel" aria-live="polite"></div>
-				<div class="nlp3d-deal-steps" aria-label="מסלול בדיקת רכישה">
-					<span data-step="select">בחירה</span>
-					<span data-step="verify">אימות</span>
-					<span data-step="advisors">ליווי</span>
-					<span data-step="developer">אישור יזם</span>
-				</div>
-			</div>
-			<div class="nlp3d-compare-tray" hidden aria-label="דירות להשוואה">
-				<span class="nlp3d-compare-label">השוואה:</span>
-				<span class="nlp3d-compare-chips"></span>
-				<button type="button" class="nlp3d-compare-open" data-action="open-compare">השוו דירות</button>
-			</div>
 			<form class="nlp3d-lead-form">
 				<p class="nlp3d-form-title">רוצים להתקדם עם הדירה הזו?</p>
 				<div class="nlp3d-wdots" aria-hidden="true"><span class="is-on"></span><span></span></div>
@@ -3173,6 +3129,7 @@ if ( ! function_exists( 'nadlan_p3d_inline_js' ) ) {
 			window.setTimeout(refreshCurrentCamera,2600);
 		}
 		function renderFloors(){
+			if(!floorStrip){return}
 			floorStrip.innerHTML='';
 			floors.forEach(function(f){
 				var b=document.createElement('button');
@@ -3186,6 +3143,7 @@ if ( ! function_exists( 'nadlan_p3d_inline_js' ) ) {
 			});
 		}
 		function renderUnits(){
+			if(!unitList){return}
 			unitList.innerHTML='';
 			units.filter(function(u){return parseInt(u.floor||0,10)===activeFloor}).forEach(function(u){
 				var row=document.createElement('div');
@@ -3371,24 +3329,26 @@ if ( ! function_exists( 'nadlan_p3d_inline_js' ) ) {
 		}
 		function renderDetail(){
 			if(!activeUnit){return}
-			title.textContent=selectedTitle(activeUnit);
-			facts.innerHTML='';
-			detailRows(activeUnit,meta).forEach(function(row){
-				var wrap=document.createElement('div');
-				var dt=document.createElement('dt');
-				var dd=document.createElement('dd');
-				dt.textContent=row[0];
-				dd.textContent=row[1];
-				wrap.appendChild(dt);
-				wrap.appendChild(dd);
-				facts.appendChild(wrap);
-			});
+			if(title){title.textContent=selectedTitle(activeUnit)}
+			if(facts){
+				facts.innerHTML='';
+				detailRows(activeUnit,meta).forEach(function(row){
+					var wrap=document.createElement('div');
+					var dt=document.createElement('dt');
+					var dd=document.createElement('dd');
+					dt.textContent=row[0];
+					dd.textContent=row[1];
+					wrap.appendChild(dt);
+					wrap.appendChild(dd);
+					facts.appendChild(wrap);
+				});
+			}
 			renderSelectionDock();
-			if(activeUnit.plan){plan.href=activeUnit.plan;plan.hidden=false}else{plan.hidden=true}
+			if(plan){if(activeUnit.plan){plan.href=activeUnit.plan;plan.hidden=false}else{plan.hidden=true}}
 			renderUnitView();
 			renderToolPanel();
-			ok.hidden=true;
-			form.querySelectorAll('button[type="submit"]').forEach(function(b){b.disabled=false});
+			if(ok){ok.hidden=true}
+			if(form){form.querySelectorAll('button[type="submit"]').forEach(function(b){b.disabled=false})}
 		}
 		function renderToolPanel(){
 			if(!toolPanel||!activeUnit){return}
@@ -3980,7 +3940,7 @@ add_action(
 			return;
 		}
 
-		wp_register_style( 'nadlan-p3d', plugins_url( '../assets/css/project-3d-premium.css', __FILE__ ), array(), '1.69.35' );
+		wp_register_style( 'nadlan-p3d', plugins_url( '../assets/css/project-3d-premium.css', __FILE__ ), array(), '1.69.36' );
 		wp_enqueue_style( 'nadlan-p3d' );
 
 		$post_id = is_singular( 'nadlan_project' ) ? (int) get_queried_object_id() : 0;
@@ -3990,7 +3950,7 @@ add_action(
 			wp_enqueue_script( 'nadlan-model-viewer' );
 		}
 
-		wp_register_script( 'nadlan-p3d', '', array(), '1.69.35', true );
+		wp_register_script( 'nadlan-p3d', '', array(), '1.69.36', true );
 		wp_enqueue_script( 'nadlan-p3d' );
 		wp_add_inline_script( 'nadlan-p3d', nadlan_p3d_inline_js( esc_url_raw( rest_url( 'nadlan/v1/lead' ) ) ) );
 	}
@@ -4415,6 +4375,7 @@ add_filter(
 			'premium_showroom_stylesheet_v16934' => true,
 			'duplicate_showroom_intro_disabled_v16934' => true,
 			'mobile_touch_targets_v16935' => true,
+			'single_selection_surface_v16936' => true,
 			'public_language_cleanup_v1690' => true,
 			'visual_qa_preview_v1690' => true,
 			'unit_panel_tabs_v1680' => true,
