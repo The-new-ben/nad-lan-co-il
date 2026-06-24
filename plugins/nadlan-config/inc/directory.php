@@ -1,6 +1,6 @@
 <?php
 /**
- * nadlan-config — Premium professionals directory (v1.31.0)
+ * nadlan-config  -  Premium professionals directory (v1.31.0)
  *
  * A state-of-the-art, Midrag/Houzz/Thumbtack-class directory for /professionals/:
  *  - hero search (free text + city) with profession quick-pills (colour-coded + icons)
@@ -76,7 +76,7 @@ if ( ! function_exists( 'nadlan_dir_paid_placement_clauses' ) ) {
 add_filter( 'posts_clauses', 'nadlan_dir_paid_placement_clauses', 20, 2 );
 
 /* ---------------------------------------------------------------------------
- * Query — used by BOTH the server render and the REST endpoint (single source)
+ * Query  -  used by BOTH the server render and the REST endpoint (single source)
  * ------------------------------------------------------------------------- */
 if ( ! function_exists( 'nadlan_dir_query' ) ) {
 	function nadlan_dir_query( $p ) {
@@ -114,7 +114,7 @@ if ( ! function_exists( 'nadlan_dir_query' ) ) {
 }
 
 /* ---------------------------------------------------------------------------
- * Card renderer — the ONE place a professional card is built
+ * Card renderer  -  the ONE place a professional card is built
  * ------------------------------------------------------------------------- */
 if ( ! function_exists( 'nadlan_dir_card' ) ) {
 	function nadlan_dir_card( $id ) {
@@ -186,7 +186,7 @@ if ( ! function_exists( 'nadlan_dir_cards_html' ) ) {
 }
 
 /* ---------------------------------------------------------------------------
- * Facet counts (cached) — profession counts + top cities
+ * Facet counts (cached)  -  profession counts + top cities
  * ------------------------------------------------------------------------- */
 if ( ! function_exists( 'nadlan_dir_facet_counts' ) ) {
 	function nadlan_dir_facet_counts() {
@@ -257,7 +257,7 @@ add_filter( 'get_the_archive_title', function ( $t ) {
 } );
 add_filter( 'pre_get_document_title', function ( $t ) {
 	if ( is_post_type_archive( 'nadlan_professional' ) ) {
-		return 'מאגר בעלי מקצוע בנדל״ן — קבלנים, שמאים, יועצים מאומתים | נדל״ן חכם';
+		return 'מאגר בעלי מקצוע בנדל״ן: קבלנים, שמאים, יועצים מאומתים | נדל״ן חכם';
 	}
 	return $t;
 }, 20 );
@@ -376,7 +376,7 @@ if ( ! function_exists( 'nadlan_dir_render_page' ) ) {
 }
 
 /* ---------------------------------------------------------------------------
- * Single professional PROFILE — premium colour header + "similar pros"
+ * Single professional PROFILE  -  premium colour header + "similar pros"
  * (prepended/appended around the existing facts table from cards-render.php)
  * ------------------------------------------------------------------------- */
 if ( ! function_exists( 'nadlan_dir_enqueue_professional_quote_script' ) ) {
@@ -464,7 +464,7 @@ if ( ! function_exists( 'nadlan_dir_profile_header' ) ) {
 	}
 }
 
-/* "Similar professionals" — same profession or city, for internal linking */
+/* "Similar professionals"  -  same profession or city, for internal linking */
 if ( ! function_exists( 'nadlan_dir_similar' ) ) {
 	function nadlan_dir_similar( $id ) {
 		$prof = (string) get_post_meta( $id, 'profession', true );
@@ -491,7 +491,7 @@ add_filter( 'the_content', function ( $content ) {
 	return nadlan_dir_profile_header( get_the_ID() ) . $content . nadlan_dir_similar( get_the_ID() );
 }, 5 );
 
-/* v1.37.0: clean document title for the glossary (nadlan_term) archive —
+/* v1.37.0: clean document title for the glossary (nadlan_term) archive  - 
  * was showing the default "ארכיון NadLan Glossary". */
 add_filter( 'get_the_archive_title', function ( $t ) {
 	if ( is_post_type_archive( 'nadlan_term' ) ) { return 'מילון מונחי נדל״ן'; }
@@ -505,7 +505,7 @@ add_filter( 'pre_get_document_title', function ( $t ) {
 }, 20 );
 
 /* v1.37.0: premium profile header for single PROJECT pages (parity with
- * professionals — they were rendering bare). Uses nadlan_dir_pt_meta defined
+ * professionals  -  they were rendering bare). Uses nadlan_dir_pt_meta defined
  * in the projects section below (runtime call, so order is fine). */
 if ( ! function_exists( 'nadlan_dir_enqueue_project_quote_script' ) ) {
 	function nadlan_dir_enqueue_project_quote_script() {
@@ -584,7 +584,7 @@ add_filter( 'the_content', function ( $content ) {
 }, 5 );
 
 /* =========================================================================
- * PROJECTS premium directory (v1.36.0 — the one that was lost from v1.33)
+ * PROJECTS premium directory (v1.36.0  -  the one that was lost from v1.33)
  * ========================================================================= */
 
 if ( ! function_exists( 'nadlan_dir_project_types' ) ) {
@@ -775,6 +775,16 @@ add_filter( 'pre_get_document_title', function ( $t ) {
 	return $t;
 }, 20 );
 
+if ( ! function_exists( 'nadlan_dir_archive_viewport_meta' ) ) {
+	function nadlan_dir_archive_viewport_meta() {
+		if ( ! is_post_type_archive( array( 'nadlan_project', 'nadlan_property', 'nadlan_professional' ) ) ) {
+			return;
+		}
+		echo "\n<meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">\n";
+	}
+}
+add_action( 'wp_head', 'nadlan_dir_archive_viewport_meta', 0 );
+
 add_action( 'template_redirect', function () {
 	if ( is_admin() || ! is_post_type_archive( 'nadlan_project' ) ) { return; }
 	if ( defined( 'NADLAN_DISABLE_DIRECTORY' ) && NADLAN_DISABLE_DIRECTORY ) { return; }
@@ -810,7 +820,7 @@ if ( ! function_exists( 'nadlan_dir_project_page' ) ) {
 	<header class="nldir-hero">
 		<nav class="nldir-crumbs"><a href="<?php echo esc_url( home_url( '/' ) ); ?>">בית</a> › <span>פרויקטים</span></nav>
 		<h1>פרויקטים והתחדשות עירונית</h1>
-		<p class="nldir-lead"><strong><?php echo number_format( $facets['total'] ); ?></strong> פרויקטים — תמ״א 38, פינוי בינוי ובנייה חדשה — ממאגר התחדשות עירונית הרשמי.</p>
+		<p class="nldir-lead"><strong><?php echo number_format( $facets['total'] ); ?></strong> פרויקטים: תמ״א 38, פינוי בינוי ובנייה חדשה, ממאגר התחדשות עירונית הרשמי.</p>
 		<form class="nldir-search" role="search">
 			<input type="search" name="q" value="<?php echo esc_attr( $state['q'] ); ?>" placeholder="חיפוש לפי שם פרויקט או יזם" autocomplete="off">
 			<input type="text" name="city" value="<?php echo esc_attr( $state['city'] ); ?>" placeholder="עיר" autocomplete="off">
