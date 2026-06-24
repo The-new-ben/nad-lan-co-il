@@ -956,3 +956,26 @@ QA evidence:
 - `docs/qa/screenshots/showroom-live-critical-selection-16924-2026-06-24/mobile-390-after-critical-taps.png`
 
 Honest limitation remains: this is reliable authored target selection and nearby model tap selection. It is not true click-any-window picking inside the GLB. Exact per-window apartment selection still needs apartment-level geometry, BIM or IFC mapping, or a GLB exported with per-unit pickable mesh ids.
+
+### 2026-06-24 - Codex - Owner rerun of Rainbow Showroom selection on v1.69.24
+
+Owner asked again for a serious, non-fake check of selecting apartments on the model. Reran the live critical selection harness against `nadlan-config` v1.69.24 and also opened a visible Chrome tab on the live Rainbow page.
+
+Result:
+
+- Desktop 1440: 9 tested model-area taps, 0 failures.
+- Mobile 390: 9 tested model-area taps, 0 failures.
+- Raw model failures: 0.
+- Visible Chrome state after selecting `unit-24-nw`: active unit `unit-24-nw`, camera orbit `24deg 61deg 38m`, camera target `-6m 80m 5m`, active marker `true`.
+
+Evidence:
+
+- `docs/qa/screenshots/showroom-live-critical-selection-owner-rerun-16924-2026-06-24/QA.md`
+- `docs/qa/screenshots/showroom-live-critical-selection-owner-rerun-16924-2026-06-24/critical-model-selection-report.json`
+- `docs/qa/screenshots/showroom-live-critical-selection-owner-rerun-16924-2026-06-24/desktop-1440-after-critical-taps.png`
+- `docs/qa/screenshots/showroom-live-critical-selection-owner-rerun-16924-2026-06-24/mobile-390-after-critical-taps.png`
+- `docs/qa/screenshots/showroom-live-critical-selection-owner-rerun-16924-2026-06-24/chrome-visible-unit-24-nw-state.json`
+
+Chrome screenshot capture timed out twice, so the Chrome tab was kept open on the selected unit state for owner inspection. No code change was made in this rerun because the live issue did not reproduce.
+
+Honest limitation remains: this proves reliable authored target selection and nearby model-area selection. It does not prove exact click-any-window selection inside the GLB. Exact per-window apartment picking still needs apartment-level geometry, BIM or IFC mapping, or a GLB exported with per-unit pickable mesh ids.
