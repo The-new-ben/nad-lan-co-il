@@ -3124,7 +3124,7 @@ if ( ! function_exists( 'nadlan_p3d_inline_js' ) ) {
 				var chip=document.createElement('button');
 				chip.type='button';
 				chip.className='nlp3d-compare-chip';
-				chip.textContent=(u.title||u.id)+' ✕';
+				chip.textContent=(u.title||u.id)+' ?';
 				chip.title='הסרה מההשוואה';
 				chip.addEventListener('click',function(){toggleCompare(id)});
 				compareChips.appendChild(chip);
@@ -3228,10 +3228,10 @@ if ( ! function_exists( 'nadlan_p3d_inline_js' ) ) {
 		}
 		function renderSelectionDock(){
 			if(!activeUnit){return}
-			if(dockTitle){dockTitle.textContent=selectedTitle(activeUnit)}
+			var metaText=unitText(activeUnit);
+			if(dockTitle){dockTitle.textContent=selectedTitle(activeUnit)+(metaText?' ·':'')}
 			if(dockMeta){
-				var metaText=unitText(activeUnit);
-				dockMeta.textContent=(metaText?' · '+metaText+' · ':' · ')+statusLabel(activeUnit.status);
+				dockMeta.textContent=(metaText?metaText+' · ':'')+statusLabel(activeUnit.status);
 			}
 			renderStageCard();
 		}
@@ -3916,7 +3916,7 @@ add_action(
 			return;
 		}
 
-		wp_register_style( 'nadlan-p3d', '', array(), '1.69.11' );
+		wp_register_style( 'nadlan-p3d', '', array(), '1.69.12' );
 		wp_enqueue_style( 'nadlan-p3d' );
 		wp_add_inline_style( 'nadlan-p3d', nadlan_p3d_lovable_showroom_v1690_css() );
 
@@ -3927,7 +3927,7 @@ add_action(
 			wp_enqueue_script( 'nadlan-model-viewer' );
 		}
 
-		wp_register_script( 'nadlan-p3d', '', array(), '1.69.11', true );
+		wp_register_script( 'nadlan-p3d', '', array(), '1.69.12', true );
 		wp_enqueue_script( 'nadlan-p3d' );
 		wp_add_inline_script( 'nadlan-p3d', nadlan_p3d_inline_js( esc_url_raw( rest_url( 'nadlan/v1/lead' ) ) ) );
 	}
@@ -4330,6 +4330,7 @@ add_filter(
 			'mobile_marker_clarity_v1699' => true,
 			'mobile_marker_spread_v16910' => true,
 			'selection_dock_separator_v16911' => true,
+			'selection_dock_inline_separator_v16912' => true,
 			'product_selector_v1641' => true,
 			'status_colored_unit_picks' => true,
 			'recommended_unit_pulse' => true,
@@ -4420,3 +4421,5 @@ add_filter(
 		return $out;
 	}
 );
+
+
