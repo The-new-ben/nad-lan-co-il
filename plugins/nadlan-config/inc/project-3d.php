@@ -2665,6 +2665,7 @@ if ( ! function_exists( 'nadlan_p3d_inline_js' ) ) {
 		var dragState=null;
 		var lastTapAt=0;
 		var suppressUnitClickUntil=0;
+		var cameraSyncSeq=0;
 		var stageCardDismissed=false;
 		var activeTool='spec';
 		var cameraLock=(meta.camera_lock||'horizontal').toString();
@@ -3129,6 +3130,8 @@ if ( ! function_exists( 'nadlan_p3d_inline_js' ) ) {
 		}
 		function syncModelViewerCamera(){
 			if(!modelViewer||!activeUnit){return}
+			var syncSeq=++cameraSyncSeq;
+			var syncUnitId=activeUnit.id;
 			var orbit=unitCameraOrbit(activeUnit);
 			var target=activeUnit.hotspot_position||'';
 			if(!target){
@@ -3136,12 +3139,21 @@ if ( ! function_exists( 'nadlan_p3d_inline_js' ) ) {
 				if(hotspot&&hotspot.dataset.position){target=hotspot.dataset.position}
 			}
 			target=unitCameraTarget(target);
-			applyModelViewerCamera(orbit,target);
-			window.requestAnimationFrame(function(){applyModelViewerCamera(orbit,target)});
-			window.setTimeout(function(){applyModelViewerCamera(orbit,target)},280);
-			window.setTimeout(function(){refreshModelViewerRender(orbit,target)},1200);
-			window.setTimeout(function(){refreshModelViewerRender(orbit,target)},1800);
-			window.setTimeout(function(){refreshModelViewerRender(orbit,target)},2600);
+			function isCurrentCameraSync(){
+				return syncSeq===cameraSyncSeq&&activeUnit&&activeUnit.id===syncUnitId;
+			}
+			function applyCurrentCamera(){
+				if(isCurrentCameraSync()){applyModelViewerCamera(orbit,target)}
+			}
+			function refreshCurrentCamera(){
+				if(isCurrentCameraSync()){refreshModelViewerRender(orbit,target)}
+			}
+			applyCurrentCamera();
+			window.requestAnimationFrame(applyCurrentCamera);
+			window.setTimeout(applyCurrentCamera,280);
+			window.setTimeout(refreshCurrentCamera,1200);
+			window.setTimeout(refreshCurrentCamera,1800);
+			window.setTimeout(refreshCurrentCamera,2600);
 		}
 		function renderFloors(){
 			floorStrip.innerHTML='';
@@ -3709,6 +3721,14 @@ if ( ! function_exists( 'nadlan_p3d_inline_js' ) ) {
 				if(Date.now()<suppressUnitClickUntil){return}
 				if(e.target&&e.target.closest&&e.target.closest('.nlp3d-mv-hotspot')){return}
 				var p=eventPoint(e);
+				if(selectNearestModelPickFromPoint(p,'model-surface-near-pick')){
+					e.preventDefault();
+					e.stopPropagation();
+					return;
+				}
+				if(stagePicks&&stagePicks.querySelector('.nlp3d-stage-pick,.nlp3d-cell')){
+					return;
+				}
 				if(typeof modelViewer.positionAndNormalFromPoint==='function'){
 					e.preventDefault();
 					e.stopPropagation();
@@ -3951,7 +3971,7 @@ add_action(
 			return;
 		}
 
-		wp_register_style( 'nadlan-p3d', '', array(), '1.69.23' );
+		wp_register_style( 'nadlan-p3d', '', array(), '1.69.24' );
 		wp_enqueue_style( 'nadlan-p3d' );
 		wp_add_inline_style( 'nadlan-p3d', nadlan_p3d_lovable_showroom_v1690_css() );
 
@@ -3962,7 +3982,7 @@ add_action(
 			wp_enqueue_script( 'nadlan-model-viewer' );
 		}
 
-		wp_register_script( 'nadlan-p3d', '', array(), '1.69.23', true );
+		wp_register_script( 'nadlan-p3d', '', array(), '1.69.24', true );
 		wp_enqueue_script( 'nadlan-p3d' );
 		wp_add_inline_script( 'nadlan-p3d', nadlan_p3d_inline_js( esc_url_raw( rest_url( 'nadlan/v1/lead' ) ) ) );
 	}
