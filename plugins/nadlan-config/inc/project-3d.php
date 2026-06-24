@@ -2915,7 +2915,8 @@ if ( ! function_exists( 'nadlan_p3d_inline_js' ) ) {
 					}
 				});
 				if(!best||!best.unit){return false}
-				if(window.innerWidth&&window.innerWidth<=480&&best.horizontal>52&&(best.screenDistance===null||best.screenDistance>96)){return false}
+				var screenLimit=(window.innerWidth&&window.innerWidth<=480)?96:112;
+				if(best.horizontal>52&&(best.screenDistance===null||best.screenDistance>screenLimit)){return false}
 				if(best.yDelta>24&&best.horizontal>42){return false}
 				selectUnit(best.unit.id,source||'model-surface-hit');
 				return true;
@@ -2925,7 +2926,7 @@ if ( ! function_exists( 'nadlan_p3d_inline_js' ) ) {
 			if(!stagePicks||!p){return false}
 			var sceneRect=scene?scene.getBoundingClientRect():null;
 			if(sceneRect&&(p.x<sceneRect.left||p.x>sceneRect.right||p.y<sceneRect.top||p.y>sceneRect.bottom)){return false}
-			var baseLimit=(window.innerWidth&&window.innerWidth<=480)?92:76;
+			var baseLimit=92;
 			var best=null,bestScore=Infinity;
 			stagePicks.querySelectorAll('.nlp3d-stage-pick,.nlp3d-cell').forEach(function(node){
 				if(node.getAttribute('aria-disabled')==='true'){return}
@@ -3988,7 +3989,7 @@ add_action(
 			return;
 		}
 
-		wp_register_style( 'nadlan-p3d', '', array(), '1.69.30' );
+		wp_register_style( 'nadlan-p3d', '', array(), '1.69.31' );
 		wp_enqueue_style( 'nadlan-p3d' );
 		wp_add_inline_style( 'nadlan-p3d', nadlan_p3d_lovable_showroom_v1690_css() );
 
@@ -3999,7 +4000,7 @@ add_action(
 			wp_enqueue_script( 'nadlan-model-viewer' );
 		}
 
-		wp_register_script( 'nadlan-p3d', '', array(), '1.69.30', true );
+		wp_register_script( 'nadlan-p3d', '', array(), '1.69.31', true );
 		wp_enqueue_script( 'nadlan-p3d' );
 		wp_add_inline_script( 'nadlan-p3d', nadlan_p3d_inline_js( esc_url_raw( rest_url( 'nadlan/v1/lead' ) ) ) );
 	}
@@ -4501,6 +4502,7 @@ add_filter(
 			'model_surface_mesh_pick_first_v16926' => true,
 			'model_surface_horizontal_bias_v16927' => true,
 			'model_surface_mobile_screen_fallback_v16930' => true,
+			'model_surface_screen_fallback_v16931' => true,
 			'projects_with_3d' => (int) $q->found_posts,
 			'projects_with_glb' => (int) $model_q->found_posts,
 		);
