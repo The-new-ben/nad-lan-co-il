@@ -1,0 +1,78 @@
+{
+  "createdAt": "2026-06-24T04:38:08.566Z",
+  "url": "https://nad-lan.co.il/projects/rainbow-tel-aviv/?codex_qa=focused_mobile_tower_upper_center_20260624",
+  "point": {
+    "name": "tower-upper-center",
+    "x": 0.5,
+    "y": 0.31
+  },
+  "snapshots": [
+    {
+      "wait": 800,
+      "screenshot": "mobile-390-after-tower-upper-center-800ms.png",
+      "state": {
+        "activeUnit": "unit-24-nw",
+        "cameraOrbit": "24deg 61deg auto",
+        "cameraTarget": "-6m 80m 5m",
+        "stageCardHidden": false,
+        "modelRect": {
+          "x": 49,
+          "y": 104,
+          "width": 328,
+          "height": 300
+        },
+        "selectedMarker": "unit-24-nw"
+      }
+    },
+    {
+      "wait": 2500,
+      "screenshot": "mobile-390-after-tower-upper-center-2500ms.png",
+      "state": {
+        "activeUnit": "unit-24-nw",
+        "cameraOrbit": "24deg 61deg auto",
+        "cameraTarget": "-6m 80m 5m",
+        "stageCardHidden": false,
+        "modelRect": {
+          "x": 49,
+          "y": 104,
+          "width": 328,
+          "height": 300
+        },
+        "selectedMarker": "unit-24-nw"
+      }
+    },
+    {
+      "wait": 5000,
+      "screenshot": "mobile-390-after-tower-upper-center-5000ms.png",
+      "state": {
+        "activeUnit": "unit-24-nw",
+        "cameraOrbit": "24deg 61deg auto",
+        "cameraTarget": "-6m 80m 5m",
+        "stageCardHidden": false,
+        "modelRect": {
+          "x": 49,
+          "y": 104,
+          "width": 328,
+          "height": 300
+        },
+        "selectedMarker": "unit-24-nw"
+      }
+    }
+  ],
+  "tap": {
+    "x": 213,
+    "y": 393.104375,
+    "sceneRect": {
+      "x": 48,
+      "y": 299,
+      "width": 330,
+      "height": 302
+    },
+    "elementAtPoint": {
+      "tag": "MODEL-VIEWER",
+      "className": "nlp3d-model-viewer",
+      "markerUnit": null,
+      "insideModelViewer": true
+    }
+  }
+}
