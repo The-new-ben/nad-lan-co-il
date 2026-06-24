@@ -2605,8 +2605,8 @@ if ( ! function_exists( 'nadlan_p3d_inline_js' ) ) {
 		var floors=units.map(function(u){return parseInt(u.floor||0,10)}).filter(function(v,i,arr){return v>0&&arr.indexOf(v)===i}).sort(function(a,b){return b-a});
 		var maxFloor=Math.max.apply(null,floors.concat([39]));
 		var minFloor=Math.max(1,Math.min.apply(null,floors.concat([1])));
-		var activeUnit=firstAvailable(units);
-		var activeFloor=activeUnit ? parseInt(activeUnit.floor||floors[0]||maxFloor,10) : maxFloor;
+		var activeUnit=null;
+		var activeFloor=floors[0] || maxFloor;
 		var floorStrip=root.querySelector('.nlp3d-floor-strip');
 		var unitList=root.querySelector('.nlp3d-units');
 		var title=root.querySelector('.nlp3d-selected-title');
@@ -2659,7 +2659,6 @@ if ( ! function_exists( 'nadlan_p3d_inline_js' ) ) {
 		var hasStageSelection=false;
 		try{compareIds=JSON.parse(storageGet(storeKey+'-compare')||'[]')||[]}catch(e){compareIds=[]}
 		compareIds=compareIds.filter(function(id){return units.some(function(u){return u.id===id})}).slice(0,3);
-		var savedUnit=storageGet(storeKey+'-unit');
 		var currentAngle=-32;
 		var currentTilt=62;
 		var currentZoom=1;
@@ -2670,10 +2669,7 @@ if ( ! function_exists( 'nadlan_p3d_inline_js' ) ) {
 		var activeTool='spec';
 		var cameraLock=(meta.camera_lock||'horizontal').toString();
 		var horizontalCamera=cameraLock!=='free';
-		if(savedUnit){
-			var restored=units.find(function(u){return u.id===savedUnit});
-			if(restored){activeUnit=restored;activeFloor=parseInt(restored.floor||activeFloor,10)}
-		}
+		/* Start with the building overview. A stored unit id must not crop the first showroom view. */
 		function track(action,extra){
 			window.dataLayer=window.dataLayer||[];
 			var payload={event:'project_3d_interaction',action:action,card_id:parseInt(root.dataset.project,10)};
@@ -3921,7 +3917,7 @@ add_action(
 			return;
 		}
 
-		wp_register_style( 'nadlan-p3d', '', array(), '1.69.16' );
+		wp_register_style( 'nadlan-p3d', '', array(), '1.69.17' );
 		wp_enqueue_style( 'nadlan-p3d' );
 		wp_add_inline_style( 'nadlan-p3d', nadlan_p3d_lovable_showroom_v1690_css() );
 
@@ -3932,7 +3928,7 @@ add_action(
 			wp_enqueue_script( 'nadlan-model-viewer' );
 		}
 
-		wp_register_script( 'nadlan-p3d', '', array(), '1.69.16', true );
+		wp_register_script( 'nadlan-p3d', '', array(), '1.69.17', true );
 		wp_enqueue_script( 'nadlan-p3d' );
 		wp_add_inline_script( 'nadlan-p3d', nadlan_p3d_inline_js( esc_url_raw( rest_url( 'nadlan/v1/lead' ) ) ) );
 	}
@@ -4423,6 +4419,7 @@ add_filter(
 			'stage_card_single_action_group_v16914' => true,
 			'stage_action_rail_suppression_v16915' => true,
 			'model_surface_mesh_pick_v16916' => true,
+			'model_overview_default_v16917' => true,
 			'projects_with_3d' => (int) $q->found_posts,
 			'projects_with_glb' => (int) $model_q->found_posts,
 		);
