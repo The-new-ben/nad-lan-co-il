@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Projects Archive Cream Skin QA</title>
+  <style>
+    body{margin:0;background:#FAF7F1;color:#1B1A17;font-family:Inter,Arial,sans-serif;line-height:1.55}
+    main{max-width:1120px;margin:0 auto;padding:32px 20px 64px}
+    h1,h2{font-family:Georgia,serif;font-weight:500;letter-spacing:0}
+    .panel{background:#FFFDFC;border:1px solid #E2DCD0;border-radius:8px;padding:18px;margin:18px 0;box-shadow:0 12px 30px rgba(27,26,23,.08)}
+    .grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+    img{display:block;width:100%;height:auto;border:1px solid #E2DCD0;border-radius:8px;background:#fff}
+    code{background:#F3EEE3;padding:2px 5px;border-radius:4px}
+    @media (max-width:760px){.grid{grid-template-columns:1fr}}
+  </style>
+</head>
+<body>
+<main>
+  <h1>Projects Archive Cream Skin QA</h1>
+  <div class="panel">
+    <p><strong>Date:</strong> 2026-06-24</p>
+    <p><strong>Live plugin version:</strong> 1.69.29</p>
+    <p><strong>URL checked:</strong> https://nad-lan.co.il/projects/</p>
+    <p><strong>Result:</strong> Pass for this slice. The live Projects archive now uses the cream editorial skin instead of the old dark archive hero. The mobile viewport is contained at 390px with no horizontal overflow.</p>
+  </div>
+  <div class="panel">
+    <h2>Checks</h2>
+    <ul>
+      <li>Live healthcheck reports <code>nadlan-config</code> version <code>1.69.29</code>.</li>
+      <li>WordPress admin updater downloaded <code>plugin-dist/nadlan-config-1.69.29.zip</code> and reported successful installation.</li>
+      <li>Desktop width: <code>1280</code>, scroll width: <code>1280</code>.</li>
+      <li>Mobile width: <code>390</code>, scroll width: <code>390</code>.</li>
+      <li>Hero background computed as cream gradient: <code>#FAF7F1</code> to <code>#F3EEE3</code>.</li>
+      <li>Hero and H1 color computed as ink: <code>#1B1A17</code>.</li>
+      <li>Visible text scan found no banned internal terms from the QA list.</li>
+      <li>Visible text scan found no em dash.</li>
+      <li><code>chrome-public-projects.png</code> is deployment evidence from the logged-in Chrome session. It includes the WordPress admin bar, so the clean public proof is the Playwright desktop and mobile screenshots.</li>
+    </ul>
+  </div>
+  <div class="panel">
+    <h2>Honest Limitations</h2>
+    <p>This release changes the archive visual skin only. It does not solve the broader image quality problem across all project cards. Rainbow uses a real project image. Several other project cards still reuse generic-looking luxury or tower imagery and need a later real-asset pass.</p>
+    <p>The public card provenance <code>data.gov.il</code> is still visible. That is source transparency, not an internal work term, but it should be reviewed in the next content polish pass.</p>
+  </div>
+  <div class="grid">
+    <section>
+      <h2>Desktop 1280</h2>
+      <img src="desktop-1280.png" alt="Projects archive desktop screenshot">
+    </section>
+    <section>
+      <h2>Mobile 390</h2>
+      <img src="mobile-390.png" alt="Projects archive mobile screenshot">
+    </section>
+    <section>
+      <h2>Chrome Deployment View</h2>
+      <img src="chrome-public-projects.png" alt="Logged-in Chrome deployment screenshot">
+    </section>
+  </div>
+</main>
+</body>
+</html>
