@@ -2877,17 +2877,24 @@ if ( ! function_exists( 'nadlan_p3d_inline_js' ) ) {
 				var py=surfaceNumber(hit.position,'y');
 				var pz=surfaceNumber(hit.position,'z');
 				if(px===null||py===null||pz===null){return false}
-				var best=null,bestScore=Infinity;
+				var candidates=[];
 				units.forEach(function(u){
 					if(!u||u.status==='sold'){return}
 					var v=unitSurfaceVector(u);
 					if(!v){return}
 					var dx=v.x-px,dy=Math.abs(v.y-py),dz=v.z-pz;
 					var horizontal=Math.sqrt(dx*dx+dz*dz);
-					var score=(dy*1.7)+(horizontal*.28);
+					var score=(dy*1.55)+(horizontal*.42);
+					candidates.push({unit:u,yDelta:dy,horizontal:horizontal,score:score});
+				});
+				var closeHorizontal=candidates.filter(function(c){return c.horizontal<=18});
+				var pool=closeHorizontal.length?closeHorizontal:candidates;
+				var best=null,bestScore=Infinity;
+				pool.forEach(function(c){
+					var score=c.score;
 					if(score<bestScore){
 						bestScore=score;
-						best={unit:u,yDelta:dy,horizontal:horizontal};
+						best=c;
 					}
 				});
 				if(!best||!best.unit){return false}
@@ -3963,7 +3970,7 @@ add_action(
 			return;
 		}
 
-		wp_register_style( 'nadlan-p3d', '', array(), '1.69.26' );
+		wp_register_style( 'nadlan-p3d', '', array(), '1.69.27' );
 		wp_enqueue_style( 'nadlan-p3d' );
 		wp_add_inline_style( 'nadlan-p3d', nadlan_p3d_lovable_showroom_v1690_css() );
 
@@ -3974,7 +3981,7 @@ add_action(
 			wp_enqueue_script( 'nadlan-model-viewer' );
 		}
 
-		wp_register_script( 'nadlan-p3d', '', array(), '1.69.26', true );
+		wp_register_script( 'nadlan-p3d', '', array(), '1.69.27', true );
 		wp_enqueue_script( 'nadlan-p3d' );
 		wp_add_inline_script( 'nadlan-p3d', nadlan_p3d_inline_js( esc_url_raw( rest_url( 'nadlan/v1/lead' ) ) ) );
 	}
@@ -4474,6 +4481,7 @@ add_filter(
 			'model_viewer_delayed_repaint_v16923' => true,
 			'model_surface_mesh_pick_ungated_v16925' => true,
 			'model_surface_mesh_pick_first_v16926' => true,
+			'model_surface_horizontal_bias_v16927' => true,
 			'projects_with_3d' => (int) $q->found_posts,
 			'projects_with_glb' => (int) $model_q->found_posts,
 		);

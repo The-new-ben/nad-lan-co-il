@@ -36,3 +36,15 @@ Evidence:
 ## Follow-up Fix
 
 Version 1.69.26 changes the raw model-viewer click order: mesh-pick first, visible marker fallback second. This keeps marker selection available but prevents mobile raw model taps from bypassing the real mesh-pick proof path.
+
+## Live 1.69.26 Retest
+
+Desktop passed. Mobile produced a real mesh-pick log, but selected `unit-boutique-07` while the scan expected `unit-08-sw`. The old score over-weighted vertical height and under-weighted horizontal distance, so a distant boutique unit could win over the closer main-tower authored point.
+
+Evidence:
+
+- `docs/qa/screenshots/showroom-surface-mesh-pick-live-16926-2026-06-24/showroom-surface-mesh-pick-report.json`
+
+## Scoring Fix
+
+Version 1.69.27 filters first to authored units that are horizontally plausible for the mesh hit, then scores height and distance. This is still nearest authored point selection, not exact per-window BIM picking.
