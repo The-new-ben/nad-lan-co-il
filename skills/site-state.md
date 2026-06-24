@@ -928,3 +928,31 @@ QA evidence:
 - `docs/qa/screenshots/showroom-live-free-tap-grid-critical-16923-2026-06-24/`
 
 Honest limitation remains: this is not true click-any-window apartment picking. The live Rainbow GLB does not expose apartment-level mesh IDs or official BIM geometry. Exact window or facade polygon selection requires contractor source data: apartment-level GLB meshes, BIM/IFC mapping, or an official facade/unit map.
+
+### 2026-06-24 - Codex - Rainbow Showroom apartment selection v1.69.24 live
+
+Owner re-raised the model apartment-selection issue and asked for a serious test without fake claims. A fresh live rerun on `1.69.23` found real failures: some raw `MODEL-VIEWER` taps selected the wrong authored unit, and some rapid selections left the selected card on one unit while the camera target still pointed at the previous unit.
+
+Shipped and deployed `nadlan-config` v1.69.24 through WordPress Admin after pushing commit `f396a55` to `main`. Both live endpoints confirmed `version: 1.69.24`.
+
+Fix:
+
+- Buyer taps on the model now prefer the nearest visible authored apartment target before using any approximate mesh fallback.
+- If a model tap is not near an authored target, the code no longer pretends it knows an exact apartment.
+- Delayed camera refreshes are cancelled when a newer unit selection replaces the previous one.
+
+Live post-deploy QA passed:
+
+- Desktop 1440: 9 tap points, 0 failures.
+- Mobile 390: 9 tap points, 0 failures.
+- Raw model-surface failures: 0.
+- Selected card, active unit, camera orbit, and camera target matched the selected authored unit.
+
+QA evidence:
+
+- `docs/qa/screenshots/showroom-live-critical-selection-rerun-2026-06-24/QA.md`
+- `docs/qa/screenshots/showroom-live-critical-selection-16924-2026-06-24/QA.md`
+- `docs/qa/screenshots/showroom-live-critical-selection-16924-2026-06-24/desktop-1440-after-critical-taps.png`
+- `docs/qa/screenshots/showroom-live-critical-selection-16924-2026-06-24/mobile-390-after-critical-taps.png`
+
+Honest limitation remains: this is reliable authored target selection and nearby model tap selection. It is not true click-any-window picking inside the GLB. Exact per-window apartment selection still needs apartment-level geometry, BIM or IFC mapping, or a GLB exported with per-unit pickable mesh ids.
