@@ -1,0 +1,394 @@
+{
+  "createdAt": "2026-06-24T07:07:46.854Z",
+  "health": {
+    "version": "1.69.32",
+    "flag": true
+  },
+  "desktop": {
+    "label": "desktop-1440",
+    "viewport": {
+      "width": 1440,
+      "height": 1000
+    },
+    "before": {
+      "activeUnit": null,
+      "cameraOrbit": "34deg 81.5deg 32m",
+      "cameraTarget": "0m 56m 0m",
+      "cardHidden": true,
+      "cardText": "\n\t\t\t\t×\n\t\t\t\tהדירה שנבחרה\n\t\t\t\tבחרו דירה על הבניין\n\t\t\t\tבחרו קומה ודירה כדי לראות מחיר, נוף ותוכנית כאשר הם זמינים.\n\t\t\t\t\n\t\t\t\t\n\t\t\t\t\tלפי פנייה\n\t\t\t\t\tבחירה פתוחה\n\t\t\t\t\tמבט לפי כיוון\n\t\t\t\t\n\t\t\t\tבחרו דירה כדי לראות את פעולות ההמשך.\n\t\t\t\t\n\t\t\t\t\tפרטים מלאים\n\t\t\t\t\tמבט מהדירה\n\t\t\t",
+      "scrollWidth": 1440,
+      "innerWidth": 1440,
+      "modelLoaded": true,
+      "publicLeakHits": [],
+      "emDashCount": 0
+    },
+    "units": [
+      "unit-08-sw",
+      "unit-16-w",
+      "unit-24-nw",
+      "unit-31-se",
+      "unit-38-penthouse",
+      "unit-boutique-07"
+    ],
+    "markerResults": [
+      {
+        "unit": "unit-08-sw",
+        "target": {
+          "unit": "unit-08-sw",
+          "x": 782,
+          "y": 607.859375,
+          "rect": {
+            "left": 751,
+            "top": 585.859375,
+            "width": 62,
+            "height": 44
+          },
+          "topAtCenter": {
+            "tag": "SPAN",
+            "className": "nlp3d-pick-label",
+            "markerUnit": "unit-08-sw"
+          }
+        },
+        "selected": "unit-08-sw",
+        "cameraOrbit": "45deg 66deg 38m",
+        "cameraTarget": "0m 31m 6m",
+        "pass": true
+      },
+      {
+        "unit": "unit-16-w",
+        "target": {
+          "unit": "unit-16-w",
+          "x": 798,
+          "y": 540.1875,
+          "rect": {
+            "left": 763,
+            "top": 518.1875,
+            "width": 70,
+            "height": 44
+          },
+          "topAtCenter": {
+            "tag": "STRONG",
+            "className": "",
+            "markerUnit": "unit-16-w"
+          }
+        },
+        "selected": "unit-16-w",
+        "cameraOrbit": "35deg 63deg 38m",
+        "cameraTarget": "-5m 55m 7m",
+        "pass": true
+      },
+      {
+        "unit": "unit-24-nw",
+        "target": {
+          "unit": "unit-24-nw",
+          "x": 818,
+          "y": 472.515625,
+          "rect": {
+            "left": 783,
+            "top": 450.515625,
+            "width": 70,
+            "height": 44
+          },
+          "topAtCenter": {
+            "tag": "STRONG",
+            "className": "",
+            "markerUnit": "unit-24-nw"
+          }
+        },
+        "selected": "unit-24-nw",
+        "cameraOrbit": "24deg 61deg 38m",
+        "cameraTarget": "-6m 80m 5m",
+        "pass": true
+      },
+      {
+        "unit": "unit-31-se",
+        "target": {
+          "unit": "unit-31-se",
+          "x": 1028,
+          "y": 413.3125,
+          "rect": {
+            "left": 993,
+            "top": 391.3125,
+            "width": 70,
+            "height": 44
+          },
+          "topAtCenter": {
+            "tag": "STRONG",
+            "className": "",
+            "markerUnit": "unit-31-se"
+          }
+        },
+        "selected": "unit-31-se",
+        "cameraOrbit": "310deg 64deg 38m",
+        "cameraTarget": "6m 101m -5m",
+        "pass": true
+      },
+      {
+        "unit": "unit-38-penthouse",
+        "target": {
+          "unit": "unit-38-penthouse",
+          "x": 1028,
+          "y": 354.09375,
+          "rect": {
+            "left": 993,
+            "top": 332.09375,
+            "width": 70,
+            "height": 44
+          },
+          "topAtCenter": {
+            "tag": "STRONG",
+            "className": "",
+            "markerUnit": "unit-38-penthouse"
+          }
+        },
+        "selected": "unit-38-penthouse",
+        "cameraOrbit": "32deg 58deg 38m",
+        "cameraTarget": "0m 124m 7m",
+        "pass": true
+      },
+      {
+        "unit": "unit-boutique-07",
+        "target": {
+          "unit": "unit-boutique-07",
+          "x": 665,
+          "y": 616.328125,
+          "rect": {
+            "left": 634,
+            "top": 594.328125,
+            "width": 62,
+            "height": 44
+          },
+          "topAtCenter": {
+            "tag": "SPAN",
+            "className": "nlp3d-pick-label",
+            "markerUnit": "unit-boutique-07"
+          }
+        },
+        "selected": "unit-boutique-07",
+        "cameraOrbit": "55deg 67deg 38m",
+        "cameraTarget": "-42m 25m 24m",
+        "pass": true
+      }
+    ],
+    "rawTarget": {
+      "targetUnit": "unit-16-w",
+      "rawModel": true,
+      "top": {
+        "tag": "MODEL-VIEWER",
+        "className": "nlp3d-model-viewer"
+      },
+      "x": 891,
+      "y": 540.1875,
+      "dx": 93,
+      "dy": 0
+    },
+    "afterRaw": {
+      "activeUnit": "unit-16-w",
+      "cameraOrbit": "35deg 63deg 38m",
+      "cameraTarget": "-5m 55m 7m",
+      "cardHidden": false,
+      "cardText": "×\nהדירה שנבחרה\nדירת 4 חדרים, קומה 16 ·\n112 מ\"ר · קו החוף ושדה דב\nתוכנית זמינה\nאומדן ₪8,512,000\nזמינה לפנייה\nקו החוף ושדה דב\n\nהאומדן עוזר להשוואה ראשונית בלבד. המחיר, הזמינות ותנאי העסקה יאומתו מול היזם לפני כל התקדמות.\n\nפרטים מלאים\nמבט מהדירה\nתוכניות וסיור\nדבר",
+      "scrollWidth": 1440,
+      "innerWidth": 1440,
+      "modelLoaded": true,
+      "publicLeakHits": [],
+      "emDashCount": 0
+    },
+    "rawPass": true,
+    "pass": true
+  },
+  "mobile": {
+    "label": "mobile-390",
+    "viewport": {
+      "width": 390,
+      "height": 900
+    },
+    "before": {
+      "activeUnit": null,
+      "cameraOrbit": "34deg 81.5deg 32m",
+      "cameraTarget": "0m 56m 0m",
+      "cardHidden": true,
+      "cardText": "\n\t\t\t\t×\n\t\t\t\tהדירה שנבחרה\n\t\t\t\tבחרו דירה על הבניין\n\t\t\t\tבחרו קומה ודירה כדי לראות מחיר, נוף ותוכנית כאשר הם זמינים.\n\t\t\t\t\n\t\t\t\t\n\t\t\t\t\tלפי פנייה\n\t\t\t\t\tבחירה פתוחה\n\t\t\t\t\tמבט לפי כיוון\n\t\t\t\t\n\t\t\t\tבחרו דירה כדי לראות את פעולות ההמשך.\n\t\t\t\t\n\t\t\t\t\tפרטים מלאים\n\t\t\t\t\tמבט מהדירה\n\t\t\t",
+      "scrollWidth": 390,
+      "innerWidth": 390,
+      "modelLoaded": true,
+      "publicLeakHits": [],
+      "emDashCount": 0
+    },
+    "units": [
+      "unit-08-sw",
+      "unit-16-w",
+      "unit-24-nw",
+      "unit-31-se",
+      "unit-38-penthouse",
+      "unit-boutique-07"
+    ],
+    "markerResults": [
+      {
+        "unit": "unit-08-sw",
+        "target": {
+          "unit": "unit-08-sw",
+          "x": 155,
+          "y": 520.15625,
+          "rect": {
+            "left": 133,
+            "top": 498.15625,
+            "width": 44,
+            "height": 44
+          },
+          "topAtCenter": {
+            "tag": "STRONG",
+            "className": "",
+            "markerUnit": "unit-08-sw"
+          }
+        },
+        "selected": "unit-08-sw",
+        "cameraOrbit": "45deg 66deg auto",
+        "cameraTarget": "0m 31m 6m",
+        "pass": true
+      },
+      {
+        "unit": "unit-16-w",
+        "target": {
+          "unit": "unit-16-w",
+          "x": 162,
+          "y": 487.734375,
+          "rect": {
+            "left": 140,
+            "top": 465.734375,
+            "width": 44,
+            "height": 44
+          },
+          "topAtCenter": {
+            "tag": "STRONG",
+            "className": "",
+            "markerUnit": "unit-16-w"
+          }
+        },
+        "selected": "unit-16-w",
+        "cameraOrbit": "35deg 63deg auto",
+        "cameraTarget": "-5m 55m 7m",
+        "pass": true
+      },
+      {
+        "unit": "unit-24-nw",
+        "target": {
+          "unit": "unit-24-nw",
+          "x": 171,
+          "y": 455.3125,
+          "rect": {
+            "left": 149,
+            "top": 433.3125,
+            "width": 44,
+            "height": 44
+          },
+          "topAtCenter": {
+            "tag": "STRONG",
+            "className": "",
+            "markerUnit": "unit-24-nw"
+          }
+        },
+        "selected": "unit-24-nw",
+        "cameraOrbit": "24deg 61deg auto",
+        "cameraTarget": "-6m 80m 5m",
+        "pass": true
+      },
+      {
+        "unit": "unit-31-se",
+        "target": {
+          "unit": "unit-31-se",
+          "x": 265,
+          "y": 426.953125,
+          "rect": {
+            "left": 243,
+            "top": 404.953125,
+            "width": 44,
+            "height": 44
+          },
+          "topAtCenter": {
+            "tag": "STRONG",
+            "className": "",
+            "markerUnit": "unit-31-se"
+          }
+        },
+        "selected": "unit-31-se",
+        "cameraOrbit": "310deg 64deg auto",
+        "cameraTarget": "6m 101m -5m",
+        "pass": true
+      },
+      {
+        "unit": "unit-38-penthouse",
+        "target": {
+          "unit": "unit-38-penthouse",
+          "x": 265,
+          "y": 398.578125,
+          "rect": {
+            "left": 243,
+            "top": 376.578125,
+            "width": 44,
+            "height": 44
+          },
+          "topAtCenter": {
+            "tag": "STRONG",
+            "className": "",
+            "markerUnit": "unit-38-penthouse"
+          }
+        },
+        "selected": "unit-38-penthouse",
+        "cameraOrbit": "32deg 58deg auto",
+        "cameraTarget": "0m 124m 7m",
+        "pass": true
+      },
+      {
+        "unit": "unit-boutique-07",
+        "target": {
+          "unit": "unit-boutique-07",
+          "x": 103,
+          "y": 524.203125,
+          "rect": {
+            "left": 81,
+            "top": 502.203125,
+            "width": 44,
+            "height": 44
+          },
+          "topAtCenter": {
+            "tag": "STRONG",
+            "className": "",
+            "markerUnit": "unit-boutique-07"
+          }
+        },
+        "selected": "unit-boutique-07",
+        "cameraOrbit": "55deg 67deg auto",
+        "cameraTarget": "-42m 25m 24m",
+        "pass": true
+      }
+    ],
+    "rawTarget": {
+      "targetUnit": "unit-16-w",
+      "rawModel": true,
+      "top": {
+        "tag": "MODEL-VIEWER",
+        "className": "nlp3d-model-viewer"
+      },
+      "x": 255,
+      "y": 487.734375,
+      "dx": 93,
+      "dy": 0
+    },
+    "afterRaw": {
+      "activeUnit": "unit-16-w",
+      "cameraOrbit": "35deg 63deg auto",
+      "cameraTarget": "-5m 55m 7m",
+      "cardHidden": false,
+      "cardText": "×\nהדירה שנבחרה\nדירת 4 חדרים, קומה 16 ·\n112 מ\"ר · קו החוף ושדה דב\nתוכנית זמינה\nאומדן ₪8,512,000\nזמינה לפנייה\nקו החוף ושדה דב\n\nהאומדן עוזר להשוואה ראשונית בלבד. המחיר, הזמינות ותנאי העסקה יאומתו מול היזם לפני כל התקדמות.\n\nפרטים מלאים\nמבט מהדירה\nתוכניות וסיור\nדבר",
+      "scrollWidth": 390,
+      "innerWidth": 390,
+      "modelLoaded": true,
+      "publicLeakHits": [],
+      "emDashCount": 0
+    },
+    "rawPass": true,
+    "pass": true
+  },
+  "pass": true
+}

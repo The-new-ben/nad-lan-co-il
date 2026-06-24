@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Rainbow showroom live apartment-selection QA 1.69.32</title>
+  <style>
+    body{margin:0;background:#faf7f1;color:#1b1a17;font:16px/1.55 Arial,sans-serif}
+    main{max-width:1180px;margin:0 auto;padding:32px 20px}
+    h1,h2{line-height:1.15}
+    .status{display:inline-block;background:#1b1a17;color:#fff;padding:8px 12px;border-radius:4px;font-weight:700}
+    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:18px;margin:22px 0}
+    figure{margin:0;border:1px solid #dfd2bd;background:#fff;padding:10px}
+    img{width:100%;height:auto;display:block}
+    figcaption{font-size:14px;margin-top:8px;color:#5d564b}
+    code{background:#fff;border:1px solid #dfd2bd;padding:2px 5px}
+    li{margin:6px 0}
+  </style>
+</head>
+<body>
+<main>
+  <h1>Rainbow showroom live apartment-selection QA</h1>
+  <p><span class="status">PASS on live 1.69.32</span></p>
+  <p>Release commit: <code>d5306af</code>. The live healthcheck reports <code>version: 1.69.32</code> and <code>model_surface_row_aligned_fallback_v16932: true</code>.</p>
+
+  <h2>What was proven</h2>
+  <ul>
+    <li>Desktop 1440 and mobile 390 visible apartment markers select the matching authored unit.</li>
+    <li>Desktop raw <code>model-viewer</code> tap beside unit 16 selects <code>unit-16-w</code>.</li>
+    <li>Mobile raw <code>model-viewer</code> tap beside unit 16 selects <code>unit-16-w</code>.</li>
+    <li>The selected card opens and the camera moves to <code>-5m 55m 7m</code>.</li>
+    <li>Mobile containment is clean: <code>scrollWidth: 390</code>, <code>innerWidth: 390</code>.</li>
+    <li>Public text scan found no internal tool terms and no em dashes in the tested showroom state.</li>
+  </ul>
+
+  <h2>Proof screenshots</h2>
+  <div class="grid">
+    <figure><img src="desktop-1440-before.png" alt="Desktop before selection"><figcaption>Desktop before selection</figcaption></figure>
+    <figure><img src="desktop-1440-after-all-marker-taps.png" alt="Desktop after all marker taps"><figcaption>Desktop after all visible marker taps</figcaption></figure>
+    <figure><img src="desktop-1440-before-raw-unit-16-w.png" alt="Desktop before raw unit 16 tap"><figcaption>Desktop before raw model tap beside unit 16</figcaption></figure>
+    <figure><img src="desktop-1440-after-raw-unit-16-w.png" alt="Desktop after raw unit 16 tap"><figcaption>Desktop after raw model tap: unit 16 selected</figcaption></figure>
+    <figure><img src="mobile-390-before.png" alt="Mobile before selection"><figcaption>Mobile before selection</figcaption></figure>
+    <figure><img src="mobile-390-after-all-marker-taps.png" alt="Mobile after all marker taps"><figcaption>Mobile after all visible marker taps</figcaption></figure>
+    <figure><img src="mobile-390-before-raw-unit-16-w.png" alt="Mobile before raw unit 16 tap"><figcaption>Mobile before raw model tap beside unit 16</figcaption></figure>
+    <figure><img src="mobile-390-after-raw-unit-16-w.png" alt="Mobile after raw unit 16 tap"><figcaption>Mobile after raw model tap: unit 16 selected</figcaption></figure>
+  </div>
+
+  <h2>Honest limitation</h2>
+  <p>This proves authored-unit marker selection and nearby row-aligned raw model taps. It does not prove exact click-any-window selection inside the GLB. Exact per-window picking still needs official apartment geometry, BIM or IFC mapping, or a GLB exported with per-unit pickable mesh IDs.</p>
+</main>
+</body>
+</html>
+
