@@ -713,8 +713,8 @@ body.nadlan-p3d-stage-active #nlrx-action-rail {
 
 	.nlp3d.nlp3d-premium .nlp3d-toolbar button,
 	.nlp3d.nlp3d-premium .nlp3d-drag-note {
-		min-height: 30px;
-		padding: 5px 8px;
+		min-height: 44px;
+		padding: 8px 10px;
 		font-size: 12px;
 	}
 
@@ -725,7 +725,8 @@ body.nadlan-p3d-stage-active #nlrx-action-rail {
 	.nlp3d.nlp3d-premium .nlp3d-stage-pick {
 		min-width: 44px;
 		width: 44px;
-		min-height: 42px;
+		min-height: 44px;
+		height: 44px;
 		padding: 0;
 		font-size: 0;
 	}
@@ -733,6 +734,8 @@ body.nadlan-p3d-stage-active #nlrx-action-rail {
 	.nlp3d.nlp3d-premium .nlp3d-stage-pick.is-active {
 		width: 48px;
 		min-width: 48px;
+		min-height: 48px;
+		height: 48px;
 	}
 
 	.nlp3d.nlp3d-premium .nlp3d-pick-room-count,
@@ -765,6 +768,12 @@ body.nadlan-p3d-stage-active #nlrx-action-rail {
 	.nlp3d.nlp3d-premium .nlp3d-dock-actions {
 		display: grid;
 		grid-template-columns: 1fr 1fr;
+	}
+
+	.nlp3d.nlp3d-premium .nlp3d-stage-card-close {
+		width: 44px;
+		height: 44px;
+		min-height: 44px;
 	}
 
 	.nlp3d.nlp3d-premium .nlp3d-showcase {
