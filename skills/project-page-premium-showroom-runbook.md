@@ -277,6 +277,20 @@ This is the factory standard: one model, one facade/unit map, one environment fi
 SEO/content pack. Do not create a new plugin feature for each project unless the reusable payload
 contract cannot express it.
 
+The facade picker is a reusable app surface, not a per-project illustration trick. Before cloning a
+new project, read `docs/design/2026-06-20-facade-engine-tooling-and-goal.md` and use the installed
+toolchain:
+
+- Playwright screenshots for proof across desktop, tablet and mobile.
+- Lighthouse for live quality audits.
+- ImageMagick for image optimization and visual-diff checks.
+- Blender for repeatable model/facade/poster production when official assets are missing.
+
+Every project needs the same facade contract: real or clearly labeled illustrative facade bitmap,
+clickable unit zones anchored to that bitmap, visible inventory status, selected-apartment card,
+media/tour hooks and lead context. Do not create a one-off pretty image that cannot become a
+clickable inventory surface.
+
 ## J. Inventory Semantics v1.66.9
 
 The facade picker is the buyer's inventory surface. It must answer "can I ask about this apartment?"
