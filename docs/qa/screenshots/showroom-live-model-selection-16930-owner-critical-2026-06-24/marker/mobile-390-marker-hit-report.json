@@ -1,0 +1,198 @@
+{
+  "label": "mobile-390",
+  "viewport": {
+    "width": 390,
+    "height": 900
+  },
+  "before": [
+    {
+      "unit": "unit-08-sw",
+      "text": "8",
+      "rect": {
+        "x": 134,
+        "y": 498,
+        "width": 44,
+        "height": 44,
+        "centerX": 156,
+        "centerY": 520
+      },
+      "topAtCenter": {
+        "tag": "STRONG",
+        "className": "",
+        "markerUnit": "unit-08-sw"
+      },
+      "centerHitsSelf": true
+    },
+    {
+      "unit": "unit-16-w",
+      "text": "16",
+      "rect": {
+        "x": 141,
+        "y": 466,
+        "width": 44,
+        "height": 44,
+        "centerX": 163,
+        "centerY": 488
+      },
+      "topAtCenter": {
+        "tag": "STRONG",
+        "className": "",
+        "markerUnit": "unit-16-w"
+      },
+      "centerHitsSelf": true
+    },
+    {
+      "unit": "unit-24-nw",
+      "text": "24",
+      "rect": {
+        "x": 150,
+        "y": 433,
+        "width": 44,
+        "height": 44,
+        "centerX": 172,
+        "centerY": 455
+      },
+      "topAtCenter": {
+        "tag": "STRONG",
+        "className": "",
+        "markerUnit": "unit-24-nw"
+      },
+      "centerHitsSelf": true
+    },
+    {
+      "unit": "unit-31-se",
+      "text": "31",
+      "rect": {
+        "x": 244,
+        "y": 405,
+        "width": 44,
+        "height": 44,
+        "centerX": 266,
+        "centerY": 427
+      },
+      "topAtCenter": {
+        "tag": "STRONG",
+        "className": "",
+        "markerUnit": "unit-31-se"
+      },
+      "centerHitsSelf": true
+    },
+    {
+      "unit": "unit-38-penthouse",
+      "text": "38",
+      "rect": {
+        "x": 244,
+        "y": 377,
+        "width": 44,
+        "height": 44,
+        "centerX": 266,
+        "centerY": 399
+      },
+      "topAtCenter": {
+        "tag": "STRONG",
+        "className": "",
+        "markerUnit": "unit-38-penthouse"
+      },
+      "centerHitsSelf": true
+    },
+    {
+      "unit": "unit-boutique-07",
+      "text": "7",
+      "rect": {
+        "x": 82,
+        "y": 502,
+        "width": 44,
+        "height": 44,
+        "centerX": 104,
+        "centerY": 524
+      },
+      "topAtCenter": {
+        "tag": "STRONG",
+        "className": "",
+        "markerUnit": "unit-boutique-07"
+      },
+      "centerHitsSelf": true
+    }
+  ],
+  "taps": [
+    {
+      "expectedUnit": "unit-08-sw",
+      "topAtCenter": {
+        "tag": "STRONG",
+        "className": "",
+        "markerUnit": "unit-08-sw"
+      },
+      "centerHitsSelf": true,
+      "selectedUnit": "unit-08-sw",
+      "cameraOrbit": "45deg 66deg auto",
+      "cameraTarget": "0m 31m 6m",
+      "pass": true
+    },
+    {
+      "expectedUnit": "unit-16-w",
+      "topAtCenter": {
+        "tag": "STRONG",
+        "className": "",
+        "markerUnit": "unit-16-w"
+      },
+      "centerHitsSelf": true,
+      "selectedUnit": "unit-16-w",
+      "cameraOrbit": "35deg 63deg auto",
+      "cameraTarget": "-5m 55m 7m",
+      "pass": true
+    },
+    {
+      "expectedUnit": "unit-24-nw",
+      "topAtCenter": {
+        "tag": "STRONG",
+        "className": "",
+        "markerUnit": "unit-24-nw"
+      },
+      "centerHitsSelf": true,
+      "selectedUnit": "unit-24-nw",
+      "cameraOrbit": "24deg 61deg auto",
+      "cameraTarget": "-6m 80m 5m",
+      "pass": true
+    },
+    {
+      "expectedUnit": "unit-31-se",
+      "topAtCenter": {
+        "tag": "STRONG",
+        "className": "",
+        "markerUnit": "unit-31-se"
+      },
+      "centerHitsSelf": true,
+      "selectedUnit": "unit-31-se",
+      "cameraOrbit": "310deg 64deg auto",
+      "cameraTarget": "6m 101m -5m",
+      "pass": true
+    },
+    {
+      "expectedUnit": "unit-38-penthouse",
+      "topAtCenter": {
+        "tag": "STRONG",
+        "className": "",
+        "markerUnit": "unit-38-penthouse"
+      },
+      "centerHitsSelf": true,
+      "selectedUnit": "unit-38-penthouse",
+      "cameraOrbit": "32deg 58deg auto",
+      "cameraTarget": "0m 124m 7m",
+      "pass": true
+    },
+    {
+      "expectedUnit": "unit-boutique-07",
+      "topAtCenter": {
+        "tag": "STRONG",
+        "className": "",
+        "markerUnit": "unit-boutique-07"
+      },
+      "centerHitsSelf": true,
+      "selectedUnit": "unit-boutique-07",
+      "cameraOrbit": "55deg 67deg auto",
+      "cameraTarget": "-42m 25m 24m",
+      "pass": true
+    }
+  ],
+  "failed": []
+}

@@ -1,0 +1,174 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Rainbow Showroom Live Model Selection QA</title>
+  <style>
+    :root {
+      --cream: #faf7f1;
+      --panel: #fffdf8;
+      --ink: #1b1a17;
+      --muted: #6f665b;
+      --gold: #9c7a3c;
+      --line: #e5d9c8;
+      --ok: #2f7d4f;
+      --warn: #b46a33;
+    }
+    body {
+      margin: 0;
+      background: var(--cream);
+      color: var(--ink);
+      font: 16px/1.55 Arial, sans-serif;
+    }
+    main {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 36px 20px 56px;
+    }
+    h1, h2 {
+      margin: 0 0 12px;
+      line-height: 1.15;
+    }
+    h1 {
+      font-size: clamp(32px, 5vw, 58px);
+      letter-spacing: 0;
+    }
+    h2 {
+      margin-top: 34px;
+      font-size: 28px;
+    }
+    p {
+      color: var(--muted);
+      max-width: 840px;
+    }
+    .meta, .card, table {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      box-shadow: 0 18px 55px rgba(27, 26, 23, .08);
+    }
+    .meta {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 1px;
+      margin: 24px 0;
+    }
+    .meta div {
+      padding: 18px;
+      border-inline-end: 1px solid var(--line);
+    }
+    .label {
+      display: block;
+      color: var(--gold);
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+      margin-bottom: 8px;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      overflow: hidden;
+    }
+    th, td {
+      padding: 14px 16px;
+      border-bottom: 1px solid var(--line);
+      text-align: start;
+      vertical-align: top;
+    }
+    th {
+      background: #f2eadf;
+      color: var(--ink);
+    }
+    .pass {
+      color: var(--ok);
+      font-weight: 700;
+    }
+    .shots {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 18px;
+      margin-top: 18px;
+    }
+    .card {
+      padding: 14px;
+    }
+    .card img {
+      display: block;
+      width: 100%;
+      height: auto;
+      border: 1px solid var(--line);
+      background: #fff;
+    }
+    .card strong {
+      display: block;
+      margin: 10px 0 4px;
+    }
+    .truth {
+      border-inline-start: 5px solid var(--warn);
+      padding: 16px 18px;
+      background: #fff9ef;
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+      color: var(--ink);
+    }
+    code {
+      background: #f4eadc;
+      padding: 2px 5px;
+      border-radius: 4px;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <h1>Rainbow Showroom Live Model Selection QA</h1>
+    <p>Live critical check for apartment selection on the Rainbow 3D showroom. This report records what was tested, what passed, and what remains limited by the current model assets.</p>
+
+    <section class="meta" aria-label="QA metadata">
+      <div><span class="label">Date</span>2026-06-24</div>
+      <div><span class="label">Live Plugin</span>1.69.30</div>
+      <div><span class="label">Release Commit</span>9096825</div>
+      <div><span class="label">Project</span>Rainbow Tel Aviv</div>
+    </section>
+
+    <h2>Result</h2>
+    <table>
+      <thead>
+        <tr><th>Check</th><th>Status</th><th>Evidence</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Live healthcheck version</td><td class="pass">Pass</td><td><code>version: 1.69.30</code></td></tr>
+        <tr><td>New fallback flag</td><td class="pass">Pass</td><td><code>model_surface_mobile_screen_fallback_v16930: true</code></td></tr>
+        <tr><td>Visible apartment buttons, desktop</td><td class="pass">Pass</td><td>6 of 6 units selected</td></tr>
+        <tr><td>Visible apartment buttons, mobile</td><td class="pass">Pass</td><td>6 of 6 units selected</td></tr>
+        <tr><td>Raw model-surface tap, desktop</td><td class="pass">Pass</td><td>Selected <code>unit-08-sw</code>, camera orbit and target changed</td></tr>
+        <tr><td>Raw model-surface tap, mobile</td><td class="pass">Pass</td><td>Selected <code>unit-08-sw</code>, camera orbit and target changed</td></tr>
+        <tr><td>Mobile free-tap grid</td><td class="pass">Pass</td><td>No dead model-surface points</td></tr>
+        <tr><td>Public-language leak scan</td><td class="pass">Pass</td><td>No internal agent, prompt, token, GLB, SVG, Featured, Sponsored, or similar terms found</td></tr>
+      </tbody>
+    </table>
+
+    <h2>Visual Proof</h2>
+    <div class="shots">
+      <article class="card">
+        <img src="surface/mobile-390-after-surface-mesh-pick.png" alt="Mobile surface tap selecting unit 8">
+        <strong>Mobile raw model-surface tap</strong>
+        <p>Tap lands on the model surface, selects unit 8, highlights the unit, and opens the selected apartment card.</p>
+      </article>
+      <article class="card">
+        <img src="free-grid/mobile-390-after-tower-mid-right.png" alt="Mobile grid tap selecting a higher floor unit">
+        <strong>Mobile grid sample</strong>
+        <p>Tap near the right side of the model selects a higher floor unit and changes camera focus.</p>
+      </article>
+      <article class="card">
+        <img src="marker/mobile-390-after-marker-taps.png" alt="Mobile visible apartment marker selections">
+        <strong>Visible apartment buttons</strong>
+        <p>All authored visible unit controls are tappable on mobile and resolve to their own units.</p>
+      </article>
+    </div>
+
+    <h2>Honest Limitation</h2>
+    <p class="truth">This works for the current Rainbow GLB and unit map: visible apartment targets work, raw model-surface taps select a nearby authored unit, and the camera moves. It is still not exact window-by-window BIM picking. That requires an official segmented GLB, object IDs, BIM or IFC mapping, or contractor-provided apartment-level geometry.</p>
+  </main>
+</body>
+</html>
