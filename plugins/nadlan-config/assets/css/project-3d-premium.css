@@ -713,6 +713,7 @@ body.nadlan-p3d-stage-active #nlrx-action-rail {
 
 	.nlp3d.nlp3d-premium .nlp3d-toolbar button,
 	.nlp3d.nlp3d-premium .nlp3d-drag-note {
+		min-width: 44px;
 		min-height: 44px;
 		padding: 8px 10px;
 		font-size: 12px;
