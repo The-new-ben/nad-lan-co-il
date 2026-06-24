@@ -2328,8 +2328,23 @@ min-width:48px!important;
 min-height:44px!important;
 padding:5px 7px!important;
 }
+.nlp3d.nlp3d-premium .nlp3d-model-picks .nlp3d-pick-room-count{
+display:none!important;
+}
+.nlp3d.nlp3d-premium .nlp3d-model-picks .nlp3d-stage-pick{
+width:44px!important;
+min-width:44px!important;
+padding:0!important;
+gap:0!important;
+}
+.nlp3d.nlp3d-premium .nlp3d-model-picks .nlp3d-stage-pick.is-active{
+width:48px!important;
+min-width:48px!important;
+}
 .nlp3d.nlp3d-premium .nlp3d-model-picks .nlp3d-pick-label{
 font-size:11px!important;
+justify-content:center!important;
+width:100%!important;
 }
 .nlp3d.nlp3d-premium .nlp3d-model-picks .nlp3d-hotspot-tip{
 display:none!important;
@@ -2966,6 +2981,7 @@ if ( ! function_exists( 'nadlan_p3d_inline_js' ) ) {
 				var strong=document.createElement('strong');
 				strong.textContent=u.floor||'';
 				var small=document.createElement('span');
+				small.className='nlp3d-pick-room-count';
 				small.textContent=u.rooms?u.rooms+' ח':'דירה';
 				text.appendChild(strong);
 				text.appendChild(small);
@@ -3897,7 +3913,7 @@ add_action(
 			return;
 		}
 
-		wp_register_style( 'nadlan-p3d', '', array(), '1.69.8' );
+		wp_register_style( 'nadlan-p3d', '', array(), '1.69.9' );
 		wp_enqueue_style( 'nadlan-p3d' );
 		wp_add_inline_style( 'nadlan-p3d', nadlan_p3d_lovable_showroom_v1690_css() );
 
@@ -3908,7 +3924,7 @@ add_action(
 			wp_enqueue_script( 'nadlan-model-viewer' );
 		}
 
-		wp_register_script( 'nadlan-p3d', '', array(), '1.69.8', true );
+		wp_register_script( 'nadlan-p3d', '', array(), '1.69.9', true );
 		wp_enqueue_script( 'nadlan-p3d' );
 		wp_add_inline_script( 'nadlan-p3d', nadlan_p3d_inline_js( esc_url_raw( rest_url( 'nadlan/v1/lead' ) ) ) );
 	}
@@ -4308,6 +4324,7 @@ add_filter(
 			'model_surface_tap_select_v1695' => true,
 			'model_surface_tap_floor_bias_v1696' => true,
 			'toolbar_empty_space_tap_passthrough_v1697' => true,
+			'mobile_marker_clarity_v1699' => true,
 			'product_selector_v1641' => true,
 			'status_colored_unit_picks' => true,
 			'recommended_unit_pulse' => true,
