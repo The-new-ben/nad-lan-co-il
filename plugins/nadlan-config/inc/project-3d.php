@@ -2855,6 +2855,50 @@ if ( ! function_exists( 'nadlan_p3d_inline_js' ) ) {
 				if(node!==except){node.classList.remove('is-open')}
 			});
 		}
+		function unitSurfaceVector(u){
+			var raw=String(u&&u.hotspot_position||'').replace(/m/g,'').trim();
+			if(!raw){return null}
+			var parts=raw.split(/\s+/).map(function(part){return Number(part)});
+			if(parts.length<3||parts.some(function(n){return !isFinite(n)})){return null}
+			return {x:parts[0],y:parts[1],z:parts[2]};
+		}
+		function surfaceNumber(pos,key){
+			var n=Number(pos&&pos[key]);
+			return isFinite(n)?n:null;
+		}
+		function selectUnitFromModelSurfacePoint(p,source){
+			if(!modelViewer||typeof modelViewer.positionAndNormalFromPoint!=='function'||!p){return Promise.resolve(false)}
+			var surface;
+			try{
+				surface=modelViewer.positionAndNormalFromPoint(p.x,p.y);
+			}catch(e){
+				return Promise.resolve(false);
+			}
+			return Promise.resolve(surface).then(function(hit){
+				if(!hit||!hit.position){return false}
+				var px=surfaceNumber(hit.position,'x');
+				var py=surfaceNumber(hit.position,'y');
+				var pz=surfaceNumber(hit.position,'z');
+				if(px===null||py===null||pz===null){return false}
+				var best=null,bestScore=Infinity;
+				units.forEach(function(u){
+					if(!u||u.status==='sold'){return}
+					var v=unitSurfaceVector(u);
+					if(!v){return}
+					var dx=v.x-px,dy=Math.abs(v.y-py),dz=v.z-pz;
+					var horizontal=Math.sqrt(dx*dx+dz*dz);
+					var score=(dy*1.7)+(horizontal*.28);
+					if(score<bestScore){
+						bestScore=score;
+						best={unit:u,yDelta:dy,horizontal:horizontal};
+					}
+				});
+				if(!best||!best.unit){return false}
+				if(best.yDelta>24&&best.horizontal>42){return false}
+				selectUnit(best.unit.id,source||'model-surface-hit');
+				return true;
+			}).catch(function(){return false});
+		}
 		function selectNearestModelPickFromPoint(p,source){
 			if(!stagePicks||!p){return false}
 			var sceneRect=scene?scene.getBoundingClientRect():null;
@@ -3634,7 +3678,16 @@ if ( ! function_exists( 'nadlan_p3d_inline_js' ) ) {
 			modelViewer.addEventListener('click',function(e){
 				if(Date.now()<suppressUnitClickUntil){return}
 				if(e.target&&e.target.closest&&e.target.closest('.nlp3d-mv-hotspot')){return}
-				if(selectNearestModelPickFromPoint(eventPoint(e),'model-surface-tap')){
+				var p=eventPoint(e);
+				if(typeof modelViewer.positionAndNormalFromPoint==='function'){
+					e.preventDefault();
+					e.stopPropagation();
+					selectUnitFromModelSurfacePoint(p,'model-surface-hit').then(function(hit){
+						if(!hit){selectNearestModelPickFromPoint(p,'model-surface-tap')}
+					});
+					return;
+				}
+				if(selectNearestModelPickFromPoint(p,'model-surface-tap')){
 					e.preventDefault();
 					e.stopPropagation();
 				}
@@ -3868,7 +3921,7 @@ add_action(
 			return;
 		}
 
-		wp_register_style( 'nadlan-p3d', '', array(), '1.69.15' );
+		wp_register_style( 'nadlan-p3d', '', array(), '1.69.16' );
 		wp_enqueue_style( 'nadlan-p3d' );
 		wp_add_inline_style( 'nadlan-p3d', nadlan_p3d_lovable_showroom_v1690_css() );
 
@@ -3879,7 +3932,7 @@ add_action(
 			wp_enqueue_script( 'nadlan-model-viewer' );
 		}
 
-		wp_register_script( 'nadlan-p3d', '', array(), '1.69.15', true );
+		wp_register_script( 'nadlan-p3d', '', array(), '1.69.16', true );
 		wp_enqueue_script( 'nadlan-p3d' );
 		wp_add_inline_script( 'nadlan-p3d', nadlan_p3d_inline_js( esc_url_raw( rest_url( 'nadlan/v1/lead' ) ) ) );
 	}
@@ -4369,6 +4422,7 @@ add_filter(
 			'reservation_state' => 'non_binding_inquiry',
 			'stage_card_single_action_group_v16914' => true,
 			'stage_action_rail_suppression_v16915' => true,
+			'model_surface_mesh_pick_v16916' => true,
 			'projects_with_3d' => (int) $q->found_posts,
 			'projects_with_glb' => (int) $model_q->found_posts,
 		);
