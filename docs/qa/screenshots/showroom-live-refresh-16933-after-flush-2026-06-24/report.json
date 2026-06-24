@@ -1,0 +1,73 @@
+{
+  "url": "https://nad-lan.co.il/projects/rainbow-tel-aviv/?cb=anon-after-flush-rerun-1782292578725",
+  "states": [
+    {
+      "label": "t00-domcontentloaded",
+      "url": "https://nad-lan.co.il/projects/rainbow-tel-aviv/?cb=anon-after-flush-rerun-1782292578725",
+      "title": "דירות למכירה ב-Rainbow תל אביב | מחירים, תוכניות ובחירת דירה בשדה דב | נדלן חכם",
+      "h1": "Rainbow Tel Aviv – ריינבו תל אביב",
+      "rootClass": "nlp3d nlp3d-premium alignfull is-model-first is-dual-showroom has-model-picker",
+      "hasShowroom": true,
+      "reveal": "manual",
+      "loaded": false,
+      "error": false,
+      "picks": [],
+      "selected": null,
+      "viewport": "C:\\Users\\janana\\Documents\\Codex\\2026-06-21\\i-created-a-safe-codex-transfer\\work\\nad-lan-co-il\\docs\\qa\\screenshots\\showroom-live-refresh-16933-after-flush-2026-06-24\\t00-domcontentloaded-viewport.png",
+      "stageImage": "C:\\Users\\janana\\Documents\\Codex\\2026-06-21\\i-created-a-safe-codex-transfer\\work\\nad-lan-co-il\\docs\\qa\\screenshots\\showroom-live-refresh-16933-after-flush-2026-06-24\\t00-domcontentloaded-stage.png"
+    },
+    {
+      "label": "t04-400ms",
+      "url": "https://nad-lan.co.il/projects/rainbow-tel-aviv/?cb=anon-after-flush-rerun-1782292578725",
+      "title": "דירות למכירה ב-Rainbow תל אביב | מחירים, תוכניות ובחירת דירה בשדה דב | נדלן חכם",
+      "h1": "Rainbow Tel Aviv – ריינבו תל אביב",
+      "rootClass": "nlp3d nlp3d-premium alignfull is-model-first is-dual-showroom has-model-picker",
+      "hasShowroom": true,
+      "reveal": "manual",
+      "loaded": false,
+      "error": false,
+      "picks": [],
+      "selected": null,
+      "viewport": "C:\\Users\\janana\\Documents\\Codex\\2026-06-21\\i-created-a-safe-codex-transfer\\work\\nad-lan-co-il\\docs\\qa\\screenshots\\showroom-live-refresh-16933-after-flush-2026-06-24\\t04-400ms-viewport.png",
+      "stageImage": "C:\\Users\\janana\\Documents\\Codex\\2026-06-21\\i-created-a-safe-codex-transfer\\work\\nad-lan-co-il\\docs\\qa\\screenshots\\showroom-live-refresh-16933-after-flush-2026-06-24\\t04-400ms-stage.png"
+    },
+    {
+      "label": "t20-2s",
+      "url": "https://nad-lan.co.il/projects/rainbow-tel-aviv/?cb=anon-after-flush-rerun-1782292578725",
+      "title": "דירות למכירה ב-Rainbow תל אביב | מחירים, תוכניות ובחירת דירה בשדה דב | נדלן חכם",
+      "h1": "Rainbow Tel Aviv – ריינבו תל אביב",
+      "rootClass": "nlp3d nlp3d-premium alignfull is-model-first is-dual-showroom has-model-picker",
+      "hasShowroom": true,
+      "reveal": "manual",
+      "loaded": false,
+      "error": false,
+      "picks": [],
+      "selected": null,
+      "viewport": "C:\\Users\\janana\\Documents\\Codex\\2026-06-21\\i-created-a-safe-codex-transfer\\work\\nad-lan-co-il\\docs\\qa\\screenshots\\showroom-live-refresh-16933-after-flush-2026-06-24\\t20-2s-viewport.png",
+      "stageImage": "C:\\Users\\janana\\Documents\\Codex\\2026-06-21\\i-created-a-safe-codex-transfer\\work\\nad-lan-co-il\\docs\\qa\\screenshots\\showroom-live-refresh-16933-after-flush-2026-06-24\\t20-2s-stage.png"
+    },
+    {
+      "label": "t70-7s",
+      "url": "https://nad-lan.co.il/projects/rainbow-tel-aviv/?cb=anon-after-flush-rerun-1782292578725",
+      "title": "דירות למכירה ב-Rainbow תל אביב | מחירים, תוכניות ובחירת דירה בשדה דב | נדלן חכם",
+      "h1": "Rainbow Tel Aviv – ריינבו תל אביב",
+      "rootClass": "nlp3d nlp3d-premium alignfull is-model-first is-dual-showroom has-model-picker",
+      "hasShowroom": true,
+      "reveal": "manual",
+      "loaded": false,
+      "error": false,
+      "picks": [],
+      "selected": null,
+      "viewport": "C:\\Users\\janana\\Documents\\Codex\\2026-06-21\\i-created-a-safe-codex-transfer\\work\\nad-lan-co-il\\docs\\qa\\screenshots\\showroom-live-refresh-16933-after-flush-2026-06-24\\t70-7s-viewport.png",
+      "stageImage": "C:\\Users\\janana\\Documents\\Codex\\2026-06-21\\i-created-a-safe-codex-transfer\\work\\nad-lan-co-il\\docs\\qa\\screenshots\\showroom-live-refresh-16933-after-flush-2026-06-24\\t70-7s-stage.png"
+    }
+  ],
+  "failed": [
+    {
+      "url": "https://www.google-analytics.com/g/collect?v=2&tid=G-G3QRV5646E&gtm=45Pe66h0v9254165660za200zd9254165660&_p=1782292579643&gcd=13l3l3l3l1l1&npa=0&dma=0&gdid=dZTNiMT&are=1&cid=1192710970.1782292581&frm=0&pscdl=noapi&rcb=8&sr=390x1100&uaa=x86&uab=64&uafvl=HeadlessChrome%3B149.0.7827.55%7CChromium%3B149.0.7827.55%7CNot)A%253BBrand%3B24.0.0.0&uam=&uamb=0&uap=Windows&uapv=19.0.0&uaw=0&ul=he-il&_s=1&tag_exp=115938466~115938469~118395333~119027224~119392696~119392704~119534187~119576876~119576880&sid=1782292580&sct=1&seg=0&dl=https%3A%2F%2Fnad-lan.co.il%2Fprojects%2Frainbow-tel-aviv%2F%3Fcb%3Danon-after-flush-rerun-1782292578725&dt=%D7%93%D7%99%D7%A8%D7%95%D7%AA%20%D7%9C%D7%9E%D7%9B%D7%99%D7%A8%D7%94%20%D7%91-Rainbow%20%D7%AA%D7%9C%20%D7%90%D7%91%D7%99%D7%91%20%7C%20%D7%9E%D7%97%D7%99%D7%A8%D7%99%D7%9D%2C%20%D7%AA%D7%95%D7%9B%D7%A0%D7%99%D7%95%D7%AA%20%D7%95%D7%91%D7%97%D7%99%D7%A8%D7%AA%20%D7%93%D7%99%D7%A8%D7%94%20%D7%91%D7%A9%D7%93%D7%94%20%D7%93%D7%91%20%7C%20%D7%A0%D7%93%D7%9C%D7%9F%20%D7%97%D7%9B%D7%9D&en=page_view&_fv=1&_nsi=1&_ss=1&_ee=1&tfd=2164",
+      "error": "net::ERR_ABORTED"
+    }
+  ],
+  "status": 200,
+  "clickAttempt": null
+}
