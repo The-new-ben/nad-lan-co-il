@@ -1028,3 +1028,23 @@ Evidence:
 - `docs/qa/screenshots/showroom-focused-mobile-tower-upper-center-2026-06-24/`
 
 Honest limitation remains unchanged: this proves reliable selection for the authored Rainbow units and nearest authored-unit selection from real model-viewer surface hits. It does not prove exact click-any-window apartment picking inside the GLB. Exact per-window selection requires apartment-level geometry, BIM or IFC mapping, or GLB meshes exported with per-unit pickable IDs.
+
+### 2026-06-24 - Codex - Owner rerun live apartment selection QA on v1.69.27
+
+Owner asked again to try selecting apartments on the model and not fake it. Reran live browser QA against Rainbow on `nadlan-config` v1.69.27.
+
+Result:
+
+- Strict raw model-viewer surface selection passed on desktop 1440 and mobile 390.
+- Visible apartment marker selection passed for all six authored Rainbow units on desktop 1440 and mobile 390.
+- Mobile 390 free-tap grid had no dead model-surface tap points.
+- Public-language scan found no internal terms and no em dash in the showroom text checked.
+
+Evidence:
+
+- `docs/qa/2026-06-24-rainbow-apartment-selection-owner-rerun.md`
+- `docs/qa/screenshots/showroom-surface-mesh-pick-live-user-rerun-2026-06-24/`
+- `docs/qa/screenshots/showroom-marker-hit-live-user-rerun-2026-06-24/`
+- `docs/qa/screenshots/showroom-model-free-tap-grid-live-user-rerun-2026-06-24/`
+
+Honest limitation remains unchanged: the current live showroom supports six authored unit targets and nearest authored-unit selection from real model-viewer surface hits. It does not support exact click-any-window BIM selection until we receive apartment-level geometry, BIM or IFC mapping, or a GLB with per-unit pickable mesh IDs.

@@ -1,0 +1,309 @@
+{
+  "createdAt": "2026-06-24T04:49:32.081Z",
+  "url": "https://nad-lan.co.il/projects/rainbow-tel-aviv/?codex_qa=user_rerun_free_tap_grid_20260624",
+  "viewport": {
+    "width": 390,
+    "height": 900
+  },
+  "points": [
+    {
+      "point": {
+        "name": "tower-upper-left",
+        "x": 0.38,
+        "y": 0.3
+      },
+      "tap": {
+        "x": 173.4,
+        "y": 390.084375,
+        "sceneRect": {
+          "x": 48,
+          "y": 299.484375,
+          "width": 330,
+          "height": 302
+        },
+        "beforeActiveUnit": null,
+        "elementAtPoint": {
+          "tag": "MODEL-VIEWER",
+          "className": "nlp3d-model-viewer",
+          "markerUnit": null,
+          "insideModelViewer": true
+        }
+      },
+      "after": {
+        "activeUnit": "unit-24-nw",
+        "activeText": "× הדירה שנבחרה דירת 4 חדרים, קומה 24 · 128 מ\"ר · ים, פארק וצפון תל אביב מומלצת לבדיקה תוכנית זמינה אומדן ₪9,728,000 זמינה לפנייה ים, פארק וצפון תל אביב האומדן עוזר להשוואה ראשונית בלבד. המחיר, הזמינות ותנאי העסקה יאומתו ",
+        "cameraOrbit": "24deg 61deg auto",
+        "cameraTarget": "-6m 80m 5m"
+      },
+      "selected": true,
+      "modelSurfaceTap": true
+    },
+    {
+      "point": {
+        "name": "tower-upper-center",
+        "x": 0.5,
+        "y": 0.31
+      },
+      "tap": {
+        "x": 213,
+        "y": 393.104375,
+        "sceneRect": {
+          "x": 48,
+          "y": 299.484375,
+          "width": 330,
+          "height": 302
+        },
+        "beforeActiveUnit": null,
+        "elementAtPoint": {
+          "tag": "MODEL-VIEWER",
+          "className": "nlp3d-model-viewer",
+          "markerUnit": null,
+          "insideModelViewer": true
+        }
+      },
+      "after": {
+        "activeUnit": "unit-24-nw",
+        "activeText": "× הדירה שנבחרה דירת 4 חדרים, קומה 24 · 128 מ\"ר · ים, פארק וצפון תל אביב מומלצת לבדיקה תוכנית זמינה אומדן ₪9,728,000 זמינה לפנייה ים, פארק וצפון תל אביב האומדן עוזר להשוואה ראשונית בלבד. המחיר, הזמינות ותנאי העסקה יאומתו ",
+        "cameraOrbit": "24deg 61deg auto",
+        "cameraTarget": "-6m 80m 5m"
+      },
+      "selected": true,
+      "modelSurfaceTap": true
+    },
+    {
+      "point": {
+        "name": "tower-upper-right",
+        "x": 0.64,
+        "y": 0.34
+      },
+      "tap": {
+        "x": 259.20000000000005,
+        "y": 402.164375,
+        "sceneRect": {
+          "x": 48,
+          "y": 299.484375,
+          "width": 330,
+          "height": 302
+        },
+        "beforeActiveUnit": null,
+        "elementAtPoint": {
+          "tag": "STRONG",
+          "className": "",
+          "markerUnit": "unit-38-penthouse",
+          "insideModelViewer": false
+        }
+      },
+      "after": {
+        "activeUnit": "unit-38-penthouse",
+        "activeText": "× הדירה שנבחרה דירת 5 חדרים, קומה 38 · 210 מ\"ר · פנטהאוז גבוה לכיוון הים מומלצת לבדיקה תוכנית זמינה אומדן ₪15,960,000 זמינה לפנייה פנטהאוז גבוה לכיוון הים האומדן עוזר להשוואה ראשונית בלבד. המחיר, הזמינות ותנאי העסקה יאומ",
+        "cameraOrbit": "32deg 58deg auto",
+        "cameraTarget": "0m 124m 7m"
+      },
+      "selected": true,
+      "modelSurfaceTap": false
+    },
+    {
+      "point": {
+        "name": "tower-mid-left",
+        "x": 0.36,
+        "y": 0.48
+      },
+      "tap": {
+        "x": 166.8,
+        "y": 444.44437500000004,
+        "sceneRect": {
+          "x": 48,
+          "y": 299.484375,
+          "width": 330,
+          "height": 302
+        },
+        "beforeActiveUnit": null,
+        "elementAtPoint": {
+          "tag": "BUTTON",
+          "className": "nlp3d-stage-pick nlp3d-status-available is-available is-recommended",
+          "markerUnit": "unit-24-nw",
+          "insideModelViewer": false
+        }
+      },
+      "after": {
+        "activeUnit": "unit-24-nw",
+        "activeText": "× הדירה שנבחרה דירת 4 חדרים, קומה 24 · 128 מ\"ר · ים, פארק וצפון תל אביב מומלצת לבדיקה תוכנית זמינה אומדן ₪9,728,000 זמינה לפנייה ים, פארק וצפון תל אביב האומדן עוזר להשוואה ראשונית בלבד. המחיר, הזמינות ותנאי העסקה יאומתו ",
+        "cameraOrbit": "24deg 61deg auto",
+        "cameraTarget": "-6m 80m 5m"
+      },
+      "selected": true,
+      "modelSurfaceTap": false
+    },
+    {
+      "point": {
+        "name": "tower-mid-center",
+        "x": 0.5,
+        "y": 0.5
+      },
+      "tap": {
+        "x": 213,
+        "y": 450.484375,
+        "sceneRect": {
+          "x": 48,
+          "y": 299.484375,
+          "width": 330,
+          "height": 302
+        },
+        "beforeActiveUnit": null,
+        "elementAtPoint": {
+          "tag": "MODEL-VIEWER",
+          "className": "nlp3d-model-viewer",
+          "markerUnit": null,
+          "insideModelViewer": true
+        }
+      },
+      "after": {
+        "activeUnit": "unit-16-w",
+        "activeText": "× הדירה שנבחרה דירת 4 חדרים, קומה 16 · 112 מ\"ר · קו החוף ושדה דב תוכנית זמינה אומדן ₪8,512,000 זמינה לפנייה קו החוף ושדה דב האומדן עוזר להשוואה ראשונית בלבד. המחיר, הזמינות ותנאי העסקה יאומתו מול היזם לפני כל התקדמות. פר",
+        "cameraOrbit": "35deg 63deg auto",
+        "cameraTarget": "-5m 55m 7m"
+      },
+      "selected": true,
+      "modelSurfaceTap": true
+    },
+    {
+      "point": {
+        "name": "tower-mid-right",
+        "x": 0.66,
+        "y": 0.5
+      },
+      "tap": {
+        "x": 265.8,
+        "y": 450.484375,
+        "sceneRect": {
+          "x": 48,
+          "y": 299.484375,
+          "width": 330,
+          "height": 302
+        },
+        "beforeActiveUnit": null,
+        "elementAtPoint": {
+          "tag": "MODEL-VIEWER",
+          "className": "nlp3d-model-viewer",
+          "markerUnit": null,
+          "insideModelViewer": true
+        }
+      },
+      "after": {
+        "activeUnit": "unit-31-se",
+        "activeText": "× הדירה שנבחרה דירת 5 חדרים, קומה 31 · 156 מ\"ר · קו הרקיע והחצר הפנימית תוכנית זמינה אומדן ₪11,856,000 זמינה לפנייה קו הרקיע והחצר הפנימית האומדן עוזר להשוואה ראשונית בלבד. המחיר, הזמינות ותנאי העסקה יאומתו מול היזם לפני",
+        "cameraOrbit": "310deg 64deg auto",
+        "cameraTarget": "6m 101m -5m"
+      },
+      "selected": true,
+      "modelSurfaceTap": true
+    },
+    {
+      "point": {
+        "name": "podium-left",
+        "x": 0.27,
+        "y": 0.68
+      },
+      "tap": {
+        "x": 137.10000000000002,
+        "y": 504.844375,
+        "sceneRect": {
+          "x": 48,
+          "y": 299.484375,
+          "width": 330,
+          "height": 302
+        },
+        "beforeActiveUnit": null,
+        "elementAtPoint": {
+          "tag": "MODEL-VIEWER",
+          "className": "nlp3d-model-viewer",
+          "markerUnit": null,
+          "insideModelViewer": true
+        }
+      },
+      "after": {
+        "activeUnit": "unit-boutique-07",
+        "activeText": "× הדירה שנבחרה דירת 4 חדרים, קומה 7 · 118 מ\"ר · בניין בוטיק סביב הלגונה תוכנית זמינה אומדן ₪8,968,000 בתהליך בדיקה בניין בוטיק סביב הלגונה הדירה בתהליך בדיקה. אפשר להשאיר פרטים כדי לוודא זמינות או לקבל חלופה דומה. פרטים ",
+        "cameraOrbit": "55deg 67deg auto",
+        "cameraTarget": "-42m 25m 24m"
+      },
+      "selected": true,
+      "modelSurfaceTap": true
+    },
+    {
+      "point": {
+        "name": "podium-center",
+        "x": 0.43,
+        "y": 0.69
+      },
+      "tap": {
+        "x": 189.9,
+        "y": 507.864375,
+        "sceneRect": {
+          "x": 48,
+          "y": 299.484375,
+          "width": 330,
+          "height": 302
+        },
+        "beforeActiveUnit": null,
+        "elementAtPoint": {
+          "tag": "MODEL-VIEWER",
+          "className": "nlp3d-model-viewer",
+          "markerUnit": null,
+          "insideModelViewer": true
+        }
+      },
+      "after": {
+        "activeUnit": "unit-08-sw",
+        "activeText": "× הדירה שנבחרה דירת 3 חדרים, קומה 8 · 82 מ\"ר · מבט לחצר ולים תוכנית זמינה אומדן ₪6,232,000 זמינה לפנייה מבט לחצר ולים האומדן עוזר להשוואה ראשונית בלבד. המחיר, הזמינות ותנאי העסקה יאומתו מול היזם לפני כל התקדמות. פרטים מל",
+        "cameraOrbit": "45deg 66deg auto",
+        "cameraTarget": "0m 31m 6m"
+      },
+      "selected": true,
+      "modelSurfaceTap": true
+    },
+    {
+      "point": {
+        "name": "podium-right",
+        "x": 0.61,
+        "y": 0.66
+      },
+      "tap": {
+        "x": 249.29999999999998,
+        "y": 498.80437500000005,
+        "sceneRect": {
+          "x": 48,
+          "y": 299.484375,
+          "width": 330,
+          "height": 302
+        },
+        "beforeActiveUnit": null,
+        "elementAtPoint": {
+          "tag": "MODEL-VIEWER",
+          "className": "nlp3d-model-viewer",
+          "markerUnit": null,
+          "insideModelViewer": true
+        }
+      },
+      "after": {
+        "activeUnit": "unit-08-sw",
+        "activeText": "× הדירה שנבחרה דירת 3 חדרים, קומה 8 · 82 מ\"ר · מבט לחצר ולים תוכנית זמינה אומדן ₪6,232,000 זמינה לפנייה מבט לחצר ולים האומדן עוזר להשוואה ראשונית בלבד. המחיר, הזמינות ותנאי העסקה יאומתו מול היזם לפני כל התקדמות. פרטים מל",
+        "cameraOrbit": "45deg 66deg auto",
+        "cameraTarget": "0m 31m 6m"
+      },
+      "selected": true,
+      "modelSurfaceTap": true
+    }
+  ],
+  "deadModelSurfacePoints": [],
+  "markerTapPoints": [
+    {
+      "point": "tower-upper-right",
+      "markerUnit": "unit-38-penthouse"
+    },
+    {
+      "point": "tower-mid-left",
+      "markerUnit": "unit-24-nw"
+    }
+  ]
+}
