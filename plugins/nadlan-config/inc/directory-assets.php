@@ -9,33 +9,29 @@ if ( ! function_exists( 'nadlan_dir_css' ) ) {
 	function nadlan_dir_css() {
 		return <<<'CSS'
 <style id="nldir-css">
-.nldir{--ink:#1B1A17;--gold:#9C7A3C;--line:rgba(27,26,23,.1);font-family:var(--font-sans,Heebo,system-ui,sans-serif);color:var(--ink);max-width:1280px;margin:0 auto;padding:0 20px 60px;direction:rtl;-webkit-font-smoothing:antialiased}
+.nldir{--cream:#FAF7F1;--surface:#FFFDFC;--band:#F3EEE3;--ink:#1B1A17;--muted:#6D665C;--gold:#9C7A3C;--terracotta:#C2563A;--line:#E2DCD0;--line-strong:#C9C0AE;font-family:var(--font-sans,Heebo,system-ui,sans-serif);color:var(--ink);background:var(--cream);max-width:1280px;margin:0 auto;padding:0 20px 60px;direction:rtl;-webkit-font-smoothing:antialiased}
 
 /* ---------- HERO ---------- */
-.nldir-hero{position:relative;margin:0 -20px 30px;padding:46px 24px 40px;text-align:center;color:#fff;overflow:hidden;
-	background:radial-gradient(120% 140% at 15% 0%,rgba(37,99,235,.55),transparent 45%),
-	           radial-gradient(120% 140% at 85% 10%,rgba(13,148,136,.5),transparent 45%),
-	           radial-gradient(120% 160% at 60% 120%,rgba(124,58,237,.45),transparent 50%),
-	           linear-gradient(135deg,#1B1A17,#26221C 60%,#1B1A17)}
-.nldir-hero::after{content:"";position:absolute;inset:0;background:radial-gradient(80% 120% at 50% -10%,rgba(255,255,255,.06),transparent);pointer-events:none}
-.nldir-crumbs{position:relative;font-size:12.5px;color:rgba(255,255,255,.6);margin-bottom:16px}
-.nldir-crumbs a{color:rgba(255,255,255,.85);text-decoration:none}
-.nldir-hero h1{position:relative;font-family:var(--font-serif,"Frank Ruhl Libre",serif);font-weight:600;font-size:clamp(28px,4.4vw,46px);margin:0 0 12px;letter-spacing:-.02em;line-height:1.1}
-.nldir-lead{position:relative;font-size:clamp(14px,2vw,17px);color:rgba(255,255,255,.82);margin:0 auto 24px;max-width:620px;line-height:1.6}
-.nldir-lead strong{color:#F3D9A6}
+.nldir-hero{position:relative;margin:0 -20px 30px;padding:46px 24px 40px;text-align:center;color:var(--ink);overflow:hidden;border:1px solid var(--line);border-radius:8px;background:linear-gradient(180deg,rgba(250,247,241,.98),rgba(243,238,227,.96));box-shadow:0 18px 46px rgba(27,26,23,.08)}
+.nldir-hero::after{content:"";position:absolute;inset:auto 10% 0;height:1px;background:linear-gradient(90deg,transparent,rgba(156,122,60,.32),transparent);pointer-events:none}
+.nldir-crumbs{position:relative;font-size:12.5px;color:var(--muted);margin-bottom:16px}
+.nldir-crumbs a{color:var(--ink);text-decoration:none}
+.nldir-hero h1{position:relative;font-family:var(--font-serif,"Frank Ruhl Libre",serif);font-weight:500;font-size:clamp(28px,4.4vw,46px);margin:0 0 12px;letter-spacing:0;line-height:1.1}
+.nldir-lead{position:relative;font-size:clamp(14px,2vw,17px);color:var(--muted);margin:0 auto 24px;max-width:620px;line-height:1.6}
+.nldir-lead strong{color:var(--gold)}
 /* search */
-.nldir-search{position:relative;display:flex;gap:8px;max-width:680px;margin:0 auto;background:#fff;border-radius:16px;padding:8px;box-shadow:0 24px 60px rgba(0,0,0,.32)}
-.nldir-search input{flex:1;border:0;padding:14px 16px;font:inherit;font-size:15px;border-radius:10px;color:var(--ink);min-width:0}
+.nldir-search{position:relative;display:flex;gap:8px;max-width:680px;margin:0 auto;background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:8px;box-shadow:0 12px 30px rgba(27,26,23,.08)}
+.nldir-search input{flex:1;border:0;padding:14px 16px;font:inherit;font-size:15px;border-radius:6px;color:var(--ink);background:transparent;min-width:0}
 .nldir-search input[name=city]{flex:.6;border-inline-start:1px solid var(--line)}
-.nldir-search button{border:0;border-radius:10px;padding:0 30px;font:inherit;font-weight:700;font-size:15px;color:#fff;cursor:pointer;background:linear-gradient(135deg,var(--gold),#B89254);transition:filter .2s,transform .15s}
+.nldir-search button{border:0;border-radius:6px;padding:0 30px;font:inherit;font-weight:700;font-size:15px;color:var(--cream);cursor:pointer;background:var(--ink);transition:filter .2s,transform .15s}
 .nldir-search button:hover{filter:brightness(1.08);transform:translateY(-1px)}
 /* pills */
 .nldir-pills{position:relative;display:flex;flex-wrap:wrap;gap:9px;justify-content:center;margin-top:22px}
-.nldir-pill{--pc:#fff;--ps:rgba(255,255,255,.14);display:inline-flex;align-items:center;gap:7px;border:1px solid rgba(255,255,255,.22);background:rgba(255,255,255,.1);color:#fff;backdrop-filter:blur(6px);padding:9px 15px;border-radius:30px;font:inherit;font-size:13.5px;font-weight:600;cursor:pointer;transition:transform .15s,background .2s,border-color .2s}
+.nldir-pill{--pc:var(--ink);--ps:var(--band);display:inline-flex;align-items:center;gap:7px;border:1px solid var(--line);background:var(--surface);color:var(--ink);padding:9px 15px;border-radius:999px;font:inherit;font-size:13.5px;font-weight:600;cursor:pointer;transition:transform .15s,background .2s,border-color .2s}
 .nldir-pill span{font-size:15px;line-height:1}
-.nldir-pill i{font-style:normal;font-size:11px;opacity:.7;background:rgba(255,255,255,.18);padding:1px 7px;border-radius:20px}
-.nldir-pill:hover{transform:translateY(-2px);background:rgba(255,255,255,.2)}
-.nldir-pill.is-on{background:#fff;color:var(--pc,#1B1A17);border-color:#fff}
+.nldir-pill i{font-style:normal;font-size:11px;opacity:.7;background:var(--band);padding:1px 7px;border-radius:20px}
+.nldir-pill:hover{transform:translateY(-2px);background:var(--band);border-color:var(--gold)}
+.nldir-pill.is-on{background:var(--ink);color:var(--cream);border-color:var(--ink)}
 .nldir-pill.is-on i{background:var(--ps,#eee);opacity:1}
 
 /* ---------- BODY LAYOUT ---------- */

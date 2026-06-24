@@ -62,10 +62,10 @@ if ( ! function_exists( 'nadlan_premium_css' ) ) {
 <style id="nl-premium-ui">
 /* ===== Premium tokens (site-wide) ===== */
 :root{
-	--nl-ink:#11110F; --nl-charcoal:#2B2924; --nl-warm:#6D665C;
-	--nl-hairline:#DDD6C8; --nl-surface:#FAF8F3; --nl-card:#FFFFFF; --nl-band:#F3EFE7;
-	--nl-gold:#9C7A3C; --nl-champagne:#D7C39A; --nl-olive:#334236; --nl-sea:#183C3C; --nl-clay:#9F6F54;
-	--nl-radius:8px; --nl-radius-lg:12px;
+	--nl-ink:#1B1A17; --nl-charcoal:#2E2B26; --nl-warm:#6D665C;
+	--nl-hairline:#E2DCD0; --nl-surface:#FAF7F1; --nl-card:#FFFDFC; --nl-band:#F3EEE3;
+	--nl-gold:#9C7A3C; --nl-champagne:#E6D4AE; --nl-olive:#334236; --nl-sea:#7A8F6A; --nl-clay:#C2563A;
+	--nl-radius:6px; --nl-radius-lg:8px;
 	--nl-shadow-sm:0 1px 2px rgba(17,17,15,.04),0 1px 1px rgba(17,17,15,.04);
 	--nl-shadow-md:0 8px 24px rgba(17,17,15,.07),0 2px 6px rgba(17,17,15,.04);
 	--nl-shadow-lg:0 20px 50px rgba(17,17,15,.12);
@@ -108,7 +108,7 @@ if ( ! function_exists( 'nadlan_premium_css' ) ) {
 .nldc-name{
 	font-family:var(--font-serif,"Frank Ruhl Libre",serif)!important;
 	font-weight:600!important;font-size:18px!important;
-	letter-spacing:-.01em;color:var(--nl-ink)!important;line-height:1.2!important;
+	letter-spacing:0!important;color:var(--nl-ink)!important;line-height:1.2!important;
 }
 
 /* ----- PILL: calm, not loud ----- */
@@ -179,28 +179,31 @@ if ( ! function_exists( 'nadlan_premium_css' ) ) {
 .nldc-sponsored-foot{font-size:11.5px;color:var(--nl-warm)}
 .nldc-sponsored-foot a{color:var(--nl-gold);font-weight:600;text-decoration:none}
 
-/* ===== HERO + filters: less "cyber dashboard", more editorial ===== */
+/* ===== HERO + filters: cream editorial source, not a dark overlay ===== */
 .nldir-hero{
-	background:
-		radial-gradient(80% 100% at 15% 0%,rgba(51,66,54,.55),transparent 55%),
-		radial-gradient(80% 100% at 85% 10%,rgba(24,60,60,.5),transparent 55%),
-		linear-gradient(135deg,#17170F,#1F1E18 60%,#17170F)!important;
+	background:linear-gradient(180deg,#FAF7F1,#F3EEE3)!important;
+	color:var(--nl-ink)!important;
+	border:1px solid var(--nl-hairline)!important;
+	border-radius:var(--nl-radius-lg)!important;
+	box-shadow:0 18px 46px rgba(27,26,23,.08)!important;
 }
-.nldir-hero h1{font-family:var(--font-serif,"Frank Ruhl Libre",serif)!important;font-weight:600!important;letter-spacing:-.02em}
-.nldir-search{box-shadow:var(--nl-shadow-lg)!important;border-radius:14px!important;padding:6px!important}
+.nldir-hero h1{font-family:var(--font-serif,"Frank Ruhl Libre",serif)!important;font-weight:500!important;letter-spacing:0!important;color:var(--nl-ink)!important;text-shadow:none!important}
+.nldir-search{box-shadow:0 12px 30px rgba(27,26,23,.08)!important;border:1px solid var(--nl-hairline)!important;border-radius:var(--nl-radius-lg)!important;padding:6px!important;background:var(--nl-card)!important}
 .nldir-search button{
-	background:linear-gradient(135deg,var(--nl-gold),#B89254)!important;
+	background:var(--nl-ink)!important;
+	color:var(--nl-surface)!important;
 	font-weight:700;letter-spacing:.02em;
 	min-height:44px;
 }
 .nldir-pill{
 	min-height:40px;
-	background:rgba(255,255,255,.08)!important;
-	border:1px solid rgba(255,255,255,.18)!important;
+	background:var(--nl-card)!important;
+	border:1px solid var(--nl-hairline)!important;
+	color:var(--nl-ink)!important;
 	font-size:13px!important;font-weight:600!important;letter-spacing:.02em;
 }
-.nldir-pill:hover{background:rgba(255,255,255,.16)!important}
-.nldir-pill.is-on{background:#fff!important;color:var(--nl-ink)!important;border-color:#fff!important}
+.nldir-pill:hover{background:var(--nl-band)!important;border-color:var(--nl-gold)!important}
+.nldir-pill.is-on{background:var(--nl-ink)!important;color:var(--nl-surface)!important;border-color:var(--nl-ink)!important}
 
 /* ===== Filter sidebar: quiet, premium ===== */
 .nldir-fgroup h4{color:var(--nl-gold)!important;font-size:11px!important;letter-spacing:.16em!important}
@@ -474,7 +477,7 @@ if ( ! function_exists( 'nadlan_premium_css' ) ) {
 	position:relative;
 	aspect-ratio:16/10;
 	overflow:hidden;
-	background:#0B1717;
+	background:var(--nl-band);
 	border-bottom:1px solid var(--nl-hairline);
 }
 .nldc-media img{
@@ -484,11 +487,11 @@ if ( ! function_exists( 'nadlan_premium_css' ) ) {
 	transition:transform .35s cubic-bezier(.2,.8,.2,1);
 }
 .nldir-results .nldc.has-media:hover .nldc-media img{transform:scale(1.035)}
-.nldc-media.has-concept-art{background:#0B1717}
+.nldc-media.has-concept-art{background:linear-gradient(180deg,#FAF7F1,#F3EEE3)}
 .nldc-media.has-concept-art img{object-fit:contain;padding:6px}
 .nldc-media.has-real-photo::after{
 	content:"";position:absolute;inset:0;
-	background:linear-gradient(180deg,transparent 55%,rgba(11,23,23,.55));
+	background:linear-gradient(180deg,transparent 58%,rgba(27,26,23,.18));
 	pointer-events:none;
 }
 .nldc-media-label{
@@ -497,10 +500,10 @@ if ( ! function_exists( 'nadlan_premium_css' ) ) {
 	font-family:var(--font-sans,Heebo,sans-serif);
 	font-size:11px;font-weight:700;letter-spacing:.08em;
 	padding:5px 11px;
-	color:#0B1717;
-	background:linear-gradient(135deg,#F4DFAA,#D7C39A);
+	color:var(--nl-ink);
+	background:linear-gradient(135deg,#FAF7F1,#E6D4AE);
 	border-radius:30px;
-	box-shadow:0 6px 18px rgba(0,0,0,.25);
+	box-shadow:0 6px 18px rgba(27,26,23,.12);
 }
 
 /* ===== Single profile hero — original concept skyline (replaces flat gradient) ===== */
@@ -517,9 +520,10 @@ if ( ! function_exists( 'nadlan_premium_css' ) ) {
 .nldir-hero::before{
 	content:"";
 	position:absolute;inset:0;
-	background:url("CONCEPT_HERO_URL") center/cover no-repeat;
-	opacity:.22;
-	mix-blend-mode:screen;
+	background:none;
+	display:none!important;
+	opacity:0;
+	mix-blend-mode:normal;
 	pointer-events:none;
 }
 
@@ -548,12 +552,12 @@ if ( ! function_exists( 'nadlan_premium_css' ) ) {
 
 /* Hero H1 contrast — light ink/cream on the dark blueprint hero (was dark on dark) */
 .nldir-hero h1{
-	color:#FAF8F3!important;
-	text-shadow:0 2px 24px rgba(0,0,0,.4);
+	color:var(--nl-ink)!important;
+	text-shadow:none!important;
 }
-.nldir-lead{color:rgba(250,248,243,.84)!important}
-.nldir-lead strong{color:#F4DFAA!important}
-.nldir-crumbs,.nldir-crumbs a{color:rgba(250,248,243,.7)!important}
+.nldir-lead{color:var(--nl-warm)!important}
+.nldir-lead strong{color:var(--nl-gold)!important}
+.nldir-crumbs,.nldir-crumbs a{color:var(--nl-warm)!important}
 
 /* Duplicate H1 on single project/professional profiles:
    the theme prints <h1 class="wp-block-post-title"> AND the plugin prints
@@ -677,10 +681,9 @@ body.post-type-archive-nadlan_property #headerimg h1{
 
 </style>
 CSS;
-		return strtr( $css, array(
-			'CONCEPT_SKYLINE_URL' => esc_url( $asset( 'skyline-telaviv-line.svg' ) ),
-			'CONCEPT_HERO_URL'    => esc_url( $asset( 'hero-coast-concept.svg' ) ),
-		) );
+	return strtr( $css, array(
+		'CONCEPT_SKYLINE_URL' => esc_url( $asset( 'skyline-telaviv-line.svg' ) ),
+	) );
 	}
 }
 
