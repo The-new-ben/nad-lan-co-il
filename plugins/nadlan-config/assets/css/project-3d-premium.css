@@ -713,16 +713,33 @@ body.nadlan-p3d-stage-active #nlrx-action-rail {
 	}
 
 	.nlp3d.nlp3d-premium .nlp3d-toolbar {
-		top: 12px;
-		inset-inline: 12px;
+		top: 8px;
+		inset-inline: 8px;
+		flex-wrap: nowrap;
+		justify-content: flex-start;
+		gap: 6px;
+		overflow-x: auto;
+		overflow-y: hidden;
+		padding-block-end: 4px;
+		scrollbar-width: none;
+		-webkit-overflow-scrolling: touch;
 	}
 
-	.nlp3d.nlp3d-premium .nlp3d-toolbar button,
-	.nlp3d.nlp3d-premium .nlp3d-drag-note {
+	.nlp3d.nlp3d-premium .nlp3d-toolbar::-webkit-scrollbar {
+		display: none;
+	}
+
+	.nlp3d.nlp3d-premium .nlp3d-toolbar button {
+		flex: 0 0 auto;
 		min-height: 44px;
 		min-width: 44px;
-		padding: 8px 10px;
+		padding: 7px 9px;
 		font-size: 12px;
+		white-space: nowrap;
+	}
+
+	.nlp3d.nlp3d-premium .nlp3d-drag-note {
+		display: none;
 	}
 
 	.nlp3d.nlp3d-premium .nlp3d-model-picks {
@@ -775,6 +792,34 @@ body.nadlan-p3d-stage-active #nlrx-action-rail {
 	.nlp3d.nlp3d-premium .nlp3d-dock-actions {
 		display: grid;
 		grid-template-columns: 1fr 1fr;
+	}
+
+	.nlp3d.nlp3d-premium .nlp3d-stage-card:not([hidden]) {
+		padding: 16px 14px;
+	}
+
+	.nlp3d.nlp3d-premium .nlp3d-stage-card-title {
+		font-size: 23px;
+		line-height: 1.16;
+		padding-inline-start: 48px;
+	}
+
+	.nlp3d.nlp3d-premium .nlp3d-stage-card-meta,
+	.nlp3d.nlp3d-premium .nlp3d-stage-card-note {
+		font-size: 14px;
+		line-height: 1.65;
+	}
+
+	.nlp3d.nlp3d-premium .nlp3d-stage-card-tags,
+	.nlp3d.nlp3d-premium .nlp3d-stage-card-stats {
+		gap: 6px;
+	}
+
+	.nlp3d.nlp3d-premium .nlp3d-stage-card-tags span,
+	.nlp3d.nlp3d-premium .nlp3d-stage-card-stats span {
+		min-height: 36px;
+		padding: 7px 8px;
+		font-size: 13px;
 	}
 
 	.nlp3d.nlp3d-premium .nlp3d-stage-card-close {

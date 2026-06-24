@@ -2264,6 +2264,30 @@ color:var(--nlp3d-cream)!important;
 border-color:var(--nlp3d-terracotta)!important;
 }
 @media(max-width:760px){
+.nlp3d.nlp3d-premium .nlp3d-toolbar{
+flex-wrap:nowrap!important;
+justify-content:flex-start!important;
+gap:6px!important;
+overflow-x:auto!important;
+overflow-y:hidden!important;
+margin:0 0 8px!important;
+padding:0 0 4px!important;
+scrollbar-width:none!important;
+-webkit-overflow-scrolling:touch!important;
+}
+.nlp3d.nlp3d-premium .nlp3d-toolbar::-webkit-scrollbar{
+display:none!important;
+}
+.nlp3d.nlp3d-premium .nlp3d-toolbar button{
+flex:0 0 auto!important;
+min-width:44px!important;
+min-height:44px!important;
+padding:7px 9px!important;
+white-space:nowrap!important;
+}
+.nlp3d.nlp3d-premium .nlp3d-drag-note{
+display:none!important;
+}
 .nlp3d.nlp3d-premium .nlp3d-model-picks{
 inset:64px 10px 16px!important;
 }
@@ -2301,6 +2325,27 @@ max-height:none!important;
 overflow:visible!important;
 transform:none!important;
 margin:10px 0 0!important;
+padding:16px 14px!important;
+}
+.nlp3d.nlp3d-premium .nlp3d-stage-card-title{
+font-size:23px!important;
+line-height:1.16!important;
+padding-inline-start:48px!important;
+}
+.nlp3d.nlp3d-premium .nlp3d-stage-card-meta,
+.nlp3d.nlp3d-premium .nlp3d-stage-card-note{
+font-size:14px!important;
+line-height:1.65!important;
+}
+.nlp3d.nlp3d-premium .nlp3d-stage-card-tags,
+.nlp3d.nlp3d-premium .nlp3d-stage-card-stats{
+gap:6px!important;
+}
+.nlp3d.nlp3d-premium .nlp3d-stage-card-tags span,
+.nlp3d.nlp3d-premium .nlp3d-stage-card-stats span{
+min-height:36px!important;
+padding:7px 8px!important;
+font-size:13px!important;
 }
 .nlp3d.nlp3d-premium .nlp3d-stage-card-actions{
 display:grid!important;
@@ -3287,7 +3332,7 @@ if ( ! function_exists( 'nadlan_p3d_inline_js' ) ) {
 		function renderSelectionDock(){
 			if(!activeUnit){return}
 			var metaText=unitSummaryText(activeUnit);
-			if(dockTitle){dockTitle.textContent=selectedTitle(activeUnit)+(metaText?' ·':'')}
+			if(dockTitle){dockTitle.textContent=selectedTitle(activeUnit)}
 			if(dockMeta){
 				dockMeta.textContent=(metaText?metaText+' · ':'')+statusLabel(activeUnit.status);
 			}
@@ -3302,7 +3347,7 @@ if ( ! function_exists( 'nadlan_p3d_inline_js' ) ) {
 			stageCard.dataset.status=activeUnit.status||'available';
 			stageCard.dataset.recommended=isRecommendedUnit(activeUnit)?'1':'0';
 			var metaText=unitSummaryText(activeUnit);
-			if(stageCardTitle){stageCardTitle.textContent=selectedTitle(activeUnit)+(metaText?' ·':'')}
+			if(stageCardTitle){stageCardTitle.textContent=selectedTitle(activeUnit)}
 			if(stageCardMeta){
 				stageCardMeta.textContent=metaText||'פרטי דירה לפי בחירה';
 			}
@@ -3940,7 +3985,7 @@ add_action(
 			return;
 		}
 
-		wp_register_style( 'nadlan-p3d', plugins_url( '../assets/css/project-3d-premium.css', __FILE__ ), array(), '1.69.36' );
+		wp_register_style( 'nadlan-p3d', plugins_url( '../assets/css/project-3d-premium.css', __FILE__ ), array(), '1.69.37' );
 		wp_enqueue_style( 'nadlan-p3d' );
 
 		$post_id = is_singular( 'nadlan_project' ) ? (int) get_queried_object_id() : 0;
@@ -3950,7 +3995,7 @@ add_action(
 			wp_enqueue_script( 'nadlan-model-viewer' );
 		}
 
-		wp_register_script( 'nadlan-p3d', '', array(), '1.69.36', true );
+		wp_register_script( 'nadlan-p3d', '', array(), '1.69.37', true );
 		wp_enqueue_script( 'nadlan-p3d' );
 		wp_add_inline_script( 'nadlan-p3d', nadlan_p3d_inline_js( esc_url_raw( rest_url( 'nadlan/v1/lead' ) ) ) );
 	}
@@ -4376,6 +4421,7 @@ add_filter(
 			'duplicate_showroom_intro_disabled_v16934' => true,
 			'mobile_touch_targets_v16935' => true,
 			'single_selection_surface_v16936' => true,
+			'mobile_toolbar_card_polish_v16937' => true,
 			'public_language_cleanup_v1690' => true,
 			'visual_qa_preview_v1690' => true,
 			'unit_panel_tabs_v1680' => true,
