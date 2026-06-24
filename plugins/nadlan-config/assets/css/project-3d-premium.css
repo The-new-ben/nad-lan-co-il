@@ -1,4 +1,4 @@
-/* NadLan3D premium showroom, WordPress implementation of the Lovable pattern. */
+/* NadLan3D premium showroom, WordPress implementation. */
 .nlp3d.nlp3d-premium {
 	--nl3d-cream: #FAF7F1;
 	--nl3d-ink: #1B1A17;
@@ -165,9 +165,18 @@
 .nlp3d.nlp3d-premium .nlp3d-stage-wrap {
 	grid-area: stage;
 	position: relative;
+	display: grid;
+	grid-template-columns: minmax(0, 1fr);
+	gap: 18px;
 	min-width: 0;
 	overflow: visible;
 	background: transparent;
+}
+
+.nlp3d.nlp3d-premium .nlp3d-stage-wrap.has-stage-selection {
+	direction: ltr;
+	grid-template-columns: minmax(0, 1fr) minmax(320px, 360px);
+	align-items: stretch;
 }
 
 .nlp3d.nlp3d-premium .nlp3d-toolbar {
@@ -221,12 +230,18 @@
 	display: grid;
 	grid-template-columns: minmax(0, 1fr);
 	min-height: 642px;
-	height: clamp(560px, 52vw, 720px);
+	height: 642px;
 	border: 1px solid var(--nl3d-border);
 	border-radius: var(--nl3d-radius);
 	overflow: hidden;
 	background: #fbf4e7;
 	box-shadow: var(--nl3d-shadow-soft);
+	direction: rtl;
+	min-width: 0;
+}
+
+.nlp3d.nlp3d-premium .nlp3d-stage-wrap.has-stage-selection .nlp3d-scene {
+	grid-column: 1;
 }
 
 .nlp3d.nlp3d-premium .nlp3d-scene:not(.has-model-viewer)::before {
@@ -259,7 +274,7 @@
 	display: block;
 	width: 100%;
 	height: 100%;
-	min-height: 560px;
+	min-height: 642px;
 	background: transparent;
 	--poster-color: #fbf4e7;
 }
@@ -554,6 +569,20 @@
 	gap: 12px;
 	margin-top: 12px;
 	padding: 18px;
+	direction: rtl;
+	min-width: 0;
+	align-self: stretch;
+	align-content: start;
+}
+
+.nlp3d.nlp3d-premium .nlp3d-stage-wrap.has-stage-selection .nlp3d-stage-card:not([hidden]) {
+	grid-column: 2;
+	margin-top: 0;
+	min-height: 642px;
+}
+
+.nlp3d.nlp3d-premium .nlp3d-stage-wrap.has-stage-selection .nlp3d-viewframe:not([hidden]) {
+	grid-column: 1;
 }
 
 .nlp3d.nlp3d-premium .nlp3d-stage-card-close {
@@ -699,6 +728,19 @@ body.nadlan-p3d-stage-active #nlrx-action-rail {
 		padding: 12px;
 	}
 
+	.nlp3d.nlp3d-premium .nlp3d-stage-wrap,
+	.nlp3d.nlp3d-premium .nlp3d-stage-wrap.has-stage-selection {
+		direction: rtl;
+		grid-template-columns: minmax(0, 1fr);
+		gap: 12px;
+	}
+
+	.nlp3d.nlp3d-premium .nlp3d-stage-wrap.has-stage-selection .nlp3d-scene,
+	.nlp3d.nlp3d-premium .nlp3d-stage-wrap.has-stage-selection .nlp3d-stage-card:not([hidden]),
+	.nlp3d.nlp3d-premium .nlp3d-stage-wrap.has-stage-selection .nlp3d-viewframe:not([hidden]) {
+		grid-column: 1;
+	}
+
 	.nlp3d.nlp3d-premium h2 {
 		max-width: 100%;
 		font-size: 36px;
@@ -801,6 +843,7 @@ body.nadlan-p3d-stage-active #nlrx-action-rail {
 
 	.nlp3d.nlp3d-premium .nlp3d-stage-card:not([hidden]) {
 		padding: 16px 14px;
+		min-height: 0;
 	}
 
 	.nlp3d.nlp3d-premium .nlp3d-stage-card-title {

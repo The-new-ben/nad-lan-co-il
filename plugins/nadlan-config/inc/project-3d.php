@@ -922,18 +922,18 @@ if ( ! function_exists( 'nadlan_p3d_render' ) ) {
 			<?php endif; ?>
 		</div>
 
-		<div class="nlp3d-stage-wrap" id="nlp3d-stage">
-			<div class="nlp3d-toolbar" aria-label="שליטה בתצוגה">
-				<button type="button" class="nlp3d-angle is-active" data-angle="-32" data-action="angle-facade" aria-label="מבט ראשי">ראשי</button>
-				<button type="button" class="nlp3d-angle" data-angle="0" data-action="angle-sea">ים</button>
-				<button type="button" class="nlp3d-angle" data-angle="32" data-action="angle-city">עיר</button>
-				<button type="button" class="nlp3d-orbit" data-orbit="1" data-action="orbit-building" aria-label="סיבוב 360">360</button>
-				<button type="button" class="nlp3d-zoom" data-zoom="in" data-action="zoom-in" aria-label="קרב">+</button>
-				<button type="button" class="nlp3d-zoom" data-zoom="out" data-action="zoom-out" aria-label="הרחק">-</button>
-				<span class="nlp3d-drag-note">בחרו דירה על המגדל</span>
-				<button type="button" class="nlp3d-fp-restore" data-action="facade-restore" aria-label="הצג חזית" hidden>חזית</button>
-			</div>
-			<div class="nlp3d-scene<?php echo $has_model_viewer ? ' has-model-viewer' : ''; ?>" style="--angle:-32deg" role="group" aria-label="תצוגת בניין תלת ממדית של מגדל מגורים">
+		<div class="nlp3d-stage-wrap nl3d-showroom-grid" id="nlp3d-stage">
+			<div class="nlp3d-scene nl3d-stage<?php echo $has_model_viewer ? ' has-model-viewer' : ''; ?>" style="--angle:-32deg" role="group" aria-label="תצוגת בניין תלת ממדית של מגדל מגורים">
+				<div class="nlp3d-toolbar" aria-label="שליטה בתצוגה">
+					<button type="button" class="nlp3d-angle is-active" data-angle="-32" data-action="angle-facade" aria-label="מבט ראשי">ראשי</button>
+					<button type="button" class="nlp3d-angle" data-angle="0" data-action="angle-sea">ים</button>
+					<button type="button" class="nlp3d-angle" data-angle="32" data-action="angle-city">עיר</button>
+					<button type="button" class="nlp3d-orbit" data-orbit="1" data-action="orbit-building" aria-label="סיבוב 360">360</button>
+					<button type="button" class="nlp3d-zoom" data-zoom="in" data-action="zoom-in" aria-label="קרב">+</button>
+					<button type="button" class="nlp3d-zoom" data-zoom="out" data-action="zoom-out" aria-label="הרחק">-</button>
+					<span class="nlp3d-drag-note">בחרו דירה על המגדל</span>
+					<button type="button" class="nlp3d-fp-restore" data-action="facade-restore" aria-label="הצג חזית" hidden>חזית</button>
+				</div>
 				<?php if ( $has_model_viewer ) : ?>
 					<model-viewer
 						class="nlp3d-model-viewer"
@@ -1034,7 +1034,7 @@ if ( ! function_exists( 'nadlan_p3d_render' ) ) {
 				<button type="button" class="nlp3d-stage-return" data-action="return-model">חזרה לתצוגה</button>
 				<p class="nlp3d-view-copy"></p>
 			</div>
-			<div class="nlp3d-stage-card" aria-live="polite" hidden>
+			<div class="nlp3d-stage-card nl3d-selected-panel" aria-live="polite" hidden>
 				<button type="button" class="nlp3d-stage-card-close" data-action="stage-card-close" aria-label="סגירת פרטי הדירה">×</button>
 				<span class="nlp3d-stage-kicker">הדירה שנבחרה</span>
 				<strong class="nlp3d-stage-card-title">בחרו דירה על הבניין</strong>
@@ -3010,7 +3010,7 @@ if ( ! function_exists( 'nadlan_p3d_inline_js' ) ) {
 				var status=u.status||'available';
 				var b=document.createElement('button');
 				b.type='button';
-				b.className='nlp3d-stage-pick nlp3d-status-'+status+' is-'+status+(recommended?' is-recommended':'')+(activeUnit&&u.id===activeUnit.id?' is-active':'');
+				b.className='nlp3d-stage-pick nl3d-unit-pin nlp3d-status-'+status+' is-'+status+(recommended?' is-recommended':'')+(activeUnit&&u.id===activeUnit.id?' is-active':'');
 				b.dataset.unit=u.id;
 				b.dataset.action='select-unit-stage';
 				b.style.top=top+'%';
@@ -3193,7 +3193,7 @@ if ( ! function_exists( 'nadlan_p3d_inline_js' ) ) {
 				row.className='nlp3d-unit-row';
 				var b=document.createElement('button');
 				b.type='button';
-				b.className='nlp3d-unit-card nlp3d-status-'+u.status+(activeUnit&&u.id===activeUnit.id?' is-active':'')+(u.status==='sold'?' is-sold':'');
+				b.className='nlp3d-unit-card nl3d-unit-card nlp3d-status-'+u.status+(activeUnit&&u.id===activeUnit.id?' is-active':'')+(u.status==='sold'?' is-sold':'');
 				var summaryText=unitSummaryText(u);
 				var unitTitle=document.createElement('strong');
 				unitTitle.textContent=selectedTitle(u)+(summaryText?' ·':'');
@@ -3983,7 +3983,7 @@ add_action(
 			return;
 		}
 
-		wp_register_style( 'nadlan-p3d', plugins_url( '../assets/css/project-3d-premium.css', __FILE__ ), array(), '1.69.40' );
+		wp_register_style( 'nadlan-p3d', plugins_url( '../assets/css/project-3d-premium.css', __FILE__ ), array(), '1.69.41' );
 		wp_enqueue_style( 'nadlan-p3d' );
 
 		$post_id = is_singular( 'nadlan_project' ) ? (int) get_queried_object_id() : 0;
@@ -3993,7 +3993,7 @@ add_action(
 			wp_enqueue_script( 'nadlan-model-viewer' );
 		}
 
-		wp_register_script( 'nadlan-p3d', '', array(), '1.69.40', true );
+		wp_register_script( 'nadlan-p3d', '', array(), '1.69.41', true );
 		wp_enqueue_script( 'nadlan-p3d' );
 		wp_add_inline_script( 'nadlan-p3d', nadlan_p3d_inline_js( esc_url_raw( rest_url( 'nadlan/v1/lead' ) ) ) );
 	}
@@ -4424,6 +4424,7 @@ add_filter(
 			'mobile_toolbar_touch_v16939'       => true,
 			'real_model_scene_truth_v16940'     => true,
 			'desktop_toolbar_touch_v16940'      => true,
+			'premium_showroom_grid_v16941'      => true,
 			'public_language_cleanup_v1690' => true,
 			'visual_qa_preview_v1690' => true,
 			'unit_panel_tabs_v1680' => true,
