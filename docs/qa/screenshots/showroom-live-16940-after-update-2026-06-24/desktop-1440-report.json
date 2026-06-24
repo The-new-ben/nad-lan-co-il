@@ -1,0 +1,190 @@
+{
+  "url": "https://nad-lan.co.il/projects/rainbow-tel-aviv/?codex_qa=live_16940_after&viewport=desktop-1440&t=1782304152012",
+  "title": "דירות למכירה ב-Rainbow תל אביב | מחירים, תוכניות ובחירת דירה בשדה דב | נדלן חכם",
+  "viewport": {
+    "width": 1440,
+    "height": 1000
+  },
+  "scrollWidth": 1440,
+  "bodyScrollWidth": 1440,
+  "hasRoot": true,
+  "rootClasses": "nlp3d nlp3d-premium nl3d-page alignfull is-model-first is-dual-showroom has-model-picker has-stage-selection",
+  "rootActiveUnit": "unit-16-w",
+  "modelViewerCount": 1,
+  "modelPickCount": 6,
+  "activePicks": [
+    "unit-16-w"
+  ],
+  "visibleStagePins": [
+    "unit-08-sw",
+    "unit-16-w",
+    "unit-24-nw",
+    "unit-31-se",
+    "unit-38-penthouse",
+    "unit-boutique-07"
+  ],
+  "stagePins": [
+    {
+      "unit": "unit-08-sw",
+      "visible": true,
+      "active": false,
+      "rect": {
+        "x": 564,
+        "y": 459,
+        "right": 620,
+        "bottom": 503,
+        "width": 56,
+        "height": 45
+      }
+    },
+    {
+      "unit": "unit-16-w",
+      "visible": true,
+      "active": true,
+      "rect": {
+        "x": 580,
+        "y": 386,
+        "right": 636,
+        "bottom": 430,
+        "width": 56,
+        "height": 45
+      }
+    },
+    {
+      "unit": "unit-24-nw",
+      "visible": true,
+      "active": false,
+      "rect": {
+        "x": 600,
+        "y": 312,
+        "right": 656,
+        "bottom": 357,
+        "width": 56,
+        "height": 45
+      }
+    },
+    {
+      "unit": "unit-31-se",
+      "visible": true,
+      "active": false,
+      "rect": {
+        "x": 810,
+        "y": 248,
+        "right": 866,
+        "bottom": 293,
+        "width": 56,
+        "height": 45
+      }
+    },
+    {
+      "unit": "unit-38-penthouse",
+      "visible": true,
+      "active": false,
+      "rect": {
+        "x": 810,
+        "y": 184,
+        "right": 866,
+        "bottom": 228,
+        "width": 56,
+        "height": 45
+      }
+    },
+    {
+      "unit": "unit-boutique-07",
+      "visible": true,
+      "active": false,
+      "rect": {
+        "x": 447,
+        "y": 468,
+        "right": 503,
+        "bottom": 513,
+        "width": 56,
+        "height": 45
+      }
+    }
+  ],
+  "visibleModelHotspots": [],
+  "modelHotspots": [
+    {
+      "unit": "unit-08-sw",
+      "visible": false,
+      "rect": {
+        "x": 0,
+        "y": 0,
+        "right": 0,
+        "bottom": 0,
+        "width": 0,
+        "height": 0
+      }
+    },
+    {
+      "unit": "unit-16-w",
+      "visible": false,
+      "rect": {
+        "x": 0,
+        "y": 0,
+        "right": 0,
+        "bottom": 0,
+        "width": 0,
+        "height": 0
+      }
+    },
+    {
+      "unit": "unit-24-nw",
+      "visible": false,
+      "rect": {
+        "x": 0,
+        "y": 0,
+        "right": 0,
+        "bottom": 0,
+        "width": 0,
+        "height": 0
+      }
+    },
+    {
+      "unit": "unit-31-se",
+      "visible": false,
+      "rect": {
+        "x": 0,
+        "y": 0,
+        "right": 0,
+        "bottom": 0,
+        "width": 0,
+        "height": 0
+      }
+    },
+    {
+      "unit": "unit-38-penthouse",
+      "visible": false,
+      "rect": {
+        "x": 0,
+        "y": 0,
+        "right": 0,
+        "bottom": 0,
+        "width": 0,
+        "height": 0
+      }
+    },
+    {
+      "unit": "unit-boutique-07",
+      "visible": false,
+      "rect": {
+        "x": 0,
+        "y": 0,
+        "right": 0,
+        "bottom": 0,
+        "width": 0,
+        "height": 0
+      }
+    }
+  ],
+  "floatingCtaVisible": false,
+  "cameraOrbit": "35deg 63deg 38m",
+  "cameraTarget": "-5m 55m 7m",
+  "dockText": "",
+  "stageText": "× הדירה שנבחרה דירת 4 חדרים, קומה 16 112 מ\"ר · קו החוף ושדה דב תוכנית זמינה אומדן ₪8,512,000 זמינה לפנייה קו החוף ושדה דב האומדן עוזר להשוואה ראשונית בלבד. המחיר, הזמינות ותנאי העסקה יאומתו מול היזם לפני כל התקדמות. מבט מהדירה דברו עם היזם",
+  "detailTitle": "",
+  "publicLeakSample": null,
+  "offenders": [],
+  "smallTapTargets": []
+}
