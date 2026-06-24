@@ -955,7 +955,7 @@ if ( ! function_exists( 'nadlan_p3d_render' ) ) {
 						<?php if ( ! empty( $meta['model_poster'] ) ) : ?>poster="<?php echo esc_url( $meta['model_poster'] ); ?>"<?php endif; ?>
 						<?php if ( ! empty( $meta['model_usdz'] ) ) : ?>ios-src="<?php echo esc_url( $meta['model_usdz'] ); ?>"<?php endif; ?>
 						alt="<?php echo esc_attr( 'תצוגת תלת ממד של ' . $meta['title'] ); ?>"
-						reveal="auto"
+						reveal="manual"
 						loading="auto"
 						camera-controls
 						<?php if ( $camera_auto ) : ?>
@@ -3746,7 +3746,7 @@ if ( ! function_exists( 'nadlan_p3d_inline_js' ) ) {
 			});
 		});
 		if(modelViewer){
-			modelViewer.addEventListener('load',function(){root.classList.add('has-model-viewer-loaded');root.classList.remove('has-model-viewer-error');if(modelError){modelError.hidden=true}syncModelViewerCamera();track('model_viewer_load',{model:true})});
+			modelViewer.addEventListener('load',function(){root.classList.add('has-model-viewer-loaded');root.classList.remove('has-model-viewer-error');if(modelError){modelError.hidden=true}syncModelViewerCamera();var revealModel=function(){if(typeof modelViewer.dismissPoster==='function'){modelViewer.dismissPoster()}};if(window.requestAnimationFrame){requestAnimationFrame(function(){requestAnimationFrame(revealModel)});setTimeout(revealModel,1200)}else{revealModel()}track('model_viewer_load',{model:true})});
 			modelViewer.addEventListener('error',function(){root.classList.add('has-model-viewer-error');if(modelError){modelError.hidden=false}track('model_viewer_error',{model:true})});
 			modelViewer.addEventListener('click',function(e){
 				if(Date.now()<suppressUnitClickUntil){return}
@@ -3994,7 +3994,7 @@ add_action(
 			return;
 		}
 
-		wp_register_style( 'nadlan-p3d', '', array(), '1.69.32' );
+		wp_register_style( 'nadlan-p3d', '', array(), '1.69.33' );
 		wp_enqueue_style( 'nadlan-p3d' );
 		wp_add_inline_style( 'nadlan-p3d', nadlan_p3d_lovable_showroom_v1690_css() );
 
@@ -4005,7 +4005,7 @@ add_action(
 			wp_enqueue_script( 'nadlan-model-viewer' );
 		}
 
-		wp_register_script( 'nadlan-p3d', '', array(), '1.69.32', true );
+		wp_register_script( 'nadlan-p3d', '', array(), '1.69.33', true );
 		wp_enqueue_script( 'nadlan-p3d' );
 		wp_add_inline_script( 'nadlan-p3d', nadlan_p3d_inline_js( esc_url_raw( rest_url( 'nadlan/v1/lead' ) ) ) );
 	}
