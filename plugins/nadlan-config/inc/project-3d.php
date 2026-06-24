@@ -2926,8 +2926,11 @@ if ( ! function_exists( 'nadlan_p3d_inline_js' ) ) {
 			if(!stagePicks||!p){return false}
 			var sceneRect=scene?scene.getBoundingClientRect():null;
 			if(sceneRect&&(p.x<sceneRect.left||p.x>sceneRect.right||p.y<sceneRect.top||p.y>sceneRect.bottom)){return false}
-			var baseLimit=92;
-			var best=null,bestScore=Infinity;
+			var isNarrow=(window.innerWidth&&window.innerWidth<=480);
+			var baseLimit=isNarrow?96:92;
+			var rowLimit=isNarrow?112:104;
+			var rowYLimit=isNarrow?22:18;
+			var best=null,bestScore=Infinity,rowBest=null,rowBestScore=Infinity;
 			stagePicks.querySelectorAll('.nlp3d-stage-pick,.nlp3d-cell').forEach(function(node){
 				if(node.getAttribute('aria-disabled')==='true'){return}
 				var cs=window.getComputedStyle(node);
@@ -2940,8 +2943,10 @@ if ( ! function_exists( 'nadlan_p3d_inline_js' ) ) {
 				var distance=Math.sqrt(dx*dx+dy*dy);
 				var limit=Math.max(baseLimit,Math.min(104,Math.max(r.width,r.height)*1.35));
 				var score=(ay*3)+ax+(distance*.12);
+				if(ay<=rowYLimit&&ax<=rowLimit&&ax<rowBestScore){rowBest=node;rowBestScore=ax}
 				if(distance<=limit&&score<bestScore){best=node;bestScore=score}
 			});
+			if(rowBest){best=rowBest}
 			if(!best||!best.dataset||!best.dataset.unit){return false}
 			var unit=unitById(best.dataset.unit);
 			if(!unit||unit.status==='sold'){return false}
@@ -3989,7 +3994,7 @@ add_action(
 			return;
 		}
 
-		wp_register_style( 'nadlan-p3d', '', array(), '1.69.31' );
+		wp_register_style( 'nadlan-p3d', '', array(), '1.69.32' );
 		wp_enqueue_style( 'nadlan-p3d' );
 		wp_add_inline_style( 'nadlan-p3d', nadlan_p3d_lovable_showroom_v1690_css() );
 
@@ -4000,7 +4005,7 @@ add_action(
 			wp_enqueue_script( 'nadlan-model-viewer' );
 		}
 
-		wp_register_script( 'nadlan-p3d', '', array(), '1.69.31', true );
+		wp_register_script( 'nadlan-p3d', '', array(), '1.69.32', true );
 		wp_enqueue_script( 'nadlan-p3d' );
 		wp_add_inline_script( 'nadlan-p3d', nadlan_p3d_inline_js( esc_url_raw( rest_url( 'nadlan/v1/lead' ) ) ) );
 	}
@@ -4503,6 +4508,7 @@ add_filter(
 			'model_surface_horizontal_bias_v16927' => true,
 			'model_surface_mobile_screen_fallback_v16930' => true,
 			'model_surface_screen_fallback_v16931' => true,
+			'model_surface_row_aligned_fallback_v16932' => true,
 			'projects_with_3d' => (int) $q->found_posts,
 			'projects_with_glb' => (int) $model_q->found_posts,
 		);
