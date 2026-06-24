@@ -1049,7 +1049,6 @@ if ( ! function_exists( 'nadlan_p3d_render' ) ) {
 				<p class="nlp3d-view-copy"></p>
 			</div>
 			<div class="nlp3d-stage-card" aria-live="polite" hidden>
-				<button type="button" class="nlp3d-stage-card-handle" aria-expanded="false" data-action="stage-card-expand"><span>פתחו את פרטי הדירה</span></button>
 				<button type="button" class="nlp3d-stage-card-close" data-action="stage-card-close" aria-label="סגירת פרטי הדירה">×</button>
 				<span class="nlp3d-stage-kicker">הדירה שנבחרה</span>
 				<strong class="nlp3d-stage-card-title">בחרו דירה על הבניין</strong>
@@ -1067,14 +1066,6 @@ if ( ! function_exists( 'nadlan_p3d_render' ) ) {
 					<button type="button" class="nlp3d-stage-tour" data-action="stage-tour">תוכניות וסיור</button>
 					<button type="button" class="nlp3d-stage-inquiry" data-action="stage-inquiry">דברו עם היזם</button>
 				</div>
-				<nav class="nlp3d-stage-tabs" role="tablist" aria-label="מידע נוסף על הדירה">
-					<button type="button" role="tab" data-stage-tab="spec" aria-selected="true">פרטים</button>
-					<button type="button" role="tab" data-stage-tab="view" aria-selected="false">מבט מהדירה</button>
-					<button type="button" role="tab" data-stage-tab="drawing" aria-selected="false">תוכניות</button>
-					<button type="button" role="tab" data-stage-tab="sun" aria-selected="false">שמש</button>
-					<button type="button" role="tab" data-stage-tab="surroundings" aria-selected="false">סביבה</button>
-					<button type="button" role="tab" data-stage-tab="media" aria-selected="false">סיור</button>
-				</nav>
 			</div>
 		</div>
 
@@ -2017,6 +2008,14 @@ display:grid!important;
 gap:10px!important;
 padding:16px!important;
 align-items:start!important;
+position:relative!important;
+}
+body.nadlan-p3d-stage-active .nlfab,
+body.nadlan-p3d-stage-active #nlcta,
+body.nadlan-p3d-stage-active #nlai .nlai-fab{
+opacity:0!important;
+pointer-events:none!important;
+transform:translateY(14px)!important;
 }
 .nlp3d.nlp3d-premium .nlp3d-view-toggle,
 .nlp3d.nlp3d-premium .nlp3d-tool,
@@ -2114,7 +2113,6 @@ box-shadow:none!important;
 .nlp3d.nlp3d-premium .nlp3d-dock-actions button,
 .nlp3d.nlp3d-premium .nlp3d-stage-card-actions button,
 .nlp3d.nlp3d-premium .nlp3d-stage-card-close,
-.nlp3d.nlp3d-premium .nlp3d-stage-card-handle,
 .nlp3d.nlp3d-premium .nlp3d-overlay-close,
 .nlp3d.nlp3d-premium .nlp3d-wback,
 .nlp3d.nlp3d-premium .nlp3d-angle,
@@ -2133,10 +2131,8 @@ background:var(--nlp3d-ink)!important;
 color:var(--nlp3d-cream)!important;
 }
 .nlp3d.nlp3d-premium .nlp3d-stage-card-actions button,
-.nlp3d.nlp3d-premium .nlp3d-stage-tabs button,
 .nlp3d.nlp3d-premium .nlp3d-dock-actions button,
 .nlp3d.nlp3d-premium .nlp3d-stage-card-close,
-.nlp3d.nlp3d-premium .nlp3d-stage-card-handle,
 .nlp3d.nlp3d-premium .nlp3d-floor,
 .nlp3d.nlp3d-premium .nlp3d-compare-add,
 .nlp3d.nlp3d-premium .nlp3d-plan{
@@ -2154,10 +2150,15 @@ width:44px!important;
 min-width:44px!important;
 padding:0!important;
 justify-self:start!important;
+position:absolute!important;
+inset-block-start:14px!important;
+inset-inline-start:14px!important;
+z-index:2!important;
 }
-.nlp3d.nlp3d-premium .nlp3d-stage-card-handle{
-width:100%!important;
-justify-self:stretch!important;
+.nlp3d.nlp3d-premium .nlp3d-stage-kicker,
+.nlp3d.nlp3d-premium .nlp3d-stage-card-title,
+.nlp3d.nlp3d-premium .nlp3d-stage-card-meta{
+padding-inline-start:54px!important;
 }
 .nlp3d.nlp3d-premium .nlp3d-stage-card-tags span,
 .nlp3d.nlp3d-premium .nlp3d-stage-card-stats span{
@@ -2358,24 +2359,13 @@ overflow:visible!important;
 transform:none!important;
 margin:10px 0 0!important;
 }
-.nlp3d.nlp3d-premium .nlp3d-stage-card-handle{
-display:flex!important;
-background:#fffaf2!important;
-color:var(--nlp3d-ink)!important;
-border-bottom:1px solid var(--nlp3d-line)!important;
-}
-.nlp3d.nlp3d-premium .nlp3d-stage-card-actions,
-.nlp3d.nlp3d-premium .nlp3d-stage-tabs{
+.nlp3d.nlp3d-premium .nlp3d-stage-card-actions{
 display:grid!important;
 grid-template-columns:repeat(2,minmax(0,1fr))!important;
 gap:8px!important;
 }
-.nlp3d.nlp3d-premium .nlp3d-stage-card-actions button,
-.nlp3d.nlp3d-premium .nlp3d-stage-tabs button{
+.nlp3d.nlp3d-premium .nlp3d-stage-card-actions button{
 width:100%!important;
-}
-.nlp3d.nlp3d-premium .nlp3d-stage-card-handle:before{
-background:var(--nlp3d-line)!important;
 }
 }
 CSS;
@@ -2638,9 +2628,7 @@ if ( ! function_exists( 'nadlan_p3d_inline_js' ) ) {
 		var stageCardStatus=root.querySelector('.nlp3d-stage-status');
 		var stageCardView=root.querySelector('.nlp3d-stage-view');
 		var stageCardNote=root.querySelector('.nlp3d-stage-card-note');
-		var stageCardHandle=root.querySelector('.nlp3d-stage-card-handle');
 		var stageCardClose=root.querySelector('.nlp3d-stage-card-close');
-		var stageTabs=[].slice.call(root.querySelectorAll('.nlp3d-stage-tabs [data-stage-tab]'));
 		var stageDetails=root.querySelector('.nlp3d-stage-details');
 		var stageViewBtn=root.querySelector('.nlp3d-stage-view-btn');
 		var stageTour=root.querySelector('.nlp3d-stage-tour');
@@ -3243,19 +3231,6 @@ if ( ! function_exists( 'nadlan_p3d_inline_js' ) ) {
 			}
 			renderStageCard();
 		}
-		function setStageCardExpanded(expanded){
-			if(!stageCard){return}
-			stageCard.classList.toggle('is-expanded',!!expanded);
-			if(stageCardHandle){stageCardHandle.setAttribute('aria-expanded',expanded?'true':'false')}
-		}
-		function syncStageTabs(active){
-			var tab=active||activeTool||'spec';
-			stageTabs.forEach(function(btn){
-				var on=btn.dataset.stageTab===tab;
-				btn.classList.toggle('is-active',on);
-				btn.setAttribute('aria-selected',on?'true':'false');
-			});
-		}
 		function renderStageCard(){
 			if(!stageCard||!activeUnit){return}
 			stageCard.hidden=!hasStageSelection||stageCardDismissed;
@@ -3289,7 +3264,6 @@ if ( ! function_exists( 'nadlan_p3d_inline_js' ) ) {
 			}
 			if(stageCardView){stageCardView.textContent=activeUnit.view||activeUnit.dir||'מבט לפי כיוון'}
 			if(stageCardNote){stageCardNote.textContent=unitBuyerNote(activeUnit,meta)}
-			syncStageTabs(activeTool);
 		}
 		function renderDetail(){
 			if(!activeUnit){return}
@@ -3604,8 +3578,6 @@ if ( ! function_exists( 'nadlan_p3d_inline_js' ) ) {
 				activeTool='media';
 				toolButtons.forEach(function(x){x.classList.toggle('is-active',x.dataset.tool==='media')});
 				renderToolPanel();
-				syncStageTabs('media');
-				setStageCardExpanded(true);
 				if(detail){detail.scrollIntoView({behavior:'smooth',block:'center'})}
 				track('stage_tour',{unit:activeUnit&&activeUnit.id});
 			});
@@ -3632,43 +3604,15 @@ if ( ! function_exists( 'nadlan_p3d_inline_js' ) ) {
 				setFacadeDismissed(false,'restore-button');
 			});
 		}
-		if(stageCardHandle){
-			stageCardHandle.addEventListener('click',function(e){
-				e.preventDefault();
-				e.stopPropagation();
-				var next=!stageCard.classList.contains('is-expanded');
-				setStageCardExpanded(next);
-				track('stage_card_sheet',{expanded:next,unit:activeUnit&&activeUnit.id});
-			});
-		}
 		if(stageCardClose&&stageCard){
 			stageCardClose.addEventListener('click',function(e){
 				e.preventDefault();
 				e.stopPropagation();
 				stageCardDismissed=true;
 				stageCard.hidden=true;
-				setStageCardExpanded(false);
 				track('stage_card_close',{unit:activeUnit&&activeUnit.id});
 			});
 		}
-		stageTabs.forEach(function(btn){
-			btn.addEventListener('click',function(e){
-				e.preventDefault();
-				e.stopPropagation();
-				var tab=btn.dataset.stageTab||'spec';
-				if(tab==='view'){
-					setLiveView(true,'stage-tab');
-				}else{
-					setLiveView(false,'stage-tab');
-					activeTool=tab;
-					toolButtons.forEach(function(x){x.classList.toggle('is-active',x.dataset.tool===tab)});
-					renderToolPanel();
-				}
-				syncStageTabs(tab);
-				setStageCardExpanded(true);
-				track('stage_card_tab',{tab:tab,unit:activeUnit&&activeUnit.id});
-			});
-		});
 		if(viewToggle&&viewFrame){
 			viewToggle.addEventListener('click',function(){
 				setLiveView(viewFrame.hidden,'toggle');
@@ -3743,7 +3687,7 @@ if ( ! function_exists( 'nadlan_p3d_inline_js' ) ) {
 			ov.addEventListener('click',function(e){if(e.target===ov){closeCompare();closePlan()}});
 		});
 		document.addEventListener('keydown',function(e){
-			if(e.key==='Escape'){closeCompare();closePlan();closeStagePickTips();setStageCardExpanded(false)}
+			if(e.key==='Escape'){closeCompare();closePlan();closeStagePickTips()}
 		});
 		if(plan){
 			plan.addEventListener('click',function(e){
@@ -3758,7 +3702,6 @@ if ( ! function_exists( 'nadlan_p3d_inline_js' ) ) {
 				activeTool=b.dataset.tool||'spec';
 				toolButtons.forEach(function(x){x.classList.toggle('is-active',x===b)});
 				renderToolPanel();
-				syncStageTabs(activeTool);
 				track('tool_panel',{tool:activeTool,unit:activeUnit&&activeUnit.id});
 			});
 		});
@@ -3924,7 +3867,7 @@ add_action(
 			return;
 		}
 
-		wp_register_style( 'nadlan-p3d', '', array(), '1.69.13' );
+		wp_register_style( 'nadlan-p3d', '', array(), '1.69.14' );
 		wp_enqueue_style( 'nadlan-p3d' );
 		wp_add_inline_style( 'nadlan-p3d', nadlan_p3d_lovable_showroom_v1690_css() );
 
@@ -3935,7 +3878,7 @@ add_action(
 			wp_enqueue_script( 'nadlan-model-viewer' );
 		}
 
-		wp_register_script( 'nadlan-p3d', '', array(), '1.69.13', true );
+		wp_register_script( 'nadlan-p3d', '', array(), '1.69.14', true );
 		wp_enqueue_script( 'nadlan-p3d' );
 		wp_add_inline_script( 'nadlan-p3d', nadlan_p3d_inline_js( esc_url_raw( rest_url( 'nadlan/v1/lead' ) ) ) );
 	}
@@ -4423,6 +4366,7 @@ add_filter(
 			'unit_compare'     => true,
 			'lead_wizard'      => true,
 			'reservation_state' => 'non_binding_inquiry',
+			'stage_card_single_action_group_v16914' => true,
 			'projects_with_3d' => (int) $q->found_posts,
 			'projects_with_glb' => (int) $model_q->found_posts,
 		);
