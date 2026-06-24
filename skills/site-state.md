@@ -907,3 +907,24 @@ QA evidence:
 - `docs/qa/screenshots/showroom-model-free-tap-grid-live-1697-2026-06-24/`
 
 Honest limitation: this is marker-center selection plus nearest visible demo-unit selection when tapping the model surface. It is not true per-window GLB mesh picking. True click-any-window selection requires official apartment geometry, BIM, or a GLB authored with per-unit pickable meshes.
+
+### 2026-06-24 - Codex - Critical live apartment selection re-check on v1.69.23
+
+Owner asked for a serious non-fake check of selecting apartments on the model. Live healthcheck before QA confirmed `nadlan-config` version `1.69.23`.
+
+Ran three live QA passes against Rainbow:
+
+- Visible apartment target click test on desktop 1440 and mobile 390.
+- Model-surface mesh pick test using `model-viewer.positionAndNormalFromPoint` on desktop 1440 and mobile 390.
+- Mobile 390 nine-point free tap grid over the tower and podium.
+
+Result: current selection works for authored visible unit targets and for nearest authored unit selection from model-surface taps. The six visible units all selected correctly on both desktop and mobile. The mesh-pick test returned real 3D hit positions, selected the expected nearest authored unit, moved the camera, and opened the selected-apartment card. The nine-point mobile grid had `deadModelSurfacePoints: []`.
+
+QA evidence:
+
+- `docs/qa/screenshots/showroom-live-selection-critical-16923-2026-06-24/QA.md`
+- `docs/qa/screenshots/showroom-live-model-selection-critical-16923-2026-06-24/`
+- `docs/qa/screenshots/showroom-live-surface-mesh-pick-critical-16923-2026-06-24/`
+- `docs/qa/screenshots/showroom-live-free-tap-grid-critical-16923-2026-06-24/`
+
+Honest limitation remains: this is not true click-any-window apartment picking. The live Rainbow GLB does not expose apartment-level mesh IDs or official BIM geometry. Exact window or facade polygon selection requires contractor source data: apartment-level GLB meshes, BIM/IFC mapping, or an official facade/unit map.

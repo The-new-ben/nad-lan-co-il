@@ -1,0 +1,400 @@
+{
+  "createdAt": "2026-06-24T03:14:28.659Z",
+  "url": "https://nad-lan.co.il/projects/rainbow-tel-aviv/?codex_qa=critical_marker_selection_16923",
+  "desktop": {
+    "label": "desktop-1440",
+    "viewport": {
+      "width": 1440,
+      "height": 1000
+    },
+    "before": [
+      {
+        "unit": "unit-08-sw",
+        "text": "8 3 ח דירת 3 חדרים, קומה 8 · 3 חד׳82 מ\"ר · מבט לחצר וליםזמינה לפנייהאומדן ₪6,232,000 · לא מחייב",
+        "rect": {
+          "x": 751,
+          "y": 613,
+          "width": 62,
+          "height": 44,
+          "centerX": 782,
+          "centerY": 635
+        },
+        "topAtCenter": {
+          "tag": "SPAN",
+          "className": "nlp3d-pick-label",
+          "markerUnit": "unit-08-sw"
+        },
+        "centerHitsSelf": true
+      },
+      {
+        "unit": "unit-16-w",
+        "text": "16 4 ח דירת 4 חדרים, קומה 16 · 4 חד׳112 מ\"ר · קו החוף ושדה דבזמינה לפנייהאומדן ₪8,512,000 · לא מחייב",
+        "rect": {
+          "x": 763,
+          "y": 545,
+          "width": 70,
+          "height": 44,
+          "centerX": 798,
+          "centerY": 567
+        },
+        "topAtCenter": {
+          "tag": "STRONG",
+          "className": "",
+          "markerUnit": "unit-16-w"
+        },
+        "centerHitsSelf": true
+      },
+      {
+        "unit": "unit-24-nw",
+        "text": "24 4 ח דירת 4 חדרים, קומה 24 · 4 חד׳128 מ\"ר · ים, פארק וצפון תל אביבזמינה לפנייה · פופולריאומדן ₪9,728,000 · לא מחייב",
+        "rect": {
+          "x": 783,
+          "y": 478,
+          "width": 70,
+          "height": 44,
+          "centerX": 818,
+          "centerY": 500
+        },
+        "topAtCenter": {
+          "tag": "STRONG",
+          "className": "",
+          "markerUnit": "unit-24-nw"
+        },
+        "centerHitsSelf": true
+      },
+      {
+        "unit": "unit-31-se",
+        "text": "31 5 ח דירת 5 חדרים, קומה 31 · 5 חד׳156 מ\"ר · קו הרקיע והחצר הפנימיתזמינה לפנייהאומדן ₪11,856,000 · לא מחייב",
+        "rect": {
+          "x": 993,
+          "y": 418,
+          "width": 70,
+          "height": 44,
+          "centerX": 1028,
+          "centerY": 440
+        },
+        "topAtCenter": {
+          "tag": "STRONG",
+          "className": "",
+          "markerUnit": "unit-31-se"
+        },
+        "centerHitsSelf": true
+      },
+      {
+        "unit": "unit-38-penthouse",
+        "text": "38 5 ח דירת 5 חדרים, קומה 38 · 5 חד׳210 מ\"ר · פנטהאוז גבוה לכיוון היםזמינה לפנייה · פופולריאומדן ₪15,960,000 · לא מחייב",
+        "rect": {
+          "x": 993,
+          "y": 359,
+          "width": 70,
+          "height": 44,
+          "centerX": 1028,
+          "centerY": 381
+        },
+        "topAtCenter": {
+          "tag": "STRONG",
+          "className": "",
+          "markerUnit": "unit-38-penthouse"
+        },
+        "centerHitsSelf": true
+      },
+      {
+        "unit": "unit-boutique-07",
+        "text": "7 4 ח דירת 4 חדרים, קומה 7 · 4 חד׳118 מ\"ר · בניין בוטיק סביב הלגונהבתהליך בדיקהאומדן ₪8,968,000 · לא מחייב",
+        "rect": {
+          "x": 634,
+          "y": 621,
+          "width": 62,
+          "height": 44,
+          "centerX": 665,
+          "centerY": 643
+        },
+        "topAtCenter": {
+          "tag": "SPAN",
+          "className": "nlp3d-pick-label",
+          "markerUnit": "unit-boutique-07"
+        },
+        "centerHitsSelf": true
+      }
+    ],
+    "taps": [
+      {
+        "expectedUnit": "unit-08-sw",
+        "topAtCenter": {
+          "tag": "SPAN",
+          "className": "nlp3d-pick-label",
+          "markerUnit": "unit-08-sw"
+        },
+        "centerHitsSelf": true,
+        "selectedUnit": "unit-08-sw",
+        "cameraOrbit": "45deg 66deg 38m",
+        "cameraTarget": "0m 31m 6m",
+        "pass": true
+      },
+      {
+        "expectedUnit": "unit-16-w",
+        "topAtCenter": {
+          "tag": "STRONG",
+          "className": "",
+          "markerUnit": "unit-16-w"
+        },
+        "centerHitsSelf": true,
+        "selectedUnit": "unit-16-w",
+        "cameraOrbit": "35deg 63deg 38m",
+        "cameraTarget": "-5m 55m 7m",
+        "pass": true
+      },
+      {
+        "expectedUnit": "unit-24-nw",
+        "topAtCenter": {
+          "tag": "STRONG",
+          "className": "",
+          "markerUnit": "unit-24-nw"
+        },
+        "centerHitsSelf": true,
+        "selectedUnit": "unit-24-nw",
+        "cameraOrbit": "45deg 66deg 38m",
+        "cameraTarget": "0m 31m 6m",
+        "pass": true
+      },
+      {
+        "expectedUnit": "unit-31-se",
+        "topAtCenter": {
+          "tag": "STRONG",
+          "className": "",
+          "markerUnit": "unit-31-se"
+        },
+        "centerHitsSelf": true,
+        "selectedUnit": "unit-31-se",
+        "cameraOrbit": "35deg 63deg 38m",
+        "cameraTarget": "-5m 55m 7m",
+        "pass": true
+      },
+      {
+        "expectedUnit": "unit-38-penthouse",
+        "topAtCenter": {
+          "tag": "STRONG",
+          "className": "",
+          "markerUnit": "unit-38-penthouse"
+        },
+        "centerHitsSelf": true,
+        "selectedUnit": "unit-38-penthouse",
+        "cameraOrbit": "24deg 61deg 38m",
+        "cameraTarget": "-6m 80m 5m",
+        "pass": true
+      },
+      {
+        "expectedUnit": "unit-boutique-07",
+        "topAtCenter": {
+          "tag": "SPAN",
+          "className": "nlp3d-pick-label",
+          "markerUnit": "unit-boutique-07"
+        },
+        "centerHitsSelf": true,
+        "selectedUnit": "unit-boutique-07",
+        "cameraOrbit": "32deg 58deg 38m",
+        "cameraTarget": "0m 124m 7m",
+        "pass": true
+      }
+    ],
+    "failed": []
+  },
+  "mobile": {
+    "label": "mobile-390",
+    "viewport": {
+      "width": 390,
+      "height": 900
+    },
+    "before": [
+      {
+        "unit": "unit-08-sw",
+        "text": "8",
+        "rect": {
+          "x": 134,
+          "y": 499,
+          "width": 44,
+          "height": 44,
+          "centerX": 156,
+          "centerY": 521
+        },
+        "topAtCenter": {
+          "tag": "STRONG",
+          "className": "",
+          "markerUnit": "unit-08-sw"
+        },
+        "centerHitsSelf": true
+      },
+      {
+        "unit": "unit-16-w",
+        "text": "16",
+        "rect": {
+          "x": 141,
+          "y": 466,
+          "width": 44,
+          "height": 44,
+          "centerX": 163,
+          "centerY": 488
+        },
+        "topAtCenter": {
+          "tag": "STRONG",
+          "className": "",
+          "markerUnit": "unit-16-w"
+        },
+        "centerHitsSelf": true
+      },
+      {
+        "unit": "unit-24-nw",
+        "text": "24",
+        "rect": {
+          "x": 150,
+          "y": 434,
+          "width": 44,
+          "height": 44,
+          "centerX": 172,
+          "centerY": 456
+        },
+        "topAtCenter": {
+          "tag": "STRONG",
+          "className": "",
+          "markerUnit": "unit-24-nw"
+        },
+        "centerHitsSelf": true
+      },
+      {
+        "unit": "unit-31-se",
+        "text": "31",
+        "rect": {
+          "x": 244,
+          "y": 406,
+          "width": 44,
+          "height": 44,
+          "centerX": 266,
+          "centerY": 428
+        },
+        "topAtCenter": {
+          "tag": "STRONG",
+          "className": "",
+          "markerUnit": "unit-31-se"
+        },
+        "centerHitsSelf": true
+      },
+      {
+        "unit": "unit-38-penthouse",
+        "text": "38",
+        "rect": {
+          "x": 244,
+          "y": 377,
+          "width": 44,
+          "height": 44,
+          "centerX": 266,
+          "centerY": 399
+        },
+        "topAtCenter": {
+          "tag": "STRONG",
+          "className": "",
+          "markerUnit": "unit-38-penthouse"
+        },
+        "centerHitsSelf": true
+      },
+      {
+        "unit": "unit-boutique-07",
+        "text": "7",
+        "rect": {
+          "x": 82,
+          "y": 503,
+          "width": 44,
+          "height": 44,
+          "centerX": 104,
+          "centerY": 525
+        },
+        "topAtCenter": {
+          "tag": "STRONG",
+          "className": "",
+          "markerUnit": "unit-boutique-07"
+        },
+        "centerHitsSelf": true
+      }
+    ],
+    "taps": [
+      {
+        "expectedUnit": "unit-08-sw",
+        "topAtCenter": {
+          "tag": "STRONG",
+          "className": "",
+          "markerUnit": "unit-08-sw"
+        },
+        "centerHitsSelf": true,
+        "selectedUnit": "unit-08-sw",
+        "cameraOrbit": "45deg 66deg auto",
+        "cameraTarget": "0m 31m 6m",
+        "pass": true
+      },
+      {
+        "expectedUnit": "unit-16-w",
+        "topAtCenter": {
+          "tag": "STRONG",
+          "className": "",
+          "markerUnit": "unit-16-w"
+        },
+        "centerHitsSelf": true,
+        "selectedUnit": "unit-16-w",
+        "cameraOrbit": "35deg 63deg auto",
+        "cameraTarget": "-5m 55m 7m",
+        "pass": true
+      },
+      {
+        "expectedUnit": "unit-24-nw",
+        "topAtCenter": {
+          "tag": "STRONG",
+          "className": "",
+          "markerUnit": "unit-24-nw"
+        },
+        "centerHitsSelf": true,
+        "selectedUnit": "unit-24-nw",
+        "cameraOrbit": "24deg 61deg auto",
+        "cameraTarget": "-6m 80m 5m",
+        "pass": true
+      },
+      {
+        "expectedUnit": "unit-31-se",
+        "topAtCenter": {
+          "tag": "STRONG",
+          "className": "",
+          "markerUnit": "unit-31-se"
+        },
+        "centerHitsSelf": true,
+        "selectedUnit": "unit-31-se",
+        "cameraOrbit": "310deg 64deg auto",
+        "cameraTarget": "6m 101m -5m",
+        "pass": true
+      },
+      {
+        "expectedUnit": "unit-38-penthouse",
+        "topAtCenter": {
+          "tag": "STRONG",
+          "className": "",
+          "markerUnit": "unit-38-penthouse"
+        },
+        "centerHitsSelf": true,
+        "selectedUnit": "unit-38-penthouse",
+        "cameraOrbit": "45deg 66deg auto",
+        "cameraTarget": "0m 31m 6m",
+        "pass": true
+      },
+      {
+        "expectedUnit": "unit-boutique-07",
+        "topAtCenter": {
+          "tag": "STRONG",
+          "className": "",
+          "markerUnit": "unit-boutique-07"
+        },
+        "centerHitsSelf": true,
+        "selectedUnit": "unit-boutique-07",
+        "cameraOrbit": "55deg 67deg auto",
+        "cameraTarget": "-42m 25m 24m",
+        "pass": true
+      }
+    ],
+    "failed": []
+  }
+}

@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Rainbow showroom critical apartment selection QA</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --cream: #faf7f1;
+      --panel: #fffdf8;
+      --ink: #1b1a17;
+      --muted: #6f675d;
+      --gold: #9c7a3c;
+      --line: #ded3c2;
+      --ok: #2f6f4e;
+    }
+    body {
+      margin: 0;
+      background: var(--cream);
+      color: var(--ink);
+      font-family: Arial, sans-serif;
+      line-height: 1.5;
+    }
+    main {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 32px 18px 56px;
+    }
+    h1, h2 {
+      margin: 0 0 12px;
+      line-height: 1.1;
+    }
+    h1 {
+      font-size: clamp(30px, 4vw, 56px);
+      max-width: 880px;
+    }
+    h2 {
+      font-size: 24px;
+    }
+    p, li {
+      color: var(--muted);
+    }
+    .status {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin: 18px 0;
+      padding: 8px 12px;
+      border: 1px solid rgba(47, 111, 78, .22);
+      background: rgba(47, 111, 78, .08);
+      color: var(--ok);
+      font-weight: 700;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 18px;
+      margin-top: 18px;
+    }
+    figure {
+      margin: 0;
+      padding: 12px;
+      border: 1px solid var(--line);
+      background: var(--panel);
+      box-shadow: 0 14px 34px rgba(68, 54, 36, .08);
+    }
+    img {
+      display: block;
+      width: 100%;
+      height: auto;
+      border: 1px solid rgba(156, 122, 60, .18);
+      background: #fff;
+    }
+    figcaption {
+      margin-top: 10px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+    .note {
+      margin-top: 24px;
+      padding: 16px;
+      border-right: 4px solid var(--gold);
+      background: var(--panel);
+    }
+    code {
+      color: var(--ink);
+      background: rgba(156, 122, 60, .12);
+      padding: 2px 5px;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <h1>Rainbow showroom critical apartment selection QA</h1>
+    <p>Live version checked: <strong>nadlan-config 1.69.23</strong>. Tests ran on the public Rainbow page on desktop 1440px and mobile 390px.</p>
+    <div class="status">Pass for authored unit targets and nearest-unit model-surface selection</div>
+
+    <section>
+      <h2>What passed</h2>
+      <ul>
+        <li>All six visible apartment targets selected the expected unit on desktop and mobile.</li>
+        <li>The mesh-surface test hit <code>MODEL-VIEWER</code>, received real 3D hit positions, selected the expected nearest authored unit, moved the camera, and opened the unit card.</li>
+        <li>The mobile nine-point grid had no dead model-surface points.</li>
+      </ul>
+    </section>
+
+    <section class="grid" aria-label="QA screenshots">
+      <figure>
+        <img src="../showroom-live-model-selection-critical-16923-2026-06-24/mobile-390-after-marker-taps.png" alt="Mobile view after tapping all visible apartment targets">
+        <figcaption>Visible apartment targets: mobile after tapping the authored unit buttons.</figcaption>
+      </figure>
+      <figure>
+        <img src="../showroom-live-surface-mesh-pick-critical-16923-2026-06-24/mobile-390-after-surface-mesh-pick.png" alt="Mobile model surface mesh pick selected a unit and opened the card">
+        <figcaption>Model-surface pick: a bare model tap selected the nearest authored unit and opened the card.</figcaption>
+      </figure>
+      <figure>
+        <img src="../showroom-live-free-tap-grid-critical-16923-2026-06-24/mobile-390-after-tower-mid-center.png" alt="Mobile free tap grid after tower mid center tap">
+        <figcaption>Grid point: tower middle center selected unit 16 and moved the camera.</figcaption>
+      </figure>
+      <figure>
+        <img src="../showroom-live-free-tap-grid-critical-16923-2026-06-24/mobile-390-after-podium-right.png" alt="Mobile free tap grid after podium right tap">
+        <figcaption>Grid point: podium right selected the nearest authored unit and opened the card.</figcaption>
+      </figure>
+    </section>
+
+    <section class="note">
+      <h2>Honest limitation</h2>
+      <p>This does not prove exact click-any-window apartment picking. The current Rainbow GLB does not expose apartment-level mesh IDs or official BIM geometry. Exact window or facade polygon selection requires contractor source data: apartment-level GLB meshes, BIM or IFC mapping, or an official facade and unit map.</p>
+    </section>
+  </main>
+</body>
+</html>
