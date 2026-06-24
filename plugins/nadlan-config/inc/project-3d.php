@@ -888,7 +888,7 @@ if ( ! function_exists( 'nadlan_p3d_render' ) ) {
 		$project_developer_sentence = $meta['developer'] ? ' היזם: ' . (string) $meta['developer'] . '.' : '';
 		$project_kicker = $project_title . ( $project_place !== '' ? ' · ' . $project_place : '' );
 		$project_intro_copy = $project_title . ' מוצג כאן כסיור פרויקט חי' . $project_place_phrase . '. רואים את הבניין, בוחרים דירה, בודקים קומה, כיוון ונוף, ושולחים פנייה עם הדירה המדויקת שנבחרה.' . $project_developer_sentence;
-		$project_lead_copy = 'סיור הפרויקט של ' . $project_title . $project_place_phrase . ' מחבר בין מודל הבניין, בחירת דירה, מבט מהדירה, תוכניות וליווי מקצועי. כאשר היזם מעלה חומרים רשמיים, הם מתחברים לאותה דירה ולאותה פנייה.';
+		$project_lead_copy = 'סיור הפרויקט של ' . $project_title . $project_place_phrase . ' מחבר בין תצוגת הבניין, בחירת דירה, מבט מהדירה, תוכניות וליווי מקצועי. כאשר היזם מעלה חומרים רשמיים, הם מתחברים לאותה דירה ולאותה פנייה.';
 
 		$camera_min_polar = esc_attr( (string) ( $meta['camera_min_polar'] ?? '78deg' ) );
 		$camera_max_polar = esc_attr( (string) ( $meta['camera_max_polar'] ?? '85deg' ) );
@@ -902,7 +902,7 @@ if ( ! function_exists( 'nadlan_p3d_render' ) ) {
 <?php if ( $showroom_poster ) : ?>
 <figure class="nlp3d-hero-media" dir="rtl" aria-label="תמונת פרויקט עם תצוגת דירות">
 	<img src="<?php echo $showroom_poster; ?>" alt="<?php echo esc_attr( $meta['title'] . ' - הדמיית פרויקט ובחירת דירה בתלת ממד' ); ?>" loading="eager" fetchpriority="high">
-	<figcaption><strong><?php echo esc_html( $meta['title'] ); ?></strong><span>מודל תלת ממדי ובחירת דירה זמינים בעמוד</span></figcaption>
+	<figcaption><strong><?php echo esc_html( $meta['title'] ); ?></strong><span>תצוגת תלת ממד ובחירת דירה זמינות בעמוד</span></figcaption>
 </figure>
 <?php endif; ?>
 <section class="nadlan-guide nlp3d-intro" dir="rtl" aria-label="פתיחת תצוגת דירות">
@@ -937,24 +937,24 @@ if ( ! function_exists( 'nadlan_p3d_render' ) ) {
 		</div>
 
 		<div class="nlp3d-stage-wrap" id="nlp3d-stage">
-			<div class="nlp3d-toolbar" aria-label="שליטה במודל">
+			<div class="nlp3d-toolbar" aria-label="שליטה בתצוגה">
 				<button type="button" class="nlp3d-angle is-active" data-angle="-32" data-action="angle-facade">מבט ראשי</button>
 				<button type="button" class="nlp3d-angle" data-angle="0" data-action="angle-sea">ים</button>
 				<button type="button" class="nlp3d-angle" data-angle="32" data-action="angle-city">עיר</button>
-				<button type="button" class="nlp3d-orbit" data-orbit="1" data-action="orbit-building">סובב מודל</button>
+				<button type="button" class="nlp3d-orbit" data-orbit="1" data-action="orbit-building">סיבוב 360</button>
 				<button type="button" class="nlp3d-zoom" data-zoom="in" data-action="zoom-in">קרב</button>
 				<button type="button" class="nlp3d-zoom" data-zoom="out" data-action="zoom-out">הרחק</button>
 				<span class="nlp3d-drag-note">בחרו דירה על המגדל</span>
 				<button type="button" class="nlp3d-fp-restore" data-action="facade-restore" hidden>הצג חזית</button>
 			</div>
-			<div class="nlp3d-scene<?php echo $has_model_viewer ? ' has-model-viewer' : ''; ?>" style="--angle:-32deg" role="group" aria-label="מודל תלת ממדי סכמטי של מגדל מגורים">
+			<div class="nlp3d-scene<?php echo $has_model_viewer ? ' has-model-viewer' : ''; ?>" style="--angle:-32deg" role="group" aria-label="תצוגת בניין תלת ממדית של מגדל מגורים">
 				<?php if ( $has_model_viewer ) : ?>
 					<model-viewer
 						class="nlp3d-model-viewer"
 						src="<?php echo esc_url( $meta['model_glb'] ); ?>"
 						<?php if ( ! empty( $meta['model_poster'] ) ) : ?>poster="<?php echo esc_url( $meta['model_poster'] ); ?>"<?php endif; ?>
 						<?php if ( ! empty( $meta['model_usdz'] ) ) : ?>ios-src="<?php echo esc_url( $meta['model_usdz'] ); ?>"<?php endif; ?>
-						alt="<?php echo esc_attr( 'מודל תלת ממדי של ' . $meta['title'] ); ?>"
+						alt="<?php echo esc_attr( 'תצוגת תלת ממד של ' . $meta['title'] ); ?>"
 						reveal="auto"
 						loading="auto"
 						camera-controls
@@ -1045,7 +1045,7 @@ if ( ! function_exists( 'nadlan_p3d_render' ) ) {
 				<div class="nlp3d-view-lines"></div>
 				<div class="nlp3d-view-map" hidden aria-label="מבט חי מגובה הדירה"></div>
 				<span class="nlp3d-view-badge" hidden>מבט חי · גרירה לסיבוב</span>
-				<button type="button" class="nlp3d-stage-return" data-action="return-model">חזרה למודל</button>
+				<button type="button" class="nlp3d-stage-return" data-action="return-model">חזרה לתצוגה</button>
 				<p class="nlp3d-view-copy"></p>
 			</div>
 			<div class="nlp3d-stage-card" aria-live="polite" hidden>
@@ -1081,7 +1081,7 @@ if ( ! function_exists( 'nadlan_p3d_render' ) ) {
 			</div>
 			<div class="nlp3d-console-head">
 				<p>בחרו קומה ודירה</p>
-				<span class="nlp3d-status-chip">מודל פעיל</span>
+				<span class="nlp3d-status-chip">תצוגה פעילה</span>
 			</div>
 			<div class="nlp3d-floor-strip" aria-label="קומות זמינות"></div>
 			<div class="nlp3d-units" aria-label="דירות בקומה"></div>
@@ -1147,7 +1147,7 @@ if ( ! function_exists( 'nadlan_p3d_render' ) ) {
 		<div class="nlp3d-showcase-copy">
 			<p class="nlp3d-kicker">מעמוד פרויקט לעמדת בחירה</p>
 			<h3>כל החלטה מתחילה ממבט ברור יותר על הדירה</h3>
-			<p>העמוד מחבר בין מודל הבניין, בחירת דירה, מבט מהדירה, שעות שמש, השוואת יחידות ובקשת ליווי מקצועי. הכל נבנה כדי שהרוכש יבין את הדירה לפני השיחה, והיזם יקבל פנייה מדויקת יותר.</p>
+			<p>העמוד מחבר בין תצוגת הבניין, בחירת דירה, מבט מהדירה, שעות שמש, השוואת יחידות ובקשת ליווי מקצועי. הכל נבנה כדי שהרוכש יבין את הדירה לפני השיחה, והיזם יקבל פנייה מדויקת יותר.</p>
 		</div>
 		<div class="nlp3d-showcase-cards" aria-label="יכולות תצוגה">
 			<article>
@@ -2592,7 +2592,7 @@ if ( ! function_exists( 'nadlan_p3d_inline_js' ) ) {
 			}else{
 				facadePlane=document.createElement('div');
 				facadePlane.className='nlp3d-facade-plane nlp3d-facade-missing';
-				facadePlane.innerHTML='<button type="button" class="nlp3d-fp-close" data-action="facade-dismiss" aria-label="הסתר הודעת חזית">×</button><strong>ממתין לחזית ותוכניות מהיזם</strong><p>המודל התלת ממדי מוצג, אבל בחירת דירה על חזית הבניין תיפתח רק אחרי העלאת חזית מאושרת ותוכניות רשמיות.</p><small>קבלנים ויזמים יכולים להעביר חזית, תוכניות ומלאי כדי להפוך את הסיור לעמוד מכירה מלא.</small>';
+				facadePlane.innerHTML='<button type="button" class="nlp3d-fp-close" data-action="facade-dismiss" aria-label="הסתר הודעת חזית">×</button><strong>ממתין לחזית ותוכניות מהיזם</strong><p>תצוגת התלת ממד מוצגת, אבל בחירת דירה על חזית הבניין תיפתח רק אחרי העלאת חזית מאושרת ותוכניות רשמיות.</p><small>קבלנים ויזמים יכולים להעביר חזית, תוכניות ומלאי כדי להפוך את הסיור לעמוד מכירה מלא.</small>';
 				scene.appendChild(facadePlane);
 				root.classList.add('is-facade-asset-missing');
 			}
@@ -2863,6 +2863,22 @@ if ( ! function_exists( 'nadlan_p3d_inline_js' ) ) {
 			var n=Number(pos&&pos[key]);
 			return isFinite(n)?n:null;
 		}
+		function unitPickScreenDistance(u,p){
+			if(!stagePicks||!u||!u.id||!p){return null}
+			var best=null;
+			stagePicks.querySelectorAll('.nlp3d-stage-pick,.nlp3d-cell').forEach(function(node){
+				if(!node.dataset||node.dataset.unit!==u.id){return}
+				var cs=window.getComputedStyle(node);
+				if(cs.display==='none'||cs.visibility==='hidden'){return}
+				var r=node.getBoundingClientRect();
+				if(r.width<1||r.height<1){return}
+				var cx=r.left+(r.width/2),cy=r.top+(r.height/2);
+				var dx=p.x-cx,dy=p.y-cy;
+				var d=Math.sqrt(dx*dx+dy*dy);
+				if(best===null||d<best){best=d}
+			});
+			return best;
+		}
 		function selectUnitFromModelSurfacePoint(p,source){
 			if(!modelViewer||typeof modelViewer.positionAndNormalFromPoint!=='function'||!p){return Promise.resolve(false)}
 			var surface;
@@ -2885,7 +2901,8 @@ if ( ! function_exists( 'nadlan_p3d_inline_js' ) ) {
 					var dx=v.x-px,dy=Math.abs(v.y-py),dz=v.z-pz;
 					var horizontal=Math.sqrt(dx*dx+dz*dz);
 					var score=(dy*1.55)+(horizontal*.42);
-					candidates.push({unit:u,yDelta:dy,horizontal:horizontal,score:score});
+					var screenDistance=unitPickScreenDistance(u,p);
+					candidates.push({unit:u,yDelta:dy,horizontal:horizontal,score:score,screenDistance:screenDistance});
 				});
 				var closeHorizontal=candidates.filter(function(c){return c.horizontal<=18});
 				var pool=closeHorizontal.length?closeHorizontal:candidates;
@@ -2898,6 +2915,7 @@ if ( ! function_exists( 'nadlan_p3d_inline_js' ) ) {
 					}
 				});
 				if(!best||!best.unit){return false}
+				if(window.innerWidth&&window.innerWidth<=480&&best.horizontal>52&&(best.screenDistance===null||best.screenDistance>96)){return false}
 				if(best.yDelta>24&&best.horizontal>42){return false}
 				selectUnit(best.unit.id,source||'model-surface-hit');
 				return true;
@@ -3513,7 +3531,7 @@ if ( ! function_exists( 'nadlan_p3d_inline_js' ) ) {
 			var badge=root.querySelector('.nlp3d-view-badge');
 			if(badge){badge.hidden=!live}
 			if(live){
-				viewCopy.textContent='גובה מצלמה '+cam.altitude_m+' מ׳, כיוון '+cam.bearing+'° ('+view+'). גררו לסיבוב, גללו או צבטו לזום. בניינים מסביב מבוססים על מודל מפה ציבורי.';
+				viewCopy.textContent='גובה מצלמה '+cam.altitude_m+' מ׳, כיוון '+cam.bearing+'° ('+view+'). גררו לסיבוב, גללו או צבטו לזום. בניינים מסביב מבוססים על שכבת מפה ציבורית.';
 			}else{
 				var cameraNote=(cam.lat&&cam.lng)?(' פרמטרי המבט מוכנים: גובה '+cam.altitude_m+' מ׳, כיוון '+cam.bearing+'°. המבט החי יופעל כאשר מפתח המפות יוזן במערכת.'):'';
 				viewCopy.textContent='מבט המחשה מהיחידה: '+view+'. זהו מצב תצוגה תכנוני עד שיוזנו הדמיות ותוכניות מאושרות.'+cameraNote;
@@ -3890,7 +3908,7 @@ if ( ! function_exists( 'nadlan_p3d_inline_js' ) ) {
 			var timeline=fd.get('timeline')||'לא נמסר';
 			var cam=cameraParams(activeUnit,meta);
 			var reservationState=intent==='purchase'?'non_binding_inquiry':'lead_request';
-			var message=intentText+' מתוך מודל תלת ממדי של '+(meta.title||'הפרויקט')+'. יחידה: '+selectedTitle(activeUnit)+'. '+unitText(activeUnit)+'. בניין: '+(activeUnit.building||'לא נמסר')+'. זמינות: '+(activeUnit.availability||'לא מאומתת')+'. תקציב: '+(fd.get('budget')||'לא נמסר')+'. מועד התקדמות: '+timeline+'. ליווי מבוקש: '+advisor+'. נא לאמת זמינות, מחיר ותנאים מול היזם לפני כל התקדמות. סטטוס: '+reservationState+'.';
+			var message=intentText+' מתוך תצוגת תלת ממד של '+(meta.title||'הפרויקט')+'. יחידה: '+selectedTitle(activeUnit)+'. '+unitText(activeUnit)+'. בניין: '+(activeUnit.building||'לא נמסר')+'. זמינות: '+(activeUnit.availability||'לא מאומתת')+'. תקציב: '+(fd.get('budget')||'לא נמסר')+'. מועד התקדמות: '+timeline+'. ליווי מבוקש: '+advisor+'. נא לאמת זמינות, מחיר ותנאים מול היזם לפני כל התקדמות. סטטוס: '+reservationState+'.';
 			var payload={card_id:parseInt(root.dataset.project,10),name:fd.get('name'),phone:fd.get('phone'),email:fd.get('email'),goal:intentText,message:message,company:fd.get('company'),source:'project_3d',budget:fd.get('budget'),unit:activeUnit.id,floor:activeUnit.floor,rooms:activeUnit.rooms,sqm:activeUnit.sqm,building:activeUnit.building||'',availability:activeUnit.availability||'',market_note:activeUnit.market_note||'',timeline:timeline,advisor:advisor,purchase_intent:intent==='purchase',reservation_state:reservationState,view_bearing:cam.bearing,view_altitude_m:cam.altitude_m};
 			track('submit',{intent:intent,unit:activeUnit.id,floor:activeUnit.floor,advisor:advisor,reservation_state:reservationState,view_bearing:cam.bearing,view_altitude_m:cam.altitude_m});
 			form.querySelectorAll('button[type="submit"]').forEach(function(b){b.disabled=true});
@@ -3970,7 +3988,7 @@ add_action(
 			return;
 		}
 
-		wp_register_style( 'nadlan-p3d', '', array(), '1.69.29' );
+		wp_register_style( 'nadlan-p3d', '', array(), '1.69.30' );
 		wp_enqueue_style( 'nadlan-p3d' );
 		wp_add_inline_style( 'nadlan-p3d', nadlan_p3d_lovable_showroom_v1690_css() );
 
@@ -3981,7 +3999,7 @@ add_action(
 			wp_enqueue_script( 'nadlan-model-viewer' );
 		}
 
-		wp_register_script( 'nadlan-p3d', '', array(), '1.69.29', true );
+		wp_register_script( 'nadlan-p3d', '', array(), '1.69.30', true );
 		wp_enqueue_script( 'nadlan-p3d' );
 		wp_add_inline_script( 'nadlan-p3d', nadlan_p3d_inline_js( esc_url_raw( rest_url( 'nadlan/v1/lead' ) ) ) );
 	}
@@ -4482,6 +4500,7 @@ add_filter(
 			'model_surface_mesh_pick_ungated_v16925' => true,
 			'model_surface_mesh_pick_first_v16926' => true,
 			'model_surface_horizontal_bias_v16927' => true,
+			'model_surface_mobile_screen_fallback_v16930' => true,
 			'projects_with_3d' => (int) $q->found_posts,
 			'projects_with_glb' => (int) $model_q->found_posts,
 		);
