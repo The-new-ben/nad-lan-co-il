@@ -716,7 +716,7 @@ body.nadlan-p3d-stage-active #nlrx-action-rail {
 		top: 8px;
 		inset-inline: 8px;
 		display: grid;
-		grid-template-columns: repeat(7, minmax(0, 1fr));
+		grid-template-columns: repeat(4, minmax(44px, 1fr));
 		gap: 6px;
 		overflow: visible;
 		padding-block-end: 0;
@@ -724,7 +724,7 @@ body.nadlan-p3d-stage-active #nlrx-action-rail {
 
 	.nlp3d.nlp3d-premium .nlp3d-toolbar button {
 		min-height: 44px;
-		min-width: 0;
+		min-width: 44px;
 		width: 100%;
 		padding: 7px 4px;
 		font-size: 12px;
@@ -732,6 +732,11 @@ body.nadlan-p3d-stage-active #nlrx-action-rail {
 	}
 
 	.nlp3d.nlp3d-premium .nlp3d-drag-note {
+		display: none;
+	}
+
+	.nlp3d.nlp3d-premium .nlp3d-toolbar .nlp3d-zoom,
+	.nlp3d.nlp3d-premium .nlp3d-toolbar .nlp3d-fp-restore {
 		display: none;
 	}
 

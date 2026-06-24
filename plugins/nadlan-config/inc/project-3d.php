@@ -2266,20 +2266,24 @@ border-color:var(--nlp3d-terracotta)!important;
 @media(max-width:760px){
 .nlp3d.nlp3d-premium .nlp3d-toolbar{
 display:grid!important;
-grid-template-columns:repeat(7,minmax(0,1fr))!important;
+grid-template-columns:repeat(4,minmax(44px,1fr))!important;
 gap:6px!important;
 overflow:visible!important;
 margin:0 0 8px!important;
 padding:0!important;
 }
 .nlp3d.nlp3d-premium .nlp3d-toolbar button{
-min-width:0!important;
+min-width:44px!important;
 width:100%!important;
 min-height:44px!important;
 padding:7px 4px!important;
 white-space:nowrap!important;
 }
 .nlp3d.nlp3d-premium .nlp3d-drag-note{
+display:none!important;
+}
+.nlp3d.nlp3d-premium .nlp3d-toolbar .nlp3d-zoom,
+.nlp3d.nlp3d-premium .nlp3d-toolbar .nlp3d-fp-restore{
 display:none!important;
 }
 .nlp3d.nlp3d-premium .nlp3d-model-picks{
@@ -3979,7 +3983,7 @@ add_action(
 			return;
 		}
 
-		wp_register_style( 'nadlan-p3d', plugins_url( '../assets/css/project-3d-premium.css', __FILE__ ), array(), '1.69.38' );
+		wp_register_style( 'nadlan-p3d', plugins_url( '../assets/css/project-3d-premium.css', __FILE__ ), array(), '1.69.39' );
 		wp_enqueue_style( 'nadlan-p3d' );
 
 		$post_id = is_singular( 'nadlan_project' ) ? (int) get_queried_object_id() : 0;
@@ -3989,7 +3993,7 @@ add_action(
 			wp_enqueue_script( 'nadlan-model-viewer' );
 		}
 
-		wp_register_script( 'nadlan-p3d', '', array(), '1.69.38', true );
+		wp_register_script( 'nadlan-p3d', '', array(), '1.69.39', true );
 		wp_enqueue_script( 'nadlan-p3d' );
 		wp_add_inline_script( 'nadlan-p3d', nadlan_p3d_inline_js( esc_url_raw( rest_url( 'nadlan/v1/lead' ) ) ) );
 	}
@@ -4417,6 +4421,7 @@ add_filter(
 			'single_selection_surface_v16936' => true,
 			'mobile_toolbar_card_polish_v16937' => true,
 			'mobile_toolbar_grid_v16938'        => true,
+			'mobile_toolbar_touch_v16939'       => true,
 			'public_language_cleanup_v1690' => true,
 			'visual_qa_preview_v1690' => true,
 			'unit_panel_tabs_v1680' => true,
