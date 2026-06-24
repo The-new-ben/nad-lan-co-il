@@ -924,14 +924,14 @@ if ( ! function_exists( 'nadlan_p3d_render' ) ) {
 
 		<div class="nlp3d-stage-wrap" id="nlp3d-stage">
 			<div class="nlp3d-toolbar" aria-label="שליטה בתצוגה">
-				<button type="button" class="nlp3d-angle is-active" data-angle="-32" data-action="angle-facade">מבט ראשי</button>
+				<button type="button" class="nlp3d-angle is-active" data-angle="-32" data-action="angle-facade" aria-label="מבט ראשי">ראשי</button>
 				<button type="button" class="nlp3d-angle" data-angle="0" data-action="angle-sea">ים</button>
 				<button type="button" class="nlp3d-angle" data-angle="32" data-action="angle-city">עיר</button>
-				<button type="button" class="nlp3d-orbit" data-orbit="1" data-action="orbit-building">סיבוב 360</button>
-				<button type="button" class="nlp3d-zoom" data-zoom="in" data-action="zoom-in">קרב</button>
-				<button type="button" class="nlp3d-zoom" data-zoom="out" data-action="zoom-out">הרחק</button>
+				<button type="button" class="nlp3d-orbit" data-orbit="1" data-action="orbit-building" aria-label="סיבוב 360">360</button>
+				<button type="button" class="nlp3d-zoom" data-zoom="in" data-action="zoom-in" aria-label="קרב">+</button>
+				<button type="button" class="nlp3d-zoom" data-zoom="out" data-action="zoom-out" aria-label="הרחק">-</button>
 				<span class="nlp3d-drag-note">בחרו דירה על המגדל</span>
-				<button type="button" class="nlp3d-fp-restore" data-action="facade-restore" hidden>הצג חזית</button>
+				<button type="button" class="nlp3d-fp-restore" data-action="facade-restore" aria-label="הצג חזית" hidden>חזית</button>
 			</div>
 			<div class="nlp3d-scene<?php echo $has_model_viewer ? ' has-model-viewer' : ''; ?>" style="--angle:-32deg" role="group" aria-label="תצוגת בניין תלת ממדית של מגדל מגורים">
 				<?php if ( $has_model_viewer ) : ?>
@@ -2265,24 +2265,18 @@ border-color:var(--nlp3d-terracotta)!important;
 }
 @media(max-width:760px){
 .nlp3d.nlp3d-premium .nlp3d-toolbar{
-flex-wrap:nowrap!important;
-justify-content:flex-start!important;
+display:grid!important;
+grid-template-columns:repeat(7,minmax(0,1fr))!important;
 gap:6px!important;
-overflow-x:auto!important;
-overflow-y:hidden!important;
+overflow:visible!important;
 margin:0 0 8px!important;
-padding:0 0 4px!important;
-scrollbar-width:none!important;
--webkit-overflow-scrolling:touch!important;
-}
-.nlp3d.nlp3d-premium .nlp3d-toolbar::-webkit-scrollbar{
-display:none!important;
+padding:0!important;
 }
 .nlp3d.nlp3d-premium .nlp3d-toolbar button{
-flex:0 0 auto!important;
-min-width:44px!important;
+min-width:0!important;
+width:100%!important;
 min-height:44px!important;
-padding:7px 9px!important;
+padding:7px 4px!important;
 white-space:nowrap!important;
 }
 .nlp3d.nlp3d-premium .nlp3d-drag-note{
@@ -3985,7 +3979,7 @@ add_action(
 			return;
 		}
 
-		wp_register_style( 'nadlan-p3d', plugins_url( '../assets/css/project-3d-premium.css', __FILE__ ), array(), '1.69.37' );
+		wp_register_style( 'nadlan-p3d', plugins_url( '../assets/css/project-3d-premium.css', __FILE__ ), array(), '1.69.38' );
 		wp_enqueue_style( 'nadlan-p3d' );
 
 		$post_id = is_singular( 'nadlan_project' ) ? (int) get_queried_object_id() : 0;
@@ -3995,7 +3989,7 @@ add_action(
 			wp_enqueue_script( 'nadlan-model-viewer' );
 		}
 
-		wp_register_script( 'nadlan-p3d', '', array(), '1.69.37', true );
+		wp_register_script( 'nadlan-p3d', '', array(), '1.69.38', true );
 		wp_enqueue_script( 'nadlan-p3d' );
 		wp_add_inline_script( 'nadlan-p3d', nadlan_p3d_inline_js( esc_url_raw( rest_url( 'nadlan/v1/lead' ) ) ) );
 	}
@@ -4422,6 +4416,7 @@ add_filter(
 			'mobile_touch_targets_v16935' => true,
 			'single_selection_surface_v16936' => true,
 			'mobile_toolbar_card_polish_v16937' => true,
+			'mobile_toolbar_grid_v16938'        => true,
 			'public_language_cleanup_v1690' => true,
 			'visual_qa_preview_v1690' => true,
 			'unit_panel_tabs_v1680' => true,

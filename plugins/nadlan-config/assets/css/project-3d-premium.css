@@ -715,25 +715,18 @@ body.nadlan-p3d-stage-active #nlrx-action-rail {
 	.nlp3d.nlp3d-premium .nlp3d-toolbar {
 		top: 8px;
 		inset-inline: 8px;
-		flex-wrap: nowrap;
-		justify-content: flex-start;
+		display: grid;
+		grid-template-columns: repeat(7, minmax(0, 1fr));
 		gap: 6px;
-		overflow-x: auto;
-		overflow-y: hidden;
-		padding-block-end: 4px;
-		scrollbar-width: none;
-		-webkit-overflow-scrolling: touch;
-	}
-
-	.nlp3d.nlp3d-premium .nlp3d-toolbar::-webkit-scrollbar {
-		display: none;
+		overflow: visible;
+		padding-block-end: 0;
 	}
 
 	.nlp3d.nlp3d-premium .nlp3d-toolbar button {
-		flex: 0 0 auto;
 		min-height: 44px;
-		min-width: 44px;
-		padding: 7px 9px;
+		min-width: 0;
+		width: 100%;
+		padding: 7px 4px;
 		font-size: 12px;
 		white-space: nowrap;
 	}
