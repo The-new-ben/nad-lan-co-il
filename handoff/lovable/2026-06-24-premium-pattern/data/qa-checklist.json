@@ -1,0 +1,26 @@
+{
+  "global": [
+    "No buyer-facing banned terms appear in rendered text.",
+    "No em dash appears in rendered public UI.",
+    "All pages are usable at 390px wide with scrollWidth equal to viewport width.",
+    "Header, primary action and project identity are visible in first viewport.",
+    "Cream, ink and restrained gold are used. No dark teal patch skin remains."
+  ],
+  "showroom": [
+    "A buyer can see the building, available units, selected unit panel and inquiry path in one screen on desktop.",
+    "At 390px, the building remains first, the unit rail scrolls horizontally, and the selected panel is not squeezed.",
+    "Selecting unit 16 updates the selected panel, unit rail state and visible building highlight.",
+    "If no real model is available, show facade state with dignified copy. Do not pretend it is a full 3D model.",
+    "If exact apartment geometry is unavailable, do not say every window is independently selectable."
+  ],
+  "projects": [
+    "Cards show project name, city, developer, availability facts and direct showroom action.",
+    "No internal paid-rank labels. Use public advertising disclosure only when required.",
+    "Mobile cards are single column and image area has a fixed aspect ratio."
+  ],
+  "homepage": [
+    "First viewport sells NadLan3D as a showroom product, not a generic listings portal.",
+    "At least one project card opens the showroom path.",
+    "Foreign buyer and contractor paths are visible without sounding like internal funnel language."
+  ]
+}

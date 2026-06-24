@@ -1,0 +1,58 @@
+{
+  "decision": "Hybrid",
+  "currentLiveTruth": "1.69.32 uses authored apartment units plus row-aligned surface tap behavior. It is not exact per-window geometry picking.",
+  "minimumProjectAssets": [
+    {
+      "name": "project_name_he",
+      "required": true,
+      "example": "Rainbow Tel Aviv"
+    },
+    {
+      "name": "city_he",
+      "required": true,
+      "example": "תל אביב"
+    },
+    {
+      "name": "developer_name",
+      "required": true,
+      "example": "יזם מאומת"
+    },
+    {
+      "name": "hero_render_or_facade_photo",
+      "required": true,
+      "format": "webp or jpg, 2400px wide preferred"
+    },
+    {
+      "name": "units_json",
+      "required": true,
+      "fields": "id, floor, line, rooms, sqm, balcony, direction, status, priceLabel, planUrl"
+    },
+    {
+      "name": "inquiry_destination",
+      "required": true,
+      "fields": "phone, whatsapp, email or form endpoint"
+    }
+  ],
+  "premiumUpgradeAssets": [
+    {
+      "name": "segmented_model",
+      "requiredForExactPicking": true,
+      "note": "Each apartment must have a stable object id matching units_json.id."
+    },
+    {
+      "name": "ifc_or_bim_mapping",
+      "requiredForExactPicking": true,
+      "note": "Can be stored privately. Public UI does not mention the technical source."
+    },
+    {
+      "name": "official_floor_plans",
+      "requiredForInvestorDeck": true,
+      "note": "Use official only when provided by contractor."
+    },
+    {
+      "name": "view_images",
+      "requiredForInvestorDeck": false,
+      "note": "Per-unit or per-orientation view stills."
+    }
+  ]
+}
