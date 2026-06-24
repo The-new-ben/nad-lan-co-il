@@ -1,0 +1,96 @@
+{
+  "createdAt": "2026-06-24T03:07:27.681Z",
+  "url": "https://nad-lan.co.il/projects/rainbow-tel-aviv/?codex_qa=overview_selection_16923",
+  "unitId": "unit-16-w",
+  "desktop": {
+    "label": "desktop-1440",
+    "unitId": "unit-16-w",
+    "viewport": {
+      "width": 1440,
+      "height": 1000
+    },
+    "url": "https://nad-lan.co.il/projects/rainbow-tel-aviv/?codex_qa=overview_selection_16923&viewport=desktop-1440&t=1782270447879",
+    "before": {
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "scrollWidth": 1440,
+      "activeUnit": null,
+      "activePick": null,
+      "activePickCount": 0,
+      "cameraOrbit": "34deg 81.5deg 32m",
+      "cameraTarget": "0m 56m 0m",
+      "stageCardHidden": true,
+      "selectedTitle": "בחרו דירה",
+      "stageCardText": "× הדירה שנבחרה בחרו דירה על הבניין בחרו קומה ודירה כדי לראות מחיר, נוף ותוכנית כאשר הם זמינים. לפי פנייה בחירה פתוחה מבט לפי כיוון בחרו דירה כדי לראות את פעולות ההמשך. פרטים מלאים מבט מהדירה תוכניות וסיור דברו עם היזם",
+      "forbiddenLeak": false,
+      "leakSample": null
+    },
+    "pickCount": 1,
+    "after": {
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "scrollWidth": 1440,
+      "activeUnit": "unit-16-w",
+      "activePick": "unit-16-w",
+      "activePickCount": 1,
+      "cameraOrbit": "35deg 63deg 38m",
+      "cameraTarget": "-5m 55m 7m",
+      "stageCardHidden": false,
+      "selectedTitle": "דירת 4 חדרים, קומה 16",
+      "stageCardText": "× הדירה שנבחרה דירת 4 חדרים, קומה 16 · 112 מ\"ר · קו החוף ושדה דב תוכנית זמינה אומדן ₪8,512,000 זמינה לפנייה קו החוף ושדה דב האומדן עוזר להשוואה ראשונית בלבד. המחיר, הזמינות ותנאי העסקה יאומתו מול היזם לפני כל התקדמות. פרטים מלאים מבט מהדירה תוכניות וסיור דברו עם היזם",
+      "forbiddenLeak": false,
+      "leakSample": null
+    },
+    "pass": true
+  },
+  "mobile": {
+    "label": "mobile-390",
+    "unitId": "unit-16-w",
+    "viewport": {
+      "width": 390,
+      "height": 900
+    },
+    "url": "https://nad-lan.co.il/projects/rainbow-tel-aviv/?codex_qa=overview_selection_16923&viewport=mobile-390&t=1782270504178",
+    "before": {
+      "viewport": {
+        "width": 390,
+        "height": 900
+      },
+      "scrollWidth": 390,
+      "activeUnit": null,
+      "activePick": null,
+      "activePickCount": 0,
+      "cameraOrbit": "34deg 81.5deg 32m",
+      "cameraTarget": "0m 56m 0m",
+      "stageCardHidden": true,
+      "selectedTitle": "בחרו דירה",
+      "stageCardText": "× הדירה שנבחרה בחרו דירה על הבניין בחרו קומה ודירה כדי לראות מחיר, נוף ותוכנית כאשר הם זמינים. לפי פנייה בחירה פתוחה מבט לפי כיוון בחרו דירה כדי לראות את פעולות ההמשך. פרטים מלאים מבט מהדירה תוכניות וסיור דברו עם היזם",
+      "forbiddenLeak": false,
+      "leakSample": null
+    },
+    "pickCount": 1,
+    "after": {
+      "viewport": {
+        "width": 390,
+        "height": 900
+      },
+      "scrollWidth": 390,
+      "activeUnit": "unit-16-w",
+      "activePick": "unit-16-w",
+      "activePickCount": 1,
+      "cameraOrbit": "35deg 63deg auto",
+      "cameraTarget": "-5m 55m 7m",
+      "stageCardHidden": false,
+      "selectedTitle": "דירת 4 חדרים, קומה 16",
+      "stageCardText": "× הדירה שנבחרה דירת 4 חדרים, קומה 16 · 112 מ\"ר · קו החוף ושדה דב תוכנית זמינה אומדן ₪8,512,000 זמינה לפנייה קו החוף ושדה דב האומדן עוזר להשוואה ראשונית בלבד. המחיר, הזמינות ותנאי העסקה יאומתו מול היזם לפני כל התקדמות. פרטים מלאים מבט מהדירה תוכניות וסיור דברו עם היזם",
+      "forbiddenLeak": false,
+      "leakSample": null
+    },
+    "pass": true
+  },
+  "pass": true
+}
