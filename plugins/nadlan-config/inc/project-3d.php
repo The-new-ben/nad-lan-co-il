@@ -3726,9 +3726,6 @@ if ( ! function_exists( 'nadlan_p3d_inline_js' ) ) {
 					e.stopPropagation();
 					return;
 				}
-				if(stagePicks&&stagePicks.querySelector('.nlp3d-stage-pick,.nlp3d-cell')){
-					return;
-				}
 				if(typeof modelViewer.positionAndNormalFromPoint==='function'){
 					e.preventDefault();
 					e.stopPropagation();
@@ -3971,7 +3968,7 @@ add_action(
 			return;
 		}
 
-		wp_register_style( 'nadlan-p3d', '', array(), '1.69.24' );
+		wp_register_style( 'nadlan-p3d', '', array(), '1.69.25' );
 		wp_enqueue_style( 'nadlan-p3d' );
 		wp_add_inline_style( 'nadlan-p3d', nadlan_p3d_lovable_showroom_v1690_css() );
 
@@ -3982,7 +3979,7 @@ add_action(
 			wp_enqueue_script( 'nadlan-model-viewer' );
 		}
 
-		wp_register_script( 'nadlan-p3d', '', array(), '1.69.24', true );
+		wp_register_script( 'nadlan-p3d', '', array(), '1.69.25', true );
 		wp_enqueue_script( 'nadlan-p3d' );
 		wp_add_inline_script( 'nadlan-p3d', nadlan_p3d_inline_js( esc_url_raw( rest_url( 'nadlan/v1/lead' ) ) ) );
 	}
@@ -4480,6 +4477,7 @@ add_filter(
 			'model_viewer_active_unit_attr_removed_v16921' => true,
 			'model_viewer_selected_repaint_v16922' => true,
 			'model_viewer_delayed_repaint_v16923' => true,
+			'model_surface_mesh_pick_ungated_v16925' => true,
 			'projects_with_3d' => (int) $q->found_posts,
 			'projects_with_glb' => (int) $model_q->found_posts,
 		);
