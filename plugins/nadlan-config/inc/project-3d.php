@@ -2012,7 +2012,8 @@ position:relative!important;
 }
 body.nadlan-p3d-stage-active .nlfab,
 body.nadlan-p3d-stage-active #nlcta,
-body.nadlan-p3d-stage-active #nlai .nlai-fab{
+body.nadlan-p3d-stage-active #nlai .nlai-fab,
+body.nadlan-p3d-stage-active #nlrx-action-rail{
 opacity:0!important;
 pointer-events:none!important;
 transform:translateY(14px)!important;
@@ -3867,7 +3868,7 @@ add_action(
 			return;
 		}
 
-		wp_register_style( 'nadlan-p3d', '', array(), '1.69.14' );
+		wp_register_style( 'nadlan-p3d', '', array(), '1.69.15' );
 		wp_enqueue_style( 'nadlan-p3d' );
 		wp_add_inline_style( 'nadlan-p3d', nadlan_p3d_lovable_showroom_v1690_css() );
 
@@ -3878,7 +3879,7 @@ add_action(
 			wp_enqueue_script( 'nadlan-model-viewer' );
 		}
 
-		wp_register_script( 'nadlan-p3d', '', array(), '1.69.14', true );
+		wp_register_script( 'nadlan-p3d', '', array(), '1.69.15', true );
 		wp_enqueue_script( 'nadlan-p3d' );
 		wp_add_inline_script( 'nadlan-p3d', nadlan_p3d_inline_js( esc_url_raw( rest_url( 'nadlan/v1/lead' ) ) ) );
 	}
@@ -4367,6 +4368,7 @@ add_filter(
 			'lead_wizard'      => true,
 			'reservation_state' => 'non_binding_inquiry',
 			'stage_card_single_action_group_v16914' => true,
+			'stage_action_rail_suppression_v16915' => true,
 			'projects_with_3d' => (int) $q->found_posts,
 			'projects_with_glb' => (int) $model_q->found_posts,
 		);
