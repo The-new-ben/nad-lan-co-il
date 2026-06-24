@@ -2392,6 +2392,7 @@ if ( ! function_exists( 'nadlan_p3d_inline_js' ) ) {
 	function firstAvailable(units){return units.find(function(u){return u.status!=='sold'}) || units[0] || null}
 	function selectedTitle(u){if(!u){return 'בחרו דירה'}var base=u.title || ('קו '+(u.line||u.id));var floor=u.floor||'-';return (floor!=='-'&&base.indexOf('קומה '+floor)>-1)?base:base+' · קומה '+floor}
 	function unitText(u){var parts=[];if(u.rooms){parts.push(u.rooms+' חדרים')}if(u.sqm){parts.push(fmt(u.sqm)+' מ"ר')}if(u.view){parts.push(u.view)}return parts.join(' · ')}
+	function unitSummaryText(u){var text=unitText(u);if(!u||!u.rooms||!text){return text}var parts=text.split(' · ');return String(parts[0]||'').indexOf(String(u.rooms))===0?parts.slice(1).join(' · '):text}
 	function unitBuyerTags(u,meta){
 		var tags=[];
 		if(!u){return tags}
@@ -3038,7 +3039,8 @@ if ( ! function_exists( 'nadlan_p3d_inline_js' ) ) {
 				poly.dataset.unit=u.id;
 				poly.dataset.action='select-unit-facade';
 				var t=document.createElementNS('http://www.w3.org/2000/svg','title');
-				t.textContent=selectedTitle(u)+' · '+unitText(u);
+				var tipMeta=unitSummaryText(u);
+				t.textContent=selectedTitle(u)+(tipMeta?' · '+tipMeta:'');
 				poly.appendChild(t);
 				poly.addEventListener('click',function(e){e.stopPropagation();if(Date.now()<suppressUnitClickUntil){e.preventDefault();return}selectUnit(u.id,'facade')});
 				poly.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();selectUnit(u.id,'facade-keyboard')}});
@@ -3099,7 +3101,13 @@ if ( ! function_exists( 'nadlan_p3d_inline_js' ) ) {
 				var b=document.createElement('button');
 				b.type='button';
 				b.className='nlp3d-unit-card nlp3d-status-'+u.status+(activeUnit&&u.id===activeUnit.id?' is-active':'')+(u.status==='sold'?' is-sold':'');
-				b.innerHTML='<strong>'+selectedTitle(u)+'</strong><span>'+unitText(u)+' · '+statusLabel(u.status)+'</span>';
+				var summaryText=unitSummaryText(u);
+				var unitTitle=document.createElement('strong');
+				unitTitle.textContent=selectedTitle(u)+(summaryText?' ·':'');
+				var unitMeta=document.createElement('span');
+				unitMeta.textContent=(summaryText?summaryText+' · ':'')+statusLabel(u.status);
+				b.appendChild(unitTitle);
+				b.appendChild(unitMeta);
 				b.dataset.unit=u.id;
 				b.dataset.action='select-unit-card';
 				b.addEventListener('click',function(){selectUnit(u.id,'card')});
@@ -3228,7 +3236,7 @@ if ( ! function_exists( 'nadlan_p3d_inline_js' ) ) {
 		}
 		function renderSelectionDock(){
 			if(!activeUnit){return}
-			var metaText=unitText(activeUnit);
+			var metaText=unitSummaryText(activeUnit);
 			if(dockTitle){dockTitle.textContent=selectedTitle(activeUnit)+(metaText?' ·':'')}
 			if(dockMeta){
 				dockMeta.textContent=(metaText?metaText+' · ':'')+statusLabel(activeUnit.status);
@@ -3256,9 +3264,9 @@ if ( ! function_exists( 'nadlan_p3d_inline_js' ) ) {
 			if(!hasStageSelection||stageCardDismissed){return}
 			stageCard.dataset.status=activeUnit.status||'available';
 			stageCard.dataset.recommended=isRecommendedUnit(activeUnit)?'1':'0';
-			if(stageCardTitle){stageCardTitle.textContent=selectedTitle(activeUnit)}
+			var metaText=unitSummaryText(activeUnit);
+			if(stageCardTitle){stageCardTitle.textContent=selectedTitle(activeUnit)+(metaText?' ·':'')}
 			if(stageCardMeta){
-				var metaText=unitText(activeUnit);
 				stageCardMeta.textContent=metaText||'פרטי דירה לפי בחירה';
 			}
 			if(stageCardTags){
@@ -3916,7 +3924,7 @@ add_action(
 			return;
 		}
 
-		wp_register_style( 'nadlan-p3d', '', array(), '1.69.12' );
+		wp_register_style( 'nadlan-p3d', '', array(), '1.69.13' );
 		wp_enqueue_style( 'nadlan-p3d' );
 		wp_add_inline_style( 'nadlan-p3d', nadlan_p3d_lovable_showroom_v1690_css() );
 
@@ -3927,7 +3935,7 @@ add_action(
 			wp_enqueue_script( 'nadlan-model-viewer' );
 		}
 
-		wp_register_script( 'nadlan-p3d', '', array(), '1.69.12', true );
+		wp_register_script( 'nadlan-p3d', '', array(), '1.69.13', true );
 		wp_enqueue_script( 'nadlan-p3d' );
 		wp_add_inline_script( 'nadlan-p3d', nadlan_p3d_inline_js( esc_url_raw( rest_url( 'nadlan/v1/lead' ) ) ) );
 	}
@@ -4331,6 +4339,7 @@ add_filter(
 			'mobile_marker_spread_v16910' => true,
 			'selection_dock_separator_v16911' => true,
 			'selection_dock_inline_separator_v16912' => true,
+			'selection_summary_text_v16913' => true,
 			'product_selector_v1641' => true,
 			'status_colored_unit_picks' => true,
 			'recommended_unit_pulse' => true,
