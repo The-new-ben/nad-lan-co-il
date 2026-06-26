@@ -8,6 +8,14 @@
       "ok": true
     },
     {
+      "name": "home_template_uses_pattern",
+      "ok": true
+    },
+    {
+      "name": "home_template_drops_query_loop",
+      "ok": true
+    },
+    {
       "name": "project_data_url",
       "ok": true
     },
@@ -45,6 +53,10 @@
     },
     {
       "name": "functions_detects_marker",
+      "ok": true
+    },
+    {
+      "name": "functions_detects_home_template",
       "ok": true
     },
     {

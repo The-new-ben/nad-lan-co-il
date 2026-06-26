@@ -86,19 +86,29 @@ add_action( 'wp_enqueue_scripts', 'nadlan_revenue_enqueue_styles' );
 
 if ( ! function_exists( 'nadlan_revenue_enqueue_project_showroom_assets' ) ) :
 	function nadlan_revenue_enqueue_project_showroom_assets() {
-		if ( is_admin() || ! is_singular() ) {
+		if ( is_admin() ) {
 			return;
 		}
 
 		$post = get_post();
-		if ( ! $post ) {
+		$content = $post ? (string) $post->post_content : '';
+		$template_has_home = false;
+
+		if ( is_front_page() || is_home() ) {
+			$home_template_path = get_parent_theme_file_path( 'templates/home.html' );
+			if ( file_exists( $home_template_path ) ) {
+				$home_template = (string) file_get_contents( $home_template_path );
+				$template_has_home = false !== strpos( $home_template, 'nadlan-revenue/nadlan-home-showroom' ) || false !== strpos( $home_template, 'data-nle-home-showroom' );
+			}
+		}
+
+		if ( ! is_singular() && ! $template_has_home ) {
 			return;
 		}
 
-		$content       = (string) $post->post_content;
 		$has_v1        = false !== strpos( $content, 'data-nlps-showroom' );
 		$has_v2        = false !== strpos( $content, 'data-nlv2-showroom' );
-		$has_home      = false !== strpos( $content, 'data-nle-home-showroom' );
+		$has_home      = false !== strpos( $content, 'data-nle-home-showroom' ) || $template_has_home;
 		$needs_model   = $has_v1 || $has_v2 || $has_home;
 
 		if ( ! $has_v1 && ! $has_v2 && ! $has_home ) {

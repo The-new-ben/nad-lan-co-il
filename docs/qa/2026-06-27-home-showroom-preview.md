@@ -60,6 +60,7 @@ Measured:
 - Minimum checked public tap target: 34px.
 - Failures: 0.
 - Pattern gate: PASS, `docs/qa/home-showroom-pattern-report.json`.
+- Homepage template placement gate: PASS. `templates/home.html` now uses `nadlan-revenue/nadlan-home-showroom` and no longer uses the default blog/query-loop patterns.
 - PHP lint: `patterns/nadlan-home-showroom.php` and `functions.php` clean.
 - JS syntax: `assets/js/nadlan-showroom-engine.js`, `scripts/qa-home-showroom-preview.mjs`, and `scripts/qa-home-showroom-pattern.mjs` clean.
 
@@ -79,4 +80,4 @@ The pattern is content-only. It does not duplicate the site header and it does n
 
 The engine reads project data from the pattern root via `data-nle-projects`, so the same project JSON remains the source of truth.
 
-The live homepage template is not changed in this slice. The next controlled step is to place `nadlan-revenue/nadlan-home-showroom` into `templates/home.html` or into the WordPress homepage body only after owner approval and another live-equivalent screenshot run.
+The branch homepage template is now changed to use `nadlan-revenue/nadlan-home-showroom` between the normal header and footer. This is not deployed live. The next controlled step before production is a live-equivalent WordPress render check after the branch is installed or previewed in WordPress.

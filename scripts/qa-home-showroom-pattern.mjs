@@ -18,11 +18,14 @@ const pattern = textOf(PATTERN);
 const publicBlock = pattern.split('<!-- wp:html -->')[1]?.split('<!-- /wp:html -->')[0] || pattern;
 const visibleBlock = publicBlock.replace(/<[^>]*>/g, ' ');
 const functions = textOf('functions.php');
+const homeTemplate = textOf('templates/home.html');
 const engineJs = textOf('assets/js/nadlan-showroom-engine.js');
 const homeCss = textOf('assets/css/nadlan-home-showroom.css');
 
 const checks = [
 	{ name: 'pattern_marker', ok: pattern.includes('data-nle-home-showroom') },
+	{ name: 'home_template_uses_pattern', ok: homeTemplate.includes('nadlan-revenue/nadlan-home-showroom') },
+	{ name: 'home_template_drops_query_loop', ok: !homeTemplate.includes('template-query-loop') && !homeTemplate.includes('hidden-blog-heading') },
 	{ name: 'project_data_url', ok: pattern.includes('assets/engine/projects.json') },
 	{ name: 'asset_base_url', ok: pattern.includes('data-nle-asset-base') },
 	{ name: 'one_h1', ok: count(pattern, '<h1 ') === 1 },
@@ -33,6 +36,7 @@ const checks = [
 	{ name: 'public_buyer_copy', ok: /דירה|דירות|פרויקט|פרויקטים|מחיר|אומדן|זמינות/.test(pattern) },
 	{ name: 'home_css_has_mobile_rules', ok: homeCss.includes('@media (max-width: 560px)') },
 	{ name: 'functions_detects_marker', ok: functions.includes("data-nle-home-showroom") },
+	{ name: 'functions_detects_home_template', ok: functions.includes("templates/home.html") && functions.includes("template_has_home") },
 	{ name: 'functions_enqueues_engine_css', ok: functions.includes("assets/css/nadlan-showroom-engine.css") },
 	{ name: 'functions_enqueues_home_css', ok: functions.includes("assets/css/nadlan-home-showroom.css") },
 	{ name: 'functions_enqueues_engine_js', ok: functions.includes("assets/js/nadlan-showroom-engine.js") },
