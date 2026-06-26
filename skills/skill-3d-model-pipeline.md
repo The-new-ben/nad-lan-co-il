@@ -487,6 +487,32 @@ closer to a retail product viewer, not a map decoration:
    a segmented BIM/GLB with a reviewed mesh map.
 7. If a contractor supplies only high-quality renders and no GLB, a 24-48 frame image sequence is
    an acceptable premium product-viewer fallback, stored on CDN/R2, not inside the plugin ZIP.
+
+## Facade Rebuild Discipline
+
+The facade selector is product-critical and must not be treated as a visual patch.
+
+Before changing a facade selector:
+
+1. Inspect the existing page visually at desktop, tablet and mobile.
+2. Identify whether there is already a facade/elevation selector, model-viewer hotspot layer,
+   legacy procedural selector or old overlay still active.
+3. Do not stack a new selector over an old one. One active apartment-picking surface only.
+4. If the correct fix is to replace the facade, ask the owner before the destructive rebuild and
+   state exactly what will be removed or disabled.
+5. The target standard is apartment cells on the building: SVG polygons, masks or aligned
+   rectangles tied to the facade/elevation image. Dots are not the default product.
+6. Each cell must expose status, selected state, focus state, accessible label and a 44px minimum
+   touch target.
+7. The selected-unit card must have a close control and must never permanently hide the cells,
+   especially on mobile.
+
+Research anchors:
+
+- DIGBY apartment selector: active clickable areas on a rendered property image.
+- UFO Engineering apartment selector: image masks, availability and booking.
+- Zillow/Homes.com/Matterport: selected unit should connect to floor plan, interior tour and
+  contact.
 8. Pixel streaming/cloud rendering is a future ultra-premium path only. It is not the default
    WordPress project factory because it adds cost, latency and operational complexity.
 

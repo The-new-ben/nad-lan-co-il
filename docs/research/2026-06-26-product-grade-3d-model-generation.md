@@ -63,6 +63,12 @@ For NadLan, "like Nike shoes" means:
 
 ### Real Estate Viewer Patterns
 
+- DIGBY's apartment selector uses active areas marked in perspective on a 3D rendered property
+  image; each apartment can expose floor plans, images and sales data.
+  Source: https://digby.hu/apartment-selector
+- UFO Engineering describes the same product pattern as a website widget with architecture project
+  images, building/apartment masks, availability and booking flow.
+  Source: https://ufo-engineering.com/cases/apartment-selector
 - Render Vision's apartment viewer frames the goal directly: buyers orbit the building, check window
   views and compare units across floors.
   Source: https://render-vision.com/services/3d-apartment-viewer-services/
@@ -137,6 +143,36 @@ Minimum model standard:
 - camera polar locked to a narrow range, no underside view;
 - close initial radius and narrow field of view;
 - no apartment picking in GLB unless the GLB has named apartment meshes or reviewed hotspots.
+
+### Facade Selector Standard, Now
+
+The facade is not a fallback decoration. It is the exact apartment-picking surface until the GLB is
+segmented.
+
+Research pattern:
+
+- DIGBY: clickable active areas on a rendered property image, with uploaded floor plans, images and
+  sales data.
+- UFO Engineering: masks over architecture/project/building/apartment imagery, with availability
+  and booking.
+- Zillow/Homes.com/Matterport: after selection, the buyer needs interior tour/floor-plan context,
+  not only a marker.
+
+NadLan rule:
+
+1. Do not stack a new facade on top of an old facade. There must be one active selector surface in
+   the page at a time.
+2. If a rebuild is needed, remove or disable the old selector first and ask the owner before making
+   a destructive facade replacement.
+3. Apartment cells should be real polygons/masks or aligned rectangles on the building image, not
+   floating dots.
+4. Each cell needs visible availability state, a comfortable hit area, keyboard/focus access and a
+   selected state.
+5. The selected card must be dismissible and must not permanently cover the facade on mobile or
+   desktop.
+6. The facade image/masks should come from official elevation/render material when available. If
+   generated, label it illustrative and make the URL replaceable in CMS.
+7. The selected unit must carry through to drawings, interior tour, view-from-apartment and contact.
 
 ### Path B: 360 Image Sequence, Optional Premium Fallback
 
