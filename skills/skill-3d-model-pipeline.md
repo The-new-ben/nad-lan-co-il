@@ -381,3 +381,21 @@ internal words such as lead, funnel, CRM, owner routing, automation, or monetiza
 Publishing requirement: when owner routing matters, publish the page as a real `nadlan_project`
 post or pass a valid `data-nlps-card-id`, so the shared lead endpoint can attribute the inquiry
 to the selected project.
+
+## Ashira V2 Clean Contract Lesson
+
+If a project showroom becomes hard to reason about because previous slices stacked CSS and runtime
+patches, freeze that path and create a clean contract instead of trying to rescue the cascade.
+
+Ashira v2 uses:
+
+- `.nlv2-showroom` as the only root;
+- `.nlv2-*` classes only;
+- `data-nlv2-*` runtime attributes only;
+- a generated or official bitmap facade for apartment cells;
+- a GLB/model-viewer context model beside the facade;
+- a selected-apartment card below the scene, not floating over the facade;
+- Chrome screenshot proof at desktop, tablet and mobile before merge.
+
+Never mix `.nlps` or `.nlp3d` selectors into this v2 layer. If another project needs the same
+standard, clone the v2 contract and replace the asset folder, payload and public copy.

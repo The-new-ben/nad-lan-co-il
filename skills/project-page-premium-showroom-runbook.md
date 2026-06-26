@@ -315,3 +315,21 @@ Minimum for a prototype:
 4. Prototype interiors must be marked illustrative until contractor-approved assets arrive.
 5. The lead payload must keep the selected unit id/title/floor/rooms/sqm/status so the contractor
    knows which apartment the buyer explored.
+
+## M. Clean V2 Reset Rule
+
+When a project page has accumulated stacked showroom CSS, do not add another override layer. Start a
+clean v2 contract:
+
+1. Use a new root such as `.nlv2-showroom` and only `.nlv2-*` selectors.
+2. Use only `data-nlv2-*` attributes for the new runtime.
+3. Do not add `.nlps`, `.nlp3d`, old compatibility selectors, or `!important` patches to v2.
+4. Enqueue old and new assets by content marker:
+   - old pages with `data-nlps-showroom` load old assets only;
+   - v2 pages with `data-nlv2-showroom` load v2 assets only.
+5. Keep the rotating GLB as the context surface until official per-apartment BIM exists.
+6. Keep the facade/elevation image as the apartment-picking surface.
+7. Prove v2 with screenshots at 1440, 768 and 390 before any live import.
+
+The Ashira clean v2 proof lives in
+`docs/qa/2026-06-26-ashira-v2-clean-preview.md`.

@@ -91,38 +91,85 @@ if ( ! function_exists( 'nadlan_revenue_enqueue_project_showroom_assets' ) ) :
 		}
 
 		$post = get_post();
-		if ( ! $post || false === strpos( (string) $post->post_content, 'data-nlps-showroom' ) ) {
+		if ( ! $post ) {
 			return;
 		}
 
-		$showroom_path = get_parent_theme_file_path( 'assets/css/nadlan-project-showroom.css' );
-		if ( file_exists( $showroom_path ) ) {
-			wp_enqueue_style(
-				'nadlan-project-showroom',
-				get_parent_theme_file_uri( 'assets/css/nadlan-project-showroom.css' ),
-				array( 'nadlan-revenue-style' ),
-				(string) filemtime( $showroom_path )
-			);
+		$content       = (string) $post->post_content;
+		$has_v1        = false !== strpos( $content, 'data-nlps-showroom' );
+		$has_v2        = false !== strpos( $content, 'data-nlv2-showroom' );
+		$needs_model   = $has_v1 || $has_v2;
+
+		if ( ! $has_v1 && ! $has_v2 ) {
+			return;
 		}
 
-		if ( ! wp_script_is( 'nadlan-model-viewer', 'registered' ) ) {
-			wp_register_script( 'nadlan-model-viewer', 'https://ajax.googleapis.com/ajax/libs/model-viewer/4.3.1/model-viewer.min.js', array(), '4.3.1', true );
+		if ( $has_v1 ) {
+			$showroom_path = get_parent_theme_file_path( 'assets/css/nadlan-project-showroom.css' );
+			if ( file_exists( $showroom_path ) ) {
+				wp_enqueue_style(
+					'nadlan-project-showroom',
+					get_parent_theme_file_uri( 'assets/css/nadlan-project-showroom.css' ),
+					array( 'nadlan-revenue-style' ),
+					(string) filemtime( $showroom_path )
+				);
+			}
 		}
-		wp_enqueue_script( 'nadlan-model-viewer' );
 
-		$script_path = get_parent_theme_file_path( 'assets/js/nadlan-project-showroom.js' );
-		if ( file_exists( $script_path ) ) {
-			wp_enqueue_script(
-				'nadlan-project-showroom',
-				get_parent_theme_file_uri( 'assets/js/nadlan-project-showroom.js' ),
-				array(),
-				(string) filemtime( $script_path ),
-				true
-			);
+		if ( $has_v2 ) {
+			$showroom_v2_path = get_parent_theme_file_path( 'assets/css/nadlan-showroom-v2.css' );
+			if ( file_exists( $showroom_v2_path ) ) {
+				wp_enqueue_style(
+					'nadlan-showroom-v2',
+					get_parent_theme_file_uri( 'assets/css/nadlan-showroom-v2.css' ),
+					array( 'nadlan-revenue-style' ),
+					(string) filemtime( $showroom_v2_path )
+				);
+			}
+		}
+
+		if ( $needs_model ) {
+			if ( ! wp_script_is( 'nadlan-model-viewer', 'registered' ) ) {
+				wp_register_script( 'nadlan-model-viewer', 'https://ajax.googleapis.com/ajax/libs/model-viewer/4.3.1/model-viewer.min.js', array(), '4.3.1', true );
+			}
+			wp_enqueue_script( 'nadlan-model-viewer' );
+		}
+
+		if ( $has_v1 ) {
+			$script_path = get_parent_theme_file_path( 'assets/js/nadlan-project-showroom.js' );
+			if ( file_exists( $script_path ) ) {
+				wp_enqueue_script(
+					'nadlan-project-showroom',
+					get_parent_theme_file_uri( 'assets/js/nadlan-project-showroom.js' ),
+					array(),
+					(string) filemtime( $script_path ),
+					true
+				);
+			}
+		}
+
+		if ( $has_v2 ) {
+			$script_v2_path = get_parent_theme_file_path( 'assets/js/nadlan-showroom-v2.js' );
+			if ( file_exists( $script_v2_path ) ) {
+				wp_enqueue_script(
+					'nadlan-showroom-v2',
+					get_parent_theme_file_uri( 'assets/js/nadlan-showroom-v2.js' ),
+					array(),
+					(string) filemtime( $script_v2_path ),
+					true
+				);
+			}
 		}
 	}
 endif;
 add_action( 'wp_enqueue_scripts', 'nadlan_revenue_enqueue_project_showroom_assets', 20 );
+
+/*
+	Legacy showroom asset order retained above:
+	- data-nlps-showroom loads only the old nlps assets.
+	- data-nlv2-showroom loads only the clean nlv2 assets.
+	Do not add compatibility selectors between the two systems.
+*/
 
 add_filter(
 	'script_loader_tag',

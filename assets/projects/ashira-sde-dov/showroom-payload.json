@@ -1,0 +1,72 @@
+{
+  "$schema": "docs/templates/project-showroom-payload.schema.json",
+  "schema": "nadlan-project-showroom-payload/v2-clean",
+  "project_slug": "ashira-sde-dov",
+  "public_use_policy": "Prototype data for a clean v2 showroom. Replace all visuals, inventory and pricing with approved developer material before public commercial use.",
+  "assets": {
+    "hero": "assets/projects/ashira-sde-dov/ashira-hero-concept.jpg",
+    "facade": "assets/projects/ashira-sde-dov/ashira-facade-concept.jpg",
+    "model_glb": "assets/projects/ashira-sde-dov/model-prototype.glb"
+  },
+  "units": [
+    {
+      "id": "ashira-18-west",
+      "label": "18W",
+      "title": "דירה 18 מערב · 5 חד׳",
+      "floor": 18,
+      "rooms": 5,
+      "sqm": 132,
+      "view": "ים ורידינג",
+      "status": "available",
+      "status_label": "זמינה לפנייה",
+      "price_estimate": "אומדן לפי פנייה",
+      "facade_position": {
+        "x_percent": 42,
+        "y_percent": 38
+      }
+    },
+    {
+      "id": "ashira-14-city",
+      "label": "14C",
+      "title": "דירה 14 עיר · 4 חד׳",
+      "floor": 14,
+      "rooms": 4,
+      "sqm": 104,
+      "view": "רובע שדה דב",
+      "status": "available",
+      "status_label": "זמינה לפנייה",
+      "price_estimate": "אומדן לפי פנייה",
+      "facade_position": {
+        "x_percent": 58,
+        "y_percent": 48
+      }
+    },
+    {
+      "id": "ashira-10-corner",
+      "label": "10P",
+      "title": "דירה 10 פינתית · 4 חד׳",
+      "floor": 10,
+      "rooms": 4,
+      "sqm": 118,
+      "view": "ים וחצר",
+      "status": "reserved",
+      "status_label": "בבדיקת זמינות",
+      "price_estimate": "אומדן לפי פנייה",
+      "facade_position": {
+        "x_percent": 32,
+        "y_percent": 58
+      }
+    }
+  ],
+  "cms_fields_needed": [
+    "project hero image",
+    "project facade image",
+    "project GLB model",
+    "unit inventory",
+    "unit facade positions",
+    "unit plans",
+    "unit interior tour",
+    "unit view media",
+    "project contact details"
+  ]
+}
