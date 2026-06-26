@@ -16,15 +16,16 @@ $asset_base = trailingslashit( get_template_directory_uri() ) . 'assets/projects
 <main class="nlps-showroom-page nlps-showroom-ashira" data-nlps-showroom data-nlps-project-title="Ashira שדה דב" data-nlps-endpoint="<?php echo esc_url( rest_url( 'nadlan/v1/lead' ) ); ?>">
 	<p class="nlps-breadcrumbs">NadLan / פרויקטים / Ashira שדה דב</p>
 
-	<figure class="nlps-poster">
-		<img src="<?php echo esc_url( $asset_base . 'poster-prototype.svg' ); ?>" alt="Ashira שדה דב בתל אביב - הדמיית פרויקט עם אפשרות תלת מימד ובחירת דירה">
-		<figcaption><strong>Ashira שדה דב</strong><span>הדמיה מקורית להמחשה, לא חומר רשמי</span></figcaption>
-	</figure>
-
-	<section class="nlps-intro" aria-labelledby="nlps-ashira-title">
-		<span class="nlps-eyebrow">פרויקט חדש ברובע שדה דב</span>
-		<h1 id="nlps-ashira-title">דירות למכירה ב-Ashira שדה דב</h1>
-		<p>Ashira שדה דב הוא פרויקט מגורים של אביסרור בצפון תל אביב, בסביבה שמחברת חוף, פארק, מסחר ותכנון עירוני חדש. כאן אפשר לראות מודל תלת ממדי להמחשה, לבחור דירה על חזית קבועה, לבדוק כיוון, קומה, שטח ואומדן מחיר, ואז לפנות עם הדירה שנבחרה.</p>
+	<section class="nlps-opener" aria-labelledby="nlps-ashira-title">
+		<div class="nlps-intro">
+			<span class="nlps-eyebrow">פרויקט חדש ברובע שדה דב</span>
+			<h1 id="nlps-ashira-title">דירות למכירה ב-Ashira שדה דב</h1>
+			<p>Ashira שדה דב הוא פרויקט מגורים של אביסרור בצפון תל אביב, בסביבה שמחברת חוף, פארק, מסחר ותכנון עירוני חדש. ראו את סביבת הפרויקט במודל תלת ממדי, בחרו דירה על חזית קבועה, בדקו כיוון, קומה, שטח ואומדן מחיר, ואז פנו עם הדירה שנבחרה.</p>
+		</div>
+		<figure class="nlps-poster">
+			<img src="<?php echo esc_url( $asset_base . 'poster-prototype.svg' ); ?>" alt="Ashira שדה דב בתל אביב - הדמיית פרויקט עם אפשרות תלת מימד ובחירת דירה">
+			<figcaption><strong>Ashira שדה דב</strong><span>הדמיה מקורית להמחשה, לא חומר רשמי</span></figcaption>
+		</figure>
 	</section>
 
 	<section class="nlps-shell" aria-labelledby="nlps-ashira-showroom-title">

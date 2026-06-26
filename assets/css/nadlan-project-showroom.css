@@ -22,6 +22,14 @@
 	overflow-wrap: anywhere;
 }
 
+.nlps-opener {
+	display: grid;
+	grid-template-columns: minmax(0, .92fr) minmax(320px, 1.08fr);
+	gap: 18px;
+	align-items: stretch;
+	margin: 0 0 18px;
+}
+
 .nlps-poster {
 	position: relative;
 	margin: 0;
@@ -35,7 +43,7 @@
 .nlps-poster img {
 	display: block;
 	width: 100%;
-	aspect-ratio: 16 / 9;
+	height: clamp(190px, 22vw, 278px);
 	object-fit: cover;
 }
 
@@ -58,9 +66,17 @@
 }
 
 .nlps-intro {
-	width: min(900px, 100%);
-	margin: 24px auto 18px;
-	text-align: center;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	width: 100%;
+	margin: 0;
+	padding: clamp(18px, 3.2vw, 34px);
+	border: 1px solid rgba(95, 73, 34, .13);
+	border-radius: 16px;
+	background: #fffdf8;
+	box-shadow: 0 18px 46px rgba(26, 23, 17, .08);
+	text-align: right;
 }
 
 .nlps-eyebrow {
@@ -81,7 +97,7 @@
 
 .nlps-intro p {
 	max-width: 820px;
-	margin: 0 auto;
+	margin: 0;
 	color: #3f413a;
 	font-size: clamp(16px, 1.75vw, 19px);
 	line-height: 1.7;
@@ -89,7 +105,7 @@
 
 .nlps-shell {
 	width: 100%;
-	margin: 26px 0;
+	margin: 18px 0 26px;
 	overflow: hidden;
 	border: 1px solid rgba(242, 223, 167, .28);
 	border-radius: 18px;
@@ -609,6 +625,9 @@
 }
 
 @media (max-width: 900px) {
+	.nlps-opener {
+		grid-template-columns: minmax(0, 1fr);
+	}
 	.nlps-head { display: block; }
 	.nlps-legend { margin-top: 12px; }
 	.nlps-grid {
@@ -618,6 +637,7 @@
 	.nlps-stage { grid-template-rows: minmax(280px, 44vh) auto; }
 	.nlps-tabs { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 	.nlps-resource-grid { grid-template-columns: 1fr; }
+	.nlps-poster img { height: clamp(160px, 36vw, 240px); }
 	.nlps-poster figcaption {
 		position: static;
 		border: 0;
@@ -634,6 +654,7 @@
 	}
 	.nlps-poster,
 	.nlps-intro,
+	.nlps-opener,
 	.nlps-shell,
 	.nlps-content {
 		width: calc(100vw - 18px);
@@ -651,9 +672,12 @@
 		overflow-x: hidden;
 	}
 	.nlps-poster { border-radius: 13px; }
-	.nlps-poster img { object-fit: contain; background: #062828; }
+	.nlps-poster img { height: 154px; object-fit: cover; background: #062828; }
 	.nlps-poster figcaption { display: grid; gap: 4px; font-size: 12px; }
-	.nlps-intro { margin-top: 18px; }
+	.nlps-intro {
+		margin-top: 0;
+		padding: 16px;
+	}
 	.nlps-intro h1,
 	.nlps-intro h2 { font-size: 24px; line-height: 1.18; }
 	.nlps-intro p { font-size: 15px; }

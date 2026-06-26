@@ -57,6 +57,17 @@ node scripts/qa-ashira-preview.mjs
 - Mobile: `docs/qa/screenshots/ashira-showroom-factory-2026-06-26/mobile-390.png`
 - Interaction: `docs/qa/screenshots/ashira-showroom-factory-2026-06-26/desktop-clicked-15-02.png`
 
+## Hierarchy Gate
+
+The opener was compacted after visual QA showed the poster could consume the first viewport.
+
+- Desktop: one H1, document width 1440 on a 1440 viewport, showroom starts around 497px.
+- Tablet: one H1, document width 768 on a 768 viewport, showroom starts around 614px.
+- Mobile: one H1, document width 390 on a 390 viewport, showroom starts around 555px.
+
+This keeps project context and the first paragraph visible, but moves the actual model/facade
+selector into the first reading screen.
+
 ## Findings
 
 - PASS: Schema payload validates with 5 prototype units and 3 material slots.
