@@ -4,7 +4,7 @@
  * Slug: nadlan-revenue/footer
  * Categories: footer
  * Block Types: core/template-part/footer
- * Description: Footer columns with logo, title, tagline and links.
+ * Description: Premium NadLan footer with buyer paths, area guides, tools, professionals and legal links.
  *
  * @package WordPress
  * @subpackage NadLan_Revenue
@@ -12,82 +12,62 @@
  */
 
 ?>
-<!-- wp:group {"style":{"spacing":{"padding":{"top":"var:preset|spacing|60","bottom":"var:preset|spacing|50"}}},"layout":{"type":"constrained"}} -->
-<div class="wp-block-group" style="padding-top:var(--wp--preset--spacing--60);padding-bottom:var(--wp--preset--spacing--50)">
-	<!-- wp:group {"align":"wide","layout":{"type":"default"}} -->
-	<div class="wp-block-group alignwide">
-		<!-- wp:site-logo /-->
+<!-- wp:html -->
+<footer class="nl-site-footer" dir="rtl">
+	<div class="nl-site-footer-grid">
+		<section class="nl-site-footer-brand" aria-label="NadLan">
+			<a class="nl-site-brand is-footer" href="/" aria-label="NadLan">
+				<span class="nl-site-mark" aria-hidden="true">N</span>
+				<span>
+					<strong>NadLan</strong>
+					<small>בודקים דירה, פרויקט וסביבה לפני החלטה</small>
+				</span>
+			</a>
+			<p>מידע על דירות, פרויקטים, שכונות, מחירים, מסמכים ואנשי מקצוע בישראל. הנתונים באתר נועדו לסייע בבדיקה ראשונית, ויש לאמת מחיר, זמינות ומסמכים מול הגורם הרלוונטי.</p>
+		</section>
 
-		<!-- wp:group {"align":"full","layout":{"type":"flex","flexWrap":"wrap","justifyContent":"space-between","verticalAlignment":"top"}} -->
-		<div class="wp-block-group alignfull">
-			<!-- wp:columns -->
-			<div class="wp-block-columns">
-				<!-- wp:column {"width":"100%"} -->
-				<div class="wp-block-column" style="flex-basis:100%"><!-- wp:site-title {"level":2} /-->
+		<nav aria-label="קנייה והשוואה">
+			<strong>קנייה והשוואה</strong>
+			<a href="/projects/">פרויקטים חדשים</a>
+			<a href="/properties/">דירות ונכסים</a>
+			<a href="/buying-apartment/">מדריך קניית דירה</a>
+			<a href="/investment-apartment/">דירה להשקעה</a>
+			<a href="/property-value/">בדיקת שווי נכס</a>
+		</nav>
 
-				<!-- wp:site-tagline /-->
-				</div>
-				<!-- /wp:column -->
+		<nav aria-label="אזורים ומידע">
+			<strong>אזורים ומידע</strong>
+			<a href="/sde-dov/">רובע שדה דב</a>
+			<a href="/urban-renewal/">התחדשות עירונית</a>
+			<a href="/cities/">ערים ושכונות</a>
+			<a href="/glossary/">מילון נדל"ן</a>
+			<a href="/new-projects/">פרויקטים לפי אזור</a>
+		</nav>
 
-				<!-- wp:column {"width":""} -->
-				<div class="wp-block-column">
-					<!-- wp:spacer {"height":"var:preset|spacing|40","width":"0px"} -->
-					<div style="height:var(--wp--preset--spacing--40);width:0px" aria-hidden="true" class="wp-block-spacer"></div>
-					<!-- /wp:spacer -->
-				</div>
-				<!-- /wp:column -->
-			</div>
-			<!-- /wp:columns -->
+		<nav aria-label="בדיקות וכלים">
+			<strong>בדיקות וכלים</strong>
+			<a href="/mortgage/">משכנתא</a>
+			<a href="/purchase-tax/">מס רכישה</a>
+			<a href="/real-estate-lawyer/">בדיקה משפטית</a>
+			<a href="/professionals/">אנשי מקצוע</a>
+			<a href="/contact/">יצירת קשר</a>
+		</nav>
 
-			<!-- wp:group {"style":{"spacing":{"blockGap":"var:preset|spacing|80"}},"layout":{"type":"flex","flexWrap":"wrap","verticalAlignment":"top","justifyContent":"space-between"}} -->
-			<div class="wp-block-group">
-				<!-- wp:navigation {"overlayMenu":"never","layout":{"type":"flex","orientation":"vertical"}} -->
-					<!-- wp:navigation-link {"label":"<?php esc_html_e( 'Blog', 'nadlan-revenue' ); ?>","url":"#"} /-->
-
-					<!-- wp:navigation-link {"label":"<?php esc_html_e( 'About', 'nadlan-revenue' ); ?>","url":"#"} /-->
-
-					<!-- wp:navigation-link {"label":"<?php esc_html_e( 'FAQs', 'nadlan-revenue' ); ?>","url":"#"} /-->
-
-					<!-- wp:navigation-link {"label":"<?php esc_html_e( 'Authors', 'nadlan-revenue' ); ?>","url":"#"} /-->
-				<!-- /wp:navigation -->
-
-				<!-- wp:navigation {"overlayMenu":"never","layout":{"type":"flex","orientation":"vertical"}} -->
-					<!-- wp:navigation-link {"label":"<?php esc_html_e( 'Events', 'nadlan-revenue' ); ?>","url":"#"} /-->
-
-					<!-- wp:navigation-link {"label":"<?php esc_html_e( 'Shop', 'nadlan-revenue' ); ?>","url":"#"} /-->
-
-					<!-- wp:navigation-link {"label":"<?php esc_html_e( 'Patterns', 'nadlan-revenue' ); ?>","url":"#"} /-->
-
-					<!-- wp:navigation-link {"label":"<?php esc_html_e( 'Themes', 'nadlan-revenue' ); ?>","url":"#"} /-->
-				<!-- /wp:navigation -->
-			</div>
-				<!-- /wp:group -->
-		</div>
-		<!-- /wp:group -->
-
-		<!-- wp:spacer {"height":"var:preset|spacing|70"} -->
-		<div style="height:var(--wp--preset--spacing--70)" aria-hidden="true" class="wp-block-spacer"></div>
-		<!-- /wp:spacer -->
-
-		<!-- wp:group {"align":"full","style":{"spacing":{"blockGap":"var:preset|spacing|20"}},"layout":{"type":"flex","flexWrap":"wrap","justifyContent":"space-between"}} -->
-		<div class="wp-block-group alignfull">
-			<!-- wp:paragraph {"fontSize":"small"} -->
-			<p class="has-small-font-size"><?php esc_html_e( 'NadLan Revenue', 'nadlan-revenue' ); ?></p>
-			<!-- /wp:paragraph -->
-			<!-- wp:paragraph {"fontSize":"small"} -->
-			<p class="has-small-font-size">
-				<?php
-				printf(
-					/* translators: Designed with WordPress. %s: WordPress link. */
-					esc_html__( 'Designed with %s', 'nadlan-revenue' ),
-					'<a href="' . esc_url( __( 'https://wordpress.org', 'nadlan-revenue' ) ) . '" rel="nofollow">WordPress</a>'
-				);
-				?>
-			</p>
-			<!-- /wp:paragraph -->
-		</div>
-		<!-- /wp:group -->
+		<nav aria-label="שפות ומסמכים">
+			<strong>שפות ומסמכים</strong>
+			<a href="/#english">English</a>
+			<a href="/#french">Français</a>
+			<a href="/#russian">Русский</a>
+			<a href="/#arabic">العربية</a>
+			<a href="/accessibility/">נגישות</a>
+			<a href="/privacy-policy/">פרטיות</a>
+			<a href="/terms/">תנאי שימוש</a>
+		</nav>
 	</div>
-	<!-- /wp:group -->
-</div>
-<!-- /wp:group -->
+
+	<div class="nl-site-footer-bottom">
+		<span>© NadLan</span>
+		<span>המידע באתר כללי בלבד ואינו ייעוץ משפטי, שמאי או פיננסי.</span>
+	</div>
+</footer>
+<!-- /wp:html -->

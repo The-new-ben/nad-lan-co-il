@@ -78,7 +78,12 @@ async function measure(page) {
 			'.nlh-home-languages a',
 			'.nlh-home-languages span',
 			'.nle-nav a',
-			'.nle-langs span'
+			'.nle-langs span',
+			'.nl-site-nav a',
+			'.nl-site-link',
+			'.nl-site-cta',
+			'.nl-site-lang a',
+			'.nl-site-footer a'
 		].join(',');
 		const targetRows = [...document.querySelectorAll(publicTargetSelector)].map((el) => {
 			const r = el.getBoundingClientRect();
@@ -94,9 +99,23 @@ async function measure(page) {
 		const tapSizes = targetRows.map((row) => row.min);
 		const catalog = rect('#projects');
 		const showroom = rect('#showroom');
+		const defaultChromeWords = [
+			'Blog',
+			'About',
+			'FAQs',
+			'Authors',
+			'Events',
+			'Shop',
+			'Patterns',
+			'Themes',
+			'Designed with WordPress',
+			'NadLan Revenue'
+		];
 		return {
 			title: document.title,
 			h1s: [...document.querySelectorAll('h1')].map((h) => h.textContent.trim()),
+			headerRoutes: document.querySelectorAll('.nl-site-nav a').length,
+			footerLinks: document.querySelectorAll('.nl-site-footer a').length,
 			languageEntries: document.querySelectorAll('.nlh-home-languages a, .nlh-home-languages span, .nle-langs span').length,
 			languageTargets: ['english', 'french', 'russian', 'arabic'].filter((id) => document.getElementById(id)).length,
 			buyerPathCards: document.querySelectorAll('.nlh-home-paths article').length,
@@ -113,6 +132,7 @@ async function measure(page) {
 			hasBuyerWords: /(דירה|דירות|פרויקט|פרויקטים|מחיר|אומדן|זמינות)/.test(visibleText),
 			hasMojibake: /Ã|�|×[^\s]*×/.test(visibleText),
 			hasInternalWords: /(SEO|CMS|CRM|lead|leads|engine|template|prototype|project manager|supplier|contractor|internal|strategy|factory|fallback|placeholder|mock|monetization|פאנל|מנוע|תבנית|לידים|משפך|מוניטיז|אסטרטג|מקום שמור|פרויקטים לבדיקה)/i.test(visibleText),
+			hasDefaultChromeWords: defaultChromeWords.some((word) => visibleText.includes(word)),
 			catalog,
 			showroom
 		};
@@ -123,6 +143,8 @@ function failuresFor(viewName, before, after, errors, viewportHeight) {
 	const failures = [];
 	if (errors.length) failures.push(`${viewName}: console/page errors: ${errors.join(' | ')}`);
 	if (before.h1s.length !== 1) failures.push(`${viewName}: expected one H1, got ${before.h1s.length}`);
+	if (before.headerRoutes < 7) failures.push(`${viewName}: expected at least 7 real-estate header routes`);
+	if (before.footerLinks < 20) failures.push(`${viewName}: expected at least 20 footer links`);
 	if (before.languageEntries < 5) failures.push(`${viewName}: expected at least 5 language entries`);
 	if (before.languageTargets < 4) failures.push(`${viewName}: expected four language target cards`);
 	if (before.buyerPathCards < 4) failures.push(`${viewName}: expected four buyer path cards`);
@@ -137,6 +159,7 @@ function failuresFor(viewName, before, after, errors, viewportHeight) {
 	if (!before.hasBuyerWords) failures.push(`${viewName}: buyer/project words missing`);
 	if (before.hasMojibake || after.hasMojibake) failures.push(`${viewName}: mojibake detected`);
 	if (before.hasInternalWords || after.hasInternalWords) failures.push(`${viewName}: public internal wording detected`);
+	if (before.hasDefaultChromeWords || after.hasDefaultChromeWords) failures.push(`${viewName}: default theme chrome wording detected`);
 	if (!before.catalog || before.catalog.y > viewportHeight) failures.push(`${viewName}: project section is not above the first viewport`);
 	if (viewName === 'desktop-1440' && (!before.showroom || before.showroom.y > viewportHeight * 1.55)) failures.push(`${viewName}: showroom starts too low for homepage flow`);
 	return failures;

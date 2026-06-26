@@ -10,7 +10,9 @@
         "h1s": [
           "בודקים פרויקט, דירה וסביבה לפני שמתקדמים."
         ],
-        "languageEntries": 10,
+        "headerRoutes": 7,
+        "footerLinks": 23,
+        "languageEntries": 5,
         "languageTargets": 4,
         "buyerPathCards": 4,
         "projectCards": 3,
@@ -26,21 +28,22 @@
         "hasBuyerWords": true,
         "hasMojibake": false,
         "hasInternalWords": false,
+        "hasDefaultChromeWords": false,
         "catalog": {
           "x": 80,
-          "y": 672.9375,
+          "y": 677.9375,
           "width": 1280,
-          "height": 511.28125,
+          "height": 513.28125,
           "right": 1360,
-          "bottom": 1184.21875
+          "bottom": 1191.21875
         },
         "showroom": {
           "x": 80,
-          "y": 1280.21875,
+          "y": 1287.21875,
           "width": 1280,
-          "height": 1016.375,
+          "height": 1010.375,
           "right": 1360,
-          "bottom": 2296.59375
+          "bottom": 2297.59375
         }
       },
       "after": {
@@ -48,7 +51,9 @@
         "h1s": [
           "בודקים פרויקט, דירה וסביבה לפני שמתקדמים."
         ],
-        "languageEntries": 10,
+        "headerRoutes": 7,
+        "footerLinks": 23,
+        "languageEntries": 5,
         "languageTargets": 4,
         "buyerPathCards": 4,
         "projectCards": 3,
@@ -64,21 +69,22 @@
         "hasBuyerWords": true,
         "hasMojibake": false,
         "hasInternalWords": false,
+        "hasDefaultChromeWords": false,
         "catalog": {
           "x": 80,
-          "y": -599.0625,
+          "y": -597.0625,
           "width": 1280,
-          "height": 511.28125,
+          "height": 513.28125,
           "right": 1360,
-          "bottom": -87.78125
+          "bottom": -83.78125
         },
         "showroom": {
           "x": 80,
-          "y": 8.21875,
+          "y": 12.21875,
           "width": 1280,
-          "height": 993.375,
+          "height": 988.375,
           "right": 1360,
-          "bottom": 1001.59375
+          "bottom": 1000.59375
         }
       },
       "failures": []
@@ -90,7 +96,9 @@
         "h1s": [
           "בודקים פרויקט, דירה וסביבה לפני שמתקדמים."
         ],
-        "languageEntries": 10,
+        "headerRoutes": 7,
+        "footerLinks": 23,
+        "languageEntries": 5,
         "languageTargets": 4,
         "buyerPathCards": 4,
         "projectCards": 3,
@@ -106,21 +114,22 @@
         "hasBuyerWords": true,
         "hasMojibake": false,
         "hasInternalWords": false,
+        "hasDefaultChromeWords": false,
         "catalog": {
           "x": 16,
-          "y": 709.21875,
+          "y": 827.96875,
           "width": 736,
-          "height": 1745.46875,
+          "height": 1751.46875,
           "right": 752,
-          "bottom": 2454.6875
+          "bottom": 2579.4375
         },
         "showroom": {
           "x": 16,
-          "y": 2592.6875,
+          "y": 2717.4375,
           "width": 736,
-          "height": 1487.5,
+          "height": 1482.5,
           "right": 752,
-          "bottom": 4080.1875
+          "bottom": 4199.9375
         }
       },
       "after": {
@@ -128,7 +137,9 @@
         "h1s": [
           "בודקים פרויקט, דירה וסביבה לפני שמתקדמים."
         ],
-        "languageEntries": 10,
+        "headerRoutes": 7,
+        "footerLinks": 23,
+        "languageEntries": 5,
         "languageTargets": 4,
         "buyerPathCards": 4,
         "projectCards": 3,
@@ -144,21 +155,22 @@
         "hasBuyerWords": true,
         "hasMojibake": false,
         "hasInternalWords": false,
+        "hasDefaultChromeWords": false,
         "catalog": {
           "x": 16,
-          "y": -2440.78125,
+          "y": -2443.03125,
           "width": 736,
-          "height": 1745.46875,
+          "height": 1751.46875,
           "right": 752,
-          "bottom": -695.3125
+          "bottom": -691.5625
         },
         "showroom": {
           "x": 16,
-          "y": -557.3125,
+          "y": -553.5625,
           "width": 736,
-          "height": 1487.5,
+          "height": 1482.5,
           "right": 752,
-          "bottom": 930.1875
+          "bottom": 928.9375
         }
       },
       "failures": []
@@ -170,7 +182,9 @@
         "h1s": [
           "בודקים פרויקט, דירה וסביבה לפני שמתקדמים."
         ],
-        "languageEntries": 10,
+        "headerRoutes": 7,
+        "footerLinks": 23,
+        "languageEntries": 5,
         "languageTargets": 4,
         "buyerPathCards": 4,
         "projectCards": 3,
@@ -186,21 +200,22 @@
         "hasBuyerWords": true,
         "hasMojibake": false,
         "hasInternalWords": false,
+        "hasDefaultChromeWords": false,
         "catalog": {
           "x": 10,
-          "y": 863.21875,
+          "y": 757.25,
           "width": 370,
-          "height": 1155.390625,
+          "height": 1161.390625,
           "right": 380,
-          "bottom": 2018.609375
+          "bottom": 1918.640625
         },
         "showroom": {
           "x": 10,
-          "y": 2225.609375,
+          "y": 2124.640625,
           "width": 370,
-          "height": 1615.6875,
+          "height": 1609.6875,
           "right": 380,
-          "bottom": 3841.296875
+          "bottom": 3734.328125
         }
       },
       "after": {
@@ -208,7 +223,9 @@
         "h1s": [
           "בודקים פרויקט, דירה וסביבה לפני שמתקדמים."
         ],
-        "languageEntries": 10,
+        "headerRoutes": 7,
+        "footerLinks": 23,
+        "languageEntries": 5,
         "languageTargets": 4,
         "buyerPathCards": 4,
         "projectCards": 3,
@@ -224,21 +241,22 @@
         "hasBuyerWords": true,
         "hasMojibake": false,
         "hasInternalWords": false,
+        "hasDefaultChromeWords": false,
         "catalog": {
           "x": 10,
-          "y": -2100.78125,
+          "y": -2088.75,
           "width": 370,
-          "height": 1155.390625,
+          "height": 1161.390625,
           "right": 380,
-          "bottom": -945.390625
+          "bottom": -927.359375
         },
         "showroom": {
           "x": 10,
-          "y": -738.390625,
+          "y": -721.359375,
           "width": 370,
-          "height": 1587.96875,
+          "height": 1580.96875,
           "right": 380,
-          "bottom": 849.578125
+          "bottom": 859.609375
         }
       },
       "failures": []
@@ -250,7 +268,9 @@
         "h1s": [
           "בודקים פרויקט, דירה וסביבה לפני שמתקדמים."
         ],
-        "languageEntries": 10,
+        "headerRoutes": 7,
+        "footerLinks": 23,
+        "languageEntries": 5,
         "languageTargets": 4,
         "buyerPathCards": 4,
         "projectCards": 3,
@@ -266,21 +286,22 @@
         "hasBuyerWords": true,
         "hasMojibake": false,
         "hasInternalWords": false,
+        "hasDefaultChromeWords": false,
         "catalog": {
           "x": 10,
-          "y": 863.21875,
+          "y": 757.25,
           "width": 370,
-          "height": 1155.390625,
+          "height": 1161.390625,
           "right": 380,
-          "bottom": 2018.609375
+          "bottom": 1918.640625
         },
         "showroom": {
           "x": 10,
-          "y": 2225.609375,
+          "y": 2124.640625,
           "width": 370,
-          "height": 1615.6875,
+          "height": 1609.6875,
           "right": 380,
-          "bottom": 3841.296875
+          "bottom": 3734.328125
         }
       },
       "after": {
@@ -288,7 +309,9 @@
         "h1s": [
           "בודקים פרויקט, דירה וסביבה לפני שמתקדמים."
         ],
-        "languageEntries": 10,
+        "headerRoutes": 7,
+        "footerLinks": 23,
+        "languageEntries": 5,
         "languageTargets": 4,
         "buyerPathCards": 4,
         "projectCards": 3,
@@ -304,21 +327,22 @@
         "hasBuyerWords": true,
         "hasMojibake": false,
         "hasInternalWords": false,
+        "hasDefaultChromeWords": false,
         "catalog": {
           "x": 10,
-          "y": -2100.78125,
+          "y": -2088.75,
           "width": 370,
-          "height": 1155.390625,
+          "height": 1161.390625,
           "right": 380,
-          "bottom": -945.390625
+          "bottom": -927.359375
         },
         "showroom": {
           "x": 10,
-          "y": -738.390625,
+          "y": -721.359375,
           "width": 370,
-          "height": 1587.96875,
+          "height": 1580.96875,
           "right": 380,
-          "bottom": 849.578125
+          "bottom": 859.609375
         }
       },
       "failures": []

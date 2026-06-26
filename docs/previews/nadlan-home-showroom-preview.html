@@ -6,6 +6,7 @@
 	<title>דירות חדשות ופרויקטים עם בחירת דירה בתלת ממד | NadLan</title>
 	<meta name="description" content="השוו פרויקטים חדשים בישראל, בדקו זמינות דירות לפי קומה ונוף, ראו אומדן מחיר לא מחייב וקבלו מידע ברור בעברית ובשפות למשקיעים מחו״ל.">
 	<link rel="icon" href="data:,">
+	<link rel="stylesheet" href="../../assets/css/nadlan-premium-sitewide.css">
 	<link rel="stylesheet" href="../../assets/css/nadlan-showroom-engine.css">
 	<link rel="stylesheet" href="../../assets/css/nadlan-home-showroom.css">
 	<script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
@@ -329,8 +330,55 @@
 				width: min(100% - 20px, 1280px);
 			}
 
+			.nlh-home-main {
+				padding-block-start: 8px;
+			}
+
+			.nlh-home-hero {
+				margin-bottom: 10px;
+			}
+
 			.nlh-home-panel {
 				min-height: auto;
+				padding: 16px;
+				border-radius: 16px;
+			}
+
+			.nlh-home-eyebrow {
+				margin-bottom: 8px;
+				font-size: 11px;
+			}
+
+			.nlh-home h1 {
+				margin-bottom: 8px;
+				font-size: clamp(30px, 10vw, 38px);
+				line-height: 1.02;
+			}
+
+			.nlh-home-lead {
+				font-size: 15px;
+				line-height: 1.55;
+			}
+
+			.nlh-home-inline-search {
+				margin-top: 12px;
+				padding: 10px;
+			}
+
+			.nlh-search-field input,
+			.nlh-search-field select,
+			.nlh-home-inline-search button {
+				min-height: 40px;
+			}
+
+			.nlh-home-actions {
+				margin-top: 10px;
+				gap: 8px;
+			}
+
+			.nlh-home-button {
+				min-height: 42px;
+				padding: 0 14px;
 			}
 
 			.nlh-home-languages {
@@ -349,18 +397,33 @@
 </head>
 <body>
 <div class="nle-page nlh-home">
-	<header class="nle-topbar">
-		<div class="nle-brand">
-			<span class="nle-logo">NadLan</span>
-			<span class="nle-kicker">ISRAEL HOMES</span>
-		</div>
-		<nav class="nle-nav" aria-label="ניווט ראשי">
-			<a href="#projects">פרויקטים</a>
-			<a href="#showroom">בחירת דירה</a>
-			<a href="#buyers">מדריך קנייה</a>
+	<header class="nl-site-header">
+		<a class="nl-site-brand" href="/" aria-label="NadLan">
+			<span class="nl-site-mark" aria-hidden="true">N</span>
+			<span>
+				<strong>NadLan</strong>
+				<small>דירות, פרויקטים ושכונות בישראל</small>
+			</span>
+		</a>
+		<nav class="nl-site-nav" aria-label="ניווט ראשי">
+			<a href="/projects/">פרויקטים</a>
+			<a href="/properties/">דירות ונכסים</a>
+			<a href="/buying-apartment/">מדריך קנייה</a>
+			<a href="/investment-apartment/">השקעה</a>
+			<a href="/mortgage/">משכנתא</a>
+			<a href="/purchase-tax/">מס רכישה</a>
+			<a href="/professionals/">אנשי מקצוע</a>
 		</nav>
-		<div class="nle-langs" aria-label="שפות">
-			<span class="is-active">HE</span><span>EN</span><span>FR</span><span>RU</span><span>AR</span>
+		<div class="nl-site-actions" aria-label="פעולות מהירות">
+			<a class="nl-site-link" href="/sde-dov/">שדה דב</a>
+			<a class="nl-site-cta" href="#projects">בדיקת פרויקט</a>
+			<div class="nl-site-lang" aria-label="שפות">
+				<a href="/" aria-current="page">HE</a>
+				<a href="#english">EN</a>
+				<a href="#french">FR</a>
+				<a href="#russian">RU</a>
+				<a href="#arabic">AR</a>
+			</div>
 		</div>
 	</header>
 
@@ -552,10 +615,56 @@
 		</section>
 	</main>
 
-	<footer class="nle-footer">
-		<div class="nle-wrap">
-			<strong>NadLan</strong>
-			<span>דירות חדשות בישראל, נתונים להמחשה עד אימות מול היזם</span>
+	<footer class="nl-site-footer">
+		<div class="nl-site-footer-grid">
+			<section class="nl-site-footer-brand" aria-label="NadLan">
+				<a class="nl-site-brand is-footer" href="/" aria-label="NadLan">
+					<span class="nl-site-mark" aria-hidden="true">N</span>
+					<span>
+						<strong>NadLan</strong>
+						<small>בודקים דירה, פרויקט וסביבה לפני החלטה</small>
+					</span>
+				</a>
+				<p>מידע על דירות, פרויקטים, שכונות, מחירים, מסמכים ואנשי מקצוע בישראל. הנתונים באתר נועדו לסייע בבדיקה ראשונית, ויש לאמת מחיר, זמינות ומסמכים מול הגורם הרלוונטי.</p>
+			</section>
+			<nav aria-label="קנייה והשוואה">
+				<strong>קנייה והשוואה</strong>
+				<a href="/projects/">פרויקטים חדשים</a>
+				<a href="/properties/">דירות ונכסים</a>
+				<a href="/buying-apartment/">מדריך קניית דירה</a>
+				<a href="/investment-apartment/">דירה להשקעה</a>
+				<a href="/property-value/">בדיקת שווי נכס</a>
+			</nav>
+			<nav aria-label="אזורים ומידע">
+				<strong>אזורים ומידע</strong>
+				<a href="/sde-dov/">רובע שדה דב</a>
+				<a href="/urban-renewal/">התחדשות עירונית</a>
+				<a href="/cities/">ערים ושכונות</a>
+				<a href="/glossary/">מילון נדל"ן</a>
+				<a href="/new-projects/">פרויקטים לפי אזור</a>
+			</nav>
+			<nav aria-label="בדיקות וכלים">
+				<strong>בדיקות וכלים</strong>
+				<a href="/mortgage/">משכנתא</a>
+				<a href="/purchase-tax/">מס רכישה</a>
+				<a href="/real-estate-lawyer/">בדיקה משפטית</a>
+				<a href="/professionals/">אנשי מקצוע</a>
+				<a href="/contact/">יצירת קשר</a>
+			</nav>
+			<nav aria-label="שפות ומסמכים">
+				<strong>שפות ומסמכים</strong>
+				<a href="#english">English</a>
+				<a href="#french">Français</a>
+				<a href="#russian">Русский</a>
+				<a href="#arabic">العربية</a>
+				<a href="/accessibility/">נגישות</a>
+				<a href="/privacy-policy/">פרטיות</a>
+				<a href="/terms/">תנאי שימוש</a>
+			</nav>
+		</div>
+		<div class="nl-site-footer-bottom">
+			<span>© NadLan</span>
+			<span>המידע באתר כללי בלבד ואינו ייעוץ משפטי, שמאי או פיננסי.</span>
 		</div>
 	</footer>
 </div>

@@ -24,6 +24,7 @@ Run:
 
 ```bash
 npm run qa:home-seo-schema
+npm run qa:home-chrome
 npm run qa:home-showroom-preview
 npm run qa:home-showroom-pattern
 ```
@@ -32,6 +33,8 @@ Expected:
 
 - 4 Chrome screenshots: desktop, tablet, mobile, Edge-mobile UA.
 - One H1.
+- Premium header has at least 7 real-estate routes.
+- Footer has at least 20 buyer, area, tool, language and legal links.
 - At least 5 language entries.
 - 4 real language target sections.
 - 4 buyer-path cards.
@@ -39,6 +42,7 @@ Expected:
 - Project section visible in the first viewport.
 - No horizontal overflow.
 - No public internal wording.
+- No default theme chrome wording such as Blog, Shop, Patterns, Themes or WordPress credit.
 - No mojibake.
 - Homepage title, description and JSON-LD are present and buyer-facing.
 
@@ -59,8 +63,10 @@ Screenshots:
 
 Measured:
 
-- Desktop project section starts at 656.94px.
-- Mobile project section starts at 863.22px, inside the first 900px viewport.
+- Desktop project section starts at 677.94px.
+- Mobile project section starts at 757.25px, inside the first 900px viewport.
+- Header routes: 7.
+- Footer links: 23.
 - Desktop buyer-path cards: 4.
 - Desktop language target sections: 4.
 - Minimum checked public tap target: 34px.
@@ -70,10 +76,12 @@ Measured:
 - Homepage JSON-LD project list items: 3.
 - Failures: 0.
 - SEO/schema gate: PASS, `docs/qa/home-seo-schema-report.json`.
+- Header/footer chrome gate: PASS, `docs/qa/home-chrome-report.json`.
 - Pattern gate: PASS, `docs/qa/home-showroom-pattern-report.json`.
 - Homepage template placement gate: PASS. `templates/home.html` now uses `nadlan-revenue/nadlan-home-showroom` and no longer uses the default blog/query-loop patterns.
-- PHP lint: `patterns/nadlan-home-showroom.php` and `functions.php` clean.
-- JS syntax: `assets/js/nadlan-showroom-engine.js`, `scripts/qa-home-showroom-preview.mjs`, and `scripts/qa-home-showroom-pattern.mjs` clean.
+- Premium header/footer patterns: PASS. `patterns/header.php` and `patterns/footer.php` now use explicit NadLan routes instead of a saved empty menu or default WordPress footer links.
+- PHP lint: `patterns/header.php`, `patterns/footer.php`, `patterns/nadlan-home-showroom.php` and `functions.php` clean.
+- JS syntax: `assets/js/nadlan-showroom-engine.js`, `scripts/qa-home-chrome.mjs`, `scripts/qa-home-showroom-preview.mjs`, `scripts/qa-home-showroom-pattern.mjs`, and `scripts/qa-home-seo-schema.mjs` clean.
 
 Honesty note: this is a preview and QA standard, not a live homepage deployment. The language entries are visible navigation affordances; full multilingual SEO still requires separate translated pages and reciprocal `hreflang` once those pages exist.
 

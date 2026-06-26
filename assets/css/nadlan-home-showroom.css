@@ -345,10 +345,54 @@
 @media (max-width: 560px) {
 	.nlh-home-main {
 		width: min(100% - 20px, 1280px);
+		padding-block-start: 8px;
+	}
+
+	.nlh-home-hero {
+		margin-bottom: 10px;
 	}
 
 	.nlh-home-panel {
 		min-height: auto;
+		padding: 16px;
+		border-radius: 16px;
+	}
+
+	.nlh-home-eyebrow {
+		margin-bottom: 8px;
+		font-size: 11px;
+	}
+
+	.nlh-home h1 {
+		margin-bottom: 8px;
+		font-size: clamp(30px, 10vw, 38px);
+		line-height: 1.02;
+	}
+
+	.nlh-home-lead {
+		font-size: 15px;
+		line-height: 1.55;
+	}
+
+	.nlh-home-inline-search {
+		margin-top: 12px;
+		padding: 10px;
+	}
+
+	.nlh-search-field input,
+	.nlh-search-field select,
+	.nlh-home-inline-search button {
+		min-height: 40px;
+	}
+
+	.nlh-home-actions {
+		margin-top: 10px;
+		gap: 8px;
+	}
+
+	.nlh-home-button {
+		min-height: 42px;
+		padding: 0 14px;
 	}
 
 	.nlh-home-languages {
