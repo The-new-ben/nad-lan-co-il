@@ -75,6 +75,8 @@ async function measure(page) {
 			'.nlh-home-inline-search button',
 			'.nlh-home-inline-search input',
 			'.nlh-home-inline-search select',
+			'.nlh-project-language-rail a',
+			'.nlh-project-language-rail span',
 			'.nlh-home-languages a',
 			'.nlh-home-languages span',
 			'.nle-nav a',
@@ -98,6 +100,7 @@ async function measure(page) {
 		}).filter(Boolean);
 		const tapSizes = targetRows.map((row) => row.min);
 		const catalog = rect('#projects');
+		const hero = rect('.nlh-home-hero');
 		const showroom = rect('#showroom');
 		const defaultChromeWords = [
 			'Blog',
@@ -117,6 +120,7 @@ async function measure(page) {
 			headerRoutes: document.querySelectorAll('.nl-site-nav a').length,
 			footerLinks: document.querySelectorAll('.nl-site-footer a').length,
 			languageEntries: document.querySelectorAll('.nlh-home-languages a, .nlh-home-languages span, .nle-langs span').length,
+			catalogLanguageEntries: document.querySelectorAll('.nle-catalog .nlh-project-language-rail a, .nle-catalog .nlh-project-language-rail span').length,
 			languageTargets: ['english', 'french', 'russian', 'arabic'].filter((id) => document.getElementById(id)).length,
 			buyerPathCards: document.querySelectorAll('.nlh-home-paths article').length,
 			projectCards: document.querySelectorAll('[data-nle-project]').length,
@@ -130,9 +134,11 @@ async function measure(page) {
 			hasHebrew: /[\u0590-\u05ff]/.test(visibleText),
 			hasForeignBuyerSignal: /(English|Français|Русский|العربية|משקיעים מחו״ל)/.test(visibleText),
 			hasBuyerWords: /(דירה|דירות|פרויקט|פרויקטים|מחיר|אומדן|זמינות)/.test(visibleText),
+			hasProjectBandBuyerCopy: visibleText.includes('השוואת פרויקטים חדשים לפי דירה, נוף ואומדן') && visibleText.includes('בכל פרויקט מוצגים דגם תלת ממדי'),
 			hasMojibake: /Ã|�|×[^\s]*×/.test(visibleText),
-			hasInternalWords: /(SEO|CMS|CRM|lead|leads|engine|template|prototype|project manager|supplier|contractor|internal|strategy|factory|fallback|placeholder|mock|monetization|פאנל|מנוע|תבנית|לידים|משפך|מוניטיז|אסטרטג|מקום שמור|פרויקטים לבדיקה)/i.test(visibleText),
+			hasInternalWords: /(SEO|CMS|CRM|lead|leads|engine|template|prototype|project manager|supplier|contractor|internal|strategy|factory|fallback|placeholder|mock|monetization|פאנל|מנוע|תבנית|לידים|משפך|מוניטיז|אסטרטג|מקום שמור|פרויקטים לבדיקה|אזור הבחירה המרכזי של דף הבית)/i.test(visibleText),
 			hasDefaultChromeWords: defaultChromeWords.some((word) => visibleText.includes(word)),
+			hero,
 			catalog,
 			showroom
 		};
@@ -146,6 +152,7 @@ function failuresFor(viewName, before, after, errors, viewportHeight) {
 	if (before.headerRoutes < 7) failures.push(`${viewName}: expected at least 7 real-estate header routes`);
 	if (before.footerLinks < 20) failures.push(`${viewName}: expected at least 20 footer links`);
 	if (before.languageEntries < 5) failures.push(`${viewName}: expected at least 5 language entries`);
+	if (before.catalogLanguageEntries < 5) failures.push(`${viewName}: expected multilingual entries inside the project selector`);
 	if (before.languageTargets < 4) failures.push(`${viewName}: expected four language target cards`);
 	if (before.buyerPathCards < 4) failures.push(`${viewName}: expected four buyer path cards`);
 	if (before.projectCards < 3) failures.push(`${viewName}: expected at least 3 project cards`);
@@ -157,10 +164,12 @@ function failuresFor(viewName, before, after, errors, viewportHeight) {
 	if (!before.hasHebrew) failures.push(`${viewName}: Hebrew text missing`);
 	if (!before.hasForeignBuyerSignal) failures.push(`${viewName}: foreign-buyer language signal missing`);
 	if (!before.hasBuyerWords) failures.push(`${viewName}: buyer/project words missing`);
+	if (!before.hasProjectBandBuyerCopy) failures.push(`${viewName}: buyer-facing project band copy missing`);
 	if (before.hasMojibake || after.hasMojibake) failures.push(`${viewName}: mojibake detected`);
 	if (before.hasInternalWords || after.hasInternalWords) failures.push(`${viewName}: public internal wording detected`);
 	if (before.hasDefaultChromeWords || after.hasDefaultChromeWords) failures.push(`${viewName}: default theme chrome wording detected`);
 	if (!before.catalog || before.catalog.y > viewportHeight) failures.push(`${viewName}: project section is not above the first viewport`);
+	if (!before.hero || !before.catalog || before.catalog.y < before.hero.bottom - 12) failures.push(`${viewName}: project selector must sit after the opening hero, not at the absolute top`);
 	if (viewName === 'desktop-1440' && (!before.showroom || before.showroom.y > viewportHeight * 1.55)) failures.push(`${viewName}: showroom starts too low for homepage flow`);
 	return failures;
 }

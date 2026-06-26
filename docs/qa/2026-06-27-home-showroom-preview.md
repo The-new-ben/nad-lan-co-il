@@ -15,7 +15,7 @@ This slice adds a verified homepage preview that places the multi-project showro
 
 - Public copy speaks to buyers, families and foreign investors.
 - No public wording about internal systems, funnel language, CMS, strategy or monetization.
-- The first screen includes: one H1, search fields, language entry points, and the multi-project project cards.
+- The first screen includes: one H1, search fields, language entry points inside the project selector, and the multi-project project cards.
 - The project engine reuses `assets/engine/projects.json` so Rainbow, Dimri Yama and Ashira remain one data source.
 
 ## Chrome Gate
@@ -36,6 +36,7 @@ Expected:
 - Premium header has at least 7 real-estate routes.
 - Footer has at least 20 buyer, area, tool, language and legal links.
 - At least 5 language entries.
+- At least 5 language entries inside the project selector.
 - 4 real language target sections.
 - 4 buyer-path cards.
 - At least 3 project cards.
@@ -65,6 +66,7 @@ Measured:
 
 - Desktop project section starts at 677.94px.
 - Mobile project section starts at 757.25px, inside the first 900px viewport.
+- Catalog language entries: 5.
 - Header routes: 7.
 - Footer links: 23.
 - Desktop buyer-path cards: 4.

@@ -30,6 +30,8 @@ const checks = [
 	{ name: 'asset_base_url', ok: pattern.includes('data-nle-asset-base') },
 	{ name: 'one_h1', ok: count(pattern, '<h1 ') === 1 },
 	{ name: 'project_grid', ok: pattern.includes('data-nle-project-grid') },
+	{ name: 'project_language_rail', ok: pattern.includes('nlh-project-language-rail') && ['lang="en"', 'lang="fr"', 'lang="ru"', 'lang="ar"'].every((value) => pattern.includes(value)) },
+	{ name: 'project_band_buyer_copy', ok: pattern.includes('השוואת פרויקטים חדשים לפי דירה, נוף ואומדן') && !pattern.includes('אזור הבחירה המרכזי של דף הבית') },
 	{ name: 'model_mount', ok: pattern.includes('data-nle-model-wrap') },
 	{ name: 'facade_mount', ok: pattern.includes('data-nle-facade-grid') },
 	{ name: 'language_entries', ok: ['English', 'Français', 'Русский', 'العربية'].every((value) => pattern.includes(value)) },

@@ -13,6 +13,7 @@
         "headerRoutes": 7,
         "footerLinks": 23,
         "languageEntries": 5,
+        "catalogLanguageEntries": 5,
         "languageTargets": 4,
         "buyerPathCards": 4,
         "projectCards": 3,
@@ -26,24 +27,33 @@
         "hasHebrew": true,
         "hasForeignBuyerSignal": true,
         "hasBuyerWords": true,
+        "hasProjectBandBuyerCopy": true,
         "hasMojibake": false,
         "hasInternalWords": false,
         "hasDefaultChromeWords": false,
+        "hero": {
+          "x": 80,
+          "y": 94,
+          "width": 1280,
+          "height": 565.9375,
+          "right": 1360,
+          "bottom": 659.9375
+        },
         "catalog": {
           "x": 80,
           "y": 677.9375,
           "width": 1280,
-          "height": 513.28125,
+          "height": 548.171875,
           "right": 1360,
-          "bottom": 1191.21875
+          "bottom": 1226.109375
         },
         "showroom": {
           "x": 80,
-          "y": 1287.21875,
+          "y": 1322.109375,
           "width": 1280,
           "height": 1010.375,
           "right": 1360,
-          "bottom": 2297.59375
+          "bottom": 2332.484375
         }
       },
       "after": {
@@ -54,6 +64,7 @@
         "headerRoutes": 7,
         "footerLinks": 23,
         "languageEntries": 5,
+        "catalogLanguageEntries": 5,
         "languageTargets": 4,
         "buyerPathCards": 4,
         "projectCards": 3,
@@ -67,24 +78,33 @@
         "hasHebrew": true,
         "hasForeignBuyerSignal": true,
         "hasBuyerWords": true,
+        "hasProjectBandBuyerCopy": true,
         "hasMojibake": false,
         "hasInternalWords": false,
         "hasDefaultChromeWords": false,
+        "hero": {
+          "x": 80,
+          "y": -1216,
+          "width": 1280,
+          "height": 565.9375,
+          "right": 1360,
+          "bottom": -650.0625
+        },
         "catalog": {
           "x": 80,
-          "y": -597.0625,
+          "y": -632.0625,
           "width": 1280,
-          "height": 513.28125,
+          "height": 548.171875,
           "right": 1360,
-          "bottom": -83.78125
+          "bottom": -83.890625
         },
         "showroom": {
           "x": 80,
-          "y": 12.21875,
+          "y": 12.109375,
           "width": 1280,
           "height": 988.375,
           "right": 1360,
-          "bottom": 1000.59375
+          "bottom": 1000.484375
         }
       },
       "failures": []
@@ -99,6 +119,7 @@
         "headerRoutes": 7,
         "footerLinks": 23,
         "languageEntries": 5,
+        "catalogLanguageEntries": 5,
         "languageTargets": 4,
         "buyerPathCards": 4,
         "projectCards": 3,
@@ -112,24 +133,33 @@
         "hasHebrew": true,
         "hasForeignBuyerSignal": true,
         "hasBuyerWords": true,
+        "hasProjectBandBuyerCopy": true,
         "hasMojibake": false,
         "hasInternalWords": false,
         "hasDefaultChromeWords": false,
+        "hero": {
+          "x": 16,
+          "y": 216,
+          "width": 736,
+          "height": 593.96875,
+          "right": 752,
+          "bottom": 809.96875
+        },
         "catalog": {
           "x": 16,
           "y": 827.96875,
           "width": 736,
-          "height": 1751.46875,
+          "height": 1855.359375,
           "right": 752,
-          "bottom": 2579.4375
+          "bottom": 2683.328125
         },
         "showroom": {
           "x": 16,
-          "y": 2717.4375,
+          "y": 2821.328125,
           "width": 736,
           "height": 1482.5,
           "right": 752,
-          "bottom": 4199.9375
+          "bottom": 4303.828125
         }
       },
       "after": {
@@ -140,6 +170,7 @@
         "headerRoutes": 7,
         "footerLinks": 23,
         "languageEntries": 5,
+        "catalogLanguageEntries": 5,
         "languageTargets": 4,
         "buyerPathCards": 4,
         "projectCards": 3,
@@ -153,24 +184,33 @@
         "hasHebrew": true,
         "hasForeignBuyerSignal": true,
         "hasBuyerWords": true,
+        "hasProjectBandBuyerCopy": true,
         "hasMojibake": false,
         "hasInternalWords": false,
         "hasDefaultChromeWords": false,
+        "hero": {
+          "x": 16,
+          "y": -3159,
+          "width": 736,
+          "height": 593.96875,
+          "right": 752,
+          "bottom": -2565.03125
+        },
         "catalog": {
           "x": 16,
-          "y": -2443.03125,
+          "y": -2547.03125,
           "width": 736,
-          "height": 1751.46875,
+          "height": 1855.359375,
           "right": 752,
-          "bottom": -691.5625
+          "bottom": -691.671875
         },
         "showroom": {
           "x": 16,
-          "y": -553.5625,
+          "y": -553.671875,
           "width": 736,
           "height": 1482.5,
           "right": 752,
-          "bottom": 928.9375
+          "bottom": 928.828125
         }
       },
       "failures": []
@@ -185,6 +225,7 @@
         "headerRoutes": 7,
         "footerLinks": 23,
         "languageEntries": 5,
+        "catalogLanguageEntries": 5,
         "languageTargets": 4,
         "buyerPathCards": 4,
         "projectCards": 3,
@@ -198,24 +239,33 @@
         "hasHebrew": true,
         "hasForeignBuyerSignal": true,
         "hasBuyerWords": true,
+        "hasProjectBandBuyerCopy": true,
         "hasMojibake": false,
         "hasInternalWords": false,
         "hasDefaultChromeWords": false,
+        "hero": {
+          "x": 10,
+          "y": 190,
+          "width": 370,
+          "height": 557.25,
+          "right": 380,
+          "bottom": 747.25
+        },
         "catalog": {
           "x": 10,
           "y": 757.25,
           "width": 370,
-          "height": 1161.390625,
+          "height": 1343.65625,
           "right": 380,
-          "bottom": 1918.640625
+          "bottom": 2100.90625
         },
         "showroom": {
           "x": 10,
-          "y": 2124.640625,
+          "y": 2306.90625,
           "width": 370,
           "height": 1609.6875,
           "right": 380,
-          "bottom": 3734.328125
+          "bottom": 3916.59375
         }
       },
       "after": {
@@ -226,6 +276,7 @@
         "headerRoutes": 7,
         "footerLinks": 23,
         "languageEntries": 5,
+        "catalogLanguageEntries": 5,
         "languageTargets": 4,
         "buyerPathCards": 4,
         "projectCards": 3,
@@ -239,24 +290,33 @@
         "hasHebrew": true,
         "hasForeignBuyerSignal": true,
         "hasBuyerWords": true,
+        "hasProjectBandBuyerCopy": true,
         "hasMojibake": false,
         "hasInternalWords": false,
         "hasDefaultChromeWords": false,
+        "hero": {
+          "x": 10,
+          "y": -2840,
+          "width": 370,
+          "height": 557.25,
+          "right": 380,
+          "bottom": -2282.75
+        },
         "catalog": {
           "x": 10,
-          "y": -2088.75,
+          "y": -2272.75,
           "width": 370,
-          "height": 1161.390625,
+          "height": 1343.65625,
           "right": 380,
-          "bottom": -927.359375
+          "bottom": -929.09375
         },
         "showroom": {
           "x": 10,
-          "y": -721.359375,
+          "y": -723.09375,
           "width": 370,
           "height": 1580.96875,
           "right": 380,
-          "bottom": 859.609375
+          "bottom": 857.875
         }
       },
       "failures": []
@@ -271,6 +331,7 @@
         "headerRoutes": 7,
         "footerLinks": 23,
         "languageEntries": 5,
+        "catalogLanguageEntries": 5,
         "languageTargets": 4,
         "buyerPathCards": 4,
         "projectCards": 3,
@@ -284,24 +345,33 @@
         "hasHebrew": true,
         "hasForeignBuyerSignal": true,
         "hasBuyerWords": true,
+        "hasProjectBandBuyerCopy": true,
         "hasMojibake": false,
         "hasInternalWords": false,
         "hasDefaultChromeWords": false,
+        "hero": {
+          "x": 10,
+          "y": 190,
+          "width": 370,
+          "height": 557.25,
+          "right": 380,
+          "bottom": 747.25
+        },
         "catalog": {
           "x": 10,
           "y": 757.25,
           "width": 370,
-          "height": 1161.390625,
+          "height": 1343.65625,
           "right": 380,
-          "bottom": 1918.640625
+          "bottom": 2100.90625
         },
         "showroom": {
           "x": 10,
-          "y": 2124.640625,
+          "y": 2306.90625,
           "width": 370,
           "height": 1609.6875,
           "right": 380,
-          "bottom": 3734.328125
+          "bottom": 3916.59375
         }
       },
       "after": {
@@ -312,6 +382,7 @@
         "headerRoutes": 7,
         "footerLinks": 23,
         "languageEntries": 5,
+        "catalogLanguageEntries": 5,
         "languageTargets": 4,
         "buyerPathCards": 4,
         "projectCards": 3,
@@ -325,24 +396,33 @@
         "hasHebrew": true,
         "hasForeignBuyerSignal": true,
         "hasBuyerWords": true,
+        "hasProjectBandBuyerCopy": true,
         "hasMojibake": false,
         "hasInternalWords": false,
         "hasDefaultChromeWords": false,
+        "hero": {
+          "x": 10,
+          "y": -2840,
+          "width": 370,
+          "height": 557.25,
+          "right": 380,
+          "bottom": -2282.75
+        },
         "catalog": {
           "x": 10,
-          "y": -2088.75,
+          "y": -2272.75,
           "width": 370,
-          "height": 1161.390625,
+          "height": 1343.65625,
           "right": 380,
-          "bottom": -927.359375
+          "bottom": -929.09375
         },
         "showroom": {
           "x": 10,
-          "y": -721.359375,
+          "y": -723.09375,
           "width": 370,
           "height": 1580.96875,
           "right": 380,
-          "bottom": 859.609375
+          "bottom": 857.875
         }
       },
       "failures": []

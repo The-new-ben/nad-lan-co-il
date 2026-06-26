@@ -187,11 +187,75 @@
 	align-items: end;
 }
 
+.nlh-home-section-kicker {
+	display: inline-flex;
+	color: #9b7628;
+	font-size: 12px;
+	font-weight: 900;
+	margin-bottom: 7px;
+}
+
 .nlh-home .nle-catalog-head p {
 	margin: 6px 0 0;
 	color: var(--home-muted);
 	line-height: 1.55;
 	max-width: 720px;
+}
+
+.nlh-project-tools {
+	display: grid;
+	gap: 10px;
+	justify-items: end;
+	min-width: min(430px, 100%);
+}
+
+.nlh-project-search {
+	display: grid;
+	gap: 6px;
+	width: min(380px, 100%);
+	color: #9b7628;
+	font-size: 12px;
+	font-weight: 900;
+}
+
+.nlh-project-search .nle-search {
+	width: 100%;
+}
+
+.nlh-project-language-rail {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 7px;
+	justify-content: flex-end;
+}
+
+.nlh-project-language-rail a,
+.nlh-project-language-rail span {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	min-height: 36px;
+	border: 1px solid var(--home-line);
+	border-radius: 999px;
+	padding: 0 12px;
+	background: #fff;
+	color: var(--home-muted);
+	text-decoration: none;
+	font-size: 13px;
+	font-weight: 900;
+}
+
+.nlh-project-language-rail .is-active {
+	background: var(--home-deep);
+	border-color: var(--home-deep);
+	color: #f6df9a;
+}
+
+.nlh-catalog-note {
+	margin: 12px 2px 0;
+	color: var(--home-muted);
+	font-size: 14px;
+	line-height: 1.55;
 }
 
 .nlh-home .nle-showroom {
@@ -328,6 +392,15 @@
 		grid-template-columns: 1fr repeat(3, auto);
 	}
 
+	.nlh-project-tools {
+		justify-items: stretch;
+		width: 100%;
+	}
+
+	.nlh-project-language-rail {
+		justify-content: flex-start;
+	}
+
 	.nlh-search-row {
 		grid-template-columns: 1fr;
 	}
@@ -401,6 +474,24 @@
 
 	.nlh-home-languages strong {
 		grid-column: 1 / -1;
+	}
+
+	.nlh-project-language-rail {
+		flex-wrap: nowrap;
+		overflow-x: auto;
+		justify-content: flex-start;
+		padding-bottom: 2px;
+		scrollbar-width: none;
+	}
+
+	.nlh-project-language-rail::-webkit-scrollbar {
+		display: none;
+	}
+
+	.nlh-project-language-rail a,
+	.nlh-project-language-rail span {
+		flex: 0 0 auto;
+		min-height: 38px;
 	}
 
 	.nlh-home-trust {

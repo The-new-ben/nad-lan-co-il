@@ -46,13 +46,27 @@ $projects_js = $theme_uri . 'assets/engine/projects.json';
 		<section class="nle-catalog" id="projects" aria-labelledby="nle-projects-title">
 			<div class="nle-catalog-head">
 				<div>
-					<h2 id="nle-projects-title">פרויקטים שאפשר לבדוק עכשיו</h2>
-					<p>בחרו פרויקט, עברו לדגם התלת ממדי, ואז בדקו דירה לפי קומה, נוף, שטח ואומדן מחיר. זה אזור הבחירה המרכזי של דף הבית, מיד אחרי פתיחת העמוד.</p>
+					<span class="nlh-home-section-kicker">בחירת פרויקט</span>
+					<h2 id="nle-projects-title">השוואת פרויקטים חדשים לפי דירה, נוף ואומדן</h2>
+					<p>בחרו פרויקט בשדה דב, עברו לתצוגת הדירות, ואז בדקו קומה, כיוון, שטח, נוף ואומדן מחיר לא מחייב לפני פנייה.</p>
 					<p class="nle-note" data-nle-project-count>טוען פרויקטים</p>
 				</div>
-				<input class="nle-search" type="search" placeholder="חיפוש לפי פרויקט או אזור" data-nle-search>
+				<div class="nlh-project-tools">
+					<label class="nlh-project-search">
+						<span>חיפוש פרויקט</span>
+						<input class="nle-search" type="search" placeholder="שם פרויקט או אזור" data-nle-search>
+					</label>
+					<div class="nlh-project-language-rail" aria-label="שפה למידע על פרויקטים">
+						<span class="is-active">עברית</span>
+						<a href="#english" lang="en" dir="ltr">English</a>
+						<a href="#french" lang="fr" dir="ltr">Français</a>
+						<a href="#russian" lang="ru" dir="ltr">Русский</a>
+						<a href="#arabic" lang="ar" dir="rtl">العربية</a>
+					</div>
+				</div>
 			</div>
 			<div class="nle-project-grid" data-nle-project-grid></div>
+			<p class="nlh-catalog-note">בכל פרויקט מוצגים דגם תלת ממדי, בחירת דירות, אומדן מחיר לא מחייב, סביבת מגורים ודרך קצרה לפנייה על הדירה שנבחרה.</p>
 		</section>
 
 		<section class="nlh-home-languages" aria-label="שפות למשקיעים מחו״ל">
