@@ -366,6 +366,18 @@ The gate also compares preview facade cells with `showroom-payload.json` unit ID
 apartment cell that is not in the payload is a factory failure, because the next WordPress import
 would lose that apartment.
 
+Before a preview becomes a WordPress draft, build and validate the draft payload:
+
+```bash
+node scripts/build-project-showroom-draft.mjs --pattern patterns/project-showroom-ashira-v2.php --slug ashira-sde-dov --title "דירות למכירה באשירה שדה דב" --out docs/wp-drafts/ashira-sde-dov-v2-draft.json
+npm run qa:ashira-draft-readiness
+node scripts/apply-wp-draft-payload.mjs --payload docs/wp-drafts/ashira-sde-dov-v2-draft.json --dry-run
+```
+
+The draft gate checks draft status, one H1, supported showroom root, buyer-facing title/meta,
+visible-copy hygiene and draft/payload unit-id sync. Do not import a draft whose visible text
+passes screenshots but fails this payload gate.
+
 ## N. Buyer-Language Rule
 
 Public project pages speak to buyers only. They do not explain our business model, CMS, SEO plan,

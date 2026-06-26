@@ -455,3 +455,14 @@ The same gate must compare visible facade cells with payload units. Never hardco
 cells only in the preview. If a buyer can see or click an apartment, its unit id, status, floor,
 rooms, sqm, view and estimate must live in `showroom-payload.json` so the CMS/import path can
 recreate it.
+
+After preview readiness, validate the WordPress draft payload before any CMS write:
+
+```bash
+npm run qa:ashira-draft-readiness
+```
+
+The draft payload is the bridge between the theme-first showroom pattern and WordPress. It must
+stay `draft`, keep one H1, contain the supported showroom root, use buyer-facing title and Yoast
+metadata, and expose the same unit ids as `showroom-payload.json`. A generated REST payload is not
+safe to import until this gate is green and the apply script also passes in `--dry-run` mode.
