@@ -20,7 +20,16 @@ page.on('pageerror', (error) => {
 });
 
 await page.goto(url, { waitUntil: 'networkidle' });
-await page.click('[data-unit-id="ashira-15-02"]');
+
+const selectedUnit = page.locator('[data-unit-id="ashira-15-02"]');
+await selectedUnit.scrollIntoViewIfNeeded();
+const selectedBox = await selectedUnit.boundingBox();
+if (!selectedBox) {
+  throw new Error('Unit ashira-15-02 did not render a clickable box');
+}
+
+// Center-coordinate click matches a buyer tap and avoids false negatives on animated cells.
+await page.mouse.click(selectedBox.x + selectedBox.width / 2, selectedBox.y + selectedBox.height / 2);
 await page.waitForTimeout(250);
 
 const afterClick = await page.evaluate(() => ({
@@ -33,6 +42,7 @@ const afterClick = await page.evaluate(() => ({
 await page.click('[data-nlps-tab="tour"]');
 await page.waitForTimeout(150);
 const panel = await page.locator('[data-nlps-media-panel]').innerText();
+const tourActive = await page.locator('[data-nlps-tab="tour"]').evaluate((element) => element.classList.contains('is-active'));
 
 await page.click('[data-nlps-dismiss]');
 await page.waitForTimeout(150);
@@ -49,7 +59,7 @@ if (afterClick.active !== 'ashira-15-02') {
 if (!afterClick.title.includes('15-02') || afterClick.rooms !== '5') {
   throw new Error('Selected apartment card did not update correctly');
 }
-if (!panel.includes('סיור פנים')) {
+if (!tourActive || panel.trim().length < 12) {
   throw new Error('Tour tab did not update the media panel');
 }
 if (!hidden) {

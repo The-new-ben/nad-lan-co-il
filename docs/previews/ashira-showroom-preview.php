@@ -42,21 +42,35 @@ function rest_url( $path = '' ) {
 			top: 0;
 			z-index: 20;
 			display: flex;
+			flex-wrap: wrap;
+			gap: 8px 16px;
 			align-items: center;
 			justify-content: space-between;
-			padding: 12px 24px;
+			padding: 12px clamp(10px, 3vw, 24px);
 			border-bottom: 1px solid #e2d4c0;
 			background: rgba(255, 253, 248, .94);
 			backdrop-filter: blur(10px);
+			overflow-x: hidden;
 		}
 		.nl-preview-header strong {
 			color: #17130f;
 		}
 		.nl-preview-header nav {
 			display: flex;
+			flex-wrap: wrap;
 			gap: 18px;
 			color: #5b5346;
 			font-size: 14px;
+		}
+		@media (max-width: 520px) {
+			.nl-preview-header {
+				justify-content: center;
+			}
+			.nl-preview-header nav {
+				justify-content: center;
+				gap: 8px 12px;
+				font-size: 12px;
+			}
 		}
 	</style>
 	<script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/4.3.1/model-viewer.min.js"></script>

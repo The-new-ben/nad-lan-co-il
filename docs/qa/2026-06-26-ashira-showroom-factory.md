@@ -21,6 +21,9 @@ Theme-first Ashira prototype page pattern and data folder:
 - Walla project facts: `https://nadlan.walla.co.il/item/3647895`
 - Globes market context: `https://en.globes.co.il/en/article-sde-dov-penthouse-sells-for-nis-195m-1001486549`
 - Magdilim market context: `https://magdilim.co.il/110820241333-2/`
+- Product-grade 3D model research: `docs/research/2026-06-26-product-grade-3d-model-generation.md`
+- Earlier configurator research: `docs/2026-06-12-3d-configurator-research.md`
+- Local quality reference: `assets/projects/rainbow-tel-aviv/model.glb`
 
 ## Gates Run
 
@@ -33,6 +36,20 @@ npx --yes @gltf-transform/cli inspect assets/projects/ashira-sde-dov/model-proto
 node scripts/qa-ashira-preview.mjs
 ```
 
+## Model Gate
+
+- Rainbow reference: 851,668 byte GLB, 31,176 uploaded vertices, 12 materials.
+- Ashira before upgrade: 2,364 byte GLB, 24 uploaded vertices, 1 material.
+- Ashira after upgrade: 72,660 byte GLB, 1,596 uploaded vertices, 11 materials.
+- Camera changed to product-viewer behavior:
+  - `camera-orbit="-34deg 62deg 34m"`
+  - `min-camera-orbit="-Infinity 62deg 30m"`
+  - `max-camera-orbit="Infinity 62deg 54m"`
+  - `field-of-view="22deg"`
+  - `rotation-per-second="5deg"`
+- Honest boundary: this is still a prototype context model, not official BIM and not segmented
+  apartment geometry.
+
 ## Screenshot Proof
 
 - Desktop: `docs/qa/screenshots/ashira-showroom-factory-2026-06-26/desktop-1440.png`
@@ -43,12 +60,17 @@ node scripts/qa-ashira-preview.mjs
 ## Findings
 
 - PASS: Schema payload validates with 5 prototype units and 3 material slots.
-- PASS: The GLB is valid glTF 2.0 and very small for a prototype.
-- PASS: Desktop/tablet/mobile screenshots show no horizontal overflow after replacing the hidden honeypot positioning.
+- PASS: The GLB is valid glTF 2.0, uses multiple materials, and includes tower, podium, boutique buildings, sea, land, sun and Reading reference.
+- PASS: Desktop/tablet/mobile screenshots show no horizontal overflow:
+  - 1440 viewport / 1440 document width
+  - 768 viewport / 768 document width
+  - 390 viewport / 390 document width
 - PASS: Mobile stacks model, facade, selected card and form without facade overflow.
 - PASS: Apartment click updates selected card; tour tab changes the media panel; dismiss hides the card.
 - PASS: Public copy uses `NadLan` only and does not leak internal system wording in the new files.
 - FIXED: Earlier context art made the project look like it was in the sea. The new art places Ashira on land, sea to the west, and adds Reading/Namal, Eshkol and Sde Dov labels.
+- FIXED: QA click used brittle Playwright element action against animated apartment cells. The script now clicks the center point like a buyer tap and verifies the rendered selected card.
+- FIXED: `.nlps-showroom-page` now uses `box-sizing:border-box`; without it, padding caused 816px document width on a 768px tablet and 408px on a 390px phone.
 
 ## Remaining Truth
 

@@ -22,7 +22,9 @@ price or availability as official developer inventory.
 
 ## Current Prototype Truth
 
-- The GLB is an original lightweight massing concept.
+- The GLB is an original lightweight product-view context model. It includes a rounded tower,
+  floor-plate rhythm, podium, three boutique buildings, sea/land/promenade context, a sun marker
+  and a Reading/Namal reference. It is still not official BIM and not segmented apartment geometry.
 - The facade is an original concept elevation, not official BIM or an official sales elevation.
 - Units are sample units designed to prove the apartment-selection journey.
 - Prices are non-binding estimates and must stay marked as estimates.

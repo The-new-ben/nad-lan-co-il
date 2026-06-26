@@ -464,3 +464,32 @@ When no official BIM exists, use this split:
 
 Do not force apartment picking onto a generic GLB. Use segmented GLB picking only after named
 apartment meshes or a reviewed mesh map exists.
+
+## Product-Grade Model Research Rule
+
+Before building or revising a project GLB, read:
+
+- `docs/2026-06-12-3d-configurator-research.md`
+- `docs/research/2026-06-26-product-grade-3d-model-generation.md`
+
+Do not ship a cube-only GLB and call it a showroom. The minimum product-grade prototype standard is
+closer to a retail product viewer, not a map decoration:
+
+1. Framing starts close to the building, with a narrow field of view and controlled orbit.
+2. Horizontal rotation is the default. Avoid underside views by locking or tightly constraining
+   polar camera orbit.
+3. The model has recognizable architecture: tower mass, podium, floor plates, facade rhythm,
+   balconies/reveals and multiple materials.
+4. The context is real enough for orientation: land, sea/park/road, nearby massing and one or two
+   trusted landmarks. Do not place the project in the sea or on a false skyline.
+5. The GLB remains the context/product object unless it contains named apartment meshes.
+6. Exact apartment selection remains on the adjacent facade/elevation selector until the asset is
+   a segmented BIM/GLB with a reviewed mesh map.
+7. If a contractor supplies only high-quality renders and no GLB, a 24-48 frame image sequence is
+   an acceptable premium product-viewer fallback, stored on CDN/R2, not inside the plugin ZIP.
+8. Pixel streaming/cloud rendering is a future ultra-premium path only. It is not the default
+   WordPress project factory because it adds cost, latency and operational complexity.
+
+The local reference is Rainbow: `assets/projects/rainbow-tel-aviv/model.glb` has richer geometry,
+many materials and a full asset package. New project models must be compared against Rainbow before
+PR, even when they remain illustrative.
