@@ -818,11 +818,11 @@ if ( ! function_exists( 'nadlan_revenue_premium_front_page' ) ) :
 		ob_start();
 		?>
 <div class="nlux-home" dir="rtl">
-	<section class="nlux-hero" aria-label="נדל״ן חכם">
+	<section class="nlux-hero" aria-label="NadLan">
 		<div class="nlux-hero-media" aria-hidden="true"></div>
 		<div class="nlux-hero-copy">
 			<p class="nlux-kicker">פרויקטים חדשים · ישראל</p>
-			<h1>נדל״ן חכם: בוחרים פרויקט ודירה לפני שפונים ליזם</h1>
+			<h1>NadLan: בוחרים פרויקט ודירה לפני שפונים ליזם</h1>
 			<p class="nlux-intro">סיורי פרויקטים בתלת ממד, בחירת דירה על הבניין, אומדני מחיר, סביבת הפרויקט, מחשבונים ואנשי מקצוע במקום אחד, לרוכשים בישראל ולמשקיעים מחוץ לישראל.</p>
 			<form class="nlux-search" method="get" action="<?php echo esc_url( $project_url ); ?>">
 				<input type="search" name="q" placeholder="חפשו פרויקט, עיר או יזם">
@@ -876,7 +876,7 @@ if ( ! function_exists( 'nadlan_revenue_premium_front_page' ) ) :
 		</div>
 	</section>
 
-	<section class="nlux-data-band" aria-label="למה נדל״ן חכם">
+	<section class="nlux-data-band" aria-label="למה NadLan">
 		<div><strong>בחירת דירה חזותית</strong><span>כאשר יש נתונים, רואים קומה, כיוון ונקודת מבט</span></div>
 		<div><strong>מקורות גלויים</strong><span>פרויקטים, יזמים ובעלי מקצוע עם מידע שניתן לבדוק</span></div>
 		<div><strong>פנייה אחרי בדיקה</strong><span>משווים, מחשבים ורק אז מתקדמים לשיחה מסודרת</span></div>
@@ -947,26 +947,128 @@ add_filter( 'the_content', function ( $content ) {
 	return $content;
 }, 99 );
 
+if ( ! function_exists( 'nadlan_revenue_home_seo_title' ) ) :
+	function nadlan_revenue_home_seo_title() {
+		return 'דירות חדשות ופרויקטים עם בחירת דירה בתלת ממד | NadLan';
+	}
+endif;
+
+if ( ! function_exists( 'nadlan_revenue_home_seo_description' ) ) :
+	function nadlan_revenue_home_seo_description() {
+		return 'השוו פרויקטים חדשים בישראל, בדקו זמינות דירות לפי קומה ונוף, ראו אומדן מחיר לא מחייב וקבלו מידע ברור בעברית ובשפות למשקיעים מחו״ל.';
+	}
+endif;
+
 add_filter( 'pre_get_document_title', function ( $title ) {
 	if ( is_front_page() ) {
-		return 'פרויקטים חדשים ודירות בתלת ממד | נדל״ן חכם';
+		return nadlan_revenue_home_seo_title();
 	}
 	return $title;
 }, 40 );
 
 add_filter( 'wpseo_title', function ( $title ) {
 	if ( is_front_page() ) {
-		return 'פרויקטים חדשים ודירות בתלת ממד | נדל״ן חכם';
+		return nadlan_revenue_home_seo_title();
 	}
 	return $title;
 }, 40 );
 
 add_filter( 'wpseo_metadesc', function ( $description ) {
 	if ( is_front_page() ) {
-		return 'בדקו פרויקטים חדשים, בחרו דירה בתלת ממד, השוו עלויות ופנו ליזם אחרי בדיקה מסודרת. מיועד לרוכשים בישראל ולמשקיעים מחוץ לישראל.';
+		return nadlan_revenue_home_seo_description();
 	}
 	return $description;
 }, 40 );
+
+if ( ! function_exists( 'nadlan_revenue_home_schema_projects' ) ) :
+	function nadlan_revenue_home_schema_projects() {
+		$items = array();
+		$path  = get_parent_theme_file_path( 'assets/engine/projects.json' );
+		if ( file_exists( $path ) ) {
+			$raw  = (string) file_get_contents( $path );
+			$data = json_decode( $raw, true );
+			if ( is_array( $data ) && ! empty( $data['projects'] ) && is_array( $data['projects'] ) ) {
+				foreach ( $data['projects'] as $project ) {
+					if ( ! is_array( $project ) || empty( $project['name'] ) || empty( $project['project_url'] ) ) {
+						continue;
+					}
+					$items[] = array(
+						'name'        => sanitize_text_field( (string) $project['name'] ),
+						'url'         => home_url( '/' . ltrim( (string) $project['project_url'], '/' ) ),
+						'description' => sanitize_text_field( (string) ( $project['sub'] ?? $project['location'] ?? '' ) ),
+					);
+				}
+			}
+		}
+		return array_slice( $items, 0, 6 );
+	}
+endif;
+
+if ( ! function_exists( 'nadlan_revenue_home_jsonld' ) ) :
+	function nadlan_revenue_home_jsonld() {
+		if ( ! is_front_page() ) {
+			return;
+		}
+
+		$home_url = home_url( '/' );
+		$graph    = array(
+			array(
+				'@type' => 'Organization',
+				'@id'   => $home_url . '#organization',
+				'name'  => 'NadLan',
+				'url'   => $home_url,
+			),
+			array(
+				'@type'           => 'WebSite',
+				'@id'             => $home_url . '#website',
+				'name'            => 'NadLan',
+				'url'             => $home_url,
+				'inLanguage'      => 'he-IL',
+				'publisher'       => array( '@id' => $home_url . '#organization' ),
+				'potentialAction' => array(
+					'@type'       => 'SearchAction',
+					'target'      => home_url( '/?s={search_term_string}' ),
+					'query-input' => 'required name=search_term_string',
+				),
+			),
+			array(
+				'@type'       => 'WebPage',
+				'@id'         => $home_url . '#webpage',
+				'name'        => nadlan_revenue_home_seo_title(),
+				'description' => nadlan_revenue_home_seo_description(),
+				'url'         => $home_url,
+				'inLanguage'  => 'he-IL',
+				'isPartOf'    => array( '@id' => $home_url . '#website' ),
+			),
+		);
+
+		$projects = nadlan_revenue_home_schema_projects();
+		if ( $projects ) {
+			$list = array(
+				'@type'           => 'ItemList',
+				'@id'             => $home_url . '#projects',
+				'name'            => 'פרויקטים חדשים להשוואה',
+				'itemListElement' => array(),
+			);
+			foreach ( $projects as $index => $project ) {
+				$list['itemListElement'][] = array(
+					'@type'    => 'ListItem',
+					'position' => $index + 1,
+					'url'      => $project['url'],
+					'name'     => $project['name'],
+				);
+			}
+			$graph[] = $list;
+		}
+
+		$schema = array(
+			'@context' => 'https://schema.org',
+			'@graph'   => $graph,
+		);
+		echo '<script type="application/ld+json" id="nadlan-home-schema">' . wp_json_encode( $schema, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES ) . '</script>' . "\n";
+	}
+endif;
+add_action( 'wp_head', 'nadlan_revenue_home_jsonld', 20 );
 
 add_filter( 'render_block', function ( $block_content, $block ) {
 	if (
@@ -1155,7 +1257,7 @@ if ( ! function_exists( 'nadlan_revenue_premium_gateway_markup' ) ) :
 	<section class="nlrx-gate-hero">
 		<div class="nlrx-gate-copy">
 			<p class="nlrx-eyebrow">מערכת פרסום וניהול נכסים</p>
-			<h1><?php echo esc_html( $is_studio ? 'כניסה לסטודיו העריכה של נדל״ן חכם' : 'מרכז הפרסום של נדל״ן חכם' ); ?></h1>
+			<h1><?php echo esc_html( $is_studio ? 'כניסה לסטודיו העריכה של NadLan' : 'מרכז הפרסום של NadLan' ); ?></h1>
 			<p>כאן מפרסמים מנהלים פרויקט, נכס או כרטיס מקצועי: תמונות, פרטי קשר, מיקום, פניות ושדרוגי חשיפה. קודם מתחברים לחשבון, ואז ממשיכים לעריכה או למסלול הפרסום.</p>
 			<div class="nlrx-actions">
 				<a class="nlrx-btn nlrx-btn-primary" href="<?php echo esc_url( $account_url ); ?>">כניסה או פתיחת חשבון</a>

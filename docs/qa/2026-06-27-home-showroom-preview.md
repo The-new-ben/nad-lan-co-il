@@ -23,6 +23,7 @@ This slice adds a verified homepage preview that places the multi-project showro
 Run:
 
 ```bash
+npm run qa:home-seo-schema
 npm run qa:home-showroom-preview
 npm run qa:home-showroom-pattern
 ```
@@ -39,6 +40,7 @@ Expected:
 - No horizontal overflow.
 - No public internal wording.
 - No mojibake.
+- Homepage title, description and JSON-LD are present and buyer-facing.
 
 ## Result
 
@@ -62,7 +64,12 @@ Measured:
 - Desktop buyer-path cards: 4.
 - Desktop language target sections: 4.
 - Minimum checked public tap target: 34px.
+- Homepage SEO title length: 53.
+- Homepage meta description length: 130.
+- Homepage JSON-LD schema types: Organization, WebSite, SearchAction, WebPage, ItemList, ListItem.
+- Homepage JSON-LD project list items: 3.
 - Failures: 0.
+- SEO/schema gate: PASS, `docs/qa/home-seo-schema-report.json`.
 - Pattern gate: PASS, `docs/qa/home-showroom-pattern-report.json`.
 - Homepage template placement gate: PASS. `templates/home.html` now uses `nadlan-revenue/nadlan-home-showroom` and no longer uses the default blog/query-loop patterns.
 - PHP lint: `patterns/nadlan-home-showroom.php` and `functions.php` clean.
