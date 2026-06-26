@@ -349,6 +349,23 @@ horizontal overflow, one H1, model-viewer registration, visible Hebrew, no mojib
 internal wording, no old `.nlps` / `.nlp3d` roots, apartment cells with 44px+ tap targets, and no
 selected-card overlap over the facade.
 
+Before importing Ashira v2 or cloning it as the next project standard, also run the factory
+readiness gate:
+
+```bash
+npm run qa:ashira-factory-readiness
+```
+
+This gate checks the asset package, payload fields, unit inventory, buyer-facing payload strings
+and the latest screenshot report together. It exists because the page must speak to apartment
+buyers and investors, not to our internal build process. Passing screenshots alone is not enough
+if the public copy leaks words such as SEO, CMS, CRM, lead, engine, template, prototype, strategy,
+supplier, contractor, funnel or monetization.
+
+The gate also compares preview facade cells with `showroom-payload.json` unit IDs. A visible
+apartment cell that is not in the payload is a factory failure, because the next WordPress import
+would lose that apartment.
+
 ## N. Buyer-Language Rule
 
 Public project pages speak to buyers only. They do not explain our business model, CMS, SEO plan,

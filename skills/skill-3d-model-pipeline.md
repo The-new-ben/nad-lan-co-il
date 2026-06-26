@@ -434,3 +434,24 @@ The report must be green at desktop, tablet, mobile and Edge-mobile widths. If t
 mojibake, old selector leakage, card/facade overlap, tap targets below 44px, missing model-viewer
 registration, console errors or horizontal overflow, stop and fix the preview before touching the
 CMS or live site.
+
+Ashira v2 adds a second pre-import gate:
+
+```bash
+npm run qa:ashira-factory-readiness
+```
+
+Run it after the screenshot gate and before any WordPress import. It validates that the project
+asset folder, `showroom-payload.json`, public strings and screenshot report are all ready for a
+buyer-facing project page. The gate should fail if the page or payload talks about the build
+system instead of the apartment: no public SEO/CMS/CRM/lead/engine/template/prototype/factory
+language, no internal contractor pitch, no placeholder wording, and no mojibake.
+
+The buyer-language test is part of the model pipeline because model data becomes public text:
+unit titles, price notes, view notes, media labels and facade notices are all buyer copy once they
+render on the page.
+
+The same gate must compare visible facade cells with payload units. Never hardcode extra apartment
+cells only in the preview. If a buyer can see or click an apartment, its unit id, status, floor,
+rooms, sqm, view and estimate must live in `showroom-payload.json` so the CMS/import path can
+recreate it.

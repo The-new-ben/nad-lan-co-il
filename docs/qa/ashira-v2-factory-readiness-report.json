@@ -1,0 +1,89 @@
+{
+  "generated_at": "2026-06-26T21:25:57.010Z",
+  "check": "ashira-v2-factory-readiness",
+  "payload_file": "assets/projects/ashira-sde-dov/showroom-payload.json",
+  "failures": [],
+  "files": [
+    {
+      "file": "patterns/project-showroom-ashira-v2.php",
+      "kind": "pattern",
+      "bytes": 10983,
+      "ok": true
+    },
+    {
+      "file": "docs/previews/ashira-showroom-v2-preview.html",
+      "kind": "preview",
+      "bytes": 12020,
+      "ok": true
+    },
+    {
+      "file": "assets/js/nadlan-showroom-v2.js",
+      "kind": "runtime",
+      "bytes": 4363,
+      "ok": true
+    },
+    {
+      "file": "assets/css/nadlan-showroom-v2.css",
+      "kind": "style",
+      "bytes": 13802,
+      "ok": true
+    },
+    {
+      "file": "assets/projects/ashira-sde-dov/showroom-payload.json",
+      "kind": "payload",
+      "maxBytes": 204800,
+      "bytes": 8001,
+      "ok": true
+    },
+    {
+      "file": "assets/projects/ashira-sde-dov/model-context.glb",
+      "kind": "model",
+      "maxBytes": 8388608,
+      "bytes": 8488,
+      "ok": true
+    },
+    {
+      "file": "assets/projects/ashira-sde-dov/ashira-hero-concept.jpg",
+      "kind": "hero",
+      "maxBytes": 716800,
+      "bytes": 306410,
+      "ok": true
+    },
+    {
+      "file": "assets/projects/ashira-sde-dov/ashira-facade-concept.jpg",
+      "kind": "facade",
+      "maxBytes": 716800,
+      "bytes": 332555,
+      "ok": true
+    },
+    {
+      "file": "assets/projects/ashira-sde-dov/source-notes.md",
+      "kind": "sources",
+      "bytes": 1033,
+      "ok": true
+    }
+  ],
+  "payload": {
+    "project_slug": "ashira-sde-dov",
+    "meta_fields": 18,
+    "units": 5,
+    "statuses": [
+      "available",
+      "reserved",
+      "sold"
+    ]
+  },
+  "payload_public_string_count": 70,
+  "preview_payload_sync": {
+    "preview_units": 5,
+    "payload_units": 5,
+    "missing_from_payload": [],
+    "missing_from_preview": []
+  },
+  "screenshot_report": {
+    "file": "docs/qa/screenshots/ashira-v2-preview-factory-gate/report.json",
+    "viewports": 4,
+    "failures": 0
+  },
+  "ok": true
+}
