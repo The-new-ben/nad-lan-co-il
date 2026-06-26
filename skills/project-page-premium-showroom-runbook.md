@@ -348,3 +348,34 @@ This gate must capture desktop, tablet, mobile and Edge-mobile screenshots, then
 horizontal overflow, one H1, model-viewer registration, visible Hebrew, no mojibake, no public
 internal wording, no old `.nlps` / `.nlp3d` roots, apartment cells with 44px+ tap targets, and no
 selected-card overlap over the facade.
+
+## N. Buyer-Language Rule
+
+Public project pages speak to buyers only. They do not explain our business model, CMS, SEO plan,
+lead routing, template system, engine, strategy or contractor sales pitch.
+
+Before publishing or previewing a project surface, ask: would a buyer care about this sentence
+while choosing an apartment? If not, move it to docs or admin.
+
+Buyer-facing wording should answer:
+
+1. Which apartments or projects can I compare?
+2. What floor, rooms, sqm, view and direction are shown?
+3. What is the price context, and is it an estimate?
+4. What plans, photos, video, interior tour or view are available?
+5. What do I do next if I want to check availability?
+
+Forbidden public wording includes:
+
+- SEO, CMS, CRM, lead, engine, template, prototype, funnel, monetization, paid placement;
+- פאנל, מנוע, תבנית, לידים, מוניטיזציה;
+- project manager, supplier or contractor language when it is speaking about our service rather
+  than helping the buyer choose an apartment.
+
+Allowed public wording includes:
+
+- דירה, קומה, חדרים, שטח, נוף, כיוון, מחיר, אומדן לא מחייב, זמינות, תוכנית, סיור, תמונות,
+  בדיקת רכישה לא מחייבת, דברו עם היזם.
+
+Every screenshot QA must include a visible-copy scan. A page can look premium and still fail if it
+talks to us instead of to the buyer.

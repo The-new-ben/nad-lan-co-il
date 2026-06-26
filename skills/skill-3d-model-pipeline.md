@@ -331,6 +331,24 @@ Public product copy must stay buyer-facing. Do not publish back-office terms suc
 funnel, CRM, monetization, or paid placement. The visible page should say inquiry, selected
 apartment, developer contact, availability check, and non-binding estimate.
 
+## Buyer Copy Discipline
+
+The model pipeline produces a buyer product, not a demo deck. Public text must describe what a
+buyer can see, compare and ask about:
+
+- apartment floor, rooms, sqm, view and orientation;
+- available, checking, reserved or sold status;
+- non-binding price estimate and source note;
+- floor plan, interior media, view, surroundings and next inquiry step.
+
+Do not let model, data or build terms leak into rendered pages. These words are documentation-only:
+engine, template, prototype, CMS, SEO, CRM, lead, funnel, monetization, supplier, project manager,
+מנוע, תבנית, אבטיפוס, פאנל, לידים.
+
+If the public screen needs a placeholder for media not yet supplied, write it as a buyer promise:
+`כאן יוצגו סיור פנים, וידאו או גלריית תמונות כאשר החומר המאושר זמין.`
+Do not write `placeholder`, `מקום שמור`, `prototype`, or similar working language.
+
 ## Rainbow v1.66.4 QA Lesson: Showroom DNA
 
 The reusable product pattern is two surfaces, close together:

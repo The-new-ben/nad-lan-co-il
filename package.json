@@ -29,6 +29,7 @@
 	"scripts": {
 		"build": "postcss style.css --use cssnano -o style.min.css --no-map",
 		"watch": "postcss style.css --use cssnano -o style.min.css --no-map --watch",
+		"qa:showroom-engine-preview": "node scripts/qa-showroom-engine-preview.mjs --strict",
 		"qa:showroom-v2-preview": "node scripts/qa-showroom-v2-preview.mjs --strict"
 	}
 }
