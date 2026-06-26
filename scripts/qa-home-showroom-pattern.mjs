@@ -1,0 +1,56 @@
+#!/usr/bin/env node
+import { readFileSync, writeFileSync, mkdirSync } from 'node:fs';
+import path from 'node:path';
+
+const ROOT = process.cwd();
+const PATTERN = 'patterns/nadlan-home-showroom.php';
+const OUT = 'docs/qa/home-showroom-pattern-report.json';
+
+function textOf(file) {
+	return readFileSync(path.resolve(ROOT, file), 'utf8');
+}
+
+function count(haystack, needle) {
+	return haystack.split(needle).length - 1;
+}
+
+const pattern = textOf(PATTERN);
+const publicBlock = pattern.split('<!-- wp:html -->')[1]?.split('<!-- /wp:html -->')[0] || pattern;
+const visibleBlock = publicBlock.replace(/<[^>]*>/g, ' ');
+const functions = textOf('functions.php');
+const engineJs = textOf('assets/js/nadlan-showroom-engine.js');
+const homeCss = textOf('assets/css/nadlan-home-showroom.css');
+
+const checks = [
+	{ name: 'pattern_marker', ok: pattern.includes('data-nle-home-showroom') },
+	{ name: 'project_data_url', ok: pattern.includes('assets/engine/projects.json') },
+	{ name: 'asset_base_url', ok: pattern.includes('data-nle-asset-base') },
+	{ name: 'one_h1', ok: count(pattern, '<h1 ') === 1 },
+	{ name: 'project_grid', ok: pattern.includes('data-nle-project-grid') },
+	{ name: 'model_mount', ok: pattern.includes('data-nle-model-wrap') },
+	{ name: 'facade_mount', ok: pattern.includes('data-nle-facade-grid') },
+	{ name: 'language_entries', ok: ['English', 'Français', 'Русский', 'العربية'].every((value) => pattern.includes(value)) },
+	{ name: 'public_buyer_copy', ok: /דירה|דירות|פרויקט|פרויקטים|מחיר|אומדן|זמינות/.test(pattern) },
+	{ name: 'home_css_has_mobile_rules', ok: homeCss.includes('@media (max-width: 560px)') },
+	{ name: 'functions_detects_marker', ok: functions.includes("data-nle-home-showroom") },
+	{ name: 'functions_enqueues_engine_css', ok: functions.includes("assets/css/nadlan-showroom-engine.css") },
+	{ name: 'functions_enqueues_home_css', ok: functions.includes("assets/css/nadlan-home-showroom.css") },
+	{ name: 'functions_enqueues_engine_js', ok: functions.includes("assets/js/nadlan-showroom-engine.js") },
+	{ name: 'engine_reads_root_config', ok: engineJs.includes('data-nle-home-showroom') && engineJs.includes('dataset.nleProjects') && engineJs.includes('dataset.nleAssetBase') },
+	{ name: 'no_public_internal_words', ok: !/(SEO|CMS|CRM|lead|leads|engine|template|prototype|project manager|supplier|contractor|internal|strategy|factory|fallback|placeholder|mock|monetization|פאנל|מנוע|תבנית|לידים|משפך|מוניטיז|אסטרטג|מקום שמור|פרויקטים לבדיקה)/i.test(visibleBlock) }
+];
+
+const failures = checks.filter((check) => !check.ok).map((check) => check.name);
+const report = {
+	ok: failures.length === 0,
+	pattern: PATTERN,
+	out: OUT,
+	checks,
+	failures
+};
+
+mkdirSync(path.dirname(path.resolve(ROOT, OUT)), { recursive: true });
+writeFileSync(path.resolve(ROOT, OUT), JSON.stringify(report, null, 2), 'utf8');
+console.log(JSON.stringify({ ok: report.ok, failures, out: OUT }, null, 2));
+
+if (process.argv.includes('--strict') && failures.length) process.exitCode = 1;

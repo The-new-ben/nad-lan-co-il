@@ -98,9 +98,10 @@ if ( ! function_exists( 'nadlan_revenue_enqueue_project_showroom_assets' ) ) :
 		$content       = (string) $post->post_content;
 		$has_v1        = false !== strpos( $content, 'data-nlps-showroom' );
 		$has_v2        = false !== strpos( $content, 'data-nlv2-showroom' );
-		$needs_model   = $has_v1 || $has_v2;
+		$has_home      = false !== strpos( $content, 'data-nle-home-showroom' );
+		$needs_model   = $has_v1 || $has_v2 || $has_home;
 
-		if ( ! $has_v1 && ! $has_v2 ) {
+		if ( ! $has_v1 && ! $has_v2 && ! $has_home ) {
 			return;
 		}
 
@@ -124,6 +125,28 @@ if ( ! function_exists( 'nadlan_revenue_enqueue_project_showroom_assets' ) ) :
 					get_parent_theme_file_uri( 'assets/css/nadlan-showroom-v2.css' ),
 					array( 'nadlan-revenue-style' ),
 					(string) filemtime( $showroom_v2_path )
+				);
+			}
+		}
+
+		if ( $has_home ) {
+			$engine_path = get_parent_theme_file_path( 'assets/css/nadlan-showroom-engine.css' );
+			if ( file_exists( $engine_path ) ) {
+				wp_enqueue_style(
+					'nadlan-showroom-engine',
+					get_parent_theme_file_uri( 'assets/css/nadlan-showroom-engine.css' ),
+					array( 'nadlan-revenue-style' ),
+					(string) filemtime( $engine_path )
+				);
+			}
+
+			$home_showroom_path = get_parent_theme_file_path( 'assets/css/nadlan-home-showroom.css' );
+			if ( file_exists( $home_showroom_path ) ) {
+				wp_enqueue_style(
+					'nadlan-home-showroom',
+					get_parent_theme_file_uri( 'assets/css/nadlan-home-showroom.css' ),
+					array( 'nadlan-showroom-engine' ),
+					(string) filemtime( $home_showroom_path )
 				);
 			}
 		}
@@ -156,6 +179,19 @@ if ( ! function_exists( 'nadlan_revenue_enqueue_project_showroom_assets' ) ) :
 					get_parent_theme_file_uri( 'assets/js/nadlan-showroom-v2.js' ),
 					array(),
 					(string) filemtime( $script_v2_path ),
+					true
+				);
+			}
+		}
+
+		if ( $has_home ) {
+			$engine_script_path = get_parent_theme_file_path( 'assets/js/nadlan-showroom-engine.js' );
+			if ( file_exists( $engine_script_path ) ) {
+				wp_enqueue_script(
+					'nadlan-showroom-engine',
+					get_parent_theme_file_uri( 'assets/js/nadlan-showroom-engine.js' ),
+					array(),
+					(string) filemtime( $engine_script_path ),
 					true
 				);
 			}

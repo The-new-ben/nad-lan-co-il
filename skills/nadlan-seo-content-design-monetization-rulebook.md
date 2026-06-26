@@ -472,3 +472,5 @@ Public homepage wording must speak to buyers, families and foreign investors onl
 Multilingual support starts as visible language entry points, but the SEO-ready target is separate crawlable language pages with reciprocal `hreflang` when full translations exist. Do not pretend a language is complete until the translated page content exists.
 
 The reusable data source for homepage project selection is the same project payload used by the showroom: project name, location, media, GLB/poster, units, availability, price estimate and source note. Do not duplicate project facts in homepage-only copy unless the data source cannot yet express them.
+
+Implementation rule: create a theme pattern before touching `templates/home.html`. The pattern marker is `data-nle-home-showroom`; the theme loader must enqueue the shared showroom engine CSS, the homepage CSS, the model-viewer module and the showroom engine JS only when that marker is present. This prevents plugin-lane sprawl and avoids loading showroom assets on unrelated pages.

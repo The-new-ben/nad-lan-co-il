@@ -8,8 +8,9 @@
 		tab: 'plan'
 	};
 	var script = document.currentScript;
-	var projectsUrl = script && script.dataset.projects ? script.dataset.projects : 'assets/engine/projects.json';
-	var assetBase = script && script.dataset.assetBase ? script.dataset.assetBase : './';
+	var rootConfig = document.querySelector('[data-nle-home-showroom], [data-nle-engine-config]');
+	var projectsUrl = script && script.dataset.projects ? script.dataset.projects : rootConfig && rootConfig.dataset.nleProjects ? rootConfig.dataset.nleProjects : 'assets/engine/projects.json';
+	var assetBase = script && script.dataset.assetBase ? script.dataset.assetBase : rootConfig && rootConfig.dataset.nleAssetBase ? rootConfig.dataset.nleAssetBase : './';
 
 	function qs(sel, root) {
 		return (root || document).querySelector(sel);

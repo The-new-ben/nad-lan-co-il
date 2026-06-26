@@ -24,6 +24,7 @@ Run:
 
 ```bash
 npm run qa:home-showroom-preview
+npm run qa:home-showroom-pattern
 ```
 
 Expected:
@@ -58,5 +59,24 @@ Measured:
 - Mobile project section starts at 847.22px, inside the first 900px viewport.
 - Minimum checked public tap target: 34px.
 - Failures: 0.
+- Pattern gate: PASS, `docs/qa/home-showroom-pattern-report.json`.
+- PHP lint: `patterns/nadlan-home-showroom.php` and `functions.php` clean.
+- JS syntax: `assets/js/nadlan-showroom-engine.js`, `scripts/qa-home-showroom-preview.mjs`, and `scripts/qa-home-showroom-pattern.mjs` clean.
 
 Honesty note: this is a preview and QA standard, not a live homepage deployment. The language entries are visible navigation affordances; full multilingual SEO still requires separate translated pages and reciprocal `hreflang` once those pages exist.
+
+## Theme Pattern
+
+The verified composition now has a reusable theme pattern:
+
+- `patterns/nadlan-home-showroom.php`
+
+The pattern is content-only. It does not duplicate the site header and it does not edit `templates/home.html`. The theme asset loader detects `data-nle-home-showroom` and enqueues:
+
+- `assets/css/nadlan-showroom-engine.css`
+- `assets/css/nadlan-home-showroom.css`
+- `assets/js/nadlan-showroom-engine.js`
+
+The engine reads project data from the pattern root via `data-nle-projects`, so the same project JSON remains the source of truth.
+
+The live homepage template is not changed in this slice. The next controlled step is to place `nadlan-revenue/nadlan-home-showroom` into `templates/home.html` or into the WordPress homepage body only after owner approval and another live-equivalent screenshot run.
