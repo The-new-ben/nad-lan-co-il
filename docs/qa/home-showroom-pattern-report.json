@@ -44,6 +44,14 @@
       "ok": true
     },
     {
+      "name": "language_targets",
+      "ok": true
+    },
+    {
+      "name": "buyer_path_cards",
+      "ok": true
+    },
+    {
       "name": "public_buyer_copy",
       "ok": true
     },

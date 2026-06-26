@@ -33,6 +33,8 @@ const checks = [
 	{ name: 'model_mount', ok: pattern.includes('data-nle-model-wrap') },
 	{ name: 'facade_mount', ok: pattern.includes('data-nle-facade-grid') },
 	{ name: 'language_entries', ok: ['English', 'Français', 'Русский', 'العربية'].every((value) => pattern.includes(value)) },
+	{ name: 'language_targets', ok: ['id="english"', 'id="french"', 'id="russian"', 'id="arabic"'].every((value) => pattern.includes(value)) },
+	{ name: 'buyer_path_cards', ok: count(pattern, '<article') >= 12 && pattern.includes('nlh-home-paths') && pattern.includes('מה כדאי לבדוק בכל פרויקט חדש') },
 	{ name: 'public_buyer_copy', ok: /דירה|דירות|פרויקט|פרויקטים|מחיר|אומדן|זמינות/.test(pattern) },
 	{ name: 'home_css_has_mobile_rules', ok: homeCss.includes('@media (max-width: 560px)') },
 	{ name: 'functions_detects_marker', ok: functions.includes("data-nle-home-showroom") },

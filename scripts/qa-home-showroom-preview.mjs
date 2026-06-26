@@ -98,6 +98,8 @@ async function measure(page) {
 			title: document.title,
 			h1s: [...document.querySelectorAll('h1')].map((h) => h.textContent.trim()),
 			languageEntries: document.querySelectorAll('.nlh-home-languages a, .nlh-home-languages span, .nle-langs span').length,
+			languageTargets: ['english', 'french', 'russian', 'arabic'].filter((id) => document.getElementById(id)).length,
+			buyerPathCards: document.querySelectorAll('.nlh-home-paths article').length,
 			projectCards: document.querySelectorAll('[data-nle-project]').length,
 			modelViewerCount: document.querySelectorAll('model-viewer').length,
 			modelViewerDefined: !!customElements.get('model-viewer'),
@@ -122,6 +124,8 @@ function failuresFor(viewName, before, after, errors, viewportHeight) {
 	if (errors.length) failures.push(`${viewName}: console/page errors: ${errors.join(' | ')}`);
 	if (before.h1s.length !== 1) failures.push(`${viewName}: expected one H1, got ${before.h1s.length}`);
 	if (before.languageEntries < 5) failures.push(`${viewName}: expected at least 5 language entries`);
+	if (before.languageTargets < 4) failures.push(`${viewName}: expected four language target cards`);
+	if (before.buyerPathCards < 4) failures.push(`${viewName}: expected four buyer path cards`);
 	if (before.projectCards < 3) failures.push(`${viewName}: expected at least 3 project cards`);
 	if (before.modelViewerCount !== 1) failures.push(`${viewName}: expected one model-viewer`);
 	if (!before.modelViewerDefined) failures.push(`${viewName}: model-viewer custom element not defined`);

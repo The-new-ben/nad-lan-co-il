@@ -11,6 +11,8 @@
           "בודקים פרויקט, דירה וסביבה לפני שמתקדמים."
         ],
         "languageEntries": 10,
+        "languageTargets": 4,
+        "buyerPathCards": 4,
         "projectCards": 3,
         "modelViewerCount": 1,
         "modelViewerDefined": true,
@@ -26,19 +28,19 @@
         "hasInternalWords": false,
         "catalog": {
           "x": 80,
-          "y": 656.9375,
+          "y": 672.9375,
           "width": 1280,
           "height": 511.28125,
           "right": 1360,
-          "bottom": 1168.21875
+          "bottom": 1184.21875
         },
         "showroom": {
           "x": 80,
-          "y": 1264.21875,
+          "y": 1280.21875,
           "width": 1280,
           "height": 1016.375,
           "right": 1360,
-          "bottom": 2280.59375
+          "bottom": 2296.59375
         }
       },
       "after": {
@@ -47,6 +49,8 @@
           "בודקים פרויקט, דירה וסביבה לפני שמתקדמים."
         ],
         "languageEntries": 10,
+        "languageTargets": 4,
+        "buyerPathCards": 4,
         "projectCards": 3,
         "modelViewerCount": 1,
         "modelViewerDefined": true,
@@ -87,6 +91,8 @@
           "בודקים פרויקט, דירה וסביבה לפני שמתקדמים."
         ],
         "languageEntries": 10,
+        "languageTargets": 4,
+        "buyerPathCards": 4,
         "projectCards": 3,
         "modelViewerCount": 1,
         "modelViewerDefined": true,
@@ -102,19 +108,19 @@
         "hasInternalWords": false,
         "catalog": {
           "x": 16,
-          "y": 693.21875,
+          "y": 709.21875,
           "width": 736,
           "height": 1745.46875,
           "right": 752,
-          "bottom": 2438.6875
+          "bottom": 2454.6875
         },
         "showroom": {
           "x": 16,
-          "y": 2576.6875,
+          "y": 2592.6875,
           "width": 736,
           "height": 1487.5,
           "right": 752,
-          "bottom": 4064.1875
+          "bottom": 4080.1875
         }
       },
       "after": {
@@ -123,6 +129,8 @@
           "בודקים פרויקט, דירה וסביבה לפני שמתקדמים."
         ],
         "languageEntries": 10,
+        "languageTargets": 4,
+        "buyerPathCards": 4,
         "projectCards": 3,
         "modelViewerCount": 1,
         "modelViewerDefined": true,
@@ -163,6 +171,8 @@
           "בודקים פרויקט, דירה וסביבה לפני שמתקדמים."
         ],
         "languageEntries": 10,
+        "languageTargets": 4,
+        "buyerPathCards": 4,
         "projectCards": 3,
         "modelViewerCount": 1,
         "modelViewerDefined": true,
@@ -178,19 +188,19 @@
         "hasInternalWords": false,
         "catalog": {
           "x": 10,
-          "y": 847.21875,
+          "y": 863.21875,
           "width": 370,
           "height": 1155.390625,
           "right": 380,
-          "bottom": 2002.609375
+          "bottom": 2018.609375
         },
         "showroom": {
           "x": 10,
-          "y": 2209.609375,
+          "y": 2225.609375,
           "width": 370,
           "height": 1615.6875,
           "right": 380,
-          "bottom": 3825.296875
+          "bottom": 3841.296875
         }
       },
       "after": {
@@ -199,6 +209,8 @@
           "בודקים פרויקט, דירה וסביבה לפני שמתקדמים."
         ],
         "languageEntries": 10,
+        "languageTargets": 4,
+        "buyerPathCards": 4,
         "projectCards": 3,
         "modelViewerCount": 1,
         "modelViewerDefined": true,
@@ -239,6 +251,8 @@
           "בודקים פרויקט, דירה וסביבה לפני שמתקדמים."
         ],
         "languageEntries": 10,
+        "languageTargets": 4,
+        "buyerPathCards": 4,
         "projectCards": 3,
         "modelViewerCount": 1,
         "modelViewerDefined": true,
@@ -254,19 +268,19 @@
         "hasInternalWords": false,
         "catalog": {
           "x": 10,
-          "y": 847.21875,
+          "y": 863.21875,
           "width": 370,
           "height": 1155.390625,
           "right": 380,
-          "bottom": 2002.609375
+          "bottom": 2018.609375
         },
         "showroom": {
           "x": 10,
-          "y": 2209.609375,
+          "y": 2225.609375,
           "width": 370,
           "height": 1615.6875,
           "right": 380,
-          "bottom": 3825.296875
+          "bottom": 3841.296875
         }
       },
       "after": {
@@ -275,6 +289,8 @@
           "בודקים פרויקט, דירה וסביבה לפני שמתקדמים."
         ],
         "languageEntries": 10,
+        "languageTargets": 4,
+        "buyerPathCards": 4,
         "projectCards": 3,
         "modelViewerCount": 1,
         "modelViewerDefined": true,

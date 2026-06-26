@@ -141,6 +141,66 @@ $projects_js = $theme_uri . 'assets/engine/projects.json';
 				<p>המסלול הרב לשוני ייבנה כעמודים נפרדים עם קישורים הדדיים.</p>
 			</article>
 		</section>
+
+		<section class="nlh-home-paths" aria-labelledby="nlh-home-paths-title">
+			<div class="nlh-section-head">
+				<span>לפני שמחליטים</span>
+				<h2 id="nlh-home-paths-title">מה כדאי לבדוק בכל פרויקט חדש</h2>
+				<p>העמוד נותן לקונים דרך קצרה להשוות פרויקטים, להבין את הדירה, ולראות אילו שאלות כדאי לשאול לפני פנייה.</p>
+			</div>
+			<div class="nlh-path-grid">
+				<article>
+					<span>01</span>
+					<strong>זמינות ומיקום הדירה</strong>
+					<p>בדקו באיזו קומה נמצאת הדירה, מה הכיוון שלה, האם הנוף פתוח, ואילו דירות דומות עדיין מוצגות בפרויקט.</p>
+				</article>
+				<article>
+					<span>02</span>
+					<strong>אומדן מחיר ועלויות נוספות</strong>
+					<p>השוו אומדן לא מחייב, תנאי תשלום, מס רכישה, הצמדה למדד, חניה, מחסן ועלויות נלוות לפני קבלת החלטה.</p>
+				</article>
+				<article>
+					<span>03</span>
+					<strong>סביבה, תחבורה ושירותים</strong>
+					<p>בדקו קרבה לים, פארקים, תחבורה ציבורית, בתי ספר, גני ילדים, מרכזים מסחריים ותוכניות עתידיות באזור.</p>
+				</article>
+				<article>
+					<span>04</span>
+					<strong>מסמכים לפני חתימה</strong>
+					<p>לפני התחייבות, חשוב לבדוק מפרט, תוכנית מכר, לוח תשלומים, ערבויות, מועדי מסירה וזכויות בנייה.</p>
+				</article>
+			</div>
+		</section>
+
+		<section class="nlh-home-international" aria-labelledby="nlh-international-title">
+			<div class="nlh-section-head">
+				<span>רוכשים מחו״ל</span>
+				<h2 id="nlh-international-title">מידע ברור גם באנגלית, צרפתית, רוסית וערבית</h2>
+				<p>כל שפה תקבל בהמשך עמוד מלא משלה. בשלב הזה הכניסה הרב לשונית מציגה את ההבטחה לקונה בשפה שהוא מבין.</p>
+			</div>
+			<div class="nlh-language-grid">
+				<article class="nlh-language-card" id="english" lang="en" dir="ltr">
+					<span>English</span>
+					<strong>Compare new projects in Israel before you call.</strong>
+					<p>Check the location, apartment level, view, estimated price and next documents to review before speaking with a representative.</p>
+				</article>
+				<article class="nlh-language-card" id="french" lang="fr" dir="ltr">
+					<span>Français</span>
+					<strong>Comparer un projet avant de demander des détails.</strong>
+					<p>Emplacement, étage, vue, estimation de prix et documents à vérifier sont réunis dans un parcours clair.</p>
+				</article>
+				<article class="nlh-language-card" id="russian" lang="ru" dir="ltr">
+					<span>Русский</span>
+					<strong>Сравните проект до первого звонка.</strong>
+					<p>Расположение, этаж, вид, ориентир цены и документы собраны в одном понятном пути для покупателя.</p>
+				</article>
+				<article class="nlh-language-card" id="arabic" lang="ar" dir="rtl">
+					<span>العربية</span>
+					<strong>قارنوا المشروع قبل التواصل.</strong>
+					<p>الموقع، الطابق، الإطلالة، تقدير السعر والمستندات الأساسية تظهر في مسار واضح قبل اتخاذ قرار.</p>
+				</article>
+			</div>
+		</section>
 	</main>
 </div>
 <!-- /wp:html -->

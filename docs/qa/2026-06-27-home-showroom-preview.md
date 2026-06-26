@@ -32,6 +32,8 @@ Expected:
 - 4 Chrome screenshots: desktop, tablet, mobile, Edge-mobile UA.
 - One H1.
 - At least 5 language entries.
+- 4 real language target sections.
+- 4 buyer-path cards.
 - At least 3 project cards.
 - Project section visible in the first viewport.
 - No horizontal overflow.
@@ -56,7 +58,9 @@ Screenshots:
 Measured:
 
 - Desktop project section starts at 656.94px.
-- Mobile project section starts at 847.22px, inside the first 900px viewport.
+- Mobile project section starts at 863.22px, inside the first 900px viewport.
+- Desktop buyer-path cards: 4.
+- Desktop language target sections: 4.
 - Minimum checked public tap target: 34px.
 - Failures: 0.
 - Pattern gate: PASS, `docs/qa/home-showroom-pattern-report.json`.
@@ -72,7 +76,7 @@ The verified composition now has a reusable theme pattern:
 
 - `patterns/nadlan-home-showroom.php`
 
-The pattern is content-only. It does not duplicate the site header and it does not edit `templates/home.html`. The theme asset loader detects `data-nle-home-showroom` and enqueues:
+The pattern is content-only and does not duplicate the site header. The branch homepage template now places this pattern between the normal header and footer. The theme asset loader detects `data-nle-home-showroom` or the homepage template placement and enqueues:
 
 - `assets/css/nadlan-showroom-engine.css`
 - `assets/css/nadlan-home-showroom.css`
@@ -80,4 +84,4 @@ The pattern is content-only. It does not duplicate the site header and it does n
 
 The engine reads project data from the pattern root via `data-nle-projects`, so the same project JSON remains the source of truth.
 
-The branch homepage template is now changed to use `nadlan-revenue/nadlan-home-showroom` between the normal header and footer. This is not deployed live. The next controlled step before production is a live-equivalent WordPress render check after the branch is installed or previewed in WordPress.
+This is not deployed live. The next controlled step before production is a live-equivalent WordPress render check after the branch is installed or previewed in WordPress.
