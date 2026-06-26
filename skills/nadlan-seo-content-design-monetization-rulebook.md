@@ -463,3 +463,12 @@ TOFU: "המשיכו לקרוא" / "ראו את הנתונים". MOFU: "בדקו 
 8. הרחבה שיטתית לעיר/אזור הבא רק אחרי הוכחת מודל.
 
 > סוף מסמך. לתחזק כ-Skill חי: כל כלל חדש שמתגלה בבנייה — להוסיף לכאן, כך שכל עמוד עתידי נבנה לפי אותם חוקים.
+## 2026-06-27 Homepage Showroom Rule
+
+For the homepage, the multi-project showroom belongs above the fold but not at the absolute top. The first band should say what the site does for buyers and investors, include a compact search path, and then immediately show project cards plus the apartment-selection experience.
+
+Public homepage wording must speak to buyers, families and foreign investors only: projects, apartments, availability, price estimates, neighborhood, view, comparison and documents. Do not expose internal terms such as SEO, CMS, engine, leads, funnel, monetization, strategy, template, project manager or supplier.
+
+Multilingual support starts as visible language entry points, but the SEO-ready target is separate crawlable language pages with reciprocal `hreflang` when full translations exist. Do not pretend a language is complete until the translated page content exists.
+
+The reusable data source for homepage project selection is the same project payload used by the showroom: project name, location, media, GLB/poster, units, availability, price estimate and source note. Do not duplicate project facts in homepage-only copy unless the data source cannot yet express them.

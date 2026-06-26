@@ -30,6 +30,7 @@
 		"build": "postcss style.css --use cssnano -o style.min.css --no-map",
 		"watch": "postcss style.css --use cssnano -o style.min.css --no-map --watch",
 		"qa:showroom-engine-preview": "node scripts/qa-showroom-engine-preview.mjs --strict",
+		"qa:home-showroom-preview": "node scripts/qa-home-showroom-preview.mjs --strict",
 		"qa:showroom-v2-preview": "node scripts/qa-showroom-v2-preview.mjs --strict",
 		"qa:ashira-factory-readiness": "node scripts/qa-ashira-factory-readiness.mjs --strict",
 		"qa:ashira-draft-readiness": "node scripts/qa-wp-draft-payload.mjs --draft docs/wp-drafts/ashira-sde-dov-v2-draft.json --payload assets/projects/ashira-sde-dov/showroom-payload.json --out docs/qa/ashira-v2-draft-readiness-report.json --strict"

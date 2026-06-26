@@ -1,0 +1,312 @@
+{
+  "ok": true,
+  "preview": "docs/previews/nadlan-home-showroom-preview.html",
+  "out_dir": "C:\\Users\\pro\\Documents\\websites\\nad-lan-co-il-showroom-1680\\docs\\qa\\screenshots\\home-showroom-preview-2026-06-27",
+  "viewports": [
+    {
+      "name": "desktop-1440",
+      "before": {
+        "title": "NadLan | דירות חדשות, פרויקטים והשוואת דירות בישראל",
+        "h1s": [
+          "בודקים פרויקט, דירה וסביבה לפני שמתקדמים."
+        ],
+        "languageEntries": 10,
+        "projectCards": 3,
+        "modelViewerCount": 1,
+        "modelViewerDefined": true,
+        "facadeCells": 6,
+        "activeCells": 2,
+        "overflow": 0,
+        "minTap": 34,
+        "smallTargets": [],
+        "hasHebrew": true,
+        "hasForeignBuyerSignal": true,
+        "hasBuyerWords": true,
+        "hasMojibake": false,
+        "hasInternalWords": false,
+        "catalog": {
+          "x": 80,
+          "y": 656.9375,
+          "width": 1280,
+          "height": 511.28125,
+          "right": 1360,
+          "bottom": 1168.21875
+        },
+        "showroom": {
+          "x": 80,
+          "y": 1264.21875,
+          "width": 1280,
+          "height": 1016.375,
+          "right": 1360,
+          "bottom": 2280.59375
+        }
+      },
+      "after": {
+        "title": "NadLan | דירות חדשות, פרויקטים והשוואת דירות בישראל",
+        "h1s": [
+          "בודקים פרויקט, דירה וסביבה לפני שמתקדמים."
+        ],
+        "languageEntries": 10,
+        "projectCards": 3,
+        "modelViewerCount": 1,
+        "modelViewerDefined": true,
+        "facadeCells": 4,
+        "activeCells": 2,
+        "overflow": 0,
+        "minTap": 34,
+        "smallTargets": [],
+        "hasHebrew": true,
+        "hasForeignBuyerSignal": true,
+        "hasBuyerWords": true,
+        "hasMojibake": false,
+        "hasInternalWords": false,
+        "catalog": {
+          "x": 80,
+          "y": -599.0625,
+          "width": 1280,
+          "height": 511.28125,
+          "right": 1360,
+          "bottom": -87.78125
+        },
+        "showroom": {
+          "x": 80,
+          "y": 8.21875,
+          "width": 1280,
+          "height": 993.375,
+          "right": 1360,
+          "bottom": 1001.59375
+        }
+      },
+      "failures": []
+    },
+    {
+      "name": "tablet-768",
+      "before": {
+        "title": "NadLan | דירות חדשות, פרויקטים והשוואת דירות בישראל",
+        "h1s": [
+          "בודקים פרויקט, דירה וסביבה לפני שמתקדמים."
+        ],
+        "languageEntries": 10,
+        "projectCards": 3,
+        "modelViewerCount": 1,
+        "modelViewerDefined": true,
+        "facadeCells": 6,
+        "activeCells": 2,
+        "overflow": 0,
+        "minTap": 34,
+        "smallTargets": [],
+        "hasHebrew": true,
+        "hasForeignBuyerSignal": true,
+        "hasBuyerWords": true,
+        "hasMojibake": false,
+        "hasInternalWords": false,
+        "catalog": {
+          "x": 16,
+          "y": 693.21875,
+          "width": 736,
+          "height": 1745.46875,
+          "right": 752,
+          "bottom": 2438.6875
+        },
+        "showroom": {
+          "x": 16,
+          "y": 2576.6875,
+          "width": 736,
+          "height": 1487.5,
+          "right": 752,
+          "bottom": 4064.1875
+        }
+      },
+      "after": {
+        "title": "NadLan | דירות חדשות, פרויקטים והשוואת דירות בישראל",
+        "h1s": [
+          "בודקים פרויקט, דירה וסביבה לפני שמתקדמים."
+        ],
+        "languageEntries": 10,
+        "projectCards": 3,
+        "modelViewerCount": 1,
+        "modelViewerDefined": true,
+        "facadeCells": 4,
+        "activeCells": 2,
+        "overflow": 0,
+        "minTap": 34,
+        "smallTargets": [],
+        "hasHebrew": true,
+        "hasForeignBuyerSignal": true,
+        "hasBuyerWords": true,
+        "hasMojibake": false,
+        "hasInternalWords": false,
+        "catalog": {
+          "x": 16,
+          "y": -2440.78125,
+          "width": 736,
+          "height": 1745.46875,
+          "right": 752,
+          "bottom": -695.3125
+        },
+        "showroom": {
+          "x": 16,
+          "y": -557.3125,
+          "width": 736,
+          "height": 1487.5,
+          "right": 752,
+          "bottom": 930.1875
+        }
+      },
+      "failures": []
+    },
+    {
+      "name": "mobile-390",
+      "before": {
+        "title": "NadLan | דירות חדשות, פרויקטים והשוואת דירות בישראל",
+        "h1s": [
+          "בודקים פרויקט, דירה וסביבה לפני שמתקדמים."
+        ],
+        "languageEntries": 10,
+        "projectCards": 3,
+        "modelViewerCount": 1,
+        "modelViewerDefined": true,
+        "facadeCells": 6,
+        "activeCells": 2,
+        "overflow": 0,
+        "minTap": 34,
+        "smallTargets": [],
+        "hasHebrew": true,
+        "hasForeignBuyerSignal": true,
+        "hasBuyerWords": true,
+        "hasMojibake": false,
+        "hasInternalWords": false,
+        "catalog": {
+          "x": 10,
+          "y": 847.21875,
+          "width": 370,
+          "height": 1155.390625,
+          "right": 380,
+          "bottom": 2002.609375
+        },
+        "showroom": {
+          "x": 10,
+          "y": 2209.609375,
+          "width": 370,
+          "height": 1615.6875,
+          "right": 380,
+          "bottom": 3825.296875
+        }
+      },
+      "after": {
+        "title": "NadLan | דירות חדשות, פרויקטים והשוואת דירות בישראל",
+        "h1s": [
+          "בודקים פרויקט, דירה וסביבה לפני שמתקדמים."
+        ],
+        "languageEntries": 10,
+        "projectCards": 3,
+        "modelViewerCount": 1,
+        "modelViewerDefined": true,
+        "facadeCells": 4,
+        "activeCells": 2,
+        "overflow": 0,
+        "minTap": 34,
+        "smallTargets": [],
+        "hasHebrew": true,
+        "hasForeignBuyerSignal": true,
+        "hasBuyerWords": true,
+        "hasMojibake": false,
+        "hasInternalWords": false,
+        "catalog": {
+          "x": 10,
+          "y": -2100.78125,
+          "width": 370,
+          "height": 1155.390625,
+          "right": 380,
+          "bottom": -945.390625
+        },
+        "showroom": {
+          "x": 10,
+          "y": -738.390625,
+          "width": 370,
+          "height": 1587.96875,
+          "right": 380,
+          "bottom": 849.578125
+        }
+      },
+      "failures": []
+    },
+    {
+      "name": "edge-mobile-390",
+      "before": {
+        "title": "NadLan | דירות חדשות, פרויקטים והשוואת דירות בישראל",
+        "h1s": [
+          "בודקים פרויקט, דירה וסביבה לפני שמתקדמים."
+        ],
+        "languageEntries": 10,
+        "projectCards": 3,
+        "modelViewerCount": 1,
+        "modelViewerDefined": true,
+        "facadeCells": 6,
+        "activeCells": 2,
+        "overflow": 0,
+        "minTap": 34,
+        "smallTargets": [],
+        "hasHebrew": true,
+        "hasForeignBuyerSignal": true,
+        "hasBuyerWords": true,
+        "hasMojibake": false,
+        "hasInternalWords": false,
+        "catalog": {
+          "x": 10,
+          "y": 847.21875,
+          "width": 370,
+          "height": 1155.390625,
+          "right": 380,
+          "bottom": 2002.609375
+        },
+        "showroom": {
+          "x": 10,
+          "y": 2209.609375,
+          "width": 370,
+          "height": 1615.6875,
+          "right": 380,
+          "bottom": 3825.296875
+        }
+      },
+      "after": {
+        "title": "NadLan | דירות חדשות, פרויקטים והשוואת דירות בישראל",
+        "h1s": [
+          "בודקים פרויקט, דירה וסביבה לפני שמתקדמים."
+        ],
+        "languageEntries": 10,
+        "projectCards": 3,
+        "modelViewerCount": 1,
+        "modelViewerDefined": true,
+        "facadeCells": 4,
+        "activeCells": 2,
+        "overflow": 0,
+        "minTap": 34,
+        "smallTargets": [],
+        "hasHebrew": true,
+        "hasForeignBuyerSignal": true,
+        "hasBuyerWords": true,
+        "hasMojibake": false,
+        "hasInternalWords": false,
+        "catalog": {
+          "x": 10,
+          "y": -2100.78125,
+          "width": 370,
+          "height": 1155.390625,
+          "right": 380,
+          "bottom": -945.390625
+        },
+        "showroom": {
+          "x": 10,
+          "y": -738.390625,
+          "width": 370,
+          "height": 1587.96875,
+          "right": 380,
+          "bottom": 849.578125
+        }
+      },
+      "failures": []
+    }
+  ],
+  "failures": []
+}

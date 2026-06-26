@@ -1,0 +1,501 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>NadLan | דירות חדשות, פרויקטים והשוואת דירות בישראל</title>
+	<link rel="icon" href="data:,">
+	<link rel="stylesheet" href="../../assets/css/nadlan-showroom-engine.css">
+	<script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
+	<style>
+		.nlh-home {
+			--home-card: #fffaf0;
+			--home-ink: #17201d;
+			--home-muted: #6e6a5f;
+			--home-line: #ded5c3;
+			--home-gold: #d2a84b;
+			--home-deep: #082626;
+			background:
+				radial-gradient(circle at 8% 12%, rgba(210, 168, 75, .18), transparent 28rem),
+				linear-gradient(180deg, #f8f2e6 0%, #f2eddf 52%, #eee6d7 100%);
+			min-height: 100vh;
+		}
+
+		.nlh-home .nle-topbar {
+			padding-top: 20px;
+			padding-bottom: 14px;
+		}
+
+		.nlh-home-main {
+			width: min(1280px, calc(100vw - 32px));
+			margin: 0 auto;
+		}
+
+		.nlh-home-hero {
+			display: block;
+			margin: 4px 0 18px;
+		}
+
+		.nlh-home-panel,
+		.nlh-home-search,
+		.nlh-home-languages,
+		.nlh-home-trust {
+			border: 1px solid var(--home-line);
+			border-radius: 22px;
+			background: rgba(255, 250, 240, .92);
+			box-shadow: 0 18px 46px rgba(47, 38, 20, .08);
+		}
+
+		.nlh-home-panel {
+			padding: clamp(22px, 4vw, 44px);
+			min-height: 0;
+		}
+
+		.nlh-home-eyebrow {
+			display: inline-flex;
+			color: #9b7628;
+			font-weight: 900;
+			letter-spacing: .12em;
+			font-size: 13px;
+			text-transform: uppercase;
+			margin-bottom: 12px;
+		}
+
+		.nlh-home h1 {
+			margin: 0 0 14px;
+			font-family: "Frank Ruhl Libre", serif;
+			font-size: clamp(42px, 5.8vw, 76px);
+			line-height: .98;
+			letter-spacing: 0;
+			color: var(--home-ink);
+		}
+
+		.nlh-home-lead {
+			margin: 0;
+			color: var(--home-muted);
+			font-size: clamp(17px, 1.7vw, 20px);
+			line-height: 1.75;
+			max-width: 760px;
+		}
+
+		.nlh-home-actions {
+			display: flex;
+			flex-wrap: wrap;
+			gap: 10px;
+			margin-top: 16px;
+		}
+
+		.nlh-home-button {
+			display: inline-flex;
+			align-items: center;
+			justify-content: center;
+			min-height: 46px;
+			border: 1px solid var(--home-line);
+			border-radius: 999px;
+			padding: 0 18px;
+			background: #fff;
+			color: var(--home-deep);
+			text-decoration: none;
+			font-weight: 900;
+		}
+
+		.nlh-home-button.is-primary {
+			background: var(--home-deep);
+			border-color: var(--home-deep);
+			color: #f6df9a;
+		}
+
+		.nlh-home-search {
+			padding: 22px;
+			display: flex;
+			flex-direction: column;
+			justify-content: space-between;
+			gap: 16px;
+			background:
+				linear-gradient(135deg, rgba(4, 30, 30, .96), rgba(8, 52, 51, .96)),
+				radial-gradient(circle at 20% 20%, rgba(210, 168, 75, .28), transparent 36%);
+			color: #fbf6e8;
+		}
+
+		.nlh-home-search h2 {
+			margin: 0 0 8px;
+			font-family: "Frank Ruhl Libre", serif;
+			font-size: clamp(27px, 3.3vw, 42px);
+			line-height: 1.05;
+			color: #fbf6e8;
+		}
+
+		.nlh-home-search p {
+			margin: 0;
+			color: #d7cfb6;
+			line-height: 1.65;
+			font-size: 16px;
+		}
+
+		.nlh-search-row {
+			display: grid;
+			grid-template-columns: 1.2fr .8fr auto;
+			gap: 10px;
+			align-items: end;
+		}
+
+		.nlh-home-inline-search {
+			margin-top: 18px;
+			padding: 14px;
+			border: 1px solid rgba(8, 38, 38, .14);
+			border-radius: 18px;
+			background: rgba(255, 255, 255, .66);
+		}
+
+		.nlh-home-inline-search .nlh-search-field label {
+			color: #9b7628;
+		}
+
+		.nlh-home-inline-search .nlh-search-field input,
+		.nlh-home-inline-search .nlh-search-field select {
+			border-color: rgba(8, 38, 38, .16);
+			background: #fff;
+			color: #17201d;
+		}
+
+		.nlh-search-field {
+			display: grid;
+			gap: 5px;
+		}
+
+		.nlh-search-field label {
+			color: #f0dfad;
+			font-size: 12px;
+			font-weight: 900;
+		}
+
+		.nlh-search-field input,
+		.nlh-search-field select {
+			min-height: 45px;
+			border: 1px solid rgba(240, 223, 173, .26);
+			border-radius: 13px;
+			background: rgba(255, 255, 255, .08);
+			color: #fff7df;
+			font: inherit;
+			padding: 0 13px;
+		}
+
+		.nlh-search-field option {
+			color: #17201d;
+		}
+
+		.nlh-home-search button {
+			min-height: 45px;
+			border: 0;
+			border-radius: 13px;
+			background: linear-gradient(180deg, #f2d98d, #d2a84b);
+			color: #17201d;
+			font: inherit;
+			font-weight: 900;
+			padding: 0 17px;
+			cursor: pointer;
+		}
+
+		.nlh-home-inline-search button {
+			min-height: 45px;
+			border: 0;
+			border-radius: 13px;
+			background: linear-gradient(180deg, #f2d98d, #d2a84b);
+			color: #17201d;
+			font: inherit;
+			font-weight: 900;
+			padding: 0 17px;
+			cursor: pointer;
+		}
+
+		.nlh-home-languages {
+			display: grid;
+			grid-template-columns: 1.1fr repeat(5, auto);
+			gap: 8px;
+			align-items: center;
+			padding: 12px 16px;
+			margin-bottom: 18px;
+		}
+
+		.nlh-home-languages strong {
+			color: var(--home-ink);
+			font-size: 15px;
+		}
+
+		.nlh-home-languages a,
+		.nlh-home-languages span {
+			display: inline-flex;
+			justify-content: center;
+			align-items: center;
+			min-height: 34px;
+			border: 1px solid var(--home-line);
+			border-radius: 999px;
+			padding: 0 12px;
+			background: #fff;
+			color: var(--home-muted);
+			text-decoration: none;
+			font-weight: 900;
+			font-size: 13px;
+		}
+
+		.nlh-home-languages .is-active {
+			background: var(--home-deep);
+			color: #f6df9a;
+			border-color: var(--home-deep);
+		}
+
+		.nlh-home .nle-catalog {
+			margin-top: 0;
+			margin-bottom: 18px;
+		}
+
+		.nlh-home .nle-catalog-head {
+			align-items: end;
+		}
+
+		.nlh-home .nle-catalog-head p {
+			margin: 6px 0 0;
+			color: var(--home-muted);
+			line-height: 1.55;
+			max-width: 720px;
+		}
+
+		.nlh-home .nle-showroom {
+			margin-top: 18px;
+		}
+
+		.nlh-home-trust {
+			margin: 20px 0 36px;
+			padding: 18px;
+			display: grid;
+			grid-template-columns: repeat(4, minmax(0, 1fr));
+			gap: 12px;
+		}
+
+		.nlh-home-trust article {
+			border: 1px solid var(--home-line);
+			border-radius: 18px;
+			background: #fffef8;
+			padding: 18px;
+		}
+
+		.nlh-home-trust span {
+			display: block;
+			color: #9b7628;
+			font-size: 12px;
+			font-weight: 900;
+			margin-bottom: 8px;
+		}
+
+		.nlh-home-trust strong {
+			display: block;
+			font-family: "Frank Ruhl Libre", serif;
+			font-size: 24px;
+			line-height: 1.15;
+			color: var(--home-ink);
+		}
+
+		.nlh-home-trust p {
+			margin: 8px 0 0;
+			color: var(--home-muted);
+			line-height: 1.55;
+			font-size: 14px;
+		}
+
+		@media (max-width: 900px) {
+			.nlh-home-hero {
+				grid-template-columns: 1fr;
+			}
+
+			.nlh-home-languages {
+				grid-template-columns: 1fr repeat(3, auto);
+			}
+
+			.nlh-search-row {
+				grid-template-columns: 1fr;
+			}
+
+			.nlh-home-trust {
+				grid-template-columns: repeat(2, minmax(0, 1fr));
+			}
+		}
+
+		@media (max-width: 560px) {
+			.nlh-home-main,
+			.nlh-home .nle-topbar {
+				width: min(100% - 20px, 1280px);
+			}
+
+			.nlh-home-panel {
+				min-height: auto;
+			}
+
+			.nlh-home-languages {
+				grid-template-columns: 1fr 1fr;
+			}
+
+			.nlh-home-languages strong {
+				grid-column: 1 / -1;
+			}
+
+			.nlh-home-trust {
+				grid-template-columns: 1fr;
+			}
+		}
+	</style>
+</head>
+<body>
+<div class="nle-page nlh-home">
+	<header class="nle-topbar">
+		<div class="nle-brand">
+			<span class="nle-logo">NadLan</span>
+			<span class="nle-kicker">ISRAEL HOMES</span>
+		</div>
+		<nav class="nle-nav" aria-label="ניווט ראשי">
+			<a href="#projects">פרויקטים</a>
+			<a href="#showroom">בחירת דירה</a>
+			<a href="#buyers">מדריך קנייה</a>
+		</nav>
+		<div class="nle-langs" aria-label="שפות">
+			<span class="is-active">HE</span><span>EN</span><span>FR</span><span>RU</span><span>AR</span>
+		</div>
+	</header>
+
+	<main class="nlh-home-main">
+		<section class="nlh-home-hero" aria-labelledby="nlh-home-title">
+			<div class="nlh-home-panel">
+				<span class="nlh-home-eyebrow">נדל״ן בישראל, פרויקטים ודירות חדשות</span>
+				<h1 id="nlh-home-title">בודקים פרויקט, דירה וסביבה לפני שמתקדמים.</h1>
+				<p class="nlh-home-lead">השוו פרויקטים חדשים, בדקו זמינות לפי קומה ונוף, ראו אומדן לא מחייב וקבלו תמונה ברורה יותר לפני שיחה עם נציג. מתאים לקונים בישראל וגם למשקיעים מחו״ל שרוצים להבין את המקום, המחיר והמסמכים לפני החלטה.</p>
+				<form class="nlh-search-row nlh-home-inline-search">
+					<div class="nlh-search-field">
+						<label for="nlh-area">אזור</label>
+						<input id="nlh-area" type="search" value="שדה דב, תל אביב" aria-label="אזור לחיפוש">
+					</div>
+					<div class="nlh-search-field">
+						<label for="nlh-type">מה מחפשים</label>
+						<select id="nlh-type" aria-label="סוג חיפוש">
+							<option>דירות חדשות</option>
+							<option>דירות להשקעה</option>
+							<option>דירות ליד הים</option>
+						</select>
+					</div>
+					<button type="button">בדקו עכשיו</button>
+				</form>
+				<div class="nlh-home-actions">
+					<a class="nlh-home-button is-primary" href="#projects">השוו פרויקטים</a>
+					<a class="nlh-home-button" href="#showroom">בחרו דירה לדוגמה</a>
+				</div>
+			</div>
+		</section>
+
+		<section class="nle-catalog" id="projects" aria-labelledby="nle-projects-title">
+			<div class="nle-catalog-head">
+				<div>
+					<h2 id="nle-projects-title">פרויקטים שאפשר לבדוק עכשיו</h2>
+					<p>בחרו פרויקט, עברו לדגם התלת ממדי, ואז בדקו דירה לפי קומה, נוף, שטח ואומדן מחיר. זה אזור הבחירה המרכזי של דף הבית, מיד אחרי פתיחת העמוד.</p>
+					<p class="nle-note" data-nle-project-count>טוען פרויקטים</p>
+				</div>
+				<input class="nle-search" type="search" placeholder="חיפוש לפי פרויקט או אזור" data-nle-search>
+			</div>
+			<div class="nle-project-grid" data-nle-project-grid></div>
+		</section>
+
+		<section class="nlh-home-languages" aria-label="שפות למשקיעים מחו״ל">
+			<strong>מידע לרוכשים מחו״ל, בשפה שמתאימה להם</strong>
+			<span class="is-active">עברית</span>
+			<a href="#english">English</a>
+			<a href="#french">Français</a>
+			<a href="#russian">Русский</a>
+			<a href="#arabic">العربية</a>
+		</section>
+
+		<section class="nle-showroom" id="showroom" aria-label="בחירת דירה בפרויקט">
+			<div class="nle-model">
+				<div class="nle-model-head">
+					<div>
+						<span class="nle-badge" data-nle-project-location>רובע שדה דב</span>
+						<h2 data-nle-project-title>טוען פרויקט</h2>
+						<p data-nle-project-sub>טוען תיאור פרויקט</p>
+					</div>
+					<span class="nle-badge">סובבו מודל ובחרו דירה</span>
+				</div>
+				<div data-nle-model-wrap></div>
+			</div>
+
+			<aside class="nle-side" id="buyers">
+				<article class="nle-unit-card" aria-live="polite">
+					<header>
+						<div>
+							<span class="nle-status" data-nle-unit-status>זמינה</span>
+							<h3 data-nle-unit-title>בחרו דירה</h3>
+						</div>
+						<div class="nle-stat"><span>קומה</span><strong data-nle-unit-floor>--</strong></div>
+					</header>
+					<div class="nle-facts">
+						<div class="nle-fact"><span>חדרים</span><strong data-nle-unit-rooms>--</strong></div>
+						<div class="nle-fact"><span>שטח</span><strong data-nle-unit-sqm>--</strong></div>
+						<div class="nle-fact"><span>נוף</span><strong data-nle-unit-view>--</strong></div>
+						<div class="nle-fact"><span>אומדן</span><strong data-nle-unit-price>לפי פנייה</strong></div>
+					</div>
+					<div class="nle-tabs" role="tablist" aria-label="מידע על הדירה">
+						<button class="is-active" type="button" data-nle-tab="plan">תוכנית</button>
+						<button type="button" data-nle-tab="view">מבט</button>
+						<button type="button" data-nle-tab="tour">סיור</button>
+					</div>
+					<div class="nle-panel" data-nle-panel>בחרו דירה כדי לראות מידע.</div>
+					<p class="nle-note" data-nle-model-note></p>
+				</article>
+
+				<section class="nle-facade" aria-label="בחירת דירה מהירה">
+					<strong>בחירת דירה מהירה</strong>
+					<p class="nle-note">בחרו קומה או דירה כדי לראות שטח, חדרים, נוף, אומדן ותוכנית לפני פנייה.</p>
+					<div class="nle-facade-grid" data-nle-facade-grid></div>
+				</section>
+
+				<form class="nle-contact" data-nle-form>
+					<strong>רוצים לבדוק את הדירה?</strong>
+					<input name="name" placeholder="שם מלא" autocomplete="name">
+					<input name="phone" placeholder="טלפון" inputmode="tel" autocomplete="tel">
+					<input type="hidden" name="unit" data-nle-selected-unit>
+					<button type="submit">שליחת פנייה על הדירה</button>
+					<p class="nle-note">הפנייה תישלח עם פרטי הדירה שנבחרה. הנתונים להמחשה ויש לאמת מחיר וזמינות מול היזם.</p>
+					<p class="nle-note" data-nle-feedback></p>
+				</form>
+			</aside>
+		</section>
+
+		<section class="nlh-home-trust" aria-label="מה בודקים לפני בחירה">
+			<article>
+				<span>זמינות</span>
+				<strong>דירה לפי קומה ונוף</strong>
+				<p>הבחירה מתחילה במיקום הדירה, לא רק בשם הפרויקט.</p>
+			</article>
+			<article>
+				<span>מחיר</span>
+				<strong>אומדן לא מחייב</strong>
+				<p>המחיר מוצג בזהירות עד אימות מסמכים ומלאי מול היזם.</p>
+			</article>
+			<article>
+				<span>סביבה</span>
+				<strong>ים, תחבורה ושכונה</strong>
+				<p>בודקים את החיים סביב הפרויקט לפני שמבקשים שיחה.</p>
+			</article>
+			<article>
+				<span>שפות</span>
+				<strong>עברית ושפות למשקיעים</strong>
+				<p>המסלול הרב לשוני ייבנה כעמודים נפרדים עם קישורים הדדיים.</p>
+			</article>
+		</section>
+	</main>
+
+	<footer class="nle-footer">
+		<div class="nle-wrap">
+			<strong>NadLan</strong>
+			<span>דירות חדשות בישראל, נתונים להמחשה עד אימות מול היזם</span>
+		</div>
+	</footer>
+</div>
+<script src="../../assets/js/nadlan-showroom-engine.js" data-projects="../../assets/engine/projects.json" data-asset-base="../../"></script>
+</body>
+</html>

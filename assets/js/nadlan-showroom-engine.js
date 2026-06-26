@@ -25,6 +25,17 @@
 		return '#35d886';
 	}
 
+	function planLabel(value) {
+		var labels = {
+			'plan-penthouse': 'תוכנית פנטהאוז',
+			'plan-5br': 'תוכנית דירת 5 חדרים',
+			'plan-4br': 'תוכנית דירת 4 חדרים',
+			'plan-3br': 'תוכנית דירת 3 חדרים',
+			'plan-boutique': 'תוכנית דירת בוטיק'
+		};
+		return labels[value] || value;
+	}
+
 	function text(el, value) {
 		if (el) el.textContent = value == null || value === '' ? 'לפי פנייה' : String(value);
 	}
@@ -144,7 +155,7 @@
 		} else if (state.tab === 'tour') {
 			panel.textContent = 'כאן יוצגו סיור פנים, וידאו או גלריית תמונות כאשר החומר המאושר זמין.';
 		} else {
-			panel.textContent = unit.plan ? 'תוכנית דירה: ' + unit.plan : 'כאן תוצג תוכנית הדירה לאחר העלאת תוכנית מכר מאושרת.';
+			panel.textContent = unit.plan ? 'תוכנית דירה: ' + planLabel(unit.plan) : 'כאן תוצג תוכנית הדירה לאחר העלאת תוכנית מכר מאושרת.';
 		}
 		qsa('[data-nle-tab]').forEach(function (button) {
 			button.classList.toggle('is-active', button.dataset.nleTab === state.tab);
