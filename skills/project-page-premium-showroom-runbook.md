@@ -337,3 +337,14 @@ clean v2 contract:
 
 The Ashira clean v2 proof lives in
 `docs/qa/2026-06-26-ashira-v2-clean-preview.md`.
+
+Before importing any v2 preview into WordPress, run the reusable Chrome preview gate:
+
+```bash
+node scripts/qa-showroom-v2-preview.mjs --preview docs/previews/<project>-showroom-v2-preview.html --out docs/qa/screenshots/<project>-v2-preview-factory-gate --strict
+```
+
+This gate must capture desktop, tablet, mobile and Edge-mobile screenshots, then prove no
+horizontal overflow, one H1, model-viewer registration, visible Hebrew, no mojibake, no public
+internal wording, no old `.nlps` / `.nlp3d` roots, apartment cells with 44px+ tap targets, and no
+selected-card overlap over the facade.

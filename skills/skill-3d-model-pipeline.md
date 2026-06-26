@@ -405,3 +405,14 @@ the clean `data-nlv2-showroom` root. This is not permission to mix runtimes insi
 keeps the factory able to generate and dry-run v2 WordPress drafts while the WordPress import schema
 still uses the existing `showroom-payload.json` v1 meta contract. When the plugin payload route is
 versioned for v2, update the schema and scripts together in one verified slice.
+
+For every v2 preview, run the local Chrome gate before a WordPress import:
+
+```bash
+node scripts/qa-showroom-v2-preview.mjs --preview docs/previews/<project>-showroom-v2-preview.html --out docs/qa/screenshots/<project>-v2-preview-factory-gate --strict
+```
+
+The report must be green at desktop, tablet, mobile and Edge-mobile widths. If the report catches
+mojibake, old selector leakage, card/facade overlap, tap targets below 44px, missing model-viewer
+registration, console errors or horizontal overflow, stop and fix the preview before touching the
+CMS or live site.
