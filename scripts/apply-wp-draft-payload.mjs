@@ -42,8 +42,8 @@ function validatePayload(payload) {
 	if (payload.body && payload.body.status !== 'draft') errors.push('body.status must stay draft');
 	if (payload.body && !payload.body.slug) errors.push('body.slug is required');
 	if (payload.body && !payload.body.title) errors.push('body.title is required');
-	if (payload.body && !String(payload.body.content || '').includes('data-nlps-showroom')) {
-		errors.push('content is missing data-nlps-showroom');
+	if (payload.body && !String(payload.body.content || '').includes('data-nlps-showroom') && !String(payload.body.content || '').includes('data-nlv2-showroom')) {
+		errors.push('content is missing a supported showroom root marker');
 	}
 	if (payload.body && /[\u00c2\u00c3]/.test(JSON.stringify(payload.body))) {
 		errors.push('body contains mojibake markers');

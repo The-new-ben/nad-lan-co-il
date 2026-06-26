@@ -399,3 +399,9 @@ Ashira v2 uses:
 
 Never mix `.nlps` or `.nlp3d` selectors into this v2 layer. If another project needs the same
 standard, clone the v2 contract and replace the asset folder, payload and public copy.
+
+Factory bridge rule: draft/apply scripts must recognize both the old `data-nlps-showroom` root and
+the clean `data-nlv2-showroom` root. This is not permission to mix runtimes inside a page. It only
+keeps the factory able to generate and dry-run v2 WordPress drafts while the WordPress import schema
+still uses the existing `showroom-payload.json` v1 meta contract. When the plugin payload route is
+versioned for v2, update the schema and scripts together in one verified slice.

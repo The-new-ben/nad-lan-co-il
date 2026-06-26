@@ -3,7 +3,7 @@ import path from 'node:path';
 
 function usage() {
 	return `Usage:
-  node scripts/build-project-showroom-draft.mjs --pattern patterns/project-showroom-dimri-yama.php --slug dimri-yama --title "דמרי ימה - בחירת דירה במודל פרויקט" --out docs/wp-drafts/dimri-yama-project-draft.json
+  node scripts/build-project-showroom-draft.mjs --pattern patterns/project-showroom-ashira-v2.php --slug ashira-sde-dov --title "Ashira Sde Dov" --yoast-title "Ashira Sde Dov - בחירת דירה ומודל תלת ממד" --yoast-description "Ashira Sde Dov בשדה דב: בחירת דירה על חזית הפרויקט, מודל תלת ממד, נתוני דירה ואומדן לא מחייב עד אימות מול היזם." --focus-keyword "Ashira Sde Dov" --out docs/wp-drafts/ashira-sde-dov-v2-draft.json
 
 Builds a WordPress REST draft payload from a theme showroom pattern.
 The payload is safe to inspect and import later. It does not contact WordPress.`;
@@ -19,6 +19,9 @@ function parseArgs(argv) {
 		theme: 'nadlan-revenue',
 		status: 'draft',
 		typeEndpoint: '/wp-json/wp/v2/nadlan_project',
+		yoastTitle: '',
+		yoastDescription: '',
+		focusKeyword: '',
 	};
 	for (let i = 2; i < argv.length; i += 1) {
 		const arg = argv[i];
@@ -30,6 +33,9 @@ function parseArgs(argv) {
 		else if (arg === '--theme') args.theme = argv[++i] || args.theme;
 		else if (arg === '--status') args.status = argv[++i] || args.status;
 		else if (arg === '--type-endpoint') args.typeEndpoint = argv[++i] || args.typeEndpoint;
+		else if (arg === '--yoast-title') args.yoastTitle = argv[++i] || '';
+		else if (arg === '--yoast-description') args.yoastDescription = argv[++i] || '';
+		else if (arg === '--focus-keyword') args.focusKeyword = argv[++i] || '';
 		else if (arg === '--help' || arg === '-h') {
 			console.log(usage());
 			process.exit(0);
@@ -72,7 +78,7 @@ function publicTextChecks(payload) {
 	if (/לידים|פאנל|משפך|CRM|funnel|lead panel|monetization|paid placement/i.test(raw)) {
 		errors.push('payload leaks internal/public-inappropriate wording');
 	}
-	if (!content.includes('data-nlps-showroom')) errors.push('missing showroom root marker');
+	if (!content.includes('data-nlps-showroom') && !content.includes('data-nlv2-showroom')) errors.push('missing supported showroom root marker');
 	if (!content.includes('/wp-json/nadlan/v1/lead')) errors.push('missing lead endpoint');
 	return errors;
 }
@@ -81,6 +87,9 @@ const args = parseArgs(process.argv);
 const patternPath = path.resolve(args.pattern);
 const pattern = await fs.readFile(patternPath, 'utf8');
 const rawContent = fillRuntimeValues(extractWpHtmlBlock(pattern), args);
+const seoTitle = args.yoastTitle || `${args.title} - בחירת דירה, מודל תלת ממד ומידע למשקיעים`;
+const seoDescription = args.yoastDescription || `${args.title}: בחירת דירה על חזית הפרויקט, מודל תלת ממד ומידע למשפחות ולמשקיעים. הנתונים להמחשה עד אימות מול היזם.`;
+const focusKeyword = args.focusKeyword || args.title;
 
 const payload = {
 	endpoint: `${args.site}${args.typeEndpoint}`,
@@ -93,16 +102,16 @@ const payload = {
 		comment_status: 'closed',
 		ping_status: 'closed',
 		meta: {
-			_yoast_wpseo_title: 'דמרי ימה שדה דב - בחירת דירה, תלת ממד ומידע למשקיעים',
-			_yoast_wpseo_metadesc: 'דמרי ימה בשדה דב: תצוגת דירות, מודל תלת ממד, בחירת דירה על חזית הפרויקט ומידע למשפחות ולמשקיעים. הנתונים להמחשה עד אימות מול היזם.',
-			_yoast_wpseo_focuskw: 'דמרי ימה',
+			_yoast_wpseo_title: seoTitle,
+			_yoast_wpseo_metadesc: seoDescription,
+			_yoast_wpseo_focuskw: focusKeyword,
 			_yoast_wpseo_is_cornerstone: '0',
 		},
 	},
 	notes: [
 		'Create as draft first. Do not publish until official BIM/GLB, inventory, prices, plans, contact details, and legal/public-copy approval exist.',
 		'If the REST endpoint differs on live, inspect /wp-json/wp/v2/types/nadlan_project before applying.',
-		'After applying, import assets/projects/dimri-yama/showroom-payload.json only after a real post ID exists.',
+		`After applying, import assets/projects/${args.slug}/showroom-payload.json only after a real post ID exists.`,
 	],
 };
 

@@ -1,72 +1,165 @@
 {
   "$schema": "docs/templates/project-showroom-payload.schema.json",
-  "schema": "nadlan-project-showroom-payload/v2-clean",
+  "schema": "nadlan-project-showroom-payload/v1",
   "project_slug": "ashira-sde-dov",
-  "public_use_policy": "Prototype data for a clean v2 showroom. Replace all visuals, inventory and pricing with approved developer material before public commercial use.",
-  "assets": {
-    "hero": "assets/projects/ashira-sde-dov/ashira-hero-concept.jpg",
-    "facade": "assets/projects/ashira-sde-dov/ashira-facade-concept.jpg",
-    "model_glb": "assets/projects/ashira-sde-dov/model-prototype.glb"
-  },
-  "units": [
-    {
-      "id": "ashira-18-west",
-      "label": "18W",
-      "title": "דירה 18 מערב · 5 חד׳",
-      "floor": 18,
-      "rooms": 5,
-      "sqm": 132,
-      "view": "ים ורידינג",
-      "status": "available",
-      "status_label": "זמינה לפנייה",
-      "price_estimate": "אומדן לפי פנייה",
-      "facade_position": {
-        "x_percent": 42,
-        "y_percent": 38
-      }
-    },
-    {
-      "id": "ashira-14-city",
-      "label": "14C",
-      "title": "דירה 14 עיר · 4 חד׳",
-      "floor": 14,
-      "rooms": 4,
-      "sqm": 104,
-      "view": "רובע שדה דב",
-      "status": "available",
-      "status_label": "זמינה לפנייה",
-      "price_estimate": "אומדן לפי פנייה",
-      "facade_position": {
-        "x_percent": 58,
-        "y_percent": 48
-      }
-    },
-    {
-      "id": "ashira-10-corner",
-      "label": "10P",
-      "title": "דירה 10 פינתית · 4 חד׳",
-      "floor": 10,
-      "rooms": 4,
-      "sqm": 118,
-      "view": "ים וחצר",
-      "status": "reserved",
-      "status_label": "בבדיקת זמינות",
-      "price_estimate": "אומדן לפי פנייה",
-      "facade_position": {
-        "x_percent": 32,
-        "y_percent": 58
-      }
-    }
+  "post_id": 0,
+  "generated_from": [
+    "ashira clean v2 generated assets",
+    "patterns/project-showroom-ashira-v2.php"
   ],
-  "cms_fields_needed": [
-    "project hero image",
-    "project facade image",
-    "project GLB model",
-    "unit inventory",
-    "unit facade positions",
-    "unit plans",
-    "unit interior tour",
-    "unit view media",
-    "project contact details"
-  ]
+  "public_use_policy": "Prototype data for a clean v2 showroom. Replace visuals, inventory and pricing with approved developer material before public commercial use.",
+  "meta": {
+    "project_3d_image": "https://nad-lan.co.il/wp-content/themes/nadlan-revenue/assets/projects/ashira-sde-dov/ashira-facade-concept.jpg",
+    "project_3d_facade_images": [
+      {
+        "building": "Ashira Sde Dov",
+        "label": "חזית קונספט לבחירת דירות",
+        "alt": "חזית אשירה שדה דב עם תאי דירות לבחירה",
+        "src": "https://nad-lan.co.il/wp-content/themes/nadlan-revenue/assets/projects/ashira-sde-dov/ashira-facade-concept.jpg",
+        "viewbox": "0 0 1000 1333",
+        "kind": "generated-concept",
+        "concept": true,
+        "approved": false,
+        "notice": "הדמיית קונספט להמחשה עד קבלת חזית רשמית מהיזם",
+        "source": "Original generated prototype asset in the theme project folder."
+      }
+    ],
+    "project_3d_viewbox": "0 0 1000 1333",
+    "project_3d_floor_height_m": "3.05",
+    "project_3d_ground_elevation_m": "0",
+    "project_3d_avg_price_per_sqm": "",
+    "project_3d_price_source_note": "אומדן לא מחייב. יש להחליף במחיר וזמינות מאושרים לפני שימוש מסחרי.",
+    "project_3d_model_type": "gltf",
+    "project_model_glb": "https://nad-lan.co.il/wp-content/themes/nadlan-revenue/assets/projects/ashira-sde-dov/model-prototype.glb",
+    "project_model_usdz": "",
+    "project_model_poster": "https://nad-lan.co.il/wp-content/themes/nadlan-revenue/assets/projects/ashira-sde-dov/ashira-hero-concept.jpg",
+    "project_3d_video_url": "",
+    "project_3d_tour_url": "",
+    "project_3d_cesium_tiles_url": "",
+    "project_3d_drawings_json": [
+      {
+        "label": "תוכנית דירה",
+        "type": "floor_plan",
+        "url": "",
+        "source": "מקום שמור לתוכנית מכר מאושרת"
+      },
+      {
+        "label": "סיור פנים",
+        "type": "interior_tour",
+        "url": "",
+        "source": "מקום שמור לסיור או מדיה מאושרת"
+      }
+    ],
+    "project_3d_environment_json": {
+      "source_policy": "Prototype context. Verify exact locations and public facts before launch.",
+      "orientation": {
+        "west": "ים וחוף תל אביב",
+        "south": "רידינג וצפון תל אביב",
+        "east": "רובע שדה דב",
+        "north": "המשך הרובע"
+      },
+      "layers": [
+        {
+          "id": "nearby-projects",
+          "label": "פרויקטים סמוכים",
+          "items": [
+            {
+              "id": "rainbow-tel-aviv",
+              "label": "Rainbow Tel Aviv",
+              "type": "project"
+            },
+            {
+              "id": "dimri-yama",
+              "label": "Dimri Yama",
+              "type": "project"
+            }
+          ]
+        }
+      ]
+    },
+    "project_3d_units": [
+      {
+        "id": "ashira-18-west",
+        "title": "דירה 18 מערב · 5 חד׳",
+        "label": "18W",
+        "building": "Ashira",
+        "floor": 18,
+        "rooms": 5,
+        "sqm": 132,
+        "balcony": "",
+        "dir": "west",
+        "view": "ים ורידינג",
+        "status": "available",
+        "availability": "זמינה לפנייה",
+        "recommended": true,
+        "price_estimate": "אומדן לפי פנייה",
+        "price_note": "אומדן לא מחייב עד קבלת מחיר מאושר.",
+        "source_note": "יחידת המחשה לפי מבנה חזית אבטיפוס.",
+        "plan": "",
+        "interior_url": "",
+        "tour_url": "",
+        "view_note": "מבט מערבי להמחשה.",
+        "hotspot_position": "0 18 0",
+        "hotspot_normal": "0 0 1",
+        "camera_orbit": "35deg 64deg auto",
+        "stage_x": 42,
+        "stage_y": 38
+      },
+      {
+        "id": "ashira-14-city",
+        "title": "דירה 14 עיר · 4 חד׳",
+        "label": "14C",
+        "building": "Ashira",
+        "floor": 14,
+        "rooms": 4,
+        "sqm": 104,
+        "balcony": "",
+        "dir": "east",
+        "view": "רובע שדה דב",
+        "status": "available",
+        "availability": "זמינה לפנייה",
+        "recommended": false,
+        "price_estimate": "אומדן לפי פנייה",
+        "price_note": "אומדן לא מחייב עד קבלת מחיר מאושר.",
+        "source_note": "יחידת המחשה לפי מבנה חזית אבטיפוס.",
+        "plan": "",
+        "interior_url": "",
+        "tour_url": "",
+        "view_note": "מבט לרובע להמחשה.",
+        "hotspot_position": "4 14 0",
+        "hotspot_normal": "0 0 1",
+        "camera_orbit": "32deg 66deg auto",
+        "stage_x": 58,
+        "stage_y": 48
+      },
+      {
+        "id": "ashira-10-corner",
+        "title": "דירה 10 פינתית · 4 חד׳",
+        "label": "10P",
+        "building": "Ashira",
+        "floor": 10,
+        "rooms": 4,
+        "sqm": 118,
+        "balcony": "",
+        "dir": "south-west",
+        "view": "ים וחצר",
+        "status": "reserved",
+        "availability": "בבדיקת זמינות",
+        "recommended": true,
+        "price_estimate": "אומדן לפי פנייה",
+        "price_note": "אומדן לא מחייב עד קבלת מחיר מאושר.",
+        "source_note": "יחידת המחשה לפי מבנה חזית אבטיפוס.",
+        "plan": "",
+        "interior_url": "",
+        "tour_url": "",
+        "view_note": "מבט פינתית להמחשה.",
+        "hotspot_position": "-4 10 0",
+        "hotspot_normal": "0 0 1",
+        "camera_orbit": "28deg 68deg auto",
+        "stage_x": 32,
+        "stage_y": 58
+      }
+    ],
+    "project_3d_demo": "1"
+  }
 }

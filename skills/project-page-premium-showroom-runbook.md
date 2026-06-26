@@ -330,6 +330,10 @@ clean v2 contract:
 5. Keep the rotating GLB as the context surface until official per-apartment BIM exists.
 6. Keep the facade/elevation image as the apartment-picking surface.
 7. Prove v2 with screenshots at 1440, 768 and 390 before any live import.
+8. Factory scripts must accept both `data-nlps-showroom` and `data-nlv2-showroom` roots while
+   pages transition from the old runtime to the clean v2 runtime. V2 page markup uses only
+   `data-nlv2-*`, but `showroom-payload.json` can still use the existing import schema until the
+   plugin-side payload API is deliberately versioned.
 
 The Ashira clean v2 proof lives in
 `docs/qa/2026-06-26-ashira-v2-clean-preview.md`.
