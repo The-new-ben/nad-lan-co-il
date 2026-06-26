@@ -7,30 +7,30 @@
     "ashira clean v2 generated assets",
     "patterns/project-showroom-ashira-v2.php"
   ],
-  "public_use_policy": "Prototype data for a clean v2 showroom. Replace visuals, inventory and pricing with approved developer material before public commercial use.",
+  "public_use_policy": "Illustrative project data. Replace visuals, inventory and pricing with approved developer material before public commercial use.",
   "meta": {
     "project_3d_image": "https://nad-lan.co.il/wp-content/themes/nadlan-revenue/assets/projects/ashira-sde-dov/ashira-facade-concept.jpg",
     "project_3d_facade_images": [
       {
         "building": "Ashira Sde Dov",
-        "label": "חזית קונספט לבחירת דירות",
-        "alt": "חזית אשירה שדה דב עם תאי דירות לבחירה",
+        "label": "חזית לבחירת דירות",
+        "alt": "חזית Ashira שדה דב עם תאי דירות לבחירה",
         "src": "https://nad-lan.co.il/wp-content/themes/nadlan-revenue/assets/projects/ashira-sde-dov/ashira-facade-concept.jpg",
         "viewbox": "0 0 1000 1333",
-        "kind": "generated-concept",
+        "kind": "illustrative",
         "concept": true,
         "approved": false,
-        "notice": "הדמיית קונספט להמחשה עד קבלת חזית רשמית מהיזם",
-        "source": "Original generated prototype asset in the theme project folder."
+        "notice": "הדמיה להמחשה עד קבלת חזית רשמית מהיזם",
+        "source": "Original generated concept asset in the theme project folder."
       }
     ],
     "project_3d_viewbox": "0 0 1000 1333",
     "project_3d_floor_height_m": "3.05",
     "project_3d_ground_elevation_m": "0",
     "project_3d_avg_price_per_sqm": "",
-    "project_3d_price_source_note": "אומדן לא מחייב. יש להחליף במחיר וזמינות מאושרים לפני שימוש מסחרי.",
+    "project_3d_price_source_note": "אומדן לא מחייב. יש לאמת מחיר וזמינות מול היזם לפני כל החלטה.",
     "project_3d_model_type": "gltf",
-    "project_model_glb": "https://nad-lan.co.il/wp-content/themes/nadlan-revenue/assets/projects/ashira-sde-dov/model-prototype.glb",
+    "project_model_glb": "https://nad-lan.co.il/wp-content/themes/nadlan-revenue/assets/projects/ashira-sde-dov/model-context.glb",
     "project_model_usdz": "",
     "project_model_poster": "https://nad-lan.co.il/wp-content/themes/nadlan-revenue/assets/projects/ashira-sde-dov/ashira-hero-concept.jpg",
     "project_3d_video_url": "",
@@ -41,17 +41,17 @@
         "label": "תוכנית דירה",
         "type": "floor_plan",
         "url": "",
-        "source": "מקום שמור לתוכנית מכר מאושרת"
+        "source": "יוצג לאחר העלאת תוכנית מכר מאושרת"
       },
       {
         "label": "סיור פנים",
         "type": "interior_tour",
         "url": "",
-        "source": "מקום שמור לסיור או מדיה מאושרת"
+        "source": "יוצג כאשר סיור פנים, וידאו או גלריה מאושרים יהיו זמינים"
       }
     ],
     "project_3d_environment_json": {
-      "source_policy": "Prototype context. Verify exact locations and public facts before launch.",
+      "source_policy": "Illustrative context. Verify exact locations and public facts before launch.",
       "orientation": {
         "west": "ים וחוף תל אביב",
         "south": "רידינג וצפון תל אביב",
@@ -80,7 +80,7 @@
     "project_3d_units": [
       {
         "id": "ashira-18-west",
-        "title": "דירה 18 מערב · 5 חד׳",
+        "title": "דירה 18 מערב | 5 חדרים",
         "label": "18W",
         "building": "Ashira",
         "floor": 18,
@@ -94,7 +94,7 @@
         "recommended": true,
         "price_estimate": "אומדן לפי פנייה",
         "price_note": "אומדן לא מחייב עד קבלת מחיר מאושר.",
-        "source_note": "יחידת המחשה לפי מבנה חזית אבטיפוס.",
+        "source_note": "יחידת המחשה לפי מבנה חזית זמני.",
         "plan": "",
         "interior_url": "",
         "tour_url": "",
@@ -107,7 +107,7 @@
       },
       {
         "id": "ashira-14-city",
-        "title": "דירה 14 עיר · 4 חד׳",
+        "title": "דירה 14 עיר | 4 חדרים",
         "label": "14C",
         "building": "Ashira",
         "floor": 14,
@@ -121,7 +121,7 @@
         "recommended": false,
         "price_estimate": "אומדן לפי פנייה",
         "price_note": "אומדן לא מחייב עד קבלת מחיר מאושר.",
-        "source_note": "יחידת המחשה לפי מבנה חזית אבטיפוס.",
+        "source_note": "יחידת המחשה לפי מבנה חזית זמני.",
         "plan": "",
         "interior_url": "",
         "tour_url": "",
@@ -134,7 +134,7 @@
       },
       {
         "id": "ashira-10-corner",
-        "title": "דירה 10 פינתית · 4 חד׳",
+        "title": "דירה 10 פינתית | 4 חדרים",
         "label": "10P",
         "building": "Ashira",
         "floor": 10,
@@ -148,11 +148,11 @@
         "recommended": true,
         "price_estimate": "אומדן לפי פנייה",
         "price_note": "אומדן לא מחייב עד קבלת מחיר מאושר.",
-        "source_note": "יחידת המחשה לפי מבנה חזית אבטיפוס.",
+        "source_note": "יחידת המחשה לפי מבנה חזית זמני.",
         "plan": "",
         "interior_url": "",
         "tour_url": "",
-        "view_note": "מבט פינתית להמחשה.",
+        "view_note": "מבט פינתי להמחשה.",
         "hotspot_position": "-4 10 0",
         "hotspot_normal": "0 0 1",
         "camera_orbit": "28deg 68deg auto",

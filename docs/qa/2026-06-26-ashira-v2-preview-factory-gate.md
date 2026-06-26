@@ -9,6 +9,10 @@ This slice adds a repeatable screenshot-first QA gate for clean v2 showroom prev
 local HTTP server, opens the preview in Google Chrome through Playwright, captures screenshots at
 desktop, tablet, mobile and Edge-mobile sizes, and writes a machine-readable report.
 
+The latest pass also cleans the Ashira v2 source files after a source audit found mojibake and
+working-language in the preview, pattern, runtime and payload. Public copy now speaks to buyers
+only: apartment choice, floor, rooms, sqm, view, estimate, plans, media and inquiry.
+
 It does not contact WordPress, import a draft, publish content, build a plugin ZIP or deploy the
 site.
 
@@ -64,6 +68,23 @@ Report:
 | Visible Hebrew present | PASS |
 | Mojibake visible | PASS, none |
 | Internal wording visible | PASS, none |
+
+## Source Integrity
+
+Checked files:
+
+- `patterns/project-showroom-ashira-v2.php`
+- `docs/previews/ashira-showroom-v2-preview.html`
+- `assets/js/nadlan-showroom-v2.js`
+- `assets/projects/ashira-sde-dov/showroom-payload.json`
+
+Result:
+
+- no `×...` mojibake sequences
+- no `Â`, `Ã`, or replacement characters
+- no public `מקום שמור`
+- no public `מנוע`, `תבנית`, `לידים`, `פאנל`, `SEO`, `CMS`, `lead`, `engine`, `template`, or `prototype`
+- JSON payload parses successfully
 
 ## Honest Limits
 

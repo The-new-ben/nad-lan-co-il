@@ -3,7 +3,7 @@
  * Title: Ashira Sde Dov showroom v2
  * Slug: nadlan-revenue/project-showroom-ashira-v2
  * Categories: featured, media
- * Description: Clean v2 project showroom with a rotating context model and a separate facade apartment selector.
+ * Description: Clean v2 project showroom with a rotating context model and a separate apartment selector.
  *
  * @package WordPress
  * @subpackage NadLan_Revenue
@@ -24,7 +24,7 @@ $asset_base = trailingslashit( get_template_directory_uri() ) . 'assets/projects
 		<div>
 			<span class="nlv2-eyebrow">פרויקט חדש ברובע שדה דב</span>
 			<h1 id="nlv2-ashira-title">דירות למכירה באשירה שדה דב</h1>
-			<p>אשירה שדה דב מוצג כאן כחוויית בחירה ויזואלית: רואים את הסביבה, מסובבים מודל תלת ממד, ובוחרים דירה על חזית ברורה עם נתוני קומה, שטח, נוף ואומדן לא מחייב.</p>
+			<p>בדקו דירות לפי קומה, שטח, נוף וכיוון. סובבו את המודל כדי להבין את הסביבה, ואז בחרו דירה על החזית כדי לראות אומדן לא מחייב, תוכנית, מבט ודרך לפנייה.</p>
 			<div class="nlv2-hero-actions">
 				<a class="nlv2-button nlv2-button-primary" href="#nlv2-ashira-selector">בחרו דירה</a>
 				<a class="nlv2-button" href="#nlv2-ashira-info">קראו על הפרויקט</a>
@@ -35,8 +35,8 @@ $asset_base = trailingslashit( get_template_directory_uri() ) . 'assets/projects
 	<section class="nlv2-product" id="nlv2-ashira-selector" aria-labelledby="nlv2-ashira-product-title">
 		<header class="nlv2-product-head">
 			<div>
-				<h2 id="nlv2-ashira-product-title">חוויית בחירת דירה: מודל מסתובב וחזית לחיצה</h2>
-				<p>המודל התלת ממדי נותן הקשר של ים, שמש ורובע. בחירת הדירה נעשית בחזית הקבועה לידו, כדי שהדירה תהיה ממש על הבניין ולא סימון צף.</p>
+				<h2 id="nlv2-ashira-product-title">בחרו דירה לפי קומה, נוף וזמינות</h2>
+				<p>המודל מציג את ההקשר של הים, השמש והרובע. בחירת הדירה נעשית בחזית הקבועה שלצדו, כדי לראות את מיקום הדירה בבניין בצורה ברורה.</p>
 			</div>
 			<div class="nlv2-legend" aria-label="מקרא זמינות">
 				<span><i class="nlv2-dot" style="--nlv2-status:#34d986"></i> זמינה</span>
@@ -48,7 +48,7 @@ $asset_base = trailingslashit( get_template_directory_uri() ) . 'assets/projects
 		<div class="nlv2-stage">
 			<section class="nlv2-model" aria-label="מודל תלת ממד של סביבת הפרויקט">
 				<model-viewer
-					src="<?php echo esc_url( $asset_base . 'model-prototype.glb' ); ?>"
+					src="<?php echo esc_url( $asset_base . 'model-context.glb' ); ?>"
 					poster="<?php echo esc_url( $asset_base . 'ashira-hero-concept.jpg' ); ?>"
 					camera-controls
 					auto-rotate
@@ -64,21 +64,21 @@ $asset_base = trailingslashit( get_template_directory_uri() ) . 'assets/projects
 					ar-status="not-presenting">
 				</model-viewer>
 				<div class="nlv2-model-caption">
-					<strong>מודל הקשר סביבתי</strong>
-					סובבו את המודל כדי להבין את הים, השמש, רידינג ומיקום המגדלים. בחירת הדירות מתבצעת בחזית הלחיצה מימין.
+					<strong>מודל סביבתי</strong>
+					סובבו את המודל כדי להבין את מיקום הבניין ביחס לים, לשמש, לרידינג ולמגדלים הסמוכים. בחירת הדירה מתבצעת בחזית הלחיצה שמימין.
 				</div>
 			</section>
 
 			<section class="nlv2-picker" aria-label="בחירת דירה על חזית הפרויקט">
 				<h3>בחרו דירה על החזית</h3>
-				<p class="nlv2-picker-note">הנתונים הם המחשה עד לקבלת מלאי רשמי מהיזם. כל תא מייצג דירה או טיפוס דירה במיקום יחסי על החזית.</p>
+				<p class="nlv2-picker-note">הנתונים הם המחשה עד לקבלת מלאי רשמי. כל תא מייצג דירה או טיפוס דירה במיקום יחסי על החזית.</p>
 				<div class="nlv2-facade">
-					<img src="<?php echo esc_url( $asset_base . 'ashira-facade-concept.jpg' ); ?>" alt="חזית אשירה עם חלונות ומרפסות לבחירת דירה">
-					<button class="nlv2-cell is-featured is-active" style="left:42%;top:38%;--nlv2-status:#34d986" data-nlv2-unit data-unit-id="ashira-18-west" data-status-color="#34d986" data-status="זמינה לפנייה" data-title="דירה 18 מערב · 5 חד׳" data-rooms="5" data-sqm="132 מ״ר" data-floor="18" data-view="ים ורידינג" data-price="אומדן לפי פנייה" data-note="דירה גבוהה לכיוון מערב עם הדגשת נוף לים. הנתונים להמחשה עד קבלת תוכנית ומלאי מאושרים." aria-pressed="true">18W<small>ים</small></button>
-					<button class="nlv2-cell" style="left:58%;top:48%;--nlv2-status:#34d986" data-nlv2-unit data-unit-id="ashira-14-city" data-status-color="#34d986" data-status="זמינה לפנייה" data-title="דירה 14 עיר · 4 חד׳" data-rooms="4" data-sqm="104 מ״ר" data-floor="14" data-view="רובע שדה דב" data-price="אומדן לפי פנייה" data-note="טיפוס דירה משפחתי במרכז החזית. יש להחליף בנתוני מכר רשמיים לפני פרסום מלא.">14C<small>עיר</small></button>
-					<button class="nlv2-cell is-featured" style="left:32%;top:58%;--nlv2-status:#f2c14e" data-nlv2-unit data-unit-id="ashira-10-corner" data-status-color="#f2c14e" data-status="בבדיקת זמינות" data-title="דירה 10 פינתית · 4 חד׳" data-rooms="4" data-sqm="118 מ״ר" data-floor="10" data-view="ים וחצר" data-price="אומדן לפי פנייה" data-note="דירה פינתית להמחשה עם מרפסת לכיוון מערב. הזמינות אינה מחייבת עד אימות מול היזם.">10P<small>פינה</small></button>
-					<button class="nlv2-cell" style="left:66%;top:65%;--nlv2-status:#9aa0a6" data-nlv2-unit data-unit-id="ashira-07-sold" data-status-color="#9aa0a6" data-status="לא זמינה" data-title="דירה 7 · 3 חד׳" data-rooms="3" data-sqm="82 מ״ר" data-floor="7" data-view="מרקם עירוני" data-price="לא מוצג" data-note="סימון דירה שאינה זמינה, כדי להראות לקונה את מצב המלאי על החזית.">7A<small>סגור</small></button>
-					<button class="nlv2-cell" style="left:48%;top:77%;--nlv2-status:#34d986" data-nlv2-unit data-unit-id="ashira-04-garden" data-status-color="#34d986" data-status="זמינה לפנייה" data-title="דירת גן 4 · 3 חד׳" data-rooms="3" data-sqm="92 מ״ר" data-floor="4" data-view="גן פנימי" data-price="אומדן לפי פנייה" data-note="טיפוס נמוך יותר עם חיבור לגינה ולרחוב. הנתונים להמחשה בלבד.">4G<small>גן</small></button>
+					<img src="<?php echo esc_url( $asset_base . 'ashira-facade-concept.jpg' ); ?>" alt="חזית Ashira עם תאי דירות לבחירה">
+					<button class="nlv2-cell is-featured is-active" style="left:42%;top:38%;--nlv2-status:#34d986" data-nlv2-unit data-unit-id="ashira-18-west" data-status-color="#34d986" data-status="זמינה לפנייה" data-title="דירה 18 מערב | 5 חדרים" data-rooms="5" data-sqm="132 מ״ר" data-floor="18" data-view="ים ורידינג" data-price="אומדן לפי פנייה" data-note="דירה גבוהה לכיוון מערב עם דגש על נוף לים. הנתונים להמחשה עד קבלת תוכנית ומלאי מאושרים." aria-pressed="true">18W<small>ים</small></button>
+					<button class="nlv2-cell" style="left:58%;top:48%;--nlv2-status:#34d986" data-nlv2-unit data-unit-id="ashira-14-city" data-status-color="#34d986" data-status="זמינה לפנייה" data-title="דירה 14 עיר | 4 חדרים" data-rooms="4" data-sqm="104 מ״ר" data-floor="14" data-view="רובע שדה דב" data-price="אומדן לפי פנייה" data-note="דירה משפחתית במרכז החזית. יש לאמת מלאי, מחיר ותוכנית מול היזם לפני כל החלטה.">14C<small>עיר</small></button>
+					<button class="nlv2-cell is-featured" style="left:32%;top:58%;--nlv2-status:#f2c14e" data-nlv2-unit data-unit-id="ashira-10-corner" data-status-color="#f2c14e" data-status="בבדיקת זמינות" data-title="דירה 10 פינתית | 4 חדרים" data-rooms="4" data-sqm="118 מ״ר" data-floor="10" data-view="ים וחצר" data-price="אומדן לפי פנייה" data-note="דירה פינתית עם מרפסת לכיוון מערב. הזמינות אינה מחייבת עד אימות מול היזם.">10P<small>פינה</small></button>
+					<button class="nlv2-cell" style="left:66%;top:65%;--nlv2-status:#9aa0a6" data-nlv2-unit data-unit-id="ashira-07-sold" data-status-color="#9aa0a6" data-status="לא זמינה" data-title="דירה 7 | 3 חדרים" data-rooms="3" data-sqm="82 מ״ר" data-floor="7" data-view="מרקם עירוני" data-price="לא מוצג" data-note="סימון דירה שאינה זמינה, כדי להראות לקונה את מצב המלאי על החזית.">7A<small>סגור</small></button>
+					<button class="nlv2-cell" style="left:48%;top:77%;--nlv2-status:#34d986" data-nlv2-unit data-unit-id="ashira-04-garden" data-status-color="#34d986" data-status="זמינה לפנייה" data-title="דירת גן 4 | 3 חדרים" data-rooms="3" data-sqm="92 מ״ר" data-floor="4" data-view="גן פנימי" data-price="אומדן לפי פנייה" data-note="טיפוס נמוך יותר עם חיבור לגינה ולרחוב. הנתונים להמחשה בלבד.">4G<small>גן</small></button>
 				</div>
 			</section>
 		</div>
@@ -88,9 +88,9 @@ $asset_base = trailingslashit( get_template_directory_uri() ) . 'assets/projects
 				<header class="nlv2-card-header">
 					<div>
 						<span class="nlv2-status" data-nlv2-status>זמינה לפנייה</span>
-						<h3 data-nlv2-title>דירה 18 מערב · 5 חד׳</h3>
+						<h3 data-nlv2-title>דירה 18 מערב | 5 חדרים</h3>
 					</div>
-					<button class="nlv2-dismiss" type="button" data-nlv2-dismiss aria-label="סגירת פרטי הדירה">×</button>
+					<button class="nlv2-dismiss" type="button" data-nlv2-dismiss aria-label="סגירת פרטי הדירה">סגור</button>
 				</header>
 				<div class="nlv2-facts">
 					<div class="nlv2-fact">חדרים<strong data-nlv2-rooms>5</strong></div>
@@ -99,7 +99,7 @@ $asset_base = trailingslashit( get_template_directory_uri() ) . 'assets/projects
 					<div class="nlv2-fact">נוף<strong data-nlv2-view>ים ורידינג</strong></div>
 				</div>
 				<p class="nlv2-card-copy"><strong data-nlv2-price>אומדן לפי פנייה</strong></p>
-				<p class="nlv2-card-copy" data-nlv2-note>דירה גבוהה לכיוון מערב עם הדגשת נוף לים. הנתונים להמחשה עד קבלת תוכנית ומלאי מאושרים.</p>
+				<p class="nlv2-card-copy" data-nlv2-note>דירה גבוהה לכיוון מערב עם דגש על נוף לים. הנתונים להמחשה עד קבלת תוכנית ומלאי מאושרים.</p>
 				<div class="nlv2-tabs" role="tablist" aria-label="מידע על הדירה">
 					<button class="is-active" type="button" data-nlv2-tab="plan" aria-selected="true">תוכנית</button>
 					<button type="button" data-nlv2-tab="view" aria-selected="false">מבט</button>
@@ -132,10 +132,10 @@ $asset_base = trailingslashit( get_template_directory_uri() ) . 'assets/projects
 			<div class="nlv2-data-card"><span>תצוגה</span><strong>מודל וחזית</strong></div>
 			<div class="nlv2-data-card"><span>סטטוס נתונים</span><strong>המחשה</strong></div>
 		</div>
-		<h2>איך הקונה משתמש בדף?</h2>
-		<p>הקונה רואה את סביבת הפרויקט, בוחר תא דירה על החזית, מקבל פרטי קומה, חדרים, שטח ונוף, ואז יכול לפתוח תוכנית, מבט מהדירה או סיור פנים כאשר היזם מעלה מדיה מאושרת.</p>
-		<h2>מה צריך להחליף לפני פרסום רשמי?</h2>
-		<p class="nlv2-note">המודל, החזית, המלאי והאומדנים בדף זה הם המחשה. לפני שימוש מסחרי יש להעלות תוכניות מכר, מחירים, זמינות ומדיה מאושרים על ידי היזם.</p>
+		<h2>איך בודקים דירה בדף?</h2>
+		<p>מסובבים את המודל כדי להבין את הסביבה, בוחרים תא דירה על החזית, מקבלים פרטי קומה, חדרים, שטח ונוף, ואז פותחים תוכנית, מבט מהדירה או סיור פנים כאשר היזם מעלה מדיה מאושרת.</p>
+		<h2>מה צריך לאמת לפני החלטה?</h2>
+		<p class="nlv2-note">המודל, החזית, המלאי והאומדנים בדף זה הם המחשה. לפני התקדמות יש לאמת תוכניות מכר, מחירים, זמינות ומדיה מול היזם.</p>
 	</section>
 </main>
 <!-- /wp:html -->

@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-06-26T19:59:55.827Z",
+  "generated_at": "2026-06-26T21:07:28.272Z",
   "preview": "docs/previews/ashira-showroom-v2-preview.html",
-  "url": "http://127.0.0.1:55847/docs/previews/ashira-showroom-v2-preview.html",
+  "url": "http://127.0.0.1:57068/docs/previews/ashira-showroom-v2-preview.html",
   "out_dir": "docs/qa/screenshots/ashira-v2-preview-factory-gate",
   "strict": true,
   "viewports": [
@@ -19,7 +19,7 @@
         "selected": "C:\\Users\\pro\\Documents\\websites\\nad-lan-co-il-showroom-1680\\docs\\qa\\screenshots\\ashira-v2-preview-factory-gate\\desktop-1440-selected.png"
       },
       "metrics": {
-        "title": "Ashira Sde Dov · NadLan showroom v2 preview",
+        "title": "Ashira Sde Dov | NadLan",
         "dir": "rtl",
         "lang": "he",
         "hasRoot": true,
@@ -36,9 +36,9 @@
             "x": 100,
             "y": -580,
             "width": 1240,
-            "height": 2669.4,
+            "height": 2637.9,
             "right": 1340,
-            "bottom": 2089.4
+            "bottom": 2057.9
           },
           "hero": {
             "x": 100,
@@ -100,7 +100,7 @@
         "modelViewer": {
           "count": 1,
           "defined": true,
-          "src": "../../assets/projects/ashira-sde-dov/model-prototype.glb",
+          "src": "../../assets/projects/ashira-sde-dov/model-context.glb",
           "poster": "../../assets/projects/ashira-sde-dov/ashira-hero-concept.jpg",
           "cameraControls": true
         },
@@ -114,7 +114,7 @@
         "selected": {
           "cardHidden": false,
           "unitInput": "ashira-14-city",
-          "title": "דירה 14 עיר · 4 חד׳"
+          "title": "דירה 14 עיר | 4 חדרים"
         },
         "overlap": {
           "cardOverFacade": false
@@ -143,7 +143,7 @@
         "selected": "C:\\Users\\pro\\Documents\\websites\\nad-lan-co-il-showroom-1680\\docs\\qa\\screenshots\\ashira-v2-preview-factory-gate\\tablet-768-selected.png"
       },
       "metrics": {
-        "title": "Ashira Sde Dov · NadLan showroom v2 preview",
+        "title": "Ashira Sde Dov | NadLan",
         "dir": "rtl",
         "lang": "he",
         "hasRoot": true,
@@ -158,73 +158,73 @@
         "rects": {
           "root": {
             "x": 16,
-            "y": -1365,
+            "y": -1387,
             "width": 736,
-            "height": 3915.5,
+            "height": 3937.9,
             "right": 752,
-            "bottom": 2550.5
+            "bottom": 2550.9
           },
           "hero": {
             "x": 16,
-            "y": -1303.3,
+            "y": -1325.3,
             "width": 736,
             "height": 631.1,
             "right": 752,
-            "bottom": -672.2
+            "bottom": -694.2
           },
           "stage": {
             "x": 17,
-            "y": -467.6,
+            "y": -489.6,
             "width": 734,
-            "height": 1462.5,
+            "height": 1484.9,
             "right": 751,
-            "bottom": 995
+            "bottom": 995.4
           },
           "model": {
             "x": 33.9,
-            "y": -450.7,
+            "y": -472.7,
             "width": 700.2,
-            "height": 419,
+            "height": 441.4,
             "right": 734.1,
-            "bottom": -31.7
+            "bottom": -31.3
           },
           "picker": {
             "x": 33.9,
-            "y": -13.7,
+            "y": -13.3,
             "width": 700.2,
             "height": 991.8,
             "right": 734.1,
-            "bottom": 978.1
+            "bottom": 978.5
           },
           "facade": {
             "x": 50.9,
-            "y": 73.5,
+            "y": 73.8,
             "width": 666.2,
             "height": 887.6,
             "right": 717.1,
-            "bottom": 961.1
+            "bottom": 961.5
           },
           "card": {
             "x": 33.9,
-            "y": 995,
+            "y": 995.4,
             "width": 700.2,
             "height": 468.4,
             "right": 734.1,
-            "bottom": 1463.4
+            "bottom": 1463.8
           },
           "contact": {
             "x": 33.9,
-            "y": 1477.4,
+            "y": 1477.8,
             "width": 700.2,
             "height": 418,
             "right": 734.1,
-            "bottom": 1895.4
+            "bottom": 1895.8
           }
         },
         "modelViewer": {
           "count": 1,
           "defined": true,
-          "src": "../../assets/projects/ashira-sde-dov/model-prototype.glb",
+          "src": "../../assets/projects/ashira-sde-dov/model-context.glb",
           "poster": "../../assets/projects/ashira-sde-dov/ashira-hero-concept.jpg",
           "cameraControls": true
         },
@@ -238,7 +238,7 @@
         "selected": {
           "cardHidden": false,
           "unitInput": "ashira-14-city",
-          "title": "דירה 14 עיר · 4 חד׳"
+          "title": "דירה 14 עיר | 4 חדרים"
         },
         "overlap": {
           "cardOverFacade": false
@@ -267,7 +267,7 @@
         "selected": "C:\\Users\\pro\\Documents\\websites\\nad-lan-co-il-showroom-1680\\docs\\qa\\screenshots\\ashira-v2-preview-factory-gate\\mobile-390-selected.png"
       },
       "metrics": {
-        "title": "Ashira Sde Dov · NadLan showroom v2 preview",
+        "title": "Ashira Sde Dov | NadLan",
         "dir": "rtl",
         "lang": "he",
         "hasRoot": true,
@@ -282,73 +282,73 @@
         "rects": {
           "root": {
             "x": 9,
-            "y": -943,
+            "y": -952,
             "width": 372,
-            "height": 3690.4,
+            "height": 3711.4,
             "right": 381,
-            "bottom": 2747.4
+            "bottom": 2759.4
           },
           "hero": {
             "x": 9,
-            "y": -902,
+            "y": -911,
             "width": 372,
             "height": 524.2,
             "right": 381,
-            "bottom": -377.8
+            "bottom": -386.8
           },
           "stage": {
             "x": 10,
-            "y": -136.6,
+            "y": -174.6,
             "width": 370,
-            "height": 999.3,
+            "height": 1021.7,
             "right": 380,
-            "bottom": 862.7
+            "bottom": 847.1
           },
           "model": {
             "x": 20,
-            "y": -126.6,
+            "y": -164.6,
             "width": 350,
-            "height": 371.4,
+            "height": 393.8,
             "right": 370,
-            "bottom": 244.8
+            "bottom": 229.2
           },
           "picker": {
             "x": 20,
-            "y": 256.8,
+            "y": 241.2,
             "width": 350,
             "height": 595.9,
             "right": 370,
-            "bottom": 852.7
+            "bottom": 837.1
           },
           "facade": {
             "x": 33,
-            "y": 360.1,
+            "y": 344.5,
             "width": 324,
             "height": 479.6,
             "right": 357,
-            "bottom": 839.7
+            "bottom": 824.1
           },
           "card": {
             "x": 20,
-            "y": 862.7,
+            "y": 847.1,
             "width": 350,
             "height": 611.2,
             "right": 370,
-            "bottom": 1473.9
+            "bottom": 1458.3
           },
           "contact": {
             "x": 20,
-            "y": 1483.9,
+            "y": 1468.3,
             "width": 350,
             "height": 410,
             "right": 370,
-            "bottom": 1893.9
+            "bottom": 1878.3
           }
         },
         "modelViewer": {
           "count": 1,
           "defined": true,
-          "src": "../../assets/projects/ashira-sde-dov/model-prototype.glb",
+          "src": "../../assets/projects/ashira-sde-dov/model-context.glb",
           "poster": "../../assets/projects/ashira-sde-dov/ashira-hero-concept.jpg",
           "cameraControls": true
         },
@@ -362,7 +362,7 @@
         "selected": {
           "cardHidden": false,
           "unitInput": "ashira-14-city",
-          "title": "דירה 14 עיר · 4 חד׳"
+          "title": "דירה 14 עיר | 4 חדרים"
         },
         "overlap": {
           "cardOverFacade": false
@@ -392,7 +392,7 @@
         "selected": "C:\\Users\\pro\\Documents\\websites\\nad-lan-co-il-showroom-1680\\docs\\qa\\screenshots\\ashira-v2-preview-factory-gate\\edge-mobile-390-selected.png"
       },
       "metrics": {
-        "title": "Ashira Sde Dov · NadLan showroom v2 preview",
+        "title": "Ashira Sde Dov | NadLan",
         "dir": "rtl",
         "lang": "he",
         "hasRoot": true,
@@ -407,73 +407,73 @@
         "rects": {
           "root": {
             "x": 9,
-            "y": -943,
+            "y": -952,
             "width": 372,
-            "height": 3690.4,
+            "height": 3711.4,
             "right": 381,
-            "bottom": 2747.4
+            "bottom": 2759.4
           },
           "hero": {
             "x": 9,
-            "y": -902,
+            "y": -911,
             "width": 372,
             "height": 524.2,
             "right": 381,
-            "bottom": -377.8
+            "bottom": -386.8
           },
           "stage": {
             "x": 10,
-            "y": -136.6,
+            "y": -174.6,
             "width": 370,
-            "height": 999.3,
+            "height": 1021.7,
             "right": 380,
-            "bottom": 862.7
+            "bottom": 847.1
           },
           "model": {
             "x": 20,
-            "y": -126.6,
+            "y": -164.6,
             "width": 350,
-            "height": 371.4,
+            "height": 393.8,
             "right": 370,
-            "bottom": 244.8
+            "bottom": 229.2
           },
           "picker": {
             "x": 20,
-            "y": 256.8,
+            "y": 241.2,
             "width": 350,
             "height": 595.9,
             "right": 370,
-            "bottom": 852.7
+            "bottom": 837.1
           },
           "facade": {
             "x": 33,
-            "y": 360.1,
+            "y": 344.5,
             "width": 324,
             "height": 479.6,
             "right": 357,
-            "bottom": 839.7
+            "bottom": 824.1
           },
           "card": {
             "x": 20,
-            "y": 862.7,
+            "y": 847.1,
             "width": 350,
             "height": 611.2,
             "right": 370,
-            "bottom": 1473.9
+            "bottom": 1458.3
           },
           "contact": {
             "x": 20,
-            "y": 1483.9,
+            "y": 1468.3,
             "width": 350,
             "height": 410,
             "right": 370,
-            "bottom": 1893.9
+            "bottom": 1878.3
           }
         },
         "modelViewer": {
           "count": 1,
           "defined": true,
-          "src": "../../assets/projects/ashira-sde-dov/model-prototype.glb",
+          "src": "../../assets/projects/ashira-sde-dov/model-context.glb",
           "poster": "../../assets/projects/ashira-sde-dov/ashira-hero-concept.jpg",
           "cameraControls": true
         },
@@ -487,7 +487,7 @@
         "selected": {
           "cardHidden": false,
           "unitInput": "ashira-14-city",
-          "title": "דירה 14 עיר · 4 חד׳"
+          "title": "דירה 14 עיר | 4 חדרים"
         },
         "overlap": {
           "cardOverFacade": false

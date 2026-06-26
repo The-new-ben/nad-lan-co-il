@@ -174,8 +174,8 @@ function metricsExpression() {
 			},
 			copy: {
 				hasHebrew: /[\\u0590-\\u05ff]/.test(text),
-				hasMojibake: /[ÃÂ]|×[\\u0080-\\u00ff]/.test(text),
-				hasInternalWords: /לידים|פאנל|משפך|CRM|funnel|lead panel|monetization|paid placement|Codex|Claude|fallback|placeholder|mock/i.test(text),
+				hasMojibake: /[\\u00c3\\u00c2\\ufffd]|\\u00d7[\\u0080-\\u00ff]|\\u00c2\\u00b7|\\u00c3\\u0097/.test(text),
+				hasInternalWords: /SEO|CMS|CRM|lead|leads|engine|template|prototype|project manager|supplier|contractor|internal|strategy|factory|פאנל|מנוע|תבנית|לידים|מקום שמור|פרויקטים לבדיקה|מוניטיז|אסטרטג|Codex|Claude|fallback|placeholder|mock/i.test(text),
 			},
 		};
 	})()`;
