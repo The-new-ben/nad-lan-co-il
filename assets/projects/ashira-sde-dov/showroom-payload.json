@@ -1,0 +1,276 @@
+{
+  "schema": "nadlan-project-showroom-payload/v1",
+  "project_slug": "ashira-sde-dov",
+  "post_id": 0,
+  "public_use_policy": "Prototype only. Replace estimates, inventory, plans, and assets with approved developer materials before commercial publication.",
+  "generated_from": [
+    "docs/research/2026-06-26-ashira-showroom-preflight.md",
+    "assets/projects/ashira-sde-dov/source-notes.md",
+    "assets/projects/ashira-sde-dov/unit-map.json",
+    "assets/projects/ashira-sde-dov/environment.json",
+    "assets/projects/ashira-sde-dov/drawings.json"
+  ],
+  "meta": {
+    "project_3d_image": "https://nad-lan.co.il/wp-content/themes/nadlan-revenue/assets/projects/ashira-sde-dov/facade-prototype.svg",
+    "project_3d_facade_images": [
+      {
+        "building": "main",
+        "label": "חזית בחירה",
+        "alt": "חזית בחירה של Ashira שדה דב עם תאי דירות מסומנים",
+        "src": "https://nad-lan.co.il/wp-content/themes/nadlan-revenue/assets/projects/ashira-sde-dov/facade-prototype.svg",
+        "viewbox": "0 0 960 760",
+        "kind": "facade",
+        "concept": true,
+        "approved": false,
+        "notice": "הדמיית אבטיפוס להמחשה בלבד, לא חזית רשמית",
+        "source": "Original NadLan prototype asset based on public project context"
+      }
+    ],
+    "project_3d_viewbox": "0 0 960 760",
+    "project_3d_floor_height_m": 3.05,
+    "project_3d_ground_elevation_m": 4,
+    "project_3d_avg_price_per_sqm": 47500,
+    "project_3d_price_source_note": "אומדן לא מחייב לפי טווחי שדה דב ציבוריים ומחקר שוק ראשוני. יש לאמת מול היזם לפני פרסום מסחרי.",
+    "project_3d_model_type": "gltf",
+    "project_model_glb": "https://nad-lan.co.il/wp-content/themes/nadlan-revenue/assets/projects/ashira-sde-dov/model-prototype.glb",
+    "project_model_usdz": "",
+    "project_model_poster": "https://nad-lan.co.il/wp-content/themes/nadlan-revenue/assets/projects/ashira-sde-dov/poster-prototype.svg",
+    "project_3d_video_url": "",
+    "project_3d_tour_url": "",
+    "project_3d_cesium_tiles_url": "",
+    "project_3d_drawings_json": [
+      {
+        "label": "תוכנית דירה לדוגמה",
+        "type": "floor_plan",
+        "url": "",
+        "source": "מקום שמור לתוכנית רשמית או המחשה מאושרת"
+      },
+      {
+        "label": "חזית בחירה",
+        "type": "facade",
+        "url": "facade-prototype.svg",
+        "source": "הדמיית קונספט מקורית להמחשה בלבד"
+      },
+      {
+        "label": "מפת סביבה",
+        "type": "site_orientation",
+        "url": "",
+        "source": "מקום שמור למפת סביבה מאומתת"
+      }
+    ],
+    "project_3d_environment_json": {
+      "source_policy": "Prototype context layer from public Sde Dov and Ashira research. Exact pins must be verified before official publication.",
+      "orientation": {
+        "west": "חוף הים וטיילת תל אביב",
+        "east": "רובע שדה דב ומרכזי תעסוקה עתידיים",
+        "south": "פארק הירקון ונמל תל אביב",
+        "north": "המשך רובע שדה דב וצפון תל אביב"
+      },
+      "layers": [
+        {
+          "id": "nearby-projects",
+          "label": "פרויקטים בסביבה",
+          "items": [
+            {
+              "id": "rainbow-tel-aviv",
+              "label": "Rainbow Tel Aviv",
+              "type": "project",
+              "source": "Sde Dov project listings and NadLan internal project page"
+            },
+            {
+              "id": "dimri-yama",
+              "label": "Dimri Yama",
+              "type": "project",
+              "source": "Public Sde Dov project references"
+            },
+            {
+              "id": "gindi-vogue",
+              "label": "Gindi Vogue",
+              "type": "project",
+              "source": "Public Sde Dov project references"
+            }
+          ]
+        },
+        {
+          "id": "daily-life",
+          "label": "סביבה יומיומית",
+          "items": [
+            {
+              "label": "חוף הים",
+              "type": "coast",
+              "source": "Sde Dov district public descriptions"
+            },
+            {
+              "label": "פארק הירקון",
+              "type": "park",
+              "source": "North Tel Aviv public map context"
+            },
+            {
+              "label": "נמל תל אביב",
+              "type": "commerce",
+              "source": "North Tel Aviv public map context"
+            },
+            {
+              "label": "רכבת קלה ותנועה עתידית",
+              "type": "transport",
+              "source": "Municipal planning context, verify per official plan"
+            }
+          ]
+        }
+      ]
+    },
+    "project_3d_units": [
+      {
+        "id": "ashira-18-04",
+        "title": "דירה 18-04 · קומה 18 · 4 חדרים",
+        "label": "18-04",
+        "building": "מגדל",
+        "floor": 18,
+        "rooms": 4,
+        "sqm": 112,
+        "balcony": 13,
+        "dir": "west",
+        "view": "מערב · נוף לים",
+        "status": "available",
+        "availability": "זמינה לפנייה",
+        "recommended": true,
+        "price_estimate": 5320000,
+        "price_note": "אומדן לא מחייב לפי טווח מחירים ציבורי בסביבת שדה דב. יש לאמת מול היזם.",
+        "source_note": "נתוני דוגמה למודל מכירה. לא מלאי רשמי.",
+        "plan": "",
+        "interior_url": "",
+        "tour_url": "",
+        "view_note": "קומה גבוהה בכיוון מערב. נדרש אימות רשמי של קו הראייה.",
+        "hotspot_position": "0 54 2",
+        "hotspot_normal": "0 0 1",
+        "camera_orbit": "30deg 66deg 48m",
+        "stage_x": 24.2,
+        "stage_y": 15.2,
+        "stage_w": 9.6,
+        "stage_h": 4.1,
+        "points": "244,140 336,140 336,176 244,176"
+      },
+      {
+        "id": "ashira-18-05",
+        "title": "דירה 18-05 · קומה 18 · 3 חדרים",
+        "label": "18-05",
+        "building": "מגדל",
+        "floor": 18,
+        "rooms": 3,
+        "sqm": 98,
+        "balcony": 11,
+        "dir": "north-west",
+        "view": "ים ורובע שדה דב",
+        "status": "available",
+        "availability": "זמינה לפנייה",
+        "recommended": false,
+        "price_estimate": 4890000,
+        "price_note": "אומדן לא מחייב. מחייב בדיקה מול היזם.",
+        "source_note": "נתוני דוגמה למודל מכירה. לא מלאי רשמי.",
+        "plan": "",
+        "interior_url": "",
+        "tour_url": "",
+        "view_note": "כיוון מערבי-צפוני משוער.",
+        "hotspot_position": "2 54 2",
+        "hotspot_normal": "0 0 1",
+        "camera_orbit": "38deg 66deg 48m",
+        "stage_x": 35.6,
+        "stage_y": 15.2,
+        "stage_w": 9.6,
+        "stage_h": 4.1,
+        "points": "358,140 450,140 450,176 358,176"
+      },
+      {
+        "id": "ashira-15-02",
+        "title": "דירה 15-02 · קומה 15 · 5 חדרים",
+        "label": "15-02",
+        "building": "מגדל",
+        "floor": 15,
+        "rooms": 5,
+        "sqm": 132,
+        "balcony": 18,
+        "dir": "south-west",
+        "view": "ים · פארק · רובע",
+        "status": "reserved",
+        "availability": "בבדיקת זמינות",
+        "recommended": true,
+        "price_estimate": 6410000,
+        "price_note": "אומדן לא מחייב. דירה מסומנת כבדיקה עד קבלת מלאי רשמי.",
+        "source_note": "נתוני דוגמה למודל מכירה. לא מלאי רשמי.",
+        "plan": "",
+        "interior_url": "",
+        "tour_url": "",
+        "view_note": "שטח גדול למשפחה. יש לאמת מרפסת, כיוונים ומחסן.",
+        "hotspot_position": "-2 45 2",
+        "hotspot_normal": "0 0 1",
+        "camera_orbit": "26deg 66deg 54m",
+        "stage_x": 23.8,
+        "stage_y": 32.4,
+        "stage_w": 9.8,
+        "stage_h": 4.2,
+        "points": "238,299 334,299 334,338 238,338"
+      },
+      {
+        "id": "ashira-14-04",
+        "title": "דירה 14-04 · קומה 14 · 4 חדרים",
+        "label": "14-04",
+        "building": "מגדל",
+        "floor": 14,
+        "rooms": 4,
+        "sqm": 118,
+        "balcony": 14,
+        "dir": "west",
+        "view": "מערב · ים",
+        "status": "available",
+        "availability": "זמינה לפנייה",
+        "recommended": true,
+        "price_estimate": 5580000,
+        "price_note": "אומדן לא מחייב. מחיר, זמינות ותנאים דורשים אישור יזם.",
+        "source_note": "נתוני דוגמה למודל מכירה. לא מלאי רשמי.",
+        "plan": "",
+        "interior_url": "",
+        "tour_url": "",
+        "view_note": "דירת דוגמה שמדגימה את הבחירה מתוך החזית.",
+        "hotspot_position": "1 42 2",
+        "hotspot_normal": "0 0 1",
+        "camera_orbit": "32deg 66deg 52m",
+        "stage_x": 48,
+        "stage_y": 40.8,
+        "stage_w": 10,
+        "stage_h": 4.3,
+        "points": "480,352 580,352 580,392 480,392"
+      },
+      {
+        "id": "ashira-12-03",
+        "title": "דירה 12-03 · קומה 12 · 3 חדרים",
+        "label": "12-03",
+        "building": "מגדל",
+        "floor": 12,
+        "rooms": 3,
+        "sqm": 87,
+        "balcony": 10,
+        "dir": "east",
+        "view": "רובע שדה דב",
+        "status": "available",
+        "availability": "זמינה לפנייה",
+        "recommended": false,
+        "price_estimate": 4210000,
+        "price_note": "אומדן לא מחייב. נתוני דוגמה עד מלאי רשמי.",
+        "source_note": "נתוני דוגמה למודל מכירה. לא מלאי רשמי.",
+        "plan": "",
+        "interior_url": "",
+        "tour_url": "",
+        "view_note": "כיוון עירוני משוער.",
+        "hotspot_position": "3 36 2",
+        "hotspot_normal": "0 0 1",
+        "camera_orbit": "45deg 68deg 55m",
+        "stage_x": 34.4,
+        "stage_y": 53.5,
+        "stage_w": 10.4,
+        "stage_h": 4.5,
+        "points": "344,458 448,458 448,500 344,500"
+      }
+    ],
+    "project_3d_demo": true
+  }
+}

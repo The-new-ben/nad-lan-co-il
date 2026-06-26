@@ -1,4 +1,4 @@
-# Skill: Project 3D Model Pipeline
+﻿# Skill: Project 3D Model Pipeline
 
 Use this skill when creating or upgrading a `nadlan_project` page into a premium 3D showroom with
 real model assets, clickable units, and a CMS-repeatable data contract.
@@ -131,7 +131,7 @@ For `<model-viewer>`, each unit hotspot needs model coordinates:
 ```json
 {
   "id": "unit-2402",
-  "title": "דירת 4 חדרים, קומה 24",
+  "title": "×“×™×¨×ª 4 ×—×“×¨×™×, ×§×•×ž×” 24",
   "floor": 24,
   "hotspot_position": "1.2 24.8 -0.6",
   "hotspot_normal": "0 0 1",
@@ -173,8 +173,8 @@ The apartment selector is the product hero, not a decoration.
 1. The first visible order is intro, compact model, selected unit, CTA.
 2. Availability is visible before copy: available, reserved and sold must have different marker
    colors.
-3. Price may be official, estimated or hidden, but estimated values must say `אומדן` and
-   `לא מחייב`.
+3. Price may be official, estimated or hidden, but estimated values must say `××•×ž×“×Ÿ` and
+   `×œ× ×ž×—×™×™×‘`.
 4. On desktop, the selected-apartment card docks near the model. On mobile, it becomes a clear
    panel in the vertical flow.
 5. Advanced tools such as sun, surroundings, Mapbox and Cesium are opened after the buyer selects
@@ -235,7 +235,7 @@ off-screen.
 
 Do not make Classic Editor the long-term answer for finding showroom fields. It can be used as a
 temporary owner comfort tool, but the durable standard is the plugin-owned
-`בחירת דירות אינטראקטיבית` metabox, REST-writable project meta, and a plain owner manual. A field is
+`×‘×—×™×¨×ª ×“×™×¨×•×ª ××™× ×˜×¨××§×˜×™×‘×™×ª` metabox, REST-writable project meta, and a plain owner manual. A field is
 not considered usable until a non-technical owner can find it in the WordPress edit screen and a
 buyer can see the rendered result on the public page.
 
@@ -375,9 +375,92 @@ Minimum reusable markup contract:
 - Buyer form: `data-nlps-lead-form`, posting to `/nadlan/v1/lead` with the selected apartment
   context. It should support callback and non-binding purchase-check intents.
 
-Public copy still says "פנייה", "דברו איתנו", and "בדיקת רכישה לא מחייבת". It must not leak
+Public copy still says "×¤× ×™×™×”", "×“×‘×¨×• ××™×ª× ×•", and "×‘×“×™×§×ª ×¨×›×™×©×” ×œ× ×ž×—×™×™×‘×ª". It must not leak
 internal words such as lead, funnel, CRM, owner routing, automation, or monetization.
 
 Publishing requirement: when owner routing matters, publish the page as a real `nadlan_project`
 post or pass a valid `data-nlps-card-id`, so the shared lead endpoint can attribute the inquiry
 to the selected project.
+
+## BIM / GLB Import Truth v1.68.0
+
+Do not promise clickable apartments inside a rotating GLB unless the asset supports it.
+
+Three levels exist:
+
+1. GLB with hotspots:
+   - Works now with model-viewer annotations.
+   - Good for project labels, sea, sun, towers, floor callouts and orientation.
+   - Not enough for exact apartment picking unless hotspots are manually placed.
+
+2. Segmented GLB:
+   - Works as a prototype when every floor/unit is a separate named mesh.
+   - Mesh names should follow a predictable convention such as
+     `tower_a_floor_18_unit_04`.
+   - Requires Three.js raycasting or equivalent object picking, plus a CMS mesh-map.
+
+3. Official BIM/Revit/IFC:
+   - Best future state.
+   - Requires developer-approved source files or a paid modeling workflow.
+   - The import must still be reviewed because BIM files may expose spaces and elements, not
+     sales-unit names.
+
+Experiment evidence:
+
+`docs/research/model-assets/2026-06-26-bim-glb-experiment/ifc-inspection-summary.json`
+
+The buildingSMART IFC sample exposed `IfcBuilding`, `IfcBuildingStorey`, `IfcSpace`, walls and
+slabs, but not sale-ready apartment units. Therefore the NadLan pipeline needs a manual
+`mesh-map.json` / unit mapping review step even when the BIM file is valid.
+
+Never bundle large BIM/GLB files in plugin ZIPs. Use external media storage, WordPress uploads or a
+CDN/object store, and keep the plugin focused on validation, fields and rendering.
+
+## Asset Storage Flight Rule
+
+Prototype assets may live in WordPress uploads when small.
+
+Production project assets should use external object storage/CDN such as Cloudflare R2 or Bunny
+Storage/CDN:
+
+- GLB / USDZ
+- posters
+- gallery images
+- interior tour assets
+- floor plans
+- mesh maps and source manifests
+
+The plugin must store URLs, validation status, file size, checksum and source notes. It must not ship
+large model/media files inside release ZIPs.
+
+Before build/deploy, run:
+
+- `npx @gltf-transform/cli inspect <model.glb>`
+- optimization/compression gate
+- mobile load screenshot
+- fallback poster screenshot
+
+## Context Realism Flight Rule
+
+The model context surface is a sales-orientation surface. It must teach the buyer where the project
+sits in the real world, not merely decorate the page.
+
+Before generating or wiring a context model:
+
+1. Search official developer material and public district sources.
+2. Identify the real orientation anchors: coast, park, main roads, nearby landmarks, neighboring
+   projects, schools or transit.
+3. Draw or model those anchors in relative position. For Sde Dov, sea belongs west of the land
+   plot; Reading/Namal can orient the southern edge; Eshkol/Sde Dov labels should sit on land.
+4. Keep the context simple enough to load fast. It is allowed to be schematic, but not allowed to
+   imply false geography.
+5. Treat screenshot realism as a gate. A loaded GLB is not enough; the buyer must understand the
+   project is on the correct site.
+
+When no official BIM exists, use this split:
+
+- GLB/context model: overall site, land/sea/landmarks, sun, nearby massing.
+- Facade/elevation selector: precise apartment choice.
+
+Do not force apartment picking onto a generic GLB. Use segmented GLB picking only after named
+apartment meshes or a reviewed mesh map exists.

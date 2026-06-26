@@ -1,0 +1,20 @@
+[
+  {
+    "label": "תוכנית דירה לדוגמה",
+    "type": "floor_plan",
+    "url": "",
+    "source": "מקום שמור לתוכנית רשמית או המחשה מאושרת"
+  },
+  {
+    "label": "חזית בחירה",
+    "type": "facade",
+    "url": "facade-prototype.svg",
+    "source": "הדמיית קונספט מקורית להמחשה בלבד"
+  },
+  {
+    "label": "מפת סביבה",
+    "type": "site_orientation",
+    "url": "",
+    "source": "מקום שמור למפת סביבה מאומתת"
+  }
+]

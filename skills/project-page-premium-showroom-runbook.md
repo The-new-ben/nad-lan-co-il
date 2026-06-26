@@ -1,4 +1,4 @@
-# Project Page Premium Showroom Runbook
+﻿# Project Page Premium Showroom Runbook
 
 Use this skill when turning a real-estate project page into a flagship, replicable project showroom
 for NadLan. The target is a buyer-ready, investor-search-ready, contractor-demo-ready page, not a
@@ -21,8 +21,8 @@ open a second feature/PR/deploy path while the current proof is unresolved.
    and public wording.
 6. Before writing the short intro above the model, read the first organic result snippets and
    extract the language users and competitors already recognize. For Rainbow this means:
-   `Rainbow Tel Aviv`, `ריינבו תל אביב`, `שדה דב`, `ישראל קנדה`, `דירות`, `מחיר`, `זמינות`,
-   `ריזורט מגורים`, `קרוב לים`, and amenities language. Use those naturally, not as a keyword
+   `Rainbow Tel Aviv`, `×¨×™×™× ×‘×• ×ª×œ ××‘×™×‘`, `×©×“×” ×“×‘`, `×™×©×¨××œ ×§× ×“×”`, `×“×™×¨×•×ª`, `×ž×—×™×¨`, `×–×ž×™× ×•×ª`,
+   `×¨×™×–×•×¨×˜ ×ž×’×•×¨×™×`, `×§×¨×•×‘ ×œ×™×`, and amenities language. Use those naturally, not as a keyword
    list.
 
 ## B. Page Assembly
@@ -44,7 +44,7 @@ open a second feature/PR/deploy path while the current proof is unresolved.
    - `price_max`,
    - `project_faq_json`.
 7. Transactional project SEO must be verified separately from the 3D module:
-   - public title leads with buyer language such as `דירות למכירה` and `מחירים`,
+   - public title leads with buyer language such as `×“×™×¨×•×ª ×œ×ž×›×™×¨×”` and `×ž×—×™×¨×™×`,
    - meta description mentions price only as sourced or non-binding,
    - visible body contains natural buyer phrases, not keyword stuffing,
    - run the project page assembly checker when one exists.
@@ -83,8 +83,8 @@ open a second feature/PR/deploy path while the current proof is unresolved.
    - official unit price,
    - explicit unit estimate,
    - project average per sqm estimate,
-   - or `לפי פנייה`.
-   Anything estimated must say `אומדן` and `לא מחייב`.
+   - or `×œ×¤×™ ×¤× ×™×™×”`.
+   Anything estimated must say `××•×ž×“×Ÿ` and `×œ× ×ž×—×™×™×‘`.
 10. If a real GLB is loaded, the fallback procedural tower must disappear. Seeing both the old tower
     and the GLB together is a hard visual failure. A model error must show a visible error state,
     not silently bring back the old tower or old facade.
@@ -245,7 +245,7 @@ Material JSON standard:
 Owner manual standard:
 
 1. Every flagship project ships `docs/owner-manual-project-showroom.md`.
-2. The manual must explain where the `בחירת דירות אינטראקטיבית` metabox lives in WordPress.
+2. The manual must explain where the `×‘×—×™×¨×ª ×“×™×¨×•×ª ××™× ×˜×¨××§×˜×™×‘×™×ª` metabox lives in WordPress.
 3. The manual must list the exact fields for GLB, poster, USDZ, unit JSON, drawings, surroundings,
    video, tours, Cesium/3D Tiles seam and price notes.
 4. The owner path must use a simple unit-builder UI before raw JSON. Raw `project_3d_units` remains
@@ -315,3 +315,70 @@ Minimum for a prototype:
 4. Prototype interiors must be marked illustrative until contractor-approved assets arrive.
 5. The lead payload must keep the selected unit id/title/floor/rooms/sqm/status so the contractor
    knows which apartment the buyer explored.
+
+## M. Ashira Pre-flight Standard v1.68.0
+
+Before building a new flagship project page, create the project as a reusable factory item, not a
+one-off article.
+
+Required pre-flight:
+
+1. SERP research runs separately in each target language. Search Hebrew, English, French, Russian
+   and Arabic queries in that language before writing. Do not translate the Hebrew page blindly.
+2. Each language has its own title, meta description, slug, visible H1, intro, facts, FAQ, schema
+   fields and hreflang relationship.
+3. Public pages say `NadLan` only. Do not use `NadLan Chakam`, `Nadlan Chakam` or `× ×“×œ×Ÿ ×—×›×`.
+4. The media contract must include hero image, YouTube video, gallery, floor plans, interior tour
+   or Matterport-style URL, GLB model, poster, facade image and per-unit media.
+5. The contractor/operator screen must expose the same data as fields: project facts, media,
+   unit inventory, facade mapping, inquiries, analytics and billing status.
+6. Large BIM, Revit, GLB and gallery assets stay outside plugin ZIPs. Store URLs in the CMS.
+7. The build gate is visual: Chrome screenshots at desktop, tablet and mobile after deploy.
+
+Reference pre-flight:
+
+`docs/research/2026-06-26-ashira-showroom-preflight.md`
+
+## N. Multilingual SEO Flight Rule
+
+For HE/EN/FR/RU/AR project pages, each language is its own SERP project.
+
+Do not create foreign-language pages by raw translation only. For each language:
+
+1. Search the project and category keywords in that language.
+2. Capture the top results, snippets, page types and missing facts.
+3. Write native-language content that fits that market's questions.
+4. Fill that language's title, meta, slug, schema, image alt text and FAQ.
+5. Add reciprocal hreflang links.
+6. Verify sitemap inclusion and canonical-per-language.
+
+Recommended production stack: WPML Multilingual CMS + Yoast SEO Multilingual. Use Polylang Pro only
+if the owner chooses the lighter path. Do not install multilingual plugins casually on live production;
+they affect URL structure, sitemaps, editor workflow and SEO validation.
+
+## O. Ashira Realism Rule v1.69.x
+
+Prototype visuals still need real geography. Do not ship an attractive but geographically false
+project image.
+
+For each project:
+
+1. Research the actual developer, project site, district, neighboring references and public maps
+   before drawing the model context.
+2. The 3D context model must place the building on land, on the correct side of the coast/park/road
+   relationship. For Ashira, sea is west, Reading/Namal are southern reference points, and the
+   project belongs in the Eshkol/Sde Dov urban fabric.
+3. Nearby labels are useful only when they orient the buyer. Do not add random futuristic towers or
+   generic city shapes that imply a false skyline.
+4. If an official render/BIM/GLB is unavailable, create original prototype art and label it as
+   illustrative. The art must still respect the verified location logic.
+5. Screenshot QA must compare the page against the research notes. If the screenshot makes the
+   building look like it sits in the sea, in a park, or in the wrong neighborhood, the visual gate
+   fails even if the code works.
+
+Ashira reference implementation:
+
+- `assets/projects/ashira-sde-dov/source-notes.md`
+- `assets/projects/ashira-sde-dov/model-context-prototype.svg`
+- `assets/projects/ashira-sde-dov/poster-prototype.svg`
+- `docs/qa/2026-06-26-ashira-showroom-factory.md`

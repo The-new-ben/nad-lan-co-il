@@ -1,0 +1,61 @@
+{
+  "source_policy": "Prototype context layer from public Sde Dov and Ashira research. Exact pins must be verified before official publication.",
+  "orientation": {
+    "west": "חוף הים וטיילת תל אביב",
+    "east": "רובע שדה דב ומרכזי תעסוקה עתידיים",
+    "south": "פארק הירקון ונמל תל אביב",
+    "north": "המשך רובע שדה דב וצפון תל אביב"
+  },
+  "layers": [
+    {
+      "id": "nearby-projects",
+      "label": "פרויקטים בסביבה",
+      "items": [
+        {
+          "id": "rainbow-tel-aviv",
+          "label": "Rainbow Tel Aviv",
+          "type": "project",
+          "source": "Sde Dov project listings and NadLan internal project page"
+        },
+        {
+          "id": "dimri-yama",
+          "label": "Dimri Yama",
+          "type": "project",
+          "source": "Public Sde Dov project references"
+        },
+        {
+          "id": "gindi-vogue",
+          "label": "Gindi Vogue",
+          "type": "project",
+          "source": "Public Sde Dov project references"
+        }
+      ]
+    },
+    {
+      "id": "daily-life",
+      "label": "סביבה יומיומית",
+      "items": [
+        {
+          "label": "חוף הים",
+          "type": "coast",
+          "source": "Sde Dov district public descriptions"
+        },
+        {
+          "label": "פארק הירקון",
+          "type": "park",
+          "source": "North Tel Aviv public map context"
+        },
+        {
+          "label": "נמל תל אביב",
+          "type": "commerce",
+          "source": "North Tel Aviv public map context"
+        },
+        {
+          "label": "רכבת קלה ותנועה עתידית",
+          "type": "transport",
+          "source": "Municipal planning context, verify per official plan"
+        }
+      ]
+    }
+  ]
+}

@@ -461,8 +461,16 @@
 }
 
 .nlps-hp {
-	position: absolute;
-	left: -9999px;
+	position: absolute !important;
+	width: 1px !important;
+	height: 1px !important;
+	margin: -1px !important;
+	padding: 0 !important;
+	overflow: hidden !important;
+	clip: rect(0 0 0 0) !important;
+	clip-path: inset(50%) !important;
+	border: 0 !important;
+	white-space: nowrap !important;
 }
 
 .nlps-legal,
@@ -505,6 +513,100 @@
 	background: #fffaf0;
 }
 
+.nlps-resource-grid {
+	display: grid;
+	grid-template-columns: repeat(3, minmax(0, 1fr));
+	gap: 14px;
+	margin: 18px 0 28px;
+}
+
+.nlps-resource-card {
+	min-height: 176px;
+	padding: 18px;
+	border: 1px solid rgba(95, 73, 34, .14);
+	border-radius: 14px;
+	background: #fffdf8;
+	box-shadow: 0 14px 34px rgba(26, 23, 17, .08);
+}
+
+.nlps-resource-card span {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	width: 34px;
+	height: 34px;
+	margin-bottom: 12px;
+	border-radius: 999px;
+	background: #111b19;
+	color: #f2dfa7;
+	font-size: 12px;
+	font-weight: 900;
+}
+
+.nlps-resource-card h3 {
+	margin: 0 0 8px;
+	color: #171b17;
+	font-size: 21px;
+	line-height: 1.25;
+}
+
+.nlps-resource-card p {
+	margin: 0;
+	font-size: 15px;
+	line-height: 1.65;
+}
+
+.nlps-table {
+	width: 100%;
+	margin: 12px 0 26px;
+	border-collapse: collapse;
+	overflow: hidden;
+	border: 1px solid #e4d7c3;
+	border-radius: 14px;
+	background: #fffdf8;
+	box-shadow: 0 12px 30px rgba(26, 23, 17, .07);
+}
+
+.nlps-table th,
+.nlps-table td {
+	padding: 13px 15px;
+	border-bottom: 1px solid #eadfcc;
+	text-align: right;
+	vertical-align: top;
+}
+
+.nlps-table tr:last-child th,
+.nlps-table tr:last-child td {
+	border-bottom: 0;
+}
+
+.nlps-table th {
+	width: 24%;
+	background: #f6eddd;
+	color: #332a1d;
+	font-weight: 900;
+}
+
+.nlps-lang-row {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 8px;
+	margin: 14px 0 0;
+}
+
+.nlps-lang-row span {
+	display: inline-flex;
+	align-items: center;
+	min-height: 34px;
+	padding: 6px 12px;
+	border: 1px solid #d9c79e;
+	border-radius: 999px;
+	background: #fffaf0;
+	color: #2d2a21;
+	font-size: 14px;
+	font-weight: 800;
+}
+
 @media (max-width: 900px) {
 	.nlps-head { display: block; }
 	.nlps-legend { margin-top: 12px; }
@@ -514,6 +616,7 @@
 	}
 	.nlps-stage { grid-template-rows: minmax(280px, 44vh) auto; }
 	.nlps-tabs { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+	.nlps-resource-grid { grid-template-columns: 1fr; }
 	.nlps-poster figcaption {
 		position: static;
 		border: 0;
@@ -572,4 +675,15 @@
 	.nlps-unit-cell { min-width: 44px; min-height: 44px; font-size: 11px; }
 	.nlps-content p,
 	.nlps-content ul { font-size: 15px; }
+	.nlps-table th,
+	.nlps-table td {
+		display: block;
+		width: 100%;
+	}
+	.nlps-table th {
+		padding-bottom: 4px;
+	}
+	.nlps-table td {
+		padding-top: 8px;
+	}
 }

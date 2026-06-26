@@ -1,0 +1,79 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 920" role="img" aria-labelledby="title desc">
+  <title id="title">Ashira facade concept apartment selector</title>
+  <desc id="desc">Original concept facade for apartment picking. Replace with official elevation from the developer.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0" stop-color="#092d31"/>
+      <stop offset="1" stop-color="#071819"/>
+    </linearGradient>
+    <linearGradient id="glass" x1="0" x2="1">
+      <stop offset="0" stop-color="#345e64"/>
+      <stop offset="0.55" stop-color="#c6b98a"/>
+      <stop offset="1" stop-color="#21383d"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="920" fill="url(#bg)"/>
+  <text x="1110" y="64" direction="rtl" font-family="Arial, sans-serif" font-size="30" font-weight="700" fill="#f2dfa7">חזית בחירה · Ashira</text>
+  <text x="1110" y="102" direction="rtl" font-family="Arial, sans-serif" font-size="18" fill="#b9cbc4">הדמיה מקורית להמחשה · יש להחליף בחזית רשמית</text>
+
+  <g transform="translate(110 92)">
+    <rect x="145" y="0" width="510" height="54" rx="24" fill="#d2bc83" opacity="0.9"/>
+    <path d="M185 50 C245 14 552 12 622 56 L660 735 C590 790 250 795 150 738 Z" fill="#132d31" stroke="#e8d6a4" stroke-width="7"/>
+    <path d="M220 70 C292 42 520 42 594 72 L622 705 C538 746 285 750 180 710 Z" fill="url(#glass)" opacity="0.78"/>
+
+    <g opacity="0.45" stroke="#f6e5b2" stroke-width="4">
+      <path d="M215 125 C310 105 510 105 598 128"/>
+      <path d="M208 175 C305 157 516 157 602 178"/>
+      <path d="M202 225 C300 209 522 209 606 228"/>
+      <path d="M197 275 C296 262 528 262 610 279"/>
+      <path d="M193 325 C292 315 534 315 614 330"/>
+      <path d="M189 375 C288 368 540 368 618 381"/>
+      <path d="M185 425 C284 421 546 421 622 432"/>
+      <path d="M181 475 C280 474 552 474 626 483"/>
+      <path d="M177 525 C276 527 558 527 630 534"/>
+      <path d="M173 575 C272 580 564 580 634 585"/>
+      <path d="M169 625 C268 633 570 633 638 636"/>
+      <path d="M164 675 C264 686 576 686 642 687"/>
+    </g>
+
+    <g font-family="Arial, sans-serif" font-size="14" font-weight="700" text-anchor="middle">
+      <g fill="#0f2e2f" stroke="#32d889" stroke-width="3">
+        <rect x="244" y="140" width="92" height="36" rx="9"/><rect x="358" y="140" width="92" height="36" rx="9"/><rect x="472" y="140" width="92" height="36" rx="9"/>
+        <rect x="232" y="246" width="96" height="38" rx="9"/><rect x="352" y="246" width="96" height="38" rx="9"/><rect x="474" y="246" width="96" height="38" rx="9"/>
+        <rect x="220" y="352" width="100" height="40" rx="9"/><rect x="348" y="352" width="100" height="40" rx="9"/><rect x="480" y="352" width="100" height="40" rx="9"/>
+        <rect x="208" y="458" width="104" height="42" rx="9"/><rect x="344" y="458" width="104" height="42" rx="9"/><rect x="486" y="458" width="104" height="42" rx="9"/>
+        <rect x="196" y="564" width="108" height="44" rx="9"/><rect x="340" y="564" width="108" height="44" rx="9"/><rect x="492" y="564" width="108" height="44" rx="9"/>
+      </g>
+      <g fill="#2e2f2d" stroke="#8f9b9a" stroke-width="3" opacity="0.82">
+        <rect x="226" y="193" width="96" height="37" rx="9"/><rect x="350" y="193" width="96" height="37" rx="9"/><rect x="476" y="193" width="96" height="37" rx="9"/>
+        <rect x="214" y="405" width="102" height="40" rx="9"/><rect x="346" y="405" width="102" height="40" rx="9"/><rect x="484" y="405" width="102" height="40" rx="9"/>
+        <rect x="190" y="617" width="112" height="44" rx="9"/><rect x="338" y="617" width="112" height="44" rx="9"/><rect x="494" y="617" width="112" height="44" rx="9"/>
+      </g>
+      <g fill="#362f18" stroke="#e7b952" stroke-width="3">
+        <rect x="238" y="299" width="96" height="39" rx="9"/><rect x="354" y="299" width="96" height="39" rx="9"/><rect x="476" y="511" width="108" height="43" rx="9"/>
+      </g>
+      <g fill="#f7f1dc">
+        <text x="290" y="164">18-04</text><text x="404" y="164">18-05</text><text x="518" y="164">18-06</text>
+        <text x="280" y="270">16-03</text><text x="400" y="270">16-04</text><text x="522" y="270">16-05</text>
+        <text x="286" y="324">15-02</text><text x="402" y="324">15-03</text>
+        <text x="272" y="376">14-02</text><text x="400" y="376">14-03</text><text x="532" y="376">14-04</text>
+        <text x="260" y="482">12-02</text><text x="396" y="482">12-03</text><text x="538" y="482">12-04</text>
+        <text x="250" y="588">10-02</text><text x="394" y="588">10-03</text><text x="546" y="588">10-04</text>
+      </g>
+    </g>
+
+    <g transform="translate(720 165)">
+      <rect width="260" height="360" rx="20" fill="rgba(255,255,255,0.06)" stroke="#e8d6a4"/>
+      <text x="220" y="46" direction="rtl" font-family="Arial, sans-serif" font-size="22" font-weight="700" fill="#f2dfa7">מקרא</text>
+      <rect x="172" y="78" width="44" height="24" rx="6" fill="#0f2e2f" stroke="#32d889" stroke-width="3"/>
+      <text x="154" y="96" direction="rtl" font-family="Arial, sans-serif" font-size="16" fill="#d9e9e4">זמינה</text>
+      <rect x="172" y="122" width="44" height="24" rx="6" fill="#362f18" stroke="#e7b952" stroke-width="3"/>
+      <text x="154" y="140" direction="rtl" font-family="Arial, sans-serif" font-size="16" fill="#d9e9e4">בבדיקה</text>
+      <rect x="172" y="166" width="44" height="24" rx="6" fill="#2e2f2d" stroke="#8f9b9a" stroke-width="3"/>
+      <text x="154" y="184" direction="rtl" font-family="Arial, sans-serif" font-size="16" fill="#d9e9e4">לא זמינה</text>
+      <text x="222" y="245" direction="rtl" font-family="Arial, sans-serif" font-size="15" fill="#bfd0ca">המשבצות הן אזורי לחיצה</text>
+      <text x="222" y="276" direction="rtl" font-family="Arial, sans-serif" font-size="15" fill="#bfd0ca">המידע להמחשה בלבד</text>
+      <text x="222" y="307" direction="rtl" font-family="Arial, sans-serif" font-size="15" fill="#bfd0ca">המלאי הרשמי יוזן מהיזם</text>
+    </g>
+  </g>
+</svg>
