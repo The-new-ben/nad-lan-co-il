@@ -20,6 +20,10 @@
       "ok": true
     },
     {
+      "name": "project_data_has_language_urls",
+      "ok": true
+    },
+    {
       "name": "asset_base_url",
       "ok": true
     },
@@ -105,6 +109,10 @@
     },
     {
       "name": "engine_switches_language",
+      "ok": true
+    },
+    {
+      "name": "engine_updates_project_language_rail",
       "ok": true
     },
     {

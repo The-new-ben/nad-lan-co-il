@@ -117,6 +117,11 @@ async function measure(page) {
 				new URL(link.href, window.location.href).pathname
 			])
 		);
+		const activeProjectSlug = document.querySelector('.nle-project-card.is-active')?.getAttribute('data-nle-project') || '';
+		const activeProjectPath = activeProjectSlug ? `/projects/${activeProjectSlug}/` : '';
+		const projectLanguageTargetsFollowActive = activeProjectSlug === 'ashira-sde-dov'
+			? Object.entries(expectedLanguageTargets).every(([lang, pathname]) => catalogLanguageUrls[lang] === pathname)
+			: Object.values(catalogLanguageUrls).every((pathname) => pathname === activeProjectPath);
 		const defaultChromeWords = [
 			'Blog',
 			'About',
@@ -140,6 +145,8 @@ async function measure(page) {
 			catalogLanguageButtons: document.querySelectorAll('.nle-catalog .nlh-project-language-rail button[data-nle-lang]').length,
 			catalogLanguageLinks: document.querySelectorAll('.nle-catalog .nlh-project-language-rail a[data-nle-lang][href]').length,
 			catalogLanguageUrls,
+			activeProjectSlug,
+			projectLanguageTargetsFollowActive,
 			languageProjectTargetsOk: Object.entries(expectedLanguageTargets).every(([lang, pathname]) => catalogLanguageUrls[lang] === pathname),
 			activeLanguage,
 			heroLang: document.querySelector('.nlh-home-hero')?.getAttribute('lang') || '',
@@ -184,7 +191,9 @@ function failuresFor(viewName, before, after, english, errors, viewportHeight) {
 	if (!before.languageInsideCatalog) failures.push(`${viewName}: homepage language controls must be embedded in the project comparison engine`);
 	if (before.catalogLanguageEntries < 5) failures.push(`${viewName}: expected multilingual entries inside the project selector`);
 	if (before.catalogLanguageLinks < 5) failures.push(`${viewName}: expected real language links inside the project selector`);
+	if (before.activeProjectSlug !== 'ashira-sde-dov') failures.push(`${viewName}: multilingual project engine should default to Ashira, got ${before.activeProjectSlug}`);
 	if (!before.languageProjectTargetsOk) failures.push(`${viewName}: project language links do not match Ashira publication target URLs`);
+	if (!after.projectLanguageTargetsFollowActive) failures.push(`${viewName}: project language links do not follow the selected project`);
 	if (!english || english.activeLanguage !== 'en') failures.push(`${viewName}: English project language control did not become active`);
 	if (!english || english.heroLang !== 'en' || english.heroDir !== 'ltr') failures.push(`${viewName}: English homepage hero did not switch to ltr`);
 	if (!english || !/Check the project/.test(english.heroTitle)) failures.push(`${viewName}: English homepage hero text did not render`);

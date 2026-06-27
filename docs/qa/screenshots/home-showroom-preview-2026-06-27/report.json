@@ -24,6 +24,8 @@
           "ru": "/projects/ashira-sde-dov-ru/",
           "ar": "/projects/ashira-sde-dov-ar/"
         },
+        "activeProjectSlug": "ashira-sde-dov",
+        "projectLanguageTargetsFollowActive": true,
         "languageProjectTargetsOk": true,
         "activeLanguage": "he",
         "heroLang": "he",
@@ -37,7 +39,7 @@
         "projectCards": 3,
         "modelViewerCount": 1,
         "modelViewerDefined": true,
-        "facadeCells": 6,
+        "facadeCells": 3,
         "activeCells": 2,
         "overflow": 0,
         "minTap": 34,
@@ -78,9 +80,9 @@
           "x": 80,
           "y": 1180.0625,
           "width": 1280,
-          "height": 1010.375,
+          "height": 932.375,
           "right": 1360,
-          "bottom": 2190.4375
+          "bottom": 2112.4375
         }
       },
       "after": {
@@ -96,13 +98,15 @@
         "catalogLanguageButtons": 0,
         "catalogLanguageLinks": 5,
         "catalogLanguageUrls": {
-          "he": "/projects/ashira-sde-dov/",
-          "en": "/projects/ashira-sde-dov-en/",
-          "fr": "/projects/ashira-sde-dov-fr/",
-          "ru": "/projects/ashira-sde-dov-ru/",
-          "ar": "/projects/ashira-sde-dov-ar/"
+          "he": "/projects/rainbow-tel-aviv/",
+          "en": "/projects/rainbow-tel-aviv/",
+          "fr": "/projects/rainbow-tel-aviv/",
+          "ru": "/projects/rainbow-tel-aviv/",
+          "ar": "/projects/rainbow-tel-aviv/"
         },
-        "languageProjectTargetsOk": true,
+        "activeProjectSlug": "rainbow-tel-aviv",
+        "projectLanguageTargetsFollowActive": true,
+        "languageProjectTargetsOk": false,
         "activeLanguage": "he",
         "heroLang": "he",
         "heroDir": "rtl",
@@ -115,7 +119,7 @@
         "projectCards": 3,
         "modelViewerCount": 1,
         "modelViewerDefined": true,
-        "facadeCells": 4,
+        "facadeCells": 6,
         "activeCells": 2,
         "overflow": 0,
         "minTap": 34,
@@ -130,33 +134,33 @@
         "hasDefaultChromeWords": false,
         "hero": {
           "x": 80,
-          "y": -1074,
+          "y": -1096,
           "width": 1280,
           "height": 538.109375,
           "right": 1360,
-          "bottom": -535.890625
+          "bottom": -557.890625
         },
         "languages": {
           "x": 95,
-          "y": -508.890625,
+          "y": -530.890625,
           "width": 1250,
           "height": 60,
           "right": 1345,
-          "bottom": -448.890625
+          "bottom": -470.890625
         },
         "catalog": {
           "x": 80,
-          "y": -523.890625,
+          "y": -545.890625,
           "width": 1280,
           "height": 523.953125,
           "right": 1360,
-          "bottom": 0.0625
+          "bottom": -21.9375
         },
         "showroom": {
           "x": 80,
-          "y": 12.0625,
+          "y": -9.9375,
           "width": 1280,
-          "height": 988.375,
+          "height": 1010.375,
           "right": 1360,
           "bottom": 1000.4375
         }
@@ -174,13 +178,15 @@
         "catalogLanguageButtons": 0,
         "catalogLanguageLinks": 5,
         "catalogLanguageUrls": {
-          "he": "/projects/ashira-sde-dov/",
-          "en": "/projects/ashira-sde-dov-en/",
-          "fr": "/projects/ashira-sde-dov-fr/",
-          "ru": "/projects/ashira-sde-dov-ru/",
-          "ar": "/projects/ashira-sde-dov-ar/"
+          "he": "/projects/rainbow-tel-aviv/",
+          "en": "/projects/rainbow-tel-aviv/",
+          "fr": "/projects/rainbow-tel-aviv/",
+          "ru": "/projects/rainbow-tel-aviv/",
+          "ar": "/projects/rainbow-tel-aviv/"
         },
-        "languageProjectTargetsOk": true,
+        "activeProjectSlug": "rainbow-tel-aviv",
+        "projectLanguageTargetsFollowActive": true,
+        "languageProjectTargetsOk": false,
         "activeLanguage": "en",
         "heroLang": "en",
         "heroDir": "ltr",
@@ -193,7 +199,7 @@
         "projectCards": 3,
         "modelViewerCount": 1,
         "modelViewerDefined": true,
-        "facadeCells": 4,
+        "facadeCells": 6,
         "activeCells": 2,
         "overflow": 0,
         "minTap": 34,
@@ -234,9 +240,9 @@
           "x": 80,
           "y": 1387.59375,
           "width": 1280,
-          "height": 1076.28125,
+          "height": 1098.28125,
           "right": 1360,
-          "bottom": 2463.875
+          "bottom": 2485.875
         }
       },
       "otherLanguageProofs": [
@@ -300,6 +306,8 @@
           "ru": "/projects/ashira-sde-dov-ru/",
           "ar": "/projects/ashira-sde-dov-ar/"
         },
+        "activeProjectSlug": "ashira-sde-dov",
+        "projectLanguageTargetsFollowActive": true,
         "languageProjectTargetsOk": true,
         "activeLanguage": "he",
         "heroLang": "he",
@@ -313,7 +321,7 @@
         "projectCards": 3,
         "modelViewerCount": 1,
         "modelViewerDefined": true,
-        "facadeCells": 6,
+        "facadeCells": 3,
         "activeCells": 2,
         "overflow": 0,
         "minTap": 34,
@@ -354,9 +362,9 @@
           "x": 16,
           "y": 1465.828125,
           "width": 736,
-          "height": 1482.5,
+          "height": 1426.5,
           "right": 752,
-          "bottom": 2948.328125
+          "bottom": 2892.328125
         }
       },
       "after": {
@@ -372,13 +380,15 @@
         "catalogLanguageButtons": 0,
         "catalogLanguageLinks": 5,
         "catalogLanguageUrls": {
-          "he": "/projects/ashira-sde-dov/",
-          "en": "/projects/ashira-sde-dov-en/",
-          "fr": "/projects/ashira-sde-dov-fr/",
-          "ru": "/projects/ashira-sde-dov-ru/",
-          "ar": "/projects/ashira-sde-dov-ar/"
+          "he": "/projects/rainbow-tel-aviv/",
+          "en": "/projects/rainbow-tel-aviv/",
+          "fr": "/projects/rainbow-tel-aviv/",
+          "ru": "/projects/rainbow-tel-aviv/",
+          "ar": "/projects/rainbow-tel-aviv/"
         },
-        "languageProjectTargetsOk": true,
+        "activeProjectSlug": "rainbow-tel-aviv",
+        "projectLanguageTargetsFollowActive": true,
+        "languageProjectTargetsOk": false,
         "activeLanguage": "he",
         "heroLang": "he",
         "heroDir": "rtl",
@@ -391,7 +401,7 @@
         "projectCards": 3,
         "modelViewerCount": 1,
         "modelViewerDefined": true,
-        "facadeCells": 4,
+        "facadeCells": 6,
         "activeCells": 2,
         "overflow": 0,
         "minTap": 34,
@@ -450,13 +460,15 @@
         "catalogLanguageButtons": 0,
         "catalogLanguageLinks": 5,
         "catalogLanguageUrls": {
-          "he": "/projects/ashira-sde-dov/",
-          "en": "/projects/ashira-sde-dov-en/",
-          "fr": "/projects/ashira-sde-dov-fr/",
-          "ru": "/projects/ashira-sde-dov-ru/",
-          "ar": "/projects/ashira-sde-dov-ar/"
+          "he": "/projects/rainbow-tel-aviv/",
+          "en": "/projects/rainbow-tel-aviv/",
+          "fr": "/projects/rainbow-tel-aviv/",
+          "ru": "/projects/rainbow-tel-aviv/",
+          "ar": "/projects/rainbow-tel-aviv/"
         },
-        "languageProjectTargetsOk": true,
+        "activeProjectSlug": "rainbow-tel-aviv",
+        "projectLanguageTargetsFollowActive": true,
+        "languageProjectTargetsOk": false,
         "activeLanguage": "en",
         "heroLang": "en",
         "heroDir": "ltr",
@@ -469,7 +481,7 @@
         "projectCards": 3,
         "modelViewerCount": 1,
         "modelViewerDefined": true,
-        "facadeCells": 4,
+        "facadeCells": 6,
         "activeCells": 2,
         "overflow": 0,
         "minTap": 34,
@@ -510,9 +522,9 @@
           "x": 16,
           "y": 1280.828125,
           "width": 736,
-          "height": 1482.5,
+          "height": 1504.5,
           "right": 752,
-          "bottom": 2763.328125
+          "bottom": 2785.328125
         }
       },
       "otherLanguageProofs": [
@@ -576,6 +588,8 @@
           "ru": "/projects/ashira-sde-dov-ru/",
           "ar": "/projects/ashira-sde-dov-ar/"
         },
+        "activeProjectSlug": "ashira-sde-dov",
+        "projectLanguageTargetsFollowActive": true,
         "languageProjectTargetsOk": true,
         "activeLanguage": "he",
         "heroLang": "he",
@@ -589,7 +603,7 @@
         "projectCards": 3,
         "modelViewerCount": 1,
         "modelViewerDefined": true,
-        "facadeCells": 6,
+        "facadeCells": 3,
         "activeCells": 2,
         "overflow": 0,
         "minTap": 34,
@@ -630,9 +644,9 @@
           "x": 10,
           "y": 1441.390625,
           "width": 370,
-          "height": 1609.6875,
+          "height": 1524.96875,
           "right": 380,
-          "bottom": 3051.078125
+          "bottom": 2966.359375
         }
       },
       "after": {
@@ -648,13 +662,15 @@
         "catalogLanguageButtons": 0,
         "catalogLanguageLinks": 5,
         "catalogLanguageUrls": {
-          "he": "/projects/ashira-sde-dov/",
-          "en": "/projects/ashira-sde-dov-en/",
-          "fr": "/projects/ashira-sde-dov-fr/",
-          "ru": "/projects/ashira-sde-dov-ru/",
-          "ar": "/projects/ashira-sde-dov-ar/"
+          "he": "/projects/rainbow-tel-aviv/",
+          "en": "/projects/rainbow-tel-aviv/",
+          "fr": "/projects/rainbow-tel-aviv/",
+          "ru": "/projects/rainbow-tel-aviv/",
+          "ar": "/projects/rainbow-tel-aviv/"
         },
-        "languageProjectTargetsOk": true,
+        "activeProjectSlug": "rainbow-tel-aviv",
+        "projectLanguageTargetsFollowActive": true,
+        "languageProjectTargetsOk": false,
         "activeLanguage": "he",
         "heroLang": "he",
         "heroDir": "rtl",
@@ -667,7 +683,7 @@
         "projectCards": 3,
         "modelViewerCount": 1,
         "modelViewerDefined": true,
-        "facadeCells": 4,
+        "facadeCells": 6,
         "activeCells": 2,
         "overflow": 0,
         "minTap": 34,
@@ -682,35 +698,35 @@
         "hasDefaultChromeWords": false,
         "hero": {
           "x": 10,
-          "y": -1973,
+          "y": -1974,
           "width": 370,
           "height": 539.75,
           "right": 380,
-          "bottom": -1433.25
+          "bottom": -1434.25
         },
         "languages": {
           "x": 23,
-          "y": -1396.25,
+          "y": -1397.25,
           "width": 344,
           "height": 54,
           "right": 367,
-          "bottom": -1342.25
+          "bottom": -1343.25
         },
         "catalog": {
           "x": 10,
-          "y": -1409.25,
+          "y": -1410.25,
           "width": 370,
           "height": 667.640625,
           "right": 380,
-          "bottom": -741.609375
+          "bottom": -742.609375
         },
         "showroom": {
           "x": 10,
-          "y": -721.609375,
+          "y": -722.609375,
           "width": 370,
           "height": 1580.96875,
           "right": 380,
-          "bottom": 859.359375
+          "bottom": 858.359375
         }
       },
       "english": {
@@ -726,13 +742,15 @@
         "catalogLanguageButtons": 0,
         "catalogLanguageLinks": 5,
         "catalogLanguageUrls": {
-          "he": "/projects/ashira-sde-dov/",
-          "en": "/projects/ashira-sde-dov-en/",
-          "fr": "/projects/ashira-sde-dov-fr/",
-          "ru": "/projects/ashira-sde-dov-ru/",
-          "ar": "/projects/ashira-sde-dov-ar/"
+          "he": "/projects/rainbow-tel-aviv/",
+          "en": "/projects/rainbow-tel-aviv/",
+          "fr": "/projects/rainbow-tel-aviv/",
+          "ru": "/projects/rainbow-tel-aviv/",
+          "ar": "/projects/rainbow-tel-aviv/"
         },
-        "languageProjectTargetsOk": true,
+        "activeProjectSlug": "rainbow-tel-aviv",
+        "projectLanguageTargetsFollowActive": true,
+        "languageProjectTargetsOk": false,
         "activeLanguage": "en",
         "heroLang": "en",
         "heroDir": "ltr",
@@ -745,7 +763,7 @@
         "projectCards": 3,
         "modelViewerCount": 1,
         "modelViewerDefined": true,
-        "facadeCells": 4,
+        "facadeCells": 6,
         "activeCells": 2,
         "overflow": 0,
         "minTap": 34,
@@ -786,9 +804,9 @@
           "x": 10,
           "y": 1353.6875,
           "width": 370,
-          "height": 1628.28125,
+          "height": 1650.28125,
           "right": 380,
-          "bottom": 2981.96875
+          "bottom": 3003.96875
         }
       },
       "otherLanguageProofs": [
@@ -852,6 +870,8 @@
           "ru": "/projects/ashira-sde-dov-ru/",
           "ar": "/projects/ashira-sde-dov-ar/"
         },
+        "activeProjectSlug": "ashira-sde-dov",
+        "projectLanguageTargetsFollowActive": true,
         "languageProjectTargetsOk": true,
         "activeLanguage": "he",
         "heroLang": "he",
@@ -865,7 +885,7 @@
         "projectCards": 3,
         "modelViewerCount": 1,
         "modelViewerDefined": true,
-        "facadeCells": 6,
+        "facadeCells": 3,
         "activeCells": 2,
         "overflow": 0,
         "minTap": 34,
@@ -906,9 +926,9 @@
           "x": 10,
           "y": 1441.390625,
           "width": 370,
-          "height": 1609.6875,
+          "height": 1524.96875,
           "right": 380,
-          "bottom": 3051.078125
+          "bottom": 2966.359375
         }
       },
       "after": {
@@ -924,13 +944,15 @@
         "catalogLanguageButtons": 0,
         "catalogLanguageLinks": 5,
         "catalogLanguageUrls": {
-          "he": "/projects/ashira-sde-dov/",
-          "en": "/projects/ashira-sde-dov-en/",
-          "fr": "/projects/ashira-sde-dov-fr/",
-          "ru": "/projects/ashira-sde-dov-ru/",
-          "ar": "/projects/ashira-sde-dov-ar/"
+          "he": "/projects/rainbow-tel-aviv/",
+          "en": "/projects/rainbow-tel-aviv/",
+          "fr": "/projects/rainbow-tel-aviv/",
+          "ru": "/projects/rainbow-tel-aviv/",
+          "ar": "/projects/rainbow-tel-aviv/"
         },
-        "languageProjectTargetsOk": true,
+        "activeProjectSlug": "rainbow-tel-aviv",
+        "projectLanguageTargetsFollowActive": true,
+        "languageProjectTargetsOk": false,
         "activeLanguage": "he",
         "heroLang": "he",
         "heroDir": "rtl",
@@ -943,7 +965,7 @@
         "projectCards": 3,
         "modelViewerCount": 1,
         "modelViewerDefined": true,
-        "facadeCells": 4,
+        "facadeCells": 6,
         "activeCells": 2,
         "overflow": 0,
         "minTap": 34,
@@ -958,35 +980,35 @@
         "hasDefaultChromeWords": false,
         "hero": {
           "x": 10,
-          "y": -1973,
+          "y": -1974,
           "width": 370,
           "height": 539.75,
           "right": 380,
-          "bottom": -1433.25
+          "bottom": -1434.25
         },
         "languages": {
           "x": 23,
-          "y": -1396.25,
+          "y": -1397.25,
           "width": 344,
           "height": 54,
           "right": 367,
-          "bottom": -1342.25
+          "bottom": -1343.25
         },
         "catalog": {
           "x": 10,
-          "y": -1409.25,
+          "y": -1410.25,
           "width": 370,
           "height": 667.640625,
           "right": 380,
-          "bottom": -741.609375
+          "bottom": -742.609375
         },
         "showroom": {
           "x": 10,
-          "y": -721.609375,
+          "y": -722.609375,
           "width": 370,
           "height": 1580.96875,
           "right": 380,
-          "bottom": 859.359375
+          "bottom": 858.359375
         }
       },
       "english": {
@@ -1002,13 +1024,15 @@
         "catalogLanguageButtons": 0,
         "catalogLanguageLinks": 5,
         "catalogLanguageUrls": {
-          "he": "/projects/ashira-sde-dov/",
-          "en": "/projects/ashira-sde-dov-en/",
-          "fr": "/projects/ashira-sde-dov-fr/",
-          "ru": "/projects/ashira-sde-dov-ru/",
-          "ar": "/projects/ashira-sde-dov-ar/"
+          "he": "/projects/rainbow-tel-aviv/",
+          "en": "/projects/rainbow-tel-aviv/",
+          "fr": "/projects/rainbow-tel-aviv/",
+          "ru": "/projects/rainbow-tel-aviv/",
+          "ar": "/projects/rainbow-tel-aviv/"
         },
-        "languageProjectTargetsOk": true,
+        "activeProjectSlug": "rainbow-tel-aviv",
+        "projectLanguageTargetsFollowActive": true,
+        "languageProjectTargetsOk": false,
         "activeLanguage": "en",
         "heroLang": "en",
         "heroDir": "ltr",
@@ -1021,7 +1045,7 @@
         "projectCards": 3,
         "modelViewerCount": 1,
         "modelViewerDefined": true,
-        "facadeCells": 4,
+        "facadeCells": 6,
         "activeCells": 2,
         "overflow": 0,
         "minTap": 34,
@@ -1062,9 +1086,9 @@
           "x": 10,
           "y": 1353.6875,
           "width": 370,
-          "height": 1628.28125,
+          "height": 1650.28125,
           "right": 380,
-          "bottom": 2981.96875
+          "bottom": 3003.96875
         }
       },
       "otherLanguageProofs": [

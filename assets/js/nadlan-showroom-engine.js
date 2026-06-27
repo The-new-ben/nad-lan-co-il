@@ -341,6 +341,22 @@
 		return item[key];
 	}
 
+	function projectLanguageUrl(project, lang) {
+		if (!project) return '#projects';
+		var urls = project.language_urls || {};
+		return urls[lang] || urls.he || project.project_url || '#projects';
+	}
+
+	function hasLanguageUrl(project, lang) {
+		return !!(project && project.language_urls && project.language_urls[lang]);
+	}
+
+	function hasFullLanguageSet(project) {
+		return ['he', 'en', 'fr', 'ru', 'ar'].every(function (lang) {
+			return hasLanguageUrl(project, lang);
+		});
+	}
+
 	function planLabel(value) {
 		var labels = {
 			he: {
@@ -478,6 +494,7 @@
 		});
 		var search = qs('[data-nle-search]');
 		if (search) search.setAttribute('placeholder', t('search'));
+		renderProjectLanguageRail();
 	}
 
 	function setLanguage(lang) {
@@ -489,7 +506,7 @@
 	}
 
 	function setActiveProject(slug) {
-		var project = state.projects.find(function (item) { return item.slug === slug; }) || state.projects[0];
+		var project = state.projects.find(function (item) { return item.slug === slug; }) || state.projects.find(hasFullLanguageSet) || state.projects[0];
 		state.project = project;
 		state.unit = project.units[0];
 		state.tab = 'plan';
@@ -518,6 +535,9 @@
 			var haystack = [localized(project, 'name'), localized(project, 'sub'), localized(project, 'location'), project.name, project.sub, project.location].join(' ').toLowerCase();
 			return !query || haystack.indexOf(query) !== -1;
 		});
+		projects = projects.slice().sort(function (a, b) {
+			return (b.featured === true) - (a.featured === true);
+		});
 		if (count) count.textContent = projects.length + ' ' + t('project_count');
 		if (!grid) return;
 		grid.innerHTML = projects.map(function (project) {
@@ -528,6 +548,21 @@
 		}).join('');
 		qsa('[data-nle-project]').forEach(function (button) {
 			button.addEventListener('click', function () { setActiveProject(button.dataset.nleProject); });
+		});
+		renderProjectLanguageRail();
+	}
+
+	function renderProjectLanguageRail() {
+		var project = state.project;
+		qsa('.nlh-project-language-rail [data-nle-lang]').forEach(function (link) {
+			var lang = link.dataset.nleLang || 'he';
+			var available = hasLanguageUrl(project, lang);
+			var url = projectLanguageUrl(project, lang);
+			if (link.tagName === 'A') {
+				link.setAttribute('href', url);
+				link.setAttribute('aria-label', (link.textContent || lang).trim() + ' · ' + (localized(project, 'name') || 'NadLan'));
+			}
+			link.dataset.nleLanguageAvailable = available ? 'true' : 'false';
 		});
 	}
 
@@ -607,7 +642,7 @@
 			.then(function (data) {
 				state.projects = data.projects || [];
 				applyLanguageChrome();
-				setActiveProject(state.projects[0] && state.projects[0].slug);
+				setActiveProject();
 			});
 		var search = qs('[data-nle-search]');
 		if (search) search.addEventListener('input', renderCatalog);

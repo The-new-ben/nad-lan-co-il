@@ -18,6 +18,7 @@ This slice adds a verified homepage preview that places the multi-project showro
 - The first screen includes: one H1, search fields, and then the multi-project engine above the fold but not at the absolute top.
 - Language entry points are embedded inside the project selector, not left as a detached strip between the hero and the projects.
 - The project engine reuses `assets/engine/projects.json` so Rainbow, Dimri Yama and Ashira remain one data source.
+- The project-language rail is project-aware. Ashira links to its five language project pages; projects without approved translated pages keep their language rail on the existing project URL instead of creating fake language destinations.
 
 ## Chrome Gate
 
@@ -42,6 +43,7 @@ Expected:
 - At least 5 language entries.
 - At least 5 language entries inside the project selector.
 - The project selector language controls switch the project cards and selected apartment panel to English, French, Russian and Arabic, including correct `dir` for LTR/RTL.
+- The project selector defaults to the first fully multilingual project and the language rail follows the selected project when the buyer changes cards.
 - 4 real language target sections.
 - 4 buyer-path cards.
 - At least 3 project cards.

@@ -24,6 +24,7 @@ const functions = textOf('functions.php');
 const homeTemplate = textOf('templates/home.html');
 const engineJs = textOf('assets/js/nadlan-showroom-engine.js');
 const homeCss = textOf('assets/css/nadlan-home-showroom.css');
+const projectsData = textOf('assets/engine/projects.json');
 const ashiraManifest = JSON.parse(textOf('docs/plans/2026-06-27-ashira-publication-manifest.json'));
 const ashiraLanguageTargets = Object.fromEntries(
 	ashiraManifest.languages.map((item) => [item.lang, new URL(item.public_url).pathname])
@@ -38,6 +39,7 @@ const checks = [
 	{ name: 'home_template_uses_pattern', ok: homeTemplate.includes('nadlan-revenue/nadlan-home-showroom') },
 	{ name: 'home_template_drops_query_loop', ok: !homeTemplate.includes('template-query-loop') && !homeTemplate.includes('hidden-blog-heading') },
 	{ name: 'project_data_url', ok: pattern.includes('assets/engine/projects.json') },
+	{ name: 'project_data_has_language_urls', ok: projectsData.includes('"language_urls"') && ['"/projects/ashira-sde-dov-en/"', '"/projects/ashira-sde-dov-fr/"', '"/projects/ashira-sde-dov-ru/"', '"/projects/ashira-sde-dov-ar/"'].every((value) => projectsData.includes(value)) },
 	{ name: 'asset_base_url', ok: pattern.includes('data-nle-asset-base') },
 	{ name: 'one_h1', ok: count(pattern, '<h1 ') === 1 },
 	{ name: 'project_grid', ok: pattern.includes('data-nle-project-grid') },
@@ -60,6 +62,7 @@ const checks = [
 	{ name: 'functions_enqueues_engine_js', ok: functions.includes("assets/js/nadlan-showroom-engine.js") },
 	{ name: 'engine_reads_root_config', ok: engineJs.includes('data-nle-home-showroom') && engineJs.includes('dataset.nleProjects') && engineJs.includes('dataset.nleAssetBase') },
 	{ name: 'engine_switches_language', ok: engineJs.includes('data-nle-lang') && engineJs.includes('setLanguage') && engineJs.includes('applyLanguageChrome') && engineJs.includes('applyHomeLanguageChrome') && engineJs.includes('homeCopy') },
+	{ name: 'engine_updates_project_language_rail', ok: engineJs.includes('renderProjectLanguageRail') && engineJs.includes('projectLanguageUrl') && engineJs.includes('hasFullLanguageSet') },
 	{ name: 'no_public_internal_words', ok: !/(SEO|CMS|CRM|lead|leads|engine|template|prototype|project manager|supplier|contractor|internal|strategy|factory|fallback|placeholder|mock|monetization|פאנל|מנוע|תבנית|לידים|משפך|מוניטיז|אסטרטג|מקום שמור|פרויקטים לבדיקה)/i.test(visibleBlock) }
 ];
 

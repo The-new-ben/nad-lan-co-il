@@ -16,6 +16,9 @@
       "floors": 40,
       "model_note": "הדמיה להמחשה בלבד. יש לאמת תוכניות, מחירים וזמינות מול היזם.",
       "project_url": "/projects/rainbow-tel-aviv/",
+      "language_urls": {
+        "he": "/projects/rainbow-tel-aviv/"
+      },
       "investor_note": "בדקו קומה, נוף, שטח ותוכנית לפני פנייה.",
       "i18n": {
         "en": {
@@ -176,6 +179,9 @@
       "floors": 24,
       "model_note": "הדמיה להמחשה בלבד. יש לאמת תוכניות, מחירים וזמינות מול היזם.",
       "project_url": "/projects/dimri-yama/",
+      "language_urls": {
+        "he": "/projects/dimri-yama/"
+      },
       "investor_note": "בדקו קומה, נוף, שטח ותוכנית לפני פנייה.",
       "i18n": {
         "en": {
@@ -291,12 +297,20 @@
       "name": "Ashira Sde Dov",
       "sub": "דירות חדשות בשדה דב עם בחירה לפי קומה ונוף",
       "location": "רובע שדה דב, תל אביב",
-      "model_glb": "assets/projects/ashira-sde-dov/model-prototype.glb",
+      "model_glb": "assets/projects/ashira-sde-dov/model-context.glb",
       "poster": "assets/projects/ashira-sde-dov/ashira-hero-concept.jpg",
       "facade": "assets/projects/ashira-sde-dov/ashira-facade-concept.jpg",
       "floors": 22,
       "model_note": "הדמיה להמחשה בלבד. יש לאמת תוכניות, מחירים וזמינות מול היזם.",
       "project_url": "/projects/ashira-sde-dov/",
+      "featured": true,
+      "language_urls": {
+        "he": "/projects/ashira-sde-dov/",
+        "en": "/projects/ashira-sde-dov-en/",
+        "fr": "/projects/ashira-sde-dov-fr/",
+        "ru": "/projects/ashira-sde-dov-ru/",
+        "ar": "/projects/ashira-sde-dov-ar/"
+      },
       "investor_note": "בדקו קומה, נוף, שטח ותוכנית לפני פנייה.",
       "i18n": {
         "en": {
