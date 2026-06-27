@@ -15,7 +15,7 @@ Use separate crawlable WordPress pages for each language, then add reciprocal hr
 | English | not written yet | `ashira-sde-dov-en` | Ashira Sde Dov apartments for sale in Tel Aviv | ltr |
 | French | not written yet | `ashira-sde-dov-fr` | Appartements à vendre à Ashira Sde Dov, Tel Aviv | ltr |
 | Russian | not written yet | `ashira-sde-dov-ru` | Квартиры в Ashira Sde Dov, Тель-Авив | ltr |
-| Arabic | not written yet | `ashira-sde-dov-ar` | شقق للبيع في أشيرا سديه دوف، تل أبيب | rtl |
+| Arabic | draft written, preview QA passed | `ashira-sde-dov-ar` | شقق Ashira Sde Dov للبيع في تل أبيب | rtl |
 
 This is not the final ideal URL architecture. It is the safest first production path because it avoids a broad plugin migration, keeps every slug ASCII, and lets each language page be reviewed independently before it becomes indexable.
 
@@ -70,10 +70,16 @@ Each indexable language page must pass its own gate before publication:
 2. Write English from the Hebrew source plus English SERP research.
 3. Write French from the source plus French SERP research.
 4. Write Russian from the source plus Russian SERP research.
-5. Write Arabic from the source plus Arabic SERP research.
+5. Write Arabic from the source plus Arabic SERP research. Done as a draft and preview only.
 6. Run content-depth QA per language.
 7. Run screenshot QA per language.
 8. Only then add reciprocal hreflang and make the pages indexable.
+
+## Arabic Draft Status
+
+The Arabic Ashira draft now exists as `patterns/project-showroom-ashira-v2-ar.php`, with a WordPress import payload at `docs/wp-drafts/ashira-sde-dov-ar-v2-draft.json` and a static QA preview at `docs/previews/ashira-showroom-v2-ar-preview.html`.
+
+It is still not published, not imported, and not connected with hreflang. The safe publication rule remains unchanged: publish language pages only after each page has its own content-depth, screenshot, metadata and internal-link QA.
 
 ## Why This Is The Controlled Path
 
@@ -84,4 +90,3 @@ The site needs international buyers, but the wrong multilingual move can damage 
 - No duplicate thin translated pages.
 - No hreflang until every return page exists.
 - Every language can be checked with screenshots and content gates before publication.
-
