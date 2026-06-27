@@ -1,0 +1,40 @@
+{
+  "project": {
+    "source": "https://www.madlan.co.il/projects/מגרש_101_מתחם_אשכול_תל_אביב",
+    "pulled_at": "2026-06-27",
+    "name_he": "ASHIRA - שדה דב",
+    "madlan_listing_name": "מגרש 101, מתחם אשכול, תל אביב",
+    "developer": "אביסרור משה ובניו",
+    "city": "תל אביב יפו", "area": "שדה דב אשכול",
+    "type": "בניה חדשה", "buildings": 4, "floors_range": "7-34",
+    "total_apartments": 406, "avg_price_per_sqm_nis": 76000,
+    "developer_extra_info": "NONE — Madlan: 'היזם לא סיפק מידע נוסף'. No per-unit developer price/availability list; only summary + recorded transactions."
+  },
+  "transactions_sample": {
+    "source": "(same project URL)", "pulled_at": "2026-06-27",
+    "note": "Recorded SALES (Madlan, public registry). 26 pages exist; page-1 sample only.",
+    "total_pages_available": 26,
+    "records": [
+      {"building":"אשכול לוי 2","date":"2025-12-30","price_total_nis":7250000,"size_sqm":102,"price_per_sqm_nis":71078,"rooms":4,"floor":4,"occupancy_year":2032},
+      {"building":"קרליבך","date":"2025-12-29","price_total_nis":7070000,"size_sqm":116,"price_per_sqm_nis":60948,"rooms":5,"floor":4,"occupancy_year":2031},
+      {"building":"קרליבך","date":"2025-12-29","price_total_nis":7070000,"size_sqm":116,"price_per_sqm_nis":60948,"rooms":5,"floor":5,"occupancy_year":2031},
+      {"building":"קרליבך","date":"2025-12-29","price_total_nis":7720000,"size_sqm":116,"price_per_sqm_nis":66551,"rooms":5,"floor":6,"occupancy_year":2032}
+    ]
+  },
+  "comparables_nearby": {
+    "source": "(same project URL)", "pulled_at": "2026-06-27",
+    "items": [
+      {"name":"Yama שדה דב","address":"תל אביב יפו"},
+      {"name":"Rainbow Boutique - Tel Aviv","address":"שדה תעופה שדה דב, תל אביב יפו"},
+      {"name":"זוהי - ת\"א בשדה דב","address":"עגנון ש\"י 11, תל אביב יפו"},
+      {"name":"ecocity במינץ בנימין 16","address":"מינץ בנימין 16","rooms":"4","floors":6,"price_from_nis":5200000},
+      {"name":"ensemble - תל אביב","rooms":"3-6","floors":5,"price_from_nis":4290000}
+    ]
+  },
+  "area": {
+    "source": "(same project URL)", "pulled_at": "2026-06-27",
+    "name":"שדה דב אשכול, תל אביב יפו",
+    "nearby_neighborhoods":["שדה דב מרכז","ל' החדשה","תוכנית ל","כוכב הצפון"],
+    "MISSING_area_stats":"avg ₪/m² trend, schools, light-rail/transit, demographics live on Madlan's area page — not pulled this pass."
+  }
+}

@@ -268,3 +268,10 @@ html[lang="en"] .nl-pcard__name { font-family: var(--font-serif-en); }
   .nl-sticky { inset-inline: 16px; align-items: stretch; }
 }
 @media (prefers-reduced-motion: reduce) { * { animation-duration: .001ms !important; transition-duration: .001ms !important; } }
+
+/* === WordPress full-bleed integration ===
+   The engine is a full-page design. WordPress drops #nl-root inside a width-
+   constrained content column (is-layout-constrained), which crams the layout.
+   Break it out to the full viewport so it renders like the standalone design. */
+#nl-root{width:100vw;max-width:100vw;margin-inline:calc(50% - 50vw);overflow-x:clip}
+.entry-content #nl-root,.wp-block-post-content #nl-root{margin-block:0}
