@@ -272,19 +272,19 @@
         },
         "catalog": {
           "x": 16,
-          "y": 2381.5,
+          "y": 887,
           "width": 736,
           "height": 550.828125,
           "right": 752,
-          "bottom": 2932.328125
+          "bottom": 1437.828125
         },
         "showroom": {
           "x": 16,
-          "y": 887,
+          "y": 1461.828125,
           "width": 736,
           "height": 1482.5,
           "right": 752,
-          "bottom": 2369.5
+          "bottom": 2944.328125
         }
       },
       "after": {
@@ -324,27 +324,27 @@
         "hasDefaultChromeWords": false,
         "hero": {
           "x": 16,
-          "y": -1225,
+          "y": -1799,
           "width": 736,
           "height": 575,
           "right": 752,
-          "bottom": -650
+          "bottom": -1224
         },
         "catalog": {
           "x": 16,
-          "y": 940.5,
+          "y": -1128,
           "width": 736,
           "height": 550.828125,
           "right": 752,
-          "bottom": 1491.328125
+          "bottom": -577.171875
         },
         "showroom": {
           "x": 16,
-          "y": -554,
+          "y": -553.171875,
           "width": 736,
           "height": 1482.5,
           "right": 752,
-          "bottom": 928.5
+          "bottom": 929.328125
         }
       },
       "english": {
@@ -392,19 +392,19 @@
         },
         "catalog": {
           "x": 16,
-          "y": 2144.140625,
+          "y": 649.640625,
           "width": 736,
           "height": 633.1875,
           "right": 752,
-          "bottom": 2777.328125
+          "bottom": 1282.828125
         },
         "showroom": {
           "x": 16,
-          "y": 649.640625,
+          "y": 1306.828125,
           "width": 736,
           "height": 1482.5,
           "right": 752,
-          "bottom": 2132.140625
+          "bottom": 2789.328125
         }
       },
       "otherLanguageProofs": [
@@ -494,19 +494,19 @@
         },
         "catalog": {
           "x": 10,
-          "y": 2437.4375,
+          "y": 817.75,
           "width": 370,
           "height": 599.640625,
           "right": 380,
-          "bottom": 3037.078125
+          "bottom": 1417.390625
         },
         "showroom": {
           "x": 10,
-          "y": 815.75,
+          "y": 1437.390625,
           "width": 370,
           "height": 1609.6875,
           "right": 380,
-          "bottom": 2425.4375
+          "bottom": 3047.078125
         }
       },
       "after": {
@@ -546,27 +546,27 @@
         "hasDefaultChromeWords": false,
         "hero": {
           "x": 10,
-          "y": -1349,
+          "y": -1969,
           "width": 370,
           "height": 539.75,
           "right": 380,
-          "bottom": -809.25
+          "bottom": -1429.25
         },
         "catalog": {
           "x": 10,
-          "y": 869.71875,
+          "y": -1341.25,
           "width": 370,
           "height": 599.640625,
           "right": 380,
-          "bottom": 1469.359375
+          "bottom": -741.609375
         },
         "showroom": {
           "x": 10,
-          "y": -723.25,
+          "y": -721.609375,
           "width": 370,
           "height": 1580.96875,
           "right": 380,
-          "bottom": 857.71875
+          "bottom": 859.359375
         }
       },
       "english": {
@@ -614,19 +614,19 @@
         },
         "catalog": {
           "x": 10,
-          "y": 2326.40625,
+          "y": 688.125,
           "width": 370,
           "height": 659.5625,
           "right": 380,
-          "bottom": 2985.96875
+          "bottom": 1347.6875
         },
         "showroom": {
           "x": 10,
-          "y": 686.125,
+          "y": 1367.6875,
           "width": 370,
           "height": 1628.28125,
           "right": 380,
-          "bottom": 2314.40625
+          "bottom": 2995.96875
         }
       },
       "otherLanguageProofs": [
@@ -716,19 +716,19 @@
         },
         "catalog": {
           "x": 10,
-          "y": 2437.4375,
+          "y": 817.75,
           "width": 370,
           "height": 599.640625,
           "right": 380,
-          "bottom": 3037.078125
+          "bottom": 1417.390625
         },
         "showroom": {
           "x": 10,
-          "y": 815.75,
+          "y": 1437.390625,
           "width": 370,
           "height": 1609.6875,
           "right": 380,
-          "bottom": 2425.4375
+          "bottom": 3047.078125
         }
       },
       "after": {
@@ -768,27 +768,27 @@
         "hasDefaultChromeWords": false,
         "hero": {
           "x": 10,
-          "y": -1349,
+          "y": -1969,
           "width": 370,
           "height": 539.75,
           "right": 380,
-          "bottom": -809.25
+          "bottom": -1429.25
         },
         "catalog": {
           "x": 10,
-          "y": 869.71875,
+          "y": -1341.25,
           "width": 370,
           "height": 599.640625,
           "right": 380,
-          "bottom": 1469.359375
+          "bottom": -741.609375
         },
         "showroom": {
           "x": 10,
-          "y": -723.25,
+          "y": -721.609375,
           "width": 370,
           "height": 1580.96875,
           "right": 380,
-          "bottom": 857.71875
+          "bottom": 859.359375
         }
       },
       "english": {
@@ -836,19 +836,19 @@
         },
         "catalog": {
           "x": 10,
-          "y": 2326.40625,
+          "y": 688.125,
           "width": 370,
           "height": 659.5625,
           "right": 380,
-          "bottom": 2985.96875
+          "bottom": 1347.6875
         },
         "showroom": {
           "x": 10,
-          "y": 686.125,
+          "y": 1367.6875,
           "width": 370,
           "height": 1628.28125,
           "right": 380,
-          "bottom": 2314.40625
+          "bottom": 2995.96875
         }
       },
       "otherLanguageProofs": [

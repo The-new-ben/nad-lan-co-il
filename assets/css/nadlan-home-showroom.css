@@ -430,13 +430,13 @@
 		order: 2;
 	}
 
-	.nle-page.nlh-home .nle-showroom {
+	.nle-page.nlh-home .nle-catalog {
 		order: 3;
+		margin-top: 12px;
 	}
 
-	.nle-page.nlh-home .nle-catalog {
+	.nle-page.nlh-home .nle-showroom {
 		order: 4;
-		margin-top: 12px;
 	}
 
 	.nle-page.nlh-home .nlh-home-trust {

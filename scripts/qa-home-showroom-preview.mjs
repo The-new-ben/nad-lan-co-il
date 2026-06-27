@@ -187,10 +187,11 @@ function failuresFor(viewName, before, after, english, errors, viewportHeight) {
 	if (before.hasMojibake || after.hasMojibake) failures.push(`${viewName}: mojibake detected`);
 	if (before.hasInternalWords || after.hasInternalWords) failures.push(`${viewName}: public internal wording detected`);
 	if (before.hasDefaultChromeWords || after.hasDefaultChromeWords) failures.push(`${viewName}: default theme chrome wording detected`);
-	if (viewName === 'desktop-1440' && (!before.catalog || before.catalog.y > viewportHeight)) failures.push(`${viewName}: project section is not above the first viewport`);
+	if (!before.catalog || before.catalog.y > viewportHeight) failures.push(`${viewName}: project comparison section is not above the first viewport`);
 	if (!before.hero || !before.catalog || before.catalog.y < before.hero.bottom - 12) failures.push(`${viewName}: project selector must sit after the opening hero, not at the absolute top`);
 	if (!before.hero || !before.showroom || before.showroom.y < before.hero.bottom - 12) failures.push(`${viewName}: interactive showroom must sit after the opening hero, not at the absolute top`);
-	if (!before.showroom || before.showroom.y > viewportHeight * 1.12) failures.push(`${viewName}: interactive showroom starts too low for the above-fold homepage flow`);
+	if (!before.catalog || !before.showroom || before.catalog.y > before.showroom.y) failures.push(`${viewName}: project comparison must appear before the interactive showroom`);
+	if (!before.showroom || before.showroom.y > viewportHeight * 1.75) failures.push(`${viewName}: interactive showroom starts too low after the project comparison rail`);
 	return failures;
 }
 
