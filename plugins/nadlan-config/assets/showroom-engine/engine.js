@@ -41,8 +41,8 @@
   function statusLabel(s) { return t("status_" + s); }
   function roomsLabel(n) { return t("rooms_label", { n: n }); }
   function viewText(u) { return u.view_key ? t(u.view_key) : ""; }
-  function area() { return SR.areas[project().area]; }
-  function spoke(id) { return SR.spokes[id]; }
+  function area() { return (SR.areas && SR.areas[project().area]) || { map: { pins: [], project_pin: { x: 50, y: 50 }, coast_x: 16 }, spoke_groups: [], stats: [] }; }
+  function spoke(id) { return (SR.spokes && SR.spokes[id]) || null; }
 
   function load(k, d) { try { return JSON.parse(localStorage.getItem(k)) || d; } catch (e) { return d; } }
   function save(k, v) { try { localStorage.setItem(k, JSON.stringify(v)); } catch (e) {} }
@@ -262,7 +262,7 @@
     var stats = a.stats.map(function (s) { return '<div class="nl-statbig"><b>' + esc(s.value) + "</b><span>" + esc(t(s.label_key)) + "</span></div>"; }).join("");
     var nearby = SR.order.filter(function (k) { return k !== state.projectKey; }).map(function (k) {
       var pr = SR.projects[k];
-      return '<a class="nl-card" href="project.html?project=' + esc(k) + '" style="text-decoration:none;display:block"><div class="ic">' + svg("cube", 18) + '</div><h4>' + esc(t(pr.name_key)) + '</h4><p>' + esc((pr.content[state.lang] || pr.content.en || {}).tagline || "") + "</p></a>";
+      return '<a class="nl-card" href="' + esc(pr.url || ("?project=" + k)) + '" style="text-decoration:none;display:block"><div class="ic">' + svg("cube", 18) + '</div><h4>' + esc(t(pr.name_key) || pr.name || "") + '</h4><p>' + esc(((pr.content && (pr.content[state.lang] || pr.content.en)) || {}).tagline || "") + "</p></a>";
     }).join("");
     return '<span class="nl-eyebrow">' + esc(t("world_eyebrow")) + '</span><hr class="nl-rule"><h2>' + esc(t("world_title")) + '</h2><p class="nl-lede" style="margin:10px 0 22px">' + esc(t("world_sub")) + "</p>" +
       '<div class="nl-world"><div class="nl-map">' + mapSVG(m) + projPin + pins + '<span class="nl-badge nl-badge--demo" style="position:absolute;inset-block-start:10px;inset-inline-end:10px">' + esc(t("map_title")) + "</span></div>" +
@@ -362,7 +362,7 @@
   function homeMain() {
     var cards = SR.order.map(function (k) {
       var p = SR.projects[k], avail = p.units.filter(function (u) { return u.status === "available"; }).length;
-      return '<a class="nl-pcard" href="project.html?project=' + esc(k) + '"><div class="nl-pcard__img" style="background-image:url(' + esc(p.model_poster) + ')"><span class="nl-badge nl-badge--demo" style="position:absolute;inset-block-start:10px;inset-inline-end:10px">' + esc(t("demo_badge")) + '</span></div><div class="nl-pcard__body"><div class="nl-pcard__name">' + esc(t(p.name_key)) + '</div><p class="nl-muted" style="font-size:14px;margin-top:4px">' + esc((p.content[state.lang] || p.content.en || {}).tagline || "") + '</p><div class="nl-pcard__meta"><span class="nl-muted" style="font-size:13px">' + esc(t("card_units", { n: p.units.length })) + '</span><span style="color:var(--terracotta);font-weight:600;font-size:13px">' + esc(t("card_explore")) + "</span></div></div></a>";
+      return '<a class="nl-pcard" href="' + esc(p.url || ("?project=" + k)) + '"><div class="nl-pcard__img" style="background-image:url(' + esc(p.model_poster) + ')"><span class="nl-badge nl-badge--demo" style="position:absolute;inset-block-start:10px;inset-inline-end:10px">' + esc(t("demo_badge")) + '</span></div><div class="nl-pcard__body"><div class="nl-pcard__name">' + esc(t(p.name_key) || p.name || "") + '</div><p class="nl-muted" style="font-size:14px;margin-top:4px">' + esc(((p.content && (p.content[state.lang] || p.content.en)) || {}).tagline || "") + '</p><div class="nl-pcard__meta"><span class="nl-muted" style="font-size:13px">' + esc(t("card_units", { n: (p.units || []).length })) + '</span><span style="color:var(--terracotta);font-weight:600;font-size:13px">' + esc(t("card_explore")) + "</span></div></div></a>";
     }).join("");
     return "<main>" +
       '<section class="nl-wrap nl-homehero"><span class="nl-eyebrow">' + esc(t("home_hero_eyebrow")) + '</span><h1 style="margin-top:12px">' + esc(t("home_hero_title")) + '</h1><p class="nl-lede">' + esc(t("home_hero_sub")) + "</p></section>" +

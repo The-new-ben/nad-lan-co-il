@@ -73,10 +73,17 @@ if ( ! function_exists( 'nadlan_showroom_engine_build_project' ) ) {
 		$tier = sanitize_key( (string) get_post_meta( $id, 'project_tier', true ) );
 		if ( $tier === '' ) { $tier = 'standard'; }
 
+		$sub = (string) get_post_meta( $id, 'project_subtitle', true );
 		return array(
 			'slug'           => $post->post_name,
 			'name'           => get_the_title( $id ),
-			'sub'            => (string) get_post_meta( $id, 'project_subtitle', true ),
+			'name_key'       => get_the_title( $id ),
+			'area'           => 'area_' . $post->post_name,
+			'content'        => array(
+				'he' => array( 'tagline' => $sub ),
+				'en' => array( 'tagline' => $sub ),
+			),
+			'sub'            => $sub,
 			'building'       => (string) get_post_meta( $id, 'building', true ),
 			'floors'         => $floors,
 			'floor_height_m' => (float) ( get_post_meta( $id, 'project_3d_floor_height_m', true ) ?: 3.05 ),
@@ -108,6 +115,7 @@ if ( ! function_exists( 'nadlan_showroom_engine_config' ) ) {
 			'lead_endpoint'  => esc_url_raw( rest_url( 'nadlan/v1/lead' ) ),
 			'whatsapp'       => preg_replace( '/\D+/', '', (string) get_option( 'nadlan_whatsapp_e164', '' ) ),
 			'phone'          => (string) get_option( 'nadlan_phone', '' ),
+			'mapbox_token'   => (string) get_option( 'nadlan_mapbox_token', '' ),
 			'demo'           => false,
 			'default_project'=> $default_slug,
 			'default_lang'   => 'he',
@@ -191,12 +199,19 @@ if ( ! function_exists( 'nadlan_showroom_engine_shortcode' ) ) {
 		$base = trailingslashit( nadlan_showroom_engine_base_url() );
 
 		// assets
-		wp_enqueue_style( 'nadlan-engine-tokens', $base . 'tokens.css', array(), '1.69.44' );
-		wp_enqueue_style( 'nadlan-engine-css', $base . 'showroom.css', array( 'nadlan-engine-tokens' ), '1.69.44' );
+		wp_enqueue_style( 'nadlan-engine-tokens', $base . 'tokens.css', array(), '1.69.45' );
+		wp_enqueue_style( 'nadlan-engine-css', $base . 'showroom.css', array( 'nadlan-engine-tokens' ), '1.69.45' );
 		wp_enqueue_script( 'nadlan-model-viewer', 'https://ajax.googleapis.com/ajax/libs/model-viewer/4.0.0/model-viewer.min.js', array(), '4.0.0', true );
 		wp_script_add_data( 'nadlan-model-viewer', 'type', 'module' );
-		wp_enqueue_script( 'nadlan-engine-i18n', $base . 'i18n.js', array(), '1.69.44', true );
-		wp_enqueue_script( 'nadlan-engine-core', $base . 'engine.js', array( 'nadlan-engine-i18n' ), '1.69.44', true );
+		wp_enqueue_script( 'nadlan-engine-i18n', $base . 'i18n.js', array(), '1.69.45', true );
+		wp_enqueue_script( 'nadlan-engine-core', $base . 'engine.js', array( 'nadlan-engine-i18n' ), '1.69.45', true );
+
+		// Real Mapbox only when a token is configured; otherwise the stylized map stays.
+		if ( (string) get_option( 'nadlan_mapbox_token', '' ) !== '' ) {
+			wp_enqueue_style( 'mapbox-gl', 'https://api.mapbox.com/mapbox-gl-js/v3.7.0/mapbox-gl.css', array(), '3.7.0' );
+			wp_enqueue_script( 'mapbox-gl', 'https://api.mapbox.com/mapbox-gl-js/v3.7.0/mapbox-gl.js', array(), '3.7.0', true );
+			wp_enqueue_script( 'nadlan-engine-mapbox', $base . 'mapbox-init.js', array( 'nadlan-engine-core', 'mapbox-gl' ), '1.69.45', true );
+		}
 
 		// build payload from the CMS
 		$posts = nadlan_showroom_engine_resolve_target( $atts );
@@ -211,10 +226,29 @@ if ( ! function_exists( 'nadlan_showroom_engine_shortcode' ) ) {
 				}
 			}
 			if ( ! empty( $order ) ) {
+				// minimal area per project so block 8 (map + spokes) always renders;
+				// map.center feeds the real Mapbox mount. Empty spokes/stats collapse cleanly.
+				$areas = array();
+				foreach ( $projects as $slug => $proj ) {
+					$areas[ 'area_' . $slug ] = array(
+						'label_key'    => 'area_sde_dov',
+						'blurb_key'    => 'area_sde_dov_blurb',
+						'map'          => array(
+							'center'      => array( 'lat' => $proj['geo']['lat'], 'lng' => $proj['geo']['lng'] ),
+							'project_pin' => array( 'x' => 50, 'y' => 50 ),
+							'pins'        => array(),
+							'coast_x'     => 16,
+						),
+						'spoke_groups' => array(),
+						'stats'        => array(),
+					);
+				}
 				$payload = array(
 					'config'   => nadlan_showroom_engine_config( $order[0] ),
 					'projects' => $projects,
 					'order'    => $order,
+					'areas'    => $areas,
+					'spokes'   => array(),
 				);
 				$js = 'window.NADLAN_SHOWROOM=' . wp_json_encode( $payload ) . ';';
 				wp_add_inline_script( 'nadlan-engine-core', $js, 'before' );
