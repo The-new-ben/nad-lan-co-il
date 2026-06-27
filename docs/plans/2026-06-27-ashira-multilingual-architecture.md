@@ -1,23 +1,30 @@
 # Ashira Multilingual Architecture Gate
 
 Date: 2026-06-27
-Status: preflight only. Do not publish, import, or add hreflang until the translated pages exist and pass their own QA.
+Status: preflight only. Do not publish, import, or add hreflang until the language pages exist on their final URLs and pass their own QA.
 
 ## Decision
 
-For the first Ashira international version, do not install a sitewide multilingual plugin and do not change the whole site URL structure.
+For the first Ashira international release, do not install a sitewide multilingual plugin and do not change the whole site URL structure.
 
-Use separate crawlable WordPress pages for each language, then add reciprocal hreflang only after all pages in the language set exist:
+Use separate crawlable `nadlan_project` drafts for each language. Because they are project CPT drafts, every target URL must sit under `/projects/`, not at the site root.
 
-| Language | Page status | Draft slug | Target public title | Direction |
+The machine-readable source of truth is:
+
+- `docs/plans/2026-06-27-ashira-publication-manifest.json`
+- Gate: `npm run qa:ashira-publication-readiness`
+
+## Current Language Set
+
+| Language | Status | Draft slug | Target public URL | Direction |
 | --- | --- | --- | --- | --- |
-| Hebrew | draft-ready | `ashira-sde-dov` | דירות למכירה באשירה שדה דב | rtl |
-| English | not written yet | `ashira-sde-dov-en` | Ashira Sde Dov apartments for sale in Tel Aviv | ltr |
-| French | not written yet | `ashira-sde-dov-fr` | Appartements à vendre à Ashira Sde Dov, Tel Aviv | ltr |
-| Russian | not written yet | `ashira-sde-dov-ru` | Квартиры в Ashira Sde Dov, Тель-Авив | ltr |
-| Arabic | draft written, preview QA passed | `ashira-sde-dov-ar` | شقق Ashira Sde Dov للبيع في تل أبيب | rtl |
+| Hebrew | draft-ready, preview QA passed | `ashira-sde-dov` | `https://nad-lan.co.il/projects/ashira-sde-dov/` | rtl |
+| English | draft-ready, preview QA passed | `ashira-sde-dov-en` | `https://nad-lan.co.il/projects/ashira-sde-dov-en/` | ltr |
+| French | draft-ready, preview QA passed | `ashira-sde-dov-fr` | `https://nad-lan.co.il/projects/ashira-sde-dov-fr/` | ltr |
+| Russian | draft-ready, preview QA passed | `ashira-sde-dov-ru` | `https://nad-lan.co.il/projects/ashira-sde-dov-ru/` | ltr |
+| Arabic | draft-ready, preview QA passed | `ashira-sde-dov-ar` | `https://nad-lan.co.il/projects/ashira-sde-dov-ar/` | rtl |
 
-This is not the final ideal URL architecture. It is the safest first production path because it avoids a broad plugin migration, keeps every slug ASCII, and lets each language page be reviewed independently before it becomes indexable.
+This is not a final multilingual-platform migration. It is the safe first production path because it avoids a broad plugin migration, keeps every slug ASCII, keeps every language page reviewable independently, and avoids fake language links.
 
 ## Research Basis
 
@@ -26,37 +33,35 @@ This is not the final ideal URL architecture. It is the safest first production 
   - Each version must reference the other variants and itself.
   - Use fully qualified URLs.
 - Yoast hreflang guide: https://yoast.com/hreflang-ultimate-guide/
-  - Use hreflang only when the language versions actually exist.
+  - Use hreflang only when language versions actually exist.
   - Self-links and return links are required.
 - Liquid Web WordPress hreflang guide: https://www.liquidweb.com/wordpress/seo/add-hreflang-tags/
-  - WordPress paths include plugins, dedicated hreflang tools, or manual theme output.
+  - WordPress can use plugins, dedicated hreflang tools, or manual theme output.
   - For this site, broad plugin installation is deferred until a staging migration exists.
 - Google JavaScript SEO basics: https://developers.google.com/search/docs/crawling-indexing/javascript/javascript-seo-basics
   - Core text, links, headings, project facts and contact paths must be crawlable without relying only on client-side rendering.
 
 ## Hreflang Set
 
-Only after all five pages exist, the head tags for each page must include this complete set, with final live URLs:
+Only after all five pages exist at their final URLs, every page in the set must include the same complete reciprocal set:
 
 ```html
 <link rel="alternate" hreflang="he" href="https://nad-lan.co.il/projects/ashira-sde-dov/" />
-<link rel="alternate" hreflang="en" href="https://nad-lan.co.il/ashira-sde-dov-en/" />
-<link rel="alternate" hreflang="fr" href="https://nad-lan.co.il/ashira-sde-dov-fr/" />
-<link rel="alternate" hreflang="ru" href="https://nad-lan.co.il/ashira-sde-dov-ru/" />
-<link rel="alternate" hreflang="ar" href="https://nad-lan.co.il/ashira-sde-dov-ar/" />
+<link rel="alternate" hreflang="en" href="https://nad-lan.co.il/projects/ashira-sde-dov-en/" />
+<link rel="alternate" hreflang="fr" href="https://nad-lan.co.il/projects/ashira-sde-dov-fr/" />
+<link rel="alternate" hreflang="ru" href="https://nad-lan.co.il/projects/ashira-sde-dov-ru/" />
+<link rel="alternate" hreflang="ar" href="https://nad-lan.co.il/projects/ashira-sde-dov-ar/" />
 <link rel="alternate" hreflang="x-default" href="https://nad-lan.co.il/projects/ashira-sde-dov/" />
 ```
-
-The exact Hebrew URL may change if Ashira is imported as a page instead of a project CPT. The rule does not change: every language version must list the same complete set, including itself and x-default.
 
 ## Content Gate Per Language
 
 Each indexable language page must pass its own gate before publication:
 
-- 3,000+ visible words in that language where appropriate for the query.
+- 3,000+ visible words where appropriate for the query.
 - One H1, clear H2 hierarchy, and no article headings pushed sideways.
 - Buyer/investor-facing first paragraph.
-- Source-backed Sde Dov facts: TA/4444, 16,000 apartments, about 1,300 dunams, about 40,000 planned residents, affordable/special housing context.
+- Source-backed Sde Dov facts: TA/4444, 16,000 apartments, about 1,300 dunams, about 40,000 planned residents, and affordable/special housing context.
 - Project facts sourced from the official Ashira site, without copying developer wording.
 - Foreign-buyer guidance appropriate to that language: process, documents, legal/tax reminders, financing, currency, and contact.
 - Visible non-binding estimate language for price and availability.
@@ -64,22 +69,16 @@ Each indexable language page must pass its own gate before publication:
 - No public internal wording.
 - No auto-translation without review.
 
-## Import Order
+## Publication Order
 
-1. Keep Hebrew Ashira as the source-of-truth draft.
-2. Write English from the Hebrew source plus English SERP research.
-3. Write French from the source plus French SERP research.
-4. Write Russian from the source plus Russian SERP research.
-5. Write Arabic from the source plus Arabic SERP research. Done as a draft and preview only.
-6. Run content-depth QA per language.
-7. Run screenshot QA per language.
-8. Only then add reciprocal hreflang and make the pages indexable.
-
-## Arabic Draft Status
-
-The Arabic Ashira draft now exists as `patterns/project-showroom-ashira-v2-ar.php`, with a WordPress import payload at `docs/wp-drafts/ashira-sde-dov-ar-v2-draft.json` and a static QA preview at `docs/previews/ashira-showroom-v2-ar-preview.html`.
-
-It is still not published, not imported, and not connected with hreflang. The safe publication rule remains unchanged: publish language pages only after each page has its own content-depth, screenshot, metadata and internal-link QA.
+1. Keep all five pages as drafts until the owner approves publication.
+2. Run content-depth QA for every language.
+3. Run screenshot QA for every language.
+4. Run `npm run qa:ashira-publication-readiness`.
+5. Import only as draft first.
+6. Verify the rendered WordPress draft URLs with screenshots.
+7. Add reciprocal hreflang only after every language page has a real final URL.
+8. Make pages indexable only after the final live verification.
 
 ## Why This Is The Controlled Path
 
@@ -88,5 +87,6 @@ The site needs international buyers, but the wrong multilingual move can damage 
 - No broad plugin migration during the first Ashira build.
 - No fake language promises.
 - No duplicate thin translated pages.
+- No root-path collision for project pages.
 - No hreflang until every return page exists.
 - Every language can be checked with screenshots and content gates before publication.

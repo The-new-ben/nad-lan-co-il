@@ -378,6 +378,25 @@ The draft gate checks draft status, one H1, supported showroom root, buyer-facin
 visible-copy hygiene and draft/payload unit-id sync. Do not import a draft whose visible text
 passes screenshots but fails this payload gate.
 
+For translated project drafts, do not let the translated URL slug create a fake translated
+asset folder. If English/French/Russian/Arabic pages share the same project media, pass the
+shared asset slug explicitly when building the draft:
+
+```bash
+node scripts/build-project-showroom-draft.mjs --pattern patterns/project-showroom-ashira-v2-en.php --slug ashira-sde-dov-en --asset-slug ashira-sde-dov --title "Ashira Sde Dov apartments for sale in Tel Aviv" --out docs/wp-drafts/ashira-sde-dov-en-v2-draft.json
+```
+
+Before any multilingual import or hreflang output, run the publication gate:
+
+```bash
+npm run qa:ashira-publication-readiness
+```
+
+That gate proves every language page is still draft-only, uses the `nadlan_project` endpoint,
+targets a `/projects/<ascii-slug>/` URL, has Yoast title/meta/focus fields, reuses the real
+project asset folder, passes its content-depth report, and passes screenshot QA without
+horizontal overflow or selected-card/facade overlap.
+
 ## N. Buyer-Language Rule
 
 Public project pages speak to buyers only. They do not explain our business model, CMS, SEO plan,

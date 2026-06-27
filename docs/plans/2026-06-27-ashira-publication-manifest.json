@@ -1,0 +1,77 @@
+{
+  "status": "draft_preflight_only",
+  "site": "https://nad-lan.co.il",
+  "wordpress_type": "nadlan_project",
+  "endpoint": "https://nad-lan.co.il/wp-json/wp/v2/nadlan_project",
+  "public_base_path": "/projects/",
+  "asset_slug": "ashira-sde-dov",
+  "x_default": "he",
+  "publish_rule": "Do not publish or add hreflang until every language page exists on the final URL and passes content, screenshot, metadata, internal-link and public-copy QA.",
+  "localized_version_sources": [
+    "https://developers.google.com/search/docs/specialty/international/localized-versions",
+    "https://yoast.com/hreflang-ultimate-guide/",
+    "https://www.liquidweb.com/wordpress/seo/add-hreflang-tags/"
+  ],
+  "languages": [
+    {
+      "lang": "he",
+      "locale": "he-IL",
+      "dir": "rtl",
+      "slug": "ashira-sde-dov",
+      "public_url": "https://nad-lan.co.il/projects/ashira-sde-dov/",
+      "pattern": "patterns/project-showroom-ashira-v2.php",
+      "draft": "docs/wp-drafts/ashira-sde-dov-v2-draft.json",
+      "preview": "docs/previews/ashira-showroom-v2-preview.html",
+      "content_report": "docs/qa/ashira-content-depth-report.json",
+      "screenshot_report": "docs/qa/screenshots/ashira-v2-preview-factory-gate/report.json"
+    },
+    {
+      "lang": "en",
+      "locale": "en",
+      "dir": "ltr",
+      "slug": "ashira-sde-dov-en",
+      "public_url": "https://nad-lan.co.il/projects/ashira-sde-dov-en/",
+      "pattern": "patterns/project-showroom-ashira-v2-en.php",
+      "draft": "docs/wp-drafts/ashira-sde-dov-en-v2-draft.json",
+      "preview": "docs/previews/ashira-showroom-v2-en-preview.html",
+      "content_report": "docs/qa/ashira-en-content-depth-report.json",
+      "screenshot_report": "docs/qa/screenshots/ashira-v2-en-preview-factory-gate/report.json"
+    },
+    {
+      "lang": "fr",
+      "locale": "fr",
+      "dir": "ltr",
+      "slug": "ashira-sde-dov-fr",
+      "public_url": "https://nad-lan.co.il/projects/ashira-sde-dov-fr/",
+      "pattern": "patterns/project-showroom-ashira-v2-fr.php",
+      "draft": "docs/wp-drafts/ashira-sde-dov-fr-v2-draft.json",
+      "preview": "docs/previews/ashira-showroom-v2-fr-preview.html",
+      "content_report": "docs/qa/ashira-fr-content-depth-report.json",
+      "screenshot_report": "docs/qa/screenshots/ashira-v2-fr-preview-factory-gate/report.json"
+    },
+    {
+      "lang": "ru",
+      "locale": "ru",
+      "dir": "ltr",
+      "slug": "ashira-sde-dov-ru",
+      "public_url": "https://nad-lan.co.il/projects/ashira-sde-dov-ru/",
+      "pattern": "patterns/project-showroom-ashira-v2-ru.php",
+      "draft": "docs/wp-drafts/ashira-sde-dov-ru-v2-draft.json",
+      "preview": "docs/previews/ashira-showroom-v2-ru-preview.html",
+      "content_report": "docs/qa/ashira-ru-content-depth-report.json",
+      "screenshot_report": "docs/qa/screenshots/ashira-v2-ru-preview-factory-gate/report.json"
+    },
+    {
+      "lang": "ar",
+      "locale": "ar",
+      "dir": "rtl",
+      "slug": "ashira-sde-dov-ar",
+      "public_url": "https://nad-lan.co.il/projects/ashira-sde-dov-ar/",
+      "pattern": "patterns/project-showroom-ashira-v2-ar.php",
+      "draft": "docs/wp-drafts/ashira-sde-dov-ar-v2-draft.json",
+      "preview": "docs/previews/ashira-showroom-v2-ar-preview.html",
+      "content_report": "docs/qa/ashira-ar-content-depth-report.json",
+      "screenshot_report": "docs/qa/screenshots/ashira-v2-ar-preview-factory-gate/report.json"
+    }
+  ]
+}
