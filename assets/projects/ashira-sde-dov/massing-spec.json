@@ -1,0 +1,11 @@
+{
+  "_source": "Avisror 'Ashira' Sde Dov composition: 8,8,16,35 floors, 406 units (building.org.il, ice.co.il, sdedov.co.il). Illustrative massing until official BIM.",
+  "floor_height_m": 3.2,
+  "sea_side": "west",
+  "buildings": [
+    {"name":"tower","w":26,"d":26,"floors":35,"x":0,"z":0,"taper_top":0.10},
+    {"name":"b16","w":30,"d":22,"floors":16,"x":34,"z":-6},
+    {"name":"b8a","w":26,"d":18,"floors":8,"x":-32,"z":10},
+    {"name":"b8b","w":24,"d":18,"floors":8,"x":-30,"z":-16}
+  ]
+}
