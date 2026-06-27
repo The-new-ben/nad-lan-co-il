@@ -17,6 +17,7 @@ function parseArgs(argv) {
 		out: '',
 		site: 'https://nad-lan.co.il',
 		theme: 'nadlan-revenue',
+		assetSlug: '',
 		status: 'draft',
 		typeEndpoint: '/wp-json/wp/v2/nadlan_project',
 		yoastTitle: '',
@@ -32,6 +33,7 @@ function parseArgs(argv) {
 		else if (arg === '--out') args.out = argv[++i] || '';
 		else if (arg === '--site') args.site = (argv[++i] || args.site).replace(/\/+$/, '');
 		else if (arg === '--theme') args.theme = argv[++i] || args.theme;
+		else if (arg === '--asset-slug') args.assetSlug = argv[++i] || '';
 		else if (arg === '--status') args.status = argv[++i] || args.status;
 		else if (arg === '--type-endpoint') args.typeEndpoint = argv[++i] || args.typeEndpoint;
 		else if (arg === '--yoast-title') args.yoastTitle = argv[++i] || '';
@@ -51,6 +53,10 @@ function parseArgs(argv) {
 	if (!/^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(args.slug)) {
 		throw new Error('Slug must be ASCII lowercase words separated by hyphens.');
 	}
+	if (args.assetSlug && !/^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(args.assetSlug)) {
+		throw new Error('Asset slug must be ASCII lowercase words separated by hyphens.');
+	}
+	if (!args.assetSlug) args.assetSlug = args.slug;
 	return args;
 }
 
@@ -65,7 +71,7 @@ function extractWpHtmlBlock(patternSource) {
 }
 
 function fillRuntimeValues(content, args) {
-	const assetBase = `${args.site}/wp-content/themes/${args.theme}/assets/projects/${args.slug}/`;
+	const assetBase = `${args.site}/wp-content/themes/${args.theme}/assets/projects/${args.assetSlug}/`;
 	return content
 		.replace(/<\?php echo esc_url\( \$asset_base \. '([^']+)' \); \?>/g, (_m, file) => `${assetBase}${file}`)
 		.replace(/<\?php echo esc_url\( rest_url\( 'nadlan\/v1\/lead' \) \); \?>/g, `${args.site}/wp-json/nadlan/v1/lead`);
@@ -114,7 +120,7 @@ const payload = {
 	notes: [
 		'Create as draft first. Do not publish until official BIM/GLB, inventory, prices, plans, contact details, and legal/public-copy approval exist.',
 		'If the REST endpoint differs on live, inspect /wp-json/wp/v2/types/nadlan_project before applying.',
-		`After applying, import assets/projects/${args.slug}/showroom-payload.json only after a real post ID exists.`,
+		`After applying, import assets/projects/${args.assetSlug}/showroom-payload.json only after a real post ID exists.`,
 	],
 };
 
