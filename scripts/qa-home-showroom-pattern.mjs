@@ -21,6 +21,14 @@ const functions = textOf('functions.php');
 const homeTemplate = textOf('templates/home.html');
 const engineJs = textOf('assets/js/nadlan-showroom-engine.js');
 const homeCss = textOf('assets/css/nadlan-home-showroom.css');
+const ashiraManifest = JSON.parse(textOf('docs/plans/2026-06-27-ashira-publication-manifest.json'));
+const ashiraLanguageTargets = Object.fromEntries(
+	ashiraManifest.languages.map((item) => [item.lang, new URL(item.public_url).pathname])
+);
+const languageRailLinksOk = Object.entries(ashiraLanguageTargets).every(([lang, pathname]) => {
+	const expected = `href="${pathname}" data-nle-lang="${lang}"`;
+	return pattern.includes(expected);
+});
 
 const checks = [
 	{ name: 'pattern_marker', ok: pattern.includes('data-nle-home-showroom') },
@@ -31,6 +39,7 @@ const checks = [
 	{ name: 'one_h1', ok: count(pattern, '<h1 ') === 1 },
 	{ name: 'project_grid', ok: pattern.includes('data-nle-project-grid') },
 	{ name: 'project_language_rail', ok: pattern.includes('nlh-project-language-rail') && ['data-nle-lang="he"', 'data-nle-lang="en"', 'data-nle-lang="fr"', 'data-nle-lang="ru"', 'data-nle-lang="ar"'].every((value) => pattern.includes(value)) },
+	{ name: 'project_language_rail_links_manifest_urls', ok: languageRailLinksOk },
 	{ name: 'hero_language_controls', ok: ['data-nle-home-text="hero_eyebrow"', 'data-nle-home-text="hero_title"', 'data-nle-home-text="hero_lead"', 'data-nle-home-value="area_value"', 'data-nle-home-aria="area_aria"'].every((value) => pattern.includes(value)) },
 	{ name: 'project_band_buyer_copy', ok: pattern.includes('השוואת פרויקטים חדשים לפי דירה, נוף ואומדן') && !pattern.includes('אזור הבחירה המרכזי של דף הבית') },
 	{ name: 'model_mount', ok: pattern.includes('data-nle-model-wrap') },

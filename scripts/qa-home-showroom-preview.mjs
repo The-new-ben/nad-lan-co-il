@@ -1,13 +1,18 @@
 #!/usr/bin/env node
 import { createServer } from 'node:http';
 import { readFile } from 'node:fs/promises';
-import { existsSync, mkdirSync, writeFileSync } from 'node:fs';
+import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs';
 import path from 'node:path';
 import { chromium } from 'playwright';
 
 const ROOT = process.cwd();
 const PREVIEW = 'docs/previews/nadlan-home-showroom-preview.html';
 const OUT = 'docs/qa/screenshots/home-showroom-preview-2026-06-27';
+const ASHIRA_MANIFEST = 'docs/plans/2026-06-27-ashira-publication-manifest.json';
+const ashiraManifest = JSON.parse(readFileSync(path.resolve(ROOT, ASHIRA_MANIFEST), 'utf8'));
+const languageTargets = Object.fromEntries(
+	ashiraManifest.languages.map((item) => [item.lang, new URL(item.public_url).pathname])
+);
 const MIME = {
 	'.html': 'text/html; charset=utf-8',
 	'.css': 'text/css; charset=utf-8',
@@ -58,7 +63,7 @@ function viewportList() {
 }
 
 async function measure(page) {
-	return page.evaluate(() => {
+	return page.evaluate((expectedLanguageTargets) => {
 		const visibleText = document.body.innerText || '';
 		const rect = (sel) => {
 			const el = document.querySelector(sel);
@@ -105,6 +110,12 @@ async function measure(page) {
 		const hero = rect('.nlh-home-hero');
 		const showroom = rect('#showroom');
 		const activeLanguage = document.querySelector('.nlh-project-language-rail [data-nle-lang].is-active')?.getAttribute('data-nle-lang') || '';
+		const catalogLanguageUrls = Object.fromEntries(
+			[...document.querySelectorAll('.nle-catalog .nlh-project-language-rail a[data-nle-lang][href]')].map((link) => [
+				link.getAttribute('data-nle-lang'),
+				new URL(link.href, window.location.href).pathname
+			])
+		);
 		const defaultChromeWords = [
 			'Blog',
 			'About',
@@ -125,6 +136,9 @@ async function measure(page) {
 			languageEntries: document.querySelectorAll('.nlh-home-languages button, .nlh-home-languages a, .nlh-home-languages span, .nle-langs span').length,
 			catalogLanguageEntries: document.querySelectorAll('.nle-catalog .nlh-project-language-rail button, .nle-catalog .nlh-project-language-rail a, .nle-catalog .nlh-project-language-rail span').length,
 			catalogLanguageButtons: document.querySelectorAll('.nle-catalog .nlh-project-language-rail button[data-nle-lang]').length,
+			catalogLanguageLinks: document.querySelectorAll('.nle-catalog .nlh-project-language-rail a[data-nle-lang][href]').length,
+			catalogLanguageUrls,
+			languageProjectTargetsOk: Object.entries(expectedLanguageTargets).every(([lang, pathname]) => catalogLanguageUrls[lang] === pathname),
 			activeLanguage,
 			heroLang: document.querySelector('.nlh-home-hero')?.getAttribute('lang') || '',
 			heroDir: document.querySelector('.nlh-home-hero')?.getAttribute('dir') || '',
@@ -154,7 +168,7 @@ async function measure(page) {
 			catalog,
 			showroom
 		};
-	});
+	}, languageTargets);
 }
 
 function failuresFor(viewName, before, after, english, errors, viewportHeight) {
@@ -165,7 +179,8 @@ function failuresFor(viewName, before, after, english, errors, viewportHeight) {
 	if (before.footerLinks < 20) failures.push(`${viewName}: expected at least 20 footer links`);
 	if (before.languageEntries < 5) failures.push(`${viewName}: expected at least 5 language entries`);
 	if (before.catalogLanguageEntries < 5) failures.push(`${viewName}: expected multilingual entries inside the project selector`);
-	if (before.catalogLanguageButtons < 5) failures.push(`${viewName}: expected real language controls inside the project selector`);
+	if (before.catalogLanguageLinks < 5) failures.push(`${viewName}: expected real language links inside the project selector`);
+	if (!before.languageProjectTargetsOk) failures.push(`${viewName}: project language links do not match Ashira publication target URLs`);
 	if (!english || english.activeLanguage !== 'en') failures.push(`${viewName}: English project language control did not become active`);
 	if (!english || english.heroLang !== 'en' || english.heroDir !== 'ltr') failures.push(`${viewName}: English homepage hero did not switch to ltr`);
 	if (!english || !/Check the project/.test(english.heroTitle)) failures.push(`${viewName}: English homepage hero text did not render`);

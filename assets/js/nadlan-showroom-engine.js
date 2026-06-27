@@ -462,10 +462,12 @@
 		});
 		qsa('[data-nle-lang]').forEach(function (button) {
 			button.classList.toggle('is-active', button.dataset.nleLang === state.lang);
-			if (button.dataset.nleLang === state.lang) {
+			if (button.tagName === 'BUTTON' && button.dataset.nleLang === state.lang) {
 				button.setAttribute('aria-pressed', 'true');
-			} else {
+			} else if (button.tagName === 'BUTTON') {
 				button.setAttribute('aria-pressed', 'false');
+			} else {
+				button.removeAttribute('aria-pressed');
 			}
 		});
 		qsa('[data-nle-label]').forEach(function (el) {
