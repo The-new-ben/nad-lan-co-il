@@ -1,0 +1,57 @@
+{
+  "status": "draft_preflight_only",
+  "manifest": "docs/plans/2026-06-27-ashira-publication-manifest.json",
+  "method": "html_head_preflight",
+  "project_asset_slug": "ashira-sde-dov",
+  "x_default": "he",
+  "alternates": [
+    {
+      "hreflang": "he",
+      "locale": "he-IL",
+      "dir": "rtl",
+      "href": "https://nad-lan.co.il/projects/ashira-sde-dov/",
+      "slug": "ashira-sde-dov"
+    },
+    {
+      "hreflang": "en",
+      "locale": "en",
+      "dir": "ltr",
+      "href": "https://nad-lan.co.il/projects/ashira-sde-dov-en/",
+      "slug": "ashira-sde-dov-en"
+    },
+    {
+      "hreflang": "fr",
+      "locale": "fr",
+      "dir": "ltr",
+      "href": "https://nad-lan.co.il/projects/ashira-sde-dov-fr/",
+      "slug": "ashira-sde-dov-fr"
+    },
+    {
+      "hreflang": "ru",
+      "locale": "ru",
+      "dir": "ltr",
+      "href": "https://nad-lan.co.il/projects/ashira-sde-dov-ru/",
+      "slug": "ashira-sde-dov-ru"
+    },
+    {
+      "hreflang": "ar",
+      "locale": "ar",
+      "dir": "rtl",
+      "href": "https://nad-lan.co.il/projects/ashira-sde-dov-ar/",
+      "slug": "ashira-sde-dov-ar"
+    },
+    {
+      "hreflang": "x-default",
+      "locale": "",
+      "dir": "rtl",
+      "href": "https://nad-lan.co.il/projects/ashira-sde-dov/",
+      "slug": "ashira-sde-dov"
+    }
+  ],
+  "publish_rule": "Do not emit these tags live until every target URL is published, indexable and verified with screenshot/content QA.",
+  "sources": [
+    "https://developers.google.com/search/docs/specialty/international/localized-versions",
+    "https://yoast.com/hreflang-ultimate-guide/",
+    "https://www.liquidweb.com/wordpress/seo/add-hreflang-tags/"
+  ]
+}

@@ -314,13 +314,16 @@ is red, do not start the next Sde Dov project yet.
 Before any project draft is imported or published, create a project publication manifest and run:
 
 ```bash
+node scripts/build-project-hreflang-artifact.mjs --manifest <project-manifest> --out-json <hreflang-map> --out-html <hreflang-head>
+node scripts/qa-project-hreflang-artifact.mjs --manifest <project-manifest> --map <hreflang-map> --html <hreflang-head> --out <hreflang-report> --strict
 node scripts/qa-project-publication-readiness.mjs --manifest <project-manifest> --out <project-report> --strict
 ```
 
-The gate must prove all language drafts are still draft-only, target `/projects/`, use the real
-project asset folder, have Yoast fields, pass their content-depth reports and pass screenshot QA.
-Ashira keeps `npm run qa:ashira-publication-readiness` as an alias, but the reusable checker is the
-manifest-driven script above.
+The hreflang artifact must remain preflight-only until every language URL is live and verified.
+The publication gate must prove all language drafts are still draft-only, target `/projects/`, use
+the real project asset folder, have Yoast fields, pass their content-depth reports and pass
+screenshot QA. Ashira keeps `npm run qa:ashira-publication-readiness` as an alias, but the reusable
+checkers are the manifest-driven scripts above.
 
 The plugin should consume URLs and JSON only. Large raw modeling files should live outside the
 plugin ZIP and outside the WordPress plugin repository unless explicitly approved.

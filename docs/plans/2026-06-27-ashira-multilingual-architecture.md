@@ -13,6 +13,10 @@ The machine-readable source of truth is:
 
 - `docs/plans/2026-06-27-ashira-publication-manifest.json`
 - Gate: `npm run qa:ashira-publication-readiness`
+- Hreflang preflight files:
+  - `docs/seo/ashira-hreflang-map.json`
+  - `docs/seo/ashira-hreflang-head.html`
+  - `docs/qa/project-hreflang-artifact-report.json`
 
 ## Current Language Set
 
@@ -54,6 +58,16 @@ Only after all five pages exist at their final URLs, every page in the set must 
 <link rel="alternate" hreflang="x-default" href="https://nad-lan.co.il/projects/ashira-sde-dov/" />
 ```
 
+The snippet above is now generated from the publication manifest, not typed by hand:
+
+```bash
+npm run build:project-hreflang-artifact
+npm run qa:project-hreflang-artifact
+```
+
+This remains a preflight artifact only. Do not place it in the live `<head>` until every URL in the
+set is published, indexable and screenshot-verified.
+
 ## Content Gate Per Language
 
 Each indexable language page must pass its own gate before publication:
@@ -74,11 +88,12 @@ Each indexable language page must pass its own gate before publication:
 1. Keep all five pages as drafts until the owner approves publication.
 2. Run content-depth QA for every language.
 3. Run screenshot QA for every language.
-4. Run `npm run qa:ashira-publication-readiness`.
-5. Import only as draft first.
-6. Verify the rendered WordPress draft URLs with screenshots.
-7. Add reciprocal hreflang only after every language page has a real final URL.
-8. Make pages indexable only after the final live verification.
+4. Build and verify the preflight hreflang artifact.
+5. Run `npm run qa:ashira-publication-readiness`.
+6. Import only as draft first.
+7. Verify the rendered WordPress draft URLs with screenshots.
+8. Add reciprocal hreflang only after every language page has a real final URL.
+9. Make pages indexable only after the final live verification.
 
 ## Why This Is The Controlled Path
 

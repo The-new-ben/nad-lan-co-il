@@ -78,6 +78,23 @@ if (!manifest.x_default || !langs.has(manifest.x_default)) {
 if ((manifest.localized_version_sources || []).length < 3) {
 	addFailure(failures, 'manifest', 'missing_i18n_sources');
 }
+if (manifest.hreflang_artifacts) {
+	const artifacts = manifest.hreflang_artifacts || {};
+	for (const key of ['map', 'head', 'report']) {
+		if (!artifacts[key] || !existsSync(resolve(artifacts[key]))) {
+			addFailure(failures, 'manifest', `missing_hreflang_${key}`, artifacts[key] || '');
+		}
+	}
+	if (artifacts.report && existsSync(resolve(artifacts.report))) {
+		const hreflangReport = readJson(artifacts.report);
+		if (!hreflangReport.ok) {
+			addFailure(failures, 'manifest', 'hreflang_report_not_ok', JSON.stringify(hreflangReport.failures || []));
+		}
+		if ((hreflangReport.alternate_count || 0) !== languages.length + 1) {
+			addFailure(failures, 'manifest', 'hreflang_count_mismatch', `${hreflangReport.alternate_count || 0} != ${languages.length + 1}`);
+		}
+	}
+}
 
 for (const entry of languages) {
 	const lang = entry.lang || 'unknown';

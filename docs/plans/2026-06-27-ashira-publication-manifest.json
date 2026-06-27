@@ -18,6 +18,11 @@
     "https://www.tel-aviv.gov.il/Residents/Development/Pages/SdeDov.aspx",
     "https://www.gov.il/he/pages/sdedov-pr-22072020"
   ],
+  "hreflang_artifacts": {
+    "map": "docs/seo/ashira-hreflang-map.json",
+    "head": "docs/seo/ashira-hreflang-head.html",
+    "report": "docs/qa/project-hreflang-artifact-report.json"
+  },
   "publish_rule": "Do not publish or add hreflang until every language page exists on the final URL and passes content, screenshot, metadata, internal-link and public-copy QA.",
   "localized_version_sources": [
     "https://developers.google.com/search/docs/specialty/international/localized-versions",
