@@ -109,6 +109,8 @@ const groups = [
 			'qa:home-showroom-preview',
 			'qa:home-chrome',
 			'qa:home-seo-schema',
+			'build:home-draft-payload',
+			'qa:home-draft-import-dry-run',
 			'qa:home-publication-readiness',
 		],
 	},

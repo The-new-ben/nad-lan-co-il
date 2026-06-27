@@ -14,6 +14,9 @@ The machine-readable source of truth is:
 - `docs/plans/2026-06-27-ashira-publication-manifest.json`
 - Gate: `npm run qa:ashira-publication-readiness`
 - Full aggregate gate: `npm run qa:ashira-full-preflight`
+- Homepage draft-import proof:
+  - `docs/wp-drafts/nadlan-home-showroom-v2-draft.json`
+  - `docs/qa/home-draft-import-dry-run-report.json`
 - Hreflang preflight files:
   - `docs/seo/ashira-hreflang-map.json`
   - `docs/seo/ashira-hreflang-head.html`

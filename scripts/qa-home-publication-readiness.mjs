@@ -60,6 +60,7 @@ const patternReport = jsonOf(manifest.required_reports.pattern);
 const screenshotReport = jsonOf(manifest.required_reports.screenshots);
 const chromeReport = jsonOf(manifest.required_reports.chrome);
 const seoReport = jsonOf(manifest.required_reports.seo_schema);
+const draftReport = manifest.required_reports.draft_import_dry_run ? jsonOf(manifest.required_reports.draft_import_dry_run) : null;
 const projectPublicationReport = jsonOf(manifest.required_reports.project_publication);
 const langPaths = languagePaths(projectManifest);
 
@@ -71,6 +72,14 @@ check(checks, 'pattern_report_green', patternReport.ok === true && (!patternRepo
 check(checks, 'screenshot_report_green', screenshotReport.ok === true && (!screenshotReport.failures || screenshotReport.failures.length === 0));
 check(checks, 'chrome_report_green', chromeReport.ok === true && (!chromeReport.failures || chromeReport.failures.length === 0));
 check(checks, 'seo_schema_report_green', seoReport.ok === true && (!seoReport.failures || seoReport.failures.length === 0));
+check(checks, 'draft_import_dry_run_report_green', draftReport && draftReport.ok === true && (!draftReport.failures || draftReport.failures.length === 0));
+check(checks, 'draft_payload_manifest_aligned', draftReport && draftReport.draft_payload === manifest.draft_payload);
+check(checks, 'draft_payload_pages_endpoint', draftReport && draftReport.import && draftReport.import.endpoint === manifest.draft.endpoint);
+check(checks, 'draft_payload_status_draft', draftReport && draftReport.import && draftReport.import.status === 'draft');
+check(checks, 'draft_payload_slug_aligned', draftReport && draftReport.import && draftReport.import.slug === manifest.draft.slug);
+check(checks, 'draft_payload_has_body', draftReport && draftReport.import && draftReport.import.content_chars >= 8000, {
+	content_chars: draftReport?.import?.content_chars || 0
+});
 check(checks, 'project_publication_report_green', projectPublicationReport.ok === true && (!projectPublicationReport.failures || projectPublicationReport.failures.length === 0));
 check(checks, 'project_manifest_has_five_languages', projectManifest.languages.length === 5);
 check(checks, 'project_manifest_urls_under_projects', projectManifest.languages.every((item) => new URL(item.public_url).pathname.startsWith('/projects/')));

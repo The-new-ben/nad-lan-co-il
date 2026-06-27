@@ -47,6 +47,10 @@
       "ok": true
     },
     {
+      "name": "file_exists:docs/qa/home-draft-import-dry-run-report.json",
+      "ok": true
+    },
+    {
       "name": "file_exists:docs/qa/project-publication-readiness-report.json",
       "ok": true
     },
@@ -81,6 +85,31 @@
     {
       "name": "seo_schema_report_green",
       "ok": true
+    },
+    {
+      "name": "draft_import_dry_run_report_green",
+      "ok": true
+    },
+    {
+      "name": "draft_payload_manifest_aligned",
+      "ok": true
+    },
+    {
+      "name": "draft_payload_pages_endpoint",
+      "ok": true
+    },
+    {
+      "name": "draft_payload_status_draft",
+      "ok": true
+    },
+    {
+      "name": "draft_payload_slug_aligned",
+      "ok": true
+    },
+    {
+      "name": "draft_payload_has_body",
+      "ok": true,
+      "content_chars": 10752
     },
     {
       "name": "project_publication_report_green",

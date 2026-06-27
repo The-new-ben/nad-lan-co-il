@@ -5,6 +5,13 @@
   "preview": "docs/previews/nadlan-home-showroom-preview.html",
   "pattern": "patterns/nadlan-home-showroom.php",
   "template": "templates/home.html",
+  "draft_payload": "docs/wp-drafts/nadlan-home-showroom-v2-draft.json",
+  "draft": {
+    "endpoint": "https://nad-lan.co.il/wp-json/wp/v2/pages",
+    "slug": "nadlan-home-showroom-v2",
+    "status": "draft",
+    "rule": "Create as a draft page only. Do not publish or set as the front page until visual QA and owner approval pass."
+  },
   "project_publication_manifest": "docs/plans/2026-06-27-ashira-publication-manifest.json",
   "publish_rule": "Do not import or publish the homepage until the homepage publication readiness gate, browser screenshot gate, chrome gate, SEO/schema gate, and linked project-language targets are green.",
   "required_reports": {
@@ -12,6 +19,7 @@
     "screenshots": "docs/qa/screenshots/home-showroom-preview-2026-06-27/report.json",
     "chrome": "docs/qa/home-chrome-report.json",
     "seo_schema": "docs/qa/home-seo-schema-report.json",
+    "draft_import_dry_run": "docs/qa/home-draft-import-dry-run-report.json",
     "project_publication": "docs/qa/project-publication-readiness-report.json"
   },
   "required_viewports": [

@@ -417,7 +417,10 @@ and metadata before anyone runs a real WordPress import.
 For Ashira, `npm run qa:ashira-full-preflight` is the owner-review gate. It runs the research,
 architecture, all five content-depth gates, all five browser screenshot gates, factory readiness,
 draft readiness, hreflang, import dry-run, publication readiness and homepage-dependency gates in
-one sequence and writes `docs/qa/ashira-full-preflight-report.json`.
+one sequence and writes `docs/qa/ashira-full-preflight-report.json`. The homepage dependency now
+also includes `npm run build:home-draft-payload` and `npm run qa:home-draft-import-dry-run`, so a
+theme-first homepage pattern is not called import-ready until it has a draft-only WordPress REST
+payload that passes the same dry-run discipline as the project pages.
 
 ## N. Buyer-Language Rule
 
