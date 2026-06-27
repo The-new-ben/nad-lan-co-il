@@ -1,0 +1,33 @@
+{
+  "status": "draft_preflight_only",
+  "site": "https://nad-lan.co.il",
+  "page": "home",
+  "preview": "docs/previews/nadlan-home-showroom-preview.html",
+  "pattern": "patterns/nadlan-home-showroom.php",
+  "template": "templates/home.html",
+  "project_publication_manifest": "docs/plans/2026-06-27-ashira-publication-manifest.json",
+  "publish_rule": "Do not import or publish the homepage until the homepage publication readiness gate, browser screenshot gate, chrome gate, SEO/schema gate, and linked project-language targets are green.",
+  "required_reports": {
+    "pattern": "docs/qa/home-showroom-pattern-report.json",
+    "screenshots": "docs/qa/screenshots/home-showroom-preview-2026-06-27/report.json",
+    "chrome": "docs/qa/home-chrome-report.json",
+    "seo_schema": "docs/qa/home-seo-schema-report.json",
+    "project_publication": "docs/qa/ashira-publication-readiness-report.json"
+  },
+  "required_viewports": [
+    "desktop-1440",
+    "tablet-768",
+    "mobile-390",
+    "edge-mobile-390"
+  ],
+  "homepage_language_behavior": {
+    "opening_language_controls": "Switch visible homepage copy in place for quick buyer orientation.",
+    "project_language_rail": "Link to the localized Ashira project pages defined in the project publication manifest."
+  },
+  "not_done_in_this_state": [
+    "No WordPress import",
+    "No live deploy",
+    "No hreflang output",
+    "No multilingual plugin migration"
+  ]
+}
