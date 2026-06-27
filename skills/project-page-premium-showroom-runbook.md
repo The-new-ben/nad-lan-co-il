@@ -420,7 +420,9 @@ draft readiness, hreflang, import dry-run, publication readiness and homepage-de
 one sequence and writes `docs/qa/ashira-full-preflight-report.json`. The homepage dependency now
 also includes `npm run build:home-draft-payload` and `npm run qa:home-draft-import-dry-run`, so a
 theme-first homepage pattern is not called import-ready until it has a draft-only WordPress REST
-payload that passes the same dry-run discipline as the project pages.
+payload that passes the same dry-run discipline as the project pages. The homepage dry-run must
+also prove exact parity between the draft payload body and the current theme pattern after public
+asset URL resolution, so a stale payload cannot be imported accidentally.
 
 ## N. Buyer-Language Rule
 

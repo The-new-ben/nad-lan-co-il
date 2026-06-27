@@ -3,6 +3,12 @@
   "manifest": "docs/plans/2026-06-27-homepage-publication-manifest.json",
   "draft_payload": "docs/wp-drafts/nadlan-home-showroom-v2-draft.json",
   "mode": "dry-run-only",
+  "pattern_parity": {
+    "pattern": "patterns/nadlan-home-showroom.php",
+    "ok": true,
+    "payload_sha256": "3c274d457ed6000017ff8c7527e6d6a5db0eb0b6c2a381a3d0c2d2489b1c093a",
+    "expected_sha256": "3c274d457ed6000017ff8c7527e6d6a5db0eb0b6c2a381a3d0c2d2489b1c093a"
+  },
   "import": {
     "exit_code": 0,
     "mode": "dry-run",

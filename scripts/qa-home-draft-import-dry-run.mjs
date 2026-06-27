@@ -1,11 +1,14 @@
 #!/usr/bin/env node
 import { mkdirSync, readFileSync, writeFileSync } from 'node:fs';
 import { spawnSync } from 'node:child_process';
+import { createHash } from 'node:crypto';
 import path from 'node:path';
 
 const ROOT = process.cwd();
 const MANIFEST = 'docs/plans/2026-06-27-homepage-publication-manifest.json';
 const OUT = 'docs/qa/home-draft-import-dry-run-report.json';
+const THEME_URL = 'https://nad-lan.co.il/wp-content/themes/nadlan-revenue/';
+const PROJECTS_URL = `${THEME_URL}assets/engine/projects.json`;
 
 function resolve(file) {
 	return path.resolve(ROOT, file);
@@ -39,14 +42,40 @@ function addFailure(failures, name, details = '') {
 	failures.push({ name, details });
 }
 
+function extractBlockPattern(source, file) {
+	const start = source.indexOf('<!-- wp:html -->');
+	const endMarker = '<!-- /wp:html -->';
+	const end = source.indexOf(endMarker);
+	if (start === -1 || end === -1 || end <= start) {
+		throw new Error(`Could not find bounded wp:html block in ${file}`);
+	}
+	return source.slice(start, end + endMarker.length);
+}
+
+function expectedContentFromPattern(patternFile) {
+	return extractBlockPattern(readFileSync(resolve(patternFile), 'utf8'), patternFile)
+		.replace(/<\?php\s+echo\s+esc_url\(\s*\$projects_js\s*\);\s*\?>/g, PROJECTS_URL)
+		.replace(/<\?php\s+echo\s+esc_url\(\s*\$theme_uri\s*\);\s*\?>/g, THEME_URL);
+}
+
+function sha256(value) {
+	return createHash('sha256').update(value).digest('hex');
+}
+
 const manifest = readJson(MANIFEST);
 const failures = [];
 const draft = manifest.draft || {};
 const draftPath = manifest.draft_payload || '';
+let expectedContent = '';
 
 if (manifest.status !== 'draft_preflight_only') addFailure(failures, 'manifest_not_preflight', manifest.status || '');
 if (!draftPath) addFailure(failures, 'missing_draft_payload');
 if (!draft.endpoint || !draft.slug) addFailure(failures, 'missing_manifest_draft_contract');
+try {
+	expectedContent = expectedContentFromPattern(manifest.pattern);
+} catch (error) {
+	addFailure(failures, 'pattern_extract_failed', error.message);
+}
 
 let payload = {};
 let output = {};
@@ -100,6 +129,7 @@ if (!content.includes('data-nle-home-showroom')) addFailure(failures, 'missing_h
 if (!content.includes('https://nad-lan.co.il/wp-content/themes/nadlan-revenue/assets/engine/projects.json')) addFailure(failures, 'missing_public_projects_json_url');
 if (!content.includes('https://nad-lan.co.il/wp-content/themes/nadlan-revenue/')) addFailure(failures, 'missing_public_theme_asset_base');
 if (/<\?php|get_template_directory_uri|trailingslashit/.test(content)) addFailure(failures, 'payload_contains_theme_php');
+if (expectedContent && content !== expectedContent) addFailure(failures, 'payload_pattern_parity_mismatch', `payload=${content.length} expected=${expectedContent.length}`);
 if (publicInternalWords.test(visibleContent)) addFailure(failures, 'visible_public_copy_has_internal_words');
 if (/[\u00c2\u00c3]/.test(JSON.stringify(body))) addFailure(failures, 'payload_contains_mojibake_markers');
 if (!meta._yoast_wpseo_title || !meta._yoast_wpseo_metadesc || !meta._yoast_wpseo_focuskw) addFailure(failures, 'missing_yoast_meta');
@@ -109,6 +139,12 @@ const report = {
 	manifest: MANIFEST,
 	draft_payload: draftPath,
 	mode: 'dry-run-only',
+	pattern_parity: {
+		pattern: manifest.pattern || '',
+		ok: Boolean(expectedContent && content === expectedContent),
+		payload_sha256: sha256(content),
+		expected_sha256: sha256(expectedContent),
+	},
 	import: {
 		exit_code: result.status,
 		mode: output.mode || '',

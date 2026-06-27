@@ -53,6 +53,7 @@ Expected:
 - Homepage title, description and JSON-LD are present and buyer-facing.
 - A draft-only WordPress REST payload can be generated from the theme pattern without PHP in the page body.
 - The homepage import path is proven with `--dry-run` only: endpoint `wp/v2/pages`, status `draft`, slug `nadlan-home-showroom-v2`, no credentials and no WordPress contact.
+- The draft payload must exactly match the current theme pattern after PHP asset helpers are resolved to public URLs, so a stale payload cannot pass.
 
 ## Result
 
@@ -138,4 +139,5 @@ npm run qa:home-draft-import-dry-run
 executes `scripts/apply-wp-draft-payload.mjs --dry-run`, verifies `status: draft`, endpoint
 `https://nad-lan.co.il/wp-json/wp/v2/pages`, slug `nadlan-home-showroom-v2`, four Yoast/meta
 fields, the `data-nle-home-showroom` marker, public asset URLs, no PHP remnants, no mojibake and no
-visible internal wording. It does not contact WordPress and does not publish.
+visible internal wording. It also recomputes the expected content from the current theme pattern and
+fails if the payload is stale. It does not contact WordPress and does not publish.
