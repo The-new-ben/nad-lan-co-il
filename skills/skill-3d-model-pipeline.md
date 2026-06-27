@@ -303,12 +303,37 @@ material before importing anything into WordPress.
 Before relying on the factory for a real project, run:
 
 ```bash
-node scripts/qa-project-factory-smoke.mjs
+npm run qa:project-factory-smoke
 ```
 
 This creates a temporary project folder, builds `showroom-payload.json`, validates it against the
-schema, checks that the expected scaffold files exist, and removes the temporary folder. If this
-smoke test is red, do not start the next Sde Dov project yet.
+schema, checks that the expected scaffold files exist, writes
+`docs/qa/project-factory-smoke-report.json`, creates a temporary five-language draft-only
+publication manifest, verifies its structure, and removes the temporary artifacts. If this smoke
+test is red, do not start the next Sde Dov project yet.
+
+Before any project draft is imported or published, create a project publication manifest and run:
+
+```bash
+npm run init:project-publication-manifest -- <project-slug> --title "Project Name" --asset-slug <project-slug>
+npm run qa:ashira-full-preflight
+node scripts/build-project-hreflang-artifact.mjs --manifest <project-manifest> --out-json <hreflang-map> --out-html <hreflang-head>
+node scripts/qa-project-hreflang-artifact.mjs --manifest <project-manifest> --map <hreflang-map> --html <hreflang-head> --out <hreflang-report> --strict
+node scripts/qa-project-draft-import-dry-run.mjs --manifest <project-manifest> --out <dry-run-report> --strict
+node scripts/qa-project-publication-readiness.mjs --manifest <project-manifest> --out <project-report> --strict
+```
+
+The hreflang artifact must remain preflight-only until every language URL is live and verified.
+The dry-run import gate must prove every draft payload can pass the same offline WordPress REST
+create path without credentials or publishing. The publication gate must prove all language drafts
+are still draft-only, target `/projects/`, use the real project asset folder, have Yoast fields,
+pass their content-depth reports and pass screenshot QA. Ashira keeps `npm run
+qa:ashira-publication-readiness` as an alias, but the reusable checkers are the manifest-driven
+scripts above.
+
+The aggregate gate is project-specific today (`qa:ashira-full-preflight`) because it names the
+current language, screenshot and homepage dependencies. When cloning the factory to Dimri, Rainbow
+or another Sde Dov project, create the same aggregate gate for that project before calling it ready.
 
 The plugin should consume URLs and JSON only. Large raw modeling files should live outside the
 plugin ZIP and outside the WordPress plugin repository unless explicitly approved.
@@ -330,6 +355,24 @@ small collapsed handle until the buyer opens it.
 Public product copy must stay buyer-facing. Do not publish back-office terms such as lead panel,
 funnel, CRM, monetization, or paid placement. The visible page should say inquiry, selected
 apartment, developer contact, availability check, and non-binding estimate.
+
+## Buyer Copy Discipline
+
+The model pipeline produces a buyer product, not a demo deck. Public text must describe what a
+buyer can see, compare and ask about:
+
+- apartment floor, rooms, sqm, view and orientation;
+- available, checking, reserved or sold status;
+- non-binding price estimate and source note;
+- floor plan, interior media, view, surroundings and next inquiry step.
+
+Do not let model, data or build terms leak into rendered pages. These words are documentation-only:
+engine, template, prototype, CMS, SEO, CRM, lead, funnel, monetization, supplier, project manager,
+מנוע, תבנית, אבטיפוס, פאנל, לידים.
+
+If the public screen needs a placeholder for media not yet supplied, write it as a buyer promise:
+`כאן יוצגו סיור פנים, וידאו או גלריית תמונות כאשר החומר המאושר זמין.`
+Do not write `placeholder`, `מקום שמור`, `prototype`, or similar working language.
 
 ## Rainbow v1.66.4 QA Lesson: Showroom DNA
 
@@ -381,3 +424,70 @@ internal words such as lead, funnel, CRM, owner routing, automation, or monetiza
 Publishing requirement: when owner routing matters, publish the page as a real `nadlan_project`
 post or pass a valid `data-nlps-card-id`, so the shared lead endpoint can attribute the inquiry
 to the selected project.
+
+## Ashira V2 Clean Contract Lesson
+
+If a project showroom becomes hard to reason about because previous slices stacked CSS and runtime
+patches, freeze that path and create a clean contract instead of trying to rescue the cascade.
+
+Ashira v2 uses:
+
+- `.nlv2-showroom` as the only root;
+- `.nlv2-*` classes only;
+- `data-nlv2-*` runtime attributes only;
+- a generated or official bitmap facade for apartment cells;
+- a GLB/model-viewer context model beside the facade;
+- a selected-apartment card below the scene, not floating over the facade;
+- Chrome screenshot proof at desktop, tablet and mobile before merge.
+
+Never mix `.nlps` or `.nlp3d` selectors into this v2 layer. If another project needs the same
+standard, clone the v2 contract and replace the asset folder, payload and public copy.
+
+Factory bridge rule: draft/apply scripts must recognize both the old `data-nlps-showroom` root and
+the clean `data-nlv2-showroom` root. This is not permission to mix runtimes inside a page. It only
+keeps the factory able to generate and dry-run v2 WordPress drafts while the WordPress import schema
+still uses the existing `showroom-payload.json` v1 meta contract. When the plugin payload route is
+versioned for v2, update the schema and scripts together in one verified slice.
+
+For every v2 preview, run the local Chrome gate before a WordPress import:
+
+```bash
+node scripts/qa-showroom-v2-preview.mjs --preview docs/previews/<project>-showroom-v2-preview.html --out docs/qa/screenshots/<project>-v2-preview-factory-gate --strict
+```
+
+The report must be green at desktop, tablet, mobile and Edge-mobile widths. If the report catches
+mojibake, old selector leakage, card/facade overlap, tap targets below 44px, missing model-viewer
+registration, console errors or horizontal overflow, stop and fix the preview before touching the
+CMS or live site.
+
+Ashira v2 adds a second pre-import gate:
+
+```bash
+npm run qa:ashira-factory-readiness
+```
+
+Run it after the screenshot gate and before any WordPress import. It validates that the project
+asset folder, `showroom-payload.json`, public strings and screenshot report are all ready for a
+buyer-facing project page. The gate should fail if the page or payload talks about the build
+system instead of the apartment: no public SEO/CMS/CRM/lead/engine/template/prototype/factory
+language, no internal contractor pitch, no placeholder wording, and no mojibake.
+
+The buyer-language test is part of the model pipeline because model data becomes public text:
+unit titles, price notes, view notes, media labels and facade notices are all buyer copy once they
+render on the page.
+
+The same gate must compare visible facade cells with payload units. Never hardcode extra apartment
+cells only in the preview. If a buyer can see or click an apartment, its unit id, status, floor,
+rooms, sqm, view and estimate must live in `showroom-payload.json` so the CMS/import path can
+recreate it.
+
+After preview readiness, validate the WordPress draft payload before any CMS write:
+
+```bash
+npm run qa:ashira-draft-readiness
+```
+
+The draft payload is the bridge between the theme-first showroom pattern and WordPress. It must
+stay `draft`, keep one H1, contain the supported showroom root, use buyer-facing title and Yoast
+metadata, and expose the same unit ids as `showroom-payload.json`. A generated REST payload is not
+safe to import until this gate is green and the apply script also passes in `--dry-run` mode.

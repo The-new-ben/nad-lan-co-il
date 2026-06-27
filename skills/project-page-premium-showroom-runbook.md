@@ -315,3 +315,151 @@ Minimum for a prototype:
 4. Prototype interiors must be marked illustrative until contractor-approved assets arrive.
 5. The lead payload must keep the selected unit id/title/floor/rooms/sqm/status so the contractor
    knows which apartment the buyer explored.
+
+## M. Clean V2 Reset Rule
+
+When a project page has accumulated stacked showroom CSS, do not add another override layer. Start a
+clean v2 contract:
+
+1. Use a new root such as `.nlv2-showroom` and only `.nlv2-*` selectors.
+2. Use only `data-nlv2-*` attributes for the new runtime.
+3. Do not add `.nlps`, `.nlp3d`, old compatibility selectors, or `!important` patches to v2.
+4. Enqueue old and new assets by content marker:
+   - old pages with `data-nlps-showroom` load old assets only;
+   - v2 pages with `data-nlv2-showroom` load v2 assets only.
+5. Keep the rotating GLB as the context surface until official per-apartment BIM exists.
+6. Keep the facade/elevation image as the apartment-picking surface.
+7. Prove v2 with screenshots at 1440, 768 and 390 before any live import.
+8. Factory scripts must accept both `data-nlps-showroom` and `data-nlv2-showroom` roots while
+   pages transition from the old runtime to the clean v2 runtime. V2 page markup uses only
+   `data-nlv2-*`, but `showroom-payload.json` can still use the existing import schema until the
+   plugin-side payload API is deliberately versioned.
+
+The Ashira clean v2 proof lives in
+`docs/qa/2026-06-26-ashira-v2-clean-preview.md`.
+
+Before importing any v2 preview into WordPress, run the reusable Chrome preview gate:
+
+```bash
+node scripts/qa-showroom-v2-preview.mjs --preview docs/previews/<project>-showroom-v2-preview.html --out docs/qa/screenshots/<project>-v2-preview-factory-gate --strict
+```
+
+This gate must capture desktop, tablet, mobile and Edge-mobile screenshots, then prove no
+horizontal overflow, one H1, model-viewer registration, visible Hebrew, no mojibake, no public
+internal wording, no old `.nlps` / `.nlp3d` roots, apartment cells with 44px+ tap targets, and no
+selected-card overlap over the facade.
+
+Before importing Ashira v2 or cloning it as the next project standard, also run the factory
+readiness gate:
+
+```bash
+npm run qa:ashira-factory-readiness
+```
+
+This gate checks the asset package, payload fields, unit inventory, buyer-facing payload strings
+and the latest screenshot report together. It exists because the page must speak to apartment
+buyers and investors, not to our internal build process. Passing screenshots alone is not enough
+if the public copy leaks words such as SEO, CMS, CRM, lead, engine, template, prototype, strategy,
+supplier, contractor, funnel or monetization.
+
+The gate also compares preview facade cells with `showroom-payload.json` unit IDs. A visible
+apartment cell that is not in the payload is a factory failure, because the next WordPress import
+would lose that apartment.
+
+Before a preview becomes a WordPress draft, build and validate the draft payload:
+
+```bash
+node scripts/build-project-showroom-draft.mjs --pattern patterns/project-showroom-ashira-v2.php --slug ashira-sde-dov --title "דירות למכירה באשירה שדה דב" --out docs/wp-drafts/ashira-sde-dov-v2-draft.json
+npm run qa:ashira-draft-readiness
+node scripts/apply-wp-draft-payload.mjs --payload docs/wp-drafts/ashira-sde-dov-v2-draft.json --dry-run
+```
+
+The draft gate checks draft status, one H1, supported showroom root, buyer-facing title/meta,
+visible-copy hygiene and draft/payload unit-id sync. Do not import a draft whose visible text
+passes screenshots but fails this payload gate.
+
+For translated project drafts, do not let the translated URL slug create a fake translated
+asset folder. If English/French/Russian/Arabic pages share the same project media, pass the
+shared asset slug explicitly when building the draft:
+
+```bash
+node scripts/build-project-showroom-draft.mjs --pattern patterns/project-showroom-ashira-v2-en.php --slug ashira-sde-dov-en --asset-slug ashira-sde-dov --title "Ashira Sde Dov apartments for sale in Tel Aviv" --out docs/wp-drafts/ashira-sde-dov-en-v2-draft.json
+```
+
+Before any multilingual import or hreflang output, run the publication gate:
+
+```bash
+npm run init:project-publication-manifest -- <project-slug> --title "Project Name" --asset-slug <project-slug>
+npm run qa:ashira-full-preflight
+npm run build:project-hreflang-artifact
+npm run qa:project-hreflang-artifact
+npm run qa:project-draft-import-dry-run
+npm run qa:project-publication-readiness
+npm run qa:ashira-publication-readiness
+```
+
+The generic gate reads the project publication manifest. Ashira is only the first instance,
+through `docs/plans/2026-06-27-ashira-publication-manifest.json`; the next project should get
+its own manifest and run the same `scripts/qa-project-publication-readiness.mjs` checker instead
+of copying an Ashira-only script. The gate proves every language page is still draft-only, uses
+the `nadlan_project` endpoint, targets a `/projects/<ascii-slug>/` URL, has Yoast title/meta/focus
+fields, reuses the real project asset folder, passes its content-depth report, and passes
+screenshot QA without horizontal overflow or selected-card/facade overlap.
+
+Use `npm run init:project-publication-manifest -- <project-slug> --title "Project Name"` to create
+the next draft-only five-language manifest. The initializer does not create content and does not
+touch WordPress; it only creates the repeatable path contract for patterns, draft payloads, previews,
+content reports, screenshot reports, hreflang artifacts and the import dry-run report.
+
+The hreflang artifact is also manifest-driven. It produces a JSON map and a copy-paste-safe HTML
+head snippet, but it is still preflight only. Do not emit the tags live until the language URLs are
+published, indexable and verified.
+
+The draft import dry-run uses the same WordPress REST payloads that a later draft import would use,
+but it stays offline and credentials-free. It must prove every language payload remains `status:
+draft`, points at the `nadlan_project` endpoint, keeps the expected slug and carries enough content
+and metadata before anyone runs a real WordPress import. It must also prove exact parity between
+each draft payload body and its source theme pattern after the same public asset URL resolution used
+by `scripts/build-project-showroom-draft.mjs`. If a pattern changes and the translated draft JSON is
+stale, the dry-run gate must fail before an import can happen.
+
+For Ashira, `npm run qa:ashira-full-preflight` is the owner-review gate. It runs the research,
+architecture, all five content-depth gates, all five browser screenshot gates, factory readiness,
+draft readiness, hreflang, import dry-run, publication readiness and homepage-dependency gates in
+one sequence and writes `docs/qa/ashira-full-preflight-report.json`. The homepage dependency now
+also includes `npm run build:home-draft-payload` and `npm run qa:home-draft-import-dry-run`, so a
+theme-first homepage pattern is not called import-ready until it has a draft-only WordPress REST
+payload that passes the same dry-run discipline as the project pages. The homepage dry-run must
+also prove exact parity between the draft payload body and the current theme pattern after public
+asset URL resolution, so a stale payload cannot be imported accidentally.
+
+## N. Buyer-Language Rule
+
+Public project pages speak to buyers only. They do not explain our business model, CMS, SEO plan,
+lead routing, template system, engine, strategy or contractor sales pitch.
+
+Before publishing or previewing a project surface, ask: would a buyer care about this sentence
+while choosing an apartment? If not, move it to docs or admin.
+
+Buyer-facing wording should answer:
+
+1. Which apartments or projects can I compare?
+2. What floor, rooms, sqm, view and direction are shown?
+3. What is the price context, and is it an estimate?
+4. What plans, photos, video, interior tour or view are available?
+5. What do I do next if I want to check availability?
+
+Forbidden public wording includes:
+
+- SEO, CMS, CRM, lead, engine, template, prototype, funnel, monetization, paid placement;
+- פאנל, מנוע, תבנית, לידים, מוניטיזציה;
+- project manager, supplier or contractor language when it is speaking about our service rather
+  than helping the buyer choose an apartment.
+
+Allowed public wording includes:
+
+- דירה, קומה, חדרים, שטח, נוף, כיוון, מחיר, אומדן לא מחייב, זמינות, תוכנית, סיור, תמונות,
+  בדיקת רכישה לא מחייבת, דברו עם היזם.
+
+Every screenshot QA must include a visible-copy scan. A page can look premium and still fail if it
+talks to us instead of to the buyer.

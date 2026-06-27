@@ -1,0 +1,233 @@
+<?php
+/**
+ * Title: Ashira Sde Dov showroom v2 French
+ * Slug: nadlan-revenue/project-showroom-ashira-v2-fr
+ * Categories: featured, media
+ * Description: French buyer-facing Ashira project showroom with a rotating context model and apartment selector.
+ *
+ * @package WordPress
+ * @subpackage NadLan_Revenue
+ * @since NadLan Revenue 1.1.0
+ */
+
+$asset_base = trailingslashit( get_template_directory_uri() ) . 'assets/projects/ashira-sde-dov/';
+?>
+<!-- wp:html -->
+<main class="nlv2-showroom" data-nlv2-showroom data-nlv2-project-title="Ashira Sde Dov" data-nlv2-endpoint="<?php echo esc_url( rest_url( 'nadlan/v1/lead' ) ); ?>" data-nlv2-panel-plan="Le plan commercial approuve apparaitra ici lorsqu'il sera disponible pour l'appartement choisi." data-nlv2-panel-view="La vue depuis cet appartement apparaitra ici lorsque les donnees verifiees de l'etage et de l'orientation seront disponibles." data-nlv2-panel-tour="La visite interieure, la video ou la galerie approuvee apparaitra ici lorsque le materiel sera disponible." data-nlv2-panel-contact="Envoyez une demande avec l'appartement choisi afin de verifier disponibilite, prix et documents." data-nlv2-submit-message="Votre demande est prete avec {{unit}}. Un conseiller pourra revenir vers vous avec disponibilite, prix et documents actuels." data-nlv2-selected-unit-fallback="l'appartement choisi">
+	<p class="nlv2-breadcrumb">NadLan / Projets / Ashira Sde Dov</p>
+
+	<section class="nlv2-hero" aria-labelledby="nlv2-ashira-title-fr">
+		<figure class="nlv2-hero-media">
+			<img src="<?php echo esc_url( $asset_base . 'ashira-hero-concept.jpg' ); ?>" alt="Visualisation Ashira Sde Dov avec la cote de Tel Aviv, Reading et le nouveau quartier">
+			<figcaption class="nlv2-hero-badge">Modele 3D et choix d'appartement</figcaption>
+		</figure>
+		<div>
+			<span class="nlv2-eyebrow">Appartements neufs a Sde Dov, Tel Aviv</span>
+			<h1 id="nlv2-ashira-title-fr">Appartements a vendre a Ashira Sde Dov, Tel Aviv</h1>
+			<p>Comparez les appartements par etage, surface, orientation, vue et disponibilite. Faites tourner le modele du quartier pour comprendre la mer, le soleil et les reperes de nord Tel Aviv, puis choisissez un appartement sur la facade pour voir une estimation non contractuelle et les prochaines verifications.</p>
+			<div class="nlv2-hero-actions">
+				<a class="nlv2-button nlv2-button-primary" href="#nlv2-ashira-selector-fr">Choisir un appartement</a>
+				<a class="nlv2-button" href="#nlv2-ashira-info-fr">Lire le guide acheteur</a>
+			</div>
+		</div>
+	</section>
+
+	<section class="nlv2-product" id="nlv2-ashira-selector-fr" aria-labelledby="nlv2-ashira-product-title-fr">
+		<header class="nlv2-product-head">
+			<div>
+				<h2 id="nlv2-ashira-product-title-fr">Choisir par etage, vue et disponibilite</h2>
+				<p>Le modele 3D explique la position du projet par rapport a la mer, au soleil, a Reading et aux tours voisines. Le choix de l'appartement se fait sur la facade fixe, afin que l'emplacement choisi soit lisible sur ordinateur comme sur mobile.</p>
+			</div>
+			<div class="nlv2-legend" aria-label="Legende de disponibilite">
+				<span><i class="nlv2-dot" style="--nlv2-status:#34d986"></i> Disponible a verifier</span>
+				<span><i class="nlv2-dot" style="--nlv2-status:#f2c14e"></i> A confirmer</span>
+				<span><i class="nlv2-dot" style="--nlv2-status:#9aa0a6"></i> Non disponible</span>
+			</div>
+		</header>
+
+		<div class="nlv2-stage">
+			<section class="nlv2-model" aria-label="Modele 3D du contexte du projet">
+				<model-viewer
+					src="<?php echo esc_url( $asset_base . 'model-context.glb' ); ?>"
+					poster="<?php echo esc_url( $asset_base . 'ashira-hero-concept.jpg' ); ?>"
+					camera-controls
+					auto-rotate
+					auto-rotate-delay="2200"
+					rotation-per-second="8deg"
+					reveal="auto"
+					loading="auto"
+					camera-orbit="35deg 64deg 68m"
+					min-camera-orbit="-Infinity 54deg auto"
+					max-camera-orbit="Infinity 74deg auto"
+					shadow-intensity="0.9"
+					interaction-prompt="none"
+					ar-status="not-presenting">
+				</model-viewer>
+				<div class="nlv2-model-caption">
+					<strong>Modele du quartier</strong>
+					Faites tourner le modele pour situer Ashira par rapport a la Mediterranee, au trajet du soleil, a Reading et a la future ligne de tours de Sde Dov. La selection precise se fait sur la facade a cote du modele.
+				</div>
+			</section>
+
+			<section class="nlv2-picker" aria-label="Selection d'appartement sur la facade du projet">
+				<h3>Choisir sur la facade</h3>
+				<p class="nlv2-picker-note">Les cellules sont indicatives jusqu'a reception d'un inventaire approuve. Chaque cellule represente un appartement ou un type d'appartement dans sa position relative sur la facade.</p>
+				<div class="nlv2-facade">
+					<img src="<?php echo esc_url( $asset_base . 'ashira-facade-concept.jpg' ); ?>" alt="Facade Ashira avec cellules d'appartements cliquables">
+					<button class="nlv2-cell is-featured is-active" style="left:42%;top:38%;--nlv2-status:#34d986" data-nlv2-unit data-unit-id="ashira-18-west" data-status-color="#34d986" data-status="Disponible a verifier" data-title="Appartement 18 Ouest | 5 pieces" data-rooms="5" data-sqm="132 m2" data-floor="18" data-view="Mer et Reading" data-price="Estimation sur demande" data-note="Appartement eleve vers l'ouest avec accent sur l'exposition mer. Les chiffres sont indicatifs jusqu'a reception de plans et d'inventaire approuves." aria-pressed="true">18W<small>Mer</small></button>
+					<button class="nlv2-cell" style="left:58%;top:48%;--nlv2-status:#34d986" data-nlv2-unit data-unit-id="ashira-14-city" data-status-color="#34d986" data-status="Disponible a verifier" data-title="Appartement 14 Ville | 4 pieces" data-rooms="4" data-sqm="104 m2" data-floor="14" data-view="Quartier Sde Dov" data-price="Estimation sur demande" data-note="Appartement familial au centre de la facade. Disponibilite, prix et plan doivent etre verifies avant toute decision.">14C<small>Ville</small></button>
+					<button class="nlv2-cell is-featured" style="left:32%;top:58%;--nlv2-status:#f2c14e" data-nlv2-unit data-unit-id="ashira-10-corner" data-status-color="#f2c14e" data-status="Disponibilite a confirmer" data-title="Appartement 10 angle | 4 pieces" data-rooms="4" data-sqm="118 m2" data-floor="10" data-view="Mer et cour" data-price="Estimation sur demande" data-note="Type d'appartement d'angle avec balcon vers l'ouest. La disponibilite n'est pas engageante avant verification.">10C<small>Angle</small></button>
+					<button class="nlv2-cell" style="left:66%;top:65%;--nlv2-status:#9aa0a6" data-nlv2-unit data-unit-id="ashira-07-sold" data-status-color="#9aa0a6" data-status="Non disponible" data-title="Appartement 7 | 3 pieces" data-rooms="3" data-sqm="82 m2" data-floor="7" data-view="Tissu urbain" data-price="Non affiche" data-note="Exemple d'un appartement non disponible, afin que les acheteurs comprennent le statut de l'inventaire directement sur la facade.">7A<small>Ferme</small></button>
+					<button class="nlv2-cell" style="left:48%;top:77%;--nlv2-status:#34d986" data-nlv2-unit data-unit-id="ashira-04-garden" data-status-color="#34d986" data-status="Disponible a verifier" data-title="Rez-de-jardin 4 | 3 pieces" data-rooms="3" data-sqm="92 m2" data-floor="4" data-view="Jardin interieur" data-price="Estimation sur demande" data-note="Type bas avec relation plus directe au jardin et a la rue. Donnees indicatives.">4G<small>Jardin</small></button>
+				</div>
+			</section>
+		</div>
+
+		<div class="nlv2-selected">
+			<article class="nlv2-card" data-nlv2-card aria-live="polite">
+				<header class="nlv2-card-header">
+					<div>
+						<span class="nlv2-status" data-nlv2-status>Disponible a verifier</span>
+						<h3 data-nlv2-title>Appartement 18 Ouest | 5 pieces</h3>
+					</div>
+					<button class="nlv2-dismiss" type="button" data-nlv2-dismiss aria-label="Fermer les details de l'appartement">Fermer</button>
+				</header>
+				<div class="nlv2-facts">
+					<div class="nlv2-fact">Pieces<strong data-nlv2-rooms>5</strong></div>
+					<div class="nlv2-fact">Surface<strong data-nlv2-sqm>132 m2</strong></div>
+					<div class="nlv2-fact">Etage<strong data-nlv2-floor>18</strong></div>
+					<div class="nlv2-fact">Vue<strong data-nlv2-view>Mer et Reading</strong></div>
+				</div>
+				<p class="nlv2-card-copy"><strong data-nlv2-price>Estimation sur demande</strong></p>
+				<p class="nlv2-card-copy" data-nlv2-note>Appartement eleve vers l'ouest avec accent sur l'exposition mer. Les chiffres sont indicatifs jusqu'a reception de plans et d'inventaire approuves.</p>
+				<div class="nlv2-tabs" role="tablist" aria-label="Informations appartement">
+					<button class="is-active" type="button" data-nlv2-tab="plan" aria-selected="true">Plan</button>
+					<button type="button" data-nlv2-tab="view" aria-selected="false">Vue</button>
+					<button type="button" data-nlv2-tab="tour" aria-selected="false">Interieur</button>
+					<button type="button" data-nlv2-tab="contact" aria-selected="false">Contact</button>
+				</div>
+				<div class="nlv2-panel" data-nlv2-panel>Le plan commercial approuve apparaitra ici lorsqu'il sera disponible pour l'appartement choisi.</div>
+			</article>
+
+			<aside class="nlv2-contact" aria-label="Demande sur cet appartement">
+				<h3>Verifier cet appartement</h3>
+				<form class="nlv2-form" data-nlv2-form>
+					<input type="hidden" name="selected_unit" data-nlv2-selected-unit value="ashira-18-west">
+					<label>Nom complet<input name="name" type="text" autocomplete="name" required></label>
+					<label>Telephone<input name="phone" type="tel" autocomplete="tel"></label>
+					<label>Email<input name="email" type="email" autocomplete="email"></label>
+					<label>Delai souhaite<input name="timeline" type="text" placeholder="Prochainement / plus tard"></label>
+					<button type="submit">Envoyer la demande avec l'appartement choisi</button>
+					<p class="nlv2-feedback" data-nlv2-feedback hidden></p>
+				</form>
+			</aside>
+		</div>
+	</section>
+
+	<section class="nlv2-section" id="nlv2-ashira-info-fr" aria-label="Guide acheteur Ashira Sde Dov">
+		<h2>Pourquoi regarder Ashira Sde Dov comme un choix d'appartement, pas seulement comme une adresse?</h2>
+		<p>Ashira Sde Dov se trouve dans l'un des secteurs les plus suivis de Tel Aviv: l'ancien aeroport de Sde Dov, entre la mer, Ramat Aviv, Tel Baruch, Park Hayarkon et le tissu urbain du nord de la ville. Pour un acheteur local comme pour des acheteurs etrangers, la question n'est pas seulement de savoir si le quartier est interessant. La vraie question est de comprendre quel appartement correspond a la famille, au budget, au mode de vie, a l'horizon de detention et au niveau de risque accepte.</p>
+		<p>Cette page est construite pour guider ce choix. Le modele 3D sert a comprendre le contexte: ou se trouvent la Mediterranee, Reading, les axes principaux et les futures constructions du quartier Sde Dov. La facade cliquable sert a choisir un appartement précis, par etage, orientation, surface et statut. La carte d'information affiche ensuite les points a verifier: estimation non contractuelle, vue, plan, documents, disponibilite et contact. Ce parcours est volontairement pratique, car un achat sur plan ne se decide pas seulement avec une image.</p>
+		<p>Le site officiel d'Ashira presente le projet comme un ensemble residentiel d'Avisror dans le nouveau quartier Sde Dov. Il met en avant une offre d'appartements de 2 a 5 pieces, des tours et des immeubles boutique, une architecture signee Avner Yashar, un design interieur associe a Dana Oberson, ainsi que des espaces communs comme piscine, spa, salle de sport, cinema, espaces enfants, salon et commerces. Ces elements donnent une premiere lecture du produit, mais ils ne remplacent jamais un plan de vente signe, une specification technique approuvee, un prix actuel, une disponibilite actuelle et une verification juridique.</p>
+		<div class="nlv2-data-grid">
+			<div class="nlv2-data-card"><span>Zone</span><strong>Quartier Sde Dov</strong></div>
+			<div class="nlv2-data-card"><span>Ville</span><strong>Tel Aviv</strong></div>
+			<div class="nlv2-data-card"><span>Plan urbain</span><strong>TA/4444</strong></div>
+			<div class="nlv2-data-card"><span>Lecture</span><strong>Choix d'appartement, vue et estimation</strong></div>
+		</div>
+
+		<h2>Comment utiliser le modele 3D et la facade cliquable</h2>
+		<p>Le modele 3D doit d'abord repondre a des questions simples. Ou est l'ouest? Ou est la mer? Ou se situe Reading? Comment le soleil traverse-t-il la zone? Quels volumes peuvent entourer le projet? Un acheteur qui ne connait pas bien Tel Aviv doit pouvoir comprendre le site en quelques secondes. Pour cette raison, le modele est un outil d'orientation, pas une promesse de vue definitive.</p>
+		<p>La facade cliquable sert a la decision plus fine. Une cellule verte signifie que l'appartement peut etre verifie. Une cellule jaune signifie que le statut doit etre confirme. Une cellule grise signifie que l'appartement n'est pas disponible dans cet exemple. Lorsqu'une cellule est choisie, la page affiche le titre de l'appartement, l'etage, le nombre de pieces, la surface, la vue, l'estimation et les prochaines actions. Le but est que l'acheteur n'ait pas besoin de chercher les details dans un long texte.</p>
+		<p>Cette separation est importante. Un modele 3D librement rotatif est excellent pour comprendre l'espace, mais le choix exact d'un appartement demande soit une facade plane, soit un fichier 3D ou chaque appartement est un objet nomme et separe. Tant que ce niveau de fichier n'est pas fourni par le promoteur ou reconstruit avec precision, l'experience la plus honnete consiste a garder le modele pour le contexte et la facade pour la selection. C'est plus lisible sur mobile, plus facile a controler, et moins trompeur pour l'acheteur.</p>
+
+		<h2>Ce que les sources publiques indiquent sur Sde Dov</h2>
+		<p>La municipalite de Tel Aviv decrit l'ancien terrain de l'aeroport Sde Dov comme un nouveau quartier urbain du nord de Tel Aviv. Les informations publiques municipales indiquent une zone d'environ 1,300 dunams, un objectif d'environ 16,000 logements et une population future d'environ 40,000 residents. Le plan directeur TA/4444 a ete approuve en 2020 et organise un quartier mixte avec logement, commerce, bureaux, hotels, espaces publics, parcs et rues urbaines.</p>
+		<p>Une annonce de planification publiee sur Gov.il mentionne egalement 16,000 unites de logement dans le secteur, avec une part de logement abordable et des logements specifiques dans le programme global. Ces chiffres sont des chiffres de quartier. Ils ne doivent pas etre presentes comme des chiffres propres a Ashira ou a un appartement particulier. Pour l'acheteur, ils servent a comprendre l'ampleur du changement urbain et le type de demande future que ce quartier peut attirer.</p>
+		<p>La distinction entre fait de quartier et fait de projet est essentielle. Les 16,000 logements concernent l'ensemble du quartier. Les 1,300 dunams concernent l'ancien perimetre de l'aeroport. Les 40,000 residents concernent la population planifiee de la zone. Les faits propres a Ashira doivent provenir du site officiel du projet, de plans approuves, de documents publics rattaches au projet ou de documents remis par le promoteur. Cette discipline protege l'acheteur contre les raccourcis.</p>
+
+		<h2>Situation: mer, Reading, Park Hayarkon et nord de Tel Aviv</h2>
+		<p>Le site d'Ashira met en avant plusieurs reperes proches: plage de Tel Baruch, Reading, port de Tel Aviv, Park Hayarkon, centre commercial Ramat Aviv, Universite de Tel Aviv, train leger, gare de l'universite, route Namir et Ibn Gabirol. Ces noms ne sont pas seulement decoratifs. Ils aident a comprendre la vie quotidienne: trajet vers le travail, acces a la plage, courses, promenades, et relation entre le nouveau quartier et les quartiers etablis du nord de Tel Aviv.</p>
+		<p>Reading est un repere visuel utile parce que de nombreux acheteurs l'identifient rapidement. La mer est essentielle parce que l'orientation et la vue sont des facteurs de valeur a Tel Aviv. Park Hayarkon aide a comprendre les espaces verts et les usages de loisirs. Ramat Aviv et l'Universite de Tel Aviv aident a situer le projet dans le nord de la ville. Une page forte doit relier ces points dans le texte, dans le modele et dans les choix d'appartement.</p>
+		<p>Pour un acheteur francophone, surtout s'il vit hors d'Israel, cette orientation est encore plus importante. Connaitre le nom d'un projet ne suffit pas. Il faut savoir si l'appartement regarde vers la mer, vers le quartier, vers une cour, vers une rue ou vers d'autres constructions. Il faut aussi comprendre si le choix vise une residence familiale, un pied-a-terre, un investissement locatif ou une conservation a long terme.</p>
+
+		<h2>Type d'appartements et premiere lecture de l'inventaire</h2>
+		<p>Le site officiel indique une gamme d'appartements de 2 a 5 pieces. Cette information est utile, mais elle ne suffit pas. Deux appartements de 4 pieces peuvent etre tres differents si l'un a une meilleure orientation, une meilleure distribution, un balcon plus utilisable, une distance plus confortable depuis les ascenseurs, ou une vue plus ouverte. La surface brute, la surface nette, la surface du balcon et la qualite du plan doivent etre lues ensemble.</p>
+		<p>Le choix par facade aide a rendre cette comparaison visible. Au lieu de demander seulement "quels appartements restent disponibles?", l'acheteur peut dire "je veux verifier l'appartement ouest au 18e etage, l'appartement ville au 14e etage et le rez-de-jardin". Cette precision rend la conversation plus utile et reduit la perte de temps. Elle permet aussi de conserver le contexte de l'appartement lors de la demande.</p>
+		<p>Dans une version complete avec documents approuves, chaque cellule peut ouvrir le plan officiel, la galerie, une video, une estimation actualisee, les conditions de paiement et les documents pertinents. Dans cette version de demonstration, les cellules montrent un parcours realiste avec des donnees indicatives. Les informations doivent rester marquees comme indicatives jusqu'a validation par une source autorisee.</p>
+
+		<h2>Prix, estimation non contractuelle et budget reel</h2>
+		<p>Les acheteurs veulent voir un prix, et c'est normal. Le prix est souvent la premiere question. Pourtant, afficher un chiffre comme definitif serait dangereux si le chiffre n'est pas verifie, date et rattache a un appartement precis. Dans un projet neuf, le prix peut varier selon l'etage, la vue, la surface, le balcon, le parking, le stockage, les conditions de paiement, l'indexation, le calendrier et la negociation.</p>
+		<p>Une estimation non contractuelle reste utile si elle est presentee avec prudence. Elle peut aider a comprendre si un appartement appartient a une zone premium, familiale, jardin ou investissement. Elle peut aussi aider les acheteurs etrangers a preparer leur budget global. Le prix d'achat n'est pas le seul cout: taxe d'acquisition, honoraires juridiques, financement, indexation, variations de change, frais de gestion, ameublement et travaux interieurs peuvent changer le budget reel.</p>
+		<p>La disponibilite doit etre traitee avec la meme prudence. Une cellule verte signifie "a verifier", pas "reserve". Une cellule jaune signifie que le statut doit etre confirme. Une cellule grise signifie que l'appartement n'est pas disponible dans l'exemple actuel. Une page fiable ne doit pas mettre l'acheteur sous pression avec des messages flous. Elle doit l'aider a poser les bonnes questions avant de prendre une decision.</p>
+
+		<h2>Ce que les acheteurs etrangers doivent verifier</h2>
+		<p>Les acheteurs etrangers n'ont pas seulement besoin d'une traduction. Ils ont besoin d'une explication du processus israelien en termes simples. Ils doivent comprendre ce qu'est un plan de vente, pourquoi un avocat local est important, comment fonctionne la taxe d'acquisition, en quoi le financement peut differer pour un non-resident, comment une procuration peut etre utilisee, et pourquoi une estimation n'est pas une offre engageante.</p>
+		<p>Ils doivent aussi comprendre la geographie. Sde Dov n'est pas seulement un nom commercial. C'est un nouveau quartier majeur sur l'ancien terrain d'un aeroport, dans le nord de Tel Aviv, avec une relation forte a la mer et aux quartiers existants. Un acheteur peut connaitre Tel Aviv sans connaitre la difference entre Tel Baruch, Ramat Aviv, Park Hayarkon, le port de Tel Aviv et les futures rues de Sde Dov. Le contenu doit donc expliquer le quartier comme un guide, pas seulement comme une annonce.</p>
+		<p>Chaque langue doit etre une vraie page. Une courte traduction ne suffit pas. Le francais, l'anglais, le russe et l'arabe doivent chacun porter un titre, une description, des sections claires, des sources, une liste de verification et une demande directe pour l'appartement choisi. Les pages peuvent ensuite etre reliees entre elles avec des annotations de langue afin que les lecteurs et les moteurs de recherche trouvent la bonne version.</p>
+
+		<h2>Documents a demander avant d'avancer</h2>
+		<p>Avant de reserver du temps ou d'engager des frais, l'acheteur doit demander le plan commercial actuel de l'appartement choisi, la specification technique, le prix actuel, le calendrier de paiement, l'estimation de livraison, les informations de parking et stockage, les charges prevues, les permis, les conditions d'indexation, les conditions d'annulation et les documents qui expliquent les espaces communs.</p>
+		<p>Si l'appartement est presente avec une vue, il faut demander ce qui soutient cette vue: etage, orientation, hauteur, batiments voisins, futurs batiments, plans de quartier et supports visuels approuves. Une vue peut etre differente entre aujourd'hui et la fin de construction du quartier. Pour un achat sur plan, il est donc important de lire la vue comme une hypothese a verifier et non comme une garantie generale.</p>
+		<p>Les acheteurs hors d'Israel devraient aussi preparer les documents personnels, les questions bancaires, les questions de change et les besoins de signature a distance. Cette page ne remplace pas un avocat, un conseiller financier, un fiscaliste ou un evaluateur. Elle doit permettre a l'acheteur de mieux preparer ces conversations.</p>
+
+		<h2>Comparer Ashira avec Rainbow, Dimri Yama et les autres projets</h2>
+		<p>Le quartier Sde Dov attire plusieurs projets importants, dont Rainbow, Dimri Yama et d'autres programmes. Une comparaison utile ne doit pas se limiter a dire qu'un projet est plus prestigieux qu'un autre. Elle doit regarder la position dans le quartier, la distance a la mer, les etages disponibles, les typologies d'appartement, les vues, les espaces communs, le stade commercial, les prix, le calendrier, les documents et la qualite du plan de l'appartement precis.</p>
+		<p>Une famille peut preferer un projet parce que le plan convient mieux a son quotidien. Un investisseur peut preferer un autre produit parce que le prix d'entree, la demande locative ou le calendrier lui semblent plus adaptes. Un acheteur etranger peut preferer la page qui explique le mieux le contexte et le processus. La structure commune du showroom aide a comparer: modele, facade, carte de l'appartement, guide, sources et contact.</p>
+		<p>Pour Ashira, le site officiel met l'accent sur un environnement residentiel avec services et espaces partages. Les sources municipales expliquent l'echelle du quartier. L'acheteur doit relier les deux niveaux: le produit immediat et le developpement urbain a long terme. La page doit montrer les deux sans transformer les donnees de quartier en promesse individuelle.</p>
+
+		<h2>Transports, routines et acces quotidien</h2>
+		<p>Le transport doit etre examine de facon pratique. Le site d'Ashira mentionne le train leger, la gare de l'Universite, la route Namir et Ibn Gabirol. Les informations municipales evoquent egalement le service de transport public lie a la continuation d'Ibn Gabirol. L'acheteur doit se demander comment cela se traduira dans la vie quotidienne: sortie du parking, routes vers les ecoles, trajet vers la gare, phases de travaux et connexion avec les quartiers existants.</p>
+		<p>Pour une famille, les trajets du matin et du soir sont essentiels. Pour un investisseur, l'accessibilite influence l'attractivite locative future. Pour un acheteur etranger, l'accessibilite aide a comprendre la ville sans maitriser chaque rue. C'est pourquoi les reperes visuels, les cartes et les explications textuelles doivent travailler ensemble.</p>
+		<p>Dans une version plus avancee, la page pourra afficher les ecoles, jardins d'enfants, parcs, stations, commerces, plages et services publics autour du projet, avec une source et une date. Dans cette version, la bonne approche consiste a citer les reperes officiels et a ne pas promettre de temps de trajet precis sans verification.</p>
+
+		<h2>Soleil, vent, orientation et vie pres de la mer</h2>
+		<p>Dans un projet cotier, l'orientation compte beaucoup. Un appartement ouest peut donner une sensation de mer et de lumiere de l'apres-midi, mais il peut aussi recevoir plus de soleil direct. Un appartement est peut offrir une lumiere differente le matin et regarder davantage vers le quartier. Les orientations nord et sud doivent etre lues avec les ombres, le vent, la qualite du balcon et les constructions voisines.</p>
+		<p>Un etage eleve peut sembler plus ouvert, mais il peut aussi etre plus expose au vent et plus dependant des ascenseurs. Un appartement bas peut etre plus connecte a la rue ou au jardin, mais demander plus de verification sur la vie privee et les nuisances. Une facade d'angle peut etre tres attractive si les deux orientations sont utiles. La cellule cliquable doit donc etre un debut de verification, pas une conclusion.</p>
+		<p>Le modele 3D est utile parce qu'il relie le batiment au ciel, a la mer et aux volumes autour. Une version future peut ajouter un controle plus clair des saisons et des heures de la journee. La version actuelle doit deja enseigner les bonnes questions: quelle orientation, quelle ombre, quel vis-a-vis, quel vent, quel balcon, quelle lumiere naturelle, et quelle preuve soutient la vue montree?</p>
+
+		<h2>Plans, images, video et visite interieure</h2>
+		<p>Les acheteurs attendent aujourd'hui plus qu'une image de facade. Une page de projet peut integrer une galerie, une video officielle, un plan, une vue depuis l'appartement et une visite interieure. Le bon endroit pour ces materiels est la carte de l'appartement choisi et une section media dediee. Le parcours reste alors propre: choisir l'appartement, puis voir les documents et supports qui concernent cet appartement.</p>
+		<p>Si le promoteur fournit des rendus officiels, une video ou une visite virtuelle, ces elements doivent etre utilises avec des labels clairs. Si des visuels generes servent a expliquer le concept au debut, la page doit le dire. Les acheteurs etrangers peuvent prendre des decisions preliminaires a distance; la confiance vient donc de la separation entre ce qui est officiel, ce qui est estime, et ce qui reste a verifier.</p>
+		<p>Les experiences immobilieres modernes, comme les pages avec visite de logement, montrent que la media doit etre liee a une action. L'acheteur ne veut pas seulement une belle image. Il veut savoir quel appartement il regarde, a quel etage il se trouve, quelle vue il a, quel plan s'applique et comment verifier les informations actuelles.</p>
+
+		<h2>Fiscalite, financement et budget pour non-residents</h2>
+		<p>Un acheteur francophone qui vit hors d'Israel doit anticiper plusieurs sujets avant de comparer deux appartements. La taxe d'acquisition peut dependre de son statut et de la situation du bien. Le financement peut demander des documents differents, parfois traduits ou certifies. Les fluctuations entre euro, dollar, shekel ou autre devise peuvent influencer le cout final. Les honoraires juridiques, les frais bancaires et les frais de representation doivent etre calcules en plus du prix.</p>
+		<p>Ces sujets ne doivent pas etre traites comme un conseil personnalise sur une page publique. Ils doivent apparaitre comme une liste de points a verifier avec des professionnels. L'objectif est que l'acheteur arrive prepare a la conversation, avec une vision claire de son budget et des questions a poser. Un achat neuf dans un quartier en developpement peut etre interessant, mais il doit rester documente.</p>
+		<p>Dans une version complete, la page peut relier chaque appartement a une estimation de budget global non contractuelle: prix indicatif, taxe a verifier, frais de representation, indexation possible, frais d'entretien et budget d'ameublement. Pour l'instant, la formulation reste volontairement prudente afin de ne pas afficher de chiffres sans source datee.</p>
+
+		<h2>Vie quotidienne: services, espaces verts et voisinage futur</h2>
+		<p>Un appartement ne se vit pas uniquement de l'interieur. La qualite du quartier compte: acces aux espaces verts, proximite de la mer, parcours pietons, pistes cyclables, commerces, transports, equipements publics, bruit, vues, ombres et ambiance de rue. Le plan TA/4444 de Sde Dov organise un quartier mixte, mais chaque phase de developpement peut modifier l'experience au fil des annees.</p>
+		<p>Pour les familles, il faut suivre les ecoles, jardins d'enfants, parcs, trajets et services. Pour les investisseurs, il faut suivre la demande future, le niveau de concurrence locative, les typologies les plus recherchees et la qualite de gestion du batiment. Pour les acheteurs etrangers, il faut comprendre si l'appartement peut etre utilise facilement lors de sejours et gere correctement a distance.</p>
+		<p>Une bonne page doit donc ajouter progressivement des couches de donnees: contexte urbain, points d'interet, vue, soleil, media, documents, comparaison et contact. Le but n'est pas de noyer l'acheteur dans des donnees, mais de rendre chaque question accessible au moment ou elle devient utile.</p>
+
+		<h2>Langues, confiance et recherche depuis l'etranger</h2>
+		<p>Un acheteur francophone peut chercher "appartement a vendre a Tel Aviv", "Sde Dov Tel Aviv", "Ashira Sde Dov" ou "acheter neuf a Tel Aviv". La page doit donc utiliser ces mots naturellement, mais surtout repondre a l'intention: comprendre le quartier, voir les appartements, estimer le budget, verifier les documents et contacter la bonne personne avec l'appartement choisi. Une page traduite mot a mot ne suffit pas si elle n'explique pas le contexte local.</p>
+		<p>La structure multilingue doit rester propre: une page francaise complete, une page anglaise complete, une page russe complete et une page arabe complete. Chacune doit pointer vers les autres versions correspondantes lorsque le systeme sera pret. Les recommandations de Google sur les versions localisees insistent sur des liens reciproques et des signaux de langue clairs. Pour le lecteur, cela signifie simplement qu'il doit trouver la bonne version sans se perdre.</p>
+		<p>La confiance vient aussi de la transparence. Lorsque les donnees sont verifiees, elles doivent etre sourcees. Lorsqu'elles sont estimees, elles doivent etre marquees comme telles. Lorsqu'elles manquent, la page doit le dire et inviter a verifier. Cette discipline est encore plus importante pour les acheteurs qui comparent le projet depuis l'etranger.</p>
+
+		<h2>Checklist rapide avant de demander des details</h2>
+		<ul class="nlv2-check-list">
+			<li>Verifier si les donnees viennent du promoteur, d'une source publique, d'un document approuve ou d'un visuel indicatif.</li>
+			<li>Verifier que la cellule de facade correspond bien a un plan d'appartement approuve.</li>
+			<li>Controler pieces, surface, balcon, etage, orientation, parking, stockage et distance depuis les ascenseurs.</li>
+			<li>Demander si le prix est approuve, estime, date ou seulement disponible apres verification directe.</li>
+			<li>Ne pas traiter une couleur verte comme une reservation.</li>
+			<li>Lire le contexte du quartier: TA/4444, 16,000 logements, 1,300 dunams, transports, espaces publics et phases de construction.</li>
+			<li>Comparer Ashira avec Rainbow, Dimri Yama et les autres projets avec les memes criteres.</li>
+			<li>Pour les acheteurs etrangers, verifier taxe d'acquisition, financement, devise, procuration et representation juridique.</li>
+			<li>Ne pas prendre de decision engageante sans documents approuves et avis professionnel adapte.</li>
+		</ul>
+
+		<h2>Sources et notes de fiabilite</h2>
+		<p>Cette page utilise deux niveaux de sources. Le site officiel d'Ashira sert pour l'identite du projet, l'emplacement, la gamme d'appartements, les noms d'architecture et de design, les equipements et les reperes proches. Les sources de Tel Aviv Municipality et Gov.il servent pour le contexte du quartier Sde Dov, dont TA/4444, l'echelle planifiee du quartier, les 16,000 logements, les 1,300 dunams, la population d'environ 40,000 residents et le logement abordable.</p>
+		<ul class="nlv2-source-list">
+			<li><a href="https://ashirabyavisror.com/" rel="nofollow noopener">Site officiel Ashira</a></li>
+			<li><a href="https://www.tel-aviv.gov.il/Residents/Development/Pages/SdeDov.aspx" rel="nofollow noopener">Tel Aviv Municipality: quartier Sde Dov</a></li>
+			<li><a href="https://www.gov.il/he/pages/sdedov-pr-22072020" rel="nofollow noopener">Gov.il: annonce du plan du quartier Sde Dov</a></li>
+			<li><a href="https://developers.google.com/search/docs/specialty/international/localized-versions" rel="nofollow noopener">Google Search Central: versions localisees</a></li>
+		</ul>
+		<p class="nlv2-note">Le modele, la facade, les cellules de disponibilite et les estimations de cette page sont indicatifs jusqu'a reception de materiels approuves. Avant d'avancer, les acheteurs doivent verifier plans commerciaux, prix, disponibilite, conditions de paiement, supports media, calendrier de livraison et documents avec le promoteur et les professionnels adaptes. Si une information manque, elle doit rester visible comme manquante plutot que presentee comme verifiee.</p>
+	</section>
+</main>
+<!-- /wp:html -->

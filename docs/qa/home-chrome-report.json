@@ -1,0 +1,24 @@
+{
+  "ok": true,
+  "files": {
+    "header": "patterns/header.php",
+    "footer": "patterns/footer.php",
+    "css": "assets/css/nadlan-premium-sitewide.css",
+    "preview": "docs/previews/nadlan-home-showroom-preview.html"
+  },
+  "checks": {
+    "headerRoutes": 15,
+    "headerHasBrand": true,
+    "headerHasLanguages": true,
+    "footerLinks": 23,
+    "footerHasLegal": true,
+    "footerHasTrustDisclaimer": true,
+    "cssHasScopedChrome": true,
+    "cssHasMobileChrome": true,
+    "previewUsesChrome": true,
+    "noDefaultThemeWords": [],
+    "noPublicInternalWords": [],
+    "noMojibake": true
+  },
+  "failures": []
+}

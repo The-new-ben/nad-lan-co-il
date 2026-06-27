@@ -1,0 +1,61 @@
+{
+  "ok": true,
+  "document": "docs/research/2026-06-27-ashira-serp-source-dossier.md",
+  "links": 11,
+  "characters": 11643,
+  "checks": [
+    {
+      "name": "has_length",
+      "ok": true
+    },
+    {
+      "name": "source_links",
+      "ok": true
+    },
+    {
+      "name": "preflight_only",
+      "ok": true
+    },
+    {
+      "name": "languages",
+      "ok": true
+    },
+    {
+      "name": "asset_truth_table",
+      "ok": true
+    },
+    {
+      "name": "official_project_source",
+      "ok": true
+    },
+    {
+      "name": "municipal_source",
+      "ok": true
+    },
+    {
+      "name": "hreflang_source",
+      "ok": true
+    },
+    {
+      "name": "javascript_seo_source",
+      "ok": true
+    },
+    {
+      "name": "model_sources",
+      "ok": true
+    },
+    {
+      "name": "glb_reality",
+      "ok": true
+    },
+    {
+      "name": "no_publish_instruction",
+      "ok": true
+    },
+    {
+      "name": "readiness_checklist",
+      "ok": true
+    }
+  ],
+  "failures": []
+}

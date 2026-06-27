@@ -1,0 +1,81 @@
+{
+  "ok": true,
+  "out": "docs/qa/home-seo-schema-report.json",
+  "title": "דירות חדשות ופרויקטים עם בחירת דירה בתלת ממד | NadLan",
+  "title_length": 53,
+  "description": "השוו פרויקטים חדשים בישראל, בדקו זמינות דירות לפי קומה ונוף, ראו אומדן מחיר לא מחייב וקבלו מידע ברור בעברית ובשפות למשקיעים מחו״ל.",
+  "description_length": 130,
+  "schema_types": [
+    "Organization",
+    "WebSite",
+    "SearchAction",
+    "WebPage",
+    "ItemList",
+    "ListItem"
+  ],
+  "item_list_count": 3,
+  "schema_parse_error": "",
+  "checks": [
+    {
+      "name": "theme_has_title_helper",
+      "ok": true
+    },
+    {
+      "name": "theme_has_description_helper",
+      "ok": true
+    },
+    {
+      "name": "theme_has_jsonld_hook",
+      "ok": true
+    },
+    {
+      "name": "theme_jsonld_uses_wp_json_encode",
+      "ok": true
+    },
+    {
+      "name": "old_brand_absent_from_home_sources",
+      "ok": true
+    },
+    {
+      "name": "preview_title_present",
+      "ok": true
+    },
+    {
+      "name": "preview_description_present",
+      "ok": true
+    },
+    {
+      "name": "metadata_public_clean",
+      "ok": true
+    },
+    {
+      "name": "schema_parses",
+      "ok": true
+    },
+    {
+      "name": "schema_has_organization",
+      "ok": true
+    },
+    {
+      "name": "schema_has_website",
+      "ok": true
+    },
+    {
+      "name": "schema_has_webpage",
+      "ok": true
+    },
+    {
+      "name": "schema_has_search_action",
+      "ok": true
+    },
+    {
+      "name": "schema_has_project_item_list",
+      "ok": true
+    },
+    {
+      "name": "schema_public_clean",
+      "ok": true
+    }
+  ],
+  "failures": []
+}

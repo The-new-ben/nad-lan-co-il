@@ -1,0 +1,517 @@
+{
+  "generated_at": "2026-06-27T01:38:29.786Z",
+  "preview": "docs/previews/ashira-showroom-v2-ru-preview.html",
+  "url": "http://127.0.0.1:62503/docs/previews/ashira-showroom-v2-ru-preview.html",
+  "out_dir": "docs/qa/screenshots/ashira-v2-ru-preview-factory-gate",
+  "strict": true,
+  "expected_lang": "ru",
+  "expected_dir": "ltr",
+  "viewports": [
+    {
+      "name": "desktop-1440",
+      "viewport": {
+        "name": "desktop-1440",
+        "width": 1440,
+        "height": 1000,
+        "isMobile": false,
+        "deviceScaleFactor": 1
+      },
+      "screenshots": {
+        "initial": "C:\\Users\\pro\\Documents\\websites\\nad-lan-co-il-showroom-1680\\docs\\qa\\screenshots\\ashira-v2-ru-preview-factory-gate\\desktop-1440-initial.png",
+        "selected": "C:\\Users\\pro\\Documents\\websites\\nad-lan-co-il-showroom-1680\\docs\\qa\\screenshots\\ashira-v2-ru-preview-factory-gate\\desktop-1440-selected.png"
+      },
+      "metrics": {
+        "title": "Квартиры в Ashira Sde Dov на продажу в Тель-Авиве | NadLan",
+        "dir": "ltr",
+        "lang": "ru",
+        "hasRoot": true,
+        "oldRootCount": 0,
+        "h1Count": 1,
+        "h2Count": 18,
+        "scroll": {
+          "width": 1440,
+          "client": 1440,
+          "overflow": 0
+        },
+        "rects": {
+          "root": {
+            "x": 100,
+            "y": -811,
+            "width": 1240,
+            "height": 11946.4,
+            "right": 1340,
+            "bottom": 11135.4
+          },
+          "hero": {
+            "x": 100,
+            "y": -738,
+            "width": 1240,
+            "height": 545.6,
+            "right": 1340,
+            "bottom": -192.4
+          },
+          "stage": {
+            "x": 101,
+            "y": 10.9,
+            "width": 1238,
+            "height": 895,
+            "right": 1339,
+            "bottom": 905.9
+          },
+          "model": {
+            "x": 705.5,
+            "y": 32.9,
+            "width": 611.5,
+            "height": 851,
+            "right": 1317,
+            "bottom": 883.9
+          },
+          "picker": {
+            "x": 123,
+            "y": 32.9,
+            "width": 564.5,
+            "height": 851,
+            "right": 687.5,
+            "bottom": 883.9
+          },
+          "facade": {
+            "x": 140,
+            "y": 160.3,
+            "width": 530.5,
+            "height": 706.6,
+            "right": 670.5,
+            "bottom": 866.9
+          },
+          "card": {
+            "x": 640.5,
+            "y": 905.9,
+            "width": 676.5,
+            "height": 526.8,
+            "right": 1317,
+            "bottom": 1432.7
+          },
+          "contact": {
+            "x": 123,
+            "y": 905.9,
+            "width": 503.5,
+            "height": 526.8,
+            "right": 626.5,
+            "bottom": 1432.7
+          }
+        },
+        "modelViewer": {
+          "count": 1,
+          "defined": true,
+          "src": "../../assets/projects/ashira-sde-dov/model-context.glb",
+          "poster": "../../assets/projects/ashira-sde-dov/ashira-hero-concept.jpg",
+          "cameraControls": true
+        },
+        "units": {
+          "count": 5,
+          "active": 1,
+          "featured": 2,
+          "minTapWidth": 54,
+          "minTapHeight": 46
+        },
+        "selected": {
+          "cardHidden": false,
+          "unitInput": "ashira-14-city",
+          "title": "Квартира 14 City | 4 комнаты"
+        },
+        "overlap": {
+          "cardOverFacade": false
+        },
+        "copy": {
+          "hasHebrew": false,
+          "hasLatin": true,
+          "hasMojibake": false,
+          "hasInternalWords": false
+        }
+      },
+      "consoleErrors": [],
+      "allowedConsoleWarnings": [],
+      "pageErrors": [],
+      "failures": []
+    },
+    {
+      "name": "tablet-768",
+      "viewport": {
+        "name": "tablet-768",
+        "width": 768,
+        "height": 1000,
+        "isMobile": false,
+        "deviceScaleFactor": 1
+      },
+      "screenshots": {
+        "initial": "C:\\Users\\pro\\Documents\\websites\\nad-lan-co-il-showroom-1680\\docs\\qa\\screenshots\\ashira-v2-ru-preview-factory-gate\\tablet-768-initial.png",
+        "selected": "C:\\Users\\pro\\Documents\\websites\\nad-lan-co-il-showroom-1680\\docs\\qa\\screenshots\\ashira-v2-ru-preview-factory-gate\\tablet-768-selected.png"
+      },
+      "metrics": {
+        "title": "Квартиры в Ashira Sde Dov на продажу в Тель-Авиве | NadLan",
+        "dir": "ltr",
+        "lang": "ru",
+        "hasRoot": true,
+        "oldRootCount": 0,
+        "h1Count": 1,
+        "h2Count": 18,
+        "scroll": {
+          "width": 768,
+          "client": 768,
+          "overflow": 0
+        },
+        "rects": {
+          "root": {
+            "x": 16,
+            "y": -1551,
+            "width": 736,
+            "height": 14267.2,
+            "right": 752,
+            "bottom": 12716.2
+          },
+          "hero": {
+            "x": 16,
+            "y": -1489.3,
+            "width": 736,
+            "height": 726.3,
+            "right": 752,
+            "bottom": -763
+          },
+          "stage": {
+            "x": 17,
+            "y": -532,
+            "width": 734,
+            "height": 1527.5,
+            "right": 751,
+            "bottom": 995.5
+          },
+          "model": {
+            "x": 33.9,
+            "y": -515.1,
+            "width": 700.2,
+            "height": 463.8,
+            "right": 734.1,
+            "bottom": -51.3
+          },
+          "picker": {
+            "x": 33.9,
+            "y": -33.3,
+            "width": 700.2,
+            "height": 1011.9,
+            "right": 734.1,
+            "bottom": 978.6
+          },
+          "facade": {
+            "x": 50.9,
+            "y": 74,
+            "width": 666.2,
+            "height": 887.6,
+            "right": 717.1,
+            "bottom": 961.6
+          },
+          "card": {
+            "x": 33.9,
+            "y": 995.5,
+            "width": 700.2,
+            "height": 515.2,
+            "right": 734.1,
+            "bottom": 1510.7
+          },
+          "contact": {
+            "x": 33.9,
+            "y": 1524.7,
+            "width": 700.2,
+            "height": 424,
+            "right": 734.1,
+            "bottom": 1948.7
+          }
+        },
+        "modelViewer": {
+          "count": 1,
+          "defined": true,
+          "src": "../../assets/projects/ashira-sde-dov/model-context.glb",
+          "poster": "../../assets/projects/ashira-sde-dov/ashira-hero-concept.jpg",
+          "cameraControls": true
+        },
+        "units": {
+          "count": 5,
+          "active": 1,
+          "featured": 2,
+          "minTapWidth": 54,
+          "minTapHeight": 46
+        },
+        "selected": {
+          "cardHidden": false,
+          "unitInput": "ashira-14-city",
+          "title": "Квартира 14 City | 4 комнаты"
+        },
+        "overlap": {
+          "cardOverFacade": false
+        },
+        "copy": {
+          "hasHebrew": false,
+          "hasLatin": true,
+          "hasMojibake": false,
+          "hasInternalWords": false
+        }
+      },
+      "consoleErrors": [],
+      "allowedConsoleWarnings": [],
+      "pageErrors": [],
+      "failures": []
+    },
+    {
+      "name": "mobile-390",
+      "viewport": {
+        "name": "mobile-390",
+        "width": 390,
+        "height": 900,
+        "isMobile": true,
+        "deviceScaleFactor": 2
+      },
+      "screenshots": {
+        "initial": "C:\\Users\\pro\\Documents\\websites\\nad-lan-co-il-showroom-1680\\docs\\qa\\screenshots\\ashira-v2-ru-preview-factory-gate\\mobile-390-initial.png",
+        "selected": "C:\\Users\\pro\\Documents\\websites\\nad-lan-co-il-showroom-1680\\docs\\qa\\screenshots\\ashira-v2-ru-preview-factory-gate\\mobile-390-selected.png"
+      },
+      "metrics": {
+        "title": "Квартиры в Ashira Sde Dov на продажу в Тель-Авиве | NadLan",
+        "dir": "ltr",
+        "lang": "ru",
+        "hasRoot": true,
+        "oldRootCount": 0,
+        "h1Count": 1,
+        "h2Count": 18,
+        "scroll": {
+          "width": 390,
+          "client": 390,
+          "overflow": 0
+        },
+        "rects": {
+          "root": {
+            "x": 9,
+            "y": -774,
+            "width": 372,
+            "height": 19762.9,
+            "right": 381,
+            "bottom": 18988.9
+          },
+          "hero": {
+            "x": 9,
+            "y": -733,
+            "width": 372,
+            "height": 692.3,
+            "right": 381,
+            "bottom": -40.7
+          },
+          "stage": {
+            "x": 10,
+            "y": 317.6,
+            "width": 370,
+            "height": 1136.7,
+            "right": 380,
+            "bottom": 1454.4
+          },
+          "model": {
+            "x": 20,
+            "y": 327.6,
+            "width": 350,
+            "height": 438.5,
+            "right": 370,
+            "bottom": 766.2
+          },
+          "picker": {
+            "x": 20,
+            "y": 778.2,
+            "width": 350,
+            "height": 666.2,
+            "right": 370,
+            "bottom": 1444.4
+          },
+          "facade": {
+            "x": 33,
+            "y": 951.8,
+            "width": 324,
+            "height": 479.6,
+            "right": 357,
+            "bottom": 1431.4
+          },
+          "card": {
+            "x": 20,
+            "y": 1454.4,
+            "width": 350,
+            "height": 685.8,
+            "right": 370,
+            "bottom": 2140.2
+          },
+          "contact": {
+            "x": 20,
+            "y": 2150.2,
+            "width": 350,
+            "height": 416,
+            "right": 370,
+            "bottom": 2566.2
+          }
+        },
+        "modelViewer": {
+          "count": 1,
+          "defined": true,
+          "src": "../../assets/projects/ashira-sde-dov/model-context.glb",
+          "poster": "../../assets/projects/ashira-sde-dov/ashira-hero-concept.jpg",
+          "cameraControls": true
+        },
+        "units": {
+          "count": 5,
+          "active": 1,
+          "featured": 2,
+          "minTapWidth": 50,
+          "minTapHeight": 44
+        },
+        "selected": {
+          "cardHidden": false,
+          "unitInput": "ashira-14-city",
+          "title": "Квартира 14 City | 4 комнаты"
+        },
+        "overlap": {
+          "cardOverFacade": false
+        },
+        "copy": {
+          "hasHebrew": false,
+          "hasLatin": true,
+          "hasMojibake": false,
+          "hasInternalWords": false
+        }
+      },
+      "consoleErrors": [],
+      "allowedConsoleWarnings": [],
+      "pageErrors": [],
+      "failures": []
+    },
+    {
+      "name": "edge-mobile-390",
+      "viewport": {
+        "name": "edge-mobile-390",
+        "width": 390,
+        "height": 900,
+        "isMobile": true,
+        "deviceScaleFactor": 2,
+        "userAgent": "Mozilla/5.0 (Linux; Android 13; Pixel 7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0 Mobile Safari/537.36 EdgA/125.0"
+      },
+      "screenshots": {
+        "initial": "C:\\Users\\pro\\Documents\\websites\\nad-lan-co-il-showroom-1680\\docs\\qa\\screenshots\\ashira-v2-ru-preview-factory-gate\\edge-mobile-390-initial.png",
+        "selected": "C:\\Users\\pro\\Documents\\websites\\nad-lan-co-il-showroom-1680\\docs\\qa\\screenshots\\ashira-v2-ru-preview-factory-gate\\edge-mobile-390-selected.png"
+      },
+      "metrics": {
+        "title": "Квартиры в Ashira Sde Dov на продажу в Тель-Авиве | NadLan",
+        "dir": "ltr",
+        "lang": "ru",
+        "hasRoot": true,
+        "oldRootCount": 0,
+        "h1Count": 1,
+        "h2Count": 18,
+        "scroll": {
+          "width": 390,
+          "client": 390,
+          "overflow": 0
+        },
+        "rects": {
+          "root": {
+            "x": 9,
+            "y": -774,
+            "width": 372,
+            "height": 19762.9,
+            "right": 381,
+            "bottom": 18988.9
+          },
+          "hero": {
+            "x": 9,
+            "y": -733,
+            "width": 372,
+            "height": 692.3,
+            "right": 381,
+            "bottom": -40.7
+          },
+          "stage": {
+            "x": 10,
+            "y": 317.6,
+            "width": 370,
+            "height": 1136.7,
+            "right": 380,
+            "bottom": 1454.4
+          },
+          "model": {
+            "x": 20,
+            "y": 327.6,
+            "width": 350,
+            "height": 438.5,
+            "right": 370,
+            "bottom": 766.2
+          },
+          "picker": {
+            "x": 20,
+            "y": 778.2,
+            "width": 350,
+            "height": 666.2,
+            "right": 370,
+            "bottom": 1444.4
+          },
+          "facade": {
+            "x": 33,
+            "y": 951.8,
+            "width": 324,
+            "height": 479.6,
+            "right": 357,
+            "bottom": 1431.4
+          },
+          "card": {
+            "x": 20,
+            "y": 1454.4,
+            "width": 350,
+            "height": 685.8,
+            "right": 370,
+            "bottom": 2140.2
+          },
+          "contact": {
+            "x": 20,
+            "y": 2150.2,
+            "width": 350,
+            "height": 416,
+            "right": 370,
+            "bottom": 2566.2
+          }
+        },
+        "modelViewer": {
+          "count": 1,
+          "defined": true,
+          "src": "../../assets/projects/ashira-sde-dov/model-context.glb",
+          "poster": "../../assets/projects/ashira-sde-dov/ashira-hero-concept.jpg",
+          "cameraControls": true
+        },
+        "units": {
+          "count": 5,
+          "active": 1,
+          "featured": 2,
+          "minTapWidth": 50,
+          "minTapHeight": 44
+        },
+        "selected": {
+          "cardHidden": false,
+          "unitInput": "ashira-14-city",
+          "title": "Квартира 14 City | 4 комнаты"
+        },
+        "overlap": {
+          "cardOverFacade": false
+        },
+        "copy": {
+          "hasHebrew": false,
+          "hasLatin": true,
+          "hasMojibake": false,
+          "hasInternalWords": false
+        }
+      },
+      "consoleErrors": [],
+      "allowedConsoleWarnings": [],
+      "pageErrors": [],
+      "failures": []
+    }
+  ],
+  "failures": []
+}

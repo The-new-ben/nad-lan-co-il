@@ -1,0 +1,124 @@
+{
+  "ok": true,
+  "pattern": "patterns/nadlan-home-showroom.php",
+  "out": "docs/qa/home-showroom-pattern-report.json",
+  "checks": [
+    {
+      "name": "pattern_marker",
+      "ok": true
+    },
+    {
+      "name": "home_template_uses_pattern",
+      "ok": true
+    },
+    {
+      "name": "home_template_drops_query_loop",
+      "ok": true
+    },
+    {
+      "name": "project_data_url",
+      "ok": true
+    },
+    {
+      "name": "project_data_has_language_urls",
+      "ok": true
+    },
+    {
+      "name": "asset_base_url",
+      "ok": true
+    },
+    {
+      "name": "one_h1",
+      "ok": true
+    },
+    {
+      "name": "project_grid",
+      "ok": true
+    },
+    {
+      "name": "project_language_rail",
+      "ok": true
+    },
+    {
+      "name": "project_language_rail_links_manifest_urls",
+      "ok": true
+    },
+    {
+      "name": "home_language_controls_inside_project_engine",
+      "ok": true
+    },
+    {
+      "name": "hero_language_controls",
+      "ok": true
+    },
+    {
+      "name": "project_band_buyer_copy",
+      "ok": true
+    },
+    {
+      "name": "model_mount",
+      "ok": true
+    },
+    {
+      "name": "facade_mount",
+      "ok": true
+    },
+    {
+      "name": "language_entries",
+      "ok": true
+    },
+    {
+      "name": "language_targets",
+      "ok": true
+    },
+    {
+      "name": "buyer_path_cards",
+      "ok": true
+    },
+    {
+      "name": "public_buyer_copy",
+      "ok": true
+    },
+    {
+      "name": "home_css_has_mobile_rules",
+      "ok": true
+    },
+    {
+      "name": "functions_detects_marker",
+      "ok": true
+    },
+    {
+      "name": "functions_detects_home_template",
+      "ok": true
+    },
+    {
+      "name": "functions_enqueues_engine_css",
+      "ok": true
+    },
+    {
+      "name": "functions_enqueues_home_css",
+      "ok": true
+    },
+    {
+      "name": "functions_enqueues_engine_js",
+      "ok": true
+    },
+    {
+      "name": "engine_reads_root_config",
+      "ok": true
+    },
+    {
+      "name": "engine_switches_language",
+      "ok": true
+    },
+    {
+      "name": "engine_updates_project_language_rail",
+      "ok": true
+    },
+    {
+      "name": "no_public_internal_words",
+      "ok": true
+    }
+  ],
+  "failures": []
+}

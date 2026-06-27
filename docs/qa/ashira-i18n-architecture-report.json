@@ -1,0 +1,67 @@
+{
+  "ok": true,
+  "document": "docs/plans/2026-06-27-ashira-multilingual-architecture.md",
+  "links": 15,
+  "slugs": [
+    "ashira-sde-dov",
+    "ashira-sde-dov-en",
+    "ashira-sde-dov-fr",
+    "ashira-sde-dov-ru",
+    "ashira-sde-dov-ar"
+  ],
+  "checks": [
+    {
+      "name": "preflight_only",
+      "ok": true
+    },
+    {
+      "name": "no_broad_plugin_migration",
+      "ok": true
+    },
+    {
+      "name": "ascii_slugs",
+      "ok": true
+    },
+    {
+      "name": "five_languages",
+      "ok": true
+    },
+    {
+      "name": "hreflang_complete_set",
+      "ok": true
+    },
+    {
+      "name": "hreflang_sources",
+      "ok": true
+    },
+    {
+      "name": "wordpress_source",
+      "ok": true
+    },
+    {
+      "name": "javascript_seo_source",
+      "ok": true
+    },
+    {
+      "name": "content_depth_per_language",
+      "ok": true
+    },
+    {
+      "name": "source_facts",
+      "ok": true
+    },
+    {
+      "name": "screenshot_gate",
+      "ok": true
+    },
+    {
+      "name": "no_fake_language_promises",
+      "ok": true
+    },
+    {
+      "name": "links",
+      "ok": true
+    }
+  ],
+  "failures": []
+}

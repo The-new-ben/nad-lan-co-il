@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>נדלן | דירות חדשות בשדה דב</title>
+	<link rel="icon" href="data:,">
+	<link rel="stylesheet" href="../../assets/css/nadlan-showroom-engine.css">
+	<script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
+</head>
+<body>
+<div class="nle-page">
+	<header class="nle-topbar">
+		<div class="nle-brand">
+			<span class="nle-logo">נדלן</span>
+			<span class="nle-kicker">SDE DOV HOMES</span>
+		</div>
+		<nav class="nle-nav" aria-label="ניווט">
+			<a href="#projects">פרויקטים</a>
+			<a href="#showroom">בחירת דירה</a>
+			<a href="#buyers">מה בודקים</a>
+		</nav>
+		<div class="nle-langs" aria-label="שפות">
+			<span class="is-active">HE</span><span>EN</span><span>FR</span><span>RU</span><span>AR</span>
+		</div>
+	</header>
+
+	<main class="nle-wrap">
+		<section class="nle-hero" aria-labelledby="nle-title">
+			<div class="nle-hero-copy">
+				<span class="nle-eyebrow">רובע שדה דב · תל אביב</span>
+				<h1 id="nle-title">דירות חדשות בשדה דב לפי קומה, נוף ותוכנית.</h1>
+				<p>השוו פרויקטים, בדקו דירות שמוצגות כזמינות, ראו אומדן לא מחייב, כיוון ותוכנית, והשאירו פנייה על הדירה שבחרתם.</p>
+				<div class="nle-actions">
+					<a class="nle-button is-primary" href="#projects">לכל הפרויקטים</a>
+					<a class="nle-button" href="#showroom">בחרו דירה</a>
+				</div>
+			</div>
+			<aside class="nle-investor-card" id="buyers">
+				<h2>כל מה שחשוב לבדוק לפני פנייה.</h2>
+				<p>קומה, נוף, כיוון, שטח, תוכנית, סביבת המגורים ואומדן מחיר. המידע עוזר להתמקד בדירות שמתאימות לכם לפני שיחה עם נציג.</p>
+				<div class="nle-stats">
+					<div class="nle-stat"><span>בדיקת דירה</span><strong>קומה</strong></div>
+					<div class="nle-stat"><span>סביבת מגורים</span><strong>ים</strong></div>
+					<div class="nle-stat"><span>לפני פנייה</span><strong>אומדן</strong></div>
+				</div>
+			</aside>
+		</section>
+
+		<section class="nle-catalog" id="projects" aria-labelledby="nle-projects-title">
+			<div class="nle-catalog-head">
+				<div>
+					<h2 id="nle-projects-title">בחרו פרויקט בשדה דב</h2>
+					<p class="nle-note" data-nle-project-count>טוען פרויקטים</p>
+				</div>
+				<input class="nle-search" type="search" placeholder="חיפוש לפי פרויקט או אזור" data-nle-search>
+			</div>
+			<div class="nle-project-grid" data-nle-project-grid></div>
+		</section>
+
+		<section class="nle-showroom" id="showroom" aria-label="תצוגת פרויקט">
+			<div class="nle-model">
+				<div class="nle-model-head">
+					<div>
+						<span class="nle-badge" data-nle-project-location>רובע שדה דב</span>
+						<h2 data-nle-project-title>טוען פרויקט</h2>
+						<p data-nle-project-sub>טוען תיאור פרויקט</p>
+					</div>
+					<span class="nle-badge">גרירה לסיבוב · בחירת דירה</span>
+				</div>
+				<div data-nle-model-wrap></div>
+			</div>
+
+			<aside class="nle-side">
+				<article class="nle-unit-card" aria-live="polite">
+					<header>
+						<div>
+							<span class="nle-status" data-nle-unit-status>זמינה</span>
+							<h3 data-nle-unit-title>בחרו דירה</h3>
+						</div>
+						<div class="nle-stat"><span>קומה</span><strong data-nle-unit-floor>--</strong></div>
+					</header>
+					<div class="nle-facts">
+						<div class="nle-fact"><span>חדרים</span><strong data-nle-unit-rooms>--</strong></div>
+						<div class="nle-fact"><span>שטח</span><strong data-nle-unit-sqm>--</strong></div>
+						<div class="nle-fact"><span>נוף</span><strong data-nle-unit-view>--</strong></div>
+						<div class="nle-fact"><span>אומדן</span><strong data-nle-unit-price>לפי פנייה</strong></div>
+					</div>
+					<div class="nle-tabs" role="tablist" aria-label="מידע על הדירה">
+						<button class="is-active" type="button" data-nle-tab="plan">תוכנית</button>
+						<button type="button" data-nle-tab="view">מבט</button>
+						<button type="button" data-nle-tab="tour">סיור</button>
+					</div>
+					<div class="nle-panel" data-nle-panel>בחרו דירה כדי לראות מידע.</div>
+					<p class="nle-note" data-nle-model-note></p>
+				</article>
+
+				<section class="nle-facade" aria-label="בחירת דירה">
+				<strong>בחירת דירה מהירה</strong>
+					<p class="nle-note">בחרו קומה או דירה כדי לראות שטח, חדרים, נוף, אומדן ותוכנית לפני פנייה.</p>
+					<div class="nle-facade-grid" data-nle-facade-grid></div>
+				</section>
+
+				<form class="nle-contact" data-nle-form>
+					<strong>רוצים לבדוק את הדירה?</strong>
+					<input name="name" placeholder="שם מלא" autocomplete="name">
+					<input name="phone" placeholder="טלפון" inputmode="tel" autocomplete="tel">
+					<input type="hidden" name="unit" data-nle-selected-unit>
+					<button type="submit">שליחת פנייה על הדירה</button>
+					<p class="nle-note">הפנייה תישלח עם פרטי הדירה שנבחרה. הנתונים להמחשה ויש לאמת מחיר וזמינות מול היזם.</p>
+					<p class="nle-note" data-nle-feedback></p>
+				</form>
+			</aside>
+		</section>
+
+		<section class="nle-info" aria-label="מידע משלים">
+			<article>
+				<h2>תמונות, תוכניות וסיור</h2>
+				<p>כאן יוצגו תוכניות דירה, גלריית תמונות, סרטון או סיור פנים כאשר יש חומר מאושר. אם אין חומר רשמי, מוצגת המחשה מסומנת בלבד.</p>
+			</article>
+			<article>
+				<h2>סביבה ונגישות</h2>
+				<p>בדקו את הקרבה לים, פארקים, תחבורה, בתי ספר, גני ילדים ופרויקטים סמוכים כדי להבין את סביבת המגורים.</p>
+			</article>
+			<article>
+				<h2>מחיר וזמינות</h2>
+				<p>המחירים והזמינות מוצגים כאומדן לא מחייב עד אישור היזם. לפני החלטה חשוב לבדוק את תנאי העסקה והמסמכים.</p>
+			</article>
+		</section>
+	</main>
+
+	<footer class="nle-footer">
+		<div class="nle-wrap">
+			<strong>נדלן</strong>
+			<span>דירות חדשות · נתונים להמחשה עד אישור היזם</span>
+		</div>
+	</footer>
+</div>
+<script src="../../assets/js/nadlan-showroom-engine.js" data-projects="../../assets/engine/projects.json" data-asset-base="../../"></script>
+</body>
+</html>

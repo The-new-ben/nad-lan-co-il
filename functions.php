@@ -86,43 +86,136 @@ add_action( 'wp_enqueue_scripts', 'nadlan_revenue_enqueue_styles' );
 
 if ( ! function_exists( 'nadlan_revenue_enqueue_project_showroom_assets' ) ) :
 	function nadlan_revenue_enqueue_project_showroom_assets() {
-		if ( is_admin() || ! is_singular() ) {
+		if ( is_admin() ) {
 			return;
 		}
 
 		$post = get_post();
-		if ( ! $post || false === strpos( (string) $post->post_content, 'data-nlps-showroom' ) ) {
+		$content = $post ? (string) $post->post_content : '';
+		$template_has_home = false;
+
+		if ( is_front_page() || is_home() ) {
+			$home_template_path = get_parent_theme_file_path( 'templates/home.html' );
+			if ( file_exists( $home_template_path ) ) {
+				$home_template = (string) file_get_contents( $home_template_path );
+				$template_has_home = false !== strpos( $home_template, 'nadlan-revenue/nadlan-home-showroom' ) || false !== strpos( $home_template, 'data-nle-home-showroom' );
+			}
+		}
+
+		if ( ! is_singular() && ! $template_has_home ) {
 			return;
 		}
 
-		$showroom_path = get_parent_theme_file_path( 'assets/css/nadlan-project-showroom.css' );
-		if ( file_exists( $showroom_path ) ) {
-			wp_enqueue_style(
-				'nadlan-project-showroom',
-				get_parent_theme_file_uri( 'assets/css/nadlan-project-showroom.css' ),
-				array( 'nadlan-revenue-style' ),
-				(string) filemtime( $showroom_path )
-			);
+		$has_v1        = false !== strpos( $content, 'data-nlps-showroom' );
+		$has_v2        = false !== strpos( $content, 'data-nlv2-showroom' );
+		$has_home      = false !== strpos( $content, 'data-nle-home-showroom' ) || $template_has_home;
+		$needs_model   = $has_v1 || $has_v2 || $has_home;
+
+		if ( ! $has_v1 && ! $has_v2 && ! $has_home ) {
+			return;
 		}
 
-		if ( ! wp_script_is( 'nadlan-model-viewer', 'registered' ) ) {
-			wp_register_script( 'nadlan-model-viewer', 'https://ajax.googleapis.com/ajax/libs/model-viewer/4.3.1/model-viewer.min.js', array(), '4.3.1', true );
+		if ( $has_v1 ) {
+			$showroom_path = get_parent_theme_file_path( 'assets/css/nadlan-project-showroom.css' );
+			if ( file_exists( $showroom_path ) ) {
+				wp_enqueue_style(
+					'nadlan-project-showroom',
+					get_parent_theme_file_uri( 'assets/css/nadlan-project-showroom.css' ),
+					array( 'nadlan-revenue-style' ),
+					(string) filemtime( $showroom_path )
+				);
+			}
 		}
-		wp_enqueue_script( 'nadlan-model-viewer' );
 
-		$script_path = get_parent_theme_file_path( 'assets/js/nadlan-project-showroom.js' );
-		if ( file_exists( $script_path ) ) {
-			wp_enqueue_script(
-				'nadlan-project-showroom',
-				get_parent_theme_file_uri( 'assets/js/nadlan-project-showroom.js' ),
-				array(),
-				(string) filemtime( $script_path ),
-				true
-			);
+		if ( $has_v2 ) {
+			$showroom_v2_path = get_parent_theme_file_path( 'assets/css/nadlan-showroom-v2.css' );
+			if ( file_exists( $showroom_v2_path ) ) {
+				wp_enqueue_style(
+					'nadlan-showroom-v2',
+					get_parent_theme_file_uri( 'assets/css/nadlan-showroom-v2.css' ),
+					array( 'nadlan-revenue-style' ),
+					(string) filemtime( $showroom_v2_path )
+				);
+			}
+		}
+
+		if ( $has_home ) {
+			$engine_path = get_parent_theme_file_path( 'assets/css/nadlan-showroom-engine.css' );
+			if ( file_exists( $engine_path ) ) {
+				wp_enqueue_style(
+					'nadlan-showroom-engine',
+					get_parent_theme_file_uri( 'assets/css/nadlan-showroom-engine.css' ),
+					array( 'nadlan-revenue-style' ),
+					(string) filemtime( $engine_path )
+				);
+			}
+
+			$home_showroom_path = get_parent_theme_file_path( 'assets/css/nadlan-home-showroom.css' );
+			if ( file_exists( $home_showroom_path ) ) {
+				wp_enqueue_style(
+					'nadlan-home-showroom',
+					get_parent_theme_file_uri( 'assets/css/nadlan-home-showroom.css' ),
+					array( 'nadlan-showroom-engine' ),
+					(string) filemtime( $home_showroom_path )
+				);
+			}
+		}
+
+		if ( $needs_model ) {
+			if ( ! wp_script_is( 'nadlan-model-viewer', 'registered' ) ) {
+				wp_register_script( 'nadlan-model-viewer', 'https://ajax.googleapis.com/ajax/libs/model-viewer/4.3.1/model-viewer.min.js', array(), '4.3.1', true );
+			}
+			wp_enqueue_script( 'nadlan-model-viewer' );
+		}
+
+		if ( $has_v1 ) {
+			$script_path = get_parent_theme_file_path( 'assets/js/nadlan-project-showroom.js' );
+			if ( file_exists( $script_path ) ) {
+				wp_enqueue_script(
+					'nadlan-project-showroom',
+					get_parent_theme_file_uri( 'assets/js/nadlan-project-showroom.js' ),
+					array(),
+					(string) filemtime( $script_path ),
+					true
+				);
+			}
+		}
+
+		if ( $has_v2 ) {
+			$script_v2_path = get_parent_theme_file_path( 'assets/js/nadlan-showroom-v2.js' );
+			if ( file_exists( $script_v2_path ) ) {
+				wp_enqueue_script(
+					'nadlan-showroom-v2',
+					get_parent_theme_file_uri( 'assets/js/nadlan-showroom-v2.js' ),
+					array(),
+					(string) filemtime( $script_v2_path ),
+					true
+				);
+			}
+		}
+
+		if ( $has_home ) {
+			$engine_script_path = get_parent_theme_file_path( 'assets/js/nadlan-showroom-engine.js' );
+			if ( file_exists( $engine_script_path ) ) {
+				wp_enqueue_script(
+					'nadlan-showroom-engine',
+					get_parent_theme_file_uri( 'assets/js/nadlan-showroom-engine.js' ),
+					array(),
+					(string) filemtime( $engine_script_path ),
+					true
+				);
+			}
 		}
 	}
 endif;
 add_action( 'wp_enqueue_scripts', 'nadlan_revenue_enqueue_project_showroom_assets', 20 );
+
+/*
+	Legacy showroom asset order retained above:
+	- data-nlps-showroom loads only the old nlps assets.
+	- data-nlv2-showroom loads only the clean nlv2 assets.
+	Do not add compatibility selectors between the two systems.
+*/
 
 add_filter(
 	'script_loader_tag',
@@ -725,11 +818,11 @@ if ( ! function_exists( 'nadlan_revenue_premium_front_page' ) ) :
 		ob_start();
 		?>
 <div class="nlux-home" dir="rtl">
-	<section class="nlux-hero" aria-label="נדל״ן חכם">
+	<section class="nlux-hero" aria-label="NadLan">
 		<div class="nlux-hero-media" aria-hidden="true"></div>
 		<div class="nlux-hero-copy">
 			<p class="nlux-kicker">פרויקטים חדשים · ישראל</p>
-			<h1>נדל״ן חכם: בוחרים פרויקט ודירה לפני שפונים ליזם</h1>
+			<h1>NadLan: בוחרים פרויקט ודירה לפני שפונים ליזם</h1>
 			<p class="nlux-intro">סיורי פרויקטים בתלת ממד, בחירת דירה על הבניין, אומדני מחיר, סביבת הפרויקט, מחשבונים ואנשי מקצוע במקום אחד, לרוכשים בישראל ולמשקיעים מחוץ לישראל.</p>
 			<form class="nlux-search" method="get" action="<?php echo esc_url( $project_url ); ?>">
 				<input type="search" name="q" placeholder="חפשו פרויקט, עיר או יזם">
@@ -783,7 +876,7 @@ if ( ! function_exists( 'nadlan_revenue_premium_front_page' ) ) :
 		</div>
 	</section>
 
-	<section class="nlux-data-band" aria-label="למה נדל״ן חכם">
+	<section class="nlux-data-band" aria-label="למה NadLan">
 		<div><strong>בחירת דירה חזותית</strong><span>כאשר יש נתונים, רואים קומה, כיוון ונקודת מבט</span></div>
 		<div><strong>מקורות גלויים</strong><span>פרויקטים, יזמים ובעלי מקצוע עם מידע שניתן לבדוק</span></div>
 		<div><strong>פנייה אחרי בדיקה</strong><span>משווים, מחשבים ורק אז מתקדמים לשיחה מסודרת</span></div>
@@ -854,26 +947,128 @@ add_filter( 'the_content', function ( $content ) {
 	return $content;
 }, 99 );
 
+if ( ! function_exists( 'nadlan_revenue_home_seo_title' ) ) :
+	function nadlan_revenue_home_seo_title() {
+		return 'דירות חדשות ופרויקטים עם בחירת דירה בתלת ממד | NadLan';
+	}
+endif;
+
+if ( ! function_exists( 'nadlan_revenue_home_seo_description' ) ) :
+	function nadlan_revenue_home_seo_description() {
+		return 'השוו פרויקטים חדשים בישראל, בדקו זמינות דירות לפי קומה ונוף, ראו אומדן מחיר לא מחייב וקבלו מידע ברור בעברית ובשפות למשקיעים מחו״ל.';
+	}
+endif;
+
 add_filter( 'pre_get_document_title', function ( $title ) {
 	if ( is_front_page() ) {
-		return 'פרויקטים חדשים ודירות בתלת ממד | נדל״ן חכם';
+		return nadlan_revenue_home_seo_title();
 	}
 	return $title;
 }, 40 );
 
 add_filter( 'wpseo_title', function ( $title ) {
 	if ( is_front_page() ) {
-		return 'פרויקטים חדשים ודירות בתלת ממד | נדל״ן חכם';
+		return nadlan_revenue_home_seo_title();
 	}
 	return $title;
 }, 40 );
 
 add_filter( 'wpseo_metadesc', function ( $description ) {
 	if ( is_front_page() ) {
-		return 'בדקו פרויקטים חדשים, בחרו דירה בתלת ממד, השוו עלויות ופנו ליזם אחרי בדיקה מסודרת. מיועד לרוכשים בישראל ולמשקיעים מחוץ לישראל.';
+		return nadlan_revenue_home_seo_description();
 	}
 	return $description;
 }, 40 );
+
+if ( ! function_exists( 'nadlan_revenue_home_schema_projects' ) ) :
+	function nadlan_revenue_home_schema_projects() {
+		$items = array();
+		$path  = get_parent_theme_file_path( 'assets/engine/projects.json' );
+		if ( file_exists( $path ) ) {
+			$raw  = (string) file_get_contents( $path );
+			$data = json_decode( $raw, true );
+			if ( is_array( $data ) && ! empty( $data['projects'] ) && is_array( $data['projects'] ) ) {
+				foreach ( $data['projects'] as $project ) {
+					if ( ! is_array( $project ) || empty( $project['name'] ) || empty( $project['project_url'] ) ) {
+						continue;
+					}
+					$items[] = array(
+						'name'        => sanitize_text_field( (string) $project['name'] ),
+						'url'         => home_url( '/' . ltrim( (string) $project['project_url'], '/' ) ),
+						'description' => sanitize_text_field( (string) ( $project['sub'] ?? $project['location'] ?? '' ) ),
+					);
+				}
+			}
+		}
+		return array_slice( $items, 0, 6 );
+	}
+endif;
+
+if ( ! function_exists( 'nadlan_revenue_home_jsonld' ) ) :
+	function nadlan_revenue_home_jsonld() {
+		if ( ! is_front_page() ) {
+			return;
+		}
+
+		$home_url = home_url( '/' );
+		$graph    = array(
+			array(
+				'@type' => 'Organization',
+				'@id'   => $home_url . '#organization',
+				'name'  => 'NadLan',
+				'url'   => $home_url,
+			),
+			array(
+				'@type'           => 'WebSite',
+				'@id'             => $home_url . '#website',
+				'name'            => 'NadLan',
+				'url'             => $home_url,
+				'inLanguage'      => 'he-IL',
+				'publisher'       => array( '@id' => $home_url . '#organization' ),
+				'potentialAction' => array(
+					'@type'       => 'SearchAction',
+					'target'      => home_url( '/?s={search_term_string}' ),
+					'query-input' => 'required name=search_term_string',
+				),
+			),
+			array(
+				'@type'       => 'WebPage',
+				'@id'         => $home_url . '#webpage',
+				'name'        => nadlan_revenue_home_seo_title(),
+				'description' => nadlan_revenue_home_seo_description(),
+				'url'         => $home_url,
+				'inLanguage'  => 'he-IL',
+				'isPartOf'    => array( '@id' => $home_url . '#website' ),
+			),
+		);
+
+		$projects = nadlan_revenue_home_schema_projects();
+		if ( $projects ) {
+			$list = array(
+				'@type'           => 'ItemList',
+				'@id'             => $home_url . '#projects',
+				'name'            => 'פרויקטים חדשים להשוואה',
+				'itemListElement' => array(),
+			);
+			foreach ( $projects as $index => $project ) {
+				$list['itemListElement'][] = array(
+					'@type'    => 'ListItem',
+					'position' => $index + 1,
+					'url'      => $project['url'],
+					'name'     => $project['name'],
+				);
+			}
+			$graph[] = $list;
+		}
+
+		$schema = array(
+			'@context' => 'https://schema.org',
+			'@graph'   => $graph,
+		);
+		echo '<script type="application/ld+json" id="nadlan-home-schema">' . wp_json_encode( $schema, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES ) . '</script>' . "\n";
+	}
+endif;
+add_action( 'wp_head', 'nadlan_revenue_home_jsonld', 20 );
 
 add_filter( 'render_block', function ( $block_content, $block ) {
 	if (
@@ -1062,7 +1257,7 @@ if ( ! function_exists( 'nadlan_revenue_premium_gateway_markup' ) ) :
 	<section class="nlrx-gate-hero">
 		<div class="nlrx-gate-copy">
 			<p class="nlrx-eyebrow">מערכת פרסום וניהול נכסים</p>
-			<h1><?php echo esc_html( $is_studio ? 'כניסה לסטודיו העריכה של נדל״ן חכם' : 'מרכז הפרסום של נדל״ן חכם' ); ?></h1>
+			<h1><?php echo esc_html( $is_studio ? 'כניסה לסטודיו העריכה של NadLan' : 'מרכז הפרסום של NadLan' ); ?></h1>
 			<p>כאן מפרסמים מנהלים פרויקט, נכס או כרטיס מקצועי: תמונות, פרטי קשר, מיקום, פניות ושדרוגי חשיפה. קודם מתחברים לחשבון, ואז ממשיכים לעריכה או למסלול הפרסום.</p>
 			<div class="nlrx-actions">
 				<a class="nlrx-btn nlrx-btn-primary" href="<?php echo esc_url( $account_url ); ?>">כניסה או פתיחת חשבון</a>

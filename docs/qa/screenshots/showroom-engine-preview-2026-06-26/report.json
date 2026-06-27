@@ -1,0 +1,352 @@
+{
+  "ok": true,
+  "preview": "docs/previews/nadlan-showroom-engine-preview.html",
+  "out_dir": "C:\\Users\\pro\\Documents\\websites\\nad-lan-co-il-showroom-1680\\docs\\qa\\screenshots\\showroom-engine-preview-2026-06-26",
+  "viewports": [
+    {
+      "name": "desktop-1440",
+      "before": {
+        "title": "נדלן | דירות חדשות בשדה דב",
+        "h1s": [
+          "דירות חדשות בשדה דב לפי קומה, נוף ותוכנית."
+        ],
+        "projectCards": 3,
+        "modelViewerCount": 1,
+        "modelViewerDefined": true,
+        "hotspots": 6,
+        "facadeCells": 6,
+        "activeCells": 2,
+        "overflow": 0,
+        "minTap": 40,
+        "hasHebrew": true,
+        "hasMojibake": false,
+        "hasInternalWords": false,
+        "showroom": {
+          "x": 80,
+          "y": 1052.375,
+          "width": 1280,
+          "height": 1016.375,
+          "right": 1360,
+          "bottom": 2068.75
+        },
+        "model": {
+          "x": 514.453125,
+          "y": 1070.375,
+          "width": 827.546875,
+          "height": 622,
+          "right": 1342,
+          "bottom": 1692.375
+        },
+        "side": {
+          "x": 98.015625,
+          "y": 1070.375,
+          "width": 398.4375,
+          "height": 980.375,
+          "right": 496.453125,
+          "bottom": 2050.75
+        }
+      },
+      "after": {
+        "title": "נדלן | דירות חדשות בשדה דב",
+        "h1s": [
+          "דירות חדשות בשדה דב לפי קומה, נוף ותוכנית."
+        ],
+        "projectCards": 3,
+        "modelViewerCount": 1,
+        "modelViewerDefined": true,
+        "hotspots": 4,
+        "facadeCells": 4,
+        "activeCells": 2,
+        "overflow": 0,
+        "minTap": 40,
+        "hasHebrew": true,
+        "hasMojibake": false,
+        "hasInternalWords": false,
+        "showroom": {
+          "x": 80,
+          "y": 7.375,
+          "width": 1280,
+          "height": 993.375,
+          "right": 1360,
+          "bottom": 1000.75
+        },
+        "model": {
+          "x": 514.453125,
+          "y": 25.375,
+          "width": 827.546875,
+          "height": 622,
+          "right": 1342,
+          "bottom": 647.375
+        },
+        "side": {
+          "x": 98.015625,
+          "y": 25.375,
+          "width": 398.4375,
+          "height": 957.375,
+          "right": 496.453125,
+          "bottom": 982.75
+        }
+      },
+      "failures": []
+    },
+    {
+      "name": "tablet-768",
+      "before": {
+        "title": "נדלן | דירות חדשות בשדה דב",
+        "h1s": [
+          "דירות חדשות בשדה דב לפי קומה, נוף ותוכנית."
+        ],
+        "projectCards": 3,
+        "modelViewerCount": 1,
+        "modelViewerDefined": true,
+        "hotspots": 6,
+        "facadeCells": 6,
+        "activeCells": 2,
+        "overflow": 0,
+        "minTap": 40,
+        "hasHebrew": true,
+        "hasMojibake": false,
+        "hasInternalWords": false,
+        "showroom": {
+          "x": 16,
+          "y": 2370.953125,
+          "width": 736,
+          "height": 1487.5,
+          "right": 752,
+          "bottom": 3858.453125
+        },
+        "model": {
+          "x": 31.359375,
+          "y": 2386.3125,
+          "width": 705.28125,
+          "height": 500,
+          "right": 736.640625,
+          "bottom": 2886.3125
+        },
+        "side": {
+          "x": 31.359375,
+          "y": 2904.3125,
+          "width": 705.28125,
+          "height": 938.78125,
+          "right": 736.640625,
+          "bottom": 3843.09375
+        }
+      },
+      "after": {
+        "title": "נדלן | דירות חדשות בשדה דב",
+        "h1s": [
+          "דירות חדשות בשדה דב לפי קומה, נוף ותוכנית."
+        ],
+        "projectCards": 3,
+        "modelViewerCount": 1,
+        "modelViewerDefined": true,
+        "hotspots": 4,
+        "facadeCells": 4,
+        "activeCells": 2,
+        "overflow": 0,
+        "minTap": 40,
+        "hasHebrew": true,
+        "hasMojibake": false,
+        "hasInternalWords": false,
+        "showroom": {
+          "x": 16,
+          "y": -558.046875,
+          "width": 736,
+          "height": 1487.5,
+          "right": 752,
+          "bottom": 929.453125
+        },
+        "model": {
+          "x": 31.359375,
+          "y": -542.6875,
+          "width": 705.28125,
+          "height": 500,
+          "right": 736.640625,
+          "bottom": -42.6875
+        },
+        "side": {
+          "x": 31.359375,
+          "y": -24.6875,
+          "width": 705.28125,
+          "height": 938.78125,
+          "right": 736.640625,
+          "bottom": 914.09375
+        }
+      },
+      "failures": []
+    },
+    {
+      "name": "mobile-390",
+      "before": {
+        "title": "נדלן | דירות חדשות בשדה דב",
+        "h1s": [
+          "דירות חדשות בשדה דב לפי קומה, נוף ותוכנית."
+        ],
+        "projectCards": 3,
+        "modelViewerCount": 1,
+        "modelViewerDefined": true,
+        "hotspots": 6,
+        "facadeCells": 6,
+        "activeCells": 2,
+        "overflow": 0,
+        "minTap": 40,
+        "hasHebrew": true,
+        "hasMojibake": false,
+        "hasInternalWords": false,
+        "showroom": {
+          "x": 11,
+          "y": 2039.953125,
+          "width": 368,
+          "height": 1615.6875,
+          "right": 379,
+          "bottom": 3655.640625
+        },
+        "model": {
+          "x": 21,
+          "y": 2049.953125,
+          "width": 348,
+          "height": 430,
+          "right": 369,
+          "bottom": 2479.953125
+        },
+        "side": {
+          "x": 21,
+          "y": 2497.953125,
+          "width": 348,
+          "height": 1147.6875,
+          "right": 369,
+          "bottom": 3645.640625
+        }
+      },
+      "after": {
+        "title": "נדלן | דירות חדשות בשדה דב",
+        "h1s": [
+          "דירות חדשות בשדה דב לפי קומה, נוף ותוכנית."
+        ],
+        "projectCards": 3,
+        "modelViewerCount": 1,
+        "modelViewerDefined": true,
+        "hotspots": 4,
+        "facadeCells": 4,
+        "activeCells": 2,
+        "overflow": 0,
+        "minTap": 40,
+        "hasHebrew": true,
+        "hasMojibake": false,
+        "hasInternalWords": false,
+        "showroom": {
+          "x": 11,
+          "y": -740.046875,
+          "width": 368,
+          "height": 1587.96875,
+          "right": 379,
+          "bottom": 847.921875
+        },
+        "model": {
+          "x": 21,
+          "y": -730.046875,
+          "width": 348,
+          "height": 430,
+          "right": 369,
+          "bottom": -300.046875
+        },
+        "side": {
+          "x": 21,
+          "y": -282.046875,
+          "width": 348,
+          "height": 1119.96875,
+          "right": 369,
+          "bottom": 837.921875
+        }
+      },
+      "failures": []
+    },
+    {
+      "name": "edge-mobile-390",
+      "before": {
+        "title": "נדלן | דירות חדשות בשדה דב",
+        "h1s": [
+          "דירות חדשות בשדה דב לפי קומה, נוף ותוכנית."
+        ],
+        "projectCards": 3,
+        "modelViewerCount": 1,
+        "modelViewerDefined": true,
+        "hotspots": 6,
+        "facadeCells": 6,
+        "activeCells": 2,
+        "overflow": 0,
+        "minTap": 40,
+        "hasHebrew": true,
+        "hasMojibake": false,
+        "hasInternalWords": false,
+        "showroom": {
+          "x": 11,
+          "y": 2039.953125,
+          "width": 368,
+          "height": 1615.6875,
+          "right": 379,
+          "bottom": 3655.640625
+        },
+        "model": {
+          "x": 21,
+          "y": 2049.953125,
+          "width": 348,
+          "height": 430,
+          "right": 369,
+          "bottom": 2479.953125
+        },
+        "side": {
+          "x": 21,
+          "y": 2497.953125,
+          "width": 348,
+          "height": 1147.6875,
+          "right": 369,
+          "bottom": 3645.640625
+        }
+      },
+      "after": {
+        "title": "נדלן | דירות חדשות בשדה דב",
+        "h1s": [
+          "דירות חדשות בשדה דב לפי קומה, נוף ותוכנית."
+        ],
+        "projectCards": 3,
+        "modelViewerCount": 1,
+        "modelViewerDefined": true,
+        "hotspots": 4,
+        "facadeCells": 4,
+        "activeCells": 2,
+        "overflow": 0,
+        "minTap": 40,
+        "hasHebrew": true,
+        "hasMojibake": false,
+        "hasInternalWords": false,
+        "showroom": {
+          "x": 11,
+          "y": -740.046875,
+          "width": 368,
+          "height": 1587.96875,
+          "right": 379,
+          "bottom": 847.921875
+        },
+        "model": {
+          "x": 21,
+          "y": -730.046875,
+          "width": 348,
+          "height": 430,
+          "right": 369,
+          "bottom": -300.046875
+        },
+        "side": {
+          "x": 21,
+          "y": -282.046875,
+          "width": 348,
+          "height": 1119.96875,
+          "right": 369,
+          "bottom": 837.921875
+        }
+      },
+      "failures": []
+    }
+  ],
+  "failures": []
+}

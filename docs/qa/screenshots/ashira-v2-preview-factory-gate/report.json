@@ -1,0 +1,522 @@
+{
+  "generated_at": "2026-06-27T01:35:20.383Z",
+  "preview": "docs/previews/ashira-showroom-v2-preview.html",
+  "url": "http://127.0.0.1:62359/docs/previews/ashira-showroom-v2-preview.html",
+  "out_dir": "docs/qa/screenshots/ashira-v2-preview-factory-gate",
+  "strict": true,
+  "expected_lang": "he",
+  "expected_dir": "rtl",
+  "viewports": [
+    {
+      "name": "desktop-1440",
+      "viewport": {
+        "name": "desktop-1440",
+        "width": 1440,
+        "height": 1000,
+        "isMobile": false,
+        "deviceScaleFactor": 1
+      },
+      "screenshots": {
+        "initial": "C:\\Users\\pro\\Documents\\websites\\nad-lan-co-il-showroom-1680\\docs\\qa\\screenshots\\ashira-v2-preview-factory-gate\\desktop-1440-initial.png",
+        "selected": "C:\\Users\\pro\\Documents\\websites\\nad-lan-co-il-showroom-1680\\docs\\qa\\screenshots\\ashira-v2-preview-factory-gate\\desktop-1440-selected.png"
+      },
+      "metrics": {
+        "title": "דירות למכירה באשירה שדה דב | NadLan",
+        "dir": "rtl",
+        "lang": "he",
+        "hasRoot": true,
+        "oldRootCount": 0,
+        "h1Count": 1,
+        "h2Count": 18,
+        "scroll": {
+          "width": 1440,
+          "client": 1440,
+          "overflow": 0
+        },
+        "rects": {
+          "root": {
+            "x": 100,
+            "y": -580,
+            "width": 1240,
+            "height": 9010.8,
+            "right": 1340,
+            "bottom": 8430.8
+          },
+          "hero": {
+            "x": 100,
+            "y": -507,
+            "width": 1240,
+            "height": 381.3,
+            "right": 1340,
+            "bottom": -125.7
+          },
+          "stage": {
+            "x": 101,
+            "y": 51.2,
+            "width": 1238,
+            "height": 854.8,
+            "right": 1339,
+            "bottom": 905.9
+          },
+          "model": {
+            "x": 705.5,
+            "y": 73.2,
+            "width": 611.5,
+            "height": 810.8,
+            "right": 1317,
+            "bottom": 883.9
+          },
+          "picker": {
+            "x": 123,
+            "y": 73.2,
+            "width": 564.5,
+            "height": 810.8,
+            "right": 687.5,
+            "bottom": 883.9
+          },
+          "facade": {
+            "x": 140,
+            "y": 160.3,
+            "width": 530.5,
+            "height": 706.6,
+            "right": 670.5,
+            "bottom": 866.9
+          },
+          "card": {
+            "x": 640.5,
+            "y": 905.9,
+            "width": 676.5,
+            "height": 480,
+            "right": 1317,
+            "bottom": 1386
+          },
+          "contact": {
+            "x": 123,
+            "y": 905.9,
+            "width": 503.5,
+            "height": 480,
+            "right": 626.5,
+            "bottom": 1386
+          }
+        },
+        "modelViewer": {
+          "count": 1,
+          "defined": true,
+          "src": "../../assets/projects/ashira-sde-dov/model-context.glb",
+          "poster": "../../assets/projects/ashira-sde-dov/ashira-hero-concept.jpg",
+          "cameraControls": true
+        },
+        "units": {
+          "count": 5,
+          "active": 1,
+          "featured": 2,
+          "minTapWidth": 54,
+          "minTapHeight": 46
+        },
+        "selected": {
+          "cardHidden": false,
+          "unitInput": "ashira-14-city",
+          "title": "דירה 14 עיר | 4 חדרים"
+        },
+        "overlap": {
+          "cardOverFacade": false
+        },
+        "copy": {
+          "hasHebrew": true,
+          "hasLatin": true,
+          "hasMojibake": false,
+          "hasInternalWords": false
+        }
+      },
+      "consoleErrors": [],
+      "allowedConsoleWarnings": [
+        {
+          "type": "warning",
+          "text": "rAF timed out in updateSource"
+        }
+      ],
+      "pageErrors": [],
+      "failures": []
+    },
+    {
+      "name": "tablet-768",
+      "viewport": {
+        "name": "tablet-768",
+        "width": 768,
+        "height": 1000,
+        "isMobile": false,
+        "deviceScaleFactor": 1
+      },
+      "screenshots": {
+        "initial": "C:\\Users\\pro\\Documents\\websites\\nad-lan-co-il-showroom-1680\\docs\\qa\\screenshots\\ashira-v2-preview-factory-gate\\tablet-768-initial.png",
+        "selected": "C:\\Users\\pro\\Documents\\websites\\nad-lan-co-il-showroom-1680\\docs\\qa\\screenshots\\ashira-v2-preview-factory-gate\\tablet-768-selected.png"
+      },
+      "metrics": {
+        "title": "דירות למכירה באשירה שדה דב | NadLan",
+        "dir": "rtl",
+        "lang": "he",
+        "hasRoot": true,
+        "oldRootCount": 0,
+        "h1Count": 1,
+        "h2Count": 18,
+        "scroll": {
+          "width": 768,
+          "client": 768,
+          "overflow": 0
+        },
+        "rects": {
+          "root": {
+            "x": 16,
+            "y": -1387,
+            "width": 736,
+            "height": 10895,
+            "right": 752,
+            "bottom": 9508
+          },
+          "hero": {
+            "x": 16,
+            "y": -1325.3,
+            "width": 736,
+            "height": 631.1,
+            "right": 752,
+            "bottom": -694.2
+          },
+          "stage": {
+            "x": 17,
+            "y": -489.6,
+            "width": 734,
+            "height": 1484.9,
+            "right": 751,
+            "bottom": 995.4
+          },
+          "model": {
+            "x": 33.9,
+            "y": -472.7,
+            "width": 700.2,
+            "height": 441.4,
+            "right": 734.1,
+            "bottom": -31.3
+          },
+          "picker": {
+            "x": 33.9,
+            "y": -13.3,
+            "width": 700.2,
+            "height": 991.8,
+            "right": 734.1,
+            "bottom": 978.5
+          },
+          "facade": {
+            "x": 50.9,
+            "y": 73.8,
+            "width": 666.2,
+            "height": 887.6,
+            "right": 717.1,
+            "bottom": 961.5
+          },
+          "card": {
+            "x": 33.9,
+            "y": 995.4,
+            "width": 700.2,
+            "height": 468.4,
+            "right": 734.1,
+            "bottom": 1463.8
+          },
+          "contact": {
+            "x": 33.9,
+            "y": 1477.8,
+            "width": 700.2,
+            "height": 418,
+            "right": 734.1,
+            "bottom": 1895.8
+          }
+        },
+        "modelViewer": {
+          "count": 1,
+          "defined": true,
+          "src": "../../assets/projects/ashira-sde-dov/model-context.glb",
+          "poster": "../../assets/projects/ashira-sde-dov/ashira-hero-concept.jpg",
+          "cameraControls": true
+        },
+        "units": {
+          "count": 5,
+          "active": 1,
+          "featured": 2,
+          "minTapWidth": 54,
+          "minTapHeight": 46
+        },
+        "selected": {
+          "cardHidden": false,
+          "unitInput": "ashira-14-city",
+          "title": "דירה 14 עיר | 4 חדרים"
+        },
+        "overlap": {
+          "cardOverFacade": false
+        },
+        "copy": {
+          "hasHebrew": true,
+          "hasLatin": true,
+          "hasMojibake": false,
+          "hasInternalWords": false
+        }
+      },
+      "consoleErrors": [],
+      "allowedConsoleWarnings": [],
+      "pageErrors": [],
+      "failures": []
+    },
+    {
+      "name": "mobile-390",
+      "viewport": {
+        "name": "mobile-390",
+        "width": 390,
+        "height": 900,
+        "isMobile": true,
+        "deviceScaleFactor": 2
+      },
+      "screenshots": {
+        "initial": "C:\\Users\\pro\\Documents\\websites\\nad-lan-co-il-showroom-1680\\docs\\qa\\screenshots\\ashira-v2-preview-factory-gate\\mobile-390-initial.png",
+        "selected": "C:\\Users\\pro\\Documents\\websites\\nad-lan-co-il-showroom-1680\\docs\\qa\\screenshots\\ashira-v2-preview-factory-gate\\mobile-390-selected.png"
+      },
+      "metrics": {
+        "title": "דירות למכירה באשירה שדה דב | NadLan",
+        "dir": "rtl",
+        "lang": "he",
+        "hasRoot": true,
+        "oldRootCount": 0,
+        "h1Count": 1,
+        "h2Count": 18,
+        "scroll": {
+          "width": 390,
+          "client": 390,
+          "overflow": 0
+        },
+        "rects": {
+          "root": {
+            "x": 9,
+            "y": -310,
+            "width": 372,
+            "height": 13725.4,
+            "right": 381,
+            "bottom": 13415.4
+          },
+          "hero": {
+            "x": 9,
+            "y": -269,
+            "width": 372,
+            "height": 524.2,
+            "right": 381,
+            "bottom": 255.2
+          },
+          "stage": {
+            "x": 10,
+            "y": 467.4,
+            "width": 370,
+            "height": 1021.7,
+            "right": 380,
+            "bottom": 1489.1
+          },
+          "model": {
+            "x": 20,
+            "y": 477.4,
+            "width": 350,
+            "height": 393.8,
+            "right": 370,
+            "bottom": 871.2
+          },
+          "picker": {
+            "x": 20,
+            "y": 883.2,
+            "width": 350,
+            "height": 595.9,
+            "right": 370,
+            "bottom": 1479.1
+          },
+          "facade": {
+            "x": 33,
+            "y": 986.5,
+            "width": 324,
+            "height": 479.6,
+            "right": 357,
+            "bottom": 1466.1
+          },
+          "card": {
+            "x": 20,
+            "y": 1489.1,
+            "width": 350,
+            "height": 611.2,
+            "right": 370,
+            "bottom": 2100.3
+          },
+          "contact": {
+            "x": 20,
+            "y": 2110.3,
+            "width": 350,
+            "height": 410,
+            "right": 370,
+            "bottom": 2520.3
+          }
+        },
+        "modelViewer": {
+          "count": 1,
+          "defined": true,
+          "src": "../../assets/projects/ashira-sde-dov/model-context.glb",
+          "poster": "../../assets/projects/ashira-sde-dov/ashira-hero-concept.jpg",
+          "cameraControls": true
+        },
+        "units": {
+          "count": 5,
+          "active": 1,
+          "featured": 2,
+          "minTapWidth": 50,
+          "minTapHeight": 44
+        },
+        "selected": {
+          "cardHidden": false,
+          "unitInput": "ashira-14-city",
+          "title": "דירה 14 עיר | 4 חדרים"
+        },
+        "overlap": {
+          "cardOverFacade": false
+        },
+        "copy": {
+          "hasHebrew": true,
+          "hasLatin": true,
+          "hasMojibake": false,
+          "hasInternalWords": false
+        }
+      },
+      "consoleErrors": [],
+      "allowedConsoleWarnings": [],
+      "pageErrors": [],
+      "failures": []
+    },
+    {
+      "name": "edge-mobile-390",
+      "viewport": {
+        "name": "edge-mobile-390",
+        "width": 390,
+        "height": 900,
+        "isMobile": true,
+        "deviceScaleFactor": 2,
+        "userAgent": "Mozilla/5.0 (Linux; Android 13; Pixel 7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0 Mobile Safari/537.36 EdgA/125.0"
+      },
+      "screenshots": {
+        "initial": "C:\\Users\\pro\\Documents\\websites\\nad-lan-co-il-showroom-1680\\docs\\qa\\screenshots\\ashira-v2-preview-factory-gate\\edge-mobile-390-initial.png",
+        "selected": "C:\\Users\\pro\\Documents\\websites\\nad-lan-co-il-showroom-1680\\docs\\qa\\screenshots\\ashira-v2-preview-factory-gate\\edge-mobile-390-selected.png"
+      },
+      "metrics": {
+        "title": "דירות למכירה באשירה שדה דב | NadLan",
+        "dir": "rtl",
+        "lang": "he",
+        "hasRoot": true,
+        "oldRootCount": 0,
+        "h1Count": 1,
+        "h2Count": 18,
+        "scroll": {
+          "width": 390,
+          "client": 390,
+          "overflow": 0
+        },
+        "rects": {
+          "root": {
+            "x": 9,
+            "y": -310,
+            "width": 372,
+            "height": 13725.4,
+            "right": 381,
+            "bottom": 13415.4
+          },
+          "hero": {
+            "x": 9,
+            "y": -269,
+            "width": 372,
+            "height": 524.2,
+            "right": 381,
+            "bottom": 255.2
+          },
+          "stage": {
+            "x": 10,
+            "y": 467.4,
+            "width": 370,
+            "height": 1021.7,
+            "right": 380,
+            "bottom": 1489.1
+          },
+          "model": {
+            "x": 20,
+            "y": 477.4,
+            "width": 350,
+            "height": 393.8,
+            "right": 370,
+            "bottom": 871.2
+          },
+          "picker": {
+            "x": 20,
+            "y": 883.2,
+            "width": 350,
+            "height": 595.9,
+            "right": 370,
+            "bottom": 1479.1
+          },
+          "facade": {
+            "x": 33,
+            "y": 986.5,
+            "width": 324,
+            "height": 479.6,
+            "right": 357,
+            "bottom": 1466.1
+          },
+          "card": {
+            "x": 20,
+            "y": 1489.1,
+            "width": 350,
+            "height": 611.2,
+            "right": 370,
+            "bottom": 2100.3
+          },
+          "contact": {
+            "x": 20,
+            "y": 2110.3,
+            "width": 350,
+            "height": 410,
+            "right": 370,
+            "bottom": 2520.3
+          }
+        },
+        "modelViewer": {
+          "count": 1,
+          "defined": true,
+          "src": "../../assets/projects/ashira-sde-dov/model-context.glb",
+          "poster": "../../assets/projects/ashira-sde-dov/ashira-hero-concept.jpg",
+          "cameraControls": true
+        },
+        "units": {
+          "count": 5,
+          "active": 1,
+          "featured": 2,
+          "minTapWidth": 50,
+          "minTapHeight": 44
+        },
+        "selected": {
+          "cardHidden": false,
+          "unitInput": "ashira-14-city",
+          "title": "דירה 14 עיר | 4 חדרים"
+        },
+        "overlap": {
+          "cardOverFacade": false
+        },
+        "copy": {
+          "hasHebrew": true,
+          "hasLatin": true,
+          "hasMojibake": false,
+          "hasInternalWords": false
+        }
+      },
+      "consoleErrors": [],
+      "allowedConsoleWarnings": [],
+      "pageErrors": [],
+      "failures": []
+    }
+  ],
+  "failures": []
+}

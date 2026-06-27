@@ -18,15 +18,51 @@
 	},
 	"devDependencies": {
 		"@wordpress/browserslist-config": "^6.34.0",
+		"cssnano": "^7.1.2",
+		"playwright": "^1.61.1",
 		"postcss": "^8.5.6",
-		"postcss-cli": "^11.0.1",
-		"cssnano": "^7.1.2"
+		"postcss-cli": "^11.0.1"
 	},
 	"browserslist": [
 		"extends @wordpress/browserslist-config"
 	],
-  "scripts": {
-    "build": "postcss style.css --use cssnano -o style.min.css --no-map",
-    "watch": "postcss style.css --use cssnano -o style.min.css --no-map --watch"
-  }
+	"scripts": {
+		"build": "postcss style.css --use cssnano -o style.min.css --no-map",
+		"watch": "postcss style.css --use cssnano -o style.min.css --no-map --watch",
+		"qa:showroom-engine-preview": "node scripts/qa-showroom-engine-preview.mjs --strict",
+		"init:project-publication-manifest": "node scripts/init-project-publication-manifest.mjs",
+		"qa:project-factory-smoke": "node scripts/qa-project-factory-smoke.mjs --out docs/qa/project-factory-smoke-report.json",
+		"qa:home-chrome": "node scripts/qa-home-chrome.mjs --strict",
+		"qa:home-seo-schema": "node scripts/qa-home-seo-schema.mjs --strict",
+		"qa:home-showroom-preview": "node scripts/qa-home-showroom-preview.mjs --strict",
+		"qa:home-showroom-pattern": "node scripts/qa-home-showroom-pattern.mjs --strict",
+		"build:home-draft-payload": "node scripts/build-homepage-draft-payload.mjs",
+		"qa:home-draft-import-dry-run": "node scripts/qa-home-draft-import-dry-run.mjs --strict",
+		"qa:home-publication-readiness": "node scripts/qa-home-publication-readiness.mjs --strict",
+		"build:ashira-showroom-preview": "node scripts/build-ashira-showroom-preview.mjs",
+		"build:ashira-en-showroom-preview": "node scripts/build-ashira-showroom-preview.mjs --pattern patterns/project-showroom-ashira-v2-en.php --out docs/previews/ashira-showroom-v2-en-preview.html --lang en --dir ltr --title \"Ashira Sde Dov apartments for sale in Tel Aviv | NadLan\" --nav-label \"Navigation\" --nav \"Projects|Neighborhoods|Guides|Professionals|Contact\" --footer \"NadLan::New projects, neighborhoods, guides and checking tools for buyers and investors.|Buyer paths::Buying | Investment | Mortgage | Professionals|Note::The information on this preview page is not legal, financial or appraisal advice.\"",
+		"build:ashira-fr-showroom-preview": "node scripts/build-ashira-showroom-preview.mjs --pattern patterns/project-showroom-ashira-v2-fr.php --out docs/previews/ashira-showroom-v2-fr-preview.html --lang fr --dir ltr --title \"Appartements a vendre a Ashira Sde Dov, Tel Aviv | NadLan\" --nav-label \"Navigation\" --nav \"Projets|Quartiers|Guides|Professionnels|Contact\" --footer \"NadLan::Nouveaux projets, quartiers, guides et outils de verification pour acheteurs et investisseurs.|Parcours acheteur::Achat | Investissement | Financement | Professionnels|Note::Les informations de cette page ne constituent pas un conseil juridique, financier ou immobilier.\"",
+		"build:ashira-ru-showroom-preview": "node scripts/build-ashira-showroom-preview.mjs --pattern patterns/project-showroom-ashira-v2-ru.php --out docs/previews/ashira-showroom-v2-ru-preview.html --lang ru --dir ltr --title \"Квартиры в Ashira Sde Dov на продажу в Тель-Авиве | NadLan\" --nav-label \"Навигация\" --nav \"Проекты|Районы|Гиды|Специалисты|Контакт\" --footer \"NadLan::Новые проекты, районы, руководства и инструменты проверки для покупателей и инвесторов.|Путь покупателя::Покупка | Инвестиция | Финансирование | Специалисты|Примечание::Информация на этой странице не является юридической, финансовой или оценочной консультацией.\"",
+		"build:ashira-ar-showroom-preview": "node scripts/build-ashira-showroom-preview.mjs --pattern patterns/project-showroom-ashira-v2-ar.php --out docs/previews/ashira-showroom-v2-ar-preview.html --lang ar --dir rtl --title \"شقق Ashira Sde Dov للبيع في تل أبيب | NadLan\" --nav-label \"التنقل\" --nav \"مشاريع|أحياء|أدلة|مهنيون|تواصل\" --footer \"NadLan::مشاريع جديدة، أحياء، أدلة وأدوات فحص للمشترين والمستثمرين.|مسار المشتري::شراء | استثمار | تمويل | مهنيون|ملاحظة::المعلومات في هذه الصفحة ليست نصيحة قانونية أو مالية أو تقييمية.\"",
+		"qa:showroom-v2-preview": "node scripts/qa-showroom-v2-preview.mjs --strict",
+		"qa:showroom-v2-en-preview": "node scripts/qa-showroom-v2-preview.mjs --preview docs/previews/ashira-showroom-v2-en-preview.html --out docs/qa/screenshots/ashira-v2-en-preview-factory-gate --expected-lang en --expected-dir ltr --strict",
+		"qa:showroom-v2-fr-preview": "node scripts/qa-showroom-v2-preview.mjs --preview docs/previews/ashira-showroom-v2-fr-preview.html --out docs/qa/screenshots/ashira-v2-fr-preview-factory-gate --expected-lang fr --expected-dir ltr --strict",
+		"qa:showroom-v2-ru-preview": "node scripts/qa-showroom-v2-preview.mjs --preview docs/previews/ashira-showroom-v2-ru-preview.html --out docs/qa/screenshots/ashira-v2-ru-preview-factory-gate --expected-lang ru --expected-dir ltr --strict",
+		"qa:showroom-v2-ar-preview": "node scripts/qa-showroom-v2-preview.mjs --preview docs/previews/ashira-showroom-v2-ar-preview.html --out docs/qa/screenshots/ashira-v2-ar-preview-factory-gate --expected-lang ar --expected-dir rtl --strict",
+		"qa:ashira-factory-readiness": "node scripts/qa-ashira-factory-readiness.mjs --strict",
+		"qa:ashira-research-dossier": "node scripts/qa-ashira-research-dossier.mjs --strict",
+		"qa:ashira-i18n-architecture": "node scripts/qa-ashira-i18n-architecture.mjs --strict",
+		"qa:ashira-content-depth": "node scripts/qa-ashira-content-depth.mjs --strict",
+		"qa:ashira-en-content-depth": "node scripts/qa-ashira-en-content-depth.mjs --strict",
+		"qa:ashira-fr-content-depth": "node scripts/qa-ashira-fr-content-depth.mjs --strict",
+		"qa:ashira-ru-content-depth": "node scripts/qa-ashira-ru-content-depth.mjs --strict",
+		"qa:ashira-ar-content-depth": "node scripts/qa-ashira-ar-content-depth.mjs --strict",
+		"qa:ashira-draft-readiness": "node scripts/qa-wp-draft-payload.mjs --draft docs/wp-drafts/ashira-sde-dov-v2-draft.json --payload assets/projects/ashira-sde-dov/showroom-payload.json --out docs/qa/ashira-v2-draft-readiness-report.json --strict",
+		"build:project-hreflang-artifact": "node scripts/build-project-hreflang-artifact.mjs --manifest docs/plans/2026-06-27-ashira-publication-manifest.json --out-json docs/seo/ashira-hreflang-map.json --out-html docs/seo/ashira-hreflang-head.html",
+		"qa:project-hreflang-artifact": "node scripts/qa-project-hreflang-artifact.mjs --manifest docs/plans/2026-06-27-ashira-publication-manifest.json --map docs/seo/ashira-hreflang-map.json --html docs/seo/ashira-hreflang-head.html --out docs/qa/project-hreflang-artifact-report.json --strict",
+		"qa:project-draft-import-dry-run": "node scripts/qa-project-draft-import-dry-run.mjs --manifest docs/plans/2026-06-27-ashira-publication-manifest.json --out docs/qa/project-draft-import-dry-run-report.json --strict",
+		"qa:project-publication-readiness": "node scripts/qa-project-publication-readiness.mjs --manifest docs/plans/2026-06-27-ashira-publication-manifest.json --out docs/qa/project-publication-readiness-report.json --strict",
+		"qa:ashira-publication-readiness": "node scripts/qa-ashira-publication-readiness.mjs --strict",
+		"qa:ashira-full-preflight": "node scripts/qa-ashira-full-preflight.mjs --out docs/qa/ashira-full-preflight-report.json --strict"
+	}
 }

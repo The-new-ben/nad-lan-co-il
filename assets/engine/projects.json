@@ -1,0 +1,405 @@
+{
+  "schema": "nadlan-showroom-engine/v1",
+  "generated_from": [
+    "NadLan Ashira Factory Run1.zip",
+    "assets/projects/ashira-sde-dov/showroom-payload.json"
+  ],
+      "public_use_policy": "Buyer preview only. Generated models, units and prices are illustrative until replaced with approved developer material.",
+  "projects": [
+    {
+      "slug": "rainbow-tel-aviv",
+      "name": "Rainbow Tel Aviv",
+      "sub": "דירות חדשות במגדל מגורים בשדה דב",
+      "location": "רובע שדה דב, תל אביב",
+      "model_glb": "assets/engine/rainbow.glb",
+      "poster": "assets/engine/rainbow-poster.png",
+      "floors": 40,
+      "model_note": "הדמיה להמחשה בלבד. יש לאמת תוכניות, מחירים וזמינות מול היזם.",
+      "project_url": "/projects/rainbow-tel-aviv/",
+      "language_urls": {
+        "he": "/projects/rainbow-tel-aviv/"
+      },
+      "investor_note": "בדקו קומה, נוף, שטח ותוכנית לפני פנייה.",
+      "i18n": {
+        "en": {
+          "sub": "New apartments in a residential tower in Sde Dov",
+          "location": "Sde Dov district, Tel Aviv",
+          "model_note": "Illustrative view only. Plans, prices and availability must be confirmed with the representative.",
+          "investor_note": "Check floor, view, area and plan before asking for details."
+        },
+        "fr": {
+          "sub": "Appartements neufs dans une tour résidentielle à Sde Dov",
+          "location": "Quartier Sde Dov, Tel Aviv",
+          "model_note": "Visualisation indicative uniquement. Les plans, prix et disponibilités doivent être confirmés avec un représentant.",
+          "investor_note": "Vérifiez l’étage, la vue, la surface et le plan avant de demander des détails."
+        },
+        "ru": {
+          "sub": "Новые квартиры в жилой башне в Sde Dov",
+          "location": "Квартал Sde Dov, Тель-Авив",
+          "model_note": "Изображение только для иллюстрации. Планы, цены и доступность нужно подтвердить с представителем.",
+          "investor_note": "Проверьте этаж, вид, площадь и план перед запросом деталей."
+        },
+        "ar": {
+          "sub": "شقق جديدة في برج سكني في سديه دوف",
+          "location": "حي سديه دوف، تل أبيب",
+          "model_note": "العرض للتوضيح فقط. يجب تأكيد المخططات والأسعار والتوفر مع ممثل المشروع.",
+          "investor_note": "افحصوا الطابق، الإطلالة، المساحة والمخطط قبل طلب التفاصيل."
+        }
+      },
+      "units": [
+        {
+          "id": "unit-38-penthouse",
+          "label": "38",
+          "title": "פנטהאוז 5 חדרים, קומה 38",
+          "floor": 38,
+          "rooms": 5,
+          "sqm": 210,
+          "balcony": 42,
+          "dir": "מערב",
+          "view": "פנטהאוז גבוה לכיוון הים",
+          "status": "available",
+          "status_label": "זמינה",
+          "recommended": true,
+          "plan": "plan-penthouse",
+          "position": "-12.481m 117.12m 0m",
+          "normal": "-1m 0m 0m",
+          "orbit": "270deg 72deg 52m",
+          "price_estimate": "אומדן לפי פנייה",
+          "source_note": "נתוני המחשה עד לקבלת מלאי ותוכניות מאושרים."
+        },
+        {
+          "id": "unit-31-se",
+          "label": "31",
+          "title": "דירת 5 חדרים, קומה 31",
+          "floor": 31,
+          "rooms": 5,
+          "sqm": 156,
+          "balcony": 22,
+          "dir": "דרום מזרח",
+          "view": "קו הרקיע והחצר הפנימית",
+          "status": "available",
+          "status_label": "זמינה",
+          "recommended": false,
+          "plan": "plan-5br",
+          "position": "9.125m 95.77m -9.125m",
+          "normal": "0.707m 0m -0.707m",
+          "orbit": "135deg 72deg 52m",
+          "price_estimate": "אומדן לפי פנייה",
+          "source_note": "נתוני המחשה עד לקבלת מלאי ותוכניות מאושרים."
+        },
+        {
+          "id": "unit-24-nw",
+          "label": "24",
+          "title": "דירת 4 חדרים, קומה 24",
+          "floor": 24,
+          "rooms": 4,
+          "sqm": 128,
+          "balcony": 16,
+          "dir": "צפון מערב",
+          "view": "ים, פארק וצפון תל אביב",
+          "status": "available",
+          "status_label": "זמינה",
+          "recommended": true,
+          "plan": "plan-4br",
+          "position": "-9.425m 74.42m 9.425m",
+          "normal": "-0.707m 0m 0.707m",
+          "orbit": "315deg 72deg 52m",
+          "price_estimate": "אומדן לפי פנייה",
+          "source_note": "נתוני המחשה עד לקבלת מלאי ותוכניות מאושרים."
+        },
+        {
+          "id": "unit-16-w",
+          "label": "16",
+          "title": "דירת 4 חדרים, קומה 16",
+          "floor": 16,
+          "rooms": 4,
+          "sqm": 112,
+          "balcony": 14,
+          "dir": "מערב",
+          "view": "קו החוף ושדה דב",
+          "status": "available",
+          "status_label": "זמינה",
+          "recommended": false,
+          "plan": "plan-4br",
+          "position": "-13.813m 50.02m 0m",
+          "normal": "-1m 0m 0m",
+          "orbit": "270deg 72deg 52m",
+          "price_estimate": "אומדן לפי פנייה",
+          "source_note": "נתוני המחשה עד לקבלת מלאי ותוכניות מאושרים."
+        },
+        {
+          "id": "unit-08-sw",
+          "label": "8",
+          "title": "דירת 3 חדרים, קומה 8",
+          "floor": 8,
+          "rooms": 3,
+          "sqm": 82,
+          "balcony": 10,
+          "dir": "דרום מערב",
+          "view": "מבט לחצר ולים",
+          "status": "available",
+          "status_label": "זמינה",
+          "recommended": false,
+          "plan": "plan-3br",
+          "position": "-10.11m 25.62m -10.11m",
+          "normal": "-0.707m 0m -0.707m",
+          "orbit": "225deg 72deg 52m",
+          "price_estimate": "אומדן לפי פנייה",
+          "source_note": "נתוני המחשה עד לקבלת מלאי ותוכניות מאושרים."
+        },
+        {
+          "id": "unit-boutique-07",
+          "label": "7",
+          "title": "דירת 4 חדרים בבניין בוטיק, קומה 7",
+          "floor": 7,
+          "rooms": 4,
+          "sqm": 118,
+          "balcony": 18,
+          "dir": "מערב",
+          "view": "בניין בוטיק סביב הלגונה",
+          "status": "reserved",
+          "status_label": "בבדיקה",
+          "recommended": false,
+          "plan": "plan-boutique",
+          "position": "-41.5m 22.57m 16m",
+          "normal": "-1m 0m 0m",
+          "orbit": "270deg 72deg 34m",
+          "price_estimate": "אומדן לפי פנייה",
+          "source_note": "נתוני המחשה עד לקבלת מלאי ותוכניות מאושרים."
+        }
+      ]
+    },
+    {
+      "slug": "dimri-yama",
+      "name": "Dimri Yama",
+      "sub": "דירות חדשות ליד הים ברובע שדה דב",
+      "location": "רובע שדה דב, תל אביב",
+      "model_glb": "assets/engine/dimri.glb",
+      "poster": "assets/engine/dimri-poster.png",
+      "floors": 24,
+      "model_note": "הדמיה להמחשה בלבד. יש לאמת תוכניות, מחירים וזמינות מול היזם.",
+      "project_url": "/projects/dimri-yama/",
+      "language_urls": {
+        "he": "/projects/dimri-yama/"
+      },
+      "investor_note": "בדקו קומה, נוף, שטח ותוכנית לפני פנייה.",
+      "i18n": {
+        "en": {
+          "sub": "New apartments near the sea in the Sde Dov district",
+          "location": "Sde Dov district, Tel Aviv",
+          "model_note": "Illustrative view only. Plans, prices and availability must be confirmed with the representative.",
+          "investor_note": "Check floor, view, area and plan before asking for details."
+        },
+        "fr": {
+          "sub": "Appartements neufs près de la mer dans le quartier Sde Dov",
+          "location": "Quartier Sde Dov, Tel Aviv",
+          "model_note": "Visualisation indicative uniquement. Les plans, prix et disponibilités doivent être confirmés avec un représentant.",
+          "investor_note": "Vérifiez l’étage, la vue, la surface et le plan avant de demander des détails."
+        },
+        "ru": {
+          "sub": "Новые квартиры рядом с морем в квартале Sde Dov",
+          "location": "Квартал Sde Dov, Тель-Авив",
+          "model_note": "Изображение только для иллюстрации. Планы, цены и доступность нужно подтвердить с представителем.",
+          "investor_note": "Проверьте этаж, вид, площадь и план перед запросом деталей."
+        },
+        "ar": {
+          "sub": "شقق جديدة قرب البحر في حي سديه دوف",
+          "location": "حي سديه دوف، تل أبيب",
+          "model_note": "العرض للتوضيح فقط. يجب تأكيد المخططات والأسعار والتوفر مع ممثل المشروع.",
+          "investor_note": "افحصوا الطابق، الإطلالة، المساحة والمخطط قبل طلب التفاصيل."
+        }
+      },
+      "units": [
+        {
+          "id": "d-22",
+          "label": "22",
+          "title": "דירת 5 חדרים, קומה 22",
+          "floor": 22,
+          "rooms": 5,
+          "sqm": 165,
+          "balcony": 28,
+          "dir": "מערב",
+          "view": "ים פתוח וקו החוף",
+          "status": "available",
+          "status_label": "זמינה",
+          "recommended": true,
+          "plan": "plan-5br",
+          "position": "-15.582m 69.44m 0m",
+          "normal": "-1m 0m 0m",
+          "orbit": "270deg 72deg 52m",
+          "price_estimate": "אומדן לפי פנייה",
+          "source_note": "נתוני המחשה עד לקבלת מלאי ותוכניות מאושרים."
+        },
+        {
+          "id": "d-15",
+          "label": "15",
+          "title": "דירת 4 חדרים, קומה 15",
+          "floor": 15,
+          "rooms": 4,
+          "sqm": 120,
+          "balcony": 16,
+          "dir": "דרום מערב",
+          "view": "טיילת ושדרה ירוקה",
+          "status": "available",
+          "status_label": "זמינה",
+          "recommended": false,
+          "plan": "plan-4br",
+          "position": "-11.27m 47.74m -11.27m",
+          "normal": "-0.707m 0m -0.707m",
+          "orbit": "225deg 72deg 52m",
+          "price_estimate": "אומדן לפי פנייה",
+          "source_note": "נתוני המחשה עד לקבלת מלאי ותוכניות מאושרים."
+        },
+        {
+          "id": "d-09",
+          "label": "9",
+          "title": "דירת 3 חדרים, קומה 9",
+          "floor": 9,
+          "rooms": 3,
+          "sqm": 88,
+          "balcony": 12,
+          "dir": "צפון מערב",
+          "view": "פארק ושכונה",
+          "status": "available",
+          "status_label": "זמינה",
+          "recommended": false,
+          "plan": "plan-3br",
+          "position": "-11.486m 29.14m 11.486m",
+          "normal": "-0.707m 0m 0.707m",
+          "orbit": "315deg 72deg 52m",
+          "price_estimate": "אומדן לפי פנייה",
+          "source_note": "נתוני המחשה עד לקבלת מלאי ותוכניות מאושרים."
+        },
+        {
+          "id": "d-b6",
+          "label": "6",
+          "title": "דירת 4 חדרים בבניין גן, קומה 6",
+          "floor": 6,
+          "rooms": 4,
+          "sqm": 112,
+          "balcony": 20,
+          "dir": "מזרח",
+          "view": "חצר גן פנימית",
+          "status": "reserved",
+          "status_label": "בבדיקה",
+          "recommended": false,
+          "plan": "plan-boutique",
+          "position": "-29.5m 19.84m 0m",
+          "normal": "1m 0m 0m",
+          "orbit": "90deg 72deg 34m",
+          "price_estimate": "אומדן לפי פנייה",
+          "source_note": "נתוני המחשה עד לקבלת מלאי ותוכניות מאושרים."
+        }
+      ]
+    },
+    {
+      "slug": "ashira-sde-dov",
+      "name": "Ashira Sde Dov",
+      "sub": "דירות חדשות בשדה דב עם בחירה לפי קומה ונוף",
+      "location": "רובע שדה דב, תל אביב",
+      "model_glb": "assets/projects/ashira-sde-dov/model-context.glb",
+      "poster": "assets/projects/ashira-sde-dov/ashira-hero-concept.jpg",
+      "facade": "assets/projects/ashira-sde-dov/ashira-facade-concept.jpg",
+      "floors": 22,
+      "model_note": "הדמיה להמחשה בלבד. יש לאמת תוכניות, מחירים וזמינות מול היזם.",
+      "project_url": "/projects/ashira-sde-dov/",
+      "featured": true,
+      "language_urls": {
+        "he": "/projects/ashira-sde-dov/",
+        "en": "/projects/ashira-sde-dov-en/",
+        "fr": "/projects/ashira-sde-dov-fr/",
+        "ru": "/projects/ashira-sde-dov-ru/",
+        "ar": "/projects/ashira-sde-dov-ar/"
+      },
+      "investor_note": "בדקו קומה, נוף, שטח ותוכנית לפני פנייה.",
+      "i18n": {
+        "en": {
+          "sub": "New apartments in Sde Dov with selection by floor and view",
+          "location": "Sde Dov district, Tel Aviv",
+          "model_note": "Illustrative view only. Plans, prices and availability must be confirmed with the representative.",
+          "investor_note": "Check floor, view, area and plan before asking for details."
+        },
+        "fr": {
+          "sub": "Appartements neufs à Sde Dov avec choix par étage et vue",
+          "location": "Quartier Sde Dov, Tel Aviv",
+          "model_note": "Visualisation indicative uniquement. Les plans, prix et disponibilités doivent être confirmés avec un représentant.",
+          "investor_note": "Vérifiez l’étage, la vue, la surface et le plan avant de demander des détails."
+        },
+        "ru": {
+          "sub": "Новые квартиры в Sde Dov с выбором по этажу и виду",
+          "location": "Квартал Sde Dov, Тель-Авив",
+          "model_note": "Изображение только для иллюстрации. Планы, цены и доступность нужно подтвердить с представителем.",
+          "investor_note": "Проверьте этаж, вид, площадь и план перед запросом деталей."
+        },
+        "ar": {
+          "sub": "شقق جديدة في سديه دوف مع اختيار حسب الطابق والإطلالة",
+          "location": "حي سديه دوف، تل أبيب",
+          "model_note": "العرض للتوضيح فقط. يجب تأكيد المخططات والأسعار والتوفر مع ممثل المشروع.",
+          "investor_note": "افحصوا الطابق، الإطلالة، المساحة والمخطط قبل طلب التفاصيل."
+        }
+      },
+      "units": [
+        {
+          "id": "ashira-18-west",
+          "label": "18W",
+          "title": "דירה 18 מערב · 5 חד׳",
+          "floor": 18,
+          "rooms": 5,
+          "sqm": 132,
+          "balcony": "",
+          "dir": "west",
+          "view": "ים ורידינג",
+          "status": "available",
+          "status_label": "זמינה לפנייה",
+          "recommended": true,
+          "plan": "",
+          "position": "0 18 0",
+          "normal": "0 0 1",
+          "orbit": "35deg 64deg auto",
+          "price_estimate": "אומדן לפי פנייה",
+          "source_note": "יחידת המחשה לפי מבנה חזית זמני."
+        },
+        {
+          "id": "ashira-14-city",
+          "label": "14C",
+          "title": "דירה 14 עיר · 4 חד׳",
+          "floor": 14,
+          "rooms": 4,
+          "sqm": 104,
+          "balcony": "",
+          "dir": "east",
+          "view": "רובע שדה דב",
+          "status": "available",
+          "status_label": "זמינה לפנייה",
+          "recommended": false,
+          "plan": "",
+          "position": "4 14 0",
+          "normal": "0 0 1",
+          "orbit": "32deg 66deg auto",
+          "price_estimate": "אומדן לפי פנייה",
+          "source_note": "יחידת המחשה לפי מבנה חזית זמני."
+        },
+        {
+          "id": "ashira-10-corner",
+          "label": "10P",
+          "title": "דירה 10 פינתית · 4 חד׳",
+          "floor": 10,
+          "rooms": 4,
+          "sqm": 118,
+          "balcony": "",
+          "dir": "south-west",
+          "view": "ים וחצר",
+          "status": "reserved",
+          "status_label": "בבדיקת זמינות",
+          "recommended": true,
+          "plan": "",
+          "position": "-4 10 0",
+          "normal": "0 0 1",
+          "orbit": "28deg 68deg auto",
+          "price_estimate": "אומדן לפי פנייה",
+          "source_note": "יחידת המחשה לפי מבנה חזית זמני."
+        }
+      ]
+    }
+  ]
+}
