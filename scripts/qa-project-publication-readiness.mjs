@@ -95,6 +95,19 @@ if (manifest.hreflang_artifacts) {
 		}
 	}
 }
+if (manifest.import_dry_run_report) {
+	if (!existsSync(resolve(manifest.import_dry_run_report))) {
+		addFailure(failures, 'manifest', 'missing_import_dry_run_report', manifest.import_dry_run_report);
+	} else {
+		const importReport = readJson(manifest.import_dry_run_report);
+		if (!importReport.ok) {
+			addFailure(failures, 'manifest', 'import_dry_run_report_not_ok', JSON.stringify(importReport.failures || []));
+		}
+		if ((importReport.language_count || 0) !== languages.length) {
+			addFailure(failures, 'manifest', 'import_dry_run_language_count_mismatch', `${importReport.language_count || 0} != ${languages.length}`);
+		}
+	}
+}
 
 for (const entry of languages) {
 	const lang = entry.lang || 'unknown';

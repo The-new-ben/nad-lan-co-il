@@ -23,6 +23,7 @@
     "head": "docs/seo/ashira-hreflang-head.html",
     "report": "docs/qa/project-hreflang-artifact-report.json"
   },
+  "import_dry_run_report": "docs/qa/project-draft-import-dry-run-report.json",
   "publish_rule": "Do not publish or add hreflang until every language page exists on the final URL and passes content, screenshot, metadata, internal-link and public-copy QA.",
   "localized_version_sources": [
     "https://developers.google.com/search/docs/specialty/international/localized-versions",

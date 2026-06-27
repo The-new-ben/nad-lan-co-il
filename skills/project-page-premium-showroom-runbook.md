@@ -391,6 +391,7 @@ Before any multilingual import or hreflang output, run the publication gate:
 ```bash
 npm run build:project-hreflang-artifact
 npm run qa:project-hreflang-artifact
+npm run qa:project-draft-import-dry-run
 npm run qa:project-publication-readiness
 npm run qa:ashira-publication-readiness
 ```
@@ -406,6 +407,11 @@ screenshot QA without horizontal overflow or selected-card/facade overlap.
 The hreflang artifact is also manifest-driven. It produces a JSON map and a copy-paste-safe HTML
 head snippet, but it is still preflight only. Do not emit the tags live until the language URLs are
 published, indexable and verified.
+
+The draft import dry-run uses the same WordPress REST payloads that a later draft import would use,
+but it stays offline and credentials-free. It must prove every language payload remains `status:
+draft`, points at the `nadlan_project` endpoint, keeps the expected slug and carries enough content
+and metadata before anyone runs a real WordPress import.
 
 ## N. Buyer-Language Rule
 

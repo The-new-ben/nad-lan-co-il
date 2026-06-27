@@ -1,0 +1,74 @@
+{
+  "ok": true,
+  "manifest": "docs/plans/2026-06-27-ashira-publication-manifest.json",
+  "mode": "dry-run-only",
+  "language_count": 5,
+  "imports": [
+    {
+      "lang": "he",
+      "draft": "docs/wp-drafts/ashira-sde-dov-v2-draft.json",
+      "exit_code": 0,
+      "mode": "dry-run",
+      "endpoint": "https://nad-lan.co.il/wp-json/wp/v2/nadlan_project",
+      "method": "POST",
+      "status": "draft",
+      "slug": "ashira-sde-dov",
+      "title": "דירות למכירה באשירה שדה דב",
+      "content_chars": 25188,
+      "meta_fields": 4
+    },
+    {
+      "lang": "en",
+      "draft": "docs/wp-drafts/ashira-sde-dov-en-v2-draft.json",
+      "exit_code": 0,
+      "mode": "dry-run",
+      "endpoint": "https://nad-lan.co.il/wp-json/wp/v2/nadlan_project",
+      "method": "POST",
+      "status": "draft",
+      "slug": "ashira-sde-dov-en",
+      "title": "Ashira Sde Dov apartments for sale in Tel Aviv",
+      "content_chars": 28997,
+      "meta_fields": 4
+    },
+    {
+      "lang": "fr",
+      "draft": "docs/wp-drafts/ashira-sde-dov-fr-v2-draft.json",
+      "exit_code": 0,
+      "mode": "dry-run",
+      "endpoint": "https://nad-lan.co.il/wp-json/wp/v2/nadlan_project",
+      "method": "POST",
+      "status": "draft",
+      "slug": "ashira-sde-dov-fr",
+      "title": "Appartements a vendre a Ashira Sde Dov, Tel Aviv",
+      "content_chars": 33866,
+      "meta_fields": 4
+    },
+    {
+      "lang": "ru",
+      "draft": "docs/wp-drafts/ashira-sde-dov-ru-v2-draft.json",
+      "exit_code": 0,
+      "mode": "dry-run",
+      "endpoint": "https://nad-lan.co.il/wp-json/wp/v2/nadlan_project",
+      "method": "POST",
+      "status": "draft",
+      "slug": "ashira-sde-dov-ru",
+      "title": "Квартиры в Ashira Sde Dov на продажу в Тель-Авиве",
+      "content_chars": 32611,
+      "meta_fields": 4
+    },
+    {
+      "lang": "ar",
+      "draft": "docs/wp-drafts/ashira-sde-dov-ar-v2-draft.json",
+      "exit_code": 0,
+      "mode": "dry-run",
+      "endpoint": "https://nad-lan.co.il/wp-json/wp/v2/nadlan_project",
+      "method": "POST",
+      "status": "draft",
+      "slug": "ashira-sde-dov-ar",
+      "title": "شقق Ashira Sde Dov للبيع في تل أبيب",
+      "content_chars": 28092,
+      "meta_fields": 4
+    }
+  ],
+  "failures": []
+}

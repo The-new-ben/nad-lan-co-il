@@ -57,6 +57,7 @@
 		"qa:ashira-draft-readiness": "node scripts/qa-wp-draft-payload.mjs --draft docs/wp-drafts/ashira-sde-dov-v2-draft.json --payload assets/projects/ashira-sde-dov/showroom-payload.json --out docs/qa/ashira-v2-draft-readiness-report.json --strict",
 		"build:project-hreflang-artifact": "node scripts/build-project-hreflang-artifact.mjs --manifest docs/plans/2026-06-27-ashira-publication-manifest.json --out-json docs/seo/ashira-hreflang-map.json --out-html docs/seo/ashira-hreflang-head.html",
 		"qa:project-hreflang-artifact": "node scripts/qa-project-hreflang-artifact.mjs --manifest docs/plans/2026-06-27-ashira-publication-manifest.json --map docs/seo/ashira-hreflang-map.json --html docs/seo/ashira-hreflang-head.html --out docs/qa/project-hreflang-artifact-report.json --strict",
+		"qa:project-draft-import-dry-run": "node scripts/qa-project-draft-import-dry-run.mjs --manifest docs/plans/2026-06-27-ashira-publication-manifest.json --out docs/qa/project-draft-import-dry-run-report.json --strict",
 		"qa:project-publication-readiness": "node scripts/qa-project-publication-readiness.mjs --manifest docs/plans/2026-06-27-ashira-publication-manifest.json --out docs/qa/project-publication-readiness-report.json --strict",
 		"qa:ashira-publication-readiness": "node scripts/qa-ashira-publication-readiness.mjs --strict"
 	}

@@ -17,6 +17,8 @@ The machine-readable source of truth is:
   - `docs/seo/ashira-hreflang-map.json`
   - `docs/seo/ashira-hreflang-head.html`
   - `docs/qa/project-hreflang-artifact-report.json`
+- Import dry-run proof:
+  - `docs/qa/project-draft-import-dry-run-report.json`
 
 ## Current Language Set
 
@@ -89,11 +91,12 @@ Each indexable language page must pass its own gate before publication:
 2. Run content-depth QA for every language.
 3. Run screenshot QA for every language.
 4. Build and verify the preflight hreflang artifact.
-5. Run `npm run qa:ashira-publication-readiness`.
-6. Import only as draft first.
-7. Verify the rendered WordPress draft URLs with screenshots.
-8. Add reciprocal hreflang only after every language page has a real final URL.
-9. Make pages indexable only after the final live verification.
+5. Run the manifest-level WordPress draft import dry-run.
+6. Run `npm run qa:ashira-publication-readiness`.
+7. Import only as draft first.
+8. Verify the rendered WordPress draft URLs with screenshots.
+9. Add reciprocal hreflang only after every language page has a real final URL.
+10. Make pages indexable only after the final live verification.
 
 ## Why This Is The Controlled Path
 
