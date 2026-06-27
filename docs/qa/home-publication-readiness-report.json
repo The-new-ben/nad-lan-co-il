@@ -109,7 +109,7 @@
     {
       "name": "draft_payload_has_body",
       "ok": true,
-      "content_chars": 10752
+      "content_chars": 10955
     },
     {
       "name": "project_publication_report_green",

@@ -6,8 +6,8 @@
   "pattern_parity": {
     "pattern": "patterns/nadlan-home-showroom.php",
     "ok": true,
-    "payload_sha256": "3c274d457ed6000017ff8c7527e6d6a5db0eb0b6c2a381a3d0c2d2489b1c093a",
-    "expected_sha256": "3c274d457ed6000017ff8c7527e6d6a5db0eb0b6c2a381a3d0c2d2489b1c093a"
+    "payload_sha256": "eb33af6e3debca290d82e22b7b3cfd3ac485d88c2eabd21d2f838eb835c9f37c",
+    "expected_sha256": "eb33af6e3debca290d82e22b7b3cfd3ac485d88c2eabd21d2f838eb835c9f37c"
   },
   "import": {
     "exit_code": 0,
@@ -17,7 +17,7 @@
     "status": "draft",
     "slug": "nadlan-home-showroom-v2",
     "title": "NadLan | Compare New Projects and Apartments in Israel",
-    "content_chars": 10752,
+    "content_chars": 10955,
     "meta_fields": 4
   },
   "failures": []

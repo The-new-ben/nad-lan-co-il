@@ -423,6 +423,20 @@ each draft payload body and its source theme pattern after the same public asset
 by `scripts/build-project-showroom-draft.mjs`. If a pattern changes and the translated draft JSON is
 stale, the dry-run gate must fail before an import can happen.
 
+After the full preflight is green and the owner explicitly authorizes WordPress writes, use the
+manifest apply script instead of hand-copying pages:
+
+```bash
+npm run publish:ashira-dry-run
+WP_USER=<user> WP_APP_PASSWORD=<application-password> node scripts/apply-wp-publication-manifest.mjs --manifest docs/plans/2026-06-27-ashira-publication-manifest.json --apply
+WP_USER=<user> WP_APP_PASSWORD=<application-password> node scripts/apply-wp-publication-manifest.mjs --manifest docs/plans/2026-06-27-ashira-publication-manifest.json --apply --status publish --confirm-publish
+```
+
+The script matches existing WordPress posts by slug before writing. Apply mode updates existing
+drafts or creates missing drafts; publish mode is deliberately explicit and requires
+`--confirm-publish`. Do not publish language pages until the target URLs are screenshot-verified
+and the hreflang map can point to real live pages.
+
 For Ashira, `npm run qa:ashira-full-preflight` is the owner-review gate. It runs the research,
 architecture, all five content-depth gates, all five browser screenshot gates, factory readiness,
 draft readiness, hreflang, import dry-run, publication readiness and homepage-dependency gates in

@@ -10,8 +10,9 @@
 	};
 	var script = document.currentScript;
 	var rootConfig = document.querySelector('[data-nle-home-showroom], [data-nle-engine-config]');
-	var projectsUrl = script && script.dataset.projects ? script.dataset.projects : rootConfig && rootConfig.dataset.nleProjects ? rootConfig.dataset.nleProjects : 'assets/engine/projects.json';
-	var assetBase = script && script.dataset.assetBase ? script.dataset.assetBase : rootConfig && rootConfig.dataset.nleAssetBase ? rootConfig.dataset.nleAssetBase : './';
+	var scriptAssetBase = script && script.src ? script.src.replace(/assets\/js\/nadlan-showroom-engine\.js(?:\?.*)?$/, '') : './';
+	var projectsUrl = script && script.dataset.projects ? script.dataset.projects : rootConfig && rootConfig.dataset.nleProjects ? rootConfig.dataset.nleProjects : scriptAssetBase + 'assets/engine/projects.json';
+	var assetBase = script && script.dataset.assetBase ? script.dataset.assetBase : rootConfig && rootConfig.dataset.nleAssetBase ? rootConfig.dataset.nleAssetBase : scriptAssetBase;
 	var langMeta = {
 		he: { dir: 'rtl' },
 		en: { dir: 'ltr' },

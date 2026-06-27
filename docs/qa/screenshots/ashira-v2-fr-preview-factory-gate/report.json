@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-06-27T01:35:18.542Z",
+  "generated_at": "2026-06-27T06:41:07.578Z",
   "preview": "docs/previews/ashira-showroom-v2-fr-preview.html",
-  "url": "http://127.0.0.1:62358/docs/previews/ashira-showroom-v2-fr-preview.html",
+  "url": "http://127.0.0.1:54195/docs/previews/ashira-showroom-v2-fr-preview.html",
   "out_dir": "docs/qa/screenshots/ashira-v2-fr-preview-factory-gate",
   "strict": true,
   "expected_lang": "fr",
@@ -381,12 +381,7 @@
         }
       },
       "consoleErrors": [],
-      "allowedConsoleWarnings": [
-        {
-          "type": "warning",
-          "text": "rAF timed out in updateSource"
-        }
-      ],
+      "allowedConsoleWarnings": [],
       "pageErrors": [],
       "failures": []
     },
