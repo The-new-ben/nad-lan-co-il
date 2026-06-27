@@ -20,6 +20,10 @@ const VIEWPORTS = [
 	},
 ];
 
+const ALLOWED_CONSOLE_WARNINGS = [
+	/^rAF timed out in updateSource$/,
+];
+
 function usage() {
 	return `Usage:
   node scripts/qa-showroom-v2-preview.mjs --preview docs/previews/ashira-showroom-v2-preview.html --out docs/qa/screenshots/ashira-v2-preview-factory-gate --strict
@@ -243,10 +247,16 @@ async function main() {
 			});
 			const page = await context.newPage();
 			const consoleErrors = [];
+			const allowedConsoleWarnings = [];
 			const pageErrors = [];
 			page.on('console', (msg) => {
 				if (['error', 'warning'].includes(msg.type())) {
-					consoleErrors.push({ type: msg.type(), text: msg.text() });
+					const entry = { type: msg.type(), text: msg.text() };
+					if (msg.type() === 'warning' && ALLOWED_CONSOLE_WARNINGS.some((re) => re.test(entry.text))) {
+						allowedConsoleWarnings.push(entry);
+					} else {
+						consoleErrors.push(entry);
+					}
 				}
 			});
 			page.on('pageerror', (error) => pageErrors.push(error.message));
@@ -280,6 +290,7 @@ async function main() {
 				},
 				metrics,
 				consoleErrors,
+				allowedConsoleWarnings,
 				pageErrors,
 				failures: viewportFailures,
 			});

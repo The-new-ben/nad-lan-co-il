@@ -1,8 +1,8 @@
 {
   "ok": true,
   "document": "docs/research/2026-06-27-ashira-serp-source-dossier.md",
-  "links": 10,
-  "characters": 11291,
+  "links": 11,
+  "characters": 11643,
   "checks": [
     {
       "name": "has_length",

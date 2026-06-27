@@ -547,6 +547,13 @@
 	margin: 0 0 16px;
 }
 
+.nlv2-section a {
+	color: #7a560c;
+	font-weight: 900;
+	text-decoration-thickness: 1px;
+	text-underline-offset: 3px;
+}
+
 .nlv2-data-grid {
 	display: grid;
 	grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -579,6 +586,14 @@
 	border-right: 4px solid #c99b49;
 	border-radius: 14px 0 0 14px;
 	background: #fff9ea;
+}
+
+.nlv2-check-list,
+.nlv2-source-list {
+	display: grid;
+	gap: 8px;
+	margin: 0 0 20px;
+	padding-inline-start: 1.25rem;
 }
 
 .nlv2-site-shell {

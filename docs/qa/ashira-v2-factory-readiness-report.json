@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-26T21:39:24.001Z",
+  "generated_at": "2026-06-27T00:17:33.130Z",
   "check": "ashira-v2-factory-readiness",
   "payload_file": "assets/projects/ashira-sde-dov/showroom-payload.json",
   "failures": [],
@@ -7,13 +7,13 @@
     {
       "file": "patterns/project-showroom-ashira-v2.php",
       "kind": "pattern",
-      "bytes": 10983,
+      "bytes": 39427,
       "ok": true
     },
     {
       "file": "docs/previews/ashira-showroom-v2-preview.html",
       "kind": "preview",
-      "bytes": 12020,
+      "bytes": 40507,
       "ok": true
     },
     {
@@ -25,7 +25,7 @@
     {
       "file": "assets/css/nadlan-showroom-v2.css",
       "kind": "style",
-      "bytes": 13802,
+      "bytes": 14040,
       "ok": true
     },
     {

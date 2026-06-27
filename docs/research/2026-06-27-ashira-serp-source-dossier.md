@@ -34,6 +34,11 @@ The next Ashira page must be buyer and investor facing. Public wording should sp
     - The planned population is about 40,000 residents.
     - The Green Line light rail is planned to serve the district with stations along the continuation of Ibn Gabirol.
   - Use limit: city-level planning numbers can be cited. Do not imply every number belongs only to Ashira.
+- Gov.il planning announcement: https://www.gov.il/he/pages/sdedov-pr-22072020
+  - Safe facts:
+    - The plan includes 16,000 housing units.
+    - The announcement describes affordable housing and special housing units as part of the broader district mix.
+  - Use limit: use as a planning-context source, not as a sales source for a specific apartment.
 
 ### Multilingual SEO Sources
 
