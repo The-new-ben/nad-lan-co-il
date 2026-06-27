@@ -191,12 +191,12 @@ if ( ! function_exists( 'nadlan_showroom_engine_shortcode' ) ) {
 		$base = trailingslashit( nadlan_showroom_engine_base_url() );
 
 		// assets
-		wp_enqueue_style( 'nadlan-engine-tokens', $base . 'tokens.css', array(), '1.69.43' );
-		wp_enqueue_style( 'nadlan-engine-css', $base . 'showroom.css', array( 'nadlan-engine-tokens' ), '1.69.43' );
+		wp_enqueue_style( 'nadlan-engine-tokens', $base . 'tokens.css', array(), '1.69.44' );
+		wp_enqueue_style( 'nadlan-engine-css', $base . 'showroom.css', array( 'nadlan-engine-tokens' ), '1.69.44' );
 		wp_enqueue_script( 'nadlan-model-viewer', 'https://ajax.googleapis.com/ajax/libs/model-viewer/4.0.0/model-viewer.min.js', array(), '4.0.0', true );
 		wp_script_add_data( 'nadlan-model-viewer', 'type', 'module' );
-		wp_enqueue_script( 'nadlan-engine-i18n', $base . 'i18n.js', array(), '1.69.43', true );
-		wp_enqueue_script( 'nadlan-engine-core', $base . 'engine.js', array( 'nadlan-engine-i18n' ), '1.69.43', true );
+		wp_enqueue_script( 'nadlan-engine-i18n', $base . 'i18n.js', array(), '1.69.44', true );
+		wp_enqueue_script( 'nadlan-engine-core', $base . 'engine.js', array( 'nadlan-engine-i18n' ), '1.69.44', true );
 
 		// build payload from the CMS
 		$posts = nadlan_showroom_engine_resolve_target( $atts );
@@ -231,3 +231,44 @@ if ( ! function_exists( 'nadlan_showroom_engine_shortcode' ) ) {
 	}
 }
 add_shortcode( 'nadlan_showroom_engine', 'nadlan_showroom_engine_shortcode' );
+
+/* -------------------------------------------------------------------------
+ * Slice 3 — safe per-project swap: render the NEW engine on a project page
+ * instead of the OLD project-3d showroom. Default OFF, reversible. No stacking:
+ * when active for a project, the old showroom disables itself (it is gated by
+ * the nadlan_p3d_enabled filter), and the engine renders in its place.
+ *
+ * Turn it on per project:  set post meta  nlp3d_use_engine = 1
+ * Turn it on site-wide:    set option     nadlan_showroom_engine_enable = 1
+ * ----------------------------------------------------------------------- */
+
+if ( ! function_exists( 'nadlan_showroom_engine_active_for' ) ) {
+	function nadlan_showroom_engine_active_for( $post_id ) {
+		if ( get_option( 'nadlan_showroom_engine_enable', '0' ) === '1' ) { return true; }
+		return get_post_meta( (int) $post_id, 'nlp3d_use_engine', true ) === '1';
+	}
+}
+
+/* Make the OLD showroom step aside on project pages where the engine is active. */
+add_filter( 'nadlan_p3d_enabled', function ( $enabled ) {
+	if ( is_singular( 'nadlan_project' ) ) {
+		$pid = get_queried_object_id();
+		if ( $pid && nadlan_showroom_engine_active_for( $pid ) ) {
+			return false;
+		}
+	}
+	return $enabled;
+}, 20 );
+
+/* Render the new engine, showroom-first, above the article body. */
+add_filter( 'the_content', function ( $content ) {
+	if ( ! is_singular( 'nadlan_project' ) || ! in_the_loop() || ! is_main_query() ) {
+		return $content;
+	}
+	$pid = get_queried_object_id();
+	if ( ! $pid || ! nadlan_showroom_engine_active_for( $pid ) ) {
+		return $content;
+	}
+	$engine = nadlan_showroom_engine_shortcode( array( 'page' => 'project', 'project' => '', 'id' => '' ) );
+	return $engine . $content;
+}, 8 );
