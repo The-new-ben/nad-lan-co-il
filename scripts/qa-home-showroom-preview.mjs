@@ -126,6 +126,10 @@ async function measure(page) {
 			catalogLanguageEntries: document.querySelectorAll('.nle-catalog .nlh-project-language-rail button, .nle-catalog .nlh-project-language-rail a, .nle-catalog .nlh-project-language-rail span').length,
 			catalogLanguageButtons: document.querySelectorAll('.nle-catalog .nlh-project-language-rail button[data-nle-lang]').length,
 			activeLanguage,
+			heroLang: document.querySelector('.nlh-home-hero')?.getAttribute('lang') || '',
+			heroDir: document.querySelector('.nlh-home-hero')?.getAttribute('dir') || '',
+			heroTitle: document.querySelector('[data-nle-home-text="hero_title"]')?.textContent.trim() || '',
+			catalogTitle: document.querySelector('[data-nle-home-text="catalog_title"]')?.textContent.trim() || '',
 			catalogDir: document.querySelector('.nle-catalog')?.getAttribute('dir') || '',
 			showroomDir: document.querySelector('.nle-showroom')?.getAttribute('dir') || '',
 			languageTargets: ['english', 'french', 'russian', 'arabic'].filter((id) => document.getElementById(id)).length,
@@ -163,6 +167,9 @@ function failuresFor(viewName, before, after, english, errors, viewportHeight) {
 	if (before.catalogLanguageEntries < 5) failures.push(`${viewName}: expected multilingual entries inside the project selector`);
 	if (before.catalogLanguageButtons < 5) failures.push(`${viewName}: expected real language controls inside the project selector`);
 	if (!english || english.activeLanguage !== 'en') failures.push(`${viewName}: English project language control did not become active`);
+	if (!english || english.heroLang !== 'en' || english.heroDir !== 'ltr') failures.push(`${viewName}: English homepage hero did not switch to ltr`);
+	if (!english || !/Check the project/.test(english.heroTitle)) failures.push(`${viewName}: English homepage hero text did not render`);
+	if (!english || !/Compare new projects/.test(english.catalogTitle)) failures.push(`${viewName}: English project comparison title did not render`);
 	if (!english || english.catalogDir !== 'ltr' || english.showroomDir !== 'ltr') failures.push(`${viewName}: English project selector/showroom did not switch to ltr`);
 	if (!english || !english.hasEnglishEngineText) failures.push(`${viewName}: English project selector text did not render`);
 	if (before.languageTargets < 4) failures.push(`${viewName}: expected four language target cards`);
@@ -198,23 +205,41 @@ async function proofLanguage(page, lang) {
 			ru: /Быстрый выбор|проектов для сравнения|Оценка по запросу/,
 			ar: /اختيار سريع|مشاريع للمقارنة|تقدير حسب الطلب/
 		};
+		const expectedHero = {
+			fr: /Verifier le projet/,
+			ru: /Проверьте проект/,
+			ar: /افحصوا المشروع/
+		};
 		return {
 			lang: activeLang,
 			activeLanguage: document.querySelector('.nlh-project-language-rail [data-nle-lang].is-active')?.getAttribute('data-nle-lang') || '',
+			heroLang: document.querySelector('.nlh-home-hero')?.getAttribute('lang') || '',
+			heroDir: document.querySelector('.nlh-home-hero')?.getAttribute('dir') || '',
+			heroTitle: document.querySelector('[data-nle-home-text="hero_title"]')?.textContent.trim() || '',
+			catalogTitle: document.querySelector('[data-nle-home-text="catalog_title"]')?.textContent.trim() || '',
 			catalogDir: document.querySelector('.nle-catalog')?.getAttribute('dir') || '',
 			showroomDir: document.querySelector('.nle-showroom')?.getAttribute('dir') || '',
-			hasExpectedText: expected[activeLang] ? expected[activeLang].test(text) : true
+			hasExpectedText: expected[activeLang] ? expected[activeLang].test(text) : true,
+			hasExpectedHero: expectedHero[activeLang] ? expectedHero[activeLang].test(text) : true
 		};
 	}, lang);
 }
 
 function languageFailures(viewName, proofs) {
 	const expectedDir = { fr: 'ltr', ru: 'ltr', ar: 'rtl' };
+	const expectedCatalog = {
+		fr: /Comparer les nouveaux projets/,
+		ru: /Сравните новые проекты/,
+		ar: /قارنوا المشاريع الجديدة/
+	};
 	return proofs.flatMap((proof) => {
 		const failures = [];
 		if (proof.activeLanguage !== proof.lang) failures.push(`${viewName}: ${proof.lang} language control did not become active`);
+		if (proof.heroLang !== proof.lang || proof.heroDir !== expectedDir[proof.lang]) failures.push(`${viewName}: ${proof.lang} homepage hero language/direction mismatch`);
 		if (proof.catalogDir !== expectedDir[proof.lang] || proof.showroomDir !== expectedDir[proof.lang]) failures.push(`${viewName}: ${proof.lang} direction mismatch`);
 		if (!proof.hasExpectedText) failures.push(`${viewName}: ${proof.lang} translated project selector text did not render`);
+		if (!proof.hasExpectedHero) failures.push(`${viewName}: ${proof.lang} translated homepage hero text did not render`);
+		if (expectedCatalog[proof.lang] && !expectedCatalog[proof.lang].test(proof.catalogTitle)) failures.push(`${viewName}: ${proof.lang} translated project comparison title did not render`);
 		return failures;
 	});
 }

@@ -16,6 +16,10 @@
         "catalogLanguageEntries": 5,
         "catalogLanguageButtons": 5,
         "activeLanguage": "he",
+        "heroLang": "he",
+        "heroDir": "rtl",
+        "heroTitle": "בודקים פרויקט, דירה וסביבה לפני שמתקדמים.",
+        "catalogTitle": "השוואת פרויקטים חדשים לפי דירה, נוף ואומדן",
         "catalogDir": "rtl",
         "showroomDir": "rtl",
         "languageTargets": 4,
@@ -72,6 +76,10 @@
         "catalogLanguageEntries": 5,
         "catalogLanguageButtons": 5,
         "activeLanguage": "he",
+        "heroLang": "he",
+        "heroDir": "rtl",
+        "heroTitle": "בודקים פרויקט, דירה וסביבה לפני שמתקדמים.",
+        "catalogTitle": "השוואת פרויקטים חדשים לפי דירה, נוף ואומדן",
         "catalogDir": "rtl",
         "showroomDir": "rtl",
         "languageTargets": 4,
@@ -120,7 +128,7 @@
       "english": {
         "title": "דירות חדשות ופרויקטים עם בחירת דירה בתלת ממד | NadLan",
         "h1s": [
-          "בודקים פרויקט, דירה וסביבה לפני שמתקדמים."
+          "Check the project, apartment and surroundings before you move forward."
         ],
         "headerRoutes": 7,
         "footerLinks": 23,
@@ -128,6 +136,10 @@
         "catalogLanguageEntries": 5,
         "catalogLanguageButtons": 5,
         "activeLanguage": "en",
+        "heroLang": "en",
+        "heroDir": "ltr",
+        "heroTitle": "Check the project, apartment and surroundings before you move forward.",
+        "catalogTitle": "Compare new projects by apartment, view and estimate",
         "catalogDir": "ltr",
         "showroomDir": "ltr",
         "languageTargets": 4,
@@ -144,7 +156,7 @@
         "hasForeignBuyerSignal": true,
         "hasEnglishEngineText": true,
         "hasBuyerWords": true,
-        "hasProjectBandBuyerCopy": true,
+        "hasProjectBandBuyerCopy": false,
         "hasMojibake": false,
         "hasInternalWords": false,
         "hasDefaultChromeWords": false,
@@ -152,48 +164,63 @@
           "x": 80,
           "y": 20,
           "width": 1280,
-          "height": 538.109375,
+          "height": 644.96875,
           "right": 1360,
-          "bottom": 558.109375
+          "bottom": 664.96875
         },
         "catalog": {
           "x": 80,
-          "y": 642.109375,
+          "y": 748.96875,
           "width": 1280,
-          "height": 485.828125,
+          "height": 639.625,
           "right": 1360,
-          "bottom": 1127.9375
+          "bottom": 1388.59375
         },
         "showroom": {
           "x": 80,
-          "y": 1139.9375,
+          "y": 1400.59375,
           "width": 1280,
           "height": 1076.28125,
           "right": 1360,
-          "bottom": 2216.21875
+          "bottom": 2476.875
         }
       },
       "otherLanguageProofs": [
         {
           "lang": "fr",
           "activeLanguage": "fr",
+          "heroLang": "fr",
+          "heroDir": "ltr",
+          "heroTitle": "Verifier le projet, l appartement et le quartier avant d avancer.",
+          "catalogTitle": "Comparer les nouveaux projets par appartement, vue et estimation",
           "catalogDir": "ltr",
           "showroomDir": "ltr",
-          "hasExpectedText": true
+          "hasExpectedText": true,
+          "hasExpectedHero": true
         },
         {
           "lang": "ru",
           "activeLanguage": "ru",
+          "heroLang": "ru",
+          "heroDir": "ltr",
+          "heroTitle": "Проверьте проект, квартиру и район перед следующим шагом.",
+          "catalogTitle": "Сравните новые проекты по квартире, виду и ориентиру цены",
           "catalogDir": "ltr",
           "showroomDir": "ltr",
-          "hasExpectedText": true
+          "hasExpectedText": true,
+          "hasExpectedHero": true
         },
         {
           "lang": "ar",
           "activeLanguage": "ar",
+          "heroLang": "ar",
+          "heroDir": "rtl",
+          "heroTitle": "افحصوا المشروع والشقة والمنطقة قبل الخطوة التالية.",
+          "catalogTitle": "قارنوا المشاريع الجديدة حسب الشقة والإطلالة والتقدير",
           "catalogDir": "rtl",
           "showroomDir": "rtl",
-          "hasExpectedText": true
+          "hasExpectedText": true,
+          "hasExpectedHero": true
         }
       ],
       "failures": []
@@ -211,6 +238,10 @@
         "catalogLanguageEntries": 5,
         "catalogLanguageButtons": 5,
         "activeLanguage": "he",
+        "heroLang": "he",
+        "heroDir": "rtl",
+        "heroTitle": "בודקים פרויקט, דירה וסביבה לפני שמתקדמים.",
+        "catalogTitle": "השוואת פרויקטים חדשים לפי דירה, נוף ואומדן",
         "catalogDir": "rtl",
         "showroomDir": "rtl",
         "languageTargets": 4,
@@ -267,6 +298,10 @@
         "catalogLanguageEntries": 5,
         "catalogLanguageButtons": 5,
         "activeLanguage": "he",
+        "heroLang": "he",
+        "heroDir": "rtl",
+        "heroTitle": "בודקים פרויקט, דירה וסביבה לפני שמתקדמים.",
+        "catalogTitle": "השוואת פרויקטים חדשים לפי דירה, נוף ואומדן",
         "catalogDir": "rtl",
         "showroomDir": "rtl",
         "languageTargets": 4,
@@ -315,7 +350,7 @@
       "english": {
         "title": "דירות חדשות ופרויקטים עם בחירת דירה בתלת ממד | NadLan",
         "h1s": [
-          "בודקים פרויקט, דירה וסביבה לפני שמתקדמים."
+          "Check the project, apartment and surroundings before you move forward."
         ],
         "headerRoutes": 7,
         "footerLinks": 23,
@@ -323,6 +358,10 @@
         "catalogLanguageEntries": 5,
         "catalogLanguageButtons": 5,
         "activeLanguage": "en",
+        "heroLang": "en",
+        "heroDir": "ltr",
+        "heroTitle": "Check the project, apartment and surroundings before you move forward.",
+        "catalogTitle": "Compare new projects by apartment, view and estimate",
         "catalogDir": "ltr",
         "showroomDir": "ltr",
         "languageTargets": 4,
@@ -339,7 +378,7 @@
         "hasForeignBuyerSignal": true,
         "hasEnglishEngineText": true,
         "hasBuyerWords": true,
-        "hasProjectBandBuyerCopy": true,
+        "hasProjectBandBuyerCopy": false,
         "hasMojibake": false,
         "hasInternalWords": false,
         "hasDefaultChromeWords": false,
@@ -347,48 +386,63 @@
           "x": 16,
           "y": -67,
           "width": 736,
-          "height": 575,
+          "height": 618.640625,
           "right": 752,
-          "bottom": 508
+          "bottom": 551.640625
         },
         "catalog": {
           "x": 16,
-          "y": 2098.5,
+          "y": 2144.140625,
           "width": 736,
-          "height": 586.703125,
+          "height": 633.1875,
           "right": 752,
-          "bottom": 2685.203125
+          "bottom": 2777.328125
         },
         "showroom": {
           "x": 16,
-          "y": 604,
+          "y": 649.640625,
           "width": 736,
           "height": 1482.5,
           "right": 752,
-          "bottom": 2086.5
+          "bottom": 2132.140625
         }
       },
       "otherLanguageProofs": [
         {
           "lang": "fr",
           "activeLanguage": "fr",
+          "heroLang": "fr",
+          "heroDir": "ltr",
+          "heroTitle": "Verifier le projet, l appartement et le quartier avant d avancer.",
+          "catalogTitle": "Comparer les nouveaux projets par appartement, vue et estimation",
           "catalogDir": "ltr",
           "showroomDir": "ltr",
-          "hasExpectedText": true
+          "hasExpectedText": true,
+          "hasExpectedHero": true
         },
         {
           "lang": "ru",
           "activeLanguage": "ru",
+          "heroLang": "ru",
+          "heroDir": "ltr",
+          "heroTitle": "Проверьте проект, квартиру и район перед следующим шагом.",
+          "catalogTitle": "Сравните новые проекты по квартире, виду и ориентиру цены",
           "catalogDir": "ltr",
           "showroomDir": "ltr",
-          "hasExpectedText": true
+          "hasExpectedText": true,
+          "hasExpectedHero": true
         },
         {
           "lang": "ar",
           "activeLanguage": "ar",
+          "heroLang": "ar",
+          "heroDir": "rtl",
+          "heroTitle": "افحصوا المشروع والشقة والمنطقة قبل الخطوة التالية.",
+          "catalogTitle": "قارنوا المشاريع الجديدة حسب الشقة والإطلالة والتقدير",
           "catalogDir": "rtl",
           "showroomDir": "rtl",
-          "hasExpectedText": true
+          "hasExpectedText": true,
+          "hasExpectedHero": true
         }
       ],
       "failures": []
@@ -406,6 +460,10 @@
         "catalogLanguageEntries": 5,
         "catalogLanguageButtons": 5,
         "activeLanguage": "he",
+        "heroLang": "he",
+        "heroDir": "rtl",
+        "heroTitle": "בודקים פרויקט, דירה וסביבה לפני שמתקדמים.",
+        "catalogTitle": "השוואת פרויקטים חדשים לפי דירה, נוף ואומדן",
         "catalogDir": "rtl",
         "showroomDir": "rtl",
         "languageTargets": 4,
@@ -462,6 +520,10 @@
         "catalogLanguageEntries": 5,
         "catalogLanguageButtons": 5,
         "activeLanguage": "he",
+        "heroLang": "he",
+        "heroDir": "rtl",
+        "heroTitle": "בודקים פרויקט, דירה וסביבה לפני שמתקדמים.",
+        "catalogTitle": "השוואת פרויקטים חדשים לפי דירה, נוף ואומדן",
         "catalogDir": "rtl",
         "showroomDir": "rtl",
         "languageTargets": 4,
@@ -510,7 +572,7 @@
       "english": {
         "title": "דירות חדשות ופרויקטים עם בחירת דירה בתלת ממד | NadLan",
         "h1s": [
-          "בודקים פרויקט, דירה וסביבה לפני שמתקדמים."
+          "Check the project, apartment and surroundings before you move forward."
         ],
         "headerRoutes": 7,
         "footerLinks": 23,
@@ -518,6 +580,10 @@
         "catalogLanguageEntries": 5,
         "catalogLanguageButtons": 5,
         "activeLanguage": "en",
+        "heroLang": "en",
+        "heroDir": "ltr",
+        "heroTitle": "Check the project, apartment and surroundings before you move forward.",
+        "catalogTitle": "Compare new projects by apartment, view and estimate",
         "catalogDir": "ltr",
         "showroomDir": "ltr",
         "languageTargets": 4,
@@ -534,56 +600,71 @@
         "hasForeignBuyerSignal": true,
         "hasEnglishEngineText": true,
         "hasBuyerWords": true,
-        "hasProjectBandBuyerCopy": true,
+        "hasProjectBandBuyerCopy": false,
         "hasMojibake": false,
         "hasInternalWords": false,
         "hasDefaultChromeWords": false,
         "hero": {
           "x": 10,
-          "y": -95,
+          "y": -102,
           "width": 370,
-          "height": 539.75,
+          "height": 702.125,
           "right": 380,
-          "bottom": 444.75
+          "bottom": 600.125
         },
         "catalog": {
           "x": 10,
-          "y": 2171.03125,
+          "y": 2326.40625,
           "width": 370,
-          "height": 617.578125,
+          "height": 659.5625,
           "right": 380,
-          "bottom": 2788.609375
+          "bottom": 2985.96875
         },
         "showroom": {
           "x": 10,
-          "y": 530.75,
+          "y": 686.125,
           "width": 370,
           "height": 1628.28125,
           "right": 380,
-          "bottom": 2159.03125
+          "bottom": 2314.40625
         }
       },
       "otherLanguageProofs": [
         {
           "lang": "fr",
           "activeLanguage": "fr",
+          "heroLang": "fr",
+          "heroDir": "ltr",
+          "heroTitle": "Verifier le projet, l appartement et le quartier avant d avancer.",
+          "catalogTitle": "Comparer les nouveaux projets par appartement, vue et estimation",
           "catalogDir": "ltr",
           "showroomDir": "ltr",
-          "hasExpectedText": true
+          "hasExpectedText": true,
+          "hasExpectedHero": true
         },
         {
           "lang": "ru",
           "activeLanguage": "ru",
+          "heroLang": "ru",
+          "heroDir": "ltr",
+          "heroTitle": "Проверьте проект, квартиру и район перед следующим шагом.",
+          "catalogTitle": "Сравните новые проекты по квартире, виду и ориентиру цены",
           "catalogDir": "ltr",
           "showroomDir": "ltr",
-          "hasExpectedText": true
+          "hasExpectedText": true,
+          "hasExpectedHero": true
         },
         {
           "lang": "ar",
           "activeLanguage": "ar",
+          "heroLang": "ar",
+          "heroDir": "rtl",
+          "heroTitle": "افحصوا المشروع والشقة والمنطقة قبل الخطوة التالية.",
+          "catalogTitle": "قارنوا المشاريع الجديدة حسب الشقة والإطلالة والتقدير",
           "catalogDir": "rtl",
           "showroomDir": "rtl",
-          "hasExpectedText": true
+          "hasExpectedText": true,
+          "hasExpectedHero": true
         }
       ],
       "failures": []
@@ -601,6 +682,10 @@
         "catalogLanguageEntries": 5,
         "catalogLanguageButtons": 5,
         "activeLanguage": "he",
+        "heroLang": "he",
+        "heroDir": "rtl",
+        "heroTitle": "בודקים פרויקט, דירה וסביבה לפני שמתקדמים.",
+        "catalogTitle": "השוואת פרויקטים חדשים לפי דירה, נוף ואומדן",
         "catalogDir": "rtl",
         "showroomDir": "rtl",
         "languageTargets": 4,
@@ -657,6 +742,10 @@
         "catalogLanguageEntries": 5,
         "catalogLanguageButtons": 5,
         "activeLanguage": "he",
+        "heroLang": "he",
+        "heroDir": "rtl",
+        "heroTitle": "בודקים פרויקט, דירה וסביבה לפני שמתקדמים.",
+        "catalogTitle": "השוואת פרויקטים חדשים לפי דירה, נוף ואומדן",
         "catalogDir": "rtl",
         "showroomDir": "rtl",
         "languageTargets": 4,
@@ -705,7 +794,7 @@
       "english": {
         "title": "דירות חדשות ופרויקטים עם בחירת דירה בתלת ממד | NadLan",
         "h1s": [
-          "בודקים פרויקט, דירה וסביבה לפני שמתקדמים."
+          "Check the project, apartment and surroundings before you move forward."
         ],
         "headerRoutes": 7,
         "footerLinks": 23,
@@ -713,6 +802,10 @@
         "catalogLanguageEntries": 5,
         "catalogLanguageButtons": 5,
         "activeLanguage": "en",
+        "heroLang": "en",
+        "heroDir": "ltr",
+        "heroTitle": "Check the project, apartment and surroundings before you move forward.",
+        "catalogTitle": "Compare new projects by apartment, view and estimate",
         "catalogDir": "ltr",
         "showroomDir": "ltr",
         "languageTargets": 4,
@@ -729,56 +822,71 @@
         "hasForeignBuyerSignal": true,
         "hasEnglishEngineText": true,
         "hasBuyerWords": true,
-        "hasProjectBandBuyerCopy": true,
+        "hasProjectBandBuyerCopy": false,
         "hasMojibake": false,
         "hasInternalWords": false,
         "hasDefaultChromeWords": false,
         "hero": {
           "x": 10,
-          "y": -95,
+          "y": -102,
           "width": 370,
-          "height": 539.75,
+          "height": 702.125,
           "right": 380,
-          "bottom": 444.75
+          "bottom": 600.125
         },
         "catalog": {
           "x": 10,
-          "y": 2171.03125,
+          "y": 2326.40625,
           "width": 370,
-          "height": 617.578125,
+          "height": 659.5625,
           "right": 380,
-          "bottom": 2788.609375
+          "bottom": 2985.96875
         },
         "showroom": {
           "x": 10,
-          "y": 530.75,
+          "y": 686.125,
           "width": 370,
           "height": 1628.28125,
           "right": 380,
-          "bottom": 2159.03125
+          "bottom": 2314.40625
         }
       },
       "otherLanguageProofs": [
         {
           "lang": "fr",
           "activeLanguage": "fr",
+          "heroLang": "fr",
+          "heroDir": "ltr",
+          "heroTitle": "Verifier le projet, l appartement et le quartier avant d avancer.",
+          "catalogTitle": "Comparer les nouveaux projets par appartement, vue et estimation",
           "catalogDir": "ltr",
           "showroomDir": "ltr",
-          "hasExpectedText": true
+          "hasExpectedText": true,
+          "hasExpectedHero": true
         },
         {
           "lang": "ru",
           "activeLanguage": "ru",
+          "heroLang": "ru",
+          "heroDir": "ltr",
+          "heroTitle": "Проверьте проект, квартиру и район перед следующим шагом.",
+          "catalogTitle": "Сравните новые проекты по квартире, виду и ориентиру цены",
           "catalogDir": "ltr",
           "showroomDir": "ltr",
-          "hasExpectedText": true
+          "hasExpectedText": true,
+          "hasExpectedHero": true
         },
         {
           "lang": "ar",
           "activeLanguage": "ar",
+          "heroLang": "ar",
+          "heroDir": "rtl",
+          "heroTitle": "افحصوا المشروع والشقة والمنطقة قبل الخطوة التالية.",
+          "catalogTitle": "قارنوا المشاريع الجديدة حسب الشقة والإطلالة والتقدير",
           "catalogDir": "rtl",
           "showroomDir": "rtl",
-          "hasExpectedText": true
+          "hasExpectedText": true,
+          "hasExpectedHero": true
         }
       ],
       "failures": []

@@ -216,6 +216,100 @@
 			search: 'مشروع أو منطقة'
 		}
 	};
+	var homeCopy = {
+		en: {
+			hero_eyebrow: 'Real estate in Israel, new projects and apartments',
+			hero_title: 'Check the project, apartment and surroundings before you move forward.',
+			hero_lead: 'Compare new projects, check apartment availability by floor and view, see a non-binding estimate and understand the key documents before speaking with a representative. Built for buyers in Israel and international investors who need a clear first picture.',
+			area_label: 'Area',
+			area_value: 'Sde Dov, Tel Aviv',
+			area_aria: 'Search area',
+			type_label: 'Looking for',
+			type_aria: 'Search type',
+			type_new: 'New apartments',
+			type_investment: 'Investment apartments',
+			type_sea: 'Apartments near the sea',
+			hero_search_button: 'Check now',
+			hero_projects_button: 'Compare projects',
+			hero_showroom_button: 'Choose a sample apartment',
+			language_prompt: 'Information for international buyers in the language that fits them',
+			catalog_kicker: 'Choose a project',
+			catalog_title: 'Compare new projects by apartment, view and estimate',
+			catalog_lead: 'Choose a Sde Dov project, open the apartment view, then check floor, direction, area, view and a non-binding price estimate before asking for details.',
+			project_search_label: 'Project search',
+			catalog_note: 'Each project can show a 3D model, apartment picker, non-binding estimate, surroundings and a short path to request details about the selected apartment.',
+			model_badge: 'Rotate the model and choose an apartment'
+		},
+		fr: {
+			hero_eyebrow: 'Immobilier en Israel, nouveaux projets et appartements',
+			hero_title: 'Verifier le projet, l appartement et le quartier avant d avancer.',
+			hero_lead: 'Comparez les nouveaux projets, verifiez la disponibilite par etage et par vue, consultez une estimation non contraignante et comprenez les documents essentiels avant de parler avec un representant.',
+			area_label: 'Zone',
+			area_value: 'Sde Dov, Tel Aviv',
+			area_aria: 'Zone de recherche',
+			type_label: 'Recherche',
+			type_aria: 'Type de recherche',
+			type_new: 'Appartements neufs',
+			type_investment: 'Appartements pour investissement',
+			type_sea: 'Appartements pres de la mer',
+			hero_search_button: 'Verifier',
+			hero_projects_button: 'Comparer les projets',
+			hero_showroom_button: 'Choisir un appartement exemple',
+			language_prompt: 'Information pour acheteurs internationaux dans leur langue',
+			catalog_kicker: 'Choisir un projet',
+			catalog_title: 'Comparer les nouveaux projets par appartement, vue et estimation',
+			catalog_lead: 'Choisissez un projet a Sde Dov, ouvrez la vue des appartements, puis verifiez etage, orientation, surface, vue et estimation non contraignante avant de demander des details.',
+			project_search_label: 'Recherche de projet',
+			catalog_note: 'Chaque projet peut afficher un modele 3D, un choix d appartements, une estimation non contraignante, le quartier et un chemin court pour demander des details.',
+			model_badge: 'Faire pivoter le modele et choisir un appartement'
+		},
+		ru: {
+			hero_eyebrow: 'Недвижимость в Израиле, новые проекты и квартиры',
+			hero_title: 'Проверьте проект, квартиру и район перед следующим шагом.',
+			hero_lead: 'Сравните новые проекты, проверьте доступность квартир по этажу и виду, посмотрите ориентир цены и поймите ключевые документы до разговора с представителем.',
+			area_label: 'Район',
+			area_value: 'Sde Dov, Tel Aviv',
+			area_aria: 'Район поиска',
+			type_label: 'Что ищем',
+			type_aria: 'Тип поиска',
+			type_new: 'Новые квартиры',
+			type_investment: 'Квартиры для инвестиции',
+			type_sea: 'Квартиры рядом с морем',
+			hero_search_button: 'Проверить',
+			hero_projects_button: 'Сравнить проекты',
+			hero_showroom_button: 'Выбрать квартиру',
+			language_prompt: 'Информация для иностранных покупателей на удобном языке',
+			catalog_kicker: 'Выбор проекта',
+			catalog_title: 'Сравните новые проекты по квартире, виду и ориентиру цены',
+			catalog_lead: 'Выберите проект в Sde Dov, откройте вид квартир, затем проверьте этаж, направление, площадь, вид и не обязательный ориентир цены перед запросом деталей.',
+			project_search_label: 'Поиск проекта',
+			catalog_note: 'В каждом проекте могут быть 3D модель, выбор квартир, ориентир цены, окружение и короткий путь для запроса по выбранной квартире.',
+			model_badge: 'Поверните модель и выберите квартиру'
+		},
+		ar: {
+			hero_eyebrow: 'عقارات في إسرائيل، مشاريع جديدة وشقق',
+			hero_title: 'افحصوا المشروع والشقة والمنطقة قبل الخطوة التالية.',
+			hero_lead: 'قارنوا المشاريع الجديدة، افحصوا توفر الشقق حسب الطابق والإطلالة، شاهدوا تقديرا غير ملزم وافهموا المستندات الأساسية قبل التواصل مع ممثل المشروع.',
+			area_label: 'المنطقة',
+			area_value: 'Sde Dov, Tel Aviv',
+			area_aria: 'منطقة البحث',
+			type_label: 'نوع البحث',
+			type_aria: 'نوع البحث',
+			type_new: 'شقق جديدة',
+			type_investment: 'شقق للاستثمار',
+			type_sea: 'شقق قريبة من البحر',
+			hero_search_button: 'افحصوا الآن',
+			hero_projects_button: 'قارنوا المشاريع',
+			hero_showroom_button: 'اختاروا شقة مثال',
+			language_prompt: 'معلومات للمشترين من الخارج باللغة المناسبة لهم',
+			catalog_kicker: 'اختيار مشروع',
+			catalog_title: 'قارنوا المشاريع الجديدة حسب الشقة والإطلالة والتقدير',
+			catalog_lead: 'اختاروا مشروعا في Sde Dov، افتحوا عرض الشقق، ثم افحصوا الطابق والاتجاه والمساحة والإطلالة وتقدير السعر غير الملزم قبل طلب التفاصيل.',
+			project_search_label: 'بحث عن مشروع',
+			catalog_note: 'يمكن لكل مشروع أن يعرض نموذجا ثلاثي الأبعاد، اختيار شقق، تقديرا غير ملزم، معلومات عن المنطقة وطريقا قصيرا لطلب التفاصيل عن الشقة المختارة.',
+			model_badge: 'دوروا النموذج واختاروا شقة'
+		}
+	};
 
 	function qs(sel, root) {
 		return (root || document).querySelector(sel);
@@ -327,7 +421,38 @@
 		return t('price');
 	}
 
+	function homeValue(key, fallback) {
+		return (homeCopy[state.lang] && homeCopy[state.lang][key]) || fallback || '';
+	}
+
+	function applyHomeLanguageChrome() {
+		var hero = qs('.nlh-home-hero');
+		if (hero) {
+			hero.setAttribute('lang', state.lang);
+			hero.setAttribute('dir', dir());
+		}
+		qsa('[data-nle-home-text]').forEach(function (el) {
+			if (!el.dataset.nleHomeDefaultText) {
+				el.dataset.nleHomeDefaultText = el.textContent || '';
+			}
+			el.textContent = state.lang === 'he' ? el.dataset.nleHomeDefaultText : homeValue(el.dataset.nleHomeText, el.dataset.nleHomeDefaultText);
+		});
+		qsa('[data-nle-home-value]').forEach(function (el) {
+			if (!el.dataset.nleHomeDefaultValue) {
+				el.dataset.nleHomeDefaultValue = el.value || '';
+			}
+			el.value = state.lang === 'he' ? el.dataset.nleHomeDefaultValue : homeValue(el.dataset.nleHomeValue, el.dataset.nleHomeDefaultValue);
+		});
+		qsa('[data-nle-home-aria]').forEach(function (el) {
+			if (!el.dataset.nleHomeDefaultAria) {
+				el.dataset.nleHomeDefaultAria = el.getAttribute('aria-label') || '';
+			}
+			el.setAttribute('aria-label', state.lang === 'he' ? el.dataset.nleHomeDefaultAria : homeValue(el.dataset.nleHomeAria, el.dataset.nleHomeDefaultAria));
+		});
+	}
+
 	function applyLanguageChrome() {
+		applyHomeLanguageChrome();
 		var scope = document.querySelector('.nle-catalog');
 		var showroom = document.querySelector('.nle-showroom');
 		[scope, showroom].forEach(function (el) {

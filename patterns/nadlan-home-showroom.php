@@ -18,33 +18,33 @@ $projects_js = $theme_uri . 'assets/engine/projects.json';
 	<main class="nlh-home-main">
 		<section class="nlh-home-hero" aria-labelledby="nlh-home-title">
 			<div class="nlh-home-panel">
-				<span class="nlh-home-eyebrow">נדל״ן בישראל, פרויקטים ודירות חדשות</span>
-				<h1 id="nlh-home-title">בודקים פרויקט, דירה וסביבה לפני שמתקדמים.</h1>
-				<p class="nlh-home-lead">השוו פרויקטים חדשים, בדקו זמינות לפי קומה ונוף, ראו אומדן לא מחייב וקבלו תמונה ברורה יותר לפני שיחה עם נציג. מתאים לקונים בישראל וגם למשקיעים מחו״ל שרוצים להבין את המקום, המחיר והמסמכים לפני החלטה.</p>
+				<span class="nlh-home-eyebrow" data-nle-home-text="hero_eyebrow">נדל״ן בישראל, פרויקטים ודירות חדשות</span>
+				<h1 id="nlh-home-title" data-nle-home-text="hero_title">בודקים פרויקט, דירה וסביבה לפני שמתקדמים.</h1>
+				<p class="nlh-home-lead" data-nle-home-text="hero_lead">השוו פרויקטים חדשים, בדקו זמינות לפי קומה ונוף, ראו אומדן לא מחייב וקבלו תמונה ברורה יותר לפני שיחה עם נציג. מתאים לקונים בישראל וגם למשקיעים מחו״ל שרוצים להבין את המקום, המחיר והמסמכים לפני החלטה.</p>
 				<form class="nlh-search-row nlh-home-inline-search">
 					<div class="nlh-search-field">
-						<label for="nlh-area">אזור</label>
-						<input id="nlh-area" type="search" value="שדה דב, תל אביב" aria-label="אזור לחיפוש">
+						<label for="nlh-area" data-nle-home-text="area_label">אזור</label>
+						<input id="nlh-area" type="search" value="שדה דב, תל אביב" aria-label="אזור לחיפוש" data-nle-home-value="area_value" data-nle-home-aria="area_aria">
 					</div>
 					<div class="nlh-search-field">
-						<label for="nlh-type">מה מחפשים</label>
-						<select id="nlh-type" aria-label="סוג חיפוש">
-							<option>דירות חדשות</option>
-							<option>דירות להשקעה</option>
-							<option>דירות ליד הים</option>
+						<label for="nlh-type" data-nle-home-text="type_label">מה מחפשים</label>
+						<select id="nlh-type" aria-label="סוג חיפוש" data-nle-home-aria="type_aria">
+							<option data-nle-home-text="type_new">דירות חדשות</option>
+							<option data-nle-home-text="type_investment">דירות להשקעה</option>
+							<option data-nle-home-text="type_sea">דירות ליד הים</option>
 						</select>
 					</div>
-					<button type="button">בדקו עכשיו</button>
+					<button type="button" data-nle-home-text="hero_search_button">בדקו עכשיו</button>
 				</form>
 				<div class="nlh-home-actions">
-					<a class="nlh-home-button is-primary" href="#projects">השוו פרויקטים</a>
-					<a class="nlh-home-button" href="#showroom">בחרו דירה לדוגמה</a>
+					<a class="nlh-home-button is-primary" href="#projects" data-nle-home-text="hero_projects_button">השוו פרויקטים</a>
+					<a class="nlh-home-button" href="#showroom" data-nle-home-text="hero_showroom_button">בחרו דירה לדוגמה</a>
 				</div>
 			</div>
 		</section>
 
 		<section class="nlh-home-languages" aria-label="שפות למשקיעים מחו״ל">
-			<strong>מידע לרוכשים מחו״ל, בשפה שמתאימה להם</strong>
+			<strong data-nle-home-text="language_prompt">מידע לרוכשים מחו״ל, בשפה שמתאימה להם</strong>
 			<button class="is-active" type="button" data-nle-lang="he" lang="he" dir="rtl">עברית</button>
 			<button type="button" data-nle-lang="en" lang="en" dir="ltr">English</button>
 			<button type="button" data-nle-lang="fr" lang="fr" dir="ltr">Français</button>
@@ -55,14 +55,14 @@ $projects_js = $theme_uri . 'assets/engine/projects.json';
 		<section class="nle-catalog" id="projects" aria-labelledby="nle-projects-title">
 			<div class="nle-catalog-head">
 				<div>
-					<span class="nlh-home-section-kicker">בחירת פרויקט</span>
-					<h2 id="nle-projects-title">השוואת פרויקטים חדשים לפי דירה, נוף ואומדן</h2>
-					<p>בחרו פרויקט בשדה דב, עברו לתצוגת הדירות, ואז בדקו קומה, כיוון, שטח, נוף ואומדן מחיר לא מחייב לפני פנייה.</p>
+					<span class="nlh-home-section-kicker" data-nle-home-text="catalog_kicker">בחירת פרויקט</span>
+					<h2 id="nle-projects-title" data-nle-home-text="catalog_title">השוואת פרויקטים חדשים לפי דירה, נוף ואומדן</h2>
+					<p data-nle-home-text="catalog_lead">בחרו פרויקט בשדה דב, עברו לתצוגת הדירות, ואז בדקו קומה, כיוון, שטח, נוף ואומדן מחיר לא מחייב לפני פנייה.</p>
 					<p class="nle-note" data-nle-project-count>טוען פרויקטים</p>
 				</div>
 				<div class="nlh-project-tools">
 					<label class="nlh-project-search">
-						<span>חיפוש פרויקט</span>
+						<span data-nle-home-text="project_search_label">חיפוש פרויקט</span>
 						<input class="nle-search" type="search" placeholder="שם פרויקט או אזור" data-nle-search>
 					</label>
 					<div class="nlh-project-language-rail" aria-label="שפה למידע על פרויקטים">
@@ -75,7 +75,7 @@ $projects_js = $theme_uri . 'assets/engine/projects.json';
 				</div>
 			</div>
 			<div class="nle-project-grid" data-nle-project-grid></div>
-			<p class="nlh-catalog-note">בכל פרויקט מוצגים דגם תלת ממדי, בחירת דירות, אומדן מחיר לא מחייב, סביבת מגורים ודרך קצרה לפנייה על הדירה שנבחרה.</p>
+			<p class="nlh-catalog-note" data-nle-home-text="catalog_note">בכל פרויקט מוצגים דגם תלת ממדי, בחירת דירות, אומדן מחיר לא מחייב, סביבת מגורים ודרך קצרה לפנייה על הדירה שנבחרה.</p>
 		</section>
 
 		<section class="nle-showroom" id="showroom" aria-label="בחירת דירה בפרויקט">
@@ -86,7 +86,7 @@ $projects_js = $theme_uri . 'assets/engine/projects.json';
 						<h2 data-nle-project-title>טוען פרויקט</h2>
 						<p data-nle-project-sub>טוען תיאור פרויקט</p>
 					</div>
-					<span class="nle-badge">סובבו מודל ובחרו דירה</span>
+					<span class="nle-badge" data-nle-home-text="model_badge">סובבו מודל ובחרו דירה</span>
 				</div>
 				<div data-nle-model-wrap></div>
 			</div>

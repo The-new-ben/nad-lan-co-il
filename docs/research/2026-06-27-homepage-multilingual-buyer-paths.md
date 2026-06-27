@@ -46,6 +46,13 @@ This note supports the homepage slice in PR #220. The public page must speak to 
   - Desktop keeps project comparison before the showroom.
   - Tablet and mobile place the showroom before the card rail so the buyer reaches the model and apartment picker earlier.
   - The QA gate now fails if the interactive showroom starts too low in the homepage flow.
+
+## 2026-06-27 Above-Fold Language Update
+
+- The same five-language control now also changes the visible homepage opening promise, search labels, search value, aria labels and CTA buttons.
+- The hero section receives the selected `lang` and `dir`, so English/French/Russian render LTR while Hebrew/Arabic render RTL.
+- This is still a preview-layer language path, not a full international SEO launch. Full SEO launch still requires separate language URLs and reciprocal language annotations.
+- The browser QA now fails if English/French/Russian/Arabic update only the project engine while leaving the above-fold promise in Hebrew.
 - Research anchors:
   - Google recommends separate URLs and `hreflang` annotations for localized versions; this slice keeps language switching as a preview path and does not claim full multilingual SEO until the separate language pages are published.
   - Zillow and Rightmove both keep property discovery/search prominent on the homepage.
