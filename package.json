@@ -38,6 +38,7 @@
 		"qa:showroom-v2-preview": "node scripts/qa-showroom-v2-preview.mjs --strict",
 		"qa:ashira-factory-readiness": "node scripts/qa-ashira-factory-readiness.mjs --strict",
 		"qa:ashira-research-dossier": "node scripts/qa-ashira-research-dossier.mjs --strict",
+		"qa:ashira-i18n-architecture": "node scripts/qa-ashira-i18n-architecture.mjs --strict",
 		"qa:ashira-content-depth": "node scripts/qa-ashira-content-depth.mjs --strict",
 		"qa:ashira-draft-readiness": "node scripts/qa-wp-draft-payload.mjs --draft docs/wp-drafts/ashira-sde-dov-v2-draft.json --payload assets/projects/ashira-sde-dov/showroom-payload.json --out docs/qa/ashira-v2-draft-readiness-report.json --strict"
 	}
