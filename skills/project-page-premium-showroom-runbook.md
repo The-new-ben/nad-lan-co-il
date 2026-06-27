@@ -389,13 +389,17 @@ node scripts/build-project-showroom-draft.mjs --pattern patterns/project-showroo
 Before any multilingual import or hreflang output, run the publication gate:
 
 ```bash
+npm run qa:project-publication-readiness
 npm run qa:ashira-publication-readiness
 ```
 
-That gate proves every language page is still draft-only, uses the `nadlan_project` endpoint,
-targets a `/projects/<ascii-slug>/` URL, has Yoast title/meta/focus fields, reuses the real
-project asset folder, passes its content-depth report, and passes screenshot QA without
-horizontal overflow or selected-card/facade overlap.
+The generic gate reads the project publication manifest. Ashira is only the first instance,
+through `docs/plans/2026-06-27-ashira-publication-manifest.json`; the next project should get
+its own manifest and run the same `scripts/qa-project-publication-readiness.mjs` checker instead
+of copying an Ashira-only script. The gate proves every language page is still draft-only, uses
+the `nadlan_project` endpoint, targets a `/projects/<ascii-slug>/` URL, has Yoast title/meta/focus
+fields, reuses the real project asset folder, passes its content-depth report, and passes
+screenshot QA without horizontal overflow or selected-card/facade overlap.
 
 ## N. Buyer-Language Rule
 

@@ -55,6 +55,7 @@
 		"qa:ashira-ru-content-depth": "node scripts/qa-ashira-ru-content-depth.mjs --strict",
 		"qa:ashira-ar-content-depth": "node scripts/qa-ashira-ar-content-depth.mjs --strict",
 		"qa:ashira-draft-readiness": "node scripts/qa-wp-draft-payload.mjs --draft docs/wp-drafts/ashira-sde-dov-v2-draft.json --payload assets/projects/ashira-sde-dov/showroom-payload.json --out docs/qa/ashira-v2-draft-readiness-report.json --strict",
+		"qa:project-publication-readiness": "node scripts/qa-project-publication-readiness.mjs --manifest docs/plans/2026-06-27-ashira-publication-manifest.json --out docs/qa/project-publication-readiness-report.json --strict",
 		"qa:ashira-publication-readiness": "node scripts/qa-ashira-publication-readiness.mjs --strict"
 	}
 }
