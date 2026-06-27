@@ -187,6 +187,13 @@
 	padding: 14px;
 }
 
+.nle-page.nlh-home .nlh-home-project-engine .nlh-home-languages {
+	margin: 0 0 14px;
+	box-shadow: none;
+	background: rgba(255, 255, 255, .72);
+	border-radius: 16px;
+}
+
 .nle-page.nlh-home .nle-catalog-head {
 	align-items: end;
 }

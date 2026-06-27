@@ -15,7 +15,8 @@ This slice adds a verified homepage preview that places the multi-project showro
 
 - Public copy speaks to buyers, families and foreign investors.
 - No public wording about internal systems, funnel language, CMS, strategy or monetization.
-- The first screen includes: one H1, search fields, language entry points inside the project selector, and the multi-project project cards.
+- The first screen includes: one H1, search fields, and then the multi-project engine above the fold but not at the absolute top.
+- Language entry points are embedded inside the project selector, not left as a detached strip between the hero and the projects.
 - The project engine reuses `assets/engine/projects.json` so Rainbow, Dimri Yama and Ashira remain one data source.
 
 ## Chrome Gate

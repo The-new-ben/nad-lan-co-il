@@ -253,6 +253,13 @@
 			margin-bottom: 18px;
 		}
 
+		.nlh-home .nlh-home-project-engine .nlh-home-languages {
+			margin: 0 0 14px;
+			box-shadow: none;
+			background: rgba(255, 255, 255, .72);
+			border-radius: 16px;
+		}
+
 		.nlh-home .nle-catalog-head {
 			align-items: end;
 		}
@@ -455,16 +462,15 @@
 			</div>
 		</section>
 
-		<section class="nlh-home-languages" aria-label="שפות למשקיעים מחו״ל">
-			<strong data-nle-home-text="language_prompt">מידע לרוכשים מחו״ל, בשפה שמתאימה להם</strong>
-			<button class="is-active" type="button" data-nle-lang="he" lang="he" dir="rtl">עברית</button>
-			<button type="button" data-nle-lang="en" lang="en" dir="ltr">English</button>
-			<button type="button" data-nle-lang="fr" lang="fr" dir="ltr">Français</button>
-			<button type="button" data-nle-lang="ru" lang="ru" dir="ltr">Русский</button>
-			<button type="button" data-nle-lang="ar" lang="ar" dir="rtl">العربية</button>
-		</section>
-
-		<section class="nle-catalog" id="projects" aria-labelledby="nle-projects-title">
+		<section class="nle-catalog nlh-home-project-engine" id="projects" aria-labelledby="nle-projects-title">
+			<div class="nlh-home-languages" aria-label="שפות למשקיעים מחו״ל">
+				<strong data-nle-home-text="language_prompt">מידע לרוכשים מחו״ל, בשפה שמתאימה להם</strong>
+				<button class="is-active" type="button" data-nle-lang="he" lang="he" dir="rtl">עברית</button>
+				<button type="button" data-nle-lang="en" lang="en" dir="ltr">English</button>
+				<button type="button" data-nle-lang="fr" lang="fr" dir="ltr">Français</button>
+				<button type="button" data-nle-lang="ru" lang="ru" dir="ltr">Русский</button>
+				<button type="button" data-nle-lang="ar" lang="ar" dir="rtl">العربية</button>
+			</div>
 			<div class="nle-catalog-head">
 				<div>
 					<span class="nlh-home-section-kicker" data-nle-home-text="catalog_kicker">בחירת פרויקט</span>

@@ -1,8 +1,8 @@
 {
   "ok": true,
-  "generated_at": "2026-06-27T04:15:06.647Z",
-  "started_at": "2026-06-27T04:09:34.530Z",
-  "duration_ms": 332118,
+  "generated_at": "2026-06-27T04:32:56.493Z",
+  "started_at": "2026-06-27T04:27:57.500Z",
+  "duration_ms": 298993,
   "mode": "preflight-only-no-wordpress-import-no-live-deploy",
   "total_scripts": 25,
   "stopped_at": "",
@@ -15,7 +15,7 @@
       "exit_code": 0,
       "error": "",
       "timed_out": false,
-      "duration_ms": 1281,
+      "duration_ms": 1327,
       "stdout": "> twentytwentyfive@1.5.0 qa:ashira-research-dossier\n> node scripts/qa-ashira-research-dossier.mjs --strict\n\n{\n  \"ok\": true,\n  \"failures\": [],\n  \"out\": \"docs/qa/ashira-research-dossier-report.json\",\n  \"links\": 11\n}",
       "stderr": ""
     },
@@ -26,7 +26,7 @@
       "exit_code": 0,
       "error": "",
       "timed_out": false,
-      "duration_ms": 1591,
+      "duration_ms": 1117,
       "stdout": "> twentytwentyfive@1.5.0 qa:ashira-i18n-architecture\n> node scripts/qa-ashira-i18n-architecture.mjs --strict\n\n{\n  \"ok\": true,\n  \"failures\": [],\n  \"out\": \"docs/qa/ashira-i18n-architecture-report.json\",\n  \"links\": 15,\n  \"slugs\": 5\n}",
       "stderr": ""
     },
@@ -37,7 +37,7 @@
       "exit_code": 0,
       "error": "",
       "timed_out": false,
-      "duration_ms": 2074,
+      "duration_ms": 2658,
       "stdout": "> twentytwentyfive@1.5.0 qa:ashira-content-depth\n> node scripts/qa-ashira-content-depth.mjs --strict\n\n{\n  \"ok\": true,\n  \"failures\": [],\n  \"out\": \"docs/qa/ashira-content-depth-report.json\",\n  \"words\": 3000,\n  \"h2\": 18,\n  \"links\": 8\n}",
       "stderr": ""
     },
@@ -48,7 +48,7 @@
       "exit_code": 0,
       "error": "",
       "timed_out": false,
-      "duration_ms": 1335,
+      "duration_ms": 2099,
       "stdout": "> twentytwentyfive@1.5.0 qa:ashira-en-content-depth\n> node scripts/qa-ashira-en-content-depth.mjs --strict\n\n{\n  \"ok\": true,\n  \"failures\": [],\n  \"out\": \"docs/qa/ashira-en-content-depth-report.json\",\n  \"words\": 3167,\n  \"h2\": 15,\n  \"links\": 8\n}",
       "stderr": ""
     },
@@ -59,7 +59,7 @@
       "exit_code": 0,
       "error": "",
       "timed_out": false,
-      "duration_ms": 1210,
+      "duration_ms": 1840,
       "stdout": "> twentytwentyfive@1.5.0 qa:ashira-fr-content-depth\n> node scripts/qa-ashira-fr-content-depth.mjs --strict\n\n{\n  \"ok\": true,\n  \"failures\": [],\n  \"out\": \"docs/qa/ashira-fr-content-depth-report.json\",\n  \"words\": 3769,\n  \"h2\": 18,\n  \"links\": 9\n}",
       "stderr": ""
     },
@@ -70,7 +70,7 @@
       "exit_code": 0,
       "error": "",
       "timed_out": false,
-      "duration_ms": 1715,
+      "duration_ms": 1383,
       "stdout": "> twentytwentyfive@1.5.0 qa:ashira-ru-content-depth\n> node scripts/qa-ashira-ru-content-depth.mjs --strict\n\n{\n  \"ok\": true,\n  \"failures\": [],\n  \"out\": \"docs/qa/ashira-ru-content-depth-report.json\",\n  \"words\": 3119,\n  \"h2\": 18,\n  \"links\": 10\n}",
       "stderr": ""
     },
@@ -81,7 +81,7 @@
       "exit_code": 0,
       "error": "",
       "timed_out": false,
-      "duration_ms": 1697,
+      "duration_ms": 2221,
       "stdout": "> twentytwentyfive@1.5.0 qa:ashira-ar-content-depth\n> node scripts/qa-ashira-ar-content-depth.mjs --strict\n\n{\n  \"ok\": true,\n  \"failures\": [],\n  \"out\": \"docs/qa/ashira-ar-content-depth-report.json\",\n  \"words\": 3287,\n  \"h2\": 18,\n  \"links\": 9\n}",
       "stderr": ""
     },
@@ -92,7 +92,7 @@
       "exit_code": 0,
       "error": "",
       "timed_out": false,
-      "duration_ms": 46534,
+      "duration_ms": 42468,
       "stdout": "> twentytwentyfive@1.5.0 qa:showroom-v2-preview\n> node scripts/qa-showroom-v2-preview.mjs --strict\n\n{\n  \"ok\": true,\n  \"report\": \"C:\\\\Users\\\\pro\\\\Documents\\\\websites\\\\nad-lan-co-il-showroom-1680\\\\docs\\\\qa\\\\screenshots\\\\ashira-v2-preview-factory-gate\\\\report.json\",\n  \"out_dir\": \"C:\\\\Users\\\\pro\\\\Documents\\\\websites\\\\nad-lan-co-il-showroom-1680\\\\docs\\\\qa\\\\screenshots\\\\ashira-v2-preview-factory-gate\",\n  \"viewports\": 4,\n  \"failures\": []\n}",
       "stderr": ""
     },
@@ -103,7 +103,7 @@
       "exit_code": 0,
       "error": "",
       "timed_out": false,
-      "duration_ms": 49536,
+      "duration_ms": 42470,
       "stdout": "> twentytwentyfive@1.5.0 qa:showroom-v2-en-preview\n> node scripts/qa-showroom-v2-preview.mjs --preview docs/previews/ashira-showroom-v2-en-preview.html --out docs/qa/screenshots/ashira-v2-en-preview-factory-gate --expected-lang en --expected-dir ltr --strict\n\n{\n  \"ok\": true,\n  \"report\": \"C:\\\\Users\\\\pro\\\\Documents\\\\websites\\\\nad-lan-co-il-showroom-1680\\\\docs\\\\qa\\\\screenshots\\\\ashira-v2-en-preview-factory-gate\\\\report.json\",\n  \"out_dir\": \"C:\\\\Users\\\\pro\\\\Documents\\\\websites\\\\nad-lan-co-il-showroom-1680\\\\docs\\\\qa\\\\screenshots\\\\ashira-v2-en-preview-factory-gate\",\n  \"viewports\": 4,\n  \"failures\": []\n}",
       "stderr": ""
     },
@@ -114,7 +114,7 @@
       "exit_code": 0,
       "error": "",
       "timed_out": false,
-      "duration_ms": 56891,
+      "duration_ms": 49402,
       "stdout": "> twentytwentyfive@1.5.0 qa:showroom-v2-fr-preview\n> node scripts/qa-showroom-v2-preview.mjs --preview docs/previews/ashira-showroom-v2-fr-preview.html --out docs/qa/screenshots/ashira-v2-fr-preview-factory-gate --expected-lang fr --expected-dir ltr --strict\n\n{\n  \"ok\": true,\n  \"report\": \"C:\\\\Users\\\\pro\\\\Documents\\\\websites\\\\nad-lan-co-il-showroom-1680\\\\docs\\\\qa\\\\screenshots\\\\ashira-v2-fr-preview-factory-gate\\\\report.json\",\n  \"out_dir\": \"C:\\\\Users\\\\pro\\\\Documents\\\\websites\\\\nad-lan-co-il-showroom-1680\\\\docs\\\\qa\\\\screenshots\\\\ashira-v2-fr-preview-factory-gate\",\n  \"viewports\": 4,\n  \"failures\": []\n}",
       "stderr": ""
     },
@@ -125,7 +125,7 @@
       "exit_code": 0,
       "error": "",
       "timed_out": false,
-      "duration_ms": 56067,
+      "duration_ms": 54287,
       "stdout": "> twentytwentyfive@1.5.0 qa:showroom-v2-ru-preview\n> node scripts/qa-showroom-v2-preview.mjs --preview docs/previews/ashira-showroom-v2-ru-preview.html --out docs/qa/screenshots/ashira-v2-ru-preview-factory-gate --expected-lang ru --expected-dir ltr --strict\n\n{\n  \"ok\": true,\n  \"report\": \"C:\\\\Users\\\\pro\\\\Documents\\\\websites\\\\nad-lan-co-il-showroom-1680\\\\docs\\\\qa\\\\screenshots\\\\ashira-v2-ru-preview-factory-gate\\\\report.json\",\n  \"out_dir\": \"C:\\\\Users\\\\pro\\\\Documents\\\\websites\\\\nad-lan-co-il-showroom-1680\\\\docs\\\\qa\\\\screenshots\\\\ashira-v2-ru-preview-factory-gate\",\n  \"viewports\": 4,\n  \"failures\": []\n}",
       "stderr": ""
     },
@@ -136,7 +136,7 @@
       "exit_code": 0,
       "error": "",
       "timed_out": false,
-      "duration_ms": 50634,
+      "duration_ms": 42960,
       "stdout": "> twentytwentyfive@1.5.0 qa:showroom-v2-ar-preview\n> node scripts/qa-showroom-v2-preview.mjs --preview docs/previews/ashira-showroom-v2-ar-preview.html --out docs/qa/screenshots/ashira-v2-ar-preview-factory-gate --expected-lang ar --expected-dir rtl --strict\n\n{\n  \"ok\": true,\n  \"report\": \"C:\\\\Users\\\\pro\\\\Documents\\\\websites\\\\nad-lan-co-il-showroom-1680\\\\docs\\\\qa\\\\screenshots\\\\ashira-v2-ar-preview-factory-gate\\\\report.json\",\n  \"out_dir\": \"C:\\\\Users\\\\pro\\\\Documents\\\\websites\\\\nad-lan-co-il-showroom-1680\\\\docs\\\\qa\\\\screenshots\\\\ashira-v2-ar-preview-factory-gate\",\n  \"viewports\": 4,\n  \"failures\": []\n}",
       "stderr": ""
     },
@@ -147,7 +147,7 @@
       "exit_code": 0,
       "error": "",
       "timed_out": false,
-      "duration_ms": 1225,
+      "duration_ms": 1105,
       "stdout": "> twentytwentyfive@1.5.0 qa:ashira-factory-readiness\n> node scripts/qa-ashira-factory-readiness.mjs --strict\n\n{\n  \"ok\": true,\n  \"out\": \"C:\\\\Users\\\\pro\\\\Documents\\\\websites\\\\nad-lan-co-il-showroom-1680\\\\docs\\\\qa\\\\ashira-v2-factory-readiness-report.json\",\n  \"files\": 9,\n  \"units\": 5,\n  \"failures\": []\n}",
       "stderr": ""
     },
@@ -158,7 +158,7 @@
       "exit_code": 0,
       "error": "",
       "timed_out": false,
-      "duration_ms": 1605,
+      "duration_ms": 2629,
       "stdout": "> twentytwentyfive@1.5.0 qa:ashira-draft-readiness\n> node scripts/qa-wp-draft-payload.mjs --draft docs/wp-drafts/ashira-sde-dov-v2-draft.json --payload assets/projects/ashira-sde-dov/showroom-payload.json --out docs/qa/ashira-v2-draft-readiness-report.json --strict\n\n{\n  \"ok\": true,\n  \"draft\": \"docs/wp-drafts/ashira-sde-dov-v2-draft.json\",\n  \"out\": \"C:\\\\Users\\\\pro\\\\Documents\\\\websites\\\\nad-lan-co-il-showroom-1680\\\\docs\\\\qa\\\\ashira-v2-draft-readiness-report.json\",\n  \"units\": 5,\n  \"failures\": []\n}",
       "stderr": ""
     },
@@ -169,7 +169,7 @@
       "exit_code": 0,
       "error": "",
       "timed_out": false,
-      "duration_ms": 2147,
+      "duration_ms": 2065,
       "stdout": "> twentytwentyfive@1.5.0 build:project-hreflang-artifact\n> node scripts/build-project-hreflang-artifact.mjs --manifest docs/plans/2026-06-27-ashira-publication-manifest.json --out-json docs/seo/ashira-hreflang-map.json --out-html docs/seo/ashira-hreflang-head.html\n\n{\n  \"ok\": true,\n  \"manifest\": \"docs/plans/2026-06-27-ashira-publication-manifest.json\",\n  \"out_json\": \"docs/seo/ashira-hreflang-map.json\",\n  \"out_html\": \"docs/seo/ashira-hreflang-head.html\",\n  \"alternates\": 6\n}",
       "stderr": ""
     },
@@ -180,7 +180,7 @@
       "exit_code": 0,
       "error": "",
       "timed_out": false,
-      "duration_ms": 1056,
+      "duration_ms": 1231,
       "stdout": "> twentytwentyfive@1.5.0 qa:project-hreflang-artifact\n> node scripts/qa-project-hreflang-artifact.mjs --manifest docs/plans/2026-06-27-ashira-publication-manifest.json --map docs/seo/ashira-hreflang-map.json --html docs/seo/ashira-hreflang-head.html --out docs/qa/project-hreflang-artifact-report.json --strict\n\n{\n  \"ok\": true,\n  \"failures\": 0,\n  \"out\": \"docs/qa/project-hreflang-artifact-report.json\",\n  \"alternate_count\": 6\n}",
       "stderr": ""
     },
@@ -191,7 +191,7 @@
       "exit_code": 0,
       "error": "",
       "timed_out": false,
-      "duration_ms": 2014,
+      "duration_ms": 1861,
       "stdout": "> twentytwentyfive@1.5.0 qa:project-draft-import-dry-run\n> node scripts/qa-project-draft-import-dry-run.mjs --manifest docs/plans/2026-06-27-ashira-publication-manifest.json --out docs/qa/project-draft-import-dry-run-report.json --strict\n\n{\n  \"ok\": true,\n  \"failures\": 0,\n  \"out\": \"docs/qa/project-draft-import-dry-run-report.json\",\n  \"language_count\": 5\n}",
       "stderr": ""
     },
@@ -202,7 +202,7 @@
       "exit_code": 0,
       "error": "",
       "timed_out": false,
-      "duration_ms": 1742,
+      "duration_ms": 1054,
       "stdout": "> twentytwentyfive@1.5.0 qa:project-publication-readiness\n> node scripts/qa-project-publication-readiness.mjs --manifest docs/plans/2026-06-27-ashira-publication-manifest.json --out docs/qa/project-publication-readiness-report.json --strict\n\n{\n  \"ok\": true,\n  \"failures\": 0,\n  \"out\": \"docs/qa/project-publication-readiness-report.json\",\n  \"language_count\": 5\n}",
       "stderr": ""
     },
@@ -213,7 +213,7 @@
       "exit_code": 0,
       "error": "",
       "timed_out": false,
-      "duration_ms": 4194,
+      "duration_ms": 1129,
       "stdout": "> twentytwentyfive@1.5.0 qa:ashira-publication-readiness\n> node scripts/qa-ashira-publication-readiness.mjs --strict\n\n{\n  \"ok\": true,\n  \"failures\": 0,\n  \"out\": \"docs/qa/ashira-publication-readiness-report.json\",\n  \"language_count\": 5\n}",
       "stderr": ""
     },
@@ -224,7 +224,7 @@
       "exit_code": 0,
       "error": "",
       "timed_out": false,
-      "duration_ms": 1782,
+      "duration_ms": 1035,
       "stdout": "> twentytwentyfive@1.5.0 qa:home-showroom-pattern\n> node scripts/qa-home-showroom-pattern.mjs --strict\n\n{\n  \"ok\": true,\n  \"failures\": [],\n  \"out\": \"docs/qa/home-showroom-pattern-report.json\"\n}",
       "stderr": ""
     },
@@ -235,7 +235,7 @@
       "exit_code": 0,
       "error": "",
       "timed_out": false,
-      "duration_ms": 40678,
+      "duration_ms": 37263,
       "stdout": "> twentytwentyfive@1.5.0 qa:home-showroom-preview\n> node scripts/qa-home-showroom-preview.mjs --strict\n\n{\n  \"ok\": true,\n  \"failures\": [],\n  \"out_dir\": \"C:\\\\Users\\\\pro\\\\Documents\\\\websites\\\\nad-lan-co-il-showroom-1680\\\\docs\\\\qa\\\\screenshots\\\\home-showroom-preview-2026-06-27\"\n}",
       "stderr": ""
     },
@@ -246,7 +246,7 @@
       "exit_code": 0,
       "error": "",
       "timed_out": false,
-      "duration_ms": 1150,
+      "duration_ms": 1010,
       "stdout": "> twentytwentyfive@1.5.0 qa:home-chrome\n> node scripts/qa-home-chrome.mjs --strict\n\n{\n  \"ok\": true,\n  \"failures\": []\n}",
       "stderr": ""
     },
@@ -257,7 +257,7 @@
       "exit_code": 0,
       "error": "",
       "timed_out": false,
-      "duration_ms": 1362,
+      "duration_ms": 941,
       "stdout": "> twentytwentyfive@1.5.0 qa:home-seo-schema\n> node scripts/qa-home-seo-schema.mjs --strict\n\n{\n  \"ok\": true,\n  \"failures\": [],\n  \"out\": \"docs/qa/home-seo-schema-report.json\"\n}",
       "stderr": ""
     },
@@ -268,7 +268,7 @@
       "exit_code": 0,
       "error": "",
       "timed_out": false,
-      "duration_ms": 1063,
+      "duration_ms": 1307,
       "stdout": "> twentytwentyfive@1.5.0 qa:home-publication-readiness\n> node scripts/qa-home-publication-readiness.mjs --strict\n\n{\n  \"ok\": true,\n  \"failures\": 0,\n  \"out\": \"docs/qa/home-publication-readiness-report.json\"\n}",
       "stderr": ""
     },
@@ -279,8 +279,8 @@
       "exit_code": 0,
       "error": "",
       "timed_out": false,
-      "duration_ms": 1530,
-      "stdout": "> twentytwentyfive@1.5.0 qa:project-factory-smoke\n> node scripts/qa-project-factory-smoke.mjs --out docs/qa/project-factory-smoke-report.json\n\n{\n  \"generated_at\": \"2026-06-27T04:15:06.041Z\",\n  \"slug\": \"codex-factory-smoke-1782533706040\",\n  \"folder\": \"assets/projects/codex-factory-smoke-1782533706040\",\n  \"keep\": false,\n  \"out\": \"docs/qa/project-factory-smoke-report.json\",\n  \"steps\": [\n    {\n      \"name\": \"syntax check initializer\",\n      \"command\": \"node.exe --check scripts/init-project-showroom.mjs\",\n      \"exit_code\": 0,\n      \"ok\": true,\n      \"stdout_tail\": \"\",\n      \"stderr_tail\": \"\"\n    },\n    {\n      \"name\": \"init project showroom folder\",\n      \"command\": \"node.exe scripts/init-project-showroom.mjs codex-factory-smoke-1782533706040 --post-id 0 --title Codex Factory Smoke\",\n      \"exit_code\": 0,\n      \"ok\": true,\n      \"stdout_tail\": \"{\\n  \\\"ok\\\": true,\\n  \\\"slug\\\": \\\"codex-factory-smoke-1782533706040\\\",\\n  \\\"post_id\\\": 0,\\n  \\\"folder\\\": \\\"assets/projects/codex-factory-smoke-1782533706040\\\",\\n  \\\"files\\\": [\\n    \\\"source-notes.md\\\",\\n    \\\"unit-map.json\\\",\\n    \\\"drawings.json\\\",\\n    \\\"environment.json\\\",\\n    \\\"view-layer-config.json\\\",\\n    \\\"project-meta-example.json\\\",\\n    \\\"material-intake-template.json\\\",\\n    \\\"showroom-payload.json\\\",\\n    \\\"qa.md\\\",\\n    \\\"plans/\\\"\\n  ],\\n  \\\"next\\\": [\\n    \\\"node scripts/build-project-showroom-payload.mjs codex-factory-smoke-1782533706040 --write\\\",\\n    \\\"node scripts/validate-project-showroom-payload.mjs --payload assets/projects/codex-factory-smoke-1782533706040/showroom-payload.json\\\"\\n  ]\\n}\\n\",\n      \"stderr_tail\": \"\"\n    },\n    {\n      \"name\": \"build showroom payload\",\n      \"command\": \"node.exe scripts/build-project-showroom-payload.mjs codex-factory-smoke-1782533706040 --write\",\n      \"exit_code\": 0,\n      \"ok\n... [truncated 1904 chars]",
+      "duration_ms": 2128,
+      "stdout": "> twentytwentyfive@1.5.0 qa:project-factory-smoke\n> node scripts/qa-project-factory-smoke.mjs --out docs/qa/project-factory-smoke-report.json\n\n{\n  \"generated_at\": \"2026-06-27T04:32:55.794Z\",\n  \"slug\": \"codex-factory-smoke-1782534775794\",\n  \"folder\": \"assets/projects/codex-factory-smoke-1782534775794\",\n  \"keep\": false,\n  \"out\": \"docs/qa/project-factory-smoke-report.json\",\n  \"steps\": [\n    {\n      \"name\": \"syntax check initializer\",\n      \"command\": \"node.exe --check scripts/init-project-showroom.mjs\",\n      \"exit_code\": 0,\n      \"ok\": true,\n      \"stdout_tail\": \"\",\n      \"stderr_tail\": \"\"\n    },\n    {\n      \"name\": \"init project showroom folder\",\n      \"command\": \"node.exe scripts/init-project-showroom.mjs codex-factory-smoke-1782534775794 --post-id 0 --title Codex Factory Smoke\",\n      \"exit_code\": 0,\n      \"ok\": true,\n      \"stdout_tail\": \"{\\n  \\\"ok\\\": true,\\n  \\\"slug\\\": \\\"codex-factory-smoke-1782534775794\\\",\\n  \\\"post_id\\\": 0,\\n  \\\"folder\\\": \\\"assets/projects/codex-factory-smoke-1782534775794\\\",\\n  \\\"files\\\": [\\n    \\\"source-notes.md\\\",\\n    \\\"unit-map.json\\\",\\n    \\\"drawings.json\\\",\\n    \\\"environment.json\\\",\\n    \\\"view-layer-config.json\\\",\\n    \\\"project-meta-example.json\\\",\\n    \\\"material-intake-template.json\\\",\\n    \\\"showroom-payload.json\\\",\\n    \\\"qa.md\\\",\\n    \\\"plans/\\\"\\n  ],\\n  \\\"next\\\": [\\n    \\\"node scripts/build-project-showroom-payload.mjs codex-factory-smoke-1782534775794 --write\\\",\\n    \\\"node scripts/validate-project-showroom-payload.mjs --payload assets/projects/codex-factory-smoke-1782534775794/showroom-payload.json\\\"\\n  ]\\n}\\n\",\n      \"stderr_tail\": \"\"\n    },\n    {\n      \"name\": \"build showroom payload\",\n      \"command\": \"node.exe scripts/build-project-showroom-payload.mjs codex-factory-smoke-1782534775794 --write\",\n      \"exit_code\": 0,\n      \"ok\n... [truncated 1904 chars]",
       "stderr": ""
     }
   ]

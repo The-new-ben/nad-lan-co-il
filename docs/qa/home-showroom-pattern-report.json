@@ -40,6 +40,10 @@
       "ok": true
     },
     {
+      "name": "home_language_controls_inside_project_engine",
+      "ok": true
+    },
+    {
       "name": "hero_language_controls",
       "ok": true
     },

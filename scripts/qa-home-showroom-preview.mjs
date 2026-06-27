@@ -108,6 +108,7 @@ async function measure(page) {
 		const tapSizes = targetRows.map((row) => row.min);
 		const catalog = rect('#projects');
 		const hero = rect('.nlh-home-hero');
+		const languages = rect('.nle-catalog .nlh-home-languages') || rect('.nlh-home-languages');
 		const showroom = rect('#showroom');
 		const activeLanguage = document.querySelector('.nlh-project-language-rail [data-nle-lang].is-active')?.getAttribute('data-nle-lang') || '';
 		const catalogLanguageUrls = Object.fromEntries(
@@ -134,6 +135,7 @@ async function measure(page) {
 			headerRoutes: document.querySelectorAll('.nl-site-nav a').length,
 			footerLinks: document.querySelectorAll('.nl-site-footer a').length,
 			languageEntries: document.querySelectorAll('.nlh-home-languages button, .nlh-home-languages a, .nlh-home-languages span, .nle-langs span').length,
+			languageInsideCatalog: !!document.querySelector('.nle-catalog .nlh-home-languages'),
 			catalogLanguageEntries: document.querySelectorAll('.nle-catalog .nlh-project-language-rail button, .nle-catalog .nlh-project-language-rail a, .nle-catalog .nlh-project-language-rail span').length,
 			catalogLanguageButtons: document.querySelectorAll('.nle-catalog .nlh-project-language-rail button[data-nle-lang]').length,
 			catalogLanguageLinks: document.querySelectorAll('.nle-catalog .nlh-project-language-rail a[data-nle-lang][href]').length,
@@ -165,6 +167,7 @@ async function measure(page) {
 			hasInternalWords: /(SEO|CMS|CRM|lead|leads|engine|template|prototype|project manager|supplier|contractor|internal|strategy|factory|fallback|placeholder|mock|monetization|פאנל|מנוע|תבנית|לידים|משפך|מוניטיז|אסטרטג|מקום שמור|פרויקטים לבדיקה|אזור הבחירה המרכזי של דף הבית)/i.test(visibleText),
 			hasDefaultChromeWords: defaultChromeWords.some((word) => visibleText.includes(word)),
 			hero,
+			languages,
 			catalog,
 			showroom
 		};
@@ -178,6 +181,7 @@ function failuresFor(viewName, before, after, english, errors, viewportHeight) {
 	if (before.headerRoutes < 7) failures.push(`${viewName}: expected at least 7 real-estate header routes`);
 	if (before.footerLinks < 20) failures.push(`${viewName}: expected at least 20 footer links`);
 	if (before.languageEntries < 5) failures.push(`${viewName}: expected at least 5 language entries`);
+	if (!before.languageInsideCatalog) failures.push(`${viewName}: homepage language controls must be embedded in the project comparison engine`);
 	if (before.catalogLanguageEntries < 5) failures.push(`${viewName}: expected multilingual entries inside the project selector`);
 	if (before.catalogLanguageLinks < 5) failures.push(`${viewName}: expected real language links inside the project selector`);
 	if (!before.languageProjectTargetsOk) failures.push(`${viewName}: project language links do not match Ashira publication target URLs`);
@@ -204,6 +208,7 @@ function failuresFor(viewName, before, after, english, errors, viewportHeight) {
 	if (before.hasDefaultChromeWords || after.hasDefaultChromeWords) failures.push(`${viewName}: default theme chrome wording detected`);
 	if (!before.catalog || before.catalog.y > viewportHeight) failures.push(`${viewName}: project comparison section is not above the first viewport`);
 	if (!before.hero || !before.catalog || before.catalog.y < before.hero.bottom - 12) failures.push(`${viewName}: project selector must sit after the opening hero, not at the absolute top`);
+	if (!before.languages || !before.catalog || before.languages.y < before.catalog.y - 1 || before.languages.y > before.catalog.bottom) failures.push(`${viewName}: language controls must sit inside the project comparison section`);
 	if (!before.hero || !before.showroom || before.showroom.y < before.hero.bottom - 12) failures.push(`${viewName}: interactive showroom must sit after the opening hero, not at the absolute top`);
 	if (!before.catalog || !before.showroom || before.catalog.y > before.showroom.y) failures.push(`${viewName}: project comparison must appear before the interactive showroom`);
 	if (!before.showroom || before.showroom.y > viewportHeight * 1.75) failures.push(`${viewName}: interactive showroom starts too low after the project comparison rail`);

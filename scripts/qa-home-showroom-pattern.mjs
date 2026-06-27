@@ -17,6 +17,9 @@ function count(haystack, needle) {
 const pattern = textOf(PATTERN);
 const publicBlock = pattern.split('<!-- wp:html -->')[1]?.split('<!-- /wp:html -->')[0] || pattern;
 const visibleBlock = publicBlock.replace(/<[^>]*>/g, ' ');
+const projectEngineStart = pattern.indexOf('class="nle-catalog nlh-home-project-engine"');
+const languageStart = projectEngineStart === -1 ? -1 : pattern.indexOf('class="nlh-home-languages"', projectEngineStart);
+const catalogHeadStart = projectEngineStart === -1 ? -1 : pattern.indexOf('class="nle-catalog-head"', projectEngineStart);
 const functions = textOf('functions.php');
 const homeTemplate = textOf('templates/home.html');
 const engineJs = textOf('assets/js/nadlan-showroom-engine.js');
@@ -40,6 +43,7 @@ const checks = [
 	{ name: 'project_grid', ok: pattern.includes('data-nle-project-grid') },
 	{ name: 'project_language_rail', ok: pattern.includes('nlh-project-language-rail') && ['data-nle-lang="he"', 'data-nle-lang="en"', 'data-nle-lang="fr"', 'data-nle-lang="ru"', 'data-nle-lang="ar"'].every((value) => pattern.includes(value)) },
 	{ name: 'project_language_rail_links_manifest_urls', ok: languageRailLinksOk },
+	{ name: 'home_language_controls_inside_project_engine', ok: projectEngineStart !== -1 && languageStart > projectEngineStart && catalogHeadStart > languageStart },
 	{ name: 'hero_language_controls', ok: ['data-nle-home-text="hero_eyebrow"', 'data-nle-home-text="hero_title"', 'data-nle-home-text="hero_lead"', 'data-nle-home-value="area_value"', 'data-nle-home-aria="area_aria"'].every((value) => pattern.includes(value)) },
 	{ name: 'project_band_buyer_copy', ok: pattern.includes('השוואת פרויקטים חדשים לפי דירה, נוף ואומדן') && !pattern.includes('אזור הבחירה המרכזי של דף הבית') },
 	{ name: 'model_mount', ok: pattern.includes('data-nle-model-wrap') },

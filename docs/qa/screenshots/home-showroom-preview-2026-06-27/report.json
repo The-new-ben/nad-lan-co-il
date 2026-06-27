@@ -13,6 +13,7 @@
         "headerRoutes": 7,
         "footerLinks": 23,
         "languageEntries": 5,
+        "languageInsideCatalog": true,
         "catalogLanguageEntries": 5,
         "catalogLanguageButtons": 0,
         "catalogLanguageLinks": 5,
@@ -57,21 +58,29 @@
           "right": 1360,
           "bottom": 632.109375
         },
+        "languages": {
+          "x": 95,
+          "y": 659.109375,
+          "width": 1250,
+          "height": 60,
+          "right": 1345,
+          "bottom": 719.109375
+        },
         "catalog": {
           "x": 80,
-          "y": 716.109375,
+          "y": 644.109375,
           "width": 1280,
-          "height": 449.953125,
+          "height": 523.953125,
           "right": 1360,
-          "bottom": 1166.0625
+          "bottom": 1168.0625
         },
         "showroom": {
           "x": 80,
-          "y": 1178.0625,
+          "y": 1180.0625,
           "width": 1280,
           "height": 1010.375,
           "right": 1360,
-          "bottom": 2188.4375
+          "bottom": 2190.4375
         }
       },
       "after": {
@@ -82,6 +91,7 @@
         "headerRoutes": 7,
         "footerLinks": 23,
         "languageEntries": 5,
+        "languageInsideCatalog": true,
         "catalogLanguageEntries": 5,
         "catalogLanguageButtons": 0,
         "catalogLanguageLinks": 5,
@@ -120,17 +130,25 @@
         "hasDefaultChromeWords": false,
         "hero": {
           "x": 80,
-          "y": -1072,
+          "y": -1074,
           "width": 1280,
           "height": 538.109375,
           "right": 1360,
-          "bottom": -533.890625
+          "bottom": -535.890625
+        },
+        "languages": {
+          "x": 95,
+          "y": -508.890625,
+          "width": 1250,
+          "height": 60,
+          "right": 1345,
+          "bottom": -448.890625
         },
         "catalog": {
           "x": 80,
-          "y": -449.890625,
+          "y": -523.890625,
           "width": 1280,
-          "height": 449.953125,
+          "height": 523.953125,
           "right": 1360,
           "bottom": 0.0625
         },
@@ -151,6 +169,7 @@
         "headerRoutes": 7,
         "footerLinks": 23,
         "languageEntries": 5,
+        "languageInsideCatalog": true,
         "catalogLanguageEntries": 5,
         "catalogLanguageButtons": 0,
         "catalogLanguageLinks": 5,
@@ -189,27 +208,35 @@
         "hasDefaultChromeWords": false,
         "hero": {
           "x": 80,
-          "y": 20,
+          "y": 5,
           "width": 1280,
           "height": 644.96875,
           "right": 1360,
-          "bottom": 664.96875
+          "bottom": 649.96875
+        },
+        "languages": {
+          "x": 95,
+          "y": 676.96875,
+          "width": 1250,
+          "height": 60,
+          "right": 1345,
+          "bottom": 736.96875
         },
         "catalog": {
           "x": 80,
-          "y": 748.96875,
+          "y": 661.96875,
           "width": 1280,
-          "height": 639.625,
+          "height": 713.625,
           "right": 1360,
-          "bottom": 1388.59375
+          "bottom": 1375.59375
         },
         "showroom": {
           "x": 80,
-          "y": 1400.59375,
+          "y": 1387.59375,
           "width": 1280,
           "height": 1076.28125,
           "right": 1360,
-          "bottom": 2476.875
+          "bottom": 2463.875
         }
       },
       "otherLanguageProofs": [
@@ -262,6 +289,7 @@
         "headerRoutes": 7,
         "footerLinks": 23,
         "languageEntries": 5,
+        "languageInsideCatalog": true,
         "catalogLanguageEntries": 5,
         "catalogLanguageButtons": 0,
         "catalogLanguageLinks": 5,
@@ -306,21 +334,29 @@
           "right": 752,
           "bottom": 791
         },
+        "languages": {
+          "x": 31,
+          "y": 830,
+          "width": 706,
+          "height": 62,
+          "right": 737,
+          "bottom": 892
+        },
         "catalog": {
           "x": 16,
-          "y": 887,
+          "y": 815,
           "width": 736,
-          "height": 550.828125,
+          "height": 626.828125,
           "right": 752,
-          "bottom": 1437.828125
+          "bottom": 1441.828125
         },
         "showroom": {
           "x": 16,
-          "y": 1461.828125,
+          "y": 1465.828125,
           "width": 736,
           "height": 1482.5,
           "right": 752,
-          "bottom": 2944.328125
+          "bottom": 2948.328125
         }
       },
       "after": {
@@ -331,6 +367,7 @@
         "headerRoutes": 7,
         "footerLinks": 23,
         "languageEntries": 5,
+        "languageInsideCatalog": true,
         "catalogLanguageEntries": 5,
         "catalogLanguageButtons": 0,
         "catalogLanguageLinks": 5,
@@ -369,17 +406,25 @@
         "hasDefaultChromeWords": false,
         "hero": {
           "x": 16,
-          "y": -1799,
+          "y": -1803,
           "width": 736,
           "height": 575,
           "right": 752,
-          "bottom": -1224
+          "bottom": -1228
+        },
+        "languages": {
+          "x": 31,
+          "y": -1189,
+          "width": 706,
+          "height": 62,
+          "right": 737,
+          "bottom": -1127
         },
         "catalog": {
           "x": 16,
-          "y": -1128,
+          "y": -1204,
           "width": 736,
-          "height": 550.828125,
+          "height": 626.828125,
           "right": 752,
           "bottom": -577.171875
         },
@@ -400,6 +445,7 @@
         "headerRoutes": 7,
         "footerLinks": 23,
         "languageEntries": 5,
+        "languageInsideCatalog": true,
         "catalogLanguageEntries": 5,
         "catalogLanguageButtons": 0,
         "catalogLanguageLinks": 5,
@@ -438,27 +484,35 @@
         "hasDefaultChromeWords": false,
         "hero": {
           "x": 16,
-          "y": -67,
+          "y": -95,
           "width": 736,
           "height": 618.640625,
           "right": 752,
-          "bottom": 551.640625
+          "bottom": 523.640625
+        },
+        "languages": {
+          "x": 31,
+          "y": 562.640625,
+          "width": 706,
+          "height": 62,
+          "right": 737,
+          "bottom": 624.640625
         },
         "catalog": {
           "x": 16,
-          "y": 649.640625,
+          "y": 547.640625,
           "width": 736,
-          "height": 633.1875,
+          "height": 709.1875,
           "right": 752,
-          "bottom": 1282.828125
+          "bottom": 1256.828125
         },
         "showroom": {
           "x": 16,
-          "y": 1306.828125,
+          "y": 1280.828125,
           "width": 736,
           "height": 1482.5,
           "right": 752,
-          "bottom": 2789.328125
+          "bottom": 2763.328125
         }
       },
       "otherLanguageProofs": [
@@ -511,6 +565,7 @@
         "headerRoutes": 7,
         "footerLinks": 23,
         "languageEntries": 5,
+        "languageInsideCatalog": true,
         "catalogLanguageEntries": 5,
         "catalogLanguageButtons": 0,
         "catalogLanguageLinks": 5,
@@ -555,21 +610,29 @@
           "right": 380,
           "bottom": 729.75
         },
+        "languages": {
+          "x": 23,
+          "y": 766.75,
+          "width": 344,
+          "height": 54,
+          "right": 367,
+          "bottom": 820.75
+        },
         "catalog": {
           "x": 10,
-          "y": 817.75,
+          "y": 753.75,
           "width": 370,
-          "height": 599.640625,
+          "height": 667.640625,
           "right": 380,
-          "bottom": 1417.390625
+          "bottom": 1421.390625
         },
         "showroom": {
           "x": 10,
-          "y": 1437.390625,
+          "y": 1441.390625,
           "width": 370,
           "height": 1609.6875,
           "right": 380,
-          "bottom": 3047.078125
+          "bottom": 3051.078125
         }
       },
       "after": {
@@ -580,6 +643,7 @@
         "headerRoutes": 7,
         "footerLinks": 23,
         "languageEntries": 5,
+        "languageInsideCatalog": true,
         "catalogLanguageEntries": 5,
         "catalogLanguageButtons": 0,
         "catalogLanguageLinks": 5,
@@ -618,17 +682,25 @@
         "hasDefaultChromeWords": false,
         "hero": {
           "x": 10,
-          "y": -1969,
+          "y": -1973,
           "width": 370,
           "height": 539.75,
           "right": 380,
-          "bottom": -1429.25
+          "bottom": -1433.25
+        },
+        "languages": {
+          "x": 23,
+          "y": -1396.25,
+          "width": 344,
+          "height": 54,
+          "right": 367,
+          "bottom": -1342.25
         },
         "catalog": {
           "x": 10,
-          "y": -1341.25,
+          "y": -1409.25,
           "width": 370,
-          "height": 599.640625,
+          "height": 667.640625,
           "right": 380,
           "bottom": -741.609375
         },
@@ -649,6 +721,7 @@
         "headerRoutes": 7,
         "footerLinks": 23,
         "languageEntries": 5,
+        "languageInsideCatalog": true,
         "catalogLanguageEntries": 5,
         "catalogLanguageButtons": 0,
         "catalogLanguageLinks": 5,
@@ -687,27 +760,35 @@
         "hasDefaultChromeWords": false,
         "hero": {
           "x": 10,
-          "y": -102,
+          "y": -120,
           "width": 370,
           "height": 702.125,
           "right": 380,
-          "bottom": 600.125
+          "bottom": 582.125
+        },
+        "languages": {
+          "x": 23,
+          "y": 619.125,
+          "width": 344,
+          "height": 54,
+          "right": 367,
+          "bottom": 673.125
         },
         "catalog": {
           "x": 10,
-          "y": 688.125,
+          "y": 606.125,
           "width": 370,
-          "height": 659.5625,
+          "height": 727.5625,
           "right": 380,
-          "bottom": 1347.6875
+          "bottom": 1333.6875
         },
         "showroom": {
           "x": 10,
-          "y": 1367.6875,
+          "y": 1353.6875,
           "width": 370,
           "height": 1628.28125,
           "right": 380,
-          "bottom": 2995.96875
+          "bottom": 2981.96875
         }
       },
       "otherLanguageProofs": [
@@ -760,6 +841,7 @@
         "headerRoutes": 7,
         "footerLinks": 23,
         "languageEntries": 5,
+        "languageInsideCatalog": true,
         "catalogLanguageEntries": 5,
         "catalogLanguageButtons": 0,
         "catalogLanguageLinks": 5,
@@ -804,21 +886,29 @@
           "right": 380,
           "bottom": 729.75
         },
+        "languages": {
+          "x": 23,
+          "y": 766.75,
+          "width": 344,
+          "height": 54,
+          "right": 367,
+          "bottom": 820.75
+        },
         "catalog": {
           "x": 10,
-          "y": 817.75,
+          "y": 753.75,
           "width": 370,
-          "height": 599.640625,
+          "height": 667.640625,
           "right": 380,
-          "bottom": 1417.390625
+          "bottom": 1421.390625
         },
         "showroom": {
           "x": 10,
-          "y": 1437.390625,
+          "y": 1441.390625,
           "width": 370,
           "height": 1609.6875,
           "right": 380,
-          "bottom": 3047.078125
+          "bottom": 3051.078125
         }
       },
       "after": {
@@ -829,6 +919,7 @@
         "headerRoutes": 7,
         "footerLinks": 23,
         "languageEntries": 5,
+        "languageInsideCatalog": true,
         "catalogLanguageEntries": 5,
         "catalogLanguageButtons": 0,
         "catalogLanguageLinks": 5,
@@ -867,17 +958,25 @@
         "hasDefaultChromeWords": false,
         "hero": {
           "x": 10,
-          "y": -1969,
+          "y": -1973,
           "width": 370,
           "height": 539.75,
           "right": 380,
-          "bottom": -1429.25
+          "bottom": -1433.25
+        },
+        "languages": {
+          "x": 23,
+          "y": -1396.25,
+          "width": 344,
+          "height": 54,
+          "right": 367,
+          "bottom": -1342.25
         },
         "catalog": {
           "x": 10,
-          "y": -1341.25,
+          "y": -1409.25,
           "width": 370,
-          "height": 599.640625,
+          "height": 667.640625,
           "right": 380,
           "bottom": -741.609375
         },
@@ -898,6 +997,7 @@
         "headerRoutes": 7,
         "footerLinks": 23,
         "languageEntries": 5,
+        "languageInsideCatalog": true,
         "catalogLanguageEntries": 5,
         "catalogLanguageButtons": 0,
         "catalogLanguageLinks": 5,
@@ -936,27 +1036,35 @@
         "hasDefaultChromeWords": false,
         "hero": {
           "x": 10,
-          "y": -102,
+          "y": -120,
           "width": 370,
           "height": 702.125,
           "right": 380,
-          "bottom": 600.125
+          "bottom": 582.125
+        },
+        "languages": {
+          "x": 23,
+          "y": 619.125,
+          "width": 344,
+          "height": 54,
+          "right": 367,
+          "bottom": 673.125
         },
         "catalog": {
           "x": 10,
-          "y": 688.125,
+          "y": 606.125,
           "width": 370,
-          "height": 659.5625,
+          "height": 727.5625,
           "right": 380,
-          "bottom": 1347.6875
+          "bottom": 1333.6875
         },
         "showroom": {
           "x": 10,
-          "y": 1367.6875,
+          "y": 1353.6875,
           "width": 370,
           "height": 1628.28125,
           "right": 380,
-          "bottom": 2995.96875
+          "bottom": 2981.96875
         }
       },
       "otherLanguageProofs": [

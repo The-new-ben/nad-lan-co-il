@@ -189,8 +189,8 @@
     {
       "name": "viewport:desktop-1440:project_selector_before_showroom",
       "ok": true,
-      "catalogY": 716.109375,
-      "showroomY": 1178.0625
+      "catalogY": 644.109375,
+      "showroomY": 1180.0625
     },
     {
       "name": "viewport:tablet-768:one_h1",
@@ -233,8 +233,8 @@
     {
       "name": "viewport:tablet-768:project_selector_before_showroom",
       "ok": true,
-      "catalogY": 887,
-      "showroomY": 1461.828125
+      "catalogY": 815,
+      "showroomY": 1465.828125
     },
     {
       "name": "viewport:mobile-390:one_h1",
@@ -277,8 +277,8 @@
     {
       "name": "viewport:mobile-390:project_selector_before_showroom",
       "ok": true,
-      "catalogY": 817.75,
-      "showroomY": 1437.390625
+      "catalogY": 753.75,
+      "showroomY": 1441.390625
     },
     {
       "name": "viewport:edge-mobile-390:one_h1",
@@ -321,8 +321,8 @@
     {
       "name": "viewport:edge-mobile-390:project_selector_before_showroom",
       "ok": true,
-      "catalogY": 817.75,
-      "showroomY": 1437.390625
+      "catalogY": 753.75,
+      "showroomY": 1441.390625
     }
   ],
   "failures": []
