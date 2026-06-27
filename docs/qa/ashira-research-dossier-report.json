@@ -2,7 +2,7 @@
   "ok": true,
   "document": "docs/research/2026-06-27-ashira-serp-source-dossier.md",
   "links": 11,
-  "characters": 11643,
+  "characters": 11867,
   "checks": [
     {
       "name": "has_length",

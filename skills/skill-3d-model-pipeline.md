@@ -331,6 +331,25 @@ pass their content-depth reports and pass screenshot QA. Ashira keeps `npm run
 qa:ashira-publication-readiness` as an alias, but the reusable checkers are the manifest-driven
 scripts above.
 
+When the preflight and owner approval are complete, use `scripts/apply-wp-publication-manifest.mjs`
+for the real WordPress write step. It reads the same manifest, validates every payload, looks up
+existing posts by slug with authenticated REST, and then updates or creates the page. It defaults to
+dry-run and draft status:
+
+```bash
+npm run publish:ashira-dry-run
+WP_USER=<user> WP_APP_PASSWORD=<application-password> node scripts/apply-wp-publication-manifest.mjs --manifest docs/plans/2026-06-27-ashira-publication-manifest.json --apply
+```
+
+Publishing is a separate, explicit command:
+
+```bash
+WP_USER=<user> WP_APP_PASSWORD=<application-password> node scripts/apply-wp-publication-manifest.mjs --manifest docs/plans/2026-06-27-ashira-publication-manifest.json --apply --status publish --confirm-publish
+```
+
+Never create a public endpoint just to bypass missing credentials. If `WP_USER` or
+`WP_APP_PASSWORD` is missing, stop at the verified dry-run and get the credential path fixed.
+
 The aggregate gate is project-specific today (`qa:ashira-full-preflight`) because it names the
 current language, screenshot and homepage dependencies. When cloning the factory to Dimri, Rainbow
 or another Sde Dov project, create the same aggregate gate for that project before calling it ready.

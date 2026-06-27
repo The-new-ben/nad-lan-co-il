@@ -61,6 +61,8 @@
 		"build:project-hreflang-artifact": "node scripts/build-project-hreflang-artifact.mjs --manifest docs/plans/2026-06-27-ashira-publication-manifest.json --out-json docs/seo/ashira-hreflang-map.json --out-html docs/seo/ashira-hreflang-head.html",
 		"qa:project-hreflang-artifact": "node scripts/qa-project-hreflang-artifact.mjs --manifest docs/plans/2026-06-27-ashira-publication-manifest.json --map docs/seo/ashira-hreflang-map.json --html docs/seo/ashira-hreflang-head.html --out docs/qa/project-hreflang-artifact-report.json --strict",
 		"qa:project-draft-import-dry-run": "node scripts/qa-project-draft-import-dry-run.mjs --manifest docs/plans/2026-06-27-ashira-publication-manifest.json --out docs/qa/project-draft-import-dry-run-report.json --strict",
+		"publish:ashira-dry-run": "node scripts/apply-wp-publication-manifest.mjs --manifest docs/plans/2026-06-27-ashira-publication-manifest.json --dry-run",
+		"publish:home-dry-run": "node scripts/apply-wp-publication-manifest.mjs --manifest docs/plans/2026-06-27-homepage-publication-manifest.json --dry-run",
 		"qa:project-publication-readiness": "node scripts/qa-project-publication-readiness.mjs --manifest docs/plans/2026-06-27-ashira-publication-manifest.json --out docs/qa/project-publication-readiness-report.json --strict",
 		"qa:ashira-publication-readiness": "node scripts/qa-ashira-publication-readiness.mjs --strict",
 		"qa:ashira-full-preflight": "node scripts/qa-ashira-full-preflight.mjs --out docs/qa/ashira-full-preflight-report.json --strict"

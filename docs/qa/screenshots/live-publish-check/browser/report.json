@@ -1,0 +1,274 @@
+{
+  "ok": false,
+  "generated_at": "2026-06-27T09:52:04.463Z",
+  "report": [
+    {
+      "name": "home",
+      "viewport": "desktop-1440",
+      "url": "https://nad-lan.co.il/?cb=live-visual-qa-20260627",
+      "screenshot": "C:\\Users\\pro\\Documents\\websites\\nad-lan-co-il-showroom-1680\\docs\\qa\\screenshots\\live-publish-check\\browser\\home-desktop-1440.png",
+      "errors": [
+        "Failed to load resource: the server responded with a status of 404 ()",
+        "Unexpected token '<', \"<!DOCTYPE \"... is not valid JSON"
+      ],
+      "metrics": {
+        "title": "דירות חדשות ופרויקטים עם בחירת דירה בתלת ממד | NadLan",
+        "h1s": [
+          "NadLan: בוחרים פרויקט ודירה לפני שפונים ליזם"
+        ],
+        "hasHomeHero": true,
+        "hasShowroom": false,
+        "hasModel": false,
+        "hasFacade": false,
+        "scrollWidth": 1425,
+        "clientWidth": 1425,
+        "bodyTextStart": "לדלג לתוכן\nנ\nנדל״ן חכם\nידע · כלים · החלטות\nקניית דירה\nמכירת דירה\nהשקעה\nאזורים ושכונות\nפרויקטים חדשים\nמשכנתא\nמשפט ומיסוי\nכלים\nאנשי מקצוע\nבדיקת עסקה\nמילון נדל״ן\nדף הבית\n\nפרויקטים חדשים · ישראל\n\nNadLan: בוחרים פרויקט ודירה לפני שפונים ליזם\n\nסי"
+      },
+      "ok": false
+    },
+    {
+      "name": "ashira-he",
+      "viewport": "desktop-1440",
+      "url": "https://nad-lan.co.il/projects/ashira-sde-dov/?cb=live-visual-qa-20260627",
+      "screenshot": "C:\\Users\\pro\\Documents\\websites\\nad-lan-co-il-showroom-1680\\docs\\qa\\screenshots\\live-publish-check\\browser\\ashira-he-desktop-1440.png",
+      "errors": [],
+      "metrics": {
+        "title": "דירות למכירה באשירה שדה דב | בחירת דירות, מבט מהדירה ושדה דב | נדלן חכם",
+        "h1s": [
+          "דירות למכירה באשירה שדה דב",
+          "דירות למכירה באשירה שדה דב"
+        ],
+        "hasHomeHero": false,
+        "hasShowroom": true,
+        "hasModel": true,
+        "hasFacade": false,
+        "scrollWidth": 1425,
+        "clientWidth": 1425,
+        "bodyTextStart": "לדלג לתוכן\nנ\nנדל״ן חכם\nידע · כלים · החלטות\nקניית דירה\nמכירת דירה\nהשקעה\nאזורים ושכונות\nפרויקטים חדשים\nמשכנתא\nמשפט ומיסוי\nכלים\nאנשי מקצוע\nבדיקת עסקה\nמילון נדל״ן\nדף הבית » NadLan Projects » דירות למכירה באשירה שדה דב\n\nדירות למכירה באשירה שדה ד"
+      },
+      "ok": true
+    },
+    {
+      "name": "ashira-en",
+      "viewport": "desktop-1440",
+      "url": "https://nad-lan.co.il/projects/ashira-sde-dov-en/?cb=live-visual-qa-20260627",
+      "screenshot": "C:\\Users\\pro\\Documents\\websites\\nad-lan-co-il-showroom-1680\\docs\\qa\\screenshots\\live-publish-check\\browser\\ashira-en-desktop-1440.png",
+      "errors": [],
+      "metrics": {
+        "title": "Ashira Sde Dov apartments for sale in Tel Aviv - נדלן חכם",
+        "h1s": [
+          "Ashira Sde Dov apartments for sale in Tel Aviv",
+          "Ashira Sde Dov apartments for sale in Tel Aviv"
+        ],
+        "hasHomeHero": false,
+        "hasShowroom": true,
+        "hasModel": true,
+        "hasFacade": false,
+        "scrollWidth": 1425,
+        "clientWidth": 1425,
+        "bodyTextStart": "לדלג לתוכן\nנ\nנדל״ן חכם\nידע · כלים · החלטות\nקניית דירה\nמכירת דירה\nהשקעה\nאזורים ושכונות\nפרויקטים חדשים\nמשכנתא\nמשפט ומיסוי\nכלים\nאנשי מקצוע\nבדיקת עסקה\nמילון נדל״ן\nדף הבית » NadLan Projects » Ashira Sde Dov apartments for sale in Tel Aviv\nאחר\nמא"
+      },
+      "ok": true
+    },
+    {
+      "name": "ashira-fr",
+      "viewport": "desktop-1440",
+      "url": "https://nad-lan.co.il/projects/ashira-sde-dov-fr/?cb=live-visual-qa-20260627",
+      "screenshot": "C:\\Users\\pro\\Documents\\websites\\nad-lan-co-il-showroom-1680\\docs\\qa\\screenshots\\live-publish-check\\browser\\ashira-fr-desktop-1440.png",
+      "errors": [],
+      "metrics": {
+        "title": "Appartements a vendre a Ashira Sde Dov, Tel Aviv - נדלן חכם",
+        "h1s": [
+          "Appartements a vendre a Ashira Sde Dov, Tel Aviv",
+          "Appartements a vendre a Ashira Sde Dov, Tel Aviv"
+        ],
+        "hasHomeHero": false,
+        "hasShowroom": true,
+        "hasModel": true,
+        "hasFacade": false,
+        "scrollWidth": 1425,
+        "clientWidth": 1425,
+        "bodyTextStart": "לדלג לתוכן\nנ\nנדל״ן חכם\nידע · כלים · החלטות\nקניית דירה\nמכירת דירה\nהשקעה\nאזורים ושכונות\nפרויקטים חדשים\nמשכנתא\nמשפט ומיסוי\nכלים\nאנשי מקצוע\nבדיקת עסקה\nמילון נדל״ן\nדף הבית » NadLan Projects » Appartements a vendre a Ashira Sde Dov, Tel Aviv\nאחר\n"
+      },
+      "ok": true
+    },
+    {
+      "name": "ashira-ru",
+      "viewport": "desktop-1440",
+      "url": "https://nad-lan.co.il/projects/ashira-sde-dov-ru/?cb=live-visual-qa-20260627",
+      "screenshot": "C:\\Users\\pro\\Documents\\websites\\nad-lan-co-il-showroom-1680\\docs\\qa\\screenshots\\live-publish-check\\browser\\ashira-ru-desktop-1440.png",
+      "errors": [],
+      "metrics": {
+        "title": "Квартиры в Ashira Sde Dov на продажу в Тель-Авиве - נדלן חכם",
+        "h1s": [
+          "Квартиры в Ashira Sde Dov на продажу в Тель-Авиве",
+          "Квартиры в Ashira Sde Dov на продажу в Тель-Авиве"
+        ],
+        "hasHomeHero": false,
+        "hasShowroom": true,
+        "hasModel": true,
+        "hasFacade": false,
+        "scrollWidth": 1425,
+        "clientWidth": 1425,
+        "bodyTextStart": "לדלג לתוכן\nנ\nנדל״ן חכם\nידע · כלים · החלטות\nקניית דירה\nמכירת דירה\nהשקעה\nאזורים ושכונות\nפרויקטים חדשים\nמשכנתא\nמשפט ומיסוי\nכלים\nאנשי מקצוע\nבדיקת עסקה\nמילון נדל״ן\nדף הבית » NadLan Projects » Квартиры в Ashira Sde Dov на продажу в Тель-Авиве\nאחר"
+      },
+      "ok": true
+    },
+    {
+      "name": "ashira-ar",
+      "viewport": "desktop-1440",
+      "url": "https://nad-lan.co.il/projects/ashira-sde-dov-ar/?cb=live-visual-qa-20260627",
+      "screenshot": "C:\\Users\\pro\\Documents\\websites\\nad-lan-co-il-showroom-1680\\docs\\qa\\screenshots\\live-publish-check\\browser\\ashira-ar-desktop-1440.png",
+      "errors": [],
+      "metrics": {
+        "title": "شقق Ashira Sde Dov للبيع في تل أبيب - נדלן חכם",
+        "h1s": [
+          "شقق Ashira Sde Dov للبيع في تل أبيب",
+          "شقق Ashira Sde Dov للبيع في تل أبيب"
+        ],
+        "hasHomeHero": false,
+        "hasShowroom": true,
+        "hasModel": true,
+        "hasFacade": false,
+        "scrollWidth": 1425,
+        "clientWidth": 1425,
+        "bodyTextStart": "לדלג לתוכן\nנ\nנדל״ן חכם\nידע · כלים · החלטות\nקניית דירה\nמכירת דירה\nהשקעה\nאזורים ושכונות\nפרויקטים חדשים\nמשכנתא\nמשפט ומיסוי\nכלים\nאנשי מקצוע\nבדיקת עסקה\nמילון נדל״ן\nדף הבית » NadLan Projects » شقق Ashira Sde Dov للبيع في تل أبيب\nאחר\nמאגר התחדשות "
+      },
+      "ok": true
+    },
+    {
+      "name": "home",
+      "viewport": "mobile-390",
+      "url": "https://nad-lan.co.il/?cb=live-visual-qa-20260627",
+      "screenshot": "C:\\Users\\pro\\Documents\\websites\\nad-lan-co-il-showroom-1680\\docs\\qa\\screenshots\\live-publish-check\\browser\\home-mobile-390.png",
+      "errors": [
+        "Failed to load resource: the server responded with a status of 404 ()",
+        "Unexpected token '<', \"<!DOCTYPE \"... is not valid JSON"
+      ],
+      "metrics": {
+        "title": "דירות חדשות ופרויקטים עם בחירת דירה בתלת ממד | NadLan",
+        "h1s": [
+          "NadLan: בוחרים פרויקט ודירה לפני שפונים ליזם"
+        ],
+        "hasHomeHero": true,
+        "hasShowroom": false,
+        "hasModel": false,
+        "hasFacade": false,
+        "scrollWidth": 390,
+        "clientWidth": 390,
+        "bodyTextStart": "לדלג לתוכן\nנ\nנדל״ן חכם\nדף הבית\n\nפרויקטים חדשים · ישראל\n\nNadLan: בוחרים פרויקט ודירה לפני שפונים ליזם\n\nסיורי פרויקטים בתלת ממד, בחירת דירה על הבניין, אומדני מחיר, סביבת הפרויקט, מחשבונים ואנשי מקצוע במקום אחד, לרוכשים בישראל ולמשקיעים מחוץ ל"
+      },
+      "ok": false
+    },
+    {
+      "name": "ashira-he",
+      "viewport": "mobile-390",
+      "url": "https://nad-lan.co.il/projects/ashira-sde-dov/?cb=live-visual-qa-20260627",
+      "screenshot": "C:\\Users\\pro\\Documents\\websites\\nad-lan-co-il-showroom-1680\\docs\\qa\\screenshots\\live-publish-check\\browser\\ashira-he-mobile-390.png",
+      "errors": [],
+      "metrics": {
+        "title": "דירות למכירה באשירה שדה דב | בחירת דירות, מבט מהדירה ושדה דב | נדלן חכם",
+        "h1s": [
+          "דירות למכירה באשירה שדה דב",
+          "דירות למכירה באשירה שדה דב"
+        ],
+        "hasHomeHero": false,
+        "hasShowroom": true,
+        "hasModel": true,
+        "hasFacade": false,
+        "scrollWidth": 390,
+        "clientWidth": 390,
+        "bodyTextStart": "לדלג לתוכן\nנ\nנדל״ן חכם\nדף הבית » NadLan Projects » דירות למכירה באשירה שדה דב\n\nדירות למכירה באשירה שדה דב · מתחם אשכול, מגרש 101, רובע שדה דב, תל אביב-יפו\n\nסיור בפרויקט דירות למכירה באשירה שדה דב\n\nסיור הפרויקט של דירות למכירה באשירה שדה דב "
+      },
+      "ok": true
+    },
+    {
+      "name": "ashira-en",
+      "viewport": "mobile-390",
+      "url": "https://nad-lan.co.il/projects/ashira-sde-dov-en/?cb=live-visual-qa-20260627",
+      "screenshot": "C:\\Users\\pro\\Documents\\websites\\nad-lan-co-il-showroom-1680\\docs\\qa\\screenshots\\live-publish-check\\browser\\ashira-en-mobile-390.png",
+      "errors": [],
+      "metrics": {
+        "title": "Ashira Sde Dov apartments for sale in Tel Aviv - נדלן חכם",
+        "h1s": [
+          "Ashira Sde Dov apartments for sale in Tel Aviv",
+          "Ashira Sde Dov apartments for sale in Tel Aviv"
+        ],
+        "hasHomeHero": false,
+        "hasShowroom": true,
+        "hasModel": true,
+        "hasFacade": false,
+        "scrollWidth": 390,
+        "clientWidth": 390,
+        "bodyTextStart": "לדלג לתוכן\nנ\nנדל״ן חכם\nדף הבית » NadLan Projects » Ashira Sde Dov apartments for sale in Tel Aviv\nאחר\nמאגר התחדשות עירונית · data.gov.il\nAshira Sde Dov apartments for sale in Tel Aviv\nקבלת מידע על הפרויקט\nבית › פרויקטים › Ashira Sde Dov apa"
+      },
+      "ok": true
+    },
+    {
+      "name": "ashira-fr",
+      "viewport": "mobile-390",
+      "url": "https://nad-lan.co.il/projects/ashira-sde-dov-fr/?cb=live-visual-qa-20260627",
+      "screenshot": "C:\\Users\\pro\\Documents\\websites\\nad-lan-co-il-showroom-1680\\docs\\qa\\screenshots\\live-publish-check\\browser\\ashira-fr-mobile-390.png",
+      "errors": [],
+      "metrics": {
+        "title": "Appartements a vendre a Ashira Sde Dov, Tel Aviv - נדלן חכם",
+        "h1s": [
+          "Appartements a vendre a Ashira Sde Dov, Tel Aviv",
+          "Appartements a vendre a Ashira Sde Dov, Tel Aviv"
+        ],
+        "hasHomeHero": false,
+        "hasShowroom": true,
+        "hasModel": true,
+        "hasFacade": false,
+        "scrollWidth": 390,
+        "clientWidth": 390,
+        "bodyTextStart": "לדלג לתוכן\nנ\nנדל״ן חכם\nדף הבית » NadLan Projects » Appartements a vendre a Ashira Sde Dov, Tel Aviv\nאחר\nמאגר התחדשות עירונית · data.gov.il\nAppartements a vendre a Ashira Sde Dov, Tel Aviv\nקבלת מידע על הפרויקט\nבית › פרויקטים › Appartements a"
+      },
+      "ok": true
+    },
+    {
+      "name": "ashira-ru",
+      "viewport": "mobile-390",
+      "url": "https://nad-lan.co.il/projects/ashira-sde-dov-ru/?cb=live-visual-qa-20260627",
+      "screenshot": "C:\\Users\\pro\\Documents\\websites\\nad-lan-co-il-showroom-1680\\docs\\qa\\screenshots\\live-publish-check\\browser\\ashira-ru-mobile-390.png",
+      "errors": [],
+      "metrics": {
+        "title": "Квартиры в Ashira Sde Dov на продажу в Тель-Авиве - נדלן חכם",
+        "h1s": [
+          "Квартиры в Ashira Sde Dov на продажу в Тель-Авиве",
+          "Квартиры в Ashira Sde Dov на продажу в Тель-Авиве"
+        ],
+        "hasHomeHero": false,
+        "hasShowroom": true,
+        "hasModel": true,
+        "hasFacade": false,
+        "scrollWidth": 390,
+        "clientWidth": 390,
+        "bodyTextStart": "לדלג לתוכן\nנ\nנדל״ן חכם\nדף הבית » NadLan Projects » Квартиры в Ashira Sde Dov на продажу в Тель-Авиве\nאחר\nמאגר התחדשות עירונית · data.gov.il\nКвартиры в Ashira Sde Dov на продажу в Тель-Авиве\nקבלת מידע על הפרויקט\nבית › פרויקטים › Квартиры в A"
+      },
+      "ok": true
+    },
+    {
+      "name": "ashira-ar",
+      "viewport": "mobile-390",
+      "url": "https://nad-lan.co.il/projects/ashira-sde-dov-ar/?cb=live-visual-qa-20260627",
+      "screenshot": "C:\\Users\\pro\\Documents\\websites\\nad-lan-co-il-showroom-1680\\docs\\qa\\screenshots\\live-publish-check\\browser\\ashira-ar-mobile-390.png",
+      "errors": [],
+      "metrics": {
+        "title": "شقق Ashira Sde Dov للبيع في تل أبيب - נדלן חכם",
+        "h1s": [
+          "شقق Ashira Sde Dov للبيع في تل أبيب",
+          "شقق Ashira Sde Dov للبيع في تل أبيب"
+        ],
+        "hasHomeHero": false,
+        "hasShowroom": true,
+        "hasModel": true,
+        "hasFacade": false,
+        "scrollWidth": 390,
+        "clientWidth": 390,
+        "bodyTextStart": "לדלג לתוכן\nנ\nנדל״ן חכם\nדף הבית » NadLan Projects » شقق Ashira Sde Dov للبيع في تل أبيب\nאחר\nמאגר התחדשות עירונית · data.gov.il\nشقق Ashira Sde Dov للبيع في تل أبيب\nקבלת מידע על הפרויקט\nבית › פרויקטים › شقق Ashira Sde Dov للبيع في تل أبيب\n\nNad"
+      },
+      "ok": true
+    }
+  ]
+}

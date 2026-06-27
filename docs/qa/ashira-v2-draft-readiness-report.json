@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-27T00:40:59.138Z",
+  "generated_at": "2026-06-27T06:44:25.527Z",
   "check": "wp-draft-payload-readiness",
   "draft_file": "docs/wp-drafts/ashira-sde-dov-v2-draft.json",
   "failures": [],
@@ -9,7 +9,7 @@
     "status": "draft",
     "slug": "ashira-sde-dov",
     "title": "דירות למכירה באשירה שדה דב",
-    "content_chars": 25188,
+    "content_chars": 25404,
     "visible_chars": 17030,
     "h1_count": 1,
     "unit_ids": [

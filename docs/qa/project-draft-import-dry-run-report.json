@@ -11,36 +11,36 @@
         "lang": "he",
         "ok": true,
         "pattern": "patterns/project-showroom-ashira-v2.php",
-        "payload_sha256": "9f7c8e7c82ba39c1f56bbc46566fdd5bb6f42a2e69ccfdebf075630ae849b6f9",
-        "expected_sha256": "9f7c8e7c82ba39c1f56bbc46566fdd5bb6f42a2e69ccfdebf075630ae849b6f9"
+        "payload_sha256": "ef88b1118d7d4594e36ffcf64f8b65aa21249756f6e4240fb280c7a04a3c831d",
+        "expected_sha256": "ef88b1118d7d4594e36ffcf64f8b65aa21249756f6e4240fb280c7a04a3c831d"
       },
       {
         "lang": "en",
         "ok": true,
         "pattern": "patterns/project-showroom-ashira-v2-en.php",
-        "payload_sha256": "4fa200d97e8321fea5152727ca4b369ebfa9c8c183139c48e77ab750aa1a4a51",
-        "expected_sha256": "4fa200d97e8321fea5152727ca4b369ebfa9c8c183139c48e77ab750aa1a4a51"
+        "payload_sha256": "25c8805f340b318d06bf835d4eda148cd164614b9bf83d9355ad4958c77f4258",
+        "expected_sha256": "25c8805f340b318d06bf835d4eda148cd164614b9bf83d9355ad4958c77f4258"
       },
       {
         "lang": "fr",
         "ok": true,
         "pattern": "patterns/project-showroom-ashira-v2-fr.php",
-        "payload_sha256": "e96685701af8bc16d415e4fcd9782effb9a3cc885f6199edf768c9f6e4417de5",
-        "expected_sha256": "e96685701af8bc16d415e4fcd9782effb9a3cc885f6199edf768c9f6e4417de5"
+        "payload_sha256": "4e76e067f54f1b1d3f5be1872532c3efd34cc93f7a755476585cec328fefbdc5",
+        "expected_sha256": "4e76e067f54f1b1d3f5be1872532c3efd34cc93f7a755476585cec328fefbdc5"
       },
       {
         "lang": "ru",
         "ok": true,
         "pattern": "patterns/project-showroom-ashira-v2-ru.php",
-        "payload_sha256": "054084442a172da6e4e7d0cee61c61dc019ad1c19f7fb61a09ddabb1ad596b05",
-        "expected_sha256": "054084442a172da6e4e7d0cee61c61dc019ad1c19f7fb61a09ddabb1ad596b05"
+        "payload_sha256": "e5940a5d06dbca5b61e474dd6118e527868e72e40dbefc13f9fb30015d5d2b6c",
+        "expected_sha256": "e5940a5d06dbca5b61e474dd6118e527868e72e40dbefc13f9fb30015d5d2b6c"
       },
       {
         "lang": "ar",
         "ok": true,
         "pattern": "patterns/project-showroom-ashira-v2-ar.php",
-        "payload_sha256": "a1cb7409cbfd7bd2da766a0fe2c1c51b0e465910ee788789bae1ffa6d0587f68",
-        "expected_sha256": "a1cb7409cbfd7bd2da766a0fe2c1c51b0e465910ee788789bae1ffa6d0587f68"
+        "payload_sha256": "5170e89bf617be7a5b6243c625e8a565eca0e3ab72c05bcfcef7df0f1ef9afa6",
+        "expected_sha256": "5170e89bf617be7a5b6243c625e8a565eca0e3ab72c05bcfcef7df0f1ef9afa6"
       }
     ]
   },
@@ -56,13 +56,13 @@
       "status": "draft",
       "slug": "ashira-sde-dov",
       "title": "דירות למכירה באשירה שדה דב",
-      "content_chars": 25188,
+      "content_chars": 25404,
       "meta_fields": 4,
       "pattern_parity": {
         "ok": true,
         "pattern": "patterns/project-showroom-ashira-v2.php",
-        "payload_sha256": "9f7c8e7c82ba39c1f56bbc46566fdd5bb6f42a2e69ccfdebf075630ae849b6f9",
-        "expected_sha256": "9f7c8e7c82ba39c1f56bbc46566fdd5bb6f42a2e69ccfdebf075630ae849b6f9"
+        "payload_sha256": "ef88b1118d7d4594e36ffcf64f8b65aa21249756f6e4240fb280c7a04a3c831d",
+        "expected_sha256": "ef88b1118d7d4594e36ffcf64f8b65aa21249756f6e4240fb280c7a04a3c831d"
       }
     },
     {
@@ -76,13 +76,13 @@
       "status": "draft",
       "slug": "ashira-sde-dov-en",
       "title": "Ashira Sde Dov apartments for sale in Tel Aviv",
-      "content_chars": 28997,
+      "content_chars": 29198,
       "meta_fields": 4,
       "pattern_parity": {
         "ok": true,
         "pattern": "patterns/project-showroom-ashira-v2-en.php",
-        "payload_sha256": "4fa200d97e8321fea5152727ca4b369ebfa9c8c183139c48e77ab750aa1a4a51",
-        "expected_sha256": "4fa200d97e8321fea5152727ca4b369ebfa9c8c183139c48e77ab750aa1a4a51"
+        "payload_sha256": "25c8805f340b318d06bf835d4eda148cd164614b9bf83d9355ad4958c77f4258",
+        "expected_sha256": "25c8805f340b318d06bf835d4eda148cd164614b9bf83d9355ad4958c77f4258"
       }
     },
     {
@@ -96,13 +96,13 @@
       "status": "draft",
       "slug": "ashira-sde-dov-fr",
       "title": "Appartements a vendre a Ashira Sde Dov, Tel Aviv",
-      "content_chars": 33866,
+      "content_chars": 34084,
       "meta_fields": 4,
       "pattern_parity": {
         "ok": true,
         "pattern": "patterns/project-showroom-ashira-v2-fr.php",
-        "payload_sha256": "e96685701af8bc16d415e4fcd9782effb9a3cc885f6199edf768c9f6e4417de5",
-        "expected_sha256": "e96685701af8bc16d415e4fcd9782effb9a3cc885f6199edf768c9f6e4417de5"
+        "payload_sha256": "4e76e067f54f1b1d3f5be1872532c3efd34cc93f7a755476585cec328fefbdc5",
+        "expected_sha256": "4e76e067f54f1b1d3f5be1872532c3efd34cc93f7a755476585cec328fefbdc5"
       }
     },
     {
@@ -116,13 +116,13 @@
       "status": "draft",
       "slug": "ashira-sde-dov-ru",
       "title": "Квартиры в Ashira Sde Dov на продажу в Тель-Авиве",
-      "content_chars": 32611,
+      "content_chars": 32835,
       "meta_fields": 4,
       "pattern_parity": {
         "ok": true,
         "pattern": "patterns/project-showroom-ashira-v2-ru.php",
-        "payload_sha256": "054084442a172da6e4e7d0cee61c61dc019ad1c19f7fb61a09ddabb1ad596b05",
-        "expected_sha256": "054084442a172da6e4e7d0cee61c61dc019ad1c19f7fb61a09ddabb1ad596b05"
+        "payload_sha256": "e5940a5d06dbca5b61e474dd6118e527868e72e40dbefc13f9fb30015d5d2b6c",
+        "expected_sha256": "e5940a5d06dbca5b61e474dd6118e527868e72e40dbefc13f9fb30015d5d2b6c"
       }
     },
     {
@@ -136,13 +136,13 @@
       "status": "draft",
       "slug": "ashira-sde-dov-ar",
       "title": "شقق Ashira Sde Dov للبيع في تل أبيب",
-      "content_chars": 28092,
+      "content_chars": 28310,
       "meta_fields": 4,
       "pattern_parity": {
         "ok": true,
         "pattern": "patterns/project-showroom-ashira-v2-ar.php",
-        "payload_sha256": "a1cb7409cbfd7bd2da766a0fe2c1c51b0e465910ee788789bae1ffa6d0587f68",
-        "expected_sha256": "a1cb7409cbfd7bd2da766a0fe2c1c51b0e465910ee788789bae1ffa6d0587f68"
+        "payload_sha256": "5170e89bf617be7a5b6243c625e8a565eca0e3ab72c05bcfcef7df0f1ef9afa6",
+        "expected_sha256": "5170e89bf617be7a5b6243c625e8a565eca0e3ab72c05bcfcef7df0f1ef9afa6"
       }
     }
   ],
