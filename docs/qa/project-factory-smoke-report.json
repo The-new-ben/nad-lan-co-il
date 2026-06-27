@@ -1,0 +1,77 @@
+{
+  "generated_at": "2026-06-27T03:32:17.536Z",
+  "slug": "codex-factory-smoke-1782531137536",
+  "folder": "assets/projects/codex-factory-smoke-1782531137536",
+  "keep": false,
+  "out": "docs/qa/project-factory-smoke-report.json",
+  "steps": [
+    {
+      "name": "syntax check initializer",
+      "command": "node.exe --check scripts/init-project-showroom.mjs",
+      "exit_code": 0,
+      "ok": true,
+      "stdout_tail": "",
+      "stderr_tail": ""
+    },
+    {
+      "name": "init project showroom folder",
+      "command": "node.exe scripts/init-project-showroom.mjs codex-factory-smoke-1782531137536 --post-id 0 --title Codex Factory Smoke",
+      "exit_code": 0,
+      "ok": true,
+      "stdout_tail": "{\n  \"ok\": true,\n  \"slug\": \"codex-factory-smoke-1782531137536\",\n  \"post_id\": 0,\n  \"folder\": \"assets/projects/codex-factory-smoke-1782531137536\",\n  \"files\": [\n    \"source-notes.md\",\n    \"unit-map.json\",\n    \"drawings.json\",\n    \"environment.json\",\n    \"view-layer-config.json\",\n    \"project-meta-example.json\",\n    \"material-intake-template.json\",\n    \"showroom-payload.json\",\n    \"qa.md\",\n    \"plans/\"\n  ],\n  \"next\": [\n    \"node scripts/build-project-showroom-payload.mjs codex-factory-smoke-1782531137536 --write\",\n    \"node scripts/validate-project-showroom-payload.mjs --payload assets/projects/codex-factory-smoke-1782531137536/showroom-payload.json\"\n  ]\n}\n",
+      "stderr_tail": ""
+    },
+    {
+      "name": "build showroom payload",
+      "command": "node.exe scripts/build-project-showroom-payload.mjs codex-factory-smoke-1782531137536 --write",
+      "exit_code": 0,
+      "ok": true,
+      "stdout_tail": "Wrote C:\\Users\\pro\\Documents\\websites\\nad-lan-co-il-showroom-1680\\assets\\projects\\codex-factory-smoke-1782531137536\\showroom-payload.json\n",
+      "stderr_tail": ""
+    },
+    {
+      "name": "validate showroom payload",
+      "command": "node.exe scripts/validate-project-showroom-payload.mjs --payload assets/projects/codex-factory-smoke-1782531137536/showroom-payload.json",
+      "exit_code": 0,
+      "ok": true,
+      "stdout_tail": "{\n  \"payload\": \"assets/projects/codex-factory-smoke-1782531137536/showroom-payload.json\",\n  \"schema\": \"docs/templates/project-showroom-payload.schema.json\",\n  \"schema_id\": \"https://nad-lan.co.il/schemas/project-showroom-payload.schema.json\",\n  \"meta_fields\": 17,\n  \"expected_fields\": 17,\n  \"units\": 1,\n  \"drawings\": 1,\n  \"errors\": []\n}\n",
+      "stderr_tail": ""
+    },
+    {
+      "name": "expected scaffold files exist",
+      "command": "check assets/projects/codex-factory-smoke-1782531137536",
+      "exit_code": 0,
+      "ok": true,
+      "stdout_tail": "source-notes.md\nunit-map.json\ndrawings.json\nenvironment.json\nview-layer-config.json\nproject-meta-example.json\nmaterial-intake-template.json\nshowroom-payload.json\nqa.md",
+      "stderr_tail": ""
+    }
+  ],
+  "generated_files": [
+    "source-notes.md",
+    "unit-map.json",
+    "drawings.json",
+    "environment.json",
+    "view-layer-config.json",
+    "project-meta-example.json",
+    "material-intake-template.json",
+    "showroom-payload.json",
+    "qa.md"
+  ],
+  "cleaned_up": true,
+  "expected_files": [
+    "source-notes.md",
+    "unit-map.json",
+    "drawings.json",
+    "environment.json",
+    "view-layer-config.json",
+    "project-meta-example.json",
+    "material-intake-template.json",
+    "showroom-payload.json",
+    "qa.md"
+  ],
+  "summary": {
+    "passed": 5,
+    "failed": 0,
+    "factory_ready": true
+  }
+}

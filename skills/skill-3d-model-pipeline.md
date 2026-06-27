@@ -303,12 +303,13 @@ material before importing anything into WordPress.
 Before relying on the factory for a real project, run:
 
 ```bash
-node scripts/qa-project-factory-smoke.mjs
+npm run qa:project-factory-smoke
 ```
 
 This creates a temporary project folder, builds `showroom-payload.json`, validates it against the
-schema, checks that the expected scaffold files exist, and removes the temporary folder. If this
-smoke test is red, do not start the next Sde Dov project yet.
+schema, checks that the expected scaffold files exist, writes
+`docs/qa/project-factory-smoke-report.json`, and removes the temporary folder. If this smoke test
+is red, do not start the next Sde Dov project yet.
 
 The plugin should consume URLs and JSON only. Large raw modeling files should live outside the
 plugin ZIP and outside the WordPress plugin repository unless explicitly approved.

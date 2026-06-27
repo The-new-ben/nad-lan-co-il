@@ -8,19 +8,22 @@ function parseArgs(argv) {
   const out = {
     slug: `codex-factory-smoke-${Date.now()}`,
     keep: false,
+    out: 'docs/qa/project-factory-smoke-report.json',
   };
   for (let i = 2; i < argv.length; i += 1) {
     const arg = argv[i];
     if (arg === '--slug') out.slug = argv[++i] || out.slug;
     else if (arg === '--keep') out.keep = true;
+    else if (arg === '--out') out.out = argv[++i] || out.out;
     else if (arg === '--help' || arg === '-h') {
       console.log(`Usage:
   node scripts/qa-project-factory-smoke.mjs
+  node scripts/qa-project-factory-smoke.mjs --out docs/qa/project-factory-smoke-report.json
   node scripts/qa-project-factory-smoke.mjs --slug codex-temp-showroom --keep
 
-Creates a temporary showroom project folder, builds showroom-payload.json, validates it, and removes
-the folder unless --keep is passed. This proves the next-project factory path works without touching
-WordPress or the live site.`);
+Creates a temporary showroom project folder, builds showroom-payload.json, validates it, writes a
+QA report, and removes the folder unless --keep is passed. This proves the next-project factory
+path works without touching WordPress or the live site.`);
       process.exit(0);
     } else {
       throw new Error(`Unknown argument: ${arg}`);
@@ -59,6 +62,7 @@ function main() {
     slug: args.slug,
     folder: path.relative(ROOT, folder).replace(/\\/g, '/'),
     keep: args.keep,
+    out: args.out,
     steps: [],
   };
   const expectedFiles = [
@@ -116,6 +120,10 @@ function main() {
     failed: report.steps.filter((step) => !step.ok).length,
     factory_ready: report.steps.every((step) => step.ok),
   };
+
+  const outPath = path.resolve(ROOT, args.out);
+  fs.mkdirSync(path.dirname(outPath), { recursive: true });
+  fs.writeFileSync(outPath, `${JSON.stringify(report, null, 2)}\n`, 'utf8');
 
   console.log(JSON.stringify(report, null, 2));
   if (!report.summary.factory_ready) process.exit(1);
