@@ -78,6 +78,7 @@ async function measure(page) {
 			'.nlh-project-language-rail button',
 			'.nlh-project-language-rail a',
 			'.nlh-project-language-rail span',
+			'.nlh-home-languages button',
 			'.nlh-home-languages a',
 			'.nlh-home-languages span',
 			'.nle-nav a',
@@ -121,7 +122,7 @@ async function measure(page) {
 			h1s: [...document.querySelectorAll('h1')].map((h) => h.textContent.trim()),
 			headerRoutes: document.querySelectorAll('.nl-site-nav a').length,
 			footerLinks: document.querySelectorAll('.nl-site-footer a').length,
-			languageEntries: document.querySelectorAll('.nlh-home-languages a, .nlh-home-languages span, .nle-langs span').length,
+			languageEntries: document.querySelectorAll('.nlh-home-languages button, .nlh-home-languages a, .nlh-home-languages span, .nle-langs span').length,
 			catalogLanguageEntries: document.querySelectorAll('.nle-catalog .nlh-project-language-rail button, .nle-catalog .nlh-project-language-rail a, .nle-catalog .nlh-project-language-rail span').length,
 			catalogLanguageButtons: document.querySelectorAll('.nle-catalog .nlh-project-language-rail button[data-nle-lang]').length,
 			activeLanguage,
@@ -179,9 +180,10 @@ function failuresFor(viewName, before, after, english, errors, viewportHeight) {
 	if (before.hasMojibake || after.hasMojibake) failures.push(`${viewName}: mojibake detected`);
 	if (before.hasInternalWords || after.hasInternalWords) failures.push(`${viewName}: public internal wording detected`);
 	if (before.hasDefaultChromeWords || after.hasDefaultChromeWords) failures.push(`${viewName}: default theme chrome wording detected`);
-	if (!before.catalog || before.catalog.y > viewportHeight) failures.push(`${viewName}: project section is not above the first viewport`);
+	if (viewName === 'desktop-1440' && (!before.catalog || before.catalog.y > viewportHeight)) failures.push(`${viewName}: project section is not above the first viewport`);
 	if (!before.hero || !before.catalog || before.catalog.y < before.hero.bottom - 12) failures.push(`${viewName}: project selector must sit after the opening hero, not at the absolute top`);
-	if (viewName === 'desktop-1440' && (!before.showroom || before.showroom.y > viewportHeight * 1.55)) failures.push(`${viewName}: showroom starts too low for homepage flow`);
+	if (!before.hero || !before.showroom || before.showroom.y < before.hero.bottom - 12) failures.push(`${viewName}: interactive showroom must sit after the opening hero, not at the absolute top`);
+	if (!before.showroom || before.showroom.y > viewportHeight * 1.12) failures.push(`${viewName}: interactive showroom starts too low for the above-fold homepage flow`);
 	return failures;
 }
 

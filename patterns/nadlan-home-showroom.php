@@ -43,6 +43,15 @@ $projects_js = $theme_uri . 'assets/engine/projects.json';
 			</div>
 		</section>
 
+		<section class="nlh-home-languages" aria-label="שפות למשקיעים מחו״ל">
+			<strong>מידע לרוכשים מחו״ל, בשפה שמתאימה להם</strong>
+			<button class="is-active" type="button" data-nle-lang="he" lang="he" dir="rtl">עברית</button>
+			<button type="button" data-nle-lang="en" lang="en" dir="ltr">English</button>
+			<button type="button" data-nle-lang="fr" lang="fr" dir="ltr">Français</button>
+			<button type="button" data-nle-lang="ru" lang="ru" dir="ltr">Русский</button>
+			<button type="button" data-nle-lang="ar" lang="ar" dir="rtl">العربية</button>
+		</section>
+
 		<section class="nle-catalog" id="projects" aria-labelledby="nle-projects-title">
 			<div class="nle-catalog-head">
 				<div>
@@ -67,15 +76,6 @@ $projects_js = $theme_uri . 'assets/engine/projects.json';
 			</div>
 			<div class="nle-project-grid" data-nle-project-grid></div>
 			<p class="nlh-catalog-note">בכל פרויקט מוצגים דגם תלת ממדי, בחירת דירות, אומדן מחיר לא מחייב, סביבת מגורים ודרך קצרה לפנייה על הדירה שנבחרה.</p>
-		</section>
-
-		<section class="nlh-home-languages" aria-label="שפות למשקיעים מחו״ל">
-			<strong>מידע לרוכשים מחו״ל, בשפה שמתאימה להם</strong>
-			<span class="is-active">עברית</span>
-			<a href="#english">English</a>
-			<a href="#french">Français</a>
-			<a href="#russian">Русский</a>
-			<a href="#arabic">العربية</a>
 		</section>
 
 		<section class="nle-showroom" id="showroom" aria-label="בחירת דירה בפרויקט">

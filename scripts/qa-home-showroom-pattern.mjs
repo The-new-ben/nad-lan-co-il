@@ -34,7 +34,7 @@ const checks = [
 	{ name: 'project_band_buyer_copy', ok: pattern.includes('השוואת פרויקטים חדשים לפי דירה, נוף ואומדן') && !pattern.includes('אזור הבחירה המרכזי של דף הבית') },
 	{ name: 'model_mount', ok: pattern.includes('data-nle-model-wrap') },
 	{ name: 'facade_mount', ok: pattern.includes('data-nle-facade-grid') },
-	{ name: 'language_entries', ok: ['English', 'Français', 'Русский', 'العربية'].every((value) => pattern.includes(value)) },
+	{ name: 'language_entries', ok: ['English', 'Français', 'Русский', 'العربية'].every((value) => pattern.includes(value)) && pattern.includes('nlh-home-languages') && pattern.includes('data-nle-lang="ar"') },
 	{ name: 'language_targets', ok: ['id="english"', 'id="french"', 'id="russian"', 'id="arabic"'].every((value) => pattern.includes(value)) },
 	{ name: 'buyer_path_cards', ok: count(pattern, '<article') >= 12 && pattern.includes('nlh-home-paths') && pattern.includes('מה כדאי לבדוק בכל פרויקט חדש') },
 	{ name: 'public_buyer_copy', ok: /דירה|דירות|פרויקט|פרויקטים|מחיר|אומדן|זמינות/.test(pattern) },

@@ -18,9 +18,9 @@
 	padding-block: 16px 0;
 }
 
-.nlh-home-hero {
+.nle-page.nlh-home .nlh-home-hero {
 	display: block;
-	margin: 4px 0 18px;
+	margin: 4px 0 12px;
 }
 
 .nlh-home-panel,
@@ -34,8 +34,8 @@
 	box-shadow: 0 18px 46px rgba(47, 38, 20, .08);
 }
 
-.nlh-home-panel {
-	padding: clamp(22px, 4vw, 44px);
+.nle-page.nlh-home .nlh-home-panel {
+	padding: clamp(20px, 3.2vw, 34px);
 	min-height: 0;
 }
 
@@ -49,20 +49,20 @@
 	margin-bottom: 12px;
 }
 
-.nlh-home h1 {
+.nle-page.nlh-home .nlh-home h1 {
 	margin: 0 0 14px;
 	font-family: "Frank Ruhl Libre", serif;
-	font-size: clamp(42px, 5.8vw, 76px);
+	font-size: clamp(40px, 5vw, 66px);
 	line-height: .98;
 	letter-spacing: 0;
 	color: var(--home-ink);
 }
 
-.nlh-home-lead {
+.nle-page.nlh-home .nlh-home-lead {
 	margin: 0;
 	color: var(--home-muted);
 	font-size: clamp(17px, 1.7vw, 20px);
-	line-height: 1.75;
+	line-height: 1.62;
 	max-width: 760px;
 }
 
@@ -142,13 +142,13 @@
 	cursor: pointer;
 }
 
-.nlh-home-languages {
+.nle-page.nlh-home .nlh-home-languages {
 	display: grid;
 	grid-template-columns: 1.1fr repeat(5, auto);
 	gap: 8px;
 	align-items: center;
 	padding: 12px 16px;
-	margin-bottom: 18px;
+	margin: 0 0 12px;
 }
 
 .nlh-home-languages strong {
@@ -157,7 +157,8 @@
 }
 
 .nlh-home-languages a,
-.nlh-home-languages span {
+.nlh-home-languages span,
+.nlh-home-languages button {
 	display: inline-flex;
 	justify-content: center;
 	align-items: center;
@@ -170,6 +171,8 @@
 	text-decoration: none;
 	font-weight: 900;
 	font-size: 13px;
+	font-family: inherit;
+	cursor: pointer;
 }
 
 .nlh-home-languages .is-active {
@@ -178,12 +181,13 @@
 	border-color: var(--home-deep);
 }
 
-.nlh-home .nle-catalog {
+.nle-page.nlh-home .nle-catalog {
 	margin-top: 0;
-	margin-bottom: 18px;
+	margin-bottom: 12px;
+	padding: 14px;
 }
 
-.nlh-home .nle-catalog-head {
+.nle-page.nlh-home .nle-catalog-head {
 	align-items: end;
 }
 
@@ -261,8 +265,30 @@
 	line-height: 1.55;
 }
 
-.nlh-home .nle-showroom {
-	margin-top: 18px;
+.nle-page.nlh-home .nle-project-grid {
+	grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.nle-page.nlh-home .nle-project-card img {
+	aspect-ratio: 21 / 9;
+	max-height: 148px;
+}
+
+.nle-page.nlh-home .nle-project-card div {
+	padding: 11px 13px 12px;
+}
+
+.nle-page.nlh-home .nle-project-card strong {
+	font-size: 18px;
+}
+
+.nle-page.nlh-home .nle-project-card span {
+	font-size: 13px;
+	line-height: 1.38;
+}
+
+.nle-page.nlh-home .nle-showroom {
+	margin-top: 12px;
 }
 
 .nlh-home-trust {
@@ -391,8 +417,58 @@
 }
 
 @media (max-width: 900px) {
+	.nle-page.nlh-home .nlh-home-main {
+		display: flex;
+		flex-direction: column;
+	}
+
+	.nle-page.nlh-home .nlh-home-hero {
+		order: 1;
+	}
+
+	.nle-page.nlh-home .nlh-home-languages {
+		order: 2;
+	}
+
+	.nle-page.nlh-home .nle-showroom {
+		order: 3;
+	}
+
+	.nle-page.nlh-home .nle-catalog {
+		order: 4;
+		margin-top: 12px;
+	}
+
+	.nle-page.nlh-home .nlh-home-trust {
+		order: 5;
+	}
+
+	.nle-page.nlh-home .nlh-home-paths {
+		order: 6;
+	}
+
+	.nle-page.nlh-home .nlh-home-international {
+		order: 7;
+	}
+
 	.nlh-home-languages {
 		grid-template-columns: 1fr repeat(3, auto);
+	}
+
+	.nle-page.nlh-home .nle-project-grid {
+		grid-template-columns: repeat(3, minmax(190px, 1fr));
+		overflow-x: auto;
+		scroll-snap-type: inline mandatory;
+		padding-bottom: 3px;
+		scrollbar-width: none;
+	}
+
+	.nle-page.nlh-home .nle-project-grid::-webkit-scrollbar {
+		display: none;
+	}
+
+	.nle-page.nlh-home .nle-project-card {
+		scroll-snap-align: start;
 	}
 
 	.nlh-project-tools {
@@ -428,9 +504,9 @@
 		margin-bottom: 10px;
 	}
 
-	.nlh-home-panel {
+	.nle-page.nlh-home .nlh-home-panel {
 		min-height: auto;
-		padding: 16px;
+		padding: 14px;
 		border-radius: 16px;
 	}
 
@@ -439,44 +515,95 @@
 		font-size: 11px;
 	}
 
-	.nlh-home h1 {
+	.nle-page.nlh-home .nlh-home h1 {
 		margin-bottom: 8px;
-		font-size: clamp(30px, 10vw, 38px);
+		font-size: clamp(27px, 8.2vw, 34px);
 		line-height: 1.02;
 	}
 
-	.nlh-home-lead {
-		font-size: 15px;
-		line-height: 1.55;
+	.nle-page.nlh-home .nlh-home-lead {
+		font-size: 14px;
+		line-height: 1.42;
 	}
 
 	.nlh-home-inline-search {
-		margin-top: 12px;
-		padding: 10px;
+		margin-top: 10px;
+		padding: 8px;
 	}
 
 	.nlh-search-field input,
 	.nlh-search-field select,
 	.nlh-home-inline-search button {
-		min-height: 40px;
+		min-height: 38px;
 	}
 
 	.nlh-home-actions {
-		margin-top: 10px;
+		margin-top: 8px;
 		gap: 8px;
 	}
 
 	.nlh-home-button {
-		min-height: 42px;
+		min-height: 38px;
 		padding: 0 14px;
 	}
 
-	.nlh-home-languages {
-		grid-template-columns: 1fr 1fr;
+	.nle-page.nlh-home .nlh-home-languages {
+		display: flex;
+		align-items: center;
+		overflow-x: auto;
+		gap: 7px;
+		margin-bottom: 10px;
+		padding: 9px 10px;
+		scrollbar-width: none;
+	}
+
+	.nle-page.nlh-home .nlh-home-languages::-webkit-scrollbar {
+		display: none;
 	}
 
 	.nlh-home-languages strong {
-		grid-column: 1 / -1;
+		flex: 0 0 auto;
+		font-size: 12px;
+		white-space: nowrap;
+	}
+
+	.nlh-home-languages button {
+		flex: 0 0 auto;
+		min-height: 34px;
+		padding: 0 10px;
+	}
+
+	.nle-page.nlh-home .nle-catalog {
+		padding: 12px;
+		margin-bottom: 10px;
+	}
+
+	.nle-page.nlh-home .nle-catalog-head {
+		gap: 10px;
+		margin-bottom: 10px;
+	}
+
+	.nle-page.nlh-home .nle-catalog h2 {
+		font-size: 25px;
+		line-height: 1.08;
+	}
+
+	.nle-page.nlh-home .nle-catalog-head p {
+		font-size: 14px;
+		line-height: 1.45;
+	}
+
+	.nle-page.nlh-home .nle-project-grid {
+		grid-template-columns: repeat(3, minmax(260px, 78vw));
+		gap: 10px;
+	}
+
+	.nle-page.nlh-home .nle-project-card img {
+		max-height: 118px;
+	}
+
+	.nle-page.nlh-home .nle-showroom {
+		margin-top: 10px;
 	}
 
 	.nlh-project-language-rail {
