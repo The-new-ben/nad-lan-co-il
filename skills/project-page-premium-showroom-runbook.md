@@ -389,6 +389,7 @@ node scripts/build-project-showroom-draft.mjs --pattern patterns/project-showroo
 Before any multilingual import or hreflang output, run the publication gate:
 
 ```bash
+npm run qa:ashira-full-preflight
 npm run build:project-hreflang-artifact
 npm run qa:project-hreflang-artifact
 npm run qa:project-draft-import-dry-run
@@ -412,6 +413,11 @@ The draft import dry-run uses the same WordPress REST payloads that a later draf
 but it stays offline and credentials-free. It must prove every language payload remains `status:
 draft`, points at the `nadlan_project` endpoint, keeps the expected slug and carries enough content
 and metadata before anyone runs a real WordPress import.
+
+For Ashira, `npm run qa:ashira-full-preflight` is the owner-review gate. It runs the research,
+architecture, all five content-depth gates, all five browser screenshot gates, factory readiness,
+draft readiness, hreflang, import dry-run, publication readiness and homepage-dependency gates in
+one sequence and writes `docs/qa/ashira-full-preflight-report.json`.
 
 ## N. Buyer-Language Rule
 

@@ -13,6 +13,7 @@ The machine-readable source of truth is:
 
 - `docs/plans/2026-06-27-ashira-publication-manifest.json`
 - Gate: `npm run qa:ashira-publication-readiness`
+- Full aggregate gate: `npm run qa:ashira-full-preflight`
 - Hreflang preflight files:
   - `docs/seo/ashira-hreflang-map.json`
   - `docs/seo/ashira-hreflang-head.html`
@@ -97,6 +98,17 @@ Each indexable language page must pass its own gate before publication:
 8. Verify the rendered WordPress draft URLs with screenshots.
 9. Add reciprocal hreflang only after every language page has a real final URL.
 10. Make pages indexable only after the final live verification.
+
+Before any owner review or import attempt, run the aggregate gate:
+
+```bash
+npm run qa:ashira-full-preflight
+```
+
+It executes the research, architecture, content-depth, screenshot, factory, draft, hreflang,
+import dry-run, project-publication and homepage-dependency gates together and writes
+`docs/qa/ashira-full-preflight-report.json`. A green individual report is not enough if the
+aggregate report is stale or red.
 
 ## Why This Is The Controlled Path
 

@@ -314,6 +314,7 @@ is red, do not start the next Sde Dov project yet.
 Before any project draft is imported or published, create a project publication manifest and run:
 
 ```bash
+npm run qa:ashira-full-preflight
 node scripts/build-project-hreflang-artifact.mjs --manifest <project-manifest> --out-json <hreflang-map> --out-html <hreflang-head>
 node scripts/qa-project-hreflang-artifact.mjs --manifest <project-manifest> --map <hreflang-map> --html <hreflang-head> --out <hreflang-report> --strict
 node scripts/qa-project-draft-import-dry-run.mjs --manifest <project-manifest> --out <dry-run-report> --strict
@@ -327,6 +328,10 @@ are still draft-only, target `/projects/`, use the real project asset folder, ha
 pass their content-depth reports and pass screenshot QA. Ashira keeps `npm run
 qa:ashira-publication-readiness` as an alias, but the reusable checkers are the manifest-driven
 scripts above.
+
+The aggregate gate is project-specific today (`qa:ashira-full-preflight`) because it names the
+current language, screenshot and homepage dependencies. When cloning the factory to Dimri, Rainbow
+or another Sde Dov project, create the same aggregate gate for that project before calling it ready.
 
 The plugin should consume URLs and JSON only. Large raw modeling files should live outside the
 plugin ZIP and outside the WordPress plugin repository unless explicitly approved.
