@@ -37,6 +37,7 @@ Expected:
 - Footer has at least 20 buyer, area, tool, language and legal links.
 - At least 5 language entries.
 - At least 5 language entries inside the project selector.
+- The project selector language controls switch the project cards and selected apartment panel to English, French, Russian and Arabic, including correct `dir` for LTR/RTL.
 - 4 real language target sections.
 - 4 buyer-path cards.
 - At least 3 project cards.
@@ -58,8 +59,10 @@ Report:
 Screenshots:
 
 - `docs/qa/screenshots/home-showroom-preview-2026-06-27/desktop-1440-home.png`
+- `docs/qa/screenshots/home-showroom-preview-2026-06-27/desktop-1440-english.png`
 - `docs/qa/screenshots/home-showroom-preview-2026-06-27/tablet-768-home.png`
 - `docs/qa/screenshots/home-showroom-preview-2026-06-27/mobile-390-home.png`
+- `docs/qa/screenshots/home-showroom-preview-2026-06-27/mobile-390-english.png`
 - `docs/qa/screenshots/home-showroom-preview-2026-06-27/edge-mobile-390-home.png`
 
 Measured:
@@ -72,6 +75,7 @@ Measured:
 - Desktop buyer-path cards: 4.
 - Desktop language target sections: 4.
 - Minimum checked public tap target: 34px.
+- Multilingual switch: PASS. English, French and Russian switch the project selector and showroom to `dir="ltr"`; Arabic switches them to `dir="rtl"`. Each language renders project/apartment copy in the selected language.
 - Homepage SEO title length: 53.
 - Homepage meta description length: 130.
 - Homepage JSON-LD schema types: Organization, WebSite, SearchAction, WebPage, ItemList, ListItem.
@@ -99,6 +103,6 @@ The pattern is content-only and does not duplicate the site header. The branch h
 - `assets/css/nadlan-home-showroom.css`
 - `assets/js/nadlan-showroom-engine.js`
 
-The engine reads project data from the pattern root via `data-nle-projects`, so the same project JSON remains the source of truth.
+The engine reads project data from the pattern root via `data-nle-projects`, so the same project JSON remains the source of truth. The project selector now has real language controls for Hebrew, English, French, Russian and Arabic. At this slice, project cards and selected apartment details switch language; full translated long-form pages still remain separate page work.
 
 This is not deployed live. The next controlled step before production is a live-equivalent WordPress render check after the branch is installed or previewed in WordPress.

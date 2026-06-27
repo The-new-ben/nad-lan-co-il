@@ -75,6 +75,7 @@ async function measure(page) {
 			'.nlh-home-inline-search button',
 			'.nlh-home-inline-search input',
 			'.nlh-home-inline-search select',
+			'.nlh-project-language-rail button',
 			'.nlh-project-language-rail a',
 			'.nlh-project-language-rail span',
 			'.nlh-home-languages a',
@@ -102,6 +103,7 @@ async function measure(page) {
 		const catalog = rect('#projects');
 		const hero = rect('.nlh-home-hero');
 		const showroom = rect('#showroom');
+		const activeLanguage = document.querySelector('.nlh-project-language-rail [data-nle-lang].is-active')?.getAttribute('data-nle-lang') || '';
 		const defaultChromeWords = [
 			'Blog',
 			'About',
@@ -120,7 +122,11 @@ async function measure(page) {
 			headerRoutes: document.querySelectorAll('.nl-site-nav a').length,
 			footerLinks: document.querySelectorAll('.nl-site-footer a').length,
 			languageEntries: document.querySelectorAll('.nlh-home-languages a, .nlh-home-languages span, .nle-langs span').length,
-			catalogLanguageEntries: document.querySelectorAll('.nle-catalog .nlh-project-language-rail a, .nle-catalog .nlh-project-language-rail span').length,
+			catalogLanguageEntries: document.querySelectorAll('.nle-catalog .nlh-project-language-rail button, .nle-catalog .nlh-project-language-rail a, .nle-catalog .nlh-project-language-rail span').length,
+			catalogLanguageButtons: document.querySelectorAll('.nle-catalog .nlh-project-language-rail button[data-nle-lang]').length,
+			activeLanguage,
+			catalogDir: document.querySelector('.nle-catalog')?.getAttribute('dir') || '',
+			showroomDir: document.querySelector('.nle-showroom')?.getAttribute('dir') || '',
 			languageTargets: ['english', 'french', 'russian', 'arabic'].filter((id) => document.getElementById(id)).length,
 			buyerPathCards: document.querySelectorAll('.nlh-home-paths article').length,
 			projectCards: document.querySelectorAll('[data-nle-project]').length,
@@ -133,6 +139,7 @@ async function measure(page) {
 			smallTargets: targetRows.filter((row) => row.min < 34).slice(0, 10),
 			hasHebrew: /[\u0590-\u05ff]/.test(visibleText),
 			hasForeignBuyerSignal: /(English|Français|Русский|العربية|משקיעים מחו״ל)/.test(visibleText),
+			hasEnglishEngineText: /Quick apartment picker|Want to check this apartment|projects to compare|Estimate by request/.test(visibleText),
 			hasBuyerWords: /(דירה|דירות|פרויקט|פרויקטים|מחיר|אומדן|זמינות)/.test(visibleText),
 			hasProjectBandBuyerCopy: visibleText.includes('השוואת פרויקטים חדשים לפי דירה, נוף ואומדן') && visibleText.includes('בכל פרויקט מוצגים דגם תלת ממדי'),
 			hasMojibake: /Ã|�|×[^\s]*×/.test(visibleText),
@@ -145,7 +152,7 @@ async function measure(page) {
 	});
 }
 
-function failuresFor(viewName, before, after, errors, viewportHeight) {
+function failuresFor(viewName, before, after, english, errors, viewportHeight) {
 	const failures = [];
 	if (errors.length) failures.push(`${viewName}: console/page errors: ${errors.join(' | ')}`);
 	if (before.h1s.length !== 1) failures.push(`${viewName}: expected one H1, got ${before.h1s.length}`);
@@ -153,6 +160,10 @@ function failuresFor(viewName, before, after, errors, viewportHeight) {
 	if (before.footerLinks < 20) failures.push(`${viewName}: expected at least 20 footer links`);
 	if (before.languageEntries < 5) failures.push(`${viewName}: expected at least 5 language entries`);
 	if (before.catalogLanguageEntries < 5) failures.push(`${viewName}: expected multilingual entries inside the project selector`);
+	if (before.catalogLanguageButtons < 5) failures.push(`${viewName}: expected real language controls inside the project selector`);
+	if (!english || english.activeLanguage !== 'en') failures.push(`${viewName}: English project language control did not become active`);
+	if (!english || english.catalogDir !== 'ltr' || english.showroomDir !== 'ltr') failures.push(`${viewName}: English project selector/showroom did not switch to ltr`);
+	if (!english || !english.hasEnglishEngineText) failures.push(`${viewName}: English project selector text did not render`);
 	if (before.languageTargets < 4) failures.push(`${viewName}: expected four language target cards`);
 	if (before.buyerPathCards < 4) failures.push(`${viewName}: expected four buyer path cards`);
 	if (before.projectCards < 3) failures.push(`${viewName}: expected at least 3 project cards`);
@@ -172,6 +183,38 @@ function failuresFor(viewName, before, after, errors, viewportHeight) {
 	if (!before.hero || !before.catalog || before.catalog.y < before.hero.bottom - 12) failures.push(`${viewName}: project selector must sit after the opening hero, not at the absolute top`);
 	if (viewName === 'desktop-1440' && (!before.showroom || before.showroom.y > viewportHeight * 1.55)) failures.push(`${viewName}: showroom starts too low for homepage flow`);
 	return failures;
+}
+
+async function proofLanguage(page, lang) {
+	const button = page.locator(`[data-nle-lang="${lang}"]`).first();
+	if (await button.count()) await button.click();
+	await page.waitForTimeout(300);
+	return page.evaluate((activeLang) => {
+		const text = document.body.innerText || '';
+		const expected = {
+			fr: /Choix rapide|projets à comparer|Estimation sur demande/,
+			ru: /Быстрый выбор|проектов для сравнения|Оценка по запросу/,
+			ar: /اختيار سريع|مشاريع للمقارنة|تقدير حسب الطلب/
+		};
+		return {
+			lang: activeLang,
+			activeLanguage: document.querySelector('.nlh-project-language-rail [data-nle-lang].is-active')?.getAttribute('data-nle-lang') || '',
+			catalogDir: document.querySelector('.nle-catalog')?.getAttribute('dir') || '',
+			showroomDir: document.querySelector('.nle-showroom')?.getAttribute('dir') || '',
+			hasExpectedText: expected[activeLang] ? expected[activeLang].test(text) : true
+		};
+	}, lang);
+}
+
+function languageFailures(viewName, proofs) {
+	const expectedDir = { fr: 'ltr', ru: 'ltr', ar: 'rtl' };
+	return proofs.flatMap((proof) => {
+		const failures = [];
+		if (proof.activeLanguage !== proof.lang) failures.push(`${viewName}: ${proof.lang} language control did not become active`);
+		if (proof.catalogDir !== expectedDir[proof.lang] || proof.showroomDir !== expectedDir[proof.lang]) failures.push(`${viewName}: ${proof.lang} direction mismatch`);
+		if (!proof.hasExpectedText) failures.push(`${viewName}: ${proof.lang} translated project selector text did not render`);
+		return failures;
+	});
 }
 
 async function run() {
@@ -203,9 +246,18 @@ async function run() {
 			await page.waitForTimeout(500);
 			await page.screenshot({ path: path.join(outDir, `${vp.name}-selected.png`), fullPage: true });
 			const after = await measure(page);
-			const failures = failuresFor(vp.name, before, after, errors, vp.height);
+			const englishButton = page.locator('[data-nle-lang="en"]').first();
+			if (await englishButton.count()) await englishButton.click();
+			await page.waitForTimeout(500);
+			await page.screenshot({ path: path.join(outDir, `${vp.name}-english.png`), fullPage: true });
+			const english = await measure(page);
+			const otherLanguageProofs = [];
+			for (const lang of ['fr', 'ru', 'ar']) {
+				otherLanguageProofs.push(await proofLanguage(page, lang));
+			}
+			const failures = failuresFor(vp.name, before, after, english, errors, vp.height).concat(languageFailures(vp.name, otherLanguageProofs));
 			allFailures.push(...failures);
-			report.viewports.push({ name: vp.name, before, after, failures });
+			report.viewports.push({ name: vp.name, before, after, english, otherLanguageProofs, failures });
 			await context.close();
 		}
 		report.ok = allFailures.length === 0;

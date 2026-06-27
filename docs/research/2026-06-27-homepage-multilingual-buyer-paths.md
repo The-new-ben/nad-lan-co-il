@@ -24,6 +24,7 @@ This note supports the homepage slice in PR #220. The public page must speak to 
 3. Treat multilingual as a route structure, not a cosmetic chip.
    - Google's localized-version guidance points toward separate language URLs and reciprocal language annotations when translated pages exist.
    - This PR adds visible language target sections so the current chips land somewhere real.
+   - The project selector itself now has real language controls: project cards and the selected apartment panel can switch between Hebrew, English, French, Russian and Arabic.
    - It does not claim full multilingual SEO until separate English/French/Russian/Arabic pages are written, linked, and annotated.
 
 4. Keep public language clean.
@@ -40,7 +41,7 @@ This note supports the homepage slice in PR #220. The public page must speak to 
 
 ## Not Yet Done
 
-- Separate translated pages for English, French, Russian, and Arabic.
+- Separate translated long-form pages for French, Russian, and Arabic.
 - Reciprocal `hreflang` output.
 - 3000-word project pages per language.
 - Live WordPress render verification after the branch is installed.

@@ -14,6 +14,10 @@
         "footerLinks": 23,
         "languageEntries": 5,
         "catalogLanguageEntries": 5,
+        "catalogLanguageButtons": 5,
+        "activeLanguage": "he",
+        "catalogDir": "rtl",
+        "showroomDir": "rtl",
         "languageTargets": 4,
         "buyerPathCards": 4,
         "projectCards": 3,
@@ -26,6 +30,7 @@
         "smallTargets": [],
         "hasHebrew": true,
         "hasForeignBuyerSignal": true,
+        "hasEnglishEngineText": false,
         "hasBuyerWords": true,
         "hasProjectBandBuyerCopy": true,
         "hasMojibake": false,
@@ -65,6 +70,10 @@
         "footerLinks": 23,
         "languageEntries": 5,
         "catalogLanguageEntries": 5,
+        "catalogLanguageButtons": 5,
+        "activeLanguage": "he",
+        "catalogDir": "rtl",
+        "showroomDir": "rtl",
         "languageTargets": 4,
         "buyerPathCards": 4,
         "projectCards": 3,
@@ -77,6 +86,7 @@
         "smallTargets": [],
         "hasHebrew": true,
         "hasForeignBuyerSignal": true,
+        "hasEnglishEngineText": false,
         "hasBuyerWords": true,
         "hasProjectBandBuyerCopy": true,
         "hasMojibake": false,
@@ -107,6 +117,85 @@
           "bottom": 1000.484375
         }
       },
+      "english": {
+        "title": "דירות חדשות ופרויקטים עם בחירת דירה בתלת ממד | NadLan",
+        "h1s": [
+          "בודקים פרויקט, דירה וסביבה לפני שמתקדמים."
+        ],
+        "headerRoutes": 7,
+        "footerLinks": 23,
+        "languageEntries": 5,
+        "catalogLanguageEntries": 5,
+        "catalogLanguageButtons": 5,
+        "activeLanguage": "en",
+        "catalogDir": "ltr",
+        "showroomDir": "ltr",
+        "languageTargets": 4,
+        "buyerPathCards": 4,
+        "projectCards": 3,
+        "modelViewerCount": 1,
+        "modelViewerDefined": true,
+        "facadeCells": 4,
+        "activeCells": 2,
+        "overflow": 0,
+        "minTap": 34,
+        "smallTargets": [],
+        "hasHebrew": true,
+        "hasForeignBuyerSignal": true,
+        "hasEnglishEngineText": true,
+        "hasBuyerWords": true,
+        "hasProjectBandBuyerCopy": true,
+        "hasMojibake": false,
+        "hasInternalWords": false,
+        "hasDefaultChromeWords": false,
+        "hero": {
+          "x": 80,
+          "y": -112,
+          "width": 1280,
+          "height": 565.9375,
+          "right": 1360,
+          "bottom": 453.9375
+        },
+        "catalog": {
+          "x": 80,
+          "y": 471.9375,
+          "width": 1280,
+          "height": 588.765625,
+          "right": 1360,
+          "bottom": 1060.703125
+        },
+        "showroom": {
+          "x": 80,
+          "y": 1156.703125,
+          "width": 1280,
+          "height": 1076.28125,
+          "right": 1360,
+          "bottom": 2232.984375
+        }
+      },
+      "otherLanguageProofs": [
+        {
+          "lang": "fr",
+          "activeLanguage": "fr",
+          "catalogDir": "ltr",
+          "showroomDir": "ltr",
+          "hasExpectedText": true
+        },
+        {
+          "lang": "ru",
+          "activeLanguage": "ru",
+          "catalogDir": "ltr",
+          "showroomDir": "ltr",
+          "hasExpectedText": true
+        },
+        {
+          "lang": "ar",
+          "activeLanguage": "ar",
+          "catalogDir": "rtl",
+          "showroomDir": "rtl",
+          "hasExpectedText": true
+        }
+      ],
       "failures": []
     },
     {
@@ -120,6 +209,10 @@
         "footerLinks": 23,
         "languageEntries": 5,
         "catalogLanguageEntries": 5,
+        "catalogLanguageButtons": 5,
+        "activeLanguage": "he",
+        "catalogDir": "rtl",
+        "showroomDir": "rtl",
         "languageTargets": 4,
         "buyerPathCards": 4,
         "projectCards": 3,
@@ -132,6 +225,7 @@
         "smallTargets": [],
         "hasHebrew": true,
         "hasForeignBuyerSignal": true,
+        "hasEnglishEngineText": false,
         "hasBuyerWords": true,
         "hasProjectBandBuyerCopy": true,
         "hasMojibake": false,
@@ -171,6 +265,10 @@
         "footerLinks": 23,
         "languageEntries": 5,
         "catalogLanguageEntries": 5,
+        "catalogLanguageButtons": 5,
+        "activeLanguage": "he",
+        "catalogDir": "rtl",
+        "showroomDir": "rtl",
         "languageTargets": 4,
         "buyerPathCards": 4,
         "projectCards": 3,
@@ -183,6 +281,7 @@
         "smallTargets": [],
         "hasHebrew": true,
         "hasForeignBuyerSignal": true,
+        "hasEnglishEngineText": false,
         "hasBuyerWords": true,
         "hasProjectBandBuyerCopy": true,
         "hasMojibake": false,
@@ -213,6 +312,85 @@
           "bottom": 928.828125
         }
       },
+      "english": {
+        "title": "דירות חדשות ופרויקטים עם בחירת דירה בתלת ממד | NadLan",
+        "h1s": [
+          "בודקים פרויקט, דירה וסביבה לפני שמתקדמים."
+        ],
+        "headerRoutes": 7,
+        "footerLinks": 23,
+        "languageEntries": 5,
+        "catalogLanguageEntries": 5,
+        "catalogLanguageButtons": 5,
+        "activeLanguage": "en",
+        "catalogDir": "ltr",
+        "showroomDir": "ltr",
+        "languageTargets": 4,
+        "buyerPathCards": 4,
+        "projectCards": 3,
+        "modelViewerCount": 1,
+        "modelViewerDefined": true,
+        "facadeCells": 4,
+        "activeCells": 2,
+        "overflow": 0,
+        "minTap": 34,
+        "smallTargets": [],
+        "hasHebrew": true,
+        "hasForeignBuyerSignal": true,
+        "hasEnglishEngineText": true,
+        "hasBuyerWords": true,
+        "hasProjectBandBuyerCopy": true,
+        "hasMojibake": false,
+        "hasInternalWords": false,
+        "hasDefaultChromeWords": false,
+        "hero": {
+          "x": 16,
+          "y": -304,
+          "width": 736,
+          "height": 593.96875,
+          "right": 752,
+          "bottom": 289.96875
+        },
+        "catalog": {
+          "x": 16,
+          "y": 307.96875,
+          "width": 736,
+          "height": 1855.359375,
+          "right": 752,
+          "bottom": 2163.328125
+        },
+        "showroom": {
+          "x": 16,
+          "y": 2301.328125,
+          "width": 736,
+          "height": 1482.5,
+          "right": 752,
+          "bottom": 3783.828125
+        }
+      },
+      "otherLanguageProofs": [
+        {
+          "lang": "fr",
+          "activeLanguage": "fr",
+          "catalogDir": "ltr",
+          "showroomDir": "ltr",
+          "hasExpectedText": true
+        },
+        {
+          "lang": "ru",
+          "activeLanguage": "ru",
+          "catalogDir": "ltr",
+          "showroomDir": "ltr",
+          "hasExpectedText": true
+        },
+        {
+          "lang": "ar",
+          "activeLanguage": "ar",
+          "catalogDir": "rtl",
+          "showroomDir": "rtl",
+          "hasExpectedText": true
+        }
+      ],
       "failures": []
     },
     {
@@ -226,6 +404,10 @@
         "footerLinks": 23,
         "languageEntries": 5,
         "catalogLanguageEntries": 5,
+        "catalogLanguageButtons": 5,
+        "activeLanguage": "he",
+        "catalogDir": "rtl",
+        "showroomDir": "rtl",
         "languageTargets": 4,
         "buyerPathCards": 4,
         "projectCards": 3,
@@ -238,6 +420,7 @@
         "smallTargets": [],
         "hasHebrew": true,
         "hasForeignBuyerSignal": true,
+        "hasEnglishEngineText": false,
         "hasBuyerWords": true,
         "hasProjectBandBuyerCopy": true,
         "hasMojibake": false,
@@ -277,6 +460,10 @@
         "footerLinks": 23,
         "languageEntries": 5,
         "catalogLanguageEntries": 5,
+        "catalogLanguageButtons": 5,
+        "activeLanguage": "he",
+        "catalogDir": "rtl",
+        "showroomDir": "rtl",
         "languageTargets": 4,
         "buyerPathCards": 4,
         "projectCards": 3,
@@ -289,6 +476,7 @@
         "smallTargets": [],
         "hasHebrew": true,
         "hasForeignBuyerSignal": true,
+        "hasEnglishEngineText": false,
         "hasBuyerWords": true,
         "hasProjectBandBuyerCopy": true,
         "hasMojibake": false,
@@ -319,6 +507,85 @@
           "bottom": 857.875
         }
       },
+      "english": {
+        "title": "דירות חדשות ופרויקטים עם בחירת דירה בתלת ממד | NadLan",
+        "h1s": [
+          "בודקים פרויקט, דירה וסביבה לפני שמתקדמים."
+        ],
+        "headerRoutes": 7,
+        "footerLinks": 23,
+        "languageEntries": 5,
+        "catalogLanguageEntries": 5,
+        "catalogLanguageButtons": 5,
+        "activeLanguage": "en",
+        "catalogDir": "ltr",
+        "showroomDir": "ltr",
+        "languageTargets": 4,
+        "buyerPathCards": 4,
+        "projectCards": 3,
+        "modelViewerCount": 1,
+        "modelViewerDefined": true,
+        "facadeCells": 4,
+        "activeCells": 2,
+        "overflow": 0,
+        "minTap": 34,
+        "smallTargets": [],
+        "hasHebrew": true,
+        "hasForeignBuyerSignal": true,
+        "hasEnglishEngineText": true,
+        "hasBuyerWords": true,
+        "hasProjectBandBuyerCopy": true,
+        "hasMojibake": false,
+        "hasInternalWords": false,
+        "hasDefaultChromeWords": false,
+        "hero": {
+          "x": 10,
+          "y": -470,
+          "width": 370,
+          "height": 557.25,
+          "right": 380,
+          "bottom": 87.25
+        },
+        "catalog": {
+          "x": 10,
+          "y": 97.25,
+          "width": 370,
+          "height": 1465.4375,
+          "right": 380,
+          "bottom": 1562.6875
+        },
+        "showroom": {
+          "x": 10,
+          "y": 1768.6875,
+          "width": 370,
+          "height": 1628.28125,
+          "right": 380,
+          "bottom": 3396.96875
+        }
+      },
+      "otherLanguageProofs": [
+        {
+          "lang": "fr",
+          "activeLanguage": "fr",
+          "catalogDir": "ltr",
+          "showroomDir": "ltr",
+          "hasExpectedText": true
+        },
+        {
+          "lang": "ru",
+          "activeLanguage": "ru",
+          "catalogDir": "ltr",
+          "showroomDir": "ltr",
+          "hasExpectedText": true
+        },
+        {
+          "lang": "ar",
+          "activeLanguage": "ar",
+          "catalogDir": "rtl",
+          "showroomDir": "rtl",
+          "hasExpectedText": true
+        }
+      ],
       "failures": []
     },
     {
@@ -332,6 +599,10 @@
         "footerLinks": 23,
         "languageEntries": 5,
         "catalogLanguageEntries": 5,
+        "catalogLanguageButtons": 5,
+        "activeLanguage": "he",
+        "catalogDir": "rtl",
+        "showroomDir": "rtl",
         "languageTargets": 4,
         "buyerPathCards": 4,
         "projectCards": 3,
@@ -344,6 +615,7 @@
         "smallTargets": [],
         "hasHebrew": true,
         "hasForeignBuyerSignal": true,
+        "hasEnglishEngineText": false,
         "hasBuyerWords": true,
         "hasProjectBandBuyerCopy": true,
         "hasMojibake": false,
@@ -383,6 +655,10 @@
         "footerLinks": 23,
         "languageEntries": 5,
         "catalogLanguageEntries": 5,
+        "catalogLanguageButtons": 5,
+        "activeLanguage": "he",
+        "catalogDir": "rtl",
+        "showroomDir": "rtl",
         "languageTargets": 4,
         "buyerPathCards": 4,
         "projectCards": 3,
@@ -395,6 +671,7 @@
         "smallTargets": [],
         "hasHebrew": true,
         "hasForeignBuyerSignal": true,
+        "hasEnglishEngineText": false,
         "hasBuyerWords": true,
         "hasProjectBandBuyerCopy": true,
         "hasMojibake": false,
@@ -425,6 +702,85 @@
           "bottom": 857.875
         }
       },
+      "english": {
+        "title": "דירות חדשות ופרויקטים עם בחירת דירה בתלת ממד | NadLan",
+        "h1s": [
+          "בודקים פרויקט, דירה וסביבה לפני שמתקדמים."
+        ],
+        "headerRoutes": 7,
+        "footerLinks": 23,
+        "languageEntries": 5,
+        "catalogLanguageEntries": 5,
+        "catalogLanguageButtons": 5,
+        "activeLanguage": "en",
+        "catalogDir": "ltr",
+        "showroomDir": "ltr",
+        "languageTargets": 4,
+        "buyerPathCards": 4,
+        "projectCards": 3,
+        "modelViewerCount": 1,
+        "modelViewerDefined": true,
+        "facadeCells": 4,
+        "activeCells": 2,
+        "overflow": 0,
+        "minTap": 34,
+        "smallTargets": [],
+        "hasHebrew": true,
+        "hasForeignBuyerSignal": true,
+        "hasEnglishEngineText": true,
+        "hasBuyerWords": true,
+        "hasProjectBandBuyerCopy": true,
+        "hasMojibake": false,
+        "hasInternalWords": false,
+        "hasDefaultChromeWords": false,
+        "hero": {
+          "x": 10,
+          "y": -470,
+          "width": 370,
+          "height": 557.25,
+          "right": 380,
+          "bottom": 87.25
+        },
+        "catalog": {
+          "x": 10,
+          "y": 97.25,
+          "width": 370,
+          "height": 1465.4375,
+          "right": 380,
+          "bottom": 1562.6875
+        },
+        "showroom": {
+          "x": 10,
+          "y": 1768.6875,
+          "width": 370,
+          "height": 1628.28125,
+          "right": 380,
+          "bottom": 3396.96875
+        }
+      },
+      "otherLanguageProofs": [
+        {
+          "lang": "fr",
+          "activeLanguage": "fr",
+          "catalogDir": "ltr",
+          "showroomDir": "ltr",
+          "hasExpectedText": true
+        },
+        {
+          "lang": "ru",
+          "activeLanguage": "ru",
+          "catalogDir": "ltr",
+          "showroomDir": "ltr",
+          "hasExpectedText": true
+        },
+        {
+          "lang": "ar",
+          "activeLanguage": "ar",
+          "catalogDir": "rtl",
+          "showroomDir": "rtl",
+          "hasExpectedText": true
+        }
+      ],
       "failures": []
     }
   ],

@@ -30,7 +30,7 @@ const checks = [
 	{ name: 'asset_base_url', ok: pattern.includes('data-nle-asset-base') },
 	{ name: 'one_h1', ok: count(pattern, '<h1 ') === 1 },
 	{ name: 'project_grid', ok: pattern.includes('data-nle-project-grid') },
-	{ name: 'project_language_rail', ok: pattern.includes('nlh-project-language-rail') && ['lang="en"', 'lang="fr"', 'lang="ru"', 'lang="ar"'].every((value) => pattern.includes(value)) },
+	{ name: 'project_language_rail', ok: pattern.includes('nlh-project-language-rail') && ['data-nle-lang="he"', 'data-nle-lang="en"', 'data-nle-lang="fr"', 'data-nle-lang="ru"', 'data-nle-lang="ar"'].every((value) => pattern.includes(value)) },
 	{ name: 'project_band_buyer_copy', ok: pattern.includes('השוואת פרויקטים חדשים לפי דירה, נוף ואומדן') && !pattern.includes('אזור הבחירה המרכזי של דף הבית') },
 	{ name: 'model_mount', ok: pattern.includes('data-nle-model-wrap') },
 	{ name: 'facade_mount', ok: pattern.includes('data-nle-facade-grid') },
@@ -45,6 +45,7 @@ const checks = [
 	{ name: 'functions_enqueues_home_css', ok: functions.includes("assets/css/nadlan-home-showroom.css") },
 	{ name: 'functions_enqueues_engine_js', ok: functions.includes("assets/js/nadlan-showroom-engine.js") },
 	{ name: 'engine_reads_root_config', ok: engineJs.includes('data-nle-home-showroom') && engineJs.includes('dataset.nleProjects') && engineJs.includes('dataset.nleAssetBase') },
+	{ name: 'engine_switches_language', ok: engineJs.includes('data-nle-lang') && engineJs.includes('setLanguage') && engineJs.includes('applyLanguageChrome') },
 	{ name: 'no_public_internal_words', ok: !/(SEO|CMS|CRM|lead|leads|engine|template|prototype|project manager|supplier|contractor|internal|strategy|factory|fallback|placeholder|mock|monetization|פאנל|מנוע|תבנית|לידים|משפך|מוניטיז|אסטרטג|מקום שמור|פרויקטים לבדיקה)/i.test(visibleBlock) }
 ];
 

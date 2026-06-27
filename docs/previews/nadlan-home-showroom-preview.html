@@ -469,11 +469,11 @@
 						<input class="nle-search" type="search" placeholder="שם פרויקט או אזור" data-nle-search>
 					</label>
 					<div class="nlh-project-language-rail" aria-label="שפה למידע על פרויקטים">
-						<span class="is-active">עברית</span>
-						<a href="#english" lang="en" dir="ltr">English</a>
-						<a href="#french" lang="fr" dir="ltr">Français</a>
-						<a href="#russian" lang="ru" dir="ltr">Русский</a>
-						<a href="#arabic" lang="ar" dir="rtl">العربية</a>
+						<button class="is-active" type="button" data-nle-lang="he" lang="he" dir="rtl">עברית</button>
+						<button type="button" data-nle-lang="en" lang="en" dir="ltr">English</button>
+						<button type="button" data-nle-lang="fr" lang="fr" dir="ltr">Français</button>
+						<button type="button" data-nle-lang="ru" lang="ru" dir="ltr">Русский</button>
+						<button type="button" data-nle-lang="ar" lang="ar" dir="rtl">العربية</button>
 					</div>
 				</div>
 			</div>
@@ -510,36 +510,36 @@
 							<span class="nle-status" data-nle-unit-status>זמינה</span>
 							<h3 data-nle-unit-title>בחרו דירה</h3>
 						</div>
-						<div class="nle-stat"><span>קומה</span><strong data-nle-unit-floor>--</strong></div>
+						<div class="nle-stat"><span data-nle-label="floor">קומה</span><strong data-nle-unit-floor>--</strong></div>
 					</header>
 					<div class="nle-facts">
-						<div class="nle-fact"><span>חדרים</span><strong data-nle-unit-rooms>--</strong></div>
-						<div class="nle-fact"><span>שטח</span><strong data-nle-unit-sqm>--</strong></div>
-						<div class="nle-fact"><span>נוף</span><strong data-nle-unit-view>--</strong></div>
-						<div class="nle-fact"><span>אומדן</span><strong data-nle-unit-price>לפי פנייה</strong></div>
+						<div class="nle-fact"><span data-nle-label="rooms">חדרים</span><strong data-nle-unit-rooms>--</strong></div>
+						<div class="nle-fact"><span data-nle-label="area">שטח</span><strong data-nle-unit-sqm>--</strong></div>
+						<div class="nle-fact"><span data-nle-label="view">נוף</span><strong data-nle-unit-view>--</strong></div>
+						<div class="nle-fact"><span data-nle-label="estimate">אומדן</span><strong data-nle-unit-price>לפי פנייה</strong></div>
 					</div>
 					<div class="nle-tabs" role="tablist" aria-label="מידע על הדירה">
-						<button class="is-active" type="button" data-nle-tab="plan">תוכנית</button>
-						<button type="button" data-nle-tab="view">מבט</button>
-						<button type="button" data-nle-tab="tour">סיור</button>
+						<button class="is-active" type="button" data-nle-tab="plan" data-nle-label="plan">תוכנית</button>
+						<button type="button" data-nle-tab="view" data-nle-label="unit_view">מבט</button>
+						<button type="button" data-nle-tab="tour" data-nle-label="tour">סיור</button>
 					</div>
 					<div class="nle-panel" data-nle-panel>בחרו דירה כדי לראות מידע.</div>
 					<p class="nle-note" data-nle-model-note></p>
 				</article>
 
 				<section class="nle-facade" aria-label="בחירת דירה מהירה">
-					<strong>בחירת דירה מהירה</strong>
-					<p class="nle-note">בחרו קומה או דירה כדי לראות שטח, חדרים, נוף, אומדן ותוכנית לפני פנייה.</p>
+					<strong data-nle-label="quick_pick">בחירת דירה מהירה</strong>
+					<p class="nle-note" data-nle-label="quick_pick_note">בחרו קומה או דירה כדי לראות שטח, חדרים, נוף, אומדן ותוכנית לפני פנייה.</p>
 					<div class="nle-facade-grid" data-nle-facade-grid></div>
 				</section>
 
 				<form class="nle-contact" data-nle-form>
-					<strong>רוצים לבדוק את הדירה?</strong>
-					<input name="name" placeholder="שם מלא" autocomplete="name">
-					<input name="phone" placeholder="טלפון" inputmode="tel" autocomplete="tel">
+					<strong data-nle-label="contact_title">רוצים לבדוק את הדירה?</strong>
+					<input name="name" placeholder="שם מלא" autocomplete="name" data-nle-placeholder="name">
+					<input name="phone" placeholder="טלפון" inputmode="tel" autocomplete="tel" data-nle-placeholder="phone">
 					<input type="hidden" name="unit" data-nle-selected-unit>
-					<button type="submit">שליחת פנייה על הדירה</button>
-					<p class="nle-note">הפנייה תישלח עם פרטי הדירה שנבחרה. הנתונים להמחשה ויש לאמת מחיר וזמינות מול היזם.</p>
+					<button type="submit" data-nle-label="contact_button">שליחת פנייה על הדירה</button>
+					<p class="nle-note" data-nle-label="contact_note">הפנייה תישלח עם פרטי הדירה שנבחרה. הנתונים להמחשה ויש לאמת מחיר וזמינות מול היזם.</p>
 					<p class="nle-note" data-nle-feedback></p>
 				</form>
 			</aside>

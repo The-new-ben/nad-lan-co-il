@@ -230,7 +230,8 @@
 }
 
 .nlh-project-language-rail a,
-.nlh-project-language-rail span {
+.nlh-project-language-rail span,
+.nlh-project-language-rail button {
 	display: inline-flex;
 	align-items: center;
 	justify-content: center;
@@ -243,6 +244,8 @@
 	text-decoration: none;
 	font-size: 13px;
 	font-weight: 900;
+	font-family: inherit;
+	cursor: pointer;
 }
 
 .nlh-project-language-rail .is-active {
@@ -489,7 +492,8 @@
 	}
 
 	.nlh-project-language-rail a,
-	.nlh-project-language-rail span {
+	.nlh-project-language-rail span,
+	.nlh-project-language-rail button {
 		flex: 0 0 auto;
 		min-height: 38px;
 	}

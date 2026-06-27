@@ -92,6 +92,10 @@
       "ok": true
     },
     {
+      "name": "engine_switches_language",
+      "ok": true
+    },
+    {
       "name": "no_public_internal_words",
       "ok": true
     }

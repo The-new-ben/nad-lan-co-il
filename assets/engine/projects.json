@@ -17,6 +17,32 @@
       "model_note": "הדמיה להמחשה בלבד. יש לאמת תוכניות, מחירים וזמינות מול היזם.",
       "project_url": "/projects/rainbow-tel-aviv/",
       "investor_note": "בדקו קומה, נוף, שטח ותוכנית לפני פנייה.",
+      "i18n": {
+        "en": {
+          "sub": "New apartments in a residential tower in Sde Dov",
+          "location": "Sde Dov district, Tel Aviv",
+          "model_note": "Illustrative view only. Plans, prices and availability must be confirmed with the representative.",
+          "investor_note": "Check floor, view, area and plan before asking for details."
+        },
+        "fr": {
+          "sub": "Appartements neufs dans une tour résidentielle à Sde Dov",
+          "location": "Quartier Sde Dov, Tel Aviv",
+          "model_note": "Visualisation indicative uniquement. Les plans, prix et disponibilités doivent être confirmés avec un représentant.",
+          "investor_note": "Vérifiez l’étage, la vue, la surface et le plan avant de demander des détails."
+        },
+        "ru": {
+          "sub": "Новые квартиры в жилой башне в Sde Dov",
+          "location": "Квартал Sde Dov, Тель-Авив",
+          "model_note": "Изображение только для иллюстрации. Планы, цены и доступность нужно подтвердить с представителем.",
+          "investor_note": "Проверьте этаж, вид, площадь и план перед запросом деталей."
+        },
+        "ar": {
+          "sub": "شقق جديدة في برج سكني في سديه دوف",
+          "location": "حي سديه دوف، تل أبيب",
+          "model_note": "العرض للتوضيح فقط. يجب تأكيد المخططات والأسعار والتوفر مع ممثل المشروع.",
+          "investor_note": "افحصوا الطابق، الإطلالة، المساحة والمخطط قبل طلب التفاصيل."
+        }
+      },
       "units": [
         {
           "id": "unit-38-penthouse",
@@ -151,6 +177,32 @@
       "model_note": "הדמיה להמחשה בלבד. יש לאמת תוכניות, מחירים וזמינות מול היזם.",
       "project_url": "/projects/dimri-yama/",
       "investor_note": "בדקו קומה, נוף, שטח ותוכנית לפני פנייה.",
+      "i18n": {
+        "en": {
+          "sub": "New apartments near the sea in the Sde Dov district",
+          "location": "Sde Dov district, Tel Aviv",
+          "model_note": "Illustrative view only. Plans, prices and availability must be confirmed with the representative.",
+          "investor_note": "Check floor, view, area and plan before asking for details."
+        },
+        "fr": {
+          "sub": "Appartements neufs près de la mer dans le quartier Sde Dov",
+          "location": "Quartier Sde Dov, Tel Aviv",
+          "model_note": "Visualisation indicative uniquement. Les plans, prix et disponibilités doivent être confirmés avec un représentant.",
+          "investor_note": "Vérifiez l’étage, la vue, la surface et le plan avant de demander des détails."
+        },
+        "ru": {
+          "sub": "Новые квартиры рядом с морем в квартале Sde Dov",
+          "location": "Квартал Sde Dov, Тель-Авив",
+          "model_note": "Изображение только для иллюстрации. Планы, цены и доступность нужно подтвердить с представителем.",
+          "investor_note": "Проверьте этаж, вид, площадь и план перед запросом деталей."
+        },
+        "ar": {
+          "sub": "شقق جديدة قرب البحر في حي سديه دوف",
+          "location": "حي سديه دوف، تل أبيب",
+          "model_note": "العرض للتوضيح فقط. يجب تأكيد المخططات والأسعار والتوفر مع ممثل المشروع.",
+          "investor_note": "افحصوا الطابق، الإطلالة، المساحة والمخطط قبل طلب التفاصيل."
+        }
+      },
       "units": [
         {
           "id": "d-22",
@@ -246,6 +298,32 @@
       "model_note": "הדמיה להמחשה בלבד. יש לאמת תוכניות, מחירים וזמינות מול היזם.",
       "project_url": "/projects/ashira-sde-dov/",
       "investor_note": "בדקו קומה, נוף, שטח ותוכנית לפני פנייה.",
+      "i18n": {
+        "en": {
+          "sub": "New apartments in Sde Dov with selection by floor and view",
+          "location": "Sde Dov district, Tel Aviv",
+          "model_note": "Illustrative view only. Plans, prices and availability must be confirmed with the representative.",
+          "investor_note": "Check floor, view, area and plan before asking for details."
+        },
+        "fr": {
+          "sub": "Appartements neufs à Sde Dov avec choix par étage et vue",
+          "location": "Quartier Sde Dov, Tel Aviv",
+          "model_note": "Visualisation indicative uniquement. Les plans, prix et disponibilités doivent être confirmés avec un représentant.",
+          "investor_note": "Vérifiez l’étage, la vue, la surface et le plan avant de demander des détails."
+        },
+        "ru": {
+          "sub": "Новые квартиры в Sde Dov с выбором по этажу и виду",
+          "location": "Квартал Sde Dov, Тель-Авив",
+          "model_note": "Изображение только для иллюстрации. Планы, цены и доступность нужно подтвердить с представителем.",
+          "investor_note": "Проверьте этаж, вид, площадь и план перед запросом деталей."
+        },
+        "ar": {
+          "sub": "شقق جديدة في سديه دوف مع اختيار حسب الطابق والإطلالة",
+          "location": "حي سديه دوف، تل أبيب",
+          "model_note": "العرض للتوضيح فقط. يجب تأكيد المخططات والأسعار والتوفر مع ممثل المشروع.",
+          "investor_note": "افحصوا الطابق، الإطلالة، المساحة والمخطط قبل طلب التفاصيل."
+        }
+      },
       "units": [
         {
           "id": "ashira-18-west",
