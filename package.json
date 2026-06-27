@@ -30,6 +30,7 @@
 		"build": "postcss style.css --use cssnano -o style.min.css --no-map",
 		"watch": "postcss style.css --use cssnano -o style.min.css --no-map --watch",
 		"qa:showroom-engine-preview": "node scripts/qa-showroom-engine-preview.mjs --strict",
+		"init:project-publication-manifest": "node scripts/init-project-publication-manifest.mjs",
 		"qa:project-factory-smoke": "node scripts/qa-project-factory-smoke.mjs --out docs/qa/project-factory-smoke-report.json",
 		"qa:home-chrome": "node scripts/qa-home-chrome.mjs --strict",
 		"qa:home-seo-schema": "node scripts/qa-home-seo-schema.mjs --strict",

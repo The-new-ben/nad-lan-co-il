@@ -308,12 +308,14 @@ npm run qa:project-factory-smoke
 
 This creates a temporary project folder, builds `showroom-payload.json`, validates it against the
 schema, checks that the expected scaffold files exist, writes
-`docs/qa/project-factory-smoke-report.json`, and removes the temporary folder. If this smoke test
-is red, do not start the next Sde Dov project yet.
+`docs/qa/project-factory-smoke-report.json`, creates a temporary five-language draft-only
+publication manifest, verifies its structure, and removes the temporary artifacts. If this smoke
+test is red, do not start the next Sde Dov project yet.
 
 Before any project draft is imported or published, create a project publication manifest and run:
 
 ```bash
+npm run init:project-publication-manifest -- <project-slug> --title "Project Name" --asset-slug <project-slug>
 npm run qa:ashira-full-preflight
 node scripts/build-project-hreflang-artifact.mjs --manifest <project-manifest> --out-json <hreflang-map> --out-html <hreflang-head>
 node scripts/qa-project-hreflang-artifact.mjs --manifest <project-manifest> --map <hreflang-map> --html <hreflang-head> --out <hreflang-report> --strict

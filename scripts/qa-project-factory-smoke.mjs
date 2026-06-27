@@ -53,14 +53,19 @@ function runStep(name, command, args) {
 function main() {
   const args = parseArgs(process.argv);
   const folder = path.join(ROOT, 'assets', 'projects', args.slug);
+  const manifestPath = path.join(ROOT, 'docs', 'plans', `${args.slug}-publication-manifest.json`);
   if (fs.existsSync(folder)) {
     throw new Error(`Smoke-test folder already exists: ${path.relative(ROOT, folder)}. Pick another --slug or remove it first.`);
+  }
+  if (fs.existsSync(manifestPath)) {
+    throw new Error(`Smoke-test manifest already exists: ${path.relative(ROOT, manifestPath)}. Pick another --slug or remove it first.`);
   }
 
   const report = {
     generated_at: new Date().toISOString(),
     slug: args.slug,
     folder: path.relative(ROOT, folder).replace(/\\/g, '/'),
+    publication_manifest: path.relative(ROOT, manifestPath).replace(/\\/g, '/'),
     keep: args.keep,
     out: args.out,
     steps: [],
@@ -97,6 +102,16 @@ function main() {
       '--payload',
       `assets/projects/${args.slug}/showroom-payload.json`,
     ]));
+    report.steps.push(runStep('init multilingual publication manifest', process.execPath, [
+      'scripts/init-project-publication-manifest.mjs',
+      args.slug,
+      '--title',
+      'Codex Factory Smoke',
+      '--asset-slug',
+      args.slug,
+      '--out',
+      `docs/plans/${args.slug}-publication-manifest.json`,
+    ]));
     const missing = expectedFiles.filter((file) => !fs.existsSync(path.join(folder, file)));
     report.generated_files = expectedFiles.filter((file) => fs.existsSync(path.join(folder, file)));
     report.steps.push({
@@ -107,10 +122,49 @@ function main() {
       stdout_tail: missing.length ? '' : expectedFiles.join('\n'),
       stderr_tail: missing.length ? `Missing: ${missing.join(', ')}` : '',
     });
+    if (fs.existsSync(manifestPath)) {
+      const manifest = JSON.parse(fs.readFileSync(manifestPath, 'utf8'));
+      const langs = Array.isArray(manifest.languages) ? manifest.languages.map((entry) => entry.lang) : [];
+      const manifestFailures = [];
+      if (manifest.status !== 'draft_preflight_only') manifestFailures.push('status is not draft_preflight_only');
+      if (manifest.asset_slug !== args.slug) manifestFailures.push(`asset_slug ${manifest.asset_slug || ''} does not match ${args.slug}`);
+      for (const lang of ['he', 'en', 'fr', 'ru', 'ar']) {
+        if (!langs.includes(lang)) manifestFailures.push(`missing language ${lang}`);
+      }
+      for (const entry of manifest.languages || []) {
+        if (!String(entry.public_url || '').includes(`/projects/${entry.slug}/`)) {
+          manifestFailures.push(`bad public_url for ${entry.lang}`);
+        }
+        if (!entry.pattern || !entry.draft || !entry.preview || !entry.content_report || !entry.screenshot_report) {
+          manifestFailures.push(`missing artifact path for ${entry.lang}`);
+        }
+      }
+      report.steps.push({
+        name: 'publication manifest structure',
+        command: `check ${path.relative(ROOT, manifestPath).replace(/\\/g, '/')}`,
+        exit_code: manifestFailures.length ? 1 : 0,
+        ok: manifestFailures.length === 0,
+        stdout_tail: manifestFailures.length ? '' : `languages=${langs.join(',')}\nstatus=${manifest.status}\nasset_slug=${manifest.asset_slug}`,
+        stderr_tail: manifestFailures.join('\n'),
+      });
+    } else {
+      report.steps.push({
+        name: 'publication manifest structure',
+        command: `check ${path.relative(ROOT, manifestPath).replace(/\\/g, '/')}`,
+        exit_code: 1,
+        ok: false,
+        stdout_tail: '',
+        stderr_tail: 'Manifest was not generated.',
+      });
+    }
   } finally {
     if (!args.keep && fs.existsSync(folder)) {
       fs.rmSync(folder, { recursive: true, force: true });
       report.cleaned_up = true;
+    }
+    if (!args.keep && fs.existsSync(manifestPath)) {
+      fs.rmSync(manifestPath, { force: true });
+      report.manifest_cleaned_up = true;
     }
   }
 

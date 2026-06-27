@@ -389,6 +389,7 @@ node scripts/build-project-showroom-draft.mjs --pattern patterns/project-showroo
 Before any multilingual import or hreflang output, run the publication gate:
 
 ```bash
+npm run init:project-publication-manifest -- <project-slug> --title "Project Name" --asset-slug <project-slug>
 npm run qa:ashira-full-preflight
 npm run build:project-hreflang-artifact
 npm run qa:project-hreflang-artifact
@@ -404,6 +405,11 @@ of copying an Ashira-only script. The gate proves every language page is still d
 the `nadlan_project` endpoint, targets a `/projects/<ascii-slug>/` URL, has Yoast title/meta/focus
 fields, reuses the real project asset folder, passes its content-depth report, and passes
 screenshot QA without horizontal overflow or selected-card/facade overlap.
+
+Use `npm run init:project-publication-manifest -- <project-slug> --title "Project Name"` to create
+the next draft-only five-language manifest. The initializer does not create content and does not
+touch WordPress; it only creates the repeatable path contract for patterns, draft payloads, previews,
+content reports, screenshot reports, hreflang artifacts and the import dry-run report.
 
 The hreflang artifact is also manifest-driven. It produces a JSON map and a copy-paste-safe HTML
 head snippet, but it is still preflight only. Do not emit the tags live until the language URLs are
