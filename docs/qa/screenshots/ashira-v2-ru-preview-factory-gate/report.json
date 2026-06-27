@@ -1,10 +1,10 @@
 {
-  "generated_at": "2026-06-27T01:39:51.924Z",
-  "preview": "docs/previews/ashira-showroom-v2-en-preview.html",
-  "url": "http://127.0.0.1:62556/docs/previews/ashira-showroom-v2-en-preview.html",
-  "out_dir": "docs/qa/screenshots/ashira-v2-en-preview-factory-gate",
+  "generated_at": "2026-06-27T01:38:29.786Z",
+  "preview": "docs/previews/ashira-showroom-v2-ru-preview.html",
+  "url": "http://127.0.0.1:62503/docs/previews/ashira-showroom-v2-ru-preview.html",
+  "out_dir": "docs/qa/screenshots/ashira-v2-ru-preview-factory-gate",
   "strict": true,
-  "expected_lang": "en",
+  "expected_lang": "ru",
   "expected_dir": "ltr",
   "viewports": [
     {
@@ -17,17 +17,17 @@
         "deviceScaleFactor": 1
       },
       "screenshots": {
-        "initial": "C:\\Users\\pro\\Documents\\websites\\nad-lan-co-il-showroom-1680\\docs\\qa\\screenshots\\ashira-v2-en-preview-factory-gate\\desktop-1440-initial.png",
-        "selected": "C:\\Users\\pro\\Documents\\websites\\nad-lan-co-il-showroom-1680\\docs\\qa\\screenshots\\ashira-v2-en-preview-factory-gate\\desktop-1440-selected.png"
+        "initial": "C:\\Users\\pro\\Documents\\websites\\nad-lan-co-il-showroom-1680\\docs\\qa\\screenshots\\ashira-v2-ru-preview-factory-gate\\desktop-1440-initial.png",
+        "selected": "C:\\Users\\pro\\Documents\\websites\\nad-lan-co-il-showroom-1680\\docs\\qa\\screenshots\\ashira-v2-ru-preview-factory-gate\\desktop-1440-selected.png"
       },
       "metrics": {
-        "title": "Ashira Sde Dov apartments for sale in Tel Aviv | NadLan",
+        "title": "Квартиры в Ashira Sde Dov на продажу в Тель-Авиве | NadLan",
         "dir": "ltr",
-        "lang": "en",
+        "lang": "ru",
         "hasRoot": true,
         "oldRootCount": 0,
         "h1Count": 1,
-        "h2Count": 15,
+        "h2Count": 18,
         "scroll": {
           "width": 1440,
           "client": 1440,
@@ -36,67 +36,67 @@
         "rects": {
           "root": {
             "x": 100,
-            "y": -722,
+            "y": -811,
             "width": 1240,
-            "height": 9318.8,
+            "height": 11946.4,
             "right": 1340,
-            "bottom": 8596.8
+            "bottom": 11135.4
           },
           "hero": {
             "x": 100,
-            "y": -649,
+            "y": -738,
             "width": 1240,
-            "height": 477.3,
+            "height": 545.6,
             "right": 1340,
-            "bottom": -171.7
+            "bottom": -192.4
           },
           "stage": {
             "x": 101,
-            "y": 31.5,
+            "y": 10.9,
             "width": 1238,
-            "height": 874.9,
+            "height": 895,
             "right": 1339,
-            "bottom": 906.5
+            "bottom": 905.9
           },
           "model": {
             "x": 705.5,
-            "y": 53.5,
+            "y": 32.9,
             "width": 611.5,
-            "height": 830.9,
+            "height": 851,
             "right": 1317,
-            "bottom": 884.5
+            "bottom": 883.9
           },
           "picker": {
             "x": 123,
-            "y": 53.5,
+            "y": 32.9,
             "width": 564.5,
-            "height": 830.9,
+            "height": 851,
             "right": 687.5,
-            "bottom": 884.5
+            "bottom": 883.9
           },
           "facade": {
             "x": 140,
-            "y": 160.8,
+            "y": 160.3,
             "width": 530.5,
             "height": 706.6,
             "right": 670.5,
-            "bottom": 867.5
+            "bottom": 866.9
           },
           "card": {
             "x": 640.5,
-            "y": 906.5,
+            "y": 905.9,
             "width": 676.5,
-            "height": 503.8,
+            "height": 526.8,
             "right": 1317,
-            "bottom": 1410.3
+            "bottom": 1432.7
           },
           "contact": {
             "x": 123,
-            "y": 906.5,
+            "y": 905.9,
             "width": 503.5,
-            "height": 503.8,
+            "height": 526.8,
             "right": 626.5,
-            "bottom": 1410.3
+            "bottom": 1432.7
           }
         },
         "modelViewer": {
@@ -116,7 +116,7 @@
         "selected": {
           "cardHidden": false,
           "unitInput": "ashira-14-city",
-          "title": "Apartment 14 City | 4 rooms"
+          "title": "Квартира 14 City | 4 комнаты"
         },
         "overlap": {
           "cardOverFacade": false
@@ -143,17 +143,17 @@
         "deviceScaleFactor": 1
       },
       "screenshots": {
-        "initial": "C:\\Users\\pro\\Documents\\websites\\nad-lan-co-il-showroom-1680\\docs\\qa\\screenshots\\ashira-v2-en-preview-factory-gate\\tablet-768-initial.png",
-        "selected": "C:\\Users\\pro\\Documents\\websites\\nad-lan-co-il-showroom-1680\\docs\\qa\\screenshots\\ashira-v2-en-preview-factory-gate\\tablet-768-selected.png"
+        "initial": "C:\\Users\\pro\\Documents\\websites\\nad-lan-co-il-showroom-1680\\docs\\qa\\screenshots\\ashira-v2-ru-preview-factory-gate\\tablet-768-initial.png",
+        "selected": "C:\\Users\\pro\\Documents\\websites\\nad-lan-co-il-showroom-1680\\docs\\qa\\screenshots\\ashira-v2-ru-preview-factory-gate\\tablet-768-selected.png"
       },
       "metrics": {
-        "title": "Ashira Sde Dov apartments for sale in Tel Aviv | NadLan",
+        "title": "Квартиры в Ashira Sde Dov на продажу в Тель-Авиве | NadLan",
         "dir": "ltr",
-        "lang": "en",
+        "lang": "ru",
         "hasRoot": true,
         "oldRootCount": 0,
         "h1Count": 1,
-        "h2Count": 15,
+        "h2Count": 18,
         "scroll": {
           "width": 768,
           "client": 768,
@@ -162,67 +162,67 @@
         "rects": {
           "root": {
             "x": 16,
-            "y": -1528,
+            "y": -1551,
             "width": 736,
-            "height": 11341.6,
+            "height": 14267.2,
             "right": 752,
-            "bottom": 9813.6
+            "bottom": 12716.2
           },
           "hero": {
             "x": 16,
-            "y": -1466.3,
+            "y": -1489.3,
             "width": 736,
-            "height": 725.3,
+            "height": 726.3,
             "right": 752,
-            "bottom": -741
+            "bottom": -763
           },
           "stage": {
             "x": 17,
-            "y": -510,
+            "y": -532,
             "width": 734,
-            "height": 1505.1,
+            "height": 1527.5,
             "right": 751,
-            "bottom": 995.1
+            "bottom": 995.5
           },
           "model": {
             "x": 33.9,
-            "y": -493.1,
+            "y": -515.1,
             "width": 700.2,
-            "height": 441.4,
+            "height": 463.8,
             "right": 734.1,
-            "bottom": -51.7
+            "bottom": -51.3
           },
           "picker": {
             "x": 33.9,
-            "y": -33.7,
+            "y": -33.3,
             "width": 700.2,
             "height": 1011.9,
             "right": 734.1,
-            "bottom": 978.2
+            "bottom": 978.6
           },
           "facade": {
             "x": 50.9,
-            "y": 73.6,
+            "y": 74,
             "width": 666.2,
             "height": 887.6,
             "right": 717.1,
-            "bottom": 961.2
+            "bottom": 961.6
           },
           "card": {
             "x": 33.9,
-            "y": 995.1,
+            "y": 995.5,
             "width": 700.2,
-            "height": 492.2,
+            "height": 515.2,
             "right": 734.1,
-            "bottom": 1487.3
+            "bottom": 1510.7
           },
           "contact": {
             "x": 33.9,
-            "y": 1501.3,
+            "y": 1524.7,
             "width": 700.2,
-            "height": 418,
+            "height": 424,
             "right": 734.1,
-            "bottom": 1919.3
+            "bottom": 1948.7
           }
         },
         "modelViewer": {
@@ -242,7 +242,7 @@
         "selected": {
           "cardHidden": false,
           "unitInput": "ashira-14-city",
-          "title": "Apartment 14 City | 4 rooms"
+          "title": "Квартира 14 City | 4 комнаты"
         },
         "overlap": {
           "cardOverFacade": false
@@ -269,17 +269,17 @@
         "deviceScaleFactor": 2
       },
       "screenshots": {
-        "initial": "C:\\Users\\pro\\Documents\\websites\\nad-lan-co-il-showroom-1680\\docs\\qa\\screenshots\\ashira-v2-en-preview-factory-gate\\mobile-390-initial.png",
-        "selected": "C:\\Users\\pro\\Documents\\websites\\nad-lan-co-il-showroom-1680\\docs\\qa\\screenshots\\ashira-v2-en-preview-factory-gate\\mobile-390-selected.png"
+        "initial": "C:\\Users\\pro\\Documents\\websites\\nad-lan-co-il-showroom-1680\\docs\\qa\\screenshots\\ashira-v2-ru-preview-factory-gate\\mobile-390-initial.png",
+        "selected": "C:\\Users\\pro\\Documents\\websites\\nad-lan-co-il-showroom-1680\\docs\\qa\\screenshots\\ashira-v2-ru-preview-factory-gate\\mobile-390-selected.png"
       },
       "metrics": {
-        "title": "Ashira Sde Dov apartments for sale in Tel Aviv | NadLan",
+        "title": "Квартиры в Ashira Sde Dov на продажу в Тель-Авиве | NadLan",
         "dir": "ltr",
-        "lang": "en",
+        "lang": "ru",
         "hasRoot": true,
         "oldRootCount": 0,
         "h1Count": 1,
-        "h2Count": 15,
+        "h2Count": 18,
         "scroll": {
           "width": 390,
           "client": 390,
@@ -288,67 +288,67 @@
         "rects": {
           "root": {
             "x": 9,
-            "y": -559,
+            "y": -774,
             "width": 372,
-            "height": 15010,
+            "height": 19762.9,
             "right": 381,
-            "bottom": 14451
+            "bottom": 18988.9
           },
           "hero": {
             "x": 9,
-            "y": -518,
+            "y": -733,
             "width": 372,
-            "height": 664.5,
+            "height": 692.3,
             "right": 381,
-            "bottom": 146.5
+            "bottom": -40.7
           },
           "stage": {
             "x": 10,
-            "y": 440.5,
+            "y": 317.6,
             "width": 370,
-            "height": 1094.2,
+            "height": 1136.7,
             "right": 380,
-            "bottom": 1534.7
+            "bottom": 1454.4
           },
           "model": {
             "x": 20,
-            "y": 450.5,
+            "y": 327.6,
             "width": 350,
-            "height": 416.2,
+            "height": 438.5,
             "right": 370,
-            "bottom": 866.6
+            "bottom": 766.2
           },
           "picker": {
             "x": 20,
-            "y": 878.6,
+            "y": 778.2,
             "width": 350,
-            "height": 646,
+            "height": 666.2,
             "right": 370,
-            "bottom": 1524.7
+            "bottom": 1444.4
           },
           "facade": {
             "x": 33,
-            "y": 1032,
+            "y": 951.8,
             "width": 324,
             "height": 479.6,
             "right": 357,
-            "bottom": 1511.7
+            "bottom": 1431.4
           },
           "card": {
             "x": 20,
-            "y": 1534.7,
+            "y": 1454.4,
             "width": 350,
-            "height": 662.8,
+            "height": 685.8,
             "right": 370,
-            "bottom": 2197.5
+            "bottom": 2140.2
           },
           "contact": {
             "x": 20,
-            "y": 2207.5,
+            "y": 2150.2,
             "width": 350,
-            "height": 410,
+            "height": 416,
             "right": 370,
-            "bottom": 2617.5
+            "bottom": 2566.2
           }
         },
         "modelViewer": {
@@ -368,7 +368,7 @@
         "selected": {
           "cardHidden": false,
           "unitInput": "ashira-14-city",
-          "title": "Apartment 14 City | 4 rooms"
+          "title": "Квартира 14 City | 4 комнаты"
         },
         "overlap": {
           "cardOverFacade": false
@@ -396,17 +396,17 @@
         "userAgent": "Mozilla/5.0 (Linux; Android 13; Pixel 7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0 Mobile Safari/537.36 EdgA/125.0"
       },
       "screenshots": {
-        "initial": "C:\\Users\\pro\\Documents\\websites\\nad-lan-co-il-showroom-1680\\docs\\qa\\screenshots\\ashira-v2-en-preview-factory-gate\\edge-mobile-390-initial.png",
-        "selected": "C:\\Users\\pro\\Documents\\websites\\nad-lan-co-il-showroom-1680\\docs\\qa\\screenshots\\ashira-v2-en-preview-factory-gate\\edge-mobile-390-selected.png"
+        "initial": "C:\\Users\\pro\\Documents\\websites\\nad-lan-co-il-showroom-1680\\docs\\qa\\screenshots\\ashira-v2-ru-preview-factory-gate\\edge-mobile-390-initial.png",
+        "selected": "C:\\Users\\pro\\Documents\\websites\\nad-lan-co-il-showroom-1680\\docs\\qa\\screenshots\\ashira-v2-ru-preview-factory-gate\\edge-mobile-390-selected.png"
       },
       "metrics": {
-        "title": "Ashira Sde Dov apartments for sale in Tel Aviv | NadLan",
+        "title": "Квартиры в Ashira Sde Dov на продажу в Тель-Авиве | NadLan",
         "dir": "ltr",
-        "lang": "en",
+        "lang": "ru",
         "hasRoot": true,
         "oldRootCount": 0,
         "h1Count": 1,
-        "h2Count": 15,
+        "h2Count": 18,
         "scroll": {
           "width": 390,
           "client": 390,
@@ -415,67 +415,67 @@
         "rects": {
           "root": {
             "x": 9,
-            "y": -559,
+            "y": -774,
             "width": 372,
-            "height": 15010,
+            "height": 19762.9,
             "right": 381,
-            "bottom": 14451
+            "bottom": 18988.9
           },
           "hero": {
             "x": 9,
-            "y": -518,
+            "y": -733,
             "width": 372,
-            "height": 664.5,
+            "height": 692.3,
             "right": 381,
-            "bottom": 146.5
+            "bottom": -40.7
           },
           "stage": {
             "x": 10,
-            "y": 440.5,
+            "y": 317.6,
             "width": 370,
-            "height": 1094.2,
+            "height": 1136.7,
             "right": 380,
-            "bottom": 1534.7
+            "bottom": 1454.4
           },
           "model": {
             "x": 20,
-            "y": 450.5,
+            "y": 327.6,
             "width": 350,
-            "height": 416.2,
+            "height": 438.5,
             "right": 370,
-            "bottom": 866.6
+            "bottom": 766.2
           },
           "picker": {
             "x": 20,
-            "y": 878.6,
+            "y": 778.2,
             "width": 350,
-            "height": 646,
+            "height": 666.2,
             "right": 370,
-            "bottom": 1524.7
+            "bottom": 1444.4
           },
           "facade": {
             "x": 33,
-            "y": 1032,
+            "y": 951.8,
             "width": 324,
             "height": 479.6,
             "right": 357,
-            "bottom": 1511.7
+            "bottom": 1431.4
           },
           "card": {
             "x": 20,
-            "y": 1534.7,
+            "y": 1454.4,
             "width": 350,
-            "height": 662.8,
+            "height": 685.8,
             "right": 370,
-            "bottom": 2197.5
+            "bottom": 2140.2
           },
           "contact": {
             "x": 20,
-            "y": 2207.5,
+            "y": 2150.2,
             "width": 350,
-            "height": 410,
+            "height": 416,
             "right": 370,
-            "bottom": 2617.5
+            "bottom": 2566.2
           }
         },
         "modelViewer": {
@@ -495,7 +495,7 @@
         "selected": {
           "cardHidden": false,
           "unitInput": "ashira-14-city",
-          "title": "Apartment 14 City | 4 rooms"
+          "title": "Квартира 14 City | 4 комнаты"
         },
         "overlap": {
           "cardOverFacade": false
