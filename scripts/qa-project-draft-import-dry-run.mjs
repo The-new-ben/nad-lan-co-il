@@ -1,6 +1,7 @@
 #!/usr/bin/env node
-import { mkdirSync, readFileSync, writeFileSync } from 'node:fs';
 import { spawnSync } from 'node:child_process';
+import { createHash } from 'node:crypto';
+import { mkdirSync, readFileSync, writeFileSync } from 'node:fs';
 import path from 'node:path';
 
 const ROOT = process.cwd();
@@ -20,6 +21,32 @@ function resolve(file) {
 
 function readJson(file) {
 	return JSON.parse(readFileSync(resolve(file), 'utf8'));
+}
+
+function extractWpHtmlBlock(patternSource, file) {
+	const start = patternSource.indexOf('<!-- wp:html -->');
+	const endMarker = '<!-- /wp:html -->';
+	const end = patternSource.indexOf(endMarker);
+	if (start < 0 || end < 0 || end <= start) {
+		throw new Error(`Pattern does not contain a bounded wp:html block: ${file}`);
+	}
+	return patternSource.slice(start, end + endMarker.length);
+}
+
+function fillRuntimeValues(content, { site, theme, assetSlug }) {
+	const assetBase = `${site.replace(/\/+$/, '')}/wp-content/themes/${theme}/assets/projects/${assetSlug}/`;
+	return content
+		.replace(/<\?php echo esc_url\( \$asset_base \. '([^']+)' \); \?>/g, (_m, file) => `${assetBase}${file}`)
+		.replace(/<\?php echo esc_url\( rest_url\( 'nadlan\/v1\/lead' \) \); \?>/g, `${site.replace(/\/+$/, '')}/wp-json/nadlan/v1/lead`);
+}
+
+function expectedContentFromPattern(patternFile, args) {
+	const source = readFileSync(resolve(patternFile), 'utf8');
+	return fillRuntimeValues(extractWpHtmlBlock(source, patternFile), args);
+}
+
+function sha256(value) {
+	return createHash('sha256').update(String(value || '')).digest('hex');
 }
 
 function stripAnsi(source) {
@@ -45,6 +72,7 @@ const outFile = argValue('--out', DEFAULT_OUT);
 const manifest = readJson(manifestFile);
 const failures = [];
 const imports = [];
+const parityChecks = [];
 
 if (manifest.status !== 'draft_preflight_only') {
 	addFailure(failures, 'manifest', 'manifest_not_preflight', manifest.status || '');
@@ -60,6 +88,40 @@ for (const entry of manifest.languages || []) {
 		continue;
 	}
 	const payload = readJson(entry.draft);
+	const body = payload.body || {};
+	const content = String(body.content || '');
+	const meta = body.meta || {};
+	let expectedContent = '';
+	let parity = {
+		ok: false,
+		pattern: entry.pattern || '',
+		payload_sha256: sha256(content),
+		expected_sha256: '',
+	};
+
+	if (!entry.pattern) {
+		addFailure(failures, lang, 'missing_pattern_path');
+	} else {
+		try {
+			expectedContent = expectedContentFromPattern(entry.pattern, {
+				site: manifest.site || 'https://nad-lan.co.il',
+				theme: manifest.theme || 'nadlan-revenue',
+				assetSlug: entry.asset_slug || manifest.asset_slug || entry.slug,
+			});
+			parity = {
+				...parity,
+				ok: content === expectedContent,
+				expected_sha256: sha256(expectedContent),
+			};
+			if (content !== expectedContent) {
+				addFailure(failures, lang, 'payload_pattern_parity_mismatch', `payload=${content.length} expected=${expectedContent.length}`);
+			}
+		} catch (error) {
+			addFailure(failures, lang, 'pattern_extract_failed', error.message);
+		}
+	}
+	parityChecks.push({ lang, ...parity });
+
 	const result = spawnSync(process.execPath, [
 		'scripts/apply-wp-draft-payload.mjs',
 		'--payload',
@@ -83,11 +145,10 @@ for (const entry of manifest.languages || []) {
 		addFailure(failures, lang, 'dry_run_output_not_json', error.message);
 	}
 
-	const body = payload.body || {};
-	const meta = body.meta || {};
 	imports.push({
 		lang,
 		draft: entry.draft,
+		pattern: entry.pattern || '',
 		exit_code: result.status,
 		mode: output.mode || '',
 		endpoint: output.endpoint || payload.endpoint || '',
@@ -97,6 +158,7 @@ for (const entry of manifest.languages || []) {
 		title: output.title || body.title || '',
 		content_chars: output.content_chars || String(body.content || '').length,
 		meta_fields: output.meta_fields || Object.keys(meta).length,
+		pattern_parity: parity,
 	});
 
 	if (result.status !== 0) addFailure(failures, lang, 'dry_run_exit_nonzero', result.stderr || String(result.status));
@@ -115,6 +177,11 @@ const report = {
 	manifest: manifestFile,
 	mode: 'dry-run-only',
 	language_count: (manifest.languages || []).length,
+	pattern_parity: {
+		ok: Boolean(parityChecks.length) && parityChecks.every((check) => check.ok),
+		checked: parityChecks.length,
+		checks: parityChecks,
+	},
 	imports,
 	failures,
 };

@@ -113,6 +113,10 @@ import dry-run, project-publication and homepage-dependency gates together and w
 `docs/qa/ashira-full-preflight-report.json`. A green individual report is not enough if the
 aggregate report is stale or red.
 
+The import dry-run is also a stale-payload guard: it compares every language draft payload to its
+source pattern after public URL resolution and records matching SHA-256 values. If a pattern changes,
+the translated draft JSON must be rebuilt before WordPress import is considered safe.
+
 ## Why This Is The Controlled Path
 
 The site needs international buyers, but the wrong multilingual move can damage URL structure and SEO. This path is slower than automatic translation, but safer:

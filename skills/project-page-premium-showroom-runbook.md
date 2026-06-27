@@ -412,7 +412,10 @@ published, indexable and verified.
 The draft import dry-run uses the same WordPress REST payloads that a later draft import would use,
 but it stays offline and credentials-free. It must prove every language payload remains `status:
 draft`, points at the `nadlan_project` endpoint, keeps the expected slug and carries enough content
-and metadata before anyone runs a real WordPress import.
+and metadata before anyone runs a real WordPress import. It must also prove exact parity between
+each draft payload body and its source theme pattern after the same public asset URL resolution used
+by `scripts/build-project-showroom-draft.mjs`. If a pattern changes and the translated draft JSON is
+stale, the dry-run gate must fail before an import can happen.
 
 For Ashira, `npm run qa:ashira-full-preflight` is the owner-review gate. It runs the research,
 architecture, all five content-depth gates, all five browser screenshot gates, factory readiness,
