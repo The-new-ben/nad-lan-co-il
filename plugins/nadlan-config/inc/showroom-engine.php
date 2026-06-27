@@ -1,48 +1,173 @@
 <?php
 /**
- * nadlan-config — Showroom Engine bridge (Claude Design port, slice 1).
+ * nadlan-config — Showroom Engine bridge (Claude Design port).
  *
- * Mounts the data-driven showroom engine
- * (assets/showroom-engine/, ported from handoff/claude-design/2026-06-27-showroom-engine)
- * via a self-contained shortcode, so it can be previewed on a real WordPress page
- * WITHOUT touching the existing project-3d showroom. No stacking: this renders the
- * new engine only where the shortcode is placed.
+ * Mounts the data-driven showroom engine (assets/showroom-engine/) via a
+ * project-agnostic shortcode. The engine renders ANY project from a payload built
+ * from that project's CMS meta — the factory. New project = new nadlan_project post
+ * with its meta filled, zero code.
  *
- *   [nadlan_showroom_engine]                       -> project page, ashira-sde-dov
- *   [nadlan_showroom_engine page="home"]           -> homepage gallery
- *   [nadlan_showroom_engine project="rainbow"]     -> a specific project
+ *   [nadlan_showroom_engine]                     -> the current nadlan_project page,
+ *                                                    or the newest project as fallback
+ *   [nadlan_showroom_engine id="123"]            -> a specific project by post id
+ *   [nadlan_showroom_engine project="rainbow"]   -> a specific project by slug
+ *   [nadlan_showroom_engine page="home"]         -> gallery of all published projects
  *
- * Slice 1 renders from the bundled prototype payload (assets/showroom-engine/data.js)
- * with asset paths and the lead endpoint rewritten for this site. Slice 1b swaps the
- * payload source to live nadlan_project CMS meta (same window.NADLAN_SHOWROOM shape).
+ * No stacking: renders the new engine only where the shortcode is placed; it never
+ * touches the existing project-3d showroom.
  */
 
 if ( ! defined( 'ABSPATH' ) ) { exit; }
 
 if ( ! function_exists( 'nadlan_showroom_engine_base_url' ) ) {
 	function nadlan_showroom_engine_base_url() {
-		// inc/ -> plugin root -> assets/showroom-engine/
 		return plugins_url( 'assets/showroom-engine/', dirname( __DIR__ ) . '/nadlan-config.php' );
 	}
 }
-
 if ( ! function_exists( 'nadlan_showroom_engine_dir' ) ) {
 	function nadlan_showroom_engine_dir() {
 		return dirname( __DIR__ ) . '/assets/showroom-engine/';
 	}
 }
 
-if ( ! function_exists( 'nadlan_showroom_engine_payload_js' ) ) {
+if ( ! function_exists( 'nadlan_showroom_engine_json_meta' ) ) {
+	/** Decode a JSON-or-array post meta safely to an array. */
+	function nadlan_showroom_engine_json_meta( $post_id, $key ) {
+		$raw = get_post_meta( $post_id, $key, true );
+		if ( is_array( $raw ) ) { return $raw; }
+		if ( is_string( $raw ) && $raw !== '' ) {
+			$d = json_decode( $raw, true );
+			if ( is_array( $d ) ) { return $d; }
+		}
+		return array();
+	}
+}
+
+if ( ! function_exists( 'nadlan_showroom_engine_build_project' ) ) {
 	/**
-	 * Slice 1: read the bundled prototype payload and make it site-correct —
-	 * resolve relative model/poster/facade paths to the plugin URL, and point the
-	 * lead endpoint at this site's REST route. Returns a JS string that assigns
-	 * window.NADLAN_SHOWROOM, or '' if the bundle is missing.
+	 * Build one engine `projects[slug]` entry from a nadlan_project post's CMS meta.
+	 * Field names follow the engine wiring contract (docs/showroom-engine-wiring.md);
+	 * the engine normalizes both the short and the project_3d_* names.
 	 */
-	function nadlan_showroom_engine_payload_js() {
+	function nadlan_showroom_engine_build_project( $post ) {
+		$post = get_post( $post );
+		if ( ! $post ) { return null; }
+		$id   = $post->ID;
+		$units = nadlan_showroom_engine_json_meta( $id, 'project_3d_units' );
+
+		$facades = nadlan_showroom_engine_json_meta( $id, 'project_3d_facade_images' );
+		$facade  = '';
+		if ( ! empty( $facades ) && isset( $facades[0]['src'] ) ) { $facade = esc_url_raw( $facades[0]['src'] ); }
+
+		$env         = nadlan_showroom_engine_json_meta( $id, 'project_3d_environment_json' );
+		$orientation = isset( $env['orientation'] ) && is_array( $env['orientation'] ) ? $env['orientation'] : array();
+
+		// floors: explicit meta, else the tallest unit floor.
+		$floors = (int) get_post_meta( $id, 'project_floors', true );
+		if ( $floors <= 0 ) {
+			foreach ( (array) $units as $u ) {
+				if ( isset( $u['floor'] ) ) { $floors = max( $floors, (int) $u['floor'] ); }
+			}
+		}
+
+		$tier = sanitize_key( (string) get_post_meta( $id, 'project_tier', true ) );
+		if ( $tier === '' ) { $tier = 'standard'; }
+
+		return array(
+			'slug'           => $post->post_name,
+			'name'           => get_the_title( $id ),
+			'sub'            => (string) get_post_meta( $id, 'project_subtitle', true ),
+			'building'       => (string) get_post_meta( $id, 'building', true ),
+			'floors'         => $floors,
+			'floor_height_m' => (float) ( get_post_meta( $id, 'project_3d_floor_height_m', true ) ?: 3.05 ),
+			'viewbox'        => (string) get_post_meta( $id, 'project_3d_viewbox', true ),
+			'model_glb'      => esc_url_raw( (string) get_post_meta( $id, 'project_model_glb', true ) ),
+			'model_poster'   => esc_url_raw( (string) get_post_meta( $id, 'project_model_poster', true ) ),
+			'facade_image'   => $facade,
+			'concept'        => (bool) get_post_meta( $id, 'project_3d_demo', true ),
+			'video_url'      => esc_url_raw( (string) get_post_meta( $id, 'project_3d_video_url', true ) ),
+			'tour_url'       => esc_url_raw( (string) get_post_meta( $id, 'project_3d_tour_url', true ) ),
+			'orientation'    => $orientation,
+			'geo'            => array(
+				'lat' => (float) get_post_meta( $id, 'lat', true ),
+				'lng' => (float) get_post_meta( $id, 'lng', true ),
+			),
+			// monetization: paid tier lifts a project in gallery / map / nearby order.
+			'featured'       => (bool) get_post_meta( $id, 'project_featured', true ),
+			'tier'           => $tier,
+			'url'            => get_permalink( $id ),
+			'units'          => array_values( (array) $units ),
+		);
+	}
+}
+
+if ( ! function_exists( 'nadlan_showroom_engine_config' ) ) {
+	function nadlan_showroom_engine_config( $default_slug ) {
+		return array(
+			'brand_key'      => 'brand',
+			'lead_endpoint'  => esc_url_raw( rest_url( 'nadlan/v1/lead' ) ),
+			'whatsapp'       => preg_replace( '/\D+/', '', (string) get_option( 'nadlan_whatsapp_e164', '' ) ),
+			'phone'          => (string) get_option( 'nadlan_phone', '' ),
+			'demo'           => false,
+			'default_project'=> $default_slug,
+			'default_lang'   => 'he',
+			'languages'      => array( 'he', 'en', 'fr', 'ru', 'ar' ),
+			'rtl_languages'  => array( 'he', 'ar' ),
+		);
+	}
+}
+
+if ( ! function_exists( 'nadlan_showroom_engine_gallery_posts' ) ) {
+	/** All published projects, paid/featured tier first (monetization placement). */
+	function nadlan_showroom_engine_gallery_posts() {
+		$q = new WP_Query( array(
+			'post_type'      => 'nadlan_project',
+			'post_status'    => 'publish',
+			'posts_per_page' => 60,
+			'orderby'        => array( 'menu_order' => 'ASC', 'date' => 'DESC' ),
+			'no_found_rows'  => true,
+		) );
+		$posts = $q->posts;
+		// featured first, stable otherwise
+		usort( $posts, function ( $a, $b ) {
+			$fa = (int) get_post_meta( $a->ID, 'project_featured', true );
+			$fb = (int) get_post_meta( $b->ID, 'project_featured', true );
+			return $fb <=> $fa;
+		} );
+		return $posts;
+	}
+}
+
+if ( ! function_exists( 'nadlan_showroom_engine_resolve_target' ) ) {
+	/** Resolve which post(s) the shortcode renders, from atts or page context. */
+	function nadlan_showroom_engine_resolve_target( $atts ) {
+		if ( $atts['page'] === 'home' ) {
+			return nadlan_showroom_engine_gallery_posts();
+		}
+		if ( $atts['id'] ) {
+			$p = get_post( (int) $atts['id'] );
+			if ( $p && $p->post_type === 'nadlan_project' ) { return array( $p ); }
+		}
+		if ( $atts['project'] ) {
+			$p = get_page_by_path( sanitize_title( $atts['project'] ), OBJECT, 'nadlan_project' );
+			if ( $p ) { return array( $p ); }
+		}
+		if ( is_singular( 'nadlan_project' ) ) {
+			$p = get_post( get_queried_object_id() );
+			if ( $p ) { return array( $p ); }
+		}
+		// fallback: newest project, so a generic preview page still shows something real
+		$g = nadlan_showroom_engine_gallery_posts();
+		return $g ? array( $g[0] ) : array();
+	}
+}
+
+if ( ! function_exists( 'nadlan_showroom_engine_prototype_js' ) ) {
+	/** Last-resort payload when the CMS has no projects yet (keeps preview alive). */
+	function nadlan_showroom_engine_prototype_js() {
 		$file = nadlan_showroom_engine_dir() . 'data.js';
 		if ( ! is_readable( $file ) ) { return ''; }
-		$js = file_get_contents( $file );
+		$js   = file_get_contents( $file );
 		if ( $js === false ) { return ''; }
 		$base = trailingslashit( nadlan_showroom_engine_base_url() );
 		$js   = str_replace( 'engine/models/', $base . 'models/', $js );
@@ -55,8 +180,9 @@ if ( ! function_exists( 'nadlan_showroom_engine_shortcode' ) ) {
 	function nadlan_showroom_engine_shortcode( $atts ) {
 		$atts = shortcode_atts(
 			array(
-				'page'    => 'project',          // project | home
-				'project' => 'ashira-sde-dov',   // initial project slug
+				'page'    => 'project',
+				'project' => '',
+				'id'      => '',
 			),
 			$atts,
 			'nadlan_showroom_engine'
@@ -64,28 +190,43 @@ if ( ! function_exists( 'nadlan_showroom_engine_shortcode' ) ) {
 		$page = ( $atts['page'] === 'home' ) ? 'home' : 'project';
 		$base = trailingslashit( nadlan_showroom_engine_base_url() );
 
-		// styles
-		wp_enqueue_style( 'nadlan-engine-tokens', $base . 'tokens.css', array(), '1.69.42' );
-		wp_enqueue_style( 'nadlan-engine-css', $base . 'showroom.css', array( 'nadlan-engine-tokens' ), '1.69.42' );
-
-		// model-viewer (module)
+		// assets
+		wp_enqueue_style( 'nadlan-engine-tokens', $base . 'tokens.css', array(), '1.69.43' );
+		wp_enqueue_style( 'nadlan-engine-css', $base . 'showroom.css', array( 'nadlan-engine-tokens' ), '1.69.43' );
 		wp_enqueue_script( 'nadlan-model-viewer', 'https://ajax.googleapis.com/ajax/libs/model-viewer/4.0.0/model-viewer.min.js', array(), '4.0.0', true );
 		wp_script_add_data( 'nadlan-model-viewer', 'type', 'module' );
+		wp_enqueue_script( 'nadlan-engine-i18n', $base . 'i18n.js', array(), '1.69.43', true );
+		wp_enqueue_script( 'nadlan-engine-core', $base . 'engine.js', array( 'nadlan-engine-i18n' ), '1.69.43', true );
 
-		// i18n -> payload (inline, before) -> engine
-		wp_enqueue_script( 'nadlan-engine-i18n', $base . 'i18n.js', array(), '1.69.42', true );
-		wp_enqueue_script( 'nadlan-engine-core', $base . 'engine.js', array( 'nadlan-engine-i18n' ), '1.69.42', true );
-
-		$payload = nadlan_showroom_engine_payload_js();
-		if ( $payload !== '' ) {
-			// optional initial project override from the shortcode
-			$slug = sanitize_title( $atts['project'] );
-			if ( $slug !== '' ) {
-				$payload .= "\ntry{window.NADLAN_SHOWROOM.config.default_project=" . wp_json_encode( $slug ) . ";}catch(e){}";
+		// build payload from the CMS
+		$posts = nadlan_showroom_engine_resolve_target( $atts );
+		if ( ! empty( $posts ) ) {
+			$projects = array();
+			$order    = array();
+			foreach ( $posts as $p ) {
+				$proj = nadlan_showroom_engine_build_project( $p );
+				if ( $proj && $proj['slug'] !== '' ) {
+					$projects[ $proj['slug'] ] = $proj;
+					$order[] = $proj['slug'];
+				}
 			}
-			wp_add_inline_script( 'nadlan-engine-core', $payload, 'before' );
+			if ( ! empty( $order ) ) {
+				$payload = array(
+					'config'   => nadlan_showroom_engine_config( $order[0] ),
+					'projects' => $projects,
+					'order'    => $order,
+				);
+				$js = 'window.NADLAN_SHOWROOM=' . wp_json_encode( $payload ) . ';';
+				wp_add_inline_script( 'nadlan-engine-core', $js, 'before' );
+				return '<div id="nl-root" data-page="' . esc_attr( $page ) . '"></div>';
+			}
 		}
 
+		// fallback: bundled prototype (no CMS projects exist yet)
+		$proto = nadlan_showroom_engine_prototype_js();
+		if ( $proto !== '' ) {
+			wp_add_inline_script( 'nadlan-engine-core', $proto, 'before' );
+		}
 		return '<div id="nl-root" data-page="' . esc_attr( $page ) . '"></div>';
 	}
 }
