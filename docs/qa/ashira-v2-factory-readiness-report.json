@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-27T00:17:33.130Z",
+  "generated_at": "2026-06-27T00:42:22.745Z",
   "check": "ashira-v2-factory-readiness",
   "payload_file": "assets/projects/ashira-sde-dov/showroom-payload.json",
   "failures": [],
@@ -19,7 +19,7 @@
     {
       "file": "assets/js/nadlan-showroom-v2.js",
       "kind": "runtime",
-      "bytes": 4363,
+      "bytes": 4852,
       "ok": true
     },
     {

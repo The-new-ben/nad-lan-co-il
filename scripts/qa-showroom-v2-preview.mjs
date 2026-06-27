@@ -27,6 +27,7 @@ const ALLOWED_CONSOLE_WARNINGS = [
 function usage() {
 	return `Usage:
   node scripts/qa-showroom-v2-preview.mjs --preview docs/previews/ashira-showroom-v2-preview.html --out docs/qa/screenshots/ashira-v2-preview-factory-gate --strict
+  node scripts/qa-showroom-v2-preview.mjs --preview docs/previews/ashira-showroom-v2-en-preview.html --out docs/qa/screenshots/ashira-v2-en-preview-factory-gate --expected-lang en --expected-dir ltr --strict
 
 Runs a local HTTP preview in Google Chrome via Playwright, captures desktop/tablet/mobile
 screenshots, checks the clean v2 showroom contract, and writes report.json. It does not contact
@@ -39,11 +40,15 @@ function parseArgs(argv) {
 		out: DEFAULT_OUT,
 		strict: false,
 		headed: false,
+		expectedLang: 'he',
+		expectedDir: 'rtl',
 	};
 	for (let i = 2; i < argv.length; i += 1) {
 		const arg = argv[i];
 		if (arg === '--preview') args.preview = argv[++i] || args.preview;
 		else if (arg === '--out') args.out = argv[++i] || args.out;
+		else if (arg === '--expected-lang') args.expectedLang = argv[++i] || args.expectedLang;
+		else if (arg === '--expected-dir') args.expectedDir = argv[++i] || args.expectedDir;
 		else if (arg === '--strict') args.strict = true;
 		else if (arg === '--headed') args.headed = true;
 		else if (arg === '--help' || arg === '-h') {
@@ -178,6 +183,7 @@ function metricsExpression() {
 			},
 			copy: {
 				hasHebrew: /[\\u0590-\\u05ff]/.test(text),
+				hasLatin: /[A-Za-z]/.test(text),
 				hasMojibake: /[\\u00c3\\u00c2\\ufffd]|\\u00d7[\\u0080-\\u00ff]|\\u00c2\\u00b7|\\u00c3\\u0097/.test(text),
 				hasInternalWords: /SEO|CMS|CRM|lead|leads|engine|template|prototype|project manager|supplier|contractor|internal|strategy|factory|פאנל|מנוע|תבנית|לידים|מקום שמור|פרויקטים לבדיקה|מוניטיז|אסטרטג|Codex|Claude|fallback|placeholder|mock/i.test(text),
 			},
@@ -185,11 +191,13 @@ function metricsExpression() {
 	})()`;
 }
 
-function evaluateChecks(view) {
+function evaluateChecks(view, args) {
 	const m = view.metrics;
 	const failures = [];
 
 	if (!m.hasRoot) failures.push('missing data-nlv2-showroom root');
+	if (m.lang !== args.expectedLang) failures.push(`expected html lang ${args.expectedLang}, got ${m.lang}`);
+	if (m.dir !== args.expectedDir) failures.push(`expected html dir ${args.expectedDir}, got ${m.dir}`);
 	if (m.oldRootCount > 0) failures.push(`old showroom selectors leaked into v2: ${m.oldRootCount}`);
 	if (m.h1Count !== 1) failures.push(`expected exactly one H1, got ${m.h1Count}`);
 	if (m.scroll.overflow > 1) failures.push(`horizontal overflow: ${m.scroll.overflow}px`);
@@ -202,7 +210,8 @@ function evaluateChecks(view) {
 		failures.push(`tap target below 44px: ${m.units.minTapWidth}x${m.units.minTapHeight}`);
 	}
 	if (m.overlap.cardOverFacade) failures.push('selected-apartment card overlaps the facade picker');
-	if (!m.copy.hasHebrew) failures.push('visible page text has no Hebrew');
+	if (args.expectedLang === 'he' && !m.copy.hasHebrew) failures.push('visible page text has no Hebrew');
+	if (args.expectedLang !== 'he' && !m.copy.hasLatin) failures.push('visible page text has no Latin script');
 	if (m.copy.hasMojibake) failures.push('visible page text contains mojibake');
 	if (m.copy.hasInternalWords) failures.push('visible public copy leaks internal wording');
 
@@ -225,6 +234,8 @@ async function main() {
 		url: previewUrl,
 		out_dir: args.out,
 		strict: args.strict,
+		expected_lang: args.expectedLang,
+		expected_dir: args.expectedDir,
 		viewports: [],
 		failures: [],
 	};
@@ -243,7 +254,7 @@ async function main() {
 				isMobile: vp.isMobile,
 				hasTouch: vp.isMobile,
 				userAgent: vp.userAgent,
-				locale: 'he-IL',
+				locale: args.expectedLang === 'he' ? 'he-IL' : 'en-US',
 			});
 			const page = await context.newPage();
 			const consoleErrors = [];
@@ -277,7 +288,7 @@ async function main() {
 			await page.screenshot({ path: selectedPath, fullPage: true });
 
 			const metrics = await page.evaluate(metricsExpression());
-			const viewportFailures = evaluateChecks({ metrics });
+			const viewportFailures = evaluateChecks({ metrics }, args);
 			if (consoleErrors.length) viewportFailures.push(`console warnings/errors: ${consoleErrors.length}`);
 			if (pageErrors.length) viewportFailures.push(`page errors: ${pageErrors.length}`);
 

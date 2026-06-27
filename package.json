@@ -35,11 +35,14 @@
 		"qa:home-showroom-preview": "node scripts/qa-home-showroom-preview.mjs --strict",
 		"qa:home-showroom-pattern": "node scripts/qa-home-showroom-pattern.mjs --strict",
 		"build:ashira-showroom-preview": "node scripts/build-ashira-showroom-preview.mjs",
+		"build:ashira-en-showroom-preview": "node scripts/build-ashira-showroom-preview.mjs --pattern patterns/project-showroom-ashira-v2-en.php --out docs/previews/ashira-showroom-v2-en-preview.html --lang en --dir ltr --title \"Ashira Sde Dov apartments for sale in Tel Aviv | NadLan\" --nav-label \"Navigation\" --nav \"Projects|Neighborhoods|Guides|Professionals|Contact\" --footer \"NadLan::New projects, neighborhoods, guides and checking tools for buyers and investors.|Buyer paths::Buying | Investment | Mortgage | Professionals|Note::The information on this preview page is not legal, financial or appraisal advice.\"",
 		"qa:showroom-v2-preview": "node scripts/qa-showroom-v2-preview.mjs --strict",
+		"qa:showroom-v2-en-preview": "node scripts/qa-showroom-v2-preview.mjs --preview docs/previews/ashira-showroom-v2-en-preview.html --out docs/qa/screenshots/ashira-v2-en-preview-factory-gate --expected-lang en --expected-dir ltr --strict",
 		"qa:ashira-factory-readiness": "node scripts/qa-ashira-factory-readiness.mjs --strict",
 		"qa:ashira-research-dossier": "node scripts/qa-ashira-research-dossier.mjs --strict",
 		"qa:ashira-i18n-architecture": "node scripts/qa-ashira-i18n-architecture.mjs --strict",
 		"qa:ashira-content-depth": "node scripts/qa-ashira-content-depth.mjs --strict",
+		"qa:ashira-en-content-depth": "node scripts/qa-ashira-en-content-depth.mjs --strict",
 		"qa:ashira-draft-readiness": "node scripts/qa-wp-draft-payload.mjs --draft docs/wp-drafts/ashira-sde-dov-v2-draft.json --payload assets/projects/ashira-sde-dov/showroom-payload.json --out docs/qa/ashira-v2-draft-readiness-report.json --strict"
 	}
 }

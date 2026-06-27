@@ -1,0 +1,33 @@
+{
+  "ok": true,
+  "pattern": "patterns/project-showroom-ashira-v2-en.php",
+  "draft": "docs/wp-drafts/ashira-sde-dov-en-v2-draft.json",
+  "visible_words": 3167,
+  "visible_chars": 19800,
+  "h2_count": 15,
+  "source_links": [
+    "https://nad-lan.co.il/wp-json/nadlan/v1/lead",
+    "https://nad-lan.co.il/wp-content/themes/nadlan-revenue/assets/projects/ashira-sde-dov-en/ashira-hero-concept.jpg",
+    "https://nad-lan.co.il/wp-content/themes/nadlan-revenue/assets/projects/ashira-sde-dov-en/model-context.glb",
+    "https://nad-lan.co.il/wp-content/themes/nadlan-revenue/assets/projects/ashira-sde-dov-en/ashira-hero-concept.jpg",
+    "https://nad-lan.co.il/wp-content/themes/nadlan-revenue/assets/projects/ashira-sde-dov-en/ashira-facade-concept.jpg",
+    "https://ashirabyavisror.com/",
+    "https://www.tel-aviv.gov.il/Residents/Development/Pages/SdeDov.aspx",
+    "https://www.gov.il/he/pages/sdedov-pr-22072020"
+  ],
+  "required_phrases": [
+    "Ashira Sde Dov",
+    "Sde Dov district",
+    "Avisror",
+    "TA/4444",
+    "16,000",
+    "1,300",
+    "40,000",
+    "affordable housing",
+    "Reading",
+    "Park Hayarkon",
+    "foreign buyers",
+    "non-binding estimate"
+  ],
+  "failures": []
+}

@@ -1,12 +1,14 @@
 (function () {
 	'use strict';
 
-	var panelCopy = {
+	var defaultPanelCopy = {
 		plan: 'כאן תוצג תוכנית הדירה לאחר העלאת תוכנית מכר מאושרת.',
 		view: 'כאן יוצג מבט מהדירה לפי קומה וכיוון כאשר נתוני המבט יהיו זמינים.',
 		tour: 'כאן יוצגו סיור פנים, וידאו או גלריית תמונות כאשר החומר המאושר זמין.',
 		contact: 'השאירו פרטים עם הדירה שנבחרה כדי לבדוק זמינות, מחיר ותוכנית עדכניים.'
 	};
+	var defaultSubmitMessage = 'הפנייה מוכנה לשליחה עם פרטי {{unit}}. נציג יחזור עם זמינות, מחיר ותוכנית עדכניים.';
+	var defaultUnitTitle = 'הדירה שנבחרה';
 
 	function text(node, value) {
 		if (node) {
@@ -56,6 +58,12 @@
 		if (!panel) {
 			return;
 		}
+		var copy = {
+			plan: root.dataset.nlv2PanelPlan || defaultPanelCopy.plan,
+			view: root.dataset.nlv2PanelView || defaultPanelCopy.view,
+			tour: root.dataset.nlv2PanelTour || defaultPanelCopy.tour,
+			contact: root.dataset.nlv2PanelContact || defaultPanelCopy.contact
+		};
 
 		root.querySelectorAll('[data-nlv2-tab]').forEach(function (tab) {
 			var active = tab.dataset.nlv2Tab === name;
@@ -63,15 +71,16 @@
 			tab.setAttribute('aria-selected', active ? 'true' : 'false');
 		});
 
-		text(panel, panelCopy[name] || panelCopy.plan);
+		text(panel, copy[name] || copy.plan);
 	}
 
 	function submit(root, form, event) {
 		event.preventDefault();
 		var ok = root.querySelector('[data-nlv2-feedback]');
 		var unit = currentUnit(root);
-		var unitTitle = unit ? unit.dataset.title : 'הדירה שנבחרה';
-		text(ok, 'הפנייה מוכנה לשליחה עם פרטי ' + unitTitle + '. נציג יחזור עם זמינות, מחיר ותוכנית עדכניים.');
+		var unitTitle = unit ? unit.dataset.title : (root.dataset.nlv2SelectedUnitFallback || defaultUnitTitle);
+		var message = root.dataset.nlv2SubmitMessage || defaultSubmitMessage;
+		text(ok, message.replace('{{unit}}', unitTitle));
 		if (ok) {
 			ok.hidden = false;
 		}

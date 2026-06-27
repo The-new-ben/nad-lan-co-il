@@ -22,6 +22,7 @@ function parseArgs(argv) {
 		yoastTitle: '',
 		yoastDescription: '',
 		focusKeyword: '',
+		expectedLanguage: 'he',
 	};
 	for (let i = 2; i < argv.length; i += 1) {
 		const arg = argv[i];
@@ -36,6 +37,7 @@ function parseArgs(argv) {
 		else if (arg === '--yoast-title') args.yoastTitle = argv[++i] || '';
 		else if (arg === '--yoast-description') args.yoastDescription = argv[++i] || '';
 		else if (arg === '--focus-keyword') args.focusKeyword = argv[++i] || '';
+		else if (arg === '--expected-language') args.expectedLanguage = argv[++i] || args.expectedLanguage;
 		else if (arg === '--help' || arg === '-h') {
 			console.log(usage());
 			process.exit(0);
@@ -69,11 +71,12 @@ function fillRuntimeValues(content, args) {
 		.replace(/<\?php echo esc_url\( rest_url\( 'nadlan\/v1\/lead' \) \); \?>/g, `${args.site}/wp-json/nadlan/v1/lead`);
 }
 
-function publicTextChecks(payload) {
+function publicTextChecks(payload, args) {
 	const raw = JSON.stringify(payload);
 	const content = typeof payload.content === 'string' ? payload.content : payload.content && payload.content.raw ? payload.content.raw : '';
 	const errors = [];
-	if (!/[\u0590-\u05FF]/.test(raw)) errors.push('payload has no Hebrew text');
+	if (args.expectedLanguage === 'he' && !/[\u0590-\u05FF]/.test(raw)) errors.push('payload has no Hebrew text');
+	if (args.expectedLanguage !== 'he' && !/[A-Za-z]/.test(raw)) errors.push('payload has no Latin text');
 	if (/[\u00c2\u00c3]/.test(raw)) errors.push('payload contains mojibake markers');
 	if (/לידים|פאנל|משפך|CRM|funnel|lead panel|monetization|paid placement/i.test(raw)) {
 		errors.push('payload leaks internal/public-inappropriate wording');
@@ -115,7 +118,7 @@ const payload = {
 	],
 };
 
-const errors = publicTextChecks(payload.body);
+const errors = publicTextChecks(payload.body, args);
 if (errors.length) {
 	throw new Error(`Draft payload failed checks:\n${errors.map((e) => `- ${e}`).join('\n')}`);
 }
