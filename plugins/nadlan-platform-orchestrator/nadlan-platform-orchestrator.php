@@ -2,7 +2,7 @@
 /**
  * Plugin Name: NadLan Platform Orchestrator
  * Description: Safe presentation and content orchestration layer for NadLan. Delegates project showroom rendering to the existing NadLan engine.
- * Version: 0.1.1
+ * Version: 0.1.2
  * Author: NadLan
  * Text Domain: nadlan-platform-orchestrator
  * Requires at least: 6.5
@@ -13,7 +13,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-define( 'NLPO_VERSION', '0.1.1' );
+define( 'NLPO_VERSION', '0.1.2' );
 define( 'NLPO_FILE', __FILE__ );
 define( 'NLPO_DIR', plugin_dir_path( __FILE__ ) );
 define( 'NLPO_URL', plugin_dir_url( __FILE__ ) );
@@ -52,5 +52,14 @@ add_filter( 'the_content', function ( $content ) {
 	if ( strpos( $content, 'data-nlpo-home-projects' ) !== false ) {
 		return $content;
 	}
-	return $content . do_shortcode( '[nadlan_platform_home_projects limit="4"]' );
+	try {
+		$band = do_shortcode( '[nadlan_platform_home_projects limit="4"]' );
+	} catch ( Throwable $e ) {
+		error_log( 'NadLan Platform home band failed: ' . $e->getMessage() );
+		return $content;
+	}
+	if ( ! is_string( $band ) || trim( $band ) === '' ) {
+		return $content;
+	}
+	return $content . $band;
 }, 30 );

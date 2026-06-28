@@ -12,7 +12,7 @@ Therefore the platform package must ship as a production-safe preview, not as a 
 
 Two installable packages are now built from source:
 
-- `plugin-dist/nadlan-platform-orchestrator-0.1.1.zip`
+- `plugin-dist/nadlan-platform-orchestrator-0.1.2.zip`
 - `theme-dist/nadlan-platform-child-0.1.1.zip`
 
 The orchestrator plugin is safe by default:
