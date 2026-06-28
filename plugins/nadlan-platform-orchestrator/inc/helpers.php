@@ -49,7 +49,7 @@ function nlpo_project_image( $post_id ) {
 function nlpo_project_excerpt( $post_id ) {
 	$custom = (string) get_post_meta( $post_id, 'project_subtitle', true );
 	if ( $custom !== '' ) { return wp_strip_all_tags( $custom ); }
-	$excerpt = get_the_excerpt( $post_id );
+	$excerpt = (string) get_post_field( 'post_excerpt', $post_id );
 	if ( $excerpt !== '' ) { return wp_strip_all_tags( $excerpt ); }
 	$content = get_post_field( 'post_content', $post_id );
 	return wp_trim_words( wp_strip_all_tags( strip_shortcodes( (string) $content ) ), 28 );
