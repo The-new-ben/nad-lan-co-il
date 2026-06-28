@@ -1,0 +1,55 @@
+CODEX — RAINBOW SHOWROOM → PRODUCT (midterm mission, yours alone)
+Set ONE midterm goal and run it in small slices. This is yours end-to-end: you code it, you QA it in Chrome with screenshots, you deploy it (server Git pull → plugin update → cache clear → live verify). Nobody finishes it for you. If you need something only the owner can give — official BIM/GLB, real prices, real inventory/availability, a payment provider, a CDN for the GLB — say so to the owner NOW, in one list, don't silently work around it.
+
+The midterm goal (achievable, ~v1.64.x in slices)
+Turn the Rainbow block from a 3D demo into a buyer apartment-selector product: picking an apartment is the default and the hero. Every unit is obviously clickable on the building (label + status color + pulse on recommended + hover info), the selected apartment shows a dominant action card (details / view-from-apartment / contact-the-developer), a short SEO intro sits above the block, click targets are comfortable on desktop AND mobile, and every piece (units, price, status, labels, video, contact) is CMS-editable so a contractor can run their own project. Mobile = guided vertical flow: intro → compact model → selected apartment → CTA.
+
+The niche intelligence (build for these intents — researched)
+Buyer journey when choosing an off-plan apartment online (in priority order):
+
+"Which units are available?" → availability must be visible first (color-coded).
+"What's the price / payment plan?" → off-plan sells on below-market + staged payments; show estimate + "אומדן לא מחייב".
+"What does it look like — floor plan, the view from this apartment, finishes?"
+"Which floor / rooms / size fits me?" → filter, and highlight matches on the building.
+"Is this a good unit?" → comparison + "פופולרי / נוף לים" recommended tags.
+"How do I reserve / talk to someone?" → lead/contact with the unit attached.
+Contractor/developer journey — why they PAY (this is the monetization):
+
+Show inventory beautifully + update availability/price themselves (CMS, no developer needed).
+Capture qualified leads with unit context piped to their funnel/WhatsApp.
+See which units get interest (analytics).
+Look premium vs competitors; offload the sales centre (self-serve).
+Monetization model to design toward: per-project monthly subscription + setup fee, lead/reservation fees later, upsell real BIM/video/AR. (Proptech comps run ~$19–129/project/month.)
+Ship in slices (gate each in Chrome before the next)
+Slice 1 — Hierarchy & intro (fastest visible win). Move a short SEO intro ABOVE the model (H2 + 2 sentences: Rainbow, שדה דב, ישראל קנדה, price-estimate, "בחרו דירה"). Reduce stage height ~20–30%. Default mode = "בחרו דירה", not "3D model." Add a one-line caption on the surrounding massing: "הדמיית סביבת שדה דב, להמחשה."
+
+Slice 2 — Premium clickable hotspots (the core). Each unit marker gets: a label, status color, a pulse on recommended units, a hover/tap tooltip with rooms/sqm/floor/view/price-estimate, and ≥44px hit area on BOTH desktop and mobile (use an invisible larger hit target around the visible dot).
+
+.nlp3d-hotspot-hit{position:absolute;width:44px;height:44px;transform:translate(-50%,-50%);cursor:pointer} /* big invisible target */
+.nlp3d-hotspot-dot{width:16px;height:16px;border-radius:50%;border:2px solid #fff;margin:14px auto}
+.is-available .nlp3d-hotspot-dot{background:#3ddc84}   /* available */
+.is-reserved  .nlp3d-hotspot-dot{background:#f2c14e}   /* reserved  */
+.is-sold      .nlp3d-hotspot-dot{background:#9aa0a6;opacity:.6} /* sold */
+.is-recommended .nlp3d-hotspot-dot{box-shadow:0 0 0 0 rgba(61,220,132,.7);animation:nlpulse 1.8s infinite}
+@keyframes nlpulse{0%{box-shadow:0 0 0 0 rgba(61,220,132,.6)}70%{box-shadow:0 0 0 14px rgba(61,220,132,0)}100%{box-shadow:0 0 0 0 rgba(61,220,132,0)}}
+.nlp3d-hotspot-tip{opacity:0;transition:.15s;pointer-events:none} .nlp3d-hotspot-hit:hover .nlp3d-hotspot-tip,.nlp3d-hotspot-hit:focus-visible .nlp3d-hotspot-tip{opacity:1}
+On model-viewer, the marker is the hotspot slot; put the hit target + dot + tip inside it, and keep the existing selectUnit() wiring.
+
+Slice 3 — Selected-apartment action card as the hero. When a unit is picked, a dominant card docks near the model (top-left on desktop, sticky panel on mobile): big title ("דירה 31 · 5 חד׳ · קומה 12"), status chip, view, price-estimate (non-binding), and 3 clear actions: פרטים מלאים · מבט מהדירה · דברו עם היזם. This is the buyer's "I picked this, here's what's next" moment.
+
+Slice 4 — CMS editability (the monetization enabler). Make the per-unit data a clean repeatable CMS structure a contractor can edit: rooms, sqm, floor, view, status(available|reserved|sold), price_estimate, label, recommended(bool), hotspot_position. Keep it as editable project_3d_units JSON now, but plan a simple repeater UI so a non-technical contractor edits it without touching JSON. Document it in the owner manual.
+
+Slice 5 — Progressive disclosure. Hide advanced controls (sun/directions, environment, Mapbox "view from apartment") behind tabs that appear AFTER an apartment is selected. Rename controls plainly: "סובב מודל · מבט מהדירה · שמש וכיוונים · סביבה." Don't show every tool at once (NN/g progressive disclosure).
+
+Slice 6 — Contractor communication + lead. From the selected-apartment card, "דברו עם היזם" opens the lead/WhatsApp flow with the unit attached (unit id, floor, rooms, price-estimate) into the existing /nadlan/v1/lead funnel. The contractor's contact/WhatsApp is a CMS field per project.
+
+Replication strategy (the "showroom factory" — this is what scales to countrywide + abroad)
+Build the pipeline so the next project is fields-only: source research → project data file (units/price/assets) → generated/real model → WordPress CMS fields → SEO page → Chrome QA screenshots → publish checklist. One project = one data file + one GLB + filled fields, zero new code. Document every slice above into skills/skill-3d-model-pipeline.md and skills/project-page-premium-showroom-runbook.md, and keep the owner manual current. Abroad = same structure, swap language/currency/legal copy.
+
+Your gate (Chrome, yourself, green or not done)
+Per slice, screenshot at 1440 / 768 / 390 + Edge-mobile: apartment markers are obvious + color-coded + recommended pulses; hover/tap shows info; selected card is dominant; intro sits above; click targets ≥44px on mobile; no console errors; one H1; no overflow. "Field saved" ≠ done — only the rendered, clickable, buyer-ready screenshot counts. Then deploy and re-verify live.
+
+Tell the owner NOW (one list) anything you need that only he can provide: official BIM/GLB, real prices/inventory/availability, contractor WhatsApp numbers, a GLB CDN, or a payment/reservation provider for the far-goal.
+
+Sources: Render Vision apartment selector · Renderzen apartment selector · L-TOUCH (CRM-driven availability: sold/reserved/available) · off-plan buyer guide · proptech SaaS pricing models · model-viewer hotspots
+

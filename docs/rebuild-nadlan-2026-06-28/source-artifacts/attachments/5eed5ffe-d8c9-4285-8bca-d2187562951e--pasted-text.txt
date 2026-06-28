@@ -1,0 +1,112 @@
+My read-only gate on PR #162 is done and it's strong — the model-viewer rail is implemented faithfully to the brief, with the safety-critical pieces correct. Here's what I verified from the diff:
+
+✅ Verified read-only (architecture is sound):
+
+Feature-gated, can't-wreck: <model-viewer> renders only when $has_model_viewer = !empty($meta['model_glb']); the module script wp_register_script('nadlan-model-viewer', '…4.3.1…') with type=module is enqueued only when the glb meta exists — single enqueue, conditional, module-deferred. Non-GLB projects are untouched.
+Fallback until load / on error: JS adds has-model-viewer-loaded on the load event and has-model-viewer-error on error — the procedural tower stays visible until the real model is confirmed. Exactly the don't-wreck pattern.
+Hotspots feed the existing funnel: selectUnit(h.dataset.unit,'model-viewer-hotspot') — no second selector; comparison/lead/analytics stay unified.
+Drag-jam fix landed: the bail list now includes .nlp3d-model-viewer,.nlp3d-stage-card,.nlp3d-stage-viewframe,.nlp3d-hotspot-hit.
+CWV-safe: reveal="interaction" when a poster exists (GLB loads on interaction, not page load).
+CMS + healthcheck: admin inputs + esc_url_raw save handlers for glb/poster; healthcheck exposes model_viewer_ready, model_viewer_version: 4.3.1, model_viewer_lazy, model_viewer_hotspots. Live is still 1.62.0 (PHP 8.5.5) — v1.63.0 correctly not deployed yet.
+⏳ Cannot finish read-only: php -l on the 3 changed PHP files (the check your Windows shell can't do, which Codex explicitly routed to me), the inline-JS node --check against the shipped ZIP, ZIP rootless/integrity, and the live-DOM fallback proof. All need me out of plan mode.
+
+Adding a one-line gate plan to the plan file, then requesting to exit read-only so I can run it.
+
+Edited
+buzzing-sprouting-toucan.md
++5
+-0
+Proposed plan
+Running the full gate on PR #162 now.
+
+Ran
+Checkout PR #162 branch and run php -l
+php -l clean on all three (PHP 8.4 here, live is 8.5.5 — both modern, no concern). Now the JS check from the shipped ZIP, version alignment, and the critical fallback runtime test:
+
+Ran
+JS check, version alignment, manifest order, ZIP integrity
+All green so far. Now the critical don't-wreck test — proving a project with no GLB still renders the CSS tower and never emits a <model-viewer> or the module script:
+
+Ran
+Prove model-viewer is strictly gated; no-GLB renders CSS tower
+Full gate is GREEN. The don't-wreck guarantee is proven at the source: <model-viewer> (line 543) is strictly inside if ($has_model_viewer) (line 542), the external module script (line 1881) enqueues only when the GLB meta is non-empty (line 1880), and !empty("") → 0 → CSS-tower path. A project with no GLB renders exactly as today. Posting the gate result to the PR and returning to a clean tree:
+
+
+Ran a command, used 2 tools
+Gate complete and posted to PR #162. Tree is clean, back on main.
+
+Verdict: PR #162 (v1.63.0 model-viewer rail) is sound — safe to merge
+Everything passed, and the safety-critical guarantee is proven at the source level, not just trusted:
+
+php -l clean on all 3 PHP files (the check Codex's Windows shell can't run)
+Inline JS from the shipped ZIP passes node --check; the load/error fallback handlers and hotspot→selectUnit() wiring are present
+Versions aligned across all 6 surfaces at 1.63.0; manifest changelog in correct order; ZIP clean (130 entries, 0 backslash, no CRC errors)
+Don't-wreck proven: <model-viewer> and its external module script are both strictly gated on project_model_glb being non-empty. No GLB → no model-viewer, no external script, today's CSS tower renders unchanged. This is the guarantee that mattered most to you ("don't destroy what we have"), and it holds.
+The honest boundary
+The rail is excellent engineering, but it's an empty frame until a GLB is uploaded. Live is still 1.62.0. The visible "wow" needs two things after merge: (1) deploy v1.63.0 via the uPress server-Git sync + plugin update, and (2) put an actual model in project_model_glb.
+
+So the one decision that unblocks the payoff is still where Rainbow's first GLB comes from:
+
+Asked
+First GLB source
+Asked
+First GLB source
+Where should Rainbow's first GLB model come from?
+
+Both — massing now, swap later
+
+After v1.63.0 merges, which wave should Codex tackle next?
+
+More 3D polish
+
+Locked in: massing GLB now → swap to developer BIM later, and more 3D polish as the next wave. Here's the steering brief for Codex on both — code-ready, and honest about one Rainbow-specific wrinkle.
+
+A) Rainbow's first GLB — the massing-now path
+Honest wrinkle first: Rainbow is new construction in Sde Dov — it's very likely not in OpenStreetMap yet, so a pure Blosm/OSM extraction may return nothing. So the reliable path here is a hand-built massing from the developer's published renders/elevations, not OSM auto-extract. (OSM auto-extract stays the default for existing buildings on future projects — keep it in the skill.)
+
+Recipe (Blender, ~1–2 hrs):
+
+Reference: Israel Canada's Rainbow renders + the Sde Dov site plan. Model the massing — podium + tower, roughly the real floor count (~40), real proportions. Keep it low-poly: it's a massing, not a facade. Apply one baked/gradient facade material with window banding.
+Set origin at the building base center, +Y up, real-world-ish scale (1 unit = 1 m) so hotspot data-position values are intuitive (floor 12 ≈ y=36).
+Export Rainbow.glb (glTF binary, +Y up, apply transforms).
+Optimize (mandatory):
+npm i -g @gltf-transform/cli
+gltf-transform optimize Rainbow.glb rainbow.glb --texture-compress webp --compress draco
+Target ≤ 4 MB. Export a rainbow-poster.webp still (≤ 80 KB) from a hero angle.
+Upload both to the project's media; set project_model_glb + project_model_poster. Capture per-floor hotspot data-position in model-viewer's online editor → store in the unit hotspot_position fields.
+Swap-later is free: when Israel Canada's BIM/render arrives, run the same gltf-transform optimize on it and overwrite project_model_glb. Same hotspot coordinates if you keep the same origin/scale. Document this "swap protocol" in skill-3d-model-pipeline.md.
+Optional for AR: export a .usdz (Blender USDZ exporter or Reality Converter) → project_model_usdz.
+
+B) Next wave (v1.64.0) — "more 3D polish" (3 code items)
+1. Free 360° on the CSS fallback (so non-GLB projects spin too) — at project-3d.php ~line 1190, replace the Math.max(-68,Math.min(68,angle)) clamp:
+
+angle = (angle % 360 + 360) % 360;          // full spin, no dead zones
+// inertia on pointer-release:
+function onUp(){ var v=lastVelocity; (function decay(){ if(Math.abs(v)<0.05)return;
+  angle=(angle+v)%360; v*=0.94; applyAngle(); requestAnimationFrame(decay); })(); }
+Keep the 3 angle buttons as presets.
+
+2. Building realism on the fallback tower — make it read as a building, not stripes:
+
+.nlp3d-tower::before{content:"";position:absolute;inset:auto 0 -22px;height:26px;          /* lobby/podium */
+  background:linear-gradient(180deg,rgba(234,216,163,.22),rgba(7,15,16,.6));transform:translateZ(2px)}
+.nlp3d-tower::after{content:"";position:absolute;inset:-14px 22% auto;height:14px;          /* roof crown */
+  background:linear-gradient(180deg,rgba(255,243,200,.5),transparent)}
+.nlp3d-scene .nlp3d-facade{opacity:.85}    /* show the photographic facade at default zoom, not only when zoomed */
+3. Media / Zoom window in the spare panel (WS5) — project_video_url + project_meeting_url meta; lazy-inject on click only (CWV-safe, never autoload):
+
+$video = esc_url_raw(get_post_meta($id,'project_video_url',true));   // YouTube/Vimeo
+$meet  = esc_url_raw(get_post_meta($id,'project_meeting_url',true)); // Calendly/Zoom/Meet
+tile.addEventListener('click',function(){
+  var f=document.createElement('iframe');
+  f.src='https://www.youtube-nocookie.com/embed/'+id+'?rel=0';
+  f.loading='lazy'; f.allow='encrypted-media;picture-in-picture'; f.setAttribute('allowfullscreen','');
+  this.replaceWith(f);
+});
+The live-call button is just an <a href="{meeting_url}" target="_blank"> styled as a tile — no embed cost.
+
+Skills to update this wave: project-3d-sales-experience.md (free-360 + realism), skill-3d-model-pipeline.md (the massing recipe + swap protocol above), new skill-project-media-window.md (video + live-call seam).
+
+My gate when he pushes v1.64.0: same model-viewer gate + a real-browser pass at 1440/768/390 confirming the fallback now spins full-circle, the tower reads as a building, and the media tile lazy-loads only on click (no LCP hit).
+
+One green light needed: merge PR #162 first (it's gated and safe) so this polish wave branches from a clean v1.63.0 base rather than stacking on an unmerged branch. Want me to go ahead and merge #162, or are you handling the merge + deploy yourself?

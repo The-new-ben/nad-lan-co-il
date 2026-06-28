@@ -1,0 +1,1175 @@
+
+# NadLan — Lovable Project Reset Pack
+תאריך: 2026-06-22  
+מטרה: לעצור את מצב "Lovable עובד על סמך כלום" ולבנות Project Context מלא, self-contained, שאפשר להדביק לכל מודל / Lovable / סוכן בלי להסתמך על זיכרון קודם.
+
+---
+
+## 0. האמת והבעיה
+
+הכשל הקודם לא היה רק "דוח דק". הכשל היה תשתיתי: לא נבנה Project Knowledge מלא ומחייב לפני הרצת הדוחות. לכן Lovable/הסוכנים המשיכו לעבוד על זיכרון זמני, על snippets, על דוחות שלא תמיד נשמרו, ועל הנחות. זה אסור בפרויקט כזה.
+
+מעכשיו כל ריצה מתחילה מ־RESET PACK מלא:
+1. מקימים Project Knowledge.
+2. מודיעים לסוכן לא להסתמך על זיכרון קודם.
+3. נותנים לו את מצב האתר, הדוחות, החוקים, הארכיטקטורה, העיצוב, ה־3D, ה־SEO, המוניטיזציה והפערים.
+4. מחייבים אותו להפיק Source Registry לפני כל המלצה.
+5. מחייבים אותו להפריד בין:
+   - VERIFIED
+   - NEEDS_VERIFICATION
+   - ASSUMPTION
+   - LEGAL_REVIEW
+   - REQUIRES_OFFICIAL_ASSET
+   - OFFICIAL_SOURCE_REQUIRED
+6. לא בונים לפני שיש Keyword/Page/UX/3D/CRM/QA Source of Truth.
+
+---
+
+# 1. PROJECT KNOWLEDGE — להדביק קודם ב־Lovable / כל סוכן
+
+```text
+PROJECT: NadLan / nad-lan.co.il
+LANGUAGE: Hebrew-first, RTL. Future languages: English, French, Russian, Arabic, and later market-specific languages.
+MISSION: Build NadLan into the leading Israeli real-estate intelligence + marketplace + project-showroom portal, and later expand internationally.
+
+CRITICAL INSTRUCTION:
+Do not rely on previous Lovable memory, previous chats, hidden project state, or assumptions. Treat this prompt as the full source package. If something is missing, mark it as NEEDS_VERIFICATION and ask for the exact missing asset or research step. Do not invent.
+
+OWNER INTENT:
+The owner does not want a polite thin SEO report. The owner wants a war-room operating system:
+- What pages to build.
+- Which keywords each page owns.
+- Which competitors own the SERP today.
+- What the page must look like.
+- How listings must work.
+- How project pages and 3D showroom must work.
+- How to prevent cannibalization.
+- How to monetize.
+- How to route leads.
+- How to sell to developers/contractors/professionals.
+- How to expand into foreign investors and later international markets.
+- How AI agents can keep executing without losing context.
+
+CURRENT SITE:
+- Domain: https://nad-lan.co.il
+- WordPress site, self-built FSE block theme.
+- Existing content layer includes project CPT records, real-estate content pillars/spokes, glossary, developer/contractor/professional profiles.
+- Content/SEO layer must not be broken.
+- Existing strong clusters include Sde Dov, Ramat Aviv, Bat Yam, Herzliya, North Tel Aviv, luxury projects, developers, glossary.
+- Current/previous project/showroom work includes Rainbow and DIMRI YAMA concepts, but 3D/showroom is not yet a finished product.
+
+STRATEGIC POSITION:
+Near-term money is NEW PROJECTS:
+- Developers and contractors spend heavily on project marketing.
+- NadLan can sell them qualified buyer leads.
+- 3D/showroom is the differentiation.
+- Foreign investors are important: English/French/Russian/Arabic signals and later true language trees.
+- Homepage must foreground new projects and project showroom while still competing across every real-estate category.
+
+LONG-TERM CATEGORY COVERAGE:
+Do not avoid hard categories because Yad2, Madlan, Yad1, OnMap, Nadlan.com, law firms, banks, Kol Zchut, portals, or developer microsites are strong.
+Difficulty is not a reason to surrender.
+Only acceptable staging reasons:
+- Product/data not ready.
+- Legal review not ready.
+- Official source not available.
+- Supply threshold not met.
+- Risk of thin/doorway/cannibalization.
+The ambition remains total category coverage.
+
+TARGET COMPETITORS:
+Israel:
+- Yad2
+- Yad1
+- Madlan
+- Nadlan.com
+- OnMap
+- ad.co.il
+- Homeless
+- WinWin
+- Nadlan Center
+- Nadlan Master
+- developer microsites
+- law firms
+- banks
+- Kol Zchut
+- municipal/gov pages
+- real-estate news sites
+International UX references only:
+- Zillow
+- Homes.com
+- Redfin
+- Realtor
+- Compass
+- StreetEasy
+- Matterport
+These are not Hebrew SEO competitors, but they are UX/product references.
+
+BUSINESS MODEL:
+B2C:
+- buyer leads
+- seller leads
+- saved search
+- valuation leads
+- mortgage/legal/inspection referrals
+- foreign investor flow
+B2B:
+- Project Premier for developers
+- project data management
+- 3D showroom package
+- developer dashboard
+- sponsored project placements
+- professional profiles / Pro / Premier
+- lead packages
+- city/project sponsorships
+- data enrichment package
+- content/PR/SEO package for developers
+- contractor/supplier marketplace later
+
+ARCHITECTURE REALITY:
+WordPress is the content/SEO layer. It is not the whole app layer.
+The map-first search, 3D, dashboards, auth, lead engine, CRM, saved search, alerts, and multilingual marketplace likely require a React/Next/Vite app layer integrated with WordPress.
+Recommended end-state:
+- WordPress: SEO content, project pages, glossary, guides, schema, content publishing, editorial authority.
+- App layer: search/map/listings/3D/dashboards/auth/leads/CRM integration.
+- Shared design system.
+- Shared canonical URL strategy.
+- No lock-in: own GitHub, own backend/DB, own deployment.
+
+LOVABLE REALITY:
+Lovable cannot be trusted to remember all previous reports unless they are pasted into Project Knowledge or attached.
+Lovable cannot crawl the live site in the way a full audit crawler does unless explicitly provided tools/data/screenshots.
+Therefore every Lovable prompt must be self-contained and must request a Source Registry.
+
+HARD SEO RULE:
+We go after the hardest, most commercial, highest-value terms:
+- נדלן
+- נדל״ן
+- דירות למכירה
+- דירות להשכרה
+- נדלן יד 2
+- דירה למכירה
+- דירה להשכרה
+- פרויקטים חדשים
+- דירות חדשות
+- דירה מקבלן
+- תמ״א 38
+- פינוי בינוי
+- התחדשות עירונית
+- דירות למכירה תל אביב
+- דירות להשכרה תל אביב
+- דירות למכירה ירושלים
+- דירות למכירה חיפה
+- דירות למכירה רמת גן
+- דירות למכירה פתח תקווה
+- דירות להשקעה
+- נדלן להשקעה
+- מחשבון משכנתא
+- מחשבון מס רכישה
+- שמאי מקרקעין
+- עורך דין מקרקעין
+- בדק בית
+- מתווך נדלן
+- יועץ משכנתאות
+- נדלן מסחרי
+- מגרשים למכירה
+Long-tail keywords are only supporting spokes, not an excuse to avoid money terms.
+
+MANDATORY SOURCE OF TRUTH:
+Every keyword must map to one canonical page owner.
+No page may target another page’s primary keyword.
+If a new page touches an existing intent, it must:
+1. target a sibling/sub-intent,
+2. link to the source-of-truth page,
+3. avoid the source-of-truth primary keyword in title/H1,
+4. mark cannibalization risk.
+
+CANONICAL URL GRAMMAR:
+/
+ /buy/
+ /buy/{city}/
+ /buy/{city}/{neighborhood}/
+ /buy/{city}/{neighborhood}/{listing-id}
+ /rent/
+ /rent/{city}/
+ /rent/{city}/{neighborhood}/
+ /projects/
+ /projects/{city}/
+ /projects/{city}/{neighborhood}/
+ /projects/{project-slug}-{id}/
+ /developers/{developer-slug}/
+ /renewal/
+ /renewal/tama-38/
+ /renewal/pinui-binui/
+ /renewal/{city}/
+ /cities/
+ /cities/{city}/
+ /cities/{city}/{neighborhood}/
+ /cities/{city}/prices/
+ /tools/
+ /tools/mortgage-calculator/
+ /tools/purchase-tax-calculator/
+ /tools/appreciation-tax-calculator/
+ /tools/yield-calculator/
+ /tools/affordability/
+ /tools/estimator/
+ /pros/
+ /pros/{role}/
+ /pros/{role}/{city}/
+ /pros/{role}/{city}/{slug}-{id}/
+ /contractors/
+ /contractors/{specialty}/{city}/
+ /suppliers/
+ /suppliers/{category}/{city}/
+ /commercial/
+ /commercial/{offices|retail|warehouses}/{city}/
+ /land/{city}/
+ /invest/
+ /invest/yield-map/
+ /invest/foreign-buyers/
+ /guides/{slug}/
+ /glossary/{term}/
+ /aeo/{question-slug}/
+ /b2b/{developers|agencies|professionals|data}/
+ /en/...
+ /about/
+ /trust/
+ /methodology/
+ /legal/
+ /contact/
+ /sitemap/
+
+CANNIBALIZATION LAW:
+- /buy/{city}/ owns דירות למכירה {city}
+- /rent/{city}/ owns דירות להשכרה {city}
+- /projects/{city}/ owns פרויקטים חדשים {city}
+- /cities/{city}/ owns מחירי דירות {city}, שכונות {city}, market intelligence
+- /projects/{slug}-{id}/ owns פרויקט {brand}
+- /developers/{developer}/ owns developer entity, not project brand
+- /renewal/tama-38/ owns תמ״א 38
+- /renewal/pinui-binui/ owns פינוי בינוי
+- /tools/{tool}/ owns calculator terms
+- /pros/{role}/{city}/ owns professional local terms
+- /glossary/{term}/ owns “מה זה {term}”
+If /cities/{city}/ and /buy/{city}/ both target דירות למכירה {city}, it is an SEO split and must be blocked.
+
+DESIGN SYSTEM:
+NadLan must feel like a premium real-estate intelligence portal, not a decorative WordPress template.
+Design phrase:
+“Bloomberg Terminal for Israeli real estate, with a Compass-grade product surface.”
+Principles:
+- Data over decoration.
+- Trust is the brand.
+- Map is first-class.
+- RTL is default.
+- Mobile-first, thumb-first.
+- One accent color, not fake luxury.
+- Empty/loading/error states are part of every component.
+- No gold/beige luxury cliché.
+- No fake testimonials.
+- No fake rating.
+- No decorative animation on KPIs.
+- Every number needs a source line or OFFICIAL_SOURCE_REQUIRED.
+
+Design tokens:
+Neutrals:
+ink-900 #0B0F14
+ink-800 #111722
+ink-700 #1B2330
+ink-600 #2A3342
+ink-500 #4B5566
+ink-400 #7A8497
+ink-300 #B4BCC9
+ink-200 #D7DCE3
+ink-100 #EBEEF2
+ink-50 #F5F7FA
+white #FFFFFF
+Brand:
+brand-700 #0E4FB3
+brand-600 #1561D8
+brand-500 #2E7BF0
+brand-100 #E2ECFB
+Semantic:
+success #0E7C66 / #DCEFE9
+warning #B57700 / #FBEDCC
+danger #B5311B / #F6DAD3
+info #1561D8 / #E2ECFB
+Typography:
+Hebrew Heebo, English Inter, data numerals IBM Plex Mono/tabular.
+Mobile tap targets 44x44.
+Use logical CSS only for RTL.
+
+HOMEPAGE MUST SHOW:
+- Search: buy/rent/new projects/urban renewal/commercial/land/professionals
+- New projects/project showroom as near-term money
+- Verified projects rail
+- Map/search entry
+- Market pulse / data tiles
+- Tools strip: mortgage, purchase tax, estimator
+- City/neighborhood intelligence
+- Professionals
+- B2B for developers/pros
+- Methodology/trust
+- No fake social proof.
+
+LISTINGS UX:
+Need map+list, not only cards.
+Must specify:
+- search modes
+- filters
+- map pins
+- listing cards
+- listing detail
+- saved search
+- alerts
+- comparison
+- fraud/trust state
+- price history
+- mortgage/monthly cost
+- seller/broker dashboards
+- noindex/faceted rules
+- schema.
+
+PROJECT CARD:
+- image 16:10
+- state badge: Official / Concept / No source
+- developer logo chip
+- name
+- status/date
+- price range if sourced
+- occupancy ETA if sourced
+- apartment type chips
+- sources/provenance
+- CTA: בדיקת זמינות מול היזם / קבלת פרטים / השוואת דירות
+
+PROJECT SHOWROOM:
+The 3D/showroom has exactly three states:
+1. OFFICIAL
+   - official developer/RMI/municipal asset
+   - source line required
+   - hotspots only to verified apartment rows
+   - AR/fullscreen/day-night allowed
+2. CONCEPT
+   - conceptual/in-house/speculative
+   - must show clear label: הדמיה רעיונית — לא מחייבת
+   - watermark/disclaimer
+   - no unit-specific promises, no price overlays on 3D, no official iconography
+3. MISSING
+   - no viewer canvas
+   - neutral empty state
+   - CTA to request official model / get update
+   - no fake facade, no generated building that looks official
+
+3D HARD RULES:
+No silent fallback.
+No fake facade.
+No dead buttons.
+No stacking.
+If no real asset: show missing state clearly.
+If concept: mark concept clearly.
+If official: mark official and show provenance.
+Do not invent apartments, prices, availability, views, facades, official renders, or interiors.
+
+3D TECH TIERS:
+T1 — Mapbox GL 3D city/buildings + map/list + pins everywhere.
+T2 — project exterior model/facade + apartment table + view simulation for new projects where assets/data exist.
+T3 — real interior walkthrough only where captured/uploaded, e.g., Matterport/360/iframe.
+T4 — fallback: photos, floor plan, street view, view-from-floor explanation, honest missing state.
+Do not promise universal interior 3D day one.
+
+VIEW FROM APARTMENT:
+Mapbox alone may be insufficient for credible high-floor Tel Aviv view if building heights/photogrammetry are missing.
+Evaluate CesiumJS + Google Photorealistic 3D Tiles for premium view simulation.
+Mapbox remains useful for locator map, POIs, boundaries, price overlays.
+
+STAGE 1 TRUST RULES:
+Before growth:
+- no WooCommerce cart/notifications on public non-store pages
+- no coming soon / QA / debug / internal language
+- no placeholder sitemap
+- no fake facade
+- Mapbox/3D/tour fail visibly if missing
+- mobile containment at 390/768/1440
+- no merge without screenshots
+
+COMPLIANCE:
+Every outreach must be legal:
+- opt-in/unsubscribe where required
+- sender identity
+- no scraping abuse
+- no false claims
+- no fake verification
+- CRM logging
+- suppression list
+- legal review for marketing flows
+Legal review for:
+- broker/license claims
+- payment/KYC
+- buyer reservation
+- tax/legal/mortgage/renewal advice
+- reviews
+- verified badges
+- official project claims
+
+FLAGS:
+NEEDS_VERIFICATION = data must be checked in Semrush/GSC/live SERP/tools.
+LEGAL_REVIEW = legal/consumer/privacy/broker/financial risk.
+REQUIRES_OFFICIAL_ASSET = official developer/municipal/project/professional asset needed.
+OFFICIAL_SOURCE_REQUIRED = price, yield, tax bracket, planning status, transaction history, legal status.
+ASSUMPTION = logical assumption not yet verified.
+
+PRIMARY NEXT GOAL:
+Build a self-contained NadLan War Room OS:
+1. Source Registry
+2. Gap Audit
+3. Keyword/SERP Master
+4. Canonical Page Registry
+5. Page/Template Spec
+6. Homepage Spec
+7. Listings UX Spec
+8. Project Showroom Spec
+9. 3D/Map Architecture
+10. Design/Visual Spec
+11. Content Plan
+12. Programmatic SEO Plan
+13. Internal Linking Plan
+14. Schema Pack
+15. CRM/Lead Engine
+16. Monetization/GTM
+17. International/i18n
+18. Agent Execution Plan
+19. QA Gates
+20. 90-day roadmap
+```
+
+---
+
+# 2. FIRST LOVABLE PROMPT — RESET + SOURCE REGISTRY
+
+```text
+PLAN MODE ONLY. Do not build. Do not edit code. Do not deploy. Do not use Try to Fix.
+
+This is a context reset. Assume you do not remember anything from previous Lovable work. Before producing strategy, build a Source Registry and confirm what you know, what is missing, and what needs verification.
+
+Use the Project Knowledge above as your complete working context.
+
+Your first output is Report A0 — NadLan Source Registry + Gap Audit.
+
+Required sections:
+
+1. Source Registry
+Create a table with:
+- Source name
+- What it contains
+- How it affects strategy
+- Status: VERIFIED / PARTIAL / MISSING / NEEDS_VERIFICATION
+- Risk if ignored
+- Next action
+
+Minimum source categories:
+- Live site nad-lan.co.il
+- WordPress/content layer
+- existing project CPT records
+- existing reports 4–7
+- Report 2 keyword foundation: only a foundation, not full universe
+- Stage 1 trust document
+- design system
+- 3D showroom spec
+- project/showroom assets
+- keyword/source-of-truth governance
+- link-building/playbook
+- current Lovable limitations
+- screenshots/assets
+- Semrush/GSC/live SERP data
+- official data sources
+- legal/compliance requirements
+
+2. What we have
+Be concrete:
+- architecture
+- design system
+- 3D spec
+- trust rules
+- some keyword foundation
+- some content clusters
+- some project pages
+- existing gaps
+
+3. What we do NOT have
+Do not soften this. List:
+- full 1,500–3,000 keyword universe
+- live SERP reverse engineering for top money terms
+- full keyword-to-page execution map
+- visual component gallery
+- real listing UX
+- real app-layer architecture
+- CRM/lead engine
+- official asset pipeline for 3D
+- full international/i18n architecture
+- screenshot-based build QA
+- complete implementation backlog
+
+4. Strategic correction
+Write clearly:
+We are not avoiding categories because competitors are strong. We stage categories only due to product/data/legal readiness.
+
+5. P0/P1/P2/P3 priorities
+Use this hierarchy:
+P0:
+- trust gate
+- homepage strategy
+- new-projects money cluster
+- project showroom credibility
+- keyword/page registry
+- 3D tiered MVP
+- CRM lead routing
+- source-of-truth/cannibalization
+P1:
+- listings shell
+- top city pages
+- top professionals
+- content plan
+- design gallery
+P2:
+- programmatic city/neighborhood scale
+- suppliers/contractors
+- AEO
+- EN/foreign-investor bridge
+P3:
+- full app layer, full international, advanced 3D, investor dashboard
+
+6. Required next reports
+Output the exact sequence of next prompts:
+A1 Keyword/SERP Master Expansion
+A2 SERP Reverse Engineering Top 100
+A3 Canonical Page Registry
+A4 Homepage + Visual Product Board
+A5 Listings UX/Product Spec
+A6 Project Showroom + 3D Technical Build Spec
+A7 CRM/Lead Engine + Monetization
+A8 International/i18n
+A9 Agent Execution OS + QA
+
+End with:
+READY FOR NEXT PROMPT.
+```
+
+---
+
+# 3. PROMPT A1 — KEYWORD/SERP MASTER EXPANSION
+
+```text
+PLAN MODE ONLY. Do not build.
+
+Produce Report A1 — NadLan Money Keyword + SERP Master Expansion.
+
+Critical rule:
+Do not avoid hard keywords. Do not say Yad2/Madlan/Yad1/OnMap/law firms/banks are too strong. Difficulty is not a reason to surrender. Stage only by product/data/legal readiness.
+
+Goal:
+Create a 1,500–3,000 keyword universe over phases. In this slice, produce at least 300–500 rows if output length allows. If output length is limited, produce the top 300 and specify the remaining queue.
+
+For every row include:
+- keyword
+- variants/synonyms
+- language: HE / EN / FR / RU / AR
+- category
+- subcategory
+- geo
+- search intent
+- funnel stage
+- SERP type
+- SERP features: PAA, local pack, map pack, image pack, video, sitelinks, featured snippet, knowledge panel, ads intensity
+- dominant media needed: listing, map, article, tool, video, image, 3D, professional profile
+- estimated volume
+- KD
+- CPC
+- traffic value
+- if unavailable: NEEDS_VERIFICATION
+- top 3 competitors
+- why they rank
+- NadLan target URL
+- source-of-truth page owner
+- page type
+- content type to win
+- UX module required
+- data module required
+- schema required
+- internal links in
+- internal links out
+- cannibalization risk
+- monetization path
+- priority P0/P1/P2/P3
+- build action
+- content action
+
+Clusters required:
+1. Core נדלן
+2. דירות למכירה
+3. דירות להשכרה
+4. יד שנייה
+5. פרויקטים חדשים
+6. דירה מקבלן
+7. דירות חדשות
+8. תמ״א 38
+9. פינוי בינוי
+10. התחדשות עירונית
+11. city pages
+12. neighborhood pages
+13. street pages
+14. project-brand pages
+15. developer pages
+16. professionals: lawyer, appraiser, mortgage advisor, inspector, agent, architect, engineer, contractor
+17. tools/calculators
+18. tax/legal/mortgage
+19. investment
+20. commercial real estate
+21. land
+22. suppliers/contractors
+23. foreign investor
+24. B2B developer/pro advertising
+25. 3D/showroom keywords
+
+Top money terms must include:
+נדלן, נדל״ן, דירות למכירה, דירות להשכרה, דירה למכירה, דירה להשכרה, נדלן יד 2, פרויקטים חדשים, דירה מקבלן, דירות חדשות, תמ״א 38, פינוי בינוי, התחדשות עירונית, מחשבון משכנתא, מחשבון מס רכישה, דירה להשקעה, נדלן להשקעה, עורך דין מקרקעין, שמאי מקרקעין, בדק בית, יועץ משכנתאות, מתווך נדלן, נדלן מסחרי, מגרשים למכירה.
+
+Output also:
+A. Top 50 homepage/one-click money terms.
+B. Top 100 P0 pages.
+C. Top 50 articles to write now.
+D. Top 25 programmatic templates.
+E. Cannibalization red flags.
+F. Missing data fields required before build.
+G. What Report 2 missed.
+
+End with READY FOR NEXT PROMPT.
+```
+
+---
+
+# 4. PROMPT A2 — SERP REVERSE ENGINEERING TOP 100
+
+```text
+PLAN MODE ONLY. Do not build.
+
+Produce Report A2 — SERP Reverse Engineering for the top 100 money keywords from A1.
+
+For every keyword:
+- keyword
+- NadLan target URL
+- source-of-truth owner
+- SERP intent
+- top 10 page types
+- top 3 URLs/domains
+- why each top result wins
+- title patterns
+- meta patterns
+- H1/H2 patterns
+- content length pattern
+- data/tables used
+- images/video/3D/map used
+- PAA questions
+- related searches
+- autocomplete/suggested terms
+- local/map pack behavior
+- ads intensity
+- schema detected/needed
+- backlink/authority implication
+- UX pattern required
+- minimum viable page
+- 10x dominant page
+- exact content modules
+- exact data modules
+- exact visual modules
+- exact CTA
+- internal links needed
+- external official sources allowed
+- cannibalization risk
+- build task
+- content task
+- QA acceptance
+
+Required top groups:
+- דירות למכירה + city variants
+- דירות להשכרה + city variants
+- פרויקטים חדשים + city variants
+- דירה מקבלן
+- דירות חדשות
+- תמ״א 38
+- פינוי בינוי
+- התחדשות עירונית
+- מחשבון מס רכישה
+- מחשבון משכנתא
+- שמאי מקרקעין
+- עורך דין מקרקעין
+- בדק בית
+- foreign investor / buying property in Israel
+- project showroom / 3D real estate
+
+Do not summarize. Use tables. Mark every missing ranking/volume/KD/CPC as NEEDS_VERIFICATION.
+
+End READY FOR NEXT PROMPT.
+```
+
+---
+
+# 5. PROMPT A3 — CANONICAL PAGE REGISTRY
+
+```text
+PLAN MODE ONLY. Do not build.
+
+Produce Report A3 — Canonical Page Registry + Anti-Cannibalization OS.
+
+This report becomes the Bible for all writers, Lovable, Codex, and AI agents.
+
+For every page:
+- URL
+- page type
+- parent
+- breadcrumb
+- primary keyword
+- secondary keywords
+- forbidden keywords
+- source-of-truth intent
+- sibling intents
+- title tag
+- H1
+- meta description
+- index/noindex
+- canonical
+- schema
+- content modules
+- data modules
+- UX modules
+- internal links in
+- internal links out
+- monetization path
+- owner/status
+- build priority
+- content priority
+- required verification
+- risk flags
+
+Include:
+1. Homepage
+2. buy hub
+3. rent hub
+4. projects hub
+5. top 20 project city pages
+6. top 20 buy city pages
+7. top 20 rent city pages
+8. top 50 neighborhood pages
+9. renewal hub/spokes
+10. tools pages
+11. professionals pages
+12. developer pages
+13. glossary pages
+14. foreign investor pages
+15. B2B pages
+16. content/articles
+17. AEO pages
+18. listings templates
+19. project/showroom templates
+
+Create:
+- cannibalization table
+- title/H1 rules
+- canonical rules
+- noindex rules
+- faceted navigation rules
+- content creation gate
+- programmatic SEO thresholds
+- update workflow
+- agent checklist before publishing
+
+End READY FOR NEXT PROMPT.
+```
+
+---
+
+# 6. PROMPT A4 — HOMEPAGE + VISUAL PRODUCT BOARD
+
+```text
+PLAN MODE FIRST. Then BUILD only if explicitly approved.
+
+Produce Report A4 — Homepage + Visual Product Board.
+
+Goal:
+The owner must SEE what NadLan should become. Not just words. Produce a visual/product spec and, if in build mode later, a component gallery.
+
+Use the Report 5 design language:
+Premium intelligence portal, data over decoration, trust, map-first, RTL, mobile-first, not gold/beige, not WordPress template.
+
+Design screens required:
+1. Homepage desktop
+2. Homepage mobile
+3. New projects archive
+4. Project card
+5. Project showroom — official state
+6. Project showroom — concept state
+7. Project showroom — missing state
+8. Listings archive — map/list
+9. Listing card
+10. Listing detail page
+11. City intelligence page
+12. Neighborhood page
+13. Professional directory
+14. Professional profile
+15. Join Pro / Developer landing
+16. Developer dashboard shell
+17. CRM/lead dashboard shell
+18. Empty/loading/error states
+
+For each screen:
+- purpose
+- primary users
+- money keywords supported
+- modules
+- component list
+- layout desktop/tablet/mobile
+- copy
+- CTA
+- data displayed
+- trust elements
+- schema implication
+- analytics events
+- accessibility requirements
+- visual generation prompt for reference image
+- screenshot QA acceptance
+
+Homepage above the fold must include:
+- search module with tabs buy/rent/projects/renewal/commercial/land/professionals
+- one-click new projects
+- map entry
+- verified project rail
+- key tools
+- market pulse
+- foreign investor entry
+- B2B developer entry
+
+End READY FOR NEXT PROMPT.
+```
+
+---
+
+# 7. PROMPT A5 — LISTINGS UX / PRODUCT SPEC
+
+```text
+PLAN MODE ONLY. Do not build.
+
+Produce Report A5 — Listings UX/Product Spec.
+
+Goal:
+Define how NadLan competes with Yad2/Madlan/OnMap over time without shipping thin/fake listings.
+
+Sections:
+1. Product stages:
+   - V0 no fake listings
+   - V1 curated verified supply
+   - V2 map/list marketplace
+   - V3 saved search + alerts
+   - V4 seller/broker dashboards
+   - V5 price history + valuation + lead engine
+2. Search UX:
+   - location typeahead
+   - buy/rent/commercial/land
+   - filters
+   - map pins
+   - list cards
+   - sort
+   - save
+   - compare
+3. Listing card spec
+4. Listing detail spec
+5. Map/list split spec
+6. Mobile spec
+7. Trust and fraud prevention
+8. noindex/canonical/faceted navigation
+9. schema
+10. data model
+11. APIs/backend needs
+12. CRM/lead payload
+13. analytics
+14. source thresholds for indexability
+15. how to avoid harming SEO before supply exists
+
+End READY FOR NEXT PROMPT.
+```
+
+---
+
+# 8. PROMPT A6 — PROJECT SHOWROOM + 3D BUILD SPEC
+
+```text
+PLAN MODE ONLY. Do not build.
+
+Produce Report A6 — Project Showroom + 3D Build Spec.
+
+This is the near-term money product.
+
+Hard rules:
+No silent fallback.
+No fake facade.
+No dead buttons.
+No stacking.
+No invented apartments/prices/availability/views/facades/interiors.
+Every visual asset has provenance.
+Official/concept/missing state must be visible.
+
+Deliver:
+1. Buyer journey
+2. Developer journey
+3. Data model
+4. Asset upload requirements
+5. Project admin fields
+6. Unit model
+7. building/floor/unit coordinates
+8. facade mapping
+9. GLB/model-viewer path
+10. three.js/R3F escalation path
+11. Mapbox locator path
+12. Cesium/Google Photorealistic 3D Tiles evaluation for view-from-apartment
+13. Matterport/interior path
+14. fallback path
+15. mobile layout
+16. CTA/lead payload
+17. analytics events
+18. schema
+19. performance budgets
+20. QA gates
+21. developer sales package
+22. demo project requirements
+23. what can be shown to developers in 30 days
+24. what requires official assets
+25. what is not feasible now
+
+Build phases:
+P0 — credible demo: 1–2 project pages with official/concept state, no fake claims.
+P1 — developer dashboard intake.
+P2 — view-from-apartment.
+P3 — real interior capture integrations.
+P4 — listing expansion.
+
+End READY FOR NEXT PROMPT.
+```
+
+---
+
+# 9. PROMPT A7 — CRM / LEAD ENGINE / MONETIZATION
+
+```text
+PLAN MODE ONLY.
+
+Produce Report A7 — CRM, Lead Engine, Monetization, GTM.
+
+Goal:
+NadLan becomes a self-serve revenue machine.
+
+Deliver:
+1. Actors:
+   - buyer
+   - seller
+   - renter
+   - developer
+   - contractor
+   - broker
+   - lawyer
+   - appraiser
+   - mortgage advisor
+   - inspector
+   - supplier
+   - foreign investor
+2. Lead capture flows
+3. Lead routing
+4. deduplication
+5. SLA
+6. billing
+7. dashboards
+8. CRM choice:
+   - HubSpot
+   - Pipedrive
+   - Twenty
+   - self-host/Postgres
+   - custom app
+9. Pros/cons/costs
+10. Project Premier package
+11. Professional Pro/Premier
+12. 3D Showroom package
+13. sponsored placements
+14. developer dashboard
+15. legal compliance
+16. outreach sequences
+17. no spam rules
+18. analytics/KPI
+19. 90-day GTM plan
+20. agent automation plan
+
+End READY FOR NEXT PROMPT.
+```
+
+---
+
+# 10. PROMPT A8 — INTERNATIONAL / I18N / FOREIGN INVESTOR
+
+```text
+PLAN MODE ONLY.
+
+Produce Report A8 — International + i18n Plan.
+
+Goal:
+Use foreign investor demand to make NadLan valuable to developers and eventually expand outside Israel.
+
+Languages:
+Hebrew, English, French, Russian, Arabic.
+Markets:
+Israel for diaspora buyers, then Cyprus, Dubai/UAE, Greece, Thailand.
+
+Deliver:
+1. audience segments
+2. language strategy
+3. URL/hreflang architecture
+4. English bridge pages
+5. French/Russian/Arabic signals
+6. foreign buyer pages
+7. tax/legal/mortgage disclaimers
+8. foreign investor project pages
+9. 3D tour buyer journey
+10. lead routing by language
+11. developer value proposition
+12. international SEO clusters
+13. content plan
+14. technical i18n plan
+15. what not to translate yet
+16. phase roadmap
+
+End READY FOR NEXT PROMPT.
+```
+
+---
+
+# 11. PROMPT A9 — AGENT EXECUTION OS
+
+```text
+PLAN MODE ONLY.
+
+Produce Report A9 — Autonomous Agent Execution OS.
+
+Goal:
+Create a runbook for AI agents to continue building and operating NadLan without losing context.
+
+Deliver:
+1. Repo structure
+2. Strategy folder structure
+3. Source registry
+4. Keyword registry
+5. Page registry
+6. Design tokens
+7. component gallery
+8. content workflow
+9. SERP research workflow
+10. screenshot workflow
+11. build workflow
+12. QA gates
+13. Playwright visual tests
+14. Lighthouse tests
+15. schema tests
+16. cannibalization tests
+17. AI-tell tests
+18. external link policy
+19. official source policy
+20. legal review policy
+21. asset provenance policy
+22. CRM/lead workflow
+23. outreach workflow
+24. Google Business Profile workflow
+25. citations/link-building workflow
+26. social workflow
+27. reporting cadence
+28. error recovery
+29. WAF/rate-limit handling
+30. exact file outputs
+31. exact acceptance tests
+32. do-not-do list
+
+End READY FOR NEXT PROMPT.
+```
+
+---
+
+# 12. CODEx / Agent Prompt — להפוך את זה לריפו אמיתי
+
+```text
+You are Codex Agent in the NadLan repository.
+
+Do not change product code yet.
+Create a new branch:
+strategy/nadlan-context-reset-war-room-os
+
+Create these files:
+
+/strategy/00-source-registry.md
+/strategy/01-gap-audit.md
+/strategy/02-keyword-serp-master.md
+/strategy/02-keyword-serp-master.csv
+/strategy/03-serp-reverse-engineering.md
+/strategy/04-canonical-page-registry.md
+/strategy/04-canonical-page-registry.csv
+/strategy/05-homepage-visual-product-board.md
+/strategy/06-listings-ux-product-spec.md
+/strategy/07-project-showroom-3d-build-spec.md
+/strategy/08-crm-lead-engine-monetization.md
+/strategy/09-international-i18n.md
+/strategy/10-agent-execution-os.md
+/strategy/11-implementation-backlog.md
+/strategy/12-qa-gates.md
+/strategy/13-risk-register.md
+/strategy/README.md
+
+Also create:
+/strategy/backlog/p0-trust.md
+/strategy/backlog/p0-keyword-page-registry.md
+/strategy/backlog/p0-homepage.md
+/strategy/backlog/p0-new-projects-showroom.md
+/strategy/backlog/p0-crm-lead-routing.md
+/strategy/backlog/p1-listings.md
+/strategy/backlog/p1-design-system.md
+/strategy/backlog/p1-city-pages.md
+/strategy/backlog/p2-programmatic-seo.md
+/strategy/backlog/p2-international.md
+/strategy/backlog/p3-advanced-3d.md
+
+Rules:
+- Do not invent Semrush/GSC data.
+- Mark missing metrics as NEEDS_VERIFICATION.
+- Mark legal issues as LEGAL_REVIEW.
+- Mark official asset issues as REQUIRES_OFFICIAL_ASSET.
+- Every page has one source-of-truth keyword.
+- Every task has acceptance criteria.
+- Every build task has screenshot QA.
+- Every 3D task uses official/concept/missing state.
+
+Commit only strategy files.
+Do not deploy.
+```
+
+---
+
+# 13. Immediate execution checklist
+
+1. Paste Project Knowledge into Lovable / agent.
+2. Run Prompt A0.
+3. Do not run A1 until A0 gives Source Registry.
+4. Run A1 and demand at least 300–500 rows in the first slice.
+5. Run A2 for top 100 money terms.
+6. Run A3 before any new content/build.
+7. Run A4 visual board before homepage build.
+8. Run A6 before touching 3D/showroom.
+9. Only after A0–A9, give Codex the repo prompt.
+10. Build only P0:
+   - trust gate
+   - source-of-truth registry
+   - homepage/project entry
+   - project showroom credible demo
+   - CRM lead payload
+   - visual component gallery
+```

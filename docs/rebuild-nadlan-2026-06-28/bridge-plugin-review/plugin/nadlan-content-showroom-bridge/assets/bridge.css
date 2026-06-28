@@ -1,0 +1,110 @@
+:root{
+  --nlcb-cream:#FAF7F1;
+  --nlcb-ink:#1B1A17;
+  --nlcb-gold:#9C7A3C;
+  --nlcb-terracotta:#C2563A;
+  --nlcb-sage:#7A8F6A;
+  --nlcb-border:#D9D2C4;
+  --nlcb-muted:#6B6457;
+  --nlcb-dark:#14130F;
+  --nlcb-dark2:#211F19;
+  --nlcb-line:rgba(242,236,222,.14);
+  --nlcb-radius:6px;
+  --nlcb-shadow-card:0 8px 24px -12px rgba(27,26,23,.18);
+  --nlcb-shadow-theater:0 40px 90px -30px rgba(20,19,15,.55);
+}
+.nlcb-shell,.nlcb-shell *{box-sizing:border-box}
+.nlcb-shell{font-family:Heebo,Assistant,system-ui,-apple-system,Segoe UI,sans-serif;color:var(--nlcb-ink);background:var(--nlcb-cream);line-height:1.55;overflow-x:clip}
+.nlcb-shell[dir="ltr"]{font-family:"Inter Tight",Inter,system-ui,-apple-system,Segoe UI,sans-serif}
+.nlcb-shell h1,.nlcb-shell h2,.nlcb-shell h3{font-family:"Frank Ruhl Libre",Georgia,serif;line-height:1.15;margin:0;color:var(--nlcb-ink)}
+.nlcb-shell[dir="ltr"] h1,.nlcb-shell[dir="ltr"] h2,.nlcb-shell[dir="ltr"] h3{font-family:Fraunces,Georgia,serif}
+.nlcb-wrap{width:min(1200px,100% - 28px);margin-inline:auto}
+.nlcb-muted{color:var(--nlcb-muted)}
+.nlcb-eyebrow{display:inline-flex;align-items:center;gap:10px;color:var(--nlcb-gold);font-size:12px;font-weight:700;letter-spacing:1.4px;text-transform:uppercase}
+.nlcb-eyebrow:after{content:"";width:34px;height:2px;background:var(--nlcb-gold);display:inline-block}
+.nlcb-btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:46px;padding:0 20px;border-radius:var(--nlcb-radius);border:1px solid var(--nlcb-border);background:#fff;color:var(--nlcb-ink);font:inherit;font-weight:700;text-decoration:none;cursor:pointer;transition:.18s ease;white-space:nowrap}
+.nlcb-btn:hover{transform:translateY(-1px);box-shadow:var(--nlcb-shadow-card)}
+.nlcb-btn--primary{background:var(--nlcb-terracotta);border-color:var(--nlcb-terracotta);color:#fff}
+.nlcb-btn--ink{background:var(--nlcb-ink);border-color:var(--nlcb-ink);color:#fff}
+.nlcb-btn--small{min-height:34px;padding:0 12px;font-size:13px}
+.nlcb-badge{display:inline-flex;align-items:center;gap:6px;border-radius:999px;padding:5px 10px;font-size:12px;font-weight:800;background:#F5EFE3;color:var(--nlcb-muted);border:1px solid var(--nlcb-border)}
+.nlcb-badge[data-status="available"]{background:rgba(122,143,106,.16);color:#415434;border-color:rgba(122,143,106,.35)}
+.nlcb-badge[data-status="reserved"]{background:rgba(156,122,60,.16);color:#6f5222;border-color:rgba(156,122,60,.34)}
+.nlcb-badge[data-status="sold"]{background:rgba(106,100,87,.12);color:#6b6457;border-color:rgba(106,100,87,.22)}
+.nlcb-langbar{display:flex;gap:6px;align-items:center;flex-wrap:wrap}
+.nlcb-langbar a,.nlcb-langbar button{min-width:36px;height:32px;border-radius:999px;border:1px solid var(--nlcb-border);background:#fff;color:var(--nlcb-muted);font:inherit;font-size:12px;font-weight:800;text-decoration:none;display:inline-flex;align-items:center;justify-content:center;cursor:pointer;padding:0 9px}
+.nlcb-langbar [aria-current="true"]{background:var(--nlcb-ink);border-color:var(--nlcb-ink);color:#fff}
+.nlcb-project-header{position:relative;z-index:10;background:rgba(250,247,241,.92);backdrop-filter:blur(10px);border-bottom:1px solid var(--nlcb-border)}
+.nlcb-project-header__row{min-height:66px;display:flex;justify-content:space-between;gap:18px;align-items:center}
+.nlcb-brand{display:flex;align-items:center;gap:11px;text-decoration:none;color:var(--nlcb-ink)}
+.nlcb-brand__mark{width:40px;height:40px;border-radius:10px;background:var(--nlcb-ink);display:grid;place-items:center;color:#E4CE92;font-weight:900;letter-spacing:.5px}
+.nlcb-brand__name{font-family:Georgia,serif;font-size:22px;font-weight:700;letter-spacing:1px}
+.nlcb-brand__sub{display:block;font-size:10px;letter-spacing:2px;color:var(--nlcb-muted);margin-top:2px}
+.nlcb-nav{display:flex;align-items:center;gap:18px;flex-wrap:wrap}
+.nlcb-nav a{font-size:14px;color:#4b4639;text-decoration:none;font-weight:600}
+.nlcb-hero{display:grid;grid-template-columns:minmax(0,1fr) minmax(320px,.86fr);gap:clamp(22px,4vw,54px);align-items:center;padding:clamp(32px,5vw,70px) 0 clamp(20px,3vw,36px)}
+.nlcb-hero h1{font-size:clamp(42px,6.6vw,72px);font-weight:500;margin:12px 0 10px}
+.nlcb-hero__lede{font-size:clamp(16px,1.7vw,20px);line-height:1.48;color:#423d33;max-width:54ch;margin:0}
+.nlcb-hero__ctas{display:flex;flex-wrap:wrap;gap:12px;margin-top:24px}
+.nlcb-facts{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;margin-top:28px;padding-top:22px;border-top:1px solid var(--nlcb-border);max-width:560px}
+.nlcb-fact strong{display:block;font-family:"Frank Ruhl Libre",Georgia,serif;font-size:clamp(25px,3vw,34px);line-height:1;color:var(--nlcb-ink)}
+.nlcb-fact span{display:block;color:var(--nlcb-muted);font-size:13px;margin-top:6px}
+.nlcb-hero__media{position:relative;aspect-ratio:4/3;border-radius:10px;overflow:hidden;border:1px solid var(--nlcb-border);box-shadow:var(--nlcb-shadow-card);background:#eee7d8}
+.nlcb-hero__media img{width:100%;height:100%;object-fit:cover;display:block}
+.nlcb-demo{position:absolute;top:12px;inset-inline-end:12px;background:rgba(20,19,15,.58);color:#fff;border:1px solid rgba(255,255,255,.28);border-radius:4px;font-size:11px;padding:4px 10px;backdrop-filter:blur(4px)}
+.nlcb-secnav{position:relative;z-index:8;background:rgba(250,247,241,.94);backdrop-filter:blur(8px);border-top:1px solid var(--nlcb-border);border-bottom:1px solid var(--nlcb-border)}
+.nlcb-secnav__row{display:flex;gap:24px;overflow-x:auto;padding:12px 0;scrollbar-width:none}
+.nlcb-secnav a{white-space:nowrap;font-size:14px;font-weight:700;color:#4b4639;text-decoration:none;padding-bottom:5px;border-bottom:2px solid transparent}
+.nlcb-secnav a:hover,.nlcb-secnav a.is-active{color:var(--nlcb-ink);border-bottom-color:var(--nlcb-gold)}
+.nlcb-section{padding:clamp(40px,5.4vw,72px) 0 0}
+.nlcb-section__head{display:flex;justify-content:space-between;gap:18px;align-items:end;flex-wrap:wrap;margin-bottom:18px}
+.nlcb-section h2{font-size:clamp(26px,3.4vw,42px);font-weight:500;margin-top:8px}
+.nlcb-section p.nlcb-section__sub{font-size:17px;max-width:68ch;color:#423d33;margin:8px 0 0}
+.nlcb-theater{border-radius:16px;overflow:hidden;border:1px solid rgba(20,19,15,.5);background:var(--nlcb-dark);box-shadow:var(--nlcb-shadow-theater);position:relative;color:#F4EEDE}
+.nlcb-theater__top{display:flex;justify-content:space-between;align-items:flex-start;gap:14px;flex-wrap:wrap;padding:clamp(16px,2.5vw,24px);border-bottom:1px solid var(--nlcb-line);background:linear-gradient(180deg,rgba(33,31,25,.92),rgba(20,19,15,.72))}
+.nlcb-theater__top h2{color:#fff;font-size:clamp(22px,2.8vw,34px)}
+.nlcb-view-toggle{display:flex;padding:4px;border-radius:999px;background:rgba(255,255,255,.06);border:1px solid var(--nlcb-line)}
+.nlcb-view-toggle button{border:0;background:transparent;color:#B8B1A2;border-radius:999px;min-height:34px;padding:0 14px;font:inherit;font-weight:800;cursor:pointer}
+.nlcb-view-toggle button[aria-pressed="true"]{background:linear-gradient(180deg,#b9923f,#9C7A3C);color:#fff}
+.nlcb-theater__body{display:grid;grid-template-columns:minmax(0,1fr) minmax(320px,390px);min-height:clamp(560px,70vh,760px)}
+.nlcb-stage{position:relative;min-width:0;min-height:460px;background:radial-gradient(circle at 46% 38%,rgba(255,255,255,.1),transparent 38%),linear-gradient(180deg,#0b3433,#0a201f)}
+.nlcb-stage__media,.nlcb-stage__plate{position:absolute;inset:0;width:100%;height:100%}
+.nlcb-stage__media{background:linear-gradient(180deg,#111,#222)}
+.nlcb-stage model-viewer{width:100%;height:100%;background:transparent;direction:ltr;--poster-color:transparent}
+.nlcb-stage__plate{background-size:cover;background-position:center;opacity:.98}
+.nlcb-stage__shade{position:absolute;inset:0;background:radial-gradient(circle at 48% 43%,rgba(255,255,255,0),rgba(8,7,5,.54) 74%),linear-gradient(0deg,rgba(7,6,5,.45),transparent 36%);pointer-events:none}
+.nlcb-marker{position:absolute;transform:translate(-50%,-50%);width:42px;height:42px;border-radius:50%;display:grid;place-items:center;font:inherit;font-weight:900;font-size:13px;color:#fff;border:2px solid var(--nlcb-sage);background:rgba(18,17,13,.52);box-shadow:0 4px 14px rgba(0,0,0,.45);cursor:pointer;z-index:4;transition:.18s ease}
+[dir="rtl"] .nlcb-marker{transform:translate(50%,-50%)}
+.nlcb-marker:hover,.nlcb-marker.is-active{background:rgba(122,143,106,.42);box-shadow:0 0 0 7px rgba(122,143,106,.18),0 6px 18px rgba(0,0,0,.5);transform:translate(-50%,-50%) scale(1.09)}
+[dir="rtl"] .nlcb-marker:hover,[dir="rtl"] .nlcb-marker.is-active{transform:translate(50%,-50%) scale(1.09)}
+.nlcb-marker[data-status="reserved"]{border-color:var(--nlcb-gold)}
+.nlcb-marker[data-status="sold"]{border-color:#9aa29a;opacity:.72}
+.nlcb-legend{position:absolute;bottom:16px;inset-inline-end:16px;display:flex;gap:12px;flex-wrap:wrap;padding:8px 13px;border-radius:999px;background:rgba(12,11,8,.66);border:1px solid var(--nlcb-line);backdrop-filter:blur(6px);font-size:12px;font-weight:700;color:#d7d0c0;z-index:5}
+.nlcb-dot{width:9px;height:9px;border-radius:50%;display:inline-block;margin-inline-end:6px;background:var(--nlcb-sage)}
+.nlcb-dot--reserved{background:var(--nlcb-gold)}.nlcb-dot--sold{background:#9aa29a}
+.nlcb-unit-panel{background:linear-gradient(180deg,rgba(28,26,21,.98),rgba(17,16,12,.98));border-inline-start:1px solid var(--nlcb-line);padding:clamp(16px,2.5vw,24px);display:flex;flex-direction:column;gap:14px;min-width:0}
+.nlcb-unit-panel h3{font-size:clamp(24px,2.6vw,34px);color:#fff;font-weight:500;margin-top:8px;overflow-wrap:anywhere}
+.nlcb-unit-meta{display:flex;justify-content:space-between;align-items:flex-start;gap:14px}
+.nlcb-floor{font-family:"Frank Ruhl Libre",Georgia,serif;font-size:42px;line-height:1;color:#fff;text-align:center}
+.nlcb-floor span{display:block;font-family:inherit;font-size:12px;color:#D8C79A;font-weight:700;margin-bottom:4px}
+.nlcb-kpis{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+.nlcb-kpi{background:rgba(255,255,255,.055);border:1px solid rgba(242,236,222,.08);border-radius:10px;padding:10px 12px;color:#fff}
+.nlcb-kpi span{display:block;color:#B8B1A2;font-size:12px;margin-bottom:3px}.nlcb-kpi strong{font-size:16px}.nlcb-kpi--wide{grid-column:1/-1}
+.nlcb-tabs{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:6px}
+.nlcb-tabs button{min-height:38px;border-radius:8px;border:1px solid rgba(242,236,222,.14);background:rgba(255,255,255,.05);color:#efe7d6;font:inherit;font-weight:700;cursor:pointer}
+.nlcb-tabs button[aria-pressed="true"]{background:linear-gradient(180deg,#b9923f,#9C7A3C);color:#fff}
+.nlcb-panel-body{min-height:160px;border:1px solid rgba(242,236,222,.14);background:rgba(10,10,7,.5);border-radius:11px;overflow:hidden;display:grid;place-items:center;color:#cfc8b6;text-align:center;padding:12px}
+.nlcb-panel-body img{max-width:100%;max-height:220px;display:block}
+.nlcb-form{display:grid;gap:9px;margin-top:auto;border-top:1px solid var(--nlcb-line);padding-top:16px}
+.nlcb-form label{font-weight:800;color:#fff;font-size:15px}.nlcb-form input{width:100%;min-height:44px;border-radius:7px;border:1px solid rgba(242,236,222,.2);background:rgba(255,255,255,.06);color:#fff;font:inherit;padding:0 12px}.nlcb-form__row{display:grid;grid-template-columns:1fr 1fr;gap:8px}.nlcb-form small{color:#9a9384;line-height:1.45}.nlcb-form__msg{font-size:13px;color:#d6f5e2;background:rgba(122,143,106,.15);border-radius:8px;padding:8px;display:none}.nlcb-form.is-done .nlcb-form__msg{display:block}
+.nlcb-inventory{display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:12px}
+.nlcb-unit-card{text-align:inherit;border:1px solid var(--nlcb-border);background:#fff;border-radius:9px;padding:14px;box-shadow:none;cursor:pointer;font:inherit;transition:.16s ease}.nlcb-unit-card:hover,.nlcb-unit-card.is-active{border-color:var(--nlcb-gold);box-shadow:0 8px 22px -10px rgba(156,122,60,.3)}.nlcb-unit-card__top{display:flex;justify-content:space-between;gap:8px;align-items:center;color:var(--nlcb-muted);font-size:12px}.nlcb-unit-card strong{display:block;font-family:"Frank Ruhl Libre",Georgia,serif;font-size:18px;margin:9px 0 2px}.nlcb-unit-card span:last-child{font-size:13px;color:var(--nlcb-muted)}
+.nlcb-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:14px}.nlcb-card{background:#fff;border:1px solid var(--nlcb-border);border-radius:12px;padding:18px;box-shadow:var(--nlcb-shadow-card)}.nlcb-card h3{font-size:20px;font-weight:500;margin:8px 0 6px}.nlcb-card p{color:#4b4639;margin:0}.nlcb-card__icon{width:38px;height:38px;border-radius:9px;background:#EFEAE0;color:var(--nlcb-gold);display:grid;place-items:center}
+.nlcb-price{display:grid;grid-template-columns:.86fr 1.14fr;gap:18px}.nlcb-estimate{background:linear-gradient(150deg,var(--nlcb-ink),var(--nlcb-dark2));color:#FAF7F1;border-radius:12px;padding:22px}.nlcb-estimate strong{font-family:"Frank Ruhl Libre",Georgia,serif;font-size:clamp(30px,3.4vw,42px);display:block;line-height:1.1;margin:8px 0;color:#fff}.nlcb-estimate p{color:#cfc8b6;margin:0}.nlcb-table{border:1px solid var(--nlcb-border);border-radius:12px;background:#fff;overflow:hidden}.nlcb-table table{width:100%;border-collapse:collapse;font-size:14px}.nlcb-table th,.nlcb-table td{padding:10px 12px;border-top:1px solid #ECE6DA;text-align:inherit}.nlcb-table thead th{background:#FBF9F4;color:var(--nlcb-muted);font-weight:800;border-top:0}.nlcb-source{padding:10px 12px;border-top:1px solid #ECE6DA;color:var(--nlcb-muted);font-size:12px}
+.nlcb-mapbox{display:grid;grid-template-columns:1.2fr .8fr;gap:18px}.nlcb-map{position:relative;min-height:350px;border-radius:12px;border:1px solid var(--nlcb-border);background:#EAF0EC;overflow:hidden;box-shadow:var(--nlcb-shadow-card)}.nlcb-map svg{width:100%;height:100%;display:block}.nlcb-map-pin{position:absolute;transform:translate(-50%,-100%);background:var(--nlcb-terracotta);color:#fff;border:2px solid #fff;border-radius:999px;padding:5px 10px;font-size:12px;font-weight:800;box-shadow:0 4px 12px rgba(0,0,0,.16)}[dir="rtl"] .nlcb-map-pin{transform:translate(50%,-100%)}.nlcb-spokes{display:grid;gap:10px}.nlcb-chiprow{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}.nlcb-chip{font-size:13px;background:#EFEAE0;border-radius:999px;padding:4px 11px;color:#4b4639}.nlcb-stats{display:grid;grid-template-columns:1fr 1fr;gap:10px}.nlcb-stat{background:#fff;border:1px solid var(--nlcb-border);border-radius:10px;padding:13px}.nlcb-stat strong{font-family:"Frank Ruhl Libre",Georgia,serif;font-size:24px}.nlcb-stat span{font-size:12px;color:var(--nlcb-muted);display:block}
+.nlcb-seo{max-width:780px;margin-inline:auto}.nlcb-seo h2{font-size:clamp(26px,3.2vw,38px)}.nlcb-seo p,.nlcb-existing-content p{font-size:17px;line-height:1.75;color:#2f2c25}.nlcb-note{background:#FCF7EC;border-inline-start:3px solid var(--nlcb-gold);border-radius:4px;padding:16px 18px;margin-top:18px;color:#4b4639}.nlcb-note strong{display:block;margin-bottom:4px;color:var(--nlcb-ink)}
+.nlcb-gallery{background:var(--nlcb-cream);padding:clamp(38px,6vw,80px) 0}.nlcb-gallery__head{display:flex;justify-content:space-between;gap:18px;align-items:end;flex-wrap:wrap;margin-bottom:20px}.nlcb-project-cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:16px}.nlcb-project-card{background:#fff;border:1px solid var(--nlcb-border);border-radius:13px;overflow:hidden;text-decoration:none;color:var(--nlcb-ink);box-shadow:var(--nlcb-shadow-card);display:flex;flex-direction:column}.nlcb-project-card__img{position:relative;aspect-ratio:4/3;background-size:cover;background-position:center}.nlcb-project-card__body{padding:16px}.nlcb-project-card h3{font-size:24px}.nlcb-project-card p{color:var(--nlcb-muted);margin:6px 0 14px}.nlcb-project-card__meta{display:flex;justify-content:space-between;gap:10px;color:var(--nlcb-muted);font-size:13px}.nlcb-home-showcase{display:grid;grid-template-columns:1fr .92fr;gap:18px;align-items:stretch}.nlcb-home-stage{background:var(--nlcb-dark);border-radius:16px;overflow:hidden;min-height:420px;position:relative}.nlcb-home-stage img{width:100%;height:100%;object-fit:cover;opacity:.92}.nlcb-home-stage:after{content:"";position:absolute;inset:0;background:radial-gradient(circle at 45% 40%,transparent,rgba(20,19,15,.7) 72%)}.nlcb-home-copy{padding:clamp(22px,3vw,36px);border:1px solid var(--nlcb-border);border-radius:16px;background:#fff;box-shadow:var(--nlcb-shadow-card)}.nlcb-home-copy h2{font-size:clamp(32px,4.5vw,58px)}
+.nlcb-existing-content,.nadlan-project-article,.nadlan-guide{background:var(--nlcb-cream);color:var(--nlcb-ink)}.nlcb-existing-content{max-width:820px;margin:0 auto;padding:clamp(34px,5vw,70px) 14px}.nlcb-existing-content h2,.nlcb-existing-content h3,.nadlan-project-article h2,.nadlan-project-article h3{font-family:"Frank Ruhl Libre",Georgia,serif;color:var(--nlcb-ink);line-height:1.2}.nlcb-existing-content a{color:var(--nlcb-terracotta)}
+.nlcb-sticky{position:fixed;inset-inline:16px;bottom:16px;z-index:99;display:flex;justify-content:flex-end;pointer-events:none}.nlcb-sticky__bar{pointer-events:auto;display:flex;gap:8px;background:rgba(250,247,241,.94);border:1px solid var(--nlcb-border);box-shadow:0 14px 38px -18px rgba(27,26,23,.3);border-radius:12px;padding:8px;backdrop-filter:blur(10px)}
+@media (max-width:900px){.nlcb-project-header{position:relative}.nlcb-project-header__row{align-items:flex-start;flex-direction:column;padding:12px 0}.nlcb-hero,.nlcb-theater__body,.nlcb-price,.nlcb-mapbox,.nlcb-home-showcase{grid-template-columns:1fr}.nlcb-theater__body{min-height:0}.nlcb-stage{min-height:420px}.nlcb-unit-panel{border-inline-start:0;border-top:1px solid var(--nlcb-line)}.nlcb-secnav{top:0}.nlcb-facts{grid-template-columns:repeat(3,1fr)}}
+@media (max-width:560px){.nlcb-wrap{width:min(100% - 24px,1200px)}.nlcb-nav{width:100%;justify-content:space-between}.nlcb-nav a{display:none}.nlcb-hero{padding-top:26px}.nlcb-hero h1{font-size:42px}.nlcb-facts{grid-template-columns:1fr 1fr}.nlcb-fact:nth-child(3){grid-column:1/-1}.nlcb-section{padding-top:40px}.nlcb-theater{border-radius:10px}.nlcb-theater__top{padding:14px}.nlcb-theater__body{display:flex;flex-direction:column}.nlcb-stage{min-height:520px}.nlcb-marker{width:38px;height:38px}.nlcb-legend{inset-inline:10px;bottom:10px;justify-content:center;border-radius:12px}.nlcb-form__row,.nlcb-kpis{grid-template-columns:1fr}.nlcb-tabs{grid-template-columns:1fr}.nlcb-inventory{grid-template-columns:1fr}.nlcb-sticky{inset-inline:8px;bottom:8px}.nlcb-sticky__bar{width:100%;justify-content:stretch}.nlcb-sticky__bar .nlcb-btn{flex:1;padding:0 8px}.nlcb-home-stage{min-height:360px}}

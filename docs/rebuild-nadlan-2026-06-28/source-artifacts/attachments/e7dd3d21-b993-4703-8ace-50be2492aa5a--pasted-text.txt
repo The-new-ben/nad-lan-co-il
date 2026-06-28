@@ -1,0 +1,106 @@
+1. Early strategy & audit reports (the "good calls" era) Location: .lovable/reports/ in the Lovable repo (nadlan-strategy-hub).
+
+plan.md — initial roadmap
+repo-inventory.md — scan of the WordPress repo structure
+rest-api-map.md — map of WP REST endpoints, including the 401/404 failures
+advisor-notes.md — running log of blockers and decisions
+00-strategy-brief.md — money-pages SEO strategy, foreign-buyer angle, urban renewal / תמא 38 as the third pilot alongside Rainbow and Dimri Yama. This is the one you said was a good direction.
+01-showroom-redesign.md — the 4-layer mobile-first showroom spec (Building → Floor → Unit → Inside). Pre-wreck version.
+report-3a-real-semrush.md — real Semrush keyword data pull
+2. The "war room sync" packet (duplicate of #1 plus more) Location: handoff/lovable/2026-06-23-war-room-sync/ in the Lovable repo, mirrored to GitHub at The-new-ben/nadlan-strategy-hub for Codex to pull.
+
+Reports folder contains everything from #1, plus:
+
+02-showroom-prototype.md
+03-listings-ia.md — listings information architecture
+04-brand-nadlan3d.md — the Nadlan3D / Nadlan.ai brand work
+05-fallback-floorplan-spec.md — AI floor-plan fallback with watermarks
+06-codex-visual-qa.md
+Plus a data/nadlan-tokens.css (vanilla CSS tokens for porting to WordPress) and a source-manifest.md with rsync instructions for Codex.
+
+3. The "premium pattern" packet (this is where I went wrong on the homepage direction) Location: handoff/lovable/2026-06-24-premium-pattern/
+
+Docs:
+
+01-live-audit.md — critique of 1.69.32
+02-canonical-showroom-pattern.md
+03-visual-spec.md — Cream Luxury palette, Frank Ruhl Libre + Heebo
+04-public-copy-he-en.md — Hebrew + English copy
+05-branding-favicon-social.md
+06-replication-rule.md
+07-codex-build-plan.md — the 6 PRs I told Codex to ship
+08-wordpress-implementation-map.md
+Data: asset-contract.json, component-map.json, design-tokens.json, qa-checklist.json
+
+Reference HTML/CSS (vanilla, no framework):
+
+showroom-reference.html + .css
+homepage-reference.html + .css
+projects-reference.html + .css
+Screenshots/renders (PNG): showroom desktop+mobile HE+EN, homepage desktop+mobile HE, projects desktop+mobile HE, selection-states, pattern-diagram, wordmark, favicons (32, 192, 180), og-card. 15 files total.
+
+4. PR review of what Codex shipped to WordPress Location: handoff/lovable/2026-06-24-wp-pr-review/
+
+timeline.md, proof-integrity.md, README.md
+diffs/ — 18 commit diffs from the WordPress repo
+prs/ — per-PR review notes
+qa/showroom-live-selection-16932-2026-06-24/ — manual QA of the "select unit 16" fix on the live Rainbow showroom, with QA.md, QA.html, JSON report
+5. The Lovable preview app itself (the "3D bullshit website" you're angry about) This is the running TanStack app — not a deliverable, just a sandbox. Routes built: /, /listings, /showroom/$projectId, /cities/$city, /about, /contact, /guides, /professionals, /handoff, /handoff/compare, /handoff/showroom, /handoff/homepage, /handoff/projects. I agree this drifted away from "SEO real estate site" toward "showroom demo."
+
+6. Codex-side prompts and packets I authored for the other agent Location: handoff/codex/ (these are instructions I wrote for Codex, not outputs):
+
+2026-06-23-lovable-locked-build-scope.md
+2026-06-23-lovable-scope-review.md
+2026-06-23-showroom-redesign-readout.md
+2026-06-23-stakeholder-input-packet.md
+lovable-prompts/ — 5 prompt files I drafted for you to paste into Codex
+exports/ — 2 HTML versions of the above for owner reading
+7. Shared cross-agent knowledge (skills/playbooks) Location: handoff/shared-knowledge/
+
+decisions/2026-06-23-replicable-3d-ai-system.md
+indexes/replication-process-index.md
+skills/: nadlan-cross-agent-sync.md, nadlan-editorial-bright-tokens.md, nadlan-listings-ranking.md, nadlan-magazine-card.md, nadlan-public-language-cleanup.md, nadlan-screenshot-first-visual-qa.md, nadlan-showroom-design-rules.md
+8. Codex's source-context drop (not mine, but in the same repo) Location: handoff/codex/2026-06-23-source-context/ — Codex's inventory of skills, branches, design specs from the WordPress repo. Useful reference, not my output.
+
+Things that do NOT exist outside the repo: I have no Figma, no Google Doc, no Notion page, no external PDF, no Drive folder. Every artifact I made is in one of the two repos (Lovable mirror nadlan-strategy-hub or the WordPress nad-lan-co-il via the handoff packets I sent Codex). The "plan mode" answers and chat messages themselves are not saved anywhere except this conversation history.
+
+My honest read on what's actually salvageable vs. wreckage:
+
+Salvageable (good calls):
+
+00-strategy-brief.md — urban renewal / תמא 38 angle, foreign-buyer money pages
+report-3a-real-semrush.md — real keyword data
+03-listings-ia.md — listings architecture
+05-fallback-floorplan-spec.md — watermark rule for AI assets
+The vanilla nadlan-tokens.css (tokens themselves are fine; the application of them to a showroom-centric homepage was wrong)
+Wreckage (where I drifted):
+
+The whole 02-showroom-prototype.md → premium-pattern/ arc treated the showroom as the product. It's a feature, not the site.
+The Lovable preview homepage is a showroom demo, not a real estate SEO homepage.
+07-codex-build-plan.md told Codex to port showroom-first styling to WordPress — which is what damaged the live site.
+When you're ready, tell me what direction you want next and I'll write a plan for it. Until then, staying in chat.
+
+Today at 9:38 AM
+chat only — do not touch files, do not call tools, do not ask multiple-choice questions, just reply in plain text.
+
+So where are the good calls? I want to read them again, okay? Where are they? And don't refer me to the repo. Give me live links, okay? Clickable links
+
+Honest answer: I can't give you clickable live links to those files, because none of them are published anywhere I control. They live only inside the GitHub repos and inside this Lovable sandbox. There's no hosted "/reports/" website. If I paste a URL it'll either 404 or point back to GitHub — which you told me not to do.
+
+Here's what actually exists and where, so you can open them yourself in your browser:
+
+The "good calls" from the early part of this chat are these four documents:
+
+The strategy thesis — the one that said don't fight Yad2/Madlan on brand, go after פרויקטים חדשים <city> (KD 0), דירות להשכרה <city> (KD ≤22), neighborhood area-info pages, and foreign buyers. That's 00-strategy-brief.md.
+
+The real Semrush numbers backing that thesis — actual volumes, KD, CPC per city and per keyword family, with the rollout sequence. That's report-3a-real-semrush.md.
+
+The REST API map — every WordPress endpoint, which ones return 401/404, what the showroom and offers endpoints expect. That's rest-api-map.md.
+
+The repo inventory and the advisor notes — what's actually in the WordPress codebase, the plugin-dist drift, the hotspot JS that isn't wired. Those are repo-inventory.md and advisor-notes.md.
+
+All five sit in two places: the original .lovable/reports/ folder in the Lovable hub repo, and a mirrored copy inside handoff/lovable/2026-06-23-war-room-sync/reports/ in the same repo. Same content, two locations, because I copied them when we set up the handoff to Codex.
+
+The drift started at report 01-showroom-redesign.md and everything after it — that's where I turned the showroom into "the product" instead of treating it as one feature inside a real-estate SEO site. The four documents above are from before that drift and are still valid.
+
+If you want, tell me which of the four you want to actually re-read and I'll paste the full text of it directly into chat here — no files, no links, no boxes. Just the text.

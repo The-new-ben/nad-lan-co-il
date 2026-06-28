@@ -1,0 +1,107 @@
+[
+  {
+    "name": "gallery-he-1440",
+    "file": "gallery-he.html",
+    "width": 1440,
+    "lang": "",
+    "dir": "",
+    "shell": 1,
+    "showrooms": 0,
+    "oldStatic": 0,
+    "oldP3d": 0,
+    "nlRoot": 0,
+    "modelViewer": 0,
+    "horizontalOverflow": false,
+    "bannedVisible": [],
+    "h1": 0,
+    "selected": null,
+    "title": "",
+    "errors": []
+  },
+  {
+    "name": "project-he-1440",
+    "file": "project-he.html",
+    "width": 1440,
+    "lang": "",
+    "dir": "",
+    "shell": 1,
+    "showrooms": 1,
+    "oldStatic": 0,
+    "oldP3d": 0,
+    "nlRoot": 0,
+    "modelViewer": 0,
+    "horizontalOverflow": false,
+    "bannedVisible": [
+      "?"
+    ],
+    "h1": 1,
+    "selected": "ashira-10-corner",
+    "title": "",
+    "errors": []
+  },
+  {
+    "name": "project-en-1440",
+    "file": "project-en.html",
+    "width": 1440,
+    "lang": "",
+    "dir": "",
+    "shell": 1,
+    "showrooms": 1,
+    "oldStatic": 0,
+    "oldP3d": 0,
+    "nlRoot": 0,
+    "modelViewer": 0,
+    "horizontalOverflow": false,
+    "bannedVisible": [
+      "?",
+      "lead"
+    ],
+    "h1": 1,
+    "selected": "ashira-10-corner",
+    "title": "",
+    "errors": []
+  },
+  {
+    "name": "project-he-390",
+    "file": "project-he.html",
+    "width": 390,
+    "lang": "",
+    "dir": "",
+    "shell": 1,
+    "showrooms": 1,
+    "oldStatic": 0,
+    "oldP3d": 0,
+    "nlRoot": 0,
+    "modelViewer": 0,
+    "horizontalOverflow": false,
+    "bannedVisible": [
+      "?"
+    ],
+    "h1": 1,
+    "selected": "ashira-10-corner",
+    "title": "",
+    "errors": []
+  },
+  {
+    "name": "project-en-390",
+    "file": "project-en.html",
+    "width": 390,
+    "lang": "",
+    "dir": "",
+    "shell": 1,
+    "showrooms": 1,
+    "oldStatic": 0,
+    "oldP3d": 0,
+    "nlRoot": 0,
+    "modelViewer": 0,
+    "horizontalOverflow": false,
+    "bannedVisible": [
+      "?",
+      "lead"
+    ],
+    "h1": 1,
+    "selected": "ashira-10-corner",
+    "title": "",
+    "errors": []
+  }
+]

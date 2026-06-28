@@ -1,0 +1,85 @@
+The clean resolution (and it's also the correct order)
+main keeps 1.65.3 = the full-width fix (already merged, 2e6aed7). Deploy this first — it fixes the squashed canvas.
+Codex rebases his polish branch onto current main and ships it as 1.65.4 (bump all surfaces + rebuild ZIP as nadlan-config-1.65.4.zip). No collision, and his polish correctly lands on top of the width fix — you can't evaluate hotspot/intro polish until the block renders at full width anyway.
+So nobody's work is lost; it just stacks in the right sequence: 1.65.3 width fix → deploy → 1.65.4 polish on top.
+
+What I'd suggest to Codex (your call to relay)
+Don't merge your branch as 1.65.3 — main already used it for the full-width fix. Rebase onto current main (2e6aed7), then bump every version surface (header, version array, health endpoint, both nadlan-p3d style+script cache-busters, manifest version, manifest download_url, ZIP filename) to 1.65.4, rebuild nadlan-config-1.65.4.zip, and confirm your polish sits on top of the alignfull + layout-constrained-fix from 1.65.3 (don't revert those).
+
+To prevent this recurring
+The deeper fix: one of us owns version bumps, or we check the live healthcheck + main manifest version before claiming a number. Right now we're both grabbing the next integer off the same base. Cheapest rule: before any bump, git fetch origin main and read its version — never reuse it.
+
+I'm not touching anything further until you decide. Two honest options for you:
+
+Asked
+Resolve collision
+Asked
+Resolve collision
+How should we resolve the 1.65.3 version collision between main and Codex's polish branch?
+
+Hold — I help merge both
+
+Adopt a rule to prevent version collisions going forward?
+
+No change
+
+Holding the deploy. Let me find and inspect Codex's polish branch so I can integrate both cleanly (width fix + polish) as 1.65.4:
+
+Ran
+Identify Codex's 1.65.3 polish branch
+Found the collision: codex/rainbow-view-return-1641 (d979466) is also tagged 1.65.3. Let me see exactly how it diverges from main and whether it conflicts with the width fix:
+
+Ran
+Analyze divergence and conflict surface of Codex's polish branch
+Clean 1-and-1 divergence from a shared base. Both branches touch the same version files and both added a 1.65.3 ZIP — so I need to integrate both code changes and reconcile to 1.65.4. Creating an integration branch off main and merging Codex's polish in:
+
+Ran
+Merge Codex polish branch into integration branch, list conflicts
+Three conflicts, all expected. Let me resolve the code one first (project-3d.php) — I need BOTH my width fix and Codex's polish:
+
+Ran
+Inspect project-3d.php conflict hunks
+The conflict shows Codex also added the intro section (slice 1!) — and his wrapper lacks my alignfull fix. The correct resolution is both: keep his intro, add alignfull to the showroom wrapper. Resolving:
+
+
+Edited a file, read a file
+Now verify my width-fix survived the merge and check the integration is coherent, then resolve the manifest + ZIP conflicts:
+
+Ran
+Verify width fix survived + inspect manifest conflict
+All width-fix pieces survived (3 references to the fix function, 1 alignfull wrapper, Codex's intro present, no leftover markers). Now resolving the manifest — keep both changelog histories, version 1.65.4:
+
+Ran
+Resolve manifest conflict and bump to 1.65.4
+Now resolve the ZIP conflict (remove both 1.65.3 zips, will rebuild as 1.65.4), bump remaining version surfaces to 1.65.4, and verify no markers remain:
+
+Ran
+Resolve zip conflict, bump to 1.65.4, verify clean
+Marking resolved, rebuilding the 1.65.4 ZIP, and running the full gate:
+
+Ran
+php -l, rebuild zip, verify both fixes present, JS check
+All green — the integrated ZIP carries both my width fix and Codex's intro polish, all surfaces at 1.65.4. Committing the merge, pushing, and merging to main:
+
+
+Ran 2 commands, used 2 tools
+Done. The collision is resolved and both works are integrated.
+
+What I did (per your "hold — I help merge both")
+Found the collision: codex/rainbow-view-return-1641 (d979466) was tagged 1.65.3, same as main's full-width fix — clean 1-and-1 divergence from a shared base.
+Integrated both as 1.65.4 on main (c2635d8). Nothing was lost:
+✅ My block-theme full-width fix (alignfull wrapper + layout_constrained_fix CSS)
+✅ Codex's apartment-picker polish (he'd also done the SEO intro above the model, clearer markers, dominant selected-apartment card, view-return)
+The merge conflict was at the wrapper line — I resolved it to keep both Codex's intro section and the alignfull class.
+Gate passed: php -l ×3 clean, JS node --check clean, ZIP 130 entries/rootless/no-CRC-errors and verified to contain both fixes, all 6 version surfaces aligned at 1.65.4, colliding 1.65.3 ZIP removed, zero leftover conflict markers.
+The old nadlan-config-1.65.3.zip is gone from the manifest path; main now ships nadlan-config-1.65.4.zip.
+What you deploy now (one deploy, 1.65.4)
+Pull/sync UPress server Git → main c2635d8
+Update NadLan Config → 1.65.4
+Clear UPress cache
+Hard-refresh Rainbow on desktop
+Confirm: showroom spans full desktop width and there's intro text above the model
+Honest notes
+You declined the version-discipline rule, so I'll keep flagging collisions manually — but they'll keep happening as long as Codex and I both grab version numbers off the same base in parallel. Tonight it cost us a merge. Your call; I'll just stay vigilant.
+codex/rainbow-view-return-1641 is now superseded — Codex should rebase any further work onto c2635d8 (1.65.4), not keep building on that branch, or we get the same collision again. Worth telling him.
+After you deploy and confirm desktop width is back, I'll run the independent live pass at 1440/768/390 and give you the honest pass/fail on the apartment-picker polish — which is finally evaluable now that the canvas renders correctly.

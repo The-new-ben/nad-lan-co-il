@@ -1,0 +1,61 @@
+/* NadLan Showroom — design tokens. Fonts use safe system fallbacks in this rescue theme to avoid external font dependencies during emergency install. */
+
+:root {
+  /* Brand */
+  --cream: #FAF7F1; --ink: #1B1A17; --gold: #9C7A3C; --terracotta: #C2563A; --sage: #7A8F6A;
+  /* Semantic surface */
+  --background: #FAF7F1; --foreground: #1B1A17;
+  --card: #FBF9F4; --card-foreground: #1B1A17;
+  --popover: #FBF9F4; --popover-foreground: #1B1A17;
+  --primary: #1B1A17; --primary-foreground: #FAF7F1;
+  --secondary: #EFEAE0; --secondary-foreground: #1B1A17;
+  --muted: #EFEAE0; --muted-foreground: #6B6457;
+  --accent: #C2563A; --accent-foreground: #FBF9F4;
+  --destructive: #B23A1E; --destructive-foreground: #FBF9F4;
+  --border: #D9D2C4; --input: #D9D2C4; --ring: #9C7A3C;
+  /* Dark theater surfaces (the immersive centerpiece) */
+  --theater-1: #14130F; --theater-2: #211F19; --theater-3: #2C2A22;
+  --theater-line: rgba(242,236,222,0.14); --theater-fore: #F4EEDE; --theater-sub: #B8B1A2;
+  /* Radius */
+  --radius: 0.25rem; --radius-sm: 0.125rem; --radius-md: 0.25rem; --radius-lg: 0.375rem; --radius-xl: 0.5rem; --radius-2xl: 0.75rem;
+  /* Spacing (8pt) */
+  --space-1:4px; --space-2:8px; --space-3:12px; --space-4:16px; --space-5:20px; --space-6:24px; --space-8:32px; --space-10:40px; --space-12:48px; --space-16:64px; --space-20:80px; --space-24:96px;
+  /* Shadow — sparingly */
+  --shadow-card: 0 8px 24px -12px rgba(27,26,23,0.18);
+  --shadow-soft: 0 1px 2px rgba(27,26,23,0.06);
+  --shadow-theater: 0 40px 90px -30px rgba(20,19,15,0.55);
+  /* Type families */
+  --font-serif-he: "Frank Ruhl Libre","Frank Ruehl CLM",Georgia,serif;
+  --font-sans-he: "Heebo","Assistant",system-ui,sans-serif;
+  --font-serif-en: "Fraunces","Frank Ruhl Libre",Georgia,serif;
+  --font-sans-en: "Inter Tight","Heebo",system-ui,sans-serif;
+  /* Type scale */
+  --fs-display: clamp(2.25rem,1.6rem + 3vw,4rem);
+  --fs-h1: clamp(1.875rem,1.4rem + 2.2vw,3rem);
+  --fs-h2: clamp(1.5rem,1.2rem + 1.4vw,2.25rem);
+  --fs-h3: clamp(1.25rem,1.1rem + 0.8vw,1.625rem);
+  --fs-h4: 1.125rem; --fs-body: 1rem; --fs-small: 0.875rem; --fs-micro: 0.75rem;
+  /* Line height + tracking */
+  --lh-tight:1.15; --lh-snug:1.35; --lh-normal:1.55; --lh-loose:1.75;
+  --tracking-tight:-0.01em; --tracking-normal:0; --tracking-wide:0.08em;
+}
+
+/* base element rules */
+* { box-sizing: border-box; }
+html { font-family: var(--font-sans-he); -webkit-text-size-adjust: 100%; }
+html[lang="en"], html[lang="fr"], html[lang="ru"] { font-family: var(--font-sans-en); }
+html[dir="rtl"] { text-align: right; }
+body {
+  margin: 0; background-color: var(--background); color: var(--foreground);
+  font-size: var(--fs-body); line-height: var(--lh-normal);
+  font-feature-settings: "ss01","kern"; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale;
+}
+h1,h2,h3,h4 { font-family: var(--font-serif-he); font-weight: 500; letter-spacing: var(--tracking-tight); line-height: var(--lh-tight); margin: 0; }
+html[lang="en"] h1, html[lang="en"] h2, html[lang="en"] h3, html[lang="en"] h4,
+html[lang="fr"] h1, html[lang="fr"] h2, html[lang="fr"] h3, html[lang="fr"] h4 { font-family: var(--font-serif-en); }
+h1 { font-size: var(--fs-h1); } h2 { font-size: var(--fs-h2); } h3 { font-size: var(--fs-h3); } h4 { font-size: var(--fs-h4); }
+p { margin: 0; }
+a { color: inherit; }
+img { display: block; max-width: 100%; }
+button { font-family: inherit; }
+:focus-visible { outline: 2px solid var(--ring); outline-offset: 2px; }

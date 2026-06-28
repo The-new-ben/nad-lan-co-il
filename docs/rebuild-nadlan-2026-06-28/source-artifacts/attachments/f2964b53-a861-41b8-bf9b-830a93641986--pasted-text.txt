@@ -1,0 +1,109 @@
+pec for Codex — Rainbow apartment selector (steer to finish)
+0) READ FIRST — coordination guardrail (do this before any 1.65.6 edit)
+You're referencing 1.65.5/1.65.6, but origin/main is at 1.65.4 (c2635d8). If your 1.65.5 was built on the pre-integration base, you will silently re-drop the full-width fix and the intro. Before bumping anything:
+
+git fetch origin main && git rebase origin/main      # or merge; land on c2635d8
+# Verify the three width-fix markers + intro SURVIVED (must print 3,1,1,1):
+grep -c 'nadlan_p3d_layout_constrained_fix_css' plugins/nadlan-config/inc/project-3d.php   # expect 3
+grep -c 'class="nlp3d nlp3d-premium alignfull"'  plugins/nadlan-config/inc/project-3d.php   # expect 1
+grep -c 'id="nlp3d-stage"'                       plugins/nadlan-config/inc/project-3d.php   # expect 1
+grep -c 'nlp3d-intro'                            plugins/nadlan-config/inc/project-3d.php   # expect ≥1
+Next version is strictly above main: 1.65.5 (main never shipped a 1.65.5 — yours wasn't merged). Don't call it 1.65.6 or we get another phantom-version collision. Bump all 6 surfaces: header, 'version' => array, health.php, wp_register_style, wp_register_script, manifest version + download_url + ZIP filename.
+
+1) Direction: you're right — cells, not dots
+Your instinct matches how real selectors work: the building itself is the control. DIGBY highlights active apartment areas in perspective on the 3D render; Render Vision opens floor/area/orientation/availability when you click the apartment on the facade; Zillow/Engrain stress exact unit location + view. Floating decorative dots fail the buyer's task ("which apartment, where, is it available, what's the view"). Keep the apartment-cell direction. Don't defend dots.
+
+2) The keystone you must not skip: data-driven cell geometry
+The reason clicks feel disconnected is in stagePickOffset() (~line 1575):
+
+function stagePickOffset(u){
+  if(id.indexOf('boutique')>-1){return -245}   // magic px, eyeballed for ONE render
+  if(id.indexOf('sw')>-1){return -128} ...
+}
+This is hardcoded to Rainbow's unit IDs. Any unit whose id lacks those substrings collapses to left:50% — cells stack in a column that isn't on the apartments. Fix the model, not the magic numbers:
+
+Author per-unit position in the CMS. Add stage_x (0–100, % across the tower footprint) to the unit contract. top is already correct (floor-normalized — keep it).
+Consume it in renderStagePicks():
+function cellX(u, idxInFloor, countInFloor){
+  if(u.stage_x!=null && u.stage_x!=='') return clamp(+u.stage_x,2,98)+'%';
+  // auto-spread units that share a floor, evenly across footprint — works with ZERO authoring:
+  if(countInFloor>1){var step=Math.min(26,64/countInFloor);
+    return 'calc(50% + '+((idxInFloor-(countInFloor-1)/2)*step)+'px)';}
+  return 'calc(50% + '+stagePickOffset(u)+'px)';   // legacy fallback, last resort
+}
+PHP contract (nadlan_p3d_clean_unit_items(), ~line 170): add
+'stage_x' => isset($u['stage_x']) && $u['stage_x']!=='' ? max(0,min(100,(float)$u['stage_x'])) : '',
+'stage_w' => isset($u['stage_w']) ? max(0,min(100,(float)$u['stage_w'])) : '',
+and expose both in the metabox + REST-writable showroom meta (same place points/hotspot_position are registered) so the owner can author them.
+
+This is the difference between "works for Rainbow by luck" and "works for every project."
+
+3) The 1.65.5 patch list (your four findings — confirmed real, with the fix)
+(a) Mobile tap target — your 42px cells fail WCAG 44px. In the @media(max-width:760px) block, the cell hit area (not just the visual) must be ≥44px. Make the interactive element 48px and let the visual rectangle be smaller inside it:
+
+.nlp3d-stage-pick{min-width:48px;min-height:48px}      /* hit area */
+.nlp3d-stage-pick .nlp3d-cell{ /* visual rect can be 78×42 inside the 48px touch box */ }
+Don't shrink the button to the rectangle — keep the button ≥48px and center the smaller visual in it.
+
+(b) Right-crop from the legacy nudge. fitMobileShowroom() sets --nlp3d-mobile-nudge + is-mobile-edge-fixed (translateX). That hack existed to fight the OLD constrained-width layout. Now that 1.65.4 made the block alignfull + width:calc(100vw - …) centered, the nudge double-applies → crop. Neutralize it:
+
+// in fitMobileShowroom(): the block is already full-bleed+centered via alignfull; stop nudging
+root.style.setProperty('--nlp3d-mobile-nudge','0px');
+root.classList.remove('is-mobile-edge-fixed');
+If nothing else reads the nudge, delete the function body and its callers. Verify on a 390px viewport that left and right gutters are equal.
+
+(c) Selected-card falling below the fold on mobile. A bottom-sheet that lives at the end of a tall scroll column ends up off-screen (your QA proved it). On mobile, pin it to the stage instead of appending far below:
+
+@media(max-width:760px){
+ .nlp3d.nlp3d-premium .nlp3d-stage-card:not([hidden]){
+   position:sticky;bottom:8px;margin-top:10px;   /* rides with the scene, never off-screen */
+   max-height:46vh;overflow:auto}
+}
+and on selection call stageCard.scrollIntoView({block:'nearest',behavior:'smooth'}) inside renderStageCard() when hasStageSelection flips true. Goal: select a cell → its card is visible without scrolling.
+
+(d) Buyer-facing funnel wording. Any visible "לידים / פאנל / CRM / lead / funnel" string in buyer DOM is a trust leak. Rename to buyer language — "בקשת פרטים", "פנייה ליזם", "שמירת דירה". Keep funnel/CRM terms in admin + track() event names only (those aren't rendered).
+
+4) The reliability bug you probably haven't spotted (include it)
+There's a tap-vs-drag double handler. dragExcludedTarget() (~2343) explicitly returns false for .nlp3d-stage-pick, so the scene starts a drag even when the pointer lands on a cell, then endDragAt() calls selectUnit(...,'stage-pick-tap') and the cell's own click fires activateStagePick. Two effects: double selectUnit/double tracking, and on browsers where scene.setPointerCapture() swallows the synthetic click, the cell's click never fires — only the tap path does, intermittently. Fix: exclude cells from scene-drag so their click always owns the interaction:
+
+function dragExcludedTarget(target){
+  if(target&&target.closest&&target.closest('.nlp3d-stage-pick')) return true; // was: return false
+  ...
+}
+Then drop the tappedUnit selectUnit branch in endDragAt() (cells handle themselves; the tower body still drags). Net: one click = one selection, every time.
+
+5) Accessibility (cheap, expected by the buyer-task)
+Each cell: role="button", tabindex="0" (or -1 if sold), aria-label="{title} · קומה {floor} · {rooms} חד׳ · {status} · {price}", Enter/Space → select, visible :focus-visible ring, sold = aria-disabled="true". Most of this exists for picks — port it to cells.
+
+6) Dev shortcut — author stage_x in 60 seconds (don't eyeball pixels)
+Paste in console on the live page to capture normalized X for each apartment, then put the numbers in the CMS:
+
+document.querySelector('.nlp3d-scene').addEventListener('click',e=>{
+  const r=e.currentTarget.getBoundingClientRect();
+  console.log('stage_x =', Math.round(((e.clientX-r.left)/r.width)*100));
+},{capture:true});
+7) DO / DON'T
+DO rebase onto c2635d8 and verify the 4 markers before editing. DON'T branch off your old pre-1.65.4 base.
+DO make geometry data-driven (stage_x + auto-spread). DON'T add more magic offsets to stagePickOffset().
+DO keep selectUnit(id, source) as the single selection entry point — every surface already routes through it; preserve that. DON'T add a parallel selection path.
+DO keep the alignfull + layout_constrained_fix + intro. DON'T touch register_post_meta/REST sanitization without matching the metabox fields (contract drift = silent data loss).
+DON'T reuse a version number — grep main's version first (the rule that would've saved us tonight).
+8) Acceptance checklist (paste into the QA doc)
+not done
+Desktop 1440: block full-width, equal gutters, cells sit ON apartments, click → card appears with floor/size/view/estimate/status + CTA.
+not done
+Mobile 390: equal gutters (no right crop), cell touch targets ≥44px, select → card visible without scrolling.
+not done
+One click = one selection (no double-fire; check track() log).
+not done
+Keyboard: Tab to a cell, Enter selects; sold cells skipped/disabled.
+not done
+No "לידים/פאנל/CRM" visible in buyer DOM (view-source grep).
+not done
+php -l clean, inline JS node --check clean, ZIP rootless/130-ish entries/no-CRC, all 6 version surfaces aligned, health flag for the new patch present.
+Honest notes for you (owner):
+
+I deliberately didn't write code this turn — Codex is actively editing project-3d.php. If I edit it too, we get a third merge collision. The spec above is the help you asked for; Codex implements, I review.
+The biggest risk right now isn't the CSS — it's the version base. If Codex's 1.65.5/1.65.6 was built before my 1.65.4 integration, it will re-drop the full-width fix and the intro. Section 0's grep is the 10-second check that prevents it. Please make sure he runs it.
+When Codex pushes his branch, point me at it and I'll do a real review + the gate (php -l, JS check, ZIP, version audit, and confirm the width fix/intro survived) before it merges — so this one lands clean the first time.
+Want me to drop this spec into the repo as docs/specs/apartment-selector.md on its own branch so Codex can pull it directly? It's docs-only (no plugin code), so zero collision risk with his live edit.

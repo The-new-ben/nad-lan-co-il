@@ -1,0 +1,67 @@
+CODEX — RAINBOW FINISH-LINE MISSION (yours alone, end to end)
+This is your mission from start to finish, and no one finishes it for you. You write the code, you run it, you QA it yourself in Chrome with screenshots, and you deploy it yourself: pull the UPress server Git, update the NadLan Config plugin, clear the cache, and verify the live site. Claude will not deploy for you. The owner will not paste fields for you. You do not hand off at "PR pushed." Done = the public https://nad-lan.co.il/projects/rainbow-tel-aviv/ page shows a working, rotating 3D building and passes your own green gate in Chrome — verified live, by you.
+
+BLOCKER #1 (root cause, already diagnosed — fix this first)
+The live model-viewer script renders as a classic script with no type="module":
+
+<script id="nadlan-model-viewer-js" src=".../model-viewer/4.3.1/model-viewer.min.js?ver=4.3.1">
+model-viewer 4.3.1 is an ES module. Loaded as a classic script the browser throws "Unexpected token 'export'", the custom element never registers (customElements.get('model-viewer') is undefined), so <model-viewer> stays blank. wp_script_add_data($handle,'type','module') does nothing — WP core has no handler that turns it into a tag attribute.
+
+Fix (verified WP 6.x best practice — script_loader_tag filter):
+
+// in inc/project-3d.php, near the model-viewer enqueue:
+add_filter( 'script_loader_tag', function ( $tag, $handle, $src ) {
+    if ( 'nadlan-model-viewer' === $handle ) {
+        return '<script type="module" src="' . esc_url( $src ) . '" id="nadlan-model-viewer-js"></script>' . "\n";
+    }
+    return $tag;
+}, 10, 3 );
+Keep the wp_register_script(...'nadlan-model-viewer'...) enqueue; the filter is what actually adds type="module". The wp_script_add_data(...,'type','module') line can stay or go — it's inert.
+
+Prove the fix in Chrome console (must be true before you claim success):
+
+customElements.get('model-viewer')           // → function ƒ, NOT undefined
+const mv = document.querySelector('model-viewer');
+mv.addEventListener('load', () => console.log('GLB loaded?', mv.loaded)); // → true
+BLOCKER #2 — make the model actually appear (not wait forever)
+Right now it's reveal="interaction" — it sits on the poster until the user interacts. For a hero showroom the buyer should SEE the building. Set:
+
+<model-viewer reveal="auto" loading="auto"
+  poster=".../poster.png"        <!-- keeps LCP fast; covers the load -->
+  camera-controls auto-rotate auto-rotate-delay="2500" rotation-per-second="18deg"
+  min-camera-orbit="-Infinity 0deg auto" max-camera-orbit="Infinity 180deg auto"
+  shadow-intensity="1" ...>
+reveal="auto" = reveals as soon as it loads (no click needed).
+loading="auto" = downloads when near viewport (it's near the top, so it loads). Don't use eager globally — it costs the 922KB on every page load.
+Keep the poster so there's no blank frame and CLS stays 0.
+BLOCKER #3 — page layout + first-paragraph SEO (owner's explicit ask)
+Move the 3D model a little lower — not buried, just below an opening band of real content.
+Above the model, lead with a relevant first paragraph: one H2 + 1–2 sentences that start with project substance and the focus keyphrase "דירות למכירה ב-Rainbow Tel Aviv" (location שדה דב, developer ישראל קנדה, price-led, non-binding). The title/meta are already price-led from 1.63.4 — make the visible first paragraph match.
+Keep it tight (≤55 words) so on mobile the model is still close to the top.
+BLOCKER #4 — finish the SEO/business layer (don't leave it half-done)
+Fill the schema meta so AggregateOffer + FAQPage + sameAs emit: price_range, price_min, price_max, official_site_url, amenities, project_faq_json (values in docs/2026-06-12-rainbow-seo-dossier.md §1).
+Content blocks A/B/C (available-now / cited-prices / foreign-buyer) wrapped in nadlan-guide.
+Monetization surfaces already exist (contractor "מציגים פרויקט חדש?" form, WhatsApp, advisor CTA) — make sure they render and the copy has no internal funnel words (לידים/פאנל) leaking to the public.
+BLOCKER #5 — clickable apartments
+Paste the unit JSON into project_3d_units (from assets/projects/rainbow-tel-aviv/unit-map.json), each unit with hotspot_position/hotspot_normal, so model-viewer hotspots call the existing selectUnit().
+
+YOUR QA — self-reliant, in Chrome, green or it's not done
+Do this yourself, with screenshots, at 1440 / 768 / 390 + Edge-mobile UA:
+
+customElements.get('model-viewer') is a function (BLOCKER #1 proof).
+The building is visible and drag rotates it 360° (capture before/after angle).
+No console errors; no horizontal overflow; one visible H1; no class=/code leaks.
+First paragraph is project-relevant; model sits just below it.
+Healthcheck: version current, projects_with_glb: 1, model_viewer_ready: true.
+"Field saved" ≠ "buyer sees it." Only the rendered, rotating model in your screenshot counts.
+YOUR DEPLOY — your job, alone
+After you merge: you pull/sync the UPress server Git, you update/upload the NadLan Config plugin, you clear the UPress cache, you hard-refresh and verify the live healthcheck + the live model in Chrome. Nobody does the server step for you. If you only push a PR, the mission is not done.
+
+REPLICATE — so the next project is one-shot
+Write a plain-language user manual (docs/owner-manual-project-showroom.md): exactly which fields, where they live in the WP editor (the "בחירת דירות אינטראקטיבית" metabox), the GLB/poster raw-URL pattern, how to swap to developer BIM later, and the deploy steps. On the Classic-Editor question: don't make Classic Editor the answer — instead make the plugin's own metabox clean and obvious; document that as the long-term fix.
+Update skills/skill-3d-model-pipeline.md and skills/project-page-premium-showroom-runbook.md so a fresh project reaches 100% by filling fields only — including the type="module" filter, so this bug never recurs.
+Sources: WP script_loader_tag (official) · WP type=module fix · model-viewer reveal/loading · model-viewer loading source
+
+That's the complete hand-off. The single highest-leverage line in it is BLOCKER #1 — the script_loader_tag filter. That one fix turns the blank box into a real model; everything else is polish on top. I framed deploy and live-verification as non-negotiably his, alone, exactly as you asked.
+
+One honest note for you: I verified the root cause directly against your live page (the script tag genuinely has no type="module"), so this isn't a theory — once Codex ships that filter and redeploys, the building will render.

@@ -1,0 +1,1985 @@
+היעד הסביר למחקר עומק בלי בנייה: 10–20 קרדיטים. אם אתה רוצה דוח ממש ברמה של “מלחמה על כל הקופה”, כולל טבלאות ענק, SERP reverse engineering, עיצוב מלא ותוכנית עבודה לקודקס — הייתי משריין 25–40 קרדיטים, אבל לא שורף אותם ברצף.
+
+כל פרומפט כבד צריך להסתיים במשפט:
+“עצור בסוף הדוח וכתוב READY FOR NEXT PROMPT. אל תמשיך לבד.”
+
+ובין פרומפט לפרומפט להמתין לפחות 5 דקות, בגלל שהפרויקט כבד, Lovable/סוכן עשוי להיראות תקוע, וזה לא בהכרח כשל.
+
+1. Project Knowledge להכניס ל־Lovable לפני הכול
+
+להדביק קודם ב־Project Knowledge:
+
+Project: NadLan / nad-lan.co.il — פורטל נדל״ן ישראלי רחב, בעברית RTL, עם שאיפה להפוך לאורך זמן לאתר נדל״ן מוביל בישראל.
+
+האתר אינו בלוג קטן ואינו אתר נישה. המטרה העסקית היא לבנות פורטל נדל״ן כולל שמתחרה בטווח הארוך מול יד2, יד1, מדלן, Nadlan.com, OnMap, ad.co.il, Nadlan Center, Nadlan Master, Homeless, לוחות מקומיים, פורטלים של פרויקטים חדשים, פורטלים של בעלי מקצוע ואתרי תוכן/חדשות נדל״ן.
+
+אסטרטגיית SEO:
+אנחנו לא מחפשים ביטויי זנב קלים כיעד עיקרי. אנחנו הולכים על הביטויים הכי קשים, הכי תחרותיים, הכי יקרים, הכי רווחיים והכי מביאי תנועה בתחום הנדל״ן בישראל:
+- דירות למכירה
+- דירות להשכרה
+- נדלן
+- נדל״ן
+- נדלן יד 2
+- דירה למכירה
+- דירה להשכרה
+- פרויקטים חדשים
+- דירות חדשות
+- דירה מקבלן
+- תמ״א 38
+- פינוי בינוי
+- התחדשות עירונית
+- דירות למכירה בתל אביב
+- דירות למכירה בירושלים
+- דירות למכירה חיפה
+- דירות למכירה רמת גן
+- דירות למכירה פתח תקווה
+- דירות למכירה ראשון לציון
+- דירות להשקעה
+- נדלן להשקעה
+- השקעות נדלן
+- מחשבון משכנתא
+- מחשבון מס רכישה
+- מס רכישה
+- משכנתא
+- שמאי מקרקעין
+- עורך דין מקרקעין
+- בדק בית
+- מתווך נדלן
+- יועץ משכנתאות
+- בדיקת טאבו
+- בדיקת עסקת נדלן
+
+ביטויי זנב כן ייכנסו, אבל רק אם הם:
+1. תומכים בביטויי הכסף.
+2. בונים Hub/Spoke/Pillar.
+3. מונעים קניבליזציה.
+4. מייצרים authority.
+5. עוזרים לדפי עיר/שכונה/פרויקט.
+6. מביאים לידים איכותיים או B2B supply.
+
+תחומי האתר:
+1. Listings:
+   - דירות יד שנייה למכירה
+   - דירות להשכרה
+   - נכסים מסחריים
+   - מגרשים
+   - נכסים מניבים
+   - מודעות פרטיות
+   - מודעות מתווכים
+   - מודעות פרימיום
+   - חיפוש מפה
+   - saved search
+   - התראות
+   - השוואת נכסים
+   - Lead forms
+
+2. פרויקטים חדשים:
+   - דירה מקבלן
+   - פרויקטים חדשים
+   - דירות חדשות
+   - התחדשות עירונית
+   - תמ״א 38
+   - פינוי בינוי
+   - פרויקט לפי עיר
+   - פרויקט לפי שכונה
+   - פרויקט לפי יזם
+   - פרויקט לפי סוג
+   - פרויקט לפי סטטוס
+   - פרויקט עם שואורום תלת ממד
+   - בחירת דירה מתוך חזית/מודל
+   - Mapbox, סביבה, נוף, כיווני אוויר
+   - סיור פנימי / Matterport / 360 / iframe כאשר קיים נכס אמיתי
+
+3. אנשי מקצוע:
+   - עורכי דין מקרקעין
+   - שמאי מקרקעין
+   - יועצי משכנתאות
+   - בדק בית
+   - מתווכים
+   - קבלנים
+   - יזמים
+   - אדריכלים
+   - מהנדסים
+   - מפקחי בנייה
+   - יועצי נדלן
+   - חברות ניהול פרויקטים
+   - חברות התחדשות עירונית
+
+4. כלים:
+   - מחשבון משכנתא
+   - מחשבון מס רכישה
+   - מחשבון שווי דירה
+   - מחשבון תשואה
+   - עלויות רכישה
+   - השוואת עסקאות
+   - בדיקת טאבו
+   - צ׳ק ליסט לפני חתימה
+   - אומדן עלות כוללת לדירה מקבלן
+   - אומדן דמי ניהול בפרויקט יוקרה
+   - השוואת דירות בפרויקט
+
+5. תוכן:
+   - מדריכי קנייה
+   - מדריכי מכירה
+   - השקעות נדלן
+   - מיסוי
+   - משפט
+   - משכנתאות
+   - פרויקטים חדשים
+   - עיר/שכונה
+   - חדשות וניתוחים
+   - מילון נדלן
+   - שאלות ותשובות
+   - AEO / AI Search answers
+
+6. B2B:
+   - הצטרפות יזמים
+   - הצטרפות קבלנים
+   - ניהול כרטיס פרויקט
+   - העלאת הדמיות
+   - העלאת GLB / מודל תלת ממד
+   - העלאת חזית רשמית
+   - מיפוי יחידות
+   - טבלת דירות, מחירים, זמינות, כיוונים ונוף
+   - פרסום פרויקט
+   - קמפיין Project Premier
+   - הצטרפות אנשי מקצוע
+   - מנוי Pro / Premier
+   - לידים
+   - פרסום ממומן
+   - sponsored placements
+
+מוצר 3D / Project Showroom:
+בפרויקטים חדשים האתר מפתח חוויה חדשנית בסגנון Zillow / Homes.com / Matterport:
+- מודל תלת ממד או חזית אינטראקטיבית.
+- אפשרות לסובב מודל.
+- לחיצה על דירה/קומה.
+- מידע על דירה: חדרים, שטח, קומה, כיוון, נוף, מחיר/טווח לא מחייב, סטטוס.
+- Mapbox להצגת מיקום, סביבה, נוף, פארק, ים, כבישים, תחבורה, מוסדות ציבור.
+- אפשרות להציג מבט מהדירה בזווית הנכונה אם קיימים נתונים.
+- אפשרות לסיור פנימי אם קיים URL אמיתי.
+- אם אין GLB/Mapbox token/tour URL/facade asset — אסור להציג כאילו יש. כל כשל חייב להיות גלוי ומכובד.
+- אין fake facade, אין grid מזויף, אין תאי דירה מומצאים.
+- concept facade מותר רק עם badge ברור: קונספט / המחשה / לא חומר רשמי.
+- CTA מסחרי: בדיקת זמינות מול היזם, לא הבטחת מחיר סופי.
+
+מצב קיים חשוב:
+- האתר כבר כולל עמודי פרויקטים, אנשי מקצוע, מדריכים, כלים, דף הצטרפות מקצוענים/פרויקטים ודפי פרויקט כמו DIMRI YAMA, Rainbow Tel Aviv, Ashdar Einstein.
+- יש מסמכי Stage 1 שמגדירים חוקים: No silent fallback, No fake facade, No stacking, Fix in source not opacity, Screenshots are contract, No public internal language, Version discipline.
+- יש קובץ concept facade ל־DIMRI YAMA, אבל הוא אינו חומר רשמי של היזם וצריך להיות מסומן כקונספט.
+- יש להימנע מטקסטים פנימיים, coming soon, QA, WooCommerce cart/notifications בעמודים ציבוריים.
+
+עיצוב:
+העיצוב צריך להיות premium בינלאומי, לא זהב/בז׳ ולא “יוקרה ישראלית זולה”. השראה: Zillow, Homes.com, Realtor, Redfin, Compass, StreetEasy, Matterport, OnMap, מדלן, יד2, יד1 — אבל לא להעתיק.
+האתר צריך להרגיש:
+- רציני
+- נקי
+- טכנולוגי
+- מהיר
+- data-driven
+- אמין
+- פרימיום
+- מתאים לנדל״ן ישראלי
+- mobile first
+- RTL מושלם
+- נוח לחיפוש
+- חזק מאוד ב־listings ובפרויקטים חדשים
+- מתאים גם לצרכן פרטי וגם ליזם/קבלן/איש מקצוע
+
+רגולציה ואתיקה:
+כל outreach לקבלנים, יזמים, אנשי מקצוע ובעלי נכסים חייב להיות חוקי: opt-in, unsubscribe, זיהוי שולח, תיעוד מקור, ללא ספאם, ללא scraping אגרסיבי, ללא הבטחות שווא, ללא הצגת “מאומת” בלי מקור.
+כל מחיר/זמינות/דירה/סטטוס חייב להיות מסומן כלא מחייב עד אימות מול היזם/מפרסם/מקור רשמי.
+2. פרומפט מאסטר ל־Lovable / Lovefield
+
+להריץ ב־Plan Mode בלבד. לא Build.
+
+אתה Lovable ב־Plan Mode. אל תבנה אתר, אל תשנה קוד, אל תעשה deploy ואל תשתמש ב־Try to fix. בשלב הזה אתה צוות מחקר ואסטרטגיה בלבד.
+
+אתה עובד כצוות מומחים מלא:
+- Head of SEO לפורטל נדל״ן ארצי
+- מומחה Semrush ו־Keyword Gap
+- מומחה Google SERP Reverse Engineering
+- מומחה Programmatic SEO
+- מומחה AEO / GEO / AI Search
+- מומחה UX/UI לאתרי נדל״ן בינלאומיים
+- מומחה Product Growth ל־Marketplace
+- מומחה Listings
+- מומחה New Developments / New Construction
+- מומחה 3D Real Estate Showroom
+- מומחה Mapbox / 3D / Matterport / Virtual Tours
+- מומחה Monetization
+- מומחה B2B SaaS ליזמים/קבלנים/אנשי מקצוע
+- מומחה WordPress/Schema/Yoast/Technical SEO
+- מומחה CRO
+- מומחה Legal/Compliance ראשוני, לא תחליף לעורך דין
+- מנהל מוצר ראשי של NadLan
+
+האתר:
+https://nad-lan.co.il
+
+המטרה:
+להפיק דוח אסטרטגי מלא, עמוק, לא מקוצר, לבניית NadLan כפורטל נדל״ן מוביל בישראל בטווח הארוך. אנחנו לא מחפשים ניצחונות קלים. אנחנו הולכים על הביטויים הכי קשים, הכי תחרותיים, הכי רווחיים והכי מביאי תנועה. ביטויי זנב ייכנסו רק אם הם תומכים בביטויי הכסף, בונים authority, מחזקים hubs/spokes או מביאים לידים איכותיים.
+
+תחרות:
+אנחנו רוצים להילחם בטווח הארוך מול:
+- יד2
+- יד1
+- מדלן
+- Nadlan.com
+- Nadlan Center
+- Nadlan Master
+- OnMap
+- ad.co.il
+- Homeless
+- לוחות מקומיים
+- אתרי מתווכים חזקים
+- אתרי יזמים וקבלנים
+- אתרי פרויקטים חדשים
+- פורטלי אנשי מקצוע
+- אתרי משכנתאות/מיסוי/משפט שמחזיקים ביטויי כסף
+- אתרי חדשות נדל״ן שמחזיקים authority
+
+חשוב:
+אל תבדל אותנו “יצירתית” במקום להילחם. קודם כל תזהה את ביטויי הכסף והמתחרים החזקים, תפרק את ה־SERP שלהם, ותסביר איך לנצח אותם. מיצוב, עיצוב ובידול יהיו נגזרת של המלחמה הזאת — לא תחליף לה.
+
+כללי עבודה:
+1. השתמש ב־Semrush live data, Google SERP, SEO & AI Search review, competitor research, backlink data, keyword gap, content gap, AI search/AEO, structured data, technical SEO.
+2. אם אין לך נתון, כתוב “נדרש אימות ב־Semrush / GSC / SERP ידני”. אל תמציא מספרים.
+3. אם הפלט ארוך מדי, חלק לדוחות. אל תקצר. בסוף כל דוח כתוב: READY FOR NEXT PROMPT.
+4. אחרי כל דוח עצור. אל תמשיך לבד.
+5. בגלל עומס המערכת, אחרי כל דוח יש להמתין לפחות 5 דקות לפני המשך. אם העמוד כבד או נראה תקוע, אל תסיק שיש תקלה לפני המתנה.
+6. כל המלצה צריכה להיות actionable: מה לבנות, איזה עמוד, איזה URL, איזה keyword, איזה intent, איזה title, איזה H1, איזה CTA, איזה schema, איזה internal links.
+7. אל תייצר Doorway pages. דפי עיר/שכונה/רחוב/פרויקט צריכים להכיל ערך אמיתי: דאטה, listings, פרויקטים, עסקאות, מפה, שאלות, מדריכים, אנשי מקצוע וקישורים פנימיים.
+8. אל תציע פנייה אוטונומית לאנשים בלי שכבת חוקיות: opt-in, unsubscribe, זיהוי שולח, תיעוד מקור, מגבלות חוק הספאם והפרטיות, אישור משפטי.
+
+==================================================
+A. סריקה מלאה של האתר הקיים
+==================================================
+
+סרוק את האתר nad-lan.co.il לעומק. אל תסתפק בדף הבית.
+
+חובה לבדוק:
+- דף הבית
+- /projects/
+- עמודי project archive ועמודי עיר לפרויקטים
+- /projects/dimri-yama-sde-dov/
+- /projects/rainbow-tel-aviv/
+- /projects/ashdar-einstein/
+- /professionals/
+- /join-pro/
+- /sitemap/
+- /property-value-estimator/
+- מחשבון משכנתא
+- מחשבון מס רכישה
+- מחשבון תשואה
+- בדיקת טאבו
+- מדריכי קנייה
+- מדריכי מכירה
+- השקעות נדלן
+- נדלן מסחרי
+- משפט ומיסוי
+- אנשי מקצוע
+- מילון נדלן
+- דפי עיר/שכונה אם קיימים
+- דפי listing אם קיימים
+- דפי seller/advertiser אם קיימים
+
+עבור כל URL:
+- Page type
+- Indexability
+- Current title
+- Current meta description
+- Current H1
+- Internal links in/out
+- Template
+- Schema detected
+- Main keyword target משוער
+- Search intent
+- האם העמוד צריך להתחרות או להיות noindex
+- האם יש trust leakage
+- האם יש טקסט פנימי/QA/coming soon
+- האם יש קניבליזציה
+- האם יש בעיית UI/UX
+- האם יש בעיית mobile
+- האם יש בעיית conversion
+- האם יש בעיית content depth
+- האם יש בעיית crawl
+- האם יש הזדמנות להפוך אותו ל־pillar/money page/support page
+
+תן טבלה מלאה של כל הבעיות וההזדמנויות.
+
+==================================================
+B. אבחון מוצר ואמון ציבורי
+==================================================
+
+לפני SEO עמוק, תן אבחון אמון ציבורי.
+
+בדוק:
+- האם יש WooCommerce/cart/Notifications בעמודים ציבוריים
+- האם יש טקסטים כמו coming soon / QA / debug / לפני שמפעילים לקוחות אמיתיים
+- האם יש placeholders
+- האם Sitemap אמיתי או placeholder
+- האם דפי פרויקט נראים כמו מוצר פרימיום או ניסוי
+- האם בעלי המקצוע נראים מאומתים או גנריים
+- האם פילטרים מייצרים אמון או פוגעים באמון
+- האם יש ביקורות מזויפות/ריקות/כוכבים בלי מקור
+- האם יש מחירים/זמינות בלי disclaimer
+- האם יש תמונות/הדמיות בלי תווית מקור
+- האם דפי פרויקט מציגים “המחשה”, “קונספט”, “לא חומר רשמי” כאשר נדרש
+- האם יש כפתורים מתים
+- האם Mapbox/3D/Tour עובדים או נכשלים בגלוי
+- האם mobile docking נקי ב־390, 768, 1440
+
+תן:
+- רשימת P0 לתיקון מיידי
+- רשימת P1
+- רשימת P2
+- Acceptance criteria
+- Playwright QA checks
+- Screenshots required
+- מה אסור לתקן רק ב־CSS
+- מה חייב להיפתר במקור
+
+==================================================
+C. מחקר מתחרים מלא — ישראל
+==================================================
+
+בצע מחקר מתחרים מלא לפי תחומים. אל תסתפק במתחרים שאני מציין. תמצא מי באמת מנצח ב־SERP וב־Semrush.
+
+קטגוריות מתחרים:
+1. Listings דירות למכירה / להשכרה
+2. יד שנייה
+3. דירות חדשות / יד1 / פרויקטים חדשים
+4. התחדשות עירונית / תמ״א / פינוי בינוי
+5. דפי עיר ושכונה
+6. דפי פרויקט ספציפיים
+7. מחשבוני נדל״ן
+8. מס רכישה / משכנתא / מיסוי / משפט
+9. אנשי מקצוע
+10. חדשות נדל״ן
+11. השקעות נדלן
+12. נדלן מסחרי
+13. אתרי יזמים וקבלנים
+14. פורטלים מקומיים חזקים
+15. אתרי תוכן שמחזיקים featured snippets ו־AI answers
+
+מתחרים seed:
+- yad2.co.il
+- yad1 / יד1 בתוך יד2
+- madlan.co.il
+- nadlan.com
+- nadlan-center.co.il
+- nadlanmaster.co.il
+- onmap.co.il
+- ad.co.il
+- homeless.co.il
+- realtor.com / Zillow / Homes.com / Redfin / Compass / StreetEasy לצורכי UX ומוצר בלבד
+
+לכל מתחרה:
+- Domain
+- Category
+- Top organic pages
+- Top keywords
+- Traffic estimate
+- Traffic value
+- Authority/backlinks/referring domains
+- SERP features
+- האם הוא מנצח בזכות listings, תוכן, דאטה, authority, brand או UX
+- מבנה דף בית
+- מבנה listings
+- מבנה project page
+- מבנה city page
+- מבנה professional page
+- מבנה article page
+- filters
+- map UX
+- CTA
+- monetization
+- schema
+- internal linking
+- design language
+- weaknesses
+- opportunities to beat
+- exact pages NadLan must build to beat it
+
+חובה לתת “Reverse Engineering Blueprint” לכל מתחרה מרכזי:
+- What they rank for
+- Why Google rewards them
+- What content assets they have
+- What data assets they have
+- What trust signals they have
+- What UX patterns they have
+- What NadLan must match
+- What NadLan can exceed
+- What cannot be copied
+- What should be reimagined
+
+==================================================
+D. Keyword Master Universe — Big Money First
+==================================================
+
+צור Keyword Master Sheet ענק. לא 50 ביטויים. לא 100. כמה שיותר, ובשאיפה 1,000+ ביטויים אם הנתונים זמינים.
+
+הטבלה חייבת לכלול:
+- Keyword
+- Variants / synonyms / spelling
+- English equivalent אם רלוונטי
+- Cluster
+- Subcluster
+- Intent
+- Funnel stage
+- Money keyword / support keyword / local keyword / brand keyword / B2B keyword / data keyword
+- Monthly volume בישראל
+- Keyword difficulty
+- CPC
+- Paid competition
+- Traffic value
+- SERP volatility
+- SERP features
+- Top ranking domains
+- Top ranking URLs
+- Current NadLan URL אם יש
+- Missing page אם אין
+- Recommended page type
+- Recommended URL
+- Recommended H1
+- Recommended title tag
+- Recommended meta description
+- Required content modules
+- Required data modules
+- Required schema
+- Internal links in
+- Internal links out
+- Cannibalization risk
+- Business value
+- Lead value
+- Monetization path
+- Priority score
+- Effort score
+- Notes
+
+נוסחת תעדוף:
+אל תעניש ביטוי בגלל שהוא קשה. להפך — ביטויי כסף קשים מקבלים עדיפות גבוהה אם הם רווחיים.
+Priority = Volume + CPC + commercial intent + strategic value + lead value + marketplace supply value + authority value + ability to support hubs + relevance to long-term dominance.
+
+חובה לחלק לקלסטרים הבאים:
+
+1. Core Real Estate:
+- נדלן
+- נדל״ן
+- נדלן ישראל
+- נדלן למכירה
+- נדלן להשכרה
+- לוח נדלן
+- אתר נדלן
+- נכסים למכירה
+- נכסים להשכרה
+- דירות
+- דירות למכירה
+- דירות להשכרה
+- דירה למכירה
+- דירה להשכרה
+- בית למכירה
+- בתים למכירה
+- דופלקס למכירה
+- פנטהאוז למכירה
+- דירת גן למכירה
+- מגרשים למכירה
+- נדלן מסחרי
+
+2. Listings / יד שנייה:
+- יד 2 נדלן
+- נדלן יד 2
+- דירות יד שניה
+- דירה יד שניה
+- דירות למכירה יד שניה
+- לוח דירות
+- פרסום דירה למכירה
+- פרסום נכס
+- מכירת דירה לבד
+- מכירת דירה עם מתווך
+- דירות למכירה לפי עיר
+- דירות למכירה לפי שכונה
+- דירות למכירה לפי רחוב
+- דירות למכירה עם ממד
+- דירות למכירה עם מרפסת
+- דירות למכירה עם חניה
+- דירות להשכרה לפי עיר
+- דירות להשכרה לטווח ארוך
+- דירות להשכרה ללא תיווך
+- דירות למכירה ללא תיווך
+
+3. פרויקטים חדשים:
+- פרויקטים חדשים
+- דירות חדשות
+- דירה מקבלן
+- דירות מקבלן
+- דירות חדשות למכירה
+- פרויקטים חדשים בתל אביב
+- פרויקטים חדשים בירושלים
+- פרויקטים חדשים רמת גן
+- פרויקטים חדשים פתח תקווה
+- פרויקטים חדשים ראשון לציון
+- פרויקטים חדשים הרצליה
+- פרויקטים חדשים נתניה
+- פרויקטים חדשים חיפה
+- דירות חדשות במרכז
+- דירות חדשות בגוש דן
+- דירות חדשות ליד הים
+- פרויקט יוקרה
+- דירה חדשה מחיר
+- דירה מקבלן מחיר
+- מחיר למטר בפרויקט חדש
+- דירה על הנייר
+- פריסייל
+- presale apartment
+- new construction Israel
+- new apartments Israel
+
+4. התחדשות עירונית:
+- התחדשות עירונית
+- תמ״א 38
+- תמא 38
+- פינוי בינוי
+- פרויקטים פינוי בינוי
+- פרויקטים תמ״א 38
+- התחדשות עירונית תל אביב
+- התחדשות עירונית רמת גן
+- התחדשות עירונית גבעתיים
+- התחדשות עירונית ירושלים
+- התחדשות עירונית חיפה
+- זכויות דיירים פינוי בינוי
+- איך בודקים פרויקט פינוי בינוי
+- יזם פינוי בינוי
+- דירה בפרויקט התחדשות עירונית
+- סיכונים בפינוי בינוי
+- לוח זמנים פינוי בינוי
+- תמורות פינוי בינוי
+
+5. עיר/שכונה/רחוב:
+לייצר מחקר לכל הערים הגדולות ולשכונות הכסף:
+- תל אביב
+- ירושלים
+- חיפה
+- ראשון לציון
+- פתח תקווה
+- רמת גן
+- גבעתיים
+- הרצליה
+- רעננה
+- כפר סבא
+- נתניה
+- אשדוד
+- באר שבע
+- חולון
+- בת ים
+- מודיעין
+- רחובות
+- חדרה
+- שדה דב
+- רמת אביב
+- נווה אביבים
+- פארק צמרת
+- הצפון הישן
+- פלורנטין
+- יד אליהו
+- קריית אונו
+- גבעת שמואל
+- אזורי ביקוש נוספים
+
+לכל עיר/שכונה:
+- דירות למכירה בעיר
+- דירות להשכרה בעיר
+- פרויקטים חדשים בעיר
+- התחדשות עירונית בעיר
+- מחיר למטר בעיר
+- שכונות מומלצות בעיר
+- האם כדאי לקנות בעיר
+- דירה להשקעה בעיר
+- אנשי מקצוע בעיר
+
+6. משפט, מס, טאבו:
+- מס רכישה
+- מחשבון מס רכישה
+- מס שבח
+- היטל השבחה
+- טאבו
+- נסח טאבו
+- בדיקת טאבו
+- עורך דין מקרקעין
+- עורך דין קניית דירה
+- חוזה דירה
+- חוזה מכר
+- הערת אזהרה
+- בדיקת זכויות
+- רישום בית משותף
+- חריגות בנייה
+- היתר בנייה
+- בדיקות לפני קניית דירה
+
+7. משכנתא ומימון:
+- משכנתא
+- מחשבון משכנתא
+- יועץ משכנתאות
+- מחזור משכנתא
+- אישור עקרוני
+- ריבית משכנתא
+- הון עצמי לדירה
+- החזר חודשי משכנתא
+- משכנתא לדירה מקבלן
+- משכנתא למשפרי דיור
+- משכנתא לדירה להשקעה
+
+8. השקעות:
+- נדלן להשקעה
+- השקעות נדלן
+- דירה להשקעה
+- נכס מניב
+- נכסים מניבים
+- תשואה על דירה
+- מחשבון תשואה
+- דירה להשקעה בישראל
+- דירה להשקעה בחו״ל, רק אם רלוונטי עתידי
+- השקעה בפרויקט חדש
+- השקעה בהתחדשות עירונית
+- השקעה בנדלן מסחרי
+- קניית דירה להשקעה
+- איפה כדאי לקנות דירה להשקעה
+
+9. אנשי מקצוע:
+- שמאי מקרקעין
+- עורך דין מקרקעין
+- בדק בית
+- יועץ משכנתאות
+- מתווך נדלן
+- קבלן שיפוצים
+- אדריכל
+- מהנדס בניין
+- מפקח בנייה
+- יזם נדלן
+- חברה להתחדשות עירונית
+- עורך דין פינוי בינוי
+- שמאי דירה
+- בדק בית לפני קנייה
+- המלצות אנשי מקצוע נדלן
+
+10. B2B / Supply:
+- פרסום פרויקט נדלן
+- פרסום דירות חדשות
+- לידים ליזמים
+- פרסום קבלנים
+- לידים לקבלנים
+- פרסום מתווכים
+- פרסום עורך דין מקרקעין
+- פרסום שמאי מקרקעין
+- פורטל נדלן ליזמים
+- מערכת לניהול פרויקט נדלן
+- שיווק פרויקט נדלן
+- סיור וירטואלי לפרויקט נדלן
+- מודל תלת ממד לפרויקט נדלן
+- בחירת דירה בתלת ממד
+
+==================================================
+E. SERP Reverse Engineering
+==================================================
+
+עבור כל ביטוי כסף מרכזי, נתח את ה־SERP:
+
+- מה סוג התוצאות בטופ 10
+- האם מנצחים לוחות, פורטלים, מדריכים, דפי עיר, דפי פרויקט, כתבות, מחשבונים או דפי אנשי מקצוע
+- מה Google מצפה לראות
+- אילו SERP features קיימים
+- אילו People Also Ask
+- אילו Related Searches
+- האם יש Map Pack
+- האם יש וידאו
+- האם יש תמונות
+- האם יש rich results
+- האם יש featured snippet
+- האם יש AI Overview / answer pattern
+- מה מבנה title tags של המנצחים
+- מה מבנה H1/H2
+- כמה תוכן יש
+- איזה data tables יש
+- איזה filters יש
+- איזה UX יש
+- איזה trust signals יש
+- איזה schema יש
+- איזה backlinks יש
+- איזה internal linking יש
+- איך NadLan צריך לבנות blueprint שמנצח
+
+תן Output:
+- Keyword
+- SERP type
+- Current winner
+- Why winner wins
+- Minimum viable page to compete
+- 10x page to dominate
+- Data needed
+- UX needed
+- Content needed
+- Internal links needed
+- Backlinks needed
+- Schema needed
+- Risk
+- Priority
+
+==================================================
+F. Site Architecture — Hubs / Spokes / Pillars
+==================================================
+
+תכנן היררכיית אתר מלאה, לא מוגבלת לדפים הקיימים.
+
+חובה לכלול:
+
+Main hubs:
+- /
+- /for-sale/
+- /for-rent/
+- /new-projects/ או /projects/
+- /urban-renewal/
+- /professionals/
+- /tools/
+- /guides/
+- /mortgage/
+- /tax/
+- /legal/
+- /commercial-real-estate/
+- /investment/
+- /cities/
+- /neighborhoods/
+- /contractors/
+- /developers/
+- /advertise/
+- /join-pro/
+
+Sub hubs:
+- דירות למכירה לפי עיר
+- דירות להשכרה לפי עיר
+- פרויקטים חדשים לפי עיר
+- התחדשות עירונית לפי עיר
+- דירות למכירה לפי שכונה
+- פרויקטים לפי יזם
+- פרויקטים לפי סטטוס
+- אנשי מקצוע לפי תחום
+- אנשי מקצוע לפי עיר
+- מחשבונים
+- בדיקות לפני עסקה
+- מילון נדלן
+- חדשות/ניתוחים
+- B2B ליזמים/קבלנים/אנשי מקצוע
+
+לכל עמוד:
+- URL
+- Parent
+- Breadcrumb
+- Page type
+- Primary keyword
+- Secondary keywords
+- Intent
+- Funnel stage
+- Content modules
+- Data modules
+- UX modules
+- Listings module yes/no
+- Map module yes/no
+- Project showroom module yes/no
+- CTA
+- Schema
+- Index/noindex
+- Canonical
+- Internal links in/out
+- Related pages
+- Cannibalization risk
+- Priority P0/P1/P2/P3
+- Competitor to beat
+
+צור גם מפת קניבליזציה:
+- אילו ביטויים יכולים להתחרות זה בזה
+- איזה עמוד הוא source of truth
+- איזה עמודים צריכים canonical
+- איזה עמודים צריכים noindex
+- איפה ליצור “hub owns keyword, spokes support keyword”
+- איך למנוע שדפי עיר/שכונה/פרויקט יבלעו אחד את השני
+
+==================================================
+G. Programmatic SEO בלי Doorway
+==================================================
+
+תכנן Programmatic SEO איכותי.
+
+דפי programmatic מותרים רק אם יש ערך אמיתי:
+- דירות למכירה בעיר
+- דירות להשכרה בעיר
+- פרויקטים חדשים בעיר
+- התחדשות עירונית בעיר
+- מחיר למטר בעיר
+- שכונות בעיר
+- אנשי מקצוע בעיר
+- פרויקטים לפי יזם
+- פרויקטים לפי שכונה
+- דירה מקבלן בעיר
+- דירות 3 חדרים בעיר
+- דירות עם ממ״ד בעיר
+- דירות ליד הים
+- דירות ליד רכבת קלה
+- נכסים מניבים לפי אזור
+- נדלן מסחרי לפי עיר
+
+לכל template:
+- URL pattern
+- Required data
+- Required unique content
+- Required listings count threshold
+- Required map/data visualization
+- Required internal links
+- Required FAQ
+- Required schema
+- Noindex rule when insufficient data
+- Canonical rule
+- Anti-doorway rule
+- Example title/H1/meta
+- Example sections
+- QA checklist
+
+==================================================
+H. Content Plan — 12 עד 24 חודשים
+==================================================
+
+צור תוכנית תוכן רחבה מאוד.
+
+חובה:
+- 50–100 עמודי כסף
+- 200–500 מאמרים תומכים
+- 100+ דפי עיר/שכונה/פרויקט לפי תוכנית
+- 50+ שאלות ותשובות AEO
+- 50+ מדריכי אנשי מקצוע
+- 30+ מדריכי משכנתא/מס/משפט
+- 30+ מדריכי השקעות
+- 30+ מדריכי פרויקטים חדשים/דירה מקבלן
+- 30+ מדריכי התחדשות עירונית
+- 20+ דפי השוואה
+- 20+ דפי “איך לבדוק”
+- 20+ מחשבונים/כלים עתידיים
+
+לכל פריט:
+- Title tag exact
+- H1 exact
+- URL
+- Meta description
+- Primary keyword
+- Secondary keywords
+- Intent
+- Funnel stage
+- Pillar
+- Internal links
+- Required data
+- Required tables
+- Required calculator/tool if any
+- FAQ
+- Schema
+- CTA
+- Target competitor
+- Priority
+- Expected business value
+
+דוגמאות לסגנון כותרות רצוי:
+- דירות למכירה בתל אביב: מחירים, שכונות, פרויקטים ובדיקות לפני קנייה
+- פרויקטים חדשים בתל אביב: דירות חדשות, יזמים, מחירים וסיכונים
+- דירה מקבלן: מדריך מלא למחיר, חוזה, בטוחות, מפרט ולוח תשלומים
+- תמ״א 38: איך בודקים פרויקט, זכויות דיירים וסיכונים לפני חתימה
+- פינוי בינוי: לוחות זמנים, תמורות, יזם, ערבויות וסימני אזהרה
+- מחשבון מס רכישה: חישוב מס לפי דירה יחידה, משפרי דיור ודירה להשקעה
+- דירה להשקעה: איך מחשבים תשואה אמיתית לפני קנייה
+- שמאי מקרקעין: מתי צריך שמאי, כמה זה עולה ומה לבדוק
+- עורך דין מקרקעין: מה הוא בודק לפני חתימה על דירה
+
+==================================================
+I. Listings UX/UI
+==================================================
+
+תכנן מחדש את חוויית ה־listings ברמה של פורטל מוביל.
+
+חובה לנתח:
+- דף חיפוש נכסים
+- card listing
+- filters
+- map search
+- sort
+- saved search
+- alerts
+- comparison
+- listing detail page
+- lead form
+- seller dashboard
+- broker dashboard
+- fraud/trust checks
+- duplicate detection
+- price history
+- neighborhood data
+- mortgage/monthly cost
+- share
+- favorite
+- WhatsApp/call tracking
+- lead quality score
+
+תן UX spec:
+- Desktop
+- Mobile
+- RTL
+- empty states
+- loading states
+- error states
+- filters hierarchy
+- map/list split
+- card hierarchy
+- image gallery
+- virtual tour badge
+- verified data badge
+- price confidence
+- “לא מחייב” states
+- anti-spam listing rules
+- schema for listings
+
+תן Design Spec:
+- Components
+- States
+- Tokens
+- Spacing
+- Typography
+- Icons
+- Cards
+- Buttons
+- Badges
+- Map pins
+- Status colors
+- Forms
+- Tables
+- Comparison views
+- Mobile sticky CTA
+
+==================================================
+J. New Projects / 3D Showroom
+==================================================
+
+זה החלק הכי חשוב. תכנן את NadLan Project Showroom כמוצר פרימיום ליזמים וקבלנים.
+
+Benchmark:
+- Zillow 3D Home
+- Homes.com
+- Matterport
+- Redfin
+- Realtor
+- StreetEasy
+- Compass
+- יד1
+- מדלן
+- Render Vision Apartment Viewer
+- Renderzen Apartment Selector
+- Interactive Real Estate WP
+- Mapbox real estate patterns
+
+חובה לתת:
+1. Product vision
+2. User journey buyer
+3. User journey developer/contractor
+4. Data model
+5. Required fields from developer
+6. Admin panel fields
+7. Asset upload requirements
+8. Facade mapping requirements
+9. GLB/model requirements
+10. Mapbox requirements
+11. Tour URL requirements
+12. Unit data requirements
+13. Availability/status requirements
+14. Price disclaimer
+15. Legal disclaimer
+16. Error/fallback states
+17. Mobile docking
+18. CTA and lead payload
+19. Analytics events
+20. SEO implications
+21. AEO implications
+22. Schema implications
+
+Data model:
+- project_id
+- project_name
+- developer_name
+- city
+- neighborhood
+- address
+- coordinates
+- status
+- total_units
+- buildings
+- floors
+- amenities
+- official_images
+- concept_images
+- facade_images
+- facade_renderer_state: official|concept|missing
+- facade_label
+- glb_model_url
+- mapbox_token_state
+- tour_url
+- units[]
+- unit_id
+- building
+- floor
+- rooms
+- area
+- balcony_area
+- parking
+- storage
+- direction
+- view
+- price_from
+- price_estimate
+- availability_status
+- x/y/w/h facade coordinates
+- stage_x/stage_y/stage_w/stage_h
+- lead_source
+
+UX states:
+- official model available
+- concept model available
+- no model
+- official facade available
+- concept facade available
+- missing facade
+- unit coordinates available
+- only unit table available
+- Mapbox available
+- Mapbox token missing
+- coordinates missing
+- tour available
+- tour missing
+- GLB broken
+- image broken
+- mobile narrow viewport
+- user selected unit
+- unit unavailable
+- lead sent
+
+CTA:
+- “בדיקת זמינות מול היזם”
+- “קבלת פרטים על הדירה”
+- “השוואת דירות בפרויקט”
+- “שמירת הדירה להשוואה”
+- “בקשו מהיזם לעדכן נתונים”
+לא להשתמש ב־“מחיר סופי” או “זמין בוודאות” בלי אימות.
+
+תן גם:
+- Figma-like wireframe מילולי
+- Desktop layout
+- Tablet layout
+- Mobile layout
+- Component spec
+- CSS/design tokens
+- Event tracking
+- QA Playwright gate
+- Accessibility requirements
+
+==================================================
+K. Homepage Strategy + Full Design System
+==================================================
+
+תן תכנון מלא לדף בית חדש שמכוון גבוה מאוד.
+
+הדף צריך לשקף:
+- פורטל נדל״ן ארצי
+- listings
+- פרויקטים חדשים
+- דירה מקבלן
+- בדיקת עסקה
+- כלים
+- אנשי מקצוע
+- שואורום תלת ממד
+- B2B ליזמים/קבלנים
+- דאטה
+- אמון
+- mobile-first
+- premium international design
+
+אל תציע עיצוב זהב/בז׳. פרימיום = טיפוגרפיה, מרווח, היררכיה, נתונים, נקיות, מהירות, מפה, תמונות, מיקרו־אינטראקציות, אמינות.
+
+חובה:
+- Design principles
+- Visual direction
+- Color tokens
+- Typography tokens
+- Spacing tokens
+- Radius/shadow/border tokens
+- Component tokens
+- Hero section
+- Search module
+- Project showroom teaser
+- Listings module
+- New projects module
+- Tools module
+- Professionals module
+- City/neighborhood module
+- Trust/data module
+- B2B join module
+- Footer
+- Mobile homepage
+- RTL rules
+- Accessibility
+- Dark/light considerations
+- Image strategy
+- Icon strategy
+- Motion strategy
+- Copy blocks
+- CTA hierarchy
+
+תן output כאילו אתה מוסר למתכנת מתחיל:
+- מה לבנות
+- איפה לשים
+- איך זה נראה
+- איזה states
+- איזה classes/tokens
+- מה לבדוק
+- מה אסור לעשות
+
+==================================================
+L. Monetization Strategy
+==================================================
+
+תכנן מודל עסקי מלא.
+
+B2C:
+- leads לרוכשי דירות
+- sellers
+- saved search
+- premium buyer tools
+- consultation routing
+- mortgage/insurance/legal leads
+- valuation leads
+- home inspection leads
+
+B2B:
+- Pro professionals
+- Premier professionals
+- Property Pro
+- Project Premier
+- sponsored listings
+- sponsored city pages
+- featured professionals
+- developer dashboard
+- contractor dashboard
+- project ownership claim
+- project data management
+- lead routing
+- lead packages
+- visibility packages
+- 3D showroom package
+- data enrichment package
+- content package
+- PR/SEO package for developers
+
+לכל מסלול:
+- target customer
+- value proposition
+- landing page needed
+- pricing hypothesis
+- funnel
+- onboarding
+- required features
+- required trust
+- sales script angle
+- SEO pages needed
+- paid campaigns
+- KPIs
+- risks
+
+==================================================
+M. Outreach / Agent Operating System
+==================================================
+
+תכנן מערכת פעולה לסוכן שיפנה ליזמים, קבלנים, אנשי מקצוע, עורכי דין, שמאים, יועצי משכנתאות, מתווכים ובעלי נכסים — בצורה חוקית בלבד.
+
+חובה לכלול:
+- Legal compliance checklist
+- חוק הספאם
+- privacy
+- opt-in
+- unsubscribe
+- sender identity
+- no scraping abuse
+- no false claims
+- no fake verification
+- no automated spam
+- CRM logging
+- lead source
+- consent status
+- suppression list
+- message templates requiring legal review
+
+סגמנטים:
+- יזמים עם פרויקטים קיימים באתר
+- יזמים שאין להם כרטיס
+- קבלנים
+- חברות התחדשות עירונית
+- עורכי דין מקרקעין
+- שמאים
+- יועצי משכנתאות
+- בדק בית
+- מתווכים
+- בעלי דירות שמפרסמים נכס
+- חברות צילום/3D/הדמיות
+- אדריכלים/משרדי תכנון
+
+לכל סגמנט:
+- value proposition
+- outreach channel
+- legal status
+- first message
+- follow-up 1
+- follow-up 2
+- CTA
+- landing page
+- form fields
+- CRM fields
+- success metric
+- risk
+
+==================================================
+N. AEO / GEO / AI Search
+==================================================
+
+תכנן איך NadLan יהפוך למקור שמנועי AI מצטטים.
+
+חובה:
+- llms.txt strategy
+- AI-readable fact pages
+- structured Q&A
+- city/neighborhood factsheets
+- project factsheets
+- glossary
+- calculators with explanations
+- data tables
+- price tables
+- process checklists
+- disclaimers
+- author/editor policy
+- source policy
+- update policy
+- schema
+- markdown-friendly summaries
+- concise answer blocks
+- long-form answer blocks
+- internal knowledge graph
+
+תן:
+- 100 שאלות שמנועי AI ישאלו בתחום נדל״ן ישראלי
+- target page לכל שאלה
+- short answer 40–70 words
+- long answer 150–250 words
+- schema
+- internal links
+- data needed
+
+==================================================
+O. Schema / Structured Data
+==================================================
+
+תן תוכנית schema מלאה.
+
+בדוק והמלץ:
+- Organization
+- WebSite
+- SearchAction
+- BreadcrumbList
+- Article
+- FAQPage כשמתאים
+- RealEstateListing
+- Apartment
+- ApartmentComplex
+- Residence
+- Offer
+- Place
+- LocalBusiness
+- RealEstateAgent
+- ProfessionalService
+- ItemList
+- Product/Offer רק אם מתאים ולא מטעה
+- VideoObject
+- ImageObject
+- Dataset, אם יש דאטה
+- Speakable, אם רלוונטי
+- Review/AggregateRating רק אם יש ביקורות אמיתיות ומקור מאומת
+
+לכל סוג עמוד:
+- schema required
+- schema optional
+- fields
+- examples
+- risks
+- validation tests
+- what not to mark up
+
+==================================================
+P. Technical SEO / WordPress / Yoast
+==================================================
+
+תן תוכנית טכנית:
+- crawl budget
+- sitemap XML
+- HTML sitemap
+- robots.txt
+- llms.txt
+- canonical
+- noindex rules
+- pagination
+- faceted navigation
+- filters
+- parameter handling
+- duplicate listings
+- expired listings
+- sold/rented listing handling
+- project availability changes
+- city pages
+- neighborhood pages
+- image SEO
+- lazy loading
+- WebP/AVIF
+- Core Web Vitals
+- mobile-first
+- JS rendering
+- structured data
+- Open Graph
+- breadcrumbs
+- internal search
+- search results pages noindex/index rules
+- GSC setup
+- GA4/GTM events
+- call/WhatsApp tracking
+- form tracking
+- lead source attribution
+- log file analysis
+- Semrush position tracking
+
+תן checklist לפני deploy.
+
+==================================================
+Q. Analytics / KPIs
+==================================================
+
+תכנן dashboard:
+- organic clicks
+- impressions
+- average position
+- top queries
+- indexed pages
+- crawl errors
+- Core Web Vitals
+- keyword rankings
+- top landing pages
+- lead conversion rate
+- call clicks
+- WhatsApp clicks
+- form submissions
+- project lead quality
+- listing lead quality
+- professional signups
+- developer signups
+- paid plan conversions
+- saved searches
+- returning users
+- map interactions
+- 3D interactions
+- unit selections
+- tour opens
+- project claim requests
+- revenue by segment
+- CAC/LTV if data exists
+
+==================================================
+R. Roadmap
+==================================================
+
+צור roadmap:
+- 0–30 ימים
+- 31–60 ימים
+- 61–90 ימים
+- 3–6 חודשים
+- 6–12 חודשים
+- 12–24 חודשים
+
+חלק לפי:
+- P0 Trust / Technical
+- P0 Big Money SEO
+- P0 Listings
+- P0 New Projects
+- P1 Programmatic SEO
+- P1 Design System
+- P1 B2B Monetization
+- P2 Outreach System
+- P2 AI Search
+- P3 Advanced 3D / Mapbox / Data Products
+
+לכל משימה:
+- description
+- owner
+- priority
+- impact
+- effort
+- dependencies
+- KPI
+- acceptance criteria
+- Codex task
+- QA task
+- risk
+
+==================================================
+S. Output format
+==================================================
+
+הפלט חייב להיות בעברית, מפורט מאוד, עם טבלאות. לא לקצר.
+
+חובה להפיק:
+1. Executive Summary
+2. Current Site Audit
+3. Trust & Product Gaps
+4. Competitor War Map
+5. Keyword Master Universe
+6. SERP Reverse Engineering
+7. Site Architecture
+8. Programmatic SEO Plan
+9. Content Plan
+10. Listings UX Plan
+11. New Projects / 3D Showroom Plan
+12. Homepage & Design System
+13. Monetization Plan
+14. Outreach Operating System
+15. AEO / AI Search Plan
+16. Schema Plan
+17. Technical SEO Plan
+18. Analytics Dashboard
+19. Roadmap
+20. Codex Backlog
+21. QA Gates
+22. Risks / Assumptions / Data Needed
+
+אל תסיים עם המלצות כלליות. תן משימות קונקרטיות.
+
+בסוף הדוח כתוב:
+READY FOR NEXT PROMPT
+וחכה. אל תמשיך לבד.
+3. פרומפטי המשך — להריץ אחד־אחד, עם 5 דקות בין כל אחד
+המשך 1 — סריקה טכנית + אמון ציבורי
+המשך מהדוח הקודם. עכשיו תתמקד רק ב־Current Site Audit + Trust + Technical SEO.
+
+אל תעשה build. אל תשנה קוד.
+
+סרוק את nad-lan.co.il לעומק:
+- public pages
+- homepage
+- projects
+- project pages
+- listings אם קיימים
+- professionals
+- join-pro
+- sitemap
+- tools
+- guides
+- city/neighborhood pages
+- robots/sitemap/canonical/schema/metadata/OG/llms.txt/Core Web Vitals
+
+תן טבלת בעיות:
+URL, issue, evidence, severity, SEO impact, trust impact, conversion impact, fix, acceptance criteria, Codex task, QA task.
+
+חובה לכלול:
+- WooCommerce/cart/Notifications leakage
+- placeholders
+- coming soon / QA / debug
+- sitemap אמיתי או noindex
+- schema fake ratings
+- broken CTAs
+- Mapbox/3D/tour fallback
+- mobile overflow
+- duplicate/cannibalization
+- noindex/canonical rules
+- faceted navigation risks
+- programmatic SEO risks
+
+בסוף כתוב READY FOR NEXT PROMPT.
+המשך 2 — Keyword Master Universe
+המשך מהדוח הקודם. עכשיו תפיק Keyword Master Universe בלבד.
+
+תשתמש ב־Semrush live data. אל תסתפק ברשימה קצרה. המטרה היא 1,000+ ביטויים אם אפשר.
+
+אנחנו תוקפים קודם את הביטויים הכי קשים, הכי מסחריים, הכי יקרים, הכי רווחיים והכי מביאי תנועה.
+
+טבלה חובה:
+Keyword, variants, cluster, subcluster, intent, funnel stage, volume, KD, CPC, paid competition, traffic value, SERP features, current winner, top URLs, current NadLan URL, missing page, recommended URL, recommended H1, title tag, meta description, schema, internal links, monetization path, priority score, effort, cannibalization risk.
+
+קלסטרים:
+- Core real estate
+- listings
+- יד שנייה
+- דירות למכירה
+- דירות להשכרה
+- פרויקטים חדשים
+- דירות חדשות
+- דירה מקבלן
+- תמ״א 38
+- פינוי בינוי
+- התחדשות עירונית
+- עיר/שכונה/רחוב
+- משפט/מס/טאבו
+- משכנתא
+- השקעות נדלן
+- נדלן מסחרי
+- אנשי מקצוע
+- כלים/מחשבונים
+- B2B ליזמים/קבלנים/מקצוענים
+- AI/AEO questions
+
+אל תוריד עדיפות בגלל קושי. קושי הוא סימן שזה כסף.
+בסוף כתוב READY FOR NEXT PROMPT.
+המשך 3 — מתחרים ו־SERP Reverse Engineering
+המשך מהדוח הקודם. עכשיו תפיק דוח מתחרים ו־SERP Reverse Engineering בלבד.
+
+מתחרים:
+יד2, יד1, מדלן, Nadlan.com, Nadlan Center, Nadlan Master, OnMap, ad.co.il, Homeless, פורטלים מקומיים, אתרי יזמים, אתרי משכנתא/מס/משפט, Zillow, Homes.com, Redfin, Realtor, StreetEasy, Compass, Matterport לצורכי UX בלבד.
+
+לכל תחום:
+- listings sale
+- listings rent
+- new projects
+- urban renewal
+- city pages
+- neighborhood pages
+- project pages
+- tools/calculators
+- professionals
+- investment
+- commercial real estate
+
+תן:
+- מי מנצח
+- באילו ביטויים
+- עם אילו URLים
+- למה Google נותן לו לנצח
+- מה blueprint של העמוד
+- מה NadLan צריך לבנות כדי לנצח
+- minimum viable page
+- 10x dominant page
+- required data
+- required UX
+- required content
+- required schema
+- backlinks/digital PR
+
+בסוף כתוב READY FOR NEXT PROMPT.
+המשך 4 — ארכיטקטורת אתר וקניבליזציה
+המשך מהדוח הקודם. עכשיו תפיק Site Architecture מלא.
+
+צור היררכיית אתר מלאה:
+- main hubs
+- sub hubs
+- listing pages
+- city pages
+- neighborhood pages
+- project pages
+- developer pages
+- professional pages
+- tool pages
+- guide pages
+- glossary pages
+- AEO pages
+- B2B landing pages
+
+לכל עמוד:
+URL, parent, breadcrumb, page type, primary keyword, secondary keywords, intent, title, H1, meta, content modules, data modules, UX modules, schema, index/noindex, canonical, internal links in/out, monetization, priority, competitor to beat.
+
+צור גם:
+- Cannibalization map
+- Canonical rules
+- noindex rules
+- faceted navigation rules
+- expired/sold/rented listing rules
+- project status rules
+- city/neighborhood template rules
+- internal linking graph
+
+בסוף כתוב READY FOR NEXT PROMPT.
+המשך 5 — עיצוב פרימיום מלא
+המשך מהדוח הקודם. עכשיו תפיק דוח UX/UI ועיצוב מלא בלבד.
+
+אל תבנה. אל תשנה קוד.
+
+המטרה: NadLan צריך להיראות כמו פורטל נדל״ן פרימיום בינלאומי, לא כמו תבנית WordPress ולא כמו אתר נדל״ן מיושן. Premium לא אומר זהב/בז׳. Premium אומר: דאטה, מפה, מרווחים, טיפוגרפיה, היררכיה, מהירות, אמון, clean product, microinteractions, mobile-first.
+
+Benchmark:
+Zillow, Homes.com, Redfin, Realtor, Compass, StreetEasy, Matterport, מדלן, יד2, יד1, OnMap.
+
+תן:
+- Design principles
+- Brand feeling
+- Color palette
+- Typography
+- Spacing
+- Radius
+- Shadows
+- Cards
+- Buttons
+- Badges
+- Forms
+- Tables
+- Search module
+- Map/list layout
+- Listing card
+- Project card
+- Professional card
+- Homepage
+- Project showroom
+- Listing detail page
+- City page
+- Professional page
+- Join Pro page
+- Developer dashboard
+- Mobile design
+- RTL rules
+- Accessibility
+- Error states
+- Empty states
+- Loading states
+- QA checklist
+
+כתוב כאילו אתה מוסר למתכנת מתחיל: מה לבנות, איך זה נראה, מה ה־tokens, איזה states, ומה אסור לעשות.
+בסוף כתוב READY FOR NEXT PROMPT.
+המשך 6 — Project Showroom / 3D / Mapbox / יזמים
+המשך מהדוח הקודם. עכשיו תפיק Product Spec מלא ל־NadLan Project Showroom.
+
+המטרה: להפוך כל פרויקט חדש לשואורום דיגיטלי ברמה גבוהה:
+- חזית/מודל
+- בחירת דירה
+- סיבוב מודל
+- Mapbox
+- מבט מהדירה
+- סיור פנימי
+- טבלת דירות
+- השוואת דירות
+- Lead to developer
+- Developer self-service
+
+חובה:
+1. Product vision
+2. Buyer journey
+3. Developer journey
+4. Admin fields
+5. Developer upload workflow
+6. Data model
+7. Unit model
+8. Facade mapping
+9. GLB/model handling
+10. Mapbox handling
+11. Tour/Matterport/360 handling
+12. Error states
+13. No silent fallback rules
+14. No fake facade rules
+15. Concept/official/missing states
+16. Mobile docking
+17. Accessibility
+18. Analytics events
+19. SEO/AEO/schema
+20. Codex tasks
+21. QA Playwright gates
+
+תן wireframe מילולי מלא:
+- desktop
+- tablet
+- mobile
+
+תן גם developer onboarding:
+- מה יזם צריך להעלות
+- איך מאמתים
+- איך מסמנים לא מחייב
+- איך מנהלים זמינות
+- איך משייכים leads
+- איך מוכרים Project Premier
+
+בסוף כתוב READY FOR NEXT PROMPT.
+המשך 7 — מוניטיזציה ו־Outreach חוקי
+המשך מהדוח הקודם. עכשיו תפיק Monetization + Outreach Operating System.
+
+המטרה:
+לבנות מערכת שמכניסה לאתר יזמים, קבלנים, אנשי מקצוע, בעלי נכסים, מתווכים, עורכי דין, שמאים ויועצי משכנתאות — בצורה חוקית, לא ספאם, עם תיעוד, opt-in ו־CRM.
+
+תן:
+- revenue streams
+- packages
+- pricing hypotheses
+- funnels
+- landing pages
+- onboarding
+- CRM fields
+- lead scoring
+- outreach segments
+- message templates
+- follow-up templates
+- legal checklist
+- opt-in/unsubscribe rules
+- suppression list
+- consent tracking
+- no scraping abuse
+- no fake verification
+- KPIs
+
+מסלולים:
+- Project Premier ליזמים
+- Professional Pro
+- Professional Premier
+- Property Pro
+- Sponsored listings
+- Featured city/project placement
+- Lead packages
+- 3D showroom package
+- Data enrichment package
+- Content/SEO package for developers
+- Mortgage/legal/inspection lead routing
+
+בסוף כתוב READY FOR NEXT PROMPT.
+4. פרומפט לקודקס — לאסוף את כל הדוחות לריפו
+
+להריץ רק אחרי שיש לך דוחות מ־Lovable. זה לקודקס/סוכן בריפו.
+
+אתה Codex Agent בפרויקט nad-lan.co.il. אל תבנה פיצ׳רים עכשיו ואל תשנה קוד מוצר. המשימה שלך היא לאסוף את דוחות Lovable/SEO/Product/UX לתוך הריפו בצורה מסודרת ולהפוך אותם לתוכנית עבודה.
+
+חוקים:
+1. אל תיגע ב־main.
+2. צור branch חדש: strategy/nadlan-seo-product-war-plan
+3. אל תשנה PHP/JS/CSS של המוצר בשלב הזה.
+4. אל תעשה deploy.
+5. אל תמחק קבצים קיימים.
+6. אל תייצר הבטחות שווא.
+7. כל דבר שהוא assumption סמן כ־ASSUMPTION.
+8. כל דבר שדורש אימות ב־Semrush/GSC סמן כ־NEEDS_VERIFICATION.
+9. כל דבר שדורש בדיקה משפטית סמן כ־LEGAL_REVIEW.
+10. כל דבר שדורש נכס רשמי מהיזם סמן כ־REQUIRES_OFFICIAL_ASSET.
+
+קבל את דוחות Lovable שהודבקו/צורפו ושמור אותם במבנה:
+
+/strategy/
+  00-executive-summary.md
+  01-current-site-audit.md
+  02-trust-and-technical-gaps.md
+  03-competitor-war-map.md
+  04-keyword-master-universe.md
+  04-keyword-master-universe.csv
+  05-serp-reverse-engineering.md
+  06-site-architecture.md
+  07-cannibalization-map.md
+  08-programmatic-seo-plan.md
+  09-content-plan.md
+  10-listings-ux-spec.md
+  11-project-showroom-3d-spec.md
+  12-homepage-design-system.md
+  13-monetization-plan.md
+  14-outreach-operating-system.md
+  15-aeo-ai-search-plan.md
+  16-schema-plan.md
+  17-technical-seo-plan.md
+  18-analytics-kpi-dashboard.md
+  19-roadmap.md
+  20-codex-backlog.md
+  21-playwright-qa-gates.md
+  22-risks-assumptions-verification.md
+
+בנוסף צור:
+/strategy/backlog/
+  p0-trust-fixes.md
+  p0-big-money-seo.md
+  p0-new-projects-showroom.md
+  p0-listings.md
+  p1-site-architecture.md
+  p1-design-system.md
+  p1-programmatic-seo.md
+  p1-b2b-monetization.md
+  p2-outreach-automation.md
+  p2-ai-search.md
+  p3-advanced-3d-mapbox.md
+
+צור גם master index:
+/strategy/README.md
+
+README חייב לכלול:
+- מה מטרת התיקייה
+- איך לקרוא את הדוחות
+- מה P0
+- מה לא לבנות עדיין
+- מה דורש אישור בעל האתר
+- מה דורש אימות Semrush/GSC
+- מה דורש בדיקה משפטית
+- מה דורש QA חזותי
+- רשימת Next Actions
+
+אם יש CSV או טבלאות גדולות:
+- שמור כ־CSV תקין UTF-8
+- אל תשבור עברית
+- אל תכניס פסיקים לא escaped
+- צור גם markdown summary
+
+בסיום:
+- תן summary קצר
+- רשימת קבצים שנוצרו
+- אין merge
+- אין deploy
+5. פרומפט ל־Codex אחרי שהדוחות כבר בריפו — להפוך ל־Backlog ביצוע
+אתה Codex Agent בפרויקט nad-lan.co.il.
+
+קרא את כל הקבצים תחת /strategy/.
+אל תשנה קוד מוצר עדיין.
+
+המטרה:
+להפוך את דוחות האסטרטגיה ל־Implementation Backlog מסודר, לפי שלבים, עם משימות קטנות מספיק לסוכן.
+
+צור:
+/strategy/implementation-plan.md
+
+חלק את המשימות לפי:
+1. P0 — Trust fixes before growth
+2. P0 — Technical SEO foundations
+3. P0 — Big money page architecture
+4. P0 — Project showroom credibility
+5. P0 — Listings UX foundation
+6. P1 — Homepage redesign
+7. P1 — Design system
+8. P1 — New projects hub
+9. P1 — Programmatic SEO templates
+10. P1 — Professionals normalization
+11. P1 — Monetization pages
+12. P2 — Outreach system
+13. P2 — AEO / AI Search
+14. P3 — Advanced Mapbox/3D
+
+לכל משימה:
+- ID
+- Title
+- User/business value
+- Files likely involved
+- Dependencies
+- Acceptance criteria
+- QA test
+- Visual test
+- SEO test
+- Analytics event
+- Risk
+- Rollback plan
+
+שמור גם:
+/strategy/implementation-plan.csv
+
+אל תבנה עדיין. רק תתכנן.
+6. פרומפט QA Playwright לדוחות ולבנייה עתידית
+אתה Playwright QA / Visual Gate Agent בפרויקט nad-lan.co.il.
+
+אל תתקן קוד. אתה בודק וחוסם.
+
+מטרתך:
+לוודא שכל שינוי עתידי לא שובר אמון, SEO, mobile, listings או Project Showroom.
+
+בדיקות חובה בכל PR:
+- desktop 1440x1100
+- tablet 768x1024
+- mobile 390x844
+
+עמודים לבדיקה:
+/
+ /projects/
+ /projects/dimri-yama-sde-dov/
+ /projects/rainbow-tel-aviv/
+ /projects/ashdar-einstein/
+ /professionals/
+ /join-pro/
+ /sitemap/
+ /property-value-estimator/
+ /for-sale/ אם קיים
+ /for-rent/ אם קיים
+ /city/.../projects/ דוגמה אחת לפחות
+
+Gates:
+1. Public trust:
+   - אין WooCommerce cart/notifications בעמודים ציבוריים
+   - אין coming soon
+   - אין QA/debug/internal text
+   - אין placeholder sitemap
+   - אין More posts / Leave a reply / template English
+
+2. Mobile containment:
+   - document.documentElement.scrollWidth <= innerWidth + 2
+   - אין fixed card שחוסם תוכן
+   - אין horizontal overflow
+   - CTA נגיש
+
+3. Project showroom:
+   - אין fake facade
+   - concept/official/missing state ברור
+   - אין cells בלי facade asset ומיפוי יחידות
+   - Mapbox error גלוי
+   - Tour button disabled אם אין URL
+   - GLB missing/broken מציג error גלוי
+   - lead payload כולל project_id/unit_id/floor/rooms/area/source
+
+4. SEO:
+   - title/meta/H1 קיימים
+   - canonical תקין
+   - schema לא מזויף
+   - noindex לעמודים שלא מוכנים
+   - breadcrumbs קיימים
+   - אין duplicate obvious
+
+5. Visual:
+   - screenshots לפני/אחרי
+   - אין merge בלי after screenshot
+   - אין before screenshot כהוכחת fix
+
+אם כשל אחד קיים:
+BLOCK.
+
+הפלט:
+- PASS/BLOCK
+- screenshots list
+- failed assertions
+- exact URL
+- exact text/selector
+- recommendation to Codex
+7. דגשים חשובים להכניס בכל ריצה
+
+המשפט הזה חייב להופיע בראש כל פרומפט המשך:
+
+אנחנו לא בורחים לביטויי זנב קלים. המטרה היא לכבוש לאורך זמן את הביטויים הכי קשים, מסחריים ורווחיים בתחום הנדל״ן. ביטויי זנב נכנסים רק כ־supporting spokes לביטויי הכסף.
+
+והמשפט הזה חייב להופיע בכל פרומפט שקשור ל־3D/Mapbox:
+
+No silent fallback. No fake facade. No dead buttons. No stacking. אם אין נכס אמיתי — מציגים חסר בגלוי. אם יש קונספט — מסמנים קונספט. אם יש official — מציגים official. לא ממציאים דירות, מחירים, זמינות או חזית.
+
+והמשפט הזה בכל פרומפט outreach:
+
+כל פנייה ליזמים, קבלנים, אנשי מקצוע או בעלי נכסים חייבת להיות חוקית, מתועדת, עם זיהוי שולח, opt-in/unsubscribe כשנדרש, ללא ספאם, ללא scraping אגרסיבי וללא טענות שווא.
+
+יש לזה גם סיבה משפטית: בישראל קיימת חשיפה לפיצוי אזרחי של עד 1,000 ש״ח לכל דבר פרסומת שנשלח בניגוד לחוק, בלי צורך בהוכחת נזק, ולכן כל מערכת outreach צריכה לעבור בדיקה משפטית לפני אוטומציה. הרשות להגנת הפרטיות גם מפרסמת הנחיות לגבי פניות שיווקיות ודיוור ישיר, כך שצריך לבנות CRM ו־suppression list ולא “בוט ששולח לכולם”.
+
+8. הסדר שאני ממליץ להריץ בפועל
+להכניס Project Knowledge.
+להריץ את פרומפט המאסטר ב־Plan Mode.
+להמתין לפחות 5 דקות.
+להריץ המשך 1 — audit/trust.
+להמתין 5 דקות.
+להריץ המשך 2 — Keyword Master Universe.
+להמתין 5 דקות.
+להריץ המשך 3 — מתחרים/SERP.
+להמתין 5 דקות.
+להריץ המשך 4 — ארכיטקטורה/קניבליזציה.
+להריץ המשך 5 — UX/UI.
+להריץ המשך 6 — Project Showroom.
+להריץ המשך 7 — מוניטיזציה/outreach.
+להעביר לקודקס את כל הדוחות ולבקש ממנו לשמור ב־/strategy.
+רק אחרי שהכול מסודר — לבחור P0 אחד ולבנות.
+
+ה־P0 האמיתי לפני “לכבוש את גוגל” הוא: אמון ציבורי + ארכיטקטורה + דפי כסף + שואורום פרויקטים אמיתי + מניעת קניבליזציה. בלי זה, גם אם נביא תנועה על ביטויי כסף, האתר עלול להרגיש לא מספיק בשל מול יד2/מדלן/יד1.

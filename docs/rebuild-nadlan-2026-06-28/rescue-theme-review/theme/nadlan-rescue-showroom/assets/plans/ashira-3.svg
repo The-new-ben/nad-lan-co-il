@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 420" role="img" aria-label="Apartment plan illustration">
+  <rect width="640" height="420" fill="#faf7f1"/>
+  <rect x="44" y="40" width="552" height="340" rx="18" fill="#fffdf8" stroke="#d9d2c4" stroke-width="4"/>
+  <path d="M84 104h206v108H84zM318 104h238v108H318zM84 240h152v100H84zM264 240h140v100H264zM432 240h124v100H432z" fill="#f2ecdf" stroke="#9c7a3c" stroke-width="2"/>
+  <path d="M290 104v108M318 104v108M236 240v100M404 240v100" stroke="#1b1a17" stroke-opacity=".28" stroke-width="3"/>
+  <path d="M82 212h476M236 240h28M404 240h28" stroke="#1b1a17" stroke-opacity=".28" stroke-width="3"/>
+  <text x="112" y="160" font-family="Arial,sans-serif" font-size="24" fill="#1b1a17">Living</text>
+  <text x="356" y="160" font-family="Arial,sans-serif" font-size="24" fill="#1b1a17">Master</text>
+  <text x="116" y="300" font-family="Arial,sans-serif" font-size="22" fill="#1b1a17">Kitchen</text>
+  <text x="296" y="300" font-family="Arial,sans-serif" font-size="22" fill="#1b1a17">Room</text>
+  <text x="458" y="300" font-family="Arial,sans-serif" font-size="22" fill="#1b1a17">Bath</text>
+  <rect x="70" y="360" width="500" height="14" rx="7" fill="#7a8f6a" opacity=".75"/>
+</svg>

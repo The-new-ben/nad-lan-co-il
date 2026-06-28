@@ -1,0 +1,698 @@
+# Portable Codex Content Operator Bible
+
+Standalone runbook for moving the Nadlan-style article production system to another Codex agent, another PC, or another website.
+
+Created: 2026-06-07  
+Primary use: high-quality SEO article production, SERP reverse engineering, ChatGPT web UI drafting, image generation, WordPress REST publishing, QA, documentation, and blocker recovery.
+
+This document is intentionally portable. Replace the domain, repo paths, WordPress credentials, email address, Drive folders, author identity, and monetization model for each project. Do not copy private credentials into this file.
+
+## 1. Operating Principle
+
+The agent is not a Hebrew article writer. The agent is the operator.
+
+The agent must do the research, decide the page job, prevent cannibalization, build the blueprint, use ChatGPT web UI for heavy Hebrew drafting and image generation, extract the output safely, publish through WordPress REST, verify the live page, report honestly, and document new lessons.
+
+If the agent writes long Hebrew articles internally, it burns context and breaks the production design. If the agent skips research or QA, it risks weak content, public prompt leaks, duplicate intent pages, broken images, bad URLs, and lost trust.
+
+## 2. Transfer Package For Another PC
+
+Important correction: the target PC may not have any of the repo or local Codex skills installed. Do not hand off this runbook alone. Hand off the full transfer package folder or zip.
+
+Prepared local package:
+
+- Folder: `docs/transfer-package/codex-content-operator-transfer-2026-06-07/`
+- Zip: `docs/transfer-package/codex-content-operator-transfer-2026-06-07.zip`
+- One-file text bundle: `docs/transfer-package/codex-content-operator-transfer-2026-06-07/ALL_SKILLS_AND_RUNBOOK_TEXT_BUNDLE.txt`
+- Google Drive text-bundle upload: `https://drive.google.com/file/d/1GOstHERmK8cgAOPZ5cw93V0jz7wzErH5/view?usp=drivesdk`
+
+The package contains the runbook, the full repo `skills/` directory, scripts, templates, key research/blueprint docs, and local external Codex skill files that informed this process when they were available on this PC.
+
+Copy or make available:
+
+- The repository.
+- This runbook.
+- `AGENTS.md`.
+- `skills/README.md`.
+- `skills/SKILLS-TREE.md`.
+- `skills/site-state.md`.
+- `skills/serp-reverse-engineering-article-generation.md`.
+- `skills/runbook-cowork-article-batch-v3.md`.
+- `skills/strategy-master.md`.
+- `skills/copywriting-skill.md`.
+- `skills/internal-linking-hub-spoke.md`.
+- `skills/article-qa-audit.md`.
+- `skills/url-slug-governance.md`.
+- `skills/image-pipeline.md`.
+- `skills/codex-blockers-and-autonomy-fixes.md`.
+- `skills/content-audit-agent-workflow.md`.
+- `skills/article-guide-design-pattern.md`.
+- `skills/codex-plugin-access-and-deploy.md`.
+- `skills/yoast-config.md`.
+- `skills/security-public-repo.md`.
+- `skills/honesty-statement.md`.
+- The scripts under `scripts/`.
+
+Do not copy raw app passwords, API keys, browser cookies, profile stores, or authenticated session files. Configure credentials on the new PC through local environment variables, a local encrypted secret store, or the approved connector flow.
+
+## 3. Roles
+
+- Owner: sets business goals, grants accounts, approves sensitive or out-of-band actions.
+- Codex operator: runs research, prompts ChatGPT, publishes through REST, verifies, documents.
+- ChatGPT web UI: writes long Hebrew article body and generates images from the agent's researched prompt.
+- WordPress REST API: creates/updates pages and media. Do not paste into Gutenberg.
+- Repo skills: the source of operational truth.
+- Plugin deploy pipeline: only for code/template behavior, not normal content publishing.
+
+## 4. Hard Rules
+
+- Read the repo skills before acting.
+- One page owns one primary intent.
+- Never create Hebrew or non-ASCII public URL slugs.
+- Do not publish a duplicate or near-duplicate intent page.
+- Do not write long Hebrew articles internally.
+- Use ChatGPT web UI when the owner requires ChatGPT.
+- Do not paste into Gutenberg.
+- Publish content through WordPress REST with raw HTML artifacts.
+- Do not expose prompt language, ChatGPT, SERP, blueprint, workflow, SEO process, money-page language, or internal implementation terms in public copy.
+- Do not use em dash or en dash in public article bodies.
+- Do not mechanically add a year such as `2026` unless the SERP or source-backed freshness justifies it.
+- Do not upload `ChatGPT Image...png` or any generic image filename.
+- Always verify the live rendered page, not only the saved draft.
+- Always document new blockers and fixes.
+- Never commit secrets.
+
+## 5. Best Transfer Method
+
+The best way to transfer this system is not a chat summary. Use a three-part handoff:
+
+1. The full transfer package zip or folder.
+2. The repo clone, if the target agent will also publish or edit code.
+3. A new-agent bootstrap message that tells the agent to read the package runbook first, then read the bundled skills in order, then run the preflight.
+
+The bootstrap message should be short:
+
+```text
+Read first:
+docs/PORTABLE_CODEX_CONTENT_OPERATOR_BIBLE_2026-06-07.md
+
+If the repo skills are not installed on this PC, use the bundled folder:
+docs/transfer-package/codex-content-operator-transfer-2026-06-07/
+
+If you can only ingest one file, use:
+docs/transfer-package/codex-content-operator-transfer-2026-06-07/ALL_SKILLS_AND_RUNBOOK_TEXT_BUNDLE.txt
+
+Then read:
+AGENTS.md
+skills/README.md
+skills/SKILLS-TREE.md
+skills/site-state.md latest blocks
+skills/serp-reverse-engineering-article-generation.md
+skills/runbook-cowork-article-batch-v3.md
+skills/codex-blockers-and-autonomy-fixes.md
+
+Your job is to run the full article production loop:
+anti-cannibalization, live SERP research, ChatGPT web UI drafting and image generation,
+WordPress REST publishing, QA, proof email, site-state and skill documentation.
+Do not paste into Gutenberg. Do not write long Hebrew articles internally. Do not create non-ASCII slugs.
+```
+
+## 6. The 100-Step Operator Loop
+
+### A. Session Preflight
+
+1. Confirm the target domain, repo, CMS, language, owner identity, author policy, and monetization goal.
+2. Confirm whether the task is production, audit, plugin deploy, design, or troubleshooting.
+3. Read `AGENTS.md`.
+4. Read `skills/README.md`.
+5. Read `skills/SKILLS-TREE.md`.
+6. Read the last 6 to 10 blocks of `skills/site-state.md`.
+7. Read the current content workflow skills: SERP, runbook, copywriting, internal linking, QA, URL slug, image, blockers.
+8. Read project strategy and monetization skills before choosing topics.
+9. Read plugin deploy skill only if code/plugin changes are part of the task.
+10. State the active mode internally: publish new pages, update existing pages, audit only, or blocked recovery.
+
+### B. Machine And Access Checks
+
+11. Check the repo root and working directory.
+12. Run `git status --short` and avoid reverting unrelated changes.
+13. Confirm Node is available for repo scripts.
+14. Confirm Chrome is available when ChatGPT web UI is required.
+15. Confirm the Codex Chrome extension or browser-control bridge can see real Chrome tabs.
+16. Confirm ChatGPT is logged in through the selected Chrome profile.
+17. Confirm WordPress REST base URL is reachable.
+18. Confirm WordPress REST authentication works with `wp/v2/users/me`.
+19. Confirm media upload is possible or identify the approved fallback.
+20. Confirm outgoing email or Gmail connector access if proof emails are required.
+
+### C. Candidate Selection
+
+21. Choose one article candidate from strategy, gaps, competitor opportunities, owner instructions, or audit matrix.
+22. Assign one primary Hebrew search query.
+23. Assign one ASCII slug.
+24. Assign one parent pillar.
+25. Classify the page type: pillar, spoke, glossary, city page, price list, project page, listing page, professional page, tool page, or update.
+26. Run the local candidate checker if present: `node scripts/check-content-candidate.js <slug>`.
+27. Search WordPress REST for the exact slug.
+28. Search the repo and live site for close slugs and close titles.
+29. Search for same geography, asset type, transaction stage, and user job.
+30. Identify protected sibling URLs.
+31. Write the page job in one sentence.
+32. Write what the page is forbidden to own.
+33. If a stronger existing URL already owns the same intent, update that URL instead of creating a new one.
+34. If intent cannot be separated, freeze the candidate.
+35. Record the candidate decision in a local blueprint or batch ledger.
+
+### D. Live SERP Research
+
+36. Search the primary Hebrew query in Google with Israel/Hebrew context.
+37. Record top organic titles, URLs, and visible descriptions.
+38. Identify ads, map pack, video, images, featured snippet, AI Overview, or other SERP features if present.
+39. Record People Also Ask questions.
+40. Record related searches and autocomplete suggestions.
+41. Open the first organic result.
+42. Record the first paragraph's job, not its wording.
+43. Open at least the top 3 to 5 organic competitors.
+44. Record their H1/H2 patterns.
+45. Record their content format: guide, list, price table, calculator, directory, legal page, bank page, broker listing, or government source.
+46. Record image patterns in the SERP and competitors.
+47. Identify the shared backbone that appears across winning results.
+48. Identify differentiators from the top results.
+49. Identify gaps that competitors miss.
+50. Identify authoritative primary sources needed for every number or legal/financial claim.
+
+### E. Article Blueprint
+
+51. Define the user intent in one sentence.
+52. Build the exact H2 plan.
+53. Add H3 requirements only where needed.
+54. Specify the first paragraph DNA based on the current top result.
+55. Add data points with source names and dates.
+56. Add tables required by the SERP.
+57. Add FAQ/PAA questions.
+58. Add internal link plan: up to parent, across to siblings, down to tools or money paths.
+59. Add anti-cannibalization boundaries into the prompt.
+60. Add image brief, filename, Hebrew alt, caption, and surrounding sentence requirements.
+
+### F. ChatGPT Web UI Drafting
+
+61. Open one fresh Chrome ChatGPT tab.
+62. Keep tabs minimal: usually one ChatGPT tab plus one proof/live tab.
+63. Use the visible composer, not a hidden textarea.
+64. Send a tiny handshake if the browser state is uncertain.
+65. Paste/type the full researched prompt into ChatGPT web UI.
+66. If the long prompt becomes an attachment-style tile, click the visible send button.
+67. Verify a real `https://chatgpt.com/c/...` proof URL before claiming ChatGPT was used.
+68. Wait in short polling cycles instead of one huge timeout.
+69. If the response is the prompt, partial, or wrong format, send a corrective follow-up in the same conversation.
+70. Extract the longest code block containing `<h2` and full article-scale content.
+
+### G. Raw Draft QA
+
+71. Save the extracted draft as UTF-8 under `docs/article-drafts/`.
+72. Run `node scripts/qa-article-html.js <draft-file>`.
+73. Remove only extraction artifacts such as a leading code language label.
+74. Reject drafts that contain prompt text, image brief residue, English operator instructions, citation artifacts, or public internal language.
+75. Check H2 count and uniqueness.
+76. Check article length meets the target.
+77. Check cards, tables, notes, FAQ, and links.
+78. Check no H1 exists inside the article body.
+79. Check no em dash, en dash, AI-tell phrases, or internal workflow terms.
+80. Check internal links return 200 before publishing.
+
+### H. Image Generation And Export
+
+81. Ask ChatGPT in the same or fresh proof conversation for one realistic image based on the image brief.
+82. Reject images with readable text, fake UI, logos, watermarks, charts, article screenshots, or generic repeated consultation scenes.
+83. Export through ChatGPT image download, Chrome page-assets, locator media download, Drive export, or owner-approved manual click.
+84. Save the original proof image locally.
+85. Rename to an ASCII SEO filename that matches the page job.
+86. Compress or convert to WebP/JPEG, usually max 1600px wide.
+87. Visually inspect the local image before upload.
+88. Upload through WordPress REST media and set title, Hebrew alt, caption, and description.
+89. Record the image in `docs/media-log.md`.
+90. Do not mark image complete until live `og:image` or featured image verifies.
+
+### I. WordPress REST Publishing
+
+91. Build a UTF-8 JSON publish artifact with title, slug, parent, content, Yoast title, Yoast meta, focus keyword, media ID, and author where applicable.
+92. Wrap article body in the approved guide wrapper and schema/design pattern if the site uses one.
+93. Create a new page only when the candidate gate says new URL is correct.
+94. Update an existing page when the intent already has a canonical URL.
+95. Publish with `node scripts/publish-wp-article.js <artifact>` or the equivalent REST script.
+96. Verify the response page ID, slug, parent, link, status, featured media, and Yoast fields.
+97. Fetch the live URL with a cache-busting query and run `node scripts/verify-live-page.js <url>`.
+98. Run rendered/mobile verification with `node scripts/render-check-live-page.js <url> <screenshot-path>` or browser DOM checks.
+99. Send the required proof email/report and update `skills/site-state.md`, plus any skill file if a new lesson was learned.
+100. Close or kill heavy Chrome tabs, keep only proof tabs if needed, then continue to the next green candidate.
+
+## 7. Anti-Cannibalization Doctrine
+
+Cannibalization is not only duplicate keywords. It is duplicate user job.
+
+Before any new page, compare:
+
+- Same geography.
+- Same asset type.
+- Same transaction stage.
+- Same user role.
+- Same SERP format.
+- Same first-paragraph job.
+- Same internal-link parent.
+- Same title/H1 opening.
+
+Allowed overlap:
+
+- Broad city price page vs city investment page.
+- Broad commercial city page vs office-only, shop-only, warehouse-only child pages.
+- Price-list page vs acquisition due-diligence page.
+- Leasing page vs purchase/investment page.
+- Glossary definition vs money page.
+
+Not allowed:
+
+- Two URLs both targeting the same city, same asset type, same decision, and same query phrasing.
+- A new article because a synonym exists when the old page already owns the same intent.
+- A broad page that opens like a child page.
+- A child page that repeats the broad page's full comparison table as its main job.
+
+Decision outcomes:
+
+- `create`: clean new intent.
+- `update`: existing canonical page owns the intent.
+- `merge`: two pages should be consolidated.
+- `narrow`: candidate must become neighborhood/project/asset subtype.
+- `freeze`: unsafe until hierarchy changes.
+- `noindex`: useful utility/entity page but not world-class search content.
+
+## 8. SERP Reverse Engineering Doctrine
+
+The SERP is not copied. It is decoded.
+
+For each query, answer:
+
+- What does Google think the user wants?
+- What result types are winning?
+- What does the first paragraph of the first result do?
+- What subtopics appear repeatedly?
+- What data appears repeatedly?
+- What questions are visible?
+- What images appear?
+- What is missing?
+- Which source-backed facts can make our page better?
+- What would make this page easier for AI engines to cite?
+
+Never assume the agent is smarter than the ranking competitors without evidence. Ranking pages are often first for a reason. Decode the function, then outperform it with original structure, stronger source-backed data, clearer tables, better internal links, and safer expert framing.
+
+## 9. ChatGPT Prompt Blueprint
+
+Use this skeleton. Replace all placeholders. Keep it in English for operator clarity unless ChatGPT performs better with a Hebrew instruction block.
+
+```text
+You are writing a long Hebrew article for <site>.
+
+Target query: <primary Hebrew query>
+ASCII slug: <slug>
+Parent pillar: <parent URL>
+Page type: <pillar/spoke/price-list/project/listing/glossary>
+User intent: <one sentence>
+
+Anti-cannibalization:
+- This page owns: <page job>
+- This page must not own: <protected topics>
+- Protected sibling URLs: <list>
+- Do not use title/H1/opening angles that belong to those siblings.
+
+SERP evidence:
+- Top organic titles and result types: <summary>
+- First-ranked opening DNA: <function, data, tone, specificity>
+- PAA/related searches: <list>
+- Competitor backbone: <sections>
+- Gaps to beat: <gaps>
+- Image pattern: <pattern>
+
+Required H2 plan in this exact order:
+1. <H2>
+2. <H2>
+...
+
+Required facts and sources:
+- <fact> - source: <source name>, <date>
+
+Style:
+- Hebrew, precise, calm, factual, no marketing.
+- No preamble.
+- No H1.
+- No markdown outside the requested code block.
+- No style, script, citation artifacts, source footnotes, or internal process language.
+- No em dash or en dash. Use comma, colon, or spaced hyphen.
+- Avoid AI-tell phrases: <list from site skill>.
+- Do not mention ChatGPT, SERP, prompt, blueprint, SEO, workflow, hub, spoke, money page, intent, or internal linking as process language.
+
+Output:
+- Raw body HTML only.
+- Allowed tags: <h2>, <h3>, <p>, <ul>, <li>, <strong>, <table>, <thead>, <tbody>, <tr>, <th>, <td>, <div class="cards">, <div class="card">, <div class="note">, <a>.
+- dir="rtl" on block elements if the site requires it.
+- At least <word target> words.
+- At least one useful table.
+- At least three note blocks.
+- At least one cards grid with three cards.
+- FAQ section if required by the SERP.
+
+Opening paragraph:
+Write an original opening paragraph that performs the same job as the current #1 result's opening: <function and information categories>. Do not copy wording, sentence order, examples, or structure.
+
+Image task after article:
+Also provide a realistic image prompt, ASCII filename, Hebrew alt text, caption, and surrounding sentence. Image must have no readable text, no labels, no logos, no watermark, no UI, no infographic.
+```
+
+## 10. Chrome And ChatGPT Troubleshooting
+
+Use this order before calling ChatGPT blocked:
+
+1. Close excessive tabs.
+2. Kill/restart Chrome if the session is heavy.
+3. Relaunch the correct extension-enabled profile.
+4. Open a fresh ChatGPT tab.
+5. Verify ChatGPT login.
+6. Send a tiny handshake.
+7. Use visible composer, not hidden textarea.
+8. If DOM freezes, use screenshot plus coordinate control.
+9. If send appears to fail, verify URL. A click can time out after the prompt was accepted.
+10. If prompt becomes a tile, click the visible send button.
+11. Verify `/c/...`.
+12. Extract only code blocks, not full page text.
+13. If tab is heavy, hard-restart Chrome directly to the proof URL.
+14. If extraction returns the prompt, send corrective follow-up.
+15. If image extraction fails, try page-assets, download arrow, locator download, Drive export, or owner click.
+
+Do not use:
+
+- Gutenberg paste as the main path.
+- OS clipboard as the main path.
+- Anonymous/no-auth ChatGPT output when proof is required.
+- Internal image generation when the owner required ChatGPT images.
+
+## 11. WordPress REST Publishing Playbook
+
+Preflight:
+
+```powershell
+$env:WP_BASE_URL="https://example.com"
+$env:WP_USER="<wp-rest-username>"
+$env:WP_APP_PASSWORD="<local-only-app-password>"
+```
+
+Never print the password, auth header, secret JSON, cookies, or local browser session data.
+
+Useful REST checks:
+
+```powershell
+Invoke-RestMethod "$env:WP_BASE_URL/wp-json/wp/v2/users/me?_fields=id,name,roles" -Headers <auth headers>
+Invoke-RestMethod "$env:WP_BASE_URL/wp-json/wp/v2/pages?slug=<slug>&_fields=id,slug,link,parent,status"
+```
+
+Publish/update:
+
+```powershell
+node scripts\publish-wp-article.js docs\article-drafts\<slug>-wp-publish-YYYY-MM-DD.json
+```
+
+Verify:
+
+```powershell
+node scripts\verify-live-page.js https://example.com/<url>/
+node scripts\render-check-live-page.js https://example.com/<url>/ docs\research\screenshots\<slug>-mobile.png
+```
+
+Use UTF-8 JSON artifacts for Hebrew metadata. Avoid PowerShell-piped Node scripts containing raw Hebrew strings because they can corrupt metadata into question marks.
+
+## 12. Plugin Deploy Playbook
+
+Content REST publishing and plugin code deployment are different.
+
+Editing a PHP plugin file does not change the live site. The plugin deploy loop is:
+
+1. Branch from latest `origin/main`.
+2. Edit plugin source.
+3. If adding a module, add it to the loader array.
+4. Bump plugin version in both required places.
+5. PHP lint changed files.
+6. Build a ZIP with top-level plugin folder.
+7. Update plugin manifest version, date, changelog, and download URL.
+8. Commit and merge to `main`.
+9. Owner clicks WordPress plugin update.
+10. Verify live healthcheck.
+
+Do not tell the owner a plugin change is live until the version is visible on the live healthcheck.
+
+## 13. QA Gates
+
+Raw draft gates:
+
+- Correct article, not prompt.
+- UTF-8 clean.
+- Body HTML only.
+- No H1.
+- Unique H2s.
+- Correct H2 order.
+- Length sufficient.
+- Tables/cards/notes present.
+- Internal links valid.
+- No dashes banned by the site.
+- No AI-tells.
+- No internal workflow terms.
+- No citation artifacts.
+- No image prompt residue in article body.
+
+Live gates:
+
+- HTTP 200.
+- Canonical self or correct.
+- One public H1.
+- Guide wrapper present if used.
+- H2 count correct.
+- Featured/OG image correct.
+- Rendered text has no public leaks.
+- No question-mark encoding damage.
+- Mobile no horizontal overflow.
+- Breadcrumb/title/meta not spammy.
+- Yoast title/meta set and unique.
+
+Scope rule: if a global source scan finds old CSS comments outside the article wrapper, log it as global cleanup debt. If the leak is inside the article wrapper or visible text, fix before reporting success.
+
+## 14. Image Doctrine
+
+A good image helps Google and users understand the page. It must match the query's job.
+
+For price-list pages, rotate patterns:
+
+- Room-count price desk.
+- Neighborhood map check.
+- New vs second-hand comparison.
+- Recent transaction review.
+- Seller pricing scene.
+- Buyer offer check.
+- Rent-price cross-check.
+- Office tower cost review.
+- Warehouse loading and price normalization.
+- Industrial yard/warehouse specs.
+- Project plan and payment schedule.
+
+Reject:
+
+- Infographics.
+- Posters.
+- Screenshots of the article.
+- Text-heavy images.
+- Fake UI.
+- Logos.
+- Watermarks.
+- Repeated generic adviser-at-table scenes.
+- Abstract technology art for real-estate pages.
+
+Always set:
+
+- ASCII filename.
+- Hebrew descriptive alt.
+- Caption.
+- Description.
+- Surrounding body sentence if possible.
+- Featured image and OG/schema verification.
+
+## 15. Reporting And Email Template
+
+After each published article, send the owner a proof report in the requested language.
+
+Include:
+
+- Live URL.
+- Parent pillar URL.
+- Sibling/protected URLs.
+- Page job and hierarchy.
+- SERP proof summary.
+- Competitors studied and why.
+- ChatGPT proof URL or Drive proof.
+- Article draft path.
+- Image proof and final image status.
+- QA result.
+- Cannibalization statement.
+- What was updated in repo/site-state.
+- Blockers and fixes.
+- Next article plan.
+- Honesty statement.
+
+Honesty statement:
+
+```text
+I did my best, did not skip research, did not avoid producing/publishing work, and used ChatGPT web UI for the heavy article draft where required. Anything I could not verify is labeled as a blocker or limitation.
+```
+
+## 16. Documentation Rules
+
+After every meaningful action:
+
+- Update `skills/site-state.md`.
+- Update a skill when a reusable lesson was learned.
+- Add proof files under `docs/content-blueprints/`, `docs/article-drafts/`, or `docs/research/`.
+- Add image entries to `docs/media-log.md`.
+- Do not delete old skills.
+- Add dated revision notes.
+- Cross-reference instead of duplicating when a skill already owns the topic.
+
+## 17. Stop Conditions
+
+Stop and report honestly only when:
+
+- REST auth is unavailable and no approved local secret path exists.
+- ChatGPT cannot be accessed after profile, restart, handshake, visible composer, and proof URL recovery attempts.
+- The candidate cannibalizes an existing page and no safe update/merge path is authorized.
+- The article fails QA repeatedly and cannot be corrected.
+- WordPress returns repeated 5xx on publish or upload.
+- Image requirement cannot be met and owner required image before publish.
+- The owner explicitly pauses production.
+- The task requires out-of-band owner action such as WP admin plugin update, account login, purchase, or sensitive approval.
+
+Do not stop for:
+
+- ChatGPT taking 1 to 2 minutes.
+- A hidden textarea.
+- A heavy tab that can be restarted.
+- An empty Drive inbox if Chrome ChatGPT fallback is allowed.
+- One bad image candidate.
+- One failed draft.
+- Missing broad old-site QA when the current article has publish safety gates.
+
+## 18. Troubleshooting Table
+
+| Symptom | Likely cause | Recovery |
+|---|---|---|
+| Owner sees Chrome working but Codex sees blank/stale tabs | Wrong Chrome profile or extension profile drift | Relaunch extension-enabled profile, verify tabs, handshake |
+| ChatGPT page visible but DOM extraction freezes | Heavy conversation tab | Save proof URL, restart Chrome to proof URL, target code blocks only |
+| Hidden textarea cannot be filled | Wrong input node | Use visible contenteditable composer or coordinate control |
+| Prompt appears but is not sent | Attachment-style prompt tile | Click visible send button and verify `/c/...` |
+| Copy returns the prompt | ChatGPT echoed or copy targeted wrong message | Corrective follow-up; extract longest full article code block |
+| Image URL fetch returns denied | Signed ChatGPT asset | Use page-assets bundle, download arrow, locator download, Drive, or owner click |
+| WordPress media upload 502 | Image too large or REST timeout | Compress to smaller JPEG/WebP and retry with HTTP/1.1/curl |
+| Hebrew metadata becomes question marks | Shell encoding corruption | Use UTF-8 JSON artifact, not shell-embedded Hebrew |
+| Live page shows prompt language | Draft QA missed rendered leak | Fetch rendered text, remove leaked terms, republish |
+| Slug becomes Hebrew or `%d7` | URL governance skipped | Stop, map ASCII slug, create 301 if old public URL existed |
+| Plugin edit has no live effect | ZIP/manifest/update click missing | Follow plugin deploy pipeline |
+| Duplicate URL gets `-2` | Slug conflict | Stop, inspect existing page, update canonical instead |
+| Browser has many dead tabs | Overloaded session | Close/kill Chrome, reopen one fresh work profile tab |
+
+## 19. Portable Artifact Templates
+
+Candidate record:
+
+```json
+{
+  "slug": "<ascii-slug>",
+  "query_he": "<target query>",
+  "page_job": "<one sentence>",
+  "parent": "<parent url>",
+  "protected_siblings": [],
+  "decision": "create|update|merge|narrow|freeze",
+  "reason": "<evidence>"
+}
+```
+
+SERP record:
+
+```json
+{
+  "query": "<query>",
+  "searched_at": "YYYY-MM-DD",
+  "top_results": [
+    {"position": 1, "url": "", "title": "", "meta": "", "format": ""}
+  ],
+  "first_paragraph_dna": "",
+  "paa": [],
+  "related": [],
+  "backbone": [],
+  "gaps": [],
+  "sources_needed": []
+}
+```
+
+Publish artifact skeleton:
+
+```json
+{
+  "title": "<public title>",
+  "slug": "<ascii-slug>",
+  "status": "publish",
+  "parent": 0,
+  "author": 1,
+  "content_file": "docs/article-drafts/<slug>-chatgpt-draft-YYYY-MM-DD.html",
+  "featured_media": 0,
+  "yoast": {
+    "title": "<seo title>",
+    "metadesc": "<meta description>",
+    "focuskw": "<keyword>"
+  }
+}
+```
+
+Site-state block:
+
+```text
+## YYYY-MM-DD HH:MM Timezone - Agent - <Action>
+
+- Read: <skills/docs>.
+- Did: <actual action>.
+- Why: <goal/page job>.
+- Touched: <paths, WP URLs, page IDs, media IDs>.
+- Proof: <SERP blueprint, ChatGPT proof, draft, QA, live URL, email ID>.
+- QA: <pass/fail summary>.
+- Skills updated: <files>.
+- Honest limits: <anything not verified>.
+- Next agent should: <next action>.
+```
+
+## 20. New Website Bootstrap
+
+When moving this system to another website:
+
+1. Copy the operating system skills.
+2. Rename site-specific plugin and paths.
+3. Build a fresh strategy master from live competitors.
+4. Define money pillars and spokes.
+5. Define URL policy, especially for Hebrew sites.
+6. Define author/E-E-A-T policy.
+7. Define page design wrapper.
+8. Define QA scripts or adapt existing scripts.
+9. Define image pipeline and media log.
+10. Define REST publish artifact format.
+11. Define proof email/report format.
+12. Run a small pilot of one article.
+13. Document blockers.
+14. Only then schedule automation or high-volume batches.
+
+## 21. Final Operator Standard
+
+The agent succeeds when another person can inspect the proof chain:
+
+research -> candidate gate -> ChatGPT proof -> article draft -> QA -> image proof -> REST artifact -> live URL -> rendered verification -> email/report -> site-state/skill update.
+
+If any link in the chain is missing, the agent must say so. Honesty is part of the workflow, not an apology after failure.

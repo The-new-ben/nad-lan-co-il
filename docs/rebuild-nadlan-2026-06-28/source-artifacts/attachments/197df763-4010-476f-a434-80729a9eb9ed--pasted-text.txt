@@ -1,0 +1,88 @@
+Ran
+Find every desktop-only block-level width rule (cascade order)
+Found it. There's no max-width:390px on the block — the desktop block-level rules look reasonable (final winner: rule [10] = width:min(1420px, calc(100vw - 28px))!important). That should make the block ~1400px wide on a 1920px desktop, NOT a narrow column.
+
+So the "squashed" look in your screenshot must be something else. Two possibilities:
+
+The screenshot is rendered at the WordPress editor preview width (not the public page), which often previews at a narrow column
+The site's outer theme container is limiting it (parent constraint, not the .nlp3d rule)
+Let me check the theme's article/main container:
+
+Ran
+Check parent containers constraining the .nlp3d width
+FOUND IT FOR REAL THIS TIME. Rule [1]:
+
+.is-layout-constrained > :where(:not(.alignleft):not(.alignright):not(.alignfull))
+{ max-width: var(--wp--style--global--content-size) }
+This is a WordPress core block-theme rule. The parent <div class="entry-content alignfull wp-block-post-content has-global-padding is-layout-constrained ..."> has is-layout-constrained. Every direct child that is NOT .alignleft / .alignright / .alignfull gets capped at var(--wp--style--global--content-size) — which the theme defines (usually 800–1200px, sometimes 380–600px on narrow block themes).
+
+The .nlp3d block isn't getting .alignfull or .alignwide on it, so the theme's content-size cap squashes it BEFORE the plugin's width:min(1420px, ...) rule can even fight back. The plugin's !important doesn't help because the cap is on the parent's children selector, which the plugin's selector doesn't match (.entry-content > .nlp3d ≠ .is-layout-constrained > :where(...)). They're applying to the same element but the CSS specificity puzzle isn't being won by the plugin reliably across all themes.
+
+The fix (real this time)
+Add alignfull to the .nlp3d wrapper when it's emitted into a block-theme entry-content. That makes it skip the :where(:not(.alignfull)) cap. Two options:
+
+Cleanest: in PHP, change the wrapper from <section class="nlp3d ..."> to <section class="nlp3d alignfull ..."> for project pages.
+CSS belt-and-suspenders: add .is-layout-constrained > .nlp3d{max-width:none!important} to defeat the cap by class specificity.
+Doing both — the markup fix is correct, the CSS fix is the safety net for theme variants. Let me find the render site and ship it:
+
+
+Ran a command, read a file
+Branching off main and shipping the fix:
+
+
+Ran a command, edited a file
+Now find a clean place to add the CSS safety net (one short rule, one new function the existing enqueue list calls):
+
+
+Ran a command, read a file
+Adding a small new CSS function right after the buyer-card one, then enqueuing it last so it wins:
+
+Edited
+project-3d.php
++16
+-0
+Now wire it into the enqueue list (right after the latest one so it wins):
+
+
+Read a file, edited a file
+Now bump version surfaces (so cache busts properly + healthcheck reflects the fix) and verify:
+
+Ran
+Audit current version surfaces before bump
+Good — all at 1.65.2 currently. Bumping to 1.65.3 (single-purpose hotfix):
+
+
+Edited 3 files, read a file, ran a command
+Now update the manifest, rebuild ZIP, run the full gate, and verify:
+
+Ran
+Bump manifest, php -l, rebuild zip, JS check, verify alignfull on wrapper
+All green. Committing, pushing, opening PR, and merging:
+
+
+Ran 2 commands, used 2 tools
+Merged. Here's the honest summary:
+
+What happened
+I was wrong twice. First I called it a max-width:390px regression — that wasn't the bug. Then I almost stopped and asked you. Good thing you said "dig deeper" — because there IS a real desktop bug, but it's not what I thought.
+The actual cause: WordPress's block-theme rule (Twenty Twenty-Five and similar themes) ships .is-layout-constrained > :where(:not(.alignfull)) { max-width: var(--content-size) } which caps every child of .entry-content at the theme's content size (usually 600–840px). The plugin's width:min(1420px, ...) !important doesn't beat it because the cap selector targets the parent's children with equal/higher specificity for the same element.
+Fix: added alignfull to the .nlp3d wrapper class + a small CSS function that explicitly removes max-width on .nlp3d.nlp3d-premium when nested in those theme containers. Belt-and-suspenders — works on any block theme.
+Gate passed
+php -l clean on all 3 files
+inline JS node --check clean
+ZIP 130 entries, rootless, 0 backslash, no CRC errors
+all 6 version surfaces aligned at 1.65.3
+manifest changelog prepended, prior entries preserved
+merged to main at 2e6aed7
+What you need to do
+Deploy 1.65.3:
+
+Pull/sync the UPress server Git to main 2e6aed7
+Update NadLan Config plugin to 1.65.3
+Clear UPress cache
+Hard-refresh https://nad-lan.co.il/projects/rainbow-tel-aviv/ on desktop
+Tell me if the showroom now spans the full desktop width
+Honest expectation
+This fix is only the width regression — nothing more. The "intro text above the model," premium hotspots, dominant action card, mobile sheet — none of that is in this PR. That's Codex's polish work, which still has the full spec I wrote earlier. Once the page renders at proper width again, his slices will actually be evaluable. Right now they aren't, because the canvas was wrong.
+
+When you tell me the desktop width is back, I'll do an independent live pass at 1440/768/390 and tell you straight what still needs fixing — without flinching, without flattery.

@@ -1,0 +1,72 @@
+The live healthcheck now shows "version":"1.63.4" — your deploy worked. 🎉 The plugin update landed.
+
+Now, the GLB. Before I give you steps, I have to check that the GLB file Codex made actually exists and works — because if I send you to paste a link that's broken, the page will show nothing and we're back to "nothing changed." Let me look at what's really on the #163 branch (read-only, I'm not changing anything):
+
+Ran
+Verify the GLB asset really exists on #163 and is a valid glTF binary
+GLB exists (922 KB — well under budget) and poster.png (75 KB — perfect). Let me confirm the GLB is a valid 3D file and not corrupt before anyone wires it up:
+
+Ran
+Validate GLB structure, poster PNG, and meta example
+The GLB is valid and real — proper glTF v2, 1 mesh + 12 materials (the floor-banded massing), honestly labeled "NadLan Rainbow prototype generator," poster is a valid 75KB PNG, and the meta-example has all the field names. Codex's plan is sound.
+
+One thing I must verify before sending you to paste a GitHub link: the model link only works in a browser if the repo is public. The plugin update worked, but that can use a server token a browser doesn't have. Let me confirm an unauthenticated browser can actually fetch a raw file from your repo:
+
+Fetched
+https://raw.githubusercontent.com/The-new-ben/nad-lan-co-il/main/plugin-dist/nadlan-config.json
+Confirmed — your repo is public, so the model link will load in a browser. And the manifest already shows 1.63.4 (your deploy is live). Codex's plan works.
+
+Last safety check before I merge #163 for you: that branch was started before today's 1.63.4 work, so I need to confirm it only adds the model files and doesn't drag the plugin version backward. Checking its scope:
+
+Ran
+Check #163 scope and whether it would revert 1.63.4
+#163 is safe — assets, docs, scripts, and skills only. No plugin code, no manifest, no version files, so it cannot revert your 1.63.4 deploy. It just adds the model files. Let me confirm it merges cleanly into today's main (it has some doc/skill overlap with the 1.63.4 work):
+
+Ran
+Detect merge conflicts between #163 and current main
+I have everything I need to make this safe and simple. Here's the situation:
+
+The model files (model.glb 922KB, poster.png 75KB) are valid and real, sitting on the #163 branch.
+They just need to land on main so the link works — but #163 also carries ~10MB of screenshots and 5 doc/skill files that conflict with today's 1.63.4 work. Merging the whole thing is messy.
+You don't need any of that churn to show the model. You only need the asset files.
+So the clean path: I'll put just the Rainbow asset folder onto main (no conflicts, no churn), then give you the dead-simple WordPress steps. Let me write this up and get your go-ahead.
+
+Edited
+buzzing-sprouting-toucan.md
++25
+-1
+Proceeding — bringing just the model assets onto main (no conflicts, no churn):
+
+Ran
+Stage the Rainbow asset folder onto a clean branch off main
+All asset files staged cleanly (no conflicts). Committing, pushing, and merging:
+
+
+Ran a command, used 2 tools
+Merged. Now verifying both URLs actually load from main (so you don't paste a dead link):
+
+Ran
+Verify both raw URLs return 200 and valid bytes from main
+Both links are live and verified — GLB returns 200 (922KB, valid glTF bytes), poster returns 200 (75KB PNG). Nothing to merge — I did all the GitHub work. Now it's just a copy-paste job for you.
+
+How to make the 3D building show — simple words
+The model is now on the internet. You just need to tell the Rainbow page where it is, by pasting two links into WordPress.
+
+Where: WordPress admin → Projects → open Rainbow Tel Aviv → scroll to the 3D model fields (one is labeled "GLB model URL for real 3D showroom", another "Model poster image URL").
+
+What to paste:
+
+In the GLB model URL field, paste:
+https://raw.githubusercontent.com/The-new-ben/nad-lan-co-il/main/assets/projects/rainbow-tel-aviv/model.glb
+In the Model poster image URL field, paste:
+https://raw.githubusercontent.com/The-new-ben/nad-lan-co-il/main/assets/projects/rainbow-tel-aviv/poster.png
+Click Update (save the project).
+Clear the UPress cache.
+Open the Rainbow page and hard-refresh (Ctrl+Shift+R).
+That's it. The page will now show the real spinning 3D building instead of the flat drawing.
+
+What to expect (honest)
+You'll see a 3D building you can drag and spin 360°. ✅
+It's a simple prototype shape (a clean massing of the tower), labeled illustrative — not the developer's detailed model yet. That's the "massing now, swap later" plan you approved. When Israel Canada's real model arrives, we overwrite the same link and it upgrades instantly.
+Clickable apartments are a second step (pasting unit data) — let's get the building spinning first, then add those.
+When you've pasted the two links and saved, tell me "done" and I'll check the live page to confirm the model loaded, it rotates, and there are no errors — and report back honestly. Then we do the clickable apartments.

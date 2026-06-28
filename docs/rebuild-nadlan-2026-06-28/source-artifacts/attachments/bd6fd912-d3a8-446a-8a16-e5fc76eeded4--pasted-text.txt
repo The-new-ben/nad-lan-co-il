@@ -1,0 +1,65 @@
+Analysis only. No code. Three focus areas, honest read on each, plus the interior journey you just added — I have not forgotten it.
+
+## 1) Rainbow live
+- Plugin 1.67.4, theme pulled, embedded selector working, hierarchy rules verified across desktop/tablet/mobile in Codex's runs.
+- Remaining real defects: the same hardcoded "Rainbow" copy bug Codex just exposed (which affects Dimri too), and mobile vertical density before the picker.
+- Status: **B+** — usable, but it's a prototype, not the polished sales page yet.
+
+## 2) Dimri live
+- Page at `/projects/dimri-yama-sde-dov/` returns 200 (505 KB).
+- After Codex's metadata wiring: `model-viewer` count went 0 → 1, 48 `nlp3d-stage-pick` controls, unit click works (B-24 selects, price updates).
+- **Remaining hard blocker:** the plugin renderer prints `"Rainbow Tel Aviv"` from PHP, not from `$meta`. So Dimri shows Dimri's data + Rainbow's words. That's a *generic-renderer bug*, not a Dimri data bug — every future project hits it. Codex correctly diagnosed this; it's a real find.
+- Status: **C** — model loads, units click, copy is wrong.
+
+## 3) Interior apartment journey — NOT forgotten. Status: backlog, infrastructure present, assets missing
+You're right to flag this — it's the next product layer. Honest inventory:
+
+**What the data model already supports today** (I just checked `nadlan_p3d_clean_unit_items` in main):
+```
+unit.plan          — floor plan link
+unit.interior_url  — interior render/image
+unit.tour_url      — 360°/Matterport tour link
+meta.tour_url      — project-level tour
+meta.video_url     — sales video
+meta.drawings      — array of plan docs
+```
+The "media" tool panel in the engine *already* reads these and shows them when a unit is selected. So the **infrastructure exists**; the **assets don't** (no per-unit renders/tours have been authored), and the **UX is buried** in a side panel instead of being the headline experience after click.
+
+**What home.com / Zillow / Matterport actually deliver for interiors** (so we benchmark honestly):
+- **Matterport-style "dollhouse" + first-person walkthrough** — the gold standard, requires a Matterport scan
+- **Zillow 3D Home** — auto-generated floor plan from a walkthrough, integrated with the listing
+- **Homes.com** — Matterport tour + room-by-room photo carousel + neighborhood context
+- **For pre-construction (our actual case — Rainbow/Dimri aren't built yet)** — architect-rendered 360° per room + flythrough video + interactive plan. This is what Israeli developer sites like גינדי, אאורה, ישראל קנדה show on their flagship projects.
+
+**The honest product spec for "click apartment → step inside" would be:**
+1. **Hero interior render** of the unit type (architect output)
+2. **Interactive floor plan** — click a room, see its render
+3. **360° walkthrough** if available (Marzipano or Matterport embed)
+4. **Sun/view card** keyed to the unit's orientation (we already compute this)
+5. **Video flythrough** if available
+6. CTA to request the full plan PDF / showing
+7. Disclosure label until materials are official
+
+That's a clear engine for **every** project, not a Rainbow special case.
+
+---
+
+## The thing I have to flag honestly (M7/M9 violation in progress)
+Looking at Codex's last action: he started a branch `codex/generic-project-showroom-copy` in **`C:\Users\pro\Documents\websites\nad-lan-co-il-dimri-repair`** (a *second* parallel working copy — exactly M9) and is editing **`plugins/nadlan-config/inc/project-3d.php`** (which the discipline skill says I own — M7). His diagnosis of the Rainbow hardcoded copy is *correct*; his execution path is a textbook repeat of the same mistakes we documented two hours ago.
+
+I'm not going to be territorial about it for ego — but this matters because:
+- Working in a "-repair" parallel folder = where lost commits, stale bases, and 1.67.4-vs-1.67.2 regressions came from
+- If he merges that branch, he's also bumping to 1.67.5 from a base I can't see, and I won't know what other inline CSS slices got reverted until I diff against main after the fact
+
+The clean handoff: he files the **exact 3 line ranges + the replacement** as a PR comment or short spec; I apply it on a fresh branch off `origin/main`, lint it, build the ZIP through the guarded builder, deploy. That's 15 minutes instead of another collision cycle.
+
+---
+
+## My recommended ordering (without coding)
+1. **Codex hands me the Rainbow-copy spec** (line numbers + replacement). I ship it as 1.67.5 from main, you deploy. Fixes Dimri *and* future projects in one shot.
+2. **Then** we tackle the interior journey as a real product slice — I'd write the spec first (what data fields, what UI, what asset shape per unit), commit it to `docs/design/`, and you decide whether to publish interiors for Rainbow (architect would need to provide renders) or hold until contractor delivers.
+3. **The "engine" you keep asking about** — that's not a new piece of code; it's the *discipline* we now have: project folder → committed payload → theme renders it → live. Dimri proved the path works; the leaking-copy bug is the remaining engine flaw, and fixing it (#1) is what makes the engine truly reusable.
+
+I have not forgotten the interior journey. I'm just not going to add code for it on top of an unverified renderer fix that's being made on a parallel base — that would be M2 + M6 stacked. Fix the renderer first, then build the interior layer on a solid foundation.
+
+Want me to (a) write the interior-journey spec doc now (docs only, no plugin code) so it's ready when Codex hands off the Rainbow-copy fix, or (b) wait until #1 lands?

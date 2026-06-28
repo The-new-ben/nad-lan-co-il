@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" role="img" aria-label="Illustrative boutique building apartment plan">
+  <defs>
+    <pattern id="grid" width="32" height="32" patternUnits="userSpaceOnUse">
+      <path d="M32 0H0V32" fill="none" stroke="#d7c07b" stroke-opacity=".08" stroke-width="1"></path>
+    </pattern>
+    <filter id="soft" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="16" stdDeviation="14" flood-color="#000" flood-opacity=".32"></feDropShadow>
+    </filter>
+  </defs>
+  <rect width="1200" height="800" fill="#061817"></rect>
+  <rect width="1200" height="800" fill="url(#grid)"></rect>
+  <path d="M166 124h780v142h112v386H166z" fill="#102f2d" stroke="#d7c07b" stroke-width="10" filter="url(#soft)"></path>
+  <path d="M166 308h318V124M484 308v344M484 474h292M776 124v528M776 308h282M776 474h282M330 308v344" fill="none" stroke="#d7c07b" stroke-width="8"></path>
+  <path d="M166 308h110M484 308h-82M484 474h122M776 308h104M776 474h92" stroke="#061817" stroke-width="20" stroke-linecap="round"></path>
+  <rect x="204" y="160" width="236" height="104" rx="4" fill="#183f3d" stroke="#d7c07b" stroke-opacity=".45"></rect>
+  <rect x="524" y="160" width="210" height="102" rx="4" fill="#173d3b" stroke="#d7c07b" stroke-opacity=".45"></rect>
+  <rect x="820" y="346" width="180" height="84" rx="4" fill="#153735" stroke="#d7c07b" stroke-opacity=".45"></rect>
+  <rect x="820" y="514" width="180" height="92" rx="4" fill="#153735" stroke="#d7c07b" stroke-opacity=".45"></rect>
+  <rect x="204" y="354" width="82" height="252" rx="4" fill="#123230" stroke="#d7c07b" stroke-opacity=".45"></rect>
+  <rect x="524" y="518" width="210" height="88" rx="4" fill="#123230" stroke="#d7c07b" stroke-opacity=".45"></rect>
+  <ellipse cx="260" cy="704" rx="144" ry="28" fill="#2a7b89" opacity=".62"></ellipse>
+  <path d="M126 704c86-34 184-34 270 0" fill="none" stroke="#8bd2dd" stroke-width="4" opacity=".7"></path>
+  <circle cx="942" cy="206" r="40" fill="none" stroke="#d7c07b" stroke-width="5" stroke-opacity=".55"></circle>
+  <path d="M260 540h92M568 214h106M860 386h98M858 558h102" stroke="#f5e7b5" stroke-width="5" stroke-linecap="round" opacity=".72"></path>
+  <path d="M184 730h856" stroke="#d7c07b" stroke-width="2" stroke-dasharray="12 14" opacity=".45"></path>
+  <text x="1042" y="744" text-anchor="end" fill="#d7c07b" font-family="Arial, sans-serif" font-size="28">ILLUSTRATIVE BOUTIQUE PLAN</text>
+</svg>

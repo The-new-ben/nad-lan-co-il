@@ -1,0 +1,21 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/theme.json",
+  "version": 2,
+  "settings": {
+    "color": {
+      "palette": [
+        {"slug":"cream","color":"#FAF7F1","name":"NadLan Cream"},
+        {"slug":"ink","color":"#1B1A17","name":"NadLan Ink"},
+        {"slug":"gold","color":"#9C7A3C","name":"NadLan Gold"},
+        {"slug":"terracotta","color":"#C2563A","name":"NadLan Terracotta"},
+        {"slug":"sage","color":"#7A8F6A","name":"NadLan Sage"}
+      ]
+    },
+    "typography": {
+      "fontFamilies": [
+        {"fontFamily":"Heebo, Arial, sans-serif","slug":"heebo","name":"Heebo"},
+        {"fontFamily":"Frank Ruhl Libre, Georgia, serif","slug":"frank-ruhl","name":"Frank Ruhl Libre"}
+      ]
+    }
+  }
+}

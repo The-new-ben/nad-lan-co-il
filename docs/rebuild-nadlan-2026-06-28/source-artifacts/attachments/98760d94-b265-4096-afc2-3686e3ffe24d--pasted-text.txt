@@ -1,0 +1,299 @@
+CODEX — RAINBOW POLISH TO FINISH (complete spec, your mission alone)
+Read this whole thing before writing one line of code. This is the finish-line spec for turning the live Rainbow showroom into a buyer-ready product. You ship it in slices, you screenshot each in Chrome at 1440/768/390 + Edge-mobile UA before moving on, and you deploy it yourself (server Git pull → plugin update → cache clear → live re-verify in Chrome). If you need anything only the owner can give (official BIM/GLB, real prices, real availability, contractor WhatsApp number), put it in one short list at the top of your first reply and stop until he answers. Do not silently invent.
+
+What's actually live right now (I just measured it, work from this)
+<model-viewer> is rendering, type="module" is correct, reveal="auto" ✅
+Zero intro text above the model (no H2, no nadlan-guide) ← owner's #1 complaint, fix first
+6 hotspots emit server-side with is-recommended (4) and is-sold (4) ← but zero is-available and zero is-reserved — the status taxonomy is broken
+nlp3d-hotspot-tip + nlp3d-hotspot-hit exist ← good, build on them; don't replace
+Tooltips don't appear on tap (mobile has no hover), which is the "I don't understand what these squares do" feel
+The hard product rules (don't bend these)
+Apartment selection is the hero. The 3D building is the helper. If a buyer scans for 3 seconds they must see "pick an apartment," not "look at a 3D object."
+Progressive disclosure (NN/g): show the primary action first, hide advanced controls until after selection.
+Tap targets ≥44px on mobile (WCAG 2.5.5 / Material 48dp). Visible dot can be small; the hit area cannot.
+No invented data. Every price tagged "אומדן · לא מחייב," every status from CMS not your imagination, "הדמיית סביבת שדה דב, להמחשה" stays under the surrounding massing.
+Every change documented in skills + owner manual the same commit, or it doesn't ship.
+SLICE 1 — intro text above the model + shrink the stage (owner's #1 ask)
+Why: Page opens with no context, model dominates → "what is this thing?"
+
+Where: inc/project-3d.php rendering, after the_content priority 5 (breadcrumbs) and before the 3D block. There's already a nadlan-guide design pattern in skills/article-guide-design-pattern.md — use it, don't invent.
+
+Insert above the 3D block:
+
+<section class="nadlan-guide nlp3d-intro" dir="rtl">
+  <div class="wrap">
+    <span class="eyebrow">פרויקט חדש בשדה דב</span>
+    <h2>דירות למכירה ב-<bdi>Rainbow Tel Aviv</bdi> — בחירת דירה אינטראקטיבית</h2>
+    <p>פרויקט מגורים של <bdi>ישראל קנדה</bdi> ברובע שדה דב, תל אביב. בחרו דירה ישירות על המגדל לפי קומה, מספר חדרים וכיוון מבט, וצפו באומדן מחיר לא מחייב. כל הנתונים להמחשה ודיווחים פומביים.</p>
+    <p class="nlp3d-intro-cta"><a href="#nlp3d-stage" class="btn">בחרו דירה עכשיו</a></p>
+  </div>
+</section>
+Keep it ≤55 words. The H2 carries the focus keyphrase "דירות למכירה ב-Rainbow Tel Aviv" so Yoast sees it.
+
+Shrink the stage (in nadlan_p3d_inline_css() or the showroom CSS function):
+
+.nlp3d-stage-wrap{min-height:clamp(420px,52vw,640px)!important} /* was ~620–820, cut ~25% */
+@media(max-width:760px){.nlp3d-stage-wrap{min-height:clamp(380px,90vw,520px)!important}}
+Surrounding-massing disclaimer (single line under the model):
+
+<p class="nlp3d-context-caption">הדמיית סביבת שדה דב, להמחשה.</p>
+.nlp3d-context-caption{font-size:12px;color:var(--muted);margin:6px 0 0;text-align:center}
+Gate (you must verify in Chrome before slice 2): screenshot at 1440 + 390 shows the H2 + paragraph above the model, and the model stage is visibly smaller.
+
+SLICE 2 — premium clickable hotspots (the core product feature)
+Why: "31 / 5 ח" is cryptic. Buyers don't know which units are available or "good." Tooltips don't show on tap.
+
+The status taxonomy must be honest — derive from CMS unit JSON, not hardcoded:
+
+status	color	label	usage
+available	#3ddc84 (green)	"זמין"	default
+reserved	#f2c14e (amber)	"שמורה"	partial-commit
+sold	#9aa0a6 (gray, opacity 0.55)	"נמכרה"	inactive, no click
+recommended:true (modifier)	green + pulse	"פופולרי" / "נוף לים"	layered on available only
+Render markup (per hotspot, model-viewer slot):
+
+<button class="nlp3d-hotspot-hit is-<?= esc_attr($u['status']) ?><?= !empty($u['recommended'])?' is-recommended':'' ?>"
+        slot="hotspot-<?= esc_attr($u['id']) ?>"
+        data-position="<?= esc_attr($u['hotspot_position']) ?>"
+        data-normal="<?= esc_attr($u['hotspot_normal'] ?? '0 0 1') ?>"
+        data-visibility-attribute="visible"
+        data-unit="<?= esc_attr($u['id']) ?>"
+        aria-label="<?= esc_attr(sprintf('דירה %s, קומה %s, %s חדרים, %s', $u['id'], $u['floor'], $u['rooms'], $u['status_he'])) ?>"
+        <?= $u['status']==='sold'?'aria-disabled="true" tabindex="-1"':'' ?>>
+  <span class="nlp3d-hotspot-dot" aria-hidden="true"></span>
+  <span class="nlp3d-hotspot-tag">קומה <?= esc_html($u['floor']) ?> · <?= esc_html($u['rooms']) ?> חד׳</span>
+  <span class="nlp3d-hotspot-tip" role="tooltip">
+    <strong>דירה <?= esc_html($u['id']) ?> · <?= esc_html($u['rooms']) ?> חדרים</strong>
+    <small><?= esc_html($u['sqm']) ?> מ"ר · <?= esc_html($u['view']) ?></small>
+    <small><?= esc_html($u['status_he']) ?><?= !empty($u['recommended'])?' · '.esc_html($u['recommended_label'] ?? 'פופולרי'):'' ?></small>
+    <?php if (!empty($u['price_estimate'])): ?><small class="nlp3d-price">אומדן <?= esc_html($u['price_estimate']) ?> · לא מחייב</small><?php endif ?>
+  </span>
+</button>
+CSS — 44px hit area + visible dot + pulse + tap-friendly tooltip:
+
+.nlp3d-hotspot-hit{
+  display:grid; place-items:center;
+  width:44px; height:44px;                 /* WCAG 2.5.5 + Material 48dp safe */
+  background:transparent; border:0; padding:0; cursor:pointer;
+  transform:translate(-50%,-50%);          /* centers on data-position */
+  position:relative;
+}
+.nlp3d-hotspot-hit[aria-disabled="true"]{cursor:default}
+.nlp3d-hotspot-dot{
+  width:16px; height:16px; border-radius:50%;
+  border:2px solid #fff; box-shadow:0 1px 6px rgba(0,0,0,.5);
+  background:#3ddc84;                       /* default: available */
+  transition:transform .15s ease;
+}
+.is-reserved .nlp3d-hotspot-dot{background:#f2c14e}
+.is-sold     .nlp3d-hotspot-dot{background:#9aa0a6; opacity:.55}
+.nlp3d-hotspot-hit:hover .nlp3d-hotspot-dot,
+.nlp3d-hotspot-hit:focus-visible .nlp3d-hotspot-dot{transform:scale(1.25)}
+
+/* The pulse: ONLY recommended + available */
+.is-available.is-recommended .nlp3d-hotspot-dot{
+  box-shadow:0 0 0 0 rgba(61,220,132,.65), 0 1px 6px rgba(0,0,0,.5);
+  animation:nlPulse 1.8s ease-out infinite;
+}
+@keyframes nlPulse{
+  0%{box-shadow:0 0 0 0 rgba(61,220,132,.65), 0 1px 6px rgba(0,0,0,.5)}
+  70%{box-shadow:0 0 0 14px rgba(61,220,132,0), 0 1px 6px rgba(0,0,0,.5)}
+  100%{box-shadow:0 0 0 0 rgba(61,220,132,0), 0 1px 6px rgba(0,0,0,.5)}
+}
+@media (prefers-reduced-motion: reduce){
+  .nlp3d-hotspot-dot,.is-available.is-recommended .nlp3d-hotspot-dot{animation:none!important; transition:none!important}
+}
+
+/* Small floor·rooms tag always visible on desktop, hidden on mobile (room is tight) */
+.nlp3d-hotspot-tag{
+  position:absolute; top:calc(50% + 14px); right:50%; transform:translateX(50%);
+  white-space:nowrap; font-size:11px; color:#fff;
+  background:rgba(7,15,16,.78); padding:2px 6px; border-radius:3px; pointer-events:none;
+}
+@media (max-width:760px){ .nlp3d-hotspot-tag{display:none} }
+
+/* Tooltip — appears on hover (desktop) AND tap (mobile). JS toggles .is-open on click. */
+.nlp3d-hotspot-tip{
+  position:absolute; bottom:calc(50% + 30px); right:50%; transform:translateX(50%);
+  min-width:200px; max-width:260px; padding:10px 12px; pointer-events:none;
+  background:rgba(7,15,16,.92); color:#fff; border:1px solid rgba(234,216,163,.36);
+  font-size:13px; line-height:1.45; display:grid; gap:2px;
+  opacity:0; transition:opacity .15s ease;
+  -webkit-backdrop-filter:blur(10px); backdrop-filter:blur(10px);
+  background-color:rgba(7,15,16,.86); /* Edge mobile fallback if blur unsupported */
+}
+.nlp3d-hotspot-hit:hover .nlp3d-hotspot-tip,
+.nlp3d-hotspot-hit:focus-visible .nlp3d-hotspot-tip,
+.nlp3d-hotspot-hit.is-open .nlp3d-hotspot-tip{opacity:1}
+.nlp3d-hotspot-tip .nlp3d-price{color:#ead8a3}
+JS — tap toggles tooltip, click selects (do NOT add a second selector — call existing selectUnit):
+
+document.addEventListener('click', function(e){
+  var h = e.target.closest('.nlp3d-hotspot-hit'); if (!h) return;
+  if (h.getAttribute('aria-disabled') === 'true') { e.preventDefault(); return; }
+  // First tap (no other tip open): just show tip. Second tap (already open): select.
+  var alreadyOpen = h.classList.contains('is-open');
+  document.querySelectorAll('.nlp3d-hotspot-hit.is-open').forEach(function(n){ n.classList.remove('is-open'); });
+  if (!alreadyOpen) { h.classList.add('is-open'); }
+  else { selectUnit(h.dataset.unit, 'hotspot'); }            // existing fn
+});
+document.addEventListener('keydown', function(e){
+  if (e.key === 'Escape') document.querySelectorAll('.is-open').forEach(n=>n.classList.remove('is-open'));
+});
+This is the "tap-to-preview, second-tap-to-commit" pattern — solves "no hover on mobile" cleanly, and reduces accidental selects.
+
+Gate before slice 3: screenshot shows clearly distinct status colors, recommended units pulse (and STOP pulsing under prefers-reduced-motion), hover tooltip on desktop, tap shows tooltip on mobile, second tap selects, sold units don't activate, every hotspot button has a 44×44px hit area (verify in DevTools).
+
+SLICE 3 — selected-apartment card becomes the hero action panel
+Why: Right now the card is small, low-right, and feels secondary. Owner: "I picked this, here's what's next" must be the dominant moment.
+
+Desktop (≥1180px): dock top-left of the stage, narrower than half-width.
+Tablet (768–1180): docked but below stage top, full-width of console column.
+Mobile (<760): sticky bottom sheet (NN/g pattern), peek mode by default with primary CTA visible, drag/tap chevron to expand. Per Smart Interface Design Patterns + NN/g: bottom edge is reachable + the persistent CTA stays in thumb zone.
+
+/* Desktop dominance */
+.nlp3d.nlp3d-premium .nlp3d-stage-card[hidden]{display:none!important}
+.nlp3d.nlp3d-premium .nlp3d-stage-card{
+  position:absolute; top:18px; left:18px; right:auto; bottom:auto;
+  width:min(360px, calc(50% - 36px));
+  z-index:12; pointer-events:none;                 /* let drag pass through whitespace */
+  background:linear-gradient(145deg,rgba(8,20,20,.92),rgba(7,13,12,.78));
+  border:1px solid rgba(234,216,163,.42);
+  box-shadow:0 22px 48px rgba(0,0,0,.42);
+  padding:16px; display:grid; gap:10px; color:#fff7df;
+  -webkit-backdrop-filter:blur(14px); backdrop-filter:blur(14px);
+}
+.nlp3d-stage-card *{pointer-events:auto}            /* but buttons/links DO click */
+.nlp3d-stage-card-title{font-family:Georgia,serif; font-size:clamp(22px,2vw,28px); font-weight:500; line-height:1.15}
+.nlp3d-stage-card-stats{display:grid; grid-template-columns:repeat(3,1fr); gap:6px}
+.nlp3d-stage-card-stats span{min-height:44px; display:flex; align-items:center; justify-content:center; border:1px solid rgba(234,216,163,.22); padding:6px 8px; font-size:12px; color:#fff3c8}
+.nlp3d-stage-card-stats span[data-kind="estimate"]::after{content:" · אומדן"; opacity:.8; font-size:10px}
+.nlp3d-stage-card-actions{display:grid; grid-template-columns:repeat(3,1fr); gap:8px}
+.nlp3d-stage-card-actions button{min-height:44px; border:1px solid rgba(234,216,163,.36); background:rgba(255,255,255,.06); color:#ffe8a6; font-weight:700; cursor:pointer}
+.nlp3d-stage-card-actions .nlp3d-stage-inquiry{border:0; background:linear-gradient(135deg,#ead8a3,#b99043); color:#15120c}
+
+/* Mobile sticky bottom sheet */
+@media (max-width:760px){
+  .nlp3d.nlp3d-premium .nlp3d-stage-card{
+    position:fixed; left:0; right:0; bottom:0; top:auto; width:auto; max-height:60vh;
+    border-radius:14px 14px 0 0; padding:14px 14px 18px; transform:translateY(calc(100% - 110px));
+    transition:transform .22s ease;
+  }
+  .nlp3d.nlp3d-premium .nlp3d-stage-card.is-expanded{transform:translateY(0)}
+  .nlp3d.nlp3d-premium .nlp3d-stage-card::before{
+    content:""; display:block; width:44px; height:4px; background:rgba(255,255,255,.42);
+    border-radius:2px; margin:0 auto 10px; cursor:grab;
+  }
+  /* Always-visible CTA in peek mode */
+  .nlp3d-stage-card-actions{grid-template-columns:1fr 1fr}
+  .nlp3d-stage-card-actions .nlp3d-stage-inquiry{grid-column:1 / -1; order:-1}
+}
+JS for the sheet: drag handle toggles .is-expanded; auto-collapse on outside tap; respect aria-expanded.
+
+Three actions, fixed labels (no funnel words):
+
+פרטים מלאים → opens detail overlay (existing modal)
+מבט מהדירה → switches to Mapbox view (existing toggle)
+דברו עם היזם → opens lead/WhatsApp with unit attached (use existing /nadlan/v1/lead)
+Gate: at 1440 the card is clearly the primary thing after selection (top-left, dominant, sharp), at 390 the bottom sheet shows a peek with the gold CTA always visible, drag-to-expand works, sold units never open the card.
+
+SLICE 4 — progressive disclosure of advanced controls (toolbar cleanup)
+Why: Owner: "too many small controls too early." NN/g progressive disclosure: hide advanced until the primary task is done.
+
+Always visible (small toolbar over the model):
+
+סובב מודל (rotate) — only icon button on the model
+איפוס מבט (reset)
+Appears AFTER an apartment is selected (tabs in the action card):
+
+מבט מהדירה (Mapbox view from this unit)
+שמש וכיוונים (sun/orientation)
+סביבה (neighborhood overlays)
+<div class="nlp3d-toolbar">
+  <button class="nlp3d-tool" data-tool="rotate" aria-label="סובב מודל">⟳ סובב</button>
+  <button class="nlp3d-tool" data-tool="reset"  aria-label="איפוס מבט">↺ איפוס</button>
+</div>
+<!-- inside .nlp3d-stage-card when a unit is selected -->
+<nav class="nlp3d-stage-tabs" role="tablist">
+  <button role="tab" data-tab="details">פרטים</button>
+  <button role="tab" data-tab="view">מבט מהדירה</button>
+  <button role="tab" data-tab="sun">שמש</button>
+  <button role="tab" data-tab="around">סביבה</button>
+</nav>
+Each toolbar button stays ≥44×44px (min-height:44px; min-width:44px). Toolbar uses flex-wrap:wrap so it never overflows on mobile.
+
+Gate: with no selection only 2 buttons visible on the model. After selection, the 4-tab strip appears inside the card. Mobile toolbar never overflows.
+
+SLICE 5 — CMS editability so a contractor can run their own project (the monetization unlock)
+Why: "contractor can pay us" needs the contractor to edit their own units/prices/status without you. Today the units are JSON in a meta field — power-user only. Make it a proper repeater UI in the existing project metabox.
+
+Schema per unit (this is now the canonical contract — write it into skills/skill-3d-model-pipeline.md AND docs/owner-manual-project-showroom.md):
+
+{
+  "id": "31",
+  "floor": 12, "rooms": 5, "sqm": 138, "view": "ים ודרום",
+  "status": "available",                   // available|reserved|sold
+  "status_he": "זמין",
+  "recommended": true,
+  "recommended_label": "נוף לים",
+  "price_estimate": "₪7.5M",               // never use without "אומדן · לא מחייב"
+  "hotspot_position": "2.1 18.5 1.4",
+  "hotspot_normal":   "0 0 1",
+  "floor_plan": "https://.../plan-5br.svg",
+  "view_url":   "https://.../view-from-31.jpg"
+}
+Admin metabox (repeater, no jQuery dependency):
+
+One row per unit with chips for status (זמין/שמורה/נמכרה), checkbox for recommended, and a small "פתח" button to expand the other fields.
+"הוסף דירה" button at the bottom adds a row. "מחק" per row (with confirm).
+Save serializes back to the project_3d_units JSON meta. Do not invent a new storage — same field, better editor.
+Validation server-side: status must be one of available|reserved|sold; price_estimate is free text; everything else trimmed.
+Where: new file inc/project-3d-units-metabox.php (single responsibility), included from nadlan-config.php. Reuse wp_kses_post/sanitize_text_field per field.
+
+Gate: a contractor opens the project in WP admin, sees a clean list of units with status chips, edits one row, hits "Update," reloads — value persisted, public page reflects change after cache clear. No JSON typing required.
+
+SLICE 6 — contractor communication seam (the lead, with unit attached)
+Why: Owner: "some kind of communication with the contractor." This is the bridge from "looking" to "money."
+
+From the selected-apartment card's דברו עם היזם button:
+
+Open a small inline form (or modal) — prefilled with the selected unit's id/floor/rooms.
+Submit posts to existing /nadlan/v1/lead with source: 'showroom-unit' and unit:{id,floor,rooms,sqm,price_estimate}.
+WhatsApp shortcut (tracked, with unit context):
+$msg = rawurlencode("שלום, התעניינתי בדירה {$unit['id']} בקומה {$unit['floor']} בפרויקט Rainbow Tel Aviv. אשמח לפרטים על מחיר וזמינות.");
+$href = "https://wa.me/{$developer_e164}?text={$msg}";
+After submit: success toast "פנייתך נשמרה. נחזור אליך תוך 24 שעות." Track GA4 generate_lead with unit_id. Don't say "ליד" anywhere public.
+Developer WhatsApp is a CMS field per project (project_developer_whatsapp_e164). No project = no button. Document in owner manual.
+
+What NOT to do (real traps)
+Don't add WebXR/AR yet. model-viewer supports it free, but it expands surface area before the buyer experience is solid. Park it.
+Don't autoplay sound in any video tile. Mute by default.
+Don't add loading="eager". Keep auto. The 922KB GLB doesn't need to ship on first paint of every project page.
+Don't merge the SEO content paste into this PR. Title/meta + dossier blocks A/B/C are a separate slice — keep blast radius small.
+Don't add Cesium / Photorealistic Tiles yet. Cost ($6/CPM after 1k free) + complexity. Park.
+Don't replace the unit hotspot system with model-viewer's native annotation slot for now — the existing CSS overlay buttons are easier to style, accessible, and you already have them. Use the slot, keep the button-with-tooltip pattern above.
+Your gate (Chrome, yourself, screenshots, green or not done)
+For each slice at 1440 / 768 / 390 + Edge-mobile UA:
+
+Above-fold: intro H2 visible before the model. Model stage clearly smaller.
+Status colors distinct; recommended pulses; reduced-motion respected.
+Tap on mobile shows tooltip; second tap selects. Sold units do nothing.
+Selected-apartment card dominant (desktop) / peek sheet with sticky CTA (mobile).
+Toolbar has 2 buttons before selection, 4 tabs after.
+CMS repeater: editing a unit changes the public page.
+WA + lead include unit context.
+No console errors. One H1. No class= leaks. No horizontal overflow. Healthcheck advances and projects_with_glb≥1 stays true.
+Documentation (same commit as the code, or it doesn't ship)
+skills/project-3d-sales-experience.md: status taxonomy, hotspot pattern, sheet pattern, tab order. Locked contract.
+skills/skill-3d-model-pipeline.md: unit JSON schema above (the canonical one).
+docs/owner-manual-project-showroom.md: contractor's step-by-step (add unit → set status → mark recommended → save). Screenshots from your QA.
+skills/project-page-premium-showroom-runbook.md: post-deploy verification commands + the 8 gate items.
+On Classic Editor (owner asked)
+Don't recommend it long-term. It papers over a metabox problem; the fix is the slice 5 repeater. Classic Editor as a temporary aid is fine if a contractor is stuck — say so in the manual — but the durable answer is a clean plugin UI. Document it that way.
+
+On the "factory" / one-shot a new project (honest)
+You CAN one-shot a prototype-grade project today: research, Hebrew SEO copy, generated massing GLB (OSM/Blosm), unit JSON with status/recommended/price-estimate, schema, Chrome QA, manual. All marked "הדמיה / אומדן לא מחייב."
+You CANNOT honestly one-shot an official-grade project without source material (BIM/GLB, real prices, real availability, legal permission). When you don't have those, every number wears "אומדן · לא מחייב" and every visual wears "הדמיה."
+Build the factory pipeline: source brief → project data file (per-unit schema above) → generated/real GLB → CMS fields filled → SEO page → Chrome QA → publish checklist. After slice 5 + 6 ship, you can prototype-one-shot the next project in a day; official-grade is fields-only when materials arrive.
+
+Sources: WCAG 2.5.5 / Material 48dp tap targets · NN/g Progressive Disclosure · NN/g Bottom Sheets · filter chips for unit status (UXPin) · model-viewer hotspots · L-TOUCH (sold/reserved/available pattern) · Render Vision selector

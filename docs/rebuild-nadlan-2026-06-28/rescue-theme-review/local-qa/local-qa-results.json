@@ -1,0 +1,74 @@
+[
+  {
+    "name": "home-1440",
+    "file": "preview-home.html",
+    "width": 1440,
+    "lang": "he",
+    "dir": "rtl",
+    "nlRoot": 1,
+    "oldStatic": 0,
+    "oldP3d": 0,
+    "modelViewer": 0,
+    "horizontalOverflow": false,
+    "bannedVisible": [
+      "?"
+    ],
+    "h1": 1,
+    "title": "פרויקטים חדשים בשדה דב",
+    "errors": []
+  },
+  {
+    "name": "ashira-he-1440",
+    "file": "preview-ashira-he.html",
+    "width": 1440,
+    "lang": "he",
+    "dir": "rtl",
+    "nlRoot": 1,
+    "oldStatic": 0,
+    "oldP3d": 0,
+    "modelViewer": 1,
+    "horizontalOverflow": false,
+    "bannedVisible": [
+      "?"
+    ],
+    "h1": 1,
+    "title": "Ashira · תצוגת פרויקטים",
+    "errors": []
+  },
+  {
+    "name": "ashira-en-1440",
+    "file": "preview-ashira-en.html",
+    "width": 1440,
+    "lang": "en",
+    "dir": "ltr",
+    "nlRoot": 1,
+    "oldStatic": 0,
+    "oldP3d": 0,
+    "modelViewer": 1,
+    "horizontalOverflow": false,
+    "bannedVisible": [
+      "?"
+    ],
+    "h1": 1,
+    "title": "Ashira · Project showroom",
+    "errors": []
+  },
+  {
+    "name": "ashira-he-390",
+    "file": "preview-ashira-he.html",
+    "width": 390,
+    "lang": "he",
+    "dir": "rtl",
+    "nlRoot": 1,
+    "oldStatic": 0,
+    "oldP3d": 0,
+    "modelViewer": 1,
+    "horizontalOverflow": false,
+    "bannedVisible": [
+      "?"
+    ],
+    "h1": 1,
+    "title": "Ashira · תצוגת פרויקטים",
+    "errors": []
+  }
+]

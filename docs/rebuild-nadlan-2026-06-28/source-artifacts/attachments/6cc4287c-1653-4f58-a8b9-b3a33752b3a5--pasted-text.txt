@@ -1,0 +1,82 @@
+This is a research + gap-analysis + PRD mission — no coding, prove the code scan with real citations, web-research best practices, map every user journey, find the gaps, and deliver something you can actually look at. Let me start with Cycle 1: the full code scan — and I'll cite real file:line evidence so you can verify I actually read it.
+
+Ran
+Cycle 1a: full module inventory
+52 modules, 11,062 lines. Now scanning the specific capabilities you asked about — roles, geo-location, premium placement/boost, recurring billing, AI — with exact file:line citations so you can verify.
+
+Ran
+Cycle 1b: scan roles, geo, premium placement
+Two major gaps already surfacing (with citations) — let me verify them precisely plus scan billing + AI:
+
+Ran
+Cycle 1c: verify boost gap, geo gap, billing model, AI provider
+Four major gaps now PROVEN with citations. Let me finish the value-delivery scan, then web-research best practices + GitHub solutions.
+
+Ran
+Cycle 1d: value delivery, lead routing, self-management, store
+Code scan complete with hard citations — and it surfaced exactly the gaps you suspected. Before I build the deliverable, Cycle 2: web research — best practices + ready-to-use GitHub solutions for each gap. Running parallel searches.
+
+
+Browsed the web
+Both have ready GitHub solutions. Two more searches — paid-placement/boost patterns + OpenAI agent integration.
+
+
+Browsed the web
+Every gap has a proven cause AND a ready solution. Now Cycles 3–5: building the deliverable — not just markdown, but an interactive readiness dashboard you can look at, with the capability matrix (cited evidence), the user journeys, the gap-closing plan with exact file paths + code, per-role QA, and the GitHub solutions. Writing it now.
+
+Ran
+Final scan: lead notification, trial, product-tier mapping
+Complete picture, fully cited. Now building the interactive deliverable. Writing the readiness dashboard.
+
+Created
+2026-06-04-system-readiness-gap-map.html
++227
+-0
+Now rendering the dashboard to images so you can look at it in chat.
+
+Ran
+Render gap-map dashboard to images
+Full dashboard rendered (5499px). Let me crop it into readable sections with PIL.
+
+
+Ran a command, read a file
+The dashboard renders beautifully. Let me commit it and send you all sections.
+
+Committed
+Commit gap map
+Sent
+SYSTEM READINESS & GAP MAP — code-verified, every status traces to a real file:line. Sections 1-2: the verdict + capability matrix. The headline: "the plumbing exists, the two pipes that print money are NOT connected." Revenue-ready = 61%. Open the HTML in the repo (docs/2026-06-04-system-readiness-gap-map.html) for the clickable version with source links.
+
+sec1.png
+sec2.png
+Sent
+Sections 3-4: the 3 user journeys (where each user hits a wall — red ✕), the 6 gaps with EXACT file paths + fix code (e.g. GAP 1 = directory.php sort, GAP 3 = OpenAI adapter for ai-concierge.php), the per-role QA/authority matrix, the build order, and cited GitHub solutions for every gap.
+
+sec3.png
+sec4.png
+Done — all 5 cycles, no coding (analysis only, per your brief). Here's what you have:
+
+Proof I scanned the full code
+52 modules / 11,062 LOC. Every status pill in the dashboard cites a real file:line you can open and verify. Examples:
+
+Paid placement broken → directory.php:83,568 (sort = menu_order,date, never paid_tier) + advertiser-orders.php writes 0 menu_order
+AI on wrong vendor → ai-concierge.php:184 (api.anthropic.com, model claude-haiku-4-5), 0 OpenAI references
+One-charge not recurring → advertiser-orders.php:103,131,154
+No custom roles → 0 add_role(); only manage_options vs owner_user_id
+The honest verdict
+Revenue-ready = 61%. The plumbing exists (premium cards, value gating, checkout now works, self-serve listing create/edit). But the two pipes that print money aren't connected: (1) paying doesn't actually rank you higher, (2) no auto-renew. Plus AI is wired to Anthropic when you have OpenAI.
+
+The 6 gaps — each with file path + fix code + a ready GitHub solution
+Paid → boost rank (directory.php, ~1hr) — the #1 fix
+Lead → advertiser's inbox (conversion-cta.php, ~2hr)
+Renewal (advertiser-orders.php — annual+reminder OR wpswings/subscriptions-for-woocommerce)
+OpenAI adapter (ai-concierge.php — unblocks your talking-avatar vision)
+Geo "near me" search (new module via birgire/geo-query — Haversine, uses our existing lat/lng)
+Roles & authorities (new module — for zero-touch delegation)
+Per-role QA + authority matrix
+Anonymous / Registered-free / Paid / Manager / Admin — each with "must do," "must NOT do," and auto-checks. This is the roles/authorities layer you said we never touched.
+
+Deliverables in the repo
+docs/2026-06-04-system-readiness-gap-map.html — the interactive dashboard (clickable source links)
+docs/2026-06-04-e2e-revenue-qa-script.md — the runnable QA script
+I did not write a single line of site code — this is the PRD/gap map you asked for. When you say "go" (and tell me whether you want me or Codex to build it), I start with GAP 1 (make paying actually boost rank) since it makes the product you already sell finally work. Want me to also build the OpenAI connection next so you can see the avatar/agent vision come alive?

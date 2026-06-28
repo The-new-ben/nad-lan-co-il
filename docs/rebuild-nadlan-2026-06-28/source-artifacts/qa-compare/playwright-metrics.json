@@ -1,0 +1,184 @@
+{
+  "urls": {
+    "liveHome": "https://nad-lan.co.il/?cb=visualcompare-20260628",
+    "liveAshira": "https://nad-lan.co.il/projects/ashira-sde-dov/?cb=visualcompare-20260628",
+    "mockHome": "file:///C:/Users/pro/Documents/websites/nad-lan-co-il-pr2/handoff/claude-design/2026-06-27-showroom-engine/home.html",
+    "mockAshira": "file:///C:/Users/pro/Documents/websites/nad-lan-co-il-pr2/handoff/claude-design/2026-06-27-showroom-engine/project.html"
+  },
+  "results": {
+    "live-home-desktop-full": {
+      "url": "https://nad-lan.co.il/?cb=visualcompare-20260628",
+      "shotPath": "C:\\Users\\pro\\AppData\\Local\\Temp\\nadlan-design-compare-2026-06-28\\live-home-desktop-full.png",
+      "metrics": {
+        "url": "https://nad-lan.co.il/?cb=visualcompare-20260628",
+        "title": "דירות חדשות ופרויקטים עם בחירת דירה בתלת ממד | NadLan",
+        "lang": "he-IL",
+        "dir": "rtl",
+        "h1Count": 1,
+        "nlRoot": 0,
+        "nlv2": 0,
+        "nlp3d": 0,
+        "modelViewer": 0,
+        "horizontalOverflow": false,
+        "scrollWidth": 1440,
+        "clientWidth": 1440,
+        "bodyHeight": 4720
+      },
+      "errorCount": 0,
+      "errors": []
+    },
+    "mock-home-desktop-full": {
+      "url": "file:///C:/Users/pro/Documents/websites/nad-lan-co-il-pr2/handoff/claude-design/2026-06-27-showroom-engine/home.html",
+      "shotPath": "C:\\Users\\pro\\AppData\\Local\\Temp\\nadlan-design-compare-2026-06-28\\mock-home-desktop-full.png",
+      "metrics": {
+        "url": "file:///C:/Users/pro/Documents/websites/nad-lan-co-il-pr2/handoff/claude-design/2026-06-27-showroom-engine/home.html",
+        "title": "פרויקטים חדשים בשדה דב",
+        "lang": "he",
+        "dir": "rtl",
+        "h1Count": 1,
+        "nlRoot": 1,
+        "nlv2": 0,
+        "nlp3d": 0,
+        "modelViewer": 0,
+        "horizontalOverflow": false,
+        "scrollWidth": 1440,
+        "clientWidth": 1440,
+        "bodyHeight": 1917
+      },
+      "errorCount": 0,
+      "errors": []
+    },
+    "live-ashira-desktop-full": {
+      "url": "https://nad-lan.co.il/projects/ashira-sde-dov/?cb=visualcompare-20260628",
+      "shotPath": "C:\\Users\\pro\\AppData\\Local\\Temp\\nadlan-design-compare-2026-06-28\\live-ashira-desktop-full.png",
+      "metrics": {
+        "url": "https://nad-lan.co.il/projects/ashira-sde-dov/?cb=visualcompare-20260628",
+        "title": "דירות למכירה באשירה שדה דב · תצוגת פרויקטים",
+        "lang": "he",
+        "dir": "rtl",
+        "h1Count": 1,
+        "nlRoot": 1,
+        "nlv2": 0,
+        "nlp3d": 0,
+        "modelViewer": 1,
+        "horizontalOverflow": false,
+        "scrollWidth": 1440,
+        "clientWidth": 1440,
+        "bodyHeight": 17795
+      },
+      "errorCount": 0,
+      "errors": []
+    },
+    "mock-ashira-desktop-full": {
+      "url": "file:///C:/Users/pro/Documents/websites/nad-lan-co-il-pr2/handoff/claude-design/2026-06-27-showroom-engine/project.html",
+      "shotPath": "C:\\Users\\pro\\AppData\\Local\\Temp\\nadlan-design-compare-2026-06-28\\mock-ashira-desktop-full.png",
+      "metrics": {
+        "url": "file:///C:/Users/pro/Documents/websites/nad-lan-co-il-pr2/handoff/claude-design/2026-06-27-showroom-engine/project.html",
+        "title": "Ashira · תצוגת פרויקטים",
+        "lang": "he",
+        "dir": "rtl",
+        "h1Count": 1,
+        "nlRoot": 1,
+        "nlv2": 0,
+        "nlp3d": 0,
+        "modelViewer": 1,
+        "horizontalOverflow": false,
+        "scrollWidth": 1440,
+        "clientWidth": 1440,
+        "bodyHeight": 5223
+      },
+      "errorCount": 2,
+      "errors": [
+        "Fetch API cannot load file:///C:/Users/pro/Documents/websites/nad-lan-co-il-pr2/handoff/claude-design/2026-06-27-showroom-engine/engine/models/ashira.glb. URL scheme \"file\" is not supported.",
+        "TypeError: Failed to fetch\n    at Zl.load (https://ajax.googleapis.com/ajax/libs/model-viewer/4.0.0/model-viewer.min.js:17:506510)\n    at Ru.load (https://ajax.googleapis.com/ajax/libs/model-viewer/4.0.0/model-viewer.min.js:528:4494)\n    at https://ajax.googleapis.com/ajax/libs/model-viewer/4.0.0/model-viewer.min.js:570:5680\n    at new Promise (<anonymous>)\n    at https://ajax.googleapis.com/ajax/libs/model-viewer/4.0.0/model-viewer.min.js:570:5657\n    at DA.preload (https://ajax.googleapis.com/ajax/libs/model-viewer/4.0.0/model-viewer.min.js:570:5698)\n    at DA.load (https://ajax.googleapis.com/ajax/libs/model-viewer/4.0.0/model-viewer.min.js:570:5915)\n    at i (https://ajax.googleapis.com/ajax/libs/model-viewer/4.0.0/model-viewer.min.js:983:3365)\n    at new Promise (<anonymous>)\n    at oy.setSource (https://ajax.googleapis.com/ajax/libs/model-viewer/4.0.0/model-viewer.min.js:983:3264)"
+      ]
+    },
+    "live-home-mobile-full": {
+      "url": "https://nad-lan.co.il/?cb=visualcompare-20260628",
+      "shotPath": "C:\\Users\\pro\\AppData\\Local\\Temp\\nadlan-design-compare-2026-06-28\\live-home-mobile-full.png",
+      "metrics": {
+        "url": "https://nad-lan.co.il/?cb=visualcompare-20260628",
+        "title": "דירות חדשות ופרויקטים עם בחירת דירה בתלת ממד | NadLan",
+        "lang": "he-IL",
+        "dir": "rtl",
+        "h1Count": 1,
+        "nlRoot": 0,
+        "nlv2": 0,
+        "nlp3d": 0,
+        "modelViewer": 0,
+        "horizontalOverflow": false,
+        "scrollWidth": 390,
+        "clientWidth": 390,
+        "bodyHeight": 9086
+      },
+      "errorCount": 0,
+      "errors": []
+    },
+    "mock-home-mobile-full": {
+      "url": "file:///C:/Users/pro/Documents/websites/nad-lan-co-il-pr2/handoff/claude-design/2026-06-27-showroom-engine/home.html",
+      "shotPath": "C:\\Users\\pro\\AppData\\Local\\Temp\\nadlan-design-compare-2026-06-28\\mock-home-mobile-full.png",
+      "metrics": {
+        "url": "file:///C:/Users/pro/Documents/websites/nad-lan-co-il-pr2/handoff/claude-design/2026-06-27-showroom-engine/home.html",
+        "title": "פרויקטים חדשים בשדה דב",
+        "lang": "he",
+        "dir": "rtl",
+        "h1Count": 1,
+        "nlRoot": 1,
+        "nlv2": 0,
+        "nlp3d": 0,
+        "modelViewer": 0,
+        "horizontalOverflow": false,
+        "scrollWidth": 390,
+        "clientWidth": 390,
+        "bodyHeight": 2664
+      },
+      "errorCount": 0,
+      "errors": []
+    },
+    "live-ashira-mobile-full": {
+      "url": "https://nad-lan.co.il/projects/ashira-sde-dov/?cb=visualcompare-20260628",
+      "shotPath": "C:\\Users\\pro\\AppData\\Local\\Temp\\nadlan-design-compare-2026-06-28\\live-ashira-mobile-full.png",
+      "metrics": {
+        "url": "https://nad-lan.co.il/projects/ashira-sde-dov/?cb=visualcompare-20260628",
+        "title": "דירות למכירה באשירה שדה דב · תצוגת פרויקטים",
+        "lang": "he",
+        "dir": "rtl",
+        "h1Count": 1,
+        "nlRoot": 1,
+        "nlv2": 0,
+        "nlp3d": 0,
+        "modelViewer": 1,
+        "horizontalOverflow": false,
+        "scrollWidth": 390,
+        "clientWidth": 390,
+        "bodyHeight": 25364
+      },
+      "errorCount": 0,
+      "errors": []
+    },
+    "mock-ashira-mobile-full": {
+      "url": "file:///C:/Users/pro/Documents/websites/nad-lan-co-il-pr2/handoff/claude-design/2026-06-27-showroom-engine/project.html",
+      "shotPath": "C:\\Users\\pro\\AppData\\Local\\Temp\\nadlan-design-compare-2026-06-28\\mock-ashira-mobile-full.png",
+      "metrics": {
+        "url": "file:///C:/Users/pro/Documents/websites/nad-lan-co-il-pr2/handoff/claude-design/2026-06-27-showroom-engine/project.html",
+        "title": "Ashira · תצוגת פרויקטים",
+        "lang": "he",
+        "dir": "rtl",
+        "h1Count": 1,
+        "nlRoot": 1,
+        "nlv2": 0,
+        "nlp3d": 0,
+        "modelViewer": 1,
+        "horizontalOverflow": false,
+        "scrollWidth": 390,
+        "clientWidth": 390,
+        "bodyHeight": 5808
+      },
+      "errorCount": 2,
+      "errors": [
+        "Fetch API cannot load file:///C:/Users/pro/Documents/websites/nad-lan-co-il-pr2/handoff/claude-design/2026-06-27-showroom-engine/engine/models/ashira.glb. URL scheme \"file\" is not supported.",
+        "TypeError: Failed to fetch\n    at Zl.load (https://ajax.googleapis.com/ajax/libs/model-viewer/4.0.0/model-viewer.min.js:17:506510)\n    at Ru.load (https://ajax.googleapis.com/ajax/libs/model-viewer/4.0.0/model-viewer.min.js:528:4494)\n    at https://ajax.googleapis.com/ajax/libs/model-viewer/4.0.0/model-viewer.min.js:570:5680\n    at new Promise (<anonymous>)\n    at https://ajax.googleapis.com/ajax/libs/model-viewer/4.0.0/model-viewer.min.js:570:5657\n    at DA.preload (https://ajax.googleapis.com/ajax/libs/model-viewer/4.0.0/model-viewer.min.js:570:5698)\n    at DA.load (https://ajax.googleapis.com/ajax/libs/model-viewer/4.0.0/model-viewer.min.js:570:5915)\n    at i (https://ajax.googleapis.com/ajax/libs/model-viewer/4.0.0/model-viewer.min.js:983:3365)\n    at new Promise (<anonymous>)\n    at oy.setSource (https://ajax.googleapis.com/ajax/libs/model-viewer/4.0.0/model-viewer.min.js:983:3264)"
+      ]
+    }
+  }
+}

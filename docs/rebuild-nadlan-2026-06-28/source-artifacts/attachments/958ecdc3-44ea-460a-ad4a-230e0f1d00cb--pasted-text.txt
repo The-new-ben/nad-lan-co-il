@@ -1,0 +1,72 @@
+Understood — I'll be the research engine and Codex's navigator, not write code myself. Let me pull real data on the technologies the owner named (Zillow/Booking patterns, WhatsApp funnels, Israeli neighborhood data, performance, RTL) and turn it into concrete, code-level guidance. Loading research tools and checking on my still-running skills-inventory agent.
+
+Used ToolSearch
+Let me run the high-value research in parallel — the WhatsApp funnel (your cross-site problem), Zillow/Booking neighborhood-data patterns, Israeli open-data sources, RTL/Mapbox, and Core Web Vitals.
+
+
+Browsed the web
+Strong data. Now the implementation specifics — WhatsApp webhook signature/verification code, Core Web Vitals for ranking, Yoast Hebrew 100%, and the Mapbox RTL exact snippet:
+
+
+Browsed the web
+Excellent research in hand. Let me ground the two highest-value workstreams (WhatsApp funnel + amenity data) against the actual current code before I write Codex's brief — so I tell him what to enhance vs build:
+
+Ran
+Ground WhatsApp and amenity guidance against current code
+I now have everything grounded in the actual code. Two key reconciliations: (1) there is no inbound WhatsApp webhook in the tree (only wa.me buttons via conversion-cta.php/owner-config-rest.php) — so the owner's "WhatsApps that go nowhere" problem is genuinely unsolved; (2) nearby-poi.php already queries OSM Overpass for schools/kindergartens/transit and renders Hebrew labels — the Zillow-style data is 80% built, it just needs walk/transit scoring + activation. Writing the full code-level brief to the plan file now.
+
+Edited
+buzzing-sprouting-toucan.md
++164
+-5
+Here's the full steering brief for Codex — researched, grounded against the actual code, and code-ready. The complete sequenced version is in the plan file; this is the hand-to-Codex version.
+
+First — status on what Codex has done
+PR #160 (v1.61.1) is verified sound — I ran the full gate (php -l clean ×3, JS check, ZIP integrity, runtime-proved the nlpf insertion no longer splits the tag, versions aligned). Safe to merge.
+Two things I confirmed are NOT actually done despite the v1.61.0 PR notes: there is no inbound WhatsApp webhook (only wa.me buttons — replies still go nowhere), and the investor schema isn't emitting (price_range + official_site_url meta are empty, so AggregateOffer + sameAs never fire). The SEO seed got 3/5 content phrases.
+Good news he can build on: nearby-poi.php already pulls schools/kindergartens/transit from OpenStreetMap — the Zillow-style data is 80% there.
+The goal = measurable 100% (paste this to Codex as the target)
+One visible H1, headlines sitting with their text (no RTL push-right break), no exposed code, no blank gaps · 3D tower that looks like the building and rotates freely 360° · real price + availability · neighborhood data (schools/transit/gov) · a video/live-call window · WhatsApp taps that land in the funnel · Yoast 100% green · Core Web Vitals all "Good" (LCP ≤2.5s / INP ≤200ms / CLS ≤0.1) · every pattern documented so the next project is one-shot.
+
+Ship in waves, not one mega-PR
+v1.62.0 RENDER & TRUST — RTL render fix, card dock, breadcrumbs+intro on top, schema-meta seed, Yoast pass (what you see as "looks good + ranks")
+v1.63.0 3D & MEDIA — free rotation, real building, video/Zoom window
+v1.64.0 DATA & FUNNEL — walk/transit score panel, WhatsApp webhook, international SEO
+PERF & REPLICATE — CWV pass, runbook + skills locked for the next one-shot
+Code for the highest-value pieces
+① RTL render — the "headlines pushed right / breaking" + mobile Edge fix. It's physical CSS props + missing Edge fallbacks:
+
+.nlpf,.nadlan-guide,.nlp3d,.nlpoi{direction:rtl;unicode-bidi:isolate}
+.nlpf h1,.nadlan-guide h2,.nadlan-guide h3{text-align:start;margin-inline:0;text-wrap:balance;overflow-wrap:anywhere}
+.nlp3d-stage-card,.nlp3d-console{-webkit-backdrop-filter:blur(16px);backdrop-filter:blur(16px);background-color:rgba(7,15,16,.86)}
+@supports not ((backdrop-filter:blur(1px)) or (-webkit-backdrop-filter:blur(1px))){.nlp3d-stage-card{background:rgba(7,15,16,.96)}}
+Wrap Latin/number tokens inside Hebrew in <bdi>Rainbow</bdi>, <bdi>₪5.5M</bdi> so they don't flip.
+
+② 3D free rotation — the clamp at project-3d.php ~line 1190 (Math.max(-68,Math.min(68,angle))) is why it won't turn. Replace with angle=(angle%360+360)%360, keep the 3 buttons as presets, add inertia on drag-release.
+
+③ Mapbox Hebrew labels (must call BEFORE new mapboxgl.Map):
+
+mapboxgl.setRTLTextPlugin('https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-rtl-text/v0.3.0/mapbox-gl-rtl-text.js', null, true);
+④ WhatsApp funnel — the cross-site fix. Outbound gets tracked text; inbound gets a real webhook into the existing /nadlan/v1/lead funnel (full PHP in the plan file, the security-critical parts):
+
+// tracked click-to-WA
+$href = "https://wa.me/{$owner_e164}?text=".rawurlencode("היי, הגעתי מדף Rainbow (יחידה {$unit}). פרטים על מחיר וזמינות?");
+// inbound webhook MUST verify Meta's HMAC and reply 200 fast, then reuse nadlan_lead_e2e_capture()
+$calc='sha256='.hash_hmac('sha256',$req->get_body(),get_option('nadlan_wa_app_secret'));
+if(!hash_equals($calc,$_SERVER['HTTP_X_HUB_SIGNATURE_256']??'')) return new WP_REST_Response('bad sig',401);
+Build it option-driven so it ports to the owner's other sites — that's skill-whatsapp-lead-funnel.md.
+
+⑤ Zillow-style score from POI data already fetched (nearby-poi.php): count + weight amenities → 0-100 walk/transit badges, render "הליכתיות 82 · תחבורה 90" with distances. Attribute "© OpenStreetMap contributors" (ODbL).
+
+⑥ CWV: <link rel="preload" as="image" fetchpriority="high"> the hero, WebP, never lazy-load the LCP image, width/height on all images, keep Mapbox/video load on-interaction-only.
+
+⑦ Investor schema: seed 6 meta fields (price_range, price_min=5500000, price_max=30000000, official_site_url=https://rainbowtlv.com/, amenities, project_faq_json) from dossier §1 → AggregateOffer + FAQPage + sameAs light up with zero new code.
+
+Skills you two document together (one per workstream)
+design-rtl-hebrew.md (update) · project-3d-sales-experience.md (rotation+realism) · new: skill-project-media-window.md, skill-whatsapp-lead-funnel.md (portable), skill-neighborhood-data.md, skill-international-seo.md, skill-core-web-vitals.md, skill-yoast-100-hebrew.md — all feeding the A-to-Z project-page-premium-showroom-runbook.md whose DoD is: a new project hits 100% by filling fields only, zero new code.
+
+I'll gate each wave in a real browser at 1440/768/390 + Edge-mobile UA, as the buyer and the contractor, with an honest verified-vs-not statement each time.
+
+Sources: Mapbox RTL · WhatsApp funnel (AiSensy) · WhatsApp webhook security (ChatArchitect) · Zillow Walk/Transit Score sources · GTFS Israel (gov.il) · Core Web Vitals 2025/26 · Yoast Hebrew keyphrase
+
+One open question before Codex starts cutting code: my recommended sequence front-loads render + SEO trust (v1.62.0) because that's the fastest path to "looks good and ranks," and defers the 3D rotation/media to v1.63.0. If you'd rather Codex fix the 3D model first (since that's the most visible "it doesn't look like the building" complaint), tell me and I'll re-order the brief — otherwise he should start with Wave 1.

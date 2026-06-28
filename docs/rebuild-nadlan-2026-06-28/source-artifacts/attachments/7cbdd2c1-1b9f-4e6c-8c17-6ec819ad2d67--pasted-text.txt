@@ -1,0 +1,46 @@
+Skill: SERP reverse-engineering article generation (Google + AI search)
+> Authored by Claude (Cowork agent), 2026-05-29, dictated by the site owner and enriched with live research. This is the standard operating procedure for producing every article on nad-lan.co.il (and the owner's other sites). Goal: rank in Google organic AND get cited by AI answer engines (ChatGPT, Gemini, AI Overviews). Follow it every time; do not write articles "from imagination".
+Core principle
+The search results show what Google has already decided satisfies a query. We reverse-engineer the first page, then produce content that serves the full intent better and deeper, structured so both Google and AI bots can extract it. Confirmed by research: AI engines cite content rich in statistics, quotations and citations far more than opinion, and the overlap between Google's top 10 and AI-cited sources is now under 20%, so we target both deliberately.
+STEP 1 - Pick the keyword (anti-cannibalization first)
+Pull the target keyword from `strategy-master.md` clusters (the keywords we are fighting for).
+One primary keyword = one page. Before writing, confirm no existing page already targets it (search the site / REST `pages?search=`). If a close page exists, either improve that page or pick a distinct angle. Never publish two pages chasing the same intent - Google will not rank both, and they split authority.
+Decide pillar vs spoke: high-volume / broad head term = pillar; specific long-tail question or sub-topic = spoke that links up to its single pillar parent.
+STEP 2 - Reverse-engineer the live SERP (the heart of the method)
+Search the keyword (Google, Hebrew, il). Capture and analyze the first page:
+Intent & format. What ranks: guides/blogs (informational), product/service pages (transactional), comparisons/reviews (commercial), homepages (navigational)? Match the dominant format. Note SERP features present (Featured snippet, People Also Ask, AI Overview, image pack, map, video).
+Titles & descriptions. Record the top 5-8 title tags and meta descriptions. Our title and description must be in the same family (same head terms, same promise) but sharper. Mirror the pattern that's winning.
+Headings. Extract the H1, H2s and H3s of the top 3-5 results. The recurring sections are the topics Google expects covered. Our outline must cover all of them, then add what's missing (the gap we win on).
+First paragraph. Read the opening paragraph of the top results. Compose a similar (not copied) opening that directly answers/sets up the query - this is the snippet-eligible zone.
+Numerical / factual data. Absorb current, updated numbers (prices, yields, rates, dates, % changes, regulation dates). Re-verify each against a primary source and date it. Data density is what AI bots float.
+People Also Ask. Record every PAA question. Each becomes an H2/H3 or an FAQ entry, answered in a tight 40-60 word snippet-style block right under the heading.
+Suggested / related keywords. The autocomplete suggestions and the "related searches" at the bottom of the page are what people actually search. Feed them into the pillar as sections, or spin the important ones into spokes that link to the pillar.
+Images. Note what images the top pages and image pack show (maps, charts, property photos, comparison graphics). We generate/source visually equivalent images so Google reads them as topically relevant; add descriptive Hebrew alt text with the keyword.
+STEP 3 - Build the outline + the ChatGPT prompt
+From Step 2, assemble the brief and hand it to ChatGPT (Pro) in the browser. The prompt must explicitly contain:
+The exact title pattern + meta description to emulate.
+The full H2/H3 outline (union of competitors' headings + the gaps + the PAA questions).
+The verified data points to include (with their sources and dates).
+The list of related keywords to weave in naturally (no stuffing).
+Snippet instruction: under each question heading, give a direct 40-60 word answer first, then elaborate.
+GEO instruction: include concrete statistics, dated facts, and a "מקורות" section with linked citations (this is what gets cited by AI).
+Formatting: clean HTML (h2/h3/p/ul/li + at least one comparison table), Hebrew RTL, no em-dashes, no AI-tell phrases, do NOT mention the owner is a lawyer.
+Ask ChatGPT to also propose a relevant featured image concept (and generate it if useful) that matches what the SERP shows.
+STEP 4 - Minimum standards (a page does not ship below these)
+Length: spoke ≥ 2,000 words; pillar ≥ 3,000 words. Longer is fine and encouraged where the SERP shows depth. Never thin.
+Data: at least 8-12 concrete, dated, sourced data points; at least one comparison table.
+Snippet targets: every PAA question answered in a direct 40-60 word block.
+Structure: single H1, logical H2/H3, intro that answers the query, FAQ section, "מקורות" with links.
+Schema: Article + FAQPage (and BreadcrumbList) so AI/Google parse it.
+Internal links: spoke links up to its one pillar; pillar links down to each spoke; ≥2 contextual internal links.
+Voice: Hebrew RTL, no em-dashes, no AI-tell phrases, no lawyer reference until owner clears it.
+Image: ≥1 relevant image with keyworded Hebrew alt text.
+STEP 5 - Publish + interlink + ping
+Publish in WordPress, set Yoast title/description from the SERP-matched pattern, wire hub-spoke links both ways, add to nav, confirm schema. IndexNow pings on publish.
+STEP 6 - Cannibalization ledger
+Maintain the map in `skill-article-map-and-workflow.md`: every published page + its single target keyword. Before any new article, check the ledger. If two pages drift toward the same keyword, consolidate or re-angle. The strategic doc's cannibalization map (section 2.7) is binding.
+Workflow status
+ChatGPT Pro is reachable and drivable in the connected browser (verified 2026-05-29). Limited usage time, so batch efficiently: do the SERP analysis first, then one well-formed prompt per article rather than many small ones.
+The scheduled task `nadlan-spoke-articles` (Mon/Thu 9am) should follow THIS skill: SERP-analyze the country keyword first, then prompt ChatGPT, then publish.
+Sources
+SERP analysis: searchenginejournal.com SERP analysis guide; clickrank.ai search intent 2026. GEO/AEO: Princeton-backed GEO research (quotations +41%, statistics +32%, citations +30%, fluency +28%); frase.io AEO guide; llmrefs.com GEO 2026.

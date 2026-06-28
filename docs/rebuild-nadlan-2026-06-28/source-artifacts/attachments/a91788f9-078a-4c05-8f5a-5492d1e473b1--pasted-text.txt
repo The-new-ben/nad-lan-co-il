@@ -1,0 +1,271 @@
+Gating #211 — different lane (theme, not plugin), needs its own check:
+
+Ran
+Gate PR211 — theme-only public trust cleanup
+Gate green. Merging:
+
+Used github: merge pull request
+Merged at 1046722.
+
+Stage 1 public-trust cleanup — done in git, not yet on live
+check	result
+Scope = theme only (no plugin) per M10	✅
+Mini-cart removed on non-commerce only	✅ (cart/checkout/account/product/shop pages all explicitly preserved)
+"More posts" suppressed on singles	✅
+/join-pro/ "WooCommerce / coming soon" copy removed	✅ (4 internal strings deleted)
+php -l + JS node --check	✅ clean
+15 baseline screenshots committed (M11)	✅ in docs/qa/screenshots/stage1-public-trust-before/
+Honesty: "after" screenshots correctly deferred to post-deploy	✅
+One owner action — theme deploy path (per M10)
+This is a theme change, so the plugin updater does not ship it. You need:
+
+UPress server → Git pull on the theme → clear cache.
+
+Then the live page will:
+
+Stop showing the WooCommerce mini-cart on non-commerce pages
+Stop saying "WooCommerce / coming soon" on /join-pro/
+Stop showing "More posts" on project / professional / property singles
+Have one H1 instead of two on /join-pro/ and /sitemap/
+Commerce pages (cart, checkout, account, product, shop) are explicitly preserved — verified in the diff.
+
+State
+main      : 1046722
+plugin    : 1.68.2  ·  live: 1.68.2 ✓ (in sync — fully deployed)
+theme     : 1046722 in git, awaiting your server git pull
+open PRs  : —
+discipline: 18 mistake rules codified (M1–M15+)
+After your server pull, Codex re-runs the screenshot QA against live and only then proceeds to the Dimri showroom slice. That's the order.
+
+Rest well. Loop is closed at git; one server-pull click is the last thing standing between Stage 1 and live. 2026-06-19T23:55Z
+
+Baseline capture is taking longer than expected, likely from full-page screenshots across long pages. I’m giving it another interval; if it hangs, I’ll inspect the partial output and tighten the script.
+
+
+
+
+Baseline completed: 15 screenshots, leak count 183, console errors 9. I’m checking process exit and then reading the report to identify the exact leak sources.
+
+
+
+
+Baseline is saved. Now I’m summarizing the report by page so the first fix is driven by evidence.
+
+
+
+
+Baseline evidence is clear: the biggest visible leak is the WooCommerce mini-cart/notification surface on every public page, plus internal WooCommerce/coming-soon copy on Join Pro, and “More posts” on Dimri/project pages. I’m reading the exact source regions now.
+
+
+
+
+Source confirms three clean, surgical fixes for this first slice: remove mini-cart from the public header pattern, remove Join Pro internal WooCommerce/coming-soon note and public WooCommerce wording, and stop rendering “More posts” on single project/professional/property pages at template source. I’m reading the header pattern before editing.
+
+
+
+
+
+Context automatically compacted
+
+
+
+I’m synced to the supervisor’s instruction: Stage 1 only, public trust cleanup first. I’m continuing from the baseline screenshots and leak report already captured, and I’ll keep this surgical: no Dimri facade/Mapbox work until this trust PR is ready.
+
+
+
+
+I’m using the NadLan growth and visual QA rules here because this slice is exactly public trust, SEO hygiene, and screenshot proof. First I’m re-checking the actual source of the leaks so I fix the emitting code, not just hide symptoms.
+
+
+
+
+The baseline is clear: the biggest trust leak is the WooCommerce mini-cart/notification block appearing on ordinary public pages, plus public Join Pro copy that says “WooCommerce / coming soon.” I’m narrowing the fix to those emitters and the “More posts” CPT tail, so we don’t damage real checkout/cart pages.
+
+
+
+
+I found the mini-cart is not coming from the theme header file itself; it’s a WooCommerce block being rendered into public pages. The safer fix is a source-level render filter: remove Woo commerce blocks/notices only on non-commerce pages, while leaving cart, checkout, account, and product pages untouched.
+
+
+
+
+The screenshots already prove the issue is visible, not theoretical: public pages show a mini-cart button “0” and “להתחיל לקנות”; /join-pro/ exposes implementation words and a “coming soon” warning; Dimri exposes “More posts.” I’m editing exactly those sources now.
+
+
+
+
+I’m making the change before more QA: one helper to distinguish real commerce surfaces from public content, one render filter to remove Woo chrome on public pages, one source-level suppression of “More posts” on project/property/professional singles, and public wording cleanup on Join Pro.
+
+
+
+
+Edited a file
+
+
+The first code pass is in. I’m linting now, then I’ll run the same screenshot QA as “after” so we compare the actual browser output against the baseline rather than trusting the code.
+
+
+
+
+I’m also fixing two obvious page-quality defects from the baseline: /join-pro/ and /sitemap/ both render duplicate H1s because the template title and the page body title appear together. That’s safe to fix in the same trust slice because it’s the same public-rendering cleanup.
+
+
+
+
+Edited a file
+
+
+One small QA tool adjustment next: the current leak count mixes visible text with hidden CSS/script filenames. I’m keeping the raw matches, but separating visible/public leaks from background asset strings so the acceptance gate is fair and still strict.
+
+
+
+
+I’m not weakening the QA; I’m making it more honest. The report will still keep raw HTML hits, but it will separately count visible leaks and visible Woo components/buttons, which is what a buyer actually sees and what this slice is fixing.
+
+
+
+
+Edited a file
+
+
+The QA script now reports both raw and visible leak counts. I’m checking syntax, then I’ll update the coordination log with exactly what is fixed in source and what still requires live theme deployment for after screenshots.
+
+
+
+
+The source checks pass so far: PHP lint is clean, and the public Join Pro wording no longer contains the internal WooCommerce/coming-soon message in the theme source. I’m doing the final local diff checks and then I’ll log the exact proof and remaining deploy dependency.
+
+
+
+
+I’m going to refresh the baseline with the improved QA script so the PR has a clean, current “before” report with visible leak counts. This is still baseline only; true after screenshots need the theme code live after merge and UPress git pull.
+
+
+
+
+The local QA rerun hit the same sandbox limitation on Chrome’s local DevTools endpoint. I’m rerunning it escalated because this is the screenshot proof step; without that approval the browser can launch but the script can’t talk to its own local CDP port.
+
+
+
+
+The QA command is running now with the approved prefix saved, so future screenshot passes for this script should not keep asking. I’m waiting for the run to complete and then I’ll record the refreshed baseline numbers.
+
+
+
+
+The baseline screenshot run is still alive; it’s capturing 15 full-page screenshots, so this can take a minute. I’m not changing code while it runs.
+
+
+
+
+One coordination issue surfaced: true “after” screenshots cannot be honest until this theme branch is merged and pulled on UPress, because the QA target is the live site. Per the supervisor protocol, I’m escalating that exact point before I convert this into a PR, so we don’t pretend baseline screenshots are proof of a fix.
+
+
+
+
+I hit a coordination limitation, not a code blocker: the supervisor thread is a ChatGPT web conversation, and the Chrome-control tool surface available here did not expose a direct “type into that tab” action. I’m not going to fake that I sent a message. The precise escalation is recorded here: true after screenshots require live theme deployment; I’m proceeding to package the PR with baseline screenshots and source/test proof, and the PR will state that post-merge UPress git pull is required before after screenshots can be captured.
+
+
+
+
+I’m updating the shared billboard now with the honest status: baseline screenshots captured, source cleanup implemented, and true after-screenshots explicitly marked as post-merge/theme-pull proof rather than pretending local code is already live.
+
+
+
+
+PowerShell on this machine doesn’t support Get-Date -AsUTC; I’m using the compatible UTC call instead and continuing.
+
+
+
+
+I’m adding a concise Stage 1 trust-cleanup plan/status section before the older Dimri release notes, so Claude and future Codex sessions see the current slice first.
+
+
+
+
+Edited a file
+
+
+The coordination log now names the deploy boundary instead of hiding it. I’m doing one visual spot-check of the baseline screenshots, then I’ll stage and commit this trust slice.
+
+
+
+
+The baseline screenshot confirms the public damage clearly: cart/account icons in the header and visible “WooCommerce / coming soon” copy on Join Pro. The code change removes those sources; after merge and server pull we’ll capture the same viewport again to prove the page is clean.
+
+
+
+
+All local gates for this slice are clean. I’m staging exactly the trust-cleanup files, baseline screenshots, and QA harness now, then committing one focused slice.
+
+
+
+
+Staged. I’m committing now with the scope limited to Stage 1 public trust cleanup; no Dimri showroom code or plugin ZIP changes are included.
+
+
+
+
+The staged set is correct: theme cleanup, QA script, coordination log, and baseline screenshots only. Committing it now.
+
+
+
+
+Committed. I’m pushing the branch now so Claude can review the exact artifact; I still won’t start the Dimri showroom slice until this trust cleanup is handed off and reviewed.
+
+
+
+
+The branch is pushed. I need to update the existing PR from “coordination-only” to the actual Stage 1 trust cleanup scope so the review target is clear.
+
+
+
+
+I found the GitHub PR update tool. I’m updating PR #211’s title/body now so Claude sees this as the public trust cleanup PR, not just the earlier coordination note.
+
+
+
+
+Update pull request on PR #211
+
+
+
+
+
+PR #211 is now ready-for-review and correctly scoped. I’m doing one final local status check; then I’ll stop before the next slice, as instructed, because the next action is Claude gate/merge and then live theme pull for after screenshots.
+
+
+
+
+
+
+
+Stage 1 public trust cleanup is done and pushed.
+PR: #211 Stage 1 public trust cleanup for non-commerce pages
+What I changed:
+Removed WooCommerce mini-cart/notification chrome from non-commerce public pages.
+Cleaned /join-pro/ public copy so it no longer says WooCommerce, coming soon, or internal payment-readiness text.
+Suppressed More posts on project/property/professional singles.
+Fixed duplicate H1 on /join-pro/ and /sitemap/.
+Added screenshot QA script and committed 15 baseline screenshots.
+Checks run:
+php -l functions.php clean
+node --check scripts/qa-stage1-public-trust.mjs clean
+git diff --check clean except normal CRLF warnings
+Baseline screenshots captured at 1440 / 768 / 390
+Honesty statement: I did not fake “after” screenshots. This is a theme change, so true after-proof requires Claude merge, UPress theme git pull, cache clear, then rerun screenshots.
+Next: Claude reviews/merges PR #211. After live theme pull, I rerun the screenshot QA and only then move to the Dimri showroom slice.
+
+COORDINATION.mdDocument · MDOpen previewOpen in
+
+Edited 3 files+440-27Review changesUndoReview
+
+nad-lan-co-il-showroom-1680/scripts/qa-stage1-public-trust.mjs+350-0
+nad-lan-co-il-showroom-1680/functions.php+73-27
+nad-lan-co-il-showroom-1680/COORDINATION.md
+
+Already handled — PR #211 is merged (last turn, 1046722). Nothing pending from me.
+
+One-line state: main 1046722 · plugin live 1.68.2 ✓ · Stage 1 trust cleanup in git, awaiting your UPress theme git pull + cache clear (theme path, not plugin). After your pull, Codex captures the real "after" screenshots, then moves to the Dimri slice.
+
+Holding. No new work until the pull is done or you direct otherwise.

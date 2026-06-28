@@ -1,0 +1,47 @@
+That's a real revenue leak and it deserves the full treatment. Launching a dedicated deep-research agent on WhatsApp→funnel ingestion right now, and giving you the architecture I already see — because half of this we can build this week on what we own.
+
+WhatsApp lead ingestion research
+Agent
+Research running. Here's the architecture I'm already confident in — the research will verify the details, but you should know the shape now because there's one hard constraint that decides everything:
+
+The constraint nobody tells you
+Your number 052-510-1555 cannot be both your normal WhatsApp app AND an automated API number. Moving it to the official WhatsApp Cloud API kills the phone app for that number. And the "unofficial" tools that automate a normal WhatsApp (Green API, Baileys bridges, the things Israeli CRM resellers quietly use) carry a real risk of Meta banning the number — your personal line with years of contacts. That's a hard no from me on your main number, regardless of what any vendor promises.
+
+So the answer is two tracks:
+
+Track 1 — ship this week, zero risk, zero subscriptions: "Share-to-Funnel"
+You get a WhatsApp lead → long-press the message → Share → "NadLan לידים" (an iPhone Shortcut / Android share target I'll set up with you) → done. Two taps, no login, no copy-paste, stays in WhatsApp.
+
+Behind it: a new secured REST endpoint on the site receives the shared text → gpt-4o-mini parses it (name, phone, what they're looking for, budget, which site it came from) → creates a lead in the funnel → and then everything we already built fires automatically: instant ack, AI qualification (your scorer is live — avg 70, hot-lead detection working), routing, nurture. The lead that today dies in your chat list becomes a scored, routed, followed-up funnel lead in ~10 seconds.
+
+This also solves "smart": the parser handles messy Hebrew messages, half-details, forwarded text — and anything ambiguous lands as a lead flagged "needs detail," where your existing AI bot's questioning flow takes over.
+
+Track 2 — next step: a second, dedicated WhatsApp number for the machine
+Keep 052 personal forever. Get a cheap dedicated number on the official Cloud API (Meta's inbound service conversations are effectively free at your volume) — that number goes on the site's WhatsApp buttons, and every inbound message hits a webhook → straight into the funnel with zero taps, AI replies in WhatsApp using our OpenAI key, hot leads escalate to your personal WhatsApp. Fully legal, zero ban risk, fully automated. The research agent is pricing Israeli virtual numbers and confirming Meta's current free tiers.
+
+Monetization (the part you asked about)
+Every captured WhatsApp lead enters the routing engine where your paid tiers already exist — leads route to premier advertisers first, that's the product. Plus: AI-scored 80+ leads become the "verified hot buyer" inventory for the deal-team attach (lawyer/mortgage/inspector intros at flat fees — the legally-clean revenue from my earlier research). Your WhatsApp chaos is literally unmonetized inventory; the funnel is the meter.
+
+Research lands in ~10 minutes with verified costs and the exact shortcut recipe. The Track-1 build is small (one module + one shortcut), all on infrastructure we own — I can have it gated and dark behind a flag this evening, after Codex's 1.60.3 lands so we don't collide. Dock CTA will use wa.me/972525101555 until Track 2's dedicated number exists, then the site buttons switch to the machine number.
+
+Multilingual research is in — saving it to the repo per the knowledge-capture rule while the other two agents (dock, WhatsApp) finish.
+
+
+Ran 2 commands, created a file
+Background agent completed
+Floating contact dock research
+· 5m 19s
+
+Created a file, ran a command
+Two of three research reports are saved to the repo (claude/research-i18n-dock-whatsapp branch — off Codex's path). Quick read on what they settle:
+
+Floating dock (v1.61.0) — fully specced and buildable with zero subscriptions:
+
+Bottom-left in RTL (Israeli convention keeps the accessibility widget right — no collision), WhatsApp as the hero action (98% Israeli penetration), labeled Hebrew chips not bare icons, WAI-ARIA disclosure pattern with the exact keyboard/focus contract.
+The speaking avatar is solvable with our OpenAI key: browser TTS physically can't drive lip-sync (verified — its audio never enters the Web Audio graph), but OpenAI tts-1 audio through an <audio> element CAN — true amplitude-synced mouth animation on a 2D SVG face, pennies per utterance, browser-TTS fallback for free. Voice is opt-in by design.
+Your number wired as wa.me/972525101555 + tel:+972525101555, with the property title auto-included in the prefilled message.
+Translation — the verdict: Polylang Pro (€99/year license, not a SaaS), units data stays one shared language-neutral source so apartments can't be "sold in Hebrew, available in Russian," and machine translation through our own key costs under $1 for 100 articles × 3 languages. First fully-translated project page ≈ 22–30 hours (one-time string extraction dominates); every project after ≈ 2–4 hours. Codex deferring it out of the hotfix was right; it slots in as its own gated slice.
+
+The WhatsApp lead-rescue research (the one that matters most for your lost leads) is still running — it's verifying the ban-risk reality of the unofficial bridges, current Meta pricing for the two-number architecture, and the exact iPhone-Shortcut recipe for the share-to-funnel path. I'll save and summarize the moment it lands.
+
+Meanwhile nothing blocks you: when Codex's 1.60.3 draft PR is up, tell me and I gate it against live DOM immediately.

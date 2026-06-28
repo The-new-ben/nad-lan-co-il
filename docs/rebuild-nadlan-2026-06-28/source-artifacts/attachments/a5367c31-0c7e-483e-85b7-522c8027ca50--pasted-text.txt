@@ -1,0 +1,147 @@
+NEXT MISSION — implement the gap-map fixes for nad-lan.co.il
+
+Read first (canonical, just merged to main):
+  docs/2026-06-04-system-readiness-gap-map.html   — interactive PRD
+  docs/2026-06-04-e2e-revenue-qa-script.md        — the QA you must pass
+
+Skim these too:
+  AGENTS.md · skills/copywriting-skill.md · skills/strategy-master.md
+  skills/nadlanmaster-anatomy-and-attack.md · skills/url-namespace-contract.md
+
+Live state today (do not assume it changed):
+  Plugin: 1.42.7 (active) · WooCommerce coming-soon DISABLED
+  Theme branch with Codex revenue layer + my reconciliation deployed
+  Revenue path /join-pro/ → /cart/ → /checkout/ is functional (place-order live)
+  4 paid SKUs (476/477/489/490), Morning gateway: card/Bit/GPay/Apple all enabled
+
+YOUR JOB: implement the 6 gaps in priority order. ONE plugin PR per gap,
+in this exact sequence (do NOT bundle):
+
+──────────────────────────────────────────────────────────────────
+GAP 1 — Paid placement boost (the #1 thing; revenue-critical)
+File: plugins/nadlan-config/inc/directory.php (lines 76-86 AND 560-570)
+Effort: ~1 hour
+Spec:
+  - Replace the 'featured' sort branch in BOTH nadlan_dir_query (pros)
+    AND nadlan_dir_project_query (projects). Add a posts_clauses filter
+    that LEFT JOINs postmeta on paid_tier and ORDER BYs:
+      FIELD(meta_value,'premier','pro') DESC, post_date DESC
+  - Keep menu_order as a SECONDARY tiebreaker so manually pinned cards still win.
+  - Add a unit-style PHP test or curl that proves a premier card ranks
+    above a free card with a newer date.
+  - Bump plugin to 1.42.8.
+QA: docs/...qa-script.md §1.2 + §1.3 — Pro card must appear in top 6
+on /projects/ AJAX REST `/wp-json/nadlan/v1/projects?sort=featured`.
+
+──────────────────────────────────────────────────────────────────
+GAP 2 — Lead → advertiser email
+File: plugins/nadlan-config/inc/conversion-cta.php (after line 109)
+Effort: ~2 hours
+Spec:
+  - After update_post_meta($lid,'lead_card_id',$card_id), look up the
+    card's owner_user_id AND paid_tier. If tier IN ('pro','premier') AND
+    owner exists, wp_mail() the owner with the lead details (Hebrew copy
+    per copywriting-skill.md — NO 'lead' word, NO em-dash, allowed-list
+    CTA only).
+  - Skip if owner is the same user as the requester (self-test guard).
+  - Add `lead_routed_to_owner = 1` meta so we can audit later.
+  - Bump plugin to 1.42.9.
+QA: post to /nadlan/v1/lead with a card_id whose owner is a known test user
+→ that user receives email within 60s.
+
+──────────────────────────────────────────────────────────────────
+GAP 3 — Renewal path (annual + reminder is the SAFE path)
+Files: plugins/nadlan-config/inc/advertiser-orders.php + new SKUs in Woo
+Effort: 1 day for Option A, 2-3 days for Option B
+DECISION REQUIRED FROM OWNER FIRST — do not start until owner picks:
+  Option A (recommended, zero new gateway risk):
+    - Add annual versions of 476/477/489/490 (one-time charge, longer days)
+    - 7-day pre-expiry email with a one-click /cart/?add-to-cart=<pid>
+    - Existing daily downgrade still runs; nothing else changes
+  Option B (true auto-renew):
+    - Verify Morning/Green-Invoice tokenizes cards for recurring (open Q)
+    - Integrate https://github.com/wpswings/subscriptions-for-woocommerce
+    - Big surface change; needs full E2E test with a real refund
+  Don't start until owner answers. If you push without an answer = wasted PR.
+
+──────────────────────────────────────────────────────────────────
+GAP 4 — OpenAI adapter for AI concierge (owner has OpenAI, not Anthropic)
+Files: plugins/nadlan-config/inc/ai-concierge.php (lines 179-187, 244-265)
+       plugins/nadlan-config/inc/ai-features.php (lines 53-60)
+Effort: ~half day
+Spec:
+  - Add option nadlan_ai_provider ∈ {openai, anthropic} (default openai)
+  - Add option nadlan_ai_openai_key (next to existing nadlan_ai_anthropic_key)
+  - In nadlan_ai_request(), branch on provider:
+      openai → POST api.openai.com/v1/chat/completions
+               model 'gpt-4o-mini' (cheap + fast, like haiku)
+               Authorization: Bearer {key}
+               body: {model, messages, max_tokens}
+      anthropic → existing call (keep working)
+  - Update admin settings page to expose both keys + the provider radio.
+  - Default new installs to openai.
+  - Bump plugin to 1.42.10.
+QA: set the openai key in wp-admin → ask the concierge "מתי שווה לקנות
+דירה?" → response renders, no errors in PHP log, request goes to openai.com.
+
+──────────────────────────────────────────────────────────────────
+GAP 5 — Geo-radius "near me" search
+New file: plugins/nadlan-config/inc/geo-search.php
+Effort: ~1 day
+Spec:
+  - Drop in the Haversine pattern from https://github.com/birgire/geo-query
+    (MIT license — vendor under plugins/nadlan-config/lib/ or reimplement
+    the ~80 LOC inline; don't add a Composer dep).
+  - Hook into the existing REST routes /nadlan/v1/directory and /projects:
+    if request has lat,lng,radius_km params → posts_clauses inject Haversine
+    LEFT JOIN postmeta lat/lng + HAVING distance <= radius.
+  - Default radius_km = 5 if not specified.
+  - Bump plugin to 1.42.11.
+QA: curl /wp-json/nadlan/v1/directory?lat=32.0853&lng=34.7818&radius_km=3
+returns only pros within 3km of Tel Aviv center; without the params, behaves
+identically to today.
+
+──────────────────────────────────────────────────────────────────
+GAP 6 — Roles & authorities (enables zero-touch delegation)
+New file: plugins/nadlan-config/inc/roles.php
+Effort: ~1 day
+Spec:
+  - Register 2 custom roles via add_role():
+      nadlan_advertiser: edit_own_card, upload_own_media, request_quote
+      nadlan_manager:    moderate_reviews, reassign_card, run_imports
+  - Replace blunt manage_options gates with cap-based checks:
+      studio-rest.php:28      → current_user_can('edit_own_card') || owner match
+      tiers.php:216           → current_user_can('manage_tiers')
+      studio-rest.php:339     → keep rate-limit; admins still bypass
+      similar in lead-ledger.php and ops-dashboard.php
+  - Activation hook adds the roles; deactivation removes them.
+  - Bump plugin to 1.42.12.
+QA: docs/...qa-script.md §3 + §4 — a nadlan_advertiser user CAN edit their
+own card but gets 403 on someone else's; a nadlan_manager can moderate
+reviews but cannot change billing settings.
+
+──────────────────────────────────────────────────────────────────
+DELIVERY RULES (read these or you'll waste PRs)
+- One gap per PR. One version bump per PR. NEVER bundle 2 gaps.
+- Branch off origin/main FRESH for each PR (never reuse a branch across gaps).
+- PHP lint MUST pass on every changed file (php -l).
+- ZIP MUST be rebuilt with forward-slash paths (zip -r on Linux, NEVER
+  tar.exe on Windows — broke us in 1.41.2).
+- Update plugin-dist/nadlan-config-X.Y.Z.zip AND plugin-dist/nadlan-config.json
+  in the same PR.
+- DO NOT TOUCH the theme (assets/css, functions.php, patterns/) — that's
+  the other lane. If you accidentally do, revert before opening the PR.
+- Open each PR as DRAFT, tag Claude, wait for review. Claude merges + asks
+  owner to click Update Now.
+
+ANTI-FAIL GUARDS:
+- Don't write a 5th spec doc. The PRD already exists. Build code.
+- Don't change copy without grepping the forbidden-words list in
+  skills/copywriting-skill.md §4.
+- If a tool hangs (Chrome browser bridge, REST upload), retry 3× then
+  switch tactics. Never give up silently.
+- "Try again" works (owner's standing instruction).
+
+When done with each PR: list the live URL(s) to verify + the exact curl/JS
+that should pass. Claude QA-checks against the qa-script, then merges.
+Start with GAP 1.

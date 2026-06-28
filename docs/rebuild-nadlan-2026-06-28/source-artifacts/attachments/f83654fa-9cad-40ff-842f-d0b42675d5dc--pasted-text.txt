@@ -1,0 +1,115 @@
+ROLE
+You are the build engineer for nad-lan.co.il (Hebrew real-estate authority site,
+public repo the-new-ben/nad-lan-co-il). I (Claude) own the deploy/review lane.
+You own the coding lane. We have one shared rulebook for this build:
+
+  docs/2026-06-04-master-architecture-build-bible.md   ← READ THIS FIRST, IN FULL.
+
+It is the AUTHORITATIVE PLD + architecture + design + code reference. Everything
+below points back to it. Where this prompt and the bible disagree, the bible wins.
+
+NON-NEGOTIABLE GUARDRAILS
+1. You NEVER push to main. You NEVER merge. You open DRAFT PRs only. I review,
+   apply, and deploy. You build the last mile; I take it from the branch.
+2. One gap = one branch = one draft PR. Branch naming: codex/gap2-lead-routing,
+   codex/gap4-ai-provider, codex/gap5-geo-search, codex/gap6-roles,
+   codex/gap3-recurring.
+3. NEVER commit secrets. This is a PUBLIC repo. No API keys, no app passwords,
+   no WP passwords, no IPN secrets in code. Secrets live in WP options / env only.
+   Keys are read at runtime via get_option(); the repo only references the option
+   name, never the value.
+4. Plugin lane only for these gaps: plugins/nadlan-config/. Do NOT touch the
+   theme (assets/css premium files, functions.php homepage, patterns/) — that is
+   my lane. If a gap needs a theme hook, leave a documented filter/action and note
+   it in the PR body for me to wire.
+5. Honor the existing conventions: custom REST namespace nadlan/v1, paid_tier meta
+   as single source of truth (free/pro/premier), copywriting-skill.md rules (no
+   em-dash, no internal/dev words in user-facing strings, CTA allow-list).
+6. Bump the plugin version header on every functional PR so I can verify the
+   deployed build via healthcheck.
+
+THE 10-CYCLE METHOD (apply to EVERY gap, as defined in the bible)
+Do not one-shot. For each gap run all ten cycles and show your work in the PR body:
+  C1  Foundation   – data model, option keys, hooks, file scaffolding
+  C2  Happy path   – core function works end to end
+  C3  Edge cases   – the documented edge list for that gap (bible has them)
+  C4  Idempotence  – re-entrancy / double-fire safety (esp. webhooks, cron)
+  C5  Security     – nonce/cap checks, secret verification, sanitize/escape
+  C6  Failure mode – what happens when the external call fails / times out
+  C7  Observability– logging to the gap's log option, admin-visible
+  C8  Performance  – indexes, query cost, no N+1, bounded loops
+  C9  Premium UX   – the user-facing surface is Rolls-Royce, not a mock
+  C10 Hardening    – final review pass, remove dead code, tighten types
+Each gap's PR body must contain a per-cycle checklist (C1..C10) marked done with a
+one-line note each, plus a manual QA/curl proof.
+
+BUILD ORDER (do them one at a time, in this exact order)
+  1) GAP 2 — Lead routing            (inc/lead-routing.php)
+  2) GAP 4 — AI provider abstraction (inc/ai-concierge.php → OpenAI adapter)
+  3) GAP 5 — Geo "near me" search    (inc/geo-search.php, Haversine)
+  4) GAP 6 — Roles & capabilities    (inc/roles.php + migration)
+  5) GAP 3 — Recurring monetization  (inc/greeninvoice-recurring.php, FREE path)
+Stop after each gap, open the draft PR, and WAIT. I review and deploy before you
+start the next gap. Do not stack gaps in one branch.
+
+PER-GAP BRIEFS (full code + what/why/where/how is in the bible — these are anchors)
+
+GAP 2 — Lead routing
+  Today conversion-cta.php:109 stores lead_card_id but only emails the admin.
+  Build inc/lead-routing.php with nadlan_lead_route($lead) that: resolves the
+  card owner (owner_user_id), routes the lead to that owner (dashboard inbox +
+  notification), logs delivery to a nadlan_lead_log option, and falls back to
+  admin when the card is unclaimed. Owner-facing inbox UI in the dashboard.
+  Premium UX: a real lead inbox, not a raw dump.
+
+GAP 4 — AI provider abstraction
+  Today ai-concierge.php:184 hardcodes api.anthropic.com / claude-haiku-4-5.
+  The owner has an OpenAI key, NOT Anthropic. Build a provider switch
+  nadlan_ai_chat($messages) that reads a provider option (openai|anthropic),
+  defaults to OpenAI gpt-4o-mini, reads the key from get_option (option name
+  only in code), and adds a cost/usage guard + log. Keep the existing concierge
+  UI; just swap the backend cleanly behind the abstraction.
+
+GAP 5 — Geo "near me" search
+  Add inc/geo-search.php using the existing lat/lng card meta. Haversine
+  distance, a geo_query that orders by proximity, and a "near me" UI surface on
+  the directory. Respect paid placement (GAP 1, already live) — premium still
+  ranks within the geo result set, not bypassed.
+
+GAP 6 — Roles & capabilities
+  Add inc/roles.php: register the authority/advertiser/owner roles with proper
+  capabilities via add_role/map_meta_cap, plus a one-time migration that assigns
+  roles to existing users based on current meta (claim_status / paid_tier /
+  owner_user_id). Idempotent migration guarded by an option flag.
+
+GAP 3 — Recurring monetization (FREE PATH — this is the redesign)
+  DO NOT use WooCommerce Subscriptions (~$199/yr). Bridge Morning/Green-Invoice
+  NATIVE recurring standing orders (הוראות קבע) via a secret-verified IPN webhook.
+  Build inc/greeninvoice-recurring.php:
+    - REST route POST /nadlan/v1/gi-ipn → nadlan_gi_ipn_handler()
+    - Verify a shared secret (read from option, never in code), reject otherwise
+    - Idempotent: each charge processed once (dedupe key from the IPN payload)
+    - On successful charge, extend the card's campaign_end / re-affirm paid_tier
+    - Reference pattern: card_<id>_user_<uid>_tier_<tier>
+    - Append to nadlan_gi_charge_log option; expose an owner charge-log admin panel
+    - Reconciliation cron to catch missed IPNs
+    - Handle the 6 documented edge cases in the bible (failed charge, card
+      replaced, stopped order, duplicate IPN, unknown ref, tier mismatch)
+  Include a simulated-IPN curl in the PR body as proof.
+  NOTE the owner prerequisites (do NOT block on them — code defensively): owner
+  must create the Morning recurring-charge links, set the IPN secret option, and
+  confirm per-tier cycle days (default 31). Surface these as admin settings.
+
+CROSS-CUTTING — Owner Autopilot
+  Where the bible specifies it, feed each gap's signals (leads, AI usage/cost,
+  recurring charges, role changes) into the ops-dashboard "Autopilot" panel so
+  the owner can SEE the business running with zero code intervention.
+
+DELIVERABLE PER GAP
+  - One draft PR, correct branch name, plugin version bumped.
+  - PR body: C1..C10 checklist with notes + manual QA/curl proof + any theme
+    hooks left for me to wire.
+  - No secrets. No main pushes. No merges. Then STOP and wait for my review.
+
+Start with GAP 2 now. Read the bible section for GAP 2 first, then build all
+ten cycles, then open the draft PR and wait.

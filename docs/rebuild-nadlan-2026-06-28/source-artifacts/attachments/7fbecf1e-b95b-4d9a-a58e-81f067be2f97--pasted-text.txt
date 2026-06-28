@@ -1,0 +1,190 @@
+
+You want it kept — so I need to undo my removal, because PR #7 as it stands would delete that block. Let me restore the exact block that's live now, so merging PR #7 leaves your homepage identical (block stays) and only adds the footer + archive improvements:
+
+
+Edited a file, ran a command
+Done. Restored and pushed.
+
+Where things stand now
+Your homepage block stays exactly as it is — the 4-card "מה תמצאו כאן" block remains live and untouched. PR #7 no longer removes it.
+
+PR #7's net effect, once you merge it, is now only:
+
+Footer — expanded from 2 links to 4 (בעלי מקצוע · פרויקטים · מילון · קטלוג, with live counts)
+Archive pages (/professionals/, /projects/, /properties/) — the long blank lists become clean card grids
+Data cleanup — removes the ugly whitespace padding in the imported gov.il fields
+No homepage changes. No menu changes. Exactly what you asked.
+
+So to recap the confusion, plainly:
+The homepage block was live the whole time (you were seeing a cached page — try a hard refresh: Ctrl+Shift+R).
+"The listings" = the 2,702 contractors + 941 projects imported from gov.il. They live at /professionals/ and /urban-renewal/. The homepage block and footer are just links pointing to those pages.
+WooCommerce — dropped, not relevant right now.
+Whenever you're ready, merge PR #7 and update the plugin. Or if you'd rather I hold off entirely until you've looked around the live site first, just say so and I'll leave it on the branch.
+
+Okay, now I see it's okay, but most of the lists are not. They lead to a empty page and I see the glossary. I don't like it. It's like one big page and then pagination, and it's repeatable, repeatable. I don't like it so much. We have to find, uh, something more valuable to the website. Uh, I don't know.
+
+Let me diagnose the empty pages first — I want to see exactly what each link leads to before talking about what's more valuable:
+
+Ran
+Diagnose what each homepage link leads to
+Now I see the real problem clearly. Let me be straight with you:
+
+Why the pages are empty
+/professionals/ (2,702 contractors) and /projects/ (941 projects) render blank right now. The contractors/projects exist in the database, but your theme doesn't know how to display these list pages, so it shows nothing. PR #7 is the exact fix — it puts real cards on those pages — but it's not merged yet, so you're seeing the broken version.
+/urban-renewal/ is actually a text page, not the projects list — so the homepage "פרויקטים" card points to the wrong place. That's a bug I introduced; easy fix.
+/glossary/ — works, but it's the long A-Z "list + pagination, repeatable" thing you don't like.
+But you're right about the bigger thing
+A flat list with pagination is not valuable. Even if I fix the empty pages, "here are 2,702 contractors, page 1 of 135" is boring and nobody scrolls it. I agree.
+
+Here's the honest insight: the value of having 2,702 contractor pages and a glossary isn't the list page — it's two other things:
+
+Google traffic — each contractor/term is its own page that can rank when someone searches their name or a term. People arrive from Google directly onto the useful page, never touching the list.
+Search-first entry — instead of a list to scroll, a box: "find a contractor in your city, for your job."
+The flat list is just plumbing. We should stop treating it as the destination.
+
+So before I build anything else, I want your steer on direction:
+
+Asked
+Direction
+The directory has real value (2,702 pros, 941 projects) but flat lists are weak. Which direction feels right to pursue?
+
+[User dismissed — do not proceed, wait for next instruction]
+
+Right now I don't see... I only see the glossary, okay? I don't see when it says... It gives numbers, but when you press on, on the, on the cards, you only see, "Sorry, nothing was found." The glossary is one big page. Not designed. Projects. Where, where is all the... Where is all the things the, that co-work like where are, where are they? Where is all... I don't know. I'm not sure what's going on, man. I'm not, not sure. I don't know. You don't, you don't have ability to surf the internet, so you can't see what I see. Maybe you send co-work, but he can also not give you screenshots. Something is not... Like we have the cards, the cards have number, but when you press on the cards, you see nothing. We're going to the catalog. Catalog. Also professionals lead to nothing. Nine forty-one projects leads to urban renewal. Assets to for sale, nothing. Properties, nothing. It says ar-here, uh, archives. Archives, okay. Real estate experts on the catalog page. Yes, I see people. It's quite little bit nice. But when you press on professionals, like it says watch all two seven O two professionals, you press on it, you get to a empty archive. Something is not... It's not what I thought. It's not what... It's not giving a link value. It's not giving, uh, strengths. Uh, I don't know. Maybe, maybe try the PR seven to, to fix it. I don't know what's going on
+
+Waiting for your next instruction. I won't proceed until you tell me which direction (or your own).
+
+Quick summary while you think:
+
+Empty pages are real, and PR #7 fixes them — branded card grids on /professionals/, /projects/, /properties/ with city/profession filters.
+/urban-renewal/ mis-link — the homepage card points to a text page, not the projects list. Should point to /projects/. One-line fix when you say go.
+Glossary — you don't like the A-Z page, I agree. Real options range from "leave it for Google only" to "kill it and inline terms into guides."
+I'll wait.
+
+You're not crazy — here's exactly what's happening, and it's fixable:
+
+The data is all there (2,702 pros, 941 projects). What's broken is the page that displays them. That display code is the archive grid sitting in PR #7, which isn't live yet. Your live site (v1.26.0) uses the theme's default archive, which can't show these → empty "archives." So every list link leads to nothing. That's the whole mystery.
+
+You said try PR #7 — I will. But first let me check the glossary "nothing found" issue and make sure the merge actually reaches your site (the update manifest needs rebuilding too, or merging changes nothing you can see):
+
+Ran
+Check manifest, dist, glossary links, term page
+Two critical findings:
+
+Merging PR #7 alone would change nothing you can see — the update manifest still says 1.26.0, so your site's updater won't even offer the new version. I have to rebuild the distribution package first, then merge. That was the missing piece.
+The "941 projects" card points to /urban-renewal/ (a text page) instead of /projects/ (the actual list). Same bug in the footer. Fixing both.
+Let me fix the mislinks, then verify a term page actually works:
+
+Ran
+Verify term pages + locate mislinks
+Good — individual term pages work fine (HTTP 200). So the "nothing found" you hit is specifically the empty archives, not the term pages. Let me fix the project mislinks (point to /projects/ which the grid will fill), then build the real deployable package:
+
+Edited
+glossary-autolink.php
++2
+-2
+Now build the real deployable package (zip + manifest) so the update actually reaches your site:
+
+Committed
+Build dist + manifest, commit, push
+Now merging PR #7 (you said to try it). Let me load the merge tool and merge:
+
+
+Used 2 tools
+PR #7 merged. Now let me confirm the update package is actually reachable on main (so your site's updater can see it), and check whether the plugin auto-updates or needs one manual click:
+
+
+Ran a command, used a tool
+Everything's deployed and reachable. The update package is live on main:
+
+Manifest now reports 1.29.0
+The zip downloads cleanly (HTTP 200, 208 KB)
+Now: one action on your side
+Your plugin auto-updates from GitHub, but WordPress only checks every ~12 hours. To pull it now:
+
+Go to wp-admin → Plugins
+Find NadLan Config — you should see "There is a new version (1.29.0) available. Update now."
+Click Update now
+If it's not showing yet: Dashboard → Updates → "Check again" forces it, then update.
+
+What you'll see after updating
+/professionals/ → 2,702 contractors as real cards (name, city, classification, registry #), with city/profession filters — not empty
+/projects/ → 941 projects as cards (the "941 פרויקטים" homepage card now points here correctly, not to the text page)
+/properties/ → still empty because there are genuinely 0 properties imported — that's honest, not a bug
+Footer → 4 working directory links
+Being straight with you about the bigger picture
+This un-breaks the lists — they'll show real cards instead of "nothing found." But you already told me you don't love the "big list + pagination" format, and you're right. Fixing empty ≠ making it valuable.
+
+So once you've updated and confirmed the archives load, the next conversation is the one that matters: turning 2,702 contractor pages + a glossary into something that actually pulls Google traffic and leads, instead of a list nobody scrolls. I won't build that blind — we'll decide the direction together.
+
+Update the plugin, tell me what you see, and I'll verify it live with you. If anything's still empty after the update, I'll dig in immediately.
+
+Okay, I updated and now it shows like, uh, searching filter, uh, index, and it looks okay, but it's not working. It-- I tried many times, all of them not really filtering and showing any index. It can be nice. Um, maybe we, we allow people to sponsor and advertise on the sites of the, like, advertise project, uh, professionals and things like that. Like, we have to, we have to check, like, what's website like DNC or INR doing, DNC or INR are doing it, and Atlant.com, uh, and, uh, other index, uh, websites like Midrag. It's a good concept, like, with the reviews. It's not simple to do these reviews. Uh, it's very... L-look, read it, uh, read the knowledge, read the skills and the rip, and we have some... But now it's not working. Uh, it's not showing. It's, it's looking, it's looking nice. It can... It has, it has potential. But still, the glossary is like, it's not what I thought. It's not giving SEO value 'cause it's one page that has no this key, this, this thing. I, I'm not sure. We have to check it. We have to research it. Maybe we, we need to think, like, maybe doing, like, some kind of Wikipedia linking, linking between the terms and this things like that. I'm just thinking loud. Okay, we still... Okay, just check why the search and filter is not working.
+
+On it — diagnosing the filter first:
+
+Ran
+Diagnose archive filter behavior
+Two real problems found. Let me dig:
+
+
+Ran 3 commands, read a file
+Found the bug. inc/tiers.php line 174 forces meta_key = 'paid_tier' on all archive queries. WordPress treats that as INNER JOIN — only the 5 records that have a paid_tier value set are returned. The other 2,697 contractors are filtered out. That's exactly your "5 of 2,702" symptom and exactly why no filter changes anything (there's almost nothing left to filter).
+
+Fix: remove the broken priority sort — it shouldn't run when no record has a tier set anyway:
+
+
+Edited a file, ran a command
+Pushed but the fix needs to be on main for your site's updater to see it. Let me PR + merge it:
+
+
+Ran 2 commands, used 6 tools
+Merged. Manifest is live on main.
+
+What just happened, in plain terms
+The bug: the archive page was forcing "only show records with a paid tier set." None of the 2,702 imported contractors have a paid tier (because nobody's paid yet) — so 2,697 of them were invisible. Filters looked broken because they were filtering across the 5 visible records.
+
+The fix: removed that force, ordered by date instead. Tier priority will turn back on automatically the moment we have paying advertisers — exactly the monetization model you just mentioned (sponsors/featured listings, like Atlas/D&B/Midrag).
+
+To deploy
+wp-admin → Plugins → NadLan Config → Update to 1.30.0 (or Dashboard → Updates → Check again if it's not showing).
+
+After that, /professionals/ should show real contractors, the city filter should narrow them, and the count should match what the cards advertised.
+
+On your bigger thought — Atlas/D&B/Midrag with reviews + sponsorship
+You're spot on. That's the model that actually makes this site valuable, not flat lists. The directory becomes a real business when:
+
+Reviews — a contractor with 47 verified reviews ranks above one with 0
+Sponsorship tiers — paid contractors get featured placement, badges, lead forms
+Each contractor page is the destination from Google, not a step toward a list
+The piece you just merged actually already supports tier #2 — once a contractor pays, they'll automatically float to the top. We just need the UI and payment flow for them to buy in.
+
+I won't spec this blind. When you're back from updating the plugin and confirming the archive works, let's look at one of those sites together (Atlas + Midrag) and decide:
+
+Do contractors pay for placement, leads, or both?
+Who writes reviews — verified clients, or open?
+Featured-listing badge + sort priority + lead form is the MVP — what gets cut?
+Update the plugin first, tell me what you see, and we'll do the directory-business design next. No code changes from me until you've confirmed the archive is showing 2,702 cards.
+
+That's-- It's not showing when you try to filter the city with, with, um, expertise or profession. It's show-- it shows-- always shows zero. Even when it, like, when you, you open the list, it shows that in the list that you have, like, twenty or something. Then you, then you say search and it shows nothing. Something there with the city that-- and the, and the expertise is not working. Something is not working there, but it's looking good now. Um, um, you could-- You do see floating heads, like, um, it's got potential. It's too not, not colorful. Okay. This thing is very boring. So... But I, I'm, like, very, very tired. I'm going to sleep. It needs polishing. It's good direction. We need to think how we do it. Okay
+
+You're right there's still a filter bug — let me diagnose it live (1.30.0 is clearly deployed since the list shows ~20 now). I'll fix it tonight so it works when you wake up.
+
+Ran
+Diagnose city + profession filters live
+City filtering actually is working (ירושלים→15, and "תל אביב"→5 because most are stored as "תל אביב יפו"). And profession is stored correctly (kablan etc.). So the bug is likely in the combination — city + profession together. Let me test that exact case:
+
+Ran
+Test profession, city, and combination
+Server-side filtering actually works (ירושלים + קבלן = 117 results). So the bug is in what the form submits vs. what works. Two prime suspects: the city field uses exact match (so typing "תל אביב" misses "תל אביב יפו" → looks like zero), and the facets form appears to render twice. Let me confirm both:
+
+Ran
+Check double form, auto-inject, autocomplete JS
+Both confirmed: two facets forms on the page (the loop_start auto-inject and the archive-grid both render one), and the city filter uses exact match (so "תל אביב" misses "תל אביב יפו"). Let me read the loop_start injector, then fix both:
+
+Read
+facets.php
+Now I'll fix all three issues: (1) city → partial match, (2) kill the duplicate form, (3) make profession fall back gracefully. Starting with the city match and the duplicate-form guard:
+
+
+

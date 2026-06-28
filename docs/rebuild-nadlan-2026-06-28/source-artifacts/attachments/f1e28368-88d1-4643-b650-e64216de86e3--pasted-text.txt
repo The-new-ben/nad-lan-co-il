@@ -1,0 +1,120 @@
+PR #157 merged — running the gate now on what actually landed, since Codex's environment can't run php -l and there's no CI:
+
+
+Ran 3 commands
+Repo-side gate is fully green. Checking whether the live site has picked up 1.60.5 yet:
+
+
+Ran 5 commands
+✅ PR #157 merged clean and the gate is green — and the live site is already running v1.60.5.
+
+Repo-side gate (all passed):
+
+php -l clean on nadlan-config.php, project-3d.php, and schema.php (the check Codex's Windows shell couldn't run).
+Manifest changelog stacks correctly: 1.60.5 → 1.60.4 (my schema slice, preserved) → 1.60.3 — exactly the merge-base discipline we coordinated, and download_url points at the new ZIP.
+ZIP integrity: 128 entries, zero backslash paths, correct nadlan-config/ root, no CRC errors, no mojibake in the Hebrew, and the rolled-back assembly module is confirmed absent from both the ZIP and the plugin tree.
+The 37KB inline JS extracted from the shipped ZIP (not just the repo) passes node --check, with the v6 app-selector renderer and user_open_only Mapbox config present.
+Live verification on /projects/rainbow-tel-aviv/:
+
+The new build is deployed: the main-stage unit card markup and its JS (nlp3d-stage-card, stageCardTitle) are in the live page — those exist only in 1.60.5.
+Mapbox is in lazy mode: the GL library loads but no map initializes until the buyer acts, which is the billing boundary per Mapbox's pricing docs — map loads now cost only when someone actually opens the live view.
+Nested-scroll cleanup took: overflow-y:auto is down to a single occurrence page-wide.
+The remaining checklist items (drag rotation feel, floor-plate keyboard focus, 390px layout) are hands-on-browser checks — worth 60 seconds on your phone since you're the taste arbiter on the app-like feel anyway.
+
+Where the night lands: main now carries the schema enrichment (1.60.4), the app-selector experience (1.60.5), the SEO dossier, and the replication skill. Two things still open: the 2-minute Yoast title/meta paste from the dossier (starts the ranking clock, independent of everything else), and PR-B — the v1.61.0 one-shot content migrator that rewraps the Rainbow body in the nadlan-guide frame and seeds the schema meta. Codex has the corrected design for it (seed on save_post, migrate via single wp_update_post, never touch the render path); my offer to write that branch still stands if you'd rather he stay on the configurator.
+
+Pushed the rebased PR-A branch and updated PR #157:
+PR #157: v1.60.5 Rainbow building-first app selector
+What’s now true:
+PR is draft, mergeable, head 3188e11.
+Version is 1.60.5.
+Assembly module is not included.
+No content wrapper, no schema change, no render-time meta seeding, no 1.61.0 ZIP.
+1.60.5 ZIP was built and verified rootless with forward-slash paths.
+PR body now tells Claude exactly what to gate.
+Checks:
+JS syntax check passed.
+ZIP integrity passed.
+Git diff check passed, except normal Windows CRLF warnings.
+PHP lint was not run locally because this shell has no php binary, and I called that out in the PR for Claude.
+
+2026-06-12-rainbow-1604-app-selector-polish.mdDocument · MDOpen previewOpen in
+project-3d-sales-experience.mdDocument · MDOpen previewOpen in
+codex-status.mdDocument · MDOpen previewOpen in
+2026-06-12-rainbow-1610-page-assembly.mdDocument · MDOpen previewOpen in
+skill-project-page-seo-and-assembly.mdDocument · MDOpen previewOpen in
+2026-06-12-rainbow-1605-app-selector-polish.mdDocument · MDOpen previewOpen in
+
+Edited 9 files+2,038-1,459Review changesUndoReview
+
+docs/agent-comms/codex-status.md+28-16
+docs/qa/2026-06-12-rainbow-1604-app-selector-polish.md+51-0
+docs/qa/2026-06-12-rainbow-1605-app-selector-polish.md+3-3
+docs/qa/2026-06-12-rainbow-1610-page-assembly.md+75-0
+plugins/nadlan-config/inc/project-3d.php+1,542-1,430
+plugins/nadlan-config/inc/project-page-assembly.php+300-0
+plugins/nadlan-config/nadlan-config.php+2-2
+skills/project-3d-sales-experience.md+21-0
+skills/skill-project-page-seo-and-assembly.md+16-8
+Collapse files
+
+
+
+23:09Now it's, it's really stuck. This frame movement flowing it, and you can't really move the building. You can... The buttons are not working. Something is like jammed there. I, please give it a look, like put the maximum here to, to get this like work flawlessly
+
+On it — live interaction breakage right after a deploy is almost always a runtime JS error killing the handlers or an overlay eating pointer events. node --check only catches syntax, not a null querySelector at init. Pulling the live page apart now:
+
+
+Ran 9 commands
+
+Server was temporarily limiting requests
+
+Ran 3 commands
+Found it. This isn't a frontend bug at all — init() is bailing out on line 100 because there is no unit data on the live page:
+
+
+Ran 2 commands
+Don't start coding. Uh, we progressed with codex, and it's looking good. Still, some little things look like the... this, uh, hide... this square hiding the building. The building is not... you cannot penetrate it, and there's the the info window overlapping the building. I'm considering to make it a see through effect. but it might not be user friendly. Maybe it's possible to move it move it a little bit, but we're just analyzing now, not coding. Tell me what you think. Where are the places we can improve things and did the SEO for investors and what you talked about is implemented. So it's it's only analyzed for now. Don't code.
+
+
+Ran 8 commands
+Plenty to analyze without coding. Let me write the findings up now.
+
+Created
+buzzing-sprouting-toucan.md
++86
+-0
+Analysis written. Here are the headlines so you can decide without reading the full file:
+
+The "square hiding the building"
+It's .nlp3d-stage-card — the selected-unit card we added in v1.60.5. It's positioned bottom-right, 382px wide, over the lower-right ~25–30% of the tower silhouette. Three options:
+
+A. Move it off the building (my pick). Dock it to a corner the silhouette doesn't occupy (top-left or bottom-left, capped at half-width). Keeps full opacity → prices and the "אומדן / לא מחייב" disclaimer stay crisp. Lowest risk, highest legibility, matches Render Vision and your Nike reference.
+B. See-through (glass). Premium look, but Hebrew on the busy facade gradient gets hard to read below ~0.45 alpha — and the disclaimer becomes the hardest-to-read piece, which is exactly backwards for an honesty rail.
+C. Hybrid — glass and dock to the side. Best look but more work. Good v1.61.x polish.
+While we're in there, two tag-alongs: confirm .nlp3d-facade-hotspots aren't being eaten by the card on click (z-band collision), and move/rebrand the "חזרה למודל" button so it doesn't collide with the new card position.
+
+SEO for investors — not yet live
+The schema engine shipped (v1.60.4 emits ApartmentComplex + BreadcrumbList correctly), but the content from the dossier and the meta fields the engine reads from are both empty on the page:
+
+"למכירה" — 0 occurrences (gate: ≥3)
+"תושב חוץ" / foreign-buyer block — 0
+"נתונים מדווחים" cited-price block — 0
+"מה זמין עכשיו" availability block — 0
+FAQPage schema — 0
+AggregateOffer schema — 0
+nadlan-guide framed wrapper — 0
+So we'll capture navigational "ריינבו תל אביב" searches (good title + schema), but we're not yet ranking on the investor money queries — "ריינבו תל אביב מחיר", evaluation queries, and the EN/FR/RU/AR foreign-buyer family the dossier was engineered to translate cleanly into.
+
+Owner decisions waiting on you
+Stage-card — A, B, or C?
+SEO — paste the dossier blocks + seed 6 meta fields manually tonight (≤20 min total, immediate ranking lift), or wait for the v1.61.0 migrator PR-B that wraps + seeds automatically?
+Used ToolSearch
+This is research/analysis, not an implementation plan, so I'll stay in plan mode for your decision rather than calling ExitPlanMode. Two questions when you're ready: stage-card placement (A/B/C above), and whether to do the SEO paste tonight manually or wait for the v1.61.0 migrator PR.
+
+The untracked files are from my earlier debug session — I installed jsdom to run the live 3D JS in a harness when diagnosing the "jammed" state (that's what surfaced the duplicate display:none rule and the .nlp3d-data issue). Plan mode blocks me from committing or deleting, so flagging for you:
+
+node_modules/ + package-lock.json — jsdom + 60-odd transitive deps. These should not be committed; they belong in .gitignore.
+The repo's package.json is twentytwentyfive@1.5.0 (the upstream WP theme), so a stray node_modules here is just lint, not a real dependency.
+When you exit plan mode I can either rm -rf node_modules package-lock.json (cleanest — restores untracked state to zero) or add them to .gitignore if you'd rather keep jsdom around for future live-DOM gating. Recommend the delete; the harness is reproducible in 10 seconds when next needed.
+

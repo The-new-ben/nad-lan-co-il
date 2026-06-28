@@ -1,0 +1,56 @@
+I have deep, verified research now. Writing the 3D deep-dive into the plan file, then handing Codex the full code-level brief.
+
+Edited
+buzzing-sprouting-toucan.md
++77
+-6
+Here's the deep 3D brief for Codex — researched against what Zillow/Google/the 3D-viewer industry actually ship, grounded in your code, and built so it upgrades the model without wrecking the working one.
+
+The honest technology decision (with tradeoffs)
+Approach	Looks like the real building	Free 360°	Replicable & cheap	Verdict
+Current CSS plate-tower	No — schematic stripes	Clamped ±68°, 3 snaps	Yes	keep as fallback only
+<model-viewer> + GLB	Yes — real geometry	Yes — native orbit	Yes — 1 GLB/project	✅ PRIMARY
+Three.js custom	Yes	Yes	Heavy to build/maintain	overkill now
+Google Photorealistic 3D Tiles	Real city	Yes	Enterprise SKU ($6/1k after 1k free)	env layer only, click-gated
+Gaussian splatting (Zillow SkyTour)	Photoreal	Yes	Needs drone capture per building	future premium tier
+Recommendation: Google's <model-viewer> web component + a glTF/GLB per project. It's a drop-in tag (no build pipeline — fits your WP inline echo), gives free 360° orbit out of the box (kills "can't rotate 30/60°"), renders real 3D geometry (kills "doesn't look like a building"), has a native hotspot API for clickable apartments, lazy-loads via a poster image (CWV-safe), and gives AR on mobile for free. Same pattern clones to every future project.
+
+The don't-wreck rule (critical): render <model-viewer> only when a project_model_glb meta exists; otherwise fall through to today's working CSS tower. Existing projects stay exactly as they are; only upgraded ones get the real model. Both reuse the same unit list, side console, and stage-card.
+
+Core code — load + free rotation + lazy poster
+<script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/4.0.0/model-viewer.min.js"></script>
+<model-viewer id="rainbow-model"
+  src=".../rainbow.glb" poster=".../rainbow-poster.webp"
+  reveal="interaction" loading="lazy"
+  camera-controls auto-rotate auto-rotate-delay="3000" rotation-per-second="18deg"
+  min-camera-orbit="-Infinity 0deg auto" max-camera-orbit="Infinity 180deg auto"
+  field-of-view="30deg" shadow-intensity="1"
+  ar ar-modes="webxr scene-viewer quick-look" ios-src=".../rainbow.usdz"
+  alt="מודל תלת-ממד של מגדל Rainbow Tel Aviv"></model-viewer>
+Clickable apartments — hotspot API (verified from Google's docs)
+Child elements whose slot starts with hotspot anchor to 3D points via data-position="x y z" + data-normal; add data-visibility-attribute="visible" so CSS fades hotspots facing away. Wire the click into your existing selectUnit() — do not build a second selector:
+
+<button class="nlp3d-mv-hotspot" slot="hotspot-12a"
+        data-position="2.1 18.5 1.4" data-normal="0 0 1"
+        data-visibility-attribute="visible" data-unit="demo-12-a">
+  <span class="nlp3d-mv-label">קומה 12 · קו A</span></button>
+mv.querySelectorAll('.nlp3d-mv-hotspot').forEach(h =>
+  h.addEventListener('click', () => selectUnit(h.dataset.unit)));
+Get the data-position numbers once per project from model-viewer's free online editor (drag a hotspot onto the model, it prints the coordinates), then store them in the unit CMS rows.
+
+How each project GETS its 3D model — the replication pipeline (the scalable keystone)
+Fast/cheap, real footprint+location: Blender + Blosm add-on → "Get OSM" at the project lat/lng → extrudes the real building footprint to floors × 3m → export .glb. Matches real shape and position.
+Premium hero projects: import developer BIM/render → decimate → bake facade → GLB.
+Optimize (mandatory): npm i -g @gltf-transform/cli then gltf-transform optimize in.glb out.glb --texture-compress webp --compress draco. Draco cuts mesh 60–90% (20MB→3–5MB), decoder is a one-time ~120KB. Budget: GLB ≤ 4MB, poster ≤ 80KB WebP.
+Set project_model_glb, project_model_usdz, project_model_poster meta. Done — no code per project.
+Environment ("see schools / what's around") in 3D
+Now: keep Mapbox "view from apartment," add WS7 neighborhood POIs as pins, and call setRTLTextPlugin(url, null, true) before new mapboxgl.Map so Hebrew labels stop rendering backwards.
+Premium later (cost-capped): Google Photorealistic 3D Tiles for true Tel Aviv context — load only on explicit click, set a daily quota cap in Google Cloud (it's billed after 1,000/mo).
+Even the CSS fallback improves (for non-GLB projects)
+Remove the ±68 clamp at project-3d.php ~line 1190 → angle=(angle%360+360)%360 for full spin + inertia; add a lobby base + roof crown; show the photographic facade at default zoom.
+
+Skills to document with Codex: project-3d-sales-experience.md (model-viewer architecture + fallback rule) and a new skill-3d-model-pipeline.md (the Blosm→GLB→Draco workflow + hotspot-capture + USDZ for AR) — this is what makes the next project one-shot.
+
+Sources: Zillow SkyTour / Gaussian splatting · model-viewer (Google, GitHub) · model-viewer hotspots/annotations · Three.js real-estate showcase · glTF-Transform (Draco/meshopt) · Blosm OSM→Blender→GLB · Google Photorealistic 3D Tiles for real estate · Mapbox RTL plugin
+
+One thing only you can decide, because it sets the whole pipeline: where Rainbow's first GLB comes from. If you can get the developer's render/BIM from Israel Canada, we get a beautiful model fast; if not, Codex bootstraps a real-footprint massing from OSM via Blosm in an afternoon and we refine later. Tell me which, and I'll have Codex tune the brief to that path. Everything else above he can start on now — beginning with the project_model_glb feature-flag so the current page is never at risk.

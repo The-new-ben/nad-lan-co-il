@@ -1,0 +1,57 @@
+PR #187 is fundamentally different from #181 — it keeps the embedded selector (all 4 markers intact), bumps correctly to 1.66.3, and only touches project-3d.php by +11 lines (incremental, not a rewrite). This one looks legit. Let me run the full safety gate before recommending merge:
+
+Ran
+Verify 1.66.3 zip cleanliness, version surfaces, project-3d delta
+ZIP is clean ✅, all version surfaces aligned at 1.66.3, and the project-3d.php change is just cache-busters + additive mobile CSS (selector untouched). Now lint the changed PHP + inspect the actual "runtime fix" (og-image + assembly):
+
+Ran
+Lint PR187 PHP, JS check, inspect og-image change
+og-image change is safe (https normalization + health flag, guarded). Let me check the last runtime change (project-page-assembly +46) and PR #188, then I'll merge if clean:
+
+Ran
+Inspect assembly change and PR188 scope
+Both PRs are safe. PR #187's assembly change is exactly the buyer-language fix (replaces internal "לידים/פאנל" jargon with "פניות") — guarded, runs once. PR #187 passes the entire gate. Let me clean up and merge it (it's the real 1.66.3 unblock):
+
+
+Ran a command, used a tool
+Draft PR — need to mark it ready first:
+
+
+Ran a command, used 3 tools
+1.66.3 is on main (b4ebee8), ZIP verified clean (0 backslash — the poison cannot recur), selector intact. Codex's PR #187 was genuinely good work this time. Now let me write the "Bible of mistakes" skill and commit it so Codex reads it:
+
+
+Created a file, ran a command, used 2 tools
+1.66.3 + the mistakes skill are both on main. Now let me check PR #188's status (it overlaps #187's now-merged scripts) and assess what's actually left on Rainbow:
+
+Ran
+Check PR188 remaining value/conflicts and Rainbow health flags
+PR #188 is a textbook M2 (stale base) — it would revert the 1.66.3 runtime work and delete the mistakes skill I just merged. It has some genuinely new skill docs, but must be rebased, not merged. Flagging it on the PR:
+
+Used github: add issue comment
+Everything's assessed and the safe work is on main. Here's the complete picture, owner:
+
+1. What Codex did — checked and sorted
+PR #187 (the 1.66.3 runtime) — GOOD. I merged it. It passed the full gate: clean ZIP (0 backslash — can't re-break the server), all 6 version surfaces aligned, embedded selector intact, PHP lint clean ×5, JS clean. It adds real value: mobile showroom polish, buyer-language copy (replaces internal "לידים/פאנל" jargon with "פניות"), https og:images, and the project-factory + QA scripts for replication.
+PR #188 (docs/readiness) — DO NOT MERGE as-is. It was built on an old base, so merging would revert 1.66.3 and delete the mistakes skill. I commented with the exact rebase steps. It has a few genuinely-new skill files worth salvaging after rebase.
+2. The "Bible of Mistakes" — done, on main
+skills/skill-release-discipline-and-mistakes.md (merged, 40ca166). It documents the 8 recurring failures with what happened / why it hurt / the rule / the fix command:
+
+M0 "in git ≠ live" · M1 version racing · M2 stale-base rewrites that wipe features · M3 Windows backslash ZIPs (the server crash) · M4 shipping PHP unlinted · M5 unverified claims · M6 docs-churn while the blocker is deploy · M7 two-agents-one-file · M8 calling a non-deploy a deploy.
+Plus a copy-paste pre-flight, a blocker playbook, and a Definition of Done. It's a living doc — Codex is instructed to append new mistakes. PR #188's own staleness is now a real example of M2, which I pointed him to.
+3. The single thing standing between you and "done": DEPLOY
+git/main = 1.66.3 (clean, verified). Live = 1.66.2.
+WP-Admin → Dashboard → Updates → update NadLan Config → 1.66.3 → clear cache → hard-refresh Rainbow.
+After deploy, the healthcheck should read version: 1.66.3 with flags rainbow_public_copy_v1663: true and og_image.https_normalizer: true.
+4. Rainbow — what's complete vs left
+Complete (in 1.66.3, ships on deploy):
+
+✅ Full-width on block themes · ✅ SEO intro above the model · ✅ embedded apartment-cell selector (cells on the facade, not floating) · ✅ buyer-language copy · ✅ mobile polish + 44px targets · ✅ clean packaging (poison guard).
+Left to do:
+
+Deploy 1.66.3 (your click above) — nothing is live until then.
+After deploy: run Codex's post-deploy gate — node scripts/qa-rainbow-postdeploy.mjs --version 1.66.3 — to confirm it green on live.
+Optional polish (to match the photoreal reference exactly): trace real apartment polygons (points) on a facade image so cells follow the actual windows. Codex's PR #181 explored this — it should be rebased onto 1.66.3 and handed to me to integrate into renderApartmentCells (I own that file), not merged as-is.
+For replication: the factory is now on main — node scripts/init-project-showroom.mjs <slug> --post-id <id> --title "…" scaffolds the next project, then build/validate/import. That's your clone path once Rainbow is deployed and verified.
+
+Want me to rebase + integrate the polygon work from #181 onto 1.66.3 next (so apartments trace real windows), or hold until you've deployed 1.66.3 and seen the current cells live first? I'd recommend deploying first so you're judging the real thing.
