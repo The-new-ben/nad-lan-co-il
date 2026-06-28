@@ -2,7 +2,7 @@
 /**
  * Plugin Name: NadLan Platform Orchestrator
  * Description: Safe presentation and content orchestration layer for NadLan. Delegates project showroom rendering to the existing NadLan engine.
- * Version: 0.1.2
+ * Version: 0.1.3
  * Author: NadLan
  * Text Domain: nadlan-platform-orchestrator
  * Requires at least: 6.5
@@ -13,7 +13,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-define( 'NLPO_VERSION', '0.1.2' );
+define( 'NLPO_VERSION', '0.1.3' );
 define( 'NLPO_FILE', __FILE__ );
 define( 'NLPO_DIR', plugin_dir_path( __FILE__ ) );
 define( 'NLPO_URL', plugin_dir_url( __FILE__ ) );
