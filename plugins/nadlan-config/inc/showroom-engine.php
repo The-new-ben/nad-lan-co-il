@@ -199,18 +199,18 @@ if ( ! function_exists( 'nadlan_showroom_engine_shortcode' ) ) {
 		$base = trailingslashit( nadlan_showroom_engine_base_url() );
 
 		// assets
-		wp_enqueue_style( 'nadlan-engine-tokens', $base . 'tokens.css', array(), '1.69.51' );
-		wp_enqueue_style( 'nadlan-engine-css', $base . 'showroom.css', array( 'nadlan-engine-tokens' ), '1.69.51' );
+		wp_enqueue_style( 'nadlan-engine-tokens', $base . 'tokens.css', array(), '1.69.52' );
+		wp_enqueue_style( 'nadlan-engine-css', $base . 'showroom.css', array( 'nadlan-engine-tokens' ), '1.69.52' );
 		wp_enqueue_script( 'nadlan-model-viewer', 'https://ajax.googleapis.com/ajax/libs/model-viewer/4.0.0/model-viewer.min.js', array(), '4.0.0', true );
 		wp_script_add_data( 'nadlan-model-viewer', 'type', 'module' );
-		wp_enqueue_script( 'nadlan-engine-i18n', $base . 'i18n.js', array(), '1.69.51', true );
-		wp_enqueue_script( 'nadlan-engine-core', $base . 'engine.js', array( 'nadlan-engine-i18n' ), '1.69.51', true );
+		wp_enqueue_script( 'nadlan-engine-i18n', $base . 'i18n.js', array(), '1.69.52', true );
+		wp_enqueue_script( 'nadlan-engine-core', $base . 'engine.js', array( 'nadlan-engine-i18n' ), '1.69.52', true );
 
 		// Real Mapbox only when a token is configured; otherwise the stylized map stays.
 		if ( (string) get_option( 'nadlan_mapbox_token', '' ) !== '' ) {
 			wp_enqueue_style( 'mapbox-gl', 'https://api.mapbox.com/mapbox-gl-js/v3.7.0/mapbox-gl.css', array(), '3.7.0' );
 			wp_enqueue_script( 'mapbox-gl', 'https://api.mapbox.com/mapbox-gl-js/v3.7.0/mapbox-gl.js', array(), '3.7.0', true );
-			wp_enqueue_script( 'nadlan-engine-mapbox', $base . 'mapbox-init.js', array( 'nadlan-engine-core', 'mapbox-gl' ), '1.69.51', true );
+			wp_enqueue_script( 'nadlan-engine-mapbox', $base . 'mapbox-init.js', array( 'nadlan-engine-core', 'mapbox-gl' ), '1.69.52', true );
 		}
 
 		// build payload from the CMS
@@ -336,6 +336,29 @@ add_filter( 'the_content', function ( $content ) {
 	if ( ! $pid || ! nadlan_showroom_engine_active_for( $pid ) ) {
 		return $content;
 	}
+	// DE-STACK: remove the old baked static showroom (<main class="nlv2-showroom">...</main>)
+	// from the post body so the engine is not duplicated. Single, well-bounded block.
+	$content = preg_replace( '#<main\b[^>]*class="[^"]*nlv2-showroom[^"]*"[^>]*>.*?</main>#is', '', (string) $content );
 	$engine = nadlan_showroom_engine_shortcode( array( 'page' => 'project', 'project' => '', 'id' => '' ) );
 	return $engine . $content;
 }, 8 );
+
+/* Style the project SEO article in the cream/gold system (scoped to active project pages). */
+add_action( 'wp_enqueue_scripts', function () {
+	if ( ! is_singular( 'nadlan_project' ) ) { return; }
+	$pid = get_queried_object_id();
+	if ( ! $pid || ! function_exists( 'nadlan_showroom_engine_active_for' ) || ! nadlan_showroom_engine_active_for( $pid ) ) { return; }
+	wp_register_style( 'nadlan-engine-article', false, array(), '1.69.52' );
+	wp_enqueue_style( 'nadlan-engine-article' );
+	$css = '.single-nadlan_project .entry-content{max-width:760px;margin-inline:auto;color:#1B1A17;font-family:"Heebo",system-ui,sans-serif;font-size:18px;line-height:1.85}'
+	. '.single-nadlan_project .entry-content h2{font-family:"Frank Ruhl Libre",Georgia,serif;font-weight:700;font-size:30px;line-height:1.25;margin:40px 0 8px}'
+	. '.single-nadlan_project .entry-content h2::after{content:"";display:block;width:48px;height:2px;background:#9C7A3C;margin-top:12px}'
+	. '.single-nadlan_project .entry-content h3{font-family:"Frank Ruhl Libre",Georgia,serif;font-weight:500;font-size:23px;margin:28px 0 6px}'
+	. '.single-nadlan_project .entry-content p{margin:0 0 18px}'
+	. '.single-nadlan_project .entry-content ul,.single-nadlan_project .entry-content ol{margin:0 0 18px;padding-inline-start:22px}'
+	. '.single-nadlan_project .entry-content li{margin:6px 0}'
+	. '.single-nadlan_project .entry-content a{color:#9C7A3C;text-underline-offset:3px}'
+	. '.single-nadlan_project .entry-content table{width:100%;border-collapse:collapse;margin:18px 0;font-size:16px}'
+	. '.single-nadlan_project .entry-content th,.single-nadlan_project .entry-content td{border:1px solid #D9D2C4;padding:10px 12px;text-align:start}';
+	wp_add_inline_style( 'nadlan-engine-article', $css );
+}, 20 );
