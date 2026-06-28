@@ -218,19 +218,19 @@ if ( ! function_exists( 'nadlan_showroom_engine_shortcode' ) ) {
 		$base = trailingslashit( nadlan_showroom_engine_base_url() );
 
 		// assets
-		wp_enqueue_style( 'nadlan-engine-tokens', $base . 'tokens.css', array(), '1.69.53' );
-		wp_enqueue_style( 'nadlan-engine-css', $base . 'showroom.css', array( 'nadlan-engine-tokens' ), '1.69.53' );
-		wp_enqueue_style( 'nadlan-engine-editorial', $base . 'editorial.css', array( 'nadlan-engine-tokens' ), '1.69.53' );
+		wp_enqueue_style( 'nadlan-engine-tokens', $base . 'tokens.css', array(), '1.69.54' );
+		wp_enqueue_style( 'nadlan-engine-css', $base . 'showroom.css', array( 'nadlan-engine-tokens' ), '1.69.54' );
+		wp_enqueue_style( 'nadlan-engine-editorial', $base . 'editorial.css', array( 'nadlan-engine-tokens' ), '1.69.54' );
 		wp_enqueue_script( 'nadlan-model-viewer', 'https://ajax.googleapis.com/ajax/libs/model-viewer/4.0.0/model-viewer.min.js', array(), '4.0.0', true );
 		wp_script_add_data( 'nadlan-model-viewer', 'type', 'module' );
-		wp_enqueue_script( 'nadlan-engine-i18n', $base . 'i18n.js', array(), '1.69.53', true );
-		wp_enqueue_script( 'nadlan-engine-core', $base . 'engine.js', array( 'nadlan-engine-i18n' ), '1.69.53', true );
+		wp_enqueue_script( 'nadlan-engine-i18n', $base . 'i18n.js', array(), '1.69.54', true );
+		wp_enqueue_script( 'nadlan-engine-core', $base . 'engine.js', array( 'nadlan-engine-i18n' ), '1.69.54', true );
 
 		// Real Mapbox only when a token is configured; otherwise the stylized map stays.
 		if ( (string) get_option( 'nadlan_mapbox_token', '' ) !== '' ) {
 			wp_enqueue_style( 'mapbox-gl', 'https://api.mapbox.com/mapbox-gl-js/v3.7.0/mapbox-gl.css', array(), '3.7.0' );
 			wp_enqueue_script( 'mapbox-gl', 'https://api.mapbox.com/mapbox-gl-js/v3.7.0/mapbox-gl.js', array(), '3.7.0', true );
-			wp_enqueue_script( 'nadlan-engine-mapbox', $base . 'mapbox-init.js', array( 'nadlan-engine-core', 'mapbox-gl' ), '1.69.53', true );
+			wp_enqueue_script( 'nadlan-engine-mapbox', $base . 'mapbox-init.js', array( 'nadlan-engine-core', 'mapbox-gl' ), '1.69.54', true );
 		}
 
 		// build payload from the CMS
@@ -363,13 +363,35 @@ add_filter( 'the_content', function ( $content ) {
 	if ( ! $pid || ! nadlan_showroom_engine_active_for( $pid ) ) {
 		return $content;
 	}
-	// DE-STACK: remove the old baked static showroom (<main class="nlv2-showroom">...</main>)
-	// from the post body so the engine is not duplicated. Single, well-bounded block.
-	$content = preg_replace( '#<main\b[^>]*class="[^"]*nlv2-showroom[^"]*"[^>]*>.*?</main>#is', '', (string) $content );
-	$engine  = nadlan_showroom_engine_shortcode( array( 'page' => 'project', 'project' => '', 'id' => '' ) );
-	// Wrap the remaining SEO article so editorial.css can style it (cream/gold system).
-	$article = '<div class="nadlan-project-article nadlan-guide">' . $content . '</div>';
-	return $engine . $article;
+	// DE-STACK (content-safe). The post body is ONE <main class="nlv2-showroom">
+	// wrapper that contains BOTH the legacy visual showroom (hero/3D/picker) AND the
+	// SEO article (<section class="nlv2-section"> ... headings, sources, disclaimer).
+	// The engine replaces the visual showroom, so we keep the ARTICLE and drop only
+	// the legacy visuals. We NEVER blank the body: if the article cannot be isolated,
+	// we keep the original content untouched. (A blunt full-<main> strip removed the
+	// article too; this does not.)
+	$original = (string) $content;
+	$article  = $original;
+	if ( stripos( $original, 'nlv2-showroom' ) !== false ) {
+		$start = stripos( $original, '<section class="nlv2-section"' );
+		if ( $start !== false ) {
+			$end       = stripos( $original, '</main>', $start );
+			$candidate = ( $end !== false ) ? substr( $original, $start, $end - $start ) : substr( $original, $start );
+			if ( trim( wp_strip_all_tags( $candidate ) ) !== '' ) {
+				$article = $candidate; // the SEO article only; legacy showroom dropped
+			}
+		} else {
+			// No recognizable article section: strip the bounded legacy main, but only
+			// if that leaves real text behind (otherwise keep the original body).
+			$stripped = preg_replace( '#<main\b[^>]*class="[^"]*nlv2-showroom[^"]*"[^>]*>.*?</main>#is', '', $original );
+			if ( $stripped !== null && trim( wp_strip_all_tags( $stripped ) ) !== '' ) {
+				$article = $stripped;
+			}
+		}
+	}
+	$engine = nadlan_showroom_engine_shortcode( array( 'page' => 'project', 'project' => '', 'id' => '' ) );
+	// Wrap the article so editorial.css can style it (cream/gold system).
+	return $engine . '<div class="nadlan-project-article nadlan-guide">' . $article . '</div>';
 }, 8 );
 
 /* hreflang: emit the reciprocal language set so each sibling post is crawlable and
