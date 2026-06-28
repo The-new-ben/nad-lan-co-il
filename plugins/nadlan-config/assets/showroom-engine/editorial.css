@@ -1,0 +1,59 @@
+/* ============================================================================
+   NadLan Showroom — EDITORIAL (the project SEO article, cream/gold system)
+   Scoped to .nadlan-project-article so it styles the buyer guide without
+   depending on the theme's .entry-content. Pairs with tokens.css.
+   ============================================================================ */
+.nadlan-project-article{
+  max-width:760px;
+  margin-inline:auto;
+  padding:8px clamp(14px,3vw,28px) 48px;
+  color:var(--ink,#1B1A17);
+  font-family:"Heebo",system-ui,-apple-system,sans-serif;
+  font-size:18px;
+  line-height:1.85;
+}
+[dir="ltr"] .nadlan-project-article{ font-family:"Inter Tight","Inter",system-ui,sans-serif; }
+
+.nadlan-project-article h2{
+  font-family:"Frank Ruhl Libre",Georgia,serif;
+  font-weight:700;
+  font-size:clamp(1.5rem,1.2rem + 1.4vw,2rem);
+  line-height:1.25;
+  margin:40px 0 8px;
+}
+[dir="ltr"] .nadlan-project-article h2{ font-family:"Fraunces",Georgia,serif; }
+.nadlan-project-article h2::after{
+  content:"";display:block;width:48px;height:2px;
+  background:var(--gold,#9C7A3C);margin-top:12px;
+}
+.nadlan-project-article h3{
+  font-family:"Frank Ruhl Libre",Georgia,serif;
+  font-weight:500;font-size:1.4rem;margin:28px 0 6px;
+}
+[dir="ltr"] .nadlan-project-article h3{ font-family:"Fraunces",Georgia,serif; }
+
+.nadlan-project-article p{ margin:0 0 18px; }
+.nadlan-project-article ul,
+.nadlan-project-article ol{ margin:0 0 18px;padding-inline-start:22px; }
+.nadlan-project-article li{ margin:6px 0; }
+.nadlan-project-article a{ color:var(--gold,#9C7A3C);text-underline-offset:3px; }
+.nadlan-project-article a:hover{ color:var(--terracotta,#C2563A); }
+
+.nadlan-project-article blockquote{
+  margin:24px 0;padding:4px 18px;
+  border-inline-start:3px solid var(--gold,#9C7A3C);
+  color:var(--muted,#6B6457);font-style:italic;
+}
+.nadlan-project-article table{
+  width:100%;border-collapse:collapse;margin:18px 0;font-size:16px;
+}
+.nadlan-project-article th,
+.nadlan-project-article td{
+  border:1px solid var(--border,#D9D2C4);padding:10px 12px;text-align:start;
+}
+.nadlan-project-article th{ background:rgba(156,122,60,.08);font-weight:600; }
+.nadlan-project-article img{ max-width:100%;height:auto;border-radius:var(--radius,.25rem); }
+
+@media (max-width:600px){
+  .nadlan-project-article{ font-size:17px;line-height:1.8; }
+}

@@ -37,7 +37,9 @@
   function unit(id) { var u = units().filter(function (x) { return x.id === id; }); return u[0] || null; }
   function projName() { return t(project().name_key); }
   function content(k) { var c = project().content || {}; return (c[state.lang] && c[state.lang][k]) || (c.en && c.en[k]) || (c.he && c.he[k]) || ""; }
-  function dirLabel(d) { return t("dir_" + d); }
+  var KNOWN_DIRS = { west:1, east:1, north:1, south:1, "south-west":1, "north-west":1, "south-east":1, "north-east":1 };
+  // Never echo a raw "dir_xxx" key: translate known enums, else show the raw value.
+  function dirLabel(d) { return KNOWN_DIRS[d] ? t("dir_" + d) : (d || ""); }
   function statusLabel(s) { return t("status_" + s); }
   function roomsLabel(n) { return t("rooms_label", { n: n }); }
   function viewText(u) { return u.view_key ? t(u.view_key) : ""; }
@@ -100,7 +102,14 @@
 
   /* ---- header + language bar ---- */
   function langBar() {
-    return '<div class="nl-langs" role="group" aria-label="language">' + SR.config.languages.map(function (l) {
+    // On a project page show only languages that have a real sibling post (plus the
+    // current one); never render a dead button. On the gallery, show all configured.
+    var p = project(), langs = SR.config.languages;
+    if (state.page === "project" && p && p.lang_urls) {
+      var avail = Object.keys(p.lang_urls);
+      if (avail.length) { langs = langs.filter(function (l) { return avail.indexOf(l) >= 0 || l === state.lang; }); }
+    }
+    return '<div class="nl-langs" role="group" aria-label="language">' + langs.map(function (l) {
       return '<button class="nl-lang" data-act="lang" data-id="' + l + '" aria-pressed="' + (l === state.lang) + '">' + esc(l.toUpperCase()) + "</button>";
     }).join("") + "</div>";
   }
@@ -507,6 +516,10 @@
   }
   function toastCopied() { var b = document.querySelector('[data-act="share"]'); if (b) { var o = b.innerHTML; b.innerHTML = svg("check", 16) + t("link_copied"); setTimeout(function () { b.innerHTML = o; }, 1600); } }
   function switchLang(l) {
+    // Each language is its own crawlable post. Navigate to the sibling URL when we
+    // have it (real page, real SEO); only fall back to a client swap if no sibling.
+    var p = project();
+    if (p && p.lang_urls && p.lang_urls[l]) { location.href = p.lang_urls[l]; return; }
     if (!I18N.langs[l]) return; state.lang = l;
     var u = new URL(location.href); u.searchParams.set("lang", l); history.replaceState(null, "", u);
     render();

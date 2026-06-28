@@ -74,6 +74,23 @@ if ( ! function_exists( 'nadlan_showroom_engine_build_project' ) ) {
 		if ( $tier === '' ) { $tier = 'standard'; }
 
 		$sub = (string) get_post_meta( $id, 'project_subtitle', true );
+
+		// Language siblings: each language is its own published nadlan_project post,
+		// resolved by slug convention <base> / <base>-en / -fr / -ru / -ar. The engine
+		// language bar navigates to these URLs (real crawlable pages), not a string swap.
+		$lang_urls = array();
+		$bases     = array( 'he' => '', 'en' => '-en', 'fr' => '-fr', 'ru' => '-ru', 'ar' => '-ar' );
+		$canon     = preg_replace( '/-(en|fr|ru|ar)$/', '', $post->post_name );
+		foreach ( $bases as $lng => $suf ) {
+			$sib = get_page_by_path( $canon . $suf, OBJECT, 'nadlan_project' );
+			if ( $sib && get_post_status( $sib ) === 'publish' ) { $lang_urls[ $lng ] = get_permalink( $sib->ID ); }
+		}
+		// This page's own language, from its slug suffix (HE is the unsuffixed base).
+		$self_lang = 'he';
+		foreach ( array( 'en', 'fr', 'ru', 'ar' ) as $l ) {
+			if ( substr( $post->post_name, -3 ) === '-' . $l ) { $self_lang = $l; }
+		}
+
 		return array(
 			'slug'           => $post->post_name,
 			'name'           => get_the_title( $id ),
@@ -103,6 +120,8 @@ if ( ! function_exists( 'nadlan_showroom_engine_build_project' ) ) {
 			'featured'       => (bool) get_post_meta( $id, 'project_featured', true ),
 			'tier'           => $tier,
 			'url'            => get_permalink( $id ),
+			'lang_urls'      => $lang_urls,
+			'self_lang'      => $self_lang,
 			'units'          => array_values( (array) $units ),
 		);
 	}
@@ -199,18 +218,19 @@ if ( ! function_exists( 'nadlan_showroom_engine_shortcode' ) ) {
 		$base = trailingslashit( nadlan_showroom_engine_base_url() );
 
 		// assets
-		wp_enqueue_style( 'nadlan-engine-tokens', $base . 'tokens.css', array(), '1.69.52' );
-		wp_enqueue_style( 'nadlan-engine-css', $base . 'showroom.css', array( 'nadlan-engine-tokens' ), '1.69.52' );
+		wp_enqueue_style( 'nadlan-engine-tokens', $base . 'tokens.css', array(), '1.69.53' );
+		wp_enqueue_style( 'nadlan-engine-css', $base . 'showroom.css', array( 'nadlan-engine-tokens' ), '1.69.53' );
+		wp_enqueue_style( 'nadlan-engine-editorial', $base . 'editorial.css', array( 'nadlan-engine-tokens' ), '1.69.53' );
 		wp_enqueue_script( 'nadlan-model-viewer', 'https://ajax.googleapis.com/ajax/libs/model-viewer/4.0.0/model-viewer.min.js', array(), '4.0.0', true );
 		wp_script_add_data( 'nadlan-model-viewer', 'type', 'module' );
-		wp_enqueue_script( 'nadlan-engine-i18n', $base . 'i18n.js', array(), '1.69.52', true );
-		wp_enqueue_script( 'nadlan-engine-core', $base . 'engine.js', array( 'nadlan-engine-i18n' ), '1.69.52', true );
+		wp_enqueue_script( 'nadlan-engine-i18n', $base . 'i18n.js', array(), '1.69.53', true );
+		wp_enqueue_script( 'nadlan-engine-core', $base . 'engine.js', array( 'nadlan-engine-i18n' ), '1.69.53', true );
 
 		// Real Mapbox only when a token is configured; otherwise the stylized map stays.
 		if ( (string) get_option( 'nadlan_mapbox_token', '' ) !== '' ) {
 			wp_enqueue_style( 'mapbox-gl', 'https://api.mapbox.com/mapbox-gl-js/v3.7.0/mapbox-gl.css', array(), '3.7.0' );
 			wp_enqueue_script( 'mapbox-gl', 'https://api.mapbox.com/mapbox-gl-js/v3.7.0/mapbox-gl.js', array(), '3.7.0', true );
-			wp_enqueue_script( 'nadlan-engine-mapbox', $base . 'mapbox-init.js', array( 'nadlan-engine-core', 'mapbox-gl' ), '1.69.52', true );
+			wp_enqueue_script( 'nadlan-engine-mapbox', $base . 'mapbox-init.js', array( 'nadlan-engine-core', 'mapbox-gl' ), '1.69.53', true );
 		}
 
 		// build payload from the CMS
@@ -243,8 +263,15 @@ if ( ! function_exists( 'nadlan_showroom_engine_shortcode' ) ) {
 						'stats'        => array(),
 					);
 				}
+				// On a single project page, the engine opens in THAT page's own language
+				// (the EN post loads in English, the HE post in Hebrew), so the article
+				// and the UI agree. The gallery keeps the site default.
+				$cfg = nadlan_showroom_engine_config( $order[0] );
+				if ( $page === 'project' && isset( $projects[ $order[0] ]['self_lang'] ) ) {
+					$cfg['default_lang'] = $projects[ $order[0] ]['self_lang'];
+				}
 				$payload = array(
-					'config'   => nadlan_showroom_engine_config( $order[0] ),
+					'config'   => $cfg,
 					'projects' => $projects,
 					'order'    => $order,
 					'areas'    => $areas,
@@ -339,26 +366,23 @@ add_filter( 'the_content', function ( $content ) {
 	// DE-STACK: remove the old baked static showroom (<main class="nlv2-showroom">...</main>)
 	// from the post body so the engine is not duplicated. Single, well-bounded block.
 	$content = preg_replace( '#<main\b[^>]*class="[^"]*nlv2-showroom[^"]*"[^>]*>.*?</main>#is', '', (string) $content );
-	$engine = nadlan_showroom_engine_shortcode( array( 'page' => 'project', 'project' => '', 'id' => '' ) );
-	return $engine . $content;
+	$engine  = nadlan_showroom_engine_shortcode( array( 'page' => 'project', 'project' => '', 'id' => '' ) );
+	// Wrap the remaining SEO article so editorial.css can style it (cream/gold system).
+	$article = '<div class="nadlan-project-article nadlan-guide">' . $content . '</div>';
+	return $engine . $article;
 }, 8 );
 
-/* Style the project SEO article in the cream/gold system (scoped to active project pages). */
-add_action( 'wp_enqueue_scripts', function () {
+/* hreflang: emit the reciprocal language set so each sibling post is crawlable and
+   Google serves the right language. Only for siblings that exist and are published. */
+add_action( 'wp_head', function () {
 	if ( ! is_singular( 'nadlan_project' ) ) { return; }
 	$pid = get_queried_object_id();
-	if ( ! $pid || ! function_exists( 'nadlan_showroom_engine_active_for' ) || ! nadlan_showroom_engine_active_for( $pid ) ) { return; }
-	wp_register_style( 'nadlan-engine-article', false, array(), '1.69.52' );
-	wp_enqueue_style( 'nadlan-engine-article' );
-	$css = '.single-nadlan_project .entry-content{max-width:760px;margin-inline:auto;color:#1B1A17;font-family:"Heebo",system-ui,sans-serif;font-size:18px;line-height:1.85}'
-	. '.single-nadlan_project .entry-content h2{font-family:"Frank Ruhl Libre",Georgia,serif;font-weight:700;font-size:30px;line-height:1.25;margin:40px 0 8px}'
-	. '.single-nadlan_project .entry-content h2::after{content:"";display:block;width:48px;height:2px;background:#9C7A3C;margin-top:12px}'
-	. '.single-nadlan_project .entry-content h3{font-family:"Frank Ruhl Libre",Georgia,serif;font-weight:500;font-size:23px;margin:28px 0 6px}'
-	. '.single-nadlan_project .entry-content p{margin:0 0 18px}'
-	. '.single-nadlan_project .entry-content ul,.single-nadlan_project .entry-content ol{margin:0 0 18px;padding-inline-start:22px}'
-	. '.single-nadlan_project .entry-content li{margin:6px 0}'
-	. '.single-nadlan_project .entry-content a{color:#9C7A3C;text-underline-offset:3px}'
-	. '.single-nadlan_project .entry-content table{width:100%;border-collapse:collapse;margin:18px 0;font-size:16px}'
-	. '.single-nadlan_project .entry-content th,.single-nadlan_project .entry-content td{border:1px solid #D9D2C4;padding:10px 12px;text-align:start}';
-	wp_add_inline_style( 'nadlan-engine-article', $css );
-}, 20 );
+	if ( ! $pid || ! nadlan_showroom_engine_active_for( $pid ) ) { return; }
+	$proj = nadlan_showroom_engine_build_project( get_post( $pid ) );
+	if ( empty( $proj['lang_urls'] ) ) { return; }
+	foreach ( $proj['lang_urls'] as $lng => $url ) {
+		printf( '<link rel="alternate" hreflang="%s" href="%s">' . "\n", esc_attr( $lng ), esc_url( $url ) );
+	}
+	$xd = isset( $proj['lang_urls']['he'] ) ? $proj['lang_urls']['he'] : reset( $proj['lang_urls'] );
+	printf( '<link rel="alternate" hreflang="x-default" href="%s">' . "\n", esc_url( $xd ) );
+}, 5 );
