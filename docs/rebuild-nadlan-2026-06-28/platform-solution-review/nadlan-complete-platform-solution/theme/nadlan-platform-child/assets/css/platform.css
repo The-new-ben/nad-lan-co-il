@@ -1,0 +1,152 @@
+:root{
+  --nlp-cream:#FAF7F1;
+  --nlp-ink:#1B1A17;
+  --nlp-gold:#9C7A3C;
+  --nlp-terracotta:#C2563A;
+  --nlp-sage:#7A8F6A;
+  --nlp-border:#D9D2C4;
+  --nlp-muted:#6B6457;
+  --nlp-theater:#14130F;
+  --nlp-theater-soft:#211F19;
+  --nlp-radius:6px;
+  --nlp-shadow:0 8px 24px -12px rgba(27,26,23,.18);
+  --nlp-theater-shadow:0 40px 90px -30px rgba(20,19,15,.55);
+}
+
+body.nlpc-platform{
+  background:var(--nlp-cream);
+  color:var(--nlp-ink);
+  font-family:Heebo,Arial,sans-serif;
+}
+html[lang^="en"] body.nlpc-platform,
+html[lang^="fr"] body.nlpc-platform,
+html[lang^="ru"] body.nlpc-platform{
+  font-family:"Inter Tight",Heebo,Arial,sans-serif;
+}
+body.nlpc-platform h1,
+body.nlpc-platform h2,
+body.nlpc-platform h3{
+  font-family:"Frank Ruhl Libre",Georgia,serif;
+  color:var(--nlp-ink);
+  letter-spacing:-.015em;
+}
+html[lang^="en"] body.nlpc-platform h1,
+html[lang^="en"] body.nlpc-platform h2,
+html[lang^="en"] body.nlpc-platform h3,
+html[lang^="fr"] body.nlpc-platform h1,
+html[lang^="fr"] body.nlpc-platform h2,
+html[lang^="fr"] body.nlpc-platform h3,
+html[lang^="ru"] body.nlpc-platform h1,
+html[lang^="ru"] body.nlpc-platform h2,
+html[lang^="ru"] body.nlpc-platform h3{
+  font-family:Fraunces,"Frank Ruhl Libre",Georgia,serif;
+}
+.nlpc-main{
+  max-width:1200px;
+  margin-inline:auto;
+  padding:clamp(24px,4vw,56px) clamp(14px,3vw,28px);
+}
+.nlpc-home-main{padding-top:0;}
+.nlpc-main :where(.wp-block-post-content,.entry-content){max-width:100%;}
+.nlpc-main :where(.wp-block-group,.wp-block-columns){box-sizing:border-box;}
+.nlpc-platform a{transition:color .16s ease,background .16s ease,border-color .16s ease;}
+.nlpc-platform .wp-block-button__link,
+.nlp-btn{
+  min-height:46px;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  border-radius:var(--nlp-radius);
+  padding:0 22px;
+  font-weight:700;
+  text-decoration:none;
+}
+.nlpc-platform .wp-block-button__link{background:var(--nlp-ink);color:var(--nlp-cream);}
+.nlpc-platform .is-style-outline .wp-block-button__link{background:transparent;color:var(--nlp-ink);border:1px solid var(--nlp-border);}
+.nlpc-platform .wp-site-blocks{background:var(--nlp-cream);}
+.nlpc-platform .wp-block-navigation a{font-size:14px;color:#4b4639;text-decoration:none;}
+.nlpc-platform .wp-block-navigation a:hover{color:var(--nlp-ink);}
+
+/* Existing content preservation: make legacy articles premium, not deleted. */
+.nlpc-platform .nadlan-project-article,
+.nlpc-platform .nadlan-guide,
+.nlpc-platform .entry-content > article{
+  max-width:780px;
+  margin:clamp(36px,6vw,76px) auto 0;
+  color:#2f2c25;
+}
+.nlpc-platform .nadlan-project-article h2,
+.nlpc-platform .nadlan-guide h2{
+  font-size:clamp(1.55rem,3vw,2.25rem);
+  margin:1.8em 0 .55em;
+  border-inline-start:3px solid var(--nlp-gold);
+  padding-inline-start:16px;
+}
+.nlpc-platform .nadlan-project-article h3,
+.nlpc-platform .nadlan-guide h3{
+  font-size:clamp(1.25rem,2vw,1.625rem);
+  margin:1.45em 0 .45em;
+}
+.nlpc-platform .nadlan-project-article p,
+.nlpc-platform .nadlan-project-article li,
+.nlpc-platform .nadlan-guide p,
+.nlpc-platform .nadlan-guide li{
+  font-size:1.0625rem;
+  line-height:1.85;
+}
+.nlpc-platform .nadlan-project-article blockquote,
+.nlpc-platform .nadlan-guide blockquote{
+  background:#FCF7EC;
+  border-inline-start:3px solid var(--nlp-gold);
+  border-radius:var(--nlp-radius);
+  padding:18px 20px;
+  margin:28px 0;
+  color:#4b4639;
+}
+
+.nlp-section-eyebrow{
+  font-size:12px;
+  letter-spacing:1.5px;
+  text-transform:uppercase;
+  color:var(--nlp-gold);
+  font-weight:700;
+}
+.nlp-rule{width:34px;height:2px;background:var(--nlp-gold);margin:13px 0 18px;}
+
+/* Project catalog supplied by the orchestrator plugin. */
+.nlp-catalog-shell{margin:0 auto;max-width:1200px;}
+.nlp-catalog-head{display:flex;gap:18px;align-items:end;justify-content:space-between;flex-wrap:wrap;margin:0 0 22px;}
+.nlp-catalog-title{font-size:clamp(2rem,5vw,4rem);line-height:1.04;margin:0;}
+.nlp-catalog-sub{max-width:58ch;color:var(--nlp-muted);font-size:1.05rem;line-height:1.65;margin:8px 0 0;}
+.nlp-project-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:16px;}
+.nlp-project-card{display:flex;flex-direction:column;min-height:360px;background:#fff;border:1px solid var(--nlp-border);border-radius:12px;overflow:hidden;text-decoration:none;color:var(--nlp-ink);box-shadow:var(--nlp-shadow);}
+.nlp-project-card:hover{transform:translateY(-2px);box-shadow:0 16px 34px -20px rgba(27,26,23,.28);}
+.nlp-project-media{position:relative;aspect-ratio:4/3;background:linear-gradient(150deg,#efe7d6,#d8d0be);overflow:hidden;}
+.nlp-project-media img{width:100%;height:100%;object-fit:cover;display:block;}
+.nlp-project-badge{position:absolute;top:10px;inset-inline-end:10px;background:rgba(27,26,23,.72);color:#fff;border:1px solid rgba(255,255,255,.22);border-radius:4px;font-size:11px;padding:4px 9px;backdrop-filter:blur(5px);}
+.nlp-project-body{padding:16px;display:flex;flex-direction:column;gap:10px;flex:1;}
+.nlp-project-card h2{font-size:1.45rem;margin:0;line-height:1.2;}
+.nlp-project-meta{display:flex;flex-wrap:wrap;gap:8px;color:var(--nlp-muted);font-size:13px;}
+.nlp-project-meta span{border:1px solid #ECE6DA;background:#FBF9F4;border-radius:999px;padding:4px 9px;}
+.nlp-project-desc{color:#423d33;line-height:1.6;font-size:15px;margin:0;}
+.nlp-project-cta{margin-top:auto;color:var(--nlp-terracotta);font-weight:800;font-size:14px;}
+
+/* Interior module supplied by the orchestrator plugin. */
+.nlp-interior{border:1px solid var(--nlp-border);background:#fff;border-radius:14px;overflow:hidden;box-shadow:var(--nlp-shadow);margin:24px 0;}
+.nlp-interior-head{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;padding:18px;border-bottom:1px solid var(--nlp-border);}
+.nlp-interior-title{font-family:"Frank Ruhl Libre",Georgia,serif;font-size:1.4rem;margin:0;}
+.nlp-interior-stage{position:relative;min-height:420px;background:#171512;color:#fff;display:grid;place-items:center;text-align:center;padding:24px;}
+.nlp-interior-placeholder{max-width:58ch;color:#d8d0be;line-height:1.65;}
+.nlp-interior-actions{display:flex;gap:10px;flex-wrap:wrap;padding:16px 18px;background:#FBF9F4;}
+
+@media (max-width: 760px){
+  .nlpc-main{padding-inline:14px;}
+  .nlp-project-grid{grid-template-columns:1fr;}
+  .nlp-project-card{min-height:unset;}
+  .nlp-catalog-head{align-items:start;}
+  .nlp-interior-stage{min-height:320px;}
+}
+
+@media (prefers-reduced-motion: reduce){
+  *,*::before,*::after{transition-duration:.01ms!important;animation-duration:.01ms!important;animation-iteration-count:1!important;scroll-behavior:auto!important;}
+}

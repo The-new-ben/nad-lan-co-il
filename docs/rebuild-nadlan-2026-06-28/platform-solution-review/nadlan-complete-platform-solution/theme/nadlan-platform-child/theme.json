@@ -1,0 +1,58 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/theme.json",
+  "version": 3,
+  "settings": {
+    "appearanceTools": true,
+    "layout": {
+      "contentSize": "760px",
+      "wideSize": "1200px"
+    },
+    "color": {
+      "palette": [
+        { "slug": "cream", "color": "#FAF7F1", "name": "NadLan Cream" },
+        { "slug": "ink", "color": "#1B1A17", "name": "NadLan Ink" },
+        { "slug": "gold", "color": "#9C7A3C", "name": "NadLan Gold" },
+        { "slug": "terracotta", "color": "#C2563A", "name": "NadLan Terracotta" },
+        { "slug": "sage", "color": "#7A8F6A", "name": "NadLan Sage" },
+        { "slug": "border", "color": "#D9D2C4", "name": "NadLan Border" },
+        { "slug": "muted", "color": "#6B6457", "name": "NadLan Muted" }
+      ]
+    },
+    "typography": {
+      "fontFamilies": [
+        { "slug": "heebo", "name": "Heebo", "fontFamily": "Heebo, Arial, sans-serif" },
+        { "slug": "frank-ruhl", "name": "Frank Ruhl Libre", "fontFamily": "Frank Ruhl Libre, Georgia, serif" },
+        { "slug": "inter-tight", "name": "Inter Tight", "fontFamily": "Inter Tight, Arial, sans-serif" },
+        { "slug": "fraunces", "name": "Fraunces", "fontFamily": "Fraunces, Georgia, serif" }
+      ]
+    },
+    "spacing": {
+      "spacingSizes": [
+        { "slug": "20", "size": "4px", "name": "4" },
+        { "slug": "30", "size": "8px", "name": "8" },
+        { "slug": "40", "size": "16px", "name": "16" },
+        { "slug": "50", "size": "24px", "name": "24" },
+        { "slug": "60", "size": "40px", "name": "40" },
+        { "slug": "70", "size": "64px", "name": "64" }
+      ]
+    }
+  },
+  "styles": {
+    "color": {
+      "background": "#FAF7F1",
+      "text": "#1B1A17"
+    },
+    "typography": {
+      "fontFamily": "var:preset|font-family|heebo",
+      "lineHeight": "1.65"
+    },
+    "elements": {
+      "heading": {
+        "typography": { "fontFamily": "var:preset|font-family|frank-ruhl", "lineHeight": "1.15" }
+      },
+      "link": {
+        "color": { "text": "#1B1A17" }
+      }
+    }
+  }
+}

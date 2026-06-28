@@ -59,6 +59,25 @@ Important files:
 Use these for before/after verification. The previous live page was not a pass against the design
 mock. The new rebuild must produce replacement screenshots and compare them against these files.
 
+## Platform Solution Package
+
+Copied into `platform-solution-review/`.
+
+Important files:
+
+- `nadlan-platform-orchestrator-plugin.zip`
+- `nadlan-platform-child-theme.zip`
+- `nadlan-complete-platform-solution.zip`
+- extracted child theme
+- extracted orchestrator plugin
+- extracted complete package
+- `platform-solution-review.md`
+
+Verdict: this is a promising candidate architecture because it keeps `nadlan-revenue` as parent,
+keeps `nadlan-config` as the business source of truth, and avoids registering
+`nadlan_showroom_engine` again. It is not ready for blind live activation. Public copy cleanup,
+homepage-band gating, and screenshot QA are required first.
+
 ## What These Artifacts Mean
 
 The design target is clear:
