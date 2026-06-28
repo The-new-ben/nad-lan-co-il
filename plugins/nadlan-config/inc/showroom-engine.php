@@ -199,18 +199,18 @@ if ( ! function_exists( 'nadlan_showroom_engine_shortcode' ) ) {
 		$base = trailingslashit( nadlan_showroom_engine_base_url() );
 
 		// assets
-		wp_enqueue_style( 'nadlan-engine-tokens', $base . 'tokens.css', array(), '1.69.50' );
-		wp_enqueue_style( 'nadlan-engine-css', $base . 'showroom.css', array( 'nadlan-engine-tokens' ), '1.69.50' );
+		wp_enqueue_style( 'nadlan-engine-tokens', $base . 'tokens.css', array(), '1.69.51' );
+		wp_enqueue_style( 'nadlan-engine-css', $base . 'showroom.css', array( 'nadlan-engine-tokens' ), '1.69.51' );
 		wp_enqueue_script( 'nadlan-model-viewer', 'https://ajax.googleapis.com/ajax/libs/model-viewer/4.0.0/model-viewer.min.js', array(), '4.0.0', true );
 		wp_script_add_data( 'nadlan-model-viewer', 'type', 'module' );
-		wp_enqueue_script( 'nadlan-engine-i18n', $base . 'i18n.js', array(), '1.69.50', true );
-		wp_enqueue_script( 'nadlan-engine-core', $base . 'engine.js', array( 'nadlan-engine-i18n' ), '1.69.50', true );
+		wp_enqueue_script( 'nadlan-engine-i18n', $base . 'i18n.js', array(), '1.69.51', true );
+		wp_enqueue_script( 'nadlan-engine-core', $base . 'engine.js', array( 'nadlan-engine-i18n' ), '1.69.51', true );
 
 		// Real Mapbox only when a token is configured; otherwise the stylized map stays.
 		if ( (string) get_option( 'nadlan_mapbox_token', '' ) !== '' ) {
 			wp_enqueue_style( 'mapbox-gl', 'https://api.mapbox.com/mapbox-gl-js/v3.7.0/mapbox-gl.css', array(), '3.7.0' );
 			wp_enqueue_script( 'mapbox-gl', 'https://api.mapbox.com/mapbox-gl-js/v3.7.0/mapbox-gl.js', array(), '3.7.0', true );
-			wp_enqueue_script( 'nadlan-engine-mapbox', $base . 'mapbox-init.js', array( 'nadlan-engine-core', 'mapbox-gl' ), '1.69.50', true );
+			wp_enqueue_script( 'nadlan-engine-mapbox', $base . 'mapbox-init.js', array( 'nadlan-engine-core', 'mapbox-gl' ), '1.69.51', true );
 		}
 
 		// build payload from the CMS
@@ -274,18 +274,25 @@ add_shortcode( 'nadlan_showroom_engine', 'nadlan_showroom_engine_shortcode' );
  * Runs once, guarded by an option.
  * ----------------------------------------------------------------------- */
 add_action( 'init', function () {
-	if ( get_option( 'nadlan_showroom_seed_ashira_v1' ) === '1' ) { return; }
-	$glb = trailingslashit( nadlan_showroom_engine_base_url() ) . 'models/ashira-massing.glb';
-	if ( ! file_exists( nadlan_showroom_engine_dir() . 'models/ashira-massing.glb' ) ) { return; }
+	if ( get_option( 'nadlan_showroom_seed_ashira_v2' ) === '1' ) { return; }
+	$base   = trailingslashit( nadlan_showroom_engine_base_url() ) . 'models/';
+	$glb    = $base . 'ashira.glb';          // Claude Design's DETAILED model (not the crude box massing)
+	$poster = $base . 'ashira-poster.jpg';
+	if ( ! file_exists( nadlan_showroom_engine_dir() . 'models/ashira.glb' ) ) { return; }
 	$slugs = array( 'ashira-sde-dov', 'ashira-sde-dov-en', 'ashira-sde-dov-fr', 'ashira-sde-dov-ru', 'ashira-sde-dov-ar' );
 	foreach ( $slugs as $slug ) {
 		$p = get_page_by_path( $slug, OBJECT, 'nadlan_project' );
 		if ( ! $p ) { continue; }
-		if ( get_post_meta( $p->ID, 'project_model_glb', true ) === '' ) {
+		$cur = (string) get_post_meta( $p->ID, 'project_model_glb', true );
+		// set the detailed model if empty OR if it still points at the crude massing box
+		if ( $cur === '' || strpos( $cur, 'ashira-massing.glb' ) !== false ) {
 			update_post_meta( $p->ID, 'project_model_glb', esc_url_raw( $glb ) );
+			if ( (string) get_post_meta( $p->ID, 'project_model_poster', true ) === '' ) {
+				update_post_meta( $p->ID, 'project_model_poster', esc_url_raw( $poster ) );
+			}
 		}
 	}
-	update_option( 'nadlan_showroom_seed_ashira_v1', '1' );
+	update_option( 'nadlan_showroom_seed_ashira_v2', '1' );
 } );
 
 /* -------------------------------------------------------------------------
