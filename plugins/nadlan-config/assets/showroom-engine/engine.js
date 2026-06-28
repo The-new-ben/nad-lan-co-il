@@ -101,7 +101,7 @@
   }
 
   /* ---- header + language bar ---- */
-  function langBar() {
+  function pageLangs() {
     // On a project page show only languages that have a real sibling post (plus the
     // current one); never render a dead button. On the gallery, show all configured.
     var p = project(), langs = SR.config.languages;
@@ -109,6 +109,14 @@
       var avail = Object.keys(p.lang_urls);
       if (avail.length) { langs = langs.filter(function (l) { return avail.indexOf(l) >= 0 || l === state.lang; }); }
     }
+    return langs;
+  }
+  function langHref(l) {
+    var p = project();
+    return (state.page === "project" && p && p.lang_urls && p.lang_urls[l]) ? p.lang_urls[l] : "#";
+  }
+  function langBar() {
+    var langs = pageLangs();
     return '<div class="nl-langs" role="group" aria-label="language">' + langs.map(function (l) {
       return '<button class="nl-lang" data-act="lang" data-id="' + l + '" aria-pressed="' + (l === state.lang) + '">' + esc(l.toUpperCase()) + "</button>";
     }).join("") + "</div>";
@@ -358,7 +366,7 @@
   /* footer */
   function footer() {
     var projLinks = SR.order.map(function (k) { return '<li><a href="project.html?project=' + esc(k) + '">' + esc(t(SR.projects[k].name_key)) + "</a></li>"; }).join("");
-    var langLinks = SR.config.languages.map(function (l) { return '<li><a href="#" data-act="lang" data-id="' + l + '">' + esc(t("lang_" + l)) + "</a></li>"; }).join("");
+    var langLinks = pageLangs().map(function (l) { return '<li><a href="' + esc(langHref(l)) + '" data-act="lang" data-id="' + l + '">' + esc(t("lang_" + l)) + "</a></li>"; }).join("");
     return '<footer class="nl-footer"><div class="nl-wrap"><div class="nl-footer__row">' +
       '<div><a class="nl-brand" href="home.html"><span class="nl-brand__mark">N</span><span class="nl-brand__name" style="color:#efe7d6">' + esc(t("brand")) + '</span></a><p style="color:#b8b1a2;font-size:14px;margin-top:12px;max-width:34ch">' + esc(t("footer_tagline")) + "</p></div>" +
       "<div><h5>" + esc(t("footer_col_projects")) + "</h5><ul>" + projLinks + "</ul></div>" +
