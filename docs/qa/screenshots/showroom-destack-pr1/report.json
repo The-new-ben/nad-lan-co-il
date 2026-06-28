@@ -1,0 +1,259 @@
+{
+  "ok": true,
+  "generated_at": "2026-06-28T10:25:27.264Z",
+  "base_url": "https://nad-lan.co.il",
+  "results": [
+    {
+      "key": "he",
+      "viewport": "desktop-1440",
+      "url": "https://nad-lan.co.il/projects/ashira-sde-dov/?cb=destack-pr1",
+      "screenshot": "C:\\Users\\pro\\Documents\\websites\\nad-lan-co-il-pr1\\docs\\qa\\screenshots\\showroom-destack-pr1\\he-desktop-1440.png",
+      "metrics": {
+        "lang": "he",
+        "dir": "rtl",
+        "nlv2Showroom": 0,
+        "nlRoot": 1,
+        "article": 1,
+        "articleTextChars": 16001,
+        "articleFontSize": "18px",
+        "articleLineHeight": "33.3px",
+        "h2Count": 17,
+        "h2FontFamily": "\"Frank Ruhl Libre\", serif",
+        "scrollWidth": 1440,
+        "clientWidth": 1440
+      },
+      "checks": [
+        {
+          "ok": true,
+          "name": ".nlv2-showroom count is 0",
+          "detail": "0"
+        },
+        {
+          "ok": true,
+          "name": "#nl-root count is 1",
+          "detail": "1"
+        },
+        {
+          "ok": true,
+          "name": "article wrapper exists once",
+          "detail": "1"
+        },
+        {
+          "ok": true,
+          "name": "article preserved with real text",
+          "detail": "16001"
+        },
+        {
+          "ok": true,
+          "name": "article headings render inside wrapper",
+          "detail": "17"
+        },
+        {
+          "ok": true,
+          "name": "editorial article style applied",
+          "detail": "18px"
+        },
+        {
+          "ok": true,
+          "name": "no horizontal overflow",
+          "detail": "1440/1440"
+        },
+        {
+          "ok": true,
+          "name": "no browser console/page errors",
+          "detail": ""
+        }
+      ],
+      "ok": true
+    },
+    {
+      "key": "en",
+      "viewport": "desktop-1440",
+      "url": "https://nad-lan.co.il/projects/ashira-sde-dov-en/?cb=destack-pr1",
+      "screenshot": "C:\\Users\\pro\\Documents\\websites\\nad-lan-co-il-pr1\\docs\\qa\\screenshots\\showroom-destack-pr1\\en-desktop-1440.png",
+      "metrics": {
+        "lang": "en",
+        "dir": "ltr",
+        "nlv2Showroom": 0,
+        "nlRoot": 1,
+        "article": 1,
+        "articleTextChars": 18185,
+        "articleFontSize": "18px",
+        "articleLineHeight": "33.3px",
+        "h2Count": 14,
+        "h2FontFamily": "\"Frank Ruhl Libre\", serif",
+        "scrollWidth": 1440,
+        "clientWidth": 1440
+      },
+      "checks": [
+        {
+          "ok": true,
+          "name": ".nlv2-showroom count is 0",
+          "detail": "0"
+        },
+        {
+          "ok": true,
+          "name": "#nl-root count is 1",
+          "detail": "1"
+        },
+        {
+          "ok": true,
+          "name": "article wrapper exists once",
+          "detail": "1"
+        },
+        {
+          "ok": true,
+          "name": "article preserved with real text",
+          "detail": "18185"
+        },
+        {
+          "ok": true,
+          "name": "article headings render inside wrapper",
+          "detail": "14"
+        },
+        {
+          "ok": true,
+          "name": "editorial article style applied",
+          "detail": "18px"
+        },
+        {
+          "ok": true,
+          "name": "no horizontal overflow",
+          "detail": "1440/1440"
+        },
+        {
+          "ok": true,
+          "name": "no browser console/page errors",
+          "detail": ""
+        }
+      ],
+      "ok": true
+    },
+    {
+      "key": "he",
+      "viewport": "mobile-390",
+      "url": "https://nad-lan.co.il/projects/ashira-sde-dov/?cb=destack-pr1",
+      "screenshot": "C:\\Users\\pro\\Documents\\websites\\nad-lan-co-il-pr1\\docs\\qa\\screenshots\\showroom-destack-pr1\\he-mobile-390.png",
+      "metrics": {
+        "lang": "he",
+        "dir": "rtl",
+        "nlv2Showroom": 0,
+        "nlRoot": 1,
+        "article": 1,
+        "articleTextChars": 16001,
+        "articleFontSize": "17px",
+        "articleLineHeight": "30.6px",
+        "h2Count": 17,
+        "h2FontFamily": "\"Frank Ruhl Libre\", serif",
+        "scrollWidth": 390,
+        "clientWidth": 390
+      },
+      "checks": [
+        {
+          "ok": true,
+          "name": ".nlv2-showroom count is 0",
+          "detail": "0"
+        },
+        {
+          "ok": true,
+          "name": "#nl-root count is 1",
+          "detail": "1"
+        },
+        {
+          "ok": true,
+          "name": "article wrapper exists once",
+          "detail": "1"
+        },
+        {
+          "ok": true,
+          "name": "article preserved with real text",
+          "detail": "16001"
+        },
+        {
+          "ok": true,
+          "name": "article headings render inside wrapper",
+          "detail": "17"
+        },
+        {
+          "ok": true,
+          "name": "editorial article style applied",
+          "detail": "17px"
+        },
+        {
+          "ok": true,
+          "name": "no horizontal overflow",
+          "detail": "390/390"
+        },
+        {
+          "ok": true,
+          "name": "no browser console/page errors",
+          "detail": ""
+        }
+      ],
+      "ok": true
+    },
+    {
+      "key": "en",
+      "viewport": "mobile-390",
+      "url": "https://nad-lan.co.il/projects/ashira-sde-dov-en/?cb=destack-pr1",
+      "screenshot": "C:\\Users\\pro\\Documents\\websites\\nad-lan-co-il-pr1\\docs\\qa\\screenshots\\showroom-destack-pr1\\en-mobile-390.png",
+      "metrics": {
+        "lang": "en",
+        "dir": "ltr",
+        "nlv2Showroom": 0,
+        "nlRoot": 1,
+        "article": 1,
+        "articleTextChars": 18185,
+        "articleFontSize": "17px",
+        "articleLineHeight": "30.6px",
+        "h2Count": 14,
+        "h2FontFamily": "\"Frank Ruhl Libre\", serif",
+        "scrollWidth": 390,
+        "clientWidth": 390
+      },
+      "checks": [
+        {
+          "ok": true,
+          "name": ".nlv2-showroom count is 0",
+          "detail": "0"
+        },
+        {
+          "ok": true,
+          "name": "#nl-root count is 1",
+          "detail": "1"
+        },
+        {
+          "ok": true,
+          "name": "article wrapper exists once",
+          "detail": "1"
+        },
+        {
+          "ok": true,
+          "name": "article preserved with real text",
+          "detail": "18185"
+        },
+        {
+          "ok": true,
+          "name": "article headings render inside wrapper",
+          "detail": "14"
+        },
+        {
+          "ok": true,
+          "name": "editorial article style applied",
+          "detail": "17px"
+        },
+        {
+          "ok": true,
+          "name": "no horizontal overflow",
+          "detail": "390/390"
+        },
+        {
+          "ok": true,
+          "name": "no browser console/page errors",
+          "detail": ""
+        }
+      ],
+      "ok": true
+    }
+  ]
+}
