@@ -33,6 +33,28 @@ Running it next to `nadlan-config` = the exact stacking we removed. Do not activ
 Salvageable, additive ideas to port surgically into `nadlan-config`: the SVG floor-plan assets,
 the `[nadlan_seo_booster]` concept, and a homepage gallery band.
 
+## Verdict 3 — Platform package (child theme + orchestrator plugin): CORRECT ARCHITECTURE, STAGING-FIRST
+The third delivery (`nadlan-platform-child-theme.zip`, `nadlan-platform-orchestrator-plugin.zip`,
+`nadlan-complete-platform-solution.zip`) is the first one built the right way. Audit findings:
+- **Child theme** declares `Template: nadlan-revenue` (a real child, does not replace the parent);
+  `functions.php` only adds a body_class (non-destructive); `single-nadlan_project.html` uses
+  `wp:post-content` (so the engine's the_content injection still fires once — no baked showroom).
+- **Orchestrator plugin** is anti-stack-safe: shortcodes are namespaced `nadlan_platform_*` (no
+  `nadlan_showroom_engine` collision); `[nadlan_platform_showroom]` DELEGATES to the existing
+  `nadlan_showroom_engine_shortcode()`; its only `the_content` filter targets `is_front_page()`
+  ONLY, is OFF by default (`nlpo_auto_insert_home_band`), and has a dedup guard; REST is a
+  separate `nadlan-platform/v1` admin content-gap route; it emits NO hreflang (no dup).
+- Ships 5-language Ashira content drafts + a rollout/QA plan.
+
+ANTI-STACK: at the plugin level this is clean and complementary — it does not duplicate the engine,
+the shortcode, or hreflang. The remaining risk is presentation-only and unavoidable: the child
+theme's `theme.json` (site-wide colors/typography/spacing) and template overrides (`home.html`,
+`archive-nadlan_project.html`, `single-nadlan_project.html`) change the look of the WHOLE site, so
+they MUST be visually verified on STAGING against the real hub, calculators, directory, and a lead
+flow before going live. Activate the orchestrator first (home band off), then the child theme on
+staging, screenshot everything, and only then consider live. This package and finishing the engine
+(PR4/PR5) are complementary, not alternatives.
+
 ## THE SOLUTION (how the mockup gets onto the live site)
 The vehicle already exists and is live, de-stacked, and CMS-wired: the showroom engine inside
 `nadlan-config` (`inc/showroom-engine.php` + `assets/showroom-engine/`). Both outside packages
