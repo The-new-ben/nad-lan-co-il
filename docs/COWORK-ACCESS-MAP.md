@@ -198,20 +198,25 @@ agent (or owner) to verify live with screenshots.**
 
 ---
 
-## 6. WHAT IS LIVE-ONLY AND NOT IN THIS REPO (important)
+## 6. THE THREE LAYERS THAT ARE NOW ALL IN THE REPO (updated 2026-06-29)
 
-Some experiments were deployed to the server but were **never committed to this
-repo**. If you only read the repo you will not see them; if you only read live
-you will think the repo is missing things. Both are partly true. Known cases:
-- `nadlan-platform-orchestrator` (a companion plugin) — archived as a ZIP under
-  `handoff/external-agent-packages/2026-06-28/` but **not active in the repo tree**.
-- `nadlan-platform-child` (a child theme) — same: archived, not in the repo as a
-  live theme.
+Earlier these were live-only experiments. They are now committed and tracked on
+`origin/main`, so the repo IS the source of truth for them. Verify with
+`git ls-tree -r --name-only origin/main | grep platform`.
+- `plugins/nadlan-config/` — the business brain + the showroom engine. Source of truth.
+- `plugins/nadlan-platform-orchestrator/` (v0.1.3) — a companion plugin. Anti-stack
+  safe: namespaced `nadlan_platform_*` shortcodes; `[nadlan_platform_showroom]`
+  DELEGATES to `nadlan_showroom_engine_shortcode()`; its `the_content` filter is
+  `is_front_page()` only and OFF by default (`nlpo_auto_insert_home_band`). It does
+  NOT register `nadlan_showroom_engine` and emits NO hreflang.
+- `themes/nadlan-platform-child/` (v0.1.6) — the active live theme, a real child of
+  `nadlan-revenue` (presentation only; `functions.php` only adds body_class + marks
+  the existing homepage showcase, it does not rewrite content).
 
-If the owner says "the live site has X" and the repo doesn't, that is expected
-for these. Decide deliberately: either bring it into the repo properly (so the
-repo is the source of truth again) or remove it from live. Do not silently build
-on top of a live-only layer.
+So the live theme is `nadlan-platform-child` (child of `nadlan-revenue`), not the
+bare parent. The showroom on project pages is still rendered by the plugin engine
+(`#nl-root`), independent of which theme is active — so engine work happens in
+`nadlan-config` regardless. Do not add a second showroom in the theme or orchestrator.
 
 ---
 
