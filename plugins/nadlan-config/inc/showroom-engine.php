@@ -124,6 +124,8 @@ if ( ! function_exists( 'nadlan_showroom_engine_build_project' ) ) {
 			'concept'        => (bool) get_post_meta( $id, 'project_3d_demo', true ),
 			'video_url'      => esc_url_raw( (string) get_post_meta( $id, 'project_3d_video_url', true ) ),
 			'tour_url'       => esc_url_raw( (string) get_post_meta( $id, 'project_3d_tour_url', true ) ),
+			// Interior tour (PR6): real 360 panoramas only; empty -> honest placeholder.
+			'interior_panoramas' => array_values( (array) nadlan_showroom_engine_json_meta( $id, 'project_interior_panoramas' ) ),
 			'orientation'    => $orientation,
 			'geo'            => array(
 				'lat' => (float) get_post_meta( $id, 'lat', true ),
@@ -240,19 +242,19 @@ if ( ! function_exists( 'nadlan_showroom_engine_shortcode' ) ) {
 		$base = trailingslashit( nadlan_showroom_engine_base_url() );
 
 		// assets
-		wp_enqueue_style( 'nadlan-engine-tokens', $base . 'tokens.css', array(), '1.69.58' );
-		wp_enqueue_style( 'nadlan-engine-css', $base . 'showroom.css', array( 'nadlan-engine-tokens' ), '1.69.58' );
-		wp_enqueue_style( 'nadlan-engine-editorial', $base . 'editorial.css', array( 'nadlan-engine-tokens' ), '1.69.58' );
+		wp_enqueue_style( 'nadlan-engine-tokens', $base . 'tokens.css', array(), '1.69.59' );
+		wp_enqueue_style( 'nadlan-engine-css', $base . 'showroom.css', array( 'nadlan-engine-tokens' ), '1.69.59' );
+		wp_enqueue_style( 'nadlan-engine-editorial', $base . 'editorial.css', array( 'nadlan-engine-tokens' ), '1.69.59' );
 		wp_enqueue_script( 'nadlan-model-viewer', 'https://ajax.googleapis.com/ajax/libs/model-viewer/4.0.0/model-viewer.min.js', array(), '4.0.0', true );
 		wp_script_add_data( 'nadlan-model-viewer', 'type', 'module' );
-		wp_enqueue_script( 'nadlan-engine-i18n', $base . 'i18n.js', array(), '1.69.58', true );
-		wp_enqueue_script( 'nadlan-engine-core', $base . 'engine.js', array( 'nadlan-engine-i18n' ), '1.69.58', true );
+		wp_enqueue_script( 'nadlan-engine-i18n', $base . 'i18n.js', array(), '1.69.59', true );
+		wp_enqueue_script( 'nadlan-engine-core', $base . 'engine.js', array( 'nadlan-engine-i18n' ), '1.69.59', true );
 
 		// Real Mapbox only when a token is configured; otherwise the stylized map stays.
 		if ( (string) get_option( 'nadlan_mapbox_token', '' ) !== '' ) {
 			wp_enqueue_style( 'mapbox-gl', 'https://api.mapbox.com/mapbox-gl-js/v3.7.0/mapbox-gl.css', array(), '3.7.0' );
 			wp_enqueue_script( 'mapbox-gl', 'https://api.mapbox.com/mapbox-gl-js/v3.7.0/mapbox-gl.js', array(), '3.7.0', true );
-			wp_enqueue_script( 'nadlan-engine-mapbox', $base . 'mapbox-init.js', array( 'nadlan-engine-core', 'mapbox-gl' ), '1.69.58', true );
+			wp_enqueue_script( 'nadlan-engine-mapbox', $base . 'mapbox-init.js', array( 'nadlan-engine-core', 'mapbox-gl' ), '1.69.59', true );
 		}
 
 		// build payload from the CMS

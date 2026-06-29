@@ -77,6 +77,7 @@
     plan_coming: "תכנית הדירה תוצג לאחר קבלת תוכנית מכר מאושרת.",
     view_coming: "מבט מהדירה יוצג לאחר אימות מיקום מול היזם.",
     tour_coming: "סיור פנים יוצג כאשר יתקבל קישור מאושר.",
+    tour_title: "סיור פנים", tour_open: "פתיחת סיור וירטואלי", tour_open_pano: "פתיחת סיור 360", tour_lazy_hint: "הסיור נטען בלחיצה כדי לשמור על מהירות העמוד.", tour_pending: "סיור פנים יתווסף עם קבלת תמונות 360 או קישור מאושר מהיזם.",
     btn_inquire: "מעניין אותי", btn_save: "שמירה", btn_saved: "נשמר", btn_compare: "להשוואה",
     btn_compared: "בהשוואה", btn_share: "שיתוף", btn_close: "סגירה", link_copied: "הקישור הועתק",
 
@@ -199,6 +200,7 @@
     plan_coming: "The floor plan will appear once an approved sales plan is provided.",
     view_coming: "The view from the apartment will appear after location is verified.",
     tour_coming: "An interior tour will appear once an approved link is provided.",
+    tour_title: "Interior tour", tour_open: "Open virtual tour", tour_open_pano: "Open 360 tour", tour_lazy_hint: "The tour loads on click to keep the page fast.", tour_pending: "An interior tour will appear once 360 photos or an approved link are provided.",
     btn_inquire: "I'm interested", btn_save: "Save", btn_saved: "Saved", btn_compare: "Compare",
     btn_compared: "Comparing", btn_share: "Share", btn_close: "Close", link_copied: "Link copied",
     inventory_title: "All apartments",
