@@ -7,3 +7,6 @@ plugin-build/
 plugin-dist/*
 !plugin-dist/nadlan-config.json
 !plugin-dist/*.zip
+
+# Local SEO/visual audit cache
+.seo-cache/

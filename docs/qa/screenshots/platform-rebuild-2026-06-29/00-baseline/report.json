@@ -1,0 +1,1056 @@
+[
+  {
+    "name": "home",
+    "url": "https://nad-lan.co.il/",
+    "viewport": "desktop-1440",
+    "status": 200,
+    "navError": null,
+    "screenshot": "home-desktop-1440.png",
+    "consoleErrors": [],
+    "failedRequests": [
+      "https://www.google-analytics.com/g/collect?v=2&tid=G-G3QRV5646E&gtm=45Pe66p0v9254165660za200zd9254165660&_p=1782755498948&gcd=13l3l3l3l1l1&npa=0&dma=0&gdid=dZTNiMT&are=1&cid=1271272625.1782755501&frm=0&pscdl=noapi&rcb=1&sr=1440x1200&uaa=x86&uab=64&uafvl=Google%2520Chrome%3B149.0.7827.199%7CChromium%3B149.0.7827.199%7CNot)A%253BBrand%3B24.0.0.0&uam=&uamb=0&uap=Windows&uapv=10.0.0&uaw=0&ul=he-il&_s=1&tag_exp=115938466~115938468~118395334~119027224~119576891~119576895&sid=1782755500&sct=1&seg=0&dl=https%3A%2F%2Fnad-lan.co.il%2F&dt=%D7%93%D7%99%D7%A8%D7%95%D7%AA%20%D7%97%D7%93%D7%A9%D7%95%D7%AA%20%D7%95%D7%A4%D7%A8%D7%95%D7%99%D7%A7%D7%98%D7%99%D7%9D%20%D7%A2%D7%9D%20%D7%91%D7%97%D7%99%D7%A8%D7%AA%20%D7%93%D7%99%D7%A8%D7%94%20%D7%91%D7%AA%D7%9C%D7%AA%20%D7%9E%D7%9E%D7%93%20%7C%20NadLan&en=page_view&_fv=1&_nsi=1&_ss=1&_ee=1&tfd=4538 :: net::ERR_ABORTED"
+    ],
+    "network404s": [],
+    "finalUrl": "https://nad-lan.co.il/",
+    "title": "דירות חדשות ופרויקטים עם בחירת דירה בתלת ממד | NadLan",
+    "lang": "he-IL",
+    "dir": "rtl",
+    "h1": 1,
+    "nlRoot": 0,
+    "oldNlv2": 0,
+    "oldP3d": 0,
+    "homeBand": 0,
+    "scrollWidth": 1440,
+    "innerWidth": 1440,
+    "overflow": false,
+    "textLeaks": [],
+    "emDash": 0,
+    "visibleH1": [
+      "NadLan: בוחרים פרויקט ודירה לפני שפונים ליזם"
+    ],
+    "stickyHeaderVisible": true,
+    "footerExists": true,
+    "footerInitiallyVisible": false,
+    "accessibilityControls": [
+      "נגישות",
+      "תפריט נגישות"
+    ],
+    "offscreenNav": []
+  },
+  {
+    "name": "home",
+    "url": "https://nad-lan.co.il/",
+    "viewport": "mobile-390",
+    "status": 200,
+    "navError": null,
+    "screenshot": "home-mobile-390.png",
+    "consoleErrors": [],
+    "failedRequests": [
+      "https://www.google-analytics.com/g/collect?v=2&tid=G-G3QRV5646E&gtm=45Pe66p0v9254165660za200zd9254165660&_p=1782755513201&gcd=13l3l3l3l1l1&npa=0&dma=0&gdid=dZTNiMT&are=1&cid=196204770.1782755514&frm=0&pscdl=noapi&rcb=7&sr=390x1100&uaa=x86&uab=64&uafvl=Google%2520Chrome%3B149.0.7827.199%7CChromium%3B149.0.7827.199%7CNot)A%253BBrand%3B24.0.0.0&uam=&uamb=0&uap=Windows&uapv=10.0.0&uaw=0&ul=he-il&_s=1&tag_exp=115616985~115938466~115938469~119027224~119576891~119576895&sid=1782755514&sct=1&seg=0&dl=https%3A%2F%2Fnad-lan.co.il%2F&dt=%D7%93%D7%99%D7%A8%D7%95%D7%AA%20%D7%97%D7%93%D7%A9%D7%95%D7%AA%20%D7%95%D7%A4%D7%A8%D7%95%D7%99%D7%A7%D7%98%D7%99%D7%9D%20%D7%A2%D7%9D%20%D7%91%D7%97%D7%99%D7%A8%D7%AA%20%D7%93%D7%99%D7%A8%D7%94%20%D7%91%D7%AA%D7%9C%D7%AA%20%D7%9E%D7%9E%D7%93%20%7C%20NadLan&en=page_view&_fv=1&_nsi=1&_ss=1&_ee=1&gap.plf=4.5.3&tfd=3731 :: net::ERR_ABORTED"
+    ],
+    "network404s": [],
+    "finalUrl": "https://nad-lan.co.il/",
+    "title": "דירות חדשות ופרויקטים עם בחירת דירה בתלת ממד | NadLan",
+    "lang": "he-IL",
+    "dir": "rtl",
+    "h1": 1,
+    "nlRoot": 0,
+    "oldNlv2": 0,
+    "oldP3d": 0,
+    "homeBand": 0,
+    "scrollWidth": 390,
+    "innerWidth": 390,
+    "overflow": false,
+    "textLeaks": [],
+    "emDash": 0,
+    "visibleH1": [
+      "NadLan: בוחרים פרויקט ודירה לפני שפונים ליזם"
+    ],
+    "stickyHeaderVisible": true,
+    "footerExists": true,
+    "footerInitiallyVisible": false,
+    "accessibilityControls": [
+      "נגישות",
+      "תפריט נגישות"
+    ],
+    "offscreenNav": [
+      {
+        "label": "משכנתא",
+        "x": -32,
+        "y": 70,
+        "w": 71,
+        "h": 38
+      },
+      {
+        "label": "מס רכישה",
+        "x": -116,
+        "y": 70,
+        "w": 78,
+        "h": 38
+      },
+      {
+        "label": "אנשי מקצוע",
+        "x": -213,
+        "y": 70,
+        "w": 91,
+        "h": 38
+      }
+    ]
+  },
+  {
+    "name": "home-preview",
+    "url": "https://nad-lan.co.il/?nlpo_preview=1",
+    "viewport": "desktop-1440",
+    "status": 200,
+    "navError": null,
+    "screenshot": "home-preview-desktop-1440.png",
+    "consoleErrors": [],
+    "failedRequests": [
+      "https://www.google-analytics.com/g/collect?v=2&tid=G-G3QRV5646E&gtm=45Pe66q0h2v9254165660za200zd9254165660&_p=1782755525921&gcd=13l3l3l3l1l1&npa=0&dma=0&gdid=dZTNiMT&are=1&cid=567210123.1782755527&frm=0&pscdl=noapi&rcb=18&sr=1440x1200&uaa=x86&uab=64&uafvl=Google%2520Chrome%3B149.0.7827.199%7CChromium%3B149.0.7827.199%7CNot)A%253BBrand%3B24.0.0.0&uam=&uamb=0&uap=Windows&uapv=10.0.0&uaw=0&ul=he-il&_s=1&tag_exp=115938465~115938469~119027224~119576891~119576895&sid=1782755527&sct=1&seg=0&dl=https%3A%2F%2Fnad-lan.co.il%2F%3Fnlpo_preview%3D1&dt=%D7%93%D7%99%D7%A8%D7%95%D7%AA%20%D7%97%D7%93%D7%A9%D7%95%D7%AA%20%D7%95%D7%A4%D7%A8%D7%95%D7%99%D7%A7%D7%98%D7%99%D7%9D%20%D7%A2%D7%9D%20%D7%91%D7%97%D7%99%D7%A8%D7%AA%20%D7%93%D7%99%D7%A8%D7%94%20%D7%91%D7%AA%D7%9C%D7%AA%20%D7%9E%D7%9E%D7%93%20%7C%20NadLan&en=page_view&_fv=1&_nsi=1&_ss=1&_ee=1&tfd=5286 :: net::ERR_ABORTED"
+    ],
+    "network404s": [],
+    "finalUrl": "https://nad-lan.co.il/?nlpo_preview=1",
+    "title": "דירות חדשות ופרויקטים עם בחירת דירה בתלת ממד | NadLan",
+    "lang": "he-IL",
+    "dir": "rtl",
+    "h1": 1,
+    "nlRoot": 0,
+    "oldNlv2": 0,
+    "oldP3d": 0,
+    "homeBand": 0,
+    "scrollWidth": 1440,
+    "innerWidth": 1440,
+    "overflow": false,
+    "textLeaks": [],
+    "emDash": 0,
+    "visibleH1": [
+      "NadLan: בוחרים פרויקט ודירה לפני שפונים ליזם"
+    ],
+    "stickyHeaderVisible": true,
+    "footerExists": true,
+    "footerInitiallyVisible": false,
+    "accessibilityControls": [
+      "נגישות",
+      "תפריט נגישות"
+    ],
+    "offscreenNav": []
+  },
+  {
+    "name": "home-preview",
+    "url": "https://nad-lan.co.il/?nlpo_preview=1",
+    "viewport": "mobile-390",
+    "status": 200,
+    "navError": null,
+    "screenshot": "home-preview-mobile-390.png",
+    "consoleErrors": [],
+    "failedRequests": [
+      "https://www.google-analytics.com/g/collect?v=2&tid=G-G3QRV5646E&gtm=45Pe66p0v9254165660za200zd9254165660&_p=1782755538540&gcd=13l3l3l3l1l1&npa=0&dma=0&gdid=dZTNiMT&are=1&cid=1828003590.1782755540&frm=0&pscdl=noapi&rcb=4&sr=390x1100&uaa=x86&uab=64&uafvl=Google%2520Chrome%3B149.0.7827.199%7CChromium%3B149.0.7827.199%7CNot)A%253BBrand%3B24.0.0.0&uam=&uamb=0&uap=Windows&uapv=10.0.0&uaw=0&ul=he-il&_s=1&tag_exp=115938466~115938468~118395333~119027224~119576891~119576895&sid=1782755539&sct=1&seg=0&dl=https%3A%2F%2Fnad-lan.co.il%2F%3Fnlpo_preview%3D1&dt=%D7%93%D7%99%D7%A8%D7%95%D7%AA%20%D7%97%D7%93%D7%A9%D7%95%D7%AA%20%D7%95%D7%A4%D7%A8%D7%95%D7%99%D7%A7%D7%98%D7%99%D7%9D%20%D7%A2%D7%9D%20%D7%91%D7%97%D7%99%D7%A8%D7%AA%20%D7%93%D7%99%D7%A8%D7%94%20%D7%91%D7%AA%D7%9C%D7%AA%20%D7%9E%D7%9E%D7%93%20%7C%20NadLan&en=page_view&_fv=1&_nsi=1&_ss=1&_ee=1&tfd=3544 :: net::ERR_ABORTED"
+    ],
+    "network404s": [],
+    "finalUrl": "https://nad-lan.co.il/?nlpo_preview=1",
+    "title": "דירות חדשות ופרויקטים עם בחירת דירה בתלת ממד | NadLan",
+    "lang": "he-IL",
+    "dir": "rtl",
+    "h1": 1,
+    "nlRoot": 0,
+    "oldNlv2": 0,
+    "oldP3d": 0,
+    "homeBand": 0,
+    "scrollWidth": 390,
+    "innerWidth": 390,
+    "overflow": false,
+    "textLeaks": [],
+    "emDash": 0,
+    "visibleH1": [
+      "NadLan: בוחרים פרויקט ודירה לפני שפונים ליזם"
+    ],
+    "stickyHeaderVisible": true,
+    "footerExists": true,
+    "footerInitiallyVisible": false,
+    "accessibilityControls": [
+      "נגישות",
+      "תפריט נגישות"
+    ],
+    "offscreenNav": [
+      {
+        "label": "משכנתא",
+        "x": -32,
+        "y": 70,
+        "w": 71,
+        "h": 38
+      },
+      {
+        "label": "מס רכישה",
+        "x": -116,
+        "y": 70,
+        "w": 78,
+        "h": 38
+      },
+      {
+        "label": "אנשי מקצוע",
+        "x": -213,
+        "y": 70,
+        "w": 91,
+        "h": 38
+      }
+    ]
+  },
+  {
+    "name": "projects",
+    "url": "https://nad-lan.co.il/projects/",
+    "viewport": "desktop-1440",
+    "status": 200,
+    "navError": null,
+    "screenshot": "projects-desktop-1440.png",
+    "consoleErrors": [],
+    "failedRequests": [],
+    "network404s": [],
+    "finalUrl": "https://nad-lan.co.il/projects/",
+    "title": "פרויקטים חדשים והתחדשות עירונית | תמ״א 38, פינוי בינוי | נדל״ן חכם",
+    "lang": "he-IL",
+    "dir": "rtl",
+    "h1": 2,
+    "nlRoot": 0,
+    "oldNlv2": 0,
+    "oldP3d": 0,
+    "homeBand": 0,
+    "scrollWidth": 1440,
+    "innerWidth": 1440,
+    "overflow": false,
+    "textLeaks": [],
+    "emDash": 0,
+    "visibleH1": [
+      "נדלן חכם",
+      "פרויקטים והתחדשות עירונית"
+    ],
+    "stickyHeaderVisible": true,
+    "footerExists": true,
+    "footerInitiallyVisible": false,
+    "accessibilityControls": [
+      "נגישות",
+      "תפריט נגישות"
+    ],
+    "offscreenNav": []
+  },
+  {
+    "name": "projects",
+    "url": "https://nad-lan.co.il/projects/",
+    "viewport": "mobile-390",
+    "status": 200,
+    "navError": null,
+    "screenshot": "projects-mobile-390.png",
+    "consoleErrors": [],
+    "failedRequests": [],
+    "network404s": [],
+    "finalUrl": "https://nad-lan.co.il/projects/",
+    "title": "פרויקטים חדשים והתחדשות עירונית | תמ״א 38, פינוי בינוי | נדל״ן חכם",
+    "lang": "he-IL",
+    "dir": "rtl",
+    "h1": 2,
+    "nlRoot": 0,
+    "oldNlv2": 0,
+    "oldP3d": 0,
+    "homeBand": 0,
+    "scrollWidth": 390,
+    "innerWidth": 390,
+    "overflow": false,
+    "textLeaks": [],
+    "emDash": 0,
+    "visibleH1": [
+      "נדלן חכם",
+      "פרויקטים והתחדשות עירונית"
+    ],
+    "stickyHeaderVisible": true,
+    "footerExists": true,
+    "footerInitiallyVisible": false,
+    "accessibilityControls": [
+      "נגישות",
+      "תפריט נגישות"
+    ],
+    "offscreenNav": [
+      {
+        "label": "משכנתא",
+        "x": -32,
+        "y": 223,
+        "w": 71,
+        "h": 38
+      },
+      {
+        "label": "מס רכישה",
+        "x": -116,
+        "y": 223,
+        "w": 78,
+        "h": 38
+      },
+      {
+        "label": "אנשי מקצוע",
+        "x": -213,
+        "y": 223,
+        "w": 91,
+        "h": 38
+      }
+    ]
+  },
+  {
+    "name": "ashira-he",
+    "url": "https://nad-lan.co.il/projects/ashira-sde-dov/",
+    "viewport": "desktop-1440",
+    "status": 200,
+    "navError": null,
+    "screenshot": "ashira-he-desktop-1440.png",
+    "consoleErrors": [],
+    "failedRequests": [
+      "https://www.google-analytics.com/g/collect?v=2&tid=G-G3QRV5646E&gtm=45Pe66q0h2v9254165660za200zd9254165660&_p=1782755556312&gcd=13l3l3l3l1l1&npa=0&dma=0&gdid=dZTNiMT&are=1&cid=1353173152.1782755560&frm=0&pscdl=noapi&rcb=18&sr=1440x1200&uaa=x86&uab=64&uafvl=Google%2520Chrome%3B149.0.7827.199%7CChromium%3B149.0.7827.199%7CNot)A%253BBrand%3B24.0.0.0&uam=&uamb=0&uap=Windows&uapv=10.0.0&uaw=0&ul=he-il&_s=1&tag_exp=115616985~115938466~115938469~119027224~119576876~119576880~119576891~119576895&sid=1782755560&sct=1&seg=0&dl=https%3A%2F%2Fnad-lan.co.il%2Fprojects%2Fashira-sde-dov%2F&dt=%D7%93%D7%99%D7%A8%D7%95%D7%AA%20%D7%9C%D7%9E%D7%9B%D7%99%D7%A8%D7%94%20%D7%91%D7%90%D7%A9%D7%99%D7%A8%D7%94%20%D7%A9%D7%93%D7%94%20%D7%93%D7%91%20%C2%B7%20%D7%AA%D7%A6%D7%95%D7%92%D7%AA%20%D7%A4%D7%A8%D7%95%D7%99%D7%A7%D7%98%D7%99%D7%9D&en=page_view&_fv=1&_nsi=1&_ss=1&_ee=1&gap.plf=4.5.3&tfd=5392 :: net::ERR_ABORTED"
+    ],
+    "network404s": [],
+    "finalUrl": "https://nad-lan.co.il/projects/ashira-sde-dov/",
+    "title": "דירות למכירה באשירה שדה דב · תצוגת פרויקטים",
+    "lang": "he",
+    "dir": "rtl",
+    "h1": 1,
+    "nlRoot": 1,
+    "oldNlv2": 0,
+    "oldP3d": 0,
+    "homeBand": 0,
+    "scrollWidth": 1440,
+    "innerWidth": 1440,
+    "overflow": false,
+    "textLeaks": [],
+    "emDash": 0,
+    "visibleH1": [
+      "דירות למכירה באשירה שדה דב"
+    ],
+    "stickyHeaderVisible": true,
+    "footerExists": true,
+    "footerInitiallyVisible": false,
+    "accessibilityControls": [
+      "תפריט נגישות"
+    ],
+    "offscreenNav": [
+      {
+        "label": "RU",
+        "x": -8,
+        "y": 73,
+        "w": 36,
+        "h": 30
+      },
+      {
+        "label": "AR",
+        "x": -48,
+        "y": 73,
+        "w": 36,
+        "h": 30
+      }
+    ]
+  },
+  {
+    "name": "ashira-he",
+    "url": "https://nad-lan.co.il/projects/ashira-sde-dov/",
+    "viewport": "mobile-390",
+    "status": 200,
+    "navError": null,
+    "screenshot": "ashira-he-mobile-390.png",
+    "consoleErrors": [],
+    "failedRequests": [
+      "https://www.google-analytics.com/g/collect?v=2&tid=G-G3QRV5646E&gtm=45Pe66p0v9254165660za200zd9254165660&_p=1782755579650&gcd=13l3l3l3l1l1&npa=0&dma=0&gdid=dZTNiMT&are=1&cid=11762826.1782755581&frm=0&pscdl=noapi&rcb=3&sr=390x1100&uaa=x86&uab=64&uafvl=Google%2520Chrome%3B149.0.7827.199%7CChromium%3B149.0.7827.199%7CNot)A%253BBrand%3B24.0.0.0&uam=&uamb=0&uap=Windows&uapv=10.0.0&uaw=0&ul=he-il&_s=1&tag_exp=115938466~115938468~119027224~119576891~119576895&sid=1782755581&sct=1&seg=0&dl=https%3A%2F%2Fnad-lan.co.il%2Fprojects%2Fashira-sde-dov%2F&dt=%D7%93%D7%99%D7%A8%D7%95%D7%AA%20%D7%9C%D7%9E%D7%9B%D7%99%D7%A8%D7%94%20%D7%91%D7%90%D7%A9%D7%99%D7%A8%D7%94%20%D7%A9%D7%93%D7%94%20%D7%93%D7%91%20%C2%B7%20%D7%AA%D7%A6%D7%95%D7%92%D7%AA%20%D7%A4%D7%A8%D7%95%D7%99%D7%A7%D7%98%D7%99%D7%9D&en=page_view&_fv=1&_nsi=1&_ss=1&_ee=1&tfd=6279 :: net::ERR_ABORTED"
+    ],
+    "network404s": [],
+    "finalUrl": "https://nad-lan.co.il/projects/ashira-sde-dov/",
+    "title": "דירות למכירה באשירה שדה דב · תצוגת פרויקטים",
+    "lang": "he",
+    "dir": "rtl",
+    "h1": 1,
+    "nlRoot": 1,
+    "oldNlv2": 0,
+    "oldP3d": 0,
+    "homeBand": 0,
+    "scrollWidth": 390,
+    "innerWidth": 390,
+    "overflow": false,
+    "textLeaks": [],
+    "emDash": 0,
+    "visibleH1": [
+      "דירות למכירה באשירה שדה דב"
+    ],
+    "stickyHeaderVisible": true,
+    "footerExists": true,
+    "footerInitiallyVisible": false,
+    "accessibilityControls": [
+      "תפריט נגישות"
+    ],
+    "offscreenNav": []
+  },
+  {
+    "name": "ashira-en",
+    "url": "https://nad-lan.co.il/projects/ashira-sde-dov-en/",
+    "viewport": "desktop-1440",
+    "status": 200,
+    "navError": null,
+    "screenshot": "ashira-en-desktop-1440.png",
+    "consoleErrors": [],
+    "failedRequests": [
+      "https://www.google-analytics.com/g/collect?v=2&tid=G-G3QRV5646E&gtm=45Pe66p0v9254165660za200zd9254165660&_p=1782755587498&gcd=13l3l3l3l1l1&npa=0&dma=0&gdid=dZTNiMT&are=1&cid=1953262330.1782755590&frm=0&pscdl=noapi&rcb=17&sr=1440x1200&uaa=x86&uab=64&uafvl=Google%2520Chrome%3B149.0.7827.199%7CChromium%3B149.0.7827.199%7CNot)A%253BBrand%3B24.0.0.0&uam=&uamb=0&uap=Windows&uapv=10.0.0&uaw=0&ul=en-us&_s=1&tag_exp=115938466~115938468~118395335~119027224~119576881~119576885~119576891~119576895&sid=1782755589&sct=1&seg=0&dl=https%3A%2F%2Fnad-lan.co.il%2Fprojects%2Fashira-sde-dov-en%2F&dt=Ashira%20Sde%20Dov%20apartments%20for%20sale%20in%20Tel%20Aviv%20%C2%B7%20Project%20showroom&en=page_view&_fv=1&_nsi=1&_ss=1&_ee=1&tfd=3630 :: net::ERR_ABORTED"
+    ],
+    "network404s": [],
+    "finalUrl": "https://nad-lan.co.il/projects/ashira-sde-dov-en/",
+    "title": "Ashira Sde Dov apartments for sale in Tel Aviv · Project showroom",
+    "lang": "en",
+    "dir": "ltr",
+    "h1": 1,
+    "nlRoot": 1,
+    "oldNlv2": 0,
+    "oldP3d": 0,
+    "homeBand": 0,
+    "scrollWidth": 1440,
+    "innerWidth": 1440,
+    "overflow": false,
+    "textLeaks": [],
+    "emDash": 0,
+    "visibleH1": [
+      "Ashira Sde Dov apartments for sale in Tel Aviv"
+    ],
+    "stickyHeaderVisible": true,
+    "footerExists": true,
+    "footerInitiallyVisible": false,
+    "accessibilityControls": [
+      "תפריט נגישות"
+    ],
+    "offscreenNav": [
+      {
+        "label": "RU",
+        "x": 1412,
+        "y": 73,
+        "w": 36,
+        "h": 30
+      },
+      {
+        "label": "AR",
+        "x": 1452,
+        "y": 73,
+        "w": 36,
+        "h": 30
+      }
+    ]
+  },
+  {
+    "name": "ashira-en",
+    "url": "https://nad-lan.co.il/projects/ashira-sde-dov-en/",
+    "viewport": "mobile-390",
+    "status": 200,
+    "navError": null,
+    "screenshot": "ashira-en-mobile-390.png",
+    "consoleErrors": [],
+    "failedRequests": [
+      "https://www.google-analytics.com/g/collect?v=2&tid=G-G3QRV5646E&gtm=45Pe66p0v9254165660za200zd9254165660&_p=1782755598209&gcd=13l3l3l3l1l1&npa=0&dma=0&gdid=dZTNiMT&are=1&cid=732935844.1782755600&frm=0&pscdl=noapi&rcb=2&sr=390x1100&uaa=x86&uab=64&uafvl=Google%2520Chrome%3B149.0.7827.199%7CChromium%3B149.0.7827.199%7CNot)A%253BBrand%3B24.0.0.0&uam=&uamb=0&uap=Windows&uapv=10.0.0&uaw=0&ul=en-us&_s=1&tag_exp=115938465~115938468~119027224~119576891~119576895&sid=1782755600&sct=1&seg=0&dl=https%3A%2F%2Fnad-lan.co.il%2Fprojects%2Fashira-sde-dov-en%2F&dt=Ashira%20Sde%20Dov%20apartments%20for%20sale%20in%20Tel%20Aviv%20%C2%B7%20Project%20showroom&en=page_view&_fv=1&_nsi=1&_ss=1&_ee=1&tfd=3283 :: net::ERR_ABORTED"
+    ],
+    "network404s": [],
+    "finalUrl": "https://nad-lan.co.il/projects/ashira-sde-dov-en/",
+    "title": "Ashira Sde Dov apartments for sale in Tel Aviv · Project showroom",
+    "lang": "en",
+    "dir": "ltr",
+    "h1": 1,
+    "nlRoot": 1,
+    "oldNlv2": 0,
+    "oldP3d": 0,
+    "homeBand": 0,
+    "scrollWidth": 390,
+    "innerWidth": 390,
+    "overflow": false,
+    "textLeaks": [],
+    "emDash": 0,
+    "visibleH1": [
+      "Ashira Sde Dov apartments for sale in Tel Aviv"
+    ],
+    "stickyHeaderVisible": true,
+    "footerExists": true,
+    "footerInitiallyVisible": false,
+    "accessibilityControls": [
+      "תפריט נגישות"
+    ],
+    "offscreenNav": []
+  },
+  {
+    "name": "rainbow",
+    "url": "https://nad-lan.co.il/projects/rainbow-tel-aviv/",
+    "viewport": "desktop-1440",
+    "status": 200,
+    "navError": null,
+    "screenshot": "rainbow-desktop-1440.png",
+    "consoleErrors": [],
+    "failedRequests": [
+      "https://www.google-analytics.com/g/collect?v=2&tid=G-G3QRV5646E&gtm=45Pe66p0v9254165660za200zd9254165660&_p=1782755606497&gcd=13l3l3l3l1l1&npa=0&dma=0&gdid=dZTNiMT&are=1&cid=1711035645.1782755608&frm=0&pscdl=noapi&rcb=5&sr=1440x1200&uaa=x86&uab=64&uafvl=Google%2520Chrome%3B149.0.7827.199%7CChromium%3B149.0.7827.199%7CNot)A%253BBrand%3B24.0.0.0&uam=&uamb=0&uap=Windows&uapv=10.0.0&uaw=0&ul=he-il&_s=1&tag_exp=115938466~115938468~118395335~119027224~119576891~119576895&sid=1782755607&sct=1&seg=0&dl=https%3A%2F%2Fnad-lan.co.il%2Fprojects%2Frainbow-tel-aviv%2F&dt=%D7%93%D7%99%D7%A8%D7%95%D7%AA%20%D7%9C%D7%9E%D7%9B%D7%99%D7%A8%D7%94%20%D7%91-Rainbow%20%D7%AA%D7%9C%20%D7%90%D7%91%D7%99%D7%91%20%7C%20%D7%9E%D7%97%D7%99%D7%A8%D7%99%D7%9D%2C%20%D7%AA%D7%95%D7%9B%D7%A0%D7%99%D7%95%D7%AA%20%D7%95%D7%91%D7%97%D7%99%D7%A8%D7%AA%20%D7%93%D7%99%D7%A8%D7%94%20%D7%91%D7%A9%D7%93%D7%94%20%D7%93%D7%91%20%7C%20%D7%A0%D7%93%D7%9C%D7%9F%20%D7%97%D7%9B%D7%9D&en=page_view&_fv=1&_nsi=1&_ss=1&_ee=1&tfd=2591 :: net::ERR_ABORTED"
+    ],
+    "network404s": [],
+    "finalUrl": "https://nad-lan.co.il/projects/rainbow-tel-aviv/",
+    "title": "דירות למכירה ב-Rainbow תל אביב | מחירים, תוכניות ובחירת דירה בשדה דב | נדלן חכם",
+    "lang": "he-IL",
+    "dir": "rtl",
+    "h1": 1,
+    "nlRoot": 0,
+    "oldNlv2": 0,
+    "oldP3d": 1,
+    "homeBand": 0,
+    "scrollWidth": 1440,
+    "innerWidth": 1440,
+    "overflow": false,
+    "textLeaks": [],
+    "emDash": 0,
+    "visibleH1": [
+      "Rainbow Tel Aviv – ריינבו תל אביב"
+    ],
+    "stickyHeaderVisible": false,
+    "footerExists": false,
+    "footerInitiallyVisible": false,
+    "accessibilityControls": [
+      "תפריט נגישות"
+    ],
+    "offscreenNav": []
+  },
+  {
+    "name": "rainbow",
+    "url": "https://nad-lan.co.il/projects/rainbow-tel-aviv/",
+    "viewport": "mobile-390",
+    "status": 200,
+    "navError": null,
+    "screenshot": "rainbow-mobile-390.png",
+    "consoleErrors": [],
+    "failedRequests": [
+      "https://www.google-analytics.com/g/collect?v=2&tid=G-G3QRV5646E&gtm=45Pe66p0v9254165660za200zd9254165660&_p=1782755618528&gcd=13l3l3l3l1l1&npa=0&dma=0&gdid=dZTNiMT&are=1&cid=887663224.1782755619&frm=0&ngs=1&pscdl=noapi&rcb=18&sr=390x1100&uaa=x86&uab=64&uafvl=Google%2520Chrome%3B149.0.7827.199%7CChromium%3B149.0.7827.199%7CNot)A%253BBrand%3B24.0.0.0&uam=&uamb=0&uap=Windows&uapv=10.0.0&uaw=0&ul=he-il&_s=1&tag_exp=115938465~115938468~118395335~118826210~119027224~119576891~119576895&sid=1782755619&sct=1&seg=0&dl=https%3A%2F%2Fnad-lan.co.il%2Fprojects%2Frainbow-tel-aviv%2F&dt=%D7%93%D7%99%D7%A8%D7%95%D7%AA%20%D7%9C%D7%9E%D7%9B%D7%99%D7%A8%D7%94%20%D7%91-Rainbow%20%D7%AA%D7%9C%20%D7%90%D7%91%D7%99%D7%91%20%7C%20%D7%9E%D7%97%D7%99%D7%A8%D7%99%D7%9D%2C%20%D7%AA%D7%95%D7%9B%D7%A0%D7%99%D7%95%D7%AA%20%D7%95%D7%91%D7%97%D7%99%D7%A8%D7%AA%20%D7%93%D7%99%D7%A8%D7%94%20%D7%91%D7%A9%D7%93%D7%94%20%D7%93%D7%91%20%7C%20%D7%A0%D7%93%D7%9C%D7%9F%20%D7%97%D7%9B%D7%9D&en=page_view&_fv=1&_nsi=1&_ss=1&_ee=1&tfd=5206 :: net::ERR_ABORTED"
+    ],
+    "network404s": [],
+    "finalUrl": "https://nad-lan.co.il/projects/rainbow-tel-aviv/",
+    "title": "דירות למכירה ב-Rainbow תל אביב | מחירים, תוכניות ובחירת דירה בשדה דב | נדלן חכם",
+    "lang": "he-IL",
+    "dir": "rtl",
+    "h1": 1,
+    "nlRoot": 0,
+    "oldNlv2": 0,
+    "oldP3d": 1,
+    "homeBand": 0,
+    "scrollWidth": 390,
+    "innerWidth": 390,
+    "overflow": false,
+    "textLeaks": [],
+    "emDash": 0,
+    "visibleH1": [
+      "Rainbow Tel Aviv – ריינבו תל אביב"
+    ],
+    "stickyHeaderVisible": false,
+    "footerExists": false,
+    "footerInitiallyVisible": false,
+    "accessibilityControls": [
+      "תפריט נגישות"
+    ],
+    "offscreenNav": []
+  },
+  {
+    "name": "dimri",
+    "url": "https://nad-lan.co.il/projects/dimri-yama-sde-dov/",
+    "viewport": "desktop-1440",
+    "status": 200,
+    "navError": null,
+    "screenshot": "dimri-desktop-1440.png",
+    "consoleErrors": [],
+    "failedRequests": [
+      "https://www.google-analytics.com/g/collect?v=2&tid=G-G3QRV5646E&gtm=45Pe66p0v9254165660za200zd9254165660&_p=1782755631626&gcd=13l3l3l3l1l1&npa=0&dma=0&gdid=dZTNiMT&are=1&cid=675884263.1782755633&frm=0&pscdl=noapi&rcb=5&sr=1440x1200&uaa=x86&uab=64&uafvl=Google%2520Chrome%3B149.0.7827.199%7CChromium%3B149.0.7827.199%7CNot)A%253BBrand%3B24.0.0.0&uam=&uamb=0&uap=Windows&uapv=10.0.0&uaw=0&ul=he-il&_s=1&tag_exp=115938465~115938469~119027224~119576891~119576895&sid=1782755633&sct=1&seg=0&dl=https%3A%2F%2Fnad-lan.co.il%2Fprojects%2Fdimri-yama-sde-dov%2F&dt=DIMRI%20YAMA%20%D7%A9%D7%93%D7%94%20%D7%93%D7%91%20-%20%D7%99.%D7%97%20%D7%93%D7%9E%D7%A8%D7%99%20%7C%20%D7%91%D7%97%D7%99%D7%A8%D7%AA%20%D7%93%D7%99%D7%A8%D7%95%D7%AA%2C%20%D7%9E%D7%91%D7%98%20%D7%9E%D7%94%D7%93%D7%99%D7%A8%D7%94%20%D7%95%D7%A9%D7%93%D7%94%20%D7%93%D7%91%20%7C%20%D7%A0%D7%93%D7%9C%D7%9F%20%D7%97%D7%9B%D7%9D&en=page_view&_fv=1&_nsi=1&_ss=1&_ee=1&tfd=4888 :: net::ERR_ABORTED"
+    ],
+    "network404s": [],
+    "finalUrl": "https://nad-lan.co.il/projects/dimri-yama-sde-dov/",
+    "title": "DIMRI YAMA שדה דב - י.ח דמרי | בחירת דירות, מבט מהדירה ושדה דב | נדלן חכם",
+    "lang": "he-IL",
+    "dir": "rtl",
+    "h1": 1,
+    "nlRoot": 0,
+    "oldNlv2": 0,
+    "oldP3d": 1,
+    "homeBand": 0,
+    "scrollWidth": 1440,
+    "innerWidth": 1440,
+    "overflow": false,
+    "textLeaks": [],
+    "emDash": 0,
+    "visibleH1": [
+      "DIMRI YAMA שדה דב – י.ח דמרי"
+    ],
+    "stickyHeaderVisible": false,
+    "footerExists": false,
+    "footerInitiallyVisible": false,
+    "accessibilityControls": [
+      "תפריט נגישות"
+    ],
+    "offscreenNav": []
+  },
+  {
+    "name": "dimri",
+    "url": "https://nad-lan.co.il/projects/dimri-yama-sde-dov/",
+    "viewport": "mobile-390",
+    "status": 200,
+    "navError": null,
+    "screenshot": "dimri-mobile-390.png",
+    "consoleErrors": [],
+    "failedRequests": [
+      "https://www.google-analytics.com/g/collect?v=2&tid=G-G3QRV5646E&gtm=45Pe66p0v9254165660za200zd9254165660&_p=1782755640977&gcd=13l3l3l3l1l1&npa=0&dma=0&gdid=dZTNiMT&are=1&cid=798743175.1782755642&frm=0&pscdl=noapi&rcb=17&sr=390x1100&uaa=x86&uab=64&uafvl=Google%2520Chrome%3B149.0.7827.199%7CChromium%3B149.0.7827.199%7CNot)A%253BBrand%3B24.0.0.0&uam=&uamb=0&uap=Windows&uapv=10.0.0&uaw=0&ul=he-il&_s=1&tag_exp=115938465~115938469~119027224~119576881~119576885~119576891~119576895&sid=1782755642&sct=1&seg=0&dl=https%3A%2F%2Fnad-lan.co.il%2Fprojects%2Fdimri-yama-sde-dov%2F&dt=DIMRI%20YAMA%20%D7%A9%D7%93%D7%94%20%D7%93%D7%91%20-%20%D7%99.%D7%97%20%D7%93%D7%9E%D7%A8%D7%99%20%7C%20%D7%91%D7%97%D7%99%D7%A8%D7%AA%20%D7%93%D7%99%D7%A8%D7%95%D7%AA%2C%20%D7%9E%D7%91%D7%98%20%D7%9E%D7%94%D7%93%D7%99%D7%A8%D7%94%20%D7%95%D7%A9%D7%93%D7%94%20%D7%93%D7%91%20%7C%20%D7%A0%D7%93%D7%9C%D7%9F%20%D7%97%D7%9B%D7%9D&en=page_view&_fv=1&_nsi=1&_ss=1&_ee=1&tfd=2604 :: net::ERR_ABORTED"
+    ],
+    "network404s": [],
+    "finalUrl": "https://nad-lan.co.il/projects/dimri-yama-sde-dov/",
+    "title": "DIMRI YAMA שדה דב - י.ח דמרי | בחירת דירות, מבט מהדירה ושדה דב | נדלן חכם",
+    "lang": "he-IL",
+    "dir": "rtl",
+    "h1": 1,
+    "nlRoot": 0,
+    "oldNlv2": 0,
+    "oldP3d": 1,
+    "homeBand": 0,
+    "scrollWidth": 390,
+    "innerWidth": 390,
+    "overflow": false,
+    "textLeaks": [],
+    "emDash": 0,
+    "visibleH1": [
+      "DIMRI YAMA שדה דב – י.ח דמרי"
+    ],
+    "stickyHeaderVisible": false,
+    "footerExists": false,
+    "footerInitiallyVisible": false,
+    "accessibilityControls": [
+      "תפריט נגישות"
+    ],
+    "offscreenNav": []
+  },
+  {
+    "name": "calculator",
+    "url": "https://nad-lan.co.il/mortgage-calculator/",
+    "viewport": "desktop-1440",
+    "status": 200,
+    "navError": null,
+    "screenshot": "calculator-desktop-1440.png",
+    "consoleErrors": [],
+    "failedRequests": [
+      "https://www.google-analytics.com/g/collect?v=2&tid=G-G3QRV5646E&gtm=45Pe66p0v9254165660za200zd9254165660&_p=1782755649683&gcd=13l3l3l3l1l1&npa=0&dma=0&gdid=dZTNiMT&are=1&cid=1417854216.1782755651&frm=0&pscdl=noapi&rcb=18&sr=1440x1200&uaa=x86&uab=64&uafvl=Google%2520Chrome%3B149.0.7827.199%7CChromium%3B149.0.7827.199%7CNot)A%253BBrand%3B24.0.0.0&uam=&uamb=0&uap=Windows&uapv=10.0.0&uaw=0&ul=he-il&_s=1&tag_exp=115616986~115938465~115938468~118395333~119027224~119576891~119576895&sid=1782755650&sct=1&seg=0&dl=https%3A%2F%2Fnad-lan.co.il%2Fmortgage-calculator%2F&dt=%D7%9E%D7%97%D7%A9%D7%91%D7%95%D7%9F%20%D7%9E%D7%A9%D7%9B%D7%A0%D7%AA%D7%90%202026%3A%20%D7%94%D7%97%D7%96%D7%A8%20%D7%97%D7%95%D7%93%D7%A9%D7%99%2C%20%D7%A8%D7%99%D7%91%D7%99%D7%AA%20%D7%95%D7%AA%D7%9E%D7%94%D7%99%D7%9C%20%7C%20nad-lan&en=page_view&_fv=1&_nsi=1&_ss=1&_ee=1&tfd=1971 :: net::ERR_ABORTED"
+    ],
+    "network404s": [],
+    "finalUrl": "https://nad-lan.co.il/mortgage-calculator/",
+    "title": "מחשבון משכנתא 2026: החזר חודשי, ריבית ותמהיל | nad-lan",
+    "lang": "he-IL",
+    "dir": "rtl",
+    "h1": 1,
+    "nlRoot": 0,
+    "oldNlv2": 0,
+    "oldP3d": 0,
+    "homeBand": 0,
+    "scrollWidth": 1440,
+    "innerWidth": 1440,
+    "overflow": false,
+    "textLeaks": [],
+    "emDash": 0,
+    "visibleH1": [
+      "מחשבון משכנתא 2026: החזר חודשי ועלות כוללת"
+    ],
+    "stickyHeaderVisible": true,
+    "footerExists": true,
+    "footerInitiallyVisible": false,
+    "accessibilityControls": [
+      "נגישות",
+      "תפריט נגישות"
+    ],
+    "offscreenNav": []
+  },
+  {
+    "name": "calculator",
+    "url": "https://nad-lan.co.il/mortgage-calculator/",
+    "viewport": "mobile-390",
+    "status": 200,
+    "navError": null,
+    "screenshot": "calculator-mobile-390.png",
+    "consoleErrors": [],
+    "failedRequests": [
+      "https://www.google-analytics.com/g/collect?v=2&tid=G-G3QRV5646E&gtm=45Pe66p0v9254165660za200zd9254165660&_p=1782755659671&gcd=13l3l3l3l1l1&npa=0&dma=0&gdid=dZTNiMT&are=1&cid=27739385.1782755660&frm=0&pscdl=noapi&rcb=19&sr=390x1100&uaa=x86&uab=64&uafvl=Google%2520Chrome%3B149.0.7827.199%7CChromium%3B149.0.7827.199%7CNot)A%253BBrand%3B24.0.0.0&uam=&uamb=0&uap=Windows&uapv=10.0.0&uaw=0&ul=he-il&_s=1&tag_exp=115938466~115938468~119027224~119576891~119576895&sid=1782755660&sct=1&seg=0&dl=https%3A%2F%2Fnad-lan.co.il%2Fmortgage-calculator%2F&dt=%D7%9E%D7%97%D7%A9%D7%91%D7%95%D7%9F%20%D7%9E%D7%A9%D7%9B%D7%A0%D7%AA%D7%90%202026%3A%20%D7%94%D7%97%D7%96%D7%A8%20%D7%97%D7%95%D7%93%D7%A9%D7%99%2C%20%D7%A8%D7%99%D7%91%D7%99%D7%AA%20%D7%95%D7%AA%D7%9E%D7%94%D7%99%D7%9C%20%7C%20nad-lan&en=page_view&_fv=1&_nsi=1&_ss=1&_ee=1&tfd=2897 :: net::ERR_ABORTED"
+    ],
+    "network404s": [],
+    "finalUrl": "https://nad-lan.co.il/mortgage-calculator/",
+    "title": "מחשבון משכנתא 2026: החזר חודשי, ריבית ותמהיל | nad-lan",
+    "lang": "he-IL",
+    "dir": "rtl",
+    "h1": 1,
+    "nlRoot": 0,
+    "oldNlv2": 0,
+    "oldP3d": 0,
+    "homeBand": 0,
+    "scrollWidth": 390,
+    "innerWidth": 390,
+    "overflow": false,
+    "textLeaks": [],
+    "emDash": 0,
+    "visibleH1": [
+      "מחשבון משכנתא 2026: החזר חודשי ועלות כוללת"
+    ],
+    "stickyHeaderVisible": true,
+    "footerExists": true,
+    "footerInitiallyVisible": false,
+    "accessibilityControls": [
+      "נגישות",
+      "תפריט נגישות"
+    ],
+    "offscreenNav": [
+      {
+        "label": "משכנתא",
+        "x": -32,
+        "y": 70,
+        "w": 71,
+        "h": 38
+      },
+      {
+        "label": "מס רכישה",
+        "x": -116,
+        "y": 70,
+        "w": 78,
+        "h": 38
+      },
+      {
+        "label": "אנשי מקצוע",
+        "x": -213,
+        "y": 70,
+        "w": 91,
+        "h": 38
+      }
+    ]
+  },
+  {
+    "name": "professionals",
+    "url": "https://nad-lan.co.il/professionals/",
+    "viewport": "desktop-1440",
+    "status": 200,
+    "navError": null,
+    "screenshot": "professionals-desktop-1440.png",
+    "consoleErrors": [],
+    "failedRequests": [],
+    "network404s": [],
+    "finalUrl": "https://nad-lan.co.il/professionals/",
+    "title": "מאגר בעלי מקצוע בנדל״ן: קבלנים, שמאים, יועצים מאומתים | נדל״ן חכם",
+    "lang": "he-IL",
+    "dir": "rtl",
+    "h1": 2,
+    "nlRoot": 0,
+    "oldNlv2": 0,
+    "oldP3d": 0,
+    "homeBand": 0,
+    "scrollWidth": 1440,
+    "innerWidth": 1440,
+    "overflow": false,
+    "textLeaks": [],
+    "emDash": 0,
+    "visibleH1": [
+      "נדלן חכם",
+      "מצאו בעל מקצוע מאומת לנדל״ן"
+    ],
+    "stickyHeaderVisible": true,
+    "footerExists": true,
+    "footerInitiallyVisible": false,
+    "accessibilityControls": [
+      "נגישות",
+      "תפריט נגישות"
+    ],
+    "offscreenNav": []
+  },
+  {
+    "name": "professionals",
+    "url": "https://nad-lan.co.il/professionals/",
+    "viewport": "mobile-390",
+    "status": 200,
+    "navError": null,
+    "screenshot": "professionals-mobile-390.png",
+    "consoleErrors": [],
+    "failedRequests": [],
+    "network404s": [],
+    "finalUrl": "https://nad-lan.co.il/professionals/",
+    "title": "מאגר בעלי מקצוע בנדל״ן: קבלנים, שמאים, יועצים מאומתים | נדל״ן חכם",
+    "lang": "he-IL",
+    "dir": "rtl",
+    "h1": 2,
+    "nlRoot": 0,
+    "oldNlv2": 0,
+    "oldP3d": 0,
+    "homeBand": 0,
+    "scrollWidth": 390,
+    "innerWidth": 390,
+    "overflow": false,
+    "textLeaks": [],
+    "emDash": 0,
+    "visibleH1": [
+      "נדלן חכם",
+      "מצאו בעל מקצוע מאומת לנדל״ן"
+    ],
+    "stickyHeaderVisible": true,
+    "footerExists": true,
+    "footerInitiallyVisible": false,
+    "accessibilityControls": [
+      "נגישות",
+      "תפריט נגישות"
+    ],
+    "offscreenNav": [
+      {
+        "label": "משכנתא",
+        "x": -32,
+        "y": 223,
+        "w": 71,
+        "h": 38
+      },
+      {
+        "label": "מס רכישה",
+        "x": -116,
+        "y": 223,
+        "w": 78,
+        "h": 38
+      },
+      {
+        "label": "אנשי מקצוע",
+        "x": -213,
+        "y": 223,
+        "w": 91,
+        "h": 38
+      }
+    ]
+  },
+  {
+    "name": "guide",
+    "url": "https://nad-lan.co.il/buying-apartment/",
+    "viewport": "desktop-1440",
+    "status": 200,
+    "navError": null,
+    "screenshot": "guide-desktop-1440.png",
+    "consoleErrors": [],
+    "failedRequests": [
+      "https://www.google-analytics.com/g/collect?v=2&tid=G-G3QRV5646E&gtm=45Pe66p0v9254165660za200zd9254165660&_p=1782755674707&gcd=13l3l3l3l1l1&npa=0&dma=0&gdid=dZTNiMT&are=1&cid=2128747622.1782755676&frm=0&pscdl=noapi&rcb=19&sr=1440x1200&uaa=x86&uab=64&uafvl=Google%2520Chrome%3B149.0.7827.199%7CChromium%3B149.0.7827.199%7CNot)A%253BBrand%3B24.0.0.0&uam=&uamb=0&uap=Windows&uapv=10.0.0&uaw=0&ul=he-il&_s=1&tag_exp=115616985~115938465~115938468~118395335~119027224~119576876~119576880~119576891~119576895&sid=1782755675&sct=1&seg=0&dl=https%3A%2F%2Fnad-lan.co.il%2Fbuying-apartment%2F&dt=%D7%A7%D7%A0%D7%99%D7%99%D7%AA%20%D7%93%D7%99%D7%A8%D7%94%20%D7%91%D7%99%D7%A9%D7%A8%D7%90%D7%9C%202026%3A%20%D7%91%D7%93%D7%99%D7%A7%D7%95%D7%AA%20%D7%9C%D7%A4%D7%A0%D7%99%20%D7%97%D7%AA%D7%99%D7%9E%D7%94%20%7C%20nad-lan&en=page_view&_fv=1&_nsi=1&_ss=1&_ee=1&gap.plf=4.5.3&tfd=2114 :: net::ERR_ABORTED"
+    ],
+    "network404s": [],
+    "finalUrl": "https://nad-lan.co.il/buying-apartment/",
+    "title": "קניית דירה בישראל 2026: בדיקות לפני חתימה | nad-lan",
+    "lang": "he-IL",
+    "dir": "rtl",
+    "h1": 1,
+    "nlRoot": 0,
+    "oldNlv2": 0,
+    "oldP3d": 0,
+    "homeBand": 0,
+    "scrollWidth": 1440,
+    "innerWidth": 1440,
+    "overflow": false,
+    "textLeaks": [],
+    "emDash": 0,
+    "visibleH1": [
+      "קניית דירה בישראל: מדריך בדיקות לפני חתימה"
+    ],
+    "stickyHeaderVisible": true,
+    "footerExists": true,
+    "footerInitiallyVisible": false,
+    "accessibilityControls": [
+      "נגישות",
+      "תפריט נגישות"
+    ],
+    "offscreenNav": []
+  },
+  {
+    "name": "guide",
+    "url": "https://nad-lan.co.il/buying-apartment/",
+    "viewport": "mobile-390",
+    "status": 200,
+    "navError": null,
+    "screenshot": "guide-mobile-390.png",
+    "consoleErrors": [],
+    "failedRequests": [
+      "https://www.google-analytics.com/g/collect?v=2&tid=G-G3QRV5646E&gtm=45Pe66p0v9254165660za200zd9254165660&_p=1782755683168&gcd=13l3l3l3l1l1&npa=0&dma=0&gdid=dZTNiMT&are=1&cid=1448372464.1782755684&frm=0&pscdl=noapi&rcb=19&sr=390x1100&uaa=x86&uab=64&uafvl=Google%2520Chrome%3B149.0.7827.199%7CChromium%3B149.0.7827.199%7CNot)A%253BBrand%3B24.0.0.0&uam=&uamb=0&uap=Windows&uapv=10.0.0&uaw=0&ul=he-il&_s=1&tag_exp=115616985~115938465~115938468~118395333~119027224~119576891~119576895&sid=1782755683&sct=1&seg=0&dl=https%3A%2F%2Fnad-lan.co.il%2Fbuying-apartment%2F&dt=%D7%A7%D7%A0%D7%99%D7%99%D7%AA%20%D7%93%D7%99%D7%A8%D7%94%20%D7%91%D7%99%D7%A9%D7%A8%D7%90%D7%9C%202026%3A%20%D7%91%D7%93%D7%99%D7%A7%D7%95%D7%AA%20%D7%9C%D7%A4%D7%A0%D7%99%20%D7%97%D7%AA%D7%99%D7%9E%D7%94%20%7C%20nad-lan&en=page_view&_fv=1&_nsi=1&_ss=1&_ee=1&gap.plf=4.5.3&tfd=1816 :: net::ERR_ABORTED"
+    ],
+    "network404s": [],
+    "finalUrl": "https://nad-lan.co.il/buying-apartment/",
+    "title": "קניית דירה בישראל 2026: בדיקות לפני חתימה | nad-lan",
+    "lang": "he-IL",
+    "dir": "rtl",
+    "h1": 1,
+    "nlRoot": 0,
+    "oldNlv2": 0,
+    "oldP3d": 0,
+    "homeBand": 0,
+    "scrollWidth": 390,
+    "innerWidth": 390,
+    "overflow": false,
+    "textLeaks": [],
+    "emDash": 0,
+    "visibleH1": [
+      "קניית דירה בישראל: מדריך בדיקות לפני חתימה"
+    ],
+    "stickyHeaderVisible": true,
+    "footerExists": true,
+    "footerInitiallyVisible": false,
+    "accessibilityControls": [
+      "נגישות",
+      "תפריט נגישות"
+    ],
+    "offscreenNav": [
+      {
+        "label": "משכנתא",
+        "x": -32,
+        "y": 70,
+        "w": 71,
+        "h": 38
+      },
+      {
+        "label": "מס רכישה",
+        "x": -116,
+        "y": 70,
+        "w": 78,
+        "h": 38
+      },
+      {
+        "label": "אנשי מקצוע",
+        "x": -213,
+        "y": 70,
+        "w": 91,
+        "h": 38
+      }
+    ]
+  },
+  {
+    "name": "healthcheck",
+    "url": "https://nad-lan.co.il/wp-json/nadlan/v1/healthcheck",
+    "viewport": "desktop-1440",
+    "status": 200,
+    "navError": null,
+    "screenshot": "healthcheck-desktop-1440.png",
+    "consoleErrors": [
+      "Failed to load resource: the server responded with a status of 404 ()"
+    ],
+    "failedRequests": [],
+    "network404s": [],
+    "finalUrl": "https://nad-lan.co.il/wp-json/nadlan/v1/healthcheck",
+    "title": "",
+    "lang": "",
+    "dir": "",
+    "h1": 0,
+    "nlRoot": 0,
+    "oldNlv2": 0,
+    "oldP3d": 0,
+    "homeBand": 0,
+    "scrollWidth": 1440,
+    "innerWidth": 1440,
+    "overflow": false,
+    "textLeaks": [
+      "mesh",
+      "hotspot",
+      "token",
+      "funnel"
+    ],
+    "emDash": 0,
+    "visibleH1": [],
+    "stickyHeaderVisible": false,
+    "footerExists": false,
+    "footerInitiallyVisible": false,
+    "accessibilityControls": [],
+    "offscreenNav": []
+  },
+  {
+    "name": "healthcheck",
+    "url": "https://nad-lan.co.il/wp-json/nadlan/v1/healthcheck",
+    "viewport": "mobile-390",
+    "status": 200,
+    "navError": null,
+    "screenshot": "healthcheck-mobile-390.png",
+    "consoleErrors": [],
+    "failedRequests": [],
+    "network404s": [],
+    "finalUrl": "https://nad-lan.co.il/wp-json/nadlan/v1/healthcheck",
+    "title": "",
+    "lang": "",
+    "dir": "",
+    "h1": 0,
+    "nlRoot": 0,
+    "oldNlv2": 0,
+    "oldP3d": 0,
+    "homeBand": 0,
+    "scrollWidth": 980,
+    "innerWidth": 980,
+    "overflow": false,
+    "textLeaks": [
+      "mesh",
+      "hotspot",
+      "token",
+      "funnel"
+    ],
+    "emDash": 0,
+    "visibleH1": [],
+    "stickyHeaderVisible": false,
+    "footerExists": false,
+    "footerInitiallyVisible": false,
+    "accessibilityControls": [],
+    "offscreenNav": []
+  },
+  {
+    "name": "content-gaps",
+    "url": "https://nad-lan.co.il/wp-json/nlpo/v1/content-gaps",
+    "viewport": "desktop-1440",
+    "status": 404,
+    "navError": null,
+    "screenshot": "content-gaps-desktop-1440.png",
+    "consoleErrors": [
+      "Failed to load resource: the server responded with a status of 404 ()"
+    ],
+    "failedRequests": [],
+    "network404s": [
+      "https://nad-lan.co.il/wp-json/nlpo/v1/content-gaps"
+    ],
+    "finalUrl": "https://nad-lan.co.il/wp-json/nlpo/v1/content-gaps",
+    "title": "",
+    "lang": "",
+    "dir": "",
+    "h1": 0,
+    "nlRoot": 0,
+    "oldNlv2": 0,
+    "oldP3d": 0,
+    "homeBand": 0,
+    "scrollWidth": 1440,
+    "innerWidth": 1440,
+    "overflow": false,
+    "textLeaks": [],
+    "emDash": 0,
+    "visibleH1": [],
+    "stickyHeaderVisible": false,
+    "footerExists": false,
+    "footerInitiallyVisible": false,
+    "accessibilityControls": [],
+    "offscreenNav": []
+  },
+  {
+    "name": "content-gaps",
+    "url": "https://nad-lan.co.il/wp-json/nlpo/v1/content-gaps",
+    "viewport": "mobile-390",
+    "status": 404,
+    "navError": null,
+    "screenshot": "content-gaps-mobile-390.png",
+    "consoleErrors": [
+      "Failed to load resource: the server responded with a status of 404 ()"
+    ],
+    "failedRequests": [],
+    "network404s": [
+      "https://nad-lan.co.il/wp-json/nlpo/v1/content-gaps"
+    ],
+    "finalUrl": "https://nad-lan.co.il/wp-json/nlpo/v1/content-gaps",
+    "title": "",
+    "lang": "",
+    "dir": "",
+    "h1": 0,
+    "nlRoot": 0,
+    "oldNlv2": 0,
+    "oldP3d": 0,
+    "homeBand": 0,
+    "scrollWidth": 980,
+    "innerWidth": 980,
+    "overflow": false,
+    "textLeaks": [],
+    "emDash": 0,
+    "visibleH1": [],
+    "stickyHeaderVisible": false,
+    "footerExists": false,
+    "footerInitiallyVisible": false,
+    "accessibilityControls": [],
+    "offscreenNav": []
+  }
+]
