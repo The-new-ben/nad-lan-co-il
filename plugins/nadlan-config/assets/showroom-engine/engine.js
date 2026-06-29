@@ -372,16 +372,62 @@
       "</g></svg>";
   }
 
-  /* block 7 — media */
+  /* block 7 — media + interior tour (PR6). Interior tour lazy-loads on click only;
+     real assets only (tour_url / interior_panoramas); honest placeholder otherwise. */
   function media() {
-    var p = project(), has = (p.gallery && p.gallery.length) || p.video_url || p.tour_url;
+    var p = project();
     var head = '<span class="nl-eyebrow">' + esc(t("media_title")) + '</span><hr class="nl-rule">';
-    if (!has) return head + '<div class="nl-empty">' + esc(t("media_empty")) + "</div>";
     var tiles = "";
-    if (p.video_url) tiles += '<div class="nl-card"><div class="ic">' + svg("play", 18) + "</div><h4>" + esc(t("media_video")) + "</h4></div>";
-    if (p.tour_url) tiles += '<div class="nl-card"><div class="ic">' + svg("cube", 18) + "</div><h4>" + esc(t("media_tour")) + "</h4></div>";
-    (p.gallery || []).forEach(function (g) { tiles += '<div class="nl-card" style="padding:0;aspect-ratio:4/3;background:#ddd center/cover url(' + esc(g) + ')"></div>"'; });
-    return head + '<div class="nl-cards">' + tiles + "</div>";
+    if (p.video_url) { tiles += '<div class="nl-card"><div class="ic">' + svg("play", 18) + "</div><h4>" + esc(t("media_video")) + "</h4></div>"; }
+    (p.gallery || []).forEach(function (g) { tiles += '<div class="nl-card" style="padding:0;aspect-ratio:4/3;background:#ddd center/cover url(' + esc(g) + ')"></div>'; });
+    var galleryHtml = tiles ? '<div class="nl-cards" style="margin-top:18px">' + tiles + "</div>" : "";
+    return head + interiorTour() + galleryHtml;
+  }
+  function interiorTour() {
+    var p = project();
+    var top = '<div class="nl-interior"><div class="nl-interior__head"><span class="nl-eyebrow">' + esc(t("tour_title")) + "</span></div>";
+    if (p.tour_url) {
+      return top + '<div class="nl-interior__stage" data-tour-url="' + esc(p.tour_url) + '"><button class="nl-btn nl-btn--gold" data-act="loadtour">' + esc(t("tour_open")) + '</button></div><p class="nl-interior__note">' + esc(t("tour_lazy_hint")) + "</p></div>";
+    }
+    if (p.interior_panoramas && p.interior_panoramas.length) {
+      return top + '<div class="nl-interior__stage" data-pano="' + esc(JSON.stringify(p.interior_panoramas)) + '"><button class="nl-btn nl-btn--gold" data-act="loadpano">' + esc(t("tour_open_pano")) + '</button></div><p class="nl-interior__note">' + esc(t("tour_lazy_hint")) + "</p></div>";
+    }
+    return top + '<div class="nl-empty">' + esc(t("tour_pending")) + "</div></div>";
+  }
+  function loadTour(node) {
+    var stage = node.closest(".nl-interior__stage"); if (!stage) return;
+    var url = stage.getAttribute("data-tour-url"); if (!url) return;
+    var f = document.createElement("iframe");
+    f.src = url; f.loading = "lazy"; f.title = t("tour_title"); f.className = "nl-interior__frame";
+    f.setAttribute("allow", "fullscreen; xr-spatial-tracking; gyroscope; accelerometer");
+    f.setAttribute("allowfullscreen", "");
+    f.setAttribute("referrerpolicy", "no-referrer-when-downgrade");
+    stage.innerHTML = ""; stage.appendChild(f);
+  }
+  function ensurePannellum(cb) {
+    if (window.pannellum) { cb(); return; }
+    var css = document.createElement("link"); css.rel = "stylesheet";
+    css.href = "https://cdn.jsdelivr.net/npm/pannellum@2.5.6/build/pannellum.css"; document.head.appendChild(css);
+    var s = document.createElement("script");
+    s.src = "https://cdn.jsdelivr.net/npm/pannellum@2.5.6/build/pannellum.js";
+    s.onload = cb; s.onerror = function () { cb(); }; document.head.appendChild(s);
+  }
+  function loadPano(node) {
+    var stage = node.closest(".nl-interior__stage"); if (!stage) return;
+    var data; try { data = JSON.parse(stage.getAttribute("data-pano") || "[]"); } catch (e) { data = []; }
+    if (!data.length) return;
+    stage.innerHTML = '<div class="nl-pano__loading">' + esc(t("loading_model")) + "</div>";
+    ensurePannellum(function () {
+      if (!window.pannellum) { stage.innerHTML = '<div class="nl-empty">' + esc(t("tour_pending")) + "</div>"; return; }
+      stage.innerHTML = '<div id="nl-pano-view" style="width:100%;height:100%"></div>';
+      var scenes = {}, first = null;
+      data.forEach(function (s, i) {
+        var id = "s" + i; if (i === 0) { first = id; }
+        scenes[id] = { type: "equirectangular", panorama: s.url || s.image || s, title: s.title || "" };
+      });
+      try { window.pannellum.viewer("nl-pano-view", { default: { firstScene: first, autoLoad: true, showControls: true }, scenes: scenes }); }
+      catch (e) { stage.innerHTML = '<div class="nl-empty">' + esc(t("tour_pending")) + "</div>"; }
+    });
   }
 
   /* block 9 — investor */
@@ -494,6 +540,8 @@
     else if (act === "compare-clear") { state.compare = []; refreshCompare(); }
     else if (act === "share") share(id);
     else if (act === "scroll") { e.preventDefault(); scrollTo(id); }
+    else if (act === "loadtour") loadTour(node);
+    else if (act === "loadpano") loadPano(node);
     else if (act === "pin") highlightPin(node);
   });
   ROOT.addEventListener("keydown", function (e) {
