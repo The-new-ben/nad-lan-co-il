@@ -1,4 +1,4 @@
-# NadLan Platform Child 0.1.4 Rollback
+# NadLan Platform Child 0.1.6 Rollback
 
 Scope: child-theme presentation slice only. No database content is rewritten.
 
