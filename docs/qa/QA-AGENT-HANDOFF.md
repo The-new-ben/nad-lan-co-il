@@ -12,8 +12,10 @@
   - Engine assets: `plugins/nadlan-config/assets/showroom-engine/`
     `engine.js` · `showroom.css` · `tokens.css` · `i18n.js` · `mapbox-init.js` · `data.js` · `models/`
 - QA evidence goes under: `docs/qa/screenshots/`
-- Current on main: **1.69.45** (slices 1, 1b, 2, 3): engine ported, CMS-wired, project-agnostic,
-  safe per-project swap, real Mapbox.
+- Current on main: **1.69.56** (verify, don't trust this line:
+  https://nad-lan.co.il/wp-json/nadlan/v1/healthcheck ). Engine ported, CMS-wired,
+  project-agnostic, de-stacked, hreflang, real Mapbox when a token is set. Full map:
+  `docs/COWORK-ACCESS-MAP.md`.
 
 ## Delivery protocol — DO NOT fight git (this removes your push blocker)
 
@@ -37,7 +39,7 @@ This is how the last report landed in the repo. Reporting IS delivering. No web-
 
 ## This round's mission (verify the engine swap on Ashira)
 
-1. **Confirm runtime:** healthcheck `version` must read **1.69.45**. If it lags, deactivate/reactivate
+1. **Confirm runtime:** healthcheck `version` must read **1.69.56**. If it lags, deactivate/reactivate
    the plugin (above), then re-check. Screenshot it.
 2. **Turn the engine on for Ashira:** edit project `ashira-sde-dov` (post 4744) → enable Custom Fields
    (Options → Preferences/Screen Options) → add field `nlp3d_use_engine` = `1` → Update. Screenshot the saved field.
