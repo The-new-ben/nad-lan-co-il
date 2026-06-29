@@ -52,3 +52,23 @@ add_action( 'after_setup_theme', function () {
 	add_theme_support( 'editor-styles' );
 	add_editor_style( 'assets/css/platform.css' );
 } );
+
+/*
+ * The homepage already contains one editorial project showcase in its body.
+ * Mark that existing band for QA and for the orchestrator duplicate guard.
+ * This is render-time only: it does not rewrite wp_posts.post_content.
+ */
+add_filter( 'the_content', function ( $content ) {
+	if ( is_admin() || ! is_front_page() || ! in_the_loop() || ! is_main_query() ) {
+		return $content;
+	}
+	if ( strpos( $content, 'data-nlpo-home-projects' ) !== false || strpos( $content, 'nlux-showcase' ) === false ) {
+		return $content;
+	}
+	return preg_replace(
+		'/<section([^>]*class="[^"]*\bnlux-showcase\b[^"]*"[^>]*)>/',
+		'<section$1 data-nlpo-home-projects>',
+		$content,
+		1
+	);
+}, 20 );
