@@ -41,6 +41,7 @@
     /* nav */
     nav_projects: "פרויקטים", nav_areas: "אזורים", nav_guides: "מידע ומדריכים", nav_list: "שיווק עם נדל\u05F4ן",
 
+    secnav_building: "בניין", secnav_apartments: "דירות", secnav_environment: "סביבה", secnav_media: "מדיה", secnav_info: "מידע", secnav_aria: "ניווט בעמוד",
     /* hero / intent (block 2) */
     hero_eyebrow: "רובע שדה דב · מול הים",
     hero_cta_primary: "השארת פרטים",
@@ -160,6 +161,7 @@
     unit_short: "Apt {label} · Floor {floor}",
     price_on_request: "Estimate on request",
     nav_projects: "Projects", nav_areas: "Areas", nav_guides: "Guides", nav_list: "List with us",
+    secnav_building: "Building", secnav_apartments: "Apartments", secnav_environment: "Surroundings", secnav_media: "Media", secnav_info: "Info", secnav_aria: "On-page navigation",
     hero_eyebrow: "Sde Dov district · By the sea",
     hero_cta_primary: "Enquire",
     hero_cta_secondary: "Choose an apartment",
