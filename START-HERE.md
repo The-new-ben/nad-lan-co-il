@@ -10,7 +10,10 @@ block theme `nadlan-revenue` (this repo root) + plugin `nadlan-config` (plugins/
 leads routed to paying owners, recurring billing via Morning (Green Invoice), AI concierge (OpenAI).
 
 ## Live state right now
-- Plugin deployed: v1.56.1 (check: https://nad-lan.co.il/wp-json/nadlan/v1/healthcheck?cb=NOW )
+- Plugin deployed: **v1.69.56** (verify, don't trust this line — check:
+  https://nad-lan.co.il/wp-json/nadlan/v1/healthcheck?cb=NOW ). If your local
+  `plugins/nadlan-config/nadlan-config.php` shows a LOWER version, you are on a
+  stale snapshot — run `git fetch origin main && git pull`. Full map: `docs/COWORK-ACCESS-MAP.md`.
 - Six revenue features are deployed DARK behind flags. Master switchboard:
   https://nad-lan.co.il/wp-admin/options-general.php?page=nadlan-features
 - Settings pages: nadlan-ai | nadlan-lead-e2e | nadlan-lead-ai | nadlan-lead-nurture |
