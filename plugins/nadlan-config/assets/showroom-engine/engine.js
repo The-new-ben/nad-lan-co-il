@@ -49,6 +49,7 @@
   function load(k, d) { try { return JSON.parse(localStorage.getItem(k)) || d; } catch (e) { return d; } }
   function save(k, v) { try { localStorage.setItem(k, JSON.stringify(v)); } catch (e) {} }
   function esc(s) { return String(s == null ? "" : s).replace(/[&<>"]/g, function (c) { return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]; }); }
+  function money(n) { n = Math.round(Number(n) || 0); return "₪" + n.toLocaleString("en-US"); }
 
   /* ---------------- icons ---------------- */
   var ICON = {
@@ -135,7 +136,7 @@
   /* sticky in-page section nav (the single in-page nav on a project page) */
   function secNav() {
     var items = [
-      ["building", "secnav_building"], ["inventory", "secnav_apartments"],
+      ["building", "secnav_building"], ["inventory", "secnav_apartments"], ["price", "secnav_price"],
       ["world", "secnav_environment"], ["media", "secnav_media"], ["about", "secnav_info"]
     ];
     return '<nav class="nl-secnav" id="nl-secnav" aria-label="' + esc(t("secnav_aria")) + '">' + items.map(function (it) {
@@ -149,6 +150,7 @@
       '<section class="nl-sec nl-wrap" id="top">' + hero() + "</section>" +
       '<section class="nl-wrap" id="building" style="padding-bottom:clamp(40px,6vw,80px)">' + theater() + "</section>" +
       '<section class="nl-sec nl-wrap" id="inventory">' + inventory() + "</section>" +
+      '<section class="nl-sec nl-wrap" id="price">' + price() + "</section>" +
       '<section class="nl-sec nl-wrap" id="world">' + world() + "</section>" +
       '<section class="nl-sec nl-wrap" id="media">' + media() + "</section>" +
       '<section class="nl-sec nl-wrap" id="investor">' + investor() + "</section>" +
@@ -275,6 +277,59 @@
       if (state.filter === "available") return u.status === "available";
       return String(u.rooms) === state.filter;
     });
+  }
+
+  /* block 6.5 — price + comps (PR5). Data-driven, honest: range + non-binding
+     label + source + date; comps only when real; else an explicit pending state. */
+  function price() {
+    var pr = project().price || {};
+    var comps = (pr.comps || []).map(function (r) {
+      return { date: r.date || "", rooms: r.rooms, sqm: r.sqm != null ? r.sqm : r.size_sqm,
+               total: Number(r.total != null ? r.total : r.price_total_nis) || 0,
+               psqm: Number(r.psqm != null ? r.psqm : r.price_per_sqm_nis) || 0 };
+    }).filter(function (r) { return r.total || r.psqm; });
+    var head = '<span class="nl-eyebrow">' + esc(t("price_eyebrow")) + '</span><hr class="nl-rule"><h2>' + esc(t("price_title")) + "</h2>";
+
+    if (!pr.avg_psqm && !comps.length) {
+      return head + '<div class="nl-empty">' + esc(t("price_pending")) + "</div>";
+    }
+
+    // ranges (recorded transactions preferred; else avg ±12%)
+    var totals = comps.map(function (r) { return r.total; }).filter(Boolean);
+    var psqms = comps.map(function (r) { return r.psqm; }).filter(Boolean);
+    var loT = totals.length ? Math.min.apply(null, totals) : 0, hiT = totals.length ? Math.max.apply(null, totals) : 0;
+    var loP = psqms.length ? Math.min.apply(null, psqms) : (pr.avg_psqm ? Math.round(pr.avg_psqm * 0.88) : 0);
+    var hiP = psqms.length ? Math.max.apply(null, psqms) : (pr.avg_psqm ? Math.round(pr.avg_psqm * 1.12) : 0);
+
+    var big = totals.length ? (money(loT) + " – " + money(hiT))
+                            : (money(loP) + " – " + money(hiP) + " " + t("per_sqm_short"));
+    var chips = "";
+    if (loP && hiP) { chips += '<span class="nl-pchip">' + esc(money(loP) + " – " + money(hiP) + " " + t("per_sqm_short")) + "</span>"; }
+    if (pr.avg_psqm) { chips += '<span class="nl-pchip">' + esc(t("price_avg_psqm", { v: money(pr.avg_psqm) })) + "</span>"; }
+    var metaBits = [];
+    if (pr.date) { metaBits.push(t("price_updated_label") + " " + pr.date); }
+    if (pr.source) { metaBits.push(pr.source); }
+    var note = t("price_nonbinding") + (metaBits.length ? " · " + metaBits.join(" · ") : "");
+    var card = '<div class="nl-pcard2"><div class="nl-pcard2__lbl">' + esc(totals.length ? t("price_estimate_label") : t("price_estimate_label_psqm")) + "</div>" +
+      '<div class="nl-pcard2__big">' + esc(big) + "</div>" +
+      '<div class="nl-pchips">' + chips + "</div>" +
+      '<p class="nl-pnote">' + esc(note) + "</p></div>";
+
+    var compsHtml = '<h3 class="nl-comps__h">' + esc(t("comps_title")) + "</h3>";
+    if (comps.length) {
+      var rows = comps.map(function (r) {
+        return "<tr><td>" + esc(r.date) + "</td><td>" + esc(roomsLabel(r.rooms)) + "</td><td>" +
+          esc((r.sqm != null ? r.sqm : "") + " " + t("sqm_unit")) + "</td><td>" + esc(money(r.total)) +
+          "</td><td>" + esc(money(r.psqm) + " " + t("per_sqm_short")) + "</td></tr>";
+      }).join("");
+      compsHtml += '<div class="nl-comps__wrap"><table class="nl-comps"><thead><tr><th>' + esc(t("comps_col_date")) +
+        "</th><th>" + esc(t("comps_col_rooms")) + "</th><th>" + esc(t("comps_col_sqm")) + "</th><th>" +
+        esc(t("comps_col_total")) + "</th><th>" + esc(t("comps_col_psqm")) + "</th></tr></thead><tbody>" + rows +
+        "</tbody></table></div><p class=\"nl-comps__src\">" + esc(t("comps_source")) + "</p>";
+    } else {
+      compsHtml += '<div class="nl-empty">' + esc(t("comps_pending")) + "</div>";
+    }
+    return head + '<div class="nl-pricewrap">' + card + compsHtml + "</div>";
   }
 
   /* block 8 — the complete world (map + spokes + stats + nearby) */

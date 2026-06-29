@@ -158,6 +158,23 @@ html[lang="en"] .nl-ucard__rooms { font-family: var(--font-serif-en); }
 .nl-ucard__fav { position: absolute; inset-block-start: 10px; inset-inline-end: 10px; width: 26px; height: 26px; border: 0; background: transparent; cursor: pointer; color: #c4bdaf; }
 .nl-ucard__fav.is-on { color: var(--terracotta); }
 
+/* ---------- price + comps (block 6.5) ---------- */
+.nl-pricewrap { display: grid; gap: 22px; }
+.nl-pcard2 { background: linear-gradient(150deg, var(--ink), #211f19); color: var(--cream); border-radius: var(--radius-2xl); padding: clamp(22px,4vw,40px); box-shadow: var(--shadow-theater); }
+.nl-pcard2__lbl { color: #e9d9a9; font-size: var(--fs-micro); letter-spacing: var(--tracking-wide); text-transform: uppercase; font-weight: 600; }
+.nl-pcard2__big { font-family: var(--font-serif-he); font-size: clamp(1.7rem, 1.1rem + 2.4vw, 2.7rem); font-weight: 700; line-height: 1.1; margin-top: 8px; }
+html[lang="en"] .nl-pcard2__big { font-family: var(--font-serif-en); }
+.nl-pchips { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 14px; }
+.nl-pchip { font-size: 13px; font-weight: 600; color: #efe7d6; background: rgba(242,236,222,.08); border: 1px solid rgba(242,236,222,.18); border-radius: 999px; padding: 5px 12px; }
+.nl-pnote { font-size: 12.5px; color: #b8b1a2; line-height: 1.6; margin-top: 14px; }
+.nl-comps__h { margin: 4px 0 12px; }
+.nl-comps__wrap { overflow-x: auto; border: 1px solid var(--border); border-radius: var(--radius-lg); }
+.nl-comps { width: 100%; border-collapse: collapse; font-size: 14px; background: var(--card); }
+.nl-comps th, .nl-comps td { padding: 11px 14px; text-align: start; border-bottom: 1px solid var(--border); white-space: nowrap; }
+.nl-comps th { background: rgba(156,122,60,.08); font-weight: 600; color: #4b4639; }
+.nl-comps tbody tr:last-child td { border-bottom: 0; }
+.nl-comps__src { font-size: 12px; color: var(--muted-foreground); margin-top: 10px; }
+
 /* ---------- the complete world (block 8) ---------- */
 .nl-world { display: grid; grid-template-columns: 1.15fr .85fr; gap: clamp(18px,3vw,32px); align-items: start; }
 .nl-map { position: relative; border-radius: var(--radius-lg); overflow: hidden; border: 1px solid var(--border); box-shadow: var(--shadow-soft); aspect-ratio: 4/3; background: #e9efe6; }
