@@ -47,6 +47,14 @@ html[lang="en"] .nl-eyebrow, html[lang="fr"] .nl-eyebrow { font-family: var(--fo
 .nl-lang[aria-pressed="true"] { background: var(--ink); color: var(--cream); border-color: var(--ink); }
 .nl-nav__links a.is-active { color: var(--ink); font-weight: 600; }
 
+/* ---------- in-page section nav (sticky, single in-page nav) ---------- */
+.nl-secnav { position: sticky; top: 63px; z-index: 30; display: flex; gap: clamp(14px, 3vw, 26px); overflow-x: auto; scrollbar-width: none; -ms-overflow-style: none; background: rgba(250,247,241,.92); backdrop-filter: blur(8px); border-bottom: 1px solid var(--border); padding-inline: clamp(14px, 3vw, 28px); }
+.nl-secnav::-webkit-scrollbar { display: none; }
+.nl-secnav a { flex: 0 0 auto; white-space: nowrap; font-size: 14px; font-weight: 600; color: #4b4639; text-decoration: none; padding: 14px 2px; border-bottom: 2px solid transparent; transition: color .15s ease, border-color .15s ease; }
+.nl-secnav a:hover { color: var(--ink); }
+.nl-secnav a.is-active { color: var(--ink); border-bottom-color: var(--gold); }
+@media (max-width: 700px) { .nl-secnav { top: 57px; gap: 16px; } }
+
 /* ---------- hero (block 2) ---------- */
 .nl-hero { display: grid; grid-template-columns: 1.05fr .95fr; gap: clamp(20px, 4vw, 56px); align-items: center; }
 .nl-hero__h1 { font-size: var(--fs-display); font-weight: 500; line-height: 1.04; margin-block: 10px 0; }

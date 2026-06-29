@@ -96,7 +96,7 @@
     ROOT.className = "nl-app";
     ROOT.innerHTML = (state.page === "home")
       ? header() + homeMain() + footer()
-      : header() + projectMain() + footer() + sticky() + compareTray();
+      : header() + secNav() + projectMain() + footer() + sticky() + compareTray();
     afterRender();
   }
 
@@ -122,19 +122,32 @@
     }).join("") + "</div>";
   }
   function header() {
+    // On a project page the in-page navigation is the sticky section nav (secNav),
+    // so the header is trimmed to brand + language bar to avoid a duplicate nav row.
     var nav = state.page === "home"
       ? '<div class="nl-nav__links"><a href="#projects" class="is-active">' + esc(t("nav_projects")) + '</a><a href="#areas">' + esc(t("nav_areas")) + '</a><a href="#list">' + esc(t("nav_list")) + "</a></div>"
-      : '<div class="nl-nav__links"><a href="home.html">' + esc(t("nav_projects")) + '</a><a href="#world">' + esc(t("nav_areas")) + '</a><a href="#inquiry">' + esc(t("hero_cta_primary")) + "</a></div>";
+      : "";
     return '<header class="nl-header"><div class="nl-wrap nl-header__row">' +
       '<a class="nl-brand" href="home.html"><span class="nl-brand__mark">N</span><span><span class="nl-brand__name">' + esc(t("brand")) + '</span> <span class="nl-brand__sub">' + esc(t("brand_sub")) + "</span></span></a>" +
       '<nav class="nl-nav">' + nav + langBar() + "</nav></div></header>";
+  }
+
+  /* sticky in-page section nav (the single in-page nav on a project page) */
+  function secNav() {
+    var items = [
+      ["building", "secnav_building"], ["inventory", "secnav_apartments"],
+      ["world", "secnav_environment"], ["media", "secnav_media"], ["about", "secnav_info"]
+    ];
+    return '<nav class="nl-secnav" id="nl-secnav" aria-label="' + esc(t("secnav_aria")) + '">' + items.map(function (it) {
+      return '<a href="#' + it[0] + '" data-act="scroll" data-id="' + it[0] + '" data-spy="' + it[0] + '">' + esc(t(it[1])) + "</a>";
+    }).join("") + "</nav>";
   }
 
   /* ---- project page ---- */
   function projectMain() {
     return "<main>" +
       '<section class="nl-sec nl-wrap" id="top">' + hero() + "</section>" +
-      '<section class="nl-wrap" style="padding-bottom:clamp(40px,6vw,80px)">' + theater() + "</section>" +
+      '<section class="nl-wrap" id="building" style="padding-bottom:clamp(40px,6vw,80px)">' + theater() + "</section>" +
       '<section class="nl-sec nl-wrap" id="inventory">' + inventory() + "</section>" +
       '<section class="nl-sec nl-wrap" id="world">' + world() + "</section>" +
       '<section class="nl-sec nl-wrap" id="media">' + media() + "</section>" +
@@ -408,6 +421,7 @@
       var form = document.getElementById("nl-form");
       if (form) form.addEventListener("submit", onSubmit);
       window.addEventListener("scroll", onScroll, { passive: true }); onScroll();
+      setupSpy();
     }
   }
 
@@ -424,7 +438,7 @@
     else if (act === "compare") { e.stopPropagation(); toggleCompare(id); }
     else if (act === "compare-clear") { state.compare = []; refreshCompare(); }
     else if (act === "share") share(id);
-    else if (act === "scroll") scrollTo(id);
+    else if (act === "scroll") { e.preventDefault(); scrollTo(id); }
     else if (act === "pin") highlightPin(node);
   });
   ROOT.addEventListener("keydown", function (e) {
@@ -532,7 +546,21 @@
     var u = new URL(location.href); u.searchParams.set("lang", l); history.replaceState(null, "", u);
     render();
   }
-  function scrollTo(id) { var t2 = document.getElementById(id); if (t2) window.scrollTo({ top: t2.getBoundingClientRect().top + window.pageYOffset - 70, behavior: "smooth" }); }
+  function scrollTo(id) { var t2 = document.getElementById(id); if (t2) window.scrollTo({ top: t2.getBoundingClientRect().top + window.pageYOffset - 112, behavior: "smooth" }); }
+  function setupSpy() {
+    var nav = document.getElementById("nl-secnav");
+    if (!nav || !("IntersectionObserver" in window)) return;
+    var links = {};
+    nav.querySelectorAll("a[data-spy]").forEach(function (a) { links[a.getAttribute("data-spy")] = a; });
+    var obs = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) {
+        if (!en.isIntersecting) return;
+        var id = en.target.id;
+        Object.keys(links).forEach(function (k) { links[k].classList.toggle("is-active", k === id); });
+      });
+    }, { rootMargin: "-45% 0px -50% 0px", threshold: 0 });
+    Object.keys(links).forEach(function (id) { var el = document.getElementById(id); if (el) obs.observe(el); });
+  }
   function highlightPin(node) { document.querySelectorAll(".nl-pin").forEach(function (p) { p.classList.remove("is-on"); }); node.classList.add("is-on"); }
 
   function updateFormCtx() {
