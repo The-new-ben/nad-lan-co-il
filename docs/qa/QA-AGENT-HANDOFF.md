@@ -41,8 +41,11 @@ This is how the last report landed in the repo. Reporting IS delivering. No web-
 
 1. **Confirm runtime:** healthcheck `version` must read **1.69.56**. If it lags, deactivate/reactivate
    the plugin (above), then re-check. Screenshot it.
-2. **Turn the engine on for Ashira:** edit project `ashira-sde-dov` (post 4744) → enable Custom Fields
-   (Options → Preferences/Screen Options) → add field `nlp3d_use_engine` = `1` → Update. Screenshot the saved field.
+2. **Do NOT set any meta first.** As of 1.69.56 the Ashira language slugs are **default-on** in
+   `nadlan_showroom_engine_active_for()` — the engine renders on them with zero post-meta change.
+   Verify the page exactly as a visitor sees it, untouched. Manually adding `nlp3d_use_engine=1`
+   would mask a broken default-on/release path (the page would pass for the wrong reason). The
+   `nlp3d_use_engine` field is only an **override / rollback** lever, not a setup step.
 3. **Verify the real Ashira page** `https://nad-lan.co.il/projects/ashira-sde-dov/` (no `?lang`),
    desktop, HE then EN. Screenshot each check:
    - default language Hebrew/RTL; building model loads; facade toggle; apartment select → panel with

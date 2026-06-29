@@ -50,16 +50,27 @@ move business logic into the theme.
 
 ## 2. WHERE EVERYTHING LIVES (exact paths in this repo)
 
-### The theme (look & layout) = repo ROOT
+### The theme (look & layout) — TWO parts, mind which one is active
+The **active live theme is the child `themes/nadlan-platform-child/`** (Template:
+`nadlan-revenue`). The **parent `nadlan-revenue` is the repo ROOT**. Because the child is
+active, its files WIN: edit header/footer/home/project **templates and `theme.json` in the
+child** (`themes/nadlan-platform-child/`), or the child overrides your change and it never
+shows. Only edit the parent root for things the child does not override.
 ```
-style.css            theme stylesheet header + base CSS
-theme.json           block theme colors/typography/spacing (the design tokens)
-functions.php        theme PHP
-parts/               header.html, footer.html (block template parts)
-patterns/            block patterns
-templates/           page/archive/single block templates
-styles/              theme.json style variations
+# PARENT (repo root) = nadlan-revenue
+style.css            parent stylesheet header + base CSS
+theme.json           parent block theme tokens
+functions.php        parent PHP
+parts/  patterns/  templates/  styles/    parent block parts/patterns/templates/variations
+
+# CHILD (active live theme) = themes/nadlan-platform-child/
+style.css            child header (Template: nadlan-revenue), v0.1.6
+functions.php        presentation only (enqueues platform.css, body_class)
+theme.json           child color/type/spacing overrides (these win site-wide)
+assets/css/platform.css   the active site chrome (header/footer/home/article CSS)
 ```
+NOTE: the showroom on project pages is rendered by the **plugin engine** (`#nl-root`),
+independent of the theme. Do showroom work in `nadlan-config`, not the theme.
 
 ### The plugin (the business brain) = `plugins/nadlan-config/`
 ```
