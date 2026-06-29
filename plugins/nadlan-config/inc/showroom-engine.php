@@ -135,6 +135,15 @@ if ( ! function_exists( 'nadlan_showroom_engine_build_project' ) ) {
 			'url'            => get_permalink( $id ),
 			'lang_urls'      => $lang_urls,
 			'self_lang'      => $self_lang,
+			// Price + comps (PR5). Data-driven from CMS meta: the engine shows a RANGE +
+			// non-binding label + source + date, and a comps table ONLY when real
+			// transactions exist; otherwise an honest pending state. No invented price.
+			'price'          => array(
+				'avg_psqm' => (int) get_post_meta( $id, 'project_3d_avg_price_per_sqm', true ),
+				'source'   => (string) get_post_meta( $id, 'project_3d_price_source_note', true ),
+				'date'     => (string) get_post_meta( $id, 'project_price_updated', true ),
+				'comps'    => array_values( (array) nadlan_showroom_engine_json_meta( $id, 'project_comps_json' ) ),
+			),
 			'units'          => array_values( (array) $units ),
 		);
 	}
@@ -231,19 +240,19 @@ if ( ! function_exists( 'nadlan_showroom_engine_shortcode' ) ) {
 		$base = trailingslashit( nadlan_showroom_engine_base_url() );
 
 		// assets
-		wp_enqueue_style( 'nadlan-engine-tokens', $base . 'tokens.css', array(), '1.69.57' );
-		wp_enqueue_style( 'nadlan-engine-css', $base . 'showroom.css', array( 'nadlan-engine-tokens' ), '1.69.57' );
-		wp_enqueue_style( 'nadlan-engine-editorial', $base . 'editorial.css', array( 'nadlan-engine-tokens' ), '1.69.57' );
+		wp_enqueue_style( 'nadlan-engine-tokens', $base . 'tokens.css', array(), '1.69.58' );
+		wp_enqueue_style( 'nadlan-engine-css', $base . 'showroom.css', array( 'nadlan-engine-tokens' ), '1.69.58' );
+		wp_enqueue_style( 'nadlan-engine-editorial', $base . 'editorial.css', array( 'nadlan-engine-tokens' ), '1.69.58' );
 		wp_enqueue_script( 'nadlan-model-viewer', 'https://ajax.googleapis.com/ajax/libs/model-viewer/4.0.0/model-viewer.min.js', array(), '4.0.0', true );
 		wp_script_add_data( 'nadlan-model-viewer', 'type', 'module' );
-		wp_enqueue_script( 'nadlan-engine-i18n', $base . 'i18n.js', array(), '1.69.57', true );
-		wp_enqueue_script( 'nadlan-engine-core', $base . 'engine.js', array( 'nadlan-engine-i18n' ), '1.69.57', true );
+		wp_enqueue_script( 'nadlan-engine-i18n', $base . 'i18n.js', array(), '1.69.58', true );
+		wp_enqueue_script( 'nadlan-engine-core', $base . 'engine.js', array( 'nadlan-engine-i18n' ), '1.69.58', true );
 
 		// Real Mapbox only when a token is configured; otherwise the stylized map stays.
 		if ( (string) get_option( 'nadlan_mapbox_token', '' ) !== '' ) {
 			wp_enqueue_style( 'mapbox-gl', 'https://api.mapbox.com/mapbox-gl-js/v3.7.0/mapbox-gl.css', array(), '3.7.0' );
 			wp_enqueue_script( 'mapbox-gl', 'https://api.mapbox.com/mapbox-gl-js/v3.7.0/mapbox-gl.js', array(), '3.7.0', true );
-			wp_enqueue_script( 'nadlan-engine-mapbox', $base . 'mapbox-init.js', array( 'nadlan-engine-core', 'mapbox-gl' ), '1.69.57', true );
+			wp_enqueue_script( 'nadlan-engine-mapbox', $base . 'mapbox-init.js', array( 'nadlan-engine-core', 'mapbox-gl' ), '1.69.58', true );
 		}
 
 		// build payload from the CMS
@@ -333,6 +342,37 @@ add_action( 'init', function () {
 		}
 	}
 	update_option( 'nadlan_showroom_seed_ashira_v2', '1' );
+} );
+
+/* -------------------------------------------------------------------------
+ * One-time price/comps seed for Ashira (PR5). Writes REAL, sourced data into
+ * the project's CMS meta (editable later): avg ₪/m², source note, date, and the
+ * recorded Madlan/Tax-Authority transactions (docs/data/ashira-madlan-2026-06-27.json).
+ * Seed-if-empty only. Also seeds Sde Dov / Ashkol coordinates if geo is empty so the
+ * map marker sits on land. Nothing is invented; comps are real recorded sales.
+ * ----------------------------------------------------------------------- */
+add_action( 'init', function () {
+	if ( get_option( 'nadlan_ashira_price_seed_v1' ) === '1' ) { return; }
+	$slugs = array( 'ashira-sde-dov', 'ashira-sde-dov-en', 'ashira-sde-dov-fr', 'ashira-sde-dov-ru', 'ashira-sde-dov-ar' );
+	$comps = wp_json_encode( array(
+		array( 'date' => '2025-12-30', 'rooms' => 4, 'sqm' => 102, 'total' => 7250000, 'psqm' => 71078 ),
+		array( 'date' => '2025-12-29', 'rooms' => 5, 'sqm' => 116, 'total' => 7070000, 'psqm' => 60948 ),
+		array( 'date' => '2025-12-29', 'rooms' => 5, 'sqm' => 116, 'total' => 7720000, 'psqm' => 66551 ),
+	), JSON_UNESCAPED_UNICODE );
+	$src = 'מבוסס עסקאות מדווחות במגרש 101, מתחם אשכול, שדה דב. אינו מחיר יזם או הצעה. מקור: מדלן/רשות המסים.';
+	$seeded = false;
+	foreach ( $slugs as $slug ) {
+		$p = get_page_by_path( $slug, OBJECT, 'nadlan_project' );
+		if ( ! $p ) { continue; }
+		$seeded = true;
+		if ( (int) get_post_meta( $p->ID, 'project_3d_avg_price_per_sqm', true ) === 0 ) { update_post_meta( $p->ID, 'project_3d_avg_price_per_sqm', '76000' ); }
+		if ( (string) get_post_meta( $p->ID, 'project_3d_price_source_note', true ) === '' ) { update_post_meta( $p->ID, 'project_3d_price_source_note', $src ); }
+		if ( (string) get_post_meta( $p->ID, 'project_price_updated', true ) === '' ) { update_post_meta( $p->ID, 'project_price_updated', 'יוני 2026' ); }
+		if ( (string) get_post_meta( $p->ID, 'project_comps_json', true ) === '' ) { update_post_meta( $p->ID, 'project_comps_json', $comps ); }
+		if ( (float) get_post_meta( $p->ID, 'lat', true ) === 0.0 ) { update_post_meta( $p->ID, 'lat', '32.1090' ); }
+		if ( (float) get_post_meta( $p->ID, 'lng', true ) === 0.0 ) { update_post_meta( $p->ID, 'lng', '34.7830' ); }
+	}
+	if ( $seeded ) { update_option( 'nadlan_ashira_price_seed_v1', '1' ); }
 } );
 
 /* -------------------------------------------------------------------------
