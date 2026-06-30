@@ -308,3 +308,11 @@ html[lang="en"] .nl-pcard__name { font-family: var(--font-serif-en); }
    Break it out to the full viewport so it renders like the standalone design. */
 #nl-root{width:100vw;max-width:100vw;margin-inline:calc(50% - 50vw);overflow-x:clip}
 .entry-content #nl-root,.wp-block-post-content #nl-root{margin-block:0}
+
+/* FAQ accordion (block, in About) */
+.nl-faq__item{border-bottom:1px solid var(--border);padding:14px 0}
+.nl-faq__item summary{cursor:pointer;font-weight:600;font-size:1.05rem;color:var(--ink);list-style:none;display:flex;justify-content:space-between;gap:12px}
+.nl-faq__item summary::-webkit-details-marker{display:none}
+.nl-faq__item summary::after{content:"+";color:var(--gold);font-weight:700;flex:none}
+.nl-faq__item[open] summary::after{content:"\2212"}
+.nl-faq__item p{margin:10px 0 0;color:#4b4639;line-height:1.75}

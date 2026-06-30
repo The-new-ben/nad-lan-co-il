@@ -112,6 +112,7 @@
 
     /* SEO body (block 10) — heading chrome only; prose from data.content */
     seo_eyebrow: "על הפרויקט",
+    faq_title: "שאלות נפוצות",
 
     /* inquiry (block 11) — the money moment */
     form_title: "מעוניינים בדירה? נחזור אליכם",
@@ -225,6 +226,7 @@
     investor_pt_process: "Clear buying process", investor_pt_legal: "Legal & tax support", investor_pt_finance: "Financing & currency",
     investor_cta: "Book a call",
     seo_eyebrow: "About the project",
+    faq_title: "Frequently asked questions",
     form_title: "Interested? We'll get back to you",
     form_sub: "Leave your details and we'll return with information on the apartment you chose.",
     form_name: "Full name", form_phone: "Phone", form_email: "Email (optional)",
