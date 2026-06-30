@@ -14,11 +14,13 @@
 
 ## CURRENT MISSIONS (top = now)
 
-- [ ] **Activate the homepage live.** The flagship 3D + broad-content work are theme changes on `main`;
-      they go live when the host **git-pulls `main`** (UPress), NOT via the plugin Update button.
-      Trigger the theme pull (or confirm it ran), then verify on `/`:
-      `.nlux-flagship` shows one rotating model-viewer, the project band (`.nlux-showcase` /
-      `data-nlpo-home-projects`) is visible with cards, no horizontal overflow, HE + EN. Screenshot.
+- [ ] **Activate the homepage live (theme deploy).** #256 is theme-side (plugin Update will NOT ship it).
+      EXACT path: UPress panel -> "ניהול GIT" (Git management) -> **Pull from `main`** (UPress Git is
+      `main`-only; #256 is merged, ready to pull). Owner's UPress login only. Do NOT use the file-manager
+      upload (partial-sync risk). After pull, clear cache + hard-reload. There is NO feature flag/WP option;
+      the flagship 3D auto-renders once the theme code is live (Ashira has a model). Keep the orchestrator
+      `nlpo_auto_insert_home_band` OFF (ON = second band). Verify `/`: `.nlux-flagship` present,
+      `model-viewer` count = 1 (was 0), `[data-nlpo-home-projects]` = 1, no overflow, HE + EN. Screenshot.
 - [ ] **Create the missing content (your job, in Chrome, as a user).** Per the runbooks:
       `skills/runbook-cowork-article-batch-v3.md`, `skills/google-blueprint-workflow.md`
       (SERP reverse-engineer), `skills/article-publishing-protocol.md`,
