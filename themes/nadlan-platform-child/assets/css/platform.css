@@ -176,6 +176,31 @@ body.admin-bar .nlpc-site-header{top:32px;}
   outline:2px solid rgba(156,122,60,.38);
   outline-offset:2px;
 }
+.nlpc-nav-toggle{
+  display:none;
+  width:42px;
+  height:42px;
+  border:1px solid var(--nlp-border);
+  border-radius:10px;
+  background:#fff;
+  align-items:center;
+  justify-content:center;
+  flex-direction:column;
+  gap:5px;
+  padding:0;
+  cursor:pointer;
+}
+.nlpc-nav-toggle span{
+  display:block;
+  width:20px;
+  height:2px;
+  background:var(--nlp-ink);
+  border-radius:1px;
+  transition:transform .2s ease, opacity .2s ease;
+}
+.nlpc-site-header.is-nav-open .nlpc-nav-toggle span:nth-child(1){transform:translateY(7px) rotate(45deg);}
+.nlpc-site-header.is-nav-open .nlpc-nav-toggle span:nth-child(2){opacity:0;}
+.nlpc-site-header.is-nav-open .nlpc-nav-toggle span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
 
 .nlpc-site-footer{
   background:linear-gradient(135deg,#11100d,#1c1a15 72%,#0f1d1b);
@@ -329,7 +354,7 @@ body.admin-bar .nlpc-site-header{top:32px;}
 @media (max-width: 760px){
   body.admin-bar .nlpc-site-header{top:46px;}
   .nlpc-site-header__inner{
-    grid-template-columns:minmax(0,1fr) auto;
+    grid-template-columns:minmax(0,1fr) auto auto;
     gap:10px 12px;
     min-height:unset;
     padding:9px 12px 10px;
@@ -345,24 +370,39 @@ body.admin-bar .nlpc-site-header{top:32px;}
     font-size:11px;
     white-space:normal;
   }
-  .nlpc-primary-nav{
-    order:3;
-    grid-column:1 / -1;
-    justify-content:flex-start;
-    gap:18px;
-    padding:2px 0 0;
-    margin-inline:-2px;
-  }
-  .nlpc-primary-nav a{
-    min-height:38px;
-    display:inline-flex;
-    align-items:center;
-    font-size:13px;
-  }
+  .nlpc-nav-toggle{display:inline-flex;}
+  .nlpc-primary-nav,
   .nlpc-header-cta{
-    min-height:38px;
-    padding-inline:13px;
-    font-size:13px;
+    display:none;
+  }
+  .nlpc-site-header.is-nav-open .nlpc-primary-nav,
+  .nlpc-site-header.is-nav-open .nlpc-header-cta{
+    display:flex;
+  }
+  .nlpc-site-header.is-nav-open .nlpc-primary-nav{
+    order:4;
+    grid-column:1 / -1;
+    flex-direction:column;
+    align-items:stretch;
+    overflow-x:visible;
+    gap:2px;
+    padding:10px 0 4px;
+    border-top:1px solid var(--nlp-border);
+    margin-top:4px;
+  }
+  .nlpc-site-header.is-nav-open .nlpc-primary-nav a{
+    min-height:46px;
+    display:flex;
+    align-items:center;
+    font-size:15px;
+    border-bottom:1px solid var(--nlp-border);
+  }
+  .nlpc-site-header.is-nav-open .nlpc-header-cta{
+    order:5;
+    grid-column:1 / -1;
+    justify-content:center;
+    margin-top:8px;
+    min-height:46px;
   }
   .nlpc-site-footer__inner{
     grid-template-columns:1fr;
