@@ -85,6 +85,7 @@ body.admin-bar .nlpc-site-header{top:32px;}
   grid-template-columns:auto minmax(0,1fr) auto;
   align-items:center;
   gap:20px;
+  overflow:hidden;
 }
 .nlpc-brand{
   display:inline-flex;
@@ -115,17 +116,25 @@ body.admin-bar .nlpc-site-header{top:32px;}
 .nlpc-brand__mark span:nth-child(1){height:35%;}
 .nlpc-brand__mark span:nth-child(2){height:58%;}
 .nlpc-brand__mark span:nth-child(3){height:82%;}
-.nlpc-brand__text{display:grid;line-height:1.05;min-width:0;}
+.nlpc-brand__text{display:grid;line-height:1.05;min-width:0;overflow:hidden;}
 .nlpc-brand__text strong{
   font-family:"Frank Ruhl Libre",Georgia,serif;
   font-size:25px;
   color:var(--nlp-ink);
   letter-spacing:0;
+  white-space:nowrap;
+  overflow:hidden;
+  text-overflow:ellipsis;
+  max-width:100%;
 }
 .nlpc-brand__text small{
   font-size:12px;
   color:var(--nlp-muted);
   white-space:nowrap;
+  overflow:hidden;
+  text-overflow:ellipsis;
+  max-width:100%;
+  display:block;
 }
 .nlpc-primary-nav{
   display:flex;
@@ -365,10 +374,10 @@ body.admin-bar .nlpc-site-header{top:32px;}
     border-radius:10px;
     padding:8px;
   }
-  .nlpc-brand__text strong{font-size:21px;}
+  .nlpc-brand__text strong{font-size:19px;}
   .nlpc-brand__text small{
     font-size:11px;
-    white-space:normal;
+    white-space:nowrap;
   }
   .nlpc-nav-toggle{display:inline-flex;}
   .nlpc-primary-nav,
@@ -419,6 +428,12 @@ body.admin-bar .nlpc-site-header{top:32px;}
   .nlp-project-card{min-height:unset;}
   .nlp-catalog-head{align-items:start;}
   .nlp-interior-stage{min-height:320px;}
+}
+
+@media (max-width: 380px){
+  .nlpc-brand__text small{display:none;}
+  .nlpc-brand__text strong{font-size:17px;}
+  .nlpc-brand__mark{width:32px;height:32px;padding:7px;}
 }
 
 @media (prefers-reduced-motion: reduce){
