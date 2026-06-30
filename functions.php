@@ -939,15 +939,12 @@ endif;
 
 add_filter( 'the_content', function ( $content ) {
 	if ( is_front_page() && in_the_loop() && is_main_query() ) {
-		// The nadlan-home-showroom pattern (gallery 3D + multilingual) is an earlier/partial
-		// prototype, NOT the verified final Cloud Design homepage. So it is behind a SAFE PREVIEW
-		// GATE: it does NOT change the live homepage. It renders only for a logged-in admin using
-		// ?home_showroom=1, so we can screenshot and judge it first. To promote it to the live
-		// default once approved, return true from the nadlan_revenue_use_home_showroom filter.
-		$preview = ( is_user_logged_in() && current_user_can( 'manage_options' )
-			&& isset( $_GET['home_showroom'] ) && '1' === sanitize_text_field( wp_unslash( $_GET['home_showroom'] ) ) );
+		// LIVE (owner-approved): the designed home-showroom homepage (gallery 3D + multilingual)
+		// is now active for all visitors. Fully reversible WITHOUT a code edit: return false from
+		// the nadlan_revenue_use_home_showroom filter (or add a small mu-plugin) to fall back to the
+		// legacy front page instantly.
 		$home_showroom = get_parent_theme_file_path( 'patterns/nadlan-home-showroom.php' );
-		if ( apply_filters( 'nadlan_revenue_use_home_showroom', $preview ) && file_exists( $home_showroom ) ) {
+		if ( apply_filters( 'nadlan_revenue_use_home_showroom', true ) && file_exists( $home_showroom ) ) {
 			ob_start();
 			include $home_showroom;
 			$out = trim( (string) ob_get_clean() );
