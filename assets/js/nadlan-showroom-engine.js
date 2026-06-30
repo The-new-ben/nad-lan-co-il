@@ -619,6 +619,12 @@
 		text(qs('[data-nle-unit-price]'), translatedPrice(unit));
 		text(qs('[data-nle-selected-unit]'), unit.id);
 		renderPanel();
+		var card = qs('.nle-unit-card');
+		if (card) {
+			card.classList.remove('is-revealing');
+			void card.offsetWidth;
+			card.classList.add('is-revealing');
+		}
 	}
 
 	function renderPanel() {

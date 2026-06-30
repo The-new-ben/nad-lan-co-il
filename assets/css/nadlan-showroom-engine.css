@@ -425,6 +425,19 @@ body {
 	padding: 16px;
 }
 
+.nle-unit-card.is-revealing {
+	animation: nle-card-reveal 0.5s ease-out;
+}
+
+@keyframes nle-card-reveal {
+	0% { transform: translateY(10px); opacity: 0.35; border-color: var(--nle-gold-soft); box-shadow: 0 0 0 2px rgba(240, 223, 173, 0.35); }
+	100% { transform: translateY(0); opacity: 1; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.nle-unit-card.is-revealing { animation: none; }
+}
+
 .nle-unit-card header {
 	display: flex;
 	align-items: flex-start;
