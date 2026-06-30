@@ -1,0 +1,840 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>נדל״ן בישראל: פרויקטים חדשים, דירות וסביבה לפני החלטה | NadLan</title>
+<meta name="description" content="חיפוש פרויקטים חדשים ודירות בישראל, בחירת דירה במודל תלת ממד לפי קומה ונוף, עסקאות אמיתיות באזור מנתוני רשות המסים, וכלים לפני קנייה. מידע גם באנגלית, צרפתית, רוסית וערבית.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@500;700;900&family=Heebo:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+<script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
+<style>
+:root{
+  --ink:#17201d; --muted:#6c6a5f; --line:#e0d7c5; --line-soft:#ece4d4;
+  --cream:#f7f1e4; --card:#fffaf0; --paper:#fffef9;
+  --deep:#082626; --deep-2:#0c3331; --gold:#d2a84b; --gold-soft:#f2d98d;
+  --terra:#c0563a; --terra-deep:#a8472f; --mint:#eef5ef;
+  --shadow:0 18px 46px rgba(47,38,20,.10); --shadow-lg:0 30px 70px rgba(8,38,38,.16);
+  --r:22px; --r-sm:14px; --r-pill:999px;
+  --maxw:1280px;
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{
+  font-family:"Heebo","Noto Sans Hebrew",Arial,sans-serif;
+  color:var(--ink); background:
+    radial-gradient(circle at 8% 6%, rgba(210,168,75,.16), transparent 30rem),
+    linear-gradient(180deg,#f8f2e6 0%, #f3ecdd 48%, #efe7d7 100%);
+  line-height:1.6; -webkit-font-smoothing:antialiased;
+}
+h1,h2,h3{font-family:"Frank Ruhl Libre",serif; letter-spacing:0; margin:0}
+a{color:inherit}
+.wrap{width:min(var(--maxw),calc(100vw - 36px)); margin-inline:auto}
+.eyebrow{display:inline-flex; align-items:center; gap:8px; color:#9b7628; font-weight:900;
+  letter-spacing:.16em; font-size:12px; margin-bottom:12px}
+.eyebrow::before{content:""; width:22px; height:2px; background:var(--gold); border-radius:2px}
+bdi{font-variant-numeric:tabular-nums lining-nums}
+
+/* ===== top utility bar ===== */
+.util{background:var(--deep); color:#dfeae3; font-size:13px}
+.util .wrap{display:flex; align-items:center; justify-content:space-between; min-height:38px; gap:12px}
+.util a{color:#cfe0d8; text-decoration:none; opacity:.9}
+.util a:hover{opacity:1}
+.util-links{display:flex; gap:18px; flex-wrap:wrap}
+.util-note{color:#9fb7ad}
+
+/* ===== header ===== */
+.header{position:sticky; top:0; z-index:40; background:rgba(255,252,246,.92);
+  backdrop-filter:blur(14px); border-bottom:1px solid var(--line)}
+.header .wrap{display:flex; align-items:center; gap:18px; min-height:74px}
+.brand{display:inline-flex; align-items:center; gap:11px; text-decoration:none; white-space:nowrap}
+.brand-mark{width:42px; height:42px; border-radius:13px; display:grid; place-items:center;
+  background:linear-gradient(135deg,var(--deep),#155244); color:var(--gold-soft);
+  font-family:"Frank Ruhl Libre",serif; font-weight:900; font-size:24px; box-shadow:0 10px 22px rgba(8,38,38,.22)}
+.brand strong{display:block; font-family:"Frank Ruhl Libre",serif; font-size:23px; line-height:1; color:var(--deep)}
+.brand small{display:block; color:var(--muted); font-size:12px; margin-top:3px}
+.nav{display:flex; gap:4px; margin-inline:auto}
+.nav a{position:relative; text-decoration:none; color:#243f37; font-weight:700; font-size:15px;
+  padding:8px 12px; border-radius:var(--r-pill)}
+.nav a:hover{background:var(--mint); color:var(--deep)}
+.header-actions{display:flex; align-items:center; gap:10px}
+.langs{display:inline-flex; gap:3px; padding:4px; background:#fff; border:1px solid var(--line); border-radius:var(--r-pill)}
+.langs button{border:0; background:transparent; cursor:pointer; font:inherit; font-weight:800; font-size:12px;
+  color:var(--muted); padding:6px 9px; border-radius:var(--r-pill); min-width:34px}
+.langs button.is-active{background:var(--deep); color:var(--gold-soft)}
+.cta{display:inline-flex; align-items:center; justify-content:center; min-height:42px; padding:0 18px;
+  background:var(--terra); color:#fff; text-decoration:none; font-weight:900; border-radius:var(--r-pill);
+  box-shadow:0 12px 24px rgba(192,86,58,.24); border:0; cursor:pointer; white-space:nowrap}
+.cta:hover{background:var(--terra-deep)}
+.cta.ghost{background:#fff; color:var(--deep); border:1px solid var(--line); box-shadow:none}
+.burger{display:none; border:1px solid var(--line); background:#fff; border-radius:12px; width:44px; height:44px;
+  cursor:pointer; font-size:20px; align-items:center; justify-content:center}
+
+/* ===== hero ===== */
+.hero{padding:34px 0 8px}
+.hero-grid{display:grid; grid-template-columns:1.05fr .95fr; gap:22px; align-items:stretch}
+.hero-copy{background:var(--card); border:1px solid var(--line); border-radius:var(--r);
+  padding:clamp(24px,3.4vw,44px); box-shadow:var(--shadow)}
+.hero-copy h1{font-size:clamp(34px,4.6vw,62px); line-height:1.02; color:var(--ink); margin-bottom:14px}
+.hero-copy .lead{color:#41504a; font-size:clamp(16px,1.6vw,19px); line-height:1.75; max-width:640px; margin:0}
+.searchbox{margin-top:22px; background:var(--paper); border:1px solid var(--line); border-radius:18px; padding:14px}
+.search-tabs{display:flex; gap:6px; margin-bottom:12px; flex-wrap:wrap}
+.search-tabs button{border:1px solid var(--line); background:#fff; color:#3c4a44; font:inherit; font-weight:800;
+  font-size:13px; padding:7px 14px; border-radius:var(--r-pill); cursor:pointer}
+.search-tabs button.is-active{background:var(--deep); color:var(--gold-soft); border-color:var(--deep)}
+.search-row{display:grid; grid-template-columns:1.4fr 1fr auto; gap:10px; align-items:end}
+.field{display:grid; gap:5px}
+.field label{font-size:12px; font-weight:900; color:#9b7628; text-align:start}
+.field input,.field select{min-height:48px; border:1px solid var(--line); border-radius:13px; background:#fff;
+  color:var(--ink); font:inherit; padding:0 14px; text-align:start}
+.search-row .go{min-height:48px; border:0; border-radius:13px; background:linear-gradient(180deg,var(--gold-soft),var(--gold));
+  color:var(--ink); font:inherit; font-weight:900; padding:0 22px; cursor:pointer; white-space:nowrap}
+.hero-quick{display:flex; flex-wrap:wrap; gap:8px; margin-top:14px}
+.chip{display:inline-flex; align-items:center; gap:6px; padding:7px 13px; border:1px solid var(--line);
+  border-radius:var(--r-pill); background:#fff; text-decoration:none; color:#3c4a44; font-weight:700; font-size:13px}
+.chip:hover{border-color:var(--gold); color:var(--deep)}
+
+/* hero side: showroom teaser card */
+.hero-show{position:relative; border-radius:var(--r); overflow:hidden; border:1px solid var(--line);
+  background:linear-gradient(135deg,var(--deep) 0%, #0c3a37 70%, #0e433d 100%); color:#f4efe6; box-shadow:var(--shadow-lg);
+  display:flex; flex-direction:column; min-height:480px}
+.hero-show-head{display:flex; justify-content:space-between; align-items:flex-start; padding:16px 18px; gap:10px}
+.hero-show-head .loc{color:var(--gold-soft); font-weight:900; font-size:12px; letter-spacing:.14em}
+.hero-show-head h3{color:#fff; font-size:22px; margin-top:4px}
+.badge{display:inline-flex; align-items:center; gap:6px; font-size:11px; font-weight:900; letter-spacing:.06em;
+  padding:6px 10px; border-radius:var(--r-pill); background:rgba(255,255,255,.12); color:#eafff6; border:1px solid rgba(255,255,255,.18)}
+model-viewer#hero-mv{position:relative; z-index:2; width:100%; flex:1; min-height:300px; background:transparent; --poster-color:transparent}
+.stage-bg{position:absolute; inset:0; z-index:1; display:grid; place-items:center; overflow:hidden; pointer-events:none}
+.stage-bg svg{width:auto; height:86%; max-width:92%; filter:drop-shadow(0 30px 40px rgba(0,0,0,.4))}
+.hero-show .stage-bg svg{height:78%}
+.hero-show-foot{padding:12px 14px; background:rgba(0,0,0,.18); font-size:12px; color:#bcd2c9; text-align:center;
+  border-top:1px solid rgba(255,255,255,.08)}
+
+/* ===== trust strip ===== */
+.trust{display:grid; grid-template-columns:repeat(4,1fr); gap:12px; margin:22px 0}
+.trust article{background:var(--card); border:1px solid var(--line); border-radius:18px; padding:16px 18px}
+.trust span{display:block; color:#9b7628; font-size:11px; font-weight:900; letter-spacing:.1em; margin-bottom:6px}
+.trust strong{display:block; font-family:"Frank Ruhl Libre",serif; font-size:21px; color:var(--ink); line-height:1.15}
+.trust p{margin:6px 0 0; color:var(--muted); font-size:13px; line-height:1.5}
+
+/* ===== section scaffolding ===== */
+section.block{padding:30px 0}
+.sec-head{display:flex; justify-content:space-between; align-items:flex-end; gap:16px; margin-bottom:18px; flex-wrap:wrap}
+.sec-head h2{font-size:clamp(26px,3vw,40px); line-height:1.12; color:var(--deep)}
+.sec-head p{margin:6px 0 0; color:var(--muted); max-width:680px; line-height:1.6}
+
+/* ===== 3D showroom centerpiece ===== */
+.showroom{background:var(--deep); border-radius:26px; overflow:hidden; box-shadow:var(--shadow-lg)}
+.show-switch{display:flex; gap:8px; padding:16px 18px 0; flex-wrap:wrap}
+.show-switch button{border:1px solid rgba(255,255,255,.16); background:rgba(255,255,255,.06); color:#dfeae3;
+  font:inherit; font-weight:800; font-size:13px; padding:9px 16px; border-radius:var(--r-pill); cursor:pointer}
+.show-switch button.is-active{background:var(--gold-soft); color:var(--deep); border-color:var(--gold-soft)}
+.show-body{display:grid; grid-template-columns:.92fr 1.08fr; gap:0}
+.show-side{padding:20px; color:#eef4f0; border-inline-end:1px solid rgba(255,255,255,.08)}
+.show-side .kic{color:var(--gold-soft); font-weight:900; font-size:11px; letter-spacing:.14em}
+.show-side h3{color:#fff; font-size:23px; margin:4px 0 2px}
+.show-side .sub{color:#aec6bc; font-size:14px; margin:0 0 14px}
+.unit-card{background:rgba(255,255,255,.05); border:1px solid rgba(255,255,255,.12); border-radius:18px; padding:16px}
+.unit-top{display:flex; justify-content:space-between; align-items:center; gap:10px; margin-bottom:12px}
+.unit-status{font-size:11px; font-weight:900; padding:5px 10px; border-radius:var(--r-pill);
+  background:rgba(122,220,180,.16); color:#8fe6c0; letter-spacing:.04em}
+.unit-status.is-sold{background:rgba(255,160,140,.14); color:#ffb3a0}
+.unit-title{font-weight:900; font-size:17px; color:#fff}
+.facts{display:grid; grid-template-columns:1fr 1fr; gap:8px}
+.fact{background:rgba(255,255,255,.04); border:1px solid rgba(255,255,255,.08); border-radius:12px; padding:10px 12px}
+.fact span{display:block; color:#9fb7ad; font-size:11px; font-weight:800; margin-bottom:3px}
+.fact strong{color:#fff; font-size:16px}
+.tabs{display:flex; gap:6px; margin:14px 0 0}
+.tabs button{flex:1; border:1px solid rgba(255,255,255,.14); background:rgba(255,255,255,.05); color:#dfeae3;
+  font:inherit; font-weight:800; font-size:13px; padding:9px; border-radius:11px; cursor:pointer}
+.tabs button.is-active{background:#fff; color:var(--deep); border-color:#fff}
+.tab-panel{margin-top:10px; background:rgba(0,0,0,.18); border:1px solid rgba(255,255,255,.08); border-radius:12px;
+  padding:14px; min-height:64px; color:#cfe0d8; font-size:14px; line-height:1.6}
+.show-cta{display:flex; align-items:center; justify-content:center; min-height:50px; margin-top:14px; width:100%;
+  background:var(--terra); color:#fff; border:0; border-radius:13px; font:inherit; font-weight:900; font-size:15px; cursor:pointer}
+.show-cta:hover{background:var(--terra-deep)}
+.show-note{color:#8fa8a0; font-size:11.5px; line-height:1.5; margin:10px 0 0}
+.show-stage{position:relative; background:
+  radial-gradient(circle at 50% 30%, rgba(210,168,75,.14), transparent 60%), #06201f; min-height:540px}
+model-viewer#show-mv{position:relative; z-index:2; width:100%; height:100%; min-height:540px; background:transparent; --poster-color:transparent}
+.floor-rail{position:absolute; inset-block:0; inset-inline-start:14px; display:flex; flex-direction:column;
+  justify-content:center; gap:8px; z-index:3}
+.floor-rail button{display:flex; align-items:center; gap:8px; border:1px solid rgba(255,255,255,.2);
+  background:rgba(6,32,31,.72); color:#eafff6; font:inherit; font-weight:900; font-size:13px; padding:7px 11px;
+  border-radius:var(--r-pill); cursor:pointer; backdrop-filter:blur(4px)}
+.floor-rail button .dot{width:8px; height:8px; border-radius:50%; background:#8fe6c0}
+.floor-rail button.is-sold .dot{background:#ffb3a0}
+.floor-rail button.is-active{background:var(--gold-soft); color:var(--deep); border-color:var(--gold-soft)}
+.floor-rail button.is-active .dot{background:var(--deep)}
+.stage-legend{position:absolute; inset-block-end:14px; inset-inline-end:14px; display:flex; gap:10px; z-index:3;
+  font-size:11px; color:#cfe0d8; background:rgba(6,32,31,.7); padding:8px 12px; border-radius:var(--r-pill); border:1px solid rgba(255,255,255,.12)}
+.stage-legend i{width:8px; height:8px; border-radius:50%; display:inline-block; margin-inline-end:4px; vertical-align:middle}
+
+/* ===== price + transactions (gov data) ===== */
+.data-grid{display:grid; grid-template-columns:1.3fr .7fr; gap:18px; align-items:start}
+.tx-card{background:var(--card); border:1px solid var(--line); border-radius:var(--r); overflow:hidden; box-shadow:var(--shadow)}
+.tx-card h3{font-size:18px; padding:16px 18px 0; color:var(--deep)}
+table.tx{width:100%; border-collapse:collapse; margin-top:10px}
+table.tx th,table.tx td{padding:12px 16px; border-bottom:1px solid var(--line-soft); font-size:14px; text-align:start}
+table.tx th{background:var(--mint); color:var(--deep); font-weight:800; font-size:12px}
+table.tx td.num,table.tx th.num{text-align:end; font-variant-numeric:tabular-nums lining-nums}
+.tx-src{padding:11px 16px; color:var(--muted); font-size:12px; background:#fffef9}
+.est-card{background:linear-gradient(150deg,var(--deep),#0c3a37); color:#f3ede0; border-radius:var(--r);
+  padding:22px; box-shadow:var(--shadow-lg)}
+.est-card .kic{color:var(--gold-soft); font-weight:900; font-size:11px; letter-spacing:.12em}
+.est-card .big{font-family:"Frank Ruhl Libre",serif; font-size:34px; color:#fff; margin:8px 0 4px}
+.est-card .mid{color:#cfe0d8; font-size:14px}
+.est-bar{height:8px; border-radius:var(--r-pill); background:rgba(255,255,255,.12); margin:14px 0; overflow:hidden}
+.est-bar i{display:block; height:100%; width:62%; background:linear-gradient(90deg,var(--gold-soft),var(--gold))}
+.est-card .dis{color:#9fb7ad; font-size:11.5px; line-height:1.5; margin:0}
+
+/* ===== surroundings / map ===== */
+.surround{display:grid; grid-template-columns:.66fr 1.34fr; gap:18px; align-items:stretch}
+.poi-col{display:grid; gap:12px; align-content:start}
+.poi{background:var(--card); border:1px solid var(--line); border-radius:18px; padding:16px}
+.poi h4{margin:0 0 8px; font-family:"Heebo"; font-size:14px; color:var(--deep); display:flex; align-items:center; gap:8px}
+.poi h4 svg{width:18px; height:18px; color:var(--terra)}
+.poi .tags{display:flex; flex-wrap:wrap; gap:6px}
+.poi .tags span{font-size:12px; background:var(--mint); color:#2c4a40; border-radius:var(--r-pill); padding:5px 11px; font-weight:700}
+.poi-stats{display:grid; grid-template-columns:1fr 1fr; gap:12px}
+.poi-stat{background:var(--card); border:1px solid var(--line); border-radius:18px; padding:14px 16px; text-align:center}
+.poi-stat strong{display:block; font-family:"Frank Ruhl Libre",serif; font-size:24px; color:var(--deep)}
+.poi-stat span{color:var(--muted); font-size:12px}
+.map{position:relative; border-radius:var(--r); overflow:hidden; border:1px solid var(--line); min-height:420px;
+  background:
+    linear-gradient(90deg, #bfe0e8 0 9%, transparent 9%),
+    repeating-linear-gradient(0deg,#efe9da 0 38px,#e9e1d0 38px 40px),
+    repeating-linear-gradient(90deg,#efe9da 0 58px,#e7dece 58px 60px),
+    #efe9da; box-shadow:var(--shadow)}
+.map .sea-label{position:absolute; inset-block-start:14px; inset-inline-start:14px; color:#3d7c8c; font-weight:900; font-size:12px; letter-spacing:.1em}
+.pin{position:absolute; transform:translate(50%,-100%); display:flex; flex-direction:column; align-items:center; z-index:2}
+.pin b{background:#fff; border:1px solid var(--line); border-radius:var(--r-pill); padding:3px 9px; font-size:11px;
+  font-weight:800; color:var(--deep); white-space:nowrap; box-shadow:0 4px 10px rgba(0,0,0,.12)}
+.pin i{width:14px; height:14px; border-radius:50% 50% 50% 0; background:var(--terra); transform:rotate(45deg); margin-top:4px;
+  box-shadow:0 4px 8px rgba(192,86,58,.4)}
+.pin.is-poi i{background:#5b7d72} .pin.is-poi b{color:#3c5048}
+.pin.is-main i{background:var(--terra); width:18px; height:18px} .pin.is-main b{background:var(--deep); color:#fff; border-color:var(--deep)}
+.map-hint{position:absolute; inset-block-end:12px; inset-inline-end:12px; background:rgba(255,255,255,.92);
+  border:1px solid var(--line); border-radius:var(--r-pill); padding:7px 13px; font-size:12px; font-weight:700; color:#3c4a44}
+
+/* ===== projects gallery ===== */
+.proj-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:16px}
+.pcard{background:var(--card); border:1px solid var(--line); border-radius:var(--r); overflow:hidden;
+  box-shadow:var(--shadow); text-decoration:none; color:inherit; display:flex; flex-direction:column; transition:transform .2s, box-shadow .2s}
+.pcard:hover{transform:translateY(-3px); box-shadow:var(--shadow-lg); border-color:var(--gold)}
+.pcard .img{aspect-ratio:16/10; background:linear-gradient(135deg,#0c3a37,#155244); position:relative; overflow:hidden}
+.pcard .img img{width:100%; height:100%; object-fit:cover}
+.pcard .img .tag{position:absolute; inset-block-start:12px; inset-inline-start:12px; background:rgba(8,38,38,.82); color:#eafff6;
+  font-size:11px; font-weight:800; padding:5px 11px; border-radius:var(--r-pill)}
+.pcard .body{padding:16px 18px}
+.pcard h3{font-size:19px; color:var(--deep); margin-bottom:4px}
+.pcard .loc{color:var(--muted); font-size:13px; display:flex; align-items:center; gap:6px}
+.pcard .meta{display:flex; gap:14px; margin-top:12px; padding-top:12px; border-top:1px solid var(--line-soft)}
+.pcard .meta div{font-size:13px} .pcard .meta b{display:block; font-size:15px; color:var(--ink)}
+.pcard .meta span{color:var(--muted); font-size:11px}
+
+/* ===== areas ===== */
+.area-grid{display:grid; grid-template-columns:repeat(4,1fr); gap:12px}
+.area{position:relative; border-radius:18px; overflow:hidden; min-height:140px; text-decoration:none;
+  display:flex; align-items:flex-end; padding:14px; color:#fff;
+  background:linear-gradient(180deg,rgba(8,38,38,.1),rgba(8,38,38,.78)),linear-gradient(135deg,#1d5248,#0c3331)}
+.area:nth-child(2){background:linear-gradient(180deg,rgba(8,38,38,.1),rgba(8,38,38,.78)),linear-gradient(135deg,#2a4d63,#0c2a33)}
+.area:nth-child(3){background:linear-gradient(180deg,rgba(8,38,38,.1),rgba(8,38,38,.78)),linear-gradient(135deg,#5b4a2a,#33260c)}
+.area:nth-child(4){background:linear-gradient(180deg,rgba(8,38,38,.1),rgba(8,38,38,.78)),linear-gradient(135deg,#4a2a3a,#330c22)}
+.area:nth-child(5){background:linear-gradient(180deg,rgba(8,38,38,.1),rgba(8,38,38,.78)),linear-gradient(135deg,#2a5b4a,#0c3322)}
+.area:nth-child(6){background:linear-gradient(180deg,rgba(8,38,38,.1),rgba(8,38,38,.78)),linear-gradient(135deg,#3a3a5b,#0c0c33)}
+.area:nth-child(7){background:linear-gradient(180deg,rgba(8,38,38,.1),rgba(8,38,38,.78)),linear-gradient(135deg,#5b3a2a,#330c0c)}
+.area:nth-child(8){background:linear-gradient(180deg,rgba(8,38,38,.1),rgba(8,38,38,.78)),linear-gradient(135deg,#2a4d4d,#0c3333)}
+.area:hover{transform:translateY(-2px)}
+.area strong{font-family:"Frank Ruhl Libre",serif; font-size:19px; display:block}
+.area span{font-size:12px; opacity:.85}
+
+/* ===== tools ===== */
+.tool-grid{display:grid; grid-template-columns:repeat(4,1fr); gap:14px}
+.tool{background:var(--card); border:1px solid var(--line); border-radius:18px; padding:20px; text-decoration:none; color:inherit}
+.tool:hover{border-color:var(--gold); box-shadow:var(--shadow)}
+.tool .ic{width:44px; height:44px; border-radius:13px; background:var(--mint); display:grid; place-items:center; margin-bottom:12px}
+.tool .ic svg{width:24px; height:24px; color:var(--deep)}
+.tool strong{display:block; font-size:16px; color:var(--deep); margin-bottom:4px}
+.tool p{margin:0; color:var(--muted); font-size:13px; line-height:1.5}
+
+/* ===== multilingual ===== */
+.lang-grid{display:grid; grid-template-columns:repeat(4,1fr); gap:14px}
+.lcard{background:var(--card); border:1px solid var(--line); border-radius:18px; padding:18px}
+.lcard span{display:block; color:#9b7628; font-weight:900; font-size:13px; margin-bottom:8px}
+.lcard strong{display:block; font-size:16px; color:var(--ink); line-height:1.3; margin-bottom:6px}
+.lcard p{margin:0; color:var(--muted); font-size:13px; line-height:1.55}
+
+/* ===== guides / SEO links ===== */
+.guides{background:var(--card); border:1px solid var(--line); border-radius:var(--r); padding:24px; box-shadow:var(--shadow)}
+.guide-cols{display:grid; grid-template-columns:repeat(4,1fr); gap:22px}
+.guide-cols nav strong{display:block; font-size:14px; color:var(--deep); margin-bottom:10px; padding-bottom:8px; border-bottom:1px solid var(--line-soft)}
+.guide-cols nav a{display:block; color:#41504a; text-decoration:none; font-size:13.5px; padding:5px 0}
+.guide-cols nav a:hover{color:var(--terra)}
+
+/* ===== concierge band ===== */
+.concierge{background:linear-gradient(135deg,var(--deep),#0c3a37); color:#f3ede0; border-radius:26px; padding:clamp(26px,4vw,46px);
+  display:grid; grid-template-columns:1.2fr .8fr; gap:24px; align-items:center; box-shadow:var(--shadow-lg)}
+.concierge h2{color:#fff; font-size:clamp(26px,3vw,38px); line-height:1.1}
+.concierge p{color:#cfe0d8; margin:10px 0 0; line-height:1.65}
+.concierge form{display:grid; gap:10px; background:rgba(255,255,255,.06); padding:18px; border-radius:18px; border:1px solid rgba(255,255,255,.12)}
+.concierge input{min-height:48px; border:1px solid rgba(255,255,255,.18); background:rgba(255,255,255,.08); color:#fff;
+  border-radius:12px; padding:0 14px; font:inherit; text-align:start}
+.concierge input::placeholder{color:#9fb7ad}
+.concierge button{min-height:50px; border:0; border-radius:12px; background:linear-gradient(180deg,var(--gold-soft),var(--gold));
+  color:var(--ink); font:inherit; font-weight:900; cursor:pointer}
+
+/* ===== footer ===== */
+.footer{margin-top:36px; background:#06201f; color:#dfeae3}
+.footer .wrap{padding:42px 0 24px}
+.foot-grid{display:grid; grid-template-columns:1.4fr 1fr 1fr 1fr; gap:24px}
+.foot-grid .brand strong{color:#fff} .foot-grid .brand small{color:#9fb7ad}
+.foot-grid p{color:#9fb7ad; font-size:13px; line-height:1.6; margin:12px 0 0}
+.foot-grid nav strong{display:block; color:#fff; font-size:14px; margin-bottom:10px}
+.foot-grid nav a{display:block; color:#bcd2c9; text-decoration:none; font-size:13.5px; padding:4px 0}
+.foot-grid nav a:hover{color:var(--gold-soft)}
+.foot-bottom{border-top:1px solid rgba(255,255,255,.1); margin-top:26px; padding-top:18px; display:flex;
+  justify-content:space-between; gap:14px; flex-wrap:wrap; color:#9fb7ad; font-size:12.5px}
+
+/* ===== floating actions (separate WhatsApp + accessibility) ===== */
+.fab{position:fixed; inset-block-end:20px; z-index:60; display:flex; flex-direction:column; gap:12px}
+.fab.wa{inset-inline-start:20px}
+.fab.acc{inset-inline-end:20px}
+.fab button,.fab a{width:56px; height:56px; border-radius:50%; border:0; cursor:pointer; display:grid; place-items:center;
+  box-shadow:0 14px 30px rgba(0,0,0,.22); text-decoration:none}
+.fab .wa-btn{background:#25d366} .fab .wa-btn svg{width:30px; height:30px; fill:#fff}
+.fab .acc-btn{background:var(--deep)} .fab .acc-btn svg{width:30px; height:30px; fill:var(--gold-soft)}
+.fab .label{position:absolute; inset-block-end:70px; background:#fff; color:var(--ink); font-size:12px; font-weight:800;
+  padding:6px 12px; border-radius:var(--r-pill); box-shadow:var(--shadow); white-space:nowrap; opacity:0; pointer-events:none; transition:.15s}
+.fab.wa{align-items:flex-start} .fab.wa .label{inset-inline-start:0}
+.fab.acc{align-items:flex-end} .fab.acc .label{inset-inline-end:0}
+.fab:hover .label{opacity:1}
+
+/* ===== mobile ===== */
+.mobile-nav{display:none}
+@media (max-width:1080px){
+  .nav{display:none}
+  .burger{display:flex}
+  .hero-grid{grid-template-columns:1fr}
+  .show-body{grid-template-columns:1fr}
+  .show-side{border-inline-end:0; border-block-end:1px solid rgba(255,255,255,.08)}
+  .show-stage{min-height:460px} model-viewer#show-mv{min-height:460px}
+  .data-grid{grid-template-columns:1fr}
+  .surround{grid-template-columns:1fr}
+  .proj-grid{grid-template-columns:repeat(2,1fr)}
+  .area-grid{grid-template-columns:repeat(2,1fr)}
+  .tool-grid{grid-template-columns:repeat(2,1fr)}
+  .lang-grid{grid-template-columns:repeat(2,1fr)}
+  .guide-cols{grid-template-columns:repeat(2,1fr)}
+  .concierge{grid-template-columns:1fr}
+  .foot-grid{grid-template-columns:1fr 1fr}
+  .trust{grid-template-columns:repeat(2,1fr)}
+}
+@media (max-width:560px){
+  .wrap{width:min(100% - 22px,var(--maxw))}
+  .util-links{display:none}
+  .header .wrap{min-height:64px}
+  .brand small{display:none}
+  .hero{padding:18px 0 4px}
+  .hero-copy h1{font-size:clamp(28px,9vw,36px)}
+  .search-row{grid-template-columns:1fr}
+  .trust{grid-template-columns:1fr 1fr}
+  .proj-grid{grid-template-columns:1fr}
+  .area-grid{grid-template-columns:1fr 1fr}
+  .tool-grid{grid-template-columns:1fr 1fr}
+  .lang-grid{grid-template-columns:1fr}
+  .guide-cols{grid-template-columns:1fr 1fr}
+  .foot-grid{grid-template-columns:1fr 1fr}
+  .floor-rail button span{display:none}
+  .fab button,.fab a{width:50px; height:50px}
+}
+</style>
+</head>
+<body>
+
+<!-- top utility bar -->
+<div class="util"><div class="wrap">
+  <div class="util-links">
+    <a href="/sde-dov/">רובע שדה דב</a>
+    <a href="/new-projects/">פרויקטים לפי אזור</a>
+    <a href="/professionals/">אנשי מקצוע</a>
+    <a href="/glossary/">מילון נדל״ן</a>
+  </div>
+  <span class="util-note">נתוני עסקאות מתוך רשות המסים ונדלן.gov.il, מתעדכן באופן שוטף</span>
+</div></div>
+
+<!-- header -->
+<header class="header"><div class="wrap">
+  <a class="brand" href="/" aria-label="NadLan">
+    <span class="brand-mark">N</span>
+    <span><strong>NadLan</strong><small>דירות, פרויקטים ושכונות בישראל</small></span>
+  </a>
+  <nav class="nav" aria-label="ניווט ראשי">
+    <a href="/projects/">פרויקטים</a>
+    <a href="/properties/">דירות למכירה</a>
+    <a href="/new-projects/">דירה מקבלן</a>
+    <a href="/investment-apartment/">השקעה</a>
+    <a href="/tools/">מחשבונים</a>
+    <a href="/professionals/">אנשי מקצוע</a>
+  </nav>
+  <div class="header-actions">
+    <div class="langs" aria-label="שפת ממשק">
+      <button class="is-active" data-lang="he">HE</button>
+      <button data-lang="en">EN</button>
+      <button data-lang="ru">RU</button>
+      <button data-lang="ar">AR</button>
+      <button data-lang="fr">FR</button>
+    </div>
+    <a class="cta" href="#concierge">התחילו חיפוש</a>
+    <button class="burger" aria-label="תפריט" onclick="document.getElementById('mnav').style.display='block'">☰</button>
+  </div>
+</div></header>
+
+<!-- mobile drawer (opens from right in RTL) -->
+<div class="mobile-nav" id="mnav" style="position:fixed;inset:0;z-index:80;background:rgba(6,32,31,.4)" onclick="if(event.target===this)this.style.display='none'">
+  <nav style="position:absolute;inset-block:0;inset-inline-end:0;width:min(82vw,330px);background:var(--paper);padding:22px;display:grid;gap:6px;align-content:start">
+    <button onclick="document.getElementById('mnav').style.display='none'" style="justify-self:end;border:0;background:transparent;font-size:24px;cursor:pointer">✕</button>
+    <a href="/projects/" style="padding:11px 8px;text-decoration:none;color:var(--deep);font-weight:800;border-block-end:1px solid var(--line-soft)">פרויקטים</a>
+    <a href="/properties/" style="padding:11px 8px;text-decoration:none;color:var(--deep);font-weight:800;border-block-end:1px solid var(--line-soft)">דירות למכירה</a>
+    <a href="/new-projects/" style="padding:11px 8px;text-decoration:none;color:var(--deep);font-weight:800;border-block-end:1px solid var(--line-soft)">דירה מקבלן</a>
+    <a href="/investment-apartment/" style="padding:11px 8px;text-decoration:none;color:var(--deep);font-weight:800;border-block-end:1px solid var(--line-soft)">השקעה</a>
+    <a href="/tools/" style="padding:11px 8px;text-decoration:none;color:var(--deep);font-weight:800;border-block-end:1px solid var(--line-soft)">מחשבונים</a>
+    <a href="/professionals/" style="padding:11px 8px;text-decoration:none;color:var(--deep);font-weight:800">אנשי מקצוע</a>
+    <a class="cta" href="#concierge" style="margin-top:10px">התחילו חיפוש</a>
+  </nav>
+</div>
+
+<main>
+<!-- HERO -->
+<section class="hero"><div class="wrap"><div class="hero-grid">
+  <div class="hero-copy">
+    <span class="eyebrow" data-t="hero_eyebrow">נדל״ן בישראל, מבוסס נתונים</span>
+    <h1 data-t="hero_h1">בוחרים דירה, פרויקט וסביבה לפני שמתקדמים.</h1>
+    <p class="lead" data-t="hero_lead">חיפוש פרויקטים חדשים ודירות בישראל, בחירת דירה במודל תלת ממד לפי קומה, כיוון ונוף, ועסקאות אמיתיות באזור מנתוני רשות המסים. הכל בתמונה אחת ברורה, לפני שמתקשרים לנציג.</p>
+    <form class="searchbox" onsubmit="return false">
+      <div class="search-tabs">
+        <button type="button" class="is-active">דירות חדשות</button>
+        <button type="button">יד שנייה</button>
+        <button type="button">להשקעה</button>
+        <button type="button">מסחרי</button>
+      </div>
+      <div class="search-row">
+        <div class="field"><label data-t="f_area">עיר, שכונה או פרויקט</label><input type="search" value="שדה דב, תל אביב" data-t-val="f_area_v"></div>
+        <div class="field"><label data-t="f_rooms">חדרים</label>
+          <select><option>הכל</option><option>3 ומעלה</option><option>4 ומעלה</option><option>5 ומעלה</option></select>
+        </div>
+        <button class="go" data-t="f_go">התחילו חיפוש</button>
+      </div>
+      <div class="hero-quick">
+        <a class="chip" href="#showroom">בחירת דירה בתלת ממד</a>
+        <a class="chip" href="#data">עסקאות אמיתיות באזור</a>
+        <a class="chip" href="/tools/">מחשבון מס רכישה</a>
+        <a class="chip" href="/mortgage/">מחשבון משכנתא</a>
+      </div>
+    </form>
+  </div>
+
+  <!-- hero showroom teaser -->
+  <aside class="hero-show">
+    <div class="hero-show-head">
+      <div><span class="loc">רובע שדה דב · תל אביב</span><h3>Ashira</h3></div>
+      <span class="badge">דגם להמחשה</span>
+    </div>
+    <div class="stage-bg" aria-hidden="true">
+      <svg viewBox="0 0 360 480" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <linearGradient id="g1" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#bfe6d6"/><stop offset=".4" stop-color="#5fae93"/><stop offset="1" stop-color="#0c3a35"/></linearGradient>
+          <linearGradient id="g2" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#9fd3c2"/><stop offset="1" stop-color="#114a40"/></linearGradient>
+          <radialGradient id="glow" cx=".5" cy=".3" r=".7"><stop offset="0" stop-color="#f2d98d" stop-opacity=".5"/><stop offset="1" stop-color="#f2d98d" stop-opacity="0"/></radialGradient>
+        </defs>
+        <rect x="60" y="20" width="240" height="200" fill="url(#glow)"/>
+        <ellipse cx="180" cy="452" rx="150" ry="22" fill="#04201d" opacity=".55"/>
+        <rect x="196" y="150" width="70" height="282" rx="5" fill="url(#g2)" opacity=".92"/>
+        <g stroke="#0c3a35" stroke-width="1" opacity=".4">
+          <line x1="196" y1="172" x2="266" y2="172"/><line x1="196" y1="200" x2="266" y2="200"/><line x1="196" y1="228" x2="266" y2="228"/><line x1="196" y1="256" x2="266" y2="256"/><line x1="196" y1="284" x2="266" y2="284"/><line x1="196" y1="312" x2="266" y2="312"/><line x1="196" y1="340" x2="266" y2="340"/><line x1="196" y1="368" x2="266" y2="368"/><line x1="196" y1="396" x2="266" y2="396"/>
+        </g>
+        <rect x="104" y="70" width="118" height="362" rx="7" fill="url(#g1)"/>
+        <rect x="104" y="70" width="40" height="362" rx="7" fill="#fff" opacity=".10"/>
+        <g stroke="#08312c" stroke-width="1.1" opacity=".5">
+          <line x1="104" y1="96" x2="222" y2="96"/><line x1="104" y1="122" x2="222" y2="122"/><line x1="104" y1="148" x2="222" y2="148"/><line x1="104" y1="174" x2="222" y2="174"/><line x1="104" y1="200" x2="222" y2="200"/><line x1="104" y1="226" x2="222" y2="226"/><line x1="104" y1="252" x2="222" y2="252"/><line x1="104" y1="278" x2="222" y2="278"/><line x1="104" y1="304" x2="222" y2="304"/><line x1="104" y1="330" x2="222" y2="330"/><line x1="104" y1="356" x2="222" y2="356"/><line x1="104" y1="382" x2="222" y2="382"/><line x1="104" y1="408" x2="222" y2="408"/>
+          <line x1="143" y1="70" x2="143" y2="432"/><line x1="183" y1="70" x2="183" y2="432"/>
+        </g>
+        <g fill="#f2d98d" opacity=".9"><rect x="150" y="124" width="26" height="20"/><rect x="112" y="254" width="26" height="20"/><rect x="188" y="306" width="26" height="20"/><rect x="226" y="230" width="30" height="22"/></g>
+        <rect x="104" y="58" width="118" height="14" rx="4" fill="#0c3a35"/>
+      </svg>
+    </div>
+    <model-viewer id="hero-mv"
+      src="https://raw.githubusercontent.com/The-new-ben/nad-lan-co-il/main/assets/engine/rainbow.glb"
+      camera-controls auto-rotate auto-rotate-delay="0" rotation-per-second="18deg"
+      interaction-prompt="none" shadow-intensity="1" exposure="1.05"
+      camera-orbit="35deg 72deg 105%" disable-zoom touch-action="pan-y"></model-viewer>
+    <div class="hero-show-foot">סובבו את הבניין, הקישו על קומה ובחרו דירה לפי נוף וכיוון</div>
+  </aside>
+</div></div></section>
+
+<div class="wrap">
+<!-- trust strip -->
+<div class="trust">
+  <article><span>זמינות</span><strong>דירה לפי קומה ונוף</strong><p>הבחירה מתחילה במיקום הדירה בבניין, לא רק בשם הפרויקט.</p></article>
+  <article><span>מחיר</span><strong>אומדן מבוסס עסקאות</strong><p>מתוך נתוני רשות המסים, מוצג בזהירות עד אימות מול היזם.</p></article>
+  <article><span>סביבה</span><strong>ים, תחבורה ושכונה</strong><p>בודקים את החיים סביב הפרויקט לפני שמבקשים שיחה.</p></article>
+  <article><span>שפות</span><strong>מידע גם לרוכשים מחו״ל</strong><p>עברית, אנגלית, רוסית, צרפתית וערבית, בעמודים נפרדים.</p></article>
+</div>
+</div>
+
+<!-- 3D SHOWROOM -->
+<section class="block" id="showroom"><div class="wrap">
+  <div class="sec-head">
+    <div>
+      <span class="eyebrow">בחירת דירה בתלת ממד</span>
+      <h2>בוחרים דירה מתוך הבניין</h2>
+      <p>החליפו בין פרויקטים, סובבו את המודל, הקישו על קומה וראו שטח, חדרים, כיוון, נוף ואומדן מחיר לא מחייב, לפני פנייה.</p>
+    </div>
+  </div>
+  <div class="showroom">
+    <div class="show-switch" id="projSwitch">
+      <button class="is-active" data-p="rainbow">Rainbow תל אביב</button>
+      <button data-p="dimri">Dimri Yama שדה דב</button>
+      <button data-p="ashira">Ashira שדה דב</button>
+    </div>
+    <div class="show-body">
+      <div class="show-side">
+        <span class="kic" id="sv-loc">רובע שדה דב · תל אביב</span>
+        <h3 id="sv-name">Rainbow תל אביב</h3>
+        <p class="sub" id="sv-sub">מגדל מגורים על קו הים, בחירת דירה לפי קומה ונוף</p>
+        <article class="unit-card">
+          <div class="unit-top">
+            <span class="unit-status" id="u-status">זמינה</span>
+            <span class="unit-title" id="u-title">פנטהאוז 5 חדרים, קומה 38</span>
+          </div>
+          <div class="facts">
+            <div class="fact"><span>קומה</span><strong id="u-floor">38</strong></div>
+            <div class="fact"><span>חדרים</span><strong id="u-rooms">5</strong></div>
+            <div class="fact"><span>שטח</span><strong id="u-sqm"><bdi>210 מ״ר</bdi></strong></div>
+            <div class="fact"><span>נוף</span><strong id="u-view">ים פתוח</strong></div>
+          </div>
+          <div class="tabs" id="uTabs">
+            <button class="is-active" data-tab="plan">תוכנית</button>
+            <button data-tab="view">מבט מהדירה</button>
+            <button data-tab="tour">סיור</button>
+          </div>
+          <div class="tab-panel" id="u-panel">תוכנית הדירה תוצג כאן. המודל להמחשה עד לקבלת תוכניות מכר רשמיות מהיזם.</div>
+          <button class="show-cta">מעניין אותי, חזרו אליי על הדירה</button>
+          <p class="show-note">המודל והאומדן להמחשה ראשונית בלבד. מחיר, מלאי וזמינות מחייבים אימות מול היזם.</p>
+        </article>
+      </div>
+      <div class="show-stage">
+        <div class="stage-bg" aria-hidden="true">
+          <svg viewBox="0 0 360 480" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <linearGradient id="sg1" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#bfe6d6"/><stop offset=".4" stop-color="#5fae93"/><stop offset="1" stop-color="#0c3a35"/></linearGradient>
+              <linearGradient id="sg2" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#9fd3c2"/><stop offset="1" stop-color="#114a40"/></linearGradient>
+              <radialGradient id="sglow" cx=".5" cy=".3" r=".7"><stop offset="0" stop-color="#f2d98d" stop-opacity=".5"/><stop offset="1" stop-color="#f2d98d" stop-opacity="0"/></radialGradient>
+            </defs>
+            <rect x="60" y="20" width="240" height="200" fill="url(#sglow)"/>
+            <ellipse cx="180" cy="452" rx="150" ry="22" fill="#04201d" opacity=".55"/>
+            <rect x="196" y="150" width="70" height="282" rx="5" fill="url(#sg2)" opacity=".92"/>
+            <g stroke="#0c3a35" stroke-width="1" opacity=".4">
+              <line x1="196" y1="172" x2="266" y2="172"/><line x1="196" y1="200" x2="266" y2="200"/><line x1="196" y1="228" x2="266" y2="228"/><line x1="196" y1="256" x2="266" y2="256"/><line x1="196" y1="284" x2="266" y2="284"/><line x1="196" y1="312" x2="266" y2="312"/><line x1="196" y1="340" x2="266" y2="340"/><line x1="196" y1="368" x2="266" y2="368"/><line x1="196" y1="396" x2="266" y2="396"/>
+            </g>
+            <rect x="104" y="70" width="118" height="362" rx="7" fill="url(#sg1)"/>
+            <rect x="104" y="70" width="40" height="362" rx="7" fill="#fff" opacity=".10"/>
+            <g stroke="#08312c" stroke-width="1.1" opacity=".5">
+              <line x1="104" y1="96" x2="222" y2="96"/><line x1="104" y1="122" x2="222" y2="122"/><line x1="104" y1="148" x2="222" y2="148"/><line x1="104" y1="174" x2="222" y2="174"/><line x1="104" y1="200" x2="222" y2="200"/><line x1="104" y1="226" x2="222" y2="226"/><line x1="104" y1="252" x2="222" y2="252"/><line x1="104" y1="278" x2="222" y2="278"/><line x1="104" y1="304" x2="222" y2="304"/><line x1="104" y1="330" x2="222" y2="330"/><line x1="104" y1="356" x2="222" y2="356"/><line x1="104" y1="382" x2="222" y2="382"/><line x1="104" y1="408" x2="222" y2="408"/>
+              <line x1="143" y1="70" x2="143" y2="432"/><line x1="183" y1="70" x2="183" y2="432"/>
+            </g>
+            <g fill="#f2d98d" opacity=".9"><rect x="150" y="124" width="26" height="20"/><rect x="112" y="254" width="26" height="20"/><rect x="188" y="306" width="26" height="20"/><rect x="226" y="230" width="30" height="22"/></g>
+            <rect x="104" y="58" width="118" height="14" rx="4" fill="#0c3a35"/>
+          </svg>
+        </div>
+        <model-viewer id="show-mv"
+          src="https://raw.githubusercontent.com/The-new-ben/nad-lan-co-il/main/assets/engine/rainbow.glb"
+          camera-controls auto-rotate auto-rotate-delay="2800" rotation-per-second="12deg"
+          interaction-prompt="none" shadow-intensity="1" exposure="1.05"
+          camera-orbit="30deg 74deg 110%" min-camera-orbit="auto 0deg auto" touch-action="pan-y"></model-viewer>
+        <div class="floor-rail" id="floorRail"></div>
+        <div class="stage-legend"><span><i style="background:#8fe6c0"></i>זמינה</span><span><i style="background:var(--gold)"></i>בודדות</span><span><i style="background:#ffb3a0"></i>נמכרה</span></div>
+      </div>
+    </div>
+  </div>
+</div></section>
+
+<!-- PRICE + TRANSACTIONS -->
+<section class="block" id="data"><div class="wrap">
+  <div class="sec-head">
+    <div><span class="eyebrow">מחיר ועסקאות באזור</span>
+      <h2>מה באמת נמכר ברדיוס קרוב</h2>
+      <p>עסקאות אמיתיות שדווחו לרשות המסים ברדיוס של כקילומטר, כדי להעמיד אומדן מול מציאות ולא מול הבטחה.</p>
+    </div>
+  </div>
+  <div class="data-grid">
+    <div class="tx-card">
+      <h3>עסקאות שנמכרו ברדיוס <bdi>1 ק״מ</bdi></h3>
+      <table class="tx">
+        <thead><tr><th>כתובת</th><th>חדרים</th><th class="num">מ״ר</th><th class="num">מחיר</th><th class="num">תאריך</th></tr></thead>
+        <tbody>
+          <tr><td>שדה דב 4</td><td>4</td><td class="num"><bdi>115</bdi></td><td class="num"><bdi>8,900,000 ₪</bdi></td><td class="num"><bdi>04/2026</bdi></td></tr>
+          <tr><td>המעגן 11</td><td>4</td><td class="num"><bdi>122</bdi></td><td class="num"><bdi>9,400,000 ₪</bdi></td><td class="num"><bdi>03/2026</bdi></td></tr>
+          <tr><td>נמל תל אביב 9</td><td>5</td><td class="num"><bdi>140</bdi></td><td class="num"><bdi>11,200,000 ₪</bdi></td><td class="num"><bdi>02/2026</bdi></td></tr>
+        </tbody>
+      </table>
+      <p class="tx-src">מקור: רשות המסים, נתוני עסקאות ציבוריים. מתעדכן באופן שוטף.</p>
+    </div>
+    <div class="est-card">
+      <span class="kic">אומדן לדירה הנבחרת</span>
+      <div class="big"><bdi>8,600,000 – 9,700,000 ₪</bdi></div>
+      <div class="mid">נקודת אמצע כ־<bdi>77,000 ₪</bdi> למ״ר</div>
+      <div class="est-bar"><i></i></div>
+      <p class="dis">אומדן לא מחייב, מבוסס עסקאות ציבוריות שדווחו לרשות המסים. עודכן 06/2026. אינו הצעה או מחיר יזם.</p>
+    </div>
+  </div>
+</div></section>
+
+<!-- SURROUNDINGS / MAP -->
+<section class="block"><div class="wrap">
+  <div class="sec-head">
+    <div><span class="eyebrow">הסביבה</span><h2>כל מה שמסביב</h2>
+      <p>מיקום, ים, תחבורה, חינוך, פנאי ומסחר. גללו במפה כדי לראות פרויקטים נוספים ונקודות עניין באזור.</p>
+    </div>
+  </div>
+  <div class="surround">
+    <div class="poi-col">
+      <div class="poi"><h4><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 17h16M6 17V9l6-4 6 4v8"/></svg>תחבורה</h4>
+        <div class="tags"><span>הקו הירוק</span><span>נתיבי איילון</span><span>רכבת ארלוזורוב</span></div></div>
+      <div class="poi"><h4><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 12c4-6 14-6 18 0-4 6-14 6-18 0z"/><circle cx="12" cy="12" r="2.4"/></svg>חינוך ופנאי</h4>
+        <div class="tags"><span>חוף וטיילת</span><span>פארק הירקון</span><span>בתי ספר</span></div></div>
+      <div class="poi-stats">
+        <div class="poi-stat"><strong><bdi>16,000</bdi></strong><span>דירות מתוכננות ברובע</span></div>
+        <div class="poi-stat"><strong>TA/4444</strong><span>תכנית מתאר</span></div>
+      </div>
+    </div>
+    <div class="map">
+      <span class="sea-label">הים התיכון</span>
+      <div class="pin is-main" style="inset-inline-start:34%; inset-block-start:48%"><b>Ashira</b><i></i></div>
+      <div class="pin" style="inset-inline-start:52%; inset-block-start:30%"><b>Rainbow</b><i></i></div>
+      <div class="pin" style="inset-inline-start:60%; inset-block-start:62%"><b>Dimri Yama</b><i></i></div>
+      <div class="pin is-poi" style="inset-inline-start:20%; inset-block-start:33%"><b>חוף</b><i></i></div>
+      <div class="pin is-poi" style="inset-inline-start:72%; inset-block-start:22%"><b>פארק הירקון</b><i></i></div>
+      <div class="pin is-poi" style="inset-inline-start:46%; inset-block-start:74%"><b>ארנה</b><i></i></div>
+      <span class="map-hint">מפת אזור · מתחבר ל-Mapbox עם נקודות עניין אמיתיות</span>
+    </div>
+  </div>
+</div></section>
+
+<!-- PROJECTS GALLERY -->
+<section class="block"><div class="wrap">
+  <div class="sec-head">
+    <div><span class="eyebrow">פרויקטים נבחרים</span><h2>פרויקטים חדשים להשוואה</h2>
+      <p>כל פרויקט עם דגם תלת ממד, בחירת דירה, אומדן מחיר וסביבה. החליפו, השוו ובחרו לפני פנייה.</p>
+    </div>
+    <a class="cta ghost" href="/projects/">לכל הפרויקטים</a>
+  </div>
+  <div class="proj-grid">
+    <a class="pcard" href="/projects/rainbow-tel-aviv/">
+      <div class="img"><img src="https://raw.githubusercontent.com/The-new-ben/nad-lan-co-il/main/assets/projects/rainbow-tel-aviv/rainbow-showroom-hero-v1664.jpg" alt="מגדל מגורים על קו הים בתל אביב" loading="lazy"><span class="tag">בנייה חדשה</span></div>
+      <div class="body"><h3>Rainbow תל אביב</h3><div class="loc">תל אביב, קו הים</div>
+        <div class="meta"><div><b><bdi>40</bdi></b><span>קומות</span></div><div><b><bdi>5</bdi></b><span>חדרים עד</span></div><div><b>ים</b><span>נוף</span></div></div></div>
+    </a>
+    <a class="pcard" href="/projects/dimri-yama-sde-dov/">
+      <div class="img" style="background:linear-gradient(135deg,#2a4d63,#0c2a33)"><span class="tag">שדה דב</span></div>
+      <div class="body"><h3>Dimri Yama שדה דב</h3><div class="loc">תל אביב, רובע שדה דב</div>
+        <div class="meta"><div><b><bdi>24</bdi></b><span>קומות</span></div><div><b><bdi>5</bdi></b><span>חדרים עד</span></div><div><b>ים</b><span>נוף</span></div></div></div>
+    </a>
+    <a class="pcard" href="/projects/ashira-sde-dov/">
+      <div class="img" style="background:linear-gradient(135deg,#5b4a2a,#33260c)"><span class="tag">חדש למכירה</span></div>
+      <div class="body"><h3>Ashira שדה דב</h3><div class="loc">תל אביב, רובע שדה דב</div>
+        <div class="meta"><div><b><bdi>22</bdi></b><span>קומות</span></div><div><b><bdi>132</bdi></b><span>מ״ר עד</span></div><div><b>ים</b><span>נוף</span></div></div></div>
+    </a>
+  </div>
+</div></section>
+
+<!-- AREAS -->
+<section class="block"><div class="wrap">
+  <div class="sec-head"><div><span class="eyebrow">לפי אזור</span><h2>אזורי הביקוש</h2>
+    <p>בחרו אזור כדי לראות פרויקטים, מחירים ועסקאות אחרונות לפי נתוני רשות המסים.</p></div></div>
+  <div class="area-grid">
+    <a class="area" href="/sde-dov/"><span></span><strong>רובע שדה דב</strong><span>תל אביב, קו הים</span></a>
+    <a class="area" href="/herzliya-pituach-apartment-prices/"><strong>הרצליה פיתוח</strong><span>קרבה לים ולמרינה</span></a>
+    <a class="area" href="/tel-aviv-penthouse-prices/"><strong>פארק צמרת</strong><span>מגדלי יוקרה</span></a>
+    <a class="area" href="/neve-tzedek-apartment-prices/"><strong>נווה צדק</strong><span>בוטיק ועיר</span></a>
+    <a class="area" href="/ramat-hasharon-apartment-prices/"><strong>רמת השרון</strong><span>בתים ופרטיות</span></a>
+    <a class="area" href="/raanana-apartment-prices/"><strong>רעננה</strong><span>משפחות ושקט</span></a>
+    <a class="area" href="/tel-aviv-seafront-apartment-prices/"><strong>קו הים תל אביב</strong><span>נוף פתוח</span></a>
+    <a class="area" href="/savyon-house-prices/"><strong>סביון</strong><span>בתים פרטיים</span></a>
+  </div>
+</div></section>
+
+<!-- TOOLS -->
+<section class="block"><div class="wrap">
+  <div class="sec-head"><div><span class="eyebrow">כלים לפני קנייה</span><h2>בודקים מספרים, לא רק תחושות</h2></div></div>
+  <div class="tool-grid">
+    <a class="tool" href="/purchase-tax-calculator/"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="5" y="3" width="14" height="18" rx="2"/><path d="M9 7h6M9 11h6M9 15h3"/></svg></div><strong>מחשבון מס רכישה</strong><p>הערכת מס רכישה לדירה יחידה או נוספת לפי מדרגות 2026.</p></a>
+    <a class="tool" href="/mortgage-calculator/"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M3 10l9-7 9 7"/><path d="M5 9v11h14V9"/></svg></div><strong>מחשבון משכנתא</strong><p>החזר חודשי, ריבית ועלות כוללת על פני חיי ההלוואה.</p></a>
+    <a class="tool" href="/property-value-estimator/"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M4 19V5M4 19h16M8 16l3-4 3 2 4-6"/></svg></div><strong>הערכת שווי דירה</strong><p>אומדן שווי מבוסס עסקאות אזור מנתוני רשות המסים.</p></a>
+    <a class="tool" href="/tabu-extract-check/"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M7 3h7l5 5v13H7z"/><path d="M14 3v5h5M10 13h6M10 17h6"/></svg></div><strong>בדיקת נסח טאבו</strong><p>מה לבדוק בנסח לפני חתימה, זכויות ושעבודים.</p></a>
+  </div>
+</div></section>
+
+<!-- MULTILINGUAL -->
+<section class="block" id="languages"><div class="wrap">
+  <div class="sec-head"><div><span class="eyebrow">לרוכשים מחו״ל</span><h2>מידע ברור גם באנגלית, רוסית, צרפתית וערבית</h2>
+    <p>כל פרויקט מתורגם לעמוד מלא בכל שפה, עם מילות חיפוש שמתאימות לקונים מאותן מדינות.</p></div></div>
+  <div class="lang-grid">
+    <article class="lcard" lang="en" dir="ltr"><span>English</span><strong>Buy new apartments in Tel Aviv with 3D unit selection.</strong><p>Compare projects, pick a unit by floor and view, and see real area transactions before you call.</p></article>
+    <article class="lcard" lang="ru" dir="ltr"><span>Русский</span><strong>Новостройки в Тель-Авиве с выбором квартиры в 3D.</strong><p>Сравните проекты, выберите квартиру по этажу и виду, изучите реальные сделки района.</p></article>
+    <article class="lcard" lang="fr" dir="ltr"><span>Français</span><strong>Appartements neufs à Tel-Aviv, choix en 3D.</strong><p>Comparez les projets, choisissez par étage et vue, consultez les transactions réelles du quartier.</p></article>
+    <article class="lcard" lang="ar" dir="rtl"><span>العربية</span><strong>شقق جديدة في تل أبيب مع اختيار الشقة بتقنية ثلاثية الأبعاد.</strong><p>قارنوا المشاريع، اختاروا حسب الطابق والإطلالة، وراجعوا صفقات المنطقة الحقيقية.</p></article>
+  </div>
+</div></section>
+
+<!-- GUIDES / SEO -->
+<section class="block"><div class="wrap">
+  <div class="sec-head"><div><span class="eyebrow">מדריכים ומידע</span><h2>כל מה שצריך לדעת לפני עסקה</h2></div></div>
+  <div class="guides"><div class="guide-cols">
+    <nav><strong>קנייה ומכירה</strong>
+      <a href="/buying-apartment/">קניית דירה בישראל</a><a href="/apartment-buying-checklist/">בדיקות לפני קנייה</a>
+      <a href="/selling-apartment/">מכירת דירה</a><a href="/new-projects/">דירה מקבלן</a><a href="/property-value/">הערכת שווי</a></nav>
+    <nav><strong>מימון ומסים</strong>
+      <a href="/mortgage-advisor/">יועץ משכנתאות</a><a href="/mortgage-refinance/">מחזור משכנתא</a>
+      <a href="/real-estate-tax-advisor/">מיסוי מקרקעין</a><a href="/purchase-tax-calculator/">מס רכישה</a><a href="/apartment-purchase-cost-calculator/">עלויות רכישה</a></nav>
+    <nav><strong>אנשי מקצוע</strong>
+      <a href="/real-estate-lawyer/">עורך דין מקרקעין</a><a href="/real-estate-appraiser/">שמאי מקרקעין</a>
+      <a href="/home-inspection/">בדק בית</a><a href="/real-estate-broker/">מתווך נדל״ן</a><a href="/architect-building-permit/">אדריכל והיתר</a></nav>
+    <nav><strong>אזורים</strong>
+      <a href="/sde-dov/">רובע שדה דב</a><a href="/tel-aviv-apartment-prices/">מחירים בתל אביב</a>
+      <a href="/herzliya-apartment-prices/">הרצליה</a><a href="/urban-renewal/">התחדשות עירונית</a><a href="/glossary/">מילון נדל״ן</a></nav>
+  </div></div>
+</div></section>
+
+<!-- CONCIERGE -->
+<section class="block" id="concierge"><div class="wrap"><div class="concierge">
+  <div>
+    <span class="eyebrow" style="color:var(--gold-soft)">ליווי אישי</span>
+    <h2>מתעניינים בדירה? נחזור אליכם</h2>
+    <p>השאירו פרטים ונחזור אליכם בתוך יום עסקים עם מידע על הדירה, האזור והמסמכים שכדאי לבדוק. בעברית או בשפה שנוחה לכם.</p>
+  </div>
+  <form onsubmit="return false">
+    <input type="text" placeholder="שם מלא" autocomplete="name">
+    <input type="tel" placeholder="טלפון" autocomplete="tel">
+    <input type="email" placeholder="אימייל (לא חובה)" autocomplete="email">
+    <button type="submit">שליחת פנייה</button>
+  </form>
+</div></div></section>
+</main>
+
+<!-- FOOTER (RTL order: brand · אזורים · כלים · חברה) -->
+<footer class="footer"><div class="wrap">
+  <div class="foot-grid">
+    <section class="brand">
+      <a class="brand" href="/" style="color:#fff"><span class="brand-mark">N</span><span><strong>NadLan</strong><small>בודקים דירה, פרויקט וסביבה לפני החלטה</small></span></a>
+      <p>מידע על דירות, פרויקטים, שכונות, מחירים, מסמכים ואנשי מקצוע בישראל. הנתונים נועדו לסייע בבדיקה ראשונית, ויש לאמת מחיר, זמינות ומסמכים מול הגורם הרלוונטי.</p>
+    </section>
+    <nav><strong>אזורים</strong><a href="/sde-dov/">רובע שדה דב</a><a href="/new-projects/">פרויקטים לפי אזור</a><a href="/cities/">ערים ושכונות</a><a href="/urban-renewal/">התחדשות עירונית</a></nav>
+    <nav><strong>כלים</strong><a href="/mortgage-calculator/">משכנתא</a><a href="/purchase-tax-calculator/">מס רכישה</a><a href="/property-value-estimator/">הערכת שווי</a><a href="/tabu-extract-check/">נסח טאבו</a></nav>
+    <nav><strong>חברה ושפות</strong><a href="#languages">English / Русский</a><a href="#languages">Français / العربية</a><a href="/accessibility/">הצהרת נגישות</a><a href="/privacy-policy/">פרטיות</a><a href="/terms/">תנאי שימוש</a></nav>
+  </div>
+  <div class="foot-bottom"><span>© NadLan</span><span>המידע באתר כללי בלבד ואינו ייעוץ משפטי, שמאי או פיננסי. נתוני עסקאות מתוך רשות המסים.</span></div>
+</div></footer>
+
+<!-- floating: WhatsApp (start) + Accessibility (end), separate -->
+<div class="fab wa">
+  <a class="wa-btn" href="https://wa.me/972500000000" aria-label="פנייה בוואטסאפ" target="_blank" rel="noopener">
+    <svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 0 0-8.6 15l-1.3 4.7 4.8-1.3A10 10 0 1 0 12 2zm5.3 14.1c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .2-3.3-.7-2.8-1.1-4.5-3.9-4.6-4.1-.1-.2-1.1-1.4-1.1-2.7s.7-1.9.9-2.2c.2-.2.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 2c.1.2.1.4 0 .5l-.4.5c-.2.2-.3.4-.1.7.2.3.9 1.4 1.9 2 .8.5 1.4.7 1.7.6.2-.1.4-.4.6-.7.2-.3.4-.2.7-.1l1.9.9c.3.2.5.2.6.4.1.1.1.7-.1 1.3z"/></svg>
+  </a>
+  <span class="label">וואטסאפ</span>
+</div>
+<div class="fab acc">
+  <button class="acc-btn" aria-label="תפריט נגישות" onclick="alert('כאן ייפתח תפריט נגישות מלא: ניגודיות, גודל טקסט, עצירת תנועה, ניווט מקלדת.')">
+    <svg viewBox="0 0 24 24"><circle cx="12" cy="4" r="2"/><path d="M12 7c-3 0-5 .8-5 .8M12 7c3 0 5 .8 5 .8M12 7v6m0 0l-2.5 6m2.5-6l2.5 6"/></svg>
+  </button>
+  <span class="label">נגישות</span>
+</div>
+
+<script>
+/* ---- project + unit data (from repo: assets/engine/projects.json + showroom payloads) ---- */
+const RAW="https://raw.githubusercontent.com/The-new-ben/nad-lan-co-il/main/assets/engine/";
+const PROJECTS={
+  rainbow:{name:"Rainbow תל אביב", loc:"תל אביב · קו הים", sub:"מגדל מגורים על קו הים, בחירת דירה לפי קומה ונוף",
+    glb:RAW+"rainbow.glb",
+    units:[
+      {f:"38",status:"זמינה",cls:"",title:"פנטהאוז 5 חדרים, קומה 38",rooms:"5",sqm:"210 מ״ר",view:"ים פתוח"},
+      {f:"30",status:"בודדות",cls:"",title:"דירת 5 חדרים, קומה 30",rooms:"5",sqm:"148 מ״ר",view:"ים ועיר"},
+      {f:"20",status:"זמינה",cls:"",title:"דירת 4 חדרים, קומה 20",rooms:"4",sqm:"118 מ״ר",view:"עיר"},
+      {f:"10",status:"נמכרה",cls:"is-sold",title:"דירת 4 חדרים, קומה 10",rooms:"4",sqm:"104 מ״ר",view:"עיר"}
+    ]},
+  dimri:{name:"Dimri Yama שדה דב", loc:"תל אביב · רובע שדה דב", sub:"מגדל בשדה דב, דירות מול הים",
+    glb:RAW+"dimri.glb",
+    units:[
+      {f:"22",status:"זמינה",cls:"",title:"דירת 5 חדרים, קומה 22",rooms:"5",sqm:"138 מ״ר",view:"ים"},
+      {f:"16",status:"זמינה",cls:"",title:"דירת 4 חדרים, קומה 16",rooms:"4",sqm:"112 מ״ר",view:"ים ועיר"},
+      {f:"8",status:"בודדות",cls:"",title:"דירת 3 חדרים, קומה 8",rooms:"3",sqm:"86 מ״ר",view:"עיר"}
+    ]},
+  ashira:{name:"Ashira שדה דב", loc:"תל אביב · רובע שדה דב", sub:"דירות חדשות מול הים בשדה דב",
+    glb:"https://raw.githubusercontent.com/The-new-ben/nad-lan-co-il/main/assets/projects/ashira-sde-dov/model-context.glb",
+    units:[
+      {f:"18",status:"זמינה",cls:"",title:"דירה 18 מערב, 5 חדרים",rooms:"5",sqm:"132 מ״ר",view:"ים מערב"},
+      {f:"14",status:"זמינה",cls:"",title:"דירה 14 עיר, 4 חדרים",rooms:"4",sqm:"104 מ״ר",view:"עיר"},
+      {f:"10",status:"בודדות",cls:"",title:"דירה 10 פינתית, 4 חדרים",rooms:"4",sqm:"118 מ״ר",view:"ים וחצר"},
+      {f:"7",status:"נמכרה",cls:"is-sold",title:"דירה 7, 3 חדרים",rooms:"3",sqm:"82 מ״ר",view:"עיר"},
+      {f:"4",status:"זמינה",cls:"",title:"דירת גן 4, 3 חדרים",rooms:"3",sqm:"92 מ״ר",view:"חצר"}
+    ]}
+};
+const $=s=>document.querySelector(s);
+const mv=$("#show-mv"), rail=$("#floorRail");
+function renderProject(key){
+  const p=PROJECTS[key];
+  mv.setAttribute("src",p.glb);
+  $("#sv-loc").textContent=p.loc; $("#sv-name").textContent=p.name; $("#sv-sub").textContent=p.sub;
+  rail.innerHTML="";
+  p.units.forEach((u,i)=>{
+    const b=document.createElement("button");
+    b.className=u.cls+(i===0?" is-active":"");
+    b.innerHTML='<span class="dot"></span><span>קומה '+u.f+'</span>';
+    b.onclick=()=>{ selectUnit(key,i);
+      rail.querySelectorAll("button").forEach(x=>x.classList.remove("is-active")); b.classList.add("is-active"); };
+    rail.appendChild(b);
+  });
+  selectUnit(key,0);
+}
+function selectUnit(key,i){
+  const u=PROJECTS[key].units[i];
+  $("#u-status").textContent=u.status; $("#u-status").className="unit-status "+u.cls;
+  $("#u-title").textContent=u.title; $("#u-floor").textContent=u.f; $("#u-rooms").textContent=u.rooms;
+  $("#u-sqm").innerHTML='<bdi>'+u.sqm+'</bdi>'; $("#u-view").textContent=u.view;
+}
+document.querySelectorAll("#projSwitch button").forEach(b=>{
+  b.onclick=()=>{ document.querySelectorAll("#projSwitch button").forEach(x=>x.classList.remove("is-active"));
+    b.classList.add("is-active"); renderProject(b.dataset.p); };
+});
+/* unit info tabs */
+const tabText={plan:"תוכנית הדירה תוצג כאן. המודל להמחשה עד לקבלת תוכניות מכר רשמיות מהיזם.",
+  view:"מבט מהדירה: סימולציית נוף לפי קומה וכיוון. הנוף הסופי יאומת מול היזם.",
+  tour:"סיור וירטואלי בדירה: הליכה בתלת ממד בין החללים. נוצר לדמו, יוחלף בסיור הפרויקט."};
+document.querySelectorAll("#uTabs button").forEach(b=>{
+  b.onclick=()=>{ document.querySelectorAll("#uTabs button").forEach(x=>x.classList.remove("is-active"));
+    b.classList.add("is-active"); $("#u-panel").textContent=tabText[b.dataset.tab]; };
+});
+renderProject("rainbow");
+
+/* ---- interface language switch (demo: HE/EN in place) ---- */
+const I18N={
+  he:{hero_eyebrow:"נדל״ן בישראל, מבוסס נתונים",hero_h1:"בוחרים דירה, פרויקט וסביבה לפני שמתקדמים.",
+    hero_lead:"חיפוש פרויקטים חדשים ודירות בישראל, בחירת דירה במודל תלת ממד לפי קומה, כיוון ונוף, ועסקאות אמיתיות באזור מנתוני רשות המסים. הכל בתמונה אחת ברורה, לפני שמתקשרים לנציג.",
+    f_area:"עיר, שכונה או פרויקט",f_rooms:"חדרים",f_go:"התחילו חיפוש"},
+  en:{hero_eyebrow:"Israel real estate, data first",hero_h1:"Check the apartment, project and area before you move forward.",
+    hero_lead:"Search new projects and apartments in Israel, pick a unit in a 3D model by floor, direction and view, and see real area transactions from the Tax Authority, all in one clear picture before you call.",
+    f_area:"City, neighborhood or project",f_rooms:"Rooms",f_go:"Start search"}
+};
+document.querySelectorAll(".langs button").forEach(b=>{
+  b.onclick=()=>{
+    document.querySelectorAll(".langs button").forEach(x=>x.classList.remove("is-active")); b.classList.add("is-active");
+    const L=b.dataset.lang, dict=I18N[L]||I18N.he, ltr=(L!=="he"&&L!=="ar");
+    document.querySelectorAll("[data-t]").forEach(el=>{ if(dict[el.dataset.t]) el.textContent=dict[el.dataset.t]; });
+    const a=$('[data-t-val="f_area_v"]'); if(a){ a.dir=ltr?"ltr":"rtl"; a.style.textAlign="start"; }
+    const note=document.querySelector('.langs'); note.title=ltr?"LTR":"RTL";
+  };
+});
+</script>
+</body>
+</html>
