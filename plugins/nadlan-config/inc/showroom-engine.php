@@ -381,6 +381,37 @@ add_action( 'init', function () {
 } );
 
 /* -------------------------------------------------------------------------
+ * Real Madlan coordinates (replaces the Ashira placeholder seed above, and
+ * sets Rainbow/Dimri Yama for the first time -- they had none, so their map
+ * marker never rendered at all). Verified 2026-06-30 by Cowork: read the
+ * canonical locationPoint from each project's own Madlan page, cross-checked
+ * against the "nearby projects" markers on the other two pages (identical
+ * value both ways), sanity-checked against the owner's known layout (Rainbow
+ * sits southwest of Ashira -- confirmed: lat -0.0024, lng -0.0031).
+ * Unconditional overwrite (not seed-if-empty) because the old placeholder
+ * already occupied the field. Runs once per slug, then never again.
+ * Sources: madlan.co.il project pages, see PR #251 comment 2026-06-30 21:53 UTC.
+ * ----------------------------------------------------------------------- */
+add_action( 'init', function () {
+	if ( get_option( 'nadlan_geo_madlan_fix_v1' ) === '1' ) { return; }
+	$geo = array(
+		'ashira-sde-dov' => array( '32.10557', '34.78760' ),
+		'rainbow-tel-aviv' => array( '32.10317', '34.78446' ),
+		'dimri-yama' => array( '32.10444', '34.78447' ),
+	);
+	$suffixes = array( '', '-en', '-fr', '-ru', '-ar' );
+	foreach ( $geo as $base_slug => $coords ) {
+		foreach ( $suffixes as $suf ) {
+			$p = get_page_by_path( $base_slug . $suf, OBJECT, 'nadlan_project' );
+			if ( ! $p ) { continue; }
+			update_post_meta( $p->ID, 'lat', $coords[0] );
+			update_post_meta( $p->ID, 'lng', $coords[1] );
+		}
+	}
+	update_option( 'nadlan_geo_madlan_fix_v1', '1' );
+} );
+
+/* -------------------------------------------------------------------------
  * Slice 3 — safe per-project swap: render the NEW engine on a project page
  * instead of the OLD project-3d showroom. Default OFF, reversible. No stacking:
  * when active for a project, the old showroom disables itself (it is gated by
