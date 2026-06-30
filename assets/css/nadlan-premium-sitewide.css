@@ -1891,17 +1891,3 @@ body.nlrx-action-rail-ready #nla-panel{
 		justify-content:center!important;
 	}
 }
-
-/* Homepage flagship 3D moment — the one dark showroom-theater on the cream page (PR: homepage) */
-.nlux-flagship{max-width:1240px;margin:8px auto 34px;padding:0 clamp(14px,3vw,28px);display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,.9fr);gap:clamp(20px,3vw,40px);align-items:center}
-.nlux-flagship-stage{position:relative;border-radius:22px;overflow:hidden;aspect-ratio:4/3;min-height:320px;background:radial-gradient(120% 90% at 30% 18%,#20242a 0%,#14130f 60%,#0c0b08 100%);box-shadow:0 40px 90px -30px rgba(20,19,15,.55);border:1px solid rgba(20,19,15,.5)}
-.nlux-flagship-poster{position:absolute;inset:0;background-size:cover;background-position:center;opacity:.45}
-.nlux-flagship-mv{position:relative;z-index:1;width:100%;height:100%;--poster-color:transparent;background:transparent}
-.nlux-flagship-mv::part(default-progress-bar){display:none}
-.nlux-flagship-badge{position:absolute;z-index:2;inset-block-start:12px;inset-inline-start:12px;background:rgba(156,122,60,.16);color:#f0d999;border:1px solid rgba(156,122,60,.35);border-radius:999px;font-size:11px;font-weight:600;padding:4px 10px;backdrop-filter:blur(4px)}
-.nlux-flagship-copy h2{font-family:"Frank Ruhl Libre","Noto Serif Hebrew",serif;font-size:clamp(26px,3vw,40px);line-height:1.15;margin:6px 0 10px;color:#1B1A17}
-[dir="ltr"] .nlux-flagship-copy h2{font-family:"Fraunces",Georgia,serif}
-.nlux-flagship-copy p{color:#4b4639;line-height:1.7;margin:0 0 16px;max-width:46ch}
-.nlux-flagship-copy .nlux-actions a{display:inline-flex;align-items:center;min-height:46px;padding:0 22px;border-radius:8px;background:#C2563A;color:#fff;text-decoration:none;font-weight:700}
-.nlux-flagship-copy .nlux-actions a:hover{opacity:.93}
-@media (max-width:860px){.nlux-flagship{grid-template-columns:1fr}.nlux-flagship-stage{aspect-ratio:16/11;min-height:260px}}
