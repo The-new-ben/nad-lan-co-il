@@ -154,7 +154,7 @@
       '<section class="nl-sec nl-wrap" id="world">' + world() + "</section>" +
       '<section class="nl-sec nl-wrap" id="media">' + media() + "</section>" +
       '<section class="nl-sec nl-wrap" id="investor">' + investor() + "</section>" +
-      '<section class="nl-sec nl-wrap" id="about">' + seoBody() + "</section>" +
+      '<section class="nl-sec nl-wrap" id="about">' + seoBody() + faq() + "</section>" +
       '<section class="nl-wrap" id="inquiry" style="padding-bottom:clamp(40px,6vw,80px)">' + inquiry() + "</section>" +
       '<section class="nl-wrap" style="padding-bottom:clamp(40px,6vw,80px)">' + disclaimer() + "</section>" +
       "</main>";
@@ -442,6 +442,15 @@
   /* block 10 — SEO body (placeholder content from data) */
   function seoBody() {
     return '<div style="max-width:760px"><span class="nl-eyebrow">' + esc(t("seo_eyebrow")) + '</span><hr class="nl-rule"><h2>' + esc(content("seo_h")) + '</h2><p class="nl-lede" style="margin-top:14px">' + esc(content("seo_p")) + "</p></div>";
+  }
+  /* visible FAQ accordion (the FAQPage JSON-LD is emitted server-side from the same meta) */
+  function faq() {
+    var items = (project().faq || []).filter(function (r) { return (r.q || r.question) && (r.a || r.answer); });
+    if (!items.length) { return ""; }
+    var rows = items.map(function (r) {
+      return '<details class="nl-faq__item"><summary>' + esc(r.q || r.question) + "</summary><p>" + esc(r.a || r.answer) + "</p></details>";
+    }).join("");
+    return '<div class="nl-faq" style="max-width:760px;margin-top:36px"><span class="nl-eyebrow">' + esc(t("faq_title")) + '</span><hr class="nl-rule">' + rows + "</div>";
   }
 
   /* block 11 — inquiry (money moment) */
