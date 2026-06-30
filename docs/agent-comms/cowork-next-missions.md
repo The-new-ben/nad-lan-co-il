@@ -14,25 +14,26 @@
 
 ## CURRENT MISSIONS (top = now)
 
-- [ ] **Activate the homepage live (theme deploy).** #256 is theme-side (plugin Update will NOT ship it).
-      EXACT path: UPress panel -> "ניהול GIT" (Git management) -> **Pull from `main`** (UPress Git is
-      `main`-only; #256 is merged, ready to pull). Owner's UPress login only. Do NOT use the file-manager
-      upload (partial-sync risk). After pull, clear cache + hard-reload. There is NO feature flag/WP option;
-      the flagship 3D auto-renders once the theme code is live (Ashira has a model). Keep the orchestrator
-      `nlpo_auto_insert_home_band` OFF (ON = second band). Verify `/`: `.nlux-flagship` present,
-      `model-viewer` count = 1 (was 0), `[data-nlpo-home-projects]` = 1, no overflow, HE + EN. Screenshot.
-- [ ] **Create the missing content (your job, in Chrome, as a user).** Per the runbooks:
-      `skills/runbook-cowork-article-batch-v3.md`, `skills/google-blueprint-workflow.md`
-      (SERP reverse-engineer), `skills/article-publishing-protocol.md`,
-      `skills/directory-listings-project-plan.md`, `skills/nadlan-seo-content-design-monetization-rulebook.md`.
-      You are logged in to Madlan + subscribed services. Steps you've done before:
-      search Google for the target query, analyze the SERP/competitor pages, reverse-engineer the
-      winning structure, draft via ChatGPT to the copywriting rules, then **manually publish in
-      wp-admin** as: (a) **listings** (`nadlan_property`, currently 0) and (b) **news/articles/guides**
-      (posts, currently 0). Real, sourced, no fabricated prices. Report counts on PR #251 when a batch lands.
-- [ ] **Verify the homepage broad-content bands** once Claude Code ships them (Guides + Glossary + Area hubs).
-- [ ] **When listings/news exist:** tell Claude Code, and it un-hides the Listings + News homepage bands
-      (they are wire-ready, hidden while empty).
+- [ ] **JOB 1 — Activate the DESIGNED homepage live.** #260 flipped on the real Claude Design
+      home-showroom (`patterns/nadlan-home-showroom.php`: gallery-mode multi-project 3D + embedded
+      he/en/fr/ru/ar switching) and removed the wrong flagship patch. It is a THEME change:
+      UPress panel -> **ניהול GIT -> Pull `main`** (pre-authorized), clear cache. Verify `/`:
+      one H1, the project gallery (choose between projects), language buttons switch cards +
+      panel (correct dir), `[data-nle-home-showroom]`=1, no 2nd homepage renderer, no overflow,
+      HE+EN. Screenshot.
+- [ ] **JOB 2 — Translate every project + per-language keyword SEO.** All Hebrew project content ->
+      EN/FR/RU/AR, targeting each language's buyer intent (NOT literal translation). SERP research +
+      reverse-engineer per language via `skills/runbook-cowork-article-batch-v3.md`,
+      `skills/google-blueprint-workflow.md`, the multilingual-architecture research, Madlan +
+      subscriptions. Publish the translated sibling posts (-en/-fr/-ru/-ar) with correct keywords +
+      hreflang. Report progress per project/language.
+- [ ] **JOB 3 — Map accuracy + surroundings (research).** Maps show projects in the WRONG location and
+      lack surrounding data. For each project get the correct lat/lng + real POIs (transport, schools,
+      beach, Reading Tower, nearby projects) from Madlan/Google. Post verified coordinates + POIs here;
+      Claude Code wires accurate geo + map pins (never invented).
+- [ ] **JOB 4 — Create the missing broad content** (this is a real-estate CONTENT site, not just projects):
+      listings (`nadlan_property`=0) + news/articles (posts=0), published in wp-admin via the runbooks.
+      When they exist, tell Claude Code to surface them on the homepage + menus.
 
 ## DONE (verified)
 - [x] PR4 single section nav (1.69.57)
