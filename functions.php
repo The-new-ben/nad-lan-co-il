@@ -801,6 +801,33 @@ if ( ! function_exists( 'nadlan_revenue_premium_professionals' ) ) :
 	}
 endif;
 
+if ( ! function_exists( 'nadlan_revenue_flagship_model' ) ) :
+	/** Flagship project's 3D model for the homepage hero moment (Ashira). Reads CMS meta; null if absent. */
+	function nadlan_revenue_flagship_model() {
+		$slug = apply_filters( 'nadlan_revenue_flagship_slug', 'ashira-sde-dov' );
+		$p    = get_page_by_path( $slug, OBJECT, 'nadlan_project' );
+		if ( ! $p ) { return null; }
+		$glb = (string) get_post_meta( $p->ID, 'project_model_glb', true );
+		if ( $glb === '' ) { return null; }
+		return array(
+			'glb'    => $glb,
+			'poster' => (string) get_post_meta( $p->ID, 'project_model_poster', true ),
+			'url'    => get_permalink( $p->ID ),
+			'title'  => get_the_title( $p->ID ),
+		);
+	}
+endif;
+
+/* Load model-viewer on the homepage when a flagship model exists (the one 3D moment). */
+add_action( 'wp_enqueue_scripts', function () {
+	if ( ! ( is_front_page() || is_home() ) ) { return; }
+	if ( ! function_exists( 'nadlan_revenue_flagship_model' ) || ! nadlan_revenue_flagship_model() ) { return; }
+	if ( ! wp_script_is( 'nadlan-model-viewer', 'registered' ) ) {
+		wp_register_script( 'nadlan-model-viewer', 'https://ajax.googleapis.com/ajax/libs/model-viewer/4.3.1/model-viewer.min.js', array(), '4.3.1', true );
+	}
+	wp_enqueue_script( 'nadlan-model-viewer' );
+}, 20 );
+
 if ( ! function_exists( 'nadlan_revenue_premium_front_page' ) ) :
 	function nadlan_revenue_premium_front_page() {
 		$projects_count = nadlan_revenue_count_posts_safe( 'nadlan_project' );
@@ -814,6 +841,7 @@ if ( ! function_exists( 'nadlan_revenue_premium_front_page' ) ) :
 		$rainbow_url    = home_url( '/projects/rainbow-tel-aviv/' );
 		$projects       = nadlan_revenue_premium_projects();
 		$pros           = nadlan_revenue_premium_professionals();
+		$flagship       = function_exists( 'nadlan_revenue_flagship_model' ) ? nadlan_revenue_flagship_model() : null;
 
 		ob_start();
 		?>
@@ -841,6 +869,24 @@ if ( ! function_exists( 'nadlan_revenue_premium_front_page' ) ) :
 			<div><b><?php echo number_format_i18n( $terms_count ); ?></b><span>מונחים ומדריכים</span></div>
 		</div>
 	</section>
+
+	<?php if ( $flagship ) : ?>
+	<section class="nlux-flagship" aria-label="<?php echo esc_attr( $flagship['title'] ); ?>">
+		<div class="nlux-flagship-stage" data-nlux-hero-model>
+			<div class="nlux-flagship-poster"<?php echo $flagship['poster'] ? ' style="background-image:url(' . esc_url( $flagship['poster'] ) . ')"' : ''; ?>></div>
+			<model-viewer class="nlux-flagship-mv" src="<?php echo esc_url( $flagship['glb'] ); ?>"<?php echo $flagship['poster'] ? ' poster="' . esc_url( $flagship['poster'] ) . '"' : ''; ?> reveal="auto" loading="lazy" camera-controls auto-rotate auto-rotate-delay="1200" rotation-per-second="12deg" interaction-prompt="none" environment-image="neutral" exposure="1.02" shadow-intensity="0.5" shadow-softness="1" disable-zoom touch-action="pan-y" min-field-of-view="20deg" max-field-of-view="42deg" aria-label="<?php echo esc_attr( $flagship['title'] ); ?>"></model-viewer>
+			<span class="nlux-flagship-badge">הדמיה להמחשה</span>
+		</div>
+		<div class="nlux-flagship-copy">
+			<p class="nlux-kicker">תצוגת הפרויקט · תלת ממד</p>
+			<h2>בוחרים דירה מתוך הבניין</h2>
+			<p>סובבו את הבניין, בדקו קומה, כיוון ונוף, ובחרו דירה לפני שפונים ליזם. הדגמה על פרויקט <?php echo esc_html( $flagship['title'] ); ?>.</p>
+			<div class="nlux-actions">
+				<a href="<?php echo esc_url( $flagship['url'] ); ?>">בחירת דירה בתלת ממד</a>
+			</div>
+		</div>
+	</section>
+	<?php endif; ?>
 
 	<section class="nlux-paths" aria-label="מסלולי פעולה">
 		<a class="nlux-path" href="<?php echo esc_url( $rainbow_url ); ?>"><span>01</span><h2>פותחים סיור פרויקט</h2><p>בחרו דירה על הבניין, בדקו קומה, כיוון ונוף, ורק אחר כך פנו ליזם.</p></a>
