@@ -355,7 +355,7 @@
           "plan": "",
           "position": "0 18 0",
           "normal": "0 0 1",
-          "orbit": "35deg 64deg auto",
+          "orbit": "35deg 64deg 40m",
           "price_estimate": "אומדן לפי פנייה",
           "source_note": "יחידת המחשה לפי מבנה חזית זמני."
         },
@@ -375,7 +375,7 @@
           "plan": "",
           "position": "4 14 0",
           "normal": "0 0 1",
-          "orbit": "32deg 66deg auto",
+          "orbit": "32deg 66deg 40m",
           "price_estimate": "אומדן לפי פנייה",
           "source_note": "יחידת המחשה לפי מבנה חזית זמני."
         },
@@ -395,7 +395,7 @@
           "plan": "",
           "position": "-4 10 0",
           "normal": "0 0 1",
-          "orbit": "28deg 68deg auto",
+          "orbit": "28deg 68deg 40m",
           "price_estimate": "אומדן לפי פנייה",
           "source_note": "יחידת המחשה לפי מבנה חזית זמני."
         }

@@ -30,6 +30,17 @@ add_action( 'wp_enqueue_scripts', function () {
 		array_filter( array( wp_style_is( 'nlpc-parent-style', 'registered' ) ? 'nlpc-parent-style' : null ) ),
 		file_exists( $platform ) ? (string) filemtime( $platform ) : nlpc_theme_version()
 	);
+
+	$nav_js = get_stylesheet_directory() . '/assets/js/platform-nav.js';
+	if ( file_exists( $nav_js ) ) {
+		wp_enqueue_script(
+			'nlpc-platform-nav',
+			get_stylesheet_directory_uri() . '/assets/js/platform-nav.js',
+			array(),
+			(string) filemtime( $nav_js ),
+			true
+		);
+	}
 }, 60 );
 
 add_filter( 'body_class', function ( $classes ) {
