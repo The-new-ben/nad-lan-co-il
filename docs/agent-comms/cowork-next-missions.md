@@ -34,6 +34,16 @@
 - [ ] **JOB 4 — Create the missing broad content** (this is a real-estate CONTENT site, not just projects):
       listings (`nadlan_property`=0) + news/articles (posts=0), published in wp-admin via the runbooks.
       When they exist, tell Claude Code to surface them on the homepage + menus.
+- [ ] **JOB 5 — Sketch-art generation + 3D detail upgrade.** Owner-approved style + reusable prompt spec
+      in `docs/design/2026-06-30-sketch-art-prompt-spec.md`. Two parts:
+      (a) generate sketch-style images (exterior hero, interior cutaway, area card, article header
+      variants) via ChatGPT per the prompt template, one set per project (Rainbow/Dimri Yama/Ashira
+      first), drop into `assets/projects/<slug>/sketch-art/`, comment the file list on PR #251;
+      (b) try an image/text-to-3D generator (Meshy / Tripo / Luma or similar) seeded with each
+      project's real public marketing renders + floor plans to produce a more detailed GLB than the
+      current concept massing block — export and post where Claude Code can pull it (same handoff
+      pattern as the existing `handoff/claude-design/` folder). No invented data either way — label
+      everything illustrative until the developer confirms.
 
 ## DONE (verified)
 - [x] PR4 single section nav (1.69.57)

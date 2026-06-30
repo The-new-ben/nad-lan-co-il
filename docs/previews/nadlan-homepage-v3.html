@@ -1,0 +1,554 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title data-i18n="meta_title">נדל״ן בישראל — דירות, פרויקטים, מחירים ומידע לפני שקונים | NadLan</title>
+<meta name="description" data-i18n="meta_desc" content="דירות למכירה, פרויקטים חדשים, אומדני מחיר מבוססי עסקאות, מדריכים ואנשי מקצוע מאומתים — כל המידע לפני שמתקדמים לעסקת נדל״ן.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@500;600;700;900&family=Heebo:wght@300;400;500;600;700&family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
+<style>
+:root{
+  --cream:#FAF8F3; --paper:#ffffff; --ink:#1b1a17; --muted:#6f6a5e; --line:#e7e1d4;
+  --terra:#bf5a3c; --sage:#7c8a6a; --charcoal:#2b2a26; --accent:#b07c46;
+  --radius:12px; --shadow:0 10px 30px -16px rgba(27,26,23,.22);
+  --serif:"Frank Ruhl Libre",Georgia,serif; --sans:"Heebo",system-ui,sans-serif;
+  --serif-ltr:"Fraunces",Georgia,serif; --sans-ltr:"Inter",system-ui,sans-serif;
+}
+*{box-sizing:border-box}
+html,body{margin:0;background:var(--cream);color:var(--ink);font-family:var(--sans);font-size:17px;line-height:1.6}
+html[dir="ltr"] body{font-family:var(--sans-ltr)}
+h1,h2,h3{font-family:var(--serif);font-weight:600;line-height:1.15;margin:0}
+html[dir="ltr"] h1,html[dir="ltr"] h2,html[dir="ltr"] h3{font-family:var(--serif-ltr)}
+a{color:inherit;text-decoration:none}
+.wrap{width:min(1240px,calc(100% - 40px));margin-inline:auto}
+.kicker{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);font-weight:700}
+.muted{color:var(--muted)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:46px;padding:0 22px;border-radius:8px;font-weight:600;cursor:pointer;border:1px solid transparent;font-size:15px}
+.btn--primary{background:var(--ink);color:var(--cream)}
+.btn--accent{background:var(--terra);color:#fff}
+.btn--ghost{background:transparent;border-color:var(--line);color:var(--ink)}
+.sec{padding-block:clamp(36px,5vw,72px)}
+.sec__head{max-width:760px;margin-bottom:24px;display:flex;justify-content:space-between;align-items:flex-end;gap:16px;flex-wrap:wrap}
+.sec__head h2{font-size:clamp(1.7rem,1.2rem+1.6vw,2.5rem);margin:8px 0 8px}
+.sec__head p{color:var(--muted);margin:0}
+.sec__link{font-size:14px;font-weight:700;color:var(--terra);white-space:nowrap}
+
+/* top utility bar */
+.util{background:var(--charcoal);color:#e9e3d6;font-size:12.5px}
+.util .wrap{display:flex;align-items:center;justify-content:space-between;min-height:36px;gap:16px;flex-wrap:wrap;padding-block:6px}
+.util-links{display:flex;gap:16px;flex-wrap:wrap}
+.util a{color:#cfc8ba}
+.util-note{color:#a59e8e}
+.langs{display:flex;gap:4px}
+.langs button{background:transparent;border:1px solid rgba(233,227,214,.25);color:#e9e3d6;border-radius:999px;min-width:32px;height:24px;font-size:11px;font-weight:600;cursor:pointer}
+.langs button.is-on{background:#e9e3d6;color:var(--charcoal);border-color:#e9e3d6}
+
+/* header / mega nav */
+.hdr{position:sticky;top:0;z-index:50;background:rgba(250,248,243,.92);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.hdr .wrap{display:flex;align-items:center;gap:18px;min-height:64px}
+.brand{display:inline-flex;align-items:center;gap:10px;font-family:var(--serif);font-weight:700;font-size:21px}
+.brand i{width:32px;height:32px;border-radius:9px;background:var(--ink);color:var(--cream);display:grid;place-items:center;font-size:14px;font-style:normal}
+.nav{display:flex;gap:16px;flex:1;flex-wrap:wrap}
+.nav a{font-size:14px;font-weight:600;color:#46423a;padding:6px 0;border-bottom:2px solid transparent}
+.nav a:hover{color:var(--ink);border-color:var(--accent)}
+@media(max-width:1040px){.nav{display:none}}
+
+/* hero: split — search/intent primary, small 3D teaser secondary */
+.hero{padding-block:clamp(26px,4vw,46px)}
+.hero .grid{display:grid;grid-template-columns:1.3fr .8fr;gap:clamp(20px,3vw,40px);align-items:start}
+@media(max-width:900px){.hero .grid{grid-template-columns:1fr}}
+.hero h1{font-size:clamp(1.9rem,1.3rem+2.2vw,3.1rem)}
+.hero .lead{color:#48433a;margin:14px 0 20px;max-width:54ch}
+.searchcard{background:var(--paper);border:1px solid var(--line);border-radius:16px;padding:16px;box-shadow:var(--shadow)}
+.search-tabs{display:flex;gap:4px;margin-bottom:12px;flex-wrap:wrap}
+.search-tabs button{background:transparent;border:1px solid transparent;border-radius:8px;padding:7px 12px;font-size:13.5px;font-weight:600;color:var(--muted);cursor:pointer}
+.search-tabs button.is-on{background:#f3eee2;color:var(--ink)}
+.search{display:grid;grid-template-columns:1.4fr 1fr auto;gap:10px}
+.search label{display:block;font-size:12px;color:var(--muted);font-weight:600;margin-bottom:4px}
+.search input,.search select{width:100%;min-height:42px;border:1px solid var(--line);border-radius:8px;padding:0 12px;font:inherit;background:#fff}
+.search .go{align-self:end}
+@media(max-width:560px){.search{grid-template-columns:1fr}}
+.chips{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px}
+.chips a{font-size:12.5px;font-weight:600;background:#f3eee2;border:1px solid var(--line);border-radius:999px;padding:6px 12px;color:#46423a}
+
+.heroshow{border:1px solid var(--line);border-radius:16px;overflow:hidden;background:linear-gradient(180deg,#1d1c19,#121110);box-shadow:var(--shadow)}
+.heroshow__top{display:flex;justify-content:space-between;align-items:flex-start;padding:14px 16px 10px;color:#efe9dc}
+.heroshow__top .loc{font-size:11px;color:#bdb6a6;display:block}
+.heroshow__top h3{color:#fff;font-size:1.2rem;margin-top:2px}
+.heroshow__top .badge{font-size:10.5px;font-weight:700;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.18);color:#efe9dc;border-radius:999px;padding:4px 9px;white-space:nowrap}
+.heroshow__stage{position:relative;aspect-ratio:4/3;background:radial-gradient(120% 90% at 30% 10%,#23262b,#141312 60%,#0c0b0a)}
+.heroshow__stage model-viewer{width:100%;height:100%;--poster-color:transparent;background:transparent}
+.heroshow__foot{padding:10px 16px 14px;font-size:12px;color:#bdb6a6}
+
+/* trust strip */
+.trust{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.card{background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);padding:18px}
+.card span.k{font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:var(--accent);font-weight:700}
+.card h3{font-size:1.05rem;margin:6px 0 6px}
+.card p{font-size:13.5px;color:var(--muted);margin:0}
+@media(max-width:820px){.trust{grid-template-columns:1fr 1fr}}
+
+/* showroom theater */
+.theater{background:linear-gradient(160deg,#232220,#161513 65%,#0f0e0c);border-radius:20px;overflow:hidden;border:1px solid #1c1b18;box-shadow:0 40px 90px -36px rgba(20,19,15,.6);color:#efe9dc}
+.theater__bar{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:16px 18px;border-bottom:1px solid rgba(239,233,220,.1);flex-wrap:wrap}
+.theater__bar .tabs{display:flex;gap:6px;background:rgba(0,0,0,.25);border:1px solid rgba(239,233,220,.14);border-radius:999px;padding:4px}
+.theater__bar .tabs button{background:transparent;border:0;color:#cdc7b8;font-weight:600;font-size:13px;padding:7px 14px;border-radius:999px;cursor:pointer}
+.theater__bar .tabs button.is-on{background:var(--terra);color:#fff}
+.theater__body{display:grid;grid-template-columns:1.3fr .9fr;min-height:420px}
+@media(max-width:860px){.theater__body{grid-template-columns:1fr}}
+.theater__stage{position:relative;background:radial-gradient(120% 90% at 30% 16%,#23262b,#141312 62%,#0c0b0a)}
+.theater__stage model-viewer{width:100%;height:100%;min-height:380px;--poster-color:transparent;background:transparent}
+.theater__panel{padding:22px;border-inline-start:1px solid rgba(239,233,220,.1)}
+.theater__panel .pname{font-family:var(--serif);font-size:1.5rem;color:#fff}
+.unitgrid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:16px 0}
+.unitgrid .u{background:rgba(255,255,255,.05);border-radius:9px;padding:10px 12px}
+.unitgrid .u span{font-size:12px;color:#bdb6a6;display:block}
+.unitgrid .u b{font-size:17px;color:#fff}
+.theater__panel .price{font-family:var(--serif);font-size:1.5rem;color:#f0c98a;margin:4px 0}
+.theater__legend{display:flex;gap:14px;padding:0 18px 14px;font-size:11.5px;color:#bdb6a6}
+.theater__legend i{display:inline-block;width:9px;height:9px;border-radius:3px;margin-inline-end:5px;vertical-align:middle}
+
+/* price + comps */
+.price-wrap{display:grid;grid-template-columns:.85fr 1.15fr;gap:22px;align-items:start}
+@media(max-width:820px){.price-wrap{grid-template-columns:1fr}}
+.estimate{background:linear-gradient(160deg,#232220,#161513);color:#efe9dc;border-radius:16px;padding:24px}
+.estimate .big{font-family:var(--serif);font-size:clamp(1.6rem,1rem+2vw,2.2rem);margin:6px 0}
+.estimate .chips2{display:flex;gap:8px;flex-wrap:wrap;margin-top:8px}
+.estimate .chips2 span{font-size:12px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.16);border-radius:999px;padding:4px 10px}
+.comps{width:100%;border-collapse:collapse;background:var(--paper);border:1px solid var(--line);border-radius:12px;overflow:hidden;font-size:14.5px}
+.comps th,.comps td{padding:11px 13px;text-align:start;border-bottom:1px solid var(--line);white-space:nowrap}
+.comps th{background:#f3eee2;font-weight:600}
+.comps tr:last-child td{border-bottom:0}
+.src{font-size:12px;color:var(--muted);margin-top:8px}
+
+/* map + surroundings */
+.world{display:grid;grid-template-columns:1.2fr .8fr;gap:22px}
+@media(max-width:820px){.world{grid-template-columns:1fr}}
+.map{position:relative;border-radius:14px;overflow:hidden;border:1px solid var(--line);aspect-ratio:16/11;background:#eef2ea}
+.map svg{width:100%;height:100%}
+.poi{display:flex;flex-direction:column;gap:12px}
+.poi .row{background:var(--paper);border:1px solid var(--line);border-radius:12px;padding:14px 16px}
+.poi .row b{font-size:14px}.poi .row span{font-size:13px;color:var(--muted)}
+
+/* project + area cards */
+.cards3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+@media(max-width:820px){.cards3{grid-template-columns:1fr}}
+.pcard{background:var(--paper);border:1px solid var(--line);border-radius:14px;overflow:hidden}
+.pcard .thumb{aspect-ratio:16/10;background:linear-gradient(180deg,#f1ebde,#e6decd);position:relative}
+.pcard .thumb svg{position:absolute;inset:0;width:100%;height:100%}
+.pcard .body{padding:16px}
+.pcard h3{font-size:1.25rem}
+.pcard .facts{display:flex;gap:14px;color:var(--muted);font-size:13px;margin-top:8px}
+.areas{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+@media(max-width:820px){.areas{grid-template-columns:1fr 1fr}}
+.area{position:relative;border-radius:12px;overflow:hidden;border:1px solid var(--line);aspect-ratio:4/3;background:#efe8da}
+.area svg{position:absolute;inset:0;width:100%;height:100%}
+.area b{position:absolute;inset-block-end:10px;inset-inline-start:12px;background:rgba(255,255,255,.86);border-radius:8px;padding:5px 10px;font-size:13px}
+
+/* listings + news */
+.lgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+@media(max-width:820px){.lgrid{grid-template-columns:1fr}}
+.listing{background:var(--paper);border:1px solid var(--line);border-radius:12px;overflow:hidden}
+.listing .ph{aspect-ratio:16/10;background:linear-gradient(180deg,#eee7d9,#e3dac9);position:relative}
+.listing .ph svg{position:absolute;inset:0;width:100%;height:100%}
+.listing .b{padding:14px}
+.listing .pr{font-family:var(--serif);font-size:1.2rem}
+.soon{display:inline-block;font-size:11px;font-weight:700;color:#7a6a45;background:#f3ecd9;border:1px solid #e7dcbf;border-radius:999px;padding:3px 9px;margin-inline-start:8px}
+.news .item{display:grid;grid-template-columns:120px 1fr;gap:14px;background:var(--paper);border:1px solid var(--line);border-radius:12px;overflow:hidden}
+.news .item .ph{background:linear-gradient(180deg,#ece5d6,#e0d7c5);position:relative}
+.news .item .ph svg{position:absolute;inset:0;width:100%;height:100%}
+.news .item .b{padding:14px}
+
+/* guides */
+.guides{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+@media(max-width:820px){.guides{grid-template-columns:1fr 1fr}}
+.guide{background:var(--paper);border:1px solid var(--line);border-radius:12px;padding:16px;display:block}
+.guide .k{font-size:11px;color:var(--accent);font-weight:700;text-transform:uppercase}
+.guide h4{font-size:1rem;margin:6px 0 0}
+
+/* tools + pros */
+.tools{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+@media(max-width:820px){.tools{grid-template-columns:1fr 1fr}}
+.tool{background:var(--paper);border:1px solid var(--line);border-radius:12px;padding:16px;font-weight:600}
+.tool span{display:block;font-size:13px;color:var(--muted);font-weight:400;margin-top:4px}
+
+/* footer mega */
+.foot{background:var(--charcoal);color:#d9d3c5;margin-top:40px}
+.foot .wrap{display:grid;grid-template-columns:1.4fr repeat(5,1fr);gap:20px;padding-block:48px}
+.foot h5{color:#f1ead9;font-size:13px;letter-spacing:.08em;text-transform:uppercase;margin:0 0 12px}
+.foot ul{list-style:none;margin:0;padding:0;display:grid;gap:8px}
+.foot a{font-size:14px;color:#cfc8ba}
+.foot .bottom{border-top:1px solid rgba(255,255,255,.12);padding-block:16px;font-size:12.5px;color:#a59e8e}
+@media(max-width:980px){.foot .wrap{grid-template-columns:1fr 1fr}}
+.disc{font-size:12.5px;color:var(--muted);background:#f4eee1;border:1px solid var(--line);border-radius:10px;padding:14px 16px;margin-top:14px}
+</style>
+</head>
+<body>
+
+<!-- sketch filter defs (shared "pencil" wobble for every architectural illustration on the page) -->
+<svg width="0" height="0" style="position:absolute">
+  <defs>
+    <filter id="sketchy" x="-20%" y="-20%" width="140%" height="140%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.014 0.05" numOctaves="2" seed="7" result="n"/>
+      <feDisplacementMap in="SourceGraphic" in2="n" scale="3.2" xChannelSelector="R" yChannelSelector="G"/>
+    </filter>
+    <filter id="sketchy2" x="-20%" y="-20%" width="140%" height="140%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.02 0.07" numOctaves="2" seed="3" result="n2"/>
+      <feDisplacementMap in="SourceGraphic" in2="n2" scale="2.4" xChannelSelector="R" yChannelSelector="G"/>
+    </filter>
+  </defs>
+</svg>
+
+<!-- utility bar -->
+<div class="util"><div class="wrap">
+  <div class="util-links">
+    <a href="/sde-dov/" data-i18n="util_area">רובע שדה דב</a>
+    <a href="#projects-gallery" data-i18n="util_byarea">פרויקטים לפי אזור</a>
+    <a href="#pros" data-i18n="nav_pros">אנשי מקצוע</a>
+    <a href="#guides" data-i18n="foot_glossary">מילון נדל״ן</a>
+  </div>
+  <span class="util-note" data-i18n="util_note">נתוני עסקאות מתוך רשות המסים, מתעדכן באופן שוטף</span>
+  <div class="langs" aria-label="language">
+    <button data-setlang="he" class="is-on">HE</button>
+    <button data-setlang="en">EN</button>
+    <button data-setlang="fr">FR</button>
+    <button data-setlang="ru">RU</button>
+    <button data-setlang="ar">AR</button>
+  </div>
+</div></div>
+
+<!-- header mega nav -->
+<header class="hdr"><div class="wrap">
+  <a class="brand" href="#"><i>N</i> NadLan</a>
+  <nav class="nav">
+    <a href="#projects-gallery" data-i18n="nav_projects">פרויקטים</a>
+    <a href="#listings" data-i18n="nav_buy">דירות למכירה</a>
+    <a href="#search" data-i18n="nav_new">דירה מקבלן</a>
+    <a href="#price" data-i18n="nav_invest">השקעה</a>
+    <a href="#areas" data-i18n="nav_areas">אזורים</a>
+    <a href="#tools" data-i18n="nav_tools">מחשבונים</a>
+    <a href="#pros" data-i18n="nav_pros">אנשי מקצוע</a>
+    <a href="#news" data-i18n="nav_news">חדשות</a>
+  </nav>
+  <a class="btn btn--accent" href="#search" data-i18n="nav_cta">התחילו חיפוש</a>
+</div></header>
+
+<!-- hero: search/intent primary + small 3D teaser secondary -->
+<section class="hero" id="search"><div class="wrap grid">
+  <div>
+    <span class="kicker" data-i18n="hero_kicker">נדל״ן בישראל, מבוסס נתונים</span>
+    <h1 data-i18n="hero_title">בוחרים דירה, פרויקט וסביבה לפני שמתקדמים</h1>
+    <p class="lead" data-i18n="hero_lead">חיפוש דירות ופרויקטים חדשים בישראל, עסקאות אמיתיות באזור מנתוני רשות המסים, מפת שכונה אמיתית, מחשבונים ואנשי מקצוע מאומתים — לפני שמתקשרים לנציג.</p>
+    <div class="searchcard">
+      <div class="search-tabs">
+        <button class="is-on" data-i18n="tab_new">דירות חדשות</button>
+        <button data-i18n="tab_resale">יד שנייה</button>
+        <button data-i18n="tab_invest">להשקעה</button>
+        <button data-i18n="tab_commercial">מסחרי</button>
+      </div>
+      <form class="search" onsubmit="return false">
+        <div><label data-i18n="f_area">עיר, שכונה או פרויקט</label><input type="search" value="שדה דב, תל אביב" data-i18n-val="f_area_val"></div>
+        <div><label data-i18n="f_rooms">חדרים</label>
+          <select><option data-i18n="f_any">הכל</option><option data-i18n="f_3p">3 ומעלה</option><option data-i18n="f_4p">4 ומעלה</option><option data-i18n="f_5p">5 ומעלה</option></select></div>
+        <div class="go"><button class="btn btn--primary" data-i18n="f_go">התחילו חיפוש</button></div>
+      </form>
+      <div class="chips">
+        <a href="#showroom" data-i18n="chip_3d">בחירת דירה בתלת ממד</a>
+        <a href="#price" data-i18n="chip_deals">עסקאות אמיתיות באזור</a>
+        <a href="#tools" data-i18n="chip_tax">מחשבון מס רכישה</a>
+        <a href="#tools" data-i18n="chip_mortgage">מחשבון משכנתא</a>
+      </div>
+    </div>
+  </div>
+  <aside class="heroshow">
+    <div class="heroshow__top">
+      <div><span class="loc" data-i18n="hs_loc">רובע שדה דב · תל אביב</span><h3>Ashira</h3></div>
+      <span class="badge" data-i18n="hs_badge">דגם להמחשה</span>
+    </div>
+    <div class="heroshow__stage">
+      <model-viewer id="hero-mv"
+        src="https://raw.githubusercontent.com/The-new-ben/nad-lan-co-il/main/assets/engine/ashira.glb"
+        camera-controls auto-rotate auto-rotate-delay="600" rotation-per-second="16deg"
+        interaction-prompt="none" environment-image="neutral" exposure="1.05" shadow-intensity="0.6" shadow-softness="1"
+        camera-orbit="32deg 74deg 110%" min-camera-orbit="auto 50deg auto" max-camera-orbit="auto 86deg auto"
+        disable-zoom touch-action="pan-y" aria-label="Ashira 3D"></model-viewer>
+    </div>
+    <div class="heroshow__foot" data-i18n="hs_foot">סובבו את הבניין, הקישו על קומה ובחרו דירה לפי נוף וכיוון</div>
+  </aside>
+</div></section>
+
+<!-- trust strip -->
+<section class="wrap" style="padding-bottom:8px"><div class="trust">
+  <div class="card"><span class="k" data-i18n="t1_k">זמינות</span><h3 data-i18n="t1_t">דירה לפי קומה ונוף</h3><p data-i18n="t1_p">הבחירה מתחילה במיקום הדירה בבניין, לא רק בשם הפרויקט.</p></div>
+  <div class="card"><span class="k" data-i18n="t2_k">מחיר</span><h3 data-i18n="t2_t">אומדן מבוסס עסקאות</h3><p data-i18n="t2_p">מתוך נתוני רשות המסים, מוצג בזהירות עד אימות מול היזם.</p></div>
+  <div class="card"><span class="k" data-i18n="t3_k">סביבה</span><h3 data-i18n="t3_t">ים, תחבורה ושכונה</h3><p data-i18n="t3_p">בודקים את החיים סביב הפרויקט לפני שמבקשים שיחה.</p></div>
+  <div class="card"><span class="k" data-i18n="t4_k">שפות</span><h3 data-i18n="t4_t">מידע גם לרוכשים מחו״ל</h3><p data-i18n="t4_p">עברית, אנגלית, רוסית, צרפתית וערבית, בעמודים נפרדים.</p></div>
+</div></section>
+
+<!-- showroom theater (the moat — full treatment here, third on the page, not first) -->
+<section class="sec wrap" id="showroom">
+  <div class="sec__head"><div><span class="kicker" data-i18n="show_kicker">בחירת דירה בתלת ממד</span>
+    <h2 data-i18n="show_title">בוחרים דירה מתוך הבניין</h2>
+    <p data-i18n="show_lead">החליפו בין הפרויקטים, סובבו את הבניין, ובדקו קומה, כיוון, נוף ואומדן מחיר לפני פנייה.</p></div></div>
+  <div class="theater">
+    <div class="theater__bar">
+      <strong id="show-name">Rainbow · תל אביב</strong>
+      <div class="tabs">
+        <button data-proj="rainbow" class="is-on">Rainbow</button>
+        <button data-proj="dimri">Dimri Yama</button>
+        <button data-proj="ashira">Ashira</button>
+      </div>
+    </div>
+    <div class="theater__body">
+      <div class="theater__stage">
+        <model-viewer id="mv"
+          src="https://raw.githubusercontent.com/The-new-ben/nad-lan-co-il/main/assets/engine/rainbow.glb"
+          camera-controls auto-rotate auto-rotate-delay="1000" rotation-per-second="12deg"
+          interaction-prompt="none" environment-image="neutral" exposure="1.05" shadow-intensity="0.6" shadow-softness="1"
+          camera-orbit="30deg 74deg 110%" min-camera-orbit="auto 48deg auto" max-camera-orbit="auto 86deg auto"
+          min-field-of-view="16deg" max-field-of-view="44deg"
+          disable-zoom touch-action="pan-y" aria-label="3D"></model-viewer>
+      </div>
+      <div class="theater__panel">
+        <div class="pname" id="show-unit" data-i18n="unit_label">דירת 5 חדרים, קומה 12</div>
+        <div class="unitgrid">
+          <div class="u"><span data-i18n="u_rooms">חדרים</span><b>5</b></div>
+          <div class="u"><span data-i18n="u_floor">קומה</span><b>12</b></div>
+          <div class="u"><span data-i18n="u_view">נוף</span><b data-i18n="u_view_v">ים פתוח</b></div>
+          <div class="u"><span data-i18n="u_size">שטח</span><b>132 מ״ר</b></div>
+        </div>
+        <div class="price">₪8,600,000 – ₪9,700,000</div>
+        <p class="muted" style="font-size:13px;margin:2px 0 14px" data-i18n="unit_note">אומדן לא מחייב לפי עסקאות מדווחות באזור.</p>
+        <a class="btn btn--accent" href="#" style="width:100%" data-i18n="unit_cta">מעוניין בדירה — חזרו אליי</a>
+      </div>
+    </div>
+    <div class="theater__legend">
+      <span><i style="background:#8fe6c0"></i><span data-i18n="leg_avail">זמינה</span></span>
+      <span><i style="background:#f0c98a"></i><span data-i18n="leg_few">בודדות</span></span>
+      <span><i style="background:#e3a394"></i><span data-i18n="leg_sold">נמכרה</span></span>
+    </div>
+  </div>
+</section>
+
+<!-- price + comps -->
+<section class="sec wrap" id="price">
+  <div class="sec__head"><div><span class="kicker" data-i18n="price_kicker">מחיר ואומדן</span>
+    <h2 data-i18n="price_title">מה באמת נמכר באזור</h2>
+    <p data-i18n="price_lead">אומדן לא מחייב מבוסס עסקאות מדווחות (מדלן / רשות המסים), עם תאריך ומקור — בלי מחיר מומצא.</p></div></div>
+  <div class="price-wrap">
+    <div class="estimate">
+      <span class="kicker" style="color:#e6c690" data-i18n="price_range_label">טווח עסקאות מדווחות · אשירה</span>
+      <div class="big">₪7,070,000 – ₪7,720,000</div>
+      <div class="chips2"><span>₪60,950 – ₪71,080 <span data-i18n="psqm">למ״ר</span></span><span data-i18n="price_avg">ממוצע מבוקש ₪76,000 למ״ר</span></div>
+      <p class="muted" style="font-size:12.5px;color:#bdb6a6;margin-top:12px" data-i18n="price_note">אומדן לא מחייב · אינו מחיר יזם או הצעה · עודכן יוני 2026 · מקור: מדלן / רשות המסים.</p>
+    </div>
+    <div>
+      <table class="comps">
+        <thead><tr><th data-i18n="c_date">תאריך</th><th data-i18n="c_rooms">חדרים</th><th data-i18n="c_size">שטח</th><th data-i18n="c_price">מחיר</th><th data-i18n="psqm">למ״ר</th></tr></thead>
+        <tbody>
+          <tr><td>2025-12-30</td><td data-i18n="r4">4 חדרים</td><td>102 מ״ר</td><td>₪7,250,000</td><td>₪71,078</td></tr>
+          <tr><td>2025-12-29</td><td data-i18n="r5">5 חדרים</td><td>116 מ״ר</td><td>₪7,070,000</td><td>₪60,948</td></tr>
+          <tr><td>2025-12-29</td><td data-i18n="r5">5 חדרים</td><td>116 מ״ר</td><td>₪7,720,000</td><td>₪66,551</td></tr>
+        </tbody>
+      </table>
+      <p class="src" data-i18n="c_src">מקור: מדלן / רשות המסים — עסקאות מדווחות במגרש 101, מתחם אשכול, שדה דב.</p>
+    </div>
+  </div>
+</section>
+
+<!-- map + surroundings -->
+<section class="sec wrap" id="world">
+  <div class="sec__head"><div><span class="kicker" data-i18n="world_kicker">הסביבה</span>
+    <h2 data-i18n="world_title">כל מה שמסביב</h2>
+    <p data-i18n="world_lead">מיקום אמיתי על המפה, חוף וטיילת, רידינג, תחבורה, חינוך ומסחר — והפרויקטים הסמוכים.</p>
+    <p class="muted" style="font-size:13px;margin-top:6px" data-i18n="world_note">הערה: הקואורדינטות המדויקות יסונכרנו ממדלן (Mapbox חי) — כאן תרשים סביבה להמחשה.</p></div></div>
+  <div class="world">
+    <div class="map"><svg viewBox="0 0 400 280" preserveAspectRatio="xMidYMid slice">
+      <rect width="400" height="280" fill="#eef2ea"/>
+      <rect x="0" y="0" width="64" height="280" fill="#bcd7d8"/>
+      <path d="M64 0 q14 70 -6 140 q-14 70 8 140" stroke="#a9c7c6" stroke-width="2" fill="none"/>
+      <g stroke="#dcd6c7" stroke-width="6"><path d="M120 0V280"/><path d="M210 0V280"/><path d="M300 0V280"/><path d="M64 90H400"/><path d="M64 180H400"/></g>
+      <g font-size="9" font-family="Heebo" fill="#3a382f">
+        <circle cx="250" cy="150" r="7" fill="#bf5a3c"/><text x="262" y="153">Ashira</text>
+        <circle cx="180" cy="190" r="5" fill="#2b2a26"/><text x="150" y="207">Rainbow</text>
+        <circle cx="150" cy="120" r="5" fill="#2b2a26"/><text x="120" y="116">Dimri Yama</text>
+        <circle cx="78" cy="235" r="4" fill="#7c8a6a"/><text x="86" y="238">רידינג</text>
+      </g>
+    </svg></div>
+    <div class="poi">
+      <div class="row"><b data-i18n="poi_transport">תחבורה</b><br><span data-i18n="poi_transport_v">הרכבת הקלה (הקו הירוק), צירי איילון ונמיר</span></div>
+      <div class="row"><b data-i18n="poi_edu">חינוך</b><br><span data-i18n="poi_edu_v">בתי ספר וגני ילדים מתוכננים ברובע</span></div>
+      <div class="row"><b data-i18n="poi_sea">ים ופנאי</b><br><span data-i18n="poi_sea_v">חוף, טיילת ופארק הירקון בקרבת מקום</span></div>
+      <div class="row"><b>TA/4444</b><br><span data-i18n="poi_plan">תוכנית המתאר לרובע שדה דב — כ-16,000 יח״ד</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- project gallery cards (links out to the full project pages) -->
+<section class="sec wrap" id="projects-gallery">
+  <div class="sec__head"><div><span class="kicker" data-i18n="pc_kicker">פרויקטים נבחרים</span>
+    <h2 data-i18n="pc_title">פרויקטים חדשים להשוואה</h2></div>
+    <a class="sec__link" href="#projects-gallery" data-i18n="pc_all">לכל הפרויקטים ←</a></div>
+  <div class="cards3">
+    <a class="pcard" href="#"><div class="thumb"><svg viewBox="0 0 400 250"><g filter="url(#sketchy)" fill="none" stroke="#3a382f" stroke-width="1.5"><rect width="400" height="250" fill="#efe7d6" stroke="none"/><path d="M150 250V60h100v190" fill="#f6f1e6"/><path d="M120 250V120h30v130M250 250V100h40v150" fill="#f1ebdd"/><g stroke="#9a937e" stroke-width="1"><path d="M165 80h70M165 110h70M165 140h70M165 170h70M165 200h70"/></g><path d="M150 60l50-22 50 22" fill="none"/></g></svg></div>
+      <div class="body"><h3>Ashira · שדה דב</h3><div class="facts"><span data-i18n="pf_units">406 דירות</span><span data-i18n="pf_floors">7–34 קומות</span></div></div></a>
+    <a class="pcard" href="#"><div class="thumb"><svg viewBox="0 0 400 250"><g filter="url(#sketchy2)" fill="none" stroke="#3a382f" stroke-width="1.5"><rect width="400" height="250" fill="#efe7d6" stroke="none"/><path d="M170 250V40h80v210" fill="#f6f1e6"/><path d="M120 250V140h40v110M250 250V120h50v130" fill="#f1ebdd"/><g stroke="#9a937e" stroke-width="1"><path d="M182 60h56M182 90h56M182 120h56M182 150h56M182 180h56M182 210h56"/></g></g></svg></div>
+      <div class="body"><h3>Dimri Yama · שדה דב</h3><div class="facts"><span data-i18n="pf_sea">מול הים</span></div></div></a>
+    <a class="pcard" href="#"><div class="thumb"><svg viewBox="0 0 400 250"><g filter="url(#sketchy)" fill="none" stroke="#3a382f" stroke-width="1.5"><rect width="400" height="250" fill="#efe7d6" stroke="none"/><path d="M140 250V70h60v180M210 250V50h70v200" fill="#f6f1e6"/><g stroke="#9a937e" stroke-width="1"><path d="M150 90h40M150 120h40M150 150h40M222 70h46M222 100h46M222 130h46M222 160h46M222 190h46"/></g></g></svg></div>
+      <div class="body"><h3>Rainbow · תל אביב</h3><div class="facts"><span data-i18n="pf_units480">כ-480 דירות</span></div></div></a>
+  </div>
+</section>
+
+<!-- area hubs -->
+<section class="sec wrap" id="areas">
+  <div class="sec__head"><div><span class="kicker" data-i18n="ah_kicker">לפי אזור</span><h2 data-i18n="ah_title">אזורי הביקוש</h2></div></div>
+  <div class="areas">
+    <a class="area" href="#"><svg viewBox="0 0 300 220"><g filter="url(#sketchy)" fill="none" stroke="#3a382f" stroke-width="1.4"><rect width="300" height="220" fill="#efe8da" stroke="none"/><path d="M90 220V90h50v130M150 220V60h60v160" fill="#f4eede"/></g></svg><b data-i18n="area_sdedov">שדה דב</b></a>
+    <a class="area" href="#"><svg viewBox="0 0 300 220"><g filter="url(#sketchy2)" fill="none" stroke="#3a382f" stroke-width="1.4"><rect width="300" height="220" fill="#efe8da" stroke="none"/><path d="M70 220V120h60v100M150 220V100h50v120M210 220V140h40v80" fill="#f4eede"/></g></svg><b data-i18n="area_ramatav">רמת אביב</b></a>
+    <a class="area" href="#"><svg viewBox="0 0 300 220"><g filter="url(#sketchy)" fill="none" stroke="#3a382f" stroke-width="1.4"><rect width="300" height="220" fill="#efe8da" stroke="none"/><path d="M100 220V70h80v150" fill="#f4eede"/></g></svg><b data-i18n="area_north">צפון תל אביב</b></a>
+    <a class="area" href="#"><svg viewBox="0 0 300 220"><g filter="url(#sketchy2)" fill="none" stroke="#3a382f" stroke-width="1.4"><rect width="300" height="220" fill="#efe8da" stroke="none"/><path d="M80 220V110h50v110M140 220V90h60v130" fill="#f4eede"/></g></svg><b data-i18n="area_herzliya">הרצליה</b></a>
+  </div>
+</section>
+
+<!-- listings (honest: needs content) -->
+<section class="sec wrap" id="listings">
+  <div class="sec__head"><div><span class="kicker" data-i18n="li_kicker">דירות למכירה</span>
+    <h2 data-i18n="li_title">דירות ונכסים למכירה <span class="soon" data-i18n="soon">בקרוב · בהקמה</span></h2>
+    <p data-i18n="li_lead">לוח דירות מקבלן ויד שנייה עם בדיקה מקדימה. כרגע מוצג מבנה לדוגמה — יוזרם תוכן אמיתי.</p></div></div>
+  <div class="lgrid">
+    <div class="listing"><div class="ph"><svg viewBox="0 0 400 250"><g filter="url(#sketchy)" fill="none" stroke="#3a382f" stroke-width="1.4"><rect width="400" height="250" fill="#eee7d9" stroke="none"/><path d="M120 250V120h160v130" fill="#f5efe2"/><path d="M120 120l80-50 80 50" fill="#f0e9da"/></g></svg></div><div class="b"><div class="pr">₪—</div><div class="muted" style="font-size:13px" data-i18n="li_card1">4 חדרים · תל אביב · להזרמה</div></div></div>
+    <div class="listing"><div class="ph"><svg viewBox="0 0 400 250"><g filter="url(#sketchy2)" fill="none" stroke="#3a382f" stroke-width="1.4"><rect width="400" height="250" fill="#eee7d9" stroke="none"/><path d="M120 250V120h160v130" fill="#f5efe2"/><path d="M120 120l80-50 80 50" fill="#f0e9da"/></g></svg></div><div class="b"><div class="pr">₪—</div><div class="muted" style="font-size:13px" data-i18n="li_card2">5 חדרים · שדה דב · להזרמה</div></div></div>
+    <div class="listing"><div class="ph"><svg viewBox="0 0 400 250"><g filter="url(#sketchy)" fill="none" stroke="#3a382f" stroke-width="1.4"><rect width="400" height="250" fill="#eee7d9" stroke="none"/><path d="M120 250V120h160v130" fill="#f5efe2"/><path d="M120 120l80-50 80 50" fill="#f0e9da"/></g></svg></div><div class="b"><div class="pr">₪—</div><div class="muted" style="font-size:13px" data-i18n="li_card3">3 חדרים · רמת אביב · להזרמה</div></div></div>
+  </div>
+</section>
+
+<!-- news -->
+<section class="sec wrap news" id="news">
+  <div class="sec__head"><div><span class="kicker" data-i18n="ne_kicker">חדשות נדל״ן</span>
+    <h2 data-i18n="ne_title">חדשות ועדכוני שוק <span class="soon" data-i18n="soon">בקרוב · בהקמה</span></h2>
+    <p data-i18n="ne_lead">עדכוני מחירים, פרויקטים ותכנון — מנוע תוכן שמושך תנועה אורגנית. כאן מבנה לדוגמה.</p></div></div>
+  <div class="lgrid">
+    <div class="item"><div class="ph"><svg viewBox="0 0 120 90"><g filter="url(#sketchy)" fill="none" stroke="#3a382f" stroke-width="1.3"><rect width="120" height="90" fill="#ece5d6" stroke="none"/><path d="M30 90V40h60v50" fill="#f3ecdd"/></g></svg></div><div class="b"><b data-i18n="ne1">תוכנית שדה דב — לאן הולכים המחירים</b><p class="muted" style="font-size:13px;margin:6px 0 0" data-i18n="ne_soon">כתבה להזרמה</p></div></div>
+    <div class="item"><div class="ph"><svg viewBox="0 0 120 90"><g filter="url(#sketchy2)" fill="none" stroke="#3a382f" stroke-width="1.3"><rect width="120" height="90" fill="#ece5d6" stroke="none"/><path d="M30 90V40h60v50" fill="#f3ecdd"/></g></svg></div><div class="b"><b data-i18n="ne2">מדריך: מה לבדוק לפני דירה מקבלן</b><p class="muted" style="font-size:13px;margin:6px 0 0" data-i18n="ne_soon">כתבה להזרמה</p></div></div>
+    <div class="item"><div class="ph"><svg viewBox="0 0 120 90"><g filter="url(#sketchy)" fill="none" stroke="#3a382f" stroke-width="1.3"><rect width="120" height="90" fill="#ece5d6" stroke="none"/><path d="M30 90V40h60v50" fill="#f3ecdd"/></g></svg></div><div class="b"><b data-i18n="ne3">משקיעים מחו״ל — מס, מימון ומסמכים</b><p class="muted" style="font-size:13px;margin:6px 0 0" data-i18n="ne_soon">כתבה להזרמה</p></div></div>
+  </div>
+</section>
+
+<!-- guides / read-about-real-estate journey -->
+<section class="sec wrap" id="guides">
+  <div class="sec__head"><div><span class="kicker" data-i18n="gu_kicker">קריאה ולמידה</span>
+    <h2 data-i18n="gu_title">מדריכים ומילון נדל״ן</h2>
+    <p data-i18n="gu_lead">לקונים שרוצים להבין לפני שמתקדמים — ולמשקיעים מחו״ל שצריכים את כל הרקע.</p></div></div>
+  <div class="guides">
+    <a class="guide" href="#"><span class="k" data-i18n="gu1_k">מדריך</span><h4 data-i18n="gu1_t">קניית דירה מקבלן, שלב אחר שלב</h4></a>
+    <a class="guide" href="#"><span class="k" data-i18n="gu2_k">מדריך</span><h4 data-i18n="gu2_t">משכנתא: תמהיל, ריבית והחזר חודשי</h4></a>
+    <a class="guide" href="#"><span class="k" data-i18n="gu3_k">משקיעים</span><h4 data-i18n="gu3_t">רוכשים מחו״ל: מס, מימון ומסמכים</h4></a>
+    <a class="guide" href="#"><span class="k" data-i18n="gu4_k">מילון</span><h4 data-i18n="gu4_t">מילון מונחי נדל״ן מא׳ עד ת׳</h4></a>
+  </div>
+</section>
+
+<!-- tools -->
+<section class="sec wrap" id="tools">
+  <div class="sec__head"><div><span class="kicker" data-i18n="to_kicker">לפני שחותמים</span><h2 data-i18n="to_title">מחשבונים וכלים חינמיים</h2></div></div>
+  <div class="tools">
+    <a class="tool" href="#" data-i18n="to_mortgage">מחשבון משכנתא<span data-i18n="to_mortgage_s">תמהיל והחזר חודשי</span></a>
+    <a class="tool" href="#" data-i18n="to_tax">מס רכישה<span data-i18n="to_tax_s">מדרגות ומס לפי סטטוס</span></a>
+    <a class="tool" href="#" data-i18n="to_value">בדיקת שווי<span data-i18n="to_value_s">אומדן לפי עסקאות</span></a>
+    <a class="tool" href="#" data-i18n="to_docs">בדיקת מסמכים<span data-i18n="to_docs_s">צ׳קליסט לפני חוזה</span></a>
+  </div>
+</section>
+
+<!-- professionals -->
+<section class="sec wrap" id="pros">
+  <div class="sec__head"><div><span class="kicker" data-i18n="pr_kicker">אינדקס</span><h2 data-i18n="pr_title">בעלי מקצוע מאומתים לנדל״ן</h2>
+    <p data-i18n="pr_lead">עורכי דין, שמאים ומפקחי בנייה — 2,711 בעלי מקצוע מתוך פנקס הקבלנים ומקורות מאומתים.</p></div></div>
+  <a class="btn btn--primary" href="#" data-i18n="pr_cta">לכל אנשי המקצוע</a>
+  <div class="disc" data-i18n="disclaimer">המידע בעמוד מבוסס מקורות ציבוריים ועל המחשה. אינו ייעוץ, הצעה או התחייבות. מחיר, זמינות, תוכניות ותנאי רכישה מחייבים אימות מול היזם ואנשי המקצוע.</div>
+</section>
+
+<!-- footer mega -->
+<footer class="foot"><div class="wrap">
+  <div><a class="brand" style="color:#f1ead9" href="#"><i>N</i> NadLan</a><p style="color:#b6afa0;font-size:14px;margin-top:12px;max-width:34ch" data-i18n="foot_tag">נדל״ן בישראל — דירות, פרויקטים, מחירים ומידע לפני שקונים.</p></div>
+  <div><h5 data-i18n="foot_buy">קנייה</h5><ul><li><a href="#" data-i18n="nav_buy">דירות למכירה</a></li><li><a href="#" data-i18n="nav_new">דירה מקבלן</a></li><li><a href="#" data-i18n="nav_invest">השקעה</a></li><li><a href="#" data-i18n="nav_projects">פרויקטים</a></li></ul></div>
+  <div><h5 data-i18n="foot_areas">אזורים</h5><ul><li><a href="#">שדה דב</a></li><li><a href="#">רמת אביב</a></li><li><a href="#">צפון תל אביב</a></li><li><a href="#">הרצליה</a></li></ul></div>
+  <div><h5 data-i18n="foot_tools">כלים</h5><ul><li><a href="#" data-i18n="to_mortgage">מחשבון משכנתא</a></li><li><a href="#" data-i18n="to_tax">מס רכישה</a></li><li><a href="#" data-i18n="nav_news">חדשות</a></li><li><a href="#" data-i18n="foot_glossary">מילון נדל״ן</a></li></ul></div>
+  <div><h5 data-i18n="foot_company">החברה</h5><ul><li><a href="#" data-i18n="nav_pros">אנשי מקצוע</a></li><li><a href="#" data-i18n="foot_list">שיווק פרויקט</a></li><li><a href="#" data-i18n="foot_contact">צרו קשר</a></li></ul></div>
+</div><div class="bottom"><div class="wrap" data-i18n="foot_rights">© NadLan · כל המידע להמחשה עד לאישור היזם.</div></div></footer>
+
+<script>
+const I18N = {
+  he:{}, // HE is the authored default in the markup
+  en:{
+    meta_title:"Real estate in Israel — apartments, projects, prices & info before you buy | NadLan",
+    util_area:"Sde Dov district",util_byarea:"Projects by area",util_note:"Transaction data from the Israel Tax Authority, updated continuously",
+    nav_projects:"Projects",nav_buy:"For sale",nav_new:"New from developer",nav_invest:"Investment",nav_areas:"Areas",nav_tools:"Calculators",nav_pros:"Professionals",nav_news:"News",nav_cta:"Start search",
+    hero_kicker:"Real estate in Israel, data-driven",hero_title:"Choose an apartment, a project and an area before you commit",
+    hero_lead:"Search apartments and new projects in Israel, real transactions in the area from Tax Authority data, a real neighborhood map, calculators and verified professionals — before you call a representative.",
+    tab_new:"New homes",tab_resale:"Resale",tab_invest:"Investment",tab_commercial:"Commercial",
+    f_area:"City, neighborhood or project",f_area_val:"Sde Dov, Tel Aviv",f_rooms:"Rooms",f_any:"Any",f_3p:"3+",f_4p:"4+",f_5p:"5+",f_go:"Start search",
+    chip_3d:"Choose an apartment in 3D",chip_deals:"Real deals in the area",chip_tax:"Purchase tax calculator",chip_mortgage:"Mortgage calculator",
+    hs_loc:"Sde Dov district · Tel Aviv",hs_badge:"Illustrative model",hs_foot:"Rotate the building, tap a floor and pick an apartment by view and orientation.",
+    t1_k:"Availability",t1_t:"Apartment by floor and view",t1_p:"The choice starts with where the apartment sits in the building, not only the project name.",
+    t2_k:"Price",t2_t:"Estimate from real deals",t2_p:"From Tax Authority data, shown carefully until confirmed with the developer.",
+    t3_k:"Environment",t3_t:"Sea, transport and neighborhood",t3_p:"Check life around the project before requesting a call.",
+    t4_k:"Languages",t4_t:"Information for buyers abroad too",t4_p:"Hebrew, English, Russian, French and Arabic, on separate pages.",
+    show_kicker:"Choose an apartment in 3D",show_title:"Pick an apartment from the building",
+    show_lead:"Switch between projects, rotate the building, and check floor, orientation, view and a price estimate before you call.",
+    unit_label:"5-room apartment, floor 12",u_rooms:"Rooms",u_floor:"Floor",u_view:"View",u_view_v:"Open sea",u_size:"Area",
+    unit_note:"Non-binding estimate from recorded deals nearby.",unit_cta:"I'm interested — call me back",
+    leg_avail:"Available",leg_few:"Few left",leg_sold:"Sold",
+    price_kicker:"Price & estimate",price_title:"What actually sold nearby",
+    price_lead:"A non-binding estimate from recorded transactions (Madlan / Tax Authority), with date and source — no invented price.",
+    price_range_label:"Recorded transaction range · Ashira",psqm:"/m²",price_avg:"Avg asking ₪76,000/m²",
+    price_note:"Non-binding estimate · not a developer price or offer · updated June 2026 · source: Madlan / Israel Tax Authority.",
+    c_date:"Date",c_rooms:"Rooms",c_size:"Area",c_price:"Price",r4:"4 rooms",r5:"5 rooms",
+    c_src:"Source: Madlan / Tax Authority — recorded deals at Plot 101, Eshkol compound, Sde Dov.",
+    world_kicker:"The surroundings",world_title:"Everything around it",
+    world_lead:"Real location on the map, beach and promenade, Reading, transport, education and retail — and nearby projects.",
+    world_note:"Note: exact coordinates will sync from Madlan (live Mapbox) — this is an illustrative area diagram.",
+    poi_transport:"Transport",poi_transport_v:"Light rail (Green line), Ayalon & Namir routes",poi_edu:"Education",poi_edu_v:"Planned schools and kindergartens in the district",
+    poi_sea:"Sea & leisure",poi_sea_v:"Beach, promenade and HaYarkon park nearby",poi_plan:"Sde Dov district master plan — ~16,000 units",
+    pc_kicker:"Featured projects",pc_title:"New projects to compare",pc_all:"All projects ←",pf_units:"406 apartments",pf_floors:"7–34 floors",pf_sea:"By the sea",pf_units480:"~480 apartments",
+    ah_kicker:"By area",ah_title:"In-demand areas",area_sdedov:"Sde Dov",area_ramatav:"Ramat Aviv",area_north:"North Tel Aviv",area_herzliya:"Herzliya",
+    li_kicker:"For sale",li_title:"Apartments & properties for sale",soon:"coming soon",li_lead:"A listings board (new + resale) with up-front checks. A sample layout for now — real content will be fed in.",
+    li_card1:"4 rooms · Tel Aviv · to be added",li_card2:"5 rooms · Sde Dov · to be added",li_card3:"3 rooms · Ramat Aviv · to be added",
+    ne_kicker:"Real estate news",ne_title:"News & market updates",ne_lead:"Price, project and planning updates — a content engine that pulls organic traffic. Sample layout here.",
+    ne1:"The Sde Dov plan — where are prices heading",ne2:"Guide: what to check before a new-build apartment",ne3:"Foreign investors — tax, finance and documents",ne_soon:"article to be added",
+    gu_kicker:"Read & learn",gu_title:"Guides and a real-estate glossary",gu_lead:"For buyers who want to understand before moving ahead — and investors abroad who need the full background.",
+    gu1_k:"Guide",gu1_t:"Buying from a developer, step by step",gu2_k:"Guide",gu2_t:"Mortgage: mix, rate and monthly payment",gu3_k:"Investors",gu3_t:"Buyers from abroad: tax, finance and documents",gu4_k:"Glossary",gu4_t:"Real-estate terms from A to Z",
+    to_kicker:"Before you sign",to_title:"Free calculators and tools",to_mortgage:"Mortgage calculator",to_mortgage_s:"Mix and monthly payment",to_tax:"Purchase tax",to_tax_s:"Brackets by status",to_value:"Value check",to_value_s:"Estimate from deals",to_docs:"Document check",to_docs_s:"Pre-contract checklist",
+    pr_kicker:"Index",pr_title:"Verified real-estate professionals",pr_lead:"Lawyers, appraisers and building inspectors — 2,711 professionals from the contractors registry and verified sources.",pr_cta:"All professionals",
+    disclaimer:"Information is based on public sources and illustration. Not advice, an offer or a commitment. Price, availability, plans and terms require verification with the developer and professionals.",
+    foot_tag:"Real estate in Israel — apartments, projects, prices and info before you buy.",foot_buy:"Buy",foot_areas:"Areas",foot_tools:"Tools",foot_glossary:"Glossary",foot_company:"Company",foot_list:"List a project",foot_contact:"Contact",foot_rights:"© NadLan · all information illustrative pending developer approval."
+  },
+  fr:{nav_projects:"Projets",nav_buy:"À vendre",nav_new:"Neuf promoteur",nav_invest:"Investissement",nav_areas:"Quartiers",nav_tools:"Calculatrices",nav_pros:"Professionnels",nav_news:"Actualités",nav_cta:"Rechercher",hero_kicker:"Immobilier en Israël, basé sur les données",hero_title:"Choisissez un appartement, un projet et un quartier avant de vous engager",show_title:"Choisissez un appartement dans le bâtiment",price_title:"Ce qui s'est réellement vendu",world_title:"Tout autour",pc_title:"Projets à comparer",ah_title:"Quartiers recherchés",li_title:"Appartements à vendre",ne_title:"Actualités & marché",gu_title:"Guides et lexique immobilier",to_title:"Calculatrices gratuites",pr_title:"Professionnels vérifiés",soon:"bientôt"},
+  ru:{nav_projects:"Проекты",nav_buy:"Продажа",nav_new:"Новостройки",nav_invest:"Инвестиции",nav_areas:"Районы",nav_tools:"Калькуляторы",nav_pros:"Специалисты",nav_news:"Новости",nav_cta:"Поиск",hero_kicker:"Недвижимость в Израиле, на основе данных",hero_title:"Выберите квартиру, проект и район до сделки",show_title:"Выберите квартиру в здании",price_title:"Что реально продано рядом",world_title:"Всё вокруг",pc_title:"Новые проекты для сравнения",ah_title:"Востребованные районы",li_title:"Квартиры на продажу",ne_title:"Новости рынка",gu_title:"Гиды и глоссарий недвижимости",to_title:"Бесплатные калькуляторы",pr_title:"Проверенные специалисты",soon:"скоро"},
+  ar:{nav_projects:"مشاريع",nav_buy:"للبيع",nav_new:"جديد من المقاول",nav_invest:"استثمار",nav_areas:"المناطق",nav_tools:"حاسبات",nav_pros:"مختصون",nav_news:"أخبار",nav_cta:"ابدأ البحث",hero_kicker:"عقارات في إسرائيل، قائمة على البيانات",hero_title:"اختر شقة ومشروعًا ومحيطًا قبل أن تتقدم",show_title:"اختر شقة من المبنى",price_title:"ما الذي بيع فعلاً قربك",world_title:"كل ما حولك",pc_title:"مشاريع جديدة للمقارنة",ah_title:"مناطق مطلوبة",li_title:"شقق للبيع",ne_title:"أخبار السوق",gu_title:"أدلة ومعجم عقاري",to_title:"حاسبات مجانية",pr_title:"مختصون موثوقون",soon:"قريبًا"}
+};
+// snapshot the authored Hebrew as the he dictionary
+(function(){var he={};document.querySelectorAll('[data-i18n]').forEach(function(el){he[el.getAttribute('data-i18n')]=el.textContent;});I18N.he=he;
+  var hv={};document.querySelectorAll('[data-i18n-val]').forEach(function(el){hv[el.getAttribute('data-i18n-val')]=el.value;});I18N.he.__vals=hv;})();
+function setLang(l){
+  var dict=I18N[l]||{};var en=I18N.en;var he=I18N.he;
+  document.documentElement.lang=l;document.documentElement.dir=(l==='he'||l==='ar')?'rtl':'ltr';
+  document.querySelectorAll('[data-i18n]').forEach(function(el){var k=el.getAttribute('data-i18n');
+    var v=(l==='he')?he[k]:(dict[k]!=null?dict[k]:(en[k]!=null?en[k]:he[k]));if(v!=null)el.textContent=v;});
+  document.querySelectorAll('[data-i18n-val]').forEach(function(el){var k=el.getAttribute('data-i18n-val');
+    var v=(l==='he')?(he.__vals&&he.__vals[k]):(en[k]!=null?en[k]:(he.__vals&&he.__vals[k]));if(v!=null)el.value=v;});
+  document.querySelectorAll('[data-setlang]').forEach(function(b){b.classList.toggle('is-on',b.getAttribute('data-setlang')===l);});
+}
+document.querySelectorAll('[data-setlang]').forEach(function(b){b.addEventListener('click',function(){setLang(b.getAttribute('data-setlang'));});});
+// project switcher (3D + name) — same staged camera/lighting for every project, same GLBs the project pages use
+var PROJ={rainbow:{glb:"https://raw.githubusercontent.com/The-new-ben/nad-lan-co-il/main/assets/engine/rainbow.glb",name:"Rainbow · תל אביב",name_en:"Rainbow · Tel Aviv"},
+  dimri:{glb:"https://raw.githubusercontent.com/The-new-ben/nad-lan-co-il/main/assets/engine/dimri.glb",name:"Dimri Yama · שדה דב",name_en:"Dimri Yama · Sde Dov"},
+  ashira:{glb:"https://raw.githubusercontent.com/The-new-ben/nad-lan-co-il/main/assets/engine/ashira.glb",name:"Ashira · שדה דב",name_en:"Ashira · Sde Dov"}};
+document.querySelectorAll('[data-proj]').forEach(function(b){b.addEventListener('click',function(){
+  document.querySelectorAll('[data-proj]').forEach(function(x){x.classList.toggle('is-on',x===b);});
+  var p=PROJ[b.getAttribute('data-proj')];var mv=document.getElementById('mv');if(mv)mv.src=p.glb;
+  document.getElementById('show-name').textContent=(document.documentElement.lang==='en')?p.name_en:p.name;});});
+</script>
+</body>
+</html>
