@@ -579,7 +579,7 @@
 		var modelWrap = qs('[data-nle-model-wrap]');
 		if (modelWrap) {
 			modelWrap.innerHTML =
-				'<model-viewer id="nle-model-viewer" src="' + assetUrl(project.model_glb) + '" poster="' + assetUrl(project.poster) + '" alt="' + localized(project, 'name') + '" camera-controls auto-rotate auto-rotate-delay="2600" rotation-per-second="12deg" min-camera-orbit="-Infinity 64deg auto" max-camera-orbit="Infinity 78deg auto" camera-orbit="26deg 72deg auto" field-of-view="28deg" reveal="auto" loading="auto" shadow-intensity="1" exposure="1.15">' +
+				'<model-viewer id="nle-model-viewer" src="' + assetUrl(project.model_glb) + '" poster="' + assetUrl(project.poster) + '" alt="' + localized(project, 'name') + '" camera-controls auto-rotate auto-rotate-delay="2600" rotation-per-second="12deg" min-camera-orbit="-Infinity 64deg auto" max-camera-orbit="Infinity 78deg auto" camera-orbit="26deg 72deg auto" field-of-view="28deg" reveal="auto" loading="auto" environment-image="neutral" shadow-intensity="1" shadow-softness="1" exposure="1.15">' +
 				project.units.map(function (unit) {
 					return '<button class="nle-hotspot ' + (unit.recommended ? 'is-recommended ' : '') + '" style="--nle-status:' + statusColor(unit.status) + '" type="button" slot="hotspot-' + unit.id + '" data-position="' + unit.position + '" data-normal="' + unit.normal + '" data-nle-unit-button="' + unit.id + '" aria-label="' + translatedTitle(unit) + '"></button>';
 				}).join('') +
@@ -619,6 +619,12 @@
 		text(qs('[data-nle-unit-price]'), translatedPrice(unit));
 		text(qs('[data-nle-selected-unit]'), unit.id);
 		renderPanel();
+		var card = qs('.nle-unit-card');
+		if (card) {
+			card.classList.remove('is-revealing');
+			void card.offsetWidth;
+			card.classList.add('is-revealing');
+		}
 	}
 
 	function renderPanel() {

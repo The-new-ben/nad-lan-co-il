@@ -185,6 +185,36 @@ $projects_js = $theme_uri . 'assets/engine/projects.json';
 			</div>
 		</section>
 
+		<section class="nlh-home-international" aria-labelledby="nlh-areas-title">
+			<div class="nlh-section-head">
+				<span>לפי אזור</span>
+				<h2 id="nlh-areas-title">אזורי הביקוש</h2>
+				<p>בחרו אזור כדי לראות פרויקטים, מחירים ועסקאות אחרונות באזור.</p>
+			</div>
+			<div class="nlh-language-grid">
+				<a class="nlh-language-card" href="/sde-dov/">
+					<span>אזור</span>
+					<strong>רובע שדה דב</strong>
+					<p>תל אביב, קו הים. הפרויקטים החדשים ביותר באזור.</p>
+				</a>
+				<a class="nlh-language-card" href="/ramat-aviv/">
+					<span>אזור</span>
+					<strong>רמת אביב</strong>
+					<p>שכונה ותיקה ומבוססת בצפון תל אביב.</p>
+				</a>
+				<a class="nlh-language-card" href="/north-tel-aviv/">
+					<span>אזור</span>
+					<strong>צפון תל אביב</strong>
+					<p>קרבה לים, פארק הירקון והעיר.</p>
+				</a>
+				<a class="nlh-language-card" href="/herzliya-pituach-apartment-prices/">
+					<span>אזור</span>
+					<strong>הרצליה פיתוח</strong>
+					<p>קרבה לים ולמרינה, מגורי יוקרה.</p>
+				</a>
+			</div>
+		</section>
+
 		<section class="nlh-home-international" aria-labelledby="nlh-international-title">
 			<div class="nlh-section-head">
 				<span>נדל״ן בישראל</span>
