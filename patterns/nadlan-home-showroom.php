@@ -45,7 +45,7 @@ $projects_js = $theme_uri . 'assets/engine/projects.json';
 
 		<section class="nle-catalog nlh-home-project-engine" id="projects" aria-labelledby="nle-projects-title">
 			<div class="nlh-home-languages" aria-label="שפות למשקיעים מחו״ל">
-				<strong data-nle-home-text="language_prompt">מידע לרוכשים מחו״ל, בשפה שמתאימה להם</strong>
+				<strong class="nlh-lang-quiet" data-nle-home-text="language_prompt">שפה</strong>
 				<button class="is-active" type="button" data-nle-lang="he" lang="he" dir="rtl">עברית</button>
 				<button type="button" data-nle-lang="en" lang="en" dir="ltr">English</button>
 				<button type="button" data-nle-lang="fr" lang="fr" dir="ltr">Français</button>
@@ -187,31 +187,31 @@ $projects_js = $theme_uri . 'assets/engine/projects.json';
 
 		<section class="nlh-home-international" aria-labelledby="nlh-international-title">
 			<div class="nlh-section-head">
-				<span>רוכשים מחו״ל</span>
-				<h2 id="nlh-international-title">מידע ברור גם באנגלית, צרפתית, רוסית וערבית</h2>
-				<p>כל שפה תקבל בהמשך עמוד מלא משלה. בשלב הזה הכניסה הרב לשונית מציגה את ההבטחה לקונה בשפה שהוא מבין.</p>
+				<span>נדל״ן בישראל</span>
+				<h2 id="nlh-international-title">כל מה שצריך כדי לקנות דירה נכון</h2>
+				<p>פרויקטים חדשים, מחשבוני עלות, מדריכי רכישה ואנשי מקצוע מאומתים, במקום אחד.</p>
 			</div>
 			<div class="nlh-language-grid">
-				<article class="nlh-language-card" id="english" lang="en" dir="ltr">
-					<span>English</span>
-					<strong>Compare new projects in Israel before you call.</strong>
-					<p>Check the location, apartment level, view, estimated price and next documents to review before speaking with a representative.</p>
-				</article>
-				<article class="nlh-language-card" id="french" lang="fr" dir="ltr">
-					<span>Français</span>
-					<strong>Comparer un projet avant de demander des détails.</strong>
-					<p>Emplacement, étage, vue, estimation de prix et documents à vérifier sont réunis dans un parcours clair.</p>
-				</article>
-				<article class="nlh-language-card" id="russian" lang="ru" dir="ltr">
-					<span>Русский</span>
-					<strong>Сравните проект до первого звонка.</strong>
-					<p>Расположение, этаж, вид, ориентир цены и документы собраны в одном понятном пути для покупателя.</p>
-				</article>
-				<article class="nlh-language-card" id="arabic" lang="ar" dir="rtl">
-					<span>العربية</span>
-					<strong>قارنوا المشروع قبل التواصل.</strong>
-					<p>الموقع، الطابق، الإطلالة، تقدير السعر والمستندات الأساسية تظهر في مسار واضح قبل اتخاذ قرار.</p>
-				</article>
+				<a class="nlh-language-card" href="/projects/">
+					<span>פרויקטים</span>
+					<strong>פרויקטים חדשים ובחירת דירה</strong>
+					<p>השוו פרויקטים, בדקו קומה, כיוון ונוף, וראו אומדן מחיר לא מחייב לפני פנייה.</p>
+				</a>
+				<a class="nlh-language-card" href="/mortgage-calculator/">
+					<span>כלים</span>
+					<strong>מחשבוני עלות לפני חתימה</strong>
+					<p>משכנתא, מס רכישה ועלויות עסקה, כדי לדעת מה באמת צריך לפני התקדמות.</p>
+				</a>
+				<a class="nlh-language-card" href="/buying-apartment/">
+					<span>מדריכים</span>
+					<strong>מה לבדוק לפני שקונים</strong>
+					<p>מדריכי רכישה, מסמכים, זכויות בנייה ובדיקות חשובות לפני חוזה.</p>
+				</a>
+				<a class="nlh-language-card" href="/professionals/">
+					<span>אנשי מקצוע</span>
+					<strong>בעלי מקצוע מאומתים</strong>
+					<p>עורכי דין, שמאים ומפקחי בנייה לנדל״ן, לבדיקה בטוחה של העסקה.</p>
+				</a>
 			</div>
 		</section>
 	</main>
