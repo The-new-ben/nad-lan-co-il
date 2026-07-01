@@ -2,7 +2,7 @@
 /**
  * Plugin Name: NadLan Config
  * Description: Lead-capture foundation: nadlan_lead CPT + lead-form handler + healthcheck. Read skills/nadlan-config-plugin.md.
- * Version: 1.69.66
+ * Version: 1.69.67
  * Author: nad-lan.co.il
  * License: GPL-2.0+
  * Requires PHP: 7.4
@@ -70,7 +70,7 @@ if ( ! function_exists( 'nadlan_config_healthcheck_response' ) ) {
 	function nadlan_config_healthcheck_response() {
 		$out = array(
 			'plugin'              => 'nadlan-config',
-			'version'             => '1.69.66',
+			'version'             => '1.69.67',
 			'cpt_present'         => post_type_exists( 'nadlan_lead' ),
 			'lead_handler_loaded' => (bool) has_action( 'admin_post_nadlan_lead' ),
 			'php_version'         => PHP_VERSION,
@@ -552,3 +552,13 @@ if ( ! function_exists( 'nadlan_config_ga4_tag' ) ) {
 	}
 }
 add_action( 'wp_head', 'nadlan_config_ga4_tag', 5 );
+
+if ( ! function_exists( 'nadlan_config_emergency_css' ) ) {
+	function nadlan_config_emergency_css() {
+		wp_register_style( 'nadlan-emergency-css', false );
+		wp_enqueue_style( 'nadlan-emergency-css' );
+		wp_add_inline_style( 'nadlan-emergency-css', '/* Homepage Showcase Fixes */ .nlpc-home .nlux-showcase img { aspect-ratio: 4/3; object-fit: cover; width: 100%; height: auto; display: block; } .nlpc-home .nlux-showcase { overflow-x: auto; padding-bottom: 16px; scroll-padding-inline: 16px; } /* Stage Blowout Fix */ .nl-stagewrap { max-height: 75vh; } /* Floating Controls Docking Fix */ .nl-fly { z-index: 45 !important; bottom: 85px; } @media (max-width: 760px) { .nl-fly { bottom: 70px; } }' );
+	}
+}
+add_action( 'wp_enqueue_scripts', 'nadlan_config_emergency_css', 99 );
+
