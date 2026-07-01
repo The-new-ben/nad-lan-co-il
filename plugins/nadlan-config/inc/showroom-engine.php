@@ -421,3 +421,66 @@ add_action( 'wp_head', function () {
 	$xd = isset( $proj['lang_urls']['he'] ) ? $proj['lang_urls']['he'] : reset( $proj['lang_urls'] );
 	printf( '<link rel="alternate" hreflang="x-default" href="%s">' . "\n", esc_url( $xd ) );
 }, 5 );
+
+// Direct Access Meta Box for Showroom Engine
+add_action("add_meta_boxes", function() {
+    add_meta_box("nadlan_showroom_engine_meta", "Showroom Engine - Direct Access", "nadlan_showroom_engine_meta_cb", "nadlan_project", "normal", "high");
+});
+
+function nadlan_showroom_engine_meta_cb($post) {
+    wp_nonce_field("nadlan_showroom_engine_nonce", "nadlan_showroom_engine_nonce_val");
+    $use_engine = get_post_meta($post->ID, "nlp3d_use_engine", true);
+    $poster = get_post_meta($post->ID, "project_model_poster", true);
+    $glb = get_post_meta($post->ID, "project_model_glb", true);
+    $lat = get_post_meta($post->ID, "lat", true);
+    $lng = get_post_meta($post->ID, "lng", true);
+    ?>
+    <table class="form-table">
+        <tr>
+            <th><label for="nlp3d_use_engine">Enable Showroom Engine</label></th>
+            <td><input type="checkbox" id="nlp3d_use_engine" name="nlp3d_use_engine" value="1" <?php checked($use_engine, "1"); ?> />
+            <p class="description">Turn on the new 3D mapping and interactive showroom for this project.</p></td>
+        </tr>
+        <tr>
+            <th><label for="project_model_poster">Sketch / Poster Image (URL)</label></th>
+            <td><input type="text" id="project_model_poster" name="project_model_poster" value="<?php echo esc_attr($poster); ?>" class="regular-text" />
+            <p class="description">Fallback sketch image to use instead of a 3D model (e.g. Rainbow style).</p></td>
+        </tr>
+        <tr>
+            <th><label for="project_model_glb">3D Model (GLB URL)</label></th>
+            <td><input type="text" id="project_model_glb" name="project_model_glb" value="<?php echo esc_attr($glb); ?>" class="regular-text" />
+            <p class="description">Optional 3D model. Leave blank to rely entirely on the sketch/poster.</p></td>
+        </tr>
+        <tr>
+            <th><label for="lat">Mapbox Latitude</label></th>
+            <td><input type="text" id="lat" name="lat" value="<?php echo esc_attr($lat); ?>" class="regular-text" /></td>
+        </tr>
+        <tr>
+            <th><label for="lng">Mapbox Longitude</label></th>
+            <td><input type="text" id="lng" name="lng" value="<?php echo esc_attr($lng); ?>" class="regular-text" /></td>
+        </tr>
+    </table>
+    <?php
+}
+
+add_action("save_post", function($post_id) {
+    if (!isset($_POST["nadlan_showroom_engine_nonce_val"]) || !wp_verify_nonce($_POST["nadlan_showroom_engine_nonce_val"], "nadlan_showroom_engine_nonce")) {
+        return;
+    }
+    if (defined("DOING_AUTOSAVE") && DOING_AUTOSAVE) return;
+    if (!current_user_can("edit_post", $post_id)) return;
+
+    if (isset($_POST["nlp3d_use_engine"])) {
+        update_post_meta($post_id, "nlp3d_use_engine", "1");
+    } else {
+        delete_post_meta($post_id, "nlp3d_use_engine");
+    }
+
+    $fields = array("project_model_poster", "project_model_glb", "lat", "lng");
+    foreach ($fields as $f) {
+        if (isset($_POST[$f])) {
+            update_post_meta($post_id, $f, sanitize_text_field($_POST[$f]));
+        }
+    }
+});
+
