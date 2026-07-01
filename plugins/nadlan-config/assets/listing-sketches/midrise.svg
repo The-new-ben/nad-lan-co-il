@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 480"><rect width="640" height="480" fill="#FAF8F3"/><g stroke="#2E2B26" fill="none" stroke-width="2"><rect x="180" y="160" width="280" height="260" fill="#FFFDFC"/><line x1="168" y1="160" x2="472" y2="160" stroke-width="3"/><g stroke-width="1.2"><line x1="180" y1="212" x2="460" y2="212"/><line x1="180" y1="264" x2="460" y2="264"/><line x1="180" y1="316" x2="460" y2="316"/><line x1="180" y1="368" x2="460" y2="368"/></g>
+<g stroke-width="1.4"><rect x="200" y="174" width="34" height="26" fill="#FFFDFC"/><rect x="260" y="174" width="34" height="26" fill="#FFFDFC"/><rect x="320" y="174" width="34" height="26" fill="#E6D4AE"/><rect x="390" y="174" width="46" height="26" fill="#FFFDFC"/>
+<rect x="200" y="226" width="34" height="26"/><rect x="260" y="226" width="34" height="26"/><rect x="320" y="226" width="34" height="26"/><rect x="390" y="226" width="46" height="26" fill="#E6D4AE"/>
+<rect x="200" y="278" width="34" height="26"/><rect x="260" y="278" width="34" height="26" fill="#E6D4AE"/><rect x="320" y="278" width="34" height="26"/><rect x="390" y="278" width="46" height="26"/>
+<rect x="200" y="330" width="34" height="26"/><rect x="260" y="330" width="34" height="26"/><rect x="320" y="330" width="34" height="26"/><rect x="390" y="330" width="46" height="26"/></g>
+<rect x="300" y="384" width="40" height="36" fill="#2E2B26"/><line x1="60" y1="420" x2="580" y2="420" stroke-width="2.5"/>
+<path d="M100 420q12-50 24 0M84 388q28-40 56 0" stroke="#6D665C" stroke-width="1.4"/><path d="M520 420q10-40 20 0M504 396q26-30 52 0" stroke="#6D665C" stroke-width="1.4"/>
+<path d="M180 160l60-46 60 46" stroke-width="1.6"/></g>
+<text x="320" y="460" font-family="Georgia,serif" font-size="15" fill="#6D665C" text-anchor="middle">הדמיה אדריכלית להמחשה</text></svg>

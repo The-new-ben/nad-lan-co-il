@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 480"><rect width="640" height="480" fill="#FAF8F3"/><g stroke="#2E2B26" fill="none" stroke-width="2"><rect x="200" y="200" width="240" height="180" fill="#FFFDFC"/><path d="M188 200l132-84 132 84" stroke-width="2.6"/><line x1="200" y1="290" x2="440" y2="290" stroke-width="1.2"/>
+<rect x="224" y="224" width="40" height="34" fill="#E6D4AE" stroke-width="1.4"/><rect x="376" y="224" width="40" height="34" fill="#FFFDFC" stroke-width="1.4"/><rect x="224" y="310" width="40" height="34" fill="#FFFDFC" stroke-width="1.4"/><rect x="376" y="310" width="40" height="34" fill="#FFFDFC" stroke-width="1.4"/>
+<rect x="300" y="316" width="42" height="64" fill="#2E2B26"/><line x1="40" y1="380" x2="600" y2="380" stroke-width="2.5"/>
+<path d="M90 380q14-60 28 0M70 342q34-46 68 0M480 380q16-70 32 0M456 336q40-52 80 0" stroke="#6D665C" stroke-width="1.5"/>
+<path d="M170 380q-8 22-24 30M470 380q8 22 24 30" stroke="#9C7A3C" stroke-width="1.4"/>
+<path d="M200 430q120-24 240 0" stroke="#9C7A3C" stroke-width="1.6" stroke-dasharray="7 5"/></g>
+<text x="320" y="464" font-family="Georgia,serif" font-size="15" fill="#6D665C" text-anchor="middle">הדמיה אדריכלית להמחשה</text></svg>
