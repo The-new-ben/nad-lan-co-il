@@ -1,0 +1,110 @@
+/* Parent-theme override for the child theme header (themes/nadlan-platform-child/).
+ * WHY THIS FILE EXISTS: UPress's Git pull is only connected to the parent theme
+ * path (/wp-content/themes/nadlan-revenue/). The child theme is not git-tracked
+ * on this install, so changes to themes/nadlan-platform-child/ in this repo never
+ * reach the live site. Until a second Git connection exists for the child theme,
+ * this file (enqueued from the PARENT theme, which IS deployable) patches the
+ * header from the outside. Delete this file once the child theme has its own
+ * working deploy path and these rules are confirmed live from platform.css.
+ */
+.nlpc-site-header__inner{
+  overflow: hidden;
+}
+.nlpc-brand__text{
+  overflow: hidden;
+}
+.nlpc-brand__text strong{
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%;
+}
+.nlpc-brand__text small{
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%;
+  display: block;
+}
+.nlpc-brand__mark,
+.nlpc-header-cta,
+.nlpc-nav-toggle{
+  border-radius: 2px !important;
+}
+.nlpc-primary-nav a,
+.nlpc-header-cta{
+  font-weight: 500 !important;
+}
+
+/* Hamburger toggle -- injected by nlpc-header-nav-inject.js since the child
+ * theme's header.html markup can't be updated from here. Styled to match the
+ * child theme's own (undeployed) design so it's visually seamless once that
+ * deploy path exists. */
+.nlpc-nav-toggle-injected{
+  display: none;
+  width: 42px;
+  height: 42px;
+  border: 1px solid var(--nlp-border, #D9D2C4);
+  border-radius: 2px;
+  background: #fff;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 5px;
+  padding: 0;
+  cursor: pointer;
+  flex: 0 0 auto;
+}
+.nlpc-nav-toggle-injected span{
+  display: block;
+  width: 20px;
+  height: 2px;
+  background: var(--nlp-ink, #1B1A17);
+  border-radius: 1px;
+  transition: transform .2s ease, opacity .2s ease;
+}
+.nlpc-site-header.is-nav-open-injected .nlpc-nav-toggle-injected span:nth-child(1){transform:translateY(7px) rotate(45deg);}
+.nlpc-site-header.is-nav-open-injected .nlpc-nav-toggle-injected span:nth-child(2){opacity:0;}
+.nlpc-site-header.is-nav-open-injected .nlpc-nav-toggle-injected span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
+
+@media (max-width: 760px){
+  .nlpc-site-header__inner{
+    grid-template-columns: minmax(0,1fr) auto auto !important;
+  }
+  .nlpc-nav-toggle-injected{ display: inline-flex; }
+  .nlpc-primary-nav,
+  .nlpc-header-cta{
+    display: none !important;
+  }
+  .nlpc-site-header.is-nav-open-injected .nlpc-primary-nav,
+  .nlpc-site-header.is-nav-open-injected .nlpc-header-cta{
+    display: flex !important;
+  }
+  .nlpc-site-header.is-nav-open-injected .nlpc-primary-nav{
+    grid-column: 1 / -1;
+    flex-direction: column;
+    align-items: stretch;
+    overflow-x: visible;
+    gap: 2px;
+    padding: 10px 0 4px;
+    border-top: 1px solid var(--nlp-border, #D9D2C4);
+    margin-top: 4px;
+  }
+  .nlpc-site-header.is-nav-open-injected .nlpc-primary-nav a{
+    min-height: 46px;
+    display: flex;
+    align-items: center;
+    font-size: 15px;
+    border-bottom: 1px solid var(--nlp-border, #D9D2C4);
+  }
+  .nlpc-site-header.is-nav-open-injected .nlpc-header-cta{
+    grid-column: 1 / -1;
+    justify-content: center;
+    margin-top: 8px;
+    min-height: 46px;
+  }
+}
+
+@media (max-width: 380px){
+  .nlpc-brand__text small{ display: none; }
+}
