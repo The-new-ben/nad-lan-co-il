@@ -1,11 +1,33 @@
 /* NadLan showroom — real Mapbox mount.
  * Replaces the stylized .nl-map with a live Mapbox map when a token + coordinates
- * exist. If anything is missing (no token, no geo, mapbox-gl not loaded), it does
- * nothing and the stylized map stays. No stacking: it replaces the container's
- * contents, it does not layer on top. */
+ * exist. If anything is missing, the map container shows a visible admin-facing
+ * error instead of staying empty or silently falling back. */
 (function () {
   function SR() { return window.NADLAN_SHOWROOM || {}; }
   function cfg() { return SR().config || {}; }
+  function lang() {
+    var qs = new URLSearchParams(location.search);
+    return qs.get("lang") || cfg().default_lang || document.documentElement.lang || "he";
+  }
+  function text(key, fallback) {
+    var i18n = window.NADLAN_I18N || {}, tables = i18n.langs || {}, chain = [lang()].concat(i18n.fallback || ["en", "he"]);
+    for (var i = 0; i < chain.length; i++) {
+      var table = tables[chain[i]];
+      if (table && table[key]) return table[key];
+    }
+    return fallback;
+  }
+  function esc(s) {
+    return String(s == null ? "" : s).replace(/[&<>"]/g, function (c) {
+      return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c];
+    });
+  }
+  function showError(el, message) {
+    if (!el) return;
+    el.setAttribute("data-mb", "err");
+    el.classList.add("nl-map--error");
+    el.innerHTML = '<div class="nl-map-error" role="status" aria-live="polite">' + esc(message) + "</div>";
+  }
   function activeProject() {
     var s = SR(), qs = new URLSearchParams(location.search);
     var key = qs.get("project") || (s.config && s.config.default_project);
@@ -30,8 +52,11 @@
   function mount(el) {
     if (!el || el.getAttribute("data-mb")) return;
     var token = cfg().mapbox_token, c = center();
-    if (!token || !c || !window.mapboxgl) return; // graceful: keep stylized map
+    if (!token) { showError(el, text("map_error_missing_token", "Mapbox token missing")); return; }
+    if (!c) { showError(el, text("map_error_missing_coords", "חסרות קואורדינטות למפה")); return; }
+    if (!window.mapboxgl) { showError(el, text("map_error_library", "מפה לא נטענה")); return; }
     el.setAttribute("data-mb", "1");
+    el.classList.remove("nl-map--error");
     var holder = document.createElement("div");
     holder.style.position = "absolute";
     holder.style.inset = "0";
@@ -56,6 +81,7 @@
       });
 
       map.on('style.load', function () {
+        if (!map.getSource || !map.getSource('composite') || map.getLayer('add-3d-buildings')) return;
         var layers = map.getStyle().layers;
         var labelLayerId = null;
         for (var i = 0; i < layers.length; i++) {
@@ -79,6 +105,7 @@
           }
         }, labelLayerId);
       });
+      map.on("error", function () { showError(el, text("map_error_library", "מפה לא נטענה")); });
       map.addControl(new mapboxgl.NavigationControl({ showCompass: false }), "top-left");
       var cur = activeProject();
       new mapboxgl.Marker({ color: "#9C7A3C" })
@@ -93,7 +120,7 @@
       });
       map.on("load", function () { map.resize(); });
     } catch (e) {
-      el.setAttribute("data-mb", "err");
+      showError(el, text("map_error_library", "מפה לא נטענה"));
       if (window.console) console.warn("nadlan map init failed", e);
     }
   }

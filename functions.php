@@ -106,8 +106,8 @@ if ( ! function_exists( 'nadlan_revenue_enqueue_project_showroom_assets' ) ) :
 			return;
 		}
 
-		$has_v1        = false !== strpos( $content, 'data-nlps-showroom' );
-		$has_v2        = false !== strpos( $content, 'data-nlv2-showroom' );
+		$has_v1        = false; // Disabled to prevent CSS stacking with new engine
+		$has_v2        = false; // Disabled to prevent CSS stacking with new engine
 		$has_home      = false !== strpos( $content, 'data-nle-home-showroom' ) || $template_has_home;
 		$needs_model   = $has_v1 || $has_v2 || $has_home;
 
@@ -1219,6 +1219,30 @@ add_filter( 'render_block', function ( $block_content, $block ) {
 		return '';
 	}
 
+	if ( ! is_admin() && ! nadlan_revenue_is_commerce_screen() && $slug && strpos( $slug, 'woocommerce/' ) === 0 ) {
+		return '';
+	}
+
+	if ( is_singular( array( 'nadlan_project', 'nadlan_professional', 'nadlan_property' ) ) ) {
+		$blocked_single_blocks = array(
+			'core/comments',
+			'core/comments-title',
+			'core/comment-template',
+			'core/comments-pagination',
+			'core/post-comments-form',
+			'core/post-navigation-link',
+		);
+		if ( in_array( $block_name, $blocked_single_blocks, true ) ) {
+			return '';
+		}
+		if ( in_array( $slug, array( 'nadlan-revenue/more-posts', 'nadlan-revenue/comments', 'nadlan-revenue/post-navigation' ), true ) ) {
+			return '';
+		}
+		if ( stripos( $block_content, 'More posts' ) !== false || stripos( $block_content, 'Leave a reply' ) !== false || stripos( $block_content, 'Post navigation' ) !== false ) {
+			return '';
+		}
+	}
+
 	if (
 		$block_name === 'core/pattern'
 		&& $slug === 'nadlan-revenue/more-posts'
@@ -1231,11 +1255,117 @@ add_filter( 'render_block', function ( $block_content, $block ) {
 }, 20, 2 );
 
 add_filter( 'woocommerce_coming_soon_exclude', function ( $is_excluded ) {
+	if ( ! is_admin() ) {
+		return true;
+	}
 	if ( nadlan_revenue_is_money_path() ) {
 		return true;
 	}
 	return $is_excluded;
 }, 20 );
+
+add_action( 'wp', function () {
+	if ( is_admin() || nadlan_revenue_is_commerce_screen() ) {
+		return;
+	}
+	if ( function_exists( 'woocommerce_output_all_notices' ) ) {
+		remove_action( 'woocommerce_before_main_content', 'woocommerce_output_all_notices', 10 );
+		remove_action( 'woocommerce_before_shop_loop', 'woocommerce_output_all_notices', 10 );
+		remove_action( 'woocommerce_before_single_product', 'woocommerce_output_all_notices', 10 );
+	}
+	if ( function_exists( 'wc_clear_notices' ) ) {
+		wc_clear_notices();
+	}
+}, 1 );
+
+if ( ! function_exists( 'nadlan_revenue_is_html_sitemap_page' ) ) :
+	function nadlan_revenue_is_html_sitemap_page() {
+		return is_page( 'sitemap' );
+	}
+endif;
+
+if ( ! function_exists( 'nadlan_revenue_sitemap_items' ) ) :
+	function nadlan_revenue_sitemap_items( $post_type, $limit = 80 ) {
+		$items = get_posts( array(
+			'post_type'      => $post_type,
+			'post_status'    => 'publish',
+			'posts_per_page' => $limit,
+			'orderby'        => 'title',
+			'order'          => 'ASC',
+			'no_found_rows'  => true,
+		) );
+		if ( ! $items ) {
+			return '';
+		}
+
+		$out = '<ul>';
+		foreach ( $items as $item ) {
+			if ( $post_type === 'page' && $item->post_name === 'sitemap' ) {
+				continue;
+			}
+			$out .= sprintf(
+				'<li><a href="%s">%s</a></li>',
+				esc_url( get_permalink( $item ) ),
+				esc_html( get_the_title( $item ) )
+			);
+		}
+		$out .= '</ul>';
+
+		return $out === '<ul></ul>' ? '' : $out;
+	}
+endif;
+
+if ( ! function_exists( 'nadlan_revenue_html_sitemap_ready' ) ) :
+	function nadlan_revenue_html_sitemap_ready() {
+		return nadlan_revenue_sitemap_items( 'page', 1 ) !== '' || nadlan_revenue_sitemap_items( 'nadlan_project', 1 ) !== '';
+	}
+endif;
+
+if ( ! function_exists( 'nadlan_revenue_html_sitemap_markup' ) ) :
+	function nadlan_revenue_html_sitemap_markup() {
+		$sections = array(
+			'עמודי מידע'       => nadlan_revenue_sitemap_items( 'page', 120 ),
+			'פרויקטים חדשים'  => nadlan_revenue_sitemap_items( 'nadlan_project', 120 ),
+			'נכסים'            => nadlan_revenue_sitemap_items( 'nadlan_property', 120 ),
+			'אנשי מקצוע'       => nadlan_revenue_sitemap_items( 'nadlan_professional', 120 ),
+			'מדריכים ועדכונים' => nadlan_revenue_sitemap_items( 'post', 80 ),
+		);
+		$html = '<section class="nl-html-sitemap" dir="rtl"><header><h1>מפת אתר</h1><p>קישורים לעמודי המידע, הפרויקטים, הנכסים ואנשי המקצוע באתר.</p></header><div class="nl-html-sitemap-grid">';
+		foreach ( $sections as $title => $list ) {
+			if ( $list === '' ) {
+				continue;
+			}
+			$html .= '<section><h2>' . esc_html( $title ) . '</h2>' . $list . '</section>';
+		}
+		$html .= '</div></section>';
+		return $html;
+	}
+endif;
+
+add_filter( 'the_content', function ( $content ) {
+	if ( is_admin() || ! nadlan_revenue_is_html_sitemap_page() || ! in_the_loop() || ! is_main_query() ) {
+		return $content;
+	}
+	if ( ! nadlan_revenue_html_sitemap_ready() ) {
+		return '<section class="nl-html-sitemap" dir="rtl"><h1>מפת אתר</h1><p>מפת האתר מתעדכנת כעת. העמוד לא ייסרק עד שהרשימה תושלם.</p></section>';
+	}
+	return nadlan_revenue_html_sitemap_markup();
+}, 7 );
+
+add_filter( 'wp_robots', function ( $robots ) {
+	if ( nadlan_revenue_is_html_sitemap_page() && ! nadlan_revenue_html_sitemap_ready() ) {
+		$robots['noindex'] = true;
+		$robots['follow']  = true;
+	}
+	return $robots;
+}, 25 );
+
+add_filter( 'wpseo_robots', function ( $robots ) {
+	if ( nadlan_revenue_is_html_sitemap_page() && ! nadlan_revenue_html_sitemap_ready() ) {
+		return 'noindex, follow';
+	}
+	return $robots;
+}, 25 );
 
 if ( ! function_exists( 'nadlan_revenue_is_public_customer_gate' ) ) :
 	function nadlan_revenue_is_public_customer_gate() {
@@ -1469,6 +1599,9 @@ add_action( 'wp_enqueue_scripts', function () {
 // page's own heading is the sole <h1> (fixes duplicate-H1 on project/tool/archive
 // views). Front page keeps the site title as H1. From Codex's buyer-journey work.
 add_filter( 'render_block_core/site-title', function ( $block_content, $block ) {
+	if ( trim( wp_strip_all_tags( $block_content ) ) === '0' ) {
+		return '';
+	}
 	if ( ! is_front_page() && ! is_home() ) {
 		$block_content = preg_replace( '/^<h1/i', '<div', trim( $block_content ) );
 		$block_content = preg_replace( '/<\/h1>$/i', '</div>', $block_content );
@@ -1487,7 +1620,7 @@ add_filter( 'render_block_core/post-title', function ( $block_content, $block ) 
 
 // Mobile buying action rail on project pages: sticky Call / WhatsApp / Inquiry
 // bar (mobile only). Concept + structure from Antigravity (2026-07-01); Hebrew
-// rewritten here (Antigravity's version shipped mojibake "????" labels). Reads
+// rewritten here after a prior mojibake regression. Reads
 // the real phone from the nadlan_contact_phone option; WhatsApp deep-links with
 // the project name; the inquiry button scrolls to the on-page offer form.
 add_action( 'wp_footer', function () {

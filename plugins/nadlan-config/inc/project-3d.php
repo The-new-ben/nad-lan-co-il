@@ -2126,6 +2126,13 @@ border:1px solid var(--nlp3d-line)!important;
 border-radius:var(--radius)!important;
 box-shadow:var(--shadow-card)!important;
 }
+.nlp3d.nlp3d-premium .nlp3d-cell{
+min-width:44px!important;
+min-height:44px!important;
+}
+.nlp3d.nlp3d-premium .nlp3d-cell-tag{
+pointer-events:none!important;
+}
 .nlp3d.nlp3d-premium.has-model-picker .nlp3d-scene{
 grid-template-columns:1fr!important;
 }
@@ -2469,9 +2476,10 @@ if ( ! function_exists( 'nadlan_p3d_inline_js' ) ) {
 		var winter=sunWindow(lat,lng,bearing,[11,21],2);
 		return {bearing:bearing,summer:summer,winter:winter};
 	}
-	var mapboxLoading=false,mapboxQueue=[];
+	var mapboxLoading=false,mapboxQueue=[],mapboxFailed=false;
 	function loadMapboxGl(cb){
-		if(window.mapboxgl){cb();return}
+		if(window.mapboxgl){cb(null);return}
+		if(mapboxFailed){cb(new Error('Mapbox failed to load'));return}
 		mapboxQueue.push(cb);
 		if(mapboxLoading){return}
 		mapboxLoading=true;
@@ -2481,8 +2489,8 @@ if ( ! function_exists( 'nadlan_p3d_inline_js' ) ) {
 		document.head.appendChild(css);
 		var s=document.createElement('script');
 		s.src='https://api.mapbox.com/mapbox-gl-js/v3.14.0/mapbox-gl.js';
-		s.onload=function(){mapboxQueue.forEach(function(fn){try{fn()}catch(e){}});mapboxQueue=[]};
-		s.onerror=function(){mapboxQueue=[]};
+		s.onload=function(){mapboxLoading=false;mapboxQueue.forEach(function(fn){try{fn(null)}catch(e){}});mapboxQueue=[]};
+		s.onerror=function(){mapboxLoading=false;mapboxFailed=true;var err=new Error('Mapbox failed to load');mapboxQueue.forEach(function(fn){try{fn(err)}catch(e){}});mapboxQueue=[]};
 		document.head.appendChild(s);
 	}
 	function storageGet(key){try{return window.localStorage.getItem(key)}catch(e){return null}}
@@ -3463,6 +3471,19 @@ if ( ! function_exists( 'nadlan_p3d_inline_js' ) ) {
 			var cam=cameraParams(activeUnit,meta);
 			return !!(meta.mapbox_token&&cam.lat&&cam.lng);
 		}
+		function liveMapErrorMessage(){
+			if(!meta.mapbox_token){return 'Mapbox token missing'}
+			var cam=cameraParams(activeUnit,meta);
+			if(!cam.lat||!cam.lng){return 'חסרות קואורדינטות למפה'}
+			return 'מפה לא נטענה';
+		}
+		function showLiveMapError(message){
+			if(!viewMap){return}
+			viewMap.hidden=false;
+			viewMap.removeAttribute('hidden');
+			viewMap.style.display='grid';
+			viewMap.innerHTML='<div class="nlp3d-map-error">'+(message||liveMapErrorMessage())+'</div>';
+		}
 		function applyLiveCamera(){
 			if(!liveMap||!activeUnit){return}
 			var cam=cameraParams(activeUnit,meta);
@@ -3478,14 +3499,14 @@ if ( ! function_exists( 'nadlan_p3d_inline_js' ) ) {
 		}
 		function renderLiveView(){
 			if(!viewMap||!viewFrame||viewFrame.hidden){return}
-			if(!canLiveView()){viewMap.hidden=true;return}
+			if(!canLiveView()){showLiveMapError(liveMapErrorMessage());return}
 			viewMap.hidden=false;
 			viewMap.removeAttribute('hidden');
 			viewMap.style.display='block';
-			loadMapboxGl(function(){
+			loadMapboxGl(function(loadErr){
+				if(loadErr){showLiveMapError('מפה לא נטענה');return}
 				if(!window.mapboxgl){
-					viewMap.hidden=false;
-					viewMap.innerHTML='<div class="nlp3d-map-error">המפה התלת ממדית לא נטענה כרגע. אפשר עדיין לבחור דירה, להשוות נתונים ולשלוח פנייה.</div>';
+					showLiveMapError('מפה לא נטענה');
 					return;
 				}
 				try{
@@ -3497,6 +3518,7 @@ if ( ! function_exists( 'nadlan_p3d_inline_js' ) ) {
 						}
 						liveMap=new mapboxgl.Map({container:viewMap,style:'mapbox://styles/mapbox/standard',center:[Number(meta.lng),Number(meta.lat)],zoom:14.5,pitch:62,bearing:0,antialias:true,attributionControl:true,dragRotate:true,touchPitch:true,touchZoomRotate:true,pitchWithRotate:true});
 						liveMap.addControl(new mapboxgl.NavigationControl({visualizePitch:true,showCompass:true,showZoom:true}),'top-left');
+						liveMap.on('error',function(){showLiveMapError('מפה לא נטענה')});
 						liveMap.on('load',function(){
 							try{
 								if(liveMap.getSource&&liveMap.getSource('composite')&&!liveMap.getLayer('nlp3d-3d-buildings')){
@@ -3513,8 +3535,7 @@ if ( ! function_exists( 'nadlan_p3d_inline_js' ) ) {
 					window.requestAnimationFrame(function(){if(liveMap){liveMap.resize();applyLiveCamera()}});
 					window.setTimeout(function(){if(liveMap){liveMap.resize();applyLiveCamera()}},260);
 				}catch(err){
-					viewMap.hidden=false;
-					viewMap.innerHTML='<div class="nlp3d-map-error">המפה התלת ממדית לא נטענה כרגע. אפשר עדיין לבחור דירה, להשוות נתונים ולשלוח פנייה.</div>';
+					showLiveMapError('מפה לא נטענה');
 				}
 			});
 		}
@@ -3736,7 +3757,7 @@ if ( ! function_exists( 'nadlan_p3d_inline_js' ) ) {
 		});
 		if(modelViewer){
 			modelViewer.addEventListener('load',function(){root.classList.add('has-model-viewer-loaded');root.classList.remove('has-model-viewer-error');if(modelError){modelError.hidden=true}syncModelViewerCamera();var revealModel=function(){if(typeof modelViewer.dismissPoster==='function'){modelViewer.dismissPoster()}};if(window.requestAnimationFrame){requestAnimationFrame(function(){requestAnimationFrame(revealModel)});setTimeout(revealModel,1200)}else{revealModel()}track('model_viewer_load',{model:true})});
-			modelViewer.addEventListener('error',function(){root.classList.add('has-model-viewer-error');if(modelError){modelError.hidden=false}track('model_viewer_error',{model:true})});
+			modelViewer.addEventListener('error',function(){root.classList.add('has-model-viewer-error');if(modelError){modelError.textContent='התצוגה התלת ממדית לא נטענה. נציג חומר מאושר כאשר יעלה לפרויקט.';modelError.hidden=false}track('model_viewer_error',{model:true})});
 			modelViewer.addEventListener('click',function(e){
 				if(Date.now()<suppressUnitClickUntil){return}
 				if(e.target&&e.target.closest&&e.target.closest('.nlp3d-mv-hotspot')){return}

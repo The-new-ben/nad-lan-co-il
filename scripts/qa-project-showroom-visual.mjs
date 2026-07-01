@@ -435,10 +435,38 @@ async function runViewport(client, args, viewport, outDir, pageErrors) {
   }
 
   const before = await evaluateJson(client, metricsExpression());
-  if (before.firstPickCenter) {
-    await client.send('Input.dispatchMouseEvent', { type: 'mouseMoved', x: before.firstPickCenter.x, y: before.firstPickCenter.y });
-    await client.send('Input.dispatchMouseEvent', { type: 'mousePressed', button: 'left', clickCount: 1, x: before.firstPickCenter.x, y: before.firstPickCenter.y });
-    await client.send('Input.dispatchMouseEvent', { type: 'mouseReleased', button: 'left', clickCount: 1, x: before.firstPickCenter.x, y: before.firstPickCenter.y });
+  const clickPoint = await evaluateJson(client, `(() => {
+    const visible = (el) => {
+      if (!el || el.getAttribute('aria-disabled') === 'true') return false;
+      const st = getComputedStyle(el);
+      const r = el.getBoundingClientRect();
+      return st.display !== 'none' && st.visibility !== 'hidden' && r.width > 0 && r.height > 0;
+    };
+    const picks = Array.from(document.querySelectorAll('.nlp3d-cell,.nlp3d-stage-pick')).filter(visible);
+    const pick = picks[0] || null;
+    if (!pick) return null;
+    pick.scrollIntoView({ block: 'center', inline: 'center' });
+    return true;
+  })()`);
+  if (clickPoint) {
+    await waitForIdle(client, 300);
+    const point = await evaluateJson(client, `(() => {
+      const visible = (el) => {
+        if (!el || el.getAttribute('aria-disabled') === 'true') return false;
+        const st = getComputedStyle(el);
+        const r = el.getBoundingClientRect();
+        return st.display !== 'none' && st.visibility !== 'hidden' && r.width > 0 && r.height > 0;
+      };
+      const pick = Array.from(document.querySelectorAll('.nlp3d-cell,.nlp3d-stage-pick')).filter(visible)[0] || null;
+      if (!pick) return null;
+      const r = pick.getBoundingClientRect();
+      return { x: Math.max(1, Math.min(innerWidth - 1, Math.round(r.left + r.width / 2))), y: Math.max(1, Math.min(innerHeight - 1, Math.round(r.top + r.height / 2))) };
+    })()`);
+    if (point) {
+      await client.send('Input.dispatchMouseEvent', { type: 'mouseMoved', x: point.x, y: point.y });
+      await client.send('Input.dispatchMouseEvent', { type: 'mousePressed', button: 'left', clickCount: 1, x: point.x, y: point.y });
+      await client.send('Input.dispatchMouseEvent', { type: 'mouseReleased', button: 'left', clickCount: 1, x: point.x, y: point.y });
+    }
     await waitForIdle(client, 600);
   }
   const after = await evaluateJson(client, metricsExpression());
@@ -458,13 +486,14 @@ async function runViewport(client, args, viewport, outDir, pageErrors) {
   if (!after.rootRect) failures.push('showroom root missing');
   if (after.scroll.overflow > 2) failures.push(`horizontal overflow ${after.scroll.overflow}px`);
   if (after.h1s.length !== 1) failures.push(`expected one H1, found ${after.h1s.length}`);
-  if (!after.facadeAssetMissing && after.pickCount < 1) failures.push('no visible apartment picks');
-  if (!after.facadeAssetMissing && after.modelViewerCount > 0 && after.cellCount < 1) failures.push('model exists but embedded facade apartment cells are missing');
-  if (!after.facadeAssetMissing && after.realFacadeImageCount < 1 && after.cellCount > 0) failures.push('fake facade grid: apartment cells visible without a real facade image');
+  const hasOfficialFacade = !after.facadeAssetMissing && after.realFacadeImageCount > 0;
+  if (after.pickCount < 1) failures.push('no visible apartment picks');
+  if (hasOfficialFacade && after.modelViewerCount > 0 && after.cellCount < 1) failures.push('official facade image exists but embedded facade apartment cells are missing');
+  if (!hasOfficialFacade && after.cellCount > 0) failures.push('fake facade grid: apartment cells visible without a real facade image');
   if (after.facadeAssetMissing && after.cellCount > 0) failures.push('facade asset missing but fake apartment cells are still visible');
   if (after.facadeAssetMissing && after.realFacadeImageCount > 0) failures.push('facade asset missing while real facade image is present');
-  if (after.firstPickCenter && after.cardHidden) failures.push('clicking apartment did not reveal selected card');
-  if (after.firstPickCenter && after.activePressedCount < 1) failures.push('clicking apartment did not mark a selected unit');
+  if (clickPoint && after.cardHidden) failures.push('clicking apartment did not reveal selected card');
+  if (clickPoint && after.activePressedCount < 1) failures.push('clicking apartment did not mark a selected unit');
   if (after.tapTargets.count && after.tapTargets.min < 44) failures.push(`tap target below 44px (${after.tapTargets.min}px)`);
   if (after.rootRect && viewport.width <= 768 && (after.rootRect.x < -2 || after.rootRect.right > viewport.width + 2)) failures.push(`showroom cropped on mobile/tablet: ${JSON.stringify(after.rootRect)}`);
   if (after.facadePlaneVisible && viewport.width <= 768 && after.facadePlaneRect && (after.facadePlaneRect.x < -2 || after.facadePlaneRect.right > viewport.width + 2)) failures.push(`facade plane cropped on mobile/tablet: ${JSON.stringify(after.facadePlaneRect)}`);
