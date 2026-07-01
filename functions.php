@@ -1475,3 +1475,12 @@ add_filter( 'render_block_core/site-title', function ( $block_content, $block ) 
 	}
 	return $block_content;
 }, 10, 2 );
+
+// Fix stacked headlines on project pages by removing the theme's default post-title if showroom engine is used
+add_filter( 'render_block_core/post-title', function ( $block_content, $block ) {
+	if ( is_singular( 'nadlan_project' ) ) {
+		return '';
+	}
+	return $block_content;
+}, 10, 2 );
+
