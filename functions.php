@@ -1475,3 +1475,73 @@ add_filter( 'render_block_core/site-title', function ( $block_content, $block ) 
 	}
 	return $block_content;
 }, 10, 2 );
+
+// Mobile buying action rail on project pages: sticky Call / WhatsApp / Inquiry
+// bar (mobile only). Concept + structure from Antigravity (2026-07-01); Hebrew
+// rewritten here (Antigravity's version shipped mojibake "????" labels). Reads
+// the real phone from the nadlan_contact_phone option; WhatsApp deep-links with
+// the project name; the inquiry button scrolls to the on-page offer form.
+add_action( 'wp_footer', function () {
+	if ( ! is_singular( 'nadlan_project' ) ) {
+		return;
+	}
+	$phone  = (string) get_option( 'nadlan_contact_phone', '' );
+	if ( $phone === '' ) {
+		return; // no real phone set -> don't show a dead bar.
+	}
+	$wa_num = preg_replace( '/[^0-9]/', '', $phone );
+	if ( strpos( $wa_num, '0' ) === 0 ) {
+		$wa_num = '972' . substr( $wa_num, 1 );
+	}
+	$wa_text = 'שלום, אשמח לפרטים על הפרויקט: ' . wp_strip_all_tags( get_the_title() );
+	$wa_url  = 'https://wa.me/' . $wa_num . '?text=' . rawurlencode( $wa_text );
+	?>
+	<div class="nl-mobile-action-rail" dir="rtl" aria-label="פעולות מהירות">
+		<a href="tel:<?php echo esc_attr( $phone ); ?>" class="nl-rail-btn nl-rail-call">
+			<svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path></svg>
+			<span>שיחה</span>
+		</a>
+		<a href="<?php echo esc_url( $wa_url ); ?>" target="_blank" rel="noopener" class="nl-rail-btn nl-rail-wa">
+			<svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+			<span>WhatsApp</span>
+		</a>
+		<a href="#nl-loi-form" class="nl-rail-btn nl-rail-offer" onclick="var f=document.getElementById('nl-loi-form')||document.querySelector('.nlp3d-form,.nle-contact');if(f){f.scrollIntoView({behavior:'smooth'});}return false;">
+			<svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
+			<span>פנייה</span>
+		</a>
+	</div>
+	<style>
+		.nl-mobile-action-rail { display: none; }
+		@media (max-width: 768px) {
+			.nl-mobile-action-rail {
+				display: flex;
+				position: fixed;
+				inset-inline: 0;
+				bottom: 0;
+				background: #fff;
+				box-shadow: 0 -2px 10px rgba(0,0,0,.12);
+				z-index: 9999;
+				padding: 10px 16px calc(10px + env(safe-area-inset-bottom));
+				gap: 12px;
+			}
+			.nl-rail-btn {
+				flex: 1;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				gap: 8px;
+				min-height: 46px;
+				border-radius: 2px;
+				text-decoration: none;
+				font-weight: 600;
+				font-size: 15px;
+				color: #fff;
+			}
+			.nl-rail-call { background: #1B1A17; }
+			.nl-rail-wa { background: #25D366; }
+			.nl-rail-offer { background: #9C7A3C; }
+			body { margin-bottom: 74px; }
+		}
+	</style>
+	<?php
+} );
