@@ -1,0 +1,340 @@
+<?php
+/**
+ * nadlan-config — Property showroom layer (v1.69.70)
+ *
+ * The differentiator block on single nadlan_property pages, on top of the
+ * existing stack (cards-render facts/gallery, listings-ux similar/favorites/
+ * mortgage, nearby-poi real schools/transit via OSM, avm-deals, media tabs,
+ * schema JSON-LD):
+ *   1. Key-facts hero strip (price, rooms, floor, sqm, ₪/sqm, listing type)
+ *   2. Sketch-first SELECTABLE FACADE — parametric SVG building generated from
+ *      total_floors / floor / units_per_floor / unit_position meta; the listed
+ *      apartment is highlighted; hover/click floors; toggle to a parametric
+ *      schematic floor plan (rooms/mamad/balcony) — the "inside view".
+ *   3. Monthly costs panel (arnona + vaad bayit + mortgage estimate).
+ *   4. Single-listing Leaflet map (OSM tiles, no key) with the asset marker.
+ *   5. Honest "לדוגמה" badge on is_demo listings.
+ *
+ * Registers the extra Israeli listing meta Yad2/Madlan-parity requires:
+ * arnona_monthly, vaad_bayit_monthly, entry_date, condition, storage,
+ * renovated_year, direction, units_per_floor, unit_position.
+ */
+
+if ( ! defined( 'ABSPATH' ) ) { exit; }
+
+/* ---------------- extra listing meta ---------------- */
+if ( ! function_exists( 'nadlan_pshow_register_meta' ) ) {
+	function nadlan_pshow_register_meta() {
+		$fields = array(
+			'arnona_monthly'     => 'integer',
+			'vaad_bayit_monthly' => 'integer',
+			'entry_date'         => 'string',   // free text: מיידי / 01/2027
+			'condition'          => 'string',   // new|renovated|good|needs_renovation
+			'storage'            => 'boolean',  // מחסן
+			'renovated_year'     => 'integer',
+			'direction'          => 'string',   // כיווני אוויר
+			'units_per_floor'    => 'integer',  // for the facade
+			'unit_position'      => 'integer',  // 1..units_per_floor (from the right)
+		);
+		foreach ( $fields as $k => $type ) {
+			register_post_meta( 'nadlan_property', $k, array(
+				'show_in_rest' => true, 'single' => true, 'type' => $type,
+				'auth_callback' => function ( $allowed, $meta_key, $post_id ) { return current_user_can( 'edit_post', (int) $post_id ); },
+			) );
+		}
+	}
+}
+add_action( 'init', 'nadlan_pshow_register_meta', 14 );
+
+/* ---------------- helpers ---------------- */
+if ( ! function_exists( 'nadlan_pshow_condition_label' ) ) {
+	function nadlan_pshow_condition_label( $c ) {
+		$map = array( 'new' => 'חדש מקבלן', 'renovated' => 'משופץ', 'good' => 'במצב טוב', 'needs_renovation' => 'דורש שיפוץ' );
+		return isset( $map[ $c ] ) ? $map[ $c ] : $c;
+	}
+}
+
+/* ---------------- parametric facade SVG ---------------- */
+if ( ! function_exists( 'nadlan_pshow_facade_svg' ) ) {
+	function nadlan_pshow_facade_svg( $total_floors, $listing_floor, $units_per_floor, $unit_position ) {
+		$total_floors    = max( 1, min( 40, (int) $total_floors ) );
+		$listing_floor   = max( 0, min( $total_floors, (int) $listing_floor ) );
+		$units_per_floor = max( 1, min( 6, (int) $units_per_floor ?: 2 ) );
+		$unit_position   = max( 1, min( $units_per_floor, (int) $unit_position ?: 1 ) );
+
+		$fh = 34;                                   // floor height px
+		$bw = 260;                                  // building width
+		$bx = 30;                                   // building x
+		$h  = ( $total_floors + 1 ) * $fh + 70;     // + ground + roof margin
+		$w  = 320;
+		$ground_y = $h - 30;
+
+		$uw  = ( $bw - 24 ) / $units_per_floor;     // unit cell width
+		$svg = '<svg class="nlps-facade-svg" viewBox="0 0 ' . $w . ' ' . $h . '" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="חזית הבניין - הדירה המוצעת בקומה ' . esc_attr( $listing_floor ) . '">';
+		$svg .= '<style>.nlps-f-fl{cursor:pointer}.nlps-f-fl:hover .nlps-f-bg{fill:#F3EEE3}.nlps-f-win{fill:#FAF8F3;stroke:#2E2B26;stroke-width:1.1}.nlps-f-sel .nlps-f-win{fill:#E6D4AE}.nlps-f-unit{fill:#C2563A;fill-opacity:.85;stroke:#9C3F28;stroke-width:1.4}</style>';
+		// ground line + trees (sketch feel)
+		$svg .= '<line x1="6" y1="' . $ground_y . '" x2="' . ( $w - 6 ) . '" y2="' . $ground_y . '" stroke="#2E2B26" stroke-width="1.6"/>';
+		$svg .= '<path d="M14 ' . $ground_y . ' q4 -22 8 0 M10 ' . ( $ground_y - 10 ) . ' q8 -14 16 0" fill="none" stroke="#6D665C" stroke-width="1.1"/>';
+		$svg .= '<path d="M' . ( $w - 22 ) . ' ' . $ground_y . ' q4 -26 8 0 M' . ( $w - 26 ) . ' ' . ( $ground_y - 12 ) . ' q8 -16 16 0" fill="none" stroke="#6D665C" stroke-width="1.1"/>';
+		// building outline + roof
+		$top_y = $ground_y - ( $total_floors + 1 ) * $fh;
+		$svg .= '<rect x="' . $bx . '" y="' . $top_y . '" width="' . $bw . '" height="' . ( ( $total_floors + 1 ) * $fh ) . '" fill="#FFFDFC" stroke="#1B1A17" stroke-width="2"/>';
+		$svg .= '<line x1="' . ( $bx - 8 ) . '" y1="' . $top_y . '" x2="' . ( $bx + $bw + 8 ) . '" y2="' . $top_y . '" stroke="#1B1A17" stroke-width="2.4"/>';
+		// floors, top floor first
+		for ( $f = $total_floors; $f >= 1; $f-- ) {
+			$fy = $ground_y - ( $f + 1 ) * $fh + $fh; // top y of this floor row
+			$is_sel = ( $f === $listing_floor );
+			$svg .= '<g class="nlps-f-fl' . ( $is_sel ? ' nlps-f-sel' : '' ) . '" data-floor="' . $f . '">';
+			$svg .= '<rect class="nlps-f-bg" x="' . $bx . '" y="' . $fy . '" width="' . $bw . '" height="' . $fh . '" fill="' . ( $is_sel ? '#F8F0EA' : '#FFFDFC' ) . '" stroke="#C9C0AE" stroke-width="0.7"/>';
+			for ( $u = 1; $u <= $units_per_floor; $u++ ) {
+				// RTL: unit 1 is rightmost
+				$ux = $bx + 12 + $bw - 24 - $u * $uw + ( $uw - min( $uw - 8, 34 ) ) / 2;
+				$wgw = min( $uw - 8, 34 );
+				$is_unit = ( $is_sel && $u === $unit_position );
+				$svg .= '<rect class="' . ( $is_unit ? 'nlps-f-unit' : 'nlps-f-win' ) . '" x="' . round( $ux, 1 ) . '" y="' . ( $fy + 7 ) . '" width="' . round( $wgw, 1 ) . '" height="' . ( $fh - 14 ) . '" rx="1.5"/>';
+			}
+			// floor number (right side, RTL)
+			$svg .= '<text x="' . ( $bx + $bw + 12 ) . '" y="' . ( $fy + $fh / 2 + 4 ) . '" font-size="10" fill="' . ( $is_sel ? '#C2563A' : '#B7AE9E' ) . '" font-weight="' . ( $is_sel ? '700' : '400' ) . '">' . $f . '</text>';
+			$svg .= '</g>';
+		}
+		// ground floor: entrance
+		$gy = $ground_y - $fh;
+		$svg .= '<rect x="' . $bx . '" y="' . $gy . '" width="' . $bw . '" height="' . $fh . '" fill="#F3EEE3" stroke="#C9C0AE" stroke-width="0.7"/>';
+		$svg .= '<rect x="' . ( $bx + $bw / 2 - 14 ) . '" y="' . ( $gy + 8 ) . '" width="28" height="' . ( $fh - 8 ) . '" fill="#2E2B26"/>';
+		$svg .= '</svg>';
+		return $svg;
+	}
+}
+
+/* ---------------- parametric floor-plan SVG (inside view) ---------------- */
+if ( ! function_exists( 'nadlan_pshow_plan_svg' ) ) {
+	function nadlan_pshow_plan_svg( $rooms, $has_mamad, $balcony_sqm, $size_sqm ) {
+		$rooms    = max( 1, min( 8, (float) $rooms ) );
+		$bedrooms = max( 0, (int) ceil( $rooms ) - 1 );
+		$w = 340; $h = 250;
+		$s = '<svg class="nlps-plan-svg" viewBox="0 0 ' . $w . ' ' . $h . '" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="תוכנית דירה סכמטית">';
+		$s .= '<style>.nlps-p-r{fill:#FFFDFC;stroke:#1B1A17;stroke-width:1.6}.nlps-p-t{font-size:10px;fill:#2E2B26;font-weight:600}.nlps-p-s{font-size:8px;fill:#6D665C}</style>';
+		$s .= '<rect x="8" y="8" width="' . ( $w - 16 ) . '" height="' . ( $h - 16 ) . '" fill="none" stroke="#1B1A17" stroke-width="2.4"/>';
+		// salon+kitchen block (right half, RTL)
+		$s .= '<rect class="nlps-p-r" x="' . ( $w / 2 ) . '" y="8" width="' . ( $w / 2 - 8 ) . '" height="' . ( $h * 0.62 ) . '"/>';
+		$s .= '<text class="nlps-p-t" x="' . ( $w * 0.75 - 20 ) . '" y="' . ( $h * 0.3 ) . '">סלון ומטבח</text>';
+		// bedrooms stacked on left half
+		$bh = $bedrooms > 0 ? ( $h - 16 ) / max( $bedrooms, 1 ) : 0;
+		for ( $i = 0; $i < $bedrooms; $i++ ) {
+			$label = ( $has_mamad && $i === $bedrooms - 1 ) ? 'ממ״ד' : 'חדר שינה';
+			$s .= '<rect class="nlps-p-r" x="8" y="' . ( 8 + $i * $bh ) . '" width="' . ( $w / 2 - 8 ) . '" height="' . $bh . '"/>';
+			$s .= '<text class="nlps-p-t" x="' . ( $w / 4 - 24 ) . '" y="' . ( 8 + $i * $bh + $bh / 2 + 4 ) . '">' . $label . '</text>';
+		}
+		// bathroom bottom-right
+		$s .= '<rect class="nlps-p-r" x="' . ( $w / 2 ) . '" y="' . ( $h * 0.62 + 8 ) . '" width="' . ( $w / 4 - 4 ) . '" height="' . ( $h - 24 - $h * 0.62 ) . '"/>';
+		$s .= '<text class="nlps-p-t" x="' . ( $w * 0.56 ) . '" y="' . ( $h * 0.82 ) . '">רחצה</text>';
+		// balcony (dashed, outside bottom)
+		if ( (int) $balcony_sqm > 0 ) {
+			$s .= '<rect x="' . ( $w * 0.75 ) . '" y="' . ( $h * 0.62 + 8 ) . '" width="' . ( $w / 4 - 12 ) . '" height="' . ( $h - 24 - $h * 0.62 ) . '" fill="#F3EEE3" stroke="#9C7A3C" stroke-width="1.4" stroke-dasharray="5 3"/>';
+			$s .= '<text class="nlps-p-t" x="' . ( $w * 0.79 ) . '" y="' . ( $h * 0.82 ) . '">מרפסת</text>';
+		}
+		if ( (int) $size_sqm > 0 ) {
+			$s .= '<text class="nlps-p-s" x="14" y="' . ( $h - 2 ) . '">שטח בנוי כ־' . (int) $size_sqm . ' מ״ר · תוכנית להמחשה בלבד</text>';
+		}
+		$s .= '</svg>';
+		return $s;
+	}
+}
+
+/* ---------------- the content block ---------------- */
+if ( ! function_exists( 'nadlan_pshow_render' ) ) {
+	function nadlan_pshow_render( $content ) {
+		if ( ! is_singular( 'nadlan_property' ) || ! in_the_loop() || ! is_main_query() ) { return $content; }
+		$id = get_the_ID();
+		$g  = function ( $k ) use ( $id ) { return get_post_meta( $id, $k, true ); };
+
+		$price   = (int) $g( 'price' );
+		$rooms   = (float) $g( 'rooms' );
+		$floor   = (int) $g( 'floor' );
+		$tfloors = (int) $g( 'total_floors' );
+		$sqm     = (int) $g( 'size_sqm' );
+		$ltype   = (string) $g( 'listing_type' ); // sale|rent
+		$is_rent = ( $ltype === 'rent' );
+		$ppsqm   = ( $price && $sqm && ! $is_rent ) ? (int) round( $price / $sqm ) : 0;
+		$lat     = (float) $g( 'lat' ); $lng = (float) $g( 'lng' );
+		$demo    = (bool) $g( 'is_demo' );
+
+		ob_start(); ?>
+<div class="nlps" dir="rtl">
+	<?php if ( $demo ) : ?><div class="nlps-demo">נכס לדוגמה — להמחשת חוויית המודעה. <a href="<?php echo esc_url( home_url( '/post-listing/' ) ); ?>">פרסמו נכס אמיתי חינם ←</a></div><?php endif; ?>
+
+	<div class="nlps-hero">
+		<div class="nlps-price">
+			<?php if ( $price ) : ?><b><?php echo esc_html( number_format( $price ) ); ?> ₪</b><?php if ( $is_rent ) : ?><span>/ חודש</span><?php endif; ?><?php endif; ?>
+			<em><?php echo $is_rent ? 'להשכרה' : 'למכירה'; ?></em>
+		</div>
+		<dl class="nlps-facts">
+			<?php if ( $rooms ) : ?><div><dt>חדרים</dt><dd><?php echo esc_html( rtrim( rtrim( number_format( $rooms, 1 ), '0' ), '.' ) ); ?></dd></div><?php endif; ?>
+			<?php if ( $floor || $tfloors ) : ?><div><dt>קומה</dt><dd><?php echo (int) $floor; ?><?php if ( $tfloors ) : ?><span class="nlps-of"> מתוך <?php echo (int) $tfloors; ?></span><?php endif; ?></dd></div><?php endif; ?>
+			<?php if ( $sqm ) : ?><div><dt>מ״ר</dt><dd><?php echo (int) $sqm; ?></dd></div><?php endif; ?>
+			<?php if ( $ppsqm ) : ?><div><dt>₪ למ״ר</dt><dd><?php echo esc_html( number_format( $ppsqm ) ); ?></dd></div><?php endif; ?>
+			<?php if ( $g( 'entry_date' ) ) : ?><div><dt>כניסה</dt><dd><?php echo esc_html( $g( 'entry_date' ) ); ?></dd></div><?php endif; ?>
+		</dl>
+		<div class="nlps-chips">
+			<?php
+			$chips = array();
+			if ( $g( 'protected_room' ) ) { $chips[] = 'ממ״ד'; }
+			if ( $g( 'elevator' ) ) { $chips[] = 'מעלית'; }
+			if ( $g( 'parking' ) ) { $chips[] = 'חניה'; }
+			if ( $g( 'storage' ) ) { $chips[] = 'מחסן'; }
+			if ( $g( 'ac' ) ) { $chips[] = 'מיזוג'; }
+			if ( (int) $g( 'balcony_sqm' ) > 0 ) { $chips[] = 'מרפסת ' . (int) $g( 'balcony_sqm' ) . ' מ״ר'; }
+			if ( $g( 'condition' ) ) { $chips[] = nadlan_pshow_condition_label( $g( 'condition' ) ); }
+			if ( $g( 'direction' ) ) { $chips[] = 'כיוונים: ' . $g( 'direction' ); }
+			foreach ( $chips as $c ) { echo '<span class="nlps-chip">' . esc_html( $c ) . '</span>'; }
+			?>
+		</div>
+	</div>
+
+	<?php if ( $tfloors >= 1 && $floor >= 0 ) : ?>
+	<section class="nlps-facade" aria-label="חזית הבניין ותוכנית הדירה">
+		<header class="nlps-sec-head">
+			<h2>איפה הדירה בבניין?</h2>
+			<div class="nlps-toggle" role="tablist">
+				<button type="button" class="is-on" data-view="out" role="tab" aria-selected="true">מבט חוץ</button>
+				<button type="button" data-view="in" role="tab" aria-selected="false">תוכנית הדירה</button>
+			</div>
+		</header>
+		<div class="nlps-facade-stage">
+			<div class="nlps-view nlps-view-out is-on">
+				<?php echo nadlan_pshow_facade_svg( $tfloors, $floor, (int) $g( 'units_per_floor' ), (int) $g( 'unit_position' ) ); // phpcs:ignore ?>
+				<p class="nlps-cap">הדירה המוצעת מסומנת בקומה <?php echo (int) $floor; ?>. לחצו על קומה לפרטים. הדמיה סכמטית להמחשה.</p>
+			</div>
+			<div class="nlps-view nlps-view-in">
+				<?php echo nadlan_pshow_plan_svg( $rooms, (bool) $g( 'protected_room' ), (int) $g( 'balcony_sqm' ), $sqm ); // phpcs:ignore ?>
+			</div>
+			<div class="nlps-floor-tip" hidden></div>
+		</div>
+	</section>
+	<?php endif; ?>
+
+	<?php if ( (int) $g( 'arnona_monthly' ) || (int) $g( 'vaad_bayit_monthly' ) || ( $price && ! $is_rent ) ) : ?>
+	<section class="nlps-costs" aria-label="עלויות חודשיות">
+		<h2>כמה זה עולה בחודש?</h2>
+		<div class="nlps-cost-grid">
+			<?php if ( $price && ! $is_rent ) :
+				// 30y, 5% annual, 75% LTV quick estimate
+				$loan = $price * 0.75; $r = 0.05 / 12; $n = 360;
+				$pmt  = (int) round( $loan * $r / ( 1 - pow( 1 + $r, -$n ) ) );
+			?><div><dt>משכנתא משוערת*</dt><dd><?php echo esc_html( number_format( $pmt ) ); ?> ₪</dd></div><?php endif; ?>
+			<?php if ( (int) $g( 'arnona_monthly' ) ) : ?><div><dt>ארנונה</dt><dd><?php echo esc_html( number_format( (int) $g( 'arnona_monthly' ) ) ); ?> ₪</dd></div><?php endif; ?>
+			<?php if ( (int) $g( 'vaad_bayit_monthly' ) ) : ?><div><dt>ועד בית</dt><dd><?php echo esc_html( number_format( (int) $g( 'vaad_bayit_monthly' ) ) ); ?> ₪</dd></div><?php endif; ?>
+		</div>
+		<?php if ( $price && ! $is_rent ) : ?><p class="nlps-cap">* הערכה בלבד: 75% מימון, 30 שנה, 5% ריבית. <a href="<?php echo esc_url( home_url( '/mortgage-calculator/' ) ); ?>">למחשבון המלא ←</a></p><?php endif; ?>
+	</section>
+	<?php endif; ?>
+
+	<?php if ( $lat && $lng ) : ?>
+	<section class="nlps-map-sec" aria-label="מיקום">
+		<h2>מיקום וסביבה</h2>
+		<div id="nlps-map" data-lat="<?php echo esc_attr( $lat ); ?>" data-lng="<?php echo esc_attr( $lng ); ?>" data-title="<?php echo esc_attr( get_the_title( $id ) ); ?>"></div>
+		<p class="nlps-cap">מוסדות חינוך, תחבורה ושירותים בסביבה מוצגים בהמשך העמוד מתוך נתוני OpenStreetMap.</p>
+	</section>
+	<?php endif; ?>
+</div>
+<?php
+		return ob_get_clean() . $content;
+	}
+}
+add_filter( 'the_content', 'nadlan_pshow_render', 6 );
+
+/* ---------------- assets ---------------- */
+if ( ! function_exists( 'nadlan_pshow_assets' ) ) {
+	function nadlan_pshow_assets() {
+		if ( ! is_singular( 'nadlan_property' ) ) { return; }
+		$id  = get_queried_object_id();
+		$has_map = get_post_meta( $id, 'lat', true ) && get_post_meta( $id, 'lng', true );
+		if ( $has_map ) {
+			wp_enqueue_style( 'leaflet', 'https://unpkg.com/leaflet@1.9.4/dist/leaflet.css', array(), '1.9.4' );
+			wp_enqueue_script( 'leaflet', 'https://unpkg.com/leaflet@1.9.4/dist/leaflet.js', array(), '1.9.4', true );
+		}
+		wp_register_style( 'nadlan-pshow', false );
+		wp_enqueue_style( 'nadlan-pshow' );
+		wp_add_inline_style( 'nadlan-pshow', '
+.nlps{--ink:#1B1A17;--warm:#6D665C;--gold:#9C7A3C;--terra:#C2563A;--line:#E2DCD0;--band:#F3EEE3;font-family:var(--font-sans,Heebo,system-ui,sans-serif);color:var(--ink);margin:0 0 28px}
+.nlps h2{font-family:var(--font-serif,"Frank Ruhl Libre",serif);font-size:1.3rem;margin:0 0 12px}
+.nlps-demo{background:var(--band);border:1px solid var(--line);border-inline-start:3px solid var(--gold);border-radius:8px;padding:10px 14px;font-size:13.5px;margin-bottom:16px}
+.nlps-demo a{color:var(--gold);font-weight:600;text-decoration:none}
+.nlps-hero{border:1px solid var(--line);border-radius:10px;background:#FFFDFC;padding:18px 20px;margin-bottom:18px;box-shadow:0 1px 2px rgba(17,17,15,.04)}
+.nlps-price{display:flex;align-items:baseline;gap:10px;margin-bottom:12px}
+.nlps-price b{font-family:var(--font-serif,"Frank Ruhl Libre",serif);font-size:2rem;letter-spacing:-.01em}
+.nlps-price span{color:var(--warm);font-size:.95rem}
+.nlps-price em{font-style:normal;font-size:11px;font-weight:700;letter-spacing:.08em;background:var(--ink);color:#fff;border-radius:4px;padding:3px 9px;margin-inline-start:auto}
+.nlps-facts{display:flex;flex-wrap:wrap;gap:22px;margin:0;padding:12px 0 0;border-top:1px solid var(--line)}
+.nlps-facts dt{font-size:11px;color:var(--warm);margin:0}
+.nlps-facts dd{font-size:17px;font-weight:700;margin:2px 0 0}
+.nlps-of{font-size:12px;color:var(--warm);font-weight:400}
+.nlps-chips{display:flex;flex-wrap:wrap;gap:7px;margin-top:14px}
+.nlps-chip{font-size:12px;border:1px solid var(--line);background:var(--band);border-radius:999px;padding:4px 11px}
+.nlps-facade,.nlps-costs,.nlps-map-sec{border:1px solid var(--line);border-radius:10px;background:#FFFDFC;padding:18px 20px;margin-bottom:18px}
+.nlps-sec-head{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.nlps-toggle{display:flex;border:1px solid var(--line);border-radius:8px;overflow:hidden}
+.nlps-toggle button{font:inherit;font-size:12.5px;border:0;background:#fff;color:var(--warm);padding:7px 14px;cursor:pointer}
+.nlps-toggle button.is-on{background:var(--ink);color:#fff}
+.nlps-facade-stage{position:relative;margin-top:8px}
+.nlps-view{display:none}.nlps-view.is-on{display:block}
+.nlps-facade-svg{display:block;max-width:340px;margin:0 auto;max-height:460px}
+.nlps-plan-svg{display:block;max-width:360px;margin:0 auto}
+.nlps-cap{font-size:11.5px;color:var(--warm);text-align:center;margin:10px 0 0}
+.nlps-cap a{color:var(--gold)}
+.nlps-floor-tip{position:absolute;top:8px;inset-inline-start:8px;background:var(--ink);color:#fff;font-size:12px;border-radius:6px;padding:5px 10px;pointer-events:none}
+.nlps-cost-grid{display:flex;flex-wrap:wrap;gap:26px}
+.nlps-cost-grid dt{font-size:11.5px;color:var(--warm)}
+.nlps-cost-grid dd{font-size:18px;font-weight:700;margin:2px 0 0}
+#nlps-map{height:280px;border-radius:8px;border:1px solid var(--line)}
+@media(max-width:560px){.nlps-price b{font-size:1.5rem}.nlps-facts{gap:16px}}
+' );
+		wp_register_script( 'nadlan-pshow-js', false, $has_map ? array( 'leaflet' ) : array(), '1.69.70', true );
+		wp_enqueue_script( 'nadlan-pshow-js' );
+		wp_add_inline_script( 'nadlan-pshow-js', '
+(function(){
+	document.addEventListener("DOMContentLoaded",function(){
+		var root=document.querySelector(".nlps");if(!root){return}
+		// facade / plan toggle
+		root.querySelectorAll(".nlps-toggle button").forEach(function(b){
+			b.addEventListener("click",function(){
+				root.querySelectorAll(".nlps-toggle button").forEach(function(x){x.classList.toggle("is-on",x===b);x.setAttribute("aria-selected",x===b?"true":"false")});
+				root.querySelectorAll(".nlps-view").forEach(function(v){v.classList.remove("is-on")});
+				var t=root.querySelector(".nlps-view-"+b.dataset.view);if(t){t.classList.add("is-on")}
+			});
+		});
+		// floor click tip
+		var tip=root.querySelector(".nlps-floor-tip");
+		root.querySelectorAll(".nlps-f-fl").forEach(function(fl){
+			fl.addEventListener("click",function(){
+				if(!tip){return}
+				var f=fl.dataset.floor,sel=fl.classList.contains("nlps-f-sel");
+				tip.textContent=sel?("הדירה המוצעת - קומה "+f):("קומה "+f);
+				tip.hidden=false;clearTimeout(tip._t);tip._t=setTimeout(function(){tip.hidden=true},2200);
+			});
+		});
+		// single-listing map
+		var m=document.getElementById("nlps-map");
+		if(m&&window.L){
+			var lat=parseFloat(m.dataset.lat),lng=parseFloat(m.dataset.lng);
+			var map=L.map(m,{scrollWheelZoom:false}).setView([lat,lng],15);
+			L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png",{attribution:"&copy; OpenStreetMap"}).addTo(map);
+			L.marker([lat,lng]).addTo(map).bindPopup(m.dataset.title||"");
+		}
+	});
+})();
+' );
+	}
+}
+add_action( 'wp_enqueue_scripts', 'nadlan_pshow_assets' );
+
+/* Demo listings are showcase-only: keep them out of Google regardless of body length. */
+if ( ! function_exists( 'nadlan_pshow_demo_noindex' ) ) {
+	function nadlan_pshow_demo_noindex( $robots ) {
+		if ( is_singular( 'nadlan_property' ) && get_post_meta( get_queried_object_id(), 'is_demo', true ) ) {
+			$robots['noindex'] = true; $robots['follow'] = true;
+		}
+		return $robots;
+	}
+}
+add_filter( 'wp_robots', 'nadlan_pshow_demo_noindex', 20 );
