@@ -7,3 +7,8 @@ plugin-build/
 plugin-dist/*
 !plugin-dist/nadlan-config.json
 !plugin-dist/*.zip
+
+# Credentials & local secrets — NEVER commit
+.env.local
+.env
+wp-api.ps1

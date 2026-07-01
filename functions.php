@@ -842,6 +842,7 @@ if ( ! function_exists( 'nadlan_revenue_premium_front_page' ) ) :
 		</div>
 	</section>
 
+
 	<section class="nlux-paths" aria-label="מסלולי פעולה">
 		<a class="nlux-path" href="<?php echo esc_url( $rainbow_url ); ?>"><span>01</span><h2>פותחים סיור פרויקט</h2><p>בחרו דירה על הבניין, בדקו קומה, כיוון ונוף, ורק אחר כך פנו ליזם.</p></a>
 		<a class="nlux-path" href="<?php echo esc_url( $project_url ); ?>"><span>02</span><h2>משווים פרויקטים לפי עיר</h2><p>דירה מקבלן, התחדשות עירונית, סטטוס פרויקט ותמונות במקום אחד.</p></a>
@@ -938,10 +939,19 @@ endif;
 
 add_filter( 'the_content', function ( $content ) {
 	if ( is_front_page() && in_the_loop() && is_main_query() ) {
-		// Priority 99 = AFTER wpautop (10) + shortcodes (11), so our clean
-		// structured homepage HTML is NOT mangled with stray <p>/<br> tags
-		// (which previously spawned phantom empty cards). Returning here also
-		// short-circuits later content filters cleanly.
+		// LIVE (owner-approved): the designed home-showroom homepage (gallery 3D + multilingual)
+		// is now active for all visitors. Fully reversible WITHOUT a code edit: return false from
+		// the nadlan_revenue_use_home_showroom filter (or add a small mu-plugin) to fall back to the
+		// legacy front page instantly.
+		$home_showroom = get_parent_theme_file_path( 'patterns/nadlan-home-showroom.php' );
+		if ( apply_filters( 'nadlan_revenue_use_home_showroom', true ) && file_exists( $home_showroom ) ) {
+			ob_start();
+			include $home_showroom;
+			$out = trim( (string) ob_get_clean() );
+			if ( $out !== '' ) {
+				return $out;
+			}
+		}
 		return nadlan_revenue_premium_front_page();
 	}
 	return $content;
@@ -1412,3 +1422,57 @@ add_filter( 'login_headerurl', function () {
 add_filter( 'login_headertext', function () {
 	return get_bloginfo( 'name' );
 } );
+
+/**
+ * TEMPORARY: patches the nadlan-platform-child header from the parent theme.
+ *
+ * UPress's Git deploy is only connected to this parent theme's path
+ * (/wp-content/themes/nadlan-revenue/). The child theme is not Git-tracked
+ * on this install, so edits to themes/nadlan-platform-child/ in the repo
+ * never reach production. Until a second UPress Git connection exists for
+ * the child theme, this enqueues a CSS override + a small JS-injected
+ * hamburger menu from here instead, since the parent theme IS deployable.
+ *
+ * Safe to remove entirely once the child theme has its own working deploy
+ * path and themes/nadlan-platform-child/assets/{css/platform.css,js/platform-nav.js}
+ * are confirmed live on their own.
+ */
+add_action( 'wp_enqueue_scripts', function () {
+	if ( is_admin() ) {
+		return;
+	}
+	if ( get_stylesheet() !== 'nadlan-platform-child' ) {
+		return;
+	}
+	$css = get_parent_theme_file_path( 'assets/css/nlpc-header-parent-override.css' );
+	if ( file_exists( $css ) ) {
+		wp_enqueue_style(
+			'nlpc-header-parent-override',
+			get_parent_theme_file_uri( 'assets/css/nlpc-header-parent-override.css' ),
+			array( 'nlpc-platform' ),
+			(string) filemtime( $css )
+		);
+	}
+	$js = get_parent_theme_file_path( 'assets/js/nlpc-header-nav-inject.js' );
+	if ( file_exists( $js ) ) {
+		wp_enqueue_script(
+			'nlpc-header-nav-inject',
+			get_parent_theme_file_uri( 'assets/js/nlpc-header-nav-inject.js' ),
+			array(),
+			(string) filemtime( $js ),
+			true
+		);
+	}
+}, 70 );
+
+// Fix for SEO: Demote site title H1 to DIV on non-front pages.
+// On project/tool/archive pages the page's own heading should be the sole <h1>.
+// The site-title block defaults to <h1>; this downgrades it to <div> everywhere
+// except the front page, resolving the duplicate-H1 SEO issue.
+add_filter( 'render_block_core/site-title', function ( $block_content, $block ) {
+	if ( ! is_front_page() && ! is_home() ) {
+		$block_content = preg_replace( '/^<h1/i', '<div', trim( $block_content ) );
+		$block_content = preg_replace( '/<\/h1>$/i', '</div>', $block_content );
+	}
+	return $block_content;
+}, 10, 2 );
