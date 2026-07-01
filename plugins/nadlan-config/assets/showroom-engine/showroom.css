@@ -340,3 +340,9 @@ html[lang="en"] .nl-pcard__name { font-family: var(--font-serif-en); }
 .nl-faq__item summary::after{content:"+";color:var(--gold);font-weight:700;flex:none}
 .nl-faq__item[open] summary::after{content:"\2212"}
 .nl-faq__item p{margin:10px 0 0;color:#4b4639;line-height:1.75}
+
+/* Stage Blowout Fix */
+.nl-stagewrap { max-height: 75vh; }
+/* Floating Controls Docking Fix */
+.nl-fly { z-index: 45 !important; bottom: 85px; }
+@media (max-width: 760px) { .nl-fly { bottom: 70px; } }

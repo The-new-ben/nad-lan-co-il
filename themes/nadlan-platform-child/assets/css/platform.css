@@ -439,3 +439,7 @@ body.admin-bar .nlpc-site-header{top:32px;}
 @media (prefers-reduced-motion: reduce){
   *,*::before,*::after{transition-duration:.01ms!important;animation-duration:.01ms!important;animation-iteration-count:1!important;scroll-behavior:auto!important;}
 }
+
+/* Homepage Showcase Fixes */
+.nlpc-home .nlux-showcase img { aspect-ratio: 4/3; object-fit: cover; width: 100%; height: auto; display: block; }
+.nlpc-home .nlux-showcase { overflow-x: auto; padding-bottom: 16px; scroll-padding-inline: 16px; }
