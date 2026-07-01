@@ -686,29 +686,37 @@ if ( ! function_exists( 'nadlan_dir_project_card' ) ) {
 				$photo_url = nadlan_concept_asset_url( $concept_files[ absint( $id ) % count( $concept_files ) ] );
 			}
 		}
+		$floors = (int) get_post_meta( $id, 'floors', true );
+		// Magazine card (v1.69.69): Lovable MagazineCard design ported to the live
+		// "Quiet Luxury" tokens. Stat row uses only real, present meta — never fake data.
+		$stats = array();
+		if ( $units > 0 )  { $stats[] = array( 'יח״ד', number_format( $units ) ); }
+		if ( $floors > 0 ) { $stats[] = array( 'קומות', (string) $floors ); }
+		if ( $status )     { $stats[] = array( 'סטטוס', $status ); }
+		if ( $dev && count( $stats ) < 3 ) { $stats[] = array( 'יזם', $dev ); }
+		if ( ( $distance !== null && $distance !== '' ) && count( $stats ) < 3 ) { $stats[] = array( 'מרחק', number_format_i18n( (float) $distance, 1 ) . ' ק״מ' ); }
+		$stats = array_slice( $stats, 0, 3 );
 		ob_start(); ?>
-<a class="nldc has-media<?php echo $featured ? ' is-featured' : ''; ?>" href="<?php echo esc_url( get_permalink( $id ) ); ?>" style="--pc:<?php echo esc_attr( $pm['color'] ); ?>;--ps:<?php echo esc_attr( $pm['soft'] ); ?>">
-	<?php if ( $featured ) : ?><span class="nldc-sponsor">מקודם</span><?php endif; ?>
+<a class="nldc nldc-project has-media<?php echo $featured ? ' is-featured' : ''; ?>" href="<?php echo esc_url( get_permalink( $id ) ); ?>" style="--pc:<?php echo esc_attr( $pm['color'] ); ?>;--ps:<?php echo esc_attr( $pm['soft'] ); ?>">
 	<div class="nldc-media<?php echo $is_real_photo ? ' has-real-photo' : ' has-concept-art'; ?>">
 		<img src="<?php echo esc_url( $photo_url ); ?>" alt="" loading="lazy" decoding="async">
-		<span class="nldc-media-label"><?php echo esc_html( $pm['label'] ); ?></span>
+		<?php if ( $featured ) : ?><span class="nldcp-badge">מקודם</span><?php endif; ?>
+		<span class="nldcp-type"><?php echo esc_html( $pm['label'] ); ?></span>
 	</div>
-	<div class="nldc-top">
-		<span class="nldc-av" aria-hidden="true"><svg class="nl-mark" viewBox="0 0 48 48"><use href="#<?php echo esc_attr( $pm['icon'] ); ?>"></use></svg></span>
-		<div class="nldc-id">
-			<h3 class="nldc-name"><?php echo esc_html( get_the_title( $id ) ); ?></h3>
-			<span class="nldc-pill"><?php echo esc_html( $pm['label'] ); ?></span>
+	<div class="nldcp-body">
+		<div class="nldcp-head">
+			<h3 class="nldcp-name"><?php echo esc_html( get_the_title( $id ) ); ?></h3>
+			<?php if ( $city ) : ?><span class="nldcp-city"><?php echo esc_html( $city ); ?></span><?php endif; ?>
 		</div>
-	</div>
-	<div class="nldc-meta">
-		<?php if ( $city ) : ?><span class="nldc-city"><svg class="nl-ico" aria-hidden="true" viewBox="0 0 16 16"><path fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" d="M8 14s5-4.5 5-8.5A5 5 0 1 0 3 5.5C3 9.5 8 14 8 14z"/><circle cx="8" cy="5.5" r="1.8" fill="none" stroke="currentColor" stroke-width="1.4"/></svg><?php echo esc_html( $city ); ?></span><?php endif; ?>
-		<?php if ( $distance !== null && $distance !== '' ) : ?><span class="nldc-distance"><?php echo esc_html( number_format_i18n( (float) $distance, 1 ) ); ?> ק״מ</span><?php endif; ?>
-		<?php if ( $units > 0 ) : ?><span class="nldc-cls"><svg class="nl-ico" aria-hidden="true" viewBox="0 0 16 16"><path fill="none" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round" d="M2 7l6-5 6 5v7H2zM6.5 14v-4h3v4"/></svg><?php echo number_format( $units ); ?> יח״ד<?php echo $status ? ' · ' . esc_html( $status ) : ''; ?></span><?php endif; ?>
-		<?php if ( $dev ) : ?><span class="nldc-cls"><svg class="nl-ico" aria-hidden="true" viewBox="0 0 16 16"><circle cx="8" cy="5.5" r="2.5" fill="none" stroke="currentColor" stroke-width="1.4"/><path fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" d="M3 14c.5-2.5 2.5-4 5-4s4.5 1.5 5 4"/></svg><?php echo esc_html( $dev ); ?></span><?php endif; ?>
-	</div>
-	<div class="nldc-foot">
-		<span class="nldc-reg"><svg class="nl-ico" aria-hidden="true" viewBox="0 0 16 16"><path fill="none" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round" d="M8 1.5l5.5 2v4c0 3.5-2.5 6-5.5 7-3-1-5.5-3.5-5.5-7v-4l5.5-2z"/><path fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" d="M5.5 8l2 2 3-4"/></svg>data.gov.il</span>
-		<span class="nldc-go">לפרטים ←</span>
+		<?php if ( $stats ) : ?>
+		<dl class="nldcp-stats">
+			<?php foreach ( $stats as $s ) : ?><div><dt><?php echo esc_html( $s[0] ); ?></dt><dd><?php echo esc_html( $s[1] ); ?></dd></div><?php endforeach; ?>
+		</dl>
+		<?php endif; ?>
+		<div class="nldcp-foot">
+			<span class="nldcp-cta">לצפייה בפרויקט</span>
+			<span class="nldcp-reg" title="מאומת מול רשם הקבלנים (gov.il)"><svg class="nl-ico" aria-hidden="true" viewBox="0 0 16 16"><path fill="none" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round" d="M8 1.5l5.5 2v4c0 3.5-2.5 6-5.5 7-3-1-5.5-3.5-5.5-7v-4l5.5-2z"/><path fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" d="M5.5 8l2 2 3-4"/></svg>gov.il</span>
+		</div>
 	</div>
 </a>
 <?php

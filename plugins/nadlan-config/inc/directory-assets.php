@@ -95,6 +95,30 @@ if ( ! function_exists( 'nadlan_dir_css' ) ) {
 /* ---------- RESPONSIVE ---------- */
 @media(max-width:900px){.nldir-body{grid-template-columns:1fr}.nldir-side{position:static;flex-direction:row;flex-wrap:wrap;gap:16px;border-bottom:1px solid var(--line);padding-bottom:18px}.nldir-fgroup{flex:1;min-width:160px}.nldir-cities{flex-direction:row;flex-wrap:wrap}.nldir-cityb{width:auto;border:1px solid var(--line);border-radius:20px}}
 @media(max-width:560px){.nldir-search{flex-wrap:wrap}.nldir-search input,.nldir-search input[name=city]{flex:1 1 100%;border-inline-start:0}.nldir-search button{flex:1 1 100%;padding:13px}.nldir-results{grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:12px}.nldc{padding:16px}}
+
+/* ---------- PROJECT MAGAZINE CARD (v1.69.69) — Lovable MagazineCard port, scoped to .nldc-project only ---------- */
+.nldir-results:has(.nldc-project){grid-template-columns:repeat(auto-fill,minmax(272px,1fr))}
+.nldir-results .nldc-project{padding:0!important;overflow:hidden;display:flex;flex-direction:column}
+.nldir-results .nldc-project::before{display:none!important}
+.nldc-project .nldc-media{position:relative;aspect-ratio:4/3;overflow:hidden;background:var(--band);margin:0;border-radius:0}
+.nldc-project .nldc-media img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .5s cubic-bezier(.2,.8,.2,1)}
+.nldc-project:hover .nldc-media img{transform:scale(1.03)}
+.nldc-project .nldcp-badge{position:absolute;inset-block-start:12px;inset-inline-start:12px;background:var(--pc,var(--gold));color:#fff;font-size:10px;font-weight:700;letter-spacing:.08em;padding:4px 9px;border-radius:4px}
+.nldc-project .nldcp-type{position:absolute;inset-block-end:12px;inset-inline-start:12px;background:rgba(255,255,255,.92);-webkit-backdrop-filter:blur(4px);backdrop-filter:blur(4px);color:var(--ink);font-size:11px;font-weight:600;padding:4px 10px;border-radius:999px;border:1px solid var(--line)}
+.nldc-project .nldcp-body{padding:16px 18px 18px;display:flex;flex-direction:column;flex:1}
+.nldc-project .nldcp-head{display:flex;align-items:baseline;justify-content:space-between;gap:10px}
+.nldc-project .nldcp-name{font-family:var(--font-serif,"Frank Ruhl Libre",serif);font-weight:700;font-size:1.16rem;line-height:1.25;margin:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.nldc-project .nldcp-city{flex-shrink:0;font-size:11px;letter-spacing:.05em;color:var(--muted)}
+.nldc-project .nldcp-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:14px 0 0;padding-top:13px;border-top:1px solid var(--line)}
+.nldc-project .nldcp-stats>div{min-width:0}
+.nldc-project .nldcp-stats dt{margin:0;font-size:11px;color:var(--muted)}
+.nldc-project .nldcp-stats dd{margin:2px 0 0;font-size:14px;font-weight:600;color:var(--ink);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.nldc-project .nldcp-foot{display:flex;align-items:center;gap:12px;margin-top:auto;padding-top:16px}
+.nldc-project .nldcp-cta{flex:1;text-align:center;background:var(--ink);color:#fff;font-weight:600;font-size:13.5px;padding:9px 12px;border-radius:6px;transition:background .18s}
+.nldc-project:hover .nldcp-cta{background:#000}
+.nldc-project .nldcp-reg{display:inline-flex;align-items:center;gap:4px;font-size:11px;color:var(--muted);white-space:nowrap}
+.nldc-project .nldcp-reg .nl-ico{width:13px;height:13px}
+.nldc-project.is-featured{border-color:var(--pc,var(--gold))!important}
 </style>
 CSS;
 	}
