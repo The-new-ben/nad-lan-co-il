@@ -1476,6 +1476,15 @@ add_filter( 'render_block_core/site-title', function ( $block_content, $block ) 
 	return $block_content;
 }, 10, 2 );
 
+// Plugin-rendered profile pages already print their own primary heading. Remove
+// the hidden theme post-title block from the HTML so crawlers see a single H1.
+add_filter( 'render_block_core/post-title', function ( $block_content, $block ) {
+	if ( is_singular( array( 'nadlan_project', 'nadlan_professional', 'nadlan_property' ) ) ) {
+		return '';
+	}
+	return $block_content;
+}, 20, 2 );
+
 // Mobile buying action rail on project pages: sticky Call / WhatsApp / Inquiry
 // bar (mobile only). Concept + structure from Antigravity (2026-07-01); Hebrew
 // rewritten here (Antigravity's version shipped mojibake "????" labels). Reads
