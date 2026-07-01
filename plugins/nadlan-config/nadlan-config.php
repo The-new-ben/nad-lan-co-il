@@ -2,7 +2,7 @@
 /**
  * Plugin Name: NadLan Config
  * Description: Lead-capture foundation: nadlan_lead CPT + lead-form handler + healthcheck. Read skills/nadlan-config-plugin.md.
- * Version: 1.69.67
+ * Version: 1.69.68
  * Author: nad-lan.co.il
  * License: GPL-2.0+
  * Requires PHP: 7.4
@@ -70,7 +70,7 @@ if ( ! function_exists( 'nadlan_config_healthcheck_response' ) ) {
 	function nadlan_config_healthcheck_response() {
 		$out = array(
 			'plugin'              => 'nadlan-config',
-			'version'             => '1.69.67',
+			'version'             => '1.69.68',
 			'cpt_present'         => post_type_exists( 'nadlan_lead' ),
 			'lead_handler_loaded' => (bool) has_action( 'admin_post_nadlan_lead' ),
 			'php_version'         => PHP_VERSION,
@@ -557,7 +557,87 @@ if ( ! function_exists( 'nadlan_config_emergency_css' ) ) {
 	function nadlan_config_emergency_css() {
 		wp_register_style( 'nadlan-emergency-css', false );
 		wp_enqueue_style( 'nadlan-emergency-css' );
-		wp_add_inline_style( 'nadlan-emergency-css', '/* Homepage Showcase Fixes */ .nlpc-home .nlux-showcase img { aspect-ratio: 4/3; object-fit: cover; width: 100%; height: auto; display: block; } .nlpc-home .nlux-showcase { overflow-x: auto; padding-bottom: 16px; scroll-padding-inline: 16px; } /* Stage Blowout Fix */ .nl-stagewrap { max-height: 75vh; } /* Floating Controls Docking Fix */ .nl-fly { z-index: 45 !important; bottom: 85px; } @media (max-width: 760px) { .nl-fly { bottom: 70px; } }' );
+		$css = '
+/* ============================================================================
+   NadLan Emergency Layout Overrides (v1.69.68)
+   Injected via plugin to bypass uPress theme-sync block.
+   DO NOT REMOVE unless replaced by equivalent theme CSS.
+   ============================================================================ */
+
+/* --- ROOT CAUSE FIX: WordPress is-layout-constrained chokes full-width sections --- */
+/* The WP block engine sets max-width: 760px on .is-layout-constrained children,
+   which clips the RTL H1, hero, and showcase sections. Override for home + project pages. */
+.nlpc-home .nlpc-main.is-layout-constrained > *,
+.nlpc-home .wp-block-post-content.is-layout-constrained > *,
+.nlpc-project-page .nlpc-main.is-layout-constrained > *,
+.nlpc-project-page .wp-block-post-content.is-layout-constrained > * {
+  max-width: 100% !important;
+  margin-inline: 0 !important;
+}
+.nlpc-home .nlpc-main,
+.nlpc-home .wp-block-post-content,
+.nlpc-project-page .nlpc-main,
+.nlpc-project-page .wp-block-post-content {
+  max-width: 100% !important;
+  padding-inline: 0 !important;
+}
+
+/* --- H1 CLIPPING FIX --- */
+/* Ensure the hero H1 is never clipped by overflow or max-width constraints */
+.nlh-home-hero,
+.nlh-home-panel,
+.nlh-home-panel h1 {
+  max-width: 100% !important;
+  overflow: visible !important;
+}
+.nlh-home-panel h1 {
+  word-break: normal;
+  overflow-wrap: break-word;
+}
+
+/* --- HOMEPAGE SHOWCASE THUMBNAILS --- */
+.nlpc-home .nlux-showcase img,
+.nle-catalog img,
+.nlh-home-project-engine img {
+  aspect-ratio: 4/3;
+  object-fit: cover;
+  width: 100%;
+  height: auto;
+  display: block;
+}
+.nlpc-home .nlux-showcase,
+.nle-catalog {
+  overflow-x: auto;
+  padding-bottom: 16px;
+  scroll-padding-inline: 16px;
+}
+
+/* --- STAGE / 3D BLOWOUT FIX --- */
+.nl-stagewrap {
+  max-height: 75vh;
+}
+
+/* --- FLOATING CONTROLS DOCKING --- */
+.nl-fly {
+  z-index: 45 !important;
+  bottom: 85px;
+}
+@media (max-width: 760px) {
+  .nl-fly { bottom: 70px; }
+}
+
+/* --- MOBILE: prevent any horizontal scroll on home/project --- */
+@media (max-width: 760px) {
+  .nlpc-home,
+  .nlpc-project-page {
+    overflow-x: hidden;
+  }
+  .nlh-home-panel h1 {
+    font-size: clamp(1.6rem, 6vw, 2.4rem) !important;
+  }
+}
+';
+		wp_add_inline_style( 'nadlan-emergency-css', $css );
 	}
 }
 add_action( 'wp_enqueue_scripts', 'nadlan_config_emergency_css', 99 );
