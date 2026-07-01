@@ -106,8 +106,8 @@ if ( ! function_exists( 'nadlan_revenue_enqueue_project_showroom_assets' ) ) :
 			return;
 		}
 
-		$has_v1        = false !== strpos( $content, 'data-nlps-showroom' );
-		$has_v2        = false !== strpos( $content, 'data-nlv2-showroom' );
+		$has_v1        = false; // Disabled to prevent CSS stacking with new engine
+		$has_v2        = false; // Disabled to prevent CSS stacking with new engine
 		$has_home      = false !== strpos( $content, 'data-nle-home-showroom' ) || $template_has_home;
 		$needs_model   = $has_v1 || $has_v2 || $has_home;
 
