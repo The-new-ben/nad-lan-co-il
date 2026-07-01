@@ -49,10 +49,43 @@
         container: holder,
         style: "mapbox://styles/mapbox/light-v11",
         center: c,
-        zoom: 14,
+        zoom: 15.5,
+        pitch: 52,
+        bearing: -18,
+        antialias: true,
         attributionControl: true,
       });
-      map.addControl(new mapboxgl.NavigationControl({ showCompass: false }), "top-left");
+      map.addControl(new mapboxgl.NavigationControl({ showCompass: true }), "top-left");
+      function firstSymbolLayerId() {
+        var style = map.getStyle && map.getStyle();
+        var layers = (style && style.layers) || [];
+        for (var i = 0; i < layers.length; i++) {
+          if (layers[i].type === "symbol" && layers[i].layout && layers[i].layout["text-field"]) return layers[i].id;
+        }
+        return null;
+      }
+      function add3dBuildings() {
+        if (!map.getSource || !map.getLayer || !map.addLayer) return;
+        if (!map.getSource("composite") || map.getLayer("nadlan-3d-buildings")) return;
+        try {
+          map.addLayer({
+            id: "nadlan-3d-buildings",
+            source: "composite",
+            "source-layer": "building",
+            filter: ["==", "extrude", "true"],
+            type: "fill-extrusion",
+            minzoom: 14,
+            paint: {
+              "fill-extrusion-color": "#d8c79a",
+              "fill-extrusion-height": ["interpolate", ["linear"], ["zoom"], 14, 0, 15, ["to-number", ["get", "height"], 0]],
+              "fill-extrusion-base": ["interpolate", ["linear"], ["zoom"], 14, 0, 15, ["to-number", ["get", "min_height"], 0]],
+              "fill-extrusion-opacity": 0.58
+            }
+          }, firstSymbolLayerId() || undefined);
+        } catch (e) {
+          if (window.console) console.warn("nadlan map 3d buildings unavailable", e);
+        }
+      }
       var cur = activeProject();
       new mapboxgl.Marker({ color: "#9C7A3C" })
         .setLngLat(c)
@@ -64,7 +97,7 @@
           .setPopup(new mapboxgl.Popup({ offset: 18 }).setHTML('<a href="' + (pr.url || "#") + '" style="font-weight:600;color:#1B1A17;text-decoration:none">' + (pr.name || "") + "</a>"))
           .addTo(map);
       });
-      map.on("load", function () { map.resize(); });
+      map.on("load", function () { add3dBuildings(); map.resize(); });
     } catch (e) {
       el.setAttribute("data-mb", "err");
       if (window.console) console.warn("nadlan map init failed", e);

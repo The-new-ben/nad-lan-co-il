@@ -37,6 +37,7 @@
   function unit(id) { var u = units().filter(function (x) { return x.id === id; }); return u[0] || null; }
   function projName() { return t(project().name_key); }
   function content(k) { var c = project().content || {}; return (c[state.lang] && c[state.lang][k]) || (c.en && c.en[k]) || (c.he && c.he[k]) || ""; }
+  function hasModel(p) { return !!(p && p.model_glb && String(p.model_glb).trim() !== ""); }
   var KNOWN_DIRS = { west:1, east:1, north:1, south:1, "south-west":1, "north-west":1, "south-east":1, "north-east":1 };
   // Never echo a raw "dir_xxx" key: translate known enums, else show the raw value.
   function dirLabel(d) { return KNOWN_DIRS[d] ? t("dir_" + d) : (d || ""); }
@@ -45,6 +46,7 @@
   function viewText(u) { return u.view_key ? t(u.view_key) : ""; }
   function area() { return (SR.areas && SR.areas[project().area]) || { map: { pins: [], project_pin: { x: 50, y: 50 }, coast_x: 16 }, spoke_groups: [], stats: [] }; }
   function spoke(id) { return (SR.spokes && SR.spokes[id]) || null; }
+  if (!hasModel(project())) state.view = "facade";
 
   function load(k, d) { try { return JSON.parse(localStorage.getItem(k)) || d; } catch (e) { return d; } }
   function save(k, v) { try { localStorage.setItem(k, JSON.stringify(v)); } catch (e) {} }
@@ -184,6 +186,8 @@
   /* block 3 + 4 — theater (3D) and facade backup */
   function theater() {
     var p = project();
+    var has3d = hasModel(p);
+    if (!has3d) state.view = "facade";
     var hots = units().map(function (u) {
       var pos = unitPos(u), cls = "nl-hot" + (u.status === "reserved" ? " nl-hot--reserved" : u.status === "sold" ? " nl-hot--sold" : "") + (u.recommended ? " nl-hot--rec" : "");
       return '<button slot="hotspot-' + esc(u.id) + '" data-position="' + pos.pos + '" data-normal="' + pos.nrm + '" class="' + cls + '" data-act="select" data-id="' + esc(u.id) + '" aria-label="' + esc(unitTitleAria(u)) + '">' + esc(u.floor) + "</button>";
@@ -198,18 +202,24 @@
       var cls = "nl-fsq" + (u.status === "reserved" ? " nl-fsq--reserved" : u.status === "sold" ? " nl-fsq--sold" : "");
       return '<button class="' + cls + '" data-act="select" data-id="' + esc(u.id) + '" style="inset-inline-start:' + u.stage_x + "%;inset-block-start:" + u.stage_y + "%;width:" + u.stage_w + "%;height:" + u.stage_h + '%" aria-label="' + esc(unitTitleAria(u)) + '"><b>' + esc(u.label) + "</b><span>" + esc(roomsLabel(u.rooms)) + "</span></button>";
     }).join("");
-    var facadeBg = p.facade_image ? ' style="background-image:url(' + esc(p.facade_image) + ')"' : "";
+    var facadeImage = p.facade_image || p.model_poster || "";
+    var posterImage = p.model_poster || p.facade_image || "";
+    var facadeBg = facadeImage ? ' style="background-image:url(' + esc(facadeImage) + ')"' : "";
+    var toggle = has3d ? '<div class="nl-toggle" role="group" aria-label="view"><button data-act="view" data-id="3d" aria-pressed="' + (state.view === "3d") + '">' + esc(t("view_3d")) + '</button><button data-act="view" data-id="facade" aria-pressed="' + (state.view === "facade") + '">' + esc(t("view_facade")) + "</button></div>" : "";
+    var model = has3d ? '<model-viewer id="nl-mv" class="nl-stage" src="' + esc(p.model_glb) + '" loading="eager" reveal="auto" camera-controls auto-rotate auto-rotate-delay="800" rotation-per-second="14deg" interaction-prompt="none" environment-image="neutral" exposure="1.02" shadow-intensity="0.55" shadow-softness="1" camera-orbit="' + esc(p.default_orbit) + '" camera-target="' + esc(p.default_target) + '" min-camera-orbit="auto 48deg auto" max-camera-orbit="auto 86deg auto" min-field-of-view="16deg" max-field-of-view="44deg" touch-action="pan-y">' + hots + "</model-viewer>" : "";
+    var poster = has3d && posterImage ? '<div class="nl-poster" id="nl-poster" style="background-image:url(' + esc(posterImage) + ')"></div>' : "";
+    var spinner = has3d ? '<div class="nl-spinner" id="nl-spin"><i></i>' + esc(t("loading_model")) + "</div>" : "";
 
     return '<div class="nl-theater">' +
       '<div class="nl-theater__top"><div class="nl-theater__title"><span class="e">' + esc(t("theater_eyebrow")) + "</span><h2>" + esc(t("theater_title")) + "</h2></div>" +
-        '<div class="nl-toggle" role="group" aria-label="view"><button data-act="view" data-id="3d" aria-pressed="true">' + esc(t("view_3d")) + '</button><button data-act="view" data-id="facade" aria-pressed="false">' + esc(t("view_facade")) + "</button></div></div>" +
+        toggle + "</div>" +
       '<div class="nl-stagewrap">' +
-        '<model-viewer id="nl-mv" class="nl-stage" src="' + esc(p.model_glb) + '" loading="eager" reveal="auto" camera-controls auto-rotate auto-rotate-delay="800" rotation-per-second="14deg" interaction-prompt="none" environment-image="neutral" exposure="1.02" shadow-intensity="0.55" shadow-softness="1" camera-orbit="' + esc(p.default_orbit) + '" camera-target="' + esc(p.default_target) + '" min-camera-orbit="auto 48deg auto" max-camera-orbit="auto 86deg auto" min-field-of-view="16deg" max-field-of-view="44deg" touch-action="pan-y">' + hots + "</model-viewer>" +
-        '<div class="nl-poster" id="nl-poster" style="background-image:url(' + esc(p.model_poster) + ')"></div>' +
-        '<div class="nl-spinner" id="nl-spin"><i></i>' + esc(t("loading_model")) + "</div>" +
+        model +
+        poster +
+        spinner +
         orientPins +
         '<div class="nl-legend"><span><span class="nl-dot s-available"></span>' + esc(t("legend_available")) + '</span><span><span class="nl-dot s-reserved"></span>' + esc(t("legend_reserved")) + '</span><span><span class="nl-dot s-sold"></span>' + esc(t("legend_sold")) + "</span></div>" +
-        '<div class="nl-facade" id="nl-facade"><div class="nl-facade__frame"' + facadeBg + ">" + fsq + "</div></div>" +
+        '<div class="nl-facade' + (state.view === "facade" ? " is-on" : "") + '" id="nl-facade"><div class="nl-facade__frame"' + facadeBg + ">" + fsq + "</div></div>" +
         '<div class="nl-scrim" id="nl-scrim"></div>' +
         panel() +
       "</div>" +
@@ -560,6 +570,7 @@
   });
 
   function setView(v) {
+    if (v === "3d" && !hasModel(project())) v = "facade";
     state.view = v;
     document.querySelectorAll('[data-act="view"]').forEach(function (b) { b.setAttribute("aria-pressed", b.dataset.id === v); });
     var fac = document.getElementById("nl-facade"); if (fac) fac.classList.toggle("is-on", v === "facade");
