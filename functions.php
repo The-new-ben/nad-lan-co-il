@@ -1464,3 +1464,14 @@ add_action( 'wp_enqueue_scripts', function () {
 		);
 	}
 }, 70 );
+
+// SEO: demote the site-title block from <h1> to <div> on non-front pages, so the
+// page's own heading is the sole <h1> (fixes duplicate-H1 on project/tool/archive
+// views). Front page keeps the site title as H1. From Codex's buyer-journey work.
+add_filter( 'render_block_core/site-title', function ( $block_content, $block ) {
+	if ( ! is_front_page() && ! is_home() ) {
+		$block_content = preg_replace( '/^<h1/i', '<div', trim( $block_content ) );
+		$block_content = preg_replace( '/<\/h1>$/i', '</div>', $block_content );
+	}
+	return $block_content;
+}, 10, 2 );

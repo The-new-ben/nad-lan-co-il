@@ -10,3 +10,8 @@ plugin-dist/*
 
 # Local SEO/visual audit cache
 .seo-cache/
+
+# Credentials & local secrets — NEVER commit
+.env.local
+.env
+wp-api.ps1
