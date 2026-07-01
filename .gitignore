@@ -11,6 +11,9 @@ plugin-dist/*
 # Local SEO/visual audit cache
 .seo-cache/
 
+# Installed JS deps — package.json/package-lock.json are the source of truth
+node_modules/
+
 # Credentials & local secrets — NEVER commit
 .env.local
 .env
