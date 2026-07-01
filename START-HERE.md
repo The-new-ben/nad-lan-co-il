@@ -21,6 +21,18 @@ leads routed to paying owners, recurring billing via Morning (Green Invoice), AI
 - Theme deploys via UPress git pull of main. Plugin deploys via the self-update manifest
   plugin-dist/nadlan-config.json -> owner/Cowork clicks Update in wp-admin/plugins.php.
 
+## ⭐ DEPLOY WITHOUT THE OWNER CLICKING "UPDATE" (new 2026-07-01, proven live)
+
+The owner no longer has to click "Update" for plugin releases. An agent with the
+`WP_APP_PASSWORD` (admin) can trigger WordPress's own updater directly and push a release
+live itself. Full, repeatable method + the exact code: **`skills/agent-direct-wordpress-access.md`**
+(section "⭐ Agent-driven plugin deploy"). Four direct-access tools (Code Snippets, Vibe AI/MCP,
+File Manager, WP Adminer) are installed live for this. Flow now: write code -> merge to main
+-> agent triggers deploy -> verify live (healthcheck version + changed page + homepage 200).
+Repo stays source of truth; only the deploy *trigger* moved from owner to agent. Rollback =
+same call pointed at the previous ZIP. (Still open: the child theme has no direct path yet —
+see docs/research/ on WP Pusher.)
+
 ## Read in this order
 1. README.md + AGENTS.md + HANDOFF.md (project + agent rules)
 2. handoff/antigravity/2026-07-01-mega-master-handoff/MEGA_MASTER_HANDOFF.md (brand vibe,
