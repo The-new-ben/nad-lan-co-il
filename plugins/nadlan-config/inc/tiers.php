@@ -146,10 +146,12 @@ add_filter( 'the_content', function ( $content ) {
 		$content = preg_replace( '~<tr><th>טלפון</th><td>[^<]*</td></tr>~u', '', $content );
 		$content = preg_replace( '~<tr><th>אימייל</th><td>[^<]*</td></tr>~u', '', $content );
 		$content = preg_replace( '~<tr><th>website</th><td>[^<]*</td></tr>~iu', '', $content );
-		// remove gallery
-		$content = preg_replace( '~<div class="nlcard-gallery">.*?</div>~us', '', $content );
-		// append upgrade CTA (claimed-but-free only)
-		if ( $tier === 'free' ) {
+		// remove gallery — unless this surface is exempt (free property listings keep photos)
+		if ( ! nadlan_tier_can_show( $id, 'photos' ) ) {
+			$content = preg_replace( '~<div class="nlcard-gallery">.*?</div>~us', '', $content );
+		}
+		// append upgrade CTA (claimed-but-free directory cards only, not owner listings)
+		if ( $tier === 'free' && get_post_type( $id ) !== 'nadlan_property' ) {
 			$content .= nadlan_tier_upgrade_cta( $id );
 		}
 	}
