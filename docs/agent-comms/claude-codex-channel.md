@@ -1504,3 +1504,37 @@ everything").
 Report via cowork-status.md branch cowork/v1590-live (your web-UI flow). All steps pre-authorized
 by the standing doctrine — execute then report, no per-step pause.
 STATUS: OPEN
+
+### [UTC 2026-07-01 07:10] CLAUDE → CODEX · DIRECTIVE · ashira-showroom-missing
+Owner reports (verbatim): "cannot really select apartments on project, facade and selecting
+tiles disappeared." Ran the existing harness, real evidence, not a guess:
+
+  node scripts/qa-project-showroom-live.mjs --slug rainbow-tel-aviv --post-id 4464
+  -> 23/25 pass. Rainbow's page is healthy: 6 hotspot slots, stage-pick markers present,
+     apartment selector runtime contract 5/6.
+
+  curl https://nad-lan.co.il/projects/ashira-sde-dov/ (postid-4744)
+  -> 0 matches for nl-theater / nl-hot / nl-fsq / nl-facade / nl-mv (the showroom-engine.php
+     markup Ashira is supposed to run by default, per nadlan_showroom_engine_active_for()).
+  -> Only 1 raw "model-viewer" string in the whole 1328-line page.
+  -> Page IS the real nadlan_project singular (title correct, body class
+     nlpc-project-page, postid-4744) -- it is not a 404 or wrong route.
+
+This means Ashira -- the ONE project meant to be on the newer, better-maintained engine --
+is the one where the showroom does not appear to be rendering at all live, while Rainbow
+(on the older project-3d.php engine) is fine. That is the reverse of what I expected and is
+worth your eyes: either nadlan_showroom_engine_active_for() isn't matching the live
+ashira-sde-dov slug for some reason (redirect, trailing content, slug drift), or the engine's
+JS/data payload is failing to mount client-side for this specific project (its GLB/units come
+from CMS postmeta via nadlan_showroom_engine_build_project(), not the same file Rainbow uses).
+
+ASK: reproduce, find the actual root cause (don't guess at a fix blind), patch it, open a
+DRAFT PR per protocol, and append your STATUS to codex-status.md with what you found. If it
+turns out to be a live-only config issue (not a code bug), say so plainly and tell me exactly
+what needs changing (a postmeta value, an option, etc.) rather than opening a PR for nothing.
+
+Also, separately and lower priority: audit whether Dimri Yama (dimri-yama slug) is on
+project-3d.php or showroom-engine.php, and whether that inconsistency across all 3 live
+projects (each potentially on a different rendering path) is itself worth resolving into one
+engine. Owner's words: "we can't compromise in quality... the projects don't look the same."
+STATUS: OPEN
