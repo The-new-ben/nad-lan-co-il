@@ -87,6 +87,12 @@ if ( ! function_exists( 'nadlan_tier_can_show' ) ) {
 	 * - premier: pro + "מאומת" badge + featured-area placement.
 	 */
 	function nadlan_tier_can_show( $post_id, $surface ) {
+		// Owner property LISTINGS are a free product WITH photos + contact form
+		// (Yad2-parity); tier-gating of these surfaces applies to the paid
+		// professionals/projects directory, not to the listings vertical.
+		if ( in_array( $surface, array( 'photos', 'lead_form' ), true ) && get_post_type( $post_id ) === 'nadlan_property' ) {
+			return true;
+		}
 		$tier = nadlan_tier_effective( $post_id );
 		$matrix = array(
 			'phone'     => array( 'trial' => true, 'pro' => true, 'premier' => true ),
