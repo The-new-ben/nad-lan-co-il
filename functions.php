@@ -1422,3 +1422,45 @@ add_filter( 'login_headerurl', function () {
 add_filter( 'login_headertext', function () {
 	return get_bloginfo( 'name' );
 } );
+
+/**
+ * TEMPORARY: patches the nadlan-platform-child header from the parent theme.
+ *
+ * UPress's Git deploy is only connected to this parent theme's path
+ * (/wp-content/themes/nadlan-revenue/). The child theme is not Git-tracked
+ * on this install, so edits to themes/nadlan-platform-child/ in the repo
+ * never reach production. Until a second UPress Git connection exists for
+ * the child theme, this enqueues a CSS override + a small JS-injected
+ * hamburger menu from here instead, since the parent theme IS deployable.
+ *
+ * Safe to remove entirely once the child theme has its own working deploy
+ * path and themes/nadlan-platform-child/assets/{css/platform.css,js/platform-nav.js}
+ * are confirmed live on their own.
+ */
+add_action( 'wp_enqueue_scripts', function () {
+	if ( is_admin() ) {
+		return;
+	}
+	if ( get_stylesheet() !== 'nadlan-platform-child' ) {
+		return;
+	}
+	$css = get_parent_theme_file_path( 'assets/css/nlpc-header-parent-override.css' );
+	if ( file_exists( $css ) ) {
+		wp_enqueue_style(
+			'nlpc-header-parent-override',
+			get_parent_theme_file_uri( 'assets/css/nlpc-header-parent-override.css' ),
+			array( 'nlpc-platform' ),
+			(string) filemtime( $css )
+		);
+	}
+	$js = get_parent_theme_file_path( 'assets/js/nlpc-header-nav-inject.js' );
+	if ( file_exists( $js ) ) {
+		wp_enqueue_script(
+			'nlpc-header-nav-inject',
+			get_parent_theme_file_uri( 'assets/js/nlpc-header-nav-inject.js' ),
+			array(),
+			(string) filemtime( $js ),
+			true
+		);
+	}
+}, 70 );
