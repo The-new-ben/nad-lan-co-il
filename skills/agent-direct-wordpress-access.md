@@ -49,6 +49,14 @@ so no permanent privileged route lingers):
    route is gone (`POST /nadlan-deploy/run` → 404). Never leave the deploy route active.
 
 Notes / gotchas learned:
+- **Prefer `install($zipUrl, array('overwrite_package' => true))` over the transient+
+  `upgrade()` dance.** The forced `update_plugins` transient can be rewritten by the
+  vendored plugin-update-checker's `pre_set_site_transient_update_plugins` filter before
+  the upgrader reads it ("The plugin is at the latest version." → nothing deployed —
+  observed on the 1.69.70 deploy). `install` with `overwrite_package` is the exact
+  "Upload Plugin → Replace current with uploaded" path and skips version comparison
+  entirely. Append `?nlcb=<time()>` to the raw URL to dodge the ~5-min GitHub raw cache.
+  Used successfully for 1.69.70/71/72/73.
 - A `single-use` snippet activated via REST did **not** execute the code — use the
   `scope:"global"` + explicit REST-route call pattern above, which runs in your own
   authenticated request and returns the upgrader messages so you're not deploying blind.
