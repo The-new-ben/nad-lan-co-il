@@ -26,6 +26,8 @@ if ( ! defined( 'ABSPATH' ) ) { exit; }
 if ( ! function_exists( 'nadlan_pshow_register_meta' ) ) {
 	function nadlan_pshow_register_meta() {
 		$fields = array(
+			'city'               => 'string',   // queried by listings-ux similar-SQL; was never registered for properties
+			'neighborhood'       => 'string',
 			'arnona_monthly'     => 'integer',
 			'vaad_bayit_monthly' => 'integer',
 			'entry_date'         => 'string',   // free text: מיידי / 01/2027
