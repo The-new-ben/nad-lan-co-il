@@ -7,6 +7,59 @@
 > `docs/research/2026-07-01-ai-wordpress-direct-access-tools.md` (§"SHIPPED 2026-07-01").
 > This file is the short operating reference; that one is the research log.
 
+## ⭐ Agent-driven plugin deploy — NO owner "Update" click (proven live 2026-07-01)
+
+The owner's #1 friction was clicking **Update** in wp-admin for every plugin release. That
+click is just WordPress running `Plugin_Upgrader` — and an agent with `update_plugins` +
+Code Snippets can run the exact same thing. **Proven: v1.69.69 shipped to main and deployed
+live with zero owner action.** The repo stays source of truth; only the *deploy trigger*
+moves from the owner to the agent. The method (each deploy is create-route → call → delete,
+so no permanent privileged route lingers):
+
+1. Ship the release normally: bump version, `python3 scripts/build-plugin-zip.py <ver>`,
+   update `plugin-dist/nadlan-config.json`, merge to `main` (so the ZIP is on GitHub raw).
+2. Create a **temporary** Code Snippets snippet (`POST /wp-json/code-snippets/v1/snippets`,
+   `scope:"global"`, `active:true`) that registers an admin-only REST route running the
+   upgrader against the ZIP's raw URL, forcing the `update_plugins` transient first:
+   ```php
+   add_action('rest_api_init', function () {
+     register_rest_route('nadlan-deploy','/run', array('methods'=>'POST',
+       'permission_callback'=>function(){return current_user_can('update_plugins');},
+       'callback'=>function(){
+         require_once ABSPATH.'wp-admin/includes/file.php';
+         require_once ABSPATH.'wp-admin/includes/misc.php';
+         require_once ABSPATH.'wp-admin/includes/plugin.php';
+         require_once ABSPATH.'wp-admin/includes/class-wp-upgrader.php';
+         $p='nadlan-config/nadlan-config.php';
+         $u='https://raw.githubusercontent.com/The-new-ben/nad-lan-co-il/main/plugin-dist/nadlan-config-<VER>.zip';
+         $t=get_site_transient('update_plugins'); if(!is_object($t)){$t=new stdClass();}
+         if(empty($t->response)||!is_array($t->response)){$t->response=array();}
+         $t->response[$p]=(object)array('slug'=>'nadlan-config','plugin'=>$p,'new_version'=>'<VER>','package'=>$u,'url'=>'https://nad-lan.co.il');
+         set_site_transient('update_plugins',$t);
+         $s=new WP_Ajax_Upgrader_Skin(); $up=new Plugin_Upgrader($s); $ok=$up->upgrade($p);
+         if(!is_plugin_active($p)){activate_plugin($p);}
+         return array('result'=>is_wp_error($ok)?('ERR:'.$ok->get_error_message()):var_export($ok,true),'messages'=>$s->get_upgrade_messages());
+       }));
+   });
+   ```
+3. `POST /wp-json/nadlan-deploy/run` (basic-auth as the app-password user). Success returns
+   `"messages": [... "Plugin updated successfully."]`.
+4. Verify: `/wp-json/nadlan/v1/healthcheck` version == new; curl the changed page; homepage 200.
+5. **DELETE the snippet** (`DELETE /wp-json/code-snippets/v1/snippets/<id>`) and confirm the
+   route is gone (`POST /nadlan-deploy/run` → 404). Never leave the deploy route active.
+
+Notes / gotchas learned:
+- A `single-use` snippet activated via REST did **not** execute the code — use the
+  `scope:"global"` + explicit REST-route call pattern above, which runs in your own
+  authenticated request and returns the upgrader messages so you're not deploying blind.
+- WordPress enables maintenance mode for ~2-5s during the swap and rolls back on failure;
+  the plugin is `function_exists`/`ABSPATH`-guarded, so a partial state is defensive.
+- **Rollback** is the same call pointed at the previous good ZIP (e.g. `-1.69.68.zip`).
+- Still can't do pixels here (headless Chromium has no egress in the agent sandbox) — verify
+  rendered *markup* + health via curl, and have the owner/Codex eyeball the actual look.
+- This does not fix the **child theme** (no plugin-update path); for that see the deploy
+  pipeline research (`docs/research/`), esp. WP Pusher (GitHub push → auto-install).
+
 ## The credential (already in your environment, if inherited correctly)
 
 `WP_BASE_URL`, `WP_USER`, `WP_APP_PASSWORD` — per `skills/agent-onboarding.md`, these are
