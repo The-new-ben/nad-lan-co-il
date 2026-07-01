@@ -242,6 +242,21 @@ $projects_js = $theme_uri . 'assets/engine/projects.json';
 					<strong>בעלי מקצוע מאומתים</strong>
 					<p>עורכי דין, שמאים ומפקחי בנייה לנדל״ן, לבדיקה בטוחה של העסקה.</p>
 				</a>
+				<a class="nlh-language-card" href="/purchase-tax-calculator/">
+					<span>כלים</span>
+					<strong>מחשבון מס רכישה</strong>
+					<p>מדרגות מס לפי דירה יחידה, דירה נוספת או תושב חוץ, מעודכן לשנה הנוכחית.</p>
+				</a>
+				<a class="nlh-language-card" href="/investment-apartment/">
+					<span>השקעה</span>
+					<strong>דירה להשקעה</strong>
+					<p>תשואה, מימון ומיסוי להשקעה בנדל״ן בישראל, לרוכשים מקומיים ומחו״ל.</p>
+				</a>
+				<a class="nlh-language-card" href="/glossary/">
+					<span>מילון</span>
+					<strong>מילון מונחי נדל״ן</strong>
+					<p>כל המונחים שכדאי להכיר לפני שקוראים חוזה או תשריט: מא׳ עד ת׳.</p>
+				</a>
 			</div>
 		</section>
 	</main>
