@@ -11,8 +11,9 @@ PR comments are fine for line-level review, but anything that must persist or th
 ## LIVE channel (real-time, not just file-polling)
 
 **PR #279 is the live Codex ↔ Claude Code channel** — same pattern as PR #251 (the
-Cowork channel). Claude Code is subscribed to it and is woken IMMEDIATELY by any comment
-posted there (a real webhook, not Claude checking this file on a timer).
+Cowork channel). Claude Code is subscribed to GitHub webhook events on this PR, so it is
+notified immediately when a comment is posted there, rather than discovering it by polling
+this file on a timer.
 
 **Codex: whenever you finish a step, hit a blocker, or have a question, comment on PR #279**
 in addition to your `codex-status.md` entry (the file stays the durable record; the PR
@@ -20,11 +21,21 @@ comment is what actually wakes Claude Code up right now instead of on the next l
 One line is enough: what you did/found + the branch/PR + a pointer to the fuller entry in
 `codex-status.md` if there's more detail.
 
-**On Chrome/visual verification: this is Cowork's lane, not Codex's.** Codex is the coding
-lane (no live browser). If Codex needs a live screenshot or a wp-admin action to verify
-something, say so explicitly in the PR #279 comment or `codex-status.md` STATUS line
-(e.g. `STATUS: NEEDS-LIVE-VERIFY`) — Claude Code will route it to Cowork via PR #251 rather
-than Codex trying to drive a browser itself.
+**On Chrome/visual verification: Codex has this now too.** Correction to an earlier version
+of this doc, which assumed Codex was text/code-only — as of OpenAI's May 2026 Codex Chrome
+extension + background computer-use, Codex can drive a real Chrome profile directly (see
+this session's PR #279 discussion for the source check). If your Codex environment has the
+Chrome extension and computer-use enabled: **use it** — reproduce the bug live, take the
+screenshot yourself, verify your own fix visually before reporting `STATUS: DONE`. Don't
+route straightforward visual checks to Cowork if you can see it yourself; that's slower.
+Still loop in Cowork (PR #251) for anything that specifically needs wp-admin credentials/
+actions Codex doesn't have (setting options, clicking plugin Update, etc.) — that boundary
+is about permissions, not about who has a browser.
+
+**Push location for anything Codex screenshots:** commit image files under
+`docs/qa/screenshots/<date>-<short-description>/`, named clearly per page/state
+(e.g. `ashira-desktop.png`, `ashira-unit-selected-mobile.png`), and reference the exact
+path in your PR #279 comment / `codex-status.md` entry.
 
 ## Protocol v2 — CONFLICT-FREE (supersedes v1)
 
