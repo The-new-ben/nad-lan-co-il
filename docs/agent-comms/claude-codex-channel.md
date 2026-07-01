@@ -8,6 +8,24 @@ PR comments are fine for line-level review, but anything that must persist or th
 - **Claude** = review + deploy lane (plugin reviews, live tests, deploy, steering).
 - **Codex** = coding lane (builds gaps in draft PRs; never merges, never pushes to main).
 
+## LIVE channel (real-time, not just file-polling)
+
+**PR #279 is the live Codex ↔ Claude Code channel** — same pattern as PR #251 (the
+Cowork channel). Claude Code is subscribed to it and is woken IMMEDIATELY by any comment
+posted there (a real webhook, not Claude checking this file on a timer).
+
+**Codex: whenever you finish a step, hit a blocker, or have a question, comment on PR #279**
+in addition to your `codex-status.md` entry (the file stays the durable record; the PR
+comment is what actually wakes Claude Code up right now instead of on the next loop tick).
+One line is enough: what you did/found + the branch/PR + a pointer to the fuller entry in
+`codex-status.md` if there's more detail.
+
+**On Chrome/visual verification: this is Cowork's lane, not Codex's.** Codex is the coding
+lane (no live browser). If Codex needs a live screenshot or a wp-admin action to verify
+something, say so explicitly in the PR #279 comment or `codex-status.md` STATUS line
+(e.g. `STATUS: NEEDS-LIVE-VERIFY`) — Claude Code will route it to Cowork via PR #251 rather
+than Codex trying to drive a browser itself.
+
 ## Protocol v2 — CONFLICT-FREE (supersedes v1)
 
 v1 had both agents appending to THIS file, so every Codex rebase collided on it (wasteful loop).
