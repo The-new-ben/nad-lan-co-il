@@ -150,6 +150,68 @@ git-pull. The realistic version is "direct via MCP + REST for data, browser-plug
 raw DB/files, git only for code" — not "one agent with unlimited root on the live database,"
 which the security research specifically warns against.
 
+## SHIPPED 2026-07-01 — four tools installed live, verified
+
+The owner authorized installing directly against production (no staging site exists — see
+`docs/rebuild-nadlan-2026-06-28/no-staging-platform-rollout.md`). Discovered first: the
+`WP_BASE_URL`/`WP_USER`/`WP_APP_PASSWORD` env vars already present in this Claude Code
+session authenticate as **administrator (user id 1, the owner's own account)** with
+`install_plugins`, `manage_options`, `edit_plugins`, `update_plugins` all `true` — meaning
+a REST-only agent session can install and activate wordpress.org plugins directly via
+`POST /wp/v2/plugins {"slug": "...", "status": "active"}`, no wp-admin browser/login needed.
+This is a materially different capability than "agents have NO WordPress admin access,"
+which most of `skills/` was written assuming.
+
+**The "official" WordPress MCP Adapter (`github.com/WordPress/mcp-adapter`) is NOT on the
+wordpress.org plugin directory** (confirmed 404 on both `wordpress-mcp` and `mcp-adapter`
+slugs via `api.wordpress.org/plugins/info/1.2/`) — it cannot be installed through this REST
+path; only wp-admin's manual "Upload Plugin" (a ZIP from GitHub) would work, which needs a
+real wp-admin login (Application Passwords authenticate REST/XML-RPC only, not the
+`wp-login.php` cookie session). Used **Vibe AI (`vibe-ai`, wordpress.org, 2,000 installs)**
+instead — a plugin built specifically to "connect your self-hosted site to any AI assistant
+that speaks MCP: Claude, ChatGPT, Cursor, Windsurf, OpenCode" — confirmed to exist and
+install cleanly.
+
+Installed one at a time via REST, site-health-checked (`curl` homepage HTTP 200 +
+`/wp-json/nadlan/v1/healthcheck` version unchanged) after each before proceeding to the next:
+
+| Plugin | Slug | Version | Installs | Purpose |
+|---|---|---|---|---|
+| Code Snippets | `code-snippets` | 3.9.6 | 1M+ | run PHP/CSS/JS on the live site from wp-admin, no file deploy |
+| Vibe AI | `vibe-ai` | 1.5.1 | 2K | MCP server — connects Claude/Cursor/Windsurf/ChatGPT directly |
+| Advanced File Manager | `file-manager-advanced` | 5.4.12 | 100K+ | browse/edit files in wp-admin, no FTP/SSH |
+| WP Adminer | `pexlechris-adminer` | 4.3.4.1 | 20K+ | raw SQL/table access in wp-admin, no DB credentials needed |
+
+All four active; site stayed healthy (HTTP 200, unchanged plugin version) through every step.
+
+**Vibe AI's real capability is narrower than its route list suggests.** `GET /wp-json/wpvibe/v1`
+lists an ambitious route set — `file/read`, `file/write`, `file/edit`, `file/delete`,
+`cli/run`, `cli/run-approved`, `draft-theme` + `draft-theme/publish`/`preview` (a staged
+theme-editing workflow that could double as a poor-man's staging environment) — but
+`GET /wp-json/wpvibe/v1/site-info` (authenticated, verified working) self-reports only
+`"features": ["content_edit", "content_search"]` as actually enabled on this install, and
+a probe of `GET /wp-json/wpvibe/v1/file/list?path=.` returned a raw nginx 404 (not a
+WordPress JSON error), not file data. **Conclusion: the file/CLI superpowers are gated**
+(free-tier limit, license key, or a settings-page opt-in) — did not attempt `file/write` or
+`cli/run` given the ambiguity and no-staging risk. Checking/enabling those needs wp-admin
+browser access (Codex with Chrome, Cowork, or the owner), not a REST-only session.
+
+**Side finding, not yet acted on:** `site-info`'s `themes` list still includes
+`nadlan-rescue-showroom` — the theme `handoff/external-agent-packages/2026-06-28/REVIEW-AND-SOLUTION.md`
+explicitly rejected ("DO NOT ACTIVATE... would erase the calculator hub, the
+2,711-professional directory, billing/monetization, and all SEO machinery"). It's installed
+but inactive; recommend deleting it from the live server to remove the footgun, pending
+owner confirmation since deleting is a live mutating action.
+
+**Credential model note:** because `WP_USER`/`WP_APP_PASSWORD` are shared across agent
+sessions per `skills/agent-onboarding.md`'s "same platform environment → inherited
+automatically" model, every agent that inherits this environment now has these same four
+tools available with no per-agent setup — but it also means all four now sit behind one
+un-rotated, full-admin credential rather than a scoped least-privilege agent user (the
+owner explicitly chose "install now" over "rotate first" on 2026-07-01, aware of the
+trade-off). The rotation recommendation from the original research below still stands as
+a follow-up, not a blocker.
+
 ## Sources
 - WordPress Developer Blog — MCP Adapter announcement (Feb 2026)
 - github.com/WordPress/mcp-adapter ; github.com/Automattic/wordpress-mcp

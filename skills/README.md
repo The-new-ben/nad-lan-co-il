@@ -33,6 +33,9 @@ Every agent (Claude, Codex, Antigravity, Cowork) reads from here before acting a
 14. `codex-plugin-access-and-deploy.md` — **THE step-by-step deploy pipeline** (any agent: how to change the plugin and get it live; pre-solved blockers)
 15. `plugin-auto-update.md` — self-hosted update channel
 16. `agent-coordination-protocol.md` — UPress sync constraints
+17. `agent-direct-wordpress-access.md` — four direct-access tools (Vibe AI/MCP, Code
+    Snippets, File Manager, Adminer) installed live 2026-07-01, what actually works vs.
+    what's gated, safety boundaries before using any of it
 
 ## Index (current as of 2026-05-30)
 
