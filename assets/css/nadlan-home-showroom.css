@@ -12,6 +12,20 @@
 	direction: rtl;
 }
 
+/* DESKTOP-WIDTH FIX: the block theme wraps singular page content in
+   `.wp-block-post-content.is-layout-constrained`, which caps every direct
+   child at the theme content-size (~760px). That squeezed the whole homepage
+   into a narrow centered column on desktop (huge empty side margins). Break
+   the homepage out of that cap so it can use its own intended width, which
+   `.nlh-home-main` manages (centered, up to 1280px). Homepage-scoped only. */
+.wp-block-post-content > .nle-page.nlh-home,
+.entry-content > .nle-page.nlh-home,
+.nle-page.nlh-home {
+	max-width: none !important;
+	width: 100%;
+	margin-inline: 0;
+}
+
 .nlh-home-main {
 	width: min(1280px, calc(100vw - 32px));
 	margin: 0 auto;
