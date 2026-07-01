@@ -14,6 +14,10 @@ Every agent (Claude, Codex, Antigravity, Cowork) reads from here before acting a
 6. `cowork-briefing.md` (or your equivalent agent briefing) — condensed history + voice + guardrails
 7. `site-state.md` — read the **last 6 blocks**, that is the live situation report
 8. `strategy-master.md` — the full Hebrew SEO/business brief
+9. `../handoff/antigravity/2026-07-01-mega-master-handoff/MEGA_MASTER_HANDOFF.md` — brand
+   vibe, buyer journey, sketch-first 3D strategy, monetization model, and the child-theme/
+   UPress deploy structural problem (read the reconciliation note at the top first — it
+   flags where the doc disagrees with decisions already made elsewhere in this repo)
 
 **Before publishing content:**
 

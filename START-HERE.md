@@ -23,11 +23,15 @@ leads routed to paying owners, recurring billing via Morning (Green Invoice), AI
 
 ## Read in this order
 1. README.md + AGENTS.md + HANDOFF.md (project + agent rules)
-2. docs/2026-06-11-owner-assessment-and-roadmap.md (current truth + P1-P5 priorities)
-3. docs/agent-comms/claude-codex-channel.md (the durable agent coordination log; Claude-owned)
+2. handoff/antigravity/2026-07-01-mega-master-handoff/MEGA_MASTER_HANDOFF.md (brand vibe,
+   buyer journey, sketch-first 3D strategy, monetization, the child-theme/UPress deploy mess
+   — read the reconciliation note at the top first, it flags where this doc disagrees with
+   decisions already made elsewhere in the repo)
+3. docs/2026-06-11-owner-assessment-and-roadmap.md (current truth + P1-P5 priorities)
+4. docs/agent-comms/claude-codex-channel.md (the durable agent coordination log; Claude-owned)
    + docs/agent-comms/codex-status.md (Codex-owned)
-4. skills/copywriting-skill.md + skills/design-rtl-hebrew.md (non-negotiable style rules)
-5. The spec for whatever you're building (see map below)
+5. skills/copywriting-skill.md + skills/design-rtl-hebrew.md (non-negotiable style rules)
+6. The spec for whatever you're building (see map below)
 
 ## Folder map
 - skills/        68 skill files: copywriting, design system, RTL/Hebrew, EEAT program, SEO,
