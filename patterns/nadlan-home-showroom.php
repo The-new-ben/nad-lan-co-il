@@ -43,7 +43,7 @@ $projects_js = $theme_uri . 'assets/engine/projects.json';
 			</div>
 		</section>
 
-		<section class="nle-catalog nlh-home-project-engine" id="projects" aria-labelledby="nle-projects-title">
+		<section class="nle-catalog nlh-home-project-engine" id="projects" aria-labelledby="nle-projects-title" data-nlpo-home-projects>
 			<div class="nlh-home-languages" aria-label="שפות למשקיעים מחו״ל">
 				<strong class="nlh-lang-quiet" data-nle-home-text="language_prompt">שפה</strong>
 				<button class="is-active" type="button" data-nle-lang="he" lang="he" dir="rtl">עברית</button>
