@@ -423,12 +423,8 @@ add_action( 'init', function () {
 
 if ( ! function_exists( 'nadlan_showroom_engine_active_for' ) ) {
 	function nadlan_showroom_engine_active_for( $post_id ) {
-		if ( get_option( 'nadlan_showroom_engine_enable', '0' ) === '1' ) { return true; }
-		if ( get_post_meta( (int) $post_id, 'nlp3d_use_engine', true ) === '1' ) { return true; }
-		// Projects switched to the new engine by default (no manual setting needed).
-		$default_on = apply_filters( 'nadlan_showroom_engine_default_on', array( 'ashira-sde-dov', 'ashira-sde-dov-en', 'ashira-sde-dov-fr', 'ashira-sde-dov-ru', 'ashira-sde-dov-ar' ) );
-		$slug = get_post_field( 'post_name', (int) $post_id );
-		return in_array( $slug, (array) $default_on, true );
+		// Enabled globally for all projects to enforce a unified design language
+		return true;
 	}
 }
 
