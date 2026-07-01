@@ -71,6 +71,11 @@ if ( ! function_exists( 'nadlan_showroom_engine_build_project' ) ) {
 		$facades = nadlan_showroom_engine_json_meta( $id, 'project_3d_facade_images' );
 		$facade  = '';
 		if ( ! empty( $facades ) && isset( $facades[0]['src'] ) ) { $facade = esc_url_raw( $facades[0]['src'] ); }
+		$asset_base    = trailingslashit( get_template_directory_uri() ) . 'assets/showroom-assets/';
+		$concept_image = $asset_base . 'favicon-architectural.jpg';
+		if ( strpos( (string) $post->post_name, 'rainbow' ) !== false ) {
+			$concept_image = $asset_base . 'rainbow_reading_tower_context_1782914016421.jpg';
+		}
 
 		$env         = nadlan_showroom_engine_json_meta( $id, 'project_3d_environment_json' );
 		$orientation = isset( $env['orientation'] ) && is_array( $env['orientation'] ) ? $env['orientation'] : array();
@@ -121,6 +126,8 @@ if ( ! function_exists( 'nadlan_showroom_engine_build_project' ) ) {
 			'model_glb'      => esc_url_raw( (string) get_post_meta( $id, 'project_model_glb', true ) ),
 			'model_poster'   => esc_url_raw( (string) get_post_meta( $id, 'project_model_poster', true ) ),
 			'facade_image'   => $facade,
+			'facade_concept_image' => $facade === '' ? $concept_image : '',
+			'facade_is_concept' => $facade === '',
 			'concept'        => (bool) get_post_meta( $id, 'project_3d_demo', true ),
 			'video_url'      => esc_url_raw( (string) get_post_meta( $id, 'project_3d_video_url', true ) ),
 			'tour_url'       => esc_url_raw( (string) get_post_meta( $id, 'project_3d_tour_url', true ) ),
@@ -245,20 +252,22 @@ if ( ! function_exists( 'nadlan_showroom_engine_shortcode' ) ) {
 		$base = trailingslashit( nadlan_showroom_engine_base_url() );
 
 		// assets
-		wp_enqueue_style( 'nadlan-engine-tokens', $base . 'tokens.css', array(), '1.69.60' );
-		wp_enqueue_style( 'nadlan-engine-css', $base . 'showroom.css', array( 'nadlan-engine-tokens' ), '1.69.60' );
-		wp_enqueue_style( 'nadlan-engine-editorial', $base . 'editorial.css', array( 'nadlan-engine-tokens' ), '1.69.60' );
+		wp_enqueue_style( 'nadlan-engine-tokens', $base . 'tokens.css', array(), '1.69.66' );
+		wp_enqueue_style( 'nadlan-engine-css', $base . 'showroom.css', array( 'nadlan-engine-tokens' ), '1.69.66' );
+		wp_enqueue_style( 'nadlan-engine-editorial', $base . 'editorial.css', array( 'nadlan-engine-tokens' ), '1.69.66' );
 		wp_enqueue_script( 'nadlan-model-viewer', 'https://ajax.googleapis.com/ajax/libs/model-viewer/4.0.0/model-viewer.min.js', array(), '4.0.0', true );
 		wp_script_add_data( 'nadlan-model-viewer', 'type', 'module' );
-		wp_enqueue_script( 'nadlan-engine-i18n', $base . 'i18n.js', array(), '1.69.60', true );
-		wp_enqueue_script( 'nadlan-engine-core', $base . 'engine.js', array( 'nadlan-engine-i18n' ), '1.69.60', true );
+		wp_enqueue_script( 'nadlan-engine-i18n', $base . 'i18n.js', array(), '1.69.66', true );
+		wp_enqueue_script( 'nadlan-engine-core', $base . 'engine.js', array( 'nadlan-engine-i18n' ), '1.69.66', true );
 
-		// Real Mapbox only when a token is configured; otherwise the stylized map stays.
+		// Always run the map bootstrap so missing tokens/coords render as visible failures.
+		$mapbox_deps = array( 'nadlan-engine-core' );
 		if ( (string) get_option( 'nadlan_mapbox_token', '' ) !== '' ) {
 			wp_enqueue_style( 'mapbox-gl', 'https://api.mapbox.com/mapbox-gl-js/v3.7.0/mapbox-gl.css', array(), '3.7.0' );
 			wp_enqueue_script( 'mapbox-gl', 'https://api.mapbox.com/mapbox-gl-js/v3.7.0/mapbox-gl.js', array(), '3.7.0', true );
-			wp_enqueue_script( 'nadlan-engine-mapbox', $base . 'mapbox-init.js', array( 'nadlan-engine-core', 'mapbox-gl' ), '1.69.60', true );
+			$mapbox_deps[] = 'mapbox-gl';
 		}
+		wp_enqueue_script( 'nadlan-engine-mapbox', $base . 'mapbox-init.js', $mapbox_deps, '1.69.66', true );
 
 		// build payload from the CMS
 		$posts = nadlan_showroom_engine_resolve_target( $atts );

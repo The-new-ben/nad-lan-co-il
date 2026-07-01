@@ -16,7 +16,7 @@
 <div class="wp-block-group alignfull" style="padding-top:var(--wp--preset--spacing--70);padding-bottom:var(--wp--preset--spacing--70)">
 	<!-- wp:group {"style":{"spacing":{"blockGap":"var:preset|spacing|10"}},"layout":{"type":"flex","orientation":"vertical","justifyContent":"center"}} -->
 	<div class="wp-block-group">
-		<!-- wp:site-title {"level":0,"textAlign":"center"} /-->
+		<!-- wp:site-title {"level":2,"textAlign":"center"} /-->
 		<!-- wp:site-tagline {"textAlign":"center"} /-->
 	</div>
 	<!-- /wp:group -->

@@ -54,6 +54,14 @@
   function load(k, d) { try { return JSON.parse(localStorage.getItem(k)) || d; } catch (e) { return d; } }
   function save(k, v) { try { localStorage.setItem(k, JSON.stringify(v)); } catch (e) {} }
   function esc(s) { return String(s == null ? "" : s).replace(/[&<>"]/g, function (c) { return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]; }); }
+  function safeHttpUrl(url) {
+    try {
+      var u = new URL(String(url || ""), location.origin);
+      return (u.protocol === "http:" || u.protocol === "https:") ? u.href : "";
+    } catch (e) {
+      return "";
+    }
+  }
   function money(n) { n = Math.round(Number(n) || 0); return "₪" + n.toLocaleString("en-US"); }
 
   /* ---------------- icons ---------------- */
@@ -203,7 +211,14 @@
       var cls = "nl-fsq" + (u.status === "reserved" ? " nl-fsq--reserved" : u.status === "sold" ? " nl-fsq--sold" : "");
       return '<button class="' + cls + '" data-act="select" data-id="' + esc(u.id) + '" style="inset-inline-start:' + u.stage_x + "%;inset-block-start:" + u.stage_y + "%;width:" + u.stage_w + "%;height:" + u.stage_h + '%" aria-label="' + esc(unitTitleAria(u)) + '"><b>' + esc(u.label) + "</b><span>" + esc(roomsLabel(u.rooms)) + "</span></button>";
     }).join("");
-    var facadeBg = p.facade_image ? ' style="background-image:url(' + esc(p.facade_image) + ')"' : "";
+    var facadeInner = "";
+    if (p.facade_image) {
+      facadeInner = '<div class="nl-facade__frame" style="background-image:url(' + esc(p.facade_image) + ')">' + fsq + "</div>";
+    } else if (p.facade_concept_image) {
+      facadeInner = '<div class="nl-facade__frame nl-facade__concept" style="background-image:url(' + esc(p.facade_concept_image) + ')"><div class="nl-facade__notice"><span>' + esc(t("concept_badge")) + "</span><strong>" + esc(t("facade_missing_title")) + "</strong><p>" + esc(t("facade_concept_note")) + "</p></div></div>";
+    } else {
+      facadeInner = '<div class="nl-facade__frame nl-facade__missing" role="status"><strong>' + esc(t("facade_missing_title")) + "</strong><p>" + esc(t("facade_missing_text")) + "</p></div>";
+    }
 
     return '<div class="nl-theater">' +
       '<div class="nl-theater__top"><div class="nl-theater__title"><span class="e">' + esc(t("theater_eyebrow")) + "</span><h2>" + esc(t("theater_title")) + "</h2></div>" +
@@ -212,9 +227,10 @@
         (p.model_glb ? '<model-viewer id="nl-mv" class="nl-stage" src="' + esc(p.model_glb) + '" loading="lazy" reveal="interaction" camera-controls auto-rotate auto-rotate-delay="800" rotation-per-second="14deg" interaction-prompt="basic" environment-image="neutral" exposure="1.02" shadow-intensity="0.55" shadow-softness="1" camera-orbit="' + esc(p.default_orbit) + '" camera-target="' + esc(p.default_target) + '" min-camera-orbit="auto 48deg auto" max-camera-orbit="auto 86deg auto" min-field-of-view="16deg" max-field-of-view="44deg" touch-action="pan-y">' + hots + "</model-viewer>" : "") +
         '<div class="nl-poster" id="nl-poster" style="background-image:url(' + esc(p.model_poster) + ')"></div>' +
         '<div class="nl-spinner" id="nl-spin"><i></i>' + esc(t("loading_model")) + "</div>" +
+        '<div class="nlp3d-model-error nl-model-error" id="nl-model-error" role="status" aria-live="polite" hidden>' + esc(t("model_error")) + "</div>" +
         orientPins +
         '<div class="nl-legend"><span><span class="nl-dot s-available"></span>' + esc(t("legend_available")) + '</span><span><span class="nl-dot s-reserved"></span>' + esc(t("legend_reserved")) + '</span><span><span class="nl-dot s-sold"></span>' + esc(t("legend_sold")) + "</span></div>" +
-        '<div class="nl-facade" id="nl-facade"><div class="nl-facade__frame"' + facadeBg + ">" + fsq + "</div></div>" +
+        '<div class="nl-facade" id="nl-facade">' + facadeInner + "</div>" +
         '<div class="nl-scrim" id="nl-scrim"></div>' +
         panel() +
       "</div>" +
@@ -255,7 +271,8 @@
   function tabPane(u) {
     if (state.tab === "plan") return u.plan ? '<img src="' + esc(u.plan) + '" alt="' + esc(t("tab_plan")) + '">' : "<p>" + esc(t("plan_coming")) + "</p>";
     if (state.tab === "view") return u.interior_url ? '<img src="' + esc(u.interior_url) + '" alt="">' : "<p>" + esc(t("view_coming")) + "</p>";
-    return "<p>" + esc(t("tour_coming")) + "</p>";
+    var tour = safeHttpUrl(u.tour_url || project().tour_url);
+    return tour ? '<a class="nl-btn nl-btn--gold" href="' + esc(tour) + '" target="_blank" rel="noopener">' + esc(t("tour_open")) + "</a>" : "<p>" + esc(t("tour_coming")) + "</p>";
   }
 
   /* block 6 — inventory */
@@ -391,8 +408,9 @@
   function interiorTour() {
     var p = project();
     var top = '<div class="nl-interior"><div class="nl-interior__head"><span class="nl-eyebrow">' + esc(t("tour_title")) + "</span></div>";
-    if (p.tour_url) {
-      return top + '<div class="nl-interior__stage" data-tour-url="' + esc(p.tour_url) + '"><button class="nl-btn nl-btn--gold" data-act="loadtour">' + esc(t("tour_open")) + '</button></div><p class="nl-interior__note">' + esc(t("tour_lazy_hint")) + "</p></div>";
+    var tour = safeHttpUrl(p.tour_url);
+    if (tour) {
+      return top + '<div class="nl-interior__stage" data-tour-url="' + esc(tour) + '"><button class="nl-btn nl-btn--gold" data-act="loadtour">' + esc(t("tour_open")) + '</button></div><p class="nl-interior__note">' + esc(t("tour_lazy_hint")) + "</p></div>";
     }
     if (p.interior_panoramas && p.interior_panoramas.length) {
       return top + '<div class="nl-interior__stage" data-pano="' + esc(JSON.stringify(p.interior_panoramas)) + '"><button class="nl-btn nl-btn--gold" data-act="loadpano">' + esc(t("tour_open_pano")) + '</button></div><p class="nl-interior__note">' + esc(t("tour_lazy_hint")) + "</p></div>";
@@ -401,7 +419,7 @@
   }
   function loadTour(node) {
     var stage = node.closest(".nl-interior__stage"); if (!stage) return;
-    var url = stage.getAttribute("data-tour-url"); if (!url) return;
+    var url = safeHttpUrl(stage.getAttribute("data-tour-url")); if (!url) return;
     var f = document.createElement("iframe");
     f.src = url; f.loading = "lazy"; f.title = t("tour_title"); f.className = "nl-interior__frame";
     f.setAttribute("allow", "fullscreen; xr-spatial-tracking; gyroscope; accelerometer");
@@ -524,9 +542,23 @@
     if (mv) {
       var fr = project() ? (project().frame_radius_m || 150) : 150;
       try { mv.minCameraOrbit = "auto 46deg " + Math.round(fr * 0.5) + "m"; mv.maxCameraOrbit = "auto 87deg " + Math.round(fr * 1.9) + "m"; } catch (e) {}
-      var poster = document.getElementById("nl-poster"), spin = document.getElementById("nl-spin");
-      var reveal = function () { state.mvReady = true; if (poster) poster.classList.add("is-hidden"); if (spin) spin.style.opacity = "0"; };
+      var poster = document.getElementById("nl-poster"), spin = document.getElementById("nl-spin"), modelError = document.getElementById("nl-model-error");
+      var reveal = function () {
+        state.mvReady = true;
+        if (poster) poster.classList.add("is-hidden");
+        if (spin) spin.style.opacity = "0";
+        if (modelError) modelError.hidden = true;
+        mv.classList.remove("nlp3d-model-error-source");
+      };
+      var fail = function () {
+        state.mvReady = false;
+        if (spin) spin.style.opacity = "0";
+        if (poster) poster.classList.remove("is-hidden");
+        if (modelError) { modelError.hidden = false; modelError.textContent = t("model_error"); }
+        mv.classList.add("nlp3d-model-error-source");
+      };
       if (mv.loaded) reveal(); else mv.addEventListener("load", reveal, { once: true });
+      mv.addEventListener("error", fail);
       // safety: never leave poster forever if load is delayed
       setTimeout(function () { if (!state.mvReady && mv.modelIsVisible) reveal(); }, 6000);
     }

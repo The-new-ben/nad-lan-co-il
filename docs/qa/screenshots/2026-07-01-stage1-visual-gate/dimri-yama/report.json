@@ -1,0 +1,767 @@
+{
+  "site": "https://nad-lan.co.il",
+  "slug": "dimri-yama",
+  "injected_v1681_css": false,
+  "injected_v1690_preview": true,
+  "replaced_live_p3d_css": true,
+  "generated_at": "2026-07-01T14:53:28.583Z",
+  "out_dir": "docs/qa/screenshots/2026-07-01-stage1-visual-gate/dimri-yama",
+  "summary": {
+    "passed": 4,
+    "failed": 0
+  },
+  "viewports": [
+    {
+      "name": "desktop-1440",
+      "screenshot": "C:\\Users\\pro\\.gemini\\antigravity\\scratch\\nad-lan-co-il\\docs\\qa\\screenshots\\2026-07-01-stage1-visual-gate\\dimri-yama\\desktop-1440.png",
+      "stageScreenshot": "C:\\Users\\pro\\.gemini\\antigravity\\scratch\\nad-lan-co-il\\docs\\qa\\screenshots\\2026-07-01-stage1-visual-gate\\dimri-yama\\stage-desktop-1440.png",
+      "before": {
+        "title": "DIMRI YAMA שדה דב - י.ח דמרי | בחירת דירות, מבט מהדירה ושדה דב | נדלן חכם",
+        "url": "https://nad-lan.co.il/projects/dimri-yama-sde-dov/?cb=1782917570816-desktop-1440",
+        "viewport": {
+          "width": 1440,
+          "height": 1000
+        },
+        "scroll": {
+          "x": 1425,
+          "client": 1425,
+          "overflow": 0
+        },
+        "h1s": [
+          "DIMRI YAMA שדה דב – י.ח דמרי"
+        ],
+        "rootRect": {
+          "x": 104.5,
+          "y": -9.8,
+          "width": 1180,
+          "height": 1809.9,
+          "right": 1284.5,
+          "bottom": 1800.1
+        },
+        "stageRect": {
+          "x": 513.5,
+          "y": 551.7,
+          "width": 742,
+          "height": 648,
+          "right": 1255.5,
+          "bottom": 1199.7
+        },
+        "sceneRect": {
+          "x": 513.5,
+          "y": 551.7,
+          "width": 742,
+          "height": 648,
+          "right": 1255.5,
+          "bottom": 1199.7
+        },
+        "cardRect": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0,
+          "right": 0,
+          "bottom": 0
+        },
+        "facadePlaneRect": {
+          "x": 874.5,
+          "y": 658.7,
+          "width": 380,
+          "height": 540,
+          "right": 1254.5,
+          "bottom": 1198.7
+        },
+        "facadePlaneVisible": true,
+        "facadeAssetMissing": false,
+        "realFacadeImageCount": 1,
+        "cardHidden": true,
+        "pickCount": 4,
+        "cellCount": 4,
+        "dualShowroom": true,
+        "facadeSelect": false,
+        "activePressedCount": 0,
+        "recommendedPickCount": 2,
+        "firstPickCenter": {
+          "x": 1220,
+          "y": 1138
+        },
+        "modelViewerDefined": true,
+        "modelViewerCount": 1,
+        "ownerFormVisible": true,
+        "leadFormVisible": true,
+        "tapTargets": {
+          "count": 6,
+          "min": 44,
+          "small": []
+        },
+        "textSignals": {
+          "hasBuyerCta": false,
+          "hasNonBindingPurchase": false,
+          "hasOwnerCta": true,
+          "hasInternalWords": false
+        },
+        "publicLeakTerms": [],
+        "previewCss": {
+          "removedLiveP3dStyles": 0,
+          "injectedV1690Preview": true
+        },
+        "errors": []
+      },
+      "after": {
+        "title": "DIMRI YAMA שדה דב - י.ח דמרי | בחירת דירות, מבט מהדירה ושדה דב | נדלן חכם",
+        "url": "https://nad-lan.co.il/projects/dimri-yama-sde-dov/?cb=1782917570816-desktop-1440",
+        "viewport": {
+          "width": 1440,
+          "height": 1000
+        },
+        "scroll": {
+          "x": 1425,
+          "client": 1425,
+          "overflow": 0
+        },
+        "h1s": [
+          "DIMRI YAMA שדה דב – י.ח דמרי"
+        ],
+        "rootRect": {
+          "x": 104.5,
+          "y": -644.8,
+          "width": 1180,
+          "height": 2451.9,
+          "right": 1284.5,
+          "bottom": 1807.1
+        },
+        "stageRect": {
+          "x": 513.5,
+          "y": -83.3,
+          "width": 742,
+          "height": 1290,
+          "right": 1255.5,
+          "bottom": 1206.7
+        },
+        "sceneRect": {
+          "x": 513.5,
+          "y": -83.3,
+          "width": 742,
+          "height": 648,
+          "right": 1255.5,
+          "bottom": 564.7
+        },
+        "cardRect": {
+          "x": 513.5,
+          "y": 564.7,
+          "width": 742,
+          "height": 642,
+          "right": 1255.5,
+          "bottom": 1206.7
+        },
+        "facadePlaneRect": {
+          "x": 874.5,
+          "y": 20.7,
+          "width": 380,
+          "height": 540,
+          "right": 1254.5,
+          "bottom": 560.7
+        },
+        "facadePlaneVisible": true,
+        "facadeAssetMissing": false,
+        "realFacadeImageCount": 1,
+        "cardHidden": false,
+        "pickCount": 4,
+        "cellCount": 4,
+        "dualShowroom": true,
+        "facadeSelect": false,
+        "activePressedCount": 1,
+        "recommendedPickCount": 2,
+        "firstPickCenter": {
+          "x": 1220,
+          "y": 500
+        },
+        "modelViewerDefined": true,
+        "modelViewerCount": 1,
+        "ownerFormVisible": true,
+        "leadFormVisible": true,
+        "tapTargets": {
+          "count": 8,
+          "min": 44,
+          "small": []
+        },
+        "textSignals": {
+          "hasBuyerCta": false,
+          "hasNonBindingPurchase": false,
+          "hasOwnerCta": true,
+          "hasInternalWords": false
+        },
+        "publicLeakTerms": [],
+        "previewCss": {
+          "removedLiveP3dStyles": 0,
+          "injectedV1690Preview": true
+        },
+        "errors": []
+      },
+      "failures": []
+    },
+    {
+      "name": "tablet-768",
+      "screenshot": "C:\\Users\\pro\\.gemini\\antigravity\\scratch\\nad-lan-co-il\\docs\\qa\\screenshots\\2026-07-01-stage1-visual-gate\\dimri-yama\\tablet-768.png",
+      "stageScreenshot": "C:\\Users\\pro\\.gemini\\antigravity\\scratch\\nad-lan-co-il\\docs\\qa\\screenshots\\2026-07-01-stage1-visual-gate\\dimri-yama\\stage-tablet-768.png",
+      "before": {
+        "title": "DIMRI YAMA שדה דב - י.ח דמרי | בחירת דירות, מבט מהדירה ושדה דב | נדלן חכם",
+        "url": "https://nad-lan.co.il/projects/dimri-yama-sde-dov/?cb=1782917581737-tablet-768",
+        "viewport": {
+          "width": 768,
+          "height": 1000
+        },
+        "scroll": {
+          "x": 753,
+          "client": 753,
+          "overflow": 0
+        },
+        "h1s": [
+          "DIMRI YAMA שדה דב – י.ח דמרי"
+        ],
+        "rootRect": {
+          "x": 6,
+          "y": -10.1,
+          "width": 724,
+          "height": 3373.6,
+          "right": 730,
+          "bottom": 3363.5
+        },
+        "stageRect": {
+          "x": 35,
+          "y": 562.2,
+          "width": 666,
+          "height": 1150.1,
+          "right": 701,
+          "bottom": 1712.3
+        },
+        "sceneRect": {
+          "x": 35,
+          "y": 562.2,
+          "width": 666,
+          "height": 1150.1,
+          "right": 701,
+          "bottom": 1712.3
+        },
+        "cardRect": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0,
+          "right": 0,
+          "bottom": 0
+        },
+        "facadePlaneRect": {
+          "x": 36,
+          "y": 931.8,
+          "width": 664,
+          "height": 695.3,
+          "right": 700,
+          "bottom": 1627.1
+        },
+        "facadePlaneVisible": true,
+        "facadeAssetMissing": false,
+        "realFacadeImageCount": 1,
+        "cardHidden": true,
+        "pickCount": 4,
+        "cellCount": 4,
+        "dualShowroom": true,
+        "facadeSelect": false,
+        "activePressedCount": 0,
+        "recommendedPickCount": 2,
+        "firstPickCenter": {
+          "x": 640,
+          "y": 1594
+        },
+        "modelViewerDefined": true,
+        "modelViewerCount": 1,
+        "ownerFormVisible": true,
+        "leadFormVisible": true,
+        "tapTargets": {
+          "count": 6,
+          "min": 44,
+          "small": []
+        },
+        "textSignals": {
+          "hasBuyerCta": false,
+          "hasNonBindingPurchase": false,
+          "hasOwnerCta": true,
+          "hasInternalWords": false
+        },
+        "publicLeakTerms": [],
+        "previewCss": {
+          "removedLiveP3dStyles": 0,
+          "injectedV1690Preview": true
+        },
+        "errors": []
+      },
+      "after": {
+        "title": "DIMRI YAMA שדה דב - י.ח דמרי | בחירת דירות, מבט מהדירה ושדה דב | נדלן חכם",
+        "url": "https://nad-lan.co.il/projects/dimri-yama-sde-dov/?cb=1782917581737-tablet-768",
+        "viewport": {
+          "width": 768,
+          "height": 1000
+        },
+        "scroll": {
+          "x": 753,
+          "client": 753,
+          "overflow": 0
+        },
+        "h1s": [
+          "DIMRI YAMA שדה דב – י.ח דמרי"
+        ],
+        "rootRect": {
+          "x": 6,
+          "y": -1104.1,
+          "width": 724,
+          "height": 4015.6,
+          "right": 730,
+          "bottom": 2911.5
+        },
+        "stageRect": {
+          "x": 35,
+          "y": -531.8,
+          "width": 666,
+          "height": 1792.1,
+          "right": 701,
+          "bottom": 1260.3
+        },
+        "sceneRect": {
+          "x": 35,
+          "y": -531.8,
+          "width": 666,
+          "height": 1150.1,
+          "right": 701,
+          "bottom": 618.3
+        },
+        "cardRect": {
+          "x": 35,
+          "y": 618.3,
+          "width": 666,
+          "height": 642,
+          "right": 701,
+          "bottom": 1260.3
+        },
+        "facadePlaneRect": {
+          "x": 36,
+          "y": -162.2,
+          "width": 664,
+          "height": 695.3,
+          "right": 700,
+          "bottom": 533.1
+        },
+        "facadePlaneVisible": true,
+        "facadeAssetMissing": false,
+        "realFacadeImageCount": 1,
+        "cardHidden": false,
+        "pickCount": 4,
+        "cellCount": 4,
+        "dualShowroom": true,
+        "facadeSelect": false,
+        "activePressedCount": 1,
+        "recommendedPickCount": 2,
+        "firstPickCenter": {
+          "x": 640,
+          "y": 500
+        },
+        "modelViewerDefined": true,
+        "modelViewerCount": 1,
+        "ownerFormVisible": true,
+        "leadFormVisible": true,
+        "tapTargets": {
+          "count": 8,
+          "min": 44,
+          "small": []
+        },
+        "textSignals": {
+          "hasBuyerCta": false,
+          "hasNonBindingPurchase": false,
+          "hasOwnerCta": true,
+          "hasInternalWords": false
+        },
+        "publicLeakTerms": [],
+        "previewCss": {
+          "removedLiveP3dStyles": 0,
+          "injectedV1690Preview": true
+        },
+        "errors": []
+      },
+      "failures": []
+    },
+    {
+      "name": "mobile-390",
+      "screenshot": "C:\\Users\\pro\\.gemini\\antigravity\\scratch\\nad-lan-co-il\\docs\\qa\\screenshots\\2026-07-01-stage1-visual-gate\\dimri-yama\\mobile-390.png",
+      "stageScreenshot": "C:\\Users\\pro\\.gemini\\antigravity\\scratch\\nad-lan-co-il\\docs\\qa\\screenshots\\2026-07-01-stage1-visual-gate\\dimri-yama\\stage-mobile-390.png",
+      "before": {
+        "title": "DIMRI YAMA שדה דב - י.ח דמרי | בחירת דירות, מבט מהדירה ושדה דב | נדלן חכם",
+        "url": "https://nad-lan.co.il/projects/dimri-yama-sde-dov/?cb=1782917590093-mobile-390",
+        "viewport": {
+          "width": 390,
+          "height": 900
+        },
+        "scroll": {
+          "x": 390,
+          "client": 390,
+          "overflow": 0
+        },
+        "h1s": [
+          "DIMRI YAMA שדה דב – י.ח דמרי"
+        ],
+        "rootRect": {
+          "x": 17,
+          "y": 0.2,
+          "width": 356,
+          "height": 3412.9,
+          "right": 373,
+          "bottom": 3413
+        },
+        "stageRect": {
+          "x": 30,
+          "y": 577.4,
+          "width": 330,
+          "height": 866.3,
+          "right": 360,
+          "bottom": 1443.7
+        },
+        "sceneRect": {
+          "x": 30,
+          "y": 577.4,
+          "width": 330,
+          "height": 866.3,
+          "right": 360,
+          "bottom": 1443.7
+        },
+        "cardRect": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0,
+          "right": 0,
+          "bottom": 0
+        },
+        "facadePlaneRect": {
+          "x": 31,
+          "y": 878.4,
+          "width": 328,
+          "height": 534,
+          "right": 359,
+          "bottom": 1412.4
+        },
+        "facadePlaneVisible": true,
+        "facadeAssetMissing": false,
+        "realFacadeImageCount": 1,
+        "cardHidden": true,
+        "pickCount": 4,
+        "cellCount": 4,
+        "dualShowroom": true,
+        "facadeSelect": false,
+        "activePressedCount": 0,
+        "recommendedPickCount": 2,
+        "firstPickCenter": {
+          "x": 329,
+          "y": 1334
+        },
+        "modelViewerDefined": true,
+        "modelViewerCount": 1,
+        "ownerFormVisible": true,
+        "leadFormVisible": true,
+        "tapTargets": {
+          "count": 6,
+          "min": 44,
+          "small": []
+        },
+        "textSignals": {
+          "hasBuyerCta": false,
+          "hasNonBindingPurchase": false,
+          "hasOwnerCta": true,
+          "hasInternalWords": false
+        },
+        "publicLeakTerms": [],
+        "previewCss": {
+          "removedLiveP3dStyles": 0,
+          "injectedV1690Preview": true
+        },
+        "errors": []
+      },
+      "after": {
+        "title": "DIMRI YAMA שדה דב - י.ח דמרי | בחירת דירות, מבט מהדירה ושדה דב | נדלן חכם",
+        "url": "https://nad-lan.co.il/projects/dimri-yama-sde-dov/?cb=1782917590093-mobile-390",
+        "viewport": {
+          "width": 390,
+          "height": 900
+        },
+        "scroll": {
+          "x": 390,
+          "client": 390,
+          "overflow": 0
+        },
+        "h1s": [
+          "DIMRI YAMA שדה דב – י.ח דמרי"
+        ],
+        "rootRect": {
+          "x": 17,
+          "y": -883.8,
+          "width": 356,
+          "height": 4064.9,
+          "right": 373,
+          "bottom": 3181
+        },
+        "stageRect": {
+          "x": 30,
+          "y": -306.6,
+          "width": 330,
+          "height": 1518.3,
+          "right": 360,
+          "bottom": 1211.7
+        },
+        "sceneRect": {
+          "x": 30,
+          "y": -306.6,
+          "width": 330,
+          "height": 866.3,
+          "right": 360,
+          "bottom": 559.7
+        },
+        "cardRect": {
+          "x": 30,
+          "y": 569.7,
+          "width": 330,
+          "height": 642,
+          "right": 360,
+          "bottom": 1211.7
+        },
+        "facadePlaneRect": {
+          "x": 31,
+          "y": -5.6,
+          "width": 328,
+          "height": 534,
+          "right": 359,
+          "bottom": 528.4
+        },
+        "facadePlaneVisible": true,
+        "facadeAssetMissing": false,
+        "realFacadeImageCount": 1,
+        "cardHidden": false,
+        "pickCount": 4,
+        "cellCount": 4,
+        "dualShowroom": true,
+        "facadeSelect": false,
+        "activePressedCount": 1,
+        "recommendedPickCount": 2,
+        "firstPickCenter": {
+          "x": 329,
+          "y": 450
+        },
+        "modelViewerDefined": true,
+        "modelViewerCount": 1,
+        "ownerFormVisible": true,
+        "leadFormVisible": true,
+        "tapTargets": {
+          "count": 8,
+          "min": 44,
+          "small": []
+        },
+        "textSignals": {
+          "hasBuyerCta": false,
+          "hasNonBindingPurchase": false,
+          "hasOwnerCta": true,
+          "hasInternalWords": false
+        },
+        "publicLeakTerms": [],
+        "previewCss": {
+          "removedLiveP3dStyles": 0,
+          "injectedV1690Preview": true
+        },
+        "errors": []
+      },
+      "failures": []
+    },
+    {
+      "name": "edge-mobile-390",
+      "screenshot": "C:\\Users\\pro\\.gemini\\antigravity\\scratch\\nad-lan-co-il\\docs\\qa\\screenshots\\2026-07-01-stage1-visual-gate\\dimri-yama\\edge-mobile-390.png",
+      "stageScreenshot": "C:\\Users\\pro\\.gemini\\antigravity\\scratch\\nad-lan-co-il\\docs\\qa\\screenshots\\2026-07-01-stage1-visual-gate\\dimri-yama\\stage-edge-mobile-390.png",
+      "before": {
+        "title": "DIMRI YAMA שדה דב - י.ח דמרי | בחירת דירות, מבט מהדירה ושדה דב | נדלן חכם",
+        "url": "https://nad-lan.co.il/projects/dimri-yama-sde-dov/?cb=1782917600601-edge-mobile-390",
+        "viewport": {
+          "width": 390,
+          "height": 900
+        },
+        "scroll": {
+          "x": 390,
+          "client": 390,
+          "overflow": 0
+        },
+        "h1s": [
+          "DIMRI YAMA שדה דב – י.ח דמרי"
+        ],
+        "rootRect": {
+          "x": 17,
+          "y": 0.2,
+          "width": 356,
+          "height": 3412.9,
+          "right": 373,
+          "bottom": 3413
+        },
+        "stageRect": {
+          "x": 30,
+          "y": 577.4,
+          "width": 330,
+          "height": 866.3,
+          "right": 360,
+          "bottom": 1443.7
+        },
+        "sceneRect": {
+          "x": 30,
+          "y": 577.4,
+          "width": 330,
+          "height": 866.3,
+          "right": 360,
+          "bottom": 1443.7
+        },
+        "cardRect": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0,
+          "right": 0,
+          "bottom": 0
+        },
+        "facadePlaneRect": {
+          "x": 31,
+          "y": 878.4,
+          "width": 328,
+          "height": 534,
+          "right": 359,
+          "bottom": 1412.4
+        },
+        "facadePlaneVisible": true,
+        "facadeAssetMissing": false,
+        "realFacadeImageCount": 1,
+        "cardHidden": true,
+        "pickCount": 4,
+        "cellCount": 4,
+        "dualShowroom": true,
+        "facadeSelect": false,
+        "activePressedCount": 0,
+        "recommendedPickCount": 2,
+        "firstPickCenter": {
+          "x": 329,
+          "y": 1334
+        },
+        "modelViewerDefined": true,
+        "modelViewerCount": 1,
+        "ownerFormVisible": true,
+        "leadFormVisible": true,
+        "tapTargets": {
+          "count": 6,
+          "min": 44,
+          "small": []
+        },
+        "textSignals": {
+          "hasBuyerCta": false,
+          "hasNonBindingPurchase": false,
+          "hasOwnerCta": true,
+          "hasInternalWords": false
+        },
+        "publicLeakTerms": [],
+        "previewCss": {
+          "removedLiveP3dStyles": 0,
+          "injectedV1690Preview": true
+        },
+        "errors": []
+      },
+      "after": {
+        "title": "DIMRI YAMA שדה דב - י.ח דמרי | בחירת דירות, מבט מהדירה ושדה דב | נדלן חכם",
+        "url": "https://nad-lan.co.il/projects/dimri-yama-sde-dov/?cb=1782917600601-edge-mobile-390",
+        "viewport": {
+          "width": 390,
+          "height": 900
+        },
+        "scroll": {
+          "x": 390,
+          "client": 390,
+          "overflow": 0
+        },
+        "h1s": [
+          "DIMRI YAMA שדה דב – י.ח דמרי"
+        ],
+        "rootRect": {
+          "x": 17,
+          "y": -883.8,
+          "width": 356,
+          "height": 4064.9,
+          "right": 373,
+          "bottom": 3181
+        },
+        "stageRect": {
+          "x": 30,
+          "y": -306.6,
+          "width": 330,
+          "height": 1518.3,
+          "right": 360,
+          "bottom": 1211.7
+        },
+        "sceneRect": {
+          "x": 30,
+          "y": -306.6,
+          "width": 330,
+          "height": 866.3,
+          "right": 360,
+          "bottom": 559.7
+        },
+        "cardRect": {
+          "x": 30,
+          "y": 569.7,
+          "width": 330,
+          "height": 642,
+          "right": 360,
+          "bottom": 1211.7
+        },
+        "facadePlaneRect": {
+          "x": 31,
+          "y": -5.6,
+          "width": 328,
+          "height": 534,
+          "right": 359,
+          "bottom": 528.4
+        },
+        "facadePlaneVisible": true,
+        "facadeAssetMissing": false,
+        "realFacadeImageCount": 1,
+        "cardHidden": false,
+        "pickCount": 4,
+        "cellCount": 4,
+        "dualShowroom": true,
+        "facadeSelect": false,
+        "activePressedCount": 1,
+        "recommendedPickCount": 2,
+        "firstPickCenter": {
+          "x": 329,
+          "y": 450
+        },
+        "modelViewerDefined": true,
+        "modelViewerCount": 1,
+        "ownerFormVisible": true,
+        "leadFormVisible": true,
+        "tapTargets": {
+          "count": 8,
+          "min": 44,
+          "small": []
+        },
+        "textSignals": {
+          "hasBuyerCta": false,
+          "hasNonBindingPurchase": false,
+          "hasOwnerCta": true,
+          "hasInternalWords": false
+        },
+        "publicLeakTerms": [],
+        "previewCss": {
+          "removedLiveP3dStyles": 0,
+          "injectedV1690Preview": true
+        },
+        "errors": []
+      },
+      "failures": []
+    }
+  ]
+}
