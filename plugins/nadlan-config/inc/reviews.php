@@ -105,7 +105,7 @@ add_action( 'rest_api_init', function () {
 				'post_type'   => 'nadlan_review',
 				'post_status' => 'pending',
 				'post_title'  => sprintf( '%s — %s (%d★)', $name, get_the_title( $tid ), $rating ),
-				'post_content'=> ( $title ? '<strong>' . esc_html( $title ) . '</strong>\n\n' : '' ) . esc_html( $body ),
+				'post_content'=> ( $title ? '<strong>' . esc_html( $title ) . "</strong>\n\n" : '' ) . esc_html( $body ),
 			), true );
 			if ( is_wp_error( $rid ) ) { return $rid; }
 			update_post_meta( $rid, 'target_id', $tid );

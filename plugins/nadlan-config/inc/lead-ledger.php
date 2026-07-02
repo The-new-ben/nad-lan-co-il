@@ -203,6 +203,21 @@ add_action( 'rest_api_init', function () {
 		'callback' => function ( $req ) {
 			$r = nadlan_ll_get_by_token( $req['token'] );
 			if ( ! $r ) { return new WP_Error( 'not_found', 'not_found' ); }
+			// Audit fix 2026-07-02: accepting contract terms on GET meant email
+			// scanners silently "accepted" for the partner. GET now shows a
+			// confirmation page; only an explicit POST records acceptance.
+			if ( strtoupper( $req->get_method() ) !== 'POST' ) {
+				$html = '<!doctype html><html dir="rtl" lang="he"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex"><title>אישור תנאי שיתוף פעולה - נדלן</title></head>'
+					. '<body style="font-family:Heebo,system-ui,sans-serif;background:#FAF7F1;color:#1B1A17;display:grid;place-items:center;min-height:100vh;margin:0">'
+					. '<form method="post" style="background:#fff;border:1px solid #E2DCD0;border-radius:14px;padding:32px;max-width:420px;text-align:center">'
+					. '<h1 style="font-size:20px;margin:0 0 10px">אישור תנאי שיתוף פעולה</h1>'
+					. '<p style="font-size:14px;color:#6D665C">לחיצה על הכפתור מאשרת את תנאי ההפניה ותרשם כהסכמה מחייבת.</p>'
+					. '<button type="submit" style="background:#1B1A17;color:#FAF7F1;border:0;border-radius:9px;padding:13px 28px;font-size:15px;font-weight:700;cursor:pointer">אני מאשר/ת את התנאים</button>'
+					. '</form></body></html>';
+				header( 'Content-Type: text/html; charset=UTF-8' );
+				echo $html; // phpcs:ignore
+				exit;
+			}
 			update_post_meta( $r->ID, 'accepted_at', time() );
 			update_post_meta( $r->ID, 'status', 'accepted' );
 			nadlan_ll_log( $r->ID, 'partner_accepted' );

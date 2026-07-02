@@ -511,7 +511,7 @@ if ( ! function_exists( 'nadlan_hv2_band_intl' ) ) {
 			<h2>Buying property in Israel, guided in your language</h2>
 			<p>New-build projects with apartment selection from inside the building, verified professionals and legal guidance for foreign buyers.</p>
 		</div>
-		<a href="<?php echo esc_url( home_url( '/projects/ashira-sde-dov-en/' ) ); ?>">Explore in English →</a>
+		<a href="<?php echo esc_url( home_url( '/en/' ) ); ?>">Explore in English →</a>
 	</section>
 		<?php
 	}
@@ -549,7 +549,7 @@ if ( ! function_exists( 'nadlan_hv2_band_megafooter' ) ) {
 			<a href="<?php echo esc_url( home_url( '/post-listing/' ) ); ?>">פרסום דירה חינם</a>
 			<a href="<?php echo esc_url( home_url( '/advertise/' ) ); ?>">פרסום לבעלי מקצוע ויזמים</a>
 			<a href="<?php echo esc_url( home_url( '/contact/' ) ); ?>">צור קשר</a>
-			<a href="<?php echo esc_url( home_url( '/projects/ashira-sde-dov-en/' ) ); ?>">English</a>
+			<a href="<?php echo esc_url( home_url( '/en/' ) ); ?>">English</a>
 		</div>
 	</section>
 	<p class="nlhv2-legal" dir="rtl">המידע באתר כללי ואינו ייעוץ. אומדני מחיר אינם מחייבים. הדמיות להמחשה בלבד עד לאישור חומרים רשמיים של היזם.</p>
