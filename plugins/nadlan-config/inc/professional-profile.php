@@ -46,7 +46,7 @@ if ( ! function_exists( 'nadlan_prof_meta_of' ) ) {
 /* ---------------- extra profile meta ---------------- */
 if ( ! function_exists( 'nadlan_prof_register_meta' ) ) {
 	function nadlan_prof_register_meta() {
-		foreach ( array( 'specialties_csv' => 'string', 'languages_csv' => 'string', 'bio' => 'string', 'response_time' => 'string' ) as $k => $t ) {
+		foreach ( array( 'specialties_csv' => 'string', 'languages_csv' => 'string', 'bio' => 'string', 'response_time' => 'string', 'meeting_url' => 'string', 'lat' => 'number', 'lng' => 'number', 'profile_views' => 'integer' ) as $k => $t ) {
 			register_post_meta( 'nadlan_professional', $k, array(
 				'show_in_rest' => true, 'single' => true, 'type' => $t,
 				'auth_callback' => function ( $a, $m, $pid ) { return current_user_can( 'edit_post', (int) $pid ); },
@@ -120,6 +120,18 @@ if ( ! function_exists( 'nadlan_prof_render' ) ) {
 			set_transient( 'nlpp_projects_' . $id, $their, 12 * HOUR_IN_SECONDS );
 		}
 
+		// live view counter (debounced per IP, real FOMO surface)
+		$ipk = 'nlppv_' . md5( ( $_SERVER['REMOTE_ADDR'] ?? 'x' ) . $id );
+		if ( ! get_transient( $ipk ) ) {
+			set_transient( $ipk, 1, 6 * HOUR_IN_SECONDS );
+			update_post_meta( $id, 'profile_views', (int) $g( 'profile_views' ) + 1 );
+		}
+		$views   = (int) $g( 'profile_views' );
+		$tier    = (string) $g( 'paid_tier' );
+		$premium = in_array( $tier, array( 'pro', 'premier' ), true ) || $demo;
+		$meeting = (string) $g( 'meeting_url' );
+		$plat = (float) $g( 'lat' ); $plng = (float) $g( 'lng' );
+		$ai_on = function_exists( 'nadlan_ai_enabled' ) && nadlan_ai_enabled();
 		$specialties = array_filter( array_map( 'trim', explode( ',', (string) $g( 'specialties_csv' ) ) ) );
 		$langs       = array_filter( array_map( 'trim', explode( ',', (string) $g( 'languages_csv' ) ) ) );
 		$areas       = array_filter( array_map( 'trim', explode( ',', (string) $g( 'areas_served' ) ) ) );
@@ -144,6 +156,10 @@ if ( ! function_exists( 'nadlan_prof_render' ) ) {
 			<?php if ( $wa ) : ?><a class="nlpp-btn nlpp-wa" target="_blank" rel="noopener" href="https://wa.me/<?php echo esc_attr( $wa ); ?>?text=<?php echo rawurlencode( 'היי, אשמח לחיבור אל ' . $name . ' דרך האתר' ); ?>">פנייה בוואטסאפ</a><?php endif; ?>
 			<?php if ( $phone ) : ?><a class="nlpp-btn nlpp-tel" href="tel:<?php echo esc_attr( preg_replace( '/[^0-9+]/', '', $phone ) ); ?>">התקשרו</a>
 			<?php else : ?><a class="nlpp-btn nlpp-tel" href="#nlcard-claim">קבלו הצעת מחיר</a><?php endif; ?>
+			<?php if ( $premium ) : ?>
+				<?php if ( $meeting ) : ?><a class="nlpp-btn nlpp-vid" target="_blank" rel="noopener" href="<?php echo esc_url( $meeting ); ?>">🎥 פגישת וידאו</a>
+				<?php else : ?><button type="button" class="nlpp-btn nlpp-vid" data-nlpp-meet>🎥 תיאום שיחת וידאו</button><?php endif; ?>
+			<?php endif; ?>
 		</div>
 	</header>
 
@@ -158,10 +174,41 @@ if ( ! function_exists( 'nadlan_prof_render' ) ) {
 
 	<?php if ( $specialties || $langs || $areas ) : ?>
 	<div class="nlpp-chips">
-		<?php foreach ( $specialties as $s ) : ?><span class="nlpp-chip"><?php echo esc_html( $s ); ?></span><?php endforeach; ?>
+		<?php foreach ( $specialties as $sp ) : ?><a class="nlpp-chip" href="<?php echo esc_url( home_url( '/professionals/?q=' . rawurlencode( $sp ) ) ); ?>"><?php echo esc_html( $sp ); ?></a><?php endforeach; ?>
 		<?php foreach ( $langs as $l ) : ?><span class="nlpp-chip nlpp-lang">🌐 <?php echo esc_html( $l ); ?></span><?php endforeach; ?>
 		<?php foreach ( array_slice( $areas, 0, 6 ) as $a ) : ?><span class="nlpp-chip nlpp-area">📍 <?php echo esc_html( $a ); ?></span><?php endforeach; ?>
 	</div>
+	<?php endif; ?>
+
+	<?php if ( $views >= 5 ) : ?><p class="nlpp-fomo">👁 <?php echo number_format( $views ); ?> צפיות בפרופיל · <?php echo $g( 'response_time' ) ? 'מענה ' . esc_html( $g( 'response_time' ) ) : 'זמינות גבוהה'; ?></p><?php endif; ?>
+
+	<?php if ( $premium && ! $meeting ) : ?>
+	<form class="nlpp-meet" id="nlpp-meet" hidden data-rest="<?php echo esc_attr( rest_url( 'nadlan/v1/lead' ) ); ?>" data-prof="<?php echo esc_attr( $name ); ?>">
+		<b>תיאום שיחת וידאו עם <?php echo esc_html( $name ); ?></b>
+		<div class="nlpp-meet-row">
+			<input type="text" name="name" placeholder="שם" required>
+			<input type="tel" name="phone" placeholder="טלפון" required>
+			<input type="text" name="slot" placeholder="מועד מועדף (למשל: מחר 17:00)">
+		</div>
+		<input type="text" name="company" class="nlpp-hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+		<button type="submit" class="nlpp-btn nlpp-vid">שלחו בקשה</button>
+		<span class="nlpp-meet-msg" aria-live="polite"></span>
+	</form>
+	<?php endif; ?>
+
+	<?php if ( $plat && $plng ) : ?>
+	<section class="nlpp-sec"><h3>אזור פעילות</h3>
+		<div id="nlpp-map" data-lat="<?php echo esc_attr( $plat ); ?>" data-lng="<?php echo esc_attr( $plng ); ?>" data-title="<?php echo esc_attr( $name ); ?>"></div>
+	</section>
+	<?php endif; ?>
+
+	<?php if ( $premium && $ai_on ) : ?>
+	<section class="nlpp-sec nlpp-ai" data-rest="<?php echo esc_attr( rest_url( 'nadlan/v1/concierge' ) ); ?>" data-prof="<?php echo esc_attr( $pm['label'] ); ?>">
+		<h3>✨ שאלו את ה-AI על <?php echo esc_html( $pm['label'] ); ?></h3>
+		<p class="nlpp-ai-hint">למשל: מה בודקים לפני שסוגרים עם <?php echo esc_html( $pm['label'] ); ?>? כמה זה עולה בדרך כלל?</p>
+		<div class="nlpp-ai-row"><input type="text" id="nlpp-ai-q" placeholder="שאלה חופשית..."><button type="button" class="nlpp-btn nlpp-tel" id="nlpp-ai-send">שאלו</button></div>
+		<div class="nlpp-ai-a" id="nlpp-ai-a" hidden aria-live="polite"></div>
+	</section>
 	<?php endif; ?>
 
 	<?php if ( $their ) : ?>
@@ -192,6 +239,11 @@ add_filter( 'wp_robots', function ( $robots ) {
 if ( ! function_exists( 'nadlan_prof_assets' ) ) {
 	function nadlan_prof_assets() {
 		if ( ! is_singular( 'nadlan_professional' ) ) { return; }
+		$pid = get_queried_object_id();
+		if ( get_post_meta( $pid, 'lat', true ) && get_post_meta( $pid, 'lng', true ) ) {
+			wp_enqueue_style( 'leaflet', 'https://unpkg.com/leaflet@1.9.4/dist/leaflet.css', array(), '1.9.4' );
+			wp_enqueue_script( 'leaflet', 'https://unpkg.com/leaflet@1.9.4/dist/leaflet.js', array(), '1.9.4', true );
+		}
 		wp_register_style( 'nadlan-nlpp', false );
 		wp_enqueue_style( 'nadlan-nlpp' );
 		wp_add_inline_style( 'nadlan-nlpp', '
@@ -209,6 +261,19 @@ if ( ! function_exists( 'nadlan_prof_assets' ) ) {
 .nlpp-ctas{display:flex;gap:8px;flex-wrap:wrap}
 .nlpp-btn{font-size:13.5px;font-weight:700;border-radius:10px;padding:11px 18px;text-decoration:none;min-height:44px;display:inline-flex;align-items:center}
 .nlpp-wa{background:#1f8a4c;color:#fff}.nlpp-tel{background:var(--ink);color:#fff}
+.nlpp-vid{background:var(--pc,#183C3C);color:#fff;border:0;cursor:pointer;font-family:inherit}
+.nlpp-fomo{font-size:12.5px;color:var(--warm);margin:0 0 14px}
+.nlpp-meet{border:1px solid var(--line);border-radius:12px;background:#FAF8F3;padding:16px;margin-bottom:14px}
+.nlpp-meet-row{display:flex;gap:8px;flex-wrap:wrap;margin:10px 0}
+.nlpp-meet input{flex:1;min-width:130px;font:inherit;font-size:14px;border:1px solid var(--line);border-radius:8px;padding:10px 12px;background:#fff}
+.nlpp-hp{position:absolute!important;left:-9999px}
+.nlpp-meet-msg{display:block;margin-top:8px;font-size:13px;color:#334236}
+#nlpp-map{height:200px;border-radius:10px;border:1px solid var(--line)}
+.nlpp-ai-row{display:flex;gap:8px}
+.nlpp-ai-row input{flex:1;font:inherit;font-size:14px;border:1px solid var(--line);border-radius:8px;padding:10px 12px;background:#fff}
+.nlpp-ai-hint{font-size:12.5px;color:var(--warm);margin:0 0 10px}
+.nlpp-ai-a{margin-top:12px;background:#FAF8F3;border:1px solid var(--line);border-radius:10px;padding:12px 14px;font-size:14px;line-height:1.65}
+a.nlpp-chip{text-decoration:none;color:var(--ink)}a.nlpp-chip:hover{border-color:var(--gold);color:var(--gold)}
 .nlpp-stats{display:flex;flex-wrap:wrap;gap:10px;margin:14px 0}
 .nlpp-stats>div{flex:1;min-width:120px;text-align:center;border:1px solid var(--line);border-radius:10px;background:#FAF8F3;padding:12px 8px}
 .nlpp-stats b{display:block;font-size:1.25rem;font-family:var(--font-serif,serif)}
@@ -222,6 +287,40 @@ if ( ! function_exists( 'nadlan_prof_assets' ) ) {
 .nlpp-list a{color:var(--ink);text-decoration:none;font-size:14px}
 .nlpp-list a:hover{color:var(--gold)}
 @media(max-width:560px){.nlpp-hero{padding:16px}.nlpp-name{font-size:1.4rem}.nlpp-ctas{width:100%}.nlpp-btn{flex:1;justify-content:center}}
+' );
+		wp_register_script( 'nadlan-nlpp-js', false, array(), '1.69.83', true );
+		wp_enqueue_script( 'nadlan-nlpp-js' );
+		wp_add_inline_script( 'nadlan-nlpp-js', '
+(function(){document.addEventListener("DOMContentLoaded",function(){
+	var mb=document.querySelector("[data-nlpp-meet]"),mf=document.getElementById("nlpp-meet");
+	if(mb&&mf){mb.addEventListener("click",function(){mf.hidden=!mf.hidden;if(!mf.hidden){mf.querySelector("input").focus()}});
+		mf.addEventListener("submit",function(e){e.preventDefault();
+			var msg=mf.querySelector(".nlpp-meet-msg"),fd=new FormData(mf);
+			if(fd.get("company")){return}
+			fetch(mf.dataset.rest,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({
+				name:fd.get("name"),phone:fd.get("phone"),topic:"video-meeting",source:"professional-profile",
+				message:"בקשת שיחת וידאו עם "+mf.dataset.prof+(fd.get("slot")?" | מועד: "+fd.get("slot"):"")
+			})}).then(function(r){msg.textContent=r.ok?"✓ הבקשה נשלחה - נחזור אליכם לתיאום":"שגיאה, נסו שוב";})
+			.catch(function(){msg.textContent="שגיאה, נסו שוב"});
+		});}
+	var m=document.getElementById("nlpp-map");
+	if(m&&window.L){var la=parseFloat(m.dataset.lat),ln=parseFloat(m.dataset.lng);
+		var map=L.map(m,{scrollWheelZoom:false,zoomControl:false}).setView([la,ln],13);
+		L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png",{attribution:"&copy; OSM"}).addTo(map);
+		L.circle([la,ln],{radius:2200,color:"#9C7A3C",weight:1.5,fillColor:"#E6D4AE",fillOpacity:.25}).addTo(map);
+		L.marker([la,ln]).addTo(map).bindPopup(m.dataset.title||"");}
+	var ai=document.querySelector(".nlpp-ai");
+	if(ai){var send=document.getElementById("nlpp-ai-send"),q=document.getElementById("nlpp-ai-q"),a=document.getElementById("nlpp-ai-a");
+		function ask(){var t=q.value.trim();if(t.length<4){return}
+			send.disabled=true;send.textContent="חושב...";a.hidden=false;a.textContent="";
+			fetch(ai.dataset.rest,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({
+				messages:[{role:"user",content:"בהקשר של "+ai.dataset.prof+" בנדל\"ן בישראל: "+t}]
+			})}).then(function(r){return r.json()}).then(function(j){
+				a.textContent=(j.answer||j.reply||j.message||"לא הצלחתי לענות כרגע, נסו לנסח אחרת.");
+			}).catch(function(){a.textContent="השירות לא זמין כרגע."})
+			.finally(function(){send.disabled=false;send.textContent="שאלו"});}
+		send.addEventListener("click",ask);q.addEventListener("keydown",function(e){if(e.key==="Enter"){ask()}});}
+});})();
 ' );
 	}
 }
