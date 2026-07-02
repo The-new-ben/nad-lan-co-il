@@ -50,6 +50,7 @@ if ( ! function_exists( 'nadlan_pwiz_fields' ) ) {
 			'units_per_floor'    => array( 'int', 'דירות בקומה' ),
 			'unit_position'      => array( 'int', 'מיקום הדירה בקומה (מימין)' ),
 			'video_url'          => array( 'url', 'קישור לסרטון (יוטיוב)' ),
+			'highlights_csv'     => array( 'text', 'נקודות בולטות (מופרד ב-|)' ),
 		);
 	}
 }
@@ -109,7 +110,7 @@ add_action( 'rest_api_init', function () {
 				. 'Return ONLY a JSON object, no markdown, no commentary. Allowed keys: ' . $keys . ', title, description. '
 				. 'listing_type: sale|rent. property_type: apartment|garden|penthouse|duplex|cottage|studio|other. '
 				. 'condition: new|renovated|good|needs_renovation. Booleans true/false. Numbers as numbers. '
-				. 'title: catchy Hebrew listing title (max 70 chars). description: polished 2-3 paragraph Hebrew description, '
+				. 'title: catchy Hebrew listing title (max 70 chars). highlights: array of 3-5 short factual Hebrew selling points (max 40 chars each). description: polished 2-3 paragraph Hebrew description, '
 				. 'factual, no exaggerations, no discrimination, no "once in a lifetime" hype. Omit keys you cannot infer. '
 				. 'NEVER invent a price or address that is not in the text.';
 			$out = nadlan_llm_request( $system, $text, array( 'max_tokens' => 900, 'temperature' => 0.2 ) );
@@ -120,6 +121,11 @@ add_action( 'rest_api_init', function () {
 			if ( ! is_array( $data ) ) { return new WP_Error( 'ai_badjson', 'תשובת ה-AI לא היתה תקינה. נסו שוב.', array( 'status' => 502 ) ); }
 			$clean = array();
 			foreach ( $data as $k => $v ) {
+				if ( $k === 'highlights' && is_array( $v ) ) {
+					$hl = array_filter( array_map( function ( $x ) { return mb_substr( sanitize_text_field( (string) $x ), 0, 60 ); }, array_slice( $v, 0, 6 ) ) );
+					if ( $hl ) { $clean['highlights_csv'] = implode( '|', $hl ); }
+					continue;
+				}
 				if ( $k === 'title' ) { $clean['title'] = mb_substr( sanitize_text_field( (string) $v ), 0, 90 ); continue; }
 				if ( $k === 'description' ) { $clean['description'] = mb_substr( sanitize_textarea_field( (string) $v ), 0, 4000 ); continue; }
 				$s = nadlan_pwiz_sanitize( $k, $v );
