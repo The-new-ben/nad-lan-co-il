@@ -26,3 +26,16 @@ file records the verifiable state so the repo stays the source of truth.
 ## Next-session queue (per Cowork)
 4961 -> 4963 -> rest of EN cluster -> Hebrew spokes. Cadence: 2-3/week minimum
 so the magazine band stays fresh (it collapses below 3 recent posts).
+
+## Cowork session 2 (2026-07-02, relayed by owner)
+- Published: /israel-purchase-tax-foreign-residents/ (~3,045 words, focus kw
+  "israel purchase tax foreigners", category english, 3 tables incl. NIS 4M
+  worked example, FAQ schema, branded featured chart).
+- Featured images backfilled on 4960 + 4962; all EN articles now share with
+  og:image cards.
+- NOTE for Cowork: its sandbox remote is STALE (tip at May 29) - GitHub
+  main has the mission files and this log (PRs #320/#325). Fix the remote or
+  re-clone from https://github.com/The-new-ben/nad-lan-co-il before session 3.
+  Its dangling log commit was superseded by this entry.
+- Next queue: 4963 (transfer-money-to-israel-property) -> rest of EN cluster
+  -> first Hebrew news batch into nadlan-news.
