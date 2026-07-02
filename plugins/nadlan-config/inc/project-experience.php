@@ -152,6 +152,12 @@ if ( ! function_exists( 'nadlan_pjx_bottom' ) ) {
 				<p class="nlpjx-hint">בחרו קומה בבניין ←</p>
 			</div>
 		</div>
+		<details class="nlpjx-fp"><summary>🚶 סיור פנימי בדירה לדוגמה - היכנסו פנימה</summary>
+			<?php if ( function_exists( 'nadlan_interior_fp_html' ) ) {
+				$fp_rooms = 4.0; foreach ( $units as $u ) { if ( $u['rooms'] > 0 ) { $fp_rooms = $u['rooms']; break; } }
+				echo nadlan_interior_fp_html( array( 'rooms' => $fp_rooms, 'size_sqm' => (int) round( $fp_rooms * 24 ), 'protected_room' => true, 'balcony_sqm' => 12, 'direction' => 'דרום' ) ); // phpcs:ignore
+			} ?>
+		</details>
 		<script type="application/json" id="nlpjx-units-data"><?php
 			echo wp_json_encode( array(
 				'units' => $by_floor,
@@ -163,6 +169,47 @@ if ( ! function_exists( 'nadlan_pjx_bottom' ) ) {
 			) );
 		?></script>
 	</section>
+
+	<section class="nlpjx-sec" id="nlpjx-finance" aria-label="מימון וליווי">
+		<h2>מימון, ייעוץ ועיצוב - הכל במקום אחד</h2>
+		<div class="nlpjx-fin">
+			<?php if ( $ppsqm ) : $est = (int) round( $ppsqm * 90 * 0.75 * ( 0.05 / 12 ) / ( 1 - pow( 1 + 0.05 / 12, -360 ) ) ); ?>
+			<div class="nlpjx-fin-est"><b><?php echo number_format( $est ); ?> ₪</b><span>החזר חודשי משוער לדירת ~90 מ״ר (75% מימון, 30 שנה)*</span>
+				<a href="<?php echo esc_url( home_url( '/mortgage-calculator/' ) ); ?>">למחשבון המלא ←</a></div>
+			<?php endif; ?>
+			<?php
+			$advisors = new WP_Query( array( 'post_type' => 'nadlan_professional', 'post_status' => 'publish', 'posts_per_page' => 3, 'no_found_rows' => true, 'fields' => 'ids',
+				'meta_query' => array( array( 'key' => 'profession', 'value' => array( 'mashkanta', 'accountant', 'lawyer' ), 'compare' => 'IN' ), array( 'key' => 'paid_tier', 'value' => array( 'pro', 'premier' ), 'compare' => 'IN' ) ) ) );
+			if ( $advisors->posts ) : ?>
+			<div class="nlpjx-pros">
+				<?php foreach ( $advisors->posts as $aid ) : $apm = function_exists( 'nadlan_prof_meta_of' ) ? nadlan_prof_meta_of( get_post_meta( $aid, 'profession', true ) ) : array( 'label' => '', 'color' => '#1B1A17' ); ?>
+				<a class="nlpjx-pro" href="<?php echo esc_url( get_permalink( $aid ) ); ?>">
+					<?php echo function_exists( 'nadlan_prof_monogram_svg' ) ? nadlan_prof_monogram_svg( get_the_title( $aid ), $apm['color'] ) : ''; // phpcs:ignore ?>
+					<b><?php echo esc_html( get_the_title( $aid ) ); ?></b><span><?php echo esc_html( $apm['label'] ); ?> · מלווה רוכשים בפרויקטים</span>
+				</a>
+				<?php endforeach; ?>
+			</div>
+			<?php endif; ?>
+		</div>
+	</section>
+
+	<?php
+	$designers = new WP_Query( array( 'post_type' => 'nadlan_professional', 'post_status' => 'publish', 'posts_per_page' => 3, 'no_found_rows' => true, 'fields' => 'ids',
+		'meta_query' => array( array( 'key' => 'profession', 'value' => 'interior_designer' ), array( 'key' => 'paid_tier', 'value' => array( 'pro', 'premier' ), 'compare' => 'IN' ) ) ) );
+	if ( $designers->posts ) : ?>
+	<section class="nlpjx-sec" id="nlpjx-design" aria-label="עיצוב פנים">
+		<h2>קניתם? עצבו את הדירה עוד לפני הכניסה</h2>
+		<p class="nlpjx-cap">מעצבי פנים מומלצים שעובדים עם דירות קבלן - מתוכנית המכר ועד דירה מוכנה.</p>
+		<div class="nlpjx-pros">
+			<?php foreach ( $designers->posts as $did ) : ?>
+			<a class="nlpjx-pro" href="<?php echo esc_url( get_permalink( $did ) ); ?>">
+				<?php echo function_exists( 'nadlan_prof_monogram_svg' ) ? nadlan_prof_monogram_svg( get_the_title( $did ), '#9F6F54' ) : ''; // phpcs:ignore ?>
+				<b><?php echo esc_html( get_the_title( $did ) ); ?></b><span>מעצב/ת פנים · <?php echo esc_html( get_post_meta( $did, 'city', true ) ); ?></span>
+			</a>
+			<?php endforeach; ?>
+		</div>
+	</section>
+	<?php endif; ?>
 
 	<?php if ( $lat && $lng ) :
 		$pois = function_exists( 'nadlan_poi_fetch' ) ? nadlan_poi_fetch( $lat, $lng, 1200 ) : array();
@@ -238,6 +285,19 @@ if ( ! function_exists( 'nadlan_pjx_assets' ) ) {
 .nlpjx-world a{display:block;border:1px solid #E2DCD0;border-radius:10px;background:#FAF8F3;padding:14px 16px;text-decoration:none;color:#1B1A17;transition:border-color .2s,transform .2s;min-height:64px}
 .nlpjx-world a:hover{border-color:#9C7A3C;transform:translateY(-2px)}
 .nlpjx-world b{display:block;font-size:14px}
+.nlpjx-fin{display:flex;flex-wrap:wrap;gap:14px;align-items:stretch}
+.nlpjx-fin-est{flex:1;min-width:220px;border:1px solid #E2DCD0;border-radius:10px;background:#FAF8F3;padding:16px}
+.nlpjx-fin-est b{display:block;font-family:var(--font-serif,serif);font-size:1.5rem}
+.nlpjx-fin-est span{display:block;font-size:11.5px;color:#6D665C;margin:4px 0 8px}
+.nlpjx-fin-est a{color:#9C7A3C;font-size:13px;font-weight:700;text-decoration:none}
+.nlpjx-pros{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:10px;flex:2}
+.nlpjx-pro{display:flex;align-items:center;gap:10px;border:1px solid #E2DCD0;border-radius:10px;background:#FFFDFC;padding:10px 12px;text-decoration:none;color:#1B1A17;transition:border-color .2s}
+.nlpjx-pro:hover{border-color:#9C7A3C}
+.nlpjx-pro svg{width:44px;height:44px;flex-shrink:0}
+.nlpjx-pro b{display:block;font-size:13.5px;line-height:1.2}
+.nlpjx-pro span{font-size:11px;color:#6D665C}
+.nlpjx-fp{margin-top:12px;border:1px solid #E2DCD0;border-radius:10px;background:#FAF8F3;padding:10px 14px}
+.nlpjx-fp summary{cursor:pointer;font-weight:700;font-size:14px}
 .nlpjx-world span{font-size:12px;color:#6D665C}
 ' );
 		wp_register_script( 'nadlan-pjx-js', false, $has_map ? array( 'leaflet' ) : array(), '1.69.77', true );
@@ -322,3 +382,34 @@ document.addEventListener("DOMContentLoaded",function(){
 	}
 }
 add_action( 'wp_enqueue_scripts', 'nadlan_pjx_assets' );
+
+/* ---------------- SEO: FAQPage JSON-LD + meta description for projects ---------------- */
+if ( ! function_exists( 'nadlan_pjx_faq_jsonld' ) ) {
+	function nadlan_pjx_faq_jsonld() {
+		if ( ! is_singular( 'nadlan_project' ) ) { return; }
+		$id = get_queried_object_id();
+		$g  = function ( $k ) use ( $id ) { return get_post_meta( $id, $k, true ); };
+		$name = get_the_title( $id ); $qa = array();
+		if ( $g( 'developer_name' ) ) { $qa[] = array( 'מי היזם של ' . $name . '?', 'היזם הוא ' . $g( 'developer_name' ) . '. פרטי הרישום המלאים מופיעים בעמוד הפרויקט.' ); }
+		if ( (int) $g( 'project_3d_avg_price_per_sqm' ) ) { $qa[] = array( 'מה מחיר למ״ר ב' . $name . '?', 'אומדן לא מחייב: כ-' . number_format( (int) $g( 'project_3d_avg_price_per_sqm' ) ) . ' ₪ למ״ר. יש לאמת מול היזם.' ); }
+		if ( (int) $g( 'num_floors' ) || (int) $g( 'num_units' ) ) { $qa[] = array( 'כמה קומות ודירות יש בפרויקט?', trim( ( (int) $g( 'num_floors' ) ? (int) $g( 'num_floors' ) . ' קומות' : '' ) . ' ' . ( (int) $g( 'num_units' ) ? 'ו-' . (int) $g( 'num_units' ) . ' יחידות דיור' : '' ) ) . '.' ); }
+		$qa[] = array( 'איך בוחרים דירה בפרויקט?', 'בעמוד זה: סיור בהדמיה, בחירת קומה ודירה, מפת סביבה חיה עם מוסדות חינוך ותחבורה, ופנייה ישירה בוואטסאפ או בטלפון.' );
+		$items = array();
+		foreach ( $qa as $x ) { $items[] = array( '@type' => 'Question', 'name' => $x[0], 'acceptedAnswer' => array( '@type' => 'Answer', 'text' => $x[1] ) ); }
+		echo '<script type="application/ld+json">' . wp_json_encode( array( '@context' => 'https://schema.org', '@type' => 'FAQPage', 'mainEntity' => $items ), JSON_UNESCAPED_UNICODE ) . '</script>' . "\n";
+	}
+}
+add_action( 'wp_head', 'nadlan_pjx_faq_jsonld', 30 );
+
+if ( ! function_exists( 'nadlan_pjx_meta_desc' ) ) {
+	function nadlan_pjx_meta_desc( $desc ) {
+		if ( ! is_singular( 'nadlan_project' ) || $desc ) { return $desc; }
+		$id = get_queried_object_id();
+		$g  = function ( $k ) use ( $id ) { return get_post_meta( $id, $k, true ); };
+		$bits = array( 'דירות למכירה ב' . get_the_title( $id ) . ( $g( 'city' ) ? ', ' . $g( 'city' ) : '' ) . '.' );
+		if ( (int) $g( 'project_3d_avg_price_per_sqm' ) ) { $bits[] = 'אומדן ' . number_format( (int) $g( 'project_3d_avg_price_per_sqm' ) ) . ' ₪ למ״ר.'; }
+		$bits[] = 'הדמיה, בחירת דירה, מפת סביבה ותוכניות עתידיות - בנדלן.';
+		return mb_substr( implode( ' ', $bits ), 0, 156 );
+	}
+}
+add_filter( 'wpseo_metadesc', 'nadlan_pjx_meta_desc', 25 );
