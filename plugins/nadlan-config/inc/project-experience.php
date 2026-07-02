@@ -77,6 +77,120 @@ if ( ! function_exists( 'nadlan_pjx_nearby_projects' ) ) {
 	}
 }
 
+/* ---------------- comps: nearby projects WITH price data (R4) ---------------- */
+if ( ! function_exists( 'nadlan_pjx_comps' ) ) {
+	function nadlan_pjx_comps( $id, $lat, $lng, $limit = 6 ) {
+		$key = 'nlpjx_comps_' . $id;
+		$hit = get_transient( $key );
+		if ( is_array( $hit ) ) { return $hit; }
+		$q = new WP_Query( array(
+			'post_type' => 'nadlan_project', 'post_status' => 'publish',
+			'posts_per_page' => 24, 'post__not_in' => array( $id ),
+			'no_found_rows' => true, 'fields' => 'ids',
+			'meta_query' => array(
+				array( 'key' => 'lat', 'value' => array( $lat - 0.03, $lat + 0.03 ), 'compare' => 'BETWEEN', 'type' => 'DECIMAL(10,6)' ),
+				array( 'key' => 'lng', 'value' => array( $lng - 0.035, $lng + 0.035 ), 'compare' => 'BETWEEN', 'type' => 'DECIMAL(10,6)' ),
+				array( 'key' => 'project_3d_avg_price_per_sqm', 'value' => 1000, 'compare' => '>', 'type' => 'NUMERIC' ),
+			),
+		) );
+		$out = array();
+		foreach ( $q->posts as $pid ) {
+			$plat = (float) get_post_meta( $pid, 'lat', true );
+			$plng = (float) get_post_meta( $pid, 'lng', true );
+			// language siblings never count as comps
+			$p = get_post( $pid );
+			if ( $p && preg_match( '/-(en|fr|ru|ar)$/', $p->post_name ) ) { continue; }
+			$dist = (int) round( 111320 * sqrt( pow( $plat - $lat, 2 ) + pow( ( $plng - $lng ) * cos( deg2rad( $lat ) ), 2 ) ) );
+			$out[] = array(
+				'name'  => get_the_title( $pid ),
+				'url'   => get_permalink( $pid ),
+				'lat'   => $plat, 'lng' => $plng,
+				'ppsqm' => (int) get_post_meta( $pid, 'project_3d_avg_price_per_sqm', true ),
+				'city'  => (string) get_post_meta( $pid, 'city', true ),
+				'dist_m'=> $dist,
+			);
+		}
+		usort( $out, function ( $a, $b ) { return $a['dist_m'] <=> $b['dist_m']; } );
+		$out = array_slice( $out, 0, $limit );
+		set_transient( $key, $out, 12 * HOUR_IN_SECONDS );
+		return $out;
+	}
+}
+
+/* R4: comps as a public read API too. */
+add_action( 'rest_api_init', function () {
+	register_rest_route( 'nadlan/v1', '/comps', array(
+		'methods' => 'GET', 'permission_callback' => '__return_true',
+		'callback' => function ( $req ) {
+			$id = (int) $req->get_param( 'id' );
+			$p  = get_post( $id );
+			if ( ! $p || $p->post_type !== 'nadlan_project' || $p->post_status !== 'publish' ) {
+				return new WP_Error( 'not_found', 'not_found', array( 'status' => 404 ) );
+			}
+			$lat = (float) get_post_meta( $id, 'lat', true ); $lng = (float) get_post_meta( $id, 'lng', true );
+			if ( ! $lat || ! $lng ) { return array( 'comps' => array() ); }
+			return array( 'comps' => nadlan_pjx_comps( $id, $lat, $lng ), 'note' => 'אומדנים לא מחייבים, מבוססים על קטלוג נדלן' );
+		},
+	) );
+} );
+
+/* ---------------- R4: price range + comps section (right after the engine) ---------------- */
+if ( ! function_exists( 'nadlan_pjx_price_band' ) ) {
+	function nadlan_pjx_price_band( $content ) {
+		if ( ! is_singular( 'nadlan_project' ) || ! in_the_loop() || ! is_main_query() ) { return $content; }
+		$id    = get_the_ID();
+		$ppsqm = (int) get_post_meta( $id, 'project_3d_avg_price_per_sqm', true );
+		$lat   = (float) get_post_meta( $id, 'lat', true );
+		$lng   = (float) get_post_meta( $id, 'lng', true );
+		$units = nadlan_pjx_units( $id );
+		$prices = array(); $sqms = array();
+		foreach ( $units as $u ) {
+			if ( ! empty( $u['price'] ) ) { $prices[] = (int) $u['price']; }
+			if ( ! empty( $u['sqm'] ) ) { $sqms[] = (int) $u['sqm']; }
+		}
+		$comps = ( $lat && $lng ) ? nadlan_pjx_comps( $id, $lat, $lng ) : array();
+		if ( ! $ppsqm && ! $prices && ! $comps ) { return $content; }
+		$token = function_exists( 'nadlan_mapbox_token' ) ? nadlan_mapbox_token() : '';
+		ob_start(); ?>
+<section class="nlpjx-sec nlpjx-price" id="nlpjx-price" dir="rtl" aria-label="מחירים והשוואה">
+	<h2>מחיר: איפה הפרויקט עומד מול הסביבה</h2>
+	<div class="nlpjx-price-grid">
+		<div class="nlpjx-price-cards">
+			<?php if ( $prices ) : ?>
+			<div class="nlpjx-price-card"><b><?php echo number_format( min( $prices ) ) . ' - ' . number_format( max( $prices ) ); ?> ₪</b><span>טווח מחירי הדירות המפורסמות בפרויקט. אומדן לא מחייב.</span></div>
+			<?php endif; ?>
+			<?php if ( $ppsqm ) : ?>
+			<div class="nlpjx-price-card"><b>~<?php echo number_format( $ppsqm ); ?> ₪/מ״ר</b><span>מחיר ממוצע למ״ר בפרויקט<?php echo $sqms ? ', דירות ' . min( $sqms ) . '-' . max( $sqms ) . ' מ״ר' : ''; ?>. אומדן לא מחייב.</span></div>
+			<?php endif; ?>
+			<?php if ( $comps ) : ?>
+			<table class="nlpjx-comps">
+				<caption>פרויקטים סמוכים להשוואה · מבוסס על קטלוג נדלן</caption>
+				<thead><tr><th>פרויקט</th><th>₪/מ״ר</th><th>מרחק</th></tr></thead>
+				<tbody>
+				<?php foreach ( $comps as $c ) : ?>
+					<tr>
+						<td><a href="<?php echo esc_url( $c['url'] ); ?>"><?php echo esc_html( $c['name'] ); ?></a></td>
+						<td>~<?php echo number_format( $c['ppsqm'] ); ?></td>
+						<td><?php echo $c['dist_m'] >= 1000 ? esc_html( number_format( $c['dist_m'] / 1000, 1 ) ) . ' ק״מ' : (int) $c['dist_m'] . ' מ׳'; ?></td>
+					</tr>
+				<?php endforeach; ?>
+				</tbody>
+			</table>
+			<?php endif; ?>
+		</div>
+		<?php if ( $token && $lat && $lng && $comps ) : ?>
+		<div id="nlpjx-compmap" data-token="<?php echo esc_attr( $token ); ?>" data-lat="<?php echo esc_attr( $lat ); ?>" data-lng="<?php echo esc_attr( $lng ); ?>" data-title="<?php echo esc_attr( get_the_title( $id ) ); ?>"></div>
+		<script type="application/json" id="nlpjx-comps-data"><?php echo wp_json_encode( $comps ); // phpcs:ignore ?></script>
+		<?php endif; ?>
+	</div>
+	<p class="nlpjx-cap">האומדנים מבוססים על נתונים גלויים בקטלוג נדלן ואינם מחייבים. יש לאמת מחירים מול היזם.</p>
+</section>
+<?php
+		return $content . ob_get_clean();
+	}
+}
+add_filter( 'the_content', 'nadlan_pjx_price_band', 9 );
+
 /* ---------------- 1+2: sticky nav + intro + apartment selector (before engine) ---------------- */
 if ( ! function_exists( 'nadlan_pjx_top' ) ) {
 	function nadlan_pjx_top( $content ) {
@@ -228,6 +342,20 @@ if ( ! function_exists( 'nadlan_pjx_assets' ) ) {
 .nlpjx-sec h2{font-family:var(--font-serif,"Frank Ruhl Libre",serif);font-size:1.35rem;margin:0 0 8px}
 .nlpjx-cap{font-size:12.5px;color:#6D665C;margin:0 0 14px}
 #nlpjx-leaflet{height:340px;border-radius:10px;border:1px solid #E2DCD0}
+.nlpjx-price-grid{display:grid;grid-template-columns:1.1fr 1fr;gap:18px;align-items:start}
+@media(max-width:760px){.nlpjx-price-grid{grid-template-columns:1fr}}
+.nlpjx-price-cards{display:flex;flex-direction:column;gap:12px}
+.nlpjx-price-card{border:1px solid #E2DCD0;border-radius:10px;background:#FAF8F3;padding:16px}
+.nlpjx-price-card b{display:block;font-family:var(--font-serif,serif);font-size:1.5rem}
+.nlpjx-price-card span{display:block;font-size:12px;color:#6D665C;margin-top:4px}
+.nlpjx-comps{width:100%;border-collapse:collapse;font-size:13.5px;background:#fff;border:1px solid #E2DCD0;border-radius:10px;overflow:hidden}
+.nlpjx-comps caption{caption-side:top;text-align:start;font-size:11.5px;color:#6D665C;padding:0 2px 6px}
+.nlpjx-comps th,.nlpjx-comps td{text-align:start;padding:9px 12px;border-bottom:1px solid #EFE9DD}
+.nlpjx-comps th{font-size:11.5px;color:#6D665C;font-weight:600;background:#FAF8F3}
+.nlpjx-comps tr:last-child td{border-bottom:0}
+.nlpjx-comps a{color:#1B1A17;text-decoration:none;font-weight:600}
+.nlpjx-comps a:hover{color:#9C7A3C}
+#nlpjx-compmap{height:340px;border-radius:10px;border:1px solid #E2DCD0;background:#F3EEE3}
 .nlpjx-world{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:12px}
 .nlpjx-world a{display:block;border:1px solid #E2DCD0;border-radius:10px;background:#FAF8F3;padding:14px 16px;text-decoration:none;color:#1B1A17;transition:border-color .2s,transform .2s;min-height:64px}
 .nlpjx-world a:hover{border-color:#9C7A3C;transform:translateY(-2px)}
@@ -265,6 +393,35 @@ document.addEventListener("DOMContentLoaded",function(){
 			if(t){e.preventDefault();t.scrollIntoView({behavior:"smooth",block:"start"})}
 		});
 	});
+	// comps map: Mapbox GL pins for the price band (lazy - loads GL only when the
+	// band is near the viewport; token comes from the keys hub option)
+	var cm=document.getElementById("nlpjx-compmap");
+	if(cm&&"IntersectionObserver" in window){
+		var cmDone=false;
+		new IntersectionObserver(function(en,obs){
+			if(!en[0].isIntersecting||cmDone){return}
+			cmDone=true;obs.disconnect();
+			function boot(){
+				if(!window.mapboxgl){return}
+				mapboxgl.accessToken=cm.dataset.token;
+				var map=new mapboxgl.Map({container:cm,style:"mapbox://styles/mapbox/light-v11",center:[parseFloat(cm.dataset.lng),parseFloat(cm.dataset.lat)],zoom:13.2,attributionControl:true});
+				map.addControl(new mapboxgl.NavigationControl({showCompass:false}));
+				var home=document.createElement("div");home.style.cssText="width:18px;height:18px;border-radius:50%;background:#C2563A;border:3px solid #fff;box-shadow:0 2px 8px rgba(0,0,0,.35)";
+				new mapboxgl.Marker({element:home}).setLngLat([parseFloat(cm.dataset.lng),parseFloat(cm.dataset.lat)]).setPopup(new mapboxgl.Popup({offset:12}).setHTML("<b>"+cm.dataset.title+"</b>")).addTo(map);
+				var dataEl=document.getElementById("nlpjx-comps-data");
+				var comps=[];try{comps=JSON.parse(dataEl?dataEl.textContent:"[]")}catch(e){}
+				comps.forEach(function(c){
+					if(!c.lat||!c.lng){return}
+					var el=document.createElement("div");el.style.cssText="min-width:44px;padding:3px 7px;border-radius:7px;background:#1B1A17;color:#E6D4AE;font:700 11px/1.3 Heebo,sans-serif;text-align:center;border:1px solid #9C7A3C;cursor:pointer";
+					el.textContent="₪"+Math.round(c.ppsqm/1000)+"K";
+					new mapboxgl.Marker({element:el}).setLngLat([c.lng,c.lat]).setPopup(new mapboxgl.Popup({offset:12}).setHTML("<b>"+c.name+"</b><br>~"+Number(c.ppsqm).toLocaleString()+" ₪/מ\"ר · <a href=\""+c.url+"\">לפרויקט</a>")).addTo(map);
+				});
+			}
+			if(window.mapboxgl){boot();return}
+			var l=document.createElement("link");l.rel="stylesheet";l.href="https://api.mapbox.com/mapbox-gl-js/v3.7.0/mapbox-gl.css";document.head.appendChild(l);
+			var s=document.createElement("script");s.src="https://api.mapbox.com/mapbox-gl-js/v3.7.0/mapbox-gl.js";s.onload=boot;document.head.appendChild(s);
+		},{rootMargin:"300px"}).observe(cm);
+	}
 	// live map: streets/satellite, POIs, future-plans purple markers
 	var m=document.getElementById("nlpjx-leaflet");
 	if(m&&window.L){

@@ -98,8 +98,9 @@ if ( ! function_exists( 'nadlan_claim_rest_handler' ) ) {
 		) as $k => $v ) {
 			if ( $v !== '' ) { update_post_meta( $claim_id, $k, $v ); }
 		}
-		// Flip the card to pending (does not grant access yet)
-		update_post_meta( $post_id, 'claim_status', 'pending' );
+		// Audit fix 2026-07-02: an unauthenticated request must not change the
+		// card's public state. The claim record above carries claim_state=pending;
+		// the card's claim_status flips only when an admin approves.
 
 		$admin = get_option( 'admin_email' );
 		if ( $admin ) {

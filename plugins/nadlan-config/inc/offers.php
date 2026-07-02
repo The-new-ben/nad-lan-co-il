@@ -137,7 +137,9 @@ add_action( 'rest_api_init', function () {
 			// Dedupe: same phone+card within 24h updates the existing offer instead of duplicating.
 			$fp = md5( $card_id . '|' . $phone );
 			$guard = 'nadlan_offer_g_' . $fp;
-			$existing = (int) get_option( $guard, 0 );
+			// Audit fix 2026-07-02: was a permanent option (never expired, grew
+			// unbounded); a transient makes "within 24h" actually true.
+			$existing = (int) get_transient( $guard );
 			if ( $existing && get_post_type( $existing ) === 'nadlan_offer' ) {
 				update_post_meta( $existing, 'offer_amount', $amount );
 				update_post_meta( $existing, 'offer_updated_at', time() );

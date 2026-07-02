@@ -197,7 +197,7 @@ if ( ! function_exists( 'nadlan_studio_render_picker' ) ) {
 								var photoHint=c.photos_count===0?'<span style="color:#DC2626">⚠ אין תמונות</span>':'<span style="color:#059669">'+c.photos_count+' תמונות</span>';
 								html+='<a href="/studio/?id='+c.id+'" style="background:#fff;border:1px solid #ddd;border-radius:12px;padding:18px;text-decoration:none;color:inherit;display:block;transition:transform .15s,box-shadow .15s">'
 									+'<div style="font-family:var(--font-serif,serif);font-size:18px;font-weight:600;margin-bottom:6px">'+(c.title||'ללא שם')+'</div>'
-									+'<div style="font-size:12.5px;color:#7a7a7a;margin-bottom:10px">'+c.post_type+' · '+c.tier+'</div>'
+									+'<div style="font-size:12.5px;color:#7a7a7a;margin-bottom:10px">'+({nadlan_property:'נכס',nadlan_project:'פרויקט',nadlan_professional:'בעל מקצוע'}[c.post_type]||'כרטיס')+' · '+({free:'חינם',pro:'פרו',premier:'פרימייר',trial:'תקופת ניסיון'}[c.tier]||'חינם')+'</div>'
 									+'<div style="font-size:13px;color:#5a5a5a">'+photoHint+' · '+c.views+' צפיות · '+c.reviews+' ביקורות</div>'
 									+'<div style="margin-top:12px;color:#9C7A3C;font-weight:600;font-size:13.5px">ערוך כרטיס ←</div>'
 									+'</a>';

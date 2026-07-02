@@ -85,8 +85,12 @@ if ( ! function_exists( 'nadlan_listing_similar' ) ) {
 		$q = new WP_Query( array(
 			'post_type' => 'nadlan_property', 'posts_per_page' => $limit + 1,
 			'post__not_in' => array( $id ), 'no_found_rows' => true,
-			'tax_query' => $city ? array() : array(),
-			'meta_query' => count( $meta ) > 1 ? $meta : array(),
+			'meta_query' => ( function () use ( $meta, $city ) {
+				// Audit fix 2026-07-02: the old tax_query was dead code, so "similar
+				// listings" ignored location entirely. City is a meta field here.
+				if ( $city !== '' ) { $meta[] = array( 'key' => 'city', 'value' => $city ); }
+				return count( $meta ) > 1 ? $meta : array();
+			} )(),
 		) );
 		$out = array();
 		foreach ( $q->posts as $p ) {
@@ -116,7 +120,7 @@ if ( ! function_exists( 'nadlan_listing_append' ) ) {
 
 	<div class="nlx-cta">
 		<a class="nlx-btn nlx-wa" target="_blank" rel="noopener"
-		   href="https://wa.me/972525101555?text=<?php echo rawurlencode( 'היי, מעוניין/ת בנכס: ' . get_the_title( $id ) . ' ' . get_permalink( $id ) ); ?>">וואטסאפ</a>
+		   href="https://wa.me/<?php echo esc_attr( preg_replace( '/\D+/', '', (string) get_option( 'nadlan_whatsapp_e164', '972525101555' ) ) ); ?>?text=<?php echo rawurlencode( 'היי, מעוניין/ת בנכס: ' . get_the_title( $id ) . ' ' . get_permalink( $id ) ); ?>">וואטסאפ</a>
 		<button class="nlx-btn" onclick="document.getElementById('nlx-visit-<?php echo (int) $id; ?>').classList.toggle('on')">תיאום ביקור</button>
 	</div>
 	<form id="nlx-visit-<?php echo (int) $id; ?>" class="nlx-visit" onsubmit="return nadlanVisit(this,<?php echo (int) $id; ?>)">

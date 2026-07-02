@@ -56,6 +56,7 @@ add_action( 'template_redirect', function () {
 	if ( function_exists( 'block_template_part' ) ) { block_template_part( 'header' ); } ?>
 <div class="nlcmp" dir="rtl"><h1>השוואת נכסים</h1><div class="nlcmp-empty">בחרו עד 4 נכסים מדף הנכס כדי להוסיף להשוואה.</div><div class="nlcmp-mount"></div></div>
 <script>
+function nlcmpEsc(x){var d=document.createElement('div');d.textContent=String(x==null?'':x);return d.innerHTML;}
 (function(){
 	var ids=JSON.parse(localStorage.getItem('nadlan_compare')||'[]');
 	if(!ids.length){return;}
@@ -68,7 +69,7 @@ add_action( 'template_redirect', function () {
 			['','כותרת','תמונה','מחיר','₪ למ"ר','חדרים','מ"ר','קומה','עיר','מעלית','חניה','ממ"ד'],
 		];
 		var h='<table class="nlcmp-tbl"><thead><tr><th></th>';
-		j.items.forEach(function(i){h+='<th><a href="'+i.url+'">'+i.title+'</a></th>';});
+		j.items.forEach(function(i){h+='<th><a href="'+i.url+'">'+nlcmpEsc(i.title)+'</a></th>';});
 		h+='</tr></thead><tbody>';
 		for(var k=2;k<rows[0].length;k++){
 			h+='<tr><th>'+rows[1][k]+'</th>';

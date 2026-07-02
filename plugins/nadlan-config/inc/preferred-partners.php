@@ -118,19 +118,6 @@ if ( ! function_exists( 'nadlan_pp_admin_render' ) ) {
 	}
 }
 
-/* Hook: when a referral is created without partner_id but with a topic carrying
- * a profession hint, try auto-routing to a preferred partner. The Lead Ledger
- * still defaults to notify_partner=0 so this is opt-in per call. */
-add_filter( 'nadlan_ll_auto_route', function ( $partner_id_or_zero, $params ) {
-	if ( $partner_id_or_zero > 0 ) { return $partner_id_or_zero; }
-	$prof = '';
-	foreach ( array( 'kablan', 'shamai', 'bedek_bait', 'mashkanta', 'architect', 'lawyer', 'mefakeach', 'metavech' ) as $k ) {
-		$lbl = array( 'kablan' => 'קבלן', 'shamai' => 'שמאי', 'mashkanta' => 'משכנתא', 'architect' => 'אדריכל', 'lawyer' => 'עורך דין', 'mefakeach' => 'מפקח', 'metavech' => 'מתווך', 'bedek_bait' => 'בדק בית' )[ $k ];
-		if ( mb_stripos( (string) ( $params['topic'] ?? '' ), $lbl ) !== false ) { $prof = $k; break; }
-	}
-	$pick = nadlan_pp_pick( $prof, (string) ( $params['city'] ?? '' ) );
-	if ( ! $pick ) { return 0; }
-	// store the matched partner directly into the lead record metadata via filter chain.
-	$GLOBALS['nadlan_ll_pp_match'] = $pick;
-	return 0; // no nadlan_professional ID; flag for caller to use $pp_match instead.
-}, 10, 2 );
+/* Dead auto-route block removed 2026-07-02 (module audit): the filter was
+   never applied anywhere and its side-channel was never read. Routing lives
+   in owner-config-rest.php on wp_after_insert_post. */
