@@ -1,15 +1,14 @@
 <?php
 /**
- * nadlan-config — Project buying experience layer (v1.69.77)
+ * nadlan-config — Project buying experience layer (v1.69.85)
  *
  * Owner mobile-QA 2026-07-01: projects felt stacked, un-unified, apartment
  * selection didn't work, map wasn't clickable, article buried. This module
  * adds a REPLICABLE experience layer to EVERY nadlan_project page:
- *   1. Sticky section nav (סיור תלת-ממד / בחירת דירה / סביבה / עוד מידע)
- *   2. GUARANTEED apartment selector: parametric facade (reuses the listings
- *      facade SVG) fed from project_3d_units JSON + floors meta; click a floor
- *      → real unit info + price estimate + WhatsApp/call CTA. Works on every
- *      project with zero hotspot coordinates required.
+ *   1. Sticky section nav (סיור ובחירת דירה / סביבה / עוד מידע)
+ *   2. Apartment selection lives in the showroom engine only (design audit
+ *      2026-07-02, D1/D2): this module must never render a second picker or
+ *      standalone interior widget next to the engine.
  *   3. Live clickable surroundings map: streets/satellite, real OSM POIs
  *      (schools/kindergartens/transit/shops/health) AND a FUTURE-PLANS layer —
  *      nearby urban-renewal projects from our own 965-project gov.il dataset,
@@ -93,8 +92,7 @@ if ( ! function_exists( 'nadlan_pjx_top' ) ) {
 
 		ob_start(); ?>
 <nav class="nlpjx-nav" aria-label="ניווט בעמוד הפרויקט" dir="rtl">
-	<a href="#nl-root">סיור בפרויקט</a>
-	<a href="#nlpjx-units">בחירת דירה</a>
+	<a href="#nl-root">סיור ובחירת דירה</a>
 	<a href="#nlpjx-map">מפה וסביבה</a>
 	<a href="#nlpjx-world">עוד מידע</a>
 </nav>
@@ -121,61 +119,24 @@ if ( ! function_exists( 'nadlan_pjx_bottom' ) ) {
 		if ( ! is_singular( 'nadlan_project' ) || ! in_the_loop() || ! is_main_query() ) { return $content; }
 		$id  = get_the_ID();
 		$g   = function ( $k ) use ( $id ) { return get_post_meta( $id, $k, true ); };
-		$units  = nadlan_pjx_units( $id );
-		$floors = (int) $g( 'num_floors' );
-		if ( ! $floors ) {
-			$mx = 0; foreach ( $units as $u ) { $mx = max( $mx, $u['floor'] ); }
-			$floors = $mx ?: 10;
-		}
 		$ppsqm = (int) $g( 'project_3d_avg_price_per_sqm' );
-		$wa    = preg_replace( '/\D+/', '', (string) get_option( 'nadlan_whatsapp_e164', '' ) );
-		$tel   = (string) get_option( 'nadlan_phone', '' );
 		$lat = (float) $g( 'lat' ); $lng = (float) $g( 'lng' );
 		$dev = (string) $g( 'developer_name' );
 		$city = (string) $g( 'city' );
 
-		// group units per floor for the panel
-		$by_floor = array();
-		foreach ( $units as $u ) { $by_floor[ (int) $u['floor'] ][] = $u; }
-
 		ob_start(); ?>
 <div class="nlpjx" dir="rtl">
-
-	<section id="nlpjx-units" class="nlpjx-sec" aria-label="בחירת דירה בבניין">
-		<h2>בחרו דירה בבניין</h2>
-		<p class="nlpjx-cap">לחצו על קומה בשרטוט — ותקבלו את הדירות המוצעות בה, אומדן מחיר ויצירת קשר מיידית. הדמיה סכמטית להמחשה.</p>
-		<div class="nlpjx-selwrap">
-			<div class="nlpjx-facade">
-				<?php if ( function_exists( 'nadlan_pshow_facade_svg' ) ) { echo nadlan_pshow_facade_svg( min( $floors, 40 ), 0, 3, 1 ); } // phpcs:ignore ?>
-			</div>
-			<div class="nlpjx-unitpanel" id="nlpjx-unitpanel" aria-live="polite">
-				<p class="nlpjx-hint">בחרו קומה בבניין ←</p>
-			</div>
-		</div>
-		<details class="nlpjx-fp"><summary>🚶 סיור פנימי בדירה לדוגמה - היכנסו פנימה</summary>
-			<?php if ( function_exists( 'nadlan_interior_fp_html' ) ) {
-				$fp_rooms = 4.0; foreach ( $units as $u ) { if ( $u['rooms'] > 0 ) { $fp_rooms = $u['rooms']; break; } }
-				echo nadlan_interior_fp_html( array( 'rooms' => $fp_rooms, 'size_sqm' => (int) round( $fp_rooms * 24 ), 'protected_room' => true, 'balcony_sqm' => 12, 'direction' => 'דרום' ) ); // phpcs:ignore
-			} ?>
-		</details>
-		<script type="application/json" id="nlpjx-units-data"><?php
-			echo wp_json_encode( array(
-				'units' => $by_floor,
-				'ppsqm' => $ppsqm,
-				'note'  => (string) $g( 'project_3d_price_source_note' ),
-				'wa'    => $wa,
-				'tel'   => preg_replace( '/[^0-9+\-]/', '', $tel ),
-				'title' => get_the_title( $id ),
-			) );
-		?></script>
-	</section>
 
 	<section class="nlpjx-sec" id="nlpjx-finance" aria-label="מימון וליווי">
 		<h2>מימון, ייעוץ ועיצוב - הכל במקום אחד</h2>
 		<div class="nlpjx-fin">
-			<?php if ( $ppsqm ) : $est = (int) round( $ppsqm * 90 * 0.75 * ( 0.05 / 12 ) / ( 1 - pow( 1 + 0.05 / 12, -360 ) ) ); ?>
-			<div class="nlpjx-fin-est"><b><?php echo number_format( $est ); ?> ₪</b><span>החזר חודשי משוער לדירת ~90 מ״ר (75% מימון, 30 שנה)*</span>
-				<a href="<?php echo esc_url( home_url( '/mortgage-calculator/' ) ); ?>">למחשבון המלא ←</a></div>
+			<?php if ( $ppsqm ) :
+				$est = $ppsqm * 90 * 0.75 * ( 0.05 / 12 ) / ( 1 - pow( 1 + 0.05 / 12, -360 ) );
+				$lo  = (int) round( $est * 0.9, -2 );
+				$hi  = (int) round( $est * 1.1, -2 );
+			?>
+			<div class="nlpjx-fin-est"><b><?php echo number_format( $lo ) . '-' . number_format( $hi ); ?> ₪</b><span>סדר גודל של החזר חודשי לדירת ~90 מ״ר. אומדן לא מחייב, תלוי במסלול ובריבית.</span>
+				<a href="<?php echo esc_url( home_url( '/mortgage-calculator/' ) ); ?>">לחישוב אישי במחשבון המשכנתא ←</a></div>
 			<?php endif; ?>
 			<?php
 			$advisors = new WP_Query( array( 'post_type' => 'nadlan_professional', 'post_status' => 'publish', 'posts_per_page' => 3, 'no_found_rows' => true, 'fields' => 'ids',
@@ -266,20 +227,6 @@ if ( ! function_exists( 'nadlan_pjx_assets' ) ) {
 .nlpjx-sec{border:1px solid #E2DCD0;border-radius:12px;background:#FFFDFC;padding:20px;margin:0 0 20px;box-shadow:0 1px 2px rgba(17,17,15,.04)}
 .nlpjx-sec h2{font-family:var(--font-serif,"Frank Ruhl Libre",serif);font-size:1.35rem;margin:0 0 8px}
 .nlpjx-cap{font-size:12.5px;color:#6D665C;margin:0 0 14px}
-.nlpjx-selwrap{display:grid;grid-template-columns:minmax(220px,300px) 1fr;gap:20px;align-items:start}
-@media(max-width:700px){.nlpjx-selwrap{grid-template-columns:1fr}}
-.nlpjx-facade svg{display:block;max-width:300px;margin:0 auto;max-height:420px}
-.nlpjx-unitpanel{border:1px solid #E2DCD0;border-radius:10px;background:#FAF8F3;padding:16px;min-height:140px}
-.nlpjx-hint{color:#6D665C;font-size:14px;text-align:center;padding-top:36px}
-.nlpjx-u{border-bottom:1px solid #E2DCD0;padding:10px 0}
-.nlpjx-u:last-child{border-bottom:0}
-.nlpjx-u b{display:block;font-size:14.5px}
-.nlpjx-u i{font-style:normal;font-size:12.5px;color:#6D665C}
-.nlpjx-u .nlpjx-price{font-weight:700;color:#9C7A3C}
-.nlpjx-ctas{display:flex;gap:8px;margin-top:8px}
-.nlpjx-ctas a{flex:1;text-align:center;font-size:13px;font-weight:700;border-radius:8px;padding:10px 8px;text-decoration:none;min-height:40px;display:inline-flex;align-items:center;justify-content:center}
-.nlpjx-wa{background:#25D366;color:#fff}
-.nlpjx-tel{background:#1B1A17;color:#fff}
 #nlpjx-leaflet{height:340px;border-radius:10px;border:1px solid #E2DCD0}
 .nlpjx-world{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:12px}
 .nlpjx-world a{display:block;border:1px solid #E2DCD0;border-radius:10px;background:#FAF8F3;padding:14px 16px;text-decoration:none;color:#1B1A17;transition:border-color .2s,transform .2s;min-height:64px}
@@ -296,23 +243,19 @@ if ( ! function_exists( 'nadlan_pjx_assets' ) ) {
 .nlpjx-pro svg{width:44px;height:44px;flex-shrink:0}
 .nlpjx-pro b{display:block;font-size:13.5px;line-height:1.2}
 .nlpjx-pro span{font-size:11px;color:#6D665C}
-.nlpjx-fp{margin-top:12px;border:1px solid #E2DCD0;border-radius:10px;background:#FAF8F3;padding:10px 14px}
-.nlpjx-fp summary{cursor:pointer;font-weight:700;font-size:14px}
 .nlpjx-world span{font-size:12px;color:#6D665C}
 ' );
-		wp_register_script( 'nadlan-pjx-js', false, $has_map ? array( 'leaflet' ) : array(), '1.69.77', true );
+		wp_register_script( 'nadlan-pjx-js', false, $has_map ? array( 'leaflet' ) : array(), '1.69.85', true );
 		wp_enqueue_script( 'nadlan-pjx-js' );
 		wp_add_inline_script( 'nadlan-pjx-js', '
 (function(){
 document.addEventListener("DOMContentLoaded",function(){
-	// LAYOUT (owner 2026-07-01): apartment selector + rich map move UP, directly
-	// under the 3D tour; the engine duplicate map section is hidden (ours is richer).
+	// LAYOUT (design audit 2026-07-02): the engine is the ONE apartment picker.
+	// Our rich surroundings map moves up directly under the 3D tour and the
+	// engine duplicate map section is hidden (ours has POIs + future plans).
 	var nlroot=document.getElementById("nl-root");
-	var secU=document.getElementById("nlpjx-units"),secM=document.getElementById("nlpjx-map");
-	if(nlroot){
-		if(secM){nlroot.insertAdjacentElement("afterend",secM)}
-		if(secU){nlroot.insertAdjacentElement("afterend",secU)}
-	}
+	var secM=document.getElementById("nlpjx-map");
+	if(nlroot&&secM){nlroot.insertAdjacentElement("afterend",secM)}
 	var em=document.getElementById("nl-map");
 	if(em&&secM){var esec=em.closest("section")||em;esec.style.display="none"}
 	// smooth section nav
@@ -322,40 +265,6 @@ document.addEventListener("DOMContentLoaded",function(){
 			if(t){e.preventDefault();t.scrollIntoView({behavior:"smooth",block:"start"})}
 		});
 	});
-	// apartment selector: click floor -> real units + CTAs
-	var dataEl=document.getElementById("nlpjx-units-data"),panel=document.getElementById("nlpjx-unitpanel");
-	if(dataEl&&panel){
-		var D=JSON.parse(dataEl.textContent||"{}"),byF=D.units||{};
-		document.querySelectorAll("#nlpjx-units .nlps-f-fl").forEach(function(fl){
-			fl.addEventListener("click",function(){
-				var f=parseInt(fl.dataset.floor,10),list=byF[f]||[];
-				var html="<b style=\"font-size:15px\">קומה "+f+"</b>";
-				if(!list.length){
-					// nearest floors with units
-					var floors=Object.keys(byF).map(Number).sort(function(a,b){return Math.abs(a-f)-Math.abs(b-f)});
-					if(floors.length){list=byF[floors[0]];html+="<i style=\"display:block;color:#6D665C;font-size:12px\">הדירות הקרובות ביותר (קומה "+floors[0]+"):</i>"}
-				}
-				if(!list||!list.length){panel.innerHTML=html+"<p class=\"nlpjx-hint\" style=\"padding-top:10px\">אין כרגע דירות מפורסמות בקומה זו — דברו איתנו לזמינות מלאה.</p>"+ctas("קומה "+f);return}
-				list.slice(0,4).forEach(function(u){
-					var est=(!u.price&&D.ppsqm&&u.sqm)?(D.ppsqm*u.sqm):u.price;
-					html+="<div class=\"nlpjx-u\"><b>"+u.title+"</b>"
-						+(u.sqm?"<i>"+u.sqm+" מ\"ר</i> ":"")
-						+(est?"<span class=\"nlpjx-price\">"+(u.price?"":"אומדן ")+"₪"+Number(est).toLocaleString()+"</span>":"")
-						+"</div>";
-				});
-				if(D.note){html+="<i style=\"font-size:11px;color:#6D665C\">"+D.note+"</i>"}
-				panel.innerHTML=html+ctas(list[0].title);
-				panel.scrollIntoView({behavior:"smooth",block:"nearest"});
-			});
-		});
-		function ctas(unit){
-			var msg=encodeURIComponent("היי, מתעניין/ת ב"+D.title+" - "+unit);
-			var h="<div class=\"nlpjx-ctas\">";
-			if(D.wa){h+="<a class=\"nlpjx-wa\" target=\"_blank\" rel=\"noopener\" href=\"https://wa.me/"+D.wa+"?text="+msg+"\">וואטסאפ</a>"}
-			if(D.tel){h+="<a class=\"nlpjx-tel\" href=\"tel:"+D.tel+"\">התקשרו</a>"}
-			return h+"</div>";
-		}
-	}
 	// live map: streets/satellite, POIs, future-plans purple markers
 	var m=document.getElementById("nlpjx-leaflet");
 	if(m&&window.L){

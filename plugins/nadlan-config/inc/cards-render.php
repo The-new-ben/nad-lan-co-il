@@ -30,10 +30,18 @@ if ( ! function_exists( 'nadlan_card_fact_rows' ) ) {
 			$rows['ותק (שנים)']        = $g( 'years_active' );
 			$rows['פרויקטים']          = (int) $g( 'project_count' ) ?: '';
 		} elseif ( $type === 'nadlan_project' ) {
+			// Design audit 2026-07-02 (D3): NEVER leak raw machine enums like
+			// "new_build" to buyers - map every known value, hide unknown slugs.
 			$pt_map = array( 'tama38' => 'תמ"א 38', 'pinui_binui' => 'פינוי-בינוי', 'new' => 'בנייה חדשה',
-				'mehir_lamishtaken' => 'מחיר למשתכן', 'other' => 'אחר' );
-			$rows['סוג פרויקט']   = $pt_map[ $g( 'project_type' ) ] ?? $g( 'project_type' );
-			$rows['סטטוס']        = $g( 'project_status' );
+				'new_build' => 'בנייה חדשה', 'mehir_lamishtaken' => 'מחיר למשתכן', 'other' => 'אחר' );
+			$st_map = array( 'planning' => 'בתכנון', 'permits' => 'בהיתרים', 'pre_sale' => 'טרום מכירה',
+				'marketing' => 'בשיווק', 'construction' => 'בבנייה', 'completed' => 'הושלם', 'occupancy' => 'באכלוס' );
+			$label  = function ( $v, $map ) {
+				if ( isset( $map[ $v ] ) ) { return $map[ $v ]; }
+				return preg_match( '/^[a-z0-9_\-]+$/', (string) $v ) ? '' : $v; // hide raw slugs
+			};
+			$rows['סוג פרויקט']   = $label( $g( 'project_type' ), $pt_map );
+			$rows['סטטוס']        = $label( $g( 'project_status' ), $st_map );
 			$rows['עיר']          = $g( 'city' );
 			$rows['יזם']          = $g( 'developer_name' );
 			$rows['קבלן']         = $g( 'contractor_name' );
@@ -81,7 +89,13 @@ if ( ! function_exists( 'nadlan_card_render' ) ) {
 	</div>
 	<?php endif; ?>
 
-	<?php if ( $claim_status !== 'verified' ) : ?>
+	<?php
+	// Design audit 2026-07-02 (D4): a "claim this card" pitch is a B2B message
+	// on a buyer-facing flagship. Never show it where the showroom engine runs.
+	$claim_allowed = ! ( $type === 'nadlan_project'
+		&& function_exists( 'nadlan_showroom_engine_active_for' )
+		&& nadlan_showroom_engine_active_for( $id ) );
+	if ( $claim_allowed && $claim_status !== 'verified' ) : ?>
 	<div class="nlcard-claim">
 		<strong>זה הכרטיס שלכם?</strong>
 		<p>פתחנו לכם כרטיס בחינם. רוצים להוסיף תמונות, לעדכן פרטים ולהשתמש בו ככלי שיווקי? בקשו בעלות והכרטיס יעבור לניהולכם.</p>
