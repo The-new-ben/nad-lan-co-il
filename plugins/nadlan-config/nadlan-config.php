@@ -2,7 +2,7 @@
 /**
  * Plugin Name: NadLan Config
  * Description: Lead-capture foundation: nadlan_lead CPT + lead-form handler + healthcheck. Read skills/nadlan-config-plugin.md.
- * Version: 1.69.76
+ * Version: 1.69.79
  * Author: nad-lan.co.il
  * License: GPL-2.0+
  * Requires PHP: 7.4
@@ -22,7 +22,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  *   auction.php       — timed auctions: proxy bid, soft-close, custom bids table, REST
  * See skills/listings-auction-directory-architecture.md for the full design.
  */
-foreach ( array( 'catalog-meta', 'claim', 'import', 'schema', 'cards-render', 'auction', 'listings-ux', 'avm-deals', 'saved-search', 'ai-provider', 'ai-features', 'city-hubs', 'media', 'compare', 'nearby-poi', 'esign', 'map', 'lead-drip', 'ops-dashboard', 'facets', 'breadcrumbs', 'autocomplete', 'tiers', 'glossary', 'glossary-autolink', 'homepage', 'directory', 'reviews', 'lead-ledger', 'ai-concierge', 'archive-grid', 'calculators', 'catalog-shine', 'conversion-cta', 'whatsapp-lead-ingestion', 'lead-routing', 'feature-flags', 'compounds', 'compound-map', 'project-3d', 'project-page-assembly', 'offers', 'lead-e2e', 'lead-inbox', 'preferred-partners', 'featured-upsell', 'sponsored-spot', 'pricing-schema', 'claim-prompt', 'ga4-events', 'sitemap-ping', 'social-proof', 'term-faq-schema', 'og-image', 'owner-config-rest', 'studio', 'studio-rest', 'profile-extras', 'advertiser-center', 'advertiser-orders', 'premium-ui', 'geo-search', 'roles', 'greeninvoice-recurring', 'placement-auction', 'admin-control', 'contextual-help', 'business-metrics', 'health', 'final-hardening', 'lead-ai-qualify', 'lead-nurture', 'showroom-engine', 'bulk-project-seo', 'loi-form', 'showroom-metabox', 'property-showroom', 'property-wizard' ) as $nadlan_mod ) {
+foreach ( array( 'catalog-meta', 'claim', 'import', 'schema', 'cards-render', 'auction', 'listings-ux', 'avm-deals', 'saved-search', 'ai-provider', 'ai-features', 'city-hubs', 'media', 'compare', 'nearby-poi', 'esign', 'map', 'lead-drip', 'ops-dashboard', 'facets', 'breadcrumbs', 'autocomplete', 'tiers', 'glossary', 'glossary-autolink', 'homepage', 'directory', 'reviews', 'lead-ledger', 'ai-concierge', 'archive-grid', 'calculators', 'catalog-shine', 'conversion-cta', 'whatsapp-lead-ingestion', 'lead-routing', 'feature-flags', 'compounds', 'compound-map', 'project-3d', 'project-page-assembly', 'offers', 'lead-e2e', 'lead-inbox', 'preferred-partners', 'featured-upsell', 'sponsored-spot', 'pricing-schema', 'claim-prompt', 'ga4-events', 'sitemap-ping', 'social-proof', 'term-faq-schema', 'og-image', 'owner-config-rest', 'studio', 'studio-rest', 'profile-extras', 'advertiser-center', 'advertiser-orders', 'premium-ui', 'geo-search', 'roles', 'greeninvoice-recurring', 'placement-auction', 'admin-control', 'contextual-help', 'business-metrics', 'health', 'final-hardening', 'lead-ai-qualify', 'lead-nurture', 'showroom-engine', 'bulk-project-seo', 'loi-form', 'showroom-metabox', 'property-showroom', 'property-wizard', 'project-experience' ) as $nadlan_mod ) {
 	$nadlan_mod_file = __DIR__ . '/inc/' . $nadlan_mod . '.php';
 	if ( file_exists( $nadlan_mod_file ) ) {
 		require_once $nadlan_mod_file;
@@ -70,7 +70,7 @@ if ( ! function_exists( 'nadlan_config_healthcheck_response' ) ) {
 	function nadlan_config_healthcheck_response() {
 		$out = array(
 			'plugin'              => 'nadlan-config',
-			'version'             => '1.69.76',
+			'version'             => '1.69.79',
 			'cpt_present'         => post_type_exists( 'nadlan_lead' ),
 			'lead_handler_loaded' => (bool) has_action( 'admin_post_nadlan_lead' ),
 			'php_version'         => PHP_VERSION,
@@ -615,6 +615,20 @@ if ( ! function_exists( 'nadlan_config_emergency_css' ) ) {
 /* --- STAGE / 3D BLOWOUT FIX --- */
 .nl-stagewrap {
   max-height: 75vh;
+}
+
+/* --- ONE COMPACT CONTACT BAR on projects (owner mobile-QA 2026-07-01) ---
+   The engine sticky bar stacked two full-width pills + the sitewide WhatsApp
+   bubble + the chat FAB piled on top. Keep exactly ONE compact two-button bar
+   (call-interest + WhatsApp); everything else floating is removed. The
+   accessibility button is intentionally untouched. */
+body.single-nadlan_project #nlcta { display: none !important; }
+.nl-sticky { flex-direction: row !important; gap: 8px !important; align-items: stretch !important; }
+.nl-sticky__main { flex: 1.3; justify-content: center; min-height: 50px; border-radius: 12px !important; }
+.nl-sticky__wa { flex: 1; min-height: 50px; border-radius: 12px !important; }
+.nl-sticky__ctx { display: none !important; }
+@media (max-width: 760px) {
+  .nl-sticky { inset-inline: 12px !important; inset-block-end: max(10px, env(safe-area-inset-bottom, 10px)) !important; }
 }
 
 /* --- GOLDEN CHAT FAB: removed per owner 2026-07-01 (stacked over the action rail
