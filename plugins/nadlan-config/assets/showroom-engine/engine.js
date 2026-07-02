@@ -624,33 +624,60 @@
       if (srcEl) { var r = srcEl.getBoundingClientRect(); scrim.style.setProperty("--sx", ((r.left + r.width / 2 - wrap.left) / wrap.width * 100) + "%"); scrim.style.setProperty("--sy", ((r.top + r.height / 2 - wrap.top) / wrap.height * 100) + "%"); }
       scrim.classList.add("is-on");
     }
-    // camera fly
+    // camera fly (two-beat cinematic move per design spec 4B-1; instant selects skip it)
     var mv = document.getElementById("nl-mv");
-    if (mv && u.camera_orbit) { try { mv.cameraOrbit = orbitRadius(u.camera_orbit, Math.round((project().frame_radius_m || 150) * 0.66)); mv.cameraTarget = unitPos(u).pos; } catch (e) {} }
-    // cinematic fly chip
-    if (!instant && srcEl) flyChip(srcEl, u);
+    if (mv && u.camera_orbit) {
+      try {
+        if (instant) { mv.cameraOrbit = orbitRadius(u.camera_orbit, Math.round((project().frame_radius_m || 150) * 0.66)); mv.cameraTarget = unitPos(u).pos; }
+        else { flyCamera(mv, u); }
+      } catch (e) {}
+    }
+    // cinematic lift-out apartment card (the "drawer")
+    if (!instant && srcEl) liftCard(srcEl, u);
     // context + deep link
     updateFormCtx(); updateSticky();
     deeplink();
   }
-  function flyChip(srcEl, u) {
-    var panelEl = document.getElementById("nl-panel"); if (!panelEl) return;
+  /* Two-beat camera choreography (design spec 4B-1): pull back to a wide orbit
+     on the unit's bearing, then dive to the unit face while retargeting.
+     interpolationDecay=160 is what makes the move filmic instead of snappy. */
+  function flyCamera(mv, u) {
+    var p = project();
+    var fr = p.frame_radius_m || 150;
+    var end = orbitRadius(u.camera_orbit, Math.round(fr * 0.62));
+    var endTarget = unitPos(u).pos;
+    var mid = orbitRadius(u.camera_orbit, Math.round(fr * 1.15));
+    mv.interpolationDecay = 160;
+    mv.cameraOrbit = mid;
+    setTimeout(function () {
+      try { mv.cameraTarget = endTarget; mv.cameraOrbit = end; mv.fieldOfView = "28deg"; } catch (e) {}
+    }, 300);
+    setTimeout(function () { try { mv.interpolationDecay = 50; } catch (e) {} }, 1400);
+  }
+  /* Lift-out apartment card (design spec 4B-2): a card visually lifts from the
+     unit's position on the facade, scales up while the scene dims, then docks
+     into the panel header. Pure DOM - works with any model. */
+  function liftCard(srcEl, u) {
+    var panelEl = document.getElementById("nl-panel"); if (!panelEl || !srcEl) return;
     var s = srcEl.getBoundingClientRect();
-    var chip = document.createElement("div"); chip.className = "nl-fly"; chip.style.width = "120px"; chip.style.height = "78px";
-    chip.innerHTML = "<b>" + esc(u.floor) + "</b><span>" + esc(roomsLabel(u.rooms)) + "</span>";
-    document.body.appendChild(chip);
+    var card = document.createElement("div");
+    card.className = "nl-lift";
+    card.innerHTML =
+      '<div class="nl-lift__floor">' + esc(u.floor) + '</div>' +
+      '<div class="nl-lift__meta">' + esc(roomsLabel(u.rooms)) + ' · ' + esc(u.sqm) + ' ' + esc(t('sqm_unit')) + '</div>' +
+      '<div class="nl-lift__dir">' + esc(dirLabel(u.dir)) + '</div>';
+    document.body.appendChild(card);
+    var head = panelEl.querySelector('.nl-panel__title') || panelEl;
     requestAnimationFrame(function () {
-      var head = panelEl.querySelector(".nl-panel__title") || panelEl;
       var d = head.getBoundingClientRect();
-      var x0 = s.left + s.width / 2 - 60, y0 = s.top + s.height / 2 - 39;
-      var x1 = d.left + d.width / 2 - 60, y1 = d.top - 10;
-      chip.style.transform = "translate(" + x0 + "px," + y0 + "px) scale(.5)";
-      chip.animate(
-        [{ transform: "translate(" + x0 + "px," + y0 + "px) scale(.5)", opacity: 0.2 },
-         { transform: "translate(" + ((x0 + x1) / 2) + "px," + (Math.min(y0, y1) - 50) + "px) scale(1.12)", opacity: 1, offset: 0.55 },
-         { transform: "translate(" + x1 + "px," + y1 + "px) scale(.7)", opacity: 0 }],
-        { duration: 720, easing: "cubic-bezier(.22,.61,.36,1)" }
-      ).onfinish = function () { chip.remove(); };
+      var x0 = s.left + s.width / 2, y0 = s.top + s.height / 2;
+      var x1 = d.left + d.width / 2, y1 = d.top + d.height / 2;
+      card.animate([
+        { transform: 'translate(' + (x0 - 90) + 'px,' + (y0 - 60) + 'px) scale(.32)', opacity: 0 },
+        { transform: 'translate(' + (x0 - 90) + 'px,' + (y0 - 130) + 'px) scale(1)', opacity: 1, offset: 0.38 },
+        { transform: 'translate(' + ((x0 + x1) / 2 - 90) + 'px,' + (Math.min(y0, y1) - 150) + 'px) scale(1.02)', opacity: 1, offset: 0.7 },
+        { transform: 'translate(' + (x1 - 90) + 'px,' + (y1 - 60) + 'px) scale(.45)', opacity: 0 }
+      ], { duration: 920, easing: 'cubic-bezier(.22,.61,.36,1)' }).onfinish = function () { card.remove(); };
     });
   }
   function closePanel() {
@@ -658,7 +685,7 @@
     var p = document.getElementById("nl-panel"); if (p) p.classList.remove("is-open");
     var s = document.getElementById("nl-scrim"); if (s) s.classList.remove("is-on");
     document.querySelectorAll(".is-active").forEach(function (n) { n.classList.remove("is-active"); });
-    var mv = document.getElementById("nl-mv"); if (mv) { try { mv.cameraOrbit = project().default_orbit; mv.cameraTarget = project().default_target; } catch (e) {} }
+    var mv = document.getElementById("nl-mv"); if (mv) { try { mv.interpolationDecay = 50; mv.fieldOfView = "auto"; mv.cameraOrbit = project().default_orbit; mv.cameraTarget = project().default_target; } catch (e) {} }
     updateFormCtx(); updateSticky(); deeplink();
   }
   function toggleFav(id) {
