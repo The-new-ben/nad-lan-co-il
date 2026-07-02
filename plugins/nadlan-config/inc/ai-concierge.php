@@ -573,7 +573,9 @@ add_filter( 'nadlan_config_healthcheck', function ( $out ) {
 
 add_action( 'wp_footer', function () {
 	if ( is_admin() || ! nadlan_ai_enabled() ) { return; }
-	if ( ! (int) get_option( 'nadlan_ai_enabled', 1 ) ) { return; }
+	// The floating chat bubble has its OWN switch (keys hub, default OFF) -
+	// turning the bubble off must never disable the AI engine (wizard, leads).
+	if ( ! (int) get_option( 'nadlan_ai_widget_enabled', 0 ) ) { return; }
 	?>
 <div id="nlai" dir="rtl" data-rest="<?php echo esc_url( rest_url( 'nadlan/v1/concierge' ) ); ?>" data-leadrest="<?php echo esc_url( rest_url( 'nadlan/v1/concierge-lead' ) ); ?>">
 	<button class="nlai-fab" type="button" aria-label="פתח צ'אט">
