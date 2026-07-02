@@ -38,6 +38,16 @@ if ( ! function_exists( 'nadlan_og_https_url' ) ) {
 add_filter( 'wpseo_opengraph_image', 'nadlan_og_https_url', 50 );
 add_filter( 'wpseo_twitter_image', 'nadlan_og_https_url', 50 );
 
+/* Yoast was observed emitting og:title/og:url but NO og:image on posts that
+   have a featured image (2026-07-02, news articles) - shares on WhatsApp/FB
+   showed no picture. Feed the featured image into Yoast's own image
+   container so every singular page with a thumbnail gets a real og:image. */
+add_action( 'wpseo_add_opengraph_images', function ( $images ) {
+	if ( ! is_singular() || ! method_exists( $images, 'has_images' ) || $images->has_images() ) { return; }
+	$tid = get_post_thumbnail_id( get_queried_object_id() );
+	if ( $tid && method_exists( $images, 'add_image_by_id' ) ) { $images->add_image_by_id( $tid ); }
+} );
+
 add_action( 'rest_api_init', function () {
 	register_rest_route( 'nadlan/v1', '/og/(?P<id>\d+)\.svg', array(
 		'methods' => 'GET', 'permission_callback' => '__return_true',

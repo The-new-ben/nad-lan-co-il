@@ -63,13 +63,13 @@ if ( ! function_exists( 'nadlan_pjx_nearby_projects' ) ) {
 		$out = array();
 		foreach ( $q->posts as $pid ) {
 			if ( count( $out ) >= $limit ) { break; }
+			// name/url/coords only - raw enum fields (type/status) were unused by the
+			// map JS and leaked machine values like new_build into the page (D3).
 			$out[] = array(
-				'name'   => get_the_title( $pid ),
-				'url'    => get_permalink( $pid ),
-				'lat'    => (float) get_post_meta( $pid, 'lat', true ),
-				'lng'    => (float) get_post_meta( $pid, 'lng', true ),
-				'type'   => (string) get_post_meta( $pid, 'project_type', true ),
-				'status' => (string) get_post_meta( $pid, 'project_status', true ),
+				'name' => get_the_title( $pid ),
+				'url'  => get_permalink( $pid ),
+				'lat'  => (float) get_post_meta( $pid, 'lat', true ),
+				'lng'  => (float) get_post_meta( $pid, 'lng', true ),
 			);
 		}
 		set_transient( $key, $out, 12 * HOUR_IN_SECONDS );
