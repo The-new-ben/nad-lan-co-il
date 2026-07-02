@@ -36,11 +36,17 @@ if ( ! function_exists( 'nadlan_home_v2_shortcode' ) ) {
 			'properties'    => (int) wp_count_posts( 'nadlan_property' )->publish,
 		);
 
-		// featured projects: flagship-quality first (has model poster), tier priority
-		$projects = get_posts( array( 'post_type' => 'nadlan_project', 'posts_per_page' => 3, 'no_found_rows' => true,
+		// featured projects: 3 DISTINCT projects (homepage-spec 2026-07-02 §0).
+		// Language siblings (slug suffix -en/-fr/-ru/-ar) carry the same model meta
+		// and must never occupy the flagship slots as fake extra projects.
+		$is_lang_sibling = function ( $p ) { return (bool) preg_match( '/-(en|fr|ru|ar)$/', $p->post_name ); };
+		$pool = get_posts( array( 'post_type' => 'nadlan_project', 'posts_per_page' => 12, 'no_found_rows' => true,
 			'meta_query' => array( array( 'key' => 'project_model_glb', 'compare' => 'EXISTS' ) ) ) );
+		$projects = array_slice( array_values( array_filter( $pool, function ( $p ) use ( $is_lang_sibling ) { return ! $is_lang_sibling( $p ); } ) ), 0, 3 );
 		if ( count( $projects ) < 3 ) {
-			$projects = array_merge( $projects, get_posts( array( 'post_type' => 'nadlan_project', 'posts_per_page' => 3 - count( $projects ), 'no_found_rows' => true, 'post__not_in' => wp_list_pluck( $projects, 'ID' ) ) ) );
+			$more = get_posts( array( 'post_type' => 'nadlan_project', 'posts_per_page' => 12, 'no_found_rows' => true, 'post__not_in' => wp_list_pluck( $projects, 'ID' ) ) );
+			$more = array_values( array_filter( $more, function ( $p ) use ( $is_lang_sibling ) { return ! $is_lang_sibling( $p ); } ) );
+			$projects = array_merge( $projects, array_slice( $more, 0, 3 - count( $projects ) ) );
 		}
 		$listings = get_posts( array( 'post_type' => 'nadlan_property', 'posts_per_page' => 4, 'no_found_rows' => true ) );
 		$pros = get_posts( array( 'post_type' => 'nadlan_professional', 'posts_per_page' => 4, 'no_found_rows' => true,
@@ -50,7 +56,7 @@ if ( ! function_exists( 'nadlan_home_v2_shortcode' ) ) {
 <div class="nlhv2" dir="rtl">
 
 	<section class="nlhv2-hero">
-		<h1>מוצאים דירה רואים אותה מבפנים ועד הנוף מהמרפסת</h1>
+		<h1>מוצאים דירה, בודקים מחיר, מכירים את הסביבה - לפני שחותמים</h1>
 		<p class="nlhv2-sub">פרויקטים חדשים בתלת-ממד, דירות למכירה ולהשכרה, בעלי מקצוע מאומתים ומחשבונים - הכל במקום אחד.</p>
 		<form class="nlhv2-search" action="<?php echo esc_url( home_url( '/properties/' ) ); ?>" method="get" role="search">
 			<div class="nlhv2-tabs" role="tablist">
@@ -65,21 +71,21 @@ if ( ! function_exists( 'nadlan_home_v2_shortcode' ) ) {
 			</div>
 		</form>
 		<div class="nlhv2-trust">
-			<span><b><?php echo number_format( $counts['projects'] ); ?></b> פרויקטים והתחדשות</span>
-			<span><b><?php echo number_format( $counts['professionals'] ); ?></b> בעלי מקצוע מאומתים (gov.il)</span>
-			<span><b>5</b> מחשבונים מקצועיים</span>
-			<span><b>ליווי</b> עורך דין מקרקעין</span>
+			<a href="<?php echo esc_url( home_url( '/projects/' ) ); ?>"><b><?php echo number_format( $counts['projects'] ); ?></b> פרויקטים והתחדשות</a>
+			<a href="<?php echo esc_url( home_url( '/professionals/' ) ); ?>"><b><?php echo number_format( $counts['professionals'] ); ?></b> בעלי מקצוע מאומתים (gov.il)</a>
+			<a href="<?php echo esc_url( home_url( '/mortgage-calculator/' ) ); ?>"><b>5</b> מחשבונים מקצועיים</a>
+			<a href="<?php echo esc_url( home_url( '/professionals/?profession=lawyer' ) ); ?>"><b>ליווי</b> עורך דין מקרקעין</a>
 		</div>
 	</section>
 
 	<?php if ( $projects ) : ?>
 	<section class="nlhv2-band">
-		<header><h2>פרויקטים נבחרים - עם סיור תלת-ממדי</h2><a href="<?php echo esc_url( home_url( '/projects/' ) ); ?>">לכל הפרויקטים ←</a></header>
+		<header><h2>דירות חדשות מקבלן - פרויקטים נבחרים</h2><a href="<?php echo esc_url( home_url( '/projects/' ) ); ?>">לכל הפרויקטים ←</a></header>
 		<div class="nlhv2-projgrid">
 			<?php foreach ( $projects as $p ) : $img = nadlan_hv2_img( $p->ID ); ?>
 			<a class="nlhv2-proj" href="<?php echo esc_url( get_permalink( $p ) ); ?>">
 				<span class="nlhv2-proj-media"<?php echo $img ? ' style="background-image:url(' . esc_url( $img ) . ')"' : ''; ?>>
-					<?php if ( get_post_meta( $p->ID, 'project_model_glb', true ) ) : ?><em>סיור 3D</em><?php endif; ?>
+					<?php if ( get_post_meta( $p->ID, 'project_model_glb', true ) ) : ?><em>בחירת דירה מתוך הבניין</em><?php endif; ?>
 				</span>
 				<span class="nlhv2-proj-body">
 					<b><?php echo esc_html( get_the_title( $p ) ); ?></b>
@@ -179,6 +185,8 @@ if ( ! function_exists( 'nadlan_hv2_assets' ) ) {
 .nlhv2-box button{font:700 15px/1 inherit;font-family:inherit;border:0;background:var(--ink);color:#fff;border-radius:8px;padding:0 26px;cursor:pointer;min-height:46px}
 .nlhv2-box button:hover{background:#000}
 .nlhv2-trust{display:flex;justify-content:center;gap:22px;flex-wrap:wrap;margin-top:20px;font-size:12.5px;color:var(--warm)}
+.nlhv2-trust a{color:var(--warm);text-decoration:none}
+.nlhv2-trust a:hover b{color:var(--gold)}
 .nlhv2-trust b{color:var(--ink);font-size:15px;display:block}
 .nlhv2-band{padding:26px 0;border-top:1px solid var(--line)}
 .nlhv2-alt{background:linear-gradient(180deg,#FAF8F3,transparent)}
