@@ -28,6 +28,7 @@ if ( ! function_exists( 'nadlan_pshow_register_meta' ) ) {
 		$fields = array(
 			'city'               => 'string',   // queried by listings-ux similar-SQL; was never registered for properties
 			'neighborhood'       => 'string',
+			'highlights_csv'     => 'string',   // "What's special" bullets, pipe-separated (Zillow-parity)
 			'arnona_monthly'     => 'integer',
 			'vaad_bayit_monthly' => 'integer',
 			'entry_date'         => 'string',   // free text: מיידי / 01/2027
@@ -191,7 +192,23 @@ if ( ! function_exists( 'nadlan_pshow_render' ) ) {
 			foreach ( $chips as $c ) { echo '<span class="nlps-chip">' . esc_html( $c ) . '</span>'; }
 			?>
 		</div>
+		<div class="nlps-trust">
+			<span>עודכן: <?php echo esc_html( get_the_modified_date( 'j.n.Y', $id ) ); ?></span>
+			<button type="button" class="nlps-share" data-url="<?php echo esc_attr( get_permalink( $id ) ); ?>">↗ שיתוף</button>
+			<a class="nlps-report" href="mailto:<?php echo esc_attr( get_option( 'admin_email' ) ); ?>?subject=<?php echo rawurlencode( 'דיווח על מודעה: ' . get_the_title( $id ) . ' #' . $id ); ?>">דווחו על טעות</a>
+		</div>
 	</div>
+
+	<?php
+	$hl = array_filter( array_map( 'trim', explode( '|', (string) $g( 'highlights_csv' ) ) ) );
+	if ( $hl ) : ?>
+	<section class="nlps-hl" aria-label="מה מיוחד בנכס">
+		<h2>מה מיוחד כאן?</h2>
+		<ul>
+			<?php foreach ( array_slice( $hl, 0, 6 ) as $h ) : ?><li><?php echo esc_html( $h ); ?></li><?php endforeach; ?>
+		</ul>
+	</section>
+	<?php endif; ?>
 
 	<?php if ( $tfloors >= 1 && $floor >= 0 ) : ?>
 	<section class="nlps-facade" aria-label="חזית הבניין ותוכנית הדירה">
@@ -205,10 +222,12 @@ if ( ! function_exists( 'nadlan_pshow_render' ) ) {
 		<div class="nlps-facade-stage">
 			<div class="nlps-view nlps-view-out is-on">
 				<?php echo nadlan_pshow_facade_svg( $tfloors, $floor, (int) $g( 'units_per_floor' ), (int) $g( 'unit_position' ) ); // phpcs:ignore ?>
-				<p class="nlps-cap">הדירה המוצעת מסומנת בקומה <?php echo (int) $floor; ?>. לחצו על קומה לפרטים. הדמיה סכמטית להמחשה.</p>
+				<p class="nlps-cap">הדירה המוצעת מסומנת בקומה <?php echo (int) $floor; ?>. לחצו עליה כדי להיכנס פנימה לתוכנית הדירה. הדמיה סכמטית להמחשה.</p>
 			</div>
 			<div class="nlps-view nlps-view-in">
+				<p class="nlps-plan-title">תוכנית הדירה · קומה <?php echo (int) $floor; ?></p>
 				<?php echo nadlan_pshow_plan_svg( $rooms, (bool) $g( 'protected_room' ), (int) $g( 'balcony_sqm' ), $sqm ); // phpcs:ignore ?>
+				<p class="nlps-cap"><button type="button" class="nlps-backout">← חזרה למבט על הבניין</button></p>
 			</div>
 			<div class="nlps-floor-tip" hidden></div>
 		</div>
@@ -231,11 +250,17 @@ if ( ! function_exists( 'nadlan_pshow_render' ) ) {
 	</section>
 	<?php endif; ?>
 
-	<?php if ( $lat && $lng ) : ?>
+	<?php if ( $lat && $lng ) :
+		$pois = function_exists( 'nadlan_poi_fetch' ) ? nadlan_poi_fetch( $lat, $lng, 1000 ) : array();
+		$poi_json = wp_json_encode( array_map( function ( $grp ) {
+			return array_values( array_filter( array_slice( (array) $grp, 0, 12 ), function ( $i ) { return ! empty( $i['lat'] ) && ! empty( $i['lng'] ); } ) );
+		}, (array) $pois ) );
+	?>
 	<section class="nlps-map-sec" aria-label="מיקום">
-		<h2>מיקום וסביבה</h2>
+		<h2>מיקום וסביבה — מפה חיה</h2>
 		<div id="nlps-map" data-lat="<?php echo esc_attr( $lat ); ?>" data-lng="<?php echo esc_attr( $lng ); ?>" data-title="<?php echo esc_attr( get_the_title( $id ) ); ?>"></div>
-		<p class="nlps-cap">מוסדות חינוך, תחבורה ושירותים בסביבה מוצגים בהמשך העמוד מתוך נתוני OpenStreetMap.</p>
+		<script>window.NLPS_POIS = <?php echo $poi_json ? $poi_json : '{}'; // phpcs:ignore ?>;</script>
+		<p class="nlps-cap">🏫 בתי ספר · 🧒 גנים · 🚌 תחבורה · 🛒 קניות · ⚕️ בריאות — נתונים חיים מ-OpenStreetMap. החליפו לתצוגת לוויין בכפתור השכבות.</p>
 	</section>
 	<?php endif; ?>
 </div>
@@ -288,7 +313,17 @@ if ( ! function_exists( 'nadlan_pshow_assets' ) ) {
 .nlps-cost-grid{display:flex;flex-wrap:wrap;gap:26px}
 .nlps-cost-grid dt{font-size:11.5px;color:var(--warm)}
 .nlps-cost-grid dd{font-size:18px;font-weight:700;margin:2px 0 0}
-#nlps-map{height:280px;border-radius:8px;border:1px solid var(--line)}
+#nlps-map{height:320px;border-radius:8px;border:1px solid var(--line)}
+.nlps-trust{display:flex;align-items:center;gap:16px;margin-top:12px;padding-top:10px;border-top:1px solid var(--line);font-size:12px;color:var(--warm)}
+.nlps-share{font:inherit;font-size:12px;border:1px solid var(--line);background:#fff;border-radius:999px;padding:4px 12px;cursor:pointer;color:var(--ink)}
+.nlps-report{color:var(--warm);margin-inline-start:auto}
+.nlps-hl{border:1px solid var(--line);border-radius:10px;background:#FFFDFC;padding:18px 20px;margin-bottom:18px}
+.nlps-hl ul{margin:0;padding:0;list-style:none;display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:8px 18px}
+.nlps-hl li{position:relative;padding-inline-start:20px;font-size:14px}
+.nlps-hl li::before{content:"◆";position:absolute;inset-inline-start:0;color:var(--gold);font-size:11px;top:3px}
+.nlps-plan-title{text-align:center;font-weight:700;font-size:14px;margin:0 0 6px}
+.nlps-backout{font:inherit;font-size:12.5px;border:0;background:none;color:var(--gold);cursor:pointer;text-decoration:underline}
+.nlps-f-sel{cursor:zoom-in}
 @media(max-width:560px){.nlps-price b{font-size:1.5rem}.nlps-facts{gap:16px}}
 ' );
 		wp_register_script( 'nadlan-pshow-js', false, $has_map ? array( 'leaflet' ) : array(), '1.69.70', true );
@@ -305,23 +340,48 @@ if ( ! function_exists( 'nadlan_pshow_assets' ) ) {
 				var t=root.querySelector(".nlps-view-"+b.dataset.view);if(t){t.classList.add("is-on")}
 			});
 		});
-		// floor click tip
+		// floor click: selected floor = enter the apartment (slice inspect); others = tooltip
 		var tip=root.querySelector(".nlps-floor-tip");
+		function setView(v){
+			root.querySelectorAll(".nlps-toggle button").forEach(function(x){x.classList.toggle("is-on",x.dataset.view===v);x.setAttribute("aria-selected",x.dataset.view===v?"true":"false")});
+			root.querySelectorAll(".nlps-view").forEach(function(x){x.classList.remove("is-on")});
+			var t=root.querySelector(".nlps-view-"+v);if(t){t.classList.add("is-on")}
+		}
 		root.querySelectorAll(".nlps-f-fl").forEach(function(fl){
 			fl.addEventListener("click",function(){
-				if(!tip){return}
 				var f=fl.dataset.floor,sel=fl.classList.contains("nlps-f-sel");
-				tip.textContent=sel?("הדירה המוצעת - קומה "+f):("קומה "+f);
+				if(sel){setView("in");return}
+				if(!tip){return}
+				tip.textContent="קומה "+f;
 				tip.hidden=false;clearTimeout(tip._t);tip._t=setTimeout(function(){tip.hidden=true},2200);
 			});
 		});
-		// single-listing map
+		var back=root.querySelector(".nlps-backout");
+		if(back){back.addEventListener("click",function(){setView("out")});}
+		// share
+		var sh=root.querySelector(".nlps-share");
+		if(sh){sh.addEventListener("click",function(){
+			var u=sh.dataset.url;
+			if(navigator.share){navigator.share({title:document.title,url:u}).catch(function(){})}
+			else{navigator.clipboard&&navigator.clipboard.writeText(u);sh.textContent="✓ הקישור הועתק";setTimeout(function(){sh.textContent="↗ שיתוף"},2000)}
+		});}
+		// single-listing map: streets + satellite layers, listing marker, live POI markers
 		var m=document.getElementById("nlps-map");
 		if(m&&window.L){
 			var lat=parseFloat(m.dataset.lat),lng=parseFloat(m.dataset.lng);
-			var map=L.map(m,{scrollWheelZoom:false}).setView([lat,lng],15);
-			L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png",{attribution:"&copy; OpenStreetMap"}).addTo(map);
-			L.marker([lat,lng]).addTo(map).bindPopup(m.dataset.title||"");
+			var streets=L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png",{attribution:"&copy; OpenStreetMap"});
+			var sat=L.tileLayer("https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}",{attribution:"Esri World Imagery"});
+			var map=L.map(m,{scrollWheelZoom:false,layers:[streets]}).setView([lat,lng],15);
+			L.control.layers({"מפה":streets,"לוויין":sat},null,{position:"topleft"}).addTo(map);
+			L.marker([lat,lng]).addTo(map).bindPopup("<b>"+(m.dataset.title||"")+"</b>").openPopup();
+			var P=window.NLPS_POIS||{},style={schools:["#334236","🏫"],kindergartens:["#9C7A3C","🧒"],transit:["#183C3C","🚌"],shops:["#9F6F54","🛒"],health:["#A93F2A","⚕️"]};
+			Object.keys(P).forEach(function(k){
+				(P[k]||[]).forEach(function(p){
+					if(!p.lat||!p.lng){return}
+					L.circleMarker([p.lat,p.lng],{radius:6,color:(style[k]||["#666"])[0],weight:2,fillColor:"#fff",fillOpacity:.9})
+						.addTo(map).bindPopup((style[k]?style[k][1]+" ":"")+(p.name||""));
+				});
+			});
 		}
 	});
 })();
