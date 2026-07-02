@@ -367,7 +367,10 @@ if ( ! function_exists( 'nadlan_hv2_band_areas' ) ) {
 
 if ( ! function_exists( 'nadlan_hv2_band_magazine' ) ) {
 	function nadlan_hv2_band_magazine() {
+		// Hebrew homepage: only the news category feeds this band. The EN cluster
+		// (category "english") stays out so English headlines never mix in.
 		$posts = get_posts( array( 'post_type' => 'post', 'posts_per_page' => 5, 'no_found_rows' => true,
+			'category_name' => 'nadlan-news',
 			'date_query' => array( array( 'after' => '120 days ago' ) ) ) );
 		if ( count( $posts ) < 3 ) { return; } // spec: an empty news band is worse than none
 		$lead = array_shift( $posts );

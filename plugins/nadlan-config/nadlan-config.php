@@ -2,7 +2,7 @@
 /**
  * Plugin Name: NadLan Config
  * Description: Lead-capture foundation: nadlan_lead CPT + lead-form handler + healthcheck. Read skills/nadlan-config-plugin.md.
- * Version: 1.69.89
+ * Version: 1.69.90
  * Author: nad-lan.co.il
  * License: GPL-2.0+
  * Requires PHP: 7.4
@@ -16,7 +16,7 @@ if ( ! defined( 'ABSPATH' ) ) {
    above (the release script bumps all three). A frozen ver= string once kept
    browsers on a June engine.js for weeks - never hardcode versions in enqueues. */
 if ( ! defined( 'NADLAN_CONFIG_VERSION' ) ) {
-	define( 'NADLAN_CONFIG_VERSION', '1.69.89' );
+	define( 'NADLAN_CONFIG_VERSION', '1.69.90' );
 }
 
 /* ---------- v1.5.0: directory cards, claim funnel, auction engine ----------
@@ -77,7 +77,7 @@ if ( ! function_exists( 'nadlan_config_healthcheck_response' ) ) {
 	function nadlan_config_healthcheck_response() {
 		$out = array(
 			'plugin'              => 'nadlan-config',
-			'version'             => '1.69.89',
+			'version'             => '1.69.90',
 			'cpt_present'         => post_type_exists( 'nadlan_lead' ),
 			'lead_handler_loaded' => (bool) has_action( 'admin_post_nadlan_lead' ),
 			'php_version'         => PHP_VERSION,
@@ -678,11 +678,31 @@ body.single-nadlan_project #nlcta { display: none !important; }
     font-size: clamp(1.6rem, 6vw, 2.4rem) !important;
   }
 }
+
+/* --- COMMENTS OFF + RELATED-POSTS TITLES (owner screenshot 2026-07-02) ---
+   Comments are disabled site-wide by filters below; hide any residual block.
+   The theme single template ends with a "More posts" query loop whose titles
+   inherit has-large-font-size (display-scale serif). Cap them to list scale. */
+.wp-block-comments, .comment-respond { display: none !important; }
+.wp-block-query .wp-block-post-title,
+.wp-block-query .wp-block-post-title a {
+  font-size: 1.15rem !important;
+  line-height: 1.45 !important;
+  text-align: start !important;
+  letter-spacing: 0 !important;
+}
 ';
 		wp_add_inline_style( 'nadlan-emergency-css', $css );
 	}
 }
 add_action( 'wp_enqueue_scripts', 'nadlan_config_emergency_css', 99 );
+
+/* --- Owner 2026-07-02: no public comments anywhere on the site. Front-end only:
+   closes the form on ALL content (old and new) without touching stored posts,
+   and empties any already-submitted threads from display. --- */
+add_filter( 'comments_open', '__return_false', 20 );
+add_filter( 'pings_open', '__return_false', 20 );
+add_filter( 'comments_array', '__return_empty_array', 20 );
 
 /* Brand favicon: crisp SVG matching the ink-serif + single-gold-rule logo (2026-07-01). */
 if ( ! function_exists( 'nadlan_config_svg_favicon' ) ) {
