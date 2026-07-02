@@ -576,6 +576,19 @@ if ( ! function_exists( 'nadlan_home_v2_shortcode' ) ) {
 }
 add_shortcode( 'nadlan_home_v2', 'nadlan_home_v2_shortcode' );
 
+/* FRONT-PAGE CONTENT GUARD (2026-07-02 root cause). Legacy parent-theme code
+   that is NOT in this repo swaps the front page's content with the old "home
+   showroom" pattern at render time - which is why homepage releases looked
+   dead to visitors while head-asset substring checks passed. This runs at the
+   very end of the chain: if the front page's rendered content is not the v2
+   homepage, replace it with ours. Remove only after the legacy renderer is
+   deleted from the parent theme on the server. */
+add_filter( 'the_content', function ( $content ) {
+	if ( is_admin() || ! is_front_page() || ! in_the_loop() || ! is_main_query() ) { return $content; }
+	if ( strpos( (string) $content, 'nlhv2-' ) !== false ) { return $content; }
+	return nadlan_home_v2_shortcode();
+}, PHP_INT_MAX - 5 );
+
 /* ============================ assets ============================ */
 
 if ( ! function_exists( 'nadlan_hv2_assets' ) ) {
