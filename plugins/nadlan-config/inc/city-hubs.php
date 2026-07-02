@@ -103,7 +103,7 @@ if ( ! function_exists( 'nadlan_hub_render' ) ) {
 		);
 		$L = $labels[ $kind ];
 		$stats = nadlan_neighborhood_stats( $city );
-		$title = $L['h1'] . " | נדל\"ן חכם";
+		$title = $L['h1'] . " | נדלן";
 
 		get_header();
 		if ( function_exists( 'block_template_part' ) ) { block_template_part( 'header' ); }
@@ -200,6 +200,15 @@ add_action( 'init', function () {
 } );
 add_action( 'template_redirect', function () {
 	if ( ! get_query_var( 'nadlan_hubs_sitemap' ) ) { return; }
+	// Cached 12h (module audit): uncached this ran thousands of queries per
+	// anonymous request - a denial-of-service surface.
+	$cached = get_transient( 'nadlan_hubs_sitemap_xml' );
+	if ( is_string( $cached ) && $cached !== '' ) {
+		header( 'Content-Type: application/xml; charset=UTF-8' );
+		echo $cached; // phpcs:ignore
+		exit;
+	}
+	ob_start();
 	global $wpdb;
 	$cities = $wpdb->get_col( "SELECT DISTINCT meta_value FROM {$wpdb->postmeta} WHERE meta_key='city' AND meta_value<>'' LIMIT 5000" );
 	header( 'Content-Type: application/xml; charset=UTF-8' );
@@ -214,5 +223,7 @@ add_action( 'template_redirect', function () {
 			}
 		}
 	}
-	echo '</urlset>'; exit;
+	echo '</urlset>'; $xml = ob_get_flush();
+	set_transient( 'nadlan_hubs_sitemap_xml', $xml, 12 * HOUR_IN_SECONDS );
+	exit;
 }, 0 );

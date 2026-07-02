@@ -139,6 +139,11 @@ add_filter( 'the_content', function ( $content ) {
 		return $content;
 	}
 	$id = get_the_ID();
+	// Design law D4 (audit 2026-07-02): never show B2B upsell/badges on the
+	// buyer-facing flagship. The engine page carries only the six lawful blocks.
+	if ( get_post_type( $id ) === 'nadlan_project' && function_exists( 'nadlan_showroom_engine_active_for' ) && nadlan_showroom_engine_active_for( $id ) ) {
+		return $content;
+	}
 	$tier = nadlan_tier_effective( $id );
 	// public_stub or post-trial free: hide phone, email, website rows + gallery
 	if ( $tier === 'free' || $tier === 'public_stub' ) {

@@ -93,7 +93,11 @@ add_action( 'rest_api_init', function () {
  * to the best-matching preferred partner. This is opt-in per lead — controlled
  * by the post-meta the existing /lead endpoint already writes.
  * ------------------------------------------------------------------------- */
-add_action( 'save_post_nadlan_lead', function ( $lead_id, $post ) {
+/* Audit 2026-07-02: save_post fires BEFORE lead meta is written (all creators
+   write meta after wp_insert_post), so routing saw empty leads and matched an
+   arbitrary partner. wp_after_insert_post fires once meta exists. */
+add_action( 'wp_after_insert_post', function ( $lead_id, $post ) {
+	if ( ! $post || $post->post_type !== 'nadlan_lead' ) { return; }
 	if ( wp_is_post_revision( $lead_id ) || wp_is_post_autosave( $lead_id ) ) { return; }
 	if ( get_post_meta( $lead_id, 'preferred_routed', true ) ) { return; } // already routed
 	if ( ! function_exists( 'nadlan_pp_list' ) || ! function_exists( 'nadlan_pp_pick' ) ) { return; }

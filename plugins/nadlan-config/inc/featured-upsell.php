@@ -87,5 +87,9 @@ if ( ! function_exists( 'nadlan_fu_render' ) ) {
 
 add_filter( 'the_content', function ( $content ) {
 	if ( ! is_singular( 'nadlan_professional' ) || ! in_the_loop() || ! is_main_query() ) { return $content; }
+	// Audit 2026-07-02: the upgrade pitch (with coupon) was shown to every
+	// visitor and ran a heavy rank query per view. Owner-only now.
+	$owner = (int) get_post_meta( get_the_ID(), 'owner_user_id', true );
+	if ( ! is_user_logged_in() || ( $owner && get_current_user_id() !== $owner ) || ( ! $owner && ! current_user_can( 'manage_options' ) ) ) { return $content; }
 	return $content . nadlan_fu_render( get_the_ID() );
 }, 26 );

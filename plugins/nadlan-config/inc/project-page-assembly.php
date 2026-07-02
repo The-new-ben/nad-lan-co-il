@@ -301,6 +301,10 @@ if ( ! function_exists( 'nadlan_project_page_seed_rainbow_showroom_v1635' ) ) {
 		if ( get_option( 'nadlan_rainbow_showroom_v1635' ) ) {
 			return;
 		}
+		// Audit 2026-07-02: mark done FIRST. Previously the flag was only set on
+		// fetch success, so a missing remote asset meant blocking remote HTTP
+		// calls (up to ~24s) on EVERY request until it succeeded.
+		update_option( 'nadlan_rainbow_showroom_v1635', current_time( 'mysql' ), false );
 		$post = nadlan_project_page_find_by_slug( 'rainbow-tel-aviv' );
 		if ( ! $post ) {
 			return;

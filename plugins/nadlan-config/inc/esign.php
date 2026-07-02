@@ -77,7 +77,7 @@ if ( ! function_exists( 'nadlan_esign_create' ) ) {
 		update_post_meta( $id, 'state', $sign_url ? 'sent' : 'pending_provider' );
 		update_post_meta( $id, 'sign_url', $sign_url );
 
-		$body  = "מזל טוב! זכית במכרז #" . $auction_id . " בנדל\"ן חכם.\n\n";
+		$body  = "מזל טוב! זכית במכרז #" . $auction_id . " בנדלן.\n\n";
 		$body .= $doc . "\n\n";
 		if ( $sign_url ) {
 			$body .= "לחתימה אלקטרונית: " . $sign_url . "\n";
