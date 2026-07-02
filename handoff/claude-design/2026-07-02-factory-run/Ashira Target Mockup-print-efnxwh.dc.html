@@ -1,0 +1,791 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style data-omelette-print-defaults>
+@media print {
+  @page { margin: 0.5in; }
+  h1, h2, h3, h4, h5, h6 { break-after: avoid; }
+  figure, table, pre, blockquote, img, svg, tr, [class~="card" i] { break-inside: avoid; }
+  img, svg { max-width: 100%; }
+  p { orphans: 3; widows: 3; }
+}
+</style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@400;500;700;900&family=Heebo:wght@300;400;500;700&family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter+Tight:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html,body{background:#FAF7F1;}
+  ::selection{background:#C2563A;color:#fff;}
+  [data-sec]{scroll-margin-top:128px;}
+  @keyframes pulse{0%{box-shadow:0 0 0 0 rgba(122,143,106,.5)}70%{box-shadow:0 0 0 12px rgba(122,143,106,0)}100%{box-shadow:0 0 0 0 rgba(122,143,106,0)}}
+</style>
+</helmet>
+<div data-root dir="rtl" style="font-family:'Heebo',sans-serif;color:#1B1A17;background:#FAF7F1;min-height:100vh;overflow-x:hidden;">
+
+  <header style="position:sticky;top:0;z-index:40;background:rgba(250,247,241,.9);backdrop-filter:blur(10px);border-bottom:1px solid #D9D2C4;">
+    <div style="max-width:1200px;margin:0 auto;padding:13px clamp(14px,3vw,28px);display:flex;align-items:center;justify-content:space-between;gap:16px;">
+      <a href="#top" style="display:flex;align-items:center;gap:11px;text-decoration:none;">
+        <span style="width:40px;height:40px;border-radius:10px;background:#1B1A17;display:grid;place-items:center;flex:none;">
+          <svg width="23" height="23" viewBox="0 0 24 24"><rect x="3" y="13.5" width="4.3" height="7.5" rx="1" fill="#9C7A3C"/><rect x="9.85" y="8" width="4.3" height="13" rx="1" fill="#C2A657"/><rect x="16.7" y="3.5" width="4.3" height="17.5" rx="1" fill="#E4CE92"/></svg>
+        </span>
+        <span style="display:flex;flex-direction:column;line-height:1;">
+          <span style="font-family:'Fraunces',serif;font-weight:600;font-size:22px;letter-spacing:1px;color:#1B1A17;">NADLAN</span>
+          <span data-t="brand_sub" style="font-size:10.5px;letter-spacing:2.5px;color:#6B6457;margin-top:4px;">תל אביב · שדה דב</span>
+        </span>
+      </a>
+      <nav style="display:flex;align-items:center;gap:20px;">
+        <div style="display:flex;gap:18px;" data-desknav>
+          <a data-t="nav_projects" href="#" style="font-size:14px;color:#4b4639;text-decoration:none;">פרויקטים</a>
+          <a data-t="nav_areas" href="#world" style="font-size:14px;color:#4b4639;text-decoration:none;">אזורים</a>
+          <a data-t="nav_tools" href="#" style="font-size:14px;color:#4b4639;text-decoration:none;">כלים</a>
+          <a data-t="nav_login" href="#" style="font-size:14px;color:#4b4639;text-decoration:none;">כניסה</a>
+        </div>
+        <div style="display:flex;gap:5px;">
+          <button data-lang="he" style="min-width:34px;height:30px;padding:0 9px;border-radius:999px;border:1px solid #1B1A17;background:#1B1A17;color:#FAF7F1;font:inherit;font-size:12px;font-weight:600;cursor:pointer;">HE</button>
+          <button data-lang="en" style="min-width:34px;height:30px;padding:0 9px;border-radius:999px;border:1px solid #D9D2C4;background:#fff;color:#5f5a4d;font:inherit;font-size:12px;font-weight:600;cursor:pointer;">EN</button>
+          <button data-lang="ru" style="min-width:34px;height:30px;padding:0 9px;border-radius:999px;border:1px solid #D9D2C4;background:#fff;color:#5f5a4d;font:inherit;font-size:12px;font-weight:600;cursor:pointer;">RU</button>
+          <button data-lang="ar" style="min-width:34px;height:30px;padding:0 9px;border-radius:999px;border:1px solid #D9D2C4;background:#fff;color:#5f5a4d;font:inherit;font-size:12px;font-weight:600;cursor:pointer;">AR</button>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main id="top">
+    <section style="max-width:1200px;margin:0 auto;padding:clamp(30px,5vw,64px) clamp(14px,3vw,28px) clamp(18px,3vw,36px);display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(20px,4vw,52px);align-items:center;" data-hero>
+      <div>
+        <span data-t="hero_eyebrow" style="font-size:12px;letter-spacing:1.5px;text-transform:uppercase;color:#9C7A3C;font-weight:600;">רובע שדה דב · תל אביב</span>
+        <div style="width:34px;height:2px;background:#9C7A3C;margin:14px 0;"></div>
+        <h1 style="font-family:'Frank Ruhl Libre',serif;font-weight:500;font-size:clamp(40px,6vw,66px);line-height:1.02;">Ashira</h1>
+        <p data-t="hero_lede" style="font-size:clamp(16px,1.7vw,20px);line-height:1.45;color:#423d33;margin-top:14px;max-width:46ch;">דירות חדשות מול הים בשדה דב. בוחרים דירה מתוך הבניין, רואים קומה, כיוון ונוף, ובודקים אומדן מחיר וסביבה לפני פנייה.</p>
+        <div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:24px;">
+          <a data-t="cta_inquire" href="#inquiry" style="display:inline-flex;align-items:center;min-height:48px;padding:0 24px;border-radius:6px;background:#C2563A;color:#fff;font-weight:600;font-size:15px;text-decoration:none;">השארת פרטים</a>
+          <a data-t="cta_choose" href="#apts" style="display:inline-flex;align-items:center;min-height:48px;padding:0 24px;border-radius:6px;background:transparent;border:1px solid #D9D2C4;color:#1B1A17;font-weight:600;font-size:15px;text-decoration:none;">לבחירת דירה</a>
+        </div>
+        <div style="display:flex;gap:30px;margin-top:30px;padding-top:22px;border-top:1px solid #D9D2C4;">
+          <div><div style="font-family:'Frank Ruhl Libre',serif;font-size:30px;font-weight:700;line-height:1;">20</div><div data-t="fact_floors" style="font-size:13px;color:#6B6457;margin-top:5px;">קומות</div></div>
+          <div><div style="font-family:'Frank Ruhl Libre',serif;font-size:30px;font-weight:700;line-height:1;">5</div><div data-t="fact_homes" style="font-size:13px;color:#6B6457;margin-top:5px;">דירות לבחירה</div></div>
+          <div><div style="font-family:'Frank Ruhl Libre',serif;font-size:30px;font-weight:700;line-height:1;">132</div><div data-t="fact_sqm" style="font-size:13px;color:#6B6457;margin-top:5px;">מ״ר עד</div></div>
+        </div>
+      </div>
+      <div style="position:relative;border-radius:10px;overflow:hidden;border:1px solid #D9D2C4;box-shadow:0 8px 24px -12px rgba(27,26,23,.18);aspect-ratio:4/3;background:#14130F;">
+        <img src="mockup/ashira-poster.jpg" alt="Ashira" style="width:100%;height:100%;object-fit:cover;">
+        <span data-t="demo_badge" style="position:absolute;top:12px;right:12px;font-size:11px;background:rgba(20,19,15,.55);color:#fff;border:1px solid rgba(255,255,255,.3);padding:4px 10px;border-radius:3px;backdrop-filter:blur(4px);">הדמיה להמחשה</span>
+      </div>
+    </section>
+
+    <nav style="position:sticky;top:65px;z-index:30;background:rgba(250,247,241,.94);backdrop-filter:blur(8px);border-top:1px solid #D9D2C4;border-bottom:1px solid #D9D2C4;">
+      <div style="max-width:1200px;margin:0 auto;padding:11px clamp(14px,3vw,28px);display:flex;gap:24px;overflow-x:auto;">
+        <a data-t="sn_building" href="#building" style="white-space:nowrap;font-size:14px;font-weight:600;color:#1B1A17;text-decoration:none;border-bottom:2px solid #9C7A3C;padding-bottom:5px;">הבניין</a>
+        <a data-t="sn_apts" href="#apts" style="white-space:nowrap;font-size:14px;font-weight:600;color:#4b4639;text-decoration:none;">דירות</a>
+        <a data-t="sn_price" href="#price" style="white-space:nowrap;font-size:14px;font-weight:600;color:#4b4639;text-decoration:none;">מחיר ועסקאות</a>
+        <a data-t="sn_world" href="#world" style="white-space:nowrap;font-size:14px;font-weight:600;color:#4b4639;text-decoration:none;">הסביבה</a>
+        <a data-t="sn_about" href="#about" style="white-space:nowrap;font-size:14px;font-weight:600;color:#4b4639;text-decoration:none;">מידע</a>
+      </div>
+    </nav>
+
+    <!-- ===== BUILDING / 3D THEATER (cinematic select shown) ===== -->
+    <section data-sec id="building" style="max-width:1200px;margin:0 auto;padding:clamp(28px,4vw,52px) clamp(14px,3vw,28px) 0;">
+      <div style="position:relative;border-radius:16px;overflow:hidden;border:1px solid rgba(20,19,15,.5);box-shadow:0 40px 90px -30px rgba(20,19,15,.55);background:#14130F;">
+        <div style="position:absolute;top:0;left:0;right:0;z-index:6;display:flex;justify-content:space-between;align-items:flex-start;gap:12px;padding:clamp(14px,2vw,22px);background:linear-gradient(180deg,rgba(10,9,7,.6),transparent);pointer-events:none;">
+          <div>
+            <span data-t="th_eyebrow" style="font-size:11px;letter-spacing:1.5px;text-transform:uppercase;color:#D8C79A;font-weight:600;">תצוגת הפרויקט</span>
+            <h2 data-t="th_title" style="font-family:'Frank Ruhl Libre',serif;font-weight:500;color:#F4EEDE;font-size:clamp(20px,2.4vw,30px);margin-top:4px;">בוחרים דירה מתוך הבניין</h2>
+          </div>
+          <div style="display:flex;background:rgba(15,14,11,.6);border:1px solid rgba(242,236,222,.18);border-radius:999px;padding:4px;pointer-events:auto;">
+            <button data-t="th_3d" style="min-height:34px;padding:0 16px;border:0;border-radius:999px;background:linear-gradient(180deg,#b9923f,#9C7A3C);color:#fff;font:inherit;font-size:13px;font-weight:600;cursor:pointer;">תלת מימד</button>
+            <button data-t="th_facade" style="min-height:34px;padding:0 16px;border:0;border-radius:999px;background:transparent;color:#B8B1A2;font:inherit;font-size:13px;font-weight:600;cursor:pointer;">חזית</button>
+          </div>
+        </div>
+
+        <div style="position:relative;width:100%;aspect-ratio:16/10;min-height:380px;">
+          <img src="mockup/ashira-poster.jpg" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;">
+          <div style="position:absolute;inset:0;background:radial-gradient(60% 50% at 38% 40%,transparent 0%,rgba(8,7,5,.5) 70%,rgba(8,7,5,.72) 100%);"></div>
+
+          <!-- hotspots on the tower -->
+          <button style="position:absolute;left:40%;top:24%;transform:translate(-50%,-50%) scale(1.16);width:40px;height:40px;border-radius:50%;display:grid;place-items:center;font:inherit;font-weight:700;font-size:13px;color:#fff;border:2px solid #7A8F6A;background:rgba(122,143,106,.4);box-shadow:0 0 0 6px rgba(122,143,106,.18),0 6px 18px rgba(0,0,0,.5);cursor:pointer;">18</button>
+          <button style="position:absolute;left:46%;top:40%;transform:translate(-50%,-50%);width:38px;height:38px;border-radius:50%;display:grid;place-items:center;font:inherit;font-weight:700;font-size:13px;color:#fff;border:2px solid #7A8F6A;background:rgba(18,17,13,.5);box-shadow:0 4px 14px rgba(0,0,0,.45);cursor:pointer;">14</button>
+          <button style="position:absolute;left:38%;top:55%;transform:translate(-50%,-50%);width:38px;height:38px;border-radius:50%;display:grid;place-items:center;font:inherit;font-weight:700;font-size:13px;color:#fff;border:2px solid #9C7A3C;background:rgba(18,17,13,.5);box-shadow:0 4px 14px rgba(0,0,0,.45);cursor:pointer;animation:pulse 2.1s infinite;">10</button>
+          <button style="position:absolute;left:44%;top:69%;transform:translate(-50%,-50%);width:38px;height:38px;border-radius:50%;display:grid;place-items:center;font:inherit;font-weight:700;font-size:13px;color:#fff;border:2px solid #9aa29a;background:rgba(18,17,13,.5);box-shadow:0 4px 14px rgba(0,0,0,.45);cursor:pointer;">7</button>
+          <button style="position:absolute;left:38%;top:80%;transform:translate(-50%,-50%);width:38px;height:38px;border-radius:50%;display:grid;place-items:center;font:inherit;font-weight:700;font-size:13px;color:#fff;border:2px solid #7A8F6A;background:rgba(18,17,13,.5);box-shadow:0 4px 14px rgba(0,0,0,.45);cursor:pointer;">4</button>
+
+          <!-- orientation pins -->
+          <span style="position:absolute;top:50%;left:14px;transform:translateY(-50%);display:inline-flex;align-items:center;gap:6px;padding:5px 10px;border-radius:999px;background:rgba(12,11,8,.6);border:1px solid rgba(242,236,222,.14);color:#cfc8b6;font-size:11px;font-weight:600;backdrop-filter:blur(4px);"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#f2dfa7" stroke-width="1.7"><path d="M2 8c2 0 2 2 4 2s2-2 4-2 2 2 4 2 2-2 4-2 2 2 4 2"/></svg><span data-t="or_sea">הים</span></span>
+          <span style="position:absolute;bottom:58px;left:50%;transform:translateX(-50%);display:inline-flex;align-items:center;gap:6px;padding:5px 10px;border-radius:999px;background:rgba(12,11,8,.6);border:1px solid rgba(242,236,222,.14);color:#cfc8b6;font-size:11px;font-weight:600;backdrop-filter:blur(4px);"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#f2dfa7" stroke-width="1.7"><path d="M12 3 4 8h16zM5 10v8M19 10v8M3 21h18"/></svg><span data-t="or_reading">ארובת רידינג</span></span>
+
+          <!-- legend -->
+          <div style="position:absolute;bottom:16px;right:16px;display:inline-flex;gap:12px;padding:8px 13px;border-radius:999px;background:rgba(12,11,8,.66);border:1px solid rgba(242,236,222,.14);color:#d7d0c0;font-size:12px;font-weight:600;backdrop-filter:blur(6px);">
+            <span style="display:inline-flex;align-items:center;gap:6px;"><span style="width:9px;height:9px;border-radius:50%;background:#7A8F6A;"></span><span data-t="lg_av">זמינה</span></span>
+            <span style="display:inline-flex;align-items:center;gap:6px;"><span style="width:9px;height:9px;border-radius:50%;background:#9C7A3C;"></span><span data-t="lg_re">בעדיפות</span></span>
+            <span style="display:inline-flex;align-items:center;gap:6px;"><span style="width:9px;height:9px;border-radius:50%;background:#9aa29a;"></span><span data-t="lg_so">נמכרה</span></span>
+          </div>
+
+          <!-- slide-out apartment panel (open state) -->
+          <aside style="position:absolute;inset-block:0;inset-inline-end:0;width:clamp(300px,36%,410px);background:linear-gradient(180deg,rgba(28,26,21,.97),rgba(17,16,12,.98));backdrop-filter:blur(10px);border-inline-start:1px solid rgba(242,236,222,.14);display:flex;flex-direction:column;color:#F4EEDE;">
+            <div style="padding:clamp(16px,2vw,20px);overflow:hidden;">
+              <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:12px;">
+                <div>
+                  <span style="display:inline-flex;align-items:center;gap:6px;padding:3px 10px;border-radius:3px;font-size:12px;font-weight:700;color:#0a1c1c;background:#9C7A3C;"><span data-t="st_re">בעדיפות</span></span>
+                  <h3 data-t="pn_rooms" style="font-family:'Frank Ruhl Libre',serif;font-size:1.5rem;color:#fff;margin-top:9px;">4 חדרים</h3>
+                  <div style="color:#B8B1A2;font-size:13px;margin-top:3px;"><span data-t="pn_meta">Ashira · דרום מערב · 10C</span></div>
+                </div>
+                <div style="text-align:left;flex:none;">
+                  <div data-t="pn_floor" style="color:#D8C79A;font-size:12px;font-weight:600;">קומה</div>
+                  <div style="font-family:'Frank Ruhl Libre',serif;font-size:2rem;color:#fff;line-height:1;">10</div>
+                </div>
+              </div>
+              <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:16px;">
+                <div style="padding:10px 12px;border-radius:10px;background:rgba(255,255,255,.05);"><div data-t="k_sqm" style="font-size:12px;color:#B8B1A2;">שטח</div><strong style="font-size:17px;">118 מ״ר</strong></div>
+                <div style="padding:10px 12px;border-radius:10px;background:rgba(255,255,255,.05);"><div data-t="k_balc" style="font-size:12px;color:#B8B1A2;">מרפסת</div><strong style="font-size:17px;">14 מ״ר</strong></div>
+                <div style="padding:10px 12px;border-radius:10px;background:rgba(255,255,255,.05);"><div data-t="k_view" style="font-size:12px;color:#B8B1A2;">נוף</div><strong style="font-size:14px;line-height:1.3;" data-t="v_view">ים וחצר</strong></div>
+                <div style="padding:10px 12px;border-radius:10px;background:rgba(255,255,255,.05);"><div data-t="k_est" style="font-size:12px;color:#B8B1A2;">אומדן</div><strong style="font-size:14px;line-height:1.3;">₪8.6M–9.7M</strong></div>
+              </div>
+              <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:6px;margin-top:14px;">
+                <button data-t="tab_plan" style="min-height:38px;border-radius:8px;border:1px solid rgba(242,236,222,.18);background:linear-gradient(180deg,#b9923f,#9C7A3C);color:#fff;font:inherit;font-size:13px;font-weight:600;cursor:pointer;">תכנית</button>
+                <button data-t="tab_view" style="min-height:38px;border-radius:8px;border:1px solid rgba(242,236,222,.14);background:rgba(255,255,255,.05);color:#efe7d6;font:inherit;font-size:13px;font-weight:600;cursor:pointer;">מבט</button>
+                <button data-t="tab_tour" style="min-height:38px;border-radius:8px;border:1px solid rgba(242,236,222,.14);background:rgba(255,255,255,.05);color:#efe7d6;font:inherit;font-size:13px;font-weight:600;cursor:pointer;">סיור</button>
+              </div>
+              <div style="margin-top:10px;border-radius:11px;border:1px solid rgba(242,236,222,.14);background:rgba(10,10,7,.5);min-height:120px;display:grid;place-items:center;overflow:hidden;">
+                <img src="mockup/ashira-facade.jpg" alt="" style="width:100%;height:120px;object-fit:cover;opacity:.85;">
+              </div>
+              <button data-t="pn_cta" style="width:100%;min-height:46px;margin-top:14px;border:0;border-radius:8px;background:#C2563A;color:#fff;font:inherit;font-weight:600;font-size:15px;cursor:pointer;">מעניין אותי · קומה 10</button>
+            </div>
+          </aside>
+        </div>
+      </div>
+      <p data-t="th_note" style="text-align:center;color:#6B6457;font-size:13px;margin-top:12px;">גררו לסיבוב הבניין · הקישו על דירה לבחירה · המודל להמחשה עד לקבלת תוכניות רשמיות</p>
+    </section>
+
+    <!-- ===== APARTMENTS INVENTORY ===== -->
+    <section data-sec id="apts" style="max-width:1200px;margin:0 auto;padding:clamp(36px,5vw,68px) clamp(14px,3vw,28px) 0;">
+      <span data-t="inv_eyebrow" style="font-size:12px;letter-spacing:1.5px;text-transform:uppercase;color:#9C7A3C;font-weight:600;">כל הדירות בפרויקט</span>
+      <div style="width:34px;height:2px;background:#9C7A3C;margin:13px 0 18px;"></div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:12px;">
+        <div style="padding:14px;border-radius:9px;background:#fff;border:1px solid #9C7A3C;box-shadow:0 8px 22px -10px rgba(156,122,60,.3);">
+          <div style="display:flex;justify-content:space-between;font-size:12px;color:#6B6457;"><span style="display:inline-flex;align-items:center;gap:6px;"><span style="width:9px;height:9px;border-radius:50%;background:#7A8F6A;"></span><span data-t="st_av">זמינה</span></span><span data-t="fl18">קומה 18</span></div>
+          <div style="font-family:'Frank Ruhl Libre',serif;font-size:1.15rem;font-weight:700;margin:8px 0 2px;" data-t="r5">5 חדרים</div>
+          <div style="font-size:13px;color:#6B6457;">132 מ״ר · <span data-t="d_w">מערב</span></div>
+        </div>
+        <div style="padding:14px;border-radius:9px;background:#fff;border:1px solid #D9D2C4;">
+          <div style="display:flex;justify-content:space-between;font-size:12px;color:#6B6457;"><span style="display:inline-flex;align-items:center;gap:6px;"><span style="width:9px;height:9px;border-radius:50%;background:#7A8F6A;"></span><span data-t="st_av2">זמינה</span></span><span data-t="fl14">קומה 14</span></div>
+          <div style="font-family:'Frank Ruhl Libre',serif;font-size:1.15rem;font-weight:700;margin:8px 0 2px;" data-t="r4">4 חדרים</div>
+          <div style="font-size:13px;color:#6B6457;">104 מ״ר · <span data-t="d_e">מזרח</span></div>
+        </div>
+        <div style="padding:14px;border-radius:9px;background:#fff;border:1px solid #9C7A3C;box-shadow:0 8px 22px -10px rgba(156,122,60,.3);">
+          <div style="display:flex;justify-content:space-between;font-size:12px;color:#6B6457;"><span style="display:inline-flex;align-items:center;gap:6px;"><span style="width:9px;height:9px;border-radius:50%;background:#9C7A3C;"></span><span data-t="st_re2">בעדיפות</span></span><span data-t="fl10">קומה 10</span></div>
+          <div style="font-family:'Frank Ruhl Libre',serif;font-size:1.15rem;font-weight:700;margin:8px 0 2px;" data-t="r4b">4 חדרים</div>
+          <div style="font-size:13px;color:#6B6457;">118 מ״ר · <span data-t="d_sw">דרום מערב</span></div>
+        </div>
+        <div style="padding:14px;border-radius:9px;background:#fff;border:1px solid #D9D2C4;opacity:.6;">
+          <div style="display:flex;justify-content:space-between;font-size:12px;color:#6B6457;"><span style="display:inline-flex;align-items:center;gap:6px;"><span style="width:9px;height:9px;border-radius:50%;background:#9aa29a;"></span><span data-t="st_so">נמכרה</span></span><span data-t="fl7">קומה 7</span></div>
+          <div style="font-family:'Frank Ruhl Libre',serif;font-size:1.15rem;font-weight:700;margin:8px 0 2px;" data-t="r3">3 חדרים</div>
+          <div style="font-size:13px;color:#6B6457;">82 מ״ר · <span data-t="d_e2">מזרח</span></div>
+        </div>
+        <div style="padding:14px;border-radius:9px;background:#fff;border:1px solid #D9D2C4;">
+          <div style="display:flex;justify-content:space-between;font-size:12px;color:#6B6457;"><span style="display:inline-flex;align-items:center;gap:6px;"><span style="width:9px;height:9px;border-radius:50%;background:#7A8F6A;"></span><span data-t="st_av3">זמינה</span></span><span data-t="fl4">קומה 4</span></div>
+          <div style="font-family:'Frank Ruhl Libre',serif;font-size:1.15rem;font-weight:700;margin:8px 0 2px;" data-t="r3b">3 חדרים</div>
+          <div style="font-size:13px;color:#6B6457;">92 מ״ר · <span data-t="d_w2">מערב</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== PRICE & COMPS (Zillow pattern, honest) ===== -->
+    <section data-sec id="price" style="max-width:1200px;margin:0 auto;padding:clamp(36px,5vw,68px) clamp(14px,3vw,28px) 0;">
+      <span data-t="pr_eyebrow" style="font-size:12px;letter-spacing:1.5px;text-transform:uppercase;color:#9C7A3C;font-weight:600;">מחיר ועסקאות באזור</span>
+      <div style="width:34px;height:2px;background:#9C7A3C;margin:13px 0 18px;"></div>
+      <div style="display:grid;grid-template-columns:.85fr 1.15fr;gap:18px;align-items:start;">
+        <div style="padding:22px;border-radius:12px;background:linear-gradient(150deg,#1B1A17,#211f19);color:#FAF7F1;">
+          <div data-t="pr_label" style="font-size:13px;color:#D8C79A;">אומדן לדירה הנבחרת (קומה 10, 4 חד׳)</div>
+          <div style="font-family:'Frank Ruhl Libre',serif;font-size:2.2rem;font-weight:700;margin:8px 0 2px;">₪8.6M – 9.7M</div>
+          <div data-t="pr_mid" style="font-size:13px;color:#cfc8b6;">נקודת אמצע ≈ ₪9.1M · ₪77,000/מ״ר</div>
+          <div style="height:6px;border-radius:3px;background:rgba(255,255,255,.12);margin:16px 0 8px;position:relative;"><span style="position:absolute;inset-inline-start:18%;inset-inline-end:14%;top:0;bottom:0;border-radius:3px;background:linear-gradient(90deg,#9C7A3C,#C2A657);"></span></div>
+          <div data-t="pr_note" style="font-size:11.5px;color:#9a9384;line-height:1.5;">אומדן לא מחייב, מבוסס עסקאות ציבוריות שדווחו לרשות המסים. עודכן 06/2026. אינו הצעה או מחיר יזם.</div>
+        </div>
+        <div style="border:1px solid #D9D2C4;border-radius:12px;background:#fff;overflow:hidden;">
+          <div data-t="cmp_title" style="padding:14px 16px;font-weight:600;border-bottom:1px solid #D9D2C4;">עסקאות שנמכרו ברדיוס 1 ק״מ</div>
+          <table style="width:100%;border-collapse:collapse;font-size:13.5px;">
+            <thead><tr style="color:#6B6457;text-align:right;background:#FBF9F4;">
+              <th data-t="cmp_addr" style="padding:9px 16px;font-weight:600;">כתובת</th>
+              <th data-t="cmp_rooms" style="padding:9px 8px;font-weight:600;">חדרים</th>
+              <th data-t="cmp_sqm" style="padding:9px 8px;font-weight:600;">מ״ר</th>
+              <th data-t="cmp_price" style="padding:9px 16px;font-weight:600;">מחיר</th>
+              <th data-t="cmp_date" style="padding:9px 16px;font-weight:600;">תאריך</th>
+            </tr></thead>
+            <tbody>
+              <tr style="border-top:1px solid #ECE6DA;"><td style="padding:10px 16px;" data-t="cmp1a">שדה דב 4</td><td style="padding:10px 8px;">4</td><td style="padding:10px 8px;">115</td><td style="padding:10px 16px;">₪8.9M</td><td style="padding:10px 16px;color:#6B6457;">04/2026</td></tr>
+              <tr style="border-top:1px solid #ECE6DA;"><td style="padding:10px 16px;" data-t="cmp2a">המעגן 11</td><td style="padding:10px 8px;">4</td><td style="padding:10px 8px;">122</td><td style="padding:10px 16px;">₪9.4M</td><td style="padding:10px 16px;color:#6B6457;">03/2026</td></tr>
+              <tr style="border-top:1px solid #ECE6DA;"><td style="padding:10px 16px;" data-t="cmp3a">נמל ת״א 9</td><td style="padding:10px 8px;">5</td><td style="padding:10px 8px;">140</td><td style="padding:10px 16px;">₪11.2M</td><td style="padding:10px 16px;color:#6B6457;">02/2026</td></tr>
+            </tbody>
+          </table>
+          <div data-t="cmp_src" style="padding:10px 16px;font-size:11.5px;color:#6B6457;border-top:1px solid #ECE6DA;">מקור: רשות המסים · נתוני עסקאות ציבוריים · מתעדכן יומית</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== THE COMPLETE WORLD — MAP + SPOKES ===== -->
+    <section data-sec id="world" style="max-width:1200px;margin:0 auto;padding:clamp(36px,5vw,68px) clamp(14px,3vw,28px) 0;">
+      <span data-t="w_eyebrow" style="font-size:12px;letter-spacing:1.5px;text-transform:uppercase;color:#9C7A3C;font-weight:600;">הסביבה</span>
+      <div style="width:34px;height:2px;background:#9C7A3C;margin:13px 0 8px;"></div>
+      <h2 data-t="w_title" style="font-family:'Frank Ruhl Libre',serif;font-weight:500;font-size:clamp(22px,2.6vw,30px);">כל מה שמסביב</h2>
+      <p data-t="w_sub" style="font-size:17px;color:#423d33;margin:8px 0 20px;max-width:60ch;">מיקום, ים, תחבורה, חינוך, פנאי ומסחר, ונתוני רובע שדה דב.</p>
+      <div style="display:grid;grid-template-columns:1.2fr .8fr;gap:18px;align-items:start;">
+        <div style="position:relative;border-radius:12px;overflow:hidden;border:1px solid #D9D2C4;box-shadow:0 8px 24px -14px rgba(27,26,23,.18);aspect-ratio:4/3;">
+          <svg viewBox="0 0 400 300" preserveAspectRatio="xMidYMid slice" style="width:100%;height:100%;display:block;">
+            <rect width="400" height="300" fill="#EAF0EC"/>
+            <!-- sea -->
+            <rect x="0" y="0" width="92" height="300" fill="#AFCDD6"/>
+            <path d="M92 0 Q104 70 96 150 Q88 230 100 300 L70 300 L70 0 Z" fill="#BBD6DD"/>
+            <path d="M92 0 Q104 70 96 150 Q88 230 100 300" fill="none" stroke="#9DBFC8" stroke-width="2.5"/>
+            <!-- sand -->
+            <path d="M92 0 Q104 70 96 150 Q88 230 100 300 L116 300 Q108 220 116 150 Q124 70 112 0 Z" fill="#E8DEC6"/>
+            <!-- park (green wedge) -->
+            <path d="M300 0 L400 0 L400 90 Q340 80 300 0 Z" fill="#CBDDB8"/>
+            <!-- blocks -->
+            <g fill="#DAD3C4">
+              <rect x="150" y="40" width="48" height="40" rx="3"/><rect x="210" y="40" width="55" height="40" rx="3"/>
+              <rect x="150" y="95" width="48" height="46" rx="3"/><rect x="278" y="110" width="50" height="44" rx="3"/>
+              <rect x="150" y="160" width="60" height="50" rx="3"/><rect x="230" y="170" width="48" height="46" rx="3"/>
+              <rect x="160" y="230" width="55" height="44" rx="3"/><rect x="300" y="190" width="55" height="50" rx="3"/>
+            </g>
+            <!-- roads -->
+            <g stroke="#fff" stroke-width="7"><path d="M128 0 V300"/><path d="M222 0 V300"/><path d="M290 0 V300"/><path d="M120 88 H400"/><path d="M118 222 H400"/></g>
+            <g stroke="#EFEADF" stroke-width="3"><path d="M175 0 V300"/><path d="M120 155 H400"/></g>
+            <!-- light rail dashed -->
+            <path d="M128 300 V0" stroke="#7A8F6A" stroke-width="2.5" stroke-dasharray="7 5" opacity=".8"/>
+          </svg>
+          <!-- project pin -->
+          <div style="position:absolute;left:39%;top:50%;transform:translate(-50%,-100%);display:flex;flex-direction:column;align-items:center;">
+            <span style="width:34px;height:34px;border-radius:50% 50% 50% 0;transform:rotate(-45deg);background:#C2563A;border:2px solid #fff;box-shadow:0 4px 10px rgba(0,0,0,.25);display:grid;place-items:center;"><svg width="15" height="15" viewBox="0 0 24 24" style="transform:rotate(45deg);" fill="none" stroke="#fff" stroke-width="2"><path d="M3 21h18M5 21V8l7-5 7 5v13"/></svg></span>
+            <span data-t="map_here" style="margin-top:4px;font-size:11px;font-weight:700;background:#fff;padding:2px 7px;border-radius:4px;box-shadow:0 1px 3px rgba(0,0,0,.12);white-space:nowrap;">Ashira</span>
+          </div>
+          <!-- POI pins -->
+          <div style="position:absolute;left:24%;top:78%;transform:translate(-50%,-100%);text-align:center;"><span style="width:22px;height:22px;border-radius:50% 50% 50% 0;transform:rotate(-45deg);background:#1B1A17;display:inline-grid;place-items:center;border:1.5px solid #fff;"></span><div data-t="poi_reading" style="font-size:10px;font-weight:600;background:rgba(255,255,255,.85);padding:1px 5px;border-radius:3px;margin-top:2px;white-space:nowrap;">ארובת רידינג</div></div>
+          <div style="position:absolute;left:11%;top:36%;transform:translate(-50%,-100%);text-align:center;"><span style="width:22px;height:22px;border-radius:50% 50% 50% 0;transform:rotate(-45deg);background:#7A8F6A;display:inline-grid;place-items:center;border:1.5px solid #fff;"></span><div data-t="poi_beach" style="font-size:10px;font-weight:600;background:rgba(255,255,255,.85);padding:1px 5px;border-radius:3px;margin-top:2px;white-space:nowrap;">חוף</div></div>
+          <div style="position:absolute;left:60%;top:30%;transform:translate(-50%,-100%);text-align:center;"><span style="width:22px;height:22px;border-radius:50% 50% 50% 0;transform:rotate(-45deg);background:#9C7A3C;display:inline-grid;place-items:center;border:1.5px solid #fff;"></span><div data-t="poi_school" style="font-size:10px;font-weight:600;background:rgba(255,255,255,.85);padding:1px 5px;border-radius:3px;margin-top:2px;white-space:nowrap;">בי״ס</div></div>
+          <div style="position:absolute;left:78%;top:26%;transform:translate(-50%,-100%);text-align:center;"><span style="width:22px;height:22px;border-radius:50% 50% 50% 0;transform:rotate(-45deg);background:#7A8F6A;display:inline-grid;place-items:center;border:1.5px solid #fff;"></span><div data-t="poi_park" style="font-size:10px;font-weight:600;background:rgba(255,255,255,.85);padding:1px 5px;border-radius:3px;margin-top:2px;white-space:nowrap;">פארק</div></div>
+          <span data-t="map_tag" style="position:absolute;top:10px;right:10px;font-size:11px;background:rgba(250,247,241,.92);color:#6B6457;padding:4px 9px;border-radius:4px;font-weight:600;">מפת הסביבה</span>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:10px;">
+          <div style="border:1px solid #D9D2C4;border-radius:10px;background:#fff;padding:14px;"><div style="display:flex;align-items:center;gap:10px;font-weight:600;"><span style="width:30px;height:30px;border-radius:8px;background:#EFEAE0;display:grid;place-items:center;color:#9C7A3C;flex:none;"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="5" y="3" width="14" height="13" rx="3"/><path d="M5 11h14M8 20l-2 2M16 20l2 2"/></svg></span><span data-t="sp_trans">תחבורה</span></div><div style="display:flex;flex-wrap:wrap;gap:6px;margin-top:10px;"><span data-t="sp_lr" style="font-size:13px;background:#EFEAE0;border-radius:999px;padding:4px 11px;">הקו הירוק</span><span data-t="sp_ayalon" style="font-size:13px;background:#EFEAE0;border-radius:999px;padding:4px 11px;">נתיבי איילון</span></div></div>
+          <div style="border:1px solid #D9D2C4;border-radius:10px;background:#fff;padding:14px;"><div style="display:flex;align-items:center;gap:10px;font-weight:600;"><span style="width:30px;height:30px;border-radius:8px;background:#EFEAE0;display:grid;place-items:center;color:#9C7A3C;flex:none;"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M3 9l9-5 9 5-9 5z"/><path d="M7 11v5c0 1 2.5 2.5 5 2.5s5-1.5 5-2.5v-5"/></svg></span><span data-t="sp_edu">חינוך ופנאי</span></div><div style="display:flex;flex-wrap:wrap;gap:6px;margin-top:10px;"><span data-t="sp_beach" style="font-size:13px;background:#EFEAE0;border-radius:999px;padding:4px 11px;">חוף וטיילת</span><span data-t="sp_yarkon" style="font-size:13px;background:#EFEAE0;border-radius:999px;padding:4px 11px;">פארק הירקון</span></div></div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;">
+            <div style="border:1px solid #D9D2C4;border-radius:10px;background:#fff;padding:13px;"><div style="font-family:'Frank Ruhl Libre',serif;font-size:1.4rem;font-weight:700;">16,000</div><div data-t="stat_units" style="font-size:12px;color:#6B6457;">דירות מתוכננות</div></div>
+            <div style="border:1px solid #D9D2C4;border-radius:10px;background:#fff;padding:13px;"><div style="font-family:'Frank Ruhl Libre',serif;font-size:1.4rem;font-weight:700;">TA/4444</div><div data-t="stat_plan" style="font-size:12px;color:#6B6457;">תכנית מתאר</div></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== STYLED SEO ARTICLE (snippet) ===== -->
+    <section data-sec id="about" style="max-width:760px;margin:clamp(36px,5vw,68px) auto 0;padding:0 clamp(14px,3vw,28px);">
+      <span data-t="ab_eyebrow" style="font-size:12px;letter-spacing:1.5px;text-transform:uppercase;color:#9C7A3C;font-weight:600;">על הפרויקט</span>
+      <h2 data-t="ab_h" style="font-family:'Frank Ruhl Libre',serif;font-weight:500;font-size:clamp(22px,2.6vw,30px);margin:12px 0;">דירות למכירה ב‑Ashira שדה דב: מה לבדוק לפני בחירה</h2>
+      <p data-t="ab_p1" style="font-size:1.0625rem;line-height:1.75;color:#2f2c25;margin-bottom:16px;">בחירת דירה ב‑Ashira אינה רק מספר חדרים. רוכש רציני צריך להבין את הקומה, הכיוון, הנוף, המרחק לים והרובע המתפתח סביב הפרויקט. העמוד בנוי סביב מסע הקנייה הזה: קודם הבניין, אז בחירת הדירה, אז אומדן המחיר והעסקאות באזור, ולבסוף פנייה ממוקדת.</p>
+      <div style="background:#FCF7EC;border-inline-start:3px solid #9C7A3C;border-radius:4px;padding:16px 18px;margin:18px 0;">
+        <strong data-t="ab_note_t" style="display:block;margin-bottom:4px;">שורה תחתונה</strong>
+        <p data-t="ab_note_p" style="font-size:14px;color:#4b4639;">כל הנתונים להמחשה עד לקבלת תוכנית מכר ומחירון רשמי מהיזם. אומדני המחיר מבוססים על עסקאות ציבוריות בלבד.</p>
+      </div>
+    </section>
+
+    <!-- ===== INQUIRY (money moment) ===== -->
+    <section data-sec id="inquiry" style="max-width:1200px;margin:clamp(36px,5vw,68px) auto 0;padding:0 clamp(14px,3vw,28px);">
+      <div style="background:linear-gradient(150deg,#1B1A17,#211f19);border-radius:18px;padding:clamp(24px,4vw,44px);box-shadow:0 40px 90px -30px rgba(20,19,15,.55);">
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:clamp(20px,4vw,44px);align-items:center;">
+          <div>
+            <span data-t="iq_eyebrow" style="font-size:12px;letter-spacing:1.5px;text-transform:uppercase;color:#E4CE92;font-weight:600;">פנייה</span>
+            <h2 data-t="iq_title" style="font-family:'Frank Ruhl Libre',serif;font-weight:500;color:#fff;font-size:clamp(22px,2.6vw,32px);margin-top:8px;">מעוניינים בדירה? נחזור אליכם</h2>
+            <p data-t="iq_sub" style="color:#cfc8b6;font-size:17px;line-height:1.4;margin-top:12px;">השאירו פרטים ונחזור עם המידע על הדירה שבחרתם.</p>
+            <div style="display:inline-flex;align-items:center;gap:8px;margin-top:16px;padding:8px 12px;border-radius:10px;background:rgba(242,236,222,.08);border:1px solid rgba(242,236,222,.18);font-size:13px;color:#e9e2d2;"><span style="width:8px;height:8px;border-radius:50%;background:#7A8F6A;"></span><span data-t="iq_ctx">דירה 10C · קומה 10 · 4 חד׳</span></div>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:10px;">
+            <input data-t-ph="iq_name" placeholder="שם מלא" style="width:100%;min-height:48px;padding:0 14px;border-radius:6px;border:1px solid rgba(242,236,222,.2);background:rgba(255,255,255,.06);color:#fff;font:inherit;font-size:15px;">
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;">
+              <input data-t-ph="iq_phone" placeholder="טלפון" style="min-height:48px;padding:0 14px;border-radius:6px;border:1px solid rgba(242,236,222,.2);background:rgba(255,255,255,.06);color:#fff;font:inherit;font-size:15px;">
+              <input data-t-ph="iq_email" placeholder="אימייל" style="min-height:48px;padding:0 14px;border-radius:6px;border:1px solid rgba(242,236,222,.2);background:rgba(255,255,255,.06);color:#fff;font:inherit;font-size:15px;">
+            </div>
+            <button data-t="iq_submit" style="min-height:52px;border:0;border-radius:6px;background:#C2563A;color:#fff;font:inherit;font-weight:600;font-size:16px;cursor:pointer;">שליחת פנייה</button>
+            <p data-t="iq_consent" style="font-size:11.5px;color:#9a9384;line-height:1.5;">הפנייה כוללת את מזהה הדירה והקומה. אינה הזמנה או התחייבות. נתוני הדגמה.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section style="max-width:760px;margin:24px auto 0;padding:0 clamp(14px,3vw,28px);">
+      <div style="background:#EFEAE0;border-radius:6px;padding:16px;font-size:13px;color:#6B6457;line-height:1.6;" data-t="disc">המודל, החזית, האומדנים והעסקאות באזור הם המחשה ראשונית ואינם תוכנית מכר או מלאי מאושר. מחיר וזמינות מחייבים אימות מול היזם.</div>
+    </section>
+  </main>
+
+  <footer style="background:#1B1A17;color:#cfc8b6;margin-top:clamp(40px,6vw,72px);">
+    <div style="max-width:1200px;margin:0 auto;padding:34px clamp(14px,3vw,28px);display:flex;flex-wrap:wrap;gap:20px;align-items:center;justify-content:space-between;">
+      <div style="display:flex;align-items:center;gap:11px;">
+        <span style="width:34px;height:34px;border-radius:9px;background:#2a2620;display:grid;place-items:center;"><svg width="20" height="20" viewBox="0 0 24 24"><rect x="3" y="13.5" width="4.3" height="7.5" rx="1" fill="#9C7A3C"/><rect x="9.85" y="8" width="4.3" height="13" rx="1" fill="#C2A657"/><rect x="16.7" y="3.5" width="4.3" height="17.5" rx="1" fill="#E4CE92"/></svg></span>
+        <span style="font-family:'Fraunces',serif;font-weight:600;font-size:19px;color:#E4CE92;letter-spacing:1px;">NADLAN</span>
+      </div>
+      <div data-t="foot_rights" style="font-size:13px;color:#9a9384;">© נדל״ן · כל הנתונים להמחשה עד לאישור היזם</div>
+    </div>
+  </footer>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1200,&quot;height&quot;:2400}}">
+class Component extends DCLogic {
+  T = {
+    he: {
+      brand_sub:"תל אביב · שדה דב", nav_projects:"פרויקטים", nav_areas:"אזורים", nav_tools:"כלים", nav_login:"כניסה",
+      hero_eyebrow:"רובע שדה דב · תל אביב", hero_lede:"דירות חדשות מול הים בשדה דב. בוחרים דירה מתוך הבניין, רואים קומה, כיוון ונוף, ובודקים אומדן מחיר וסביבה לפני פנייה.",
+      cta_inquire:"השארת פרטים", cta_choose:"לבחירת דירה", fact_floors:"קומות", fact_homes:"דירות לבחירה", fact_sqm:"מ״ר עד", demo_badge:"הדמיה להמחשה",
+      sn_building:"הבניין", sn_apts:"דירות", sn_price:"מחיר ועסקאות", sn_world:"הסביבה", sn_about:"מידע",
+      th_eyebrow:"תצוגת הפרויקט", th_title:"בוחרים דירה מתוך הבניין", th_3d:"תלת מימד", th_facade:"חזית", th_note:"גררו לסיבוב הבניין · הקישו על דירה לבחירה · המודל להמחשה עד לקבלת תוכניות רשמיות",
+      or_sea:"הים", or_reading:"ארובת רידינג", lg_av:"זמינה", lg_re:"בעדיפות", lg_so:"נמכרה",
+      st_re:"בעדיפות", pn_rooms:"4 חדרים", pn_meta:"Ashira · דרום מערב · 10C", pn_floor:"קומה", k_sqm:"שטח", k_balc:"מרפסת", k_view:"נוף", v_view:"ים וחצר", k_est:"אומדן",
+      tab_plan:"תכנית", tab_view:"מבט", tab_tour:"סיור", pn_cta:"מעניין אותי · קומה 10",
+      inv_eyebrow:"כל הדירות בפרויקט", st_av:"זמינה", fl18:"קומה 18", r5:"5 חדרים", d_w:"מערב",
+      st_av2:"זמינה", fl14:"קומה 14", r4:"4 חדרים", d_e:"מזרח", st_re2:"בעדיפות", fl10:"קומה 10", r4b:"4 חדרים", d_sw:"דרום מערב",
+      st_so:"נמכרה", fl7:"קומה 7", r3:"3 חדרים", d_e2:"מזרח", st_av3:"זמינה", fl4:"קומה 4", r3b:"3 חדרים", d_w2:"מערב",
+      pr_eyebrow:"מחיר ועסקאות באזור", pr_label:"אומדן לדירה הנבחרת (קומה 10, 4 חד׳)", pr_mid:"נקודת אמצע ≈ ₪9.1M · ₪77,000/מ״ר", pr_note:"אומדן לא מחייב, מבוסס עסקאות ציבוריות שדווחו לרשות המסים. עודכן 06/2026. אינו הצעה או מחיר יזם.",
+      cmp_title:"עסקאות שנמכרו ברדיוס 1 ק״מ", cmp_addr:"כתובת", cmp_rooms:"חדרים", cmp_sqm:"מ״ר", cmp_price:"מחיר", cmp_date:"תאריך", cmp1a:"שדה דב 4", cmp2a:"המעגן 11", cmp3a:"נמל ת״א 9", cmp_src:"מקור: רשות המסים · נתוני עסקאות ציבוריים · מתעדכן יומית",
+      w_eyebrow:"הסביבה", w_title:"כל מה שמסביב", w_sub:"מיקום, ים, תחבורה, חינוך, פנאי ומסחר, ונתוני רובע שדה דב.", map_here:"Ashira", poi_reading:"ארובת רידינג", poi_beach:"חוף", poi_school:"בי״ס", poi_park:"פארק", map_tag:"מפת הסביבה",
+      sp_trans:"תחבורה", sp_lr:"הקו הירוק", sp_ayalon:"נתיבי איילון", sp_edu:"חינוך ופנאי", sp_beach:"חוף וטיילת", sp_yarkon:"פארק הירקון", stat_units:"דירות מתוכננות", stat_plan:"תכנית מתאר",
+      ab_eyebrow:"על הפרויקט", ab_h:"דירות למכירה ב‑Ashira שדה דב: מה לבדוק לפני בחירה", ab_p1:"בחירת דירה ב‑Ashira אינה רק מספר חדרים. רוכש רציני צריך להבין את הקומה, הכיוון, הנוף, המרחק לים והרובע המתפתח סביב הפרויקט. העמוד בנוי סביב מסע הקנייה הזה: קודם הבניין, אז בחירת הדירה, אז אומדן המחיר והעסקאות באזור, ולבסוף פנייה ממוקדת.", ab_note_t:"שורה תחתונה", ab_note_p:"כל הנתונים להמחשה עד לקבלת תוכנית מכר ומחירון רשמי מהיזם. אומדני המחיר מבוססים על עסקאות ציבוריות בלבד.",
+      iq_eyebrow:"פנייה", iq_title:"מעוניינים בדירה? נחזור אליכם", iq_sub:"השאירו פרטים ונחזור עם המידע על הדירה שבחרתם.", iq_ctx:"דירה 10C · קומה 10 · 4 חד׳", iq_name:"שם מלא", iq_phone:"טלפון", iq_email:"אימייל", iq_submit:"שליחת פנייה", iq_consent:"הפנייה כוללת את מזהה הדירה והקומה. אינה הזמנה או התחייבות. נתוני הדגמה.",
+      disc:"המודל, החזית, האומדנים והעסקאות באזור הם המחשה ראשונית ואינם תוכנית מכר או מלאי מאושר. מחיר וזמינות מחייבים אימות מול היזם.", foot_rights:"© נדל״ן · כל הנתונים להמחשה עד לאישור היזם",
+    },
+    en: {
+      brand_sub:"Tel Aviv · Sde Dov", nav_projects:"Projects", nav_areas:"Areas", nav_tools:"Tools", nav_login:"Sign in",
+      hero_eyebrow:"Sde Dov district · Tel Aviv", hero_lede:"New seafront homes in Sde Dov. Choose an apartment from the building, see its floor, facing and view, and check a price estimate and the neighborhood before you enquire.",
+      cta_inquire:"Enquire", cta_choose:"Choose an apartment", fact_floors:"Floors", fact_homes:"Homes to choose", fact_sqm:"sq m up to", demo_badge:"Illustrative",
+      sn_building:"The building", sn_apts:"Apartments", sn_price:"Price & deals", sn_world:"Neighborhood", sn_about:"About",
+      th_eyebrow:"Project showroom", th_title:"Choose an apartment from the building", th_3d:"3D", th_facade:"Facade", th_note:"Drag to rotate the building · tap an apartment to select · model is illustrative until official plans arrive",
+      or_sea:"The sea", or_reading:"Reading Tower", lg_av:"Available", lg_re:"On hold", lg_so:"Sold",
+      st_re:"On hold", pn_rooms:"4 rooms", pn_meta:"Ashira · South-west · 10C", pn_floor:"Floor", k_sqm:"Area", k_balc:"Balcony", k_view:"View", v_view:"Sea & courtyard", k_est:"Estimate",
+      tab_plan:"Plan", tab_view:"View", tab_tour:"Tour", pn_cta:"I'm interested · Floor 10",
+      inv_eyebrow:"All apartments", st_av:"Available", fl18:"Floor 18", r5:"5 rooms", d_w:"West",
+      st_av2:"Available", fl14:"Floor 14", r4:"4 rooms", d_e:"East", st_re2:"On hold", fl10:"Floor 10", r4b:"4 rooms", d_sw:"South-west",
+      st_so:"Sold", fl7:"Floor 7", r3:"3 rooms", d_e2:"East", st_av3:"Available", fl4:"Floor 4", r3b:"3 rooms", d_w2:"West",
+      pr_eyebrow:"Price & area deals", pr_label:"Estimate for the selected home (Floor 10, 4 rm)", pr_mid:"Midpoint ≈ ₪9.1M · ₪77,000/sq m", pr_note:"Non-binding estimate based on public transactions reported to the Tax Authority. Updated 06/2026. Not an offer or developer price.",
+      cmp_title:"Sold within 1 km", cmp_addr:"Address", cmp_rooms:"Rooms", cmp_sqm:"sq m", cmp_price:"Price", cmp_date:"Date", cmp1a:"Sde Dov 4", cmp2a:"HaMa'agan 11", cmp3a:"TLV Port 9", cmp_src:"Source: Israel Tax Authority · public transaction data · refreshed daily",
+      w_eyebrow:"The surroundings", w_title:"The complete world", w_sub:"Location, sea, transport, education, leisure and retail, with the Sde Dov district figures.", map_here:"Ashira", poi_reading:"Reading Tower", poi_beach:"Beach", poi_school:"School", poi_park:"Park", map_tag:"Area map",
+      sp_trans:"Transport", sp_lr:"Green line", sp_ayalon:"Ayalon routes", sp_edu:"Education & leisure", sp_beach:"Beach & promenade", sp_yarkon:"HaYarkon Park", stat_units:"Planned homes", stat_plan:"Master plan",
+      ab_eyebrow:"About the project", ab_h:"Apartments for sale at Ashira Sde Dov: what to check before choosing", ab_p1:"Choosing a home at Ashira is not only a room count. A serious buyer needs to understand the floor, the facing, the view, the distance to the sea and the district growing around the project. This page is built around that buying journey: first the building, then the apartment, then the price estimate and area deals, and finally a focused enquiry.", ab_note_t:"Bottom line", ab_note_p:"All data is illustrative until an official sales plan and price list are received from the developer. Estimates are based on public transactions only.",
+      iq_eyebrow:"Enquiry", iq_title:"Interested? We'll get back to you", iq_sub:"Leave your details and we'll return with information on the apartment you chose.", iq_ctx:"Apt 10C · Floor 10 · 4 rm", iq_name:"Full name", iq_phone:"Phone", iq_email:"Email", iq_submit:"Send enquiry", iq_consent:"The enquiry includes the apartment id and floor. Not an order or commitment. Illustrative data.",
+      disc:"The model, facade, estimates and area deals are an initial illustration, not a sales plan or approved inventory. Verify price and availability with the developer.", foot_rights:"© NadLan · all data illustrative pending developer approval",
+    }
+  };
+
+  componentDidMount(){ this.wire(); }
+  componentDidUpdate(){ this.wire(); }
+
+  wire(){
+    const root = this.rootEl || document.querySelector('[data-root]');
+    if (!root || root.__wired) { return; }
+    root.__wired = true;
+    this.rootEl = root;
+    root.querySelectorAll('[data-lang]').forEach(btn=>{
+      btn.addEventListener('click', ()=> this.setLang(btn.getAttribute('data-lang'), root));
+    });
+  }
+
+  setLang(lang, root){
+    const dict = this.T[lang] || this.T.he;
+    const isRTL = (lang === 'he' || lang === 'ar');
+    root.setAttribute('dir', isRTL ? 'rtl' : 'ltr');
+    root.style.fontFamily = isRTL ? "'Heebo',sans-serif" : "'Inter Tight','Heebo',sans-serif";
+    root.querySelectorAll('[data-t]').forEach(el=>{
+      const k = el.getAttribute('data-t'); if (dict[k] != null) el.textContent = dict[k];
+    });
+    root.querySelectorAll('[data-t-ph]').forEach(el=>{
+      const k = el.getAttribute('data-t-ph'); if (dict[k] != null) el.setAttribute('placeholder', dict[k]);
+    });
+    // serif headings swap to Fraunces for EN/LTR
+    root.querySelectorAll("h1,h2,h3,[style*='Frank Ruhl']").forEach(el=>{
+      if (el.style.fontFamily && el.style.fontFamily.indexOf('Frank Ruhl') >= 0)
+        el.style.fontFamily = isRTL ? "'Frank Ruhl Libre',serif" : "'Fraunces','Frank Ruhl Libre',serif";
+    });
+    // language button states
+    root.querySelectorAll('[data-lang]').forEach(b=>{
+      const on = b.getAttribute('data-lang') === lang;
+      b.style.background = on ? '#1B1A17' : '#fff';
+      b.style.color = on ? '#FAF7F1' : '#5f5a4d';
+      b.style.borderColor = on ? '#1B1A17' : '#D9D2C4';
+    });
+  }
+
+  renderVals(){ return {}; }
+}
+</script>
+<script>
+(async () => {
+  if (!document.title || !document.title.trim()) document.title = "Ashira Target Mockup";
+  // Prepend so page-supplied @page / break rules (deck-stage's margin:0,
+  // author CSS) keep source-order precedence over the baseline.
+  const baseCss = document.createElement('style');
+  baseCss.textContent = "@media print {\n  figure, table { break-inside: avoid; }\n  *, *::before, *::after {\n    print-color-adjust: exact; -webkit-print-color-adjust: exact;\n    backdrop-filter: none !important; -webkit-backdrop-filter: none !important;\n    animation-delay: -99s !important; animation-duration: .001s !important;\n    animation-iteration-count: 1 !important; animation-fill-mode: both !important;\n    animation-play-state: running !important; transition-duration: 0s !important;\n  }\n}";
+  document.head.prepend(baseCss);
+  if (document.readyState === 'loading') {
+    await new Promise((r) => document.addEventListener('DOMContentLoaded', r, { once: true }));
+  }
+  let ds = document.querySelector('deck-stage');
+  // whenDefined never resolves when nothing registers the element, so only
+  // await it when a <deck-stage> tag exists (and race a timeout regardless).
+  if (ds && !customElements.get('deck-stage')) {
+    try {
+      await Promise.race([
+        customElements.whenDefined('deck-stage'),
+        new Promise((r) => setTimeout(r, 3000)),
+      ]);
+    } catch (e) {}
+    ds = document.querySelector('deck-stage');
+  }
+  // dc-runtime assigns window.DCLogic at init and mounts into #dc-root on
+  // DOMContentLoaded; settle on that subtree so React has rendered before
+  // print(). Non-DC pages fall through to weighing body.
+  const isDc = !ds && 'DCLogic' in window;
+  const settleRoot = ds || (isDc ? document.getElementById('dc-root') : null) || document.body;
+  if (settleRoot) {
+    // Weigh only content children — skip script/style/template so inline
+    // Babel/CSS doesn't register as stable "content" before the framework
+    // has mounted anything.
+    const MEDIA = 'img,svg,canvas,video,picture,iframe,embed,object';
+    const weigh = () => {
+      let text = 0, media = 0;
+      for (const c of settleRoot.children) {
+        const t = c.tagName;
+        if (t === 'SCRIPT' || t === 'STYLE' || t === 'TEMPLATE') continue;
+        text += (c.textContent || '').trim().length;
+        media += c.querySelectorAll(MEDIA).length + (c.matches(MEDIA) ? 1 : 0);
+      }
+      return text + media * 100;
+    };
+    // "Non-zero and stable" alone is not sufficient to mean rendered: generic
+    // body can carry a static shell while async main content is pending, and
+    // #dc-root can carry the root DC's static text while child refs are still
+    // .sc-placeholder boxes. Gate generic on readyState 'complete', and never
+    // accept stability while a dc-runtime placeholder is present.
+    const isGeneric = settleRoot === document.body;
+    const deadline = Date.now() + 15000;
+    let last = -1, stable = 0;
+    while (Date.now() < deadline) {
+      const n = weigh();
+      const ready =
+        (!isGeneric || document.readyState === 'complete') &&
+        !settleRoot.querySelector('.sc-placeholder');
+      if (n > 0 && n === last && ready) { if (++stable >= 2) break; } else { stable = 0; }
+      last = n;
+      await new Promise((r) => setTimeout(r, 250));
+    }
+  }
+  // Project support.js may predate runtime default-seeding; push via bridge.
+  if (isDc && window.__dcSetProps && window.__dcRootName) {
+    try {
+      const dpEl = document.querySelector('script[data-dc-script]');
+      const meta = JSON.parse((dpEl && dpEl.getAttribute('data-props')) || '{}');
+      const bag = {};
+      for (const k in meta)
+        if (k[0] !== '$' && meta[k] && meta[k].default !== undefined)
+          bag[k] = meta[k].default;
+      if (Object.keys(bag).length) {
+        window.__dcSetProps(window.__dcRootName(), bag);
+        await new Promise((r) => setTimeout(r, 50));
+      }
+    } catch (e) {}
+  }
+  // Reveal content gated on scroll or visibility before printing. Lazy <img>,
+  // IntersectionObserver fade-ins, and collapsed <details> don't render while
+  // off-screen, so a long page would print with them blank or closed. Open
+  // every <details>, force native-lazy images eager, and scroll the document
+  // through its full height to trip lazy-load + IO; then wait (bounded) for the
+  // newly-triggered images. Inert for deck-stage (slides aren't scroll-gated).
+  try {
+    for (const d of document.querySelectorAll('details')) d.open = true;
+    for (const img of document.querySelectorAll('img[loading="lazy"]'))
+      img.loading = 'eager';
+    const scroller = document.scrollingElement || document.documentElement;
+    const full = Math.max(scroller.scrollHeight, document.body.scrollHeight);
+    const step = window.innerHeight || 800;
+    for (let y = 0; y <= full; y += step) {
+      window.scrollTo(0, y);
+      await new Promise((r) => requestAnimationFrame(r));
+    }
+    window.scrollTo(0, 0);
+    await Promise.race([
+      Promise.all(
+        [...document.images].map((img) =>
+          img.complete
+            ? null
+            : new Promise((res) => {
+                img.addEventListener('load', res, { once: true });
+                img.addEventListener('error', res, { once: true });
+              })
+        )
+      ),
+      new Promise((r) => setTimeout(r, 4000)),
+    ]);
+  } catch (e) {}
+  try { await document.fonts.ready; } catch (e) {}
+  // Jump every animation to its end state so print() never captures a slide
+  // mid-entrance. Ordering matters: the 0s-transition style must be live
+  // BEFORE data-deck-active is set so attribute-keyed transitions don't
+  // start a (now-0s) run from the pre-active base.
+  const st = document.createElement('style');
+  st.textContent = '*,*::before,*::after{animation-delay:-99s !important;animation-duration:.001s !important;animation-iteration-count:1 !important;animation-fill-mode:both !important;animation-play-state:running !important;transition-duration:0s !important}';
+  document.head.appendChild(st);
+  for (const d of document.querySelectorAll('deck-stage')) {
+    for (const c of d.children) {
+      const t = c.tagName;
+      if (t === 'SCRIPT' || t === 'STYLE' || t === 'TEMPLATE') continue;
+      c.setAttribute('data-deck-active', '');
+    }
+  }
+  // Re-append deck-stage's @page last so no author @page can add a margin and
+  // spill each full-bleed slide onto two sheets. Backstop for old copies.
+  if (ds) {
+    let pg = document.getElementById('deck-stage-print-page');
+    if (!pg) {
+      pg = document.createElement('style');
+      pg.textContent = '@page{size:' + (+ds.getAttribute('width') || 1920) +
+        'px ' + (+ds.getAttribute('height') || 1080) + 'px;margin:0}';
+    }
+    document.body.appendChild(pg);
+  }
+  try {
+    const sweep = () => {
+      for (const a of document.getAnimations()) {
+        try { a.finish(); } catch (e) {
+          try { a.currentTime = (a.effect && a.effect.getComputedTiming().duration) || 0; a.pause(); } catch (e2) {}
+        }
+      }
+    };
+    sweep();
+    await new Promise((r) => requestAnimationFrame(r));
+    sweep();
+    await new Promise((r) => requestAnimationFrame(r));
+  } catch (e) {}
+  // Size the PDF page to the rendered design unless the file opted into
+  // standard paper via @page{size:letter|A4|…}. Decks own their own @page.
+  // Wrappers (body, …) lose padding+margin so the frame sits at (0,0); the
+  // frame itself loses only margin — its padding is INSIDE the measured
+  // rect and must stay, or content shifts and leaves a gap at bottom/right.
+  var __m = null;
+  try { __m = (() => {
+  var STAMP = true;
+  var docEl = document.documentElement;
+  var doc = { width: docEl.scrollWidth, height: docEl.scrollHeight };
+
+  var ds = document.querySelector('deck-stage');
+  if (ds) {
+    var dw = Number(ds.getAttribute('width')) || 1920;
+    var dh = Number(ds.getAttribute('height')) || 1080;
+    var n = typeof ds.length === 'number' ? ds.length : ds.children.length;
+    var idx = typeof ds.index === 'number' ? ds.index : 0;
+    var frames = [];
+    for (var i = 0; i < n; i++) frames.push({ left: 0, top: 0, width: dw, height: dh });
+    return { kind: 'deck', source: 'declared', doc: doc, frames: frames,
+      authored: frames.map(function(){return{width:true,height:true}}),
+      deck: { width: dw, height: dh, slideCount: n, index: idx },
+      signals: { paperPage: false, pxPage: false } };
+  }
+
+  // Declared kind: a doc-page tag names the kind outright, so no signal
+  // heuristics run (like the deck branch above, signals report false —
+  // they describe inferred classifications only). The tag alone is not
+  // trusted: the element must have upgraded (shadowRoot present), so a
+  // leftover tag whose script was deleted falls through to the heuristics
+  // that handle plain markup.
+  var stageSx = window.scrollX || 0, stageSy = window.scrollY || 0;
+  var dp = document.querySelector('doc-page');
+  if (dp && dp.shadowRoot) {
+    // Crop to the sheet, not the host — the desk around it is screen-only
+    // chrome that must not land in PNG exports.
+    var sheet = dp.shadowRoot.querySelector('.sheet');
+    var sr = (sheet || dp).getBoundingClientRect();
+    return { kind: 'paper-doc', source: 'declared', doc: doc,
+      frames: [{ left: sr.left + stageSx, top: sr.top + stageSy,
+        width: sr.width, height: sr.height }],
+      authored: [{ width: false, height: false }],
+      signals: { paperPage: false, pxPage: false } };
+  }
+  var paperPage = false, pxPage = false;
+  var eachRule = function (fn) {
+    for (var s = 0; s < document.styleSheets.length; s++) {
+      var rs; try { rs = document.styleSheets[s].cssRules; } catch (e) { continue; }
+      for (var r = 0; r < rs.length; r++) {
+        fn(rs[r]);
+        if (rs[r].cssRules) for (var n = 0; n < rs[r].cssRules.length; n++) fn(rs[r].cssRules[n]);
+      }
+    }
+  };
+  eachRule(function (r) {
+    if (r.type !== 6) return;
+    var m = /\bsize\s*:\s*([^;}]+)/i.exec(r.cssText || '');
+    if (!m) return;
+    if (/\b(letter|a[3-5]|legal|ledger)\b/i.test(m[1])) paperPage = true;
+    if (/\d+(?:\.\d+)?px\b/i.test(m[1])) pxPage = true;
+  });
+  var signals = { paperPage: paperPage, pxPage: pxPage };
+
+  var pxVal = function (v) {
+    var m = /^(\d+(?:\.\d+)?)px$/.exec(v || ''); return m ? +m[1] : 0;
+  };
+  var authoredPx = function (el, prop) {
+    if (pxVal(el.style[prop])) return true;
+    var attr = el.getAttribute(prop);
+    if (attr && /^\d+$/.test(attr)) return true;
+    var hit = false;
+    eachRule(function (r) {
+      if (hit || r.type !== 1 || !r.style) return;
+      try { if (el.matches(r.selectorText) && pxVal(r.style[prop])) hit = true; } catch (e) {}
+    });
+    return hit;
+  };
+
+  var el = document.body, rootPxW = false;
+  for (;;) {
+    var kids = [];
+    for (var c = 0; c < el.children.length; c++) {
+      var t = el.children[c].tagName;
+      if (t !== 'SCRIPT' && t !== 'STYLE' && t !== 'TEMPLATE') kids.push(el.children[c]);
+    }
+    if (kids.length !== 1 || !(kids[0] instanceof HTMLElement)) break;
+    if (STAMP) el.setAttribute('data-om-frame-wrap', '');
+    el = kids[0];
+    rootPxW = authoredPx(el, 'width');
+    if (rootPxW) break;
+  }
+  if (!rootPxW) rootPxW = authoredPx(el, 'width');
+
+  // @page{size:letter} alone is a flowing doc; with a px-width root it's a
+  // fixed sheet pretending to be paper — fall through and size to render.
+  if (paperPage && !rootPxW) {
+    return { kind: 'paper-doc', source: 'inferred', doc: doc, signals: signals,
+      frames: [{ left: 0, top: 0, width: doc.width, height: doc.height }],
+      authored: [{ width: false, height: false }] };
+  }
+
+  var sx = window.scrollX || 0, sy = window.scrollY || 0;
+  var rectOf = function (e) {
+    var r = e.getBoundingClientRect();
+    var oy; try { oy = getComputedStyle(e).overflowY; } catch (err) {}
+    var h = oy === 'visible' ? Math.max(r.height, e.scrollHeight || 0) : r.height;
+    return { left: r.left + sx, top: r.top + sy, width: r.width, height: h };
+  };
+
+  // Multi-frame: ≥2 visible non-fixed children, each with authored px width
+  // AND height, all within ±2px of each other. Off unless the page opts in
+  // via data-om-multi-frame on the stop element — guards against card grids
+  // and pricing tables that match the geometry but aren't separate canvases.
+  if (el.hasAttribute('data-om-multi-frame')) {
+    var cands = [];
+    for (var k = 0; k < el.children.length; k++) {
+      var ch = el.children[k];
+      var cs; try { cs = getComputedStyle(ch); } catch (e) { continue; }
+      if (cs.display === 'none' || cs.visibility === 'hidden' || cs.position === 'fixed') continue;
+      var rc = rectOf(ch);
+      if (rc.width < 2 || rc.height < 2) continue;
+      if (!authoredPx(ch, 'width') || !authoredPx(ch, 'height')) continue;
+      cands.push(rc);
+    }
+    if (cands.length >= 2) {
+      var w0 = cands[0].width, h0 = cands[0].height, ok = true;
+      for (var q = 1; q < cands.length; q++)
+        if (Math.abs(cands[q].width - w0) > 2 || Math.abs(cands[q].height - h0) > 2) ok = false;
+      if (ok) return { kind: 'multi-frame', source: 'inferred', doc: doc, signals: signals,
+        frames: cands, authored: cands.map(function(){return{width:true,height:true}}) };
+    }
+  }
+
+  if (STAMP) el.setAttribute('data-om-frame', '');
+  return { kind: 'single-canvas', source: 'inferred', doc: doc, signals: signals,
+    frames: [rectOf(el)],
+    authored: [{ width: rootPxW, height: authoredPx(el, 'height') }] };
+})(); } catch (e) {}
+  var frame = null;
+  if (__m && __m.kind === 'single-canvas') {
+    var f = __m.frames && __m.frames[0];
+    if (f && f.width >= 200 && f.height >= 200) {
+      frame = f;
+      var fst = document.createElement('style');
+      fst.textContent = '@media print{@page{size:' + Math.ceil(f.width) + 'px ' +
+        Math.ceil(f.height) + 'px;margin:0}' +
+        'html,body,[data-om-frame-wrap]{padding:0!important;margin:0!important;background:none!important}' +
+        '[data-om-frame]{margin:0!important}}';
+      document.body.appendChild(fst);
+    }
+  }
+  // Relax break-inside on oversized elements. An element taller than a
+  // printable page can't honor break-inside: avoid — browsers either overflow
+  // it or push it whole to the next page, leaving a blank gap, then break it
+  // anyway at an arbitrary point. After the final layout (content revealed,
+  // animations jumped), find elements taller than a page that still compute
+  // break-inside: avoid and reset them to auto, so the browser breaks them at
+  // their children's boundaries instead (children keep their own avoid). PAGE_PX
+  // is a conservative portrait estimate at 96 CSS px/in — Letter/A4 usable
+  // height minus our 0.5in margins — so only clearly-oversized elements are
+  // touched and under-page elements still stay whole. Skipped for decks (slides
+  // are sized to the page) and for fixed-size canvases (frame set, or an author
+  // px-based @page) — runs as before for flowing docs on letter/A4.
+  try {
+    if (!ds && !frame && !(__m && __m.signals && __m.signals.pxPage)) {
+      const PAGE_PX = 1024;
+      // Our print defaults add a real @page margin only when the source has
+      // no @page of its own; computed style can't tell us (it reports screen
+      // media), so read the injected rule directly.
+      const defaults = document.querySelector('style[data-omelette-print-defaults]');
+      const pageInset = /@page\s*\{[^}]*margin/.test(defaults ? defaults.textContent || '' : '');
+      const SEL = 'section,article,figure,table,pre,blockquote,[class~="card" i],[class~="page" i],[class~="sheet" i]';
+      for (const el of document.body.querySelectorAll(SEL)) {
+        if (el instanceof HTMLElement && el.offsetHeight > PAGE_PX) {
+          el.setAttribute('data-om-oversized', '');
+          // Fake-paged docs simulate sheets with over-tall break-after:page
+          // boxes; honoring the break spills half-blank pages and ends a
+          // colored box mid-sheet. Flow them, and (only when we own the page
+          // inset) drop the redundant padding/background via the rule below.
+          const cs = getComputedStyle(el);
+          if (cs.breakAfter === 'page' || cs.pageBreakAfter === 'always') {
+            el.setAttribute('data-om-fakepage', '');
+          }
+        }
+      }
+      const ost = document.createElement('style');
+      ost.textContent = '@media print{' +
+        '[data-om-oversized]{break-inside:auto !important;page-break-inside:auto !important}' +
+        '[data-om-fakepage]{break-after:auto !important;page-break-after:auto !important}' +
+        (pageInset ? '[data-om-fakepage]{padding:0 !important;background:none !important}' : '') +
+        '}';
+      document.head.appendChild(ost);
+    }
+  } catch (e) {}
+  // macOS Preview renders Skia-PDF Luminosity soft-masks as opaque grey boxes;
+  // swap the CSS that triggers them for Preview-safe forms.
+  try {
+    for (const el of document.body.querySelectorAll('*')) {
+      const cs = getComputedStyle(el);
+
+      if (cs.boxShadow !== 'none' && cs.filter === 'none') {
+        const outs = [], kept = [];
+        for (const s of cs.boxShadow.split(/,(?![^(]*[)])/)) {
+          const t = s.trim();
+          const m = t.match(/^(rgba?[(][^)]+[)]) (-?[0-9.]+px) (-?[0-9.]+px) ([0-9.]+px) -?[0-9.]+px$/);
+          if (m && parseFloat(m[4]) > 0) outs.push('drop-shadow(' + m[2] + ' ' + m[3] + ' ' + m[4] + ' ' + m[1] + ')');
+          else kept.push(t);
+        }
+        if (outs.length) {
+          el.style.setProperty('filter', outs.join(' '), 'important');
+          el.style.setProperty('box-shadow', kept.join(', ') || 'none', 'important');
+        }
+      }
+
+      const mask = cs.maskImage && cs.maskImage !== 'none' ? cs.maskImage : cs.webkitMaskImage;
+      if (mask && mask !== 'none' && cs.filter === 'none') el.style.setProperty('filter', 'opacity(1)', 'important');
+    }
+  } catch (e) {}
+  setTimeout(() => { try { window.print(); } catch (e) {} }, 200);
+})();
+</script>
+</body>
+</html>

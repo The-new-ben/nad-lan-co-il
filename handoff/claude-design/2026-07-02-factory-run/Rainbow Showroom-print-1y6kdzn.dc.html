@@ -1,0 +1,695 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style data-omelette-print-defaults>
+@media print {
+  @page { margin: 0.5in; }
+  h1, h2, h3, h4, h5, h6 { break-after: avoid; }
+  figure, table, pre, blockquote, img, svg, tr, [class~="card" i] { break-inside: avoid; }
+  img, svg { max-width: 100%; }
+  p { orphans: 3; widows: 3; }
+}
+</style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Assistant:wght@400;500;600;700;800&family=Frank+Ruhl+Libre:wght@500;700;900&display=swap" rel="stylesheet">
+<style>
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html,body{background:#f1ece0;}
+  ::selection{background:#c99c49;color:#0a1c1c;}
+  @keyframes nlpsPulse{0%{box-shadow:0 0 0 0 rgba(52,217,134,.55);}70%{box-shadow:0 0 0 15px rgba(52,217,134,0);}100%{box-shadow:0 0 0 0 rgba(52,217,134,0);}}
+</style>
+</helmet>
+<div dir="rtl" style="font-family:'Assistant',sans-serif;color:#20231f;background:#f1ece0;min-height:100vh;overflow-x:hidden;">
+
+  <header data-screen-label="topbar" style="display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;max-width:1240px;margin:0 auto;padding:16px clamp(14px,3vw,28px);">
+    <div style="display:flex;align-items:baseline;gap:12px;">
+      <span style="font-family:'Frank Ruhl Libre',serif;font-weight:900;font-size:26px;letter-spacing:-.5px;color:#0c3836;">נדל״ן</span>
+      <span style="font-size:12px;color:#8a8270;letter-spacing:2px;">SDE&nbsp;DOV&nbsp;SHOWROOM</span>
+    </div>
+    <nav style="display:flex;align-items:center;gap:18px;flex-wrap:wrap;font-size:14px;color:#5f5a4d;">
+      <span style="color:#8a8270;">נדל״ן ›&nbsp;שדה דב ›&nbsp;<strong style="color:#0c3836;font-weight:700;">Rainbow</strong></span>
+      <div style="display:flex;gap:6px;">
+        <span style="display:inline-flex;align-items:center;justify-content:center;min-width:34px;height:30px;padding:0 9px;border-radius:999px;background:#0c3836;color:#f2dfa7;font-weight:700;font-size:13px;">HE</span>
+        <span style="display:inline-flex;align-items:center;justify-content:center;min-width:34px;height:30px;padding:0 9px;border-radius:999px;background:#fff;border:1px solid #ddd5c4;color:#5f5a4d;font-weight:600;font-size:13px;cursor:pointer;">EN</span>
+        <span style="display:inline-flex;align-items:center;justify-content:center;min-width:34px;height:30px;padding:0 9px;border-radius:999px;background:#fff;border:1px solid #ddd5c4;color:#5f5a4d;font-weight:600;font-size:13px;cursor:pointer;">RU</span>
+        <span style="display:inline-flex;align-items:center;justify-content:center;min-width:34px;height:30px;padding:0 9px;border-radius:999px;background:#fff;border:1px solid #ddd5c4;color:#5f5a4d;font-weight:600;font-size:13px;cursor:pointer;">FR</span>
+        <span style="display:inline-flex;align-items:center;justify-content:center;min-width:34px;height:30px;padding:0 9px;border-radius:999px;background:#fff;border:1px solid #ddd5c4;color:#5f5a4d;font-weight:600;font-size:13px;cursor:pointer;">AR</span>
+      </div>
+    </nav>
+  </header>
+
+  <main data-screen-label="showroom" style="max-width:1240px;margin:0 auto;padding:6px clamp(14px,3vw,28px) 64px;">
+
+    <div style="display:flex;flex-wrap:wrap;gap:18px;align-items:stretch;border-radius:22px;overflow:hidden;border:1px solid rgba(12,56,54,.14);background:linear-gradient(135deg,#051f21,#0c3836 58%,#071b1c);box-shadow:0 34px 80px rgba(6,29,28,.34);">
+
+      <section data-screen-label="stage" style="position:relative;flex:1.3 1 540px;min-width:0;aspect-ratio:902/916;overflow:hidden;">
+        <img src="assets/projects/rainbow-tel-aviv/tower-clean.jpg" alt="הדמיית מגדל Rainbow מול הים ברובע שדה דב" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;">
+        <div style="position:absolute;inset:0;background:linear-gradient(270deg,rgba(4,18,18,.72),rgba(4,18,18,.14) 38%,transparent 58%),linear-gradient(0deg,rgba(4,18,18,.74),transparent 26%);"></div>
+
+        <div style="position:absolute;top:clamp(16px,2.6vw,28px);right:clamp(14px,2.4vw,26px);width:min(360px,54%);display:flex;flex-direction:column;gap:16px;pointer-events:none;">
+          <div>
+            <div style="display:inline-flex;align-items:center;gap:8px;padding:5px 12px;border-radius:999px;background:rgba(242,223,167,.14);border:1px solid rgba(242,223,167,.4);color:#f2dfa7;font-size:13px;font-weight:700;letter-spacing:.3px;white-space:nowrap;">רובע שדה דב · תל אביב</div>
+            <h1 style="font-family:'Frank Ruhl Libre',serif;font-weight:900;color:#fbf6e6;font-size:clamp(28px,3.6vw,46px);line-height:1.04;margin:12px 0 0;text-shadow:0 2px 24px rgba(0,0,0,.45);">Rainbow<br><span style="font-size:.5em;font-weight:700;letter-spacing:1px;">מגדל מול הים</span></h1>
+            <p style="color:#e4ddc6;font-size:clamp(14px,1.5vw,16px);line-height:1.55;margin:12px 0 0;max-width:300px;text-shadow:0 1px 12px rgba(0,0,0,.5);">בוחרים דירה ישירות מתוך מודל הפרויקט — קומה, כיוון, נוף ותכנית, במקום אחד.</p>
+          </div>
+
+          <div style="display:flex;flex-direction:column;gap:1px;border-radius:16px;overflow:hidden;border:1px solid rgba(242,223,167,.28);background:rgba(5,24,24,.5);backdrop-filter:blur(9px);width:max-content;max-width:100%;">
+            <div style="display:flex;align-items:center;gap:10px;padding:11px 14px;color:#f7f1dc;font-size:14px;font-weight:600;">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#f2dfa7" stroke-width="1.6"><path d="M12 2 21 7v10l-9 5-9-5V7z"/><path d="m3 7 9 5 9-5M12 12v10"/></svg>מודל 3D
+            </div>
+            <div style="display:flex;align-items:center;gap:10px;padding:11px 14px;color:#f7f1dc;font-size:14px;font-weight:600;border-top:1px solid rgba(242,223,167,.14);">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#f2dfa7" stroke-width="1.6"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>בחירת דירות
+            </div>
+            <div style="display:flex;align-items:center;gap:10px;padding:11px 14px;color:#f7f1dc;font-size:14px;font-weight:600;border-top:1px solid rgba(242,223,167,.14);">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#f2dfa7" stroke-width="1.6"><circle cx="12" cy="12" r="4"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M5 5l2 2M17 17l2 2M19 5l-2 2M7 17l-2 2"/></svg>סימולציית שמש
+            </div>
+            <div style="display:flex;align-items:center;gap:10px;padding:11px 14px;color:#f7f1dc;font-size:14px;font-weight:600;border-top:1px solid rgba(242,223,167,.14);">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#f2dfa7" stroke-width="1.6"><path d="M12 21s-7-5.2-7-11a7 7 0 0 1 14 0c0 5.8-7 11-7 11z"/><circle cx="12" cy="10" r="2.4"/></svg>מבט מהדירה
+            </div>
+          </div>
+        </div>
+
+        <sc-for list="{{ hotspots }}" as="h" hint-placeholder-count="6">
+          <button type="button" onClick="{{ h.onSelect }}" aria-label="{{ h.aria }}" style="{{ h.style }}">{{ h.floor }}</button>
+        </sc-for>
+
+        <div style="position:absolute;right:clamp(18px,3vw,32px);left:clamp(18px,3vw,32px);bottom:clamp(16px,2.4vw,24px);display:flex;justify-content:space-between;align-items:center;gap:14px;flex-wrap:wrap;">
+          <div style="display:flex;gap:14px;flex-wrap:wrap;padding:9px 14px;border-radius:999px;background:rgba(4,24,24,.72);border:1px solid rgba(242,223,167,.34);backdrop-filter:blur(8px);color:#e4ddc6;font-size:12.5px;font-weight:600;">
+            <span style="display:inline-flex;align-items:center;gap:6px;"><span style="width:11px;height:11px;border-radius:3px;background:#34d986;"></span>זמינה</span>
+            <span style="display:inline-flex;align-items:center;gap:6px;"><span style="width:11px;height:11px;border-radius:3px;background:#e7b952;"></span>בעדיפות</span>
+            <span style="display:inline-flex;align-items:center;gap:6px;"><span style="width:11px;height:11px;border-radius:3px;background:#9aa7a7;"></span>נמכרה</span>
+          </div>
+          <span style="padding:7px 13px;border-radius:999px;background:rgba(4,24,24,.7);border:1px solid rgba(242,223,167,.3);color:#cfc7ad;font-size:12px;font-weight:600;backdrop-filter:blur(8px);">{{ demoBadge }}</span>
+        </div>
+      </section>
+
+      <aside data-screen-label="apartment-panel" style="flex:1 1 360px;min-width:0;display:flex;flex-direction:column;padding:clamp(16px,2vw,22px);background:rgba(3,18,18,.34);border-right:1px solid rgba(242,223,167,.12);">
+        <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:12px;">
+          <div style="flex:1;min-width:0;">
+            <div style="display:inline-flex;align-items:center;gap:7px;padding:4px 11px;border-radius:999px;font-size:12.5px;font-weight:800;color:#0a1c1c;background:{{ selected.statusColor }};">{{ selected.statusLabel }}</div>
+            <h2 style="font-family:'Frank Ruhl Libre',serif;font-weight:700;color:#fbf6e6;font-size:clamp(22px,2.4vw,28px);line-height:1.2;margin:10px 0 0;overflow-wrap:anywhere;">{{ selected.head }}</h2>
+            <p style="color:#bcd0c9;font-size:14px;margin:5px 0 0;">{{ selected.building }} · {{ selected.dir }}</p>
+          </div>
+          <div style="text-align:left;flex:0 0 auto;">
+            <div style="color:#f2dfa7;font-size:13px;font-weight:700;">קומה</div>
+            <div style="font-family:'Frank Ruhl Libre',serif;color:#fbf6e6;font-size:34px;font-weight:900;line-height:1;">{{ selected.floor }}</div>
+          </div>
+        </div>
+
+        <div style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px;margin:16px 0 0;">
+          <div style="padding:10px 12px;border-radius:11px;background:rgba(255,255,255,.05);"><div style="color:#9fb6af;font-size:12px;">חדרים</div><strong style="color:#fbf6e6;font-size:18px;font-weight:800;">{{ selected.rooms }}</strong></div>
+          <div style="padding:10px 12px;border-radius:11px;background:rgba(255,255,255,.05);"><div style="color:#9fb6af;font-size:12px;">שטח בנוי</div><strong style="color:#fbf6e6;font-size:18px;font-weight:800;">{{ selected.sqm }} מ״ר</strong></div>
+          <div style="padding:10px 12px;border-radius:11px;background:rgba(255,255,255,.05);"><div style="color:#9fb6af;font-size:12px;">מרפסת</div><strong style="color:#fbf6e6;font-size:18px;font-weight:800;">{{ selected.balcony }} מ״ר</strong></div>
+          <div style="padding:10px 12px;border-radius:11px;background:rgba(255,255,255,.05);"><div style="color:#9fb6af;font-size:12px;">נוף</div><strong style="color:#fbf6e6;font-size:14px;font-weight:700;line-height:1.3;">{{ selected.view }}</strong></div>
+        </div>
+
+        <div style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:6px;margin:16px 0 0;">
+          <button type="button" onClick="{{ onTabPlan }}" style="{{ tabPlanStyle }}">תכנית</button>
+          <button type="button" onClick="{{ onTabView }}" style="{{ tabViewStyle }}">מבט</button>
+          <button type="button" onClick="{{ onTabTour }}" style="{{ tabTourStyle }}">סיור</button>
+        </div>
+
+        <div style="margin:10px 0 0;border-radius:13px;overflow:hidden;border:1px solid rgba(242,223,167,.2);background:rgba(3,21,21,.55);min-height:180px;display:flex;align-items:center;justify-content:center;">
+          <sc-if value="{{ showPlan }}" hint-placeholder-val="{{ true }}">
+            <img src="{{ selected.plan }}" alt="תכנית הדירה להמחשה" style="display:block;width:100%;height:100%;max-height:240px;object-fit:contain;">
+          </sc-if>
+          <sc-if value="{{ showPanelText }}" hint-placeholder-val="{{ false }}">
+            <p style="padding:24px;text-align:center;color:#aebfb8;font-size:14px;line-height:1.6;max-width:300px;">{{ panelText }}</p>
+          </sc-if>
+        </div>
+
+        <form onSubmit="{{ onSubmit }}" style="margin:16px 0 0;padding:15px 0 0;border-top:1px solid rgba(242,223,167,.16);">
+          <div style="color:#fbf6e6;font-weight:800;font-size:15px;margin:0 0 10px;">מתעניינים בדירה זו? נחזור אליכם</div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;">
+            <input value="{{ form.name }}" onInput="{{ onName }}" placeholder="שם מלא" style="grid-column:1/3;width:100%;min-height:44px;padding:9px 12px;border-radius:11px;border:1px solid rgba(242,223,167,.24);background:rgba(255,255,255,.08);color:#fbf6e6;font:inherit;font-size:15px;">
+            <input value="{{ form.phone }}" onInput="{{ onPhone }}" inputmode="tel" placeholder="טלפון" style="width:100%;min-height:44px;padding:9px 12px;border-radius:11px;border:1px solid rgba(242,223,167,.24);background:rgba(255,255,255,.08);color:#fbf6e6;font:inherit;font-size:15px;">
+            <input value="{{ form.email }}" onInput="{{ onEmail }}" inputmode="email" placeholder="אימייל" style="width:100%;min-height:44px;padding:9px 12px;border-radius:11px;border:1px solid rgba(242,223,167,.24);background:rgba(255,255,255,.08);color:#fbf6e6;font:inherit;font-size:15px;">
+          </div>
+          <button type="submit" style="width:100%;min-height:48px;margin:10px 0 0;border:0;border-radius:12px;background:linear-gradient(180deg,#f0d999,#c99c49);color:#12130f;font-weight:800;font-size:16px;font-family:inherit;cursor:pointer;">שליחת פנייה על דירה {{ selected.floorRoomShort }}</button>
+          <sc-if value="{{ feedback }}" hint-placeholder-val="{{ false }}">
+            <p style="margin:10px 0 0;padding:10px 12px;border-radius:10px;background:{{ feedbackBg }};color:{{ feedbackColor }};font-size:13px;line-height:1.5;">{{ feedback }}</p>
+          </sc-if>
+          <p style="margin:9px 0 0;color:#8fa49d;font-size:11.5px;line-height:1.5;">הפנייה תכלול את מזהה הדירה, הקומה, החדרים והכיוון. אינה מהווה הזמנה או התחייבות לרכישה.</p>
+        </form>
+      </aside>
+    </div>
+
+    <section data-screen-label="inventory" style="margin:30px 0 0;">
+      <div style="display:flex;align-items:baseline;justify-content:space-between;gap:14px;flex-wrap:wrap;margin:0 0 14px;">
+        <h2 style="font-family:'Frank Ruhl Libre',serif;font-weight:700;font-size:clamp(22px,2.6vw,30px);color:#13201d;">מלאי הדגמה — בחרו דירה</h2>
+        <span style="color:#8a8270;font-size:13px;">לחיצה על דירה תעדכן את מודל הפרויקט והכרטיס למעלה</span>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:12px;">
+        <sc-for list="{{ inventory }}" as="u" hint-placeholder-count="6">
+          <button type="button" onClick="{{ u.onSelect }}" style="{{ u.cardStyle }}">
+            <span style="display:flex;align-items:center;justify-content:space-between;gap:8px;">
+              <span style="display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:700;color:#5f5a4d;"><span style="width:9px;height:9px;border-radius:50%;background:{{ u.statusColor }};"></span>{{ u.statusLabel }}</span>
+              <span style="font-size:12px;color:#8a8270;">קומה {{ u.floor }}</span>
+            </span>
+            <strong style="display:block;margin:8px 0 2px;font-family:'Frank Ruhl Libre',serif;font-size:18px;color:#13201d;font-weight:700;">{{ u.roomsLabel }}</strong>
+            <span style="display:block;font-size:13px;color:#5f5a4d;">{{ u.sqm }} מ״ר · {{ u.dir }}</span>
+          </button>
+        </sc-for>
+      </div>
+    </section>
+
+    <section data-screen-label="environment" style="margin:40px 0 0;">
+      <h2 style="font-family:'Frank Ruhl Libre',serif;font-weight:700;font-size:clamp(22px,2.6vw,30px);color:#13201d;margin:0 0 6px;">הסביבה — רובע שדה דב</h2>
+      <p style="color:#5f5a4d;font-size:16px;line-height:1.6;max-width:760px;margin:0 0 18px;">במרחק הליכה מהים ומהטיילת, מצפון לארובת רידינג ההיסטורית, בלב הרובע המתחדש שמתוכנן לכ‑16,000 דירות, פארקים, רכבת קלה ושטחי מסחר ותעסוקה.</p>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px;">
+        <div style="padding:18px;border-radius:16px;background:#fff;border:1px solid #e6ddca;">
+          <div style="font-size:13px;font-weight:700;color:#a67d30;">חוף וטיילת</div>
+          <strong style="display:block;font-family:'Frank Ruhl Libre',serif;font-size:19px;color:#13201d;margin:6px 0 6px;">פארק חופי וטיילת</strong>
+          <p style="font-size:14px;color:#5f5a4d;line-height:1.6;">פארק חופי וטיילת מתוכננים לאורך הים, בהמשך לרצועת החוף של תל אביב.</p>
+        </div>
+        <div style="padding:18px;border-radius:16px;background:#fff;border:1px solid #e6ddca;">
+          <div style="font-size:13px;font-weight:700;color:#a67d30;">תחבורה</div>
+          <strong style="display:block;font-family:'Frank Ruhl Libre',serif;font-size:19px;color:#13201d;margin:6px 0 6px;">הקו הירוק — רכבת קלה</strong>
+          <p style="font-size:14px;color:#5f5a4d;line-height:1.6;">הקו הירוק מתוכנן לחצות את הרובע מדרום לצפון ולחבר להרצליה ולרמת החייל.</p>
+        </div>
+        <div style="padding:18px;border-radius:16px;background:#fff;border:1px solid #e6ddca;">
+          <div style="font-size:13px;font-weight:700;color:#a67d30;">פארקים</div>
+          <strong style="display:block;font-family:'Frank Ruhl Libre',serif;font-size:19px;color:#13201d;margin:6px 0 6px;">פארק המסלול ופארק ליניארי</strong>
+          <p style="font-size:14px;color:#5f5a4d;line-height:1.6;">שלוש תכניות פארקים אושרו ברובע, ביניהן פארק המסלול לאורך מסלול ההמראה לשעבר.</p>
+        </div>
+        <div style="padding:18px;border-radius:16px;background:#fff;border:1px solid #e6ddca;">
+          <div style="font-size:13px;font-weight:700;color:#a67d30;">פרויקטים שכנים</div>
+          <strong style="display:block;font-family:'Frank Ruhl Libre',serif;font-size:19px;color:#13201d;margin:6px 0 6px;">שכונה בהקמה</strong>
+          <p style="font-size:14px;color:#5f5a4d;line-height:1.6;">בסביבה משווקים פרויקטים נוספים באשכול ובמרכז הרובע, לצד מבני ציבור וחינוך מתוכננים.</p>
+        </div>
+      </div>
+    </section>
+
+    <section data-screen-label="content" style="margin:40px auto 0;max-width:820px;">
+      <h2 style="font-family:'Frank Ruhl Libre',serif;font-weight:700;font-size:clamp(22px,2.6vw,30px);color:#13201d;margin:0 0 12px;">מגדל Rainbow מול הים בשדה דב</h2>
+      <p style="font-size:17px;line-height:1.8;color:#3a3c33;margin:0 0 16px;">פרויקט Rainbow ממוקם ברובע שדה דב המתחדש בצפון‑מערב תל אביב, מול הים. התצוגה כאן מאפשרת לבחור דירה לפי קומה, מספר חדרים, כיוון ונוף, ולראות תכנית להמחשה — לפני פנייה לנציג. כל הנתונים המוצגים הם להמחשה בלבד עד לקבלת חומר רשמי מהיזם.</p>
+      <h3 style="font-family:'Frank Ruhl Libre',serif;font-weight:700;font-size:21px;color:#13201d;margin:8px 0 10px;">איך עובדת בחירת הדירה</h3>
+      <p style="font-size:17px;line-height:1.8;color:#3a3c33;margin:0 0 16px;">לוחצים על נקודה במודל הפרויקט או על דירה ברשימת המלאי, וכרטיס הדירה מתעדכן עם הפרטים והתכנית. משאירים פרטים בטופס והפנייה מגיעה למערכת עם כל מאפייני הדירה.</p>
+      <div style="padding:16px 18px;border-radius:13px;background:#fffaf0;border-right:4px solid #c99c49;">
+        <strong style="display:block;color:#13201d;font-size:15px;margin:0 0 4px;">הצהרת המחשה</strong>
+        <p style="font-size:14px;line-height:1.7;color:#5f5a4d;">המודל, התכניות, הכיוונים והדירות המוצגים הם המחשה מקורית על בסיס מקורות פומביים — אינם BIM רשמי, אינם תוכנית מכר ואינם מלאי זמין. מחיר, זמינות ותנאים יש לאמת מול היזם. אין באמור הצעה או התחייבות.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer style="background:#0c3836;color:#cfc7ad;">
+    <div style="max-width:1240px;margin:0 auto;padding:30px clamp(14px,3vw,28px);display:flex;flex-wrap:wrap;gap:20px;align-items:center;justify-content:space-between;">
+      <div style="display:flex;align-items:baseline;gap:12px;"><span style="font-family:'Frank Ruhl Libre',serif;font-weight:900;font-size:24px;color:#f2dfa7;">נדל״ן</span><span style="font-size:13px;color:#9fb6af;">תצוגת פרויקטים · שדה דב, תל אביב</span></div>
+      <div style="font-size:13px;color:#9fb6af;">© נדל״ן · כל הנתונים להמחשה עד לאישור היזם</div>
+    </div>
+  </footer>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1240,&quot;height&quot;:980},&quot;demoBadge&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;הדמיה להמחשה&quot;,&quot;tsType&quot;:&quot;string&quot;}}">
+class Component extends DCLogic {
+  state = {
+    selectedId: 'unit-24-nw',
+    tab: 'plan',
+    form: { name: '', phone: '', email: '' },
+    feedback: '',
+    ok: false,
+  };
+
+  units = [
+    { id:'unit-38-penthouse', floor:38, rooms:5, sqm:210, balcony:42, dir:'מערב', view:'פנטהאוז גבוה לכיוון הים', status:'available', recommended:true, plan:'assets/projects/rainbow-tel-aviv/plans/plan-penthouse.svg', roomsLabel:'פנטהאוז · 5 חדרים', title:'פנטהאוז 5 חדרים, קומה 38', x:24, y:15 },
+    { id:'unit-31-se', floor:31, rooms:5, sqm:156, balcony:22, dir:'דרום מזרח', view:'קו הרקיע והחצר הפנימית', status:'available', recommended:false, plan:'assets/projects/rainbow-tel-aviv/plans/plan-5br.svg', roomsLabel:'5 חדרים', title:'דירת 5 חדרים, קומה 31', x:26, y:27 },
+    { id:'unit-24-nw', floor:24, rooms:4, sqm:128, balcony:16, dir:'צפון מערב', view:'ים, פארק וצפון תל אביב', status:'available', recommended:true, plan:'assets/projects/rainbow-tel-aviv/plans/plan-4br.svg', roomsLabel:'4 חדרים', title:'דירת 4 חדרים, קומה 24', x:27, y:39 },
+    { id:'unit-16-w', floor:16, rooms:4, sqm:112, balcony:14, dir:'מערב', view:'קו החוף ושדה דב', status:'available', recommended:false, plan:'assets/projects/rainbow-tel-aviv/plans/plan-4br.svg', roomsLabel:'4 חדרים', title:'דירת 4 חדרים, קומה 16', x:24, y:52 },
+    { id:'unit-08-sw', floor:8, rooms:3, sqm:82, balcony:10, dir:'דרום מערב', view:'מבט לחצר ולים', status:'available', recommended:false, plan:'assets/projects/rainbow-tel-aviv/plans/plan-3br.svg', roomsLabel:'3 חדרים', title:'דירת 3 חדרים, קומה 8', x:22, y:64 },
+    { id:'unit-boutique-07', floor:7, rooms:4, sqm:118, balcony:18, dir:'מערב', view:'בניין בוטיק סביב הלגונה', status:'reserved', recommended:false, plan:'assets/projects/rainbow-tel-aviv/plans/plan-boutique.svg', roomsLabel:'בוטיק · 4 חדרים', title:'דירת 4 חדרים בבניין בוטיק, קומה 7', x:9, y:71 },
+  ];
+
+  building = 'Rainbow תל אביב';
+
+  statusColor(s) { return s === 'available' ? '#34d986' : s === 'reserved' ? '#e7b952' : '#9aa7a7'; }
+  statusLabel(s) { return s === 'available' ? 'זמינה' : s === 'reserved' ? 'בעדיפות' : 'נמכרה'; }
+
+  get sel() { return this.units.find(u => u.id === this.state.selectedId) || this.units[0]; }
+
+  pick(id) { this.setState({ selectedId: id, tab: 'plan', feedback: '', ok: false }); }
+  setTab(t) { this.setState({ tab: t }); }
+
+  field(k) { return (e) => this.setState({ form: Object.assign({}, this.state.form, { [k]: e.target.value }) }); }
+
+  submit(e) {
+    e.preventDefault();
+    const f = this.state.form;
+    if (!f.name.trim() || (!f.phone.trim() && !f.email.trim())) {
+      this.setState({ feedback: 'יש למלא שם וגם טלפון או אימייל כדי שנחזור אליכם.', ok: false });
+      return;
+    }
+    const u = this.sel;
+    this.setState({ ok: true, feedback: 'תודה! קיבלנו את הפנייה עבור ' + u.title + '. נציג יחזור אליכם בתוך 24 שעות.', form: { name:'', phone:'', email:'' } });
+  }
+
+  tabStyle(active) {
+    return 'min-height:42px;border-radius:10px;font:inherit;font-weight:700;font-size:14px;cursor:pointer;border:1px solid rgba(242,223,167,.26);'
+      + (active
+        ? 'background:linear-gradient(180deg,#f0d999,#c99c49);color:#12130f;border-color:transparent;'
+        : 'background:rgba(255,255,255,.06);color:#f7f1dc;');
+  }
+
+  renderVals() {
+    const sel = this.sel;
+    const tab = this.state.tab;
+    const panelCopy = {
+      view: 'מבט מהדירה לפי קומה וכיוון יוצג לאחר אימות מיקום וקואורדינטות מול היזם.',
+      tour: 'סיור פנים וירטואלי בסגנון Matterport יוצג כאשר יתקבל קישור מאושר מהיזם.',
+    };
+
+    const hotspot = (u) => {
+      const active = u.id === this.state.selectedId;
+      const c = this.statusColor(u.status);
+      let s = 'position:absolute;left:' + u.x + '%;top:' + u.y + '%;transform:translate(-50%,-50%)' + (active ? ' scale(1.12)' : '') + ';';
+      s += 'display:grid;place-items:center;width:42px;height:42px;border-radius:11px;cursor:pointer;font:inherit;font-weight:800;font-size:13px;color:#fbf6e6;';
+      s += 'border:2px solid ' + c + ';background:' + (active ? 'rgba(52,217,134,.34)' : 'rgba(8,30,28,.42)') + ';backdrop-filter:blur(2px);';
+      s += 'box-shadow:0 4px 14px rgba(0,0,0,.4)' + (active ? ',0 0 0 7px rgba(52,217,134,.16)' : '') + ';transition:transform .16s ease,background .16s ease;';
+      if (u.recommended && !active) s += 'animation:nlpsPulse 2.1s infinite;';
+      return { floor: u.floor, style: s, onSelect: () => this.pick(u.id), aria: u.title };
+    };
+
+    const inv = (u) => {
+      const active = u.id === this.state.selectedId;
+      let cs = 'text-align:right;cursor:pointer;font:inherit;padding:13px 14px;border-radius:14px;background:#fff;transition:border-color .15s ease,box-shadow .15s ease;';
+      cs += active ? 'border:1px solid #c99c49;box-shadow:0 8px 22px rgba(201,156,73,.22);' : 'border:1px solid #e6ddca;';
+      return { roomsLabel: u.roomsLabel, sqm: u.sqm, dir: u.dir, floor: u.floor, statusColor: this.statusColor(u.status), statusLabel: this.statusLabel(u.status), cardStyle: cs, onSelect: () => this.pick(u.id) };
+    };
+
+    return {
+      demoBadge: this.props.demoBadge ?? 'הדמיה להמחשה',
+      hotspots: this.units.map(hotspot),
+      inventory: this.units.map(inv),
+      selected: {
+        title: sel.title,
+        head: sel.roomsLabel,
+        building: this.building,
+        dir: sel.dir,
+        floor: sel.floor,
+        rooms: sel.rooms,
+        sqm: sel.sqm,
+        balcony: sel.balcony,
+        view: sel.view,
+        plan: sel.plan,
+        statusColor: this.statusColor(sel.status),
+        statusLabel: this.statusLabel(sel.status),
+        floorRoomShort: sel.rooms + ' חד׳ · קומה ' + sel.floor,
+      },
+      showPlan: tab === 'plan',
+      showPanelText: tab !== 'plan',
+      panelText: panelCopy[tab] || '',
+      onTabPlan: () => this.setTab('plan'),
+      onTabView: () => this.setTab('view'),
+      onTabTour: () => this.setTab('tour'),
+      tabPlanStyle: this.tabStyle(tab === 'plan'),
+      tabViewStyle: this.tabStyle(tab === 'view'),
+      tabTourStyle: this.tabStyle(tab === 'tour'),
+      form: this.state.form,
+      onName: this.field('name'),
+      onPhone: this.field('phone'),
+      onEmail: this.field('email'),
+      onSubmit: (e) => this.submit(e),
+      feedback: this.state.feedback,
+      feedbackBg: this.state.ok ? 'rgba(52,217,134,.14)' : 'rgba(231,90,90,.16)',
+      feedbackColor: this.state.ok ? '#d6f5e2' : '#ffd9d3',
+    };
+  }
+}
+</script>
+<script>
+(async () => {
+  if (!document.title || !document.title.trim()) document.title = "Rainbow Showroom";
+  // Prepend so page-supplied @page / break rules (deck-stage's margin:0,
+  // author CSS) keep source-order precedence over the baseline.
+  const baseCss = document.createElement('style');
+  baseCss.textContent = "@media print {\n  figure, table { break-inside: avoid; }\n  *, *::before, *::after {\n    print-color-adjust: exact; -webkit-print-color-adjust: exact;\n    backdrop-filter: none !important; -webkit-backdrop-filter: none !important;\n    animation-delay: -99s !important; animation-duration: .001s !important;\n    animation-iteration-count: 1 !important; animation-fill-mode: both !important;\n    animation-play-state: running !important; transition-duration: 0s !important;\n  }\n}";
+  document.head.prepend(baseCss);
+  if (document.readyState === 'loading') {
+    await new Promise((r) => document.addEventListener('DOMContentLoaded', r, { once: true }));
+  }
+  let ds = document.querySelector('deck-stage');
+  // whenDefined never resolves when nothing registers the element, so only
+  // await it when a <deck-stage> tag exists (and race a timeout regardless).
+  if (ds && !customElements.get('deck-stage')) {
+    try {
+      await Promise.race([
+        customElements.whenDefined('deck-stage'),
+        new Promise((r) => setTimeout(r, 3000)),
+      ]);
+    } catch (e) {}
+    ds = document.querySelector('deck-stage');
+  }
+  // dc-runtime assigns window.DCLogic at init and mounts into #dc-root on
+  // DOMContentLoaded; settle on that subtree so React has rendered before
+  // print(). Non-DC pages fall through to weighing body.
+  const isDc = !ds && 'DCLogic' in window;
+  const settleRoot = ds || (isDc ? document.getElementById('dc-root') : null) || document.body;
+  if (settleRoot) {
+    // Weigh only content children — skip script/style/template so inline
+    // Babel/CSS doesn't register as stable "content" before the framework
+    // has mounted anything.
+    const MEDIA = 'img,svg,canvas,video,picture,iframe,embed,object';
+    const weigh = () => {
+      let text = 0, media = 0;
+      for (const c of settleRoot.children) {
+        const t = c.tagName;
+        if (t === 'SCRIPT' || t === 'STYLE' || t === 'TEMPLATE') continue;
+        text += (c.textContent || '').trim().length;
+        media += c.querySelectorAll(MEDIA).length + (c.matches(MEDIA) ? 1 : 0);
+      }
+      return text + media * 100;
+    };
+    // "Non-zero and stable" alone is not sufficient to mean rendered: generic
+    // body can carry a static shell while async main content is pending, and
+    // #dc-root can carry the root DC's static text while child refs are still
+    // .sc-placeholder boxes. Gate generic on readyState 'complete', and never
+    // accept stability while a dc-runtime placeholder is present.
+    const isGeneric = settleRoot === document.body;
+    const deadline = Date.now() + 15000;
+    let last = -1, stable = 0;
+    while (Date.now() < deadline) {
+      const n = weigh();
+      const ready =
+        (!isGeneric || document.readyState === 'complete') &&
+        !settleRoot.querySelector('.sc-placeholder');
+      if (n > 0 && n === last && ready) { if (++stable >= 2) break; } else { stable = 0; }
+      last = n;
+      await new Promise((r) => setTimeout(r, 250));
+    }
+  }
+  // Project support.js may predate runtime default-seeding; push via bridge.
+  if (isDc && window.__dcSetProps && window.__dcRootName) {
+    try {
+      const dpEl = document.querySelector('script[data-dc-script]');
+      const meta = JSON.parse((dpEl && dpEl.getAttribute('data-props')) || '{}');
+      const bag = {};
+      for (const k in meta)
+        if (k[0] !== '$' && meta[k] && meta[k].default !== undefined)
+          bag[k] = meta[k].default;
+      if (Object.keys(bag).length) {
+        window.__dcSetProps(window.__dcRootName(), bag);
+        await new Promise((r) => setTimeout(r, 50));
+      }
+    } catch (e) {}
+  }
+  // Reveal content gated on scroll or visibility before printing. Lazy <img>,
+  // IntersectionObserver fade-ins, and collapsed <details> don't render while
+  // off-screen, so a long page would print with them blank or closed. Open
+  // every <details>, force native-lazy images eager, and scroll the document
+  // through its full height to trip lazy-load + IO; then wait (bounded) for the
+  // newly-triggered images. Inert for deck-stage (slides aren't scroll-gated).
+  try {
+    for (const d of document.querySelectorAll('details')) d.open = true;
+    for (const img of document.querySelectorAll('img[loading="lazy"]'))
+      img.loading = 'eager';
+    const scroller = document.scrollingElement || document.documentElement;
+    const full = Math.max(scroller.scrollHeight, document.body.scrollHeight);
+    const step = window.innerHeight || 800;
+    for (let y = 0; y <= full; y += step) {
+      window.scrollTo(0, y);
+      await new Promise((r) => requestAnimationFrame(r));
+    }
+    window.scrollTo(0, 0);
+    await Promise.race([
+      Promise.all(
+        [...document.images].map((img) =>
+          img.complete
+            ? null
+            : new Promise((res) => {
+                img.addEventListener('load', res, { once: true });
+                img.addEventListener('error', res, { once: true });
+              })
+        )
+      ),
+      new Promise((r) => setTimeout(r, 4000)),
+    ]);
+  } catch (e) {}
+  try { await document.fonts.ready; } catch (e) {}
+  // Jump every animation to its end state so print() never captures a slide
+  // mid-entrance. Ordering matters: the 0s-transition style must be live
+  // BEFORE data-deck-active is set so attribute-keyed transitions don't
+  // start a (now-0s) run from the pre-active base.
+  const st = document.createElement('style');
+  st.textContent = '*,*::before,*::after{animation-delay:-99s !important;animation-duration:.001s !important;animation-iteration-count:1 !important;animation-fill-mode:both !important;animation-play-state:running !important;transition-duration:0s !important}';
+  document.head.appendChild(st);
+  for (const d of document.querySelectorAll('deck-stage')) {
+    for (const c of d.children) {
+      const t = c.tagName;
+      if (t === 'SCRIPT' || t === 'STYLE' || t === 'TEMPLATE') continue;
+      c.setAttribute('data-deck-active', '');
+    }
+  }
+  // Re-append deck-stage's @page last so no author @page can add a margin and
+  // spill each full-bleed slide onto two sheets. Backstop for old copies.
+  if (ds) {
+    let pg = document.getElementById('deck-stage-print-page');
+    if (!pg) {
+      pg = document.createElement('style');
+      pg.textContent = '@page{size:' + (+ds.getAttribute('width') || 1920) +
+        'px ' + (+ds.getAttribute('height') || 1080) + 'px;margin:0}';
+    }
+    document.body.appendChild(pg);
+  }
+  try {
+    const sweep = () => {
+      for (const a of document.getAnimations()) {
+        try { a.finish(); } catch (e) {
+          try { a.currentTime = (a.effect && a.effect.getComputedTiming().duration) || 0; a.pause(); } catch (e2) {}
+        }
+      }
+    };
+    sweep();
+    await new Promise((r) => requestAnimationFrame(r));
+    sweep();
+    await new Promise((r) => requestAnimationFrame(r));
+  } catch (e) {}
+  // Size the PDF page to the rendered design unless the file opted into
+  // standard paper via @page{size:letter|A4|…}. Decks own their own @page.
+  // Wrappers (body, …) lose padding+margin so the frame sits at (0,0); the
+  // frame itself loses only margin — its padding is INSIDE the measured
+  // rect and must stay, or content shifts and leaves a gap at bottom/right.
+  var __m = null;
+  try { __m = (() => {
+  var STAMP = true;
+  var docEl = document.documentElement;
+  var doc = { width: docEl.scrollWidth, height: docEl.scrollHeight };
+
+  var ds = document.querySelector('deck-stage');
+  if (ds) {
+    var dw = Number(ds.getAttribute('width')) || 1920;
+    var dh = Number(ds.getAttribute('height')) || 1080;
+    var n = typeof ds.length === 'number' ? ds.length : ds.children.length;
+    var idx = typeof ds.index === 'number' ? ds.index : 0;
+    var frames = [];
+    for (var i = 0; i < n; i++) frames.push({ left: 0, top: 0, width: dw, height: dh });
+    return { kind: 'deck', source: 'declared', doc: doc, frames: frames,
+      authored: frames.map(function(){return{width:true,height:true}}),
+      deck: { width: dw, height: dh, slideCount: n, index: idx },
+      signals: { paperPage: false, pxPage: false } };
+  }
+
+  // Declared kind: a doc-page tag names the kind outright, so no signal
+  // heuristics run (like the deck branch above, signals report false —
+  // they describe inferred classifications only). The tag alone is not
+  // trusted: the element must have upgraded (shadowRoot present), so a
+  // leftover tag whose script was deleted falls through to the heuristics
+  // that handle plain markup.
+  var stageSx = window.scrollX || 0, stageSy = window.scrollY || 0;
+  var dp = document.querySelector('doc-page');
+  if (dp && dp.shadowRoot) {
+    // Crop to the sheet, not the host — the desk around it is screen-only
+    // chrome that must not land in PNG exports.
+    var sheet = dp.shadowRoot.querySelector('.sheet');
+    var sr = (sheet || dp).getBoundingClientRect();
+    return { kind: 'paper-doc', source: 'declared', doc: doc,
+      frames: [{ left: sr.left + stageSx, top: sr.top + stageSy,
+        width: sr.width, height: sr.height }],
+      authored: [{ width: false, height: false }],
+      signals: { paperPage: false, pxPage: false } };
+  }
+  var paperPage = false, pxPage = false;
+  var eachRule = function (fn) {
+    for (var s = 0; s < document.styleSheets.length; s++) {
+      var rs; try { rs = document.styleSheets[s].cssRules; } catch (e) { continue; }
+      for (var r = 0; r < rs.length; r++) {
+        fn(rs[r]);
+        if (rs[r].cssRules) for (var n = 0; n < rs[r].cssRules.length; n++) fn(rs[r].cssRules[n]);
+      }
+    }
+  };
+  eachRule(function (r) {
+    if (r.type !== 6) return;
+    var m = /\bsize\s*:\s*([^;}]+)/i.exec(r.cssText || '');
+    if (!m) return;
+    if (/\b(letter|a[3-5]|legal|ledger)\b/i.test(m[1])) paperPage = true;
+    if (/\d+(?:\.\d+)?px\b/i.test(m[1])) pxPage = true;
+  });
+  var signals = { paperPage: paperPage, pxPage: pxPage };
+
+  var pxVal = function (v) {
+    var m = /^(\d+(?:\.\d+)?)px$/.exec(v || ''); return m ? +m[1] : 0;
+  };
+  var authoredPx = function (el, prop) {
+    if (pxVal(el.style[prop])) return true;
+    var attr = el.getAttribute(prop);
+    if (attr && /^\d+$/.test(attr)) return true;
+    var hit = false;
+    eachRule(function (r) {
+      if (hit || r.type !== 1 || !r.style) return;
+      try { if (el.matches(r.selectorText) && pxVal(r.style[prop])) hit = true; } catch (e) {}
+    });
+    return hit;
+  };
+
+  var el = document.body, rootPxW = false;
+  for (;;) {
+    var kids = [];
+    for (var c = 0; c < el.children.length; c++) {
+      var t = el.children[c].tagName;
+      if (t !== 'SCRIPT' && t !== 'STYLE' && t !== 'TEMPLATE') kids.push(el.children[c]);
+    }
+    if (kids.length !== 1 || !(kids[0] instanceof HTMLElement)) break;
+    if (STAMP) el.setAttribute('data-om-frame-wrap', '');
+    el = kids[0];
+    rootPxW = authoredPx(el, 'width');
+    if (rootPxW) break;
+  }
+  if (!rootPxW) rootPxW = authoredPx(el, 'width');
+
+  // @page{size:letter} alone is a flowing doc; with a px-width root it's a
+  // fixed sheet pretending to be paper — fall through and size to render.
+  if (paperPage && !rootPxW) {
+    return { kind: 'paper-doc', source: 'inferred', doc: doc, signals: signals,
+      frames: [{ left: 0, top: 0, width: doc.width, height: doc.height }],
+      authored: [{ width: false, height: false }] };
+  }
+
+  var sx = window.scrollX || 0, sy = window.scrollY || 0;
+  var rectOf = function (e) {
+    var r = e.getBoundingClientRect();
+    var oy; try { oy = getComputedStyle(e).overflowY; } catch (err) {}
+    var h = oy === 'visible' ? Math.max(r.height, e.scrollHeight || 0) : r.height;
+    return { left: r.left + sx, top: r.top + sy, width: r.width, height: h };
+  };
+
+  // Multi-frame: ≥2 visible non-fixed children, each with authored px width
+  // AND height, all within ±2px of each other. Off unless the page opts in
+  // via data-om-multi-frame on the stop element — guards against card grids
+  // and pricing tables that match the geometry but aren't separate canvases.
+  if (el.hasAttribute('data-om-multi-frame')) {
+    var cands = [];
+    for (var k = 0; k < el.children.length; k++) {
+      var ch = el.children[k];
+      var cs; try { cs = getComputedStyle(ch); } catch (e) { continue; }
+      if (cs.display === 'none' || cs.visibility === 'hidden' || cs.position === 'fixed') continue;
+      var rc = rectOf(ch);
+      if (rc.width < 2 || rc.height < 2) continue;
+      if (!authoredPx(ch, 'width') || !authoredPx(ch, 'height')) continue;
+      cands.push(rc);
+    }
+    if (cands.length >= 2) {
+      var w0 = cands[0].width, h0 = cands[0].height, ok = true;
+      for (var q = 1; q < cands.length; q++)
+        if (Math.abs(cands[q].width - w0) > 2 || Math.abs(cands[q].height - h0) > 2) ok = false;
+      if (ok) return { kind: 'multi-frame', source: 'inferred', doc: doc, signals: signals,
+        frames: cands, authored: cands.map(function(){return{width:true,height:true}}) };
+    }
+  }
+
+  if (STAMP) el.setAttribute('data-om-frame', '');
+  return { kind: 'single-canvas', source: 'inferred', doc: doc, signals: signals,
+    frames: [rectOf(el)],
+    authored: [{ width: rootPxW, height: authoredPx(el, 'height') }] };
+})(); } catch (e) {}
+  var frame = null;
+  if (__m && __m.kind === 'single-canvas') {
+    var f = __m.frames && __m.frames[0];
+    if (f && f.width >= 200 && f.height >= 200) {
+      frame = f;
+      var fst = document.createElement('style');
+      fst.textContent = '@media print{@page{size:' + Math.ceil(f.width) + 'px ' +
+        Math.ceil(f.height) + 'px;margin:0}' +
+        'html,body,[data-om-frame-wrap]{padding:0!important;margin:0!important;background:none!important}' +
+        '[data-om-frame]{margin:0!important}}';
+      document.body.appendChild(fst);
+    }
+  }
+  // Relax break-inside on oversized elements. An element taller than a
+  // printable page can't honor break-inside: avoid — browsers either overflow
+  // it or push it whole to the next page, leaving a blank gap, then break it
+  // anyway at an arbitrary point. After the final layout (content revealed,
+  // animations jumped), find elements taller than a page that still compute
+  // break-inside: avoid and reset them to auto, so the browser breaks them at
+  // their children's boundaries instead (children keep their own avoid). PAGE_PX
+  // is a conservative portrait estimate at 96 CSS px/in — Letter/A4 usable
+  // height minus our 0.5in margins — so only clearly-oversized elements are
+  // touched and under-page elements still stay whole. Skipped for decks (slides
+  // are sized to the page) and for fixed-size canvases (frame set, or an author
+  // px-based @page) — runs as before for flowing docs on letter/A4.
+  try {
+    if (!ds && !frame && !(__m && __m.signals && __m.signals.pxPage)) {
+      const PAGE_PX = 1024;
+      // Our print defaults add a real @page margin only when the source has
+      // no @page of its own; computed style can't tell us (it reports screen
+      // media), so read the injected rule directly.
+      const defaults = document.querySelector('style[data-omelette-print-defaults]');
+      const pageInset = /@page\s*\{[^}]*margin/.test(defaults ? defaults.textContent || '' : '');
+      const SEL = 'section,article,figure,table,pre,blockquote,[class~="card" i],[class~="page" i],[class~="sheet" i]';
+      for (const el of document.body.querySelectorAll(SEL)) {
+        if (el instanceof HTMLElement && el.offsetHeight > PAGE_PX) {
+          el.setAttribute('data-om-oversized', '');
+          // Fake-paged docs simulate sheets with over-tall break-after:page
+          // boxes; honoring the break spills half-blank pages and ends a
+          // colored box mid-sheet. Flow them, and (only when we own the page
+          // inset) drop the redundant padding/background via the rule below.
+          const cs = getComputedStyle(el);
+          if (cs.breakAfter === 'page' || cs.pageBreakAfter === 'always') {
+            el.setAttribute('data-om-fakepage', '');
+          }
+        }
+      }
+      const ost = document.createElement('style');
+      ost.textContent = '@media print{' +
+        '[data-om-oversized]{break-inside:auto !important;page-break-inside:auto !important}' +
+        '[data-om-fakepage]{break-after:auto !important;page-break-after:auto !important}' +
+        (pageInset ? '[data-om-fakepage]{padding:0 !important;background:none !important}' : '') +
+        '}';
+      document.head.appendChild(ost);
+    }
+  } catch (e) {}
+  // macOS Preview renders Skia-PDF Luminosity soft-masks as opaque grey boxes;
+  // swap the CSS that triggers them for Preview-safe forms.
+  try {
+    for (const el of document.body.querySelectorAll('*')) {
+      const cs = getComputedStyle(el);
+
+      if (cs.boxShadow !== 'none' && cs.filter === 'none') {
+        const outs = [], kept = [];
+        for (const s of cs.boxShadow.split(/,(?![^(]*[)])/)) {
+          const t = s.trim();
+          const m = t.match(/^(rgba?[(][^)]+[)]) (-?[0-9.]+px) (-?[0-9.]+px) ([0-9.]+px) -?[0-9.]+px$/);
+          if (m && parseFloat(m[4]) > 0) outs.push('drop-shadow(' + m[2] + ' ' + m[3] + ' ' + m[4] + ' ' + m[1] + ')');
+          else kept.push(t);
+        }
+        if (outs.length) {
+          el.style.setProperty('filter', outs.join(' '), 'important');
+          el.style.setProperty('box-shadow', kept.join(', ') || 'none', 'important');
+        }
+      }
+
+      const mask = cs.maskImage && cs.maskImage !== 'none' ? cs.maskImage : cs.webkitMaskImage;
+      if (mask && mask !== 'none' && cs.filter === 'none') el.style.setProperty('filter', 'opacity(1)', 'important');
+    }
+  } catch (e) {}
+  setTimeout(() => { try { window.print(); } catch (e) {} }, 200);
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,120 @@
+/* ============================================================================
+   NadLan — EDITORIAL CSS for project-page article bodies (SEO content)
+   ----------------------------------------------------------------------------
+   PURPOSE: the long SEO buyer-guide that lives in each nadlan_project post body
+   currently renders in DEFAULT theme typography (flat text on white). This file
+   styles the EXISTING markup it already outputs — the `.nadlan-guide*` classes
+   seeded by project-page-assembly.php, plus generic h2/h3/p/ul inside the body —
+   in the locked cream/gold token system, so the article reads like a designed
+   magazine section instead of a wall of text.
+
+   IT CHANGES NO MARKUP. Enqueue it on single nadlan_project (see integration
+   spec §4C). It is additive and scoped to .entry-content / .nadlan-guide so it
+   cannot leak into tools, calculators or the directory.
+
+   Tokens come from tokens.css (must be enqueued as a dependency).
+   ============================================================================ */
+
+/* scope: the project article body. WP block themes wrap post content in
+   .entry-content / .wp-block-post-content; the guide blocks add .nadlan-guide. */
+.nadlan-project-article,
+.entry-content .nadlan-guide {
+  --col: 72ch;
+  font-family: var(--font-sans-he);
+  color: var(--ink);
+}
+html[lang="en"] .nadlan-project-article,
+html[lang="fr"] .nadlan-project-article { font-family: var(--font-sans-en); }
+
+/* readable measure + rhythm for the raw article flow */
+.nadlan-project-article { max-width: var(--col); margin-inline: auto; padding-block: var(--space-8); }
+.nadlan-project-article > h2,
+.entry-content .nadlan-guide__section > h2 {
+  font-family: var(--font-serif-he); font-weight: 500; font-size: var(--fs-h2);
+  line-height: var(--lh-tight); letter-spacing: var(--tracking-tight);
+  margin: var(--space-12) 0 var(--space-4); color: var(--ink);
+}
+html[lang="en"] .nadlan-project-article > h2,
+html[lang="en"] .entry-content .nadlan-guide__section > h2 { font-family: var(--font-serif-en); }
+.nadlan-project-article > h2::before,
+.entry-content .nadlan-guide__section > h2::before {
+  content: ""; display: block; width: 34px; height: 2px;
+  background: var(--gold); margin-bottom: var(--space-4);
+}
+.nadlan-project-article > h3 { font-family: var(--font-serif-he); font-size: var(--fs-h3); margin: var(--space-8) 0 var(--space-3); }
+.nadlan-project-article > p,
+.entry-content .nadlan-guide p {
+  font-size: 1.0625rem; line-height: var(--lh-loose); color: #2f2c25;
+  margin-bottom: var(--space-4); text-wrap: pretty;
+}
+.nadlan-project-article > ul,
+.nadlan-project-article > ol { margin: 0 0 var(--space-4); padding-inline-start: 1.4em; }
+.nadlan-project-article > ul li { margin-bottom: var(--space-2); line-height: var(--lh-snug); }
+.nadlan-project-article a { color: var(--gold); text-underline-offset: 2px; }
+
+/* byline */
+.entry-content .nadlan-guide__byline {
+  font-size: var(--fs-small); color: var(--muted-foreground);
+  border-inline-start: 2px solid var(--border); padding-inline-start: var(--space-3);
+  margin-bottom: var(--space-6);
+}
+
+/* "bottom line" note — the gold-rail callout */
+.entry-content .nadlan-guide__note {
+  background: #fcf7ec; border-inline-start: 3px solid var(--gold);
+  border-radius: var(--radius); padding: var(--space-4) var(--space-5);
+  margin-block: var(--space-6);
+}
+.entry-content .nadlan-guide__note strong { display: block; margin-bottom: var(--space-1); color: var(--ink); }
+.entry-content .nadlan-guide__note p { margin: 0; color: #4b4639; font-size: var(--fs-small); }
+
+/* fact cards row */
+.entry-content .nadlan-guide__cards {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: var(--space-3); margin-block: var(--space-6);
+}
+.entry-content .nadlan-guide__cards article {
+  background: var(--card); border: 1px solid var(--border);
+  border-radius: var(--radius-lg); padding: var(--space-4);
+}
+.entry-content .nadlan-guide__cards span {
+  font-size: var(--fs-micro); letter-spacing: var(--tracking-wide);
+  text-transform: uppercase; color: var(--gold); font-weight: 600;
+}
+.entry-content .nadlan-guide__cards strong {
+  display: block; font-family: var(--font-serif-he); font-size: 1.15rem;
+  margin: var(--space-1) 0 var(--space-2); color: var(--ink);
+}
+.entry-content .nadlan-guide__cards p { font-size: var(--fs-small); color: #4b4639; margin: 0; line-height: var(--lh-snug); }
+
+/* section wrapper spacing */
+.entry-content .nadlan-guide__section { margin-block: var(--space-10); }
+
+/* FAQ accordions */
+.entry-content .nadlan-guide__faq { display: flex; flex-direction: column; gap: var(--space-2); }
+.entry-content .nadlan-guide__faq details {
+  border: 1px solid var(--border); border-radius: var(--radius-md);
+  background: var(--card); padding: var(--space-3) var(--space-4);
+}
+.entry-content .nadlan-guide__faq summary {
+  cursor: pointer; font-weight: 600; color: var(--ink);
+  list-style: none; display: flex; justify-content: space-between; align-items: center;
+}
+.entry-content .nadlan-guide__faq summary::after { content: "+"; color: var(--gold); font-size: 1.2em; }
+.entry-content .nadlan-guide__faq details[open] summary::after { content: "−"; }
+.entry-content .nadlan-guide__faq details[open] summary { margin-bottom: var(--space-2); }
+.entry-content .nadlan-guide__faq p { margin: 0; font-size: var(--fs-small); color: #4b4639; }
+
+/* disclaimer + sources */
+.entry-content .nadlan-guide__disclaimer {
+  margin-block: var(--space-6); padding: var(--space-4);
+  background: var(--secondary); border-radius: var(--radius);
+  font-size: var(--fs-small); color: var(--muted-foreground); line-height: var(--lh-snug);
+}
+.entry-content .nadlan-guide__sources { font-size: var(--fs-small); color: var(--muted-foreground); }
+.entry-content .nadlan-guide__sources a { color: var(--gold); }
+
+/* keep the engine and the article from colliding: the engine block sits above,
+   give the article a clear top boundary when it directly follows #nl-root */
+#nl-root + * { margin-top: var(--space-12); }
+.nadlan-project-article { border-top: 1px solid var(--border); }

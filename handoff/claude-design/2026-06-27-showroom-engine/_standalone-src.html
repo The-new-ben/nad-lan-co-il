@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Ashira · NadLan</title>
+  <meta name="description" content="הדמיה להמחשה — בחירת דירה מתוך תצוגת הפרויקט. נתונים לאימות מול היזם.">
+
+  <!-- Code-referenced assets (built as strings in engine/data.js, so the bundler
+       cannot discover them from HTML attributes). Listed here so super_inline_html
+       inlines them; engine.js maps each path to window.__resources[id] at runtime. -->
+  <meta name="ext-resource-dependency" content="engine/models/ashira.glb" data-resource-id="ashira_glb">
+  <meta name="ext-resource-dependency" content="engine/models/ashira-poster.jpg" data-resource-id="ashira_poster">
+  <meta name="ext-resource-dependency" content="engine/models/ashira-facade.jpg" data-resource-id="ashira_facade">
+  <meta name="ext-resource-dependency" content="engine/models/rainbow.glb" data-resource-id="rainbow_glb">
+  <meta name="ext-resource-dependency" content="engine/models/rainbow-poster.jpg" data-resource-id="rainbow_poster">
+  <meta name="ext-resource-dependency" content="engine/models/rainbow-facade.jpg" data-resource-id="rainbow_facade">
+  <meta name="ext-resource-dependency" content="engine/models/dimri.glb" data-resource-id="dimri_glb">
+  <meta name="ext-resource-dependency" content="engine/models/dimri-poster.jpg" data-resource-id="dimri_poster">
+  <meta name="ext-resource-dependency" content="engine/models/dimri-facade.jpg" data-resource-id="dimri_facade">
+
+  <!-- hreflang preflight artifact (inert until published — see NOTES.md / multilingual gate) -->
+
+  <link rel="stylesheet" href="engine/tokens.css">
+  <link rel="stylesheet" href="engine/showroom.css">
+  <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/4.0.0/model-viewer.min.js"></script>
+
+  <template id="__bundler_thumbnail" data-bg-color="#14130f">
+    <svg viewBox="0 0 1200 800" xmlns="http://www.w3.org/2000/svg">
+      <rect width="1200" height="800" fill="#14130f"/>
+      <rect x="470" y="150" width="260" height="520" rx="6" fill="#cdddde" opacity="0.92"/>
+      <g stroke="#14130f" stroke-width="6" opacity="0.5">
+        <line x1="470" y1="230" x2="730" y2="230"/><line x1="470" y1="310" x2="730" y2="310"/>
+        <line x1="470" y1="390" x2="730" y2="390"/><line x1="470" y1="470" x2="730" y2="470"/>
+        <line x1="470" y1="550" x2="730" y2="550"/>
+      </g>
+      <g fill="#9C7A3C"><rect x="456" y="306" width="288" height="10"/><rect x="456" y="466" width="288" height="10"/><rect x="456" y="140" width="288" height="16"/></g>
+      <circle cx="600" cy="270" r="30" fill="#7A8F6A" stroke="#FAF7F1" stroke-width="5"/>
+      <text x="600" y="282" font-family="Georgia,serif" font-size="34" fill="#fff" text-anchor="middle" font-weight="700">18</text>
+      <text x="600" y="735" font-family="Georgia,serif" font-size="46" fill="#FAF7F1" text-anchor="middle">Ashira</text>
+    </svg>
+  </template>
+</head>
+<body>
+  <div id="nl-root" data-page="project"></div>
+
+  <script src="engine/i18n.js"></script>
+  <script src="engine/data.js"></script>
+  <script src="engine/engine.js"></script>
+</body>
+</html>
