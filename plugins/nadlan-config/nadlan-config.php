@@ -2,7 +2,7 @@
 /**
  * Plugin Name: NadLan Config
  * Description: Lead-capture foundation: nadlan_lead CPT + lead-form handler + healthcheck. Read skills/nadlan-config-plugin.md.
- * Version: 1.69.79
+ * Version: 1.69.80
  * Author: nad-lan.co.il
  * License: GPL-2.0+
  * Requires PHP: 7.4
@@ -70,7 +70,7 @@ if ( ! function_exists( 'nadlan_config_healthcheck_response' ) ) {
 	function nadlan_config_healthcheck_response() {
 		$out = array(
 			'plugin'              => 'nadlan-config',
-			'version'             => '1.69.79',
+			'version'             => '1.69.80',
 			'cpt_present'         => post_type_exists( 'nadlan_lead' ),
 			'lead_handler_loaded' => (bool) has_action( 'admin_post_nadlan_lead' ),
 			'php_version'         => PHP_VERSION,
@@ -617,6 +617,23 @@ if ( ! function_exists( 'nadlan_config_emergency_css' ) ) {
   max-height: 75vh;
 }
 
+/* --- ARTICLE TYPOGRAPHY SWEEP (owner screenshot 2026-07-01): headings and body
+   text must share alignment, measure and the brand serif — no justified body vs
+   right-aligned Times headings. Start-aligned ragged text is the Hebrew standard. --- */
+.entry-content p, .entry-content li,
+.entry-content :is(h1,h2,h3,h4,h5,h6),
+.nadlan-guide p, .nadlan-guide :is(h2,h3,h4) {
+  text-align: start !important;
+}
+.entry-content :is(h1,h2,h3,h4,h5,h6) {
+  font-family: var(--font-serif, "Frank Ruhl Libre", "David Libre", serif) !important;
+  letter-spacing: 0;
+}
+body:not(.nlpc-home):not(.nlpc-project-page) .entry-content.is-layout-constrained > :is(h1,h2,h3,h4,h5,h6) {
+  max-width: 760px;
+  margin-inline: auto !important;
+}
+
 /* --- ONE COMPACT CONTACT BAR on projects (owner mobile-QA 2026-07-01) ---
    The engine sticky bar stacked two full-width pills + the sitewide WhatsApp
    bubble + the chat FAB piled on top. Keep exactly ONE compact two-button bar
@@ -659,4 +676,12 @@ body.single-nadlan_project #nlcta { display: none !important; }
 	}
 }
 add_action( 'wp_enqueue_scripts', 'nadlan_config_emergency_css', 99 );
+
+/* Brand favicon: crisp SVG matching the ink-serif + single-gold-rule logo (2026-07-01). */
+if ( ! function_exists( 'nadlan_config_svg_favicon' ) ) {
+	function nadlan_config_svg_favicon() {
+		echo '<link rel="icon" type="image/svg+xml" href="' . esc_url( plugins_url( 'assets/branding/favicon.svg', __FILE__ ) ) . '">' . "\n";
+	}
+}
+add_action( 'wp_head', 'nadlan_config_svg_favicon', 1 );
 
