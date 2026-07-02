@@ -252,13 +252,13 @@ if ( ! function_exists( 'nadlan_showroom_engine_shortcode' ) ) {
 		$base = trailingslashit( nadlan_showroom_engine_base_url() );
 
 		// assets
-		wp_enqueue_style( 'nadlan-engine-tokens', $base . 'tokens.css', array(), '1.69.68' );
-		wp_enqueue_style( 'nadlan-engine-css', $base . 'showroom.css', array( 'nadlan-engine-tokens' ), '1.69.68' );
-		wp_enqueue_style( 'nadlan-engine-editorial', $base . 'editorial.css', array( 'nadlan-engine-tokens' ), '1.69.68' );
+		wp_enqueue_style( 'nadlan-engine-tokens', $base . 'tokens.css', array(), NADLAN_CONFIG_VERSION );
+		wp_enqueue_style( 'nadlan-engine-css', $base . 'showroom.css', array( 'nadlan-engine-tokens' ), NADLAN_CONFIG_VERSION );
+		wp_enqueue_style( 'nadlan-engine-editorial', $base . 'editorial.css', array( 'nadlan-engine-tokens' ), NADLAN_CONFIG_VERSION );
 		wp_enqueue_script( 'nadlan-model-viewer', 'https://ajax.googleapis.com/ajax/libs/model-viewer/4.0.0/model-viewer.min.js', array(), '4.0.0', true );
 		wp_script_add_data( 'nadlan-model-viewer', 'type', 'module' );
-		wp_enqueue_script( 'nadlan-engine-i18n', $base . 'i18n.js', array(), '1.69.68', true );
-		wp_enqueue_script( 'nadlan-engine-core', $base . 'engine.js', array( 'nadlan-engine-i18n' ), '1.69.68', true );
+		wp_enqueue_script( 'nadlan-engine-i18n', $base . 'i18n.js', array(), NADLAN_CONFIG_VERSION, true );
+		wp_enqueue_script( 'nadlan-engine-core', $base . 'engine.js', array( 'nadlan-engine-i18n' ), NADLAN_CONFIG_VERSION, true );
 
 		// Always run the map bootstrap so missing tokens/coords render as visible failures.
 		$mapbox_deps = array( 'nadlan-engine-core' );
@@ -267,7 +267,7 @@ if ( ! function_exists( 'nadlan_showroom_engine_shortcode' ) ) {
 			wp_enqueue_script( 'mapbox-gl', 'https://api.mapbox.com/mapbox-gl-js/v3.7.0/mapbox-gl.js', array(), '3.7.0', true );
 			$mapbox_deps[] = 'mapbox-gl';
 		}
-		wp_enqueue_script( 'nadlan-engine-mapbox', $base . 'mapbox-init.js', $mapbox_deps, '1.69.68', true );
+		wp_enqueue_script( 'nadlan-engine-mapbox', $base . 'mapbox-init.js', $mapbox_deps, NADLAN_CONFIG_VERSION, true );
 
 		// build payload from the CMS
 		$posts = nadlan_showroom_engine_resolve_target( $atts );
