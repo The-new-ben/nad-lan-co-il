@@ -1,0 +1,143 @@
+{
+ "ashira": {
+  "slug": "ashira",
+  "floors": 20,
+  "floor_height_m": 3.05,
+  "height_m": 61,
+  "default_orbit": "-30deg 73deg 142m",
+  "default_target": "0m 30m 0m",
+  "frame_radius_m": 142,
+  "units": [
+   {
+    "id": "ashira-18-west",
+    "label": "18W",
+    "floor": 18,
+    "bearing": 270,
+    "hotspot_position": "-11.533 56.12 0",
+    "hotspot_normal": "-1 0 0",
+    "camera_orbit": "270deg 72deg 57m"
+   },
+   {
+    "id": "ashira-14-city",
+    "label": "14C",
+    "floor": 14,
+    "bearing": 90,
+    "hotspot_position": "11.8 43.92 0",
+    "hotspot_normal": "1 0 0",
+    "camera_orbit": "90deg 72deg 57m"
+   },
+   {
+    "id": "ashira-10-corner",
+    "label": "10P",
+    "floor": 10,
+    "bearing": 225,
+    "hotspot_position": "-8.532 31.72 -8.532",
+    "hotspot_normal": "-0.707 0 -0.707",
+    "camera_orbit": "225deg 72deg 57m"
+   },
+   {
+    "id": "ashira-07-east",
+    "label": "7A",
+    "floor": 7,
+    "bearing": 90,
+    "hotspot_position": "12.267 22.57 0",
+    "hotspot_normal": "1 0 0",
+    "camera_orbit": "90deg 72deg 57m"
+   },
+   {
+    "id": "ashira-04-garden",
+    "label": "4G",
+    "floor": 4,
+    "bearing": 270,
+    "hotspot_position": "-12.467 13.42 0",
+    "hotspot_normal": "-1 0 0",
+    "camera_orbit": "270deg 72deg 57m"
+   }
+  ]
+ },
+ "rainbow": {
+  "slug": "rainbow",
+  "floors": 40,
+  "floor_height_m": 3.05,
+  "height_m": 122,
+  "default_orbit": "-30deg 73deg 284m",
+  "default_target": "0m 60m 0m",
+  "frame_radius_m": 284,
+  "units": [
+   {
+    "id": "rainbow-31",
+    "label": "31W",
+    "floor": 31,
+    "bearing": 270,
+    "hotspot_position": "-11.147 95.77 0",
+    "hotspot_normal": "-1 0 0",
+    "camera_orbit": "270deg 72deg 113m"
+   },
+   {
+    "id": "rainbow-24",
+    "label": "24N",
+    "floor": 24,
+    "bearing": 315,
+    "hotspot_position": "-8.139 74.42 8.139",
+    "hotspot_normal": "-0.707 0 0.707",
+    "camera_orbit": "315deg 72deg 113m"
+   },
+   {
+    "id": "rainbow-16",
+    "label": "16W",
+    "floor": 16,
+    "bearing": 270,
+    "hotspot_position": "-11.925 50.02 0",
+    "hotspot_normal": "-1 0 0",
+    "camera_orbit": "270deg 72deg 113m"
+   },
+   {
+    "id": "rainbow-08",
+    "label": "8S",
+    "floor": 8,
+    "bearing": 225,
+    "hotspot_position": "-8.726 25.62 -8.726",
+    "hotspot_normal": "-0.707 0 -0.707",
+    "camera_orbit": "225deg 72deg 113m"
+   }
+  ]
+ },
+ "dimri": {
+  "slug": "dimri",
+  "floors": 24,
+  "floor_height_m": 3.1,
+  "height_m": 74,
+  "default_orbit": "-30deg 73deg 173m",
+  "default_target": "0m 36m 0m",
+  "frame_radius_m": 173,
+  "units": [
+   {
+    "id": "dimri-22",
+    "label": "22W",
+    "floor": 22,
+    "bearing": 270,
+    "hotspot_position": "-13.709 69.44 0",
+    "hotspot_normal": "-1 0 0",
+    "camera_orbit": "270deg 72deg 69m"
+   },
+   {
+    "id": "dimri-15",
+    "label": "15S",
+    "floor": 15,
+    "bearing": 225,
+    "hotspot_position": "-9.914 47.74 -9.914",
+    "hotspot_normal": "-0.707 0 -0.707",
+    "camera_orbit": "225deg 72deg 69m"
+   },
+   {
+    "id": "dimri-09",
+    "label": "9N",
+    "floor": 9,
+    "bearing": 315,
+    "hotspot_position": "-10.103 29.14 10.103",
+    "hotspot_normal": "-0.707 0 0.707",
+    "camera_orbit": "315deg 72deg 69m"
+   }
+  ]
+ }
+}
