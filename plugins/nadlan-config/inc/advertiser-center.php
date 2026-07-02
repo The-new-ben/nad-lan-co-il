@@ -545,7 +545,7 @@ if ( ! function_exists( 'nadlan_ac_thankyou_panel' ) ) {
 add_action( 'woocommerce_thankyou', 'nadlan_ac_thankyou_panel', 18 );
 
 add_action( 'woocommerce_account_dashboard', function () {
-	echo '<p dir="rtl"><a class="button" href="' . esc_url( home_url( '/advertiser-center/' ) ) . '">מרכז הפרסום של נדל״ן חכם</a></p>';
+	echo '<p dir="rtl"><a class="button" href="' . esc_url( home_url( '/advertiser-center/' ) ) . '">מרכז הפרסום של נדלן</a></p>';
 }, 12 );
 
 add_filter( 'nadlan_config_healthcheck', function ( $out ) {

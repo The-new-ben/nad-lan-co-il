@@ -22,7 +22,7 @@ add_action( 'wp_head', function () {
 	$products = array(
 		array(
 			'name' => 'Pro — אנשי מקצוע (חודש ראשון חינם)',
-			'description' => 'תוכנית Pro למאגר נדל"ן חכם: פרסום מקודם של הכרטיס, חשיפה של פרטי קשר, גלריית תמונות, קבלת לידים חמים.',
+			'description' => 'תוכנית Pro למאגר נדלן: פרסום מקודם של הכרטיס, חשיפה של פרטי קשר, גלריית תמונות, קבלת לידים חמים.',
 			'sku'  => 'NL-PRO-476',
 			'price' => '349.00',
 			'url' => home_url( '/?add-to-cart=476' ),
@@ -36,7 +36,7 @@ add_action( 'wp_head', function () {
 		),
 		array(
 			'name' => 'קמפיין פרויקט — יזמים וקבלנים',
-			'description' => 'קמפיין מקודם של פרויקט נדל"ן (תמ"א 38, פינוי בינוי, בנייה חדשה) במאגר נדל"ן חכם.',
+			'description' => 'קמפיין מקודם של פרויקט נדל"ן (תמ"א 38, פינוי בינוי, בנייה חדשה) במאגר נדלן.',
 			'sku'  => 'NL-PROJECT-489',
 			'price' => '3990.00',
 			'url' => home_url( '/?add-to-cart=489' ),
@@ -49,7 +49,7 @@ add_action( 'wp_head', function () {
 			'name'     => $pr['name'],
 			'description' => $pr['description'],
 			'sku'      => $pr['sku'],
-			'brand'    => array( '@type' => 'Brand', 'name' => 'נדל"ן חכם' ),
+			'brand'    => array( '@type' => 'Brand', 'name' => 'נדלן' ),
 			'offers'   => array(
 				'@type' => 'Offer',
 				'priceCurrency' => 'ILS',
@@ -64,14 +64,14 @@ add_action( 'wp_head', function () {
 
 add_filter( 'pre_get_document_title', function ( $t ) {
 	if ( nadlan_pricing_is_page() ) {
-		return 'הצטרפו כמקצוען — Pro / Premier / קמפיין פרויקט | נדל"ן חכם';
+		return 'הצטרפו כמקצוען — Pro / Premier / קמפיין פרויקט | נדלן';
 	}
 	return $t;
 }, 25 );
 
 add_filter( 'wpseo_metadesc', function ( $d ) {
 	if ( nadlan_pricing_is_page() ) {
-		return 'הצטרפו למאגר נדל"ן חכם — Pro ₪349/חודש, Premier ₪749/חודש, קמפיין פרויקט ₪3,990. חודש ראשון חינם. חשיפה לאלפי קונים פוטנציאליים בחודש.';
+		return 'הצטרפו למאגר נדלן — Pro ₪349/חודש, Premier ₪749/חודש, קמפיין פרויקט ₪3,990. חודש ראשון חינם. חשיפה לאלפי קונים פוטנציאליים בחודש.';
 	}
 	return $d;
 } );

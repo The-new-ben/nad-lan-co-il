@@ -1175,7 +1175,7 @@ if ( ! function_exists( 'nadlan_p3d_seo_title' ) ) {
 			return $title;
 		}
 		$name = wp_strip_all_tags( get_the_title( get_queried_object_id() ) );
-		return sprintf( '%s | בחירת דירות, מבט מהדירה ושדה דב | נדלן חכם', $name );
+		return sprintf( '%s | בחירת דירות, מבט מהדירה ושדה דב | נדלן', $name );
 	}
 }
 

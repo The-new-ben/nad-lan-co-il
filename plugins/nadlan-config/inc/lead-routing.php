@@ -146,7 +146,7 @@ if ( ! function_exists( 'nadlan_lead_route_email_body' ) ) {
 		$lines[] = 'כל הפניות שלכם: ' . $center_url;
 		$lines[] = '';
 		$lines[] = 'כדאי לחזור ללקוח בהקדם ולסמן לעצמכם את איכות הפנייה.';
-		$lines[] = 'נדל״ן חכם';
+		$lines[] = 'נדלן';
 		return implode( "\n", $lines );
 	}
 }
@@ -206,7 +206,7 @@ if ( ! function_exists( 'nadlan_lead_route' ) ) {
 		}
 
 		$body    = nadlan_lead_route_email_body( $owner_id, $lead_id, $card_id, $fields );
-		$subject = 'פנייה חדשה לכרטיס שלך | נדל״ן חכם';
+		$subject = 'פנייה חדשה לכרטיס שלך | נדלן';
 		$headers = array( 'Content-Type: text/plain; charset=UTF-8' );
 		$delivered = apply_filters( 'nadlan_lead_deliver', false, $owner_id, $lead_id, $card_id, $body, $fields, $headers );
 		if ( is_wp_error( $delivered ) ) {

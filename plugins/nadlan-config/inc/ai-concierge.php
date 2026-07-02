@@ -581,13 +581,13 @@ add_action( 'wp_footer', function () {
 		<span>שאלו אותנו</span>
 	</button>
 	<div class="nlai-panel" hidden>
-		<header class="nlai-head"><span class="nlai-dot"></span><div><b>מענה מהיר - נדל"ן חכם</b><small>כל פנייה מלווה ונבדקת על ידי נציג אנושי</small></div><button class="nlai-close" aria-label="סגור">×</button></header>
+		<header class="nlai-head"><span class="nlai-dot"></span><div><b>מענה מהיר - נדלן</b><small>כל פנייה מלווה ונבדקת על ידי נציג אנושי</small></div><button class="nlai-close" aria-label="סגור">×</button></header>
 		<div class="nlai-msgs" id="nlai-msgs"></div>
 		<form class="nlai-form" onsubmit="return nlaiSend(event)">
 			<input type="text" id="nlai-input" placeholder="לדוגמה: כמה מס רכישה על דירה ראשונה?" autocomplete="off">
 			<button type="submit" aria-label="שלח">↑</button>
 		</form>
-		<div class="nlai-foot">מגובה במקורות האתר · <a href="<?php echo esc_url( home_url( '/' ) ); ?>">נדל"ן חכם</a></div>
+		<div class="nlai-foot">מגובה במקורות האתר · <a href="<?php echo esc_url( home_url( '/' ) ); ?>">נדלן</a></div>
 	</div>
 </div>
 <style>
@@ -631,7 +631,7 @@ add_action( 'wp_footer', function () {
 	function add(role,text){var el=document.createElement('div');el.className='nlai-msg is-'+(role==='user'?'user':'bot');el.innerHTML=text;msgs.appendChild(el);msgs.scrollTop=msgs.scrollHeight;return el;}
 	function fmt(t){return (t||'').replace(/\[([^\]]+)\]\(([^)]+)\)/g,'<a href="$2" target="_blank" rel="noopener">$1</a>').replace(/\n/g,'<br>');}
 	function intro(){
-		add('bot','שלום, אני העוזר החכם של נדל"ן חכם. אני עונה רק ממקורות האתר, ואם אין מקור ברור אני מעביר לבדיקה אנושית.<br>איך אפשר לעזור?');
+		add('bot','שלום, אני העוזר החכם של נדלן. אני עונה רק ממקורות האתר, ואם אין מקור ברור אני מעביר לבדיקה אנושית.<br>איך אפשר לעזור?');
 		var q=document.createElement('div');q.className='nlai-quick';q.innerHTML=
 			'<button data-q="כמה מס רכישה על דירה ראשונה?">מס רכישה</button>'+
 			'<button data-q="איך לבחור יועץ משכנתאות?">משכנתא</button>'+

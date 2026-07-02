@@ -80,7 +80,7 @@ add_action( 'rest_api_init', function () {
 				$svg .= '<text x="1140" y="' . $y . '" font-family="serif" font-size="72" font-weight="600" fill="#fff" text-anchor="end" direction="rtl">' . esc_html( $ln ) . '</text>';
 				$y += 90;
 			}
-			$svg .= '<text x="1140" y="580" font-family="sans-serif" font-size="28" fill="rgba(255,255,255,.6)" text-anchor="end" direction="rtl">נדל"ן חכם · nad-lan.co.il</text>';
+			$svg .= '<text x="1140" y="580" font-family="sans-serif" font-size="28" fill="rgba(255,255,255,.6)" text-anchor="end" direction="rtl">נדלן · nad-lan.co.il</text>';
 			$svg .= '</svg>';
 
 			$resp = new WP_REST_Response( $svg );

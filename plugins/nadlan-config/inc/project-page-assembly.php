@@ -59,7 +59,7 @@ if ( ! function_exists( 'nadlan_project_page_is_rainbow' ) ) {
 
 if ( ! function_exists( 'nadlan_project_page_rainbow_seo_title_text' ) ) {
 	function nadlan_project_page_rainbow_seo_title_text() {
-		return 'דירות למכירה ב-Rainbow תל אביב | מחירים, תוכניות ובחירת דירה בשדה דב | נדלן חכם';
+		return 'דירות למכירה ב-Rainbow תל אביב | מחירים, תוכניות ובחירת דירה בשדה דב | נדלן';
 	}
 }
 

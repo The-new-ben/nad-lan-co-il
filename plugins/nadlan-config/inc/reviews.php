@@ -125,7 +125,7 @@ add_action( 'rest_api_init', function () {
 				$msg .= ( $title ? "כותרת: $title\n" : '' );
 				$msg .= "\n$body\n\n";
 				$msg .= "אישור: " . admin_url( 'post.php?post=' . $rid . '&action=edit' ) . "\n";
-				wp_mail( $admin, '[נדל״ן חכם] חוות דעת ממתינה לאישור', $msg );
+				wp_mail( $admin, '[נדלן] חוות דעת ממתינה לאישור', $msg );
 			}
 			return array( 'ok' => true, 'message' => 'תודה! חוות הדעת התקבלה וממתינה לאישור.' );
 		},

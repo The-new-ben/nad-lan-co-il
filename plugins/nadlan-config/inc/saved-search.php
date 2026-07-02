@@ -85,7 +85,7 @@ if ( ! function_exists( 'nadlan_ss_create' ) ) {
 
 		if ( ! is_user_logged_in() ) {
 			$link = add_query_arg( array( 'id' => $id, 'token' => $token ), rest_url( 'nadlan/v1/saved-search/confirm' ) );
-			wp_mail( $email, 'אישור התראות נכסים — נדל"ן חכם',
+			wp_mail( $email, 'אישור התראות נכסים — נדלן',
 				"קיבלנו בקשה לקבלת התראות על נכסים חדשים התואמים לחיפוש שלך.\n\nלאישור לחצו:\n$link\n\nאם לא ביקשתם, התעלמו מהודעה זו." );
 		}
 		return new WP_REST_Response( array( 'ok' => true, 'id' => $id, 'confirm_required' => ! is_user_logged_in() ), 200 );
@@ -129,7 +129,7 @@ if ( ! function_exists( 'nadlan_ss_run_alerts' ) ) {
 					$lines .= '• ' . get_the_title( $p ) . ( $price ? ' — ₪' . number_format( (float) $price ) : '' ) . "\n  " . get_permalink( $p ) . "\n";
 				}
 				$lines .= "\nלהסרה מההתראות השיבו למייל זה.";
-				wp_mail( $email, 'נכסים חדשים — נדל"ן חכם', $lines );
+				wp_mail( $email, 'נכסים חדשים — נדלן', $lines );
 			}
 			update_post_meta( $s->ID, 'last_run', time() );
 			wp_reset_postdata();

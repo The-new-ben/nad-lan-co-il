@@ -408,7 +408,7 @@ add_filter( 'wp_robots', 'nadlan_pshow_demo_noindex', 20 );
 /* ---------------- SEO: archive title + listing meta description ---------------- */
 if ( ! function_exists( 'nadlan_pshow_archive_title' ) ) {
 	function nadlan_pshow_archive_title( $title ) {
-		if ( is_post_type_archive( 'nadlan_property' ) ) { return 'דירות למכירה ולהשכרה בישראל - לוח נדל"ן | נדלן חכם'; }
+		if ( is_post_type_archive( 'nadlan_property' ) ) { return 'דירות למכירה ולהשכרה בישראל - לוח נדל"ן | נדלן'; }
 		return $title;
 	}
 }
@@ -430,7 +430,7 @@ if ( ! function_exists( 'nadlan_pshow_meta_desc' ) ) {
 			. ( $g( 'city' ) ? ' ב' . $g( 'city' ) : '' ) . ( $g( 'street' ) ? ', רחוב ' . $g( 'street' ) : '' ) . '.';
 		if ( (int) $g( 'size_sqm' ) ) { $bits[] = (int) $g( 'size_sqm' ) . ' מ"ר, קומה ' . (int) $g( 'floor' ) . '.'; }
 		if ( (int) $g( 'price' ) ) { $bits[] = number_format( (int) $g( 'price' ) ) . ' ₪' . ( $g( 'listing_type' ) === 'rent' ? ' לחודש' : '' ) . '.'; }
-		$bits[] = 'כל הפרטים, מפה חיה וסביבת מגורים - בנדלן חכם.';
+		$bits[] = 'כל הפרטים, מפה חיה וסביבת מגורים - בנדלן.';
 		return mb_substr( implode( ' ', $bits ), 0, 156 );
 	}
 }

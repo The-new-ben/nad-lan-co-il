@@ -661,7 +661,7 @@ body.single-nadlan_property .wp-block-post-date{display:none!important}
 }
 
 /* #9 — On nadlan CPT archive pages (/projects/, /professionals/, /properties/)
-   the theme header prints <h1><a>נדלן חכם</a></h1>, creating a 2nd H1 alongside
+   the theme header prints <h1><a>נדלן</a></h1>, creating a 2nd H1 alongside
    the archive hero H1. Visually hide the theme's site-title H1 on THESE archives
    only — every other page keeps its header H1 as-is. */
 body.post-type-archive-nadlan_project #header h1,

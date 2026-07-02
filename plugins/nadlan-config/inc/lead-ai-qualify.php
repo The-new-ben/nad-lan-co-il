@@ -368,7 +368,7 @@ if ( ! function_exists( 'nadlan_lead_ai_send_response' ) ) {
 			update_post_meta( $lead_id, 'lead_ai_auto_response_status', 'no_email' );
 			return false;
 		}
-		$subject = (string) get_option( 'nadlan_lead_ai_response_subject', 'המשך טיפול בפנייה שלך בנדלן חכם' );
+		$subject = (string) get_option( 'nadlan_lead_ai_response_subject', 'המשך טיפול בפנייה שלך בנדלן' );
 		$headers = array( 'Content-Type: text/plain; charset=UTF-8' );
 		$send_fields = $fields;
 		$send_fields['_delivery_context'] = 'ai_auto_response';
@@ -615,12 +615,12 @@ if ( ! function_exists( 'nadlan_lead_ai_settings_page' ) ) {
 			$cap = isset( $_POST['nadlan_lead_ai_token_cap_per_lead'] ) ? absint( wp_unslash( $_POST['nadlan_lead_ai_token_cap_per_lead'] ) ) : 2800;
 			update_option( 'nadlan_lead_ai_token_cap_per_lead', max( 800, min( 8000, $cap ) ), false );
 			$subject = isset( $_POST['nadlan_lead_ai_response_subject'] ) ? sanitize_text_field( wp_unslash( $_POST['nadlan_lead_ai_response_subject'] ) ) : '';
-			update_option( 'nadlan_lead_ai_response_subject', $subject !== '' ? $subject : 'המשך טיפול בפנייה שלך בנדלן חכם', false );
+			update_option( 'nadlan_lead_ai_response_subject', $subject !== '' ? $subject : 'המשך טיפול בפנייה שלך בנדלן', false );
 			echo '<div class="notice notice-success"><p>נשמר.</p></div>';
 		}
 		$enabled = get_option( 'nadlan_feature_lead_ai_qualify', '0' ) === '1';
 		$cap = nadlan_lead_ai_token_cap();
-		$subject = (string) get_option( 'nadlan_lead_ai_response_subject', 'המשך טיפול בפנייה שלך בנדלן חכם' );
+		$subject = (string) get_option( 'nadlan_lead_ai_response_subject', 'המשך טיפול בפנייה שלך בנדלן' );
 		$openai_ready = function_exists( 'nadlan_ai_openai_key' ) && nadlan_ai_openai_key() !== '';
 		$e2e_ready = function_exists( 'nadlan_lead_e2e_enabled' ) && nadlan_lead_e2e_enabled();
 		?>
