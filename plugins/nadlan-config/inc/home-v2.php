@@ -35,6 +35,14 @@ if ( ! function_exists( 'nadlan_mapbox_token' ) ) {
 }
 
 /* Owner pastes the Mapbox public token in wp-admin -> Settings -> General. */
+/* Also expose the two owner settings over the REST settings endpoint so the
+   agent can set them without a wp-admin session (show_in_rest requires the
+   registration to run on rest_api_init as well as admin_init). */
+add_action( 'rest_api_init', function () {
+	register_setting( 'general', 'nadlan_mapbox_token', array( 'type' => 'string', 'sanitize_callback' => 'sanitize_text_field', 'default' => '', 'show_in_rest' => true ) );
+	register_setting( 'general', 'nadlan_home_video_url', array( 'type' => 'string', 'sanitize_callback' => 'esc_url_raw', 'default' => '', 'show_in_rest' => true ) );
+} );
+
 add_action( 'admin_init', function () {
 	register_setting( 'general', 'nadlan_mapbox_token', array( 'type' => 'string', 'sanitize_callback' => 'sanitize_text_field', 'default' => '' ) );
 	add_settings_field( 'nadlan_mapbox_token', 'Mapbox Token (נדלן)', function () {
@@ -55,6 +63,12 @@ add_filter( 'wpseo_title', function ( $title ) {
 add_filter( 'wpseo_metadesc', function ( $desc ) {
 	return is_front_page() ? 'דירות למכירה ולהשכרה, פרויקטים חדשים עם בחירת דירה מתוך הבניין, מחירי עסקאות אמיתיים, מחשבונים ובעלי מקצוע מאומתים. הכל במקום אחד - נדלן.' : $desc;
 }, 20 );
+/* The wpseo_title filter was observed NOT changing the rendered <title> on this
+   install (Yoast serves the page's stored custom title). pre_get_document_title
+   at a late priority wins over every generator for the actual tag. */
+add_filter( 'pre_get_document_title', function ( $title ) {
+	return is_front_page() ? 'נדלן - דירות למכירה, פרויקטים חדשים ומחירי דירות בישראל' : $title;
+}, 9999 );
 
 /* Top cities by real inventory (cached). [ ['name','projects','properties'], ... ] */
 if ( ! function_exists( 'nadlan_hv2_cities' ) ) {
