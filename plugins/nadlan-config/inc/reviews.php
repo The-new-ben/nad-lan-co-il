@@ -324,8 +324,13 @@ add_shortcode( 'nadlan_reviews', function ( $atts ) {
 	return nadlan_reviews_render( (int) $a['id'] ?: get_the_ID() );
 } );
 
-/* Auto-append reviews on single professional + project pages */
+/* Auto-append reviews on single professional + project pages.
+   Design audit 2026-07-02 (D5): a flagship project page must not carry an empty
+   "be the first to review" block - on projects the section renders only once
+   real approved reviews exist. Professionals keep the empty state (growth loop). */
 add_filter( 'the_content', function ( $content ) {
 	if ( ! is_singular( array( 'nadlan_professional', 'nadlan_project' ) ) || ! in_the_loop() || ! is_main_query() ) { return $content; }
-	return $content . nadlan_reviews_render( get_the_ID() );
+	$id = get_the_ID();
+	if ( get_post_type( $id ) === 'nadlan_project' && (int) get_post_meta( $id, 'reviews_count', true ) < 1 ) { return $content; }
+	return $content . nadlan_reviews_render( $id );
 }, 22 );
