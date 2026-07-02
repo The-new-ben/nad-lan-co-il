@@ -38,8 +38,11 @@ Before writing any image prompt, build a FACT SHEET for the subject:
    RULE: under 250m = seafront framing allowed; 250-1500m = the sea appears
    ONLY as a distant horizon band beyond city blocks; over 1500m = no sea.
 3. Check the real surroundings on a map (what is actually north/south/east/
-   west: the Reading power-station chimney is SOUTH of Sde Dov; low-rise
-   construction quarter around; park strips; streets).
+   west). Verified anchor facts for Sde Dov plates: the Reading power-station
+   chimney stands ON THE COASTLINE to the SOUTHWEST, at the Yarkon river mouth,
+   essentially at the water's edge - it must appear on the SEA side of the
+   horizon, never inland (a test plate got this wrong). Around the towers:
+   low-rise construction quarter with cranes; park strips; streets.
 4. Confirm the building form from our data: floor count, podium, roughly
    rectangular vs twisting massing. Rainbow=40 floors with a gentle twist,
    Ashira=20 floors boutique, Dimri=24 floors. Never draw the wrong height.
