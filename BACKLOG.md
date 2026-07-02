@@ -157,3 +157,38 @@
 - 🟢 1.27–1.28 — homepage discovery block (kept per owner) + footer directory links (4).
 - 🟢 1.26.0 — /catalog/ as directory hub.
 - 🟢 Skills tree (`skills/SKILLS-TREE.md`) + this backlog created (2026-06-02).
+
+## 2026-07-01 — Owner master roadmap (Claude session, v1.69.69→79 shipped)
+
+**Shipped this session:** listings vertical live (7 demos, AI wizard /post-listing/, magazine cards),
+project experience layer (sticky nav, floor selector, live POI+future-plans map, world grid,
+compact contact bar, FOV zoom-out unlock), golden chat FAB removed (nadlan_ai_enabled=0),
+registration opened, agent deploy pipeline (skills/agent-direct-wordpress-access.md),
+/advertise/ landing wired to [nadlan_advertiser_center] (page 4959) — smoke test: /studio/ live,
+Woo ad products live, claim/upgrade REST live.
+
+**Sequential roadmap (owner-approved order, do NOT skip design research):**
+1. DESIGN SYSTEM PASS — research latest premium real-estate design (Zillow/Compass/homes.com,
+   WP 2026 guidelines, a11y AA contrast). Use Lovable tokens (handoff/lovable/.../prototype-source/src/styles.css,
+   oklch cream/ink/terracotta). Premium ≠ gold everywhere. Fix owner-reported black-on-brown
+   contrast (screenshot pending). Unify nlpjx/nlps/nldir/engine sections to ONE visual system.
+2. DRONE EXPERIENCE — Mapbox GL 3D flyover landing into projects (token configured, GLBs exist),
+   switchable nearby-project models, per-apartment view direction + sun angle (restore Dimri-era
+   feature — dig git history), apartment click → view/direction/what's-around.
+3. INTERIOR INFRASTRUCTURE — FPS-style walkthrough (three.js/model-viewer interior mode or
+   Unreal-pixel-streaming research), Cloud Design clickable/animated drawer model (search repo
+   + handoff/), GLB regeneration pipeline for contractors without materials (generate from public info,
+   clearly labeled הדמיה). Goal: contractors see it and want in; they feed materials via /studio/.
+4. MULTILANG — full EN/FR/RU/AR switching on the 3 flagship projects (content exists per lang for
+   Ashira; complete Rainbow+Dimri), hreflang, foreign-investor funnel; SEO clustering guard
+   (skills/internal-linking-hub-spoke.md, no cannibalization).
+5. HOMEPAGE HUB — float ALL content: listings+prices, professionals, calculators, guides, projects
+   as one real-estate hub; target high-volume buying keywords (דירות למכירה/להשכרה, מחשבון משכנתא)
+   that tunnel into projects/listings/professionals. Front page currently signals only projects.
+6. MONETIZATION POLISH — advertiser journey: /advertise/ → claim/studio → pay (Woo products exist,
+   Green Invoice live) → featured placement; FOMO surfaces; contractor onboarding email.
+
+**Standing rules for the next agent:** deploy via skills/agent-direct-wordpress-access.md
+(install+overwrite_package); branch resets onto origin/main before each PR (squash divergence);
+verify features INSIDE the zip before deploying; no mocks/hardcode; a11y + RTL; Lovable repo
+mirror lives in handoff/lovable/ (nadlan-strategy-hub repo itself is outside agent GitHub scope).
