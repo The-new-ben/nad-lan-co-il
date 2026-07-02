@@ -163,3 +163,20 @@ task genuinely needs raw SQL or raw file access, rather than trying to force it 
 
 ---
 _Created 2026-07-01 by Claude Code, same session that installed the four tools above._
+
+## Post-incident rules (2026-07-02 - the outage and the ghost homepage)
+1. NEVER put one-shot privileged code at the top level of a global Code
+   Snippets snippet - it executes on EVERY request at plugins_loaded, and a
+   fatal there takes the whole site down (wp_update_post before init did).
+   One-shots go INSIDE an admin-gated REST route callback, always.
+2. Emergency recovery (proven): UPress file manager -> rename
+   wp-content/plugins/code-snippets to .off -> site returns -> add
+   define('CODE_SNIPPETS_SAFE_MODE', true); to wp-config.php -> rename back
+   -> deactivate/delete bad snippets via REST -> remove the define.
+3. VERIFY RENDERED BODY, NOT WHOLE-HTML SUBSTRINGS. Enqueued CSS/JS in <head>
+   contain your class names and made dead features look live for a whole day.
+   Assert markers appear AFTER <body>, and assert the OLD content is ABSENT.
+4. The parent theme (nadlan-revenue, NOT in repo) carries a legacy front-page
+   renderer that swaps the_content with the old home-showroom pattern. A guard
+   in inc/home-v2.php (the_content at PHP_INT_MAX-5) overrides it. If someone
+   cleans the parent theme on the server, the guard can be retired.
