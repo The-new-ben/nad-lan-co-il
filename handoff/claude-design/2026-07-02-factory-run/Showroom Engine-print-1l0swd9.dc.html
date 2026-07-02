@@ -1,0 +1,788 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style data-omelette-print-defaults>
+@media print {
+  @page { margin: 0.5in; }
+  h1, h2, h3, h4, h5, h6 { break-after: avoid; }
+  figure, table, pre, blockquote, img, svg, tr, [class~="card" i] { break-inside: avoid; }
+  img, svg { max-width: 100%; }
+  p { orphans: 3; widows: 3; }
+}
+</style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Assistant:wght@400;500;600;700;800&family=Frank+Ruhl+Libre:wght@500;700;900&display=swap" rel="stylesheet">
+<script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/4.0.0/model-viewer.min.js"></script>
+<style>
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html,body{background:#f1ece0;}
+  ::selection{background:#c99c49;color:#0a1c1c;}
+  @keyframes engPulse{0%{box-shadow:0 0 0 0 rgba(52,217,134,.5);}70%{box-shadow:0 0 0 13px rgba(52,217,134,0);}100%{box-shadow:0 0 0 0 rgba(52,217,134,0);}}
+  model-viewer{--poster-color:transparent;}
+  model-viewer::part(default-progress-bar){display:none;}
+</style>
+</helmet>
+<div dir="rtl" style="font-family:'Assistant',sans-serif;color:#20231f;background:#f1ece0;min-height:100vh;overflow-x:hidden;">
+
+  <header style="display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;max-width:1280px;margin:0 auto;padding:15px clamp(14px,3vw,28px);">
+    <div style="display:flex;align-items:baseline;gap:11px;">
+      <span style="font-family:'Frank Ruhl Libre',serif;font-weight:900;font-size:25px;color:#0c3836;">נדל״ן</span>
+      <span style="font-size:11px;color:#8a8270;letter-spacing:2px;">SHOWROOM&nbsp;ENGINE</span>
+    </div>
+    <nav style="display:flex;align-items:center;gap:16px;flex-wrap:wrap;font-size:14px;color:#5f5a4d;">
+      <span style="color:#8a8270;">נדל״ן ›&nbsp;שדה דב ›&nbsp;<strong style="color:#0c3836;">{{ projectName }}</strong></span>
+      <div style="display:flex;gap:6px;">
+        <span style="display:inline-flex;align-items:center;justify-content:center;min-width:32px;height:29px;padding:0 8px;border-radius:999px;background:#0c3836;color:#f2dfa7;font-weight:700;font-size:12px;">HE</span>
+        <span style="display:inline-flex;align-items:center;justify-content:center;min-width:32px;height:29px;padding:0 8px;border-radius:999px;background:#fff;border:1px solid #ddd5c4;color:#5f5a4d;font-weight:600;font-size:12px;cursor:pointer;">EN</span>
+        <span style="display:inline-flex;align-items:center;justify-content:center;min-width:32px;height:29px;padding:0 8px;border-radius:999px;background:#fff;border:1px solid #ddd5c4;color:#5f5a4d;font-weight:600;font-size:12px;cursor:pointer;">RU</span>
+      </div>
+    </nav>
+  </header>
+
+  <main style="max-width:1280px;margin:0 auto;padding:4px clamp(14px,3vw,28px) 30px;">
+
+    <div style="display:flex;flex-wrap:wrap;gap:0;align-items:stretch;border-radius:22px;overflow:hidden;border:1px solid rgba(12,56,54,.16);background:linear-gradient(135deg,#051f21,#0c3836 60%,#071b1c);box-shadow:0 34px 80px rgba(6,29,28,.34);">
+
+      <section data-screen-label="engine-stage" style="position:relative;flex:1.5 1 440px;min-width:0;display:flex;flex-direction:column;">
+
+        <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;padding:16px clamp(14px,2vw,22px) 12px;border-bottom:1px solid rgba(242,223,167,.14);">
+          <div style="min-width:0;">
+            <div style="display:inline-flex;align-items:center;gap:7px;padding:4px 11px;border-radius:999px;background:rgba(242,223,167,.13);border:1px solid rgba(242,223,167,.36);color:#f2dfa7;font-size:12px;font-weight:700;white-space:nowrap;">רובע שדה דב · תל אביב</div>
+            <h1 style="font-family:'Frank Ruhl Libre',serif;font-weight:900;color:#fbf6e6;font-size:clamp(24px,3vw,36px);line-height:1.05;margin:8px 0 2px;">{{ projectName }}</h1>
+            <p style="color:#bcd0c9;font-size:14px;margin:0;">{{ projectSub }}</p>
+          </div>
+          <div style="display:flex;gap:6px;background:rgba(3,18,18,.5);border:1px solid rgba(242,223,167,.2);border-radius:12px;padding:4px;">
+            <button type="button" onClick="{{ onView3d }}" style="{{ toggle3dStyle }}">מודל 3D</button>
+            <button type="button" onClick="{{ onViewFacade }}" style="{{ toggleFacadeStyle }}">חזית</button>
+          </div>
+        </div>
+
+        <div style="position:relative;flex:1;min-height:clamp(440px,62vh,660px);">
+
+          <div style="{{ stage3dStyle }}">
+            <model-viewer ref="{{ mvRef }}" src="assets/engine/rainbow.glb" poster="assets/engine/rainbow-poster.png" loading="eager" reveal="auto" camera-controls auto-rotate auto-rotate-delay="600" rotation-per-second="16deg" interaction-prompt="none" environment-image="neutral" exposure="1.06" shadow-intensity="0.7" shadow-softness="0.9" min-field-of-view="14deg" max-field-of-view="55deg" touch-action="pan-y" style="width:100%;height:100%;background:linear-gradient(180deg,#10524f 0%,#0b2f30 56%,#071f20 100%);">
+              <sc-for list="{{ hotspots }}" as="h" hint-placeholder-count="0">
+                <button type="button" slot="{{ h.slot }}" data-position="{{ h.position }}" data-normal="{{ h.normal }}" onClick="{{ h.onSelect }}" aria-label="{{ h.aria }}" style="{{ h.style }}">{{ h.floor }}</button>
+              </sc-for>
+            </model-viewer>
+            <div style="position:absolute;right:clamp(14px,2vw,22px);bottom:clamp(14px,2vw,20px);display:inline-flex;align-items:center;gap:8px;padding:8px 13px;border-radius:999px;background:rgba(4,24,24,.74);border:1px solid rgba(242,223,167,.3);backdrop-filter:blur(8px);color:#e4ddc6;font-size:12.5px;font-weight:600;pointer-events:none;">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#f2dfa7" stroke-width="1.7"><path d="M21 12a9 9 0 1 1-3-6.7"/><path d="M21 4v5h-5"/></svg>
+              גררו לסיבוב · לחצו על דירה
+            </div>
+          </div>
+
+          <div style="{{ stageFacadeStyle }}">
+            <div style="position:absolute;inset:0;display:flex;align-items:stretch;gap:14px;padding:clamp(16px,2.4vw,28px);background:radial-gradient(circle at 30% 20%,rgba(242,223,167,.08),transparent 40%),linear-gradient(180deg,#0a2c2d,#071f20);">
+              <div style="position:relative;flex:1;min-width:0;max-width:520px;margin:0 auto;border-radius:14px;border:1px solid rgba(242,223,167,.22);background:linear-gradient(180deg,rgba(28,74,73,.55),rgba(8,32,32,.55));overflow:hidden;">
+                <div style="position:absolute;inset:0;background-image:repeating-linear-gradient(0deg,transparent 0,transparent 13px,rgba(242,223,167,.07) 13px,rgba(242,223,167,.07) 14px);pointer-events:none;"></div>
+                <div style="position:absolute;right:0;left:0;top:0;bottom:0;">
+                  <sc-for list="{{ facadeBands }}" as="b" hint-placeholder-count="6">
+                    <button type="button" onClick="{{ b.onSelect }}" style="{{ b.style }}"><span style="font-weight:800;">{{ b.title }}</span><span style="opacity:.8;font-size:11px;">{{ b.sub }}</span></button>
+                  </sc-for>
+                </div>
+                <div style="position:absolute;top:8px;right:12px;color:#9fb6af;font-size:11px;font-weight:700;letter-spacing:1px;pointer-events:none;">חזית מערב · מפת זמינות</div>
+              </div>
+            </div>
+          </div>
+
+          <div style="position:absolute;right:clamp(14px,2vw,22px);top:clamp(12px,2vw,18px);display:flex;gap:12px;flex-wrap:wrap;padding:8px 13px;border-radius:999px;background:rgba(4,24,24,.7);border:1px solid rgba(242,223,167,.3);backdrop-filter:blur(8px);color:#e4ddc6;font-size:12px;font-weight:600;pointer-events:none;">
+            <span style="display:inline-flex;align-items:center;gap:6px;"><span style="width:10px;height:10px;border-radius:3px;background:#34d986;"></span>זמינה</span>
+            <span style="display:inline-flex;align-items:center;gap:6px;"><span style="width:10px;height:10px;border-radius:3px;background:#e7b952;"></span>בעדיפות</span>
+            <span style="display:inline-flex;align-items:center;gap:6px;"><span style="width:10px;height:10px;border-radius:3px;background:#9aa7a7;"></span>נמכרה</span>
+          </div>
+        </div>
+
+        <div style="display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap;padding:11px clamp(14px,2vw,22px);border-top:1px solid rgba(242,223,167,.14);">
+          <div style="display:flex;align-items:center;gap:8px;color:#9fb6af;font-size:12.5px;font-weight:600;">בנוי מ‑GLB שנוצר אוטומטית · המחשה</div>
+          <div style="display:flex;align-items:center;gap:8px;">
+            <span style="color:#9fb6af;font-size:12.5px;">פרויקט:</span>
+            <sc-for list="{{ projectButtons }}" as="p" hint-placeholder-count="2">
+              <button type="button" onClick="{{ p.onSelect }}" style="{{ p.style }}">{{ p.label }}</button>
+            </sc-for>
+          </div>
+        </div>
+      </section>
+
+      <aside data-screen-label="unit-drawer" style="flex:1 1 328px;min-width:0;display:flex;flex-direction:column;padding:clamp(16px,2vw,22px);background:rgba(3,18,18,.4);border-right:1px solid rgba(242,223,167,.12);">
+        <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:12px;">
+          <div style="flex:1;min-width:0;">
+            <div style="display:inline-flex;align-items:center;gap:7px;padding:4px 11px;border-radius:999px;font-size:12.5px;font-weight:800;color:#0a1c1c;background:{{ selected.statusColor }};">{{ selected.statusLabel }}</div>
+            <h2 style="font-family:'Frank Ruhl Libre',serif;font-weight:700;color:#fbf6e6;font-size:clamp(22px,2.4vw,28px);line-height:1.2;margin:10px 0 0;overflow-wrap:anywhere;">{{ selected.head }}</h2>
+            <p style="color:#bcd0c9;font-size:14px;margin:5px 0 0;">{{ projectName }} · {{ selected.dir }}</p>
+          </div>
+          <div style="text-align:left;flex:0 0 auto;">
+            <div style="color:#f2dfa7;font-size:13px;font-weight:700;">קומה</div>
+            <div style="font-family:'Frank Ruhl Libre',serif;color:#fbf6e6;font-size:34px;font-weight:900;line-height:1;">{{ selected.floor }}</div>
+          </div>
+        </div>
+
+        <div style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px;margin:16px 0 0;">
+          <div style="padding:10px 12px;border-radius:11px;background:rgba(255,255,255,.05);"><div style="color:#9fb6af;font-size:12px;">חדרים</div><strong style="color:#fbf6e6;font-size:18px;font-weight:800;">{{ selected.rooms }}</strong></div>
+          <div style="padding:10px 12px;border-radius:11px;background:rgba(255,255,255,.05);"><div style="color:#9fb6af;font-size:12px;">שטח בנוי</div><strong style="color:#fbf6e6;font-size:18px;font-weight:800;">{{ selected.sqm }} מ״ר</strong></div>
+          <div style="padding:10px 12px;border-radius:11px;background:rgba(255,255,255,.05);"><div style="color:#9fb6af;font-size:12px;">מרפסת</div><strong style="color:#fbf6e6;font-size:18px;font-weight:800;">{{ selected.balcony }} מ״ר</strong></div>
+          <div style="padding:10px 12px;border-radius:11px;background:rgba(255,255,255,.05);"><div style="color:#9fb6af;font-size:12px;">נוף</div><strong style="color:#fbf6e6;font-size:13.5px;font-weight:700;line-height:1.3;">{{ selected.view }}</strong></div>
+        </div>
+
+        <div style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:6px;margin:16px 0 0;">
+          <button type="button" onClick="{{ onTabPlan }}" style="{{ tabPlanStyle }}">תכנית</button>
+          <button type="button" onClick="{{ onTabView }}" style="{{ tabViewStyle }}">מבט</button>
+          <button type="button" onClick="{{ onTabInfo }}" style="{{ tabInfoStyle }}">מידע</button>
+        </div>
+
+        <div style="margin:10px 0 0;border-radius:13px;overflow:hidden;border:1px solid rgba(242,223,167,.2);background:rgba(3,21,21,.55);min-height:172px;display:flex;align-items:center;justify-content:center;">
+          <sc-if value="{{ showPlan }}" hint-placeholder-val="{{ false }}">
+            <img ref="{{ planRef }}" src="assets/projects/rainbow-tel-aviv/plans/plan-4br.svg" alt="תכנית הדירה להמחשה" style="display:block;width:100%;height:100%;max-height:230px;object-fit:contain;">
+          </sc-if>
+          <sc-if value="{{ showPanelText }}" hint-placeholder-val="{{ false }}">
+            <p style="padding:22px;text-align:center;color:#aebfb8;font-size:14px;line-height:1.65;max-width:300px;">{{ panelText }}</p>
+          </sc-if>
+        </div>
+
+        <form onSubmit="{{ onSubmit }}" style="margin:16px 0 0;padding:15px 0 0;border-top:1px solid rgba(242,223,167,.16);">
+          <div style="color:#fbf6e6;font-weight:800;font-size:15px;margin:0 0 10px;">מתעניינים בדירה זו? נחזור אליכם</div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;">
+            <input value="{{ form.name }}" onInput="{{ onName }}" placeholder="שם מלא" style="grid-column:1/3;width:100%;min-height:44px;padding:9px 12px;border-radius:11px;border:1px solid rgba(242,223,167,.24);background:rgba(255,255,255,.08);color:#fbf6e6;font:inherit;font-size:15px;">
+            <input value="{{ form.phone }}" onInput="{{ onPhone }}" inputmode="tel" placeholder="טלפון" style="width:100%;min-height:44px;padding:9px 12px;border-radius:11px;border:1px solid rgba(242,223,167,.24);background:rgba(255,255,255,.08);color:#fbf6e6;font:inherit;font-size:15px;">
+            <input value="{{ form.email }}" onInput="{{ onEmail }}" inputmode="email" placeholder="אימייל" style="width:100%;min-height:44px;padding:9px 12px;border-radius:11px;border:1px solid rgba(242,223,167,.24);background:rgba(255,255,255,.08);color:#fbf6e6;font:inherit;font-size:15px;">
+          </div>
+          <button type="submit" style="width:100%;min-height:48px;margin:10px 0 0;border:0;border-radius:12px;background:linear-gradient(180deg,#f0d999,#c99c49);color:#12130f;font-weight:800;font-size:16px;font-family:inherit;cursor:pointer;">שליחת פנייה · {{ selected.shortLabel }}</button>
+          <sc-if value="{{ feedback }}" hint-placeholder-val="{{ false }}">
+            <p style="margin:10px 0 0;padding:10px 12px;border-radius:10px;background:{{ feedbackBg }};color:{{ feedbackColor }};font-size:13px;line-height:1.5;">{{ feedback }}</p>
+          </sc-if>
+          <p style="margin:9px 0 0;color:#8fa49d;font-size:11.5px;line-height:1.5;">הפנייה תכלול מזהה דירה, קומה, חדרים וכיוון. אינה הזמנה או התחייבות לרכישה. נתוני הדגמה.</p>
+        </form>
+      </aside>
+    </div>
+
+    <sc-if value="{{ showEngineBand }}" hint-placeholder-val="{{ true }}">
+    <section data-screen-label="engine-band" style="margin:34px 0 0;">
+      <div style="display:flex;align-items:flex-end;justify-content:space-between;gap:16px;flex-wrap:wrap;margin:0 0 16px;">
+        <div style="max-width:640px;">
+          <div style="font-size:13px;font-weight:800;color:#a67d30;letter-spacing:.3px;">מנוע התצוגה</div>
+          <h2 style="font-family:'Frank Ruhl Libre',serif;font-weight:700;font-size:clamp(23px,2.8vw,32px);color:#13201d;margin:4px 0 6px;">פרויקט אחד. אינסוף בניינים.</h2>
+          <p style="color:#5f5a4d;font-size:16px;line-height:1.6;">מזינים תוכניות, BIM או GLB וטבלת דירות — והמנוע מייצר מודל תלת‑ממד נקי, חזית לחיצה וכרטיס דירה, מוכן לאתר וורדפרס. אותו מנוע מפעיל כל פרויקט.</p>
+        </div>
+        <div style="display:flex;gap:8px;">
+          <sc-for list="{{ projectButtonsBig }}" as="p" hint-placeholder-count="2">
+            <button type="button" onClick="{{ p.onSelect }}" style="{{ p.style }}">{{ p.label }}</button>
+          </sc-for>
+        </div>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px;">
+        <div style="padding:18px;border-radius:16px;background:#fff;border:1px solid #e6ddca;">
+          <div style="width:38px;height:38px;border-radius:10px;background:#0c3836;display:flex;align-items:center;justify-content:center;margin:0 0 12px;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#f2dfa7" stroke-width="1.7"><path d="M12 2 21 7v10l-9 5-9-5V7z"/><path d="m3 7 9 5 9-5M12 12v10"/></svg></div>
+          <strong style="display:block;font-family:'Frank Ruhl Libre',serif;font-size:18px;color:#13201d;margin:0 0 5px;">מודל לכל פרויקט</strong>
+          <p style="font-size:14px;color:#5f5a4d;line-height:1.6;">בניין תלת‑ממד מדויק לפי הקומות, הכיוונים והדירות — נוצר אוטומטית, מתעדכן כשמגיע ה‑BIM הרשמי.</p>
+        </div>
+        <div style="padding:18px;border-radius:16px;background:#fff;border:1px solid #e6ddca;">
+          <div style="width:38px;height:38px;border-radius:10px;background:#0c3836;display:flex;align-items:center;justify-content:center;margin:0 0 12px;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#f2dfa7" stroke-width="1.7"><path d="M3 3h7v7H3zM14 3h7v7h-7zM3 14h7v7H3zM14 14h7v7h-7z"/></svg></div>
+          <strong style="display:block;font-family:'Frank Ruhl Libre',serif;font-size:18px;color:#13201d;margin:0 0 5px;">לידים ברמת דירה</strong>
+          <p style="font-size:14px;color:#5f5a4d;line-height:1.6;">כל פנייה נושאת קומה, חדרים, שטח וכיוון — לא טופס יצירת קשר גנרי. הקונה בוחר דירה, לא משאיר מספר.</p>
+        </div>
+        <div style="padding:18px;border-radius:16px;background:#fff;border:1px solid #e6ddca;">
+          <div style="width:38px;height:38px;border-radius:10px;background:#0c3836;display:flex;align-items:center;justify-content:center;margin:0 0 12px;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#f2dfa7" stroke-width="1.7"><path d="M3 3v18h18"/><path d="M7 14l4-4 3 3 5-6"/></svg></div>
+          <strong style="display:block;font-family:'Frank Ruhl Libre',serif;font-size:18px;color:#13201d;margin:0 0 5px;">אנליטיקס למנהל</strong>
+          <p style="font-size:14px;color:#5f5a4d;line-height:1.6;">אילו דירות נצפו, אילו נבחרו, מי קונה חם — דשבורד למנהל הפרויקט שמצדיק חשיפה בתשלום.</p>
+        </div>
+        <div style="padding:18px;border-radius:16px;background:linear-gradient(135deg,#0c3836,#13403d);border:1px solid #0c3836;">
+          <div style="width:38px;height:38px;border-radius:10px;background:rgba(242,223,167,.16);display:flex;align-items:center;justify-content:center;margin:0 0 12px;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#f2dfa7" stroke-width="1.7"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></div>
+          <strong style="display:block;font-family:'Frank Ruhl Libre',serif;font-size:18px;color:#fbf6e6;margin:0 0 5px;">חשיפה פרמיום</strong>
+          <p style="font-size:14px;color:#cfdedb;line-height:1.6;">תצוגת פרויקט שמצדיקה מנוי או חבילת קידום — מודל מכירה במקום מודעה. מנוע ההכנסה של נדל״ן.</p>
+        </div>
+      </div>
+    </section>
+    </sc-if>
+
+    <section data-screen-label="content" style="margin:36px auto 0;max-width:820px;">
+      <div style="padding:16px 18px;border-radius:13px;background:#fffaf0;border-right:4px solid #c99c49;">
+        <strong style="display:block;color:#13201d;font-size:15px;margin:0 0 4px;">הצהרת המחשה</strong>
+        <p style="font-size:14px;line-height:1.7;color:#5f5a4d;">המודלים נוצרים אוטומטית כהמחשה ראשונית — אינם BIM רשמי, אינם תוכנית מכר ואינם מלאי זמין. עם קבלת תוכניות וה‑BIM מהיזם, אותו מנוע יחליף את המודל לדגם מדויק. מחיר, זמינות ותנאים יש לאמת מול היזם. אין באמור הצעה או התחייבות.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer style="background:#0c3836;color:#cfc7ad;margin-top:30px;">
+    <div style="max-width:1280px;margin:0 auto;padding:28px clamp(14px,3vw,28px);display:flex;flex-wrap:wrap;gap:18px;align-items:center;justify-content:space-between;">
+      <div style="display:flex;align-items:baseline;gap:12px;"><span style="font-family:'Frank Ruhl Libre',serif;font-weight:900;font-size:23px;color:#f2dfa7;">נדל״ן</span><span style="font-size:13px;color:#9fb6af;">מנוע תצוגת פרויקטים · שדה דב, תל אביב</span></div>
+      <div style="font-size:13px;color:#9fb6af;">© נדל״ן · כל הנתונים להמחשה עד לאישור היזם</div>
+    </div>
+  </footer>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1280,&quot;height&quot;:1060},&quot;autoRotate&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;מודל&quot;},&quot;showEngineBand&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;עמוד&quot;}}">
+class Component extends DCLogic {
+  state = { projects:null, key:'rainbow', selectedId:null, tab:'plan', view:'3d', form:{name:'',phone:'',email:''}, feedback:'', ok:false };
+
+  names = { rainbow:{name:'Rainbow', sub:'מגדל מול הים · שדה דב'}, dimri:{name:'דימרי ימה', sub:'בניין גן מול הים · שדה דב'} };
+  order = ['rainbow','dimri'];
+
+  // Data resolution order: (1) live WordPress CMS via window.NADLAN_SHOWROOM,
+  // (2) bundled prototype manifest. Same shape either way -> drop-in on WP.
+  componentDidMount(){
+    const apply=(raw)=>{
+      const projects=this.normalizeProjects(raw);
+      const keys=Object.keys(projects);
+      const k=(this.props.project && projects[this.props.project]) ? this.props.project
+            : (this.urlProject() && projects[this.urlProject()]) ? this.urlProject()
+            : (projects[this.state.key] ? this.state.key : keys[0]);
+      this.setState({projects, key:k, selectedId:this.firstRec(projects[k])});
+    };
+    const cms=(typeof window!=='undefined') && window.NADLAN_SHOWROOM;
+    if(cms){ try{ apply(this.normalizeCms(cms)); return; }catch(e){ console.warn('CMS payload parse failed', e); } }
+    import('./assets/engine/projects.js').then(m=>apply(m.PROJECTS)).catch(e=>{ console.warn('engine manifest load failed', e); });
+  }
+  urlProject(){ try{ return new URLSearchParams(window.location.search).get('project'); }catch(e){ return null; } }
+  normalizeCms(cms){
+    // Accept a single nadlan_project payload, {projects:{...}}, or a slug->project map.
+    if((cms.units||cms.project_3d_units) && cms.slug) return {[cms.slug]:cms};
+    if(cms.projects) return cms.projects;
+    return cms;
+  }
+  // Maps the WordPress nadlan_project / showroom-payload fields onto the engine's
+  // inputs, so the same data the CMS already stores drives the model + facade + drawer.
+  normalizeProjects(raw){
+    const out={};
+    for(const k of Object.keys(raw)){
+      const pr=Object.assign({}, raw[k]);
+      const src=pr.units||pr.project_3d_units||[];
+      pr.units=src.map((u,i)=>{
+        const m=Object.assign({}, u);
+        m.id=u.id||('unit-'+i);
+        m.dir=u.dir||u.direction||'';
+        m.rooms=u.rooms; m.sqm=u.sqm; m.balcony=u.balcony; m.view=u.view||'';
+        m.status=u.status||'available';
+        m.recommended=!!u.recommended;
+        m.position=u.position||u.hotspot_position||'0m 0m 0m';
+        m.normal=u.normal||u.hotspot_normal||'0m 0m 1m';
+        m.target=u.target||u.hotspot_position||m.position;
+        m.orbit=u.orbit||u.camera_orbit||(pr.meta&&pr.meta.defaultOrbit)||'30deg 75deg 80m';
+        m.plan=(u.plan&&String(u.plan).indexOf('plan-')===0)?u.plan:(u.plan?u.plan:'plan-4br');
+        m.col=(u.col!=null)?u.col:(i%6);
+        m.roomsLabel=u.roomsLabel||(u.rooms?(u.rooms+' חדרים'):'דירה');
+        m.title=u.title||(('דירת '+(u.rooms||'')+' חדרים').replace('  ',' ').trim()+(u.floor?(', קומה '+u.floor):''));
+        return m;
+      });
+      pr.floors=pr.floors||pr.project_floors||40;
+      pr.slug=pr.slug||k;
+      out[k]=pr;
+    }
+    return out;
+  }
+  componentDidUpdate(prevProps){
+    if(this.mv && this.props.autoRotate===false) this.mv.removeAttribute('auto-rotate');
+    else if(this.mv && this.props.autoRotate!==false && !this.mv.hasAttribute('auto-rotate')) this.mv.setAttribute('auto-rotate','');
+    this.syncModel();
+    this.syncPlan();
+  }
+  planPath(k){ return 'assets/projects/rainbow-tel-aviv/plans/'+((k&&String(k).indexOf('plan-')===0)?k:'plan-4br')+'.svg'; }
+  planRef=(el)=>{ this.planImg=el; this.syncPlan(); };
+  syncPlan(){ if(this.planImg && this.sel){ const want=this.planPath(this.sel.plan); if(this.planImg.getAttribute('src')!==want) this.planImg.src=want; } }
+
+  firstRec(proj){ if(!proj) return null; const r=proj.units.find(u=>u.recommended); return (r||proj.units[0]).id; }
+  get proj(){ return this.state.projects ? this.state.projects[this.state.key] : null; }
+  get sel(){ const p=this.proj; if(!p) return null; return p.units.find(u=>u.id===this.state.selectedId) || p.units[0]; }
+
+  statusColor(s){ return s==='available'?'#34d986':s==='reserved'?'#e7b952':'#9aa7a7'; }
+  statusLabel(s){ return s==='available'?'זמינה':s==='reserved'?'בעדיפות':'נמכרה'; }
+
+  mvRef = (el)=>{ this.mv=el; this.syncModel(); };
+  syncModel(){
+    if(!this.mv) return;
+    const p=this.proj;
+    const src=(p&&(p.model_glb||p.modelSrc))||'assets/engine/'+this.state.key+'.glb';
+    const pos=(p&&(p.poster||p.posterSrc))||'assets/engine/'+this.state.key+'-poster.png';
+    if(this.mv.getAttribute('src')!==src) this.mv.setAttribute('src',src);
+    if(this.mv.getAttribute('poster')!==pos) this.mv.setAttribute('poster',pos);
+  }
+
+  pick(id){
+    this.setState({selectedId:id, tab:'plan', feedback:'', ok:false});
+    const u=this.proj && this.proj.units.find(x=>x.id===id);
+    if(u && this.mv){ try{ this.mv.cameraTarget=u.target; this.mv.cameraOrbit=u.orbit; this.mv.fieldOfView='32deg'; }catch(e){} }
+  }
+  switchProject(key){
+    if(key===this.state.key) return;
+    const p=this.state.projects[key];
+    this.setState({key, selectedId:this.firstRec(p), tab:'plan', feedback:'', ok:false});
+    if(this.mv){ try{ this.mv.cameraTarget='auto auto auto'; this.mv.cameraOrbit=p.meta.defaultOrbit; this.mv.fieldOfView='auto'; }catch(e){} }
+  }
+  setTab(t){ this.setState({tab:t}); }
+  setView(v){ this.setState({view:v}); }
+  field(k){ return (e)=>this.setState({form:Object.assign({},this.state.form,{[k]:e.target.value})}); }
+  // Posts the full unit-level payload to the existing WordPress lead endpoint.
+  // Falls back to a local thank-you when no backend is reachable (prototype).
+  submit(e){
+    e.preventDefault(); const f=this.state.form;
+    if(!f.name.trim() || (!f.phone.trim() && !f.email.trim())){ this.setState({feedback:'יש למלא שם וגם טלפון או אימייל כדי שנחזור אליכם.', ok:false}); return; }
+    const u=this.sel, name=this.projName();
+    const done=(ref)=>this.setState({ok:true, feedback:'תודה! קיבלנו את הפנייה עבור '+u.title+(ref?' · מספר פנייה '+ref:'')+'. נציג יחזור אליכם בתוך 24 שעות.', form:{name:'',phone:'',email:''}});
+    const payload={
+      source:'showroom_engine', project_slug:this.state.key, project_title:name,
+      name:f.name, phone:f.phone, email:f.email,
+      unit:u.id, floor:u.floor, rooms:u.rooms, sqm:u.sqm, balcony:u.balcony, direction:u.dir, view:u.view,
+      building:name, availability:this.statusLabel(u.status), reservation_state:'lead_request',
+      message:'פנייה מתצוגת '+name+' · '+u.title+' (קומה '+u.floor+', '+u.rooms+' חד׳, '+u.sqm+' מ״ר, כיוון '+u.dir+').',
+      market_note:'נתוני המחשה. יש לאמת מלאי, מחיר ותנאים מול היזם.'
+    };
+    const endpoint=this.props.leadEndpoint || (typeof window!=='undefined' && window.NADLAN_LEAD_ENDPOINT) || '/wp-json/nadlan/v1/lead';
+    this.setState({ok:true, feedback:'שולחים את הפנייה…'});
+    try{
+      fetch(endpoint,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload)})
+        .then(r=>r.ok?r.json().catch(()=>({})):Promise.reject(0))
+        .then(d=>done(d&&(d.id||d.lead_id||'')))
+        .catch(()=>done(''));
+    }catch(_){ done(''); }
+  }
+  projName(){ const p=this.proj; return (p&&p.name)||(this.names[this.state.key]&&this.names[this.state.key].name)||this.state.key; }
+
+  tabStyle(a){ return 'min-height:42px;border-radius:10px;font:inherit;font-weight:700;font-size:14px;cursor:pointer;border:1px solid rgba(242,223,167,.26);'+(a?'background:linear-gradient(180deg,#f0d999,#c99c49);color:#12130f;border-color:transparent;':'background:rgba(255,255,255,.06);color:#f7f1dc;'); }
+  toggleStyle(a){ return 'min-height:36px;padding:0 16px;border-radius:9px;font:inherit;font-weight:700;font-size:13.5px;cursor:pointer;border:0;'+(a?'background:linear-gradient(180deg,#f0d999,#c99c49);color:#12130f;':'background:transparent;color:#cfdedb;'); }
+  projBtn(key, big){
+    const a=key===this.state.key;
+    const base= big
+      ? 'min-height:42px;padding:0 18px;border-radius:11px;font:inherit;font-weight:800;font-size:14px;cursor:pointer;'
+      : 'min-height:32px;padding:0 13px;border-radius:9px;font:inherit;font-weight:700;font-size:13px;cursor:pointer;';
+    return base + (a
+      ? 'background:linear-gradient(180deg,#f0d999,#c99c49);color:#12130f;border:1px solid transparent;'
+      : (big?'background:#fff;color:#3a3c33;border:1px solid #e0d7c2;':'background:rgba(255,255,255,.08);color:#e4ddc6;border:1px solid rgba(242,223,167,.28);'));
+  }
+
+  renderVals(){
+    const p=this.proj, sel=this.sel, view=this.state.view, tab=this.state.tab, selId=this.state.selectedId;
+    const allProjects=this.state.projects||{};
+    const keys=Object.keys(allProjects).length?Object.keys(allProjects):this.order;
+    const nmOverride=this.names[this.state.key]||{};
+    const nm={ name:(p&&p.name)||nmOverride.name||this.state.key, sub:(p&&p.sub)||nmOverride.sub||'' };
+    const labelFor=(k)=>{ const pr=allProjects[k]; return (pr&&pr.name)||(this.names[k]&&this.names[k].name)||k; };
+    const planPath=(k)=>'assets/projects/rainbow-tel-aviv/plans/'+(k||'plan-4br')+'.svg';
+    const panelCopy={ view:'מבט מהדירה לפי קומה וכיוון יוצג לאחר אימות מיקום וקואורדינטות מול היזם.', info:'' };
+
+    const hotspots=(p?p.units:[]).map((u,i)=>{
+      const active=u.id===selId; const c=this.statusColor(u.status);
+      let s='display:grid;place-items:center;width:38px;height:38px;border-radius:50%;cursor:pointer;font:inherit;font-weight:800;font-size:13px;color:#fbf6e6;';
+      s+='border:2px solid '+c+';background:'+(active?'rgba(52,217,134,.42)':'rgba(8,30,28,.55)')+';backdrop-filter:blur(2px);';
+      s+='box-shadow:0 4px 14px rgba(0,0,0,.45)'+(active?',0 0 0 6px rgba(52,217,134,.18)':'')+';transition:transform .15s ease,background .15s ease;';
+      if(u.recommended && !active) s+='animation:engPulse 2.1s infinite;';
+      if(active) s+='transform:scale(1.14);';
+      return {slot:'hotspot-'+i, position:u.position, normal:u.normal, floor:u.floor, aria:u.title, style:s, onSelect:()=>this.pick(u.id)};
+    });
+
+    const floors=p?p.floors:40;
+    const facadeBands=(p?p.units:[]).map(u=>{
+      const active=u.id===selId; const c=this.statusColor(u.status);
+      const top=9 + (1 - (u.floor/(floors+1)))*82;
+      let s='position:absolute;right:8%;left:8%;top:'+top.toFixed(2)+'%;transform:translateY(-50%);display:flex;align-items:center;justify-content:space-between;gap:10px;min-height:44px;padding:7px 14px;border-radius:10px;cursor:pointer;font:inherit;text-align:right;color:#fbf6e6;white-space:nowrap;';
+      s+='border:1.5px solid '+c+';background:'+(active?'rgba(52,217,134,.26)':'rgba(6,28,27,.74)')+';box-shadow:0 6px 18px rgba(0,0,0,.3)'+(active?',0 0 0 4px rgba(52,217,134,.16)':'')+';';
+      if(u.recommended && !active) s+='animation:engPulse 2.2s infinite;';
+      return {title:'קומה '+u.floor, sub:u.roomsLabel+' · '+u.sqm+' מ״ר', style:s, onSelect:()=>this.pick(u.id)};
+    });
+
+    return {
+      projectName:nm.name, projectSub:nm.sub,
+      modelSrc:(p&&(p.model_glb||p.modelSrc))||'assets/engine/'+this.state.key+'.glb',
+      posterSrc:(p&&(p.poster||p.posterSrc))||'assets/engine/'+this.state.key+'-poster.png',
+      mvRef:this.mvRef,
+      hotspots,
+      facadeBands,
+      view,
+      stage3dStyle:'position:absolute;inset:0;'+(view==='3d'?'':'display:none;visibility:hidden;'),
+      stageFacadeStyle:'position:absolute;inset:0;'+(view==='facade'?'':'display:none;'),
+      onView3d:()=>this.setView('3d'), onViewFacade:()=>this.setView('facade'),
+      toggle3dStyle:this.toggleStyle(view==='3d'), toggleFacadeStyle:this.toggleStyle(view==='facade'),
+      projectButtons:keys.map(k=>({label:labelFor(k), onSelect:()=>this.switchProject(k), style:this.projBtn(k,false)})),
+      projectButtonsBig:keys.map(k=>({label:labelFor(k), onSelect:()=>this.switchProject(k), style:this.projBtn(k,true)})),
+      selected: sel ? {
+        head:sel.roomsLabel, dir:sel.dir, floor:sel.floor, rooms:sel.rooms, sqm:sel.sqm, balcony:sel.balcony, view:sel.view,
+        statusColor:this.statusColor(sel.status), statusLabel:this.statusLabel(sel.status),
+        planSrc:planPath(sel.plan), shortLabel:'קומה '+sel.floor,
+      } : {head:'בחרו דירה', dir:'', floor:'—', rooms:'—', sqm:'—', balcony:'—', view:'—', statusColor:'#9aa7a7', statusLabel:'', planSrc:planPath('plan-4br'), shortLabel:''},
+      showPlan: tab==='plan',
+      showPanelText: tab!=='plan',
+      panelText: tab==='info' ? ((sel?('כיוון '+sel.dir+' · '+sel.view+'. סטטוס: '+this.statusLabel(sel.status)+'. נתוני המחשה — להחלפה בתוכנית מכר רשמית.'):'')) : (panelCopy[tab]||''),
+      onTabPlan:()=>this.setTab('plan'), onTabView:()=>this.setTab('view'), onTabInfo:()=>this.setTab('info'),
+      tabPlanStyle:this.tabStyle(tab==='plan'), tabViewStyle:this.tabStyle(tab==='view'), tabInfoStyle:this.tabStyle(tab==='info'),
+      form:this.state.form, onName:this.field('name'), onPhone:this.field('phone'), onEmail:this.field('email'), onSubmit:(e)=>this.submit(e),
+      feedback:this.state.feedback, feedbackBg:this.state.ok?'rgba(52,217,134,.14)':'rgba(231,90,90,.16)', feedbackColor:this.state.ok?'#d6f5e2':'#ffd9d3',
+      showEngineBand: this.props.showEngineBand!==false,
+    };
+  }
+}
+</script>
+<script>
+(async () => {
+  if (!document.title || !document.title.trim()) document.title = "Showroom Engine";
+  // Prepend so page-supplied @page / break rules (deck-stage's margin:0,
+  // author CSS) keep source-order precedence over the baseline.
+  const baseCss = document.createElement('style');
+  baseCss.textContent = "@media print {\n  figure, table { break-inside: avoid; }\n  *, *::before, *::after {\n    print-color-adjust: exact; -webkit-print-color-adjust: exact;\n    backdrop-filter: none !important; -webkit-backdrop-filter: none !important;\n    animation-delay: -99s !important; animation-duration: .001s !important;\n    animation-iteration-count: 1 !important; animation-fill-mode: both !important;\n    animation-play-state: running !important; transition-duration: 0s !important;\n  }\n}";
+  document.head.prepend(baseCss);
+  if (document.readyState === 'loading') {
+    await new Promise((r) => document.addEventListener('DOMContentLoaded', r, { once: true }));
+  }
+  let ds = document.querySelector('deck-stage');
+  // whenDefined never resolves when nothing registers the element, so only
+  // await it when a <deck-stage> tag exists (and race a timeout regardless).
+  if (ds && !customElements.get('deck-stage')) {
+    try {
+      await Promise.race([
+        customElements.whenDefined('deck-stage'),
+        new Promise((r) => setTimeout(r, 3000)),
+      ]);
+    } catch (e) {}
+    ds = document.querySelector('deck-stage');
+  }
+  // dc-runtime assigns window.DCLogic at init and mounts into #dc-root on
+  // DOMContentLoaded; settle on that subtree so React has rendered before
+  // print(). Non-DC pages fall through to weighing body.
+  const isDc = !ds && 'DCLogic' in window;
+  const settleRoot = ds || (isDc ? document.getElementById('dc-root') : null) || document.body;
+  if (settleRoot) {
+    // Weigh only content children — skip script/style/template so inline
+    // Babel/CSS doesn't register as stable "content" before the framework
+    // has mounted anything.
+    const MEDIA = 'img,svg,canvas,video,picture,iframe,embed,object';
+    const weigh = () => {
+      let text = 0, media = 0;
+      for (const c of settleRoot.children) {
+        const t = c.tagName;
+        if (t === 'SCRIPT' || t === 'STYLE' || t === 'TEMPLATE') continue;
+        text += (c.textContent || '').trim().length;
+        media += c.querySelectorAll(MEDIA).length + (c.matches(MEDIA) ? 1 : 0);
+      }
+      return text + media * 100;
+    };
+    // "Non-zero and stable" alone is not sufficient to mean rendered: generic
+    // body can carry a static shell while async main content is pending, and
+    // #dc-root can carry the root DC's static text while child refs are still
+    // .sc-placeholder boxes. Gate generic on readyState 'complete', and never
+    // accept stability while a dc-runtime placeholder is present.
+    const isGeneric = settleRoot === document.body;
+    const deadline = Date.now() + 15000;
+    let last = -1, stable = 0;
+    while (Date.now() < deadline) {
+      const n = weigh();
+      const ready =
+        (!isGeneric || document.readyState === 'complete') &&
+        !settleRoot.querySelector('.sc-placeholder');
+      if (n > 0 && n === last && ready) { if (++stable >= 2) break; } else { stable = 0; }
+      last = n;
+      await new Promise((r) => setTimeout(r, 250));
+    }
+  }
+  // Project support.js may predate runtime default-seeding; push via bridge.
+  if (isDc && window.__dcSetProps && window.__dcRootName) {
+    try {
+      const dpEl = document.querySelector('script[data-dc-script]');
+      const meta = JSON.parse((dpEl && dpEl.getAttribute('data-props')) || '{}');
+      const bag = {};
+      for (const k in meta)
+        if (k[0] !== '$' && meta[k] && meta[k].default !== undefined)
+          bag[k] = meta[k].default;
+      if (Object.keys(bag).length) {
+        window.__dcSetProps(window.__dcRootName(), bag);
+        await new Promise((r) => setTimeout(r, 50));
+      }
+    } catch (e) {}
+  }
+  // Reveal content gated on scroll or visibility before printing. Lazy <img>,
+  // IntersectionObserver fade-ins, and collapsed <details> don't render while
+  // off-screen, so a long page would print with them blank or closed. Open
+  // every <details>, force native-lazy images eager, and scroll the document
+  // through its full height to trip lazy-load + IO; then wait (bounded) for the
+  // newly-triggered images. Inert for deck-stage (slides aren't scroll-gated).
+  try {
+    for (const d of document.querySelectorAll('details')) d.open = true;
+    for (const img of document.querySelectorAll('img[loading="lazy"]'))
+      img.loading = 'eager';
+    const scroller = document.scrollingElement || document.documentElement;
+    const full = Math.max(scroller.scrollHeight, document.body.scrollHeight);
+    const step = window.innerHeight || 800;
+    for (let y = 0; y <= full; y += step) {
+      window.scrollTo(0, y);
+      await new Promise((r) => requestAnimationFrame(r));
+    }
+    window.scrollTo(0, 0);
+    await Promise.race([
+      Promise.all(
+        [...document.images].map((img) =>
+          img.complete
+            ? null
+            : new Promise((res) => {
+                img.addEventListener('load', res, { once: true });
+                img.addEventListener('error', res, { once: true });
+              })
+        )
+      ),
+      new Promise((r) => setTimeout(r, 4000)),
+    ]);
+  } catch (e) {}
+  try { await document.fonts.ready; } catch (e) {}
+  // Jump every animation to its end state so print() never captures a slide
+  // mid-entrance. Ordering matters: the 0s-transition style must be live
+  // BEFORE data-deck-active is set so attribute-keyed transitions don't
+  // start a (now-0s) run from the pre-active base.
+  const st = document.createElement('style');
+  st.textContent = '*,*::before,*::after{animation-delay:-99s !important;animation-duration:.001s !important;animation-iteration-count:1 !important;animation-fill-mode:both !important;animation-play-state:running !important;transition-duration:0s !important}';
+  document.head.appendChild(st);
+  for (const d of document.querySelectorAll('deck-stage')) {
+    for (const c of d.children) {
+      const t = c.tagName;
+      if (t === 'SCRIPT' || t === 'STYLE' || t === 'TEMPLATE') continue;
+      c.setAttribute('data-deck-active', '');
+    }
+  }
+  // Re-append deck-stage's @page last so no author @page can add a margin and
+  // spill each full-bleed slide onto two sheets. Backstop for old copies.
+  if (ds) {
+    let pg = document.getElementById('deck-stage-print-page');
+    if (!pg) {
+      pg = document.createElement('style');
+      pg.textContent = '@page{size:' + (+ds.getAttribute('width') || 1920) +
+        'px ' + (+ds.getAttribute('height') || 1080) + 'px;margin:0}';
+    }
+    document.body.appendChild(pg);
+  }
+  try {
+    const sweep = () => {
+      for (const a of document.getAnimations()) {
+        try { a.finish(); } catch (e) {
+          try { a.currentTime = (a.effect && a.effect.getComputedTiming().duration) || 0; a.pause(); } catch (e2) {}
+        }
+      }
+    };
+    sweep();
+    await new Promise((r) => requestAnimationFrame(r));
+    sweep();
+    await new Promise((r) => requestAnimationFrame(r));
+  } catch (e) {}
+  // Size the PDF page to the rendered design unless the file opted into
+  // standard paper via @page{size:letter|A4|…}. Decks own their own @page.
+  // Wrappers (body, …) lose padding+margin so the frame sits at (0,0); the
+  // frame itself loses only margin — its padding is INSIDE the measured
+  // rect and must stay, or content shifts and leaves a gap at bottom/right.
+  var __m = null;
+  try { __m = (() => {
+  var STAMP = true;
+  var docEl = document.documentElement;
+  var doc = { width: docEl.scrollWidth, height: docEl.scrollHeight };
+
+  var ds = document.querySelector('deck-stage');
+  if (ds) {
+    var dw = Number(ds.getAttribute('width')) || 1920;
+    var dh = Number(ds.getAttribute('height')) || 1080;
+    var n = typeof ds.length === 'number' ? ds.length : ds.children.length;
+    var idx = typeof ds.index === 'number' ? ds.index : 0;
+    var frames = [];
+    for (var i = 0; i < n; i++) frames.push({ left: 0, top: 0, width: dw, height: dh });
+    return { kind: 'deck', source: 'declared', doc: doc, frames: frames,
+      authored: frames.map(function(){return{width:true,height:true}}),
+      deck: { width: dw, height: dh, slideCount: n, index: idx },
+      signals: { paperPage: false, pxPage: false } };
+  }
+
+  // Declared kind: a doc-page tag names the kind outright, so no signal
+  // heuristics run (like the deck branch above, signals report false —
+  // they describe inferred classifications only). The tag alone is not
+  // trusted: the element must have upgraded (shadowRoot present), so a
+  // leftover tag whose script was deleted falls through to the heuristics
+  // that handle plain markup.
+  var stageSx = window.scrollX || 0, stageSy = window.scrollY || 0;
+  var dp = document.querySelector('doc-page');
+  if (dp && dp.shadowRoot) {
+    // Crop to the sheet, not the host — the desk around it is screen-only
+    // chrome that must not land in PNG exports.
+    var sheet = dp.shadowRoot.querySelector('.sheet');
+    var sr = (sheet || dp).getBoundingClientRect();
+    return { kind: 'paper-doc', source: 'declared', doc: doc,
+      frames: [{ left: sr.left + stageSx, top: sr.top + stageSy,
+        width: sr.width, height: sr.height }],
+      authored: [{ width: false, height: false }],
+      signals: { paperPage: false, pxPage: false } };
+  }
+  var paperPage = false, pxPage = false;
+  var eachRule = function (fn) {
+    for (var s = 0; s < document.styleSheets.length; s++) {
+      var rs; try { rs = document.styleSheets[s].cssRules; } catch (e) { continue; }
+      for (var r = 0; r < rs.length; r++) {
+        fn(rs[r]);
+        if (rs[r].cssRules) for (var n = 0; n < rs[r].cssRules.length; n++) fn(rs[r].cssRules[n]);
+      }
+    }
+  };
+  eachRule(function (r) {
+    if (r.type !== 6) return;
+    var m = /\bsize\s*:\s*([^;}]+)/i.exec(r.cssText || '');
+    if (!m) return;
+    if (/\b(letter|a[3-5]|legal|ledger)\b/i.test(m[1])) paperPage = true;
+    if (/\d+(?:\.\d+)?px\b/i.test(m[1])) pxPage = true;
+  });
+  var signals = { paperPage: paperPage, pxPage: pxPage };
+
+  var pxVal = function (v) {
+    var m = /^(\d+(?:\.\d+)?)px$/.exec(v || ''); return m ? +m[1] : 0;
+  };
+  var authoredPx = function (el, prop) {
+    if (pxVal(el.style[prop])) return true;
+    var attr = el.getAttribute(prop);
+    if (attr && /^\d+$/.test(attr)) return true;
+    var hit = false;
+    eachRule(function (r) {
+      if (hit || r.type !== 1 || !r.style) return;
+      try { if (el.matches(r.selectorText) && pxVal(r.style[prop])) hit = true; } catch (e) {}
+    });
+    return hit;
+  };
+
+  var el = document.body, rootPxW = false;
+  for (;;) {
+    var kids = [];
+    for (var c = 0; c < el.children.length; c++) {
+      var t = el.children[c].tagName;
+      if (t !== 'SCRIPT' && t !== 'STYLE' && t !== 'TEMPLATE') kids.push(el.children[c]);
+    }
+    if (kids.length !== 1 || !(kids[0] instanceof HTMLElement)) break;
+    if (STAMP) el.setAttribute('data-om-frame-wrap', '');
+    el = kids[0];
+    rootPxW = authoredPx(el, 'width');
+    if (rootPxW) break;
+  }
+  if (!rootPxW) rootPxW = authoredPx(el, 'width');
+
+  // @page{size:letter} alone is a flowing doc; with a px-width root it's a
+  // fixed sheet pretending to be paper — fall through and size to render.
+  if (paperPage && !rootPxW) {
+    return { kind: 'paper-doc', source: 'inferred', doc: doc, signals: signals,
+      frames: [{ left: 0, top: 0, width: doc.width, height: doc.height }],
+      authored: [{ width: false, height: false }] };
+  }
+
+  var sx = window.scrollX || 0, sy = window.scrollY || 0;
+  var rectOf = function (e) {
+    var r = e.getBoundingClientRect();
+    var oy; try { oy = getComputedStyle(e).overflowY; } catch (err) {}
+    var h = oy === 'visible' ? Math.max(r.height, e.scrollHeight || 0) : r.height;
+    return { left: r.left + sx, top: r.top + sy, width: r.width, height: h };
+  };
+
+  // Multi-frame: ≥2 visible non-fixed children, each with authored px width
+  // AND height, all within ±2px of each other. Off unless the page opts in
+  // via data-om-multi-frame on the stop element — guards against card grids
+  // and pricing tables that match the geometry but aren't separate canvases.
+  if (el.hasAttribute('data-om-multi-frame')) {
+    var cands = [];
+    for (var k = 0; k < el.children.length; k++) {
+      var ch = el.children[k];
+      var cs; try { cs = getComputedStyle(ch); } catch (e) { continue; }
+      if (cs.display === 'none' || cs.visibility === 'hidden' || cs.position === 'fixed') continue;
+      var rc = rectOf(ch);
+      if (rc.width < 2 || rc.height < 2) continue;
+      if (!authoredPx(ch, 'width') || !authoredPx(ch, 'height')) continue;
+      cands.push(rc);
+    }
+    if (cands.length >= 2) {
+      var w0 = cands[0].width, h0 = cands[0].height, ok = true;
+      for (var q = 1; q < cands.length; q++)
+        if (Math.abs(cands[q].width - w0) > 2 || Math.abs(cands[q].height - h0) > 2) ok = false;
+      if (ok) return { kind: 'multi-frame', source: 'inferred', doc: doc, signals: signals,
+        frames: cands, authored: cands.map(function(){return{width:true,height:true}}) };
+    }
+  }
+
+  if (STAMP) el.setAttribute('data-om-frame', '');
+  return { kind: 'single-canvas', source: 'inferred', doc: doc, signals: signals,
+    frames: [rectOf(el)],
+    authored: [{ width: rootPxW, height: authoredPx(el, 'height') }] };
+})(); } catch (e) {}
+  var frame = null;
+  if (__m && __m.kind === 'single-canvas') {
+    var f = __m.frames && __m.frames[0];
+    if (f && f.width >= 200 && f.height >= 200) {
+      frame = f;
+      var fst = document.createElement('style');
+      fst.textContent = '@media print{@page{size:' + Math.ceil(f.width) + 'px ' +
+        Math.ceil(f.height) + 'px;margin:0}' +
+        'html,body,[data-om-frame-wrap]{padding:0!important;margin:0!important;background:none!important}' +
+        '[data-om-frame]{margin:0!important}}';
+      document.body.appendChild(fst);
+    }
+  }
+  // Relax break-inside on oversized elements. An element taller than a
+  // printable page can't honor break-inside: avoid — browsers either overflow
+  // it or push it whole to the next page, leaving a blank gap, then break it
+  // anyway at an arbitrary point. After the final layout (content revealed,
+  // animations jumped), find elements taller than a page that still compute
+  // break-inside: avoid and reset them to auto, so the browser breaks them at
+  // their children's boundaries instead (children keep their own avoid). PAGE_PX
+  // is a conservative portrait estimate at 96 CSS px/in — Letter/A4 usable
+  // height minus our 0.5in margins — so only clearly-oversized elements are
+  // touched and under-page elements still stay whole. Skipped for decks (slides
+  // are sized to the page) and for fixed-size canvases (frame set, or an author
+  // px-based @page) — runs as before for flowing docs on letter/A4.
+  try {
+    if (!ds && !frame && !(__m && __m.signals && __m.signals.pxPage)) {
+      const PAGE_PX = 1024;
+      // Our print defaults add a real @page margin only when the source has
+      // no @page of its own; computed style can't tell us (it reports screen
+      // media), so read the injected rule directly.
+      const defaults = document.querySelector('style[data-omelette-print-defaults]');
+      const pageInset = /@page\s*\{[^}]*margin/.test(defaults ? defaults.textContent || '' : '');
+      const SEL = 'section,article,figure,table,pre,blockquote,[class~="card" i],[class~="page" i],[class~="sheet" i]';
+      for (const el of document.body.querySelectorAll(SEL)) {
+        if (el instanceof HTMLElement && el.offsetHeight > PAGE_PX) {
+          el.setAttribute('data-om-oversized', '');
+          // Fake-paged docs simulate sheets with over-tall break-after:page
+          // boxes; honoring the break spills half-blank pages and ends a
+          // colored box mid-sheet. Flow them, and (only when we own the page
+          // inset) drop the redundant padding/background via the rule below.
+          const cs = getComputedStyle(el);
+          if (cs.breakAfter === 'page' || cs.pageBreakAfter === 'always') {
+            el.setAttribute('data-om-fakepage', '');
+          }
+        }
+      }
+      const ost = document.createElement('style');
+      ost.textContent = '@media print{' +
+        '[data-om-oversized]{break-inside:auto !important;page-break-inside:auto !important}' +
+        '[data-om-fakepage]{break-after:auto !important;page-break-after:auto !important}' +
+        (pageInset ? '[data-om-fakepage]{padding:0 !important;background:none !important}' : '') +
+        '}';
+      document.head.appendChild(ost);
+    }
+  } catch (e) {}
+  // macOS Preview renders Skia-PDF Luminosity soft-masks as opaque grey boxes;
+  // swap the CSS that triggers them for Preview-safe forms.
+  try {
+    for (const el of document.body.querySelectorAll('*')) {
+      const cs = getComputedStyle(el);
+
+      if (cs.boxShadow !== 'none' && cs.filter === 'none') {
+        const outs = [], kept = [];
+        for (const s of cs.boxShadow.split(/,(?![^(]*[)])/)) {
+          const t = s.trim();
+          const m = t.match(/^(rgba?[(][^)]+[)]) (-?[0-9.]+px) (-?[0-9.]+px) ([0-9.]+px) -?[0-9.]+px$/);
+          if (m && parseFloat(m[4]) > 0) outs.push('drop-shadow(' + m[2] + ' ' + m[3] + ' ' + m[4] + ' ' + m[1] + ')');
+          else kept.push(t);
+        }
+        if (outs.length) {
+          el.style.setProperty('filter', outs.join(' '), 'important');
+          el.style.setProperty('box-shadow', kept.join(', ') || 'none', 'important');
+        }
+      }
+
+      const mask = cs.maskImage && cs.maskImage !== 'none' ? cs.maskImage : cs.webkitMaskImage;
+      if (mask && mask !== 'none' && cs.filter === 'none') el.style.setProperty('filter', 'opacity(1)', 'important');
+    }
+  } catch (e) {}
+  setTimeout(() => { try { window.print(); } catch (e) {} }, 200);
+})();
+</script>
+</body>
+</html>
