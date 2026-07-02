@@ -178,8 +178,8 @@ if ( ! function_exists( 'nadlan_pjx_price_band' ) ) {
 			</table>
 			<?php endif; ?>
 		</div>
-		<?php if ( $token && $lat && $lng && $comps ) : ?>
-		<div id="nlpjx-compmap" data-token="<?php echo esc_attr( $token ); ?>" data-lat="<?php echo esc_attr( $lat ); ?>" data-lng="<?php echo esc_attr( $lng ); ?>" data-title="<?php echo esc_attr( get_the_title( $id ) ); ?>"></div>
+		<?php if ( $lat && $lng && $comps ) : ?>
+		<div class="nlpjx-price-mapnote"><a href="#nlpjx-map">כל המחירים, המוסדות והתוכניות - על המפה החיה למטה ←</a></div>
 		<script type="application/json" id="nlpjx-comps-data"><?php echo wp_json_encode( $comps ); // phpcs:ignore ?></script>
 		<?php endif; ?>
 	</div>
@@ -293,11 +293,26 @@ if ( ! function_exists( 'nadlan_pjx_bottom' ) ) {
 		}, (array) $pois ) );
 		$near = nadlan_pjx_nearby_projects( $id, $lat, $lng );
 	?>
+	<?php $unimap = function_exists( 'nadlan_mapbox_token' ) ? nadlan_mapbox_token() : ''; ?>
 	<section id="nlpjx-map" class="nlpjx-sec" aria-label="מפה חיה של הסביבה">
-		<h2>הסביבה — מפה חיה ותוכניות עתידיות</h2>
+		<h2>הכל על מפה אחת: מחירים, סביבה, תוכניות עתידיות</h2>
+		<?php if ( $unimap ) : ?>
+		<div class="nlpjx-maplayers" role="group" aria-label="שכבות מפה">
+			<button type="button" class="is-on" data-layer="comps">₪ מחירים בסביבה</button>
+			<button type="button" class="is-on" data-layer="schools">🏫 חינוך</button>
+			<button type="button" data-layer="transit">🚌 תחבורה</button>
+			<button type="button" data-layer="shops">🛒 קניות</button>
+			<button type="button" data-layer="health">⚕️ בריאות</button>
+			<button type="button" class="is-on" data-layer="plans">◆ תוכניות עתידיות</button>
+			<button type="button" data-layer="3d">🏙️ תלת-ממד</button>
+			<button type="button" data-layer="sat">🛰️ לוויין</button>
+		</div>
+		<div id="nlpjx-unimap" data-token="<?php echo esc_attr( $unimap ); ?>" data-lat="<?php echo esc_attr( $lat ); ?>" data-lng="<?php echo esc_attr( $lng ); ?>" data-title="<?php echo esc_attr( get_the_title( $id ) ); ?>"></div>
+		<?php else : ?>
 		<div id="nlpjx-leaflet" data-lat="<?php echo esc_attr( $lat ); ?>" data-lng="<?php echo esc_attr( $lng ); ?>" data-title="<?php echo esc_attr( get_the_title( $id ) ); ?>"></div>
+		<?php endif; ?>
 		<script>window.NLPJX_POIS=<?php echo $poi_json ?: '{}'; // phpcs:ignore ?>;window.NLPJX_PLANS=<?php echo wp_json_encode( $near ); // phpcs:ignore ?>;</script>
-		<p class="nlpjx-cap">🏫 חינוך · 🚌 תחבורה · 🛒 קניות · ⚕️ בריאות — נתונים חיים. <b style="color:#6B4FA0">◆ סגול = פרויקטים ותוכניות התחדשות סמוכים</b> — לחצו לפרטי כל תוכנית. החליפו לתצוגת לוויין בכפתור השכבות.</p>
+		<p class="nlpjx-cap">לחצו על כל סימון לקבלת פרטים. תגי המחיר הם אומדן לא מחייב למ״ר בפרויקטים סמוכים. <b style="color:#6B4FA0">◆ סגול = תוכניות התחדשות ופרויקטים עתידיים</b>.</p>
 	</section>
 	<?php endif; ?>
 
@@ -355,7 +370,12 @@ if ( ! function_exists( 'nadlan_pjx_assets' ) ) {
 .nlpjx-comps tr:last-child td{border-bottom:0}
 .nlpjx-comps a{color:#1B1A17;text-decoration:none;font-weight:600}
 .nlpjx-comps a:hover{color:#9C7A3C}
-#nlpjx-compmap{height:340px;border-radius:10px;border:1px solid #E2DCD0;background:#F3EEE3}
+#nlpjx-unimap{height:440px;border-radius:12px;border:1px solid #E2DCD0;background:#F3EEE3}
+.nlpjx-maplayers{display:flex;gap:6px;flex-wrap:wrap;margin:0 0 10px}
+.nlpjx-maplayers button{font:600 12.5px/1 Heebo,sans-serif;border:1px solid #E2DCD0;background:#fff;color:#6D665C;border-radius:999px;padding:8px 13px;cursor:pointer;min-height:34px}
+.nlpjx-maplayers button.is-on{background:#1B1A17;border-color:#1B1A17;color:#F4EEDE}
+.nlpjx-price-mapnote{margin-top:10px}
+.nlpjx-price-mapnote a{font-size:13px;font-weight:700;color:#9C7A3C;text-decoration:none}
 .nlpjx-world{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:12px}
 .nlpjx-world a{display:block;border:1px solid #E2DCD0;border-radius:10px;background:#FAF8F3;padding:14px 16px;text-decoration:none;color:#1B1A17;transition:border-color .2s,transform .2s;min-height:64px}
 .nlpjx-world a:hover{border-color:#9C7A3C;transform:translateY(-2px)}
@@ -393,34 +413,88 @@ document.addEventListener("DOMContentLoaded",function(){
 			if(t){e.preventDefault();t.scrollIntoView({behavior:"smooth",block:"start"})}
 		});
 	});
-	// comps map: Mapbox GL pins for the price band (lazy - loads GL only when the
-	// band is near the viewport; token comes from the keys hub option)
-	var cm=document.getElementById("nlpjx-compmap");
-	if(cm&&"IntersectionObserver" in window){
-		var cmDone=false;
+	// UNIFIED MAP (owner 2026-07-02): one Mapbox map = price pills (Booking-style),
+	// POI layers, future plans, satellite and 3D buildings. Lazy: GL loads only
+	// when the map nears the viewport. Chips toggle marker groups/layers.
+	var um=document.getElementById("nlpjx-unimap");
+	if(um&&"IntersectionObserver" in window){
+		var umDone=false;
 		new IntersectionObserver(function(en,obs){
-			if(!en[0].isIntersecting||cmDone){return}
-			cmDone=true;obs.disconnect();
+			if(!en[0].isIntersecting||umDone){return}
+			umDone=true;obs.disconnect();
 			function boot(){
 				if(!window.mapboxgl){return}
-				mapboxgl.accessToken=cm.dataset.token;
-				var map=new mapboxgl.Map({container:cm,style:"mapbox://styles/mapbox/light-v11",center:[parseFloat(cm.dataset.lng),parseFloat(cm.dataset.lat)],zoom:13.2,attributionControl:true});
-				map.addControl(new mapboxgl.NavigationControl({showCompass:false}));
-				var home=document.createElement("div");home.style.cssText="width:18px;height:18px;border-radius:50%;background:#C2563A;border:3px solid #fff;box-shadow:0 2px 8px rgba(0,0,0,.35)";
-				new mapboxgl.Marker({element:home}).setLngLat([parseFloat(cm.dataset.lng),parseFloat(cm.dataset.lat)]).setPopup(new mapboxgl.Popup({offset:12}).setHTML("<b>"+cm.dataset.title+"</b>")).addTo(map);
-				var dataEl=document.getElementById("nlpjx-comps-data");
-				var comps=[];try{comps=JSON.parse(dataEl?dataEl.textContent:"[]")}catch(e){}
+				mapboxgl.accessToken=um.dataset.token;
+				var lat=parseFloat(um.dataset.lat),lng=parseFloat(um.dataset.lng);
+				var map=new mapboxgl.Map({container:um,style:"mapbox://styles/mapbox/light-v11",center:[lng,lat],zoom:14.4,pitch:0,attributionControl:true});
+				map.addControl(new mapboxgl.NavigationControl({visualizePitch:true}));
+				var groups={comps:[],schools:[],transit:[],shops:[],health:[],plans:[]};
+				function pop(html){return new mapboxgl.Popup({offset:14,maxWidth:"260px"}).setHTML(html)}
+				function dot(color){var e=document.createElement("div");e.style.cssText="width:15px;height:15px;border-radius:50%;background:"+color+";border:2.5px solid #fff;box-shadow:0 2px 6px rgba(0,0,0,.35);cursor:pointer";return e}
+				// the project itself
+				var home=document.createElement("div");home.style.cssText="width:20px;height:20px;border-radius:50%;background:#C2563A;border:3px solid #fff;box-shadow:0 2px 10px rgba(0,0,0,.4)";
+				new mapboxgl.Marker({element:home}).setLngLat([lng,lat]).setPopup(pop("<b>"+um.dataset.title+"</b><br>הפרויקט שבעמוד")).addTo(map);
+				// price pills for comparable projects
+				var compsEl=document.getElementById("nlpjx-comps-data"),comps=[];
+				try{comps=JSON.parse(compsEl?compsEl.textContent:"[]")}catch(e){}
 				comps.forEach(function(c){
 					if(!c.lat||!c.lng){return}
-					var el=document.createElement("div");el.style.cssText="min-width:44px;padding:3px 7px;border-radius:7px;background:#1B1A17;color:#E6D4AE;font:700 11px/1.3 Heebo,sans-serif;text-align:center;border:1px solid #9C7A3C;cursor:pointer";
+					var el=document.createElement("div");el.style.cssText="min-width:46px;padding:4px 8px;border-radius:8px;background:#1B1A17;color:#E6D4AE;font:700 11.5px/1.3 Heebo,sans-serif;text-align:center;border:1px solid #9C7A3C;cursor:pointer;box-shadow:0 3px 10px rgba(0,0,0,.3)";
 					el.textContent="₪"+Math.round(c.ppsqm/1000)+"K";
-					new mapboxgl.Marker({element:el}).setLngLat([c.lng,c.lat]).setPopup(new mapboxgl.Popup({offset:12}).setHTML("<b>"+c.name+"</b><br>~"+Number(c.ppsqm).toLocaleString()+" ₪/מ\"ר · <a href=\""+c.url+"\">לפרויקט</a>")).addTo(map);
+					groups.comps.push(new mapboxgl.Marker({element:el}).setLngLat([c.lng,c.lat]).setPopup(pop("<b>"+c.name+"</b><br>אומדן ~"+Number(c.ppsqm).toLocaleString()+" ₪/מ\"ר · לא מחייב<br><a href=\""+c.url+"\">לעמוד הפרויקט ←</a>")));
+				});
+				// POIs by layer
+				var P=window.NLPJX_POIS||{};
+				var poiStyle={schools:["#334236","🏫 "],kindergartens:["#334236","🧒 "],transit:["#183C3C","🚌 "],shops:["#9F6F54","🛒 "],health:["#A93F2A","⚕️ "]};
+				Object.keys(P).forEach(function(k){
+					var g=(k==="kindergartens")?"schools":k;
+					if(!groups[g]){return}
+					(P[k]||[]).forEach(function(pt){
+						if(!pt.lat||!pt.lng){return}
+						var st=poiStyle[k]||["#666",""];
+						groups[g].push(new mapboxgl.Marker({element:dot(st[0])}).setLngLat([pt.lng,pt.lat]).setPopup(pop(st[1]+(pt.name||""))));
+					});
+				});
+				// future plans (purple)
+				(window.NLPJX_PLANS||[]).forEach(function(pl){
+					if(!pl.lat||!pl.lng){return}
+					var e=dot("#6B4FA0");e.style.width="17px";e.style.height="17px";
+					groups.plans.push(new mapboxgl.Marker({element:e}).setLngLat([pl.lng,pl.lat]).setPopup(pop("◆ <b>"+pl.name+"</b><br><a href=\""+pl.url+"\">לפרטי התוכנית ←</a>")));
+				});
+				var on={comps:true,schools:true,transit:false,shops:false,health:false,plans:true};
+				function apply(k){(groups[k]||[]).forEach(function(m){on[k]?m.addTo(map):m.remove()})}
+				Object.keys(groups).forEach(apply);
+				// 3D buildings + satellite, added after style load
+				map.on("load",function(){
+					map.addSource("nl-sat",{type:"raster",tiles:["https://api.mapbox.com/v4/mapbox.satellite/{z}/{x}/{y}@2x.jpg90?access_token="+mapboxgl.accessToken],tileSize:256});
+					map.addLayer({id:"nl-sat",type:"raster",source:"nl-sat",layout:{visibility:"none"}});
+					var labelLayer;(map.getStyle().layers||[]).forEach(function(l){if(!labelLayer&&l.type==="symbol"&&l.layout&&l.layout["text-field"]){labelLayer=l.id}});
+					map.addLayer({id:"nl-3d",source:"composite","source-layer":"building",filter:["==","extrude","true"],type:"fill-extrusion",minzoom:14,
+						layout:{visibility:"none"},
+						paint:{"fill-extrusion-color":"#d8d2c4","fill-extrusion-height":["get","height"],"fill-extrusion-base":["get","min_height"],"fill-extrusion-opacity":.75}},labelLayer);
+				});
+				document.querySelectorAll(".nlpjx-maplayers button").forEach(function(b){
+					b.addEventListener("click",function(){
+						var k=b.dataset.layer;
+						if(k==="3d"){
+							var v=map.getLayoutProperty("nl-3d","visibility")==="visible";
+							map.setLayoutProperty("nl-3d","visibility",v?"none":"visible");
+							map.easeTo({pitch:v?0:58,zoom:v?14.4:15.6,duration:900});
+							b.classList.toggle("is-on",!v);return;
+						}
+						if(k==="sat"){
+							var sv=map.getLayoutProperty("nl-sat","visibility")==="visible";
+							map.setLayoutProperty("nl-sat","visibility",sv?"none":"visible");
+							b.classList.toggle("is-on",!sv);return;
+						}
+						on[k]=!on[k];apply(k);b.classList.toggle("is-on",on[k]);
+					});
 				});
 			}
 			if(window.mapboxgl){boot();return}
 			var l=document.createElement("link");l.rel="stylesheet";l.href="https://api.mapbox.com/mapbox-gl-js/v3.7.0/mapbox-gl.css";document.head.appendChild(l);
 			var s=document.createElement("script");s.src="https://api.mapbox.com/mapbox-gl-js/v3.7.0/mapbox-gl.js";s.onload=boot;document.head.appendChild(s);
-		},{rootMargin:"300px"}).observe(cm);
+		},{rootMargin:"300px"}).observe(um);
 	}
 	// live map: streets/satellite, POIs, future-plans purple markers
 	var m=document.getElementById("nlpjx-leaflet");
