@@ -206,7 +206,15 @@ if ( ! function_exists( 'nadlan_health_rest' ) ) {
 add_action( 'rest_api_init', function () {
 	register_rest_route( 'nadlan/v1', '/health', array(
 		'methods'             => 'GET',
-		'callback'            => 'nadlan_health_rest',
+		'callback'            => function ( $req ) {
+			// Audit 2026-07-02: uncached, every anonymous hit fired live outbound
+			// probes (Green Invoice + OpenAI, 4s timeouts). Cache 2 minutes.
+			$hit = get_transient( 'nadlan_health_report_cache' );
+			if ( $hit !== false ) { return $hit; }
+			$out = nadlan_health_rest( $req );
+			set_transient( 'nadlan_health_report_cache', $out, 2 * MINUTE_IN_SECONDS );
+			return $out;
+		},
 		'permission_callback' => '__return_true',
 	) );
 } );

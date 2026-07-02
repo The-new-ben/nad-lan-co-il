@@ -23,7 +23,7 @@ if ( ! function_exists( 'nadlan_drip_steps' ) ) {
 	function nadlan_drip_steps() {
 		return apply_filters( 'nadlan_drip_steps', array(
 			array( 'delay' => 0,  'subject' => 'שלום ל{NAME} — קיבלנו את הפנייה שלך',
-				'body' => "שלום {NAME},\n\nתודה שפנית לנדל\"ן חכם. נחזור אליך בהקדם בנוגע ל-{GOAL}.\n\nבינתיים תוכל לקבל אומדן שווי, להשוות נכסים ולהירשם להתראות על דירות חדשות:\nhttps://nad-lan.co.il/\n\nלהסרה מההתראות: {OPTOUT}" ),
+				'body' => "שלום {NAME},\n\nתודה שפנית לנדלן. נחזור אליך בהקדם בנוגע ל-{GOAL}.\n\nבינתיים תוכל לקבל אומדן שווי, להשוות נכסים ולהירשם להתראות על דירות חדשות:\nhttps://nad-lan.co.il/\n\nלהסרה מההתראות: {OPTOUT}" ),
 			array( 'delay' => 2,  'subject' => '5 דברים שכדאי לבדוק לפני חתימת חוזה דירה',
 				'body' => "שלום {NAME},\n\nלפני שחותמים על חוזה, יש כמה דגלים אדומים נפוצים — הערת אזהרה, פיגורי תשלום, חריגות בנייה ועוד. הכנו לך מדריך קצר:\nhttps://nad-lan.co.il/real-estate-lawyer/\n\nואם כבר יש חוזה ביד — ביקורת ב-48 שעות: https://nad-lan.co.il/contract-audit/\n\nלהסרה: {OPTOUT}" ),
 			array( 'delay' => 5,  'subject' => 'דירות חדשות ב{CITY}',
@@ -41,6 +41,9 @@ if ( ! function_exists( 'nadlan_drip_steps' ) ) {
 /* On lead creation: stamp drip state + send immediate ack */
 add_action( 'wp_insert_post', function ( $post_id, $post, $update ) {
 	if ( $update ) { return; }
+	// OFF by default since 2026-07-02 (module audit): this legacy drip overlapped
+	// the e2e acknowledgement + nurture sequences, double-emailing every lead.
+	if ( get_option( 'nadlan_feature_lead_drip', '0' ) !== '1' ) { return; }
 	if ( ( $post->post_type ?? '' ) !== 'nadlan_lead' ) { return; }
 	$email = (string) get_post_meta( $post_id, 'email', true );
 	if ( ! is_email( $email ) ) { return; }

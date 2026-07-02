@@ -538,6 +538,7 @@ if ( ! function_exists( 'nadlan_dir_project_profile_header' ) ) {
 		$city   = nadlan_meta_norm( get_post_meta( $id, 'city', true ) );
 		$units  = (int) get_post_meta( $id, 'num_units', true );
 		$status = nadlan_meta_norm( get_post_meta( $id, 'project_status', true ) );
+		$status = nadlan_dir_status_he( $status );
 		$dev    = nadlan_meta_norm( get_post_meta( $id, 'developer_name', true ) );
 		$addr   = nadlan_meta_norm( get_post_meta( $id, 'address', true ) );
 		$title  = get_the_title( $id );
@@ -593,6 +594,17 @@ add_filter( 'the_content', function ( $content ) {
 /* =========================================================================
  * PROJECTS premium directory (v1.36.0  -  the one that was lost from v1.33)
  * ========================================================================= */
+
+
+if ( ! function_exists( 'nadlan_dir_status_he' ) ) {
+	/* Audit 2026-07-02 (D3 family): never print raw machine enums to visitors. */
+	function nadlan_dir_status_he( $status ) {
+		$map = array( 'planning' => 'בתכנון', 'permits' => 'בהיתרים', 'pre_sale' => 'טרום מכירה',
+			'marketing' => 'בשיווק', 'construction' => 'בבנייה', 'completed' => 'הושלם', 'occupancy' => 'באכלוס' );
+		if ( isset( $map[ $status ] ) ) { return $map[ $status ]; }
+		return preg_match( '/^[a-z0-9_\-]+$/', (string) $status ) ? '' : $status;
+	}
+}
 
 if ( ! function_exists( 'nadlan_dir_project_types' ) ) {
 	function nadlan_dir_project_types() {
@@ -653,6 +665,7 @@ if ( ! function_exists( 'nadlan_dir_project_card' ) ) {
 		$city   = nadlan_meta_norm( get_post_meta( $id, 'city', true ) );
 		$units  = (int) get_post_meta( $id, 'num_units', true );
 		$status = nadlan_meta_norm( get_post_meta( $id, 'project_status', true ) );
+		$status = nadlan_dir_status_he( $status );
 		$dev    = nadlan_meta_norm( get_post_meta( $id, 'developer_name', true ) );
 		$tier   = (string) get_post_meta( $id, 'paid_tier', true );
 		$distance = apply_filters( 'nadlan_geo_card_distance', null, $id );

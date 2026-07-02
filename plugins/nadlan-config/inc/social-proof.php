@@ -130,14 +130,14 @@ add_shortcode( 'nadlan_social_proof', 'nadlan_sp_render' );
 
 /* Inject on the homepage at the end of content. Cached internally to 1h so this
  * is a single transient hit on the homepage from the second visitor onward. */
-add_filter( 'the_content', function ( $content ) {
-	if ( ! is_front_page() || ! in_the_loop() || ! is_main_query() ) { return $content; }
-	return $content . nadlan_sp_render();
-}, 55 );
+/* Front-page auto-append removed 2026-07-02 (module audit): the v2 homepage
+   is the single canonical front-page renderer. Use [nadlan_social_proof]. */
 
 /* Lightweight view counter on professional + project profile pages (no plugin needed) */
 add_action( 'wp_head', function () {
-	if ( ! is_singular( array( 'nadlan_professional', 'nadlan_project' ) ) ) { return; }
+	// Projects excluded 2026-07-02 (module audit): the flagship page law allows no
+	// extra machinery there, and per-view meta writes are a cache-buster.
+	if ( ! is_singular( 'nadlan_professional' ) ) { return; }
 	$id = get_queried_object_id();
 	if ( ! $id ) { return; }
 	// throttle per-IP per-page per-hour
