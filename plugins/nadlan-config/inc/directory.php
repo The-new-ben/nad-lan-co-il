@@ -35,6 +35,13 @@ if ( ! function_exists( 'nadlan_dir_professions' ) ) {
 		);
 	}
 }
+if ( ! function_exists( 'nadlan_dir_professions_all' ) ) {
+	function nadlan_dir_professions_all() {
+		$all = nadlan_dir_professions();
+		if ( function_exists( 'nadlan_prof_extra_professions' ) ) { $all = array_merge( $all, nadlan_prof_extra_professions() ); }
+		return $all;
+	}
+}
 if ( ! function_exists( 'nadlan_dir_prof_meta' ) ) {
 	function nadlan_dir_prof_meta( $key ) {
 		$all = nadlan_dir_professions();
