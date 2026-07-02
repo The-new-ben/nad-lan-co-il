@@ -2,7 +2,7 @@
 /**
  * Plugin Name: NadLan Config
  * Description: Lead-capture foundation: nadlan_lead CPT + lead-form handler + healthcheck. Read skills/nadlan-config-plugin.md.
- * Version: 1.69.75
+ * Version: 1.69.76
  * Author: nad-lan.co.il
  * License: GPL-2.0+
  * Requires PHP: 7.4
@@ -70,7 +70,7 @@ if ( ! function_exists( 'nadlan_config_healthcheck_response' ) ) {
 	function nadlan_config_healthcheck_response() {
 		$out = array(
 			'plugin'              => 'nadlan-config',
-			'version'             => '1.69.75',
+			'version'             => '1.69.76',
 			'cpt_present'         => post_type_exists( 'nadlan_lead' ),
 			'lead_handler_loaded' => (bool) has_action( 'admin_post_nadlan_lead' ),
 			'php_version'         => PHP_VERSION,
@@ -616,6 +616,10 @@ if ( ! function_exists( 'nadlan_config_emergency_css' ) ) {
 .nl-stagewrap {
   max-height: 75vh;
 }
+
+/* --- GOLDEN CHAT FAB: removed per owner 2026-07-01 (stacked over the action rail
+   and the accessibility button; concierge stays reachable via page CTAs) --- */
+.nlai-fab { display: none !important; }
 
 /* --- FLOATING CONTROLS DOCKING --- */
 .nl-fly {
