@@ -40,7 +40,21 @@ add_action( 'admin_init', function () {
 	add_settings_field( 'nadlan_mapbox_token', 'Mapbox Token (נדלן)', function () {
 		printf( '<input type="text" id="nadlan_mapbox_token" name="nadlan_mapbox_token" value="%s" class="regular-text" dir="ltr" placeholder="pk.xxxx"><p class="description">אסימון ציבורי (pk.) של Mapbox. מומלץ להגביל אותו לדומיין nad-lan.co.il בחשבון Mapbox.</p>', esc_attr( get_option( 'nadlan_mapbox_token', '' ) ) );
 	}, 'general' );
+	register_setting( 'general', 'nadlan_home_video_url', array( 'type' => 'string', 'sanitize_callback' => 'esc_url_raw', 'default' => '' ) );
+	add_settings_field( 'nadlan_home_video_url', 'סרטון עמוד הבית (נדלן)', function () {
+		printf( '<input type="url" id="nadlan_home_video_url" name="nadlan_home_video_url" value="%s" class="regular-text" dir="ltr" placeholder="https://youtu.be/..."><p class="description">קישור YouTube / Vimeo או קובץ MP4 מספריית המדיה. משאירים ריק כדי להסתיר את רצועת הסרטון.</p>', esc_attr( get_option( 'nadlan_home_video_url', '' ) ) );
+	}, 'general' );
 } );
+
+/* Front-page title + description per homepage-spec. A filter in versioned code,
+   NOT a live snippet - the one-shot snippet approach took the site down on
+   2026-07-02 and is banned. */
+add_filter( 'wpseo_title', function ( $title ) {
+	return is_front_page() ? 'נדלן - דירות למכירה, פרויקטים חדשים ומחירי דירות בישראל' : $title;
+}, 20 );
+add_filter( 'wpseo_metadesc', function ( $desc ) {
+	return is_front_page() ? 'דירות למכירה ולהשכרה, פרויקטים חדשים עם בחירת דירה מתוך הבניין, מחירי עסקאות אמיתיים, מחשבונים ובעלי מקצוע מאומתים. הכל במקום אחד - נדלן.' : $desc;
+}, 20 );
 
 /* Top cities by real inventory (cached). [ ['name','projects','properties'], ... ] */
 if ( ! function_exists( 'nadlan_hv2_cities' ) ) {
@@ -243,6 +257,23 @@ if ( ! function_exists( 'nadlan_hv2_band_hero' ) ) {
 		<?php endif; ?>
 	</section>
 		<?php
+	}
+}
+
+if ( ! function_exists( 'nadlan_hv2_band_video' ) ) {
+	function nadlan_hv2_band_video() {
+		$url = trim( (string) get_option( 'nadlan_home_video_url', '' ) );
+		if ( ! $url ) { return; }
+		$embed = '';
+		if ( preg_match( '~(?:youtube\.com/(?:watch\?v=|shorts/|embed/)|youtu\.be/)([A-Za-z0-9_-]{6,20})~', $url, $m ) ) {
+			$embed = '<iframe src="https://www.youtube-nocookie.com/embed/' . esc_attr( $m[1] ) . '?rel=0&amp;modestbranding=1" title="נדלן - סרטון" loading="lazy" allow="accelerometer; encrypted-media; picture-in-picture" allowfullscreen></iframe>';
+		} elseif ( preg_match( '~vimeo\.com/(\d+)~', $url, $m ) ) {
+			$embed = '<iframe src="https://player.vimeo.com/video/' . esc_attr( $m[1] ) . '" title="נדלן - סרטון" loading="lazy" allowfullscreen></iframe>';
+		} elseif ( preg_match( '~\.(mp4|webm)(\?|$)~i', $url ) ) {
+			$embed = '<video controls preload="metadata" playsinline src="' . esc_url( $url ) . '"></video>';
+		}
+		if ( ! $embed ) { return; }
+		echo '<section class="nlhv2-band nlhv2-videoband" aria-label="סרטון היכרות"><header><p class="nlhv2-kicker">רגע לפני שמתחילים</p><h2>ככה בוחרים דירה בנדלן</h2></header><div class="nlhv2-video-frame">' . $embed . '</div></section>'; // phpcs:ignore
 	}
 }
 
@@ -516,7 +547,7 @@ if ( ! function_exists( 'nadlan_hv2_band_megafooter' ) ) {
 
 if ( ! function_exists( 'nadlan_home_v2_shortcode' ) ) {
 	function nadlan_home_v2_shortcode() {
-		$default = array( 'ticker', 'browse', 'hero', 'market', 'projects', 'listings', 'areas', 'magazine', 'tools', 'pros', 'intl', 'megafooter' );
+		$default = array( 'ticker', 'browse', 'hero', 'video', 'market', 'projects', 'listings', 'areas', 'magazine', 'tools', 'pros', 'intl', 'megafooter' );
 		$bands   = get_option( 'nadlan_home_bands', $default );
 		if ( ! is_array( $bands ) || ! $bands ) { $bands = $default; }
 		ob_start();
@@ -589,6 +620,8 @@ if ( ! function_exists( 'nadlan_hv2_assets' ) ) {
 .nlhv2-alt{background:linear-gradient(180deg,#FAF8F3,transparent)}
 .nlhv2-band header{display:flex;align-items:baseline;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-bottom:16px}
 .nlhv2-band header>a{color:var(--gold);font-size:13.5px;font-weight:700;text-decoration:none}
+.nlhv2-video-frame{aspect-ratio:16/9;border-radius:16px;overflow:hidden;background:var(--dark);box-shadow:0 20px 50px rgba(27,26,23,.14)}
+.nlhv2-video-frame iframe,.nlhv2-video-frame video{width:100%;height:100%;border:0;display:block}
 .nlhv2-market{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px}
 .nlhv2-market a{display:block;border:1px solid var(--line);border-radius:12px;background:#fff;padding:18px;text-decoration:none;color:var(--ink);transition:border-color .2s}
 .nlhv2-market a:hover{border-color:var(--gold)}
