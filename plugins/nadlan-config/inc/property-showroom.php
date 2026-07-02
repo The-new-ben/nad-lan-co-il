@@ -222,6 +222,7 @@ if ( ! function_exists( 'nadlan_pshow_render' ) ) {
 			<div class="nlps-toggle" role="tablist">
 				<button type="button" class="is-on" data-view="out" role="tab" aria-selected="true">מבט חוץ</button>
 				<button type="button" data-view="in" role="tab" aria-selected="false">תוכנית הדירה</button>
+				<button type="button" data-view="fp" role="tab" aria-selected="false">🚶 סיור פנימי</button>
 			</div>
 		</header>
 		<div class="nlps-facade-stage">
@@ -233,6 +234,9 @@ if ( ! function_exists( 'nadlan_pshow_render' ) ) {
 				<p class="nlps-plan-title">תוכנית הדירה · קומה <?php echo (int) $f_floor; ?></p>
 				<?php echo nadlan_pshow_plan_svg( $rooms, (bool) $g( 'protected_room' ), (int) $g( 'balcony_sqm' ), $sqm ); // phpcs:ignore ?>
 				<p class="nlps-cap"><button type="button" class="nlps-backout">← חזרה למבט על הבניין</button></p>
+			</div>
+			<div class="nlps-view nlps-view-fp">
+				<?php if ( function_exists( 'nadlan_interior_fp_html' ) ) { echo nadlan_interior_fp_html( array( 'rooms' => $rooms, 'size_sqm' => $sqm, 'protected_room' => (bool) $g( 'protected_room' ), 'balcony_sqm' => (int) $g( 'balcony_sqm' ), 'direction' => (string) $g( 'direction' ) ) ); } // phpcs:ignore ?>
 			</div>
 			<div class="nlps-floor-tip" hidden></div>
 		</div>
@@ -341,7 +345,7 @@ if ( ! function_exists( 'nadlan_pshow_assets' ) ) {
 			b.addEventListener("click",function(){
 				root.querySelectorAll(".nlps-toggle button").forEach(function(x){x.classList.toggle("is-on",x===b);x.setAttribute("aria-selected",x===b?"true":"false")});
 				root.querySelectorAll(".nlps-view").forEach(function(v){v.classList.remove("is-on")});
-				var t=root.querySelector(".nlps-view-"+b.dataset.view);if(t){t.classList.add("is-on")}
+				var t=root.querySelector(".nlps-view-"+b.dataset.view);if(t){t.classList.add("is-on");if(b.dataset.view==="fp"&&window.nadlanInitFP){window.nadlanInitFP()}}
 			});
 		});
 		// floor click: selected floor = enter the apartment (slice inspect); others = tooltip
