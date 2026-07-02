@@ -125,15 +125,15 @@ add_action( 'nadlan_inbox_daily_digest', function () {
 	$admin = get_option( 'admin_email' );
 	if ( ! $admin ) { return; }
 	$c = nadlan_inbox_counts();
-	$body  = "סיכום יומי — נדל\"ן חכם · " . wp_date( 'd/m/Y' ) . "\n\n";
+	$body  = "סיכום יומי — נדלן · " . wp_date( 'd/m/Y' ) . "\n\n";
 	$body .= "📥 לידים חדשים ב-24h:        " . $c['leads_24h'] . "\n";
 	$body .= "🤝 הפניות פתוחות:            " . $c['referrals_open'] . "\n";
 	$body .= "⭐ חוות דעת לאישור:          " . $c['reviews_pending'] . "\n";
 	$body .= "📝 בקשות בעלות:               " . $c['claims_pending'] . "\n";
 	$body .= "💰 רכישות פייד ב-24h:        " . $c['paid_24h'] . "\n\n";
 	$body .= "כניסה ל-Inbox: " . admin_url( 'admin.php?page=nadlan-inbox' ) . "\n\n";
-	$body .= "מערכת נדל\"ן חכם · אוטומטי";
-	wp_mail( $admin, '🦈 סיכום יומי נדל"ן חכם · ' . wp_date( 'd/m' ), $body );
+	$body .= "מערכת נדלן · אוטומטי";
+	wp_mail( $admin, '🦈 סיכום יומי נדלן · ' . wp_date( 'd/m' ), $body );
 } );
 
 /* Admin notice banner when there are pending items (visible on every wp-admin page) */

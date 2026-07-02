@@ -130,16 +130,16 @@ add_action( 'save_post_nadlan_lead', function ( $lead_id, $post ) {
 	$pct   = (float) ( $pick['pct'] ?? 25 );
 
 	$body  = "שלום " . ( $pick['name'] ?? '' ) . ",\n\n";
-	$body .= "התקבל ליד חדש שמתאים לתחום ההתמחות שלך, דרך מערכת נדל\"ן חכם.\n\n";
+	$body .= "התקבל ליד חדש שמתאים לתחום ההתמחות שלך, דרך מערכת נדלן.\n\n";
 	$body .= "לקוח: $name\nטלפון: $phone\n";
 	if ( $goal ) { $body .= "נושא: $goal\n"; }
 	if ( $msg )  { $body .= "פרטים: $msg\n"; }
 	if ( $src )  { $body .= "מקור: $src\n"; }
 	$body .= "\n— תנאי שיתוף הפעולה: עמלה של $pct% מהעסקה הסגורה, משולמת בתוך 14 יום מסגירה.\n";
 	$body .= "— נא לחזור ללקוח תוך 24 שעות.\n\n";
-	$body .= "מערכת נדל\"ן חכם · nad-lan.co.il";
+	$body .= "מערכת נדלן · nad-lan.co.il";
 
-	$ok = wp_mail( $pick['email'], '[נדל"ן חכם] ליד חדש בתחום שלך — ' . $name, $body );
+	$ok = wp_mail( $pick['email'], '[נדלן] ליד חדש בתחום שלך — ' . $name, $body );
 
 	update_post_meta( $lead_id, 'preferred_routed', $pick['email'] );
 	update_post_meta( $lead_id, 'preferred_pct', $pct );

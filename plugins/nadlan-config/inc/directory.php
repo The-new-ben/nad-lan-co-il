@@ -257,7 +257,7 @@ add_filter( 'get_the_archive_title', function ( $t ) {
 } );
 add_filter( 'pre_get_document_title', function ( $t ) {
 	if ( is_post_type_archive( 'nadlan_professional' ) ) {
-		return 'מאגר בעלי מקצוע בנדל״ן: קבלנים, שמאים, יועצים מאומתים | נדל״ן חכם';
+		return 'מאגר בעלי מקצוע בנדל״ן: קבלנים, שמאים, יועצים מאומתים | נדלן';
 	}
 	return $t;
 }, 20 );
@@ -499,7 +499,7 @@ add_filter( 'get_the_archive_title', function ( $t ) {
 }, 30 );
 add_filter( 'pre_get_document_title', function ( $t ) {
 	if ( is_post_type_archive( 'nadlan_term' ) ) {
-		return 'מילון מונחי נדל״ן | מושגים, מיסוי, משכנתאות ובנייה | נדל״ן חכם';
+		return 'מילון מונחי נדל״ן | מושגים, מיסוי, משכנתאות ובנייה | נדלן';
 	}
 	return $t;
 }, 20 );
@@ -778,7 +778,7 @@ add_filter( 'get_the_archive_title', function ( $t ) {
 } );
 add_filter( 'pre_get_document_title', function ( $t ) {
 	if ( is_post_type_archive( 'nadlan_project' ) ) {
-		return 'פרויקטים חדשים והתחדשות עירונית | תמ״א 38, פינוי בינוי | נדל״ן חכם';
+		return 'פרויקטים חדשים והתחדשות עירונית | תמ״א 38, פינוי בינוי | נדלן';
 	}
 	return $t;
 }, 20 );

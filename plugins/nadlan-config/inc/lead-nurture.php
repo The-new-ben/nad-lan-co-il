@@ -50,7 +50,7 @@ if ( ! function_exists( 'nadlan_lead_nurture_default_templates' ) ) {
 			'warm' => array(
 				'day1'      => array(
 					'delay'   => 1,
-					'subject' => 'המשך לפנייה שלך בנדלן חכם',
+					'subject' => 'המשך לפנייה שלך בנדלן',
 					'body'    => "שלום {{name}},\n\nקיבלנו את הפנייה שלך לגבי {{card}} ורצינו לעזור לדייק את ההמשך.\n\nמה יותר חשוב כרגע: מסגרת תקציב, זמינות בחודש הקרוב או התאמה מקצועית? תשובה קצרה תעזור לנו לקדם את הטיפול." . $unsubscribe,
 				),
 				'day3'      => array(

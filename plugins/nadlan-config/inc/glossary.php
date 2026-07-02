@@ -157,7 +157,7 @@ add_action( 'wp_head', function () {
 		'name' => get_the_title( $id ),
 		'description' => wp_strip_all_tags( get_the_excerpt( $id ) ) ?: null,
 		'url' => get_permalink( $id ),
-		'inDefinedTermSet' => array( '@type' => 'DefinedTermSet', 'name' => 'מילון נדל"ן — נדל"ן חכם', 'url' => home_url( '/glossary/' ) ),
+		'inDefinedTermSet' => array( '@type' => 'DefinedTermSet', 'name' => 'מילון נדל"ן — נדלן', 'url' => home_url( '/glossary/' ) ),
 		'sameAs' => get_post_meta( $id, 'wikipedia_en', true ) ?: null,
 	) );
 	echo "\n<script type=\"application/ld+json\">" . wp_json_encode( $data, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES ) . "</script>\n";

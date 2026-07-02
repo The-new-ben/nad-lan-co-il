@@ -157,7 +157,7 @@ add_action( 'rest_api_init', function () {
 			$accept_url = rest_url( 'nadlan/v1/referral/' . $token . '/accept' );
 			$cust_url   = home_url( '/referral-status/' . $token . '/' );
 			if ( $admin ) {
-				$msg  = "ליד הופנה דרך מערכת נדל\"ן חכם\n\n";
+				$msg  = "ליד הופנה דרך מערכת נדלן\n\n";
 				$msg .= "לקוח: $customer_name · $customer_phone · $customer_email\n";
 				$msg .= "נושא: $topic\n";
 				$msg .= "אל שותף: " . get_the_title( $partner_id ) . " (#$partner_id)\n";
@@ -166,18 +166,18 @@ add_action( 'rest_api_init', function () {
 				$msg .= "מעקב לקוח: $cust_url\n";
 				$msg .= "אישור שותף: $accept_url\n\n";
 				$msg .= "ניהול: " . admin_url( 'post.php?post=' . $rid . '&action=edit' );
-				wp_mail( $admin, '[נדל"ן חכם · Ledger] ליד חדש הופנה — ' . $customer_name, $msg );
+				wp_mail( $admin, '[נדלן · Ledger] ליד חדש הופנה — ' . $customer_name, $msg );
 			}
 			if ( $notify_partner ) {
 				$partner_email = (string) get_post_meta( $partner_id, 'email', true );
 				if ( $partner_email && is_email( $partner_email ) ) {
-					$pm  = "שלום,\n\nיש לך הפניית לקוח חדשה מ-נדל\"ן חכם.\n\n";
+					$pm  = "שלום,\n\nיש לך הפניית לקוח חדשה מ-נדלן.\n\n";
 					$pm .= "לקוח: $customer_name · $customer_phone\n";
 					$pm .= "נושא: $topic\n\n";
 					$pm .= "תנאי שיתוף הפעולה: עמלה של $default_pct% מהעסקה הסגורה, משולמת בתוך 14 יום מסגירה.\n";
 					$pm .= "לאישור התנאים וקבלת פרטי הלקוח המלאים: $accept_url\n\n";
-					$pm .= "מערכת נדל\"ן חכם";
-					wp_mail( $partner_email, 'הפניית לקוח חדשה — מערכת נדל"ן חכם', $pm );
+					$pm .= "מערכת נדלן";
+					wp_mail( $partner_email, 'הפניית לקוח חדשה — מערכת נדלן', $pm );
 				}
 				// schedule customer follow-ups only once truly routed to a partner
 				wp_schedule_single_event( time() + 14 * DAY_IN_SECONDS, 'nadlan_ll_customer_ping', array( $rid ) );
@@ -258,10 +258,10 @@ add_action( 'nadlan_ll_customer_ping', function ( $rid ) {
 	$partner_name = get_the_title( (int) get_post_meta( $rid, 'partner_id', true ) );
 	$name = (string) get_post_meta( $rid, 'customer_name', true );
 	$msg  = "שלום $name,\n\n";
-	$msg .= "לפני זמן מה הפנינו אותך אל $partner_name דרך נדל\"ן חכם. ";
+	$msg .= "לפני זמן מה הפנינו אותך אל $partner_name דרך נדלן. ";
 	$msg .= "נשמח לדעת איך התקדמת — זה עוזר לנו לשמור על שירות איכותי לכולם.\n\n";
 	$msg .= "עדכון מהיר (דקה): $url\n\n";
-	$msg .= "תודה,\nצוות נדל\"ן חכם";
+	$msg .= "תודה,\nצוות נדלן";
 	wp_mail( $email, 'עדכון מהיר — איך התקדם עם ' . $partner_name . '?', $msg );
 	nadlan_ll_log( $rid, 'customer_ping_sent' );
 } );

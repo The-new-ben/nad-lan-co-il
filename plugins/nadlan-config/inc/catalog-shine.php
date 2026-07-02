@@ -250,7 +250,7 @@ if ( ! function_exists( 'nadlan_directory_hub_render' ) ) {
 		ob_start(); ?>
 <section class="nldh" dir="rtl">
 	<div class="nldh-head">
-		<p class="nldh-eyebrow">מאגר נדל״ן חכם</p>
+		<p class="nldh-eyebrow">מאגר נדלן</p>
 		<h2>קטלוג נכסים, פרויקטים ובעלי מקצוע</h2>
 		<p class="nldh-sub">כל מה שצריך לבדוק לפני עסקה — במקום אחד, ממקורות רשמיים.</p>
 	</div>

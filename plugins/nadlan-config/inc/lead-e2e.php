@@ -40,7 +40,7 @@ if ( ! function_exists( 'nadlan_lead_e2e_status_label' ) ) {
 
 if ( ! function_exists( 'nadlan_lead_e2e_default_ack_message' ) ) {
 	function nadlan_lead_e2e_default_ack_message() {
-		return "שלום {{name}},\n\nקיבלנו את פנייתך לגבי {{card}} בנדלן חכם. נציג יחזור אליך בתוך 24 שעות.\n\nכדי שנוכל לעזור מהר יותר, אפשר להשיב למייל הזה עם מסגרת התקציב והאם זה רלוונטי לחודש הקרוב או מאוחר יותר.\n\n{{site}}";
+		return "שלום {{name}},\n\nקיבלנו את פנייתך לגבי {{card}} בנדלן. נציג יחזור אליך בתוך 24 שעות.\n\nכדי שנוכל לעזור מהר יותר, אפשר להשיב למייל הזה עם מסגרת התקציב והאם זה רלוונטי לחודש הקרוב או מאוחר יותר.\n\n{{site}}";
 	}
 }
 
@@ -193,7 +193,7 @@ if ( ! function_exists( 'nadlan_lead_e2e_send_ack' ) ) {
 			'{{url}}'   => home_url( '/' ),
 		);
 		$body = strtr( nadlan_lead_e2e_ack_message(), $replacements );
-		$subject = (string) get_option( 'nadlan_lead_ack_subject', 'הפנייה שלך התקבלה בנדלן חכם' );
+		$subject = (string) get_option( 'nadlan_lead_ack_subject', 'הפנייה שלך התקבלה בנדלן' );
 		$headers = array( 'Content-Type: text/plain; charset=UTF-8' );
 		$ack_fields = $fields;
 		$ack_fields['_delivery_context'] = 'visitor_ack';
@@ -542,7 +542,7 @@ if ( ! function_exists( 'nadlan_lead_e2e_settings_page' ) ) {
 		}
 		$enabled = get_option( 'nadlan_feature_lead_e2e', '0' ) === '1';
 		$message = nadlan_lead_e2e_ack_message();
-		$subject = (string) get_option( 'nadlan_lead_ack_subject', 'הפנייה שלך התקבלה בנדלן חכם' );
+		$subject = (string) get_option( 'nadlan_lead_ack_subject', 'הפנייה שלך התקבלה בנדלן' );
 		?>
 		<div class="wrap" dir="rtl">
 			<h1>NadLan Lead E2E</h1>
