@@ -210,7 +210,12 @@ if ( ! function_exists( 'nadlan_pshow_render' ) ) {
 	</section>
 	<?php endif; ?>
 
-	<?php if ( $tfloors >= 1 && $floor >= 0 ) : ?>
+	<?php
+	// Default model for EVERY listing: when building data wasn't fed, render a
+	// sensible schematic default (4 floors, or enough to contain the listing floor).
+	$f_tfloors = $tfloors > 0 ? $tfloors : max( 4, $floor + 1 );
+	$f_floor   = ( $floor > 0 || $tfloors > 0 ) ? $floor : 2;
+	?>
 	<section class="nlps-facade" aria-label="חזית הבניין ותוכנית הדירה">
 		<header class="nlps-sec-head">
 			<h2>איפה הדירה בבניין?</h2>
@@ -221,18 +226,17 @@ if ( ! function_exists( 'nadlan_pshow_render' ) ) {
 		</header>
 		<div class="nlps-facade-stage">
 			<div class="nlps-view nlps-view-out is-on">
-				<?php echo nadlan_pshow_facade_svg( $tfloors, $floor, (int) $g( 'units_per_floor' ), (int) $g( 'unit_position' ) ); // phpcs:ignore ?>
-				<p class="nlps-cap">הדירה המוצעת מסומנת בקומה <?php echo (int) $floor; ?>. לחצו עליה כדי להיכנס פנימה לתוכנית הדירה. הדמיה סכמטית להמחשה.</p>
+				<?php echo nadlan_pshow_facade_svg( $f_tfloors, $f_floor, (int) $g( 'units_per_floor' ), (int) $g( 'unit_position' ) ); // phpcs:ignore ?>
+				<p class="nlps-cap">הדירה המוצעת מסומנת בקומה <?php echo (int) $f_floor; ?>. לחצו עליה כדי להיכנס פנימה לתוכנית הדירה. הדמיה סכמטית להמחשה.</p>
 			</div>
 			<div class="nlps-view nlps-view-in">
-				<p class="nlps-plan-title">תוכנית הדירה · קומה <?php echo (int) $floor; ?></p>
+				<p class="nlps-plan-title">תוכנית הדירה · קומה <?php echo (int) $f_floor; ?></p>
 				<?php echo nadlan_pshow_plan_svg( $rooms, (bool) $g( 'protected_room' ), (int) $g( 'balcony_sqm' ), $sqm ); // phpcs:ignore ?>
 				<p class="nlps-cap"><button type="button" class="nlps-backout">← חזרה למבט על הבניין</button></p>
 			</div>
 			<div class="nlps-floor-tip" hidden></div>
 		</div>
 	</section>
-	<?php endif; ?>
 
 	<?php if ( (int) $g( 'arnona_monthly' ) || (int) $g( 'vaad_bayit_monthly' ) || ( $price && ! $is_rent ) ) : ?>
 	<section class="nlps-costs" aria-label="עלויות חודשיות">
@@ -400,3 +404,34 @@ if ( ! function_exists( 'nadlan_pshow_demo_noindex' ) ) {
 	}
 }
 add_filter( 'wp_robots', 'nadlan_pshow_demo_noindex', 20 );
+
+/* ---------------- SEO: archive title + listing meta description ---------------- */
+if ( ! function_exists( 'nadlan_pshow_archive_title' ) ) {
+	function nadlan_pshow_archive_title( $title ) {
+		if ( is_post_type_archive( 'nadlan_property' ) ) { return 'דירות למכירה ולהשכרה בישראל - לוח נדל"ן | נדלן חכם'; }
+		return $title;
+	}
+}
+add_filter( 'wpseo_title', 'nadlan_pshow_archive_title', 20 );
+add_filter( 'document_title_parts', function ( $parts ) {
+	if ( is_post_type_archive( 'nadlan_property' ) ) { $parts['title'] = 'דירות למכירה ולהשכרה בישראל - לוח נדל"ן'; }
+	return $parts;
+}, 20 );
+
+if ( ! function_exists( 'nadlan_pshow_meta_desc' ) ) {
+	function nadlan_pshow_meta_desc( $desc ) {
+		if ( ! is_singular( 'nadlan_property' ) || $desc ) { return $desc; }
+		$id = get_queried_object_id();
+		$g  = function ( $k ) use ( $id ) { return get_post_meta( $id, $k, true ); };
+		$bits  = array();
+		$rooms = (float) $g( 'rooms' );
+		$deal  = $g( 'listing_type' ) === 'rent' ? 'להשכרה' : 'למכירה';
+		$bits[] = 'דירת ' . ( $rooms ? rtrim( rtrim( number_format( $rooms, 1 ), '0' ), '.' ) . ' חדרים ' : '' ) . $deal
+			. ( $g( 'city' ) ? ' ב' . $g( 'city' ) : '' ) . ( $g( 'street' ) ? ', רחוב ' . $g( 'street' ) : '' ) . '.';
+		if ( (int) $g( 'size_sqm' ) ) { $bits[] = (int) $g( 'size_sqm' ) . ' מ"ר, קומה ' . (int) $g( 'floor' ) . '.'; }
+		if ( (int) $g( 'price' ) ) { $bits[] = number_format( (int) $g( 'price' ) ) . ' ₪' . ( $g( 'listing_type' ) === 'rent' ? ' לחודש' : '' ) . '.'; }
+		$bits[] = 'כל הפרטים, מפה חיה וסביבת מגורים - בנדלן חכם.';
+		return mb_substr( implode( ' ', $bits ), 0, 156 );
+	}
+}
+add_filter( 'wpseo_metadesc', 'nadlan_pshow_meta_desc', 20 );
