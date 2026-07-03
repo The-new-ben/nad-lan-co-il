@@ -1,15 +1,15 @@
 {
   "name": "NadLan Config",
   "slug": "nadlan-config",
-  "version": "1.70.7",
+  "version": "1.70.8",
   "author": "nad-lan.co.il",
   "homepage": "https://nad-lan.co.il",
   "requires": "6.7",
   "tested": "7.0",
   "requires_php": "7.4",
-  "download_url": "https://raw.githubusercontent.com/The-new-ben/nad-lan-co-il/main/plugin-dist/nadlan-config-1.70.7.zip",
-  "last_updated": "2026-07-03 23:20:00",
+  "download_url": "https://raw.githubusercontent.com/The-new-ben/nad-lan-co-il/main/plugin-dist/nadlan-config-1.70.8.zip",
+  "last_updated": "2026-07-03 23:45:00",
   "sections": {
-    "changelog": "<h4>1.70.7</h4><ul><li>Block-theme header + footer now translated on language pages (Projects/Areas/Calculators/Professionals/Guides, tagline, skip link, profession names) via systematic map-driven output buffer — Hebrew page byte-unchanged, never noindexed.</li></ul>"
+    "changelog": "<h4>1.70.8</h4><ul><li>Hero video: native &lt;source&gt; children + muted/autoplay so the browser plays it with zero JS dependency (fixes desktop showing only the poster). JS now honestly degrades to the poster for reduced-motion/data-saver instead of suppressing playback for everyone.</li></ul>"
   }
 }

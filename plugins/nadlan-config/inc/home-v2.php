@@ -279,7 +279,12 @@ if ( ! function_exists( 'nadlan_hv2_band_hero' ) ) {
 		if ( ( $vurl || $vwebm ) && preg_match( '~\.(mp4|webm)(\?|$)~i', $vurl . ' ' . $vwebm ) ) : ?>
 		<div class="nlhv2-hero-flag nlhv2-hero-video" aria-label="נדלן - סרטון היכרות">
 			<span class="nlhv2-hv-brand" aria-hidden="true">נדלן</span>
-			<video id="nlhv2-hv" muted autoplay loop playsinline preload="none"<?php echo $vposter ? ' poster="' . esc_url( $vposter ) . '"' : ''; ?> data-webm="<?php echo esc_url( $vwebm ); ?>" data-src="<?php echo esc_url( $vurl ); ?>"></video>
+			<video id="nlhv2-hv" muted autoplay loop playsinline preload="auto"<?php echo $vposter ? ' poster="' . esc_url( $vposter ) . '"' : ''; ?>><?php
+				// Native <source> children so the browser autoplays with ZERO JS
+				// dependency (the data-* lazy pattern left desktop stuck on the poster).
+				if ( $vwebm ) { echo '<source src="' . esc_url( $vwebm ) . '" type="video/webm">'; }
+				if ( $vurl )  { echo '<source src="' . esc_url( $vurl ) . '" type="video/mp4">'; }
+			?></video>
 		</div>
 		<?php elseif ( $flag ) : $fimg = nadlan_hv2_img( $flag->ID ); ?>
 		<a class="nlhv2-hero-flag" href="<?php echo esc_url( get_permalink( $flag ) ); ?>">
@@ -780,30 +785,24 @@ if ( ! function_exists( 'nadlan_hv2_assets' ) ) {
 	// DOM ready (idle callback) so it never blocks LCP; respects data-saver and
 	// reduced-motion (they keep the elegant dark brand card). If autoplay is
 	// still blocked, the first tap/click anywhere retries playback.
+	// Hero video: native <source> + muted/autoplay/loop makes the browser start it
+	// with NO JS dependency (that is the reliable desktop path). JS only (a) nudges
+	// play() for engagement-gated browsers, and (b) HONESTLY degrades to the poster
+	// for data-saver / reduced-motion users instead of silently killing it for all.
 	var hv=document.getElementById("nlhv2-hv");
-	if(hv&&(hv.dataset.src||hv.dataset.webm)){
+	if(hv){
 		var c=navigator.connection||{};
-		var skip=(c.saveData===true)||/(^|\b)2g/.test(c.effectiveType||"")||(window.matchMedia&&matchMedia("(prefers-reduced-motion: reduce)").matches);
-		// The poster (set on the element) always shows, so even when we skip
-		// loading, the hero is a real frame, never a black void or bare card.
-		if(!skip){
-			var hvPlay=function(){try{hv.muted=true;hv.setAttribute("muted","");var p=hv.play();if(p&&p.catch){p.catch(function(){})}}catch(e){}};
-			var hvStarted=false;
-			var hvGo=function(){
-				if(hvStarted){return}hvStarted=true;
-				if(hv.dataset.webm){var sw=document.createElement("source");sw.src=hv.dataset.webm;sw.type="video/webm";hv.appendChild(sw);}
-				if(hv.dataset.src){var sm=document.createElement("source");sm.src=hv.dataset.src;sm.type="video/mp4";hv.appendChild(sm);}
-				hv.load();
-				// Desktop autoplay is finicky (media-engagement gating); fire play on
-				// every readiness event, when scrolled into view, and on first input.
-				["loadeddata","canplay","canplaythrough","playing"].forEach(function(ev){hv.addEventListener(ev,function(){hv.classList.add("is-on");hvPlay()})});
-				hvPlay();
-				if(window.IntersectionObserver){try{new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){hvPlay()}})},{threshold:0.1}).observe(hv)}catch(e){}}
-				["pointerdown","keydown","scroll","mousemove","touchstart"].forEach(function(ev){window.addEventListener(ev,function(){hvPlay()},{once:true,passive:true})});
-			};
-			if(window.requestIdleCallback){requestIdleCallback(hvGo,{timeout:1500})}else{setTimeout(hvGo,300)}
-			if(document.readyState!=="loading"){hvGo()}else{document.addEventListener("DOMContentLoaded",hvGo,{once:true})}
-			window.addEventListener("load",function(){hvGo();hvPlay()},{once:true});
+		var save=(c.saveData===true)||/(^|\b)2g/.test(c.effectiveType||"");
+		var reduce=(window.matchMedia&&matchMedia("(prefers-reduced-motion: reduce)").matches);
+		if(save||reduce){
+			// Accessible/bandwidth-honest fallback: hold on the (real) poster frame.
+			hv.removeAttribute("autoplay");try{hv.pause()}catch(e){}
+		}else{
+			var hvPlay=function(){try{hv.muted=true;var p=hv.play();if(p&&p.catch){p.catch(function(){})}}catch(e){}};
+			hvPlay();
+			["loadedmetadata","loadeddata","canplay","canplaythrough"].forEach(function(ev){hv.addEventListener(ev,hvPlay)});
+			// last-resort: first user gesture on desktop unlocks any remaining gate.
+			["pointerdown","keydown","scroll","touchstart"].forEach(function(ev){window.addEventListener(ev,hvPlay,{once:true,passive:true})});
 		}
 	}
 	// browse menus: close others when one opens; close on outside click
