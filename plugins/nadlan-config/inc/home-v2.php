@@ -168,14 +168,14 @@ if ( ! function_exists( 'nadlan_hv2_band_ticker' ) ) {
 		$s = (array) get_option( 'nadlan_market_snapshot', array() );
 		if ( empty( $s ) ) { $s = nadlan_hv2_snapshot_compute(); }
 		$items = array();
-		if ( ! empty( $s['ppsqm_tlv'] ) ) { $items[] = array( 'מחיר ממוצע למ״ר, פרויקטים חדשים בת״א', number_format( (int) $s['ppsqm_tlv'] ) . ' ₪', home_url( '/projects/?city=' . rawurlencode( 'תל אביב' ) ) ); }
+		if ( ! empty( $s['ppsqm_tlv'] ) ) { $items[] = array( nadlan_i18n( 'tk_tlv' ), number_format( (int) $s['ppsqm_tlv'] ) . ' ₪', home_url( '/projects/?city=' . rawurlencode( 'תל אביב' ) ) ); }
 		// Honesty gate: the "national" average comes from the same small catalog
 		// sample; when it is basically the TLV number it would mislead - hide it.
-		if ( ! empty( $s['ppsqm_il'] ) && ( empty( $s['ppsqm_tlv'] ) || abs( (int) $s['ppsqm_il'] - (int) $s['ppsqm_tlv'] ) >= 0.2 * (int) $s['ppsqm_tlv'] ) ) { $items[] = array( 'מחיר ממוצע למ״ר, פרויקטים שבמעקב', number_format( (int) $s['ppsqm_il'] ) . ' ₪', home_url( '/projects/' ) ); }
-		if ( ! empty( $s['mortgage_rate'] ) ) { $items[] = array( 'ריבית משכנתא ממוצעת', esc_html( $s['mortgage_rate'] ), home_url( '/mortgage-calculator/' ) ); }
-		if ( ! empty( $s['projects_n'] ) ) { $items[] = array( 'פרויקטים במעקב', number_format( (int) $s['projects_n'] ), home_url( '/projects/' ) ); }
+		if ( ! empty( $s['ppsqm_il'] ) && ( empty( $s['ppsqm_tlv'] ) || abs( (int) $s['ppsqm_il'] - (int) $s['ppsqm_tlv'] ) >= 0.2 * (int) $s['ppsqm_tlv'] ) ) { $items[] = array( nadlan_i18n( 'tk_watch' ), number_format( (int) $s['ppsqm_il'] ) . ' ₪', home_url( '/projects/' ) ); }
+		if ( ! empty( $s['mortgage_rate'] ) ) { $items[] = array( nadlan_i18n( 'mk_rate' ), esc_html( $s['mortgage_rate'] ), home_url( '/mortgage-calculator/' ) ); }
+		if ( ! empty( $s['projects_n'] ) ) { $items[] = array( nadlan_i18n( 'tk_projects' ), number_format( (int) $s['projects_n'] ), home_url( '/projects/' ) ); }
 		if ( ! $items ) { return; }
-		echo '<div class="nlhv2-ticker" dir="rtl"><span class="nlhv2-ticker-date">' . esc_html( ! empty( $s['updated'] ) ? $s['updated'] : current_time( 'd/m/Y' ) ) . ' · מבוסס על קטלוג נדלן</span>';
+		echo '<div class="nlhv2-ticker" dir="' . ( nadlan_lang_is_rtl( nadlan_current_lang() ) ? 'rtl' : 'ltr' ) . '"><span class="nlhv2-ticker-date">' . esc_html( ! empty( $s['updated'] ) ? $s['updated'] : current_time( 'd/m/Y' ) ) . ' · ' . nadlan_i18n( 'tk_source' ) . '</span>';
 		foreach ( $items as $i ) {
 			echo '<a href="' . esc_url( $i[2] ) . '"><b>' . esc_html( $i[1] ) . '</b> ' . esc_html( $i[0] ) . '</a>';
 		}
@@ -320,7 +320,7 @@ if ( ! function_exists( 'nadlan_hv2_band_market' ) ) {
 		if ( ! empty( $s['mortgage_rate'] ) ) { $cards[] = array( esc_html( $s['mortgage_rate'] ), 'ריבית משכנתא ממוצעת', home_url( '/mortgage-calculator/' ) ); }
 		if ( count( $cards ) < 2 ) { return; }
 		$note = 'מבוסס על קטלוג נדלן · עודכן ' . esc_html( ! empty( $s['updated'] ) ? $s['updated'] : current_time( 'd/m/Y' ) );
-		echo '<section class="nlhv2-band"><header><h2>לאן השוק הולך</h2><span class="nlhv2-note">' . $note . '</span></header><div class="nlhv2-market">'; // phpcs:ignore
+		echo '<section class="nlhv2-band"><header><h2>' . esc_html( nadlan_i18n( 'mk_title' ) ) . '</h2><span class="nlhv2-note">' . $note . '</span></header><div class="nlhv2-market">'; // phpcs:ignore
 		foreach ( $cards as $c ) {
 			echo '<a href="' . esc_url( $c[2] ) . '"><b>' . $c[0] . '</b><span>' . $c[1] . '</span></a>'; // phpcs:ignore
 		}
@@ -334,8 +334,8 @@ if ( ! function_exists( 'nadlan_hv2_band_projects' ) ) {
 		if ( ! $projects ) { return; }
 		?>
 	<section class="nlhv2-dark">
-		<header><p class="nlhv2-kicker">דירות חדשות מקבלן</p><h2>בוחרים דירה מתוך הבניין</h2>
-			<a class="nlhv2-dark-all" href="<?php echo esc_url( home_url( '/projects/' ) ); ?>">לכל הפרויקטים ←</a></header>
+		<header><p class="nlhv2-kicker"><?php nadlan_e( 'pj_kicker' ); ?></p><h2><?php nadlan_e( 'pj_title' ); ?></h2>
+			<a class="nlhv2-dark-all" href="<?php echo esc_url( home_url( '/projects/' ) ); ?>"><?php nadlan_e( 'pj_all' ); ?></a></header>
 		<div class="nlhv2-projgrid">
 			<?php foreach ( $projects as $p ) :
 				$img = nadlan_hv2_img( $p->ID );
@@ -345,19 +345,19 @@ if ( ! function_exists( 'nadlan_hv2_band_projects' ) ) {
 				$un = is_array( $units ) ? count( $units ) : 0; ?>
 			<div class="nlhv2-proj">
 				<a class="nlhv2-proj-media" href="<?php echo esc_url( get_permalink( $p ) ); ?>"<?php echo $img ? ' style="background-image:url(' . esc_url( $img ) . ')"' : ''; ?> data-glb="<?php echo esc_url( $glb ); ?>" data-poster="<?php echo esc_url( $img ); ?>">
-					<em>בחירת דירה מתוך הבניין</em>
+					<em><?php nadlan_e( 'pj_pick' ); ?></em>
 				</a>
 				<div class="nlhv2-proj-body">
 					<b><?php echo esc_html( get_the_title( $p ) ); ?></b>
-					<span><?php echo esc_html( get_post_meta( $p->ID, 'city', true ) ); ?><?php echo $un ? ' · ' . (int) $un . ' דירות לבחירה' : ''; ?></span>
-					<?php if ( $pp ) : ?><i>אומדן ~<?php echo number_format( $pp ); ?> ₪/מ״ר · לא מחייב</i><?php endif; ?>
-					<?php if ( $glb ) : ?><button type="button" class="nlhv2-proj-live" data-glb="<?php echo esc_url( $glb ); ?>" data-title="<?php echo esc_attr( get_the_title( $p ) ); ?>">תצוגה חיה</button><?php endif; ?>
+					<span><?php echo esc_html( get_post_meta( $p->ID, 'city', true ) ); ?><?php echo $un ? ' · ' . (int) $un . ' ' . nadlan_i18n( 'pj_units_pick' ) : ''; ?></span>
+					<?php if ( $pp ) : ?><i><?php nadlan_e( 'pj_est_pre' ); ?><?php echo number_format( $pp ); ?> <?php nadlan_e( 'pj_est_suf' ); ?></i><?php endif; ?>
+					<?php if ( $glb ) : ?><button type="button" class="nlhv2-proj-live" data-glb="<?php echo esc_url( $glb ); ?>" data-title="<?php echo esc_attr( get_the_title( $p ) ); ?>"><?php nadlan_e( 'pj_live' ); ?></button><?php endif; ?>
 				</div>
 			</div>
 			<?php endforeach; ?>
 		</div>
-		<div class="nlhv2-viewerwrap" id="nlhv2-viewerwrap" hidden><div id="nlhv2-viewer-slot"></div><p class="nlhv2-note">הדמיה להמחשה. גררו לסיבוב, לחצו על שם הפרויקט למעבר לעמוד המלא.</p></div>
-		<p class="nlhv2-note nlhv2-dark-note">האומדנים אינם מחייבים ומבוססים על נתונים גלויים. ההדמיות להמחשה עד לאישור חומרים רשמיים של היזם.</p>
+		<div class="nlhv2-viewerwrap" id="nlhv2-viewerwrap" hidden><div id="nlhv2-viewer-slot"></div><p class="nlhv2-note"><?php nadlan_e( 'pj_viewer_note' ); ?></p></div>
+		<p class="nlhv2-note nlhv2-dark-note"><?php nadlan_e( 'pj_dark_note' ); ?></p>
 	</section>
 		<?php
 	}
@@ -381,28 +381,28 @@ if ( ! function_exists( 'nadlan_hv2_band_listings' ) ) {
 			echo '<span class="nlhv2-list-media"' . ( $img ? ' style="background-image:url(' . esc_url( $img ) . ')"' : '' ) . '></span>';
 			echo '<b>' . ( $pr ? number_format( $pr ) . ' ₪' : esc_html( get_the_title( $l ) ) ) . '</b>';
 			$bits = array_filter( array(
-				$rm ? rtrim( rtrim( number_format( $rm, 1 ), '0' ), '.' ) . " חד'" : '',
-				$sq ? $sq . ' מ״ר' : '',
-				$fl !== '' && $fl !== null ? 'קומה ' . esc_html( (string) $fl ) : '',
+				$rm ? rtrim( rtrim( number_format( $rm, 1 ), '0' ), '.' ) . ' ' . nadlan_i18n( 'u_rooms' ) : '',
+				$sq ? $sq . ' ' . nadlan_i18n( 'u_sqm' ) : '',
+				$fl !== '' && $fl !== null ? nadlan_i18n( 'u_floor' ) . ' ' . esc_html( (string) $fl ) : '',
 				(string) get_post_meta( $l->ID, 'city', true ),
 			) );
 			echo '<span>' . esc_html( implode( ' · ', $bits ) ) . '</span></a>';
 		};
 		?>
 	<section class="nlhv2-band nlhv2-alt">
-		<header><p class="nlhv2-kicker">דירות למכירה ולהשכרה</p><h2>נכסים חדשים במערכת</h2>
-			<a href="<?php echo esc_url( home_url( '/properties/' ) ); ?>">לכל הדירות ←</a></header>
-		<div class="nlhv2-listtabs"><button type="button" class="is-on" data-pane="sale">לקנייה</button><button type="button" data-pane="rent">להשכרה</button></div>
+		<header><p class="nlhv2-kicker"><?php nadlan_e( 'ls_kicker' ); ?></p><h2><?php nadlan_e( 'ls_title' ); ?></h2>
+			<a href="<?php echo esc_url( home_url( '/properties/' ) ); ?>"><?php nadlan_e( 'ls_all' ); ?></a></header>
+		<div class="nlhv2-listtabs"><button type="button" class="is-on" data-pane="sale"><?php nadlan_e( 'tab_buy' ); ?></button><button type="button" data-pane="rent"><?php nadlan_e( 'tab_rent' ); ?></button></div>
 		<div class="nlhv2-listgrid" data-pane-id="sale"<?php echo $sale ? '' : ' hidden'; ?>>
 			<?php foreach ( $sale as $l ) { $card( $l ); } ?>
-			<a class="nlhv2-list nlhv2-cta-tile" href="<?php echo esc_url( home_url( '/post-listing/' ) ); ?>"><b>+ מפרסמים דירה?</b><span>פרסום חינם עם עוזר חכם לניסוח המודעה</span></a>
+			<a class="nlhv2-list nlhv2-cta-tile" href="<?php echo esc_url( home_url( '/post-listing/' ) ); ?>"><b><?php nadlan_e( 'ls_cta_b' ); ?></b><span><?php nadlan_e( 'ls_cta_s' ); ?></span></a>
 		</div>
 		<div class="nlhv2-listgrid" data-pane-id="rent" hidden>
 			<?php foreach ( $rent as $l ) { $card( $l ); } ?>
-			<a class="nlhv2-list nlhv2-cta-tile" href="<?php echo esc_url( home_url( '/post-listing/' ) ); ?>"><b>+ מפרסמים דירה?</b><span>פרסום חינם עם עוזר חכם לניסוח המודעה</span></a>
+			<a class="nlhv2-list nlhv2-cta-tile" href="<?php echo esc_url( home_url( '/post-listing/' ) ); ?>"><b><?php nadlan_e( 'ls_cta_b' ); ?></b><span><?php nadlan_e( 'ls_cta_s' ); ?></span></a>
 		</div>
 		<?php if ( $cities ) : ?>
-		<p class="nlhv2-cityrow"><?php foreach ( $cities as $c ) : ?><a href="<?php echo esc_url( home_url( '/properties/?city=' . rawurlencode( $c['name'] ) ) ); ?>">דירות למכירה ב<?php echo esc_html( $c['name'] ); ?></a><?php endforeach; ?></p>
+		<p class="nlhv2-cityrow"><?php foreach ( $cities as $c ) : ?><a href="<?php echo esc_url( home_url( '/properties/?city=' . rawurlencode( $c['name'] ) ) ); ?>"><?php nadlan_e( 'ls_city_pre' ); ?><?php echo esc_html( $c['name'] ); ?></a><?php endforeach; ?></p>
 		<?php endif; ?>
 	</section>
 		<?php
@@ -415,12 +415,12 @@ if ( ! function_exists( 'nadlan_hv2_band_areas' ) ) {
 		if ( count( $cities ) < 3 ) { return; }
 		?>
 	<section class="nlhv2-band">
-		<header><p class="nlhv2-kicker">אזורי ביקוש</p><h2>לאן קונים מסתכלים עכשיו</h2></header>
+		<header><p class="nlhv2-kicker"><?php nadlan_e( 'ar_kicker' ); ?></p><h2><?php nadlan_e( 'ar_title' ); ?></h2></header>
 		<div class="nlhv2-areas">
 			<?php foreach ( $cities as $c ) : ?>
 			<a href="<?php echo esc_url( home_url( $c['projects'] >= $c['properties'] ? '/projects/?city=' . rawurlencode( $c['name'] ) : '/properties/?city=' . rawurlencode( $c['name'] ) ) ); ?>">
 				<b><?php echo esc_html( $c['name'] ); ?></b>
-				<span><?php echo $c['projects'] ? (int) $c['projects'] . ' פרויקטים' : ''; ?><?php echo $c['projects'] && $c['properties'] ? ' · ' : ''; ?><?php echo $c['properties'] ? (int) $c['properties'] . ' דירות' : ''; ?></span>
+				<span><?php echo $c['projects'] ? (int) $c['projects'] . ' ' . nadlan_i18n( 'ar_projects' ) : ''; ?><?php echo $c['projects'] && $c['properties'] ? ' · ' : ''; ?><?php echo $c['properties'] ? (int) $c['properties'] . ' ' . nadlan_i18n( 'ar_apts' ) : ''; ?></span>
 			</a>
 			<?php endforeach; ?>
 		</div>
@@ -441,7 +441,7 @@ if ( ! function_exists( 'nadlan_hv2_band_magazine' ) ) {
 		$img  = get_the_post_thumbnail_url( $lead->ID, 'large' );
 		?>
 	<section class="nlhv2-band nlhv2-alt">
-		<header><p class="nlhv2-kicker">המגזין</p><h2>חדשות, ניתוחים ומדריכים</h2></header>
+		<header><p class="nlhv2-kicker"><?php nadlan_e( 'mg_kicker' ); ?></p><h2><?php nadlan_e( 'mg_title' ); ?></h2></header>
 		<div class="nlhv2-mag">
 			<a class="nlhv2-mag-lead" href="<?php echo esc_url( get_permalink( $lead ) ); ?>">
 				<span class="nlhv2-list-media"<?php echo $img ? ' style="background-image:url(' . esc_url( $img ) . ')"' : ''; ?>></span>
@@ -454,11 +454,11 @@ if ( ! function_exists( 'nadlan_hv2_band_magazine' ) ) {
 				<?php endforeach; ?>
 			</div>
 			<div class="nlhv2-mag-rail">
-				<p>המדריכים החשובים</p>
-				<a href="<?php echo esc_url( home_url( '/buying-apartment/' ) ); ?>">קניית דירה: המדריך המלא</a>
-				<a href="<?php echo esc_url( home_url( '/tabu-extract-check/' ) ); ?>">בדיקת נסח טאבו</a>
-				<a href="<?php echo esc_url( home_url( '/investment/' ) ); ?>">נדל״ן להשקעה</a>
-				<a href="<?php echo esc_url( home_url( '/glossary/' ) ); ?>">מילון מונחים</a>
+				<p><?php nadlan_e( 'mg_rail' ); ?></p>
+				<a href="<?php echo esc_url( home_url( '/buying-apartment/' ) ); ?>"><?php nadlan_e( 'guide_buy' ); ?></a>
+				<a href="<?php echo esc_url( home_url( '/tabu-extract-check/' ) ); ?>"><?php nadlan_e( 'tabu' ); ?></a>
+				<a href="<?php echo esc_url( home_url( '/investment/' ) ); ?>"><?php nadlan_e( 'invest' ); ?></a>
+				<a href="<?php echo esc_url( home_url( '/glossary/' ) ); ?>"><?php nadlan_e( 'glossary' ); ?></a>
 			</div>
 		</div>
 	</section>
@@ -470,13 +470,13 @@ if ( ! function_exists( 'nadlan_hv2_band_tools' ) ) {
 	function nadlan_hv2_band_tools() {
 		?>
 	<section class="nlhv2-band">
-		<header><p class="nlhv2-kicker">כלים</p><h2>בדיקות שחוסכות טעויות יקרות</h2></header>
+		<header><p class="nlhv2-kicker"><?php nadlan_e( 'tl_kicker' ); ?></p><h2><?php nadlan_e( 'tl_title' ); ?></h2></header>
 		<div class="nlhv2-tools">
-			<a class="nlhv2-tool-lead" href="<?php echo esc_url( home_url( '/property-value-estimator/' ) ); ?>"><b>כמה שווה הדירה שלכם?</b><span>אומדן ראשוני חינם, ומשם לשמאי מוסמך אם רוצים הערכה מדויקת</span></a>
-			<a href="<?php echo esc_url( home_url( '/mortgage-calculator/' ) ); ?>"><b>מחשבון משכנתא</b><span>ההחזר החודשי האמיתי</span></a>
-			<a href="<?php echo esc_url( home_url( '/purchase-tax-calculator/' ) ); ?>"><b>מס רכישה</b><span>מדרגות 2026</span></a>
-			<a href="<?php echo esc_url( home_url( '/apartment-purchase-cost-calculator/' ) ); ?>"><b>עלות עסקה מלאה</b><span>כל ההוצאות הנלוות</span></a>
-			<a href="<?php echo esc_url( home_url( '/glossary/' ) ); ?>"><b>מילון מונחים</b><span>תמ״א, פינוי-בינוי, הערת אזהרה</span></a>
+			<a class="nlhv2-tool-lead" href="<?php echo esc_url( home_url( '/property-value-estimator/' ) ); ?>"><b><?php nadlan_e( 'tl_lead_b' ); ?></b><span><?php nadlan_e( 'tl_lead_s' ); ?></span></a>
+			<a href="<?php echo esc_url( home_url( '/mortgage-calculator/' ) ); ?>"><b><?php nadlan_e( 'calc_mortgage' ); ?></b><span><?php nadlan_e( 'tl_mort_s' ); ?></span></a>
+			<a href="<?php echo esc_url( home_url( '/purchase-tax-calculator/' ) ); ?>"><b><?php nadlan_e( 'tl_tax_b' ); ?></b><span><?php nadlan_e( 'tl_tax_s' ); ?></span></a>
+			<a href="<?php echo esc_url( home_url( '/apartment-purchase-cost-calculator/' ) ); ?>"><b><?php nadlan_e( 'calc_full' ); ?></b><span><?php nadlan_e( 'tl_full_s' ); ?></span></a>
+			<a href="<?php echo esc_url( home_url( '/glossary/' ) ); ?>"><b><?php nadlan_e( 'glossary' ); ?></b><span><?php nadlan_e( 'tl_glos_s' ); ?></span></a>
 		</div>
 	</section>
 		<?php
@@ -486,10 +486,10 @@ if ( ! function_exists( 'nadlan_hv2_band_tools' ) ) {
 if ( ! function_exists( 'nadlan_hv2_band_pros' ) ) {
 	function nadlan_hv2_band_pros() {
 		$cats = array(
-			'lawyer'    => 'עו״ד מקרקעין',
-			'shamai'    => 'שמאי מקרקעין',
-			'mashkanta' => 'יועץ משכנתאות',
-			'bedek_bait'=> 'בדק בית',
+			'lawyer'    => nadlan_i18n( 'pr_lawyer' ),
+			'shamai'    => nadlan_i18n( 'pr_shamai' ),
+			'mashkanta' => nadlan_i18n( 'pr_mashkanta' ),
+			'bedek_bait'=> nadlan_i18n( 'pr_bedek' ),
 		);
 		$total = (int) wp_count_posts( 'nadlan_professional' )->publish;
 		$slots = array();
@@ -500,21 +500,21 @@ if ( ! function_exists( 'nadlan_hv2_band_pros' ) ) {
 		if ( ! $slots ) { return; }
 		?>
 	<section class="nlhv2-band nlhv2-alt">
-		<header><p class="nlhv2-kicker">אנשי מקצוע</p><h2>הליווי הנכון לעסקה</h2>
-			<a href="<?php echo esc_url( home_url( '/professionals/' ) ); ?>">עוד <?php echo number_format( $total ); ?> אנשי מקצוע ←</a></header>
+		<header><p class="nlhv2-kicker"><?php nadlan_e( 'pr_kicker' ); ?></p><h2><?php nadlan_e( 'pr_title' ); ?></h2>
+			<a href="<?php echo esc_url( home_url( '/professionals/' ) ); ?>"><?php nadlan_e( 'pr_more_pre' ); ?> <?php echo number_format( $total ); ?> <?php nadlan_e( 'pr_more_suf' ); ?></a></header>
 		<div class="nlhv2-prosgrid">
 			<?php foreach ( $slots as $key => $s ) :
 				$pid = $s['id'];
 				$rating = (float) get_post_meta( $pid, 'rating', true );
 				$pm = function_exists( 'nadlan_prof_meta_of' ) ? nadlan_prof_meta_of( $key ) : array( 'color' => '#1B1A17' ); ?>
 			<a class="nlhv2-pro" href="<?php echo esc_url( get_permalink( $pid ) ); ?>">
-				<?php if ( $s['sponsored'] ) : ?><i class="nlhv2-spon">ממומן</i><?php endif; ?>
+				<?php if ( $s['sponsored'] ) : ?><i class="nlhv2-spon"><?php nadlan_e( 'pr_sponsored' ); ?></i><?php endif; ?>
 				<?php echo function_exists( 'nadlan_prof_monogram_svg' ) ? nadlan_prof_monogram_svg( get_the_title( $pid ), $pm['color'] ?? '#1B1A17' ) : ''; // phpcs:ignore ?>
 				<b><?php echo esc_html( get_the_title( $pid ) ); ?></b>
 				<span><?php echo esc_html( $s['label'] ); ?><?php echo esc_html( ( $c = get_post_meta( $pid, 'city', true ) ) ? ' · ' . $c : '' ); ?><?php echo $rating ? ' · ★ ' . number_format( $rating, 1 ) : ''; ?></span>
 			</a>
 			<?php endforeach; ?>
-			<a class="nlhv2-pro nlhv2-cta-tile" href="<?php echo esc_url( home_url( '/advertise/' ) ); ?>"><b>+ הצטרפו למאגר</b><span>חשיפה לקונים ומשקיעים</span></a>
+			<a class="nlhv2-pro nlhv2-cta-tile" href="<?php echo esc_url( home_url( '/advertise/' ) ); ?>"><b><?php nadlan_e( 'pr_join_b' ); ?></b><span><?php nadlan_e( 'pr_join_s' ); ?></span></a>
 		</div>
 	</section>
 		<?php
@@ -523,6 +523,7 @@ if ( ! function_exists( 'nadlan_hv2_band_pros' ) ) {
 
 if ( ! function_exists( 'nadlan_hv2_band_intl' ) ) {
 	function nadlan_hv2_band_intl() {
+		if ( function_exists( 'nadlan_current_lang' ) && nadlan_current_lang() !== 'he' ) { return; }
 		?>
 	<section class="nlhv2-en" dir="ltr">
 		<div>
@@ -542,36 +543,36 @@ if ( ! function_exists( 'nadlan_hv2_band_megafooter' ) ) {
 		$profs  = function_exists( 'nadlan_dir_professions_all' ) ? array_slice( (array) nadlan_dir_professions_all(), 0, 8, true ) : array();
 		?>
 	<section class="nlhv2-mfoot" dir="rtl" aria-label="כל הקישורים">
-		<div class="nlhv2-mfoot-col"><p>דירות לפי עיר</p>
-			<?php foreach ( $cities as $c ) : ?><a href="<?php echo esc_url( home_url( '/properties/?city=' . rawurlencode( $c['name'] ) ) ); ?>">דירות ב<?php echo esc_html( $c['name'] ); ?></a><?php endforeach; ?>
+		<div class="nlhv2-mfoot-col"><p><?php nadlan_e( 'mf_apts_city' ); ?></p>
+			<?php foreach ( $cities as $c ) : ?><a href="<?php echo esc_url( home_url( '/properties/?city=' . rawurlencode( $c['name'] ) ) ); ?>"><?php nadlan_e( 'apts_in' ); ?><?php echo esc_html( $c['name'] ); ?></a><?php endforeach; ?>
 		</div>
-		<div class="nlhv2-mfoot-col"><p>פרויקטים לפי עיר</p>
-			<?php foreach ( $cities as $c ) : if ( ! $c['projects'] ) { continue; } ?><a href="<?php echo esc_url( home_url( '/projects/?city=' . rawurlencode( $c['name'] ) ) ); ?>">פרויקטים ב<?php echo esc_html( $c['name'] ); ?></a><?php endforeach; ?>
-			<a href="<?php echo esc_url( home_url( '/projects/?project_type=pinui_binui' ) ); ?>">פינוי-בינוי</a>
-			<a href="<?php echo esc_url( home_url( '/projects/?project_type=tama38' ) ); ?>">תמ״א 38</a>
+		<div class="nlhv2-mfoot-col"><p><?php nadlan_e( 'mf_proj_city' ); ?></p>
+			<?php foreach ( $cities as $c ) : if ( ! $c['projects'] ) { continue; } ?><a href="<?php echo esc_url( home_url( '/projects/?city=' . rawurlencode( $c['name'] ) ) ); ?>"><?php nadlan_e( 'projects_in' ); ?><?php echo esc_html( $c['name'] ); ?></a><?php endforeach; ?>
+			<a href="<?php echo esc_url( home_url( '/projects/?project_type=pinui_binui' ) ); ?>"><?php nadlan_e( 'pinui' ); ?></a>
+			<a href="<?php echo esc_url( home_url( '/projects/?project_type=tama38' ) ); ?>"><?php nadlan_e( 'tama' ); ?></a>
 		</div>
-		<div class="nlhv2-mfoot-col"><p>מחשבונים ומדריכים</p>
-			<a href="<?php echo esc_url( home_url( '/mortgage-calculator/' ) ); ?>">מחשבון משכנתא</a>
-			<a href="<?php echo esc_url( home_url( '/purchase-tax-calculator/' ) ); ?>">מחשבון מס רכישה</a>
-			<a href="<?php echo esc_url( home_url( '/apartment-purchase-cost-calculator/' ) ); ?>">עלות עסקה מלאה</a>
-			<a href="<?php echo esc_url( home_url( '/property-value-estimator/' ) ); ?>">שווי דירה</a>
-			<a href="<?php echo esc_url( home_url( '/buying-apartment/' ) ); ?>">קניית דירה מקבלן</a>
-			<a href="<?php echo esc_url( home_url( '/tabu-extract-check/' ) ); ?>">בדיקת נסח טאבו</a>
-			<a href="<?php echo esc_url( home_url( '/investment/' ) ); ?>">נדל״ן להשקעה</a>
-			<a href="<?php echo esc_url( home_url( '/glossary/' ) ); ?>">מילון מונחים</a>
+		<div class="nlhv2-mfoot-col"><p><?php nadlan_e( 'mf_calc' ); ?></p>
+			<a href="<?php echo esc_url( home_url( '/mortgage-calculator/' ) ); ?>"><?php nadlan_e( 'calc_mortgage' ); ?></a>
+			<a href="<?php echo esc_url( home_url( '/purchase-tax-calculator/' ) ); ?>"><?php nadlan_e( 'calc_tax' ); ?></a>
+			<a href="<?php echo esc_url( home_url( '/apartment-purchase-cost-calculator/' ) ); ?>"><?php nadlan_e( 'calc_full' ); ?></a>
+			<a href="<?php echo esc_url( home_url( '/property-value-estimator/' ) ); ?>"><?php nadlan_e( 'value' ); ?></a>
+			<a href="<?php echo esc_url( home_url( '/buying-apartment/' ) ); ?>"><?php nadlan_e( 'buying_kablan' ); ?></a>
+			<a href="<?php echo esc_url( home_url( '/tabu-extract-check/' ) ); ?>"><?php nadlan_e( 'tabu' ); ?></a>
+			<a href="<?php echo esc_url( home_url( '/investment/' ) ); ?>"><?php nadlan_e( 'invest' ); ?></a>
+			<a href="<?php echo esc_url( home_url( '/glossary/' ) ); ?>"><?php nadlan_e( 'glossary' ); ?></a>
 		</div>
-		<div class="nlhv2-mfoot-col"><p>אנשי מקצוע</p>
+		<div class="nlhv2-mfoot-col"><p><?php nadlan_e( 'mf_pros' ); ?></p>
 			<?php foreach ( $profs as $key => $pm ) : ?><a href="<?php echo esc_url( home_url( '/professionals/?profession=' . rawurlencode( $key ) ) ); ?>"><?php echo esc_html( is_array( $pm ) ? ( $pm['label'] ?? $key ) : $key ); ?></a><?php endforeach; ?>
-			<a href="<?php echo esc_url( home_url( '/professionals/' ) ); ?>">כל המאגר</a>
+			<a href="<?php echo esc_url( home_url( '/professionals/' ) ); ?>"><?php nadlan_e( 'all_pros' ); ?></a>
 		</div>
-		<div class="nlhv2-mfoot-col"><p>נדלן</p>
-			<a href="<?php echo esc_url( home_url( '/post-listing/' ) ); ?>">פרסום דירה חינם</a>
-			<a href="<?php echo esc_url( home_url( '/advertise/' ) ); ?>">פרסום לבעלי מקצוע ויזמים</a>
-			<a href="<?php echo esc_url( home_url( '/contact/' ) ); ?>">צור קשר</a>
+		<div class="nlhv2-mfoot-col"><p><?php nadlan_e( 'mf_brand' ); ?></p>
+			<a href="<?php echo esc_url( home_url( '/post-listing/' ) ); ?>"><?php nadlan_e( 'post_free' ); ?></a>
+			<a href="<?php echo esc_url( home_url( '/advertise/' ) ); ?>"><?php nadlan_e( 'advertise_pros' ); ?></a>
+			<a href="<?php echo esc_url( home_url( '/contact/' ) ); ?>"><?php nadlan_e( 'contact' ); ?></a>
 			<a href="<?php echo esc_url( home_url( '/en/' ) ); ?>">English</a>
 		</div>
 	</section>
-	<p class="nlhv2-legal" dir="rtl">המידע באתר כללי ואינו ייעוץ. אומדני מחיר אינם מחייבים. הדמיות להמחשה בלבד עד לאישור חומרים רשמיים של היזם.</p>
+	<p class="nlhv2-legal" dir="rtl"><?php nadlan_e( 'legal' ); ?></p>
 		<?php
 	}
 }
@@ -786,20 +787,23 @@ if ( ! function_exists( 'nadlan_hv2_assets' ) ) {
 		// The poster (set on the element) always shows, so even when we skip
 		// loading, the hero is a real frame, never a black void or bare card.
 		if(!skip){
-			var hvPlay=function(){hv.muted=true;var p=hv.play();if(p&&p.catch){p.catch(function(){})}};
+			var hvPlay=function(){try{hv.muted=true;hv.setAttribute("muted","");var p=hv.play();if(p&&p.catch){p.catch(function(){})}}catch(e){}};
 			var hvStarted=false;
 			var hvGo=function(){
 				if(hvStarted){return}hvStarted=true;
 				if(hv.dataset.webm){var sw=document.createElement("source");sw.src=hv.dataset.webm;sw.type="video/webm";hv.appendChild(sw);}
 				if(hv.dataset.src){var sm=document.createElement("source");sm.src=hv.dataset.src;sm.type="video/mp4";hv.appendChild(sm);}
 				hv.load();
-				hv.addEventListener("canplay",function(){hv.classList.add("is-on");hvPlay()},{once:true});
-				var kick=function(){if(hv.paused){hvPlay()}document.removeEventListener("pointerdown",kick);document.removeEventListener("touchstart",kick)};
-				document.addEventListener("pointerdown",kick,{once:true});
-				document.addEventListener("touchstart",kick,{once:true,passive:true});
+				// Desktop autoplay is finicky (media-engagement gating); fire play on
+				// every readiness event, when scrolled into view, and on first input.
+				["loadeddata","canplay","canplaythrough","playing"].forEach(function(ev){hv.addEventListener(ev,function(){hv.classList.add("is-on");hvPlay()})});
+				hvPlay();
+				if(window.IntersectionObserver){try{new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){hvPlay()}})},{threshold:0.1}).observe(hv)}catch(e){}}
+				["pointerdown","keydown","scroll","mousemove","touchstart"].forEach(function(ev){window.addEventListener(ev,function(){hvPlay()},{once:true,passive:true})});
 			};
-			if(window.requestIdleCallback){requestIdleCallback(hvGo,{timeout:2500})}else{setTimeout(hvGo,600)}
-			window.addEventListener("load",hvGo,{once:true});
+			if(window.requestIdleCallback){requestIdleCallback(hvGo,{timeout:1500})}else{setTimeout(hvGo,300)}
+			if(document.readyState!=="loading"){hvGo()}else{document.addEventListener("DOMContentLoaded",hvGo,{once:true})}
+			window.addEventListener("load",function(){hvGo();hvPlay()},{once:true});
 		}
 	}
 	// browse menus: close others when one opens; close on outside click
