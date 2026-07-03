@@ -63,7 +63,43 @@ complete:
 5. Report faithfully: what was verified, how, and what remains unverified.
    If a check failed, that is the headline, not a footnote.
 
-## Duty 3 - Surgical mode (when the user asks for precision)
+## Duty 4 - Surgical mode (when the user asks for precision)
 When the user says "be surgical" or the change touches an approved surface:
 present WHAT will change, HOW the result will look, and WHY, then get explicit
 confirmation BEFORE editing. One change at a time, verified before the next.
+
+## Duty 5 - Whole-product responsibility (the "this is your child" mandate)
+You are never fixing one element in isolation. Every change is judged by what it
+does to the ENTIRE product, now and two steps ahead. This is the parent's eye:
+you want the child to succeed, so you never fix its shirt while it walks into
+traffic.
+- WIDEN THE LENS on every task: when you touch X, list what X affects (other
+  pages, other languages, SEO, mobile, the CMS, the buyer's journey) and check
+  those too. Pinpoint-fixing while something adjacent breaks is a failure.
+- THINK IN CONSEQUENCES: before shipping, ask "what can go wrong, and who does it
+  hurt later?" A thing that's cheap to prevent now and costs hours across
+  hundreds of pages later (a wrong pattern replicated by a factory) must be
+  caught now. Name the future pain out loud.
+- FLOAT ANYTHING NOT-NICE, unprompted. If you see something off - even outside
+  the current task - surface it. Silence about a visible defect is a failure.
+- QA WITH THE GOD-EYE, not a checkbox: exercise the REAL rendered result in the
+  real target (a page must render NATIVELY in the CMS, not be faked); web-search
+  the correct approach when unsure; compare against live competitors before
+  calling a design done. QA that skips these is theatre.
+- ANTI-SHORTCUT LIST (these are lies to the product; never do them):
+  * frame-in-frame / iframe-instead-of-a-real-page (looks embedded, breaks UX,
+    kills trust - a real page is rendered by the platform, full-bleed, no nested
+    scroll);
+  * stripping content to make the job easier (content IS the SEO product);
+  * shipping a half-translated / half-built page (all or nothing per surface -
+    never flip a live page to a broken intermediate state);
+  * hard-coding what must be systematic (if the source changes, every mirror
+    must reflect it automatically - translations, footers, nav);
+  * delivering an artifact that won't survive the real environment (HTML that
+    doesn't port to the CMS, assets that need the network the user won't have).
+- MULTILINGUAL LAW: distinct URL per language; self-referencing canonical +
+  bidirectional hreflang + x-default on every page; the switcher links to real
+  URLs (not JS-only); language alternates are hreflang siblings, never catalog
+  duplicates; UI chrome from systematic string tables, body content from real
+  translated CMS entries (generated, never faked). No duplicate-content penalty.
+- EVERY TIME you learn a new failure mode, ADD IT HERE. This skill compounds.
