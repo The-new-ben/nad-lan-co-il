@@ -254,6 +254,28 @@ if ( ! function_exists( 'nadlan_lang_switcher' ) ) {
 	}
 }
 
+/* Translate the block-theme HEADER + FOOTER (hardcoded Hebrew, not in this
+   plugin) on language pages via a scoped output buffer + finite string map.
+   Systematic (map-driven), only runs on /en /fr /ru /ar, never touches Hebrew. */
+if ( ! function_exists( 'nadlan_i18n_theme_map' ) ) {
+	function nadlan_i18n_theme_map( $lang ) {
+		$m = array(
+			'en' => array( 'פרויקטים'=>'Projects','אזורי ביקוש'=>'Areas','מחשבונים'=>'Calculators','אנשי מקצוע'=>'Professionals','מדריכים'=>'Guides','בחרו פרויקט'=>'Choose a project','נדל״ן לפני שפונים ליזם'=>'Real estate — before you approach the developer','לדלג לתוכן'=>'Skip to content','כל הפרויקטים'=>'All projects','מחשבון משכנתא'=>'Mortgage calculator','מס רכישה'=>'Purchase tax','מדריך קנייה'=>'Buying guide','בדיקה משפטית'=>'Legal check','אודות'=>'About','צור קשר'=>'Contact','רובע שדה דב'=>'Sde Dov district','עו״ד מקרקעין'=>'Real-estate lawyer','שמאי מקרקעין'=>'Property appraiser','יועץ משכנתאות'=>'Mortgage advisor','בדק בית'=>'Home inspection','קבלן'=>'Contractor','אדריכל'=>'Architect' ),
+			'fr' => array( 'פרויקטים'=>'Projets','אזורי ביקוש'=>'Zones','מחשבונים'=>'Calculateurs','אנשי מקצוע'=>'Professionnels','מדריכים'=>'Guides','בחרו פרויקט'=>'Choisir un projet','נדל״ן לפני שפונים ליזם'=>"L'immobilier — avant de contacter le promoteur",'לדלג לתוכן'=>'Aller au contenu','כל הפרויקטים'=>'Tous les projets','מחשבון משכנתא'=>'Calculateur de prêt','מס רכישה'=>"Taxe d'achat",'מדריך קנייה'=>"Guide d'achat",'בדיקה משפטית'=>'Vérification juridique','אודות'=>'À propos','צור קשר'=>'Contact','רובע שדה דב'=>'Quartier Sde Dov','עו״ד מקרקעין'=>'Avocat immobilier','שמאי מקרקעין'=>'Expert immobilier','יועץ משכנתאות'=>'Conseiller en prêt','בדק בית'=>'Inspection du logement','קבלן'=>'Entrepreneur','אדריכל'=>'Architecte' ),
+			'ru' => array( 'פרויקטים'=>'Проекты','אזורי ביקוש'=>'Районы','מחשבונים'=>'Калькуляторы','אנשי מקצוע'=>'Специалисты','מדריכים'=>'Гиды','בחרו פרויקט'=>'Выбрать проект','נדל״ן לפני שפונים ליזם'=>'Недвижимость — до обращения к застройщику','לדלג לתוכן'=>'Перейти к содержимому','כל הפרויקטים'=>'Все проекты','מחשבון משכנתא'=>'Ипотечный калькулятор','מס רכישה'=>'Налог на покупку','מדריך קנייה'=>'Гид покупки','בדיקה משפטית'=>'Юридическая проверка','אודות'=>'О нас','צור קשר'=>'Контакты','רובע שדה דב'=>'Район Сде-Дов','עו״ד מקרקעין'=>'Юрист по недвижимости','שמאי מקרקעין'=>'Оценщик','יועץ משכנתאות'=>'Ипотечный консультант','בדק בית'=>'Осмотр жилья','קבלן'=>'Подрядчик','אדריכל'=>'Архитектор' ),
+			'ar' => array( 'פרויקטים'=>'مشاريع','אזורי ביקוש'=>'مناطق','מחשבונים'=>'حاسبات','אנשי מקצוע'=>'مختصون','מדריכים'=>'أدلة','בחרו פרויקט'=>'اختر مشروعاً','נדל״ן לפני שפונים ליזם'=>'عقارات — قبل التوجه إلى المطوّر','לדלג לתוכן'=>'تخطَّ إلى المحتوى','כל הפרויקטים'=>'كل المشاريع','מחשבון משכנתא'=>'حاسبة الرهن','מס רכישה'=>'ضريبة الشراء','מדריך קנייה'=>'دليل الشراء','בדיקה משפטית'=>'فحص قانوني','אודות'=>'حول','צור קשר'=>'اتصل بنا','רובע שדה דב'=>'حي سديه دوف','עו״ד מקרקעין'=>'محامي عقارات','שמאי מקרקעין'=>'مثمّن عقاري','יועץ משכנתאות'=>'مستشار رهن','בדק בית'=>'فحص المنزل','קבלן'=>'مقاول','אדריכל'=>'معماري' ),
+		);
+		return isset( $m[ $lang ] ) ? $m[ $lang ] : array();
+	}
+}
+add_action( 'template_redirect', function () {
+	if ( is_admin() || ! nadlan_is_language_home() || 'he' === nadlan_current_lang() ) { return; }
+	ob_start( function ( $html ) {
+		$map = nadlan_i18n_theme_map( nadlan_current_lang() );
+		return $map ? strtr( $html, $map ) : $html;
+	} );
+}, 1 );
+
 /* Detect the language homepage EARLY (before wp_head) from the page slug, so
    hreflang/canonical emit correctly and the whole page renders in that language.
    /en/ /fr/ /ru/ /ar/ are the language homepages; / (Hebrew) is the default. */

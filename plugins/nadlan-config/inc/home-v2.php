@@ -313,13 +313,13 @@ if ( ! function_exists( 'nadlan_hv2_band_market' ) ) {
 	function nadlan_hv2_band_market() {
 		$s = (array) get_option( 'nadlan_market_snapshot', array() );
 		$cards = array();
-		if ( ! empty( $s['ppsqm_tlv'] ) ) { $cards[] = array( number_format( (int) $s['ppsqm_tlv'] ) . ' ₪', 'מחיר ממוצע למ״ר בפרויקטים חדשים בתל אביב', home_url( '/projects/?city=' . rawurlencode( 'תל אביב' ) ) ); }
+		if ( ! empty( $s['ppsqm_tlv'] ) ) { $cards[] = array( number_format( (int) $s['ppsqm_tlv'] ) . ' ₪', nadlan_i18n( 'mk_tlv' ), home_url( '/projects/?city=' . rawurlencode( 'תל אביב' ) ) ); }
 		// Same honesty gate as the ticker: no fake "national" number from a TLV-only sample.
-		if ( ! empty( $s['ppsqm_il'] ) && ( empty( $s['ppsqm_tlv'] ) || abs( (int) $s['ppsqm_il'] - (int) $s['ppsqm_tlv'] ) >= 0.2 * (int) $s['ppsqm_tlv'] ) ) { $cards[] = array( number_format( (int) $s['ppsqm_il'] ) . ' ₪', 'מחיר ממוצע למ״ר בפרויקטים שבמעקב', home_url( '/projects/' ) ); }
-		if ( ! empty( $s['yoy'] ) ) { $cards[] = array( esc_html( $s['yoy'] ), 'שינוי שנתי במחירי הדירות', home_url( '/investment/' ) ); }
-		if ( ! empty( $s['mortgage_rate'] ) ) { $cards[] = array( esc_html( $s['mortgage_rate'] ), 'ריבית משכנתא ממוצעת', home_url( '/mortgage-calculator/' ) ); }
+		if ( ! empty( $s['ppsqm_il'] ) && ( empty( $s['ppsqm_tlv'] ) || abs( (int) $s['ppsqm_il'] - (int) $s['ppsqm_tlv'] ) >= 0.2 * (int) $s['ppsqm_tlv'] ) ) { $cards[] = array( number_format( (int) $s['ppsqm_il'] ) . ' ₪', nadlan_i18n( 'mk_watch' ), home_url( '/projects/' ) ); }
+		if ( ! empty( $s['yoy'] ) ) { $cards[] = array( esc_html( $s['yoy'] ), nadlan_i18n( 'mk_yoy' ), home_url( '/investment/' ) ); }
+		if ( ! empty( $s['mortgage_rate'] ) ) { $cards[] = array( esc_html( $s['mortgage_rate'] ), nadlan_i18n( 'mk_rate' ), home_url( '/mortgage-calculator/' ) ); }
 		if ( count( $cards ) < 2 ) { return; }
-		$note = 'מבוסס על קטלוג נדלן · עודכן ' . esc_html( ! empty( $s['updated'] ) ? $s['updated'] : current_time( 'd/m/Y' ) );
+		$note = nadlan_i18n( 'mk_note_pre' ) . esc_html( ! empty( $s['updated'] ) ? $s['updated'] : current_time( 'd/m/Y' ) );
 		echo '<section class="nlhv2-band"><header><h2>' . esc_html( nadlan_i18n( 'mk_title' ) ) . '</h2><span class="nlhv2-note">' . $note . '</span></header><div class="nlhv2-market">'; // phpcs:ignore
 		foreach ( $cards as $c ) {
 			echo '<a href="' . esc_url( $c[2] ) . '"><b>' . $c[0] . '</b><span>' . $c[1] . '</span></a>'; // phpcs:ignore
