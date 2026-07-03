@@ -1,15 +1,15 @@
 {
   "name": "NadLan Config",
   "slug": "nadlan-config",
-  "version": "1.70.5",
+  "version": "1.70.6",
   "author": "nad-lan.co.il",
   "homepage": "https://nad-lan.co.il",
   "requires": "6.7",
   "tested": "7.0",
   "requires_php": "7.4",
-  "download_url": "https://raw.githubusercontent.com/The-new-ben/nad-lan-co-il/main/plugin-dist/nadlan-config-1.70.5.zip",
-  "last_updated": "2026-07-03 21:30:00",
+  "download_url": "https://raw.githubusercontent.com/The-new-ben/nad-lan-co-il/main/plugin-dist/nadlan-config-1.70.6.zip",
+  "last_updated": "2026-07-03 22:30:00",
   "sections": {
-    "changelog": "<h4>1.70.5</h4><ul><li>Language homepages noindex until content-complete (option nadlan_i18n_complete) — no thin/duplicate penalty during rollout.</li></ul>"
+    "changelog": "<h4>1.70.6</h4><ul><li>Homepage: all 12 bands fully translated (5 languages), CMS-backed i18n overrides + REST /nadlan/v1/i18n/&lt;lang&gt;, noindex removed, aggressive desktop video autoplay.</li></ul>"
   }
 }
