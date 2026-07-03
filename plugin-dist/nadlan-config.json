@@ -1,15 +1,15 @@
 {
   "name": "NadLan Config",
   "slug": "nadlan-config",
-  "version": "1.70.0",
+  "version": "1.70.1",
   "author": "nad-lan.co.il",
   "homepage": "https://nad-lan.co.il",
   "requires": "6.7",
   "tested": "7.0",
   "requires_php": "7.4",
-  "download_url": "https://raw.githubusercontent.com/The-new-ben/nad-lan-co-il/main/plugin-dist/nadlan-config-1.70.0.zip",
-  "last_updated": "2026-07-03 09:00:00",
+  "download_url": "https://raw.githubusercontent.com/The-new-ben/nad-lan-co-il/main/plugin-dist/nadlan-config-1.70.1.zip",
+  "last_updated": "2026-07-03 11:00:00",
   "sections": {
-    "changelog": "<h4>1.70.0</h4><ul><li>Hero video: hardened autoplay (idle start, JS muted, tap-retry).</li><li>Ticker/market honesty: relabeled TLV figure, national ppsqm hidden when it merely mirrors the TLV sample.</li></ul>"
+    "changelog": "<h4>1.70.1</h4><ul><li>Kill list executed: auction, esign, legacy homepage, project-page-assembly and the old project-3d showroom removed (~5,600 lines). Engine dependencies preserved in showroom-support.php (module-type filter, meta registration, authoring metabox, payload API).</li></ul>"
   }
 }

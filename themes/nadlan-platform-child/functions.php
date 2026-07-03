@@ -64,35 +64,3 @@ add_action( 'after_setup_theme', function () {
 	add_editor_style( 'assets/css/platform.css' );
 } );
 
-if ( ! function_exists( 'nadlan_platform_child_mark_home_showcase' ) ) {
-	/**
-	 * Mark the existing homepage project showcase without adding another band.
-	 *
- * This is render-time only: it does not rewrite wp_posts.post_content.
-	 */
-	function nadlan_platform_child_mark_home_showcase( $content ) {
-		if ( strpos( $content, 'data-nlpo-home-projects' ) !== false || strpos( $content, 'nlux-showcase' ) === false ) {
-			return $content;
-		}
-		return preg_replace(
-			'/<section([^>]*class="[^"]*\bnlux-showcase\b[^"]*"[^>]*)>/',
-			'<section$1 data-nlpo-home-projects>',
-			$content,
-			1
-		);
-	}
-}
-
-add_filter( 'render_block', function ( $block_content ) {
-	if ( is_admin() || ! is_front_page() ) {
-		return $block_content;
-	}
-	return nadlan_platform_child_mark_home_showcase( $block_content );
-}, 20 );
-
-add_filter( 'the_content', function ( $content ) {
-	if ( is_admin() || ! is_front_page() ) {
-		return $content;
-	}
-	return nadlan_platform_child_mark_home_showcase( $content );
-}, 20 );

@@ -2,7 +2,7 @@
 /**
  * Plugin Name: NadLan Config
  * Description: Lead-capture foundation: nadlan_lead CPT + lead-form handler + healthcheck. Read skills/nadlan-config-plugin.md.
- * Version: 1.70.0
+ * Version: 1.70.1
  * Author: nad-lan.co.il
  * License: GPL-2.0+
  * Requires PHP: 7.4
@@ -16,7 +16,7 @@ if ( ! defined( 'ABSPATH' ) ) {
    above (the release script bumps all three). A frozen ver= string once kept
    browsers on a June engine.js for weeks - never hardcode versions in enqueues. */
 if ( ! defined( 'NADLAN_CONFIG_VERSION' ) ) {
-	define( 'NADLAN_CONFIG_VERSION', '1.70.0' );
+	define( 'NADLAN_CONFIG_VERSION', '1.70.1' );
 }
 
 /* ---------- v1.5.0: directory cards, claim funnel, auction engine ----------
@@ -26,10 +26,11 @@ if ( ! defined( 'NADLAN_CONFIG_VERSION' ) ) {
  *   import.php        — data.gov.il CKAN importer (רשם הקבלנים + התחדשות עירונית) + enrich REST + WP-CLI
  *   schema.php        — JSON-LD per card + thin-content noindex guard (anti-cannibalization)
  *   cards-render.php  — facts table + gallery + claim CTA + provenance on card views
- *   auction.php       — timed auctions: proxy bid, soft-close, custom bids table, REST
- * See skills/listings-auction-directory-architecture.md for the full design.
+ * Kill list executed v1.70.1 (owner-approved): auction, esign, homepage,
+ * project-page-assembly and project-3d removed; the pieces the live engine
+ * still needs moved to showroom-support.php.
  */
-foreach ( array( 'catalog-meta', 'claim', 'import', 'schema', 'cards-render', 'auction', 'listings-ux', 'avm-deals', 'saved-search', 'ai-provider', 'ai-features', 'city-hubs', 'media', 'compare', 'nearby-poi', 'esign', 'map', 'lead-drip', 'ops-dashboard', 'facets', 'breadcrumbs', 'autocomplete', 'tiers', 'glossary', 'glossary-autolink', 'homepage', 'directory', 'reviews', 'lead-ledger', 'ai-concierge', 'archive-grid', 'calculators', 'catalog-shine', 'conversion-cta', 'whatsapp-lead-ingestion', 'lead-routing', 'feature-flags', 'compounds', 'compound-map', 'project-3d', 'project-page-assembly', 'offers', 'lead-e2e', 'lead-inbox', 'preferred-partners', 'featured-upsell', 'sponsored-spot', 'pricing-schema', 'claim-prompt', 'ga4-events', 'sitemap-ping', 'social-proof', 'term-faq-schema', 'og-image', 'owner-config-rest', 'studio', 'studio-rest', 'profile-extras', 'advertiser-center', 'advertiser-orders', 'premium-ui', 'geo-search', 'roles', 'greeninvoice-recurring', 'placement-auction', 'admin-control', 'contextual-help', 'business-metrics', 'health', 'final-hardening', 'lead-ai-qualify', 'lead-nurture', 'showroom-engine', 'bulk-project-seo', 'loi-form', 'showroom-metabox', 'property-showroom', 'property-wizard', 'project-experience', 'professional-profile', 'interior-fp', 'home-v2', 'keys-hub', 'en-hub' ) as $nadlan_mod ) {
+foreach ( array( 'catalog-meta', 'claim', 'import', 'schema', 'cards-render', 'listings-ux', 'avm-deals', 'saved-search', 'ai-provider', 'ai-features', 'city-hubs', 'media', 'compare', 'nearby-poi', 'map', 'lead-drip', 'ops-dashboard', 'facets', 'breadcrumbs', 'autocomplete', 'tiers', 'glossary', 'glossary-autolink', 'directory', 'reviews', 'lead-ledger', 'ai-concierge', 'archive-grid', 'calculators', 'catalog-shine', 'conversion-cta', 'whatsapp-lead-ingestion', 'lead-routing', 'feature-flags', 'compounds', 'compound-map', 'showroom-support', 'offers', 'lead-e2e', 'lead-inbox', 'preferred-partners', 'featured-upsell', 'sponsored-spot', 'pricing-schema', 'claim-prompt', 'ga4-events', 'sitemap-ping', 'social-proof', 'term-faq-schema', 'og-image', 'owner-config-rest', 'studio', 'studio-rest', 'profile-extras', 'advertiser-center', 'advertiser-orders', 'premium-ui', 'geo-search', 'roles', 'greeninvoice-recurring', 'placement-auction', 'admin-control', 'contextual-help', 'business-metrics', 'health', 'final-hardening', 'lead-ai-qualify', 'lead-nurture', 'showroom-engine', 'bulk-project-seo', 'loi-form', 'showroom-metabox', 'property-showroom', 'property-wizard', 'project-experience', 'professional-profile', 'interior-fp', 'home-v2', 'keys-hub', 'en-hub' ) as $nadlan_mod ) {
 	$nadlan_mod_file = __DIR__ . '/inc/' . $nadlan_mod . '.php';
 	if ( file_exists( $nadlan_mod_file ) ) {
 		require_once $nadlan_mod_file;
@@ -77,7 +78,7 @@ if ( ! function_exists( 'nadlan_config_healthcheck_response' ) ) {
 	function nadlan_config_healthcheck_response() {
 		$out = array(
 			'plugin'              => 'nadlan-config',
-			'version'             => '1.70.0',
+			'version'             => '1.70.1',
 			'cpt_present'         => post_type_exists( 'nadlan_lead' ),
 			'lead_handler_loaded' => (bool) has_action( 'admin_post_nadlan_lead' ),
 			'php_version'         => PHP_VERSION,
@@ -85,8 +86,6 @@ if ( ! function_exists( 'nadlan_config_healthcheck_response' ) ) {
 			'catalog'             => nadlan_config_catalog_status(),
 			'directory'           => array(
 				'claim_cpt'        => post_type_exists( 'nadlan_claim' ),
-				'auction_cpt'      => post_type_exists( 'nadlan_auction' ),
-				'bids_table'       => get_option( 'nadlan_auction_db_version' ) === '1',
 				'import_offset_kab'=> (int) get_option( 'nadlan_import_offset_contractors', 0 ),
 				'ga4_hardcode'     => defined( 'NADLAN_GA4_HARDCODE' ) ? NADLAN_GA4_HARDCODE : null,
 			),
