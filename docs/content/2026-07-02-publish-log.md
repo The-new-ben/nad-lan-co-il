@@ -39,3 +39,10 @@ so the magazine band stays fresh (it collapses below 3 recent posts).
   Its dangling log commit was superseded by this entry.
 - Next queue: 4963 (transfer-money-to-israel-property) -> rest of EN cluster
   -> first Hebrew news batch into nadlan-news.
+
+## News pair published 2026-07-02 (Claude Code) - the 690K story
+| Post | URL | Lang | Words | Notes |
+|---|---|---|---|---|
+| 5030 | /3-room-apartment-690k-israel-2026/ | HE (nadlan-news) | 2,045 | 6 tables, NewsArticle+FAQ schema, 43 internal links, sourced Maariv/Ynet |
+| 5031 | /affordable-apartments-israel-2026/ | EN (english) | 2,153 | 5 tables, foreign-buyer angle, links into EN cluster (tax/mortgage/pillar) |
+Anti-cannibalization: HE targets "דירה ב-690 אלף שקל"/"דירות זולות בישראל" (distinct from the buyers-market piece); EN targets "affordable apartments in Israel" (distinct from the tax/mortgage/buying guides, which it links into). Both in the sitemap; HE feeds the homepage magazine band.
