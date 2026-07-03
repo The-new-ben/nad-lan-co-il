@@ -1,0 +1,190 @@
+{
+ "ashira": {
+  "slug": "ashira",
+  "floors": 35,
+  "floor_height_m": 3.05,
+  "height_m": 107,
+  "default_orbit": "-30deg 73deg 248m",
+  "default_target": "0m 52m 0m",
+  "frame_radius_m": 248,
+  "units": [
+   {
+    "id": "a1",
+    "label": "A-10",
+    "floor": 10,
+    "bearing": 270,
+    "hotspot_position": "-12.337 31.72 0",
+    "hotspot_normal": "-1 0 0",
+    "camera_orbit": "270deg 72deg 99m"
+   },
+   {
+    "id": "a2",
+    "label": "B-20",
+    "floor": 20,
+    "bearing": 225,
+    "hotspot_position": "-8.459 62.22 -8.459",
+    "hotspot_normal": "-0.707 0 -0.707",
+    "camera_orbit": "225deg 72deg 99m"
+   },
+   {
+    "id": "a3",
+    "label": "B-27",
+    "floor": 27,
+    "bearing": 270,
+    "hotspot_position": "-11.7 83.57 0",
+    "hotspot_normal": "-1 0 0",
+    "camera_orbit": "270deg 72deg 99m"
+   },
+   {
+    "id": "a4",
+    "label": "PH-33",
+    "floor": 33,
+    "bearing": 225,
+    "hotspot_position": "-8.114 101.87 -8.114",
+    "hotspot_normal": "-0.707 0 -0.707",
+    "camera_orbit": "225deg 72deg 99m"
+   }
+  ]
+ },
+ "rainbow": {
+  "slug": "rainbow",
+  "floors": 38,
+  "floor_height_m": 3.05,
+  "height_m": 116,
+  "default_orbit": "-30deg 73deg 269m",
+  "default_target": "0m 57m 0m",
+  "frame_radius_m": 269,
+  "units": [
+   {
+    "id": "r1",
+    "label": "ק8",
+    "floor": 8,
+    "bearing": 225,
+    "hotspot_position": "-8.728 25.62 -8.728",
+    "hotspot_normal": "-0.707 0 -0.707",
+    "camera_orbit": "225deg 72deg 108m"
+   },
+   {
+    "id": "r2",
+    "label": "ק16",
+    "floor": 16,
+    "bearing": 270,
+    "hotspot_position": "-11.931 50.02 0",
+    "hotspot_normal": "-1 0 0",
+    "camera_orbit": "270deg 72deg 108m"
+   },
+   {
+    "id": "r3",
+    "label": "ק24",
+    "floor": 24,
+    "bearing": 180,
+    "hotspot_position": "0 74.42 -11.52",
+    "hotspot_normal": "0 0 -1",
+    "camera_orbit": "180deg 72deg 108m"
+   },
+   {
+    "id": "r4",
+    "label": "ק31",
+    "floor": 31,
+    "bearing": 225,
+    "hotspot_position": "-7.891 95.77 -7.891",
+    "hotspot_normal": "-0.707 0 -0.707",
+    "camera_orbit": "225deg 72deg 108m"
+   },
+   {
+    "id": "r5",
+    "label": "ק36",
+    "floor": 36,
+    "bearing": 270,
+    "hotspot_position": "-10.903 111.02 0",
+    "hotspot_normal": "-1 0 0",
+    "camera_orbit": "270deg 72deg 108m"
+   }
+  ]
+ },
+ "dimri": {
+  "slug": "dimri",
+  "floors": 39,
+  "floor_height_m": 3.1,
+  "height_m": 121,
+  "default_orbit": "-30deg 73deg 281m",
+  "default_target": "0m 59m 0m",
+  "frame_radius_m": 281,
+  "units": [
+   {
+    "id": "d1",
+    "label": "A-12",
+    "floor": 12,
+    "bearing": 270,
+    "hotspot_position": "-14.297 38.44 0",
+    "hotspot_normal": "-1 0 0",
+    "camera_orbit": "270deg 72deg 112m"
+   },
+   {
+    "id": "d2",
+    "label": "B-24",
+    "floor": 24,
+    "bearing": 225,
+    "hotspot_position": "-9.853 75.64 -9.853",
+    "hotspot_normal": "-0.707 0 -0.707",
+    "camera_orbit": "225deg 72deg 112m"
+   },
+   {
+    "id": "d3",
+    "label": "B-30",
+    "floor": 30,
+    "bearing": 270,
+    "hotspot_position": "-13.752 94.24 0",
+    "hotspot_normal": "-1 0 0",
+    "camera_orbit": "270deg 72deg 112m"
+   },
+   {
+    "id": "d4",
+    "label": "PH-37",
+    "floor": 37,
+    "bearing": 225,
+    "hotspot_position": "-9.575 115.94 -9.575",
+    "hotspot_normal": "-0.707 0 -0.707",
+    "camera_orbit": "225deg 72deg 112m"
+   }
+  ]
+ },
+ "duo": {
+  "slug": "duo",
+  "floors": 54,
+  "floor_height_m": 3.2,
+  "height_m": 173,
+  "default_orbit": "-30deg 73deg 402m",
+  "default_target": "0m 85m 0m",
+  "frame_radius_m": 402,
+  "units": [
+   {
+    "id": "u1",
+    "label": "ק14",
+    "floor": 14,
+    "bearing": 270,
+    "hotspot_position": "-13.132 46.08 0",
+    "hotspot_normal": "-1 0 0",
+    "camera_orbit": "270deg 72deg 161m"
+   },
+   {
+    "id": "u2",
+    "label": "ק28",
+    "floor": 28,
+    "bearing": 225,
+    "hotspot_position": "-8.822 90.88 -8.822",
+    "hotspot_normal": "-0.707 0 -0.707",
+    "camera_orbit": "225deg 72deg 161m"
+   },
+   {
+    "id": "u3",
+    "label": "ק44",
+    "floor": 44,
+    "bearing": 270,
+    "hotspot_position": "-11.728 142.08 0",
+    "hotspot_normal": "-1 0 0",
+    "camera_orbit": "270deg 72deg 161m"
+   }
+  ]
+ }
+}

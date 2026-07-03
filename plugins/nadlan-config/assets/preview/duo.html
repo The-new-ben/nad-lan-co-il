@@ -1,0 +1,397 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>נדלן · עמוד פרויקט</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@500;700;900&family=Heebo:wght@300;400;500;700&display=swap" rel="stylesheet">
+<link href="https://api.mapbox.com/mapbox-gl-js/v3.6.0/mapbox-gl.css" rel="stylesheet">
+<script src="https://api.mapbox.com/mapbox-gl-js/v3.6.0/mapbox-gl.js"></script>
+<script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/4.3.1/model-viewer.min.js"></script>
+<style>
+:root{
+  --paper:#FAF7F1;--band:#F3EEE3;--ink:#1B1A17;--soft:#4A463E;--gold:#9C7A3C;--gold2:#B79A66;
+  --terra:#C2563A;--hair:#E2DCD0;--dark:#14130F;--card:#fff;
+  --ok:#5B7A52;--warn:#B08A3E;--sold:#9A5A4E;
+  --serif:"Frank Ruhl Libre",Georgia,serif;--sans:"Heebo","Segoe UI",system-ui,sans-serif;
+  --maxw:1160px;
+}
+*{box-sizing:border-box}html,body{margin:0}
+body{background:var(--paper);color:var(--ink);font-family:var(--sans);line-height:1.6;-webkit-font-smoothing:antialiased}
+h1,h2,h3{font-family:var(--serif);font-weight:700;line-height:1.14;margin:0;text-wrap:balance}
+p{margin:0}a{color:var(--terra);text-decoration:none}
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 22px}
+.eyebrow{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);font-weight:700}
+button{font-family:inherit;cursor:pointer}
+:focus-visible{outline:2px solid var(--terra);outline-offset:3px;border-radius:4px}
+
+/* top bar */
+.top{position:sticky;top:0;z-index:40;background:color-mix(in srgb,var(--paper) 88%,transparent);
+  backdrop-filter:blur(10px);border-bottom:1px solid var(--hair)}
+.top .wrap{display:flex;align-items:center;gap:16px;height:60px}
+.brand{font-family:var(--serif);font-weight:900;font-size:22px;letter-spacing:.02em}
+.spacer{flex:1}
+.langs{display:flex;gap:2px;background:var(--band);border-radius:999px;padding:3px}
+.langs button{border:0;background:transparent;color:var(--soft);font-size:13px;font-weight:600;
+  padding:5px 11px;border-radius:999px}
+.langs button.on{background:var(--card);color:var(--ink);box-shadow:0 1px 4px rgba(0,0,0,.08)}
+.cta{background:var(--terra);color:#fff;border:0;border-radius:999px;padding:10px 18px;font-weight:700;font-size:14px}
+.modbtn{border:1px solid var(--hair);background:var(--card);border-radius:999px;padding:8px 14px;font-weight:600;font-size:13px;color:var(--soft)}
+.modpop{position:absolute;inset-inline-end:22px;top:64px;background:var(--card);border:1px solid var(--hair);
+  border-radius:14px;box-shadow:0 20px 50px -20px rgba(0,0,0,.35);padding:14px;display:none;z-index:50;min-width:220px}
+.modpop.open{display:block}
+.modpop h4{margin:0 0 8px;font-family:var(--sans);font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--gold)}
+.modpop label{display:flex;align-items:center;gap:10px;padding:7px 6px;border-radius:8px;font-size:14px;cursor:pointer}
+.modpop label:hover{background:var(--band)}
+.modpop input{width:17px;height:17px;accent-color:var(--gold)}
+
+/* hero */
+.hero{background:linear-gradient(180deg,var(--band),var(--paper));border-bottom:1px solid var(--hair)}
+.hero .wrap{display:grid;grid-template-columns:1fr 1fr;gap:34px;padding:42px 22px 40px;align-items:center}
+.hero h1{font-size:clamp(28px,4.2vw,46px);letter-spacing:-.01em;margin:12px 0 0}
+.hero .lede{font-size:clamp(15px,1.9vw,18px);color:var(--soft);margin-top:16px;max-width:60ch}
+.facts{display:flex;gap:22px;flex-wrap:wrap;margin-top:22px}
+.facts .f{display:flex;flex-direction:column}
+.facts .n{font-family:var(--serif);font-weight:700;font-size:24px;color:var(--ink)}
+.facts .l{font-size:12px;color:var(--soft)}
+.fromprice{margin-top:22px;display:flex;align-items:baseline;gap:8px}
+.fromprice b{font-family:var(--serif);font-size:30px;color:var(--terra)}
+.fromprice .est{font-size:11px;color:var(--soft);border:1px solid var(--hair);border-radius:999px;padding:2px 8px}
+.hero-media{position:relative;aspect-ratio:1/1;border-radius:18px;overflow:hidden;background:#12110d;
+  box-shadow:0 30px 60px -30px rgba(20,19,15,.6)}
+model-viewer{width:100%;height:100%;--poster-color:transparent;background:radial-gradient(120% 100% at 50% 0,#232016,#12110d)}
+.badge{position:absolute;z-index:6;inset-block-start:12px;inset-inline-start:12px;background:rgba(20,19,15,.82);
+  color:#F1EADA;font-size:11px;font-weight:600;padding:6px 11px;border-radius:999px;max-width:70%}
+.badge.warnb{background:rgba(194,86,58,.92)}
+
+/* sections */
+section{padding:46px 0 0}
+.sec-h{display:flex;align-items:baseline;gap:12px;margin-bottom:18px;flex-wrap:wrap}
+.sec-h h2{font-size:clamp(22px,3vw,30px)}
+.sec-intro{color:var(--soft);max-width:64ch;margin-bottom:18px}
+.card{background:var(--card);border:1px solid var(--hair);border-radius:16px;box-shadow:0 1px 0 rgba(0,0,0,.03),0 16px 40px -28px rgba(0,0,0,.3)}
+
+/* choose apartment */
+.choose{display:grid;grid-template-columns:1.1fr .9fr;gap:22px;align-items:start}
+.stage{position:relative;aspect-ratio:4/5;border-radius:16px;overflow:hidden;background:#12110d}
+.floorrail{position:absolute;inset-block:8% 8%;inset-inline-end:10px;width:44px;z-index:7;display:flex;flex-direction:column-reverse;gap:0}
+.pin{position:absolute;inset-inline-end:14px;transform:translateY(50%);z-index:8}
+.pin button{width:30px;height:30px;border-radius:50%;border:2px solid #fff;font-size:11px;font-weight:700;color:#fff;
+  background:var(--ok);box-shadow:0 3px 10px rgba(0,0,0,.4);display:grid;place-items:center}
+.pin.reserved button{background:var(--warn)}.pin.sold button{background:var(--sold)}
+.pin.on button{transform:scale(1.25);outline:3px solid rgba(255,255,255,.5)}
+.mvhot{width:26px;height:26px;border-radius:50%;border:2px solid #fff;font-size:11px;font-weight:700;color:#fff;
+  background:var(--ok);box-shadow:0 3px 10px rgba(0,0,0,.5);cursor:pointer;display:grid;place-items:center;transition:transform .12s}
+.mvhot.reserved{background:var(--warn)}.mvhot.sold{background:var(--sold)}
+.mvhot:hover{transform:scale(1.18)}.mvhot.on{transform:scale(1.35);outline:3px solid rgba(255,255,255,.6)}
+.toggle{position:absolute;z-index:7;inset-block-start:12px;inset-inline-end:12px;display:flex;background:rgba(20,19,15,.7);border-radius:999px;padding:3px}
+.toggle button{border:0;background:transparent;color:#cdc5b4;font-size:12px;font-weight:700;padding:6px 12px;border-radius:999px}
+.toggle button.on{background:#fff;color:var(--ink)}
+.facade{position:absolute;inset:0;background-size:cover;background-position:center;display:none}
+.facade.on{display:block}
+.units{display:flex;flex-direction:column;gap:8px}
+.unit{display:grid;grid-template-columns:auto 1fr auto;gap:10px;align-items:center;padding:12px 14px;border:1px solid var(--hair);
+  border-radius:12px;background:var(--card);text-align:start;width:100%}
+.unit.on{border-color:var(--gold);box-shadow:0 0 0 2px color-mix(in srgb,var(--gold) 30%,transparent)}
+.unit .dot{width:10px;height:10px;border-radius:50%;background:var(--ok)}
+.unit.reserved .dot{background:var(--warn)}.unit.sold .dot{background:var(--sold)}
+.unit .meta{display:flex;flex-direction:column}
+.unit .t{font-weight:700;font-size:15px}
+.unit .s{font-size:12.5px;color:var(--soft)}
+.unit .p{font-family:var(--serif);font-weight:700;font-size:15px;color:var(--ink);white-space:nowrap}
+.panel{margin-top:14px;padding:16px;border-radius:14px;background:var(--band);border:1px solid var(--hair)}
+.panel .grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:12px}
+.panel .k{font-size:11px;color:var(--soft)}.panel .v{font-weight:700;font-family:var(--serif);font-size:18px}
+.panel .row{display:flex;gap:10px;flex-wrap:wrap}
+.chipbtn{border:1px solid var(--hair);background:var(--card);border-radius:10px;padding:9px 12px;font-weight:600;font-size:13px;color:var(--soft)}
+.panel .cta{padding:10px 16px}
+
+/* price & comps */
+.pricegrid{display:grid;grid-template-columns:1fr 1.3fr;gap:20px;align-items:start}
+.bigprice{padding:20px}
+.bigprice .n{font-family:var(--serif);font-size:34px;font-weight:700}
+.bigprice .src{font-size:12px;color:var(--soft);margin-top:10px;border-top:1px solid var(--hair);padding-top:10px}
+table{border-collapse:collapse;width:100%;font-size:14px}
+th,td{padding:11px 12px;border-bottom:1px solid var(--hair);text-align:start}
+th{font-size:12px;color:var(--soft);font-weight:700}
+td.num{font-variant-numeric:tabular-nums;font-weight:700}
+
+/* map */
+#map{height:460px;border-radius:16px;overflow:hidden;border:1px solid var(--hair)}
+.maplayers{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:14px}
+.maplayers button{border:1px solid var(--hair);background:var(--card);border-radius:999px;padding:8px 14px;font-weight:600;font-size:13px;color:var(--soft)}
+.maplayers button.on{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+.pricepin{background:var(--ink);color:var(--paper);font-weight:700;font-size:12px;padding:5px 9px;border-radius:999px;white-space:nowrap;box-shadow:0 3px 10px rgba(0,0,0,.3)}
+.pricepin.self{background:var(--terra)}
+
+/* buying */
+.buy3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.buycard{padding:18px}
+.buycard h3{font-size:17px;margin-bottom:8px}
+.mort .row{display:flex;justify-content:space-between;gap:10px;padding:6px 0;font-size:14px}
+.mort .row b{font-family:var(--serif)}
+.mort input[type=range]{width:100%;accent-color:var(--gold)}
+.steps{counter-reset:s;display:flex;flex-direction:column;gap:10px}
+.steps li{list-style:none;display:flex;gap:12px;font-size:14px;color:var(--soft)}
+.steps li::before{counter-increment:s;content:counter(s);flex:none;width:26px;height:26px;border-radius:50%;
+  background:var(--gold);color:#fff;display:grid;place-items:center;font-weight:700;font-family:var(--serif)}
+.pros{display:flex;flex-direction:column;gap:10px}
+.pro{display:flex;gap:10px;align-items:center;font-size:14px}
+.pro .av{width:34px;height:34px;border-radius:50%;background:var(--band);display:grid;place-items:center;font-weight:700;color:var(--gold);font-family:var(--serif)}
+
+/* faq / disclaimer / footer */
+.faq details{border-bottom:1px solid var(--hair);padding:14px 4px}
+.faq summary{font-weight:700;cursor:pointer;font-family:var(--serif);font-size:16px}
+.faq p{color:var(--soft);margin-top:8px}
+.disc{margin:40px 0 10px;padding:16px 18px;background:var(--band);border:1px solid var(--hair);border-radius:14px;color:var(--soft);font-size:12.5px}
+footer{padding:26px 0 60px;color:var(--soft);font-size:12.5px}
+@media(max-width:820px){.hero .wrap,.choose,.pricegrid{grid-template-columns:1fr}.buy3{grid-template-columns:1fr}.panel .grid{grid-template-columns:repeat(2,1fr)}}
+@media(prefers-reduced-motion:reduce){model-viewer{--poster-color:transparent}}
+</style>
+</head>
+<body>
+<div id="app"></div>
+<script>window.NLP={"slug": "duo-tel-aviv", "P": {"name_he": "DUO · מגדלי דואו תל אביב", "name_lat": "DUO Towers Tel Aviv", "dev": "אפריקה ישראל מגורים", "city": "תל אביב-יפו", "area": "מתחם סומייל · הקריה", "address": "מתחם סומייל, תל אביב-יפו", "floors": 54, "units_total": 668, "delivery": "2029", "lat": 32.0761, "lng": 34.7905, "coord_approx": true, "ppsqm": 82000, "ppsqm_src": "אומדן ראשוני לא מחייב לאזור סומייל/הקריה · טרם התקבלו נתוני יזם. יש לאמת.", "glb": "__GLB_URL__", "poster": "https://nad-lan.co.il/wp-content/uploads/2026/07/duo-tel-aviv-plate.webp", "default_model": true, "units": [{"id": "u1", "floor": 14, "rooms": 3, "sqm": 88, "dir": "מערב", "status": "available", "label": "קו 1, ק'14", "hotspot": "-13.132 46.08 0", "hnormal": "-1 0 0", "uorbit": "270deg 72deg 161m"}, {"id": "u2", "floor": 28, "rooms": 4, "sqm": 124, "dir": "דרום מערב", "status": "available", "label": "קו 2, ק'28", "hotspot": "-8.822 90.88 -8.822", "hnormal": "-0.707 0 -0.707", "uorbit": "225deg 72deg 161m"}, {"id": "u3", "floor": 44, "rooms": 5, "sqm": 172, "dir": "מערב", "status": "available", "label": "קו 3, ק'44", "hotspot": "-11.728 142.08 0", "hnormal": "-1 0 0", "uorbit": "270deg 72deg 161m"}], "comps": [], "units_generated": true, "orbit": "-30deg 70deg 328m", "target": "0m 72m 0m", "model_generic": true}, "UI": {"he": {"inquire": "מעניין אותי", "modules": "מודולים", "m_hero": "פתיח + תלת־ממד", "m_choose": "בחירת דירה", "m_price": "מחיר ושוק", "m_map": "מפה", "m_buy": "חוויית קנייה", "m_media": "מדיה", "m_area": "שכונה", "m_faq": "שאלות", "choose": "בוחרים את הדירה שלכם", "price": "מחיר מול השוק האמיתי", "mapt": "הכל על מפה אחת", "buy": "חוויית הקנייה", "media": "מדיה וגימור", "area": "השכונה", "faq": "שאלות ותשובות", "similar": "פרויקטים דומים", "floor": "קומה", "rooms": "חדרים", "sqm": "מ\"ר", "dir": "כיוון", "status": "סטטוס", "price_l": "מחיר", "est": "אומדן", "view": "מבט מהקומה", "plan": "תוכנית דירה", "st_available": "זמינה", "st_reserved": "בבדיקה", "st_sold": "נמכרה", "facade": "חזית", "model3d": "תלת־ממד", "ppsqm_l": "מחיר ממוצע למ\"ר", "area_deals": "עסקאות והשוואות באזור", "dist": "מרחק", "default_badge": "מודל ברירת מחדל · טרם התקבלו חומרים מהיזם", "est_badge": "אומדן להמחשה · לא מחיר יזם", "gen_badge": "דירות להמחשה · טרם התקבל מלאי מהיזם", "from_price": "החל מ־", "units_l": "דירות", "floors_l": "קומות", "delivery_l": "אכלוס", "dev_l": "יזם", "disc": "המידע, האומדנים וההדמיות נועדו להמחשה בלבד, אינם מחיר יזם או הצעה, ואינם מחייבים. יש לאמת כל פרט מול היזם.", "generic_badge": "מודל אדריכלי גנרי · להמחשה, לא התכנון הסופי", "price_of_apt": "מחיר הדירה", "eq_l": "הון עצמי", "loan_l": "הלוואה", "pay_l": "החזר חודשי משוער · 25 ש׳, 5%", "buy_mort_t": "אומדן משכנתא", "buy_steps_t": "שלבי הרכישה", "buy_pros_t": "בעלי מקצוע מאומתים", "step1": "בחירת דירה ובדיקת מחיר מול האזור", "step2": "בדיקת מסמכים: היתר, טאבו, מפרט", "step3": "ליווי עורך דין ושמאי", "step4": "אישור משכנתא ופנייה ליזם", "pro_law": "עורך/ת דין נדל״ן · מאומת", "pro_appr": "שמאי/ת מקרקעין · מאומת", "pro_mort": "יועץ/ת משכנתאות · מאומת", "map_streets": "רחובות", "map_sat": "לוויין", "map_prices": "מחירי אזור", "faq_q_delivery": "מתי האכלוס ומיהו היזם?", "render_alt": "הדמיה"}, "en": {"inquire": "I'm interested", "modules": "Modules", "m_hero": "Intro + 3D", "m_choose": "Choose apartment", "m_price": "Price & market", "m_map": "Map", "m_buy": "Buying", "m_media": "Media", "m_area": "Area", "m_faq": "FAQ", "choose": "Choose your apartment", "price": "Price vs. the real market", "mapt": "Everything on one map", "buy": "The buying experience", "media": "Media & finishes", "area": "The neighborhood", "faq": "Questions & answers", "similar": "Similar projects", "floor": "Floor", "rooms": "Rooms", "sqm": "m²", "dir": "Facing", "status": "Status", "price_l": "Price", "est": "Est.", "view": "View from floor", "plan": "Floor plan", "st_available": "Available", "st_reserved": "In review", "st_sold": "Sold", "facade": "Facade", "model3d": "3D", "ppsqm_l": "Avg price / m²", "area_deals": "Area deals & comparables", "dist": "Distance", "default_badge": "Default model · developer materials not yet received", "est_badge": "Illustrative estimate · not a developer price", "gen_badge": "Illustrative units · inventory not yet from developer", "from_price": "From", "units_l": "apartments", "floors_l": "floors", "delivery_l": "Delivery", "dev_l": "Developer", "disc": "Information, estimates and renderings are illustrative only, are not a developer price or offer, and are non-binding. Verify every detail with the developer.", "generic_badge": "Generic architectural model · illustrative, not final design", "price_of_apt": "Apartment price", "eq_l": "Equity", "loan_l": "Loan", "pay_l": "Est. monthly · 25 yrs, 5%", "buy_mort_t": "Mortgage estimate", "buy_steps_t": "Buying steps", "buy_pros_t": "Verified professionals", "step1": "Choose an apartment and check price vs. area", "step2": "Check documents: permit, title, spec", "step3": "Lawyer & appraiser guidance", "step4": "Mortgage approval and approach the developer", "pro_law": "Real-estate lawyer · verified", "pro_appr": "Property appraiser · verified", "pro_mort": "Mortgage advisor · verified", "map_streets": "Streets", "map_sat": "Satellite", "map_prices": "Area prices", "faq_q_delivery": "Delivery date and developer?", "render_alt": "rendering"}, "fr": {"inquire": "Ça m'intéresse", "modules": "Modules", "m_hero": "Intro + 3D", "m_choose": "Choisir l'appartement", "m_price": "Prix & marché", "m_map": "Carte", "m_buy": "Achat", "m_media": "Médias", "m_area": "Quartier", "m_faq": "FAQ", "choose": "Choisissez votre appartement", "price": "Prix face au marché réel", "mapt": "Tout sur une seule carte", "buy": "L'expérience d'achat", "media": "Médias & finitions", "area": "Le quartier", "faq": "Questions & réponses", "similar": "Projets similaires", "floor": "Étage", "rooms": "Pièces", "sqm": "m²", "dir": "Orientation", "status": "Statut", "price_l": "Prix", "est": "Est.", "view": "Vue de l'étage", "plan": "Plan", "st_available": "Disponible", "st_reserved": "En examen", "st_sold": "Vendu", "facade": "Façade", "model3d": "3D", "ppsqm_l": "Prix moyen / m²", "area_deals": "Transactions et comparables", "dist": "Distance", "default_badge": "Modèle par défaut · matériaux du promoteur non reçus", "est_badge": "Estimation illustrative · pas un prix promoteur", "gen_badge": "Appartements illustratifs · stock non reçu", "from_price": "À partir de", "units_l": "appartements", "floors_l": "étages", "delivery_l": "Livraison", "dev_l": "Promoteur", "disc": "Les informations, estimations et rendus sont illustratifs, ne constituent ni un prix ni une offre du promoteur, et sont non contractuels. Vérifiez chaque détail auprès du promoteur.", "generic_badge": "Modèle architectural générique · illustratif", "price_of_apt": "Prix de l'appartement", "eq_l": "Apport", "loan_l": "Prêt", "pay_l": "Mensualité est. · 25 ans, 5%", "buy_mort_t": "Estimation du prêt", "buy_steps_t": "Étapes d'achat", "buy_pros_t": "Professionnels vérifiés", "step1": "Choisir un appartement et vérifier le prix vs. le quartier", "step2": "Vérifier les documents : permis, titre, cahier des charges", "step3": "Accompagnement avocat & expert", "step4": "Accord de prêt et contact du promoteur", "pro_law": "Avocat immobilier · vérifié", "pro_appr": "Expert immobilier · vérifié", "pro_mort": "Conseiller en prêt · vérifié", "map_streets": "Rues", "map_sat": "Satellite", "map_prices": "Prix du quartier", "faq_q_delivery": "Date de livraison et promoteur ?", "render_alt": "rendu"}, "ru": {"inquire": "Мне интересно", "modules": "Модули", "m_hero": "Вступление + 3D", "m_choose": "Выбор квартиры", "m_price": "Цена и рынок", "m_map": "Карта", "m_buy": "Покупка", "m_media": "Медиа", "m_area": "Район", "m_faq": "Вопросы", "choose": "Выберите свою квартиру", "price": "Цена против реального рынка", "mapt": "Всё на одной карте", "buy": "Опыт покупки", "media": "Медиа и отделка", "area": "Район", "faq": "Вопросы и ответы", "similar": "Похожие проекты", "floor": "Этаж", "rooms": "Комнат", "sqm": "м²", "dir": "Ориентация", "status": "Статус", "price_l": "Цена", "est": "Оц.", "view": "Вид с этажа", "plan": "Планировка", "st_available": "Свободна", "st_reserved": "На проверке", "st_sold": "Продана", "facade": "Фасад", "model3d": "3D", "ppsqm_l": "Ср. цена / м²", "area_deals": "Сделки и аналоги района", "dist": "Расстояние", "default_badge": "Модель по умолчанию · материалы застройщика не получены", "est_badge": "Иллюстративная оценка · не цена застройщика", "gen_badge": "Иллюстративные квартиры · без данных застройщика", "from_price": "от", "units_l": "квартир", "floors_l": "этажей", "delivery_l": "Сдача", "dev_l": "Застройщик", "disc": "Информация, оценки и визуализации носят иллюстративный характер, не являются ценой или предложением застройщика и не обязывают. Проверяйте каждую деталь у застройщика.", "generic_badge": "Типовая арх. модель · иллюстрация, не финальный проект", "price_of_apt": "Цена квартиры", "eq_l": "Первый взнос", "loan_l": "Кредит", "pay_l": "Ежемес. оценка · 25 лет, 5%", "buy_mort_t": "Оценка ипотеки", "buy_steps_t": "Этапы покупки", "buy_pros_t": "Проверенные специалисты", "step1": "Выбрать квартиру и сверить цену с районом", "step2": "Проверить документы: разрешение, табу, спецификация", "step3": "Сопровождение юриста и оценщика", "step4": "Одобрение ипотеки и обращение к застройщику", "pro_law": "Юрист по недвижимости · проверен", "pro_appr": "Оценщик · проверен", "pro_mort": "Ипотечный консультант · проверен", "map_streets": "Улицы", "map_sat": "Спутник", "map_prices": "Цены района", "faq_q_delivery": "Срок сдачи и застройщик?", "render_alt": "визуализация"}, "ar": {"inquire": "يهمّني", "modules": "الوحدات", "m_hero": "مقدمة + ثلاثي الأبعاد", "m_choose": "اختر الشقة", "m_price": "السعر والسوق", "m_map": "الخريطة", "m_buy": "الشراء", "m_media": "الوسائط", "m_area": "الحي", "m_faq": "أسئلة", "choose": "اختر شقتك", "price": "السعر مقابل السوق الحقيقي", "mapt": "كل شيء على خريطة واحدة", "buy": "تجربة الشراء", "media": "الوسائط والتشطيبات", "area": "الحي", "faq": "أسئلة وأجوبة", "similar": "مشاريع مشابهة", "floor": "الطابق", "rooms": "غرف", "sqm": "م²", "dir": "الاتجاه", "status": "الحالة", "price_l": "السعر", "est": "تقدير", "view": "المنظر من الطابق", "plan": "مخطط الشقة", "st_available": "متاحة", "st_reserved": "قيد المراجعة", "st_sold": "مباعة", "facade": "الواجهة", "model3d": "ثلاثي الأبعاد", "ppsqm_l": "متوسط السعر / م²", "area_deals": "صفقات ومقارنات المنطقة", "dist": "المسافة", "default_badge": "نموذج افتراضي · لم تُستلم مواد المطور", "est_badge": "تقدير توضيحي · ليس سعر المطور", "gen_badge": "شقق توضيحية · لا مخزون من المطور بعد", "from_price": "ابتداءً من", "units_l": "شقة", "floors_l": "طوابق", "delivery_l": "التسليم", "dev_l": "المطور", "disc": "المعلومات والتقديرات والصور توضيحية فقط، وليست سعراً أو عرضاً من المطور، وغير مُلزمة. تحقق من كل تفصيل مع المطور.", "generic_badge": "نموذج معماري عام · توضيحي، ليس التصميم النهائي", "price_of_apt": "سعر الشقة", "eq_l": "رأس المال", "loan_l": "القرض", "pay_l": "قسط شهري تقديري · 25 سنة، 5%", "buy_mort_t": "تقدير الرهن", "buy_steps_t": "خطوات الشراء", "buy_pros_t": "مختصون موثّقون", "step1": "اختر شقة وتحقق من السعر مقابل المنطقة", "step2": "فحص المستندات: الترخيص، الطابو، المواصفات", "step3": "مرافقة محامٍ ومثمّن", "step4": "الموافقة على الرهن والتوجه إلى المطوّر", "pro_law": "محامي عقارات · موثّق", "pro_appr": "مثمّن عقاري · موثّق", "pro_mort": "مستشار رهن · موثّق", "map_streets": "شوارع", "map_sat": "قمر صناعي", "map_prices": "أسعار المنطقة", "faq_q_delivery": "موعد التسليم والمطوّر؟", "render_alt": "محاكاة"}}, "A": {"he": {"lede": "DUO הוא מגדל מגורים בן 54 קומות במתחם סומייל · הקריה — 668 דירות שנבנות עכשיו. במקום לדמיין, בוחרים כאן דירה מתוך הבניין עצמו: קומה, כיוון, נוף ומחיר — לפני שפונים ליזם.", "choose": "סובבו את הבניין, בחרו קומה וכיוון, וראו מה מקבלים בכל דירה. הבחירה מסונכרנת בין המודל לטבלת הדירות.", "price": "כמה זה באמת שווה. האומדן לכל דירה מוצג מול מחירי האזור — ביושר, עם מקור ותאריך, ולא כמחיר יזם.", "mapt": "מפה אחת עם כל מה שחשוב סביב DUO: מחירי אזור, תחבורה, חינוך, מסחר ותוכניות עתידיות.", "buy": "ממחשבון המשכנתא על הדירה שבחרתם, דרך שלבי הרכישה ועד עורך דין, שמאי ויועץ משכנתא מאומתים — הכול במקום אחד."}, "en": {"lede": "DUO Towers Tel Aviv is a 54-storey residential tower in מתחם סומייל · הקריה — 668 apartments now under construction. Instead of imagining, here you choose an apartment from inside the building itself: floor, exposure, view and price — before you approach the developer.", "choose": "Rotate the building, pick a floor and exposure, and see exactly what each apartment offers. Selection stays in sync between the model and the units table.", "price": "What it's really worth. Each apartment's estimate is shown against area prices — honestly, with source and date, and never as a developer price.", "mapt": "One map with everything that matters around DUO Towers Tel Aviv: area prices, transit, schools, retail and future plans.", "buy": "From a mortgage calculator on your chosen apartment, through the buying steps, to a verified lawyer, appraiser and mortgage advisor — all in one place."}, "fr": {"lede": "DUO Towers Tel Aviv est une tour résidentielle de 54 étages à מתחם סומייל · הקריה — 668 appartements en construction. Au lieu d'imaginer, choisissez ici un appartement depuis le bâtiment lui-même : étage, orientation, vue et prix — avant de contacter le promoteur.", "choose": "Faites pivoter le bâtiment, choisissez un étage et une orientation, et voyez ce qu'offre chaque appartement. La sélection reste synchronisée entre le modèle et le tableau.", "price": "Sa vraie valeur. L'estimation de chaque appartement est comparée aux prix du quartier — honnêtement, avec source et date, jamais comme un prix promoteur.", "mapt": "Une seule carte avec tout ce qui compte autour de DUO Towers Tel Aviv : prix du quartier, transports, écoles, commerces et projets futurs.", "buy": "D'un calculateur de prêt sur l'appartement choisi, aux étapes d'achat, jusqu'à un avocat, un expert et un conseiller en prêt vérifiés — au même endroit."}, "ru": {"lede": "DUO Towers Tel Aviv — жилая башня в 54 этажей в районе מתחם סומייל · הקריה: 668 квартир, которые строятся сейчас. Вместо того чтобы воображать, здесь вы выбираете квартиру прямо из здания: этаж, ориентацию, вид и цену — до обращения к застройщику.", "choose": "Поворачивайте здание, выбирайте этаж и ориентацию и смотрите, что даёт каждая квартира. Выбор синхронизирован между моделью и таблицей квартир.", "price": "Сколько это реально стоит. Оценка каждой квартиры показана рядом с ценами района — честно, с источником и датой, и никогда как цена застройщика.", "mapt": "Одна карта со всем важным вокруг DUO Towers Tel Aviv: цены района, транспорт, школы, торговля и планы развития.", "buy": "От ипотечного калькулятора на выбранной квартире, через этапы покупки, до проверенных юриста, оценщика и ипотечного консультанта — в одном месте."}, "ar": {"lede": "DUO Towers Tel Aviv برج سكني من 54 طابقاً في מתחם סומייל · הקריה — 668 شقة قيد الإنشاء الآن. بدلاً من التخيّل، اختر هنا شقة من داخل المبنى نفسه: الطابق والاتجاه والإطلالة والسعر — قبل التوجه إلى المطوّر.", "choose": "أدر المبنى، اختر طابقاً واتجاهاً، وشاهد ما تقدّمه كل شقة. يبقى الاختيار متزامناً بين النموذج وجدول الشقق.", "price": "قيمتها الحقيقية. يُعرض تقدير كل شقة مقابل أسعار المنطقة — بصدق، مع المصدر والتاريخ، وليس كسعر من المطوّر.", "mapt": "خريطة واحدة تضم كل ما يهم حول DUO Towers Tel Aviv: أسعار المنطقة والمواصلات والمدارس والتجارة والمخططات المستقبلية.", "buy": "من حاسبة الرهن على الشقة المختارة، مروراً بخطوات الشراء، وصولاً إلى محامٍ ومثمّن ومستشار رهن موثّقين — كل ذلك في مكان واحد."}}, "LANGS": ["he", "en", "fr", "ru", "ar"], "LANG_NAMES": {"he": "עברית", "en": "English", "fr": "Français", "ru": "Русский", "ar": "العربية"}, "RTL": ["he", "ar"], "TOKEN": "__MAPBOX_TOKEN__"};</script>
+<script>
+const D=window.NLP,P=D.P; let LANG="he", U=D.UI[LANG], AR=D.A[LANG], sel=null, mv=null, map=null;
+const rtl=s=>D.RTL.includes(s);
+const nf=n=>new Intl.NumberFormat('he-IL').format(Math.round(n));
+const est=u=>Math.round(u.sqm*P.ppsqm/10000)*10000; // sqm*ppsqm, rounded — labeled estimate
+function statusClass(s){return s;}
+function statusLabel(s){return U['st_'+s]||s;}
+
+const MODULES=[["hero","m_hero"],["choose","m_choose"],["price","m_price"],["map","m_map"],["buy","m_buy"],["media","m_media"],["area","m_area"],["faq","m_faq"]];
+let ON={hero:1,choose:1,price:1,map:1,buy:1,media:1,area:1,faq:1};
+
+function h(t){const d=document.createElement('div');d.innerHTML=t.trim();return d.firstChild;}
+
+function build(){
+  U=D.UI[LANG];AR=D.A[LANG];
+  document.documentElement.lang=LANG;document.documentElement.dir=rtl(LANG)?'rtl':'ltr';
+  const badge = `<span class="badge">${U.generic_badge}</span>`+(P.default_model?`<span class="badge warnb" style="inset-block-start:46px">${U.default_badge}</span>`:'');
+  const hotspots = P.units.filter(u=>u.hotspot).map(u=>`<button slot="hotspot-${u.id}" data-position="${u.hotspot}" data-normal="${u.hnormal}" class="mvhot ${u.status}" data-id="${u.id}" title="${U.floor} ${u.floor}">${u.floor}</button>`).join('');
+  const genbadge = P.units_generated? `<div class="badge warnb" style="position:static;display:inline-block;margin-bottom:10px">${U.gen_badge}</div>`:'';
+  const app=document.getElementById('app');
+  app.innerHTML=`
+  <div class="top"><div class="wrap">
+    <span class="brand">נדלן</span>
+    <div class="langs" id="langs"></div>
+    <span class="spacer"></span>
+    <button class="modbtn" id="modbtn">▦ ${U.modules}</button>
+    <button class="cta">${U.inquire}</button>
+  </div>
+  <div class="modpop" id="modpop"><h4>${U.modules}</h4><div id="modlist"></div></div>
+  </div>
+
+  <section class="hero" data-m="hero"><div class="wrap">
+    <div>
+      <span class="eyebrow">${esc(P.area)}</span>
+      <h1>${esc(P.name_he)}</h1>
+      <p class="lede">${esc(AR.lede)}</p>
+      <div class="facts">
+        <div class="f"><span class="n">${P.floors}</span><span class="l">${U.floors_l}</span></div>
+        <div class="f"><span class="n">${nf(P.units_total)}</span><span class="l">${U.units_l}</span></div>
+        <div class="f"><span class="n">${esc(P.delivery)}</span><span class="l">${U.delivery_l}</span></div>
+        <div class="f"><span class="n" style="font-size:16px">${esc(P.dev)}</span><span class="l">${U.dev_l}</span></div>
+      </div>
+      <div class="fromprice"><span>${U.from_price}</span><b id="fromp"></b><span class="est">${U.est_badge}</span></div>
+    </div>
+    <div class="hero-media">${badge}
+      <model-viewer id="mv" src="${esc(P.glb)}" poster="${esc(P.poster)}" reveal="auto" camera-controls
+        auto-rotate auto-rotate-delay="900" rotation-per-second="9deg" interaction-prompt="none" ar="false"
+        environment-image="neutral" exposure="1.06" shadow-intensity="0.7" shadow-softness="1" touch-action="pan-y"
+        camera-orbit="${esc(P.orbit)}" camera-target="${esc(P.target)}"></model-viewer>
+    </div>
+  </div></section>
+
+  <section class="wrap" data-m="choose">
+    <div class="sec-h"><span class="eyebrow">01</span><h2>${U.choose}</h2></div>
+    <p class="sec-intro">${esc(AR.choose)}</p>
+    ${genbadge}
+    <div class="choose">
+      <div class="stage" id="stage">
+        <div class="toggle"><button class="on" data-view="3d">${U.model3d}</button><button data-view="facade">${U.facade}</button></div>
+        <div class="facade" id="facade" style="background-image:url('${esc(P.poster)}')"></div>
+        <model-viewer id="mv2" src="${esc(P.glb)}" poster="${esc(P.poster)}" reveal="auto" camera-controls auto-rotate
+          auto-rotate-delay="1400" rotation-per-second="8deg" interaction-prompt="none" ar="false" environment-image="neutral"
+          exposure="1.06" shadow-intensity="0.7" shadow-softness="1" style="width:100%;height:100%"
+          camera-orbit="${esc(P.orbit)}" camera-target="${esc(P.target)}">${hotspots}</model-viewer>
+      </div>
+      <div>
+        <div class="units" id="units"></div>
+        <div class="panel" id="panel" hidden></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="wrap" data-m="price">
+    <div class="sec-h"><span class="eyebrow">02</span><h2>${U.price}</h2></div>
+    <p class="sec-intro">${esc(AR.price)}</p>
+    <div class="pricegrid">
+      <div class="card bigprice">
+        <div class="k">${U.ppsqm_l}</div><div class="n">${nf(P.ppsqm)} ₪</div>
+        <div class="src">${esc(P.ppsqm_src)}</div>
+      </div>
+      <div class="card" style="padding:6px 6px 2px">
+        <table><thead><tr><th>${U.area_deals}</th><th>${U.ppsqm_l}</th><th>${U.dist}</th></tr></thead>
+        <tbody>${(P.comps||[]).map(c=>`<tr><td>${esc(c.name)}</td><td class="num">${nf(c.ppsqm)} ₪</td><td class="num">${nf(c.dist_m)} מ׳</td></tr>`).join('')||`<tr><td colspan="3" style="color:var(--soft)">${U.est_badge}</td></tr>`}</tbody></table>
+      </div>
+    </div>
+  </section>
+
+  <section class="wrap" data-m="map">
+    <div class="sec-h"><span class="eyebrow">03</span><h2>${U.mapt}</h2></div>
+    <p class="sec-intro">${esc(AR.mapt)}</p>
+    <div class="maplayers" id="maplayers">
+      <button class="on" data-s="streets">${U.map_streets}</button>
+      <button data-s="satellite">${U.map_sat}</button>
+      <button data-s="prices">${U.map_prices}</button>
+    </div>
+    <div id="map"></div>
+  </section>
+
+  <section class="wrap" data-m="buy">
+    <div class="sec-h"><span class="eyebrow">04</span><h2>${U.buy}</h2></div>
+    <p class="sec-intro">${esc(AR.buy)}</p>
+    <div class="buy3">
+      <div class="card buycard mort">
+        <h3>${U.buy_mort_t}</h3>
+        <div class="row"><span>${U.price_of_apt}</span><b id="m_price">—</b></div>
+        <label style="font-size:12px;color:var(--soft)">${U.eq_l} <span id="m_eqp">30%</span>
+          <input type="range" id="m_eq" min="25" max="70" value="30"></label>
+        <div class="row"><span>${U.loan_l}</span><b id="m_loan">—</b></div>
+        <div class="row"><span>${U.pay_l}</span><b id="m_pay">—</b></div>
+      </div>
+      <div class="card buycard"><h3>${U.buy_steps_t}</h3>
+        <ol class="steps"><li>${esc(U.step1)}</li><li>${esc(U.step2)}</li><li>${esc(U.step3)}</li><li>${esc(U.step4)}</li></ol>
+      </div>
+      <div class="card buycard"><h3>${U.buy_pros_t}</h3>
+        <div class="pros">
+          <div class="pro"><span class="av">1</span><span>${esc(U.pro_law)}</span></div>
+          <div class="pro"><span class="av">2</span><span>${esc(U.pro_appr)}</span></div>
+          <div class="pro"><span class="av">3</span><span>${esc(U.pro_mort)}</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="wrap" data-m="media">
+    <div class="sec-h"><span class="eyebrow">05</span><h2>${U.media}</h2></div>
+    <div class="card" style="padding:0;overflow:hidden"><img src="${esc(P.poster)}" alt="${esc(P.name_lat)} — ${U.render_alt}" style="width:100%;display:block"></div>
+  </section>
+
+  <section class="wrap" data-m="area">
+    <div class="sec-h"><span class="eyebrow">06</span><h2>${U.area}</h2></div>
+    <p class="sec-intro">${esc(P.address)} · ${esc(P.city)}</p>
+  </section>
+
+  <section class="wrap faq" data-m="faq">
+    <div class="sec-h"><span class="eyebrow">07</span><h2>${U.faq}</h2></div>
+    <details><summary>${esc(P.name_lat)} — ${U.est} ${U.ppsqm_l}?</summary><p>${nf(P.ppsqm)} ₪ · ${esc(P.ppsqm_src)}</p></details>
+    <details><summary>${esc(U.faq_q_delivery)}</summary><p>${esc(P.delivery)} · ${esc(P.dev)}</p></details>
+  </section>
+
+  <div class="wrap"><div class="disc">${U.disc}</div></div>
+  <footer class="wrap">נדלן · ${esc(P.name_lat)} · תבנית מודולרית · he/en/fr/ru/ar</footer>
+  `;
+  renderLangs();renderMods();renderUnits();wire();initMap();
+  document.getElementById('fromp').textContent = nf(Math.min(...P.units.map(est)))+' ₪';
+  applyMods();
+}
+
+function renderLangs(){
+  const c=document.getElementById('langs');c.innerHTML='';
+  D.LANGS.forEach(l=>{const b=document.createElement('button');b.textContent=D.LANG_NAMES[l];
+    b.className=l===LANG?'on':'';b.onclick=()=>{LANG=l;const s=window.scrollY;build();window.scrollTo(0,s);};c.appendChild(b);});
+}
+function renderMods(){
+  const c=document.getElementById('modlist');c.innerHTML='';
+  MODULES.forEach(([k,lbl])=>{const id='mod_'+k;
+    c.insertAdjacentHTML('beforeend',`<label><input type="checkbox" id="${id}" ${ON[k]?'checked':''}><span>${U[lbl]}</span></label>`);
+    setTimeout(()=>{const el=document.getElementById(id);if(el)el.onchange=e=>{ON[k]=e.target.checked?1:0;applyMods();};});
+  });
+}
+function applyMods(){MODULES.forEach(([k])=>{const s=document.querySelector(`[data-m="${k}"]`);if(s)s.style.display=ON[k]?'':'none';});}
+function renderUnits(){
+  const c=document.getElementById('units');c.innerHTML='';
+  P.units.forEach(u=>{const el=document.createElement('button');el.className='unit '+statusClass(u.status);el.dataset.id=u.id;
+    el.innerHTML=`<span class="dot"></span><span class="meta"><span class="t">${U.rooms} ${u.rooms} · ${U.floor} ${u.floor}</span>
+      <span class="s">${u.sqm} ${U.sqm} · ${esc(u.dir)} · ${statusLabel(u.status)}</span></span>
+      <span class="p">${nf(est(u))} ₪</span>`;
+    el.onclick=()=>select(u.id);c.appendChild(el);});
+}
+function renderPins(){
+  const c=document.getElementById('pins');c.innerHTML='';
+  const top=P.floors||40;
+  P.units.forEach(u=>{const frac=Math.min(.92,Math.max(.06,u.floor/top));
+    const p=document.createElement('div');p.className='pin '+statusClass(u.status);p.dataset.id=u.id;
+    p.style.insetBlockEnd=(6+frac*80)+'%';
+    p.innerHTML=`<button title="${U.floor} ${u.floor}">${u.floor}</button>`;
+    p.querySelector('button').onclick=()=>select(u.id);c.appendChild(p);});
+}
+function select(id){sel=id;const u=P.units.find(x=>x.id===id);
+  document.querySelectorAll('.unit').forEach(e=>e.classList.toggle('on',e.dataset.id===id));
+  document.querySelectorAll('.mvhot').forEach(e=>e.classList.toggle('on',e.dataset.id===id));
+  if(u.uorbit){const m2=document.getElementById('mv2');if(m2){m2.autoRotate=false;m2.cameraOrbit=u.uorbit;}}
+  const pn=document.getElementById('panel');pn.hidden=false;
+  pn.innerHTML=`<div class="grid">
+    <div><div class="k">${U.floor}</div><div class="v">${u.floor}</div></div>
+    <div><div class="k">${U.rooms}</div><div class="v">${u.rooms}</div></div>
+    <div><div class="k">${U.sqm}</div><div class="v">${u.sqm}</div></div>
+    <div><div class="k">${U.price_l} (${U.est})</div><div class="v" style="color:var(--terra)">${nf(est(u))} ₪</div></div>
+    </div>
+    <div class="row"><span class="chipbtn">${U.dir}: ${esc(u.dir)}</span><span class="chipbtn">${U.view}</span><span class="chipbtn">${U.plan}</span>
+      <button class="cta">${U.inquire} · ${esc(u.label||u.id)}</button></div>`;
+  const m=document.getElementById('m_price');if(m){m.textContent=nf(est(u))+' ₪';recalcMort();}
+}
+function wire(){
+  const mb=document.getElementById('modbtn'),mp=document.getElementById('modpop');
+  mb.onclick=()=>mp.classList.toggle('open');
+  document.addEventListener('click',e=>{if(!e.target.closest('#modpop')&&!e.target.closest('#modbtn'))mp.classList.remove('open');});
+  document.querySelectorAll('.toggle button').forEach(b=>b.onclick=()=>{
+    document.querySelectorAll('.toggle button').forEach(x=>x.classList.toggle('on',x===b));
+    document.getElementById('facade').classList.toggle('on',b.dataset.view==='facade');
+    document.getElementById('mv2').style.visibility=b.dataset.view==='facade'?'hidden':'visible';
+  });
+  const eq=document.getElementById('m_eq');if(eq)eq.oninput=recalcMort;
+  document.querySelectorAll('.mvhot').forEach(b=>b.addEventListener('click',()=>select(b.dataset.id)));
+}
+function recalcMort(){const u=P.units.find(x=>x.id===sel);if(!u)return;const price=est(u);
+  const eq=+document.getElementById('m_eq').value;document.getElementById('m_eqp').textContent=eq+'%';
+  const loan=price*(1-eq/100);const r=0.05/12,n=300;const pay=loan*r/(1-Math.pow(1+r,-n));
+  document.getElementById('m_loan').textContent=nf(loan)+' ₪';
+  document.getElementById('m_pay').textContent=nf(pay)+' ₪';
+}
+function initMap(){
+  if(!window.mapboxgl){return;}
+  mapboxgl.accessToken=D.TOKEN;
+  map=new mapboxgl.Map({container:'map',style:'mapbox://styles/mapbox/light-v11',
+    center:[P.lng,P.lat],zoom:14.3,pitch:45,bearing:-15,cooperativeGestures:true});
+  map.addControl(new mapboxgl.NavigationControl(),'top-left');
+  map.on('load',()=>{
+    // 3D buildings
+    const layers=map.getStyle().layers;const lbl=layers.find(l=>l.type==='symbol'&&l.layout&&l.layout['text-field']);
+    map.addLayer({id:'3db',source:'composite','source-layer':'building',type:'fill-extrusion',minzoom:13,
+      paint:{'fill-extrusion-color':'#d8cfbe','fill-extrusion-height':['get','height'],'fill-extrusion-opacity':.6}},lbl&&lbl.id);
+    // self marker
+    const selfEl=document.createElement('div');selfEl.className='pricepin self';selfEl.textContent=nf(P.ppsqm)+' ₪/מ׳';
+    new mapboxgl.Marker(selfEl).setLngLat([P.lng,P.lat]).setPopup(new mapboxgl.Popup().setText(P.name_lat)).addTo(map);
+    // comps (real, relative offsets by distance)
+    (P.comps||[]).forEach((c,i)=>{const ang=(i*137)*Math.PI/180,d=(c.dist_m||300)/111320;
+      const el=document.createElement('div');el.className='pricepin';el.textContent=nf(c.ppsqm)+' ₪';
+      new mapboxgl.Marker(el).setLngLat([P.lng+Math.cos(ang)*d/Math.cos(P.lat*Math.PI/180),P.lat+Math.sin(ang)*d])
+        .setPopup(new mapboxgl.Popup().setText(c.name)).addTo(map);});
+  });
+  document.querySelectorAll('#maplayers button').forEach(b=>b.onclick=()=>{
+    document.querySelectorAll('#maplayers button').forEach(x=>x.classList.toggle('on',x===b));
+    const s=b.dataset.s;if(s==='satellite')map.setStyle('mapbox://styles/mapbox/satellite-streets-v12');
+    else map.setStyle('mapbox://styles/mapbox/light-v11');
+  });
+}
+function esc(s){return (s==null?'':String(s)).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));}
+build();
+</script>
+</body>
+</html>

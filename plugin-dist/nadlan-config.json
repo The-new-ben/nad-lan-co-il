@@ -1,15 +1,15 @@
 {
   "name": "NadLan Config",
   "slug": "nadlan-config",
-  "version": "1.70.1",
+  "version": "1.70.2",
   "author": "nad-lan.co.il",
   "homepage": "https://nad-lan.co.il",
   "requires": "6.7",
   "tested": "7.0",
   "requires_php": "7.4",
-  "download_url": "https://raw.githubusercontent.com/The-new-ben/nad-lan-co-il/main/plugin-dist/nadlan-config-1.70.1.zip",
-  "last_updated": "2026-07-03 11:00:00",
+  "download_url": "https://raw.githubusercontent.com/The-new-ben/nad-lan-co-il/main/plugin-dist/nadlan-config-1.70.2.zip",
+  "last_updated": "2026-07-03 19:00:00",
   "sections": {
-    "changelog": "<h4>1.70.1</h4><ul><li>Kill list executed: auction, esign, legacy homepage, project-page-assembly and the old project-3d showroom removed (~5,600 lines). Engine dependencies preserved in showroom-support.php (module-type filter, meta registration, authoring metabox, payload API).</li></ul>"
+    "changelog": "<h4>1.70.2</h4><ul><li>Project-page PREVIEW: REST-served, iframe-embedded modular project design (DUO) — proof the new page runs in WordPress. Shortcode [nadlan_project_preview slug=\"duo\"].</li></ul>"
   }
 }
