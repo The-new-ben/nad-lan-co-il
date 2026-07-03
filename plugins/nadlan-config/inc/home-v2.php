@@ -41,6 +41,8 @@ if ( ! function_exists( 'nadlan_mapbox_token' ) ) {
 add_action( 'rest_api_init', function () {
 	register_setting( 'general', 'nadlan_mapbox_token', array( 'type' => 'string', 'sanitize_callback' => 'sanitize_text_field', 'default' => '', 'show_in_rest' => true ) );
 	register_setting( 'general', 'nadlan_home_video_url', array( 'type' => 'string', 'sanitize_callback' => 'esc_url_raw', 'default' => '', 'show_in_rest' => true ) );
+	register_setting( 'general', 'nadlan_home_video_webm', array( 'type' => 'string', 'sanitize_callback' => 'esc_url_raw', 'default' => '', 'show_in_rest' => true ) );
+	register_setting( 'general', 'nadlan_home_video_poster', array( 'type' => 'string', 'sanitize_callback' => 'esc_url_raw', 'default' => '', 'show_in_rest' => true ) );
 } );
 
 add_action( 'admin_init', function () {
@@ -271,11 +273,13 @@ if ( ! function_exists( 'nadlan_hv2_band_hero' ) ) {
 		// after page load so LCP is untouched. The Ashira card left the hero -
 		// it was a duplicate of the projects band below. Flag card = fallback
 		// only when no video is configured.
-		$vurl = trim( (string) get_option( 'nadlan_home_video_url', '' ) );
-		if ( $vurl && preg_match( '~\.(mp4|webm)(\?|$)~i', $vurl ) ) : ?>
+		$vurl    = trim( (string) get_option( 'nadlan_home_video_url', '' ) );
+		$vwebm   = trim( (string) get_option( 'nadlan_home_video_webm', '' ) );
+		$vposter = trim( (string) get_option( 'nadlan_home_video_poster', '' ) );
+		if ( ( $vurl || $vwebm ) && preg_match( '~\.(mp4|webm)(\?|$)~i', $vurl . ' ' . $vwebm ) ) : ?>
 		<div class="nlhv2-hero-flag nlhv2-hero-video" aria-label="נדלן - סרטון היכרות">
 			<span class="nlhv2-hv-brand" aria-hidden="true">נדלן</span>
-			<video id="nlhv2-hv" muted autoplay loop playsinline preload="none" data-src="<?php echo esc_url( $vurl ); ?>"></video>
+			<video id="nlhv2-hv" muted autoplay loop playsinline preload="none"<?php echo $vposter ? ' poster="' . esc_url( $vposter ) . '"' : ''; ?> data-webm="<?php echo esc_url( $vwebm ); ?>" data-src="<?php echo esc_url( $vurl ); ?>"></video>
 		</div>
 		<?php elseif ( $flag ) : $fimg = nadlan_hv2_img( $flag->ID ); ?>
 		<a class="nlhv2-hero-flag" href="<?php echo esc_url( get_permalink( $flag ) ); ?>">
@@ -659,8 +663,7 @@ if ( ! function_exists( 'nadlan_hv2_assets' ) ) {
 .nlhv2-hero-flag-cap b{font-family:var(--font-serif,serif);font-size:1.1rem}
 .nlhv2-hero-flag-cap span{font-size:12.5px;color:var(--warm)}
 .nlhv2-hero-video{position:relative;aspect-ratio:16/11;background:linear-gradient(160deg,#211F19,var(--dark));display:block}
-.nlhv2-hero-video video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;opacity:0;transition:opacity .8s ease}
-.nlhv2-hero-video video.is-on{opacity:1}
+.nlhv2-hero-video video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;opacity:1}
 .nlhv2-hv-brand{position:absolute;inset:0;display:grid;place-items:center;font-family:var(--font-serif,"Frank Ruhl Libre",serif);font-size:2.2rem;color:#E6D4AE;letter-spacing:.06em}
 .nlhv2-band{padding:30px 0;border-top:1px solid var(--line)}
 .nlhv2-alt{background:linear-gradient(180deg,#FAF8F3,transparent)}
@@ -765,15 +768,19 @@ if ( ! function_exists( 'nadlan_hv2_assets' ) ) {
 	// reduced-motion (they keep the elegant dark brand card). If autoplay is
 	// still blocked, the first tap/click anywhere retries playback.
 	var hv=document.getElementById("nlhv2-hv");
-	if(hv&&hv.dataset.src){
+	if(hv&&(hv.dataset.src||hv.dataset.webm)){
 		var c=navigator.connection||{};
 		var skip=(c.saveData===true)||/(^|\b)2g/.test(c.effectiveType||"")||(window.matchMedia&&matchMedia("(prefers-reduced-motion: reduce)").matches);
+		// The poster (set on the element) always shows, so even when we skip
+		// loading, the hero is a real frame, never a black void or bare card.
 		if(!skip){
 			var hvPlay=function(){hv.muted=true;var p=hv.play();if(p&&p.catch){p.catch(function(){})}};
 			var hvStarted=false;
 			var hvGo=function(){
 				if(hvStarted){return}hvStarted=true;
-				hv.src=hv.dataset.src;hv.load();
+				if(hv.dataset.webm){var sw=document.createElement("source");sw.src=hv.dataset.webm;sw.type="video/webm";hv.appendChild(sw);}
+				if(hv.dataset.src){var sm=document.createElement("source");sm.src=hv.dataset.src;sm.type="video/mp4";hv.appendChild(sm);}
+				hv.load();
 				hv.addEventListener("canplay",function(){hv.classList.add("is-on");hvPlay()},{once:true});
 				var kick=function(){if(hv.paused){hvPlay()}document.removeEventListener("pointerdown",kick);document.removeEventListener("touchstart",kick)};
 				document.addEventListener("pointerdown",kick,{once:true});
