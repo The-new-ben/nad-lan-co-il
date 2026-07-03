@@ -1,0 +1,295 @@
+<style>
+  :root{
+    --paper:#FAF7F1; --band:#F3EEE3; --ink:#1B1A17; --ink-soft:#4A463E;
+    --gold:#9C7A3C; --gold-soft:#B79A66; --terra:#C2563A; --hair:#E2DCD0;
+    --dark:#14130F; --card:#FFFFFF; --shadow:0 1px 0 rgba(27,26,23,.04),0 12px 34px -20px rgba(27,26,23,.28);
+    --ok:#5B7A52; --part:#B08A3E; --no:#B9B2A4;
+    --serif:"Frank Ruhl Libre","Amiri",Georgia,"Times New Roman",serif;
+    --sans:"Heebo","Assistant","Segoe UI",system-ui,-apple-system,sans-serif;
+    --maxw:1180px;
+  }
+  @media (prefers-color-scheme:dark){
+    :root{
+      --paper:#141310; --band:#1C1A15; --ink:#F1EADA; --ink-soft:#B7AE9C;
+      --gold:#C6A96B; --gold-soft:#8A744A; --terra:#D9714F; --hair:#2C2920;
+      --dark:#0D0C0A; --card:#1B1913; --shadow:0 1px 0 rgba(0,0,0,.4),0 18px 40px -22px rgba(0,0,0,.7);
+      --ok:#88A97C; --part:#C7A659; --no:#615B4C;
+    }
+  }
+  :root[data-theme="dark"]{
+    --paper:#141310; --band:#1C1A15; --ink:#F1EADA; --ink-soft:#B7AE9C;
+    --gold:#C6A96B; --gold-soft:#8A744A; --terra:#D9714F; --hair:#2C2920;
+    --dark:#0D0C0A; --card:#1B1913; --shadow:0 1px 0 rgba(0,0,0,.4),0 18px 40px -22px rgba(0,0,0,.7);
+    --ok:#88A97C; --part:#C7A659; --no:#615B4C;
+  }
+  :root[data-theme="light"]{
+    --paper:#FAF7F1; --band:#F3EEE3; --ink:#1B1A17; --ink-soft:#4A463E;
+    --gold:#9C7A3C; --gold-soft:#B79A66; --terra:#C2563A; --hair:#E2DCD0;
+    --dark:#14130F; --card:#FFFFFF; --ok:#5B7A52; --part:#B08A3E; --no:#B9B2A4;
+  }
+  *{box-sizing:border-box}
+  body{margin:0}
+  .wrap{direction:rtl;background:var(--paper);color:var(--ink);font-family:var(--sans);
+    line-height:1.6;-webkit-font-smoothing:antialiased;padding:0 0 80px}
+  .band-full{max-width:var(--maxw);margin:0 auto;padding:0 24px}
+  h1,h2,h3{font-family:var(--serif);font-weight:600;text-wrap:balance;line-height:1.15;margin:0}
+  p{margin:0}
+  .eyebrow{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);
+    font-weight:600;font-family:var(--sans)}
+  a{color:var(--terra);text-decoration:none}
+  a:focus-visible,button:focus-visible{outline:2px solid var(--terra);outline-offset:3px;border-radius:4px}
+
+  /* HERO */
+  header.hero{background:linear-gradient(180deg,var(--band),var(--paper));border-block-end:1px solid var(--hair)}
+  .hero-in{max-width:var(--maxw);margin:0 auto;padding:56px 24px 44px}
+  .hero .eyebrow{margin-block-end:14px}
+  header.hero h1{font-size:clamp(30px,5vw,52px);letter-spacing:-.01em}
+  .hero .lede{font-size:clamp(16px,2.1vw,20px);color:var(--ink-soft);max-width:64ch;margin-block-start:18px}
+  .verdict{display:grid;grid-template-columns:1fr;gap:14px;margin-block-start:28px;max-width:70ch}
+  .moat{background:var(--dark);color:#F1EADA;border-radius:14px;padding:22px 24px;box-shadow:var(--shadow)}
+  .moat b{color:var(--gold-soft)}
+  .moat .k{font-family:var(--serif);font-size:19px;line-height:1.4;display:block}
+
+  section{max-width:var(--maxw);margin:0 auto;padding:48px 24px 0}
+  .sec-head{display:flex;align-items:baseline;gap:14px;margin-block-end:22px;flex-wrap:wrap}
+  .sec-head h2{font-size:clamp(22px,3vw,30px)}
+  .sec-head .n{font-family:var(--serif);color:var(--gold);font-size:15px;font-weight:600;
+    border:1px solid var(--hair);border-radius:999px;padding:3px 12px}
+  .sec-sub{color:var(--ink-soft);max-width:68ch;margin-block-end:8px}
+
+  /* MATRIX */
+  .matrix-scroll{overflow-x:auto;border:1px solid var(--hair);border-radius:14px;background:var(--card);box-shadow:var(--shadow)}
+  table{border-collapse:collapse;width:100%;min-width:760px;font-size:13.5px}
+  caption{text-align:start;padding:14px 16px 0;color:var(--ink-soft);font-size:12.5px}
+  th,td{padding:11px 12px;text-align:center;border-block-end:1px solid var(--hair)}
+  th:first-child,td:first-child{text-align:start;font-weight:600;white-space:nowrap}
+  thead th{position:sticky;inset-block-start:0;background:var(--band);font-family:var(--sans);
+    font-weight:700;font-size:12px;color:var(--ink);border-block-end:2px solid var(--hair)}
+  tbody tr:last-child td{border-block-end:0}
+  .us{background:color-mix(in srgb,var(--gold) 12%,transparent)}
+  thead th.us{background:color-mix(in srgb,var(--gold) 22%,var(--band))}
+  .dot{font-size:15px;font-variant-numeric:tabular-nums;line-height:1}
+  .d-ok{color:var(--ok)} .d-part{color:var(--part)} .d-no{color:var(--no)}
+  .legend{display:flex;gap:18px;flex-wrap:wrap;margin-block-start:12px;font-size:12.5px;color:var(--ink-soft)}
+  .legend span{display:inline-flex;align-items:center;gap:6px}
+
+  /* BLOCK STACK */
+  .stack{display:flex;flex-direction:column;gap:14px;margin-block-start:8px}
+  .block{display:grid;grid-template-columns:56px 1fr;gap:0;background:var(--card);
+    border:1px solid var(--hair);border-radius:14px;overflow:hidden;box-shadow:var(--shadow)}
+  .block .rail{background:var(--band);display:flex;flex-direction:column;align-items:center;
+    justify-content:flex-start;padding-block-start:18px;gap:8px;border-inline-end:1px solid var(--hair)}
+  .block .rail .num{font-family:var(--serif);font-size:22px;font-weight:600;color:var(--gold)}
+  .block .body{padding:18px 20px}
+  .block h3{font-size:19px;margin-block-end:6px;display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+  .block .contents{color:var(--ink-soft);font-size:14.5px;margin-block-end:12px}
+  .tags{display:flex;gap:8px;flex-wrap:wrap}
+  .tag{font-size:11.5px;padding:4px 10px;border-radius:999px;border:1px solid var(--hair);
+    color:var(--ink-soft);background:var(--paper);white-space:nowrap}
+  .tag.beat{border-color:color-mix(in srgb,var(--terra) 40%,var(--hair));color:var(--terra)}
+  .tag.moatt{border-color:color-mix(in srgb,var(--gold) 55%,var(--hair));color:var(--gold);font-weight:600}
+  .article-chip{font-size:11px;font-weight:700;letter-spacing:.06em;color:var(--paper);
+    background:var(--gold);border-radius:999px;padding:3px 9px;font-family:var(--sans)}
+  .hero-block{border-color:color-mix(in srgb,var(--gold) 45%,var(--hair));
+    box-shadow:0 0 0 1px color-mix(in srgb,var(--gold) 30%,transparent),var(--shadow)}
+
+  .note{margin-block-start:20px;background:var(--band);border:1px solid var(--hair);
+    border-radius:14px;padding:20px 22px}
+  .note h3{font-size:17px;margin-block-end:8px}
+  .note p{color:var(--ink-soft);font-size:14.5px}
+  .note .row{display:flex;gap:10px;align-items:flex-start;margin-block-start:10px}
+  .note .row b{color:var(--ink)}
+  .dep{display:grid;grid-template-columns:1fr;gap:10px;margin-block-start:12px}
+  .dep .item{display:grid;grid-template-columns:auto 1fr;gap:12px;align-items:start;
+    padding:12px 14px;background:var(--paper);border:1px solid var(--hair);border-radius:10px}
+  .dep .item .st{font-size:12px;font-weight:700;border-radius:999px;padding:3px 9px;white-space:nowrap;height:fit-content}
+  .st-full{background:color-mix(in srgb,var(--ok) 20%,transparent);color:var(--ok)}
+  .st-none{background:color-mix(in srgb,var(--terra) 16%,transparent);color:var(--terra)}
+  footer{max-width:var(--maxw);margin:40px auto 0;padding:22px 24px 0;border-block-start:1px solid var(--hair);
+    color:var(--ink-soft);font-size:12.5px}
+  @media (max-width:560px){ .block{grid-template-columns:44px 1fr} .block .rail .num{font-size:18px} }
+  @media (prefers-reduced-motion:no-preference){ .block{transition:transform .15s ease} .block:hover{transform:translateY(-1px)} }
+</style>
+
+<div class="wrap">
+  <header class="hero">
+    <div class="hero-in">
+      <span class="eyebrow">תוכנית בנייה · מחקר מתחרים · 3 ביולי 2026</span>
+      <h1>עמוד הפרויקט שמנצח את כולם</h1>
+      <p class="lede">פירקנו את זילו, קומפאס, סטריט־איזי, רדפין, ריאלטור, מדלן ו־יד1 — עמוד אחר עמוד, בלוק אחר בלוק, נתון אחר נתון. אף אחד מהם לא מחזיק יותר משניים־שלושה מהחלקים שמרכיבים חוויית קנייה אמיתית של דירה חדשה. זו התוכנית לעמוד שמחזיק את כולם יחד — בעברית, RTL, בחמש שפות.</p>
+      <div class="verdict">
+        <div class="moat">
+          <span class="k">היתרון שאיש לא משלב: <b>מודל תלת־ממד של הבניין + בחירת דירה ספציפית + חזית + מבט מהדירה + מחיר אמת מול עסקאות באזור + בעלי מקצוע מאומתים + כתבה שנשזרת בעמוד</b> — הכול בעמוד עצמאי אחד.</span>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <section aria-labelledby="matrix-h">
+    <div class="sec-head">
+      <span class="n">המפה</span>
+      <h2 id="matrix-h">מי מחזיק מה — והפערים</h2>
+    </div>
+    <p class="sec-sub">היכולות המכריעות, ומי מציע כל אחת. ● חזק · ◐ חלקי · ○ אין. הטור שלנו הוא היעד לבנייה, לא המצב היום.</p>
+    <div class="matrix-scroll" role="region" aria-label="טבלת השוואת מתחרים" tabindex="0">
+      <table>
+        <caption>תמצית. הטבלה המלאה — 18 שורות — נמצאת במסמך המחקר בריפו.</caption>
+        <thead>
+          <tr>
+            <th>יכולת</th><th>Zillow</th><th>Compass</th><th>StreetEasy</th><th>Redfin</th><th>Realtor</th><th>Madlan</th><th>Yad1</th><th>Siteplan</th><th class="us">אנחנו</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>נפתח בפסקת הכתבה (SEO + אנושי)</td><td><span class="dot d-part">◐</span></td><td><span class="dot d-ok">●</span></td><td><span class="dot d-part">◐</span></td><td><span class="dot d-no">○</span></td><td><span class="dot d-part">◐</span></td><td><span class="dot d-part">◐</span></td><td><span class="dot d-part">◐</span></td><td><span class="dot d-no">○</span></td><td class="us"><span class="dot d-ok">●●</span></td></tr>
+          <tr><td>מודל תלת־ממד של הבניין</td><td><span class="dot d-no">○</span></td><td><span class="dot d-no">○</span></td><td><span class="dot d-no">○</span></td><td><span class="dot d-no">○</span></td><td><span class="dot d-no">○</span></td><td><span class="dot d-no">○</span></td><td><span class="dot d-part">◐</span></td><td><span class="dot d-ok">●</span></td><td class="us"><span class="dot d-ok">●●</span></td></tr>
+          <tr><td>בחירת דירה ספציפית מהבניין</td><td><span class="dot d-no">○</span></td><td><span class="dot d-part">◐</span></td><td><span class="dot d-part">◐</span></td><td><span class="dot d-no">○</span></td><td><span class="dot d-no">○</span></td><td><span class="dot d-no">○</span></td><td><span class="dot d-part">◐</span></td><td><span class="dot d-ok">●</span></td><td class="us"><span class="dot d-ok">●●</span></td></tr>
+          <tr><td>בורר חזית / חזות הבניין</td><td><span class="dot d-no">○</span></td><td><span class="dot d-no">○</span></td><td><span class="dot d-no">○</span></td><td><span class="dot d-no">○</span></td><td><span class="dot d-no">○</span></td><td><span class="dot d-no">○</span></td><td><span class="dot d-no">○</span></td><td><span class="dot d-part">◐</span></td><td class="us"><span class="dot d-ok">●</span></td></tr>
+          <tr><td>מבט מהדירה / מהקומה</td><td><span class="dot d-no">○</span></td><td><span class="dot d-no">○</span></td><td><span class="dot d-no">○</span></td><td><span class="dot d-no">○</span></td><td><span class="dot d-no">○</span></td><td><span class="dot d-no">○</span></td><td><span class="dot d-ok">●</span></td><td><span class="dot d-ok">●</span></td><td class="us"><span class="dot d-ok">●</span></td></tr>
+          <tr><td>שקיפות דירות זמינות + לא זמינות</td><td><span class="dot d-part">◐</span></td><td><span class="dot d-no">○</span></td><td><span class="dot d-ok">●</span></td><td><span class="dot d-no">○</span></td><td><span class="dot d-no">○</span></td><td><span class="dot d-no">○</span></td><td><span class="dot d-part">◐</span></td><td><span class="dot d-ok">●</span></td><td class="us"><span class="dot d-ok">●</span></td></tr>
+          <tr><td>מחירי עסקאות אמת בעמוד</td><td><span class="dot d-ok">●</span></td><td><span class="dot d-no">○</span></td><td><span class="dot d-ok">●</span></td><td><span class="dot d-ok">●</span></td><td><span class="dot d-ok">●</span></td><td><span class="dot d-ok">●</span></td><td><span class="dot d-no">○</span></td><td><span class="dot d-no">○</span></td><td class="us"><span class="dot d-ok">● לבנות</span></td></tr>
+          <tr><td>מפה צפופה: מחירים/חינוך/תחבורה/תוכניות</td><td><span class="dot d-part">◐</span></td><td><span class="dot d-no">○</span></td><td><span class="dot d-part">◐</span></td><td><span class="dot d-ok">●</span></td><td><span class="dot d-ok">●</span></td><td><span class="dot d-ok">●</span></td><td><span class="dot d-part">◐</span></td><td><span class="dot d-part">◐</span></td><td class="us"><span class="dot d-ok">●● מפה אחת</span></td></tr>
+          <tr><td>בעלי מקצוע מאומתים לפרויקט</td><td><span class="dot d-no">○</span></td><td><span class="dot d-part">◐</span></td><td><span class="dot d-no">○</span></td><td><span class="dot d-no">○</span></td><td><span class="dot d-no">○</span></td><td><span class="dot d-part">◐</span></td><td><span class="dot d-no">○</span></td><td><span class="dot d-no">○</span></td><td class="us"><span class="dot d-ok">●●</span></td></tr>
+          <tr><td>כתבה שנשזרת בעמוד (לא בלוק נפרד)</td><td><span class="dot d-no">○</span></td><td><span class="dot d-part">◐</span></td><td><span class="dot d-no">○</span></td><td><span class="dot d-no">○</span></td><td><span class="dot d-no">○</span></td><td><span class="dot d-no">○</span></td><td><span class="dot d-no">○</span></td><td><span class="dot d-no">○</span></td><td class="us"><span class="dot d-ok">●● חוק</span></td></tr>
+          <tr><td>RTL + חמש שפות</td><td><span class="dot d-no">○</span></td><td><span class="dot d-no">○</span></td><td><span class="dot d-no">○</span></td><td><span class="dot d-no">○</span></td><td><span class="dot d-part">◐</span></td><td><span class="dot d-ok">●</span></td><td><span class="dot d-ok">●</span></td><td><span class="dot d-no">○</span></td><td class="us"><span class="dot d-ok">●●</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="legend">
+      <span><span class="dot d-ok">●</span> חזק / יעד שלנו</span>
+      <span><span class="dot d-part">◐</span> חלקי</span>
+      <span><span class="dot d-no">○</span> אין</span>
+    </div>
+  </section>
+
+  <section aria-labelledby="stack-h">
+    <div class="sec-head">
+      <span class="n">הבנייה</span>
+      <h2 id="stack-h">העמוד המנצח — בלוק אחר בלוק</h2>
+    </div>
+    <p class="sec-sub">סדר הגלילה מלמעלה למטה. כל בלוק פונקציונלי <b>נפתח בפסקה מהכתבה</b> — הכתבה היא עמוד השדרה, הכלים תלויים עליה. תג <span class="article-chip">מאמר</span> מסמן היכן נשזר הטקסט. מפה אחת, מודל אחד, נתיב פנייה אחד.</p>
+    <div class="stack">
+
+      <article class="block hero-block">
+        <div class="rail"><span class="num">0</span></div>
+        <div class="body">
+          <h3>סרגל עליון קבוע</h3>
+          <p class="contents">מותג נדלן · <b>מחליף חמש שפות (he/en/fr/ru/ar)</b> · CTA ראשי אחד ("מעניין אותי"). במגילה מופיע מחיר מוקטן דביק.</p>
+          <div class="tags"><span class="tag moatt">חמש שפות + RTL</span><span class="tag beat">אף מתחרה אמריקאי לא נותן</span></div>
+        </div>
+      </article>
+
+      <article class="block hero-block">
+        <div class="rail"><span class="num">1</span></div>
+        <div class="body">
+          <h3>גיבור: הסיפור והבניין יחד <span class="article-chip">מאמר</span></h3>
+          <p class="contents">כותרת הפרויקט (H1) · <b>פסקת הפתיחה של הכתבה</b> (2–3 משפטים, עשירי SEO, אנושיים) · <b>מודל התלת־ממד של הבניין</b> כמרכז הוויזואלי — הפוסטר עולה מיד, אף פעם לא קופסה שחורה או ספינר אינסופי · רצועת עובדות (קומות, יח"ד, אכלוס, החל מ־ עם "אומדן") · CTA.</p>
+          <div class="tags"><span class="tag moatt">"נפתח בפסקה + רואים תלת־ממד"</span><span class="tag beat">מנצח את הגיבור־התמונה של Zillow</span></div>
+        </div>
+      </article>
+
+      <article class="block">
+        <div class="rail"><span class="num">2</span></div>
+        <div class="body">
+          <h3>בוחרים את הדירה שלכם <span class="article-chip">מאמר</span></h3>
+          <p class="contents">פסקת מבוא → המודל עם <b>נקודות בחירה לכל דירה</b> + <b>טבלת דירות בסגנון StreetEasy</b> לצידו (קומה, חדרים, מ"ר, כיוון, סטטוס זמין/בבדיקה/נמכר, מחיר או אומדן). בחירה במודל או בטבלה — מסונכרנות. <b>מתג חזית</b> (תלת־ממד ⇄ חזות) כאן. בחירת דירה פותחת פאנל: קומה, חדרים, מ"ר, מרפסת, כיוון, <b>מבט מהקומה</b>, <b>תוכנית הדירה</b>, מחיר/אומדן, ו"פנייה על הדירה הזו".</p>
+          <div class="tags"><span class="tag moatt">הליבה שלנו</span><span class="tag beat">משלב Siteplan + StreetEasy + מבט־מהחלון של Yad1</span></div>
+        </div>
+      </article>
+
+      <article class="block">
+        <div class="rail"><span class="num">3</span></div>
+        <div class="body">
+          <h3>מחיר והשוק האמיתי <span class="article-chip">מאמר</span></h3>
+          <p class="contents">פסקת מבוא → מחיר הדירה שנבחרה מול <b>עסקאות אמת באזור</b> (נתוני רשות המסים) → מחיר למ"ר מול השכונה → טבלת השוואות ישרה, ממוקרת, מתוארכת. הבלוק שבגללו מתחרים גורמים לך לעזוב את העמוד.</p>
+          <div class="tags"><span class="tag beat">מנצח את מדלן במקום — בתוך חוויית הקנייה</span><span class="tag moatt">אמון = לבנות נתוני אמת</span></div>
+        </div>
+      </article>
+
+      <article class="block">
+        <div class="rail"><span class="num">4</span></div>
+        <div class="body">
+          <h3>מפה אחת, המון נתונים <span class="article-chip">מאמר</span></h3>
+          <p class="contents">פסקת מבוא → <b>המפה האחודה היחידה</b>: שכבות מחירים/עסקאות, חינוך, תחבורה, מסחר, בריאות, <b>תוכניות עתידיות</b>, לוויין, תלת־ממד. צפופה, אמיתית, מתויגת. (מסלקת את המפה הכפולה של היום.)</p>
+          <div class="tags"><span class="tag beat">צפיפות של Redfin/Madlan, בעיצוב של Compass</span><span class="tag">מפה אחת בלבד</span></div>
+        </div>
+      </article>
+
+      <article class="block">
+        <div class="rail"><span class="num">5</span></div>
+        <div class="body">
+          <h3>חוויית הקנייה <span class="article-chip">מאמר</span></h3>
+          <p class="contents">פסקת מבוא → מחשבון משכנתא/כדאיות <b>על הדירה שנבחרה</b> → <b>תהליך הרכישה</b> (שלבים, מסמכים לבקש) → <b>בעלי מקצוע מאומתים</b> (עו"ד, שמאי, יועץ משכנתא) המחוברים לפרויקט → בדיקות ובדק. הבלוק שעוזר לקונה — ואיש לא מחזיק.</p>
+          <div class="tags"><span class="tag moatt">היתרון הייחודי שלנו</span><span class="tag beat">אף פורטל לא משלב מימון+תהליך+מקצוענים</span></div>
+        </div>
+      </article>
+
+      <article class="block">
+        <div class="rail"><span class="num">6</span></div>
+        <div class="body">
+          <h3>מדיה וגימור</h3>
+          <p class="contents">גלריה, הדמיות, גימורים, וידאו, חוברת — ביושר ("הדמיה להמחשה").</p>
+          <div class="tags"><span class="tag">תקן Zillow/Compass</span></div>
+        </div>
+      </article>
+
+      <article class="block">
+        <div class="rail"><span class="num">7</span></div>
+        <div class="body">
+          <h3>שכונה ואזור <span class="article-chip">מאמר</span></h3>
+          <p class="contents">פסקת מבוא → אורח חיים והקשר האזור (כתבה שזורה), קישור לעמוד העיר.</p>
+          <div class="tags"><span class="tag">SEO פנימי</span></div>
+        </div>
+      </article>
+
+      <article class="block">
+        <div class="rail"><span class="num">8</span></div>
+        <div class="body">
+          <h3>שאלות ותשובות</h3>
+          <p class="contents">שאלות קונים אמיתיות בקול הכתבה · סכמת <b>FAQPage</b>.</p>
+          <div class="tags"><span class="tag">Schema</span></div>
+        </div>
+      </article>
+
+      <article class="block">
+        <div class="rail"><span class="num">9</span></div>
+        <div class="body">
+          <h3>פרויקטים דומים</h3>
+          <p class="contents">אחאים — בדגש על אותו מתחם (למשל שדה דב).</p>
+          <div class="tags"><span class="tag">שימור באתר</span></div>
+        </div>
+      </article>
+
+      <article class="block">
+        <div class="rail"><span class="num">10</span></div>
+        <div class="body">
+          <h3>פנייה</h3>
+          <p class="contents">נתיב פנייה אחד — נושא איתו את הקשר הדירה שנבחרה.</p>
+          <div class="tags"><span class="tag moatt">פנייה על דירה מדויקת</span></div>
+        </div>
+      </article>
+
+      <article class="block">
+        <div class="rail"><span class="num">11</span></div>
+        <div class="body">
+          <h3>גילוי נאות</h3>
+          <p class="contents">כותרת יושר — אומדנים, הדמיות, אופי לא־מחייב.</p>
+          <div class="tags"><span class="tag moatt">יושר בכל אומדן</span></div>
+        </div>
+      </article>
+
+    </div>
+
+    <div class="note">
+      <h3>התלות הקשה: נתונים (למה 3 עמודים עובדים ו־960 לא)</h3>
+      <p>התוכנית אמיתית רק כמו הנתונים שמאחוריה. היום רק אשירה / ריינבו / דימרי מחזיקים דירות + מודל; כ־960 פרויקטים ריקים. הבנייה חייבת לכלול <b>מודל נתונים + נתיב הזנה</b> כך שהעמוד יידרדר ביושר — לעולם לא קליפה ריקה, לעולם לא זיוף.</p>
+      <div class="dep">
+        <div class="item"><span class="st st-full">מצב מלא</span><span>כשיש דירות+מודל+עסקאות (3 הדגלים היום): החוויה המלאה. <b>רק לפרויקטים במצב הזה שולחים מייל.</b></span></div>
+        <div class="item"><span class="st st-none">מצב חסר</span><span>כשאין: עמוד עדיין בעל ערך — סיפור + מפת אזור + מחירי אזור אמת + מקצוענים + פנייה. בונים נתונים לקוהורט הבא לפני שפונים אליו.</span></div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <p>מקורות: ידע עבודה (עדכני לינואר 2026) + אימות רשת 3 ביולי 2026 — Zillow, Redfin, realtor.com, StreetEasy, Madlan, Yad1/Yad2, ספקי Interactive Siteplan. הטבלה המלאה והנימוקים: <code>docs/research/2026-07-03-project-page-competitive-teardown.md</code>. נדלן · תוכנית לאישור לפני בנייה.</p>
+  </footer>
+</div>
