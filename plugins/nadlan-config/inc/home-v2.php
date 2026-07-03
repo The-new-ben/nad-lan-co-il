@@ -263,7 +263,19 @@ if ( ! function_exists( 'nadlan_hv2_band_hero' ) ) {
 				<a href="<?php echo esc_url( home_url( '/professionals/?profession=lawyer' ) ); ?>"><b>ליווי</b> עורך דין מקרקעין</a>
 			</div>
 		</div>
-		<?php if ( $flag ) : $fimg = nadlan_hv2_img( $flag->ID ); ?>
+		<?php
+		// Hero media (owner surgical spec 2026-07-02): the promo video lives HERE,
+		// beside the H1, gif-like (autoplay muted loop, no controls), lazy-loaded
+		// after page load so LCP is untouched. The Ashira card left the hero -
+		// it was a duplicate of the projects band below. Flag card = fallback
+		// only when no video is configured.
+		$vurl = trim( (string) get_option( 'nadlan_home_video_url', '' ) );
+		if ( $vurl && preg_match( '~\.(mp4|webm)(\?|$)~i', $vurl ) ) : ?>
+		<div class="nlhv2-hero-flag nlhv2-hero-video" aria-label="נדלן - סרטון היכרות">
+			<span class="nlhv2-hv-brand" aria-hidden="true">נדלן</span>
+			<video id="nlhv2-hv" muted loop playsinline preload="none" data-src="<?php echo esc_url( $vurl ); ?>"></video>
+		</div>
+		<?php elseif ( $flag ) : $fimg = nadlan_hv2_img( $flag->ID ); ?>
 		<a class="nlhv2-hero-flag" href="<?php echo esc_url( get_permalink( $flag ) ); ?>">
 			<span class="nlhv2-hero-flag-media"<?php echo $fimg ? ' style="background-image:url(' . esc_url( $fimg ) . ')"' : ''; ?>><em>בחרו דירה מתוך הבניין</em></span>
 			<span class="nlhv2-hero-flag-cap"><b><?php echo esc_html( get_the_title( $flag ) ); ?></b><span><?php echo esc_html( get_post_meta( $flag->ID, 'city', true ) ); ?></span></span>
@@ -561,7 +573,7 @@ if ( ! function_exists( 'nadlan_hv2_band_megafooter' ) ) {
 
 if ( ! function_exists( 'nadlan_home_v2_shortcode' ) ) {
 	function nadlan_home_v2_shortcode() {
-		$default = array( 'ticker', 'browse', 'hero', 'video', 'market', 'projects', 'listings', 'areas', 'magazine', 'tools', 'pros', 'intl', 'megafooter' );
+		$default = array( 'ticker', 'browse', 'hero', 'market', 'projects', 'listings', 'areas', 'magazine', 'tools', 'pros', 'intl', 'megafooter' ); // 'video' band retired: the promo lives in the hero card
 		$bands   = get_option( 'nadlan_home_bands', $default );
 		if ( ! is_array( $bands ) || ! $bands ) { $bands = $default; }
 		ob_start();
@@ -643,6 +655,10 @@ if ( ! function_exists( 'nadlan_hv2_assets' ) ) {
 .nlhv2-hero-flag-cap{display:flex;justify-content:space-between;align-items:baseline;gap:10px;padding:12px 16px}
 .nlhv2-hero-flag-cap b{font-family:var(--font-serif,serif);font-size:1.1rem}
 .nlhv2-hero-flag-cap span{font-size:12.5px;color:var(--warm)}
+.nlhv2-hero-video{position:relative;aspect-ratio:16/11;background:linear-gradient(160deg,#211F19,var(--dark));display:block}
+.nlhv2-hero-video video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;opacity:0;transition:opacity .8s ease}
+.nlhv2-hero-video video.is-on{opacity:1}
+.nlhv2-hv-brand{position:absolute;inset:0;display:grid;place-items:center;font-family:var(--font-serif,"Frank Ruhl Libre",serif);font-size:2.2rem;color:#E6D4AE;letter-spacing:.06em}
 .nlhv2-band{padding:30px 0;border-top:1px solid var(--line)}
 .nlhv2-alt{background:linear-gradient(180deg,#FAF8F3,transparent)}
 .nlhv2-band header{display:flex;align-items:baseline;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-bottom:16px}
@@ -741,6 +757,21 @@ if ( ! function_exists( 'nadlan_hv2_assets' ) ) {
 			if(b.dataset.extra){var kv=b.dataset.extra.split("=");var h=document.createElement("input");h.type="hidden";h.name=kv[0];h.value=kv[1];f.appendChild(h)}
 		});
 	})}
+	// hero video: gif-like (muted autoplay loop, no controls). Loads only AFTER
+	// the page finishes loading so LCP is untouched; respects data-saver and
+	// reduced-motion (they keep the elegant dark brand card).
+	var hv=document.getElementById("nlhv2-hv");
+	if(hv&&hv.dataset.src){
+		var c=navigator.connection||{};
+		var skip=(c.saveData===true)||/(^|\b)2g/.test(c.effectiveType||"")||(window.matchMedia&&matchMedia("(prefers-reduced-motion: reduce)").matches);
+		if(!skip){
+			var hvGo=function(){
+				hv.src=hv.dataset.src;hv.load();
+				hv.addEventListener("canplay",function(){hv.classList.add("is-on");var p=hv.play();if(p&&p.catch){p.catch(function(){})}},{once:true});
+			};
+			if(document.readyState==="complete"){hvGo()}else{window.addEventListener("load",hvGo,{once:true})}
+		}
+	}
 	// browse menus: close others when one opens; close on outside click
 	var ds=document.querySelectorAll(".nlhv2-browse details");
 	ds.forEach(function(d){d.addEventListener("toggle",function(){if(d.open){ds.forEach(function(o){if(o!==d){o.open=false}})}})});
