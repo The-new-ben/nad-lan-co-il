@@ -201,6 +201,13 @@ add_action( 'wp_head', function () {
 	if ( ! is_front_page() && ! nadlan_is_language_home() ) { return; }
 	$urls = nadlan_home_urls();
 	$cur  = nadlan_current_lang();
+	// Language pages are frame-translated but not yet content-complete (theme
+	// header/footer + content bodies await the translation run). Keep them out
+	// of Google until complete so we never get a duplicate/thin-content penalty.
+	// Flip option nadlan_i18n_complete to '1' when a language is fully done.
+	if ( 'he' !== $cur && '1' !== get_option( 'nadlan_i18n_complete', '' ) ) {
+		echo "<meta name=\"robots\" content=\"noindex,follow\">\n";
+	}
 	echo "\n<link rel=\"canonical\" href=\"" . esc_url( $urls[ $cur ] ) . "\">\n";
 	foreach ( nadlan_langs() as $l ) {
 		printf( "<link rel=\"alternate\" hreflang=\"%s\" href=\"%s\">\n", esc_attr( $l ), esc_url( $urls[ $l ] ) );
