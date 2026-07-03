@@ -166,8 +166,10 @@ if ( ! function_exists( 'nadlan_hv2_band_ticker' ) ) {
 		$s = (array) get_option( 'nadlan_market_snapshot', array() );
 		if ( empty( $s ) ) { $s = nadlan_hv2_snapshot_compute(); }
 		$items = array();
-		if ( ! empty( $s['ppsqm_tlv'] ) ) { $items[] = array( 'מחיר ממוצע למ״ר, תל אביב', number_format( (int) $s['ppsqm_tlv'] ) . ' ₪', home_url( '/projects/?city=' . rawurlencode( 'תל אביב' ) ) ); }
-		if ( ! empty( $s['ppsqm_il'] ) ) { $items[] = array( 'מחיר ממוצע למ״ר, ארצי', number_format( (int) $s['ppsqm_il'] ) . ' ₪', home_url( '/projects/' ) ); }
+		if ( ! empty( $s['ppsqm_tlv'] ) ) { $items[] = array( 'מחיר ממוצע למ״ר, פרויקטים חדשים בת״א', number_format( (int) $s['ppsqm_tlv'] ) . ' ₪', home_url( '/projects/?city=' . rawurlencode( 'תל אביב' ) ) ); }
+		// Honesty gate: the "national" average comes from the same small catalog
+		// sample; when it is basically the TLV number it would mislead - hide it.
+		if ( ! empty( $s['ppsqm_il'] ) && ( empty( $s['ppsqm_tlv'] ) || abs( (int) $s['ppsqm_il'] - (int) $s['ppsqm_tlv'] ) >= 0.2 * (int) $s['ppsqm_tlv'] ) ) { $items[] = array( 'מחיר ממוצע למ״ר, פרויקטים שבמעקב', number_format( (int) $s['ppsqm_il'] ) . ' ₪', home_url( '/projects/' ) ); }
 		if ( ! empty( $s['mortgage_rate'] ) ) { $items[] = array( 'ריבית משכנתא ממוצעת', esc_html( $s['mortgage_rate'] ), home_url( '/mortgage-calculator/' ) ); }
 		if ( ! empty( $s['projects_n'] ) ) { $items[] = array( 'פרויקטים במעקב', number_format( (int) $s['projects_n'] ), home_url( '/projects/' ) ); }
 		if ( ! $items ) { return; }
@@ -273,7 +275,7 @@ if ( ! function_exists( 'nadlan_hv2_band_hero' ) ) {
 		if ( $vurl && preg_match( '~\.(mp4|webm)(\?|$)~i', $vurl ) ) : ?>
 		<div class="nlhv2-hero-flag nlhv2-hero-video" aria-label="נדלן - סרטון היכרות">
 			<span class="nlhv2-hv-brand" aria-hidden="true">נדלן</span>
-			<video id="nlhv2-hv" muted loop playsinline preload="none" data-src="<?php echo esc_url( $vurl ); ?>"></video>
+			<video id="nlhv2-hv" muted autoplay loop playsinline preload="none" data-src="<?php echo esc_url( $vurl ); ?>"></video>
 		</div>
 		<?php elseif ( $flag ) : $fimg = nadlan_hv2_img( $flag->ID ); ?>
 		<a class="nlhv2-hero-flag" href="<?php echo esc_url( get_permalink( $flag ) ); ?>">
@@ -307,8 +309,9 @@ if ( ! function_exists( 'nadlan_hv2_band_market' ) ) {
 	function nadlan_hv2_band_market() {
 		$s = (array) get_option( 'nadlan_market_snapshot', array() );
 		$cards = array();
-		if ( ! empty( $s['ppsqm_tlv'] ) ) { $cards[] = array( number_format( (int) $s['ppsqm_tlv'] ) . ' ₪', 'מחיר ממוצע למ״ר בפרויקטים בתל אביב', home_url( '/projects/?city=' . rawurlencode( 'תל אביב' ) ) ); }
-		if ( ! empty( $s['ppsqm_il'] ) ) { $cards[] = array( number_format( (int) $s['ppsqm_il'] ) . ' ₪', 'מחיר ממוצע למ״ר בפרויקטים, ארצי', home_url( '/projects/' ) ); }
+		if ( ! empty( $s['ppsqm_tlv'] ) ) { $cards[] = array( number_format( (int) $s['ppsqm_tlv'] ) . ' ₪', 'מחיר ממוצע למ״ר בפרויקטים חדשים בתל אביב', home_url( '/projects/?city=' . rawurlencode( 'תל אביב' ) ) ); }
+		// Same honesty gate as the ticker: no fake "national" number from a TLV-only sample.
+		if ( ! empty( $s['ppsqm_il'] ) && ( empty( $s['ppsqm_tlv'] ) || abs( (int) $s['ppsqm_il'] - (int) $s['ppsqm_tlv'] ) >= 0.2 * (int) $s['ppsqm_tlv'] ) ) { $cards[] = array( number_format( (int) $s['ppsqm_il'] ) . ' ₪', 'מחיר ממוצע למ״ר בפרויקטים שבמעקב', home_url( '/projects/' ) ); }
 		if ( ! empty( $s['yoy'] ) ) { $cards[] = array( esc_html( $s['yoy'] ), 'שינוי שנתי במחירי הדירות', home_url( '/investment/' ) ); }
 		if ( ! empty( $s['mortgage_rate'] ) ) { $cards[] = array( esc_html( $s['mortgage_rate'] ), 'ריבית משכנתא ממוצעת', home_url( '/mortgage-calculator/' ) ); }
 		if ( count( $cards ) < 2 ) { return; }
@@ -757,19 +760,27 @@ if ( ! function_exists( 'nadlan_hv2_assets' ) ) {
 			if(b.dataset.extra){var kv=b.dataset.extra.split("=");var h=document.createElement("input");h.type="hidden";h.name=kv[0];h.value=kv[1];f.appendChild(h)}
 		});
 	})}
-	// hero video: gif-like (muted autoplay loop, no controls). Loads only AFTER
-	// the page finishes loading so LCP is untouched; respects data-saver and
-	// reduced-motion (they keep the elegant dark brand card).
+	// hero video: gif-like (muted autoplay loop, no controls). Starts right after
+	// DOM ready (idle callback) so it never blocks LCP; respects data-saver and
+	// reduced-motion (they keep the elegant dark brand card). If autoplay is
+	// still blocked, the first tap/click anywhere retries playback.
 	var hv=document.getElementById("nlhv2-hv");
 	if(hv&&hv.dataset.src){
 		var c=navigator.connection||{};
 		var skip=(c.saveData===true)||/(^|\b)2g/.test(c.effectiveType||"")||(window.matchMedia&&matchMedia("(prefers-reduced-motion: reduce)").matches);
 		if(!skip){
+			var hvPlay=function(){hv.muted=true;var p=hv.play();if(p&&p.catch){p.catch(function(){})}};
+			var hvStarted=false;
 			var hvGo=function(){
+				if(hvStarted){return}hvStarted=true;
 				hv.src=hv.dataset.src;hv.load();
-				hv.addEventListener("canplay",function(){hv.classList.add("is-on");var p=hv.play();if(p&&p.catch){p.catch(function(){})}},{once:true});
+				hv.addEventListener("canplay",function(){hv.classList.add("is-on");hvPlay()},{once:true});
+				var kick=function(){if(hv.paused){hvPlay()}document.removeEventListener("pointerdown",kick);document.removeEventListener("touchstart",kick)};
+				document.addEventListener("pointerdown",kick,{once:true});
+				document.addEventListener("touchstart",kick,{once:true,passive:true});
 			};
-			if(document.readyState==="complete"){hvGo()}else{window.addEventListener("load",hvGo,{once:true})}
+			if(window.requestIdleCallback){requestIdleCallback(hvGo,{timeout:2500})}else{setTimeout(hvGo,600)}
+			window.addEventListener("load",hvGo,{once:true});
 		}
 	}
 	// browse menus: close others when one opens; close on outside click
