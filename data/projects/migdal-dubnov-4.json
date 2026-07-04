@@ -1,0 +1,325 @@
+{
+  "id": "migdal-dubnov-4",
+  "identity": {
+    "name_he": "מגדל דובנוב 4",
+    "name_en": "Dubnov Tower 4",
+    "aka": [],
+    "developer": "Israel Canada",
+    "contractor": null,
+    "architect": "Avner Yashar Architects",
+    "marketing_status": "under_construction",
+    "urls": {
+      "official": "https://www.israel-canada.co.il/projects/tel-aviv/dubnov",
+      "madlan": null,
+      "yad2": null,
+      "developer": null
+    },
+    "name_he_src": [
+      "https://www.israel-canada.co.il/projects/tel-aviv/dubnov"
+    ],
+    "name_en_src": [
+      "https://www.israel-canada.co.il/projects/tel-aviv/dubnov"
+    ],
+    "developer_src": [
+      "https://www.israel-canada.co.il/projects/tel-aviv/dubnov"
+    ],
+    "contractor_src": [
+      "https://www.israel-canada.co.il/projects/tel-aviv/dubnov"
+    ],
+    "architect_src": [
+      "https://www.israel-canada.co.il/projects/tel-aviv/dubnov"
+    ],
+    "marketing_status_src": [
+      "https://www.israel-canada.co.il/projects/tel-aviv/dubnov"
+    ]
+  },
+  "location": {
+    "address_he": "דובנוב 4",
+    "city": "Tel Aviv-Yafo",
+    "neighborhood": "מרכז תל אביב / ציר התרבות",
+    "gush": null,
+    "helka": null,
+    "gis_confidence": "approx",
+    "plot_polygon_geojson": null,
+    "ground_elevation_m": null,
+    "gis_note": "Approximate manual pin from public address/neighborhood wording; not official parcel-level geocoding. Replace with municipal/Mapbox/building geocode before publishing.",
+    "address_he_src": [
+      "https://www.israel-canada.co.il/projects/tel-aviv/dubnov"
+    ],
+    "city_src": [
+      "https://www.israel-canada.co.il/projects/tel-aviv/dubnov"
+    ],
+    "neighborhood_src": [
+      "https://www.israel-canada.co.il/projects/tel-aviv/dubnov"
+    ],
+    "lat_src": [],
+    "lng_src": [],
+    "gis_confidence_src": [],
+    "gis_note_src": [],
+    "lat": null,
+    "lng": null,
+    "coord_estimate_unverified": {
+      "lat": 32.0776,
+      "lng": 34.7864
+    },
+    "geocode_status": "needs_geocode",
+    "coord_provenance": "chatgpt_manual_estimate_2026-07-03 (UNVERIFIED — do not use for the map; regeocode from address via govmap/Mapbox)"
+  },
+  "context": {
+    "dist_to_sea_m": null,
+    "sea_bearing_deg": null,
+    "seafront": false,
+    "terrain": null,
+    "skyline": "tower_cluster",
+    "near": {
+      "park": {
+        "name": "",
+        "dist_m": null
+      },
+      "light_rail": {
+        "line": "",
+        "station": "",
+        "dist_m": null
+      },
+      "metro_planned": {
+        "line": "",
+        "dist_m": null
+      },
+      "train": {
+        "station": "",
+        "dist_m": null
+      },
+      "highway": {
+        "name": "",
+        "dist_m": null
+      },
+      "retail_mall": {
+        "name": "",
+        "dist_m": null
+      },
+      "hospital": {
+        "name": "",
+        "dist_m": null
+      },
+      "schools": [],
+      "landmarks": [
+        "Habima",
+        "Tel Aviv Museum",
+        "Israeli Opera",
+        "Weizmann City"
+      ]
+    }
+  },
+  "building_form": {
+    "floors": null,
+    "height_m": null,
+    "num_buildings": 1,
+    "footprint_shape": "rect",
+    "footprint_dims_m": {
+      "x": null,
+      "z": null
+    },
+    "main_facade_orientation_deg": null,
+    "has_podium": true,
+    "podium_floors": null,
+    "setbacks": null,
+    "twist": null,
+    "facade_material": "glass",
+    "balconies": true,
+    "notes": "Mixed residential/offices/commerce near cultural axis.",
+    "floors_src": [
+      "https://www.israel-canada.co.il/projects/tel-aviv/dubnov"
+    ],
+    "height_m_src": [
+      "https://www.israel-canada.co.il/projects/tel-aviv/dubnov"
+    ],
+    "num_buildings_src": [
+      "https://www.israel-canada.co.il/projects/tel-aviv/dubnov"
+    ]
+  },
+  "units": {
+    "total_units": 133,
+    "mix": [
+      {
+        "rooms": null,
+        "count": null,
+        "sqm_min": null,
+        "sqm_max": null
+      }
+    ],
+    "price_min": null,
+    "price_max": null,
+    "ppsqm_min": null,
+    "ppsqm_max": null,
+    "price_basis": null,
+    "price_date": "",
+    "total_units_src": [
+      "https://www.israel-canada.co.il/projects/tel-aviv/dubnov"
+    ],
+    "mix_src": [
+      "https://www.israel-canada.co.il/projects/tel-aviv/dubnov"
+    ],
+    "price_min_src": [],
+    "price_max_src": [],
+    "ppsqm_min_src": [],
+    "ppsqm_max_src": [],
+    "price_basis_src": [],
+    "price_date_src": []
+  },
+  "market": {
+    "area_ppsqm": null,
+    "nearby_projects": [],
+    "recent_area_deals": []
+  },
+  "urban_future": {
+    "taba_plan_numbers": [],
+    "taba_urls": [],
+    "planned_infrastructure": [],
+    "renewal_type": "new",
+    "renewal_type_src": [
+      "https://www.israel-canada.co.il/projects/tel-aviv/dubnov"
+    ]
+  },
+  "media": {
+    "render_urls": [],
+    "video_urls": [],
+    "brochure_pdf": null,
+    "floorplan_urls": [],
+    "site_plan_url": null,
+    "virtual_tour_url": null,
+    "bim_or_3d_available": "unknown",
+    "aerial_or_streetview_ref": null,
+    "gallery_page_url": "https://www.israel-canada.co.il/projects/tel-aviv/dubnov",
+    "external_project_site": null,
+    "gallery_page_url_src": [
+      "https://www.israel-canada.co.il/projects/tel-aviv/dubnov"
+    ],
+    "render_urls_src": [],
+    "video_urls_src": [],
+    "brochure_pdf_src": [],
+    "floorplan_urls_src": [],
+    "site_plan_url_src": [],
+    "virtual_tour_url_src": [],
+    "bim_or_3d_available_src": [],
+    "aerial_or_streetview_ref_src": []
+  },
+  "content_angles": {
+    "usp": [
+      "Culture-axis premium location",
+      "133-unit luxury tower with offices/commerce context"
+    ],
+    "buyer_questions": [
+      "What floors have apartments?",
+      "Which views face the cultural district?"
+    ],
+    "audiences": [
+      "local",
+      "investor",
+      "olim_en",
+      "olim_fr",
+      "ru",
+      "ar"
+    ],
+    "keywords_he": [
+      "מגדל דובנוב",
+      "דובנוב 4 דירות",
+      "דירות יוקרה מרכז תל אביב"
+    ],
+    "keywords_en": [
+      "Dubnov Tower",
+      "Dubnov 4 Tel Aviv"
+    ]
+  },
+  "confidence": {
+    "overall": "med",
+    "notes": "No floor count/prices in parsed page."
+  },
+  "field_sources": {
+    "identity.name_he": [
+      "https://www.israel-canada.co.il/projects/tel-aviv/dubnov"
+    ],
+    "identity.name_en": [
+      "https://www.israel-canada.co.il/projects/tel-aviv/dubnov"
+    ],
+    "identity.developer": [
+      "https://www.israel-canada.co.il/projects/tel-aviv/dubnov"
+    ],
+    "identity.contractor": [
+      "https://www.israel-canada.co.il/projects/tel-aviv/dubnov"
+    ],
+    "identity.architect": [
+      "https://www.israel-canada.co.il/projects/tel-aviv/dubnov"
+    ],
+    "identity.marketing_status": [
+      "https://www.israel-canada.co.il/projects/tel-aviv/dubnov"
+    ],
+    "location.address_he": [
+      "https://www.israel-canada.co.il/projects/tel-aviv/dubnov"
+    ],
+    "location.city": [
+      "https://www.israel-canada.co.il/projects/tel-aviv/dubnov"
+    ],
+    "location.neighborhood": [
+      "https://www.israel-canada.co.il/projects/tel-aviv/dubnov"
+    ],
+    "context": [
+      "https://www.israel-canada.co.il/projects/tel-aviv/dubnov"
+    ],
+    "building_form.floors": [
+      "https://www.israel-canada.co.il/projects/tel-aviv/dubnov"
+    ],
+    "building_form.height_m": [
+      "https://www.israel-canada.co.il/projects/tel-aviv/dubnov"
+    ],
+    "building_form.num_buildings": [
+      "https://www.israel-canada.co.il/projects/tel-aviv/dubnov"
+    ],
+    "units.total_units": [
+      "https://www.israel-canada.co.il/projects/tel-aviv/dubnov"
+    ],
+    "units.mix": [
+      "https://www.israel-canada.co.il/projects/tel-aviv/dubnov"
+    ],
+    "urban_future.renewal_type": [
+      "https://www.israel-canada.co.il/projects/tel-aviv/dubnov"
+    ],
+    "media.gallery_page_url": [
+      "https://www.israel-canada.co.il/projects/tel-aviv/dubnov"
+    ]
+  },
+  "source_lines": [
+    "Israel Canada marketing section lines 222-252; Dubnov page lines 43-81."
+  ],
+  "evidence": [
+    "Israel Canada page states Dubnov 4 address, Avner Yashar Architects, Pitsou Kedem interiors, one building and 133 residential units; homepage includes Migdal Dubnov in projects in marketing."
+  ],
+  "_unverified": [
+    "location.lat",
+    "location.lng",
+    "location.gis_confidence",
+    "building_form.footprint_shape",
+    "building_form.footprint_dims_m",
+    "building_form.main_facade_orientation_deg",
+    "context.dist_to_sea_m",
+    "context.sea_bearing_deg",
+    "market.area_ppsqm",
+    "prices"
+  ],
+  "context_src": [
+    "https://www.israel-canada.co.il/projects/tel-aviv/dubnov"
+  ],
+  "db_meta": {
+    "source_batch": "chatgpt_gush_dan_2026-07-03",
+    "ingested_at": "2026-07-04",
+    "verification": "urls_http200_confirmed; sample content-verified; coords UNVERIFIED; prices ABSENT",
+    "canonical": true,
+    "ready_for_page": false,
+    "needs": [
+      "geocode",
+      "price",
+      "floors/units where null",
+      "media urls",
+      "5-lang article body"
+    ]
+  }
+}

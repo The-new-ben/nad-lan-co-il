@@ -1,0 +1,324 @@
+{
+  "id": "she-tel-aviv",
+  "identity": {
+    "name_he": "SHE תל אביב",
+    "name_en": "SHE Tel Aviv",
+    "aka": [],
+    "developer": "Israel Canada",
+    "contractor": null,
+    "architect": "Barel Levitsky Kassif de la Fontaine Architects",
+    "marketing_status": "under_construction",
+    "urls": {
+      "official": "https://www.israel-canada.co.il/projects/tel-aviv/she",
+      "madlan": null,
+      "yad2": null,
+      "developer": null
+    },
+    "name_he_src": [
+      "https://www.israel-canada.co.il/projects/tel-aviv/she"
+    ],
+    "name_en_src": [
+      "https://www.israel-canada.co.il/projects/tel-aviv/she"
+    ],
+    "developer_src": [
+      "https://www.israel-canada.co.il/projects/tel-aviv/she"
+    ],
+    "contractor_src": [
+      "https://www.israel-canada.co.il/projects/tel-aviv/she"
+    ],
+    "architect_src": [
+      "https://www.israel-canada.co.il/projects/tel-aviv/she"
+    ],
+    "marketing_status_src": [
+      "https://www.israel-canada.co.il/projects/tel-aviv/she"
+    ]
+  },
+  "location": {
+    "address_he": "הרצל–יהודה הלוי",
+    "city": "Tel Aviv-Yafo",
+    "neighborhood": "לב העיר / נווה צדק גבול",
+    "gush": null,
+    "helka": null,
+    "gis_confidence": "approx",
+    "plot_polygon_geojson": null,
+    "ground_elevation_m": null,
+    "gis_note": "Approximate manual pin from public address/neighborhood wording; not official parcel-level geocoding. Replace with municipal/Mapbox/building geocode before publishing.",
+    "address_he_src": [
+      "https://www.israel-canada.co.il/projects/tel-aviv/she"
+    ],
+    "city_src": [
+      "https://www.israel-canada.co.il/projects/tel-aviv/she"
+    ],
+    "neighborhood_src": [
+      "https://www.israel-canada.co.il/projects/tel-aviv/she"
+    ],
+    "lat_src": [],
+    "lng_src": [],
+    "gis_confidence_src": [],
+    "gis_note_src": [],
+    "lat": null,
+    "lng": null,
+    "coord_estimate_unverified": {
+      "lat": 32.0635,
+      "lng": 34.7708
+    },
+    "geocode_status": "needs_geocode",
+    "coord_provenance": "chatgpt_manual_estimate_2026-07-03 (UNVERIFIED — do not use for the map; regeocode from address via govmap/Mapbox)"
+  },
+  "context": {
+    "dist_to_sea_m": null,
+    "sea_bearing_deg": null,
+    "seafront": false,
+    "terrain": null,
+    "skyline": "mixed",
+    "near": {
+      "park": {
+        "name": "",
+        "dist_m": null
+      },
+      "light_rail": {
+        "line": "",
+        "station": "",
+        "dist_m": null
+      },
+      "metro_planned": {
+        "line": "",
+        "dist_m": null
+      },
+      "train": {
+        "station": "",
+        "dist_m": null
+      },
+      "highway": {
+        "name": "",
+        "dist_m": null
+      },
+      "retail_mall": {
+        "name": "",
+        "dist_m": null
+      },
+      "hospital": {
+        "name": "",
+        "dist_m": null
+      },
+      "schools": [],
+      "landmarks": [
+        "Herzl Street",
+        "Yehuda Halevi Street",
+        "White City"
+      ]
+    }
+  },
+  "building_form": {
+    "floors": null,
+    "height_m": null,
+    "num_buildings": 1,
+    "footprint_shape": "rect",
+    "footprint_dims_m": {
+      "x": null,
+      "z": null
+    },
+    "main_facade_orientation_deg": null,
+    "has_podium": true,
+    "podium_floors": null,
+    "setbacks": null,
+    "twist": null,
+    "facade_material": "mixed",
+    "balconies": true,
+    "notes": "Mixed residential/offices; exact floors absent in parsed page.",
+    "floors_src": [
+      "https://www.israel-canada.co.il/projects/tel-aviv/she"
+    ],
+    "height_m_src": [
+      "https://www.israel-canada.co.il/projects/tel-aviv/she"
+    ],
+    "num_buildings_src": [
+      "https://www.israel-canada.co.il/projects/tel-aviv/she"
+    ]
+  },
+  "units": {
+    "total_units": 102,
+    "mix": [
+      {
+        "rooms": null,
+        "count": null,
+        "sqm_min": null,
+        "sqm_max": null
+      }
+    ],
+    "price_min": null,
+    "price_max": null,
+    "ppsqm_min": null,
+    "ppsqm_max": null,
+    "price_basis": null,
+    "price_date": "",
+    "total_units_src": [
+      "https://www.israel-canada.co.il/projects/tel-aviv/she"
+    ],
+    "mix_src": [
+      "https://www.israel-canada.co.il/projects/tel-aviv/she"
+    ],
+    "price_min_src": [],
+    "price_max_src": [],
+    "ppsqm_min_src": [],
+    "ppsqm_max_src": [],
+    "price_basis_src": [],
+    "price_date_src": []
+  },
+  "market": {
+    "area_ppsqm": null,
+    "nearby_projects": [],
+    "recent_area_deals": []
+  },
+  "urban_future": {
+    "taba_plan_numbers": [],
+    "taba_urls": [],
+    "planned_infrastructure": [],
+    "renewal_type": "new",
+    "renewal_type_src": [
+      "https://www.israel-canada.co.il/projects/tel-aviv/she"
+    ]
+  },
+  "media": {
+    "render_urls": [],
+    "video_urls": [],
+    "brochure_pdf": null,
+    "floorplan_urls": [],
+    "site_plan_url": null,
+    "virtual_tour_url": null,
+    "bim_or_3d_available": "unknown",
+    "aerial_or_streetview_ref": null,
+    "gallery_page_url": "https://www.israel-canada.co.il/projects/tel-aviv/she",
+    "external_project_site": null,
+    "gallery_page_url_src": [
+      "https://www.israel-canada.co.il/projects/tel-aviv/she"
+    ],
+    "render_urls_src": [],
+    "video_urls_src": [],
+    "brochure_pdf_src": [],
+    "floorplan_urls_src": [],
+    "site_plan_url_src": [],
+    "virtual_tour_url_src": [],
+    "bim_or_3d_available_src": [],
+    "aerial_or_streetview_ref_src": []
+  },
+  "content_angles": {
+    "usp": [
+      "White-City-inspired mixed-use luxury positioning",
+      "102-unit central Tel Aviv project"
+    ],
+    "buyer_questions": [
+      "What is the apartment/office split by floor?",
+      "Which heritage/White City constraints affect the design?"
+    ],
+    "audiences": [
+      "local",
+      "investor",
+      "olim_en",
+      "olim_fr",
+      "ru",
+      "ar"
+    ],
+    "keywords_he": [
+      "SHE תל אביב",
+      "הרצל יהודה הלוי",
+      "דירות יוקרה לב תל אביב"
+    ],
+    "keywords_en": [
+      "SHE Tel Aviv",
+      "Herzl Yehuda Halevi apartments"
+    ]
+  },
+  "confidence": {
+    "overall": "med",
+    "notes": "Architectural and unit info are good; building height/floors missing."
+  },
+  "field_sources": {
+    "identity.name_he": [
+      "https://www.israel-canada.co.il/projects/tel-aviv/she"
+    ],
+    "identity.name_en": [
+      "https://www.israel-canada.co.il/projects/tel-aviv/she"
+    ],
+    "identity.developer": [
+      "https://www.israel-canada.co.il/projects/tel-aviv/she"
+    ],
+    "identity.contractor": [
+      "https://www.israel-canada.co.il/projects/tel-aviv/she"
+    ],
+    "identity.architect": [
+      "https://www.israel-canada.co.il/projects/tel-aviv/she"
+    ],
+    "identity.marketing_status": [
+      "https://www.israel-canada.co.il/projects/tel-aviv/she"
+    ],
+    "location.address_he": [
+      "https://www.israel-canada.co.il/projects/tel-aviv/she"
+    ],
+    "location.city": [
+      "https://www.israel-canada.co.il/projects/tel-aviv/she"
+    ],
+    "location.neighborhood": [
+      "https://www.israel-canada.co.il/projects/tel-aviv/she"
+    ],
+    "context": [
+      "https://www.israel-canada.co.il/projects/tel-aviv/she"
+    ],
+    "building_form.floors": [
+      "https://www.israel-canada.co.il/projects/tel-aviv/she"
+    ],
+    "building_form.height_m": [
+      "https://www.israel-canada.co.il/projects/tel-aviv/she"
+    ],
+    "building_form.num_buildings": [
+      "https://www.israel-canada.co.il/projects/tel-aviv/she"
+    ],
+    "units.total_units": [
+      "https://www.israel-canada.co.il/projects/tel-aviv/she"
+    ],
+    "units.mix": [
+      "https://www.israel-canada.co.il/projects/tel-aviv/she"
+    ],
+    "urban_future.renewal_type": [
+      "https://www.israel-canada.co.il/projects/tel-aviv/she"
+    ],
+    "media.gallery_page_url": [
+      "https://www.israel-canada.co.il/projects/tel-aviv/she"
+    ]
+  },
+  "source_lines": [
+    "Israel Canada SHE lines 43-81."
+  ],
+  "evidence": [
+    "Israel Canada page states SHE at Herzl-Yehuda Halevi, one building, 102 residential units, architect and interior designer; homepage includes it in projects in marketing."
+  ],
+  "_unverified": [
+    "location.lat",
+    "location.lng",
+    "location.gis_confidence",
+    "building_form.footprint_shape",
+    "building_form.footprint_dims_m",
+    "building_form.main_facade_orientation_deg",
+    "context.dist_to_sea_m",
+    "context.sea_bearing_deg",
+    "market.area_ppsqm",
+    "prices"
+  ],
+  "context_src": [
+    "https://www.israel-canada.co.il/projects/tel-aviv/she"
+  ],
+  "db_meta": {
+    "source_batch": "chatgpt_gush_dan_2026-07-03",
+    "ingested_at": "2026-07-04",
+    "verification": "urls_http200_confirmed; sample content-verified; coords UNVERIFIED; prices ABSENT",
+    "canonical": true,
+    "ready_for_page": false,
+    "needs": [
+      "geocode",
+      "price",
+      "floors/units where null",
+      "media urls",
+      "5-lang article body"
+    ]
+  }
+}

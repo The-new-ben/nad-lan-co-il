@@ -1,0 +1,83 @@
+{
+  "id": "dimri-yama",
+  "identity": {
+    "name_he": "דמרי ימה",
+    "name_en": "Dimri Yama",
+    "aka": [],
+    "developer": "Y.H. Dimri",
+    "contractor": null,
+    "architect": "Rani Ziss Architects; interiors Kelly Hoppen CBE",
+    "marketing_status": "under_construction",
+    "urls": {
+      "official": null,
+      "madlan": null,
+      "yad2": null,
+      "developer": null
+    }
+  },
+  "location": {
+    "building_address": null,
+    "sales_office_address": null,
+    "city": "Tel Aviv-Yafo",
+    "neighborhood": "רובע שדה דב",
+    "gush": null,
+    "helka": null,
+    "lat": null,
+    "lng": null,
+    "geocode_status": "needs_geocode",
+    "geocode_source": null,
+    "coord_estimate_unverified": null,
+    "plot_polygon_geojson": null,
+    "ground_elevation_m": null
+  },
+  "context": {},
+  "building_form": {},
+  "units": {},
+  "market": {},
+  "urban_future": {},
+  "media": {
+    "gallery_page_url": null,
+    "render_urls": [
+      "assets/projects/dimri-yama/poster-prototype.webp"
+    ],
+    "site_plan_url": null
+  },
+  "assets_3d": {
+    "glb_model": "assets/projects/dimri-yama/model-prototype.glb",
+    "facade_variants": null,
+    "default_orbit": null,
+    "default_target": null,
+    "frame_radius": null,
+    "unit_hotspots": null,
+    "poster": null,
+    "asset_folder": "assets/projects/dimri-yama"
+  },
+  "content": {
+    "article": {
+      "he": null,
+      "en": null,
+      "fr": null,
+      "ru": null,
+      "ar": null
+    }
+  },
+  "confidence": {
+    "overall": "med",
+    "notes": "Our authored illustrative prototype. NOT in the ChatGPT batch. Rich local assets exist (unit-map, environment, drawings, facade svg). Prices are prototype-only per source-notes."
+  },
+  "db_meta": {
+    "source_batch": "nadlan_own_authored",
+    "ingested_at": "2026-07-04",
+    "verification": "our authored prototype assets exist in repo; identity real; prices/coords NOT verified",
+    "canonical": true,
+    "ready_for_page": false,
+    "needs": [
+      "geocode",
+      "official_url",
+      "price",
+      "verified floors/units",
+      "5-lang article body",
+      "production 3D model (current is illustrative prototype)"
+    ]
+  }
+}

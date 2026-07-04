@@ -1,0 +1,345 @@
+{
+  "id": "rainbow-sde-dov",
+  "identity": {
+    "name_he": "Rainbow שדה דב",
+    "name_en": "Rainbow Tel Aviv Sde Dov",
+    "aka": [],
+    "developer": "Israel Canada",
+    "contractor": "Ashtrom Group",
+    "architect": "Barel Levitsky Kassif de la Fontaine Architects",
+    "marketing_status": "under_construction",
+    "urls": {
+      "official": "https://www.israel-canada.co.il/projects/tel-aviv/rainbow",
+      "madlan": null,
+      "yad2": null,
+      "developer": null
+    },
+    "name_he_src": [
+      "https://www.israel-canada.co.il/projects/tel-aviv/rainbow"
+    ],
+    "name_en_src": [
+      "https://www.israel-canada.co.il/projects/tel-aviv/rainbow"
+    ],
+    "developer_src": [
+      "https://www.israel-canada.co.il/projects/tel-aviv/rainbow"
+    ],
+    "contractor_src": [
+      "https://www.israel-canada.co.il/projects/tel-aviv/rainbow"
+    ],
+    "architect_src": [
+      "https://www.israel-canada.co.il/projects/tel-aviv/rainbow"
+    ],
+    "marketing_status_src": [
+      "https://www.israel-canada.co.il/projects/tel-aviv/rainbow"
+    ]
+  },
+  "location": {
+    "address_he": "שכונת אשכול, שדה דב",
+    "city": "Tel Aviv-Yafo",
+    "neighborhood": "שדה דב / שכונת אשכול",
+    "gush": null,
+    "helka": null,
+    "gis_confidence": "approx",
+    "plot_polygon_geojson": null,
+    "ground_elevation_m": null,
+    "gis_note": "Approximate manual pin from public address/neighborhood wording; not official parcel-level geocoding. Replace with municipal/Mapbox/building geocode before publishing.",
+    "address_he_src": [
+      "https://www.israel-canada.co.il/projects/tel-aviv/rainbow"
+    ],
+    "city_src": [
+      "https://www.israel-canada.co.il/projects/tel-aviv/rainbow"
+    ],
+    "neighborhood_src": [
+      "https://www.israel-canada.co.il/projects/tel-aviv/rainbow"
+    ],
+    "lat_src": [],
+    "lng_src": [],
+    "gis_confidence_src": [],
+    "gis_note_src": [],
+    "lat": null,
+    "lng": null,
+    "coord_estimate_unverified": {
+      "lat": 32.1298,
+      "lng": 34.786
+    },
+    "geocode_status": "needs_geocode",
+    "coord_provenance": "chatgpt_manual_estimate_2026-07-03 (UNVERIFIED — do not use for the map; regeocode from address via govmap/Mapbox)"
+  },
+  "context": {
+    "dist_to_sea_m": null,
+    "sea_bearing_deg": null,
+    "seafront": true,
+    "terrain": null,
+    "skyline": "mixed",
+    "near": {
+      "park": {
+        "name": "Sde Dov parks / Park HaYarkon nearby",
+        "dist_m": null
+      },
+      "light_rail": {
+        "line": "Green Line",
+        "station": "",
+        "dist_m": null
+      },
+      "metro_planned": {
+        "line": "",
+        "dist_m": null
+      },
+      "train": {
+        "station": "",
+        "dist_m": null
+      },
+      "highway": {
+        "name": "Namir Road / Ayalon access",
+        "dist_m": null
+      },
+      "retail_mall": {
+        "name": "Ramat Aviv Mall",
+        "dist_m": null
+      },
+      "hospital": {
+        "name": "",
+        "dist_m": null
+      },
+      "schools": [],
+      "landmarks": [
+        "Tel Aviv Port",
+        "Tel Aviv University",
+        "Eretz Israel Museum",
+        "future marina"
+      ]
+    }
+  },
+  "building_form": {
+    "floors": 39,
+    "height_m": null,
+    "num_buildings": 7,
+    "footprint_shape": "mixed",
+    "footprint_dims_m": {
+      "x": null,
+      "z": null
+    },
+    "main_facade_orientation_deg": null,
+    "has_podium": true,
+    "podium_floors": null,
+    "setbacks": null,
+    "twist": null,
+    "facade_material": "mixed",
+    "balconies": true,
+    "notes": "FAQ says 39-floor iconic tower + six 8-floor boutique buildings; page top says 459 units but FAQ says 480 and 275+ sold in 2026. Stored FAQ count 480 with conflict noted.",
+    "floors_src": [
+      "https://www.israel-canada.co.il/projects/tel-aviv/rainbow"
+    ],
+    "height_m_src": [
+      "https://www.israel-canada.co.il/projects/tel-aviv/rainbow"
+    ],
+    "num_buildings_src": [
+      "https://www.israel-canada.co.il/projects/tel-aviv/rainbow"
+    ]
+  },
+  "units": {
+    "total_units": 480,
+    "mix": [
+      {
+        "rooms": "family apartments",
+        "count": null,
+        "sqm_min": null,
+        "sqm_max": null
+      },
+      {
+        "rooms": "garden apartments",
+        "count": null,
+        "sqm_min": null,
+        "sqm_max": null
+      },
+      {
+        "rooms": "penthouses",
+        "count": null,
+        "sqm_min": null,
+        "sqm_max": null
+      }
+    ],
+    "price_min": null,
+    "price_max": null,
+    "ppsqm_min": null,
+    "ppsqm_max": null,
+    "price_basis": null,
+    "price_date": "",
+    "total_units_src": [
+      "https://www.israel-canada.co.il/projects/tel-aviv/rainbow"
+    ],
+    "mix_src": [
+      "https://www.israel-canada.co.il/projects/tel-aviv/rainbow"
+    ],
+    "price_min_src": [],
+    "price_max_src": [],
+    "ppsqm_min_src": [],
+    "ppsqm_max_src": [],
+    "price_basis_src": [],
+    "price_date_src": []
+  },
+  "market": {
+    "area_ppsqm": null,
+    "nearby_projects": [],
+    "recent_area_deals": []
+  },
+  "urban_future": {
+    "taba_plan_numbers": [],
+    "taba_urls": [],
+    "planned_infrastructure": [
+      {
+        "type": "light_rail",
+        "line": "Green Line",
+        "station": null,
+        "source": "https://www.israel-canada.co.il/projects/tel-aviv/rainbow"
+      }
+    ],
+    "renewal_type": "new",
+    "renewal_type_src": [
+      "https://www.israel-canada.co.il/projects/tel-aviv/rainbow"
+    ]
+  },
+  "media": {
+    "render_urls": [],
+    "video_urls": [],
+    "brochure_pdf": null,
+    "floorplan_urls": [],
+    "site_plan_url": null,
+    "virtual_tour_url": null,
+    "bim_or_3d_available": "unknown",
+    "aerial_or_streetview_ref": null,
+    "gallery_page_url": "https://www.israel-canada.co.il/projects/tel-aviv/rainbow",
+    "external_project_site": null,
+    "gallery_page_url_src": [
+      "https://www.israel-canada.co.il/projects/tel-aviv/rainbow"
+    ],
+    "render_urls_src": [],
+    "video_urls_src": [],
+    "brochure_pdf_src": [],
+    "floorplan_urls_src": [],
+    "site_plan_url_src": [],
+    "virtual_tour_url_src": [],
+    "bim_or_3d_available_src": [],
+    "aerial_or_streetview_ref_src": []
+  },
+  "content_angles": {
+    "usp": [
+      "Flagship resort-living project on the Sde Dov coastline",
+      "39-floor tower plus six boutique buildings",
+      "Developer says 275+ of 480 sold as of 2026"
+    ],
+    "buyer_questions": [
+      "Which of the 480 units remain?",
+      "What are the exact tower and boutique-building delivery phases?"
+    ],
+    "audiences": [
+      "local",
+      "investor",
+      "olim_en",
+      "olim_fr",
+      "ru",
+      "ar"
+    ],
+    "keywords_he": [
+      "ריינבו שדה דב",
+      "דירות בשדה דב",
+      "Rainbow Tel Aviv"
+    ],
+    "keywords_en": [
+      "Rainbow Tel Aviv",
+      "Sde Dov luxury apartments"
+    ]
+  },
+  "confidence": {
+    "overall": "med",
+    "notes": "Official source contains unit-count conflict: 459 at page summary vs 480 in FAQ. Used 480 because FAQ gives sold/total context. Price data absent."
+  },
+  "field_sources": {
+    "identity.name_he": [
+      "https://www.israel-canada.co.il/projects/tel-aviv/rainbow"
+    ],
+    "identity.name_en": [
+      "https://www.israel-canada.co.il/projects/tel-aviv/rainbow"
+    ],
+    "identity.developer": [
+      "https://www.israel-canada.co.il/projects/tel-aviv/rainbow"
+    ],
+    "identity.contractor": [
+      "https://www.israel-canada.co.il/projects/tel-aviv/rainbow"
+    ],
+    "identity.architect": [
+      "https://www.israel-canada.co.il/projects/tel-aviv/rainbow"
+    ],
+    "identity.marketing_status": [
+      "https://www.israel-canada.co.il/projects/tel-aviv/rainbow"
+    ],
+    "location.address_he": [
+      "https://www.israel-canada.co.il/projects/tel-aviv/rainbow"
+    ],
+    "location.city": [
+      "https://www.israel-canada.co.il/projects/tel-aviv/rainbow"
+    ],
+    "location.neighborhood": [
+      "https://www.israel-canada.co.il/projects/tel-aviv/rainbow"
+    ],
+    "context": [
+      "https://www.israel-canada.co.il/projects/tel-aviv/rainbow"
+    ],
+    "building_form.floors": [
+      "https://www.israel-canada.co.il/projects/tel-aviv/rainbow"
+    ],
+    "building_form.height_m": [
+      "https://www.israel-canada.co.il/projects/tel-aviv/rainbow"
+    ],
+    "building_form.num_buildings": [
+      "https://www.israel-canada.co.il/projects/tel-aviv/rainbow"
+    ],
+    "units.total_units": [
+      "https://www.israel-canada.co.il/projects/tel-aviv/rainbow"
+    ],
+    "units.mix": [
+      "https://www.israel-canada.co.il/projects/tel-aviv/rainbow"
+    ],
+    "urban_future.renewal_type": [
+      "https://www.israel-canada.co.il/projects/tel-aviv/rainbow"
+    ],
+    "media.gallery_page_url": [
+      "https://www.israel-canada.co.il/projects/tel-aviv/rainbow"
+    ]
+  },
+  "source_lines": [
+    "Israel Canada Rainbow lines 43-88 and FAQ lines 92-161."
+  ],
+  "evidence": [
+    "Israel Canada page says Rainbow is in Sde Dov/Eshkol, 7 buildings, project flag, resort living, Barel Levitsky Kassif architects, 39-floor tower plus six 8-floor boutique buildings, 480 units, more than 275 sold as of 2026, first occupancy expected 2030, Ashtrom contractor."
+  ],
+  "_unverified": [
+    "location.lat",
+    "location.lng",
+    "location.gis_confidence",
+    "building_form.footprint_shape",
+    "building_form.footprint_dims_m",
+    "building_form.main_facade_orientation_deg",
+    "context.dist_to_sea_m",
+    "context.sea_bearing_deg",
+    "market.area_ppsqm",
+    "prices"
+  ],
+  "context_src": [
+    "https://www.israel-canada.co.il/projects/tel-aviv/rainbow"
+  ],
+  "db_meta": {
+    "source_batch": "chatgpt_gush_dan_2026-07-03",
+    "ingested_at": "2026-07-04",
+    "verification": "urls_http200_confirmed; sample content-verified; coords UNVERIFIED; prices ABSENT",
+    "canonical": true,
+    "ready_for_page": false,
+    "needs": [
+      "geocode",
+      "price",
+      "floors/units where null",
+      "media urls",
+      "5-lang article body"
+    ]
+  }
+}

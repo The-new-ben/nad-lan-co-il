@@ -1,0 +1,361 @@
+{
+  "id": "go-yafo-tel-aviv",
+  "identity": {
+    "name_he": "GO YAFO תל אביב",
+    "name_en": "GO YAFO Tel Aviv",
+    "aka": [],
+    "developer": "Ashtrom Residences / Ashdar + Acro",
+    "contractor": null,
+    "architect": "Barel Levitsky Kassif Architects",
+    "marketing_status": "under_construction",
+    "urls": {
+      "official": "https://www.ashtromegurim.co.il/projects/go-jaffa-tel-aviv",
+      "madlan": null,
+      "yad2": null,
+      "developer": null
+    },
+    "name_he_src": [
+      "https://www.ashtromegurim.co.il/projects/go-jaffa-tel-aviv"
+    ],
+    "name_en_src": [
+      "https://www.ashtromegurim.co.il/projects/go-jaffa-tel-aviv"
+    ],
+    "developer_src": [
+      "https://www.ashtromegurim.co.il/projects/go-jaffa-tel-aviv"
+    ],
+    "contractor_src": [
+      "https://www.ashtromegurim.co.il/projects/go-jaffa-tel-aviv"
+    ],
+    "architect_src": [
+      "https://www.ashtromegurim.co.il/projects/go-jaffa-tel-aviv"
+    ],
+    "marketing_status_src": [
+      "https://www.ashtromegurim.co.il/projects/go-jaffa-tel-aviv"
+    ]
+  },
+  "location": {
+    "address_he": "היינריך היינה / שדרות ירושלים",
+    "city": "Tel Aviv-Yafo",
+    "neighborhood": "יפו",
+    "gush": null,
+    "helka": null,
+    "gis_confidence": "approx",
+    "plot_polygon_geojson": null,
+    "ground_elevation_m": null,
+    "gis_note": "Approximate manual pin from public address/neighborhood wording; not official parcel-level geocoding. Replace with municipal/Mapbox/building geocode before publishing.",
+    "address_he_src": [
+      "https://www.ashtromegurim.co.il/projects/go-jaffa-tel-aviv"
+    ],
+    "city_src": [
+      "https://www.ashtromegurim.co.il/projects/go-jaffa-tel-aviv"
+    ],
+    "neighborhood_src": [
+      "https://www.ashtromegurim.co.il/projects/go-jaffa-tel-aviv"
+    ],
+    "lat_src": [],
+    "lng_src": [],
+    "gis_confidence_src": [],
+    "gis_note_src": [],
+    "lat": null,
+    "lng": null,
+    "coord_estimate_unverified": {
+      "lat": 32.0385,
+      "lng": 34.7599
+    },
+    "geocode_status": "needs_geocode",
+    "coord_provenance": "chatgpt_manual_estimate_2026-07-03 (UNVERIFIED — do not use for the map; regeocode from address via govmap/Mapbox)"
+  },
+  "context": {
+    "dist_to_sea_m": null,
+    "sea_bearing_deg": null,
+    "seafront": false,
+    "terrain": null,
+    "skyline": "mixed",
+    "near": {
+      "park": {
+        "name": "Park HaHoreshot / Davidov Park / Midron Yafo",
+        "dist_m": null
+      },
+      "light_rail": {
+        "line": "Red Line",
+        "station": "Isakov",
+        "dist_m": null
+      },
+      "metro_planned": {
+        "line": "M2",
+        "dist_m": null
+      },
+      "train": {
+        "station": "",
+        "dist_m": null
+      },
+      "highway": {
+        "name": "",
+        "dist_m": null
+      },
+      "retail_mall": {
+        "name": "",
+        "dist_m": null
+      },
+      "hospital": {
+        "name": "",
+        "dist_m": null
+      },
+      "schools": [],
+      "landmarks": [
+        "Jaffa Port",
+        "Clock Tower",
+        "Flea Market"
+      ]
+    }
+  },
+  "building_form": {
+    "floors": 17,
+    "height_m": null,
+    "num_buildings": 5,
+    "footprint_shape": "mixed",
+    "footprint_dims_m": {
+      "x": null,
+      "z": null
+    },
+    "main_facade_orientation_deg": null,
+    "has_podium": null,
+    "podium_floors": null,
+    "setbacks": null,
+    "twist": null,
+    "facade_material": "mixed",
+    "balconies": true,
+    "notes": "Five 15-17-floor towers/buildings; max floors stored in floors.",
+    "floors_src": [
+      "https://www.ashtromegurim.co.il/projects/go-jaffa-tel-aviv"
+    ],
+    "height_m_src": [
+      "https://www.ashtromegurim.co.il/projects/go-jaffa-tel-aviv"
+    ],
+    "num_buildings_src": [
+      "https://www.ashtromegurim.co.il/projects/go-jaffa-tel-aviv"
+    ]
+  },
+  "units": {
+    "total_units": 350,
+    "mix": [
+      {
+        "rooms": 2,
+        "count": null,
+        "sqm_min": null,
+        "sqm_max": null
+      },
+      {
+        "rooms": 3,
+        "count": null,
+        "sqm_min": null,
+        "sqm_max": null
+      },
+      {
+        "rooms": 4,
+        "count": null,
+        "sqm_min": null,
+        "sqm_max": null
+      },
+      {
+        "rooms": 5,
+        "count": null,
+        "sqm_min": null,
+        "sqm_max": null
+      },
+      {
+        "rooms": "mini-penthouse/penthouse",
+        "count": null,
+        "sqm_min": null,
+        "sqm_max": null
+      }
+    ],
+    "price_min": null,
+    "price_max": null,
+    "ppsqm_min": null,
+    "ppsqm_max": null,
+    "price_basis": null,
+    "price_date": "",
+    "total_units_src": [
+      "https://www.ashtromegurim.co.il/projects/go-jaffa-tel-aviv"
+    ],
+    "mix_src": [
+      "https://www.ashtromegurim.co.il/projects/go-jaffa-tel-aviv"
+    ],
+    "price_min_src": [],
+    "price_max_src": [],
+    "ppsqm_min_src": [],
+    "ppsqm_max_src": [],
+    "price_basis_src": [],
+    "price_date_src": []
+  },
+  "market": {
+    "area_ppsqm": null,
+    "nearby_projects": [],
+    "recent_area_deals": []
+  },
+  "urban_future": {
+    "taba_plan_numbers": [],
+    "taba_urls": [],
+    "planned_infrastructure": [
+      {
+        "type": "light_rail",
+        "line": "Red Line",
+        "station": "Isakov",
+        "source": "https://www.ashtromegurim.co.il/projects/go-jaffa-tel-aviv"
+      },
+      {
+        "type": "metro_planned",
+        "line": "M2",
+        "source": "https://www.ashtromegurim.co.il/projects/go-jaffa-tel-aviv"
+      }
+    ],
+    "renewal_type": "new",
+    "renewal_type_src": [
+      "https://www.ashtromegurim.co.il/projects/go-jaffa-tel-aviv"
+    ]
+  },
+  "media": {
+    "render_urls": [],
+    "video_urls": [],
+    "brochure_pdf": null,
+    "floorplan_urls": [],
+    "site_plan_url": null,
+    "virtual_tour_url": null,
+    "bim_or_3d_available": "unknown",
+    "aerial_or_streetview_ref": null,
+    "gallery_page_url": "https://www.ashtromegurim.co.il/projects/go-jaffa-tel-aviv",
+    "external_project_site": null,
+    "gallery_page_url_src": [
+      "https://www.ashtromegurim.co.il/projects/go-jaffa-tel-aviv"
+    ],
+    "render_urls_src": [],
+    "video_urls_src": [],
+    "brochure_pdf_src": [],
+    "floorplan_urls_src": [],
+    "site_plan_url_src": [],
+    "virtual_tour_url_src": [],
+    "bim_or_3d_available_src": [],
+    "aerial_or_streetview_ref_src": []
+  },
+  "content_angles": {
+    "usp": [
+      "350-unit new quarter in Jaffa",
+      "Red Line and planned Metro M2 context"
+    ],
+    "buyer_questions": [
+      "Which building phase is currently selling?",
+      "How do views differ between 15 and 17-floor buildings?"
+    ],
+    "audiences": [
+      "local",
+      "investor",
+      "olim_en",
+      "olim_fr",
+      "ru",
+      "ar"
+    ],
+    "keywords_he": [
+      "גו יפו",
+      "דירות חדשות ביפו",
+      "היינריך היינה דירות"
+    ],
+    "keywords_en": [
+      "GO YAFO",
+      "Jaffa new apartments",
+      "Heinrich Heine Tel Aviv"
+    ]
+  },
+  "confidence": {
+    "overall": "med",
+    "notes": "Strong official source; exact unit availability/prices absent."
+  },
+  "field_sources": {
+    "identity.name_he": [
+      "https://www.ashtromegurim.co.il/projects/go-jaffa-tel-aviv"
+    ],
+    "identity.name_en": [
+      "https://www.ashtromegurim.co.il/projects/go-jaffa-tel-aviv"
+    ],
+    "identity.developer": [
+      "https://www.ashtromegurim.co.il/projects/go-jaffa-tel-aviv"
+    ],
+    "identity.contractor": [
+      "https://www.ashtromegurim.co.il/projects/go-jaffa-tel-aviv"
+    ],
+    "identity.architect": [
+      "https://www.ashtromegurim.co.il/projects/go-jaffa-tel-aviv"
+    ],
+    "identity.marketing_status": [
+      "https://www.ashtromegurim.co.il/projects/go-jaffa-tel-aviv"
+    ],
+    "location.address_he": [
+      "https://www.ashtromegurim.co.il/projects/go-jaffa-tel-aviv"
+    ],
+    "location.city": [
+      "https://www.ashtromegurim.co.il/projects/go-jaffa-tel-aviv"
+    ],
+    "location.neighborhood": [
+      "https://www.ashtromegurim.co.il/projects/go-jaffa-tel-aviv"
+    ],
+    "context": [
+      "https://www.ashtromegurim.co.il/projects/go-jaffa-tel-aviv"
+    ],
+    "building_form.floors": [
+      "https://www.ashtromegurim.co.il/projects/go-jaffa-tel-aviv"
+    ],
+    "building_form.height_m": [
+      "https://www.ashtromegurim.co.il/projects/go-jaffa-tel-aviv"
+    ],
+    "building_form.num_buildings": [
+      "https://www.ashtromegurim.co.il/projects/go-jaffa-tel-aviv"
+    ],
+    "units.total_units": [
+      "https://www.ashtromegurim.co.il/projects/go-jaffa-tel-aviv"
+    ],
+    "units.mix": [
+      "https://www.ashtromegurim.co.il/projects/go-jaffa-tel-aviv"
+    ],
+    "urban_future.renewal_type": [
+      "https://www.ashtromegurim.co.il/projects/go-jaffa-tel-aviv"
+    ],
+    "media.gallery_page_url": [
+      "https://www.ashtromegurim.co.il/projects/go-jaffa-tel-aviv"
+    ]
+  },
+  "source_lines": [
+    "Ashtrom GO YAFO lines 46-81."
+  ],
+  "evidence": [
+    "Ashtrom page marks בשיווק, 5 buildings, 350 units, expected 2027 occupancy, Heinrich Heine/Jerusalem Blvd location, red-line Isakov station and planned Metro M2."
+  ],
+  "_unverified": [
+    "location.lat",
+    "location.lng",
+    "location.gis_confidence",
+    "building_form.footprint_shape",
+    "building_form.footprint_dims_m",
+    "building_form.main_facade_orientation_deg",
+    "context.dist_to_sea_m",
+    "context.sea_bearing_deg",
+    "market.area_ppsqm",
+    "prices"
+  ],
+  "context_src": [
+    "https://www.ashtromegurim.co.il/projects/go-jaffa-tel-aviv"
+  ],
+  "db_meta": {
+    "source_batch": "chatgpt_gush_dan_2026-07-03",
+    "ingested_at": "2026-07-04",
+    "verification": "urls_http200_confirmed; sample content-verified; coords UNVERIFIED; prices ABSENT",
+    "canonical": true,
+    "ready_for_page": false,
+    "needs": [
+      "geocode",
+      "price",
+      "floors/units where null",
+      "media urls",
+      "5-lang article body"
+    ]
+  }
+}

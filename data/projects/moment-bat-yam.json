@@ -1,0 +1,330 @@
+{
+  "id": "moment-bat-yam",
+  "identity": {
+    "name_he": "MOMENT בת ים",
+    "name_en": "MOMENT Bat Yam",
+    "aka": [],
+    "developer": "Azorim",
+    "contractor": null,
+    "architect": null,
+    "marketing_status": "under_construction",
+    "urls": {
+      "official": "https://www.azorim.co.il/projects/%D7%91%D7%AA-%D7%99%D7%9D-moment/",
+      "madlan": null,
+      "yad2": null,
+      "developer": null
+    },
+    "name_he_src": [
+      "https://www.azorim.co.il/projects/%D7%91%D7%AA-%D7%99%D7%9D-moment/"
+    ],
+    "name_en_src": [
+      "https://www.azorim.co.il/projects/%D7%91%D7%AA-%D7%99%D7%9D-moment/"
+    ],
+    "developer_src": [
+      "https://www.azorim.co.il/projects/%D7%91%D7%AA-%D7%99%D7%9D-moment/"
+    ],
+    "contractor_src": [
+      "https://www.azorim.co.il/projects/%D7%91%D7%AA-%D7%99%D7%9D-moment/"
+    ],
+    "architect_src": [
+      "https://www.azorim.co.il/projects/%D7%91%D7%AA-%D7%99%D7%9D-moment/"
+    ],
+    "marketing_status_src": [
+      "https://www.azorim.co.il/projects/%D7%91%D7%AA-%D7%99%D7%9D-moment/"
+    ]
+  },
+  "location": {
+    "address_he": null,
+    "city": "Bat Yam",
+    "neighborhood": "מרכז/ציר בן גוריון",
+    "gush": null,
+    "helka": null,
+    "gis_confidence": "approx",
+    "plot_polygon_geojson": null,
+    "ground_elevation_m": null,
+    "gis_note": "Approximate manual pin from public address/neighborhood wording; not official parcel-level geocoding. Replace with municipal/Mapbox/building geocode before publishing.",
+    "address_he_src": [
+      "https://www.azorim.co.il/projects/%D7%91%D7%AA-%D7%99%D7%9D-moment/"
+    ],
+    "city_src": [
+      "https://www.azorim.co.il/projects/%D7%91%D7%AA-%D7%99%D7%9D-moment/"
+    ],
+    "neighborhood_src": [
+      "https://www.azorim.co.il/projects/%D7%91%D7%AA-%D7%99%D7%9D-moment/"
+    ],
+    "lat_src": [],
+    "lng_src": [],
+    "gis_confidence_src": [],
+    "gis_note_src": [],
+    "lat": null,
+    "lng": null,
+    "coord_estimate_unverified": {
+      "lat": 32.0163,
+      "lng": 34.7422
+    },
+    "geocode_status": "needs_geocode",
+    "coord_provenance": "chatgpt_manual_estimate_2026-07-03 (UNVERIFIED — do not use for the map; regeocode from address via govmap/Mapbox)"
+  },
+  "context": {
+    "dist_to_sea_m": null,
+    "sea_bearing_deg": null,
+    "seafront": false,
+    "terrain": null,
+    "skyline": "mixed",
+    "near": {
+      "park": {
+        "name": "",
+        "dist_m": null
+      },
+      "light_rail": {
+        "line": "Red Line",
+        "station": "",
+        "dist_m": null
+      },
+      "metro_planned": {
+        "line": "",
+        "dist_m": null
+      },
+      "train": {
+        "station": "",
+        "dist_m": null
+      },
+      "highway": {
+        "name": "",
+        "dist_m": null
+      },
+      "retail_mall": {
+        "name": "local commercial center",
+        "dist_m": null
+      },
+      "hospital": {
+        "name": "",
+        "dist_m": null
+      },
+      "schools": [],
+      "landmarks": [
+        "urban piazza",
+        "roof garden"
+      ]
+    }
+  },
+  "building_form": {
+    "floors": null,
+    "height_m": null,
+    "num_buildings": null,
+    "footprint_shape": null,
+    "footprint_dims_m": {
+      "x": null,
+      "z": null
+    },
+    "main_facade_orientation_deg": null,
+    "has_podium": null,
+    "podium_floors": null,
+    "setbacks": null,
+    "twist": null,
+    "facade_material": null,
+    "balconies": null,
+    "notes": null,
+    "floors_src": [
+      "https://www.azorim.co.il/projects/%D7%91%D7%AA-%D7%99%D7%9D-moment/"
+    ],
+    "height_m_src": [
+      "https://www.azorim.co.il/projects/%D7%91%D7%AA-%D7%99%D7%9D-moment/"
+    ],
+    "num_buildings_src": [
+      "https://www.azorim.co.il/projects/%D7%91%D7%AA-%D7%99%D7%9D-moment/"
+    ]
+  },
+  "units": {
+    "total_units": null,
+    "mix": [
+      {
+        "rooms": null,
+        "count": null,
+        "sqm_min": null,
+        "sqm_max": null
+      }
+    ],
+    "price_min": null,
+    "price_max": null,
+    "ppsqm_min": null,
+    "ppsqm_max": null,
+    "price_basis": null,
+    "price_date": "",
+    "total_units_src": [
+      "https://www.azorim.co.il/projects/%D7%91%D7%AA-%D7%99%D7%9D-moment/"
+    ],
+    "mix_src": [
+      "https://www.azorim.co.il/projects/%D7%91%D7%AA-%D7%99%D7%9D-moment/"
+    ],
+    "price_min_src": [],
+    "price_max_src": [],
+    "ppsqm_min_src": [],
+    "ppsqm_max_src": [],
+    "price_basis_src": [],
+    "price_date_src": []
+  },
+  "market": {
+    "area_ppsqm": null,
+    "nearby_projects": [],
+    "recent_area_deals": []
+  },
+  "urban_future": {
+    "taba_plan_numbers": [],
+    "taba_urls": [],
+    "planned_infrastructure": [
+      {
+        "type": "light_rail",
+        "line": "Red Line",
+        "station": null,
+        "source": "https://www.azorim.co.il/projects/%D7%91%D7%AA-%D7%99%D7%9D-moment/"
+      }
+    ],
+    "renewal_type": "new",
+    "renewal_type_src": [
+      "https://www.azorim.co.il/projects/%D7%91%D7%AA-%D7%99%D7%9D-moment/"
+    ]
+  },
+  "media": {
+    "render_urls": [],
+    "video_urls": [],
+    "brochure_pdf": null,
+    "floorplan_urls": [],
+    "site_plan_url": null,
+    "virtual_tour_url": null,
+    "bim_or_3d_available": "unknown",
+    "aerial_or_streetview_ref": null,
+    "gallery_page_url": "https://www.azorim.co.il/projects/%D7%91%D7%AA-%D7%99%D7%9D-moment/",
+    "external_project_site": null,
+    "gallery_page_url_src": [
+      "https://www.azorim.co.il/projects/%D7%91%D7%AA-%D7%99%D7%9D-moment/"
+    ],
+    "render_urls_src": [],
+    "video_urls_src": [],
+    "brochure_pdf_src": [],
+    "floorplan_urls_src": [],
+    "site_plan_url_src": [],
+    "virtual_tour_url_src": [],
+    "bim_or_3d_available_src": [],
+    "aerial_or_streetview_ref_src": []
+  },
+  "content_angles": {
+    "usp": [
+      "Urban mixed-use feel with piazza and roof garden",
+      "Light rail proximity noted by developer"
+    ],
+    "buyer_questions": [
+      "Where exactly is the residential tower entrance?",
+      "Which light rail station is closest?"
+    ],
+    "audiences": [
+      "local",
+      "investor",
+      "olim_en",
+      "olim_fr",
+      "ru",
+      "ar"
+    ],
+    "keywords_he": [
+      "מומנט בת ים",
+      "דירות חדשות בת ים",
+      "פרויקט אזורים בת ים"
+    ],
+    "keywords_en": [
+      "Moment Bat Yam",
+      "new apartments Bat Yam"
+    ]
+  },
+  "confidence": {
+    "overall": "med",
+    "notes": "Official page confirms marketing page and context but does not expose exact project address, floors, or unit count in parsed text."
+  },
+  "field_sources": {
+    "identity.name_he": [
+      "https://www.azorim.co.il/projects/%D7%91%D7%AA-%D7%99%D7%9D-moment/"
+    ],
+    "identity.name_en": [
+      "https://www.azorim.co.il/projects/%D7%91%D7%AA-%D7%99%D7%9D-moment/"
+    ],
+    "identity.developer": [
+      "https://www.azorim.co.il/projects/%D7%91%D7%AA-%D7%99%D7%9D-moment/"
+    ],
+    "identity.contractor": [
+      "https://www.azorim.co.il/projects/%D7%91%D7%AA-%D7%99%D7%9D-moment/"
+    ],
+    "identity.architect": [
+      "https://www.azorim.co.il/projects/%D7%91%D7%AA-%D7%99%D7%9D-moment/"
+    ],
+    "identity.marketing_status": [
+      "https://www.azorim.co.il/projects/%D7%91%D7%AA-%D7%99%D7%9D-moment/"
+    ],
+    "location.address_he": [
+      "https://www.azorim.co.il/projects/%D7%91%D7%AA-%D7%99%D7%9D-moment/"
+    ],
+    "location.city": [
+      "https://www.azorim.co.il/projects/%D7%91%D7%AA-%D7%99%D7%9D-moment/"
+    ],
+    "location.neighborhood": [
+      "https://www.azorim.co.il/projects/%D7%91%D7%AA-%D7%99%D7%9D-moment/"
+    ],
+    "context": [
+      "https://www.azorim.co.il/projects/%D7%91%D7%AA-%D7%99%D7%9D-moment/"
+    ],
+    "building_form.floors": [
+      "https://www.azorim.co.il/projects/%D7%91%D7%AA-%D7%99%D7%9D-moment/"
+    ],
+    "building_form.height_m": [
+      "https://www.azorim.co.il/projects/%D7%91%D7%AA-%D7%99%D7%9D-moment/"
+    ],
+    "building_form.num_buildings": [
+      "https://www.azorim.co.il/projects/%D7%91%D7%AA-%D7%99%D7%9D-moment/"
+    ],
+    "units.total_units": [
+      "https://www.azorim.co.il/projects/%D7%91%D7%AA-%D7%99%D7%9D-moment/"
+    ],
+    "units.mix": [
+      "https://www.azorim.co.il/projects/%D7%91%D7%AA-%D7%99%D7%9D-moment/"
+    ],
+    "urban_future.renewal_type": [
+      "https://www.azorim.co.il/projects/%D7%91%D7%AA-%D7%99%D7%9D-moment/"
+    ],
+    "media.gallery_page_url": [
+      "https://www.azorim.co.il/projects/%D7%91%D7%AA-%D7%99%D7%9D-moment/"
+    ]
+  },
+  "source_lines": [
+    "Azorim MOMENT lines 31-37 and 68-100; sales office at Derech Ben Gurion 136 lines 111-115."
+  ],
+  "evidence": [
+    "Azorim page identifies MOMENT Bat Yam and lists urban piazza, roof garden, nearby light rail and commercial center."
+  ],
+  "_unverified": [
+    "location.lat",
+    "location.lng",
+    "location.gis_confidence",
+    "building_form.footprint_shape",
+    "building_form.footprint_dims_m",
+    "building_form.main_facade_orientation_deg",
+    "context.dist_to_sea_m",
+    "context.sea_bearing_deg",
+    "market.area_ppsqm",
+    "prices"
+  ],
+  "context_src": [
+    "https://www.azorim.co.il/projects/%D7%91%D7%AA-%D7%99%D7%9D-moment/"
+  ],
+  "db_meta": {
+    "source_batch": "chatgpt_gush_dan_2026-07-03",
+    "ingested_at": "2026-07-04",
+    "verification": "urls_http200_confirmed; sample content-verified; coords UNVERIFIED; prices ABSENT",
+    "canonical": true,
+    "ready_for_page": false,
+    "needs": [
+      "geocode",
+      "price",
+      "floors/units where null",
+      "media urls",
+      "5-lang article body"
+    ]
+  }
+}

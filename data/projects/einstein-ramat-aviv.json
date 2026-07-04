@@ -1,0 +1,341 @@
+{
+  "id": "einstein-ramat-aviv",
+  "identity": {
+    "name_he": "איינשטיין רמת אביב",
+    "name_en": "Einstein Ramat Aviv",
+    "aka": [],
+    "developer": "Ashtrom Residences / Ashdar",
+    "contractor": null,
+    "architect": "Ehud Shani",
+    "marketing_status": "final_units",
+    "urls": {
+      "official": "https://www.ashtromegurim.co.il/projects/ashdar-einstein",
+      "madlan": null,
+      "yad2": null,
+      "developer": null
+    },
+    "name_he_src": [
+      "https://www.ashtromegurim.co.il/projects/ashdar-einstein"
+    ],
+    "name_en_src": [
+      "https://www.ashtromegurim.co.il/projects/ashdar-einstein"
+    ],
+    "developer_src": [
+      "https://www.ashtromegurim.co.il/projects/ashdar-einstein"
+    ],
+    "contractor_src": [
+      "https://www.ashtromegurim.co.il/projects/ashdar-einstein"
+    ],
+    "architect_src": [
+      "https://www.ashtromegurim.co.il/projects/ashdar-einstein"
+    ],
+    "marketing_status_src": [
+      "https://www.ashtromegurim.co.il/projects/ashdar-einstein"
+    ]
+  },
+  "location": {
+    "address_he": "רחוב איינשטיין",
+    "city": "Tel Aviv-Yafo",
+    "neighborhood": "נווה אביבים / רמת אביב",
+    "gush": null,
+    "helka": null,
+    "gis_confidence": "approx",
+    "plot_polygon_geojson": null,
+    "ground_elevation_m": null,
+    "gis_note": "Approximate manual pin from public address/neighborhood wording; not official parcel-level geocoding. Replace with municipal/Mapbox/building geocode before publishing.",
+    "address_he_src": [
+      "https://www.ashtromegurim.co.il/projects/ashdar-einstein"
+    ],
+    "city_src": [
+      "https://www.ashtromegurim.co.il/projects/ashdar-einstein"
+    ],
+    "neighborhood_src": [
+      "https://www.ashtromegurim.co.il/projects/ashdar-einstein"
+    ],
+    "lat_src": [],
+    "lng_src": [],
+    "gis_confidence_src": [],
+    "gis_note_src": [],
+    "lat": null,
+    "lng": null,
+    "coord_estimate_unverified": {
+      "lat": 32.1141,
+      "lng": 34.797
+    },
+    "geocode_status": "needs_geocode",
+    "coord_provenance": "chatgpt_manual_estimate_2026-07-03 (UNVERIFIED — do not use for the map; regeocode from address via govmap/Mapbox)"
+  },
+  "context": {
+    "dist_to_sea_m": null,
+    "sea_bearing_deg": null,
+    "seafront": false,
+    "terrain": null,
+    "skyline": "midrise",
+    "near": {
+      "park": {
+        "name": "",
+        "dist_m": null
+      },
+      "light_rail": {
+        "line": "Green Line",
+        "station": "",
+        "dist_m": null
+      },
+      "metro_planned": {
+        "line": "",
+        "dist_m": null
+      },
+      "train": {
+        "station": "",
+        "dist_m": null
+      },
+      "highway": {
+        "name": "",
+        "dist_m": null
+      },
+      "retail_mall": {
+        "name": "Ramat Aviv Mall",
+        "dist_m": null
+      },
+      "hospital": {
+        "name": "",
+        "dist_m": null
+      },
+      "schools": [],
+      "landmarks": [
+        "Neve Avivim"
+      ]
+    }
+  },
+  "building_form": {
+    "floors": 8,
+    "height_m": null,
+    "num_buildings": 1,
+    "footprint_shape": "rect",
+    "footprint_dims_m": {
+      "x": null,
+      "z": null
+    },
+    "main_facade_orientation_deg": null,
+    "has_podium": null,
+    "podium_floors": null,
+    "setbacks": null,
+    "twist": null,
+    "facade_material": "mixed",
+    "balconies": true,
+    "notes": "Homepage lists 45 units; project page says 8-floor boutique building with two apartments per floor and three entrances.",
+    "floors_src": [
+      "https://www.ashtromegurim.co.il/projects/ashdar-einstein"
+    ],
+    "height_m_src": [
+      "https://www.ashtromegurim.co.il/projects/ashdar-einstein"
+    ],
+    "num_buildings_src": [
+      "https://www.ashtromegurim.co.il/projects/ashdar-einstein"
+    ]
+  },
+  "units": {
+    "total_units": 45,
+    "mix": [
+      {
+        "rooms": 3,
+        "count": null,
+        "sqm_min": null,
+        "sqm_max": null
+      },
+      {
+        "rooms": 4,
+        "count": null,
+        "sqm_min": null,
+        "sqm_max": null
+      },
+      {
+        "rooms": "penthouse",
+        "count": null,
+        "sqm_min": null,
+        "sqm_max": null
+      }
+    ],
+    "price_min": null,
+    "price_max": null,
+    "ppsqm_min": null,
+    "ppsqm_max": null,
+    "price_basis": null,
+    "price_date": "",
+    "total_units_src": [
+      "https://www.ashtromegurim.co.il/projects/ashdar-einstein"
+    ],
+    "mix_src": [
+      "https://www.ashtromegurim.co.il/projects/ashdar-einstein"
+    ],
+    "price_min_src": [],
+    "price_max_src": [],
+    "ppsqm_min_src": [],
+    "ppsqm_max_src": [],
+    "price_basis_src": [],
+    "price_date_src": []
+  },
+  "market": {
+    "area_ppsqm": null,
+    "nearby_projects": [],
+    "recent_area_deals": []
+  },
+  "urban_future": {
+    "taba_plan_numbers": [],
+    "taba_urls": [],
+    "planned_infrastructure": [
+      {
+        "type": "light_rail",
+        "line": "Green Line",
+        "station": null,
+        "source": "https://www.ashtromegurim.co.il/projects/ashdar-einstein"
+      }
+    ],
+    "renewal_type": "new",
+    "renewal_type_src": [
+      "https://www.ashtromegurim.co.il/projects/ashdar-einstein"
+    ]
+  },
+  "media": {
+    "render_urls": [],
+    "video_urls": [],
+    "brochure_pdf": null,
+    "floorplan_urls": [],
+    "site_plan_url": null,
+    "virtual_tour_url": null,
+    "bim_or_3d_available": "unknown",
+    "aerial_or_streetview_ref": null,
+    "gallery_page_url": "https://www.ashtromegurim.co.il/projects/ashdar-einstein",
+    "external_project_site": null,
+    "gallery_page_url_src": [
+      "https://www.ashtromegurim.co.il/projects/ashdar-einstein"
+    ],
+    "render_urls_src": [],
+    "video_urls_src": [],
+    "brochure_pdf_src": [],
+    "floorplan_urls_src": [],
+    "site_plan_url_src": [],
+    "virtual_tour_url_src": [],
+    "bim_or_3d_available_src": [],
+    "aerial_or_streetview_ref_src": []
+  },
+  "content_angles": {
+    "usp": [
+      "Immediate occupancy in Ramat Aviv",
+      "Future Green Line proximity noted by developer"
+    ],
+    "buyer_questions": [
+      "Which penthouses remain?",
+      "What is the exact Green Line station distance?"
+    ],
+    "audiences": [
+      "local",
+      "investor",
+      "olim_en",
+      "olim_fr",
+      "ru",
+      "ar"
+    ],
+    "keywords_he": [
+      "איינשטיין רמת אביב",
+      "דירות נווה אביבים",
+      "אשדר איינשטיין"
+    ],
+    "keywords_en": [
+      "Einstein Ramat Aviv",
+      "Neve Avivim boutique apartments"
+    ]
+  },
+  "confidence": {
+    "overall": "med",
+    "notes": "Unit count sourced from Ashtrom homepage rather than detail page; cross-check before publishing."
+  },
+  "field_sources": {
+    "identity.name_he": [
+      "https://www.ashtromegurim.co.il/projects/ashdar-einstein"
+    ],
+    "identity.name_en": [
+      "https://www.ashtromegurim.co.il/projects/ashdar-einstein"
+    ],
+    "identity.developer": [
+      "https://www.ashtromegurim.co.il/projects/ashdar-einstein"
+    ],
+    "identity.contractor": [
+      "https://www.ashtromegurim.co.il/projects/ashdar-einstein"
+    ],
+    "identity.architect": [
+      "https://www.ashtromegurim.co.il/projects/ashdar-einstein"
+    ],
+    "identity.marketing_status": [
+      "https://www.ashtromegurim.co.il/projects/ashdar-einstein"
+    ],
+    "location.address_he": [
+      "https://www.ashtromegurim.co.il/projects/ashdar-einstein"
+    ],
+    "location.city": [
+      "https://www.ashtromegurim.co.il/projects/ashdar-einstein"
+    ],
+    "location.neighborhood": [
+      "https://www.ashtromegurim.co.il/projects/ashdar-einstein"
+    ],
+    "context": [
+      "https://www.ashtromegurim.co.il/projects/ashdar-einstein"
+    ],
+    "building_form.floors": [
+      "https://www.ashtromegurim.co.il/projects/ashdar-einstein"
+    ],
+    "building_form.height_m": [
+      "https://www.ashtromegurim.co.il/projects/ashdar-einstein"
+    ],
+    "building_form.num_buildings": [
+      "https://www.ashtromegurim.co.il/projects/ashdar-einstein"
+    ],
+    "units.total_units": [
+      "https://www.ashtromegurim.co.il/projects/ashdar-einstein"
+    ],
+    "units.mix": [
+      "https://www.ashtromegurim.co.il/projects/ashdar-einstein"
+    ],
+    "urban_future.renewal_type": [
+      "https://www.ashtromegurim.co.il/projects/ashdar-einstein"
+    ],
+    "media.gallery_page_url": [
+      "https://www.ashtromegurim.co.il/projects/ashdar-einstein"
+    ]
+  },
+  "source_lines": [
+    "Ashtrom Einstein lines 46-83; homepage line 58 lists 45 units."
+  ],
+  "evidence": [
+    "Ashtrom page marks immediate occupancy, 8-floor boutique building, 3-4 room apartments and penthouses, architect Ehud Shani; homepage lists 45 units."
+  ],
+  "_unverified": [
+    "location.lat",
+    "location.lng",
+    "location.gis_confidence",
+    "building_form.footprint_shape",
+    "building_form.footprint_dims_m",
+    "building_form.main_facade_orientation_deg",
+    "context.dist_to_sea_m",
+    "context.sea_bearing_deg",
+    "market.area_ppsqm",
+    "prices"
+  ],
+  "context_src": [
+    "https://www.ashtromegurim.co.il/projects/ashdar-einstein"
+  ],
+  "db_meta": {
+    "source_batch": "chatgpt_gush_dan_2026-07-03",
+    "ingested_at": "2026-07-04",
+    "verification": "urls_http200_confirmed; sample content-verified; coords UNVERIFIED; prices ABSENT",
+    "canonical": true,
+    "ready_for_page": false,
+    "needs": [
+      "geocode",
+      "price",
+      "floors/units where null",
+      "media urls",
+      "5-lang article body"
+    ]
+  }
+}

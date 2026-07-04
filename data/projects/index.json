@@ -1,0 +1,338 @@
+{
+  "generated_at": "2026-07-04",
+  "count": 33,
+  "schema": "_schema.json",
+  "note": "Canonical project DB. ready_for_page=false everywhere until geocode+price+media+article filled.",
+  "projects": [
+    {
+      "id": "a-neot-afeka",
+      "name_he": "A-NEOT AFEKA",
+      "name_en": "A-Neot Afeka",
+      "city": "Tel Aviv-Yafo",
+      "developer": "Ashtrom Residences / Ashdar",
+      "status": "under_construction",
+      "ready_for_page": false,
+      "source": "chatgpt_gush_dan_2026-07-03"
+    },
+    {
+      "id": "ashira-sde-dov",
+      "name_he": "אשירה שדה דב",
+      "name_en": "Ashira Sde Dov",
+      "city": "Tel Aviv-Yafo",
+      "developer": "(TBD — confirm developer)",
+      "status": "under_construction",
+      "ready_for_page": false,
+      "source": "nadlan_own_authored"
+    },
+    {
+      "id": "azorim-amos-tel-aviv",
+      "name_he": "אזורים עמוס תל אביב",
+      "name_en": "Azorim Amos Tel Aviv",
+      "city": "Tel Aviv-Yafo",
+      "developer": "Azorim",
+      "status": "under_construction",
+      "ready_for_page": false,
+      "source": "chatgpt_gush_dan_2026-07-03"
+    },
+    {
+      "id": "azorim-malachi-tel-aviv",
+      "name_he": "אזורים מלאכי תל אביב",
+      "name_en": "Azorim Malachi Tel Aviv",
+      "city": "Tel Aviv-Yafo",
+      "developer": "Azorim",
+      "status": "under_construction",
+      "ready_for_page": false,
+      "source": "chatgpt_gush_dan_2026-07-03"
+    },
+    {
+      "id": "azorim-remez-tel-aviv",
+      "name_he": "אזורים רמז תל אביב",
+      "name_en": "Azorim Remez Tel Aviv",
+      "city": "Tel Aviv-Yafo",
+      "developer": "Azorim",
+      "status": "under_construction",
+      "ready_for_page": false,
+      "source": "chatgpt_gush_dan_2026-07-03"
+    },
+    {
+      "id": "d-point-jaffa",
+      "name_he": "D-Point",
+      "name_en": "D-Point Jaffa",
+      "city": "Tel Aviv-Yafo",
+      "developer": "Shikun & Binui Real Estate + ARK Group",
+      "status": "under_construction",
+      "ready_for_page": false,
+      "source": "chatgpt_gush_dan_2026-07-03"
+    },
+    {
+      "id": "dimri-yama",
+      "name_he": "דמרי ימה",
+      "name_en": "Dimri Yama",
+      "city": "Tel Aviv-Yafo",
+      "developer": "Y.H. Dimri",
+      "status": "under_construction",
+      "ready_for_page": false,
+      "source": "nadlan_own_authored"
+    },
+    {
+      "id": "einstein-ramat-aviv",
+      "name_he": "איינשטיין רמת אביב",
+      "name_en": "Einstein Ramat Aviv",
+      "city": "Tel Aviv-Yafo",
+      "developer": "Ashtrom Residences / Ashdar",
+      "status": "final_units",
+      "ready_for_page": false,
+      "source": "chatgpt_gush_dan_2026-07-03"
+    },
+    {
+      "id": "even-shaprot-herzliya",
+      "name_he": "אבן שפרוט הרצליה",
+      "name_en": "Even Shaprot Herzliya",
+      "city": "Herzliya",
+      "developer": "Ashtrom Residences / Ashdar",
+      "status": "under_construction",
+      "ready_for_page": false,
+      "source": "chatgpt_gush_dan_2026-07-03"
+    },
+    {
+      "id": "exchange-ramat-gan",
+      "name_he": "EXCHANGE רמת גן",
+      "name_en": "EXCHANGE Ramat Gan",
+      "city": "Ramat Gan",
+      "developer": "Azorim",
+      "status": "under_construction",
+      "ready_for_page": false,
+      "source": "chatgpt_gush_dan_2026-07-03"
+    },
+    {
+      "id": "go-yafo-tel-aviv",
+      "name_he": "GO YAFO תל אביב",
+      "name_en": "GO YAFO Tel Aviv",
+      "city": "Tel Aviv-Yafo",
+      "developer": "Ashtrom Residences / Ashdar + Acro",
+      "status": "under_construction",
+      "ready_for_page": false,
+      "source": "chatgpt_gush_dan_2026-07-03"
+    },
+    {
+      "id": "haatzmaut-herzliya",
+      "name_he": "העצמאות הרצליה",
+      "name_en": "Haatzmaut Herzliya",
+      "city": "Herzliya",
+      "developer": "Ashtrom Residences / Ashdar",
+      "status": "final_units",
+      "ready_for_page": false,
+      "source": "chatgpt_gush_dan_2026-07-03"
+    },
+    {
+      "id": "halomot-park-hayam-bat-yam",
+      "name_he": "חלומות פארק הים",
+      "name_en": "Halomot Park HaYam",
+      "city": "Bat Yam",
+      "developer": "Shikun & Binui Real Estate",
+      "status": "under_construction",
+      "ready_for_page": false,
+      "source": "chatgpt_gush_dan_2026-07-03"
+    },
+    {
+      "id": "herzliya-ville",
+      "name_he": "הרצליה VILLE",
+      "name_en": "Herzliya VILLE",
+      "city": "Herzliya",
+      "developer": "Azorim",
+      "status": "under_construction",
+      "ready_for_page": false,
+      "source": "chatgpt_gush_dan_2026-07-03"
+    },
+    {
+      "id": "i-neot-afeka",
+      "name_he": "i-Neot Afeka",
+      "name_en": "i-Neot Afeka",
+      "city": "Tel Aviv-Yafo",
+      "developer": "Ashtrom Residences / Ashdar",
+      "status": "under_construction",
+      "ready_for_page": false,
+      "source": "chatgpt_gush_dan_2026-07-03"
+    },
+    {
+      "id": "krinitzi-hadasha",
+      "name_he": "קריניצי החדשה",
+      "name_en": "Krinitzi Hadasha",
+      "city": "Ramat Gan",
+      "developer": "Ashtrom Residences / Ashdar + Azorim + Tzemach Hammerman",
+      "status": "under_construction",
+      "ready_for_page": false,
+      "source": "chatgpt_gush_dan_2026-07-03"
+    },
+    {
+      "id": "metropolis-afk-kehilat-padova",
+      "name_he": "A.F.K קהילת פאדובה 19-23",
+      "name_en": "A.F.K Kehilat Padova 19-23",
+      "city": "Tel Aviv-Yafo",
+      "developer": "Metropolis + Shikun & Binui",
+      "status": "under_construction",
+      "ready_for_page": false,
+      "source": "chatgpt_gush_dan_2026-07-03"
+    },
+    {
+      "id": "metropolis-alterman-10-12",
+      "name_he": "אלתרמן 10-12",
+      "name_en": "Alterman 10-12",
+      "city": "Tel Aviv-Yafo",
+      "developer": "Metropolis",
+      "status": "under_construction",
+      "ready_for_page": false,
+      "source": "chatgpt_gush_dan_2026-07-03"
+    },
+    {
+      "id": "metropolis-reading-22-24",
+      "name_he": "רדינג 22-24",
+      "name_en": "Reading 22-24",
+      "city": "Tel Aviv-Yafo",
+      "developer": "Metropolis",
+      "status": "under_construction",
+      "ready_for_page": false,
+      "source": "chatgpt_gush_dan_2026-07-03"
+    },
+    {
+      "id": "migdal-dubnov-4",
+      "name_he": "מגדל דובנוב 4",
+      "name_en": "Dubnov Tower 4",
+      "city": "Tel Aviv-Yafo",
+      "developer": "Israel Canada",
+      "status": "under_construction",
+      "ready_for_page": false,
+      "source": "chatgpt_gush_dan_2026-07-03"
+    },
+    {
+      "id": "moment-bat-yam",
+      "name_he": "MOMENT בת ים",
+      "name_en": "MOMENT Bat Yam",
+      "city": "Bat Yam",
+      "developer": "Azorim",
+      "status": "under_construction",
+      "ready_for_page": false,
+      "source": "chatgpt_gush_dan_2026-07-03"
+    },
+    {
+      "id": "oliver-tel-aviv",
+      "name_he": "OLIVER תל אביב",
+      "name_en": "OLIVER Tel Aviv",
+      "city": "Tel Aviv-Yafo",
+      "developer": "Azorim + Shalom & Natan",
+      "status": "under_construction",
+      "ready_for_page": false,
+      "source": "chatgpt_gush_dan_2026-07-03"
+    },
+    {
+      "id": "park-tower-ramat-gan",
+      "name_he": "Park Tower רמת גן",
+      "name_en": "Park Tower Ramat Gan",
+      "city": "Ramat Gan",
+      "developer": "Ashtrom Residences / Ashdar + Enav",
+      "status": "under_construction",
+      "ready_for_page": false,
+      "source": "chatgpt_gush_dan_2026-07-03"
+    },
+    {
+      "id": "people-tel-aviv",
+      "name_he": "People תל אביב",
+      "name_en": "People Tel Aviv",
+      "city": "Tel Aviv-Yafo",
+      "developer": "Israel Canada",
+      "status": "under_construction",
+      "ready_for_page": false,
+      "source": "chatgpt_gush_dan_2026-07-03"
+    },
+    {
+      "id": "rainbow-sde-dov",
+      "name_he": "Rainbow שדה דב",
+      "name_en": "Rainbow Tel Aviv Sde Dov",
+      "city": "Tel Aviv-Yafo",
+      "developer": "Israel Canada",
+      "status": "under_construction",
+      "ready_for_page": false,
+      "source": "chatgpt_gush_dan_2026-07-03"
+    },
+    {
+      "id": "recanati-residence",
+      "name_he": "Recanati Residence",
+      "name_en": "Recanati Residence",
+      "city": "Tel Aviv-Yafo",
+      "developer": "Ashtrom Residences / Ashdar + Enav",
+      "status": "final_units",
+      "ready_for_page": false,
+      "source": "chatgpt_gush_dan_2026-07-03"
+    },
+    {
+      "id": "remez-36",
+      "name_he": "REMEZ 36",
+      "name_en": "REMEZ 36",
+      "city": "Tel Aviv-Yafo",
+      "developer": "Ashtrom Residences / Ashdar",
+      "status": "under_construction",
+      "ready_for_page": false,
+      "source": "chatgpt_gush_dan_2026-07-03"
+    },
+    {
+      "id": "she-tel-aviv",
+      "name_he": "SHE תל אביב",
+      "name_en": "SHE Tel Aviv",
+      "city": "Tel Aviv-Yafo",
+      "developer": "Israel Canada",
+      "status": "under_construction",
+      "ready_for_page": false,
+      "source": "chatgpt_gush_dan_2026-07-03"
+    },
+    {
+      "id": "symphony-holon",
+      "name_he": "SYMPHONY קריית שרת חולון",
+      "name_en": "SYMPHONY Holon",
+      "city": "Holon",
+      "developer": "Azorim",
+      "status": "under_construction",
+      "ready_for_page": false,
+      "source": "chatgpt_gush_dan_2026-07-03"
+    },
+    {
+      "id": "tagor-ramat-aviv",
+      "name_he": "טאגור רמת אביב",
+      "name_en": "Tagor Ramat Aviv",
+      "city": "Tel Aviv-Yafo",
+      "developer": "Ashtrom Residences / Ashdar",
+      "status": "final_units",
+      "ready_for_page": false,
+      "source": "chatgpt_gush_dan_2026-07-03"
+    },
+    {
+      "id": "tarad-ramat-gan",
+      "name_he": "תער״ד רמת גן",
+      "name_en": "TARA'D Ramat Gan",
+      "city": "Ramat Gan",
+      "developer": "Ashtrom Residences / Ashdar",
+      "status": "final_units",
+      "ready_for_page": false,
+      "source": "chatgpt_gush_dan_2026-07-03"
+    },
+    {
+      "id": "vertical-city-ramat-gan",
+      "name_he": "Vertical City רמת גן",
+      "name_en": "Vertical City Ramat Gan",
+      "city": "Ramat Gan",
+      "developer": "Israel Canada",
+      "status": "under_construction",
+      "ready_for_page": false,
+      "source": "chatgpt_gush_dan_2026-07-03"
+    },
+    {
+      "id": "zohi-sde-dov",
+      "name_he": "זוהי תל אביב בשדה דב",
+      "name_en": "Zohi Tel Aviv Sde Dov",
+      "city": "Tel Aviv-Yafo",
+      "developer": "Metropolis",
+      "status": "under_construction",
+      "ready_for_page": false,
+      "source": "chatgpt_gush_dan_2026-07-03"
+    }
+  ]
+}
