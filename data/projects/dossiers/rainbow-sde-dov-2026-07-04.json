@@ -1,0 +1,2345 @@
+{
+  "schema_version": "rainbow-page-grade-dossier-v1",
+  "generated_at": "2026-07-04",
+  "honesty_statement": {
+    "value": "Exact advertising budget by project is not public across all developers. Rainbow Tel Aviv was selected because Israel Canada's 2025 annual report explicitly says the increase in marketing and branding expenses was mainly due to Rainbow, and the developer homepage shows active campaign/event content for Rainbow. This is an evidence-based proxy, not a proven all-market ad-spend ranking.",
+    "evidence_ids": [
+      "E_REPORT_SELECTION_ADSPEND",
+      "E_HOMEPAGE_MARKETING"
+    ]
+  },
+  "project_selected": {
+    "selection_logic": {
+      "value": "highest observable marketing-budget proxy among the researched Gush Dan projects",
+      "evidence_ids": [
+        "E_REPORT_SELECTION_ADSPEND",
+        "E_HOMEPAGE_MARKETING",
+        "E_HOMEPAGE_EN_MARKETING"
+      ]
+    },
+    "project_name_he": {
+      "value": "פרויקט Rainbow",
+      "evidence_ids": [
+        "E_OFFICIAL_HE_IDENTITY"
+      ]
+    },
+    "project_name_en": {
+      "value": "Rainbow Tel Aviv",
+      "evidence_ids": [
+        "E_OFFICIAL_EN_STRUCTURED"
+      ]
+    },
+    "developer": {
+      "value": "Israel Canada / ישראל קנדה",
+      "evidence_ids": [
+        "E_OFFICIAL_HE_IDENTITY",
+        "E_HOMEPAGE_MARKETING"
+      ]
+    },
+    "official_url_he": {
+      "value": "https://www.israel-canada.co.il/projects/tel-aviv/rainbow",
+      "evidence_ids": [
+        "E_OFFICIAL_HE_IDENTITY"
+      ]
+    },
+    "official_url_en": {
+      "value": "https://www.israel-canada.co.il/en/projects/tel-aviv/rainbow",
+      "evidence_ids": [
+        "E_OFFICIAL_EN_STRUCTURED"
+      ]
+    },
+    "status": {
+      "value": "actively marketed / בשיווק",
+      "evidence_ids": [
+        "E_HOMEPAGE_MARKETING",
+        "E_REPORT_TIMELINE"
+      ]
+    },
+    "advertising_budget_rank_claim": {
+      "value": null,
+      "reason": "No public source found with a cross-developer ranking or exact ad-spend number for Rainbow versus all Israeli projects.",
+      "attempted_sources": [
+        "Israel Canada annual report",
+        "Israel Canada homepage campaign content"
+      ]
+    }
+  },
+  "seo": {
+    "serp_title_he": {
+      "value": "פרויקט Rainbow Tel Aviv שדה דב | ריזורט מגורים יוקרתי",
+      "evidence_ids": [
+        "E_OFFICIAL_HE_IDENTITY"
+      ],
+      "note": "Official/developer page title observed by web retrieval; not independently verified in live Google SERP."
+    },
+    "serp_title_en": {
+      "value": "Rainbow Tel Aviv | Coastal Resort Living in Sde Dov",
+      "evidence_ids": [
+        "E_OFFICIAL_EN_STRUCTURED"
+      ],
+      "note": "Official/developer English page title observed by web retrieval; not independently verified in live Google SERP."
+    },
+    "h1_he": {
+      "value": "פרויקט Rainbow",
+      "evidence_ids": [
+        "E_OFFICIAL_HE_IDENTITY"
+      ]
+    },
+    "h1_en": {
+      "value": "Rainbow Tel Aviv",
+      "evidence_ids": [
+        "E_OFFICIAL_EN_STRUCTURED"
+      ]
+    },
+    "meta_description_he": {
+      "value": "Rainbow תל אביב בשדה דב: ריזורט מגורים יוקרתי על קו החוף, 7 בניינים, 459 דירות ומתקני Wellness, בריכות וקונסיירז׳.",
+      "evidence_ids": [
+        "E_OFFICIAL_HE_IDENTITY",
+        "E_OFFICIAL_HE_STRUCTURED",
+        "E_OFFICIAL_AMENITIES_LIST"
+      ]
+    },
+    "meta_description_en": {
+      "value": "Rainbow Tel Aviv in Sde Dov: coastal resort living by Israel Canada, 7 buildings, 459 homes, wellness, pools and concierge services.",
+      "evidence_ids": [
+        "E_OFFICIAL_EN_STRUCTURED",
+        "E_OFFICIAL_AMENITIES_LIST"
+      ]
+    },
+    "name_variants": [
+      {
+        "value": "Rainbow",
+        "evidence_ids": [
+          "E_HOMEPAGE_MARKETING"
+        ]
+      },
+      {
+        "value": "Rainbow Tel Aviv",
+        "evidence_ids": [
+          "E_HOMEPAGE_EN_MARKETING",
+          "E_OFFICIAL_EN_STRUCTURED"
+        ]
+      },
+      {
+        "value": "Rainbow tel aviv",
+        "evidence_ids": [
+          "E_HOMEPAGE_MARKETING"
+        ]
+      },
+      {
+        "value": "פרויקט Rainbow",
+        "evidence_ids": [
+          "E_OFFICIAL_HE_IDENTITY"
+        ]
+      },
+      {
+        "value": "ריינבו תל אביב",
+        "evidence_ids": [
+          "E_HOMEPAGE_MARKETING"
+        ],
+        "note": "Hebrew transliteration appears in homepage campaign wording as 'פרויקט ריינבו'."
+      },
+      {
+        "value": "Rainbow שדה דב",
+        "evidence_ids": [
+          "E_OFFICIAL_HE_IDENTITY"
+        ]
+      },
+      {
+        "value": "Rainbow Tel Aviv שדה דב",
+        "evidence_ids": [
+          "E_OFFICIAL_HE_IDENTITY"
+        ]
+      },
+      {
+        "value": "פרויקט Rainbow מתחם שדה דב",
+        "evidence_ids": [
+          "E_REPORT_PARCELS"
+        ]
+      }
+    ],
+    "brand_search_terms": [
+      {
+        "value": "Rainbow Tel Aviv",
+        "evidence_ids": [
+          "E_HOMEPAGE_EN_MARKETING"
+        ]
+      },
+      {
+        "value": "Rainbow שדה דב",
+        "evidence_ids": [
+          "E_OFFICIAL_HE_IDENTITY"
+        ]
+      },
+      {
+        "value": "פרויקט ריינבו שדה דב",
+        "evidence_ids": [
+          "E_HOMEPAGE_MARKETING"
+        ]
+      },
+      {
+        "value": "ישראל קנדה Rainbow",
+        "evidence_ids": [
+          "E_HOMEPAGE_MARKETING"
+        ]
+      },
+      {
+        "value": "Rainbow Tel Aviv Israel Canada",
+        "evidence_ids": [
+          "E_HOMEPAGE_EN_MARKETING"
+        ]
+      },
+      {
+        "value": "Rainbow דירות שדה דב",
+        "evidence_ids": [
+          "E_OFFICIAL_UNITS_DELIVERY"
+        ]
+      },
+      {
+        "value": "Rainbow Tel Aviv City Hall",
+        "evidence_ids": [
+          "E_OFFICIAL_CITYHALL_ENV"
+        ]
+      },
+      {
+        "value": "Rainbow Tel Aviv Ashstrom",
+        "evidence_ids": [
+          "E_OFFICIAL_CONTRACTOR_FORM"
+        ]
+      }
+    ]
+  },
+  "world": {
+    "building_or_parcel_address": {
+      "value": null,
+      "reason": "No street address or house number was found in the retrieved official page or annual report. The annual report provides parcel/gush identifiers instead.",
+      "attempted_sources": [
+        "E_OFFICIAL_HE_STRUCTURED",
+        "E_REPORT_PARCELS"
+      ]
+    },
+    "sales_office_address": {
+      "value": null,
+      "reason": "The retrieved sources did not provide a distinct Rainbow sales-office address. Developer company headquarters were not used as a sales-office address.",
+      "attempted_sources": [
+        "E_OFFICIAL_HE_IDENTITY",
+        "E_HOMEPAGE_MARKETING"
+      ]
+    },
+    "parcel_identifier": {
+      "gush": {
+        "value": "6634",
+        "evidence_ids": [
+          "E_REPORT_PARCELS"
+        ]
+      },
+      "helka_parts": {
+        "value": [
+          15,
+          164,
+          169,
+          208,
+          209,
+          312,
+          314,
+          324
+        ],
+        "evidence_ids": [
+          "E_REPORT_PARCELS"
+        ],
+        "note": "Annual-report text is PDF-extracted and line order is slightly garbled; the parcel list is preserved as quoted."
+      }
+    },
+    "city": {
+      "value": "Tel Aviv",
+      "evidence_ids": [
+        "E_OFFICIAL_HE_STRUCTURED",
+        "E_OFFICIAL_EN_STRUCTURED"
+      ]
+    },
+    "neighborhood": {
+      "value": "שכונת אשכול / Eshkol Neighborhood",
+      "evidence_ids": [
+        "E_OFFICIAL_HE_STRUCTURED",
+        "E_OFFICIAL_EN_STRUCTURED"
+      ]
+    },
+    "district_context": {
+      "value": "Sde Dov / north Tel Aviv coastline redevelopment",
+      "evidence_ids": [
+        "E_OFFICIAL_HE_IDENTITY",
+        "E_OFFICIAL_NEIGHBORHOOD",
+        "E_REPORT_PARCELS"
+      ]
+    },
+    "geocoding": {
+      "lat": {
+        "value": null,
+        "reason": "Latitude intentionally not output by rule; downstream authoritative geocoder must use building address or parcel identifiers."
+      },
+      "lng": {
+        "value": null,
+        "reason": "Longitude intentionally not output by rule; downstream authoritative geocoder must use building address or parcel identifiers."
+      },
+      "geocode_queue_input": {
+        "value": "Gush 6634; parts of parcels 15, 164, 169, 208, 209, 312, 314, 324; Sde Dov compound, Tel Aviv",
+        "evidence_ids": [
+          "E_REPORT_PARCELS"
+        ]
+      },
+      "geocode_warning": {
+        "value": "Do not geocode from a sales office or from a manually estimated point. Use govmap/parcel or municipal GIS using the parcel identifiers.",
+        "evidence_ids": [
+          "E_REPORT_PARCELS"
+        ]
+      }
+    },
+    "sea_beach": {
+      "distance_m": {
+        "value": null,
+        "reason": "Exact building-to-beach distance cannot be calculated without verified parcel geometry/geocode."
+      },
+      "walking_time_min": {
+        "value": null,
+        "reason": "Exact walking time requires verified geocode and pedestrian routing."
+      },
+      "driving_time_min": {
+        "value": null,
+        "reason": "Exact driving time requires verified geocode and routing."
+      },
+      "bearing_to_sea_deg": {
+        "value": null,
+        "reason": "Compass bearing requires verified parcel point/geometry."
+      },
+      "coastal_or_sea_context": {
+        "value": "officially marketed as on the Sde Dov coastline / northern Tel Aviv shore",
+        "evidence_ids": [
+          "E_OFFICIAL_HE_IDENTITY",
+          "E_OFFICIAL_EN_STRUCTURED"
+        ]
+      },
+      "sea_view_claim": {
+        "value": "some units are marketed with an open view to the Mediterranean",
+        "evidence_ids": [
+          "E_OFFICIAL_UNITS_DELIVERY"
+        ],
+        "note": "Not converted into a building-wide sea-view guarantee."
+      }
+    },
+    "parks_green": [
+      {
+        "name": {
+          "value": "parks around the project / פארקים",
+          "evidence_ids": [
+            "E_OFFICIAL_WORLD_AMENITIES",
+            "E_OFFICIAL_NEIGHBORHOOD"
+          ]
+        },
+        "distance_m": {
+          "value": null,
+          "reason": "Not published; requires geocoding."
+        },
+        "walking_time_min": {
+          "value": null,
+          "reason": "Requires geocoding/routing."
+        }
+      },
+      {
+        "name": {
+          "value": "Yarkon Park / פארק הירקון",
+          "evidence_ids": [
+            "E_OFFICIAL_NEIGHBORHOOD"
+          ]
+        },
+        "distance_m": {
+          "value": null,
+          "reason": "Not published on source; requires geocoding."
+        },
+        "walking_time_min": {
+          "value": null,
+          "reason": "Requires geocoding/routing."
+        }
+      },
+      {
+        "name": {
+          "value": "promenade / הטיילת",
+          "evidence_ids": [
+            "E_OFFICIAL_WORLD_AMENITIES"
+          ]
+        },
+        "distance_m": {
+          "value": null,
+          "reason": "Not published on source; requires geocoding."
+        },
+        "walking_time_min": {
+          "value": null,
+          "reason": "Requires geocoding/routing."
+        }
+      },
+      {
+        "name": {
+          "value": "future marina / המרינה העתידית",
+          "evidence_ids": [
+            "E_OFFICIAL_WORLD_AMENITIES"
+          ]
+        },
+        "distance_m": {
+          "value": null,
+          "reason": "Not published on source; requires geocoding and planning-layer review."
+        },
+        "walking_time_min": {
+          "value": null,
+          "reason": "Requires geocoding/routing."
+        }
+      }
+    ],
+    "transit": {
+      "light_rail": [
+        {
+          "line": {
+            "value": "Green Line / הקו הירוק",
+            "evidence_ids": [
+              "E_OFFICIAL_WORLD_AMENITIES",
+              "E_OFFICIAL_NEIGHBORHOOD",
+              "E_WIKI_GREEN_LINE_SECONDARY"
+            ]
+          },
+          "nearest_station": {
+            "value": null,
+            "reason": "Official project page states direct Green Line connection but does not name the nearest station."
+          },
+          "distance_m": {
+            "value": null,
+            "reason": "Requires verified parcel geocode and transit-layer station geometry."
+          },
+          "walking_time_min": {
+            "value": null,
+            "reason": "Requires verified routing."
+          },
+          "status": {
+            "value": "under construction; secondary source says opening in stages 2028/2030",
+            "evidence_ids": [
+              "E_WIKI_GREEN_LINE_SECONDARY"
+            ],
+            "source_class": "secondary_unofficial"
+          }
+        }
+      ],
+      "metro_planned": [],
+      "train_station": [],
+      "bike_paths": [
+        {
+          "name": {
+            "value": "bike paths / שבילי אופניים",
+            "evidence_ids": [
+              "E_OFFICIAL_NEIGHBORHOOD"
+            ]
+          },
+          "distance_m": {
+            "value": null,
+            "reason": "Requires municipal/GIS layer."
+          }
+        }
+      ],
+      "roads_highways": [
+        {
+          "name": {
+            "value": "Ayalon / איילון",
+            "evidence_ids": [
+              "E_OFFICIAL_NEIGHBORHOOD"
+            ]
+          },
+          "distance_m": {
+            "value": null,
+            "reason": "Requires geocoding."
+          }
+        },
+        {
+          "name": {
+            "value": "Namir / נמיר",
+            "evidence_ids": [
+              "E_OFFICIAL_NEIGHBORHOOD"
+            ]
+          },
+          "distance_m": {
+            "value": null,
+            "reason": "Requires geocoding."
+          }
+        },
+        {
+          "name": {
+            "value": "Ibn Gabirol extension / הארכת אבן גבירול",
+            "evidence_ids": [
+              "E_OFFICIAL_NEIGHBORHOOD"
+            ]
+          },
+          "distance_m": {
+            "value": null,
+            "reason": "Requires municipal planning/GIS confirmation."
+          }
+        }
+      ]
+    },
+    "retail_food": [
+      {
+        "name": {
+          "value": "commercial areas / שטחי מסחר",
+          "evidence_ids": [
+            "E_OFFICIAL_WORLD_AMENITIES"
+          ]
+        },
+        "distance_m": {
+          "value": null,
+          "reason": "Requires site plan/geocode."
+        }
+      },
+      {
+        "name": {
+          "value": "Ramat Aviv Mall / קניון רמת אביב",
+          "evidence_ids": [
+            "E_OFFICIAL_NEIGHBORHOOD"
+          ]
+        },
+        "distance_m": {
+          "value": null,
+          "reason": "Not calculated in this pass."
+        }
+      },
+      {
+        "name": {
+          "value": "culinary options in Eshkol Quarter",
+          "evidence_ids": [
+            "E_OFFICIAL_EN_STRUCTURED"
+          ]
+        },
+        "distance_m": {
+          "value": null,
+          "reason": "Not published; future/local context only."
+        }
+      }
+    ],
+    "health": [],
+    "education": [
+      {
+        "name": {
+          "value": "educational institutions / מוסדות חינוך",
+          "evidence_ids": [
+            "E_OFFICIAL_WORLD_AMENITIES"
+          ]
+        },
+        "type": {
+          "value": null,
+          "reason": "Specific school/kindergarten names were not found in the retrieved official sources."
+        },
+        "distance_m": {
+          "value": null,
+          "reason": "Requires geocoding and municipal education-layer sweep."
+        }
+      }
+    ],
+    "employment_culture_landmarks": [
+      {
+        "name": {
+          "value": "Tel Aviv Port / נמל תל אביב",
+          "evidence_ids": [
+            "E_OFFICIAL_NEIGHBORHOOD"
+          ]
+        },
+        "type": {
+          "value": "landmark / culture / leisure",
+          "evidence_ids": [
+            "E_OFFICIAL_NEIGHBORHOOD"
+          ]
+        },
+        "distance_m": {
+          "value": null,
+          "reason": "Not calculated in this pass."
+        }
+      },
+      {
+        "name": {
+          "value": "Tel Aviv University / אוניברסיטת תל אביב",
+          "evidence_ids": [
+            "E_OFFICIAL_NEIGHBORHOOD"
+          ]
+        },
+        "type": {
+          "value": "education/employment anchor",
+          "evidence_ids": [
+            "E_OFFICIAL_NEIGHBORHOOD"
+          ]
+        },
+        "distance_m": {
+          "value": null,
+          "reason": "Not calculated in this pass."
+        }
+      },
+      {
+        "name": {
+          "value": "Eretz Israel Museum / מוזיאון ארץ ישראל",
+          "evidence_ids": [
+            "E_OFFICIAL_NEIGHBORHOOD"
+          ]
+        },
+        "type": {
+          "value": "culture",
+          "evidence_ids": [
+            "E_OFFICIAL_NEIGHBORHOOD"
+          ]
+        },
+        "distance_m": {
+          "value": null,
+          "reason": "Not calculated in this pass."
+        }
+      },
+      {
+        "name": {
+          "value": "EXPO / גני התערוכה",
+          "evidence_ids": [
+            "E_OFFICIAL_NEIGHBORHOOD"
+          ]
+        },
+        "type": {
+          "value": "culture/events/business",
+          "evidence_ids": [
+            "E_OFFICIAL_NEIGHBORHOOD"
+          ]
+        },
+        "distance_m": {
+          "value": null,
+          "reason": "Not calculated in this pass."
+        }
+      }
+    ],
+    "adjacent_future_plans": [
+      {
+        "description": {
+          "value": "Former Sde Dov redevelopment context includes large-scale future residential, office and hotel construction",
+          "evidence_ids": [
+            "E_WIKI_SDE_DOV_SECONDARY"
+          ],
+          "source_class": "secondary_unofficial"
+        },
+        "plan_number": {
+          "value": null,
+          "reason": "No official Mavat or municipal plan number was resolved in this pass."
+        },
+        "view_blockage_risk": {
+          "value": "high-level risk exists because the broader former airport site is planned for major buildout; exact adjacent-lot tower/view impact not verified",
+          "evidence_ids": [
+            "E_WIKI_SDE_DOV_SECONDARY"
+          ],
+          "source_class": "inference_from_secondary_context"
+        }
+      },
+      {
+        "description": {
+          "value": "Approved project-level building plan allows 459 dwellings and ~1,600 sqm commercial on the Rainbow plot",
+          "evidence_ids": [
+            "E_REPORT_PLANNING_PERMITS"
+          ]
+        },
+        "plan_number": {
+          "value": null,
+          "reason": "Annual report states approval/publication date but not the plan number."
+        },
+        "view_blockage_risk": {
+          "value": null,
+          "reason": "Requires official adjacent-lot GIS/planning overlay."
+        }
+      }
+    ]
+  },
+  "recon_3d": {
+    "num_buildings": {
+      "value": 7,
+      "evidence_ids": [
+        "E_OFFICIAL_HE_STRUCTURED",
+        "E_OFFICIAL_EN_STRUCTURED"
+      ]
+    },
+    "building_breakdown": [
+      {
+        "label": {
+          "value": "iconic luxury residential tower",
+          "evidence_ids": [
+            "E_OFFICIAL_CONTRACTOR_FORM"
+          ]
+        },
+        "floors": {
+          "value": 39,
+          "evidence_ids": [
+            "E_OFFICIAL_CONTRACTOR_FORM"
+          ]
+        },
+        "height_m": {
+          "value": null,
+          "reason": "Not published in retrieved sources."
+        },
+        "ground_podium_floors": {
+          "value": null,
+          "reason": "No podium-floor count found."
+        },
+        "lobby_amenity_floors": {
+          "value": null,
+          "reason": "Amenities are listed but floor allocation not published."
+        },
+        "evidence_ids": [
+          "E_OFFICIAL_CONTRACTOR_FORM"
+        ]
+      },
+      {
+        "label": {
+          "value": "six boutique buildings",
+          "evidence_ids": [
+            "E_OFFICIAL_CONTRACTOR_FORM"
+          ]
+        },
+        "count": {
+          "value": 6,
+          "evidence_ids": [
+            "E_OFFICIAL_CONTRACTOR_FORM"
+          ]
+        },
+        "floors_each": {
+          "value": 8,
+          "evidence_ids": [
+            "E_OFFICIAL_CONTRACTOR_FORM"
+          ]
+        },
+        "height_m": {
+          "value": null,
+          "reason": "Not published in retrieved sources."
+        },
+        "ground_podium_floors": {
+          "value": null,
+          "reason": "No podium-floor count found."
+        },
+        "evidence_ids": [
+          "E_OFFICIAL_CONTRACTOR_FORM"
+        ]
+      }
+    ],
+    "footprint": {
+      "shape": {
+        "value": null,
+        "reason": "No reliable footprint drawing or polygon was retrieved; do not infer from renders."
+      },
+      "rough_dimensions_m": {
+        "value": null,
+        "reason": "Requires parcel polygon/site plan."
+      },
+      "main_facade_orientation_deg": {
+        "value": null,
+        "reason": "Requires verified site plan or georeferenced footprint."
+      },
+      "parcel_land_area_sqm": {
+        "value": 8647,
+        "evidence_ids": [
+          "E_REPORT_TIMELINE"
+        ]
+      }
+    },
+    "typical_floor_plans": [],
+    "apartments_per_floor": {
+      "value": null,
+      "reason": "No typical-floor plan, apartment-line plan, or floor-by-floor inventory was retrieved."
+    },
+    "unit_line_orientation_map": {
+      "value": null,
+      "reason": "Not published in retrieved sources; cannot map clickable apartment spots to real lines."
+    },
+    "facade_elevations": [],
+    "facade_material_color_palette": {
+      "value": null,
+      "reason": "Official render URLs exist, but no textual/specification source for facade materials or color palette was retrieved."
+    },
+    "balcony_pattern_rhythm": {
+      "value": null,
+      "reason": "Visible renders are insufficient for factual extraction; no elevation/source spec retrieved."
+    },
+    "roof_or_crown_feature": {
+      "value": null,
+      "reason": "No source text/elevation spec retrieved."
+    },
+    "architectural_signature": {
+      "value": "one iconic residential tower plus six boutique buildings",
+      "evidence_ids": [
+        "E_OFFICIAL_CONTRACTOR_FORM"
+      ]
+    },
+    "bim_or_3d_available": {
+      "value": null,
+      "reason": "No BIM/3D selectable model URL was found."
+    },
+    "recon_blocker_note": {
+      "value": "Clickable-apartment and facade-grid model cannot be truthfully generated until floor plans/elevations/unit line schemes are acquired.",
+      "evidence_ids": [
+        "E_OFFICIAL_CONTRACTOR_FORM",
+        "E_REPORT_PARCELS"
+      ]
+    }
+  },
+  "units": {
+    "total_units_official_structured": {
+      "value": 459,
+      "evidence_ids": [
+        "E_OFFICIAL_HE_STRUCTURED",
+        "E_OFFICIAL_EN_STRUCTURED",
+        "E_REPORT_PLANNING_PERMITS"
+      ]
+    },
+    "total_units_conflicting_marketing_text": {
+      "value": 480,
+      "evidence_ids": [
+        "E_OFFICIAL_CONTRACTOR_FORM",
+        "E_OFFICIAL_UNITS_DELIVERY"
+      ]
+    },
+    "conflict_summary": {
+      "value": "Current authoritative count should be treated as 459 because the annual report states the unit count was updated from 480 to 459, while older/marketing prose still says 480.",
+      "evidence_ids": [
+        "E_REPORT_PLANNING_PERMITS",
+        "E_OFFICIAL_CONTRACTOR_FORM",
+        "E_OFFICIAL_UNITS_DELIVERY"
+      ]
+    },
+    "residential_marketed_area_sqm": {
+      "value": 46200,
+      "evidence_ids": [
+        "E_REPORT_PLANNING_PERMITS"
+      ],
+      "note": "Annual report also gives ~46,340 sqm in a nearby project-description row; see conflicts."
+    },
+    "commercial_area_sqm_gross": {
+      "value": 1600,
+      "evidence_ids": [
+        "E_REPORT_PLANNING_PERMITS",
+        "E_REPORT_PARCELS"
+      ]
+    },
+    "mix": [
+      {
+        "type": {
+          "value": "luxury apartments / דירות יוקרה",
+          "evidence_ids": [
+            "E_OFFICIAL_UNITS_DELIVERY"
+          ]
+        },
+        "rooms": {
+          "value": null,
+          "reason": "Room count not published for this type."
+        },
+        "sqm_min": {
+          "value": null,
+          "reason": "Not published."
+        },
+        "sqm_max": {
+          "value": null,
+          "reason": "Not published."
+        },
+        "count": {
+          "value": null,
+          "reason": "Not published."
+        }
+      },
+      {
+        "type": {
+          "value": "family apartments / דירות משפחתיות",
+          "evidence_ids": [
+            "E_OFFICIAL_UNITS_DELIVERY"
+          ]
+        },
+        "rooms": {
+          "value": null,
+          "reason": "Not published."
+        },
+        "sqm_min": {
+          "value": null,
+          "reason": "Not published."
+        },
+        "sqm_max": {
+          "value": null,
+          "reason": "Not published."
+        },
+        "count": {
+          "value": null,
+          "reason": "Not published."
+        }
+      },
+      {
+        "type": {
+          "value": "garden apartments / דירות גן",
+          "evidence_ids": [
+            "E_OFFICIAL_UNITS_DELIVERY"
+          ]
+        },
+        "rooms": {
+          "value": null,
+          "reason": "Not published."
+        },
+        "sqm_min": {
+          "value": null,
+          "reason": "Not published."
+        },
+        "sqm_max": {
+          "value": null,
+          "reason": "Not published."
+        },
+        "count": {
+          "value": null,
+          "reason": "Not published."
+        }
+      },
+      {
+        "type": {
+          "value": "penthouses / פנטהאוזים",
+          "evidence_ids": [
+            "E_OFFICIAL_UNITS_DELIVERY"
+          ]
+        },
+        "rooms": {
+          "value": null,
+          "reason": "Not published."
+        },
+        "sqm_min": {
+          "value": null,
+          "reason": "Not published."
+        },
+        "sqm_max": {
+          "value": null,
+          "reason": "Not published."
+        },
+        "count": {
+          "value": null,
+          "reason": "Not published."
+        }
+      }
+    ],
+    "parking_policy": {
+      "value": null,
+      "reason": "No parking/storage policy was retrieved from public sources."
+    },
+    "storage_policy": {
+      "value": null,
+      "reason": "No storage policy was retrieved from public sources."
+    },
+    "mamad": {
+      "value": null,
+      "reason": "No source statement retrieved."
+    },
+    "accessibility": {
+      "value": null,
+      "reason": "No source statement retrieved."
+    },
+    "amenities": [
+      {
+        "value": "wellness facilities",
+        "evidence_ids": [
+          "E_OFFICIAL_AMENITIES_LIST"
+        ]
+      },
+      {
+        "value": "fitness/gym",
+        "evidence_ids": [
+          "E_OFFICIAL_AMENITIES_LIST"
+        ]
+      },
+      {
+        "value": "training studios",
+        "evidence_ids": [
+          "E_OFFICIAL_AMENITIES_LIST"
+        ]
+      },
+      {
+        "value": "spa",
+        "evidence_ids": [
+          "E_OFFICIAL_AMENITIES_LIST"
+        ]
+      },
+      {
+        "value": "saunas",
+        "evidence_ids": [
+          "E_OFFICIAL_AMENITIES_LIST"
+        ]
+      },
+      {
+        "value": "ice baths",
+        "evidence_ids": [
+          "E_OFFICIAL_AMENITIES_LIST"
+        ]
+      },
+      {
+        "value": "business/workspaces",
+        "evidence_ids": [
+          "E_OFFICIAL_AMENITIES_LIST"
+        ]
+      },
+      {
+        "value": "children/kids club",
+        "evidence_ids": [
+          "E_OFFICIAL_AMENITIES_LIST"
+        ]
+      },
+      {
+        "value": "private café",
+        "evidence_ids": [
+          "E_OFFICIAL_AMENITIES_LIST"
+        ]
+      },
+      {
+        "value": "concierge services",
+        "evidence_ids": [
+          "E_OFFICIAL_AMENITIES_LIST",
+          "E_OFFICIAL_CITYHALL_ENV"
+        ]
+      },
+      {
+        "value": "Olympic swimming pool",
+        "evidence_ids": [
+          "E_OFFICIAL_AMENITIES_LIST"
+        ]
+      },
+      {
+        "value": "adult pool",
+        "evidence_ids": [
+          "E_OFFICIAL_AMENITIES_LIST"
+        ]
+      }
+    ],
+    "sales_inventory": {
+      "sold_units_cumulative_2025_12_31": {
+        "value": 270,
+        "evidence_ids": [
+          "E_REPORT_SALES_2025"
+        ]
+      },
+      "marketing_rate_2025_12_31": {
+        "value": "59%",
+        "evidence_ids": [
+          "E_REPORT_SALES_2025",
+          "E_REPORT_REMAINING_UNITS"
+        ]
+      },
+      "remaining_units_2025_12_31": {
+        "value": 189,
+        "evidence_ids": [
+          "E_REPORT_REMAINING_UNITS"
+        ]
+      },
+      "remaining_residential_area_sqm_2025_12_31": {
+        "value": 17551,
+        "evidence_ids": [
+          "E_REPORT_REMAINING_UNITS"
+        ]
+      },
+      "remaining_commercial_area_sqm_2025_12_31": {
+        "value": 1610,
+        "evidence_ids": [
+          "E_REPORT_REMAINING_UNITS"
+        ]
+      },
+      "developer_page_2026_sold_claim": {
+        "value": "more than 275 sold out of 480",
+        "evidence_ids": [
+          "E_OFFICIAL_UNITS_DELIVERY"
+        ],
+        "note": "This conflicts with the annual report's updated total of 459 and cumulative 270 at 31 Dec 2025; use as marketing text/date claim, not definitive inventory."
+      },
+      "first_occupancy_claim": {
+        "value": "during 2030 / במהלך שנת 2030",
+        "evidence_ids": [
+          "E_OFFICIAL_UNITS_DELIVERY"
+        ]
+      },
+      "annual_report_expected_completion": {
+        "value": "staged from 2029/2030",
+        "evidence_ids": [
+          "E_REPORT_TIMELINE"
+        ]
+      }
+    }
+  },
+  "prices": {
+    "developer_price_list": {
+      "value": null,
+      "reason": "No developer price list or price range was found in retrieved official sources."
+    },
+    "madlan_project_range": {
+      "value": null,
+      "reason": "No Madlan project page/range was resolved in this pass."
+    },
+    "yad2_active_listing_range": {
+      "value": null,
+      "reason": "No Yad2 active-listing range was resolved in this pass."
+    },
+    "gov_transactions_same_street_or_building": {
+      "value": null,
+      "reason": "No nadlan.gov.il/RMI transaction extraction was completed in this pass; parcel-level transaction pass is still needed."
+    },
+    "public_filing_signed_contracts": {
+      "basis": {
+        "value": "public-company financial report; signed contracts/sold inventory, not a developer asking-price list",
+        "evidence_ids": [
+          "E_REPORT_SALES_2025",
+          "E_REPORT_PPSQM"
+        ]
+      },
+      "as_of_date": {
+        "value": "2025-12-31",
+        "evidence_ids": [
+          "E_REPORT_SALES_2025",
+          "E_REPORT_REMAINING_UNITS"
+        ]
+      },
+      "average_cumulative_ppsqm_nis_inc_vat_ex_financing_component": {
+        "value": 80300,
+        "evidence_ids": [
+          "E_REPORT_PPSQM"
+        ]
+      },
+      "cumulative_sold_units": {
+        "value": 270,
+        "evidence_ids": [
+          "E_REPORT_SALES_2025"
+        ]
+      },
+      "cumulative_financial_volume_nis_inc_vat": {
+        "value": 2352172000,
+        "evidence_ids": [
+          "E_REPORT_SALES_2025"
+        ],
+        "note": "Report table figure 2,352,172 is in thousands of NIS including VAT."
+      },
+      "derived_average_sold_unit_price_nis_inc_vat": {
+        "value": 8711748,
+        "formula": "2,352,172,000 / 270",
+        "basis": "derived from public-filing cumulative sold-units volume; not an asking price",
+        "evidence_ids": [
+          "E_REPORT_SALES_2025"
+        ]
+      },
+      "sales_during_2025_units": {
+        "value": 59,
+        "evidence_ids": [
+          "E_REPORT_SALES_2025"
+        ]
+      },
+      "sales_during_2025_volume_nis_inc_vat": {
+        "value": 544626000,
+        "evidence_ids": [
+          "E_REPORT_SALES_2025"
+        ],
+        "note": "Report table figure 544,626 is in thousands of NIS including VAT."
+      },
+      "luxury_sales_examples": [
+        {
+          "basis": {
+            "value": "public-company report mentions two luxury apartments sold in Rainbow",
+            "evidence_ids": [
+              "E_REPORT_SALES_2025"
+            ]
+          },
+          "price_nis_approx": {
+            "value": 51000000,
+            "evidence_ids": [
+              "E_REPORT_SALES_2025"
+            ],
+            "note": "Approximate figure from report narrative; not a generic project price."
+          },
+          "as_of_date": {
+            "value": "2025 annual-report period",
+            "evidence_ids": [
+              "E_REPORT_SALES_2025"
+            ]
+          }
+        },
+        {
+          "basis": {
+            "value": "public-company report mentions two luxury apartments sold in Rainbow",
+            "evidence_ids": [
+              "E_REPORT_SALES_2025"
+            ]
+          },
+          "price_nis_approx": {
+            "value": 34000000,
+            "evidence_ids": [
+              "E_REPORT_SALES_2025"
+            ],
+            "note": "Approximate figure from report narrative; not a generic project price."
+          },
+          "as_of_date": {
+            "value": "2025 annual-report period",
+            "evidence_ids": [
+              "E_REPORT_SALES_2025"
+            ]
+          }
+        }
+      ]
+    },
+    "pricing_warning": {
+      "value": "Use the public-filing price metrics only as signed-contract/sold-inventory evidence. They are not a live developer asking-price list and should not be displayed as 'starting from' prices.",
+      "evidence_ids": [
+        "E_REPORT_SALES_2025",
+        "E_REPORT_PPSQM"
+      ]
+    }
+  },
+  "media": {
+    "official_gallery_page": {
+      "value": "https://www.israel-canada.co.il/projects/tel-aviv/rainbow",
+      "evidence_ids": [
+        "E_OFFICIAL_HE_IDENTITY"
+      ]
+    },
+    "official_page_media_assets": [
+      {
+        "value": "https://static.wixstatic.com/media/2245eb_f1383fd771db4ec4bd1de27b53f00538~mv2.jpg/v1/fill/w_980%2Ch_650%2Cal_c%2Cq_85%2Cusm_0.66_1.00_0.01%2Cenc_avif%2Cquality_auto/3333%201.jpg",
+        "evidence_ids": [
+          "E_MEDIA_RENDER_1"
+        ]
+      },
+      {
+        "value": "https://static.wixstatic.com/media/bb4731_e01b45b88ea14e6fb9431bb040c40f1f~mv2.jpg/v1/fill/w_980%2Ch_673%2Cal_c%2Cq_85%2Cusm_0.66_1.00_0.01%2Cenc_avif%2Cquality_auto/rainbow-shtila-0685_colored_%20copy.jpg",
+        "evidence_ids": [
+          "E_MEDIA_RENDER_2"
+        ]
+      },
+      {
+        "value": "https://static.wixstatic.com/media/bb4731_05992d202b6148eab4d31b061ca5f61d~mv2.jpg/v1/fit/w_715%2Ch_590%2Cq_90%2Cenc_avif%2Cquality_auto/bb4731_05992d202b6148eab4d31b061ca5f61d~mv2.jpg",
+        "evidence_ids": [
+          "E_MEDIA_RENDER_3"
+        ]
+      },
+      {
+        "value": "https://static.wixstatic.com/media/bb4731_f3e6c95d7e6c4f64b7dc9617db36fe03~mv2.jpg/v1/fit/w_715%2Ch_402%2Cq_90%2Cenc_avif%2Cquality_auto/bb4731_f3e6c95d7e6c4f64b7dc9617db36fe03~mv2.jpg",
+        "evidence_ids": [
+          "E_MEDIA_RENDER_4"
+        ]
+      },
+      {
+        "value": "https://static.wixstatic.com/media/bb4731_bb151d0a570f47ad92a949b4e83b9840~mv2.jpg/v1/fit/w_715%2Ch_402%2Cq_90%2Cenc_avif%2Cquality_auto/bb4731_bb151d0a570f47ad92a949b4e83b9840~mv2.jpg",
+        "evidence_ids": [
+          "E_MEDIA_RENDER_5"
+        ]
+      },
+      {
+        "value": "https://static.wixstatic.com/media/bb4731_e5783d61415f44cbae20a1993de32ccb~mv2.jpg/v1/fit/w_715%2Ch_402%2Cq_90%2Cenc_avif%2Cquality_auto/bb4731_e5783d61415f44cbae20a1993de32ccb~mv2.jpg",
+        "evidence_ids": [
+          "E_MEDIA_RENDER_6"
+        ]
+      },
+      {
+        "value": "https://static.wixstatic.com/media/bb4731_2b2c1b63c84b462cbe8028a99f910f70~mv2.jpg/v1/fit/w_715%2Ch_363%2Cq_90%2Cenc_avif%2Cquality_auto/bb4731_2b2c1b63c84b462cbe8028a99f910f70~mv2.jpg",
+        "evidence_ids": [
+          "E_MEDIA_RENDER_7"
+        ]
+      }
+    ],
+    "render_urls": [],
+    "floorplan_urls": [],
+    "typical_floor_plan_urls": [],
+    "facade_elevation_urls": [],
+    "site_plan_urls": [],
+    "brochure_pdf_urls": [],
+    "video_urls": [],
+    "virtual_tour_urls": [],
+    "media_caveat": {
+      "value": "Static media URLs were retrieved from official page image assets, but this pass did not classify every image as render versus interior versus brand visual; manual review required before publication.",
+      "evidence_ids": [
+        "E_MEDIA_RENDER_1",
+        "E_MEDIA_RENDER_2",
+        "E_MEDIA_RENDER_3",
+        "E_MEDIA_RENDER_4",
+        "E_MEDIA_RENDER_5",
+        "E_MEDIA_RENDER_6",
+        "E_MEDIA_RENDER_7"
+      ]
+    }
+  },
+  "article_material": {
+    "source_backed_story_facts": [
+      {
+        "value": "Rainbow is marketed as Israel Canada's flagship Tel Aviv project in the renewed Sde Dov coastline area.",
+        "evidence_ids": [
+          "E_OFFICIAL_HE_IDENTITY"
+        ]
+      },
+      {
+        "value": "The project is positioned as 'Resort Living' under Israel Canada's Better & Different strategy.",
+        "evidence_ids": [
+          "E_OFFICIAL_WORLD_AMENITIES",
+          "E_HOMEPAGE_EN_MARKETING"
+        ]
+      },
+      {
+        "value": "It includes one 39-floor luxury tower and six 8-floor boutique buildings.",
+        "evidence_ids": [
+          "E_OFFICIAL_CONTRACTOR_FORM"
+        ]
+      },
+      {
+        "value": "The official structured pages list 7 buildings and 459 housing units.",
+        "evidence_ids": [
+          "E_OFFICIAL_HE_STRUCTURED",
+          "E_OFFICIAL_EN_STRUCTURED"
+        ]
+      },
+      {
+        "value": "The architect is Bar Orian? No: the official Hebrew page names ברעלי לויצקי כסיף דה לה פונטיין; the English page calls the architect D-blk Architects.",
+        "evidence_ids": [
+          "E_OFFICIAL_HE_STRUCTURED",
+          "E_OFFICIAL_EN_STRUCTURED"
+        ],
+        "note": "Keep both language renderings; do not normalize unless verified externally."
+      },
+      {
+        "value": "Interior design is by Orly Shrem Architects.",
+        "evidence_ids": [
+          "E_OFFICIAL_HE_STRUCTURED",
+          "E_OFFICIAL_EN_STRUCTURED"
+        ]
+      },
+      {
+        "value": "The project lists extensive private amenities: wellness, fitness, spa, workspaces, kids club, private café, concierge and pools.",
+        "evidence_ids": [
+          "E_OFFICIAL_AMENITIES_LIST"
+        ]
+      },
+      {
+        "value": "The annual report places the project in Sde Dov, Gush 6634, parts of parcels 15, 164, 169, 208, 209, 312, 314 and 324.",
+        "evidence_ids": [
+          "E_REPORT_PARCELS"
+        ]
+      },
+      {
+        "value": "A full building permit was reported as received on 30 Sep 2025.",
+        "evidence_ids": [
+          "E_REPORT_PLANNING_PERMITS"
+        ]
+      },
+      {
+        "value": "The first occupancy is marketed for 2030, while the annual report says completion is expected in stages from 2029/2030.",
+        "evidence_ids": [
+          "E_OFFICIAL_UNITS_DELIVERY",
+          "E_REPORT_TIMELINE"
+        ]
+      },
+      {
+        "value": "The report states marketing and branding expense growth was mainly due to Rainbow, making it a strong observable advertising-budget proxy.",
+        "evidence_ids": [
+          "E_REPORT_SELECTION_ADSPEND"
+        ]
+      }
+    ],
+    "usps": [
+      {
+        "usp": {
+          "value": "Sde Dov coastline setting in north Tel Aviv",
+          "evidence_ids": [
+            "E_OFFICIAL_HE_IDENTITY",
+            "E_OFFICIAL_EN_STRUCTURED"
+          ]
+        },
+        "publish_note": "Use as coastal positioning, not exact beach-distance claim."
+      },
+      {
+        "usp": {
+          "value": "Large mixed composition: 1 iconic 39-floor tower plus 6 boutique 8-floor buildings",
+          "evidence_ids": [
+            "E_OFFICIAL_CONTRACTOR_FORM"
+          ]
+        },
+        "publish_note": "Mention the 459/480 conflict transparently if giving total units."
+      },
+      {
+        "usp": {
+          "value": "More than 2,000 sqm of premium resident facilities",
+          "evidence_ids": [
+            "E_OFFICIAL_AMENITIES_LIST"
+          ]
+        },
+        "publish_note": "Good hero-page differentiator."
+      },
+      {
+        "usp": {
+          "value": "City Hall management and concierge/service layer",
+          "evidence_ids": [
+            "E_OFFICIAL_CITYHALL_ENV"
+          ]
+        },
+        "publish_note": "Useful for buyer expectations and building operations."
+      },
+      {
+        "usp": {
+          "value": "Direct marketed connection to the Green Line light rail",
+          "evidence_ids": [
+            "E_OFFICIAL_WORLD_AMENITIES"
+          ]
+        },
+        "publish_note": "Do not name station or distance until geocoded/planning-verified."
+      },
+      {
+        "usp": {
+          "value": "Located in the wider Eshkol Quarter/Sde Dov redevelopment ecosystem with housing, offices, retail and hotels",
+          "evidence_ids": [
+            "E_OFFICIAL_EN_STRUCTURED",
+            "E_WIKI_SDE_DOV_SECONDARY"
+          ]
+        },
+        "publish_note": "Mark the Wikipedia-derived macro buildout as secondary/unofficial."
+      },
+      {
+        "usp": {
+          "value": "Public-company filing gives rare sales and price transparency for sold units",
+          "evidence_ids": [
+            "E_REPORT_SALES_2025",
+            "E_REPORT_PPSQM"
+          ]
+        },
+        "publish_note": "Do not market this as live list price."
+      },
+      {
+        "usp": {
+          "value": "Full building permit reported in 2025 and construction-related works underway",
+          "evidence_ids": [
+            "E_REPORT_PLANNING_PERMITS",
+            "E_OFFICIAL_CITYHALL_ENV"
+          ]
+        },
+        "publish_note": "Good trust signal; cite report date."
+      }
+    ],
+    "neighborhood_narrative_material": [
+      {
+        "value": "Sde Dov is described by the developer as Tel Aviv's rare remaining coastal land reserve, combining sea proximity, planning, green spaces, retail, culture and employment.",
+        "evidence_ids": [
+          "E_OFFICIAL_NEIGHBORHOOD"
+        ]
+      },
+      {
+        "value": "The nearby anchors named by the developer are Tel Aviv Port, Yarkon Park, Tel Aviv University, Eretz Israel Museum, EXPO/Ganei Hataarucha and Ramat Aviv Mall.",
+        "evidence_ids": [
+          "E_OFFICIAL_NEIGHBORHOOD"
+        ]
+      },
+      {
+        "value": "Transport context named by the developer includes Ibn Gabirol extension, Green Line light rail, bike paths, Ayalon and Namir.",
+        "evidence_ids": [
+          "E_OFFICIAL_NEIGHBORHOOD"
+        ]
+      }
+    ],
+    "faq_seeds": [
+      {
+        "question": {
+          "value": "How many apartments are planned in Rainbow Tel Aviv, and why do some sources say 459 while others say 480?",
+          "evidence_ids": [
+            "E_OFFICIAL_HE_STRUCTURED",
+            "E_OFFICIAL_CONTRACTOR_FORM",
+            "E_REPORT_PLANNING_PERMITS"
+          ]
+        }
+      },
+      {
+        "question": {
+          "value": "What exactly is included in Rainbow's resort-style amenities?",
+          "evidence_ids": [
+            "E_OFFICIAL_AMENITIES_LIST"
+          ]
+        }
+      },
+      {
+        "question": {
+          "value": "Is Rainbow on the beach or simply in the Sde Dov coastal district?",
+          "evidence_ids": [
+            "E_OFFICIAL_HE_IDENTITY",
+            "E_OFFICIAL_EN_STRUCTURED"
+          ]
+        }
+      },
+      {
+        "question": {
+          "value": "Which architects and interior designers are named for the project?",
+          "evidence_ids": [
+            "E_OFFICIAL_HE_STRUCTURED",
+            "E_OFFICIAL_EN_STRUCTURED"
+          ]
+        }
+      },
+      {
+        "question": {
+          "value": "Who is the contractor/building company?",
+          "evidence_ids": [
+            "E_OFFICIAL_CONTRACTOR_FORM",
+            "E_REPORT_CONTRACTORS"
+          ]
+        }
+      },
+      {
+        "question": {
+          "value": "What is the expected occupancy/completion timeline?",
+          "evidence_ids": [
+            "E_OFFICIAL_UNITS_DELIVERY",
+            "E_REPORT_TIMELINE"
+          ]
+        }
+      },
+      {
+        "question": {
+          "value": "What sales progress has been reported publicly?",
+          "evidence_ids": [
+            "E_REPORT_SALES_2025",
+            "E_REPORT_REMAINING_UNITS"
+          ]
+        }
+      },
+      {
+        "question": {
+          "value": "What public price evidence exists, and why is it not the same as a live asking-price list?",
+          "evidence_ids": [
+            "E_REPORT_SALES_2025",
+            "E_REPORT_PPSQM"
+          ]
+        }
+      },
+      {
+        "question": {
+          "value": "What environmental/soil-contamination approvals were reported?",
+          "evidence_ids": [
+            "E_REPORT_ENVIRONMENT",
+            "E_OFFICIAL_CITYHALL_ENV"
+          ]
+        }
+      },
+      {
+        "question": {
+          "value": "What should buyers verify about future adjacent construction and view blockage?",
+          "evidence_ids": [
+            "E_WIKI_SDE_DOV_SECONDARY",
+            "E_REPORT_PLANNING_PERMITS"
+          ],
+          "source_class": "secondary_unofficial_plus_project_report"
+        }
+      }
+    ],
+    "target_audiences": [
+      {
+        "audience": "premium local Tel Aviv buyers",
+        "basis": {
+          "value": "luxury/resort positioning and coastal Sde Dov location",
+          "evidence_ids": [
+            "E_OFFICIAL_HE_IDENTITY",
+            "E_OFFICIAL_AMENITIES_LIST"
+          ]
+        }
+      },
+      {
+        "audience": "families seeking north Tel Aviv/new-district amenities",
+        "basis": {
+          "value": "official text mentions family apartments, educational institutions and parks",
+          "evidence_ids": [
+            "E_OFFICIAL_UNITS_DELIVERY",
+            "E_OFFICIAL_WORLD_AMENITIES"
+          ]
+        }
+      },
+      {
+        "audience": "investors and asset-preservation buyers",
+        "basis": {
+          "value": "official text names investors and public report gives sales/price transparency",
+          "evidence_ids": [
+            "E_OFFICIAL_STORY",
+            "E_REPORT_SALES_2025"
+          ]
+        }
+      },
+      {
+        "audience": "olim / international buyers",
+        "basis": {
+          "value": "English official page and high-end coastal positioning",
+          "evidence_ids": [
+            "E_OFFICIAL_EN_STRUCTURED"
+          ]
+        }
+      }
+    ],
+    "keyword_sets": {
+      "he": [
+        {
+          "value": "Rainbow תל אביב",
+          "evidence_ids": [
+            "E_OFFICIAL_HE_IDENTITY",
+            "E_HOMEPAGE_MARKETING"
+          ]
+        },
+        {
+          "value": "ריינבו שדה דב",
+          "evidence_ids": [
+            "E_HOMEPAGE_MARKETING",
+            "E_REPORT_PARCELS"
+          ]
+        },
+        {
+          "value": "פרויקט Rainbow שדה דב",
+          "evidence_ids": [
+            "E_OFFICIAL_HE_IDENTITY"
+          ]
+        },
+        {
+          "value": "ישראל קנדה Rainbow",
+          "evidence_ids": [
+            "E_HOMEPAGE_MARKETING"
+          ]
+        },
+        {
+          "value": "דירות יוקרה שדה דב",
+          "evidence_ids": [
+            "E_OFFICIAL_UNITS_DELIVERY"
+          ]
+        },
+        {
+          "value": "ריזורט מגורים תל אביב",
+          "evidence_ids": [
+            "E_OFFICIAL_HE_IDENTITY",
+            "E_OFFICIAL_WORLD_AMENITIES"
+          ]
+        }
+      ],
+      "en": [
+        {
+          "value": "Rainbow Tel Aviv",
+          "evidence_ids": [
+            "E_OFFICIAL_EN_STRUCTURED"
+          ]
+        },
+        {
+          "value": "Rainbow Sde Dov",
+          "evidence_ids": [
+            "E_REPORT_PARCELS"
+          ]
+        },
+        {
+          "value": "Israel Canada Rainbow",
+          "evidence_ids": [
+            "E_HOMEPAGE_EN_MARKETING"
+          ]
+        },
+        {
+          "value": "coastal resort living Tel Aviv",
+          "evidence_ids": [
+            "E_OFFICIAL_EN_STRUCTURED"
+          ]
+        },
+        {
+          "value": "Sde Dov luxury apartments",
+          "evidence_ids": [
+            "E_OFFICIAL_UNITS_DELIVERY",
+            "E_OFFICIAL_EN_STRUCTURED"
+          ]
+        }
+      ],
+      "fr": [
+        {
+          "value": "Rainbow Tel Aviv",
+          "basis": "generated French SEO keyword from sourced project name",
+          "evidence_ids": [
+            "E_OFFICIAL_EN_STRUCTURED"
+          ]
+        },
+        {
+          "value": "appartements de luxe Sde Dov",
+          "basis": "generated French SEO keyword from sourced luxury/Sde Dov facts",
+          "evidence_ids": [
+            "E_OFFICIAL_UNITS_DELIVERY",
+            "E_REPORT_PARCELS"
+          ]
+        },
+        {
+          "value": "résidence resort Tel Aviv",
+          "basis": "generated French SEO keyword from sourced Resort Living positioning",
+          "evidence_ids": [
+            "E_OFFICIAL_WORLD_AMENITIES"
+          ]
+        }
+      ],
+      "ru": [
+        {
+          "value": "Rainbow Tel Aviv",
+          "basis": "generated Russian SEO keyword from sourced project name",
+          "evidence_ids": [
+            "E_OFFICIAL_EN_STRUCTURED"
+          ]
+        },
+        {
+          "value": "элитные квартиры Сде Дов",
+          "basis": "generated Russian SEO keyword from sourced luxury/Sde Dov facts",
+          "evidence_ids": [
+            "E_OFFICIAL_UNITS_DELIVERY",
+            "E_REPORT_PARCELS"
+          ]
+        },
+        {
+          "value": "резиденция у моря Тель-Авив",
+          "basis": "generated Russian SEO keyword from sourced coastal positioning",
+          "evidence_ids": [
+            "E_OFFICIAL_HE_IDENTITY",
+            "E_OFFICIAL_EN_STRUCTURED"
+          ]
+        }
+      ],
+      "ar": [
+        {
+          "value": "Rainbow Tel Aviv",
+          "basis": "generated Arabic SEO keyword from sourced project name",
+          "evidence_ids": [
+            "E_OFFICIAL_EN_STRUCTURED"
+          ]
+        },
+        {
+          "value": "شقق فاخرة سديه دوف",
+          "basis": "generated Arabic SEO keyword from sourced luxury/Sde Dov facts",
+          "evidence_ids": [
+            "E_OFFICIAL_UNITS_DELIVERY",
+            "E_REPORT_PARCELS"
+          ]
+        },
+        {
+          "value": "سكن فاخر قرب البحر تل أبيب",
+          "basis": "generated Arabic SEO keyword from sourced coastal positioning",
+          "evidence_ids": [
+            "E_OFFICIAL_HE_IDENTITY",
+            "E_OFFICIAL_EN_STRUCTURED"
+          ]
+        }
+      ]
+    }
+  },
+  "field_sources": {
+    "selection_logic": [
+      "E_REPORT_SELECTION_ADSPEND",
+      "E_HOMEPAGE_MARKETING"
+    ],
+    "seo.serp_title_he": [
+      "E_OFFICIAL_HE_IDENTITY"
+    ],
+    "seo.serp_title_en": [
+      "E_OFFICIAL_EN_STRUCTURED"
+    ],
+    "seo.h1_he": [
+      "E_OFFICIAL_HE_IDENTITY"
+    ],
+    "seo.h1_en": [
+      "E_OFFICIAL_EN_STRUCTURED"
+    ],
+    "world.parcel_identifier": [
+      "E_REPORT_PARCELS"
+    ],
+    "world.city_neighborhood": [
+      "E_OFFICIAL_HE_STRUCTURED",
+      "E_OFFICIAL_EN_STRUCTURED"
+    ],
+    "world.coastal_context": [
+      "E_OFFICIAL_HE_IDENTITY",
+      "E_OFFICIAL_EN_STRUCTURED"
+    ],
+    "world.parks_transport_retail_landmarks": [
+      "E_OFFICIAL_WORLD_AMENITIES",
+      "E_OFFICIAL_NEIGHBORHOOD",
+      "E_WIKI_GREEN_LINE_SECONDARY"
+    ],
+    "world.future_plans": [
+      "E_REPORT_PLANNING_PERMITS",
+      "E_WIKI_SDE_DOV_SECONDARY"
+    ],
+    "recon_3d.num_buildings": [
+      "E_OFFICIAL_HE_STRUCTURED",
+      "E_OFFICIAL_EN_STRUCTURED"
+    ],
+    "recon_3d.building_breakdown": [
+      "E_OFFICIAL_CONTRACTOR_FORM"
+    ],
+    "recon_3d.parcel_land_area_sqm": [
+      "E_REPORT_TIMELINE"
+    ],
+    "units.total_units": [
+      "E_OFFICIAL_HE_STRUCTURED",
+      "E_OFFICIAL_EN_STRUCTURED",
+      "E_REPORT_PLANNING_PERMITS",
+      "E_OFFICIAL_CONTRACTOR_FORM",
+      "E_OFFICIAL_UNITS_DELIVERY"
+    ],
+    "units.amenities": [
+      "E_OFFICIAL_AMENITIES_LIST",
+      "E_OFFICIAL_CITYHALL_ENV"
+    ],
+    "units.sales_inventory": [
+      "E_REPORT_SALES_2025",
+      "E_REPORT_REMAINING_UNITS",
+      "E_OFFICIAL_UNITS_DELIVERY",
+      "E_REPORT_TIMELINE"
+    ],
+    "prices.public_filing_signed_contracts": [
+      "E_REPORT_SALES_2025",
+      "E_REPORT_PPSQM"
+    ],
+    "media.official_page_media_assets": [
+      "E_MEDIA_RENDER_1",
+      "E_MEDIA_RENDER_2",
+      "E_MEDIA_RENDER_3",
+      "E_MEDIA_RENDER_4",
+      "E_MEDIA_RENDER_5",
+      "E_MEDIA_RENDER_6",
+      "E_MEDIA_RENDER_7"
+    ],
+    "article_material": [
+      "E_OFFICIAL_HE_IDENTITY",
+      "E_OFFICIAL_WORLD_AMENITIES",
+      "E_OFFICIAL_NEIGHBORHOOD",
+      "E_OFFICIAL_AMENITIES_LIST",
+      "E_REPORT_PARCELS",
+      "E_REPORT_PLANNING_PERMITS",
+      "E_REPORT_SELECTION_ADSPEND"
+    ]
+  },
+  "evidence": [
+    {
+      "id": "E_OFFICIAL_HE_IDENTITY",
+      "source_type": "developer_official_project_page_he",
+      "url": "https://www.israel-canada.co.il/projects/tel-aviv/rainbow",
+      "title": "פרויקט Rainbow Tel Aviv שדה דב | ריזורט מגורים יוקרתי",
+      "retrieved_at": "2026-07-04",
+      "quote": "# פרויקט Rainbow\nשדה דב תל אביב\nבמיקום המבוקש ביותר בישראל, על קו החוף של שדה דב המתחדש, נולד פרויקט Rainbow - פרויקט הדגל של ישראל קנדה בתל אביב.",
+      "line_refs": "turn232304view0 L43-L46"
+    },
+    {
+      "id": "E_OFFICIAL_HE_STRUCTURED",
+      "source_type": "developer_official_project_page_he",
+      "url": "https://www.israel-canada.co.il/projects/tel-aviv/rainbow",
+      "title": "פרויקט Rainbow Tel Aviv שדה דב | ריזורט מגורים יוקרתי",
+      "retrieved_at": "2026-07-04",
+      "quote": "מיקום / שכונת אשכול / תל אביב ... אדריכלות / ברעלי לויצקי כסיף דה לה פונטיין אדריכלים ... עיצוב פנים / אורלי שרם אדריכלים ... מס’ בניינים / 7 ... מס’ יחידות דיור / 459",
+      "line_refs": "turn232304view0 L50-L72"
+    },
+    {
+      "id": "E_OFFICIAL_EN_STRUCTURED",
+      "source_type": "developer_official_project_page_en",
+      "url": "https://www.israel-canada.co.il/en/projects/tel-aviv/rainbow",
+      "title": "Rainbow Tel Aviv | Coastal Resort Living in Sde Dov",
+      "retrieved_at": "2026-07-04",
+      "quote": "Rainbow Tel Aviv enjoys an exceptional location on the northern shore of Tel Aviv's coastline... Location / Eshkol Neighborhood / Tel Aviv ... Architecture / D-blk Architects ... Interior Design / Orly Shrem Architects ... No. of Buildings / 7 ... No. of Housing Units / 459",
+      "line_refs": "turn807580view0 L39-L65"
+    },
+    {
+      "id": "E_OFFICIAL_WORLD_AMENITIES",
+      "source_type": "developer_official_project_page_he",
+      "url": "https://www.israel-canada.co.il/projects/tel-aviv/rainbow",
+      "title": "פרויקט Rainbow Tel Aviv שדה דב | ריזורט מגורים יוקרתי",
+      "retrieved_at": "2026-07-04",
+      "quote": "הפרויקט ממוקם בין הים התיכון, הטיילת, הפארקים והמרינה העתידית... מוקף בפארקים, שבילי אופניים, שטחי מסחר, מוסדות חינוך... וחיבור ישיר לקו הירוק של הרכבת הקלה.",
+      "line_refs": "turn232304view0 L83-L88"
+    },
+    {
+      "id": "E_OFFICIAL_AMENITIES_LIST",
+      "source_type": "developer_official_project_page_he",
+      "url": "https://www.israel-canada.co.il/projects/tel-aviv/rainbow",
+      "title": "פרויקט Rainbow Tel Aviv שדה דב | ריזורט מגורים יוקרתי",
+      "retrieved_at": "2026-07-04",
+      "quote": "יותר מ־2,000 מ״ר של מתקנים פרימיום ... Wellness ... מתחמי עבודה ... אזורי ילדים ... בריכות ... קפה פרטי ... שירותי קונסיירז׳ ... Rainbow Club ... חדר כושר ... סטודיואים לאימון ... ספא, סאונות ואמבטיות קרח ... Business Center ... Kids Club ... Private Café ... Swimming Pools / בריכת שחייה אולימפית ובריכת בוגרים.",
+      "line_refs": "turn232304view0 L92-L108"
+    },
+    {
+      "id": "E_OFFICIAL_NEIGHBORHOOD",
+      "source_type": "developer_official_project_page_he",
+      "url": "https://www.israel-canada.co.il/projects/tel-aviv/rainbow",
+      "title": "פרויקט Rainbow Tel Aviv שדה דב | ריזורט מגורים יוקרתי",
+      "retrieved_at": "2026-07-04",
+      "quote": "שדה דב היא עתודת הקרקע המשמעותית והנדירה ביותר שנותרה על קו החוף של תל אביב ... נמל תל אביב, פארק הירקון, אוניברסיטת תל אביב, מוזיאון ארץ ישראל, אקספו וגני התערוכה, קניון רמת אביב ... הארכת אבן גבירול, הקו הירוק של הרכבת הקלה, שבילי אופניים, איילון, נמיר ...",
+      "line_refs": "turn232304view0 L110-L126"
+    },
+    {
+      "id": "E_OFFICIAL_CONTRACTOR_FORM",
+      "source_type": "developer_official_project_page_he",
+      "url": "https://www.israel-canada.co.il/projects/tel-aviv/rainbow",
+      "title": "פרויקט Rainbow Tel Aviv שדה דב | ריזורט מגורים יוקרתי",
+      "retrieved_at": "2026-07-04",
+      "quote": "פרויקט Rainbow מוקם על ידי קבוצת אשטרום... Rainbow כולל 480 יחידות דיור בלבד, המחולקות בין מגדל יוקרה אייקוני בן 39 קומות לבין שישה בנייני בוטיק בני 8 קומות.",
+      "line_refs": "turn232304view0 L128-L136"
+    },
+    {
+      "id": "E_OFFICIAL_UNITS_DELIVERY",
+      "source_type": "developer_official_project_page_he",
+      "url": "https://www.israel-canada.co.il/projects/tel-aviv/rainbow",
+      "title": "פרויקט Rainbow Tel Aviv שדה דב | ריזורט מגורים יוקרתי",
+      "retrieved_at": "2026-07-04",
+      "quote": "מגוון רחב של דירות יוקרה... דירות משפחתיות... דירות גן... פנטהאוזים... נוף פתוח לים התיכון. נכון לשנת 2026 נמכרו למעלה מ-275 דירות מתוך 480... האכלוס הראשון ... במהלך שנת 2030.",
+      "line_refs": "turn232304view0 L139-L150"
+    },
+    {
+      "id": "E_OFFICIAL_CITYHALL_ENV",
+      "source_type": "developer_official_project_page_he",
+      "url": "https://www.israel-canada.co.il/projects/tel-aviv/rainbow",
+      "title": "פרויקט Rainbow Tel Aviv שדה דב | ריזורט מגורים יוקרתי",
+      "retrieved_at": "2026-07-04",
+      "quote": "סיטיהול, חברת הניהול מבית ישראל קנדה, תפעיל את מערך השירותים בפרויקט... לאחרונה קיבלה החברה את האישורים הסביבתיים הנדרשים מהמשרד להגנת הסביבה ומרשות המים, וכעת מתבצעות עבודות דיפון וחפירה בשטח.",
+      "line_refs": "turn232304view0 L153-L161"
+    },
+    {
+      "id": "E_OFFICIAL_STORY",
+      "source_type": "developer_official_project_page_he",
+      "url": "https://www.israel-canada.co.il/projects/tel-aviv/rainbow",
+      "title": "פרויקט Rainbow Tel Aviv שדה דב | ריזורט מגורים יוקרתי",
+      "retrieved_at": "2026-07-04",
+      "quote": "Rainbow Tel Aviv הוא פרויקט דגל יוקרתי... אדריכלות, עיצוב וניהול שירותים ברמה הגבוהה ביותר... תוכנן בקפידה על ידי משרד האדריכלים ברעלי-לויצקי-כסיף דה לה פונטיין, בשיתוף האדריכלית אורלי שרם וצוותי התכנון של ישראל קנדה.",
+      "line_refs": "turn232304view0 L166-L189"
+    },
+    {
+      "id": "E_HOMEPAGE_MARKETING",
+      "source_type": "developer_homepage_marketing_catalogue_and_campaign_posts",
+      "url": "https://www.israel-canada.co.il/",
+      "title": "ישראל קנדה | דף הבית",
+      "retrieved_at": "2026-07-04",
+      "quote": "פרויקטים בשיווק ... Rainbow ... Rainbow morning יום מכירות בפרויקט הכי צבעוני בתל אביב ... בואו לפגוש אותנו במתחם של פרויקט ריינבו בשדה דב ... זו לא חופשה, זה לכל החיים. Rainbow tel aviv",
+      "line_refs": "turn467210view0 L222-L224, L272-L280, L379-L420"
+    },
+    {
+      "id": "E_HOMEPAGE_EN_MARKETING",
+      "source_type": "developer_homepage_marketing_catalogue_and_campaign_posts_en",
+      "url": "https://www.israel-canada.co.il/en",
+      "title": "Israel Canada | Home",
+      "retrieved_at": "2026-07-04",
+      "quote": "Projects in Marketing ... Rainbow ... You can live the dream Rainbow Tel Aviv",
+      "line_refs": "turn176082view0 L187-L189, L274-L275, L347-L394"
+    },
+    {
+      "id": "E_REPORT_SELECTION_ADSPEND",
+      "source_type": "public_company_annual_report_2025",
+      "url": "https://www.israel-canada.co.il/_files/ugd/77995c_4d88116e4baa4e4e82b6a494e37bb09a.pdf",
+      "title": "Israel Canada 2025 Annual Report",
+      "retrieved_at": "2026-07-04",
+      "quote": "הוצאות מכירה ושיווק ... 69,860 ... לעומת ... 38,661 ... עיקר הגידול נובע בגין שיווק ומיתוג הפרויקטים בחברה, בעיקר בפרויקט Rainbow.",
+      "line_refs": "turn572263view2 L14848-L14850"
+    },
+    {
+      "id": "E_REPORT_PARCELS",
+      "source_type": "public_company_annual_report_2025",
+      "url": "https://www.israel-canada.co.il/_files/ugd/77995c_4d88116e4baa4e4e82b6a494e37bb09a.pdf",
+      "title": "Israel Canada 2025 Annual Report",
+      "retrieved_at": "2026-07-04",
+      "quote": "שם הפרויקט : פרויקט Rainbow מתחם \"שדה דב\" ... מיקום : מקרקעין הידועים כחלק מחלקות 15, 164, 169, 208, 209, 312, 314, 324 בגוש 6634 במתחם הידוע כ\"שדה דב\" בתל אביב.",
+      "line_refs": "turn629504view0 L7652-L7665"
+    },
+    {
+      "id": "E_REPORT_PLANNING_PERMITS",
+      "source_type": "public_company_annual_report_2025",
+      "url": "https://www.israel-canada.co.il/_files/ugd/77995c_4d88116e4baa4e4e82b6a494e37bb09a.pdf",
+      "title": "Israel Canada 2025 Annual Report",
+      "retrieved_at": "2026-07-04",
+      "quote": "בהתאם לתוכנית ... שאושרה ופורסמה למתן תוקף ביום 02.02.2023, ניתן להקים על המגרש 459 יחידות דיור ... היתר דיפון וחפירה התקבל ביום 21.3.2024 ... התקבל היתר בניה מלא לפרויקט ביום 30.09.2025.",
+      "line_refs": "turn572263view0 L7703-L7720"
+    },
+    {
+      "id": "E_REPORT_TIMELINE",
+      "source_type": "public_company_annual_report_2025",
+      "url": "https://www.israel-canada.co.il/_files/ugd/77995c_4d88116e4baa4e4e82b6a494e37bb09a.pdf",
+      "title": "Israel Canada 2025 Annual Report",
+      "retrieved_at": "2026-07-04",
+      "quote": "שטח הקרקע עליו יוקם הפרויקט: כ-8,647 מ\"ר ... מועד התחלת שיווק בפרויקט: רבעון ראשון שנת 2023 ... מועד סיום שיווק צפוי: במהלך שיווק ... מועד התחלת בניה בפועל: רבעון שני שנת 2024 ... מועד סיום בניה צפוי: בשלבים החל משנת 2029/2030.",
+      "line_refs": "turn629504view0 L7673-L7678"
+    },
+    {
+      "id": "E_REPORT_ENVIRONMENT",
+      "source_type": "public_company_annual_report_2025",
+      "url": "https://www.israel-canada.co.il/_files/ugd/77995c_4d88116e4baa4e4e82b6a494e37bb09a.pdf",
+      "title": "Israel Canada 2025 Annual Report",
+      "retrieved_at": "2026-07-04",
+      "quote": "החברה ביצעה בדיקות מדגמיות לקרקע ... לא נמצאו ממצאים לזיהום קרקע ... ביום 4.2.2026 ... החברה מחזיקה בידיה את האישורים הנדרשים הן מהמשרד להגנת הסביבה והן מרשות המים, כי אין חשש לזיהום קרקע במתחם הפרויקט.",
+      "line_refs": "turn572263view0 L7694-L7702"
+    },
+    {
+      "id": "E_REPORT_SALES_2025",
+      "source_type": "public_company_annual_report_2025",
+      "url": "https://www.israel-canada.co.il/_files/ugd/77995c_4d88116e4baa4e4e82b6a494e37bb09a.pdf",
+      "title": "Israel Canada 2025 Annual Report",
+      "retrieved_at": "2026-07-04",
+      "quote": "Rainbow Tel Aviv ... 59 ... 544,626 ... במצטבר ... 270 ... 59% ... 2,352,172",
+      "line_refs": "turn572263view1 L14549-L14565"
+    },
+    {
+      "id": "E_REPORT_PPSQM",
+      "source_type": "public_company_annual_report_2025",
+      "url": "https://www.israel-canada.co.il/_files/ugd/77995c_4d88116e4baa4e4e82b6a494e37bb09a.pdf",
+      "title": "Israel Canada 2025 Annual Report",
+      "retrieved_at": "2026-07-04",
+      "quote": "מחיר ממוצע למ\"ר במצטבר לדירות מכורות עד שנת 2025 ... 80,300 ש\"ח למ\"ר כולל מע\"מ בנטרול רכיב מימון משמעותי.",
+      "line_refs": "turn629504view1 L7797-L7815"
+    },
+    {
+      "id": "E_REPORT_REMAINING_UNITS",
+      "source_type": "public_company_annual_report_2025",
+      "url": "https://www.israel-canada.co.il/_files/ugd/77995c_4d88116e4baa4e4e82b6a494e37bb09a.pdf",
+      "title": "Israel Canada 2025 Annual Report",
+      "retrieved_at": "2026-07-04",
+      "quote": "שיעור השיווק של הפרויקט ... 59% ... יתרה ליום 31.12.2025 ... 189 יחידות דיור ... 17,551 מ\"ר ... 1,610 מ\"ר מסחר.",
+      "line_refs": "turn629504view2 L7841-L7855"
+    },
+    {
+      "id": "E_REPORT_CONTRACTORS",
+      "source_type": "public_company_annual_report_2025",
+      "url": "https://www.israel-canada.co.il/_files/ugd/77995c_4d88116e4baa4e4e82b6a494e37bb09a.pdf",
+      "title": "Israel Canada 2025 Annual Report",
+      "retrieved_at": "2026-07-04",
+      "quote": "קבוצת גבאי ... פרויקט Rainbow ... אשטרום בנייה ... פרויקט Rainbow ...",
+      "line_refs": "turn572263view3 L5489-L5505, L5529-L5529"
+    },
+    {
+      "id": "E_REPORT_FINANCING",
+      "source_type": "public_company_annual_report_2025",
+      "url": "https://www.israel-canada.co.il/_files/ugd/77995c_4d88116e4baa4e4e82b6a494e37bb09a.pdf",
+      "title": "Israel Canada 2025 Annual Report",
+      "retrieved_at": "2026-07-04",
+      "quote": "מסגרת אשראי ... כ-3.2 מיליארד ש\"ח ... קרן ההלוואה והריבית ... תיפרע ... ביום 30 בספטמבר 2030 ...",
+      "line_refs": "turn629504view3 L7977-L8006"
+    },
+    {
+      "id": "E_WIKI_SDE_DOV_SECONDARY",
+      "source_type": "secondary_unofficial_wikipedia_context",
+      "url": "https://en.wikipedia.org/wiki/Sde_Dov_Airport",
+      "title": "Sde Dov Airport",
+      "retrieved_at": "2026-07-04",
+      "quote": "The site of the former airport is slated to host 16,000 housing units, 35 high-rise office towers, 250,000 sq m of hotels...",
+      "line_refs": "turn773219view0 L230-L233"
+    },
+    {
+      "id": "E_WIKI_GREEN_LINE_SECONDARY",
+      "source_type": "secondary_unofficial_wikipedia_context",
+      "url": "https://en.wikipedia.org/wiki/Green_Line_(Tel_Aviv_Light_Rail)",
+      "title": "Green Line (Tel Aviv Light Rail)",
+      "retrieved_at": "2026-07-04",
+      "quote": "Green Line ... Status: Under construction ... 58 ... Opening: Southern section 2028; Entire Line 2030 ...",
+      "line_refs": "turn141028view2 L113-L128"
+    },
+    {
+      "id": "E_MEDIA_RENDER_1",
+      "source_type": "developer_official_project_page_static_media_clicked",
+      "url": "https://static.wixstatic.com/media/2245eb_f1383fd771db4ec4bd1de27b53f00538~mv2.jpg/v1/fill/w_980%2Ch_650%2Cal_c%2Cq_85%2Cusm_0.66_1.00_0.01%2Cenc_avif%2Cquality_auto/3333%201.jpg",
+      "title": "Official page static media asset",
+      "retrieved_at": "2026-07-04",
+      "quote": "Static media URL retrieved by opening image asset from the official Rainbow project page.",
+      "line_refs": "turn993585view0 L0"
+    },
+    {
+      "id": "E_MEDIA_RENDER_2",
+      "source_type": "developer_official_project_page_static_media_clicked",
+      "url": "https://static.wixstatic.com/media/bb4731_e01b45b88ea14e6fb9431bb040c40f1f~mv2.jpg/v1/fill/w_980%2Ch_673%2Cal_c%2Cq_85%2Cusm_0.66_1.00_0.01%2Cenc_avif%2Cquality_auto/rainbow-shtila-0685_colored_%20copy.jpg",
+      "title": "Official page static media asset",
+      "retrieved_at": "2026-07-04",
+      "quote": "Static media URL retrieved by opening image asset from the official Rainbow project page.",
+      "line_refs": "turn993585view1 L0"
+    },
+    {
+      "id": "E_MEDIA_RENDER_3",
+      "source_type": "developer_official_project_page_static_media_clicked",
+      "url": "https://static.wixstatic.com/media/bb4731_05992d202b6148eab4d31b061ca5f61d~mv2.jpg/v1/fit/w_715%2Ch_590%2Cq_90%2Cenc_avif%2Cquality_auto/bb4731_05992d202b6148eab4d31b061ca5f61d~mv2.jpg",
+      "title": "Official page static media asset",
+      "retrieved_at": "2026-07-04",
+      "quote": "Static media URL retrieved by opening image asset from the official Rainbow project page.",
+      "line_refs": "turn993585view3 L0"
+    },
+    {
+      "id": "E_MEDIA_RENDER_4",
+      "source_type": "developer_official_project_page_static_media_clicked",
+      "url": "https://static.wixstatic.com/media/bb4731_f3e6c95d7e6c4f64b7dc9617db36fe03~mv2.jpg/v1/fit/w_715%2Ch_402%2Cq_90%2Cenc_avif%2Cquality_auto/bb4731_f3e6c95d7e6c4f64b7dc9617db36fe03~mv2.jpg",
+      "title": "Official page static media asset",
+      "retrieved_at": "2026-07-04",
+      "quote": "Static media URL retrieved by opening image asset from the official Rainbow project page.",
+      "line_refs": "turn290250view0 L0"
+    },
+    {
+      "id": "E_MEDIA_RENDER_5",
+      "source_type": "developer_official_project_page_static_media_clicked",
+      "url": "https://static.wixstatic.com/media/bb4731_bb151d0a570f47ad92a949b4e83b9840~mv2.jpg/v1/fit/w_715%2Ch_402%2Cq_90%2Cenc_avif%2Cquality_auto/bb4731_bb151d0a570f47ad92a949b4e83b9840~mv2.jpg",
+      "title": "Official page static media asset",
+      "retrieved_at": "2026-07-04",
+      "quote": "Static media URL retrieved by opening image asset from the official Rainbow project page.",
+      "line_refs": "turn290250view1 L0"
+    },
+    {
+      "id": "E_MEDIA_RENDER_6",
+      "source_type": "developer_official_project_page_static_media_clicked",
+      "url": "https://static.wixstatic.com/media/bb4731_e5783d61415f44cbae20a1993de32ccb~mv2.jpg/v1/fit/w_715%2Ch_402%2Cq_90%2Cenc_avif%2Cquality_auto/bb4731_e5783d61415f44cbae20a1993de32ccb~mv2.jpg",
+      "title": "Official page static media asset",
+      "retrieved_at": "2026-07-04",
+      "quote": "Static media URL retrieved by opening image asset from the official Rainbow project page.",
+      "line_refs": "turn290250view2 L0"
+    },
+    {
+      "id": "E_MEDIA_RENDER_7",
+      "source_type": "developer_official_project_page_static_media_clicked",
+      "url": "https://static.wixstatic.com/media/bb4731_2b2c1b63c84b462cbe8028a99f910f70~mv2.jpg/v1/fit/w_715%2Ch_363%2Cq_90%2Cenc_avif%2Cquality_auto/bb4731_2b2c1b63c84b462cbe8028a99f910f70~mv2.jpg",
+      "title": "Official page static media asset",
+      "retrieved_at": "2026-07-04",
+      "quote": "Static media URL retrieved by opening image asset from the official Rainbow project page.",
+      "line_refs": "turn290250view3 L0"
+    }
+  ],
+  "conflicts": [
+    {
+      "field": "units.total_units",
+      "conflict_type": "official structured/current report vs older/marketing prose",
+      "source_a": {
+        "value": 459,
+        "evidence_ids": [
+          "E_OFFICIAL_HE_STRUCTURED",
+          "E_OFFICIAL_EN_STRUCTURED",
+          "E_REPORT_PLANNING_PERMITS"
+        ],
+        "quote_summary": "official structured pages and annual report state 459 housing units; annual report says count was updated from 480 to 459"
+      },
+      "source_b": {
+        "value": 480,
+        "evidence_ids": [
+          "E_OFFICIAL_CONTRACTOR_FORM",
+          "E_OFFICIAL_UNITS_DELIVERY"
+        ],
+        "quote_summary": "official marketing prose still says 480 units and 'more than 275 out of 480 sold'"
+      },
+      "resolution_for_publishing": "Use 459 as the current structured/reporting count; mention the 480 legacy text only in internal QA/conflict notes."
+    },
+    {
+      "field": "units.residential_marketed_area_sqm",
+      "conflict_type": "annual report nearby rows differ slightly",
+      "source_a": {
+        "value": 46340,
+        "evidence_ids": [
+          "E_REPORT_PARCELS"
+        ],
+        "quote_summary": "project description row says approximately 46,340 sqm residential marketed area"
+      },
+      "source_b": {
+        "value": 46200,
+        "evidence_ids": [
+          "E_REPORT_PLANNING_PERMITS"
+        ],
+        "quote_summary": "planning/permit row says 46,200 sqm marketed area"
+      },
+      "resolution_for_publishing": "Use 'about 46.2k–46.34k sqm' unless the permit/site plan is checked."
+    },
+    {
+      "field": "architect.name_he/name_en",
+      "conflict_type": "language rendering / branding of architecture office",
+      "source_a": {
+        "value": "ברעלי לויצקי כסיף דה לה פונטיין אדריכלים",
+        "evidence_ids": [
+          "E_OFFICIAL_HE_STRUCTURED"
+        ]
+      },
+      "source_b": {
+        "value": "D-blk Architects",
+        "evidence_ids": [
+          "E_OFFICIAL_EN_STRUCTURED"
+        ]
+      },
+      "resolution_for_publishing": "Keep both Hebrew and English source names exactly; do not normalize without architect-portfolio verification."
+    }
+  ],
+  "unknowns": [
+    {
+      "field": "lat/lng",
+      "reason": "Intentionally omitted by instruction; use official parcel/geocoder downstream."
+    },
+    {
+      "field": "exact street/building address",
+      "reason": "Not found in retrieved official sources; annual report gives Gush/parcel identifiers instead."
+    },
+    {
+      "field": "sales-office address",
+      "reason": "No distinct Rainbow sales office address retrieved; do not use developer HQ as a substitute."
+    },
+    {
+      "field": "exact beach/park/transit/school distances and times",
+      "reason": "Require verified parcel geocode and routing; not safe to estimate."
+    },
+    {
+      "field": "every nearby school/kindergarten",
+      "reason": "Requires municipal education-layer/local map sweep after geocoding."
+    },
+    {
+      "field": "adjacent-lot plan numbers and view-blocking towers",
+      "reason": "Mavat/municipal planning layer not resolved in this pass; annual report has project approval date but not plan number."
+    },
+    {
+      "field": "height_m",
+      "reason": "Floors were published; tower height in meters was not found."
+    },
+    {
+      "field": "footprint shape/dimensions/orientation",
+      "reason": "Requires site plan/parcel polygon/elevation drawings; not extracted from renders."
+    },
+    {
+      "field": "typical floor plans / unit lines / apartment numbering",
+      "reason": "No floor plan PDFs/images or line scheme retrieved."
+    },
+    {
+      "field": "facade elevations/material specifications",
+      "reason": "No elevation sheets/spec text retrieved; renders are insufficient for factual facade selector."
+    },
+    {
+      "field": "live developer asking price list",
+      "reason": "No published price list/range retrieved; only public-filing sold-contract metrics are included."
+    },
+    {
+      "field": "Madlan/Yad2 active asking ranges",
+      "reason": "No reliable project page/listing range resolved in this pass."
+    },
+    {
+      "field": "nadlan.gov.il/RMI comparable transactions",
+      "reason": "Not completed; requires separate parcel/street transaction pass."
+    },
+    {
+      "field": "brochure PDF / virtual tour / 3D model",
+      "reason": "No stable public URLs retrieved."
+    }
+  ],
+  "coverage": {
+    "project_chosen": {
+      "value": "Rainbow Tel Aviv / פרויקט Rainbow",
+      "evidence_ids": [
+        "E_REPORT_SELECTION_ADSPEND",
+        "E_HOMEPAGE_MARKETING"
+      ]
+    },
+    "source_classes_swept": [
+      {
+        "class": "developer official Hebrew project page",
+        "status": "retrieved",
+        "evidence_ids": [
+          "E_OFFICIAL_HE_IDENTITY",
+          "E_OFFICIAL_HE_STRUCTURED",
+          "E_OFFICIAL_AMENITIES_LIST"
+        ]
+      },
+      {
+        "class": "developer official English project page",
+        "status": "retrieved",
+        "evidence_ids": [
+          "E_OFFICIAL_EN_STRUCTURED"
+        ]
+      },
+      {
+        "class": "developer homepage / projects-in-marketing / campaign posts",
+        "status": "retrieved",
+        "evidence_ids": [
+          "E_HOMEPAGE_MARKETING",
+          "E_HOMEPAGE_EN_MARKETING"
+        ]
+      },
+      {
+        "class": "public-company annual report / financial filing",
+        "status": "retrieved",
+        "evidence_ids": [
+          "E_REPORT_SELECTION_ADSPEND",
+          "E_REPORT_PARCELS",
+          "E_REPORT_PLANNING_PERMITS",
+          "E_REPORT_SALES_2025",
+          "E_REPORT_PPSQM",
+          "E_REPORT_REMAINING_UNITS"
+        ]
+      },
+      {
+        "class": "official static media assets from developer page",
+        "status": "partially retrieved",
+        "evidence_ids": [
+          "E_MEDIA_RENDER_1",
+          "E_MEDIA_RENDER_2",
+          "E_MEDIA_RENDER_3",
+          "E_MEDIA_RENDER_4",
+          "E_MEDIA_RENDER_5",
+          "E_MEDIA_RENDER_6",
+          "E_MEDIA_RENDER_7"
+        ]
+      },
+      {
+        "class": "Madlan",
+        "status": "not resolved to a reliable project page/range in this pass",
+        "evidence_ids": []
+      },
+      {
+        "class": "Yad2",
+        "status": "not resolved to a reliable active listing/range in this pass",
+        "evidence_ids": []
+      },
+      {
+        "class": "nadlan.gov.il / RMI transactions",
+        "status": "not completed",
+        "evidence_ids": []
+      },
+      {
+        "class": "mavat.iplan.gov.il / municipal planning",
+        "status": "not completed; annual report supplied approval date and permit status but not plan number",
+        "evidence_ids": [
+          "E_REPORT_PLANNING_PERMITS"
+        ]
+      },
+      {
+        "class": "NTA / Green Line official",
+        "status": "official page fetch failed/blocked in this environment; secondary Green Line source included",
+        "evidence_ids": [
+          "E_WIKI_GREEN_LINE_SECONDARY"
+        ]
+      },
+      {
+        "class": "architect/contractor portfolio",
+        "status": "not independently retrieved; official page and annual report named architect/contractors",
+        "evidence_ids": [
+          "E_OFFICIAL_HE_STRUCTURED",
+          "E_REPORT_CONTRACTORS"
+        ]
+      },
+      {
+        "class": "Wikipedia / secondary urban context",
+        "status": "retrieved and explicitly marked unofficial",
+        "evidence_ids": [
+          "E_WIKI_SDE_DOV_SECONDARY",
+          "E_WIKI_GREEN_LINE_SECONDARY"
+        ]
+      }
+    ],
+    "high_confidence_fields": [
+      "project identity",
+      "developer",
+      "city/neighborhood",
+      "Gush/parcel identifiers",
+      "number of buildings",
+      "current total units = 459",
+      "tower/boutique floors",
+      "amenities list",
+      "sales progress as of annual report",
+      "public-filing average sold ppsqm",
+      "building permit status"
+    ],
+    "medium_confidence_fields": [
+      "contractor names/roles",
+      "media asset classification",
+      "Green Line context"
+    ],
+    "low_or_missing_fields": [
+      "street address",
+      "distances/times",
+      "schools",
+      "floorplans/unit lines",
+      "facade elevations/materials",
+      "live asking prices",
+      "Madlan/Yad2/government comparable prices",
+      "Mavat plan number",
+      "adjacent-lot view blockage analysis"
+    ],
+    "publication_readiness": {
+      "seo_identity": "usable with caveat that live Google SERP was not independently captured",
+      "neighborhood_article": "usable for high-level source-backed narrative; not ready for exact-distance blocks",
+      "3d_mass_model": "basic massing only: 1x39-floor tower + 6x8-floor buildings; not ready for clickable apartment selection",
+      "facade_selector": "not ready; needs elevation/facade drawings and unit-line mapping",
+      "price_block": "usable only as public filing/sold-contract transparency; not live asking prices"
+    }
+  }
+}

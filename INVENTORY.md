@@ -56,7 +56,7 @@ _Last built (git date): 2026-07-04 · 21 GLBs (3129 KB) · 30 projects_
 | `oliver-tel-aviv` | אזורים | — | needs_geocode | — | azorim_developer_batch_v2_2026-07-04 |
 | `park-tower-ramat-gan` | Ashtrom Residences / Ashdar + Enav | — | needs_geocode | — | chatgpt_gush_dan_2026-07-03 |
 | `people-tel-aviv` | Israel Canada | — | needs_geocode | — | chatgpt_gush_dan_2026-07-03 |
-| `rainbow-sde-dov` | Israel Canada | model.glb | needs_geocode | — | chatgpt_gush_dan_2026-07-03 |
+| `rainbow-sde-dov` | Israel Canada | model.glb | needs_geocode | — | full-world dossier 2026-07-04 (+ chatgpt base) |
 | `recanati-residence` | Ashtrom Residences / Ashdar + Enav | — | needs_geocode | — | chatgpt_gush_dan_2026-07-03 |
 | `remez-36` | Ashtrom Residences / Ashdar | — | needs_geocode | — | chatgpt_gush_dan_2026-07-03 |
 | `she-tel-aviv` | Israel Canada | — | needs_geocode | — | chatgpt_gush_dan_2026-07-03 |
