@@ -1,15 +1,15 @@
 {
   "name": "NadLan Config",
   "slug": "nadlan-config",
-  "version": "1.71.3",
+  "version": "1.71.4",
   "author": "nad-lan.co.il",
   "homepage": "https://nad-lan.co.il",
   "requires": "6.7",
   "tested": "7.0",
   "requires_php": "7.4",
-  "download_url": "https://raw.githubusercontent.com/The-new-ben/nad-lan-co-il/main/plugin-dist/nadlan-config-1.71.3.zip",
-  "last_updated": "2026-07-04 18:00:00",
+  "download_url": "https://raw.githubusercontent.com/The-new-ben/nad-lan-co-il/main/plugin-dist/nadlan-config-1.71.4.zip",
+  "last_updated": "2026-07-04 20:00:00",
   "sections": {
-    "changelog": "<h4>1.71.3</h4><ul><li>No long dashes anywhere: swept 322 em/en dashes from plugin source to hyphens (SERP title + meta description were the visible offenders). Language project pages (-fr/-ru/-ar) now declare their own html lang + dir instead of inheriting Hebrew RTL.</li></ul>"
+    "changelog": "<h4>1.71.4</h4><ul><li>Two traffic-magnet tools: [nadlan_buy_vs_rent] year-by-year buy-vs-rent simulation (opportunity cost, dated purchase-tax brackets, break-even chart, sensitivity) and [nadlan_deal_check] apartment deal analyzer (letter grade, price-vs-market, yield, DTI, checks list, AI lead funnel).</li></ul>"
   }
 }
