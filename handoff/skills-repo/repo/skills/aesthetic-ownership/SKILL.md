@@ -115,4 +115,14 @@ traffic.
   reduced-motion/data-saver users remove autoplay and hold the poster. Verify
   playback for real (headless: assert `!video.paused` AND `currentTime`
   advancing across two samples), never from markup alone.
+- INVENTORY LAW (read the repo before you touch it): `INVENTORY.md` at the repo
+  root is the single index of valuable assets — every GLB (with tris/dims so a
+  good model is never mistaken for junk), every project's data status, key
+  engine/factory files, and the graveyard. READ IT FIRST on any session so you
+  never rebuild what exists or delete what's costly. After adding or removing a
+  valuable asset (especially a GLB — they are expensive compute and must NEVER be
+  swung out silently), run `python3 scripts/build-inventory.py` and commit the
+  refreshed INVENTORY.md. If you delete/retire an asset, log it in
+  `docs/GRAVEYARD.md` (what, why, where a copy survives) so other agents see it's
+  intentional, not lost. Work is lost across sessions when the index isn't kept.
 - EVERY TIME you learn a new failure mode, ADD IT HERE. This skill compounds.

@@ -3,8 +3,11 @@
   "identity": {
     "name_he": "אשירה שדה דב",
     "name_en": "Ashira Sde Dov",
-    "aka": [],
-    "developer": "(TBD — confirm developer)",
+    "aka": [
+      "Ashira",
+      "אשירה שדה דב"
+    ],
+    "developer": "אביסרור משה ובניו (Avisror)",
     "contractor": null,
     "architect": null,
     "marketing_status": "under_construction",
@@ -31,8 +34,15 @@
     "ground_elevation_m": null
   },
   "context": {},
-  "building_form": {},
-  "units": {},
+  "building_form": {
+    "num_buildings": 4,
+    "floors": 35,
+    "building_composition": "8 / 8 / 16 / 35 floors (tower 35, b16, two 8-floor); sea to the west",
+    "floor_height_m": 3.2
+  },
+  "units": {
+    "total_units": 406
+  },
   "market": {},
   "urban_future": {},
   "media": {
@@ -50,7 +60,10 @@
     "frame_radius": null,
     "unit_hotspots": null,
     "poster": null,
-    "asset_folder": "assets/projects/ashira-sde-dov"
+    "asset_folder": "assets/projects/ashira-sde-dov",
+    "massing_spec": "assets/projects/ashira-sde-dov/massing-spec.json",
+    "massing_generator": "scripts/generate-massing.py",
+    "model_tier": "B-massing (live: factory model; real-composition regen available from massing-spec via generate-massing.py, needs detail pass)"
   },
   "content": {
     "article": {
@@ -63,7 +76,7 @@
   },
   "confidence": {
     "overall": "med",
-    "notes": "Our authored prototype (illustrative). Was NOT in the ChatGPT batch. On the Sde Dov airfield redevelopment like Rainbow — geocode carefully (same zone that ChatGPT mis-pinned)."
+    "notes": "Real composition + developer captured from claude/ashira-grounded-model branch (sourced building.org.il/ice.co.il/sdedov.co.il). 406 units, 4 buildings 8/8/16/35."
   },
   "db_meta": {
     "source_batch": "nadlan_own_authored",
