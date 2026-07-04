@@ -1,5 +1,15 @@
 # AGENT-LOG - the God brain (append-only, newest on top)
 
+## 2026-07-04 (23:00) - PREMIUM CATALOG LIVE
+- https://nad-lan.co.il/premium/ (v1.71.6-7): curated tier, only full-experience projects.
+  11 facility filters with gold SVG icons (pool/spa/gym/cinema/concierge/lobby/kids/
+  retail/parking/mamad/lagoon), nearby filters (sea/park/marina), developer filter,
+  sort, active pills, no-results state, developers-join CTA (monetization tier).
+  QA live: lagoon filter -> Rainbow only, pill + count correct, zero JS errors.
+- POSITIONING DECISION GIVEN TO OWNER: /premium/ = curated monetizable tier;
+  /projects/ (900+) stays the SEO net. Not a replacement.
+- FLOATED to owner in chat: full undecided/forgotten list (see message log below).
+
 Owner's law (2026-07-04): every agent logs here what was delivered to the owner,
 what was told to him, open worries, gaps, reminders, and what he might have
 forgotten. Read this AND INVENTORY.md at the start of every session. If you
