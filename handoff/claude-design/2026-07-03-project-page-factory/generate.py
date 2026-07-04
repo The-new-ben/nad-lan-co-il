@@ -236,6 +236,12 @@ FACILITIES={
 }
 MIN_ARTICLE_WORDS=3000
 
+import re as _re_dash
+_DASH=_re_dash.compile(r'[\u2012\u2013\u2014\u2015\u2212]')
+def no_long_dashes(s):
+  """Owner's law: long dashes never ship. Character swap to '-', sentences untouched."""
+  return _DASH.sub('-', s or '')
+
 def article_words(html):
   import re as _re
   return len(_re.sub(r"<[^>]+>"," ",html or "").split())
@@ -350,7 +356,7 @@ def render(slug):
       blocked.append(f"{fname_of(lang)}  (article {art_w}<{MIN_ARTICLE_WORDS} words — BLOCKED by gate)")
       continue
     P=dict(base)
-    P["article_html"]=art_html
+    P["article_html"]=no_long_dashes(art_html)
     P["facilities"]=FACILITIES.get(slug,[])
     title,desc,extra=head_meta(slug,P,A,lang,fname_of)
     lang_files={l:fname_of(l) for l in emitted_langs}
@@ -362,6 +368,7 @@ def render(slug):
     tpl=tpl.replace("<title>נדלן · עמוד פרויקט</title>",
       f"<title>{esc(title)}</title>\n<meta name=\"description\" content=\"{esc(desc)}\">\n{extra}")
     fn=fname_of(lang)
+    tpl=no_long_dashes(tpl)
     open(os.path.join(OUT,"pages",fn),"w",encoding="utf-8").write(tpl)
     out.append(f"{fn}  (article {art_w}w ✓ hotspots ✓ facade ✓)")
   for b_ in blocked: out.append("BLOCKED: "+b_)

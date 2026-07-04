@@ -8,3 +8,4 @@ where a copy lives (branch/commit) if recoverable. This keeps other agents from
 |---|---|---|---|
 | 2026-07-03 | Ashira GLB (bad) | dot-on-1km-plate framing | `handoff/claude-design/2026-07-03-project-page-factory/_retired-bad-ashira-glb/` |
 | 2026-07-04 | boutique project stubs (Amos/Remez/Malachi) | below premium/≥20-unit gate | `data/projects/_excluded.json` |
+| 2026-07-04 | 10 stale pre-gate factory pages (blocked langs incl. duo) | violated 3,000-word/no-dash laws; gate no longer emits them | regenerate via generate.py once real translations land |
