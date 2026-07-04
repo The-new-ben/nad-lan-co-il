@@ -1,10 +1,10 @@
 {
   "id": "exchange-ramat-gan",
   "identity": {
-    "name_he": "EXCHANGE רמת גן",
-    "name_en": "EXCHANGE Ramat Gan",
+    "name_he": "EXCHANGE | רמת גן",
+    "name_en": "Exchange Ramat Gan",
     "aka": [],
-    "developer": "Azorim",
+    "developer": "אזורים",
     "contractor": null,
     "architect": null,
     "marketing_status": "under_construction",
@@ -12,7 +12,7 @@
       "official": "https://www.azorim.co.il/projects/exchange/",
       "madlan": null,
       "yad2": null,
-      "developer": null
+      "developer": "https://xchange.co.il/"
     },
     "name_he_src": [
       "https://www.azorim.co.il/projects/exchange/"
@@ -35,8 +35,8 @@
   },
   "location": {
     "address_he": "מתחם עלית, צומת ארלוזורוב/ז'בוטינסקי",
-    "city": "Ramat Gan",
-    "neighborhood": "מתחם הבורסה / עלית",
+    "city": "רמת גן",
+    "neighborhood": null,
     "gush": null,
     "helka": null,
     "gis_confidence": "approx",
@@ -58,12 +58,13 @@
     "gis_note_src": [],
     "lat": null,
     "lng": null,
-    "coord_estimate_unverified": {
-      "lat": 32.08395,
-      "lng": 34.80395
-    },
+    "coord_estimate_unverified": null,
     "geocode_status": "needs_geocode",
-    "coord_provenance": "chatgpt_manual_estimate_2026-07-03 (UNVERIFIED — do not use for the map; regeocode from address via govmap/Mapbox)"
+    "coord_provenance": "chatgpt_manual_estimate_2026-07-03 (UNVERIFIED — do not use for the map; regeocode from address via govmap/Mapbox)",
+    "building_address": null,
+    "sales_office_address": "תובל 40, רמת-גן (מגדל ספיר – קומה 37)",
+    "geocode_source": null,
+    "geocode_rule": "Use location hint / plan data for geocoder; do not use Tuval 40 sales office as the project parcel."
   },
   "context": {
     "dist_to_sea_m": null,
@@ -186,27 +187,14 @@
     ]
   },
   "media": {
-    "render_urls": [],
+    "render_urls": [
+      "https://www.azorim.co.il/wp-content/uploads/2025/04/RAMAT_GAN-1.png"
+    ],
+    "render_url_capture_note": "Main render URL captured from official Azorim image link; page lists multiple Exchange gallery images.",
     "video_urls": [],
     "brochure_pdf": null,
     "floorplan_urls": [],
-    "site_plan_url": null,
-    "virtual_tour_url": null,
-    "bim_or_3d_available": "unknown",
-    "aerial_or_streetview_ref": null,
-    "gallery_page_url": "https://www.azorim.co.il/projects/exchange/",
-    "external_project_site": null,
-    "gallery_page_url_src": [
-      "https://www.azorim.co.il/projects/exchange/"
-    ],
-    "render_urls_src": [],
-    "video_urls_src": [],
-    "brochure_pdf_src": [],
-    "floorplan_urls_src": [],
-    "site_plan_url_src": [],
-    "virtual_tour_url_src": [],
-    "bim_or_3d_available_src": [],
-    "aerial_or_streetview_ref_src": []
+    "virtual_tour_url": null
   },
   "content_angles": {
     "usp": [
@@ -238,7 +226,7 @@
   },
   "confidence": {
     "overall": "med",
-    "notes": "Active-marketing status verified from Azorim project catalogue; geometry values need official planning cross-check."
+    "notes": "Landmark scale is verified; precise parcel needs govmap/plan geocoding based on the Elite site location, not the sales office."
   },
   "field_sources": {
     "identity.name_he": [
@@ -297,7 +285,54 @@
     "Azorim page lines 31-37: EXCHANGE at Elite factory site with two towers and residential tower."
   ],
   "evidence": [
-    "Azorim project page describes EXCHANGE at the former Elite factory site, two towers, and a residential tower; a secondary high-rise listing supplies floors/height/units."
+    {
+      "field": "name/city",
+      "value": "EXCHANGE | רמת גן",
+      "source_url": "https://www.azorim.co.il/projects/exchange/",
+      "quote": "# EXCHANGE | רמת גן"
+    },
+    {
+      "field": "location_hint",
+      "value": "Arlozorov/Jabotinsky / former Elite chocolate factory",
+      "source_url": "https://www.azorim.co.il/projects/exchange/",
+      "quote": "ממוקם במפגש בין ארלוזורוב וז'בוטינסקי, במקום בו שכן מפעל השוקולד המיתולוגי של עלית"
+    },
+    {
+      "field": "scale/buildings",
+      "value": "two towers, one residential and one business",
+      "source_url": "https://www.azorim.co.il/projects/exchange/",
+      "quote": "שני מגדלים בעיצוב אייקוני – מגדל אחד אורבני תוסס ... ומגדל שני נועד לעסקים"
+    },
+    {
+      "field": "amenities",
+      "value": "park, passage, retail, restaurants, cafes",
+      "source_url": "https://www.azorim.co.il/projects/exchange/",
+      "quote": "פארק יפהפה ופסאז' שוקק ומלא בחנויות, מסעדות, בתי קפה ומוקדי מסחר"
+    },
+    {
+      "field": "amenity",
+      "value": "semi-Olympic pool",
+      "source_url": "https://www.azorim.co.il/projects/exchange/",
+      "quote": "בריכה חצי אולימפית"
+    },
+    {
+      "field": "sales_office_address",
+      "value": "תובל 40, רמת-גן",
+      "source_url": "https://www.azorim.co.il/projects/exchange/",
+      "quote": "משרד מכירות / תובל 40, רמת-גן / (מגדל ספיר – קומה 37)"
+    },
+    {
+      "field": "official_microsite_link",
+      "value": "https://xchange.co.il/",
+      "source_url": "https://www.azorim.co.il/projects/exchange/",
+      "quote": "לאתר הפרויקט>"
+    },
+    {
+      "field": "catalog_presence",
+      "value": "project appears in Azorim projects catalogue",
+      "source_url": "https://www.azorim.co.il/%D7%A4%D7%A8%D7%95%D7%99%D7%A7%D7%98%D7%99%D7%9D/",
+      "quote": "EXCHANGE | רמת גן"
+    }
   ],
   "_unverified": [
     "location.lat",
@@ -315,17 +350,19 @@
     "https://www.azorim.co.il/projects/exchange/"
   ],
   "db_meta": {
-    "source_batch": "chatgpt_gush_dan_2026-07-03",
+    "source_batch": "azorim_developer_batch_v2_2026-07-04",
     "ingested_at": "2026-07-04",
-    "verification": "urls_http200_confirmed; sample content-verified; coords UNVERIFIED; prices ABSENT",
+    "verification": "official-page-only, evidence-quoted, sales-office separated; 1849-unit VILLE quote independently confirmed",
     "canonical": true,
     "ready_for_page": false,
     "needs": [
-      "geocode",
-      "price",
+      "geocode (building parcel via govmap/plan — sales office must NOT be used)",
+      "price pass",
       "floors/units where null",
-      "media urls",
-      "5-lang article body"
+      "media/floorplans",
+      "5-lang article",
+      "3D model"
     ]
-  }
+  },
+  "conflicts": []
 }

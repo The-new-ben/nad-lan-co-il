@@ -23,6 +23,8 @@ body{font-family:var(--sans);color:var(--ink);background:var(--dark)}
   padding:9px 2px;cursor:pointer;transition:background .15s;border-radius:8px}
 .proj:hover{background:var(--band)}
 .proj b{font-size:14px}.proj .m{font-size:12px;color:var(--soft)}
+/* isolate mixed Hebrew+number+·  rows so bidi keeps segment order stable */
+.proj .m,.pop .row,.sub,.pending{unicode-bidi:plaintext}
 .proj .fly{font-size:11px;font-weight:700;color:var(--gold);border:1px solid var(--gold);border-radius:999px;padding:3px 10px;white-space:nowrap}
 .qtitle{font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);font-weight:700;margin:14px 0 4px}
 .pending{font-size:12.5px;color:var(--soft);line-height:1.5;border-top:1px solid var(--hair);padding-top:8px}
@@ -62,6 +64,13 @@ const PROJECTS=[
   floors:39, units:458, status:'בשיווק · בבנייה', page:'page-dimri-yama-sde-dov.html'},
 ];
 const PENDING_COUNT=30;
+// Hebrew/Arabic base-map labels render left-to-right (flipped) without this
+// plugin — it is THE fix for "the Hebrew is flipped" on a Mapbox map.
+if(mapboxgl.getRTLTextPluginStatus && mapboxgl.getRTLTextPluginStatus()==='unavailable'){
+  mapboxgl.setRTLTextPlugin(
+    'https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-rtl-text/v0.2.3/mapbox-gl-rtl-text.js',
+    null, true /* lazy */);
+}
 const map=new mapboxgl.Map({container:'map',style:'mapbox://styles/mapbox/standard',
   center:[34.95,31.6],zoom:6.3,pitch:0,bearing:0,language:'he'});
 map.addControl(new mapboxgl.NavigationControl({visualizePitch:true}),'top-right');

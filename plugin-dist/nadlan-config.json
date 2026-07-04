@@ -1,15 +1,15 @@
 {
   "name": "NadLan Config",
   "slug": "nadlan-config",
-  "version": "1.70.9",
+  "version": "1.71.0",
   "author": "nad-lan.co.il",
   "homepage": "https://nad-lan.co.il",
   "requires": "6.7",
   "tested": "7.0",
   "requires_php": "7.4",
-  "download_url": "https://raw.githubusercontent.com/The-new-ben/nad-lan-co-il/main/plugin-dist/nadlan-config-1.70.9.zip",
-  "last_updated": "2026-07-04 10:00:00",
+  "download_url": "https://raw.githubusercontent.com/The-new-ben/nad-lan-co-il/main/plugin-dist/nadlan-config-1.71.0.zip",
+  "last_updated": "2026-07-04 13:30:00",
   "sections": {
-    "changelog": "<h4>1.70.9</h4><ul><li>Share previews fixed: real 1200x630 PNG brand card as og:image on homepage + all language homes (CMS-wired option); new site icon replaces stale May favicons. PNG because FB/WhatsApp scrapers do not render SVG og:images.</li></ul>"
+    "changelog": "<h4>1.71.0</h4><ul><li>Showroom engine: 3D model now loads on view (reveal=auto) instead of only after a drag (reveal=interaction) — the model no longer looks dead. Restores the selectable-apartment experience.</li></ul>"
   }
 }

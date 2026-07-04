@@ -48,5 +48,20 @@
     "name": "Metropolis Herzliya Mandelblat/Ibn Ezra",
     "reason": "Metropolis catalogue says אוכלס (occupied); excluded.",
     "source_url": "https://www.metropolis-il.com/"
+  },
+  {
+    "name": "אזורים עמוס תל אביב",
+    "reason": "עמוס תל אביב — 7 apartments boutique, below premium/landmark inclusion gate (Azorim v2)",
+    "source_url": "https://www.azorim.co.il/projects/"
+  },
+  {
+    "name": "אזורים רמז תל אביב",
+    "reason": "רמז תל אביב — boutique, no ≥20-unit / landmark evidence (Azorim v2)",
+    "source_url": "https://www.azorim.co.il/projects/"
+  },
+  {
+    "name": "אזורים מלאכי תל אביב",
+    "reason": "מלאכי תל אביב — boutique, no ≥20-unit / landmark evidence (Azorim v2)",
+    "source_url": "https://www.azorim.co.il/projects/"
   }
 ]

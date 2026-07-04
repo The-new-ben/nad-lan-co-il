@@ -1,10 +1,10 @@
 {
   "id": "oliver-tel-aviv",
   "identity": {
-    "name_he": "OLIVER תל אביב",
-    "name_en": "OLIVER Tel Aviv",
+    "name_he": "OLIVER | תל אביב",
+    "name_en": "Oliver Tel Aviv",
     "aka": [],
-    "developer": "Azorim + Shalom & Natan",
+    "developer": "אזורים",
     "contractor": null,
     "architect": null,
     "marketing_status": "under_construction",
@@ -35,7 +35,7 @@
   },
   "location": {
     "address_he": "סנפיר 1",
-    "city": "Tel Aviv-Yafo",
+    "city": "תל אביב-יפו",
     "neighborhood": "נווה חן",
     "gush": null,
     "helka": null,
@@ -58,12 +58,13 @@
     "gis_note_src": [],
     "lat": null,
     "lng": null,
-    "coord_estimate_unverified": {
-      "lat": 32.0606,
-      "lng": 34.8117
-    },
+    "coord_estimate_unverified": null,
     "geocode_status": "needs_geocode",
-    "coord_provenance": "chatgpt_manual_estimate_2026-07-03 (UNVERIFIED — do not use for the map; regeocode from address via govmap/Mapbox)"
+    "coord_provenance": "chatgpt_manual_estimate_2026-07-03 (UNVERIFIED — do not use for the map; regeocode from address via govmap/Mapbox)",
+    "building_address": null,
+    "sales_office_address": "רח' סנפיר 1, תל אביב",
+    "geocode_source": null,
+    "geocode_rule": "Address appears under sales office; treat as sales office until verified by official plan/geocoder."
   },
   "context": {
     "dist_to_sea_m": null,
@@ -198,27 +199,14 @@
     ]
   },
   "media": {
-    "render_urls": [],
+    "render_urls": [
+      "https://www.azorim.co.il/wp-content/uploads/2022/12/125728_OLIVER_770x432.jpg"
+    ],
+    "render_url_capture_note": "Main render URL captured from official Azorim image link; parsed page lists additional gallery images.",
     "video_urls": [],
     "brochure_pdf": null,
     "floorplan_urls": [],
-    "site_plan_url": null,
-    "virtual_tour_url": null,
-    "bim_or_3d_available": "unknown",
-    "aerial_or_streetview_ref": null,
-    "gallery_page_url": "https://www.azorim.co.il/projects/%D7%AA%D7%9C-%D7%90%D7%91%D7%99%D7%91-oliver/",
-    "external_project_site": null,
-    "gallery_page_url_src": [
-      "https://www.azorim.co.il/projects/%D7%AA%D7%9C-%D7%90%D7%91%D7%99%D7%91-oliver/"
-    ],
-    "render_urls_src": [],
-    "video_urls_src": [],
-    "brochure_pdf_src": [],
-    "floorplan_urls_src": [],
-    "site_plan_url_src": [],
-    "virtual_tour_url_src": [],
-    "bim_or_3d_available_src": [],
-    "aerial_or_streetview_ref_src": []
+    "virtual_tour_url": null
   },
   "content_angles": {
     "usp": [
@@ -249,7 +237,7 @@
   },
   "confidence": {
     "overall": "med",
-    "notes": "Address treated as approximate because parsed page also labels it as sales-office address."
+    "notes": "Included for review because 13 floors is not a boutique 7-unit drift, but unit count remains unverified."
   },
   "field_sources": {
     "identity.name_he": [
@@ -308,7 +296,42 @@
     "Azorim OLIVER lines 31-38 and 72-100; address/sales office lines 109-113."
   ],
   "evidence": [
-    "Azorim page says new 13-floor residential building in Neve Hen with 3-5 room apartments and Purple Line proximity."
+    {
+      "field": "name/city",
+      "value": "OLIVER | תל אביב",
+      "source_url": "https://www.azorim.co.il/projects/%D7%AA%D7%9C-%D7%90%D7%91%D7%99%D7%91-oliver/",
+      "quote": "# OLIVER | תל אביב"
+    },
+    {
+      "field": "neighborhood/floors/mix",
+      "value": "Neve Hen, 13 floors, 3-5 room apartments",
+      "source_url": "https://www.azorim.co.il/projects/%D7%AA%D7%9C-%D7%90%D7%91%D7%99%D7%91-oliver/",
+      "quote": "בניין מגורים חדש בשכונת נווה חן בן 13 קומות ... דירות 3-5 חדרים"
+    },
+    {
+      "field": "partner",
+      "value": "שלום את נתן יזמות נדל\"ן",
+      "source_url": "https://www.azorim.co.il/projects/%D7%AA%D7%9C-%D7%90%D7%91%D7%99%D7%91-oliver/",
+      "quote": "הפרויקט בשותפות שלום את נתן יזמות נדל\"ן"
+    },
+    {
+      "field": "amenities",
+      "value": "quiet area / purple line / schools / employment",
+      "source_url": "https://www.azorim.co.il/projects/%D7%AA%D7%9C-%D7%90%D7%91%D7%99%D7%91-oliver/",
+      "quote": "איזור שקט ... סמוך לקו הסגול של הרכבת הקלה ... סמיכות למוסדות לימוד ... מרכזי תעסוקה"
+    },
+    {
+      "field": "sales_office_address",
+      "value": "רח' סנפיר 1, תל אביב",
+      "source_url": "https://www.azorim.co.il/projects/%D7%AA%D7%9C-%D7%90%D7%91%D7%99%D7%91-oliver/",
+      "quote": "משרד מכירות / רח' סנפיר 1, תל אביב"
+    },
+    {
+      "field": "catalog_presence",
+      "value": "project appears in Azorim projects catalogue",
+      "source_url": "https://www.azorim.co.il/%D7%A4%D7%A8%D7%95%D7%99%D7%A7%D7%98%D7%99%D7%9D/",
+      "quote": "OLIVER | תל אביב"
+    }
   ],
   "_unverified": [
     "location.lat",
@@ -326,17 +349,19 @@
     "https://www.azorim.co.il/projects/%D7%AA%D7%9C-%D7%90%D7%91%D7%99%D7%91-oliver/"
   ],
   "db_meta": {
-    "source_batch": "chatgpt_gush_dan_2026-07-03",
+    "source_batch": "azorim_developer_batch_v2_2026-07-04",
     "ingested_at": "2026-07-04",
-    "verification": "urls_http200_confirmed; sample content-verified; coords UNVERIFIED; prices ABSENT",
+    "verification": "official-page-only, evidence-quoted, sales-office separated; 1849-unit VILLE quote independently confirmed",
     "canonical": true,
     "ready_for_page": false,
     "needs": [
-      "geocode",
-      "price",
+      "geocode (building parcel via govmap/plan — sales office must NOT be used)",
+      "price pass",
       "floors/units where null",
-      "media urls",
-      "5-lang article body"
+      "media/floorplans",
+      "5-lang article",
+      "3D model"
     ]
-  }
+  },
+  "conflicts": []
 }
