@@ -1,6 +1,6 @@
 <?php
 /**
- * nadlan-config — Public profile extras (v1.41.0)
+ * nadlan-config - Public profile extras (v1.41.0)
  *
  * Renders the new studio fields (social icons + video embed) on single
  * professional/project/property pages, just below the body content.

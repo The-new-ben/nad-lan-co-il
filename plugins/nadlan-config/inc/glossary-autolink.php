@@ -1,6 +1,6 @@
 <?php
 /**
- * nadlan-config — Glossary in-text auto-linker + discoverability (v1.22.0)
+ * nadlan-config - Glossary in-text auto-linker + discoverability (v1.22.0)
  *
  * Two jobs that compound the glossary's SEO value with zero per-term work:
  *
@@ -87,7 +87,7 @@ if ( ! function_exists( 'nadlan_autolink_replace_first_outside_tags' ) ) {
 			}
 			if ( $skip_depth > 0 ) { continue; }
 			if ( preg_match( $pattern, $chunk ) ) {
-				$link = '<a href="' . esc_url( $url ) . '" class="nadlan-gloss-link" title="' . esc_attr( $term ) . ' — מילון נדל"ן">$1</a>';
+				$link = '<a href="' . esc_url( $url ) . '" class="nadlan-gloss-link" title="' . esc_attr( $term ) . ' - מילון נדל"ן">$1</a>';
 				$parts[ $i ] = preg_replace( $pattern, $link, $chunk, 1 );
 				$replaced = true;
 				break;
@@ -118,7 +118,7 @@ add_filter( 'wp_nav_menu_items', function ( $items, $args ) {
 	return $items . $extras;
 }, 10, 2 );
 
-/* footer fallback links — owner-approved location for all directory entry points
+/* footer fallback links - owner-approved location for all directory entry points
  * (2026-06-01: "Only add to the footer, links to whatever"). Reachable on every page. */
 add_action( 'wp_footer', function () {
 	if ( is_admin() || is_front_page() ) { return; } // front page: mega footer owns this (v2)
@@ -150,4 +150,4 @@ add_action( 'wp_footer', function () {
    v2 homepage. Areas/tools/professionals bands now carry these links. */
 
 /* NOTE: inc/homepage.php provides [nadlan_home_sections] / [nadlan_hero_search]
- * shortcodes only (auto-injection disabled) — available if the owner wants them. */
+ * shortcodes only (auto-injection disabled) - available if the owner wants them. */

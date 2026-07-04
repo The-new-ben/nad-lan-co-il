@@ -1,16 +1,16 @@
 <?php
 /**
- * nadlan-config — Featured upsell on claimed profiles (v1.40.0 / shark #8)
+ * nadlan-config - Featured upsell on claimed profiles (v1.40.0 / shark #8)
  *
  * When a contractor is logged in viewing their OWN claimed profile (or any
- * verified-claimed profile), show a "your card is in position #X — upgrade to
+ * verified-claimed profile), show a "your card is in position #X - upgrade to
  * land in top-5 in your city" banner with one-click checkout. The position is
  * computed live from the same featured-sort the directory uses. Conversion
- * driver for the existing Pro/Premier products (476/477) — turns the abstract
+ * driver for the existing Pro/Premier products (476/477) - turns the abstract
  * "upgrade" into a concrete, ego-tickling pitch.
  *
  * Also appended to ALL claimed-but-free profiles (not just the owner's) as a
- * sponsored-pitch — the contractor sees it any time they visit their own page.
+ * sponsored-pitch - the contractor sees it any time they visit their own page.
  */
 if ( ! defined( 'ABSPATH' ) ) { exit; }
 
@@ -39,7 +39,7 @@ if ( ! function_exists( 'nadlan_fu_render' ) ) {
 	function nadlan_fu_render( $id ) {
 		$claim = (string) get_post_meta( $id, 'claim_status', true );
 		$tier  = (string) get_post_meta( $id, 'paid_tier', true ) ?: 'free';
-		// only show for claimed-but-not-Pro/Premier — those are the upgrade targets
+		// only show for claimed-but-not-Pro/Premier - those are the upgrade targets
 		if ( $claim !== 'verified' ) { return ''; }
 		if ( in_array( $tier, array( 'pro', 'premier' ), true ) ) { return ''; }
 		$pos = nadlan_fu_position( $id );

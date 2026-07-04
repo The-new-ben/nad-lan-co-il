@@ -1,4 +1,4 @@
-/* NadLan showroom — real Mapbox mount.
+/* NadLan showroom - real Mapbox mount.
  * Replaces the stylized .nl-map with a live Mapbox map when a token + coordinates
  * exist. If anything is missing, the map container shows a visible admin-facing
  * error instead of staying empty or silently falling back. */

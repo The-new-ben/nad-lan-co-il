@@ -1,6 +1,6 @@
 <?php
 /**
- * nadlan-config — City / professional / project autocomplete (v1.15.0)
+ * nadlan-config - City / professional / project autocomplete (v1.15.0)
  *
  * Powers the city input across facets, saved-search, AVM tool, and NL search
  * with a single fast REST endpoint backed by a daily-cached city index.

@@ -1,6 +1,6 @@
 <?php
 /**
- * nadlan-config — Programmatic SEO city hubs (v1.10.0)
+ * nadlan-config - Programmatic SEO city hubs (v1.10.0)
  *
  * Auto-generates city/neighborhood hub pages that target GENERIC keyword intent
  * ("קבלנים רשומים ב<עיר>", "פרויקטים ב<עיר>", "דירות למכירה ב<עיר>") and link DOWN
@@ -15,7 +15,7 @@
  *     + deal volume + top 8 cards rendered inline. Not "nice place to live".
  *   - JSON-LD CollectionPage + ItemList for rich results.
  *
- * Three rewrite endpoints (front-end only, no DB pages — clean and cache-friendly):
+ * Three rewrite endpoints (front-end only, no DB pages - clean and cache-friendly):
  *   /city/<city>/contractors/   → contractors hub
  *   /city/<city>/projects/      → projects hub
  *   /city/<city>/properties/    → properties hub (listings)

@@ -1,15 +1,15 @@
 <?php
 /**
- * nadlan-config — Branded archive grid for directory CPTs (v1.28.0)
+ * nadlan-config - Branded archive grid for directory CPTs (v1.28.0)
  *
  * The nadlan_professional / nadlan_project / nadlan_property archives are now linked
- * from the homepage, nav, footer and /catalog/ — but they were rendering through the
+ * from the homepage, nav, footer and /catalog/ - but they were rendering through the
  * theme's default archive loop, which shows these data-only CPTs (no editor body) as
  * blank/plain rows. With 1500+ imported professionals that looked broken.
  *
  * This module intercepts those archives (template_redirect, like city-hubs) and renders
- * a clean, branded, paginated CARD GRID built from the real meta — name, city,
- * classification, registry number, claim badge — matching the catalog skin. Facets bar
+ * a clean, branded, paginated CARD GRID built from the real meta - name, city,
+ * classification, registry number, claim badge - matching the catalog skin. Facets bar
  * on top (reuses [nadlan_facets]). Keeps the theme header/footer so it stays on-brand.
  *
  * Opt-out: define NADLAN_DISABLE_ARCHIVE_GRID to fall back to the theme template.
@@ -41,17 +41,17 @@ if ( ! function_exists( 'nadlan_archive_grid_render' ) ) {
 		$meta = array(
 			'nadlan_professional' => array(
 				'h1'  => 'בעלי מקצוע רשומים',
-				'sub' => 'קבלנים, שמאים ומפקחים מאומתים — מתוך פנקס הקבלנים הרשומים (gov.il). סינון לפי עיר, סיווג וענף.',
+				'sub' => 'קבלנים, שמאים ומפקחים מאומתים - מתוך פנקס הקבלנים הרשומים (gov.il). סינון לפי עיר, סיווג וענף.',
 				'badge' => 'קבלן רשום',
 			),
 			'nadlan_project' => array(
 				'h1'  => 'פרויקטים והתחדשות עירונית',
-				'sub' => 'תמ״א 38, פינוי-בינוי ובנייה חדשה — מספר תוכנית, יזם, סטטוס ויחידות דיור.',
+				'sub' => 'תמ״א 38, פינוי-בינוי ובנייה חדשה - מספר תוכנית, יזם, סטטוס ויחידות דיור.',
 				'badge' => 'פרויקט',
 			),
 			'nadlan_property' => array(
 				'h1'  => 'נכסים למכירה והשקעה',
-				'sub' => 'דירות ובתים עם בדיקה משפטית מקדימה — מחיר, חדרים, מ״ר ושכונה.',
+				'sub' => 'דירות ובתים עם בדיקה משפטית מקדימה - מחיר, חדרים, מ״ר ושכונה.',
 				'badge' => 'נכס',
 			),
 		);

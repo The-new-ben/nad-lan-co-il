@@ -1,10 +1,10 @@
 <?php
 /**
- * nadlan-config — Dynamic OG image for social sharing (v1.40.0 / shark #16)
+ * nadlan-config - Dynamic OG image for social sharing (v1.40.0 / shark #16)
  *
  * When someone shares a profile/term/article on WhatsApp/Twitter/FB, the
  * preview card shows an image. We don't have hand-made images for 2,700
- * contractors, so we generate SVG previews on the fly — branded cards that
+ * contractors, so we generate SVG previews on the fly - branded cards that
  * look professional + carry the title.
  *
  * Endpoint: GET /nadlan/v1/og/<post_id>.svg
@@ -116,7 +116,7 @@ add_action( 'wp_head', function () {
 	echo "<meta name=\"twitter:card\" content=\"summary_large_image\">\n";
 }, 28 );
 
-/* Homepage + language homes had NO og:image at all — WhatsApp/FB/LinkedIn fell
+/* Homepage + language homes had NO og:image at all - WhatsApp/FB/LinkedIn fell
    back to scraping the (old) favicon. A real 1200x630 PNG brand card, stored in
    the media library and CMS-wired via option, is emitted on / and /en /fr /ru /ar.
    PNG, not SVG: FB/WhatsApp scrapers do not render SVG og:images. */

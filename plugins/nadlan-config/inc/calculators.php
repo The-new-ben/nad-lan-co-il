@@ -1,12 +1,12 @@
 <?php
 /**
- * nadlan-config — Lead-magnet calculators (v1.19.0)
+ * nadlan-config - Lead-magnet calculators (v1.19.0)
  *
  * Rulebook §9.3 calculator suite (mortgage + home-value already exist in
  * listings-ux/avm-deals). This adds the rest as client-side shortcodes, each a
  * lead funnel:
  *   [nadlan_calc_purchase_tax]   מס רכישה   (brackets, filterable + dated)
- *   [nadlan_calc_capital_gains]  מס שבח     (ESTIMATE only — heavy disclaimer)
+ *   [nadlan_calc_capital_gains]  מס שבח     (ESTIMATE only - heavy disclaimer)
  *   [nadlan_calc_yield]          תשואת שכירות (ברוטו/נטו)
  *   [nadlan_calc_equity]         הון עצמי נדרש (LTV per Bank of Israel)
  *   [nadlan_calc_total_cost]     עלות רכישה כוללת
@@ -24,8 +24,8 @@
 
 if ( ! defined( 'ABSPATH' ) ) { exit; }
 
-/* ---- purchase-tax brackets (single residence, IL resident) — UPDATE ANNUALLY ----
- * Approximate brackets for the 16.1.2025–15.1.2026 year. Filterable so the owner/
+/* ---- purchase-tax brackets (single residence, IL resident) - UPDATE ANNUALLY ----
+ * Approximate brackets for the 16.1.2025-15.1.2026 year. Filterable so the owner/
  * Cowork can update without a code release. Always shown with the effective-date
  * label + a verify link.
  */
@@ -114,7 +114,7 @@ nadlanPtax();
 	<?php return ob_get_clean();
 } );
 
-/* ===== 2. מס שבח (ESTIMATE — heavy disclaimer) ===== */
+/* ===== 2. מס שבח (ESTIMATE - heavy disclaimer) ===== */
 add_shortcode( 'nadlan_calc_capital_gains', function () {
 	ob_start(); echo nadlan_calc_styles(); ?>
 <div class="nlcalc" id="nlcgt">

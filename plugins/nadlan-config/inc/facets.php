@@ -1,6 +1,6 @@
 <?php
 /**
- * nadlan-config — Archive facets / filters (v1.14.0)
+ * nadlan-config - Archive facets / filters (v1.14.0)
  *
  * Yad2/Madlan-grade filtering on /properties/, /projects/, /professionals/.
  * Server-side `pre_get_posts` translates URL query params (?city=&rooms_min=&
@@ -124,7 +124,7 @@ if ( ! function_exists( 'nadlan_facets_render' ) ) {
 }
 add_shortcode( 'nadlan_facets', 'nadlan_facets_render' );
 
-/* Auto-inject on archive — DISABLED v1.31.0: archive-grid.php / directory.php render
+/* Auto-inject on archive - DISABLED v1.31.0: archive-grid.php / directory.php render
  * the facets bar explicitly in the right place, so this loop_start hook produced a
  * duplicate form. Kept as a no-op for back-compat. */
 // add_action( 'loop_start', function ( $q ) { ... }, 6 );

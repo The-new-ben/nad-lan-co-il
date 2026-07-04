@@ -1,6 +1,6 @@
 <?php
 /**
- * nadlan-config — Homepage v2: the 12-band rich homepage (v1.69.87)
+ * nadlan-config - Homepage v2: the 12-band rich homepage (v1.69.87)
  *
  * Implements handoff/claude-design/2026-07-02-homepage/homepage-spec.md and the
  * standalone mockup (factory-run drop). The homepage's jobs: convert brand

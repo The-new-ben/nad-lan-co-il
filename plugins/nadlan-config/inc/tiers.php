@@ -1,10 +1,10 @@
 <?php
 /**
- * nadlan-config — Card tiers / paywall + free-trial gating (v1.16.0)
+ * nadlan-config - Card tiers / paywall + free-trial gating (v1.16.0)
  *
  * Closes the "free listings give away links + contacts" leak per owner brief
  * (2026-06-01). The rulebook §10 specifies Free/Pro/Premier tiers; v1.5.0 had no
- * tier — every verified claim got full edit + public contact. This module adds:
+ * tier - every verified claim got full edit + public contact. This module adds:
  *
  *  1) `paid_tier` meta on every card: 'free' | 'pro' | 'premier' (default 'free').
  *  2) Free-trial timer: when admin approves a claim, `trial_started` stamps now;
@@ -19,7 +19,7 @@
  * Rulebook §10 alignment: matches the "Free/Pro/Premier (מיקום, בלעדיות אזור,
  * תג מאומת)" plan. Premier adds priority sort in hubs/archives (built here).
  *
- * BLANK: actual checkout for upgrade is out of scope for this commit — the
+ * BLANK: actual checkout for upgrade is out of scope for this commit - the
  * upgrade button on the card opens a lead-capture (topic="שדרוג לפרו") so the
  * owner can convert manually; full WooCommerce subscription wiring is the next step.
  */
@@ -151,7 +151,7 @@ add_filter( 'the_content', function ( $content ) {
 		$content = preg_replace( '~<tr><th>טלפון</th><td>[^<]*</td></tr>~u', '', $content );
 		$content = preg_replace( '~<tr><th>אימייל</th><td>[^<]*</td></tr>~u', '', $content );
 		$content = preg_replace( '~<tr><th>website</th><td>[^<]*</td></tr>~iu', '', $content );
-		// remove gallery — unless this surface is exempt (free property listings keep photos)
+		// remove gallery - unless this surface is exempt (free property listings keep photos)
 		if ( ! nadlan_tier_can_show( $id, 'photos' ) ) {
 			$content = preg_replace( '~<div class="nlcard-gallery">.*?</div>~us', '', $content );
 		}
@@ -183,7 +183,7 @@ if ( ! function_exists( 'nadlan_tier_upgrade_cta' ) ) {
 /* ---- Priority sort in archives + hubs: pro/premier first, then trial, then free.
  * v1.30.0 fix: use meta_query with NOT EXISTS so records WITHOUT paid_tier are
  * still returned (the old `set('meta_key','paid_tier')` did an INNER JOIN that
- * excluded the ~2700 imported records that have no tier set yet — making the
+ * excluded the ~2700 imported records that have no tier set yet - making the
  * archives show only the 5 demo records). */
 add_action( 'pre_get_posts', function ( $q ) {
 	if ( is_admin() || ! $q->is_main_query() ) { return; }

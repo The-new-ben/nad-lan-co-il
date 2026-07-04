@@ -2,7 +2,7 @@
 /**
  * Plugin Name: NadLan Config
  * Description: Lead-capture foundation: nadlan_lead CPT + lead-form handler + healthcheck. Read skills/nadlan-config-plugin.md.
- * Version: 1.71.2
+ * Version: 1.71.3
  * Author: nad-lan.co.il
  * License: GPL-2.0+
  * Requires PHP: 7.4
@@ -16,16 +16,16 @@ if ( ! defined( 'ABSPATH' ) ) {
    above (the release script bumps all three). A frozen ver= string once kept
    browsers on a June engine.js for weeks - never hardcode versions in enqueues. */
 if ( ! defined( 'NADLAN_CONFIG_VERSION' ) ) {
-	define( 'NADLAN_CONFIG_VERSION', '1.71.2' );
+	define( 'NADLAN_CONFIG_VERSION', '1.71.3' );
 }
 
 /* ---------- v1.5.0: directory cards, claim funnel, auction engine ----------
  * Modular includes. Each is guarded internally with function_exists. They add:
- *   catalog-meta.php  — project + professional (contractor/service) meta + claim meta
- *   claim.php         — free-card → claim → verified-owner funnel (REST + admin + caps)
- *   import.php        — data.gov.il CKAN importer (רשם הקבלנים + התחדשות עירונית) + enrich REST + WP-CLI
- *   schema.php        — JSON-LD per card + thin-content noindex guard (anti-cannibalization)
- *   cards-render.php  — facts table + gallery + claim CTA + provenance on card views
+ *   catalog-meta.php  - project + professional (contractor/service) meta + claim meta
+ *   claim.php         - free-card → claim → verified-owner funnel (REST + admin + caps)
+ *   import.php        - data.gov.il CKAN importer (רשם הקבלנים + התחדשות עירונית) + enrich REST + WP-CLI
+ *   schema.php        - JSON-LD per card + thin-content noindex guard (anti-cannibalization)
+ *   cards-render.php  - facts table + gallery + claim CTA + provenance on card views
  * Kill list executed v1.70.6 (owner-approved): auction, esign, homepage,
  * project-page-assembly and project-3d removed; the pieces the live engine
  * still needs moved to showroom-support.php.
@@ -78,7 +78,7 @@ if ( ! function_exists( 'nadlan_config_healthcheck_response' ) ) {
 	function nadlan_config_healthcheck_response() {
 		$out = array(
 			'plugin'              => 'nadlan-config',
-			'version'             => '1.71.2',
+			'version'             => '1.71.3',
 			'cpt_present'         => post_type_exists( 'nadlan_lead' ),
 			'lead_handler_loaded' => (bool) has_action( 'admin_post_nadlan_lead' ),
 			'php_version'         => PHP_VERSION,
@@ -300,7 +300,7 @@ if ( ! function_exists( 'nadlan_config_catalog_status' ) ) {
 
 /* ---------- v1.1.2: IndexNow auto-ping on publish/update ----------
  * Pings Bing, Yandex (and others honoring IndexNow) the moment a page/post
- * publishes or updates. This is the legitimate "instant indexing" — Rank Math
+ * publishes or updates. This is the legitimate "instant indexing" - Rank Math
  * uses the same protocol. Google does not officially honor IndexNow as of
  * 2026-05 but reads the Yoast XML sitemap which already includes <lastmod>.
  *
@@ -389,7 +389,7 @@ add_filter( 'rest_pre_dispatch', function( $r, $server, $request ) {
     return $r;
 }, 10, 3 );
 
-/* Quietly remove the public WordPress "generator" meta — no need to advertise the stack */
+/* Quietly remove the public WordPress "generator" meta - no need to advertise the stack */
 remove_action( 'wp_head', 'wp_generator' );
 add_filter( 'the_generator', '__return_empty_string' );
 
@@ -397,7 +397,7 @@ add_filter( 'the_generator', '__return_empty_string' );
  * After this version is installed ONCE manually, WordPress shows a normal
  * "Update available" notice whenever plugin-dist/nadlan-config.json (in the
  * GitHub repo, served via raw.githubusercontent) advertises a higher version.
- * The owner clicks Update inside WP — no more ZIP uploads.
+ * The owner clicks Update inside WP - no more ZIP uploads.
  * Workflow to ship a new version is documented in skills/plugin-auto-update.md.
  */
 if ( ! function_exists( 'nadlan_config_boot_updater' ) ) {
@@ -492,7 +492,7 @@ add_filter( 'nadlan_config_healthcheck', 'nadlan_config_healthcheck_augment' );
  *    routes /robots.txt to WordPress (index.php). If a physical robots.txt or an
  *    nginx rule intercepts the path first, add the file/route at server level.
  * 2) Disable wptexturize on titles/content/excerpts. wptexturize auto-converts
- *    " - " (space-hyphen-space) into an en-dash (–) at render time, which violated
+ *    " - " (space-hyphen-space) into an en-dash (-) at render time, which violated
  *    the owner's no-dash typography rule and reintroduced AI-tell punctuation even
  *    after the stored text was cleaned. Removing it keeps punctuation as authored.
  */
@@ -537,9 +537,9 @@ add_action( 'init', 'nadlan_config_disable_texturize', 20 );
  * property starts collecting immediately.
  *
  * RESOLVED 2026-06-01: Site Kit is confirmed already tagging G-G3QRV5646E correctly
- * (the "no data" the owner saw was Site Kit's "exclude logged-in users" — admin
+ * (the "no data" the owner saw was Site Kit's "exclude logged-in users" - admin
  * self-views; verified working in incognito). So the direct hardcode would
- * DOUBLE-COUNT. Default is now FALSE — Site Kit owns GA4. To force the direct tag
+ * DOUBLE-COUNT. Default is now FALSE - Site Kit owns GA4. To force the direct tag
  * back on (e.g. if Site Kit is ever removed), add define('NADLAN_GA4_HARDCODE', true)
  * to wp-config.php. No code edit needed to toggle.
  */
@@ -624,7 +624,7 @@ if ( ! function_exists( 'nadlan_config_emergency_css' ) ) {
 }
 
 /* --- ARTICLE TYPOGRAPHY SWEEP (owner screenshot 2026-07-01): headings and body
-   text must share alignment, measure and the brand serif — no justified body vs
+   text must share alignment, measure and the brand serif - no justified body vs
    right-aligned Times headings. Start-aligned ragged text is the Hebrew standard. --- */
 .entry-content p, .entry-content li,
 .entry-content :is(h1,h2,h3,h4,h5,h6),

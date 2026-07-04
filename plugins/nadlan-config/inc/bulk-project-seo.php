@@ -59,9 +59,9 @@ if ( ! function_exists( 'nadlan_bulk_project_seo_title' ) ) {
 			$city = $terms[0]->name;
 		}
 		if ( $city !== '' ) {
-			return sprintf( '%s — דירות למכירה ב%s | נדלן', $post_title, $city );
+			return sprintf( '%s - דירות למכירה ב%s | נדלן', $post_title, $city );
 		}
-		return sprintf( '%s — דירות למכירה | נדלן', $post_title );
+		return sprintf( '%s - דירות למכירה | נדלן', $post_title );
 	}
 }
 
@@ -84,9 +84,9 @@ if ( ! function_exists( 'nadlan_bulk_project_seo_description' ) ) {
 			$city = $terms[0]->name;
 		}
 		if ( $city !== '' ) {
-			return sprintf( 'כל המידע על %1$s ב%2$s: פרטי הפרויקט, דירות ויצירת קשר עם נדלן — לפני שמתקדמים בעסקה.', $post_title, $city );
+			return sprintf( 'כל המידע על %1$s ב%2$s: פרטי הפרויקט, דירות ויצירת קשר עם נדלן - לפני שמתקדמים בעסקה.', $post_title, $city );
 		}
-		return sprintf( 'כל המידע על %s: פרטי הפרויקט, דירות ויצירת קשר עם נדלן — לפני שמתקדמים בעסקה.', $post_title );
+		return sprintf( 'כל המידע על %s: פרטי הפרויקט, דירות ויצירת קשר עם נדלן - לפני שמתקדמים בעסקה.', $post_title );
 	}
 }
 

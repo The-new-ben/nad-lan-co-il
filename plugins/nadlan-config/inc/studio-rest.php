@@ -1,18 +1,18 @@
 <?php
 /**
- * nadlan-config — Advertiser STUDIO REST (v1.41.0)
+ * nadlan-config - Advertiser STUDIO REST (v1.41.0)
  *
  * Backend for the self-serve advertiser studio. Five endpoints:
- *   POST   /nadlan/v1/studio/<id>/save           — update fields + meta (owned cards)
- *   POST   /nadlan/v1/studio/<id>/upload         — drag-drop image upload
- *   POST   /nadlan/v1/studio/<id>/gallery/reorder — reorder photos
- *   POST   /nadlan/v1/studio/<id>/gallery/delete  — remove a photo
- *   POST   /nadlan/v1/studio/<id>/ai-copy         — AI copy assist (uses concierge if configured)
+ *   POST   /nadlan/v1/studio/<id>/save           - update fields + meta (owned cards)
+ *   POST   /nadlan/v1/studio/<id>/upload         - drag-drop image upload
+ *   POST   /nadlan/v1/studio/<id>/gallery/reorder - reorder photos
+ *   POST   /nadlan/v1/studio/<id>/gallery/delete  - remove a photo
+ *   POST   /nadlan/v1/studio/<id>/ai-copy         - AI copy assist (uses concierge if configured)
  *
  * Auth: caller must be logged-in (app password OK) and pass edit_post for the
  * card. Ownership still lives in owner_user_id + claim_status and is mapped by
  * map_meta_cap, so owners can edit only their own listings.
- * The 2,700 imported cold contractors are unaffected — only claimed cards have
+ * The 2,700 imported cold contractors are unaffected - only claimed cards have
  * an owner; only those can be edited.
  */
 if ( ! defined( 'ABSPATH' ) ) { exit; }
@@ -51,7 +51,7 @@ add_action( 'rest_api_init', function () {
 		return nadlan_studio_can_edit( (int) ( $req['id'] ?? 0 ) ) ? true : new WP_Error( 'forbidden', 'forbidden', array( 'status' => 403 ) );
 	};
 
-	// SAVE — partial update of fields/meta. Strict allow-list per post type.
+	// SAVE - partial update of fields/meta. Strict allow-list per post type.
 	register_rest_route( 'nadlan/v1', '/studio/(?P<id>\d+)/save', array(
 		'methods'             => 'POST',
 		'permission_callback' => $auth_owner,
@@ -134,7 +134,7 @@ add_action( 'rest_api_init', function () {
 		},
 	) );
 
-	// UPLOAD — accept multipart image, attach to post, append to photos_csv
+	// UPLOAD - accept multipart image, attach to post, append to photos_csv
 	register_rest_route( 'nadlan/v1', '/studio/(?P<id>\d+)/upload', array(
 		'methods'             => 'POST',
 		'permission_callback' => $auth_owner,
@@ -171,7 +171,7 @@ add_action( 'rest_api_init', function () {
 		},
 	) );
 
-	// REORDER — accept ordered list of URLs
+	// REORDER - accept ordered list of URLs
 	register_rest_route( 'nadlan/v1', '/studio/(?P<id>\d+)/gallery/reorder', array(
 		'methods'             => 'POST',
 		'permission_callback' => $auth_owner,
@@ -184,7 +184,7 @@ add_action( 'rest_api_init', function () {
 		},
 	) );
 
-	// DELETE — remove URL from photos_csv (does NOT trash media library by default)
+	// DELETE - remove URL from photos_csv (does NOT trash media library by default)
 	register_rest_route( 'nadlan/v1', '/studio/(?P<id>\d+)/gallery/delete', array(
 		'methods'             => 'POST',
 		'permission_callback' => $auth_owner,
@@ -200,7 +200,7 @@ add_action( 'rest_api_init', function () {
 		},
 	) );
 
-	// AI COPY — call the existing concierge with a "rewrite this" prompt
+	// AI COPY - call the existing concierge with a "rewrite this" prompt
 	register_rest_route( 'nadlan/v1', '/studio/(?P<id>\d+)/ai-copy', array(
 		'methods'             => 'POST',
 		'permission_callback' => $auth_owner,
@@ -232,7 +232,7 @@ add_action( 'rest_api_init', function () {
 		},
 	) );
 
-	// GET — fetch the current snapshot to populate the editor on load
+	// GET - fetch the current snapshot to populate the editor on load
 	register_rest_route( 'nadlan/v1', '/studio/(?P<id>\d+)', array(
 		'methods'             => 'GET',
 		'permission_callback' => $auth_owner,
@@ -255,7 +255,7 @@ add_action( 'rest_api_init', function () {
 		},
 	) );
 
-	// LIST MY CARDS — for the advertiser dashboard
+	// LIST MY CARDS - for the advertiser dashboard
 	register_rest_route( 'nadlan/v1', '/studio/mine', array(
 		'methods'             => 'GET',
 		'permission_callback' => function () { return is_user_logged_in() ? true : new WP_Error( 'forbidden', 'forbidden', array( 'status' => 403 ) ); },
@@ -291,7 +291,7 @@ add_action( 'rest_api_init', function () {
 		},
 	) );
 
-	/* CREATE — a logged-in user creates a brand-new listing they own.
+	/* CREATE - a logged-in user creates a brand-new listing they own.
 	 * The "list your asset" entry point: a new advertiser who is NOT in the
 	 * gov.il import can publish a property / project / professional card from
 	 * scratch, then edit it in Studio. Owned immediately (owner_user_id +

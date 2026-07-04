@@ -1,6 +1,6 @@
 <?php
 /**
- * nadlan-config — Compare listings (v1.11.0)
+ * nadlan-config - Compare listings (v1.11.0)
  *
  * Zillow/Redfin-grade side-by-side comparison. Pure client-side state (localStorage
  * = no auth required) + a server-rendered comparison view via shortcode and a
@@ -77,8 +77,8 @@ function nlcmpEsc(x){var d=document.createElement('div');d.textContent=String(x=
 				var v=i[rows[0][k]];
 				if(rows[0][k]==='thumb'){v=v?'<img src="'+v+'" alt="">':'-';}
 				else if(rows[0][k]==='price'||rows[0][k]==='price_per_sqm'){v=v?'₪'+v.toLocaleString():'-';}
-				else if(typeof v==='boolean'){v=v?'✓':'—';}
-				else if(!v){v='—';}
+				else if(typeof v==='boolean'){v=v?'✓':'-';}
+				else if(!v){v='-';}
 				h+='<td>'+v+'</td>';
 			});
 			h+='</tr>';

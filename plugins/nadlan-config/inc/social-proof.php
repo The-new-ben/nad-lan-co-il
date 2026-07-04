@@ -1,12 +1,12 @@
 <?php
 /**
- * nadlan-config — Social proof + "what's hot" widget (v1.40.0 / shark #14)
+ * nadlan-config - Social proof + "what's hot" widget (v1.40.0 / shark #14)
  *
  * Three trust signals appended to the homepage that convert undecided visitors:
  *  1. Live counters: "X בעלי מקצוע · Y פרויקטים · Z מונחים" (already in DB).
- *  2. "Just claimed" feed: the last 3 contractors who claimed their card —
+ *  2. "Just claimed" feed: the last 3 contractors who claimed their card -
  *     creates urgency for other contractors viewing the site ("they're moving").
- *  3. "What's popular this week" — top-viewed professionals (uses a simple
+ *  3. "What's popular this week" - top-viewed professionals (uses a simple
  *     post_meta view counter the directory cards stamp on click).
  *
  * Pure conversion psychology: numbers that grow + names that just acted are
@@ -18,7 +18,7 @@ if ( ! defined( 'ABSPATH' ) ) { exit; }
 
 if ( ! function_exists( 'nadlan_sp_render' ) ) {
 	function nadlan_sp_render() {
-		// v1.40.2 hotfix — homepage 502 was caused by the heavy meta_value_num
+		// v1.40.2 hotfix - homepage 502 was caused by the heavy meta_value_num
 		// sorts below. Solution: cache + skip the unindexed-meta queries when no
 		// claimed contractors / no view-counts exist (true today; will turn on
 		// automatically when real data appears).

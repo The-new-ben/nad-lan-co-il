@@ -66,7 +66,7 @@ function nadlan_render_loi_form( $atts ) {
 
 			<div class="nl-form-row">
 				<div class="nl-form-group">
-					<label for="nl-loi-offer">הצעת מחיר (₪) — לא חובה</label>
+					<label for="nl-loi-offer">הצעת מחיר (₪) - לא חובה</label>
 					<input type="number" id="nl-loi-offer" name="offer_price" min="0" step="10000" inputmode="numeric">
 				</div>
 				<div class="nl-form-group">
@@ -267,10 +267,10 @@ function nadlan_handle_loi_submission() {
 
 	$message_lines = array(
 		'הצעת רכישה לא מחייבת (LOI).',
-		'ת.ז / דרכון: ' . ( $id_number !== '' ? $id_number : '—' ),
+		'ת.ז / דרכון: ' . ( $id_number !== '' ? $id_number : '-' ),
 		'הצעת מחיר: ' . $offer_display,
-		'משכנתא: ' . ( $mortgage_label[ $mortgage ] ?? '—' ),
-		'דירה: ' . ( $unit_id !== '' ? $unit_id : '—' ),
+		'משכנתא: ' . ( $mortgage_label[ $mortgage ] ?? '-' ),
+		'דירה: ' . ( $unit_id !== '' ? $unit_id : '-' ),
 		'שיווק: ' . ( $marketing ? 'אישר עדכונים' : 'לא אישר' ),
 	);
 

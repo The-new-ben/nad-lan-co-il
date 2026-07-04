@@ -1,9 +1,9 @@
 <?php
 /**
- * nadlan-config — Claim prompt on directory + profile (v1.40.0 / shark #11)
+ * nadlan-config - Claim prompt on directory + profile (v1.40.0 / shark #11)
  *
  * Adds a contextual "this is my card?" prompt on every unclaimed professional
- * profile page. Contractors searching their own name (a common behavior — they
+ * profile page. Contractors searching their own name (a common behavior - they
  * Google themselves) hit the profile and see a clear claim-this-card path
  * → claim → 30-day Pro trial → recurring revenue.
  *

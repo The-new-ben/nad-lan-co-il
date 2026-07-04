@@ -1,6 +1,6 @@
 <?php
 /**
- * nadlan-config — Catalog meta (v1.5.0)
+ * nadlan-config - Catalog meta (v1.5.0)
  *
  * Registers REST-exposed post meta for the directory "cards":
  *   - nadlan_project       (real-estate projects / developments)

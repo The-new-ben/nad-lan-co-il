@@ -1,17 +1,17 @@
 <?php
 /**
- * nadlan-config — World-class professional profile layer (v1.69.82)
+ * nadlan-config - World-class professional profile layer (v1.69.82)
  *
  * Owner directive 2026-07-02: single professional pages were "very basic".
  * This module adds a Zillow-agent/Houzz-class rich profile on top of the
  * existing directory (2,711 gov.il-verified records, ratings, tiers, claim):
- *   1. Profile hero: brand monogram portrait (parametric SVG — elegant, honest,
+ *   1. Profile hero: brand monogram portrait (parametric SVG - elegant, honest,
  *      no fake photos), name, profession pill, city, gov.il verified badge,
  *      rating, years/projects stats, tier-aware contact CTAs.
  *   2. Expertise band: specialties + languages chips, service areas.
  *   3. WIRED TO EVERYTHING: their projects (developer/contractor name match),
  *      colleagues nearby (same profession/city), profession-matched guides,
- *      calculators — hub-spoke in both directions.
+ *      calculators - hub-spoke in both directions.
  *   4. Extends the profession taxonomy: designers, engineers, accountants,
  *      surveyors, property managers, urban planners (the "go for all" ask).
  *   5. Demo premium profiles supported: is_demo flag → visible "לדוגמה" tag +
@@ -77,8 +77,8 @@ if ( ! function_exists( 'nadlan_prof_related_links' ) ) {
 			'lawyer'     => array( array( '/real-estate-lawyer/', 'מתי חובה עורך דין בעסקה' ), array( '/purchase-tax-calculator/', 'מחשבון מס רכישה' ) ),
 			'shamai'     => array( array( '/real-estate-appraiser/', 'מה שמאי בודק ולמה' ), array( '/property-value/', 'איך מעריכים שווי דירה' ) ),
 			'mashkanta'  => array( array( '/mortgage-calculator/', 'מחשבון משכנתא' ), array( '/mortgage-advisor/', 'האם צריך יועץ משכנתאות' ) ),
-			'bedek_bait' => array( array( '/home-inspection/', 'בדק בית — המדריך' ), array( '/buying-apartment/', 'מדריך קניית דירה' ) ),
-			'kablan'     => array( array( '/projects/', 'פרויקטים חדשים' ), array( '/buying-apartment/', 'קנייה מקבלן — הזכויות שלכם' ) ),
+			'bedek_bait' => array( array( '/home-inspection/', 'בדק בית - המדריך' ), array( '/buying-apartment/', 'מדריך קניית דירה' ) ),
+			'kablan'     => array( array( '/projects/', 'פרויקטים חדשים' ), array( '/buying-apartment/', 'קנייה מקבלן - הזכויות שלכם' ) ),
 			'metavech'   => array( array( '/real-estate-broker/', 'עבודה נכונה עם מתווך' ), array( '/properties/', 'דירות למכירה ולהשכרה' ) ),
 		);
 		$base = isset( $map[ $prof ] ) ? $map[ $prof ] : array( array( '/buying-apartment/', 'מדריך קניית דירה' ), array( '/glossary/', 'מילון מונחי נדל״ן' ) );
@@ -139,7 +139,7 @@ if ( ! function_exists( 'nadlan_prof_render' ) ) {
 
 		ob_start(); ?>
 <div class="nlpp" dir="rtl" style="--pc:<?php echo esc_attr( $pm['color'] ); ?>;--ps:<?php echo esc_attr( $pm['soft'] ); ?>">
-	<?php if ( $demo ) : ?><div class="nlpp-demo">פרופיל לדוגמה — כך נראה פרופיל פרימיום. <a href="<?php echo esc_url( home_url( '/advertise/' ) ); ?>">בעלי מקצוע: הצטרפו ←</a></div><?php endif; ?>
+	<?php if ( $demo ) : ?><div class="nlpp-demo">פרופיל לדוגמה - כך נראה פרופיל פרימיום. <a href="<?php echo esc_url( home_url( '/advertise/' ) ); ?>">בעלי מקצוע: הצטרפו ←</a></div><?php endif; ?>
 
 	<header class="nlpp-hero">
 		<?php echo nadlan_prof_monogram_svg( $name, $pm['color'] ); // phpcs:ignore ?>

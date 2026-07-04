@@ -1,10 +1,10 @@
 <?php
 /**
- * nadlan-config — First-person interior view (v1.69.84)
+ * nadlan-config - First-person interior view (v1.69.84)
  *
  * The owner's repeated ask, delivered practically: a walk-inside view of an
  * apartment generated ENTIRELY from real unit data (rooms, sqm, mamad, balcony,
- * direction) — no GLB, no materials required, works for every listing/unit.
+ * direction) - no GLB, no materials required, works for every listing/unit.
  * Pure CSS-3D (perspective + transformed wall planes) + vanilla JS:
  *   - eye-height camera inside the room, drag / touch-drag to look around
  *   - door hotspots walk between rooms (salon → kitchen → bedrooms → mamad → balcony)

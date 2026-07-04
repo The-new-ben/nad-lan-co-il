@@ -1,6 +1,6 @@
 <?php
 /**
- * nadlan-config — Keys & Connections Hub (v1.69.94)
+ * nadlan-config - Keys & Connections Hub (v1.69.94)
  *
  * ONE admin page for every external key and switch (owner request 2026-07-02:
  * "I'm sick and tired of looking for places to put keys"). Stores into the

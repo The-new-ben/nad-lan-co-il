@@ -1,5 +1,5 @@
 /* ============================================================================
-   NadLan Showroom — ENGINE STYLES (vanilla, token-driven)
+   NadLan Showroom - ENGINE STYLES (vanilla, token-driven)
    Cream editorial page + dark immersive 3D theater. One shadow family, hairlines,
    generous whitespace, motion on interaction. RTL-first, mobile-first.
    ============================================================================ */
@@ -129,7 +129,7 @@ html[lang="en"] .nl-fact__n { font-family: var(--font-serif-en); }
 .nl-fly { position: fixed; z-index: 48; pointer-events: none; border-radius: 10px; border: 1.5px solid #cdb274; background: linear-gradient(180deg, rgba(34,31,25,.95), rgba(20,19,15,.95)); color: #f4eede; box-shadow: 0 20px 50px -16px rgba(0,0,0,.7); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2px; }
 .nl-fly b { font-family: var(--font-serif-he); font-size: 20px; } .nl-fly span { font-size: 11px; color: #d8c79a; }
 
-/* ---------- apartment panel (block 5) — slide-out ---------- */
+/* ---------- apartment panel (block 5) - slide-out ---------- */
 .nl-panel { position: absolute; z-index: 8; inset-block: 0; inset-inline-end: 0; width: clamp(320px, 36%, 430px); transform: translateX(112%); transition: transform .42s cubic-bezier(.22,.61,.36,1); background: linear-gradient(180deg, rgba(28,26,21,.96), rgba(17,16,12,.98)); backdrop-filter: blur(10px); border-inline-start: 1px solid var(--theater-line); display: flex; flex-direction: column; color: var(--theater-fore); }
 [dir="rtl"] .nl-panel { transform: translateX(-112%); }
 .nl-panel.is-open { transform: translateX(0); }
@@ -232,7 +232,7 @@ html[lang="en"] .nl-card h4 { font-family: var(--font-serif-en); }
 .nl-interior__note { font-size: 12px; color: var(--muted-foreground); margin-top: 8px; }
 .nl-pano__loading { color: #cfc8b6; font-size: 13px; }
 
-/* ---------- inquiry (block 11) — money moment ---------- */
+/* ---------- inquiry (block 11) - money moment ---------- */
 .nl-inquiry { background: linear-gradient(150deg, var(--ink), #211f19); color: var(--cream); border-radius: var(--radius-2xl); padding: clamp(22px,4vw,44px); box-shadow: var(--shadow-theater); }
 .nl-inquiry__grid { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(20px,4vw,44px); align-items: center; }
 .nl-inquiry h2 { color: #fff; }

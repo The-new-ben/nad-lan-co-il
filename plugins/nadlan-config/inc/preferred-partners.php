@@ -1,6 +1,6 @@
 <?php
 /**
- * nadlan-config — Preferred Partners (v1.40.0 / shark #7)
+ * nadlan-config - Preferred Partners (v1.40.0 / shark #7)
  *
  * Safe auto-routing: the owner defines a small set of APPROVED partner emails
  * (the actual people you have a deal with), organised by profession + optional
@@ -8,7 +8,7 @@
  * a topic that doesn't match a partner_id (e.g. the AI concierge or sticky CTA
  * routes "מצא לי יועץ משכנתאות באזור גוש דן") and picks the right partner.
  *
- * This is the FAT MONEY door: ₪3k–8k per closed mortgage / RE deal, captured
+ * This is the FAT MONEY door: ₪3k-8k per closed mortgage / RE deal, captured
  * automatically once you've added even one real partner to the list. Without
  * this, every fat lead requires you to manually pick a partner.
  *
@@ -99,7 +99,7 @@ if ( ! function_exists( 'nadlan_pp_admin_render' ) ) {
 			<td><input type="text" name="p[<?php echo $i; ?>][phone]" value="<?php echo esc_attr( $p['phone'] ?? '' ); ?>" style="width:100%"></td>
 			<td>
 				<select name="p[<?php echo $i; ?>][profession]">
-					<option value="">—</option>
+					<option value="">-</option>
 					<?php foreach ( $profs as $k => $lbl ) : ?>
 					<option value="<?php echo esc_attr( $k ); ?>" <?php selected( ( $p['profession'] ?? '' ), $k ); ?>><?php echo esc_html( $lbl ); ?></option>
 					<?php endforeach; ?>

@@ -1,6 +1,6 @@
 <?php
 /**
- * nadlan-config — Glossary / encyclopedia engine ("מילון נדל"ן") (v1.17.0)
+ * nadlan-config - Glossary / encyclopedia engine ("מילון נדל"ן") (v1.17.0)
  *
  * The home for the Wikipedia-orphan term project (skills/content-encyclopedia-
  * glossary-plan.md). Each term = a definitional micro-spoke that ranks for a
@@ -13,7 +13,7 @@
  *  - DefinedTerm + DefinedTermSet JSON-LD (GEO/AI-citation bait).
  *  - A-Z + category glossary index at /glossary/.
  *  - Thin-content noindex until enriched (same anti-thin discipline as cards).
- *  - REST enrich endpoint reuse: import-enrich already accepts nadlan_term? No —
+ *  - REST enrich endpoint reuse: import-enrich already accepts nadlan_term? No -
  *    extend it; here we add the term to the allowed types for enrichment.
  *
  * Cannibalization (rulebook §3.6 + skills/content-encyclopedia-glossary-plan.md §2):
@@ -43,7 +43,7 @@ if ( ! function_exists( 'nadlan_glossary_register' ) ) {
 		$fields = array(
 			'term_en'        => 'string',  // English equivalent
 			'wikipedia_en'   => 'string',  // EN Wikipedia URL (the orphan source)
-			'wikipedia_he'   => 'string',  // HE Wikipedia URL if it exists (then SKIP indexing — collision)
+			'wikipedia_he'   => 'string',  // HE Wikipedia URL if it exists (then SKIP indexing - collision)
 			'related_pillar' => 'string',  // URL of the money pillar this term links UP to
 			'related_anchor' => 'string',  // anchor text for the up-link
 			'source_url'     => 'string',  // gov/authority citation
@@ -118,7 +118,7 @@ add_filter( 'the_content', function ( $content ) {
 	</div>
 	<?php endif; ?>
 	<?php
-	/* Related terms: siblings in the same category — builds the topical cluster
+	/* Related terms: siblings in the same category - builds the topical cluster
 	 * (internal-link equity) on every published term. Cached per-term for 12h. */
 	$related = nadlan_glossary_related_terms( $id );
 	if ( $related ) : ?>
@@ -157,7 +157,7 @@ add_action( 'wp_head', function () {
 		'name' => get_the_title( $id ),
 		'description' => wp_strip_all_tags( get_the_excerpt( $id ) ) ?: null,
 		'url' => get_permalink( $id ),
-		'inDefinedTermSet' => array( '@type' => 'DefinedTermSet', 'name' => 'מילון נדל"ן — נדלן', 'url' => home_url( '/glossary/' ) ),
+		'inDefinedTermSet' => array( '@type' => 'DefinedTermSet', 'name' => 'מילון נדל"ן - נדלן', 'url' => home_url( '/glossary/' ) ),
 		'sameAs' => get_post_meta( $id, 'wikipedia_en', true ) ?: null,
 	) );
 	echo "\n<script type=\"application/ld+json\">" . wp_json_encode( $data, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES ) . "</script>\n";
@@ -210,7 +210,7 @@ add_filter( 'nadlan_import_enrich_types', function ( $types ) {
  * Chrome extension drops.
  *
  * Now: a single POST /nadlan/v1/glossary-publish that does the whole publish in
- * one auth-able call (works with Application Password / Basic Auth — NO browser
+ * one auth-able call (works with Application Password / Basic Auth - NO browser
  * needed). Idempotent: if a term with the same title (or `term_en`) already exists
  * it UPDATES instead of duplicating. Returns the post_id + permalink.
  *

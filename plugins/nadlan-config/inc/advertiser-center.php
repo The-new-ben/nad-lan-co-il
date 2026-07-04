@@ -1,6 +1,6 @@
 <?php
 /**
- * nadlan-config — Advertiser Center (v1.41.2)
+ * nadlan-config - Advertiser Center (v1.41.2)
  *
  * A customer-facing command center for claimed professionals, project advertisers,
  * and promoted property owners. It closes the post-payment gap by giving every

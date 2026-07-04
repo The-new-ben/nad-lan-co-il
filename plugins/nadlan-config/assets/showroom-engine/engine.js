@@ -1,5 +1,5 @@
 /* ============================================================================
-   NadLan Showroom — ENGINE (vanilla, data-driven)
+   NadLan Showroom - ENGINE (vanilla, data-driven)
    Renders entirely from window.NADLAN_SHOWROOM (engine/data.js) + window.NADLAN_I18N
    (engine/i18n.js). No chrome text or project value is hardcoded here. The page
    shell (#nl-root[data-page]) is the only HTML; everything below is built from data.
@@ -173,7 +173,7 @@
       "</main>";
   }
 
-  /* block 2 — hero */
+  /* block 2 - hero */
   function hero() {
     var p = project(), avail = units().filter(function (u) { return u.status === "available"; }).length;
     var hi = units().reduce(function (m, u) { return Math.max(m, u.floor); }, 0);
@@ -194,7 +194,7 @@
     "</div>";
   }
 
-  /* block 3 + 4 — theater (3D) and facade backup */
+  /* block 3 + 4 - theater (3D) and facade backup */
   function theater() {
     var p = project();
     var hots = units().map(function (u) {
@@ -238,7 +238,7 @@
   }
   function unitTitleAria(u) { return roomsLabel(u.rooms) + ", " + t("floor_label", { n: u.floor }) + ", " + dirLabel(u.dir) + ", " + statusLabel(u.status); }
 
-  /* block 5 — slide-out panel (filled on select) */
+  /* block 5 - slide-out panel (filled on select) */
   function panel() {
     return '<aside class="nl-panel" id="nl-panel" aria-live="polite"><div class="nl-panel__scroll" id="nl-panel-body">' + panelEmpty() + "</div></aside>";
   }
@@ -253,7 +253,7 @@
         '<button class="nl-panel__close" data-act="close" aria-label="' + esc(t("btn_close")) + '">' + svg("close", 16) + "</button></div></div>" +
       '<div class="nl-grid2">' +
         stat(t("panel_rooms"), u.rooms) + stat(t("panel_sqm"), u.sqm + " " + t("sqm_unit")) +
-        stat(t("panel_balcony"), u.balcony ? (u.balcony + " " + t("sqm_unit")) : "—") + stat(t("panel_view"), viewText(u) || dirLabel(u.dir)) +
+        stat(t("panel_balcony"), u.balcony ? (u.balcony + " " + t("sqm_unit")) : "-") + stat(t("panel_view"), viewText(u) || dirLabel(u.dir)) +
       "</div>" +
       '<div class="nl-tabs" role="tablist">' +
         '<button class="nl-tab" role="tab" data-act="tab" data-id="plan" aria-selected="' + (state.tab === "plan") + '">' + esc(t("tab_plan")) + '</button>' +
@@ -275,7 +275,7 @@
     return tour ? '<a class="nl-btn nl-btn--gold" href="' + esc(tour) + '" target="_blank" rel="noopener">' + esc(t("tour_open")) + "</a>" : "<p>" + esc(t("tour_coming")) + "</p>";
   }
 
-  /* block 6 — inventory */
+  /* block 6 - inventory */
   function inventory() {
     var list = filtered();
     var cards = list.map(function (u) {
@@ -301,7 +301,7 @@
     });
   }
 
-  /* block 6.5 — price + comps (PR5). Data-driven, honest: range + non-binding
+  /* block 6.5 - price + comps (PR5). Data-driven, honest: range + non-binding
      label + source + date; comps only when real; else an explicit pending state. */
   function price() {
     var pr = project().price || {};
@@ -323,10 +323,10 @@
     var loP = psqms.length ? Math.min.apply(null, psqms) : (pr.avg_psqm ? Math.round(pr.avg_psqm * 0.88) : 0);
     var hiP = psqms.length ? Math.max.apply(null, psqms) : (pr.avg_psqm ? Math.round(pr.avg_psqm * 1.12) : 0);
 
-    var big = totals.length ? (money(loT) + " – " + money(hiT))
-                            : (money(loP) + " – " + money(hiP) + " " + t("per_sqm_short"));
+    var big = totals.length ? (money(loT) + " - " + money(hiT))
+                            : (money(loP) + " - " + money(hiP) + " " + t("per_sqm_short"));
     var chips = "";
-    if (loP && hiP) { chips += '<span class="nl-pchip">' + esc(money(loP) + " – " + money(hiP) + " " + t("per_sqm_short")) + "</span>"; }
+    if (loP && hiP) { chips += '<span class="nl-pchip">' + esc(money(loP) + " - " + money(hiP) + " " + t("per_sqm_short")) + "</span>"; }
     if (pr.avg_psqm) { chips += '<span class="nl-pchip">' + esc(t("price_avg_psqm", { v: money(pr.avg_psqm) })) + "</span>"; }
     var metaBits = [];
     if (pr.date) { metaBits.push(t("price_updated_label") + " " + pr.date); }
@@ -354,7 +354,7 @@
     return head + '<div class="nl-pricewrap">' + card + compsHtml + "</div>";
   }
 
-  /* block 8 — the complete world (map + spokes + stats + nearby) */
+  /* block 8 - the complete world (map + spokes + stats + nearby) */
   function world() {
     var a = area(), m = a.map;
     var pins = m.pins.map(function (p) {
@@ -394,7 +394,7 @@
       "</g></svg>";
   }
 
-  /* block 7 — media + interior tour (PR6). Interior tour lazy-loads on click only;
+  /* block 7 - media + interior tour (PR6). Interior tour lazy-loads on click only;
      real assets only (tour_url / interior_panoramas); honest placeholder otherwise. */
   function media() {
     var p = project();
@@ -453,7 +453,7 @@
     });
   }
 
-  /* block 9 — investor */
+  /* block 9 - investor */
   function investor() {
     var pts = [["shield", "investor_pt_process"], ["scale", "investor_pt_legal"], ["globe", "investor_pt_finance"]];
     return '<div class="nl-card--dark nl-card" style="padding:clamp(22px,4vw,40px)"><div style="display:grid;grid-template-columns:1fr 1.2fr;gap:28px;align-items:center" class="nl-investorgrid">' +
@@ -462,7 +462,7 @@
       "</div></div>";
   }
 
-  /* block 10 — SEO body (placeholder content from data) */
+  /* block 10 - SEO body (placeholder content from data) */
   function seoBody() {
     return '<div style="max-width:760px"><span class="nl-eyebrow">' + esc(t("seo_eyebrow")) + '</span><hr class="nl-rule"><h2>' + esc(content("seo_h")) + '</h2><p class="nl-lede" style="margin-top:14px">' + esc(content("seo_p")) + "</p></div>";
   }
@@ -476,7 +476,7 @@
     return '<div class="nl-faq" style="max-width:760px;margin-top:36px"><span class="nl-eyebrow">' + esc(t("faq_title")) + '</span><hr class="nl-rule">' + rows + "</div>";
   }
 
-  /* block 11 — inquiry (money moment) */
+  /* block 11 - inquiry (money moment) */
   function inquiry() {
     return '<div class="nl-inquiry"><div class="nl-inquiry__grid">' +
       '<div><span class="nl-eyebrow" style="color:#e9d9a9">' + esc(t("hero_cta_primary")) + '</span><h2 style="margin-top:8px">' + esc(t("form_title")) + '</h2><p class="nl-lede" style="margin-top:12px">' + esc(t("form_sub")) + "</p>" +
@@ -491,7 +491,7 @@
       "</form></div></div>";
   }
 
-  /* block 12 — disclaimer */
+  /* block 12 - disclaimer */
   function disclaimer() {
     return '<div class="nl-disclaimer"><b>' + esc(t("disclaimer_title")) + "</b><p>" + esc(t("disclaimer_text")) + "</p></div>";
   }

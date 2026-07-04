@@ -1,6 +1,6 @@
 <?php
 /**
- * nadlan-config — Breadcrumbs (visible + BreadcrumbList JSON-LD) (v1.14.0)
+ * nadlan-config - Breadcrumbs (visible + BreadcrumbList JSON-LD) (v1.14.0)
  *
  * Output a Hebrew breadcrumb trail on every NadLan CPT single and on archives,
  * and emit BreadcrumbList JSON-LD for Google rich results (eligible site-wide

@@ -1,10 +1,10 @@
 <?php
 /**
- * nadlan-config — Nearby POI (schools/transit/amenities) via OpenStreetMap Overpass (v1.11.0)
+ * nadlan-config - Nearby POI (schools/transit/amenities) via OpenStreetMap Overpass (v1.11.0)
  *
  * Realtor.com/Rightmove-parity "what's nearby" tab. Free data (no API key) via
  * Overpass API; 10k req/day/IP rate limit so we aggressively cache (24h transient
- * per coords+radius bucket). Designed to fail silent — if Overpass is down or
+ * per coords+radius bucket). Designed to fail silent - if Overpass is down or
  * times out, the panel just hides.
  *
  * Categories shown: schools (amenity=school), kindergarten, supermarket,

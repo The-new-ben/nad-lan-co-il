@@ -1,6 +1,6 @@
 <?php
 /**
- * nadlan-config — Card front-end render (v1.5.0)
+ * nadlan-config - Card front-end render (v1.5.0)
  *
  * Appends to single card views (project / professional / property):
  *   - a facts/stats table built from meta (the "Wikipedia-style" data block),

@@ -1,13 +1,13 @@
 <?php
 /**
- * nadlan-config — Card claim & ownership funnel (v1.5.0)
+ * nadlan-config - Card claim & ownership funnel (v1.5.0)
  *
  * Flow: free auto-created card (unclaimed) → owner submits a CLAIM via the public
  * REST endpoint → stored as a private nadlan_claim, card flips to "pending", admin
  * is emailed → admin APPROVES (assigns a WP user as owner) → card flips to
  * "verified" and that user may edit ONLY their own card (upload photos, edit text).
  *
- * SECURITY NOTE (flagged for the Cowork review pass — see docs/listings-questions.md):
+ * SECURITY NOTE (flagged for the Cowork review pass - see docs/listings-questions.md):
  *  - The identity-verification METHOD (proving the claimant truly owns the entity)
  *    is intentionally left to admin judgement + a token here; a stronger automated
  *    check (email-domain match, phone OTP, registry cross-check) is a TODO.
@@ -178,7 +178,7 @@ if ( ! function_exists( 'nadlan_claim_meta_box' ) ) {
 			if ( $state !== 'approved' ) {
 				echo '<a class="button button-primary" href="' . esc_url( $url ) . '">Approve &amp; assign owner</a>';
 			} else {
-				echo '<p>✓ Approved — owner assigned.</p>';
+				echo '<p>✓ Approved - owner assigned.</p>';
 			}
 		}, 'nadlan_claim', 'side' );
 	}

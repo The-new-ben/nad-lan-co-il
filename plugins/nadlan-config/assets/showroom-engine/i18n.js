@@ -1,5 +1,5 @@
 /* ============================================================================
-   NadLan Showroom — i18n LAYER  (window.NADLAN_I18N)
+   NadLan Showroom - i18n LAYER  (window.NADLAN_I18N)
    ----------------------------------------------------------------------------
    Every UI string the engine renders is a key here. No chrome text is hardcoded
    in HTML or engine.js. In WordPress these tables become the theme's translation
@@ -9,7 +9,7 @@
    HE + EN are complete. FR / RU / AR are SCAFFOLDED: every slot exists (cloned
    from EN as a placeholder) so the owner's translators fill values in place.
    Resolution order in t():  lang -> en -> he -> key.
-   Marketing / SEO PROSE is NOT here — that lives in data.js content blocks as
+   Marketing / SEO PROSE is NOT here - that lives in data.js content blocks as
    owner-filled placeholders. These are functional labels only.
    ============================================================================ */
 (function () {
@@ -118,11 +118,11 @@
     investor_pt_process: "תהליך רכישה מסודר", investor_pt_legal: "ליווי משפטי ומס", investor_pt_finance: "מימון ומטבע",
     investor_cta: "לתיאום שיחה",
 
-    /* SEO body (block 10) — heading chrome only; prose from data.content */
+    /* SEO body (block 10) - heading chrome only; prose from data.content */
     seo_eyebrow: "על הפרויקט",
     faq_title: "שאלות נפוצות",
 
-    /* inquiry (block 11) — the money moment */
+    /* inquiry (block 11) - the money moment */
     form_title: "מעוניינים בדירה? נחזור אליכם",
     form_sub: "השאירו פרטים ונחזור עם המידע על הדירה שבחרתם.",
     form_name: "שם מלא", form_phone: "טלפון", form_email: "אימייל (לא חובה)",
@@ -278,7 +278,7 @@
     footer_col_projects: "Projects", footer_col_areas: "Areas", footer_col_company: "Company", footer_col_langs: "Languages"
   };
 
-  /* FR / RU / AR — scaffold: every slot present, EN placeholder values. Owner's
+  /* FR / RU / AR - scaffold: every slot present, EN placeholder values. Owner's
      translators overwrite in place. Engine still falls back to EN if a key is
      ever missing. */
   var FR = Object.assign({}, EN);

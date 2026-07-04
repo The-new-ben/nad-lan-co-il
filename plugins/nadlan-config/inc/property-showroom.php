@@ -1,16 +1,16 @@
 <?php
 /**
- * nadlan-config — Property showroom layer (v1.69.70)
+ * nadlan-config - Property showroom layer (v1.69.70)
  *
  * The differentiator block on single nadlan_property pages, on top of the
  * existing stack (cards-render facts/gallery, listings-ux similar/favorites/
  * mortgage, nearby-poi real schools/transit via OSM, avm-deals, media tabs,
  * schema JSON-LD):
  *   1. Key-facts hero strip (price, rooms, floor, sqm, ₪/sqm, listing type)
- *   2. Sketch-first SELECTABLE FACADE — parametric SVG building generated from
+ *   2. Sketch-first SELECTABLE FACADE - parametric SVG building generated from
  *      total_floors / floor / units_per_floor / unit_position meta; the listed
  *      apartment is highlighted; hover/click floors; toggle to a parametric
- *      schematic floor plan (rooms/mamad/balcony) — the "inside view".
+ *      schematic floor plan (rooms/mamad/balcony) - the "inside view".
  *   3. Monthly costs panel (arnona + vaad bayit + mortgage estimate).
  *   4. Single-listing Leaflet map (OSM tiles, no key) with the asset marker.
  *   5. Honest "לדוגמה" badge on is_demo listings.
@@ -164,7 +164,7 @@ if ( ! function_exists( 'nadlan_pshow_render' ) ) {
 
 		ob_start(); ?>
 <div class="nlps" dir="rtl">
-	<?php if ( $demo ) : ?><div class="nlps-demo">נכס לדוגמה — להמחשת חוויית המודעה. <a href="<?php echo esc_url( home_url( '/post-listing/' ) ); ?>">פרסמו נכס אמיתי חינם ←</a></div><?php endif; ?>
+	<?php if ( $demo ) : ?><div class="nlps-demo">נכס לדוגמה - להמחשת חוויית המודעה. <a href="<?php echo esc_url( home_url( '/post-listing/' ) ); ?>">פרסמו נכס אמיתי חינם ←</a></div><?php endif; ?>
 
 	<div class="nlps-hero">
 		<div class="nlps-price">
@@ -265,10 +265,10 @@ if ( ! function_exists( 'nadlan_pshow_render' ) ) {
 		}, (array) $pois ) );
 	?>
 	<section class="nlps-map-sec" aria-label="מיקום">
-		<h2>מיקום וסביבה — מפה חיה</h2>
+		<h2>מיקום וסביבה - מפה חיה</h2>
 		<div id="nlps-map" data-lat="<?php echo esc_attr( $lat ); ?>" data-lng="<?php echo esc_attr( $lng ); ?>" data-title="<?php echo esc_attr( get_the_title( $id ) ); ?>"></div>
 		<script>window.NLPS_POIS = <?php echo $poi_json ? $poi_json : '{}'; // phpcs:ignore ?>;</script>
-		<p class="nlps-cap">🏫 בתי ספר · 🧒 גנים · 🚌 תחבורה · 🛒 קניות · ⚕️ בריאות — נתונים חיים מ-OpenStreetMap. החליפו לתצוגת לוויין בכפתור השכבות.</p>
+		<p class="nlps-cap">🏫 בתי ספר · 🧒 גנים · 🚌 תחבורה · 🛒 קניות · ⚕️ בריאות - נתונים חיים מ-OpenStreetMap. החליפו לתצוגת לוויין בכפתור השכבות.</p>
 	</section>
 	<?php endif; ?>
 </div>

@@ -1,6 +1,6 @@
 <?php
 /**
- * nadlan-config — Premium directory CSS + JS (v1.31.0)
+ * nadlan-config - Premium directory CSS + JS (v1.31.0)
  * Split out of directory.php for readability. Vanilla JS, no dependencies.
  */
 if ( ! defined( 'ABSPATH' ) ) { exit; }
@@ -96,7 +96,7 @@ if ( ! function_exists( 'nadlan_dir_css' ) ) {
 @media(max-width:900px){.nldir-body{grid-template-columns:1fr}.nldir-side{position:static;flex-direction:row;flex-wrap:wrap;gap:16px;border-bottom:1px solid var(--line);padding-bottom:18px}.nldir-fgroup{flex:1;min-width:160px}.nldir-cities{flex-direction:row;flex-wrap:wrap}.nldir-cityb{width:auto;border:1px solid var(--line);border-radius:20px}}
 @media(max-width:560px){.nldir-search{flex-wrap:wrap}.nldir-search input,.nldir-search input[name=city]{flex:1 1 100%;border-inline-start:0}.nldir-search button{flex:1 1 100%;padding:13px}.nldir-results{grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:12px}.nldc{padding:16px}}
 
-/* ---------- PROJECT MAGAZINE CARD (v1.69.69) — Lovable MagazineCard port, scoped to .nldc-project only ---------- */
+/* ---------- PROJECT MAGAZINE CARD (v1.69.69) - Lovable MagazineCard port, scoped to .nldc-project only ---------- */
 .nldir-results:has(.nldc-project){grid-template-columns:repeat(auto-fill,minmax(272px,1fr))}
 .nldir-results .nldc-project{padding:0!important;overflow:hidden;display:flex;flex-direction:column}
 .nldir-results .nldc-project::before{display:none!important}
