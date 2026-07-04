@@ -125,4 +125,16 @@ traffic.
   refreshed INVENTORY.md. If you delete/retire an asset, log it in
   `docs/GRAVEYARD.md` (what, why, where a copy survives) so other agents see it's
   intentional, not lost. Work is lost across sessions when the index isn't kept.
+- SHOW IT IN THE CHAT: when you produce a report, audit, prompt, or any
+  markdown deliverable, the OWNER-FACING SUBSTANCE goes in the chat message
+  itself (key findings, the actual text, the numbers). Files are for the repo's
+  memory; the chat is where the owner reads. A finding buried in an .md the
+  owner never opens is a finding not delivered.
+- CONTENT-SURVIVAL LAW (the 3,000-word-article lesson): content filters/
+  extractors must be attribute-order-proof and fail OPEN (keep the original
+  content) — never fail closed (strip everything). A literal string match like
+  '<section class="x"' silently killed a 2,995-word live article because the
+  real tag had id-before-class. Match by class token regex; and whenever a
+  filter drops content, verify the RENDERED page still carries the full word
+  count (count words, not tags) on ALL language siblings.
 - EVERY TIME you learn a new failure mode, ADD IT HERE. This skill compounds.
