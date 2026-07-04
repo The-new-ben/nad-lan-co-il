@@ -4,7 +4,7 @@
     "name_he": "הרצליה VILLE",
     "name_en": "Herzliya VILLE",
     "aka": [],
-    "developer": "Azorim",
+    "developer": "אזורים",
     "contractor": null,
     "architect": null,
     "marketing_status": "under_construction",
@@ -35,8 +35,8 @@
   },
   "location": {
     "address_he": "המנופים 8",
-    "city": "Herzliya",
-    "neighborhood": "הרצליה פיתוח / אזור התעסוקה",
+    "city": "הרצליה",
+    "neighborhood": null,
     "gush": null,
     "helka": null,
     "gis_confidence": "approx",
@@ -58,12 +58,13 @@
     "gis_note_src": [],
     "lat": null,
     "lng": null,
-    "coord_estimate_unverified": {
-      "lat": 32.1622,
-      "lng": 34.8097
-    },
+    "coord_estimate_unverified": null,
     "geocode_status": "needs_geocode",
-    "coord_provenance": "chatgpt_manual_estimate_2026-07-03 (UNVERIFIED — do not use for the map; regeocode from address via govmap/Mapbox)"
+    "coord_provenance": "chatgpt_manual_estimate_2026-07-03 (UNVERIFIED — do not use for the map; regeocode from address via govmap/Mapbox)",
+    "building_address": null,
+    "sales_office_address": "המנופים 8, הרצליה",
+    "geocode_source": null,
+    "geocode_rule": "Do not geocode sales office as project parcel; building address was not found on official page."
   },
   "context": {
     "dist_to_sea_m": null,
@@ -180,27 +181,15 @@
     ]
   },
   "media": {
-    "render_urls": [],
+    "render_urls": [
+      "https://www.azorim.co.il/wp-content/uploads/2025/09/770_432_2.png",
+      "https://www.azorim.co.il/wp-content/uploads/2025/09/770_432_5.png"
+    ],
+    "render_url_capture_note": "Render URLs captured from image links in the official Azorim page; gallery also exposes image labels in parsed page.",
     "video_urls": [],
     "brochure_pdf": null,
     "floorplan_urls": [],
-    "site_plan_url": null,
-    "virtual_tour_url": null,
-    "bim_or_3d_available": "unknown",
-    "aerial_or_streetview_ref": null,
-    "gallery_page_url": "https://www.azorim.co.il/projects/%D7%94%D7%A8%D7%A6%D7%9C%D7%99%D7%94-%D7%95%D7%95%D7%99%D7%9C/",
-    "external_project_site": null,
-    "gallery_page_url_src": [
-      "https://www.azorim.co.il/projects/%D7%94%D7%A8%D7%A6%D7%9C%D7%99%D7%94-%D7%95%D7%95%D7%99%D7%9C/"
-    ],
-    "render_urls_src": [],
-    "video_urls_src": [],
-    "brochure_pdf_src": [],
-    "floorplan_urls_src": [],
-    "site_plan_url_src": [],
-    "virtual_tour_url_src": [],
-    "bim_or_3d_available_src": [],
-    "aerial_or_streetview_ref_src": []
+    "virtual_tour_url": null
   },
   "content_angles": {
     "usp": [
@@ -231,7 +220,7 @@
   },
   "confidence": {
     "overall": "med",
-    "notes": "Mega-district record; address may be sales office/project-office rather than exact parcel centroid."
+    "notes": "Large verified Azorim project. The official page gives the sales office address, not a parcel/building address."
   },
   "field_sources": {
     "identity.name_he": [
@@ -290,7 +279,42 @@
     "Azorim Herzliya VILLE lines 31-35, 55-67, 80-84."
   ],
   "evidence": [
-    "Azorim page describes six residential complexes, about 1,849 units, a green park, commercial boulevard, fitness and children complexes."
+    {
+      "field": "name/city",
+      "value": "הרצליה VILLE | הרצליה",
+      "source_url": "https://www.azorim.co.il/projects/%D7%94%D7%A8%D7%A6%D7%9C%D7%99%D7%94-%D7%95%D7%95%D7%99%D7%9C/",
+      "quote": "# הרצליה VILLE | הרצליה"
+    },
+    {
+      "field": "description/scale",
+      "value": "six residential complexes and about 1,849 housing units",
+      "source_url": "https://www.azorim.co.il/projects/%D7%94%D7%A8%D7%A6%D7%9C%D7%99%D7%94-%D7%95%D7%95%D7%99%D7%9C/",
+      "quote": "שישה מתחמי מגורים ייחודיים ... כ-1,849 יחידות דיור"
+    },
+    {
+      "field": "amenities",
+      "value": "park, retail boulevard, gym, children complex",
+      "source_url": "https://www.azorim.co.il/projects/%D7%94%D7%A8%D7%A6%D7%9C%D7%99%D7%94-%D7%95%D7%95%D7%99%D7%9C/",
+      "quote": "פארק ירוק רחב ידיים, שדירת חנויות מסוגננת, מתחם כושר ומתחם ילדים"
+    },
+    {
+      "field": "amenity",
+      "value": "proximity to sea",
+      "source_url": "https://www.azorim.co.il/projects/%D7%94%D7%A8%D7%A6%D7%9C%D7%99%D7%94-%D7%95%D7%95%D7%99%D7%9C/",
+      "quote": "קרבה לים"
+    },
+    {
+      "field": "sales_office_address",
+      "value": "המנופים 8, הרצליה",
+      "source_url": "https://www.azorim.co.il/projects/%D7%94%D7%A8%D7%A6%D7%9C%D7%99%D7%94-%D7%95%D7%95%D7%99%D7%9C/",
+      "quote": "משרד המכירות / המנופים 8, הרצליה"
+    },
+    {
+      "field": "catalog_presence",
+      "value": "project appears in Azorim projects catalogue",
+      "source_url": "https://www.azorim.co.il/%D7%A4%D7%A8%D7%95%D7%99%D7%A7%D7%98%D7%99%D7%9D/",
+      "quote": "הרצליה VILLE | הרצליה"
+    }
   ],
   "_unverified": [
     "location.lat",
@@ -308,17 +332,19 @@
     "https://www.azorim.co.il/projects/%D7%94%D7%A8%D7%A6%D7%9C%D7%99%D7%94-%D7%95%D7%95%D7%99%D7%9C/"
   ],
   "db_meta": {
-    "source_batch": "chatgpt_gush_dan_2026-07-03",
+    "source_batch": "azorim_developer_batch_v2_2026-07-04",
     "ingested_at": "2026-07-04",
-    "verification": "urls_http200_confirmed; sample content-verified; coords UNVERIFIED; prices ABSENT",
+    "verification": "official-page-only, evidence-quoted, sales-office separated; 1849-unit VILLE quote independently confirmed",
     "canonical": true,
     "ready_for_page": false,
     "needs": [
-      "geocode",
-      "price",
+      "geocode (building parcel via govmap/plan — sales office must NOT be used)",
+      "price pass",
       "floors/units where null",
-      "media urls",
-      "5-lang article body"
+      "media/floorplans",
+      "5-lang article",
+      "3D model"
     ]
-  }
+  },
+  "conflicts": []
 }

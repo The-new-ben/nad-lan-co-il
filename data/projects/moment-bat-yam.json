@@ -1,10 +1,10 @@
 {
   "id": "moment-bat-yam",
   "identity": {
-    "name_he": "MOMENT בת ים",
-    "name_en": "MOMENT Bat Yam",
+    "name_he": "MOMENT | בת ים",
+    "name_en": "Moment Bat Yam",
     "aka": [],
-    "developer": "Azorim",
+    "developer": "אזורים",
     "contractor": null,
     "architect": null,
     "marketing_status": "under_construction",
@@ -12,7 +12,7 @@
       "official": "https://www.azorim.co.il/projects/%D7%91%D7%AA-%D7%99%D7%9D-moment/",
       "madlan": null,
       "yad2": null,
-      "developer": null
+      "developer": "https://moment-azorim.co.il/"
     },
     "name_he_src": [
       "https://www.azorim.co.il/projects/%D7%91%D7%AA-%D7%99%D7%9D-moment/"
@@ -35,8 +35,8 @@
   },
   "location": {
     "address_he": null,
-    "city": "Bat Yam",
-    "neighborhood": "מרכז/ציר בן גוריון",
+    "city": "בת ים",
+    "neighborhood": null,
     "gush": null,
     "helka": null,
     "gis_confidence": "approx",
@@ -58,12 +58,13 @@
     "gis_note_src": [],
     "lat": null,
     "lng": null,
-    "coord_estimate_unverified": {
-      "lat": 32.0163,
-      "lng": 34.7422
-    },
+    "coord_estimate_unverified": null,
     "geocode_status": "needs_geocode",
-    "coord_provenance": "chatgpt_manual_estimate_2026-07-03 (UNVERIFIED — do not use for the map; regeocode from address via govmap/Mapbox)"
+    "coord_provenance": "chatgpt_manual_estimate_2026-07-03 (UNVERIFIED — do not use for the map; regeocode from address via govmap/Mapbox)",
+    "building_address": null,
+    "sales_office_address": "דרך בן גוריון 136, בת ים",
+    "geocode_source": null,
+    "geocode_rule": "Official page labels דרך בן גוריון 136 as sales office; do not treat it as parcel unless geocoder/official plan verifies."
   },
   "context": {
     "dist_to_sea_m": null,
@@ -186,27 +187,16 @@
     ]
   },
   "media": {
-    "render_urls": [],
+    "render_urls": [
+      "https://www.azorim.co.il/wp-content/uploads/2022/06/125728_MOMENT-BAT-YAM_770x432.jpg",
+      "https://moment-azorim.co.il/wp-content/uploads/2021/01/index2_3.jpg",
+      "https://moment-azorim.co.il/wp-content/uploads/2020/11/gallery_a_5-1.webp"
+    ],
+    "render_url_capture_note": "One Azorim render URL plus two microsite image URLs captured from official image links.",
     "video_urls": [],
     "brochure_pdf": null,
     "floorplan_urls": [],
-    "site_plan_url": null,
-    "virtual_tour_url": null,
-    "bim_or_3d_available": "unknown",
-    "aerial_or_streetview_ref": null,
-    "gallery_page_url": "https://www.azorim.co.il/projects/%D7%91%D7%AA-%D7%99%D7%9D-moment/",
-    "external_project_site": null,
-    "gallery_page_url_src": [
-      "https://www.azorim.co.il/projects/%D7%91%D7%AA-%D7%99%D7%9D-moment/"
-    ],
-    "render_urls_src": [],
-    "video_urls_src": [],
-    "brochure_pdf_src": [],
-    "floorplan_urls_src": [],
-    "site_plan_url_src": [],
-    "virtual_tour_url_src": [],
-    "bim_or_3d_available_src": [],
-    "aerial_or_streetview_ref_src": []
+    "virtual_tour_url": "https://moment-azorim.co.il/%D7%A8%D7%92%D7%A2-%D7%9C%D7%A1%D7%99%D7%95%D7%A8-%D7%95%D7%99%D7%A8%D7%98%D7%95%D7%90%D7%9C%D7%99/"
   },
   "content_angles": {
     "usp": [
@@ -237,7 +227,7 @@
   },
   "confidence": {
     "overall": "med",
-    "notes": "Official page confirms marketing page and context but does not expose exact project address, floors, or unit count in parsed text."
+    "notes": "Project is active enough for price/geocode follow-up because it has an official project microsite and inventory disclaimer. Exact building parcel is not present in parsed official text."
   },
   "field_sources": {
     "identity.name_he": [
@@ -296,7 +286,60 @@
     "Azorim MOMENT lines 31-37 and 68-100; sales office at Derech Ben Gurion 136 lines 111-115."
   ],
   "evidence": [
-    "Azorim page identifies MOMENT Bat Yam and lists urban piazza, roof garden, nearby light rail and commercial center."
+    {
+      "field": "name/city",
+      "value": "MOMENT | בת ים",
+      "source_url": "https://www.azorim.co.il/projects/%D7%91%D7%AA-%D7%99%D7%9D-moment/",
+      "quote": "# MOMENT | בת ים"
+    },
+    {
+      "field": "official_microsite_link",
+      "value": "https://moment-azorim.co.il/",
+      "source_url": "https://www.azorim.co.il/projects/%D7%91%D7%AA-%D7%99%D7%9D-moment/",
+      "quote": "לאתר מומנט >"
+    },
+    {
+      "field": "description",
+      "value": "mixed-use daily-life complex",
+      "source_url": "https://www.azorim.co.il/projects/%D7%91%D7%AA-%D7%99%D7%9D-moment/",
+      "quote": "הגן שנמצא במתחם ... המתחם המסחרי ... Roof Garden"
+    },
+    {
+      "field": "amenities",
+      "value": "commercial center, light rail, piazza, roof garden",
+      "source_url": "https://www.azorim.co.il/projects/%D7%91%D7%AA-%D7%99%D7%9D-moment/",
+      "quote": "מרכז מסחרי צמוד לפרויקט ... רגע מהרכבת הקלה ... פיאצה אורבנית ... רוף גארדן"
+    },
+    {
+      "field": "sales_office_address",
+      "value": "דרך בן גוריון 136, בת ים",
+      "source_url": "https://www.azorim.co.il/projects/%D7%91%D7%AA-%D7%99%D7%9D-moment/",
+      "quote": "משרד מכירות / דרך בן גוריון 136, בת ים"
+    },
+    {
+      "field": "microsite_status",
+      "value": "inventory availability disclaimer",
+      "source_url": "https://moment-azorim.co.il/%D7%A8%D7%92%D7%A2-%D7%9C%D7%A1%D7%99%D7%95%D7%A8-%D7%95%D7%99%D7%A8%D7%98%D7%95%D7%90%D7%9C%D7%99/",
+      "quote": "ההדמיות להמחשה בלבד | זמינות הדירות בהתאם למלאי הדירות הקיים"
+    },
+    {
+      "field": "microsite_amenities",
+      "value": "residents club, kindergartens, commercial areas",
+      "source_url": "https://moment-azorim.co.il/",
+      "quote": "עירוב שימושים הכוללת מועדון דיירים, גני ילדים, שטחי מסחר ועוד"
+    },
+    {
+      "field": "light_rail_context",
+      "value": "red line terminal adjacent to neighborhood",
+      "source_url": "https://moment-azorim.co.il/",
+      "quote": "מסוף הקו האדום של הרכבת הקלה אשר נבנה בצמוד לשכונה"
+    },
+    {
+      "field": "catalog_presence",
+      "value": "project appears in Azorim projects catalogue",
+      "source_url": "https://www.azorim.co.il/%D7%A4%D7%A8%D7%95%D7%99%D7%A7%D7%98%D7%99%D7%9D/",
+      "quote": "MOMENT | בת ים"
+    }
   ],
   "_unverified": [
     "location.lat",
@@ -314,17 +357,19 @@
     "https://www.azorim.co.il/projects/%D7%91%D7%AA-%D7%99%D7%9D-moment/"
   ],
   "db_meta": {
-    "source_batch": "chatgpt_gush_dan_2026-07-03",
+    "source_batch": "azorim_developer_batch_v2_2026-07-04",
     "ingested_at": "2026-07-04",
-    "verification": "urls_http200_confirmed; sample content-verified; coords UNVERIFIED; prices ABSENT",
+    "verification": "official-page-only, evidence-quoted, sales-office separated; 1849-unit VILLE quote independently confirmed",
     "canonical": true,
     "ready_for_page": false,
     "needs": [
-      "geocode",
-      "price",
+      "geocode (building parcel via govmap/plan — sales office must NOT be used)",
+      "price pass",
       "floors/units where null",
-      "media urls",
-      "5-lang article body"
+      "media/floorplans",
+      "5-lang article",
+      "3D model"
     ]
-  }
+  },
+  "conflicts": []
 }

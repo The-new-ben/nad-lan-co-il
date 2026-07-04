@@ -1,6 +1,6 @@
 {
   "generated_at": "2026-07-04",
-  "count": 33,
+  "count": 30,
   "schema": "_schema.json",
   "note": "Canonical project DB. ready_for_page=false everywhere until geocode+price+media+article filled.",
   "projects": [
@@ -23,36 +23,6 @@
       "status": "under_construction",
       "ready_for_page": false,
       "source": "nadlan_own_authored"
-    },
-    {
-      "id": "azorim-amos-tel-aviv",
-      "name_he": "אזורים עמוס תל אביב",
-      "name_en": "Azorim Amos Tel Aviv",
-      "city": "Tel Aviv-Yafo",
-      "developer": "Azorim",
-      "status": "under_construction",
-      "ready_for_page": false,
-      "source": "chatgpt_gush_dan_2026-07-03"
-    },
-    {
-      "id": "azorim-malachi-tel-aviv",
-      "name_he": "אזורים מלאכי תל אביב",
-      "name_en": "Azorim Malachi Tel Aviv",
-      "city": "Tel Aviv-Yafo",
-      "developer": "Azorim",
-      "status": "under_construction",
-      "ready_for_page": false,
-      "source": "chatgpt_gush_dan_2026-07-03"
-    },
-    {
-      "id": "azorim-remez-tel-aviv",
-      "name_he": "אזורים רמז תל אביב",
-      "name_en": "Azorim Remez Tel Aviv",
-      "city": "Tel Aviv-Yafo",
-      "developer": "Azorim",
-      "status": "under_construction",
-      "ready_for_page": false,
-      "source": "chatgpt_gush_dan_2026-07-03"
     },
     {
       "id": "d-point-jaffa",
@@ -96,13 +66,13 @@
     },
     {
       "id": "exchange-ramat-gan",
-      "name_he": "EXCHANGE רמת גן",
-      "name_en": "EXCHANGE Ramat Gan",
-      "city": "Ramat Gan",
-      "developer": "Azorim",
+      "name_he": "EXCHANGE | רמת גן",
+      "name_en": "Exchange Ramat Gan",
+      "city": "רמת גן",
+      "developer": "אזורים",
       "status": "under_construction",
       "ready_for_page": false,
-      "source": "chatgpt_gush_dan_2026-07-03"
+      "source": "azorim_developer_batch_v2_2026-07-04"
     },
     {
       "id": "go-yafo-tel-aviv",
@@ -138,11 +108,11 @@
       "id": "herzliya-ville",
       "name_he": "הרצליה VILLE",
       "name_en": "Herzliya VILLE",
-      "city": "Herzliya",
-      "developer": "Azorim",
+      "city": "הרצליה",
+      "developer": "אזורים",
       "status": "under_construction",
       "ready_for_page": false,
-      "source": "chatgpt_gush_dan_2026-07-03"
+      "source": "azorim_developer_batch_v2_2026-07-04"
     },
     {
       "id": "i-neot-afeka",
@@ -206,23 +176,23 @@
     },
     {
       "id": "moment-bat-yam",
-      "name_he": "MOMENT בת ים",
-      "name_en": "MOMENT Bat Yam",
-      "city": "Bat Yam",
-      "developer": "Azorim",
+      "name_he": "MOMENT | בת ים",
+      "name_en": "Moment Bat Yam",
+      "city": "בת ים",
+      "developer": "אזורים",
       "status": "under_construction",
       "ready_for_page": false,
-      "source": "chatgpt_gush_dan_2026-07-03"
+      "source": "azorim_developer_batch_v2_2026-07-04"
     },
     {
       "id": "oliver-tel-aviv",
-      "name_he": "OLIVER תל אביב",
-      "name_en": "OLIVER Tel Aviv",
-      "city": "Tel Aviv-Yafo",
-      "developer": "Azorim + Shalom & Natan",
+      "name_he": "OLIVER | תל אביב",
+      "name_en": "Oliver Tel Aviv",
+      "city": "תל אביב-יפו",
+      "developer": "אזורים",
       "status": "under_construction",
       "ready_for_page": false,
-      "source": "chatgpt_gush_dan_2026-07-03"
+      "source": "azorim_developer_batch_v2_2026-07-04"
     },
     {
       "id": "park-tower-ramat-gan",
@@ -286,13 +256,13 @@
     },
     {
       "id": "symphony-holon",
-      "name_he": "SYMPHONY קריית שרת חולון",
-      "name_en": "SYMPHONY Holon",
-      "city": "Holon",
-      "developer": "Azorim",
+      "name_he": "SYMPHONY | קריית שרת חולון",
+      "name_en": "Symphony Holon",
+      "city": "חולון",
+      "developer": "אזורים",
       "status": "under_construction",
       "ready_for_page": false,
-      "source": "chatgpt_gush_dan_2026-07-03"
+      "source": "azorim_developer_batch_v2_2026-07-04"
     },
     {
       "id": "tagor-ramat-aviv",
