@@ -1,6 +1,6 @@
 <?php
 /**
- * nadlan-config — Operations dashboard (v1.13.0)
+ * nadlan-config - Operations dashboard (v1.13.0)
  *
  * One admin page that surfaces ALL the moving parts at a glance:
  * leads (with drip-state breakdown), claims (pending/approved), auctions (live/

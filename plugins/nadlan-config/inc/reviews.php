@@ -1,6 +1,6 @@
 <?php
 /**
- * nadlan-config — REAL reviews engine (v1.33.0)
+ * nadlan-config - REAL reviews engine (v1.33.0)
  *
  * State-of-the-art reviews for nadlan_professional + nadlan_project:
  *  - submission via REST with email gate (anti-spam honeypot + nonce + rate limit)
@@ -104,7 +104,7 @@ add_action( 'rest_api_init', function () {
 			$rid = wp_insert_post( array(
 				'post_type'   => 'nadlan_review',
 				'post_status' => 'pending',
-				'post_title'  => sprintf( '%s — %s (%d★)', $name, get_the_title( $tid ), $rating ),
+				'post_title'  => sprintf( '%s - %s (%d★)', $name, get_the_title( $tid ), $rating ),
 				'post_content'=> ( $title ? '<strong>' . esc_html( $title ) . "</strong>\n\n" : '' ) . esc_html( $body ),
 			), true );
 			if ( is_wp_error( $rid ) ) { return $rid; }

@@ -1,8 +1,8 @@
 <?php
 /**
- * nadlan-config — Advertiser STUDIO frontend (v1.41.0)
+ * nadlan-config - Advertiser STUDIO frontend (v1.41.0)
  *
- * One self-serve URL — /studio/?id=<post_id> — that an advertiser opens to
+ * One self-serve URL - /studio/?id=<post_id> - that an advertiser opens to
  * fully manage their published card with NO admin/wp-login knowledge:
  *   • drag-and-drop image upload (or click), gallery reorder/delete
  *   • inline edit: title, description (with AI "improve this" assist),
@@ -12,17 +12,17 @@
  *   • Type-specific fields (project: units/status/יזם; pro: classification;
  *     property: price/rooms/sqm)
  *   • One-click "preview live page"
- *   • Tooltips on every field — explanations so a non-techie understands
+ *   • Tooltips on every field - explanations so a non-techie understands
  *
  * The page is intercepted at `/studio/` via template_redirect. Auth is mandatory:
- * caller must be logged in AND own the card (or be admin) — enforced by REST.
+ * caller must be logged in AND own the card (or be admin) - enforced by REST.
  *
  * 4-year-old friendly: empty-states say what to do; success toasts on every
  * action; nothing is hidden behind jargon; every input has a "?" tooltip.
  */
 if ( ! defined( 'ABSPATH' ) ) { exit; }
 
-/* Rewrite — /studio/ serves the editor */
+/* Rewrite - /studio/ serves the editor */
 add_action( 'init', function () {
 	add_rewrite_rule( '^studio/?$', 'index.php?nadlan_studio=1', 'top' );
 } );

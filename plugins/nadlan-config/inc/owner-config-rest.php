@@ -1,6 +1,6 @@
 <?php
 /**
- * nadlan-config — Owner-config REST + preferred-partners auto-route (v1.40.1)
+ * nadlan-config - Owner-config REST + preferred-partners auto-route (v1.40.1)
  *
  * Two things at once:
  *  A) Expose `nadlan_owner_whatsapp` and `nadlan_preferred_partners` for REST
@@ -90,7 +90,7 @@ add_action( 'rest_api_init', function () {
  * When a user submits via /nadlan/v1/lead (the generic capture used by the
  * sticky bar, exit-intent modal, claim prompt, AI concierge handoff), and the
  * goal/topic mentions a profession we cover, route a COPY of the lead-email
- * to the best-matching preferred partner. This is opt-in per lead — controlled
+ * to the best-matching preferred partner. This is opt-in per lead - controlled
  * by the post-meta the existing /lead endpoint already writes.
  * ------------------------------------------------------------------------- */
 /* Audit 2026-07-02: save_post fires BEFORE lead meta is written (all creators
@@ -101,7 +101,7 @@ add_action( 'wp_after_insert_post', function ( $lead_id, $post ) {
 	if ( wp_is_post_revision( $lead_id ) || wp_is_post_autosave( $lead_id ) ) { return; }
 	if ( get_post_meta( $lead_id, 'preferred_routed', true ) ) { return; } // already routed
 	if ( ! function_exists( 'nadlan_pp_list' ) || ! function_exists( 'nadlan_pp_pick' ) ) { return; }
-	if ( ! nadlan_pp_list() ) { return; } // owner has no partners set yet — no-op
+	if ( ! nadlan_pp_list() ) { return; } // owner has no partners set yet - no-op
 
 	$goal = trim( (string) get_post_meta( $lead_id, 'goal', true ) );
 	$msg  = trim( (string) get_post_meta( $lead_id, 'message', true ) );
@@ -139,11 +139,11 @@ add_action( 'wp_after_insert_post', function ( $lead_id, $post ) {
 	if ( $goal ) { $body .= "נושא: $goal\n"; }
 	if ( $msg )  { $body .= "פרטים: $msg\n"; }
 	if ( $src )  { $body .= "מקור: $src\n"; }
-	$body .= "\n— תנאי שיתוף הפעולה: עמלה של $pct% מהעסקה הסגורה, משולמת בתוך 14 יום מסגירה.\n";
-	$body .= "— נא לחזור ללקוח תוך 24 שעות.\n\n";
+	$body .= "\n- תנאי שיתוף הפעולה: עמלה של $pct% מהעסקה הסגורה, משולמת בתוך 14 יום מסגירה.\n";
+	$body .= "- נא לחזור ללקוח תוך 24 שעות.\n\n";
 	$body .= "מערכת נדלן · nad-lan.co.il";
 
-	$ok = wp_mail( $pick['email'], '[נדלן] ליד חדש בתחום שלך — ' . $name, $body );
+	$ok = wp_mail( $pick['email'], '[נדלן] ליד חדש בתחום שלך - ' . $name, $body );
 
 	update_post_meta( $lead_id, 'preferred_routed', $pick['email'] );
 	update_post_meta( $lead_id, 'preferred_pct', $pct );

@@ -1,6 +1,6 @@
 <?php
 /**
- * nadlan-config — Sponsored-spot CTA on directory (v1.41.1 — REWRITTEN, ob-free)
+ * nadlan-config - Sponsored-spot CTA on directory (v1.41.1 - REWRITTEN, ob-free)
  *
  * ⚠️ v1.40.0 BUG FIXED HERE: the old version used ob_start() on template_redirect
  * and called nadlan_ss_card() (which itself used ob_start/ob_get_clean) from
@@ -8,7 +8,7 @@
  * an ob handler → FATAL → blank page. This blanked BOTH /professionals/ and
  * /projects/ (everything rendered by directory.php) from v1.40.0 to v1.41.0.
  *
- * New approach — zero output buffering:
+ * New approach - zero output buffering:
  *   • nadlan_ss_card() builds a plain string (no ob_start).
  *   • Server-side injection via the `nadlan_dir_cards_html` filter that
  *     directory.php applies to its rendered cards (added v1.41.1). We insert a
@@ -24,7 +24,7 @@ if ( ! function_exists( 'nadlan_ss_card' ) ) {
 		$cart    = $mode === 'project' ? esc_url( home_url( '/?add-to-cart=489&ref=ss' ) ) : esc_url( home_url( '/?add-to-cart=476&ref=ss' ) );
 		$copy_h  = $mode === 'project' ? 'הציגו את הפרויקט שלכם כאן' : 'הכרטיס שלכם יכול להיות במקום זה';
 		$copy_p  = $mode === 'project' ? 'הפרויקט שלכם בקדמת הבמה, מול קונים ומשקיעים פעילים. ₪3,990 לקמפיין.' : 'הצטרפו למאגר אנשי המקצוע המוביל בישראל. תוכנית Pro מ-₪349 לחודש.';
-		// Plain string — NO ob_start (safe to call anywhere, incl. filters).
+		// Plain string - NO ob_start (safe to call anywhere, incl. filters).
 		return '<a class="nldc nldc-sponsored-spot" href="' . $cart . '">'
 			. '<span class="nldc-sponsor nldc-sponsor-slot">מקודם · פנוי</span>'
 			. '<div class="nldc-sponsored-body">'
@@ -38,7 +38,7 @@ if ( ! function_exists( 'nadlan_ss_card' ) ) {
 }
 
 /* Insert a sponsored card after the 6th real card in a rendered cards string.
- * Pure string ops — no regex backtracking risk, no output buffering. */
+ * Pure string ops - no regex backtracking risk, no output buffering. */
 if ( ! function_exists( 'nadlan_ss_inject' ) ) {
 	function nadlan_ss_inject( $html, $post_type ) {
 		if ( ! is_string( $html ) || strpos( $html, 'class="nldc' ) === false ) { return $html; }
@@ -61,7 +61,7 @@ if ( ! function_exists( 'nadlan_ss_inject' ) ) {
 /* Server-side: hook the directory's cards filter (added in directory.php v1.41.1). */
 add_filter( 'nadlan_dir_cards_html', 'nadlan_ss_inject', 10, 2 );
 
-/* AJAX load-more: inject one sponsored card per batch (safe — not inside an ob handler). */
+/* AJAX load-more: inject one sponsored card per batch (safe - not inside an ob handler). */
 add_filter( 'rest_post_dispatch', function ( $response, $server, $request ) {
 	$route = $request->get_route();
 	if ( $route !== '/nadlan/v1/directory' && $route !== '/nadlan/v1/projects' ) { return $response; }

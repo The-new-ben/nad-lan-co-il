@@ -1,5 +1,5 @@
 /* ============================================================================
-   NadLan Showroom — DATA LAYER  (window.NADLAN_SHOWROOM)
+   NadLan Showroom - DATA LAYER  (window.NADLAN_SHOWROOM)
    ----------------------------------------------------------------------------
    CMS-READY, NOT CMS-WIRED. Every value the engine renders comes from this
    object or from an i18n key (engine/i18n.js). In WordPress this entire object

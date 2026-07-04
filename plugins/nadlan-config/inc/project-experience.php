@@ -1,6 +1,6 @@
 <?php
 /**
- * nadlan-config — Project buying experience layer (v1.69.85)
+ * nadlan-config - Project buying experience layer (v1.69.85)
  *
  * Owner mobile-QA 2026-07-01: projects felt stacked, un-unified, apartment
  * selection didn't work, map wasn't clickable, article buried. This module
@@ -10,11 +10,11 @@
  *      2026-07-02, D1/D2): this module must never render a second picker or
  *      standalone interior widget next to the engine.
  *   3. Live clickable surroundings map: streets/satellite, real OSM POIs
- *      (schools/kindergartens/transit/shops/health) AND a FUTURE-PLANS layer —
+ *      (schools/kindergartens/transit/shops/health) AND a FUTURE-PLANS layer -
  *      nearby urban-renewal projects from our own 965-project gov.il dataset,
  *      each marker clickable to its project page (spoke wiring).
  *   4. "The world around the project" grid: contractor, professionals, city,
- *      calculators, guides, glossary — hub-spoke links.
+ *      calculators, guides, glossary - hub-spoke links.
  *   5. Compact factual SEO intro from real meta (no invented content).
  */
 
@@ -218,7 +218,7 @@ if ( ! function_exists( 'nadlan_pjx_top' ) ) {
 	if ( $floors ) { $bits[] = $floors . ' קומות'; }
 	if ( $units_n ) { $bits[] = number_format( $units_n ) . ' יחידות דיור'; }
 	if ( $status && isset( $status_he[ $status ] ) ) { $bits[] = 'סטטוס: ' . $status_he[ $status ]; }
-	if ( $bits ) { echo '<p>' . implode( ' · ', $bits ) . '. כל הנתונים, הדמיות, מפת הסביבה ותוכניות עתידיות — בעמוד אחד, כאילו ביקרתם בפרויקט.</p>'; }
+	if ( $bits ) { echo '<p>' . implode( ' · ', $bits ) . '. כל הנתונים, הדמיות, מפת הסביבה ותוכניות עתידיות - בעמוד אחד, כאילו ביקרתם בפרויקט.</p>'; }
 	?>
 </div>
 <?php

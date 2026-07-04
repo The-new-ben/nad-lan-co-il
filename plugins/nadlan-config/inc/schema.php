@@ -1,13 +1,13 @@
 <?php
 /**
- * nadlan-config — Card schema + SEO guards (v1.5.0)
+ * nadlan-config - Card schema + SEO guards (v1.5.0)
  *
  * 1) JSON-LD per card type (LocalBusiness/GeneralContractor, Residence/
- *    ApartmentComplex, RealEstateListing) — stats-rich, machine-readable, which
+ *    ApartmentComplex, RealEstateListing) - stats-rich, machine-readable, which
  *    is what AI answer-engines and Google reward.
  * 2) THIN-CONTENT NOINDEX guard: any card still at data_quality=stub (or with a
  *    body below the word floor) is noindex,follow. This is the anti-cannibalization
- *    + anti-thin-content safeguard from the research — stubs don't compete with
+ *    + anti-thin-content safeguard from the research - stubs don't compete with
  *    keyword pages and don't dilute crawl budget. Once enriched (original ChatGPT
  *    prose pushed via import-enrich), the card becomes indexable.
  */

@@ -69,9 +69,9 @@ function nadlan_showroom_metabox_render( $post ) {
 		<input type="url" id="nadlan_sr_poster" name="nadlan_sr_poster" value="<?php echo esc_attr( $poster ); ?>" placeholder="https://…/sketch.jpg">
 		<p class="desc">הסקיצה האדריכלית המוצגת לפני טעינת המודל (או במקומו). מומלץ להעלות למדיה ולהדביק כאן את הכתובת.</p>
 
-		<label for="nadlan_sr_glb">כתובת מודל תלת ממד (GLB) — לא חובה</label>
+		<label for="nadlan_sr_glb">כתובת מודל תלת ממד (GLB) - לא חובה</label>
 		<input type="url" id="nadlan_sr_glb" name="nadlan_sr_glb" value="<?php echo esc_attr( $glb ); ?>" placeholder="https://…/model.glb">
-		<p class="desc">אם ריק — התצוגה עוברת אוטומטית למצב סקיצה בלבד. אין צורך במודל כדי שהעמוד יעבוד.</p>
+		<p class="desc">אם ריק - התצוגה עוברת אוטומטית למצב סקיצה בלבד. אין צורך במודל כדי שהעמוד יעבוד.</p>
 	</div>
 	<?php
 }

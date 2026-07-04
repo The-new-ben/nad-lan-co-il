@@ -1,6 +1,6 @@
 <?php
 /**
- * nadlan-config — Site-wide premium UI overlay (v1.42.0)
+ * nadlan-config - Site-wide premium UI overlay (v1.42.0)
  *
  * One module that lifts the catalog/profile/micro-UI from "default WP directory" to
  * an editorial real-estate experience without rewriting directory.php / cards-render.php.
@@ -156,7 +156,7 @@ if ( ! function_exists( 'nadlan_premium_css' ) ) {
 	letter-spacing:.12em!important;padding:4px 11px!important;border-radius:30px!important;
 }
 
-/* ----- SPONSORED SLOT (empty/upsell card) — proper premium product ----- */
+/* ----- SPONSORED SLOT (empty/upsell card) - proper premium product ----- */
 .nldc-sponsored-spot{
 	background:linear-gradient(180deg,#FBF9F5,#F3EFE7)!important;
 	border:1px solid var(--nl-champagne)!important;
@@ -269,7 +269,7 @@ if ( ! function_exists( 'nadlan_premium_css' ) ) {
 	padding:5px 14px!important;border-radius:30px!important;font-size:11px!important;
 }
 
-/* ===== Profile CTAs (call, quote, claim) — premium button grammar ===== */
+/* ===== Profile CTAs (call, quote, claim) - premium button grammar ===== */
 .nlpf-call,.nlpf-quote,.nlcp-btn,.nlfab-btn{
 	min-height:48px!important;
 	border-radius:12px!important;
@@ -303,7 +303,7 @@ if ( ! function_exists( 'nadlan_premium_css' ) ) {
 .nlcp-icon{filter:grayscale(1) brightness(.6) opacity(.6)}
 .nlcp-body h3{font-family:var(--font-serif,"Frank Ruhl Libre",serif)!important;color:var(--nl-ink)!important}
 
-/* ===== FLOATING WHATSAPP CTA — re-anchor to visual viewport ===== */
+/* ===== FLOATING WHATSAPP CTA - re-anchor to visual viewport ===== */
 #nlcta{
 	bottom:max(20px,env(safe-area-inset-bottom,20px))!important;
 	inset-inline-end:max(20px,env(safe-area-inset-right,20px))!important;
@@ -431,7 +431,7 @@ if ( ! function_exists( 'nadlan_premium_css' ) ) {
 		display:inline-block;line-height:44px!important;padding:0 2px;
 	}
 
-	/* Floating CTA bar (.nlfab) — re-anchor to visual viewport, no overflow */
+	/* Floating CTA bar (.nlfab) - re-anchor to visual viewport, no overflow */
 	.nlfab{
 		position:fixed!important;
 		left:0!important;right:0!important;bottom:0!important;
@@ -459,7 +459,7 @@ if ( ! function_exists( 'nadlan_premium_css' ) ) {
 	.entry-content p,.entry-content li{font-size:16px!important;line-height:1.7!important}
 }
 
-/* ===== Concept-art card media (project/property only — never professionals) ===== */
+/* ===== Concept-art card media (project/property only - never professionals) ===== */
 .nldir-results .nldc.has-media{
 	padding:0!important;
 	border-radius:18px!important;
@@ -506,7 +506,7 @@ if ( ! function_exists( 'nadlan_premium_css' ) ) {
 	box-shadow:0 6px 18px rgba(27,26,23,.12);
 }
 
-/* ===== Single profile hero — original concept skyline (replaces flat gradient) ===== */
+/* ===== Single profile hero - original concept skyline (replaces flat gradient) ===== */
 .nlpf-banner{
 	background:
 		linear-gradient(180deg,rgba(7,19,19,.55),rgba(7,19,19,.85)),
@@ -515,7 +515,7 @@ if ( ! function_exists( 'nadlan_premium_css' ) ) {
 	min-height:140px!important;
 }
 
-/* ===== Hero (directory + homepage) — subtle concept skyline backdrop ===== */
+/* ===== Hero (directory + homepage) - subtle concept skyline backdrop ===== */
 .nldir-hero{position:relative}
 .nldir-hero::before{
 	content:"";
@@ -550,7 +550,7 @@ if ( ! function_exists( 'nadlan_premium_css' ) ) {
 .nldir-pill{min-height:40px}
 .nldir-pill i{margin-inline-start:6px}
 
-/* Hero H1 contrast — light ink/cream on the dark blueprint hero (was dark on dark) */
+/* Hero H1 contrast - light ink/cream on the dark blueprint hero (was dark on dark) */
 .nldir-hero h1{
 	color:var(--nl-ink)!important;
 	text-shadow:none!important;
@@ -573,7 +573,7 @@ body.single-nadlan_property .wp-block-post-title{
 	white-space:nowrap!important;border:0!important;
 }
 
-/* Right-rail facet polish — premium quiet panel (was plain default) */
+/* Right-rail facet polish - premium quiet panel (was plain default) */
 .nldir-side{background:#fff;border:1px solid var(--nl-hairline);border-radius:14px;padding:18px}
 .nldir-fgroup + .nldir-fgroup{margin-top:18px;padding-top:18px;border-top:1px solid var(--nl-hairline)}
 .nldir-fgroup h4{margin-bottom:10px!important}
@@ -622,7 +622,7 @@ body.single-nadlan_property .wp-block-post-title{
 	}
 }
 
-/* Header global-nav submenu chevron — bump tap target while keeping the visual */
+/* Header global-nav submenu chevron - bump tap target while keeping the visual */
 .wp-block-navigation__submenu-icon{
 	min-width:24px!important;min-height:24px!important;
 	padding:8px!important;
@@ -640,11 +640,11 @@ body.single-nadlan_professional .wp-block-post-date,
 body.single-nadlan_property .wp-block-post-author,
 body.single-nadlan_property .wp-block-post-date{display:none!important}
 
-/* ===== 1.42.4 — Codex PR #47 follow-up fixes ===== */
+/* ===== 1.42.4 - Codex PR #47 follow-up fixes ===== */
 
-/* #5 — honeypot inputs (.nlcard-hp, .nlrev-hp) used position:left:-9999px which
+/* #5 - honeypot inputs (.nlcard-hp, .nlrev-hp) used position:left:-9999px which
    gave desktop pages a 11,439px scrollWidth (visible horizontal scrollbar +
-   layout chaos). Replace with the accessible 1px clipped pattern — same hidden
+   layout chaos). Replace with the accessible 1px clipped pattern - same hidden
    from sighted users and assistive tech, but no page-extending geometry. */
 .nlcard-hp,.nlrev-hp{
 	position:absolute!important;
@@ -660,10 +660,10 @@ body.single-nadlan_property .wp-block-post-date{display:none!important}
 	pointer-events:none!important;
 }
 
-/* #9 — On nadlan CPT archive pages (/projects/, /professionals/, /properties/)
+/* #9 - On nadlan CPT archive pages (/projects/, /professionals/, /properties/)
    the theme header prints <h1><a>נדלן</a></h1>, creating a 2nd H1 alongside
    the archive hero H1. Visually hide the theme's site-title H1 on THESE archives
-   only — every other page keeps its header H1 as-is. */
+   only - every other page keeps its header H1 as-is. */
 body.post-type-archive-nadlan_project #header h1,
 body.post-type-archive-nadlan_project #headerimg h1,
 body.post-type-archive-nadlan_professional #header h1,
@@ -698,7 +698,7 @@ add_action( 'wp_footer', function () {
 	echo nadlan_premium_sprite(); // static SVG defs, no user data
 }, 1 );
 
-/* ---------- 4. Block-level cleanups (1.42.4 — proper fix for Codex #2 + #7) ------ */
+/* ---------- 4. Block-level cleanups (1.42.4 - proper fix for Codex #2 + #7) ------ */
 /* These render_block filters are the PROPER fix for the duplicate H1 (#2) and the
    "Written by / in" pattern (#7) that 1.42.3 only hid visually via CSS. By skipping
    the offending blocks at render time we remove the duplicate H1 from the DOM
@@ -710,14 +710,14 @@ if ( ! function_exists( 'nadlan_premium_block_cleanup' ) ) {
 			return $block_content;
 		}
 		$name = isset( $block['blockName'] ) ? (string) $block['blockName'] : '';
-		// #2 — kill the theme's <h1 class="wp-block-post-title"> (the plugin's .nlpf-name is the H1).
+		// #2 - kill the theme's <h1 class="wp-block-post-title"> (the plugin's .nlpf-name is the H1).
 		if ( $name === 'core/post-title' ) { return ''; }
-		// #7 — kill the "Written by / in / terms / author / date" meta blocks on CPT singles.
+		// #7 - kill the "Written by / in / terms / author / date" meta blocks on CPT singles.
 		if ( in_array( $name, array(
 			'core/post-author', 'core/post-author-name', 'core/post-author-biography',
 			'core/post-date', 'core/post-terms',
 		), true ) ) { return ''; }
-		// #7b — kill the bare "Written by" / "in" paragraph blocks the same theme
+		// #7b - kill the bare "Written by" / "in" paragraph blocks the same theme
 		// pattern prints adjacent to the author/terms blocks.
 		if ( $name === 'core/paragraph' ) {
 			$txt = trim( wp_strip_all_tags( isset( $block['innerHTML'] ) ? $block['innerHTML'] : '' ) );

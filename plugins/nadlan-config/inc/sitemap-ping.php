@@ -1,10 +1,10 @@
 <?php
 /**
- * nadlan-config — Sitemap ping on content change (v1.40.0 / shark #13)
+ * nadlan-config - Sitemap ping on content change (v1.40.0 / shark #13)
  *
  * When meaningful content changes (a glossary term is enriched, a new
  * professional is verified, a new project is enriched), ping the Yoast sitemap
- * and warm the Google index. Free SEO speed-up — pages get crawled days faster
+ * and warm the Google index. Free SEO speed-up - pages get crawled days faster
  * than they would by default.
  *
  * Throttle: max 1 ping per hour total (Google rate-limits anyway).

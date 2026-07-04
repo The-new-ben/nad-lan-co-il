@@ -355,7 +355,7 @@ if ( ! function_exists( 'nadlan_dir_render_page' ) ) {
 					<select id="nldir-sort">
 						<option value="featured"<?php selected( $state['sort'], 'featured' ); ?>>מומלצים</option>
 						<option value="newest"<?php selected( $state['sort'], 'newest' ); ?>>נוספו לאחרונה</option>
-						<option value="name"<?php selected( $state['sort'], 'name' ); ?>>א׳–ת׳</option>
+						<option value="name"<?php selected( $state['sort'], 'name' ); ?>>א׳-ת׳</option>
 					</select>
 				</label>
 			</div>
@@ -708,7 +708,7 @@ if ( ! function_exists( 'nadlan_dir_project_card' ) ) {
 		}
 		$floors = (int) get_post_meta( $id, 'floors', true );
 		// Magazine card (v1.69.69): Lovable MagazineCard design ported to the live
-		// "Quiet Luxury" tokens. Stat row uses only real, present meta — never fake data.
+		// "Quiet Luxury" tokens. Stat row uses only real, present meta - never fake data.
 		$stats = array();
 		if ( $units > 0 )  { $stats[] = array( 'יח״ד', number_format( $units ) ); }
 		if ( $floors > 0 ) { $stats[] = array( 'קומות', (string) $floors ); }
@@ -885,7 +885,7 @@ if ( ! function_exists( 'nadlan_dir_project_page' ) ) {
 						<option value="featured"<?php selected( $state['sort'], 'featured' ); ?>>מומלצים</option>
 						<option value="units"<?php selected( $state['sort'], 'units' ); ?>>הכי הרבה יח״ד</option>
 						<option value="newest"<?php selected( $state['sort'], 'newest' ); ?>>חדש</option>
-						<option value="name"<?php selected( $state['sort'], 'name' ); ?>>א׳–ת׳</option>
+						<option value="name"<?php selected( $state['sort'], 'name' ); ?>>א׳-ת׳</option>
 					</select>
 				</label>
 			</div>

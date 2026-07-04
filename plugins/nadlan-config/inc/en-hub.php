@@ -1,6 +1,6 @@
 <?php
 /**
- * nadlan-config — English hub for foreign buyers (v1.69.97)
+ * nadlan-config - English hub for foreign buyers (v1.69.97)
  *
  * [nadlan_en_hub] renders the /en/ landing hub: hero, English project pages
  * (language siblings with the -en slug suffix), English guides (category

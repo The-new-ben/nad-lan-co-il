@@ -1,6 +1,6 @@
 <?php
 /**
- * nadlan-config — Conversion CTA layer (v1.40.3)
+ * nadlan-config - Conversion CTA layer (v1.40.3)
  *
  * STRIPPED 2026-06-03 per owner: the sticky bottom bar AND the exit-intent modal
  * are KILLED everywhere (mobile + desktop). They were too intrusive on mobile
@@ -37,7 +37,7 @@ add_action( 'wp_footer', function () {
 	if ( ! nadlan_cta_enabled() ) { return; }
 	$wa = nadlan_cta_whatsapp_number();
 	if ( ! $wa ) {
-		// No WhatsApp configured — still emit the GA helper so other modules can use it.
+		// No WhatsApp configured - still emit the GA helper so other modules can use it.
 		echo "<script>window.dataLayer=window.dataLayer||[];window.nadlanGA=window.nadlanGA||function(n,p){try{window.dataLayer.push(Object.assign({event:n},p||{}));}catch(e){}};</script>\n";
 		return;
 	}
@@ -65,7 +65,7 @@ add_action( 'wp_footer', function () {
 	<?php
 }, 90 );
 
-/* Public lead REST endpoint — kept (used by other modules: claim-prompt, AI concierge, etc.) */
+/* Public lead REST endpoint - kept (used by other modules: claim-prompt, AI concierge, etc.) */
 add_action( 'rest_api_init', function () {
 	register_rest_route( 'nadlan/v1', '/lead', array(
 		'methods'             => 'POST',
@@ -123,7 +123,7 @@ add_action( 'rest_api_init', function () {
 			$lid = wp_insert_post( array(
 				'post_type'    => 'nadlan_lead',
 				'post_status'  => 'private',
-				'post_title'   => $name . ' — ' . ( $goal ?: 'general' ) . ' — ' . current_time( 'Y-m-d H:i' ),
+				'post_title'   => $name . ' - ' . ( $goal ?: 'general' ) . ' - ' . current_time( 'Y-m-d H:i' ),
 				'post_content' => $msg,
 			), true );
 			if ( is_wp_error( $lid ) ) { return $lid; }
@@ -148,14 +148,14 @@ add_action( 'rest_api_init', function () {
 			if ( $admin ) {
 				$body  = "ליד חדש מהאתר\n\nשם: $name\nטלפון: $phone\nאימייל: $email\nנושא: $goal\nמקור: $src\n\nהודעה: $msg\n\n";
 				$body .= "ניהול: " . admin_url( 'post.php?post=' . $lid . '&action=edit' );
-				wp_mail( $admin, '[נדלן] ליד חדש — ' . $name, $body );
+				wp_mail( $admin, '[נדלן] ליד חדש - ' . $name, $body );
 			}
 			return array( 'ok' => true, 'lead_id' => $lid );
 		},
 	) );
 } );
 
-/* Settings page — kept (for the WhatsApp number) */
+/* Settings page - kept (for the WhatsApp number) */
 add_action( 'admin_menu', function () {
 	add_options_page( 'NadLan CTA + WhatsApp', 'NadLan CTA', 'manage_options', 'nadlan-cta', function () {
 		if ( ! current_user_can( 'manage_options' ) ) { return; }

@@ -1,8 +1,8 @@
 <?php
 /**
- * nadlan-config — Lead nurture drip engine (v1.12.0)
+ * nadlan-config - Lead nurture drip engine (v1.12.0)
  *
- * 2026 best-practice (research): segmented state machine —
+ * 2026 best-practice (research): segmented state machine -
  *   new → active (0-14d) → mid (15d-6mo) → long (6-18mo); auto-respond < 2 min;
  *   5-8 emails over 30-60d for standard drip; demote if no engagement; opt-out
  *   on every email; SMS is higher-OR but defer (provider TODO).
@@ -12,7 +12,7 @@
  * advances state, demotes silent leads.
  *
  * BLANKS: SMS/WhatsApp channel (Twilio/local), engagement tracking pixel (privacy
- * decision — IL Privacy Protection Law), branded HTML template, A leads escalation
+ * decision - IL Privacy Protection Law), branded HTML template, A leads escalation
  * to phone. Default = email only, opt-out link mandatory.
  */
 
@@ -22,18 +22,18 @@ if ( ! function_exists( 'nadlan_drip_steps' ) ) {
 	/** Sequence: array of {delay_days, subject, body_template}. {NAME}/{OPTOUT}/{CITY}/{GOAL} substituted. */
 	function nadlan_drip_steps() {
 		return apply_filters( 'nadlan_drip_steps', array(
-			array( 'delay' => 0,  'subject' => 'שלום ל{NAME} — קיבלנו את הפנייה שלך',
+			array( 'delay' => 0,  'subject' => 'שלום ל{NAME} - קיבלנו את הפנייה שלך',
 				'body' => "שלום {NAME},\n\nתודה שפנית לנדלן. נחזור אליך בהקדם בנוגע ל-{GOAL}.\n\nבינתיים תוכל לקבל אומדן שווי, להשוות נכסים ולהירשם להתראות על דירות חדשות:\nhttps://nad-lan.co.il/\n\nלהסרה מההתראות: {OPTOUT}" ),
 			array( 'delay' => 2,  'subject' => '5 דברים שכדאי לבדוק לפני חתימת חוזה דירה',
-				'body' => "שלום {NAME},\n\nלפני שחותמים על חוזה, יש כמה דגלים אדומים נפוצים — הערת אזהרה, פיגורי תשלום, חריגות בנייה ועוד. הכנו לך מדריך קצר:\nhttps://nad-lan.co.il/real-estate-lawyer/\n\nואם כבר יש חוזה ביד — ביקורת ב-48 שעות: https://nad-lan.co.il/contract-audit/\n\nלהסרה: {OPTOUT}" ),
+				'body' => "שלום {NAME},\n\nלפני שחותמים על חוזה, יש כמה דגלים אדומים נפוצים - הערת אזהרה, פיגורי תשלום, חריגות בנייה ועוד. הכנו לך מדריך קצר:\nhttps://nad-lan.co.il/real-estate-lawyer/\n\nואם כבר יש חוזה ביד - ביקורת ב-48 שעות: https://nad-lan.co.il/contract-audit/\n\nלהסרה: {OPTOUT}" ),
 			array( 'delay' => 5,  'subject' => 'דירות חדשות ב{CITY}',
 				'body' => "שלום {NAME},\n\nרוצה לקבל התראה אוטומטית על דירות חדשות ב{CITY}? הירשם כאן:\nhttps://nad-lan.co.il/?saved=1\n\nלהסרה: {OPTOUT}" ),
 			array( 'delay' => 14, 'subject' => 'איך הולך החיפוש?',
-				'body' => "שלום {NAME},\n\nרצינו לבדוק איך מתקדם החיפוש. נשמח לעזור — השב/י למייל זה או חייג/י 052-510-1555.\n\nלהסרה: {OPTOUT}" ),
+				'body' => "שלום {NAME},\n\nרצינו לבדוק איך מתקדם החיפוש. נשמח לעזור - השב/י למייל זה או חייג/י 052-510-1555.\n\nלהסרה: {OPTOUT}" ),
 			array( 'delay' => 30, 'subject' => 'עדכון שוק חודשי',
 				'body' => "שלום {NAME},\n\nעדכון חודשי על מחירי דירות ועסקאות באזורך נמצא כאן:\nhttps://nad-lan.co.il/\n\nלהסרה: {OPTOUT}" ),
 			array( 'delay' => 60, 'subject' => 'עדיין מחפש/ת?',
-				'body' => "שלום {NAME},\n\nאם החיפוש עוד פעיל — הנה כלים שיעזרו: הערכת שווי, ביקורת חוזה, השוואת נכסים.\nhttps://nad-lan.co.il/\n\nלהסרה: {OPTOUT}" ),
+				'body' => "שלום {NAME},\n\nאם החיפוש עוד פעיל - הנה כלים שיעזרו: הערכת שווי, ביקורת חוזה, השוואת נכסים.\nhttps://nad-lan.co.il/\n\nלהסרה: {OPTOUT}" ),
 		) );
 	}
 }
@@ -99,7 +99,7 @@ add_action( 'rest_api_init', function () {
 	) );
 } );
 
-/* Daily cron — send due steps + state transitions */
+/* Daily cron - send due steps + state transitions */
 add_action( 'nadlan_drip_daily', function () {
 	$steps = nadlan_drip_steps();
 	$leads = get_posts( array( 'post_type' => 'nadlan_lead', 'posts_per_page' => 500, 'post_status' => 'private',

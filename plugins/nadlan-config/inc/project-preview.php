@@ -1,6 +1,6 @@
 <?php
 /**
- * Project-page PREVIEW (2026-07-03) — proves the new modular project-page
+ * Project-page PREVIEW (2026-07-03) - proves the new modular project-page
  * design runs inside WordPress, not just as a standalone HTML file.
  *
  * A REST route serves the complete self-contained design (from
@@ -57,7 +57,7 @@ if ( ! function_exists( 'nadlan_project_preview_shortcode' ) ) {
 		}
 		$src = esc_url( rest_url( 'nadlan/v1/preview/' . $slug ) );
 		$h   = preg_replace( '/[^0-9a-z%vhpx]/', '', (string) $atts['height'] );
-		return '<iframe src="' . $src . '" title="נדלן — תצוגת פרויקט" loading="lazy" '
+		return '<iframe src="' . $src . '" title="נדלן - תצוגת פרויקט" loading="lazy" '
 			. 'style="display:block;width:100%;height:' . esc_attr( $h ) . ';border:0;margin:0"></iframe>';
 	}
 }

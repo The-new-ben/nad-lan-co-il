@@ -1,13 +1,13 @@
 <?php
 /**
- * i18n engine (2026-07-03) — systematic 5-language chrome for nad-lan.co.il.
+ * i18n engine (2026-07-03) - systematic 5-language chrome for nad-lan.co.il.
  *
  * LAW (see handoff/research/2026-07-03-multilingual-architecture.md):
  * - CHROME (nav, hero, footer, labels, switcher) is systematic: one string
  *   table per language, resolved via nadlan_i18n('key'). Change once, every
  *   surface reflects it. 'he' values equal the exact current Hebrew, so the
  *   Hebrew page renders byte-identical.
- * - CONTENT (article/news/project bodies) is NOT here — it must be real
+ * - CONTENT (article/news/project bodies) is NOT here - it must be real
  *   translated CMS text (generation run), never machine-faked. Until then it
  *   falls back to Hebrew with correct hreflang (no SEO penalty).
  * - SEO: distinct URL per language (/ , /en/, /fr/, /ru/, /ar/), self-canonical
@@ -84,8 +84,8 @@ if ( ! function_exists( 'nadlan_i18n_table' ) ) {
 			'lang_label' => 'שפה', 'content_he_note' => 'התוכן המלא מוצג בעברית; תרגום מלא בקרוב.',
 		),
 		'en' => array(
-			'hero_h1'   => 'Find an apartment, check the price, know the area — before you sign',
-			'hero_sub'  => 'Apartments for sale and rent, new projects where you pick your apartment from inside the building, real transaction prices and check-it-yourself tools — in one place.',
+			'hero_h1'   => 'Find an apartment, check the price, know the area - before you sign',
+			'hero_sub'  => 'Apartments for sale and rent, new projects where you pick your apartment from inside the building, real transaction prices and check-it-yourself tools - in one place.',
 			'tab_buy' => 'Buy', 'tab_rent' => 'Rent', 'tab_projects' => 'New projects', 'tab_pros' => 'Professionals',
 			'search_ph' => 'City, neighborhood, project or professional…', 'search_btn' => 'Search',
 			'trust_projects' => 'projects & urban renewal', 'trust_pros' => 'verified professionals (gov.il)',
@@ -109,8 +109,8 @@ if ( ! function_exists( 'nadlan_i18n_table' ) ) {
 			'lang_label' => 'Language', 'content_he_note' => 'Full content is shown in Hebrew; complete translation coming soon.',
 		),
 		'fr' => array(
-			'hero_h1'   => 'Trouvez un appartement, vérifiez le prix, connaissez le quartier — avant de signer',
-			'hero_sub'  => 'Appartements à vendre et à louer, projets neufs où vous choisissez votre appartement depuis le bâtiment, prix de transactions réels et outils de vérification — au même endroit.',
+			'hero_h1'   => 'Trouvez un appartement, vérifiez le prix, connaissez le quartier - avant de signer',
+			'hero_sub'  => 'Appartements à vendre et à louer, projets neufs où vous choisissez votre appartement depuis le bâtiment, prix de transactions réels et outils de vérification - au même endroit.',
 			'tab_buy' => 'Acheter', 'tab_rent' => 'Louer', 'tab_projects' => 'Projets neufs', 'tab_pros' => 'Professionnels',
 			'search_ph' => 'Ville, quartier, projet ou professionnel…', 'search_btn' => 'Rechercher',
 			'trust_projects' => 'projets & renouvellement urbain', 'trust_pros' => 'professionnels vérifiés (gov.il)',
@@ -134,12 +134,12 @@ if ( ! function_exists( 'nadlan_i18n_table' ) ) {
 			'lang_label' => 'Langue', 'content_he_note' => 'Le contenu complet est en hébreu ; traduction complète à venir.',
 		),
 		'ru' => array(
-			'hero_h1'   => 'Найдите квартиру, проверьте цену, узнайте район — до подписания',
-			'hero_sub'  => 'Квартиры на продажу и в аренду, новые проекты с выбором квартиры прямо из здания, реальные цены сделок и инструменты проверки — в одном месте.',
+			'hero_h1'   => 'Найдите квартиру, проверьте цену, узнайте район - до подписания',
+			'hero_sub'  => 'Квартиры на продажу и в аренду, новые проекты с выбором квартиры прямо из здания, реальные цены сделок и инструменты проверки - в одном месте.',
 			'tab_buy' => 'Купить', 'tab_rent' => 'Аренда', 'tab_projects' => 'Новые проекты', 'tab_pros' => 'Специалисты',
 			'search_ph' => 'Город, район, проект или специалист…', 'search_btn' => 'Поиск',
 			'trust_projects' => 'проектов и реновации', 'trust_pros' => 'проверенных специалистов (gov.il)',
-			'trust_calc' => 'профессиональных калькулятора', 'trust_law' => 'юрист по недвижимости', 'trust_law_pre' => 'сопровождение —',
+			'trust_calc' => 'профессиональных калькулятора', 'trust_law' => 'юрист по недвижимости', 'trust_law_pre' => 'сопровождение -',
 			'flag_pick' => 'Выберите квартиру прямо из здания',
 			'nav_label' => 'Основная навигация',
 			'm_apts' => 'Квартиры', 'apts_sale' => 'Продажа', 'apts_rent' => 'Аренда', 'apts_in' => 'Квартиры в ', 'post_free' => 'Разместить объявление бесплатно',
@@ -159,8 +159,8 @@ if ( ! function_exists( 'nadlan_i18n_table' ) ) {
 			'lang_label' => 'Язык', 'content_he_note' => 'Полный контент показан на иврите; полный перевод скоро.',
 		),
 		'ar' => array(
-			'hero_h1'   => 'اعثر على شقة، تحقق من السعر، اعرف الحي — قبل التوقيع',
-			'hero_sub'  => 'شقق للبيع والإيجار، مشاريع جديدة تختار فيها شقتك من داخل المبنى، أسعار صفقات حقيقية وأدوات فحص — في مكان واحد.',
+			'hero_h1'   => 'اعثر على شقة، تحقق من السعر، اعرف الحي - قبل التوقيع',
+			'hero_sub'  => 'شقق للبيع والإيجار، مشاريع جديدة تختار فيها شقتك من داخل المبنى، أسعار صفقات حقيقية وأدوات فحص - في مكان واحد.',
 			'tab_buy' => 'شراء', 'tab_rent' => 'إيجار', 'tab_projects' => 'مشاريع جديدة', 'tab_pros' => 'مختصون',
 			'search_ph' => 'مدينة، حي، مشروع أو مختص…', 'search_btn' => 'بحث',
 			'trust_projects' => 'مشاريع وتجديد حضري', 'trust_pros' => 'مختصون موثّقون (gov.il)',
@@ -189,7 +189,7 @@ if ( ! function_exists( 'nadlan_i18n_table' ) ) {
 }
 
 /* CMS-backed override layer: translations editable in the DB (option per lang)
-   without a code deploy — "wired to the CMS". A generation run / editor pushes
+   without a code deploy - "wired to the CMS". A generation run / editor pushes
    strings via POST /nadlan/v1/i18n/<lang>. Overrides win over the code default. */
 if ( ! function_exists( 'nadlan_i18n_overrides' ) ) {
 	function nadlan_i18n_overrides( $lang ) {
@@ -260,10 +260,10 @@ if ( ! function_exists( 'nadlan_lang_switcher' ) ) {
 if ( ! function_exists( 'nadlan_i18n_theme_map' ) ) {
 	function nadlan_i18n_theme_map( $lang ) {
 		$m = array(
-			'en' => array( 'פרויקטים'=>'Projects','אזורי ביקוש'=>'Areas','מחשבונים'=>'Calculators','אנשי מקצוע'=>'Professionals','מדריכים'=>'Guides','בחרו פרויקט'=>'Choose a project','נדל״ן לפני שפונים ליזם'=>'Real estate — before you approach the developer','לדלג לתוכן'=>'Skip to content','כל הפרויקטים'=>'All projects','מחשבון משכנתא'=>'Mortgage calculator','מס רכישה'=>'Purchase tax','מדריך קנייה'=>'Buying guide','בדיקה משפטית'=>'Legal check','אודות'=>'About','צור קשר'=>'Contact','רובע שדה דב'=>'Sde Dov district','עו״ד מקרקעין'=>'Real-estate lawyer','שמאי מקרקעין'=>'Property appraiser','יועץ משכנתאות'=>'Mortgage advisor','בדק בית'=>'Home inspection','קבלן'=>'Contractor','אדריכל'=>'Architect' ),
-			'fr' => array( 'פרויקטים'=>'Projets','אזורי ביקוש'=>'Zones','מחשבונים'=>'Calculateurs','אנשי מקצוע'=>'Professionnels','מדריכים'=>'Guides','בחרו פרויקט'=>'Choisir un projet','נדל״ן לפני שפונים ליזם'=>"L'immobilier — avant de contacter le promoteur",'לדלג לתוכן'=>'Aller au contenu','כל הפרויקטים'=>'Tous les projets','מחשבון משכנתא'=>'Calculateur de prêt','מס רכישה'=>"Taxe d'achat",'מדריך קנייה'=>"Guide d'achat",'בדיקה משפטית'=>'Vérification juridique','אודות'=>'À propos','צור קשר'=>'Contact','רובע שדה דב'=>'Quartier Sde Dov','עו״ד מקרקעין'=>'Avocat immobilier','שמאי מקרקעין'=>'Expert immobilier','יועץ משכנתאות'=>'Conseiller en prêt','בדק בית'=>'Inspection du logement','קבלן'=>'Entrepreneur','אדריכל'=>'Architecte' ),
-			'ru' => array( 'פרויקטים'=>'Проекты','אזורי ביקוש'=>'Районы','מחשבונים'=>'Калькуляторы','אנשי מקצוע'=>'Специалисты','מדריכים'=>'Гиды','בחרו פרויקט'=>'Выбрать проект','נדל״ן לפני שפונים ליזם'=>'Недвижимость — до обращения к застройщику','לדלג לתוכן'=>'Перейти к содержимому','כל הפרויקטים'=>'Все проекты','מחשבון משכנתא'=>'Ипотечный калькулятор','מס רכישה'=>'Налог на покупку','מדריך קנייה'=>'Гид покупки','בדיקה משפטית'=>'Юридическая проверка','אודות'=>'О нас','צור קשר'=>'Контакты','רובע שדה דב'=>'Район Сде-Дов','עו״ד מקרקעין'=>'Юрист по недвижимости','שמאי מקרקעין'=>'Оценщик','יועץ משכנתאות'=>'Ипотечный консультант','בדק בית'=>'Осмотр жилья','קבלן'=>'Подрядчик','אדריכל'=>'Архитектор' ),
-			'ar' => array( 'פרויקטים'=>'مشاريع','אזורי ביקוש'=>'مناطق','מחשבונים'=>'حاسبات','אנשי מקצוע'=>'مختصون','מדריכים'=>'أدلة','בחרו פרויקט'=>'اختر مشروعاً','נדל״ן לפני שפונים ליזם'=>'عقارات — قبل التوجه إلى المطوّر','לדלג לתוכן'=>'تخطَّ إلى المحتوى','כל הפרויקטים'=>'كل المشاريع','מחשבון משכנתא'=>'حاسبة الرهن','מס רכישה'=>'ضريبة الشراء','מדריך קנייה'=>'دليل الشراء','בדיקה משפטית'=>'فحص قانوني','אודות'=>'حول','צור קשר'=>'اتصل بنا','רובע שדה דב'=>'حي سديه دوف','עו״ד מקרקעין'=>'محامي عقارات','שמאי מקרקעין'=>'مثمّن عقاري','יועץ משכנתאות'=>'مستشار رهن','בדק בית'=>'فحص المنزل','קבלן'=>'مقاول','אדריכל'=>'معماري' ),
+			'en' => array( 'פרויקטים'=>'Projects','אזורי ביקוש'=>'Areas','מחשבונים'=>'Calculators','אנשי מקצוע'=>'Professionals','מדריכים'=>'Guides','בחרו פרויקט'=>'Choose a project','נדל״ן לפני שפונים ליזם'=>'Real estate - before you approach the developer','לדלג לתוכן'=>'Skip to content','כל הפרויקטים'=>'All projects','מחשבון משכנתא'=>'Mortgage calculator','מס רכישה'=>'Purchase tax','מדריך קנייה'=>'Buying guide','בדיקה משפטית'=>'Legal check','אודות'=>'About','צור קשר'=>'Contact','רובע שדה דב'=>'Sde Dov district','עו״ד מקרקעין'=>'Real-estate lawyer','שמאי מקרקעין'=>'Property appraiser','יועץ משכנתאות'=>'Mortgage advisor','בדק בית'=>'Home inspection','קבלן'=>'Contractor','אדריכל'=>'Architect' ),
+			'fr' => array( 'פרויקטים'=>'Projets','אזורי ביקוש'=>'Zones','מחשבונים'=>'Calculateurs','אנשי מקצוע'=>'Professionnels','מדריכים'=>'Guides','בחרו פרויקט'=>'Choisir un projet','נדל״ן לפני שפונים ליזם'=>"L'immobilier - avant de contacter le promoteur",'לדלג לתוכן'=>'Aller au contenu','כל הפרויקטים'=>'Tous les projets','מחשבון משכנתא'=>'Calculateur de prêt','מס רכישה'=>"Taxe d'achat",'מדריך קנייה'=>"Guide d'achat",'בדיקה משפטית'=>'Vérification juridique','אודות'=>'À propos','צור קשר'=>'Contact','רובע שדה דב'=>'Quartier Sde Dov','עו״ד מקרקעין'=>'Avocat immobilier','שמאי מקרקעין'=>'Expert immobilier','יועץ משכנתאות'=>'Conseiller en prêt','בדק בית'=>'Inspection du logement','קבלן'=>'Entrepreneur','אדריכל'=>'Architecte' ),
+			'ru' => array( 'פרויקטים'=>'Проекты','אזורי ביקוש'=>'Районы','מחשבונים'=>'Калькуляторы','אנשי מקצוע'=>'Специалисты','מדריכים'=>'Гиды','בחרו פרויקט'=>'Выбрать проект','נדל״ן לפני שפונים ליזם'=>'Недвижимость - до обращения к застройщику','לדלג לתוכן'=>'Перейти к содержимому','כל הפרויקטים'=>'Все проекты','מחשבון משכנתא'=>'Ипотечный калькулятор','מס רכישה'=>'Налог на покупку','מדריך קנייה'=>'Гид покупки','בדיקה משפטית'=>'Юридическая проверка','אודות'=>'О нас','צור קשר'=>'Контакты','רובע שדה דב'=>'Район Сде-Дов','עו״ד מקרקעין'=>'Юрист по недвижимости','שמאי מקרקעין'=>'Оценщик','יועץ משכנתאות'=>'Ипотечный консультант','בדק בית'=>'Осмотр жилья','קבלן'=>'Подрядчик','אדריכל'=>'Архитектор' ),
+			'ar' => array( 'פרויקטים'=>'مشاريع','אזורי ביקוש'=>'مناطق','מחשבונים'=>'حاسبات','אנשי מקצוע'=>'مختصون','מדריכים'=>'أدلة','בחרו פרויקט'=>'اختر مشروعاً','נדל״ן לפני שפונים ליזם'=>'عقارات - قبل التوجه إلى المطوّر','לדלג לתוכן'=>'تخطَّ إلى المحتوى','כל הפרויקטים'=>'كل المشاريع','מחשבון משכנתא'=>'حاسبة الرهن','מס רכישה'=>'ضريبة الشراء','מדריך קנייה'=>'دليل الشراء','בדיקה משפטית'=>'فحص قانوني','אודות'=>'حول','צור קשר'=>'اتصل بنا','רובע שדה דב'=>'حي سديه دوف','עו״ד מקרקעין'=>'محامي عقارات','שמאי מקרקעין'=>'مثمّن عقاري','יועץ משכנתאות'=>'مستشار رهن','בדק בית'=>'فحص المنزل','קבלן'=>'مقاول','אדריכל'=>'معماري' ),
 		);
 		return isset( $m[ $lang ] ) ? $m[ $lang ] : array();
 	}

@@ -1,6 +1,6 @@
 <?php
 /**
- * nadlan-config — Directory importer (v1.5.0)
+ * nadlan-config - Directory importer (v1.5.0)
  *
  * Seeds the free directory cards from AUTHORITATIVE PUBLIC data (no API key):
  *   - Contractors  ← רשם הקבלנים open dataset on data.gov.il CKAN (~14k rows)
@@ -194,7 +194,7 @@ if ( ! function_exists( 'nadlan_import_dashboard' ) ) {
 			foreach ( array( 'contractors' => 'קבלנים (רשם הקבלנים)', 'urban' => 'התחדשות עירונית' ) as $which => $label ) {
 				$offset = (int) get_option( 'nadlan_import_offset_' . $which, 0 );
 				$url = wp_nonce_url( admin_url( 'admin-post.php?action=nadlan_import_run&which=' . $which ), 'nadlan_import_' . $which );
-				echo '<p><strong>' . esc_html( $label ) . '</strong> — next offset: ' . (int) $offset
+				echo '<p><strong>' . esc_html( $label ) . '</strong> - next offset: ' . (int) $offset
 					. ' &nbsp;<a class="button" href="' . esc_url( $url ) . '">Import next 500</a></p>';
 			}
 			echo '<p style="color:#666">Each click imports/updates 500 records (idempotent). Repeat until offset returns to 0. Stubs are noindexed until enriched.</p>';
@@ -203,7 +203,7 @@ if ( ! function_exists( 'nadlan_import_dashboard' ) ) {
 }
 add_action( 'wp_dashboard_setup', 'nadlan_import_dashboard' );
 
-/* ---- REST: enriched-content push (admin) — Cowork/ChatGPT pipeline ----
+/* ---- REST: enriched-content push (admin) - Cowork/ChatGPT pipeline ----
  * POST /nadlan/v1/import-enrich  { post_id, content, meta:{}, data_quality:"enriched" }
  */
 if ( ! function_exists( 'nadlan_import_register_rest' ) ) {
@@ -218,7 +218,7 @@ if ( ! function_exists( 'nadlan_import_register_rest' ) ) {
 add_action( 'rest_api_init', 'nadlan_import_register_rest' );
 
 /* ---- REST: HEADLESS import runner (v1.23.0) ----
- * Lets the catalog be populated via Application Password / Basic Auth — no browser,
+ * Lets the catalog be populated via Application Password / Basic Auth - no browser,
  * no dashboard button. Runs N batches of 500 server-side per call (capped so we stay
  * inside PHP max_execution_time), advances the stored cursor, returns progress so the
  * caller can loop until done. Idempotent (re-imports update existing cards by registry
@@ -291,7 +291,7 @@ if ( ! function_exists( 'nadlan_import_enrich_handler' ) ) {
 }
 
 /* ---- v1.23.0: SELF-SEEDING background importer ----
- * So the catalog populates itself after the plugin updates — no button, no endpoint
+ * So the catalog populates itself after the plugin updates - no button, no endpoint
  * call, no owner action. On each load we check a tiny flag; if the directory is still
  * sparse, we schedule a wp-cron single event that imports ONE batch (500) of each
  * dataset and reschedules itself until the cursor wraps, then marks itself done.

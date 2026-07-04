@@ -1,12 +1,12 @@
 <?php
 /**
- * nadlan-config — Deal history + AVM + neighborhood data (v1.7.0)
+ * nadlan-config - Deal history + AVM + neighborhood data (v1.7.0)
  *
  * The Madlan-parity data layer. Three parts:
- *  1) A cached deals table ({prefix}nadlan_deals) — populated by an ETL adapter
+ *  1) A cached deals table ({prefix}nadlan_deals) - populated by an ETL adapter
  *     (govmap/nadlan endpoints, verified by Cowork mission M10) OR by a direct REST
  *     ingest so we are not blocked on reverse-engineering. NEVER call upstream
- *     per-pageview — always read from the cache.
+ *     per-pageview - always read from the cache.
  *  2) A comparable-sales AVM (hedonic-lite): median ₪/sqm of nearby comps × subject
  *     sqm, with a confidence score derived from comp count + dispersion (a forecast
  *     standard deviation, FSD-style). Degrades to "insufficient_data" when the table
@@ -15,7 +15,7 @@
  *
  * Method grounding (2025-26): AVMs combine comparable-sales + hedonic regression;
  * best practice exposes a confidence/FSD score and an explainable range. ML upgrade
- * (gradient boosting / SHAP explainability) is roadmap — see architecture skill.
+ * (gradient boosting / SHAP explainability) is roadmap - see architecture skill.
  *
  * BLANKS (owner/legal): storing nadlan.gov.il price data needs ToS/legal sign-off
  * (docs/listings-questions.md A.6). The estimate is informational, not an appraisal.
@@ -100,7 +100,7 @@ if ( ! function_exists( 'nadlan_deals_fetch_remote' ) ) {
 	}
 }
 
-/* ---- REST ingest (admin) — Cowork can POST verified deals straight into the cache ----
+/* ---- REST ingest (admin) - Cowork can POST verified deals straight into the cache ----
  * POST /nadlan/v1/deals-ingest { deals:[ {gush,helka,city,rooms,sqm,price,deal_date,lat,lng,source}, ... ] }
  */
 add_action( 'rest_api_init', function () {
@@ -151,7 +151,7 @@ if ( ! function_exists( 'nadlan_avm_estimate' ) ) {
 		$cv  = $mean > 0 ? $sd / $mean : 1.0;            // lower = tighter market
 		$confidence = max( 0.0, min( 1.0, 1 - $cv ) ) * min( 1.0, $n / 40 ); // also scales with sample size
 		$est   = (int) round( $median * $sqm / 1000 ) * 1000;
-		$band  = max( 0.05, min( 0.25, $cv ) );          // ± band 5%–25%
+		$band  = max( 0.05, min( 0.25, $cv ) );          // ± band 5%-25%
 		return array(
 			'ok' => true,
 			'estimate'      => $est,
@@ -212,13 +212,13 @@ add_filter( 'the_content', function ( $content ) {
 	<?php if ( $est['ok'] ) : ?>
 	<h3>הערכת שווי (אומדן)</h3>
 	<p class="nlavm-est">₪<?php echo number_format( $est['estimate'] ); ?>
-		<span class="nlavm-band">טווח: ₪<?php echo number_format( $est['low'] ); ?>–₪<?php echo number_format( $est['high'] ); ?></span></p>
+		<span class="nlavm-band">טווח: ₪<?php echo number_format( $est['low'] ); ?>-₪<?php echo number_format( $est['high'] ); ?></span></p>
 	<p class="nlavm-meta">מבוסס על <?php echo (int) $est['comp_count']; ?> עסקאות דומות · ₪<?php echo number_format( $est['price_per_sqm'] ); ?> למ"ר · רמת ביטחון <?php echo (int) round( $est['confidence'] * 100 ); ?>%</p>
 	<p class="nlavm-disc">אומדן אוטומטי מבוסס נתוני עסקאות, אינו תחליף לשמאות מקרקעין.</p>
 	<?php endif; ?>
 	<?php if ( $stats['deals_12m'] > 0 ) : ?>
 	<div class="nlavm-hood">
-		<strong>שכונה/עיר — 12 חודשים אחרונים:</strong>
+		<strong>שכונה/עיר - 12 חודשים אחרונים:</strong>
 		<?php echo (int) $stats['deals_12m']; ?> עסקאות · ממוצע ₪<?php echo number_format( $stats['avg_ppsqm'] ); ?> למ"ר
 	</div>
 	<?php endif; ?>
@@ -248,7 +248,7 @@ function nadlanHomeValue(f){
 	var out=f.parentNode.querySelector('.nlhv-out');
 	var qs='city='+encodeURIComponent(f.city.value)+'&sqm='+(+f.sqm.value)+'&rooms='+(+f.rooms.value);
 	fetch('<?php echo esc_url_raw( rest_url( 'nadlan/v1/avm' ) ); ?>?'+qs).then(function(r){return r.json();}).then(function(j){
-		if(j.ok){out.innerHTML='אומדן: <strong>₪'+j.estimate.toLocaleString()+'</strong> (טווח ₪'+j.low.toLocaleString()+'–₪'+j.high.toLocaleString()+', '+j.comp_count+' עסקאות). אומדן אוטומטי, אינו שמאות.';}
+		if(j.ok){out.innerHTML='אומדן: <strong>₪'+j.estimate.toLocaleString()+'</strong> (טווח ₪'+j.low.toLocaleString()+'-₪'+j.high.toLocaleString()+', '+j.comp_count+' עסקאות). אומדן אוטומטי, אינו שמאות.';}
 		else{out.textContent='אין מספיק נתונים לאזור הזה עדיין. השאירו טלפון ונחזור עם הערכה.';}
 		// capture as lead if phone provided
 		if(f.phone.value){fetch('<?php echo esc_url_raw( rest_url( 'nadlan/v1/lead' ) ); ?>',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({name:f.name.value,phone:f.phone.value,topic:'הערכת שווי',message:f.city.value+' '+f.sqm.value+'מ"ר '+f.rooms.value+'חד',source:'home-value-tool',company:f.company.value})});}

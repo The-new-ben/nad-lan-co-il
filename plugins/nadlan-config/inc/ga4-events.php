@@ -1,6 +1,6 @@
 <?php
 /**
- * nadlan-config — GA4 / dataLayer event bridge (v1.40.0 / shark #12)
+ * nadlan-config - GA4 / dataLayer event bridge (v1.40.0 / shark #12)
  *
  * Pushes funnel events to window.dataLayer so Site Kit / GA4 / GTM can see
  * the whole conversion flow:
@@ -56,7 +56,7 @@ add_action( 'wp_footer', function () {
 	<?php
 }, 95 );
 
-/* Server-side WooCommerce conversion event — pushes a transactional event on
+/* Server-side WooCommerce conversion event - pushes a transactional event on
  * the order-received page so GA4 ecommerce sees the ₪. */
 add_action( 'woocommerce_thankyou', function ( $order_id ) {
 	if ( ! $order_id || ! function_exists( 'wc_get_order' ) ) { return; }

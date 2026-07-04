@@ -1,6 +1,6 @@
 <?php
 /**
- * nadlan-config — Free listing wizard with AI assist (v1.69.70)
+ * nadlan-config - Free listing wizard with AI assist (v1.69.70)
  *
  * Front-end, PRACTICAL (not a mock) listing-creation flow, Zillow-FSBO-style:
  *   [nadlan_listing_wizard] shortcode →
@@ -229,8 +229,8 @@ if ( ! function_exists( 'nadlan_pwiz_shortcode' ) ) {
 		if ( ! is_user_logged_in() ) {
 			$login = wp_login_url( get_permalink() );
 			$reg   = wp_registration_url();
-			return '<div class="nlpw nlpw-gate" dir="rtl"><h3>פרסום מודעה — חינם</h3>'
-				. '<p>כדי לפרסם נכס (בחינם, בלי כרטיס אשראי) צריך חשבון — כך נשמור על מודעות אמינות בלבד.</p>'
+			return '<div class="nlpw nlpw-gate" dir="rtl"><h3>פרסום מודעה - חינם</h3>'
+				. '<p>כדי לפרסם נכס (בחינם, בלי כרטיס אשראי) צריך חשבון - כך נשמור על מודעות אמינות בלבד.</p>'
 				. '<p><a class="nlpw-btn" href="' . esc_url( $login ) . '">התחברות</a> '
 				. ( get_option( 'users_can_register' ) ? '<a class="nlpw-btn nlpw-btn-alt" href="' . esc_url( $reg ) . '">הרשמה מהירה</a>' : '' )
 				. '</p></div>';
@@ -240,8 +240,8 @@ if ( ! function_exists( 'nadlan_pwiz_shortcode' ) ) {
 	<ol class="nlpw-steps"><li class="is-on">תיאור</li><li>פרטים</li><li>תמונות</li><li>אישור</li></ol>
 
 	<section class="nlpw-step nlpw-s1 is-on">
-		<h3>ספרו לנו על הנכס — במילים שלכם</h3>
-		<p class="nlpw-hint">כתבו חופשי: מה הנכס, איפה, כמה חדרים, קומה, מחיר, מה מיוחד בו. ה-AI שלנו יהפוך את זה למודעה מסודרת — ואתם מאשרים לפני פרסום.</p>
+		<h3>ספרו לנו על הנכס - במילים שלכם</h3>
+		<p class="nlpw-hint">כתבו חופשי: מה הנכס, איפה, כמה חדרים, קומה, מחיר, מה מיוחד בו. ה-AI שלנו יהפוך את זה למודעה מסודרת - ואתם מאשרים לפני פרסום.</p>
 		<textarea id="nlpw-text" rows="7" placeholder="לדוגמה: דירת 4 חדרים ברחוב סוקולוב בחולון, קומה 3 מתוך 6, 95 מ״ר עם מרפסת, ממ״ד ומעלית. משופצת. 2.1 מיליון ש״ח..."></textarea>
 		<button type="button" class="nlpw-btn" id="nlpw-ai">✨ בנו לי מודעה עם AI</button>
 		<button type="button" class="nlpw-link" id="nlpw-skip">או מלאו ידנית ←</button>
@@ -270,7 +270,7 @@ if ( ! function_exists( 'nadlan_pwiz_shortcode' ) ) {
 		<h3>רגע לפני פרסום</h3>
 		<div class="nlpw-review" id="nlpw-review"></div>
 		<p class="nlpw-hint">המודעה תפורסם לאחר בדיקה קצרה של הצוות (בדרך כלל תוך יום עסקים). הפרסום חינם.</p>
-		<button type="button" class="nlpw-btn nlpw-submit" id="nlpw-send">פרסמו את המודעה — חינם</button>
+		<button type="button" class="nlpw-btn nlpw-submit" id="nlpw-send">פרסמו את המודעה - חינם</button>
 		<p class="nlpw-err" id="nlpw-err4" hidden></p>
 	</section>
 
@@ -348,7 +348,7 @@ document.addEventListener("DOMContentLoaded",function(){
 				lab.innerHTML="<input type=checkbox data-k=\""+f.key+"\""+(v?" checked":"")+"> "+f.label;
 			}else if(f.type.indexOf("enum:")===0){
 				var ops=f.type.slice(5).split(","),he={sale:"מכירה",rent:"השכרה",apartment:"דירה",garden:"דירת גן",penthouse:"פנטהאוז",duplex:"דופלקס",cottage:"קוטג/בית",studio:"סטודיו",other:"אחר",new:"חדש מקבלן",renovated:"משופץ",good:"טוב",needs_renovation:"דורש שיפוץ"};
-				lab.innerHTML=f.label+"<select data-k=\""+f.key+"\"><option value=\"\">—</option>"+ops.map(function(o){return "<option value=\""+o+"\""+(v===o?" selected":"")+">"+(he[o]||o)+"</option>"}).join("")+"</select>";
+				lab.innerHTML=f.label+"<select data-k=\""+f.key+"\"><option value=\"\">-</option>"+ops.map(function(o){return "<option value=\""+o+"\""+(v===o?" selected":"")+">"+(he[o]||o)+"</option>"}).join("")+"</select>";
 			}else{
 				var t=(f.type==="int"||f.type==="float")?"number":(f.type==="url"?"url":"text");
 				lab.innerHTML=f.label+"<input type="+t+" data-k=\""+f.key+"\" value=\""+(v!==undefined?String(v).replace(/"/g,"&quot;"):"")+"\">";
@@ -382,7 +382,7 @@ document.addEventListener("DOMContentLoaded",function(){
 		if(b.dataset.go==="4"){
 			var f=collect(),t=document.getElementById("nlpw-title").value.trim();
 			var he={sale:"מכירה",rent:"השכרה"};
-			var rows=[["כותרת",t],["עסקה",he[f.listing_type]||f.listing_type||"—"],["עיר",f.city||"—"],["מחיר",f.price?Number(f.price).toLocaleString()+" ₪":"—"],["חדרים",f.rooms||"—"],["תמונות",state.photos.length]];
+			var rows=[["כותרת",t],["עסקה",he[f.listing_type]||f.listing_type||"-"],["עיר",f.city||"-"],["מחיר",f.price?Number(f.price).toLocaleString()+" ₪":"-"],["חדרים",f.rooms||"-"],["תמונות",state.photos.length]];
 			document.getElementById("nlpw-review").innerHTML="<dl>"+rows.map(function(r){return "<dt>"+r[0]+"</dt><dd>"+r[1]+"</dd>"}).join("")+"</dl>";
 		}
 		go(parseInt(b.dataset.go,10));
@@ -405,7 +405,7 @@ document.addEventListener("DOMContentLoaded",function(){
 			description:document.getElementById("nlpw-desc").value,
 			fields:collect(),photos:state.photos
 		})}).then(function(){go(5)})
-		.catch(function(e){err.textContent=e.message;err.hidden=false;btn.disabled=false;btn.textContent="פרסמו את המודעה — חינם"});
+		.catch(function(e){err.textContent=e.message;err.hidden=false;btn.disabled=false;btn.textContent="פרסמו את המודעה - חינם"});
 	});
 });
 })();' );

@@ -1,6 +1,6 @@
 <?php
 /**
- * nadlan-config — Pricing page schema + meta (v1.40.0 / shark #10)
+ * nadlan-config - Pricing page schema + meta (v1.40.0 / shark #10)
  *
  * Adds Product + Offer JSON-LD on /join-pro/ so Google's rich results show
  * the price + "free trial" + ratings (once we have any). Also sets a clean
@@ -21,21 +21,21 @@ add_action( 'wp_head', function () {
 	if ( ! nadlan_pricing_is_page() ) { return; }
 	$products = array(
 		array(
-			'name' => 'Pro — אנשי מקצוע (חודש ראשון חינם)',
+			'name' => 'Pro - אנשי מקצוע (חודש ראשון חינם)',
 			'description' => 'תוכנית Pro למאגר נדלן: פרסום מקודם של הכרטיס, חשיפה של פרטי קשר, גלריית תמונות, קבלת לידים חמים.',
 			'sku'  => 'NL-PRO-476',
 			'price' => '349.00',
 			'url' => home_url( '/?add-to-cart=476' ),
 		),
 		array(
-			'name' => 'Premier — חשיפה מוגברת',
+			'name' => 'Premier - חשיפה מוגברת',
 			'description' => 'תוכנית Premier: כל יתרונות Pro + תג מאומת + מיקום בלעדי באזור + קמפיין מיקרו-תוכן.',
 			'sku'  => 'NL-PREMIER-477',
 			'price' => '749.00',
 			'url' => home_url( '/?add-to-cart=477' ),
 		),
 		array(
-			'name' => 'קמפיין פרויקט — יזמים וקבלנים',
+			'name' => 'קמפיין פרויקט - יזמים וקבלנים',
 			'description' => 'קמפיין מקודם של פרויקט נדל"ן (תמ"א 38, פינוי בינוי, בנייה חדשה) במאגר נדלן.',
 			'sku'  => 'NL-PROJECT-489',
 			'price' => '3990.00',
@@ -64,14 +64,14 @@ add_action( 'wp_head', function () {
 
 add_filter( 'pre_get_document_title', function ( $t ) {
 	if ( nadlan_pricing_is_page() ) {
-		return 'הצטרפו כמקצוען — Pro / Premier / קמפיין פרויקט | נדלן';
+		return 'הצטרפו כמקצוען - Pro / Premier / קמפיין פרויקט | נדלן';
 	}
 	return $t;
 }, 25 );
 
 add_filter( 'wpseo_metadesc', function ( $d ) {
 	if ( nadlan_pricing_is_page() ) {
-		return 'הצטרפו למאגר נדלן — Pro ₪349/חודש, Premier ₪749/חודש, קמפיין פרויקט ₪3,990. חודש ראשון חינם. חשיפה לאלפי קונים פוטנציאליים בחודש.';
+		return 'הצטרפו למאגר נדלן - Pro ₪349/חודש, Premier ₪749/חודש, קמפיין פרויקט ₪3,990. חודש ראשון חינם. חשיפה לאלפי קונים פוטנציאליים בחודש.';
 	}
 	return $d;
 } );

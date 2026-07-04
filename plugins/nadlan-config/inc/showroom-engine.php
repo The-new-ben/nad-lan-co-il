@@ -1,10 +1,10 @@
 <?php
 /**
- * nadlan-config — Showroom Engine bridge (Claude Design port).
+ * nadlan-config - Showroom Engine bridge (Claude Design port).
  *
  * Mounts the data-driven showroom engine (assets/showroom-engine/) via a
  * project-agnostic shortcode. The engine renders ANY project from a payload built
- * from that project's CMS meta — the factory. New project = new nadlan_project post
+ * from that project's CMS meta - the factory. New project = new nadlan_project post
  * with its meta filled, zero code.
  *
  *   [nadlan_showroom_engine]                     -> the current nadlan_project page,
@@ -334,7 +334,7 @@ add_shortcode( 'nadlan_showroom_engine', 'nadlan_showroom_engine_shortcode' );
  * One-time data seed (NOT a render fallback): write the grounded Ashira model
  * into the project's real CMS field if it is empty. The render path reads only
  * the CMS field; this just gives Ashira a real, editable, overridable starting
- * model. When the developer's official BIM arrives, edit the field — done.
+ * model. When the developer's official BIM arrives, edit the field - done.
  * Runs once, guarded by an option.
  * ----------------------------------------------------------------------- */
 add_action( 'init', function () {
@@ -422,7 +422,7 @@ add_action( 'init', function () {
 } );
 
 /* -------------------------------------------------------------------------
- * Slice 3 — safe per-project swap: render the NEW engine on a project page
+ * Slice 3 - safe per-project swap: render the NEW engine on a project page
  * instead of the OLD project-3d showroom. Default OFF, reversible. No stacking:
  * when active for a project, the old showroom disables itself (it is gated by
  * the nadlan_p3d_enabled filter), and the engine renders in its place.
@@ -510,3 +510,30 @@ add_action( 'wp_head', function () {
 	$xd = isset( $proj['lang_urls']['he'] ) ? $proj['lang_urls']['he'] : reset( $proj['lang_urls'] );
 	printf( '<link rel="alternate" hreflang="x-default" href="%s">' . "\n", esc_url( $xd ) );
 }, 5 );
+
+/* A -fr/-ru/-ar/-en project sibling must DECLARE its own language + direction on
+   <html>, not inherit the site's Hebrew RTL. Google (and screen readers) trusted
+   the wrong lang before: a French page announced itself as he-IL rtl. */
+if ( ! function_exists( 'nadlan_project_self_lang' ) ) {
+	function nadlan_project_self_lang() {
+		if ( ! is_singular( 'nadlan_project' ) ) { return ''; }
+		$slug = (string) get_post_field( 'post_name', get_queried_object_id() );
+		foreach ( array( 'en', 'fr', 'ru', 'ar' ) as $l ) {
+			if ( substr( $slug, -3 ) === '-' . $l ) { return $l; }
+		}
+		return '';
+	}
+}
+add_filter( 'language_attributes', function ( $output ) {
+	$l = nadlan_project_self_lang();
+	if ( '' === $l ) { return $output; }
+	$rtl = in_array( $l, array( 'ar', 'he' ), true );
+	$bcp = array( 'en' => 'en-US', 'fr' => 'fr-FR', 'ru' => 'ru-RU', 'ar' => 'ar' );
+	return sprintf( 'lang="%s" dir="%s"', esc_attr( $bcp[ $l ] ), $rtl ? 'rtl' : 'ltr' );
+}, 20 );
+add_filter( 'locale', function ( $loc ) {
+	if ( is_admin() ) { return $loc; }
+	$l = nadlan_project_self_lang();
+	$map = array( 'en' => 'en_US', 'fr' => 'fr_FR', 'ru' => 'ru_RU', 'ar' => 'ar' );
+	return isset( $map[ $l ] ) ? $map[ $l ] : $loc;
+}, 20 );

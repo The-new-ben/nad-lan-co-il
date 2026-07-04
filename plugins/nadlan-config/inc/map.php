@@ -1,12 +1,12 @@
 <?php
 /**
- * nadlan-config — Leaflet archive map with clustering (v1.12.0)
+ * nadlan-config - Leaflet archive map with clustering (v1.12.0)
  *
  * Madlan/Yad2-style map on the properties archive + city hubs. Uses Leaflet
  * (no API key, OSM tiles) + leaflet.markercluster (CDN). RTL-aware. Renders
  * via a [nadlan_map] shortcode AND auto-appends to /properties/ archive.
  *
- * Data via REST GET /nadlan/v1/map?city=&listing_type= — returns only
+ * Data via REST GET /nadlan/v1/map?city=&listing_type= - returns only
  * lat/lng/title/price/url for the bounding-box. Limit 500 per request to
  * keep payload small. No PII.
  */

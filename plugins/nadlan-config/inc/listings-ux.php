@@ -1,6 +1,6 @@
 <?php
 /**
- * nadlan-config — Listings engagement & conversion UX (v1.6.0)
+ * nadlan-config - Listings engagement & conversion UX (v1.6.0)
  *
  * Best-in-class listing-page mechanics (Redfin/Zillow-grade), low-cost/no-API:
  *   - Similar listings (SQL on city + rooms±1 + price±15% + listing_type)
@@ -9,7 +9,7 @@
  *   - Mortgage / משכנתא calculator (client-side, ₪)  [nadlan_mortgage]
  *   - Schedule-viewing / WhatsApp contact CTA (reuses the /nadlan/v1/lead endpoint)
  *
- * Roadmap (NOT here — see docs/listings-questions.md §D): AVM + deal-history,
+ * Roadmap (NOT here - see docs/listings-questions.md §D): AVM + deal-history,
  * neighborhood panel, saved-search email alerts, school/planning overlays.
  */
 

@@ -1,11 +1,11 @@
 <?php
 /**
- * nadlan-config — Catalog / WooCommerce premium skin (v1.22.0)
+ * nadlan-config - Catalog / WooCommerce premium skin (v1.22.0)
  *
  * The owner's catalog is a WooCommerce store (/catalog/, /shop, product archives).
  * Default Woo styling looks generic ("lame"). This module ships a SCOPED, brand-
  * matched skin (gold #9C7A3C, ink #1B1A17, cream #FAF7F1, Heebo) that only loads on
- * Woo surfaces — no global CSS bleed, no theme edit, no extra HTTP request (inline).
+ * Woo surfaces - no global CSS bleed, no theme edit, no extra HTTP request (inline).
  *
  * What it restyles, modern-store grade:
  *   - product grid cards: white, rounded, soft shadow, hover lift + image zoom
@@ -37,7 +37,7 @@ if ( ! function_exists( 'nadlan_catalog_is_woo_view' ) ) {
 		if ( function_exists( 'is_cart' ) && is_cart() ) { return true; }
 		if ( function_exists( 'is_checkout' ) && is_checkout() ) { return true; }
 		if ( function_exists( 'is_account_page' ) && is_account_page() ) { return true; }
-		// The owner's catalog lives at /catalog/ — cover it even if it embeds Woo via shortcode.
+		// The owner's catalog lives at /catalog/ - cover it even if it embeds Woo via shortcode.
 		if ( is_page() ) {
 			$slug = get_post_field( 'post_name', get_queried_object_id() );
 			if ( in_array( $slug, array( 'catalog', 'store', 'shop' ), true ) ) { return true; }
@@ -112,7 +112,7 @@ if ( ! function_exists( 'nadlan_catalog_skin' ) ) {
 }
 add_action( 'wp_head', 'nadlan_catalog_skin', 50 );
 
-/* Make the loop add-to-cart use AJAX add (nicer than full reload) — Woo already
+/* Make the loop add-to-cart use AJAX add (nicer than full reload) - Woo already
  * supports this on archives; ensure the theme didn't disable it. Harmless if on. */
 add_filter( 'woocommerce_loop_add_to_cart_args', function ( $args ) {
 	if ( is_array( $args ) ) {
@@ -211,8 +211,8 @@ add_shortcode( 'nadlan_featured_pros', 'nadlan_featured_pros_render' );
 
 /* ---- v1.26.0: /catalog/ as a DIRECTORY HUB ----
  * Owner decision: /catalog/ becomes a landing page linking to all three branches of
- * the directory — properties, registered professionals (live gov.il import), and
- * urban-renewal projects — each as a premium category card with a live count. The
+ * the directory - properties, registered professionals (live gov.il import), and
+ * urban-renewal projects - each as a premium category card with a live count. The
  * old hardcoded empty property grid is replaced by this hub. Featured contractors
  * render below so there is always real content on the page.
  */
@@ -226,7 +226,7 @@ if ( ! function_exists( 'nadlan_directory_hub_render' ) ) {
 				'url'   => home_url( '/professionals/' ),
 				'count' => $pros,
 				'label' => 'בעלי מקצוע רשומים',
-				'desc'  => 'קבלנים, שמאים ומפקחים מאומתים — מתוך פנקס הקבלנים הרשומים (gov.il).',
+				'desc'  => 'קבלנים, שמאים ומפקחים מאומתים - מתוך פנקס הקבלנים הרשומים (gov.il).',
 				'cta'   => 'לאינדקס המקצועי',
 				'live'  => true,
 			),
@@ -234,7 +234,7 @@ if ( ! function_exists( 'nadlan_directory_hub_render' ) ) {
 				'url'   => home_url( '/urban-renewal/' ),
 				'count' => $proj,
 				'label' => 'פרויקטים והתחדשות עירונית',
-				'desc'  => 'תמ״א 38, פינוי-בינוי ובנייה חדשה — עם מספר תוכנית, יזם וסטטוס.',
+				'desc'  => 'תמ״א 38, פינוי-בינוי ובנייה חדשה - עם מספר תוכנית, יזם וסטטוס.',
 				'cta'   => 'לפרויקטים',
 				'live'  => false,
 			),
@@ -242,7 +242,7 @@ if ( ! function_exists( 'nadlan_directory_hub_render' ) ) {
 				'url'   => home_url( '/properties/' ),
 				'count' => $prop,
 				'label' => 'נכסים למכירה והשקעה',
-				'desc'  => 'דירות ובתים עם בדיקה משפטית מקדימה — מחיר, חדרים, מ״ר ושכונה.',
+				'desc'  => 'דירות ובתים עם בדיקה משפטית מקדימה - מחיר, חדרים, מ״ר ושכונה.',
 				'cta'   => $prop > 0 ? 'לנכסים' : 'בקרוב נכסים חדשים',
 				'live'  => false,
 			),
@@ -252,13 +252,13 @@ if ( ! function_exists( 'nadlan_directory_hub_render' ) ) {
 	<div class="nldh-head">
 		<p class="nldh-eyebrow">מאגר נדלן</p>
 		<h2>קטלוג נכסים, פרויקטים ובעלי מקצוע</h2>
-		<p class="nldh-sub">כל מה שצריך לבדוק לפני עסקה — במקום אחד, ממקורות רשמיים.</p>
+		<p class="nldh-sub">כל מה שצריך לבדוק לפני עסקה - במקום אחד, ממקורות רשמיים.</p>
 	</div>
 	<div class="nldh-grid">
 		<?php foreach ( $cards as $c ) : ?>
 		<a class="nldh-card" href="<?php echo esc_url( $c['url'] ); ?>">
 			<?php if ( $c['live'] ) : ?><span class="nldh-livedot">מתעדכן עכשיו</span><?php endif; ?>
-			<div class="nldh-count"><?php echo $c['count'] > 0 ? number_format( $c['count'] ) : '—'; ?></div>
+			<div class="nldh-count"><?php echo $c['count'] > 0 ? number_format( $c['count'] ) : '-'; ?></div>
 			<h3><?php echo esc_html( $c['label'] ); ?></h3>
 			<p><?php echo esc_html( $c['desc'] ); ?></p>
 			<span class="nldh-go"><?php echo esc_html( $c['cta'] ); ?> ←</span>

@@ -1,6 +1,6 @@
 <?php
 /**
- * nadlan-config — Unified Lead Inbox + Owner Daily Digest (v1.40.0 / shark #3, #4)
+ * nadlan-config - Unified Lead Inbox + Owner Daily Digest (v1.40.0 / shark #3, #4)
  *
  * ONE admin page for every money signal:
  *   - new nadlan_lead (general lead capture, CTA bar, exit-intent, concierge)
@@ -10,7 +10,7 @@
  *   - new Pro/Premier upgrades (WooCommerce paid orders for products 476/477/489)
  *
  * Plus a daily CRON email digest to the owner summarising the last 24h.
- * The owner stops checking 5 places — everything is in ONE inbox under
+ * The owner stops checking 5 places - everything is in ONE inbox under
  * the menu "💰 Lead Inbox", count badge shows pending items.
  */
 if ( ! defined( 'ABSPATH' ) ) { exit; }
@@ -60,7 +60,7 @@ if ( ! function_exists( 'nadlan_inbox_render' ) ) {
 	function nadlan_inbox_render() {
 		$c = nadlan_inbox_counts();
 		?>
-<div class="wrap" style="direction:rtl;font-family:Heebo,sans-serif"><h1>💰 Lead Inbox — סקירת הכנסות 24h</h1>
+<div class="wrap" style="direction:rtl;font-family:Heebo,sans-serif"><h1>💰 Lead Inbox - סקירת הכנסות 24h</h1>
 <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:14px;margin:20px 0">
 	<?php
 	$cards = array(
@@ -125,7 +125,7 @@ add_action( 'nadlan_inbox_daily_digest', function () {
 	$admin = get_option( 'admin_email' );
 	if ( ! $admin ) { return; }
 	$c = nadlan_inbox_counts();
-	$body  = "סיכום יומי — נדלן · " . wp_date( 'd/m/Y' ) . "\n\n";
+	$body  = "סיכום יומי - נדלן · " . wp_date( 'd/m/Y' ) . "\n\n";
 	$body .= "📥 לידים חדשים ב-24h:        " . $c['leads_24h'] . "\n";
 	$body .= "🤝 הפניות פתוחות:            " . $c['referrals_open'] . "\n";
 	$body .= "⭐ חוות דעת לאישור:          " . $c['reviews_pending'] . "\n";

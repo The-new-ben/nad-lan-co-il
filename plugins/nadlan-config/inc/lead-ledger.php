@@ -1,6 +1,6 @@
 <?php
 /**
- * nadlan-config — LEAD LEDGER + revenue lock-in (v1.34.0)
+ * nadlan-config - LEAD LEDGER + revenue lock-in (v1.34.0)
  *
  * Solves the owner's #1 pain: today leads go out to partners (lawyers, mortgage
  * advisors, brokers) and "the deal closes and nobody pays me back." This module
@@ -8,7 +8,7 @@
  *
  *   1. Every routed lead creates a nadlan_referral CPT record with a unique
  *      tracking token (rTOKEN), partner, customer-redacted contact, agreed %.
- *   2. Partner gets a one-click "accept terms" link — clicking it logs a
+ *   2. Partner gets a one-click "accept terms" link - clicking it logs a
  *      timestamp + IP = a contract record we can show in a payment dispute.
  *   3. **The customer (not the partner) confirms status** via a tokenised public
  *      page /referral-status/<token>/ pinged automatically at 14/30/60 days. The
@@ -24,11 +24,11 @@
  *   - automates the awkward follow-ups so the owner never has to ask "did you close?"
  *
  * Public surfaces:
- *   - /referral-status/<token>/ — customer status form (1-min, no login)
- *   - REST POST /nadlan/v1/referral/route — create a routing record
- *   - REST POST /nadlan/v1/referral/<token>/accept — partner accepts terms
- *   - REST POST /nadlan/v1/referral/<token>/status — customer reports status
- *   - REST POST /nadlan/v1/referral/<token>/paid — owner marks commission paid
+ *   - /referral-status/<token>/ - customer status form (1-min, no login)
+ *   - REST POST /nadlan/v1/referral/route - create a routing record
+ *   - REST POST /nadlan/v1/referral/<token>/accept - partner accepts terms
+ *   - REST POST /nadlan/v1/referral/<token>/status - customer reports status
+ *   - REST POST /nadlan/v1/referral/<token>/paid - owner marks commission paid
  *
  * Admin: nadlan_referral CPT with custom columns + a "Lead Ledger" submenu page
  * showing aggregate open / closed / paid / outstanding ₪.
@@ -69,7 +69,7 @@ if ( ! function_exists( 'nadlan_ll_token' ) ) {
 if ( ! function_exists( 'nadlan_ll_statuses' ) ) {
 	function nadlan_ll_statuses() {
 		return array(
-			'routed'    => 'הופנה — ממתין לקבלת השותף',
+			'routed'    => 'הופנה - ממתין לקבלת השותף',
 			'accepted'  => 'השותף קיבל את התנאים',
 			'in_progress' => 'בתהליך',
 			'won'       => '✓ נסגרה עסקה (לקוח אישר)',
@@ -166,7 +166,7 @@ add_action( 'rest_api_init', function () {
 				$msg .= "מעקב לקוח: $cust_url\n";
 				$msg .= "אישור שותף: $accept_url\n\n";
 				$msg .= "ניהול: " . admin_url( 'post.php?post=' . $rid . '&action=edit' );
-				wp_mail( $admin, '[נדלן · Ledger] ליד חדש הופנה — ' . $customer_name, $msg );
+				wp_mail( $admin, '[נדלן · Ledger] ליד חדש הופנה - ' . $customer_name, $msg );
 			}
 			if ( $notify_partner ) {
 				$partner_email = (string) get_post_meta( $partner_id, 'email', true );
@@ -177,7 +177,7 @@ add_action( 'rest_api_init', function () {
 					$pm .= "תנאי שיתוף הפעולה: עמלה של $default_pct% מהעסקה הסגורה, משולמת בתוך 14 יום מסגירה.\n";
 					$pm .= "לאישור התנאים וקבלת פרטי הלקוח המלאים: $accept_url\n\n";
 					$pm .= "מערכת נדלן";
-					wp_mail( $partner_email, 'הפניית לקוח חדשה — מערכת נדלן', $pm );
+					wp_mail( $partner_email, 'הפניית לקוח חדשה - מערכת נדלן', $pm );
 				}
 				// schedule customer follow-ups only once truly routed to a partner
 				wp_schedule_single_event( time() + 14 * DAY_IN_SECONDS, 'nadlan_ll_customer_ping', array( $rid ) );
@@ -222,7 +222,7 @@ add_action( 'rest_api_init', function () {
 			update_post_meta( $r->ID, 'status', 'accepted' );
 			nadlan_ll_log( $r->ID, 'partner_accepted' );
 			$admin = get_option( 'admin_email' );
-			if ( $admin ) { wp_mail( $admin, '[Ledger] השותף אישר תנאים — ' . get_the_title( $r->ID ), 'הסכמה נרשמה ב-' . wp_date( 'Y-m-d H:i', time() ) . "\n" . admin_url( 'post.php?post=' . $r->ID . '&action=edit' ) ); }
+			if ( $admin ) { wp_mail( $admin, '[Ledger] השותף אישר תנאים - ' . get_the_title( $r->ID ), 'הסכמה נרשמה ב-' . wp_date( 'Y-m-d H:i', time() ) . "\n" . admin_url( 'post.php?post=' . $r->ID . '&action=edit' ) ); }
 			return new WP_REST_Response( array( 'ok' => true, 'accepted' => true, 'message' => 'תנאי שיתוף הפעולה אושרו ונרשמו.' ), 200 );
 		},
 	) );
@@ -252,7 +252,7 @@ add_action( 'rest_api_init', function () {
 			$admin = get_option( 'admin_email' );
 			if ( $admin ) {
 				$tag = $status === 'won' ? '💰 ' : ( $status === 'lost' ? '✗ ' : '↻ ' );
-				wp_mail( $admin, $tag . '[Ledger] לקוח עדכן סטטוס — ' . get_the_title( $r->ID ),
+				wp_mail( $admin, $tag . '[Ledger] לקוח עדכן סטטוס - ' . get_the_title( $r->ID ),
 					"סטטוס: $status\nסכום עסקה: ₪" . number_format( $amount ) . "\nהערה: $note\n" . admin_url( 'post.php?post=' . $r->ID . '&action=edit' ) );
 			}
 			return array( 'ok' => true, 'message' => 'תודה על העדכון.' );
@@ -274,10 +274,10 @@ add_action( 'nadlan_ll_customer_ping', function ( $rid ) {
 	$name = (string) get_post_meta( $rid, 'customer_name', true );
 	$msg  = "שלום $name,\n\n";
 	$msg .= "לפני זמן מה הפנינו אותך אל $partner_name דרך נדלן. ";
-	$msg .= "נשמח לדעת איך התקדמת — זה עוזר לנו לשמור על שירות איכותי לכולם.\n\n";
+	$msg .= "נשמח לדעת איך התקדמת - זה עוזר לנו לשמור על שירות איכותי לכולם.\n\n";
 	$msg .= "עדכון מהיר (דקה): $url\n\n";
 	$msg .= "תודה,\nצוות נדלן";
-	wp_mail( $email, 'עדכון מהיר — איך התקדם עם ' . $partner_name . '?', $msg );
+	wp_mail( $email, 'עדכון מהיר - איך התקדם עם ' . $partner_name . '?', $msg );
 	nadlan_ll_log( $rid, 'customer_ping_sent' );
 } );
 
@@ -294,17 +294,17 @@ add_action( 'template_redirect', function () {
 	if ( function_exists( 'block_template_part' ) ) { block_template_part( 'header' ); }
 	?>
 <div class="nlrs" dir="rtl" style="max-width:680px;margin:30px auto;padding:0 20px;font-family:var(--font-sans,Heebo,sans-serif);direction:rtl">
-	<h1 style="font-family:var(--font-serif,'Frank Ruhl Libre',serif);font-weight:600">עדכון מצב — <?php echo esc_html( $partner_name ); ?></h1>
+	<h1 style="font-family:var(--font-serif,'Frank Ruhl Libre',serif);font-weight:600">עדכון מצב - <?php echo esc_html( $partner_name ); ?></h1>
 	<p>שלום <?php echo $name; ?>, נשמח לדעת איפה אתם עומדים. דקה אחת.</p>
 	<form id="nlrs-form" onsubmit="return nlrsSubmit(this)">
 		<fieldset style="border:1px solid #eee;padding:18px;border-radius:12px;margin:18px 0">
 			<legend style="font-weight:700;padding:0 8px">איפה אתם עומדים?</legend>
-			<label style="display:block;margin:8px 0"><input type="radio" name="status" value="in_progress" required> בתהליך — עוד בודקים</label>
+			<label style="display:block;margin:8px 0"><input type="radio" name="status" value="in_progress" required> בתהליך - עוד בודקים</label>
 			<label style="display:block;margin:8px 0"><input type="radio" name="status" value="won"> ✓ סגרנו עסקה / חתמנו</label>
 			<label style="display:block;margin:8px 0"><input type="radio" name="status" value="lost"> ✗ לא התקדמנו / בחרנו במישהו אחר</label>
 		</fieldset>
 		<div id="nlrs-deal" style="display:none;background:#FBF9F5;padding:14px;border-radius:10px;margin-bottom:14px">
-			<label style="display:block;margin-bottom:6px;font-weight:600">סכום העסקה (₪) — חסוי, רק לרישום פנימי</label>
+			<label style="display:block;margin-bottom:6px;font-weight:600">סכום העסקה (₪) - חסוי, רק לרישום פנימי</label>
 			<input type="number" name="deal_value" min="0" style="width:100%;padding:11px;border:1px solid #ddd;border-radius:8px">
 		</div>
 		<label style="display:block;margin:0 0 6px;font-weight:600">משוב קצר (אופציונלי)</label>
@@ -365,10 +365,10 @@ add_filter( 'manage_nadlan_referral_posts_columns', function ( $c ) {
 } );
 add_action( 'manage_nadlan_referral_posts_custom_column', function ( $col, $id ) {
 	$g = function ( $k ) use ( $id ) { return get_post_meta( $id, $k, true ); };
-	if ( $col === 'partner' )      { $pid = (int) $g( 'partner_id' ); echo $pid ? '<a href="' . esc_url( get_edit_post_link( $pid ) ) . '">' . esc_html( get_the_title( $pid ) ) . '</a>' : '—'; }
+	if ( $col === 'partner' )      { $pid = (int) $g( 'partner_id' ); echo $pid ? '<a href="' . esc_url( get_edit_post_link( $pid ) ) . '">' . esc_html( get_the_title( $pid ) ) . '</a>' : '-'; }
 	elseif ( $col === 'status' )   { $s = (string) $g( 'status' ); $st = nadlan_ll_statuses(); echo esc_html( $st[ $s ] ?? $s ); }
-	elseif ( $col === 'deal_value' ) { $v = (int) $g( 'deal_value' ); echo $v ? '₪' . number_format( $v ) : '—'; }
-	elseif ( $col === 'commission' ){ $v = (int) $g( 'commission_amount' ); echo $v ? '₪' . number_format( $v ) : '—'; }
+	elseif ( $col === 'deal_value' ) { $v = (int) $g( 'deal_value' ); echo $v ? '₪' . number_format( $v ) : '-'; }
+	elseif ( $col === 'commission' ){ $v = (int) $g( 'commission_amount' ); echo $v ? '₪' . number_format( $v ) : '-'; }
 	elseif ( $col === 'token' )     { echo '<code>' . esc_html( $g( 'token' ) ) . '</code>'; }
 }, 10, 2 );
 

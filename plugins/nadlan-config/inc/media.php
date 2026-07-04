@@ -1,13 +1,13 @@
 <?php
 /**
- * nadlan-config — Rich media: 3D tour / video / floorplan (v1.10.0)
+ * nadlan-config - Rich media: 3D tour / video / floorplan (v1.10.0)
  *
  * 2026 reality (research): Matterport DROPPED by Zillow in Oct 2025 after the
  * CoStar acquisition; KUULA is the recommended free/affordable 3D tour platform
  * (Zillow-approved provider). We support Kuula iframe (JS-style for iOS+perf),
  * generic any-iframe (YouTube/Vimeo/CloudPano/Panoee), and a floorplan image/PDF.
  *
- * Adds three meta fields to nadlan_property (REST-exposed) — they were declared
+ * Adds three meta fields to nadlan_property (REST-exposed) - they were declared
  * in catalog-meta's parent module sparsely; here we ensure tour_url, video_url,
  * floorplan_url are registered + render a tabbed media block on single views.
  */

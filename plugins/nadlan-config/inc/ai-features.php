@@ -1,17 +1,17 @@
 <?php
 /**
- * nadlan-config — AI features: listing-description generator + natural-language search (v1.9.0)
+ * nadlan-config - AI features: listing-description generator + natural-language search (v1.9.0)
  *
  * Two cutting-edge features, one LLM adapter, deliberately compliance-first:
  *
  *  1) AI listing-description generator (admin button on nadlan_property edit):
  *     -- Hebrew, factual, 85-150 words, 8-10th grade, neutral-warm tone.
  *     -- GUARDRAILS: no steering language by protected class (family status,
- *        religion, ethnicity, origin, gender, age, disability) — matches HUD
+ *        religion, ethnicity, origin, gender, age, disability) - matches HUD
  *        Fair-Housing 2024 guidance AND Israeli חוק איסור הפליה במוצרים ובשירותים.
  *     -- POST-GENERATION SCAN flags banned phrases ("מתאים למשפחות עם ילדים",
  *        "קרוב לבית כנסת/כנסייה", "שכונה דתית/חילונית", "ל-zugot צעירים", etc.)
- *        and refuses to auto-publish if hits found — surfaces to editor instead.
+ *        and refuses to auto-publish if hits found - surfaces to editor instead.
  *
  *  2) Natural-language search: visitor types "דירת 4 חדרים בתל אביב עד 3 מיליון
  *     עם מעלית" → LLM parses to a STRUCTURED filter ({city,rooms_min,price_max,
@@ -53,7 +53,7 @@ if ( ! function_exists( 'nadlan_llm_request' ) ) {
 if ( ! function_exists( 'nadlan_compliance_scan' ) ) {
 	/**
 	 * Returns array of {phrase, reason} hits. Empty = clean.
-	 * Conservative list — review with counsel before relaxing.
+	 * Conservative list - review with counsel before relaxing.
 	 */
 	function nadlan_compliance_scan( $text ) {
 		$rules = array(
@@ -155,7 +155,7 @@ add_action( 'admin_post_nadlan_ai_desc_approve', 'nadlan_ai_desc_approve' );
 
 /* ---- Natural-language search ---- */
 if ( ! function_exists( 'nadlan_nls_regex_fallback' ) ) {
-	/** Deterministic Hebrew regex parser — used when LLM unavailable. */
+	/** Deterministic Hebrew regex parser - used when LLM unavailable. */
 	function nadlan_nls_regex_fallback( $q ) {
 		$f = array();
 		if ( preg_match( '/(\d+(?:\.\d+)?)\s*חדר/u', $q, $m ) )      { $f['rooms_min'] = (float) $m[1]; }
