@@ -1,0 +1,74 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "nad-lan canonical project record",
+  "description": "THE source of truth for one new-construction project. Every project page, the 3D project map, and the page factory read from here. Honesty law: every non-null structured value carries a source URL (<field>_src) and, where possible, a verbatim quote in `evidence`. Unknown = null, never invented. Coordinates are only trusted when geocode_status='geocoded' with a geocode_source; model-estimated coords live in coord_estimate_unverified and MUST NOT be used on the map.",
+  "type": "object",
+  "required": ["id", "identity", "location", "db_meta"],
+  "properties": {
+    "id": { "type": "string", "description": "kebab-case slug, unique, stable, = filename" },
+    "identity": {
+      "type": "object",
+      "properties": {
+        "name_he": {"type": "string"}, "name_en": {"type": "string"},
+        "aka": {"type": "array"}, "developer": {"type": "string"},
+        "contractor": {"type": ["string","null"]}, "architect": {"type": ["string","null"]},
+        "marketing_status": {"enum": ["planning","pre_marketing","under_construction","final_units","occupied","sold_out","unknown"]},
+        "urls": {"type": "object", "properties": {"official":{},"madlan":{},"yad2":{},"developer":{}}}
+      }
+    },
+    "location": {
+      "type": "object",
+      "description": "building_address is the PARCEL, never the sales office. Geocode downstream from the address; never trust model coords.",
+      "properties": {
+        "building_address": {"type": ["string","null"]},
+        "sales_office_address": {"type": ["string","null"]},
+        "city": {}, "neighborhood": {}, "gush": {}, "helka": {},
+        "lat": {"type": ["number","null"], "description": "ONLY set when geocode_status='geocoded'"},
+        "lng": {"type": ["number","null"]},
+        "geocode_status": {"enum": ["needs_geocode","geocoded","manual_confirmed"]},
+        "geocode_source": {"type": ["string","null"], "description": "govmap.gov.il | mapbox | google_places | manual"},
+        "coord_estimate_unverified": {"type": ["object","null"], "description": "model guesses; NOT for production"},
+        "plot_polygon_geojson": {}, "ground_elevation_m": {}
+      }
+    },
+    "context": {"type": "object", "description": "dist_to_sea_m, sea_bearing_deg, near.{park,light_rail,train,metro_planned,highway,retail_mall,hospital,schools,landmarks} — used for the honest proximity band + the 3D scene anchoring (is it near the sea? what bearing?)"},
+    "building_form": {"type": "object", "description": "floors, height_m, num_buildings, footprint_shape, footprint_dims_m{x,z}, main_facade_orientation_deg, podium, facade_material, balconies — drives the 3D model + facade toggle"},
+    "units": {"type": "object", "description": "total_units, mix, price_min/max, ppsqm_min/max, price_basis, price_date — prices from a dedicated price pass (Madlan/Yad2/gov), each with _src + date"},
+    "market": {"type": "object", "description": "area_ppsqm, nearby_projects, recent_area_deals"},
+    "urban_future": {"type": "object", "description": "taba_plan_numbers, taba_urls (mavat.iplan.gov.il), planned_infrastructure, renewal_type"},
+    "media": {"type": "object", "description": "render_urls, video_urls, brochure_pdf, floorplan_urls, site_plan_url, virtual_tour_url, gallery_page_url, external_project_site — the raw material for a rich page; each with _src"},
+    "assets_3d": {
+      "type": "object",
+      "description": "OUR generated/authored 3D + page assets (not from the developer). Populated by the factory.",
+      "properties": {
+        "glb_model": {"type": ["string","null"], "description": "repo/CDN path to the building GLB"},
+        "facade_variants": {"type": ["array","null"]},
+        "default_orbit": {}, "default_target": {}, "frame_radius": {},
+        "unit_hotspots": {"type": ["array","null"], "description": "per-unit {id, position, normal, camera_orbit, floor, status}"},
+        "poster": {}
+      }
+    },
+    "content": {
+      "type": "object",
+      "description": "REAL editorial per language. Never machine-translated-as-native. Each is a full article body used verbatim on the page.",
+      "properties": {
+        "article": {"type": "object", "properties": {"he":{},"en":{},"fr":{},"ru":{},"ar":{}}},
+        "usp": {}, "buyer_questions": {}, "audiences": {},
+        "keywords_he": {}, "keywords_en": {}
+      }
+    },
+    "field_sources": {"type": "object", "description": "dotted-path -> source URL for every claimed field"},
+    "evidence": {"type": ["array","object"], "description": "verbatim quoted snippets proving structured values"},
+    "confidence": {"type": "object", "properties": {"overall": {"enum":["low","med","high"]}, "notes": {}}},
+    "db_meta": {
+      "type": "object",
+      "required": ["canonical","ready_for_page"],
+      "properties": {
+        "source_batch": {}, "ingested_at": {}, "verification": {},
+        "canonical": {"type": "boolean"},
+        "ready_for_page": {"type": "boolean", "description": "true only when geocoded + has media + has 5-lang article + no null in the page-critical set"},
+        "needs": {"type": "array", "description": "what's missing before a page can ship"}
+      }
+    }
+  }
+}

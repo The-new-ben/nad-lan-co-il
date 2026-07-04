@@ -1,0 +1,323 @@
+{
+  "id": "azorim-amos-tel-aviv",
+  "identity": {
+    "name_he": "אזורים עמוס תל אביב",
+    "name_en": "Azorim Amos Tel Aviv",
+    "aka": [],
+    "developer": "Azorim",
+    "contractor": null,
+    "architect": null,
+    "marketing_status": "under_construction",
+    "urls": {
+      "official": "https://www.azorim.co.il/projects/%D7%A2%D7%9E%D7%95%D7%A1-%D7%AA%D7%9C-%D7%90%D7%91%D7%99%D7%91/",
+      "madlan": null,
+      "yad2": null,
+      "developer": null
+    },
+    "name_he_src": [
+      "https://www.azorim.co.il/projects/%D7%A2%D7%9E%D7%95%D7%A1-%D7%AA%D7%9C-%D7%90%D7%91%D7%99%D7%91/"
+    ],
+    "name_en_src": [
+      "https://www.azorim.co.il/projects/%D7%A2%D7%9E%D7%95%D7%A1-%D7%AA%D7%9C-%D7%90%D7%91%D7%99%D7%91/"
+    ],
+    "developer_src": [
+      "https://www.azorim.co.il/projects/%D7%A2%D7%9E%D7%95%D7%A1-%D7%AA%D7%9C-%D7%90%D7%91%D7%99%D7%91/"
+    ],
+    "contractor_src": [
+      "https://www.azorim.co.il/projects/%D7%A2%D7%9E%D7%95%D7%A1-%D7%AA%D7%9C-%D7%90%D7%91%D7%99%D7%91/"
+    ],
+    "architect_src": [
+      "https://www.azorim.co.il/projects/%D7%A2%D7%9E%D7%95%D7%A1-%D7%AA%D7%9C-%D7%90%D7%91%D7%99%D7%91/"
+    ],
+    "marketing_status_src": [
+      "https://www.azorim.co.il/projects/%D7%A2%D7%9E%D7%95%D7%A1-%D7%AA%D7%9C-%D7%90%D7%91%D7%99%D7%91/"
+    ]
+  },
+  "location": {
+    "address_he": "רחוב עמוס",
+    "city": "Tel Aviv-Yafo",
+    "neighborhood": "הצפון הישן / הצפון החדש",
+    "gush": null,
+    "helka": null,
+    "gis_confidence": "approx",
+    "plot_polygon_geojson": null,
+    "ground_elevation_m": null,
+    "gis_note": "Approximate manual pin from public address/neighborhood wording; not official parcel-level geocoding. Replace with municipal/Mapbox/building geocode before publishing.",
+    "address_he_src": [
+      "https://www.azorim.co.il/projects/%D7%A2%D7%9E%D7%95%D7%A1-%D7%AA%D7%9C-%D7%90%D7%91%D7%99%D7%91/"
+    ],
+    "city_src": [
+      "https://www.azorim.co.il/projects/%D7%A2%D7%9E%D7%95%D7%A1-%D7%AA%D7%9C-%D7%90%D7%91%D7%99%D7%91/"
+    ],
+    "neighborhood_src": [
+      "https://www.azorim.co.il/projects/%D7%A2%D7%9E%D7%95%D7%A1-%D7%AA%D7%9C-%D7%90%D7%91%D7%99%D7%91/"
+    ],
+    "lat_src": [],
+    "lng_src": [],
+    "gis_confidence_src": [],
+    "gis_note_src": [],
+    "lat": null,
+    "lng": null,
+    "coord_estimate_unverified": {
+      "lat": 32.092,
+      "lng": 34.7772
+    },
+    "geocode_status": "needs_geocode",
+    "coord_provenance": "chatgpt_manual_estimate_2026-07-03 (UNVERIFIED — do not use for the map; regeocode from address via govmap/Mapbox)"
+  },
+  "context": {
+    "dist_to_sea_m": null,
+    "sea_bearing_deg": null,
+    "seafront": false,
+    "terrain": null,
+    "skyline": "lowrise",
+    "near": {
+      "park": {
+        "name": "Park HaYarkon",
+        "dist_m": null
+      },
+      "light_rail": {
+        "line": "",
+        "station": "",
+        "dist_m": null
+      },
+      "metro_planned": {
+        "line": "",
+        "dist_m": null
+      },
+      "train": {
+        "station": "",
+        "dist_m": null
+      },
+      "highway": {
+        "name": "",
+        "dist_m": null
+      },
+      "retail_mall": {
+        "name": "",
+        "dist_m": null
+      },
+      "hospital": {
+        "name": "",
+        "dist_m": null
+      },
+      "schools": [],
+      "landmarks": [
+        "Dizengoff area",
+        "Old North"
+      ]
+    }
+  },
+  "building_form": {
+    "floors": null,
+    "height_m": null,
+    "num_buildings": 1,
+    "footprint_shape": "rect",
+    "footprint_dims_m": {
+      "x": null,
+      "z": null
+    },
+    "main_facade_orientation_deg": null,
+    "has_podium": null,
+    "podium_floors": null,
+    "setbacks": null,
+    "twist": null,
+    "facade_material": "mixed",
+    "balconies": true,
+    "notes": "Boutique luxury building; floors not stated in parsed official page.",
+    "floors_src": [
+      "https://www.azorim.co.il/projects/%D7%A2%D7%9E%D7%95%D7%A1-%D7%AA%D7%9C-%D7%90%D7%91%D7%99%D7%91/"
+    ],
+    "height_m_src": [
+      "https://www.azorim.co.il/projects/%D7%A2%D7%9E%D7%95%D7%A1-%D7%AA%D7%9C-%D7%90%D7%91%D7%99%D7%91/"
+    ],
+    "num_buildings_src": [
+      "https://www.azorim.co.il/projects/%D7%A2%D7%9E%D7%95%D7%A1-%D7%AA%D7%9C-%D7%90%D7%91%D7%99%D7%91/"
+    ]
+  },
+  "units": {
+    "total_units": 7,
+    "mix": [
+      {
+        "rooms": null,
+        "count": null,
+        "sqm_min": null,
+        "sqm_max": null
+      }
+    ],
+    "price_min": null,
+    "price_max": null,
+    "ppsqm_min": null,
+    "ppsqm_max": null,
+    "price_basis": null,
+    "price_date": "",
+    "total_units_src": [
+      "https://www.azorim.co.il/projects/%D7%A2%D7%9E%D7%95%D7%A1-%D7%AA%D7%9C-%D7%90%D7%91%D7%99%D7%91/"
+    ],
+    "mix_src": [
+      "https://www.azorim.co.il/projects/%D7%A2%D7%9E%D7%95%D7%A1-%D7%AA%D7%9C-%D7%90%D7%91%D7%99%D7%91/"
+    ],
+    "price_min_src": [],
+    "price_max_src": [],
+    "ppsqm_min_src": [],
+    "ppsqm_max_src": [],
+    "price_basis_src": [],
+    "price_date_src": []
+  },
+  "market": {
+    "area_ppsqm": null,
+    "nearby_projects": [],
+    "recent_area_deals": []
+  },
+  "urban_future": {
+    "taba_plan_numbers": [],
+    "taba_urls": [],
+    "planned_infrastructure": [],
+    "renewal_type": "new",
+    "renewal_type_src": [
+      "https://www.azorim.co.il/projects/%D7%A2%D7%9E%D7%95%D7%A1-%D7%AA%D7%9C-%D7%90%D7%91%D7%99%D7%91/"
+    ]
+  },
+  "media": {
+    "render_urls": [],
+    "video_urls": [],
+    "brochure_pdf": null,
+    "floorplan_urls": [],
+    "site_plan_url": null,
+    "virtual_tour_url": null,
+    "bim_or_3d_available": "unknown",
+    "aerial_or_streetview_ref": null,
+    "gallery_page_url": "https://www.azorim.co.il/projects/%D7%A2%D7%9E%D7%95%D7%A1-%D7%AA%D7%9C-%D7%90%D7%91%D7%99%D7%91/",
+    "external_project_site": null,
+    "gallery_page_url_src": [
+      "https://www.azorim.co.il/projects/%D7%A2%D7%9E%D7%95%D7%A1-%D7%AA%D7%9C-%D7%90%D7%91%D7%99%D7%91/"
+    ],
+    "render_urls_src": [],
+    "video_urls_src": [],
+    "brochure_pdf_src": [],
+    "floorplan_urls_src": [],
+    "site_plan_url_src": [],
+    "virtual_tour_url_src": [],
+    "bim_or_3d_available_src": [],
+    "aerial_or_streetview_ref_src": []
+  },
+  "content_angles": {
+    "usp": [
+      "Only seven apartments",
+      "Central north Tel Aviv boutique positioning"
+    ],
+    "buyer_questions": [
+      "How many apartments remain?",
+      "What are the apartment sizes and exposures?"
+    ],
+    "audiences": [
+      "local",
+      "investor",
+      "olim_en",
+      "olim_fr",
+      "ru",
+      "ar"
+    ],
+    "keywords_he": [
+      "אזורים עמוס",
+      "דירות יוקרה בצפון הישן",
+      "עמוס תל אביב"
+    ],
+    "keywords_en": [
+      "Azorim Amos",
+      "Old North Tel Aviv luxury apartments"
+    ]
+  },
+  "confidence": {
+    "overall": "med",
+    "notes": "Included as premium boutique even though it is not a large tower; user requested premium/large/landmark, and this is premium but small."
+  },
+  "field_sources": {
+    "identity.name_he": [
+      "https://www.azorim.co.il/projects/%D7%A2%D7%9E%D7%95%D7%A1-%D7%AA%D7%9C-%D7%90%D7%91%D7%99%D7%91/"
+    ],
+    "identity.name_en": [
+      "https://www.azorim.co.il/projects/%D7%A2%D7%9E%D7%95%D7%A1-%D7%AA%D7%9C-%D7%90%D7%91%D7%99%D7%91/"
+    ],
+    "identity.developer": [
+      "https://www.azorim.co.il/projects/%D7%A2%D7%9E%D7%95%D7%A1-%D7%AA%D7%9C-%D7%90%D7%91%D7%99%D7%91/"
+    ],
+    "identity.contractor": [
+      "https://www.azorim.co.il/projects/%D7%A2%D7%9E%D7%95%D7%A1-%D7%AA%D7%9C-%D7%90%D7%91%D7%99%D7%91/"
+    ],
+    "identity.architect": [
+      "https://www.azorim.co.il/projects/%D7%A2%D7%9E%D7%95%D7%A1-%D7%AA%D7%9C-%D7%90%D7%91%D7%99%D7%91/"
+    ],
+    "identity.marketing_status": [
+      "https://www.azorim.co.il/projects/%D7%A2%D7%9E%D7%95%D7%A1-%D7%AA%D7%9C-%D7%90%D7%91%D7%99%D7%91/"
+    ],
+    "location.address_he": [
+      "https://www.azorim.co.il/projects/%D7%A2%D7%9E%D7%95%D7%A1-%D7%AA%D7%9C-%D7%90%D7%91%D7%99%D7%91/"
+    ],
+    "location.city": [
+      "https://www.azorim.co.il/projects/%D7%A2%D7%9E%D7%95%D7%A1-%D7%AA%D7%9C-%D7%90%D7%91%D7%99%D7%91/"
+    ],
+    "location.neighborhood": [
+      "https://www.azorim.co.il/projects/%D7%A2%D7%9E%D7%95%D7%A1-%D7%AA%D7%9C-%D7%90%D7%91%D7%99%D7%91/"
+    ],
+    "context": [
+      "https://www.azorim.co.il/projects/%D7%A2%D7%9E%D7%95%D7%A1-%D7%AA%D7%9C-%D7%90%D7%91%D7%99%D7%91/"
+    ],
+    "building_form.floors": [
+      "https://www.azorim.co.il/projects/%D7%A2%D7%9E%D7%95%D7%A1-%D7%AA%D7%9C-%D7%90%D7%91%D7%99%D7%91/"
+    ],
+    "building_form.height_m": [
+      "https://www.azorim.co.il/projects/%D7%A2%D7%9E%D7%95%D7%A1-%D7%AA%D7%9C-%D7%90%D7%91%D7%99%D7%91/"
+    ],
+    "building_form.num_buildings": [
+      "https://www.azorim.co.il/projects/%D7%A2%D7%9E%D7%95%D7%A1-%D7%AA%D7%9C-%D7%90%D7%91%D7%99%D7%91/"
+    ],
+    "units.total_units": [
+      "https://www.azorim.co.il/projects/%D7%A2%D7%9E%D7%95%D7%A1-%D7%AA%D7%9C-%D7%90%D7%91%D7%99%D7%91/"
+    ],
+    "units.mix": [
+      "https://www.azorim.co.il/projects/%D7%A2%D7%9E%D7%95%D7%A1-%D7%AA%D7%9C-%D7%90%D7%91%D7%99%D7%91/"
+    ],
+    "urban_future.renewal_type": [
+      "https://www.azorim.co.il/projects/%D7%A2%D7%9E%D7%95%D7%A1-%D7%AA%D7%9C-%D7%90%D7%91%D7%99%D7%91/"
+    ],
+    "media.gallery_page_url": [
+      "https://www.azorim.co.il/projects/%D7%A2%D7%9E%D7%95%D7%A1-%D7%AA%D7%9C-%D7%90%D7%91%D7%99%D7%91/"
+    ]
+  },
+  "source_lines": [
+    "Azorim Amos lines 31-39 and 98-110."
+  ],
+  "evidence": [
+    "Azorim page describes a luxury boutique project in Tel Aviv's north with seven apartments, near Dizengoff and Park HaYarkon."
+  ],
+  "_unverified": [
+    "location.lat",
+    "location.lng",
+    "location.gis_confidence",
+    "building_form.footprint_shape",
+    "building_form.footprint_dims_m",
+    "building_form.main_facade_orientation_deg",
+    "context.dist_to_sea_m",
+    "context.sea_bearing_deg",
+    "market.area_ppsqm",
+    "prices"
+  ],
+  "context_src": [
+    "https://www.azorim.co.il/projects/%D7%A2%D7%9E%D7%95%D7%A1-%D7%AA%D7%9C-%D7%90%D7%91%D7%99%D7%91/"
+  ],
+  "db_meta": {
+    "source_batch": "chatgpt_gush_dan_2026-07-03",
+    "ingested_at": "2026-07-04",
+    "verification": "urls_http200_confirmed; sample content-verified; coords UNVERIFIED; prices ABSENT",
+    "canonical": true,
+    "ready_for_page": false,
+    "needs": [
+      "geocode",
+      "price",
+      "floors/units where null",
+      "media urls",
+      "5-lang article body"
+    ]
+  }
+}

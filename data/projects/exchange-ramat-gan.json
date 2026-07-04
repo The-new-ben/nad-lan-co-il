@@ -1,0 +1,331 @@
+{
+  "id": "exchange-ramat-gan",
+  "identity": {
+    "name_he": "EXCHANGE רמת גן",
+    "name_en": "EXCHANGE Ramat Gan",
+    "aka": [],
+    "developer": "Azorim",
+    "contractor": null,
+    "architect": null,
+    "marketing_status": "under_construction",
+    "urls": {
+      "official": "https://www.azorim.co.il/projects/exchange/",
+      "madlan": null,
+      "yad2": null,
+      "developer": null
+    },
+    "name_he_src": [
+      "https://www.azorim.co.il/projects/exchange/"
+    ],
+    "name_en_src": [
+      "https://www.azorim.co.il/projects/exchange/"
+    ],
+    "developer_src": [
+      "https://www.azorim.co.il/projects/exchange/"
+    ],
+    "contractor_src": [
+      "https://www.azorim.co.il/projects/exchange/"
+    ],
+    "architect_src": [
+      "https://www.azorim.co.il/projects/exchange/"
+    ],
+    "marketing_status_src": [
+      "https://www.azorim.co.il/projects/exchange/"
+    ]
+  },
+  "location": {
+    "address_he": "מתחם עלית, צומת ארלוזורוב/ז'בוטינסקי",
+    "city": "Ramat Gan",
+    "neighborhood": "מתחם הבורסה / עלית",
+    "gush": null,
+    "helka": null,
+    "gis_confidence": "approx",
+    "plot_polygon_geojson": null,
+    "ground_elevation_m": null,
+    "gis_note": "Approximate manual pin from public address/neighborhood wording; not official parcel-level geocoding. Replace with municipal/Mapbox/building geocode before publishing.",
+    "address_he_src": [
+      "https://www.azorim.co.il/projects/exchange/"
+    ],
+    "city_src": [
+      "https://www.azorim.co.il/projects/exchange/"
+    ],
+    "neighborhood_src": [
+      "https://www.azorim.co.il/projects/exchange/"
+    ],
+    "lat_src": [],
+    "lng_src": [],
+    "gis_confidence_src": [],
+    "gis_note_src": [],
+    "lat": null,
+    "lng": null,
+    "coord_estimate_unverified": {
+      "lat": 32.08395,
+      "lng": 34.80395
+    },
+    "geocode_status": "needs_geocode",
+    "coord_provenance": "chatgpt_manual_estimate_2026-07-03 (UNVERIFIED — do not use for the map; regeocode from address via govmap/Mapbox)"
+  },
+  "context": {
+    "dist_to_sea_m": null,
+    "sea_bearing_deg": null,
+    "seafront": false,
+    "terrain": null,
+    "skyline": "tower_cluster",
+    "near": {
+      "park": {
+        "name": "",
+        "dist_m": null
+      },
+      "light_rail": {
+        "line": "Red Line",
+        "station": "Bialik/Jabotinsky area",
+        "dist_m": null
+      },
+      "metro_planned": {
+        "line": "",
+        "dist_m": null
+      },
+      "train": {
+        "station": "Tel Aviv Savidor Center",
+        "dist_m": null
+      },
+      "highway": {
+        "name": "",
+        "dist_m": null
+      },
+      "retail_mall": {
+        "name": "",
+        "dist_m": null
+      },
+      "hospital": {
+        "name": "",
+        "dist_m": null
+      },
+      "schools": [],
+      "landmarks": [
+        "Diamond Exchange District",
+        "former Elite factory site"
+      ]
+    }
+  },
+  "building_form": {
+    "floors": 61,
+    "height_m": 205.95,
+    "num_buildings": 2,
+    "footprint_shape": "twin",
+    "footprint_dims_m": {
+      "x": null,
+      "z": null
+    },
+    "main_facade_orientation_deg": null,
+    "has_podium": true,
+    "podium_floors": null,
+    "setbacks": null,
+    "twist": null,
+    "facade_material": "glass",
+    "balconies": true,
+    "notes": "Official Azorim page verifies two towers and mixed residential/offices; floors/height/units from secondary high-rise reference, not official.",
+    "floors_src": [
+      "https://en.wikipedia.org/wiki/Exchange_Ramat_Gan"
+    ],
+    "height_m_src": [
+      "https://en.wikipedia.org/wiki/Exchange_Ramat_Gan"
+    ],
+    "num_buildings_src": [
+      "https://www.azorim.co.il/projects/exchange/"
+    ]
+  },
+  "units": {
+    "total_units": 355,
+    "mix": [
+      {
+        "rooms": null,
+        "count": null,
+        "sqm_min": null,
+        "sqm_max": null
+      }
+    ],
+    "price_min": null,
+    "price_max": null,
+    "ppsqm_min": null,
+    "ppsqm_max": null,
+    "price_basis": null,
+    "price_date": "",
+    "total_units_src": [
+      "https://en.wikipedia.org/wiki/Exchange_Ramat_Gan"
+    ],
+    "mix_src": [
+      "https://www.azorim.co.il/projects/exchange/"
+    ],
+    "price_min_src": [],
+    "price_max_src": [],
+    "ppsqm_min_src": [],
+    "ppsqm_max_src": [],
+    "price_basis_src": [],
+    "price_date_src": []
+  },
+  "market": {
+    "area_ppsqm": null,
+    "nearby_projects": [],
+    "recent_area_deals": []
+  },
+  "urban_future": {
+    "taba_plan_numbers": [],
+    "taba_urls": [],
+    "planned_infrastructure": [
+      {
+        "type": "light_rail",
+        "line": "Red Line",
+        "station": "Bialik/Jabotinsky area",
+        "source": "https://www.azorim.co.il/projects/exchange/"
+      }
+    ],
+    "renewal_type": "new",
+    "renewal_type_src": [
+      "https://www.azorim.co.il/projects/exchange/"
+    ]
+  },
+  "media": {
+    "render_urls": [],
+    "video_urls": [],
+    "brochure_pdf": null,
+    "floorplan_urls": [],
+    "site_plan_url": null,
+    "virtual_tour_url": null,
+    "bim_or_3d_available": "unknown",
+    "aerial_or_streetview_ref": null,
+    "gallery_page_url": "https://www.azorim.co.il/projects/exchange/",
+    "external_project_site": null,
+    "gallery_page_url_src": [
+      "https://www.azorim.co.il/projects/exchange/"
+    ],
+    "render_urls_src": [],
+    "video_urls_src": [],
+    "brochure_pdf_src": [],
+    "floorplan_urls_src": [],
+    "site_plan_url_src": [],
+    "virtual_tour_url_src": [],
+    "bim_or_3d_available_src": [],
+    "aerial_or_streetview_ref_src": []
+  },
+  "content_angles": {
+    "usp": [
+      "Landmark mixed-use tower cluster at the Ramat Gan/Tel Aviv business edge",
+      "Residential tower in a major skyline node"
+    ],
+    "buyer_questions": [
+      "How close is the project to the light rail and Savidor station?",
+      "Which tower contains the residential units?"
+    ],
+    "audiences": [
+      "local",
+      "investor",
+      "olim_en",
+      "olim_fr",
+      "ru",
+      "ar"
+    ],
+    "keywords_he": [
+      "אקסצ'יינג' רמת גן",
+      "דירות במתחם הבורסה",
+      "מגדל מגורים רמת גן"
+    ],
+    "keywords_en": [
+      "Exchange Ramat Gan",
+      "Ramat Gan luxury tower",
+      "Diamond Exchange apartments"
+    ]
+  },
+  "confidence": {
+    "overall": "med",
+    "notes": "Active-marketing status verified from Azorim project catalogue; geometry values need official planning cross-check."
+  },
+  "field_sources": {
+    "identity.name_he": [
+      "https://www.azorim.co.il/projects/exchange/"
+    ],
+    "identity.name_en": [
+      "https://www.azorim.co.il/projects/exchange/"
+    ],
+    "identity.developer": [
+      "https://www.azorim.co.il/projects/exchange/"
+    ],
+    "identity.contractor": [
+      "https://www.azorim.co.il/projects/exchange/"
+    ],
+    "identity.architect": [
+      "https://www.azorim.co.il/projects/exchange/"
+    ],
+    "identity.marketing_status": [
+      "https://www.azorim.co.il/projects/exchange/"
+    ],
+    "location.address_he": [
+      "https://www.azorim.co.il/projects/exchange/"
+    ],
+    "location.city": [
+      "https://www.azorim.co.il/projects/exchange/"
+    ],
+    "location.neighborhood": [
+      "https://www.azorim.co.il/projects/exchange/"
+    ],
+    "context": [
+      "https://www.azorim.co.il/projects/exchange/"
+    ],
+    "building_form.floors": [
+      "https://en.wikipedia.org/wiki/Exchange_Ramat_Gan"
+    ],
+    "building_form.height_m": [
+      "https://en.wikipedia.org/wiki/Exchange_Ramat_Gan"
+    ],
+    "building_form.num_buildings": [
+      "https://www.azorim.co.il/projects/exchange/"
+    ],
+    "units.total_units": [
+      "https://en.wikipedia.org/wiki/Exchange_Ramat_Gan"
+    ],
+    "units.mix": [
+      "https://www.azorim.co.il/projects/exchange/"
+    ],
+    "urban_future.renewal_type": [
+      "https://www.azorim.co.il/projects/exchange/"
+    ],
+    "media.gallery_page_url": [
+      "https://www.azorim.co.il/projects/exchange/"
+    ]
+  },
+  "source_lines": [
+    "Azorim page lines 31-37: EXCHANGE at Elite factory site with two towers and residential tower."
+  ],
+  "evidence": [
+    "Azorim project page describes EXCHANGE at the former Elite factory site, two towers, and a residential tower; a secondary high-rise listing supplies floors/height/units."
+  ],
+  "_unverified": [
+    "location.lat",
+    "location.lng",
+    "location.gis_confidence",
+    "building_form.footprint_shape",
+    "building_form.footprint_dims_m",
+    "building_form.main_facade_orientation_deg",
+    "context.dist_to_sea_m",
+    "context.sea_bearing_deg",
+    "market.area_ppsqm",
+    "prices"
+  ],
+  "context_src": [
+    "https://www.azorim.co.il/projects/exchange/"
+  ],
+  "db_meta": {
+    "source_batch": "chatgpt_gush_dan_2026-07-03",
+    "ingested_at": "2026-07-04",
+    "verification": "urls_http200_confirmed; sample content-verified; coords UNVERIFIED; prices ABSENT",
+    "canonical": true,
+    "ready_for_page": false,
+    "needs": [
+      "geocode",
+      "price",
+      "floors/units where null",
+      "media urls",
+      "5-lang article body"
+    ]
+  }
+}

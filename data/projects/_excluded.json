@@ -1,0 +1,52 @@
+[
+  {
+    "name": "Beyond Towers / Beyond Givatayim",
+    "reason": "Residential component appears long-term rental / not verified as active units for sale; excluded despite major scale.",
+    "source_url": "https://en.wikipedia.org/wiki/Beyond_Towers"
+  },
+  {
+    "name": "Hi Tower Givatayim",
+    "reason": "Completed/occupied; not verified as current active developer marketing.",
+    "source_url": "https://en.wikipedia.org/wiki/Hi_Tower"
+  },
+  {
+    "name": "Da Vinci Towers",
+    "reason": "Completed 2023; not a current developer new-project marketing page; later state/rental situation is not standard active marketing.",
+    "source_url": "https://en.wikipedia.org/wiki/Da_Vinci_Towers"
+  },
+  {
+    "name": "Keren HaKirya",
+    "reason": "Development/planned mixed-use concept; no verified current active residential sales page found in this pass.",
+    "source_url": "https://en.wikipedia.org/wiki/Keren_HaKirya_building_complex"
+  },
+  {
+    "name": "Arlozorov Young Towers",
+    "reason": "Completed 2020; not current active new-project marketing.",
+    "source_url": "https://en.wikipedia.org/wiki/Arlozorov_Young_Towers"
+  },
+  {
+    "name": "Time Tower Ramat Gan",
+    "reason": "Shikun & Binui page marks status as אוכלס (occupied), so excluded from active-marketing dataset.",
+    "source_url": "https://www.shbn.co.il/projects/time-tower/"
+  },
+  {
+    "name": "THE WEIZMANN / ויצמן 11-13",
+    "reason": "Metropolis page has contact and project details, but I did not verify it in the official 'בשיווק' category; excluded rather than assuming active marketing.",
+    "source_url": "https://www.metropolis-il.com/projects/%D7%95%D7%99%D7%A6%D7%9E%D7%9F-11-13-%D7%97%D7%9B%D7%9E%D7%99-%D7%A7%D7%99%D7%A8%D7%90%D7%9F-7/"
+  },
+  {
+    "name": "Yuda& יהודה המכבי 49",
+    "reason": "Metropolis catalogue says SOLD OUT; excluded.",
+    "source_url": "https://www.metropolis-il.com/"
+  },
+  {
+    "name": "Metropolis Givatayim Shde Boker/HaKnesset",
+    "reason": "Metropolis catalogue says SOLD OUT; excluded.",
+    "source_url": "https://www.metropolis-il.com/"
+  },
+  {
+    "name": "Metropolis Herzliya Mandelblat/Ibn Ezra",
+    "reason": "Metropolis catalogue says אוכלס (occupied); excluded.",
+    "source_url": "https://www.metropolis-il.com/"
+  }
+]

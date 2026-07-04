@@ -1,0 +1,324 @@
+{
+  "id": "vertical-city-ramat-gan",
+  "identity": {
+    "name_he": "Vertical City רמת גן",
+    "name_en": "Vertical City Ramat Gan",
+    "aka": [],
+    "developer": "Israel Canada",
+    "contractor": null,
+    "architect": "Barel Levitsky Kassif de la Fontaine Architects",
+    "marketing_status": "under_construction",
+    "urls": {
+      "official": "https://www.israel-canada.co.il/projects/ramat-gan/vertical-city",
+      "madlan": null,
+      "yad2": null,
+      "developer": null
+    },
+    "name_he_src": [
+      "https://www.israel-canada.co.il/projects/ramat-gan/vertical-city"
+    ],
+    "name_en_src": [
+      "https://www.israel-canada.co.il/projects/ramat-gan/vertical-city"
+    ],
+    "developer_src": [
+      "https://www.israel-canada.co.il/projects/ramat-gan/vertical-city"
+    ],
+    "contractor_src": [
+      "https://www.israel-canada.co.il/projects/ramat-gan/vertical-city"
+    ],
+    "architect_src": [
+      "https://www.israel-canada.co.il/projects/ramat-gan/vertical-city"
+    ],
+    "marketing_status_src": [
+      "https://www.israel-canada.co.il/projects/ramat-gan/vertical-city"
+    ]
+  },
+  "location": {
+    "address_he": "מתחם הבורסה",
+    "city": "Ramat Gan",
+    "neighborhood": "מתחם הבורסה",
+    "gush": null,
+    "helka": null,
+    "gis_confidence": "approx",
+    "plot_polygon_geojson": null,
+    "ground_elevation_m": null,
+    "gis_note": "Approximate manual pin from public address/neighborhood wording; not official parcel-level geocoding. Replace with municipal/Mapbox/building geocode before publishing.",
+    "address_he_src": [
+      "https://www.israel-canada.co.il/projects/ramat-gan/vertical-city"
+    ],
+    "city_src": [
+      "https://www.israel-canada.co.il/projects/ramat-gan/vertical-city"
+    ],
+    "neighborhood_src": [
+      "https://www.israel-canada.co.il/projects/ramat-gan/vertical-city"
+    ],
+    "lat_src": [],
+    "lng_src": [],
+    "gis_confidence_src": [],
+    "gis_note_src": [],
+    "lat": null,
+    "lng": null,
+    "coord_estimate_unverified": {
+      "lat": 32.0854,
+      "lng": 34.8024
+    },
+    "geocode_status": "needs_geocode",
+    "coord_provenance": "chatgpt_manual_estimate_2026-07-03 (UNVERIFIED — do not use for the map; regeocode from address via govmap/Mapbox)"
+  },
+  "context": {
+    "dist_to_sea_m": null,
+    "sea_bearing_deg": null,
+    "seafront": false,
+    "terrain": null,
+    "skyline": "tower_cluster",
+    "near": {
+      "park": {
+        "name": "",
+        "dist_m": null
+      },
+      "light_rail": {
+        "line": "",
+        "station": "Bursa/Ramat Gan light rail area",
+        "dist_m": null
+      },
+      "metro_planned": {
+        "line": "",
+        "dist_m": null
+      },
+      "train": {
+        "station": "Tel Aviv Savidor Center",
+        "dist_m": null
+      },
+      "highway": {
+        "name": "",
+        "dist_m": null
+      },
+      "retail_mall": {
+        "name": "",
+        "dist_m": null
+      },
+      "hospital": {
+        "name": "",
+        "dist_m": null
+      },
+      "schools": [],
+      "landmarks": [
+        "Bursa district",
+        "student housing",
+        "long-term rental housing"
+      ]
+    }
+  },
+  "building_form": {
+    "floors": null,
+    "height_m": null,
+    "num_buildings": 3,
+    "footprint_shape": "mixed",
+    "footprint_dims_m": {
+      "x": null,
+      "z": null
+    },
+    "main_facade_orientation_deg": null,
+    "has_podium": true,
+    "podium_floors": null,
+    "setbacks": null,
+    "twist": null,
+    "facade_material": "glass",
+    "balconies": true,
+    "notes": "Mixed-use complex; page says luxury apartments, offices, commerce, long-term rental housing, student housing, public buildings.",
+    "floors_src": [
+      "https://www.israel-canada.co.il/projects/ramat-gan/vertical-city"
+    ],
+    "height_m_src": [
+      "https://www.israel-canada.co.il/projects/ramat-gan/vertical-city"
+    ],
+    "num_buildings_src": [
+      "https://www.israel-canada.co.il/projects/ramat-gan/vertical-city"
+    ]
+  },
+  "units": {
+    "total_units": null,
+    "mix": [
+      {
+        "rooms": null,
+        "count": null,
+        "sqm_min": null,
+        "sqm_max": null
+      }
+    ],
+    "price_min": null,
+    "price_max": null,
+    "ppsqm_min": null,
+    "ppsqm_max": null,
+    "price_basis": null,
+    "price_date": "",
+    "total_units_src": [
+      "https://www.israel-canada.co.il/projects/ramat-gan/vertical-city"
+    ],
+    "mix_src": [
+      "https://www.israel-canada.co.il/projects/ramat-gan/vertical-city"
+    ],
+    "price_min_src": [],
+    "price_max_src": [],
+    "ppsqm_min_src": [],
+    "ppsqm_max_src": [],
+    "price_basis_src": [],
+    "price_date_src": []
+  },
+  "market": {
+    "area_ppsqm": null,
+    "nearby_projects": [],
+    "recent_area_deals": []
+  },
+  "urban_future": {
+    "taba_plan_numbers": [],
+    "taba_urls": [],
+    "planned_infrastructure": [],
+    "renewal_type": "new",
+    "renewal_type_src": [
+      "https://www.israel-canada.co.il/projects/ramat-gan/vertical-city"
+    ]
+  },
+  "media": {
+    "render_urls": [],
+    "video_urls": [],
+    "brochure_pdf": null,
+    "floorplan_urls": [],
+    "site_plan_url": null,
+    "virtual_tour_url": null,
+    "bim_or_3d_available": "unknown",
+    "aerial_or_streetview_ref": null,
+    "gallery_page_url": "https://www.israel-canada.co.il/projects/ramat-gan/vertical-city",
+    "external_project_site": null,
+    "gallery_page_url_src": [
+      "https://www.israel-canada.co.il/projects/ramat-gan/vertical-city"
+    ],
+    "render_urls_src": [],
+    "video_urls_src": [],
+    "brochure_pdf_src": [],
+    "floorplan_urls_src": [],
+    "site_plan_url_src": [],
+    "virtual_tour_url_src": [],
+    "bim_or_3d_available_src": [],
+    "aerial_or_streetview_ref_src": []
+  },
+  "content_angles": {
+    "usp": [
+      "Major mixed-use vertical district",
+      "Close to Savidor and light rail according to developer"
+    ],
+    "buyer_questions": [
+      "Which residential units are for sale versus long-term rent?",
+      "What are the tower heights and phase schedule?"
+    ],
+    "audiences": [
+      "local",
+      "investor",
+      "olim_en",
+      "olim_fr",
+      "ru",
+      "ar"
+    ],
+    "keywords_he": [
+      "ורטיקל סיטי רמת גן",
+      "מתחם הבורסה דירות",
+      "ישראל קנדה רמת גן"
+    ],
+    "keywords_en": [
+      "Vertical City Ramat Gan",
+      "Bursa Ramat Gan apartments"
+    ]
+  },
+  "confidence": {
+    "overall": "med",
+    "notes": "Residential unit count and sale/rental split not published in parsed source; keep units null."
+  },
+  "field_sources": {
+    "identity.name_he": [
+      "https://www.israel-canada.co.il/projects/ramat-gan/vertical-city"
+    ],
+    "identity.name_en": [
+      "https://www.israel-canada.co.il/projects/ramat-gan/vertical-city"
+    ],
+    "identity.developer": [
+      "https://www.israel-canada.co.il/projects/ramat-gan/vertical-city"
+    ],
+    "identity.contractor": [
+      "https://www.israel-canada.co.il/projects/ramat-gan/vertical-city"
+    ],
+    "identity.architect": [
+      "https://www.israel-canada.co.il/projects/ramat-gan/vertical-city"
+    ],
+    "identity.marketing_status": [
+      "https://www.israel-canada.co.il/projects/ramat-gan/vertical-city"
+    ],
+    "location.address_he": [
+      "https://www.israel-canada.co.il/projects/ramat-gan/vertical-city"
+    ],
+    "location.city": [
+      "https://www.israel-canada.co.il/projects/ramat-gan/vertical-city"
+    ],
+    "location.neighborhood": [
+      "https://www.israel-canada.co.il/projects/ramat-gan/vertical-city"
+    ],
+    "context": [
+      "https://www.israel-canada.co.il/projects/ramat-gan/vertical-city"
+    ],
+    "building_form.floors": [
+      "https://www.israel-canada.co.il/projects/ramat-gan/vertical-city"
+    ],
+    "building_form.height_m": [
+      "https://www.israel-canada.co.il/projects/ramat-gan/vertical-city"
+    ],
+    "building_form.num_buildings": [
+      "https://www.israel-canada.co.il/projects/ramat-gan/vertical-city"
+    ],
+    "units.total_units": [
+      "https://www.israel-canada.co.il/projects/ramat-gan/vertical-city"
+    ],
+    "units.mix": [
+      "https://www.israel-canada.co.il/projects/ramat-gan/vertical-city"
+    ],
+    "urban_future.renewal_type": [
+      "https://www.israel-canada.co.il/projects/ramat-gan/vertical-city"
+    ],
+    "media.gallery_page_url": [
+      "https://www.israel-canada.co.il/projects/ramat-gan/vertical-city"
+    ]
+  },
+  "source_lines": [
+    "Israel Canada Vertical City lines 43-83."
+  ],
+  "evidence": [
+    "Israel Canada page states Vertical City Ramat Gan at Bursa complex, 3 buildings, Barel Levitsky Kassif architects, and mixed-use program with luxury apartments."
+  ],
+  "_unverified": [
+    "location.lat",
+    "location.lng",
+    "location.gis_confidence",
+    "building_form.footprint_shape",
+    "building_form.footprint_dims_m",
+    "building_form.main_facade_orientation_deg",
+    "context.dist_to_sea_m",
+    "context.sea_bearing_deg",
+    "market.area_ppsqm",
+    "prices"
+  ],
+  "context_src": [
+    "https://www.israel-canada.co.il/projects/ramat-gan/vertical-city"
+  ],
+  "db_meta": {
+    "source_batch": "chatgpt_gush_dan_2026-07-03",
+    "ingested_at": "2026-07-04",
+    "verification": "urls_http200_confirmed; sample content-verified; coords UNVERIFIED; prices ABSENT",
+    "canonical": true,
+    "ready_for_page": false,
+    "needs": [
+      "geocode",
+      "price",
+      "floors/units where null",
+      "media urls",
+      "5-lang article body"
+    ]
+  }
+}

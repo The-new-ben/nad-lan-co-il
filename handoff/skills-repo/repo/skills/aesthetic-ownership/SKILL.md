@@ -102,4 +102,17 @@ traffic.
   URLs (not JS-only); language alternates are hreflang siblings, never catalog
   duplicates; UI chrome from systematic string tables, body content from real
   translated CMS entries (generated, never faked). No duplicate-content penalty.
+- AUTOPLAY-MEDIA LAW (learned the hard way): an essential hero/background video
+  must autoplay with `muted autoplay loop playsinline` and REAL `<source>`
+  children in the markup, so the browser plays it with ZERO JS dependency. Do
+  NOT stash the URLs in `data-*` and inject them with JS — desktop users who
+  never tap/scroll stay stuck on the poster ("looks like a picture, nothing
+  responds"), while mobile happens to fire the touch handler and works. And do
+  NOT let a `prefers-reduced-motion`/`save-data` gate SKIP loading the source
+  for everyone — that gate hits desktop/macOS constantly and rarely mobile,
+  producing the exact "works on mobile, static on desktop" bug. Degrade
+  honestly: default to native autoplay for all, and only for genuine
+  reduced-motion/data-saver users remove autoplay and hold the poster. Verify
+  playback for real (headless: assert `!video.paused` AND `currentTime`
+  advancing across two samples), never from markup alone.
 - EVERY TIME you learn a new failure mode, ADD IT HERE. This skill compounds.

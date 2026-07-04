@@ -1,0 +1,340 @@
+{
+  "id": "halomot-park-hayam-bat-yam",
+  "identity": {
+    "name_he": "חלומות פארק הים",
+    "name_en": "Halomot Park HaYam",
+    "aka": [],
+    "developer": "Shikun & Binui Real Estate",
+    "contractor": null,
+    "architect": null,
+    "marketing_status": "under_construction",
+    "urls": {
+      "official": "https://www.shbn.co.il/projects/%D7%97%D7%9C%D7%95%D7%9E%D7%95%D7%AA-%D7%A4%D7%90%D7%A8%D7%A7-%D7%94%D7%99%D7%9D/",
+      "madlan": null,
+      "yad2": null,
+      "developer": null
+    },
+    "name_he_src": [
+      "https://www.shbn.co.il/projects/%D7%97%D7%9C%D7%95%D7%9E%D7%95%D7%AA-%D7%A4%D7%90%D7%A8%D7%A7-%D7%94%D7%99%D7%9D/"
+    ],
+    "name_en_src": [
+      "https://www.shbn.co.il/projects/%D7%97%D7%9C%D7%95%D7%9E%D7%95%D7%AA-%D7%A4%D7%90%D7%A8%D7%A7-%D7%94%D7%99%D7%9D/"
+    ],
+    "developer_src": [
+      "https://www.shbn.co.il/projects/%D7%97%D7%9C%D7%95%D7%9E%D7%95%D7%AA-%D7%A4%D7%90%D7%A8%D7%A7-%D7%94%D7%99%D7%9D/"
+    ],
+    "contractor_src": [
+      "https://www.shbn.co.il/projects/%D7%97%D7%9C%D7%95%D7%9E%D7%95%D7%AA-%D7%A4%D7%90%D7%A8%D7%A7-%D7%94%D7%99%D7%9D/"
+    ],
+    "architect_src": [
+      "https://www.shbn.co.il/projects/%D7%97%D7%9C%D7%95%D7%9E%D7%95%D7%AA-%D7%A4%D7%90%D7%A8%D7%A7-%D7%94%D7%99%D7%9D/"
+    ],
+    "marketing_status_src": [
+      "https://www.shbn.co.il/projects/%D7%97%D7%9C%D7%95%D7%9E%D7%95%D7%AA-%D7%A4%D7%90%D7%A8%D7%A7-%D7%94%D7%99%D7%9D/"
+    ]
+  },
+  "location": {
+    "address_he": "פארק הים",
+    "city": "Bat Yam",
+    "neighborhood": "פארק הים",
+    "gush": null,
+    "helka": null,
+    "gis_confidence": "approx",
+    "plot_polygon_geojson": null,
+    "ground_elevation_m": null,
+    "gis_note": "Approximate manual pin from public address/neighborhood wording; not official parcel-level geocoding. Replace with municipal/Mapbox/building geocode before publishing.",
+    "address_he_src": [
+      "https://www.shbn.co.il/projects/%D7%97%D7%9C%D7%95%D7%9E%D7%95%D7%AA-%D7%A4%D7%90%D7%A8%D7%A7-%D7%94%D7%99%D7%9D/"
+    ],
+    "city_src": [
+      "https://www.shbn.co.il/projects/%D7%97%D7%9C%D7%95%D7%9E%D7%95%D7%AA-%D7%A4%D7%90%D7%A8%D7%A7-%D7%94%D7%99%D7%9D/"
+    ],
+    "neighborhood_src": [
+      "https://www.shbn.co.il/projects/%D7%97%D7%9C%D7%95%D7%9E%D7%95%D7%AA-%D7%A4%D7%90%D7%A8%D7%A7-%D7%94%D7%99%D7%9D/"
+    ],
+    "lat_src": [],
+    "lng_src": [],
+    "gis_confidence_src": [],
+    "gis_note_src": [],
+    "lat": null,
+    "lng": null,
+    "coord_estimate_unverified": {
+      "lat": 32.0008,
+      "lng": 34.7444
+    },
+    "geocode_status": "needs_geocode",
+    "coord_provenance": "chatgpt_manual_estimate_2026-07-03 (UNVERIFIED — do not use for the map; regeocode from address via govmap/Mapbox)"
+  },
+  "context": {
+    "dist_to_sea_m": null,
+    "sea_bearing_deg": null,
+    "seafront": true,
+    "terrain": null,
+    "skyline": "tower_cluster",
+    "near": {
+      "park": {
+        "name": "Park HaYam",
+        "dist_m": null
+      },
+      "light_rail": {
+        "line": "",
+        "station": "",
+        "dist_m": null
+      },
+      "metro_planned": {
+        "line": "",
+        "dist_m": null
+      },
+      "train": {
+        "station": "",
+        "dist_m": null
+      },
+      "highway": {
+        "name": "",
+        "dist_m": null
+      },
+      "retail_mall": {
+        "name": "",
+        "dist_m": null
+      },
+      "hospital": {
+        "name": "",
+        "dist_m": null
+      },
+      "schools": [],
+      "landmarks": [
+        "Bat Yam southern seafront"
+      ]
+    }
+  },
+  "building_form": {
+    "floors": 30,
+    "height_m": null,
+    "num_buildings": 1,
+    "footprint_shape": "rect",
+    "footprint_dims_m": {
+      "x": null,
+      "z": null
+    },
+    "main_facade_orientation_deg": null,
+    "has_podium": null,
+    "podium_floors": null,
+    "setbacks": null,
+    "twist": null,
+    "facade_material": "mixed",
+    "balconies": true,
+    "notes": "Green-building standard 5281 noted by developer; occupancy date 31/12/2026 in project stages.",
+    "floors_src": [
+      "https://www.shbn.co.il/projects/%D7%97%D7%9C%D7%95%D7%9E%D7%95%D7%AA-%D7%A4%D7%90%D7%A8%D7%A7-%D7%94%D7%99%D7%9D/"
+    ],
+    "height_m_src": [
+      "https://www.shbn.co.il/projects/%D7%97%D7%9C%D7%95%D7%9E%D7%95%D7%AA-%D7%A4%D7%90%D7%A8%D7%A7-%D7%94%D7%99%D7%9D/"
+    ],
+    "num_buildings_src": [
+      "https://www.shbn.co.il/projects/%D7%97%D7%9C%D7%95%D7%9E%D7%95%D7%AA-%D7%A4%D7%90%D7%A8%D7%A7-%D7%94%D7%99%D7%9D/"
+    ]
+  },
+  "units": {
+    "total_units": null,
+    "mix": [
+      {
+        "rooms": 3,
+        "count": null,
+        "sqm_min": null,
+        "sqm_max": null
+      },
+      {
+        "rooms": 4,
+        "count": null,
+        "sqm_min": null,
+        "sqm_max": null
+      },
+      {
+        "rooms": 5,
+        "count": null,
+        "sqm_min": null,
+        "sqm_max": null
+      },
+      {
+        "rooms": "mini-penthouse",
+        "count": null,
+        "sqm_min": null,
+        "sqm_max": null
+      }
+    ],
+    "price_min": null,
+    "price_max": null,
+    "ppsqm_min": null,
+    "ppsqm_max": null,
+    "price_basis": null,
+    "price_date": "",
+    "total_units_src": [
+      "https://www.shbn.co.il/projects/%D7%97%D7%9C%D7%95%D7%9E%D7%95%D7%AA-%D7%A4%D7%90%D7%A8%D7%A7-%D7%94%D7%99%D7%9D/"
+    ],
+    "mix_src": [
+      "https://www.shbn.co.il/projects/%D7%97%D7%9C%D7%95%D7%9E%D7%95%D7%AA-%D7%A4%D7%90%D7%A8%D7%A7-%D7%94%D7%99%D7%9D/"
+    ],
+    "price_min_src": [],
+    "price_max_src": [],
+    "ppsqm_min_src": [],
+    "ppsqm_max_src": [],
+    "price_basis_src": [],
+    "price_date_src": []
+  },
+  "market": {
+    "area_ppsqm": null,
+    "nearby_projects": [],
+    "recent_area_deals": []
+  },
+  "urban_future": {
+    "taba_plan_numbers": [],
+    "taba_urls": [],
+    "planned_infrastructure": [],
+    "renewal_type": "new",
+    "renewal_type_src": [
+      "https://www.shbn.co.il/projects/%D7%97%D7%9C%D7%95%D7%9E%D7%95%D7%AA-%D7%A4%D7%90%D7%A8%D7%A7-%D7%94%D7%99%D7%9D/"
+    ]
+  },
+  "media": {
+    "render_urls": [],
+    "video_urls": [],
+    "brochure_pdf": null,
+    "floorplan_urls": [],
+    "site_plan_url": null,
+    "virtual_tour_url": null,
+    "bim_or_3d_available": "unknown",
+    "aerial_or_streetview_ref": null,
+    "gallery_page_url": "https://www.shbn.co.il/projects/%D7%97%D7%9C%D7%95%D7%9E%D7%95%D7%AA-%D7%A4%D7%90%D7%A8%D7%A7-%D7%94%D7%99%D7%9D/",
+    "external_project_site": null,
+    "gallery_page_url_src": [
+      "https://www.shbn.co.il/projects/%D7%97%D7%9C%D7%95%D7%9E%D7%95%D7%AA-%D7%A4%D7%90%D7%A8%D7%A7-%D7%94%D7%99%D7%9D/"
+    ],
+    "render_urls_src": [],
+    "video_urls_src": [],
+    "brochure_pdf_src": [],
+    "floorplan_urls_src": [],
+    "site_plan_url_src": [],
+    "virtual_tour_url_src": [],
+    "bim_or_3d_available_src": [],
+    "aerial_or_streetview_ref_src": []
+  },
+  "content_angles": {
+    "usp": [
+      "30-floor tower in Bat Yam's Park HaYam",
+      "Construction underway, expected occupancy date published"
+    ],
+    "buyer_questions": [
+      "How many units remain by room type?",
+      "Which apartments have open sea views?"
+    ],
+    "audiences": [
+      "local",
+      "investor",
+      "olim_en",
+      "olim_fr",
+      "ru",
+      "ar"
+    ],
+    "keywords_he": [
+      "חלומות פארק הים",
+      "דירות פארק הים בת ים",
+      "שיכון ובינוי בת ים"
+    ],
+    "keywords_en": [
+      "Halomot Park HaYam",
+      "Bat Yam Park HaYam apartments"
+    ]
+  },
+  "confidence": {
+    "overall": "med",
+    "notes": "No total unit count/prices in parsed page."
+  },
+  "field_sources": {
+    "identity.name_he": [
+      "https://www.shbn.co.il/projects/%D7%97%D7%9C%D7%95%D7%9E%D7%95%D7%AA-%D7%A4%D7%90%D7%A8%D7%A7-%D7%94%D7%99%D7%9D/"
+    ],
+    "identity.name_en": [
+      "https://www.shbn.co.il/projects/%D7%97%D7%9C%D7%95%D7%9E%D7%95%D7%AA-%D7%A4%D7%90%D7%A8%D7%A7-%D7%94%D7%99%D7%9D/"
+    ],
+    "identity.developer": [
+      "https://www.shbn.co.il/projects/%D7%97%D7%9C%D7%95%D7%9E%D7%95%D7%AA-%D7%A4%D7%90%D7%A8%D7%A7-%D7%94%D7%99%D7%9D/"
+    ],
+    "identity.contractor": [
+      "https://www.shbn.co.il/projects/%D7%97%D7%9C%D7%95%D7%9E%D7%95%D7%AA-%D7%A4%D7%90%D7%A8%D7%A7-%D7%94%D7%99%D7%9D/"
+    ],
+    "identity.architect": [
+      "https://www.shbn.co.il/projects/%D7%97%D7%9C%D7%95%D7%9E%D7%95%D7%AA-%D7%A4%D7%90%D7%A8%D7%A7-%D7%94%D7%99%D7%9D/"
+    ],
+    "identity.marketing_status": [
+      "https://www.shbn.co.il/projects/%D7%97%D7%9C%D7%95%D7%9E%D7%95%D7%AA-%D7%A4%D7%90%D7%A8%D7%A7-%D7%94%D7%99%D7%9D/"
+    ],
+    "location.address_he": [
+      "https://www.shbn.co.il/projects/%D7%97%D7%9C%D7%95%D7%9E%D7%95%D7%AA-%D7%A4%D7%90%D7%A8%D7%A7-%D7%94%D7%99%D7%9D/"
+    ],
+    "location.city": [
+      "https://www.shbn.co.il/projects/%D7%97%D7%9C%D7%95%D7%9E%D7%95%D7%AA-%D7%A4%D7%90%D7%A8%D7%A7-%D7%94%D7%99%D7%9D/"
+    ],
+    "location.neighborhood": [
+      "https://www.shbn.co.il/projects/%D7%97%D7%9C%D7%95%D7%9E%D7%95%D7%AA-%D7%A4%D7%90%D7%A8%D7%A7-%D7%94%D7%99%D7%9D/"
+    ],
+    "context": [
+      "https://www.shbn.co.il/projects/%D7%97%D7%9C%D7%95%D7%9E%D7%95%D7%AA-%D7%A4%D7%90%D7%A8%D7%A7-%D7%94%D7%99%D7%9D/"
+    ],
+    "building_form.floors": [
+      "https://www.shbn.co.il/projects/%D7%97%D7%9C%D7%95%D7%9E%D7%95%D7%AA-%D7%A4%D7%90%D7%A8%D7%A7-%D7%94%D7%99%D7%9D/"
+    ],
+    "building_form.height_m": [
+      "https://www.shbn.co.il/projects/%D7%97%D7%9C%D7%95%D7%9E%D7%95%D7%AA-%D7%A4%D7%90%D7%A8%D7%A7-%D7%94%D7%99%D7%9D/"
+    ],
+    "building_form.num_buildings": [
+      "https://www.shbn.co.il/projects/%D7%97%D7%9C%D7%95%D7%9E%D7%95%D7%AA-%D7%A4%D7%90%D7%A8%D7%A7-%D7%94%D7%99%D7%9D/"
+    ],
+    "units.total_units": [
+      "https://www.shbn.co.il/projects/%D7%97%D7%9C%D7%95%D7%9E%D7%95%D7%AA-%D7%A4%D7%90%D7%A8%D7%A7-%D7%94%D7%99%D7%9D/"
+    ],
+    "units.mix": [
+      "https://www.shbn.co.il/projects/%D7%97%D7%9C%D7%95%D7%9E%D7%95%D7%AA-%D7%A4%D7%90%D7%A8%D7%A7-%D7%94%D7%99%D7%9D/"
+    ],
+    "urban_future.renewal_type": [
+      "https://www.shbn.co.il/projects/%D7%97%D7%9C%D7%95%D7%9E%D7%95%D7%AA-%D7%A4%D7%90%D7%A8%D7%A7-%D7%94%D7%99%D7%9D/"
+    ],
+    "media.gallery_page_url": [
+      "https://www.shbn.co.il/projects/%D7%97%D7%9C%D7%95%D7%9E%D7%95%D7%AA-%D7%A4%D7%90%D7%A8%D7%A7-%D7%94%D7%99%D7%9D/"
+    ]
+  },
+  "source_lines": [
+    "Shikun & Binui Park HaYam lines 32-47 and 143-180."
+  ],
+  "evidence": [
+    "Shikun & Binui page marks 'בשיווק, הבניה בעיצומה', says 30-floor luxury residential tower with 3/4/5 room apartments and mini-penthouses, green building standard, and occupancy 31/12/2026."
+  ],
+  "_unverified": [
+    "location.lat",
+    "location.lng",
+    "location.gis_confidence",
+    "building_form.footprint_shape",
+    "building_form.footprint_dims_m",
+    "building_form.main_facade_orientation_deg",
+    "context.dist_to_sea_m",
+    "context.sea_bearing_deg",
+    "market.area_ppsqm",
+    "prices"
+  ],
+  "context_src": [
+    "https://www.shbn.co.il/projects/%D7%97%D7%9C%D7%95%D7%9E%D7%95%D7%AA-%D7%A4%D7%90%D7%A8%D7%A7-%D7%94%D7%99%D7%9D/"
+  ],
+  "db_meta": {
+    "source_batch": "chatgpt_gush_dan_2026-07-03",
+    "ingested_at": "2026-07-04",
+    "verification": "urls_http200_confirmed; sample content-verified; coords UNVERIFIED; prices ABSENT",
+    "canonical": true,
+    "ready_for_page": false,
+    "needs": [
+      "geocode",
+      "price",
+      "floors/units where null",
+      "media urls",
+      "5-lang article body"
+    ]
+  }
+}

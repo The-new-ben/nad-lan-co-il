@@ -1,0 +1,83 @@
+{
+  "id": "ashira-sde-dov",
+  "identity": {
+    "name_he": "אשירה שדה דב",
+    "name_en": "Ashira Sde Dov",
+    "aka": [],
+    "developer": "(TBD — confirm developer)",
+    "contractor": null,
+    "architect": null,
+    "marketing_status": "under_construction",
+    "urls": {
+      "official": null,
+      "madlan": null,
+      "yad2": null,
+      "developer": null
+    }
+  },
+  "location": {
+    "building_address": null,
+    "sales_office_address": null,
+    "city": "Tel Aviv-Yafo",
+    "neighborhood": "רובע שדה דב / שכונת אשכול",
+    "gush": null,
+    "helka": null,
+    "lat": null,
+    "lng": null,
+    "geocode_status": "needs_geocode",
+    "geocode_source": null,
+    "coord_estimate_unverified": null,
+    "plot_polygon_geojson": null,
+    "ground_elevation_m": null
+  },
+  "context": {},
+  "building_form": {},
+  "units": {},
+  "market": {},
+  "urban_future": {},
+  "media": {
+    "gallery_page_url": null,
+    "render_urls": [
+      "assets/projects/ashira-sde-dov/ashira-hero-concept.jpg"
+    ],
+    "facade_concept": "assets/projects/ashira-sde-dov/ashira-facade-concept.jpg"
+  },
+  "assets_3d": {
+    "glb_model": "assets/projects/ashira-sde-dov/model-context.glb",
+    "facade_variants": null,
+    "default_orbit": null,
+    "default_target": null,
+    "frame_radius": null,
+    "unit_hotspots": null,
+    "poster": null,
+    "asset_folder": "assets/projects/ashira-sde-dov"
+  },
+  "content": {
+    "article": {
+      "he": null,
+      "en": null,
+      "fr": null,
+      "ru": null,
+      "ar": null
+    }
+  },
+  "confidence": {
+    "overall": "med",
+    "notes": "Our authored prototype (illustrative). Was NOT in the ChatGPT batch. On the Sde Dov airfield redevelopment like Rainbow — geocode carefully (same zone that ChatGPT mis-pinned)."
+  },
+  "db_meta": {
+    "source_batch": "nadlan_own_authored",
+    "ingested_at": "2026-07-04",
+    "verification": "our authored prototype assets exist in repo; identity real; prices/coords NOT verified",
+    "canonical": true,
+    "ready_for_page": false,
+    "needs": [
+      "geocode",
+      "official_url",
+      "price",
+      "verified floors/units",
+      "5-lang article body",
+      "production 3D model (current is illustrative prototype)"
+    ]
+  }
+}
