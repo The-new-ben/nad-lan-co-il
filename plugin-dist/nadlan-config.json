@@ -1,15 +1,15 @@
 {
   "name": "NadLan Config",
   "slug": "nadlan-config",
-  "version": "1.71.5",
+  "version": "1.71.6",
   "author": "nad-lan.co.il",
   "homepage": "https://nad-lan.co.il",
   "requires": "6.7",
   "tested": "7.0",
   "requires_php": "7.4",
-  "download_url": "https://raw.githubusercontent.com/The-new-ben/nad-lan-co-il/main/plugin-dist/nadlan-config-1.71.5.zip",
-  "last_updated": "2026-07-04 20:45:00",
+  "download_url": "https://raw.githubusercontent.com/The-new-ben/nad-lan-co-il/main/plugin-dist/nadlan-config-1.71.6.zip",
+  "last_updated": "2026-07-04 21:30:00",
   "sections": {
-    "changelog": "<h4>1.71.5</h4><ul><li>Calculator JS moved to wp_footer: WordPress content filters corrupted inline scripts inside the_content (Invalid token). Widgets now run.</li></ul>"
+    "changelog": "<h4>1.71.6</h4><ul><li>[nadlan_premium_catalog]: the curated premium tier. Booking-style filters (11 facilities, rooms, delivery, near-sea), verified figures, deals line, 5-language links per card, developers-join CTA. Only full-experience projects appear.</li></ul>"
   }
 }
