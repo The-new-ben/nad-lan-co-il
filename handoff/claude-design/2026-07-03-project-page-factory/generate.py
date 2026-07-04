@@ -163,7 +163,19 @@ EXTRA={
   pro_law="محامي عقارات · موثّق",pro_appr="مثمّن عقاري · موثّق",pro_mort="مستشار رهن · موثّق",
   map_streets="شوارع",map_sat="قمر صناعي",map_prices="أسعار المنطقة",faq_q_delivery="موعد التسليم والمطوّر؟",render_alt="محاكاة"),
 }
-for _l in LANGS: UI[_l].update(EXTRA[_l])
+EXTRA2={
+"he":dict(art_title="המדריך המלא לפרויקט",facil_t="מתקנים ושירותים",pov="מבט מהדירה",pov_exit="יציאה ממבט הדירה",
+  facade_note="מיפוי דירות משוער על ההדמיה · להמחשה"),
+"en":dict(art_title="The complete project guide",facil_t="Facilities & services",pov="View from the apartment",pov_exit="Exit apartment view",
+  facade_note="Approximate unit mapping on the rendering · illustrative"),
+"fr":dict(art_title="Le guide complet du projet",facil_t="Équipements & services",pov="Vue depuis l'appartement",pov_exit="Quitter la vue",
+  facade_note="Repérage approximatif des logements · illustratif"),
+"ru":dict(art_title="Полный гид по проекту",facil_t="Инфраструктура и сервисы",pov="Вид из квартиры",pov_exit="Выйти из вида",
+  facade_note="Примерная разметка квартир на визуализации · иллюстративно"),
+"ar":dict(art_title="الدليل الكامل للمشروع",facil_t="المرافق والخدمات",pov="الإطلالة من الشقة",pov_exit="الخروج من الإطلالة",
+  facade_note="تحديد تقريبي للشقق على المحاكاة · للتوضيح"),
+}
+for _l in LANGS: UI[_l].update(EXTRA[_l]); UI[_l].update(EXTRA2[_l])
 
 # Article (woven): hero lede + 4 section intros, per project, 5 languages.
 # Written real per project (Hebrew canonical), then real translations.
@@ -215,6 +227,30 @@ REPO=os.path.abspath(os.path.join(OUT,"..","..",".."))
 # fills presentation gaps until enrichment lands. DB wins on verified identity.
 DB_SLUG={"ashira-sde-dov":"ashira-sde-dov","rainbow-tel-aviv":"rainbow-sde-dov",
          "dimri-yama-sde-dov":"dimri-yama","duo-tel-aviv":None}
+# Real facilities per project (sourced: official amenity lists / dossier / articles)
+FACILITIES={
+ "rainbow-tel-aviv":["לגונה ובריכות","ספא ו-Wellness","חדר כושר","קולנוע","קונסיירז'","לאונג' עסקי","ג'ימבורי ילדים","מסעדות ומסחר בקומת הקרקע","חניון","ממ\"ד בכל דירה","לובי מעוצב Orly Shrem"],
+ "ashira-sde-dov":["בריכה","ספא","חדר כושר","קולנוע","לאונג' דיירים","אזורי ילדים","מסחר בקומת הקרקע","חניון","ממ\"ד בכל דירה"],
+ "dimri-yama-sde-dov":["בריכה","חדר כושר","לובי מעוצב Kelly Hoppen","אזורי ילדים","מסחר סמוך","חניון","ממ\"ד בכל דירה"],
+ "duo-tel-aviv":["לובי מעוצב","חדר כושר","חניון","ממ\"ד בכל דירה"],
+}
+MIN_ARTICLE_WORDS=3000
+
+def article_words(html):
+  import re as _re
+  return len(_re.sub(r"<[^>]+>"," ",html or "").split())
+
+def load_article(slug,lang):
+  """Full article per language from the canonical DB. Returns (html, words)."""
+  ds=DB_SLUG.get(slug)
+  if not ds: return "",0
+  f=os.path.join(REPO,"data","projects",ds+".json")
+  if not os.path.exists(f): return "",0
+  d=json.load(open(f,encoding="utf-8"))
+  ent=(((d.get("content") or {}).get("article") or {}).get(lang)) or {}
+  html=ent.get("html") or ""
+  return html, article_words(html)
+
 def db_merge(slug,P):
   ds=DB_SLUG.get(slug)
   if not ds: return P
@@ -288,13 +324,37 @@ def render(slug):
     hs={u["id"]:u for u in m["units"]}
     base["units"]=[dict(u, hotspot=hs[u["id"]]["hotspot_position"], hnormal=hs[u["id"]]["hotspot_normal"],
                      uorbit=hs[u["id"]]["camera_orbit"]) if u["id"] in hs else dict(u) for u in base["units"]]
-  out=[]
+  # facade tiles: approximate stage coords from floor + line (labeled on-page)
+  DIRX={"מערב":40,"west":40,"דרום מערב":28,"south-west":28,"north-west":52,"צפון מערב":52,
+        "דרום":56,"south":56,"מזרח":64,"east":64}
+  top=max(base.get("floors") or 40,1)
+  n=len(base["units"])
+  for i,u in enumerate(base["units"]):
+    if "stage_x" not in u or u.get("stage_x") in (None,""):
+      u["stage_x"]=max(4,min(82,DIRX.get(str(u.get("dir","")).strip(),42)+ (i%3)*5 - 4))
+      frac=min(.94,max(.04,float(u["floor"])/top))
+      u["stage_y"]=round(86-frac*74,1)
+      u["stage_w"]=14; u["stage_h"]=6.5
+  # THE OWNER'S LAW, machine-enforced: a page is NEVER emitted with an article
+  # under MIN_ARTICLE_WORDS, and NEVER without hotspots and a facade.
+  assert all(u.get("hotspot") for u in base["units"]), f"{slug}: hotspots missing — page blocked"
+  out=[]; blocked=[]
   fname_of=lambda l: f"page-{slug}.html" if l=="he" else f"page-{slug}.{l}.html"
+  emitted_langs=[l for l in LANGS if load_article(slug,l)[1]>=MIN_ARTICLE_WORDS]
+  if not emitted_langs:
+    print(f"GATE: {slug} — NO language with a {MIN_ARTICLE_WORDS}+ word article; project fully blocked")
+    return [f"BLOCKED-PROJECT: {slug} (no compliant article in any language)"]
   for lang in LANGS:
+    art_html,art_w=load_article(slug,lang)
+    if art_w<MIN_ARTICLE_WORDS:
+      blocked.append(f"{fname_of(lang)}  (article {art_w}<{MIN_ARTICLE_WORDS} words — BLOCKED by gate)")
+      continue
     P=dict(base)
+    P["article_html"]=art_html
+    P["facilities"]=FACILITIES.get(slug,[])
     title,desc,extra=head_meta(slug,P,A,lang,fname_of)
-    lang_files={l:fname_of(l) for l in LANGS}
-    data=dict(slug=slug,P=P,UI=UI,A=A,LANGS=LANGS,LANG_NAMES=LANG_NAMES,RTL=list(RTL),
+    lang_files={l:fname_of(l) for l in emitted_langs}
+    data=dict(slug=slug,P=P,UI=UI,A=A,LANGS=emitted_langs,LANG_NAMES=LANG_NAMES,RTL=list(RTL),
               TOKEN=TOKEN,lang=lang,lang_files=lang_files)
     tpl=TEMPLATE.replace("/*__DATA__*/","window.NLP="+json.dumps(data,ensure_ascii=False)+";")
     d="rtl" if lang in RTL else "ltr"
@@ -303,7 +363,8 @@ def render(slug):
       f"<title>{esc(title)}</title>\n<meta name=\"description\" content=\"{esc(desc)}\">\n{extra}")
     fn=fname_of(lang)
     open(os.path.join(OUT,"pages",fn),"w",encoding="utf-8").write(tpl)
-    out.append(fn)
+    out.append(f"{fn}  (article {art_w}w ✓ hotspots ✓ facade ✓)")
+  for b_ in blocked: out.append("BLOCKED: "+b_)
   return out
 
 def art_from(P):

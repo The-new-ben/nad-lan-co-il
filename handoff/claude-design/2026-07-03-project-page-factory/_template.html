@@ -39,6 +39,30 @@ button{font-family:inherit;cursor:pointer}
 .langs button.on{background:var(--card);color:var(--ink);box-shadow:0 1px 4px rgba(0,0,0,.08)}
 .langs a{color:var(--soft);font-size:13px;font-weight:600;padding:5px 11px;border-radius:999px;text-decoration:none}
 .langs a.on{background:var(--card);color:var(--ink);box-shadow:0 1px 4px rgba(0,0,0,.08)}
+/* full SEO article (the 3,000-word law) */
+.fullart{background:var(--card);border:1px solid var(--hair);border-radius:16px;padding:34px 34px 26px;margin-top:18px}
+.fullart h2{font-size:1.35rem;margin:26px 0 10px}
+.fullart h3{font-size:1.08rem;margin:18px 0 8px}
+.fullart p{margin:0 0 12px;color:var(--soft);font-size:15.5px;line-height:1.75;max-width:72ch}
+.fullart ul,.fullart ol{color:var(--soft);font-size:15.5px;line-height:1.7;padding-inline-start:22px}
+.fullart table{border-collapse:collapse;width:100%;font-size:14px;margin:10px 0}
+.fullart td,.fullart th{border:1px solid var(--hair);padding:7px 10px;text-align:start}
+.fullart .nadlan-guide__byline{font-size:12.5px;color:var(--gold);font-weight:600;margin-bottom:12px}
+.fullart img{max-width:100%;height:auto;border-radius:10px}
+.fsq{position:absolute;border:2px solid rgba(255,255,255,.85);background:rgba(27,26,23,.28);border-radius:8px;
+  color:#fff;font-size:11px;font-weight:800;display:grid;place-items:center;cursor:pointer;
+  transition:background .15s,border-color .15s;padding:0}
+.fsq:hover{background:rgba(194,86,58,.45)}
+.fsq.on{border-color:var(--terra);background:rgba(194,86,58,.55);box-shadow:0 0 0 3px rgba(194,86,58,.35)}
+.fsq.is-sold{opacity:.45;cursor:not-allowed}
+.fsq small{display:block;font-weight:600;font-size:9px;opacity:.9}
+.facade-note{position:absolute;bottom:10px;inset-inline-start:10px;font-size:10.5px;color:#fff;
+  background:rgba(20,19,15,.72);border-radius:7px;padding:4px 9px}
+.facil{display:flex;flex-wrap:wrap;gap:8px;margin:14px 0 0}
+.facil span{font-size:13px;background:var(--band);border:1px solid var(--hair);border-radius:999px;padding:6px 13px}
+.povbar{position:absolute;top:12px;inset-inline-start:12px;z-index:6;display:none;gap:8px}
+.povbar.on{display:flex}
+.povbar button{background:rgba(20,19,15,.85);color:#E6D4AE;border:1px solid rgba(230,212,174,.4);border-radius:999px;padding:7px 14px;font-size:12.5px;font-weight:700;cursor:pointer}
 .cta{background:var(--terra);color:#fff;border:0;border-radius:999px;padding:10px 18px;font-weight:700;font-size:14px}
 .modbtn{border:1px solid var(--hair);background:var(--card);border-radius:999px;padding:8px 14px;font-weight:600;font-size:13px;color:var(--soft)}
 .modpop{position:absolute;inset-inline-end:22px;top:64px;background:var(--card);border:1px solid var(--hair);
@@ -214,8 +238,14 @@ function build(){
     ${genbadge}
     <div class="choose">
       <div class="stage" id="stage">
+        <div class="povbar" id="povbar"><button id="povexit" type="button">✕ ${esc(U.pov_exit||'')}</button></div>
         <div class="toggle"><button class="on" data-view="3d">${U.model3d}</button><button data-view="facade">${U.facade}</button></div>
-        <div class="facade" id="facade" style="background-image:url('${esc(P.poster)}')"></div>
+        <div class="facade" id="facade" style="background-image:url('${esc(P.facade_img||P.poster)}')">
+          ${P.units.map(u=>`<button class="fsq${u.status==='sold'?' is-sold':''}" data-id="${esc(u.id)}"
+            style="inset-inline-start:${u.stage_x}%;top:${u.stage_y}%;width:${u.stage_w||15}%;height:${u.stage_h||7}%"
+            aria-label="${esc(u.label||u.id)}"><span>${esc(u.label||u.id)}<small>${u.rooms} · ${u.floor}</small></span></button>`).join('')}
+          <span class="facade-note">${esc(U.facade_note||'')}</span>
+        </div>
         <model-viewer id="mv2" src="${esc(P.glb)}" poster="${esc(P.poster)}" reveal="auto" camera-controls auto-rotate
           auto-rotate-delay="1400" rotation-per-second="8deg" interaction-prompt="none" ar="false" environment-image="neutral"
           exposure="1.06" shadow-intensity="0.7" shadow-softness="1" style="width:100%;height:100%"
@@ -295,6 +325,11 @@ function build(){
     <details><summary>${esc(U.faq_q_delivery)}</summary><p>${esc(P.delivery)} · ${esc(P.dev)}</p></details>
   </section>
 
+  <section class="wrap" data-m="article">
+    <div class="sec-h"><span class="eyebrow">SEO</span><h2>${U.art_title||''}</h2></div>
+    ${P.facilities&&P.facilities.length?`<div class="facil">${P.facilities.map(f=>`<span>${esc(f)}</span>`).join('')}</div>`:''}
+    <div class="fullart" dir="${D.RTL.indexOf(LANG)>=0?'rtl':'ltr'}">${P.article_html||''}</div>
+  </section>
   <div class="wrap"><div class="disc">${U.disc}</div></div>
   <footer class="wrap">נדלן · ${esc(P.name_lat)} · תבנית מודולרית · he/en/fr/ru/ar</footer>
   `;
@@ -337,6 +372,22 @@ function renderUnits(){
       <span class="p">${nf(est(u))} ₪</span>`;
     el.onclick=()=>select(u.id);c.appendChild(el);});
 }
+let povPrev=null;
+function enterPOV(u){
+  const m=document.getElementById('mv2'); if(!m||!u.hotspot) return;
+  document.querySelector('.toggle button[data-view="3d"]')?.click();
+  povPrev={orbit:m.getAttribute('camera-orbit'),target:m.getAttribute('camera-target'),fov:m.getAttribute('field-of-view')||'30deg'};
+  m.autoRotate=false;
+  m.cameraTarget=u.hotspot[0]+'m '+u.hotspot[1]+'m '+u.hotspot[2]+'m';
+  m.cameraOrbit='0deg 85deg 2m'; m.fieldOfView='75deg';
+  document.getElementById('povbar').classList.add('on');
+  document.getElementById('stage').scrollIntoView({behavior:'smooth',block:'center'});
+}
+function exitPOV(){
+  const m=document.getElementById('mv2'); if(!m||!povPrev) return;
+  m.cameraTarget=povPrev.target; m.cameraOrbit=povPrev.orbit; m.fieldOfView=povPrev.fov;
+  document.getElementById('povbar').classList.remove('on'); povPrev=null;
+}
 function renderPins(){
   const c=document.getElementById('pins');c.innerHTML='';
   const top=P.floors||40;
@@ -349,6 +400,7 @@ function renderPins(){
 function select(id){sel=id;const u=P.units.find(x=>x.id===id);
   document.querySelectorAll('.unit').forEach(e=>e.classList.toggle('on',e.dataset.id===id));
   document.querySelectorAll('.mvhot').forEach(e=>e.classList.toggle('on',e.dataset.id===id));
+  document.querySelectorAll('.fsq').forEach(e=>e.classList.toggle('on',e.dataset.id===id));
   if(u.uorbit){const m2=document.getElementById('mv2');if(m2){m2.autoRotate=false;m2.cameraOrbit=u.uorbit;}}
   clampMV();
   const pn=document.getElementById('panel');pn.hidden=false;
@@ -358,8 +410,12 @@ function select(id){sel=id;const u=P.units.find(x=>x.id===id);
     <div><div class="k">${U.sqm}</div><div class="v">${u.sqm}</div></div>
     <div><div class="k">${U.price_l} (${U.est})</div><div class="v" style="color:var(--terra)">${nf(est(u))} ₪</div></div>
     </div>
-    <div class="row"><span class="chipbtn">${U.dir}: ${esc(u.dir)}</span><span class="chipbtn">${U.view}</span><span class="chipbtn">${U.plan}</span>
+    <div class="row"><span class="chipbtn">${U.dir}: ${esc(u.dir)}</span><span class="chipbtn">${U.plan}</span>
+      <button class="chipbtn" data-act="pov" data-id="${esc(u.id)}" style="cursor:pointer;border-color:var(--gold);color:var(--gold);background:transparent">👁 ${U.pov||U.view}</button>
       <button class="cta">${U.inquire} · ${esc(u.label||u.id)}</button></div>`;
+  document.querySelectorAll('.fsq').forEach(e=>{if(!e.dataset.wired){e.dataset.wired=1;e.onclick=()=>{if(!e.classList.contains('is-sold'))select(e.dataset.id);};}});
+  const pvb=pn.querySelector('[data-act="pov"]'); if(pvb) pvb.onclick=()=>enterPOV(u);
+  const pxe=document.getElementById('povexit'); if(pxe&&!pxe.dataset.wired){pxe.dataset.wired=1;pxe.onclick=exitPOV;}
   const m=document.getElementById('m_price');if(m){m.textContent=nf(est(u))+' ₪';recalcMort();}
 }
 function wire(){

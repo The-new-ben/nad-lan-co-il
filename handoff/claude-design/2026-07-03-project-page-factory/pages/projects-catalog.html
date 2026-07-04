@@ -1,0 +1,85 @@
+<!doctype html><html lang="he" dir="rtl"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>נדלן · קטלוג פרויקטים חדשים — סינון לפי מתקנים, חדרים ואכלוס</title>
+<link href="https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@700;900&family=Heebo:wght@300;400;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--paper:#FAF7F1;--band:#F3EEE3;--ink:#1B1A17;--soft:#4A463E;--gold:#9C7A3C;--terra:#C2563A;--hair:#E2DCD0;--card:#fff}
+*{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font-family:"Heebo",system-ui,sans-serif;padding:34px 20px 60px}
+.wrap{max-width:1060px;margin:0 auto}
+h1{font-family:"Frank Ruhl Libre",serif;font-size:clamp(24px,4vw,36px);margin:.2em 0}
+.sub{color:var(--soft);font-size:14.5px;margin-bottom:18px}
+.bar{display:flex;flex-wrap:wrap;gap:8px;margin:14px 0 8px;align-items:center}
+.bar .lbl{font-size:12px;letter-spacing:.12em;color:var(--gold);font-weight:700;text-transform:uppercase;margin-inline-end:4px}
+.f,.fr{background:var(--card);border:1px solid var(--hair);border-radius:999px;padding:7px 14px;font-size:13.5px;font-family:inherit;cursor:pointer}
+.f.on,.fr.on{background:var(--ink);color:#fff;border-color:var(--ink)}
+.count{font-size:13px;color:var(--soft);margin:6px 0 16px}
+.card{background:var(--card);border:1px solid var(--hair);border-radius:16px;padding:22px 24px;margin-bottom:16px;box-shadow:0 14px 34px rgba(27,26,23,.06)}
+.card.hide{display:none}
+.chead{display:flex;justify-content:space-between;align-items:baseline;gap:12px}
+.chead h3{font-family:"Frank Ruhl Libre",serif;font-size:1.3rem;margin:0}
+.dev{font-size:13px;color:var(--soft)}
+.meta{font-size:13.5px;color:var(--soft);margin:4px 0 8px}
+.price{font-size:15px;margin:2px 0 8px}.price b{color:var(--terra)}.price em{display:block;font-style:normal;font-size:11.5px;color:var(--soft)}
+.facil{display:flex;flex-wrap:wrap;gap:6px;margin:8px 0}
+.facil span{font-size:12px;background:var(--band);border:1px solid var(--hair);border-radius:999px;padding:4px 10px}
+.deals{font-size:12.5px;color:var(--soft);border-top:1px dashed var(--hair);padding-top:8px;margin-top:6px}
+.deals .dt{font-weight:700;color:var(--ink)}
+.go{display:inline-block;margin-top:10px;color:var(--terra);font-weight:700;text-decoration:none;font-size:14px}
+.note{font-size:11.5px;color:var(--soft);background:var(--band);border-radius:10px;padding:8px 12px;margin-top:20px}
+</style></head><body><div class="wrap">
+<h1>קטלוג הפרויקטים — בוחרים לפי מה שחשוב לכם</h1>
+<div class="sub">סינון לפי מתקנים ושירותים, חדרים ושנת אכלוס · כל כרטיס מוביל לעמוד פרויקט מלא עם תלת־ממד, בחירת דירה, חזית ומאמר מקיף</div>
+<div class="bar"><span class="lbl">מתקנים</span><button class="f" data-fi="0">בריכה</button><button class="f" data-fi="1">ספא</button><button class="f" data-fi="2">חדר כושר</button><button class="f" data-fi="3">קולנוע</button><button class="f" data-fi="4">לגונה</button><button class="f" data-fi="5">קונסיירז&#x27;</button><button class="f" data-fi="6">לאונג&#x27;</button><button class="f" data-fi="7">ג&#x27;ימבורי</button><button class="f" data-fi="8">אזורי ילדים</button><button class="f" data-fi="9">מסחר</button><button class="f" data-fi="10">חניון</button><button class="f" data-fi="11">ממ&quot;ד</button><button class="f" data-fi="12">לובי מעוצב</button></div>
+<div class="bar"><span class="lbl">חדרים</span>
+<button class="fr" data-r="3">3 חד'</button><button class="fr" data-r="4">4 חד'</button><button class="fr" data-r="5">5 חד'</button>
+<span class="lbl" style="margin-inline-start:14px">אכלוס</span>
+<button class="fr" data-d="2027">2027</button><button class="fr" data-d="2028">2028</button>
+<button class="fr" data-sea="1" style="margin-inline-start:14px">🌊 קרוב לים</button></div>
+<div class="count" id="count"></div>
+<div id="cards">
+<article class="card" data-rooms="3,4,5" data-delivery="2027" data-sea="1" data-f1="1" data-f2="1" data-f3="1" data-f4="1" data-f5="1" data-f6="1" data-f7="1" data-f9="1" data-f10="1" data-f11="1" data-f12="1" data-pmin="6584600">
+  <div class="chead"><h3>Rainbow · ריינבו תל אביב</h3><span class="dev">ישראל קנדה</span></div>
+  <div class="meta">רובע שדה דב · אזור אשכול · 39 קומות · 459 דירות · אכלוס 2027</div>
+  <div class="price">החל מ־<b>6,584,600 ₪</b> <em>אומדן · ממוצע דירות שנמכרו בפרויקט כולל מע&quot;מ · דוח שנתי ישראל קנדה ליום …</em></div>
+  <div class="facil"><span>לגונה ובריכות</span><span>ספא ו-Wellness</span><span>חדר כושר</span><span>קולנוע</span><span>קונסיירז&#x27;</span><span>לאונג&#x27; עסקי</span><span>ג&#x27;ימבורי ילדים</span><span>מסעדות ומסחר בקומת הקרקע</span><span>חניון</span><span>ממ&quot;ד בכל דירה</span><span>לובי מעוצב Orly Shrem</span></div>
+  <div class="deals"><span class="dt">עסקאות והשוואות באזור:</span> ASHIRA שדה דב · 75,000 ₪/מ&quot;ר · 399 מ׳ · Dimri Yama שדה דב · 75,000 ₪/מ&quot;ר · 210 מ׳</div>
+  <a class="go" href="page-rainbow-tel-aviv.html">לעמוד הפרויקט — בחירת דירה בתלת־ממד ←</a>
+</article>
+<article class="card" data-rooms="3,4,5" data-delivery="2028" data-sea="1" data-f0="1" data-f1="1" data-f2="1" data-f3="1" data-f6="1" data-f8="1" data-f9="1" data-f10="1" data-f11="1" data-pmin="6750000">
+  <div class="chead"><h3>ASHIRA · אשירה שדה דב</h3><span class="dev">אביסרור משה ובניו</span></div>
+  <div class="meta">רובע שדה דב · מתחם אשכול · 35 קומות · 406 דירות · אכלוס 2028</div>
+  <div class="price">החל מ־<b>6,750,000 ₪</b> <em>אומדן · אומדן לא מחייב · מבוסס עסקאות מדווחות במתחם אשכול, שדה דב (מקור:…</em></div>
+  <div class="facil"><span>בריכה</span><span>ספא</span><span>חדר כושר</span><span>קולנוע</span><span>לאונג&#x27; דיירים</span><span>אזורי ילדים</span><span>מסחר בקומת הקרקע</span><span>חניון</span><span>ממ&quot;ד בכל דירה</span></div>
+  <div class="deals"><span class="dt">עסקאות והשוואות באזור:</span> Rainbow תל אביב · 76,000 ₪/מ&quot;ר · 399 מ׳ · Dimri Yama שדה דב · 75,000 ₪/מ&quot;ר · 310 מ׳</div>
+  <a class="go" href="page-ashira-sde-dov.html">לעמוד הפרויקט — בחירת דירה בתלת־ממד ←</a>
+</article>
+<article class="card" data-rooms="3,4,5" data-delivery="2028" data-sea="1" data-f0="1" data-f2="1" data-f8="1" data-f9="1" data-f10="1" data-f11="1" data-f12="1" data-pmin="6900000">
+  <div class="chead"><h3>Dimri Yama · דמרי ימה שדה דב</h3><span class="dev">י.ח דמרי</span></div>
+  <div class="meta">רובע שדה דב · מתחם אשכול · 39 קומות · 458 דירות · אכלוס 2028</div>
+  <div class="price">החל מ־<b>6,900,000 ₪</b> <em>אומדן · אומדן לא מחייב · יש לאמת מחיר, זמינות ותוכנית מול היזם לפני כל ה…</em></div>
+  <div class="facil"><span>בריכה</span><span>חדר כושר</span><span>לובי מעוצב Kelly Hoppen</span><span>אזורי ילדים</span><span>מסחר סמוך</span><span>חניון</span><span>ממ&quot;ד בכל דירה</span></div>
+  <div class="deals"><span class="dt">עסקאות והשוואות באזור:</span> ASHIRA שדה דב · 75,000 ₪/מ&quot;ר · 310 מ׳ · Rainbow תל אביב · 76,000 ₪/מ&quot;ר · 210 מ׳</div>
+  <a class="go" href="page-dimri-yama-sde-dov.html">לעמוד הפרויקט — בחירת דירה בתלת־ממד ←</a>
+</article></div>
+<div class="note">המחירים אומדנים בלבד עם מקור מוצג — לא מחירון יזם. הנתונים לאימות מול היזם. פרויקטים נוספים ייכנסו לקטלוג אוטומטית מה־database עם השלמת הנתונים שלהם.</div>
+</div>
+<script>
+const st={f:new Set(),r:new Set(),d:new Set(),sea:false};
+function apply(){
+  let n=0;
+  document.querySelectorAll('.card').forEach(c=>{
+    let ok=true;
+    st.f.forEach(i=>{if(!c.hasAttribute('data-f'+i))ok=false});
+    if(st.r.size){const rs=c.dataset.rooms.split(','); if(![...st.r].some(r=>rs.includes(r)))ok=false}
+    if(st.d.size && !st.d.has(c.dataset.delivery))ok=false;
+    if(st.sea && c.dataset.sea!=='1')ok=false;
+    c.classList.toggle('hide',!ok); if(ok)n++;
+  });
+  document.getElementById('count').textContent=n+' פרויקטים מתאימים';
+}
+document.querySelectorAll('.f').forEach(b=>b.onclick=()=>{const i=b.dataset.fi;b.classList.toggle('on');b.classList.contains('on')?st.f.add(i):st.f.delete(i);apply();});
+document.querySelectorAll('.fr[data-r]').forEach(b=>b.onclick=()=>{b.classList.toggle('on');b.classList.contains('on')?st.r.add(b.dataset.r):st.r.delete(b.dataset.r);apply();});
+document.querySelectorAll('.fr[data-d]').forEach(b=>b.onclick=()=>{b.classList.toggle('on');b.classList.contains('on')?st.d.add(b.dataset.d):st.d.delete(b.dataset.d);apply();});
+document.querySelector('[data-sea]').onclick=function(){this.classList.toggle('on');st.sea=this.classList.contains('on');apply();};
+apply();
+</script></body></html>
