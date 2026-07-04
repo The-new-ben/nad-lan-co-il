@@ -37,6 +37,8 @@ button{font-family:inherit;cursor:pointer}
 .langs button{border:0;background:transparent;color:var(--soft);font-size:13px;font-weight:600;
   padding:5px 11px;border-radius:999px}
 .langs button.on{background:var(--card);color:var(--ink);box-shadow:0 1px 4px rgba(0,0,0,.08)}
+.langs a{color:var(--soft);font-size:13px;font-weight:600;padding:5px 11px;border-radius:999px;text-decoration:none}
+.langs a.on{background:var(--card);color:var(--ink);box-shadow:0 1px 4px rgba(0,0,0,.08)}
 .cta{background:var(--terra);color:#fff;border:0;border-radius:999px;padding:10px 18px;font-weight:700;font-size:14px}
 .modbtn{border:1px solid var(--hair);background:var(--card);border-radius:999px;padding:8px 14px;font-weight:600;font-size:13px;color:var(--soft)}
 .modpop{position:absolute;inset-inline-end:22px;top:64px;background:var(--card);border:1px solid var(--hair);
@@ -62,6 +64,8 @@ button{font-family:inherit;cursor:pointer}
 .hero-media{position:relative;aspect-ratio:1/1;border-radius:18px;overflow:hidden;background:#12110d;
   box-shadow:0 30px 60px -30px rgba(20,19,15,.6)}
 model-viewer{width:100%;height:100%;--poster-color:transparent;background:radial-gradient(120% 100% at 50% 0,#232016,#12110d)}
+.hero-plate{width:100%;height:100%;object-fit:cover;display:block}
+.to3d{position:absolute;bottom:14px;inset-inline-end:14px;background:rgba(20,19,15,.82);color:#E6D4AE;border:1px solid rgba(230,212,174,.35);border-radius:999px;padding:8px 16px;font-weight:700;font-size:13px;backdrop-filter:blur(6px)}
 .badge{position:absolute;z-index:6;inset-block-start:12px;inset-inline-start:12px;background:rgba(20,19,15,.82);
   color:#F1EADA;font-size:11px;font-weight:600;padding:6px 11px;border-radius:999px;max-width:70%}
 .badge.warnb{background:rgba(194,86,58,.92)}
@@ -155,7 +159,7 @@ footer{padding:26px 0 60px;color:var(--soft);font-size:12.5px}
 <div id="app"></div>
 <script>/*__DATA__*/</script>
 <script>
-const D=window.NLP,P=D.P; let LANG="he", U=D.UI[LANG], AR=D.A[LANG], sel=null, mv=null, map=null;
+const D=window.NLP,P=D.P; let LANG=D.lang||"he", U=D.UI[LANG], AR=D.A[LANG], sel=null, mv=null, map=null;
 const rtl=s=>D.RTL.includes(s);
 const nf=n=>new Intl.NumberFormat('he-IL').format(Math.round(n));
 const est=u=>Math.round(u.sqm*P.ppsqm/10000)*10000; // sqm*ppsqm, rounded — labeled estimate
@@ -199,10 +203,8 @@ function build(){
       <div class="fromprice"><span>${U.from_price}</span><b id="fromp"></b><span class="est">${U.est_badge}</span></div>
     </div>
     <div class="hero-media">${badge}
-      <model-viewer id="mv" src="${esc(P.glb)}" poster="${esc(P.poster)}" reveal="auto" camera-controls
-        auto-rotate auto-rotate-delay="900" rotation-per-second="9deg" interaction-prompt="none" ar="false"
-        environment-image="neutral" exposure="1.06" shadow-intensity="0.7" shadow-softness="1" touch-action="pan-y"
-        camera-orbit="${esc(P.orbit)}" camera-target="${esc(P.target)}"></model-viewer>
+      <img class="hero-plate" src="${esc(P.poster)}" alt="${esc(P.name_lat)} — ${U.render_alt}" loading="eager">
+      <button class="to3d" onclick="document.getElementById('stage').scrollIntoView({behavior:'smooth'})">${U.model3d} ↓</button>
     </div>
   </div></section>
 
@@ -301,10 +303,23 @@ function build(){
   applyMods();
 }
 
+function clampMV(){
+  const m=document.getElementById('mv2');
+  const c=m&&m.shadowRoot&&m.shadowRoot.querySelector('canvas');
+  if(c){c.style.maxWidth='100%';c.style.maxHeight='100%';}
+}
+setInterval(clampMV,1500);
 function renderLangs(){
+  // SEO law: the switcher links to REAL per-language files (crawlable <a hreflang>),
+  // never a JS-only swap. Fallback to in-page swap only if no file map was injected.
   const c=document.getElementById('langs');c.innerHTML='';
-  D.LANGS.forEach(l=>{const b=document.createElement('button');b.textContent=D.LANG_NAMES[l];
-    b.className=l===LANG?'on':'';b.onclick=()=>{LANG=l;const s=window.scrollY;build();window.scrollTo(0,s);};c.appendChild(b);});
+  D.LANGS.forEach(l=>{
+    const f=D.lang_files&&D.lang_files[l];
+    if(f){const a=document.createElement('a');a.textContent=D.LANG_NAMES[l];a.href=f;
+      a.hreflang=l;a.className=l===LANG?'on':'';c.appendChild(a);}
+    else{const b=document.createElement('button');b.textContent=D.LANG_NAMES[l];
+      b.className=l===LANG?'on':'';b.onclick=()=>{LANG=l;const s=window.scrollY;build();window.scrollTo(0,s);};c.appendChild(b);}
+  });
 }
 function renderMods(){
   const c=document.getElementById('modlist');c.innerHTML='';
@@ -335,6 +350,7 @@ function select(id){sel=id;const u=P.units.find(x=>x.id===id);
   document.querySelectorAll('.unit').forEach(e=>e.classList.toggle('on',e.dataset.id===id));
   document.querySelectorAll('.mvhot').forEach(e=>e.classList.toggle('on',e.dataset.id===id));
   if(u.uorbit){const m2=document.getElementById('mv2');if(m2){m2.autoRotate=false;m2.cameraOrbit=u.uorbit;}}
+  clampMV();
   const pn=document.getElementById('panel');pn.hidden=false;
   pn.innerHTML=`<div class="grid">
     <div><div class="k">${U.floor}</div><div class="v">${u.floor}</div></div>
