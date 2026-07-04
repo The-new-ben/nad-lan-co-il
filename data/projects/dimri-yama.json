@@ -43,14 +43,17 @@
     "site_plan_url": null
   },
   "assets_3d": {
-    "glb_model": "assets/projects/dimri-yama/model-prototype.glb",
+    "glb_model": "plugins/nadlan-config/assets/showroom-engine/models/dimri.glb",
     "facade_variants": null,
     "default_orbit": null,
     "default_target": null,
     "frame_radius": null,
     "unit_hotspots": null,
     "poster": null,
-    "asset_folder": "assets/projects/dimri-yama"
+    "asset_folder": "assets/projects/dimri-yama",
+    "model_tier": "B-scene (3192 tris) — NO rich Dimri GLB exists in repo; needs upload or Tier-B regen",
+    "unit_map": "assets/projects/dimri-yama/unit-map.json",
+    "environment": "assets/projects/dimri-yama/environment.json"
   },
   "content": {
     "article": {
