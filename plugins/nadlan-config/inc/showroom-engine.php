@@ -468,7 +468,14 @@ add_filter( 'the_content', function ( $content ) {
 	$original = (string) $content;
 	$article  = $original;
 	if ( stripos( $original, 'nlv2-showroom' ) !== false ) {
-		$start = stripos( $original, '<section class="nlv2-section"' );
+		// Attribute-order-proof: the article section may carry id/aria before class
+		// (e.g. <section id="nlv2-ashira-info" class="nlv2-section">). The old literal
+		// '<section class="nlv2-section"' match missed it and silently dropped a
+		// 3,000-word article with the legacy showroom. Match by class token instead.
+		$start = false;
+		if ( preg_match( '#<section\b[^>]*class="[^"]*nlv2-section[^"]*"[^>]*>#i', $original, $sm, PREG_OFFSET_CAPTURE ) ) {
+			$start = $sm[0][1];
+		}
 		if ( $start !== false ) {
 			$end       = stripos( $original, '</main>', $start );
 			$candidate = ( $end !== false ) ? substr( $original, $start, $end - $start ) : substr( $original, $start );
