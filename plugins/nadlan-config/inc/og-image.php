@@ -116,9 +116,29 @@ add_action( 'wp_head', function () {
 	echo "<meta name=\"twitter:card\" content=\"summary_large_image\">\n";
 }, 28 );
 
+/* Homepage + language homes had NO og:image at all — WhatsApp/FB/LinkedIn fell
+   back to scraping the (old) favicon. A real 1200x630 PNG brand card, stored in
+   the media library and CMS-wired via option, is emitted on / and /en /fr /ru /ar.
+   PNG, not SVG: FB/WhatsApp scrapers do not render SVG og:images. */
+add_action( 'init', function () {
+	register_setting( 'general', 'nadlan_og_default_image', array( 'type' => 'string', 'sanitize_callback' => 'esc_url_raw', 'default' => '', 'show_in_rest' => true ) );
+} );
+add_action( 'wp_head', function () {
+	$is_lang_home = function_exists( 'nadlan_is_language_home' ) && nadlan_is_language_home();
+	if ( ! is_front_page() && ! $is_lang_home ) { return; }
+	$url = trim( (string) get_option( 'nadlan_og_default_image', '' ) );
+	if ( '' === $url ) { return; }
+	$url = esc_url( $url );
+	echo "\n<meta property=\"og:image\" content=\"$url\">\n";
+	echo "<meta property=\"og:image:width\" content=\"1200\">\n";
+	echo "<meta property=\"og:image:height\" content=\"630\">\n";
+	echo "<meta name=\"twitter:image\" content=\"$url\">\n";
+}, 28 );
+
 add_filter( 'nadlan_config_healthcheck', function ( $out ) {
 	$out['og_image'] = array(
 		'https_normalizer' => true,
+		'default_card'     => true,
 	);
 	return $out;
 } );
