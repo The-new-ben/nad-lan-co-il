@@ -79,7 +79,8 @@ if ( ! function_exists( 'nadlan_bvr_ptax_js' ) ) {
 add_shortcode( 'nadlan_buy_vs_rent', function () {
 	$tax = function_exists( 'nadlan_purchase_tax_config' ) ? nadlan_purchase_tax_config() : array( 'effective' => '', 'source' => '', 'single' => array() );
 	$eff = esc_html( isset( $tax['effective'] ) ? $tax['effective'] : '' );
-	ob_start(); echo nadlan_bvr_styles(); echo nadlan_bvr_ptax_js(); ?>
+	nadlan_bvr_mark( 'bvr' );
+	ob_start(); echo nadlan_bvr_styles(); ?>
 <div class="nlbvr" id="nlbvr">
   <h3>קנייה או שכירות: סימולציה מלאה, שנה אחר שנה</h3>
   <p class="sub">לא רק "כמה עולה משכנתא": המנוע מחשב גם מה היה קורה לכסף שלכם אילו נשאר מושקע. שנו כל הנחה ובדקו את הרגישות.</p>
@@ -109,6 +110,56 @@ add_shortcode( 'nadlan_buy_vs_rent', function () {
   <div class="nlbvr-sens" id="bv_sens"></div>
   <p class="nlbvr-disc">מס רכישה מחושב אוטומטית לפי מדרגות דירה יחידה בתוקף מ-<?php echo $eff; ?> (<a href="<?php echo esc_url( $tax['source'] ); ?>" rel="nofollow noopener" target="_blank">לאימות מול רשות המסים</a>). כל התוצאות אומדן להשוואה בלבד ואינן ייעוץ השקעות, מס או משכנתא. רווחי השקעה חושבו בניכוי 25% מס רווח הון.</p>
 </div>
+
+<?php return ob_get_clean();
+} );
+
+/* ============================= 2. DEAL CHECK ============================= */
+add_shortcode( 'nadlan_deal_check', function () {
+	nadlan_bvr_mark( 'deal' );
+	ob_start(); echo nadlan_bvr_styles(); ?>
+<div class="nlbvr" id="nldeal">
+  <h3>בדיקת כדאיות לדירה ספציפית</h3>
+  <p class="sub">מזינים את נתוני הדירה ומקבלים ציון משוקלל: מחיר מול השוק, תשואה, עומס מימון ועלות רכישה מלאה, עם רשימת בדיקות לפני החלטה.</p>
+  <div class="grid">
+    <h4>הדירה הנבדקת</h4>
+    <div><label>מחיר מבוקש (₪)</label><input id="dc_price" type="number" value="2400000" step="10000"></div>
+    <div><label>שטח (מ"ר)</label><input id="dc_sqm" type="number" value="85" step="1"></div>
+    <div><label>שכ"ד חודשי צפוי (₪)</label><input id="dc_rent" type="number" value="6500" step="100"></div>
+    <div><label>מחיר ממוצע למ"ר באזור (₪)</label><input id="dc_area" type="number" value="30000" step="500"></div>
+    <h4>המימון שלכם</h4>
+    <div><label>הון עצמי (₪)</label><input id="dc_equity" type="number" value="720000" step="10000"></div>
+    <div><label>הכנסה חודשית נטו של משק הבית (₪)</label><input id="dc_income" type="number" value="24000" step="500"></div>
+    <div><label>ריבית משכנתא (%)</label><input id="dc_rate" type="number" value="5.0" step="0.1"></div>
+    <div><label>תקופה (שנים)</label><input id="dc_term" type="number" value="25" step="1"></div>
+  </div>
+  <button class="run" onclick="nlDealRun()">בדקו את הדירה</button>
+  <div class="nlbvr-score" id="dc_score"><div class="nlbvr-grade" id="dc_grade"></div><div class="nlbvr-bars" id="dc_bars"></div></div>
+  <div class="nlbvr-checks" id="dc_checks"></div>
+  <div class="nlbvr-ai" id="dc_ai">
+    <b>רוצים ניתוח עומק עם AI ובדיקת השוואה לפרויקטים באזור?</b>
+    <div style="margin-top:8px"><input id="dc_name" placeholder="שם"><input id="dc_phone" placeholder="טלפון"><button onclick="nlDealLead()">שלחו לי ניתוח מלא</button></div>
+    <div style="font-size:12px;color:#8B8272;margin-top:6px">הניתוח נעשה על נתוני עסקאות אמיתיים ונשלח עם הסתייגויות מלאות. ללא עלות וללא התחייבות.</div>
+  </div>
+  <p class="nlbvr-disc">מס רכישה לפי מדרגות דירה יחידה בתוקף; אם זו אינה דירתכם היחידה המס גבוה משמעותית. הציון הוא כלי סינון ראשוני בלבד ואינו ייעוץ; לפני עסקה בודקים שמאי, עו"ד ויועץ משכנתאות.</p>
+</div>
+
+<?php return ob_get_clean();
+} );
+
+/* JS printed in wp_footer, NOT in post content: WordPress content filters
+   (texturize/entities) corrupt inline scripts inside the_content. */
+if ( ! function_exists( 'nadlan_bvr_mark' ) ) {
+	function nadlan_bvr_mark( $which ) {
+		static $need = array(); $need[ $which ] = true; return $need;
+	}
+	function nadlan_bvr_need() { return nadlan_bvr_mark( '_probe' ); }
+}
+add_action( 'wp_footer', function () {
+	$need = nadlan_bvr_mark( '_probe' );
+	if ( empty( $need['bvr'] ) && empty( $need['deal'] ) ) { return; }
+	echo nadlan_bvr_ptax_js();
+	if ( ! empty( $need['bvr'] ) ) { ?>
 <script>
 function nlBvrRun(){
  var P=+bv_price.value,E=+bv_equity.value,r=+bv_rate.value/100,T=+bv_term.value,up=+bv_upkeep.value,
@@ -167,38 +218,10 @@ function nlBvrRun(){
  });
 }
 </script>
-<?php return ob_get_clean();
-} );
-
-/* ============================= 2. DEAL CHECK ============================= */
-add_shortcode( 'nadlan_deal_check', function () {
-	$lead = function_exists( 'nadlan_calc_lead_js' ) ? nadlan_calc_lead_js( 'AI deal analysis' ) : 'function(){}';
-	ob_start(); echo nadlan_bvr_styles(); echo nadlan_bvr_ptax_js(); ?>
-<div class="nlbvr" id="nldeal">
-  <h3>בדיקת כדאיות לדירה ספציפית</h3>
-  <p class="sub">מזינים את נתוני הדירה ומקבלים ציון משוקלל: מחיר מול השוק, תשואה, עומס מימון ועלות רכישה מלאה, עם רשימת בדיקות לפני החלטה.</p>
-  <div class="grid">
-    <h4>הדירה הנבדקת</h4>
-    <div><label>מחיר מבוקש (₪)</label><input id="dc_price" type="number" value="2400000" step="10000"></div>
-    <div><label>שטח (מ"ר)</label><input id="dc_sqm" type="number" value="85" step="1"></div>
-    <div><label>שכ"ד חודשי צפוי (₪)</label><input id="dc_rent" type="number" value="6500" step="100"></div>
-    <div><label>מחיר ממוצע למ"ר באזור (₪)</label><input id="dc_area" type="number" value="30000" step="500"></div>
-    <h4>המימון שלכם</h4>
-    <div><label>הון עצמי (₪)</label><input id="dc_equity" type="number" value="720000" step="10000"></div>
-    <div><label>הכנסה חודשית נטו של משק הבית (₪)</label><input id="dc_income" type="number" value="24000" step="500"></div>
-    <div><label>ריבית משכנתא (%)</label><input id="dc_rate" type="number" value="5.0" step="0.1"></div>
-    <div><label>תקופה (שנים)</label><input id="dc_term" type="number" value="25" step="1"></div>
-  </div>
-  <button class="run" onclick="nlDealRun()">בדקו את הדירה</button>
-  <div class="nlbvr-score" id="dc_score"><div class="nlbvr-grade" id="dc_grade"></div><div class="nlbvr-bars" id="dc_bars"></div></div>
-  <div class="nlbvr-checks" id="dc_checks"></div>
-  <div class="nlbvr-ai" id="dc_ai">
-    <b>רוצים ניתוח עומק עם AI ובדיקת השוואה לפרויקטים באזור?</b>
-    <div style="margin-top:8px"><input id="dc_name" placeholder="שם"><input id="dc_phone" placeholder="טלפון"><button onclick="nlDealLead()">שלחו לי ניתוח מלא</button></div>
-    <div style="font-size:12px;color:#8B8272;margin-top:6px">הניתוח נעשה על נתוני עסקאות אמיתיים ונשלח עם הסתייגויות מלאות. ללא עלות וללא התחייבות.</div>
-  </div>
-  <p class="nlbvr-disc">מס רכישה לפי מדרגות דירה יחידה בתוקף; אם זו אינה דירתכם היחידה המס גבוה משמעותית. הציון הוא כלי סינון ראשוני בלבד ואינו ייעוץ; לפני עסקה בודקים שמאי, עו"ד ויועץ משכנתאות.</p>
-</div>
+<?php }
+	if ( ! empty( $need['deal'] ) ) {
+		$lead = function_exists( 'nadlan_calc_lead_js' ) ? nadlan_calc_lead_js( 'AI deal analysis' ) : 'function(){}';
+		?>
 <script>
 var nlDealSend=<?php echo $lead; ?>;
 function nlDealRun(){
@@ -239,5 +262,5 @@ function nlDealLead(){var nm=document.getElementById('dc_name').value,ph=documen
  nlDealSend(nm,ph,'deal-check: price='+dc_price.value+' sqm='+dc_sqm.value+' rent='+dc_rent.value+' area='+dc_area.value);
  document.getElementById('dc_ai').innerHTML='✓ קיבלנו. ניתוח מלא יישלח אליכם בהקדם.';}
 </script>
-<?php return ob_get_clean();
-} );
+<?php }
+}, 60 );
