@@ -341,5 +341,16 @@
       "media urls",
       "5-lang article body"
     ]
+  },
+  "assets_3d": {
+    "model_tier": "A-rich (15588 tris)",
+    "asset_folder": "assets/projects/rainbow-tel-aviv",
+    "unit_map": "assets/projects/rainbow-tel-aviv/unit-map.json",
+    "view_layer_config": "assets/projects/rainbow-tel-aviv/view-layer-config.json",
+    "alt_models": {
+      "showroom_scene": "plugins/nadlan-config/assets/showroom-engine/models/rainbow.glb"
+    },
+    "poster": "assets/projects/rainbow-tel-aviv/poster.png",
+    "glb_model": "assets/projects/rainbow-tel-aviv/model.glb"
   }
 }

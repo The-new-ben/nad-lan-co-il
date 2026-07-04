@@ -36,7 +36,7 @@ PROJECTS = {
   name_he="Rainbow · ריינבו תל אביב", name_lat="Rainbow Tel Aviv",
   dev="ישראל קנדה", city="תל אביב-יפו", area="רובע שדה דב · אזור אשכול",
   address="רובע שדה דב, אזור אשכול, תל אביב-יפו",
-  floors=38, units_total=480, delivery="2027", lat=32.10317, lng=34.78446,
+  floors=39, units_total=480, delivery="2027", lat=32.10317, lng=34.78446,
   ppsqm=76000, ppsqm_src="אומדן לא מחייב · לפי מחיר ממוצע למ\"ר המוצג במדלן לפרויקט/סביבה, נבדק 14.6.2026. יש לאמת מול היזם.",
   glb="https://raw.githubusercontent.com/The-new-ben/nad-lan-co-il/main/assets/projects/rainbow-tel-aviv/model.glb",
   poster="https://nad-lan.co.il/wp-content/uploads/2026/07/rainbow-tel-aviv-plate-v2.webp",
@@ -171,13 +171,13 @@ def art(slug):
   P=PROJECTS[slug]; n=P["name_he"].split("·")[0].strip(); nl=P["name_lat"]
   base = {
    "he":dict(
-     lede=f"{n} הוא מגדל מגורים בן {P['floors']} קומות ב{P['area']} — {P['units_total']} דירות שנבנות עכשיו. במקום לדמיין, בוחרים כאן דירה מתוך הבניין עצמו: קומה, כיוון, נוף ומחיר — לפני שפונים ליזם.",
+     lede=f"{n} הוא מגדל מגורים בן {P['floors']} קומות ב{P['area']} — {P['units_total']} דירות של {P['dev']}, בבנייה עכשיו עם אכלוס משוער ב־{P['delivery']}. במקום לדמיין, בוחרים כאן דירה מתוך הבניין עצמו: קומה, כיוון, נוף ומחיר — לפני שפונים ליזם.",
      choose=f"סובבו את הבניין, בחרו קומה וכיוון, וראו מה מקבלים בכל דירה. הבחירה מסונכרנת בין המודל לטבלת הדירות.",
      price=f"כמה זה באמת שווה. האומדן לכל דירה מוצג מול מחירי האזור — ביושר, עם מקור ותאריך, ולא כמחיר יזם.",
      mapt=f"מפה אחת עם כל מה שחשוב סביב {n}: מחירי אזור, תחבורה, חינוך, מסחר ותוכניות עתידיות.",
      buy=f"ממחשבון המשכנתא על הדירה שבחרתם, דרך שלבי הרכישה ועד עורך דין, שמאי ויועץ משכנתא מאומתים — הכול במקום אחד."),
    "en":dict(
-     lede=f"{nl} is a {P['floors']}-storey residential tower in {P['area']} — {P['units_total']} apartments now under construction. Instead of imagining, here you choose an apartment from inside the building itself: floor, exposure, view and price — before you approach the developer.",
+     lede=f"{nl} is a {P['floors']}-storey residential tower in {P['area']} — {P['units_total']} apartments by {P['dev']}, under construction with estimated delivery in {P['delivery']}. Instead of imagining, here you choose an apartment from inside the building itself: floor, exposure, view and price — before you approach the developer.",
      choose="Rotate the building, pick a floor and exposure, and see exactly what each apartment offers. Selection stays in sync between the model and the units table.",
      price="What it's really worth. Each apartment's estimate is shown against area prices — honestly, with source and date, and never as a developer price.",
      mapt=f"One map with everything that matters around {nl}: area prices, transit, schools, retail and future plans.",
@@ -209,32 +209,114 @@ def esc(s): return html.escape(str(s), quote=True)
 import base64
 SLUG2KEY={"ashira-sde-dov":"ashira","rainbow-tel-aviv":"rainbow","dimri-yama-sde-dov":"dimri","duo-tel-aviv":"duo"}
 MANI=json.load(open(os.path.join(OUT,"projects.generated.json"),encoding="utf-8"))
+REPO=os.path.abspath(os.path.join(OUT,"..","..",".."))
+
+# Canonical DB (data/projects/) is the source of truth; the inline page-pack
+# fills presentation gaps until enrichment lands. DB wins on verified identity.
+DB_SLUG={"ashira-sde-dov":"ashira-sde-dov","rainbow-tel-aviv":"rainbow-sde-dov",
+         "dimri-yama-sde-dov":"dimri-yama","duo-tel-aviv":None}
+def db_merge(slug,P):
+  ds=DB_SLUG.get(slug)
+  if not ds: return P
+  f=os.path.join(REPO,"data","projects",ds+".json")
+  if not os.path.exists(f): return P
+  d=json.load(open(f,encoding="utf-8"))
+  P["official_url"]=d.get("identity",{}).get("urls",{}).get("official") or ""
+  bf=d.get("building_form",{}) or {}
+  if bf.get("floors"): P["floors"]=bf["floors"]
+  un=d.get("units",{}) or {}
+  if un.get("total_units"): P["units_total"]=un["total_units"]
+  return P
+
+# Flagship rich models (Tier A): embed the detailed GLB and compute unit
+# hotspots against its measured tower envelope (demo mapping, honest labels).
+RICH={"rainbow-tel-aviv":os.path.join(REPO,"assets","projects","rainbow-tel-aviv","model.glb")}
+def rich_setup(slug,P):
+  path=RICH[slug]
+  import trimesh
+  s=trimesh.load(path)
+  meshes=s.dump(concatenate=False) if hasattr(s,"dump") else [s]
+  tower=max(meshes,key=lambda m:(m.bounds[1][1]-m.bounds[0][1]))
+  lo,hi=tower.bounds; cx=(lo[0]+hi[0])/2
+  H=float(hi[1]-lo[1]); zfront=float(hi[2])
+  sceneR=max(float(x) for x in s.extents)
+  fh=H/max(P["floors"],1)
+  n=len(P["units"])
+  for i,u in enumerate(P["units"]):
+    u["hotspot"]=[float(cx+(i-(n-1)/2)*10.0), float(lo[1]+min(u["floor"],P["floors"])*fh-fh*0.5), zfront+0.5]
+    u["hnormal"]=[0,0,1]
+    u["uorbit"]=f"{int(20+(i-(n-1)/2)*8)}deg 72deg {int(sceneR*1.15)}m"
+  raw=open(path,"rb").read()
+  P["glb"]="data:model/gltf-binary;base64,"+base64.b64encode(raw).decode()
+  P["orbit"]=f"25deg 72deg {int(sceneR*1.35)}m"
+  P["target"]=f"0m {int(H*0.40)}m 0m"
+  P["model_generic"]=False                  # project-specific model (still illustrative)
+  return P
+
 def glb_datauri(key):
-  raw=open(os.path.join(OUT,key+".glb"),"rb").read()
+  raw=open(os.path.join(OUT,"models",key+".glb"),"rb").read()
   return "data:model/gltf-binary;base64,"+base64.b64encode(raw).decode()
 
+CITY_LAT={"תל אביב-יפו":"Tel Aviv-Yafo","רמת גן":"Ramat Gan","הרצליה":"Herzliya","בת ים":"Bat Yam","חולון":"Holon"}
+def head_meta(slug,P,A,lang,fname_of):
+  """Localized head: lang/dir, title, description, canonical + hreflang cluster."""
+  a=A[lang]; name=P["name_lat"] if lang!="he" else P["name_he"]
+  city=P["city"] if lang=="he" else CITY_LAT.get(P["city"],P["city"])
+  title=f"{name} · {city} — נדלן" if lang=="he" else f"{name} · {city} — Nadlan"
+  desc=a["lede"][:158]
+  links=[f'<link rel="canonical" href="{fname_of(lang)}">']
+  for l in LANGS:
+    links.append(f'<link rel="alternate" hreflang="{l}" href="{fname_of(l)}">')
+  links.append(f'<link rel="alternate" hreflang="x-default" href="{fname_of("he")}">')
+  og=[f'<meta property="og:title" content="{esc(title)}">',
+      f'<meta property="og:description" content="{esc(desc)}">',
+      f'<meta property="og:type" content="website">']
+  if P.get("poster") and str(P["poster"]).startswith("http"):
+    og.append(f'<meta property="og:image" content="{esc(P["poster"])}">')
+  return title,desc,"\n".join(links+og)
+
 def render(slug):
-  P=dict(PROJECTS[slug]); A=art(slug)
+  base=db_merge(slug,dict(PROJECTS[slug])); A=art_from(base)
   key=SLUG2KEY[slug]; m=MANI[key]
-  P["glb"]=glb_datauri(key)                 # embedded regenerated factory tower (self-contained)
-  # Tighten the factory's wide site-framing so the TOWER is the hero (sea stays a backdrop band).
-  az = m["default_orbit"].split()[0]
-  H = m["height_m"]
-  P["orbit"]=f"{az} 70deg {int(H*1.9)}m"
-  P["target"]=f"0m {int(H*0.42)}m 0m"
-  P["model_generic"]=True                   # honesty: generic architectural massing
-  hs={u["id"]:u for u in m["units"]}         # factory-derived 3D hotspots by id
-  P["units"]=[dict(u, hotspot=hs[u["id"]]["hotspot_position"], hnormal=hs[u["id"]]["hotspot_normal"],
-                   uorbit=hs[u["id"]]["camera_orbit"]) if u["id"] in hs else dict(u) for u in P["units"]]
-  data = dict(slug=slug, P=P, UI=UI, A=A, LANGS=LANGS,
-              LANG_NAMES=LANG_NAMES, RTL=list(RTL), TOKEN=TOKEN)
-  payload = json.dumps(data, ensure_ascii=False)
-  tpl = TEMPLATE.replace("/*__DATA__*/", "window.NLP="+payload+";")
-  open(os.path.join(OUT, f"page-{slug}.html"), "w", encoding="utf-8").write(tpl)
-  return f"page-{slug}.html"
+  if slug in RICH:
+    base=rich_setup(slug,base)
+  else:
+    base["glb"]=glb_datauri(key)
+    az=m["default_orbit"].split()[0]; H=m["height_m"]
+    base["orbit"]=f"{az} 70deg {int(H*1.9)}m"; base["target"]=f"0m {int(H*0.42)}m 0m"
+    base["model_generic"]=True
+    hs={u["id"]:u for u in m["units"]}
+    base["units"]=[dict(u, hotspot=hs[u["id"]]["hotspot_position"], hnormal=hs[u["id"]]["hotspot_normal"],
+                     uorbit=hs[u["id"]]["camera_orbit"]) if u["id"] in hs else dict(u) for u in base["units"]]
+  out=[]
+  fname_of=lambda l: f"page-{slug}.html" if l=="he" else f"page-{slug}.{l}.html"
+  for lang in LANGS:
+    P=dict(base)
+    title,desc,extra=head_meta(slug,P,A,lang,fname_of)
+    lang_files={l:fname_of(l) for l in LANGS}
+    data=dict(slug=slug,P=P,UI=UI,A=A,LANGS=LANGS,LANG_NAMES=LANG_NAMES,RTL=list(RTL),
+              TOKEN=TOKEN,lang=lang,lang_files=lang_files)
+    tpl=TEMPLATE.replace("/*__DATA__*/","window.NLP="+json.dumps(data,ensure_ascii=False)+";")
+    d="rtl" if lang in RTL else "ltr"
+    tpl=tpl.replace('<html lang="he" dir="rtl">',f'<html lang="{lang}" dir="{d}">')
+    tpl=tpl.replace("<title>נדלן · עמוד פרויקט</title>",
+      f"<title>{esc(title)}</title>\n<meta name=\"description\" content=\"{esc(desc)}\">\n{extra}")
+    fn=fname_of(lang)
+    open(os.path.join(OUT,"pages",fn),"w",encoding="utf-8").write(tpl)
+    out.append(fn)
+  return out
+
+def art_from(P):
+  """art() but on the (DB-merged) project dict rather than the raw registry."""
+  global PROJECTS
+  slug_tmp="__tmp__"
+  PROJECTS[slug_tmp]=P
+  try: return art(slug_tmp)
+  finally: del PROJECTS[slug_tmp]
 
 TEMPLATE = open(os.path.join(OUT, "_template.html"), encoding="utf-8").read()
 
 if __name__=="__main__":
-  for slug in PROJECTS:
-    print("wrote", render(slug))
+  for slug in list(PROJECTS):
+    for f in render(slug):
+      print("wrote", f)
