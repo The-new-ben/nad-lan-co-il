@@ -44,7 +44,11 @@
   function content(k) { var c = project().content || {}; return (c[state.lang] && c[state.lang][k]) || (c.en && c.en[k]) || (c.he && c.he[k]) || ""; }
   var KNOWN_DIRS = { west:1, east:1, north:1, south:1, "south-west":1, "north-west":1, "south-east":1, "north-east":1 };
   // Never echo a raw "dir_xxx" key: translate known enums, else show the raw value.
-  function dirLabel(d) { return KNOWN_DIRS[d] ? t("dir_" + d) : (d || ""); }
+  /* CMS units may carry Hebrew compass names; normalize so every language
+     renders its own label (no Hebrew leaking onto EN/FR/RU pages). */
+  var HE_DIRS = { "מערב": "west", "מזרח": "east", "צפון": "north", "דרום": "south", "דרום מערב": "south-west", "דרום-מערב": "south-west", "צפון מערב": "north-west", "צפון-מערב": "north-west", "דרום מזרח": "south-east", "דרום-מזרח": "south-east", "צפון מזרח": "north-east", "צפון-מזרח": "north-east", "מערב וצפון": "north-west" };
+  function dirKey(d) { d = String(d == null ? "" : d).trim(); return KNOWN_DIRS[d] ? d : (HE_DIRS[d] || ""); }
+  function dirLabel(d) { var k = dirKey(d); return k ? t("dir_" + k) : (d || ""); }
   function statusLabel(s) { return t("status_" + s); }
   function roomsLabel(n) { return t("rooms_label", { n: n }); }
   function viewText(u) { return u.view_key ? t(u.view_key) : ""; }
@@ -107,7 +111,7 @@
       };
     }
     var fh = parseFloat(project().floor_height_m) || 3.05, half = 13.2;
-    var v = DIRV[u.dir] || [-1, 0], y = u.floor * fh + fh * 0.4;
+    var v = DIRV[dirKey(u.dir) || u.dir] || [-1, 0], y = u.floor * fh + fh * 0.4;
     return { pos: (v[0] * half).toFixed(2) + "m " + y.toFixed(2) + "m " + (v[1] * half).toFixed(2) + "m", nrm: v[0] + "m 0m " + v[1] + "m" };
   }
   function orbitRadius(orbit, r) { var p = String(orbit).trim().split(/\s+/); if (p.length >= 3) p[2] = r + "m"; return p.join(" "); }
@@ -116,6 +120,10 @@
      RENDER
   ===================================================================== */
   function render() {
+    // The adopted unified map (#nlpjx-map) lives INSIDE nl-root next to the
+    // theater; rescue it before innerHTML wipes it, re-adopt in afterRender().
+    var uni = document.getElementById("nlpjx-map");
+    if (uni && ROOT.contains(uni)) { ROOT.insertAdjacentElement("afterend", uni); }
     document.documentElement.lang = state.lang;
     document.documentElement.dir = isRTL() ? "rtl" : "ltr";
     document.title = (state.page === "home" ? t("home_gallery_title") : (projName() + " · " + t("brand_sub")));
@@ -583,7 +591,44 @@
       if (form) form.addEventListener("submit", onSubmit);
       window.addEventListener("scroll", onScroll, { passive: true }); onScroll();
       setupSpy();
+      adoptUnifiedMap(); wireMapSync();
     }
+  }
+
+  /* ---- ONE-map doctrine: the unified POI map (project-experience) is THE map.
+     The engine adopts it right under the theater so a buyer spinning the model
+     reads the surroundings in the same glance, and gives up its own plain map. */
+  function adoptUnifiedMap() {
+    var uni = document.getElementById("nlpjx-map");
+    if (!uni) return;
+    var building = document.getElementById("building");
+    if (building) {
+      building.insertAdjacentElement("afterend", uni);
+      uni.classList.add("nl-adopted-map");
+    }
+    var em = ROOT.querySelector(".nl-map");
+    if (em) { em.style.display = "none"; }
+  }
+  /* model orbit -> map bearing (user gestures only; auto-rotate must not spin
+     the map). Convention: model -z axis = north, so bearing = -theta. */
+  function wireMapSync() {
+    var mv = document.getElementById("nl-mv");
+    if (!mv || mv.dataset.nlMapSync) return;
+    mv.dataset.nlMapSync = "1";
+    var last = 0;
+    mv.addEventListener("camera-change", function (ev) {
+      if (!ev.detail || ev.detail.source !== "user-interaction") return;
+      var map = window.NLPJX_MAP;
+      if (!map || typeof mv.getCameraOrbit !== "function") return;
+      var now = Date.now(); if (now - last < 120) return; last = now;
+      try { map.setBearing(-(mv.getCameraOrbit().theta * 180 / Math.PI) % 360); } catch (e) {}
+    });
+  }
+  var DIR_BEARING = { north: 0, "north-east": 45, east: 90, "south-east": 135, south: 180, "south-west": 225, west: 270, "north-west": 315 };
+  function easeMapToUnitView(u) {
+    var map = window.NLPJX_MAP, k = dirKey(u.dir);
+    if (!map || !k || !(k in DIR_BEARING)) return;
+    try { map.easeTo({ bearing: DIR_BEARING[k], duration: 900 }); } catch (e) {}
   }
 
   ROOT.addEventListener("click", function (e) {
@@ -630,6 +675,8 @@
     if (panelEl) panelEl.classList.add("is-open");
     // active markers
     document.querySelectorAll(".nl-hot,.nl-fsq,.nl-ucard").forEach(function (n) { n.classList.toggle("is-active", n.dataset.id === id); });
+    // the map turns to face what this apartment sees
+    easeMapToUnitView(u);
     // scrim + spotlight origin
     var scrim = document.getElementById("nl-scrim");
     var srcEl = document.querySelector('.nl-hot[data-id="' + cssesc(id) + '"]') || document.querySelector('.nl-fsq[data-id="' + cssesc(id) + '"]');
