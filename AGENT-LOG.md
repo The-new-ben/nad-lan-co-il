@@ -1,5 +1,36 @@
 # AGENT-LOG - the God brain (append-only, newest on top)
 
+## 2026-07-05 (7) - v1.72.2: WEAVER LIVE + default interiors + two site-wide SEO bugs killed
+WEAVER (owner go): article splits at its own chapter boundaries into numbered gold
+frames + asset thumbs + jump-TOC pills. Content law IN CODE: every node survives
+verbatim, <3 chapters -> untouched. LIVE on all 4 (13-17 chapters each), TOC jump
+verified, EN sibling shows "Chapter 1", word counts intact (4.5k-6.5k rendered).
+DEFAULT INTERIORS (owner law: no blanks): project_default_interior meta (registered
+in showroom fields) feeds units without interior_url + honest generic label in page
+language. Set on 16/16 posts using Cowork's first interior (media 5104). Verified on
+DUO unit A-9: image + label render in the view tab.
+SEO BUGS FOUND + FIXED SITE-WIDE:
+1. WP home/siteurl options were HTTP -> the whole Yoast sitemap emitted http URLs =
+   every crawl a redirect ("Page with redirect" in GSC, depressed indexing). Fixed
+   options to https via tmp snippet (before/after logged), sitemap now https,
+   pages 200. Likely a major answer to "why many pages are not indexed".
+2. wptexturize was converting " - " to en dash AT RENDER on clean stored content
+   (found in dimri H2 + nlpjx intro). run_wptexturize disabled (owner law #2).
+   All 4 pages now render ZERO long dashes.
+GSC AUTH ANSWER (owner asked): google-site-kit plugin ACTIVE but connection NEVER
+completed (connected:false, setupCompleted:false). No service account in repo. Owner
+must either finish Site Kit setup (his Google login, ~2 min) or add a service
+account to the GSC property so agents can read indexing/query data. ALSO: many
+catalog pages are noindexed BY DESIGN (schema.php thin-content guard, anti-
+cannibalization) - part of "not indexed" is intentional.
+LEAD E2E TEST: POST nadlan/v1/lead -> ok, lead_id 5114, route_status fallback_admin,
+ack_sent FALSE -> leads are stored + routed but acknowledgment/email leg unverified
+(deliverability float stands). Buy-flow research DONE (Wolt/Booking/Tesla/StockX
+patterns): spec at handoff/research/2026-07-05-buy-experience/spec.md, build queued.
+STILL OPEN: big-catalog severe upgrade (owner: "looks awful") - next strike;
+professionals upgrade feeds RFP advisor cards; nlpjx price band i18n; ZOHI ingest;
+DUO translations; interiors batch (7 remaining) via Cowork.
+
 ## 2026-07-05 (6) - v1.72.1: view cone, hero/poster split, 3D badge on premium cards
 OWNER CORRECTION UNDERSTOOD + FIXED: my poster swap accidentally replaced the page
 HERO and the premium-card media with the 3D render (model_poster drives both). The
