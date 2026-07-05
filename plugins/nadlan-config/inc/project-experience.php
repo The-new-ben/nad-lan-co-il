@@ -292,32 +292,46 @@ if ( ! function_exists( 'nadlan_pjx_bottom' ) ) {
 			return array_values( array_filter( array_slice( (array) $grp, 0, 12 ), function ( $i ) { return ! empty( $i['lat'] ) && ! empty( $i['lng'] ); } ) );
 		}, (array) $pois ) );
 		$near = nadlan_pjx_nearby_projects( $id, $lat, $lng );
+		// This section sits right under the 3D theater on every language sibling,
+		// so its labels are localized by the page's own language (slug suffix).
+		$mlang = 'he';
+		foreach ( array( 'en', 'fr', 'ru', 'ar' ) as $ml ) {
+			if ( substr( get_post_field( 'post_name', $id ), -3 ) === '-' . $ml ) { $mlang = $ml; }
+		}
+		$MT = array(
+			'he' => array( 'aria' => 'מפה חיה של הסביבה', 'h' => 'הכל על מפה אחת: מחירים, סביבה, תוכניות עתידיות', 'layers' => 'שכבות מפה', 'comps' => '₪ מחירים בסביבה', 'schools' => '🏫 חינוך', 'transit' => '🚌 תחבורה', 'shops' => '🛒 קניות', 'health' => '⚕️ בריאות', 'plans' => '◆ תוכניות עתידיות', 'd3' => '🏙️ תלת ממד', 'sat' => '🛰️ לוויין', 'cap' => 'לחצו על כל סימון לקבלת פרטים. תגי המחיר הם אומדן לא מחייב למ״ר בפרויקטים סמוכים.', 'purple' => '◆ סגול = תוכניות התחדשות ופרויקטים עתידיים' ),
+			'en' => array( 'aria' => 'Live area map', 'h' => 'Everything on one map: prices, surroundings, future plans', 'layers' => 'Map layers', 'comps' => '₪ Nearby prices', 'schools' => '🏫 Education', 'transit' => '🚌 Transit', 'shops' => '🛒 Shopping', 'health' => '⚕️ Health', 'plans' => '◆ Future plans', 'd3' => '🏙️ 3D', 'sat' => '🛰️ Satellite', 'cap' => 'Click any marker for details. Price tags are non-binding per-sqm estimates in nearby projects.', 'purple' => '◆ purple = urban renewal and future projects' ),
+			'fr' => array( 'aria' => 'Carte interactive du quartier', 'h' => 'Tout sur une seule carte: prix, environnement, plans futurs', 'layers' => 'Couches de carte', 'comps' => '₪ Prix a proximite', 'schools' => '🏫 Education', 'transit' => '🚌 Transports', 'shops' => '🛒 Commerces', 'health' => '⚕️ Sante', 'plans' => '◆ Plans futurs', 'd3' => '🏙️ 3D', 'sat' => '🛰️ Satellite', 'cap' => 'Cliquez sur un marqueur pour les details. Les etiquettes de prix sont des estimations indicatives au m2 dans les projets voisins.', 'purple' => '◆ violet = renouvellement urbain et projets futurs' ),
+			'ru' => array( 'aria' => 'Живая карта района', 'h' => 'Все на одной карте: цены, окружение, будущие проекты', 'layers' => 'Слои карты', 'comps' => '₪ Цены рядом', 'schools' => '🏫 Образование', 'transit' => '🚌 Транспорт', 'shops' => '🛒 Магазины', 'health' => '⚕️ Здоровье', 'plans' => '◆ Будущие проекты', 'd3' => '🏙️ 3D', 'sat' => '🛰️ Спутник', 'cap' => 'Нажмите на любой маркер для подробностей. Ценовые метки - необязывающая оценка за кв.м в соседних проектах.', 'purple' => '◆ фиолетовый = городское обновление и будущие проекты' ),
+			'ar' => array( 'aria' => 'خريطة حية للمنطقة', 'h' => 'كل شيء على خريطة واحدة: الأسعار والمحيط والخطط المستقبلية', 'layers' => 'طبقات الخريطة', 'comps' => '₪ الأسعار القريبة', 'schools' => '🏫 التعليم', 'transit' => '🚌 المواصلات', 'shops' => '🛒 التسوق', 'health' => '⚕️ الصحة', 'plans' => '◆ الخطط المستقبلية', 'd3' => '🏙️ ثلاثي الأبعاد', 'sat' => '🛰️ قمر صناعي', 'cap' => 'انقر على أي علامة للتفاصيل. علامات الأسعار تقديرات غير ملزمة للمتر المربع في المشاريع المجاورة.', 'purple' => '◆ البنفسجي = التجديد الحضري والمشاريع المستقبلية' ),
+		);
+		$mt = $MT[ $mlang ];
 	?>
 	<?php $unimap = function_exists( 'nadlan_mapbox_token' ) ? nadlan_mapbox_token() : ''; ?>
-	<section id="nlpjx-map" class="nlpjx-sec" aria-label="מפה חיה של הסביבה">
-		<h2>הכל על מפה אחת: מחירים, סביבה, תוכניות עתידיות</h2>
+	<section id="nlpjx-map" class="nlpjx-sec" aria-label="<?php echo esc_attr( $mt['aria'] ); ?>">
+		<h2><?php echo esc_html( $mt['h'] ); ?></h2>
 		<?php if ( $unimap ) : ?>
-		<div class="nlpjx-maplayers" role="group" aria-label="שכבות מפה">
-			<button type="button" class="is-on" data-layer="comps">₪ מחירים בסביבה</button>
-			<button type="button" class="is-on" data-layer="schools">🏫 חינוך</button>
-			<button type="button" data-layer="transit">🚌 תחבורה</button>
-			<button type="button" data-layer="shops">🛒 קניות</button>
-			<button type="button" data-layer="health">⚕️ בריאות</button>
-			<button type="button" class="is-on" data-layer="plans">◆ תוכניות עתידיות</button>
-			<button type="button" data-layer="3d">🏙️ תלת-ממד</button>
-			<button type="button" data-layer="sat">🛰️ לוויין</button>
+		<div class="nlpjx-maplayers" role="group" aria-label="<?php echo esc_attr( $mt['layers'] ); ?>">
+			<button type="button" class="is-on" data-layer="comps"><?php echo esc_html( $mt['comps'] ); ?></button>
+			<button type="button" class="is-on" data-layer="schools"><?php echo esc_html( $mt['schools'] ); ?></button>
+			<button type="button" data-layer="transit"><?php echo esc_html( $mt['transit'] ); ?></button>
+			<button type="button" data-layer="shops"><?php echo esc_html( $mt['shops'] ); ?></button>
+			<button type="button" data-layer="health"><?php echo esc_html( $mt['health'] ); ?></button>
+			<button type="button" class="is-on" data-layer="plans"><?php echo esc_html( $mt['plans'] ); ?></button>
+			<button type="button" data-layer="3d"><?php echo esc_html( $mt['d3'] ); ?></button>
+			<button type="button" data-layer="sat"><?php echo esc_html( $mt['sat'] ); ?></button>
 		</div>
 		<div id="nlpjx-unimap" data-token="<?php echo esc_attr( $unimap ); ?>" data-lat="<?php echo esc_attr( $lat ); ?>" data-lng="<?php echo esc_attr( $lng ); ?>" data-title="<?php echo esc_attr( get_the_title( $id ) ); ?>"></div>
 		<?php else : ?>
 		<div id="nlpjx-leaflet" data-lat="<?php echo esc_attr( $lat ); ?>" data-lng="<?php echo esc_attr( $lng ); ?>" data-title="<?php echo esc_attr( get_the_title( $id ) ); ?>"></div>
 		<?php endif; ?>
 		<script>window.NLPJX_POIS=<?php echo $poi_json ?: '{}'; // phpcs:ignore ?>;window.NLPJX_PLANS=<?php echo wp_json_encode( $near ); // phpcs:ignore ?>;</script>
-		<p class="nlpjx-cap">לחצו על כל סימון לקבלת פרטים. תגי המחיר הם אומדן לא מחייב למ״ר בפרויקטים סמוכים. <b style="color:#6B4FA0">◆ סגול = תוכניות התחדשות ופרויקטים עתידיים</b>.</p>
+		<p class="nlpjx-cap"><?php echo esc_html( $mt['cap'] ); ?> <b style="color:#6B4FA0"><?php echo esc_html( $mt['purple'] ); ?></b>.</p>
 	</section>
 	<?php endif; ?>
 
 	<section id="nlpjx-world" class="nlpjx-sec" aria-label="כל המידע סביב הפרויקט">
-		<h2>כל העולם סביב הפרויקט</h2>
+		<h2>כל מה שסביב הפרויקט</h2>
 		<div class="nlpjx-world">
 			<?php if ( $dev ) : ?><a href="<?php echo esc_url( home_url( '/professionals/?q=' . rawurlencode( $dev ) ) ); ?>"><b>היזם: <?php echo esc_html( $dev ); ?></b><span>פרופיל, רישום ופרויקטים נוספים ←</span></a><?php endif; ?>
 			<a href="<?php echo esc_url( home_url( '/professionals/' . ( $city ? '?city=' . rawurlencode( $city ) : '' ) ) ); ?>"><b>בעלי מקצוע<?php echo $city ? ' ב' . esc_html( $city ) : ''; ?></b><span>עו״ד מקרקעין, שמאים, בדק בית ←</span></a>
@@ -371,6 +385,7 @@ if ( ! function_exists( 'nadlan_pjx_assets' ) ) {
 .nlpjx-comps a{color:#1B1A17;text-decoration:none;font-weight:600}
 .nlpjx-comps a:hover{color:#9C7A3C}
 #nlpjx-unimap{height:440px;border-radius:12px;border:1px solid #E2DCD0;background:#F3EEE3}
+#nlpjx-map.nl-adopted-map{max-width:1240px;margin:0 auto 20px;box-sizing:border-box}
 .nlpjx-maplayers{display:flex;gap:6px;flex-wrap:wrap;margin:0 0 10px}
 .nlpjx-maplayers button{font:600 12.5px/1 Heebo,sans-serif;border:1px solid #E2DCD0;background:#fff;color:#6D665C;border-radius:999px;padding:8px 13px;cursor:pointer;min-height:34px}
 .nlpjx-maplayers button.is-on{background:#1B1A17;border-color:#1B1A17;color:#F4EEDE}
@@ -398,14 +413,9 @@ if ( ! function_exists( 'nadlan_pjx_assets' ) ) {
 		wp_add_inline_script( 'nadlan-pjx-js', '
 (function(){
 document.addEventListener("DOMContentLoaded",function(){
-	// LAYOUT (design audit 2026-07-02): the engine is the ONE apartment picker.
-	// Our rich surroundings map moves up directly under the 3D tour and the
-	// engine duplicate map section is hidden (ours has POIs + future plans).
-	var nlroot=document.getElementById("nl-root");
-	var secM=document.getElementById("nlpjx-map");
-	if(nlroot&&secM){nlroot.insertAdjacentElement("afterend",secM)}
-	var em=document.getElementById("nl-map");
-	if(em&&secM){var esec=em.closest("section")||em;esec.style.display="none"}
+	// LAYOUT (v1.72.0): the ENGINE adopts #nlpjx-map right under the theater and
+	// hides its own plain map after it renders - moving/hiding from here raced
+	// the engine (it renders after DOMContentLoaded) and left TWO maps live.
 	// smooth section nav
 	document.querySelectorAll(".nlpjx-nav a").forEach(function(a){
 		a.addEventListener("click",function(e){
@@ -428,6 +438,7 @@ document.addEventListener("DOMContentLoaded",function(){
 				var lat=parseFloat(um.dataset.lat),lng=parseFloat(um.dataset.lng);
 				var map=new mapboxgl.Map({container:um,style:"mapbox://styles/mapbox/light-v11",center:[lng,lat],zoom:14.4,pitch:0,attributionControl:true});
 				map.addControl(new mapboxgl.NavigationControl({visualizePitch:true}));
+				window.NLPJX_MAP=map; // engine syncs model orbit -> map bearing through this handle
 				var groups={comps:[],schools:[],transit:[],shops:[],health:[],plans:[]};
 				function pop(html){return new mapboxgl.Popup({offset:14,maxWidth:"260px"}).setHTML(html)}
 				function dot(color){var e=document.createElement("div");e.style.cssText="width:15px;height:15px;border-radius:50%;background:"+color+";border:2.5px solid #fff;box-shadow:0 2px 6px rgba(0,0,0,.35);cursor:pointer";return e}

@@ -124,7 +124,13 @@
       if (window.console) console.warn("nadlan map init failed", e);
     }
   }
-  function scan() { Array.prototype.forEach.call(document.querySelectorAll(".nl-map"), mount); }
+  function scan() {
+    /* ONE-map doctrine: when the unified POI map (project-experience) is on the
+       page, the engine's plain map stands down - the engine hides it and we
+       must not boot a hidden Mapbox instance into it. */
+    if (document.getElementById("nlpjx-map")) return;
+    Array.prototype.forEach.call(document.querySelectorAll(".nl-map"), mount);
+  }
   function boot() { setTimeout(scan, 350); }
   if (document.readyState !== "loading") boot();
   else document.addEventListener("DOMContentLoaded", boot);

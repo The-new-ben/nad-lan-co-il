@@ -1,15 +1,15 @@
 {
   "name": "NadLan Config",
   "slug": "nadlan-config",
-  "version": "1.71.9",
+  "version": "1.72.0",
   "author": "nad-lan.co.il",
   "homepage": "https://nad-lan.co.il",
   "requires": "6.7",
   "tested": "7.0",
   "requires_php": "7.4",
-  "download_url": "https://raw.githubusercontent.com/The-new-ben/nad-lan-co-il/main/plugin-dist/nadlan-config-1.71.9.zip",
-  "last_updated": "2026-07-05 10:00:00",
+  "download_url": "https://raw.githubusercontent.com/The-new-ben/nad-lan-co-il/main/plugin-dist/nadlan-config-1.72.0.zip",
+  "last_updated": "2026-07-05 14:30:00",
   "sections": {
-    "changelog": "<h4>1.71.9</h4><ul><li>Facade unit tiles anchor with physical left/top (RTL pages mirrored the overlay onto the wrong tower on asymmetric buildings like DUO).</li><li>Fly-to-unit camera radius scales with tower height (150m fallback landed inside the crown on 150m+ towers).</li><li>Health endpoint reports the real plugin version (was hardcoded 1.69.67).</li></ul><h4>1.71.8</h4><ul><li>Rich 3D models for Ashira, Dimri Yama and DUO; engine honors explicit per-unit hotspot positions.</li></ul>"
+    "changelog": "<h4>1.72.0</h4><ul><li>ONE map doctrine: the unified POI map (prices, education, transit, shopping, health, future plans, 3D, satellite) now sits directly under the 3D theater; the engine adopts it after render and retires its own plain map (the old DOMContentLoaded move raced the engine and left two maps live).</li><li>Model-to-map sync: orbiting the 3D building turns the map bearing to match (user gestures only), and selecting an apartment turns the map to face the apartment view direction.</li><li>Map section fully localized (he/en/fr/ru/ar) - no Hebrew chips on foreign pages.</li><li>Hebrew compass names in unit meta now map to per-language labels (dir badge leak fixed).</li></ul>"
   }
 }
