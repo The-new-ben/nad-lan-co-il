@@ -94,6 +94,18 @@
   /* ---------------- 3D placement (concept model derives from floor+dir) ---------------- */
   var DIRV = { west: [-1, 0], east: [1, 0], north: [0, 1], south: [0, -1], "south-west": [-0.71, -0.71], "north-west": [-0.71, 0.71], "south-east": [0.71, -0.71], "north-east": [0.71, 0.71] };
   function unitPos(u) {
+    /* Explicit hotspot_position (authored per real model, e.g. offset towers,
+       boutique buildings) wins; the floor+dir formula is the fallback for
+       single-tower-at-origin models. */
+    var hp = String(u.hotspot_position || "").trim().split(/\s+/);
+    if (hp.length === 3 && hp.every(function (n) { return isFinite(parseFloat(n)); })) {
+      var hn = String(u.hotspot_normal || "0 0 1").trim().split(/\s+/);
+      if (hn.length !== 3 || !hn.every(function (n) { return isFinite(parseFloat(n)); })) hn = ["0", "0", "1"];
+      return {
+        pos: hp.map(function (n) { return parseFloat(n).toFixed(2) + "m"; }).join(" "),
+        nrm: hn.map(function (n) { return parseFloat(n) + "m"; }).join(" ")
+      };
+    }
     var fh = parseFloat(project().floor_height_m) || 3.05, half = 13.2;
     var v = DIRV[u.dir] || [-1, 0], y = u.floor * fh + fh * 0.4;
     return { pos: (v[0] * half).toFixed(2) + "m " + y.toFixed(2) + "m " + (v[1] * half).toFixed(2) + "m", nrm: v[0] + "m 0m " + v[1] + "m" };

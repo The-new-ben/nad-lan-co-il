@@ -1,5 +1,56 @@
 # AGENT-LOG - the God brain (append-only, newest on top)
 
+## 2026-07-05 (2) - rich-model factory built; v1 candidates NOT deployed (under standard)
+- scripts/generate-rich-building.py: parametric Rainbow-style factory (glass core,
+  floor slabs, balcony rhythm, fins, crown+gold, podium, honest small site, sea ONLY
+  when seafront:true). Specs from real compositions: Ashira 8/8/16/35 NO SEA (owner
+  correction honored), Dimri 39fl+podium seafront, DUO 2x50fl (dossier).
+- v1 outputs in assets/engine/rich-v1/ (5.8k/4.8k/12k tris). EYE-QA VERDICT: clean +
+  correct composition but NOT Rainbow-grade yet: balconies too subtle, palette too
+  pale, site too bare. Per owner law (never under standard, walk slowly) NOT deployed;
+  live pages untouched. Next: beauty pass (deeper balconies w/ contrast, warmer stone,
+  saturated teal glass, amenity court, trees, ground texture) then swap + hotspot
+  alignment + facade tiles + sibling sync + plugin release in ONE reviewed step.
+- Owner directives logged: rich model on ALL projects; ONE map doctrine (rebuild as
+  single mobile-first layered map: facilities/schools/paths/area-info for foreigners);
+  PROJECT PAGE STANDARD to machine-enforce band order + assets (design next turn:
+  STANDARD.md + /nadlan/v1/project-standard compliance endpoint); interior = generated
+  stills v1; premium cards mini-3D + near-me + big-catalog SEO cleanup approved queue.
+
+## 2026-07-05 - MAX GOD MODE: #2 deep audit + fixes + DUO live
+COWORK INGESTED: DUO dossier (8,605w) + DUO Hebrew article (4,531w, 0 dashes) ->
+  PUBLISHED into live /projects/duo-tel-aviv/ (4,656w rendered). Ashira dossier BLOCKED
+  by ChatGPT Pro (2 failed runs, empty output) - I will author it from web research.
+  Inbox drafts deleted.
+#2 AUDIT (live, headless, evidence-based):
+  rainbow-HE: 6 hotspots, RICH model.glb (the good one IS live - my earlier claim it
+    used dot-on-plate was WRONG, corrected to owner), article 3,150w, ONE mapbox map.
+  ashira-HE: 5 hotspots + 5 facade tiles, article 2,783w rendered, one map.
+  dimri-HE: 4 hotspots, model = 8KB model-prototype.glb (PLACEHOLDER - worst model live),
+    NO map (post 4745 lacks lat/lng).
+  duo-HE: article live, NO 3D at all (no model meta) - next: attach duo.glb + units.
+  LANGUAGE BUG CONFIRMED + FIXED: siblings had no units/facade/latlng meta ->
+    synced HE meta to all 12 siblings; verified ashira-EN/AR 5 hotspots+5 tiles+map,
+    rainbow-FR 6 hotspots+map. Task #21 done (dimri map still absent = no geocode, honest).
+  DOUBLE MAP: automated count finds ONE mapbox canvas per page. Owner sees two ->
+    need his pointer (which page/where) or a visual scroll-through next turn.
+CALCULATORS: added buy-or-rent + apartment-deal-check links to /mortgage-calculator/ hub
+  (nav points there). Homepage tools band pending.
+DECISIONS GIVEN: emails from domain via SMTP/deliverability check first; 3D presentation
+  assets plan (massing factory + AI facade drape / Meshy-Tripo for hero); costs explained.
+NEXT QUEUE: dimri model upgrade (assets/engine dimri 52-180KB vs placeholder), DUO 3D meta,
+  ashira dossier by me, premium cards mini-3D + near-me geolocation, big-catalog overhaul+SEO.
+
+## 2026-07-04 (23:00) - PREMIUM CATALOG LIVE
+- https://nad-lan.co.il/premium/ (v1.71.6-7): curated tier, only full-experience projects.
+  11 facility filters with gold SVG icons (pool/spa/gym/cinema/concierge/lobby/kids/
+  retail/parking/mamad/lagoon), nearby filters (sea/park/marina), developer filter,
+  sort, active pills, no-results state, developers-join CTA (monetization tier).
+  QA live: lagoon filter -> Rainbow only, pill + count correct, zero JS errors.
+- POSITIONING DECISION GIVEN TO OWNER: /premium/ = curated monetizable tier;
+  /projects/ (900+) stays the SEO net. Not a replacement.
+- FLOATED to owner in chat: full undecided/forgotten list (see message log below).
+
 Owner's law (2026-07-04): every agent logs here what was delivered to the owner,
 what was told to him, open worries, gaps, reminders, and what he might have
 forgotten. Read this AND INVENTORY.md at the start of every session. If you
