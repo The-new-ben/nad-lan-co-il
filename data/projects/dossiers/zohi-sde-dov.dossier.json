@@ -1,0 +1,2731 @@
+{
+  "seo": {
+    "project_name": {
+      "value": "ZOHI Sde Dov",
+      "evidence_ids": [
+        "ev_official_en_h1",
+        "ev_madlan_title"
+      ]
+    },
+    "developer": {
+      "value": "Mivne, Levinstein and Metropolis",
+      "evidence_ids": [
+        "ev_official_partners",
+        "ev_municipal_owners"
+      ]
+    },
+    "serp_title_he": {
+      "value": "זוהי - תל אביב בשדה דב",
+      "evidence_ids": [
+        "ev_madlan_title",
+        "ev_official_he_identity"
+      ]
+    },
+    "serp_title_en": {
+      "value": "ZOHI - Tel Aviv in Sde Dov",
+      "evidence_ids": [
+        "ev_official_en_h1",
+        "ev_official_en_identity"
+      ]
+    },
+    "h1_he": {
+      "value": "זוהי ת\"א בגרסה הכי טובה שלה",
+      "evidence_ids": [
+        "ev_official_he_h1"
+      ]
+    },
+    "h1_en": {
+      "value": "ZOHI is Tel Aviv at its finest.",
+      "evidence_ids": [
+        "ev_official_en_h1"
+      ]
+    },
+    "meta_description_he": {
+      "value": "זוהי תל אביב בשדה דב: מתחם מגורים אינטימי עם 230 דירות, גן עירוני, בריכה, לאונג' וחדר כושר ליד הים והרכבת הקלה.",
+      "evidence_ids": [
+        "ev_official_units",
+        "ev_official_amenities",
+        "ev_official_transport"
+      ]
+    },
+    "meta_description_en": {
+      "value": "ZOHI Sde Dov: an intimate Tel Aviv residential compound with 230 apartments, garden, pool, lounge and gym near the sea and Green Line.",
+      "evidence_ids": [
+        "ev_official_en_identity",
+        "ev_official_en_units",
+        "ev_official_transport"
+      ]
+    },
+    "name_variants": [
+      {
+        "value": "ZOHI",
+        "evidence_ids": [
+          "ev_official_en_h1"
+        ]
+      },
+      {
+        "value": "Zohi Tel Aviv",
+        "evidence_ids": [
+          "ev_official_en_h1"
+        ]
+      },
+      {
+        "value": "זוהי",
+        "evidence_ids": [
+          "ev_madlan_title"
+        ]
+      },
+      {
+        "value": "זוהי - ת\"א בשדה דב",
+        "evidence_ids": [
+          "ev_madlan_title"
+        ]
+      },
+      {
+        "value": "זוהי תל אביב",
+        "evidence_ids": [
+          "ev_metropolis_title"
+        ]
+      }
+    ],
+    "brand_search_terms": [
+      {
+        "value": "זוהי שדה דב",
+        "evidence_ids": [
+          "ev_madlan_title"
+        ]
+      },
+      {
+        "value": "ZOHI Sde Dov",
+        "evidence_ids": [
+          "ev_official_en_h1"
+        ]
+      },
+      {
+        "value": "זוהי תל אביב בשדה דב",
+        "evidence_ids": [
+          "ev_metropolis_title"
+        ]
+      },
+      {
+        "value": "מבנה שדה דב זוהי",
+        "evidence_ids": [
+          "ev_official_partners"
+        ]
+      },
+      {
+        "value": "לוינשטין מטרופוליס מבנה זוהי",
+        "evidence_ids": [
+          "ev_official_partners"
+        ]
+      }
+    ]
+  },
+  "world": {
+    "building_address": {
+      "street_address": {
+        "value": "עגנון ש\"י 11, תל אביב יפו",
+        "evidence_ids": [
+          "ev_madlan_address",
+          "ev_globes_street",
+          "ev_permit_address"
+        ]
+      },
+      "parcel_context": {
+        "value": "מגרש 110, יחידת תכנון 8, שכונת אשכול, רובע שדה דב",
+        "evidence_ids": [
+          "ev_design_lot_context"
+        ]
+      },
+      "gush_helka": [
+        {
+          "gush": "6634",
+          "helka": "15",
+          "evidence_ids": [
+            "ev_permit_gush"
+          ]
+        },
+        {
+          "gush": "7186",
+          "helka": "3",
+          "evidence_ids": [
+            "ev_design_gush_scope"
+          ],
+          "note": "Appears in municipal design-plan parcel table for the project scope. The excavation permit cites only 6634/15, so both are retained."
+        }
+      ],
+      "do_not_geocode_note": "Latitude and longitude intentionally omitted."
+    },
+    "sales_office_address": {
+      "value": null,
+      "unknown_reason": "No exact sales office street address was verified. Some marketing material suggests a sales presence at Tel Aviv Port, but no source with exact address was confirmed."
+    },
+    "neighborhood": {
+      "name": {
+        "value": "שכונת אשכול, רובע שדה דב",
+        "evidence_ids": [
+          "ev_design_lot_context",
+          "ev_municipal_sdedov_eshkol"
+        ]
+      },
+      "district_scale": {
+        "value": "The wider Sde Dov district is planned for about 16,000 housing units, including affordable and rental housing.",
+        "evidence_ids": [
+          "ev_municipal_sdedov_scale"
+        ]
+      },
+      "planning_character": {
+        "value": "A mixed urban district with housing, commerce, employment, public buildings, parks, walkability, cycle routes and mass transit.",
+        "evidence_ids": [
+          "ev_municipal_sdedov_uses",
+          "ev_municipal_sdedov_transport"
+        ]
+      }
+    },
+    "spokes": {
+      "sea_beach": [
+        {
+          "name": "חוף הים, נמל תל אביב וטיילת",
+          "category": "sea_beach",
+          "distance_m": null,
+          "walking_time": {
+            "value": "walking distance",
+            "evidence_ids": [
+              "ev_official_sea"
+            ]
+          },
+          "driving_time": null,
+          "cycling_time": {
+            "value": "5 minutes to Tel Aviv Port",
+            "evidence_ids": [
+              "ev_official_times"
+            ]
+          },
+          "bearing": {
+            "value": "west and southwest toward the shoreline and Tel Aviv Port",
+            "evidence_ids": [
+              "ev_design_lot_edges"
+            ]
+          },
+          "sea_view_seafront_inland": {
+            "value": "inland near sea, not verified as seafront",
+            "evidence_ids": [
+              "ev_official_sea",
+              "ev_design_lot_edges"
+            ]
+          },
+          "source_note": "Exact measured distance was not published by a verified source."
+        },
+        {
+          "name": "רידינג",
+          "category": "sea_beach",
+          "distance_m": null,
+          "cycling_time": {
+            "value": "2 minutes",
+            "evidence_ids": [
+              "ev_official_times"
+            ]
+          },
+          "walking_time": null,
+          "driving_time": null
+        }
+      ],
+      "parks_and_green": [
+        {
+          "name": "גן עירוני פנימי בפרויקט",
+          "category": "project_green",
+          "distance_m": 0,
+          "walking_time": "on site",
+          "driving_time": null,
+          "size": {
+            "value": "about 2.8 dunams",
+            "evidence_ids": [
+              "ev_official_urban_garden",
+              "ev_official_en_garden"
+            ]
+          }
+        },
+        {
+          "name": "פארק הירקון",
+          "category": "park",
+          "distance_m": null,
+          "walking_time": {
+            "value": "minutes away",
+            "evidence_ids": [
+              "ev_official_yarkon"
+            ]
+          },
+          "driving_time": null
+        },
+        {
+          "name": "ספורטק",
+          "category": "sport_park",
+          "distance_m": null,
+          "walking_time": {
+            "value": "15 minutes",
+            "evidence_ids": [
+              "ev_official_times"
+            ]
+          },
+          "driving_time": null
+        },
+        {
+          "name": "מגרש 607 - פארק רובעי מתוכנן",
+          "category": "future_park",
+          "distance_m": null,
+          "walking_time": null,
+          "driving_time": null,
+          "evidence_ids": [
+            "ev_sdedov_education_complex"
+          ],
+          "note": "Published in a secondary Sde Dov site article as part of adjacent public development."
+        }
+      ],
+      "light_rail": [
+        {
+          "line_color": {
+            "value": "Green Line",
+            "evidence_ids": [
+              "ev_municipal_green_line"
+            ]
+          },
+          "nearest_station": {
+            "value": "future Green Line station, exact station not verified on the official project page",
+            "evidence_ids": [
+              "ev_official_transport",
+              "ev_official_times"
+            ]
+          },
+          "distance_m": null,
+          "walking_time": {
+            "value": "7 minutes",
+            "evidence_ids": [
+              "ev_official_times"
+            ]
+          },
+          "driving_time": null,
+          "planned_status": {
+            "value": "planned Green Line route crosses the district south to north and continues by branch to University railway station and Ramat Hahayal",
+            "evidence_ids": [
+              "ev_municipal_green_line"
+            ]
+          }
+        },
+        {
+          "line_color": {
+            "value": "Green Line",
+            "evidence_ids": [
+              "ev_sdedov_green_stations"
+            ]
+          },
+          "nearest_station": {
+            "value": "Ibn Gabirol corridor stations: Props, Nofei Yam, Einstein, Zehara Levitov",
+            "evidence_ids": [
+              "ev_sdedov_green_stations"
+            ]
+          },
+          "distance_m": null,
+          "walking_time": null,
+          "driving_time": null,
+          "source_class": "secondary_unofficial"
+        }
+      ],
+      "planned_metro": [
+        {
+          "line": {
+            "value": "M1, M2 and M3 are the municipal metro system lines",
+            "evidence_ids": [
+              "ev_municipal_metro_lines"
+            ]
+          },
+          "nearest_station": {
+            "value": null,
+            "unknown_reason": "No official source was found tying a specific metro station to ZOHI lot 110."
+          },
+          "distance_m": null,
+          "walking_time": null,
+          "driving_time": null
+        }
+      ],
+      "train_station": [
+        {
+          "name": {
+            "value": "University railway station",
+            "evidence_ids": [
+              "ev_official_transport",
+              "ev_municipal_green_line"
+            ]
+          },
+          "distance_m": null,
+          "walking_time": null,
+          "driving_time": null,
+          "connection": {
+            "value": "Official project page says future light-rail stations are next to the project and University railway station is nearby.",
+            "evidence_ids": [
+              "ev_official_transport"
+            ]
+          }
+        }
+      ],
+      "main_highways_interchanges": [
+        {
+          "name": {
+            "value": "Route 2",
+            "evidence_ids": [
+              "ev_official_roads"
+            ]
+          },
+          "distance_m": null,
+          "walking_time": null,
+          "driving_time": null
+        },
+        {
+          "name": {
+            "value": "Ayalon Highway",
+            "evidence_ids": [
+              "ev_official_roads"
+            ]
+          },
+          "distance_m": null,
+          "walking_time": null,
+          "driving_time": null
+        }
+      ],
+      "retail": [
+        {
+          "name": "Street-level commerce in ZOHI",
+          "category": "on_site_commerce",
+          "distance_m": 0,
+          "walking_time": "on site",
+          "driving_time": null,
+          "evidence_ids": [
+            "ev_design_commerce"
+          ]
+        },
+        {
+          "name": "Retail and commerce in Eshkol plan",
+          "category": "district_commerce",
+          "distance_m": null,
+          "walking_time": null,
+          "driving_time": null,
+          "scale": {
+            "value": "about 45,000 sqm commerce in the Eshkol plan",
+            "evidence_ids": [
+              "ev_municipal_sdedov_eshkol"
+            ]
+          }
+        },
+        {
+          "name": "Tel Aviv Port",
+          "category": "retail_leisure",
+          "distance_m": null,
+          "cycling_time": {
+            "value": "5 minutes",
+            "evidence_ids": [
+              "ev_official_times"
+            ]
+          },
+          "walking_time": null,
+          "driving_time": null
+        }
+      ],
+      "health": [
+        {
+          "name": "Reuth Rehabilitation Hospital, planned Sde Dov campus",
+          "category": "future_health",
+          "distance_m": null,
+          "walking_time": null,
+          "driving_time": null,
+          "source_class": "secondary_unofficial",
+          "evidence_ids": [
+            "ev_sdedov_reuth"
+          ]
+        }
+      ],
+      "education": {
+        "schools": [
+          {
+            "name": "בית ספר יסודי ארן",
+            "type": "elementary school",
+            "distance_m": null,
+            "walking_time": null,
+            "driving_time": null,
+            "address": {
+              "value": "יהודה בורלא 25, תל אביב יפו",
+              "evidence_ids": [
+                "ev_madlan_aran_school"
+              ]
+            },
+            "source_class": "secondary_listing",
+            "note": "Listed by Madlan in the broader area. Assignment or catchment for ZOHI was not verified."
+          },
+          {
+            "name": "Future education and community complex on lot 409",
+            "type": "planned elementary school, special education classrooms, kindergartens, daycare, sports hall and community uses",
+            "distance_m": null,
+            "walking_time": null,
+            "driving_time": null,
+            "source_class": "secondary_unofficial",
+            "evidence_ids": [
+              "ev_sdedov_education_complex"
+            ],
+            "note": "Adjacent or district public development, not a currently operating school."
+          }
+        ],
+        "kindergartens": [
+          {
+            "name": "רתמ-חירות",
+            "type": "municipal kindergarten",
+            "distance_m": null,
+            "address": {
+              "value": "קובנר אבא 16",
+              "evidence_ids": [
+                "ev_madlan_kindergartens"
+              ]
+            },
+            "source_class": "secondary_listing"
+          },
+          {
+            "name": "רתמ-חופש",
+            "type": "municipal kindergarten",
+            "distance_m": null,
+            "address": {
+              "value": "קובנר אבא 16",
+              "evidence_ids": [
+                "ev_madlan_kindergartens"
+              ]
+            },
+            "source_class": "secondary_listing"
+          },
+          {
+            "name": "רתמ-השקמים",
+            "type": "municipal kindergarten",
+            "distance_m": null,
+            "address": {
+              "value": "קובנר אבא 18",
+              "evidence_ids": [
+                "ev_madlan_kindergartens"
+              ]
+            },
+            "source_class": "secondary_listing"
+          },
+          {
+            "name": "רתמ - תות",
+            "type": "municipal kindergarten",
+            "distance_m": null,
+            "address": {
+              "value": "קובנר אבא 20",
+              "evidence_ids": [
+                "ev_madlan_kindergartens"
+              ]
+            },
+            "source_class": "secondary_listing"
+          },
+          {
+            "name": "רתמ - הדרים",
+            "type": "municipal kindergarten",
+            "distance_m": null,
+            "address": {
+              "value": "קובנר אבא 20",
+              "evidence_ids": [
+                "ev_madlan_kindergartens"
+              ]
+            },
+            "source_class": "secondary_listing"
+          },
+          {
+            "name": "רתמ - בננה",
+            "type": "municipal kindergarten",
+            "distance_m": null,
+            "address": {
+              "value": "קובנר אבא 20",
+              "evidence_ids": [
+                "ev_madlan_kindergartens"
+              ]
+            },
+            "source_class": "secondary_listing"
+          }
+        ]
+      },
+      "employment_culture": [
+        {
+          "name": "Eshkol plan employment areas",
+          "category": "future_employment",
+          "distance_m": null,
+          "walking_time": null,
+          "driving_time": null,
+          "scale": {
+            "value": "about 145,000 sqm employment in the Eshkol plan",
+            "evidence_ids": [
+              "ev_municipal_sdedov_eshkol"
+            ]
+          }
+        },
+        {
+          "name": "Eretz Israel Museum",
+          "category": "culture",
+          "distance_m": null,
+          "cycling_time": {
+            "value": "6 minutes",
+            "evidence_ids": [
+              "ev_official_times"
+            ]
+          },
+          "walking_time": null,
+          "driving_time": null
+        }
+      ]
+    },
+    "adjacent_lots_future_plans": [
+      {
+        "lot": "109",
+        "plan_number": {
+          "value": "תא/תעא/תמ\"ל3001, יחידת תכנון 8",
+          "evidence_ids": [
+            "ev_design_unit8_scope"
+          ]
+        },
+        "future_plan": {
+          "value": "Residential and commercial lot north of lot 110 with tower up to 40 floors and 2 low-rise buildings up to 9 floors.",
+          "evidence_ids": [
+            "ev_design_lot109"
+          ]
+        },
+        "view_blocking_risk": {
+          "value": "Possible north-facing obstruction because the lot lies north of lot 110 and includes a tower up to 40 floors.",
+          "evidence_ids": [
+            "ev_design_lot_edges",
+            "ev_design_lot109"
+          ]
+        }
+      },
+      {
+        "lot": "108",
+        "plan_number": {
+          "value": "תא/תעא/תמ\"ל3001, יחידת תכנון 8",
+          "evidence_ids": [
+            "ev_design_unit8_scope"
+          ]
+        },
+        "future_plan": {
+          "value": "Residential and commercial lot in Unit 8 with up to 409 units, a tower up to 40 floors, a towerlet up to 16 floors and low-rise building up to 9 floors.",
+          "evidence_ids": [
+            "ev_design_lot108"
+          ]
+        },
+        "view_blocking_risk": {
+          "value": "Possible depending on apartment line and orientation; exact relationship to each line requires CAD or measured site plan.",
+          "evidence_ids": [
+            "ev_design_unit8_scope",
+            "ev_design_lot108"
+          ]
+        }
+      },
+      {
+        "lot": "404",
+        "plan_number": {
+          "value": "תא/תעא/תמ\"ל3001, יחידת תכנון 8",
+          "evidence_ids": [
+            "ev_design_unit8_scope"
+          ]
+        },
+        "future_plan": {
+          "value": "Public buildings and institutions parcel within Unit 8.",
+          "evidence_ids": [
+            "ev_design_unit8_scope"
+          ]
+        },
+        "view_blocking_risk": {
+          "value": null,
+          "unknown_reason": "Height and massing for the public-building parcel were not extracted from a verified source in this scan."
+        }
+      },
+      {
+        "lot": "610",
+        "plan_number": {
+          "value": "תא/תעא/תמ\"ל3001, יחידת תכנון 8",
+          "evidence_ids": [
+            "ev_design_unit8_scope"
+          ]
+        },
+        "future_plan": {
+          "value": "Public open space east of lot 110.",
+          "evidence_ids": [
+            "ev_design_lot_edges"
+          ]
+        },
+        "view_blocking_risk": {
+          "value": "Lower building obstruction risk than a residential tower parcel, because municipal plan labels the east edge as public open space.",
+          "evidence_ids": [
+            "ev_design_lot_edges"
+          ]
+        }
+      },
+      {
+        "lot": "607",
+        "plan_number": {
+          "value": null,
+          "unknown_reason": "Source article refers to the park lot but did not provide a plan number in the extracted text."
+        },
+        "future_plan": {
+          "value": "District park and educational/community complex area mentioned in Sde Dov secondary article.",
+          "evidence_ids": [
+            "ev_sdedov_education_complex"
+          ]
+        },
+        "view_blocking_risk": {
+          "value": null,
+          "unknown_reason": "Exact location and height envelope relative to ZOHI were not verified."
+        }
+      }
+    ]
+  },
+  "recon_3d": {
+    "num_buildings": {
+      "value": 4,
+      "evidence_ids": [
+        "ev_design_building_count"
+      ],
+      "note": "Official marketing and media often simplify this as 3 buildings or 2 towers plus a low-rise block. Municipal design-plan language says 2 low-rise buildings and 2 towerlets."
+    },
+    "buildings": [
+      {
+        "building_label": "Towerlet A",
+        "source_label": "מגדלון א",
+        "floors": {
+          "value": 16,
+          "evidence_ids": [
+            "ev_design_heights",
+            "ev_design_towerlet_description"
+          ]
+        },
+        "height_m": {
+          "value": 69.3,
+          "evidence_ids": [
+            "ev_design_height_table"
+          ]
+        },
+        "height_detail": {
+          "value": "62 m to technical roof floor plus 5 m technical roof parapet; table height 69.3 m",
+          "evidence_ids": [
+            "ev_design_tower_height_detail",
+            "ev_design_height_table"
+          ]
+        },
+        "ground_and_podium_floors": {
+          "value": "Ground floor commerce plus lobby; 15 residential floors above",
+          "evidence_ids": [
+            "ev_design_towerlet_description",
+            "ev_design_commerce"
+          ]
+        },
+        "lobby_amenity_floors": {
+          "value": "Lobby at ground floor; shared amenities are mainly on low-rise roof and project common areas",
+          "evidence_ids": [
+            "ev_design_amenities_roof",
+            "ev_official_amenities"
+          ]
+        },
+        "entrance": {
+          "value": "from east public open space, with an additional courtyard entrance",
+          "evidence_ids": [
+            "ev_design_entrances"
+          ]
+        },
+        "footprint_shape": {
+          "value": "compact towerlet above commercial ground floor, exact CAD footprint not published",
+          "evidence_ids": [
+            "ev_design_tower_floorplate"
+          ]
+        },
+        "rough_dimensions_m": {
+          "value": null,
+          "unknown_reason": "No verified dimensioned plan image or CAD was found. Only maximum typical floor area was published."
+        },
+        "max_typical_floor_area_sqm": {
+          "value": 780,
+          "evidence_ids": [
+            "ev_design_tower_floorplate"
+          ]
+        },
+        "main_facade_orientation_degrees": {
+          "value": null,
+          "unknown_reason": "Compass degrees were not published and must not be inferred without a measured plan."
+        },
+        "typical_floor_plans": [],
+        "apartments_per_floor": {
+          "value": null,
+          "unknown_reason": "No verified typical floor plan with apartment counts per floor or line layout was found."
+        },
+        "line_arrangement": {
+          "value": null,
+          "unknown_reason": "No verified line-by-line orientation schedule was found."
+        },
+        "facade_elevations": [],
+        "facade_material_palette": {
+          "value": "light cladding, Dekton-type synthetic stone slabs, light HPL, plaster and exposed concrete; no aluminum cladding; glass railings not permitted",
+          "evidence_ids": [
+            "ev_design_materials",
+            "ev_design_reflectivity"
+          ]
+        },
+        "balcony_rhythm": {
+          "value": "balconies in the towerlet are regulated by floor, facade, projection and alignment rules, with staggered balconies prohibited",
+          "evidence_ids": [
+            "ev_design_balconies"
+          ]
+        },
+        "roof_crown_feature": {
+          "value": "technical roof parapet up to 5 m",
+          "evidence_ids": [
+            "ev_design_tower_height_detail"
+          ]
+        },
+        "architectural_signature": {
+          "value": "terraces opening toward the sea as floors rise, with Bauhaus and white-city references in the urban fabric",
+          "evidence_ids": [
+            "ev_official_architect_fishbein"
+          ]
+        },
+        "unit_lines": {
+          "value": null,
+          "unknown_reason": "Unit-line labels and exact orientation were not published in verified sources."
+        }
+      },
+      {
+        "building_label": "Towerlet B",
+        "source_label": "מגדלון ב",
+        "floors": {
+          "value": 16,
+          "evidence_ids": [
+            "ev_design_heights",
+            "ev_design_towerlet_description"
+          ]
+        },
+        "height_m": {
+          "value": 69.3,
+          "evidence_ids": [
+            "ev_design_height_table"
+          ]
+        },
+        "height_detail": {
+          "value": "62 m to technical roof floor plus 5 m technical roof parapet; table height 69.3 m",
+          "evidence_ids": [
+            "ev_design_tower_height_detail",
+            "ev_design_height_table"
+          ]
+        },
+        "ground_and_podium_floors": {
+          "value": "Ground floor commerce plus lobby; 15 residential floors above",
+          "evidence_ids": [
+            "ev_design_towerlet_description",
+            "ev_design_commerce"
+          ]
+        },
+        "lobby_amenity_floors": {
+          "value": "Lobby at ground floor; shared amenities are mainly on low-rise roof and project common areas",
+          "evidence_ids": [
+            "ev_design_amenities_roof",
+            "ev_official_amenities"
+          ]
+        },
+        "entrance": {
+          "value": "from west street 2438, with an additional courtyard entrance",
+          "evidence_ids": [
+            "ev_design_entrances"
+          ]
+        },
+        "footprint_shape": {
+          "value": "compact towerlet above commercial ground floor, exact CAD footprint not published",
+          "evidence_ids": [
+            "ev_design_tower_floorplate"
+          ]
+        },
+        "rough_dimensions_m": {
+          "value": null,
+          "unknown_reason": "No verified dimensioned plan image or CAD was found. Only maximum typical floor area was published."
+        },
+        "max_typical_floor_area_sqm": {
+          "value": 780,
+          "evidence_ids": [
+            "ev_design_tower_floorplate"
+          ]
+        },
+        "main_facade_orientation_degrees": {
+          "value": null,
+          "unknown_reason": "Compass degrees were not published and must not be inferred without a measured plan."
+        },
+        "typical_floor_plans": [],
+        "apartments_per_floor": {
+          "value": null,
+          "unknown_reason": "No verified typical floor plan with apartment counts per floor or line layout was found."
+        },
+        "line_arrangement": {
+          "value": null,
+          "unknown_reason": "No verified line-by-line orientation schedule was found."
+        },
+        "facade_elevations": [],
+        "facade_material_palette": {
+          "value": "light cladding, Dekton-type synthetic stone slabs, light HPL, plaster and exposed concrete; no aluminum cladding; glass railings not permitted",
+          "evidence_ids": [
+            "ev_design_materials",
+            "ev_design_reflectivity"
+          ]
+        },
+        "balcony_rhythm": {
+          "value": "balconies in the towerlet are regulated by floor, facade, projection and alignment rules, with staggered balconies prohibited",
+          "evidence_ids": [
+            "ev_design_balconies"
+          ]
+        },
+        "roof_crown_feature": {
+          "value": "technical roof parapet up to 5 m",
+          "evidence_ids": [
+            "ev_design_tower_height_detail"
+          ]
+        },
+        "architectural_signature": {
+          "value": "terraces opening toward the sea as floors rise, with Bauhaus and white-city references in the urban fabric",
+          "evidence_ids": [
+            "ev_official_architect_fishbein"
+          ]
+        },
+        "unit_lines": {
+          "value": null,
+          "unknown_reason": "Unit-line labels and exact orientation were not published in verified sources."
+        }
+      },
+      {
+        "building_label": "Low-rise building 1",
+        "source_label": "בניין מרקמי",
+        "floors": {
+          "value": 9,
+          "evidence_ids": [
+            "ev_design_heights",
+            "ev_design_lowrise_detail"
+          ]
+        },
+        "height_m": {
+          "value": 32.3,
+          "evidence_ids": [
+            "ev_design_height_table"
+          ]
+        },
+        "height_detail": {
+          "value": "Ground commerce floor, 7 residential floors and top resident amenity roof floor with pool; height to top residential floor 29 m from entrance level",
+          "evidence_ids": [
+            "ev_design_lowrise_detail",
+            "ev_design_height_table"
+          ]
+        },
+        "ground_and_podium_floors": {
+          "value": "Ground floor commerce and lobby",
+          "evidence_ids": [
+            "ev_design_lowrise_detail",
+            "ev_design_commerce"
+          ]
+        },
+        "lobby_amenity_floors": {
+          "value": "Top low-rise roof includes resident amenities and pool; ground includes lobby",
+          "evidence_ids": [
+            "ev_design_amenities_roof",
+            "ev_design_lowrise_detail"
+          ]
+        },
+        "entrance": {
+          "value": "from Shai Agnon south side, with an additional courtyard entrance",
+          "evidence_ids": [
+            "ev_design_entrances"
+          ]
+        },
+        "footprint_shape": {
+          "value": "perimeter low-rise urban block around an internal courtyard, exact dimensions not published",
+          "evidence_ids": [
+            "ev_design_building_count",
+            "ev_design_courtyard"
+          ]
+        },
+        "rough_dimensions_m": {
+          "value": null,
+          "unknown_reason": "No verified dimensioned plan image or CAD was found."
+        },
+        "main_facade_orientation_degrees": {
+          "value": null,
+          "unknown_reason": "Compass degrees were not published and must not be inferred without a measured plan."
+        },
+        "typical_floor_plans": [],
+        "apartments_per_floor": {
+          "value": null,
+          "unknown_reason": "No verified typical floor plan with apartment counts per floor or line layout was found."
+        },
+        "line_arrangement": {
+          "value": null,
+          "unknown_reason": "No verified line-by-line orientation schedule was found."
+        },
+        "facade_elevations": [],
+        "facade_material_palette": {
+          "value": "light cladding, Dekton-type synthetic stone slabs, light HPL, plaster and exposed concrete; no aluminum cladding; glass railings not permitted",
+          "evidence_ids": [
+            "ev_design_materials",
+            "ev_design_reflectivity"
+          ]
+        },
+        "balcony_rhythm": {
+          "value": "low-rise balconies align with horizontal and railing elements and vertical axes; staggered balconies are prohibited",
+          "evidence_ids": [
+            "ev_design_balconies"
+          ]
+        },
+        "roof_crown_feature": {
+          "value": "landscaped fifth facade with resident pool and toddler pool",
+          "evidence_ids": [
+            "ev_design_amenities_roof"
+          ]
+        },
+        "architectural_signature": {
+          "value": "Bauhaus and white-city inspired urban fabric with natural materials and a light palette",
+          "evidence_ids": [
+            "ev_official_architect_fishbein",
+            "ev_official_architect_goldsmith"
+          ]
+        },
+        "unit_lines": {
+          "value": null,
+          "unknown_reason": "Unit-line labels and exact orientation were not published in verified sources."
+        }
+      },
+      {
+        "building_label": "Low-rise building 2",
+        "source_label": "בניין מרקמי",
+        "floors": {
+          "value": 9,
+          "evidence_ids": [
+            "ev_design_heights",
+            "ev_design_lowrise_detail"
+          ]
+        },
+        "height_m": {
+          "value": 32.3,
+          "evidence_ids": [
+            "ev_design_height_table"
+          ]
+        },
+        "height_detail": {
+          "value": "Ground commerce floor, 7 residential floors and top resident amenity roof floor with pool; height to top residential floor 29 m from entrance level",
+          "evidence_ids": [
+            "ev_design_lowrise_detail",
+            "ev_design_height_table"
+          ]
+        },
+        "ground_and_podium_floors": {
+          "value": "Ground floor commerce and lobby",
+          "evidence_ids": [
+            "ev_design_lowrise_detail",
+            "ev_design_commerce"
+          ]
+        },
+        "lobby_amenity_floors": {
+          "value": "Top low-rise roof includes resident amenities and pool; ground includes lobby",
+          "evidence_ids": [
+            "ev_design_amenities_roof",
+            "ev_design_lowrise_detail"
+          ]
+        },
+        "entrance": {
+          "value": "from Shai Agnon south side, with an additional courtyard entrance",
+          "evidence_ids": [
+            "ev_design_entrances"
+          ]
+        },
+        "footprint_shape": {
+          "value": "perimeter low-rise urban block around an internal courtyard, exact dimensions not published",
+          "evidence_ids": [
+            "ev_design_building_count",
+            "ev_design_courtyard"
+          ]
+        },
+        "rough_dimensions_m": {
+          "value": null,
+          "unknown_reason": "No verified dimensioned plan image or CAD was found."
+        },
+        "main_facade_orientation_degrees": {
+          "value": null,
+          "unknown_reason": "Compass degrees were not published and must not be inferred without a measured plan."
+        },
+        "typical_floor_plans": [],
+        "apartments_per_floor": {
+          "value": null,
+          "unknown_reason": "No verified typical floor plan with apartment counts per floor or line layout was found."
+        },
+        "line_arrangement": {
+          "value": null,
+          "unknown_reason": "No verified line-by-line orientation schedule was found."
+        },
+        "facade_elevations": [],
+        "facade_material_palette": {
+          "value": "light cladding, Dekton-type synthetic stone slabs, light HPL, plaster and exposed concrete; no aluminum cladding; glass railings not permitted",
+          "evidence_ids": [
+            "ev_design_materials",
+            "ev_design_reflectivity"
+          ]
+        },
+        "balcony_rhythm": {
+          "value": "low-rise balconies align with horizontal and railing elements and vertical axes; staggered balconies are prohibited",
+          "evidence_ids": [
+            "ev_design_balconies"
+          ]
+        },
+        "roof_crown_feature": {
+          "value": "landscaped fifth facade with resident pool and toddler pool",
+          "evidence_ids": [
+            "ev_design_amenities_roof"
+          ]
+        },
+        "architectural_signature": {
+          "value": "Bauhaus and white-city inspired urban fabric with natural materials and a light palette",
+          "evidence_ids": [
+            "ev_official_architect_fishbein",
+            "ev_official_architect_goldsmith"
+          ]
+        },
+        "unit_lines": {
+          "value": null,
+          "unknown_reason": "Unit-line labels and exact orientation were not published in verified sources."
+        }
+      }
+    ],
+    "site_parcel": {
+      "lot_area_sqm": {
+        "value": 4651,
+        "evidence_ids": [
+          "ev_design_area",
+          "ev_permit_area"
+        ]
+      },
+      "lot_edges": {
+        "west": {
+          "value": "Street 2438",
+          "evidence_ids": [
+            "ev_design_lot_edges"
+          ]
+        },
+        "east": {
+          "value": "public open space 610",
+          "evidence_ids": [
+            "ev_design_lot_edges"
+          ]
+        },
+        "south": {
+          "value": "Shai Agnon Street and Kochav Hatzafon",
+          "evidence_ids": [
+            "ev_design_lot_edges"
+          ]
+        },
+        "north": {
+          "value": "lot 109",
+          "evidence_ids": [
+            "ev_design_lot_edges"
+          ]
+        }
+      },
+      "public_easement": {
+        "value": "An internal courtyard and public easement that must remain open to the public all year with no fence.",
+        "evidence_ids": [
+          "ev_design_courtyard",
+          "ev_design_public_easement"
+        ]
+      },
+      "basements": {
+        "value": "5 underground parking floors",
+        "evidence_ids": [
+          "ev_design_basements",
+          "ev_permit_excavation"
+        ]
+      }
+    },
+    "facade_selector": {
+      "verified_orientation_images": [],
+      "usable_render_urls": [
+        {
+          "url": "https://www.zohi.co.il/wp-content/uploads/2025/12/arc-sde-dov-c06_0-1.jpg",
+          "evidence_ids": [
+            "ev_media_official_gallery"
+          ]
+        },
+        {
+          "url": "https://www.zohi.co.il/wp-content/uploads/2025/12/arc-sde-dov-c08_0-1.jpg",
+          "evidence_ids": [
+            "ev_media_official_gallery"
+          ]
+        },
+        {
+          "url": "https://www.zohi.co.il/wp-content/uploads/2025/12/arc-sde-dov-c09_0-1.jpg",
+          "evidence_ids": [
+            "ev_media_official_gallery"
+          ]
+        },
+        {
+          "url": "https://www.zohi.co.il/wp-content/uploads/2025/12/arc-sde-dov-c10_0-1.jpg",
+          "evidence_ids": [
+            "ev_media_official_gallery"
+          ]
+        },
+        {
+          "url": "https://www.zohi.co.il/wp-content/uploads/2025/12/arc-sde-dov-c12_0-1.jpg",
+          "evidence_ids": [
+            "ev_media_official_gallery"
+          ]
+        },
+        {
+          "url": "https://www.zohi.co.il/wp-content/uploads/2025/12/arc-sde-dov-c15_0.jpg",
+          "evidence_ids": [
+            "ev_media_official_gallery"
+          ]
+        },
+        {
+          "url": "https://www.zohi.co.il/wp-content/uploads/2025/12/arc-sde-dov-c16_0.jpg",
+          "evidence_ids": [
+            "ev_media_official_gallery"
+          ]
+        },
+        {
+          "url": "https://www.zohi.co.il/wp-content/uploads/2025/12/arc-sde-dov-c17_0.jpg",
+          "evidence_ids": [
+            "ev_media_official_gallery"
+          ]
+        }
+      ],
+      "limitation": "Official render URLs are usable for visual reference, but no source mapped each image to a compass orientation."
+    }
+  },
+  "units": {
+    "total_units": {
+      "value": 230,
+      "evidence_ids": [
+        "ev_official_units",
+        "ev_design_units_total",
+        "ev_madlan_buildings"
+      ]
+    },
+    "unit_mix_by_rooms": [
+      {
+        "rooms": "2-6",
+        "count": null,
+        "sqm_range": null,
+        "evidence_ids": [
+          "ev_official_units"
+        ],
+        "note": "Official page gives room range but not count by room type."
+      }
+    ],
+    "unit_mix_by_size_statutory": [
+      {
+        "type": "small",
+        "sqm_range": "30-60",
+        "average_sqm": 43,
+        "count": 58,
+        "share_percent": 25,
+        "evidence_ids": [
+          "ev_design_unit_mix"
+        ]
+      },
+      {
+        "type": "medium",
+        "sqm_range": "61-85",
+        "average_sqm": 71,
+        "count": 57,
+        "share_percent": 25,
+        "evidence_ids": [
+          "ev_design_unit_mix"
+        ]
+      },
+      {
+        "type": "large",
+        "sqm_range": "86+",
+        "average_sqm": 105,
+        "count": 115,
+        "share_percent": 50,
+        "evidence_ids": [
+          "ev_design_unit_mix"
+        ]
+      }
+    ],
+    "special_units": {
+      "penthouses": {
+        "value": "variety of penthouses",
+        "evidence_ids": [
+          "ev_official_units"
+        ]
+      },
+      "mini_penthouses": {
+        "value": null,
+        "unknown_reason": "No verified official source used the mini-penthouse term for inventory."
+      },
+      "garden_apartments": {
+        "value": null,
+        "unknown_reason": "No verified source found garden-apartment inventory."
+      },
+      "diuriyot": {
+        "value": 5,
+        "evidence_ids": [
+          "ev_design_diuriyot"
+        ]
+      }
+    },
+    "ceiling_height_m": {
+      "value": 3,
+      "evidence_ids": [
+        "ev_official_ceiling"
+      ]
+    },
+    "parking": {
+      "residential_ratio_max": {
+        "value": "not more than 1:1",
+        "evidence_ids": [
+          "ev_design_parking"
+        ]
+      },
+      "bike_parking": {
+        "value": "at least 2.5 bike parking spaces per dwelling",
+        "evidence_ids": [
+          "ev_design_parking"
+        ]
+      },
+      "ev_prep": {
+        "value": "EV charging preparation for all residential parking spaces",
+        "evidence_ids": [
+          "ev_design_ev"
+        ]
+      },
+      "parking_levels": {
+        "value": 5,
+        "evidence_ids": [
+          "ev_design_basements",
+          "ev_permit_excavation"
+        ]
+      }
+    },
+    "storage": {
+      "value": "storage rooms are indicated in basement planning",
+      "evidence_ids": [
+        "ev_design_storage"
+      ]
+    },
+    "mamad": {
+      "value": null,
+      "unknown_reason": "The planning PDF references protection systems but no verified apartment-level mamad schedule was found."
+    },
+    "accessibility": {
+      "value": "Plan documents include accessibility consultant and accessible planning requirements, but accessible-unit count was not found.",
+      "evidence_ids": [
+        "ev_design_accessibility"
+      ]
+    },
+    "delivery_occupancy_year": {
+      "value": 2030,
+      "basis": "media launch expectation, second half of 2030",
+      "evidence_ids": [
+        "ev_globes_occupancy",
+        "ev_calcalist_occupancy"
+      ]
+    },
+    "sold_remaining": {
+      "sold": {
+        "value": 66,
+        "as_of_date": "2026-01-12",
+        "basis": "sponsored Calcalist article",
+        "evidence_ids": [
+          "ev_calcalist_sales"
+        ]
+      },
+      "remaining": {
+        "value": null,
+        "unknown_reason": "Remaining unit count was not directly published. It should not be derived without current developer inventory."
+      }
+    },
+    "sold_status_note": "The sold count is from sponsored content and may be outdated. It is not a live inventory feed."
+  },
+  "prices": {
+    "developer_price_list": {
+      "value": null,
+      "unknown_reason": "No official developer price list was found on the reachable official website."
+    },
+    "madlan_project_range": {
+      "value": null,
+      "unknown_reason": "Madlan provided an average price per sqm and individual recorded rows, not a formal developer price list or room-by-room range."
+    },
+    "madlan_average_price_per_sqm": {
+      "currency": "ILS",
+      "price_per_sqm": {
+        "value": 76000,
+        "basis": "Madlan project average",
+        "as_of_date": "2026-07-05",
+        "evidence_ids": [
+          "ev_madlan_avg_price"
+        ]
+      }
+    },
+    "project_transaction_rows": [
+      {
+        "basis_label": "Madlan transaction row at project address",
+        "source_url": "https://www.madlan.co.il/area-info/%D7%A9%D7%9B%D7%95%D7%A0%D7%94-%D7%A9%D7%93%D7%94-%D7%93%D7%91-%D7%90%D7%A9%D7%9B%D7%95%D7%9C-%D7%AA%D7%9C-%D7%90%D7%91%D7%99%D7%91-%D7%99%D7%A4%D7%95-%D7%99%D7%A9%D7%A8%D7%90%D7%9C",
+        "as_of_date": "2026-04-30",
+        "street_address": "עגנון ש\"י 11",
+        "rooms": 3,
+        "floor": 13,
+        "sqm": 91,
+        "price_ils": 6940000,
+        "price_per_sqm_ils": 76208,
+        "evidence_ids": [
+          "ev_madlan_tx1"
+        ]
+      },
+      {
+        "basis_label": "Madlan transaction row at project address",
+        "source_url": "https://www.madlan.co.il/area-info/%D7%A9%D7%9B%D7%95%D7%A0%D7%94-%D7%A9%D7%93%D7%94-%D7%93%D7%91-%D7%90%D7%A9%D7%9B%D7%95%D7%9C-%D7%AA%D7%9C-%D7%90%D7%91%D7%99%D7%91-%D7%99%D7%A4%D7%95-%D7%99%D7%A9%D7%A8%D7%90%D7%9C",
+        "as_of_date": "2026-04-26",
+        "street_address": "עגנון ש\"י 11",
+        "rooms": 5,
+        "floor": 15,
+        "sqm": 147,
+        "price_ils": 4390000,
+        "price_per_sqm_ils": 29868,
+        "evidence_ids": [
+          "ev_madlan_tx2"
+        ],
+        "quality_note": "This row is anomalous relative to other rows and should be checked against the official tax database before production use."
+      },
+      {
+        "basis_label": "Madlan transaction row at project address",
+        "source_url": "https://www.madlan.co.il/area-info/%D7%A9%D7%9B%D7%95%D7%A0%D7%94-%D7%A9%D7%93%D7%94-%D7%93%D7%91-%D7%90%D7%A9%D7%9B%D7%95%D7%9C-%D7%AA%D7%9C-%D7%90%D7%91%D7%99%D7%91-%D7%99%D7%A4%D7%95-%D7%99%D7%A9%D7%A8%D7%90%D7%9C",
+        "as_of_date": "2026-04-23",
+        "street_address": "עגנון ש\"י 11",
+        "rooms": 3,
+        "floor": 6,
+        "sqm": 65,
+        "price_ils": 4850000,
+        "price_per_sqm_ils": 74646,
+        "evidence_ids": [
+          "ev_madlan_tx3"
+        ]
+      },
+      {
+        "basis_label": "Madlan transaction row at project address",
+        "source_url": "https://www.madlan.co.il/area-info/%D7%A9%D7%9B%D7%95%D7%A0%D7%94-%D7%A9%D7%93%D7%94-%D7%93%D7%91-%D7%90%D7%A9%D7%9B%D7%95%D7%9C-%D7%AA%D7%9C-%D7%90%D7%91%D7%99%D7%91-%D7%99%D7%A4%D7%95-%D7%99%D7%A9%D7%A8%D7%90%D7%9C",
+        "as_of_date": "2026-04-23",
+        "street_address": "עגנון ש\"י 11",
+        "rooms": 3,
+        "floor": 4,
+        "sqm": 72,
+        "price_ils": 4880000,
+        "price_per_sqm_ils": 67777,
+        "evidence_ids": [
+          "ev_madlan_tx4"
+        ]
+      }
+    ],
+    "yad2_active_listing_context": [
+      {
+        "basis_label": "nearby active listing context, not project-specific",
+        "source_url": "https://www.yad2.co.il/realestate/forsale/tel-aviv-area?area=1&city=5000&neighborhood=850",
+        "as_of_date": "2026-07-05",
+        "address_or_area": "Ibn Gabirol, Sde Dov area",
+        "rooms": 2.5,
+        "sqm": 81,
+        "price_ils": 4350000,
+        "price_per_sqm_ils": 53704,
+        "evidence_ids": [
+          "ev_yad2_context"
+        ]
+      },
+      {
+        "basis_label": "nearby active listing context, not project-specific",
+        "source_url": "https://www.yad2.co.il/realestate/forsale/tel-aviv-area?area=1&city=5000&neighborhood=850",
+        "as_of_date": "2026-07-05",
+        "address_or_area": "Einstein, Sde Dov area",
+        "rooms": 5,
+        "sqm": 140,
+        "price_ils": 7460000,
+        "price_per_sqm_ils": 53286,
+        "evidence_ids": [
+          "ev_yad2_context"
+        ]
+      },
+      {
+        "basis_label": "nearby active listing context, not project-specific",
+        "source_url": "https://www.yad2.co.il/realestate/forsale/tel-aviv-area?area=1&city=5000&neighborhood=850",
+        "as_of_date": "2026-07-05",
+        "address_or_area": "Sde Dov area",
+        "rooms": 4,
+        "sqm": 144,
+        "price_ils": 7150000,
+        "price_per_sqm_ils": 49653,
+        "evidence_ids": [
+          "ev_yad2_context"
+        ]
+      },
+      {
+        "basis_label": "nearby active listing context, not project-specific",
+        "source_url": "https://www.yad2.co.il/realestate/forsale/tel-aviv-area?area=1&city=5000&neighborhood=850",
+        "as_of_date": "2026-07-05",
+        "address_or_area": "Sde Dov area",
+        "rooms": 2,
+        "sqm": 66,
+        "price_ils": 3330000,
+        "price_per_sqm_ils": 50455,
+        "evidence_ids": [
+          "ev_yad2_context"
+        ]
+      }
+    ],
+    "media_reported_price_per_sqm": [
+      {
+        "value": 70000,
+        "currency": "ILS",
+        "basis_label": "launch media headline, not a price list",
+        "as_of_date": "2026-01-11",
+        "evidence_ids": [
+          "ev_zirat_price"
+        ]
+      }
+    ],
+    "payment_terms": [
+      {
+        "value": "20 percent at signing and the balance at occupancy, according to media",
+        "basis_label": "media report, not independently verified as a current offer",
+        "as_of_date": "2026-01-11",
+        "evidence_ids": [
+          "ev_zirat_payment"
+        ]
+      }
+    ]
+  },
+  "media": {
+    "official_gallery": {
+      "url": "https://www.zohi.co.il/",
+      "evidence_ids": [
+        "ev_media_official_gallery"
+      ]
+    },
+    "render_image_urls": [
+      "https://www.zohi.co.il/wp-content/uploads/2025/12/arc-sde-dov-c06_0-1.jpg",
+      "https://www.zohi.co.il/wp-content/uploads/2025/12/arc-sde-dov-c08_0-1.jpg",
+      "https://www.zohi.co.il/wp-content/uploads/2025/12/arc-sde-dov-c09_0-1.jpg",
+      "https://www.zohi.co.il/wp-content/uploads/2025/12/arc-sde-dov-c10_0-1.jpg",
+      "https://www.zohi.co.il/wp-content/uploads/2025/12/arc-sde-dov-c12_0-1.jpg",
+      "https://www.zohi.co.il/wp-content/uploads/2025/12/arc-sde-dov-c15_0.jpg",
+      "https://www.zohi.co.il/wp-content/uploads/2025/12/arc-sde-dov-c16_0.jpg",
+      "https://www.zohi.co.il/wp-content/uploads/2025/12/arc-sde-dov-c17_0.jpg",
+      "https://www.zohi.co.il/wp-content/uploads/2025/12/arc-sde-dov-pool-c01_0.jpg",
+      "https://www.zohi.co.il/wp-content/uploads/2025/12/arc-sde-dov-pool-c04_0.jpg",
+      "https://www.zohi.co.il/wp-content/uploads/2025/12/arc-sde-dov-pool-c06_0.jpg",
+      "https://www.zohi.co.il/wp-content/uploads/2025/12/arc-sde-dov-shtila-0022_0.jpg",
+      "https://www.zohi.co.il/wp-content/uploads/2025/12/arc-sde-dov-shtila-0055_0.jpg",
+      "https://www.zohi.co.il/wp-content/uploads/2025/12/arc-sde-dov-shtila-0553_0.jpg",
+      "https://www.zohi.co.il/wp-content/uploads/2025/12/arc-sde-dov-shtila-0884_0.jpg",
+      "https://www.zohi.co.il/wp-content/uploads/2025/12/arc-sde-dov-c02_0-1.jpg",
+      "https://www.zohi.co.il/wp-content/uploads/2025/12/arc-sde-dov-c03_0-1.jpg",
+      "https://www.zohi.co.il/wp-content/uploads/2025/12/arc-sde-dov-c04_0-crop-1.jpg",
+      "https://www.zohi.co.il/wp-content/uploads/2025/12/arc-sde-dov-c03_0-1-1-1024x347.jpg"
+    ],
+    "amenity_image_urls": [
+      "https://www.zohi.co.il/wp-content/uploads/2026/01/sde-dov-wework-c02_0-1_675X542.jpg",
+      "https://www.zohi.co.il/wp-content/uploads/2025/12/sde-dov-lobby-c02_0.jpg",
+      "https://www.zohi.co.il/wp-content/uploads/2025/12/sde-dov-lobby-c03_0.jpg",
+      "https://www.zohi.co.il/wp-content/uploads/2025/12/sde-dov-typ-gym-c01_0.jpg",
+      "https://www.zohi.co.il/wp-content/uploads/2025/12/sde-dov-typ-gym-c02_0.jpg",
+      "https://www.zohi.co.il/wp-content/uploads/2025/12/sde-dov-typ-lobby-c01_0.jpg",
+      "https://www.zohi.co.il/wp-content/uploads/2025/12/sde-dov-typ-lobby-c02_0.jpg",
+      "https://www.zohi.co.il/wp-content/uploads/2025/12/sde-dov-wework-c01_0.jpg",
+      "https://www.zohi.co.il/wp-content/uploads/2025/12/sde-dov-wework-c02_0.jpg",
+      "https://www.zohi.co.il/wp-content/uploads/2025/12/sde-dov-yoga-c01_0.jpg",
+      "https://www.zohi.co.il/wp-content/uploads/2025/12/sde-dov-yoga-c02_0.jpg"
+    ],
+    "interior_image_urls": [
+      "https://www.zohi.co.il/wp-content/uploads/2025/12/sde-dov-ph-wl-c02_0.png",
+      "https://www.zohi.co.il/wp-content/uploads/2025/12/sde-dov-ph-wl-c02_0-1.png",
+      "https://www.zohi.co.il/wp-content/uploads/2025/12/sde-dov-ph-wl-c02_0-2.png",
+      "https://www.zohi.co.il/wp-content/uploads/2025/12/sde-dov-ph-wl-c01_0.png",
+      "https://www.zohi.co.il/wp-content/uploads/2025/12/sde-dov-wph1-c01_0.png",
+      "https://www.zohi.co.il/wp-content/uploads/2025/12/sde-dov-wph1-c01_0-1.png",
+      "https://www.zohi.co.il/wp-content/uploads/2025/12/sde-dov-wph1-c02_0.png",
+      "https://www.zohi.co.il/wp-content/uploads/2025/12/sde-dov-ph-wl-c01_0-1.png"
+    ],
+    "neighborhood_image_urls": [
+      "https://www.zohi.co.il/wp-content/uploads/2025/12/Rectangle-16.jpg",
+      "https://www.zohi.co.il/wp-content/uploads/2025/12/maks-styazhkin-KK5aHiWUe-4-unsplash-2-3.jpg",
+      "https://www.zohi.co.il/wp-content/uploads/2025/12/ginny-rose-stewart-UxkcSzRWM2s-unsplash-1-1024x300.jpg",
+      "https://www.zohi.co.il/wp-content/uploads/2025/12/pic-1-768x768.png",
+      "https://www.zohi.co.il/wp-content/uploads/2025/12/pic-2-768x768.png",
+      "https://www.zohi.co.il/wp-content/uploads/2025/12/pic-3-1-768x768.png",
+      "https://www.zohi.co.il/wp-content/uploads/2025/12/pic-4-768x768.png"
+    ],
+    "floor_plan_image_urls": [],
+    "site_plan_urls": [
+      {
+        "url": "https://www.tel-aviv.gov.il/Residents/Development/DocLib/%D7%9E%D7%92%D7%A8%D7%A9%20110%20%D7%90%D7%A9%D7%9B%D7%95%D7%9C%20%D7%A9%D7%93%D7%94%20%D7%93%D7%91%20%D7%93%D7%99%D7%95%D7%9F%20%D7%91%D7%A2%D7%99%D7%A6%D7%95%D7%91.pdf",
+        "evidence_ids": [
+          "ev_design_pdf"
+        ]
+      }
+    ],
+    "brochure_pdf_urls": [],
+    "promo_video_urls": [],
+    "virtual_tour_3d_urls": [],
+    "media_evidence_ids": [
+      "ev_media_official_gallery",
+      "ev_official_floorplan_labels",
+      "ev_design_pdf"
+    ],
+    "media_limitations": [
+      "Official page exposes gallery images but no verified downloadable brochure PDF was found.",
+      "Floor-plan category labels were found, but no verified direct floor-plan image or PDF URL was confirmed.",
+      "No virtual tour or official 3D URL was verified."
+    ]
+  },
+  "article_material": {
+    "project_story": {
+      "he": {
+        "text": "זוהי הוא מתחם מגורים חדש בשכונת אשכול ברובע שדה דב, על מגרש 110 ברחוב ש\"י עגנון. הפרויקט משלב 230 דירות בנות 2-6 חדרים ופנטהאוזים, גן עירוני פנימי, בריכת דיירים, לאונג', חדר כושר וסטודיו יוגה. התכנון האדריכלי של גל אור פישביין מתייחס לשפת העיר הלבנה ולבנייה מרקמית עם מגדלונים נמוכים יחסית לרובע. היזמים הם מבנה, לוינשטין ומטרופוליס.",
+        "evidence_ids": [
+          "ev_official_units",
+          "ev_official_amenities",
+          "ev_official_architect_fishbein",
+          "ev_official_partners",
+          "ev_design_lot_context"
+        ]
+      },
+      "en": {
+        "text": "ZOHI is a new residential compound in Eshkol, Sde Dov, on lot 110 at Shai Agnon Street. It combines 230 apartments, 2-6 room homes and penthouses, an internal urban garden, resident pool, lounge, gym and yoga studio. Gal Or Fishbein Architects frame the project around Tel Aviv white-city references and a low-rise plus towerlet urban fabric. The development partners are Mivne, Levinstein and Metropolis.",
+        "evidence_ids": [
+          "ev_official_en_units",
+          "ev_official_en_garden",
+          "ev_official_architect_fishbein",
+          "ev_official_partners",
+          "ev_design_lot_context"
+        ]
+      },
+      "fr": {
+        "text": "ZOHI est un nouveau complexe residentiel a Sde Dov, dans le quartier Eshkol, sur le lot 110. Le projet propose 230 appartements, des logements de 2 a 6 pieces et des penthouses, avec jardin urbain, piscine, lounge, salle de sport et studio de yoga. Le langage architectural s'appuie sur l'identite de la ville blanche de Tel Aviv. Les partenaires sont Mivne, Levinstein et Metropolis.",
+        "evidence_ids": [
+          "ev_official_fr_identity",
+          "ev_official_units",
+          "ev_official_amenities",
+          "ev_official_partners"
+        ]
+      },
+      "ru": {
+        "text": "ZOHI - новый жилой комплекс в районе Eshkol в Sde Dov, на участке 110 у улицы Shai Agnon. В проекте 230 квартир, планировки 2-6 комнат и пентхаусы, внутренний городской сад, бассейн для жильцов, лаунж, спортзал и студия йоги. Архитектурная концепция связана с белым городом Тель Авива. Девелоперы проекта - Mivne, Levinstein и Metropolis.",
+        "evidence_ids": [
+          "ev_official_units",
+          "ev_official_amenities",
+          "ev_official_architect_fishbein",
+          "ev_official_partners"
+        ]
+      },
+      "ar": {
+        "text": "زوهי هو مجمع سكني جديد في حي إشكول ضمن منطقة سديه دوف، على القسيمة 110 قرب شارع شاي عجنون. يضم المشروع 230 شقة، شققا من 2-6 غرف وبنتهاوس، مع حديقة حضرية داخلية ومسبح للسكان ولاونج وناد رياضي واستوديو يوغا. تستند الرؤية المعمارية إلى روح تل أبيب والمدينة البيضاء. الشركاء المطورون هم Mivne و Levinstein و Metropolis.",
+        "evidence_ids": [
+          "ev_official_units",
+          "ev_official_amenities",
+          "ev_official_architect_fishbein",
+          "ev_official_partners"
+        ]
+      }
+    },
+    "usps": [
+      {
+        "label": "Sde Dov location in the Eshkol neighborhood",
+        "claim": "The project sits in lot 110 of Eshkol, Sde Dov, one of Tel Aviv's largest new coastal districts.",
+        "evidence_ids": [
+          "ev_design_lot_context",
+          "ev_municipal_sdedov_scale"
+        ]
+      },
+      {
+        "label": "230-unit boutique scale for Sde Dov",
+        "claim": "The project totals 230 homes, smaller than many high-rise district projects.",
+        "evidence_ids": [
+          "ev_official_units",
+          "ev_design_units_total"
+        ]
+      },
+      {
+        "label": "Large internal garden",
+        "claim": "The official site describes a 2.8-dunam urban garden inside the project.",
+        "evidence_ids": [
+          "ev_official_urban_garden"
+        ]
+      },
+      {
+        "label": "Resident amenities",
+        "claim": "Amenities include a pool, gym, yoga studio, lounge, terraces and shared resident spaces.",
+        "evidence_ids": [
+          "ev_official_amenities",
+          "ev_design_amenities_roof"
+        ]
+      },
+      {
+        "label": "Close to planned Green Line",
+        "claim": "The official site states a 7-minute walk to the future Green Line station.",
+        "evidence_ids": [
+          "ev_official_times",
+          "ev_municipal_green_line"
+        ]
+      },
+      {
+        "label": "Walkable coastal urban setting",
+        "claim": "The official site describes walking proximity to the beach, Tel Aviv Port and promenade.",
+        "evidence_ids": [
+          "ev_official_sea"
+        ]
+      },
+      {
+        "label": "Architectural positioning",
+        "claim": "The architects frame the design as part of Tel Aviv's white-city and Bauhaus lineage, with terraces opening toward the sea.",
+        "evidence_ids": [
+          "ev_official_architect_fishbein",
+          "ev_official_architect_goldsmith"
+        ]
+      },
+      {
+        "label": "Sustainability and mobility planning",
+        "claim": "The design plan specifies green-building targets, bike parking, EV preparation, pneumatic waste and an open public easement.",
+        "evidence_ids": [
+          "ev_design_green_building",
+          "ev_design_parking",
+          "ev_design_ev",
+          "ev_design_public_easement"
+        ]
+      }
+    ],
+    "neighborhood_narrative": {
+      "he": "שכונת אשכול היא השלב הראשון והבשל יותר של רובע שדה דב: רובע חדש בצפון תל אביב, בין הים, הירקון, צירי תחבורה עתידיים ומוקדי תרבות ותעסוקה. זוהי מתאים לקונים שמחפשים דירה חדשה בצפון הישן החדש של העיר, עם קרבה לים ולנמל, אך בתוך רובע מתוכנן עם מסחר רחובי, פארקים, שבילי אופניים ותחבורה ציבורית עתידית.",
+      "en": "Eshkol is the early, central neighborhood of the Sde Dov district, positioned between the sea, Yarkon Park, new transit corridors and future mixed-use development. ZOHI suits buyers who want a new Tel Aviv home close to the coast and port, but within a planned district with street commerce, open spaces, bike infrastructure and future mass transit.",
+      "fr": "Eshkol est le premier noyau urbain du nouveau quartier de Sde Dov. ZOHI vise des acheteurs qui recherchent une adresse neuve au nord de Tel Aviv, proche de la mer, du port et des futurs transports, avec commerces de rue, espaces verts et services de quartier.",
+      "ru": "Eshkol - один из первых формируемых кварталов Sde Dov. ZOHI подойдет покупателям, которым нужна новая квартира в северной части Тель Авива рядом с морем, портом, будущим транспортом, уличной торговлей, зелеными зонами и велосипедной сетью.",
+      "ar": "إشكول هو أحد الأحياء الأولى في منطقة سديه دوف الجديدة. يناسب ZOHI المشترين الذين يريدون سكنا جديدا في شمال تل أبيب قرب البحر والميناء، مع تخطيط حضري حديث يشمل تجارة على مستوى الشارع ومساحات خضراء ومسارات دراجات ومواصلات مستقبلية.",
+      "evidence_ids": [
+        "ev_design_lot_context",
+        "ev_municipal_sdedov_eshkol",
+        "ev_official_sea",
+        "ev_municipal_sdedov_transport"
+      ]
+    },
+    "faq_seeds": [
+      {
+        "question": "What is the exact building address of ZOHI?",
+        "answer_seed": "Use Shai Agnon 11, Tel Aviv Yafo for the project address, with parcel context lot 110, Unit 8, Eshkol, Sde Dov. Keep sales office separate because no exact sales office address was verified.",
+        "evidence_ids": [
+          "ev_madlan_address",
+          "ev_permit_address",
+          "ev_design_lot_context"
+        ]
+      },
+      {
+        "question": "How many apartments are in ZOHI?",
+        "answer_seed": "230 apartments.",
+        "evidence_ids": [
+          "ev_official_units",
+          "ev_design_units_total"
+        ]
+      },
+      {
+        "question": "What apartment sizes are planned?",
+        "answer_seed": "Official marketing says 2-6 room apartments and penthouses. The design plan gives statutory size categories: 58 small, 57 medium and 115 large apartments.",
+        "evidence_ids": [
+          "ev_official_units",
+          "ev_design_unit_mix"
+        ]
+      },
+      {
+        "question": "How many buildings and floors are planned?",
+        "answer_seed": "The municipal design plan describes two 16-floor towerlets and two 9-floor low-rise buildings. Marketing and media sometimes summarize this differently, so this is a known conflict.",
+        "evidence_ids": [
+          "ev_design_building_count",
+          "ev_design_heights"
+        ]
+      },
+      {
+        "question": "Does the project include a pool?",
+        "answer_seed": "Yes. The official site lists a swimming pool and the design plan places a resident pool and toddler pool on the low-rise roof.",
+        "evidence_ids": [
+          "ev_official_amenities",
+          "ev_design_amenities_roof"
+        ]
+      },
+      {
+        "question": "How close is ZOHI to the light rail?",
+        "answer_seed": "The official site says 7 minutes walking to the future Green Line station, but it does not publish a verified exact station name.",
+        "evidence_ids": [
+          "ev_official_times",
+          "ev_municipal_green_line"
+        ]
+      },
+      {
+        "question": "Is ZOHI on the beachfront?",
+        "answer_seed": "No verified source describes it as beachfront. The official page says it is within walking distance of the sea, port and promenade.",
+        "evidence_ids": [
+          "ev_official_sea",
+          "ev_design_lot_edges"
+        ]
+      },
+      {
+        "question": "When is occupancy expected?",
+        "answer_seed": "Media sources report expected occupancy in the second half of 2030, but the official website did not expose a delivery date in the reviewed text.",
+        "evidence_ids": [
+          "ev_globes_occupancy",
+          "ev_calcalist_occupancy"
+        ]
+      },
+      {
+        "question": "Are prices published?",
+        "answer_seed": "No official developer price list was found. Madlan shows an average project price per sqm and several transaction rows at the address; media reports mention about 70,000 ILS per sqm at launch.",
+        "evidence_ids": [
+          "ev_madlan_avg_price",
+          "ev_madlan_tx1",
+          "ev_zirat_price"
+        ]
+      },
+      {
+        "question": "Will adjacent buildings block views?",
+        "answer_seed": "North lot 109 is planned with a tower up to 40 floors, so north-facing views may be affected. Exact line-by-line impact requires a measured model.",
+        "evidence_ids": [
+          "ev_design_lot_edges",
+          "ev_design_lot109"
+        ]
+      },
+      {
+        "question": "Who is the architect?",
+        "answer_seed": "Gal Or Fishbein Architects is named in municipal and official sources; Tal Goldsmith is quoted on interior design language on the official site.",
+        "evidence_ids": [
+          "ev_design_planners",
+          "ev_official_architect_fishbein",
+          "ev_official_architect_goldsmith"
+        ]
+      },
+      {
+        "question": "Does the project include parking and storage?",
+        "answer_seed": "The design plan indicates 5 basement floors, storage rooms, a maximum 1:1 residential parking ratio, bike parking and EV charging preparation.",
+        "evidence_ids": [
+          "ev_design_basements",
+          "ev_design_storage",
+          "ev_design_parking",
+          "ev_design_ev"
+        ]
+      }
+    ],
+    "target_audiences": [
+      {
+        "segment": "Tel Aviv owner-occupiers moving from older northern neighborhoods",
+        "reason": "New construction, coastal proximity, urban amenities and planned transit.",
+        "evidence_ids": [
+          "ev_official_sea",
+          "ev_official_amenities",
+          "ev_municipal_green_line"
+        ]
+      },
+      {
+        "segment": "Upsizers seeking 4-6 room new-build apartments",
+        "reason": "Official room range includes 2-6 rooms, while the statutory mix includes 115 large apartments.",
+        "evidence_ids": [
+          "ev_official_units",
+          "ev_design_unit_mix"
+        ]
+      },
+      {
+        "segment": "Luxury downsizers and penthouse buyers",
+        "reason": "Official page markets penthouses, shared amenities, pool and large garden.",
+        "evidence_ids": [
+          "ev_official_units",
+          "ev_official_amenities",
+          "ev_official_urban_garden"
+        ]
+      },
+      {
+        "segment": "Investors in the new Sde Dov district",
+        "reason": "Municipal plan includes large-scale housing, commerce, employment and transit. Price and timing risk remain material.",
+        "evidence_ids": [
+          "ev_municipal_sdedov_scale",
+          "ev_municipal_sdedov_eshkol",
+          "ev_municipal_green_line"
+        ]
+      },
+      {
+        "segment": "International buyers focused on new Tel Aviv coastal inventory",
+        "reason": "Official English and French pages exist, indicating international-facing marketing.",
+        "evidence_ids": [
+          "ev_official_en_h1",
+          "ev_official_fr_identity"
+        ]
+      }
+    ],
+    "keyword_sets": {
+      "he": [
+        "זוהי שדה דב",
+        "זוהי תל אביב",
+        "פרויקט זוהי",
+        "דירות חדשות בשדה דב",
+        "מבנה שדה דב",
+        "לוינשטין מטרופוליס מבנה",
+        "עגנון 11 תל אביב",
+        "שכונת אשכול שדה דב"
+      ],
+      "en": [
+        "ZOHI Sde Dov",
+        "Zohi Tel Aviv",
+        "new apartments Sde Dov",
+        "Mivne Sde Dov",
+        "Levinstein Metropolis Mivne ZOHI",
+        "Shai Agnon 11 Tel Aviv",
+        "Eshkol Sde Dov apartments"
+      ],
+      "fr": [
+        "ZOHI Sde Dov",
+        "appartements neufs Sde Dov",
+        "Zohi Tel Aviv",
+        "Mivne Tel Aviv",
+        "quartier Eshkol Sde Dov"
+      ],
+      "ru": [
+        "ZOHI Sde Dov",
+        "Зохи Тель Авив",
+        "новые квартиры Sde Dov",
+        "Mivne Sde Dov",
+        "район Eshkol Sde Dov"
+      ],
+      "ar": [
+        "ZOHI Sde Dov",
+        "زوهי تل أبيب",
+        "شقق جديدة سديه دوف",
+        "مشروع زוהי",
+        "حي إشكول سديه دوف"
+      ]
+    }
+  },
+  "field_sources": {
+    "primary_official": [
+      {
+        "name": "Official Hebrew project site",
+        "url": "https://www.zohi.co.il/",
+        "evidence_ids": [
+          "ev_official_he_h1",
+          "ev_official_units",
+          "ev_official_amenities"
+        ]
+      },
+      {
+        "name": "Official English project site",
+        "url": "https://www.zohi.co.il/en/",
+        "evidence_ids": [
+          "ev_official_en_h1",
+          "ev_official_en_identity",
+          "ev_official_en_units"
+        ]
+      },
+      {
+        "name": "Official French project site",
+        "url": "https://www.zohi.co.il/fr/",
+        "evidence_ids": [
+          "ev_official_fr_identity"
+        ]
+      },
+      {
+        "name": "Metropolis project page",
+        "url": "https://www.metropolis-il.com/projects/%D7%96%D7%95%D7%94%D7%99-%D7%AA%D7%9C-%D7%90%D7%91%D7%99%D7%91-%D7%91%D7%A9%D7%93%D7%94-%D7%93%D7%91/",
+        "evidence_ids": [
+          "ev_metropolis_title"
+        ]
+      }
+    ],
+    "planning_and_statutory": [
+      {
+        "name": "Tel Aviv municipal design-plan PDF for lot 110",
+        "url": "https://www.tel-aviv.gov.il/Residents/Development/DocLib/%D7%9E%D7%92%D7%A8%D7%A9%20110%20%D7%90%D7%A9%D7%9B%D7%95%D7%9C%20%D7%A9%D7%93%D7%94%20%D7%93%D7%91%20%D7%93%D7%99%D7%95%D7%9F%20%D7%91%D7%A2%D7%99%D7%A6%D7%95%D7%91.pdf",
+        "evidence_ids": [
+          "ev_design_pdf",
+          "ev_design_lot_context",
+          "ev_design_heights"
+        ]
+      },
+      {
+        "name": "Tel Aviv municipal licensing protocol",
+        "url": "https://www.tel-aviv.gov.il/Transparency/DocLib3/%D7%A4%D7%A8%D7%95%D7%98%D7%95%D7%A7%D7%95%D7%9C%20%D7%94%D7%97%D7%9C%D7%98%D7%95%D7%AA%20%D7%A8%D7%A9%D7%95%D7%AA%20%D7%A8%D7%99%D7%A9%D7%95%D7%99%201-25-0058.pdf",
+        "evidence_ids": [
+          "ev_permit_address",
+          "ev_permit_gush",
+          "ev_permit_excavation"
+        ]
+      },
+      {
+        "name": "Tel Aviv Sde Dov district page",
+        "url": "https://www.tel-aviv.gov.il/Residents/Development/Pages/SdeDov.aspx",
+        "evidence_ids": [
+          "ev_municipal_sdedov_scale",
+          "ev_municipal_sdedov_eshkol",
+          "ev_municipal_green_line"
+        ]
+      },
+      {
+        "name": "Tel Aviv metro page",
+        "url": "https://www.tel-aviv.gov.il/Residents/Transportation/Pages/Masstransport2.aspx",
+        "evidence_ids": [
+          "ev_municipal_metro_lines"
+        ]
+      }
+    ],
+    "market": [
+      {
+        "name": "Madlan project page",
+        "url": "https://www.madlan.co.il/projects/%D7%9E%D7%92%D7%A8%D7%A9_110_%D7%9E%D7%AA%D7%97%D7%9D_%D7%90%D7%A9%D7%9B%D7%95%D7%9C_%D7%AA%D7%9C_%D7%90%D7%91%D7%99%D7%91",
+        "evidence_ids": [
+          "ev_madlan_title",
+          "ev_madlan_buildings",
+          "ev_madlan_avg_price"
+        ]
+      },
+      {
+        "name": "Madlan Sde Dov area page",
+        "url": "https://www.madlan.co.il/area-info/%D7%A9%D7%9B%D7%95%D7%A0%D7%94-%D7%A9%D7%93%D7%94-%D7%93%D7%91-%D7%90%D7%A9%D7%9B%D7%95%D7%9C-%D7%AA%D7%9C-%D7%90%D7%91%D7%99%D7%91-%D7%99%D7%A4%D7%95-%D7%99%D7%A9%D7%A8%D7%90%D7%9C",
+        "evidence_ids": [
+          "ev_madlan_tx1",
+          "ev_madlan_kindergartens"
+        ]
+      },
+      {
+        "name": "Yad2 Sde Dov neighborhood sale listings",
+        "url": "https://www.yad2.co.il/realestate/forsale/tel-aviv-area?area=1&city=5000&neighborhood=850",
+        "evidence_ids": [
+          "ev_yad2_context"
+        ]
+      }
+    ],
+    "press_and_secondary": [
+      {
+        "name": "Globes launch article",
+        "url": "https://www.globes.co.il/news/article.aspx?did=1001533129",
+        "evidence_ids": [
+          "ev_globes_occupancy",
+          "ev_globes_buildings"
+        ]
+      },
+      {
+        "name": "Globes 2024 lot article",
+        "url": "https://www.globes.co.il/news/article.aspx?did=1001487655",
+        "evidence_ids": [
+          "ev_globes_2024_lot"
+        ]
+      },
+      {
+        "name": "Zirat Nadlan launch article",
+        "url": "https://zirat-nadlan.co.il/articles/70000-%D7%A9%D7%A7%D7%9C-%D7%9C%D7%9E%D7%A8-%D7%91%D7%A9%D7%93%D7%94-%D7%93%D7%91-%D7%9C%D7%95%D7%99%D7%A0%D7%A9%D7%98%D7%99%D7%9F-%D7%9E%D7%98%D7%A8%D7%95%D7%A4%D7%95%D7%9C%D7%99%D7%A1-%D7%95",
+        "evidence_ids": [
+          "ev_zirat_price",
+          "ev_zirat_payment"
+        ]
+      },
+      {
+        "name": "Calcalist sponsored article",
+        "url": "https://www.calcalist.co.il/article/ry8j8sbn11l",
+        "evidence_ids": [
+          "ev_calcalist_sales"
+        ]
+      },
+      {
+        "name": "Calcalist sponsored interview",
+        "url": "https://www.calcalist.co.il/article/hkyc2750011x",
+        "evidence_ids": [
+          "ev_calcalist_occupancy"
+        ]
+      },
+      {
+        "name": "Sde Dov project site, secondary",
+        "url": "https://sdedov.co.il/project/zohi/",
+        "evidence_ids": [
+          "ev_sdedov_project"
+        ]
+      }
+    ],
+    "filings": [
+      {
+        "name": "Mivne TASE filing, Sde Dov reference",
+        "url": "https://mayafiles.tase.co.il/rpdf/1396001-1397000/P1396188-00.pdf",
+        "evidence_ids": [
+          "ev_tase_sweep"
+        ]
+      }
+    ],
+    "note": "Evidence quotes are short verbatim snippets. Some planning facts are extracted from municipal PDFs, which were inspected via web PDF parsing and screenshots."
+  },
+  "evidence": {
+    "ev_official_he_h1": {
+      "source_url": "https://www.zohi.co.il/",
+      "quote": "זוהי ת\"א בגרסה הכי טובה שלה",
+      "source_class": "official_project_site"
+    },
+    "ev_official_he_identity": {
+      "source_url": "https://www.zohi.co.il/",
+      "quote": "מתחם מגורים אינטימי בהשראת העיר הלבנה",
+      "source_class": "official_project_site"
+    },
+    "ev_official_en_h1": {
+      "source_url": "https://www.zohi.co.il/en/",
+      "quote": "ZOHI is Tel Aviv at its finest.",
+      "source_class": "official_project_site"
+    },
+    "ev_official_en_identity": {
+      "source_url": "https://www.zohi.co.il/en/",
+      "quote": "An intimate residential compound inspired by the city that never sleeps",
+      "source_class": "official_project_site"
+    },
+    "ev_official_fr_identity": {
+      "source_url": "https://www.zohi.co.il/fr/",
+      "quote": "Un complexe residentiel intime inspire de la ville blanche",
+      "source_class": "official_project_site"
+    },
+    "ev_official_units": {
+      "source_url": "https://www.zohi.co.il/",
+      "quote": "230 דירות ... דירות 2-6 חד' ומגוון פנטהאוזים",
+      "source_class": "official_project_site"
+    },
+    "ev_official_en_units": {
+      "source_url": "https://www.zohi.co.il/en/",
+      "quote": "230 apartments ... 2-6 room apartments and a variety of penthouses",
+      "source_class": "official_project_site"
+    },
+    "ev_official_ceiling": {
+      "source_url": "https://www.zohi.co.il/",
+      "quote": "גובה תקרה 3 מטר",
+      "source_class": "official_project_site"
+    },
+    "ev_official_amenities": {
+      "source_url": "https://www.zohi.co.il/",
+      "quote": "בריכת שחייה ... חדר כושר ... סטודיו יוגה ... לאונג' דיירים",
+      "source_class": "official_project_site"
+    },
+    "ev_official_urban_garden": {
+      "source_url": "https://www.zohi.co.il/",
+      "quote": "גן עירוני ששטחו כ-2.8 דונם",
+      "source_class": "official_project_site"
+    },
+    "ev_official_en_garden": {
+      "source_url": "https://www.zohi.co.il/en/",
+      "quote": "2.8-dunam urban garden",
+      "source_class": "official_project_site"
+    },
+    "ev_official_transport": {
+      "source_url": "https://www.zohi.co.il/",
+      "quote": "תחנות הרכבת הקלה העתידיות על ציר אבן גבירול, תחנת רכבת אוניברסיטה",
+      "source_class": "official_project_site"
+    },
+    "ev_official_times": {
+      "source_url": "https://www.zohi.co.il/",
+      "quote": "7 דק' הליכה לתחנת הקו הירוק העתידית ... 15 דק' הליכה לספורטק ... 5 דק' רכיבה לנמל תל אביב ... 6 דק' רכיבה למוזיאון ארץ ישראל ... 2 דק' רכיבה לרידינג",
+      "source_class": "official_project_site"
+    },
+    "ev_official_sea": {
+      "source_url": "https://www.zohi.co.il/",
+      "quote": "במרחק הליכה מהים, הנמל והטיילת",
+      "source_class": "official_project_site"
+    },
+    "ev_official_yarkon": {
+      "source_url": "https://www.zohi.co.il/",
+      "quote": "במרחק דקות ספורות מפארק הירקון",
+      "source_class": "official_project_site"
+    },
+    "ev_official_roads": {
+      "source_url": "https://www.zohi.co.il/",
+      "quote": "יציאה נוחה לכביש 2 ולנתיבי איילון",
+      "source_class": "official_project_site"
+    },
+    "ev_official_partners": {
+      "source_url": "https://www.zohi.co.il/",
+      "quote": "לוינשטין, מטרופוליס, מבנה",
+      "source_class": "official_project_site"
+    },
+    "ev_official_architect_fishbein": {
+      "source_url": "https://www.zohi.co.il/",
+      "quote": "המרפסות נשפכות אל הים ככל שעולים בקומות ... בהשראת הבאוהאוס והמרקם העירוני",
+      "source_class": "official_project_site"
+    },
+    "ev_official_architect_goldsmith": {
+      "source_url": "https://www.zohi.co.il/",
+      "quote": "בחרנו בחומרים טבעיים ובפלטת צבעים בהירה",
+      "source_class": "official_project_site"
+    },
+    "ev_official_floorplan_labels": {
+      "source_url": "https://www.zohi.co.il/",
+      "quote": "STUDIO ... 2-2.5 ... 3-3.5 ... 4-5",
+      "source_class": "official_project_site"
+    },
+    "ev_metropolis_title": {
+      "source_url": "https://www.metropolis-il.com/projects/%D7%96%D7%95%D7%94%D7%99-%D7%AA%D7%9C-%D7%90%D7%91%D7%99%D7%91-%D7%91%D7%A9%D7%93%D7%94-%D7%93%D7%91/",
+      "quote": "זוהי תל אביב בשדה דב ... המקום של התל אביבים בשדה דב",
+      "source_class": "developer_partner_site"
+    },
+    "ev_madlan_title": {
+      "source_url": "https://www.madlan.co.il/projects/%D7%9E%D7%92%D7%A8%D7%A9_110_%D7%9E%D7%AA%D7%97%D7%9D_%D7%90%D7%A9%D7%9B%D7%95%D7%9C_%D7%AA%D7%9C_%D7%90%D7%91%D7%99%D7%91",
+      "quote": "זוהי - ת\"א בשדה דב",
+      "source_class": "market_secondary"
+    },
+    "ev_madlan_address": {
+      "source_url": "https://www.madlan.co.il/projects/%D7%9E%D7%92%D7%A8%D7%A9_110_%D7%9E%D7%AA%D7%97%D7%9D_%D7%90%D7%A9%D7%9B%D7%95%D7%9C_%D7%AA%D7%9C_%D7%90%D7%91%D7%99%D7%91",
+      "quote": "עגנון ש\"י 11 תל אביב יפו",
+      "source_class": "market_secondary"
+    },
+    "ev_madlan_buildings": {
+      "source_url": "https://www.madlan.co.il/projects/%D7%9E%D7%92%D7%A8%D7%A9_110_%D7%9E%D7%AA%D7%97%D7%9D_%D7%90%D7%A9%D7%9B%D7%95%D7%9C_%D7%AA%D7%9C_%D7%90%D7%91%D7%99%D7%91",
+      "quote": "3 בניינים ... 9-15 קומות ... 230 דירות",
+      "source_class": "market_secondary"
+    },
+    "ev_madlan_avg_price": {
+      "source_url": "https://www.madlan.co.il/projects/%D7%9E%D7%92%D7%A8%D7%A9_110_%D7%9E%D7%AA%D7%97%D7%9D_%D7%90%D7%A9%D7%9B%D7%95%D7%9C_%D7%AA%D7%9C_%D7%90%D7%91%D7%99%D7%91",
+      "quote": "מחיר ממוצע למ״ר・76 א׳ ₪",
+      "source_class": "market_secondary"
+    },
+    "ev_madlan_tx1": {
+      "source_url": "https://www.madlan.co.il/area-info/%D7%A9%D7%9B%D7%95%D7%A0%D7%94-%D7%A9%D7%93%D7%94-%D7%93%D7%91-%D7%90%D7%A9%D7%9B%D7%95%D7%9C-%D7%AA%D7%9C-%D7%90%D7%91%D7%99%D7%91-%D7%99%D7%A4%D7%95-%D7%99%D7%A9%D7%A8%D7%90%D7%9C",
+      "quote": "עגנון ש\"י 11 ... 4/30/2026 ... 6.94m NIS ... 91 sqm ... ₪76,208/sqm ... 3 rooms ... floor 13",
+      "source_class": "market_secondary"
+    },
+    "ev_madlan_tx2": {
+      "source_url": "https://www.madlan.co.il/area-info/%D7%A9%D7%9B%D7%95%D7%A0%D7%94-%D7%A9%D7%93%D7%94-%D7%93%D7%91-%D7%90%D7%A9%D7%9B%D7%95%D7%9C-%D7%AA%D7%9C-%D7%90%D7%91%D7%99%D7%91-%D7%99%D7%A4%D7%95-%D7%99%D7%A9%D7%A8%D7%90%D7%9C",
+      "quote": "עגנון ש\"י 11 ... 4/26/2026 ... 4.39m NIS ... 147 sqm ... ₪29,868/sqm ... 5 rooms ... floor 15",
+      "source_class": "market_secondary"
+    },
+    "ev_madlan_tx3": {
+      "source_url": "https://www.madlan.co.il/area-info/%D7%A9%D7%9B%D7%95%D7%A0%D7%94-%D7%A9%D7%93%D7%94-%D7%93%D7%91-%D7%90%D7%A9%D7%9B%D7%95%D7%9C-%D7%AA%D7%9C-%D7%90%D7%91%D7%99%D7%91-%D7%99%D7%A4%D7%95-%D7%99%D7%A9%D7%A8%D7%90%D7%9C",
+      "quote": "עגנון ש\"י 11 ... 4/23/2026 ... 4.85m NIS ... 65 sqm ... ₪74,646/sqm ... 3 rooms ... floor 6",
+      "source_class": "market_secondary"
+    },
+    "ev_madlan_tx4": {
+      "source_url": "https://www.madlan.co.il/area-info/%D7%A9%D7%9B%D7%95%D7%A0%D7%94-%D7%A9%D7%93%D7%94-%D7%93%D7%91-%D7%90%D7%A9%D7%9B%D7%95%D7%9C-%D7%AA%D7%9C-%D7%90%D7%91%D7%99%D7%91-%D7%99%D7%A4%D7%95-%D7%99%D7%A9%D7%A8%D7%90%D7%9C",
+      "quote": "עגנון ש\"י 11 ... 4/23/2026 ... 4.88m NIS ... 72 sqm ... ₪67,777/sqm ... 3 rooms ... floor 4",
+      "source_class": "market_secondary"
+    },
+    "ev_madlan_aran_school": {
+      "source_url": "https://www.madlan.co.il/area-info/%D7%A9%D7%9B%D7%95%D7%A0%D7%94-%D7%A9%D7%93%D7%94-%D7%93%D7%91-%D7%90%D7%A9%D7%9B%D7%95%D7%9C-%D7%AA%D7%9C-%D7%90%D7%91%D7%99%D7%91-%D7%99%D7%A4%D7%95-%D7%99%D7%A9%D7%A8%D7%90%D7%9C",
+      "quote": "בית ספר יסודי ארן ... יהודה בורלא 25, תל אביב-יפו",
+      "source_class": "market_secondary"
+    },
+    "ev_madlan_kindergartens": {
+      "source_url": "https://www.madlan.co.il/area-info/%D7%A9%D7%9B%D7%95%D7%A0%D7%94-%D7%A9%D7%93%D7%94-%D7%93%D7%91-%D7%90%D7%A9%D7%9B%D7%95%D7%9C-%D7%AA%D7%9C-%D7%90%D7%91%D7%99%D7%91-%D7%99%D7%A4%D7%95-%D7%99%D7%A9%D7%A8%D7%90%D7%9C",
+      "quote": "רתמ-חירות ... רתמ-חופש ... רתמ-השקמים ... רתמ - תות ... רתמ - הדרים ... רתמ - בננה",
+      "source_class": "market_secondary"
+    },
+    "ev_yad2_context": {
+      "source_url": "https://www.yad2.co.il/realestate/forsale/tel-aviv-area?area=1&city=5000&neighborhood=850",
+      "quote": "אבן גבירול ... 4,350,000 ₪ ... 81 מ\"ר ... איינשטיין ... 7,460,000 ₪ ... 140 מ\"ר ... שדה דב ... 7,150,000 ₪ ... 144 מ\"ר",
+      "source_class": "market_secondary"
+    },
+    "ev_design_pdf": {
+      "source_url": "https://www.tel-aviv.gov.il/Residents/Development/DocLib/%D7%9E%D7%92%D7%A8%D7%A9%20110%20%D7%90%D7%A9%D7%9B%D7%95%D7%9C%20%D7%A9%D7%93%D7%94%20%D7%93%D7%91%20%D7%93%D7%99%D7%95%D7%9F%20%D7%91%D7%A2%D7%99%D7%A6%D7%95%D7%91.pdf",
+      "quote": "תא/תעא/תמ\"ל3001)110( - מגרש ,110 אשכול, שדה דב דיון בעיצוב",
+      "source_class": "municipal_planning_pdf"
+    },
+    "ev_design_lot_context": {
+      "source_url": "https://www.tel-aviv.gov.il/Residents/Development/DocLib/%D7%9E%D7%92%D7%A8%D7%A9%20110%20%D7%90%D7%A9%D7%9B%D7%95%D7%9C%20%D7%A9%D7%93%D7%94%20%D7%93%D7%91%20%D7%93%D7%99%D7%95%D7%9F%20%D7%91%D7%A2%D7%99%D7%A6%D7%95%D7%91.pdf",
+      "quote": "שכונת אשכול ... רובע שדה דב ... יחידת תכנון 8 ... מגרש 110",
+      "source_class": "municipal_planning_pdf"
+    },
+    "ev_design_gush_scope": {
+      "source_url": "https://www.tel-aviv.gov.il/Residents/Development/DocLib/%D7%9E%D7%92%D7%A8%D7%A9%20110%20%D7%90%D7%A9%D7%9B%D7%95%D7%9C%20%D7%A9%D7%93%D7%94%20%D7%93%D7%91%20%D7%93%D7%99%D7%95%D7%9F%20%D7%91%D7%A2%D7%99%D7%A6%D7%95%D7%91.pdf",
+      "quote": "גוש ... 6634 ... חלקה 15 ... גוש ... 7186 ... חלקה 3",
+      "source_class": "municipal_planning_pdf"
+    },
+    "ev_design_lot_edges": {
+      "source_url": "https://www.tel-aviv.gov.il/Residents/Development/DocLib/%D7%9E%D7%92%D7%A8%D7%A9%20110%20%D7%90%D7%A9%D7%9B%D7%95%D7%9C%20%D7%A9%D7%93%D7%94%20%D7%93%D7%91%20%D7%93%D7%99%D7%95%D7%9F%20%D7%91%D7%A2%D7%99%D7%A6%D7%95%D7%91.pdf",
+      "quote": "ממערב: רחוב 2438 ... ממזרח: שצ\"פ 610 ... מדרום: רחוב ש\"י עגנון ... מצפון: מגרש 109",
+      "source_class": "municipal_planning_pdf"
+    },
+    "ev_design_area": {
+      "source_url": "https://www.tel-aviv.gov.il/Residents/Development/DocLib/%D7%9E%D7%92%D7%A8%D7%A9%20110%20%D7%90%D7%A9%D7%9B%D7%95%D7%9C%20%D7%A9%D7%93%D7%94%20%D7%93%D7%91%20%D7%93%D7%99%D7%95%D7%9F%20%D7%91%D7%A2%D7%99%D7%A6%D7%95%D7%91.pdf",
+      "quote": "שטח המגרש: 4.651 דונם",
+      "source_class": "municipal_planning_pdf"
+    },
+    "ev_design_planners": {
+      "source_url": "https://www.tel-aviv.gov.il/Residents/Development/DocLib/%D7%9E%D7%92%D7%A8%D7%A9%20110%20%D7%90%D7%A9%D7%9B%D7%95%D7%9C%20%D7%A9%D7%93%D7%94%20%D7%93%D7%91%20%D7%93%D7%99%D7%95%D7%9F%20%D7%91%D7%A2%D7%99%D7%A6%D7%95%D7%91.pdf",
+      "quote": "גל-אור פישביין אדריכלים ... סטודיו צורא ... WAWA בנייה ירוקה ... קראוס חן",
+      "source_class": "municipal_planning_pdf"
+    },
+    "ev_municipal_owners": {
+      "source_url": "https://www.tel-aviv.gov.il/Residents/Development/DocLib/%D7%9E%D7%92%D7%A8%D7%A9%20110%20%D7%90%D7%A9%D7%9B%D7%95%D7%9C%20%D7%A9%D7%93%D7%94%20%D7%93%D7%91%20%D7%93%D7%99%D7%95%D7%9F%20%D7%91%D7%A2%D7%99%D7%A6%D7%95%D7%91.pdf",
+      "quote": "בעלות: קבוצת לוינשטין + קבוצת אלייד + קבוצת מבנה",
+      "source_class": "municipal_planning_pdf"
+    },
+    "ev_design_units_total": {
+      "source_url": "https://www.tel-aviv.gov.il/Residents/Development/DocLib/%D7%9E%D7%92%D7%A8%D7%A9%20110%20%D7%90%D7%A9%D7%9B%D7%95%D7%9C%20%D7%A9%D7%93%D7%94%20%D7%93%D7%91%20%D7%93%D7%99%D7%95%D7%9F%20%D7%91%D7%A2%D7%99%D7%A6%D7%95%D7%91.pdf",
+      "quote": "בבניין 230 יח\"ד",
+      "source_class": "municipal_planning_pdf"
+    },
+    "ev_design_building_count": {
+      "source_url": "https://www.tel-aviv.gov.il/Residents/Development/DocLib/%D7%9E%D7%92%D7%A8%D7%A9%20110%20%D7%90%D7%A9%D7%9B%D7%95%D7%9C%20%D7%A9%D7%93%D7%94%20%D7%93%D7%91%20%D7%93%D7%99%D7%95%D7%9F%20%D7%91%D7%A2%D7%99%D7%A6%D7%95%D7%91.pdf",
+      "quote": "שני בניינים מרקמיים בני 9 קומות ... שני מגדלונים בני 16 קומות",
+      "source_class": "municipal_planning_pdf"
+    },
+    "ev_design_heights": {
+      "source_url": "https://www.tel-aviv.gov.il/Residents/Development/DocLib/%D7%9E%D7%92%D7%A8%D7%A9%20110%20%D7%90%D7%A9%D7%9B%D7%95%D7%9C%20%D7%A9%D7%93%D7%94%20%D7%93%D7%91%20%D7%93%D7%99%D7%95%D7%9F%20%D7%91%D7%A2%D7%99%D7%A6%D7%95%D7%91.pdf",
+      "quote": "בניין מרקמי עד 9 קומות ... מגדלונים עד 16 קומות",
+      "source_class": "municipal_planning_pdf"
+    },
+    "ev_design_height_table": {
+      "source_url": "https://www.tel-aviv.gov.il/Residents/Development/DocLib/%D7%9E%D7%92%D7%A8%D7%A9%20110%20%D7%90%D7%A9%D7%9B%D7%95%D7%9C%20%D7%A9%D7%93%D7%94%20%D7%93%D7%91%20%D7%93%D7%99%D7%95%D7%9F%20%D7%91%D7%A2%D7%99%D7%A6%D7%95%D7%91.pdf",
+      "quote": "גובה מבוקש ... בניה מרקמית ... 32.3 ... מגדלונים ... 69.3",
+      "source_class": "municipal_planning_pdf"
+    },
+    "ev_design_towerlet_description": {
+      "source_url": "https://www.tel-aviv.gov.il/Residents/Development/DocLib/%D7%9E%D7%92%D7%A8%D7%A9%20110%20%D7%90%D7%A9%D7%9B%D7%95%D7%9C%20%D7%A9%D7%93%D7%94%20%D7%93%D7%91%20%D7%93%D7%99%D7%95%D7%9F%20%D7%91%D7%A2%D7%99%D7%A6%D7%95%D7%91.pdf",
+      "quote": "המגדלונים: בני 16 קומות ... קומת קרקע מסחרית ... 15 קומות מגורים",
+      "source_class": "municipal_planning_pdf"
+    },
+    "ev_design_lowrise_detail": {
+      "source_url": "https://www.tel-aviv.gov.il/Residents/Development/DocLib/%D7%9E%D7%92%D7%A8%D7%A9%20110%20%D7%90%D7%A9%D7%9B%D7%95%D7%9C%20%D7%A9%D7%93%D7%94%20%D7%93%D7%91%20%D7%93%D7%99%D7%95%D7%9F%20%D7%91%D7%A2%D7%99%D7%A6%D7%95%D7%91.pdf",
+      "quote": "בניין מרקמי בן 9 קומות: קומת קרקע מסחרית, 7 קומות מגורים וקומה עליונה לשימושי דיירים כולל בריכה",
+      "source_class": "municipal_planning_pdf"
+    },
+    "ev_design_tower_height_detail": {
+      "source_url": "https://www.tel-aviv.gov.il/Residents/Development/DocLib/%D7%9E%D7%92%D7%A8%D7%A9%20110%20%D7%90%D7%A9%D7%9B%D7%95%D7%9C%20%D7%A9%D7%93%D7%94%20%D7%93%D7%91%20%D7%93%D7%99%D7%95%D7%9F%20%D7%91%D7%A2%D7%99%D7%A6%D7%95%D7%91.pdf",
+      "quote": "גובה עד רצפת קומה טכנית עליונה 62 מ' ... מעקה גג טכני 5 מ'",
+      "source_class": "municipal_planning_pdf"
+    },
+    "ev_design_tower_floorplate": {
+      "source_url": "https://www.tel-aviv.gov.il/Residents/Development/DocLib/%D7%9E%D7%92%D7%A8%D7%A9%20110%20%D7%90%D7%A9%D7%9B%D7%95%D7%9C%20%D7%A9%D7%93%D7%94%20%D7%93%D7%91%20%D7%93%D7%99%D7%95%D7%9F%20%D7%91%D7%A2%D7%99%D7%A6%D7%95%D7%91.pdf",
+      "quote": "שטח קומה טיפוסית מירבי 780 מ\"ר לא כולל מרפסות",
+      "source_class": "municipal_planning_pdf"
+    },
+    "ev_design_courtyard": {
+      "source_url": "https://www.tel-aviv.gov.il/Residents/Development/DocLib/%D7%9E%D7%92%D7%A8%D7%A9%20110%20%D7%90%D7%A9%D7%9B%D7%95%D7%9C%20%D7%A9%D7%93%D7%94%20%D7%93%D7%91%20%D7%93%D7%99%D7%95%D7%9F%20%D7%91%D7%A2%D7%99%D7%A6%D7%95%D7%91.pdf",
+      "quote": "חצר פנימית ... זיקת הנאה לציבור",
+      "source_class": "municipal_planning_pdf"
+    },
+    "ev_design_public_easement": {
+      "source_url": "https://www.tel-aviv.gov.il/Residents/Development/DocLib/%D7%9E%D7%92%D7%A8%D7%A9%20110%20%D7%90%D7%A9%D7%9B%D7%95%D7%9C%20%D7%A9%D7%93%D7%94%20%D7%93%D7%91%20%D7%93%D7%99%D7%95%D7%9F%20%D7%91%D7%A2%D7%99%D7%A6%D7%95%D7%91.pdf",
+      "quote": "זיקת הנאה תהיה פתוחה לציבור ... כל ימות השנה ... ללא גידור",
+      "source_class": "municipal_planning_pdf"
+    },
+    "ev_design_basements": {
+      "source_url": "https://www.tel-aviv.gov.il/Residents/Development/DocLib/%D7%9E%D7%92%D7%A8%D7%A9%20110%20%D7%90%D7%A9%D7%9B%D7%95%D7%9C%20%D7%A9%D7%93%D7%94%20%D7%93%D7%91%20%D7%93%D7%99%D7%95%D7%9F%20%D7%91%D7%A2%D7%99%D7%A6%D7%95%D7%91.pdf",
+      "quote": "חניה תת קרקעית ... 5 קומות",
+      "source_class": "municipal_planning_pdf"
+    },
+    "ev_design_commerce": {
+      "source_url": "https://www.tel-aviv.gov.il/Residents/Development/DocLib/%D7%9E%D7%92%D7%A8%D7%A9%20110%20%D7%90%D7%A9%D7%9B%D7%95%D7%9C%20%D7%A9%D7%93%D7%94%20%D7%93%D7%91%20%D7%93%D7%99%D7%95%D7%9F%20%D7%91%D7%A2%D7%99%D7%A6%D7%95%D7%91.pdf",
+      "quote": "קומות הקרקע ... כוללות לובאי כניסה ומסחר מלווה רחוב",
+      "source_class": "municipal_planning_pdf"
+    },
+    "ev_design_materials": {
+      "source_url": "https://www.tel-aviv.gov.il/Residents/Development/DocLib/%D7%9E%D7%92%D7%A8%D7%A9%20110%20%D7%90%D7%A9%D7%9B%D7%95%D7%9C%20%D7%A9%D7%93%D7%94%20%D7%93%D7%91%20%D7%93%D7%99%D7%95%D7%9F%20%D7%91%D7%A2%D7%99%D7%A6%D7%95%D7%91.pdf",
+      "quote": "חומרי חיפוי בגוון בהיר ... לוחות אבן סינטטית כדוגמת דקטון ... HPL ... טיח ... בטון חשוף ... לא יותר חיפוי אלומיניום",
+      "source_class": "municipal_planning_pdf"
+    },
+    "ev_design_reflectivity": {
+      "source_url": "https://www.tel-aviv.gov.il/Residents/Development/DocLib/%D7%9E%D7%92%D7%A8%D7%A9%20110%20%D7%90%D7%A9%D7%9B%D7%95%D7%9C%20%D7%A9%D7%93%D7%94%20%D7%93%D7%91%20%D7%93%D7%99%D7%95%D7%9F%20%D7%91%D7%A2%D7%99%D7%A6%D7%95%D7%91.pdf",
+      "quote": "רמת רפלקטיביות עד 14% ... לא יותרו מעקות זכוכית",
+      "source_class": "municipal_planning_pdf"
+    },
+    "ev_design_balconies": {
+      "source_url": "https://www.tel-aviv.gov.il/Residents/Development/DocLib/%D7%9E%D7%92%D7%A8%D7%A9%20110%20%D7%90%D7%A9%D7%9B%D7%95%D7%9C%20%D7%A9%D7%93%D7%94%20%D7%93%D7%91%20%D7%93%D7%99%D7%95%D7%9F%20%D7%91%D7%A2%D7%99%D7%A6%D7%95%D7%91.pdf",
+      "quote": "המרפסות בבנייה המרקמית יהיו מותאמות ... לא יותרו מרפסות בדילוגים",
+      "source_class": "municipal_planning_pdf"
+    },
+    "ev_design_amenities_roof": {
+      "source_url": "https://www.tel-aviv.gov.il/Residents/Development/DocLib/%D7%9E%D7%92%D7%A8%D7%A9%20110%20%D7%90%D7%A9%D7%9B%D7%95%D7%9C%20%D7%A9%D7%93%D7%94%20%D7%93%D7%91%20%D7%93%D7%99%D7%95%D7%9F%20%D7%91%D7%A2%D7%99%D7%A6%D7%95%D7%91.pdf",
+      "quote": "בריכת שחייה ובריכת פעוטות לרווחת הדיירים בלבד בגג עליון של הבנייה המרקמית בלבד",
+      "source_class": "municipal_planning_pdf"
+    },
+    "ev_design_unit_mix": {
+      "source_url": "https://www.tel-aviv.gov.il/Residents/Development/DocLib/%D7%9E%D7%92%D7%A8%D7%A9%20110%20%D7%90%D7%A9%D7%9B%D7%95%D7%9C%20%D7%A9%D7%93%D7%94%20%D7%93%D7%91%20%D7%93%D7%99%D7%95%D7%9F%20%D7%91%D7%A2%D7%99%D7%A6%D7%95%D7%91.pdf",
+      "quote": "קטנות 30-60 מ\"ר ... 58 ... בינוניות 61-85 מ\"ר ... 57 ... גדולות 86 מ\"ר ומעלה ... 115",
+      "source_class": "municipal_planning_pdf"
+    },
+    "ev_design_diuriyot": {
+      "source_url": "https://www.tel-aviv.gov.il/Residents/Development/DocLib/%D7%9E%D7%92%D7%A8%D7%A9%20110%20%D7%90%D7%A9%D7%9B%D7%95%D7%9C%20%D7%A9%D7%93%D7%94%20%D7%93%D7%91%20%D7%93%D7%99%D7%95%D7%9F%20%D7%91%D7%A2%D7%99%D7%A6%D7%95%D7%91.pdf",
+      "quote": "5 דיוריות",
+      "source_class": "municipal_planning_pdf"
+    },
+    "ev_design_parking": {
+      "source_url": "https://www.tel-aviv.gov.il/Residents/Development/DocLib/%D7%9E%D7%92%D7%A8%D7%A9%20110%20%D7%90%D7%A9%D7%9B%D7%95%D7%9C%20%D7%A9%D7%93%D7%94%20%D7%93%D7%91%20%D7%93%D7%99%D7%95%D7%9F%20%D7%91%D7%A2%D7%99%D7%A6%D7%95%D7%91.pdf",
+      "quote": "תקן חניה למגורים לא יותר מ1:1 ... חניית אופניים לא פחות מ2.5 ליח\"ד",
+      "source_class": "municipal_planning_pdf"
+    },
+    "ev_design_ev": {
+      "source_url": "https://www.tel-aviv.gov.il/Residents/Development/DocLib/%D7%9E%D7%92%D7%A8%D7%A9%20110%20%D7%90%D7%A9%D7%9B%D7%95%D7%9C%20%D7%A9%D7%93%D7%94%20%D7%93%D7%91%20%D7%93%D7%99%D7%95%D7%9F%20%D7%91%D7%A2%D7%99%D7%A6%D7%95%D7%91.pdf",
+      "quote": "הכנה לטעינה חשמלית לכל מקומות החניה למגורים",
+      "source_class": "municipal_planning_pdf"
+    },
+    "ev_design_storage": {
+      "source_url": "https://www.tel-aviv.gov.il/Residents/Development/DocLib/%D7%9E%D7%92%D7%A8%D7%A9%20110%20%D7%90%D7%A9%D7%9B%D7%95%D7%9C%20%D7%A9%D7%93%D7%94%20%D7%93%D7%91%20%D7%93%D7%99%D7%95%D7%9F%20%D7%91%D7%A2%D7%99%D7%A6%D7%95%D7%91.pdf",
+      "quote": "מחסנים בקומת מרתף",
+      "source_class": "municipal_planning_pdf"
+    },
+    "ev_design_accessibility": {
+      "source_url": "https://www.tel-aviv.gov.il/Residents/Development/DocLib/%D7%9E%D7%92%D7%A8%D7%A9%20110%20%D7%90%D7%A9%D7%9B%D7%95%D7%9C%20%D7%A9%D7%93%D7%94%20%D7%93%D7%91%20%D7%93%D7%99%D7%95%D7%9F%20%D7%91%D7%A2%D7%99%D7%A6%D7%95%D7%91.pdf",
+      "quote": "יועץ נגישות ... הוראות נגישות",
+      "source_class": "municipal_planning_pdf"
+    },
+    "ev_design_green_building": {
+      "source_url": "https://www.tel-aviv.gov.il/Residents/Development/DocLib/%D7%9E%D7%92%D7%A8%D7%A9%20110%20%D7%90%D7%A9%D7%9B%D7%95%D7%9C%20%D7%A9%D7%93%D7%94%20%D7%93%D7%91%20%D7%93%D7%99%D7%95%D7%9F%20%D7%91%D7%A2%D7%99%D7%A6%D7%95%D7%91.pdf",
+      "quote": "בניה ירוקה ת\"י 5281 ... 4 כוכבים ... LEED Platinum ... 3 כוכבים ... LEED Gold",
+      "source_class": "municipal_planning_pdf"
+    },
+    "ev_design_entrances": {
+      "source_url": "https://www.tel-aviv.gov.il/Residents/Development/DocLib/%D7%9E%D7%92%D7%A8%D7%A9%20110%20%D7%90%D7%A9%D7%9B%D7%95%D7%9C%20%D7%A9%D7%93%D7%94%20%D7%93%D7%91%20%D7%93%D7%99%D7%95%D7%9F%20%D7%91%D7%A2%D7%99%D7%A6%D7%95%D7%91.pdf",
+      "quote": "כניסה למגדלון א משצ\"פ מזרחי ... כניסה למגדלון ב מרחוב 2438 ... כניסה לבניינים המרקמיים מרחוב ש\"י עגנון",
+      "source_class": "municipal_planning_pdf"
+    },
+    "ev_design_unit8_scope": {
+      "source_url": "https://www.tel-aviv.gov.il/Residents/Development/DocLib/%D7%93%D7%99%D7%95%D7%9F%20%D7%91%D7%A2%D7%99%D7%A6%D7%95%D7%91%20%D7%99%D7%97%D7%99%D7%93%D7%AA%20%D7%AA%D7%9B%D7%A0%D7%95%D7%9F%208%20%D7%9E%D7%92%D7%A8%D7%A9%20109%20%D7%90%D7%A9%D7%9B%D7%95%D7%9C%20%D7%A9%D7%93%D7%94%20%D7%93%D7%91.pdf",
+      "quote": "יחידת תכנון 8 ... מגרשים 108,109,110,404,610",
+      "source_class": "municipal_planning_pdf"
+    },
+    "ev_design_lot109": {
+      "source_url": "https://www.tel-aviv.gov.il/Residents/Development/DocLib/%D7%93%D7%99%D7%95%D7%9F%20%D7%91%D7%A2%D7%99%D7%A6%D7%95%D7%91%20%D7%99%D7%97%D7%99%D7%93%D7%AA%20%D7%AA%D7%9B%D7%A0%D7%95%D7%9F%208%20%D7%9E%D7%92%D7%A8%D7%A9%20109%20%D7%90%D7%A9%D7%9B%D7%95%D7%9C%20%D7%A9%D7%93%D7%94%20%D7%93%D7%91.pdf",
+      "quote": "מגרש 109 ... מגורים ומסחר ... מגדל עד 40 קומות, 2 בניינים מרקמיים עד 9 קומות",
+      "source_class": "municipal_planning_pdf"
+    },
+    "ev_design_lot108": {
+      "source_url": "https://www.tel-aviv.gov.il/Residents/Development/DocLib/%D7%93%D7%99%D7%95%D7%9F%20%D7%91%D7%A2%D7%99%D7%A6%D7%95%D7%91%20%D7%99%D7%97%D7%99%D7%93%D7%AA%20%D7%AA%D7%9B%D7%A0%D7%95%D7%9F%208%20%D7%9E%D7%92%D7%A8%D7%A9%20109%20%D7%90%D7%A9%D7%9B%D7%95%D7%9C%20%D7%A9%D7%93%D7%94%20%D7%93%D7%91.pdf",
+      "quote": "מגרש 108 ... 409 יח\"ד ... מגדל עד 40 קומות ... מגדלון עד 16 קומות ... בניין מרקמי עד 9 קומות",
+      "source_class": "municipal_planning_pdf"
+    },
+    "ev_permit_address": {
+      "source_url": "https://www.tel-aviv.gov.il/Transparency/DocLib3/%D7%A4%D7%A8%D7%95%D7%98%D7%95%D7%A7%D7%95%D7%9C%20%D7%94%D7%97%D7%9C%D7%98%D7%95%D7%AA%20%D7%A8%D7%A9%D7%95%D7%AA%20%D7%A8%D7%99%D7%A9%D7%95%D7%99%201-25-0058.pdf",
+      "quote": "עגנון ש\"י ,11 2438 2",
+      "source_class": "municipal_permit_pdf"
+    },
+    "ev_permit_gush": {
+      "source_url": "https://www.tel-aviv.gov.il/Transparency/DocLib3/%D7%A4%D7%A8%D7%95%D7%98%D7%95%D7%A7%D7%95%D7%9C%20%D7%94%D7%97%D7%9C%D7%98%D7%95%D7%AA%20%D7%A8%D7%A9%D7%95%D7%AA%20%D7%A8%D7%99%D7%A9%D7%95%D7%99%201-25-0058.pdf",
+      "quote": "גוש/חלקה 6634/15",
+      "source_class": "municipal_permit_pdf"
+    },
+    "ev_permit_area": {
+      "source_url": "https://www.tel-aviv.gov.il/Transparency/DocLib3/%D7%A4%D7%A8%D7%95%D7%98%D7%95%D7%A7%D7%95%D7%9C%20%D7%94%D7%97%D7%9C%D7%98%D7%95%D7%AA%20%D7%A8%D7%A9%D7%95%D7%AA%20%D7%A8%D7%99%D7%A9%D7%95%D7%99%201-25-0058.pdf",
+      "quote": "שטח 4,651.00",
+      "source_class": "municipal_permit_pdf"
+    },
+    "ev_permit_excavation": {
+      "source_url": "https://www.tel-aviv.gov.il/Transparency/DocLib3/%D7%A4%D7%A8%D7%95%D7%98%D7%95%D7%A7%D7%95%D7%9C%20%D7%94%D7%97%D7%9C%D7%98%D7%95%D7%AA%20%D7%A8%D7%A9%D7%95%D7%AA%20%D7%A8%D7%99%D7%A9%D7%95%D7%99%201-25-0058.pdf",
+      "quote": "חפירה ודיפון ... כ10 מ' ... 5 קומות מרתף עתידיות",
+      "source_class": "municipal_permit_pdf"
+    },
+    "ev_municipal_sdedov_scale": {
+      "source_url": "https://www.tel-aviv.gov.il/Residents/Development/Pages/SdeDov.aspx",
+      "quote": "כ-16,000 יחידות דיור ... כ-7,000 יחידות דיור בהישג יד ולהשכרה",
+      "source_class": "municipal_page"
+    },
+    "ev_municipal_sdedov_eshkol": {
+      "source_url": "https://www.tel-aviv.gov.il/Residents/Development/Pages/SdeDov.aspx",
+      "quote": "תמ\"ל/3001 ... שכונת אשכול ... כ-4,800 יחידות דיור, כ-45,000 מ\"ר שטחי מסחר, כ-145,000 מ\"ר שטחי תעסוקה",
+      "source_class": "municipal_page"
+    },
+    "ev_municipal_sdedov_uses": {
+      "source_url": "https://www.tel-aviv.gov.il/Residents/Development/Pages/SdeDov.aspx",
+      "quote": "רובע עירוני חדש ... מגורים, תעסוקה, מסחר, מלונאות, מבני ציבור ושטחים פתוחים",
+      "source_class": "municipal_page"
+    },
+    "ev_municipal_sdedov_transport": {
+      "source_url": "https://www.tel-aviv.gov.il/Residents/Development/Pages/SdeDov.aspx",
+      "quote": "הליכתיות ... רשת שבילי אופניים ... צירי תחבורה ציבורית",
+      "source_class": "municipal_page"
+    },
+    "ev_municipal_green_line": {
+      "source_url": "https://www.tel-aviv.gov.il/Residents/Development/Pages/SdeDov.aspx",
+      "quote": "הקו הירוק ... חוצה את הרובע מדרום לצפון ... שלוחה ... לתחנת רכבת האוניברסיטה ולרמת החייל",
+      "source_class": "municipal_page"
+    },
+    "ev_municipal_metro_lines": {
+      "source_url": "https://www.tel-aviv.gov.il/Residents/Transportation/Pages/Masstransport2.aspx",
+      "quote": "מערכת המטרו ... שלושה קווים: M1, M2, M3",
+      "source_class": "municipal_page"
+    },
+    "ev_globes_street": {
+      "source_url": "https://www.globes.co.il/news/article.aspx?did=1001533129",
+      "quote": "המגרש שקנו ממוקם ברחוב ש\"י עגנון",
+      "source_class": "press"
+    },
+    "ev_globes_occupancy": {
+      "source_url": "https://www.globes.co.il/news/article.aspx?did=1001533129",
+      "quote": "האכלוס שלו צפוי במחצית השנייה של 2030",
+      "source_class": "press"
+    },
+    "ev_globes_buildings": {
+      "source_url": "https://www.globes.co.il/news/article.aspx?did=1001533129",
+      "quote": "שני מבנים בני 15 קומות עם 66 דירות בכל אחד ומבנה הכולל קומת מסחר ... ושבע קומות למגורים עם 98 דירות",
+      "source_class": "press"
+    },
+    "ev_globes_2024_lot": {
+      "source_url": "https://www.globes.co.il/news/article.aspx?did=1001487655",
+      "quote": "מגרש 110 הוא מגרש בשטח 4.6 דונמים ... שני מבנים בני 16 קומות ('מגדלונים') ועוד שני מבנים בני תשע קומות",
+      "source_class": "press"
+    },
+    "ev_zirat_price": {
+      "source_url": "https://zirat-nadlan.co.il/articles/70000-%D7%A9%D7%A7%D7%9C-%D7%9C%D7%9E%D7%A8-%D7%91%D7%A9%D7%93%D7%94-%D7%93%D7%91-%D7%9C%D7%95%D7%99%D7%A0%D7%A9%D7%98%D7%99%D7%9F-%D7%9E%D7%98%D7%A8%D7%95%D7%A4%D7%95%D7%9C%D7%99%D7%A1-%D7%95",
+      "quote": "70,000 שקל למ\"ר בשדה דב",
+      "source_class": "press"
+    },
+    "ev_zirat_payment": {
+      "source_url": "https://zirat-nadlan.co.il/articles/70000-%D7%A9%D7%A7%D7%9C-%D7%9C%D7%9E%D7%A8-%D7%91%D7%A9%D7%93%D7%94-%D7%93%D7%91-%D7%9C%D7%95%D7%99%D7%A0%D7%A9%D7%98%D7%99%D7%9F-%D7%9E%D7%98%D7%A8%D7%95%D7%A4%D7%95%D7%9C%D7%99%D7%A1-%D7%95",
+      "quote": "תשלום של 20% במעמד החתימה והיתרה בעת האכלוס ב-2030",
+      "source_class": "press"
+    },
+    "ev_calcalist_sales": {
+      "source_url": "https://www.calcalist.co.il/article/ry8j8sbn11l",
+      "quote": "עד כה כבר נחתמו 66 עסקאות בהיקף של כ- 300 מיליון ש״ח",
+      "source_class": "sponsored_media"
+    },
+    "ev_calcalist_occupancy": {
+      "source_url": "https://www.calcalist.co.il/article/hkyc2750011x",
+      "quote": "יקבלו את דירותיהם בסוף 2030",
+      "source_class": "sponsored_media"
+    },
+    "ev_sdedov_project": {
+      "source_url": "https://sdedov.co.il/project/zohi/",
+      "quote": "פרויקט זוהי ... 230 דירות ... דירות 2-6 חדרים ופנטהאוזים",
+      "source_class": "secondary_unofficial"
+    },
+    "ev_sdedov_green_stations": {
+      "source_url": "https://sdedov.co.il/%D7%94%D7%A7%D7%95-%D7%94%D7%99%D7%A8%D7%95%D7%A7-%D7%94%D7%AA%D7%A7%D7%93%D7%9E%D7%95%D7%AA-%D7%91%D7%A2%D7%91%D7%95%D7%93%D7%95%D7%AA-%D7%94%D7%91%D7%99%D7%A6%D7%95%D7%A2-%D7%91%D7%9B%D7%A0%D7%99/",
+      "quote": "תחנות הקו הירוק ... פרופס ... נופי ים ... איינשטיין ... זהרה לויטוב",
+      "source_class": "secondary_unofficial"
+    },
+    "ev_sdedov_education_complex": {
+      "source_url": "https://sdedov.co.il/%D7%90%D7%95%D7%A9%D7%A8%D7%94-%D7%AA%D7%95%D7%9B%D7%A0%D7%99%D7%AA-%D7%9C%D7%94%D7%A7%D7%9E%D7%AA-%D7%A7%D7%95%D7%9E%D7%A4%D7%9C%D7%A7%D7%A1-%D7%97%D7%99%D7%A0%D7%95%D7%9A-%D7%95%D7%A7%D7%94%D7%99/",
+      "quote": "מגרש 409 ... בית ספר יסודי עם 24 כיתות ... שמונה כיתות גני ילדים ... שש כיתות מעונות יום ... מגרש 607",
+      "source_class": "secondary_unofficial"
+    },
+    "ev_sdedov_reuth": {
+      "source_url": "https://sdedov.co.il/%D7%91%D7%99%D7%AA-%D7%94%D7%97%D7%95%D7%9C%D7%99%D7%9D-%D7%94%D7%A9%D7%99%D7%A7%D7%95%D7%9E%D7%99-%D7%A8%D7%A2%D7%95%D7%AA-%D7%AA%D7%9C-%D7%90%D7%91%D7%99%D7%91-%D7%99%D7%A2%D7%91%D7%95%D7%A8-%D7%9C/",
+      "quote": "בית החולים השיקומי רעות תל אביב יעבור לשדה דב ... קמפוס חדש בשטח של כ-16 דונם",
+      "source_class": "secondary_unofficial"
+    },
+    "ev_tase_sweep": {
+      "source_url": "https://mayafiles.tase.co.il/rpdf/1396001-1397000/P1396188-00.pdf",
+      "quote": "במתחם \"שדה דב\" בתל אביב. - יפו ... בכוונת החברה והשותפות לקדם היתר",
+      "source_class": "tase_filing"
+    },
+    "ev_media_official_gallery": {
+      "source_url": "https://www.zohi.co.il/",
+      "quote": "Official project gallery image assets were loaded from the zohi.co.il WordPress uploads path.",
+      "source_class": "official_project_site"
+    }
+  },
+  "conflicts": [
+    {
+      "field": "num_buildings_and_floors",
+      "issue": "Municipal design plan describes 4 physical buildings: 2 low-rise buildings of 9 floors and 2 towerlets of 16 floors. Madlan and press simplify the project as 3 buildings or 2 towers plus one low-rise block, with 15-floor tower counts.",
+      "sources": [
+        {
+          "source_url": "https://www.tel-aviv.gov.il/Residents/Development/DocLib/%D7%9E%D7%92%D7%A8%D7%A9%20110%20%D7%90%D7%A9%D7%9B%D7%95%D7%9C%20%D7%A9%D7%93%D7%94%20%D7%93%D7%91%20%D7%93%D7%99%D7%95%D7%9F%20%D7%91%D7%A2%D7%99%D7%A6%D7%95%D7%91.pdf",
+          "quote": "שני בניינים מרקמיים בני 9 קומות ... שני מגדלונים בני 16 קומות"
+        },
+        {
+          "source_url": "https://www.madlan.co.il/projects/%D7%9E%D7%92%D7%A8%D7%A9_110_%D7%9E%D7%AA%D7%97%D7%9D_%D7%90%D7%A9%D7%9B%D7%95%D7%9C_%D7%AA%D7%9C_%D7%90%D7%91%D7%99%D7%91",
+          "quote": "3 בניינים ... 9-15 קומות"
+        },
+        {
+          "source_url": "https://www.globes.co.il/news/article.aspx?did=1001533129",
+          "quote": "שני מבנים בני 15 קומות ... ומבנה הכולל קומת מסחר ... ושבע קומות למגורים"
+        }
+      ],
+      "handling": "Use municipal design-plan values for recon_3d and preserve all alternate statements here."
+    },
+    {
+      "field": "gush_helka",
+      "issue": "Municipal design-plan table includes 6634/15 and 7186/3 for the plan scope, while the licensing protocol cites 6634/15.",
+      "sources": [
+        {
+          "source_url": "https://www.tel-aviv.gov.il/Residents/Development/DocLib/%D7%9E%D7%92%D7%A8%D7%A9%20110%20%D7%90%D7%A9%D7%9B%D7%95%D7%9C%20%D7%A9%D7%93%D7%94%20%D7%93%D7%91%20%D7%93%D7%99%D7%95%D7%9F%20%D7%91%D7%A2%D7%99%D7%A6%D7%95%D7%91.pdf",
+          "quote": "גוש ... 6634 ... חלקה 15 ... גוש ... 7186 ... חלקה 3"
+        },
+        {
+          "source_url": "https://www.tel-aviv.gov.il/Transparency/DocLib3/%D7%A4%D7%A8%D7%95%D7%98%D7%95%D7%A7%D7%95%D7%9C%20%D7%94%D7%97%D7%9C%D7%98%D7%95%D7%AA%20%D7%A8%D7%A9%D7%95%D7%AA%20%D7%A8%D7%99%D7%A9%D7%95%D7%99%201-25-0058.pdf",
+          "quote": "גוש/חלקה 6634/15"
+        }
+      ],
+      "handling": "Report both and label the scope difference."
+    },
+    {
+      "field": "garden_area",
+      "issue": "Hebrew and English official pages say 2.8 dunams. The French page contains both a consistent hectare statement and a likely mistranslated acres statement.",
+      "sources": [
+        {
+          "source_url": "https://www.zohi.co.il/",
+          "quote": "גן עירוני ששטחו כ-2.8 דונם"
+        },
+        {
+          "source_url": "https://www.zohi.co.il/en/",
+          "quote": "2.8-dunam urban garden"
+        },
+        {
+          "source_url": "https://www.zohi.co.il/fr/",
+          "quote": "2,8 acres ... d’environ 0,28 hectare"
+        }
+      ],
+      "handling": "Use 2.8 dunams and flag the French acres wording as a translation conflict."
+    },
+    {
+      "field": "delivery_occupancy_year",
+      "issue": "Media sources report occupancy in late or second half 2030. The official site did not expose a delivery date in the reviewed text.",
+      "sources": [
+        {
+          "source_url": "https://www.globes.co.il/news/article.aspx?did=1001533129",
+          "quote": "האכלוס שלו צפוי במחצית השנייה של 2030"
+        },
+        {
+          "source_url": "https://www.calcalist.co.il/article/hkyc2750011x",
+          "quote": "יקבלו את דירותיהם בסוף 2030"
+        }
+      ],
+      "handling": "Report 2030 as media-basis only."
+    },
+    {
+      "field": "price_per_sqm",
+      "issue": "Madlan average is 76,000 ILS per sqm, while media launch headline says 70,000 ILS per sqm. Project transaction rows vary and one Madlan row appears anomalous.",
+      "sources": [
+        {
+          "source_url": "https://www.madlan.co.il/projects/%D7%9E%D7%92%D7%A8%D7%A9_110_%D7%9E%D7%AA%D7%97%D7%9D_%D7%90%D7%A9%D7%9B%D7%95%D7%9C_%D7%AA%D7%9C_%D7%90%D7%91%D7%99%D7%91",
+          "quote": "מחיר ממוצע למ״ר・76 א׳ ₪"
+        },
+        {
+          "source_url": "https://zirat-nadlan.co.il/articles/70000-%D7%A9%D7%A7%D7%9C-%D7%9C%D7%9E%D7%A8-%D7%91%D7%A9%D7%93%D7%94-%D7%93%D7%91-%D7%9C%D7%95%D7%99%D7%A0%D7%A9%D7%98%D7%99%D7%9F-%D7%9E%D7%98%D7%A8%D7%95%D7%A4%D7%95%D7%9C%D7%99%D7%A1-%D7%95",
+          "quote": "70,000 שקל למ\"ר בשדה דב"
+        },
+        {
+          "source_url": "https://www.madlan.co.il/area-info/%D7%A9%D7%9B%D7%95%D7%A0%D7%94-%D7%A9%D7%93%D7%94-%D7%93%D7%91-%D7%90%D7%A9%D7%9B%D7%95%D7%9C-%D7%AA%D7%9C-%D7%90%D7%91%D7%99%D7%91-%D7%99%D7%A4%D7%95-%D7%99%D7%A9%D7%A8%D7%90%D7%9C",
+          "quote": "4.39m NIS ... 147 sqm ... ₪29,868/sqm"
+        }
+      ],
+      "handling": "Do not average silently. List each basis separately."
+    }
+  ],
+  "unknowns": [
+    {
+      "field": "sales_office_address",
+      "reason": "No exact, reachable source with a sales-office street address was verified."
+    },
+    {
+      "field": "latitude_longitude",
+      "reason": "Omitted by instruction. Downstream geocoding should use the address and parcel data."
+    },
+    {
+      "field": "exact_distances_m",
+      "reason": "Official sources provide walking and cycling times for some anchors but not measured meter distances. No unsourced geocoding was performed."
+    },
+    {
+      "field": "nearest_green_line_station_name",
+      "reason": "Official project page states a 7-minute walk to the future Green Line, but did not name the station. Secondary station names are retained separately."
+    },
+    {
+      "field": "nearest_metro_station",
+      "reason": "Municipal metro page confirms M1, M2 and M3, but no verified station link to ZOHI was found."
+    },
+    {
+      "field": "exact_school_catchment",
+      "reason": "Madlan lists nearby schools and kindergartens, but no official municipal catchment assignment for the project was verified."
+    },
+    {
+      "field": "floor_plan_urls",
+      "reason": "Official page exposes floor-plan category labels but no reachable direct floor-plan images or PDFs were verified."
+    },
+    {
+      "field": "typical_floor_plans_and_unit_lines",
+      "reason": "No verified line schedule or typical-floor plan with apartment positions was found."
+    },
+    {
+      "field": "facade_elevations_by_orientation",
+      "reason": "Municipal PDF includes design discussion and official render URLs exist, but no orientation-labelled facade elevation URLs were verified."
+    },
+    {
+      "field": "footprint_dimensions_m",
+      "reason": "No dimensioned plan or CAD was available in the verified sources."
+    },
+    {
+      "field": "main_facade_orientation_degrees",
+      "reason": "Compass degrees were not published and were not inferred."
+    },
+    {
+      "field": "developer_price_list",
+      "reason": "No official price list was found."
+    },
+    {
+      "field": "current_remaining_inventory",
+      "reason": "No live inventory feed or current developer availability list was found."
+    },
+    {
+      "field": "mamad_by_unit",
+      "reason": "Apartment-level mamad schedule was not verified."
+    },
+    {
+      "field": "contractor",
+      "reason": "No verified contractor portfolio or project contractor record was found in the scanned sources."
+    },
+    {
+      "field": "official_brochure_pdf",
+      "reason": "No reachable official brochure PDF was found."
+    },
+    {
+      "field": "official_virtual_tour_or_3d",
+      "reason": "No reachable official virtual-tour or 3D URL was found."
+    }
+  ],
+  "coverage": {
+    "source_classes_swept": [
+      {
+        "class": "developer official and microsite",
+        "status": "swept",
+        "found": "Hebrew, English and French official pages; project identity, units, amenities, times, architect quotes and image assets."
+      },
+      {
+        "class": "developer partner site",
+        "status": "swept",
+        "found": "Metropolis project page."
+      },
+      {
+        "class": "municipal planning",
+        "status": "swept",
+        "found": "Tel Aviv lot 110 design-plan PDF, Unit 8 PDF, Sde Dov district page, metro page and licensing protocol."
+      },
+      {
+        "class": "mavat.iplan.gov.il",
+        "status": "not fully captured",
+        "found": "Plan numbers were identified through municipal documents. Direct Mavat extraction was not completed in the returned dataset."
+      },
+      {
+        "class": "market portals",
+        "status": "swept",
+        "found": "Madlan project and area pages; Yad2 neighborhood active listing context."
+      },
+      {
+        "class": "press",
+        "status": "swept",
+        "found": "Globes, Calcalist sponsored content and Zirat Nadlan articles."
+      },
+      {
+        "class": "TASE filings",
+        "status": "swept",
+        "found": "Mivne filing reference to Sde Dov and permit promotion."
+      },
+      {
+        "class": "architect and interior designer portfolio",
+        "status": "partially swept",
+        "found": "Official and municipal sources identify Gal Or Fishbein and quote Tal Goldsmith. A direct portfolio page was not usable for additional verified facts."
+      },
+      {
+        "class": "contractor portfolio",
+        "status": "not found",
+        "found": "No verified contractor record was found."
+      },
+      {
+        "class": "urban forums and secondary Sde Dov sites",
+        "status": "swept",
+        "found": "Secondary Sde Dov project, transport, education and Reuth hospital pages. Marked unofficial."
+      },
+      {
+        "class": "Wikipedia",
+        "status": "low relevance",
+        "found": "No project-specific Wikipedia source was used."
+      }
+    ],
+    "biggest_gaps_summary": "The strongest verified facts are the address, parcel context, total units, statutory massing, heights, amenities, unit-size mix, parking policy and district planning. The biggest gaps for production are exact sales-office address, measured distances in meters, official station name, floor-plan URLs, unit-line orientation, dimensioned footprints, facade elevations by orientation, current inventory, official price list and contractor identity. Several public sources conflict on whether the project should be represented as 3 marketing buildings or 4 physical design-plan buildings, and on 15 versus 16 floors for the towerlets."
+  }
+}
