@@ -221,7 +221,9 @@
       opin("compass", "east", "inset-block-start:50%;inset-inline-end:14px;transform:translateY(-50%)");
     var fsq = units().map(function (u) {
       var cls = "nl-fsq" + (u.status === "reserved" ? " nl-fsq--reserved" : u.status === "sold" ? " nl-fsq--sold" : "");
-      return '<button class="' + cls + '" data-act="select" data-id="' + esc(u.id) + '" style="inset-inline-start:' + u.stage_x + "%;inset-block-start:" + u.stage_y + "%;width:" + u.stage_w + "%;height:" + u.stage_h + '%" aria-label="' + esc(unitTitleAria(u)) + '"><b>' + esc(u.label) + "</b><span>" + esc(roomsLabel(u.rooms)) + "</span></button>";
+      /* physical left/top, NOT inset-inline-start: tiles anchor to a photo, and the
+         photo does not mirror in RTL - logical coords put units on the wrong tower */
+      return '<button class="' + cls + '" data-act="select" data-id="' + esc(u.id) + '" style="left:' + u.stage_x + "%;top:" + u.stage_y + "%;width:" + u.stage_w + "%;height:" + u.stage_h + '%" aria-label="' + esc(unitTitleAria(u)) + '"><b>' + esc(u.label) + "</b><span>" + esc(roomsLabel(u.rooms)) + "</span></button>";
     }).join("");
     var facadeInner = "";
     if (p.facade_image) {

@@ -122,6 +122,9 @@ if ( ! function_exists( 'nadlan_showroom_engine_build_project' ) ) {
 			'building'       => (string) get_post_meta( $id, 'building', true ),
 			'floors'         => $floors,
 			'floor_height_m' => (float) ( get_post_meta( $id, 'project_3d_floor_height_m', true ) ?: 3.05 ),
+			// fly-to-unit radius scales with tower height; the 150m engine fallback
+			// puts the camera inside the crown on 150m+ towers (DUO).
+			'frame_radius_m' => (int) max( 150, round( $floors * (float) ( get_post_meta( $id, 'project_3d_floor_height_m', true ) ?: 3.05 ) * 1.4 ) ),
 			'viewbox'        => (string) get_post_meta( $id, 'project_3d_viewbox', true ),
 			'model_glb'      => esc_url_raw( (string) get_post_meta( $id, 'project_model_glb', true ) ),
 			'model_poster'   => esc_url_raw( (string) get_post_meta( $id, 'project_model_poster', true ) ),
