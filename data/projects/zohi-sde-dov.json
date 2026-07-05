@@ -319,5 +319,77 @@
       "media urls",
       "5-lang article body"
     ]
+  },
+  "sources": {
+    "dossier": "dossiers/zohi-sde-dov.dossier.json (cowork 2026-07-05, 8615w)"
+  },
+  "name_en": "ZOHI Sde Dov",
+  "developer": "Mivne, Levinstein and Metropolis",
+  "dossier_summary": {
+    "developer": "Mivne, Levinstein and Metropolis",
+    "has_units_data": true,
+    "has_prices": true,
+    "has_article_material": true,
+    "coverage": {
+      "source_classes_swept": [
+        {
+          "class": "developer official and microsite",
+          "status": "swept",
+          "found": "Hebrew, English and French official pages; project identity, units, amenities, times, architect quotes and image assets."
+        },
+        {
+          "class": "developer partner site",
+          "status": "swept",
+          "found": "Metropolis project page."
+        },
+        {
+          "class": "municipal planning",
+          "status": "swept",
+          "found": "Tel Aviv lot 110 design-plan PDF, Unit 8 PDF, Sde Dov district page, metro page and licensing protocol."
+        },
+        {
+          "class": "mavat.iplan.gov.il",
+          "status": "not fully captured",
+          "found": "Plan numbers were identified through municipal documents. Direct Mavat extraction was not completed in the returned dataset."
+        },
+        {
+          "class": "market portals",
+          "status": "swept",
+          "found": "Madlan project and area pages; Yad2 neighborhood active listing context."
+        },
+        {
+          "class": "press",
+          "status": "swept",
+          "found": "Globes, Calcalist sponsored content and Zirat Nadlan articles."
+        },
+        {
+          "class": "TASE filings",
+          "status": "swept",
+          "found": "Mivne filing reference to Sde Dov and permit promotion."
+        },
+        {
+          "class": "architect and interior designer portfolio",
+          "status": "partially swept",
+          "found": "Official and municipal sources identify Gal Or Fishbein and quote Tal Goldsmith. A direct portfolio page was not usable for additional verified facts."
+        },
+        {
+          "class": "contractor portfolio",
+          "status": "not found",
+          "found": "No verified contractor record was found."
+        },
+        {
+          "class": "urban forums and secondary Sde Dov sites",
+          "status": "swept",
+          "found": "Secondary Sde Dov project, transport, education and Reuth hospital pages. Marked unofficial."
+        },
+        {
+          "class": "Wikipedia",
+          "status": "low relevance",
+          "found": "No project-specific Wikipedia source was used."
+        }
+      ],
+      "biggest_gaps_summary": "The strongest verified facts are the address, parcel context, total units, statutory massing, heights, amenities, unit-size mix, parking policy and district planning. The biggest gaps for production are exact sales-office address, measured distances in meters, official station name, floor-plan URLs, unit-line orientation, dimensioned footprints, facade elevations by orientation, current inventory, official price list and contractor identity. Several public sources conflict on whether the project should be represented as 3 marketing buildings or 4 physical design-plan buildings, and on 15 versus 16 floors for the towerlets."
+    },
+    "unknowns": 17
   }
 }

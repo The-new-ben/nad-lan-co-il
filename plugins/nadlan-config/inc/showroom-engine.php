@@ -268,6 +268,8 @@ if ( ! function_exists( 'nadlan_showroom_engine_shortcode' ) ) {
 		wp_script_add_data( 'nadlan-model-viewer', 'type', 'module' );
 		wp_enqueue_script( 'nadlan-engine-i18n', $base . 'i18n.js', array(), NADLAN_CONFIG_VERSION, true );
 		wp_enqueue_script( 'nadlan-engine-core', $base . 'engine.js', array( 'nadlan-engine-i18n' ), NADLAN_CONFIG_VERSION, true );
+		// buy-flow v1: "build me an offer" overlay (configure > capture > dispatch)
+		wp_enqueue_script( 'nadlan-engine-buyflow', $base . 'buyflow.js', array( 'nadlan-engine-core' ), NADLAN_CONFIG_VERSION, true );
 
 		// Always run the map bootstrap so missing tokens/coords render as visible failures.
 		$mapbox_deps = array( 'nadlan-engine-core' );

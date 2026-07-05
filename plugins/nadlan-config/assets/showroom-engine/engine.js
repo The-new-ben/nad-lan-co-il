@@ -287,7 +287,8 @@
         '<button class="nl-iconbtn' + (cmp ? " is-on" : "") + '" data-act="compare" data-id="' + esc(u.id) + '">' + svg("scale", 16) + esc(cmp ? t("btn_compared") : t("btn_compare")) + "</button>" +
         '<button class="nl-iconbtn" data-act="share" data-id="' + esc(u.id) + '">' + svg("share", 16) + esc(t("btn_share")) + "</button>" +
       "</div>" +
-      '<button class="nl-btn nl-btn--accent nl-btn--block" style="margin-top:14px" data-act="scroll" data-id="inquiry">' + esc(t("btn_inquire")) + " · " + esc(t("unit_short", { label: u.label, floor: u.floor })) + "</button>";
+      '<button class="nl-btn nl-btn--gold nl-btn--block" style="margin-top:14px" data-act="rfp" data-id="' + esc(u.id) + '">' + esc(t("btn_rfp")) + "</button>" +
+      '<button class="nl-btn nl-btn--accent nl-btn--block" style="margin-top:9px" data-act="scroll" data-id="inquiry">' + esc(t("btn_inquire")) + " · " + esc(t("unit_short", { label: u.label, floor: u.floor })) + "</button>";
   }
   function stat(k, v) { return '<div class="nl-stat"><div class="k">' + esc(k) + '</div><div class="v">' + esc(v) + "</div></div>"; }
   function tabPane(u) {
