@@ -1,5 +1,26 @@
 # AGENT-LOG - the God brain (append-only, newest on top)
 
+## 2026-07-05 (5) - v1.72.0 THE MAP SURGERY: one synced map beside the 3D, live-verified
+Owner gave full go ("you are responsible for the success of this project").
+SHIPPED + VERIFIED on all 4 HE pages + dimri-EN:
+- ONE MAP: engine adopts #nlpjx-map (POI layers: prices/education/transit/shopping/
+  health/future-plans/3D/satellite) directly AFTER the theater section (#building);
+  engine's plain .nl-map hidden; mapbox-init stands down when unified map present.
+  Root cause of double map: nlpjx moved/hid at DOMContentLoaded, engine renders
+  after -> race. Now engine-owned in afterRender() (idempotent, rescued before
+  ROOT.innerHTML re-render wipes).
+- SYNC: model orbit -> map bearing (-theta, user gestures only so auto-rotate never
+  spins the map); selecting an apartment eases the map to the apartment's view
+  bearing (west unit -> bearing 270, verified numerically = -90 live).
+  Convention: model -z = north (true for factory GLBs; Rainbow approximate).
+- I18N: map section localized he/en/fr/ru/ar (chips verified English on dimri-en);
+  Hebrew compass names in unit meta resolve via HE_DIRS map (dir badge leak fixed);
+  world band renamed "כל מה שסביב הפרויקט" per owner ("all around", not "all world").
+- Zero page errors on all verified pages; exactly 1 mapbox canvas per page.
+STILL OPEN (owner knows): article wall weaving (11.9k px) - next surgical band;
+nlpjx price/world sections still Hebrew-only on siblings; interiors default via
+Cowork batch; buy-flow research; ZOHI ingest; professionals upgrade; GSC indexing.
+
 ## 2026-07-05 (4) - owner round: menu, coords, poster crossfade; TWO-RENDERER diagnosis
 OWNER DIRECTIVES (this round, standing): presume he did NOT see every problem - god
 mode + design + critical skills always on; study worldwide top-league competitors and
