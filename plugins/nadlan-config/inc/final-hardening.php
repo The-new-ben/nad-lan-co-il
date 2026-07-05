@@ -268,3 +268,8 @@ add_filter( 'nadlan_config_healthcheck', function ( $out ) {
 	);
 	return $out;
 } );
+
+/* OWNER LAW: no long dashes anywhere. wptexturize silently converts " - " to an
+ * en dash and "--" to an em dash at render time, re-violating the law on every
+ * page even when the stored content is clean. Straight characters, always. */
+add_filter( 'run_wptexturize', '__return_false' );
