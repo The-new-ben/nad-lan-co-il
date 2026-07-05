@@ -1,5 +1,38 @@
 # AGENT-LOG - the God brain (append-only, newest on top)
 
+## 2026-07-05 (4) - owner round: menu, coords, poster crossfade; TWO-RENDERER diagnosis
+OWNER DIRECTIVES (this round, standing): presume he did NOT see every problem - god
+mode + design + critical skills always on; study worldwide top-league competitors and
+worry we are not there; ONE map NEAR the 3D model, synchronized (avoid the word
+"world-around"); never leave blanks - approximate coordinates with disclaimer are
+ALLOWED (1km tolerance), default interiors instead of empty; TEXT/TITLES must not be
+changed without his explicit permission; buying experience research = e-commerce
+grade (Wolt/booking-style progress, add designer/furniture/advisors bundles -> RFP);
+upgrade professionals dramatically; check why many pages not indexed; four projects
+identical in structure, side-by-side comparison, ready to show developers.
+DONE THIS TURN (live-verified):
+- "קטלוג תלת ממד" added to primary nav -> /premium/ (template-part DB override + repo
+  file mirror).
+- Approximate coords + honest address disclaimer: dimri 32.1068,34.7823; duo (Sumail)
+  32.0840,34.7830 -> both pages now have the map band. Dimri siblings synced.
+- POSTER CROSSFADE FIX (the "CSS stacking" complaint): engine overlays .nl-poster
+  (model_poster meta) over the viewer until GLB loads; posters were OLD plate art ->
+  jarring swap. Rendered real model posters on the exact stage gradient for all 4
+  projects, set on all 16 posts. Refresh now crossfades poster->model seamlessly.
+DIAGNOSED (surgical plan given to owner, NOT executed):
+- TWO RENDERERS stacked on every project page: showroom-engine (nl-*) AND
+  project-experience (nlpjx-*). nlpjx renders the SECOND map (#nlpjx-unimap with POI
+  filters) after the engine (which has its own .nl-map). Page anatomy: engine 6.5k px
+  -> nlpjx-map -> 11.9k px article wall -> nlpjx-price -> world grid. Merge plan:
+  ONE filterable map adjacent to the theater, model-orbit <-> map-bearing sync,
+  hotspot select -> view cone on map; suppress the duplicate; weave the article.
+- i18n leak I created: facade_images label/notice are Hebrew strings synced verbatim
+  to EN/FR/RU siblings (untranslated badges). Fix via engine i18n keys.
+- Mobile: only designed scroller is the unit drawer body; no horizontal overflow.
+COWORK STATUS: delivered ZOHI Sde Dov dossier (8,615w, draft 5094) + session log
+  (5070), then stalled on the rest. ZOHI = 5th project to ingest. Ashira dossier
+  still on me.
+
 ## 2026-07-05 (3) - RICH MODELS LIVE ON ALL FOUR PROJECTS (v1.71.8 + v1.71.9)
 SHIPPED + VERIFIED LIVE (headless, screenshots to owner):
 - ashira-HE/EN/FR/RU/AR: ashira-rich.glb (stepped 4-building complex, NO sea - owner
