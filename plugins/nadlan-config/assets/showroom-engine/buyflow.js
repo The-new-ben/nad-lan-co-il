@@ -30,6 +30,7 @@
       st1: "מנתחים את הבחירות שלך", st2: "מסמך הבקשה מוכן",
       st3: "נשלח לצוות נדלן לתיאום מול היזם", st4: "היועצים שבחרת יקבלו את הפנייה",
       done_t: "הבקשה בדרך", done_p: "ניצור קשר בוואטסאפ בדרך כלל תוך שעות ספורות, עם הצעה מסודרת לדירה שבחרת.",
+      doc_view: "צפו במסמך הבקשה שלכם",
       next1: "הפנייה התקבלה במערכת", next2: "תיאום מול היזם", next3: "הצעה מרוכזת אליך",
       err: "השליחה נכשלה, נסו שוב או חייגו אלינו", close: "סגירה", back: "חזרה", cont: "המשך",
       unit: "דירה", floor: "קומה", skip: "דלגו, רק חברו אותי ליזם",
@@ -51,6 +52,7 @@
       st1: "Analyzing your choices", st2: "Request document ready",
       st3: "Sent to the NadLan team to coordinate with the developer", st4: "Your chosen advisors will receive the request",
       done_t: "Your request is on its way", done_p: "We usually reply on WhatsApp within a few hours with an organized proposal for your chosen apartment.",
+      doc_view: "View your request document",
       next1: "Request received", next2: "Coordination with the developer", next3: "A consolidated proposal to you",
       err: "Sending failed, try again or call us", close: "Close", back: "Back", cont: "Continue",
       unit: "Apartment", floor: "Floor", skip: "Skip, just connect me to the developer",
@@ -72,6 +74,7 @@
       st1: "Analyse de vos choix", st2: "Document de demande pret",
       st3: "Envoye a l'equipe NadLan pour coordination avec le promoteur", st4: "Vos conseillers recevront la demande",
       done_t: "Votre demande est en route", done_p: "Nous repondons generalement sur WhatsApp en quelques heures avec une proposition organisee.",
+      doc_view: "Voir votre document de demande",
       next1: "Demande recue", next2: "Coordination avec le promoteur", next3: "Une proposition consolidee pour vous",
       err: "Echec de l'envoi, reessayez", close: "Fermer", back: "Retour", cont: "Continuer",
       unit: "Logement", floor: "Etage", skip: "Passer, connectez-moi au promoteur",
@@ -93,6 +96,7 @@
       st1: "Анализируем ваш выбор", st2: "Документ запроса готов",
       st3: "Отправлено команде NadLan для координации с застройщиком", st4: "Выбранные консультанты получат запрос",
       done_t: "Запрос в пути", done_p: "Обычно отвечаем в WhatsApp в течение нескольких часов с организованным предложением.",
+      doc_view: "Посмотреть документ запроса",
       next1: "Запрос получен", next2: "Координация с застройщиком", next3: "Консолидированное предложение вам",
       err: "Отправка не удалась, попробуйте снова", close: "Закрыть", back: "Назад", cont: "Далее",
       unit: "Квартира", floor: "Этаж", skip: "Пропустить, просто свяжите с застройщиком",
@@ -114,6 +118,7 @@
       st1: "نحلل اختياراتك", st2: "مستند الطلب جاهز",
       st3: "ارسل لفريق نادلان للتنسيق مع المطور", st4: "المستشارون الذين اخترتهم سيستلمون الطلب",
       done_t: "طلبك في الطريق", done_p: "نرد عادة عبر واتساب خلال ساعات قليلة مع عرض منظم للشقة التي اخترت.",
+      doc_view: "شاهدوا مستند طلبكم",
       next1: "استلم الطلب", next2: "تنسيق مع المطور", next3: "عرض موحد اليك",
       err: "فشل الارسال، حاولوا مجددا", close: "اغلاق", back: "رجوع", cont: "متابعة",
       unit: "شقة", floor: "طابق", skip: "تخطي، فقط اوصلوني بالمطور",
@@ -189,8 +194,10 @@
         return '<div class="nlbuy__stage" data-i="' + i + '"><span class="dot"></span><span>' + esc(s) + "</span></div>";
       }).join("") + "</div>";
     } else {
+      var docBtn = state.docUrl ? '<a class="nlbuy__btn nlbuy__btn--accent" style="display:block;text-decoration:none;text-align:center;margin-bottom:9px;box-sizing:border-box" href="' + esc(state.docUrl) + '" target="_blank" rel="noopener">' + esc(T.doc_view) + "</a>" : "";
       body = '<div class="nlbuy__done"><h4>' + esc(T.done_t) + "</h4><p>" + esc(T.done_p) + "</p>" +
         '<ol class="nlbuy__next"><li class="on">' + esc(T.next1) + "</li><li>" + esc(T.next2) + "</li><li>" + esc(T.next3) + "</li></ol>" +
+        docBtn +
         '<button class="nlbuy__btn" data-buy="close">' + esc(T.close) + "</button></div>";
     }
     var stepTitle = state.step === 1 ? T.step_finish : state.step === 2 ? T.step_extras : state.step === 3 ? T.step_contact : "";
@@ -240,7 +247,24 @@
       method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(payload)
     }).then(function (r) { return r.json(); }).then(function (d) {
       state.busy = false;
-      if (d && d.ok) { state.step = 4; render(); playStages(function () { state.step = 5; render(); }); }
+      if (d && d.ok) {
+        state.step = 4; render();
+        // phase 2: the real RFP document, generated server-side while the
+        // dispatch stages play; the done screen links it when it is ready.
+        try {
+          fetch(SR.config.lead_endpoint.replace(/lead$/, "rfp"), {
+            method: "POST", headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+              project: p ? p.slug.replace(/-(en|fr|ru|ar)$/, "") : "", unit: u.id || "",
+              finish: state.finish, extras: extras, lang: LANG,
+              name: name.trim(), lead_id: d.lead_id || 0
+            })
+          }).then(function (r2) { return r2.json(); }).then(function (d2) {
+            if (d2 && d2.ok && d2.url) { state.docUrl = d2.url; if (state.step === 5) render(); }
+          }).catch(function () {});
+        } catch (e2) {}
+        playStages(function () { state.step = 5; render(); });
+      }
       else if (err) { err.hidden = false; }
     }).catch(function () {
       state.busy = false;
