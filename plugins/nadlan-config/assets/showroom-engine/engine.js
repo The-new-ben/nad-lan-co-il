@@ -210,7 +210,7 @@
           '<div><div class="nl-fact__n">' + esc(hi) + '</div><div class="nl-fact__l">' + esc(t("fact_from_floor")) + "</div></div>" +
         "</div>" +
       "</div>" +
-      '<div class="nl-hero__media"><img src="' + esc(p.model_poster) + '" alt="' + esc(projName()) + '" loading="eager">' + (SR.config.demo ? '<span class="nl-badge nl-badge--demo nl-hero__badge">' + esc(t("demo_badge")) + "</span>" : "") + "</div>" +
+      '<div class="nl-hero__media"><img src="' + esc(p.hero_image || p.model_poster) + '" alt="' + esc(projName()) + '" loading="eager">' + (SR.config.demo ? '<span class="nl-badge nl-badge--demo nl-hero__badge">' + esc(t("demo_badge")) + "</span>" : "") + "</div>" +
     "</div>";
   }
 
@@ -625,11 +625,40 @@
     });
   }
   var DIR_BEARING = { north: 0, "north-east": 45, east: 90, "south-east": 135, south: 180, "south-west": 225, west: 270, "north-west": 315 };
+  var viewCone = null;
+  /* A translucent terracotta cone anchored on the building pin, rotated with the
+     terrain (rotationAlignment map), pointing where the selected apartment looks. */
+  function showViewCone(bearing) {
+    var map = window.NLPJX_MAP, gl = window.mapboxgl, p = project();
+    if (!map || !gl || !p || !p.geo || !Number(p.geo.lat) || !Number(p.geo.lng)) return;
+    try {
+      if (!viewCone) {
+        var el = document.createElement("div");
+        el.style.pointerEvents = "none";
+        el.innerHTML = '<svg width="150" height="150" viewBox="0 0 150 150" style="display:block">' +
+          '<defs><linearGradient id="nl-cone-g" x1="0" y1="0" x2="0" y2="1">' +
+          '<stop offset="0" stop-color="#C2563A" stop-opacity="0"/>' +
+          '<stop offset="1" stop-color="#C2563A" stop-opacity="0.55"/></linearGradient></defs>' +
+          '<path d="M75 75 L44 8 A78 78 0 0 1 106 8 Z" fill="url(#nl-cone-g)" stroke="#C2563A" stroke-opacity="0.35" stroke-width="1"/></svg>';
+        viewCone = new gl.Marker({ element: el, rotationAlignment: "map", pitchAlignment: "map", anchor: "center" })
+          .setLngLat([Number(p.geo.lng), Number(p.geo.lat)]);
+      }
+      viewCone.setRotation(bearing).addTo(map);
+    } catch (e) {}
+  }
   function easeMapToUnitView(u) {
-    var map = window.NLPJX_MAP, k = dirKey(u.dir);
-    if (!map || !k || !(k in DIR_BEARING)) return;
+    var k = dirKey(u.dir);
+    if (!k || !(k in DIR_BEARING)) return;
+    showViewCone(DIR_BEARING[k]);
+    var map = window.NLPJX_MAP;
+    if (!map) return;
     try { map.easeTo({ bearing: DIR_BEARING[k], duration: 900 }); } catch (e) {}
   }
+  // the map boots lazily; when it arrives, honor a selection made before it
+  document.addEventListener("nlpjx:map", function () {
+    var u = state.unitId && unit(state.unitId);
+    if (u) easeMapToUnitView(u);
+  });
 
   ROOT.addEventListener("click", function (e) {
     var node = e.target.closest("[data-act]"); if (!node) return;

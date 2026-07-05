@@ -439,6 +439,7 @@ document.addEventListener("DOMContentLoaded",function(){
 				var map=new mapboxgl.Map({container:um,style:"mapbox://styles/mapbox/light-v11",center:[lng,lat],zoom:14.4,pitch:0,attributionControl:true});
 				map.addControl(new mapboxgl.NavigationControl({visualizePitch:true}));
 				window.NLPJX_MAP=map; // engine syncs model orbit -> map bearing through this handle
+				try{document.dispatchEvent(new CustomEvent("nlpjx:map"))}catch(e){}
 				var groups={comps:[],schools:[],transit:[],shops:[],health:[],plans:[]};
 				function pop(html){return new mapboxgl.Popup({offset:14,maxWidth:"260px"}).setHTML(html)}
 				function dot(color){var e=document.createElement("div");e.style.cssText="width:15px;height:15px;border-radius:50%;background:"+color+";border:2.5px solid #fff;box-shadow:0 2px 6px rgba(0,0,0,.35);cursor:pointer";return e}
