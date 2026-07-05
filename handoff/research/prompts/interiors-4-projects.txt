@@ -1,0 +1,51 @@
+PROMPT FOR COWORK (run in Gemini or ChatGPT image generation, one image per run)
+Purpose: interior stills for the apartment cards on nad-lan.co.il project pages.
+Delivery protocol: upload each finished image to WordPress media (title format:
+interior-{project}-{unit}.jpg), then create ONE draft titled
+"AGENT-INBOX: interiors: batch-1" listing media IDs next to unit ids. The cloud
+agent wires them into project_3d_units interior_url and deletes the draft.
+
+Global rules for every image:
+- Photorealistic architectural interior rendering, wide angle 24mm, eye level,
+  daylight, 4:3 landscape, no people, no text, no watermarks, no brand logos.
+- Palette anchored to warm cream, natural oak, soft stone; one accent per room.
+- Every image is an illustration, not developer material. It will be labeled
+  "הדמיית פנים להמחשה בלבד" on the site, so do not imitate any real developer
+  render or copyrighted interior.
+
+Image 1 - rainbow-tel-aviv, unit-16-w (4 rooms, 112 sqm, west, sea view):
+Living room of a modern 4 room apartment in a Tel Aviv seafront tower, floor to
+ceiling window wall facing the Mediterranean at golden hour, cream sofa, oak
+floor, brass details, minimal styling, high end but family friendly.
+
+Image 2 - rainbow-tel-aviv, unit-38-penthouse (6 rooms, 214 sqm):
+Double height penthouse living space, panoramic sea and skyline glazing on two
+sides, sculptural stone kitchen island, designer pendant lights, muted luxury,
+evening blue hour with warm interior lighting.
+
+Image 3 - ashira-sde-dov, ashira-18-west (5 rooms, 132 sqm, sea + park view):
+Open plan living and dining of a 5 room family apartment, generous balcony
+through sliding glass with distant sea line and green park below, light oak,
+soft linen, warm minimalism, morning light.
+
+Image 4 - ashira-sde-dov, ashira-04-garden (3 rooms, 92 sqm, garden level):
+Cozy 3 room apartment living room at garden level, large window onto a private
+landscaped courtyard with olive trees, cream walls, terracotta accent, natural
+morning shade, calm and homely.
+
+Image 5 - dimri-yama-sde-dov, dimriyama-u2 (4 rooms, 132 sqm, floor 24, sea):
+Elegant living room in the spirit of quiet international luxury (Kelly Hoppen
+mood), taupe and cream layers, bronze details, window wall over the sea from
+the 24th floor, sculpted coffee table, soft afternoon light.
+
+Image 6 - dimri-yama-sde-dov, dimriyama-u4 (5 rooms, floor 39, penthouse):
+Penthouse master suite with corner glazing over the coastline at dusk, low
+platform bed, boucle bench, stone feature wall, warm dimmed lighting.
+
+Image 7 - duo-tel-aviv, duo-a-21 (4 rooms, 110 sqm, city skyline):
+Contemporary urban living room in a 50 floor Tel Aviv tower, skyline view east,
+walnut and off-white palette, built-in library wall, cinematic late afternoon.
+
+Image 8 - duo-tel-aviv, duo-b-45 (5 rooms, 160 sqm, panoramic):
+High floor open living space with wraparound glazing, panoramic city and sea
+horizon, pale stone floor, designer curved sofa, twilight with city lights on.
