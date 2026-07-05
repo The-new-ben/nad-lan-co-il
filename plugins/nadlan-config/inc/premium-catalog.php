@@ -99,6 +99,8 @@ add_shortcode( 'nadlan_premium_catalog', function () {
 .nlpc-card.hide{display:none}
 .nlpc-media{background:#14130F center/cover no-repeat;min-height:210px;position:relative}
 .nlpc-media em{position:absolute;bottom:10px;inset-inline-start:10px;font-style:normal;font-size:11px;background:rgba(20,19,15,.82);color:#E6D4AE;border-radius:6px;padding:4px 10px}
+.nlpc-3d{position:absolute;top:10px;inset-inline-end:10px;width:64px;height:64px;border-radius:12px;background:#14130F center/cover no-repeat;border:1.5px solid #9C7A3C;box-shadow:0 3px 12px rgba(0,0,0,.35)}
+.nlpc-3d b{position:absolute;bottom:-1px;inset-inline-end:-1px;font-size:9.5px;font-weight:800;letter-spacing:.4px;background:#9C7A3C;color:#14130F;border-radius:8px 0 10px 0;padding:2px 6px}
 .nlpc-body{padding:18px 22px}
 .nlpc-body h3{font-family:var(--font-serif,"Frank Ruhl Libre",serif);font-size:1.35rem;margin:0}
 .nlpc-meta{font-size:13.5px;color:#5C564D;margin:3px 0 8px}
@@ -144,7 +146,11 @@ add_shortcode( 'nadlan_premium_catalog', function () {
     $post = get_page_by_path( $p['slug'], OBJECT, 'nadlan_project' );
     if ( ! $post ) { continue; }
     $link   = get_permalink( $post );
+    // hero (marketing plate) carries the card; the 3D model render rides as a
+    // small badge so the buyer knows a live 3D selection experience waits inside.
     $poster = esc_url( (string) get_post_meta( $post->ID, 'project_model_poster', true ) );
+    $hero   = esc_url( (string) get_post_meta( $post->ID, 'project_3d_image', true ) );
+    if ( $hero === '' ) { $hero = $poster; }
     $fattrs = '';
     foreach ( $fkeys as $i => $k ) { foreach ( $p['fac'] as $f ) { if ( strpos( $f, $k ) !== false ) { $fattrs .= ' data-f' . $i . '="1"'; break; } } }
     $langs = array();
@@ -154,7 +160,7 @@ add_shortcode( 'nadlan_premium_catalog', function () {
     }
   ?>
   <article class="nlpc-card" data-rooms="<?php echo esc_attr( implode( ',', $p['rooms'] ) ); ?>" data-delivery="<?php echo esc_attr( $p['delivery'] ); ?>" data-sea="<?php echo $p['sea'] ? 1 : 0; ?>" data-park="1" data-marina="1" data-dev="<?php echo esc_attr( $p['dev'] ); ?>" data-floors="<?php echo (int) $p['floors']; ?>" data-units="<?php echo (int) $p['units']; ?>"<?php echo $fattrs; ?>>
-    <div class="nlpc-media" style="background-image:url('<?php echo $poster; ?>')"><em>בחירת דירה בתלת ממד</em></div>
+    <div class="nlpc-media" style="background-image:url('<?php echo $hero; ?>')"><em>בחירת דירה בתלת ממד</em><?php if ( $poster && $poster !== $hero ) : ?><span class="nlpc-3d" style="background-image:url('<?php echo $poster; ?>')" aria-hidden="true"><b>3D</b></span><?php endif; ?></div>
     <div class="nlpc-body">
       <h3><?php echo esc_html( $p['name'] ); ?></h3>
       <div class="nlpc-meta"><?php echo esc_html( $p['dev'] . ' · ' . $p['area'] . ' · ' . $p['floors'] . ' קומות · ' . $p['units'] . ' דירות · אכלוס ' . $p['delivery'] ); ?></div>

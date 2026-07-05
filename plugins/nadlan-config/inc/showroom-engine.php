@@ -128,6 +128,9 @@ if ( ! function_exists( 'nadlan_showroom_engine_build_project' ) ) {
 			'viewbox'        => (string) get_post_meta( $id, 'project_3d_viewbox', true ),
 			'model_glb'      => esc_url_raw( (string) get_post_meta( $id, 'project_model_glb', true ) ),
 			'model_poster'   => esc_url_raw( (string) get_post_meta( $id, 'project_model_poster', true ) ),
+			// hero_image (project_3d_image, "opening image") is the marketing hero;
+			// model_poster stays the 3D loading frame so the crossfade is seamless.
+			'hero_image'     => esc_url_raw( (string) get_post_meta( $id, 'project_3d_image', true ) ),
 			'facade_image'   => $facade,
 			'facade_concept_image' => $facade === '' ? $concept_image : '',
 			'facade_is_concept' => $facade === '',
