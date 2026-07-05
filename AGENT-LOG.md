@@ -1,5 +1,29 @@
 # AGENT-LOG - the God brain (append-only, newest on top)
 
+## 2026-07-05 - MAX GOD MODE: #2 deep audit + fixes + DUO live
+COWORK INGESTED: DUO dossier (8,605w) + DUO Hebrew article (4,531w, 0 dashes) ->
+  PUBLISHED into live /projects/duo-tel-aviv/ (4,656w rendered). Ashira dossier BLOCKED
+  by ChatGPT Pro (2 failed runs, empty output) - I will author it from web research.
+  Inbox drafts deleted.
+#2 AUDIT (live, headless, evidence-based):
+  rainbow-HE: 6 hotspots, RICH model.glb (the good one IS live - my earlier claim it
+    used dot-on-plate was WRONG, corrected to owner), article 3,150w, ONE mapbox map.
+  ashira-HE: 5 hotspots + 5 facade tiles, article 2,783w rendered, one map.
+  dimri-HE: 4 hotspots, model = 8KB model-prototype.glb (PLACEHOLDER - worst model live),
+    NO map (post 4745 lacks lat/lng).
+  duo-HE: article live, NO 3D at all (no model meta) - next: attach duo.glb + units.
+  LANGUAGE BUG CONFIRMED + FIXED: siblings had no units/facade/latlng meta ->
+    synced HE meta to all 12 siblings; verified ashira-EN/AR 5 hotspots+5 tiles+map,
+    rainbow-FR 6 hotspots+map. Task #21 done (dimri map still absent = no geocode, honest).
+  DOUBLE MAP: automated count finds ONE mapbox canvas per page. Owner sees two ->
+    need his pointer (which page/where) or a visual scroll-through next turn.
+CALCULATORS: added buy-or-rent + apartment-deal-check links to /mortgage-calculator/ hub
+  (nav points there). Homepage tools band pending.
+DECISIONS GIVEN: emails from domain via SMTP/deliverability check first; 3D presentation
+  assets plan (massing factory + AI facade drape / Meshy-Tripo for hero); costs explained.
+NEXT QUEUE: dimri model upgrade (assets/engine dimri 52-180KB vs placeholder), DUO 3D meta,
+  ashira dossier by me, premium cards mini-3D + near-me geolocation, big-catalog overhaul+SEO.
+
 ## 2026-07-04 (23:00) - PREMIUM CATALOG LIVE
 - https://nad-lan.co.il/premium/ (v1.71.6-7): curated tier, only full-experience projects.
   11 facility filters with gold SVG icons (pool/spa/gym/cinema/concierge/lobby/kids/

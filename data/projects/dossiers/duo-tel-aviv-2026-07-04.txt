@@ -1,0 +1,2818 @@
+{
+  "seo": {
+    "project_name": {
+      "value": "DUO Tel Aviv",
+      "evidence_ids": [
+        "E001",
+        "E002",
+        "E007"
+      ]
+    },
+    "developer": {
+      "value": "Africa Israel Residences",
+      "evidence_ids": [
+        "E007",
+        "E010"
+      ]
+    },
+    "developer_he": {
+      "value": "אפריקה ישראל מגורים",
+      "evidence_ids": [
+        "E007",
+        "E014"
+      ]
+    },
+    "building_address": {
+      "value": "ארלוזורוב 85, ארלוזורוב 87, אבן גבירול 112א, אבן גבירול 118, תל אביב-יפו",
+      "source_status": "municipal licensing address",
+      "evidence_ids": [
+        "E011"
+      ],
+      "address_variants_recorded_in_conflicts": [
+        "C001"
+      ]
+    },
+    "sales_office_address": {
+      "value": null,
+      "reason": "No official sales-office street address was found on the official site or in cross-checked sources. Broker office addresses were not treated as sales-office addresses."
+    },
+    "gush_helka": {
+      "primary_permit_record": {
+        "value": "גוש 6213 חלקה 1468",
+        "evidence_ids": [
+          "E011"
+        ]
+      },
+      "residential_lots_from_municipal_property_agreement": [
+        {
+          "value": "גוש 6213 חלקה 1471",
+          "evidence_ids": [
+            "E013"
+          ]
+        },
+        {
+          "value": "גוש 6213 חלקה 1472",
+          "evidence_ids": [
+            "E013"
+          ]
+        }
+      ],
+      "associated_municipal_parking_and_open_space_parcels": [
+        {
+          "value": "גוש 6213 חלקה 1245",
+          "evidence_ids": [
+            "E012"
+          ]
+        },
+        {
+          "value": "גוש 6213 חלקה 1468",
+          "evidence_ids": [
+            "E012"
+          ]
+        },
+        {
+          "value": "גוש 6213 חלקה 1469",
+          "evidence_ids": [
+            "E012"
+          ]
+        },
+        {
+          "value": "גוש 6213 חלקה 1494",
+          "evidence_ids": [
+            "E012"
+          ]
+        }
+      ],
+      "note": "The project parceling is complex. The public record includes permit, residential lot, and municipal parking/open-space parcel references rather than one simple parcel."
+    },
+    "serp_title_he": {
+      "value": "DUO Tel Aviv ארלוזורוב - אבן גבירול | האייקון החדש של תל-אביב",
+      "evidence_ids": [
+        "E001"
+      ]
+    },
+    "serp_title_en": {
+      "value": "DUO Tel Aviv - Tel Aviv's New Residential Icon",
+      "basis": "project name plus exact English developer headline",
+      "evidence_ids": [
+        "E002"
+      ]
+    },
+    "raw_developer_headline_he": {
+      "value": "האייקון החדש של תל-אביב",
+      "evidence_ids": [
+        "E003"
+      ]
+    },
+    "raw_developer_headline_en": {
+      "value": "Tel Aviv's New Residential Icon",
+      "evidence_ids": [
+        "E002"
+      ]
+    },
+    "h1_he": {
+      "value": "DUO Tel Aviv - האייקון החדש של תל-אביב",
+      "basis": "project name plus exact visible Hebrew headline",
+      "evidence_ids": [
+        "E001",
+        "E003"
+      ]
+    },
+    "h1_en": {
+      "value": "DUO Tel Aviv - Tel Aviv's New Residential Icon",
+      "basis": "project name plus exact visible English headline",
+      "evidence_ids": [
+        "E002"
+      ]
+    },
+    "meta_description_he": {
+      "value": "DUO Tel Aviv של אפריקה ישראל מגורים: שני מגדלים במפגש ארלוזורוב ואבן גבירול, מסחר, בריכה ונגישות לרכבת קלה.",
+      "evidence_ids": [
+        "E003",
+        "E004",
+        "E005",
+        "E007"
+      ]
+    },
+    "meta_description_en": {
+      "value": "DUO Tel Aviv by Africa Israel Residences: two towers at Arlozorov and Ibn Gvirol, retail, pool amenities and planned light rail access.",
+      "evidence_ids": [
+        "E002",
+        "E004",
+        "E005",
+        "E007"
+      ]
+    },
+    "name_variants": [
+      {
+        "value": "DUO Tel Aviv",
+        "language": "en",
+        "evidence_ids": [
+          "E001",
+          "E002"
+        ]
+      },
+      {
+        "value": "DUO® Tel Aviv",
+        "language": "en",
+        "evidence_ids": [
+          "E002",
+          "E004"
+        ]
+      },
+      {
+        "value": "DUO TEL AVIV",
+        "language": "en",
+        "evidence_ids": [
+          "E006"
+        ]
+      },
+      {
+        "value": "DUO TLV",
+        "language": "en",
+        "evidence_ids": [
+          "E028"
+        ]
+      },
+      {
+        "value": "DUO סמל דרום",
+        "language": "he",
+        "evidence_ids": [
+          "E010"
+        ]
+      },
+      {
+        "value": "פרויקט DUO \"סמל דרום\"",
+        "language": "he",
+        "evidence_ids": [
+          "E038"
+        ]
+      },
+      {
+        "value": "מגדלי DOU סמל דרום",
+        "language": "he",
+        "evidence_ids": [
+          "E009"
+        ]
+      },
+      {
+        "value": "Duo - פרויקט הדגל של החברה במתחם סומייל",
+        "language": "mixed",
+        "evidence_ids": [
+          "E037"
+        ]
+      },
+      {
+        "value": "פרויקט DUO של אפריקה במתחם סומייל",
+        "language": "he",
+        "evidence_ids": [
+          "E039"
+        ]
+      }
+    ],
+    "brand_search_terms": [
+      {
+        "value": "DUO Tel Aviv Africa Israel Residences",
+        "evidence_ids": [
+          "E001",
+          "E007"
+        ]
+      },
+      {
+        "value": "DUO Tel Aviv ארלוזורוב אבן גבירול",
+        "evidence_ids": [
+          "E001",
+          "E003"
+        ]
+      },
+      {
+        "value": "DUO סמל דרום תל אביב",
+        "evidence_ids": [
+          "E010"
+        ]
+      },
+      {
+        "value": "מגדלי DOU סמל דרום אלקטרה דניה",
+        "evidence_ids": [
+          "E009"
+        ]
+      },
+      {
+        "value": "DUO TLV אפריקה מגורים",
+        "evidence_ids": [
+          "E028",
+          "E039"
+        ]
+      },
+      {
+        "value": "DUO Tel Aviv Yashar Architects",
+        "evidence_ids": [
+          "E007"
+        ]
+      },
+      {
+        "value": "DUO Tel Aviv דירות למכירה",
+        "evidence_ids": [
+          "E006",
+          "E030"
+        ]
+      },
+      {
+        "value": "DUO Tel Aviv Arlozorov Ibn Gvirol",
+        "evidence_ids": [
+          "E002"
+        ]
+      }
+    ],
+    "source_specific_titles": {
+      "developer_official_he": {
+        "value": "DUO Tel Aviv ארלוזורוב - אבן גבירול | האייקון החדש של תל-אביב",
+        "evidence_ids": [
+          "E001"
+        ]
+      },
+      "developer_official_en": {
+        "value": "DUO Tel Aviv - Tel Aviv's New Residential Icon",
+        "evidence_ids": [
+          "E002"
+        ]
+      },
+      "madlan": {
+        "value": "DUO TEL AVIV",
+        "evidence_ids": [
+          "E006"
+        ]
+      },
+      "yad2": {
+        "value": null,
+        "reason": "No verified Yad2 DUO Tel Aviv project page was found. The found Yad2 result was an unrelated DUO project in Ra'anana and is listed in conflicts."
+      }
+    }
+  },
+  "world": {
+    "site_setting": {
+      "value": "At the meeting of Arlozorov Street, Ibn Gvirol Street, and Ben Saruk Street in Tel Aviv, above quiet Ben Saruk Street.",
+      "evidence_ids": [
+        "E002",
+        "E004",
+        "E011"
+      ]
+    },
+    "sea_beach": {
+      "nearest_sea_or_beach": {
+        "name": "Tel Aviv coastline and beach",
+        "distance_m": null,
+        "walking_time_min": null,
+        "driving_time_min": null,
+        "source_distance_basis": null,
+        "relationship": "inland, not sourced as seafront",
+        "sea_view_published": true,
+        "bearing_to_sea_degrees": null,
+        "evidence_ids": [
+          "E004",
+          "E032"
+        ]
+      },
+      "tel_aviv_port": {
+        "name": "Tel Aviv Port",
+        "distance_m": null,
+        "walking_time_min": null,
+        "driving_time_min": null,
+        "evidence_ids": [
+          "E004"
+        ]
+      }
+    },
+    "parks_and_green": [
+      {
+        "name": "Yarkon Park",
+        "type": "park",
+        "distance_m": null,
+        "walking_time_min": null,
+        "driving_time_min": null,
+        "evidence_ids": [
+          "E004"
+        ]
+      },
+      {
+        "name": "Givat Hamoreh public open space",
+        "type": "adjacent public open space",
+        "distance_m": null,
+        "walking_time_min": null,
+        "driving_time_min": null,
+        "evidence_ids": [
+          "E011",
+          "E014"
+        ]
+      },
+      {
+        "name": "Project public plaza and open public space",
+        "type": "on-site public realm",
+        "distance_m": 0,
+        "walking_time_min": 0,
+        "driving_time_min": 0,
+        "evidence_ids": [
+          "E009",
+          "E012",
+          "E007"
+        ]
+      },
+      {
+        "name": "Kikar Rabin",
+        "type": "civic square",
+        "distance_m": null,
+        "walking_time_min": null,
+        "driving_time_min": null,
+        "evidence_ids": [
+          "E003"
+        ]
+      }
+    ],
+    "light_rail": [
+      {
+        "line": "Green Line",
+        "station_name": "Arlozorov West or station at the Ibn Gvirol-Arlozorov area",
+        "station_name_confidence": "published by NTA search snippets and official project narrative, but exact station-page content was not crawlable",
+        "distance_m": null,
+        "walking_time_min": null,
+        "driving_time_min": null,
+        "status": "planned or under construction near the project according to official project narrative",
+        "evidence_ids": [
+          "E004",
+          "E034",
+          "E035"
+        ]
+      },
+      {
+        "line": "Purple Line",
+        "station_name": "Ibn Gvirol or Arlozorov area station",
+        "station_name_confidence": "published by official project narrative and NTA search snippets, but exact station-page content was not crawlable",
+        "distance_m": null,
+        "walking_time_min": null,
+        "driving_time_min": null,
+        "status": "planned to pass close by according to official project narrative",
+        "evidence_ids": [
+          "E004",
+          "E034",
+          "E035"
+        ]
+      }
+    ],
+    "planned_metro": [
+      {
+        "line": null,
+        "nearest_station": null,
+        "distance_m": null,
+        "walking_time_min": null,
+        "driving_time_min": null,
+        "reason": "No project-specific planned metro station source was found in the scan."
+      }
+    ],
+    "train_station": [
+      {
+        "name": "Tel Aviv Savidor Central",
+        "distance_m": null,
+        "walking_time_min": null,
+        "driving_time_min": null,
+        "relationship": "official location page states the project is near the central train station; exact route distance from the DUO parcel was not sourced",
+        "evidence_ids": [
+          "E004"
+        ]
+      }
+    ],
+    "highways_and_roads": [
+      {
+        "name": "Ayalon Highway",
+        "distance_m": null,
+        "walking_time_min": null,
+        "driving_time_min": null,
+        "evidence_ids": [
+          "E004"
+        ]
+      },
+      {
+        "name": "Namir Road",
+        "distance_m": null,
+        "walking_time_min": null,
+        "driving_time_min": null,
+        "evidence_ids": [
+          "E004"
+        ]
+      },
+      {
+        "name": "Arlozorov Street",
+        "distance_m": 0,
+        "walking_time_min": 0,
+        "driving_time_min": 0,
+        "evidence_ids": [
+          "E002",
+          "E011"
+        ]
+      },
+      {
+        "name": "Ibn Gvirol Street",
+        "distance_m": 0,
+        "walking_time_min": 0,
+        "driving_time_min": 0,
+        "evidence_ids": [
+          "E002",
+          "E011"
+        ]
+      },
+      {
+        "name": "Ben Saruk Street",
+        "distance_m": 0,
+        "walking_time_min": 0,
+        "driving_time_min": 0,
+        "evidence_ids": [
+          "E004",
+          "E011"
+        ]
+      }
+    ],
+    "retail": [
+      {
+        "name": "On-site commercial complex",
+        "type": "retail, cafes, restaurants, supermarket, design and lifestyle outlets, boutique shops",
+        "distance_m": 0,
+        "walking_time_min": 0,
+        "driving_time_min": 0,
+        "evidence_ids": [
+          "E005"
+        ]
+      },
+      {
+        "name": "Kikar HaMedina",
+        "type": "shopping district",
+        "distance_m": null,
+        "walking_time_min": null,
+        "driving_time_min": null,
+        "evidence_ids": [
+          "E003",
+          "E004"
+        ]
+      },
+      {
+        "name": "Basel Complex",
+        "type": "neighborhood retail and leisure",
+        "distance_m": null,
+        "walking_time_min": null,
+        "driving_time_min": null,
+        "evidence_ids": [
+          "E004"
+        ]
+      },
+      {
+        "name": "Milano Square",
+        "type": "neighborhood retail and leisure",
+        "distance_m": null,
+        "walking_time_min": null,
+        "driving_time_min": null,
+        "evidence_ids": [
+          "E004"
+        ]
+      },
+      {
+        "name": "Dizengoff Street",
+        "type": "high street",
+        "distance_m": null,
+        "walking_time_min": null,
+        "driving_time_min": null,
+        "evidence_ids": [
+          "E004"
+        ]
+      },
+      {
+        "name": "Sarona Complex",
+        "type": "retail, food and employment district",
+        "distance_m": null,
+        "walking_time_min": null,
+        "driving_time_min": null,
+        "evidence_ids": [
+          "E004"
+        ]
+      },
+      {
+        "name": "Azrieli Center",
+        "type": "mall, offices and landmark",
+        "distance_m": null,
+        "walking_time_min": null,
+        "driving_time_min": null,
+        "evidence_ids": [
+          "E004"
+        ]
+      }
+    ],
+    "health": [
+      {
+        "name": "Clalit Migdal Hamea clinic",
+        "type": "clinic",
+        "address": "אבן גבירול 124, תל אביב יפו",
+        "distance_m": null,
+        "walking_time_min": null,
+        "driving_time_min": null,
+        "evidence_ids": [
+          "E031"
+        ]
+      },
+      {
+        "name": "Clalit Smile, Ibn Gvirol 124",
+        "type": "dental clinic",
+        "address": "רח' אבן גבירול 124, קומה 3, תל אביב",
+        "distance_m": null,
+        "walking_time_min": null,
+        "driving_time_min": null,
+        "evidence_ids": [
+          "E031"
+        ]
+      },
+      {
+        "name": "Tel Aviv Sourasky Medical Center, Ichilov",
+        "type": "hospital",
+        "address": null,
+        "distance_m": null,
+        "walking_time_min": null,
+        "driving_time_min": null,
+        "evidence_ids": [
+          "E033"
+        ]
+      }
+    ],
+    "education": {
+      "exhaustiveness_status": "Partial. Nearby school pages and municipal/Madlan references were found, but no authoritative crawlable catchment map or project-specific distance table was found.",
+      "nearby_schools_sourced_no_distances": [
+        {
+          "name": "בית ספר יסודי מוריה מד",
+          "type": "elementary, state religious",
+          "address": "צייטלין 24, תל אביב-יפו",
+          "distance_m": null,
+          "walking_time_min": null,
+          "driving_time_min": null,
+          "evidence_ids": [
+            "E020"
+          ]
+        },
+        {
+          "name": "בית ספר יסודי אביב",
+          "type": "elementary, state",
+          "address": "נתן אקסלרוד 6, תל אביב-יפו",
+          "distance_m": null,
+          "walking_time_min": null,
+          "driving_time_min": null,
+          "evidence_ids": [
+            "E021"
+          ]
+        },
+        {
+          "name": "בית ספר יסודי א. ד. גורדון",
+          "type": "elementary",
+          "address": null,
+          "distance_m": null,
+          "walking_time_min": null,
+          "driving_time_min": null,
+          "evidence_ids": [
+            "E022"
+          ]
+        },
+        {
+          "name": "בית ספר יסודי גרץ",
+          "type": "elementary",
+          "address": null,
+          "distance_m": null,
+          "walking_time_min": null,
+          "driving_time_min": null,
+          "evidence_ids": [
+            "E023"
+          ]
+        },
+        {
+          "name": "בית ספר תיכון חדש ע\"ש רבין",
+          "type": "high school",
+          "address": null,
+          "distance_m": null,
+          "walking_time_min": null,
+          "driving_time_min": null,
+          "evidence_ids": [
+            "E024"
+          ]
+        },
+        {
+          "name": "בית ספר תיכון עירוני תורני ב' ג'",
+          "type": "religious urban high school",
+          "address": "אבן גבירול 56 תל אביב יפו",
+          "distance_m": null,
+          "walking_time_min": null,
+          "driving_time_min": null,
+          "evidence_ids": [
+            "E025"
+          ]
+        }
+      ],
+      "kindergartens": [
+        {
+          "name": null,
+          "type": null,
+          "distance_m": null,
+          "walking_time_min": null,
+          "driving_time_min": null,
+          "reason": "No specific kindergarten names and distances were verified from a crawlable authoritative source."
+        }
+      ]
+    },
+    "employment_culture_landmarks": [
+      {
+        "name": "Rothschild Boulevard",
+        "type": "business and lifestyle corridor",
+        "distance_m": null,
+        "walking_time_min": null,
+        "driving_time_min": null,
+        "evidence_ids": [
+          "E004"
+        ]
+      },
+      {
+        "name": "Sarona Complex",
+        "type": "employment, retail and leisure district",
+        "distance_m": null,
+        "walking_time_min": null,
+        "driving_time_min": null,
+        "evidence_ids": [
+          "E004"
+        ]
+      },
+      {
+        "name": "Habima Theater",
+        "type": "culture",
+        "distance_m": null,
+        "walking_time_min": null,
+        "driving_time_min": null,
+        "evidence_ids": [
+          "E004"
+        ]
+      },
+      {
+        "name": "Tel Aviv Museum of Art",
+        "type": "culture",
+        "distance_m": null,
+        "walking_time_min": null,
+        "driving_time_min": null,
+        "evidence_ids": [
+          "E004"
+        ]
+      },
+      {
+        "name": "Tel Aviv Cinematheque",
+        "type": "culture",
+        "distance_m": null,
+        "walking_time_min": null,
+        "driving_time_min": null,
+        "evidence_ids": [
+          "E004"
+        ]
+      },
+      {
+        "name": "Cameri Theater",
+        "type": "culture",
+        "distance_m": null,
+        "walking_time_min": null,
+        "driving_time_min": null,
+        "evidence_ids": [
+          "E004"
+        ]
+      },
+      {
+        "name": "Israeli Opera",
+        "type": "culture",
+        "distance_m": null,
+        "walking_time_min": null,
+        "driving_time_min": null,
+        "evidence_ids": [
+          "E004"
+        ]
+      },
+      {
+        "name": "Azrieli Center",
+        "type": "business and landmark",
+        "distance_m": null,
+        "walking_time_min": null,
+        "driving_time_min": null,
+        "evidence_ids": [
+          "E004"
+        ]
+      },
+      {
+        "name": "Tel Aviv Port",
+        "type": "leisure landmark",
+        "distance_m": null,
+        "walking_time_min": null,
+        "driving_time_min": null,
+        "evidence_ids": [
+          "E004"
+        ]
+      }
+    ],
+    "future_plans_adjacent_lots": [
+      {
+        "name": "Semel North",
+        "plan_number": "TA/MK/2988/B",
+        "relationship_to_project": "north of the DUO/Semel South site, adjacent larger Semel complex",
+        "published_components": "residential lots, including lot 122 and lot 123; public reports describe a 50-floor tower and 8-floor building in the north complex",
+        "potential_impact": "could change skyline, traffic, retail and view corridors north of DUO; exact view blockage by apartment line was not published",
+        "distance_m": null,
+        "evidence_ids": [
+          "E015",
+          "E016",
+          "E017",
+          "E018"
+        ]
+      },
+      {
+        "name": "Municipal office tower and civic space near Sumail North",
+        "plan_number": null,
+        "relationship_to_project": "planned future development north and northeastern corner according to architect portfolio",
+        "published_components": "municipal office tower and 1000 sqm civic space",
+        "potential_impact": "could affect northern views and civic footfall; exact massing and dates not verified in the DUO official documents",
+        "distance_m": null,
+        "evidence_ids": [
+          "E007"
+        ]
+      },
+      {
+        "name": "Plan 507-0752204 changing Semel North",
+        "plan_number": "507-0752204",
+        "relationship_to_project": "changing plan listed for Semel North",
+        "published_components": null,
+        "potential_impact": "unknown without full plan documents; record kept as adjacent planning watch item",
+        "distance_m": null,
+        "evidence_ids": [
+          "E018"
+        ]
+      }
+    ]
+  },
+  "recon_3d": {
+    "num_buildings": {
+      "value": 2,
+      "evidence_ids": [
+        "E006",
+        "E007",
+        "E010"
+      ]
+    },
+    "modeling_caution": {
+      "value": "Use 54 total floors with 50 residential floors only if the modeling system distinguishes total floors from residential floors. The official marketing pages often say 50 stories, while filings and licensing documents explain 54 floors and 50 residential floors.",
+      "evidence_ids": [
+        "E004",
+        "E010",
+        "E014"
+      ]
+    },
+    "buildings": [
+      {
+        "building_label": "Tower 1",
+        "exact_floors_count": {
+          "value": null,
+          "conflict_ids": [
+            "C002"
+          ]
+        },
+        "published_floor_claims": [
+          {
+            "value": "50 stories",
+            "basis": "developer marketing and architect/contractor pages",
+            "evidence_ids": [
+              "E004",
+              "E007",
+              "E009"
+            ]
+          },
+          {
+            "value": "54 floors, 50 residential floors",
+            "basis": "company filing and municipal licensing",
+            "evidence_ids": [
+              "E010",
+              "E014"
+            ]
+          }
+        ],
+        "height_m": {
+          "value": null,
+          "reason": "No official building height in meters was found. Secondary height claims are recorded in conflicts."
+        },
+        "ground_and_podium_floors": {
+          "value": "shared ground-floor lobby, wellness/pool roof over lobby building, and commercial complex with 3 floors plus underground components",
+          "evidence_ids": [
+            "E004",
+            "E005",
+            "E010"
+          ]
+        },
+        "lobby_and_amenity_floors": {
+          "value": "ground-floor lobby approximately 7 meters high; residents' club, 24/7 security, outdoor infinity pool with toddlers' pool, fitness room; pool area on roof of lobby building linking towers",
+          "evidence_ids": [
+            "E004"
+          ]
+        }
+      },
+      {
+        "building_label": "Tower 2",
+        "exact_floors_count": {
+          "value": null,
+          "conflict_ids": [
+            "C002"
+          ]
+        },
+        "published_floor_claims": [
+          {
+            "value": "50 stories",
+            "basis": "developer marketing and architect/contractor pages",
+            "evidence_ids": [
+              "E004",
+              "E007",
+              "E009"
+            ]
+          },
+          {
+            "value": "54 floors, 50 residential floors",
+            "basis": "company filing and municipal licensing",
+            "evidence_ids": [
+              "E010",
+              "E014"
+            ]
+          }
+        ],
+        "height_m": {
+          "value": null,
+          "reason": "No official building height in meters was found. Secondary height claims are recorded in conflicts."
+        },
+        "ground_and_podium_floors": {
+          "value": "shared ground-floor lobby, wellness/pool roof over lobby building, and commercial complex with 3 floors plus underground components",
+          "evidence_ids": [
+            "E004",
+            "E005",
+            "E010"
+          ]
+        },
+        "lobby_and_amenity_floors": {
+          "value": "ground-floor lobby approximately 7 meters high; residents' club, 24/7 security, outdoor infinity pool with toddlers' pool, fitness room; pool area on roof of lobby building linking towers",
+          "evidence_ids": [
+            "E004"
+          ]
+        }
+      }
+    ],
+    "footprint": {
+      "shape": {
+        "value": null,
+        "reason": "No dimensioned official site plan or CAD footprint was found."
+      },
+      "rough_dimensions_m": {
+        "value": null,
+        "reason": "No dimensioned official footprint was found."
+      },
+      "site_boundary_description": {
+        "value": "site bounded by Arlozorov to the south, Ibn Gvirol to the west, Givat Hamoreh public open space to the north, and Ben Saruk to the east; the eastern part contains the two towers and the western part includes commercial buildings, development areas and a sunken courtyard",
+        "evidence_ids": [
+          "E011"
+        ]
+      },
+      "orientation_of_main_facade_degrees": {
+        "value": null,
+        "reason": "No sourced compass-degree facade orientation was found; degrees were not derived from maps."
+      },
+      "towers_relative_to_site": {
+        "value": "two residential towers on the eastern part of the site, with the western part containing three commercial buildings, development area and sunken courtyard",
+        "evidence_ids": [
+          "E011"
+        ]
+      }
+    },
+    "typical_floor_plans": {
+      "official_image_urls": [],
+      "official_pdf_urls": [],
+      "secondary_floor_plan_page": {
+        "url": "https://www.panoramatlv.co.il/projects/duo/",
+        "status": "secondary broker page, not official, floor-plan image URLs not independently verified",
+        "evidence_ids": [
+          "E030"
+        ]
+      }
+    },
+    "apartments_per_floor": {
+      "value": null,
+      "reason": "No official typical-floor plan or apartments-per-floor table was found."
+    },
+    "unit_arrangement_by_line": {
+      "value": null,
+      "reason": "Official apartment marketing codes are published, but no source maps those codes to tower, floor, compass direction, street frontage, or sea-facing line."
+    },
+    "official_apartment_marketing_codes": [
+      {
+        "value": "2D - 1-bedroom apartment",
+        "evidence_ids": [
+          "E006"
+        ]
+      },
+      {
+        "value": "3A - 2-bedroom apartment",
+        "evidence_ids": [
+          "E006"
+        ]
+      },
+      {
+        "value": "4A - 3-bedroom apartment",
+        "evidence_ids": [
+          "E006"
+        ]
+      },
+      {
+        "value": "4C - 3-bedroom apartment",
+        "evidence_ids": [
+          "E006"
+        ]
+      },
+      {
+        "value": "4D - 3-bedroom apartment",
+        "evidence_ids": [
+          "E006"
+        ]
+      },
+      {
+        "value": "4E - 3-bedroom apartment",
+        "evidence_ids": [
+          "E006"
+        ]
+      },
+      {
+        "value": "4F - 4-room apartment",
+        "evidence_ids": [
+          "E006"
+        ]
+      },
+      {
+        "value": "5A - 4-bedroom apartment",
+        "evidence_ids": [
+          "E006"
+        ]
+      },
+      {
+        "value": "5AP - 4-bedroom penthouse",
+        "evidence_ids": [
+          "E006"
+        ]
+      },
+      {
+        "value": "5BP - 4-bedroom penthouse",
+        "evidence_ids": [
+          "E006"
+        ]
+      }
+    ],
+    "facade_elevations": {
+      "front": [],
+      "side": [],
+      "sea_facing": [],
+      "reason": "No true facade elevation sheets were found; only renders and visualizations were found."
+    },
+    "facade_material_and_palette": {
+      "published_materials": [
+        {
+          "value": "curtain walls",
+          "evidence_ids": [
+            "E004",
+            "E006"
+          ]
+        },
+        {
+          "value": "light roof or pergola over the commercial complex",
+          "evidence_ids": [
+            "E005",
+            "E007"
+          ]
+        }
+      ],
+      "color_palette": {
+        "value": null,
+        "reason": "No written source published an exact facade color palette."
+      },
+      "balcony_pattern_or_rhythm": {
+        "value": null,
+        "reason": "Balcony rhythm is visible in renders but was not textually specified; no inference was recorded as fact."
+      },
+      "roof_or_crown_feature": {
+        "value": null,
+        "reason": "No text source described an official roof or crown feature."
+      },
+      "architectural_signature": {
+        "value": "two spectacular towers above a commercial and leisure complex; contemporary architecture by Avner Yashar with interior design by Orly Shrem Architects",
+        "evidence_ids": [
+          "E002"
+        ]
+      }
+    },
+    "underground_and_parking_geometry": {
+      "value": "multiple underground parking levels; contractor page says 5 underground parking floors, municipal property record says up to 6 basement parking levels, and company filings report approximately 47,000 sqm of parking basements",
+      "evidence_ids": [
+        "E009",
+        "E010",
+        "E012"
+      ],
+      "conflict_ids": [
+        "C007"
+      ]
+    }
+  },
+  "units": {
+    "total_units": {
+      "value": 668,
+      "evidence_ids": [
+        "E006",
+        "E007",
+        "E009",
+        "E010"
+      ],
+      "conflict_ids": [
+        "C003"
+      ]
+    },
+    "for_marketing_units": {
+      "value": 510,
+      "evidence_ids": [
+        "E016",
+        "E029"
+      ]
+    },
+    "mix": {
+      "published_mix": [
+        {
+          "value": "1-bedroom apartments",
+          "evidence_ids": [
+            "E004",
+            "E006"
+          ]
+        },
+        {
+          "value": "2-bedroom apartments",
+          "evidence_ids": [
+            "E004",
+            "E006"
+          ]
+        },
+        {
+          "value": "3-bedroom apartments",
+          "evidence_ids": [
+            "E004",
+            "E006"
+          ]
+        },
+        {
+          "value": "4-bedroom apartments",
+          "evidence_ids": [
+            "E004",
+            "E006"
+          ]
+        },
+        {
+          "value": "luxury penthouses",
+          "evidence_ids": [
+            "E004",
+            "E006"
+          ]
+        }
+      ],
+      "hebrew_rooms_published": {
+        "value": "דירות 2, 3, 4, 5 חדרים ופנטהאוזים",
+        "evidence_ids": [
+          "E032"
+        ]
+      },
+      "counts_by_room_type": {
+        "value": null,
+        "reason": "No official counts by room type were found."
+      },
+      "sqm_range_by_type": {
+        "value": null,
+        "reason": "No official sqm range by apartment type was found."
+      },
+      "secondary_broker_floor_plan_claims": [
+        {
+          "value": "2F: 2-room apartment, 62 sqm plus 12.5 sqm balcony",
+          "evidence_ids": [
+            "E030"
+          ]
+        },
+        {
+          "value": "3D: 87 sqm plus 10 sqm balcony",
+          "evidence_ids": [
+            "E030"
+          ]
+        },
+        {
+          "value": "3A: 80 sqm plus 10 sqm balcony",
+          "evidence_ids": [
+            "E030"
+          ]
+        },
+        {
+          "value": "4A: 102.5 sqm plus 16.5 sqm balcony",
+          "evidence_ids": [
+            "E030"
+          ]
+        }
+      ]
+    },
+    "penthouses": {
+      "value": "luxury penthouses are published; official apartment codes include 5AP and 5BP as 4-bedroom penthouses",
+      "count": null,
+      "evidence_ids": [
+        "E004",
+        "E006"
+      ]
+    },
+    "mini_penthouses": {
+      "value": null,
+      "reason": "No official mini-penthouse category was found."
+    },
+    "garden_apartments": {
+      "value": null,
+      "reason": "No garden apartment category was found."
+    },
+    "parking_policy": {
+      "project_parking_infrastructure": {
+        "value": "underground parking is part of the project; sources mention 5 underground parking floors or up to 6 basement levels and approximately 47,000 sqm of parking basements",
+        "evidence_ids": [
+          "E009",
+          "E010",
+          "E012"
+        ],
+        "conflict_ids": [
+          "C007"
+        ]
+      },
+      "allocation_per_apartment": {
+        "value": null,
+        "reason": "No official allocation policy by apartment type was found. One broker listing includes 2 parking spaces for that listed unit only."
+      },
+      "broker_unit_parking_example": {
+        "value": "2 parking spaces for one active 4-room listing",
+        "evidence_ids": [
+          "E027"
+        ]
+      }
+    },
+    "storage_policy": {
+      "value": null,
+      "reason": "No official storage-room allocation policy was found. Secondary broker pages mention storage but not as project-wide official policy."
+    },
+    "mamad": {
+      "project_wide_policy": {
+        "value": null,
+        "reason": "No official project-wide Mamad statement was found."
+      },
+      "broker_unit_or_secondary_claims": [
+        {
+          "value": "Mamad is listed for one active broker unit",
+          "evidence_ids": [
+            "E027"
+          ]
+        },
+        {
+          "value": "Mamad is listed as a secondary broker amenity",
+          "evidence_ids": [
+            "E030"
+          ]
+        }
+      ]
+    },
+    "accessibility": {
+      "project_wide_unit_accessibility": {
+        "value": null,
+        "reason": "No official unit accessibility specification was found."
+      }
+    },
+    "delivery_or_occupancy": {
+      "primary_expected_year": {
+        "value": 2027,
+        "basis": "company filing and market reporting",
+        "evidence_ids": [
+          "E010",
+          "E029"
+        ],
+        "conflict_ids": [
+          "C004"
+        ]
+      },
+      "contractor_expected_completion": {
+        "value": "December 2026",
+        "basis": "Electra contractor portfolio",
+        "evidence_ids": [
+          "E009"
+        ],
+        "conflict_ids": [
+          "C004"
+        ]
+      }
+    },
+    "sold_remaining": {
+      "company_filing_2025_12_31": {
+        "contracts_signed_cumulative_units": {
+          "value": 361,
+          "basis": "partners' part, 74.26% rights, per annual report table",
+          "evidence_ids": [
+            "E016"
+          ]
+        },
+        "marketing_rate_percent": {
+          "value": 61,
+          "basis": "annual report table",
+          "evidence_ids": [
+            "E016"
+          ]
+        },
+        "unsold_units": {
+          "value": 149,
+          "basis": "annual report table",
+          "evidence_ids": [
+            "E016"
+          ]
+        },
+        "post_period_contracts_units": {
+          "value": 5,
+          "basis": "after period to report date",
+          "evidence_ids": [
+            "E016"
+          ]
+        }
+      },
+      "market_report_2026_05_20": {
+        "unsold_units": {
+          "value": 144,
+          "basis": "Calcalist report, out of 510 units for marketing",
+          "evidence_ids": [
+            "E028"
+          ],
+          "conflict_ids": [
+            "C005"
+          ]
+        },
+        "sold_q1_2026_units": {
+          "value": 9,
+          "basis": "Calcalist report",
+          "evidence_ids": [
+            "E028"
+          ]
+        }
+      },
+      "market_report_2026_ctech": {
+        "available_units": {
+          "value": 149,
+          "basis": "Ynet/CTech report",
+          "evidence_ids": [
+            "E029"
+          ]
+        }
+      },
+      "secondary_2024_bizportal_claim": {
+        "sold_percent": {
+          "value": 70,
+          "basis": "Bizportal interview quote, August 2024",
+          "evidence_ids": [
+            "E039"
+          ],
+          "conflict_ids": [
+            "C005"
+          ]
+        }
+      }
+    }
+  },
+  "prices": {
+    "currency": {
+      "value": "ILS",
+      "evidence_ids": [
+        "E016",
+        "E027",
+        "E028"
+      ]
+    },
+    "developer_price_list": {
+      "value": null,
+      "reason": "No official developer price list was found."
+    },
+    "price_records": [
+      {
+        "basis_label": "company annual report, signed contracts in 2025, before VAT",
+        "as_of_date": "2025-12-31",
+        "shekel_range": null,
+        "shekel_per_sqm_range": null,
+        "published_average_thousand_ils_per_sqm_before_vat": 69.9,
+        "units": 13,
+        "area_sqm": 1281,
+        "source_url": "https://mayafiles.tase.co.il/rpdf/1730001-1731000/P1730670-00.pdf",
+        "evidence_ids": [
+          "E016"
+        ]
+      },
+      {
+        "basis_label": "company annual report, cumulative signed contracts to end of 2025, before VAT",
+        "as_of_date": "2025-12-31",
+        "shekel_range": null,
+        "shekel_per_sqm_range": null,
+        "published_average_thousand_ils_per_sqm_before_vat": 53.5,
+        "units": 361,
+        "area_sqm": 33885,
+        "source_url": "https://mayafiles.tase.co.il/rpdf/1730001-1731000/P1730670-00.pdf",
+        "evidence_ids": [
+          "E016"
+        ]
+      },
+      {
+        "basis_label": "company annual report, contracts after period to report date, before VAT",
+        "as_of_date": null,
+        "shekel_range": null,
+        "shekel_per_sqm_range": null,
+        "published_average_thousand_ils_per_sqm_before_vat": 65,
+        "units": 5,
+        "area_sqm": null,
+        "source_url": "https://mayafiles.tase.co.il/rpdf/1730001-1731000/P1730670-00.pdf",
+        "evidence_ids": [
+          "E016"
+        ]
+      },
+      {
+        "basis_label": "Calcalist Q1 2026 market report",
+        "as_of_date": "2026-05-20",
+        "shekel_range": null,
+        "shekel_per_sqm_range": null,
+        "published_average_price_per_apartment_ils": 10500000,
+        "published_average_price_per_sqm_ils": 76500,
+        "units": 9,
+        "source_url": "https://www.calcalist.co.il/market/article/gq3hvod1j",
+        "evidence_ids": [
+          "E028"
+        ]
+      },
+      {
+        "basis_label": "Globes April 2026 report, 5 apartments",
+        "as_of_date": "2026-04-19",
+        "shekel_range": null,
+        "shekel_per_sqm_range": {
+          "min_ils_per_sqm": 82000,
+          "max_ils_per_sqm": null,
+          "operator": "greater_than_average"
+        },
+        "units": 5,
+        "source_url": "https://en.globes.co.il/en/article-businessman-buys-5-tel-aviv-apartments-in-dou-project-1001540437",
+        "evidence_ids": [
+          "E026"
+        ]
+      },
+      {
+        "basis_label": "Madlan displayed project average price per sqm",
+        "as_of_date": "2026-07-04",
+        "shekel_range": null,
+        "shekel_per_sqm_range": null,
+        "published_average_price_per_sqm_ils": 65000,
+        "source_url": "https://www.madlan.co.il/projects/%D7%A1%D7%9E%D7%9C_%D7%93%D7%A8%D7%95%D7%9D_%D7%AA%D7%9C_%D7%90%D7%91%D7%99%D7%91",
+        "evidence_ids": [
+          "E008"
+        ]
+      },
+      {
+        "basis_label": "active broker asking listing, one apartment",
+        "as_of_date": "2026-07-04",
+        "shekel_range": {
+          "min_ils": 12500000,
+          "max_ils": 12500000
+        },
+        "shekel_per_sqm_range": null,
+        "unit_description": "4 rooms, floor 18, 176 sqm total, 156 sqm living plus 20 sqm balcony, northeast, sea view, 2 parking spaces",
+        "source_url": "https://ronkin-list.com/properties/apartment-for-sale-duo-towers-tel-aviv/",
+        "evidence_ids": [
+          "E027"
+        ]
+      },
+      {
+        "basis_label": "Globes historical early sales report",
+        "as_of_date": "2021-10-11",
+        "shekel_range": {
+          "min_ils": 3000000,
+          "max_ils": 7500000
+        },
+        "shekel_per_sqm_range": null,
+        "units": 23,
+        "source_url": "https://www.globes.co.il/news/article.aspx?did=1001386775",
+        "evidence_ids": [
+          "E040"
+        ]
+      },
+      {
+        "basis_label": "Calcalist historical sales report",
+        "as_of_date": "2021-10-25",
+        "shekel_range": null,
+        "shekel_per_sqm_range": null,
+        "published_average_price_per_apartment_ils": 6500000,
+        "units_sold_reported": 250,
+        "source_url": "https://www.calcalist.co.il/real-estate/article/s1j54r7it",
+        "evidence_ids": [
+          "E041"
+        ]
+      },
+      {
+        "basis_label": "Bizportal August 2024 interview quote",
+        "as_of_date": "2024-08-18",
+        "shekel_range": null,
+        "shekel_per_sqm_range": null,
+        "published_price_per_sqm_ils": 75000,
+        "source_url": "https://www.bizportal.co.il/realestates/news/article/832945",
+        "evidence_ids": [
+          "E039"
+        ]
+      },
+      {
+        "basis_label": "Bizportal April 2024 market report",
+        "as_of_date": "2024-04-15",
+        "shekel_range": null,
+        "shekel_per_sqm_range": null,
+        "published_average_price_per_sqm_ils": 76000,
+        "published_4_room_example_ils": 10000000,
+        "source_url": "https://www.bizportal.co.il/realestates/news/article/826621",
+        "evidence_ids": [
+          "E038"
+        ]
+      }
+    ],
+    "not_used_as_price": [
+      {
+        "basis_label": "Panorama secondary broker page starting price",
+        "reason": "Source reports 3,200,000 NIS starting price but also reports 320 units, conflicting with primary 668-unit sources. It is recorded as a conflict and secondary claim, not as a developer price.",
+        "evidence_ids": [
+          "E030"
+        ],
+        "conflict_ids": [
+          "C003",
+          "C006"
+        ]
+      }
+    ]
+  },
+  "media": {
+    "official_gallery_pages": [
+      {
+        "url": "https://www.duo-tlv.com/",
+        "evidence_ids": [
+          "E001",
+          "E003"
+        ]
+      },
+      {
+        "url": "https://www.duo-tlv.com/eng/the-project/",
+        "evidence_ids": [
+          "E002"
+        ]
+      },
+      {
+        "url": "https://www.duo-tlv.com/eng/the-apartments/",
+        "evidence_ids": [
+          "E006"
+        ]
+      },
+      {
+        "url": "https://www.duo-tlv.com/eng/commercial/",
+        "evidence_ids": [
+          "E005"
+        ]
+      }
+    ],
+    "render_and_visualization_image_urls": [
+      {
+        "url": "https://www.duo-tlv.com/wp-content/uploads/2021/11/4541.jpg",
+        "source": "official DUO site",
+        "evidence_ids": [
+          "E043"
+        ]
+      },
+      {
+        "url": "https://www.duo-tlv.com/wp-content/uploads/2021/09/0006_semel-darom-c21-day-taba_0.jpg",
+        "source": "official DUO site",
+        "evidence_ids": [
+          "E043"
+        ]
+      },
+      {
+        "url": "https://www.duo-tlv.com/wp-content/uploads/2021/09/0017_semel-darom-ph2-c03_0.jpg",
+        "source": "official DUO site",
+        "evidence_ids": [
+          "E044"
+        ]
+      },
+      {
+        "url": "https://www.duo-tlv.com/wp-content/uploads/2021/09/0022_semel-darom-ph1-c04_0.jpg",
+        "source": "official DUO site",
+        "evidence_ids": [
+          "E044"
+        ]
+      },
+      {
+        "url": "https://www.duo-tlv.com/wp-content/uploads/2021/09/0012_semel-darom-4c-c01_0.jpg",
+        "source": "official DUO site",
+        "evidence_ids": [
+          "E044"
+        ]
+      },
+      {
+        "url": "https://www.duo-tlv.com/wp-content/uploads/2021/09/0018_semel-darom-ph2-c02_0.jpg",
+        "source": "official DUO site",
+        "evidence_ids": [
+          "E044"
+        ]
+      },
+      {
+        "url": "https://www.duo-tlv.com/wp-content/uploads/2021/09/0008_semel-darom-4f-c01_0_New.jpg",
+        "source": "official DUO site",
+        "evidence_ids": [
+          "E044"
+        ]
+      },
+      {
+        "url": "https://www.duo-tlv.com/wp-content/uploads/2021/09/0020_semel-darom-ph2-bedroom-c03_0.jpg",
+        "source": "official DUO site",
+        "evidence_ids": [
+          "E044"
+        ]
+      },
+      {
+        "url": "https://www.duo-tlv.com/wp-content/uploads/2021/09/0021_semel-darom-ph2-bedroom-c01_0.jpg",
+        "source": "official DUO site",
+        "evidence_ids": [
+          "E044"
+        ]
+      },
+      {
+        "url": "https://www.duo-tlv.com/wp-content/uploads/2021/09/0003_semel-darom-ph1-bedroom-c02_0.jpg",
+        "source": "official DUO site",
+        "evidence_ids": [
+          "E044"
+        ]
+      },
+      {
+        "url": "https://www.duo-tlv.com/wp-content/uploads/2021/09/0004_semel-darom-ph1-bedroom-c01_0.jpg",
+        "source": "official DUO site",
+        "evidence_ids": [
+          "E044"
+        ]
+      },
+      {
+        "url": "https://www.duo-tlv.com/wp-content/uploads/2021/09/0001_semel-darom-ph1-c02_0.jpg",
+        "source": "official DUO site",
+        "evidence_ids": [
+          "E044"
+        ]
+      },
+      {
+        "url": "https://www.duo-tlv.com/wp-content/uploads/2021/09/0002_semel-darom-ph1-c01_0.jpg",
+        "source": "official DUO site",
+        "evidence_ids": [
+          "E044"
+        ]
+      },
+      {
+        "url": "https://www.duo-tlv.com/wp-content/uploads/2021/09/0006_semel-darom-5a-c01_0.jpg",
+        "source": "official DUO site",
+        "evidence_ids": [
+          "E044"
+        ]
+      },
+      {
+        "url": "https://yashararch.com/wp-content/uploads/2018/01/DUO-2.jpg",
+        "source": "Yashar Architects",
+        "evidence_ids": [
+          "E045"
+        ]
+      },
+      {
+        "url": "https://yashararch.com/wp-content/uploads/wipi-builder/cache/DUO-7-panorama.jpg",
+        "source": "Yashar Architects",
+        "evidence_ids": [
+          "E045"
+        ]
+      },
+      {
+        "url": "https://yashararch.com/wp-content/uploads/wipi-builder/cache/DUO-15-panorama.jpg",
+        "source": "Yashar Architects",
+        "evidence_ids": [
+          "E045"
+        ]
+      },
+      {
+        "url": "https://yashararch.com/wp-content/uploads/wipi-builder/cache/DUO-13-panorama.jpg",
+        "source": "Yashar Architects",
+        "evidence_ids": [
+          "E045"
+        ]
+      },
+      {
+        "url": "https://yashararch.com/wp-content/uploads/wipi-builder/cache/DUO-9-panorama.jpg",
+        "source": "Yashar Architects",
+        "evidence_ids": [
+          "E045"
+        ]
+      }
+    ],
+    "floor_plan_image_urls": [],
+    "floor_plan_pdf_urls": [],
+    "site_plan_urls": [],
+    "brochure_pdf_urls": [],
+    "promo_video_urls": [
+      {
+        "url": "https://www.youtube.com/watch?v=QyZy4zRAFaE",
+        "source": "official or project promo video search result",
+        "evidence_ids": [
+          "E046"
+        ]
+      },
+      {
+        "url": "https://www.youtube.com/watch?v=F_Y3KhHebQA",
+        "source": "project promo video search result",
+        "evidence_ids": [
+          "E046"
+        ]
+      },
+      {
+        "url": "https://www.youtube.com/watch?v=Fb4LKEpAtV0",
+        "source": "project promo video search result",
+        "evidence_ids": [
+          "E046"
+        ]
+      }
+    ],
+    "virtual_tour_or_3d_urls": [],
+    "media_unknowns": [
+      "No official brochure PDF was found.",
+      "No official floor-plan PDF or typical-floor sheet was found.",
+      "No official facade elevation sheet was found.",
+      "No virtual-tour or 3D apartment-selector URL was found."
+    ]
+  },
+  "article_material": {
+    "project_story": {
+      "he": {
+        "value": "DUO Tel Aviv הוא פרויקט דגל של אפריקה ישראל מגורים במתחם סמל דרום, במפגש ארלוזורוב, אבן גבירול ובן סרוק. החזון המוצהר משלב שני מגדלי מגורים, מתחם מסחר ופנאי, כיכר ציבורית וקישור לתשתיות תחבורה עתידיות. האדריכלות של אבנר ישר והעיצוב של אורלי שרם ממקמים את הפרויקט כסמל עכשווי בצפון הישן והחדש של תל אביב.",
+        "evidence_ids": [
+          "E002",
+          "E003",
+          "E004",
+          "E005",
+          "E007",
+          "E010"
+        ]
+      },
+      "en": {
+        "value": "DUO Tel Aviv is Africa Israel Residences' flagship Semel South project at Arlozorov, Ibn Gvirol and Ben Saruk. The sourced story is a pair of residential towers over a retail and leisure base, public realm, underground parking, and planned light-rail connectivity, with architecture by Avner Yashar and interiors by Orly Shrem Architects.",
+        "evidence_ids": [
+          "E002",
+          "E004",
+          "E005",
+          "E007",
+          "E010"
+        ]
+      },
+      "fr": {
+        "value": "DUO Tel Aviv est le projet phare Semel South d'Africa Israel Residences, au croisement d'Arlozorov, Ibn Gvirol et Ben Saruk. Le récit sourcé associe deux tours résidentielles, un socle commercial et de loisirs, des espaces publics, un parking souterrain et une future accessibilité par tramway, avec une architecture signée Avner Yashar et des intérieurs par Orly Shrem Architects.",
+        "evidence_ids": [
+          "E002",
+          "E004",
+          "E005",
+          "E007",
+          "E010"
+        ]
+      },
+      "ru": {
+        "value": "DUO Tel Aviv - флагманский проект Africa Israel Residences в комплексе Semel South на пересечении Arlozorov, Ibn Gvirol и Ben Saruk. Подтвержденный источниками сюжет: две жилые башни над торгово-досуговым основанием, общественные пространства, подземная парковка и планируемая связь с легкорельсовым транспортом, архитектура Avner Yashar и интерьеры Orly Shrem Architects.",
+        "evidence_ids": [
+          "E002",
+          "E004",
+          "E005",
+          "E007",
+          "E010"
+        ]
+      },
+      "ar": {
+        "value": "DUO Tel Aviv هو مشروع رئيسي لشركة Africa Israel Residences في مجمع Semel South عند تقاطع Arlozorov وIbn Gvirol وBen Saruk. القصة المدعومة بالمصادر هي برجان سكنيان فوق قاعدة تجارية وترفيهية، مع مساحات عامة ومواقف تحت الأرض واتصال مخطط بالقطار الخفيف، بتصميم معماري من Avner Yashar وتصميم داخلي من Orly Shrem Architects.",
+        "evidence_ids": [
+          "E002",
+          "E004",
+          "E005",
+          "E007",
+          "E010"
+        ]
+      }
+    },
+    "genuine_usps": [
+      {
+        "usp": "central Tel Aviv junction at Arlozorov and Ibn Gvirol, with Ben Saruk on the quieter side",
+        "evidence_ids": [
+          "E002",
+          "E004",
+          "E011"
+        ]
+      },
+      {
+        "usp": "two-tower landmark scale, with 668 total apartments according to primary sources",
+        "evidence_ids": [
+          "E006",
+          "E007",
+          "E009",
+          "E010"
+        ]
+      },
+      {
+        "usp": "planned light-rail access, including Green Line through Ibn Gvirol and Purple Line from Arlozorov",
+        "evidence_ids": [
+          "E004"
+        ]
+      },
+      {
+        "usp": "on-site commercial complex planned for retail, cafes, restaurants, supermarket, design and boutique shops",
+        "evidence_ids": [
+          "E005"
+        ]
+      },
+      {
+        "usp": "resident amenities include residents' club, 24/7 security, infinity pool with toddlers' pool and advanced fitness room",
+        "evidence_ids": [
+          "E004"
+        ]
+      },
+      {
+        "usp": "architecture by Yashar Architects and interiors by Orly Shrem Architects",
+        "evidence_ids": [
+          "E002",
+          "E007"
+        ]
+      },
+      {
+        "usp": "apartment positioning marketed with sun balconies and views of the Tel Aviv coastline and cityscape",
+        "evidence_ids": [
+          "E006"
+        ]
+      },
+      {
+        "usp": "green construction standards, high ceilings, curtain walls and premium kitchens are stated on the official apartment page",
+        "evidence_ids": [
+          "E006"
+        ]
+      }
+    ],
+    "neighborhood_narrative": {
+      "he": {
+        "value": "הנרטיב השכונתי מבוסס על צומת עירונית צפופה אך אסטרטגית: כיכר המדינה, בזל, מילאנו, דיזנגוף, שרונה, מוסדות תרבות ואזורי תעסוקה מוזכרים על ידי היזם כטבעת שימושים סביב הפרויקט. בצד התחבורתי, ארלוזורוב, אבן גבירול, דרך נמיר, איילון ותחנת הרכבת המרכזית מציבים את DUO כפרויקט שמיועד למי שרוצה לגור בתוך העיר ולא בשוליה.",
+        "evidence_ids": [
+          "E004",
+          "E005"
+        ]
+      },
+      "en": {
+        "value": "The neighborhood story is not suburban calm; it is central, layered Tel Aviv. The developer positions DUO among Kikar HaMedina, Basel, Milano Square, Dizengoff, Sarona, major cultural venues, Ayalon, Namir, the central train station and planned light rail. It suits buyers who want high-rise living in the city's daily-use core.",
+        "evidence_ids": [
+          "E004",
+          "E005"
+        ]
+      },
+      "fr": {
+        "value": "Le quartier se lit comme un coeur urbain dense de Tel Aviv: Kikar HaMedina, Basel, Milano Square, Dizengoff, Sarona, lieux culturels, Ayalon, Namir, gare centrale et futur tramway. DUO convient aux acheteurs qui recherchent une vie verticale au centre des usages quotidiens.",
+        "evidence_ids": [
+          "E004",
+          "E005"
+        ]
+      },
+      "ru": {
+        "value": "Окружение проекта - это плотный городской центр Тель-Авива: Kikar HaMedina, Basel, Milano Square, Dizengoff, Sarona, культурные площадки, Ayalon, Namir, центральная железнодорожная станция и будущий легкорельсовый транспорт. DUO подходит покупателям, которым нужна городская жизнь в самом активном ядре.",
+        "evidence_ids": [
+          "E004",
+          "E005"
+        ]
+      },
+      "ar": {
+        "value": "قصة الحي هي قلب حضري مكثف في تل أبيب: Kikar HaMedina وBasel وMilano Square وDizengoff وSarona ومؤسسات ثقافية وAyalon وNamir ومحطة القطار المركزية والقطار الخفيف المخطط. يناسب DUO من يريد السكن العمودي في قلب الاستخدامات اليومية للمدينة.",
+        "evidence_ids": [
+          "E004",
+          "E005"
+        ]
+      }
+    },
+    "faq_seeds": [
+      {
+        "question": "What is the exact official building address, and why do sources list Arlozorov 83, 85 and 87 variants?",
+        "evidence_ids": [
+          "E006",
+          "E011",
+          "E047"
+        ],
+        "conflict_ids": [
+          "C001"
+        ]
+      },
+      {
+        "question": "Does DUO have 50 floors or 54 floors?",
+        "evidence_ids": [
+          "E004",
+          "E010",
+          "E014"
+        ],
+        "conflict_ids": [
+          "C002"
+        ]
+      },
+      {
+        "question": "How many apartments are in DUO Tel Aviv?",
+        "evidence_ids": [
+          "E006",
+          "E007",
+          "E010"
+        ],
+        "conflict_ids": [
+          "C003"
+        ]
+      },
+      {
+        "question": "Which light-rail lines are planned near the project?",
+        "evidence_ids": [
+          "E004",
+          "E034",
+          "E035"
+        ]
+      },
+      {
+        "question": "Is the project seafront, or does it only offer some coastline views?",
+        "evidence_ids": [
+          "E004",
+          "E006"
+        ]
+      },
+      {
+        "question": "What amenities are planned for residents?",
+        "evidence_ids": [
+          "E004"
+        ]
+      },
+      {
+        "question": "What commercial uses will sit under or beside the towers?",
+        "evidence_ids": [
+          "E005"
+        ]
+      },
+      {
+        "question": "What is the current sales rate and how many units remain?",
+        "evidence_ids": [
+          "E016",
+          "E028",
+          "E029"
+        ],
+        "conflict_ids": [
+          "C005"
+        ]
+      },
+      {
+        "question": "What nearby future development could affect views or traffic?",
+        "evidence_ids": [
+          "E015",
+          "E016",
+          "E017",
+          "E018"
+        ]
+      },
+      {
+        "question": "Are official floor plans or apartment lines available for 3D selection?",
+        "evidence_ids": [
+          "E006"
+        ],
+        "unknown_ids": [
+          "U006",
+          "U007"
+        ]
+      },
+      {
+        "question": "What prices are documented, and which are company reports versus broker asking prices?",
+        "evidence_ids": [
+          "E016",
+          "E027",
+          "E028",
+          "E039",
+          "E040",
+          "E041"
+        ]
+      },
+      {
+        "question": "When is delivery expected?",
+        "evidence_ids": [
+          "E009",
+          "E010",
+          "E029"
+        ],
+        "conflict_ids": [
+          "C004"
+        ]
+      }
+    ],
+    "target_audiences": [
+      {
+        "segment": "Tel Aviv move-up buyers seeking new construction in the Old North/New North edge",
+        "evidence_ids": [
+          "E004",
+          "E006"
+        ]
+      },
+      {
+        "segment": "luxury buyers wanting high-rise amenities and urban services",
+        "evidence_ids": [
+          "E004"
+        ]
+      },
+      {
+        "segment": "investors tracking a scarce central Tel Aviv mixed-use tower project",
+        "evidence_ids": [
+          "E028",
+          "E039"
+        ]
+      },
+      {
+        "segment": "buyers prioritizing planned light-rail access",
+        "evidence_ids": [
+          "E004"
+        ]
+      },
+      {
+        "segment": "families who need to validate school catchments before purchase",
+        "evidence_ids": [
+          "E020",
+          "E021",
+          "E024"
+        ]
+      },
+      {
+        "segment": "foreign buyers looking for branded, service-rich Tel Aviv apartments",
+        "evidence_ids": [
+          "E026",
+          "E039"
+        ]
+      }
+    ],
+    "keyword_sets": {
+      "he": [
+        {
+          "value": "DUO Tel Aviv",
+          "evidence_ids": [
+            "E001"
+          ]
+        },
+        {
+          "value": "דואו תל אביב",
+          "evidence_ids": [
+            "E001"
+          ]
+        },
+        {
+          "value": "DUO סמל דרום",
+          "evidence_ids": [
+            "E010"
+          ]
+        },
+        {
+          "value": "מגדלי דואו ארלוזורוב אבן גבירול",
+          "evidence_ids": [
+            "E001",
+            "E003"
+          ]
+        },
+        {
+          "value": "אפריקה ישראל מגורים DUO",
+          "evidence_ids": [
+            "E007"
+          ]
+        },
+        {
+          "value": "דירות חדשות באבן גבירול ארלוזורוב",
+          "evidence_ids": [
+            "E002"
+          ]
+        },
+        {
+          "value": "פרויקט סומייל דרום",
+          "evidence_ids": [
+            "E010",
+            "E015"
+          ]
+        }
+      ],
+      "en": [
+        {
+          "value": "DUO Tel Aviv",
+          "evidence_ids": [
+            "E001",
+            "E002"
+          ]
+        },
+        {
+          "value": "DUO TLV",
+          "evidence_ids": [
+            "E028"
+          ]
+        },
+        {
+          "value": "DUO Tel Aviv Africa Israel Residences",
+          "evidence_ids": [
+            "E007"
+          ]
+        },
+        {
+          "value": "DUO Tel Aviv Arlozorov Ibn Gvirol",
+          "evidence_ids": [
+            "E002"
+          ]
+        },
+        {
+          "value": "Semel South Tel Aviv DUO",
+          "evidence_ids": [
+            "E010"
+          ]
+        },
+        {
+          "value": "new apartments Tel Aviv Arlozorov Ibn Gvirol",
+          "evidence_ids": [
+            "E002"
+          ]
+        }
+      ],
+      "fr": [
+        {
+          "value": "DUO Tel Aviv appartements neufs",
+          "evidence_ids": [
+            "E002",
+            "E006"
+          ]
+        },
+        {
+          "value": "DUO Tel Aviv Africa Israel Residences",
+          "evidence_ids": [
+            "E007"
+          ]
+        },
+        {
+          "value": "appartement luxe Tel Aviv Arlozorov Ibn Gvirol",
+          "evidence_ids": [
+            "E002",
+            "E004"
+          ]
+        },
+        {
+          "value": "Semel South Tel Aviv DUO",
+          "evidence_ids": [
+            "E010"
+          ]
+        }
+      ],
+      "ru": [
+        {
+          "value": "DUO Tel Aviv квартиры",
+          "evidence_ids": [
+            "E002",
+            "E006"
+          ]
+        },
+        {
+          "value": "DUO Tel Aviv Africa Israel Residences",
+          "evidence_ids": [
+            "E007"
+          ]
+        },
+        {
+          "value": "новостройка Тель Авив Arlozorov Ibn Gvirol",
+          "evidence_ids": [
+            "E002"
+          ]
+        },
+        {
+          "value": "Semel South DUO Tel Aviv",
+          "evidence_ids": [
+            "E010"
+          ]
+        }
+      ],
+      "ar": [
+        {
+          "value": "DUO Tel Aviv شقق",
+          "evidence_ids": [
+            "E002",
+            "E006"
+          ]
+        },
+        {
+          "value": "DUO Tel Aviv Africa Israel Residences",
+          "evidence_ids": [
+            "E007"
+          ]
+        },
+        {
+          "value": "شقق جديدة تل أبيب Arlozorov Ibn Gvirol",
+          "evidence_ids": [
+            "E002"
+          ]
+        },
+        {
+          "value": "Semel South DUO Tel Aviv",
+          "evidence_ids": [
+            "E010"
+          ]
+        }
+      ]
+    }
+  },
+  "field_sources": {
+    "developer_official_site": {
+      "swept": true,
+      "urls": [
+        "https://www.duo-tlv.com/",
+        "https://www.duo-tlv.com/eng/",
+        "https://www.duo-tlv.com/eng/the-project/",
+        "https://www.duo-tlv.com/eng/the-location/",
+        "https://www.duo-tlv.com/eng/residential-towers/",
+        "https://www.duo-tlv.com/eng/the-apartments/",
+        "https://www.duo-tlv.com/eng/commercial/"
+      ],
+      "evidence_ids": [
+        "E001",
+        "E002",
+        "E003",
+        "E004",
+        "E005",
+        "E006",
+        "E032"
+      ]
+    },
+    "developer_filings_tase_maya": {
+      "swept": true,
+      "urls": [
+        "https://mayafiles.tase.co.il/rpdf/1730001-1731000/P1730670-00.pdf",
+        "https://mayafiles.tase.co.il/rpdf/1579001-1580000/P1579469-00.pdf"
+      ],
+      "evidence_ids": [
+        "E010",
+        "E016",
+        "E019"
+      ]
+    },
+    "madlan": {
+      "swept": true,
+      "urls": [
+        "https://www.madlan.co.il/projects/%D7%A1%D7%9E%D7%9C_%D7%93%D7%A8%D7%95%D7%9D_%D7%AA%D7%9C_%D7%90%D7%91%D7%99%D7%91"
+      ],
+      "evidence_ids": [
+        "E006",
+        "E008"
+      ]
+    },
+    "yad2": {
+      "swept": true,
+      "urls": [],
+      "result": "No verified Yad2 page for DUO Tel Aviv found. Unrelated DUO Ra'anana result recorded as conflict guardrail.",
+      "evidence_ids": [
+        "E042"
+      ]
+    },
+    "news_media": {
+      "swept": true,
+      "urls": [
+        "https://www.globes.co.il/news/article.aspx?did=1001386775",
+        "https://en.globes.co.il/en/article-businessman-buys-5-tel-aviv-apartments-in-dou-project-1001540437",
+        "https://www.calcalist.co.il/real-estate/article/s1j54r7it",
+        "https://www.calcalist.co.il/market/article/gq3hvod1j",
+        "https://www.ynetnews.com/real-estate/article/sjjm00yj1ml",
+        "https://www.themarker.com/markets/2022-06-12/ty-article/.premium/00000181-56ca-d082-ad87-fecf972c0000",
+        "https://www.themarker.com/markets/2021-09-13/ty-article/.premium/0000017f-db53-df9c-a17f-ff5bd9b70000",
+        "https://www.bizportal.co.il/realestates/news/article/826621",
+        "https://www.bizportal.co.il/realestates/news/article/832945",
+        "https://www.bizportal.co.il/capitalmarket/news/article/802938"
+      ],
+      "evidence_ids": [
+        "E026",
+        "E028",
+        "E029",
+        "E037",
+        "E038",
+        "E039",
+        "E040",
+        "E041"
+      ]
+    },
+    "planning_municipal_mavat": {
+      "swept": true,
+      "urls": [
+        "https://mavat.iplan.gov.il/SV3",
+        "https://www.tel-aviv.gov.il/Transparency/DocLib3/%D7%A4%D7%A8%D7%95%D7%98%D7%95%D7%A7%D7%95%D7%9C%20%D7%94%D7%97%D7%9C%D7%98%D7%95%D7%AA%20%D7%A8%D7%A9%D7%95%D7%AA%20%D7%A8%D7%99%D7%A9%D7%95%D7%99%201-25-0172.pdf",
+        "https://www.tel-aviv.gov.il/Transparency/DocLib3/%D7%A4%D7%A8%D7%95%D7%98%D7%95%D7%A7%D7%95%D7%9C%20%D7%A8%D7%A9%D7%95%D7%AA%20%D7%A8%D7%99%D7%A9%D7%95%D7%99%20%D7%9E%D7%A1%D7%A4%D7%A8%201-20-0033.pdf",
+        "https://www.tabanow.co.il/%D7%AA%D7%91%D7%A2/%D7%AA%D7%9C-%D7%90%D7%91%D7%99%D7%91/%D7%AA%D7%90/%D7%9E%D7%A7/2988%D7%90",
+        "https://www.tabanow.co.il/%D7%AA%D7%91%D7%A2/%D7%AA%D7%9C-%D7%90%D7%91%D7%99%D7%91/%D7%AA%D7%90/%D7%9E%D7%A7/2988%D7%91"
+      ],
+      "mavat_note": "The Mavat SV3 interface was reachable as a planning search gateway, but project-specific details were not retrievable through the crawler; municipal protocols and secondary TABA Now plan index were used for plan details.",
+      "evidence_ids": [
+        "E011",
+        "E012",
+        "E013",
+        "E014",
+        "E015",
+        "E018"
+      ]
+    },
+    "architect_contractor_supplier": {
+      "swept": true,
+      "urls": [
+        "https://yashararch.com/projects/duo/",
+        "https://www.electra.co.il/אלקטרה_בילדינג/פרויקטים/מגדלי_dou_סמל_דרום",
+        "https://www.pandoor.co.il/duo"
+      ],
+      "evidence_ids": [
+        "E007",
+        "E009",
+        "E014"
+      ]
+    },
+    "brokers_and_marketplaces": {
+      "swept": true,
+      "urls": [
+        "https://ronkin-list.com/properties/apartment-for-sale-duo-towers-tel-aviv/",
+        "https://www.panoramatlv.co.il/projects/duo/",
+        "https://www.barnes-israel.com/en/for-sale/tel-aviv-yafo/ref-471.html"
+      ],
+      "evidence_ids": [
+        "E027",
+        "E030"
+      ]
+    },
+    "transport_health_education": {
+      "swept": true,
+      "urls": [
+        "https://www.nta.co.il/light-rail/%D7%94%D7%A7%D7%95-%D7%94%D7%99%D7%A8%D7%95%D7%A7/%D7%AA%D7%97%D7%A0%D7%AA-%D7%90%D7%A8%D7%9C%D7%95%D7%96%D7%95%D7%A8%D7%95%D7%91-%D7%9E%D7%A2%D7%A8%D7%91/",
+        "https://experience.arcgis.com/experience/2b82943e01324a7098dfc2211cf1e7a0/page/תחנת-ארלוזורוב-שלב-1",
+        "https://www.clalit.co.il/he/sefersherut/pages/clinicdetails.aspx?ddeptcode=22120",
+        "https://www.clalitsmile.co.il/clinic/",
+        "https://www.tel-aviv.gov.il/Residents/HealthAndSocial/Pages/MedicalCenterIchilov.aspx",
+        "https://www.madlan.co.il/education/"
+      ],
+      "evidence_ids": [
+        "E020",
+        "E021",
+        "E022",
+        "E023",
+        "E024",
+        "E025",
+        "E031",
+        "E033",
+        "E034",
+        "E035"
+      ]
+    },
+    "forums_wikipedia_secondary": {
+      "swept": true,
+      "urls": [
+        "https://sky-line.co.il/projects/duo-tlv/",
+        "https://www.skyscrapercity.com/threads/tel-aviv-duo-tlv-towers-2-x-54-fl-200-m-656-ft-t-o.1797499/",
+        "https://en.wikipedia.org/wiki/List_of_tallest_buildings_in_Tel_Aviv"
+      ],
+      "usage": "used only as unofficial secondary checks for height/floor conflicts, not as authoritative building facts",
+      "evidence_ids": [
+        "E048"
+      ]
+    }
+  },
+  "evidence": {
+    "E001": {
+      "source_url": "https://www.duo-tlv.com/",
+      "source_class": "official developer microsite",
+      "quote": "DUO Tel Aviv ארלוזורוב - אבן גבירול | האייקון החדש של תל-אביב"
+    },
+    "E002": {
+      "source_url": "https://www.duo-tlv.com/eng/the-project/",
+      "source_class": "official developer microsite",
+      "quote": "Tel Aviv's New Residential Icon... An international-standard residential complex, where Arlozorov St. meets Ibn Gvirol St... two spectacular towers and a commercial & leisure complex"
+    },
+    "E003": {
+      "source_url": "https://www.duo-tlv.com/",
+      "source_class": "official developer microsite",
+      "quote": "האייקון החדש של תל-אביב... מתחם מגורים שתוכנן עבורך בסטנדרטים בינלאומיים במפגש הרחובות ארלוזורוב ואבן גבירול... כל מה שצריך מתחת לבית"
+    },
+    "E004": {
+      "source_url": "https://www.duo-tlv.com/eng/the-location/",
+      "source_class": "official developer microsite",
+      "quote": "the beach and Tel Aviv Port, Yarkon Park, Rothschild Boulevard, Dizengoff Street, Sarona Complex... central train station and the light rail network... where Arlozorov Street meets Ibn Gvirol Street, above the tranquil Ben Saruk side street... two light rail lines"
+    },
+    "E005": {
+      "source_url": "https://www.duo-tlv.com/eng/commercial/",
+      "source_class": "official developer microsite",
+      "quote": "a new and innovative commercial complex... flagship stores, cafes, restaurants, a supermarket, design and lifestyle outlets, and boutique shops"
+    },
+    "E006": {
+      "source_url": "https://www.duo-tlv.com/eng/the-apartments/",
+      "source_class": "official developer microsite",
+      "quote": "DUO® Tel Aviv includes a range of 1, 2, 3, and 4-bedroom apartments and luxury penthouses... spacious sun balconies granting breathtaking views of the Tel Aviv coastline and the surrounding cityscape... green standards, high ceilings, curtain walls"
+    },
+    "E007": {
+      "source_url": "https://yashararch.com/projects/duo/",
+      "source_class": "architect portfolio",
+      "quote": "Client Africa-Israel... Area 106,000 sqm (above ground)... 47,000 sqm (underground)... Mixed Use: Residential & Commercial... two residential towers... each 50 stories tall and house 668 residential units"
+    },
+    "E008": {
+      "source_url": "https://www.madlan.co.il/projects/%D7%A1%D7%9E%D7%9C_%D7%93%D7%A8%D7%95%D7%9D_%D7%AA%D7%9C_%D7%90%D7%91%D7%99%D7%91",
+      "source_class": "Madlan project page",
+      "quote": "מחירי דירות... מחיר ממוצע למ״ר・65 א׳ ₪"
+    },
+    "E009": {
+      "source_url": "https://www.electra.co.il/אלקטרה_בילדינג/פרויקטים/מגדלי_dou_סמל_דרום",
+      "source_class": "contractor portfolio",
+      "quote": "מגדלי DOU סמל דרום... לקוח: אפריקה ישראל... קומות: 50 קומות - שני מגדלים... שטח: 169,000 מ\"ר... צפי לסיום: דצמבר 2026... 668 דירות... 5 קומות חניה תת קרקעיות"
+    },
+    "E010": {
+      "source_url": "https://mayafiles.tase.co.il/rpdf/1730001-1731000/P1730670-00.pdf",
+      "source_class": "Africa Israel Residences annual report",
+      "quote": "DUO סמל דרום... צומת הרחובות אבן גבירול-ארלוזורוב-בן סרוק בתל אביב... 2 מגדלי מגורים, בני 54 קומות, מתוכן 50 קומות מגורים... 668 יחידות דיור... מתחם מסחרי בן 3 קומות... חניונים... כ-47 אלפי מ\"ר... מועד השלמה מתוכנן 2027"
+    },
+    "E011": {
+      "source_url": "https://www.tel-aviv.gov.il/Transparency/DocLib3/%D7%A4%D7%A8%D7%95%D7%98%D7%95%D7%A7%D7%95%D7%9C%20%D7%94%D7%97%D7%9C%D7%98%D7%95%D7%AA%20%D7%A8%D7%A9%D7%95%D7%AA%20%D7%A8%D7%99%D7%A9%D7%95%D7%99%201-25-0172.pdf",
+      "source_class": "Tel Aviv municipal licensing protocol",
+      "quote": "כתובת: ארלוזורוב 85, ארלוזורוב 87, אבן גבירול 112א, אבן גבירול 118... גוש/חלקה 6213/1468... גבול המגרש פונה לרחוב ארלוזורוב מדרום, רחוב אבן גבירול ממערב, שטח ציבורי פתוח גבעת המורה מצפון ורחוב בן סרוק ממזרח"
+    },
+    "E012": {
+      "source_url": "https://www.tel-aviv.gov.il/Transparency/DocLib3/ועדת נכסים מספר 21 - מונגש.pdf",
+      "source_class": "Tel Aviv municipal property committee",
+      "quote": "חלקות 1468 ו-1469 בגוש 6213... תוכנית תא/2988... מתחם של כ-45 דונם בין הרחובות ז'בוטינסקי, בן סרוק, ארלוזורוב ואבן גבירול... חלקות 6213/1245, 6213/1468, 6213/1469, 6213/1494"
+    },
+    "E013": {
+      "source_url": "https://www.tel-aviv.gov.il/Transparency/DocLib3/ועדת נכסים מספר 16 - מונגש.pdf",
+      "source_class": "Tel Aviv municipal property committee",
+      "quote": "חלקות 1471 ו-1472 בגוש 6213... מגרשים 111 ו-112... חלקות 1468 ו-1469 בגוש 6213... תוכנית תא/2988א"
+    },
+    "E014": {
+      "source_url": "https://www.tel-aviv.gov.il/Transparency/DocLib3/%D7%A4%D7%A8%D7%95%D7%98%D7%95%D7%A7%D7%95%D7%9C%20%D7%A8%D7%A9%D7%95%D7%AA%20%D7%A8%D7%99%D7%A9%D7%95%D7%99%20%D7%9E%D7%A1%D7%A4%D7%A8%201-20-0033.pdf",
+      "source_class": "Tel Aviv municipal licensing protocol",
+      "quote": "2 מגדלי מגורים בני 54 קומות עם בסיס משותף... 2 מבנים מסחריים בני 8 ו-6 קומות... 5 קומות מרתף... תוספת 5 קומות מגורים לכל אחד מהמגדלים... סה\"כ 220+ מ' מפני הים"
+    },
+    "E015": {
+      "source_url": "https://www.tabanow.co.il/%D7%AA%D7%91%D7%A2/%D7%AA%D7%9C-%D7%90%D7%91%D7%99%D7%91/%D7%AA%D7%90/%D7%9E%D7%A7/2988%D7%90",
+      "source_class": "secondary plan index",
+      "quote": "תוכנית תא/מק/2988א תל-אביב... עיצוב המתחם הדרומי באבן גבירול, ארלוזורוב, בן סרוק, מתחם סמל דרום... שטח תוכנית 24.091 דונם"
+    },
+    "E016": {
+      "source_url": "https://mayafiles.tase.co.il/rpdf/1730001-1731000/P1730670-00.pdf",
+      "source_class": "Africa Israel Residences annual report",
+      "quote": "הנתונים בטבלה מתייחסים לחלק השותפים בפרויקט לפי חלקם בזכויות 74.26%... חוזים שנחתמו בתקופה 13... מחיר ממוצע למ\"ר 69.9... חוזים שנחתמו עד סוף התקופה 361... מחיר ממוצע למ\"ר 53.5... שיעור שיווק 61%... סה\"כ 149... לאחר תאריך הדוח ועד מועד אישור הדוח 5... מחיר ממוצע למ\"ר 65"
+    },
+    "E017": {
+      "source_url": "https://mayafiles.tase.co.il/rpdf/1730001-1731000/P1730670-00.pdf",
+      "source_class": "Africa Israel Residences annual report",
+      "quote": "סמל צפון... מגרש 122... מועד השלמה מתוכנן 2028-2029... תב\"ע תא/מק/2988/ב... מגרש 122... 163 יח\"ד... מגרש 123... 31 יח\"ד"
+    },
+    "E018": {
+      "source_url": "https://www.tabanow.co.il/%D7%AA%D7%91%D7%A2/%D7%AA%D7%9C-%D7%90%D7%91%D7%99%D7%91/%D7%AA%D7%90/%D7%9E%D7%A7/2988%D7%91",
+      "source_class": "secondary plan index",
+      "quote": "תוכנית תא/מק/2988ב תל-אביב... סמל הצפון... שטח תוכנית 20.855 דונם... 436 יח\"ד... תוכנית משנה 507-0752204... פרסום לתוקף ברשומות 27/12/2024"
+    },
+    "E019": {
+      "source_url": "https://res.afi-g.com/about/Documents/2023/%D7%90%D7%A4%D7%A8%D7%99%D7%A7%D7%94%20%D7%9E%D7%92%D7%95%D7%A8%D7%99%D7%9D%20%D7%93%D7%95%D7%97%20%D7%AA%D7%A7%D7%95%D7%A4%D7%AA%D7%99%202023%20-%20%D7%A4%D7%A8%D7%98%D7%99%D7%9D%20%D7%A0%D7%95%D7%A1%D7%A4%D7%99%D7%9D.pdf",
+      "source_class": "Africa Israel additional report",
+      "quote": "פרויקט הכולל 668 יח\"ד... כ-100,000 מ\"ר למגורים, כ-12,000 מ\"ר שטחי מסחר וכ-40,000 מ\"ר חניון תת קרקעי... התמורה... 887.555 מיליון ש\"ח"
+    },
+    "E020": {
+      "source_url": "https://www.madlan.co.il/education/school/511881",
+      "source_class": "Madlan school page",
+      "quote": "בית ספר יסודי מוריה מד... צייטלין 24, תל אביב-יפו... פיקוח ממלכתי דתי... שכבות א-ו... מספר תלמידים 368"
+    },
+    "E021": {
+      "source_url": "https://www.madlan.co.il/education/school/514513",
+      "source_class": "Madlan school page",
+      "quote": "בית ספר יסודי אביב... נתן אקסלרוד 6, תל אביב-יפו... פיקוח ממלכתי... שכבות גן-ו... מספר תלמידים 458"
+    },
+    "E022": {
+      "source_url": "https://www.madlan.co.il/education/school/511212",
+      "source_class": "Madlan school page",
+      "quote": "בית ספר יסודי א. ד. גורדון"
+    },
+    "E023": {
+      "source_url": "https://www.madlan.co.il/education/school/511220",
+      "source_class": "Madlan school page",
+      "quote": "בית ספר יסודי גרץ"
+    },
+    "E024": {
+      "source_url": "https://www.madlan.co.il/education/school/540070",
+      "source_class": "Madlan school page",
+      "quote": "בית ספר תיכון חדש ע\"ש רבין"
+    },
+    "E025": {
+      "source_url": "https://www.madlan.co.il/education/school/540120",
+      "source_class": "Madlan school page",
+      "quote": "בית ספר תיכון עירוני תורני ב' ג'... אבן גבירול 56 תל אביב יפו"
+    },
+    "E026": {
+      "source_url": "https://en.globes.co.il/en/article-businessman-buys-5-tel-aviv-apartments-in-dou-project-1001540437",
+      "source_class": "Globes market report",
+      "quote": "19 Apr 2026 - Africa Israel Residence CEO Ronit Eshed-Levy says the apartments were purchased for an average price of more than NIS 82,000 per square meter."
+    },
+    "E027": {
+      "source_url": "https://ronkin-list.com/properties/apartment-for-sale-duo-towers-tel-aviv/",
+      "source_class": "active broker listing",
+      "quote": "Luxury Apartment for Sale in DUO Towers... 12,500,000 NIS... 4 rooms... 18 floor... 176 sqm... 156 sqm living + 20 sqm balcony... northeast... sea views... 2 parking spaces... completion 2027... Mamad"
+    },
+    "E028": {
+      "source_url": "https://www.calcalist.co.il/market/article/gq3hvod1j",
+      "source_class": "Calcalist market report",
+      "quote": "ברבעון הראשון של 2026... DUO TLV... מכרה 9 דירות... מחיר ממוצע לדירה 10.5 מיליון שקל... 144 דירות שטרם נמכרו מתוך 510... מחיר ממוצע למ\"ר 76.5 אלף שקל"
+    },
+    "E029": {
+      "source_url": "https://www.ynetnews.com/real-estate/article/sjjm00yj1ml",
+      "source_class": "Ynet/CTech real-estate report",
+      "quote": "At Africa Israel's DUO project... includes 510 apartments... sold 13 apartments in 2025... expected to be completed in 2027... about 149 apartments available, roughly 30%"
+    },
+    "E030": {
+      "source_url": "https://www.panoramatlv.co.il/projects/duo/",
+      "source_class": "secondary broker page",
+      "quote": "DUO... סטטוס: משווק... מחיר התחלתי 3,200,000 ש\"ח... מספר קומות 50... מספר יחידות 320... 2F דירת 2 חדרים 62 מ\"ר + 12.5 מ\"ר מרפסת... 3D 87 + 10... 3A 80 + 10... 4A 102.5 + 16.5"
+    },
+    "E031": {
+      "source_url": "https://www.clalit.co.il/he/sefersherut/pages/clinicdetails.aspx?ddeptcode=22120",
+      "source_class": "health provider",
+      "quote": "כתובת אבן גבירול 124, תל אביב יפו... המרפאה עובדת כסדרה"
+    },
+    "E032": {
+      "source_url": "https://www.duo-tlv.com/the-apartments/",
+      "source_class": "official developer microsite",
+      "quote": "בפרויקט מגוון דירות 2, 3, 4, 5 חדרים ופנטהאוזים מפוארים... מרפסות שמש רחבות ידיים... קירות מסך, בנייה ירוקה בתקן מתקדם, תקרות גבוהות"
+    },
+    "E033": {
+      "source_url": "https://www.tel-aviv.gov.il/Residents/HealthAndSocial/Pages/MedicalCenterIchilov.aspx",
+      "source_class": "Tel Aviv municipal health page",
+      "quote": "המרכז הרפואי תל-אביב על שם סוראסקי (איכילוב) הוא בית חולים ממשלתי, השני בגודלו במדינת ישראל"
+    },
+    "E034": {
+      "source_url": "https://www.nta.co.il/light-rail/%D7%94%D7%A7%D7%95-%D7%94%D7%99%D7%A8%D7%95%D7%A7/%D7%AA%D7%97%D7%A0%D7%AA-%D7%90%D7%A8%D7%9C%D7%95%D7%96%D7%95%D7%A8%D7%95%D7%91-%D7%9E%D7%A2%D7%A8%D7%91/",
+      "source_class": "NTA official search result",
+      "quote": "תחנת ארלוזורוב מערב... ממוקמת מתחת למתחם סומל ומגדל המאה... הכניסה המזרחית במתחם סומל, במפגש הרחובות אבן גבירול",
+      "access_note": "search result snippet retrieved; direct page open returned 403 to crawler"
+    },
+    "E035": {
+      "source_url": "https://experience.arcgis.com/experience/2b82943e01324a7098dfc2211cf1e7a0/page/תחנת-ארלוזורוב-שלב-1",
+      "source_class": "NTA/ArcGIS station page search result",
+      "quote": "לתחנה יהיו שתי כניסות: הכניסה המזרחית במתחם סומל, במפגש הרחובות אבן גבירול - ארלוזורוב"
+    },
+    "E037": {
+      "source_url": "https://www.themarker.com/markets/2021-09-13/ty-article/.premium/0000017f-db53-df9c-a17f-ff5bd9b70000",
+      "source_class": "TheMarker search result",
+      "quote": "חברת אפריקה ישראל דיווחה בדו\"חותיה האחרונים כי החלה במכירה שקטה של דירות בפרויקט Duo - פרויקט הדגל של החברה במתחם סומייל, בפינת הרחובות"
+    },
+    "E038": {
+      "source_url": "https://www.bizportal.co.il/realestates/news/article/826621",
+      "source_class": "Bizportal real-estate report",
+      "quote": "אפריקה מגורים... פרויקט DUO \"סמל דרום\" בתל אביב... מתחם הרחובות ארלוזורוב, אבן גבירול ובן סרוק... שני המגדלים... המחיר הממוצע למ\"ר עומד על 76 אלף שקל למ\"ר"
+    },
+    "E039": {
+      "source_url": "https://www.bizportal.co.il/realestates/news/article/832945",
+      "source_class": "Bizportal interview",
+      "quote": "פרויקט DUO של אפריקה במתחם סומייל בתל אביב... המחיר בפרויקט DUO בתל אביב הוא 75 אלף שקל... כ-70% מפרויקט DUO מכור... צומת הרחובות ארלוזורוב ואבן גבירול"
+    },
+    "E040": {
+      "source_url": "https://www.globes.co.il/news/article.aspx?did=1001386775",
+      "source_class": "Globes real-estate report",
+      "quote": "23 דירות בפרויקט DUO במתחם סמל... מחיריהן נעו בין 3 ל-7.5 מיליון שקל לדירה... 23 דירות... יותר מ-120 מיליון שקל"
+    },
+    "E041": {
+      "source_url": "https://www.calcalist.co.il/real-estate/article/s1j54r7it",
+      "source_class": "Calcalist real-estate report",
+      "quote": "DUO... מחיר ממוצע לדירה 6.5 מיליון שקל... נמכרו 250 דירות מתוך כ-680 דירות"
+    },
+    "E042": {
+      "source_url": "https://www.yad2.co.il/yad1/project/6042",
+      "source_class": "Yad2 search result, unrelated guardrail",
+      "quote": "פרויקט DUO ז'בוטינסקי 10 רעננה - מרכז דרום, רעננה | צרפתי צבי ובניו... 1 בניינים; 48 דירות; 8 קומות"
+    },
+    "E043": {
+      "source_url": "https://www.duo-tlv.com/wp-content/uploads/2021/11/4541.jpg",
+      "source_class": "official image URL",
+      "quote": "image URL reached directly from official DUO media asset"
+    },
+    "E044": {
+      "source_url": "https://www.duo-tlv.com/eng/the-apartments/",
+      "source_class": "official apartment gallery page",
+      "quote": "2D 1-Bedroom Apartment... 3A 2-Bedroom Apartment... 4A 3-Bedroom Apartment... 5AP 4-Bedroom Penthouse... images are for illustration purposes only"
+    },
+    "E045": {
+      "source_url": "https://yashararch.com/projects/duo/",
+      "source_class": "architect media page",
+      "quote": "DUO... Mixed Use: Residential & Commercial... Project located at the intersection of Ibn Gvirol and Arlozorov... gallery image URLs on architect portfolio"
+    },
+    "E046": {
+      "source_url": "https://www.youtube.com/watch?v=QyZy4zRAFaE",
+      "source_class": "promo video search result",
+      "quote": "DUO Tel Aviv - Africa israel residences - ENG... An international-standard residential complex, where Arlozorov St. meets Ibn Gvirol St."
+    },
+    "E047": {
+      "source_url": "https://www.madlan.co.il/projects/%D7%A1%D7%9E%D7%9C_%D7%93%D7%A8%D7%95%D7%9D_%D7%AA%D7%9C_%D7%90%D7%91%D7%99%D7%91",
+      "source_class": "Madlan project page",
+      "quote": "DUO TEL AVIV... ארלוזורוב 83 תל אביב יפו... יזם אפריקה ישראל מגורים... 2 בניינים... 50 קומות... 668 דירות"
+    },
+    "E048": {
+      "source_url": "https://sky-line.co.il/projects/duo-tlv/",
+      "source_class": "secondary tower database and forum sweep",
+      "quote": "Duo TLV... secondary tower/source sweep found unofficial tower records including Wikipedia 'Duo Tel Aviv Tower 1 | 194 / 636 | 54' and SkyscraperCity 'Duo TLV Towers | 2 x 54 fl | 200 m / 656 ft'"
+    }
+  },
+  "conflicts": {
+    "C001": {
+      "field": "building_address",
+      "conflict_type": "address variants",
+      "records": [
+        {
+          "source_url": "https://www.tel-aviv.gov.il/Transparency/DocLib3/%D7%A4%D7%A8%D7%95%D7%98%D7%95%D7%A7%D7%95%D7%9C%20%D7%94%D7%97%D7%9C%D7%98%D7%95%D7%AA%20%D7%A8%D7%A9%D7%95%D7%AA%20%D7%A8%D7%99%D7%A9%D7%95%D7%99%201-25-0172.pdf",
+          "quote": "כתובת: ארלוזורוב 85, ארלוזורוב 87, אבן גבירול 112א, אבן גבירול 118... גוש/חלקה 6213/1468"
+        },
+        {
+          "source_url": "https://www.madlan.co.il/projects/%D7%A1%D7%9E%D7%9C_%D7%93%D7%A8%D7%95%D7%9D_%D7%AA%D7%9C_%D7%90%D7%91%D7%99%D7%91",
+          "quote": "DUO TEL AVIV... ארלוזורוב 83 תל אביב יפו"
+        }
+      ],
+      "resolution": "Primary building address uses municipal licensing record; variants retained for search and QA."
+    },
+    "C002": {
+      "field": "floors",
+      "conflict_type": "50 floors versus 54 floors",
+      "records": [
+        {
+          "source_url": "https://www.duo-tlv.com/eng/residential-towers/",
+          "quote": "Rising to a monumental height of 50 stories"
+        },
+        {
+          "source_url": "https://mayafiles.tase.co.il/rpdf/1730001-1731000/P1730670-00.pdf",
+          "quote": "2 מגדלי מגורים, בני 54 קומות, מתוכן 50 קומות מגורים"
+        },
+        {
+          "source_url": "https://www.tel-aviv.gov.il/Transparency/DocLib3/%D7%A4%D7%A8%D7%95%D7%98%D7%95%D7%A7%D7%95%D7%9C%20%D7%A8%D7%A9%D7%95%D7%AA%20%D7%A8%D7%99%D7%A9%D7%95%D7%99%20%D7%9E%D7%A1%D7%A4%D7%A8%201-20-0033.pdf",
+          "quote": "2 מגדלי מגורים בני 54 קומות עם בסיס משותף"
+        }
+      ],
+      "resolution": "Do not silently choose. Use 50 as residential-story marketing shorthand, 54 as total-floor permitting/filing count."
+    },
+    "C003": {
+      "field": "total_units",
+      "conflict_type": "668 versus secondary counts",
+      "records": [
+        {
+          "source_url": "https://www.madlan.co.il/projects/%D7%A1%D7%9E%D7%9C_%D7%93%D7%A8%D7%95%D7%9D_%D7%AA%D7%9C_%D7%90%D7%91%D7%99%D7%91",
+          "quote": "668 דירות"
+        },
+        {
+          "source_url": "https://yashararch.com/projects/duo/",
+          "quote": "668 residential units"
+        },
+        {
+          "source_url": "https://www.pandoor.co.il/duo",
+          "quote": "מס' יחי' דיור: 669"
+        },
+        {
+          "source_url": "https://www.panoramatlv.co.il/projects/duo/",
+          "quote": "מספר יחידות 320"
+        },
+        {
+          "source_url": "https://www.calcalist.co.il/real-estate/article/s1j54r7it",
+          "quote": "מתוך כ-680 דירות"
+        }
+      ],
+      "resolution": "Use 668 as primary because official/filing/Madlan/architect/contractor align; keep 669, 320 and approx 680 as secondary conflicts."
+    },
+    "C004": {
+      "field": "delivery_or_completion",
+      "conflict_type": "December 2026 versus 2027",
+      "records": [
+        {
+          "source_url": "https://www.electra.co.il/אלקטרה_בילדינג/פרויקטים/מגדלי_dou_סמל_דרום",
+          "quote": "צפי לסיום: דצמבר 2026"
+        },
+        {
+          "source_url": "https://mayafiles.tase.co.il/rpdf/1730001-1731000/P1730670-00.pdf",
+          "quote": "מועד השלמה מתוכנן 2027"
+        },
+        {
+          "source_url": "https://www.ynetnews.com/real-estate/article/sjjm00yj1ml",
+          "quote": "expected to be completed in 2027"
+        }
+      ],
+      "resolution": "Report both; do not collapse to a single delivery date."
+    },
+    "C005": {
+      "field": "sold_remaining",
+      "conflict_type": "different dates and bases for sales rate or remaining units",
+      "records": [
+        {
+          "source_url": "https://mayafiles.tase.co.il/rpdf/1730001-1731000/P1730670-00.pdf",
+          "quote": "שיעור שיווק 61%... סה\"כ 149... לאחר תאריך הדוח... 5"
+        },
+        {
+          "source_url": "https://www.calcalist.co.il/market/article/gq3hvod1j",
+          "quote": "144 דירות שטרם נמכרו מתוך 510"
+        },
+        {
+          "source_url": "https://www.bizportal.co.il/realestates/news/article/832945",
+          "quote": "כ-70% מפרויקט DUO מכור"
+        },
+        {
+          "source_url": "https://www.ynetnews.com/real-estate/article/sjjm00yj1ml",
+          "quote": "about 149 apartments available, roughly 30%"
+        }
+      ],
+      "resolution": "Treat as date/basis differences, not a single live inventory number."
+    },
+    "C006": {
+      "field": "prices",
+      "conflict_type": "published price bases differ",
+      "records": [
+        {
+          "source_url": "https://www.madlan.co.il/projects/%D7%A1%D7%9E%D7%9C_%D7%93%D7%A8%D7%95%D7%9D_%D7%AA%D7%9C_%D7%90%D7%91%D7%99%D7%91",
+          "quote": "מחיר ממוצע למ״ר・65 א׳ ₪"
+        },
+        {
+          "source_url": "https://www.calcalist.co.il/market/article/gq3hvod1j",
+          "quote": "מחיר ממוצע למ\"ר 76.5 אלף שקל"
+        },
+        {
+          "source_url": "https://www.bizportal.co.il/realestates/news/article/832945",
+          "quote": "המחיר בפרויקט DUO בתל אביב הוא 75 אלף שקל"
+        },
+        {
+          "source_url": "https://en.globes.co.il/en/article-businessman-buys-5-tel-aviv-apartments-in-dou-project-1001540437",
+          "quote": "more than NIS 82,000 per square meter"
+        }
+      ],
+      "resolution": "Keep each as a labeled basis and date; no blended average."
+    },
+    "C007": {
+      "field": "underground_parking_levels",
+      "conflict_type": "5 basements versus up to 6 basement parking levels",
+      "records": [
+        {
+          "source_url": "https://www.electra.co.il/אלקטרה_בילדינג/פרויקטים/מגדלי_dou_סמל_דרום",
+          "quote": "5 קומות חניה תת קרקעיות"
+        },
+        {
+          "source_url": "https://www.tel-aviv.gov.il/Transparency/DocLib3/ועדת נכסים מספר 21 - מונגש.pdf",
+          "quote": "עד 6 קומות מרתפי חנייה"
+        },
+        {
+          "source_url": "https://www.tel-aviv.gov.il/Transparency/DocLib3/%D7%A4%D7%A8%D7%95%D7%98%D7%95%D7%A7%D7%95%D7%9C%20%D7%A8%D7%A9%D7%95%D7%AA%20%D7%A8%D7%99%D7%A9%D7%95%D7%99%20%D7%9E%D7%A1%D7%A4%D7%A8%201-20-0033.pdf",
+          "quote": "5 קומות מרתף"
+        }
+      ],
+      "resolution": "Use exact source labels; do not infer final number from old property agreement language."
+    },
+    "C008": {
+      "field": "height_m",
+      "conflict_type": "unofficial height claims and official sea-level height note",
+      "records": [
+        {
+          "source_url": "https://www.tel-aviv.gov.il/Transparency/DocLib3/%D7%A4%D7%A8%D7%95%D7%98%D7%95%D7%A7%D7%95%D7%9C%20%D7%A8%D7%A9%D7%95%D7%AA%20%D7%A8%D7%99%D7%A9%D7%95%D7%99%20%D7%9E%D7%A1%D7%A4%D7%A8%201-20-0033.pdf",
+          "quote": "תוספת עד 20 מ' לגובה... סה\"כ 220+ מ' מפני הים במקום 200+ מ' מפני הים"
+        },
+        {
+          "source_url": "https://en.wikipedia.org/wiki/List_of_tallest_buildings_in_Tel_Aviv",
+          "quote": "Duo Tel Aviv Tower 1 | 194 / 636 | 54 | 2026"
+        },
+        {
+          "source_url": "https://www.skyscrapercity.com/threads/tel-aviv-duo-tlv-towers-2-x-54-fl-200-m-656-ft-t-o.1797499/",
+          "quote": "Tel Aviv | Duo TLV Towers | 2 x 54 fl | 200 m / 656 ft | T/O"
+        }
+      ],
+      "resolution": "Do not set official height_m. Municipal figure is elevation above sea level, not building height; Wikipedia/forum claims are unofficial."
+    },
+    "C009": {
+      "field": "source_area_metrics",
+      "conflict_type": "different area bases",
+      "records": [
+        {
+          "source_url": "https://yashararch.com/projects/duo/",
+          "quote": "Area 106,000 sqm (above ground)... 47,000 sqm (underground)"
+        },
+        {
+          "source_url": "https://www.electra.co.il/אלקטרה_בילדינג/פרויקטים/מגדלי_dou_סמל_דרום",
+          "quote": "שטח: 169,000 מ\"ר"
+        },
+        {
+          "source_url": "https://mayafiles.tase.co.il/rpdf/1730001-1731000/P1730670-00.pdf",
+          "quote": "שטחים עיקריים למגורים 65,107... שטחים עיקריים למסחר 9,620... חניונים... כ-47 אלפי מ\"ר"
+        },
+        {
+          "source_url": "https://res.afi-g.com/about/Documents/2023/%D7%90%D7%A4%D7%A8%D7%99%D7%A7%D7%94%20%D7%9E%D7%92%D7%95%D7%A8%D7%99%D7%9D%20%D7%93%D7%95%D7%97%20%D7%AA%D7%A7%D7%95%D7%A4%D7%AA%D7%99%202023%20-%20%D7%A4%D7%A8%D7%98%D7%99%D7%9D%20%D7%A0%D7%95%D7%A1%D7%A4%D7%99%D7%9D.pdf",
+          "quote": "כ-100,000 מ\"ר למגורים, כ-12,000 מ\"ר שטחי מסחר וכ-40,000 מ\"ר חניון תת קרקעי"
+        }
+      ],
+      "resolution": "Area metrics are basis-dependent: gross, principal, above-ground, underground and contract scope are not interchangeable."
+    },
+    "C010": {
+      "field": "yad2_identity",
+      "conflict_type": "unrelated DUO result",
+      "records": [
+        {
+          "source_url": "https://www.yad2.co.il/yad1/project/6042",
+          "quote": "פרויקט DUO ז'בוטינסקי 10 רעננה - מרכז דרום, רעננה | צרפתי צבי ובניו... 48 דירות"
+        }
+      ],
+      "resolution": "Do not use this for DUO Tel Aviv."
+    }
+  },
+  "unknowns": {
+    "U001_sales_office_address": "No official sales-office address was found; contact forms and broker office addresses were not treated as a sales office.",
+    "U002_developer_price_list": "No official developer price list was found.",
+    "U003_official_yad2_tel_aviv_page": "No verified Yad2 project page for DUO Tel Aviv was found.",
+    "U004_exact_route_distances": "No authoritative sourced walking/driving distance table from the DUO parcel to all neighborhood spokes was found; distances were not geocoded or invented.",
+    "U005_metro": "No project-specific planned metro line/station source was found.",
+    "U006_official_typical_floor_plans": "No official typical-floor plans, apartment floor-plan PDF, or line map was found.",
+    "U007_apartments_per_floor_and_unit_lines": "No official apartments-per-floor table or line orientation scheme was found.",
+    "U008_facade_elevations": "No official facade elevation drawings were found.",
+    "U009_facade_palette": "No written facade color palette or exact material schedule was found beyond curtain walls and light roof/pergola references.",
+    "U010_official_height_m": "No official building height in meters was found; sea-level and unofficial tower-database claims are recorded as conflicts.",
+    "U011_school_distances_and_kindergartens": "Nearby school names were partially identified, but no exhaustive crawlable catchment list, kindergarten list, or distances were found.",
+    "U012_parking_storage_allocation": "No official per-unit parking or storage allocation policy was found.",
+    "U013_project_wide_mamad": "No official project-wide Mamad specification was found.",
+    "U014_unit_accessibility": "No official apartment accessibility specification was found.",
+    "U015_live_inventory_current_to_2026_07_04": "No live developer inventory feed was found. Latest public numbers are company report and media-basis snapshots.",
+    "U016_virtual_tour_3d_selector": "No virtual tour, apartment selector, or 3D public selector URL was found.",
+    "U017_site_plan_dimensions": "No dimensioned official site plan was found for exact footprint, tower separation, facade orientation degrees or massing dimensions."
+  },
+  "coverage": {
+    "as_of_date": "2026-07-04",
+    "swept_source_classes": [
+      "official DUO developer microsite in Hebrew and English",
+      "Africa Israel Residences reports via TASE/MAYA and company report PDFs",
+      "Madlan project, neighborhood and education pages",
+      "Yad2 project search, with unrelated result excluded",
+      "Globes, Calcalist, Ynet/CTech, TheMarker and Bizportal media searches",
+      "Tel Aviv municipal licensing and property committee protocols",
+      "Mavat planning search gateway, with crawl limitation noted",
+      "TABA Now secondary plan pages for TA/MK/2988A and TA/MK/2988B",
+      "Yashar Architects portfolio",
+      "Electra contractor portfolio",
+      "Pandoor supplier page",
+      "broker pages including Ronkin, PanoramaTLV and Barnes",
+      "NTA light-rail search results and ArcGIS station page snippets",
+      "Clalit and Tel Aviv municipal health references",
+      "Madlan school pages",
+      "secondary tower/forum sources including Skyline, SkyscraperCity and Wikipedia"
+    ],
+    "what_could_not_be_found_and_why": [
+      "official developer price list: not published in the scanned official pages or filings",
+      "official Yad2 DUO Tel Aviv page: search returned an unrelated DUO Ra'anana project, not the Tel Aviv project",
+      "sales-office address: official site exposes contact forms but no street address for a sales office",
+      "exact route distances and walking/driving times for every spoke: no source published a full distance table and geocoding was explicitly avoided",
+      "full school and kindergarten exhaustiveness: authoritative municipal catchment pages were not crawlable enough for a complete, distance-backed list",
+      "3D-grade floor plans and apartment line maps: official site shows apartment marketing codes and imagery but no typical-floor plans or directional line schedule",
+      "facade elevations and exact palette: only renders and high-level material references were found",
+      "official building height in meters: public sources conflict and official permit language states elevation above sea level, not building height",
+      "live inventory current to 2026-07-04: no live developer feed was found, only company report and media snapshots"
+    ],
+    "biggest_gaps_summary": "Largest gaps: no official developer price list, no official Tel Aviv Yad2 page, no official sales-office address, no official typical-floor or unit-line plans, no official facade elevations, no official height in meters, and no sourced route-distance matrix for schools, parks, beach, health and transit. These are left null rather than inferred."
+  }
+}
