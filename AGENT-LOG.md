@@ -1,5 +1,25 @@
 # AGENT-LOG - the God brain (append-only, newest on top)
 
+## 2026-07-05 (9) - v1.72.4: THE RFP DOCUMENT IS REAL (buy-flow phase 2)
+inc/rfp.php: POST nadlan/v1/rfp creates a tokenized document from SERVER-side
+project/unit facts (client only points at slug+unit, never dictates data); GET
+/rfp/<token> renders a branded printable page: masthead (ID/date/30-day validity),
+unit table, configuration pills, ADVISORS MATCHED FROM THE REAL PROFESSIONALS
+DIRECTORY by profession (designer->interior_designer/architect, lawyer->lawyer,
+mortgage->mashkanta, inspect->bedek_bait), status timeline, estimate disclaimers,
+print button. noindex, unguessable 24-char token, stored as private nadlan_rfp
+post + linked to the lead (rfp_id meta) so the owner can forward it.
+buyflow.js: the document generates WHILE the dispatch stages play; the done screen
+links it in the page language. E2E LIVE: created doc for dimri B-24 premium +
+designer + mortgage -> rendered 200 with real advisors (Dana Barak interior
+designer TLV, Shira Golan mortgage Ramat Gan). Eye-QA PASSED - the document looks
+like a bank-grade branded page. The professionals directory is now WIRED into the
+buying machine (owner's "it all has to connect" fulfilled at v1 level).
+REMAINING for #30: owner-driven status advance (stage 2/3) UI in lead inbox,
+WhatsApp pings (needs WhatsApp Business API), AI summary paragraph (openai key
+currently 401 - float to owner), buyer email copy (blocked on deliverability).
+NEXT: big catalog severe upgrade (#31).
+
 ## 2026-07-05 (8) - v1.72.3: BUY-FLOW V1 LIVE + full Cowork ingest sweep
 COWORK OUTPUT AUDIT (owner ask "check all cowork outputs"): 5 MORE interiors landed
 18:33-18:45 (rainbow penthouse, ashira 18W + 4G, dimri u2 + u4) -> eye-QA passed
