@@ -1,5 +1,24 @@
 # AGENT-LOG - the God brain (append-only, newest on top)
 
+## 2026-07-05 (6) - v1.72.1: view cone, hero/poster split, 3D badge on premium cards
+OWNER CORRECTION UNDERSTOOD + FIXED: my poster swap accidentally replaced the page
+HERO and the premium-card media with the 3D render (model_poster drives both). The
+owner generated NEW hero plates via Cowork (media 5099 rainbow-v3, 5100 ashira-v3,
+5101 dimri-v3, 5102 duo-v2). Architecture fixed: project_3d_image = marketing hero
+(page hero band + premium card media); project_model_poster = 3D render (loading
+crossfade + small 3D badge on the premium card). Set on all 16 posts, live-verified:
+hero=v3 plate, poster=3D render, 3 premium cards each with a gold-bordered 3D badge.
+VIEW CONE SHIPPED (owner ask): selecting an apartment draws a terracotta cone on the
+building pin, rotationAlignment map (turns with the terrain), pointing the apartment
+view direction; honors pre-map selections via nlpjx:map ready event. Verified live:
+dimri unit-2 (Hebrew dir "דרום מערב") -> cone drawn, bearing -135 = south-west.
+COWORK DELIVERED TODAY: 4 hero plates + more project plates (einstein x3, and the
+plate set from 7/3) + FIRST INTERIOR image (5104 interior-rainbow-tel-aviv-unit-16-w)
+-> wired into rainbow unit-16-w interior_url on HE + 4 siblings. Cowork then stalled
+on the rest of the interior batch (7 images remain) - float.
+ARTICLE WEAVING: owner unsure what it means -> before/after HTML illustration
+delivered in chat (structure only, zero word changes). Awaiting his go.
+
 ## 2026-07-05 (5) - v1.72.0 THE MAP SURGERY: one synced map beside the 3D, live-verified
 Owner gave full go ("you are responsible for the success of this project").
 SHIPPED + VERIFIED on all 4 HE pages + dimri-EN:
