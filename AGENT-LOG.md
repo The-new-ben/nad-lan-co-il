@@ -1,5 +1,40 @@
 # AGENT-LOG - the God brain (append-only, newest on top)
 
+## 2026-07-05 (3) - RICH MODELS LIVE ON ALL FOUR PROJECTS (v1.71.8 + v1.71.9)
+SHIPPED + VERIFIED LIVE (headless, screenshots to owner):
+- ashira-HE/EN/FR/RU/AR: ashira-rich.glb (stepped 4-building complex, NO sea - owner
+  correction honored), 5 hotspots aligned via floor_height 3.2, 5 facade tiles, 1 map.
+- dimri-HE + 4 siblings: dimri-rich.glb (39fl seafront tower + podium, sea on west),
+  4 hotspots, NEW facade band (tight west-elevation render, media 5090), tiles at
+  floors 12/24/36/39. Map still absent = no lat/lng (honest; geocode pass pending).
+- duo-HE: duo-rich.glb twin 50fl towers, FIRST 3D ever on this page: 5 new honest demo
+  units (A-9/21/33, B-27/45) with explicit per-tower hotspot_position, facade band
+  (south elevation showing both twins, media 5091), click-to-zoom + full spec panel
+  verified. No language siblings yet (no translations) - queue.
+- rainbow: kept its authored model.glb (owner-approved). ADDED the missing facade band
+  (rainbow-facade.jpg + 6 tiles incl. boutique) - it violated law #1 (never without
+  facade) until today. Explicit authored hotspot_position now honored -> boutique
+  hotspot anchors to the boutique building instead of floating.
+ENGINE FIXES (v1.71.8/9):
+- unitPos() honors explicit hotspot_position/hotspot_normal (offset twin towers,
+  boutique buildings); floor x floor_height formula stays as fallback.
+- FACADE RTL MIRROR BUG found in live QA: tiles used inset-inline-start, the facade
+  photo never mirrors -> DUO A-units sat on tower B on Hebrew/Arabic pages. Fixed to
+  physical left/top; all four projects' stage coords re-authored physical-from-left.
+- fly-to-unit radius scales with tower height (150m fallback flew inside DUO's crown).
+- HEALTH ENDPOINT WAS LYING: version hardcoded '1.69.67' since then; every deploy
+  verification against it was theater. Now reads NADLAN_CONFIG_VERSION. Deploy
+  verification law: verify by fetching a shipped file (byte size), not just health.
+DEPLOY HAZARD LOG: a STALE cherry-pick sequencer from a dead session blocked the
+  squash-dance (git cherry-pick --quit cleared it). Code Snippets DELETE returns 204
+  but snippet persists until deactivated first - always POST active:false then DELETE.
+WORRIES/FLOATS (told to owner in chat this turn):
+- ~60 stale tmp deploy snippets (ids 5-65) still registered in Code Snippets - residue;
+  should be swept in a maintenance pass.
+- dimri + duo have no map (no lat/lng). DUO has no language siblings. Interior stills
+  prompt for Cowork delivered in chat. Zoom-to-unit on 150m towers is close-up of the
+  crown area - improved with height-scaled radius, could get per-unit orbit tuning.
+
 ## 2026-07-05 (2) - rich-model factory built; v1 candidates NOT deployed (under standard)
 - scripts/generate-rich-building.py: parametric Rainbow-style factory (glass core,
   floor slabs, balcony rhythm, fins, crown+gold, podium, honest small site, sea ONLY
