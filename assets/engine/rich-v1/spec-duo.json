@@ -1,0 +1,5 @@
+{"floor_h":3.1,"seafront":false,"site":[180,140],
+ "buildings":[
+  {"w":30,"d":30,"floors":50,"x":-26,"z":0,"balconies":"WES","taper":0.05,"podium":3},
+  {"w":30,"d":30,"floors":50,"x":26,"z":8,"balconies":"WES","taper":0.05}],
+ "context":[[80,-50,24,18,40],[-78,52,22,16,32]]}

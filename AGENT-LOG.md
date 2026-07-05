@@ -1,5 +1,22 @@
 # AGENT-LOG - the God brain (append-only, newest on top)
 
+## 2026-07-05 (2) - rich-model factory built; v1 candidates NOT deployed (under standard)
+- scripts/generate-rich-building.py: parametric Rainbow-style factory (glass core,
+  floor slabs, balcony rhythm, fins, crown+gold, podium, honest small site, sea ONLY
+  when seafront:true). Specs from real compositions: Ashira 8/8/16/35 NO SEA (owner
+  correction honored), Dimri 39fl+podium seafront, DUO 2x50fl (dossier).
+- v1 outputs in assets/engine/rich-v1/ (5.8k/4.8k/12k tris). EYE-QA VERDICT: clean +
+  correct composition but NOT Rainbow-grade yet: balconies too subtle, palette too
+  pale, site too bare. Per owner law (never under standard, walk slowly) NOT deployed;
+  live pages untouched. Next: beauty pass (deeper balconies w/ contrast, warmer stone,
+  saturated teal glass, amenity court, trees, ground texture) then swap + hotspot
+  alignment + facade tiles + sibling sync + plugin release in ONE reviewed step.
+- Owner directives logged: rich model on ALL projects; ONE map doctrine (rebuild as
+  single mobile-first layered map: facilities/schools/paths/area-info for foreigners);
+  PROJECT PAGE STANDARD to machine-enforce band order + assets (design next turn:
+  STANDARD.md + /nadlan/v1/project-standard compliance endpoint); interior = generated
+  stills v1; premium cards mini-3D + near-me + big-catalog SEO cleanup approved queue.
+
 ## 2026-07-05 - MAX GOD MODE: #2 deep audit + fixes + DUO live
 COWORK INGESTED: DUO dossier (8,605w) + DUO Hebrew article (4,531w, 0 dashes) ->
   PUBLISHED into live /projects/duo-tel-aviv/ (4,656w rendered). Ashira dossier BLOCKED
