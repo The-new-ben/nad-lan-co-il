@@ -1,15 +1,15 @@
 {
   "name": "NadLan Config",
   "slug": "nadlan-config",
-  "version": "1.71.7",
+  "version": "1.71.8",
   "author": "nad-lan.co.il",
   "homepage": "https://nad-lan.co.il",
   "requires": "6.7",
   "tested": "7.0",
   "requires_php": "7.4",
-  "download_url": "https://raw.githubusercontent.com/The-new-ben/nad-lan-co-il/main/plugin-dist/nadlan-config-1.71.7.zip",
-  "last_updated": "2026-07-04 22:00:00",
+  "download_url": "https://raw.githubusercontent.com/The-new-ben/nad-lan-co-il/main/plugin-dist/nadlan-config-1.71.8.zip",
+  "last_updated": "2026-07-05 09:00:00",
   "sections": {
-    "changelog": "<h4>1.71.7</h4><ul><li>Premium catalog top-tier: SVG facility icons (pool/spa/gym/cinema/concierge/lobby/mamad...), nearby filters (sea/park/marina), developer filter, sorting, active-filter pills, no-results state, card hover.</li></ul>"
+    "changelog": "<h4>1.71.8</h4><ul><li>Rich 3D models shipped for Ashira, Dimri Yama and DUO (Rainbow-grade parametric GLBs: balcony rhythm, glass balustrades, pool court, trees; sea only where the site is truly seafront).</li><li>Showroom engine: explicit per-unit hotspot_position/hotspot_normal now honored (offset twin towers and boutique buildings get correctly anchored hotspots); floor+dir formula stays as fallback.</li></ul>"
   }
 }

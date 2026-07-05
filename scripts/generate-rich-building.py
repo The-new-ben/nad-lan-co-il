@@ -17,15 +17,19 @@ import numpy as np
 import trimesh
 from trimesh.visual.material import PBRMaterial
 
-CREAM  = [235, 224, 194, 255]
-STONE  = [255, 240, 194, 255]
-GLASS  = [158, 220, 235, 185]
-GLASS2 = [120, 190, 215, 205]
-GOLD   = [212, 175, 108, 255]
-PAVE   = [226, 220, 208, 255]
-GREEN  = [140, 165, 120, 255]
-CTX    = [242, 238, 228, 160]
-WATER  = [122, 180, 205, 220]
+CREAM  = [244, 233, 204, 255]   # warm slab cream
+STONE  = [226, 205, 160, 255]   # warmer stone, real contrast vs slabs
+GLASS  = [96, 178, 205, 210]    # saturated teal
+GLASS2 = [78, 156, 188, 215]
+BALG   = [168, 220, 238, 130]   # balustrade glass
+GOLD   = [196, 156, 84, 255]
+PAVE   = [214, 204, 184, 255]
+PATH   = [238, 230, 214, 255]
+GREEN  = [124, 152, 104, 255]
+TRUNK  = [122, 96, 66, 255]
+CTX    = [238, 231, 216, 170]
+WATER  = [96, 168, 198, 225]
+POOL   = [92, 186, 212, 235]
 
 def box(scene, name, cx, cy, cz, w, h, d, rgba):
     m = trimesh.creation.box(extents=[w, h, d])
@@ -40,10 +44,29 @@ def build(spec, out):
     S = trimesh.Scene()
     fh = spec.get('floor_h', 3.2)
     sw, sd = spec.get('site', [160, 130])
-    # site plate + paths + green
+    # site plate + paths + green + court
     box(S, 'site', 0, -0.6, 0, sw, 1.2, sd, PAVE)
-    box(S, 'green1', -sw*0.28, 0.05, sd*0.3, sw*0.3, 0.15, sd*0.25, GREEN)
-    box(S, 'green2', sw*0.3, 0.05, -sd*0.28, sw*0.22, 0.15, sd*0.2, GREEN)
+    box(S, 'pathx', 0, 0.02, 0, sw*0.96, 0.1, 6, PATH)
+    box(S, 'pathz', 0, 0.02, 0, 6, 0.1, sd*0.96, PATH)
+    box(S, 'green1', -sw*0.28, 0.1, sd*0.3, sw*0.3, 0.3, sd*0.25, GREEN)
+    box(S, 'green2', sw*0.3, 0.1, -sd*0.28, sw*0.22, 0.3, sd*0.2, GREEN)
+    cx_, cz_ = spec.get('court', [sw*0.18, sd*0.22])[:2] if isinstance(spec.get('court'), list) else (sw*0.18, sd*0.22)
+    if spec.get('court', True):
+        box(S, 'courtdeck', cx_, 0.06, cz_, 34, 0.22, 22, [235, 222, 196, 255])
+        box(S, 'pool', cx_, 0.2, cz_, 24, 0.3, 12, POOL)
+    # trees: clustered cones on the green
+    import itertools
+    ti = 0
+    for gx, gz in [(-sw*0.28, sd*0.3), (sw*0.3, -sd*0.28), (-sw*0.34, -sd*0.18), (sw*0.2, sd*0.34)]:
+        for dx, dz in [(0,0),(7,4),(-6,5),(4,-6)]:
+            t = trimesh.creation.cone(radius=2.6, height=6.5, sections=7)
+            t.apply_translation([gx+dx, 3.2+2.2, gz+dz])
+            t.visual = trimesh.visual.TextureVisuals(material=PBRMaterial(baseColorFactor=GREEN, roughnessFactor=0.9))
+            S.add_geometry(t, node_name=f'tree{ti}')
+            tr = trimesh.creation.cylinder(radius=0.45, height=2.4, sections=6)
+            tr.apply_translation([gx+dx, 1.2, gz+dz])
+            tr.visual = trimesh.visual.TextureVisuals(material=PBRMaterial(baseColorFactor=TRUNK, roughnessFactor=0.9))
+            S.add_geometry(tr, node_name=f'trunk{ti}'); ti += 1
     if spec.get('seafront'):
         box(S, 'sea', -(sw/2 + 45), -0.9, 0, 90, 0.8, sd + 60, WATER)
         box(S, 'beach', -(sw/2 + 4), -0.35, 0, 12, 0.7, sd + 30, [240, 226, 190, 255])
@@ -71,17 +94,22 @@ def build(spec, out):
             y = f * fh + fh*0.45
             t = 1 - b.get('taper', 0) * (f / max(fl, 1))
             wt, dt = w*t, d*t
+            shift = (f % 2) * (wt/segn) * 0.5   # alternating rhythm
             for s in sides:
                 for k in range(segn):
-                    off = (k - (segn-1)/2) * (wt/segn)
-                    if s == 'W':
-                        box(S, f'b{bi}f{f}W{k}', x0 - wt/2 - 0.8, y, z0 + off*(dt/wt), 1.6, 0.18, dt/segn*0.72, STONE)
-                    elif s == 'E':
-                        box(S, f'b{bi}f{f}E{k}', x0 + wt/2 + 0.8, y, z0 + off*(dt/wt), 1.6, 0.18, dt/segn*0.72, STONE)
-                    elif s == 'S':
-                        box(S, f'b{bi}f{f}S{k}', x0 + off, y, z0 + dt/2 + 0.8, wt/segn*0.72, 0.18, 1.6, STONE)
-                    elif s == 'N':
-                        box(S, f'b{bi}f{f}N{k}', x0 + off, y, z0 - dt/2 - 0.8, wt/segn*0.72, 0.18, 1.6, STONE)
+                    off = (k - (segn-1)/2) * (wt/segn) + shift
+                    seg = dt/segn*0.78
+                    if s in 'WE':
+                        sx = -1 if s == 'W' else 1
+                        bx = x0 + sx*(wt/2 + 1.1)
+                        box(S, f'b{bi}f{f}{s}{k}', bx, y, z0 + off*(dt/wt), 2.2, 0.22, seg, STONE)
+                        box(S, f'b{bi}g{f}{s}{k}', bx + sx*0.95, y + 0.62, z0 + off*(dt/wt), 0.1, 1.05, seg, BALG)
+                    else:
+                        sz = 1 if s == 'S' else -1
+                        bz = z0 + sz*(dt/2 + 1.1)
+                        segw = wt/segn*0.78
+                        box(S, f'b{bi}f{f}{s}{k}', x0 + off, y, bz, segw, 0.22, 2.2, STONE)
+                        box(S, f'b{bi}g{f}{s}{k}', x0 + off, y + 0.62, bz + sz*0.95, segw, 1.05, 0.1, BALG)
         # corner fins
         for sx in (-1, 1):
             for sz in (-1, 1):
