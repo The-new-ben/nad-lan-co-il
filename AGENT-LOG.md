@@ -1,5 +1,27 @@
 # AGENT-LOG - the God brain (append-only, newest on top)
 
+## 2026-07-05 (10) - MEGA GUIDE PUBLISHED (HE+EN, 5,000+ words each, foreign-investor SEO)
+Owner asked for an aveliving-style "elevated apartment living" guide, mega-length,
+Israel-adapted, foreign buyer/investor intent, full SEO/AEO with schema+Yoast,
+internal links, no cited sources, win competitors.
+PUBLISHED LIVE (verified, cache-busted):
+- EN post 5117 /luxury-apartments-israel-guide/ (5,615 rendered words)
+- HE post 5118 /luxury-apartments-israel-guide-he/ (5,052 words)
+Both: FAQPage JSON-LD live, hreflang he/en/x-default reciprocal, Yoast SEO title +
+metadesc + focus kw + cornerstone flag, canonical, EN lang=en-US (overrode he-IL
+default via guide-schema filter), zero long dashes, 13-15 H2 + 23-30 H3, 21 internal
+links each (projects, /premium/, calculators, existing foreign-buyer posts), 2
+tables, hero image (Cowork interiors 5109/5113). Content: real facts from research +
+existing site data (tax 8/10% at 6,055,070; 50% LTV non-resident; Sale Law arvut
+bankit; Sde Dov 1,300 dunam/16,000 homes; TLV yields ~3%; developer lines). Prices
+estimate-labeled, per-unit pricing "on developer proposal" (never invented).
+NEW MODULE v1.72.5 guide-schema.php: FAQPage + hreflang + lang from post meta,
+reusable for every future guide. Fact base + article HTML saved to
+handoff/research/2026-07-05-elevated-living/.
+FLOAT: posts landed in category "Uncategorized" - create a "Guides/מדריכים" category
+and reassign for cleaner byline + archive SEO. EN byline shows Hebrew author name.
+NEXT: big catalog #31 (still pending), or reassign guide category first.
+
 ## 2026-07-05 (9) - v1.72.4: THE RFP DOCUMENT IS REAL (buy-flow phase 2)
 inc/rfp.php: POST nadlan/v1/rfp creates a tokenized document from SERVER-side
 project/unit facts (client only points at slug+unit, never dictates data); GET
