@@ -1,5 +1,29 @@
 # AGENT-LOG - the God brain (append-only, newest on top)
 
+## 2026-07-05 (8) - v1.72.3: BUY-FLOW V1 LIVE + full Cowork ingest sweep
+COWORK OUTPUT AUDIT (owner ask "check all cowork outputs"): 5 MORE interiors landed
+18:33-18:45 (rainbow penthouse, ashira 18W + 4G, dimri u2 + u4) -> eye-QA passed
+(dimri penthouse suite exactly per batch brief) -> wired into their units on all 15
+posts. 6/8 interiors done; missing: duo-a-21, duo-b-45 (float for Cowork re-run).
+ZOHI dossier saved to data/projects/dossiers/zohi-sde-dov.dossier.json + merged into
+the project record (developer: Mivne, Levinstein and Metropolis; has article
+material + units + prices). Session log archived to handoff/cowork-logs/. Both
+AGENT-INBOX drafts DELETED per protocol - inbox is clean.
+BUY-FLOW V1 SHIPPED (buyflow.js, per research spec): gold "בנו לי הצעה" CTA on every
+apartment panel -> finish level (no invented prices, "exact pricing in the
+developer proposal") -> add-ons: designer/lawyer/mortgage/inspection/furniture,
+never pre-checked, skippable -> 2 fields only (name + WhatsApp) + explicit consent
+-> staged dispatch animation with HONEST wording ("sent to the NadLan team to
+coordinate with the developer" - we do not claim direct contractor delivery yet)
+-> what-happens-next timeline. Structured rfp-v1 JSON posted to nadlan/v1/lead.
+5 languages. LIVE E2E DRIVEN headless: unit selected -> configure -> submit ->
+POST ok -> dispatch stages ticked green on screen. Zero page errors.
+NEXT PHASES (task #30): AI RFP document generation (ai-provider exists), status
+timeline page, WhatsApp pings, professionals upgrade feeding advisor cards.
+STILL OPEN: big catalog severe upgrade (#31), ZOHI article (dossier ready, article
+must pass the 3,000-word gate), DUO translations + 2 DUO interiors, nlpjx price
+band i18n, email deliverability (ack leg), Site Kit connection (owner, 2 min).
+
 ## 2026-07-05 (7) - v1.72.2: WEAVER LIVE + default interiors + two site-wide SEO bugs killed
 WEAVER (owner go): article splits at its own chapter boundaries into numbered gold
 frames + asset thumbs + jump-TOC pills. Content law IN CODE: every node survives
