@@ -292,7 +292,14 @@
   function stat(k, v) { return '<div class="nl-stat"><div class="k">' + esc(k) + '</div><div class="v">' + esc(v) + "</div></div>"; }
   function tabPane(u) {
     if (state.tab === "plan") return u.plan ? '<img src="' + esc(u.plan) + '" alt="' + esc(t("tab_plan")) + '">' : "<p>" + esc(t("plan_coming")) + "</p>";
-    if (state.tab === "view") return u.interior_url ? '<img src="' + esc(u.interior_url) + '" alt="">' : "<p>" + esc(t("view_coming")) + "</p>";
+    if (state.tab === "view") {
+      /* per-unit interior wins; else the project's default interior with an
+         honest "generic illustration" label - an empty tab sells nothing. */
+      if (u.interior_url) return '<img src="' + esc(u.interior_url) + '" alt="">';
+      var di = project().default_interior;
+      if (di) return '<div class="nl-defint"><img src="' + esc(di) + '" alt=""><span class="nl-defint__note">' + esc(t("interior_generic_note")) + "</span></div>";
+      return "<p>" + esc(t("view_coming")) + "</p>";
+    }
     var tour = safeHttpUrl(u.tour_url || project().tour_url);
     return tour ? '<a class="nl-btn nl-btn--gold" href="' + esc(tour) + '" target="_blank" rel="noopener">' + esc(t("tour_open")) + "</a>" : "<p>" + esc(t("tour_coming")) + "</p>";
   }

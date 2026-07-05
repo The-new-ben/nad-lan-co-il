@@ -57,3 +57,15 @@
 @media (max-width:600px){
   .nadlan-project-article{ font-size:17px;line-height:1.8; }
 }
+
+/* ---- the article weaver: chapter frames + jump TOC (same words, magazine air) ---- */
+.nadlan-project-article .nlw-toc{display:flex;gap:7px;flex-wrap:wrap;margin:22px 0 26px;padding:14px;border:1px solid var(--hairline,#E2DCD0);border-radius:12px;background:var(--band,#F3EEE3)}
+.nadlan-project-article .nlw-toc a{font-size:12.5px;font-weight:600;color:var(--ink,#1B1A17);text-decoration:none;border:1px solid var(--hairline,#E2DCD0);background:#fff;border-radius:999px;padding:7px 13px;transition:border-color .2s,color .2s}
+.nadlan-project-article .nlw-toc a:hover{border-color:var(--gold,#9C7A3C);color:var(--gold,#9C7A3C)}
+.nadlan-project-article .nlw-ch{margin:0 0 34px;scroll-margin-top:96px}
+.nadlan-project-article .nlw-ch__head{display:flex;align-items:center;gap:12px;margin:0 0 10px}
+.nadlan-project-article .nlw-ch__n{font-size:11px;font-weight:700;letter-spacing:.6px;color:var(--gold,#9C7A3C);text-transform:uppercase;white-space:nowrap}
+.nadlan-project-article .nlw-ch__rule{flex:1;height:1px;background:var(--hairline,#E2DCD0)}
+.nadlan-project-article .nlw-ch__thumb{width:74px;height:50px;border-radius:8px;background:var(--band,#F3EEE3) center/cover no-repeat;border:1px solid var(--hairline,#E2DCD0);flex-shrink:0}
+.nadlan-project-article .nlw-ch>h2:first-of-type{margin-top:2px}
+@media(max-width:640px){.nadlan-project-article .nlw-ch__thumb{width:58px;height:40px}}

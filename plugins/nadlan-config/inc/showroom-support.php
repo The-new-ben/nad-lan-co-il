@@ -589,6 +589,7 @@ if ( ! function_exists( 'nadlan_p3d_showroom_fields' ) ) {
 			'project_model_glb'             => 'esc_url_raw',
 			'project_model_usdz'            => 'esc_url_raw',
 			'project_model_poster'          => 'esc_url_raw',
+			'project_default_interior'      => 'esc_url_raw',
 			'project_3d_camera_lock'        => 'nadlan_p3d_sanitize_camera_lock',
 			'project_3d_camera_min_polar'   => 'nadlan_p3d_sanitize_degree',
 			'project_3d_camera_max_polar'   => 'nadlan_p3d_sanitize_degree',

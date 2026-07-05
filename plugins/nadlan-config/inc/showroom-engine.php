@@ -131,6 +131,8 @@ if ( ! function_exists( 'nadlan_showroom_engine_build_project' ) ) {
 			// hero_image (project_3d_image, "opening image") is the marketing hero;
 			// model_poster stays the 3D loading frame so the crossfade is seamless.
 			'hero_image'     => esc_url_raw( (string) get_post_meta( $id, 'project_3d_image', true ) ),
+			// generic interior shown (honestly labeled) on units without their own
+			'default_interior' => esc_url_raw( (string) get_post_meta( $id, 'project_default_interior', true ) ),
 			'facade_image'   => $facade,
 			'facade_concept_image' => $facade === '' ? $concept_image : '',
 			'facade_is_concept' => $facade === '',
@@ -499,8 +501,59 @@ add_filter( 'the_content', function ( $content ) {
 	}
 	$engine = nadlan_showroom_engine_shortcode( array( 'page' => 'project', 'project' => '', 'id' => '' ) );
 	// Wrap the article so editorial.css can style it (cream/gold system).
-	return $engine . '<div class="nadlan-project-article nadlan-guide">' . $article . '</div>';
+	return $engine . '<div class="nadlan-project-article nadlan-guide">' . nadlan_showroom_engine_weave( $article, $pid ) . '</div>';
 }, 8 );
+
+if ( ! function_exists( 'nadlan_showroom_engine_weave' ) ) {
+	/**
+	 * The article weaver: same words, magazine packaging. Splits the article at its
+	 * existing chapter boundaries (nlv2-section blocks when present, else <h2>),
+	 * then adds a jump TOC and a numbered frame per chapter.
+	 * CONTENT LAW: nothing is removed or rewritten - every original node survives
+	 * verbatim inside its chapter frame. Under 3 chapters -> returned untouched.
+	 */
+	function nadlan_showroom_engine_weave( $article, $pid ) {
+		$by_section = preg_match_all( '#<section\b[^>]*class="[^"]*nlv2-section[^"]*"#i', $article ) >= 3;
+		$parts = $by_section
+			? preg_split( '/(?=<section\b[^>]*class="[^"]*nlv2-section)/i', $article )
+			: preg_split( '/(?=<h2\b)/i', $article );
+		if ( ! is_array( $parts ) || count( $parts ) < 4 ) { return $article; }
+		$lang = function_exists( 'nadlan_project_self_lang' ) ? nadlan_project_self_lang( $pid ) : 'he';
+		$L = array(
+			'he' => array( 'toc' => 'קפיצה לפרק', 'ch' => 'פרק' ),
+			'en' => array( 'toc' => 'Jump to chapter', 'ch' => 'Chapter' ),
+			'fr' => array( 'toc' => 'Aller au chapitre', 'ch' => 'Chapitre' ),
+			'ru' => array( 'toc' => 'К главе', 'ch' => 'Глава' ),
+			'ar' => array( 'toc' => 'انتقال إلى الفصل', 'ch' => 'فصل' ),
+		);
+		$T = isset( $L[ $lang ] ) ? $L[ $lang ] : $L['he'];
+		$prelude = array_shift( $parts );
+		// chapter thumbs come only from assets the project already owns
+		$imgs = array();
+		foreach ( array( 'project_3d_image', 'project_model_poster' ) as $k ) {
+			$u = esc_url( (string) get_post_meta( $pid, $k, true ) );
+			if ( $u !== '' ) { $imgs[] = $u; }
+		}
+		$fac = json_decode( (string) get_post_meta( $pid, 'project_3d_facade_images', true ), true );
+		if ( is_array( $fac ) && ! empty( $fac[0]['src'] ) ) { $imgs[] = esc_url( (string) $fac[0]['src'] ); }
+		$toc = '';
+		$body = '';
+		$n = 0;
+		foreach ( $parts as $chunk ) {
+			$n++;
+			$title = '';
+			if ( preg_match( '#<h2\b[^>]*>(.*?)</h2>#is', $chunk, $hm ) ) {
+				$title = trim( wp_strip_all_tags( $hm[1] ) );
+			}
+			$short = function_exists( 'mb_strimwidth' ) ? mb_strimwidth( $title, 0, 48, '..' ) : $title;
+			$toc  .= '<a href="#nlw-ch-' . $n . '">' . esc_html( $short !== '' ? $short : $T['ch'] . ' ' . $n ) . '</a>';
+			$thumb = isset( $imgs[ $n - 1 ] ) ? '<span class="nlw-ch__thumb" style="background-image:url(' . $imgs[ $n - 1 ] . ')" aria-hidden="true"></span>' : '';
+			$body .= '<section class="nlw-ch" id="nlw-ch-' . $n . '"><div class="nlw-ch__head"><span class="nlw-ch__n">' . esc_html( $T['ch'] . ' ' . $n ) . '</span><span class="nlw-ch__rule"></span>' . $thumb . '</div>' . $chunk . '</section>';
+		}
+		$nav = '<nav class="nlw-toc" aria-label="' . esc_attr( $T['toc'] ) . '">' . $toc . '</nav>';
+		return $prelude . $nav . $body;
+	}
+}
 
 /* hreflang: emit the reciprocal language set so each sibling post is crawlable and
    Google serves the right language. Only for siblings that exist and are published. */

@@ -84,6 +84,7 @@
     tab_plan: "תכנית", tab_view: "מבט", tab_tour: "סיור",
     plan_coming: "תכנית הדירה תוצג לאחר קבלת תוכנית מכר מאושרת.",
     view_coming: "מבט מהדירה יוצג לאחר אימות מיקום מול היזם.",
+    interior_generic_note: "הדמיית פנים כללית להמחשה בלבד, טרם התקבלו תוכניות מהיזם",
     tour_coming: "סיור פנים יוצג כאשר יתקבל קישור מאושר.",
     tour_title: "סיור פנים", tour_open: "פתיחת סיור וירטואלי", tour_open_pano: "פתיחת סיור 360", tour_lazy_hint: "הסיור נטען בלחיצה כדי לשמור על מהירות העמוד.", tour_pending: "סיור פנים יתווסף עם קבלת תמונות 360 או קישור מאושר מהיזם.",
     btn_inquire: "מעניין אותי", btn_save: "שמירה", btn_saved: "נשמר", btn_compare: "להשוואה",
@@ -216,6 +217,7 @@
     tab_plan: "Plan", tab_view: "View", tab_tour: "Tour",
     plan_coming: "The floor plan will appear once an approved sales plan is provided.",
     view_coming: "The view from the apartment will appear after location is verified.",
+    interior_generic_note: "Generic interior visualization for illustration only, developer plans pending",
     tour_coming: "An interior tour will appear once an approved link is provided.",
     tour_title: "Interior tour", tour_open: "Open virtual tour", tour_open_pano: "Open 360 tour", tour_lazy_hint: "The tour loads on click to keep the page fast.", tour_pending: "An interior tour will appear once 360 photos or an approved link are provided.",
     btn_inquire: "I'm interested", btn_save: "Save", btn_saved: "Saved", btn_compare: "Compare",
@@ -289,6 +291,9 @@
   AR.brand = "نادلان"; AR.brand_sub = "معرض المشاريع";
   RU.brand_sub = "Витрина проектов";
   FR.brand_sub = "Vitrine des projets";
+  FR.interior_generic_note = "Visualisation interieure generique, a titre indicatif, plans du promoteur en attente";
+  RU.interior_generic_note = "Типовая визуализация интерьера, только для иллюстрации, планы застройщика ожидаются";
+  AR.interior_generic_note = "تصور داخلي عام للتوضيح فقط، بانتظار مخططات المطور";
 
   window.NADLAN_I18N = {
     langs: { he: HE, en: EN, fr: FR, ru: RU, ar: AR },
