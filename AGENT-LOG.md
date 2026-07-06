@@ -1,5 +1,27 @@
 # AGENT-LOG - the God brain (append-only, newest on top)
 
+## 2026-07-06 (8) - v1.72.12: THE DEFAULT WALK (owner law: default, not fallback)
+OWNER: every page must have the walk-inside/360 experience working with a
+DEFAULT standard apartment + building set; "tour pending" dead-ends read as
+"we are not working". Cowork (owner-driven) is uploading standard-default-*
+media now (5125 living-room, 5126 kitchen, 5127 master-bedroom, 5128
+second-bedroom, 5129 bathroom at build time; entry-hall/balcony/exterior/
+street-entrance/lobby/stairwell/elevator incoming).
+SHIPPED: page-level interior-tour section now renders the DEFAULT WALK when no
+developer tour/panoramas exist: first-person step-through viewer (16:10 stage,
+drag pans the gaze +-9% with scale 1.12 headroom, walk transition between
+spaces, prev/next arrows, door chips, keyboard arrows RTL-aware, preloading).
+SELF-MAINTAINING FEED: nadlan_showroom_default_tour() scans media titled
+standard-default-* (1h transient, purged on add_attachment), canonical order
+building -> apartment (exterior, street-entrance, entrance, lobby, stairwell,
+elevator, entry-hall, living-room, kitchen, master-bedroom, second-bedroom,
+bathroom, balcony), ships in the engine payload as default_tour. New uploads
+appear automatically - zero manual wiring per image.
+HONESTY: tag on the stage "standard sample apartment - illustration, the
+developer's dedicated tour replaces it" x5 langs; dt_* space names x5 langs.
+Priority chain per project: dedicated tour_url > 360 panoramas > DEFAULT WALK >
+pending text (now nearly unreachable).
+
 ## 2026-07-06 (7) - v1.72.11: the view tab IS the window (owner intent clarified)
 OWNER: mvt/מבט must mean STANDING AT THE WINDOW seeing the real world - not an
 interior picture. Floor 50 sees one thing, floor 1 another; buyer must know if
