@@ -630,6 +630,10 @@ if ( ! function_exists( 'nadlan_dir_project_query' ) ) {
 		$args = array(
 			'post_type' => 'nadlan_project', 'post_status' => 'publish',
 			'posts_per_page' => $per, 'paged' => max( 1, (int) ( $p['paged'] ?? 1 ) ),
+			// Language siblings (-en/-fr/-ru/-ar) are hreflang alternates of their
+			// base project, NEVER catalog entries: as cards they read as garbled
+			// mixed-language duplicates (owner audit 2026-07-05).
+			'nadlan_no_lang_siblings' => true,
 		);
 		$mq = array( 'relation' => 'AND' );
 		if ( ! empty( $p['city'] ) ) {
@@ -652,6 +656,15 @@ if ( ! function_exists( 'nadlan_dir_project_query' ) ) {
 		return new WP_Query( $args );
 	}
 }
+
+/* Exclude hreflang language siblings from any query that opts in. */
+add_filter( 'posts_where', function ( $where, $q ) {
+	if ( $q->get( 'nadlan_no_lang_siblings' ) ) {
+		global $wpdb;
+		$where .= " AND {$wpdb->posts}.post_name NOT REGEXP '-(en|fr|ru|ar)$'";
+	}
+	return $where;
+}, 10, 2 );
 
 if ( ! function_exists( 'nadlan_concept_asset_url' ) ) {
 	function nadlan_concept_asset_url( $file ) {
@@ -721,11 +734,11 @@ if ( ! function_exists( 'nadlan_dir_project_card' ) ) {
 	<div class="nldc-media<?php echo $is_real_photo ? ' has-real-photo' : ' has-concept-art'; ?>">
 		<img src="<?php echo esc_url( $photo_url ); ?>" alt="" loading="lazy" decoding="async">
 		<?php if ( $featured ) : ?><span class="nldcp-badge">מקודם</span><?php endif; ?>
-		<span class="nldcp-type"><?php echo esc_html( $pm['label'] ); ?></span>
+		<?php if ( $pm['label'] !== 'אחר' ) : /* "other" is a machine fallback, not a badge a buyer should read */ ?><span class="nldcp-type"><?php echo esc_html( $pm['label'] ); ?></span><?php endif; ?>
 	</div>
 	<div class="nldcp-body">
 		<div class="nldcp-head">
-			<h3 class="nldcp-name"><?php echo esc_html( get_the_title( $id ) ); ?></h3>
+			<h3 class="nldcp-name" dir="auto"><?php echo esc_html( get_the_title( $id ) ); ?></h3>
 			<?php if ( $city ) : ?><span class="nldcp-city"><?php echo esc_html( $city ); ?></span><?php endif; ?>
 		</div>
 		<?php if ( $stats ) : ?>
@@ -755,20 +768,20 @@ if ( ! function_exists( 'nadlan_dir_project_cards_html' ) ) {
 
 if ( ! function_exists( 'nadlan_dir_project_facets' ) ) {
 	function nadlan_dir_project_facets() {
-		$k = 'nadlan_dir_projfacets_v1';
+		$k = 'nadlan_dir_projfacets_v2';
 		$c = get_transient( $k );
 		if ( is_array( $c ) ) { return $c; }
 		global $wpdb;
-		$types  = $wpdb->get_results( "SELECT pm.meta_value v, COUNT(*) n FROM {$wpdb->postmeta} pm INNER JOIN {$wpdb->posts} p ON p.ID=pm.post_id WHERE pm.meta_key='project_type' AND pm.meta_value<>'' AND p.post_type='nadlan_project' AND p.post_status='publish' GROUP BY pm.meta_value", ARRAY_A );
-		$cities = $wpdb->get_results( "SELECT pm.meta_value v, COUNT(*) n FROM {$wpdb->postmeta} pm INNER JOIN {$wpdb->posts} p ON p.ID=pm.post_id WHERE pm.meta_key='city' AND pm.meta_value<>'' AND p.post_type='nadlan_project' AND p.post_status='publish' GROUP BY pm.meta_value ORDER BY n DESC LIMIT 18", ARRAY_A );
-		$out = array( 'types' => array(), 'cities' => array(), 'total' => (int) wp_count_posts( 'nadlan_project' )->publish );
+		$types  = $wpdb->get_results( "SELECT pm.meta_value v, COUNT(*) n FROM {$wpdb->postmeta} pm INNER JOIN {$wpdb->posts} p ON p.ID=pm.post_id WHERE pm.meta_key='project_type' AND pm.meta_value<>'' AND p.post_type='nadlan_project' AND p.post_status='publish' AND p.post_name NOT REGEXP '-(en|fr|ru|ar)$' GROUP BY pm.meta_value", ARRAY_A );
+		$cities = $wpdb->get_results( "SELECT pm.meta_value v, COUNT(*) n FROM {$wpdb->postmeta} pm INNER JOIN {$wpdb->posts} p ON p.ID=pm.post_id WHERE pm.meta_key='city' AND pm.meta_value<>'' AND p.post_type='nadlan_project' AND p.post_status='publish' AND p.post_name NOT REGEXP '-(en|fr|ru|ar)$' GROUP BY pm.meta_value ORDER BY n DESC LIMIT 18", ARRAY_A );
+		$out = array( 'types' => array(), 'cities' => array(), 'total' => (int) $wpdb->get_var( "SELECT COUNT(*) FROM {$wpdb->posts} WHERE post_type='nadlan_project' AND post_status='publish' AND post_name NOT REGEXP '-(en|fr|ru|ar)$'" ) );
 		foreach ( (array) $types as $r )  { $out['types'][ $r['v'] ] = (int) $r['n']; }
 		foreach ( (array) $cities as $r ) { $out['cities'][] = array( 'name' => nadlan_meta_norm( $r['v'] ), 'n' => (int) $r['n'] ); }
 		set_transient( $k, $out, HOUR_IN_SECONDS );
 		return $out;
 	}
 }
-add_action( 'save_post_nadlan_project', function () { delete_transient( 'nadlan_dir_projfacets_v1' ); } );
+add_action( 'save_post_nadlan_project', function () { delete_transient( 'nadlan_dir_projfacets_v2' ); } );
 
 add_action( 'rest_api_init', function () {
 	register_rest_route( 'nadlan/v1', '/projects', array(
@@ -802,6 +815,11 @@ add_filter( 'pre_get_document_title', function ( $t ) {
 	}
 	return $t;
 }, 20 );
+/* The catalog had NO meta description (SERP showed scraped card fragments). */
+add_filter( 'wpseo_metadesc', function ( $desc ) {
+	if ( ! is_post_type_archive( 'nadlan_project' ) || $desc ) { return $desc; }
+	return 'כל הפרויקטים החדשים ודירות למכירה מקבלן בישראל: תמ״א 38, פינוי בינוי ובנייה חדשה, מהמאגר הרשמי. חיפוש לפי עיר ויזם, נתונים מאומתים, ובחירת דירה בתלת ממד.';
+}, 25 );
 
 if ( ! function_exists( 'nadlan_dir_archive_viewport_meta' ) ) {
 	function nadlan_dir_archive_viewport_meta() {

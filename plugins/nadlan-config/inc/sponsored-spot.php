@@ -25,15 +25,19 @@ if ( ! function_exists( 'nadlan_ss_card' ) ) {
 		$copy_h  = $mode === 'project' ? 'הציגו את הפרויקט שלכם כאן' : 'הכרטיס שלכם יכול להיות במקום זה';
 		$copy_p  = $mode === 'project' ? 'הפרויקט שלכם בקדמת הבמה, מול קונים ומשקיעים פעילים. ₪3,990 לקמפיין.' : 'הצטרפו למאגר אנשי המקצוע המוביל בישראל. תוכנית Pro מ-₪349 לחודש.';
 		// Plain string - NO ob_start (safe to call anywhere, incl. filters).
-		return '<a class="nldc nldc-sponsored-spot" href="' . $cart . '">'
+		// DIV wrapper, not <a>: the old outer <a> contained an inner <a> (the
+		// pricing link), which is illegal HTML - browsers split the card into a
+		// stray gold "מקודם" stub plus a detached body (owner saw a broken empty
+		// card in the grid, audit 2026-07-05). Primary CTA is a real inner link.
+		return '<div class="nldc nldc-sponsored-spot">'
 			. '<span class="nldc-sponsor nldc-sponsor-slot">מקודם · פנוי</span>'
 			. '<div class="nldc-sponsored-body">'
 			. '<svg class="nldc-sponsored-mark" aria-hidden="true" viewBox="0 0 48 48"><circle cx="24" cy="24" r="22" fill="none" stroke="currentColor" stroke-width="1" opacity=".25"/><circle cx="24" cy="24" r="14" fill="none" stroke="currentColor" stroke-width="1" opacity=".4"/><circle cx="24" cy="24" r="6" fill="currentColor" opacity=".85"/></svg>'
 			. '<h3 class="nldc-name nldc-sponsored-h">' . esc_html( $copy_h ) . '</h3>'
 			. '<p class="nldc-sponsored-p">' . esc_html( $copy_p ) . '</p>'
-			. '<span class="nldc-go">בקשו מידע ←</span>'
+			. '<a class="nldc-go" href="' . $cart . '">בקשו מידע ←</a>'
 			. '<small class="nldc-sponsored-foot">או <a href="' . $pricing . '">השוואה מלאה</a></small>'
-			. '</div></a>';
+			. '</div></div>';
 	}
 }
 
