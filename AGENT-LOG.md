@@ -1,5 +1,25 @@
 # AGENT-LOG - the God brain (append-only, newest on top)
 
+## 2026-07-07 (5) - v1.72.31 DRIP RESTORED (WP edit_date gotcha) + tolerance + stuck guard
+v1.72.30's first live tick: 3 GENERATED (was 0 forever) - proof the expand
+pass works. But all 3 published INSTANTLY instead of entering the drip.
+Root cause: WP core - wp_update_post on a draft (post_date_gmt
+0000-00-00) silently resets a passed post_date to NOW unless
+edit_date=true; then status future + date now = instant publish. Fixed in
+the writer hand-off AND in the intake stage-2 fill path (same latent bug).
+The 3 already-published articles stay up (honest content, within cadence):
+אחוזי בנייה 5199 (808w, 0 bad dashes, 7 sections), מהנדס אזרחי רשוי 5329,
+תכנית מתאר מקומית 5210. Also in v1.72.31: (a) 10% tolerance band on the
+tier floor AFTER the expand pass (מכון התקנים failed at 668/700 - a
+near-miss, not thin content); (b) enc_fail_count per entry, parked after
+5 fails + 'stuck' count in status (prevents priority-front entries from
+blocking the queue and burning API every tick); (c) duplicated opening
+title heading stripped deterministically; (d) prompt nudge: natural
+section headings (model was copying my structure list verbatim as
+headings). OWNER MESSAGE MID-WORK: wants this writer system spec'd in
+detail for reuse on jus-tice.co.il via another Claude chat - writing the
+portable spec next.
+
 ## 2026-07-07 (4) - v1.72.30 WRITER FIXED: the 0/6 mystery solved (undershoot, not truncation)
 FIRST TICK FAILED 0 generated / 6 failed while a simple diagnostic passed.
 Full-fidelity diagnostic (encdiag2 temp snippet, exact write_one prompts on
