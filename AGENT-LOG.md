@@ -1,5 +1,29 @@
 # AGENT-LOG - the God brain (append-only, newest on top)
 
+## 2026-07-06 (24) - v1.72.26 ENCYCLOPEDIA INTAKE + mega-prompt delivered (owner mega-project)
+OWNER SCOPE EXPANSION: full world - not only terms/materials/tools but PEOPLE
+(researchers, famous architects), ORGANIZATIONS (biggest companies world+IL),
+REGULATIONS (תקנות תכנון ובנייה, תמ"א), STANDARDS (תקן 413 etc), PUBLICATIONS,
+FORMULAS, SOFTWARE. Target: beat Designing Buildings Wiki (7,500 articles,
+5M/yr). Owner runs the research himself on ChatGPT Pro extended / Gemini (ONE
+mega multi-prompt, delivered in chat) - Cowork bypassed (busy). PACE DECISION
+(owner asked my opinion, delivered in chat): 10-15/day via scheduled drip is
+legitimate for genuine reference content; start 10-12/day, watch GSC, ramp.
+SHIPPED v1.72.26: inc/glossary-intake.php -
+- meta name_en/entity_type/enc_domain/enc_sources/enc_related on nadlan_term
+  (12 entity types validated).
+- POST /nadlan/v1/glossary-intake: JSON entries batch -> content-bearing rows
+  scheduled as FUTURE posts on a drip (per_day param, default 12, spread
+  09:00-19:00, resumes after latest scheduled term, never bulk-dumps);
+  ontology-only rows -> drafts awaiting articles; title dupes skipped;
+  domain -> nadlan_term_cat.
+- EN-term chip rendered under term titles (dir=ltr pill).
+Existing engine reused: DefinedTerm schema, autolinker (4 links/page cap),
+thin guard, A-Z archive. INTAKE FLOW: owner runs mega-prompt -> pastes/uploads
+result -> I validate (dash law, dupes, cannibalization flags, entity types) ->
+POST to intake -> drip runs itself. Hub pages per domain + schema name_en
+inclusion queued for the first real batch.
+
 ## 2026-07-06 (23) - INCIDENT + v1.72.25: catalog 404 healed + TRUE free month + dev batch ingest
 INCIDENT (owner report): /projects/ + /professionals/ + ALL project singles
 404. Root cause: CPT rewrite rules dropped (stale rules survived a deploy
