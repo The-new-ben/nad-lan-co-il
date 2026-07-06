@@ -227,13 +227,38 @@ add_action( 'rest_api_init', function () {
 if ( ! function_exists( 'nadlan_pwiz_shortcode' ) ) {
 	function nadlan_pwiz_shortcode() {
 		if ( ! is_user_logged_in() ) {
+			// de-frictioned gate (2026-07-06): the account is created right here,
+			// in one step, and the visitor lands inside the wizard - no email
+			// round-trip, no WP admin screens, nothing to come back to.
 			$login = wp_login_url( get_permalink() );
-			$reg   = wp_registration_url();
-			return '<div class="nlpw nlpw-gate" dir="rtl"><h3>פרסום מודעה - חינם</h3>'
-				. '<p>כדי לפרסם נכס (בחינם, בלי כרטיס אשראי) צריך חשבון - כך נשמור על מודעות אמינות בלבד.</p>'
-				. '<p><a class="nlpw-btn" href="' . esc_url( $login ) . '">התחברות</a> '
-				. ( get_option( 'users_can_register' ) ? '<a class="nlpw-btn nlpw-btn-alt" href="' . esc_url( $reg ) . '">הרשמה מהירה</a>' : '' )
-				. '</p></div>';
+			$back  = esc_url( get_permalink() );
+			$rest  = esc_url( rest_url( 'nadlan/v1/quick-register' ) );
+			return '<div class="nlpw nlpw-gate" dir="rtl" id="nlpw-gate" data-rest="' . esc_attr( $rest ) . '" data-back="' . esc_attr( $back ) . '">'
+				. '<h3>פרסום מודעה - חינם</h3>'
+				. '<p>שם ומייל, ואתם בפנים. בלי כרטיס אשראי, בלי לחכות למייל אימות.</p>'
+				. '<div class="nlpw-gate__grid">'
+				. '<input type="text" id="nlpwg-name" placeholder="שם מלא" autocomplete="name">'
+				. '<input type="email" id="nlpwg-email" placeholder="אימייל" autocomplete="email" inputmode="email">'
+				. '<input type="tel" id="nlpwg-phone" placeholder="טלפון (לא חובה)" autocomplete="tel" inputmode="tel">'
+				. '<input type="text" id="nlpwg-web" tabindex="-1" autocomplete="off" style="position:absolute;left:-9999px" aria-hidden="true">'
+				. '</div>'
+				. '<button type="button" class="nlpw-btn" id="nlpwg-go">פותחים חשבון וממשיכים ←</button>'
+				. '<p class="nlpw-gate__alt">כבר יש חשבון? <a href="' . esc_url( $login ) . '">התחברות</a></p>'
+				. '<p class="nlpw-err" id="nlpwg-err" hidden></p>'
+				. '<script>(function(){var b=document.getElementById("nlpwg-go");if(!b)return;b.addEventListener("click",function(){'
+				. 'var g=document.getElementById("nlpw-gate"),e=document.getElementById("nlpwg-email").value.trim(),n=document.getElementById("nlpwg-name").value.trim(),p=document.getElementById("nlpwg-phone").value.trim(),w=document.getElementById("nlpwg-web").value,err=document.getElementById("nlpwg-err");'
+				. 'if(!/.+@.+\\..+/.test(e)){err.hidden=false;err.textContent="צריך אימייל תקין כדי לפתוח חשבון.";return}'
+				. 'b.disabled=true;b.textContent="פותחים חשבון...";'
+				. 'fetch(g.dataset.rest,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({name:n,email:e,phone:p,website:w,back:g.dataset.back})})'
+				. '.then(function(r){return r.json().then(function(j){return{s:r.status,j:j}})})'
+				. '.then(function(x){if(x.j&&x.j.ok){location.reload();return}'
+				. 'b.disabled=false;b.textContent="פותחים חשבון וממשיכים ←";err.hidden=false;'
+				. 'if(x.s===409){err.innerHTML=\'יש כבר חשבון עם המייל הזה - <a href="\'+x.j.login_url+\'">התחברות</a>\';}'
+				. 'else if(x.s===429){err.textContent="יותר מדי נסיונות - נסו שוב בעוד שעה או התחברו.";}'
+				. 'else{err.textContent="משהו השתבש - נסו שוב או התחברו.";}'
+				. '}).catch(function(){b.disabled=false;b.textContent="פותחים חשבון וממשיכים ←";err.hidden=false;err.textContent="משהו השתבש - נסו שוב.";});'
+				. '});})();</script>'
+				. '</div>';
 		}
 		ob_start(); ?>
 <div class="nlpw" id="nlpw" dir="rtl" data-rest="<?php echo esc_attr( rest_url( 'nadlan/v1' ) ); ?>" data-nonce="<?php echo esc_attr( wp_create_nonce( 'wp_rest' ) ); ?>">
@@ -308,6 +333,13 @@ if ( ! function_exists( 'nadlan_pwiz_assets' ) ) {
 .nlpw-grid .nlpw-chk{display:flex;align-items:center;gap:8px;font-weight:400;font-size:13.5px}
 .nlpw-grid .nlpw-chk input{width:auto}
 .nlpw-btn{display:inline-block;font:inherit;font-size:14.5px;font-weight:700;background:var(--ink);color:#fff;border:0;border-radius:8px;padding:12px 26px;cursor:pointer;margin-top:14px;text-decoration:none}
+.nlpw-gate__grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:14px}
+.nlpw-gate__grid input{border:1px solid #E2DCD0;border-radius:10px;padding:12px 13px;font:inherit;background:#FAF7F1}
+.nlpw-gate__grid input:focus{outline:none;border-color:#9C7A3C}
+.nlpw-gate__grid input#nlpwg-name{grid-column:1/-1}
+.nlpw-gate__alt{font-size:13px;color:#6D665C;margin-top:10px}
+.nlpw-gate__alt a{color:#9C7A3C;font-weight:700}
+@media(max-width:560px){.nlpw-gate__grid{grid-template-columns:1fr}}
 .nlpw-btn:hover{background:#000}
 .nlpw-btn-alt{background:var(--gold)}
 .nlpw-link{background:none;border:0;font:inherit;font-size:13px;color:var(--warm);cursor:pointer;margin-inline-start:12px;text-decoration:underline}

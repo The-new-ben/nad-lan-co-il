@@ -1,5 +1,30 @@
 # AGENT-LOG - the God brain (append-only, newest on top)
 
+## 2026-07-06 (20) - v1.72.23 FUNNEL ROUND 2: one-step signup, advertiser form, /pricing/ fix
+AUDIT FINDINGS (money paths, headless + config):
+- users_can_register=true, default_role=subscriber (self-serve possible) BUT
+  the wizard gate handed visitors to wp-login screens; wp_registration_url()
+  loses the return path and the default flow is an email round-trip = classic
+  drop-off. FIXED: inline quick-register on the gate itself - name+email ->
+  POST /nadlan/v1/quick-register (creates user, auto-login cookie, honeypot,
+  5/hour/IP rate limit, existing email -> 409 with login link, new-user
+  notification doubles as set-password email) -> page reloads INTO the wizard.
+- /advertise/ had strong copy but WhatsApp-only conversion. FIXED: native
+  call-back form (name/phone/interest select incl. project-flag/claim/pro-tier)
+  appended via the_content filter, posts to /nadlan/v1/lead with
+  context=advertiser:<topic>, honeypot, inline validation.
+- /pricing/ 301-guessed to an article about apartment pricing. FIXED:
+  template_redirect 301 -> /join-pro/.
+- CRITICAL BLOCKER FLOATED TO OWNER: GreenInvoice API key NOT configured
+  (gi_key_present=false) - the recurring billing module is unarmed; the Pro
+  tier (349/mo seen on cards) has NO self-serve payment path. Join-pro leans
+  on 1 WhatsApp link. Owner can push the key via /nadlan/v1/keys pattern
+  (needs a gi field added) or paste like the OpenAI key.
+NEW MODULE inc/funnel.php (loader wired). Gate CSS in wizard inline styles.
+NEXT ROUNDS: headless click-through of the logged-in wizard (AI step incl.),
+GreenInvoice checkout wiring once key arrives, competitor benchmark
+(Madlan/Yad2 pro onboarding), lead-inbox ops view sanity.
+
 ## 2026-07-06 (19) - OPENAI KEY LIVE + FR GUIDE PUBLISHED + funnel audit round 1 (v1.72.22)
 KEY: owner pasted in chat (his call); written via /nadlan/v1/keys, validated
 server-side against api.openai.com: HTTP 200, 120 models visible. AI features
