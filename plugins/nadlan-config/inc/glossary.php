@@ -182,6 +182,8 @@ add_shortcode( 'nadlan_glossary_index', function () {
 	$total = count( $terms );
 	ob_start(); ?>
 <div class="nlgloss" dir="rtl">
+	<?php /* the theme renders no H1 on this page template - the hub carries its own */ ?>
+	<h1 class="nlgloss-h1">מילון מונחי נדל״ן</h1>
 	<div class="nlgloss-top">
 		<input type="search" id="nlgloss-q" placeholder="חפשו מונח, חוק, בעל תפקיד או שיטת עבודה..." aria-label="חיפוש מונח">
 		<p class="nlgloss-count"><?php echo (int) $total; ?> מונחים מקצועיים, לכל מונח עמוד מלא משלו. המילון גדל מדי יום.</p>
@@ -206,6 +208,7 @@ add_shortcode( 'nadlan_glossary_index', function () {
 </div>
 <style>
 .nlgloss{font-family:var(--font-sans,Heebo,sans-serif)}
+.nlgloss-h1{font-family:"Frank Ruhl Libre",serif;color:#1B1A17;font-size:2rem;margin:0 0 14px}
 .nlgloss-top{margin:0 0 18px}
 #nlgloss-q{width:100%;max-width:520px;border:1px solid #E2DCD0;border-radius:12px;background:#FAF7F1;padding:13px 16px;font:inherit;font-size:16px;color:#1B1A17}
 #nlgloss-q:focus{outline:none;border-color:#9C7A3C}

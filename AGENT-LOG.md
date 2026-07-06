@@ -1,5 +1,14 @@
 # AGENT-LOG - the God brain (append-only, newest on top)
 
+## 2026-07-07 (7) - v1.72.33 hub H1 (verification catch)
+Verified-delivery pass on the new /glossary/ hub caught a missing H1: the
+theme renders no title on this page template (the old archive had one -
+regression not allowed). The shortcode now carries its own h1 (same exact
+wording as the old archive H1: מילון מונחי נדל"ן, Frank Ruhl Libre, ink).
+Hub verified live: 267 visible words (was 9,072), 31 term links, search +
+letter nav render, old article dump absent, /glossary/page/2/ 301s, term
+pages 200, DefinedTermSet schema present. Hub page id 5397.
+
 ## 2026-07-07 (6) - v1.72.32 GLOSSARY HUB: index page instead of the archive dump (owner directive)
 OWNER: /glossary/ is "a long, long page and terms are losing their value...
 each one a URL, that's the right way... careful about cannibalization".
