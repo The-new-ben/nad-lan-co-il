@@ -59,8 +59,10 @@
   function save(k, v) { try { localStorage.setItem(k, JSON.stringify(v)); } catch (e) {} }
   function esc(s) { return String(s == null ? "" : s).replace(/[&<>"]/g, function (c) { return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]; }); }
   function safeHttpUrl(url) {
+    var s = String(url || "").trim();
+    if (!s) return ""; // empty input must stay empty: new URL("", origin) is the homepage
     try {
-      var u = new URL(String(url || ""), location.origin);
+      var u = new URL(s, location.origin);
       return (u.protocol === "http:" || u.protocol === "https:") ? u.href : "";
     } catch (e) {
       return "";
