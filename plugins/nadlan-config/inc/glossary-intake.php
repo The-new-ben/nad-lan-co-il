@@ -90,7 +90,9 @@ add_action( 'rest_api_init', function () {
 					if ( $first === '' ) { $first = $args['post_date']; }
 					$last = $args['post_date'];
 				}
-				if ( $fill_id ) { $args['ID'] = $fill_id; }
+				// WP core gotcha: updating a draft resets a passed post_date to "now"
+				// unless edit_date is true - the drip schedule depends on it
+				if ( $fill_id ) { $args['ID'] = $fill_id; $args['edit_date'] = true; }
 				$pid = $fill_id ? wp_update_post( $args ) : wp_insert_post( $args );
 				if ( is_wp_error( $pid ) || ! $pid ) { $skipped++; continue; }
 				$pid = $fill_id ? $fill_id : $pid;

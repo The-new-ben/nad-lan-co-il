@@ -13,7 +13,16 @@
  * gpt-4o-mini returned 422 words against an 800-1300 brief, finish_reason
  * stop), so a draft below its tier floor gets ONE expand pass - the draft is
  * sent back with the measured count and the target, and the longer result
- * wins. Still under floor after that = recorded failure, retried next tick.
+ * wins. After the expand pass a 10% tolerance applies (a 668-word article
+ * against a 700 floor is a near-miss, not thin content); a real failure is
+ * recorded, counted per entry, and an entry that failed 5 times is parked
+ * (surfaced as "stuck" in the status endpoint) so it cannot block the queue
+ * front and burn the API every tick.
+ *
+ * WP core gotcha (bit us 2026-07-06): wp_update_post on a draft whose
+ * post_date_gmt is 0000-00-00 silently resets a passed post_date to "now"
+ * unless edit_date is true - without it every "scheduled" article publishes
+ * instantly. edit_date is mandatory on every drip hand-off.
  *
  * Controls (options): nadlan_enc_writer_enabled (1), nadlan_enc_writer_model
  * ('gpt-4o'), nadlan_enc_writer_daily (15 articles/day generation cap),
@@ -53,6 +62,7 @@ if ( ! function_exists( 'nadlan_enc_writer_run' ) ) {
 		$done = 0;
 		foreach ( $q->posts as $pid ) {
 			if ( $done >= $batch ) { break; }
+			if ( (int) get_post_meta( $pid, 'enc_fail_count', true ) >= 5 ) { continue; } // stuck - needs a human look
 			$words = count( preg_split( '/\s+/', trim( wp_strip_all_tags( (string) get_post_field( 'post_content', $pid ) ) ) ) );
 			if ( $words >= 250 ) { continue; } // already written, awaiting drip elsewhere
 			$ok = nadlan_enc_writer_write_one( $pid, $key );
@@ -69,7 +79,7 @@ if ( ! function_exists( 'nadlan_enc_writer_write_one' ) ) {
 		$prio    = max( 1, min( 3, (int) ( $g( 'enc_priority' ) ?: 2 ) ) );
 		$targets = array( 1 => array( 800, 1300, 700 ), 2 => array( 450, 700, 400 ), 3 => array( 250, 400, 250 ) );
 		list( $lo, $hi, $floor ) = $targets[ $prio ];
-		$system = 'אתה עורך ראשי של אנציקלופדיה מקצועית לנדל"ן ובנייה בעברית, ברמת ויקיפדיה ומעלה. הקורא הוא איש מקצוע. כללים קשיחים: אפס עובדות מומצאות - נתון לא ודאי מושמט; אסור מקף ארוך מכל סוג (רק מקף רגיל); המונח האנגלי משולב בגוף הטקסט; HTML נקי בלבד: h2, h3, p, ul, li, table, tr, th, td; בלי h1, בלי כותרת פותחת (הכותרת קיימת בעמוד), בלי סיכום שיווקי, בלי פניות לקורא. פתח ישר בפסקת הגדרה. מבנה: הגדרה; רקע או מנגנון; מפרט טכני עם מספרים והפניות לתקן או לחוק כשקיימים; ההקשר הישראלי; "בפרויקט אמיתי" - איך זה פוגש איש מקצוע בפועל; דוגמה מספרית או נוסחה כשהערך מתאים; טעויות נפוצות; משפט סיום ענייני. בערכים על אנשים או חברות: עובדות ביוגרפיות ניטרליות עם תאריכים בלבד. אורך היעד: ' . $lo . ' עד ' . $hi . ' מילים. החזר אך ורק את גוף ה-HTML, בלי גדרות קוד.';
+		$system = 'אתה עורך ראשי של אנציקלופדיה מקצועית לנדל"ן ובנייה בעברית, ברמת ויקיפדיה ומעלה. הקורא הוא איש מקצוע. כללים קשיחים: אפס עובדות מומצאות - נתון לא ודאי מושמט; אסור מקף ארוך מכל סוג (רק מקף רגיל); המונח האנגלי משולב בגוף הטקסט; HTML נקי בלבד: h2, h3, p, ul, li, table, tr, th, td; בלי h1, בלי כותרת פותחת (הכותרת קיימת בעמוד), בלי סיכום שיווקי, בלי פניות לקורא. פתח ישר בפסקת הגדרה. מבנה: הגדרה; רקע או מנגנון; מפרט טכני עם מספרים והפניות לתקן או לחוק כשקיימים; ההקשר הישראלי; "בפרויקט אמיתי" - איך זה פוגש איש מקצוע בפועל; דוגמה מספרית או נוסחה כשהערך מתאים; טעויות נפוצות; משפט סיום ענייני. כותרות הסעיפים ינוסחו באופן טבעי ומותאם לערך, לא כהעתקה של רשימת המבנה. בערכים על אנשים או חברות: עובדות ביוגרפיות ניטרליות עם תאריכים בלבד. אורך היעד: ' . $lo . ' עד ' . $hi . ' מילים. החזר אך ורק את גוף ה-HTML, בלי גדרות קוד.';
 		$user = 'כתוב את הערך האנציקלופדי המלא עבור: "' . $title . '"' .
 			( $g( 'name_en' ) ? ' (EN: ' . $g( 'name_en' ) . ')' : '' ) .
 			( $g( 'entity_type' ) ? ' | סוג ערך: ' . $g( 'entity_type' ) : '' ) .
@@ -110,11 +120,15 @@ if ( ! function_exists( 'nadlan_enc_writer_write_one' ) ) {
 			$messages[] = array( 'role' => 'user', 'content' => 'הערך מכיל כרגע ' . $wc . ' מילים בלבד והיעד הוא ' . $lo . ' עד ' . $hi . ' מילים. הרחב והעמק אותו: פרט את המנגנון הטכני, ההקשר הישראלי, דוגמה מספרית וטעויות נפוצות ככל שחסר, בלי מלל ריק ובלי עובדות מומצאות. החזר את הערך המלא והמורחב בלבד, באותם כללי HTML.' );
 			$html2 = $call( $messages );
 			if ( $wc_of( $html2 ) > $wc ) { $html = $html2; $wc = $wc_of( $html ); }
+			$floor = (int) floor( $floor * 0.9 ); // post-expansion tolerance: a near-miss is not thin content
 		}
 		if ( '' === $html || $wc < $floor ) {
 			update_option( 'nadlan_enc_writer_last_fail', array( 'pid' => $pid, 'title' => $title, 'words' => $wc, 'floor' => $floor, 'at' => current_time( 'mysql' ) ), false );
+			update_post_meta( $pid, 'enc_fail_count', (int) get_post_meta( $pid, 'enc_fail_count', true ) + 1 );
 			return false; // too thin for its tier - retry next tick
 		}
+		// the title lives in the page template - drop a duplicated opening heading
+		$html = preg_replace( '/^\s*<h[23][^>]*>\s*' . preg_quote( $title, '/' ) . '\s*<\/h[23]>\s*/u', '', $html );
 		// hand to the publishing drip: next slot after the latest scheduled term
 		$per_day = 12;
 		$latest  = get_posts( array( 'post_type' => 'nadlan_term', 'post_status' => 'future', 'posts_per_page' => 1, 'orderby' => 'date', 'order' => 'DESC', 'fields' => 'ids' ) );
@@ -129,7 +143,7 @@ if ( ! function_exists( 'nadlan_enc_writer_write_one' ) ) {
 			$stamp = current_time( 'timestamp' ) + HOUR_IN_SECONDS;
 		}
 		if ( $stamp <= current_time( 'timestamp' ) ) { $stamp = current_time( 'timestamp' ) + HOUR_IN_SECONDS; }
-		wp_update_post( array( 'ID' => $pid, 'post_content' => $html, 'post_status' => 'future', 'post_date' => date( 'Y-m-d H:i:s', $stamp ) ) );
+		wp_update_post( array( 'ID' => $pid, 'post_content' => $html, 'post_status' => 'future', 'post_date' => date( 'Y-m-d H:i:s', $stamp ), 'edit_date' => true ) );
 		update_post_meta( $pid, 'enc_written_by', 'site-writer:' . get_option( 'nadlan_enc_writer_model', 'gpt-4o' ) );
 		update_post_meta( $pid, 'enc_written_words', $wc );
 		return true;
@@ -151,6 +165,8 @@ add_action( 'rest_api_init', function () {
 				'daily_cap' => (int) get_option( 'nadlan_enc_writer_daily', 15 ),
 				'today'     => get_option( 'nadlan_enc_writer_stat', array() ),
 				'last_fail' => get_option( 'nadlan_enc_writer_last_fail', null ),
+				'stuck'     => (int) ( new WP_Query( array( 'post_type' => 'nadlan_term', 'post_status' => 'draft', 'posts_per_page' => 1, 'fields' => 'ids',
+					'meta_query' => array( array( 'key' => 'enc_fail_count', 'value' => 5, 'compare' => '>=', 'type' => 'NUMERIC' ) ) ) ) )->found_posts,
 				'skeletons_waiting' => $count( 'draft' ),
 				'scheduled_to_publish' => $count( 'future' ),
 				'published' => $count( 'publish' ),
