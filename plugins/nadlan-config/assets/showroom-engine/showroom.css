@@ -455,3 +455,10 @@ html[lang="en"] .nl-pcard__name { font-family: var(--font-serif-en); }
 
 /* honest chip on the generic default model (owner law: honesty over beauty) */
 .nl-generic-chip{position:absolute;top:14px;inset-inline-start:14px;z-index:4;background:rgba(20,19,15,.82);color:#E9D9A8;font:600 12px/1 Heebo,sans-serif;padding:7px 12px;border-radius:999px;border:1px solid rgba(233,217,168,.4);pointer-events:none}
+
+/* filter-the-building fusion (2026-07-07): non-matching units dim on stage + facade */
+.nl-unit-dim{opacity:.16!important;filter:saturate(.25);transition:opacity .3s}
+.nl-filters--stage{display:inline-flex;gap:4px;padding:4px;background:#F3EEE3;border:1px solid #E2DCD0;border-radius:11px;margin-inline-end:8px;vertical-align:middle}
+.nl-filters--stage>button{color:#51483A;font:600 12.5px/1 Heebo,sans-serif;background:transparent;border:0;border-radius:8px;padding:8px 12px;cursor:pointer}
+.nl-filters--stage>button[aria-pressed="true"]{background:#1B1A17;color:#FAF7F1}
+@media(max-width:640px){.nl-filters--stage{flex-wrap:wrap}}
