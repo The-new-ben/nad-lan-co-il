@@ -1,5 +1,27 @@
 # AGENT-LOG - the God brain (append-only, newest on top)
 
+## 2026-07-06 (14) - v1.72.18: RFP demo unblock + noindex retirement + key endpoint
+OWNER DIRECTIVES: (a) RFP seeded-advisor exclusion REVERTED - demonstration
+phase, seeded advisors stay matchable (badge stays in directory; re-add
+exclusion before marketing push - IN THE LIST); (b) GSC shows a big
+not-indexed pile - "don't leave noindex on contents/listings, take care of
+thin content"; (c) key handoff via script, never chat; (d) EN investors hub
+next (in progress this turn); (e) RFP must be English + personal.
+SHIPPED:
+- rfp.php: matcher guard reverted w/ dated comment; AR-page buyers now get the
+  ENGLISH doc (was Hebrew - Gulf buyers read English). EN doc + buyer name
+  already existed (buyflow sends page lang; verified earlier).
+- schema.php: word-floor noindex on nadlan_professional/nadlan_property
+  RETIRED (was the main not-indexed driver: ~2,700 professionals under 80
+  words). Demo-profile noindex (is_demo) + facet junk guards + glossary stub
+  guard + city-hub floor KEPT (true junk protection). RISK FLOATED: thousands
+  of similar directory pages entering the index can read low-quality to
+  Google; watch GSC after Site Kit connect; enrichment sweeps (Cowork jobs
+  6-8) are the real fix.
+- keys-hub.php: POST /nadlan/v1/keys {openai_key|anthropic_key|mapbox_token},
+  manage_options via app password; never echoes the key (prefix+length only).
+  PowerShell handoff script delivered in chat.
+
 ## 2026-07-06 (13) - v1.72.17: competitor-gap strike (owner: "close all competitor gaps")
 SHIPPED:
 - MONTHLY PAYMENT STRIP (Zillow's highest-converting element) in the apartment

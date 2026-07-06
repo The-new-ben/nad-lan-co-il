@@ -25,7 +25,9 @@ if ( ! function_exists( 'nadlan_rfp_lang_table' ) ) {
 			'en' => array( 'dir' => 'ltr', 'doc' => 'Request for Proposal', 'for' => 'For', 'date' => 'Date', 'valid' => 'Valid 30 days', 'unit' => 'Requested apartment', 'project' => 'Project', 'developer' => 'Developer', 'floor' => 'Floor', 'rooms' => 'Rooms', 'sqm' => 'Area (sqm)', 'dirn' => 'Orientation', 'config' => 'The request', 'finish' => 'Finish level', 'finish_std' => 'Developer spec', 'finish_up' => 'Upgraded', 'finish_prem' => 'Premium', 'extras' => 'Services added to the request', 'none' => 'No add-ons, direct connection to the developer', 'advisors' => 'Suggested professionals from the directory', 'adv_none' => 'The NadLan team will match a suitable advisor', 'status' => 'Request status', 'st1' => 'Request received', 'st2' => 'Coordination with the developer', 'st3' => 'Consolidated proposal to the buyer', 'disc' => 'All figures in this document are estimates for information only. This document is not a quote, not a commitment and not a sale document. Final pricing is set in the developer proposal per the sale specification and purchase contract.', 'ex_designer' => 'Interior designer', 'ex_lawyer' => 'Real estate lawyer', 'ex_mortgage' => 'Mortgage advisor', 'ex_inspect' => 'Inspection (bedek)', 'ex_furniture' => 'Furniture interest', 'print' => 'Print / save as PDF', 'back' => 'Back to the project page' ),
 		);
 		if ( isset( $T[ $lang ] ) ) { return $T[ $lang ]; }
-		return $T[ in_array( $lang, array( 'fr', 'ru' ), true ) ? 'en' : ( $lang === 'ar' ? 'he' : 'he' ) ];
+		// fr/ru/ar fall back to the English document (Gulf + international buyers
+		// read English; a Hebrew document to an Arabic-page buyer closes no circle).
+		return $T[ in_array( $lang, array( 'fr', 'ru', 'ar' ), true ) ? 'en' : 'he' ];
 	}
 }
 
@@ -50,16 +52,10 @@ if ( ! function_exists( 'nadlan_rfp_match_advisors' ) ) {
 			$q = new WP_Query( array(
 				'post_type' => 'nadlan_professional', 'post_status' => 'publish',
 				'posts_per_page' => 2, 'no_found_rows' => true, 'fields' => 'ids',
-				// honesty guard (#34 follow-up): profiles carrying seeded ratings
-				// (rating meta without reviews_verified) are demo dressing for the
-				// directory - they must never be named in a real buyer's document.
-				'meta_query' => array( 'relation' => 'AND',
-					array( 'key' => 'profession', 'value' => $map[ $x ], 'compare' => 'IN' ),
-					array( 'relation' => 'OR',
-						array( 'key' => 'rating', 'compare' => 'NOT EXISTS' ),
-						array( 'key' => 'reviews_verified', 'value' => '1' ),
-					),
-				),
+				// owner directive 2026-07-06: seeded profiles STAY matchable for the
+				// demonstration phase (the directory badge marks them as demo data).
+				// Re-add the reviews_verified exclusion before the marketing push.
+				'meta_query' => array( array( 'key' => 'profession', 'value' => $map[ $x ], 'compare' => 'IN' ) ),
 			) );
 			$names = array();
 			foreach ( $q->posts as $pid ) {
