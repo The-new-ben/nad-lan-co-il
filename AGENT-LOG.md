@@ -1,5 +1,19 @@
 # AGENT-LOG - the God brain (append-only, newest on top)
 
+## 2026-07-07 (18) - v1.72.44 FILTER THE BUILDING (world-gap #1, v1)
+The first of the 3 world-competitor gaps closed at v1 level: the engine's
+inventory filter (all/available/3/4/5 rooms) is now FUSED into the 3D
+stage + facade. applyStageFilter() dims non-matching .nl-hot hotspots and
+.nl-fsq facade squares (opacity .16, desaturated, 300ms ease) on the LIVE
+DOM (hotspots persist across inventory refreshes - no re-render needed);
+all [data-act=filter] chips sync aria-pressed. The same chips now ride
+the theater header (buyers filter without scrolling to the inventory
+band), styled in the unified nl-tabs language (#41 adoption inside the
+engine). This is what 3D Estate CORE charges developers for; ours works
+on every engine project including the generic flagship default.
+Additive-only change to the approved engine surface: no existing behavior
+touched, one new function + one chip row + two CSS classes.
+
 ## 2026-07-07 (17) - v1.72.43 unified tabs component + intl band contrast
 The unified tab language (owner decision 3+): .nl-tabs pill component in
 premium-ui (light + dark variants, is-on/aria states), homepage listing

@@ -246,6 +246,9 @@
 
     return '<div class="nl-theater">' +
       '<div class="nl-theater__top"><div class="nl-theater__title"><span class="e">' + esc(t("theater_eyebrow")) + "</span><h2>" + esc(t("theater_title")) + "</h2></div>" +
+        (p.model_glb ? '<div class="nl-filters nl-tabs nl-filters--stage" role="group" aria-label="filter">' + ["all","available","3","4","5"].map(function (f) {
+          return '<button data-act="filter" data-id="' + f + '" aria-pressed="' + (state.filter === f) + '">' + esc(t("filter_" + f)) + "</button>";
+        }).join("") + "</div>" : "") +
         (p.model_glb ? '<div class="nl-toggle" role="group" aria-label="view"><button data-act="view" data-id="3d" aria-pressed="true">' + esc(t("view_3d")) + '</button><button data-act="view" data-id="facade" aria-pressed="false">' + esc(t("view_facade")) + "</button></div>" : "") + "</div>" +
       '<div class="nl-stagewrap">' +
         (p.model_glb ? '<model-viewer id="nl-mv" class="nl-stage" src="' + esc(p.model_glb) + '" loading="lazy" reveal="auto" camera-controls auto-rotate auto-rotate-delay="800" rotation-per-second="14deg" interaction-prompt="basic" environment-image="neutral" exposure="1.02" shadow-intensity="0.55" shadow-softness="1" camera-orbit="' + esc(p.default_orbit) + '" camera-target="' + esc(p.default_target) + '" min-camera-orbit="auto 48deg auto" max-camera-orbit="auto 86deg auto" min-field-of-view="16deg" max-field-of-view="68deg" touch-action="pan-y">' + hots + "</model-viewer>" : "") +
@@ -363,6 +366,21 @@
     return '<div class="nl-invhead"><div><span class="nl-eyebrow">' + esc(t("inventory_title")) + '</span><hr class="nl-rule"><p class="nl-muted" style="max-width:46ch">' + esc(t("inventory_sub")) + '</p></div><div class="nl-filters">' + chips + "</div></div>" +
       '<div class="nl-invgrid">' + cards + "</div>" +
       '<div class="nl-muted" style="margin-top:14px;font-size:13px">' + esc(t("results_count", { n: list.length })) + "</div>";
+  }
+
+  /* FILTER THE BUILDING (2026-07-07): the inventory filter is fused into the
+     3D stage and the facade - matching apartments stay lit, the rest dim.
+     Works on the live DOM (hotspots persist across inventory refreshes). */
+  function applyStageFilter() {
+    var match = {};
+    filtered().forEach(function (u) { match[u.id] = true; });
+    var active = state.filter !== "all";
+    [].forEach.call(document.querySelectorAll(".nl-hot[data-id], .nl-fsq[data-id]"), function (el) {
+      el.classList.toggle("nl-unit-dim", active && !match[el.getAttribute("data-id")]);
+    });
+    [].forEach.call(document.querySelectorAll('[data-act="filter"]'), function (b) {
+      b.setAttribute("aria-pressed", String(b.getAttribute("data-id") === state.filter));
+    });
   }
   function filtered() {
     return units().filter(function (u) {
@@ -954,7 +972,7 @@
     else if (act === "close") closePanel();
     else if (act === "view") setView(id);
     else if (act === "tab") setTab(id);
-    else if (act === "filter") { state.filter = id; refresh("inventory"); }
+    else if (act === "filter") { state.filter = id; refresh("inventory"); applyStageFilter(); }
     else if (act === "fav") { e.stopPropagation(); toggleFav(id); }
     else if (act === "compare") { e.stopPropagation(); toggleCompare(id); }
     else if (act === "compare-clear") { state.compare = []; refreshCompare(); }
