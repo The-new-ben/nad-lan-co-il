@@ -1,5 +1,31 @@
 # AGENT-LOG - the God brain (append-only, newest on top)
 
+## 2026-07-06 (2) - v1.72.7: DRONE MAP LIVE + professionals fixes + homepage audit
+DRONE MAP (owner ask): /nadlan/v1/project-map (geocoded, siblings excluded, 6h
+cache) + collapsible band on /projects/ - satellite-streets, pitch 58, 3D
+buildings, gold pins, popup w/ hero plate, fly-in on click. LIVE: 4 pins (the
+flagships), canvas verified, honest note "grows with location verification".
+Growth lever = the geocode pass over the 961 catalog (still open).
+PROFESSIONALS: raw machine enums (urban_planner/engineer/accountant/surveyor/
+property_manager/interior_designer) leaked as card badges - resolver read the
+BASE map only while Hebrew labels existed in the extras map. Fixed (uses full
+map, fallback never prints machine tokens). Live: 0 raw enums. Meta description
+added. HONESTY FLAG FLOATED TO OWNER: top-sorted professional cards carry
+seeded rating/reviews_count meta (4.9, 87 reviews etc.) with NO real review
+records behind them; same seeded names (Dana Barak, Shira Golan) are matched
+into RFP documents as advisors. Options: label as demo, zero the counts, or
+seed-flag meta + "מאומת" only for real ones. OWNER DECISION NEEDED before
+marketing push - fake social proof is a trust landmine.
+HOMEPAGE AUDIT (design+business, screenshots):
+STRONG: clear value-prop hero + tabbed search + live stat strip; sketch-plate
+cards; visible 5-language switcher; price ticker; SEO link rows.
+GAPS (ranked): (1) hero 3D showcase panel reads broken - dark-on-dark, clipped
+LTR overlay ("very apartment, explorable"); our crown-jewel demo looks dim.
+(2) THE FOUR FLAGSHIPS ARE ABSENT from the homepage - no premium 3D projects
+band; front door doesn't sell the differentiator. (3) two big VACANT ad-slot
+cards near the hero read unfinished (vacant inventory should collapse).
+(4) "1 דירות" grammar + thin counts in demand-areas band. Queued as task #33.
+
 ## 2026-07-06 - v1.72.6: BIG CATALOG SEVERE UPGRADE LIVE + guides categorized
 GUIDES: category "מדריכים" (id 35, slug guides) created; both mega guides (5117,
 5118) assigned - byline no longer "Uncategorized".
