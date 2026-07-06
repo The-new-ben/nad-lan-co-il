@@ -9,6 +9,12 @@
  * tier, dash law, clean HTML), and hands it to the publishing drip. The owner
  * feeds ontology batches; the site writes and publishes itself.
  *
+ * Models routinely undershoot long-form word targets (measured 2026-07-06:
+ * gpt-4o-mini returned 422 words against an 800-1300 brief, finish_reason
+ * stop), so a draft below its tier floor gets ONE expand pass - the draft is
+ * sent back with the measured count and the target, and the longer result
+ * wins. Still under floor after that = recorded failure, retried next tick.
+ *
  * Controls (options): nadlan_enc_writer_enabled (1), nadlan_enc_writer_model
  * ('gpt-4o'), nadlan_enc_writer_daily (15 articles/day generation cap),
  * per-run cap 3 (keeps each cron tick short).
@@ -70,29 +76,45 @@ if ( ! function_exists( 'nadlan_enc_writer_write_one' ) ) {
 			( $g( 'enc_domain' ) ? ' | תחום: ' . $g( 'enc_domain' ) : '' ) .
 			( get_post_field( 'post_excerpt', $pid ) ? ' | הגדרה בסיסית: ' . get_post_field( 'post_excerpt', $pid ) : '' ) .
 			( $g( 'enc_related' ) ? ' | ערכים קשורים לשילוב בטקסט: ' . $g( 'enc_related' ) : '' ) .
-			( $g( 'enc_sources' ) ? ' | כיווני מקורות: ' . $g( 'enc_sources' ) : '' );
-		$resp = wp_remote_post( 'https://api.openai.com/v1/chat/completions', array(
-			'timeout' => 120,
-			'headers' => array( 'Authorization' => 'Bearer ' . $key, 'Content-Type' => 'application/json' ),
-			'body'    => wp_json_encode( array(
-				'model'       => (string) get_option( 'nadlan_enc_writer_model', 'gpt-4o' ),
-				'temperature' => 0.4,
-				'max_tokens'  => 3000,
-				'messages'    => array(
-					array( 'role' => 'system', 'content' => $system ),
-					array( 'role' => 'user', 'content' => $user ),
-				),
-			) ),
-		) );
-		if ( is_wp_error( $resp ) || 200 !== wp_remote_retrieve_response_code( $resp ) ) { return false; }
-		$body = json_decode( wp_remote_retrieve_body( $resp ), true );
-		$html = trim( (string) ( $body['choices'][0]['message']['content'] ?? '' ) );
-		$html = preg_replace( '/^```(?:html)?|```$/m', '', $html );
-		// dash law: character swap only
-		$html = str_replace( array( "\u{2013}", "\u{2014}" ), '-', $html );
-		$html = wp_kses_post( trim( $html ) );
-		$wc   = count( preg_split( '/\s+/', trim( wp_strip_all_tags( $html ) ) ) );
-		if ( $wc < $floor ) { return false; } // too thin for its tier - retry next tick
+			( $g( 'enc_sources' ) ? ' | כיווני מקורות: ' . $g( 'enc_sources' ) : '' ) .
+			' | אורך מחייב: לפחות ' . $lo . ' מילים.';
+		$call = function ( $messages ) use ( $key ) {
+			$resp = wp_remote_post( 'https://api.openai.com/v1/chat/completions', array(
+				'timeout' => 120,
+				'headers' => array( 'Authorization' => 'Bearer ' . $key, 'Content-Type' => 'application/json' ),
+				'body'    => wp_json_encode( array(
+					'model'       => (string) get_option( 'nadlan_enc_writer_model', 'gpt-4o' ),
+					'temperature' => 0.4,
+					'max_tokens'  => 6000,
+					'messages'    => $messages,
+				) ),
+			) );
+			if ( is_wp_error( $resp ) || 200 !== wp_remote_retrieve_response_code( $resp ) ) { return ''; }
+			$body = json_decode( wp_remote_retrieve_body( $resp ), true );
+			$html = trim( (string) ( $body['choices'][0]['message']['content'] ?? '' ) );
+			$html = preg_replace( '/^```(?:html)?|```$/m', '', $html );
+			// dash law: character swap only
+			$html = str_replace( array( "\u{2013}", "\u{2014}" ), '-', $html );
+			return wp_kses_post( trim( $html ) );
+		};
+		$wc_of    = function ( $html ) { return count( preg_split( '/\s+/', trim( wp_strip_all_tags( $html ) ) ) ); };
+		$messages = array(
+			array( 'role' => 'system', 'content' => $system ),
+			array( 'role' => 'user', 'content' => $user ),
+		);
+		$html = $call( $messages );
+		$wc   = $wc_of( $html );
+		if ( '' !== $html && $wc < $floor ) {
+			// expand pass: the draft goes back with the measured shortfall
+			$messages[] = array( 'role' => 'assistant', 'content' => $html );
+			$messages[] = array( 'role' => 'user', 'content' => 'הערך מכיל כרגע ' . $wc . ' מילים בלבד והיעד הוא ' . $lo . ' עד ' . $hi . ' מילים. הרחב והעמק אותו: פרט את המנגנון הטכני, ההקשר הישראלי, דוגמה מספרית וטעויות נפוצות ככל שחסר, בלי מלל ריק ובלי עובדות מומצאות. החזר את הערך המלא והמורחב בלבד, באותם כללי HTML.' );
+			$html2 = $call( $messages );
+			if ( $wc_of( $html2 ) > $wc ) { $html = $html2; $wc = $wc_of( $html ); }
+		}
+		if ( '' === $html || $wc < $floor ) {
+			update_option( 'nadlan_enc_writer_last_fail', array( 'pid' => $pid, 'title' => $title, 'words' => $wc, 'floor' => $floor, 'at' => current_time( 'mysql' ) ), false );
+			return false; // too thin for its tier - retry next tick
+		}
 		// hand to the publishing drip: next slot after the latest scheduled term
 		$per_day = 12;
 		$latest  = get_posts( array( 'post_type' => 'nadlan_term', 'post_status' => 'future', 'posts_per_page' => 1, 'orderby' => 'date', 'order' => 'DESC', 'fields' => 'ids' ) );
@@ -128,6 +150,7 @@ add_action( 'rest_api_init', function () {
 				'model'     => (string) get_option( 'nadlan_enc_writer_model', 'gpt-4o' ),
 				'daily_cap' => (int) get_option( 'nadlan_enc_writer_daily', 15 ),
 				'today'     => get_option( 'nadlan_enc_writer_stat', array() ),
+				'last_fail' => get_option( 'nadlan_enc_writer_last_fail', null ),
 				'skeletons_waiting' => $count( 'draft' ),
 				'scheduled_to_publish' => $count( 'future' ),
 				'published' => $count( 'publish' ),
