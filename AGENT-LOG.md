@@ -1,5 +1,32 @@
 # AGENT-LOG - the God brain (append-only, newest on top)
 
+## 2026-07-06 (22) - v1.72.24 RENEWAL ENGINE: month-2 revenue machine (owner core-business)
+RESEARCH (web): the Morning WooCommerce gateway natively supports WooCommerce
+Subscriptions + card tokens (changelog: "improved WooCommerce Subscriptions
+integration", "replacing a token for existing subscriptions"); GreenInvoice
+API supports charge-by-token. INDUSTRY STANDARD = WC Subscriptions plugin
+(paid, ~$239/yr) + this gateway -> fully automatic monthly token charges.
+OWNER DECISION QUEUED: buy WCS for full autopilot.
+SHIPPED NOW (zero purchases, zero blockers): inc/renewals.php -
+- twicedaily cron nadlan_renewals_tick: paid cards (pro/premier) expiring
+  within 3 days (or up to 7 days past) -> auto-create a WC renewal order for
+  the SAME product + SAME card (_nadlan_card_id item meta preserved so the
+  existing woocommerce_payment_complete pipe re-activates and STACKS
+  campaign_end), bill copied from the last order, WC customer-invoice email
+  with the one-click order-pay link (Morning card/Bit/GPay).
+- Same-cycle guard (renewal_cycle_end), open-order dedupe, guest orders
+  skipped (manual via lead inbox), stale pending renewals auto-cancelled
+  after lead+grace+1 days, everything logged as order notes.
+- Existing downgrade cron unchanged (tier drops at expiry; late payment
+  within grace re-activates from payment date).
+ENTITLEMENT PIPE VERIFIED (read): products 476/477/489/490 -> paid_tier +
+campaign_end stacking + auto-downgrade already existed and works; the ONLY
+missing piece was renewal order creation = now closed.
+STILL OWNER: (a) "first month free" vs 349-now mismatch on product 476;
+(b) WCS purchase decision for token autopilot; (c) WC transactional email
+FROM/deliverability sanity (order emails ride core WC, not the marketing
+email project - but worth one test purchase end-to-end).
+
 ## 2026-07-06 (21) - FUNNEL ROUND 3: THE PAYMENT PIPE WAS ARMED ALL ALONG (correction)
 OWNER WAS RIGHT: my round-2 "GreenInvoice key missing" was WRONG-LENS. I was
 probing our custom recurring module (nadlan_gi_api_key - EMPTY, module
