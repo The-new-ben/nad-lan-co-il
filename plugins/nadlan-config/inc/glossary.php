@@ -31,7 +31,12 @@ if ( ! function_exists( 'nadlan_glossary_register' ) ) {
 		register_post_type( 'nadlan_term', array(
 			'labels' => array( 'name' => 'NadLan Glossary', 'singular_name' => 'NadLan Term' ),
 			'public' => true, 'show_in_rest' => true,
-			'has_archive' => 'glossary', 'rewrite' => array( 'slug' => 'glossary' ),
+			// no CPT archive: /glossary/ is a real PAGE hosting the A-Z index
+			// (the theme's archive template dumped every article's full text
+			// onto one long page - duplicate content that cannibalized the
+			// term pages themselves; owner 2026-07-07). Singles keep
+			// /glossary/<slug>/ via the rewrite slug.
+			'has_archive' => false, 'rewrite' => array( 'slug' => 'glossary' ),
 			'menu_icon' => 'dashicons-book-alt', 'menu_position' => 33,
 			'supports' => array( 'title', 'editor', 'thumbnail', 'custom-fields', 'excerpt' ),
 		) );
@@ -163,39 +168,100 @@ add_action( 'wp_head', function () {
 	echo "\n<script type=\"application/ld+json\">" . wp_json_encode( $data, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES ) . "</script>\n";
 }, 20 );
 
-/* /glossary/ index: grouped A-Z + by category (overrides archive body via content filter on the archive description is hard; use a shortcode the archive template or a page can host) */
+/* /glossary/ index: the encyclopedia hub. A real page hosts this shortcode -
+ * links only (title + one-line definition as tooltip), never article bodies,
+ * so the hub can never compete with the term pages it points to. */
 add_shortcode( 'nadlan_glossary_index', function () {
-	$terms = get_posts( array( 'post_type' => 'nadlan_term', 'posts_per_page' => 1000, 'orderby' => 'title', 'order' => 'ASC' ) );
+	$terms = get_posts( array( 'post_type' => 'nadlan_term', 'posts_per_page' => -1, 'orderby' => 'title', 'order' => 'ASC' ) );
 	if ( ! $terms ) { return '<p dir="rtl">המילון בבנייה.</p>'; }
 	$groups = array();
 	foreach ( $terms as $t ) {
 		$first = mb_substr( get_the_title( $t ), 0, 1 );
 		$groups[ $first ][] = $t;
 	}
+	$total = count( $terms );
 	ob_start(); ?>
 <div class="nlgloss" dir="rtl">
+	<div class="nlgloss-top">
+		<input type="search" id="nlgloss-q" placeholder="חפשו מונח, חוק, בעל תפקיד או שיטת עבודה..." aria-label="חיפוש מונח">
+		<p class="nlgloss-count"><?php echo (int) $total; ?> מונחים מקצועיים, לכל מונח עמוד מלא משלו. המילון גדל מדי יום.</p>
+	</div>
+	<nav class="nlgloss-nav" aria-label="ניווט לפי אות">
+		<?php foreach ( array_keys( $groups ) as $letter ) : ?>
+		<a href="#nlg-<?php echo esc_attr( $letter ); ?>"><?php echo esc_html( $letter ); ?></a>
+		<?php endforeach; ?>
+	</nav>
+	<div class="nlgloss-cols">
 	<?php foreach ( $groups as $letter => $items ) : ?>
-	<section class="nlgloss-g">
+	<section class="nlgloss-g" id="nlg-<?php echo esc_attr( $letter ); ?>">
 		<h2><?php echo esc_html( $letter ); ?></h2>
-		<ul><?php foreach ( $items as $t ) : ?>
-			<li><a href="<?php echo esc_url( get_permalink( $t ) ); ?>"><?php echo esc_html( get_the_title( $t ) ); ?></a></li>
+		<ul><?php foreach ( $items as $t ) :
+			$def = trim( (string) get_post_field( 'post_excerpt', $t ) ); ?>
+			<li><a href="<?php echo esc_url( get_permalink( $t ) ); ?>"<?php echo $def ? ' title="' . esc_attr( $def ) . '"' : ''; ?>><?php echo esc_html( get_the_title( $t ) ); ?></a></li>
 		<?php endforeach; ?></ul>
 	</section>
 	<?php endforeach; ?>
+	</div>
+	<p class="nlgloss-none" id="nlgloss-none" hidden>לא נמצא מונח מתאים. נסו ניסוח אחר.</p>
 </div>
 <style>
-.nlgloss{column-count:3;column-gap:32px;font-family:var(--font-sans,Heebo,sans-serif)}
-@media(max-width:780px){.nlgloss{column-count:1}}
+.nlgloss{font-family:var(--font-sans,Heebo,sans-serif)}
+.nlgloss-top{margin:0 0 18px}
+#nlgloss-q{width:100%;max-width:520px;border:1px solid #E2DCD0;border-radius:12px;background:#FAF7F1;padding:13px 16px;font:inherit;font-size:16px;color:#1B1A17}
+#nlgloss-q:focus{outline:none;border-color:#9C7A3C}
+.nlgloss-count{color:#6D665C;font-size:14px;margin:8px 0 0}
+.nlgloss-nav{display:flex;flex-wrap:wrap;gap:6px;margin:0 0 22px}
+.nlgloss-nav a{display:inline-block;min-width:34px;text-align:center;padding:6px 8px;border:1px solid #E2DCD0;border-radius:9px;background:#F3EEE3;color:#1B1A17;text-decoration:none;font-weight:600;font-size:14px}
+.nlgloss-nav a:hover{border-color:#9C7A3C;color:#9C7A3C}
+.nlgloss-cols{column-count:3;column-gap:32px}
+@media(max-width:780px){.nlgloss-cols{column-count:1}}
 .nlgloss-g{break-inside:avoid;margin-bottom:18px}
-.nlgloss-g h2{font-size:22px;color:#9C7A3C;margin:0 0 8px;border-bottom:1px solid #E2DCD0;padding-bottom:4px}
+.nlgloss-g h2{font-family:"Frank Ruhl Libre",serif;font-size:22px;color:#9C7A3C;margin:0 0 8px;border-bottom:1px solid #E2DCD0;padding-bottom:4px}
 .nlgloss-g ul{list-style:none;padding:0;margin:0}
 .nlgloss-g li{padding:3px 0}
 .nlgloss-g a{color:#1B1A17;text-decoration:none;font-size:15px}
 .nlgloss-g a:hover{color:#9C7A3C}
+.nlgloss-none{color:#6D665C}
 </style>
+<script>
+(function(){
+	var q=document.getElementById("nlgloss-q");if(!q)return;
+	q.addEventListener("input",function(){
+		var v=q.value.trim(),none=document.getElementById("nlgloss-none"),any=false;
+		document.querySelectorAll(".nlgloss-g").forEach(function(sec){
+			var vis=false;
+			sec.querySelectorAll("li").forEach(function(li){
+				var hit=!v||li.textContent.indexOf(v)>-1||(li.querySelector("a").title||"").indexOf(v)>-1;
+				li.hidden=!hit;if(hit)vis=true;
+			});
+			sec.hidden=!vis;if(vis)any=true;
+		});
+		document.querySelector(".nlgloss-nav").hidden=!!v;
+		if(none)none.hidden=any;
+	});
+})();
+</script>
 	<?php
 	return ob_get_clean();
 } );
+
+/* the old paginated archive URLs point home to the hub */
+add_action( 'template_redirect', function () {
+	$path = (string) parse_url( (string) ( $_SERVER['REQUEST_URI'] ?? '' ), PHP_URL_PATH );
+	if ( preg_match( '#^/glossary/(page/\d+|feed)/?$#', $path ) ) {
+		wp_redirect( home_url( '/glossary/' ), 301 ); exit;
+	}
+}, 2 );
+
+/* DefinedTermSet schema on the hub page */
+add_action( 'wp_head', function () {
+	if ( ! is_page( 'glossary' ) ) { return; }
+	echo "\n" . '<script type="application/ld+json">' . wp_json_encode( array(
+		'@context' => 'https://schema.org', '@type' => 'DefinedTermSet',
+		'name' => 'מילון מונחי נדל"ן - נדלן', 'url' => home_url( '/glossary/' ),
+		'inLanguage' => 'he',
+	), JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES ) . '</script>' . "\n";
+}, 20 );
 
 /* allow nadlan_term in the import-enrich REST allowlist (extends inc/import.php behaviour) */
 add_filter( 'nadlan_import_enrich_types', function ( $types ) {
