@@ -1,5 +1,26 @@
 # AGENT-LOG - the God brain (append-only, newest on top)
 
+## 2026-07-07 (12) - v1.72.38 PRO CARDS: the business layer (owner: 'the business behind all this')
+Every practice-area content page (nadlan_term + posts) now floats its
+professionals: inc/pro-cards.php. MATCHING 3 layers: (1) procard_pros meta
+= pinned IDs (full manual control, registered for term/post/page);
+(2) domain map (default tokens: משפט/מיסוי->lawyer+accountant,
+משכנתא/מימון->mashkanta, שמאות->shamai, בדק->bedek_bait+engineer,
+תכנון->urban_planner+architect, בנייה/קבלן->kablan+engineer,
+התחדשות->kablan+lawyer, תיווך->metavech, ניהול->property_manager,
+מדידה/טאבו->surveyor/lawyer...) matched against enc_domain + term-cat +
+categories + title, editable via option nadlan_procard_map; (3) no match =
+NOTHING (no filler law). ORDER = MONETIZATION: premier>pro>free then
+rating then recency; paid cards carry honest 'ממומן' chip; seeded ratings
+keep 'נתוני דוגמה' badge (reviews_verified law). PLACEMENT (UX research
+pattern: native in-content beats sidebars on mobile): lead card injected
+BEFORE THE 2ND H2 (reader proven interested), compact experts row (up to
+5) at content end; mobile-first full-width block, no floating element
+(respects the WhatsApp cluster). Options: nadlan_procard_enabled,
+nadlan_procard_max. Cards link to the pro's full profile (the mini-site).
+Homepage content floating audit: glossary already linked in browse band,
+magazine, tools, megafooter - content surfacing OK, projects dominant.
+
 ## 2026-07-07 (11) - v1.72.37 hero polish + card v3 + REAL CBS panel (layers 3-4)
 Hero verified by screenshot -> 4 defects caught + fixed: veil too light
 (H1 fought map labels), map spoke English (Damascus!) -> all symbol layers
