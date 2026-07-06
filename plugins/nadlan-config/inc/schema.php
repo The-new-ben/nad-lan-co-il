@@ -31,29 +31,15 @@ if ( ! function_exists( 'nadlan_card_is_indexable' ) ) {
  * Projects are intentionally OUT of this guard (owner directive 2026-06-23):
  * the showroom must earn traffic while project content matures. Professionals
  * and properties stay guarded by the word floor. */
+/* Owner directive 2026-07-06: the word-floor noindex on professionals and
+ * properties is RETIRED - GSC showed a large not-indexed pile and the owner
+ * wants the directory in the index. Every card page renders structured,
+ * data-driven content (profession, city, badges, JSON-LD) so it enters the
+ * index as legitimate directory content. Demo-flagged profiles keep their own
+ * noindex (professional-profile.php); facet/junk guards elsewhere unchanged. */
 if ( ! function_exists( 'nadlan_card_robots' ) ) {
-	function nadlan_card_robots( $robots ) {
-		if ( ! is_singular( array( 'nadlan_professional', 'nadlan_property' ) ) ) {
-			return $robots;
-		}
-		if ( ! nadlan_card_is_indexable( get_queried_object_id() ) ) {
-			$robots['noindex'] = true;
-			$robots['follow']  = true;
-			unset( $robots['index'] );
-		}
-		return $robots;
-	}
+	function nadlan_card_robots( $robots ) { return $robots; }
 }
-add_filter( 'wp_robots', 'nadlan_card_robots', 20 );
-
-/* Force the same through Yoast if it's controlling the robots meta */
-add_filter( 'wpseo_robots', function ( $string ) {
-	if ( is_singular( array( 'nadlan_professional', 'nadlan_property' ) )
-		&& ! nadlan_card_is_indexable( get_queried_object_id() ) ) {
-		return 'noindex, follow';
-	}
-	return $string;
-}, 20 );
 
 /* ---- JSON-LD ---- */
 if ( ! function_exists( 'nadlan_card_jsonld' ) ) {

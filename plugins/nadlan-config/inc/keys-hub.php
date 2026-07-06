@@ -128,3 +128,34 @@ if ( ! function_exists( 'nadlan_keys_hub_page' ) ) {
 			. ' · סרטון בית ' . ( get_option( 'nadlan_home_video_url' ) ? 'מוגדר' : 'ריק' ) . '</p></div>';
 	}
 }
+
+/* Direct key handoff (owner ask 2026-07-06): a protected REST endpoint so the
+ * owner can push API keys from his own machine (PowerShell/curl) without
+ * touching wp-admin and without keys ever passing through chat or the repo.
+ * Auth: WordPress application password of an admin (manage_options). */
+add_action( 'rest_api_init', function () {
+	register_rest_route( 'nadlan/v1', '/keys', array(
+		'methods'  => 'POST',
+		'permission_callback' => function () { return current_user_can( 'manage_options' ); },
+		'callback' => function ( WP_REST_Request $req ) {
+			$allowed = array(
+				'openai_key'    => 'nadlan_ai_openai_key',
+				'anthropic_key' => 'nadlan_ai_anthropic_key',
+				'mapbox_token'  => 'nadlan_mapbox_token',
+			);
+			$saved = array();
+			foreach ( $allowed as $in => $opt ) {
+				$v = (string) $req->get_param( $in );
+				if ( $v !== '' ) { update_option( $opt, trim( $v ), false ); $saved[] = $in; }
+			}
+			if ( ! $saved ) { return new WP_REST_Response( array( 'ok' => false, 'error' => 'no recognized key field' ), 400 ); }
+			// never echo the key back - confirm by prefix + length only
+			$probe = (string) get_option( 'nadlan_ai_openai_key', '' );
+			return new WP_REST_Response( array(
+				'ok' => true, 'saved' => $saved,
+				'openai_key_present' => $probe !== '',
+				'openai_key_shape'   => $probe !== '' ? ( substr( $probe, 0, 6 ) . '... (' . strlen( $probe ) . ' chars)' ) : '',
+			), 200 );
+		},
+	) );
+} );
