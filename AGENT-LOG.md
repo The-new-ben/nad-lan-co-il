@@ -1,5 +1,23 @@
 # AGENT-LOG - the God brain (append-only, newest on top)
 
+## 2026-07-07 (6) - v1.72.32 GLOSSARY HUB: index page instead of the archive dump (owner directive)
+OWNER: /glossary/ is "a long, long page and terms are losing their value...
+each one a URL, that's the right way... careful about cannibalization".
+DIAGNOSIS: each term ALREADY has its own URL (/glossary/<slug>/) - the
+problem was only the hub: the theme's CPT archive template dumped FULL
+article bodies (9,072 visible words on page 1, only ~12 term links,
+paginated) = exactly the self-cannibalization he fears, the archive
+competing with its own term pages. FIX: has_archive=false; /glossary/
+becomes a real PAGE hosting the upgraded [nadlan_glossary_index]: live
+search box, letter quick-nav chips, A-Z sections, links with the one-line
+definition as tooltip - LINKS ONLY, never bodies, so the hub can never
+compete with term pages. Old /glossary/page/N/ + /glossary/feed 301 to the
+hub. DefinedTermSet JSON-LD on the hub. Page title kept EXACTLY as the
+archive's H1 (מילון מונחי נדל"ן) - no text change without permission.
+Rewrite flush covered by the self-healing version-change guard. ALSO:
+first autonomous drip publish confirmed - עלות תחלופה went live at its
+20:42 slot with no agent involvement. The machine is alive.
+
 ## 2026-07-07 (5) - v1.72.31 DRIP RESTORED (WP edit_date gotcha) + tolerance + stuck guard
 v1.72.30's first live tick: 3 GENERATED (was 0 forever) - proof the expand
 pass works. But all 3 published INSTANTLY instead of entering the drip.
