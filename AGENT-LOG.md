@@ -1,5 +1,27 @@
 # AGENT-LOG - the God brain (append-only, newest on top)
 
+## 2026-07-06 (16) - EN INVESTORS HUB LIVE + geo drafts closed + /en/ title dash swap
+HUB: page 5154 https://nad-lan.co.il/en/buy-property-in-israel/ (child of /en/
+homepage 5011 - hierarchy, zero cannibalization: /en/=brand home, hub=buyer
+intent "buy property in israel from abroad"). Content: buyer-addressed EN,
+~1,600 words own content, 2026 numbers CONSISTENT with the published EN guide
+(8%/10% @ 6,055,070; 50% LTV non-resident; Sale Law arvut bankit; TLV yields
+3-3.6%; Sde Dov 1,300 dunams/16,000 homes), 7-step remote purchase process,
+city map for international buyers, language sections incl. Gulf/Abraham
+Accords positioning (respectful, factual), 6-question FAQ + FAQPage JSON-LD
+inline, honest disclaimers, links: premium/3 EN flagships/catalog/EN guide.
+Yoast title/desc/focuskw set. Live-verified: schema present, 5/5 links, no
+long dashes in our content. Source committed handoff/content/.
+DASH SWEEP: /en/ page 5011 title carried an em dash (pre-existing) leaking
+into breadcrumb JSON-LD - swapped to hyphen per dash law.
+GEO PROTOCOL CLOSED: drafts 5143-5152 deleted after ingest; Cowork asked
+"write coordinates directly now?" - ANSWER RELAYED TO OWNER: NO, already
+ingested by cloud agent (double-write hazard).
+OPEN: hub not yet in any nav/menu (floated to owner - recommend footer +
+/en/ homepage link); FR guide (JOB 5) incoming -> link from hub French
+section when published; SEO plugin question answered in chat (keep Yoast,
+no Rank Math - conflict, not a lever).
+
 ## 2026-07-06 (15) - GEO EXPEDITION INGESTED + v1.72.19: 958 projects on the map, clustered
 Cowork JOB 1 delivered 10 CSV drafts (5143-5152): 957 rows, 954 valid
 (12 neighborhood / 942 city centroid via Nominatim, source URL per row),
