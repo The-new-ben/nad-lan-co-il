@@ -423,3 +423,23 @@ html[lang="en"] .nl-pcard__name { font-family: var(--font-serif-en); }
 .nl-winstage__int summary { cursor: pointer; color: #d8c79a; font-size: 13px; font-weight: 600; }
 .nl-winstage__int img { width: 100%; display: block; border-radius: 10px; margin-top: 8px; }
 .nl-winstage__int .nl-defint__note { position: static; display: block; margin-top: 6px; max-width: none; }
+
+/* the DEFAULT walk - first-person step-through of the standard set (2026-07-06) */
+.nl-dtour { margin-top: 4px; }
+.nl-dtour__stage { position: relative; aspect-ratio: 16/10; border-radius: 14px; overflow: hidden; background: #14130F; cursor: grab; outline: none; }
+.nl-dtour__stage:active { cursor: grabbing; }
+.nl-dtour__img { width: 100%; height: 100%; object-fit: cover; display: block; transform: scale(1.12); transition: opacity .22s ease; user-select: none; }
+.nl-dtour.is-walking .nl-dtour__img { opacity: 0; }
+.nl-dtour__nav { position: absolute; top: 50%; transform: translateY(-50%); width: 42px; height: 42px; border-radius: 50%; border: 1px solid rgba(255,255,255,.4); background: rgba(20,19,15,.55); color: #F4EEDE; font-size: 22px; line-height: 1; cursor: pointer; transition: background .2s, border-color .2s; z-index: 2; }
+.nl-dtour__nav:hover { background: rgba(20,19,15,.8); border-color: #d8c79a; }
+.nl-dtour__nav--prev { inset-inline-start: 12px; }
+.nl-dtour__nav--next { inset-inline-end: 12px; }
+.nl-dtour__hud { position: absolute; top: 10px; inset-inline-start: 12px; display: flex; flex-direction: column; gap: 5px; align-items: flex-start; z-index: 2; }
+.nl-dtour__room { background: rgba(20,19,15,.72); color: #F4EEDE; font: 600 13px/1 Heebo, sans-serif; border-radius: 8px; padding: 7px 12px; }
+.nl-dtour__hint { background: rgba(20,19,15,.55); color: #D8D2C4; font: 400 10.5px/1 Heebo, sans-serif; border-radius: 6px; padding: 5px 9px; }
+.nl-dtour__tag { position: absolute; bottom: 10px; inset-inline-start: 12px; max-width: calc(100% - 24px); background: rgba(20,19,15,.72); color: #E9E2D2; font: 500 10.5px/1.4 Heebo, sans-serif; border-radius: 6px; padding: 5px 10px; z-index: 2; }
+.nl-dtour__doors { display: flex; flex-wrap: wrap; gap: 7px; margin-top: 10px; }
+.nl-dtour__door { font: 600 12.5px/1 Heebo, sans-serif; color: #6D665C; background: #fff; border: 1px solid #E2DCD0; border-radius: 999px; padding: 8px 13px; cursor: pointer; transition: border-color .2s, color .2s; }
+.nl-dtour__door:hover { border-color: #9C7A3C; color: #1B1A17; }
+.nl-dtour__door.is-on { background: #9C7A3C; border-color: #9C7A3C; color: #FAF7F1; }
+@media (max-width: 640px) { .nl-dtour__stage { aspect-ratio: 4/3; } .nl-dtour__nav { width: 36px; height: 36px; } }

@@ -472,7 +472,79 @@
     if (p.interior_panoramas && p.interior_panoramas.length) {
       return top + '<div class="nl-interior__stage" data-pano="' + esc(JSON.stringify(p.interior_panoramas)) + '"><button class="nl-btn nl-btn--gold" data-act="loadpano">' + esc(t("tour_open_pano")) + '</button></div><p class="nl-interior__note">' + esc(t("tour_lazy_hint")) + "</p></div>";
     }
+    var dt = p.default_tour || [];
+    if (dt.length) return top + dtMarkup(dt) + "</div>";
     return top + '<div class="nl-empty">' + esc(t("tour_pending")) + "</div></div>";
+  }
+  /* ---- the DEFAULT walk (owner law: a default, not a fallback): first-person
+     step-through of the standard apartment + building set. Drag pans the gaze,
+     arrows and door chips walk between spaces. Replaced per-project the moment
+     a developer tour arrives. ---- */
+  function dtLabel(key) {
+    var k = "dt_" + String(key).replace(/-/g, "_");
+    var v = t(k);
+    return v === k ? key.replace(/-/g, " ") : v;
+  }
+  function dtMarkup(dt) {
+    var chips = dt.map(function (s2, i) {
+      return '<button class="nl-dtour__door' + (i === 0 ? " is-on" : "") + '" data-dt-i="' + i + '">' + esc(dtLabel(s2.key)) + "</button>";
+    }).join("");
+    return '<div class="nl-dtour" data-steps="' + esc(JSON.stringify(dt)) + '">' +
+      '<div class="nl-dtour__stage" tabindex="0" role="application" aria-label="' + esc(t("dtour_hint")) + '">' +
+        '<img class="nl-dtour__img" src="' + esc(dt[0].url) + '" alt="" draggable="false">' +
+        '<button class="nl-dtour__nav nl-dtour__nav--prev" data-dt-step="-1" aria-label="' + esc(t("dtour_prev")) + '">&#8249;</button>' +
+        '<button class="nl-dtour__nav nl-dtour__nav--next" data-dt-step="1" aria-label="' + esc(t("dtour_next")) + '">&#8250;</button>' +
+        '<div class="nl-dtour__hud"><span class="nl-dtour__room">' + esc(dtLabel(dt[0].key)) + '</span><span class="nl-dtour__hint">' + esc(t("dtour_hint")) + "</span></div>" +
+        '<span class="nl-dtour__tag">' + esc(t("dtour_tag")) + "</span>" +
+      "</div>" +
+      '<div class="nl-dtour__doors">' + chips + "</div></div>";
+  }
+  function dtInit() {
+    var root = document.querySelector(".nl-dtour");
+    if (!root || root.dataset.dtReady) return;
+    root.dataset.dtReady = "1";
+    var steps = []; try { steps = JSON.parse(root.dataset.steps || "[]"); } catch (e) {}
+    if (!steps.length) return;
+    var img = root.querySelector(".nl-dtour__img"), roomEl = root.querySelector(".nl-dtour__room");
+    var doors = [].slice.call(root.querySelectorAll(".nl-dtour__door"));
+    var stage = root.querySelector(".nl-dtour__stage");
+    var i = 0, pan = 0, dragging = false, sx = 0, p0 = 0;
+    // preload the next space so the walk never stutters
+    function preload(n) { if (steps[n]) { var im = new Image(); im.src = steps[n].url; } }
+    function apply() { img.style.transform = "translateX(" + pan + "%) scale(1.12)"; }
+    function go(n) {
+      n = (n + steps.length) % steps.length;
+      if (n === i) return;
+      i = n; pan = 0;
+      root.classList.add("is-walking");
+      setTimeout(function () {
+        img.src = steps[i].url; apply();
+        roomEl.textContent = dtLabel(steps[i].key);
+        doors.forEach(function (d2, j) { d2.classList.toggle("is-on", j === i); });
+        root.classList.remove("is-walking");
+        preload(i + 1);
+      }, 220);
+    }
+    root.addEventListener("click", function (e) {
+      var st = e.target.closest("[data-dt-step]");
+      if (st) { go(i + parseInt(st.dataset.dtStep, 10)); return; }
+      var dr = e.target.closest("[data-dt-i]");
+      if (dr) go(parseInt(dr.dataset.dtI, 10));
+    });
+    function down(x) { dragging = true; sx = x; p0 = pan; }
+    function move(x) { if (!dragging) return; pan = Math.max(-9, Math.min(9, p0 + (x - sx) / 14)); apply(); }
+    function up() { dragging = false; }
+    stage.addEventListener("mousedown", function (e) { down(e.clientX); e.preventDefault(); });
+    window.addEventListener("mousemove", function (e) { move(e.clientX); });
+    window.addEventListener("mouseup", up);
+    stage.addEventListener("touchstart", function (e) { down(e.touches[0].clientX); }, { passive: true });
+    stage.addEventListener("touchmove", function (e) { move(e.touches[0].clientX); }, { passive: true });
+    stage.addEventListener("touchend", up);
+    stage.addEventListener("keydown", function (e) {
+      if (e.key === "ArrowRight") go(i + (isRTL() ? -1 : 1));
+      if (e.key === "ArrowLeft") go(i + (isRTL() ? 1 : -1));
+    });
+    apply(); preload(1);
   }
   function loadTour(node) {
     var stage = node.closest(".nl-interior__stage"); if (!stage) return;
@@ -620,6 +692,7 @@
       setTimeout(function () { if (!state.mvReady && mv.modelIsVisible) reveal(); }, 6000);
     }
     if (state.page === "project") {
+      dtInit();
       updateFormCtx(); updateSticky();
       if (state.unitId && unit(state.unitId)) selectUnit(state.unitId, true);
       var form = document.getElementById("nl-form");

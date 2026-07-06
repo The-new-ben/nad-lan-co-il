@@ -141,6 +141,10 @@ if ( ! function_exists( 'nadlan_showroom_engine_build_project' ) ) {
 			'tour_url'       => esc_url_raw( (string) get_post_meta( $id, 'project_3d_tour_url', true ) ),
 			// Interior tour (PR6): real 360 panoramas only; empty -> honest placeholder.
 			'interior_panoramas' => array_values( (array) nadlan_showroom_engine_json_meta( $id, 'project_interior_panoramas' ) ),
+			// The DEFAULT walk (owner law: a default, not a fallback): the standard
+			// apartment + building set from media (standard-default-*), shown on every
+			// project until the developer's dedicated tour replaces it.
+			'default_tour'   => nadlan_showroom_default_tour(),
 			'orientation'    => $orientation,
 			'geo'            => array(
 				'lat' => (float) get_post_meta( $id, 'lat', true ),
@@ -606,3 +610,36 @@ add_filter( 'locale', function ( $loc ) {
 	$map = array( 'en' => 'en_US', 'fr' => 'fr_FR', 'ru' => 'ru_RU', 'ar' => 'ar' );
 	return isset( $map[ $l ] ) ? $map[ $l ] : $loc;
 }, 20 );
+
+if ( ! function_exists( 'nadlan_showroom_default_tour' ) ) {
+	/**
+	 * The standard default walk set: every media attachment titled
+	 * standard-default-<space> becomes a step, ordered building -> apartment.
+	 * Self-maintaining: new uploads appear on the next cache cycle.
+	 */
+	function nadlan_showroom_default_tour() {
+		$cache = get_transient( 'nadlan_default_tour_v1' );
+		if ( is_array( $cache ) ) { return $cache; }
+		$q = new WP_Query( array(
+			'post_type' => 'attachment', 'post_status' => 'inherit',
+			'post_mime_type' => 'image', 'posts_per_page' => 40, 'fields' => 'ids',
+			's' => 'standard-default', 'no_found_rows' => true,
+		) );
+		$found = array();
+		foreach ( $q->posts as $aid ) {
+			$title = (string) get_the_title( $aid );
+			if ( strpos( $title, 'standard-default-' ) !== 0 ) { continue; }
+			$key = preg_replace( '/\.(png|jpe?g|webp)$/i', '', substr( $title, strlen( 'standard-default-' ) ) );
+			$url = wp_get_attachment_image_url( $aid, 'large' );
+			if ( ! $url ) { $url = wp_get_attachment_url( $aid ); }
+			if ( $key !== '' && $url ) { $found[ $key ] = array( 'key' => $key, 'url' => esc_url_raw( $url ) ); }
+		}
+		$order = array( 'exterior', 'street-entrance', 'entrance', 'lobby', 'stairwell', 'elevator', 'entry-hall', 'living-room', 'kitchen', 'master-bedroom', 'second-bedroom', 'bathroom', 'balcony' );
+		$out = array();
+		foreach ( $order as $k ) { if ( isset( $found[ $k ] ) ) { $out[] = $found[ $k ]; unset( $found[ $k ] ); } }
+		foreach ( $found as $extra ) { $out[] = $extra; }
+		set_transient( 'nadlan_default_tour_v1', $out, HOUR_IN_SECONDS );
+		return $out;
+	}
+	add_action( 'add_attachment', function () { delete_transient( 'nadlan_default_tour_v1' ); } );
+}

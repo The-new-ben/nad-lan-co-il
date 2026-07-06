@@ -97,6 +97,13 @@
     fp_hint: "גררו להסתכל · לחצו על דלת למעבר חדר",
     fp_tag: "הדמיה סכמטית להמחשה - נוצרה מנתוני הדירה",
     tour_coming: "סיור פנים יוצג כאשר יתקבל קישור מאושר.",
+    dt_exterior: "חזית הבניין", dt_street_entrance: "כניסה מהרחוב", dt_entrance: "כניסה",
+    dt_lobby: "לובי", dt_stairwell: "חדר מדרגות", dt_elevator: "מעלית", dt_entry_hall: "מבואה",
+    dt_living_room: "סלון", dt_kitchen: "מטבח", dt_master_bedroom: "חדר שינה הורים",
+    dt_second_bedroom: "חדר שינה", dt_bathroom: "חדר רחצה", dt_balcony: "מרפסת",
+    dtour_tag: "סיור בדירת דוגמה סטנדרטית - הדמיה להמחשה. סיור ייעודי מהיזם יחליף אותו עם קבלתו.",
+    dtour_hint: "גררו להביט · חצים או דלתות למעבר חלל",
+    dtour_next: "לחלל הבא", dtour_prev: "לחלל הקודם",
     tour_title: "סיור פנים", tour_open: "פתיחת סיור וירטואלי", tour_open_pano: "פתיחת סיור 360", tour_lazy_hint: "לחיצה אחת ואתם בפנים.", tour_pending: "סיור 360 מהיזם יעלה כאן עם אישורו. בינתיים אפשר לצעוד בתוך כל דירה דרך לוח הדירות למטה.",
     btn_inquire: "מעניין אותי", btn_save: "שמירה", btn_saved: "נשמר", btn_compare: "להשוואה",
     btn_compared: "בהשוואה", btn_share: "שיתוף", btn_close: "סגירה", link_copied: "הקישור הועתק",
@@ -241,6 +248,13 @@
     fp_hint: "Drag to look · click a door to change rooms",
     fp_tag: "Schematic visualization built from this apartment's data",
     tour_coming: "An interior tour will appear once an approved link is provided.",
+    dt_exterior: "Building exterior", dt_street_entrance: "Street entrance", dt_entrance: "Entrance",
+    dt_lobby: "Lobby", dt_stairwell: "Stairwell", dt_elevator: "Elevator", dt_entry_hall: "Entry hall",
+    dt_living_room: "Living room", dt_kitchen: "Kitchen", dt_master_bedroom: "Master bedroom",
+    dt_second_bedroom: "Second bedroom", dt_bathroom: "Bathroom", dt_balcony: "Balcony",
+    dtour_tag: "A walk through a standard sample apartment - illustration. The developer's dedicated tour will replace it once received.",
+    dtour_hint: "Drag to look \u00B7 arrows or doors to move between spaces",
+    dtour_next: "Next space", dtour_prev: "Previous space",
     tour_title: "Interior tour", tour_open: "Open virtual tour", tour_open_pano: "Open 360 tour", tour_lazy_hint: "One click and you are inside.", tour_pending: "The developer's 360 tour will appear here once approved. Meanwhile, walk inside any apartment from the inventory board below.",
     btn_inquire: "I'm interested", btn_save: "Save", btn_saved: "Saved", btn_compare: "Compare",
     btn_compared: "Comparing", btn_share: "Share", btn_close: "Close", link_copied: "Link copied",
@@ -351,6 +365,27 @@
   AR.tour_lazy_hint = "نقرة واحدة وأنتم في الداخل.";
   FR.tour_pending = "La visite 360 du promoteur apparaitra ici des validation. En attendant, entrez dans chaque logement depuis le tableau des appartements ci-dessous.";
   RU.tour_pending = "360-тур от застройщика появится здесь после утверждения. А пока зайдите внутрь любой квартиры через таблицу квартир ниже.";
+  FR.dt_exterior = "Facade de l'immeuble"; FR.dt_street_entrance = "Entree depuis la rue"; FR.dt_entrance = "Entree";
+  FR.dt_lobby = "Hall d'accueil"; FR.dt_stairwell = "Cage d'escalier"; FR.dt_elevator = "Ascenseur"; FR.dt_entry_hall = "Vestibule";
+  FR.dt_living_room = "Sejour"; FR.dt_kitchen = "Cuisine"; FR.dt_master_bedroom = "Chambre parentale";
+  FR.dt_second_bedroom = "Deuxieme chambre"; FR.dt_bathroom = "Salle de bain"; FR.dt_balcony = "Balcon";
+  FR.dtour_tag = "Visite d'un logement type standard - illustration. La visite dediee du promoteur la remplacera des reception.";
+  FR.dtour_hint = "Glissez pour regarder \u00B7 fleches ou portes pour changer d'espace";
+  FR.dtour_next = "Espace suivant"; FR.dtour_prev = "Espace precedent";
+  RU.dt_exterior = "Фасад здания"; RU.dt_street_entrance = "Вход с улицы"; RU.dt_entrance = "Вход";
+  RU.dt_lobby = "Лобби"; RU.dt_stairwell = "Лестничная клетка"; RU.dt_elevator = "Лифт"; RU.dt_entry_hall = "Прихожая";
+  RU.dt_living_room = "Гостиная"; RU.dt_kitchen = "Кухня"; RU.dt_master_bedroom = "Главная спальня";
+  RU.dt_second_bedroom = "Вторая спальня"; RU.dt_bathroom = "Ванная"; RU.dt_balcony = "Балкон";
+  RU.dtour_tag = "Прогулка по стандартной образцовой квартире - иллюстрация. Специальный тур застройщика заменит ее после получения.";
+  RU.dtour_hint = "Тяните, чтобы смотреть \u00B7 стрелки или двери для перехода";
+  RU.dtour_next = "Следующее пространство"; RU.dtour_prev = "Предыдущее пространство";
+  AR.dt_exterior = "واجهة المبنى"; AR.dt_street_entrance = "المدخل من الشارع"; AR.dt_entrance = "المدخل";
+  AR.dt_lobby = "اللوبي"; AR.dt_stairwell = "بيت الدرج"; AR.dt_elevator = "المصعد"; AR.dt_entry_hall = "الردهة";
+  AR.dt_living_room = "غرفة المعيشة"; AR.dt_kitchen = "المطبخ"; AR.dt_master_bedroom = "غرفة النوم الرئيسية";
+  AR.dt_second_bedroom = "غرفة النوم الثانية"; AR.dt_bathroom = "الحمام"; AR.dt_balcony = "الشرفة";
+  AR.dtour_tag = "جولة في شقة نموذجية قياسية - للتوضيح. ستحل جولة المطور المخصصة محلها فور استلامها.";
+  AR.dtour_hint = "اسحبوا للنظر \u00B7 الأسهم أو الأبواب للتنقل بين المساحات";
+  AR.dtour_next = "المساحة التالية"; AR.dtour_prev = "المساحة السابقة";
   AR.tour_pending = "ستظهر جولة 360 من المطور هنا فور اعتمادها. حتى ذلك الحين، ادخلوا إلى أي شقة عبر لوحة الشقق أدناه.";
 
   window.NADLAN_I18N = {
