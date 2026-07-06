@@ -630,6 +630,9 @@ if ( ! function_exists( 'nadlan_showroom_default_tour' ) ) {
 			$title = (string) get_the_title( $aid );
 			if ( strpos( $title, 'standard-default-' ) !== 0 ) { continue; }
 			$key = preg_replace( '/\.(png|jpe?g|webp)$/i', '', substr( $title, strlen( 'standard-default-' ) ) );
+			// 360-* uploads are equirectangular panoramas for the (future) 360
+			// layer - never flat walk frames; a 2:1 pano in the walk reads warped.
+			if ( strpos( $key, '360-' ) === 0 || strpos( $key, '360_' ) === 0 ) { continue; }
 			// normalize naming variants so the walk order + labels always hold
 			$aliases = array( 'building-exterior' => 'exterior', 'building-entrance' => 'entrance', 'facade' => 'exterior', 'bedroom' => 'second-bedroom' );
 			if ( isset( $aliases[ $key ] ) ) { $key = $aliases[ $key ]; }
