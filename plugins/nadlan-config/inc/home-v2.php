@@ -314,6 +314,46 @@ if ( ! function_exists( 'nadlan_hv2_band_video' ) ) {
 	}
 }
 
+if ( ! function_exists( 'nadlan_hv2_band_flagships' ) ) {
+	/* The differentiator band (owner audit 2026-07-06): the four flagship 3D
+	   projects, right under the hero. Hero plates + 3D badge; every card links
+	   into the full showroom. Cards render only for slugs that exist. */
+	function nadlan_hv2_band_flagships() {
+		$slugs = array( 'rainbow-tel-aviv', 'ashira-sde-dov', 'dimri-yama-sde-dov', 'duo-tel-aviv' );
+		$cards = array();
+		foreach ( $slugs as $slug ) {
+			$p = get_page_by_path( $slug, OBJECT, 'nadlan_project' );
+			if ( $p && get_post_status( $p ) === 'publish' ) { $cards[] = $p; }
+		}
+		if ( count( $cards ) < 2 ) { return; }
+		?>
+	<section class="nlhv2-band nlhv2-flagships">
+		<header><p class="nlhv2-kicker"><?php nadlan_e( 'fl_kicker' ); ?></p><h2><?php nadlan_e( 'fl_title' ); ?></h2>
+			<a href="<?php echo esc_url( home_url( '/premium/' ) ); ?>"><?php nadlan_e( 'fl_all' ); ?></a></header>
+		<p class="nlhv2-flagsub"><?php nadlan_e( 'fl_sub' ); ?></p>
+		<div class="nlhv2-flaggrid">
+			<?php foreach ( $cards as $p ) :
+				$hero   = esc_url( (string) get_post_meta( $p->ID, 'project_3d_image', true ) );
+				$poster = esc_url( (string) get_post_meta( $p->ID, 'project_model_poster', true ) );
+				$city   = (string) get_post_meta( $p->ID, 'city', true );
+				$units  = (int) get_post_meta( $p->ID, 'num_units', true ); ?>
+			<a class="nlhv2-flag" href="<?php echo esc_url( get_permalink( $p ) ); ?>">
+				<span class="nlhv2-flag-media"<?php echo $hero ? ' style="background-image:url(' . $hero . ')"' : ''; ?>>
+					<?php if ( $poster ) : ?><span class="nlhv2-flag-3d" style="background-image:url(<?php echo $poster; ?>)"><b>3D</b></span><?php endif; ?>
+				</span>
+				<span class="nlhv2-flag-body">
+					<b dir="auto"><?php echo esc_html( get_the_title( $p ) ); ?></b>
+					<span class="nlhv2-flag-meta"><?php echo esc_html( $city ); ?><?php echo $units ? ' · ' . number_format( $units ) . ' ' . esc_html( nadlan_i18n( 'ar_apts' ) ) : ''; ?></span>
+					<span class="nlhv2-flag-go"><?php nadlan_e( 'fl_go' ); ?></span>
+				</span>
+			</a>
+			<?php endforeach; ?>
+		</div>
+	</section>
+		<?php
+	}
+}
+
 if ( ! function_exists( 'nadlan_hv2_band_market' ) ) {
 	function nadlan_hv2_band_market() {
 		$s = (array) get_option( 'nadlan_market_snapshot', array() );
@@ -425,7 +465,7 @@ if ( ! function_exists( 'nadlan_hv2_band_areas' ) ) {
 			<?php foreach ( $cities as $c ) : ?>
 			<a href="<?php echo esc_url( home_url( $c['projects'] >= $c['properties'] ? '/projects/?city=' . rawurlencode( $c['name'] ) : '/properties/?city=' . rawurlencode( $c['name'] ) ) ); ?>">
 				<b><?php echo esc_html( $c['name'] ); ?></b>
-				<span><?php echo $c['projects'] ? (int) $c['projects'] . ' ' . nadlan_i18n( 'ar_projects' ) : ''; ?><?php echo $c['projects'] && $c['properties'] ? ' · ' : ''; ?><?php echo $c['properties'] ? (int) $c['properties'] . ' ' . nadlan_i18n( 'ar_apts' ) : ''; ?></span>
+				<span><?php echo $c['projects'] ? ( 1 === (int) $c['projects'] ? esc_html( nadlan_i18n( 'ar_project_one' ) ) : (int) $c['projects'] . ' ' . nadlan_i18n( 'ar_projects' ) ) : ''; ?><?php echo $c['projects'] && $c['properties'] ? ' · ' : ''; ?><?php echo $c['properties'] ? ( 1 === (int) $c['properties'] ? esc_html( nadlan_i18n( 'ar_apt_one' ) ) : (int) $c['properties'] . ' ' . nadlan_i18n( 'ar_apts' ) ) : ''; ?></span>
 			</a>
 			<?php endforeach; ?>
 		</div>
@@ -596,6 +636,12 @@ if ( ! function_exists( 'nadlan_home_v2_shortcode' ) ) {
 		$default = array( 'ticker', 'browse', 'hero', 'market', 'projects', 'listings', 'areas', 'magazine', 'tools', 'pros', 'intl', 'megafooter' ); // 'video' band retired: the promo lives in the hero card
 		$bands   = get_option( 'nadlan_home_bands', $default );
 		if ( ! is_array( $bands ) || ! $bands ) { $bands = $default; }
+		// the flagship 3D band always rides right after the hero (owner 2026-07-06)
+		if ( ! in_array( 'flagships', $bands, true ) ) {
+			$hi = array_search( 'hero', $bands, true );
+			if ( false !== $hi ) { array_splice( $bands, $hi + 1, 0, 'flagships' ); }
+			else { array_unshift( $bands, 'flagships' ); }
+		}
 		ob_start();
 		echo '<div class="nlhv2" dir="' . esc_attr( $dir ) . '" lang="' . esc_attr( $lang ) . '">';
 		if ( function_exists( 'nadlan_lang_switcher' ) ) { echo '<div class="nlhv2-langbar">' . nadlan_lang_switcher() . '</div>'; }
@@ -676,12 +722,25 @@ if ( ! function_exists( 'nadlan_hv2_assets' ) ) {
 .nlhv2-hero-flag{display:block;border:1px solid var(--line);border-radius:16px;overflow:hidden;background:#fff;text-decoration:none;color:var(--ink);box-shadow:0 20px 50px rgba(27,26,23,.1);transition:transform .25s}
 .nlhv2-hero-flag:hover{transform:translateY(-3px)}
 .nlhv2-hero-flag-media{display:block;aspect-ratio:16/11;background:var(--band) center/cover no-repeat;position:relative}
+.nlhv2-flagships .nlhv2-flagsub{color:var(--muted,#6D665C);font-size:14.5px;margin:2px 0 16px;max-width:720px}
+.nlhv2-flaggrid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+@media(max-width:980px){.nlhv2-flaggrid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:520px){.nlhv2-flaggrid{grid-template-columns:1fr}}
+.nlhv2-flag{display:flex;flex-direction:column;border:1px solid var(--line);border-radius:14px;overflow:hidden;background:#fff;text-decoration:none;color:var(--ink);transition:transform .22s,border-color .22s;box-shadow:0 2px 10px rgba(27,26,23,.05)}
+.nlhv2-flag:hover{transform:translateY(-3px);border-color:var(--gold,#9C7A3C)}
+.nlhv2-flag-media{display:block;aspect-ratio:4/3;background:var(--band) center/cover no-repeat;position:relative}
+.nlhv2-flag-3d{position:absolute;top:8px;inset-inline-end:8px;width:52px;height:52px;border-radius:10px;background:#14130F center/cover no-repeat;border:1.5px solid var(--gold,#9C7A3C)}
+.nlhv2-flag-3d b{position:absolute;bottom:-1px;inset-inline-end:-1px;font-size:9px;font-weight:800;background:var(--gold,#9C7A3C);color:#14130F;border-radius:7px 0 8px 0;padding:1px 5px}
+.nlhv2-flag-body{display:flex;flex-direction:column;gap:4px;padding:12px 14px 14px}
+.nlhv2-flag-body b{font-family:var(--font-serif,"Frank Ruhl Libre",serif);font-size:1.02rem;line-height:1.3;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;unicode-bidi:plaintext;text-align:start}
+.nlhv2-flag-meta{font-size:12.5px;color:var(--muted,#6D665C)}
+.nlhv2-flag-go{font-size:12.5px;font-weight:700;color:var(--gold,#9C7A3C);margin-top:2px}
 .nlhv2-hero-flag-media em{position:absolute;bottom:12px;inset-inline-start:12px;font-style:normal;font-size:12px;font-weight:700;background:rgba(27,26,23,.85);color:#E6D4AE;border-radius:6px;padding:6px 11px}
 .nlhv2-hero-flag-cap{display:flex;justify-content:space-between;align-items:baseline;gap:10px;padding:12px 16px}
 .nlhv2-hero-flag-cap b{font-family:var(--font-serif,serif);font-size:1.1rem}
 .nlhv2-hero-flag-cap span{font-size:12.5px;color:var(--warm)}
-.nlhv2-hero-video{position:relative;aspect-ratio:16/11;background:linear-gradient(160deg,#211F19,var(--dark));display:block}
-.nlhv2-hero-video video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;opacity:1}
+.nlhv2-hero-video{position:relative;aspect-ratio:16/9;background:linear-gradient(160deg,#211F19,var(--dark));display:block}
+.nlhv2-hero-video video{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;display:block;opacity:1}
 .nlhv2-hv-brand{position:absolute;inset:0;display:grid;place-items:center;font-family:var(--font-serif,"Frank Ruhl Libre",serif);font-size:2.2rem;color:#E6D4AE;letter-spacing:.06em}
 .nlhv2-band{padding:30px 0;border-top:1px solid var(--line)}
 .nlhv2-alt{background:linear-gradient(180deg,#FAF8F3,transparent)}
@@ -754,7 +813,7 @@ if ( ! function_exists( 'nadlan_hv2_assets' ) ) {
 .nlhv2-pro b{font-size:13.5px;line-height:1.2}
 .nlhv2-pro span{font-size:11.5px;color:var(--warm)}
 .nlhv2-spon{position:absolute;top:8px;inset-inline-start:8px;font-style:normal;font-size:10px;font-weight:700;color:var(--warm);border:1px solid var(--line);border-radius:4px;padding:2px 6px;background:#FAF8F3}
-.nlhv2-cta-tile{justify-content:center;background:var(--band);border-style:dashed}
+.nlhv2-cta-tile{justify-content:center;align-items:center;text-align:center;gap:6px;background:linear-gradient(150deg,#F7F1E3,var(--band));border:1px solid #D6C189;position:relative}.nlhv2-cta-tile::before{content:"+";display:grid;place-items:center;width:34px;height:34px;border-radius:50%;background:var(--gold,#9C7A3C);color:#FAF7F1;font-size:20px;font-weight:700;margin-bottom:2px}
 .nlhv2-cta-tile b{color:var(--gold)}
 .nlhv2-en{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;border-radius:16px;background:linear-gradient(160deg,#211F19,var(--dark));color:#FAF8F3;padding:26px 28px;margin:26px 0}
 .nlhv2-en h2{color:#FAF8F3;font-size:1.4rem;margin:0 0 6px}
