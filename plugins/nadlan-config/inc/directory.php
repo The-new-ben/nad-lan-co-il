@@ -44,8 +44,13 @@ if ( ! function_exists( 'nadlan_dir_professions_all' ) ) {
 }
 if ( ! function_exists( 'nadlan_dir_prof_meta' ) ) {
 	function nadlan_dir_prof_meta( $key ) {
-		$all = nadlan_dir_professions();
-		return $all[ $key ] ?? array( 'label' => $key ?: 'בעל מקצוע', 'color' => '#9C7A3C', 'soft' => '#FBF6EE', 'icon' => 'profession-broker' );
+		// FULL map incl. extras (interior_designer, engineer...) - the base-only
+		// lookup leaked raw machine enums onto buyer-facing cards (audit 2026-07-06).
+		$all = nadlan_dir_professions_all();
+		if ( isset( $all[ $key ] ) ) { return $all[ $key ]; }
+		// never print a machine token; a Hebrew free-text value may pass through
+		$label = ( $key !== '' && ! preg_match( '/^[a-z0-9_\-]+$/', $key ) ) ? $key : 'בעל/ת מקצוע';
+		return array( 'label' => $label, 'color' => '#9C7A3C', 'soft' => '#FBF6EE', 'icon' => 'profession-broker' );
 	}
 }
 
@@ -262,6 +267,11 @@ add_filter( 'get_the_archive_title', function ( $t ) {
 	if ( is_post_type_archive( 'nadlan_professional' ) ) { return 'מאגר בעלי המקצוע'; }
 	return $t;
 } );
+/* Professionals archive had no meta description. */
+add_filter( 'wpseo_metadesc', function ( $desc ) {
+	if ( ! is_post_type_archive( 'nadlan_professional' ) || $desc ) { return $desc; }
+	return 'מאגר בעלי מקצוע לנדל"ן בישראל: קבלנים רשומים מפנקס gov.il, שמאים, עורכי דין, יועצי משכנתאות, בדק בית ומעצבים. חיפוש לפי עיר והתמחות, פרופילים מאומתים ויצירת קשר ישירה.';
+}, 25 );
 add_filter( 'pre_get_document_title', function ( $t ) {
 	if ( is_post_type_archive( 'nadlan_professional' ) ) {
 		return 'מאגר בעלי מקצוע בנדל״ן: קבלנים, שמאים, יועצים מאומתים | נדלן';
@@ -884,6 +894,8 @@ if ( ! function_exists( 'nadlan_dir_project_page' ) ) {
 			<?php endforeach; ?>
 		</div>
 	</header>
+<?php echo function_exists( 'nadlan_drone_map_band' ) ? nadlan_drone_map_band() : ''; // phpcs:ignore ?>
+
 	<div class="nldir-body">
 		<aside class="nldir-side">
 			<div class="nldir-fgroup"><h4>ערים מובילות</h4>
