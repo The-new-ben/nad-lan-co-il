@@ -1,5 +1,27 @@
 # AGENT-LOG - the God brain (append-only, newest on top)
 
+## 2026-07-06 (3) - v1.72.8: HOMEPAGE STRIKE LIVE (flagship band leads the front door)
+SHIPPED + LIVE-VERIFIED (flaggrid present, 4 cards, contain-fix, singular grammar):
+- NEW FLAGSHIP BAND right under the hero: "בחרו דירה מתוך הבניין, בתלת ממד" -
+  four flagships with hero plates + gold 3D badges + units count + tour CTA +
+  link to /premium/. Spliced into the band order AT RUNTIME so a DB-stored
+  nadlan_home_bands option cannot hide it. i18n keys x5 languages.
+- HERO VIDEO FIX: 16/9 container + object-fit contain - the 16/11 cover crop
+  was clipping the video's baked-in text ("Every apartment, explorable" now
+  fully visible, letterboxed on the dark panel).
+- UPSELL TILES: DNA cards (gold plus badge, cream gradient, solid border)
+  instead of empty dashed slots that read unfinished.
+- GRAMMAR: demand-areas singular forms (פרויקט אחד/דירה אחת) x5 langs.
+EYE-QA: band reads premium; NIT for next pass - theme underline leaks onto
+flag card titles (.nlhv2-flag * text-decoration none needed); fl_sub subtitle
+contrast is low-ish. WEBSITE SWEEP STATUS (this session, all live-verified):
+home v1.72.8 / projects catalog + drone map / premium / 4 flagship pages (3D,
+map sync, cone, weaver, buy-flow, RFP) / professionals (labels fixed) /
+2 mega guides / 4 calculators / https sitemap / zero long dashes site-wide.
+OPEN GATES: owner decision #34 (seeded ratings), geocode expedition (drone map
++ near-me depend on it), Site Kit connect, email deliverability (last), DUO
+translations + 2 interiors + ZOHI article via Cowork.
+
 ## 2026-07-06 (2) - v1.72.7: DRONE MAP LIVE + professionals fixes + homepage audit
 DRONE MAP (owner ask): /nadlan/v1/project-map (geocoded, siblings excluded, 6h
 cache) + collapsible band on /projects/ - satellite-streets, pitch 58, 3D
