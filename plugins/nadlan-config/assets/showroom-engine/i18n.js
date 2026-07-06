@@ -86,8 +86,14 @@
     view_coming: "מבט מהדירה יוצג לאחר אימות מיקום מול היזם.",
     interior_generic_note: "הדמיית פנים כללית להמחשה בלבד, טרם התקבלו תוכניות מהיזם",
     btn_rfp: "בנו לי הצעה לדירה הזו",
+    btn_winview: "מבט מהחלון על המפה",
+    fp_salon: "סלון ופינת אוכל", fp_kitchen: "מטבח", fp_mamad: "ממ״ד",
+    fp_master: "חדר שינה הורים", fp_bed: "חדר שינה", fp_balcony: "מרפסת",
+    fp_aria: "סיור פנימי בדירה - גררו כדי להביט סביב",
+    fp_hint: "גררו להסתכל · לחצו על דלת למעבר חדר",
+    fp_tag: "הדמיה סכמטית להמחשה - נוצרה מנתוני הדירה",
     tour_coming: "סיור פנים יוצג כאשר יתקבל קישור מאושר.",
-    tour_title: "סיור פנים", tour_open: "פתיחת סיור וירטואלי", tour_open_pano: "פתיחת סיור 360", tour_lazy_hint: "הסיור נטען בלחיצה כדי לשמור על מהירות העמוד.", tour_pending: "סיור פנים יתווסף עם קבלת תמונות 360 או קישור מאושר מהיזם.",
+    tour_title: "סיור פנים", tour_open: "פתיחת סיור וירטואלי", tour_open_pano: "פתיחת סיור 360", tour_lazy_hint: "לחיצה אחת ואתם בפנים.", tour_pending: "סיור 360 מהיזם יעלה כאן עם אישורו. בינתיים אפשר לצעוד בתוך כל דירה דרך לוח הדירות למטה.",
     btn_inquire: "מעניין אותי", btn_save: "שמירה", btn_saved: "נשמר", btn_compare: "להשוואה",
     btn_compared: "בהשוואה", btn_share: "שיתוף", btn_close: "סגירה", link_copied: "הקישור הועתק",
 
@@ -220,8 +226,14 @@
     view_coming: "The view from the apartment will appear after location is verified.",
     interior_generic_note: "Generic interior visualization for illustration only, developer plans pending",
     btn_rfp: "Build me an offer for this apartment",
+    btn_winview: "View from the window, on the map",
+    fp_salon: "Living and dining", fp_kitchen: "Kitchen", fp_mamad: "Safe room",
+    fp_master: "Master bedroom", fp_bed: "Bedroom", fp_balcony: "Balcony",
+    fp_aria: "Walk inside the apartment - drag to look around",
+    fp_hint: "Drag to look · click a door to change rooms",
+    fp_tag: "Schematic visualization built from this apartment's data",
     tour_coming: "An interior tour will appear once an approved link is provided.",
-    tour_title: "Interior tour", tour_open: "Open virtual tour", tour_open_pano: "Open 360 tour", tour_lazy_hint: "The tour loads on click to keep the page fast.", tour_pending: "An interior tour will appear once 360 photos or an approved link are provided.",
+    tour_title: "Interior tour", tour_open: "Open virtual tour", tour_open_pano: "Open 360 tour", tour_lazy_hint: "One click and you are inside.", tour_pending: "The developer's 360 tour will appear here once approved. Meanwhile, walk inside any apartment from the inventory board below.",
     btn_inquire: "I'm interested", btn_save: "Save", btn_saved: "Saved", btn_compare: "Compare",
     btn_compared: "Comparing", btn_share: "Share", btn_close: "Close", link_copied: "Link copied",
     inventory_title: "All apartments",
@@ -299,6 +311,30 @@
   FR.btn_rfp = "Preparez-moi une offre pour ce logement";
   RU.btn_rfp = "Подготовьте мне предложение по этой квартире";
   AR.btn_rfp = "جهزوا لي عرضا لهذه الشقة";
+  FR.btn_winview = "Vue depuis la fenetre, sur la carte";
+  RU.btn_winview = "Вид из окна, на карте";
+  AR.btn_winview = "الإطلالة من النافذة، على الخريطة";
+  FR.fp_salon = "Sejour et salle a manger"; FR.fp_kitchen = "Cuisine"; FR.fp_mamad = "Piece securisee";
+  FR.fp_master = "Chambre parentale"; FR.fp_bed = "Chambre"; FR.fp_balcony = "Balcon";
+  FR.fp_aria = "Visite interieure du logement - faites glisser pour regarder autour";
+  FR.fp_hint = "Glissez pour regarder · cliquez sur une porte pour changer de piece";
+  FR.fp_tag = "Visualisation schematique creee a partir des donnees du logement";
+  RU.fp_salon = "Гостиная и столовая"; RU.fp_kitchen = "Кухня"; RU.fp_mamad = "Защищенная комната";
+  RU.fp_master = "Главная спальня"; RU.fp_bed = "Спальня"; RU.fp_balcony = "Балкон";
+  RU.fp_aria = "Прогулка внутри квартиры - потяните, чтобы осмотреться";
+  RU.fp_hint = "Тяните, чтобы смотреть · нажмите на дверь для перехода";
+  RU.fp_tag = "Схематичная визуализация, построенная по данным квартиры";
+  AR.fp_salon = "غرفة المعيشة والسفرة"; AR.fp_kitchen = "المطبخ"; AR.fp_mamad = "الغرفة المحصنة";
+  AR.fp_master = "غرفة النوم الرئيسية"; AR.fp_bed = "غرفة نوم"; AR.fp_balcony = "الشرفة";
+  AR.fp_aria = "جولة داخل الشقة - اسحب للنظر حولك";
+  AR.fp_hint = "اسحب للنظر · انقر على باب للانتقال بين الغرف";
+  AR.fp_tag = "تصور تخطيطي مبني على بيانات الشقة";
+  FR.tour_lazy_hint = "Un clic et vous etes a l'interieur.";
+  RU.tour_lazy_hint = "Один клик - и вы внутри.";
+  AR.tour_lazy_hint = "نقرة واحدة وأنتم في الداخل.";
+  FR.tour_pending = "La visite 360 du promoteur apparaitra ici des validation. En attendant, entrez dans chaque logement depuis le tableau des appartements ci-dessous.";
+  RU.tour_pending = "360-тур от застройщика появится здесь после утверждения. А пока зайдите внутрь любой квартиры через таблицу квартир ниже.";
+  AR.tour_pending = "ستظهر جولة 360 من المطور هنا فور اعتمادها. حتى ذلك الحين، ادخلوا إلى أي شقة عبر لوحة الشقق أدناه.";
 
   window.NADLAN_I18N = {
     langs: { he: HE, en: EN, fr: FR, ru: RU, ar: AR },

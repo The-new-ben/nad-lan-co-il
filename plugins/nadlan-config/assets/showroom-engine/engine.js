@@ -295,14 +295,21 @@
     if (state.tab === "plan") return u.plan ? '<img src="' + esc(u.plan) + '" alt="' + esc(t("tab_plan")) + '">' : "<p>" + esc(t("plan_coming")) + "</p>";
     if (state.tab === "view") {
       /* per-unit interior wins; else the project's default interior with an
-         honest "generic illustration" label - an empty tab sells nothing. */
-      if (u.interior_url) return '<img src="' + esc(u.interior_url) + '" alt="">';
+         honest "generic illustration" label - an empty tab sells nothing.
+         Plus: the view FROM the window on the live map (FreeCamera at the
+         unit's floor height, looking out in its direction). */
+      var geoOk = project().geo && Number(project().geo.lat);
+      var winBtn = geoOk ? '<button class="nl-btn nl-btn--gold nl-btn--block" style="margin-top:10px" data-act="winview" data-id="' + esc(u.id) + '">' + esc(t("btn_winview")) + "</button>" : "";
+      if (u.interior_url) return '<img src="' + esc(u.interior_url) + '" alt="">' + winBtn;
       var di = project().default_interior;
-      if (di) return '<div class="nl-defint"><img src="' + esc(di) + '" alt=""><span class="nl-defint__note">' + esc(t("interior_generic_note")) + "</span></div>";
-      return "<p>" + esc(t("view_coming")) + "</p>";
+      if (di) return '<div class="nl-defint"><img src="' + esc(di) + '" alt=""><span class="nl-defint__note">' + esc(t("interior_generic_note")) + "</span></div>" + winBtn;
+      return "<p>" + esc(t("view_coming")) + "</p>" + winBtn;
     }
     var tour = safeHttpUrl(u.tour_url || project().tour_url);
-    return tour ? '<a class="nl-btn nl-btn--gold" href="' + esc(tour) + '" target="_blank" rel="noopener">' + esc(t("tour_open")) + "</a>" : "<p>" + esc(t("tour_coming")) + "</p>";
+    if (tour) return '<a class="nl-btn nl-btn--gold" href="' + esc(tour) + '" target="_blank" rel="noopener">' + esc(t("tour_open")) + "</a>";
+    // no developer tour yet -> the schematic walk-inside, built from THIS
+    // unit's real data (rooms, sqm, direction), honestly labeled.
+    return fpMarkup(u);
   }
 
   /* block 6 - inventory */
@@ -668,6 +675,72 @@
     if (u) easeMapToUnitView(u);
   });
 
+  /* ---- walk-inside (FP walkthrough) built from real unit data. JS port of
+     nadlan_ifp_rooms (interior-fp.php); assets print server-side on project
+     pages and window.nadlanInitFP re-initializes injected walkthroughs. ---- */
+  function fpRooms(u) {
+    var count = Math.max(1, Math.min(8, parseFloat(u.rooms) || 4));
+    var sqm = Math.max(30, parseInt(u.sqm, 10) || 85);
+    var bedrooms = Math.max(0, Math.ceil(count) - 1);
+    var salonA = sqm * 0.40, bedA = bedrooms ? (sqm * 0.42) / bedrooms : 0;
+    var k = dirKey(u.dir), wall = "n";
+    if (k.indexOf("south") >= 0) wall = "s"; else if (k.indexOf("east") >= 0) wall = "e"; else if (k.indexOf("west") >= 0) wall = "w";
+    var out = [{ key: "salon", label: t("fp_salon"), w: +Math.sqrt(salonA * 1.4).toFixed(1), d: +Math.sqrt(salonA / 1.4).toFixed(1), win: wall }];
+    out.push({ key: "kitchen", label: t("fp_kitchen"), w: 3.4, d: +Math.max(2.4, sqm * 0.12 / 3.4).toFixed(1), win: "n" });
+    for (var i = 1; i <= bedrooms; i++) {
+      var isMamad = i === bedrooms;
+      out.push({ key: "bed" + i, label: isMamad ? t("fp_mamad") : (i === 1 ? t("fp_master") : t("fp_bed") + " " + i),
+        w: +Math.sqrt(bedA * 1.15).toFixed(1), d: +Math.sqrt(bedA / 1.15).toFixed(1),
+        win: isMamad ? "" : (wall === "n" ? "e" : wall) });
+    }
+    var bal = parseInt(u.balcony, 10) || 0;
+    if (bal > 0) out.push({ key: "balcony", label: t("fp_balcony") + " (" + bal + " " + t("sqm_unit") + ")", w: +Math.sqrt(bal * 2.2).toFixed(1), d: +Math.sqrt(bal / 2.2).toFixed(1), win: "open" });
+    return out;
+  }
+  function fpMarkup(u) {
+    return '<div class="nlifp" data-rooms="' + esc(JSON.stringify(fpRooms(u))) + '">' +
+      '<div class="nlifp-stage" tabindex="0" role="application" aria-label="' + esc(t("fp_aria")) + '">' +
+      '<div class="nlifp-cam"><div class="nlifp-world"></div></div>' +
+      '<div class="nlifp-hud"><span class="nlifp-room"></span><span class="nlifp-hint">' + esc(t("fp_hint")) + "</span></div>" +
+      '<span class="nlifp-tag">' + esc(t("fp_tag")) + "</span></div>" +
+      '<div class="nlifp-doors"></div></div>';
+  }
+  function fpInit() { try { if (window.nadlanInitFP) window.nadlanInitFP(); } catch (e) {} }
+
+  /* ---- the view FROM the window, on the live map: FreeCamera at the unit's
+     real floor height, looking out in the apartment's direction. ---- */
+  function winView(u) {
+    var run = function () {
+      var map = window.NLPJX_MAP, gl = window.mapboxgl, p = project();
+      if (!map || !gl || !p || !p.geo || !Number(p.geo.lat)) return;
+      var k = dirKey(u.dir), br = (k && k in DIR_BEARING) ? DIR_BEARING[k] : 270;
+      var fh = parseFloat(p.floor_height_m) || 3.05;
+      var alt = Math.max(10, (parseInt(u.floor, 10) || 1) * fh + 1.6);
+      var band = document.getElementById("nlpjx-map");
+      if (band) band.scrollIntoView({ behavior: "smooth", block: "center" });
+      setTimeout(function () {
+        try {
+          var cam = map.getFreeCameraOptions();
+          cam.position = gl.MercatorCoordinate.fromLngLat({ lng: Number(p.geo.lng), lat: Number(p.geo.lat) }, alt);
+          var rad = br * Math.PI / 180, d = 700;
+          var tLat = Number(p.geo.lat) + (Math.cos(rad) * d) / 111320;
+          var tLng = Number(p.geo.lng) + (Math.sin(rad) * d) / (111320 * Math.cos(Number(p.geo.lat) * Math.PI / 180));
+          cam.lookAtPoint({ lng: tLng, lat: tLat });
+          map.setFreeCameraOptions(cam);
+          showViewCone(br);
+        } catch (e) {}
+      }, 750);
+    };
+    if (window.NLPJX_MAP) { run(); return; }
+    // boot the lazy map by bringing it into view, then run once ready
+    var band = document.getElementById("nlpjx-map");
+    if (band) band.scrollIntoView({ behavior: "smooth", block: "center" });
+    document.addEventListener("nlpjx:map", function once() {
+      document.removeEventListener("nlpjx:map", once);
+      setTimeout(run, 900);
+    });
+  }
+
   ROOT.addEventListener("click", function (e) {
     var node = e.target.closest("[data-act]"); if (!node) return;
     var act = node.dataset.act, id = node.dataset.id;
@@ -685,6 +758,7 @@
     else if (act === "loadtour") loadTour(node);
     else if (act === "loadpano") loadPano(node);
     else if (act === "pin") highlightPin(node);
+    else if (act === "winview") { var wu = unit(node.dataset.id); if (wu) winView(wu); }
   });
   ROOT.addEventListener("keydown", function (e) {
     var node = e.target.closest('[role="button"][data-act="select"]');
@@ -701,6 +775,7 @@
     state.tab = tb; var u = unit(state.unitId); if (!u) return;
     document.querySelectorAll(".nl-tab").forEach(function (b) { b.setAttribute("aria-selected", b.dataset.id === tb); });
     var pane = document.querySelector(".nl-tabpane"); if (pane) pane.innerHTML = tabPane(u);
+    if (tb === "tour") fpInit();
   }
 
   function selectUnit(id, instant) {

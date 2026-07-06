@@ -50,7 +50,6 @@ if ( ! function_exists( 'nadlan_ifp_rooms' ) ) {
 
 if ( ! function_exists( 'nadlan_interior_fp_html' ) ) {
 	function nadlan_interior_fp_html( $args ) {
-		static $done_assets = false;
 		$rooms = nadlan_ifp_rooms(
 			$args['rooms'] ?? 4, $args['size_sqm'] ?? 0,
 			! empty( $args['protected_room'] ), $args['balcony_sqm'] ?? 0,
@@ -65,7 +64,16 @@ if ( ! function_exists( 'nadlan_interior_fp_html' ) ) {
 			. '</div>'
 			. '<div class="nlifp-doors"></div>'
 			. '</div>';
-		if ( $done_assets ) { return $html; }
+		return nadlan_ifp_assets_html() . $html;
+	}
+}
+
+if ( ! function_exists( 'nadlan_ifp_assets_html' ) ) {
+	/** The FP walkthrough CSS+JS, printed once per request. Reused by the
+	 *  showroom engine (unit panel walk-inside) via wp_footer. */
+	function nadlan_ifp_assets_html() {
+		static $done_assets = false;
+		if ( $done_assets ) { return ''; }
 		$done_assets = true;
 		ob_start(); ?>
 <style>
@@ -139,7 +147,7 @@ window.nadlanInitFP=scan;
 })();
 </script>
 <?php
-		return ob_get_clean() . $html;
+		return ob_get_clean();
 	}
 }
 
