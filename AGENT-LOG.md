@@ -1,5 +1,20 @@
 # AGENT-LOG - the God brain (append-only, newest on top)
 
+## 2026-07-07 (14) - v1.72.40 full-homepage sweep: 4 defects caught + fixed
+Full-page screenshot audit found: (1) flagship band still led with
+sketches -> nadlan_hv2_img now prefers project_model_poster (pivot
+complete on homepage too); (2) the returned video band rendered a giant
+BLACK rectangle (controls-mp4, no poster) -> gif-like muted autoplay loop
+with poster, native <source> (autoplay-media law); (3) the clip-art
+news-690k graph image (owner's explicit dislike) -> replaced with a
+branded editorial card (₪690K, Frank Ruhl, brand bars; media 5402) set as
+featured on BOTH language posts 5030+5031; (4) the vacant 'post your
+listing' CTA tiles read broken-empty -> dashed gold intentional tiles
+with plus mark. Published terms' duplicate opening h2 stripped via temp
+snippet (3 articles). THE DIAMOND RUN state: 1.72.34-40 shipped in one
+sequence - emergency trio, flagship tower, night-map hero, cream maps,
+card v3, CBS panel, PRO CARDS business layer, imagery pivot, sweep fixes.
+
 ## 2026-07-07 (13) - v1.72.39 imagery pivot on the catalog + polish (the diamond run continues)
 Projects catalog cards flipped per decision 1: project_model_poster (real
 render) now LEADS; the sketch plate demoted to the corner chip. English

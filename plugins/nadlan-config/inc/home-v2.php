@@ -22,9 +22,11 @@ if ( ! defined( 'ABSPATH' ) ) { exit; }
 
 if ( ! function_exists( 'nadlan_hv2_img' ) ) {
 	function nadlan_hv2_img( $id ) {
-		if ( has_post_thumbnail( $id ) ) { return get_the_post_thumbnail_url( $id, 'large' ); }
+		// IMAGERY PIVOT (owner decision 1, 2026-07-07): the real model render
+		// leads; the sketch featured image is the fallback, not the face.
 		$poster = (string) get_post_meta( $id, 'project_model_poster', true );
 		if ( $poster ) { return $poster; }
+		if ( has_post_thumbnail( $id ) ) { return get_the_post_thumbnail_url( $id, 'large' ); }
 		$photos = array_filter( array_map( 'trim', explode( ',', (string) get_post_meta( $id, 'photos_csv', true ) ) ) );
 		return $photos ? $photos[0] : '';
 	}
@@ -289,7 +291,10 @@ if ( ! function_exists( 'nadlan_hv2_band_video' ) ) {
 		} elseif ( preg_match( '~vimeo\.com/(\d+)~', $url, $m ) ) {
 			$embed = '<iframe src="https://player.vimeo.com/video/' . esc_attr( $m[1] ) . '" title="נדלן - סרטון" loading="lazy" allowfullscreen></iframe>';
 		} elseif ( preg_match( '~\.(mp4|webm)(\?|$)~i', $url ) ) {
-			$embed = '<video controls preload="metadata" playsinline src="' . esc_url( $url ) . '"></video>';
+			// gif-like, poster-backed: a controls-only mp4 rendered as a huge
+			// black rectangle before play (owner sweep 2026-07-07)
+			$poster = trim( (string) get_option( 'nadlan_home_video_poster', '' ) );
+			$embed  = '<video muted autoplay loop playsinline preload="metadata"' . ( $poster ? ' poster="' . esc_url( $poster ) . '"' : '' ) . '><source src="' . esc_url( $url ) . '"></video>';
 		}
 		if ( ! $embed ) { return; }
 		echo '<section class="nlhv2-band nlhv2-videoband" aria-label="סרטון היכרות"><header><p class="nlhv2-kicker">רגע לפני שמתחילים</p><h2>ככה בוחרים דירה בנדלן</h2></header><div class="nlhv2-video-frame">' . $embed . '</div></section>'; // phpcs:ignore
@@ -730,6 +735,11 @@ if ( ! function_exists( 'nadlan_hv2_assets' ) ) {
 .nlhv2-cbs-bar span{font:500 12.5px/1.2 Heebo,sans-serif;color:#6D665C;text-align:center}
 .nlhv2-cbs-src{font-size:12px;color:#6D665C;border-top:1px solid var(--line,#E2DCD0);margin:16px 0 0;padding:10px 2px 2px}
 .nlhv2-cbs-src a{color:#9C7A3C}
+/* the vacant CTA tile reads INTENTIONAL, not broken (owner sweep 2026-07-07) */
+.nlhv2-cta-tile{display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:6px;border:1.6px dashed #C9A55C!important;background:#FBF8F2!important;border-radius:14px}
+.nlhv2-cta-tile::before{content:"+";font:700 30px/1 Heebo,sans-serif;color:#9C7A3C}
+.nlhv2-cta-tile b{color:#1B1A17}
+.nlhv2-cta-tile:hover{border-style:solid!important}
 @media(max-width:860px){.nlhv2-hero{grid-template-columns:1fr}}
 .nlhv2-sub{color:var(--warm);max-width:560px;margin:0 0 20px;font-size:15.5px}
 .nlhv2-search{max-width:640px}
