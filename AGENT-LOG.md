@@ -1,5 +1,26 @@
 # AGENT-LOG - the God brain (append-only, newest on top)
 
+## 2026-07-07 (1) - v1.72.27: intake stage-2 fill path (pre-emptive bug kill)
+CAUGHT BEFORE IT BIT: the intake skipped ANY existing title - so the owner's
+stage-2 article upload would have skipped all 197 staged drafts. FIX: an
+existing DRAFT with <120 words + incoming content_html = filled in place and
+scheduled onto the drip; published/future terms are never overwritten.
+
+## 2026-07-06 (26) - ENCYCLOPEDIA BATCH 1 INGESTED: 197 ontology drafts staged
+Owner ran the mega-prompt on ChatGPT Pro and uploaded batch 1: 200 rows,
+PERFECT schema compliance (all 8 fields, 12 entity types, 12 domains, 0 long
+dashes, 0 in-batch dupes, 100% name_en coverage). Distribution: 45 terms /
+35 materials / 25 tools / 25 methods / 18 roles / 18 regulations / 15
+standards / 10 formulas / 5 software / 2 orgs / 1 publication / 1 person.
+INGESTED via /nadlan/v1/glossary-intake: 199 created as DRAFTS (stage-1 rows
+carry no content_html - articles come from stage 2 "כתוב מאמרים לבאצ' 1").
+1 exact dupe auto-skipped (שיעור היוון exists). ANTI-CANNIBALIZATION PRUNE:
+deleted drafts טופס 4 + תעודת גמר (existing indexed page covers both).
+NET: 197 staged drafts awaiting articles. "דמי שכירות ראויים" kept (crude
+consumer filter false-positive - it is a professional appraisal term).
+Source archived handoff/research/encyclopedia/ontology-batch-1.json.
+NEXT: owner runs stage 2 on the same ChatGPT thread (50 articles/response) ->
+upload -> intake matches by title, fills content, schedules the 12/day drip.
 ## 2026-07-06 (25) - MEGA INGEST: DUO x4 LANGUAGES LIVE (flagship set complete) + 17 dev profiles
 COWORK DELIVERED SIX (drafts 5184-5190, all validated: 0 long dashes):
 1) DUO TRANSLATIONS (JOB 3 - the last flagship gap): en 6,118w / fr 6,810w /

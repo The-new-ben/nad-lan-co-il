@@ -54,8 +54,18 @@ add_action( 'rest_api_init', function () {
 			foreach ( $entries as $e ) {
 				$title = sanitize_text_field( (string) ( $e['name_he'] ?? '' ) );
 				if ( $title === '' ) { $skipped++; continue; }
-				if ( get_page_by_title( $title, OBJECT, 'nadlan_term' ) ) { $skipped++; continue; }
 				$content = (string) ( $e['content_html'] ?? '' );
+				// STAGE-2 PATH: an existing DRAFT with thin content + an incoming
+				// article = fill the draft and put it on the drip. A published or
+				// already-scheduled term is never touched (no silent overwrites).
+				$found = get_page_by_title( $title, OBJECT, 'nadlan_term' );
+				$fill_id = 0;
+				if ( $found ) {
+					$existing_words = count( preg_split( '/\s+/', trim( wp_strip_all_tags( (string) $found->post_content ) ) ) );
+					if ( 'draft' === $found->post_status && $existing_words < 120 && trim( wp_strip_all_tags( $content ) ) !== '' ) {
+						$fill_id = (int) $found->ID;
+					} else { $skipped++; continue; }
+				}
 				$has_content = str_word_count( wp_strip_all_tags( $content ) ) + count( preg_split( '/\s+/', trim( wp_strip_all_tags( $content ) ) ) ) > 120;
 				$args = array(
 					'post_type'    => 'nadlan_term',
@@ -77,8 +87,10 @@ add_action( 'rest_api_init', function () {
 					if ( $first === '' ) { $first = $args['post_date']; }
 					$last = $args['post_date'];
 				}
-				$pid = wp_insert_post( $args );
+				if ( $fill_id ) { $args['ID'] = $fill_id; }
+				$pid = $fill_id ? wp_update_post( $args ) : wp_insert_post( $args );
 				if ( is_wp_error( $pid ) || ! $pid ) { $skipped++; continue; }
+				$pid = $fill_id ? $fill_id : $pid;
 				$created++;
 				if ( $has_content ) { $scheduled++; } else { $drafted++; }
 				foreach ( array( 'name_en', 'entity_type', 'enc_domain', 'enc_sources', 'enc_related' ) as $mk ) {
