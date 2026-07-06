@@ -452,3 +452,6 @@ html[lang="en"] .nl-pcard__name { font-family: var(--font-serif-en); }
 .nl-mortg { margin-top: 10px; padding: 10px 13px; border: 1px solid rgba(216,199,154,.4); border-radius: 10px; background: rgba(216,199,154,.08); }
 .nl-mortg b { display: block; color: #d8c79a; font-size: 14px; }
 .nl-mortg__note { display: block; margin-top: 3px; color: var(--theater-sub); font-size: 10.5px; line-height: 1.45; }
+
+/* honest chip on the generic default model (owner law: honesty over beauty) */
+.nl-generic-chip{position:absolute;top:14px;inset-inline-start:14px;z-index:4;background:rgba(20,19,15,.82);color:#E9D9A8;font:600 12px/1 Heebo,sans-serif;padding:7px 12px;border-radius:999px;border:1px solid rgba(233,217,168,.4);pointer-events:none}
