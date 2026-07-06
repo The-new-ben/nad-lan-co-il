@@ -1,5 +1,25 @@
 # AGENT-LOG - the God brain (append-only, newest on top)
 
+## 2026-07-06 (15) - GEO EXPEDITION INGESTED + v1.72.19: 958 projects on the map, clustered
+Cowork JOB 1 delivered 10 CSV drafts (5143-5152): 957 rows, 954 valid
+(12 neighborhood / 942 city centroid via Nominatim, source URL per row),
+3 NONE, 0 out-of-box. Bulk server-side ingest via temp snippet: 954 written
+(lat/lng/geo_confidence), existing coords skipped (flagships untouched),
+drafts to delete after verify. project-map endpoint was CAPPED at 200 -
+uncapped (-1). v1.72.19:
+- DRONE MAP CLUSTERED: geojson source cluster:true r44, gold cluster bubbles
+  with counts, terracotta unclustered points, cluster click = expansion zoom
+  or (>=15.5z) popup listing up to 8 projects + "and N more", city-level
+  popups say "מיקום ברמת עיר". Band note updated to the honest full-catalog
+  wording. 197 Jerusalem projects = one honest bubble, not fake pins.
+- CONFIDENCE GATE: geo.confidence ships in engine payload; winstage/winView
+  disabled when confidence=city (a window view from a city centroid is
+  fiction; flagships/neighborhood keep it).
+KNOWN DATA CAVEATS (logged, not blockers): meier-on-rothschild neighborhood
+point looks ~3km east of Rothschild (Nominatim match); city centroids shared
+by hundreds of projects until facilities sweep (JOB 7) brings addresses.
+Cowork proceeding to JOB 5 (FR guide) with 2026 number verification.
+
 ## 2026-07-06 (14) - v1.72.18: RFP demo unblock + noindex retirement + key endpoint
 OWNER DIRECTIVES: (a) RFP seeded-advisor exclusion REVERTED - demonstration
 phase, seeded advisors stay matchable (badge stays in directory; re-add

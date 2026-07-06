@@ -23,7 +23,7 @@ add_action( 'rest_api_init', function () {
 			if ( is_array( $cache ) ) { return new WP_REST_Response( $cache, 200 ); }
 			$q = new WP_Query( array(
 				'post_type' => 'nadlan_project', 'post_status' => 'publish',
-				'posts_per_page' => 200, 'fields' => 'ids', 'no_found_rows' => true,
+				'posts_per_page' => -1, 'fields' => 'ids', 'no_found_rows' => true,
 				'nadlan_no_lang_siblings' => true,
 				'meta_query' => array( 'relation' => 'AND',
 					array( 'key' => 'lat', 'compare' => 'EXISTS' ),
@@ -40,6 +40,7 @@ add_action( 'rest_api_init', function () {
 					'title' => get_the_title( $id ),
 					'url'   => get_permalink( $id ),
 					'city'  => (string) get_post_meta( $id, 'city', true ),
+					'conf'  => (string) get_post_meta( $id, 'geo_confidence', true ),
 					'img'   => esc_url_raw( (string) get_post_meta( $id, 'project_3d_image', true ) ),
 				);
 			}
@@ -65,7 +66,7 @@ if ( ! function_exists( 'nadlan_drone_map_band' ) ) {
 	</button>
 	<div class="nldrone-stage" id="nldrone-stage" hidden>
 		<div class="nldrone-map" id="nldrone-map"></div>
-		<p class="nldrone-note">מוצגים פרויקטים עם מיקום מאומת או משוער. פרויקטים נוספים מצטרפים למפה עם אימות מיקומם.</p>
+		<p class="nldrone-note">כל הקטלוג על המפה: מיקומים מאומתים, שכונתיים וברמת עיר (מקובצים). הדיוק משתפר עם אימות כתובות מול היזמים.</p>
 	</div>
 </section>
 <style>
@@ -102,19 +103,56 @@ if ( ! function_exists( 'nadlan_drone_map_band' ) ) {
 				try{map.addLayer({id:"nl-3d",source:"composite","source-layer":"building",filter:["==","extrude","true"],type:"fill-extrusion",minzoom:13,paint:{"fill-extrusion-color":"#d8d2c4","fill-extrusion-height":["get","height"],"fill-extrusion-base":["get","min_height"],"fill-extrusion-opacity":.72}},lab)}catch(e){}
 			});
 			fetch(band.dataset.rest).then(function(r){return r.json()}).then(function(d){
-				(d.items||[]).forEach(function(p){
-					var el=document.createElement("div");
-					el.className="nldrone-pin";
-					el.innerHTML='<svg viewBox="0 0 30 38"><path d="M15 1C7.8 1 2 6.8 2 14c0 9.6 13 23 13 23s13-13.4 13-23C28 6.8 22.2 1 15 1z" fill="#9C7A3C" stroke="#FAF7F1" stroke-width="2"/><circle cx="15" cy="14" r="5.5" fill="#FAF7F1"/></svg>';
-					var pop=new mapboxgl.Popup({offset:22,maxWidth:"250px"}).setHTML('<div class="nldrone-pop" dir="rtl"><b>'+p.title+"</b>"+(p.img?'<img src="'+p.img+'" alt="" loading="lazy">':"")+(p.city?'<div style="font-size:12px;color:#6D665C">'+p.city+"</div>":"")+'<a href="'+p.url+'">לעמוד הפרויקט ←</a></div>');
-					var mk=new mapboxgl.Marker({element:el,anchor:"bottom"}).setLngLat([p.lng,p.lat]).setPopup(pop).addTo(map);
-					el.addEventListener("click",function(){map.flyTo({center:[p.lng,p.lat],zoom:16.2,pitch:62,bearing:-30,speed:.9})});
-				});
-				if(d.items&&d.items.length){
-					var b=new mapboxgl.LngLatBounds();
-					d.items.forEach(function(p){b.extend([p.lng,p.lat])});
-					map.fitBounds(b,{padding:90,pitch:58,bearing:-17,maxZoom:13.5});
-				}
+				var items=d.items||[]; if(!items.length)return;
+				/* the whole catalog is geocoded now (mostly city-level), so pins
+				   are CLUSTERED - an honest "197 projects" bubble on a city center
+				   instead of 197 stacked pins pretending to be exact addresses. */
+				var gj={type:"FeatureCollection",features:items.map(function(p){
+					return {type:"Feature",geometry:{type:"Point",coordinates:[p.lng,p.lat]},
+						properties:{id:p.id,title:p.title,url:p.url,city:p.city||"",img:p.img||"",conf:p.conf||""}};
+				})};
+				var addData=function(){
+					if(map.getSource("nlprojects"))return;
+					map.addSource("nlprojects",{type:"geojson",data:gj,cluster:true,clusterRadius:44,clusterMaxZoom:22});
+					map.addLayer({id:"nl-clusters",type:"circle",source:"nlprojects",filter:["has","point_count"],
+						paint:{"circle-color":"#9C7A3C","circle-opacity":.92,"circle-stroke-width":2,"circle-stroke-color":"#FAF7F1",
+							"circle-radius":["step",["get","point_count"],16,10,20,50,26,150,32]}});
+					map.addLayer({id:"nl-cluster-count",type:"symbol",source:"nlprojects",filter:["has","point_count"],
+						layout:{"text-field":["get","point_count_abbreviated"],"text-size":13,"text-font":["DIN Pro Medium","Arial Unicode MS Bold"]},
+						paint:{"text-color":"#FAF7F1"}});
+					map.addLayer({id:"nl-points",type:"circle",source:"nlprojects",filter:["!",["has","point_count"]],
+						paint:{"circle-color":"#C2563A","circle-radius":8,"circle-stroke-width":2,"circle-stroke-color":"#FAF7F1"}});
+					function popHtml(p){return '<div class="nldrone-pop" dir="rtl"><b>'+p.title+"</b>"+(p.img?'<img src="'+p.img+'" alt="" loading="lazy">':"")+(p.city?'<div style="font-size:12px;color:#6D665C">'+p.city+(p.conf==="city"?' · מיקום ברמת עיר':"")+"</div>":"")+'<a href="'+p.url+'">לעמוד הפרויקט ←</a></div>'}
+					map.on("click","nl-points",function(e){
+						var p=e.features[0].properties;
+						new mapboxgl.Popup({offset:14,maxWidth:"250px"}).setLngLat(e.features[0].geometry.coordinates).setHTML(popHtml(p)).addTo(map);
+					});
+					map.on("click","nl-clusters",function(e){
+						var f=e.features[0],cid=f.properties.cluster_id,src=map.getSource("nlprojects");
+						var same=map.getZoom()>=15.5;
+						if(same){
+							src.getClusterLeaves(cid,8,0,function(err,leaves){
+								if(err)return;
+								var list=leaves.map(function(l){return '<a href="'+l.properties.url+'" style="display:block;margin:4px 0">'+l.properties.title+"</a>"}).join("");
+								var more=f.properties.point_count>8?'<div style="font-size:11px;color:#6D665C">ועוד '+(f.properties.point_count-8)+' פרויקטים בעיר</div>':"";
+								new mapboxgl.Popup({offset:14,maxWidth:"280px"}).setLngLat(f.geometry.coordinates).setHTML('<div class="nldrone-pop" dir="rtl"><b>'+f.properties.point_count+' פרויקטים</b>'+list+more+"</div>").addTo(map);
+							});
+						} else {
+							src.getClusterExpansionZoom(cid,function(err,z){
+								if(err)return;
+								map.easeTo({center:f.geometry.coordinates,zoom:Math.min(z,15.6)});
+							});
+						}
+					});
+					["nl-points","nl-clusters"].forEach(function(l){
+						map.on("mouseenter",l,function(){map.getCanvas().style.cursor="pointer"});
+						map.on("mouseleave",l,function(){map.getCanvas().style.cursor=""});
+					});
+				};
+				if(map.loaded()||map.isStyleLoaded()){addData()}else{map.on("load",addData)}
+				var b=new mapboxgl.LngLatBounds();
+				items.forEach(function(p){b.extend([p.lng,p.lat])});
+				map.fitBounds(b,{padding:70,pitch:58,bearing:-17,maxZoom:12.5});
 			}).catch(function(){});
 		}
 		if(window.mapboxgl){go();return}
