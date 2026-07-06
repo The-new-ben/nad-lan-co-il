@@ -62,11 +62,14 @@ add_action( 'rest_api_init', function () {
 				$fill_id = 0;
 				if ( $found ) {
 					$existing_words = count( preg_split( '/\s+/', trim( wp_strip_all_tags( (string) $found->post_content ) ) ) );
-					if ( 'draft' === $found->post_status && $existing_words < 120 && trim( wp_strip_all_tags( $content ) ) !== '' ) {
+					if ( 'draft' === $found->post_status && $existing_words < 250 && trim( wp_strip_all_tags( $content ) ) !== '' ) {
 						$fill_id = (int) $found->ID;
 					} else { $skipped++; continue; }
 				}
-				$has_content = str_word_count( wp_strip_all_tags( $content ) ) + count( preg_split( '/\s+/', trim( wp_strip_all_tags( $content ) ) ) ) > 120;
+				// Wikipedia-depth gate (owner 2026-07-07): only a real article enters
+				// the publishing drip; anything shorter stays a private draft.
+				$content_words = count( preg_split( '/\s+/', trim( wp_strip_all_tags( $content ) ) ) );
+				$has_content = $content_words >= 250;
 				$args = array(
 					'post_type'    => 'nadlan_term',
 					'post_title'   => $title,
