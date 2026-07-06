@@ -1,5 +1,32 @@
 # AGENT-LOG - the God brain (append-only, newest on top)
 
+## 2026-07-06 (21) - FUNNEL ROUND 3: THE PAYMENT PIPE WAS ARMED ALL ALONG (correction)
+OWNER WAS RIGHT: my round-2 "GreenInvoice key missing" was WRONG-LENS. I was
+probing our custom recurring module (nadlan_gi_api_key - EMPTY, module
+designed for GI payment-page IPN flow, still unarmed). The REAL money path
+runs through WooCommerce + wc-gateway-greeninvoice (official Morning plugin):
+license_key present (36ch, activated=yes), 4 gateway types (100/120/150/160),
+WooCommerce active, ILS. PRODUCTS ALREADY PUBLISHED: 475 basic 0 / 476 Pro
+349 (first month free) / 477 Premier 749 / 489 project campaign 3,990 / 490
+promoted listing 299. /join-pro/ ALREADY carries add-to-cart links for all 4
+paid products. HEADLESS E2E: add-to-cart 476 -> /checkout/ renders the order
++ THREE live payment methods (Morning credit cards / Bit / Google Pay), zero
+JS errors. Stopped before paying (real charge). SELF-SERVE PURCHASE = WORKING.
+REAL REMAINING GAPS (floated):
+1) RENEWALS: products are simple one-time charges; "349/month" needs either
+   WooCommerce Subscriptions, Morning standing-order pages, or our custom
+   dunning module armed (nadlan_gi_api_key + plan URLs). Month-2 revenue is
+   currently manual.
+2) COPY/PRICE MISMATCH: product 476 says "first month free" but checkout
+   charges 349 now - either rename or configure a trial. Trust risk at the
+   exact moment of payment.
+3) The custom greeninvoice-recurring module (dunning/reconcile/IPN) stays
+   unarmed until its own key/urls are set - fine while WC handles charges.
+COWORK SWEEPS 6-7 (drafts 5161-5180): echoes of OUR OWN meta (facilities from
+project meta; prices 7 real values already in meta, 954 NONE) - nothing to
+ingest; drafts deleted per protocol. Owner chose "enrich ~20 named projects"
+externally - Cowork proceeding; those batches WILL carry new info.
+
 ## 2026-07-06 (20) - v1.72.23 FUNNEL ROUND 2: one-step signup, advertiser form, /pricing/ fix
 AUDIT FINDINGS (money paths, headless + config):
 - users_can_register=true, default_role=subscriber (self-serve possible) BUT
