@@ -151,6 +151,9 @@ if ( ! function_exists( 'nadlan_showroom_engine_build_project' ) ) {
 			'geo'            => array(
 				'lat' => (float) get_post_meta( $id, 'lat', true ),
 				'lng' => (float) get_post_meta( $id, 'lng', true ),
+				// city-centroid coordinates (bulk geocode) are honest for the map
+				// but NOT for a per-apartment window view - the engine gates on this.
+				'confidence' => (string) get_post_meta( $id, 'geo_confidence', true ),
 			),
 			// monetization: paid tier lifts a project in gallery / map / nearby order.
 			'featured'       => (bool) get_post_meta( $id, 'project_featured', true ),

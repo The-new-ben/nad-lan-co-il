@@ -311,7 +311,10 @@
          its real direction - satellite + 3D buildings, so the buyer sees WHAT
          is outside (a building? a school? the sea?) without visiting. The
          interior render is secondary; the live POI map is the continuation. */
-      var geoOk = project().geo && Number(project().geo.lat);
+      // city-centroid coordinates are fine for the area map but a specific
+      // window view from a city center would be a lie - require better geo.
+      var g = project().geo || {};
+      var geoOk = Number(g.lat) && g.confidence !== "city";
       var int1 = u.interior_url || project().default_interior;
       if (geoOk && SR.config.mapbox_token) {
         var html = '<div class="nl-winstage" data-id="' + esc(u.id) + '">' +
@@ -889,7 +892,7 @@
   function winView(u) {
     var run = function () {
       var map = window.NLPJX_MAP, gl = window.mapboxgl, p = project();
-      if (!map || !gl || !p || !p.geo || !Number(p.geo.lat)) return;
+      if (!map || !gl || !p || !p.geo || !Number(p.geo.lat) || p.geo.confidence === "city") return;
       var k = dirKey(u.dir), br = (k && k in DIR_BEARING) ? DIR_BEARING[k] : 270;
       var fh = parseFloat(p.floor_height_m) || 3.05;
       var alt = Math.max(10, (parseInt(u.floor, 10) || 1) * fh + 1.6);
