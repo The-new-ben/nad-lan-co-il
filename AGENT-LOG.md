@@ -1,5 +1,32 @@
 # AGENT-LOG - the God brain (append-only, newest on top)
 
+## 2026-07-06 (19) - OPENAI KEY LIVE + FR GUIDE PUBLISHED + funnel audit round 1 (v1.72.22)
+KEY: owner pasted in chat (his call); written via /nadlan/v1/keys, validated
+server-side against api.openai.com: HTTP 200, 120 models visible. AI features
+alive. Rotation reminder queued (key passed through chat). NOTE: health.php
+openai probe hits /v1/models WITHOUT auth - its 401 is reachability only, not
+key validity; keytest snippet pattern is the real check.
+COWORK CORRECTION RELAYED: Cowork claimed geo drafts still pending + lat/lng
+"still 0" - STALE/BUGGY read on its side; 954 coords ingested hours ago
+(958 live on the map), drafts 5143-5152 deleted per protocol. Cowork must NOT
+write coordinates directly. Owner chose JOBS 6-8 (data sweeps) next.
+FR GUIDE (JOB 5) PUBLISHED: post 5156 -> /acheter-appartement-israel-2026/,
+4,171 words, 0 long dashes, verified 2026 figures (8%/10% @ 6,055,070 frozen
+to 01/2028; oleh 0%/0.5% @ ~1.988M; LTV 50/75/90), title/slug/category set,
+Yoast meta, 12-item guide_faq_json -> FAQPage schema live, guide_lang=fr meta
+(html lang filter for fr = TODO next release), hub French section now links it.
+FUNNEL AUDIT ROUND 1 (owner god-mission, money paths):
+- /contact/ 404 but premium catalog developer CTA pointed there = dead money
+  path -> repointed to /advertise/ (v1.72.22).
+- /post-listing/ page title carried an em dash -> swapped per dash law.
+- /pricing/ 301s to an article about apartment pricing (semantic trap for a
+  developer looking for OUR pricing) - FLOAT: reserve /pricing/ for the
+  commercial page. /join/ -> /join-pro/ 200 ok (Pro/Premier/campaign tiers).
+- /post-listing/ + /advertise/ + /join-pro/: no native <form> elements found
+  (wizard is JS-driven; advertise/join-pro lean on WhatsApp links). DEEP
+  HEADLESS CLICK-THROUGH of the wizard + join flows = next round (task).
+- greeninvoice probe: reachable (404 on bare API root is expected unauth).
+
 ## 2026-07-06 (18) - v1.72.21: buyer-mode map + free-look window + notranslate + hub link
 OWNER DIRECTIVES BATCH: simple key handoff (offered to paste in chat - accepted,
 see chat), link the hub, near-me with minimum user effort (IP approximation),
