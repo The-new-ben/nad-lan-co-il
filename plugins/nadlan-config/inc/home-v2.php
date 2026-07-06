@@ -325,7 +325,7 @@ if ( ! function_exists( 'nadlan_hv2_band_flagships' ) ) {
 				$city   = (string) get_post_meta( $p->ID, 'city', true );
 				$units  = (int) get_post_meta( $p->ID, 'num_units', true ); ?>
 			<a class="nlhv2-flag" href="<?php echo esc_url( get_permalink( $p ) ); ?>">
-				<span class="nlhv2-flag-media"<?php echo $hero ? ' style="background-image:url(' . $hero . ')"' : ''; ?>>
+				<span class="nlhv2-flag-media<?php echo $is_poster ? ' is-poster' : ''; ?>"<?php echo $hero ? ' style="background-image:url(' . $hero . ')"' : ''; ?>>
 					<?php if ( $poster ) : ?><span class="nlhv2-flag-3d" style="background-image:url(<?php echo $poster; ?>)"><b>3D</b></span><?php endif; ?>
 				</span>
 				<span class="nlhv2-flag-body">
@@ -384,6 +384,7 @@ if ( ! function_exists( 'nadlan_hv2_band_projects' ) ) {
 		<div class="nlhv2-projgrid">
 			<?php foreach ( $projects as $p ) :
 				$img = nadlan_hv2_img( $p->ID );
+				$is_poster = $img && $img === (string) get_post_meta( $p->ID, 'project_model_poster', true );
 				$glb = (string) get_post_meta( $p->ID, 'project_model_glb', true );
 				$pp  = (int) get_post_meta( $p->ID, 'project_3d_avg_price_per_sqm', true );
 				$units = json_decode( (string) get_post_meta( $p->ID, 'project_3d_units', true ), true );
@@ -740,6 +741,11 @@ if ( ! function_exists( 'nadlan_hv2_assets' ) ) {
 .nlhv2-cta-tile::before{content:"+";font:700 30px/1 Heebo,sans-serif;color:#9C7A3C}
 .nlhv2-cta-tile b{color:#1B1A17}
 .nlhv2-cta-tile:hover{border-style:solid!important}
+/* the promo video lives in a confined frame - never full-bleed (owner 2026-07-07) */
+.nlhv2-videoband .nlhv2-video-frame{max-width:820px;margin:0 auto;aspect-ratio:16/9;border-radius:18px;overflow:hidden;border:1px solid #D6C189;background:#14130F;box-shadow:0 22px 48px -26px rgba(27,26,23,.5)}
+.nlhv2-videoband .nlhv2-video-frame video,.nlhv2-videoband .nlhv2-video-frame iframe{width:100%;height:100%;object-fit:cover;display:block;border:0}
+.nlhv2-videoband header{text-align:center}
+@media(max-width:640px){.nlhv2-videoband .nlhv2-video-frame{border-radius:12px}}
 @media(max-width:860px){.nlhv2-hero{grid-template-columns:1fr}}
 .nlhv2-sub{color:var(--warm);max-width:560px;margin:0 0 20px;font-size:15.5px}
 .nlhv2-search{max-width:640px}
@@ -764,6 +770,7 @@ if ( ! function_exists( 'nadlan_hv2_assets' ) ) {
 .nlhv2-flag{display:flex;flex-direction:column;border:1px solid var(--line);border-radius:14px;overflow:hidden;background:#fff;text-decoration:none;color:var(--ink);transition:transform .22s,border-color .22s;box-shadow:0 2px 10px rgba(27,26,23,.05)}
 .nlhv2-flag:hover{transform:translateY(-3px);border-color:var(--gold,#9C7A3C)}
 .nlhv2-flag-media{display:block;aspect-ratio:4/3;background:var(--band) center/cover no-repeat;position:relative}
+.nlhv2-flag-media.is-poster{background-size:contain;background-color:#14130F}
 .nlhv2-flag-3d{position:absolute;top:8px;inset-inline-end:8px;width:52px;height:52px;border-radius:10px;background:#14130F center/cover no-repeat;border:1.5px solid var(--gold,#9C7A3C)}
 .nlhv2-flag-3d b{position:absolute;bottom:-1px;inset-inline-end:-1px;font-size:9px;font-weight:800;background:var(--gold,#9C7A3C);color:#14130F;border-radius:7px 0 8px 0;padding:1px 5px}
 .nlhv2-flag-body{display:flex;flex-direction:column;gap:4px;padding:12px 14px 14px}

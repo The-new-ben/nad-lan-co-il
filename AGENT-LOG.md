@@ -1,5 +1,23 @@
 # AGENT-LOG - the God brain (append-only, newest on top)
 
+## 2026-07-07 (16) - v1.72.42 deep polish round (owner screenshot feedback)
+THE GOLDEN PLUS SOLVED: it is the THEME's own accessibility launcher
+(themes/nadlan-revenue/assets/js/nadlan-accessibility.js injects a gold
+gradient floating toggle bottom-left) - which also meant TWO a11y widgets
+since v1.72.34. Fixed: theme script dequeued+deregistered by src match
+(prio 999); the plugin widget (mid-edge) is now the ONE widget. VIDEO
+confined: framed centered 820px 16:9 block, ink bg, border - was
+full-width and mobile-breaking. POSTERS UNCROPPED: flagship band +
+catalog media get is-poster class -> background contain on #14130F, the
+whole tower model visible as a picture (owner: 'the projects are
+cropped - not what you showed me' - he was right, cover-crop was cutting
+the towers). MAP DOTS: single projects now tiny gold dots (2.6px at z8 ->
+7px at z15, cream on ink outline), clusters smaller (10-22px vs 16-32px),
+quieter opacity, clusterRadius 44->34 = more, finer bubbles; counts kept
+(honesty). My answer to his 'tiny dots' wish: implemented the elegant
+version WITH counts kept - pure dots without counts would hide the
+catalog's depth at country zoom.
+
 ## 2026-07-07 (15) - v1.72.41 RTL text plugin on the hero map (final polish of the run)
 Live-hero screenshot caught Hebrew map labels REVERSED (לארשי) - Mapbox
 renders RTL scripts backwards without mapbox-gl-rtl-text. mapbox-init.js
