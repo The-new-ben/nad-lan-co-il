@@ -93,11 +93,30 @@ if ( ! function_exists( 'nadlan_archive_grid_render' ) ) {
 		<?php while ( have_posts() ) : the_post();
 			$id   = get_the_ID();
 			$city = nadlan_meta_norm( get_post_meta( $id, 'city', true ) );
-			echo '<a class="nlag-card" href="' . esc_url( get_permalink() ) . '">';
+			$lat = get_post_meta( $id, 'lat', true ); $lng = get_post_meta( $id, 'lng', true );
+			echo '<a class="nlag-card" href="' . esc_url( get_permalink() ) . '"' . ( $lat && $lng ? ' data-lat="' . esc_attr( $lat ) . '" data-lng="' . esc_attr( $lng ) . '"' : '' ) . '>';
+			// the real image leads the card (owner decision 1, 2026-07-07)
+			$thumb = get_the_post_thumbnail_url( $id, 'medium_large' );
+			if ( $thumb ) {
+				echo '<span class="nlag-media" style="background-image:url(' . esc_url( $thumb ) . ')"><i class="nlag-km" hidden></i></span>';
+			}
 			echo '<span class="nlag-badge">' . esc_html( $L['badge'] ) . '</span>';
 			echo '<h3>' . esc_html( get_the_title() ) . '</h3>';
-			if ( $city ) { echo '<span class="nlag-city">' . esc_html( $city ) . '</span>'; }
+			if ( $city ) { echo '<span class="nlag-city">' . esc_html( $city ) . ( $thumb ? '' : ' <i class="nlag-km" hidden></i>' ) . '</span>'; }
 			echo nadlan_archive_card_meta( $id, $pt );
+			if ( 'nadlan_property' === $pt ) {
+				$chips = array();
+				foreach ( array( 'protected_room' => 'ממ״ד', 'ac' => 'מיזוג', 'elevator' => 'מעלית', 'parking' => 'חניה', 'storage' => 'מחסן' ) as $mk => $lbl ) {
+					if ( get_post_meta( $id, $mk, true ) ) { $chips[] = $lbl; }
+				}
+				$b = (int) get_post_meta( $id, 'balcony_sqm', true );
+				if ( $b ) { array_unshift( $chips, 'מרפסת ' . $b . ' מ״ר' ); }
+				if ( $chips ) {
+					echo '<span class="nlag-chips">';
+					foreach ( array_slice( $chips, 0, 4 ) as $c ) { echo '<em>' . esc_html( $c ) . '</em>'; }
+					echo '</span>';
+				}
+			}
 			$claimed = get_post_meta( $id, 'claim_status', true ) === 'verified';
 			if ( $claimed ) { echo '<span class="nlag-verified">✓ מאומת</span>'; }
 			echo '<span class="nlag-go">לכרטיס ←</span>';
@@ -119,6 +138,28 @@ if ( ! function_exists( 'nadlan_archive_grid_render' ) ) {
 	</nav>
 	<?php endif; ?>
 
+
+<script>
+(function(){
+	var cards=[].slice.call(document.querySelectorAll(".nlag-card[data-lat]"));
+	if(!cards.length)return;
+	function show(lat,lng,approx){
+		cards.forEach(function(c){
+			var la=parseFloat(c.dataset.lat),ln=parseFloat(c.dataset.lng);
+			if(!la||!ln)return;
+			var R=6371,dLa=(la-lat)*Math.PI/180,dLn=(ln-lng)*Math.PI/180;
+			var a=Math.sin(dLa/2)*Math.sin(dLa/2)+Math.cos(lat*Math.PI/180)*Math.cos(la*Math.PI/180)*Math.sin(dLn/2)*Math.sin(dLn/2);
+			var km=R*2*Math.atan2(Math.sqrt(a),Math.sqrt(1-a));
+			if(km>120)return;
+			var el=c.querySelector(".nlag-km");
+			if(el){el.hidden=false;el.textContent=(km<1?"פחות מק\u05F4מ":"כ-"+(km<10?km.toFixed(1):Math.round(km))+" ק\u05F4מ")+" ממך"+(approx?" · משוער":"");}
+		});
+	}
+	try{fetch("https://ipwho.is/").then(function(r){return r.json()}).then(function(g){
+		if(g&&g.success&&g.country_code==="IL"&&g.latitude){show(g.latitude,g.longitude,true)}
+	}).catch(function(){})}catch(e){}
+})();
+</script>
 	<?php else : ?>
 	<p class="nlag-empty">לא נמצאו רשומות התואמות את הסינון. <a href="<?php echo esc_url( get_post_type_archive_link( $pt ) ); ?>">איפוס סינון</a></p>
 	<?php endif; ?>
@@ -189,6 +230,11 @@ if ( ! function_exists( 'nadlan_archive_grid_css' ) ) {
 .nlag-pager a.page-numbers:hover{background:#9C7A3C;color:#fff;border-color:#9C7A3C}
 .nlag-empty{text-align:center;padding:40px;color:#6b6b6b}
 .nlag-empty a{color:#9C7A3C}
+.nlag-media{display:block;aspect-ratio:4/3;margin:-20px -20px 10px;border-radius:14px 14px 0 0;background:#F3EEE3 center/cover no-repeat;position:relative}
+.nlag-chips{display:flex;flex-wrap:wrap;gap:5px;margin:4px 0 2px}
+.nlag-chips em{font-style:normal;font:600 11.5px/1 Heebo,sans-serif;color:#51483A;background:#F3EEE3;border:1px solid #E2DCD0;border-radius:7px;padding:5px 8px}
+.nlag-km{position:absolute;bottom:10px;inset-inline-start:10px;font-style:normal;font:600 11.5px/1 Heebo,sans-serif;color:#1B1A17;background:rgba(250,247,241,.95);border-radius:999px;padding:6px 10px}
+.nlag-city .nlag-km{position:static;margin-inline-start:8px}
 @media(max-width:600px){.nlag-head h1{font-size:27px}.nlag-grid{grid-template-columns:repeat(2,1fr);gap:12px}.nlag-card{padding:16px;min-height:150px}}
 </style>';
 	}

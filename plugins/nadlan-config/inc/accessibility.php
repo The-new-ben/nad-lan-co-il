@@ -31,11 +31,11 @@ add_action( 'wp_footer', function () {
 	</div>
 </div>
 <style>
-#nla11y{position:fixed;bottom:112px;<?php echo is_rtl() ? 'right' : 'left'; ?>:14px;z-index:99998;font-family:Heebo,system-ui,sans-serif}
+#nla11y{position:fixed;top:50%;transform:translateY(-50%);<?php echo is_rtl() ? 'right' : 'left'; ?>:14px;z-index:99998;font-family:Heebo,system-ui,sans-serif}
 #nla11y-btn{width:52px;height:52px;border-radius:50%;background:#14130F;color:#E9D9A8;border:1px solid #9C7A3C;cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:0 10px 26px -10px rgba(27,26,23,.55)}
 #nla11y-btn:hover{background:#2A251B}
 #nla11y-btn:focus-visible,#nla11y-panel button:focus-visible,#nla11y-panel a:focus-visible{outline:3px solid #C2563A;outline-offset:2px}
-#nla11y-panel{position:absolute;bottom:60px;right:0;width:218px;background:#FAF7F1;border:1px solid #D6C189;border-radius:14px;padding:10px;box-shadow:0 22px 48px -20px rgba(27,26,23,.5)}
+#nla11y-panel{position:absolute;top:60px;right:0;width:218px;background:#FAF7F1;border:1px solid #D6C189;border-radius:14px;padding:10px;box-shadow:0 22px 48px -20px rgba(27,26,23,.5)}
 .nla11y-head{display:flex;justify-content:space-between;align-items:center;font:700 15px/1 Heebo;color:#1B1A17;padding:4px 4px 10px}
 #nla11y-x{background:none;border:0;font-size:14px;cursor:pointer;color:#6D665C;padding:4px}
 #nla11y-panel>button{display:block;width:100%;text-align:right;background:#fff;border:1px solid #E2DCD0;border-radius:9px;font:500 13.5px/1 Heebo;color:#1B1A17;padding:10px 12px;margin:5px 0;cursor:pointer}
@@ -49,7 +49,7 @@ html.nla11y-contrast body :is(a,a *){color:#0000C7!important}
 html.nla11y-links body a{text-decoration:underline!important;background:#FFF3C4;color:#1B1A17!important}
 html.nla11y-readable body,html.nla11y-readable body *{font-family:Arial,Helvetica,sans-serif!important}
 html.nla11y-stopmotion *,html.nla11y-stopmotion *::before,html.nla11y-stopmotion *::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}
-@media(max-width:680px){#nla11y{bottom:150px}}
+
 </style>
 <script>
 (function(){

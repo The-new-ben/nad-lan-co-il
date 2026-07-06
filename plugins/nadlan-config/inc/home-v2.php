@@ -338,20 +338,33 @@ if ( ! function_exists( 'nadlan_hv2_band_flagships' ) ) {
 
 if ( ! function_exists( 'nadlan_hv2_band_market' ) ) {
 	function nadlan_hv2_band_market() {
-		$s = (array) get_option( 'nadlan_market_snapshot', array() );
-		$cards = array();
-		if ( ! empty( $s['ppsqm_tlv'] ) ) { $cards[] = array( number_format( (int) $s['ppsqm_tlv'] ) . ' ₪', nadlan_i18n( 'mk_tlv' ), home_url( '/projects/?city=' . rawurlencode( 'תל אביב' ) ) ); }
-		// Same honesty gate as the ticker: no fake "national" number from a TLV-only sample.
-		if ( ! empty( $s['ppsqm_il'] ) && ( empty( $s['ppsqm_tlv'] ) || abs( (int) $s['ppsqm_il'] - (int) $s['ppsqm_tlv'] ) >= 0.2 * (int) $s['ppsqm_tlv'] ) ) { $cards[] = array( number_format( (int) $s['ppsqm_il'] ) . ' ₪', nadlan_i18n( 'mk_watch' ), home_url( '/projects/' ) ); }
-		if ( ! empty( $s['yoy'] ) ) { $cards[] = array( esc_html( $s['yoy'] ), nadlan_i18n( 'mk_yoy' ), home_url( '/investment/' ) ); }
-		if ( ! empty( $s['mortgage_rate'] ) ) { $cards[] = array( esc_html( $s['mortgage_rate'] ), nadlan_i18n( 'mk_rate' ), home_url( '/mortgage-calculator/' ) ); }
-		if ( count( $cards ) < 2 ) { return; }
-		$note = nadlan_i18n( 'mk_note_pre' ) . esc_html( ! empty( $s['updated'] ) ? $s['updated'] : current_time( 'd/m/Y' ) );
-		echo '<section class="nlhv2-band"><header><h2>' . esc_html( nadlan_i18n( 'mk_title' ) ) . '</h2><span class="nlhv2-note">' . $note . '</span></header><div class="nlhv2-market">'; // phpcs:ignore
-		foreach ( $cards as $c ) {
-			echo '<a href="' . esc_url( $c[2] ) . '"><b>' . $c[0] . '</b><span>' . $c[1] . '</span></a>'; // phpcs:ignore
+		/* THE DATA PANEL (owner decision 7, 2026-07-07): official CBS figures
+		 * only, dated, sourced - or nothing. Defaults = CBS release 150/2026
+		 * (15 May 2026): average free-market transaction price per dwelling,
+		 * Q1 2026, by large city. CMS-editable via option nadlan_market_cbs. */
+		$d = (array) get_option( 'nadlan_market_cbs', array() );
+		$cities = isset( $d['cities'] ) && is_array( $d['cities'] ) && $d['cities'] ? $d['cities'] : array(
+			array( 'תל אביב-יפו', 4594.5 ),
+			array( 'הרצליה', 3849.4 ),
+			array( 'ירושלים', 3096.2 ),
+			array( 'רמת גן', 3028.8 ),
+			array( 'חיפה', 1805.2 ),
+			array( 'באר שבע', 1241.4 ),
+		);
+		$period = ! empty( $d['period'] ) ? $d['period'] : 'רבעון 1, 2026';
+		$src    = ! empty( $d['source_url'] ) ? $d['source_url'] : 'https://www.cbs.gov.il/he/mediarelease/Madad/DocLib/2026/150/10_26_150b.pdf';
+		$yoy    = ! empty( $d['index_yoy'] ) ? $d['index_yoy'] : '-1.3%';
+		$max = 0.0;
+		foreach ( $cities as $c ) { $max = max( $max, (float) $c[1] ); }
+		if ( $max <= 0 ) { return; }
+		echo '<section class="nlhv2-band"><header><h2>' . esc_html( nadlan_i18n( 'mk_title' ) ) . '</h2><span class="nlhv2-note">מחיר ממוצע לדירה בשוק החופשי · ' . esc_html( $period ) . '</span></header>';
+		echo '<div class="nlhv2-cbs"><div class="nlhv2-cbs-bars">';
+		foreach ( array_slice( $cities, 0, 6 ) as $i => $c ) {
+			$h = max( 8, round( (float) $c[1] / $max * 100 ) );
+			$m = round( (float) $c[1] / 1000, 2 );
+			echo '<div class="nlhv2-cbs-bar' . ( 0 === $i ? ' is-top' : '' ) . '"><b>₪' . esc_html( number_format( $m, $m < 10 ? 2 : 1 ) ) . 'M</b><i style="height:' . (int) $h . '%"></i><span>' . esc_html( $c[0] ) . '</span></div>';
 		}
-		echo '</div></section>';
+		echo '</div><p class="nlhv2-cbs-src">שינוי מדד מחירי הדירות בשנה האחרונה: ' . esc_html( $yoy ) . ' · המקור: <a href="' . esc_url( $src ) . '" target="_blank" rel="noopener">הלשכה המרכזית לסטטיסטיקה</a> · מתעדכן רבעונית</p></div></section>';
 	}
 }
 
@@ -696,16 +709,27 @@ if ( ! function_exists( 'nadlan_hv2_assets' ) ) {
 .nlhv2-hero--map{display:block;position:relative;min-height:560px;padding:0;border-radius:22px;overflow:hidden;margin:8px 0 16px;background:#14130F;border:1px solid #2A251B}
 @media(max-width:860px){.nlhv2-hero--map{min-height:520px;border-radius:16px}}
 .nlhv2-hero-mapbg{position:absolute;inset:0}
-.nlhv2-hero-veil{position:absolute;inset:0;pointer-events:none;background:linear-gradient(180deg,rgba(20,19,15,.62) 0%,rgba(20,19,15,.18) 34%,rgba(20,19,15,.05) 55%,rgba(20,19,15,.38) 100%)}
+.nlhv2-hero-veil{position:absolute;inset:0;pointer-events:none;background:linear-gradient(180deg,rgba(20,19,15,.86) 0%,rgba(20,19,15,.55) 26%,rgba(20,19,15,.1) 52%,rgba(20,19,15,.45) 100%)}
 .nlhv2-hero--map .nlhv2-hero-copy{position:relative;z-index:6;max-width:640px;padding:44px clamp(18px,4vw,48px) 30px;pointer-events:none}
 .nlhv2-hero--map .nlhv2-hero-copy>*{pointer-events:auto}
-.nlhv2-hero--map h1{color:#FAF7F1;text-shadow:0 2px 14px rgba(0,0,0,.5)}
+.nlhv2-hero--map h1{color:#FAF7F1;text-shadow:0 2px 6px rgba(0,0,0,.85),0 6px 24px rgba(0,0,0,.6)}
 .nlhv2-hero--map .nlhv2-sub{color:#E4DDCE;text-shadow:0 1px 8px rgba(0,0,0,.5)}
 .nlhv2-hero--map .nlhv2-tabs button{background:rgba(250,247,241,.14);color:#F3EEE3;border-color:rgba(233,217,168,.35);backdrop-filter:blur(4px)}
 .nlhv2-hero--map .nlhv2-tabs button.is-on{background:#FAF7F1;color:#1B1A17}
 .nlhv2-hero--map .nlhv2-box{box-shadow:0 26px 54px -20px rgba(0,0,0,.65)}
 .nlhv2-hero--map .nlhv2-trust a{color:#E4DDCE;text-shadow:0 1px 6px rgba(0,0,0,.6)}
 .nlhv2-hero--map .nlhv2-trust b{color:#E9D9A8}
+/* the CBS data panel (decision 7): real bars, tabular numbers, dated source */
+.nlhv2-cbs{background:#fff;border:1px solid var(--line,#E2DCD0);border-radius:16px;padding:24px 26px 14px}
+.nlhv2-cbs-bars{display:grid;grid-template-columns:repeat(6,1fr);gap:18px;align-items:end;height:190px}
+@media(max-width:720px){.nlhv2-cbs-bars{grid-template-columns:repeat(3,1fr);height:auto;row-gap:26px}}
+.nlhv2-cbs-bar{display:flex;flex-direction:column;align-items:center;justify-content:flex-end;gap:7px;height:100%;min-height:130px}
+.nlhv2-cbs-bar b{font:700 13.5px/1 Heebo,sans-serif;font-variant-numeric:tabular-nums;color:#1B1A17}
+.nlhv2-cbs-bar i{width:70%;max-width:54px;border-radius:7px 7px 0 0;background:#1B1A17}
+.nlhv2-cbs-bar.is-top i{background:var(--gold,#9C7A3C)}
+.nlhv2-cbs-bar span{font:500 12.5px/1.2 Heebo,sans-serif;color:#6D665C;text-align:center}
+.nlhv2-cbs-src{font-size:12px;color:#6D665C;border-top:1px solid var(--line,#E2DCD0);margin:16px 0 0;padding:10px 2px 2px}
+.nlhv2-cbs-src a{color:#9C7A3C}
 @media(max-width:860px){.nlhv2-hero{grid-template-columns:1fr}}
 .nlhv2-sub{color:var(--warm);max-width:560px;margin:0 0 20px;font-size:15.5px}
 .nlhv2-search{max-width:640px}
