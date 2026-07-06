@@ -1,5 +1,19 @@
 # AGENT-LOG - the God brain (append-only, newest on top)
 
+## 2026-07-07 (13) - v1.72.39 imagery pivot on the catalog + polish (the diamond run continues)
+Projects catalog cards flipped per decision 1: project_model_poster (real
+render) now LEADS; the sketch plate demoted to the corner chip. English
+'Written by' byline hidden on term singles (encyclopedia entries are not
+authored posts). CONTENT REPAIR via temp snippet: stripped the duplicated
+opening h2 from the 3 articles published before the v1.72.31 strip
+(אחוזי בנייה 5199, מהנדס אזרחי רשוי 5329, תכנית מתאר מקומית 5210).
+PRO CARDS verified live desktop+mobile on אחוזי בנייה: matched עמית רון
+(urban planner) semantically, eyebrow+row render, no sponsored chip (free
+tier - honest). Tabs unification (#41): engine already carries the tab
+language (tab_plan/מבט/סיור); full one-component adoption across property
+pages queued as next-session work - NOT half-shipped onto live surfaces
+at the end of a marathon (all-or-nothing law).
+
 ## 2026-07-07 (12) - v1.72.38 PRO CARDS: the business layer (owner: 'the business behind all this')
 Every practice-area content page (nadlan_term + posts) now floats its
 professionals: inc/pro-cards.php. MATCHING 3 layers: (1) procard_pros meta

@@ -248,6 +248,13 @@ add_shortcode( 'nadlan_glossary_index', function () {
 	return ob_get_clean();
 } );
 
+/* the theme prints an English "Written by" byline on term singles - hide it
+ * (terms are encyclopedia entries, not authored posts) */
+add_action( 'wp_head', function () {
+	if ( ! is_singular( 'nadlan_term' ) ) { return; }
+	echo '<style>.single-nadlan_term .entry-meta,.single-nadlan_term .post-meta,.single-nadlan_term .byline,.single-nadlan_term .posted-by{display:none!important}</style>';
+}, 30 );
+
 /* the old paginated archive URLs point home to the hub */
 add_action( 'template_redirect', function () {
 	$path = (string) parse_url( (string) ( $_SERVER['REQUEST_URI'] ?? '' ), PHP_URL_PATH );
