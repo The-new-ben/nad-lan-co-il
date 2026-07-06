@@ -41,6 +41,8 @@ add_action( 'rest_api_init', function () {
 					'url'   => get_permalink( $id ),
 					'city'  => (string) get_post_meta( $id, 'city', true ),
 					'conf'  => (string) get_post_meta( $id, 'geo_confidence', true ),
+					'featured' => (bool) get_post_meta( $id, 'project_featured', true ),
+					'poster'   => esc_url_raw( (string) get_post_meta( $id, 'project_model_poster', true ) ),
 					'img'   => esc_url_raw( (string) get_post_meta( $id, 'project_3d_image', true ) ),
 				);
 			}
@@ -55,11 +57,11 @@ add_action( 'save_post_nadlan_project', function () { delete_transient( 'nadlan_
 if ( ! function_exists( 'nadlan_drone_map_i18n' ) ) {
 	function nadlan_drone_map_i18n( $lang ) {
 		$T = array(
-			'he' => array( 'title' => 'מפת הפרויקטים החיה', 'sub' => 'לוויין ובניינים בתלת ממד מעל כל הקטלוג. הקישו על אשכול כדי לצלול לעיר.', 'toggle' => 'מפת רחפן חיה · לוויין ובניינים בתלת ממד מעל כל הקטלוג', 'note' => 'כל הקטלוג על המפה: מיקומים מאומתים, שכונתיים וברמת עיר (מקובצים). הדיוק משתפר עם אימות כתובות מול היזמים.', 'to_project' => 'לעמוד הפרויקט ←', 'projects_n' => 'פרויקטים', 'more_n' => 'ועוד {n} פרויקטים בעיר', 'city_level' => 'מיקום ברמת עיר' ),
-			'en' => array( 'title' => 'The Live Project Map', 'sub' => 'Satellite and 3D buildings over the full catalog. Click a cluster to dive into a city.', 'toggle' => 'Live drone map · satellite and 3D buildings over the full catalog', 'note' => 'The whole catalog on one map: verified, neighborhood and city-level locations (clustered). Accuracy improves as addresses are verified with developers.', 'to_project' => 'To the project page →', 'projects_n' => 'projects', 'more_n' => 'and {n} more projects in this city', 'city_level' => 'city-level location' ),
-			'fr' => array( 'title' => 'La carte des projets en direct', 'sub' => 'Satellite et batiments 3D sur tout le catalogue. Cliquez sur un groupe pour plonger dans une ville.', 'toggle' => 'Carte drone en direct · satellite et batiments 3D', 'note' => 'Tout le catalogue sur une carte : localisations verifiees, de quartier et de ville (regroupees). La precision s\'ameliore avec la verification des adresses.', 'to_project' => 'Vers la page du projet →', 'projects_n' => 'projets', 'more_n' => 'et {n} autres projets dans cette ville', 'city_level' => 'localisation au niveau de la ville' ),
-			'ru' => array( 'title' => 'Живая карта проектов', 'sub' => 'Спутник и 3D здания над всем каталогом. Нажмите на кластер, чтобы погрузиться в город.', 'toggle' => 'Живая карта · спутник и 3D здания', 'note' => 'Весь каталог на одной карте: проверенные, районные и городские локации (сгруппированы). Точность растет с проверкой адресов.', 'to_project' => 'На страницу проекта →', 'projects_n' => 'проектов', 'more_n' => 'и еще {n} проектов в этом городе', 'city_level' => 'локация на уровне города' ),
-			'ar' => array( 'title' => 'خريطة المشاريع الحية', 'sub' => 'قمر صناعي ومبان ثلاثية الأبعاد فوق الكتالوج كاملا. انقروا على مجموعة للغوص في مدينة.', 'toggle' => 'خريطة حية · قمر صناعي ومبان ثلاثية الأبعاد', 'note' => 'الكتالوج كله على خريطة واحدة: مواقع موثقة وعلى مستوى الحي والمدينة (مجمعة). تتحسن الدقة مع توثيق العناوين.', 'to_project' => 'إلى صفحة المشروع ←', 'projects_n' => 'مشاريع', 'more_n' => 'و {n} مشاريع أخرى في هذه المدينة', 'city_level' => 'موقع على مستوى المدينة' ),
+			'he' => array( 'title' => 'מפת הפרויקטים החיה', 'sub' => 'איפה תרצו לגור? התקרבו לעיר ובחרו פרויקט.', 'near' => 'פרויקטים לידי', 'toggle' => 'מפת רחפן חיה · לוויין ובניינים בתלת ממד מעל כל הקטלוג', 'note' => 'חלק מהמיקומים משוערים עד לאימות מול היזם.', 'to_project' => 'לעמוד הפרויקט ←', 'projects_n' => 'פרויקטים', 'more_n' => 'ועוד {n} פרויקטים בעיר', 'city_level' => 'מיקום ברמת עיר' ),
+			'en' => array( 'title' => 'The Live Project Map', 'sub' => 'Where do you want to live? Zoom to your city and pick a project.', 'near' => 'Projects near me', 'toggle' => 'Live drone map · satellite and 3D buildings over the full catalog', 'note' => 'Some locations are approximate until verified with the developer.', 'to_project' => 'To the project page →', 'projects_n' => 'projects', 'more_n' => 'and {n} more projects in this city', 'city_level' => 'city-level location' ),
+			'fr' => array( 'title' => 'La carte des projets en direct', 'sub' => 'Ou voulez-vous vivre ? Zoomez sur votre ville et choisissez un projet.', 'near' => 'Projets pres de moi', 'toggle' => 'Carte drone en direct · satellite et batiments 3D', 'note' => 'Certaines localisations sont approximatives jusqu\'a verification avec le promoteur.', 'to_project' => 'Vers la page du projet →', 'projects_n' => 'projets', 'more_n' => 'et {n} autres projets dans cette ville', 'city_level' => 'localisation au niveau de la ville' ),
+			'ru' => array( 'title' => 'Живая карта проектов', 'sub' => 'Где вы хотите жить? Приблизьте свой город и выберите проект.', 'near' => 'Проекты рядом со мной', 'toggle' => 'Живая карта · спутник и 3D здания', 'note' => 'Некоторые локации приблизительны до подтверждения застройщиком.', 'to_project' => 'На страницу проекта →', 'projects_n' => 'проектов', 'more_n' => 'и еще {n} проектов в этом городе', 'city_level' => 'локация на уровне города' ),
+			'ar' => array( 'title' => 'خريطة المشاريع الحية', 'sub' => 'أين تريدون السكن؟ قربوا على مدينتكم واختاروا مشروعا.', 'near' => 'مشاريع بالقرب مني', 'toggle' => 'خريطة حية · قمر صناعي ومبان ثلاثية الأبعاد', 'note' => 'بعض المواقع تقريبية حتى التوثيق مع المطور.', 'to_project' => 'إلى صفحة المشروع ←', 'projects_n' => 'مشاريع', 'more_n' => 'و {n} مشاريع أخرى في هذه المدينة', 'city_level' => 'موقع على مستوى المدينة' ),
 		);
 		return isset( $T[ $lang ] ) ? $T[ $lang ] : $T['he'];
 	}
@@ -93,7 +95,9 @@ if ( ! function_exists( 'nadlan_drone_map_band' ) ) {
 	</button>
 	<?php endif; ?>
 	<div class="nldrone-stage" id="nldrone-stage" <?php echo 'showcase' === $mode ? '' : 'hidden'; ?>>
-		<div class="nldrone-map" id="nldrone-map"></div>
+		<div class="nldrone-map" id="nldrone-map">
+			<button type="button" class="nldrone-near" id="nldrone-near" hidden><svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M12 2v3m0 14v3M2 12h3m14 0h3"/></svg> <?php echo esc_html( $L['near'] ); ?></button>
+		</div>
 		<p class="nldrone-note"><?php echo esc_html( $L['note'] ); ?></p>
 	</div>
 </section>
@@ -119,6 +123,16 @@ if ( ! function_exists( 'nadlan_drone_map_band' ) ) {
 .nldrone-pop a{display:inline-block;margin-top:6px;font-weight:700;color:#9C7A3C;text-decoration:none;font-size:12.5px}
 .nldrone-pop img{width:100%;height:86px;object-fit:cover;border-radius:8px;margin:6px 0 2px;display:block}
 @media(max-width:640px){.nldrone-map{height:400px}}
+.nldrone-map{position:relative}
+.nldrone-near{position:absolute;z-index:5;top:12px;inset-inline-start:12px;display:inline-flex;align-items:center;gap:7px;font:600 12.5px/1 Heebo,sans-serif;color:#1B1A17;background:#FAF7F1;border:1px solid #D6C189;border-radius:999px;padding:9px 14px;cursor:pointer;box-shadow:0 4px 14px rgba(0,0,0,.25);transition:border-color .2s}
+.nldrone-near:hover{border-color:#9C7A3C}
+.nldrone-flag{display:flex;flex-direction:column;align-items:center;text-decoration:none;cursor:pointer}
+.nldrone-flag__pole{width:2px;height:26px;background:#FAF7F1;box-shadow:0 0 4px rgba(0,0,0,.5)}
+.nldrone-flag__card{display:flex;align-items:center;gap:7px;background:rgba(20,19,15,.88);border:1px solid #D6C189;border-radius:10px;padding:5px 9px 5px 6px;transform:translateY(-2px)}
+.nldrone-flag__card img{width:30px;height:30px;object-fit:cover;border-radius:6px}
+.nldrone-flag__card b{color:#FAF7F1;font:700 12px/1.2 Heebo,sans-serif;max-width:130px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.nldrone-flag__card i{font:800 9.5px/1 Heebo,sans-serif;font-style:normal;color:#14130F;background:#D6C189;border-radius:5px;padding:3px 5px}
+.nldrone-flag:hover .nldrone-flag__card{border-color:#9C7A3C}
 </style>
 <script>
 (function(){
@@ -131,15 +145,27 @@ if ( ! function_exists( 'nadlan_drone_map_band' ) ) {
 		function go(){
 			if(!window.mapboxgl)return;
 			mapboxgl.accessToken=band.dataset.token;
-			var map=new mapboxgl.Map({container:"nldrone-map",style:"mapbox://styles/mapbox/satellite-streets-v12",center:[34.78,32.09],zoom:11.4,pitch:58,bearing:-17,attributionControl:true});
+			var map=new mapboxgl.Map({container:"nldrone-map",style:"mapbox://styles/mapbox/satellite-streets-v12",center:[34.86,31.95],zoom:8.6,pitch:55,bearing:-10,attributionControl:true});
 			map.addControl(new mapboxgl.NavigationControl({visualizePitch:true}));
 			map.on("load",function(){
 				var layers=map.getStyle().layers,lab;
 				for(var i=0;i<layers.length;i++){if(layers[i].type==="symbol"&&layers[i].layout&&layers[i].layout["text-field"]){lab=layers[i].id;break}}
 				try{map.addLayer({id:"nl-3d",source:"composite","source-layer":"building",filter:["==","extrude","true"],type:"fill-extrusion",minzoom:13,paint:{"fill-extrusion-color":"#d8d2c4","fill-extrusion-height":["get","height"],"fill-extrusion-base":["get","min_height"],"fill-extrusion-opacity":.72}},lab)}catch(e){}
+				try{map.addSource("nl-dem",{type:"raster-dem",url:"mapbox://mapbox.mapbox-terrain-dem-v1",tileSize:512,maxzoom:14});map.setTerrain({source:"nl-dem",exaggeration:1.35})}catch(e){}
+				try{map.addLayer({id:"nl-sky",type:"sky",paint:{"sky-type":"atmosphere","sky-atmosphere-sun-intensity":6}})}catch(e){}
 			});
 			fetch(band.dataset.rest).then(function(r){return r.json()}).then(function(d){
-				var items=d.items||[]; if(!items.length)return;
+				var all=d.items||[]; if(!all.length)return;
+				/* paid/flagship projects fly a FLAG visible from distance, with the
+				   3D model badge - one click to the full 3D experience. */
+				var flags=all.filter(function(p){return p.featured&&p.conf!=="city"});
+				var items=all.filter(function(p){return !(p.featured&&p.conf!=="city")});
+				flags.forEach(function(p){
+					var el=document.createElement("a");
+					el.className="nldrone-flag"; el.href=p.url;
+					el.innerHTML='<span class="nldrone-flag__pole"></span><span class="nldrone-flag__card">'+(p.poster?'<img src="'+p.poster+'" alt="" loading="lazy">':"")+'<b>'+p.title.split("|")[0].split(" - ")[0]+"</b><i>3D</i></span>";
+					new mapboxgl.Marker({element:el,anchor:"bottom"}).setLngLat([p.lng,p.lat]).addTo(map);
+				});
 				/* the whole catalog is geocoded now (mostly city-level), so pins
 				   are CLUSTERED - an honest "197 projects" bubble on a city center
 				   instead of 197 stacked pins pretending to be exact addresses. */
@@ -186,9 +212,26 @@ if ( ! function_exists( 'nadlan_drone_map_band' ) ) {
 					});
 				};
 				if(map.loaded()||map.isStyleLoaded()){addData()}else{map.on("load",addData)}
-				var b=new mapboxgl.LngLatBounds();
-				items.forEach(function(p){b.extend([p.lng,p.lat])});
-				map.fitBounds(b,{padding:70,pitch:58,bearing:-17,maxZoom:12.5});
+				/* least-effort locality: silent IP-level approximation opens the map
+				   near the visitor (no permission prompt); the button uses precise
+				   browser geolocation only when the user asks. */
+				var near=document.getElementById("nldrone-near");
+				if(near){
+					near.hidden=false;
+					near.addEventListener("click",function(){
+						if(!navigator.geolocation)return;
+						navigator.geolocation.getCurrentPosition(function(pos){
+							map.easeTo({center:[pos.coords.longitude,pos.coords.latitude],zoom:12.2,pitch:58,duration:1400});
+						},function(){},{ enableHighAccuracy:false, timeout:6000, maximumAge:600000 });
+					});
+				}
+				try{
+					fetch("https://ipwho.is/").then(function(r){return r.json()}).then(function(g){
+						if(g&&g.success&&g.country_code==="IL"&&g.latitude){
+							map.easeTo({center:[g.longitude,g.latitude],zoom:10.2,pitch:56,duration:1600});
+						}
+					}).catch(function(){});
+				}catch(e){}
 			}).catch(function(){});
 		}
 		if(window.mapboxgl){go();return}
