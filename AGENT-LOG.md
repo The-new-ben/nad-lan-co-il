@@ -1,5 +1,33 @@
 # AGENT-LOG - the God brain (append-only, newest on top)
 
+## 2026-07-07 (8) - DESIGN 10x APPROVED (all 7) + v1.72.34 emergency trio
+OWNER ACCEPTED ALL 7 BOARD DECISIONS (in Hebrew; chat continues in English
+per his request): 1 pivot YES; 2 drone-map hero YES; 3 card v3 chips YES +
+NEW ORDER: unified TAB LANGUAGE across the whole site incl. projects;
+4 night map for hero/theater + cream in pages, satellite REMOVED (not
+kept as default); 5 favicon B (three towers); 6 flagship tower YES but NOT
+Rainbow-branded - generic luxury tower, world-icon inspired, retail podium,
+"crazy level" detail, several levels above Rainbow; 7 real-data graph YES.
+Standing orders: ultra god mode, whole-product wiring (nothing disconnected),
+protect existing projects, sweep them again, and FLOW competitor watch -
+flag anyone worldwide doing it better.
+v1.72.34 EMERGENCY TRIO (share-hygiene phase 0):
+(a) og:image LIVE on homepage - built 1200x630 brand card in-browser
+(embedded Frank Ruhl/Heebo, DUO model render on ink, gold band, towers
+mark), uploaded (media 5398), wired via existing nadlan_og_default_image
+option (the plumbing existed since v1.40; the option was simply EMPTY -
+that was the whole bug). (b) favicon unified: three-towers mark; WP
+site_icon -> new PNG (media 5399) via /wp/v2/settings, branding/favicon.svg
+replaced in repo (ships this version). (c) NEW inc/accessibility.php -
+first-party a11y widget: standalone always-visible button (was: nothing on
+the page at all - no a11y plugin installed; legal exposure under IL reg
+5568/WCAG 2.0 AA), panel with font-up/contrast/link-highlight/readable-
+font/stop-motion toggles persisted in localStorage, Esc handling, aria
+wiring, link to /accessibility-statement/ (page to create post-deploy).
+NEXT STRIKES QUEUED: unified tabs, imagery pivot, hero, card v3+near-me,
+map styles, graph panel, flagship tower GLB, projects sweep + competitor
+flow.
+
 ## 2026-07-07 (7) - v1.72.33 hub H1 (verification catch)
 Verified-delivery pass on the new /glossary/ hub caught a missing H1: the
 theme renders no title on this page template (the old archive had one -
