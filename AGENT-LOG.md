@@ -1,5 +1,16 @@
 # AGENT-LOG - the God brain (append-only, newest on top)
 
+## 2026-07-06 (17) - v1.72.20: DRONE MAP SHOWCASE on homepage + premium (owner ask)
+OWNER: drone map on the front page + premium, "very very professional". MY
+CALL (relayed): yes - but as a DESIGNED band, not the collapsible toggle;
+showcase mode = LIVE eyebrow badge, Frank Ruhl title, sub line, 560px stage
+w/ gold shadow frame, boots via IntersectionObserver (rootMargin 260px) so
+the homepage LCP pays nothing. Placement: spliced at runtime right after the
+flagships band (hero -> flagships 3D -> live map = the differentiator front
+door), all 5 language homepages; premium page gets it under the grid.
+nadlan_drone_map_band($mode,$lang) + nadlan_drone_map_i18n (title/sub/note/
+popup labels x5). Catalog keeps toggle mode. Point popups dir=auto.
+
 ## 2026-07-06 (16) - EN INVESTORS HUB LIVE + geo drafts closed + /en/ title dash swap
 HUB: page 5154 https://nad-lan.co.il/en/buy-property-in-israel/ (child of /en/
 homepage 5011 - hierarchy, zero cannibalization: /en/=brand home, hub=buyer

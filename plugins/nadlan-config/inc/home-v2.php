@@ -642,6 +642,11 @@ if ( ! function_exists( 'nadlan_home_v2_shortcode' ) ) {
 			if ( false !== $hi ) { array_splice( $bands, $hi + 1, 0, 'flagships' ); }
 			else { array_unshift( $bands, 'flagships' ); }
 		}
+		// the live drone map rides right after the flagships (owner 2026-07-06)
+		if ( ! in_array( 'dronemap', $bands, true ) ) {
+			$fi = array_search( 'flagships', $bands, true );
+			if ( false !== $fi ) { array_splice( $bands, $fi + 1, 0, 'dronemap' ); }
+		}
 		ob_start();
 		echo '<div class="nlhv2" dir="' . esc_attr( $dir ) . '" lang="' . esc_attr( $lang ) . '">';
 		if ( function_exists( 'nadlan_lang_switcher' ) ) { echo '<div class="nlhv2-langbar">' . nadlan_lang_switcher() . '</div>'; }
@@ -901,3 +906,11 @@ if ( ! function_exists( 'nadlan_hv2_assets' ) ) {
 	}
 }
 add_action( 'wp_enqueue_scripts', 'nadlan_hv2_assets' );
+
+if ( ! function_exists( 'nadlan_hv2_band_dronemap' ) ) {
+	function nadlan_hv2_band_dronemap() {
+		if ( ! function_exists( 'nadlan_drone_map_band' ) ) { return; }
+		$lang = function_exists( 'nadlan_current_lang' ) ? nadlan_current_lang() : 'he';
+		echo nadlan_drone_map_band( 'showcase', $lang ); // phpcs:ignore WordPress.Security.EscapeOutput
+	}
+}
