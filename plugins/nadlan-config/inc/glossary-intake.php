@@ -28,7 +28,7 @@ if ( ! defined( 'ABSPATH' ) ) { exit; }
 const NADLAN_ENC_TYPES = array( 'term', 'material', 'tool', 'method', 'role', 'regulation', 'standard', 'person', 'organization', 'publication', 'formula', 'software' );
 
 add_action( 'init', function () {
-	foreach ( array( 'name_en', 'entity_type', 'enc_domain', 'enc_sources', 'enc_related' ) as $key ) {
+	foreach ( array( 'name_en', 'entity_type', 'enc_domain', 'enc_sources', 'enc_related', 'enc_priority' ) as $key ) {
 		register_post_meta( 'nadlan_term', $key, array(
 			'show_in_rest' => true, 'single' => true, 'type' => 'string',
 			'sanitize_callback' => 'sanitize_text_field',
@@ -96,8 +96,8 @@ add_action( 'rest_api_init', function () {
 				$pid = $fill_id ? $fill_id : $pid;
 				$created++;
 				if ( $has_content ) { $scheduled++; } else { $drafted++; }
-				foreach ( array( 'name_en', 'entity_type', 'enc_domain', 'enc_sources', 'enc_related' ) as $mk ) {
-					$src = str_replace( 'enc_', '', $mk );
+				foreach ( array( 'name_en', 'entity_type', 'enc_domain', 'enc_sources', 'enc_related', 'enc_priority' ) as $mk ) {
+					$src = str_replace( 'enc_', '', $mk ); if ( 'priority' === $src && ! isset( $e['enc_priority'] ) ) { $e['enc_priority'] = $e['priority'] ?? ''; }
 					$v = sanitize_text_field( (string) ( $e[ $mk ] ?? $e[ $src ] ?? '' ) );
 					if ( $mk === 'entity_type' && ! in_array( $v, NADLAN_ENC_TYPES, true ) ) { $v = 'term'; }
 					if ( $v !== '' ) { update_post_meta( $pid, $mk, $v ); }

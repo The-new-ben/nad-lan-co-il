@@ -1,5 +1,47 @@
 # AGENT-LOG - the God brain (append-only, newest on top)
 
+## 2026-07-07 (3) - v1.72.29 SELF-WRITING ENCYCLOPEDIA + SITE-DOWN INCIDENT + manifest corruption repaired
+SELF-INFLICTED CORRUPTION CAUGHT + FIXED: the v1.72.28 log script wrote
+AGENT-LOG content OVER plugin-dist/nadlan-config.json (wrong variable in the
+final write) - manifest was invalid JSON since 82d1903 and AGENT-LOG was
+missing entry (2). Repaired: AGENT-LOG restored from the corrupted manifest
+(which held the correct log text), manifest rebuilt from the last good JSON
+(v1.72.27) + both changelog entries. LESSON: never reuse open(f) handles
+across files in log scripts; validate manifest JSON after every write.
+v1.72.29 BUILT (deploy blocked by site-down): inc/glossary-writer.php - the
+in-site hourly writer. Owner asked about WP AI plugins (researched: AI
+Puffer/GetGenie/AI Engine, $0.02-0.10/article API cost) - MY CALL: no 3rd
+party plugin (knows nothing of entity fields/tiers/dash law/drip/anti-
+cannibalization); built in-house on the site's own OpenAI key instead:
+hourly cron, priority-ordered skeletons, tiered articles (p1 800-1300w /
+p2 450-700 / p3 250-400, floors enforced), editorial system prompt (zero
+invented facts, dash swap, clean HTML, no marketing), 3/run + 15/day caps,
+model option default gpt-4o, drip handoff, /nadlan/v1/enc-writer-status.
+Intake stores enc_priority for future batches; 197 existing skeletons
+default tier 2 until backfill.
+INCIDENT (OPEN): owner installed a "ChatGPT connector" plugin -> sitewide
+500 incl. wp-json/wp-login; all remote channels dead (even static probes
+500). Recovery steps sent: WP recovery-mode email OR hosting file-manager
+rename of newest plugin folder. POST-RECOVERY CHECKLIST: deploy 1.72.29,
+backfill enc_priority from handoff/research/encyclopedia/ontology-batch-1.json,
+trigger one writer tick, eye-QA first article, verify drip schedule, ensure
+crashed connector fully removed.
+
+## 2026-07-07 (2) - v1.72.28: WIKIPEDIA-DEPTH DECISION + gate raised to 250w
+OWNER: term pages look short, wants Wikipedia-length per term. MY CALL
+(delivered in chat): TIERED depth like Wikipedia itself - priority 1
+(~400-600 searched entries): 800-1300w full structure (definition, background,
+tech spec, IL regulatory context, on-a-real-project, worked example, common
+mistakes, related, sources, table where fitting); priority 2: 450-700w;
+priority 3: 250-400w solid, no padding (filler = the actual scaled-content
+risk + owner's no-AI-filler law). ~1.5-2M words at full build.
+SHIPPED: intake publish gate 120w -> 250w (drip entry requires a real
+article; shorter stays draft); fill-path threshold aligned. UPGRADED STAGE-2
+PROMPT delivered in chat (Hebrew, tiered lengths, 10 articles/response, table
+requirement for p1, zero-invented-facts + dash law baked in).
+NOTE: current 197 staged drafts are stage-1 skeletons BY DESIGN - they carry
+one-line defs and are NOT public; they publish only when their tiered
+articles arrive and pass the 250w gate.
 ## 2026-07-07 (1) - v1.72.27: intake stage-2 fill path (pre-emptive bug kill)
 CAUGHT BEFORE IT BIT: the intake skipped ANY existing title - so the owner's
 stage-2 article upload would have skipped all 197 staged drafts. FIX: an
