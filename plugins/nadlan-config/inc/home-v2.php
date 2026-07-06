@@ -576,7 +576,10 @@ if ( ! function_exists( 'nadlan_hv2_band_intl' ) ) {
 			<h2>Buying property in Israel, guided in your language</h2>
 			<p>New-build projects with apartment selection from inside the building, verified professionals and legal guidance for foreign buyers.</p>
 		</div>
-		<a href="<?php echo esc_url( home_url( '/en/' ) ); ?>">Explore in English →</a>
+		<div class="nlhv2-en__links">
+			<a href="<?php echo esc_url( home_url( '/en/' ) ); ?>">Explore in English →</a>
+			<a href="<?php echo esc_url( home_url( '/en/buy-property-in-israel/' ) ); ?>">Buying from abroad: taxes, process, 3D apartments →</a>
+		</div>
 	</section>
 		<?php
 	}

@@ -87,7 +87,7 @@
     interior_generic_note: "הדמיית פנים כללית להמחשה בלבד, טרם התקבלו תוכניות מהיזם",
     btn_rfp: "בנו לי הצעה לדירה הזו",
     btn_winview: "להמשיך למפה החיה עם כל הסביבה",
-    winview_note: "מבט אמיתי מגובה הקומה ובכיוון הדירה, על לוויין ובניינים אמיתיים. להמחשה - לא צילום מהדירה.",
+    winview_note: "גררו להביט סביב - הצידה, למטה ולמעלה. גובה הקומה והכיוון אמיתיים; להמחשה, לא צילום מהדירה.",
     winview_turn_left: "להביט שמאלה",
     winview_turn_right: "להביט ימינה",
     view_interior_label: "הדמיית פנים לדירה",
@@ -243,7 +243,7 @@
     interior_generic_note: "Generic interior visualization for illustration only, developer plans pending",
     btn_rfp: "Build me an offer for this apartment",
     btn_winview: "Continue on the live area map",
-    winview_note: "A real view from this floor's height in the apartment's direction, over live satellite and 3D buildings. Illustrative - not a photo from the unit.",
+    winview_note: "Drag to look around - sideways, down and up. Real floor height and direction; illustrative, not a photo from the unit.",
     winview_turn_left: "Look left",
     winview_turn_right: "Look right",
     view_interior_label: "Interior visualization",
@@ -346,9 +346,9 @@
   FR.btn_winview = "Continuer sur la carte interactive du quartier";
   RU.btn_winview = "Продолжить на живой карте района";
   AR.btn_winview = "المتابعة على خريطة المنطقة الحية";
-  FR.winview_note = "Une vue reelle depuis la hauteur de cet etage, dans l'orientation du logement, sur satellite et batiments 3D. Illustration - pas une photo prise du logement.";
-  RU.winview_note = "Реальный вид с высоты этого этажа в направлении квартиры, на спутнике и 3D зданиях. Иллюстрация - не фото из квартиры.";
-  AR.winview_note = "إطلالة حقيقية من ارتفاع هذا الطابق وباتجاه الشقة، على القمر الصناعي والمباني ثلاثية الأبعاد. للتوضيح - ليست صورة من الشقة.";
+  FR.winview_note = "Glissez pour regarder autour - de cote, en bas, en haut. Hauteur d'etage et orientation reelles; illustration, pas une photo du logement.";
+  RU.winview_note = "Тяните, чтобы осмотреться - в стороны, вниз и вверх. Реальная высота этажа и направление; иллюстрация, не фото из квартиры.";
+  AR.winview_note = "اسحبوا للنظر حولكم - جانبا وأسفل وأعلى. ارتفاع الطابق والاتجاه حقيقيان؛ للتوضيح، ليست صورة من الشقة.";
   FR.winview_turn_left = "Regarder a gauche"; FR.winview_turn_right = "Regarder a droite";
   RU.winview_turn_left = "Посмотреть влево"; RU.winview_turn_right = "Посмотреть вправо";
   AR.winview_turn_left = "النظر يسارا"; AR.winview_turn_right = "النظر يمينا";

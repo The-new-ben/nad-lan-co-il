@@ -725,6 +725,10 @@
       // safety: never leave poster forever if load is delayed
       setTimeout(function () { if (!state.mvReady && mv.modelIsVisible) reveal(); }, 6000);
     }
+    document.querySelectorAll('[data-act="lang"], .nl-brand, model-viewer, .nl-lang, .nlhv2-langbar').forEach(function (el) {
+      el.setAttribute("translate", "no"); el.classList.add("notranslate");
+      if (el.parentElement && el.getAttribute("data-act") === "lang") { el.parentElement.setAttribute("translate", "no"); el.parentElement.classList.add("notranslate"); }
+    });
     if (state.page === "project") {
       dtInit();
       updateFormCtx(); updateSticky();
@@ -837,8 +841,8 @@
   /* ---- the inline window viewport (the mvt tab IS the window): a small
      satellite + 3D-buildings map standing at the unit's floor height, looking
      out in its direction. Look buttons rotate the gaze in 30deg steps. ---- */
-  var winState = { map: null, bearing: null, unit: null };
-  function winCam(map, u, brOverride) {
+  var winState = { map: null, bearing: null, vert: 0, unit: null };
+  function winCam(map, u, brOverride, vert) {
     var gl = window.mapboxgl, p = project();
     var k = dirKey(u.dir), br = (brOverride != null) ? brOverride : ((k && k in DIR_BEARING) ? DIR_BEARING[k] : 270);
     var fh = parseFloat(p.floor_height_m) || 3.05;
@@ -846,10 +850,10 @@
     try {
       var cam = map.getFreeCameraOptions();
       cam.position = gl.MercatorCoordinate.fromLngLat({ lng: Number(p.geo.lng), lat: Number(p.geo.lat) }, alt);
-      var rad = br * Math.PI / 180, d = 700;
-      var tLat = Number(p.geo.lat) + (Math.cos(rad) * d) / 111320;
-      var tLng = Number(p.geo.lng) + (Math.sin(rad) * d) / (111320 * Math.cos(Number(p.geo.lat) * Math.PI / 180));
-      cam.lookAtPoint({ lng: tLng, lat: tLat });
+      // standing at the window: pitch 86 = eye level at the horizon; vertical
+      // drag tilts the gaze down toward the street or up toward the sky.
+      var pitch = Math.max(35, Math.min(96, 86 + (vert || 0)));
+      cam.setPitchBearing(pitch, br);
       map.setFreeCameraOptions(cam);
     } catch (e) {}
     return br;
@@ -873,8 +877,28 @@
           map.addLayer({ id: "nl-win-3d", source: "composite", "source-layer": "building", filter: ["==", "extrude", "true"], type: "fill-extrusion", minzoom: 13,
             paint: { "fill-extrusion-color": "#d8d2c4", "fill-extrusion-height": ["get", "height"], "fill-extrusion-base": ["get", "min_height"], "fill-extrusion-opacity": 0.85 } }, lab);
         } catch (e) {}
-        winState.bearing = winCam(map, u);
+        winState.vert = 0;
+        winState.bearing = winCam(map, u, null, 0);
       });
+      // free look: drag turns the head - sideways changes bearing, up/down
+      // tilts the gaze. This is a window, not a still.
+      var dragging = false, lx = 0, ly = 0;
+      var lookStart = function (x, y) { dragging = true; lx = x; ly = y; };
+      var lookMove = function (x, y) {
+        if (!dragging || !winState.map || winState.unit !== u.id) return;
+        winState.bearing = ((winState.bearing == null ? 270 : winState.bearing) + (x - lx) * 0.35 + 360) % 360;
+        winState.vert = Math.max(-45, Math.min(10, (winState.vert || 0) - (y - ly) * 0.22));
+        lx = x; ly = y;
+        winCam(winState.map, u, winState.bearing, winState.vert);
+      };
+      var lookEnd = function () { dragging = false; };
+      host.style.cursor = "grab";
+      host.addEventListener("mousedown", function (e) { lookStart(e.clientX, e.clientY); e.preventDefault(); });
+      window.addEventListener("mousemove", function (e) { lookMove(e.clientX, e.clientY); });
+      window.addEventListener("mouseup", lookEnd);
+      host.addEventListener("touchstart", function (e) { lookStart(e.touches[0].clientX, e.touches[0].clientY); }, { passive: true });
+      host.addEventListener("touchmove", function (e) { lookMove(e.touches[0].clientX, e.touches[0].clientY); e.preventDefault(); }, { passive: false });
+      host.addEventListener("touchend", lookEnd);
     };
     if (window.mapboxgl) { boot(); return; }
     var l = document.createElement("link"); l.rel = "stylesheet"; l.href = "https://api.mapbox.com/mapbox-gl-js/v3.7.0/mapbox-gl.css"; document.head.appendChild(l);
@@ -884,7 +908,7 @@
     if (!winState.map || winState.unit !== u.id) return;
     var base = winState.bearing == null ? 270 : winState.bearing;
     winState.bearing = (base + delta + 360) % 360;
-    winCam(winState.map, u, winState.bearing);
+    winCam(winState.map, u, winState.bearing, winState.vert);
   }
 
   /* ---- the view FROM the window, on the live map: FreeCamera at the unit's

@@ -1,5 +1,32 @@
 # AGENT-LOG - the God brain (append-only, newest on top)
 
+## 2026-07-06 (18) - v1.72.21: buyer-mode map + free-look window + notranslate + hub link
+OWNER DIRECTIVES BATCH: simple key handoff (offered to paste in chat - accepted,
+see chat), link the hub, near-me with minimum user effort (IP approximation),
+premium flags w/ 3D badge on map, default view TLV-JLM core, buyer language
+not map-splaining, window view must be lookable not a still, Rainbow AR
+machine-translate mangling (tabs/logo), JOB 7 waiting - keep floating.
+SHIPPED:
+- MAP: default camera [34.86,31.95] z8.6 (TLV-JLM-Holon-Rishon core), terrain
+  relief (mapbox-dem 1.35x) + sky; featured projects w/ non-city geo fly a
+  FLAG marker (pole + dark card + model poster thumb + 3D chip) outside the
+  clusters, one click to the project; silent ipwho.is IL-only ease-to visitor
+  area (no permission), "Projects near me" button (5 langs) uses browser
+  geolocation on demand; sub/note rewritten to buyer language ("Where do you
+  want to live?"), technical map-splaining removed.
+- WINDOW: winCam now setPitchBearing (pitch 86 eye-level, clamp 35-96);
+  drag on the stage = look sideways/down/up (bearing 0.35deg/px, vert
+  0.22deg/px, clamp -45..+10); turn buttons preserved; notes rewritten x5.
+- NOTRANSLATE: lang switcher/[data-act=lang]/brand/model-viewer/langbar get
+  translate=no + notranslate class in afterRender (Chrome translate was
+  translating language tabs + AR badge on Rainbow).
+- HUB LINKED: intl band on HE homepage now carries the /en/buy-property-in-israel/
+  link alongside Explore in English.
+FLOATS logged for chat: DUO translations still pending (flagships must be
+perfect x5 langs - owner demo priority), JOB 7 facilities stalled on Cowork
+side, premium flags currently = 4 flagships only (others need non-city geo +
+featured flag = the monetization lever).
+
 ## 2026-07-06 (17) - v1.72.20: DRONE MAP SHOWCASE on homepage + premium (owner ask)
 OWNER: drone map on the front page + premium, "very very professional". MY
 CALL (relayed): yes - but as a DESIGNED band, not the collapsible toggle;
