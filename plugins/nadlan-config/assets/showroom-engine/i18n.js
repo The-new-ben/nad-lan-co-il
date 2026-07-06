@@ -86,7 +86,11 @@
     view_coming: "מבט מהדירה יוצג לאחר אימות מיקום מול היזם.",
     interior_generic_note: "הדמיית פנים כללית להמחשה בלבד, טרם התקבלו תוכניות מהיזם",
     btn_rfp: "בנו לי הצעה לדירה הזו",
-    btn_winview: "מבט מהחלון על המפה",
+    btn_winview: "להמשיך למפה החיה עם כל הסביבה",
+    winview_note: "מבט אמיתי מגובה הקומה ובכיוון הדירה, על לוויין ובניינים אמיתיים. להמחשה - לא צילום מהדירה.",
+    winview_turn_left: "להביט שמאלה",
+    winview_turn_right: "להביט ימינה",
+    view_interior_label: "הדמיית פנים לדירה",
     fp_salon: "סלון ופינת אוכל", fp_kitchen: "מטבח", fp_mamad: "ממ״ד",
     fp_master: "חדר שינה הורים", fp_bed: "חדר שינה", fp_balcony: "מרפסת",
     fp_aria: "סיור פנימי בדירה - גררו כדי להביט סביב",
@@ -226,7 +230,11 @@
     view_coming: "The view from the apartment will appear after location is verified.",
     interior_generic_note: "Generic interior visualization for illustration only, developer plans pending",
     btn_rfp: "Build me an offer for this apartment",
-    btn_winview: "View from the window, on the map",
+    btn_winview: "Continue on the live area map",
+    winview_note: "A real view from this floor's height in the apartment's direction, over live satellite and 3D buildings. Illustrative - not a photo from the unit.",
+    winview_turn_left: "Look left",
+    winview_turn_right: "Look right",
+    view_interior_label: "Interior visualization",
     fp_salon: "Living and dining", fp_kitchen: "Kitchen", fp_mamad: "Safe room",
     fp_master: "Master bedroom", fp_bed: "Bedroom", fp_balcony: "Balcony",
     fp_aria: "Walk inside the apartment - drag to look around",
@@ -311,9 +319,18 @@
   FR.btn_rfp = "Preparez-moi une offre pour ce logement";
   RU.btn_rfp = "Подготовьте мне предложение по этой квартире";
   AR.btn_rfp = "جهزوا لي عرضا لهذه الشقة";
-  FR.btn_winview = "Vue depuis la fenetre, sur la carte";
-  RU.btn_winview = "Вид из окна, на карте";
-  AR.btn_winview = "الإطلالة من النافذة، على الخريطة";
+  FR.btn_winview = "Continuer sur la carte interactive du quartier";
+  RU.btn_winview = "Продолжить на живой карте района";
+  AR.btn_winview = "المتابعة على خريطة المنطقة الحية";
+  FR.winview_note = "Une vue reelle depuis la hauteur de cet etage, dans l'orientation du logement, sur satellite et batiments 3D. Illustration - pas une photo prise du logement.";
+  RU.winview_note = "Реальный вид с высоты этого этажа в направлении квартиры, на спутнике и 3D зданиях. Иллюстрация - не фото из квартиры.";
+  AR.winview_note = "إطلالة حقيقية من ارتفاع هذا الطابق وباتجاه الشقة، على القمر الصناعي والمباني ثلاثية الأبعاد. للتوضيح - ليست صورة من الشقة.";
+  FR.winview_turn_left = "Regarder a gauche"; FR.winview_turn_right = "Regarder a droite";
+  RU.winview_turn_left = "Посмотреть влево"; RU.winview_turn_right = "Посмотреть вправо";
+  AR.winview_turn_left = "النظر يسارا"; AR.winview_turn_right = "النظر يمينا";
+  FR.view_interior_label = "Visualisation interieure";
+  RU.view_interior_label = "Визуализация интерьера";
+  AR.view_interior_label = "تصور داخلي للشقة";
   FR.fp_salon = "Sejour et salle a manger"; FR.fp_kitchen = "Cuisine"; FR.fp_mamad = "Piece securisee";
   FR.fp_master = "Chambre parentale"; FR.fp_bed = "Chambre"; FR.fp_balcony = "Balcon";
   FR.fp_aria = "Visite interieure du logement - faites glisser pour regarder autour";
