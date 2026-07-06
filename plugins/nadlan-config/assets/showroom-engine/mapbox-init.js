@@ -81,6 +81,9 @@
       });
 
       map.on('style.load', function () {
+        /* cream tuning (owner 2026-07-07): the in-page map wears the brand paper */
+        try { map.setPaintProperty('water', 'fill-color', '#A9C6D0'); } catch (e) {}
+        try { map.setPaintProperty('land', 'background-color', '#F6F1E6'); } catch (e) {}
         if (!map.getSource || !map.getSource('composite') || map.getLayer('add-3d-buildings')) return;
         var layers = map.getStyle().layers;
         var labelLayerId = null;

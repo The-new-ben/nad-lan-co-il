@@ -1,5 +1,19 @@
 # AGENT-LOG - the God brain (append-only, newest on top)
 
+## 2026-07-07 (10) - v1.72.36 THE HERO IS THE MAP (layer 2)
+Homepage hero rebuilt per approved decision 2 + 4: full-bleed NIGHT drone
+map (dark-v11 + water #0E1A20, warm dark 3D buildings #3A342A, fog+stars,
+terrain kept) with the H1/search/tabs/trust floating over a gradient veil;
+near-me button rides the map; honest approx-location note bottom corner.
+New 'hero' mode in nadlan_drone_map_band (chrome-less, boots on
+requestIdleCallback). SATELLITE REMOVED everywhere (owner order). Mid-page
+dronemap band retired - ONE map law; promo video moved back to its own
+band (asset not lost). In-page maps (nlpjx + engine mapbox-init) tuned to
+cream paper (#F6F1E6 land, #A9C6D0 water). The old hero video block with
+English text is gone. All map FEATURES untouched (clusters, flags,
+near-me, ipwho ease) - only style + placement changed, per the approved
+board.
+
 ## 2026-07-07 (9) - v1.72.35 THE FLAGSHIP TOWER (layer 1 of the diamond run)
 Owner: full discretion, layer by layer, don't stop. Layer 1 delivered: the
 generic luxury tower. JOURNEY (8 versions, each screenshot-judged): started

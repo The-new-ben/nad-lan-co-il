@@ -87,14 +87,14 @@ if ( ! function_exists( 'nadlan_drone_map_band' ) ) {
 		<h2 class="nldrone-head__title"><?php echo esc_html( $L['title'] ); ?></h2>
 		<p class="nldrone-head__sub"><?php echo esc_html( $L['sub'] ); ?></p>
 	</div>
-	<?php else : ?>
+	<?php elseif ( 'toggle' === $mode ) : ?>
 	<button type="button" class="nldrone-toggle" id="nldrone-toggle" aria-expanded="false" aria-controls="nldrone-stage">
 		<span class="nldrone-toggle__ic" aria-hidden="true"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M12 3v4m0 10v4M3 12h4m10 0h4"/><circle cx="12" cy="12" r="3.2"/><circle cx="12" cy="12" r="7.5" stroke-dasharray="2 3"/></svg></span>
 		<span><?php echo esc_html( $L['toggle'] ); ?></span>
 		<span class="nldrone-toggle__arrow" aria-hidden="true">▾</span>
 	</button>
 	<?php endif; ?>
-	<div class="nldrone-stage" id="nldrone-stage" <?php echo 'showcase' === $mode ? '' : 'hidden'; ?>>
+	<div class="nldrone-stage" id="nldrone-stage" <?php echo 'toggle' === $mode ? 'hidden' : ''; ?>>
 		<div class="nldrone-map" id="nldrone-map">
 			<button type="button" class="nldrone-near" id="nldrone-near" hidden><svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M12 2v3m0 14v3M2 12h3m14 0h3"/></svg> <?php echo esc_html( $L['near'] ); ?></button>
 		</div>
@@ -123,6 +123,11 @@ if ( ! function_exists( 'nadlan_drone_map_band' ) ) {
 .nldrone-pop a{display:inline-block;margin-top:6px;font-weight:700;color:#9C7A3C;text-decoration:none;font-size:12.5px}
 .nldrone-pop img{width:100%;height:86px;object-fit:cover;border-radius:8px;margin:6px 0 2px;display:block}
 @media(max-width:640px){.nldrone-map{height:400px}}
+.nldrone--hero{max-width:none;margin:0;padding:0;position:absolute;inset:0}
+.nldrone--hero .nldrone-stage{margin:0;height:100%}
+.nldrone--hero .nldrone-map{height:100%;border-radius:0;border:0}
+.nldrone--hero .nldrone-note{position:absolute;bottom:8px;inset-inline-end:14px;z-index:5;color:#CDC5B4;margin:0;text-shadow:0 1px 3px rgba(0,0,0,.6)}
+.nldrone--hero .nldrone-near{top:auto;bottom:46px;inset-inline-start:auto;inset-inline-end:14px}
 .nldrone-map{position:relative}
 .nldrone-near{position:absolute;z-index:5;top:12px;inset-inline-start:12px;display:inline-flex;align-items:center;gap:7px;font:600 12.5px/1 Heebo,sans-serif;color:#1B1A17;background:#FAF7F1;border:1px solid #D6C189;border-radius:999px;padding:9px 14px;cursor:pointer;box-shadow:0 4px 14px rgba(0,0,0,.25);transition:border-color .2s}
 .nldrone-near:hover{border-color:#9C7A3C}
@@ -145,12 +150,16 @@ if ( ! function_exists( 'nadlan_drone_map_band' ) ) {
 		function go(){
 			if(!window.mapboxgl)return;
 			mapboxgl.accessToken=band.dataset.token;
-			var map=new mapboxgl.Map({container:"nldrone-map",style:"mapbox://styles/mapbox/satellite-streets-v12",center:[34.86,31.95],zoom:8.6,pitch:55,bearing:-10,attributionControl:true});
+			var map=new mapboxgl.Map({container:"nldrone-map",style:"mapbox://styles/mapbox/dark-v11",center:[34.86,31.95],zoom:8.6,pitch:55,bearing:-10,attributionControl:true});
 			map.addControl(new mapboxgl.NavigationControl({visualizePitch:true}));
 			map.on("load",function(){
+				/* night tuning (owner 2026-07-07: satellite removed, night is the map) */
+				try{map.setPaintProperty("water","fill-color","#0E1A20")}catch(e){}
+				try{map.setPaintProperty("land","background-color","#17150F")}catch(e){}
+				try{map.setFog({color:"#14130F","horizon-blend":0.06,"star-intensity":0.25})}catch(e){}
 				var layers=map.getStyle().layers,lab;
 				for(var i=0;i<layers.length;i++){if(layers[i].type==="symbol"&&layers[i].layout&&layers[i].layout["text-field"]){lab=layers[i].id;break}}
-				try{map.addLayer({id:"nl-3d",source:"composite","source-layer":"building",filter:["==","extrude","true"],type:"fill-extrusion",minzoom:13,paint:{"fill-extrusion-color":"#d8d2c4","fill-extrusion-height":["get","height"],"fill-extrusion-base":["get","min_height"],"fill-extrusion-opacity":.72}},lab)}catch(e){}
+				try{map.addLayer({id:"nl-3d",source:"composite","source-layer":"building",filter:["==","extrude","true"],type:"fill-extrusion",minzoom:13,paint:{"fill-extrusion-color":"#3A342A","fill-extrusion-height":["get","height"],"fill-extrusion-base":["get","min_height"],"fill-extrusion-opacity":.72}},lab)}catch(e){}
 				try{map.addSource("nl-dem",{type:"raster-dem",url:"mapbox://mapbox.mapbox-terrain-dem-v1",tileSize:512,maxzoom:14});map.setTerrain({source:"nl-dem",exaggeration:1.35})}catch(e){}
 				try{map.addLayer({id:"nl-sky",type:"sky",paint:{"sky-type":"atmosphere","sky-atmosphere-sun-intensity":6}})}catch(e){}
 			});
@@ -238,7 +247,10 @@ if ( ! function_exists( 'nadlan_drone_map_band' ) ) {
 		var l=document.createElement("link");l.rel="stylesheet";l.href="https://api.mapbox.com/mapbox-gl-js/v3.7.0/mapbox-gl.css";document.head.appendChild(l);
 		var sc=document.createElement("script");sc.src="https://api.mapbox.com/mapbox-gl-js/v3.7.0/mapbox-gl.js";sc.onload=go;document.head.appendChild(sc);
 	}
-	if(band.dataset.mode==="showcase"){
+	if(band.dataset.mode==="hero"){
+		// the hero map is the site opener - boot when the browser breathes
+		if("requestIdleCallback" in window){requestIdleCallback(boot,{timeout:1800})}else{setTimeout(boot,400)}
+	} else if(band.dataset.mode==="showcase"){
 		// present itself: boot when the band approaches the viewport
 		if("IntersectionObserver" in window){
 			var io=new IntersectionObserver(function(es){

@@ -243,7 +243,13 @@ if ( ! function_exists( 'nadlan_hv2_band_hero' ) ) {
 		$flag   = nadlan_hv2_featured_projects( 1 );
 		$flag   = $flag ? $flag[0] : null;
 		?>
-	<section class="nlhv2-hero">
+	<section class="nlhv2-hero nlhv2-hero--map">
+		<?php if ( function_exists( 'nadlan_drone_map_band' ) ) : ?>
+		<div class="nlhv2-hero-mapbg" aria-hidden="false">
+			<?php echo nadlan_drone_map_band( 'hero', function_exists( 'nadlan_current_lang' ) ? nadlan_current_lang() : 'he' ); // phpcs:ignore WordPress.Security.EscapeOutput ?>
+			<div class="nlhv2-hero-veil" aria-hidden="true"></div>
+		</div>
+		<?php endif; ?>
 		<div class="nlhv2-hero-copy">
 			<h1><?php nadlan_e( 'hero_h1' ); ?></h1>
 			<p class="nlhv2-sub"><?php nadlan_e( 'hero_sub' ); ?></p>
@@ -267,31 +273,7 @@ if ( ! function_exists( 'nadlan_hv2_band_hero' ) ) {
 				<a href="<?php echo esc_url( home_url( '/professionals/?profession=lawyer' ) ); ?>"><b><?php nadlan_e( 'trust_law_pre' ); ?></b> <?php nadlan_e( 'trust_law' ); ?></a>
 			</div>
 		</div>
-		<?php
-		// Hero media (owner surgical spec 2026-07-02): the promo video lives HERE,
-		// beside the H1, gif-like (autoplay muted loop, no controls), lazy-loaded
-		// after page load so LCP is untouched. The Ashira card left the hero -
-		// it was a duplicate of the projects band below. Flag card = fallback
-		// only when no video is configured.
-		$vurl    = trim( (string) get_option( 'nadlan_home_video_url', '' ) );
-		$vwebm   = trim( (string) get_option( 'nadlan_home_video_webm', '' ) );
-		$vposter = trim( (string) get_option( 'nadlan_home_video_poster', '' ) );
-		if ( ( $vurl || $vwebm ) && preg_match( '~\.(mp4|webm)(\?|$)~i', $vurl . ' ' . $vwebm ) ) : ?>
-		<div class="nlhv2-hero-flag nlhv2-hero-video" aria-label="נדלן - סרטון היכרות">
-			<span class="nlhv2-hv-brand" aria-hidden="true">נדלן</span>
-			<video id="nlhv2-hv" muted autoplay loop playsinline preload="auto"<?php echo $vposter ? ' poster="' . esc_url( $vposter ) . '"' : ''; ?>><?php
-				// Native <source> children so the browser autoplays with ZERO JS
-				// dependency (the data-* lazy pattern left desktop stuck on the poster).
-				if ( $vwebm ) { echo '<source src="' . esc_url( $vwebm ) . '" type="video/webm">'; }
-				if ( $vurl )  { echo '<source src="' . esc_url( $vurl ) . '" type="video/mp4">'; }
-			?></video>
-		</div>
-		<?php elseif ( $flag ) : $fimg = nadlan_hv2_img( $flag->ID ); ?>
-		<a class="nlhv2-hero-flag" href="<?php echo esc_url( get_permalink( $flag ) ); ?>">
-			<span class="nlhv2-hero-flag-media"<?php echo $fimg ? ' style="background-image:url(' . esc_url( $fimg ) . ')"' : ''; ?>><em><?php nadlan_e( 'flag_pick' ); ?></em></span>
-			<span class="nlhv2-hero-flag-cap"><b><?php echo esc_html( get_the_title( $flag ) ); ?></b><span><?php echo esc_html( get_post_meta( $flag->ID, 'city', true ) ); ?></span></span>
-		</a>
-		<?php endif; ?>
+		<?php // hero media retired 2026-07-07: the live night map IS the hero (the promo video moved to its own band below) ?>
 	</section>
 		<?php
 	}
@@ -636,7 +618,7 @@ if ( ! function_exists( 'nadlan_home_v2_shortcode' ) ) {
 		}
 		$lang = function_exists( 'nadlan_current_lang' ) ? nadlan_current_lang() : 'he';
 		$dir  = ( function_exists( 'nadlan_lang_is_rtl' ) && ! nadlan_lang_is_rtl( $lang ) ) ? 'ltr' : 'rtl';
-		$default = array( 'ticker', 'browse', 'hero', 'market', 'projects', 'listings', 'areas', 'magazine', 'tools', 'pros', 'intl', 'megafooter' ); // 'video' band retired: the promo lives in the hero card
+		$default = array( 'ticker', 'browse', 'hero', 'market', 'projects', 'video', 'listings', 'areas', 'magazine', 'tools', 'pros', 'intl', 'megafooter' ); // video band back: the hero is the live map now (owner 2026-07-07)
 		$bands   = get_option( 'nadlan_home_bands', $default );
 		if ( ! is_array( $bands ) || ! $bands ) { $bands = $default; }
 		// the flagship 3D band always rides right after the hero (owner 2026-07-06)
@@ -645,11 +627,8 @@ if ( ! function_exists( 'nadlan_home_v2_shortcode' ) ) {
 			if ( false !== $hi ) { array_splice( $bands, $hi + 1, 0, 'flagships' ); }
 			else { array_unshift( $bands, 'flagships' ); }
 		}
-		// the live drone map rides right after the flagships (owner 2026-07-06)
-		if ( ! in_array( 'dronemap', $bands, true ) ) {
-			$fi = array_search( 'flagships', $bands, true );
-			if ( false !== $fi ) { array_splice( $bands, $fi + 1, 0, 'dronemap' ); }
-		}
+		// (dronemap band retired 2026-07-07: the live map IS the hero now - ONE map on the page)
+		$bands = array_values( array_diff( $bands, array( 'dronemap' ) ) );
 		ob_start();
 		echo '<div class="nlhv2" dir="' . esc_attr( $dir ) . '" lang="' . esc_attr( $lang ) . '">';
 		if ( function_exists( 'nadlan_lang_switcher' ) ) { echo '<div class="nlhv2-langbar">' . nadlan_lang_switcher() . '</div>'; }
@@ -713,6 +692,20 @@ if ( ! function_exists( 'nadlan_hv2_assets' ) ) {
 .nlhv2-mega a b{font-weight:700}
 .nlhv2-mega-cta{color:var(--terra)!important;font-weight:700}
 .nlhv2-hero{display:grid;grid-template-columns:1.1fr .9fr;gap:36px;align-items:center;padding:30px 0 26px}
+/* THE MAP HERO (owner decision 2, 2026-07-07): the live night map is the opener */
+.nlhv2-hero--map{display:block;position:relative;min-height:560px;padding:0;border-radius:22px;overflow:hidden;margin:8px 0 16px;background:#14130F;border:1px solid #2A251B}
+@media(max-width:860px){.nlhv2-hero--map{min-height:520px;border-radius:16px}}
+.nlhv2-hero-mapbg{position:absolute;inset:0}
+.nlhv2-hero-veil{position:absolute;inset:0;pointer-events:none;background:linear-gradient(180deg,rgba(20,19,15,.62) 0%,rgba(20,19,15,.18) 34%,rgba(20,19,15,.05) 55%,rgba(20,19,15,.38) 100%)}
+.nlhv2-hero--map .nlhv2-hero-copy{position:relative;z-index:6;max-width:640px;padding:44px clamp(18px,4vw,48px) 30px;pointer-events:none}
+.nlhv2-hero--map .nlhv2-hero-copy>*{pointer-events:auto}
+.nlhv2-hero--map h1{color:#FAF7F1;text-shadow:0 2px 14px rgba(0,0,0,.5)}
+.nlhv2-hero--map .nlhv2-sub{color:#E4DDCE;text-shadow:0 1px 8px rgba(0,0,0,.5)}
+.nlhv2-hero--map .nlhv2-tabs button{background:rgba(250,247,241,.14);color:#F3EEE3;border-color:rgba(233,217,168,.35);backdrop-filter:blur(4px)}
+.nlhv2-hero--map .nlhv2-tabs button.is-on{background:#FAF7F1;color:#1B1A17}
+.nlhv2-hero--map .nlhv2-box{box-shadow:0 26px 54px -20px rgba(0,0,0,.65)}
+.nlhv2-hero--map .nlhv2-trust a{color:#E4DDCE;text-shadow:0 1px 6px rgba(0,0,0,.6)}
+.nlhv2-hero--map .nlhv2-trust b{color:#E9D9A8}
 @media(max-width:860px){.nlhv2-hero{grid-template-columns:1fr}}
 .nlhv2-sub{color:var(--warm);max-width:560px;margin:0 0 20px;font-size:15.5px}
 .nlhv2-search{max-width:640px}
