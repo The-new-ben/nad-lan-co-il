@@ -116,6 +116,7 @@ add_shortcode( 'nadlan_premium_catalog', function () {
 .nlpc-join b{font-family:var(--font-serif,serif);font-size:1.2rem;color:#E6D4AE}
 .nlpc-join p{font-size:13.5px;color:#CFC6B4;margin:6px 0 0}
 @media(max-width:700px){.nlpc-card{grid-template-columns:1fr}}
+.nlpc-media.is-poster{background-size:contain;background-color:#14130F;background-repeat:no-repeat;background-position:center}
 </style>
 <div class="nlpc" id="nlpc">
   <?php $icons = nadlan_pc_icons(); ?>
@@ -161,7 +162,7 @@ add_shortcode( 'nadlan_premium_catalog', function () {
     }
   ?>
   <article class="nlpc-card" data-rooms="<?php echo esc_attr( implode( ',', $p['rooms'] ) ); ?>" data-delivery="<?php echo esc_attr( $p['delivery'] ); ?>" data-sea="<?php echo $p['sea'] ? 1 : 0; ?>" data-park="1" data-marina="1" data-dev="<?php echo esc_attr( $p['dev'] ); ?>" data-floors="<?php echo (int) $p['floors']; ?>" data-units="<?php echo (int) $p['units']; ?>"<?php echo $fattrs; ?>>
-    <div class="nlpc-media" style="background-image:url('<?php echo $hero; ?>')"><em>בחירת דירה בתלת ממד</em><?php if ( $plate && $plate !== $hero ) : ?><span class="nlpc-3d" style="background-image:url('<?php echo $plate; ?>')" aria-hidden="true"><b>◆</b></span><?php endif; ?></div>
+    <div class="nlpc-media<?php echo ( $hero && $hero === $poster ) ? ' is-poster' : ''; ?>" style="background-image:url('<?php echo $hero; ?>')"><em>בחירת דירה בתלת ממד</em><?php if ( $plate && $plate !== $hero ) : ?><span class="nlpc-3d" style="background-image:url('<?php echo $plate; ?>')" aria-hidden="true"><b>◆</b></span><?php endif; ?></div>
     <div class="nlpc-body">
       <h3><?php echo esc_html( $p['name'] ); ?></h3>
       <div class="nlpc-meta"><?php echo esc_html( $p['dev'] . ' · ' . $p['area'] . ' · ' . $p['floors'] . ' קומות · ' . $p['units'] . ' דירות · אכלוס ' . $p['delivery'] ); ?></div>

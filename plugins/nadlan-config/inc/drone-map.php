@@ -187,15 +187,15 @@ if ( ! function_exists( 'nadlan_drone_map_band' ) ) {
 				})};
 				var addData=function(){
 					if(map.getSource("nlprojects"))return;
-					map.addSource("nlprojects",{type:"geojson",data:gj,cluster:true,clusterRadius:44,clusterMaxZoom:22});
+					map.addSource("nlprojects",{type:"geojson",data:gj,cluster:true,clusterRadius:34,clusterMaxZoom:22});
 					map.addLayer({id:"nl-clusters",type:"circle",source:"nlprojects",filter:["has","point_count"],
-						paint:{"circle-color":"#9C7A3C","circle-opacity":.92,"circle-stroke-width":2,"circle-stroke-color":"#FAF7F1",
-							"circle-radius":["step",["get","point_count"],16,10,20,50,26,150,32]}});
+						paint:{"circle-color":"#9C7A3C","circle-opacity":.85,"circle-stroke-width":1.4,"circle-stroke-color":"#FAF7F1",
+							"circle-radius":["step",["get","point_count"],10,10,13,50,17,150,22]}});
 					map.addLayer({id:"nl-cluster-count",type:"symbol",source:"nlprojects",filter:["has","point_count"],
-						layout:{"text-field":["get","point_count_abbreviated"],"text-size":13,"text-font":["DIN Pro Medium","Arial Unicode MS Bold"]},
+						layout:{"text-field":["get","point_count_abbreviated"],"text-size":10.5,"text-font":["DIN Pro Medium","Arial Unicode MS Bold"]},
 						paint:{"text-color":"#FAF7F1"}});
 					map.addLayer({id:"nl-points",type:"circle",source:"nlprojects",filter:["!",["has","point_count"]],
-						paint:{"circle-color":"#C2563A","circle-radius":8,"circle-stroke-width":2,"circle-stroke-color":"#FAF7F1"}});
+						paint:{"circle-color":"#E9D9A8","circle-radius":["interpolate",["linear"],["zoom"],8,2.6,12,4.5,15,7],"circle-stroke-width":1,"circle-stroke-color":"#14130F"}});
 					function popHtml(p){return '<div class="nldrone-pop" dir="auto"><b>'+p.title+"</b>"+(p.img?'<img src="'+p.img+'" alt="" loading="lazy">':"")+(p.city?'<div style="font-size:12px;color:#6D665C">'+p.city+(p.conf==="city"?" · "+L.city:"")+"</div>":"")+'<a href="'+p.url+'">'+L.top+"</a></div>"}
 					map.on("click","nl-points",function(e){
 						var p=e.features[0].properties;

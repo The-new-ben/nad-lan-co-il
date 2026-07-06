@@ -13,6 +13,21 @@
 
 if ( ! defined( 'ABSPATH' ) ) { exit; }
 
+/* The THEME ships its own a11y launcher (assets/js/nadlan-accessibility.js -
+ * the golden floating toggle the owner kept seeing bottom-left). Two widgets
+ * is one too many: dequeue the theme's, this module is the one widget. */
+add_action( 'wp_enqueue_scripts', function () {
+	global $wp_scripts;
+	if ( ! $wp_scripts ) { return; }
+	foreach ( (array) $wp_scripts->queue as $h ) {
+		$src = isset( $wp_scripts->registered[ $h ] ) ? (string) $wp_scripts->registered[ $h ]->src : '';
+		if ( false !== strpos( $src, 'nadlan-accessibility.js' ) ) {
+			wp_dequeue_script( $h );
+			wp_deregister_script( $h );
+		}
+	}
+}, 999 );
+
 add_action( 'wp_footer', function () {
 	?>
 <div id="nla11y" dir="rtl">
