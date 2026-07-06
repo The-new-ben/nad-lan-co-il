@@ -1,5 +1,18 @@
 # AGENT-LOG - the God brain (append-only, newest on top)
 
+## 2026-07-06 (6) - Cowork interiors batch-1 COMPLETE: all 8 wired, DUO gap closed
+Cowork delivered the 2 missing DUO interiors (media 5122 duo-a-21, 5123
+duo-b-45; byte-verified 200) + inbox draft 5124. Wired both into 4893
+project_3d_units.interior_url via REST (write-verified); the other 6 were
+already wired from the earlier run (rainbow 4464, ashira 4744, dimri 4745 -
+siblings confirmed synced via 5061 spot-check). Draft 5124 deleted per
+protocol, caches purged. LIVE-VERIFIED headless on duo-a-21: view tab renders
+interior-duo-tel-aviv-duo-a-21.jpg with NO generic label + btn_winview under
+it. Eye-QA: walnut library interior matches brief and DNA.
+NEXT FROM COWORK: a generic default interior (in progress on their side) ->
+when it lands, set project_default_interior on all 4 flagships (dimri currently
+borrows a rainbow interior as its default - replace first).
+
 ## 2026-07-06 (5) - v1.72.10 HOTFIX: safeHttpUrl("") == homepage (the REAL tour bug)
 Headless verify of 1.72.9 exposed the root cause of "tour not working":
 new URL("", location.origin) resolves an EMPTY tour_url to https://nad-lan.co.il/
