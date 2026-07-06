@@ -1,5 +1,29 @@
 # AGENT-LOG - the God brain (append-only, newest on top)
 
+## 2026-07-06 (12) - v1.72.16: scrollbar kill + DEDICATED per-project walk + #34 demo note
+OWNER (Rainbow review): (a) gray scrollbar in the 3D area = frame-in-frame
+(it's .nl-panel__scroll, the unit panel over the theater; probe missed it
+because no unit was selected); (b) walk must use the project's OWN pictures
+when they exist (Rainbow has generated interiors) with a CMS path for
+dedicated sets per listed asset; (c) #34 decision: just add a demonstration
+note to seeded ratings.
+SHIPPED:
+- SCROLLBAR: .nl-panel__scroll + .nlbuy__panel scrollbar hidden
+  (scrollbar-width none + webkit display none), wheel/touch still scroll,
+  bottom fade cue (.nl-panel::after gradient) hints continuation.
+- WALK PRIORITY (page tour): 1) dedicated media walk-<slug>-<space>
+  (nadlan_showroom_project_walk, 30min transient, sibling slugs normalized to
+  parent, same canonical order/aliases/360-exclusion via generalized
+  nadlan_showroom_scan_walk_media) -> 2) project's unit interiors as steps
+  labeled "{rooms} · קומה {n}" (dtour_tag_units) -> 3) standard default set ->
+  4) pending text. Rainbow now walks through its own generated apartments.
+  CMS hint added in the showroom metabox (upload title convention, zero saves).
+- #34 (owner decision): rating stars without reviews_verified meta get a
+  "נתוני דוגמה" badge on directory cards + profile pages. Flip
+  reviews_verified=1 per professional when real reviews arrive.
+i18n dtour_tag_dedicated/_units x5. Next in chat: worries/leftovers/competitor
+gaps float (owner asked).
+
 ## 2026-07-06 (11) - v1.72.15 + set ingest COMPLETE: 12-space walk live, 12x lighter
 Standard set finished: alias fix (v1.72.14) put the building first; JPEG
 conversion done server-side (12 attachments repointed, q82, metadata regen,

@@ -145,6 +145,7 @@ if ( ! function_exists( 'nadlan_showroom_engine_build_project' ) ) {
 			// apartment + building set from media (standard-default-*), shown on every
 			// project until the developer's dedicated tour replaces it.
 			'default_tour'   => nadlan_showroom_default_tour(),
+			'project_walk'   => nadlan_showroom_project_walk( $id, $post->post_name ),
 			'orientation'    => $orientation,
 			'geo'            => array(
 				'lat' => (float) get_post_meta( $id, 'lat', true ),
@@ -611,29 +612,24 @@ add_filter( 'locale', function ( $loc ) {
 	return isset( $map[ $l ] ) ? $map[ $l ] : $loc;
 }, 20 );
 
-if ( ! function_exists( 'nadlan_showroom_default_tour' ) ) {
+if ( ! function_exists( 'nadlan_showroom_scan_walk_media' ) ) {
 	/**
-	 * The standard default walk set: every media attachment titled
-	 * standard-default-<space> becomes a step, ordered building -> apartment.
-	 * Self-maintaining: new uploads appear on the next cache cycle.
+	 * Scan media for walk steps titled <prefix><space>, canonical order
+	 * building -> apartment, naming aliases normalized, 360-* excluded
+	 * (equirectangular panoramas belong to the pano layer, not flat frames).
 	 */
-	function nadlan_showroom_default_tour() {
-		$cache = get_transient( 'nadlan_default_tour_v1' );
-		if ( is_array( $cache ) ) { return $cache; }
+	function nadlan_showroom_scan_walk_media( $prefix ) {
 		$q = new WP_Query( array(
 			'post_type' => 'attachment', 'post_status' => 'inherit',
 			'post_mime_type' => 'image', 'posts_per_page' => 40, 'fields' => 'ids',
-			's' => 'standard-default', 'no_found_rows' => true,
+			's' => rtrim( $prefix, '-' ), 'no_found_rows' => true,
 		) );
 		$found = array();
 		foreach ( $q->posts as $aid ) {
 			$title = (string) get_the_title( $aid );
-			if ( strpos( $title, 'standard-default-' ) !== 0 ) { continue; }
-			$key = preg_replace( '/\.(png|jpe?g|webp)$/i', '', substr( $title, strlen( 'standard-default-' ) ) );
-			// 360-* uploads are equirectangular panoramas for the (future) 360
-			// layer - never flat walk frames; a 2:1 pano in the walk reads warped.
+			if ( strpos( $title, $prefix ) !== 0 ) { continue; }
+			$key = preg_replace( '/\.(png|jpe?g|webp)$/i', '', substr( $title, strlen( $prefix ) ) );
 			if ( strpos( $key, '360-' ) === 0 || strpos( $key, '360_' ) === 0 ) { continue; }
-			// normalize naming variants so the walk order + labels always hold
 			$aliases = array( 'building-exterior' => 'exterior', 'building-entrance' => 'entrance', 'facade' => 'exterior', 'bedroom' => 'second-bedroom' );
 			if ( isset( $aliases[ $key ] ) ) { $key = $aliases[ $key ]; }
 			$url = wp_get_attachment_image_url( $aid, 'large' );
@@ -644,8 +640,39 @@ if ( ! function_exists( 'nadlan_showroom_default_tour' ) ) {
 		$out = array();
 		foreach ( $order as $k ) { if ( isset( $found[ $k ] ) ) { $out[] = $found[ $k ]; unset( $found[ $k ] ); } }
 		foreach ( $found as $extra ) { $out[] = $extra; }
+		return $out;
+	}
+}
+
+if ( ! function_exists( 'nadlan_showroom_default_tour' ) ) {
+	/** The standard default walk set (standard-default-*). Self-maintaining. */
+	function nadlan_showroom_default_tour() {
+		$cache = get_transient( 'nadlan_default_tour_v1' );
+		if ( is_array( $cache ) ) { return $cache; }
+		$out = nadlan_showroom_scan_walk_media( 'standard-default-' );
 		set_transient( 'nadlan_default_tour_v1', $out, HOUR_IN_SECONDS );
 		return $out;
 	}
 	add_action( 'add_attachment', function () { delete_transient( 'nadlan_default_tour_v1' ); } );
+}
+
+if ( ! function_exists( 'nadlan_showroom_project_walk' ) ) {
+	/**
+	 * DEDICATED walk for one project (CMS path, owner ask 2026-07-06): upload
+	 * media titled walk-<project-slug>-<space> (developer material or paid
+	 * listing assets) and the page walk switches from the standard set to the
+	 * project's own pictures automatically.
+	 */
+	function nadlan_showroom_project_walk( $id, $slug ) {
+		$slug = sanitize_title( $slug );
+		if ( $slug === '' ) { return array(); }
+		// language siblings share the parent's dedicated walk
+		$slug = preg_replace( '/-(en|fr|ru|ar)$/', '', $slug );
+		$tkey = 'nadlan_pwalk_' . md5( $slug );
+		$cache = get_transient( $tkey );
+		if ( is_array( $cache ) ) { return $cache; }
+		$out = nadlan_showroom_scan_walk_media( 'walk-' . $slug . '-' );
+		set_transient( $tkey, $out, 30 * MINUTE_IN_SECONDS );
+		return $out;
+	}
 }
