@@ -1,5 +1,33 @@
 # AGENT-LOG - the God brain (append-only, newest on top)
 
+## 2026-07-06 (4) - v1.72.9: the 3 broken features (owner report) - tour / view-from-window / walk-inside
+OWNER REPORTED: tour tab "closed to save loading time" (bad copy + dead end),
+view-from-window (old project-3d.php feature) gone, walk-inside not working.
+ROOT CAUSES: (a) tour tab dead-ended into tour_pending text when no tour_url;
+(b) view-from-window died twice - its code retired with project-3d.php v1.70.1
+AND its map host was stood down by the ONE-map doctrine; (c) interior-fp.php
+walkthrough existed but was never wired into the engine unit panel.
+SHIPPED v1.72.9:
+- WALK-INSIDE EVERYWHERE: engine tour tab now builds the schematic FP
+  walkthrough from THIS unit's real data (fpRooms JS port of nadlan_ifp_rooms:
+  salon 40%, kitchen, bedrooms w/ last=mamad, balcony, window wall from unit
+  direction) whenever the developer has no tour_url. interior-fp.php refactored:
+  nadlan_ifp_assets_html() (static-guarded CSS+JS + window.nadlanInitFP
+  rescanner) printed in wp_footer on project pages; engine calls fpInit() on
+  tab switch. Honest fp_tag label ("schematic, built from unit data") x5 langs.
+- VIEW FROM WINDOW, REBUILT BETTER: gold btn_winview on the view tab ->
+  winView(u): scrolls the unified map into view, FreeCamera at
+  alt=max(10, floor*floor_height+1.6) at the project lngLat, lookAtPoint 700m
+  toward DIR_BEARING[unit direction], then showViewCone(bearing). Lazy-map safe
+  (nlpjx:map once-listener). Old feature was a detached fake - this one stands
+  at the real floor height on the real POI map.
+- COPY LAW: tour_lazy_hint "loads on click to keep page fast" (owner: bad
+  language) -> "One click and you are inside." x5; tour_pending now points
+  people to the walk-inside on the inventory board instead of apologizing.
+- 10 new i18n keys (btn_winview, fp_*) in HE/EN tables + FR/RU/AR overrides.
+FILES: engine.js (fpRooms/fpMarkup/fpInit/winView/tabPane/click), i18n.js,
+inc/interior-fp.php, inc/showroom-engine.php (wp_footer assets), version 1.72.9.
+
 ## 2026-07-06 (3) - v1.72.8: HOMEPAGE STRIKE LIVE (flagship band leads the front door)
 SHIPPED + LIVE-VERIFIED (flaggrid present, 4 cards, contain-fix, singular grammar):
 - NEW FLAGSHIP BAND right under the hero: "בחרו דירה מתוך הבניין, בתלת ממד" -

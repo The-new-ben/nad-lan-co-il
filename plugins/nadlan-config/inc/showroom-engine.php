@@ -557,6 +557,14 @@ if ( ! function_exists( 'nadlan_showroom_engine_weave' ) ) {
 	}
 }
 
+/* The FP walk-inside assets ride on every project page so the engine can
+   inject a walkthrough into the unit panel and re-init it (walk-inside for
+   EVERY unit, no developer material needed - honest schematic label inside). */
+add_action( 'wp_footer', function () {
+	if ( ! is_singular( 'nadlan_project' ) || ! function_exists( 'nadlan_ifp_assets_html' ) ) { return; }
+	echo nadlan_ifp_assets_html(); // phpcs:ignore
+} );
+
 /* hreflang: emit the reciprocal language set so each sibling post is crawlable and
    Google serves the right language. Only for siblings that exist and are published. */
 add_action( 'wp_head', function () {
