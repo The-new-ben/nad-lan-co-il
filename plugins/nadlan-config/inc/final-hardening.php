@@ -273,3 +273,15 @@ add_filter( 'nadlan_config_healthcheck', function ( $out ) {
  * en dash and "--" to an em dash at render time, re-violating the law on every
  * page even when the stored content is clean. Straight characters, always. */
 add_filter( 'run_wptexturize', '__return_false' );
+
+/* SELF-HEALING REWRITE RULES (incident 2026-07-06: /projects/ + /professionals/
+ * + all project singles 404ed after a deploy - CPT rewrite rules were flushed
+ * during the plugin swap window). On every version change, re-flush once with
+ * the plugin fully loaded so the catalog can never silently drop off the site. */
+add_action( 'init', function () {
+	if ( ! defined( 'NADLAN_CONFIG_VERSION' ) ) { return; }
+	if ( get_option( 'nadlan_rw_flushed_for' ) !== NADLAN_CONFIG_VERSION ) {
+		flush_rewrite_rules( false );
+		update_option( 'nadlan_rw_flushed_for', NADLAN_CONFIG_VERSION, false );
+	}
+}, 99 );

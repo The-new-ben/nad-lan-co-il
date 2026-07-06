@@ -1,5 +1,32 @@
 # AGENT-LOG - the God brain (append-only, newest on top)
 
+## 2026-07-06 (23) - INCIDENT + v1.72.25: catalog 404 healed + TRUE free month + dev batch ingest
+INCIDENT (owner report): /projects/ + /professionals/ + ALL project singles
+404. Root cause: CPT rewrite rules dropped (stale rules survived a deploy
+window while the plugin was mid-swap). FIX: flush_rewrite_rules via snippet -
+all 200 within minutes (530 rules, 30 project rules regenerated). HARDENING
+SHIPPED (v1.72.25): final-hardening.php re-flushes rules automatically on
+every NADLAN_CONFIG_VERSION change (option nadlan_rw_flushed_for) - the
+catalog can never silently drop again.
+TRIAL DECISION (owner delegated discretion; web search down, decision from
+established knowledge + earlier Morning research): KEEP the free first month
+and make it TRUE. Rationale: supply-side marketplace - an empty directory
+converts nobody; no-card trials maximize professional signups (2-10x) and
+nobody in the IL market (Yad2 upfront bundles, Madlan sales-call subs) offers
+a clean self-serve free month = differentiator. IMPLEMENTED: WC coupon
+'firstmonth' (id 5183, 100%, product 476 only, 1/user, individual use),
+auto-applied in cart via funnel.php when Pro present -> first checkout is a
+GENUINE 0, no card; renewal engine (v1.72.24) bills 349 at day 27. Premier
+(749) stays paid-now by design (serious-buyer filter + revenue-now path).
+Product 476 renamed honestly: "Pro - ... (חודש ראשון חינם, לאחר מכן 349 לחודש)".
+COWORK DEV BATCH-1 (draft 5182) INGESTED: 7 developer profiles (Israel
+Canada, Africa Israel, Y.H. Dimri, Avisror, Mivne, Nachmias, Gindi) - stored
+as developer_profile/developer_name meta on unambiguous flagships (rainbow
+4464=Israel Canada, dimri 4745=Y.H. Dimri), full batch committed
+handoff/research/developers/, draft deleted per protocol. DISPLAY DECISION
+FLOATED: an "about the developer" block on project pages would use this meta
+(new block, not a text change - safe to add).
+
 ## 2026-07-06 (22) - v1.72.24 RENEWAL ENGINE: month-2 revenue machine (owner core-business)
 RESEARCH (web): the Morning WooCommerce gateway natively supports WooCommerce
 Subscriptions + card tokens (changelog: "improved WooCommerce Subscriptions

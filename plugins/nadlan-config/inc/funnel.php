@@ -123,3 +123,15 @@ add_filter( 'the_content', function ( $content ) {
 	if ( is_page( 'advertise' ) && ! is_admin() ) { return $content . nadlan_funnel_advertiser_form(); }
 	return $content;
 }, 20 );
+
+/* ---------------- 4) the free first month is TRUE (owner 2026-07-06) ----------------
+ * Pro (product 476) promises a free first month. Instead of charging 349 at
+ * checkout, a one-per-customer 100% coupon auto-applies so the first order is
+ * a genuine 0 - no card needed. Month 2 is billed by the renewal engine
+ * (inc/renewals.php) at full price. Premier stays paid-now by design. */
+add_action( 'woocommerce_before_calculate_totals', function ( $cart ) {
+	if ( is_admin() || ! $cart || $cart->has_discount( 'firstmonth' ) ) { return; }
+	foreach ( $cart->get_cart() as $item ) {
+		if ( (int) ( $item['product_id'] ?? 0 ) === 476 ) { $cart->apply_coupon( 'firstmonth' ); return; }
+	}
+}, 20 );
