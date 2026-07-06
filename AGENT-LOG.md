@@ -1,5 +1,26 @@
 # AGENT-LOG - the God brain (append-only, newest on top)
 
+## 2026-07-06 (7) - v1.72.11: the view tab IS the window (owner intent clarified)
+OWNER: mvt/מבט must mean STANDING AT THE WINDOW seeing the real world - not an
+interior picture. Floor 50 sees one thing, floor 1 another; buyer must know if
+the window faces a building, a school, the sea. Interior renders belong to the
+upcoming POV first-shooter walkthrough (owner generating room images).
+SHIPPED: view tab now renders an INLINE window viewport - dedicated mini
+Mapbox (satellite-streets-v12 + sky atmosphere + 3D building extrusions,
+non-interactive) with FreeCamera standing at alt = floor*floor_height + 1.6m
+at the project lngLat, looking 700m out in the unit's real compass direction.
+Look-left/right buttons rotate the gaze in 30deg steps (winLook, per-unit
+bearing state). Honest note ("real satellite + buildings, illustration, not a
+photo") x5 langs. Interior render demoted to a <details> expandable below;
+btn_winview reworded to "continue on the live area map" (the big POI map with
+the cone stays one tap away). Engine: winState/winCam/winStageInit/winLook,
+setTab inits on view; CSS .nl-winstage__*; i18n winview_note/turn_left/
+turn_right/view_interior_label + btn_winview rewrite x5.
+NOTE TO SELF: ONE-map doctrine intact - this is a separate purpose viewport
+(the window), not a second POI map; non-interactive, removed/rebuilt per open.
+SITE KIT: owner's setup link failed = expired one-time nonce in the URL; must
+enter wp-admin -> Site Kit menu -> Start setup fresh (explained in chat).
+
 ## 2026-07-06 (6) - Cowork interiors batch-1 COMPLETE: all 8 wired, DUO gap closed
 Cowork delivered the 2 missing DUO interiors (media 5122 duo-a-21, 5123
 duo-b-45; byte-verified 200) + inbox draft 5124. Wired both into 4893

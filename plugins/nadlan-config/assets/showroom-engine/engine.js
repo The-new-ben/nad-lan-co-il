@@ -296,16 +296,34 @@
   function tabPane(u) {
     if (state.tab === "plan") return u.plan ? '<img src="' + esc(u.plan) + '" alt="' + esc(t("tab_plan")) + '">' : "<p>" + esc(t("plan_coming")) + "</p>";
     if (state.tab === "view") {
-      /* per-unit interior wins; else the project's default interior with an
-         honest "generic illustration" label - an empty tab sells nothing.
-         Plus: the view FROM the window on the live map (FreeCamera at the
-         unit's floor height, looking out in its direction). */
+      /* THE VIEW TAB IS THE WINDOW (owner intent 2026-07-06): an inline
+         real-world viewport standing at this unit's floor height, looking in
+         its real direction - satellite + 3D buildings, so the buyer sees WHAT
+         is outside (a building? a school? the sea?) without visiting. The
+         interior render is secondary; the live POI map is the continuation. */
       var geoOk = project().geo && Number(project().geo.lat);
-      var winBtn = geoOk ? '<button class="nl-btn nl-btn--gold nl-btn--block" style="margin-top:10px" data-act="winview" data-id="' + esc(u.id) + '">' + esc(t("btn_winview")) + "</button>" : "";
-      if (u.interior_url) return '<img src="' + esc(u.interior_url) + '" alt="">' + winBtn;
-      var di = project().default_interior;
-      if (di) return '<div class="nl-defint"><img src="' + esc(di) + '" alt=""><span class="nl-defint__note">' + esc(t("interior_generic_note")) + "</span></div>" + winBtn;
-      return "<p>" + esc(t("view_coming")) + "</p>" + winBtn;
+      var int1 = u.interior_url || project().default_interior;
+      if (geoOk && SR.config.mapbox_token) {
+        var html = '<div class="nl-winstage" data-id="' + esc(u.id) + '">' +
+          '<div class="nl-winstage__map"></div>' +
+          '<div class="nl-winstage__bar">' +
+            '<button class="nl-winstage__turn" data-act="winlook" data-id="' + esc(u.id) + '" data-d="-30" aria-label="' + esc(t("winview_turn_left")) + '">&#8634;</button>' +
+            '<span class="nl-winstage__meta">' + esc(t("floor_label", { n: u.floor })) + " \u00B7 " + esc(dirLabel(u.dir)) + "</span>" +
+            '<button class="nl-winstage__turn" data-act="winlook" data-id="' + esc(u.id) + '" data-d="30" aria-label="' + esc(t("winview_turn_right")) + '">&#8635;</button>' +
+          "</div>" +
+          '<p class="nl-winstage__note">' + esc(t("winview_note")) + "</p></div>" +
+          '<button class="nl-btn nl-btn--gold nl-btn--block" style="margin-top:10px" data-act="winview" data-id="' + esc(u.id) + '">' + esc(t("btn_winview")) + "</button>";
+        if (int1) {
+          html += '<details class="nl-winstage__int"><summary>' + esc(t("view_interior_label")) + "</summary>" +
+            '<img src="' + esc(int1) + '" alt="" loading="lazy">' +
+            (u.interior_url ? "" : '<span class="nl-defint__note">' + esc(t("interior_generic_note")) + "</span>") + "</details>";
+        }
+        return html;
+      }
+      // no verified location (or no map token) yet: honest interior fallback
+      if (u.interior_url) return '<img src="' + esc(u.interior_url) + '" alt="">';
+      if (int1) return '<div class="nl-defint"><img src="' + esc(int1) + '" alt=""><span class="nl-defint__note">' + esc(t("interior_generic_note")) + "</span></div>";
+      return "<p>" + esc(t("view_coming")) + "</p>";
     }
     var tour = safeHttpUrl(u.tour_url || project().tour_url);
     if (tour) return '<a class="nl-btn nl-btn--gold" href="' + esc(tour) + '" target="_blank" rel="noopener">' + esc(t("tour_open")) + "</a>";
@@ -709,6 +727,59 @@
   }
   function fpInit() { try { if (window.nadlanInitFP) window.nadlanInitFP(); } catch (e) {} }
 
+  /* ---- the inline window viewport (the mvt tab IS the window): a small
+     satellite + 3D-buildings map standing at the unit's floor height, looking
+     out in its direction. Look buttons rotate the gaze in 30deg steps. ---- */
+  var winState = { map: null, bearing: null, unit: null };
+  function winCam(map, u, brOverride) {
+    var gl = window.mapboxgl, p = project();
+    var k = dirKey(u.dir), br = (brOverride != null) ? brOverride : ((k && k in DIR_BEARING) ? DIR_BEARING[k] : 270);
+    var fh = parseFloat(p.floor_height_m) || 3.05;
+    var alt = Math.max(10, (parseInt(u.floor, 10) || 1) * fh + 1.6);
+    try {
+      var cam = map.getFreeCameraOptions();
+      cam.position = gl.MercatorCoordinate.fromLngLat({ lng: Number(p.geo.lng), lat: Number(p.geo.lat) }, alt);
+      var rad = br * Math.PI / 180, d = 700;
+      var tLat = Number(p.geo.lat) + (Math.cos(rad) * d) / 111320;
+      var tLng = Number(p.geo.lng) + (Math.sin(rad) * d) / (111320 * Math.cos(Number(p.geo.lat) * Math.PI / 180));
+      cam.lookAtPoint({ lng: tLng, lat: tLat });
+      map.setFreeCameraOptions(cam);
+    } catch (e) {}
+    return br;
+  }
+  function winStageInit(u) {
+    var host = document.querySelector(".nl-tabpane .nl-winstage__map");
+    if (!host || !u || !SR.config.mapbox_token) return;
+    var boot = function () {
+      var gl = window.mapboxgl; if (!gl || !document.contains(host)) return;
+      if (winState.map) { try { winState.map.remove(); } catch (e) {} winState.map = null; }
+      gl.accessToken = SR.config.mapbox_token;
+      var map = new gl.Map({ container: host, style: "mapbox://styles/mapbox/satellite-streets-v12",
+        center: [Number(project().geo.lng), Number(project().geo.lat)], zoom: 15,
+        interactive: false, attributionControl: false });
+      winState.map = map; winState.unit = u.id; winState.bearing = null;
+      map.on("load", function () {
+        try { map.addLayer({ id: "nl-win-sky", type: "sky", paint: { "sky-type": "atmosphere", "sky-atmosphere-sun-intensity": 8 } }); } catch (e) {}
+        try {
+          var layers = map.getStyle().layers, lab;
+          for (var i = 0; i < layers.length; i++) { if (layers[i].type === "symbol" && layers[i].layout && layers[i].layout["text-field"]) { lab = layers[i].id; break; } }
+          map.addLayer({ id: "nl-win-3d", source: "composite", "source-layer": "building", filter: ["==", "extrude", "true"], type: "fill-extrusion", minzoom: 13,
+            paint: { "fill-extrusion-color": "#d8d2c4", "fill-extrusion-height": ["get", "height"], "fill-extrusion-base": ["get", "min_height"], "fill-extrusion-opacity": 0.85 } }, lab);
+        } catch (e) {}
+        winState.bearing = winCam(map, u);
+      });
+    };
+    if (window.mapboxgl) { boot(); return; }
+    var l = document.createElement("link"); l.rel = "stylesheet"; l.href = "https://api.mapbox.com/mapbox-gl-js/v3.7.0/mapbox-gl.css"; document.head.appendChild(l);
+    var sc = document.createElement("script"); sc.src = "https://api.mapbox.com/mapbox-gl-js/v3.7.0/mapbox-gl.js"; sc.onload = boot; document.head.appendChild(sc);
+  }
+  function winLook(u, delta) {
+    if (!winState.map || winState.unit !== u.id) return;
+    var base = winState.bearing == null ? 270 : winState.bearing;
+    winState.bearing = (base + delta + 360) % 360;
+    winCam(winState.map, u, winState.bearing);
+  }
+
   /* ---- the view FROM the window, on the live map: FreeCamera at the unit's
      real floor height, looking out in the apartment's direction. ---- */
   function winView(u) {
@@ -761,6 +832,7 @@
     else if (act === "loadpano") loadPano(node);
     else if (act === "pin") highlightPin(node);
     else if (act === "winview") { var wu = unit(node.dataset.id); if (wu) winView(wu); }
+    else if (act === "winlook") { var wl = unit(node.dataset.id); if (wl) winLook(wl, parseInt(node.dataset.d, 10) || 0); }
   });
   ROOT.addEventListener("keydown", function (e) {
     var node = e.target.closest('[role="button"][data-act="select"]');
@@ -778,6 +850,7 @@
     document.querySelectorAll(".nl-tab").forEach(function (b) { b.setAttribute("aria-selected", b.dataset.id === tb); });
     var pane = document.querySelector(".nl-tabpane"); if (pane) pane.innerHTML = tabPane(u);
     if (tb === "tour") fpInit();
+    if (tb === "view") winStageInit(u);
   }
 
   function selectUnit(id, instant) {
