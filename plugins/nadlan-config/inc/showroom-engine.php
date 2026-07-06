@@ -126,7 +126,14 @@ if ( ! function_exists( 'nadlan_showroom_engine_build_project' ) ) {
 			// puts the camera inside the crown on 150m+ towers (DUO).
 			'frame_radius_m' => (int) max( 150, round( $floors * (float) ( get_post_meta( $id, 'project_3d_floor_height_m', true ) ?: 3.05 ) * 1.4 ) ),
 			'viewbox'        => (string) get_post_meta( $id, 'project_3d_viewbox', true ),
-			'model_glb'      => esc_url_raw( (string) get_post_meta( $id, 'project_model_glb', true ) ),
+			// DEFAULT MODEL (owner 2026-07-07, "a default, not a fallback"): a
+			// project with no model of its own shows the generic flagship tower,
+			// honestly labeled as a general illustration - never as the building.
+			'model_glb'      => ( function () use ( $id ) {
+				$own = esc_url_raw( (string) get_post_meta( $id, 'project_model_glb', true ) );
+				return $own !== '' ? $own : nadlan_showroom_engine_base_url() . 'models/flagship-tower.glb';
+			} )(),
+			'model_generic'  => get_post_meta( $id, 'project_model_glb', true ) === '',
 			'model_poster'   => esc_url_raw( (string) get_post_meta( $id, 'project_model_poster', true ) ),
 			// hero_image (project_3d_image, "opening image") is the marketing hero;
 			// model_poster stays the 3D loading frame so the crossfade is seamless.

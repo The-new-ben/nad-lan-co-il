@@ -251,6 +251,7 @@
         (p.model_glb ? '<model-viewer id="nl-mv" class="nl-stage" src="' + esc(p.model_glb) + '" loading="lazy" reveal="auto" camera-controls auto-rotate auto-rotate-delay="800" rotation-per-second="14deg" interaction-prompt="basic" environment-image="neutral" exposure="1.02" shadow-intensity="0.55" shadow-softness="1" camera-orbit="' + esc(p.default_orbit) + '" camera-target="' + esc(p.default_target) + '" min-camera-orbit="auto 48deg auto" max-camera-orbit="auto 86deg auto" min-field-of-view="16deg" max-field-of-view="68deg" touch-action="pan-y">' + hots + "</model-viewer>" : "") +
         '<div class="nl-poster" id="nl-poster" style="background-image:url(' + esc(p.model_poster) + ')"></div>' +
         '<div class="nl-spinner" id="nl-spin"><i></i>' + esc(t("loading_model")) + "</div>" +
+        (p.model_glb && p.model_generic ? '<div class="nl-generic-chip">' + esc(t("generic_model")) + "</div>" : "") +
         '<div class="nlp3d-model-error nl-model-error" id="nl-model-error" role="status" aria-live="polite" hidden>' + esc(t("model_error")) + "</div>" +
         orientPins +
         '<div class="nl-legend"><span><span class="nl-dot s-available"></span>' + esc(t("legend_available")) + '</span><span><span class="nl-dot s-reserved"></span>' + esc(t("legend_reserved")) + '</span><span><span class="nl-dot s-sold"></span>' + esc(t("legend_sold")) + "</span></div>" +

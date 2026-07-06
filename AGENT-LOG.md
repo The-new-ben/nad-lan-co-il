@@ -1,5 +1,31 @@
 # AGENT-LOG - the God brain (append-only, newest on top)
 
+## 2026-07-07 (9) - v1.72.35 THE FLAGSHIP TOWER (layer 1 of the diamond run)
+Owner: full discretion, layer by layer, don't stop. Layer 1 delivered: the
+generic luxury tower. JOURNEY (8 versions, each screenshot-judged): started
+Aqua-Tower undulating slabs - discovered it does NOT read at model scale
+(lobes merge into 'sails'); pivoted to the twisting-tower language (Turning
+Torso/Cayan): 42 floors spiraling 90deg, white plates over deep petrol
+glass, retail podium w/ lit storefronts + terracotta awnings, rooftop
+infinity pool + pergola, palm promenade, benches, warm lit homes. CRITICAL
+BUG FOUND: trimesh extrude_polygon extrudes along Z but GLB scene is Y-up -
+every 'floor plate' was a giant vertical sheet (explains v1-v6 sails +
+hourglass); upright() rotation fixed the whole family. Also cylinders/cones
+lie flat without it (v1 palms were lying down). Final: 16,808 tris / 339KB
+(vs Rainbow 15,588/831KB - leaner AND visually far stronger).
+scripts/generate-flagship-tower.py committed; GLB at assets/engine/
+flagship-tower-v1.glb + plugin models/; INVENTORY refreshed; poster
+rendered + uploaded (media 5401). WIRED: engine projects without their own
+GLB now default to the flagship, always with honest chip 'המחשה כללית - לא
+מבנה הפרויקט' (i18n he+en, fallback covers fr/ru/ar). NOT yet: 3D band on
+non-engine project pages (bigger feature - backlog).
+COMPETITOR WATCH (background research landed): world bar = 3D Estate (PL),
+Vinode, Snaploader, Realsee, Bayut Studios. 3 gaps they have on us:
+(1) live inventory/price/filters fused INTO the 3D model; (2) in-unit
+finish configurators + auto per-unit PDF brochures; (3) day/night lighting
+sim + street-level POI context (+ Realsee's live agent co-touring). CBS
+data secured for the graph panel (Q1 2026 city averages w/ official PDFs).
+
 ## 2026-07-07 (8) - DESIGN 10x APPROVED (all 7) + v1.72.34 emergency trio
 OWNER ACCEPTED ALL 7 BOARD DECISIONS (in Hebrew; chat continues in English
 per his request): 1 pivot YES; 2 drone-map hero YES; 3 card v3 chips YES +
