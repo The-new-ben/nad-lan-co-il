@@ -1,5 +1,11 @@
 # AGENT-LOG - the God brain (append-only, newest on top)
 
+## 2026-07-07 (1) - v1.72.27: intake stage-2 fill path (pre-emptive bug kill)
+CAUGHT BEFORE IT BIT: the intake skipped ANY existing title - so the owner's
+stage-2 article upload would have skipped all 197 staged drafts. FIX: an
+existing DRAFT with <120 words + incoming content_html = filled in place and
+scheduled onto the drip; published/future terms are never overwritten.
+
 ## 2026-07-06 (26) - ENCYCLOPEDIA BATCH 1 INGESTED: 197 ontology drafts staged
 Owner ran the mega-prompt on ChatGPT Pro and uploaded batch 1: 200 rows,
 PERFECT schema compliance (all 8 fields, 12 entity types, 12 domains, 0 long
