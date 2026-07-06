@@ -1,5 +1,16 @@
 # AGENT-LOG - the God brain (append-only, newest on top)
 
+## 2026-07-06 (9) - v1.72.13: walk transition honesty fix (load-aware reveal)
+Headless QA on 1.72.12 caught it: clicking next updated the label to the new
+space while the OLD room stayed on screen (2MB PNGs load slowly; the 220ms
+transition revealed before decode). Fix: token-guarded go() keeps the stage in
+the faded "doorway" state until img.onload fires (6s failsafe), label/chips
+update immediately, rapid clicks cancel stale reveals. Also: default set is
+already 6 spaces live (entry-hall joined via the self-maintaining scanner with
+zero manual wiring - the feed works). WEIGHT NOTE for later: Cowork uploads are
+~2MB PNGs; after the owner's run finishes, converting originals to JPEG q82
+would cut the walk's payload ~5x. Do NOT touch media mid-run.
+
 ## 2026-07-06 (8) - v1.72.12: THE DEFAULT WALK (owner law: default, not fallback)
 OWNER: every page must have the walk-inside/360 experience working with a
 DEFAULT standard apartment + building set; "tour pending" dead-ends read as
