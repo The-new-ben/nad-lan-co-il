@@ -1,5 +1,11 @@
 # AGENT-LOG - the God brain (append-only, newest on top)
 
+## 2026-07-07 (15) - v1.72.41 RTL text plugin on the hero map (final polish of the run)
+Live-hero screenshot caught Hebrew map labels REVERSED (לארשי) - Mapbox
+renders RTL scripts backwards without mapbox-gl-rtl-text. mapbox-init.js
+(engine) already loaded it; drone-map.php did not. Added with the
+plugin-status guard. This closes the diamond run: v1.72.34 through .41.
+
 ## 2026-07-07 (14) - v1.72.40 full-homepage sweep: 4 defects caught + fixed
 Full-page screenshot audit found: (1) flagship band still led with
 sketches -> nadlan_hv2_img now prefers project_model_poster (pivot

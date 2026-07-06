@@ -150,6 +150,8 @@ if ( ! function_exists( 'nadlan_drone_map_band' ) ) {
 		function go(){
 			if(!window.mapboxgl)return;
 			mapboxgl.accessToken=band.dataset.token;
+			/* Hebrew renders REVERSED without the RTL text plugin (caught on the live hero) */
+			try{if(mapboxgl.getRTLTextPluginStatus&&mapboxgl.getRTLTextPluginStatus()==="unavailable"){mapboxgl.setRTLTextPlugin("https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-rtl-text/v0.3.0/mapbox-gl-rtl-text.js",null,true)}}catch(e){}
 			var map=new mapboxgl.Map({container:"nldrone-map",style:"mapbox://styles/mapbox/dark-v11",center:[34.86,31.95],zoom:8.6,pitch:55,bearing:-10,attributionControl:true});
 			map.addControl(new mapboxgl.NavigationControl({visualizePitch:true}));
 			map.on("load",function(){
