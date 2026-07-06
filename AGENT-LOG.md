@@ -1,5 +1,25 @@
 # AGENT-LOG - the God brain (append-only, newest on top)
 
+## 2026-07-06 - v1.72.6: BIG CATALOG SEVERE UPGRADE LIVE + guides categorized
+GUIDES: category "מדריכים" (id 35, slug guides) created; both mega guides (5117,
+5118) assigned - byline no longer "Uncategorized".
+CATALOG /projects/ - evidence-driven surgery (before/after screenshots to owner):
+ROOT CAUSES FOUND: (1) language siblings (-en/-fr/-ru/-ar) flooded the grid as
+garbled duplicate cards (Russian/Arabic/English titles start-truncated by the RTL
+container); (2) machine enum "אחר" badge printed on most cards; (3) the sponsored
+slot card nested <a> inside <a> - ILLEGAL HTML that browsers split into a broken
+empty gold card; (4) archive had NO meta description; (5) counts included siblings.
+FIXES SHIPPED: posts_where REGEXP excludes sibling slugs from grid + facets + total
+(973 -> 961 honest); card titles dir=auto + unicode-bidi:plaintext (correct-side
+ellipsis); "other" badge suppressed; sponsored card rebuilt as DIV with real inner
+links; meta description with buyer keywords (דירות למכירה מקבלן, תמ"א 38).
+LIVE VERIFIED: 0 sibling links in grid, no nested-anchor card, meta desc present,
+grid now shows distinct plate-art cards (YOO, DUO, Aura, Rainbow, Akirov, Marina
+Herzliya, Einstein, Recanati, Park Bavli, Utopia...). Eye-QA: reads premium.
+POLISH OPTIONS (not shipped): 2-line title clamp instead of 1-line ellipsis;
+near-me chip on the catalog (geo-search /near exists); facility filters port from
+premium tier needs per-project facility meta on the wide DB (data pass, not code).
+
 ## 2026-07-05 (10) - MEGA GUIDE PUBLISHED (HE+EN, 5,000+ words each, foreign-investor SEO)
 Owner asked for an aveliving-style "elevated apartment living" guide, mega-length,
 Israel-adapted, foreign buyer/investor intent, full SEO/AEO with schema+Yoast,
