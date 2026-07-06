@@ -1,5 +1,22 @@
 # AGENT-LOG - the God brain (append-only, newest on top)
 
+## 2026-07-07 (4) - v1.72.30 WRITER FIXED: the 0/6 mystery solved (undershoot, not truncation)
+FIRST TICK FAILED 0 generated / 6 failed while a simple diagnostic passed.
+Full-fidelity diagnostic (encdiag2 temp snippet, exact write_one prompts on
+real p1 skeleton 5245 'בטון מזוין'): http 200, finish_reason=stop,
+completion_tokens 1114/3000, output 422 words vs floor 700. NOT truncation,
+NOT the API, NOT kses - gpt-4o-mini simply undershoots long-form briefs
+(wrote 422 against an 800-1300 target). The floor did its honest job.
+FIX (v1.72.30): (a) expand pass - a draft under its tier floor goes back to
+the model with the measured count + target ('הרחב והעמק... בלי מלל ריק')
+and the longer result wins; (b) max_tokens 3000 -> 6000 headroom; (c) the
+mandatory minimum stated again in the user prompt; (d) failures now leave a
+trace: option nadlan_enc_writer_last_fail {pid,title,words,floor,at},
+surfaced in /nadlan/v1/enc-writer-status as last_fail. Cost note: expand
+pass doubles the call only on short drafts; on gpt-4o-mini still pennies.
+Manifest updated via load->modify->dump + immediate re-validate (the new
+law after the corruption incident).
+
 ## 2026-07-07 (3) - v1.72.29 SELF-WRITING ENCYCLOPEDIA + SITE-DOWN INCIDENT + manifest corruption repaired
 SELF-INFLICTED CORRUPTION CAUGHT + FIXED: the v1.72.28 log script wrote
 AGENT-LOG content OVER plugin-dist/nadlan-config.json (wrong variable in the
