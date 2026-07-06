@@ -472,8 +472,15 @@
     if (p.interior_panoramas && p.interior_panoramas.length) {
       return top + '<div class="nl-interior__stage" data-pano="' + esc(JSON.stringify(p.interior_panoramas)) + '"><button class="nl-btn nl-btn--gold" data-act="loadpano">' + esc(t("tour_open_pano")) + '</button></div><p class="nl-interior__note">' + esc(t("tour_lazy_hint")) + "</p></div>";
     }
+    // walk priority: the project's OWN pictures always beat the standard set.
+    var pw = p.project_walk || [];
+    if (pw.length) return top + dtMarkup(pw, t("dtour_tag_dedicated")) + "</div>";
+    var us = units().filter(function (u2) { return u2.interior_url; }).map(function (u2) {
+      return { key: "unit-" + u2.id, label: roomsLabel(u2.rooms) + " \u00B7 " + t("floor_label", { n: u2.floor }), url: u2.interior_url };
+    });
+    if (us.length) return top + dtMarkup(us, t("dtour_tag_units")) + "</div>";
     var dt = p.default_tour || [];
-    if (dt.length) return top + dtMarkup(dt) + "</div>";
+    if (dt.length) return top + dtMarkup(dt, t("dtour_tag")) + "</div>";
     return top + '<div class="nl-empty">' + esc(t("tour_pending")) + "</div></div>";
   }
   /* ---- the DEFAULT walk (owner law: a default, not a fallback): first-person
@@ -485,17 +492,18 @@
     var v = t(k);
     return v === k ? key.replace(/-/g, " ") : v;
   }
-  function dtMarkup(dt) {
+  function dtStepLabel(s2) { return s2.label || dtLabel(s2.key); }
+  function dtMarkup(dt, tagText) {
     var chips = dt.map(function (s2, i) {
-      return '<button class="nl-dtour__door' + (i === 0 ? " is-on" : "") + '" data-dt-i="' + i + '">' + esc(dtLabel(s2.key)) + "</button>";
+      return '<button class="nl-dtour__door' + (i === 0 ? " is-on" : "") + '" data-dt-i="' + i + '">' + esc(dtStepLabel(s2)) + "</button>";
     }).join("");
     return '<div class="nl-dtour" data-steps="' + esc(JSON.stringify(dt)) + '">' +
       '<div class="nl-dtour__stage" tabindex="0" role="application" aria-label="' + esc(t("dtour_hint")) + '">' +
         '<img class="nl-dtour__img" src="' + esc(dt[0].url) + '" alt="" draggable="false">' +
         '<button class="nl-dtour__nav nl-dtour__nav--prev" data-dt-step="-1" aria-label="' + esc(t("dtour_prev")) + '">&#8249;</button>' +
         '<button class="nl-dtour__nav nl-dtour__nav--next" data-dt-step="1" aria-label="' + esc(t("dtour_next")) + '">&#8250;</button>' +
-        '<div class="nl-dtour__hud"><span class="nl-dtour__room">' + esc(dtLabel(dt[0].key)) + '</span><span class="nl-dtour__hint">' + esc(t("dtour_hint")) + "</span></div>" +
-        '<span class="nl-dtour__tag">' + esc(t("dtour_tag")) + "</span>" +
+        '<div class="nl-dtour__hud"><span class="nl-dtour__room">' + esc(dtStepLabel(dt[0])) + '</span><span class="nl-dtour__hint">' + esc(t("dtour_hint")) + "</span></div>" +
+        '<span class="nl-dtour__tag">' + esc(tagText || t("dtour_tag")) + "</span>" +
       "</div>" +
       '<div class="nl-dtour__doors">' + chips + "</div></div>";
   }
@@ -521,7 +529,7 @@
       // stay "in the doorway" (faded) until the next space has actually
       // loaded - never show the old room under the new label.
       root.classList.add("is-walking");
-      roomEl.textContent = dtLabel(target.key);
+      roomEl.textContent = dtStepLabel(target);
       doors.forEach(function (d2, j) { d2.classList.toggle("is-on", j === i); });
       var revealed = false;
       var reveal = function () {

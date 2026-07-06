@@ -133,7 +133,10 @@ html[lang="en"] .nl-fact__n { font-family: var(--font-serif-en); }
 .nl-panel { position: absolute; z-index: 8; inset-block: 0; inset-inline-end: 0; width: clamp(320px, 36%, 430px); transform: translateX(112%); transition: transform .42s cubic-bezier(.22,.61,.36,1); background: linear-gradient(180deg, rgba(28,26,21,.96), rgba(17,16,12,.98)); backdrop-filter: blur(10px); border-inline-start: 1px solid var(--theater-line); display: flex; flex-direction: column; color: var(--theater-fore); }
 [dir="rtl"] .nl-panel { transform: translateX(-112%); }
 .nl-panel.is-open { transform: translateX(0); }
-.nl-panel__scroll { overflow-y: auto; padding: clamp(16px,2vw,22px); flex: 1; }
+.nl-panel__scroll { overflow-y: auto; padding: clamp(16px,2vw,22px) clamp(16px,2vw,22px) 40px; flex: 1; scrollbar-width: none; -ms-overflow-style: none; }
+.nl-panel__scroll::-webkit-scrollbar { display: none; }
+/* soft cue that the panel continues - instead of a gray frame-in-frame scrollbar */
+.nl-panel::after { content: ""; position: absolute; inset-inline: 0; bottom: 0; height: 36px; background: linear-gradient(180deg, rgba(17,16,12,0), rgba(17,16,12,.92)); pointer-events: none; }
 .nl-panel__head { display: flex; align-items: flex-start; justify-content: space-between; gap: 12px; }
 .nl-panel__close { width: 34px; height: 34px; border-radius: 50%; border: 1px solid var(--theater-line); background: rgba(255,255,255,.05); color: var(--theater-fore); cursor: pointer; flex: none; }
 .nl-panel__title { font-family: var(--font-serif-he); font-size: 1.6rem; color: #fff; }
@@ -365,7 +368,7 @@ html[lang="en"] .nl-pcard__name { font-family: var(--font-serif-en); }
 #nlbuy { position: fixed; inset: 0; z-index: 9000; display: none; }
 #nlbuy.is-open { display: block; }
 .nlbuy__scrim { position: absolute; inset: 0; background: rgba(20,19,15,.66); backdrop-filter: blur(3px); }
-.nlbuy__panel { position: absolute; inset-inline-start: 50%; top: 50%; transform: translate(-50%,-50%); width: min(480px, calc(100vw - 28px)); max-height: calc(100vh - 40px); overflow-y: auto; background: #FAF7F1; border: 1px solid #E2DCD0; border-radius: 18px; box-shadow: 0 24px 70px rgba(0,0,0,.4); padding: 20px 22px 22px; font-family: Heebo, system-ui, sans-serif; color: #1B1A17; }
+.nlbuy__panel { position: absolute; inset-inline-start: 50%; top: 50%; transform: translate(-50%,-50%); width: min(480px, calc(100vw - 28px)); max-height: calc(100vh - 40px); overflow-y: auto; scrollbar-width: none; -ms-overflow-style: none; background: #FAF7F1; border: 1px solid #E2DCD0; border-radius: 18px; box-shadow: 0 24px 70px rgba(0,0,0,.4); padding: 20px 22px 22px; font-family: Heebo, system-ui, sans-serif; color: #1B1A17; }
 [dir="rtl"] .nlbuy__panel { transform: translate(50%,-50%); }
 .nlbuy__head { display: flex; align-items: flex-start; gap: 12px; }
 .nlbuy__head h3 { font-family: "Frank Ruhl Libre", serif; font-size: 1.35rem; margin: 0; }
@@ -443,3 +446,4 @@ html[lang="en"] .nl-pcard__name { font-family: var(--font-serif-en); }
 .nl-dtour__door:hover { border-color: #9C7A3C; color: #1B1A17; }
 .nl-dtour__door.is-on { background: #9C7A3C; border-color: #9C7A3C; color: #FAF7F1; }
 @media (max-width: 640px) { .nl-dtour__stage { aspect-ratio: 4/3; } .nl-dtour__nav { width: 36px; height: 36px; } }
+.nlbuy__panel::-webkit-scrollbar { display: none; }

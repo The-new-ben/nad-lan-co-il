@@ -945,6 +945,7 @@ if ( ! function_exists( 'nadlan_p3d_render_admin_metabox' ) ) {
 					<label><span>USDZ לאייפון, אופציונלי</span><input type="url" name="project_model_usdz" value="<?php echo $usdz; ?>" class="widefat" placeholder="https://.../project.usdz"></label>
 					<label><span>סרטון מכירה</span><input type="url" name="project_3d_video_url" value="<?php echo $vu; ?>" class="widefat" placeholder="https://youtube.com/..."></label>
 					<label><span>סיור פנים או דירה לדוגמה</span><input type="url" name="project_3d_tour_url" value="<?php echo $tu; ?>" class="widefat" placeholder="https://..."></label>
+				<p class="description" style="margin:4px 0 10px">סיור ייעודי בתמונות לפרויקט הזה: העלו לספריית המדיה תמונות עם כותרת <code>walk-<?php echo esc_html( $post->post_name ); ?>-&lt;חלל&gt;</code> (למשל <code>walk-<?php echo esc_html( $post->post_name ); ?>-lobby</code>, <code>-living-room</code>, <code>-exterior</code>) והסיור בעמוד יעבור אוטומטית מהסט הכללי לתמונות של הפרויקט. אין צורך בשמירה כאן.</p>
 					<label class="nadlan-p3d-full"><span>Cesium / Google 3D Tiles עתידי</span><input type="url" name="project_3d_cesium_tiles_url" value="<?php echo $cu; ?>" class="widefat" placeholder="https://..."></label>
 					<label><span>מצב סיבוב מודל</span>
 						<select name="project_3d_camera_lock" class="widefat">

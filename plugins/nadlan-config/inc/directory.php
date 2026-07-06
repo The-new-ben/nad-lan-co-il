@@ -149,9 +149,12 @@ if ( ! function_exists( 'nadlan_dir_card' ) ) {
 		$stars = '';
 		if ( $reviews > 0 && $rating > 0 ) {
 			$full = (int) round( $rating );
+			// owner decision 2026-07-06 (#34): seeded ratings carry an honest
+			// demo note until real, verified reviews exist (reviews_verified flag).
+			$demo_note = get_post_meta( $id, 'reviews_verified', true ) ? '' : ' <span class="nldc-demo">נתוני דוגמה</span>';
 			$stars = '<div class="nldc-rate"><span class="nldc-stars" aria-hidden="true">'
 				. str_repeat( '★', $full ) . str_repeat( '☆', max( 0, 5 - $full ) )
-				. '</span><b>' . number_format( $rating, 1 ) . '</b><span class="nldc-rev">(' . $reviews . ' חוות דעת)</span></div>';
+				. '</span><b>' . number_format( $rating, 1 ) . '</b><span class="nldc-rev">(' . $reviews . ' חוות דעת)</span>' . $demo_note . '</div>';
 		} else {
 			$stars = '<div class="nldc-rate nldc-norate">היו הראשונים לדרג</div>';
 		}
@@ -427,8 +430,9 @@ if ( ! function_exists( 'nadlan_dir_profile_header' ) ) {
 		$title    = get_the_title( $id );
 		nadlan_dir_enqueue_professional_quote_script();
 
+		$pf_demo = get_post_meta( $id, 'reviews_verified', true ) ? '' : ' <span class="nlpf-demo">נתוני דוגמה</span>';
 		$stars = ( $reviews > 0 && $rating > 0 )
-			? '<span class="nlpf-stars">' . str_repeat( '★', (int) round( $rating ) ) . str_repeat( '☆', max( 0, 5 - (int) round( $rating ) ) ) . '</span> <b>' . number_format( $rating, 1 ) . '</b> <span class="nlpf-rev">(' . $reviews . ' חוות דעת)</span>'
+			? '<span class="nlpf-stars">' . str_repeat( '★', (int) round( $rating ) ) . str_repeat( '☆', max( 0, 5 - (int) round( $rating ) ) ) . '</span> <b>' . number_format( $rating, 1 ) . '</b> <span class="nlpf-rev">(' . $reviews . ' חוות דעת)</span>' . $pf_demo
 			: '<span class="nlpf-norate">טרם התקבלו חוות דעת. היו הראשונים לדרג.</span>';
 
 		ob_start(); ?>
@@ -468,7 +472,7 @@ if ( ! function_exists( 'nadlan_dir_profile_header' ) ) {
 .nlpf-name{font-family:var(--font-serif,"Frank Ruhl Libre",serif);font-weight:600;font-size:clamp(24px,4vw,34px);margin:0 0 8px;line-height:1.15;color:#1B1A17}
 .nlpf-sub{display:flex;gap:16px;flex-wrap:wrap;color:#5a5a5a;font-size:14px;margin-bottom:8px}
 .nlpf-sub span:first-child{font-weight:600;color:#1B1A17}
-.nlpf-rate{font-size:14px}.nlpf-stars{color:#F5A623;letter-spacing:1px}.nlpf-rev{color:#9a9a9a;font-size:12.5px}.nlpf-norate{color:#b9b4a9;font-style:italic;font-size:13px}
+.nlpf-rate{font-size:14px}.nlpf-stars{color:#F5A623;letter-spacing:1px}.nlpf-rev{color:#9a9a9a;font-size:12.5px}.nlpf-norate{color:#b9b4a9;font-style:italic;font-size:13px}.nlpf-demo{display:inline-block;font-size:10.5px;font-weight:600;color:#8a7444;background:#F3EEE3;border:1px solid #D6C189;border-radius:5px;padding:1px 7px;vertical-align:1px}
 .nlpf-cta{display:flex;flex-direction:column;gap:9px;padding-top:46px;min-width:170px}
 .nlpf-call,.nlpf-quote{text-align:center;border-radius:10px;padding:13px 22px;font:inherit;font-weight:700;font-size:14.5px;cursor:pointer;text-decoration:none;border:0;transition:transform .15s,filter .2s}
 .nlpf-call{background:#fff;color:var(--pc);border:1.5px solid var(--pc)}

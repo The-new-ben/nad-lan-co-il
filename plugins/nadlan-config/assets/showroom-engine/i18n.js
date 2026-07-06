@@ -104,6 +104,8 @@
     dtour_tag: "סיור בדירת דוגמה סטנדרטית - הדמיה להמחשה. סיור ייעודי מהיזם יחליף אותו עם קבלתו.",
     dtour_hint: "גררו להביט · חצים או דלתות למעבר חלל",
     dtour_next: "לחלל הבא", dtour_prev: "לחלל הקודם",
+    dtour_tag_dedicated: "הדמיות ייעודיות לפרויקט - להמחשה בלבד.",
+    dtour_tag_units: "הדמיות פנים של דירות בפרויקט - להמחשה בלבד.",
     tour_title: "סיור פנים", tour_open: "פתיחת סיור וירטואלי", tour_open_pano: "פתיחת סיור 360", tour_lazy_hint: "לחיצה אחת ואתם בפנים.", tour_pending: "סיור 360 מהיזם יעלה כאן עם אישורו. בינתיים אפשר לצעוד בתוך כל דירה דרך לוח הדירות למטה.",
     btn_inquire: "מעניין אותי", btn_save: "שמירה", btn_saved: "נשמר", btn_compare: "להשוואה",
     btn_compared: "בהשוואה", btn_share: "שיתוף", btn_close: "סגירה", link_copied: "הקישור הועתק",
@@ -255,6 +257,8 @@
     dtour_tag: "A walk through a standard sample apartment - illustration. The developer's dedicated tour will replace it once received.",
     dtour_hint: "Drag to look \u00B7 arrows or doors to move between spaces",
     dtour_next: "Next space", dtour_prev: "Previous space",
+    dtour_tag_dedicated: "Visualizations dedicated to this project - illustration only.",
+    dtour_tag_units: "Interior visualizations of this project's apartments - illustration only.",
     tour_title: "Interior tour", tour_open: "Open virtual tour", tour_open_pano: "Open 360 tour", tour_lazy_hint: "One click and you are inside.", tour_pending: "The developer's 360 tour will appear here once approved. Meanwhile, walk inside any apartment from the inventory board below.",
     btn_inquire: "I'm interested", btn_save: "Save", btn_saved: "Saved", btn_compare: "Compare",
     btn_compared: "Comparing", btn_share: "Share", btn_close: "Close", link_copied: "Link copied",
@@ -372,6 +376,8 @@
   FR.dtour_tag = "Visite d'un logement type standard - illustration. La visite dediee du promoteur la remplacera des reception.";
   FR.dtour_hint = "Glissez pour regarder \u00B7 fleches ou portes pour changer d'espace";
   FR.dtour_next = "Espace suivant"; FR.dtour_prev = "Espace precedent";
+  FR.dtour_tag_dedicated = "Visualisations dediees a ce projet - illustration uniquement.";
+  FR.dtour_tag_units = "Visualisations interieures des logements de ce projet - illustration uniquement.";
   RU.dt_exterior = "Фасад здания"; RU.dt_street_entrance = "Вход с улицы"; RU.dt_entrance = "Вход";
   RU.dt_lobby = "Лобби"; RU.dt_stairwell = "Лестничная клетка"; RU.dt_elevator = "Лифт"; RU.dt_entry_hall = "Прихожая";
   RU.dt_living_room = "Гостиная"; RU.dt_kitchen = "Кухня"; RU.dt_master_bedroom = "Главная спальня";
@@ -379,6 +385,8 @@
   RU.dtour_tag = "Прогулка по стандартной образцовой квартире - иллюстрация. Специальный тур застройщика заменит ее после получения.";
   RU.dtour_hint = "Тяните, чтобы смотреть \u00B7 стрелки или двери для перехода";
   RU.dtour_next = "Следующее пространство"; RU.dtour_prev = "Предыдущее пространство";
+  RU.dtour_tag_dedicated = "Визуализации, созданные для этого проекта - только иллюстрация.";
+  RU.dtour_tag_units = "Визуализации интерьеров квартир этого проекта - только иллюстрация.";
   AR.dt_exterior = "واجهة المبنى"; AR.dt_street_entrance = "المدخل من الشارع"; AR.dt_entrance = "المدخل";
   AR.dt_lobby = "اللوبي"; AR.dt_stairwell = "بيت الدرج"; AR.dt_elevator = "المصعد"; AR.dt_entry_hall = "الردهة";
   AR.dt_living_room = "غرفة المعيشة"; AR.dt_kitchen = "المطبخ"; AR.dt_master_bedroom = "غرفة النوم الرئيسية";
@@ -386,6 +394,8 @@
   AR.dtour_tag = "جولة في شقة نموذجية قياسية - للتوضيح. ستحل جولة المطور المخصصة محلها فور استلامها.";
   AR.dtour_hint = "اسحبوا للنظر \u00B7 الأسهم أو الأبواب للتنقل بين المساحات";
   AR.dtour_next = "المساحة التالية"; AR.dtour_prev = "المساحة السابقة";
+  AR.dtour_tag_dedicated = "تصورات مخصصة لهذا المشروع - للتوضيح فقط.";
+  AR.dtour_tag_units = "تصورات داخلية لشقق هذا المشروع - للتوضيح فقط.";
   AR.tour_pending = "ستظهر جولة 360 من المطور هنا فور اعتمادها. حتى ذلك الحين، ادخلوا إلى أي شقة عبر لوحة الشقق أدناه.";
 
   window.NADLAN_I18N = {
