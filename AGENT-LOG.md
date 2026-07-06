@@ -1,5 +1,23 @@
 # AGENT-LOG - the God brain (append-only, newest on top)
 
+## 2026-07-07 (11) - v1.72.37 hero polish + card v3 + REAL CBS panel (layers 3-4)
+Hero verified by screenshot -> 4 defects caught + fixed: veil too light
+(H1 fought map labels), map spoke English (Damascus!) -> all symbol layers
+now coalesce name_he, a11y button collided with hero trust counts -> moved
+to mid-edge (standard IL widget position), H1 shadow strengthened.
+CARD v3 live on archive grids: featured image leads (-20px bleed top),
+amenity chips from wizard bool meta (ממ"ד/מיזוג/מעלית/חניה/מחסן + מרפסת
+X מ"ר), distance badge 'כ-X ק"מ ממך · משוער' via silent ipwho IL-only +
+haversine, hidden >120km. CBS PANEL replaces the market stat cards: REAL
+Q1 2026 averages (TLV 4.59M, Herzliya 3.85M, JLM 3.10M, RG 3.03M, Haifa
+1.81M, BS 1.24M), YoY index -1.3%, source PDF linked (release 150/2026),
+option nadlan_market_cbs for updates. OWNER (mid-run): the site is MORE
+than projects - float guides/encyclopedia/tools to menus+homepage (projects
+stay dominant); NEW BUSINESS LAYER ordered: rich professional cards
+attached to practice areas/articles (sponsored, prioritized, mobile-first,
+linking to pro mini-sites) - THE monetization core. Next: v1.72.38.
+PARKED: news-690k clip-art featured image swap (article-level).
+
 ## 2026-07-07 (10) - v1.72.36 THE HERO IS THE MAP (layer 2)
 Homepage hero rebuilt per approved decision 2 + 4: full-bleed NIGHT drone
 map (dark-v11 + water #0E1A20, warm dark 3D buildings #3A342A, fog+stars,

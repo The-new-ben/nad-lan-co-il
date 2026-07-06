@@ -157,6 +157,7 @@ if ( ! function_exists( 'nadlan_drone_map_band' ) ) {
 				try{map.setPaintProperty("water","fill-color","#0E1A20")}catch(e){}
 				try{map.setPaintProperty("land","background-color","#17150F")}catch(e){}
 				try{map.setFog({color:"#14130F","horizon-blend":0.06,"star-intensity":0.25})}catch(e){}
+				try{map.getStyle().layers.forEach(function(l){if(l.type==="symbol"&&l.layout&&l.layout["text-field"]){map.setLayoutProperty(l.id,"text-field",["coalesce",["get","name_he"],["get","name:he"],["get","name"]])}})}catch(e){}
 				var layers=map.getStyle().layers,lab;
 				for(var i=0;i<layers.length;i++){if(layers[i].type==="symbol"&&layers[i].layout&&layers[i].layout["text-field"]){lab=layers[i].id;break}}
 				try{map.addLayer({id:"nl-3d",source:"composite","source-layer":"building",filter:["==","extrude","true"],type:"fill-extrusion",minzoom:13,paint:{"fill-extrusion-color":"#3A342A","fill-extrusion-height":["get","height"],"fill-extrusion-base":["get","min_height"],"fill-extrusion-opacity":.72}},lab)}catch(e){}
