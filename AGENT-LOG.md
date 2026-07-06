@@ -1,5 +1,24 @@
 # AGENT-LOG - the God brain (append-only, newest on top)
 
+## 2026-07-06 (13) - v1.72.17: competitor-gap strike (owner: "close all competitor gaps")
+SHIPPED:
+- MONTHLY PAYMENT STRIP (Zillow's highest-converting element) in the apartment
+  panel: 70% financing / 25y / 5% on price||price_estimate, rounded to 50,
+  gold-tinted card, honest note "estimate only, not a financing offer" x5
+  langs (mortgage_est/mortgage_note).
+- RFP HONESTY GUARD: nadlan_rfp_match_advisors meta_query now requires
+  (rating NOT EXISTS) OR reviews_verified=1 - seeded fictional profiles can
+  never be named in a buyer document; empty match falls back to the honest
+  "team will match an advisor" line.
+- PREMIUM DEFAULT WALK: featured projects auto-switch to premium-default-*
+  set when it has 4+ spaces (nadlan_showroom_premium_tour + tier in payload,
+  dtour_tag_premium x5). Cowork premium set at 1 flat + 1 seam-passed 360
+  (5139/5140) - standard remains until the premium set grows.
+OPENAI KEY HANDOFF: wp-admin left menu "נדלן מפתחות" (Keys Hub, slug
+nadlan-keys) -> OpenAI API Key field -> save. NEVER paste keys in chat.
+NEXT (floated): EN investors hub page, real review capture loop, saved-search
+alerts (email infra last), per-project video tours.
+
 ## 2026-07-06 (12) - v1.72.16: scrollbar kill + DEDICATED per-project walk + #34 demo note
 OWNER (Rainbow review): (a) gray scrollbar in the 3D area = frame-in-frame
 (it's .nl-panel__scroll, the unit panel over the theater; probe missed it

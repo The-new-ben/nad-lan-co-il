@@ -278,7 +278,7 @@
       '<div class="nl-grid2">' +
         stat(t("panel_rooms"), u.rooms) + stat(t("panel_sqm"), u.sqm + " " + t("sqm_unit")) +
         stat(t("panel_balcony"), u.balcony ? (u.balcony + " " + t("sqm_unit")) : "-") + stat(t("panel_view"), viewText(u) || dirLabel(u.dir)) +
-      "</div>" +
+      "</div>" + mortgageStrip(u) +
       '<div class="nl-tabs" role="tablist">' +
         '<button class="nl-tab" role="tab" data-act="tab" data-id="plan" aria-selected="' + (state.tab === "plan") + '">' + esc(t("tab_plan")) + '</button>' +
         '<button class="nl-tab" role="tab" data-act="tab" data-id="view" aria-selected="' + (state.tab === "view") + '">' + esc(t("tab_view")) + '</button>' +
@@ -293,6 +293,16 @@
       '<button class="nl-btn nl-btn--accent nl-btn--block" style="margin-top:9px" data-act="scroll" data-id="inquiry">' + esc(t("btn_inquire")) + " · " + esc(t("unit_short", { label: u.label, floor: u.floor })) + "</button>";
   }
   function stat(k, v) { return '<div class="nl-stat"><div class="k">' + esc(k) + '</div><div class="v">' + esc(v) + "</div></div>"; }
+  /* est. monthly payment (the number every buyer computes anyway): 70%
+     financing, 25 years, 5.0% - stated in the note, estimate only. */
+  function mortgageStrip(u) {
+    var p0 = Number(u.price) || Number(u.price_estimate) || 0;
+    if (p0 <= 0) return "";
+    var loan = p0 * 0.70, r = 0.05 / 12, n = 300;
+    var m = loan * r / (1 - Math.pow(1 + r, -n));
+    return '<div class="nl-mortg"><b>' + esc(t("mortgage_est", { v: money(Math.round(m / 50) * 50) })) + "</b>" +
+      '<span class="nl-mortg__note">' + esc(t("mortgage_note")) + "</span></div>";
+  }
   function tabPane(u) {
     if (state.tab === "plan") return u.plan ? '<img src="' + esc(u.plan) + '" alt="' + esc(t("tab_plan")) + '">' : "<p>" + esc(t("plan_coming")) + "</p>";
     if (state.tab === "view") {
@@ -480,7 +490,7 @@
     });
     if (us.length) return top + dtMarkup(us, t("dtour_tag_units")) + "</div>";
     var dt = p.default_tour || [];
-    if (dt.length) return top + dtMarkup(dt, t("dtour_tag")) + "</div>";
+    if (dt.length) return top + dtMarkup(dt, t(p.default_tour_tier === "premium" ? "dtour_tag_premium" : "dtour_tag")) + "</div>";
     return top + '<div class="nl-empty">' + esc(t("tour_pending")) + "</div></div>";
   }
   /* ---- the DEFAULT walk (owner law: a default, not a fallback): first-person

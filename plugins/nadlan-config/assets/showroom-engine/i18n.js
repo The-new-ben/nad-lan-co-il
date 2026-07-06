@@ -105,6 +105,9 @@
     dtour_hint: "גררו להביט · חצים או דלתות למעבר חלל",
     dtour_next: "לחלל הבא", dtour_prev: "לחלל הקודם",
     dtour_tag_dedicated: "הדמיות ייעודיות לפרויקט - להמחשה בלבד.",
+    dtour_tag_premium: "סיור בדירת דוגמה פרימיום - הדמיה להמחשה. סיור ייעודי מהיזם יחליף אותו עם קבלתו.",
+    mortgage_est: "החזר חודשי משוער: {v}",
+    mortgage_note: "לפי מימון 70%, 25 שנה, ריבית 5% - אומדן בלבד, אינו הצעת מימון.",
     dtour_tag_units: "הדמיות פנים של דירות בפרויקט - להמחשה בלבד.",
     tour_title: "סיור פנים", tour_open: "פתיחת סיור וירטואלי", tour_open_pano: "פתיחת סיור 360", tour_lazy_hint: "לחיצה אחת ואתם בפנים.", tour_pending: "סיור 360 מהיזם יעלה כאן עם אישורו. בינתיים אפשר לצעוד בתוך כל דירה דרך לוח הדירות למטה.",
     btn_inquire: "מעניין אותי", btn_save: "שמירה", btn_saved: "נשמר", btn_compare: "להשוואה",
@@ -258,6 +261,9 @@
     dtour_hint: "Drag to look \u00B7 arrows or doors to move between spaces",
     dtour_next: "Next space", dtour_prev: "Previous space",
     dtour_tag_dedicated: "Visualizations dedicated to this project - illustration only.",
+    dtour_tag_premium: "A walk through a premium sample apartment - illustration. The developer's dedicated tour will replace it once received.",
+    mortgage_est: "Est. monthly payment: {v}",
+    mortgage_note: "Assuming 70% financing, 25 years, 5% rate - estimate only, not a financing offer.",
     dtour_tag_units: "Interior visualizations of this project's apartments - illustration only.",
     tour_title: "Interior tour", tour_open: "Open virtual tour", tour_open_pano: "Open 360 tour", tour_lazy_hint: "One click and you are inside.", tour_pending: "The developer's 360 tour will appear here once approved. Meanwhile, walk inside any apartment from the inventory board below.",
     btn_inquire: "I'm interested", btn_save: "Save", btn_saved: "Saved", btn_compare: "Compare",
@@ -377,6 +383,15 @@
   FR.dtour_hint = "Glissez pour regarder \u00B7 fleches ou portes pour changer d'espace";
   FR.dtour_next = "Espace suivant"; FR.dtour_prev = "Espace precedent";
   FR.dtour_tag_dedicated = "Visualisations dediees a ce projet - illustration uniquement.";
+  FR.dtour_tag_premium = "Visite d'un logement type premium - illustration. La visite dediee du promoteur la remplacera des reception.";
+  FR.mortgage_est = "Mensualite estimee : {v}";
+  FR.mortgage_note = "Sur la base d'un financement de 70%, 25 ans, taux 5% - estimation uniquement, pas une offre de financement.";
+  RU.dtour_tag_premium = "Прогулка по премиальной образцовой квартире - иллюстрация. Специальный тур застройщика заменит ее после получения.";
+  RU.mortgage_est = "Примерный ежемесячный платеж: {v}";
+  RU.mortgage_note = "При финансировании 70%, 25 лет, ставка 5% - только оценка, не предложение финансирования.";
+  AR.dtour_tag_premium = "جولة في شقة نموذجية فاخرة - للتوضيح. ستحل جولة المطور المخصصة محلها فور استلامها.";
+  AR.mortgage_est = "القسط الشهري التقديري: {v}";
+  AR.mortgage_note = "على أساس تمويل 70%، 25 سنة، فائدة 5% - تقدير فقط، ليس عرض تمويل.";
   FR.dtour_tag_units = "Visualisations interieures des logements de ce projet - illustration uniquement.";
   RU.dt_exterior = "Фасад здания"; RU.dt_street_entrance = "Вход с улицы"; RU.dt_entrance = "Вход";
   RU.dt_lobby = "Лобби"; RU.dt_stairwell = "Лестничная клетка"; RU.dt_elevator = "Лифт"; RU.dt_entry_hall = "Прихожая";
