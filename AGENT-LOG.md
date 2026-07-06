@@ -1,5 +1,21 @@
 # AGENT-LOG - the God brain (append-only, newest on top)
 
+## 2026-07-06 (10) - v1.72.14 + standard set COMPLETE: 12-space default walk, JPEG diet
+Cowork finished the standard-default set (5125-5136, 12 images, draft 5137).
+CATCH: building images titled standard-default-building-exterior/-building-
+entrance did not match the canonical keys (exterior/entrance) -> would append
+at the walk's END with raw English labels. Fixed in the scanner with an alias
+map (building-exterior->exterior, building-entrance->entrance, facade->
+exterior, bedroom->second-bedroom) so naming variants can never break order
+or labels. v1.72.14 shipped.
+ALSO THIS TURN (owner said the run is done): converting the 12 PNG originals
+(~2MB each) to JPEG q82 server-side (attachment repoint + metadata regen,
+PNG originals kept on disk), transient + cache purge, draft 5137 deleted after
+ingest per protocol, full-order live verify.
+360 LAYER: Cowork will seam-test ChatGPT equirectangular output before any
+upload (honest path; fake 360s rejected by both sides). pannellum awaits real
+2:1 seamless panoramas as standard-default-360-<space> when a source exists.
+
 ## 2026-07-06 (9) - v1.72.13: walk transition honesty fix (load-aware reveal)
 Headless QA on 1.72.12 caught it: clicking next updated the label to the new
 space while the OLD room stayed on screen (2MB PNGs load slowly; the 220ms
