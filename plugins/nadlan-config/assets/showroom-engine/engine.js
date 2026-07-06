@@ -512,18 +512,31 @@
     // preload the next space so the walk never stutters
     function preload(n) { if (steps[n]) { var im = new Image(); im.src = steps[n].url; } }
     function apply() { img.style.transform = "translateX(" + pan + "%) scale(1.12)"; }
+    var walkToken = 0;
     function go(n) {
       n = (n + steps.length) % steps.length;
       if (n === i) return;
       i = n; pan = 0;
+      var tok = ++walkToken, target = steps[i];
+      // stay "in the doorway" (faded) until the next space has actually
+      // loaded - never show the old room under the new label.
       root.classList.add("is-walking");
-      setTimeout(function () {
-        img.src = steps[i].url; apply();
-        roomEl.textContent = dtLabel(steps[i].key);
-        doors.forEach(function (d2, j) { d2.classList.toggle("is-on", j === i); });
+      roomEl.textContent = dtLabel(target.key);
+      doors.forEach(function (d2, j) { d2.classList.toggle("is-on", j === i); });
+      var revealed = false;
+      var reveal = function () {
+        if (revealed || tok !== walkToken) return;
+        revealed = true; apply();
         root.classList.remove("is-walking");
         preload(i + 1);
-      }, 220);
+      };
+      setTimeout(function () {
+        if (tok !== walkToken) return;
+        img.onload = reveal; img.onerror = reveal;
+        img.src = target.url;
+        if (img.complete && img.naturalWidth) reveal();
+        setTimeout(reveal, 6000);
+      }, 200);
     }
     root.addEventListener("click", function (e) {
       var st = e.target.closest("[data-dt-step]");
