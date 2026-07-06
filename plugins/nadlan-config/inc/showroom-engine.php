@@ -630,6 +630,9 @@ if ( ! function_exists( 'nadlan_showroom_default_tour' ) ) {
 			$title = (string) get_the_title( $aid );
 			if ( strpos( $title, 'standard-default-' ) !== 0 ) { continue; }
 			$key = preg_replace( '/\.(png|jpe?g|webp)$/i', '', substr( $title, strlen( 'standard-default-' ) ) );
+			// normalize naming variants so the walk order + labels always hold
+			$aliases = array( 'building-exterior' => 'exterior', 'building-entrance' => 'entrance', 'facade' => 'exterior', 'bedroom' => 'second-bedroom' );
+			if ( isset( $aliases[ $key ] ) ) { $key = $aliases[ $key ]; }
 			$url = wp_get_attachment_image_url( $aid, 'large' );
 			if ( ! $url ) { $url = wp_get_attachment_url( $aid ); }
 			if ( $key !== '' && $url ) { $found[ $key ] = array( 'key' => $key, 'url' => esc_url_raw( $url ) ); }
