@@ -1,5 +1,15 @@
 # AGENT-LOG - the God brain (append-only, newest on top)
 
+## 2026-07-07 (17) - v1.72.43 unified tabs component + intl band contrast
+The unified tab language (owner decision 3+): .nl-tabs pill component in
+premium-ui (light + dark variants, is-on/aria states), homepage listing
+tabs adopted as the first proof; engine plan/view/tour + future amenity
+tabs adopt by adding the class - geometry lives in ONE place. INTL band
+headline was dark-on-dark: .nlhv2-en h2 (0-1-1) lost to the theme's
+heading rule - specificity bumped + !important. Queue after this: adopt
+nl-tabs on engine + property pages next session; SEO titles (#23) still
+text-gated on owner.
+
 ## 2026-07-07 (16) - v1.72.42 deep polish round (owner screenshot feedback)
 THE GOLDEN PLUS SOLVED: it is the THEME's own accessibility launcher
 (themes/nadlan-revenue/assets/js/nadlan-accessibility.js injects a gold

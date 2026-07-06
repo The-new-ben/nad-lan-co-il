@@ -21,6 +21,22 @@
  */
 if ( ! defined( 'ABSPATH' ) ) { exit; }
 
+/* THE UNIFIED TAB LANGUAGE (owner decision 3+, 2026-07-07): one pill-group
+ * component for every tab row on the site - hero search tabs, listing panes,
+ * engine plan/view/tour, future amenity tabs. Geometry and states live HERE
+ * once; adopters add .nl-tabs to their group and .is-on to the active tab. */
+add_action( 'wp_head', function () {
+	echo '<style id="nl-tabs-component">
+.nl-tabs{display:inline-flex;flex-wrap:wrap;gap:6px;padding:5px;background:#F3EEE3;border:1px solid #E2DCD0;border-radius:12px}
+.nl-tabs>button,.nl-tabs>a{font:600 13.5px/1 Heebo,sans-serif;color:#51483A;background:transparent;border:0;border-radius:8px;padding:9px 15px;cursor:pointer;text-decoration:none;transition:background .18s,color .18s}
+.nl-tabs>button:hover,.nl-tabs>a:hover{color:#1B1A17;background:rgba(255,255,255,.7)}
+.nl-tabs>button.is-on,.nl-tabs>a.is-on,.nl-tabs>button[aria-pressed=true],.nl-tabs>a[aria-current]{background:#1B1A17;color:#FAF7F1}
+.nl-tabs--dark{background:rgba(250,247,241,.12);border-color:rgba(233,217,168,.35)}
+.nl-tabs--dark>button,.nl-tabs--dark>a{color:#E4DDCE}
+.nl-tabs--dark>button.is-on,.nl-tabs--dark>a.is-on{background:#FAF7F1;color:#1B1A17}
+</style>';
+}, 8 );
+
 if ( ! function_exists( 'nadlan_premium_enabled' ) ) {
 	function nadlan_premium_enabled() {
 		if ( defined( 'NADLAN_DISABLE_PREMIUM_UI' ) && NADLAN_DISABLE_PREMIUM_UI ) { return false; }

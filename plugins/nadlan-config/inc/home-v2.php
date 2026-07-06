@@ -438,7 +438,7 @@ if ( ! function_exists( 'nadlan_hv2_band_listings' ) ) {
 	<section class="nlhv2-band nlhv2-alt">
 		<header><p class="nlhv2-kicker"><?php nadlan_e( 'ls_kicker' ); ?></p><h2><?php nadlan_e( 'ls_title' ); ?></h2>
 			<a href="<?php echo esc_url( home_url( '/properties/' ) ); ?>"><?php nadlan_e( 'ls_all' ); ?></a></header>
-		<div class="nlhv2-listtabs"><button type="button" class="is-on" data-pane="sale"><?php nadlan_e( 'tab_buy' ); ?></button><button type="button" data-pane="rent"><?php nadlan_e( 'tab_rent' ); ?></button></div>
+		<div class="nlhv2-listtabs nl-tabs"><button type="button" class="is-on" data-pane="sale"><?php nadlan_e( 'tab_buy' ); ?></button><button type="button" data-pane="rent"><?php nadlan_e( 'tab_rent' ); ?></button></div>
 		<div class="nlhv2-listgrid" data-pane-id="sale"<?php echo $sale ? '' : ' hidden'; ?>>
 			<?php foreach ( $sale as $l ) { $card( $l ); } ?>
 			<a class="nlhv2-list nlhv2-cta-tile" href="<?php echo esc_url( home_url( '/post-listing/' ) ); ?>"><b><?php nadlan_e( 'ls_cta_b' ); ?></b><span><?php nadlan_e( 'ls_cta_s' ); ?></span></a>
@@ -858,7 +858,7 @@ if ( ! function_exists( 'nadlan_hv2_assets' ) ) {
 .nlhv2-cta-tile{justify-content:center;align-items:center;text-align:center;gap:6px;background:linear-gradient(150deg,#F7F1E3,var(--band));border:1px solid #D6C189;position:relative}.nlhv2-cta-tile::before{content:"+";display:grid;place-items:center;width:34px;height:34px;border-radius:50%;background:var(--gold,#9C7A3C);color:#FAF7F1;font-size:20px;font-weight:700;margin-bottom:2px}
 .nlhv2-cta-tile b{color:var(--gold)}
 .nlhv2-en{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;border-radius:16px;background:linear-gradient(160deg,#211F19,var(--dark));color:#FAF8F3;padding:26px 28px;margin:26px 0}
-.nlhv2-en h2{color:#FAF8F3;font-size:1.4rem;margin:0 0 6px}
+.nlhv2 .nlhv2-en h2,.nlhv2-en h2{color:#FAF8F3!important;font-size:1.4rem;margin:0 0 6px}
 .nlhv2-en p{margin:0;font-size:13.5px;color:#C9C2B2;max-width:520px}
 .nlhv2-en a{background:#E6D4AE;color:var(--ink);font-weight:700;font-size:14px;border-radius:9px;padding:13px 22px;text-decoration:none;white-space:nowrap}
 .nlhv2-mfoot{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:22px;border-top:1px solid var(--line);padding:28px 0 10px}
