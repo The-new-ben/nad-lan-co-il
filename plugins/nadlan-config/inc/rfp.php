@@ -50,7 +50,16 @@ if ( ! function_exists( 'nadlan_rfp_match_advisors' ) ) {
 			$q = new WP_Query( array(
 				'post_type' => 'nadlan_professional', 'post_status' => 'publish',
 				'posts_per_page' => 2, 'no_found_rows' => true, 'fields' => 'ids',
-				'meta_query' => array( array( 'key' => 'profession', 'value' => $map[ $x ], 'compare' => 'IN' ) ),
+				// honesty guard (#34 follow-up): profiles carrying seeded ratings
+				// (rating meta without reviews_verified) are demo dressing for the
+				// directory - they must never be named in a real buyer's document.
+				'meta_query' => array( 'relation' => 'AND',
+					array( 'key' => 'profession', 'value' => $map[ $x ], 'compare' => 'IN' ),
+					array( 'relation' => 'OR',
+						array( 'key' => 'rating', 'compare' => 'NOT EXISTS' ),
+						array( 'key' => 'reviews_verified', 'value' => '1' ),
+					),
+				),
 			) );
 			$names = array();
 			foreach ( $q->posts as $pid ) {

@@ -447,3 +447,8 @@ html[lang="en"] .nl-pcard__name { font-family: var(--font-serif-en); }
 .nl-dtour__door.is-on { background: #9C7A3C; border-color: #9C7A3C; color: #FAF7F1; }
 @media (max-width: 640px) { .nl-dtour__stage { aspect-ratio: 4/3; } .nl-dtour__nav { width: 36px; height: 36px; } }
 .nlbuy__panel::-webkit-scrollbar { display: none; }
+
+/* est. monthly payment strip in the apartment panel (2026-07-06) */
+.nl-mortg { margin-top: 10px; padding: 10px 13px; border: 1px solid rgba(216,199,154,.4); border-radius: 10px; background: rgba(216,199,154,.08); }
+.nl-mortg b { display: block; color: #d8c79a; font-size: 14px; }
+.nl-mortg__note { display: block; margin-top: 3px; color: var(--theater-sub); font-size: 10.5px; line-height: 1.45; }

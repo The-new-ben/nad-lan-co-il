@@ -144,7 +144,8 @@ if ( ! function_exists( 'nadlan_showroom_engine_build_project' ) ) {
 			// The DEFAULT walk (owner law: a default, not a fallback): the standard
 			// apartment + building set from media (standard-default-*), shown on every
 			// project until the developer's dedicated tour replaces it.
-			'default_tour'   => nadlan_showroom_default_tour(),
+			'default_tour'   => nadlan_showroom_default_tour_for( $id ),
+			'default_tour_tier' => nadlan_showroom_default_tour_tier( $id ),
 			'project_walk'   => nadlan_showroom_project_walk( $id, $post->post_name ),
 			'orientation'    => $orientation,
 			'geo'            => array(
@@ -674,5 +675,28 @@ if ( ! function_exists( 'nadlan_showroom_project_walk' ) ) {
 		$out = nadlan_showroom_scan_walk_media( 'walk-' . $slug . '-' );
 		set_transient( $tkey, $out, 30 * MINUTE_IN_SECONDS );
 		return $out;
+	}
+}
+
+if ( ! function_exists( 'nadlan_showroom_premium_tour' ) ) {
+	/** The premium default walk set (premium-default-*), for featured projects. */
+	function nadlan_showroom_premium_tour() {
+		$cache = get_transient( 'nadlan_premium_tour_v1' );
+		if ( is_array( $cache ) ) { return $cache; }
+		$out = nadlan_showroom_scan_walk_media( 'premium-default-' );
+		set_transient( 'nadlan_premium_tour_v1', $out, HOUR_IN_SECONDS );
+		return $out;
+	}
+	add_action( 'add_attachment', function () { delete_transient( 'nadlan_premium_tour_v1' ); } );
+}
+
+if ( ! function_exists( 'nadlan_showroom_default_tour_tier' ) ) {
+	/** Featured projects get the premium sample set once it is rich enough (4+ spaces). */
+	function nadlan_showroom_default_tour_tier( $id ) {
+		if ( get_post_meta( $id, 'project_featured', true ) && count( nadlan_showroom_premium_tour() ) >= 4 ) { return 'premium'; }
+		return 'standard';
+	}
+	function nadlan_showroom_default_tour_for( $id ) {
+		return nadlan_showroom_default_tour_tier( $id ) === 'premium' ? nadlan_showroom_premium_tour() : nadlan_showroom_default_tour();
 	}
 }
