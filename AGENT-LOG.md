@@ -1,5 +1,19 @@
 # AGENT-LOG - the God brain (append-only, newest on top)
 
+## 2026-07-06 (11) - v1.72.15 + set ingest COMPLETE: 12-space walk live, 12x lighter
+Standard set finished: alias fix (v1.72.14) put the building first; JPEG
+conversion done server-side (12 attachments repointed, q82, metadata regen,
+PNG originals kept on disk): ~2MB -> 130-370KB each, ~12x lighter walk.
+Draft 5137 deleted per protocol. Live payload verified: 12 steps in canonical
+order exterior -> entrance -> lobby -> stairwell -> elevator -> entry-hall ->
+living-room -> kitchen -> master-bedroom -> second-bedroom -> bathroom ->
+balcony, all .jpg.
+CATCH (live payload showed 13 steps): Cowork's 360 seam-TEST upload
+(standard-default-360-living-room, 2:1 equirect) was swept into the flat walk
+by the scanner - would render warped to buyers. v1.72.15: keys starting 360-
+excluded from the walk, reserved for the future pannellum layer
+(standard-default-360-<space> convention agreed with Cowork).
+
 ## 2026-07-06 (10) - v1.72.14 + standard set COMPLETE: 12-space default walk, JPEG diet
 Cowork finished the standard-default set (5125-5136, 12 images, draft 5137).
 CATCH: building images titled standard-default-building-exterior/-building-
