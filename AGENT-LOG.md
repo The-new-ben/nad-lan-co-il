@@ -1,5 +1,13 @@
 # AGENT-LOG - the God brain (append-only, newest on top)
 
+## 2026-07-06 (5) - v1.72.10 HOTFIX: safeHttpUrl("") == homepage (the REAL tour bug)
+Headless verify of 1.72.9 exposed the root cause of "tour not working":
+new URL("", location.origin) resolves an EMPTY tour_url to https://nad-lan.co.il/
+so every unit with no tour got a truthy "virtual tour" link... to the homepage.
+Affected the unit tour tab AND the page media section since safeHttpUrl was
+introduced. Fix: trim + early-return "" on empty input. This also unblocked the
+new walk-inside (tabPane fell into the tour-link branch, never reached fpMarkup).
+
 ## 2026-07-06 (4) - v1.72.9: the 3 broken features (owner report) - tour / view-from-window / walk-inside
 OWNER REPORTED: tour tab "closed to save loading time" (bad copy + dead end),
 view-from-window (old project-3d.php feature) gone, walk-inside not working.
