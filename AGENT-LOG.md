@@ -1,5 +1,28 @@
 # AGENT-LOG - the God brain (append-only, newest on top)
 
+## 2026-07-06 (25) - MEGA INGEST: DUO x4 LANGUAGES LIVE (flagship set complete) + 17 dev profiles
+COWORK DELIVERED SIX (drafts 5184-5190, all validated: 0 long dashes):
+1) DUO TRANSLATIONS (JOB 3 - the last flagship gap): en 6,118w / fr 6,810w /
+   ru 5,098w / ar 4,866w, 13 h2 each. CREATED SIBLINGS 5194(en)/5195(fr)/
+   5196(ru)/5197(ar), slugs duo-tel-aviv-<lang>, 15 showroom meta fields
+   copied verbatim from HE parent 4893 (incl. project_3d_units w/ interiors,
+   model, lat/lng). LIVE-VERIFIED duo-tel-aviv-en: 3D payload + model-viewer +
+   6,202w article + weaver frames (81) + units + catalog exclusion intact.
+   ALL FIVE FLAGSHIPS NOW COMPLETE IN 5 LANGUAGES. FAMILIES UPDATE:
+   4893:[5194,5195,5196,5197].
+2) DEVELOPERS BATCH-2 (17 sourced profiles incl. Shikun&Binui, Hagag, Alrov,
+   Tshuva, Ashdar, Azorim, Aura...): stored developer_profile/developer_name
+   meta across whole families (rainbow=Israel Canada x5, dimri=Y.H. Dimri x5,
+   DUO=Africa Israel x5, ZOHI 4747=Levinstein/Mivne/Allied). 13 profiles
+   unmapped (no unambiguous project) - archived for the developers directory
+   idea. Source: handoff/research/developers/2026-07-06-batch-2.html.
+3) ZOHI ARTICLE (5190, 3,670w): PARKED, NOT APPLIED - ZOHI page already
+   carries 3,755 words; replacing would not be an upgrade (no-downgrade law).
+   Archived handoff/content/zohi-article-he-PARKED.html. OWNER DECISION:
+   swap, merge best-of, or discard.
+ALSO NOTED: Cowork re-ran JOB 2 (duo interiors) - media 5191 duplicates the
+already-wired 5122; parked, not wired. Cowork should mark jobs 2+3+4+8 DONE.
+All 6 drafts deleted per protocol. Caches purged via sibling snippet.
 ## 2026-07-06 (24) - v1.72.26 ENCYCLOPEDIA INTAKE + mega-prompt delivered (owner mega-project)
 OWNER SCOPE EXPANSION: full world - not only terms/materials/tools but PEOPLE
 (researchers, famous architects), ORGANIZATIONS (biggest companies world+IL),
