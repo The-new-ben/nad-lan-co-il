@@ -178,7 +178,10 @@ add_shortcode( 'nadlan_premium_catalog', function () {
     <p>הקטלוג הפרימיום כולל רק פרויקטים עם חוויית בחירה מלאה: מודל תלת ממדי אינטראקטיבי, מאמר מקיף בחמש שפות, נתונים מאומתים ומפה חכמה. יזמים ומשווקים מוזמנים לפנות דרך <a href="/contact/" style="color:#E6D4AE">צור קשר</a>.</p>
   </div>
 </div>
-<?php return ob_get_clean();
+<?php
+// the live drone map under the premium grid (owner 2026-07-06)
+if ( function_exists( 'nadlan_drone_map_band' ) ) { echo nadlan_drone_map_band( 'showcase', 'he' ); } // phpcs:ignore WordPress.Security.EscapeOutput
+return ob_get_clean();
 } );
 
 if ( ! function_exists( 'nadlan_bvr_mark_pc' ) ) {
