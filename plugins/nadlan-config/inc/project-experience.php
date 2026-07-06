@@ -437,6 +437,7 @@ document.addEventListener("DOMContentLoaded",function(){
 				mapboxgl.accessToken=um.dataset.token;
 				var lat=parseFloat(um.dataset.lat),lng=parseFloat(um.dataset.lng);
 				var map=new mapboxgl.Map({container:um,style:"mapbox://styles/mapbox/light-v11",center:[lng,lat],zoom:14.4,pitch:0,attributionControl:true});
+				map.on("style.load",function(){try{map.setPaintProperty("water","fill-color","#A9C6D0")}catch(e){}try{map.setPaintProperty("land","background-color","#F6F1E6")}catch(e){}});
 				map.addControl(new mapboxgl.NavigationControl({visualizePitch:true}));
 				window.NLPJX_MAP=map; // engine syncs model orbit -> map bearing through this handle
 				try{document.dispatchEvent(new CustomEvent("nlpjx:map"))}catch(e){}
