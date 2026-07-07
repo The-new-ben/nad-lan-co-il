@@ -389,7 +389,7 @@
   function recordRecent(u) {
     try {
       var rec = load("nl_recent", []).filter(function (r) { return r && !(r.p === state.projectKey && r.u === u.id); });
-      rec.unshift({ p: state.projectKey, u: u.id, l: u.label, f: u.floor, r: u.rooms, n: projName(),
+      rec.unshift({ p: state.projectKey, u: u.id, l: u.label, f: u.floor, r: u.rooms, n: String(projName()).split(" - ")[0],
         url: location.pathname + "?project=" + encodeURIComponent(state.projectKey) + "&unit=" + encodeURIComponent(u.id) + "&lang=" + encodeURIComponent(state.lang) });
       save("nl_recent", rec.slice(0, 6));
     } catch (e) {}
@@ -875,6 +875,9 @@
       if (el.parentElement && el.getAttribute("data-act") === "lang") { el.parentElement.setAttribute("translate", "no"); el.parentElement.classList.add("notranslate"); }
     });
     if (state.page === "project") {
+      // ONE contact bar: the engine sticky (call + WhatsApp) owns this page;
+      // the global floating CTA cluster would stack on the same corner.
+      document.body.classList.add("nl-has-engine");
       dtInit();
       updateFormCtx(); updateSticky();
       if (state.unitId && unit(state.unitId)) selectUnit(state.unitId, true);
