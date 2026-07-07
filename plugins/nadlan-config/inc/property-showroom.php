@@ -174,8 +174,8 @@ if ( ! function_exists( 'nadlan_pshow_render' ) ) {
 	   invented hotspot positions on a generic model. */
 	$glb = function_exists( 'nadlan_showroom_engine_base_url' ) ? nadlan_showroom_engine_base_url() . 'models/flagship-tower.glb' : '';
 	if ( $glb ) : ?>
-	<div class="nlps-3d" id="nlps-3d">
-		<model-viewer id="nlps-mv" src="<?php echo esc_url( $glb ); ?>" poster="<?php echo esc_url( content_url( 'uploads/2026/07/nadlan-poster-flagship-tower.jpg' ) ); ?>" loading="lazy" reveal="interaction" camera-controls auto-rotate auto-rotate-delay="700" rotation-per-second="13deg" interaction-prompt="basic" environment-image="neutral" exposure="1.02" shadow-intensity="0.55" min-camera-orbit="auto 48deg auto" max-camera-orbit="auto 86deg auto" min-field-of-view="16deg" max-field-of-view="68deg" touch-action="pan-y"></model-viewer>
+	<div class="nlps-3d" id="nlps-3d" style="background-image:linear-gradient(180deg,rgba(237,242,245,.15),rgba(246,241,230,.35)),url('<?php echo esc_url( content_url( 'uploads/2026/07/nadlan-poster-flagship-tower.jpg' ) ); ?>');background-size:cover;background-position:center">
+		<model-viewer id="nlps-mv" src="<?php echo esc_url( $glb ); ?>" loading="lazy" reveal="auto" camera-controls auto-rotate auto-rotate-delay="700" rotation-per-second="13deg" interaction-prompt="basic" environment-image="neutral" exposure="1.02" shadow-intensity="0.55" min-camera-orbit="auto 48deg auto" max-camera-orbit="auto 86deg auto" min-field-of-view="16deg" max-field-of-view="68deg" touch-action="pan-y"></model-viewer>
 		<span class="nlps-3d__chip">המחשה כללית של מגורים בבניין - לא הבניין של הנכס</span>
 		<?php if ( $floor ) : ?><span class="nlps-3d__floor">קומה <?php echo (int) $floor; ?><?php echo $tfloors ? ' מתוך ' . (int) $tfloors : ''; ?></span><?php endif; ?>
 		<span class="nlps-3d__hint">הקישו על הבניין לסיבוב בתלת ממד</span>
@@ -335,7 +335,7 @@ if ( ! function_exists( 'nadlan_pshow_assets' ) ) {
 .nlps-3d{position:relative;height:min(58vh,520px);border-radius:14px;overflow:hidden;background:linear-gradient(180deg,#EDF2F5,#F6F1E6 78%);border:1px solid var(--line,#E2DCD0);margin-bottom:18px;transition:background .6s}
 .nlps-3d.is-dusk{background:linear-gradient(180deg,#3E2E33,#1E1A1B 75%)}
 .nlps-3d.is-night{background:linear-gradient(180deg,#0C0F16,#14130F 75%)}
-.nlps-3d model-viewer{width:100%;height:100%;transition:filter .6s}
+.nlps-3d model-viewer{width:100%;height:100%;transition:filter .6s;--poster-color:transparent;background-color:transparent}
 .nlps-3d.is-dusk model-viewer{filter:sepia(.35) saturate(.85) brightness(.8) contrast(1.04)}
 .nlps-3d.is-night model-viewer{filter:brightness(.5) saturate(.6) contrast(1.08)}
 .nlps-3d__chip{position:absolute;top:12px;inset-inline-start:12px;background:rgba(20,19,15,.82);color:#E9D9A8;font:600 11.5px/1 Heebo,sans-serif;padding:7px 11px;border-radius:999px;border:1px solid rgba(233,217,168,.4);pointer-events:none}
