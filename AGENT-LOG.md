@@ -1,5 +1,21 @@
 # AGENT-LOG - the God brain (append-only, newest on top)
 
+## 2026-07-07 (34) - v1.72.63 QA sweep clean + brain PROVEN live + stage notifications
+QA SWEEP (5 pages, JS-error capture): ZERO js errors; home hero, catalog,
+Rainbow (milestone band leads the page), term w/ pro cards, join-pro -
+all clean. BRAIN PROVEN IN PRODUCTION: live judge call on a
+deliberately thin one-liner scored 2/10 with 4 concrete correct
+critiques (no depth, no legal refs, too short, no structure) in 3.4s -
+the exact gate every encyclopedia draft now passes. enc_brain_score
+will accumulate from tomorrow's drip (today's cap already reached
+before deploy). NEW: inc/milestone-notify.php - when project_status
+ADVANCES (mapped stage increases; backward corrections stay silent),
+every inquirer of that project is queued an honest update w/ link.
+Emails-last law: sending gated behind nadlan_milestone_notify_enabled
+('0'); until flipped, notifications are RECORDED to
+nadlan_ms_notify_log (capped 40) and visible at admin-gated
+/nadlan/v1/milestone-notify-queue - zero loss, zero sends.
+
 ## 2026-07-07 (33) - v1.72.62 SCIENCE LAYER: sun-hours + TOPSIS top pick
 From the literature sweep (5 agents, all citations verified against
 primary sources): (1) PER-APARTMENT DIRECT-SUN ESTIMATE in the unit
