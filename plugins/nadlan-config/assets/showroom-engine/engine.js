@@ -17,7 +17,7 @@
     lang: qs.get("lang") || SR.config.default_lang,
     projectKey: (qs.get("project") && SR.projects[qs.get("project")]) ? qs.get("project") : SR.config.default_project,
     unitId: qs.get("unit") || null,
-    view: "3d", tab: "plan", filter: "all",
+    view: "3d", tab: "plan", filter: "all", light: "day",
     favs: load("nl_favs", []), compare: [],
     mvReady: false
   };
@@ -246,6 +246,9 @@
 
     return '<div class="nl-theater">' +
       '<div class="nl-theater__top"><div class="nl-theater__title"><span class="e">' + esc(t("theater_eyebrow")) + "</span><h2>" + esc(t("theater_title")) + "</h2></div>" +
+        (p.model_glb ? '<div class="nl-filters nl-tabs nl-filters--stage nl-light" role="group" aria-label="light">' + ["day","dusk","night"].map(function (m) {
+          return '<button data-act="light" data-id="' + m + '" aria-pressed="' + (state.light === m) + '">' + esc(t("light_" + m)) + "</button>";
+        }).join("") + "</div>" : "") +
         (p.model_glb ? '<div class="nl-filters nl-tabs nl-filters--stage" role="group" aria-label="filter">' + ["all","available","3","4","5"].map(function (f) {
           return '<button data-act="filter" data-id="' + f + '" aria-pressed="' + (state.filter === f) + '">' + esc(t("filter_" + f)) + "</button>";
         }).join("") + "</div>" : "") +
@@ -369,6 +372,24 @@
       '<div class="nl-muted" style="margin-top:14px;font-size:13px">' + esc(t("results_count", { n: list.length })) + "</div>";
   }
 
+
+  /* SUNSET ENGINE (2026-07-07): day / dusk / night lighting on the model.
+     Exposure drop makes the baked emissive windows and storefronts glow;
+     a stage tone class shifts the backdrop. Honest: a lighting preview. */
+  function applyLight() {
+    var mv = document.getElementById("nl-mv");
+    var map = { day: ["1.02", "0.55"], dusk: ["0.5", "0.3"], night: ["0.22", "0.12"] };
+    var v = map[state.light] || map.day;
+    if (mv) { mv.setAttribute("exposure", v[0]); mv.setAttribute("shadow-intensity", v[1]); }
+    var stage = mv && mv.closest(".nl-stagewrap") || mv && mv.parentElement;
+    if (stage) {
+      stage.classList.toggle("nl-light--dusk", state.light === "dusk");
+      stage.classList.toggle("nl-light--night", state.light === "night");
+    }
+    [].forEach.call(document.querySelectorAll('[data-act="light"]'), function (b) {
+      b.setAttribute("aria-pressed", String(b.getAttribute("data-id") === state.light));
+    });
+  }
   /* FILTER THE BUILDING (2026-07-07): the inventory filter is fused into the
      3D stage and the facade - matching apartments stay lit, the rest dim.
      Works on the live DOM (hotspots persist across inventory refreshes). */
@@ -974,6 +995,7 @@
     else if (act === "view") setView(id);
     else if (act === "tab") setTab(id);
     else if (act === "filter") { state.filter = id; refresh("inventory"); applyStageFilter(); }
+    else if (act === "light") { state.light = id; applyLight(); }
     else if (act === "fav") { e.stopPropagation(); toggleFav(id); }
     else if (act === "compare") { e.stopPropagation(); toggleCompare(id); }
     else if (act === "compare-clear") { state.compare = []; refreshCompare(); }

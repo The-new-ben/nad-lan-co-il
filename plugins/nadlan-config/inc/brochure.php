@@ -90,6 +90,7 @@ if ( ! function_exists( 'nadlan_brochure_render' ) ) {
 		if ( $dir ) { $rows[] = array( $T['dir'], $dir ); }
 		if ( $g( 'view' ) ) { $rows[] = array( $T['view'], (string) $g( 'view' ) ); }
 		$rows[] = array( $T['status'], $status );
+		while ( count( $rows ) % 3 !== 0 ) { $rows[] = array( '', '' ); }
 
 		$dirattr = $he ? 'rtl' : 'ltr';
 		ob_start();
