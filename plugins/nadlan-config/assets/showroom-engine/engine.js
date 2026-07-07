@@ -264,6 +264,7 @@
         '<div class="nl-legend"><span><span class="nl-dot s-available"></span>' + esc(t("legend_available")) + '</span><span><span class="nl-dot s-reserved"></span>' + esc(t("legend_reserved")) + '</span><span><span class="nl-dot s-sold"></span>' + esc(t("legend_sold")) + "</span></div>" +
         '<div class="nl-facade" id="nl-facade">' + facadeInner + "</div>" +
         '<div class="nl-scrim" id="nl-scrim"></div>' +
+        (p.model_glb ? '<button class="nl-resetview" id="nl-resetview" data-act="resetview" type="button" hidden>' + esc(t("reset_view")) + "</button>" : "") +
         panel() +
       "</div>" +
     "</div>";
@@ -286,7 +287,7 @@
       '<div class="nl-grid2">' +
         stat(t("panel_rooms"), u.rooms) + stat(t("panel_sqm"), u.sqm + " " + t("sqm_unit")) +
         stat(t("panel_balcony"), u.balcony ? (u.balcony + " " + t("sqm_unit")) : "-") + stat(t("panel_view"), viewText(u) || dirLabel(u.dir)) +
-      "</div>" + mortgageStrip(u) +
+      "</div>" + scarcityLine(u) + mortgageStrip(u) +
       '<div class="nl-tabs" role="tablist">' +
         '<button class="nl-tab" role="tab" data-act="tab" data-id="plan" aria-selected="' + (state.tab === "plan") + '">' + esc(t("tab_plan")) + '</button>' +
         '<button class="nl-tab" role="tab" data-act="tab" data-id="view" aria-selected="' + (state.tab === "view") + '">' + esc(t("tab_view")) + '</button>' +
@@ -296,12 +297,30 @@
         '<button class="nl-iconbtn' + (fav ? " is-on" : "") + '" data-act="fav" data-id="' + esc(u.id) + '">' + svg("heart", 16) + esc(fav ? t("btn_saved") : t("btn_save")) + "</button>" +
         '<button class="nl-iconbtn' + (cmp ? " is-on" : "") + '" data-act="compare" data-id="' + esc(u.id) + '">' + svg("scale", 16) + esc(cmp ? t("btn_compared") : t("btn_compare")) + "</button>" +
         '<button class="nl-iconbtn" data-act="share" data-id="' + esc(u.id) + '">' + svg("share", 16) + esc(t("btn_share")) + "</button>" +
+        '<a class="nl-iconbtn nl-iconbtn--wa" href="' + esc(waShareUrl(u)) + '" target="_blank" rel="noopener">' + svg("wa", 16) + esc(t("btn_wa_share")) + "</a>" +
       "</div>" +
       '<button class="nl-btn nl-btn--gold nl-btn--block" style="margin-top:14px" data-act="rfp" data-id="' + esc(u.id) + '">' + esc(t("btn_rfp")) + "</button>" +
       (SR.config.brochure_endpoint && p.wp_id ? '<a class="nl-btn nl-btn--block" style="margin-top:9px;text-align:center" href="' + esc(SR.config.brochure_endpoint) + '?p=' + p.wp_id + '&u=' + encodeURIComponent(u.id) + '&lang=' + (state.lang === 'he' ? 'he' : 'en') + '" target="_blank" rel="noopener">' + esc(t("btn_brochure")) + "</a>" : "") +
       '<button class="nl-btn nl-btn--accent nl-btn--block" style="margin-top:9px" data-act="scroll" data-id="inquiry">' + esc(t("btn_inquire")) + " · " + esc(t("unit_short", { label: u.label, floor: u.floor })) + "</button>";
   }
   function stat(k, v) { return '<div class="nl-stat"><div class="k">' + esc(k) + '</div><div class="v">' + esc(v) + "</div></div>"; }
+  /* honest scarcity (booking-law): computed from the real inventory array,
+     stated plainly, no timers. The cohort link fires the facade filter so
+     hesitation about THIS unit becomes a look at its real alternatives. */
+  function scarcityLine(u) {
+    if (u.status !== "available") return "";
+    var same = units().filter(function (x) { return String(x.rooms) === String(u.rooms) && x.status === "available"; }).length;
+    if (same === 1) return '<div class="nl-scarce">' + esc(t("scarcity_last", { rooms: u.rooms })) + "</div>";
+    if (same > 1 && same <= 3) return '<div class="nl-scarce">' + esc(t("scarcity_left", { n: same, rooms: u.rooms })) +
+      ' <button class="nl-scarce__link" data-act="filter" data-id="' + esc(String(u.rooms)) + '" type="button">' + esc(t("scarcity_show")) + "</button></div>";
+    return "";
+  }
+  /* per-apartment WhatsApp share: the deep link opens THIS unit selected. */
+  function waShareUrl(u) {
+    var url = location.origin + location.pathname + "?project=" + encodeURIComponent(state.projectKey) + "&unit=" + encodeURIComponent(u.id) + "&lang=" + encodeURIComponent(state.lang);
+    var msg = projName() + " · " + t("unit_short", { label: u.label, floor: u.floor }) + " · " + roomsLabel(u.rooms) + "\n" + url;
+    return "https://wa.me/?text=" + encodeURIComponent(msg);
+  }
   /* est. monthly payment (the number every buyer computes anyway): 70%
      financing, 25 years, 5.0% - stated in the note, estimate only. */
   function mortgageStrip(u) {
@@ -354,6 +373,28 @@
     return fpMarkup(u);
   }
 
+  /* recently viewed (cross-project, localStorage): the multi-session buyer
+     resumes in one tap. Current selection is filtered out at render time. */
+  function recentStrip() {
+    var rec = load("nl_recent", []).filter(function (r) { return r && r.u && !(r.p === state.projectKey && r.u === state.unitId); }).slice(0, 5);
+    if (!rec.length) return "";
+    var items = rec.map(function (r) {
+      var label = esc(r.n || "") + " · " + esc(t("unit_short", { label: r.l, floor: r.f }));
+      return r.p === state.projectKey
+        ? '<button class="nl-recent__it" data-act="select" data-id="' + esc(r.u) + '" type="button">' + label + "</button>"
+        : '<a class="nl-recent__it" href="' + esc(r.url || "#") + '">' + label + "</a>";
+    }).join("");
+    return '<div class="nl-recent"><span class="nl-recent__t">' + esc(t("recent_title")) + "</span>" + items + "</div>";
+  }
+  function recordRecent(u) {
+    try {
+      var rec = load("nl_recent", []).filter(function (r) { return r && !(r.p === state.projectKey && r.u === u.id); });
+      rec.unshift({ p: state.projectKey, u: u.id, l: u.label, f: u.floor, r: u.rooms, n: projName(),
+        url: location.pathname + "?project=" + encodeURIComponent(state.projectKey) + "&unit=" + encodeURIComponent(u.id) + "&lang=" + encodeURIComponent(state.lang) });
+      save("nl_recent", rec.slice(0, 6));
+    } catch (e) {}
+  }
+
   /* block 6 - inventory */
   function inventory() {
     var list = filtered();
@@ -365,10 +406,13 @@
         '<div class="nl-ucard__rooms">' + esc(roomsLabel(u.rooms)) + "</div>" +
         '<div class="nl-muted" style="font-size:13px">' + esc(u.sqm + " " + t("sqm_unit")) + " · " + esc(dirLabel(u.dir)) + "</div></div>";
     }).join("");
-    var chips = ["all", "available", "3", "4", "5"].map(function (f) {
-      return '<button class="nl-chip" data-act="filter" data-id="' + f + '" aria-pressed="' + (state.filter === f) + '">' + esc(t("filter_" + f)) + "</button>";
+    var keys = ["all", "available", "3", "4", "5"];
+    if (filterCount("favs") > 0) keys.push("favs");
+    var chips = keys.map(function (f) {
+      return '<button class="nl-chip" data-act="filter" data-id="' + f + '" aria-pressed="' + (state.filter === f) + '">' + esc(t("filter_" + f)) + '<span class="nl-chip__n">' + filterCount(f) + "</span></button>";
     }).join("");
     return '<div class="nl-invhead"><div><span class="nl-eyebrow">' + esc(t("inventory_title")) + '</span><hr class="nl-rule"><p class="nl-muted" style="max-width:46ch">' + esc(t("inventory_sub")) + '</p></div><div class="nl-filters">' + chips + "</div></div>" +
+      recentStrip() +
       '<div class="nl-invgrid">' + cards + "</div>" +
       '<div class="nl-muted" style="margin-top:14px;font-size:13px">' + esc(t("results_count", { n: list.length })) + "</div>";
   }
@@ -459,8 +503,17 @@
     return units().filter(function (u) {
       if (state.filter === "all") return true;
       if (state.filter === "available") return u.status === "available";
+      if (state.filter === "favs") return state.favs.indexOf(u.id) >= 0;
       return String(u.rooms) === state.filter;
     });
+  }
+  /* honest facet counts (booking-style): every chip states how many real
+     units it matches, straight from the inventory data. */
+  function filterCount(f) {
+    if (f === "all") return units().length;
+    if (f === "available") return units().filter(function (u) { return u.status === "available"; }).length;
+    if (f === "favs") return units().filter(function (u) { return state.favs.indexOf(u.id) >= 0; }).length;
+    return units().filter(function (u) { return String(u.rooms) === f; }).length;
   }
 
   /* block 6.5 - price + comps (PR5). Data-driven, honest: range + non-binding
@@ -1048,6 +1101,7 @@
     else if (act === "filter") { state.filter = id; refresh("inventory"); applyStageFilter(); }
     else if (act === "light") { state.light = id; applyLight(); }
     else if (act === "cotour") { cotourStart(); }
+    else if (act === "resetview") { resetView(); }
     else if (act === "fav") { e.stopPropagation(); toggleFav(id); }
     else if (act === "compare") { e.stopPropagation(); toggleCompare(id); }
     else if (act === "compare-clear") { state.compare = []; refreshCompare(); }
@@ -1110,6 +1164,16 @@
     // context + deep link
     updateFormCtx(); updateSticky();
     deeplink();
+    recordRecent(u);
+    var rv = document.getElementById("nl-resetview"); if (rv) rv.hidden = false;
+  }
+  /* the "way back" pill (seat-map ergonomics): one tap returns the camera to
+     the full building after a unit dive - pinch-hunting never required. */
+  function resetView() {
+    var mv = document.getElementById("nl-mv"), p = project();
+    if (mv && p) { try { mv.cameraOrbit = p.default_orbit; mv.cameraTarget = p.default_target || "auto auto auto"; } catch (e) {} }
+    var scrim = document.getElementById("nl-scrim"); if (scrim) scrim.classList.remove("is-on");
+    var rv = document.getElementById("nl-resetview"); if (rv) rv.hidden = true;
   }
   /* Two-beat camera choreography (design spec 4B-1): pull back to a wide orbit
      on the unit's bearing, then dive to the unit face while retargeting.
@@ -1164,7 +1228,8 @@
   function toggleFav(id) {
     var i = state.favs.indexOf(id); if (i >= 0) state.favs.splice(i, 1); else state.favs.push(id);
     save("nl_favs", state.favs);
-    document.querySelectorAll('.nl-ucard__fav[data-id="' + cssesc(id) + '"]').forEach(function (b) { b.classList.toggle("is-on", state.favs.indexOf(id) >= 0); });
+    if (state.filter === "favs" && !state.favs.length) state.filter = "all";
+    refresh("inventory"); // hearts, the saved chip and its count stay truthful
     if (state.unitId === id) { var body = document.getElementById("nl-panel-body"); if (body) body.innerHTML = panelBody(unit(id)); }
   }
   function toggleCompare(id) {
