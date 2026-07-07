@@ -1,5 +1,16 @@
 # AGENT-LOG - the God brain (append-only, newest on top)
 
+## 2026-07-07 (22) - v1.72.48 console QA round (screenshot-caught fixes)
+Live QA of the sponsorship console (real chip clicks: cart URL built
+sponsor_domains=lawyer,mashkanta ✓, product 5403 created, option set)
+caught TWO defects: (1) CTA text low-contrast (theme anchor color won
+over the terracotta button) -> color !important; (2) SELF-SERVE GAP -
+payment_complete required _nadlan_card_id which the logged-out picker
+cannot know -> fallback resolves the customer's claimed card via
+owner_user_id (the claim system's link); if none, a loud order note asks
+for manual attach instead of silent no-op. THE MONEY LOOP IS CLOSED:
+pick domains -> pay 199 -> card leads its practice areas for 30 days.
+
 ## 2026-07-07 (21) - v1.72.47 THE SPONSORSHIP CONSOLE (enhancement #7)
 Pro-cards became a self-serve business: (a) ORDERING - active domain
 sponsors rank ABOVE tier order when procard_sponsor_until is future and

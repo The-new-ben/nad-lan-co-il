@@ -254,7 +254,20 @@ add_action( 'woocommerce_payment_complete', function ( $order_id ) {
 	foreach ( $order->get_items() as $item ) {
 		if ( (int) $item->get_product_id() !== $pidopt ) { continue; }
 		$card = (int) $item->get_meta( '_nadlan_card_id' );
-		if ( ! $card || get_post_type( $card ) !== 'nadlan_professional' ) { continue; }
+		if ( ! $card || get_post_type( $card ) !== 'nadlan_professional' ) {
+			// self-serve fallback: the customer's claimed card (owner_user_id)
+			$cust = (int) $order->get_customer_id();
+			$card = 0;
+			if ( $cust ) {
+				$own = get_posts( array( 'post_type' => 'nadlan_professional', 'posts_per_page' => 1, 'fields' => 'ids',
+					'meta_query' => array( array( 'key' => 'owner_user_id', 'value' => $cust ) ) ) );
+				$card = $own ? (int) $own[0] : 0;
+			}
+			if ( ! $card ) {
+				$order->add_order_note( 'חסות תחום שולמה אך לא נמצא כרטיס מקצועי משויך ללקוח - יש לשייך ידנית (procard_sponsor_until על הכרטיס).' );
+				continue;
+			}
+		}
 		$doms = sanitize_text_field( (string) $item->get_meta( '_nadlan_sponsor_domains' ) );
 		// stack from the later of now / current expiry (same law as campaigns)
 		$base = max( time(), (int) get_post_meta( $card, 'procard_sponsor_until', true ) );
@@ -291,7 +304,7 @@ add_filter( 'the_content', function ( $content ) {
 .nlspon-chip input{position:absolute;opacity:0}
 .nlspon-chip span{display:inline-block;font:600 13px/1 Heebo;color:#51483A;background:#F3EEE3;border:1.5px solid #E2DCD0;border-radius:999px;padding:9px 14px;cursor:pointer;transition:all .15s}
 .nlspon-chip input:checked+span{background:#1B1A17;color:#FAF7F1;border-color:#1B1A17}
-.nlspon-btn{display:block;text-align:center;background:#C2563A;color:#FAF7F1;font:700 15px/1 Heebo;border-radius:12px;padding:15px;text-decoration:none}
+.nlspon-btn{display:block;text-align:center;background:#C2563A;color:#FAF7F1!important;font:700 15px/1 Heebo;border-radius:12px;padding:15px;text-decoration:none}
 .nlspon-btn:hover{background:#a84730}
 .nlspon-note{margin-top:10px;font-size:12px;color:#6D665C}
 </style>
