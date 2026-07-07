@@ -175,9 +175,10 @@ if ( ! function_exists( 'nadlan_pshow_render' ) ) {
 	$glb = function_exists( 'nadlan_showroom_engine_base_url' ) ? nadlan_showroom_engine_base_url() . 'models/flagship-tower.glb' : '';
 	if ( $glb ) : ?>
 	<div class="nlps-3d" id="nlps-3d">
-		<model-viewer id="nlps-mv" src="<?php echo esc_url( $glb ); ?>" loading="lazy" reveal="auto" camera-controls auto-rotate auto-rotate-delay="700" rotation-per-second="13deg" interaction-prompt="basic" environment-image="neutral" exposure="1.02" shadow-intensity="0.55" min-camera-orbit="auto 48deg auto" max-camera-orbit="auto 86deg auto" min-field-of-view="16deg" max-field-of-view="68deg" touch-action="pan-y"></model-viewer>
+		<model-viewer id="nlps-mv" src="<?php echo esc_url( $glb ); ?>" poster="<?php echo esc_url( content_url( 'uploads/2026/07/nadlan-poster-flagship-tower.jpg' ) ); ?>" loading="lazy" reveal="interaction" camera-controls auto-rotate auto-rotate-delay="700" rotation-per-second="13deg" interaction-prompt="basic" environment-image="neutral" exposure="1.02" shadow-intensity="0.55" min-camera-orbit="auto 48deg auto" max-camera-orbit="auto 86deg auto" min-field-of-view="16deg" max-field-of-view="68deg" touch-action="pan-y"></model-viewer>
 		<span class="nlps-3d__chip">המחשה כללית של מגורים בבניין - לא הבניין של הנכס</span>
 		<?php if ( $floor ) : ?><span class="nlps-3d__floor">קומה <?php echo (int) $floor; ?><?php echo $tfloors ? ' מתוך ' . (int) $tfloors : ''; ?></span><?php endif; ?>
+		<span class="nlps-3d__hint">הקישו על הבניין לסיבוב בתלת ממד</span>
 		<div class="nlps-3d__light" role="group" aria-label="תאורה">
 			<button type="button" data-l="day" aria-pressed="true">יום</button>
 			<button type="button" data-l="dusk" aria-pressed="false">שקיעה</button>
@@ -342,6 +343,8 @@ if ( ! function_exists( 'nadlan_pshow_assets' ) ) {
 .nlps-3d__light{position:absolute;top:12px;inset-inline-end:12px;display:inline-flex;gap:4px;background:rgba(250,247,241,.92);border:1px solid #E2DCD0;border-radius:11px;padding:4px}
 .nlps-3d__light button{font:600 12px/1 Heebo,sans-serif;color:#51483A;background:transparent;border:0;border-radius:8px;padding:7px 11px;cursor:pointer}
 .nlps-3d__light button[aria-pressed="true"]{background:#1B1A17;color:#FAF7F1}
+.nlps-3d__hint{position:absolute;bottom:12px;inset-inline-end:12px;background:rgba(20,19,15,.75);color:#F5EFE2;font:600 11.5px/1 Heebo,sans-serif;padding:8px 12px;border-radius:999px;pointer-events:none}
+.nlps-3d model-viewer::part(default-progress-bar){display:none}
 .nlps-price{display:flex;align-items:baseline;gap:10px;margin-bottom:12px}
 .nlps-price b{font-family:var(--font-serif,"Frank Ruhl Libre",serif);font-size:2rem;letter-spacing:-.01em}
 .nlps-price span{color:var(--warm);font-size:.95rem}
