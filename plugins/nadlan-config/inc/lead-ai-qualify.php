@@ -470,6 +470,27 @@ if ( ! function_exists( 'nadlan_lead_ai_maybe_qualify' ) ) {
 		}
 		$score = nadlan_lead_ai_score( $result );
 		$tier = nadlan_lead_ai_tier( $score );
+		/* Selective Self-Consistency (Wang et al. 2022, arXiv:2203.11171):
+		 * a borderline-confidence verdict gets ONE independent re-sample;
+		 * disagreement resolves to the conservative tier so a false-hot
+		 * never reaches a paying professional. Cost-aware: only fires in
+		 * the 0.5-0.7 confidence band. */
+		if ( function_exists( 'nadlan_brain_on' ) && nadlan_brain_on()
+			&& (float) $result['confidence'] >= 0.5 && (float) $result['confidence'] < 0.7 ) {
+			$second = nadlan_ai_chat( $system, $messages, $max_tokens );
+			if ( ! is_wp_error( $second ) ) {
+				$d2 = nadlan_lead_ai_json_decode( $second );
+				if ( is_array( $d2 ) ) {
+					$t2 = nadlan_lead_ai_tier( nadlan_lead_ai_score( nadlan_lead_ai_clean_result( $d2, $fields ) ) );
+					update_post_meta( $lead_id, 'lead_ai_vote_tier2', $t2 );
+					update_post_meta( $lead_id, 'lead_ai_vote_agreement', $t2 === $tier ? 1 : 0 );
+					if ( $t2 !== $tier ) {
+						$rank = array( 'cold' => 0, 'warm' => 1, 'hot' => 2 );
+						if ( ( $rank[ $t2 ] ?? 1 ) < ( $rank[ $tier ] ?? 1 ) ) { $tier = $t2; }
+					}
+				}
+			}
+		}
 		$usage = function_exists( 'nadlan_ai_last_usage' ) ? nadlan_ai_last_usage() : array();
 		$handoff = ! empty( $result['should_handoff'] ) || (float) $result['confidence'] < 0.5 || ! $grounded;
 

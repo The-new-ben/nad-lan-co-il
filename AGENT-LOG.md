@@ -1,5 +1,26 @@
 # AGENT-LOG - the God brain (append-only, newest on top)
 
+## 2026-07-07 (32) - v1.72.61 THE AI BRAIN (paper-backed prompting pipeline)
+Owner order: 'make the AI brain much, much smarter, prompted inside...
+get into scientific papers'. NEW inc/ai-brain.php - four primitives on
+top of nadlan_ai_chat, each a published technique: (1)
+nadlan_brain_house_rules - grounding-only constitution appended to
+system prompts (RAG discipline, Lewis et al. 2020 arXiv:2005.11401);
+(2) nadlan_brain_judge - LLM-as-a-Judge rubric scoring (Zheng et al.
+2023 arXiv:2306.05685); (3) nadlan_brain_refine - Self-Refine critique
+->revise loop (Madaan et al. 2023 arXiv:2303.17651, ~20% avg
+preference gain in paper); (4) nadlan_brain_vote - Self-Consistency
+majority vote (Wang et al. 2022 arXiv:2203.11171). WIRED: encyclopedia
+writer now judge-scores every draft (enc_brain_score meta) and revises
+once when under 8/10 (never regresses - length+dash law re-checked,
+falls back to draft); lead qualification runs a SELECTIVE second
+sample only in the 0.5-0.7 confidence band and resolves disagreement
+to the conservative tier (false-hot never reaches a paying pro);
+concierge answers carry the constitution. All gated by
+nadlan_brain_enabled + existing provider cost caps; healthcheck
+exposes ai_brain block. Full citations report from the 5-agent
+literature sweep to follow in the research file.
+
 ## 2026-07-07 (31) - v1.72.60 MILESTONE TRACKER + studio v1.1
 CYCLE: the Amazon/Lennar/Buildertrend pattern (cited research #6).
 inc/milestones.php renders 'איפה הפרויקט עומד' on nadlan_project

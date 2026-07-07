@@ -127,6 +127,19 @@ if ( ! function_exists( 'nadlan_enc_writer_write_one' ) ) {
 			update_post_meta( $pid, 'enc_fail_count', (int) get_post_meta( $pid, 'enc_fail_count', true ) + 1 );
 			return false; // too thin for its tier - retry next tick
 		}
+		// AI-brain quality gate (Self-Refine, Madaan 2023 + LLM-judge, Zheng
+		// 2023): score the draft against the encyclopedia rubric; under the
+		// bar it gets ONE critique-driven revision. Never regresses: length
+		// and dash law re-checked, fallback to the original draft.
+		if ( function_exists( 'nadlan_brain_refine' ) ) {
+			$rubric = 'ערך אנציקלופדי מקצועי: 1) דיוק - אפס עובדות לא ניתנות לאימות, מספרים והפניות לתקן או לחוק כשקיימים; 2) עומק - מנגנון טכני, הקשר ישראלי, דוגמה מספרית, טעויות נפוצות; 3) HTML נקי (h2,h3,p,ul,li,table בלבד, בלי h1 ובלי כותרת פותחת); 4) כתיבה עניינית בלי שיווק ובלי פניות לקורא; 5) אורך ' . $lo . ' עד ' . $hi . ' מילים.';
+			$ref = nadlan_brain_refine( $system, $html, $rubric, 6000 );
+			if ( null !== $ref['score'] ) { update_post_meta( $pid, 'enc_brain_score', $ref['score'] ); }
+			if ( ! empty( $ref['refined'] ) ) {
+				$cand = wp_kses_post( str_replace( array( "\u{2013}", "\u{2014}" ), '-', $ref['text'] ) );
+				if ( $wc_of( $cand ) >= $floor ) { $html = $cand; $wc = $wc_of( $html ); update_post_meta( $pid, 'enc_brain_refined', 1 ); }
+			}
+		}
 		// the title lives in the page template - drop a duplicated opening heading
 		$html = preg_replace( '/^\s*<h[23][^>]*>\s*' . preg_quote( $title, '/' ) . '\s*<\/h[23]>\s*/u', '', $html );
 		// hand to the publishing drip: next slot after the latest scheduled term
