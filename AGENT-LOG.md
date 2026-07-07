@@ -1,5 +1,21 @@
 # AGENT-LOG - the God brain (append-only, newest on top)
 
+## 2026-07-07 (31) - v1.72.60 MILESTONE TRACKER + studio v1.1
+CYCLE: the Amazon/Lennar/Buildertrend pattern (cited research #6).
+inc/milestones.php renders 'איפה הפרויקט עומד' on nadlan_project
+singles: 5-stage ladder תכנון -> היתר בנייה -> שיווק ומכירות -> בנייה ->
+טופס 4 ומסירה, mapped from the REAL project_status meta (13 projects
+carry values: בתכנון/בהיתר בנייה/בשיווק/בבנייה/תכנית מאושרת; token
+order matters - היתר checked before בנייה so 'בהיתר בנייה' lands on
+permit). No status = no band (collapse law). Language siblings inherit
+the base project's status via slug-suffix lookup (systematic, not
+copied). Honest note: stage as reported, timelines are the developer's
+responsibility. Gold progress line, terracotta current-stage dot.
+STUDIO v1.1 (research patterns 2/3/4): undo stack (30 snapshots,
+toolbar button + Ctrl+Z), wall magnetism (snap flush within 15cm -
+Sweet Home 3D pattern), live distance badge while dragging (nearest
+horizontal/vertical wall in cm). i18n nlst_undo HE+EN.
+
 ## 2026-07-07 (30) - v1.72.59 monthly pro stats email (BUILT, sending OFF)
 Retention moat completed: inc/pro-stats-email.php composes the monthly
 honest report per claimed card (views, leads, content impressions,

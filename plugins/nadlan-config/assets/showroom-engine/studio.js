@@ -32,7 +32,7 @@
     { id: "door80", w: 80, d: 12, a11y: true, icon: "🚪" }
   ];
 
-  var S = { ctx: null, items: [], notes: "", scale: 1, sel: null, drag: null, plan: null };
+  var S = { ctx: null, items: [], notes: "", scale: 1, sel: null, drag: null, plan: null, undo: [] };
 
   function t(k, vars) { return S.ctx && S.ctx.t ? S.ctx.t(k, vars) : k; }
   function esc(s) { return String(s == null ? "" : s).replace(/[&<>"]/g, function (c) { return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]; }); }
@@ -98,6 +98,7 @@
         "</aside>" +
         '<div class="nlst-stage"><div class="nlst-plan" id="nlst-plan"></div>' +
           '<div class="nlst-tools">' +
+            '<button data-st="undo" type="button">' + esc(t("nlst_undo")) + "</button>" +
             '<button data-st="rotate" type="button">' + esc(t("nlst_rotate")) + "</button>" +
             '<button data-st="note" type="button">' + esc(t("nlst_note")) + "</button>" +
             '<button data-st="del" type="button">' + esc(t("nlst_delete")) + "</button>" +
@@ -179,9 +180,12 @@
     document.querySelectorAll(".nlst-it").forEach(function (n) { n.classList.toggle("is-sel", n.dataset.uid === S.sel); });
   }
   function item(uid) { return S.items.filter(function (i) { return i.uid === uid; })[0]; }
+  function snapshot() { S.undo.push(JSON.stringify(S.items)); if (S.undo.length > 30) S.undo.shift(); }
+  function undo() { if (!S.undo.length) return; S.items = JSON.parse(S.undo.pop()); S.sel = null; redraw(); }
 
   function addItem(type) {
     var c = cat(type); if (!c) return;
+    snapshot();
     // cascade spawn so consecutive items never stack on one spot
     var off = (S.items.length % 6) * 30;
     var it = { uid: "i" + Math.random().toString(36).slice(2, 8), type: type,
@@ -213,9 +217,10 @@
       if (st) {
         var a = st.dataset.st;
         if (a === "close") { S.notes = (document.getElementById("nlst-notes") || {}).value || S.notes; save(); close(); }
-        else if (a === "rotate" && S.sel) { var it = item(S.sel); it.rot = (it.rot + 90) % 360; redraw(); }
-        else if (a === "del" && S.sel) { S.items = S.items.filter(function (i) { return i.uid !== S.sel; }); S.sel = null; redraw(); }
-        else if (a === "clear") { S.items = []; S.sel = null; redraw(); }
+        else if (a === "rotate" && S.sel) { snapshot(); var it = item(S.sel); it.rot = (it.rot + 90) % 360; redraw(); }
+        else if (a === "del" && S.sel) { snapshot(); S.items = S.items.filter(function (i) { return i.uid !== S.sel; }); S.sel = null; redraw(); }
+        else if (a === "clear") { snapshot(); S.items = []; S.sel = null; redraw(); }
+        else if (a === "undo") { undo(); }
         else if (a === "note" && S.sel) {
           var it2 = item(S.sel);
           var v = window.prompt(t("nlst_note_ph"), it2.note || "");
@@ -254,6 +259,8 @@
       // recompute dx precisely from the element box (dir-proof)
       var er = el.getBoundingClientRect();
       S.drag.dx = e.clientX - er.left; S.drag.dy = e.clientY - er.top;
+      snapshot();
+      var badge = document.createElement("span"); badge.className = "nlst-dist"; el.appendChild(badge); S.drag.badge = badge;
       el.setPointerCapture && el.setPointerCapture(e.pointerId);
       e.preventDefault();
     });
@@ -264,13 +271,22 @@
       var w = (S.drag.it.rot % 180 === 0 ? c.w : c.d), h = (S.drag.it.rot % 180 === 0 ? c.d : c.w);
       var x = (e.clientX - r.left - S.drag.dx) / S.scale, y = (e.clientY - r.top - S.drag.dy) / S.scale;
       x = Math.max(0, Math.min(S.plan.w - w, x)); y = Math.max(0, Math.min(S.plan.h - h, y));
+      // wall magnetism (Sweet Home 3D pattern): snap flush within 15cm
+      if (x < 15) x = 0; if (S.plan.w - w - x < 15) x = S.plan.w - w;
+      if (y < 15) y = 0; if (S.plan.h - h - y < 15) y = S.plan.h - h;
       S.drag.it.x = x; S.drag.it.y = y;
+      if (S.drag.badge) {
+        var dh = Math.round(Math.min(x, S.plan.w - w - x)), dv = Math.round(Math.min(y, S.plan.h - h - y));
+        S.drag.badge.textContent = dh + " / " + dv + " " + t("nlst_cm");
+      }
       S.drag.el.style.left = Math.round(x * S.scale) + "px";
       S.drag.el.style.top = Math.round(y * S.scale) + "px";
     });
     ["pointerup", "pointercancel"].forEach(function (ev) {
-      plan.addEventListener(ev, function () { if (S.drag) { S.drag = null; save(); } });
+      plan.addEventListener(ev, function () { if (S.drag) { if (S.drag.badge) S.drag.badge.remove(); S.drag = null; save(); } });
     });
+    root.addEventListener("keydown", function (e) { if ((e.ctrlKey || e.metaKey) && e.key === "z") { e.preventDefault(); undo(); } });
+    root.tabIndex = -1; root.focus();
     window.addEventListener("resize", function () { if (document.getElementById("nlst")) redraw(); });
   }
   function finishNotes() { var n = document.getElementById("nlst-notes"); if (n) S.notes = n.value; }
