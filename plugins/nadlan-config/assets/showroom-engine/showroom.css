@@ -474,3 +474,32 @@ html[lang="en"] .nl-pcard__name { font-family: var(--font-serif-en); }
 #nl-cotour-bar.is-viewer{background:#14130F;color:#E9D9A8;border:1px solid #9C7A3C}
 .nl-cotour-btn{font:600 12.5px/1 Heebo,sans-serif;color:#51483A;background:#F3EEE3;border:1px solid #E2DCD0;border-radius:11px;padding:9px 13px;cursor:pointer;margin-inline-end:8px;vertical-align:middle}
 .nl-cotour-btn:hover{border-color:#9C7A3C;color:#9C7A3C}
+
+/* UX-MAX cycle (2026-07-07): booking-app patterns, all data honest */
+/* seat-map hover tooltip: the hotspot's aria-label IS the tooltip, so screen
+   readers and sighted hover users read the exact same truth */
+.nl-hot::before,.nl-fsq::before{content:attr(aria-label);position:absolute;bottom:calc(100% + 9px);left:50%;transform:translateX(-50%) translateY(4px);background:#14130F;color:#F5EFE2;font:500 11.5px/1.4 Heebo,sans-serif;padding:7px 11px;border-radius:8px;border:1px solid rgba(233,217,168,.3);max-width:240px;width:max-content;white-space:normal;text-align:center;opacity:0;pointer-events:none;transition:opacity .16s,transform .16s;z-index:30}
+.nl-hot:hover::before,.nl-hot:focus-visible::before,.nl-fsq:hover::before,.nl-fsq:focus-visible::before{opacity:1;transform:translateX(-50%) translateY(0)}
+/* facet counts on inventory chips */
+.nl-chip__n{opacity:.6;font-size:.85em;margin-inline-start:5px;font-weight:600}
+.nl-chip[aria-pressed="true"] .nl-chip__n{opacity:.75}
+/* honest scarcity line (panel is theater-dark) */
+.nl-scarce{margin-top:10px;font:600 12.5px/1.5 Heebo,sans-serif;color:#E8A18C}
+.nl-scarce::before{content:"";display:inline-block;width:7px;height:7px;border-radius:50%;background:#C2563A;margin-inline-end:7px;vertical-align:1px}
+.nl-scarce__link{background:none;border:0;padding:0;color:#E9D9A8;font:600 12.5px/1.5 Heebo,sans-serif;text-decoration:underline;cursor:pointer}
+.nl-scarce__link:hover{color:#F5EFE2}
+/* WhatsApp per-apartment share */
+.nl-iconbtn--wa{text-decoration:none;color:#7BC98A}
+.nl-iconbtn--wa:hover{border-color:rgba(123,201,138,.5)}
+/* recently viewed strip */
+.nl-recent{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin:16px 0 4px}
+.nl-recent__t{font:600 12px/1 Heebo,sans-serif;color:#6D665C}
+.nl-recent__it{font:500 12.5px/1 Heebo,sans-serif;color:#1B1A17;background:#F3EEE3;border:1px solid #E2DCD0;border-radius:999px;padding:9px 13px;cursor:pointer;text-decoration:none;transition:border-color .15s}
+.nl-recent__it:hover{border-color:#9C7A3C}
+/* the way-back pill after a camera dive */
+.nl-resetview{position:absolute;bottom:16px;left:50%;transform:translateX(-50%);z-index:5;background:rgba(20,19,15,.85);color:#F5EFE2;font:600 12.5px/1 Heebo,sans-serif;border:1px solid rgba(233,217,168,.35);border-radius:999px;padding:11px 16px;cursor:pointer;backdrop-filter:blur(3px)}
+.nl-resetview:hover{border-color:#E9D9A8}
+/* micro-interactions (reduced-motion users exempt) */
+@keyframes nl-favpop{0%{transform:scale(1)}40%{transform:scale(1.35)}100%{transform:scale(1)}}
+.nl-iconbtn.is-on svg,.nl-ucard__fav.is-on svg{animation:nl-favpop .3s ease}
+@media (prefers-reduced-motion:reduce){.nl-iconbtn.is-on svg,.nl-ucard__fav.is-on svg{animation:none}.nl-hot::before,.nl-fsq::before{transition:none}}

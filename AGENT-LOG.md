@@ -1,6 +1,29 @@
 # AGENT-LOG - the God brain (append-only, newest on top)
 
-## 2026-07-07 (25) - v1.72.51 advertiser ROI surfacing (retention moat)
+## 2026-07-07 (26) - v1.72.52 UX-MAX: booking-app patterns wired into the engine
+Owner order: 'scan all booking and similar apps... bring UX to max'.
+Research swept Booking/Airbnb (Baymard benchmark), airline+cinema seat
+maps, Ticketmaster/StubHub/SeatGeek, and 3D condo-finder vendors; 15
+ranked patterns, engine already had 7 of the top tier (sticky bar,
+legend, panel drill-down, filter-to-facade dim, wishlist+compare,
+winview, chips). SHIPPED THE GAPS, all honest-data: (1) seat-map hover
+tooltips on every hotspot - the aria-label IS the tooltip (::before,
+::after was taken by the rec-pulse ring), same truth for screen readers
+and hover; (2) facet counts on inventory chips from the real unit
+array; (3) 'שמורות' favorites filter chip (appears only when hearts
+exist, auto-falls back to 'all' when last heart removed); (4) honest
+scarcity line in the panel (cohort<=3 from live inventory, no timers)
+with an escape-route link that fires the facade filter to show the
+alternatives; (5) WhatsApp per-apartment share - wa.me deep link
+carrying project+unit+lang so the recipient opens THAT apartment; (6)
+recently-viewed strip (localStorage nl_recent, cross-project, max 6,
+current selection filtered out); (7) reset-camera pill 'חזרה לתצוגה
+מלאה' after a unit dive - the documented #1 seat-map mobile
+frustration; (8) heart-pop micro-interaction with
+prefers-reduced-motion exemption. DEFERRED with reasons: price heatmap
++ best-value badge (needs per-unit prices most units lack - honesty
+law), social proof lines (needs real CRM data), floor-band panoramas
+(needs a drone day - flagged as asset request). - v1.72.51 advertiser ROI surfacing (retention moat)
 Advertisers who see their numbers renew. The advertiser center card now
 shows the two counters the new features have been accumulating:
 professionals get 'הופעות בתכנים' (procard_impressions - every render
