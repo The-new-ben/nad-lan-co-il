@@ -274,7 +274,7 @@
     return '<div style="display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%;text-align:center;gap:10px;color:var(--theater-sub);padding:30px">' + svg("grid", 26) + "<p>" + esc(t("panel_prompt")) + "</p></div>";
   }
   function panelBody(u) {
-    var fav = state.favs.indexOf(u.id) >= 0, cmp = state.compare.indexOf(u.id) >= 0;
+    var fav = state.favs.indexOf(u.id) >= 0, cmp = state.compare.indexOf(u.id) >= 0, p = project();
     return '<div class="nl-panel__head"><div><span class="nl-badge" style="background:rgba(255,255,255,.08);color:#fff"><span class="nl-dot s-' + esc(u.status) + '"></span>' + esc(statusLabel(u.status)) + '</span>' +
         '<h3 class="nl-panel__title" style="margin-top:8px">' + esc(roomsLabel(u.rooms)) + '</h3><div class="nl-muted" style="color:var(--theater-sub);font-size:13px;margin-top:3px">' + esc(projName()) + " · " + esc(dirLabel(u.dir)) + " · " + esc(u.label) + "</div></div>" +
         '<div class="nl-panel__floor"><div style="color:#d8c79a;font-size:12px;font-weight:600">' + esc(t("panel_floor")) + '</div><b>' + esc(u.floor) + "</b>" +
@@ -294,6 +294,7 @@
         '<button class="nl-iconbtn" data-act="share" data-id="' + esc(u.id) + '">' + svg("share", 16) + esc(t("btn_share")) + "</button>" +
       "</div>" +
       '<button class="nl-btn nl-btn--gold nl-btn--block" style="margin-top:14px" data-act="rfp" data-id="' + esc(u.id) + '">' + esc(t("btn_rfp")) + "</button>" +
+      (SR.config.brochure_endpoint && p.wp_id ? '<a class="nl-btn nl-btn--block" style="margin-top:9px;text-align:center" href="' + esc(SR.config.brochure_endpoint) + '?p=' + p.wp_id + '&u=' + encodeURIComponent(u.id) + '&lang=' + (state.lang === 'he' ? 'he' : 'en') + '" target="_blank" rel="noopener">' + esc(t("btn_brochure")) + "</a>" : "") +
       '<button class="nl-btn nl-btn--accent nl-btn--block" style="margin-top:9px" data-act="scroll" data-id="inquiry">' + esc(t("btn_inquire")) + " · " + esc(t("unit_short", { label: u.label, floor: u.floor })) + "</button>";
   }
   function stat(k, v) { return '<div class="nl-stat"><div class="k">' + esc(k) + '</div><div class="v">' + esc(v) + "</div></div>"; }

@@ -111,6 +111,7 @@ if ( ! function_exists( 'nadlan_showroom_engine_build_project' ) ) {
 
 		return array(
 			'slug'           => $post->post_name,
+			'wp_id'          => (int) $id,
 			'name'           => get_the_title( $id ),
 			'name_key'       => get_the_title( $id ),
 			'area'           => 'area_' . $post->post_name,
@@ -190,6 +191,7 @@ if ( ! function_exists( 'nadlan_showroom_engine_config' ) ) {
 		return array(
 			'brand_key'      => 'brand',
 			'lead_endpoint'  => esc_url_raw( rest_url( 'nadlan/v1/lead' ) ),
+			'brochure_endpoint' => esc_url_raw( rest_url( 'nadlan/v1/brochure' ) ),
 			'whatsapp'       => preg_replace( '/\D+/', '', (string) get_option( 'nadlan_whatsapp_e164', '' ) ),
 			'phone'          => (string) get_option( 'nadlan_phone', '' ),
 			'mapbox_token'   => (string) get_option( 'nadlan_mapbox_token', '' ),
