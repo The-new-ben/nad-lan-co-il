@@ -301,6 +301,7 @@
       "</div>" +
       '<button class="nl-btn nl-btn--gold nl-btn--block" style="margin-top:14px" data-act="rfp" data-id="' + esc(u.id) + '">' + esc(t("btn_rfp")) + "</button>" +
       (SR.config.brochure_endpoint && p.wp_id ? '<a class="nl-btn nl-btn--block" style="margin-top:9px;text-align:center" href="' + esc(SR.config.brochure_endpoint) + '?p=' + p.wp_id + '&u=' + encodeURIComponent(u.id) + '&lang=' + (state.lang === 'he' ? 'he' : 'en') + '" target="_blank" rel="noopener">' + esc(t("btn_brochure")) + "</a>" : "") +
+      (SR.config.studio !== "off" ? '<button class="nl-btn nl-btn--block nl-btn--studio" style="margin-top:9px" data-act="studio" data-id="' + esc(u.id) + '">' + esc(t("nlst_open")) + "</button>" : "") +
       '<button class="nl-btn nl-btn--accent nl-btn--block" style="margin-top:9px" data-act="scroll" data-id="inquiry">' + esc(t("btn_inquire")) + " · " + esc(t("unit_short", { label: u.label, floor: u.floor })) + "</button>";
   }
   function stat(k, v) { return '<div class="nl-stat"><div class="k">' + esc(k) + '</div><div class="v">' + esc(v) + "</div></div>"; }
@@ -1106,6 +1107,7 @@
     else if (act === "light") { state.light = id; applyLight(); }
     else if (act === "cotour") { cotourStart(); }
     else if (act === "resetview") { resetView(); }
+    else if (act === "studio") { openStudio(id); }
     else if (act === "fav") { e.stopPropagation(); toggleFav(id); }
     else if (act === "compare") { e.stopPropagation(); toggleCompare(id); }
     else if (act === "compare-clear") { state.compare = []; refreshCompare(); }
@@ -1170,6 +1172,15 @@
     deeplink();
     recordRecent(u);
     var rv = document.getElementById("nl-resetview"); if (rv) rv.hidden = false;
+  }
+  /* Apartment Studio bridge: hand the overlay everything it needs */
+  function openStudio(id) {
+    var u = unit(id || state.unitId); if (!u || !window.NLStudio) return;
+    window.NLStudio.open({
+      unit: u, t: t, projectKey: state.projectKey, projectName: projName(),
+      whatsapp: SR.config.whatsapp || "", leadEndpoint: SR.config.lead_endpoint || "",
+      homeUrl: (SR.config.home_url || "")
+    });
   }
   /* the "way back" pill (seat-map ergonomics): one tap returns the camera to
      the full building after a unit dive - pinch-hunting never required. */
