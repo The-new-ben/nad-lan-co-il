@@ -166,6 +166,40 @@ if ( ! function_exists( 'nadlan_pshow_render' ) ) {
 <div class="nlps" dir="rtl">
 	<?php if ( $demo ) : ?><div class="nlps-demo">נכס לדוגמה - להמחשת חוויית המודעה. <a href="<?php echo esc_url( home_url( '/post-listing/' ) ); ?>">פרסמו נכס אמיתי חינם ←</a></div><?php endif; ?>
 
+	<h1 class="nlps-title"><?php echo esc_html( get_the_title( $id ) ); ?></h1>
+
+	<?php /* the listing 3D theater (owner 2026-07-07: a listing without 3D
+	   "looks broken"): the generic flagship tower, spinnable, honest chip,
+	   day/dusk/night light. The floor badge states the REAL floor - no
+	   invented hotspot positions on a generic model. */
+	$glb = function_exists( 'nadlan_showroom_engine_base_url' ) ? nadlan_showroom_engine_base_url() . 'models/flagship-tower.glb' : '';
+	if ( $glb ) : ?>
+	<div class="nlps-3d" id="nlps-3d">
+		<model-viewer id="nlps-mv" src="<?php echo esc_url( $glb ); ?>" loading="lazy" reveal="auto" camera-controls auto-rotate auto-rotate-delay="700" rotation-per-second="13deg" interaction-prompt="basic" environment-image="neutral" exposure="1.02" shadow-intensity="0.55" camera-orbit="35deg 72deg 210m" min-camera-orbit="auto 50deg 120m" max-camera-orbit="auto 86deg 320m" touch-action="pan-y"></model-viewer>
+		<span class="nlps-3d__chip">המחשה כללית של מגורים בבניין - לא הבניין של הנכס</span>
+		<?php if ( $floor ) : ?><span class="nlps-3d__floor">קומה <?php echo (int) $floor; ?><?php echo $tfloors ? ' מתוך ' . (int) $tfloors : ''; ?></span><?php endif; ?>
+		<div class="nlps-3d__light" role="group" aria-label="תאורה">
+			<button type="button" data-l="day" aria-pressed="true">יום</button>
+			<button type="button" data-l="dusk" aria-pressed="false">שקיעה</button>
+			<button type="button" data-l="night" aria-pressed="false">לילה</button>
+		</div>
+	</div>
+	<script>
+	(function(){
+		var box=document.getElementById("nlps-3d");if(!box)return;
+		var mv=document.getElementById("nlps-mv"),exp={day:"1.02",dusk:"0.5",night:"0.25"};
+		box.querySelectorAll("[data-l]").forEach(function(b){
+			b.addEventListener("click",function(){
+				var m=b.dataset.l;
+				box.classList.toggle("is-dusk",m==="dusk");box.classList.toggle("is-night",m==="night");
+				if(mv)mv.setAttribute("exposure",exp[m]||"1.02");
+				box.querySelectorAll("[data-l]").forEach(function(x){x.setAttribute("aria-pressed",String(x===b))});
+			});
+		});
+	})();
+	</script>
+	<?php endif; ?>
+
 	<div class="nlps-hero">
 		<div class="nlps-price">
 			<?php if ( $price ) : ?><b><?php echo esc_html( number_format( $price ) ); ?> ₪</b><?php if ( $is_rent ) : ?><span>/ חודש</span><?php endif; ?><?php endif; ?>
@@ -296,6 +330,18 @@ if ( ! function_exists( 'nadlan_pshow_assets' ) ) {
 .nlps-demo{background:var(--band);border:1px solid var(--line);border-inline-start:3px solid var(--gold);border-radius:8px;padding:10px 14px;font-size:13.5px;margin-bottom:16px}
 .nlps-demo a{color:var(--gold);font-weight:600;text-decoration:none}
 .nlps-hero{border:1px solid var(--line);border-radius:10px;background:#FFFDFC;padding:18px 20px;margin-bottom:18px;box-shadow:0 1px 2px rgba(17,17,15,.04)}
+.nlps-title{font-family:"Frank Ruhl Libre",serif;font-size:clamp(1.5rem,3.2vw,2.2rem);line-height:1.25;color:#1B1A17;margin:4px 0 14px}
+.nlps-3d{position:relative;height:min(58vh,520px);border-radius:14px;overflow:hidden;background:linear-gradient(180deg,#EDF2F5,#F6F1E6 78%);border:1px solid var(--line,#E2DCD0);margin-bottom:18px;transition:background .6s}
+.nlps-3d.is-dusk{background:linear-gradient(180deg,#3E2E33,#1E1A1B 75%)}
+.nlps-3d.is-night{background:linear-gradient(180deg,#0C0F16,#14130F 75%)}
+.nlps-3d model-viewer{width:100%;height:100%;transition:filter .6s}
+.nlps-3d.is-dusk model-viewer{filter:sepia(.35) saturate(.85) brightness(.8) contrast(1.04)}
+.nlps-3d.is-night model-viewer{filter:brightness(.5) saturate(.6) contrast(1.08)}
+.nlps-3d__chip{position:absolute;top:12px;inset-inline-start:12px;background:rgba(20,19,15,.82);color:#E9D9A8;font:600 11.5px/1 Heebo,sans-serif;padding:7px 11px;border-radius:999px;border:1px solid rgba(233,217,168,.4);pointer-events:none}
+.nlps-3d__floor{position:absolute;bottom:12px;inset-inline-start:12px;background:#FAF7F1;color:#1B1A17;font:700 12.5px/1 Heebo,sans-serif;padding:8px 12px;border-radius:999px;border:1px solid #D6C189}
+.nlps-3d__light{position:absolute;top:12px;inset-inline-end:12px;display:inline-flex;gap:4px;background:rgba(250,247,241,.92);border:1px solid #E2DCD0;border-radius:11px;padding:4px}
+.nlps-3d__light button{font:600 12px/1 Heebo,sans-serif;color:#51483A;background:transparent;border:0;border-radius:8px;padding:7px 11px;cursor:pointer}
+.nlps-3d__light button[aria-pressed="true"]{background:#1B1A17;color:#FAF7F1}
 .nlps-price{display:flex;align-items:baseline;gap:10px;margin-bottom:12px}
 .nlps-price b{font-family:var(--font-serif,"Frank Ruhl Libre",serif);font-size:2rem;letter-spacing:-.01em}
 .nlps-price span{color:var(--warm);font-size:.95rem}
@@ -397,6 +443,13 @@ if ( ! function_exists( 'nadlan_pshow_assets' ) ) {
 	}
 }
 add_action( 'wp_enqueue_scripts', 'nadlan_pshow_assets' );
+
+/* the listing 3D theater needs the model-viewer runtime (same version the engine pins) */
+add_action( 'wp_enqueue_scripts', function () {
+	if ( ! is_singular( 'nadlan_property' ) ) { return; }
+	wp_enqueue_script( 'nadlan-model-viewer', 'https://ajax.googleapis.com/ajax/libs/model-viewer/4.3.1/model-viewer.min.js', array(), '4.3.1', true );
+	wp_script_add_data( 'nadlan-model-viewer', 'type', 'module' );
+} );
 
 /* Demo listings are showcase-only: keep them out of Google regardless of body length. */
 if ( ! function_exists( 'nadlan_pshow_demo_noindex' ) ) {

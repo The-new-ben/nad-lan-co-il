@@ -554,3 +554,5 @@ body.nlst-lock{overflow:hidden}
 .nl-sun__note{display:block;font:400 11px/1.4 Heebo,sans-serif;color:#8E877A}
 .nl-cmpitem.is-top{border-color:#C99C49;position:relative}
 .nl-cmptop{display:block;font:700 10px/1 Heebo,sans-serif;color:#E9D9A8;font-style:normal;margin-bottom:3px}
+.nl-studio-launch{border-color:#C99C49;color:#8A6B2F;background:#FBF4E4}
+.nl-studio-launch:hover{background:#F3E9CF}

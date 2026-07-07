@@ -1,5 +1,23 @@
 # AGENT-LOG - the God brain (append-only, newest on top)
 
+## 2026-07-07 (35) - v1.72.64 OWNER BUG REPORT round 1: listings 3D + visible sun + studio surfaced
+Owner clicked a regular listing: 'no 3D, looks broken'. DIAGNOSIS
+(live Playwright on bialik-rg-4r-demo): page renders (sketch plate,
+price card, facts) but has NO H1 and ZERO interactivity above the fold
+- reads as broken vs the project experience. FIXES: (1) proper H1 on
+every listing (SEO first); (2) LISTING 3D THEATER - spinnable generic
+flagship tower with honest chip 'המחשה כללית - לא הבניין של הנכס',
+REAL floor badge (no invented hotspots on a generic model), and
+day/dusk/night light buttons; model-viewer runtime enqueued on
+nadlan_property. (3) SUN MODES NOW UNMISTAKABLE: exposure alone read
+as 'nothing changed' - added CSS filters on the viewer (dusk sepia
+warm, night dark cool) + the existing backdrop swap, engine and
+listing both. (4) STUDIO SURFACED: launch button in the theater header
+(was buried behind unit selection - owner could not find it); opens
+for the selected or first available unit. NEXT ROUND (already
+ordered): homepage spinnable 3D flagship band per the approved
+illustration, at-a-glance map info, impressive pro default avatars.
+
 ## 2026-07-07 (34) - v1.72.63 QA sweep clean + brain PROVEN live + stage notifications
 QA SWEEP (5 pages, JS-error capture): ZERO js errors; home hero, catalog,
 Rainbow (milestone band leads the page), term w/ pro cards, join-pro -
