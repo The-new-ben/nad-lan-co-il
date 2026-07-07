@@ -1,5 +1,27 @@
 # AGENT-LOG - the God brain (append-only, newest on top)
 
+## 2026-07-07 (24) - v1.72.50 /join-pro/ freed from the theme's hardcoded template
+Marathon sweep found /join-pro/ as the one failing page (hero text
+collision behind a glass panel, dark-on-dark card titles, no
+sponsorship cross-sell). Rebuilt page 491 in the CMS (DNA build
+nadlan-joinpro-dna-v2: ink hero + flagship tower poster, 4 pricing
+cards preserving cart links 476/477/490/489, Pro card carries the
+factual 'first month free' badge, NEW sponsorship cross-sell band to
+/advertise/#nlspon, Morning/invoice/renewal trust line, free basic 475
+footer link) - but the update never rendered. ROOT CAUSE: the theme's
+functions.php (premium-revenue era) swaps the whole join-pro page for
+a hardcoded nlrx template via the_content at priority 98, so ANY
+editor change to that page silently no-ops. FIX (plugin-side, same
+precedent as the golden-plus dequeue): funnel.php section 5 restores
+the real CMS content at priority 99, guarded on the nadlan-joinpro
+marker so a blanked page still falls back to the theme template. Bonus:
+priority 99 runs after wpautop, so the authored HTML renders unmangled.
+Hero heading switched to h1 (the theme template prints no post title -
+the old template's h1 was the page's only h1). WORRY (float to owner):
+that theme filter means the /join-pro/ WP editor is a decoy - any
+other theme-era content swaps like this will eat future edits; theme
+functions.php deserves a cleanup pass someday.
+
 ## 2026-07-07 (23) - v1.72.49 LIVE CO-TOURING (crown jewel) + price-intel legal flag
 CO-TOURING SHIPPED: inc/cotour.php (POST broadcast -> transient 5min TTL,
 GET follow, room-code secret, 2/sec throttle) + engine client: host
