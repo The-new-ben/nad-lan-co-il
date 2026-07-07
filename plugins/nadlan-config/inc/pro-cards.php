@@ -98,8 +98,20 @@ if ( ! function_exists( 'nadlan_procard_match' ) ) {
 			'meta_query' => array( array( 'key' => 'profession', 'value' => $professions, 'compare' => 'IN' ) ),
 		) );
 		$posts = $q->posts;
-		// the monetization order: premier > pro > free, then rating, then newer
-		usort( $posts, function ( $a, $b ) {
+		// the monetization order: ACTIVE DOMAIN SPONSORS first (the console
+		// product), then premier > pro > free, then rating, then newer
+		$sponsored = function ( $pid ) use ( $professions ) {
+			if ( (int) get_post_meta( $pid, 'procard_sponsor_until', true ) < time() ) { return false; }
+			$doms = array_filter( array_map( 'trim', explode( ',', (string) get_post_meta( $pid, 'procard_sponsor_domains', true ) ) ) );
+			if ( ! $doms ) { return true; } // sponsor of everything they match
+			foreach ( $doms as $d ) {
+				if ( in_array( $d, $professions, true ) ) { return true; }
+			}
+			return false;
+		};
+		usort( $posts, function ( $a, $b ) use ( $sponsored ) {
+			$sa = $sponsored( $a->ID ) ? 1 : 0; $sb = $sponsored( $b->ID ) ? 1 : 0;
+			if ( $sa !== $sb ) { return $sb <=> $sa; }
 			$w = array( 'premier' => 3, 'pro' => 2, 'free' => 1 );
 			$ta = $w[ get_post_meta( $a->ID, 'paid_tier', true ) ] ?? 1;
 			$tb = $w[ get_post_meta( $b->ID, 'paid_tier', true ) ] ?? 1;
@@ -120,6 +132,8 @@ if ( ! function_exists( 'nadlan_procard_html' ) ) {
 		$img   = get_the_post_thumbnail_url( $id, 'medium' );
 		$city  = (string) get_post_meta( $id, 'city', true );
 		$tier  = (string) get_post_meta( $id, 'paid_tier', true );
+		$spon  = (int) get_post_meta( $id, 'procard_sponsor_until', true ) >= time();
+		update_post_meta( $id, 'procard_impressions', (int) get_post_meta( $id, 'procard_impressions', true ) + 1 );
 		$rate  = (float) get_post_meta( $id, 'rating', true );
 		$rcnt  = (int) get_post_meta( $id, 'reviews_count', true );
 		$phone = preg_replace( '/[^0-9+]/', '', (string) get_post_meta( $id, 'phone', true ) );
@@ -127,7 +141,7 @@ if ( ! function_exists( 'nadlan_procard_html' ) ) {
 		$verified = get_post_meta( $id, 'claim_status', true ) === 'verified';
 		ob_start(); ?>
 <div class="nlprc<?php echo $compact ? ' nlprc--sm' : ''; ?>" dir="rtl">
-	<?php if ( 'free' !== $tier && $tier ) : ?><span class="nlprc-spon">ממומן</span><?php endif; ?>
+	<?php if ( $spon || ( 'free' !== $tier && $tier ) ) : ?><span class="nlprc-spon">ממומן</span><?php endif; ?>
 	<a class="nlprc-media" href="<?php echo esc_url( get_permalink( $id ) ); ?>"<?php echo $img ? ' style="background-image:url(' . esc_url( $img ) . ')"' : ''; ?>>
 		<?php if ( ! $img ) : ?><span class="nlprc-mono"><?php echo esc_html( mb_substr( get_the_title( $id ), 0, 1 ) ); ?></span><?php endif; ?>
 	</a>
@@ -215,3 +229,83 @@ add_action( 'init', function () {
 		) );
 	}
 }, 12 );
+
+
+/* ---------------- THE SPONSORSHIP CONSOLE (enhancement #7) ----------------
+ * Self-serve: a professional picks practice areas, pays through the existing
+ * WooCommerce checkout (product id in option nadlan_procard_product), and the
+ * boost activates itself on payment - 30 days, stacking like campaigns. */
+add_filter( 'woocommerce_add_cart_item_data', function ( $data, $product_id ) {
+	if ( (int) $product_id !== (int) get_option( 'nadlan_procard_product', 0 ) ) { return $data; }
+	if ( isset( $_GET['sponsor_domains'] ) ) { $data['nadlan_sponsor_domains'] = sanitize_text_field( wp_unslash( $_GET['sponsor_domains'] ) ); } // phpcs:ignore
+	if ( isset( $_GET['sponsor_card'] ) ) { $data['nadlan_sponsor_card'] = absint( $_GET['sponsor_card'] ); } // phpcs:ignore
+	return $data;
+}, 10, 2 );
+add_action( 'woocommerce_checkout_create_order_line_item', function ( $item, $key, $values ) {
+	if ( ! empty( $values['nadlan_sponsor_domains'] ) ) { $item->add_meta_data( '_nadlan_sponsor_domains', $values['nadlan_sponsor_domains'], true ); }
+	if ( ! empty( $values['nadlan_sponsor_card'] ) ) { $item->add_meta_data( '_nadlan_card_id', (int) $values['nadlan_sponsor_card'], true ); }
+}, 10, 3 );
+add_action( 'woocommerce_payment_complete', function ( $order_id ) {
+	if ( ! function_exists( 'wc_get_order' ) ) { return; }
+	$pidopt = (int) get_option( 'nadlan_procard_product', 0 );
+	if ( ! $pidopt ) { return; }
+	$order = wc_get_order( $order_id );
+	if ( ! $order ) { return; }
+	foreach ( $order->get_items() as $item ) {
+		if ( (int) $item->get_product_id() !== $pidopt ) { continue; }
+		$card = (int) $item->get_meta( '_nadlan_card_id' );
+		if ( ! $card || get_post_type( $card ) !== 'nadlan_professional' ) { continue; }
+		$doms = sanitize_text_field( (string) $item->get_meta( '_nadlan_sponsor_domains' ) );
+		// stack from the later of now / current expiry (same law as campaigns)
+		$base = max( time(), (int) get_post_meta( $card, 'procard_sponsor_until', true ) );
+		update_post_meta( $card, 'procard_sponsor_until', $base + 30 * DAY_IN_SECONDS );
+		if ( $doms !== '' ) { update_post_meta( $card, 'procard_sponsor_domains', $doms ); }
+	}
+}, 25 );
+
+/* the picker rides the advertiser page next to the call-back form */
+add_filter( 'the_content', function ( $content ) {
+	if ( ! is_page( 'advertise' ) || is_admin() ) { return $content; }
+	$product = (int) get_option( 'nadlan_procard_product', 0 );
+	if ( ! $product || ! function_exists( 'wc_get_product' ) ) { return $content; }
+	$prod = wc_get_product( $product );
+	if ( ! $prod ) { return $content; }
+	$price = wp_kses_post( $prod->get_price_html() );
+	$cart  = esc_url( add_query_arg( array( 'add-to-cart' => $product ), wc_get_cart_url() ) );
+	// values = profession KEYS (the same tokens the boost check intersects)
+	$doms  = array( 'lawyer' => 'משפט ומיסוי', 'mashkanta' => 'משכנתאות ומימון', 'shamai' => 'שמאות', 'bedek_bait' => 'בדק בית', 'architect' => 'תכנון ואדריכלות', 'kablan' => 'בנייה והתחדשות', 'metavech' => 'תיווך', 'property_manager' => 'ניהול נכסים' );
+	$chips = '';
+	foreach ( $doms as $k => $d ) { $chips .= '<label class="nlspon-chip"><input type="checkbox" value="' . esc_attr( $k ) . '"><span>' . esc_html( $d ) . '</span></label>'; }
+	$html = '<section class="nlspon" id="nlspon" dir="rtl" data-cart="' . $cart . '">
+	<h2>חסות על תחום תוכן</h2>
+	<p class="nlspon-sub">הכרטיס המקצועי שלכם מוצג ראשון בכל מונחי האנציקלופדיה והמדריכים של התחומים שתבחרו - עם סימון ממומן, הוגן וברור. ' . $price . ' ל-30 יום.</p>
+	<div class="nlspon-chips">' . $chips . '</div>
+	<a class="nlspon-btn" id="nlspon-go" href="' . $cart . '">להפעלת החסות ←</a>
+	<p class="nlspon-note">לאחר התשלום החסות נדלקת אוטומטית על הכרטיס המקצועי שלכם. בלי חוזים ובלי טלפונים.</p>
+</section>
+<style>
+.nlspon{max-width:640px;margin:22px auto;background:#fff;border:1px solid #D6C189;border-radius:18px;padding:26px 28px;font-family:Heebo,system-ui,sans-serif;box-shadow:0 18px 44px -24px rgba(27,26,23,.35)}
+.nlspon h2{font-family:"Frank Ruhl Libre",serif;color:#1B1A17;margin:0 0 4px;font-size:1.5rem}
+.nlspon-sub{color:#6D665C;font-size:14px;margin:0 0 14px}
+.nlspon-chips{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:16px}
+.nlspon-chip input{position:absolute;opacity:0}
+.nlspon-chip span{display:inline-block;font:600 13px/1 Heebo;color:#51483A;background:#F3EEE3;border:1.5px solid #E2DCD0;border-radius:999px;padding:9px 14px;cursor:pointer;transition:all .15s}
+.nlspon-chip input:checked+span{background:#1B1A17;color:#FAF7F1;border-color:#1B1A17}
+.nlspon-btn{display:block;text-align:center;background:#C2563A;color:#FAF7F1;font:700 15px/1 Heebo;border-radius:12px;padding:15px;text-decoration:none}
+.nlspon-btn:hover{background:#a84730}
+.nlspon-note{margin-top:10px;font-size:12px;color:#6D665C}
+</style>
+<script>
+(function(){
+	var box=document.getElementById("nlspon"),go=document.getElementById("nlspon-go");
+	if(!box||!go)return;
+	box.addEventListener("change",function(){
+		var sel=[].map.call(box.querySelectorAll("input:checked"),function(i){return i.value}).join(",");
+		var u=new URL(box.dataset.cart);
+		if(sel)u.searchParams.set("sponsor_domains",sel);else u.searchParams.delete("sponsor_domains");
+		go.href=u.toString();
+	});
+})();
+</script>';
+	return $content . $html;
+}, 22 );

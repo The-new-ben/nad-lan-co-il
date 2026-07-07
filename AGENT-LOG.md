@@ -1,5 +1,21 @@
 # AGENT-LOG - the God brain (append-only, newest on top)
 
+## 2026-07-07 (21) - v1.72.47 THE SPONSORSHIP CONSOLE (enhancement #7)
+Pro-cards became a self-serve business: (a) ORDERING - active domain
+sponsors rank ABOVE tier order when procard_sponsor_until is future and
+their sponsor domains (profession KEYS - contract bug caught pre-ship:
+picker stored Hebrew labels while the boost intersects keys; aligned)
+intersect the matched professions; sponsored cards always carry the
+honest ממומן chip; (b) PLUMBING - cart item data from
+?add-to-cart=<product>&sponsor_domains=<keys>&sponsor_card=<id> ->
+order item meta -> woocommerce_payment_complete sets
+procard_sponsor_until (now/expiry + 30d, campaign stacking law) +
+procard_sponsor_domains; product id lives in option
+nadlan_procard_product (created post-deploy via WC API); (c) PICKER on
+/advertise/: domain chips (nl-chip style), live cart-URL builder, honest
+copy; (d) procard_impressions counter per card on every render.
+NEXT POST-DEPLOY OPS: create the WC product + set the option.
+
 ## 2026-07-07 (20) - v1.72.46 THE SUNSET ENGINE (world gap #3, v1)
 Day/dusk/night toggle on the 3D theater (nl-tabs chips beside the unit
 filter): applyLight() drives model-viewer exposure (1.02/0.5/0.22) +
