@@ -548,3 +548,9 @@ body.nlst-lock{overflow:hidden}
 @media(max-width:820px){.nlst-body{flex-direction:column}.nlst-pal{width:auto;flex:0 0 auto;max-height:38vh;border-inline-end:0;border-bottom:1px solid #E2DCD0;display:grid;grid-template-columns:1fr 1fr;gap:6px;align-content:start}.nlst-pal__t{grid-column:1/-1}#nlst-notes,.nlst-pros{grid-column:1/-1}.nlst-honest{display:none}.nlst-foot{padding-bottom:calc(12px + env(safe-area-inset-bottom))}}
 
 .nlst-dist{position:absolute;bottom:calc(100% + 4px);inset-inline-start:50%;transform:translateX(-50%);background:#14130F;color:#E9D9A8;font:600 10.5px/1 Heebo,sans-serif;border-radius:6px;padding:4px 7px;white-space:nowrap;pointer-events:none}
+
+/* science layer (2026-07-07): sun estimate + TOPSIS top pick */
+.nl-sun{margin-top:10px;font:600 12.5px/1.5 Heebo,sans-serif;color:#E9D9A8}
+.nl-sun__note{display:block;font:400 11px/1.4 Heebo,sans-serif;color:#8E877A}
+.nl-cmpitem.is-top{border-color:#C99C49;position:relative}
+.nl-cmptop{display:block;font:700 10px/1 Heebo,sans-serif;color:#E9D9A8;font-style:normal;margin-bottom:3px}

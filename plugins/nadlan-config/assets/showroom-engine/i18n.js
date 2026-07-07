@@ -130,6 +130,9 @@
     scarcity_show: "להצגתן בבניין",
     btn_wa_share: "וואטסאפ",
     reset_view: "חזרה לתצוגה מלאה",
+    sun_hours: "כ-{h} שעות שמש ישירה ביום שוויון",
+    sun_note: "הערכה גיאומטרית לפי כיוון וקו רוחב בלבד, ללא הצללות סביבה",
+    compare_top: "הבולטת לפי שטח, קומה ומרפסת",
 
     /* apartment studio */
     nlst_open: "סטודיו עיצוב הדירה",
@@ -324,6 +327,9 @@
     scarcity_show: "Show them on the building",
     btn_wa_share: "WhatsApp",
     reset_view: "Back to full view",
+    sun_hours: "~{h} direct-sun hours on an equinox day",
+    sun_note: "Geometric estimate from orientation and latitude only, no surrounding shading",
+    compare_top: "Stands out by area, floor and balcony",
 
     /* apartment studio */
     nlst_open: "Apartment Design Studio",
