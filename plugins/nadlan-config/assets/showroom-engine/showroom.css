@@ -467,3 +467,10 @@ html[lang="en"] .nl-pcard__name { font-family: var(--font-serif-en); }
 .nl-light--dusk #nl-mv{background:linear-gradient(180deg,#3E2E33 0%,#1E1A1B 70%)}
 .nl-light--night #nl-mv{background:linear-gradient(180deg,#0C0F16 0%,#14130F 70%)}
 .nl-light--dusk,.nl-light--night{transition:background .5s}
+
+/* live co-touring (2026-07-07) */
+#nl-cotour-bar{position:fixed;top:14px;left:50%;transform:translateX(-50%);z-index:99999;font:700 13px/1 Heebo,sans-serif;border-radius:999px;padding:11px 18px;box-shadow:0 12px 30px -10px rgba(0,0,0,.45)}
+#nl-cotour-bar.is-host{background:#C2563A;color:#FAF7F1}
+#nl-cotour-bar.is-viewer{background:#14130F;color:#E9D9A8;border:1px solid #9C7A3C}
+.nl-cotour-btn{font:600 12.5px/1 Heebo,sans-serif;color:#51483A;background:#F3EEE3;border:1px solid #E2DCD0;border-radius:11px;padding:9px 13px;cursor:pointer;margin-inline-end:8px;vertical-align:middle}
+.nl-cotour-btn:hover{border-color:#9C7A3C;color:#9C7A3C}

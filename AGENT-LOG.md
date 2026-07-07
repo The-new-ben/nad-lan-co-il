@@ -1,5 +1,22 @@
 # AGENT-LOG - the God brain (append-only, newest on top)
 
+## 2026-07-07 (23) - v1.72.49 LIVE CO-TOURING (crown jewel) + price-intel legal flag
+CO-TOURING SHIPPED: inc/cotour.php (POST broadcast -> transient 5min TTL,
+GET follow, room-code secret, 2/sec throttle) + engine client: host
+broadcasts {project, unit, cameraOrbit via getCameraOrbit(), light,
+filter} every 1.6s; viewer polls + applies (selectUnit instant,
+mv.cameraOrbit, applyLight, applyStageFilter). 'שיתוף סיור חי' button in
+the theater generates a room, copies the join link, shows the terracotta
+host bar; viewers get the ink 'המסך עוקב אחרי המציג' bar.
+?cotour=host|join&room=<code> works on any engine project. Realsee-class
+feature on shared hosting. PRICE INTEL (#5) STATUS: infra already armed
+(deals table + comps AVM + confidence in avm-deals.php) but data ingest
+is LEGALLY GATED - the codebase flags nadlan.gov.il ToS sign-off as an
+owner decision (docs/listings-questions.md A.6). NOT scraped
+autonomously - flagged loudly to owner instead. SPONSOR PRODUCT LIVE:
+WC product 5403 (199/30d, hidden virtual), option nadlan_procard_product
+set.
+
 ## 2026-07-07 (22) - v1.72.48 console QA round (screenshot-caught fixes)
 Live QA of the sponsorship console (real chip clicks: cart URL built
 sponsor_domains=lawyer,mashkanta ✓, product 5403 created, option set)

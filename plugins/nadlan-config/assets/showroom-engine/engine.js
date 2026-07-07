@@ -246,6 +246,7 @@
 
     return '<div class="nl-theater">' +
       '<div class="nl-theater__top"><div class="nl-theater__title"><span class="e">' + esc(t("theater_eyebrow")) + "</span><h2>" + esc(t("theater_title")) + "</h2></div>" +
+        (p.model_glb ? '<button class="nl-cotour-btn" data-act="cotour" type="button">' + esc(t("cotour_start")) + "</button>" : "") +
         (p.model_glb ? '<div class="nl-filters nl-tabs nl-filters--stage nl-light" role="group" aria-label="light">' + ["day","dusk","night"].map(function (m) {
           return '<button data-act="light" data-id="' + m + '" aria-pressed="' + (state.light === m) + '">' + esc(t("light_" + m)) + "</button>";
         }).join("") + "</div>" : "") +
@@ -373,6 +374,56 @@
   }
 
 
+
+  /* LIVE CO-TOURING (2026-07-07): host broadcasts camera + selection + light +
+     filter every 1.6s; viewers follow. ?cotour=host|join&room=<code>. */
+  var cotour = { role: qs.get("cotour") || "", room: (qs.get("room") || "").replace(/[^a-z0-9]/gi, ""), timer: 0 };
+  function cotourState() {
+    var mv = document.getElementById("nl-mv"), o = "";
+    try { if (mv && mv.getCameraOrbit) { var c = mv.getCameraOrbit(); o = c.theta.toFixed(3) + "rad " + c.phi.toFixed(3) + "rad " + c.radius.toFixed(2) + "m"; } } catch (e) {}
+    return { p: state.projectKey, u: state.unitId || "", o: o, l: state.light, f: state.filter, v: state.view };
+  }
+  function cotourBar(txt, cls) {
+    var b = document.getElementById("nl-cotour-bar");
+    if (!b) { b = document.createElement("div"); b.id = "nl-cotour-bar"; document.body.appendChild(b); }
+    b.className = cls || ""; b.textContent = txt;
+  }
+  function cotourStart() {
+    if (!SR.config.cotour_endpoint) return;
+    cotour.role = "host";
+    cotour.room = cotour.room || Math.random().toString(36).slice(2, 8);
+    var join = new URL(location.href);
+    join.searchParams.set("cotour", "join"); join.searchParams.set("room", cotour.room);
+    try { navigator.clipboard.writeText(join.toString()); } catch (e) {}
+    cotourBar(t("cotour_live") + " · " + cotour.room + " · " + t("cotour_copied"), "is-host");
+    cotourRun();
+  }
+  function cotourRun() {
+    if (cotour.timer) return;
+    if (cotour.role === "host") {
+      cotour.timer = setInterval(function () {
+        try {
+          fetch(SR.config.cotour_endpoint, { method: "POST", headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ room: cotour.room, state: cotourState() }) }).catch(function () {});
+        } catch (e) {}
+      }, 1600);
+    } else if (cotour.role === "join") {
+      cotourBar(t("cotour_following"), "is-viewer");
+      var lastU = null, lastO = "";
+      cotour.timer = setInterval(function () {
+        try {
+          fetch(SR.config.cotour_endpoint + "?room=" + encodeURIComponent(cotour.room)).then(function (r) { return r.json(); }).then(function (d) {
+            if (!d || !d.ok || !d.state) return;
+            var st = d.state, mv = document.getElementById("nl-mv");
+            if (st.u && st.u !== lastU) { lastU = st.u; selectUnit(st.u, true); }
+            if (st.o && st.o !== lastO && mv) { lastO = st.o; mv.cameraOrbit = st.o; }
+            if (st.l && st.l !== state.light) { state.light = st.l; applyLight(); }
+            if (st.f && st.f !== state.filter) { state.filter = st.f; refresh("inventory"); applyStageFilter(); }
+          }).catch(function () {});
+        } catch (e) {}
+      }, 1600);
+    }
+  }
   /* SUNSET ENGINE (2026-07-07): day / dusk / night lighting on the model.
      Exposure drop makes the baked emissive windows and storefronts glow;
      a stage tone class shifts the backdrop. Honest: a lighting preview. */
@@ -996,6 +1047,7 @@
     else if (act === "tab") setTab(id);
     else if (act === "filter") { state.filter = id; refresh("inventory"); applyStageFilter(); }
     else if (act === "light") { state.light = id; applyLight(); }
+    else if (act === "cotour") { cotourStart(); }
     else if (act === "fav") { e.stopPropagation(); toggleFav(id); }
     else if (act === "compare") { e.stopPropagation(); toggleCompare(id); }
     else if (act === "compare-clear") { state.compare = []; refreshCompare(); }
@@ -1210,5 +1262,6 @@
   function cssesc(s) { return String(s).replace(/["\\]/g, "\\$&"); }
 
   render();
+  if (cotour.role === 'host' || cotour.role === 'join') { setTimeout(cotourRun, 1200); if (cotour.role === 'host') { setTimeout(function () { cotourBar(t('cotour_live') + ' · ' + cotour.room, 'is-host'); }, 1300); } }
   window.NadLanEngine = { render: render, state: state, t: t };
 })();

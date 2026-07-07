@@ -192,6 +192,7 @@ if ( ! function_exists( 'nadlan_showroom_engine_config' ) ) {
 			'brand_key'      => 'brand',
 			'lead_endpoint'  => esc_url_raw( rest_url( 'nadlan/v1/lead' ) ),
 			'brochure_endpoint' => esc_url_raw( rest_url( 'nadlan/v1/brochure' ) ),
+			'cotour_endpoint'   => esc_url_raw( rest_url( 'nadlan/v1/cotour' ) ),
 			'whatsapp'       => preg_replace( '/\D+/', '', (string) get_option( 'nadlan_whatsapp_e164', '' ) ),
 			'phone'          => (string) get_option( 'nadlan_phone', '' ),
 			'mapbox_token'   => (string) get_option( 'nadlan_mapbox_token', '' ),
