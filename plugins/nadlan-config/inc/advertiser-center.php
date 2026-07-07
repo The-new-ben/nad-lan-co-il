@@ -266,7 +266,8 @@ if ( ! function_exists( 'nadlan_ac_css' ) ) {
 .nlac-card{background:#fff;border:1px solid rgba(27,26,23,.12);border-radius:8px;padding:17px;margin-bottom:14px}.nlac-card-head{display:flex;justify-content:space-between;gap:14px;align-items:flex-start}
 .nlac-card-title{font-size:19px;font-weight:800;margin:0 0 4px}.nlac-muted{font-size:13px;color:#6B7280}.nlac-pill{display:inline-flex;align-items:center;border-radius:999px;padding:5px 10px;background:#F3F4F6;color:#374151;font-size:12px;font-weight:800}
 .nlac-pill.good{background:#ECFDF5;color:#047857}.nlac-pill.warn{background:#FEF3C7;color:#92400E}.nlac-progress{height:9px;background:#F3F4F6;border-radius:999px;overflow:hidden;margin:13px 0 8px}.nlac-progress i{display:block;height:100%;background:#9C7A3C;border-radius:999px}
-.nlac-facts{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin:14px 0}.nlac-fact{background:#FBF9F5;border-radius:7px;padding:10px}.nlac-fact b{display:block;font-size:18px}.nlac-fact span{font-size:12px;color:#6B7280}
+.nlac-facts{display:grid;grid-template-columns:repeat(auto-fit,minmax(108px,1fr));gap:10px;margin:14px 0}.nlac-fact{background:#FBF9F5;border-radius:7px;padding:10px}.nlac-fact b{display:block;font-size:18px}.nlac-fact span{font-size:12px;color:#6B7280}
+.nlac-spon{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin:10px 0 2px;font-size:12.5px}.nlac-spon .nlac-pill{background:#F3EEE3;color:#8A6B2F}.nlac-spon .nlac-pill.good{background:#ECFDF5;color:#047857}
 .nlac-missing{display:flex;gap:7px;flex-wrap:wrap;margin-top:10px}.nlac-missing span{font-size:12px;background:#FFF7ED;color:#9A3412;border:1px solid #FED7AA;border-radius:999px;padding:4px 9px}
 .nlac-card-actions{display:flex;gap:9px;flex-wrap:wrap;margin-top:14px}.nlac-split{display:grid;grid-template-columns:minmax(0,1fr) minmax(280px,.45fr);gap:16px}.nlac-list{display:grid;gap:10px}
 .nlac-order,.nlac-step{border:1px solid rgba(27,26,23,.1);border-radius:8px;padding:13px;background:#fff}.nlac-step b{display:block;margin-bottom:4px}.nlac-empty{background:#FBF9F5;border:1px dashed #D8CDB8;border-radius:8px;padding:24px;text-align:center;color:#5A5A5A}
@@ -447,6 +448,17 @@ if ( ! function_exists( 'nadlan_ac_render_inner' ) ) {
 				$reviews = (int) get_post_meta( $card->ID, 'reviews_count', true );
 				$photos = nadlan_ac_photos( $card->ID );
 				$is_project = $card->post_type === 'nadlan_project';
+				$is_pro = $card->post_type === 'nadlan_professional';
+				$impressions = $is_pro ? (int) get_post_meta( $card->ID, 'procard_impressions', true ) : 0;
+				$brochure_views = $is_project ? (int) get_post_meta( $card->ID, 'nadlan_brochure_views', true ) : 0;
+				$spon_until = $is_pro ? (int) get_post_meta( $card->ID, 'procard_sponsor_until', true ) : 0;
+				$spon_domains = array();
+				if ( $is_pro && function_exists( 'nadlan_procard_domain_labels' ) ) {
+					$labels = nadlan_procard_domain_labels();
+					foreach ( array_filter( array_map( 'trim', explode( ',', (string) get_post_meta( $card->ID, 'procard_sponsor_domains', true ) ) ) ) as $dk ) {
+						$spon_domains[] = isset( $labels[ $dk ] ) ? $labels[ $dk ] : $dk;
+					}
+				}
 				?>
 				<article class="nlac-card">
 					<div class="nlac-card-head">
@@ -464,7 +476,27 @@ if ( ! function_exists( 'nadlan_ac_render_inner' ) ) {
 						<div class="nlac-fact"><b><?php echo number_format_i18n( $inquiries ); ?></b><span>פניות</span></div>
 						<div class="nlac-fact"><b><?php echo number_format_i18n( $reviews ); ?></b><span>ביקורות</span></div>
 						<div class="nlac-fact"><b><?php echo number_format_i18n( count( $photos ) ); ?></b><span>תמונות</span></div>
+						<?php if ( $is_pro ) : ?>
+							<div class="nlac-fact"><b><?php echo number_format_i18n( $impressions ); ?></b><span>הופעות בתכנים</span></div>
+						<?php elseif ( $is_project ) : ?>
+							<div class="nlac-fact"><b><?php echo number_format_i18n( $brochure_views ); ?></b><span>צפיות בפרוספקט</span></div>
+						<?php endif; ?>
 					</div>
+					<?php if ( $is_pro ) : ?>
+						<div class="nlac-spon">
+							<?php if ( $spon_until >= time() ) : ?>
+								<span class="nlac-pill good">חסות תוכן פעילה עד <?php echo esc_html( wp_date( 'd/m/Y', $spon_until ) ); ?></span>
+								<?php if ( $spon_domains ) : ?><span class="nlac-muted"><?php echo esc_html( implode( ' · ', $spon_domains ) ); ?></span><?php endif; ?>
+								<a href="<?php echo esc_url( home_url( '/advertise/#nlspon' ) ); ?>">הארכה</a>
+							<?php elseif ( $spon_until > 0 ) : ?>
+								<span class="nlac-pill">חסות התוכן הסתיימה</span>
+								<a href="<?php echo esc_url( home_url( '/advertise/#nlspon' ) ); ?>">חידוש - הכרטיס יחזור להוביל את תכני התחום</a>
+							<?php else : ?>
+								<span class="nlac-muted">חדש: חסות על תחום תוכן מציגה את הכרטיס ראשון בכל מונחי האנציקלופדיה והמדריכים שלו.</span>
+								<a href="<?php echo esc_url( home_url( '/advertise/#nlspon' ) ); ?>">לפרטים</a>
+							<?php endif; ?>
+						</div>
+					<?php endif; ?>
 					<?php if ( $completion['missing'] ) : ?>
 						<div class="nlac-muted">כדאי להשלים:</div>
 						<div class="nlac-missing">

@@ -1,5 +1,24 @@
 # AGENT-LOG - the God brain (append-only, newest on top)
 
+## 2026-07-07 (25) - v1.72.51 advertiser ROI surfacing (retention moat)
+Advertisers who see their numbers renew. The advertiser center card now
+shows the two counters the new features have been accumulating:
+professionals get 'הופעות בתכנים' (procard_impressions - every render
+of their card inside encyclopedia/guide content) plus a sponsorship
+status line (active-until date + sponsored domains + הארכה link;
+expired -> loud renewal nudge; never-sponsored -> honest one-line
+pitch to /advertise/#nlspon); projects get 'צפיות בפרוספקט'
+(nadlan_brochure_views). Facts grid switched to auto-fit so the fifth
+cell sits inline. Domain key->label map extracted to
+nadlan_procard_domain_labels() - one source of truth for the picker
+and the center. Deliberately no brochure deep-link from the center:
+brochures are per-unit, faking a unit would violate the no-placeholder
+law. ALSO this cycle (post-deploy join-pro QA): theme sitewide
+!important heading/link rules bled into the page - patched the page's
+own CSS with matching !important (hero h1 cream, featured card title,
+CTA colors, sponsor band button). Desktop + 390px mobile
+screenshot-verified clean.
+
 ## 2026-07-07 (24) - v1.72.50 /join-pro/ freed from the theme's hardcoded template
 Marathon sweep found /join-pro/ as the one failing page (hero text
 collision behind a glass panel, dark-on-dark card titles, no

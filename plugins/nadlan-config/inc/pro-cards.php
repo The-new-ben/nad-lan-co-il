@@ -49,6 +49,14 @@ if ( ! function_exists( 'nadlan_procard_default_map' ) ) {
 	}
 }
 
+if ( ! function_exists( 'nadlan_procard_domain_labels' ) ) {
+	/* sponsorable content domains: profession KEY => human label. One source of
+	 * truth for the /advertise/ picker AND the advertiser-center status line. */
+	function nadlan_procard_domain_labels() {
+		return array( 'lawyer' => 'משפט ומיסוי', 'mashkanta' => 'משכנתאות ומימון', 'shamai' => 'שמאות', 'bedek_bait' => 'בדק בית', 'architect' => 'תכנון ואדריכלות', 'kablan' => 'בנייה והתחדשות', 'metavech' => 'תיווך', 'property_manager' => 'ניהול נכסים' );
+	}
+}
+
 if ( ! function_exists( 'nadlan_procard_signals' ) ) {
 	function nadlan_procard_signals( $post_id ) {
 		$sig = array();
@@ -286,7 +294,7 @@ add_filter( 'the_content', function ( $content ) {
 	$price = wp_kses_post( $prod->get_price_html() );
 	$cart  = esc_url( add_query_arg( array( 'add-to-cart' => $product ), wc_get_cart_url() ) );
 	// values = profession KEYS (the same tokens the boost check intersects)
-	$doms  = array( 'lawyer' => 'משפט ומיסוי', 'mashkanta' => 'משכנתאות ומימון', 'shamai' => 'שמאות', 'bedek_bait' => 'בדק בית', 'architect' => 'תכנון ואדריכלות', 'kablan' => 'בנייה והתחדשות', 'metavech' => 'תיווך', 'property_manager' => 'ניהול נכסים' );
+	$doms  = nadlan_procard_domain_labels();
 	$chips = '';
 	foreach ( $doms as $k => $d ) { $chips .= '<label class="nlspon-chip"><input type="checkbox" value="' . esc_attr( $k ) . '"><span>' . esc_html( $d ) . '</span></label>'; }
 	$html = '<section class="nlspon" id="nlspon" dir="rtl" data-cart="' . $cart . '">
