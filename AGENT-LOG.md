@@ -1,5 +1,20 @@
 # AGENT-LOG - the God brain (append-only, newest on top)
 
+## 2026-07-07 (19) - v1.72.45 THE PER-APARTMENT BROCHURE (world gap #2)
+inc/brochure.php: GET /nadlan/v1/brochure?p=<project>&u=<unit>&lang=he|en
+renders a print-ready branded one-pager per apartment (browser prints to
+PDF - zero server deps, works on uPress): gold band, Frank Ruhl title,
+model render (contain on ink), apartment facts grid, honest price
+estimate + mortgage line (70%/25y/5%, 'אומדן בלבד'), FULL disclaimer
+(not an offer, subject to sale plans), deep link back to the SAME unit
+selected in 3D (the ?unit= deep-links already existed - task #21 legacy),
+date stamp, noindex. MONETIZATION: project_brochure_logo meta = paid
+developer logo slot; nadlan_brochure_views counter per project feeds the
+analytics dashboard (enhancement #8). ENGINE: btn_brochure link under the
+RFP button in the unit panel (i18n he+en; fr/ru fall back to en);
+panelBody now scopes p=project(); wp_id + brochure_endpoint exposed in
+engine config. Additive only.
+
 ## 2026-07-07 (18) - v1.72.44 FILTER THE BUILDING (world-gap #1, v1)
 The first of the 3 world-competitor gaps closed at v1 level: the engine's
 inventory filter (all/available/3/4/5 rooms) is now FUSED into the 3D
