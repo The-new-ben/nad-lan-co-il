@@ -1,5 +1,17 @@
 # AGENT-LOG - the God brain (append-only, newest on top)
 
+## 2026-07-07 (30) - v1.72.59 monthly pro stats email (BUILT, sending OFF)
+Retention moat completed: inc/pro-stats-email.php composes the monthly
+honest report per claimed card (views, leads, content impressions,
+sponsorship status + renewal path, advertiser-center CTA). OWNER LAW
+HONORED - emails LAST: wp_mail path is gated behind
+nadlan_pro_stats_email_enabled ('0' by default, cron only schedules
+when flipped, unschedules when off), per-user optout meta respected.
+Verification WITHOUT sending: admin-gated GET
+/nadlan/v1/pro-stats-preview?card=<id> returns the rendered HTML.
+When the owner is ready (after deliverability/SMTP work), flip the
+option to '1' - nothing else needed.
+
 ## 2026-07-07 (29) - v1.72.58 studio QA round + WORLD-SCAN RESEARCH FILED
 Live E2E both viewports (real clicks): studio opens from panel, 4 items
 incl. wheelchair circle, drag persists (440-byte store), notes persist,
