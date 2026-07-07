@@ -287,7 +287,7 @@
       '<div class="nl-grid2">' +
         stat(t("panel_rooms"), u.rooms) + stat(t("panel_sqm"), u.sqm + " " + t("sqm_unit")) +
         stat(t("panel_balcony"), u.balcony ? (u.balcony + " " + t("sqm_unit")) : "-") + stat(t("panel_view"), viewText(u) || dirLabel(u.dir)) +
-      "</div>" + scarcityLine(u) + mortgageStrip(u) +
+      "</div>" + sunLine(u) + scarcityLine(u) + mortgageStrip(u) +
       '<div class="nl-tabs" role="tablist">' +
         '<button class="nl-tab" role="tab" data-act="tab" data-id="plan" aria-selected="' + (state.tab === "plan") + '">' + esc(t("tab_plan")) + '</button>' +
         '<button class="nl-tab" role="tab" data-act="tab" data-id="view" aria-selected="' + (state.tab === "view") + '">' + esc(t("tab_view")) + '</button>' +
@@ -305,6 +305,11 @@
       '<button class="nl-btn nl-btn--accent nl-btn--block" style="margin-top:9px" data-act="scroll" data-id="inquiry">' + esc(t("btn_inquire")) + " · " + esc(t("unit_short", { label: u.label, floor: u.floor })) + "</button>";
   }
   function stat(k, v) { return '<div class="nl-stat"><div class="k">' + esc(k) + '</div><div class="v">' + esc(v) + "</div></div>"; }
+  function sunLine(u) {
+    var h = sunHours(u);
+    if (h === null || h <= 0) return "";
+    return '<div class="nl-sun">&#9728; ' + esc(t("sun_hours", { h: h })) + '<span class="nl-sun__note">' + esc(t("sun_note")) + "</span></div>";
+  }
   /* honest scarcity (booking-law): computed from the real inventory array,
      stated plainly, no timers. The cohort link fires the facade filter so
      hesitation about THIS unit becomes a look at its real alternatives. */
@@ -812,10 +817,35 @@
     return '<div class="nl-sticky" id="nl-sticky"><button class="nl-sticky__main" data-act="scroll" data-id="inquiry"><span>' + svg("phone", 16) + '</span><span>' + esc(t("sticky_cta")) + '<span class="nl-sticky__ctx" id="nl-stickyctx"></span></span></button>' + wa + "</div>";
   }
 
-  /* compare tray */
+  /* compare tray - top pick ranked with TOPSIS (Hwang & Yoon 1981):
+     vector-normalized closeness to the ideal over sqm, floor and balcony
+     (equal weights, all benefit criteria; price joins when all have one). */
+  function topsisTop(ids) {
+    var us = ids.map(unit).filter(Boolean); if (us.length < 2) return null;
+    var crit = [
+      function (u) { return Number(u.sqm) || 0; },
+      function (u) { return Number(u.floor) || 0; },
+      function (u) { return Number(u.balcony) || 0; }
+    ];
+    var scores = us.map(function () { return { p: 0, m: 0 }; });
+    crit.forEach(function (get) {
+      var vals = us.map(get), norm = Math.sqrt(vals.reduce(function (a, v) { return a + v * v; }, 0)) || 1;
+      var nv = vals.map(function (v) { return v / norm; });
+      var best = Math.max.apply(null, nv), worst = Math.min.apply(null, nv);
+      nv.forEach(function (v, i) { scores[i].p += (v - best) * (v - best); scores[i].m += (v - worst) * (v - worst); });
+    });
+    var top = null, topc = -1;
+    scores.forEach(function (sc, i) {
+      var den = Math.sqrt(sc.p) + Math.sqrt(sc.m);
+      var c = den ? Math.sqrt(sc.m) / den : 0;
+      if (c > topc) { topc = c; top = us[i].id; }
+    });
+    return top;
+  }
   function compareTray() {
     if (!state.compare.length) return '<div class="nl-compare" id="nl-compare"></div>';
-    var items = state.compare.map(function (id) { var u = unit(id); return u ? '<span class="nl-cmpitem"><b>' + esc(u.label) + "</b> " + esc(roomsLabel(u.rooms)) + " · " + esc(u.sqm + t("sqm_unit")) + ' <button data-act="compare" data-id="' + esc(id) + '" aria-label="remove">×</button></span>' : ""; }).join("");
+    var top = topsisTop(state.compare);
+    var items = state.compare.map(function (id) { var u = unit(id); return u ? '<span class="nl-cmpitem' + (id === top && state.compare.length > 1 ? " is-top" : "") + '">' + (id === top && state.compare.length > 1 ? '<i class="nl-cmptop">★ ' + esc(t("compare_top")) + "</i>" : "") + '<b>' + esc(u.label) + "</b> " + esc(roomsLabel(u.rooms)) + " · " + esc(u.sqm + t("sqm_unit")) + ' <button data-act="compare" data-id="' + esc(id) + '" aria-label="remove">×</button></span>' : ""; }).join("");
     return '<div class="nl-compare is-on" id="nl-compare"><div class="nl-wrap nl-compare__row"><b>' + esc(t("compare_title")) + '</b><div class="nl-compare__items">' + items + '</div><button class="nl-btn nl-btn--sm nl-btn--ghost" data-act="compare-clear" style="color:#cfc8b6;border-color:rgba(242,236,222,.2)">' + esc(t("compare_clear")) + '</button><button class="nl-btn nl-btn--sm nl-btn--accent" data-act="scroll" data-id="inquiry">' + esc(t("compare_inquire")) + "</button></div></div>";
   }
 
@@ -921,6 +951,23 @@
     });
   }
   var DIR_BEARING = { north: 0, "north-east": 45, east: 90, "south-east": 135, south: 180, "south-west": 225, west: 270, "north-west": 315 };
+  /* Direct-sun estimate (solar geometry per Michalsky 1988; exposure language
+     per EN 17037): equinox reference day, declination 0, 5-degree low-sun
+     cutoff, numeric integration in 6-minute steps. Geometric only - the
+     label says so: no surrounding-obstruction modeling. */
+  function sunHours(u) {
+    var k = dirKey(u.dir); if (!k || !(k in DIR_BEARING)) return null;
+    var p = project(), lat = (p.geo && Number(p.geo.lat)) || 32.08;
+    var A = DIR_BEARING[k] * Math.PI / 180, phi = lat * Math.PI / 180, mins = 0;
+    for (var m = 4 * 60; m <= 20 * 60; m += 6) {
+      var H = (m / 60 - 12) * 15 * Math.PI / 180;
+      var sinEl = Math.cos(phi) * Math.cos(H);
+      if (sinEl <= Math.sin(5 * Math.PI / 180)) continue;
+      var azn = Math.PI + Math.atan2(Math.sin(H), Math.cos(H) * Math.sin(phi));
+      if (Math.cos(azn - A) > 0) mins += 6;
+    }
+    return Math.round(mins / 30) / 2;
+  }
   var viewCone = null;
   /* A translucent terracotta cone anchored on the building pin, rotated with the
      terrain (rotationAlignment map), pointing where the selected apartment looks. */

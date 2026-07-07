@@ -1,5 +1,27 @@
 # AGENT-LOG - the God brain (append-only, newest on top)
 
+## 2026-07-07 (33) - v1.72.62 SCIENCE LAYER: sun-hours + TOPSIS top pick
+From the literature sweep (5 agents, all citations verified against
+primary sources): (1) PER-APARTMENT DIRECT-SUN ESTIMATE in the unit
+panel - solar geometry (declination-0 equinox day, 5-degree cutoff,
+6-minute numeric integration; algorithm family: Michalsky 1988, Solar
+Energy 40(3); exposure framing: EN 17037 'daylight in buildings')
+computed from the unit's REAL direction + project latitude. Honest
+label: geometric only, no surrounding shading. Physics sanity: south
+facade ~11h, east ~5.5h, north ~0h at equinox - correct. (2) TOPSIS
+TOP PICK in the compare tray (Hwang & Yoon 1981, LNEMS 186):
+vector-normalized closeness over sqm/floor/balcony, equal weights,
+gold star 'הבולטת לפי שטח, קומה ומרפסת' - transparent criteria named
+in the label. ALSO VALIDATED BY THE SWEEP: our honest-scarcity stance
+is exactly the evidence-based optimum (Barton 2022 meta-analysis:
+scarcity works; Tuncer 2023 + Luguri 2021: fabricated cues destroy
+trust - credibility is the moderator; Mathur 2019: 581 sites caught
+with fake low-stock messages - we are structurally not them). Brain
+design also confirmed against Huang et al. ICLR 2024 (intrinsic
+self-correction can degrade): our refine uses an explicit external
+rubric + never-regress gate. Full citation bank incoming to
+docs/research/ai-and-science-citations.md.
+
 ## 2026-07-07 (32) - v1.72.61 THE AI BRAIN (paper-backed prompting pipeline)
 Owner order: 'make the AI brain much, much smarter, prompted inside...
 get into scientific papers'. NEW inc/ai-brain.php - four primitives on
