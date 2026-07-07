@@ -411,6 +411,8 @@ add_action( 'rest_api_init', function () {
 				return new WP_REST_Response( array( 'ok' => false, 'error' => 'AI_DISABLED', 'message' => nadlan_ai_missing_message() ), 503 );
 			}
 			$sys = nadlan_ai_system_prompt( $chunks );
+			// the AI-brain constitution: grounding-only answers, honesty laws
+			if ( function_exists( 'nadlan_brain_house_rules' ) ) { $sys .= nadlan_brain_house_rules(); }
 			$out_text = nadlan_ai_chat( $sys, $clean, 800 );
 			if ( is_wp_error( $out_text ) ) {
 				$status = in_array( $out_text->get_error_code(), array( 'disabled', 'nokey', 'ai_daily_cap', 'ai_global_cap' ), true ) ? 503 : 502;
