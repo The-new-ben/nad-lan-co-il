@@ -145,22 +145,39 @@ if ( ! function_exists( 'nadlan_procard_html' ) ) {
 		$rate  = (float) get_post_meta( $id, 'rating', true );
 		$rcnt  = (int) get_post_meta( $id, 'reviews_count', true );
 		$phone = preg_replace( '/[^0-9+]/', '', (string) get_post_meta( $id, 'phone', true ) );
+		$wa    = $phone ? ( '0' === $phone[0] ? '972' . substr( $phone, 1 ) : ltrim( $phone, '+' ) ) : '';
 		$demo  = $rate && ! get_post_meta( $id, 'reviews_verified', true );
 		$verified = get_post_meta( $id, 'claim_status', true ) === 'verified';
+		$reg   = (string) get_post_meta( $id, 'registry_number', true );
+		$cls   = (string) get_post_meta( $id, 'classification', true );
+		$bio   = (string) get_post_meta( $id, 'description', true );
+		if ( '' === $bio ) { $bio = wp_strip_all_tags( (string) $p->post_content ); }
+		$bio   = $bio ? wp_trim_words( $bio, 20, '...' ) : '';
+		// visual star fill (RTL: stars fill from the right, so gradient runs to-left)
+		$fill  = max( 0, min( 100, $rate * 20 ) );
+		$facts = array_filter( array( $city, $cls, $reg ? 'רישיון ' . $reg : '' ) );
 		ob_start(); ?>
-<div class="nlprc<?php echo $compact ? ' nlprc--sm' : ''; ?>" dir="rtl">
+<div class="nlprc<?php echo $compact ? ' nlprc--sm' : ''; ?><?php echo $spon ? ' nlprc--spon' : ''; ?>" dir="rtl">
 	<?php if ( $spon || ( 'free' !== $tier && $tier ) ) : ?><span class="nlprc-spon">ממומן</span><?php endif; ?>
 	<a class="nlprc-media" href="<?php echo esc_url( get_permalink( $id ) ); ?>"<?php echo $img ? ' style="background-image:url(' . esc_url( $img ) . ')"' : ''; ?>>
 		<?php if ( ! $img ) : ?><span class="nlprc-mono"><?php echo esc_html( mb_substr( get_the_title( $id ), 0, 1 ) ); ?></span><?php endif; ?>
 	</a>
 	<div class="nlprc-bd">
-		<span class="nlprc-prof" style="color:<?php echo esc_attr( $pm['color'] ?? '#9C7A3C' ); ?>"><?php echo esc_html( $pm['label'] ?? '' ); ?><?php echo $verified ? ' <i class="nlprc-ver">✓ מאומת</i>' : ''; ?></span>
+		<span class="nlprc-prof"><i class="nlprc-pill" style="color:<?php echo esc_attr( $pm['color'] ?? '#9C7A3C' ); ?>;border-color:currentColor"><?php echo esc_html( $pm['label'] ?? '' ); ?></i><?php echo $verified ? ' <i class="nlprc-ver">✓ מאומת</i>' : ''; ?></span>
 		<a class="nlprc-name" href="<?php echo esc_url( get_permalink( $id ) ); ?>"><?php echo esc_html( get_the_title( $id ) ); ?></a>
-		<span class="nlprc-meta"><?php echo esc_html( $city ); ?><?php if ( $rate ) : ?><?php echo $city ? ' · ' : ''; ?><b>★ <?php echo esc_html( number_format( $rate, 1 ) ); ?></b> (<?php echo (int) $rcnt; ?>)<?php echo $demo ? ' <i class="nlprc-demo">נתוני דוגמה</i>' : ''; ?><?php endif; ?></span>
+		<?php if ( $rate ) : ?>
+		<span class="nlprc-stars" aria-label="דירוג <?php echo esc_attr( number_format( $rate, 1 ) ); ?> מתוך 5">
+			<i class="nlprc-starrow" style="background:linear-gradient(to left,#C99C49 <?php echo esc_attr( $fill ); ?>%,#DCD6C8 <?php echo esc_attr( $fill ); ?>%)">★★★★★</i>
+			<b><?php echo esc_html( number_format( $rate, 1 ) ); ?></b><span class="nlprc-rcnt">(<?php echo (int) $rcnt; ?>)</span><?php echo $demo ? '<i class="nlprc-demo">נתוני דוגמה</i>' : ''; ?>
+		</span>
+		<?php endif; ?>
+		<?php if ( $facts ) : ?><span class="nlprc-meta"><?php echo esc_html( implode( ' · ', $facts ) ); ?></span><?php endif; ?>
+		<?php if ( ! $compact && $bio ) : ?><p class="nlprc-bio"><?php echo esc_html( $bio ); ?></p><?php endif; ?>
 		<?php if ( ! $compact ) : ?>
 		<div class="nlprc-cta">
+			<?php if ( $wa ) : ?><a class="nlprc-wa" href="https://wa.me/<?php echo esc_attr( $wa ); ?>" target="_blank" rel="noopener"><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm5.4 14.1c-.2.7-1.3 1.3-1.9 1.4-.5.1-1.1.1-1.8-.1-.4-.1-1-.3-1.7-.6-3-1.3-4.9-4.3-5.1-4.5-.1-.2-1.2-1.6-1.2-3s.7-2.1 1-2.4c.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.4l.9 2.1c.1.2.1.4 0 .6l-.4.6-.5.5c-.2.2-.3.4-.1.7.2.3.8 1.3 1.7 2.1 1.2 1.1 2.2 1.4 2.5 1.5.3.1.5.1.7-.1l.9-1c.2-.3.4-.2.7-.1l2 1c.3.1.5.2.6.4.1.1.1.7-.1 1.3Z"/></svg> וואטסאפ</a><?php endif; ?>
+			<?php if ( $phone ) : ?><a class="nlprc-call" href="tel:<?php echo esc_attr( $phone ); ?>">התקשרו</a><?php endif; ?>
 			<a class="nlprc-go" href="<?php echo esc_url( get_permalink( $id ) ); ?>">לכרטיס המלא ←</a>
-			<?php if ( $phone ) : ?><a class="nlprc-call" href="tel:<?php echo esc_attr( $phone ); ?>">התקשרו עכשיו</a><?php endif; ?>
 		</div>
 		<?php endif; ?>
 	</div>
@@ -198,31 +215,40 @@ add_filter( 'the_content', function ( $content ) {
 		$content .= '<aside class="nlprc-row-wrap" aria-label="עוד מומחים בתחום"><p class="nlprc-eyebrow">עוד מומחים בתחום</p><div class="nlprc-row">' . $row . '</div></aside>';
 	}
 	$css = '<style>
-.nlprc-slot{margin:26px 0}
+.nlprc-slot{margin:28px 0}
 .nlprc-eyebrow{font:700 11.5px/1 Heebo,sans-serif;letter-spacing:.12em;color:#9C7A3C;margin:0 0 8px}
-.nlprc{position:relative;display:flex;gap:16px;align-items:stretch;background:linear-gradient(135deg,#fff,#FBF8F2);border:1px solid #D6C189;border-radius:16px;padding:14px;box-shadow:0 16px 38px -26px rgba(27,26,23,.4)}
-.nlprc-spon{position:absolute;top:10px;inset-inline-end:12px;font:600 10.5px/1 Heebo,sans-serif;color:#6D665C;background:#F3EEE3;border:1px solid #E2DCD0;border-radius:6px;padding:4px 7px}
-.nlprc-media{flex:0 0 92px;height:92px;border-radius:12px;background:#14130F center/cover no-repeat;display:flex;align-items:center;justify-content:center;text-decoration:none;align-self:center}
-.nlprc-mono{font:700 2rem/1 "Frank Ruhl Libre",serif;color:#E9D9A8}
-.nlprc-bd{display:flex;flex-direction:column;gap:3px;min-width:0;justify-content:center}
-.nlprc-prof{font:700 11.5px/1.2 Heebo,sans-serif;letter-spacing:.06em}
+.nlprc{position:relative;display:flex;gap:18px;align-items:stretch;background:linear-gradient(150deg,#fff 55%,#FBF7EE);border:1px solid #E2DCD0;border-radius:18px;padding:18px;box-shadow:0 22px 46px -28px rgba(27,26,23,.45);overflow:hidden}
+.nlprc--spon{border-color:#D6C189}
+.nlprc--spon::before{content:"";position:absolute;inset-inline:0;top:0;height:3px;background:linear-gradient(90deg,#C99C49,#E9D9A8,#C99C49)}
+.nlprc-spon{position:absolute;top:12px;inset-inline-end:14px;font:600 10.5px/1 Heebo,sans-serif;color:#8A6B2F;background:#F7F1E3;border:1px solid #E2D4B0;border-radius:6px;padding:4px 8px}
+.nlprc-media{flex:0 0 118px;min-height:118px;border-radius:14px;background:#14130F center/cover no-repeat;display:flex;align-items:center;justify-content:center;text-decoration:none!important;align-self:stretch;box-shadow:inset 0 0 0 1px rgba(233,217,168,.25)}
+.nlprc-mono{font:700 2.6rem/1 "Frank Ruhl Libre",serif;color:#E9D9A8}
+.nlprc-bd{display:flex;flex-direction:column;gap:4px;min-width:0;justify-content:center;flex:1}
+.nlprc-prof{display:flex;align-items:center;gap:8px;font:700 11.5px/1.2 Heebo,sans-serif}
+.nlprc-pill{font-style:normal;border:1px solid;border-radius:999px;padding:4px 10px;letter-spacing:.05em;background:rgba(255,255,255,.6)}
 .nlprc-ver{font-style:normal;color:#517048;font-weight:700}
-.nlprc-name{font-family:"Frank Ruhl Libre",serif;font-size:1.25rem;color:#1B1A17;text-decoration:none;font-weight:700}
+.nlprc-name{font-family:"Frank Ruhl Libre",serif;font-size:1.45rem;line-height:1.2;color:#1B1A17;text-decoration:none!important;font-weight:700}
 .nlprc-name:hover{color:#9C7A3C}
-.nlprc-meta{font:400 12.5px/1.4 Heebo,sans-serif;color:#6D665C}
-.nlprc-meta b{color:#9C7A3C}
-.nlprc-demo{font-style:normal;font-size:10.5px;color:#6D665C;background:#F3EEE3;border-radius:5px;padding:2px 5px}
-.nlprc-cta{display:flex;gap:8px;margin-top:8px;flex-wrap:wrap}
-.nlprc-go{font:700 13px/1 Heebo,sans-serif;color:#FAF7F1;background:#1B1A17;border-radius:9px;padding:10px 14px;text-decoration:none}
-.nlprc-go:hover{background:#9C7A3C;color:#FAF7F1}
-.nlprc-call{font:700 13px/1 Heebo,sans-serif;color:#1B1A17;border:1.5px solid #9C7A3C;border-radius:9px;padding:9px 14px;text-decoration:none}
-.nlprc-row-wrap{margin:30px 0 8px}
-.nlprc-row{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:10px}
-.nlprc--sm{padding:10px;gap:10px}
-.nlprc--sm .nlprc-media{flex-basis:56px;height:56px;border-radius:10px}
-.nlprc--sm .nlprc-name{font-size:1rem}
-.nlprc--sm .nlprc-mono{font-size:1.3rem}
-@media(max-width:560px){.nlprc{padding:12px}.nlprc-media{flex-basis:76px;height:76px}.nlprc-name{font-size:1.12rem}.nlprc-cta a{flex:1;text-align:center}}
+.nlprc-stars{display:flex;align-items:center;gap:6px;font:600 13px/1 Heebo,sans-serif;color:#1B1A17}
+.nlprc-starrow{font-style:normal;font-size:15px;letter-spacing:2px;-webkit-background-clip:text!important;background-clip:text!important;-webkit-text-fill-color:transparent;color:transparent}
+.nlprc-rcnt{color:#6D665C;font-weight:400}
+.nlprc-meta{font:400 12.5px/1.5 Heebo,sans-serif;color:#6D665C}
+.nlprc-bio{font:400 13.5px/1.6 Heebo,sans-serif;color:#51483A;margin:2px 0 0;max-width:58ch}
+.nlprc-demo{font-style:normal;font-size:10.5px;color:#6D665C;background:#F3EEE3;border-radius:5px;padding:2px 6px}
+.nlprc-cta{display:flex;gap:9px;margin-top:12px;flex-wrap:wrap}
+.nlprc-cta a{display:inline-flex;align-items:center;justify-content:center;gap:6px;font:700 13px/1 Heebo,sans-serif;border-radius:10px;padding:11px 16px;text-decoration:none!important;transition:filter .15s}
+.nlprc-cta a:hover{filter:brightness(1.08)}
+.nlprc-wa{background:#1f8a4c;color:#fff!important}
+.nlprc-call{background:#1B1A17;color:#FAF7F1!important}
+.nlprc-go{border:1.5px solid #9C7A3C;color:#8A6B2F!important;background:#fff}
+.nlprc-row-wrap{margin:32px 0 8px}
+.nlprc-row{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:12px}
+.nlprc--sm{padding:12px;gap:12px}
+.nlprc--sm .nlprc-media{flex-basis:60px;min-height:60px;border-radius:11px;align-self:center}
+.nlprc--sm .nlprc-name{font-size:1.05rem}
+.nlprc--sm .nlprc-mono{font-size:1.4rem}
+.nlprc--sm .nlprc-starrow{font-size:12.5px;letter-spacing:1px}
+@media(max-width:560px){.nlprc{padding:14px;gap:13px}.nlprc-media{flex-basis:84px;min-height:84px}.nlprc-name{font-size:1.2rem}.nlprc-cta{display:grid;grid-template-columns:1fr 1fr;width:100%}.nlprc-cta .nlprc-go{grid-column:1/-1}}
 </style>';
 	return $content . $css;
 }, 14 );
