@@ -135,3 +135,21 @@ add_action( 'woocommerce_before_calculate_totals', function ( $cart ) {
 		if ( (int) ( $item['product_id'] ?? 0 ) === 476 ) { $cart->apply_coupon( 'firstmonth' ); return; }
 	}
 }, 20 );
+
+/* ---------------- 5) /join-pro/ belongs to the CMS again ----------------
+ * The theme's functions.php (premium-revenue era, June 2026) still swaps the
+ * whole join-pro page for a hardcoded nlrx pricing template via a the_content
+ * filter at priority 98 - so editor changes to the page never render. The page
+ * is now authored in the CMS (DNA rebuild 2026-07-07). At priority 99, restore
+ * the real post content - but only while it carries the authored-page marker,
+ * so a blanked page still falls back to the theme template instead of showing
+ * nothing. */
+add_filter( 'the_content', function ( $content ) {
+	if ( is_page( 'join-pro' ) && in_the_loop() && is_main_query() ) {
+		$raw = get_post_field( 'post_content', get_queried_object_id() );
+		if ( $raw && false !== strpos( $raw, 'nadlan-joinpro' ) ) {
+			return do_blocks( $raw );
+		}
+	}
+	return $content;
+}, 99 );
