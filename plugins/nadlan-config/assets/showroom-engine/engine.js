@@ -246,6 +246,7 @@
 
     return '<div class="nl-theater">' +
       '<div class="nl-theater__top"><div class="nl-theater__title"><span class="e">' + esc(t("theater_eyebrow")) + "</span><h2>" + esc(t("theater_title")) + "</h2></div>" +
+        (p.model_glb && SR.config.studio !== "off" ? '<button class="nl-cotour-btn nl-studio-launch" data-act="studio-any" type="button">' + esc(t("nlst_open")) + "</button>" : "") +
         (p.model_glb ? '<button class="nl-cotour-btn" data-act="cotour" type="button">' + esc(t("cotour_start")) + "</button>" : "") +
         (p.model_glb ? '<div class="nl-filters nl-tabs nl-filters--stage nl-light" role="group" aria-label="light">' + ["day","dusk","night"].map(function (m) {
           return '<button data-act="light" data-id="' + m + '" aria-pressed="' + (state.light === m) + '">' + esc(t("light_" + m)) + "</button>";
@@ -482,7 +483,10 @@
     var mv = document.getElementById("nl-mv");
     var map = { day: ["1.02", "0.55"], dusk: ["0.5", "0.3"], night: ["0.22", "0.12"] };
     var v = map[state.light] || map.day;
-    if (mv) { mv.setAttribute("exposure", v[0]); mv.setAttribute("shadow-intensity", v[1]); }
+    // owner 2026-07-07: exposure alone reads as "nothing changed" - a CSS
+    // filter on the viewer makes dusk/night unmistakable at a glance
+    var flt = { day: "", dusk: "sepia(.35) saturate(.85) brightness(.8) contrast(1.04)", night: "brightness(.5) saturate(.6) contrast(1.08)" };
+    if (mv) { mv.setAttribute("exposure", v[0]); mv.setAttribute("shadow-intensity", v[1]); mv.style.filter = flt[state.light] || ""; }
     var stage = mv && mv.closest(".nl-stagewrap") || mv && mv.parentElement;
     if (stage) {
       stage.classList.toggle("nl-light--dusk", state.light === "dusk");
@@ -1155,6 +1159,10 @@
     else if (act === "cotour") { cotourStart(); }
     else if (act === "resetview") { resetView(); }
     else if (act === "studio") { openStudio(id); }
+    else if (act === "studio-any") {
+      var avail = units().filter(function (x) { return x.status === "available"; });
+      openStudio(state.unitId || (avail[0] || units()[0] || {}).id);
+    }
     else if (act === "fav") { e.stopPropagation(); toggleFav(id); }
     else if (act === "compare") { e.stopPropagation(); toggleCompare(id); }
     else if (act === "compare-clear") { state.compare = []; refreshCompare(); }
