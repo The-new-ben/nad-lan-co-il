@@ -45,6 +45,21 @@ if ( ! function_exists( 'nadlan_procard_default_map' ) ) {
 			'ניהול'    => array( 'property_manager' ), 'management' => array( 'property_manager' ),
 			'מדידה'    => array( 'surveyor' ), 'טאבו' => array( 'lawyer', 'surveyor' ), 'רישום' => array( 'lawyer' ),
 			'חשבונאות' => array( 'accountant' ),
+			/* the encyclopedia's own enc_domain slugs (live vocabulary, 2026-07-07):
+			 * without these, most term pages emit NO signal the Hebrew tokens catch
+			 * and the business layer silently never renders. */
+			'standards-regulation'   => array( 'engineer', 'lawyer' ),
+			'tools-hardware'         => array( 'kablan' ),
+			'appraisal-investment'   => array( 'shamai', 'mashkanta', 'accountant' ),
+			'construction-materials' => array( 'kablan', 'engineer' ),
+			'planning-zoning'        => array( 'urban_planner', 'architect', 'lawyer' ),
+			'trades-roles'           => array( 'kablan' ),
+			'legal-technical'        => array( 'lawyer' ),
+			'methods-software'       => array( 'kablan', 'engineer' ),
+			'structural-engineering' => array( 'engineer' ),
+			'interior-design'        => array( 'interior_designer', 'architect' ),
+			'architecture'           => array( 'architect' ),
+			'people-organizations'   => array( 'kablan', 'metavech' ),
 		);
 	}
 }
