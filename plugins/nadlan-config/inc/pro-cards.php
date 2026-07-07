@@ -236,7 +236,7 @@ add_filter( 'the_content', function ( $content ) {
 .nlprc--spon{border-color:#D6C189}
 .nlprc--spon::before{content:"";position:absolute;inset-inline:0;top:0;height:3px;background:linear-gradient(90deg,#C99C49,#E9D9A8,#C99C49)}
 .nlprc-spon{position:absolute;top:12px;inset-inline-end:14px;font:600 10.5px/1 Heebo,sans-serif;color:#8A6B2F;background:#F7F1E3;border:1px solid #E2D4B0;border-radius:6px;padding:4px 8px}
-.nlprc-media{flex:0 0 118px;min-height:118px;border-radius:14px;background:#14130F center/cover no-repeat;display:flex;align-items:center;justify-content:center;text-decoration:none!important;align-self:stretch;box-shadow:inset 0 0 0 1px rgba(233,217,168,.25)}
+.nlprc-media{flex:0 0 118px;height:118px;border-radius:14px;background:#14130F center/cover no-repeat;display:flex;align-items:center;justify-content:center;text-decoration:none!important;align-self:center;box-shadow:inset 0 0 0 1px rgba(233,217,168,.25)}
 .nlprc-mono{font:700 2.6rem/1 "Frank Ruhl Libre",serif;color:#E9D9A8}
 .nlprc-bd{display:flex;flex-direction:column;gap:4px;min-width:0;justify-content:center;flex:1}
 .nlprc-prof{display:flex;align-items:center;gap:8px;font:700 11.5px/1.2 Heebo,sans-serif}
@@ -263,7 +263,7 @@ add_filter( 'the_content', function ( $content ) {
 .nlprc--sm .nlprc-name{font-size:1.05rem}
 .nlprc--sm .nlprc-mono{font-size:1.4rem}
 .nlprc--sm .nlprc-starrow{font-size:12.5px;letter-spacing:1px}
-@media(max-width:560px){.nlprc{padding:14px;gap:13px}.nlprc-media{flex-basis:84px;min-height:84px}.nlprc-name{font-size:1.2rem}.nlprc-cta{display:grid;grid-template-columns:1fr 1fr;width:100%}.nlprc-cta .nlprc-go{grid-column:1/-1}}
+@media(max-width:560px){.nlprc{padding:14px;gap:13px}.nlprc-media{flex-basis:84px;height:84px}.nlprc-name{font-size:1.2rem}.nlprc-cta{display:grid;grid-template-columns:1fr 1fr;width:100%}.nlprc-cta .nlprc-go{grid-column:1/-1}}
 </style>';
 	return $content . $css;
 }, 14 );

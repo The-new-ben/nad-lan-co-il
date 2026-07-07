@@ -201,6 +201,11 @@ if ( ! function_exists( 'nadlan_showroom_engine_config' ) ) {
 			'default_lang'   => 'he',
 			'languages'      => array( 'he', 'en', 'fr', 'ru', 'ar' ),
 			'rtl_languages'  => array( 'he', 'ar' ),
+			'home_url'       => esc_url_raw( home_url() ),
+			/* apartment studio: modular per the developer's package. Option is
+			 * the site default; a project can override via project_studio_mode
+			 * meta ('on'|'off'). */
+			'studio'         => in_array( (string) get_option( 'nadlan_studio_mode', 'on' ), array( 'on', 'off' ), true ) ? (string) get_option( 'nadlan_studio_mode', 'on' ) : 'on',
 		);
 	}
 }
@@ -289,6 +294,9 @@ if ( ! function_exists( 'nadlan_showroom_engine_shortcode' ) ) {
 		wp_enqueue_script( 'nadlan-engine-core', $base . 'engine.js', array( 'nadlan-engine-i18n' ), NADLAN_CONFIG_VERSION, true );
 		// buy-flow v1: "build me an offer" overlay (configure > capture > dispatch)
 		wp_enqueue_script( 'nadlan-engine-buyflow', $base . 'buyflow.js', array( 'nadlan-engine-core' ), NADLAN_CONFIG_VERSION, true );
+		// apartment studio: design-before-you-buy overlay (drag furniture,
+		// accessibility clearances, notes -> travels inside the RFP)
+		wp_enqueue_script( 'nadlan-engine-studio', $base . 'studio.js', array( 'nadlan-engine-core' ), NADLAN_CONFIG_VERSION, true );
 
 		// Always run the map bootstrap so missing tokens/coords render as visible failures.
 		$mapbox_deps = array( 'nadlan-engine-core' );

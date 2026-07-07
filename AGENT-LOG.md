@@ -1,5 +1,31 @@
 # AGENT-LOG - the God brain (append-only, newest on top)
 
+## 2026-07-07 (28) - v1.72.55-57 OWNER MARATHON: pro cards 10x + APARTMENT STUDIO
+Owner went full marathon ('you are now the owner... roast yourself
+every cycle'). CYCLE A - pro cards 10x (v1.72.55): mini-profile card -
+118px portrait w/ gold inset ring, profession pill, VISUAL star row
+(gradient clip, RTL fill), trust facts (city/classification/license),
+bio excerpt, WhatsApp+call+profile CTA row, sponsored gold top seam.
+ROAST FINDING (v1.72.56): the business layer was DEAD on ~200 term
+pages - the domain map never knew the encyclopedia's enc_domain slugs
+(methods-software, planning-zoning...) so match()=[] everywhere, AND my
+earlier 'verified' grep matched the THEME's nlpc- prefix (false
+positive). All 12 live slugs mapped -> cards render (83 markup hits vs
+0). LESSON: grep patterns must be exact class names, never prefixes
+shared with other systems. CYCLE B - APARTMENT STUDIO v1 (v1.72.57):
+design-before-you-buy overlay (studio.js): scaled schematic plan from
+the unit's REAL rooms/sqm (honest chip: not a sale plan), 14-item
+furniture catalog with real cm dims, drag/rotate/note/delete, a11y
+templates (150cm wheelchair turning circle, 80cm door clearance - SI
+1918 language), notes textarea, localStorage per unit, WhatsApp share
+of the full spec, video-call request (lead + wa.me), 'attach to offer
+request' reopens the RFP overlay and buyflow now embeds the studio
+JSON inside the RFP message - the contractor receives the buyer's
+plan. Modular: nadlan_studio_mode option ('on'/'off'), i18n HE+EN full
+(nlst_* keys, fallback covers fr/ru/ar UI). Monetization: the studio
+output rides the existing paid RFP funnel + directory link to
+architects/designers (procard supply side).
+
 ## 2026-07-07 (27) - v1.72.53+54 UX-MAX QA rounds (screenshot-caught)
 Live E2E on DUO (Playwright, real clicks): panel deep-link, WA share
 href, scarcity ('הדירה הזמינה האחרונה של 3 חדרים'), reset pill, chip

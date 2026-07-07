@@ -240,7 +240,10 @@
       message: JSON.stringify({
         kind: "rfp-v1", project: p ? p.slug : "", unit: u.id || "", label: u.label || "",
         floor: u.floor || "", rooms: u.rooms || "", sqm: u.sqm || "",
-        finish: state.finish, extras: extras, lang: LANG, url: location.href
+        finish: state.finish, extras: extras, lang: LANG, url: location.href,
+        // apartment-studio design travels inside the RFP so the contractor
+        // sees the buyer's furniture plan, clearances and special requests
+        studio: (window.NLStudio && p ? window.NLStudio.exportFor(p.slug, u.id || "") : null)
       })
     };
     fetch(SR.config.lead_endpoint, {
