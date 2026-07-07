@@ -1,5 +1,26 @@
 # AGENT-LOG - the God brain (append-only, newest on top)
 
+## 2026-07-07 (29) - v1.72.58 studio QA round + WORLD-SCAN RESEARCH FILED
+Live E2E both viewports (real clicks): studio opens from panel, 4 items
+incl. wheelchair circle, drag persists (440-byte store), notes persist,
+attach-to-offer opens buyflow with exportFor()=4 items + notes. Fixed
+from screenshots: items stacked at spawn -> 30cm cascade clamped to
+plan. RESEARCH PROOFS (5 parallel agents, all cited): SI 1918 numbers
+VERIFIED against gov.il standard PDFs (150cm circle Part1 2.7.4, 80cm
+door Part3.1 2.5.3, corridors 90/130, kitchen 150 between units);
+buying-UX patterns from Apple/Tesla configurators, Century Communities
+online buy w/ DocuSign, Airbnb total-price default (FTC), Baymard
+cart-abandonment numbers, Amazon/Lennar/Buildertrend milestone
+trackers, IKEA Kreativ design->cart, Edji (IL tenant-changes portal!),
+Buildertrend selections w/ running total. STUDIO v1.1 QUEUE (from
+research): wall-snap 15cm, live distance-to-wall labels, undo
+snapshots, red-flag doors<80cm, electrical-point icons priced,
+running-total options footer, server-side PDF of the design for the
+tenant-changes coordinator (Priority/Coralis compatible). NEXT MARATHON
+CYCLES: (a) milestone tracker היתר->טופס 4 (the 2-3yr retention engine
+Israeli buyers never get), (b) online reservation fee שריון דירה
+(Tesla/Celebration Homes pattern), (c) persistent all-in price bar.
+
 ## 2026-07-07 (28) - v1.72.55-57 OWNER MARATHON: pro cards 10x + APARTMENT STUDIO
 Owner went full marathon ('you are now the owner... roast yourself
 every cycle'). CYCLE A - pro cards 10x (v1.72.55): mini-profile card -
