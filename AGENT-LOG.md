@@ -1,5 +1,27 @@
 # AGENT-LOG - the God brain (append-only, newest on top)
 
+## 2026-07-07 (36) - v1.72.65-67 LISTING 3D actually renders (deep-verified fix)
+Owner: 'I open the listing, no 3D loaded, looks broken. Go 3-4 levels
+deep to check it really works.' Three iterations of real deep-verify:
+v1.72.65 removed a bad explicit camera-orbit (clamped the camera into
+empty space); v1.72.66 tried poster+reveal=interaction but
+model-viewer's poster attribute painted NOTHING (shadow default-poster
+part had background-image:none) so the box was an empty gradient before
+any click - the exact 'broken' the owner saw; v1.72.67 THE FIX:
+flagship poster as a plain CSS background on the container div behind a
+transparent reveal=auto viewer - paints instantly, model reveals on
+top when ready, fails OPEN if WebGL dies. SCREENSHOT-CONFIRMED: the
+twisting flagship tower renders in the listing 3D box with the honest
+chip 'המחשה כללית - לא הבניין של הנכס', floor badge, day/dusk/night.
+Also this arc: listing H1 (was missing, SEO); engine light modes now
+use CSS filters so dusk/night read at a glance (not an exposure
+whisper); studio launch button in the theater header (was buried
+behind unit selection). LESSON BURNED IN: model-viewer poster attr is
+unreliable - always back 3D with a CSS/img poster on the container,
+never the shadow poster part. Headless WebGL element-screenshots also
+lie (canvas capture race) - verify via shadowRoot canvas display AND a
+settled capture.
+
 ## 2026-07-07 (35) - v1.72.64 OWNER BUG REPORT round 1: listings 3D + visible sun + studio surfaced
 Owner clicked a regular listing: 'no 3D, looks broken'. DIAGNOSIS
 (live Playwright on bialik-rg-4r-demo): page renders (sketch plate,
