@@ -1,5 +1,21 @@
 # AGENT-LOG - the God brain (append-only, newest on top)
 
+## 2026-07-07 (27) - v1.72.53+54 UX-MAX QA rounds (screenshot-caught)
+Live E2E on DUO (Playwright, real clicks): panel deep-link, WA share
+href, scarcity ('הדירה הזמינה האחרונה של 3 חדרים'), reset pill, chip
+counts 5/4/1/2/2, tooltip ::before (content verified: '5 חדרים, קומה
+33, דרום-מערב, בעדיפות'), favorites chip appears on heart, recent strip
+after unit switch - all pass. FIXED from screenshots: (.53) recent
+pill carried the FULL SEO project name -> short name + CSS ellipsis;
+WA iconbtn underlined by theme anchor rule -> !important; #nlcta
+global CTA cluster collided with the engine sticky in the same corner
+-> body.nl-has-engine hides it (ONE contact bar law). (.54) recent
+strip now live-updates on selection via #nl-recentwrap (was
+next-render only); .nl-sticky__wa underline killed too (same theme
+bleed, second element). LESSON reinforced: theme anchor/heading rules
+with !important bleed into EVERY new engine element that is an <a> -
+new engine links must ship text-decoration:none!important from birth.
+
 ## 2026-07-07 (26) - v1.72.52 UX-MAX: booking-app patterns wired into the engine
 Owner order: 'scan all booking and similar apps... bring UX to max'.
 Research swept Booking/Airbnb (Baymard benchmark), airline+cinema seat

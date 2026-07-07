@@ -392,6 +392,7 @@
       rec.unshift({ p: state.projectKey, u: u.id, l: u.label, f: u.floor, r: u.rooms, n: String(projName()).split(" - ")[0],
         url: location.pathname + "?project=" + encodeURIComponent(state.projectKey) + "&unit=" + encodeURIComponent(u.id) + "&lang=" + encodeURIComponent(state.lang) });
       save("nl_recent", rec.slice(0, 6));
+      var w = document.getElementById("nl-recentwrap"); if (w) w.innerHTML = recentStrip();
     } catch (e) {}
   }
 
@@ -412,7 +413,7 @@
       return '<button class="nl-chip" data-act="filter" data-id="' + f + '" aria-pressed="' + (state.filter === f) + '">' + esc(t("filter_" + f)) + '<span class="nl-chip__n">' + filterCount(f) + "</span></button>";
     }).join("");
     return '<div class="nl-invhead"><div><span class="nl-eyebrow">' + esc(t("inventory_title")) + '</span><hr class="nl-rule"><p class="nl-muted" style="max-width:46ch">' + esc(t("inventory_sub")) + '</p></div><div class="nl-filters">' + chips + "</div></div>" +
-      recentStrip() +
+      '<div id="nl-recentwrap">' + recentStrip() + "</div>" +
       '<div class="nl-invgrid">' + cards + "</div>" +
       '<div class="nl-muted" style="margin-top:14px;font-size:13px">' + esc(t("results_count", { n: list.length })) + "</div>";
   }
