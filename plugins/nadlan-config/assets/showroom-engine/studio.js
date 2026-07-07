@@ -182,7 +182,11 @@
 
   function addItem(type) {
     var c = cat(type); if (!c) return;
-    var it = { uid: "i" + Math.random().toString(36).slice(2, 8), type: type, x: Math.max(4, S.plan.w / 2 - c.w / 2), y: Math.max(4, S.plan.h / 2 - c.d / 2), rot: 0, note: "" };
+    // cascade spawn so consecutive items never stack on one spot
+    var off = (S.items.length % 6) * 30;
+    var it = { uid: "i" + Math.random().toString(36).slice(2, 8), type: type,
+      x: Math.max(4, Math.min(S.plan.w - c.w - 4, S.plan.w / 2 - c.w / 2 + off)),
+      y: Math.max(4, Math.min(S.plan.h - c.d - 4, S.plan.h / 2 - c.d / 2 + off)), rot: 0, note: "" };
     S.items.push(it);
     placeItem(it);
     select(it.uid);
