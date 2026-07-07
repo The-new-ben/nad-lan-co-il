@@ -462,3 +462,8 @@ html[lang="en"] .nl-pcard__name { font-family: var(--font-serif-en); }
 .nl-filters--stage>button{color:#51483A;font:600 12.5px/1 Heebo,sans-serif;background:transparent;border:0;border-radius:8px;padding:8px 12px;cursor:pointer}
 .nl-filters--stage>button[aria-pressed="true"]{background:#1B1A17;color:#FAF7F1}
 @media(max-width:640px){.nl-filters--stage{flex-wrap:wrap}}
+
+/* sunset engine backdrops (2026-07-07) */
+.nl-light--dusk #nl-mv{background:linear-gradient(180deg,#3E2E33 0%,#1E1A1B 70%)}
+.nl-light--night #nl-mv{background:linear-gradient(180deg,#0C0F16 0%,#14130F 70%)}
+.nl-light--dusk,.nl-light--night{transition:background .5s}

@@ -1,5 +1,18 @@
 # AGENT-LOG - the God brain (append-only, newest on top)
 
+## 2026-07-07 (20) - v1.72.46 THE SUNSET ENGINE (world gap #3, v1)
+Day/dusk/night toggle on the 3D theater (nl-tabs chips beside the unit
+filter): applyLight() drives model-viewer exposure (1.02/0.5/0.22) +
+shadow-intensity, stage backdrop class shifts (dusk warm gradient, night
+deep ink); the flagship tower's baked emissive windows + storefronts +
+street lamps carry the night mode for free. i18n he+en (fr/ru/ar
+fallback). Honest: a lighting preview, not solar simulation - real
+sun-position phase 2 queued. Also: brochure facts grid padded to full
+rows (gray gap cells caught in the step-1 screenshot evaluation).
+BROCHURE VERIFIED LIVE (step 1 evaluation): DUO duo-a-21 rendered
+perfectly - render, facts, honest estimate, deep link, disclaimer;
+counter increments; no mortgage line when no numeric price (correct).
+
 ## 2026-07-07 (19) - v1.72.45 THE PER-APARTMENT BROCHURE (world gap #2)
 inc/brochure.php: GET /nadlan/v1/brochure?p=<project>&u=<unit>&lang=he|en
 renders a print-ready branded one-pager per apartment (browser prints to
