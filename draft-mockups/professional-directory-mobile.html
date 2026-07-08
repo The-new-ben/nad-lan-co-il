@@ -1,0 +1,116 @@
+
+<style>
+  :root {
+    --cream: #f8f5f2;
+    --ink: #1a1a1a;
+    --gold: #d4af37;
+    --accent: #2c3e50;
+    --font-heading: 'Fraunces', serif;
+    --font-body: 'Inter Tight', sans-serif;
+  }
+  .mockup-wrap {
+    font-family: var(--font-body);
+    color: var(--ink);
+    background-color: var(--cream);
+    min-height: 100vh;
+    box-sizing: border-box;
+    padding-bottom: 50px;
+  }
+  .mockup-wrap h1, .mockup-wrap h2, .mockup-wrap h3 {
+    font-family: var(--font-heading);
+    margin: 0;
+  }
+  .mockup-header {
+    background: #fff;
+    padding: 20px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+  .mockup-header-logo {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--ink);
+    letter-spacing: 2px;
+  }
+  .mockup-nav { display: flex; gap: 30px; }
+  .mockup-nav a { text-decoration: none; color: var(--ink); font-weight: 500; }
+  
+  .mockup-container {
+    max-width: 1400px;
+    margin: 40px auto;
+    padding: 0 20px;
+  }
+  .mockup-card {
+    background: #fff;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+  }
+  .mockup-btn {
+    background: var(--gold);
+    color: var(--ink);
+    border: none;
+    padding: 12px 25px;
+    border-radius: 40px;
+    font-weight: 600;
+    cursor: pointer;
+    font-family: var(--font-body);
+  }
+</style>
+
+<!-- MOBILE VIEW SIMULATION -->
+<div style="width: 375px; height: 812px; margin: 40px auto; border: 10px solid #333; border-radius: 40px; overflow: hidden; box-shadow: 0 20px 50px rgba(0,0,0,0.2); position: relative;">
+  <div style="position: absolute; top: 0; left: 50%; transform: translateX(-50%); width: 150px; height: 30px; background: #333; border-bottom-left-radius: 15px; border-bottom-right-radius: 15px; z-index: 1000;"></div>
+  <div style="width: 100%; height: 100%; overflow-y: auto; zoom: 0.7;">
+    
+<div class="mockup-wrap">
+  <header class="mockup-header">
+    <div class="mockup-header-logo">NADLAN PRO</div>
+  </header>
+  <div style="background: var(--ink); color: #fff; padding: 60px 20px; text-align: center;">
+    <h1>Find Trusted Professionals</h1>
+    <p style="margin-top: 10px;">Lawyers, Architects, Brokers, and Contractors</p>
+    <input type="text" placeholder="Search by name or specialty..." style="padding: 15px; width: 400px; margin-top: 20px; border-radius: 30px; border: none;">
+  </div>
+  <div class="mockup-container">
+    <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 30px;">
+      <!-- Grid items -->
+      <div class="mockup-card" style="text-align: center; padding: 30px;">
+        <img src="https://ui-avatars.com/api/?name=Moshe+Cohen&size=100&background=2c3e50&color=fff" style="border-radius: 50%;">
+        <h3 style="margin-top: 15px;">Moshe Cohen</h3>
+        <p style="color: var(--gold); font-size: 0.9rem; font-weight: 700; margin: 5px 0;">REAL ESTATE LAWYER</p>
+        <p style="font-size: 0.9rem; color: #666;">Tel Aviv • 15 Yrs Exp.</p>
+        <button class="mockup-btn" style="margin-top: 15px; padding: 8px 20px; font-size: 0.9rem;">View Profile</button>
+      </div>
+      <!-- Repeat 3 more times for visual weight -->
+      <div class="mockup-card" style="text-align: center; padding: 30px;">
+        <img src="https://ui-avatars.com/api/?name=Sarah+Levi&size=100&background=d4af37&color=fff" style="border-radius: 50%;">
+        <h3 style="margin-top: 15px;">Sarah Levi</h3>
+        <p style="color: var(--gold); font-size: 0.9rem; font-weight: 700; margin: 5px 0;">INTERIOR DESIGNER</p>
+        <p style="font-size: 0.9rem; color: #666;">Herzliya • 8 Yrs Exp.</p>
+        <button class="mockup-btn" style="margin-top: 15px; padding: 8px 20px; font-size: 0.9rem;">View Profile</button>
+      </div>
+      <div class="mockup-card" style="text-align: center; padding: 30px;">
+        <img src="https://ui-avatars.com/api/?name=Yossi+Ben&size=100&background=1a1a1a&color=fff" style="border-radius: 50%;">
+        <h3 style="margin-top: 15px;">Yossi Ben</h3>
+        <p style="color: var(--gold); font-size: 0.9rem; font-weight: 700; margin: 5px 0;">ARCHITECT</p>
+        <p style="font-size: 0.9rem; color: #666;">Jerusalem • 20 Yrs Exp.</p>
+        <button class="mockup-btn" style="margin-top: 15px; padding: 8px 20px; font-size: 0.9rem;">View Profile</button>
+      </div>
+      <div class="mockup-card" style="text-align: center; padding: 30px;">
+        <img src="https://ui-avatars.com/api/?name=Dana+Ron&size=100&background=2c3e50&color=fff" style="border-radius: 50%;">
+        <h3 style="margin-top: 15px;">Dana Ron</h3>
+        <p style="color: var(--gold); font-size: 0.9rem; font-weight: 700; margin: 5px 0;">PREMIUM BROKER</p>
+        <p style="font-size: 0.9rem; color: #666;">Netanya • 5 Yrs Exp.</p>
+        <button class="mockup-btn" style="margin-top: 15px; padding: 8px 20px; font-size: 0.9rem;">View Profile</button>
+      </div>
+    </div>
+  </div>
+</div>
+  </div>
+</div>

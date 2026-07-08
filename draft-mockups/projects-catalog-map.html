@@ -1,0 +1,104 @@
+
+<style>
+  :root {
+    --cream: #f8f5f2;
+    --ink: #1a1a1a;
+    --gold: #d4af37;
+    --accent: #2c3e50;
+    --font-heading: 'Fraunces', serif;
+    --font-body: 'Inter Tight', sans-serif;
+  }
+  .mockup-wrap {
+    font-family: var(--font-body);
+    color: var(--ink);
+    background-color: var(--cream);
+    min-height: 100vh;
+    box-sizing: border-box;
+    padding-bottom: 50px;
+  }
+  .mockup-wrap h1, .mockup-wrap h2, .mockup-wrap h3 {
+    font-family: var(--font-heading);
+    margin: 0;
+  }
+  .mockup-header {
+    background: #fff;
+    padding: 20px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+  .mockup-header-logo {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--ink);
+    letter-spacing: 2px;
+  }
+  .mockup-nav { display: flex; gap: 30px; }
+  .mockup-nav a { text-decoration: none; color: var(--ink); font-weight: 500; }
+  
+  .mockup-container {
+    max-width: 1400px;
+    margin: 40px auto;
+    padding: 0 20px;
+  }
+  .mockup-card {
+    background: #fff;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+  }
+  .mockup-btn {
+    background: var(--gold);
+    color: var(--ink);
+    border: none;
+    padding: 12px 25px;
+    border-radius: 40px;
+    font-weight: 600;
+    cursor: pointer;
+    font-family: var(--font-body);
+  }
+</style>
+
+<div class="mockup-wrap" style="height: 100vh; overflow: hidden; display: flex; flex-direction: column;">
+  <header class="mockup-header" style="flex-shrink: 0;">
+    <div class="mockup-header-logo">NADLAN PROJECTS</div>
+    <div style="display: flex; gap: 10px;">
+      <input type="text" placeholder="Filter by city..." style="padding: 10px; border-radius: 20px; border: 1px solid #ccc;">
+      <button class="mockup-btn" style="padding: 10px 20px;">Filter</button>
+    </div>
+  </header>
+  <div style="display: flex; flex: 1; overflow: hidden;">
+    <!-- Left List -->
+    <div style="width: 400px; overflow-y: auto; background: #fff; padding: 20px; box-shadow: 2px 0 10px rgba(0,0,0,0.05); z-index: 10;">
+      <h3 style="margin-bottom: 20px;">12 Projects Found</h3>
+      <!-- Project Item -->
+      <div style="display: flex; gap: 15px; margin-bottom: 20px; cursor: pointer; padding: 10px; border-radius: 8px; transition: background 0.2s;">
+        <img src="https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?w=150" style="width: 100px; height: 100px; object-fit: cover; border-radius: 8px;">
+        <div>
+          <h4 style="margin: 0; font-size: 1.1rem;">Ashira Tower</h4>
+          <p style="color: #666; font-size: 0.9rem; margin: 5px 0;">Tel Aviv</p>
+          <p style="color: var(--gold); font-weight: bold; font-size: 1rem; margin: 0;">From ₪4.2M</p>
+        </div>
+      </div>
+      <!-- Project Item -->
+      <div style="display: flex; gap: 15px; margin-bottom: 20px; cursor: pointer; padding: 10px; border-radius: 8px; background: #f9f9f9;">
+        <img src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=150" style="width: 100px; height: 100px; object-fit: cover; border-radius: 8px;">
+        <div>
+          <h4 style="margin: 0; font-size: 1.1rem;">Duo Residences</h4>
+          <p style="color: #666; font-size: 0.9rem; margin: 5px 0;">Herzliya Pituach</p>
+          <p style="color: var(--gold); font-weight: bold; font-size: 1rem; margin: 0;">From ₪6.1M</p>
+        </div>
+      </div>
+    </div>
+    <!-- Right Map (Simulated) -->
+    <div style="flex: 1; background: url('https://images.unsplash.com/photo-1524661135-423995f22d0b?w=1200') center/cover; position: relative;">
+      <!-- Simulated map marker -->
+      <div style="position: absolute; top: 40%; left: 50%; background: var(--ink); color: #fff; padding: 5px 10px; border-radius: 20px; font-weight: bold; font-size: 0.9rem; box-shadow: 0 4px 10px rgba(0,0,0,0.3);">₪4.2M</div>
+      <div style="position: absolute; top: 60%; left: 30%; background: #fff; color: var(--ink); padding: 5px 10px; border-radius: 20px; font-weight: bold; font-size: 0.9rem; box-shadow: 0 4px 10px rgba(0,0,0,0.2);">₪6.1M</div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,267 @@
+<style>
+  :root {
+    --cream: #f8f5f2;
+    --ink: #1a1a1a;
+    --gold: #d4af37;
+    --accent: #2c3e50;
+    --font-heading: 'Fraunces', serif;
+    --font-body: 'Inter Tight', sans-serif;
+  }
+  .mockup-homepage {
+    font-family: var(--font-body);
+    color: var(--ink);
+    background-color: var(--cream);
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  .mockup-homepage h1, .mockup-homepage h2, .mockup-homepage h3 {
+    font-family: var(--font-heading);
+    margin: 0;
+  }
+  /* Hero Section */
+  .mockup-hero {
+    position: relative;
+    height: 85vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #111 0%, #2a2a2a 100%);
+    color: var(--cream);
+    overflow: hidden;
+  }
+  .mockup-hero::after {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: url('https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80') center/cover no-repeat;
+    opacity: 0.4;
+    z-index: 0;
+  }
+  .mockup-hero-content {
+    position: relative;
+    z-index: 1;
+    text-align: center;
+    max-width: 800px;
+    padding: 0 20px;
+  }
+  .mockup-hero h1 {
+    font-size: 4rem;
+    font-weight: 300;
+    letter-spacing: -1px;
+    margin-bottom: 20px;
+  }
+  .mockup-hero p {
+    font-size: 1.2rem;
+    font-weight: 300;
+    opacity: 0.9;
+    margin-bottom: 40px;
+  }
+  /* Search Bar */
+  .mockup-search {
+    display: flex;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 50px;
+    padding: 10px;
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto;
+    transition: all 0.3s ease;
+  }
+  .mockup-search:hover {
+    background: rgba(255, 255, 255, 0.15);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+  }
+  .mockup-search input {
+    flex: 1;
+    background: transparent;
+    border: none;
+    color: #fff;
+    padding: 15px 25px;
+    font-size: 1.1rem;
+    outline: none;
+    font-family: var(--font-body);
+  }
+  .mockup-search input::placeholder {
+    color: rgba(255, 255, 255, 0.7);
+  }
+  .mockup-search button {
+    background: var(--gold);
+    color: var(--ink);
+    border: none;
+    padding: 0 30px;
+    border-radius: 40px;
+    font-weight: 600;
+    cursor: pointer;
+    font-family: var(--font-body);
+    transition: transform 0.2s;
+  }
+  .mockup-search button:hover {
+    transform: scale(1.05);
+  }
+  
+  /* Featured Projects Showcase */
+  .mockup-section {
+    padding: 100px 20px;
+    max-width: 1400px;
+    margin: 0 auto;
+  }
+  .mockup-section-header {
+    text-align: center;
+    margin-bottom: 60px;
+  }
+  .mockup-section-header h2 {
+    font-size: 2.5rem;
+    color: var(--ink);
+  }
+  .mockup-section-header p {
+    color: #666;
+    margin-top: 10px;
+  }
+  .mockup-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 40px;
+  }
+  .mockup-card {
+    background: #fff;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+    transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+    cursor: pointer;
+  }
+  .mockup-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+  }
+  .mockup-card-img {
+    height: 250px;
+    background: #eee;
+    position: relative;
+    overflow: hidden;
+  }
+  .mockup-card-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s ease;
+  }
+  .mockup-card:hover .mockup-card-img img {
+    transform: scale(1.05);
+  }
+  .mockup-card-tag {
+    position: absolute;
+    top: 20px; left: 20px;
+    background: var(--gold);
+    color: var(--ink);
+    padding: 5px 12px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    border-radius: 4px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+  .mockup-card-body {
+    padding: 30px;
+  }
+  .mockup-card-title {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+  }
+  .mockup-card-price {
+    font-size: 1.2rem;
+    color: var(--gold);
+    font-weight: 600;
+    margin-bottom: 15px;
+  }
+  .mockup-card-meta {
+    display: flex;
+    gap: 15px;
+    color: #888;
+    font-size: 0.9rem;
+    border-top: 1px solid #eee;
+    padding-top: 15px;
+  }
+
+  /* Responsive */
+  @media (max-width: 768px) {
+    .mockup-hero h1 { font-size: 2.5rem; }
+    .mockup-search { flex-direction: column; border-radius: 20px; background: rgba(0,0,0,0.4); border:none; }
+    .mockup-search input { padding: 15px; text-align: center; }
+    .mockup-search button { padding: 15px; border-radius: 0 0 20px 20px; }
+  }
+</style>
+
+<div class="mockup-homepage">
+  <!-- Hero -->
+  <header class="mockup-hero">
+    <div class="mockup-hero-content">
+      <h1>Discover Architectural Excellence</h1>
+      <p>Premium real estate, curated for the modern investor in Israel.</p>
+      
+      <div class="mockup-search">
+        <input type="text" placeholder="Search by city, project, or professional...">
+        <button type="button">Explore</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Featured Projects -->
+  <section class="mockup-section">
+    <div class="mockup-section-header">
+      <h2>Curated Developments</h2>
+      <p>Experience the finest new construction projects.</p>
+    </div>
+    
+    <div class="mockup-grid">
+      <!-- Card 1 -->
+      <article class="mockup-card">
+        <div class="mockup-card-img">
+          <div class="mockup-card-tag">3D Available</div>
+          <img src="https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Ashira Project">
+        </div>
+        <div class="mockup-card-body">
+          <h3 class="mockup-card-title">The Ashira Tower</h3>
+          <div class="mockup-card-price">From ₪4,200,000</div>
+          <div class="mockup-card-meta">
+            <span>Tel Aviv</span>
+            <span>Est. 2027</span>
+          </div>
+        </div>
+      </article>
+
+      <!-- Card 2 -->
+      <article class="mockup-card">
+        <div class="mockup-card-img">
+          <img src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Duo Residences">
+        </div>
+        <div class="mockup-card-body">
+          <h3 class="mockup-card-title">Duo Residences</h3>
+          <div class="mockup-card-price">From ₪6,100,000</div>
+          <div class="mockup-card-meta">
+            <span>Herzliya Pituach</span>
+            <span>Move-in Ready</span>
+          </div>
+        </div>
+      </article>
+
+      <!-- Card 3 -->
+      <article class="mockup-card">
+        <div class="mockup-card-img">
+          <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Bialik Estate">
+        </div>
+        <div class="mockup-card-body">
+          <h3 class="mockup-card-title">Bialik Estate</h3>
+          <div class="mockup-card-price">From ₪3,850,000</div>
+          <div class="mockup-card-meta">
+            <span>Ramat Gan</span>
+            <span>Est. 2026</span>
+          </div>
+        </div>
+      </article>
+    </div>
+  </section>
+</div>
