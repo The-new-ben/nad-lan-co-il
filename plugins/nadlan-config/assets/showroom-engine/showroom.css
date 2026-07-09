@@ -102,7 +102,7 @@ html[lang="en"] .nl-fact__n { font-family: var(--font-serif-en); }
 .nl-theater__top { position: absolute; inset-block-start: 0; inset-inline: 0; z-index: 6; display: flex; align-items: flex-start; justify-content: space-between; gap: 12px; padding: clamp(14px,2vw,22px); pointer-events: none; background: linear-gradient(180deg, rgba(10,9,7,.55), transparent); }
 .nl-theater__title { color: var(--theater-fore); }
 .nl-theater__title .e { color: #d8c79a; font-size: var(--fs-micro); letter-spacing: var(--tracking-wide); text-transform: uppercase; font-weight: 600; font-family: var(--font-sans-he); }
-.nl-theater__title h2 { color: var(--theater-fore); font-size: clamp(1.3rem,1rem+1.4vw,2rem); margin-top: 4px; }
+.nl-app .nl-theater__title h2 { color: var(--theater-fore) !important; font-size: clamp(1.3rem,1rem+1.4vw,2rem); margin-top: 4px; }
 .nl-toggle { display: inline-flex; background: rgba(15,14,11,.6); border: 1px solid var(--theater-line); border-radius: 999px; padding: 4px; pointer-events: auto; }
 .nl-toggle button { min-height: 34px; padding: 0 16px; border: 0; background: transparent; color: var(--theater-sub); font-size: 13px; font-weight: 600; border-radius: 999px; cursor: pointer; }
 .nl-toggle button[aria-pressed="true"] { background: linear-gradient(180deg,#b9923f,#9C7A3C); color: #fff; }
@@ -541,6 +541,24 @@ html[lang="en"] .nl-pcard__name { font-family: var(--font-serif-en); }
 
 /* ONE contact bar on engine pages: the global CTA cluster yields to the engine sticky */
 body.nl-has-engine #nlcta{display:none}
+
+/* Keep the first-party accessibility launcher clear of the apartment tabs.
+   The tabs sit at inline-end, so an open mobile drawer moves the launcher to
+   the opposite edge without hiding it or changing the desktop experience. */
+@media (max-width:760px) {
+  html[dir="rtl"] body.nl-has-engine:has(#nl-panel.is-open) #nla11y {
+    right:auto!important;
+    left:8px!important;
+  }
+  html[dir="ltr"] body.nl-has-engine:has(#nl-panel.is-open) #nla11y {
+    left:auto!important;
+    right:8px!important;
+  }
+  body.nl-has-engine:has(#nl-panel.is-open) #nla11y-btn {
+    width:44px!important;
+    height:44px!important;
+  }
+}
 
 /* APARTMENT STUDIO (2026-07-07): design-before-you-buy overlay */
 body.nlst-lock{overflow:hidden}
