@@ -39,6 +39,24 @@ the lead and RFP pipeline.
 - Desktop 1440 and mobile 390 have no horizontal overflow or control overlap.
 - Healthcheck and all version surfaces must report `1.72.69`.
 
+## Post-Deploy Evidence
+
+- PR `#458` merged to `main` at `141f6ed`.
+- WordPress installed the release with overwrite enabled and kept the plugin active.
+- Public healthcheck reports `1.72.69`.
+- The temporary admin-only deploy snippet was deleted; its route returns HTTP 404.
+- All five Rainbow language URLs return HTTP 200 with correct server-rendered `lang`, `dir`, and
+  six alternate-language links including x-default.
+- Live CSS and JS are served with `ver=1.72.69` and contain all three hotfix markers.
+- The packaged Rainbow model returns HTTP 200 at 851,668 bytes; sampled 3, 4, and 5 room plans
+  also return HTTP 200.
+
+The final post-deploy visual gate is not marked complete. Chrome control stopped responding after
+the deploy even though the Codex Chrome Extension and native-host checks passed. The extensive
+live 1.72.68 interaction pass remains valid for the unchanged buyer functions, but 1.72.69 still
+needs fresh Chrome screenshots confirming title contrast, model exposure, and mobile non-overlap.
+Do not represent those three visual checks as completed until that connection is restored.
+
 ## Competitive Product Gaps To Keep Visible
 
 - Official developer BIM or apartment-level geometry is still missing. The current model is an
