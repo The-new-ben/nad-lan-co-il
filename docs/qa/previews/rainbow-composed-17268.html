@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <base href="../../../plugins/nadlan-config/assets/">
+  <title>Rainbow composed project QA</title>
+  <link rel="stylesheet" href="showroom-engine/tokens.css">
+  <link rel="stylesheet" href="showroom-engine/showroom.css?v=17268">
+  <link rel="stylesheet" href="showroom-engine/editorial.css?v=17268">
+  <style>html,body{margin:0;overflow-x:clip}</style>
+  <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/4.0.0/model-viewer.min.js"></script>
+</head>
+<body>
+  <div id="nl-root" data-page="project"></div>
+  <article class="nadlan-project-article nadlan-guide is-composed">
+    <section class="nadlan-rainbow-seo">
+      <h2>Rainbow Tel Aviv: מידע חיוני לפני בחירת דירה</h2>
+      <p>תוכן הבדיקה מדגים את רצף המאמר הקיים. הכותרת נשארת מעל הפסקה, הטקסט נשמר ופרקי ה-SEO ממשיכים אחרי חוויית בחירת הדירה.</p>
+      <h3>מיקום, תכנון ונוף</h3>
+      <p>המאמר המלא אינו מוחלף ואינו נכתב מחדש במהלך שינוי ההרכב.</p>
+    </section>
+  </article>
+  <script src="showroom-engine/i18n.js?v=17268"></script>
+  <script src="showroom-engine/i18n-complete.js?v=17268"></script>
+  <script src="showroom-engine/data.js"></script>
+  <script>
+    (function () {
+      var p = window.NADLAN_SHOWROOM.projects["rainbow-tel-aviv"];
+      p.composed = true;
+      p.developer_name = "ישראל קנדה";
+      p.project_status = "construction";
+      p.project_stage = 3;
+      p.completion_year = 2028;
+      p.model_glb = "showroom-engine/models/rainbow.glb";
+      p.model_poster = "showroom-engine/models/rainbow-poster.jpg";
+      p.hero_image = "showroom-engine/models/rainbow-poster.jpg";
+      p.facade_image = "showroom-engine/models/rainbow-facade.jpg";
+      p.default_orbit = "-30deg 72deg 171m";
+      p.default_target = "0m 52m 0m";
+      window.NADLAN_SHOWROOM.config.default_project = "rainbow-tel-aviv";
+      window.NADLAN_SHOWROOM.config.default_lang = "he";
+      window.NADLAN_SHOWROOM.config.home_url = "/";
+      window.NADLAN_SHOWROOM.config.projects_url = "/projects/";
+    }());
+  </script>
+  <script src="showroom-engine/engine.js?v=17268"></script>
+  <script src="showroom-engine/buyflow.js?v=17268"></script>
+  <script src="showroom-engine/studio.js?v=17268"></script>
+</body>
+</html>

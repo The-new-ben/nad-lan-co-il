@@ -21,6 +21,11 @@
     lang_he: "עברית", lang_en: "English", lang_fr: "Français", lang_ru: "Русский", lang_ar: "العربية",
     city_tlv: "תל אביב",
 
+    breadcrumb_aria: "\u05e0\u05d9\u05d5\u05d5\u05d8 \u05d1\u05d0\u05ea\u05e8", breadcrumb_home: "\u05d1\u05d9\u05ea", breadcrumb_projects: "\u05e4\u05e8\u05d5\u05d9\u05e7\u05d8\u05d9\u05dd",
+    project_status_planning: "\u05d1\u05ea\u05db\u05e0\u05d5\u05df", project_status_permit: "\u05d4\u05d9\u05ea\u05e8 \u05d1\u05e0\u05d9\u05d9\u05d4", project_status_marketing: "\u05d1\u05e9\u05d9\u05d5\u05d5\u05e7", project_status_construction: "\u05d1\u05d1\u05e0\u05d9\u05d9\u05d4", project_status_completed: "\u05d4\u05d5\u05e9\u05dc\u05dd", completion_year: "\u05d0\u05db\u05dc\u05d5\u05e1 {n}",
+    timeline_eyebrow: "\u05e1\u05d8\u05d8\u05d5\u05e1 \u05d4\u05e4\u05e8\u05d5\u05d9\u05e7\u05d8", timeline_title: "\u05d4\u05d3\u05e8\u05da \u05dc\u05de\u05e1\u05d9\u05e8\u05ea \u05d4\u05d3\u05d9\u05e8\u05d4", handover_label: "\u05de\u05d5\u05e2\u05d3 \u05de\u05e1\u05d9\u05e8\u05d4 \u05de\u05e9\u05d5\u05e2\u05e8", handover_estimated: "\u05de\u05e1\u05d9\u05e8\u05d4 \u05de\u05e9\u05d5\u05e2\u05e8\u05ea {n}",
+    timeline_planning: "\u05ea\u05db\u05e0\u05d5\u05df", timeline_permit: "\u05d4\u05d9\u05ea\u05e8 \u05d1\u05e0\u05d9\u05d9\u05d4", timeline_marketing: "\u05e9\u05d9\u05d5\u05d5\u05e7 \u05d5\u05de\u05db\u05d9\u05e8\u05d5\u05ea", timeline_construction: "\u05d1\u05e0\u05d9\u05d9\u05d4", timeline_handover: "\u05de\u05e1\u05d9\u05e8\u05d4", timeline_note: "\u05d4\u05e9\u05dc\u05d1 \u05d5\u05de\u05d5\u05e2\u05d3 \u05d4\u05de\u05e1\u05d9\u05e8\u05d4 \u05d4\u05de\u05e9\u05d5\u05e2\u05e8 \u05de\u05d5\u05e6\u05d2\u05d9\u05dd \u05dc\u05e4\u05d9 \u05d4\u05de\u05d9\u05d3\u05e2 \u05e9\u05e0\u05de\u05e1\u05e8 \u05dc\u05e4\u05e8\u05d5\u05d9\u05e7\u05d8; \u05d9\u05d9\u05ea\u05db\u05e0\u05d5 \u05e9\u05d9\u05e0\u05d5\u05d9\u05d9\u05dd.",
+
     /* project display names (data references these) */
     proj_ashira_name: "Ashira", proj_rainbow_name: "Rainbow", proj_dimri_name: "דימרי ימה",
 
@@ -234,6 +239,9 @@
   };
 
   var EN = {
+    breadcrumb_aria: "Breadcrumb", breadcrumb_home: "Home", breadcrumb_projects: "Projects",
+    project_status_planning: "Planning", project_status_permit: "Building permit", project_status_marketing: "Now marketing", project_status_construction: "Under construction", project_status_completed: "Completed", completion_year: "Completion {n}",
+    timeline_eyebrow: "Project status", timeline_title: "The path to handover", handover_label: "Estimated handover", handover_estimated: "Estimated handover {n}", timeline_planning: "Planning", timeline_permit: "Building permit", timeline_marketing: "Sales", timeline_construction: "Construction", timeline_handover: "Handover", timeline_note: "The stage and estimated handover reflect the information reported for the project and may change.",
     brand: "NadLan", brand_sub: "Project showroom",
     lang_he: "עברית", lang_en: "English", lang_fr: "Français", lang_ru: "Русский", lang_ar: "العربية",
     city_tlv: "Tel Aviv",
@@ -423,6 +431,23 @@
   AR.brand = "نادلان"; AR.brand_sub = "معرض المشاريع";
   RU.brand_sub = "Витрина проектов";
   FR.brand_sub = "Vitrine des projets";
+  FR.breadcrumb_aria = "Fil d'Ariane"; FR.breadcrumb_home = "Accueil"; FR.breadcrumb_projects = "Projets";
+  FR.project_status_planning = "Planification"; FR.project_status_marketing = "Commercialisation"; FR.project_status_construction = "En construction"; FR.project_status_completed = "Livre"; FR.completion_year = "Livraison {n}";
+  RU.breadcrumb_aria = "Навигация"; RU.breadcrumb_home = "Главная"; RU.breadcrumb_projects = "Проекты";
+  RU.project_status_planning = "Планирование"; RU.project_status_marketing = "В продаже"; RU.project_status_construction = "Строительство"; RU.project_status_completed = "Завершен"; RU.completion_year = "Сдача {n}";
+  AR.breadcrumb_aria = "مسار التنقل"; AR.breadcrumb_home = "الرئيسية"; AR.breadcrumb_projects = "المشاريع";
+  AR.project_status_planning = "قيد التخطيط"; AR.project_status_marketing = "قيد التسويق"; AR.project_status_construction = "قيد الإنشاء"; AR.project_status_completed = "مكتمل"; AR.completion_year = "التسليم {n}";
+  /* Complete, native project-progress chrome. These overrides intentionally
+     replace the inherited English labels on every language URL. */
+  FR.project_status_permit = "Permis de construire";
+  FR.timeline_eyebrow = "Avancement du projet"; FR.timeline_title = "Le parcours jusqu'a la livraison"; FR.handover_label = "Livraison estimee"; FR.handover_estimated = "Livraison estimee {n}";
+  FR.timeline_planning = "Planification"; FR.timeline_permit = "Permis"; FR.timeline_marketing = "Commercialisation"; FR.timeline_construction = "Construction"; FR.timeline_handover = "Livraison"; FR.timeline_note = "L'etape et la date de livraison estimee refletent les informations communiquees pour le projet et peuvent changer.";
+  RU.project_status_permit = "\u0420\u0430\u0437\u0440\u0435\u0448\u0435\u043d\u0438\u0435 \u043d\u0430 \u0441\u0442\u0440\u043e\u0438\u0442\u0435\u043b\u044c\u0441\u0442\u0432\u043e";
+  RU.timeline_eyebrow = "\u0421\u0442\u0430\u0442\u0443\u0441 \u043f\u0440\u043e\u0435\u043a\u0442\u0430"; RU.timeline_title = "\u041f\u0443\u0442\u044c \u043a \u043f\u0435\u0440\u0435\u0434\u0430\u0447\u0435 \u043a\u0432\u0430\u0440\u0442\u0438\u0440\u044b"; RU.handover_label = "\u041e\u0436\u0438\u0434\u0430\u0435\u043c\u0430\u044f \u043f\u0435\u0440\u0435\u0434\u0430\u0447\u0430"; RU.handover_estimated = "\u041e\u0436\u0438\u0434\u0430\u0435\u043c\u0430\u044f \u043f\u0435\u0440\u0435\u0434\u0430\u0447\u0430 {n}";
+  RU.timeline_planning = "\u041f\u043b\u0430\u043d\u0438\u0440\u043e\u0432\u0430\u043d\u0438\u0435"; RU.timeline_permit = "\u0420\u0430\u0437\u0440\u0435\u0448\u0435\u043d\u0438\u0435"; RU.timeline_marketing = "\u041f\u0440\u043e\u0434\u0430\u0436\u0438"; RU.timeline_construction = "\u0421\u0442\u0440\u043e\u0438\u0442\u0435\u043b\u044c\u0441\u0442\u0432\u043e"; RU.timeline_handover = "\u041f\u0435\u0440\u0435\u0434\u0430\u0447\u0430"; RU.timeline_note = "\u042d\u0442\u0430\u043f \u0438 \u043e\u0436\u0438\u0434\u0430\u0435\u043c\u044b\u0439 \u0441\u0440\u043e\u043a \u043f\u0435\u0440\u0435\u0434\u0430\u0447\u0438 \u043e\u0441\u043d\u043e\u0432\u0430\u043d\u044b \u043d\u0430 \u0438\u043d\u0444\u043e\u0440\u043c\u0430\u0446\u0438\u0438 \u043e \u043f\u0440\u043e\u0435\u043a\u0442\u0435 \u0438 \u043c\u043e\u0433\u0443\u0442 \u0438\u0437\u043c\u0435\u043d\u0438\u0442\u044c\u0441\u044f.";
+  AR.project_status_permit = "\u062a\u0635\u0631\u064a\u062d \u0628\u0646\u0627\u0621";
+  AR.timeline_eyebrow = "\u062d\u0627\u0644\u0629 \u0627\u0644\u0645\u0634\u0631\u0648\u0639"; AR.timeline_title = "\u0627\u0644\u0637\u0631\u064a\u0642 \u0625\u0644\u0649 \u062a\u0633\u0644\u064a\u0645 \u0627\u0644\u0634\u0642\u0629"; AR.handover_label = "\u0645\u0648\u0639\u062f \u0627\u0644\u062a\u0633\u0644\u064a\u0645 \u0627\u0644\u0645\u062a\u0648\u0642\u0639"; AR.handover_estimated = "\u0627\u0644\u062a\u0633\u0644\u064a\u0645 \u0627\u0644\u0645\u062a\u0648\u0642\u0639 {n}";
+  AR.timeline_planning = "\u0627\u0644\u062a\u062e\u0637\u064a\u0637"; AR.timeline_permit = "\u062a\u0635\u0631\u064a\u062d \u0627\u0644\u0628\u0646\u0627\u0621"; AR.timeline_marketing = "\u0627\u0644\u062a\u0633\u0648\u064a\u0642 \u0648\u0627\u0644\u0645\u0628\u064a\u0639\u0627\u062a"; AR.timeline_construction = "\u0627\u0644\u0628\u0646\u0627\u0621"; AR.timeline_handover = "\u0627\u0644\u062a\u0633\u0644\u064a\u0645"; AR.timeline_note = "\u062a\u0639\u0643\u0633 \u0627\u0644\u0645\u0631\u062d\u0644\u0629 \u0648\u0645\u0648\u0639\u062f \u0627\u0644\u062a\u0633\u0644\u064a\u0645 \u0627\u0644\u0645\u062a\u0648\u0642\u0639 \u0627\u0644\u0645\u0639\u0644\u0648\u0645\u0627\u062a \u0627\u0644\u0645\u0639\u0644\u0646\u0629 \u0639\u0646 \u0627\u0644\u0645\u0634\u0631\u0648\u0639 \u0648\u0642\u062f \u062a\u062a\u063a\u064a\u0631.";
   FR.interior_generic_note = "Visualisation interieure generique, a titre indicatif, plans du promoteur en attente";
   RU.interior_generic_note = "Типовая визуализация интерьера, только для иллюстрации, планы застройщика ожидаются";
   AR.interior_generic_note = "تصور داخلي عام للتوضيح فقط، بانتظار مخططات المطور";

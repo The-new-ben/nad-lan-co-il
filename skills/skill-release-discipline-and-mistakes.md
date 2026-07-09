@@ -265,3 +265,19 @@ node scripts\qa-rainbow-postdeploy.mjs --version <VERSION> --out docs\qa\rainbow
 **Why it hurt:** it burned cycles on layout while the core product problem remained: apartment picking must sit on a real elevation/render/photo, not on generated rectangles.
 **Rule:** the facade picker may render apartment cells only when `project_3d_facade_images` contains a real facade/elevation image. If the asset is missing or fails to load, show a visible missing-asset state. Do not emit a fake grid, legacy prototype SVG, or old procedural tower as a substitute.
 **Fix command:** inspect the live DOM. A real facade picker must have `.nlp3d-fp-image` and `.nlp3d-cell`; a missing facade must have `.nlp3d-facade-missing` and zero visible `.nlp3d-cell`.
+
+### M16 - One showroom root can still be a stacked page
+**What happened:** Rainbow had one `#nl-root` and zero legacy showroom roots, but independent content filters still printed a milestone, duplicate project card/H1, breadcrumb, price/map bands, and social block around the engine.
+**Why it hurt:** the page looked like two pages joined together even though the old renderer count was technically zero.
+**Rule:** anti-stack QA counts capabilities, not only roots. On an opted-in composed page, each standalone filter must step aside and the engine must own the single project journey. Keep the SEO article.
+**Rollback:** set `nadlan_showroom_composed_v2` to `0`; do not rewrite `post_content`.
+
+### M17 - Private raw GitHub URLs are not production media
+**What happened:** the Rainbow GLB and plan fields pointed to `raw.githubusercontent.com` paths in a private repository. Public buyers received 404s while the CMS still looked populated.
+**Why it hurt:** the model showed an error/poster and the plan actions appeared empty.
+**Rule:** verify every buyer media URL without authentication. Use same-origin Media Library, R2, CDN, or the release package. Back up old metadata before migrating URLs.
+
+### M18 - Five language buttons do not prove five-language UX
+**What happened:** FR/RU/AR URLs existed, but most showroom labels inherited English.
+**Why it hurt:** the pages were crawlable but not credible to foreign buyers.
+**Rule:** compare each language table against English, preserve replacement placeholders, and click every language in Chrome. A language passes only when its controls, direction, sibling URL, article, and hreflang all agree.

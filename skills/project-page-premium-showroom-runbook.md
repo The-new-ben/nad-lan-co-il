@@ -477,3 +477,52 @@ Allowed public wording includes:
 
 Every screenshot QA must include a visible-copy scan. A page can look premium and still fail if it
 talks to us instead of to the buyer.
+
+## O. Composed Project Page Gate (Rainbow 1.72.68)
+
+Use a per-project composition flag, `nadlan_showroom_composed_v2`, while converting a mature page.
+The flag is the rollback switch. A disabled flag must restore the previous render-time fragments
+without rewriting `post_content`.
+
+The composed page has one ordered journey:
+
+1. Theme site header.
+2. One breadcrumb and language row.
+3. One project section navigation.
+4. Project hero with developer, verified stage, and estimated handover only when the CMS has it.
+5. One progress tracker. The public term is `estimated handover` / `מועד מסירה משוער`, not an
+   invented countdown or a promised delivery date.
+6. One 3D/facade showroom, inventory, price, environment, media, investor information, inquiry,
+   and disclaimer.
+7. The existing long-form SEO article, preserved verbatim and styled as one editorial column.
+8. Theme footer. The showroom does not print a second site header or footer.
+
+Anti-stack means more than counting showroom roots. A project can have `#nl-root = 1` and still be
+stacked through milestone, project-card, breadcrumb, price, map, social, or profile filters. For a
+composed page, verify that every capability appears exactly once and suppress the standalone copy
+behind the same project flag.
+
+Multilingual proof is behavioral, not decorative. Each published language sibling must:
+
+- have its own crawlable URL and correct `lang`/`dir`;
+- navigate to sibling URLs on the live page;
+- render buyer controls in that language, not English fallback labels;
+- preserve placeholders such as `{n}`, `{label}`, and `{floor}`;
+- retain its own SEO article and hreflang set.
+
+Stable media rule: do not point public GLB or floor-plan fields at a private GitHub raw URL. Use a
+same-origin plugin/CDN/Media Library URL and verify HTTP 200 before switching the CMS value. For a
+small prototype asset packaged in the plugin, keep a migration backup and plan to move it to R2 or
+Media Library when official developer media arrives.
+
+Interaction gate, in real Chrome, before deploy and again live:
+
+- rotate the model and return to full-building view;
+- switch model/facade;
+- select a unit from the model and from inventory;
+- open plan, view, and tour;
+- close the apartment drawer with pointer, keyboard, and Escape;
+- filter inventory and model markers together;
+- save, compare, share, RFP, studio, contact, and WhatsApp;
+- verify price/source/date, map pins, article headings, one H1, and no overflow;
+- repeat HE/EN/FR/RU/AR and desktop/mobile.
