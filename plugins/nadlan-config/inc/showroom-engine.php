@@ -87,11 +87,29 @@ if ( ! function_exists( 'nadlan_showroom_engine_build_project' ) ) {
 				if ( isset( $u['floor'] ) ) { $floors = max( $floors, (int) $u['floor'] ); }
 			}
 		}
+		$floor_height = (float) ( get_post_meta( $id, 'project_3d_floor_height_m', true ) ?: 3.05 );
+		$frame_radius = (int) max( 118, round( $floors * $floor_height * 1.4 ) );
+		$target_y     = round( $floors * $floor_height * 0.43, 1 );
 
 		$tier = sanitize_key( (string) get_post_meta( $id, 'project_tier', true ) );
 		if ( $tier === '' ) { $tier = 'standard'; }
 
 		$sub = (string) get_post_meta( $id, 'project_subtitle', true );
+		$status_raw = function_exists( 'nadlan_ms_status_for' )
+			? sanitize_text_field( (string) nadlan_ms_status_for( $post ) )
+			: sanitize_text_field( (string) get_post_meta( $id, 'project_status', true ) );
+		$canonical_stages = array( 'planning' => 0, 'permit' => 1, 'marketing' => 2, 'construction' => 3, 'completed' => 4 );
+		$status_canonical = sanitize_key( $status_raw );
+		$project_stage = isset( $canonical_stages[ $status_canonical ] )
+			? $canonical_stages[ $status_canonical ]
+			: ( function_exists( 'nadlan_ms_stage_of' ) ? (int) nadlan_ms_stage_of( $status_raw ) : -1 );
+		$status_keys   = array( 'planning', 'permit', 'marketing', 'construction', 'completed' );
+		$status_key    = isset( $status_keys[ $project_stage ] ) ? $status_keys[ $project_stage ] : sanitize_key( $status_raw );
+		$completion_year = (int) get_post_meta( $id, 'completion_year', true );
+		if ( $completion_year <= 0 && preg_match( '/^(.*)-(en|fr|ru|ar)$/', $post->post_name, $base_match ) ) {
+			$base_post = get_page_by_path( $base_match[1], OBJECT, 'nadlan_project' );
+			if ( $base_post ) { $completion_year = (int) get_post_meta( $base_post->ID, 'completion_year', true ); }
+		}
 
 		// Language siblings: each language is its own published nadlan_project post,
 		// resolved by slug convention <base> / <base>-en / -fr / -ru / -ar. The engine
@@ -112,6 +130,7 @@ if ( ! function_exists( 'nadlan_showroom_engine_build_project' ) ) {
 		return array(
 			'slug'           => $post->post_name,
 			'wp_id'          => (int) $id,
+			'composed'       => nadlan_showroom_engine_composed_for( $id ),
 			'name'           => get_the_title( $id ),
 			'name_key'       => get_the_title( $id ),
 			'area'           => 'area_' . $post->post_name,
@@ -120,12 +139,18 @@ if ( ! function_exists( 'nadlan_showroom_engine_build_project' ) ) {
 				'en' => array( 'tagline' => $sub ),
 			),
 			'sub'            => $sub,
+			'developer_name' => (string) get_post_meta( $id, 'developer_name', true ),
+			'project_status' => $status_key,
+			'project_stage'  => $project_stage,
+			'completion_year'=> $completion_year,
 			'building'       => (string) get_post_meta( $id, 'building', true ),
 			'floors'         => $floors,
-			'floor_height_m' => (float) ( get_post_meta( $id, 'project_3d_floor_height_m', true ) ?: 3.05 ),
+			'floor_height_m' => $floor_height,
 			// fly-to-unit radius scales with tower height; the 150m engine fallback
 			// puts the camera inside the crown on 150m+ towers (DUO).
-			'frame_radius_m' => (int) max( 150, round( $floors * (float) ( get_post_meta( $id, 'project_3d_floor_height_m', true ) ?: 3.05 ) * 1.4 ) ),
+			'frame_radius_m' => $frame_radius,
+			'default_orbit'  => '-30deg 72deg ' . $frame_radius . 'm',
+			'default_target' => '0m ' . $target_y . 'm 0m',
 			'viewbox'        => (string) get_post_meta( $id, 'project_3d_viewbox', true ),
 			// DEFAULT MODEL (owner 2026-07-07, "a default, not a fallback"): a
 			// project with no model of its own shows the generic flagship tower,
@@ -202,6 +227,7 @@ if ( ! function_exists( 'nadlan_showroom_engine_config' ) ) {
 			'languages'      => array( 'he', 'en', 'fr', 'ru', 'ar' ),
 			'rtl_languages'  => array( 'he', 'ar' ),
 			'home_url'       => esc_url_raw( home_url() ),
+			'projects_url'   => esc_url_raw( home_url( '/projects/' ) ),
 			/* apartment studio: modular per the developer's package. Option is
 			 * the site default; a project can override via project_studio_mode
 			 * meta ('on'|'off'). */
@@ -291,7 +317,8 @@ if ( ! function_exists( 'nadlan_showroom_engine_shortcode' ) ) {
 		wp_enqueue_script( 'nadlan-model-viewer', 'https://ajax.googleapis.com/ajax/libs/model-viewer/4.3.1/model-viewer.min.js', array(), '4.3.1', true );
 		wp_script_add_data( 'nadlan-model-viewer', 'type', 'module' );
 		wp_enqueue_script( 'nadlan-engine-i18n', $base . 'i18n.js', array(), NADLAN_CONFIG_VERSION, true );
-		wp_enqueue_script( 'nadlan-engine-core', $base . 'engine.js', array( 'nadlan-engine-i18n' ), NADLAN_CONFIG_VERSION, true );
+		wp_enqueue_script( 'nadlan-engine-i18n-complete', $base . 'i18n-complete.js', array( 'nadlan-engine-i18n' ), NADLAN_CONFIG_VERSION, true );
+		wp_enqueue_script( 'nadlan-engine-core', $base . 'engine.js', array( 'nadlan-engine-i18n-complete' ), NADLAN_CONFIG_VERSION, true );
 		// buy-flow v1: "build me an offer" overlay (configure > capture > dispatch)
 		wp_enqueue_script( 'nadlan-engine-buyflow', $base . 'buyflow.js', array( 'nadlan-engine-core' ), NADLAN_CONFIG_VERSION, true );
 		// apartment studio: design-before-you-buy overlay (drag furniture,
@@ -468,6 +495,71 @@ add_action( 'init', function () {
  * Turn it on site-wide:    set option     nadlan_showroom_engine_enable = 1
  * ----------------------------------------------------------------------- */
 
+if ( ! function_exists( 'nadlan_showroom_engine_composed_for' ) ) {
+	/**
+	 * Opt-in to the consolidated project composition. The switch is stored in
+	 * project meta so the owner can roll back without deploying another build.
+	 */
+	function nadlan_showroom_engine_composed_for( $post_id ) {
+		return (int) $post_id > 0 && get_post_meta( (int) $post_id, 'nadlan_showroom_composed_v2', true ) === '1';
+	}
+}
+
+if ( ! function_exists( 'nadlan_showroom_engine_clean_article' ) ) {
+	/** Remove project UI fragments already owned by the engine, preserving prose. */
+	function nadlan_showroom_engine_clean_article( $article ) {
+		if ( ! class_exists( 'DOMDocument' ) ) {
+			return $article;
+		}
+
+		$previous = libxml_use_internal_errors( true );
+		$doc      = new DOMDocument( '1.0', 'UTF-8' );
+		$html     = '<!doctype html><html><body><div id="nadlan-article-root">' . $article . '</div></body></html>';
+		$loaded   = $doc->loadHTML( '<?xml encoding="utf-8" ?>' . $html, LIBXML_HTML_NOIMPLIED | LIBXML_HTML_NODEFDTD );
+		if ( ! $loaded ) {
+			libxml_clear_errors();
+			libxml_use_internal_errors( $previous );
+			return $article;
+		}
+
+		$xpath   = new DOMXPath( $doc );
+		$classes = array( 'nlpjx-nav', 'nlpjx-intro', 'nlpf', 'nlbc' );
+		foreach ( $classes as $class ) {
+			$query = '//*[contains(concat(" ", normalize-space(@class), " "), " ' . $class . ' ")]';
+			$nodes = $xpath->query( $query );
+			if ( ! $nodes ) { continue; }
+			$remove = array();
+			foreach ( $nodes as $node ) { $remove[] = $node; }
+			foreach ( $remove as $node ) {
+				if ( $node->parentNode ) { $node->parentNode->removeChild( $node ); }
+			}
+		}
+
+		$styles = $xpath->query( '//style' );
+		if ( $styles ) {
+			$remove = array();
+			foreach ( $styles as $style ) {
+				$css = (string) $style->textContent;
+				if ( strpos( $css, '.nlpf' ) !== false || strpos( $css, '.nlbc' ) !== false || strpos( $css, '.nlpjx-nav' ) !== false ) {
+					$remove[] = $style;
+				}
+			}
+			foreach ( $remove as $style ) {
+				if ( $style->parentNode ) { $style->parentNode->removeChild( $style ); }
+			}
+		}
+
+		$root = $doc->getElementById( 'nadlan-article-root' );
+		$out  = '';
+		if ( $root ) {
+			foreach ( $root->childNodes as $child ) { $out .= $doc->saveHTML( $child ); }
+		}
+		libxml_clear_errors();
+		libxml_use_internal_errors( $previous );
+		return trim( $out ) !== '' ? $out : $article;
+	}
+}
+
 if ( ! function_exists( 'nadlan_showroom_engine_active_for' ) ) {
 	function nadlan_showroom_engine_active_for( $post_id ) {
 		// Enabled globally for all projects to enforce a unified design language
@@ -528,9 +620,14 @@ add_filter( 'the_content', function ( $content ) {
 			}
 		}
 	}
+	if ( nadlan_showroom_engine_composed_for( $pid ) ) {
+		$article = nadlan_showroom_engine_clean_article( $article );
+	}
 	$engine = nadlan_showroom_engine_shortcode( array( 'page' => 'project', 'project' => '', 'id' => '' ) );
 	// Wrap the article so editorial.css can style it (cream/gold system).
-	return $engine . '<div class="nadlan-project-article nadlan-guide">' . nadlan_showroom_engine_weave( $article, $pid ) . '</div>';
+	$classes = 'nadlan-project-article nadlan-guide';
+	if ( nadlan_showroom_engine_composed_for( $pid ) ) { $classes .= ' is-composed'; }
+	return $engine . '<div class="' . esc_attr( $classes ) . '">' . nadlan_showroom_engine_weave( $article, $pid ) . '</div>';
 }, 8 );
 
 if ( ! function_exists( 'nadlan_showroom_engine_weave' ) ) {

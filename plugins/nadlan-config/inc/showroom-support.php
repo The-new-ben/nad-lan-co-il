@@ -605,6 +605,7 @@ if ( ! function_exists( 'nadlan_p3d_showroom_fields' ) ) {
 			'project_3d_site_plan_polygons' => 'nadlan_p3d_sanitize_json_text',
 			'project_3d_units'              => 'nadlan_p3d_sanitize_units_json',
 			'project_3d_demo'               => 'nadlan_p3d_sanitize_checkbox',
+			'nadlan_showroom_composed_v2'   => 'nadlan_p3d_sanitize_checkbox',
 		);
 	}
 }

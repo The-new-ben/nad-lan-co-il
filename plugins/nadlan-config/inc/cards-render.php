@@ -127,6 +127,7 @@ if ( ! function_exists( 'nadlan_card_render' ) ) {
 if ( ! function_exists( 'nadlan_card_append_content' ) ) {
 	function nadlan_card_append_content( $content ) {
 		if ( is_singular( array( 'nadlan_project', 'nadlan_professional', 'nadlan_property' ) ) && in_the_loop() && is_main_query() ) {
+			if ( is_singular( 'nadlan_project' ) && function_exists( 'nadlan_showroom_engine_composed_for' ) && nadlan_showroom_engine_composed_for( get_the_ID() ) ) { return $content; }
 			$content .= nadlan_card_render( get_the_ID() );
 		}
 		return $content;

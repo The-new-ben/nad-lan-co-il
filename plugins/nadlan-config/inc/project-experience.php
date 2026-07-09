@@ -139,6 +139,7 @@ if ( ! function_exists( 'nadlan_pjx_price_band' ) ) {
 	function nadlan_pjx_price_band( $content ) {
 		if ( ! is_singular( 'nadlan_project' ) || ! in_the_loop() || ! is_main_query() ) { return $content; }
 		$id    = get_the_ID();
+		if ( function_exists( 'nadlan_showroom_engine_composed_for' ) && nadlan_showroom_engine_composed_for( $id ) ) { return $content; }
 		$ppsqm = (int) get_post_meta( $id, 'project_3d_avg_price_per_sqm', true );
 		$lat   = (float) get_post_meta( $id, 'lat', true );
 		$lng   = (float) get_post_meta( $id, 'lng', true );
@@ -196,6 +197,7 @@ if ( ! function_exists( 'nadlan_pjx_top' ) ) {
 	function nadlan_pjx_top( $content ) {
 		if ( ! is_singular( 'nadlan_project' ) || ! in_the_loop() || ! is_main_query() ) { return $content; }
 		$id  = get_the_ID();
+		if ( function_exists( 'nadlan_showroom_engine_composed_for' ) && nadlan_showroom_engine_composed_for( $id ) ) { return $content; }
 		$g   = function ( $k ) use ( $id ) { return get_post_meta( $id, $k, true ); };
 		$dev = (string) $g( 'developer_name' );
 		$city = (string) $g( 'city' );
@@ -232,6 +234,7 @@ if ( ! function_exists( 'nadlan_pjx_bottom' ) ) {
 	function nadlan_pjx_bottom( $content ) {
 		if ( ! is_singular( 'nadlan_project' ) || ! in_the_loop() || ! is_main_query() ) { return $content; }
 		$id  = get_the_ID();
+		if ( function_exists( 'nadlan_showroom_engine_composed_for' ) && nadlan_showroom_engine_composed_for( $id ) ) { return $content; }
 		$g   = function ( $k ) use ( $id ) { return get_post_meta( $id, $k, true ); };
 		$ppsqm = (int) $g( 'project_3d_avg_price_per_sqm' );
 		$lat = (float) $g( 'lat' ); $lng = (float) $g( 'lng' );

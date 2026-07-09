@@ -511,3 +511,35 @@ For Rainbow and every future project, use this structure:
    real clickable apartments.
 5. Environment data is project-specific. Sde Dov can show coast, parks and nearby projects; another
    neighborhood should show its own streets, schools, transit and local context.
+
+## Unified Project Page And Rollback
+
+The project editor field `nadlan_showroom_composed_v2` controls the unified buyer page.
+
+- Checked: one breadcrumb, hero, project progress, showroom, inventory, price, surroundings,
+  media, investor information, inquiry, and the existing SEO article.
+- Unchecked: the previous standalone project fragments return.
+
+This switch does not delete or rewrite the article. Use it as the first rollback if a project page
+looks wrong after enabling the unified composition.
+
+For project progress, fill:
+
+- `project_status`: the verified current stage.
+- `completion_year`: the expected handover year only when it has a source.
+
+The buyer page calls this `מועד מסירה משוער` / `estimated handover`. Do not enter a promised date
+or countdown unless the developer has supplied and approved it.
+
+For every language page, use the matching language sibling post and keep the same project asset
+URLs. The public language switch must navigate to the sibling URL, while the engine controls use
+the same language and direction as that page.
+
+The current Rainbow media migration is reversible through:
+
+```bash
+node scripts/rainbow-composition-meta.mjs --rollback
+```
+
+The command requires the WordPress application credential in environment variables and restores
+the committed backup for HE, EN, FR, RU, and AR.
