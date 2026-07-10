@@ -50,11 +50,6 @@
   function dirKey(d) { d = String(d == null ? "" : d).trim(); return KNOWN_DIRS[d] ? d : (HE_DIRS[d] || ""); }
   function dirLabel(d) { var k = dirKey(d); return k ? t("dir_" + k) : (d || ""); }
   function statusLabel(s) { return t("status_" + s); }
-  function projectStatusLabel(s) {
-    return ["planning", "permit", "marketing", "construction", "completed"].indexOf(s) >= 0
-      ? t("project_status_" + s)
-      : "";
-  }
   function roomsLabel(n) { return t("rooms_label", { n: n }); }
   function viewText(u) { return u.view_key ? t(u.view_key) : ""; }
   function area() { return (SR.areas && SR.areas[project().area]) || { map: { pins: [], project_pin: { x: 50, y: 50 }, coast_x: 16 }, spoke_groups: [], stats: [] }; }
@@ -137,9 +132,7 @@
     ROOT.className = "nl-app";
     ROOT.innerHTML = (state.page === "home")
       ? header() + homeMain() + footer()
-      : (project().composed
-        ? projectBar() + secNav() + projectMain() + sticky() + compareTray()
-        : header() + secNav() + projectMain() + footer() + sticky() + compareTray());
+      : header() + secNav() + projectMain() + footer() + sticky() + compareTray();
     afterRender();
   }
 
@@ -171,19 +164,8 @@
       ? '<div class="nl-nav__links"><a href="#projects" class="is-active">' + esc(t("nav_projects")) + '</a><a href="#areas">' + esc(t("nav_areas")) + '</a><a href="#list">' + esc(t("nav_list")) + "</a></div>"
       : "";
     return '<header class="nl-header"><div class="nl-wrap nl-header__row">' +
-      '<a class="nl-brand" href="' + esc(SR.config.home_url || "/") + '"><span class="nl-brand__mark">N</span><span><span class="nl-brand__name">' + esc(t("brand")) + '</span> <span class="nl-brand__sub">' + esc(t("brand_sub")) + "</span></span></a>" +
+      '<a class="nl-brand" href="home.html"><span class="nl-brand__mark">N</span><span><span class="nl-brand__name">' + esc(t("brand")) + '</span> <span class="nl-brand__sub">' + esc(t("brand_sub")) + "</span></span></a>" +
       '<nav class="nl-nav">' + nav + langBar() + "</nav></div></header>";
-  }
-
-  function projectBar() {
-    var home = SR.config.home_url || "/";
-    var projects = SR.config.projects_url || (home.replace(/\/$/, "") + "/projects/");
-    return '<div class="nl-projectbar"><div class="nl-wrap nl-projectbar__row">' +
-      '<nav class="nl-breadcrumb" aria-label="' + esc(t("breadcrumb_aria")) + '">' +
-        '<a href="' + esc(home) + '">' + esc(t("breadcrumb_home")) + '</a><span aria-hidden="true">/</span>' +
-        '<a href="' + esc(projects) + '">' + esc(t("breadcrumb_projects")) + '</a><span aria-hidden="true">/</span>' +
-        '<span aria-current="page">' + esc(projName()) + '</span></nav>' +
-      langBar() + '</div></div>';
   }
 
   /* sticky in-page section nav (the single in-page nav on a project page) */
@@ -201,7 +183,6 @@
   function projectMain() {
     return "<main>" +
       '<section class="nl-sec nl-wrap" id="top">' + hero() + "</section>" +
-      projectMilestone() +
       '<section class="nl-wrap" id="building" style="padding-bottom:clamp(40px,6vw,80px)">' + theater() + "</section>" +
       '<section class="nl-sec nl-wrap" id="inventory">' + inventory() + "</section>" +
       '<section class="nl-sec nl-wrap" id="price">' + price() + "</section>" +
@@ -218,13 +199,11 @@
   function hero() {
     var p = project(), avail = units().filter(function (u) { return u.status === "available"; }).length;
     var hi = units().reduce(function (m, u) { return Math.max(m, u.floor); }, 0);
-    var projectMeta = p.composed ? [p.developer_name, projectStatusLabel(p.project_status), p.completion_year ? t("handover_estimated", { n: p.completion_year }) : ""].filter(Boolean) : [];
     return '<div class="nl-hero">' +
       "<div>" +
         '<span class="nl-eyebrow">' + esc(t("hero_eyebrow")) + "</span>" +
         '<hr class="nl-rule">' +
         '<h1 class="nl-hero__h1">' + esc(projName()) + "</h1>" +
-        (projectMeta.length ? '<div class="nl-hero__meta">' + projectMeta.map(function (value) { return '<span>' + esc(value) + '</span>'; }).join("") + '</div>' : "") +
         '<p class="nl-lede" style="margin-top:14px">' + esc(content("tagline")) + "</p>" +
         '<div class="nl-hero__cta"><button class="nl-btn nl-btn--accent" data-act="scroll" data-id="inquiry">' + esc(t("hero_cta_primary")) + '</button><button class="nl-btn nl-btn--ghost" data-act="scroll" data-id="inventory">' + esc(t("hero_cta_secondary")) + "</button></div>" +
         '<div class="nl-hero__facts">' +
@@ -235,25 +214,6 @@
       "</div>" +
       '<div class="nl-hero__media"><img src="' + esc(p.hero_image || p.model_poster) + '" alt="' + esc(projName()) + '" loading="eager">' + (SR.config.demo ? '<span class="nl-badge nl-badge--demo nl-hero__badge">' + esc(t("demo_badge")) + "</span>" : "") + "</div>" +
     "</div>";
-  }
-
-  /* The buyer-facing progress tracker replaces the older standalone band on
-     composed pages, retaining the capability inside one project hierarchy. */
-  function projectMilestone() {
-    var p = project(), stage = parseInt(p.project_stage, 10);
-    if (!p.composed) return "";
-    if (!isFinite(stage)) stage = -1;
-    if (stage < 0 && !p.completion_year) return "";
-    var labels = ["timeline_planning", "timeline_permit", "timeline_marketing", "timeline_construction", "timeline_handover"];
-    var current = Math.max(0, Math.min(4, stage));
-    return '<section class="nl-wrap nl-progress" aria-labelledby="nl-progress-title">' +
-      '<div class="nl-progress__head"><div><span class="nl-eyebrow">' + esc(t("timeline_eyebrow")) + '</span><h2 id="nl-progress-title">' + esc(t("timeline_title")) + '</h2></div>' +
-      (p.completion_year ? '<div class="nl-progress__delivery"><span>' + esc(t("handover_label")) + '</span><strong>' + esc(t("handover_estimated", { n: p.completion_year })) + '</strong></div>' : "") + '</div>' +
-      '<ol class="nl-progress__steps" style="--nl-progress:' + (current * 25) + '%">' + labels.map(function (key, index) {
-        var cls = index < current ? "is-done" : (index === current ? "is-current" : "");
-        return '<li class="' + cls + '"><i aria-hidden="true"></i><span>' + esc(t(key)) + '</span></li>';
-      }).join("") + '</ol>' +
-      '<p class="nl-progress__note">' + esc(t("timeline_note")) + '</p></section>';
   }
 
   /* block 3 + 4 - theater (3D) and facade backup */
@@ -296,7 +256,7 @@
         }).join("") + "</div>" : "") +
         (p.model_glb ? '<div class="nl-toggle" role="group" aria-label="view"><button data-act="view" data-id="3d" aria-pressed="true">' + esc(t("view_3d")) + '</button><button data-act="view" data-id="facade" aria-pressed="false">' + esc(t("view_facade")) + "</button></div>" : "") + "</div>" +
       '<div class="nl-stagewrap">' +
-        (p.model_glb ? '<model-viewer id="nl-mv" class="nl-stage" src="' + esc(p.model_glb) + '" loading="lazy" reveal="auto" camera-controls auto-rotate auto-rotate-delay="2400" rotation-per-second="8deg" interaction-prompt="basic" environment-image="neutral" exposure="' + (p.composed ? "0.82" : "1.02") + '" shadow-intensity="0.55" shadow-softness="1" camera-orbit="' + esc(p.default_orbit) + '" camera-target="' + esc(p.default_target) + '" min-camera-orbit="-Infinity 56deg auto" max-camera-orbit="Infinity 82deg auto" min-field-of-view="16deg" max-field-of-view="68deg" touch-action="pan-y">' + hots + "</model-viewer>" : "") +
+        (p.model_glb ? '<model-viewer id="nl-mv" class="nl-stage" src="' + esc(p.model_glb) + '" loading="lazy" reveal="auto" camera-controls auto-rotate auto-rotate-delay="800" rotation-per-second="14deg" interaction-prompt="basic" environment-image="neutral" exposure="1.02" shadow-intensity="0.55" shadow-softness="1" camera-orbit="' + esc(p.default_orbit) + '" camera-target="' + esc(p.default_target) + '" min-camera-orbit="auto 48deg auto" max-camera-orbit="auto 86deg auto" min-field-of-view="16deg" max-field-of-view="68deg" touch-action="pan-y">' + hots + "</model-viewer>" : "") +
         '<div class="nl-poster" id="nl-poster" style="background-image:url(' + esc(p.model_poster) + ')"></div>' +
         '<div class="nl-spinner" id="nl-spin"><i></i>' + esc(t("loading_model")) + "</div>" +
         (p.model_glb && p.model_generic ? '<div class="nl-generic-chip">' + esc(t("generic_model")) + "</div>" : "") +
@@ -895,10 +855,10 @@
 
   /* footer */
   function footer() {
-    var projLinks = SR.order.map(function (k) { return '<li><a href="' + esc(SR.projects[k].url || ("?project=" + k)) + '">' + esc(t(SR.projects[k].name_key) || SR.projects[k].name || "") + "</a></li>"; }).join("");
+    var projLinks = SR.order.map(function (k) { return '<li><a href="project.html?project=' + esc(k) + '">' + esc(t(SR.projects[k].name_key)) + "</a></li>"; }).join("");
     var langLinks = pageLangs().map(function (l) { return '<li><a href="' + esc(langHref(l)) + '" data-act="lang" data-id="' + l + '">' + esc(t("lang_" + l)) + "</a></li>"; }).join("");
     return '<footer class="nl-footer"><div class="nl-wrap"><div class="nl-footer__row">' +
-      '<div><a class="nl-brand" href="' + esc(SR.config.home_url || "/") + '"><span class="nl-brand__mark">N</span><span class="nl-brand__name" style="color:#efe7d6">' + esc(t("brand")) + '</span></a><p style="color:#b8b1a2;font-size:14px;margin-top:12px;max-width:34ch">' + esc(t("footer_tagline")) + "</p></div>" +
+      '<div><a class="nl-brand" href="home.html"><span class="nl-brand__mark">N</span><span class="nl-brand__name" style="color:#efe7d6">' + esc(t("brand")) + '</span></a><p style="color:#b8b1a2;font-size:14px;margin-top:12px;max-width:34ch">' + esc(t("footer_tagline")) + "</p></div>" +
       "<div><h5>" + esc(t("footer_col_projects")) + "</h5><ul>" + projLinks + "</ul></div>" +
       "<div><h5>" + esc(t("footer_col_areas")) + '</h5><ul><li><a href="#world">' + esc(t("area_sde_dov")) + "</a></li></ul></div>" +
       "<div><h5>" + esc(t("footer_col_langs")) + "</h5><ul>" + langLinks + "</ul></div>" +
@@ -940,7 +900,6 @@
         if (poster) poster.classList.remove("is-hidden");
         if (modelError) { modelError.hidden = false; modelError.textContent = t("model_error"); }
         mv.classList.add("nlp3d-model-error-source");
-        if (project() && (project().facade_image || project().facade_concept_image)) { setView("facade"); }
       };
       if (mv.loaded) reveal(); else mv.addEventListener("load", reveal, { once: true });
       mv.addEventListener("error", fail);
@@ -1191,7 +1150,7 @@
     var node = e.target.closest("[data-act]"); if (!node) return;
     var act = node.dataset.act, id = node.dataset.id;
     if (act === "lang") { e.preventDefault(); switchLang(id); }
-    else if (act === "select") selectUnit(id, false, node.classList.contains("nl-ucard"));
+    else if (act === "select") selectUnit(id);
     else if (act === "close") closePanel();
     else if (act === "view") setView(id);
     else if (act === "tab") setTab(id);
@@ -1217,7 +1176,7 @@
   });
   ROOT.addEventListener("keydown", function (e) {
     var node = e.target.closest('[role="button"][data-act="select"]');
-    if (node && (e.key === "Enter" || e.key === " ")) { e.preventDefault(); selectUnit(node.dataset.id, false, node.classList.contains("nl-ucard")); }
+    if (node && (e.key === "Enter" || e.key === " ")) { e.preventDefault(); selectUnit(node.dataset.id); }
     if (e.key === "Escape") closePanel();
   });
 
@@ -1234,7 +1193,7 @@
     if (tb === "view") winStageInit(u);
   }
 
-  function selectUnit(id, instant, focusStage) {
+  function selectUnit(id, instant) {
     var u = unit(id); if (!u) return;
     var prev = state.unitId; state.unitId = id; state.tab = "plan";
     // panel
@@ -1268,7 +1227,6 @@
     deeplink();
     recordRecent(u);
     var rv = document.getElementById("nl-resetview"); if (rv) rv.hidden = false;
-    if (focusStage) { setTimeout(function () { scrollTo("building"); }, 20); }
   }
   /* Apartment Studio bridge: hand the overlay everything it needs */
   function openStudio(id) {
