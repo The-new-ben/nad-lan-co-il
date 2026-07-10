@@ -44,7 +44,7 @@ node scripts/rainbow-composition-meta.mjs --rollback
 The script restores the committed pre-release metadata backup for all five Rainbow sibling pages.
 Code rollback is the normal plugin downgrade; no post body is rewritten.
 
-## Live Gate (completed 2026-07-10)
+## Live Gate (pending deploy)
 
 - Healthcheck `1.72.68`.
 - Packaged GLB and all plan URLs return HTTP 200.
@@ -52,12 +52,3 @@ Code rollback is the normal plugin downgrade; no post body is rewritten.
   language navigation rechecked in live Chrome.
 - One H1, one project progress tracker, one breadcrumb, no duplicate project-card/price/map/social
   fragments, no page errors, no horizontal overflow.
-
-Live screenshots:
-
-- `docs/qa/screenshots/rainbow-17268/live-he-desktop-1440.png`
-- `docs/qa/screenshots/rainbow-17268/live-he-selected-desktop-1440.png`
-- `docs/qa/screenshots/rainbow-17268/live-he-model-after-drag-1440.png`
-- `docs/qa/screenshots/rainbow-17268/live-he-studio-desktop-1440.png`
-- `docs/qa/screenshots/rainbow-17268/live-he-mobile-top-390.png`
-- `docs/qa/screenshots/rainbow-17268/live-he-mobile-selected-390.png`
