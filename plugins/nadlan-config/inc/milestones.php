@@ -53,7 +53,6 @@ if ( ! function_exists( 'nadlan_ms_status_for' ) ) {
 add_filter( 'the_content', function ( $content ) {
 	if ( ! is_singular( 'nadlan_project' ) || ! in_the_loop() || ! is_main_query() ) { return $content; }
 	$post   = get_post();
-	if ( $post && function_exists( 'nadlan_showroom_engine_composed_for' ) && nadlan_showroom_engine_composed_for( $post->ID ) ) { return $content; }
 	$status = nadlan_ms_status_for( $post );
 	$stage  = nadlan_ms_stage_of( $status );
 	if ( $stage < 0 ) { return $content; }

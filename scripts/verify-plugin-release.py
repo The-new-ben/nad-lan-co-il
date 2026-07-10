@@ -52,12 +52,24 @@ def one_match(pattern: str, text: str, label: str) -> str:
 def detect_versions() -> dict[str, str]:
     main = read_text(MAIN)
     health = read_text(HEALTH) if HEALTH.exists() else ""
+    plugin_constant = one_match(
+        r"define\(\s*'NADLAN_CONFIG_VERSION'\s*,\s*'([0-9][0-9.]*)'\s*\)",
+        main,
+        "NADLAN_CONFIG_VERSION constant",
+    )
     versions = {
         "plugin_header": one_match(r"^\s*\*\s*Version:\s*([0-9][0-9.]*)", main, "plugin header Version"),
+        "plugin_constant": plugin_constant,
         "healthcheck_main": one_match(r"'version'\s*=>\s*'([0-9][0-9.]*)'", main, "main healthcheck version"),
     }
     if health:
-        versions["health_module"] = one_match(r"'version'\s*=>\s*'([0-9][0-9.]*)'", health, "health module version")
+        literal = re.search(r"'version'\s*=>\s*'([0-9][0-9.]*)'", health)
+        if literal:
+            versions["health_module"] = literal.group(1)
+        elif "NADLAN_CONFIG_VERSION" in health:
+            versions["health_module"] = plugin_constant
+        else:
+            fail("health module uses neither a literal version nor NADLAN_CONFIG_VERSION")
     with MANIFEST.open(encoding="utf-8") as fh:
         manifest = json.load(fh)
     versions["manifest"] = str(manifest.get("version", ""))

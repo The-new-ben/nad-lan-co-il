@@ -71,6 +71,5 @@ if ( ! function_exists( 'nadlan_pe_render' ) ) {
 
 add_filter( 'the_content', function ( $content ) {
 	if ( ! is_singular( array( 'nadlan_professional', 'nadlan_project', 'nadlan_property' ) ) || ! in_the_loop() || ! is_main_query() ) { return $content; }
-	if ( is_singular( 'nadlan_project' ) && function_exists( 'nadlan_showroom_engine_composed_for' ) && nadlan_showroom_engine_composed_for( get_the_ID() ) ) { return $content; }
 	return $content . nadlan_pe_render( get_the_ID() );
 }, 23 );
