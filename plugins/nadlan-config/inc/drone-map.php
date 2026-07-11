@@ -152,7 +152,8 @@ if ( ! function_exists( 'nadlan_drone_map_band' ) ) {
 			mapboxgl.accessToken=band.dataset.token;
 			/* Hebrew renders REVERSED without the RTL text plugin (caught on the live hero) */
 			try{if(mapboxgl.getRTLTextPluginStatus&&mapboxgl.getRTLTextPluginStatus()==="unavailable"){mapboxgl.setRTLTextPlugin("https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-rtl-text/v0.3.0/mapbox-gl-rtl-text.js",null,true)}}catch(e){}
-			var map=new mapboxgl.Map({container:"nldrone-map",style:"mapbox://styles/mapbox/dark-v11",center:[34.86,31.95],zoom:8.6,pitch:55,bearing:-10,attributionControl:true});
+			/* cooperativeGestures (owner 2026-07-11): page scroll must never zoom the map */
+			var map=new mapboxgl.Map({container:"nldrone-map",style:"mapbox://styles/mapbox/dark-v11",center:[34.86,31.95],zoom:8.6,pitch:55,bearing:-10,attributionControl:true,cooperativeGestures:true,locale:{"CooperativeGesturesHandler.WindowsHelpText":"\u05dc\u05d7\u05e6\u05d5 Ctrl \u05d5\u05d2\u05dc\u05dc\u05d5 \u05db\u05d3\u05d9 \u05dc\u05d4\u05ea\u05e7\u05e8\u05d1 \u05d1\u05de\u05e4\u05d4","CooperativeGesturesHandler.MacHelpText":"\u05dc\u05d7\u05e6\u05d5 \u2318 \u05d5\u05d2\u05dc\u05dc\u05d5 \u05db\u05d3\u05d9 \u05dc\u05d4\u05ea\u05e7\u05e8\u05d1 \u05d1\u05de\u05e4\u05d4","TouchPanBlocker.Message":"\u05d4\u05d6\u05d9\u05d6\u05d5 \u05d0\u05ea \u05d4\u05de\u05e4\u05d4 \u05d1\u05e9\u05ea\u05d9 \u05d0\u05e6\u05d1\u05e2\u05d5\u05ea"}});
 			map.addControl(new mapboxgl.NavigationControl({visualizePitch:true}));
 			map.on("load",function(){
 				/* night tuning (owner 2026-07-07: satellite removed, night is the map) */
@@ -183,19 +184,23 @@ if ( ! function_exists( 'nadlan_drone_map_band' ) ) {
 				   instead of 197 stacked pins pretending to be exact addresses. */
 				var gj={type:"FeatureCollection",features:items.map(function(p){
 					return {type:"Feature",geometry:{type:"Point",coordinates:[p.lng,p.lat]},
-						properties:{id:p.id,title:p.title,url:p.url,city:p.city||"",img:p.img||"",conf:p.conf||""}};
+						properties:{id:p.id,title:p.title,short:String(p.title||"").split(/\s[-|\u00b7]\s|\s\u2013\s/)[0].trim(),url:p.url,city:p.city||"",img:p.img||"",conf:p.conf||""}};
 				})};
 				var addData=function(){
 					if(map.getSource("nlprojects"))return;
 					map.addSource("nlprojects",{type:"geojson",data:gj,cluster:true,clusterRadius:34,clusterMaxZoom:22});
 					map.addLayer({id:"nl-clusters",type:"circle",source:"nlprojects",filter:["has","point_count"],
 						paint:{"circle-color":"#9C7A3C","circle-opacity":.85,"circle-stroke-width":1.4,"circle-stroke-color":"#FAF7F1",
-							"circle-radius":["step",["get","point_count"],10,10,13,50,17,150,22]}});
+							"circle-radius":["step",["get","point_count"],7,10,9,50,12,150,16]}});
 					map.addLayer({id:"nl-cluster-count",type:"symbol",source:"nlprojects",filter:["has","point_count"],
 						layout:{"text-field":["get","point_count_abbreviated"],"text-size":10.5,"text-font":["DIN Pro Medium","Arial Unicode MS Bold"]},
 						paint:{"text-color":"#FAF7F1"}});
 					map.addLayer({id:"nl-points",type:"circle",source:"nlprojects",filter:["!",["has","point_count"]],
-						paint:{"circle-color":"#E9D9A8","circle-radius":["interpolate",["linear"],["zoom"],8,2.6,12,4.5,15,7],"circle-stroke-width":1,"circle-stroke-color":"#14130F"}});
+						paint:{"circle-color":"#E9D9A8","circle-radius":["interpolate",["linear"],["zoom"],8,2,12,3.5,15,5.5],"circle-stroke-width":1,"circle-stroke-color":"#14130F"}});
+					/* little labels beside the little dots; collisions hide the text, never the dot */
+					map.addLayer({id:"nl-point-labels",type:"symbol",source:"nlprojects",filter:["!",["has","point_count"]],minzoom:9.5,
+						layout:{"text-field":["get","short"],"text-size":10,"text-font":["DIN Pro Medium","Arial Unicode MS Bold"],"text-anchor":"top","text-offset":[0,0.6],"text-optional":true,"text-allow-overlap":false},
+						paint:{"text-color":"#E9E2D2","text-halo-color":"#14130F","text-halo-width":1.1}});
 					function popHtml(p){return '<div class="nldrone-pop" dir="auto"><b>'+p.title+"</b>"+(p.img?'<img src="'+p.img+'" alt="" loading="lazy">':"")+(p.city?'<div style="font-size:12px;color:#6D665C">'+p.city+(p.conf==="city"?" · "+L.city:"")+"</div>":"")+'<a href="'+p.url+'">'+L.top+"</a></div>"}
 					map.on("click","nl-points",function(e){
 						var p=e.features[0].properties;

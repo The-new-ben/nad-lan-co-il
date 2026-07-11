@@ -436,7 +436,7 @@ document.addEventListener("DOMContentLoaded",function(){
 				if(!window.mapboxgl){return}
 				mapboxgl.accessToken=um.dataset.token;
 				var lat=parseFloat(um.dataset.lat),lng=parseFloat(um.dataset.lng);
-				var map=new mapboxgl.Map({container:um,style:"mapbox://styles/mapbox/light-v11",center:[lng,lat],zoom:14.4,pitch:0,attributionControl:true});
+				var map=new mapboxgl.Map({container:um,style:"mapbox://styles/mapbox/light-v11",center:[lng,lat],zoom:14.4,pitch:0,attributionControl:true,cooperativeGestures:true,locale:{"CooperativeGesturesHandler.WindowsHelpText":"\u05dc\u05d7\u05e6\u05d5 Ctrl \u05d5\u05d2\u05dc\u05dc\u05d5 \u05db\u05d3\u05d9 \u05dc\u05d4\u05ea\u05e7\u05e8\u05d1 \u05d1\u05de\u05e4\u05d4","CooperativeGesturesHandler.MacHelpText":"\u05dc\u05d7\u05e6\u05d5 \u2318 \u05d5\u05d2\u05dc\u05dc\u05d5 \u05db\u05d3\u05d9 \u05dc\u05d4\u05ea\u05e7\u05e8\u05d1 \u05d1\u05de\u05e4\u05d4","TouchPanBlocker.Message":"\u05d4\u05d6\u05d9\u05d6\u05d5 \u05d0\u05ea \u05d4\u05de\u05e4\u05d4 \u05d1\u05e9\u05ea\u05d9 \u05d0\u05e6\u05d1\u05e2\u05d5\u05ea"}});
 				map.on("style.load",function(){try{map.setPaintProperty("water","fill-color","#A9C6D0")}catch(e){}try{map.setPaintProperty("land","background-color","#F6F1E6")}catch(e){}});
 				map.addControl(new mapboxgl.NavigationControl({visualizePitch:true}));
 				window.NLPJX_MAP=map; // engine syncs model orbit -> map bearing through this handle

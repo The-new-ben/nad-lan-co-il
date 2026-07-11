@@ -17,7 +17,7 @@
     lang: qs.get("lang") || SR.config.default_lang,
     projectKey: (qs.get("project") && SR.projects[qs.get("project")]) ? qs.get("project") : SR.config.default_project,
     unitId: qs.get("unit") || null,
-    view: "3d", tab: "plan", filter: "all", light: "day",
+    view: "3d", tab: "plan", filter: "all", light: "day", sunMin: 720,
     favs: load("nl_favs", []), compare: [],
     mvReady: false
   };
@@ -51,7 +51,7 @@
   function dirLabel(d) { var k = dirKey(d); return k ? t("dir_" + k) : (d || ""); }
   function statusLabel(s) { return t("status_" + s); }
   function roomsLabel(n) { return t("rooms_label", { n: n }); }
-  function viewText(u) { return u.view_key ? t(u.view_key) : ""; }
+  function viewText(u) { return u.view_key ? t(u.view_key) : (u.view || ""); }
   function area() { return (SR.areas && SR.areas[project().area]) || { map: { pins: [], project_pin: { x: 50, y: 50 }, coast_x: 16 }, spoke_groups: [], stats: [] }; }
   function spoke(id) { return (SR.spokes && SR.spokes[id]) || null; }
 
@@ -104,17 +104,23 @@
        boutique buildings) wins; the floor+dir formula is the fallback for
        single-tower-at-origin models. */
     var hp = String(u.hotspot_position || "").trim().split(/\s+/);
+    /* normals are unitless direction vectors (model-viewer parses them for
+       facing/occlusion); default to the unit's own compass direction so
+       far-side hotspots hide when the building rotates between them and us */
+    var dv = DIRV[dirKey(u.dir)] || null;
     if (hp.length === 3 && hp.every(function (n) { return isFinite(parseFloat(n)); })) {
-      var hn = String(u.hotspot_normal || "0 0 1").trim().split(/\s+/);
-      if (hn.length !== 3 || !hn.every(function (n) { return isFinite(parseFloat(n)); })) hn = ["0", "0", "1"];
+      var hn = String(u.hotspot_normal || "").trim().split(/\s+/);
+      if (hn.length !== 3 || !hn.every(function (n) { return isFinite(parseFloat(n)); })) {
+        hn = dv ? [String(dv[0]), "0", String(dv[1])] : ["0", "0", "1"];
+      }
       return {
         pos: hp.map(function (n) { return parseFloat(n).toFixed(2) + "m"; }).join(" "),
-        nrm: hn.map(function (n) { return parseFloat(n) + "m"; }).join(" ")
+        nrm: hn.map(function (n) { return String(parseFloat(n)); }).join(" ")
       };
     }
     var fh = parseFloat(project().floor_height_m) || 3.05, half = 13.2;
-    var v = DIRV[dirKey(u.dir) || u.dir] || [-1, 0], y = u.floor * fh + fh * 0.4;
-    return { pos: (v[0] * half).toFixed(2) + "m " + y.toFixed(2) + "m " + (v[1] * half).toFixed(2) + "m", nrm: v[0] + "m 0m " + v[1] + "m" };
+    var v = dv || DIRV[u.dir] || [-1, 0], y = u.floor * fh + fh * 0.4;
+    return { pos: (v[0] * half).toFixed(2) + "m " + y.toFixed(2) + "m " + (v[1] * half).toFixed(2) + "m", nrm: v[0] + " 0 " + v[1] };
   }
   function orbitRadius(orbit, r) { var p = String(orbit).trim().split(/\s+/); if (p.length >= 3) p[2] = r + "m"; return p.join(" "); }
 
@@ -199,11 +205,20 @@
   function hero() {
     var p = project(), avail = units().filter(function (u) { return u.status === "available"; }).length;
     var hi = units().reduce(function (m, u) { return Math.max(m, u.floor); }, 0);
+    /* SEO: exactly ONE h1 per page. Project pages already carry the
+       server-rendered h1 (.nlpf-name, directory.php) - the engine hero then
+       renders as a same-styled h2. Pages without a server h1 keep the h1. */
+    var hasServerH1 = false;
+    try {
+      var h1s = document.querySelectorAll("h1");
+      for (var hi2 = 0; hi2 < h1s.length; hi2++) { if (!ROOT.contains(h1s[hi2])) { hasServerH1 = true; break; } }
+    } catch (e) {}
+    var hTag = hasServerH1 ? "h2" : "h1";
     return '<div class="nl-hero">' +
       "<div>" +
         '<span class="nl-eyebrow">' + esc(t("hero_eyebrow")) + "</span>" +
         '<hr class="nl-rule">' +
-        '<h1 class="nl-hero__h1">' + esc(projName()) + "</h1>" +
+        "<" + hTag + ' class="nl-hero__h1">' + esc(projName()) + "</" + hTag + ">" +
         '<p class="nl-lede" style="margin-top:14px">' + esc(content("tagline")) + "</p>" +
         '<div class="nl-hero__cta"><button class="nl-btn nl-btn--accent" data-act="scroll" data-id="inquiry">' + esc(t("hero_cta_primary")) + '</button><button class="nl-btn nl-btn--ghost" data-act="scroll" data-id="inventory">' + esc(t("hero_cta_secondary")) + "</button></div>" +
         '<div class="nl-hero__facts">' +
@@ -221,7 +236,7 @@
     var p = project();
     var hots = units().map(function (u) {
       var pos = unitPos(u), cls = "nl-hot" + (u.status === "reserved" ? " nl-hot--reserved" : u.status === "sold" ? " nl-hot--sold" : "") + (u.recommended ? " nl-hot--rec" : "");
-      return '<button slot="hotspot-' + esc(u.id) + '" data-position="' + pos.pos + '" data-normal="' + pos.nrm + '" class="' + cls + '" data-act="select" data-id="' + esc(u.id) + '" aria-label="' + esc(unitTitleAria(u)) + '">' + esc(u.floor) + "</button>";
+      return '<button slot="hotspot-' + esc(u.id) + '" data-position="' + pos.pos + '" data-normal="' + pos.nrm + '" data-visibility-attribute="visible" class="' + cls + '" data-act="select" data-id="' + esc(u.id) + '" aria-label="' + esc(unitTitleAria(u)) + '">' + esc(u.floor) + "</button>";
     }).join("");
     var orient = p.orientation || {};
     function opin(side, key, pos) { return orient[key] ? '<span class="nl-orient" style="' + pos + '">' + svg(side, 12) + esc(t(orient[key])) + "</span>" : ""; }
@@ -244,16 +259,23 @@
       facadeInner = '<div class="nl-facade__frame nl-facade__missing" role="status"><strong>' + esc(t("facade_missing_title")) + "</strong><p>" + esc(t("facade_missing_text")) + "</p></div>";
     }
 
+    /* THE DOCK (owner 2026-07-11: "labels are too much on the frame" + most
+       were click-dead): the top bar keeps ONLY title + 3d/facade toggle; the
+       working controls live in a normal-flow strip UNDER the stage - no
+       overlay, no pointer-events traps. Filters live at the inventory head
+       (with counts); a small on-stage flag appears while a filter is active. */
+    var dock = p.model_glb ? '<div class="nl-theater__dock">' +
+        '<div class="nl-sundial" role="group" aria-label="' + esc(t("sun_sim_label")) + '">' +
+          '<span class="nl-sundial__sun" aria-hidden="true">&#9728;</span>' +
+          '<input type="range" id="nl-sunslider" min="360" max="1140" step="15" value="' + state.sunMin + '" aria-label="' + esc(t("sun_time_aria")) + '">' +
+          '<output class="nl-sundial__time" id="nl-suntime">' + fmtTime(state.sunMin) + "</output>" +
+        "</div>" +
+        (SR.config.studio !== "off" ? '<button class="nl-cotour-btn nl-studio-launch" data-act="studio-any" type="button">' + esc(t("nlst_open")) + "</button>" : "") +
+        '<button class="nl-cotour-btn" data-act="cotour" type="button">' + esc(t("cotour_start")) + "</button>" +
+        '<p class="nl-sundial__note">' + esc(t("sun_sim_note")) + "</p>" +
+      "</div>" : "";
     return '<div class="nl-theater">' +
       '<div class="nl-theater__top"><div class="nl-theater__title"><span class="e">' + esc(t("theater_eyebrow")) + "</span><h2>" + esc(t("theater_title")) + "</h2></div>" +
-        (p.model_glb && SR.config.studio !== "off" ? '<button class="nl-cotour-btn nl-studio-launch" data-act="studio-any" type="button">' + esc(t("nlst_open")) + "</button>" : "") +
-        (p.model_glb ? '<button class="nl-cotour-btn" data-act="cotour" type="button">' + esc(t("cotour_start")) + "</button>" : "") +
-        (p.model_glb ? '<div class="nl-filters nl-tabs nl-filters--stage nl-light" role="group" aria-label="light">' + ["day","dusk","night"].map(function (m) {
-          return '<button data-act="light" data-id="' + m + '" aria-pressed="' + (state.light === m) + '">' + esc(t("light_" + m)) + "</button>";
-        }).join("") + "</div>" : "") +
-        (p.model_glb ? '<div class="nl-filters nl-tabs nl-filters--stage" role="group" aria-label="filter">' + ["all","available","3","4","5"].map(function (f) {
-          return '<button data-act="filter" data-id="' + f + '" aria-pressed="' + (state.filter === f) + '">' + esc(t("filter_" + f)) + "</button>";
-        }).join("") + "</div>" : "") +
         (p.model_glb ? '<div class="nl-toggle" role="group" aria-label="view"><button data-act="view" data-id="3d" aria-pressed="true">' + esc(t("view_3d")) + '</button><button data-act="view" data-id="facade" aria-pressed="false">' + esc(t("view_facade")) + "</button></div>" : "") + "</div>" +
       '<div class="nl-stagewrap">' +
         (p.model_glb ? '<model-viewer id="nl-mv" class="nl-stage" src="' + esc(p.model_glb) + '" loading="lazy" reveal="auto" camera-controls auto-rotate auto-rotate-delay="800" rotation-per-second="14deg" interaction-prompt="basic" environment-image="neutral" exposure="1.02" shadow-intensity="0.55" shadow-softness="1" camera-orbit="' + esc(p.default_orbit) + '" camera-target="' + esc(p.default_target) + '" min-camera-orbit="auto 48deg auto" max-camera-orbit="auto 86deg auto" min-field-of-view="16deg" max-field-of-view="68deg" touch-action="pan-y">' + hots + "</model-viewer>" : "") +
@@ -266,8 +288,11 @@
         '<div class="nl-facade" id="nl-facade">' + facadeInner + "</div>" +
         '<div class="nl-scrim" id="nl-scrim"></div>' +
         (p.model_glb ? '<button class="nl-resetview" id="nl-resetview" data-act="resetview" type="button" hidden>' + esc(t("reset_view")) + "</button>" : "") +
+        (p.model_glb ? '<div class="nl-sunmark" id="nl-sunmark" aria-hidden="true" hidden></div>' : "") +
+        (p.model_glb ? '<button class="nl-filterflag" id="nl-filterflag" data-act="filter" data-id="all" type="button" hidden></button>' : "") +
         panel() +
       "</div>" +
+      dock +
     "</div>";
   }
   function unitTitleAria(u) { return roomsLabel(u.rooms) + ", " + t("floor_label", { n: u.floor }) + ", " + dirLabel(u.dir) + ", " + statusLabel(u.status); }
@@ -291,7 +316,7 @@
       "</div>" + sunLine(u) + scarcityLine(u) + mortgageStrip(u) +
       '<div class="nl-tabs" role="tablist">' +
         '<button class="nl-tab" role="tab" data-act="tab" data-id="plan" aria-selected="' + (state.tab === "plan") + '">' + esc(t("tab_plan")) + '</button>' +
-        '<button class="nl-tab" role="tab" data-act="tab" data-id="view" aria-selected="' + (state.tab === "view") + '">' + esc(t("tab_view")) + '</button>' +
+        '<button class="nl-tab" role="tab" data-act="tab" data-id="view" aria-selected="' + (state.tab === "view") + '">' + esc(dirKey(u.dir) ? t("tab_view_dir", { d: dirLabel(u.dir) }) : t("tab_view")) + '</button>' +
         '<button class="nl-tab" role="tab" data-act="tab" data-id="tour" aria-selected="' + (state.tab === "tour") + '">' + esc(t("tab_tour")) + "</button></div>" +
       '<div class="nl-tabpane">' + tabPane(u) + "</div>" +
       '<div class="nl-panel__actions">' +
@@ -358,6 +383,7 @@
             '<button class="nl-winstage__turn" data-act="winlook" data-id="' + esc(u.id) + '" data-d="-30" aria-label="' + esc(t("winview_turn_left")) + '">&#8634;</button>' +
             '<span class="nl-winstage__meta">' + esc(t("floor_label", { n: u.floor })) + " \u00B7 " + esc(dirLabel(u.dir)) + "</span>" +
             '<button class="nl-winstage__turn" data-act="winlook" data-id="' + esc(u.id) + '" data-d="30" aria-label="' + esc(t("winview_turn_right")) + '">&#8635;</button>' +
+            '<button class="nl-winstage__turn nl-winstage__fs" data-act="winfs" aria-label="' + esc(t("winview_fs")) + '" title="' + esc(t("winview_fs")) + '">&#x26F6;</button>' +
           "</div>" +
           '<p class="nl-winstage__note">' + esc(t("winview_note")) + "</p></div>" +
           '<button class="nl-btn nl-btn--gold nl-btn--block" style="margin-top:10px" data-act="winview" data-id="' + esc(u.id) + '">' + esc(t("btn_winview")) + "</button>";
@@ -433,7 +459,7 @@
   function cotourState() {
     var mv = document.getElementById("nl-mv"), o = "";
     try { if (mv && mv.getCameraOrbit) { var c = mv.getCameraOrbit(); o = c.theta.toFixed(3) + "rad " + c.phi.toFixed(3) + "rad " + c.radius.toFixed(2) + "m"; } } catch (e) {}
-    return { p: state.projectKey, u: state.unitId || "", o: o, l: state.light, f: state.filter, v: state.view };
+    return { p: state.projectKey, u: state.unitId || "", o: o, l: state.light, s: state.sunMin, f: state.filter, v: state.view };
   }
   function cotourBar(txt, cls) {
     var b = document.getElementById("nl-cotour-bar");
@@ -469,32 +495,85 @@
             var st = d.state, mv = document.getElementById("nl-mv");
             if (st.u && st.u !== lastU) { lastU = st.u; selectUnit(st.u, true); }
             if (st.o && st.o !== lastO && mv) { lastO = st.o; mv.cameraOrbit = st.o; }
-            if (st.l && st.l !== state.light) { state.light = st.l; applyLight(); }
+            if (st.s != null && parseInt(st.s, 10) !== state.sunMin) { state.sunMin = parseInt(st.s, 10) || 720; applyLight(); }
+            else if (st.s == null && st.l && st.l !== state.light) { state.sunMin = ({ day: 720, dusk: 1110, night: 1200 })[st.l] || 720; applyLight(); }
             if (st.f && st.f !== state.filter) { state.filter = st.f; refresh("inventory"); applyStageFilter(); }
           }).catch(function () {});
         } catch (e) {}
       }, 1600);
     }
   }
-  /* SUNSET ENGINE (2026-07-07): day / dusk / night lighting on the model.
-     Exposure drop makes the baked emissive windows and storefronts glow;
-     a stage tone class shifts the backdrop. Honest: a lighting preview. */
+  /* SUN ENGINE (2026-07-11, owner: "I expected the sun angle simulated").
+     Real equinox solar geometry for the project's latitude drives everything:
+     exposure + color grade from sun ELEVATION, a stage sun marker at the real
+     AZIMUTH (tracks camera), and a gold ring on facades in direct sun.
+     model-viewer is IBL-only (no rotatable light), so this simulates exactly
+     what is true and the label says so. Geometric only, no obstructions. */
+  function sunPos(min) {
+    var lat = (project().geo && Number(project().geo.lat)) || 32.08, phi = lat * Math.PI / 180;
+    var H = (min / 60 - 12) * 15 * Math.PI / 180;
+    return {
+      el: Math.asin(Math.cos(phi) * Math.cos(H)),
+      az: Math.PI + Math.atan2(Math.sin(H), Math.cos(H) * Math.sin(phi))
+    };
+  }
+  function fmtTime(min) { var h = Math.floor(min / 60), m2 = min % 60; return (h < 10 ? "0" : "") + h + ":" + (m2 < 10 ? "0" : "") + m2; }
+  function updateSunMark() {
+    var mark = document.getElementById("nl-sunmark"), mv = document.getElementById("nl-mv");
+    if (!mark) return;
+    var s = sunPos(state.sunMin);
+    if (s.el <= 0) { mark.hidden = true; return; }
+    mark.hidden = false;
+    var theta = 0;
+    try { if (mv && mv.getCameraOrbit) theta = mv.getCameraOrbit().theta * 180 / Math.PI; } catch (e) {}
+    // screen angle: sun azimuth in the model's frame, rotated with the camera
+    // (same convention as map sync: bearing = -theta; calibrated live)
+    var sc = (s.az * 180 / Math.PI + theta) * Math.PI / 180;
+    var x = 50 + 44 * Math.sin(sc);
+    var y = 50 - 36 * Math.cos(sc) - 26 * Math.sin(s.el);
+    mark.style.left = Math.max(3, Math.min(97, x)) + "%";
+    mark.style.top = Math.max(5, Math.min(88, y)) + "%";
+  }
   function applyLight() {
     var mv = document.getElementById("nl-mv");
-    var map = { day: ["1.02", "0.55"], dusk: ["0.5", "0.3"], night: ["0.22", "0.12"] };
-    var v = map[state.light] || map.day;
-    // owner 2026-07-07: exposure alone reads as "nothing changed" - a CSS
-    // filter on the viewer makes dusk/night unmistakable at a glance
-    var flt = { day: "", dusk: "sepia(.35) saturate(.85) brightness(.8) contrast(1.04)", night: "brightness(.5) saturate(.6) contrast(1.08)" };
-    if (mv) { mv.setAttribute("exposure", v[0]); mv.setAttribute("shadow-intensity", v[1]); mv.style.filter = flt[state.light] || ""; }
+    var s = sunPos(state.sunMin), elDeg = s.el * 180 / Math.PI;
+    var phi = (((project().geo && Number(project().geo.lat)) || 32.08)) * Math.PI / 180;
+    var maxUp = Math.cos(phi) || 1;
+    var k = Math.min(1, Math.max(0, Math.sin(s.el)) / maxUp);
+    var night = elDeg <= 0, golden = !night && elDeg < 12;
+    state.light = night ? "night" : (golden ? "dusk" : "day"); // legacy field (cotour, css hooks)
+    var flt = "";
+    if (night) flt = "brightness(.5) saturate(.6) contrast(1.08)";
+    else if (golden) {
+      var g = 1 - elDeg / 12;
+      flt = "sepia(" + (0.35 * g).toFixed(2) + ") saturate(.85) brightness(" + (1 - 0.2 * g).toFixed(2) + ") contrast(1.04)";
+    }
+    if (mv) {
+      mv.setAttribute("exposure", (0.22 + 0.8 * k).toFixed(2));
+      mv.setAttribute("shadow-intensity", (0.12 + 0.43 * k).toFixed(2));
+      mv.style.filter = flt;
+    }
     var stage = mv && mv.closest(".nl-stagewrap") || mv && mv.parentElement;
     if (stage) {
-      stage.classList.toggle("nl-light--dusk", state.light === "dusk");
-      stage.classList.toggle("nl-light--night", state.light === "night");
+      stage.classList.toggle("nl-light--dusk", golden);
+      stage.classList.toggle("nl-light--night", night);
     }
-    [].forEach.call(document.querySelectorAll('[data-act="light"]'), function (b) {
-      b.setAttribute("aria-pressed", String(b.getAttribute("data-id") === state.light));
+    // direct-sun facades: sun above 5deg and facade within 70deg of azimuth
+    var lit = {};
+    if (elDeg > 5) {
+      units().forEach(function (u) {
+        var dk = dirKey(u.dir); if (!dk || !(dk in DIR_BEARING)) return;
+        if (Math.cos(s.az - DIR_BEARING[dk] * Math.PI / 180) > Math.cos(70 * Math.PI / 180)) lit[u.id] = true;
+      });
+    }
+    [].forEach.call(document.querySelectorAll(".nl-hot[data-id], .nl-fsq[data-id]"), function (el2) {
+      var on = !!lit[el2.getAttribute("data-id")];
+      el2.classList.toggle("nl-sunlit", on);
+      if (on) { el2.setAttribute("title", t("sun_direct_now")); } else { el2.removeAttribute("title"); }
     });
+    var out = document.getElementById("nl-suntime"); if (out) out.textContent = fmtTime(state.sunMin);
+    var sl = document.getElementById("nl-sunslider"); if (sl && parseInt(sl.value, 10) !== state.sunMin) sl.value = state.sunMin;
+    updateSunMark();
   }
   /* FILTER THE BUILDING (2026-07-07): the inventory filter is fused into the
      3D stage and the facade - matching apartments stay lit, the rest dim.
@@ -509,6 +588,14 @@
     [].forEach.call(document.querySelectorAll('[data-act="filter"]'), function (b) {
       b.setAttribute("aria-pressed", String(b.getAttribute("data-id") === state.filter));
     });
+    // on-stage flag while a filter is active (the chips live at the inventory head)
+    var flag = document.getElementById("nl-filterflag");
+    if (flag) {
+      if (active) {
+        flag.hidden = false;
+        flag.textContent = t("filter_active", { f: t("filter_" + state.filter) }) + " · " + t("filter_show_all");
+      } else { flag.hidden = true; }
+    }
   }
   function filtered() {
     return units().filter(function (u) {
@@ -947,10 +1034,11 @@
     mv.dataset.nlMapSync = "1";
     var last = 0;
     mv.addEventListener("camera-change", function (ev) {
+      var now = Date.now(); if (now - last < 120) return; last = now;
+      updateSunMark(); // the sun marker tracks every rotation, auto-rotate included
       if (!ev.detail || ev.detail.source !== "user-interaction") return;
       var map = window.NLPJX_MAP;
       if (!map || typeof mv.getCameraOrbit !== "function") return;
-      var now = Date.now(); if (now - last < 120) return; last = now;
       try { map.setBearing(-(mv.getCameraOrbit().theta * 180 / Math.PI) % 360); } catch (e) {}
     });
   }
@@ -1100,6 +1188,7 @@
       host.addEventListener("touchstart", function (e) { lookStart(e.touches[0].clientX, e.touches[0].clientY); }, { passive: true });
       host.addEventListener("touchmove", function (e) { lookMove(e.touches[0].clientX, e.touches[0].clientY); e.preventDefault(); }, { passive: false });
       host.addEventListener("touchend", lookEnd);
+      host.addEventListener("dblclick", function (e) { e.preventDefault(); winFs(); });
     };
     if (window.mapboxgl) { boot(); return; }
     var l = document.createElement("link"); l.rel = "stylesheet"; l.href = "https://api.mapbox.com/mapbox-gl-js/v3.7.0/mapbox-gl.css"; document.head.appendChild(l);
@@ -1111,6 +1200,41 @@
     winState.bearing = (base + delta + 360) % 360;
     winCam(winState.map, u, winState.bearing, winState.vert);
   }
+  /* Fullscreen window view (owner 2026-07-11: "this window is too small").
+     Native element fullscreen where it exists; iPhone Safari has none for
+     divs, so a fixed-overlay fallback with an explicit exit. */
+  function winFs() {
+    var stage = document.querySelector(".nl-tabpane .nl-winstage");
+    if (!stage) return;
+    var resize = function () { try { if (winState.map) winState.map.resize(); } catch (e) {} };
+    var isOn = stage.classList.contains("nl-winstage--fs") || document.fullscreenElement === stage;
+    var fsBtn = stage.querySelector(".nl-winstage__fs");
+    var setLabel = function (on) { if (fsBtn) { var l = t(on ? "winview_fs_exit" : "winview_fs"); fsBtn.setAttribute("aria-label", l); fsBtn.setAttribute("title", l); } };
+    if (isOn) {
+      if (document.fullscreenElement === stage && document.exitFullscreen) { try { document.exitFullscreen(); } catch (e) {} }
+      stage.classList.remove("nl-winstage--fs");
+      document.body.classList.remove("nl-noscroll");
+      setLabel(false);
+      setTimeout(resize, 80);
+      return;
+    }
+    var overlay = function () {
+      stage.classList.add("nl-winstage--fs");
+      document.body.classList.add("nl-noscroll");
+      setLabel(true);
+      setTimeout(resize, 80);
+    };
+    if (!/iPhone/.test(navigator.userAgent) && stage.requestFullscreen) {
+      try { stage.requestFullscreen().then(function () { setLabel(true); setTimeout(resize, 80); }).catch(overlay); } catch (e) { overlay(); }
+    } else { overlay(); }
+  }
+  document.addEventListener("fullscreenchange", function () {
+    try { if (winState.map) winState.map.resize(); } catch (e) {}
+    if (!document.fullscreenElement) {
+      var st2 = document.querySelector(".nl-winstage--fs");
+      if (st2) { st2.classList.remove("nl-winstage--fs"); document.body.classList.remove("nl-noscroll"); }
+    }
+  });
 
   /* ---- the view FROM the window, on the live map: FreeCamera at the unit's
      real floor height, looking out in the apartment's direction. ---- */
@@ -1155,8 +1279,9 @@
     else if (act === "view") setView(id);
     else if (act === "tab") setTab(id);
     else if (act === "filter") { state.filter = id; refresh("inventory"); applyStageFilter(); }
-    else if (act === "light") { state.light = id; applyLight(); }
+    else if (act === "light") { state.sunMin = ({ day: 720, dusk: 1110, night: 1200 })[id] || 720; applyLight(); }
     else if (act === "cotour") { cotourStart(); }
+    else if (act === "winfs") { winFs(); }
     else if (act === "resetview") { resetView(); }
     else if (act === "studio") { openStudio(id); }
     else if (act === "studio-any") {
@@ -1173,6 +1298,12 @@
     else if (act === "pin") highlightPin(node);
     else if (act === "winview") { var wu = unit(node.dataset.id); if (wu) winView(wu); }
     else if (act === "winlook") { var wl = unit(node.dataset.id); if (wl) winLook(wl, parseInt(node.dataset.d, 10) || 0); }
+  });
+  ROOT.addEventListener("input", function (e) {
+    if (e.target && e.target.id === "nl-sunslider") {
+      state.sunMin = parseInt(e.target.value, 10) || 720;
+      applyLight();
+    }
   });
   ROOT.addEventListener("keydown", function (e) {
     var node = e.target.closest('[role="button"][data-act="select"]');
