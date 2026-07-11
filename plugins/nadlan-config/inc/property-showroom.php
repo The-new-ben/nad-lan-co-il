@@ -172,9 +172,9 @@ if ( ! function_exists( 'nadlan_pshow_render' ) ) {
 	   "looks broken"): the generic flagship tower, spinnable, honest chip,
 	   day/dusk/night light. The floor badge states the REAL floor - no
 	   invented hotspot positions on a generic model. */
-	$glb = function_exists( 'nadlan_showroom_engine_base_url' ) ? nadlan_showroom_engine_base_url() . 'models/flagship-tower.glb' : '';
+	$glb = function_exists( 'nadlan_showroom_engine_base_url' ) ? nadlan_showroom_engine_base_url() . 'models/standard-residential.glb' : '';
 	if ( $glb ) : ?>
-	<div class="nlps-3d" id="nlps-3d" style="background-image:linear-gradient(180deg,rgba(237,242,245,.15),rgba(246,241,230,.35)),url('<?php echo esc_url( content_url( 'uploads/2026/07/nadlan-poster-flagship-tower.jpg' ) ); ?>');background-size:cover;background-position:center">
+	<div class="nlps-3d" id="nlps-3d" style="background-image:linear-gradient(180deg,rgba(237,242,245,.15),rgba(246,241,230,.35)),url('<?php echo esc_url( content_url( 'uploads/2026/07/nadlan-poster-standard-building.jpg' ) ); ?>');background-size:cover;background-position:center">
 		<model-viewer id="nlps-mv" src="<?php echo esc_url( $glb ); ?>" loading="lazy" reveal="auto" camera-controls auto-rotate auto-rotate-delay="700" rotation-per-second="13deg" interaction-prompt="basic" environment-image="neutral" exposure="1.02" shadow-intensity="0.55" min-camera-orbit="auto 48deg auto" max-camera-orbit="auto 86deg auto" min-field-of-view="16deg" max-field-of-view="68deg" touch-action="pan-y"></model-viewer>
 		<span class="nlps-3d__chip">המחשה כללית של מגורים בבניין - לא הבניין של הנכס</span>
 		<?php if ( $floor ) : ?><span class="nlps-3d__floor">קומה <?php echo (int) $floor; ?><?php echo $tfloors ? ' מתוך ' . (int) $tfloors : ''; ?></span><?php endif; ?>

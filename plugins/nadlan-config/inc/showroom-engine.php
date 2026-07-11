@@ -127,12 +127,15 @@ if ( ! function_exists( 'nadlan_showroom_engine_build_project' ) ) {
 			// puts the camera inside the crown on 150m+ towers (DUO).
 			'frame_radius_m' => (int) max( 150, round( $floors * (float) ( get_post_meta( $id, 'project_3d_floor_height_m', true ) ?: 3.05 ) * 1.4 ) ),
 			'viewbox'        => (string) get_post_meta( $id, 'project_3d_viewbox', true ),
-			// DEFAULT MODEL (owner 2026-07-07, "a default, not a fallback"): a
-			// project with no model of its own shows the generic flagship tower,
-			// honestly labeled as a general illustration - never as the building.
+			// DEFAULT MODEL (owner 2026-07-11): a project with no model of its
+			// own shows the STANDARD Israeli street building - a form
+			// developers recognize as "could be my project" - honestly labeled
+			// as a general illustration, never as the building. It conforms to
+			// the engine hotspot formula (26.4m at origin, floors from y=0,
+			// fh 3.05) so generic projects get working facade hotspots free.
 			'model_glb'      => ( function () use ( $id ) {
 				$own = esc_url_raw( (string) get_post_meta( $id, 'project_model_glb', true ) );
-				return $own !== '' ? $own : nadlan_showroom_engine_base_url() . 'models/flagship-tower.glb';
+				return $own !== '' ? $own : nadlan_showroom_engine_base_url() . 'models/standard-residential.glb';
 			} )(),
 			'model_generic'  => get_post_meta( $id, 'project_model_glb', true ) === '',
 			'model_poster'   => esc_url_raw( (string) get_post_meta( $id, 'project_model_poster', true ) ),

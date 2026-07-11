@@ -1,15 +1,15 @@
 {
   "name": "NadLan Config",
   "slug": "nadlan-config",
-  "version": "1.72.72",
+  "version": "1.72.73",
   "author": "nad-lan.co.il",
   "homepage": "https://nad-lan.co.il",
   "requires": "6.7",
   "tested": "7.0",
   "requires_php": "7.4",
-  "download_url": "https://raw.githubusercontent.com/The-new-ben/nad-lan-co-il/main/plugin-dist/nadlan-config-1.72.72.zip",
-  "last_updated": "2026-07-11 21:40:00",
+  "download_url": "https://raw.githubusercontent.com/The-new-ben/nad-lan-co-il/main/plugin-dist/nadlan-config-1.72.73.zip",
+  "last_updated": "2026-07-11 22:05:00",
   "sections": {
-    "changelog": "<h4>1.72.72</h4><ul><li>Homepage showcase: live auto-rotating flagship model + selector cards</li><li>Hero copy scrim + framed listing cards with tags and chips</li><li>Quieter map clusters</li></ul>"
+    "changelog": "<h4>1.72.73</h4><ul><li>Standard Israeli building prototypes (residential + mixed commercial) as the new default 3D model for projects and listings without their own GLB</li><li>Formula-compliant hotspots on generic models</li><li>Sketch poster for the listing 3D theater</li></ul>"
   }
 }
