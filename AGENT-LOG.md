@@ -1,5 +1,35 @@
 # AGENT-LOG - the God brain (append-only, newest on top)
 
+## 2026-07-12 (42) - v1.72.77-79 URBAN RENEWAL L2+L3: tools live, THE WIZARD IS LIVE
+L2 (v1.72.77) inc/urban-tools.php: [nadlan_ur_consent_calc] - live %
+vs the THREE legal thresholds with what-unlocks copy (66% advance /
+67% sue refuser / 80%+75% single building; filterable constants with
+effective-date 2024 + gov.il verify link); [nadlan_ur_expectations]
+honest non-binding ranges; [nadlan_ur_timeline] 10-stage strip (labels
+shared with the L4 ladder). All three EMBEDDED into the live pillar at
+the right sections - verified rendering, zero raw shortcodes, YMYL
+disclaimer on every tool output. healthcheck exposes urban_renewal.
+L3 (v1.72.78+79 hotfix) inc/urban-wizard.php + assets/urban/
+renewal-3d.js + page /urban-renewal/check/ (5465): 5-step wizard -
+address -> compound lookup feeds the advisory; building details;
+PRIVATE doc upload (POST /renewal-doc: pdf/jpg/png/webp, 10MB, random
+24-char names, uploads/nadlan-renewal/, post_status private, returns
+attachment_id ONLY - no URL ever leaves) + paste-text (PDF LAW: v1
+analyzes pasted text only, scans dominate this domain, honest label in
+UI); AI advisory (POST /renewal-advise: enum-cleaned JSON track_fit/
+reason/consent_needed/next_steps/professionals/confidence, cost
+preflight with the REAL prompt via nadlan_lead_ai_preflight_cost,
+DISCLAIMER APPENDED IN PHP so no prompt failure can drop it); instant
+3D - standard-residential.glb with one floor badge per floor via the
+engine unitPos convention, honest caption. Quick-register gate for
+logged-out. E2E VERIFIED LIVE: gate renders; upload 5466 stored
+private + SVG rejected 400; advisory returned clean Hebrew JSON with
+disclaimer (real AI call). E2E CAUGHT A REAL BUG pre-user: preflight
+called with 1 arg vs 3 - 500 on the route only; hotfixed v1.72.79
+within minutes (the media-library deploy pipeline made the roundtrip
+painless). NEXT: L4 private project space (consent 3D, vault,
+/my-renewal/), L5 RFP wiring + map.
+
 ## 2026-07-11 (41) - v1.72.76 URBAN RENEWAL HUB L1: the pillar owns its keyword
 Owner mega-order: an urban-renewal center for homeowners in the
 pre-signature dilemma, layered, no cannibalization, deep research.
