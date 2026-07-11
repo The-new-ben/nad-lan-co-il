@@ -1,5 +1,34 @@
 # AGENT-LOG - the God brain (append-only, newest on top)
 
+## 2026-07-11 (37) - STABILIZATION: private-repo 404 damage audited + Rainbow restored live (no deploy)
+Owner: repo went PRIVATE (credit-exhaustion period, other agents ran
+pushes #457-460) and 'Rainbow is not the right GLB, project pages have
+problems'. FULL DAMAGE AUDIT: (1) plugin CODE on main is CLEAN - #460
+reverted #457/#458 byte-exact back to my verified 1.72.67 source (+
+version bump to 1.72.70, live healthcheck green). (2) The REAL damage
+was DATA + HOTLINKS: Rainbow's rich model, floor plans, hero and Yoast
+OG/Twitter images were hotlinked from raw.githubusercontent.com -> all
+404 the moment the repo went private; the rollback also left Rainbow
+meta pointing at the junk dot-on-plate rainbow.glb and at plugin plan
+paths deleted by the rollback. Duo/Ashira/Dimri/Sde-Dov verified
+HEALTHY (rich models from the plugin bundle). (3) RESTORE (owner-
+approved, zero code deploy): uploaded rich model.glb 851668B + 6 plan
+SVGs + hero jpg to WP media (temp mime snippet for glb/svg), temp
+admin route rewrote every dead URL across all meta + content on the 5
+Rainbow siblings (4464, 5060, 5071, 5072, 5074) incl project_model_glb,
+project_3d_units plans, drawings json, Yoast og/twitter images; both
+snippets deleted, route 404-confirmed. VERIFIED live x5 languages:
+rich:1 plate:0 rawrefs:0, all new assets 200. (4) SECURITY P0: the
+Antigravity agent committed the WP admin app-password in PLAINTEXT
+(scripts/deploy_drafts.js + more) while the repo was public - owner
+told to ROTATE. (5) NEW LAW (private-repo era): NOTHING the live site
+renders may be hotlinked from GitHub - runtime assets live in the
+plugin zip or WP uploads only; deploy pipeline v2 will ship the zip
+via WP media upload (raw zip + PUC manifest URLs are dead now).
+Headless chromium-via-proxy screenshots hung in this container -
+visual confirmation asked of the owner; markup+asset evidence is
+two-directional and conclusive.
+
 ## 2026-07-07 (36) - v1.72.65-67 LISTING 3D actually renders (deep-verified fix)
 Owner: 'I open the listing, no 3D loaded, looks broken. Go 3-4 levels
 deep to check it really works.' Three iterations of real deep-verify:
