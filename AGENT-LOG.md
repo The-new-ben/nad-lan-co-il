@@ -1,5 +1,50 @@
 # AGENT-LOG - the God brain (append-only, newest on top)
 
+## 2026-07-11 (38) - v1.72.71 QA SWEEP ROUND 1: the theater actually works now
+Owner walked Rainbow + homepage and reported dead labels, crowding, fake
+sun, scattered hotspots, tiny window view, double H1, map scroll-trap,
+circle markers. THREE-EXPLORER ROOT-CAUSE: (a) ONE CSS LINE
+(.nl-theater__top{pointer-events:none}, showroom.css:74) kept studio,
+co-tour, light and filter chips click-dead for weeks - only the
+3d/facade toggle re-enabled clicks; (b) hotspots had no occlusion
+(default normal 0 0 1 on every unit -> far side drew over the front);
+(c) day/dusk/night was pure color grade, disconnected from the REAL
+solar math already in sunHours(); (d) window view fixed 280px, tab
+"מבט", u.view text silently unused (viewText read nonexistent
+view_key); (e) both page H1s were OURS (engine hero client-side +
+nlpf-name server-side; theme H1 already stripped); (f) homepage drone
+map had NO gesture options -> wheel-zoom trap; markers were cluster
+bubbles + unlabeled dots. SHIPPED AS ONE STANDARD: pointer-events fix +
+future-proof child rule; slim top bar (title + toggle only); NEW
+below-stage DOCK with studio + share-tour + SUN DIAL (time slider
+06:00-19:00 -> real equinox azimuth/elevation for the project's
+latitude; continuous exposure + golden/night grades; on-stage gold sun
+marker tracking camera; .nl-sunlit rings + "שמש ישירה עכשיו" on facades
+within 70deg of the sun; honest note; cotour syncs sun minutes with
+legacy fallback); hotspot occlusion via data-visibility-attribute +
+per-direction normals (far side fades, no more scatter); window view:
+tab now "מבט {direction}", height clamp(300px,42vh,440px), FULLSCREEN
+btn + dblclick (native + iPhone overlay fallback), viewText falls back
+to u.view; single H1 (engine hero renders h2 when a server h1 exists -
+verified live: exactly one real h1 = nlpf-name, the 3 other grep hits
+are CSS-comment text); maps: cooperativeGestures + Hebrew locale on
+drone-map + unimap + mapbox-init, cluster circles shrunk 22->16max,
+dots 2/3.5/5.5px + NEW nl-point-labels (10px cream on ink halo,
+minzoom 9.5, text-optional). Stage filter chips DEDUPED into the
+inventory-head chips + an active-filter flag on stage (owner-approved
+move, nothing removed). DEPLOY PIPELINE V2 FIRST USE (private repo):
+zip -> WP media upload -> temp route Plugin_Upgrader(uploads URL) ->
+healthcheck 1.72.71 -> snippet deleted (404) -> media zip deleted.
+VERIFIED: live engine.js/css carry all markers; homepage HTML carries
+cooperativeGestures + labels layer; old stage-light markup ABSENT from
+live engine.js; rich Rainbow GLB intact. NOT machine-verified (container
+chromium cannot complete HTTPS - curl works, browser CONNECT resets):
+slider drive, occlusion toggling, studio click, fullscreen - handed to
+owner as a 30-second click-through. Competitor pixel side-by-sides
+impossible from this container for the same reason - written comparison
+owed next round. REMAINING from owner list: default interior for
+walk-inside (black screen), project ordering by readiness.
+
 ## 2026-07-11 (37) - STABILIZATION: private-repo 404 damage audited + Rainbow restored live (no deploy)
 Owner: repo went PRIVATE (credit-exhaustion period, other agents ran
 pushes #457-460) and 'Rainbow is not the right GLB, project pages have
