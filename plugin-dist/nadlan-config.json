@@ -1,15 +1,15 @@
 {
   "name": "NadLan Config",
   "slug": "nadlan-config",
-  "version": "1.72.76",
+  "version": "1.72.77",
   "author": "nad-lan.co.il",
   "homepage": "https://nad-lan.co.il",
   "requires": "6.7",
   "tested": "7.0",
   "requires_php": "7.4",
-  "download_url": "https://raw.githubusercontent.com/The-new-ben/nad-lan-co-il/main/plugin-dist/nadlan-config-1.72.76.zip",
-  "last_updated": "2026-07-11 23:50:00",
+  "download_url": "https://raw.githubusercontent.com/The-new-ben/nad-lan-co-il/main/plugin-dist/nadlan-config-1.72.77.zip",
+  "last_updated": "2026-07-12 00:40:00",
   "sections": {
-    "changelog": "<h4>1.72.76</h4><ul><li>Urban renewal hub L1: compound lookup endpoint + pillar teaser, projects archive de-cannibalized</li></ul>"
+    "changelog": "<h4>1.72.77</h4><ul><li>Urban renewal tools: consent threshold calculator, expectation ranges, 10-stage timeline strip</li></ul>"
   }
 }
