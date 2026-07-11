@@ -1,15 +1,15 @@
 {
   "name": "NadLan Config",
   "slug": "nadlan-config",
-  "version": "1.72.71",
+  "version": "1.72.72",
   "author": "nad-lan.co.il",
   "homepage": "https://nad-lan.co.il",
   "requires": "6.7",
   "tested": "7.0",
   "requires_php": "7.4",
-  "download_url": "https://raw.githubusercontent.com/The-new-ben/nad-lan-co-il/main/plugin-dist/nadlan-config-1.72.71.zip",
-  "last_updated": "2026-07-11 19:30:00",
+  "download_url": "https://raw.githubusercontent.com/The-new-ben/nad-lan-co-il/main/plugin-dist/nadlan-config-1.72.72.zip",
+  "last_updated": "2026-07-11 21:40:00",
   "sections": {
-    "changelog": "<h4>1.72.71</h4><ul><li>Theater controls actually clickable (pointer-events fix)</li><li>Below-stage dock: studio, live tour share, sun dial</li><li>Real sun simulation: equinox sun path, time slider, direct-sun facade rings, stage sun marker</li><li>Hotspot occlusion: far-side units hide on rotation</li><li>Window view: direction-named tab, bigger viewport, full screen</li><li>Single H1 per project page</li><li>Maps: cooperative gestures (no scroll-trap), small dots with small labels</li></ul>"
+    "changelog": "<h4>1.72.72</h4><ul><li>Homepage showcase: live auto-rotating flagship model + selector cards</li><li>Hero copy scrim + framed listing cards with tags and chips</li><li>Quieter map clusters</li></ul>"
   }
 }

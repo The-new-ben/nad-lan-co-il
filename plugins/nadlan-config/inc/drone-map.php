@@ -188,9 +188,9 @@ if ( ! function_exists( 'nadlan_drone_map_band' ) ) {
 				})};
 				var addData=function(){
 					if(map.getSource("nlprojects"))return;
-					map.addSource("nlprojects",{type:"geojson",data:gj,cluster:true,clusterRadius:34,clusterMaxZoom:22});
+					map.addSource("nlprojects",{type:"geojson",data:gj,cluster:true,clusterRadius:44,clusterMaxZoom:22});
 					map.addLayer({id:"nl-clusters",type:"circle",source:"nlprojects",filter:["has","point_count"],
-						paint:{"circle-color":"#9C7A3C","circle-opacity":.85,"circle-stroke-width":1.4,"circle-stroke-color":"#FAF7F1",
+						paint:{"circle-color":"#9C7A3C","circle-opacity":.55,"circle-stroke-width":1.4,"circle-stroke-color":"#FAF7F1",
 							"circle-radius":["step",["get","point_count"],7,10,9,50,12,150,16]}});
 					map.addLayer({id:"nl-cluster-count",type:"symbol",source:"nlprojects",filter:["has","point_count"],
 						layout:{"text-field":["get","point_count_abbreviated"],"text-size":10.5,"text-font":["DIN Pro Medium","Arial Unicode MS Bold"]},

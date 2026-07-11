@@ -313,28 +313,59 @@ if ( ! function_exists( 'nadlan_hv2_band_flagships' ) ) {
 			if ( $p && get_post_status( $p ) === 'publish' ) { $cards[] = $p; }
 		}
 		if ( count( $cards ) < 2 ) { return; }
+		/* THE SHOWCASE (owner 2026-07-11, per the approved
+		   docs/previews/nadlan-homepage-target.html): the band under the map
+		   hero is a LIVE auto-rotating model of a flagship, with selector
+		   cards that swap the stage. Perf laws: model-viewer boots only when
+		   the band nears the viewport (IntersectionObserver), the poster is a
+		   CSS background BEHIND a transparent viewer (burned-in lesson), and
+		   phones show the poster with an explicit tap-to-spin. */
+		$show = array();
+		foreach ( $cards as $p ) {
+			$glb = esc_url( (string) get_post_meta( $p->ID, 'project_model_glb', true ) );
+			if ( '' === $glb ) { continue; } // showcase carries REAL models only
+			$show[] = array(
+				'glb'    => $glb,
+				'poster' => esc_url( (string) get_post_meta( $p->ID, 'project_model_poster', true ) ),
+				'img'    => esc_url( (string) get_post_meta( $p->ID, 'project_3d_image', true ) ),
+				'href'   => get_permalink( $p ),
+				'title'  => get_the_title( $p ),
+				'city'   => (string) get_post_meta( $p->ID, 'city', true ),
+				'floors' => (int) get_post_meta( $p->ID, 'floors', true ),
+				'units'  => (int) get_post_meta( $p->ID, 'num_units', true ),
+			);
+		}
+		if ( count( $show ) < 2 ) { return; }
+		$first = $show[0];
 		?>
 	<section class="nlhv2-band nlhv2-flagships">
 		<header><p class="nlhv2-kicker"><?php nadlan_e( 'fl_kicker' ); ?></p><h2><?php nadlan_e( 'fl_title' ); ?></h2>
 			<a href="<?php echo esc_url( home_url( '/premium/' ) ); ?>"><?php nadlan_e( 'fl_all' ); ?></a></header>
 		<p class="nlhv2-flagsub"><?php nadlan_e( 'fl_sub' ); ?></p>
-		<div class="nlhv2-flaggrid">
-			<?php foreach ( $cards as $p ) :
-				$hero   = esc_url( (string) get_post_meta( $p->ID, 'project_3d_image', true ) );
-				$poster = esc_url( (string) get_post_meta( $p->ID, 'project_model_poster', true ) );
-				$city   = (string) get_post_meta( $p->ID, 'city', true );
-				$units  = (int) get_post_meta( $p->ID, 'num_units', true ); ?>
-			<a class="nlhv2-flag" href="<?php echo esc_url( get_permalink( $p ) ); ?>">
-				<span class="nlhv2-flag-media<?php echo $is_poster ? ' is-poster' : ''; ?>"<?php echo $hero ? ' style="background-image:url(' . $hero . ')"' : ''; ?>>
-					<?php if ( $poster ) : ?><span class="nlhv2-flag-3d" style="background-image:url(<?php echo $poster; ?>)"><b>3D</b></span><?php endif; ?>
-				</span>
-				<span class="nlhv2-flag-body">
-					<b dir="auto"><?php echo esc_html( get_the_title( $p ) ); ?></b>
-					<span class="nlhv2-flag-meta"><?php echo esc_html( $city ); ?><?php echo $units ? ' · ' . number_format( $units ) . ' ' . esc_html( nadlan_i18n( 'ar_apts' ) ) : ''; ?></span>
-					<span class="nlhv2-flag-go"><?php nadlan_e( 'fl_go' ); ?></span>
-				</span>
-			</a>
-			<?php endforeach; ?>
+		<div class="nlhv2-show">
+			<div class="nlhv2-show-stage" id="nlhv2-shstage" data-glb="<?php echo esc_attr( $first['glb'] ); ?>"<?php echo $first['poster'] ? ' style="background-image:url(' . esc_url( $first['poster'] ) . ')"' : ''; ?>>
+				<button class="nlhv2-show-spin" id="nlhv2-shspin" type="button"><?php nadlan_e( 'sh_spin' ); ?></button>
+				<span class="nlhv2-show-chip"><?php nadlan_e( 'sh_chip' ); ?></span>
+				<a class="nlhv2-show-go" id="nlhv2-shgo" href="<?php echo esc_url( $first['href'] ); ?>"><?php nadlan_e( 'fl_go' ); ?></a>
+			</div>
+			<div class="nlhv2-show-cards" id="nlhv2-shcards">
+				<?php foreach ( $show as $i => $f ) : ?>
+				<button type="button" class="nlhv2-shcard<?php echo 0 === $i ? ' is-on' : ''; ?>" data-glb="<?php echo esc_attr( $f['glb'] ); ?>" data-poster="<?php echo esc_attr( $f['poster'] ); ?>" data-href="<?php echo esc_url( $f['href'] ); ?>">
+					<span class="nlhv2-shcard-media">
+						<?php if ( $f['img'] || $f['poster'] ) : ?><img src="<?php echo esc_url( $f['img'] ? $f['img'] : $f['poster'] ); ?>" alt="<?php echo esc_attr( $f['title'] ); ?>" loading="lazy"><?php endif; ?>
+						<i class="nlhv2-tag nlhv2-tag--3d">3D</i>
+						<?php if ( $f['city'] ) : ?><i class="nlhv2-tag"><?php echo esc_html( $f['city'] ); ?></i><?php endif; ?>
+					</span>
+					<span class="nlhv2-shcard-body">
+						<b dir="auto"><?php echo esc_html( $f['title'] ); ?></b>
+						<span class="nlhv2-chiprow">
+							<?php if ( $f['floors'] ) : ?><i><?php echo (int) $f['floors']; ?> <?php nadlan_e( 'sh_floors' ); ?></i><?php endif; ?>
+							<?php if ( $f['units'] ) : ?><i><?php echo number_format( $f['units'] ); ?> <?php nadlan_e( 'ar_apts' ); ?></i><?php endif; ?>
+						</span>
+					</span>
+				</button>
+				<?php endforeach; ?>
+			</div>
 		</div>
 	</section>
 		<?php
@@ -423,16 +454,22 @@ if ( ! function_exists( 'nadlan_hv2_band_listings' ) ) {
 			$img = nadlan_hv2_img( $l->ID );
 			$pr = (int) get_post_meta( $l->ID, 'price', true ); $rm = (float) get_post_meta( $l->ID, 'rooms', true );
 			$sq = (int) get_post_meta( $l->ID, 'size_sqm', true ); $fl = get_post_meta( $l->ID, 'floor', true );
+			$city = (string) get_post_meta( $l->ID, 'city', true );
 			echo '<a class="nlhv2-list" href="' . esc_url( get_permalink( $l ) ) . '">';
-			echo '<span class="nlhv2-list-media"' . ( $img ? ' style="background-image:url(' . esc_url( $img ) . ')"' : '' ) . '></span>';
+			// framed img + overlay city tag (target.html card treatment)
+			echo '<span class="nlhv2-list-media">' .
+				( $img ? '<img src="' . esc_url( $img ) . '" alt="' . esc_attr( get_the_title( $l ) ) . '" loading="lazy">' : '' ) .
+				( $city ? '<i class="nlhv2-tag">' . esc_html( $city ) . '</i>' : '' ) .
+			'</span>';
 			echo '<b>' . ( $pr ? number_format( $pr ) . ' ₪' : esc_html( get_the_title( $l ) ) ) . '</b>';
 			$bits = array_filter( array(
 				$rm ? rtrim( rtrim( number_format( $rm, 1 ), '0' ), '.' ) . ' ' . nadlan_i18n( 'u_rooms' ) : '',
 				$sq ? $sq . ' ' . nadlan_i18n( 'u_sqm' ) : '',
 				$fl !== '' && $fl !== null ? nadlan_i18n( 'u_floor' ) . ' ' . esc_html( (string) $fl ) : '',
-				(string) get_post_meta( $l->ID, 'city', true ),
 			) );
-			echo '<span>' . esc_html( implode( ' · ', $bits ) ) . '</span></a>';
+			echo '<span class="nlhv2-chiprow">';
+			foreach ( $bits as $bit ) { echo '<i>' . esc_html( $bit ) . '</i>'; }
+			echo '</span></a>';
 		};
 		?>
 	<section class="nlhv2-band nlhv2-alt">
@@ -716,7 +753,7 @@ if ( ! function_exists( 'nadlan_hv2_assets' ) ) {
 @media(max-width:860px){.nlhv2-hero--map{min-height:520px;border-radius:16px}}
 .nlhv2-hero-mapbg{position:absolute;inset:0}
 .nlhv2-hero-veil{position:absolute;inset:0;pointer-events:none;background:linear-gradient(180deg,rgba(20,19,15,.86) 0%,rgba(20,19,15,.55) 26%,rgba(20,19,15,.1) 52%,rgba(20,19,15,.45) 100%)}
-.nlhv2-hero--map .nlhv2-hero-copy{position:relative;z-index:6;max-width:640px;padding:44px clamp(18px,4vw,48px) 30px;pointer-events:none}
+.nlhv2-hero--map .nlhv2-hero-copy{position:relative;z-index:6;max-width:640px;margin:26px clamp(12px,3vw,36px);padding:26px clamp(16px,3vw,32px);pointer-events:none;background:linear-gradient(180deg,rgba(20,19,15,.62),rgba(20,19,15,.42));border:1px solid rgba(233,217,168,.16);border-radius:18px;backdrop-filter:blur(3px)}
 .nlhv2-hero--map .nlhv2-hero-copy>*{pointer-events:auto}
 .nlhv2-hero--map h1{color:#FAF7F1;text-shadow:0 2px 6px rgba(0,0,0,.85),0 6px 24px rgba(0,0,0,.6)}
 .nlhv2-hero--map .nlhv2-sub{color:#E4DDCE;text-shadow:0 1px 8px rgba(0,0,0,.5)}
@@ -765,6 +802,30 @@ if ( ! function_exists( 'nadlan_hv2_assets' ) ) {
 .nlhv2-hero-flag-media{display:block;aspect-ratio:16/11;background:var(--band) center/cover no-repeat;position:relative}
 .nlhv2-flagships .nlhv2-flagsub{color:var(--muted,#6D665C);font-size:14.5px;margin:2px 0 16px;max-width:720px}
 .nlhv2-flaggrid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+/* THE SHOWCASE (2026-07-11): live spinning flagship + selector cards */
+.nlhv2-show{display:grid;grid-template-columns:1.35fr .85fr;gap:16px;align-items:stretch}
+@media(max-width:900px){.nlhv2-show{grid-template-columns:1fr}}
+.nlhv2-show-stage{position:relative;min-height:440px;border-radius:18px;overflow:hidden;background:#14130F center/cover no-repeat;border:1px solid #2A251B;box-shadow:0 24px 60px rgba(27,26,23,.18)}
+@media(max-width:700px){.nlhv2-show-stage{min-height:340px}}
+.nlhv2-show-stage model-viewer{position:absolute;inset:0;width:100%;height:100%;direction:ltr;--poster-color:transparent;background:transparent}
+.nlhv2-show-chip{position:absolute;top:12px;inset-inline-start:12px;z-index:3;background:rgba(20,19,15,.82);color:#E9D9A8;font:600 12px/1 Heebo,sans-serif;padding:7px 12px;border-radius:999px;border:1px solid rgba(233,217,168,.4);pointer-events:none}
+.nlhv2-show-go{position:absolute;bottom:14px;inset-inline-start:14px;z-index:3;background:linear-gradient(180deg,#b9923f,#9C7A3C);color:#FAF7F1;font:700 13px/1 Heebo,sans-serif;padding:12px 18px;border-radius:10px;text-decoration:none;box-shadow:0 10px 26px -8px rgba(0,0,0,.5)}
+.nlhv2-show-go:hover{filter:brightness(1.06)}
+.nlhv2-show-spin{position:absolute;inset-block-start:50%;inset-inline-start:50%;transform:translate(-50%,-50%);z-index:3;background:rgba(20,19,15,.85);color:#F5EFE2;font:700 13.5px/1 Heebo,sans-serif;border:1px solid rgba(233,217,168,.45);border-radius:999px;padding:14px 20px;cursor:pointer;backdrop-filter:blur(3px)}
+.nlhv2-show-stage.is-live .nlhv2-show-spin{display:none}
+.nlhv2-show-cards{display:grid;grid-template-columns:1fr 1fr;gap:12px;align-content:start}
+@media(max-width:520px){.nlhv2-show-cards{grid-template-columns:1fr 1fr}}
+.nlhv2-shcard{display:flex;flex-direction:column;text-align:start;border:1px solid var(--line);border-radius:14px;overflow:hidden;background:#fff;cursor:pointer;padding:0;transition:transform .2s,border-color .2s;font-family:inherit}
+.nlhv2-shcard:hover{transform:translateY(-2px);border-color:var(--gold,#9C7A3C)}
+.nlhv2-shcard.is-on{border-color:var(--gold,#9C7A3C);box-shadow:0 0 0 2px rgba(156,122,60,.25)}
+.nlhv2-shcard-media{position:relative;display:block;aspect-ratio:16/10;background:var(--band);overflow:hidden}
+.nlhv2-shcard-media img{width:100%;height:100%;object-fit:cover;display:block}
+.nlhv2-tag{position:absolute;top:8px;inset-inline-start:8px;font-style:normal;font:700 10.5px/1 Heebo,sans-serif;background:rgba(20,19,15,.85);color:#E9D9A8;border-radius:6px;padding:5px 9px}
+.nlhv2-tag--3d{inset-inline-start:auto;inset-inline-end:8px;background:var(--gold,#9C7A3C);color:#14130F}
+.nlhv2-shcard-body{display:flex;flex-direction:column;gap:6px;padding:10px 12px 12px}
+.nlhv2-shcard-body b{font-family:var(--font-serif,"Frank Ruhl Libre",serif);font-size:.98rem;line-height:1.25;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;unicode-bidi:plaintext;text-align:start}
+.nlhv2-chiprow{display:flex;gap:6px;flex-wrap:wrap}
+.nlhv2-chiprow i{font-style:normal;font:600 11.5px/1 Heebo,sans-serif;color:#51483A;background:#F3EEE3;border:1px solid #E2DCD0;border-radius:999px;padding:5px 9px}
 @media(max-width:980px){.nlhv2-flaggrid{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:520px){.nlhv2-flaggrid{grid-template-columns:1fr}}
 .nlhv2-flag{display:flex;flex-direction:column;border:1px solid var(--line);border-radius:14px;overflow:hidden;background:#fff;text-decoration:none;color:var(--ink);transition:transform .22s,border-color .22s;box-shadow:0 2px 10px rgba(27,26,23,.05)}
@@ -819,7 +880,11 @@ if ( ! function_exists( 'nadlan_hv2_assets' ) ) {
 .nlhv2-listgrid,.nlhv2-prosgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px}
 .nlhv2-list{display:block;border:1px solid var(--line);border-radius:10px;overflow:hidden;background:#fff;text-decoration:none;color:var(--ink);padding-bottom:10px;transition:border-color .2s}
 .nlhv2-list:hover{border-color:var(--gold)}
-.nlhv2-list-media{display:block;aspect-ratio:4/3;background:var(--band) center/cover no-repeat;margin-bottom:8px}
+.nlhv2-list-media{position:relative;display:block;aspect-ratio:4/3;background:var(--band);margin-bottom:8px;overflow:hidden}
+.nlhv2-list-media img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .4s ease}
+.nlhv2-list:hover .nlhv2-list-media img{transform:scale(1.04)}
+.nlhv2-list b{font-family:var(--font-serif,"Frank Ruhl Libre",serif);font-size:1.06rem}
+.nlhv2-list .nlhv2-chiprow{padding:6px 12px 0}
 .nlhv2-list b{display:block;padding:0 12px;font-size:15px}
 .nlhv2-list>span{display:block;padding:0 12px;font-size:12px;color:var(--warm)}
 .nlhv2-cityrow{margin:16px 0 0;font-size:12.5px;display:flex;gap:6px 16px;flex-wrap:wrap}
@@ -924,6 +989,47 @@ if ( ! function_exists( 'nadlan_hv2_assets' ) ) {
 		s.src="https://unpkg.com/@google/model-viewer@3.5.0/dist/model-viewer.min.js";
 		s.onload=function(){mvLoaded=true;cb()};document.head.appendChild(s);
 	}
+	// THE SHOWCASE: spin the flagship when the band nears the viewport
+	(function(){
+		var st=document.getElementById("nlhv2-shstage");if(!st)return;
+		var live=false;
+		function boot(){
+			ensureMV(function(){
+				var mv=st.querySelector("model-viewer");
+				if(!mv){
+					mv=document.createElement("model-viewer");
+					mv.setAttribute("camera-controls","");mv.setAttribute("auto-rotate","");
+					mv.setAttribute("auto-rotate-delay","0");mv.setAttribute("rotation-per-second","16deg");
+					mv.setAttribute("interaction-prompt","none");mv.setAttribute("shadow-intensity","0.55");
+					mv.setAttribute("exposure","0.95");mv.setAttribute("environment-image","neutral");
+					mv.setAttribute("touch-action","pan-y");
+					st.insertBefore(mv,st.firstChild);
+				}
+				mv.setAttribute("src",st.dataset.glb);
+				live=true;st.classList.add("is-live");
+			});
+		}
+		var spin=document.getElementById("nlhv2-shspin");
+		if(window.matchMedia&&matchMedia("(max-width:700px)").matches){
+			if(spin){spin.addEventListener("click",boot)}
+		}else{
+			if(spin){spin.hidden=true}
+			if("IntersectionObserver" in window){
+				new IntersectionObserver(function(en,ob){if(en[0]&&en[0].isIntersecting){ob.disconnect();boot()}},{rootMargin:"240px"}).observe(st);
+			}else{boot()}
+		}
+		var go=document.getElementById("nlhv2-shgo");
+		document.querySelectorAll(".nlhv2-shcard").forEach(function(c){
+			c.addEventListener("click",function(){
+				document.querySelectorAll(".nlhv2-shcard").forEach(function(x){x.classList.toggle("is-on",x===c)});
+				st.dataset.glb=c.dataset.glb;
+				if(c.dataset.poster){st.style.backgroundImage="url("+c.dataset.poster+")"}
+				if(go&&c.dataset.href){go.href=c.dataset.href}
+				var mv=st.querySelector("model-viewer");
+				if(mv&&live){mv.setAttribute("src",c.dataset.glb)}
+			});
+		});
+	})();
 	document.querySelectorAll(".nlhv2-proj-live").forEach(function(b){
 		b.addEventListener("click",function(){
 			var wrap=document.getElementById("nlhv2-viewerwrap"),slot=document.getElementById("nlhv2-viewer-slot");
