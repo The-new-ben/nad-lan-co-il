@@ -143,6 +143,9 @@
     /* apartment studio */
     nlst_open: "סטודיו עיצוב הדירה",
     nlst_title: "סטודיו עיצוב הדירה",
+    nlst_auto: "סדרו לי אוטומטית", nlst_auto_note: "נקודת פתיחה לעריכה - לא תכנון מחייב",
+    nlst_it_tvunit: "מזנון טלוויזיה", nlst_it_armchair: "כורסה", nlst_it_dresser: "שידה",
+    nlst_it_rug: "שטיח", nlst_it_plant: "עציץ", nlst_it_bench: "ספסל פינת אוכל",
     nlst_honest: "תרשים סכמטי להמחשה לפי נתוני הדירה - אינו תוכנית מכר",
     nlst_palette: "רהיטים ותבניות (מידות אמיתיות)",
     nlst_cm: 'ס"מ',
@@ -346,6 +349,9 @@
     /* apartment studio */
     nlst_open: "Apartment Design Studio",
     nlst_title: "Apartment Design Studio",
+    nlst_auto: "Auto-arrange", nlst_auto_note: "A starting point to edit - not a binding plan",
+    nlst_it_tvunit: "TV unit", nlst_it_armchair: "Armchair", nlst_it_dresser: "Dresser",
+    nlst_it_rug: "Rug", nlst_it_plant: "Plant", nlst_it_bench: "Dining bench",
     nlst_honest: "Schematic illustration based on this unit's data - not a sale plan",
     nlst_palette: "Furniture and templates (real dimensions)",
     nlst_cm: "cm",

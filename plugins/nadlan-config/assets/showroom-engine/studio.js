@@ -27,6 +27,12 @@
     { id: "desk", w: 120, d: 60, icon: "💻" },
     { id: "crib", w: 70, d: 130, icon: "🍼" },
     { id: "bath", w: 170, d: 75, icon: "🛁" },
+    { id: "tvunit", w: 180, d: 45, icon: "📺" },
+    { id: "armchair", w: 85, d: 85, icon: "🪑" },
+    { id: "dresser", w: 120, d: 50, icon: "🗄" },
+    { id: "rug", w: 200, d: 140, soft: true, icon: "▭" },
+    { id: "plant", w: 45, d: 45, round: true, icon: "🌿" },
+    { id: "bench", w: 140, d: 40, icon: "🪵" },
     /* accessibility templates (SI 1918 planning language) */
     { id: "wheel", w: 150, d: 150, round: true, a11y: true, icon: "♿" },
     { id: "door80", w: 80, d: 12, a11y: true, icon: "🚪" }
@@ -98,6 +104,7 @@
         "</aside>" +
         '<div class="nlst-stage"><div class="nlst-plan" id="nlst-plan"></div>' +
           '<div class="nlst-tools">' +
+            '<button data-st="auto" type="button" class="nlst-auto" title="' + esc(t("nlst_auto_note")) + '">' + esc(t("nlst_auto")) + "</button>" +
             '<button data-st="undo" type="button">' + esc(t("nlst_undo")) + "</button>" +
             '<button data-st="rotate" type="button">' + esc(t("nlst_rotate")) + "</button>" +
             '<button data-st="note" type="button">' + esc(t("nlst_note")) + "</button>" +
@@ -150,6 +157,34 @@
 
   function cat(idOf) { return CATALOG.filter(function (c) { return c.id === idOf; })[0]; }
 
+  /* top-view schematic symbols (ink lines, architect-plan language) */
+  var SYM = {
+    sofa2: '<rect x="4" y="16" width="92" height="80" rx="10"/><rect x="4" y="4" width="92" height="18" rx="7"/><line x1="50" y1="22" x2="50" y2="94"/>',
+    sofa3: '<rect x="4" y="16" width="92" height="80" rx="10"/><rect x="4" y="4" width="92" height="18" rx="7"/><line x1="36" y1="22" x2="36" y2="94"/><line x1="66" y1="22" x2="66" y2="94"/>',
+    bed_double: '<rect x="4" y="4" width="92" height="92" rx="5"/><rect x="10" y="8" width="36" height="20" rx="5"/><rect x="54" y="8" width="36" height="20" rx="5"/><line x1="4" y1="38" x2="96" y2="38"/>',
+    bed_single: '<rect x="4" y="4" width="92" height="92" rx="5"/><rect x="22" y="8" width="56" height="20" rx="5"/><line x1="4" y1="38" x2="96" y2="38"/>',
+    table4: '<rect x="14" y="18" width="72" height="64" rx="6"/><circle cx="8" cy="50" r="7"/><circle cx="92" cy="50" r="7"/><circle cx="50" cy="10" r="7"/><circle cx="50" cy="90" r="7"/>',
+    table6: '<rect x="14" y="18" width="72" height="64" rx="6"/><circle cx="8" cy="34" r="6"/><circle cx="8" cy="66" r="6"/><circle cx="92" cy="34" r="6"/><circle cx="92" cy="66" r="6"/><circle cx="36" cy="10" r="6"/><circle cx="64" cy="90" r="6"/>',
+    wardrobe: '<rect x="4" y="10" width="92" height="80"/><line x1="50" y1="10" x2="50" y2="90"/><line x1="10" y1="24" x2="44" y2="24"/><line x1="56" y1="24" x2="90" y2="24"/>',
+    fridge: '<rect x="8" y="8" width="84" height="84" rx="8"/><line x1="8" y1="42" x2="92" y2="42"/><circle cx="78" cy="26" r="4"/>',
+    washer: '<rect x="8" y="8" width="84" height="84" rx="8"/><circle cx="50" cy="52" r="26"/><circle cx="50" cy="52" r="12"/>',
+    desk: '<rect x="4" y="8" width="92" height="52" rx="4"/><circle cx="50" cy="82" r="13"/>',
+    crib: '<rect x="6" y="6" width="88" height="88" rx="8"/><line x1="24" y1="6" x2="24" y2="94"/><line x1="42" y1="6" x2="42" y2="94"/><line x1="60" y1="6" x2="60" y2="94"/><line x1="78" y1="6" x2="78" y2="94"/>',
+    bath: '<rect x="4" y="8" width="92" height="84" rx="22"/><circle cx="26" cy="50" r="5"/>',
+    tvunit: '<rect x="4" y="30" width="92" height="42" rx="4"/><line x1="14" y1="24" x2="86" y2="24"/>',
+    armchair: '<rect x="10" y="18" width="80" height="72" rx="12"/><rect x="10" y="6" width="80" height="16" rx="7"/>',
+    dresser: '<rect x="4" y="12" width="92" height="76" rx="4"/><line x1="4" y1="50" x2="96" y2="50"/><circle cx="50" cy="32" r="3"/><circle cx="50" cy="68" r="3"/>',
+    rug: '<rect x="4" y="4" width="92" height="92" rx="6" stroke-dasharray="7 5"/><rect x="18" y="18" width="64" height="64" rx="4" stroke-dasharray="4 4"/>',
+    plant: '<circle cx="50" cy="50" r="42"/><path d="M50 78 C40 56 40 40 50 22 C60 40 60 56 50 78Z"/>',
+    bench: '<rect x="4" y="22" width="92" height="56" rx="6"/><line x1="30" y1="22" x2="30" y2="78"/><line x1="70" y1="22" x2="70" y2="78"/>',
+    wheel: '<circle cx="50" cy="50" r="44"/><line x1="50" y1="6" x2="50" y2="94"/><line x1="6" y1="50" x2="94" y2="50"/>',
+    door80: '<line x1="4" y1="90" x2="96" y2="90"/><path d="M4 90 A 92 92 0 0 1 96 6" stroke-dasharray="6 5"/>'
+  };
+  function sym(type) {
+    if (!SYM[type]) return "";
+    return '<svg viewBox="0 0 100 100" preserveAspectRatio="none" fill="none" stroke="currentColor" stroke-width="3" vector-effect="non-scaling-stroke" aria-hidden="true">' + SYM[type] + "</svg>";
+  }
+
   function placeItem(it) {
     var plan = document.getElementById("nlst-plan"), c = cat(it.type);
     if (!plan || !c) return;
@@ -161,7 +196,7 @@
     el.style.height = Math.round(h * S.scale) + "px";
     el.style.left = Math.round(it.x * S.scale) + "px";
     el.style.top = Math.round(it.y * S.scale) + "px";
-    el.innerHTML = "<b>" + esc(t("nlst_it_" + it.type)) + "</b>" + (it.note ? '<i class="nlst-it__note" title="' + esc(it.note) + '">✎</i>' : "");
+    el.innerHTML = sym(it.type) + "<b>" + esc(t("nlst_it_" + it.type)) + "</b>" + (it.note ? '<i class="nlst-it__note" title="' + esc(it.note) + '">✎</i>' : "");
     plan.appendChild(el);
   }
   function redraw() {
@@ -197,6 +232,51 @@
     count(); save();
   }
 
+  /* AUTO-ARRANGE (2026 room-planner table stakes): a deterministic starting
+     layout from the unit's real rooms - anchor piece on the top wall, its
+     counterpart opposite, extras along the side. Honest: skips anything that
+     does not fit; always labeled a starting point, never a design. */
+  function roomRects() {
+    var rooms = planRooms(), top = rooms.slice(0, 2), bottom = rooms.slice(2), rects = [];
+    [[top, 0, 0.52], [bottom, 0.52, 0.48]].forEach(function (band) {
+      var arr = band[0], total = arr.reduce(function (m, r) { return m + r.a; }, 0) || 1, x = 0;
+      arr.forEach(function (r) {
+        var w = (r.a / total) * S.plan.w;
+        rects.push({ k: r.k, x: x, y: band[1] * S.plan.h, w: w, h: band[2] * S.plan.h });
+        x += w;
+      });
+    });
+    return rects;
+  }
+  var AUTO = { salon: ["sofa3", "tvunit", "rug", "plant"], kitchen: ["fridge"], master: ["bed_double", "wardrobe"], bed: ["bed_single", "desk"], bathwc: ["bath"] };
+  function autoArrange() {
+    snapshot();
+    S.items = [];
+    roomRects().forEach(function (r) {
+      (AUTO[r.k] || []).forEach(function (type, idx) {
+        var c = cat(type); if (!c) return;
+        var rot = (c.w > r.w - 16 && c.w <= r.h - 16) ? 90 : 0;
+        var w = rot ? c.d : c.w, h = rot ? c.w : c.d;
+        if (w > r.w - 12 || h > r.h - 12) return;
+        var x, y;
+        if (idx === 0) { x = r.x + (r.w - w) / 2; y = r.y + 6; }
+        else if (idx === 1) { x = r.x + (r.w - w) / 2; y = r.y + r.h - h - 6; }
+        else { x = r.x + 8 + (idx - 2) * (w + 12); y = r.y + (r.h - h) / 2; }
+        x = Math.max(r.x + 4, Math.min(r.x + r.w - w - 4, x));
+        y = Math.max(r.y + 4, Math.min(r.y + r.h - h - 4, y));
+        // skip on overlap with an already placed piece (honest, no stacking)
+        var hit = S.items.some(function (o) {
+          var oc = cat(o.type), ow = (o.rot % 180 === 0 ? oc.w : oc.d), oh = (o.rot % 180 === 0 ? oc.d : oc.w);
+          return x < o.x + ow && o.x < x + w && y < o.y + oh && o.y < y + h;
+        });
+        if (hit && type !== "rug") return;
+        S.items.push({ uid: "i" + Math.random().toString(36).slice(2, 8), type: type, x: x, y: y, rot: rot, note: "" });
+      });
+    });
+    S.sel = null;
+    redraw();
+  }
+
   function summaryText() {
     var u = S.ctx.unit, lines = [];
     lines.push(t("nlst_sum_head", { label: u.label, floor: u.floor, project: S.ctx.projectName }));
@@ -221,6 +301,7 @@
         else if (a === "del" && S.sel) { snapshot(); S.items = S.items.filter(function (i) { return i.uid !== S.sel; }); S.sel = null; redraw(); }
         else if (a === "clear") { snapshot(); S.items = []; S.sel = null; redraw(); }
         else if (a === "undo") { undo(); }
+        else if (a === "auto") { autoArrange(); }
         else if (a === "note" && S.sel) {
           var it2 = item(S.sel);
           var v = window.prompt(t("nlst_note_ph"), it2.note || "");

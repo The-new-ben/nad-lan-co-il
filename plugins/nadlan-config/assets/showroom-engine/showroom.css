@@ -605,3 +605,10 @@ body.nlst-lock{overflow:hidden}
   .nl-sundial { flex-basis: 100%; }
   .nl-theater__dock .nl-cotour-btn { flex: 1 1 auto; min-height: 44px; text-align: center; }
 }
+
+/* studio v2 (2026-07-11): top-view plan symbols + auto-arrange */
+.nlst-it{color:#4A4437}
+.nlst-it svg{position:absolute;inset:2px;width:calc(100% - 4px);height:calc(100% - 4px);pointer-events:none;opacity:.9}
+.nlst-it b{position:relative;z-index:1;background:rgba(250,247,241,.82);border-radius:5px;padding:1px 5px}
+.nlst-it--a11y svg{opacity:.65}
+.nlst-auto{border-color:#C99C49!important;color:#8A6B2F!important;background:#FBF4E4!important}
