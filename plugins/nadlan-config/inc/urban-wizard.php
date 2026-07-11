@@ -99,10 +99,7 @@ add_action( 'rest_api_init', function () {
 			if ( ! function_exists( 'nadlan_ai_chat' ) ) {
 				return new WP_Error( 'no_ai', 'שירות הניתוח אינו זמין כרגע.', array( 'status' => 503 ) );
 			}
-			if ( function_exists( 'nadlan_lead_ai_preflight_cost' ) ) {
-				$pre = nadlan_lead_ai_preflight_cost( 2500 );
-				if ( is_wp_error( $pre ) ) { return new WP_Error( 'budget', 'מכסת הניתוח היומית מוצתה, נסו מחר.', array( 'status' => 503 ) ); }
-			}
+			// cost preflight runs later with the REAL prompt (see below)
 			$city    = mb_substr( sanitize_text_field( (string) $req->get_param( 'city' ) ), 0, 60 );
 			$floors  = max( 1, min( 40, (int) $req->get_param( 'floors' ) ) );
 			$units   = max( 2, min( 400, (int) $req->get_param( 'units' ) ) );
@@ -122,7 +119,12 @@ add_action( 'rest_api_init', function () {
 				'אסור להמציא רפים, סכומים או לוחות זמנים. אסור מקף ארוך - רק מקף רגיל. ' .
 				'החזר JSON בלבד: {"track_fit":"pinui_binui|tama38_1|tama38_2|unclear","track_reason":"<עד 300 תווים>","consent_needed":"<עד 200 תווים>","next_steps":["<עד 120>","<עד 120>","<עד 120>"],"professionals":["lawyer","shamai","mefakeach","organizer" מתוך אלה בלבד],"confidence":0.0-1.0}' .
 				( function_exists( 'nadlan_brain_house_rules' ) ? nadlan_brain_house_rules() : '' );
-			$out = nadlan_ai_chat( $system, array( array( 'role' => 'user', 'content' => "הקשר:\n" . $ctx . "\n\nעובדות הבניין:\n" . $facts ) ), 900 );
+			$messages = array( array( 'role' => 'user', 'content' => "הקשר:\n" . $ctx . "\n\nעובדות הבניין:\n" . $facts ) );
+			if ( function_exists( 'nadlan_lead_ai_preflight_cost' ) ) {
+				$pre = nadlan_lead_ai_preflight_cost( $system, $messages, 900 );
+				if ( is_wp_error( $pre ) ) { return new WP_Error( 'budget', 'מכסת הניתוח היומית מוצתה, נסו מחר.', array( 'status' => 503 ) ); }
+			}
+			$out = nadlan_ai_chat( $system, $messages, 900 );
 			if ( is_wp_error( $out ) ) { return new WP_Error( 'ai_failed', 'הניתוח נכשל, נסו שוב.', array( 'status' => 502 ) ); }
 			$txt = is_array( $out ) ? (string) ( $out['text'] ?? $out['content'] ?? '' ) : (string) $out;
 			if ( ! preg_match( '/\{.*\}/s', $txt, $m ) ) { return new WP_Error( 'ai_badjson', 'תשובה לא תקינה, נסו שוב.', array( 'status' => 502 ) ); }
