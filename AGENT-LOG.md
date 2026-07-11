@@ -1,5 +1,30 @@
 # AGENT-LOG - the God brain (append-only, newest on top)
 
+## 2026-07-11 (40) - v1.72.74+75 ANTI-THIN-CONTENT + STUDIO v2
+v1.72.74 NEW inc/related-content.php (cloned the pro-cards float
+architecture): ONE restrained "כדאי לדעת" band on the two thinnest
+surfaces - listings (glossary terms token-matched + mortgage/ptax
+calculators + buying guide) and professional profiles (terms + fresh
+nadlan-news; tools skipped there, profiles already carry a tools block -
+ONE of everything). Max 6 cards, collapses under 2, 12h transient,
+kill switch nadlan_relcontent_enabled, priorities 21 (free slots per
+the collision map). Plus the REAL thin-fix for profiles: prof_dossier
+renderer (priority 8) + admin-gated POST /nadlan/v1/prof-dossier-
+generate batch writer (nadlan_ai_chat + brain refine; domain-knowledge
+only, forbidden to invent facts about the person; runs ONLY on owner
+trigger). Verified live: both surfaces render the band at the 6-card
+cap; healthcheck exposes related_content. v1.72.75 STUDIO v2:
+architect-style top-view SVG symbols on every placed item (sofa/bed/
+table+chairs/wardrobe/washer drum/bath/door-swing arc...), AUTO-ARRANGE
+(deterministic per-room starting layout from the unit's real rooms -
+anchor piece on the top wall, counterpart opposite, honest skip when a
+piece does not fit, overlap guard, labeled "נקודת פתיחה לעריכה - לא
+תכנון מחייב"), catalog +6 (tv unit, armchair, dresser, rug, plant,
+dining bench, real cm dims), EN audit PASSED (40/40 nlst_* keys in
+both HE+EN; FR/RU/AR clone EN), save/restore already existed (verified
+localStorage per project:unit). All shipped via media-library deploys,
+snippets + zips cleaned, healthcheck 1.72.75.
+
 ## 2026-07-11 (39) - v1.72.72+73 FRONT-PAGE 10x + THE STANDARD ISRAELI BUILDING
 Owner round: homepage "not looking good" vs the approved HTML; generic
 projects ride a flagship tower "that doesn't look like a standard Israeli
