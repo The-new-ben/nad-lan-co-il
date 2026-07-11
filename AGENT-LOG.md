@@ -1,5 +1,39 @@
 # AGENT-LOG - the God brain (append-only, newest on top)
 
+## 2026-07-11 (39) - v1.72.72+73 FRONT-PAGE 10x + THE STANDARD ISRAELI BUILDING
+Owner round: homepage "not looking good" vs the approved HTML; generic
+projects ride a flagship tower "that doesn't look like a standard Israeli
+building". FOUND THE APPROVED HTML: docs/previews/nadlan-homepage-target.html
+(live spinning model up front, framed cropped photos with overlay tag
+labels + meta chips). SHIPPED v1.72.72: the flagships band became THE
+SHOWCASE - one large LIVE auto-rotating model-viewer (16deg/s) fed by the
+projects' real rich GLBs, selector cards swap the stage (active ring,
+framed img, 3D + city overlay tags, floors/units chips);
+IntersectionObserver boots the viewer only near viewport, CSS poster
+behind transparent viewer (burned-in lesson), mobile = poster +
+tap-to-spin; hero copy got a scrim panel (the H1 was drowning in the
+map); listing cards: framed img with hover zoom + city tag + serif price
++ chip row; clusters quieter (radius 44, opacity .55). Verified live:
+shstage present, first glb = uploads rainbow-rich, old flag grid ABSENT.
+SHIPPED v1.72.73: generate-rich-building.py grew style:"standard" - the
+STANDARD ISRAELI BUILDING (plaster body, punched windows + sills + AC
+units on every window, continuous balcony bands with glass + planters,
+pilotis lobby OR commercial storefront + terracotta awnings, rooftop
+solar heaters + pergola + antenna, street with road/sidewalk/hedge/
+lamps/trees, 4 low-alpha context masses, honest small site). TWO
+prototypes in the plugin: standard-residential.glb (8fl, 7524 tris,
+311KB) + standard-mixed.glb (10fl commercial GF, 9020 tris, 382KB).
+BOTH conform to the engine hotspot formula (26.4m at origin, floors from
+y=0, fh 3.05) so generic projects get WORKING facade hotspots free - the
+flagship never did (podium offset). Defaults swapped in showroom-engine
+(projects) + property-showroom (listings) + new ink-sketch elevation
+poster (PIL, DNA cream/ink/gold) uploaded + wired. Flagship tower NOT
+deleted (GLB law). INVENTORY refreshed (36 GLBs). Verified live:
+zohi-sde-dov + bialik listing render standard-residential, flagship refs
+gone, glb 200 at 318516B. Deploys via media-library path, snippets +
+zips cleaned. NEXT: Phase C related-content floats + pro dossier, Phase
+D studio v2, readiness verdict.
+
 ## 2026-07-11 (38) - v1.72.71 QA SWEEP ROUND 1: the theater actually works now
 Owner walked Rainbow + homepage and reported dead labels, crowding, fake
 sun, scattered hotspots, tiny window view, double H1, map scroll-trap,
