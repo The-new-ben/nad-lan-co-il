@@ -819,20 +819,22 @@ add_action( 'rest_api_init', function () {
 } );
 
 add_filter( 'get_the_archive_title', function ( $t ) {
-	if ( is_post_type_archive( 'nadlan_project' ) )  { return 'פרויקטים והתחדשות עירונית'; }
+	if ( is_post_type_archive( 'nadlan_project' ) )  { return 'פרויקטים חדשים בישראל'; }
 	if ( is_post_type_archive( 'nadlan_property' ) ) { return 'דירות ונכסים'; }
 	return $t;
 } );
 add_filter( 'pre_get_document_title', function ( $t ) {
 	if ( is_post_type_archive( 'nadlan_project' ) ) {
-		return 'פרויקטים חדשים והתחדשות עירונית | תמ״א 38, פינוי בינוי | נדלן';
+		/* de-cannibalized 2026-07-11: the head terms התחדשות עירונית / תמ״א /
+		   פינוי בינוי moved to their P0 owner, the /urban-renewal/ pillar */
+		return 'פרויקטים חדשים בישראל | דירות מקבלן לפי עיר ויזם | נדלן';
 	}
 	return $t;
 }, 20 );
 /* The catalog had NO meta description (SERP showed scraped card fragments). */
 add_filter( 'wpseo_metadesc', function ( $desc ) {
 	if ( ! is_post_type_archive( 'nadlan_project' ) || $desc ) { return $desc; }
-	return 'כל הפרויקטים החדשים ודירות למכירה מקבלן בישראל: תמ״א 38, פינוי בינוי ובנייה חדשה, מהמאגר הרשמי. חיפוש לפי עיר ויזם, נתונים מאומתים, ובחירת דירה בתלת ממד.';
+	return 'כל הפרויקטים החדשים ודירות מקבלן בישראל מהמאגר הרשמי. חיפוש לפי עיר, יזם וסטטוס, נתונים מאומתים ובחירת דירה בתלת ממד.';
 }, 25 );
 
 if ( ! function_exists( 'nadlan_dir_archive_viewport_meta' ) ) {
@@ -879,8 +881,8 @@ if ( ! function_exists( 'nadlan_dir_project_page' ) ) {
 	data-state="<?php echo esc_attr( wp_json_encode( $state ) ); ?>">
 	<header class="nldir-hero">
 		<nav class="nldir-crumbs"><a href="<?php echo esc_url( home_url( '/' ) ); ?>">בית</a> › <span>פרויקטים</span></nav>
-		<h1>פרויקטים והתחדשות עירונית</h1>
-		<p class="nldir-lead"><strong><?php echo number_format( $facets['total'] ); ?></strong> פרויקטים: תמ״א 38, פינוי בינוי ובנייה חדשה, ממאגר התחדשות עירונית הרשמי.</p>
+		<h1>פרויקטים חדשים בישראל</h1>
+		<p class="nldir-lead"><strong><?php echo number_format( $facets['total'] ); ?></strong> פרויקטים מהמאגר הרשמי, לפי עיר, יזם וסטטוס. בעלי דירות בבניין ישן? <a href="<?php echo esc_url( home_url( '/urban-renewal/' ) ); ?>">המדריך המלא להתחדשות עירונית</a>.</p>
 		<form class="nldir-search" role="search">
 			<input type="search" name="q" value="<?php echo esc_attr( $state['q'] ); ?>" placeholder="חיפוש לפי שם פרויקט או יזם" autocomplete="off">
 			<input type="text" name="city" value="<?php echo esc_attr( $state['city'] ); ?>" placeholder="עיר" autocomplete="off">
