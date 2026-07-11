@@ -1,5 +1,44 @@
 # AGENT-LOG - the God brain (append-only, newest on top)
 
+## 2026-07-11 (41) - v1.72.76 URBAN RENEWAL HUB L1: the pillar owns its keyword
+Owner mega-order: an urban-renewal center for homeowners in the
+pre-signature dilemma, layered, no cannibalization, deep research.
+RESEARCH LOCKED (multi web-search): consent law 2024-2025 = 66% to
+advance a pinui-binui compound (2023 Arrangements Law), 67% to sue a
+refuser (2024, was 80%), 80% apartments + 75% common property single
+building; ~10y avg timeline; gov.il Authority publishes resident guides
++ free appraiser opinions. COMPETITOR: Redirectx (residents/signatures/
+majority/roles AI) - no 3D, no consumer SEO funnel, no marketplace =
+our three moats. Singapore en-bloc = analog, no consumer platform.
+CANNIBALIZATION MAP (explorer): /urban-renewal/ page 73 existed thin
+AND is the strategy CSV P0 owner; /projects/ archive title double-
+claimed the head term; ~65 gov.il compound stubs live long-tail; sub-
+pillar spaces all free. SHIPPED L1: (1) inc/urban-hub.php - public
+GET /nadlan/v1/renewal-lookup over the ~938 imported gov.il compounds
+(city/q, 30/hr/IP) + [nadlan_ur_lookup] pillar teaser ("is my building
+in a declared compound"), verified live returning real compounds;
+(2) /projects/ archive DE-CANNIBALIZED same release (title now
+"פרויקטים חדשים בישראל | דירות מקבלן לפי עיר ויזם", crosslink to the
+pillar); (3) PILLAR REBUILT IN PLACE (page 73, 3,100+ words, dilemma-
+first: track decision tree, the three thresholds with years, timeline
+reality, role map, org playbook, red flags, economics of the developer,
+special cases, municipality, failure modes, negotiation principles,
+mini-glossary, 9 FAQs, gov.il citations, disclaimers; prior 2,115-word
+content archived to docs/content-archive/); (4) TWO SUB-PILLARS
+created as children: /urban-renewal/pinui-binui/ (1,523w) +
+/urban-renewal/tama-38/ (1,506w), non-competing H1s, up-links;
+(5) 10 GLOSSARY TERMS live (pinui binui, tama 38, dayar sarvan, rov
+meyuchas, combinatzia, mitcham muchraz, netzigut, shamai, hetel
+hashbacha, mefakeach) with related_pillar + gov.il sources, all over
+the 60-word floor (one fixed post-push); (6) H1 DISCIPLINE: pages
+rendered ZERO h1 (theme quirk) - embedded exactly one h1 per page,
+verified 1/1/1 live; zero em/en dashes verified on all rendered pages.
+Copy archived to handoff/content/urban-renewal-2026-07-11/. YMYL FLAG
+TO OWNER: thresholds/tax copy should get attorney review (war-room CSV
+LEGAL_REVIEW flag). NEXT: L2 tools, L3 wizard, L4 private project
+space (consent 3D), L5 map+monetization - plan approved, versions
+reserved .77-.80.
+
 ## 2026-07-11 (40) - v1.72.74+75 ANTI-THIN-CONTENT + STUDIO v2
 v1.72.74 NEW inc/related-content.php (cloned the pro-cards float
 architecture): ONE restrained "כדאי לדעת" band on the two thinnest
