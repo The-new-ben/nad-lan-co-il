@@ -145,6 +145,7 @@ if ( ! function_exists( 'nadlan_ur_space_payload' ) ) {
 			'apartments' => $apts,
 			'consents'  => array( 'yes' => $yes, 'total' => $total, 'pct' => $total ? round( $yes / $total * 100, 1 ) : 0 ),
 			'updates'   => array_slice( (array) json_decode( (string) get_post_meta( $id, 'renewal_updates', true ), true ), 0, 30 ),
+			'stage_log' => array_slice( array_reverse( (array) json_decode( (string) get_post_meta( $id, 'renewal_stage_log', true ), true ) ), 0, 12 ),
 			'can_manage' => nadlan_ur_can_manage( $id ),
 			'statuses'  => nadlan_ur_consent_statuses(),
 			'doc_keys'  => nadlan_ur_doc_keys(),
@@ -399,6 +400,7 @@ if ( ! function_exists( 'nadlan_ur_render_dashboard' ) ) {
 .nlurd-grid{display:grid;grid-template-columns:1.2fr .8fr;gap:14px}
 @media(max-width:900px){.nlurd-grid{grid-template-columns:1fr}}
 .nlurd-3d{position:relative;height:460px;border-radius:16px;overflow:hidden;background:#14130F}
+@media(max-width:600px){.nlurd-3d{height:62vh;min-height:400px}}
 .nlurd-3d model-viewer{width:100%;height:100%;direction:ltr;background:transparent}
 .nlur-apt{width:30px;height:30px;border-radius:50%;border:2px solid #fff;color:#fff;font:700 10.5px Heebo;cursor:pointer;background:#A79E8D}
 .nlur-apt:not([data-visible]){opacity:0;pointer-events:none}
@@ -418,6 +420,9 @@ if ( ! function_exists( 'nadlan_ur_render_dashboard' ) ) {
 .nlurd-updates time{color:#8E877A;font-size:11.5px;display:block}
 .nlurd-invite input{width:100%;direction:ltr;text-align:left}
 .nlurd-note{font:400 12px/1.6 Heebo;color:#8E877A}
+.nlurd-break{display:flex;height:12px;border-radius:999px;overflow:hidden;margin:0 0 10px;background:#F3EEE3}
+.nlurd-break i{display:block;min-width:4px}
+.nlurd-hist summary{font:600 13px Heebo;color:#51483A;cursor:pointer;margin-top:8px}
 </style>
 <script id="nlurd-js">
 (function(){
@@ -434,12 +439,16 @@ if ( ! function_exists( 'nadlan_ur_render_dashboard' ) ) {
 	function load(){api("/renewal-space/"+spaceId).then(function(d){S=d;render()}).catch(function(){app.textContent="אין לכם גישה לחדר הזה."})}
 	function fmt(){return S.consents.yes+" מתוך "+S.consents.total+" ("+S.consents.pct+"%)"}
 	function render(){
-		var h='<div class="nlurd-grid"><div class="nlurd-card"><div class="nlurd-gauge">חתמו: '+fmt()+'</div><div class="nlurd-3d" id="nlurd-3dhost"></div><div class="nlurd-legend">';
+		var counts={};(S.apartments||[]).forEach(function(a){counts[a.consent_status]=(counts[a.consent_status]||0)+1});
+		var bar='<div class="nlurd-break">';Object.keys(S.statuses).forEach(function(k){var n=counts[k]||0;if(!n)return;bar+='<i style="flex:'+n+';background:'+S.statuses[k][1]+'" title="'+esc(S.statuses[k][0])+': '+n+'"></i>'});bar+='</div>';
+		var h='<div class="nlurd-grid"><div class="nlurd-card"><div class="nlurd-gauge">חתמו: '+fmt()+'</div>'+bar+'<div class="nlurd-3d" id="nlurd-3dhost"></div><div class="nlurd-legend">';
 		Object.keys(S.statuses).forEach(function(k){h+='<span><i style="background:'+S.statuses[k][1]+'"></i>'+esc(S.statuses[k][0])+'</span>'});
 		h+='</div><div class="nlurd-panel" id="nlurd-apt"><p class="nlurd-note">הקישו על דירה במודל לפרטים ולעדכון.</p></div></div>';
 		h+='<div><div class="nlurd-card"><h4>השלב בתהליך</h4><div class="nlurd-ladder">';
 		S.ladder.forEach(function(l,i){h+='<span class="'+(i<S.stage?"is-done":i===S.stage?"is-now":"")+'"'+(S.can_manage?' data-st="'+i+'" style="cursor:pointer"':'')+'>'+esc(l)+'</span>'});
-		h+='</div><p class="nlurd-note">השלב כפי שעודכן על ידי נציגות הבניין.</p></div>';
+		h+='</div><p class="nlurd-note">השלב כפי שעודכן על ידי נציגות הבניין.</p>';
+		if(S.stage_log&&S.stage_log.length){h+='<details class="nlurd-hist"><summary>היסטוריית שלבים</summary><ul class="nlurd-updates">';S.stage_log.forEach(function(l){h+='<li>'+esc(S.ladder[l.stage]||l.stage)+'<time>'+esc(l.at)+'</time></li>'});h+='</ul></details>'}
+		h+='</div>';
 		h+='<div class="nlurd-card"><h4>עדכונים לשכנים</h4>'+(S.can_manage?'<textarea id="nlurd-uptext" rows="2" placeholder="מה חדש בפרויקט?"></textarea><button class="nlurd-btn" id="nlurd-upsend" style="margin-top:8px">פרסום עדכון</button>':'')+'<ul class="nlurd-updates">';
 		(S.updates||[]).forEach(function(u){h+='<li>'+esc(u.text)+'<time>'+esc(u.at)+'</time></li>'});
 		h+='</ul></div>';
@@ -474,7 +483,7 @@ if ( ! function_exists( 'nadlan_ur_render_dashboard' ) ) {
 		var build=function(){
 			var mv=document.createElement("model-viewer");
 			mv.setAttribute("src",glb);mv.setAttribute("camera-controls","");mv.setAttribute("interaction-prompt","none");
-			mv.setAttribute("environment-image","neutral");mv.setAttribute("exposure","0.95");mv.setAttribute("shadow-intensity","0.5");mv.setAttribute("touch-action","pan-y");
+			mv.setAttribute("environment-image","neutral");mv.setAttribute("exposure","0.95");mv.setAttribute("shadow-intensity","0.5");mv.setAttribute("touch-action","pan-y");var fls=(S.floors||4);mv.setAttribute("camera-target","0 "+Math.min(20,fls*FH*0.45).toFixed(1)+" 0");mv.setAttribute("camera-orbit","-28deg 76deg "+Math.max(40,fls*FH*1.6).toFixed(0)+"m");mv.setAttribute("min-camera-orbit","auto 48deg 26m");mv.setAttribute("max-camera-orbit","auto 86deg 90m");
 			(S.apartments||[]).forEach(function(a){
 				var b=document.createElement("button");
 				b.setAttribute("slot","hotspot-"+a.id);

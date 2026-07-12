@@ -109,6 +109,11 @@
       mv.setAttribute("rotation-per-second", "12deg"); mv.setAttribute("interaction-prompt", "none");
       mv.setAttribute("environment-image", "neutral"); mv.setAttribute("exposure", "0.95");
       mv.setAttribute("shadow-intensity", "0.5"); mv.setAttribute("touch-action", "pan-y");
+      // frame the BUILDING, not the 96m site plate (mobile was a sliver)
+      mv.setAttribute("camera-target", "0 " + Math.min(20, floors * FH * 0.45).toFixed(1) + " 0");
+      mv.setAttribute("camera-orbit", "-28deg 76deg " + Math.max(40, floors * FH * 1.6).toFixed(0) + "m");
+      mv.setAttribute("min-camera-orbit", "auto 48deg 26m");
+      mv.setAttribute("max-camera-orbit", "auto 86deg 90m");
       mv.style.cssText = "width:100%;height:100%;direction:ltr;background:transparent";
       for (var f = 1; f <= floors; f++) {
         var b = document.createElement("button");

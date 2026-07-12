@@ -236,6 +236,7 @@ add_shortcode( 'nadlan_renewal_wizard', function () {
 .nlurw-adv h4{font-family:"Frank Ruhl Libre",serif;margin:0 0 6px}
 .nlurw-adv .d{font-size:11.5px;color:#8E877A;border-top:1px solid #E2DCD0;padding-top:8px;margin-top:10px}
 .nlurw-3d{height:420px;border-radius:14px;overflow:hidden;background:#14130F}
+@media(max-width:600px){.nlurw-3d{height:60vh;min-height:380px}}
 .nlurw-cta{display:flex;gap:10px;flex-wrap:wrap;margin-top:12px}
 .nlurw-btn{flex:1;text-align:center;border:1px solid #E2DCD0;border-radius:10px;padding:13px;font:700 14px Heebo;color:#1B1A17;text-decoration:none}
 .nlurw-btn--gold{background:linear-gradient(180deg,#b9923f,#9C7A3C);color:#FAF7F1;border:0}
