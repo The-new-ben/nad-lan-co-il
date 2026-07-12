@@ -1,5 +1,76 @@
 # AGENT-LOG - the God brain (append-only, newest on top)
 
+## 2026-07-12 (45) - v1.72.85-87 THE PRODUCT LANDING: /my-renewal/ STOPS BEING A LOGIN WALL
+Owner round: "people land on /my-renewal/ and see nothing; 3D in a
+sidebar is unusable; I want 3D on top with an interactive progress
+bar, a responsive map, a to-do list, docs attached; start-here
+graphics; compare Redirectx and fill gaps; English for neighbors;
+front-page 3D sits on a poster".
+RESEARCH FIRST (2 parallel agents): Redirectx = free-for-residents,
+7 stages, 10 roles, signature funnel, NO 3D + NO consumer wizard +
+NO English lane; winning landing patterns = ungated live demo,
+3 numbered verb-first steps, free majority calculator as lead
+magnet, "free for residents" badges, today-vs-with-us contrast
+strip, populated sample project as first-run (Basecamp pattern).
+All applied.
+BUILD (urban-space.php near-total rewrite + NEW
+assets/urban/renewal-space.js ~380 lines, one app, two modes):
+- Anonymous /my-renewal/ (was: wp-login redirect) is now an
+  INDEXABLE product landing HE + EN (?lang=en): hero + CTAs
+  (create room / free wizard check), free-for-residents badges,
+  start-here 3 steps, LIVE READ-ONLY DEMO of the finished Herzl 45
+  demo project via new public GET /renewal-demo (serves ONLY the
+  is_demo space, can_manage hard-false, 10-min transient, cleared
+  on save_post), today-vs-with-us strip, 6-feature grid, majority
+  calculator embedded (HE), FAQ + FAQPage JSON-LD, privacy band,
+  canonical + hreflang he/en/x-default. Members-without-a-room get
+  the same landing with the create form inline.
+- v2 layout (landing demo AND member dashboard): 3D FULL WIDTH ON
+  TOP (56vh) with hint chip, consent gauge + breakdown bar above,
+  INTERACTIVE STEPPER attached under it - click any of the 10
+  stages for desc + typical duration + next actions + reached-date
+  from the log (managers: set-as-current button). Below: apartment
+  panel, LIVE MAP card (Mapbox light, client-side forward geocode
+  of the address, honest centroid fallback chip, apartment click
+  pings the marker popup, chips link to /urban-renewal/map/),
+  AUTO TO-DO list (derived live: mapping done, 66/67/80 thresholds,
+  docs complete, pros chosen, developer chosen + current-stage
+  actions, honest "derived automatically" note), DOCS ROLLUP
+  (per-doc-type counts + meter), updates, invite (WhatsApp-share
+  copy), stage history.
+- Full EN pack: statuses, doc keys, 10-stage playbook (desc,
+  duration, 3 actions each) and all UI strings; lang flows through
+  every REST payload (?lang=en).
+- HOMEPAGE FIX: showcase model no longer spins ON TOP of a frozen
+  poster photo - poster is loading-state only; on model-viewer
+  'load' it swaps to a dark radial backdrop + model fades in; card
+  swaps re-poster only when not yet live. Verified live both
+  directions.
+- Hotfixes in-round: block theme printed empty h1s on the virtual
+  route (h1:empty CSS + DOM removal); compounds chip hidden at 0.
+CONTENT: pillar (73) got the "מתחילים כאן" dark product band after
+the lookup teaser + EN crosslink; NEW PAGE 5485
+/urban-renewal/english-guide/ "Pinui Binui and TAMA 38 in English"
+1,765 words live (olim/foreign-owner guide: tracks, 66/67/80,
+rights, POA-from-abroad, red flags, FAQ, what-you-pay, HE-terms
+glossary, links to EN product) - the research-confirmed empty lane
+(NBN has nothing, no competitor writes EN).
+VERIFIED LIVE: landing 200 (no login redirect), 3 steps, demo
+mount mode=demo, calc embedded, FAQ JSON-LD, hreflang, title+meta,
+0 dashes, single H1 (after fix); EN payload translates ladder/
+statuses/docs; auth payload carries stage_notes/centroid; demo API
+public; healthcheck 1.72.87; all snippets + media zips deleted
+(404-confirmed).
+Gaps kept floating: wizard EN mode (roadmap - stated honestly on
+the EN guide), per-resident value card (Redirectx has it - needs
+honest per-apartment valuation, owner decision), signature-funnel
+states (sent/viewed/signed upgrade to the enum - roadmap), RU
+third language (Redirectx has it), compounds count 0 for Givatayim
+(import has no Givatayim rows - degrade verified), monthly consent
+notice ritual (Singapore pattern - roadmap), walk-inside default
+interior (#56), competitor pixel screenshots (container browser),
+GreenInvoice key (#38), UPress upload ticket, credential rotation.
+
 ## 2026-07-12 (44) - v1.72.84 TRUST + ATTRIBUTION + MOBILE 3D + THE DEMO ECOSYSTEM
 Owner round, seven asks, all shipped and live-verified.
 1) DE-LAWYERED: owner is NOT presented as a licensed lawyer anywhere.

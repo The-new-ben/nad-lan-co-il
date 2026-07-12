@@ -807,7 +807,9 @@ if ( ! function_exists( 'nadlan_hv2_assets' ) ) {
 @media(max-width:900px){.nlhv2-show{grid-template-columns:1fr}}
 .nlhv2-show-stage{position:relative;min-height:440px;border-radius:18px;overflow:hidden;background:#14130F center/cover no-repeat;border:1px solid #2A251B;box-shadow:0 24px 60px rgba(27,26,23,.18)}
 @media(max-width:700px){.nlhv2-show-stage{min-height:340px}}
-.nlhv2-show-stage model-viewer{position:absolute;inset:0;width:100%;height:100%;direction:ltr;--poster-color:transparent;background:transparent}
+.nlhv2-show-stage model-viewer{position:absolute;inset:0;width:100%;height:100%;direction:ltr;--poster-color:transparent;background:transparent;opacity:0;transition:opacity .6s}
+.nlhv2-show-stage.is-loaded model-viewer{opacity:1}
+.nlhv2-show-stage{transition:background-image .4s}
 .nlhv2-show-chip{position:absolute;top:12px;inset-inline-start:12px;z-index:3;background:rgba(20,19,15,.82);color:#E9D9A8;font:600 12px/1 Heebo,sans-serif;padding:7px 12px;border-radius:999px;border:1px solid rgba(233,217,168,.4);pointer-events:none}
 .nlhv2-show-go{position:absolute;bottom:14px;inset-inline-start:14px;z-index:3;background:linear-gradient(180deg,#b9923f,#9C7A3C);color:#FAF7F1;font:700 13px/1 Heebo,sans-serif;padding:12px 18px;border-radius:10px;text-decoration:none;box-shadow:0 10px 26px -8px rgba(0,0,0,.5)}
 .nlhv2-show-go:hover{filter:brightness(1.06)}
@@ -1003,6 +1005,12 @@ if ( ! function_exists( 'nadlan_hv2_assets' ) ) {
 					mv.setAttribute("interaction-prompt","none");mv.setAttribute("shadow-intensity","0.55");
 					mv.setAttribute("exposure","0.95");mv.setAttribute("environment-image","neutral");
 					mv.setAttribute("touch-action","pan-y");
+					// the poster is a LOADING state only: once the real model renders,
+					// clear it so the 3D never spins on top of a frozen photo
+					mv.addEventListener("load",function(){
+						st.style.backgroundImage="radial-gradient(ellipse at 50% 32%, #2A2418 0%, #14130F 68%)";
+						st.classList.add("is-loaded");
+					});
 					st.insertBefore(mv,st.firstChild);
 				}
 				mv.setAttribute("src",st.dataset.glb);
@@ -1023,7 +1031,9 @@ if ( ! function_exists( 'nadlan_hv2_assets' ) ) {
 			c.addEventListener("click",function(){
 				document.querySelectorAll(".nlhv2-shcard").forEach(function(x){x.classList.toggle("is-on",x===c)});
 				st.dataset.glb=c.dataset.glb;
-				if(c.dataset.poster){st.style.backgroundImage="url("+c.dataset.poster+")"}
+				// re-show a poster only while the 3D is not yet live; once live the
+				// old model keeps rendering until the new one swaps in seamlessly
+				if(c.dataset.poster&&!live){st.style.backgroundImage="url("+c.dataset.poster+")"}
 				if(go&&c.dataset.href){go.href=c.dataset.href}
 				var mv=st.querySelector("model-viewer");
 				if(mv&&live){mv.setAttribute("src",c.dataset.glb)}
