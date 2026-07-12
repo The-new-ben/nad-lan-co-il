@@ -1,5 +1,32 @@
 # AGENT-LOG - the God brain (append-only, newest on top)
 
+## 2026-07-12 (52) - v1.72.96 EVIDENCE EXPORT + ENRICHED DEMO + THE ONE-SHOT LOVABLE PROMPT
+Sequential rentals work per owner "proceed":
+1) EVIDENCE EXPORT live: every apartment panel has "ייצוא תיק
+ראיות" - a printable self-contained document (RTL/LTR by lang):
+tenancy facts, securities + the legal cap, 12-month ledger table,
+documents states, maintenance chronology, notes, honest "not a
+legal document" footer. The research's one-click evidence bundle,
+v1 client-side (server-side PDF+attachments zip = v2).
+2) DEMO ENRICHED + reseeded (5510/5511 via new refresh=1 on the
+admin seed): unit 1 = madad-linked (base 108.6, floor clause) with
+full securities; unit 2 = bank deposit 18k (under cap); unit 3 =
+50%-linked + deposit 21k OVER the cap -> the red statutory warning
+demos itself; faucet ticket aged 20 days -> approaching the 30-day
+statutory chip demos too. Every v2 feature now visible to anon.
+3) THE ONE-SHOT LOVABLE PROMPT delivered (owner cannot do staged
+prompting; Lovable already produced a shell PLAN from the kit and
+asked about fonts): a single reply that approves the plan, answers
+Google-Fonts-link, and instructs autonomous layer-by-layer S1->S12
+with self-review after each layer + output packaging (DESIGN-
+OUTPUT.md manifest + GitHub sync/zip so we can consume). Grounded
+in fresh search: even one-shot prompts must be internally staged
+(docs.lovable.dev, Prompting Bible, 2026 guides).
+Ship: welded chain, healthcheck 1.72.96, snippet/media cleaned,
+demo payload verified carrying base_index/securities/over-cap.
+FLOATING unchanged + : rentals E2E owner phone test still owed;
+Lovable output intake round when he uploads the zip/repo.
+
 ## 2026-07-12 (51) - v1.72.94-95 THE DIGITAL LEASE FILE: RESEARCH-DEEP RENTALS + FULL EN + MANUAL + LOVABLE KIT
 Owner delivered his ChatGPT deep-research (the "digital lease file"
 spec: 2026 tax numbers, fair-rental duties, CPI mechanics, status

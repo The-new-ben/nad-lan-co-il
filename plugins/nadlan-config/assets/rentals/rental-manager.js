@@ -437,10 +437,50 @@
 		h += '<a href="' + esc(root.dataset.pros) + '?context=maintenance">' + esc(t("pro_btn")) + "</a>";
 		h += '<a href="' + esc(root.dataset.wizard) + '">' + esc(t("list_btn")) + "</a>";
 		h += '<a href="' + esc(root.dataset.studio) + '">' + esc(t("studio_btn")) + "</a>";
+		h += '<a href="#" id="nlu-export">' + esc(t("export_btn")) + "</a>";
 		h += "</div>";
 		if (can) { h += '<button type="button" class="nlrm-btn" id="nlu-save">' + esc(t("save")) + '</button> <span class="nlrm-note" id="nlu-msg" aria-live="polite"></span>'; }
 		box.innerHTML = h;
 		box.scrollIntoView({ behavior: "smooth", block: "nearest" });
+
+		/* evidence export: a printable, self-contained summary of the lease file */
+		var exp = document.getElementById("nlu-export");
+		if (exp) {
+			exp.addEventListener("click", function (ev) {
+				ev.preventDefault();
+				var rtl = LANG !== "en";
+				var rows = function (obj, labels) {
+					return Object.keys(labels).map(function (k) {
+						return "<tr><td>" + esc(labels[k]) + "</td><td>" + esc(obj[k] == null || obj[k] === "" ? "-" : String(obj[k])) + "</td></tr>";
+					}).join("");
+				};
+				var d = '<!doctype html><html dir="' + (rtl ? "rtl" : "ltr") + '"><head><meta charset="utf-8"><title>' + esc(t("export_doc")) + "</title>" +
+					"<style>body{font-family:Arial,Heebo,sans-serif;max-width:760px;margin:24px auto;color:#1B1A17;font-size:13px;line-height:1.6}h1{font-size:20px;border-bottom:2px solid #1B1A17;padding-bottom:8px}h2{font-size:15px;margin:18px 0 6px}table{width:100%;border-collapse:collapse}td{border:1px solid #ddd;padding:6px 9px;vertical-align:top}td:first-child{font-weight:700;width:38%;background:#faf7f1}ul{margin:4px 0;padding-inline-start:18px}.note{color:#777;font-size:11px;margin-top:18px;border-top:1px solid #ddd;padding-top:8px}</style></head><body>";
+				d += "<h1>" + esc(t("export_doc")) + " - " + esc(u.label) + "</h1>";
+				d += "<p>" + esc(CUR.address + ", " + CUR.city) + " · " + esc(t("export_gen")) + ": " + new Date().toLocaleString(rtl ? "he-IL" : "en-GB") + "</p>";
+				d += "<h2>" + esc(t("sel_title")) + "</h2><table>" + rows({
+					a: u.tenant_name, b: u.tenant_phone, c: nis(u.rent), d: u.start, e: u.end, f: u.option_until,
+					g: ("madad" === u.linkage ? t("link_madad") + " (" + (u.linked_pct || 100) + "%, " + t("cpi_base") + " " + (u.base_index || "-") + ")" : t("link_none"))
+				}, { a: t("tenant"), b: t("phone"), c: t("rent"), d: t("start"), e: t("end"), f: t("opt"), g: t("linkage") }) + "</table>";
+				d += "<h2>" + esc(t("sec_title")) + "</h2><ul>";
+				["check", "shtar", "arev", "bank"].forEach(function (k) { if ((u.securities || {})[k]) { d += "<li>" + esc(t("sec_" + k)) + "</li>"; } });
+				if ((u.securities || {}).deposit_amount) { d += "<li>" + esc(t("sec_amount")) + ": " + nis(u.securities.deposit_amount) + " (" + esc(t("sec_cap")) + ": " + nis(secCap(u)) + ")</li>"; }
+				d += "</ul>";
+				d += "<h2>" + esc(t("ledger")) + "</h2><table><tr>";
+				for (var i = -11; i <= 0; i++) { d += "<td style='width:auto;background:none;font-weight:400;text-align:center'>" + ym(i).slice(5) + "/" + ym(i).slice(2, 4) + "<br><b>" + ((u.ledger || {})[ym(i)] === "paid" ? "✓" : "-") + "</b></td>"; }
+				d += "</tr></table>";
+				d += "<h2>" + esc(t("docs")) + "</h2><ul>";
+				Object.keys(CUR.doc_keys).forEach(function (k) { d += "<li>" + esc(CUR.doc_keys[k]) + ": <b>" + ((u.docs || {})[k] ? "✓" : "-") + "</b></li>"; });
+				d += "</ul><h2>" + esc(t("maint")) + "</h2><ul>";
+				(u.maintenance || []).forEach(function (m) { d += "<li>" + esc(String(m.at).slice(0, 10)) + " · " + esc(m.text) + " · " + esc("done" === m.status ? t("mark_done") : ("urgent" === m.urgency ? t("urgent") : t("standard"))) + "</li>"; });
+				if (!(u.maintenance || []).length) { d += "<li>-</li>"; }
+				d += "</ul>";
+				if (u.note) { d += "<h2>" + esc(t("notes")) + "</h2><p>" + esc(u.note) + "</p>"; }
+				d += '<p class="note">' + esc(t("export_note")) + "</p></body></html>";
+				var w = window.open("", "_blank");
+				if (w) { w.document.write(d); w.document.close(); setTimeout(function () { try { w.print(); } catch (e) { /* user prints manually */ } }, 400); }
+			});
+		}
 
 		/* CPI live calc (works read-only too - current index is a local input) */
 		var cpiCalc = function () {
