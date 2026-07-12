@@ -777,6 +777,14 @@ if ( ! function_exists( 'nadlan_home_v2_shortcode' ) ) {
 			$ri = array_search( 'listings', $bands, true );
 			array_splice( $bands, false !== $ri ? $ri + 1 : count( $bands ), 0, 'rentals' );
 		}
+		// composition (owner 2026-07-12): the intro video must not sit on the map's
+		// shoulder - two stacked media stages read as clutter. It moves after areas.
+		$vi = array_search( 'video', $bands, true );
+		if ( false !== $vi && in_array( 'dronemap', $bands, true ) ) {
+			array_splice( $bands, $vi, 1 );
+			$ai = array_search( 'areas', $bands, true );
+			array_splice( $bands, false !== $ai ? $ai + 1 : count( $bands ), 0, 'video' );
+		}
 		ob_start();
 		echo '<div class="nlhv2" dir="' . esc_attr( $dir ) . '" lang="' . esc_attr( $lang ) . '">';
 		if ( function_exists( 'nadlan_lang_switcher' ) ) { echo '<div class="nlhv2-langbar">' . nadlan_lang_switcher() . '</div>'; }

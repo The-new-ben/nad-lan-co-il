@@ -1,5 +1,31 @@
 # AGENT-LOG - the God brain (append-only, newest on top)
 
+## 2026-07-12 (55) - v1.72.100 MAP RICHNESS + DE-STACK (owner roast response)
+Owner: "map and video stacked one above the other; map shows only
+3 projects, not rich; want little dots/flags with prices/data like
+Google Maps." Diagnosis: the DATA was never poor - /project-map
+returns 958 geocoded projects - but rendering starved it: dots had
+minzoom 10.2, so the national opening zoom (8.6) showed only a few
+city text chips. Fix (drone-map.php):
+- nl-points: minzoom REMOVED - every geocoded project is a dot at
+  every zoom (radius 2.4px country -> 7.5px street).
+- NEW nl-point-tags symbol layer (minzoom 7): Google-style data
+  tags - price/sqm ("₪64K למ״ר") > unit count ("118 יח״ד") >
+  status (בשיווק/בבנייה/בתכנון/הושלם) - terracotta bold, halo,
+  Mapbox collision engine shows as many as fit, more on zoom, all
+  clickable (openPin). Labels ×5 langs via data-l-x JSON.
+- Payload enriched: units (num_units), psqm (project_3d_avg_price_
+  per_sqm), status (nadlan_drone_map_status_enum - maps enum + gov
+  Hebrew strings, fails open empty). Transient bumped v1 -> v2.
+  Coverage verified live: 949/958 projects carry a tag (99%).
+- STACKING: default band order put video right after projects and
+  the dronemap splice landed between them -> map+video adjacent.
+  home-v2.php now relocates video after areas when dronemap is
+  present. Verified live order: cbs -> map -> listings -> rentals
+  -> renewal -> areas -> videoband -> magazine.
+Pixels await owner eyes (container cannot render HTTPS); payload,
+band order and JS layers verified live.
+
 ## 2026-07-12 (54) - v1.72.98-99 THE APPOINTMENT SCHEDULER (owner-default, CMS-reassignable)
 Owner order: "appointment scheduler to show projects, listings,
 professionals... connect it to me by default but make it CMS

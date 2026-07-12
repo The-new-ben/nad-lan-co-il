@@ -1,15 +1,15 @@
 {
   "name": "NadLan Config",
   "slug": "nadlan-config",
-  "version": "1.72.98",
+  "version": "1.72.100",
   "author": "nad-lan.co.il",
   "homepage": "https://nad-lan.co.il",
   "requires": "6.7",
   "tested": "7.0",
   "requires_php": "7.4",
-  "download_url": "https://raw.githubusercontent.com/The-new-ben/nad-lan-co-il/main/plugin-dist/nadlan-config-1.72.98.zip",
+  "download_url": "https://raw.githubusercontent.com/The-new-ben/nad-lan-co-il/main/plugin-dist/nadlan-config-1.72.100.zip",
   "last_updated": "2026-07-12",
   "sections": {
-    "changelog": "<h4>1.72.98</h4><ul><li>Appointment scheduler: slot picker on project/listing/professional pages, owner-default routing with per-entity CMS reassignment, WhatsApp confirmation, ICS, /my-appointments/ dashboard.</li></ul>"
+    "changelog": "<h4>1.72.100</h4><ul><li>Map richness: all-zoom project dots + Google-style data tags (price/units/status); video band relocated below areas.</li><li>1.72.98-99: appointment scheduler.</li></ul>"
   }
 }

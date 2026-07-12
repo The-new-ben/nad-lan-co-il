@@ -19,7 +19,7 @@ add_action( 'rest_api_init', function () {
 	register_rest_route( 'nadlan/v1', '/project-map', array(
 		'methods' => 'GET', 'permission_callback' => '__return_true',
 		'callback' => function () {
-			$cache = get_transient( 'nadlan_project_map_v1' );
+			$cache = get_transient( 'nadlan_project_map_v2' );
 			if ( is_array( $cache ) ) { return new WP_REST_Response( $cache, 200 ); }
 			$q = new WP_Query( array(
 				'post_type' => 'nadlan_project', 'post_status' => 'publish',
@@ -44,15 +44,35 @@ add_action( 'rest_api_init', function () {
 					'featured' => (bool) get_post_meta( $id, 'project_featured', true ),
 					'poster'   => esc_url_raw( (string) get_post_meta( $id, 'project_model_poster', true ) ),
 					'img'   => esc_url_raw( (string) get_post_meta( $id, 'project_3d_image', true ) ),
+					// data-tag fuel (owner 2026-07-12): the map must shout data, not dots
+					'units'  => (int) get_post_meta( $id, 'num_units', true ),
+					'psqm'   => (float) get_post_meta( $id, 'project_3d_avg_price_per_sqm', true ),
+					'status' => nadlan_drone_map_status_enum( $id ),
 				);
 			}
 			$out = array( 'ok' => true, 'count' => count( $items ), 'items' => $items );
-			set_transient( 'nadlan_project_map_v1', $out, 6 * HOUR_IN_SECONDS );
+			set_transient( 'nadlan_project_map_v2', $out, 6 * HOUR_IN_SECONDS );
 			return new WP_REST_Response( $out, 200 );
 		},
 	) );
 } );
-add_action( 'save_post_nadlan_project', function () { delete_transient( 'nadlan_project_map_v1' ); } );
+add_action( 'save_post_nadlan_project', function () { delete_transient( 'nadlan_project_map_v2' ); } );
+
+if ( ! function_exists( 'nadlan_drone_map_status_enum' ) ) {
+	// Normalize project_status (enum or gov.il Hebrew) to a known enum; fail open (empty).
+	function nadlan_drone_map_status_enum( $id ) {
+		$raw = trim( (string) get_post_meta( $id, 'project_status', true ) );
+		if ( '' === $raw ) { return ''; }
+		$map = array(
+			'marketing' => 'marketing', 'construction' => 'construction', 'planning' => 'planning', 'completed' => 'completed',
+			'בשיווק' => 'marketing', 'שיווק' => 'marketing',
+			'בביצוע' => 'construction', 'בבנייה' => 'construction', 'ביצוע' => 'construction',
+			'בתכנון' => 'planning', 'תכנון' => 'planning', 'מאושר' => 'planning',
+			'הסתיים' => 'completed', 'אוכלס' => 'completed', 'הושלם' => 'completed',
+		);
+		return isset( $map[ $raw ] ) ? $map[ $raw ] : '';
+	}
+}
 
 if ( ! function_exists( 'nadlan_drone_map_i18n' ) ) {
 	function nadlan_drone_map_i18n( $lang ) {
@@ -62,6 +82,20 @@ if ( ! function_exists( 'nadlan_drone_map_i18n' ) ) {
 			'fr' => array( 'title' => 'La carte des projets en direct', 'sub' => 'Ou voulez-vous vivre ? Zoomez sur votre ville et choisissez un projet.', 'near' => 'Projets pres de moi', 'toggle' => 'Carte drone en direct · satellite et batiments 3D', 'note' => 'Certaines localisations sont approximatives jusqu\'a verification avec le promoteur.', 'to_project' => 'Vers la page du projet →', 'projects_n' => 'projets', 'more_n' => 'et {n} autres projets dans cette ville', 'city_level' => 'localisation au niveau de la ville' ),
 			'ru' => array( 'title' => 'Живая карта проектов', 'sub' => 'Где вы хотите жить? Приблизьте свой город и выберите проект.', 'near' => 'Проекты рядом со мной', 'toggle' => 'Живая карта · спутник и 3D здания', 'note' => 'Некоторые локации приблизительны до подтверждения застройщиком.', 'to_project' => 'На страницу проекта →', 'projects_n' => 'проектов', 'more_n' => 'и еще {n} проектов в этом городе', 'city_level' => 'локация на уровне города' ),
 			'ar' => array( 'title' => 'خريطة المشاريع الحية', 'sub' => 'أين تريدون السكن؟ قربوا على مدينتكم واختاروا مشروعا.', 'near' => 'مشاريع بالقرب مني', 'toggle' => 'خريطة حية · قمر صناعي ومبان ثلاثية الأبعاد', 'note' => 'بعض المواقع تقريبية حتى التوثيق مع المطور.', 'to_project' => 'إلى صفحة المشروع ←', 'projects_n' => 'مشاريع', 'more_n' => 'و {n} مشاريع أخرى في هذه المدينة', 'city_level' => 'موقع على مستوى المدينة' ),
+		);
+		return isset( $T[ $lang ] ) ? $T[ $lang ] : $T['he'];
+	}
+}
+
+if ( ! function_exists( 'nadlan_drone_map_tag_labels' ) ) {
+	// Labels for the Google-style data tags on the pins (owner 2026-07-12).
+	function nadlan_drone_map_tag_labels( $lang ) {
+		$T = array(
+			'he' => array( 'u' => 'יח״ד', 'sqm' => 'למ״ר', 'st' => array( 'marketing' => 'בשיווק', 'construction' => 'בבנייה', 'planning' => 'בתכנון', 'completed' => 'הושלם' ) ),
+			'en' => array( 'u' => 'units', 'sqm' => '/sqm', 'st' => array( 'marketing' => 'Selling', 'construction' => 'Under construction', 'planning' => 'Planning', 'completed' => 'Completed' ) ),
+			'fr' => array( 'u' => 'logements', 'sqm' => '/m2', 'st' => array( 'marketing' => 'Commercialisation', 'construction' => 'En construction', 'planning' => 'En planification', 'completed' => 'Livré' ) ),
+			'ru' => array( 'u' => 'квартир', 'sqm' => 'за м2', 'st' => array( 'marketing' => 'Продажи', 'construction' => 'Строится', 'planning' => 'Проектируется', 'completed' => 'Сдан' ) ),
+			'ar' => array( 'u' => 'وحدات', 'sqm' => 'للمتر', 'st' => array( 'marketing' => 'في التسويق', 'construction' => 'قيد البناء', 'planning' => 'في التخطيط', 'completed' => 'مكتمل' ) ),
 		);
 		return isset( $T[ $lang ] ) ? $T[ $lang ] : $T['he'];
 	}
@@ -80,7 +114,7 @@ if ( ! function_exists( 'nadlan_drone_map_band' ) ) {
 		$L = nadlan_drone_map_i18n( $lang );
 		ob_start(); ?>
 <section class="nldrone nldrone--<?php echo esc_attr( $mode ); ?>" id="nldrone" data-mode="<?php echo esc_attr( $mode ); ?>" data-token="<?php echo esc_attr( $token ); ?>" data-rest="<?php echo esc_attr( $rest ); ?>"
-	data-l-top="<?php echo esc_attr( $L['to_project'] ); ?>" data-l-pn="<?php echo esc_attr( $L['projects_n'] ); ?>" data-l-more="<?php echo esc_attr( $L['more_n'] ); ?>" data-l-city="<?php echo esc_attr( $L['city_level'] ); ?>">
+	data-l-top="<?php echo esc_attr( $L['to_project'] ); ?>" data-l-pn="<?php echo esc_attr( $L['projects_n'] ); ?>" data-l-more="<?php echo esc_attr( $L['more_n'] ); ?>" data-l-city="<?php echo esc_attr( $L['city_level'] ); ?>" data-l-x="<?php echo esc_attr( wp_json_encode( nadlan_drone_map_tag_labels( $lang ), JSON_UNESCAPED_UNICODE ) ); ?>">
 	<?php if ( 'showcase' === $mode ) : ?>
 	<div class="nldrone-head">
 		<span class="nldrone-head__eyebrow"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><path d="M12 3v4m0 10v4M3 12h4m10 0h4"/><circle cx="12" cy="12" r="3.2"/><circle cx="12" cy="12" r="7.5" stroke-dasharray="2 3"/></svg> LIVE</span>
@@ -159,8 +193,8 @@ if ( ! function_exists( 'nadlan_drone_map_band' ) ) {
 			   principle: a dull-toned base so the pins carry the color). */
 			var isHero=band.dataset.mode==="hero";
 			var PAL=isHero
-				?{pin:"#E9D9A8",pinStroke:"#14130F",label:"#E9E2D2",halo:"#14130F",chip:"#F3EEE3",chipHalo:"#14130F"}
-				:{pin:"#C2563A",pinStroke:"#FAF7F1",label:"#51483A",halo:"#FAF7F1",chip:"#1B1A17",chipHalo:"#FAF7F1"};
+				?{pin:"#E9D9A8",pinStroke:"#14130F",label:"#E9E2D2",halo:"#14130F",chip:"#F3EEE3",chipHalo:"#14130F",tag:"#E9D9A8"}
+				:{pin:"#C2563A",pinStroke:"#FAF7F1",label:"#51483A",halo:"#FAF7F1",chip:"#1B1A17",chipHalo:"#FAF7F1",tag:"#C2563A"};
 			var map=new mapboxgl.Map({container:"nldrone-map",style:isHero?"mapbox://styles/mapbox/dark-v11":"mapbox://styles/mapbox/light-v11",center:[34.86,31.95],zoom:8.6,pitch:isHero?55:46,bearing:-10,attributionControl:true,cooperativeGestures:true,locale:{"CooperativeGesturesHandler.WindowsHelpText":"\u05dc\u05d7\u05e6\u05d5 Ctrl \u05d5\u05d2\u05dc\u05dc\u05d5 \u05db\u05d3\u05d9 \u05dc\u05d4\u05ea\u05e7\u05e8\u05d1 \u05d1\u05de\u05e4\u05d4","CooperativeGesturesHandler.MacHelpText":"\u05dc\u05d7\u05e6\u05d5 \u2318 \u05d5\u05d2\u05dc\u05dc\u05d5 \u05db\u05d3\u05d9 \u05dc\u05d4\u05ea\u05e7\u05e8\u05d1 \u05d1\u05de\u05e4\u05d4","TouchPanBlocker.Message":"\u05d4\u05d6\u05d9\u05d6\u05d5 \u05d0\u05ea \u05d4\u05de\u05e4\u05d4 \u05d1\u05e9\u05ea\u05d9 \u05d0\u05e6\u05d1\u05e2\u05d5\u05ea"}});
 			map.addControl(new mapboxgl.NavigationControl({visualizePitch:true}));
 			map.on("load",function(){
@@ -198,9 +232,18 @@ if ( ! function_exists( 'nadlan_drone_map_band' ) ) {
 				   disclosure instead: country view shows NAMED CITY CHIPS ("City - 43");
 				   one tap flies into the city where every project is a labeled pin;
 				   one tap on a pin opens its card. Two taps, never a blind bundle. */
+				/* the data tag (owner 2026-07-12): Google-Maps style - the map shouts
+				   data, never anonymous dots. Price per sqm > unit count > status. */
+				var X={u:"",sqm:"",st:{}};try{X=JSON.parse(band.dataset.lX||"{}")||X}catch(e){}
+				function tagOf(p){
+					if(p.psqm>0){return "\u20aa"+(p.psqm>=1000?Math.round(p.psqm/1000)+"K":Math.round(p.psqm))+" "+(X.sqm||"")}
+					if(p.units>0){return p.units+" "+(X.u||"")}
+					if(p.status&&X.st&&X.st[p.status]){return X.st[p.status]}
+					return ""
+				}
 				var gj={type:"FeatureCollection",features:items.map(function(p){
 					return {type:"Feature",geometry:{type:"Point",coordinates:[p.lng,p.lat]},
-						properties:{id:p.id,title:p.title,short:String(p.title||"").split(/\s[-|\u00b7]\s|\s\u2013\s/)[0].trim(),url:p.url,city:p.city||"",img:p.img||"",conf:p.conf||""}};
+						properties:{id:p.id,title:p.title,short:String(p.title||"").split(/\s[-|\u00b7]\s|\s\u2013\s/)[0].trim(),url:p.url,city:p.city||"",img:p.img||"",conf:p.conf||"",tag:tagOf(p)}};
 				})};
 				var cities={};
 				items.forEach(function(p){
@@ -222,24 +265,32 @@ if ( ! function_exists( 'nadlan_drone_map_band' ) ) {
 					map.addLayer({id:"nl-city-chips",type:"symbol",source:"nlcities",maxzoom:CITY_MAX,
 						layout:{"text-field":["get","label"],"text-size":["interpolate",["linear"],["zoom"],7,12,10,14.5],"text-font":["DIN Pro Bold","Arial Unicode MS Bold"],"text-allow-overlap":false,"text-padding":6},
 						paint:{"text-color":PAL.chip,"text-halo-color":PAL.chipHalo,"text-halo-width":1.8}});
-					map.addLayer({id:"nl-points",type:"circle",source:"nlprojects",minzoom:PT_MIN,
-						paint:{"circle-color":PAL.pin,"circle-radius":["interpolate",["linear"],["zoom"],10.2,4.5,13,6,15,7.5],"circle-stroke-width":1.6,"circle-stroke-color":PAL.pinStroke}});
+					/* EVERY geocoded project is a dot at EVERY zoom (owner 2026-07-12:
+					   "it used to show all the projects") - small at country view,
+					   full pins in the city. The tags carry the data. */
+					map.addLayer({id:"nl-points",type:"circle",source:"nlprojects",
+						paint:{"circle-color":PAL.pin,"circle-radius":["interpolate",["linear"],["zoom"],6,2.4,9,3.6,10.2,4.5,13,6,15,7.5],"circle-stroke-width":["interpolate",["linear"],["zoom"],6,0.8,10.2,1.6],"circle-stroke-color":PAL.pinStroke}});
+					/* Google-style data tags: as many as fit without collisions, more on zoom */
+					map.addLayer({id:"nl-point-tags",type:"symbol",source:"nlprojects",minzoom:7,
+						layout:{"text-field":["get","tag"],"text-size":["interpolate",["linear"],["zoom"],7,10,12,12.5],"text-font":["DIN Pro Bold","Arial Unicode MS Bold"],"text-anchor":"bottom","text-offset":[0,-0.55],"text-optional":true,"text-allow-overlap":false,"text-padding":4},
+						paint:{"text-color":PAL.tag,"text-halo-color":PAL.halo,"text-halo-width":1.6}});
 					/* project names beside the pins; collisions hide text, never the pin */
 					map.addLayer({id:"nl-point-labels",type:"symbol",source:"nlprojects",minzoom:PT_MIN,
 						layout:{"text-field":["get","short"],"text-size":11,"text-font":["DIN Pro Medium","Arial Unicode MS Bold"],"text-anchor":"top","text-offset":[0,0.7],"text-optional":true,"text-allow-overlap":false},
 						paint:{"text-color":PAL.label,"text-halo-color":PAL.halo,"text-halo-width":1.3}});
-					function popHtml(p){return '<div class="nldrone-pop" dir="auto"><b>'+p.title+"</b>"+(p.img?'<img src="'+p.img+'" alt="" loading="lazy">':"")+(p.city?'<div style="font-size:12px;color:#6D665C">'+p.city+(p.conf==="city"?" \u00b7 "+L.city:"")+"</div>":"")+'<a href="'+p.url+'">'+L.top+"</a></div>"}
+					function popHtml(p){return '<div class="nldrone-pop" dir="auto"><b>'+p.title+"</b>"+(p.img?'<img src="'+p.img+'" alt="" loading="lazy">':"")+(p.tag?'<div style="font:800 12.5px Heebo,sans-serif;color:#C2563A;margin-top:3px">'+p.tag+"</div>":"")+(p.city?'<div style="font-size:12px;color:#6D665C">'+p.city+(p.conf==="city"?" \u00b7 "+L.city:"")+"</div>":"")+'<a href="'+p.url+'">'+L.top+"</a></div>"}
 					var openPin=function(e){
 						var p=e.features[0].properties;
 						new mapboxgl.Popup({offset:14,maxWidth:"250px"}).setLngLat(e.features[0].geometry.coordinates).setHTML(popHtml(p)).addTo(map);
 					};
-					// the NAME LABEL is a far bigger tap target than the dot - both open the card
+					// the NAME LABEL and the DATA TAG are far bigger tap targets than the dot - all open the card
 					map.on("click","nl-points",openPin);
 					map.on("click","nl-point-labels",openPin);
+					map.on("click","nl-point-tags",openPin);
 					map.on("click","nl-city-chips",function(e){
 						map.easeTo({center:e.features[0].geometry.coordinates,zoom:11.8,pitch:isHero?55:46,duration:1100});
 					});
-					["nl-points","nl-point-labels","nl-city-chips"].forEach(function(l){
+					["nl-points","nl-point-labels","nl-point-tags","nl-city-chips"].forEach(function(l){
 						map.on("mouseenter",l,function(){map.getCanvas().style.cursor="pointer"});
 						map.on("mouseleave",l,function(){map.getCanvas().style.cursor=""});
 					});
