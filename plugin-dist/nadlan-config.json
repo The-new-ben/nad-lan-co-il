@@ -1,15 +1,15 @@
 {
   "name": "NadLan Config",
   "slug": "nadlan-config",
-  "version": "1.72.82",
+  "version": "1.72.83",
   "author": "nad-lan.co.il",
   "homepage": "https://nad-lan.co.il",
   "requires": "6.7",
   "tested": "7.0",
   "requires_php": "7.4",
-  "download_url": "https://raw.githubusercontent.com/The-new-ben/nad-lan-co-il/main/plugin-dist/nadlan-config-1.72.82.zip",
-  "last_updated": "2026-07-12 03:20:00",
+  "download_url": "https://raw.githubusercontent.com/The-new-ben/nad-lan-co-il/main/plugin-dist/nadlan-config-1.72.83.zip",
+  "last_updated": "2026-07-12 03:40:00",
   "sections": {
-    "changelog": "<h4>1.72.82</h4><ul><li>Map: normalize gov.il city-name hyphenation for centroids</li></ul>"
+    "changelog": "<h4>1.72.83</h4><ul><li>Map data cache key versioned so the normalization takes effect immediately</li></ul>"
   }
 }

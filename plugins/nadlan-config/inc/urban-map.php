@@ -60,7 +60,7 @@ add_action( 'rest_api_init', function () {
 		'permission_callback' => '__return_true',
 		'callback'            => function () {
 			if ( ! nadlan_ur_map_on() ) { return array( 'cities' => array() ); }
-			$hit = get_transient( 'nadlan_ur_mapdata' );
+			$hit = get_transient( 'nadlan_ur_mapdata_v2' );
 			if ( is_array( $hit ) ) { return $hit; }
 			global $wpdb;
 			$rows = $wpdb->get_results( "
@@ -89,7 +89,7 @@ add_action( 'rest_api_init', function () {
 				if ( 'tama38' === $r['track'] ) { $cities[ $city ]['tama38'] += (int) $r['n']; }
 			}
 			$out = array( 'total' => array_sum( wp_list_pluck( $cities, 'count' ) ), 'cities' => array_values( $cities ) );
-			set_transient( 'nadlan_ur_mapdata', $out, 6 * HOUR_IN_SECONDS );
+			set_transient( 'nadlan_ur_mapdata_v2', $out, 6 * HOUR_IN_SECONDS );
 			return $out;
 		},
 	) );
