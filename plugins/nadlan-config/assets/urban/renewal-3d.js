@@ -12,6 +12,10 @@
   root.dataset.nlurWired = "1";
 
   var state = { compound: "", booted3d: false };
+  var LANG = root.dataset.lang || "he";
+  var I = {};
+  try { I = JSON.parse(root.dataset.i18n || "{}"); } catch (e) { I = {}; }
+  function t(k, fb) { return I[k] || fb; }
   function el(id) { return document.getElementById(id); }
   function step(n) {
     root.querySelectorAll(".nlurw-step").forEach(function (s) { s.hidden = s.dataset.step !== String(n); });
@@ -29,17 +33,17 @@
     var city = (el("nlurw-city").value || "").trim(), q = (el("nlurw-street").value || "").trim();
     var out = el("nlurw-lookupres");
     if (!city) { out.textContent = ""; return; }
-    out.textContent = "בודקים מול מאגר המתחמים...";
+    out.textContent = t("checking", "בודקים מול מאגר המתחמים...");
     fetch(root.dataset.lookup + "?city=" + encodeURIComponent(city) + "&q=" + encodeURIComponent(q))
       .then(function (r) { return r.json(); })
       .then(function (d) {
         if (d && d.matches && d.matches.length) {
           var m = d.matches[0];
           state.compound = m.title + (m.plan_number ? ", תכנית " + m.plan_number : "") + (m.project_status ? ", סטטוס: " + m.project_status : "") + (m.project_type ? ", מסלול: " + m.project_type : "");
-          out.textContent = "נמצא מתחם מוכרז קרוב: " + m.title + ". הנתונים יצורפו לניתוח.";
+          out.textContent = t("found", "נמצא מתחם מוכרז קרוב: ") + m.title + t("found2", ". הנתונים יצורפו לניתוח.");
         } else {
           state.compound = "";
-          out.textContent = "לא נמצא מתחם מוכרז תואם. זה לא אומר שאין פוטנציאל - מסלול בניין בודד לא מופיע במאגר.";
+          out.textContent = t("notfound", "לא נמצא מתחם מוכרז תואם. זה לא אומר שאין פוטנציאל - מסלול בניין בודד לא מופיע במאגר.");
         }
       }).catch(function () { out.textContent = ""; });
   });
@@ -49,48 +53,48 @@
   if (file) file.addEventListener("change", function () {
     if (!file.files || !file.files[0]) return;
     var msg = el("nlurw-filemsg");
-    msg.textContent = "מעלים...";
+    msg.textContent = t("uploading", "מעלים...");
     var fd = new FormData();
     fd.append("doc", file.files[0]);
     fetch(root.dataset.doc, { method: "POST", headers: { "X-WP-Nonce": root.dataset.nonce }, body: fd })
       .then(function (r) { return r.json().then(function (j) { return { ok: r.ok, j: j }; }); })
       .then(function (x) {
-        msg.textContent = x.ok ? "הקובץ נשמר לתיק הבניין (קישור חסוי). זכרו: הניתוח קורא את הטקסט שתדביקו למטה." : ((x.j && x.j.message) || "ההעלאה נכשלה");
-      }).catch(function () { msg.textContent = "ההעלאה נכשלה"; });
+        msg.textContent = x.ok ? t("uploaded", "הקובץ נשמר לתיק הבניין (קישור חסוי). זכרו: הניתוח קורא את הטקסט שתדביקו למטה.") : ((x.j && x.j.message) || t("upfail", "ההעלאה נכשלה"));
+      }).catch(function () { msg.textContent = t("upfail", "ההעלאה נכשלה"); });
   });
 
   /* step 4 - advisory */
-  var TRACKS = { pinui_binui: "פינוי בינוי", tama38_1: "חיזוק (תמא 38/1)", tama38_2: "הריסה ובנייה לבניין בודד", unclear: "דרוש בירור נוסף" };
-  var PROS = { lawyer: "עורך דין דיירים", shamai: "שמאי מקרקעין", mefakeach: "מפקח בנייה", organizer: "מארגן/מנהלת" };
+  var TRACKS = I.tracks || { pinui_binui: "פינוי בינוי", tama38_1: "חיזוק (תמא 38/1)", tama38_2: "הריסה ובנייה לבניין בודד", unclear: "דרוש בירור נוסף" };
+  var PROS = I.prosmap || { lawyer: "עורך דין דיירים", shamai: "שמאי מקרקעין", mefakeach: "מפקח בנייה", organizer: "מארגן/מנהלת" };
   function advise() {
     var box = el("nlurw-adv");
-    box.textContent = "מנתחים את הנתונים...";
+    box.textContent = t("analyzing", "מנתחים את הנתונים...");
     fetch(root.dataset.advise, {
       method: "POST",
       headers: { "Content-Type": "application/json", "X-WP-Nonce": root.dataset.nonce },
       body: JSON.stringify({
         city: el("nlurw-city").value, floors: el("nlurw-floors").value, units: el("nlurw-units").value,
         year: el("nlurw-year").value, consents: el("nlurw-consents").value,
-        compound_facts: state.compound, text: el("nlurw-text").value
+        lang: LANG, compound_facts: state.compound, text: el("nlurw-text").value
       })
     }).then(function (r) { return r.json().then(function (j) { return { ok: r.ok, j: j }; }); })
       .then(function (x) {
-        if (!x.ok) { box.textContent = (x.j && x.j.message) || "הניתוח אינו זמין כרגע. הכלים והמדריך בעמוד ההתחדשות פתוחים תמיד."; return; }
+        if (!x.ok) { box.textContent = (x.j && x.j.message) || t("unavailable", "הניתוח אינו זמין כרגע. הכלים והמדריך בעמוד ההתחדשות פתוחים תמיד."); return; }
         var a = x.j, h = "";
-        h += "<h4>המסלול המסתמן: " + (TRACKS[a.track_fit] || TRACKS.unclear) + "</h4>";
+        h += "<h4>" + t("track", "המסלול המסתמן: ") + (TRACKS[a.track_fit] || TRACKS.unclear) + "</h4>";
         if (a.track_reason) h += "<p>" + esc(a.track_reason) + "</p>";
-        if (a.consent_needed) h += "<p><b>הסכמות:</b> " + esc(a.consent_needed) + "</p>";
+        if (a.consent_needed) h += "<p><b>" + t("consents", "הסכמות") + ":</b> " + esc(a.consent_needed) + "</p>";
         if (a.next_steps && a.next_steps.length) {
-          h += "<p><b>הצעדים הבאים:</b></p><ol>";
+          h += "<p><b>" + t("steps", "הצעדים הבאים") + ":</b></p><ol>";
           a.next_steps.forEach(function (s) { h += "<li>" + esc(s) + "</li>"; });
           h += "</ol>";
         }
         if (a.professionals && a.professionals.length) {
-          h += "<p><b>אנשי מקצוע רלוונטיים:</b> " + a.professionals.map(function (p) { return PROS[p] || p; }).join(", ") + "</p>";
+          h += "<p><b>" + t("pros", "אנשי מקצוע רלוונטיים") + ":</b> " + a.professionals.map(function (p) { return PROS[p] || p; }).join(", ") + "</p>";
         }
         h += '<p class="d">' + esc(a.disclaimer || "") + "</p>";
         box.innerHTML = h;
-      }).catch(function () { box.textContent = "הניתוח נכשל, נסו שוב."; });
+      }).catch(function () { box.textContent = t("failed", "הניתוח נכשל, נסו שוב."); });
   }
   function esc(s) { return String(s == null ? "" : s).replace(/[&<>"]/g, function (c) { return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]; }); }
 

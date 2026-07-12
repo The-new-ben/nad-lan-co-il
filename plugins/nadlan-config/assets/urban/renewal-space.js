@@ -21,7 +21,7 @@
 	var NONCE = root.dataset.nonce || "";
 	var GLB = root.dataset.glb || "";
 	var LANG = root.dataset.lang || "he";
-	var QS = LANG === "en" ? "?lang=en" : "";
+	var QS = LANG !== "he" ? "?lang=" + LANG : "";
 	var I = {};
 	try { I = JSON.parse(root.dataset.i18n || "{}"); } catch (e) { I = {}; }
 	var S = null, selApt = null, map = null, mapMarker = null;

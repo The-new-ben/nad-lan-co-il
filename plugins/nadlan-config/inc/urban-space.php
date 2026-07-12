@@ -136,15 +136,18 @@ if ( ! function_exists( 'nadlan_ur_space_ok' ) ) {
 if ( ! function_exists( 'nadlan_ur_req_lang' ) ) {
 	function nadlan_ur_req_lang( $raw = null ) {
 		if ( null === $raw ) { $raw = isset( $_GET['lang'] ) ? sanitize_key( wp_unslash( $_GET['lang'] ) ) : ''; } // phpcs:ignore WordPress.Security.NonceVerification
-		return 'en' === $raw ? 'en' : 'he';
+		return in_array( $raw, array( 'en', 'ru' ), true ) ? $raw : 'he';
 	}
 }
 if ( ! function_exists( 'nadlan_ur_statuses_lang' ) ) {
 	function nadlan_ur_statuses_lang( $lang ) {
 		$s = nadlan_ur_consent_statuses();
-		if ( 'en' === $lang ) {
-			$en = array( 'consented' => 'Signed', 'in_process' => 'In progress', 'missing_docs' => 'Missing documents', 'refused' => 'Refused', 'unreached' => 'Not yet reached' );
-			foreach ( $en as $k => $label ) { if ( isset( $s[ $k ] ) ) { $s[ $k ][0] = $label; } }
+		$map = array(
+			'en' => array( 'consented' => 'Signed', 'in_process' => 'In progress', 'missing_docs' => 'Missing documents', 'refused' => 'Refused', 'unreached' => 'Not yet reached' ),
+			'ru' => array( 'consented' => 'Подписали', 'in_process' => 'В процессе', 'missing_docs' => 'Не хватает документов', 'refused' => 'Отказались', 'unreached' => 'Ещё не связались' ),
+		);
+		if ( isset( $map[ $lang ] ) ) {
+			foreach ( $map[ $lang ] as $k => $label ) { if ( isset( $s[ $k ] ) ) { $s[ $k ][0] = $label; } }
 		}
 		return $s;
 	}
@@ -154,6 +157,9 @@ if ( ! function_exists( 'nadlan_ur_doc_keys_lang' ) ) {
 		if ( 'en' === $lang ) {
 			return array( 'id_copy' => 'ID copy', 'ownership_nesach' => 'Land registry extract (Tabu)', 'signed_agreement' => 'Signed agreement', 'poa' => 'Power of attorney' );
 		}
+		if ( 'ru' === $lang ) {
+			return array( 'id_copy' => 'Копия удостоверения личности', 'ownership_nesach' => 'Выписка из реестра (Табу)', 'signed_agreement' => 'Подписанный договор', 'poa' => 'Доверенность' );
+		}
 		return nadlan_ur_doc_keys();
 	}
 }
@@ -162,6 +168,20 @@ if ( ! function_exists( 'nadlan_ur_doc_keys_lang' ) ) {
    HE labels mirror nadlan_ur_ladder_labels() (urban-tools.php) - keep in sync. */
 if ( ! function_exists( 'nadlan_ur_stage_meta' ) ) {
 	function nadlan_ur_stage_meta( $lang = 'he' ) {
+		if ( 'ru' === $lang ) {
+			return array(
+				array( 'label' => 'Первая организация', 'desc' => 'Первое собрание жильцов, письменный протокол и полный список собственников квартир.', 'duration' => '1-3 месяца', 'actions' => array( 'Провести первое собрание жильцов', 'Собрать контакты всех собственников', 'Проверить дом в официальном реестре объявленных комплексов' ) ),
+				array( 'label' => 'Выбор комитета', 'desc' => '3-5 соседей с письменным мандатом вести процесс от имени дома.', 'duration' => '1-2 месяца', 'actions' => array( 'Проголосовать за комитет жильцов', 'Подписать письмо о назначении', 'Открыть единый канал обновлений для всех соседей' ) ),
+				array( 'label' => 'Сбор подписей', 'desc' => 'Подписание собственниками принципиального согласия, с полной прозрачностью для всего дома.', 'duration' => '6-18 месяцев', 'actions' => array( 'Обновлять статус каждой квартиры на модели', 'Решать вопросы наследства и недостающих документов', 'Следить за юридическими порогами: 66% / 67% / 80%' ) ),
+				array( 'label' => 'Выбор специалистов', 'desc' => 'Адвокат и оценщик, работающие на ЖИЛЬЦОВ - оплачивает застройщик, выбираете вы.', 'duration' => '2-4 месяца', 'actions' => array( 'Собрать предложения опытных адвокатов стороны жильцов', 'Выбрать оценщика от имени жильцов', 'Подписать соглашения о гонораре' ) ),
+				array( 'label' => 'Выбор застройщика', 'desc' => 'Тендер застройщиков: опыт, финансовая устойчивость и гарантии.', 'duration' => '4-8 месяцев', 'actions' => array( 'Подготовить документ требований жильцов', 'Сравнить предложения застройщиков', 'Проверить банковские гарантии по закону о продаже' ) ),
+				array( 'label' => 'Утверждение плана', 'desc' => 'План проходит комиссии по планированию - самая большая переменная во всём графике.', 'duration' => '2-5 лет', 'actions' => array( 'Сопровождать процесс планирования в комиссии', 'Информировать соседей о каждом решении', 'Поддерживать связь с городской администрацией обновления' ) ),
+				array( 'label' => 'Разрешение на строительство', 'desc' => 'Финальная техническая спецификация и процесс выбора квартир.', 'duration' => '1-2 года', 'actions' => array( 'Подписать финальное приложение спецификации', 'Провести выбор квартир по согласованной формуле', 'Подготовить договоры аренды для переезда' ) ),
+				array( 'label' => 'Переезд', 'desc' => 'Дом освобождается - аренду оплачивает застройщик до передачи ключей.', 'duration' => '1-3 месяца', 'actions' => array( 'Подписать договоры аренды', 'Согласовать переезды', 'Передать ключи застройщику' ) ),
+				array( 'label' => 'Строительство', 'desc' => 'Само строительство - надзорный инженер стороны жильцов отчитывается комитету.', 'duration' => '2-4 года', 'actions' => array( 'Изучать периодические отчёты надзора', 'Согласованные визиты жильцов на площадку', 'Следить за графиком по договору' ) ),
+				array( 'label' => 'Передача и регистрация', 'desc' => 'Разрешение на заселение, передача квартир, гарантийный год и регистрация в Табу.', 'duration' => '6-18 месяцев', 'actions' => array( 'Протокол передачи для каждой квартиры', 'Отслеживать исправления гарантийного года', 'Зарегистрировать кондоминиум в земельном реестре' ) ),
+			);
+		}
 		if ( 'en' === $lang ) {
 			return array(
 				array( 'label' => 'First organizing', 'desc' => 'A first residents assembly, a written protocol and a full map of the apartment owners.', 'duration' => '1-3 months', 'actions' => array( 'Hold a first residents assembly', 'Collect contact details for every apartment owner', 'Check the building against the official declared-compounds registry' ) ),
@@ -194,6 +214,28 @@ if ( ! function_exists( 'nadlan_ur_stage_meta' ) ) {
 /* UI strings for the app JS (data-i18n) */
 if ( ! function_exists( 'nadlan_ur_space_strings' ) ) {
 	function nadlan_ur_space_strings( $lang = 'he' ) {
+		if ( 'ru' === $lang ) {
+			return array(
+				'load_fail' => 'Не удалось загрузить комнату проекта.', 'consent_mix' => 'Структура согласий', 'gauge' => 'подписали',
+				'hint_3d' => 'Нажмите на квартиру на модели, чтобы увидеть её статус и документы', 'apt_title' => 'Выбранная квартира',
+				'apt_hint' => 'Нажмите на квартиру на 3D-модели, чтобы увидеть и обновить её статус согласия и документы.',
+				'map_title' => 'На карте', 'updates' => 'Обновления для соседей', 'upd_ph' => 'Что нового в проекте?',
+				'upd_send' => 'Опубликовать', 'upd_none' => 'Обновлений пока нет.', 'inv_title' => 'Пригласить соседей',
+				'inv_note' => 'Каждый, кто откроет ссылку, присоединится к комнате в режиме чтения. Поделитесь ею в WhatsApp-группе дома.',
+				'inv_btn' => 'Создать ссылку-приглашение', 'history' => 'История этапов', 'typical' => 'Типичная длительность',
+				'avg_note' => 'средние по стране, не обещание', 'next_actions' => 'Следующие шаги', 'reached_at' => 'Достигнут',
+				'set_stage' => 'Отметить как текущий этап', 'td_map' => 'Учесть каждую квартиру (ноль «ещё не связались»)',
+				'td_66' => '66% подписей - продвижение комплекса пинуй-бинуй', 'td_67' => '67% подписей - можно судиться с отказником',
+				'td_80' => '80% подписей - особое большинство для отдельного дома', 'td_docs' => 'Полный пакет документов для каждой квартиры',
+				'td_pros' => 'Выбраны адвокат и оценщик стороны жильцов', 'td_dev' => 'Застройщик выбран на тендере',
+				'todo_title' => 'Список задач дома', 'now_actions' => 'Сейчас, на текущем этапе',
+				'todo_note' => 'Формируется автоматически из данных комнаты. Не является юридической консультацией.',
+				'docs_title' => 'Сводка документов', 'docs_hint' => 'Документы обновляются по каждой квартире нажатием на неё на модели.',
+				'docs_of' => 'Документы', 'floor' => 'Этаж', 'save' => 'Сохранить', 'compounds' => 'Объявленные комплексы в городе',
+				'map_approx' => 'Примерное положение на уровне города', 'demo_badge' => 'Демо-данные',
+				'track_pinui_binui' => 'Пинуй-бинуй', 'track_tama38_1' => 'Укрепление (ТАМА 38/1)', 'track_tama38_2' => 'Снос и строительство', 'track_unclear' => 'Трек ещё не выбран',
+			);
+		}
 		if ( 'en' === $lang ) {
 			return array(
 				'load_fail' => 'Could not load the project room.', 'consent_mix' => 'Consent mix', 'gauge' => 'signed',
@@ -454,8 +496,41 @@ add_action( 'rest_api_init', function () {
 
 /* clear the cached demo payload whenever any renewal space is saved */
 add_action( 'save_post_nadlan_renewal', function () {
-	delete_transient( 'nlur_demo_payload_he' );
-	delete_transient( 'nlur_demo_payload_en' );
+	foreach ( array( 'he', 'en', 'ru' ) as $l ) { delete_transient( 'nlur_demo_payload_' . $l ); }
+} );
+
+/* ---------- the periodic consent notice (the Singapore ritual, feed-only) ----------
+   Every ~28 days each active room gets an automatic feed post with the current
+   consent percentage and stage - the whole building sees the same number without
+   anyone having to ask. No email involved (deliverability-last law); pure feed. */
+add_action( 'init', function () {
+	if ( ! wp_next_scheduled( 'nadlan_ur_periodic_tick' ) ) {
+		wp_schedule_event( time() + HOUR_IN_SECONDS, 'daily', 'nadlan_ur_periodic_tick' );
+	}
+} );
+add_action( 'nadlan_ur_periodic_tick', function () {
+	if ( get_option( 'nadlan_ur_monthly_note', '1' ) !== '1' || ! nadlan_ur_space_on() ) { return; }
+	$ids = get_posts( array( 'post_type' => 'nadlan_renewal', 'post_status' => 'any', 'posts_per_page' => 100, 'fields' => 'ids' ) );
+	foreach ( $ids as $id ) {
+		if ( '1' === (string) get_post_meta( $id, 'is_demo', true ) ) { continue; }
+		$last = (int) get_post_meta( $id, 'renewal_last_autonote', true );
+		if ( $last && ( time() - $last ) < 28 * DAY_IN_SECONDS ) { continue; }
+		$apts = json_decode( (string) get_post_meta( $id, 'renewal_apartments', true ), true );
+		if ( ! is_array( $apts ) || ! count( $apts ) ) { continue; }
+		// a room younger than 28 days is skipped too - let it fill up first
+		$created = get_post_time( 'U', true, $id );
+		if ( $created && ( time() - $created ) < 28 * DAY_IN_SECONDS ) { continue; }
+		$total = count( $apts );
+		$yes = count( array_filter( $apts, function ( $a ) { return ( $a['consent_status'] ?? '' ) === 'consented'; } ) );
+		$pct = $total ? round( $yes / $total * 100 ) : 0;
+		$stage = (int) get_post_meta( $id, 'renewal_stage', true );
+		$labels = function_exists( 'nadlan_ur_ladder_labels' ) ? nadlan_ur_ladder_labels() : array();
+		$text = 'עדכון תקופתי אוטומטי: ' . $yes . ' מתוך ' . $total . ' בעלי דירות חתמו (' . $pct . '%). השלב הנוכחי: ' . ( $labels[ $stage ] ?? $stage ) . '.';
+		$ups = (array) json_decode( (string) get_post_meta( $id, 'renewal_updates', true ), true );
+		array_unshift( $ups, array( 'text' => $text, 'at' => current_time( 'mysql' ), 'by' => 0, 'auto' => 1 ) );
+		update_post_meta( $id, 'renewal_updates', wp_slash( wp_json_encode( array_slice( $ups, 0, 200 ), JSON_UNESCAPED_UNICODE ) ) );
+		update_post_meta( $id, 'renewal_last_autonote', time() );
+	}
 } );
 
 /* ---------- member notices (deliverability-last: OFF until flipped) ---------- */
@@ -516,8 +591,11 @@ add_action( 'template_redirect', function () {
 		}
 	}
 
-	// anonymous visitors and members-without-a-room get the PRODUCT LANDING, not a login wall
-	if ( ! is_user_logged_in() ) { nadlan_ur_render_landing( $lang, false ); exit; }
+	// anonymous visitors and members-without-a-room get the PRODUCT LANDING, not a login wall.
+	// The landing copy exists in HE + EN; RU rooms are fully supported, so ?lang=ru lands on EN
+	// (never a half-translated page) while the room itself renders in Russian.
+	$landing_lang = 'ru' === $lang ? 'en' : $lang;
+	if ( ! is_user_logged_in() ) { nadlan_ur_render_landing( $landing_lang, false ); exit; }
 	$uid = get_current_user_id();
 	$u = wp_get_current_user();
 	$owned = get_posts( array( 'post_type' => 'nadlan_renewal', 'post_status' => 'any', 'posts_per_page' => 20, 'fields' => 'ids',
@@ -525,7 +603,7 @@ add_action( 'template_redirect', function () {
 	$member = get_posts( array( 'post_type' => 'nadlan_renewal', 'post_status' => 'any', 'posts_per_page' => 40, 'fields' => 'ids',
 		'meta_query' => array( array( 'key' => 'member_emails', 'value' => $u->user_email, 'compare' => 'LIKE' ) ) ) );
 	$spaces = array_values( array_unique( array_merge( $owned, $member ) ) );
-	if ( ! $spaces ) { nadlan_ur_render_landing( $lang, true ); exit; }
+	if ( ! $spaces ) { nadlan_ur_render_landing( $landing_lang, true ); exit; }
 	nadlan_ur_render_dashboard( $spaces, $lang );
 	exit;
 } );
@@ -785,7 +863,7 @@ if ( ! function_exists( 'nadlan_ur_render_landing' ) ) {
 		);
 
 		$cta_go_href = $logged_in ? '#nlurd-new' : wp_login_url( $self );
-		$wizard = home_url( '/urban-renewal/check/' );
+		$wizard = home_url( '/urban-renewal/check/' . ( $en ? '?lang=en' : '' ) );
 		get_header();
 		nadlan_ur_space_css();
 		?>
@@ -899,28 +977,35 @@ if ( ! function_exists( 'nadlan_ur_render_landing' ) ) {
 /* ---------- the member dashboard ---------- */
 if ( ! function_exists( 'nadlan_ur_render_dashboard' ) ) {
 	function nadlan_ur_render_dashboard( $spaces, $lang = 'he' ) {
-		$en = ( 'en' === $lang );
+		$he = ( 'he' === $lang );
 		$sel = isset( $_GET['space'] ) ? (int) $_GET['space'] : 0; // phpcs:ignore WordPress.Security.NonceVerification
 		if ( $sel && ( ! nadlan_ur_space_ok( $sel ) || ! nadlan_ur_can_view( $sel ) ) ) { $sel = 0; }
 		if ( ! $sel && $spaces ) { $sel = (int) $spaces[0]; }
+		$titles = array( 'he' => 'חדר ההתחדשות שלי', 'en' => 'My renewal room', 'ru' => 'Моя комната обновления' );
+		$notes  = array(
+			'he' => 'ניהול פנימי לבניין: הסכמות על המודל, שלבים, מסמכים ועדכונים. העמוד פרטי לחברי הבניין בלבד ואינו מופיע בחיפוש.',
+			'en' => 'Internal building management: consents on the model, stages, documents and updates. Private to building members, never shown in search.',
+			'ru' => 'Внутреннее управление домом: согласия на модели, этапы, документы и обновления. Страница приватная, только для жильцов дома, не отображается в поиске.',
+		);
+		$lang_names = array( 'he' => 'עברית', 'en' => 'English', 'ru' => 'Русский' );
 		nocache_headers();
 		header( 'X-Robots-Tag: noindex, nofollow' );
 		get_header();
 		nadlan_ur_space_css();
 		?>
-<div class="nlurd" dir="<?php echo $en ? 'ltr' : 'rtl'; ?>" lang="<?php echo esc_attr( $lang ); ?>">
+<div class="nlurd" dir="<?php echo $he ? 'rtl' : 'ltr'; ?>" lang="<?php echo esc_attr( $lang ); ?>">
 	<header style="margin-bottom:14px">
-		<h1 style="margin:0 0 4px"><?php echo $en ? 'My renewal room' : 'חדר ההתחדשות שלי'; ?></h1>
-		<p class="nlurd-note"><?php echo $en
-			? 'Internal building management: consents on the model, stages, documents and updates. Private to building members, never shown in search.'
-			: 'ניהול פנימי לבניין: הסכמות על המודל, שלבים, מסמכים ועדכונים. העמוד פרטי לחברי הבניין בלבד ואינו מופיע בחיפוש.'; ?>
-			<a href="<?php echo esc_url( home_url( '/my-renewal/?space=' . (int) $sel . ( $en ? '' : '&lang=en' ) ) ); ?>" style="color:#9C7A3C;font-weight:600"><?php echo $en ? 'עברית' : 'English'; ?></a>
+		<h1 style="margin:0 0 4px"><?php echo esc_html( $titles[ $lang ] ); ?></h1>
+		<p class="nlurd-note"><?php echo esc_html( $notes[ $lang ] ); ?>
+			<?php foreach ( $lang_names as $lc => $ln ) : if ( $lc === $lang ) { continue; } ?>
+			<a href="<?php echo esc_url( home_url( '/my-renewal/?space=' . (int) $sel . ( 'he' === $lc ? '' : '&lang=' . $lc ) ) ); ?>" style="color:#9C7A3C;font-weight:600;margin-inline-start:8px"><?php echo esc_html( $ln ); ?></a>
+			<?php endforeach; ?>
 		</p>
 	</header>
 	<?php if ( count( $spaces ) > 1 ) : ?>
 	<nav class="nlurd-spaces">
 		<?php foreach ( $spaces as $sid ) : ?>
-		<a href="<?php echo esc_url( home_url( '/my-renewal/?space=' . (int) $sid . ( $en ? '&lang=en' : '' ) ) ); ?>" class="<?php echo $sid === $sel ? 'is-on' : ''; ?>"><?php echo esc_html( get_the_title( $sid ) ); ?></a>
+		<a href="<?php echo esc_url( home_url( '/my-renewal/?space=' . (int) $sid . ( $he ? '' : '&lang=' . $lang ) ) ); ?>" class="<?php echo $sid === $sel ? 'is-on' : ''; ?>"><?php echo esc_html( get_the_title( $sid ) ); ?></a>
 		<?php endforeach; ?>
 	</nav>
 	<?php endif; ?>

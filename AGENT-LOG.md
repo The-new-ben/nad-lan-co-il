@@ -1,5 +1,60 @@
 # AGENT-LOG - the God brain (append-only, newest on top)
 
+## 2026-07-12 (46) - v1.72.88 PROCEED-ALL: INFOGRAPHIC v2 + WIZARD EN + ROOM RU + CONSENT RITUAL + TAMA PAGE + DESIGN BOARD
+Owner: "proceed all you can". Six moves:
+1) INFOGRAPHIC v2: the tall vertical SVG the owner disliked is
+replaced on the pillar by a compact horizontal journey strip
+(1160x332, stepper DNA): 10 stations right-to-left, 3 phase-duration
+bands aligned above their station groups, 2024 consent-gate chips
+under station 3, gold key at station 10, honest footer.
+cairosvg-reviewed (root-style strip for raster; single-direction
+text rows). Live: exactly 1 figure, old viewBox gone, pillar at
+3,709 words, 0 dashes.
+2) WIZARD EN (/urban-renewal/check/?lang=en): full string table
+(gate, 5 steps, buttons, notes) + renewal-3d.js i18n via data-i18n
+(lookup/upload/advise messages, tracks, pros) + the AI advisory
+itself answers in English when lang=en (system-prompt values-only
+instruction; enum keys untouched; disclaimer now
+nadlan_ur_advice_disclaimer($lang) with EN text, still appended
+server-side). REGRESSION KILLED: step-5 said "בקרוב: פתיחת חדר
+פרויקט" - the room EXISTS; replaced with a live gold CTA to
+/my-renewal/ in both languages.
+3) ROOM RU: full Russian pack (statuses, doc keys, 10-stage
+playbook, ~45 UI strings) - ?lang=ru on the dashboard + REST;
+3-way lang switcher (עברית/English/Русский) in the dashboard
+header; the LANDING coerces ru->en (copy exists HE+EN only - never
+a half-translated page). Redirectx parity on trilingual.
+4) PERIODIC CONSENT RITUAL (Singapore pattern): daily cron
+nadlan_ur_periodic_tick posts an automatic feed update per active
+room every ~28 days ("עדכון תקופתי אוטומטי: X מתוך Y חתמו (Z%),
+שלב נוכחי") - feed-only, zero email, skips demo + rooms younger
+than 28 days, option nadlan_ur_monthly_note default on.
+5) NEW PAGE 5492 /urban-renewal/tama-38-alternatives/ "מה במקום
+תמ"א 38?" (~1,330 body words): fact-checked via fresh web search
+(expiry staged to May 2026, Shaked = amendments 136+139, TLV/Bat
+Yam/Bnei Brak did not extend), honest "updated July 2026 + verify
+with your municipality" framing, timeline, TAMA-vs-new comparison,
+deal-economics honesty, 5 transition mistakes, mini-glossary, FAQ,
+CTAs to wizard/room. Crosslinked from the pillar startband; EN
+guide's stale "(English version on the roadmap)" note fixed to
+link the EN wizard + the new page.
+6) HOMEPAGE DESIGN BOARD (artifact "three-directions-v1",
+handoff/claude-design/homepage-directions-2026-07-12.html): three
+full comps in the brand DNA with real embedded fonts - A "העיר
+החיה" (dark stage, model as sole hero), B "העיתון" (broadsheet
+front page, content authority), C "הגלריה" (museum minimal) - each
+with what-changes + effort + fit; recommendation: A base + B's
+what's-new column as band two; next step = owner says "בנה כיוון
+X" -> live /home-v3/ staging.
+Ship: v1.72.88 media pipeline, healthcheck green, snippet+zip
+cleaned (404-confirmed). Live-verified: RU demo payload
+(Подписали/10 stage notes), EN wizard gate LTR + HE intact,
+pillar integrity. Floating: per-resident value card (owner
+decision), signature-funnel states, wizard RU, city-by-city
+freshness cluster (page 1 done, cluster = roadmap), walk-inside
+interior (#56), GreenInvoice key, UPress ticket, credential
+rotation, competitor pixel screenshots.
+
 ## 2026-07-12 (45) - v1.72.85-87 THE PRODUCT LANDING: /my-renewal/ STOPS BEING A LOGIN WALL
 Owner round: "people land on /my-renewal/ and see nothing; 3D in a
 sidebar is unusable; I want 3D on top with an interactive progress
