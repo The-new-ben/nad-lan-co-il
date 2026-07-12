@@ -1,5 +1,41 @@
 # AGENT-LOG - the God brain (append-only, newest on top)
 
+## 2026-07-12 (43) - v1.72.80-83 URBAN RENEWAL L4+L5: THE PROJECT SPACE IS LIVE
+L4 (v1.72.80) inc/urban-space.php: PRIVATE CPT nadlan_renewal (public
+false, no rewrite, no REST-show, zero blast radius on the public
+project machinery). Per-apartment consent enum consented/in_process/
+missing_docs/refused/unreached (PARALLEL to the sales enum - the money
+surface untouched) painted on the standard 3D model via per-apartment
+hotspots (floor+pos->facade spread, engine convention), click -> panel
+with status selector + per-apartment doc checklist (id/nesach/
+agreement/poa) + completion meter; aggregate consent gauge; 10-stage
+ladder (shared labels with L2) rendered in the milestones grammar;
+updates feed with member email queue GATED OFF (deliverability-last,
+admin preview /renewal-notify-queue); invite-by-token membership
+(rotate + join, 24-char); /my-renewal/ dashboard (advertiser-center
+route mechanics, rewrite flush option, login redirect, X-Robots-Tag
+noindex). REST with membership helpers: create (seeds floors x
+per-floor all unreached, 5/day cap), get, apartments save
+(enum-sanitized), stage (logged), update, invite, join. E2E LIVE ALL
+GREEN: space 5469 created 2x3 -> 6 unreached; apartment save moved the
+gauge 0->16.7%; stage advance logged + queued sent:false; invite url
+minted; anonymous GET 401; dashboard 302 to login. L5 (v1.72.81-83)
+rfp.php advisor map made filterable (3-line change, buyflow
+regression-clean) + urban-map.php adds shamai/mefakeach/organizer
+kinds to the RFP matcher; /urban-renewal/map/ (page 5471):
+/renewal-map-data aggregates the 938 gov.il compounds by city+track
+(6h transient), Mapbox city pins (cooperativeGestures + Hebrew locale)
+with click -> compound list via the lookup endpoint; HONEST V1: city
+clusters only, no fake per-building pins (import has no lat/lng;
+geocode pass = roadmap). Two micro-fixes shipped on the pipeline:
+city-name hyphenation normalization + versioned cache key; verified
+Tel Aviv resolves, 35/76 cities pinned (long tail needs the geocode
+pass, degrades honestly). ALL FIVE LAYERS OF THE URBAN RENEWAL HUB ARE
+LIVE: pillar+SEO, tools, wizard, project space, map+monetization.
+OWNER ACTIONS OPEN: attorney review of YMYL copy; seed profession meta
+(shamai/mefakeach/organizer) on directory pros so RFP matching fills;
+UPress ticket for host-level upload protection; geocode enrichment.
+
 ## 2026-07-12 (42) - v1.72.77-79 URBAN RENEWAL L2+L3: tools live, THE WIZARD IS LIVE
 L2 (v1.72.77) inc/urban-tools.php: [nadlan_ur_consent_calc] - live %
 vs the THREE legal thresholds with what-unlocks copy (66% advance /
