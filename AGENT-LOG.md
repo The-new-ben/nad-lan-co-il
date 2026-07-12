@@ -1,5 +1,59 @@
 # AGENT-LOG - the God brain (append-only, newest on top)
 
+## 2026-07-12 (44) - v1.72.84 TRUST + ATTRIBUTION + MOBILE 3D + THE DEMO ECOSYSTEM
+Owner round, seven asks, all shipped and live-verified.
+1) DE-LAWYERED: owner is NOT presented as a licensed lawyer anywhere.
+Exact-phrase sweep (quoted REST search beats tokenized false
+positives) found pages 645 /about/ + 646 /editorial-policy/ + the
+i18n trust row. All rewritten to the honest, still-strong claim:
+content is verified after writing against the primary sources
+themselves (legislation text, Tax Authority, gov.il) - in ALL 5
+languages (trust_law/trust_law_pre in i18n.php). Live grep: 0 matches
+for the license claim site-wide.
+2) WA SOURCE TRACKING: new inc/wa-source.php - ONE site-wide click
+interceptor stamping every wa.me/NUMBER link's text param with
+"מקור: <page title> + URL" at click time. Share-to-friend links
+(wa.me/?text=, no number) deliberately untouched. Idempotent. Owner
+now sees which page every WhatsApp inquiry came from = intent + a
+free page-traffic signal.
+3) MOBILE 3D FIX: root cause = auto-framing frames the 96x78m site
+PLATE, not the 26m building -> portrait sliver. Fix in all three
+surfaces (property-showroom listing viewer, wizard renewal-3d.js,
+space dashboard): camera-target "0 13 0" (scaled by floors in urban),
+camera-orbit -28deg 76deg 46m, radius clamped 26m-80/90m; + mobile
+height CSS (60-62vh) on wizard/dashboard stages.
+4) SPACE FEATURES: consent breakdown bar (per-status flex segments,
+parallel enum colors) + collapsible stage-history timeline fed by the
+append-only stage_log (last 12) in the /my-renewal/ dashboard.
+5) SEEDED PROS: 3 demo professionals for the renewal advisor map -
+5477 shamai, 5478 mefakeach, 5479 organizer (is_demo, unclaimed,
+demo-badged per law #34). RFP advisor now has all 3 renewal kinds.
+6) DEMO SPACE 5480 "דוגמה: הרצל 45, גבעתיים (פרויקט שהושלם)": a FULL
+end-to-end finished project - 12/12 apartments consented with
+complete doc sets, stage 9/10, 12 updates telling the 2019-2026
+story (assembly -> pros -> tender -> inheritance resolved -> 67% ->
+MEDIATION resolves the apartment-8 refuser -> 100% -> taba ->
+permit -> eviction -> construction -> tofes 4), 10-entry historical
+stage log, dispute notes on apartments 3+8. Created via temp snippet
+(route deleted, 404-confirmed). The REAL space 5469 untouched.
+3D corresponds: 4 floors x 3, all hotspots green.
+7) INFOGRAPHIC on the pillar: hand-built SVG "מסע ההתחדשות: מהמסדרון
+עד המפתח" (10 stations, 3 phase-duration bands, 2024 consent-gate box
+66/67/80+75, pro-fees vignette, key vignette, honest footer).
+Design-reviewed by rasterizing (cairosvg traps: root style attr
+kills its viewport - strip for raster only; no bidi - single-
+direction text rows only). Embedded after the timeline shortcode.
+LIVE VERIFY: exactly 1 figure, 1 svg, 0 em/en dashes, 3,676 words,
+1 real H1 (3 grep hits are a CSS comment in <style>).
+Ship: v1.72.84 zip via media pipeline, healthcheck green, snippet +
+zip cleaned. Artifacts archived handoff/content/urban-renewal-
+2026-07-11/ (infographic.svg, pillar.html, demo-space-snippet.php,
+pro*.json). Standing gaps: walk-inside default interior (#56),
+competitor pixel screenshots (container browser cannot reach HTTPS),
+geocode enrichment for per-compound map pins, attorney YMYL review of
+the pillar, UPress host-level upload protection, GreenInvoice key
+(#38), profile dossiers await owner "generate dossiers".
+
 ## 2026-07-12 (43) - v1.72.80-83 URBAN RENEWAL L4+L5: THE PROJECT SPACE IS LIVE
 L4 (v1.72.80) inc/urban-space.php: PRIVATE CPT nadlan_renewal (public
 false, no rewrite, no REST-show, zero blast radius on the public
