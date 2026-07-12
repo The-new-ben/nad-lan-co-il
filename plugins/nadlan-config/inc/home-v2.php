@@ -732,6 +732,8 @@ if ( ! function_exists( 'nadlan_hv2_band_megafooter' ) ) {
 			<a href="<?php echo esc_url( home_url( '/post-listing/' ) ); ?>"><?php nadlan_e( 'post_free' ); ?></a>
 			<a href="<?php echo esc_url( home_url( '/advertise/' ) ); ?>"><?php nadlan_e( 'advertise_pros' ); ?></a>
 			<a href="<?php echo esc_url( home_url( '/contact/' ) ); ?>"><?php nadlan_e( 'contact' ); ?></a>
+			<?php $nlgw_lbl = array( 'he' => 'השקעות נדל"ן בחו"ל', 'en' => 'Global Investment', 'fr' => 'Investissement global', 'ru' => 'Инвестиции за рубежом', 'ar' => 'استثمار عالمي' ); $nlgw_l = function_exists( 'nadlan_current_lang' ) ? nadlan_current_lang() : 'he'; ?>
+			<a href="<?php echo esc_url( home_url( '/global/' . ( 'he' === $nlgw_l ? '' : '?lang=en' ) ) ); ?>"><?php echo esc_html( isset( $nlgw_lbl[ $nlgw_l ] ) ? $nlgw_lbl[ $nlgw_l ] : $nlgw_lbl['he'] ); ?></a>
 			<?php $nlsm_lbl = array( 'he' => 'מפת האתר', 'en' => 'Site Map', 'fr' => 'Plan du site', 'ru' => 'Карта сайта', 'ar' => 'خريطة الموقع' ); $nlsm_l = function_exists( 'nadlan_current_lang' ) ? nadlan_current_lang() : 'he'; ?>
 			<a href="<?php echo esc_url( home_url( '/site-map/' . ( 'he' === $nlsm_l ? '' : '?lang=en' ) ) ); ?>"><?php echo esc_html( isset( $nlsm_lbl[ $nlsm_l ] ) ? $nlsm_lbl[ $nlsm_l ] : $nlsm_lbl['he'] ); ?></a>
 			<a href="<?php echo esc_url( home_url( '/en/' ) ); ?>">English</a>

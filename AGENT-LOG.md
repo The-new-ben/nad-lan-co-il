@@ -1,5 +1,45 @@
 # AGENT-LOG - the God brain (append-only, newest on top)
 
+## 2026-07-12 (57) - v1.72.102 GLOBAL WORLDS L1: DUBAI + MIAMI + NEW YORK (the jewel round, phase 1)
+Owner: "each location is a world and real estate is a world that is
+wrapping it... jewel of the crown." Built inc/global-worlds.php:
+- ARCHITECTURE: separate CPT nadlan_intl (/global/project/{slug}/)
+  so the intl catalog NEVER pollutes Israeli surfaces - verified
+  post-ship: IL project-map still exactly 958, zero leak. Country
+  routes whitelisted from the registry (no open regex). Hierarchy:
+  /global/ hub -> /global/{world}/ -> project singles.
+- THE WORLDS REGISTRY nadlan_gw_worlds() - each world as data, HE
+  + EN full: SEO title/desc, the SEO first paragraph, 8 market
+  facts, 4 guide sections (buying process for Israelis, real
+  costs, both-sides taxation incl. the IL 15%-track / US treaty /
+  FIRPTA, risks), 4 FAQ, source note with date. Grounded in fresh
+  web research (DLD 4%, Dubai yields JVC 7-9%, Miami precon
+  1000-1500 USD/sqft, NY mansion tax tiers). This registry is the
+  substrate for the owner's planned per-location writing engine.
+- SCHEMA: FAQPage + BreadcrumbList + Place (GeoCoordinates) on
+  world pages, CollectionPage on hub, hreflang he/en/x-default,
+  canonical - verified in live head.
+- 6 SEEDED PROJECTS (5527-5532, via admin /gw-seed, idempotent):
+  Marina West + Garden Residence JVC (Dubai), Edgewater Bay +
+  Brickell Park (Miami), LIC Skyline + Brooklyn Point Heights
+  (NY). Based on real project archetypes per district, honest
+  badge on every one. Singles: flagship-tower GLB in model-viewer
+  (disable-zoom, honesty caption), Mapbox whats-around, facts
+  rail, lead form -> /nadlan/v1/lead (goal=global-project-{code}).
+- FEEDING: labeled metabox on nadlan_intl (world/district/coords/
+  price/specs/GLB/demo flag) - developers feed like IL projects.
+- TOOLS FLOW-IN: rentals manager, mortgage calc, professionals
+  crosslinks on every world page; dark devcta band on hub.
+- WIRED: megafooter link ×5 langs, sitemap ninth card (gold
+  product card). E2E: all routes 200 he+en, GLB 200, form present.
+CAUGHT PRE-SHIP: 34 literal backslash-quotes (\" inside single-
+  quoted PHP renders a visible backslash) + one stray CJK char.
+HONEST GAPS (queued): world pages ~850 visible words v1 - deepen
+  to sub-pillar 1,400+ with the writing engine; Greece/Thailand/
+  Italy/London worlds; professionals-abroad directory category;
+  scheduler band on intl singles (needs card whitelist widening);
+  per-world hero imagery (owner can generate via prompt pack).
+
 ## 2026-07-12 (56) - v1.72.101 THE HTML SITEMAP /site-map/ (curated, anti-scrape, HE+EN)
 Owner order: "smart beautiful HTML sitemap... right SEO hierarchy,
 easy to use, NOT revealing all the website for scraping." Built

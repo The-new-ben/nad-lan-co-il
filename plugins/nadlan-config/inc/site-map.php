@@ -65,6 +65,8 @@ if ( ! function_exists( 'nadlan_site_map_strings' ) ) {
 			's_tools'    => 'מחשבונים וכלים', 's_tools_d' => 'כל החישובים לפני קנייה, בחינם ובלי הרשמה.',
 			's_know'     => 'ידע ומדריכים', 's_know_d' => 'תוכן מקצועי כתוב לעומק, בלי קיצורי דרך.',
 			's_langs'    => 'שפות', 's_langs_d' => 'האתר מדבר חמש שפות.',
+			's_global'   => 'השקעות בחו"ל', 's_global_d' => 'כל מיקום הוא עולם שלם: נתונים, מיסים, תהליך ופרויקטים בתלת ממד.',
+			'l_globalhub'=> 'כל היעדים', 'l_gw_dubai' => 'השקעות נדל"ן בדובאי', 'l_gw_miami' => 'השקעות נדל"ן במיאמי', 'l_gw_ny' => 'השקעות נדל"ן בניו יורק',
 			'l_3d'       => 'בחירת דירה מתוך הבניין בתלת ממד', 'l_3d_n' => 'כל הפרויקטים',
 			'l_myrenewal'=> 'חדר ההתחדשות של הבניין שלכם', 'l_urcheck' => 'בדיקת כדאיות התחדשות חינם',
 			'l_myrentals'=> 'ניהול השכרות לבעלי דירות', 'l_studio' => 'סטודיו לעיצוב הדירה',
@@ -98,6 +100,8 @@ if ( ! function_exists( 'nadlan_site_map_strings' ) ) {
 			's_tools'    => 'Calculators and tools', 's_tools_d' => 'Every pre-purchase calculation, free, no signup.',
 			's_know'     => 'Knowledge and guides', 's_know_d' => 'Professional content written in depth, no shortcuts.',
 			's_langs'    => 'Languages', 's_langs_d' => 'The site speaks five languages.',
+			's_global'   => 'Global investment', 's_global_d' => 'Every location is a full world: data, taxes, process and 3D projects.',
+			'l_globalhub'=> 'All destinations', 'l_gw_dubai' => 'Dubai real estate investment', 'l_gw_miami' => 'Miami real estate investment', 'l_gw_ny' => 'New York real estate investment',
 			'l_3d'       => 'Choose your apartment from inside the 3D building', 'l_3d_n' => 'all projects',
 			'l_myrenewal'=> 'Your building\'s renewal room', 'l_urcheck' => 'Free renewal feasibility check',
 			'l_myrentals'=> 'Rental management for landlords', 'l_studio' => 'The apartment design studio',
@@ -282,6 +286,17 @@ add_action( 'template_redirect', function () {
 				<li><a href="<?php echo $u( '/glossary/' ); ?>"><?php echo esc_html( $T['l_glossary'] ); ?></a></li>
 				<li><a href="<?php echo $u( '/buying-apartment/' ); ?>"><?php echo esc_html( $T['l_buying'] ); ?></a></li>
 				<li><a href="<?php echo $u( '/investment/' ); ?>"><?php echo esc_html( $T['l_invest'] ); ?></a></li>
+			</ul>
+		</section>
+
+		<section class="nlsm-card nlsm-card--product">
+			<h2><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 3v3m0 12v3M5.6 5.6l2.1 2.1m8.6 8.6l2.1 2.1M3 12h3m12 0h3M5.6 18.4l2.1-2.1m8.6-8.6l2.1-2.1"/></svg><?php echo esc_html( $T['s_global'] ); ?><span class="nlsm-chip"><?php echo esc_html( $T['product'] ); ?></span></h2>
+			<p class="d"><?php echo esc_html( $T['s_global_d'] ); ?></p>
+			<ul>
+				<li><a href="<?php echo $u( '/global/' . ( $en ? '?lang=en' : '' ) ); ?>"><?php echo esc_html( $T['l_globalhub'] ); ?></a></li>
+				<li><a href="<?php echo $u( '/global/dubai/' . ( $en ? '?lang=en' : '' ) ); ?>"><?php echo esc_html( $T['l_gw_dubai'] ); ?></a></li>
+				<li><a href="<?php echo $u( '/global/miami/' . ( $en ? '?lang=en' : '' ) ); ?>"><?php echo esc_html( $T['l_gw_miami'] ); ?></a></li>
+				<li><a href="<?php echo $u( '/global/new-york/' . ( $en ? '?lang=en' : '' ) ); ?>"><?php echo esc_html( $T['l_gw_ny'] ); ?></a></li>
 			</ul>
 		</section>
 
