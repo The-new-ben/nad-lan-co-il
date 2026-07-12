@@ -33,12 +33,13 @@ if ( ! function_exists( 'nadlan_rfp_lang_table' ) ) {
 
 if ( ! function_exists( 'nadlan_rfp_advisor_map' ) ) {
 	function nadlan_rfp_advisor_map() {
-		return array(
+		// filterable (2026-07-12): the urban-renewal flow adds its advisor kinds
+		return apply_filters( 'nadlan_rfp_advisor_map', array(
 			'designer' => array( 'interior_designer', 'architect' ),
 			'lawyer'   => array( 'lawyer' ),
 			'mortgage' => array( 'mashkanta' ),
 			'inspect'  => array( 'bedek_bait', 'inspector' ),
-		);
+		) );
 	}
 }
 
