@@ -1,5 +1,54 @@
 # AGENT-LOG - the God brain (append-only, newest on top)
 
+## 2026-07-12 (47) - v1.72.89 AERIAL HERO + LIGHT DE-CLUSTERED MAP + RENEWAL BAND ON HOME
+Owner: map in wrong place, black, cluster dots unusable on mobile;
+wants impressive aerial imagery, Zillow/Compass benchmark, renewal
+product flowed to homepage; pasted Gemini homepage concepts to
+analyze (stay on our line).
+RESEARCH (agent, sourced): NOT ONE benchmark - Zillow, Compass,
+Rightmove, Sotheby's, Madlan - puts an interactive map on the
+homepage. Universal premium pattern: photo/video hero + ONE search
+field; map lives one click away on results, LIGHT base so pins
+carry color (Zillow principle), progressive disclosure with named
+areas + hover cards, max 2 interactions; mobile = list-first +
+map/list toggle, never a pinch-a-dark-cluster field.
+SHIPPED:
+1) AERIAL HERO: hero is now a real aerial of the Tel Aviv shoreline
+(Mapbox Static satellite, oblique pitch 55, generated 3 candidates,
+picked the drone-feel one; uploaded to media as
+nadlan-hero-aerial-tlv.jpg). New option nadlan_home_hero_aerial
+(REST-exposed): set -> aerial hero + live map moves to its own
+band; empty -> old map-hero fallback (zero regression risk). Faster
+LCP too: image vs WebGL boot.
+2) LIGHT MAP BAND: the live map now rides its own band after the
+dark projects band (ONE-map law kept), style light-v11 with cream
+tuning (paper ground #F0EBE1, soft water, sand-colored 3D
+buildings); night tuning survives only in the hero fallback.
+3) DE-CLUSTERED: cluster bubbles KILLED everywhere (home band +
+/projects/ toggle). Progressive disclosure: country zoom = named
+city chips ("תל אביב · 43") one tap -> flyTo city; city zoom =
+terracotta labeled pins, one tap -> card with photo + link. Two
+taps max, big text targets on mobile. Featured flags unchanged.
+4) RENEWAL BAND on the homepage (all 5 languages, new ur_* i18n
+keys): dark stage band - "חדר הפרויקט של הבניין שלכם", 3 numbered
+step chips, CTAs to the wizard + /my-renewal/ live demo, trilingual
+note. Verified on HE + EN homes.
+Ship: v1.72.89 media pipeline, healthcheck green, snippet/zips
+cleaned, LiteSpeed purged via temp route (deleted, 404), clean-URL
+verify: aerial hero + showcase map + renewal band live both HE/EN,
+clusters absent.
+GEMINI-CONCEPT ANALYSIS delivered in chat: adopt segmented search
+intent, RFP/status authority band idea (roadmap), mega-menu
+segmentation by audience (roadmap); reject obsidian+gold everywhere
+(premium is restraint), stock team photos, fake market graphs,
+information-dump homepage. Owner decision still open on the
+three-directions board (artifact three-directions-v1).
+Floating: aerial per-city variants + slow-pan video hero (2026
+luxury standard - needs real drone footage or 3D-tiles flyover;
+Google Aerial View API is US-only), mobile bottom-sheet card
+carousel on the map (v2), walk-inside interior (#56), GreenInvoice,
+UPress ticket, credential rotation.
+
 ## 2026-07-12 (46) - v1.72.88 PROCEED-ALL: INFOGRAPHIC v2 + WIZARD EN + ROOM RU + CONSENT RITUAL + TAMA PAGE + DESIGN BOARD
 Owner: "proceed all you can". Six moves:
 1) INFOGRAPHIC v2: the tall vertical SVG the owner disliked is

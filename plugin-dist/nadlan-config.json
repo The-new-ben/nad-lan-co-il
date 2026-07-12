@@ -1,13 +1,13 @@
 {
  "name": "NadLan Config",
  "slug": "nadlan-config",
- "version": "1.72.88",
+ "version": "1.72.89",
  "author": "nad-lan.co.il",
  "homepage": "https://nad-lan.co.il",
  "requires": "6.7",
  "tested": "7.0",
  "requires_php": "7.4",
- "download_url": "https://raw.githubusercontent.com/The-new-ben/nad-lan-co-il/main/plugin-dist/nadlan-config-1.72.88.zip",
+ "download_url": "https://raw.githubusercontent.com/The-new-ben/nad-lan-co-il/main/plugin-dist/nadlan-config-1.72.89.zip",
  "last_updated": "2026-07-12",
  "sections": {
   "changelog": "<h4>1.72.85</h4><ul><li>/my-renewal/ product landing with live demo (HE+EN), v2 dashboard: 3D on top + interactive stepper + map + to-do + docs rollup</li><li>Homepage showcase: poster clears when 3D loads</li></ul><h4>1.72.84</h4><ul><li>WhatsApp source stamping (page title + URL on business clicks)</li><li>Building-framed 3D cameras (mobile usable) + taller mobile stages</li><li>Trust copy: directory professionals, no lawyer claims</li><li>Space dashboard: consent breakdown bar + stage history</li></ul>"

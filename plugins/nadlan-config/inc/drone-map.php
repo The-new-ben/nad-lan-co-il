@@ -153,19 +153,33 @@ if ( ! function_exists( 'nadlan_drone_map_band' ) ) {
 			/* Hebrew renders REVERSED without the RTL text plugin (caught on the live hero) */
 			try{if(mapboxgl.getRTLTextPluginStatus&&mapboxgl.getRTLTextPluginStatus()==="unavailable"){mapboxgl.setRTLTextPlugin("https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-rtl-text/v0.3.0/mapbox-gl-rtl-text.js",null,true)}}catch(e){}
 			/* cooperativeGestures (owner 2026-07-11): page scroll must never zoom the map */
-			var map=new mapboxgl.Map({container:"nldrone-map",style:"mapbox://styles/mapbox/dark-v11",center:[34.86,31.95],zoom:8.6,pitch:55,bearing:-10,attributionControl:true,cooperativeGestures:true,locale:{"CooperativeGesturesHandler.WindowsHelpText":"\u05dc\u05d7\u05e6\u05d5 Ctrl \u05d5\u05d2\u05dc\u05dc\u05d5 \u05db\u05d3\u05d9 \u05dc\u05d4\u05ea\u05e7\u05e8\u05d1 \u05d1\u05de\u05e4\u05d4","CooperativeGesturesHandler.MacHelpText":"\u05dc\u05d7\u05e6\u05d5 \u2318 \u05d5\u05d2\u05dc\u05dc\u05d5 \u05db\u05d3\u05d9 \u05dc\u05d4\u05ea\u05e7\u05e8\u05d1 \u05d1\u05de\u05e4\u05d4","TouchPanBlocker.Message":"\u05d4\u05d6\u05d9\u05d6\u05d5 \u05d0\u05ea \u05d4\u05de\u05e4\u05d4 \u05d1\u05e9\u05ea\u05d9 \u05d0\u05e6\u05d1\u05e2\u05d5\u05ea"}});
+			/* owner 2026-07-12: the black map was hard to read (mobile most of all).
+			   Only the hero fallback stays night; every in-page band is LIGHT in the
+			   brand palette - cream ground, ink labels, terracotta pins (the Zillow
+			   principle: a dull-toned base so the pins carry the color). */
+			var isHero=band.dataset.mode==="hero";
+			var PAL=isHero
+				?{pin:"#E9D9A8",pinStroke:"#14130F",label:"#E9E2D2",halo:"#14130F",chip:"#F3EEE3",chipHalo:"#14130F"}
+				:{pin:"#C2563A",pinStroke:"#FAF7F1",label:"#51483A",halo:"#FAF7F1",chip:"#1B1A17",chipHalo:"#FAF7F1"};
+			var map=new mapboxgl.Map({container:"nldrone-map",style:isHero?"mapbox://styles/mapbox/dark-v11":"mapbox://styles/mapbox/light-v11",center:[34.86,31.95],zoom:8.6,pitch:isHero?55:46,bearing:-10,attributionControl:true,cooperativeGestures:true,locale:{"CooperativeGesturesHandler.WindowsHelpText":"\u05dc\u05d7\u05e6\u05d5 Ctrl \u05d5\u05d2\u05dc\u05dc\u05d5 \u05db\u05d3\u05d9 \u05dc\u05d4\u05ea\u05e7\u05e8\u05d1 \u05d1\u05de\u05e4\u05d4","CooperativeGesturesHandler.MacHelpText":"\u05dc\u05d7\u05e6\u05d5 \u2318 \u05d5\u05d2\u05dc\u05dc\u05d5 \u05db\u05d3\u05d9 \u05dc\u05d4\u05ea\u05e7\u05e8\u05d1 \u05d1\u05de\u05e4\u05d4","TouchPanBlocker.Message":"\u05d4\u05d6\u05d9\u05d6\u05d5 \u05d0\u05ea \u05d4\u05de\u05e4\u05d4 \u05d1\u05e9\u05ea\u05d9 \u05d0\u05e6\u05d1\u05e2\u05d5\u05ea"}});
 			map.addControl(new mapboxgl.NavigationControl({visualizePitch:true}));
 			map.on("load",function(){
-				/* night tuning (owner 2026-07-07: satellite removed, night is the map) */
-				try{map.setPaintProperty("water","fill-color","#0E1A20")}catch(e){}
-				try{map.setPaintProperty("land","background-color","#17150F")}catch(e){}
-				try{map.setFog({color:"#14130F","horizon-blend":0.06,"star-intensity":0.25})}catch(e){}
+				if(isHero){
+					/* night tuning (hero fallback only) */
+					try{map.setPaintProperty("water","fill-color","#0E1A20")}catch(e){}
+					try{map.setPaintProperty("land","background-color","#17150F")}catch(e){}
+					try{map.setFog({color:"#14130F","horizon-blend":0.06,"star-intensity":0.25})}catch(e){}
+				} else {
+					/* cream tuning: warm paper ground, soft water */
+					try{map.setPaintProperty("water","fill-color","#B3C7CC")}catch(e){}
+					try{map.setPaintProperty("land","background-color","#F0EBE1")}catch(e){}
+				}
 				try{map.getStyle().layers.forEach(function(l){if(l.type==="symbol"&&l.layout&&l.layout["text-field"]){map.setLayoutProperty(l.id,"text-field",["coalesce",["get","name_he"],["get","name:he"],["get","name"]])}})}catch(e){}
 				var layers=map.getStyle().layers,lab;
 				for(var i=0;i<layers.length;i++){if(layers[i].type==="symbol"&&layers[i].layout&&layers[i].layout["text-field"]){lab=layers[i].id;break}}
-				try{map.addLayer({id:"nl-3d",source:"composite","source-layer":"building",filter:["==","extrude","true"],type:"fill-extrusion",minzoom:13,paint:{"fill-extrusion-color":"#3A342A","fill-extrusion-height":["get","height"],"fill-extrusion-base":["get","min_height"],"fill-extrusion-opacity":.72}},lab)}catch(e){}
+				try{map.addLayer({id:"nl-3d",source:"composite","source-layer":"building",filter:["==","extrude","true"],type:"fill-extrusion",minzoom:13,paint:{"fill-extrusion-color":isHero?"#3A342A":"#DAD2C1","fill-extrusion-height":["get","height"],"fill-extrusion-base":["get","min_height"],"fill-extrusion-opacity":.72}},lab)}catch(e){}
 				try{map.addSource("nl-dem",{type:"raster-dem",url:"mapbox://mapbox.mapbox-terrain-dem-v1",tileSize:512,maxzoom:14});map.setTerrain({source:"nl-dem",exaggeration:1.35})}catch(e){}
-				try{map.addLayer({id:"nl-sky",type:"sky",paint:{"sky-type":"atmosphere","sky-atmosphere-sun-intensity":6}})}catch(e){}
+				if(isHero){try{map.addLayer({id:"nl-sky",type:"sky",paint:{"sky-type":"atmosphere","sky-atmosphere-sun-intensity":6}})}catch(e){}}
 			});
 			fetch(band.dataset.rest).then(function(r){return r.json()}).then(function(d){
 				var all=d.items||[]; if(!all.length)return;
@@ -179,51 +193,50 @@ if ( ! function_exists( 'nadlan_drone_map_band' ) ) {
 					el.innerHTML='<span class="nldrone-flag__pole"></span><span class="nldrone-flag__card">'+(p.poster?'<img src="'+p.poster+'" alt="" loading="lazy">':"")+'<b>'+p.title.split("|")[0].split(" - ")[0]+"</b><i>3D</i></span>";
 					new mapboxgl.Marker({element:el,anchor:"bottom"}).setLngLat([p.lng,p.lat]).addTo(map);
 				});
-				/* the whole catalog is geocoded now (mostly city-level), so pins
-				   are CLUSTERED - an honest "197 projects" bubble on a city center
-				   instead of 197 stacked pins pretending to be exact addresses. */
+				/* DE-CLUSTERED (owner 2026-07-12): the anonymous count-bubbles took
+				   3-4 taps to reach a project and were misery on phones. Progressive
+				   disclosure instead: country view shows NAMED CITY CHIPS ("City - 43");
+				   one tap flies into the city where every project is a labeled pin;
+				   one tap on a pin opens its card. Two taps, never a blind bundle. */
 				var gj={type:"FeatureCollection",features:items.map(function(p){
 					return {type:"Feature",geometry:{type:"Point",coordinates:[p.lng,p.lat]},
 						properties:{id:p.id,title:p.title,short:String(p.title||"").split(/\s[-|\u00b7]\s|\s\u2013\s/)[0].trim(),url:p.url,city:p.city||"",img:p.img||"",conf:p.conf||""}};
 				})};
+				var cities={};
+				items.forEach(function(p){
+					var c=p.city||"";if(!c)return;
+					if(!cities[c]){cities[c]={n:0,lng:0,lat:0}}
+					cities[c].n++;cities[c].lng+=p.lng;cities[c].lat+=p.lat;
+				});
+				var cityGj={type:"FeatureCollection",features:Object.keys(cities).map(function(c){
+					var v=cities[c];
+					return {type:"Feature",geometry:{type:"Point",coordinates:[v.lng/v.n,v.lat/v.n]},
+						properties:{city:c,n:v.n,label:c+" \u00b7 "+v.n}};
+				})};
+				var CITY_MAX=10.6,PT_MIN=10.2;
 				var addData=function(){
 					if(map.getSource("nlprojects"))return;
-					map.addSource("nlprojects",{type:"geojson",data:gj,cluster:true,clusterRadius:44,clusterMaxZoom:22});
-					map.addLayer({id:"nl-clusters",type:"circle",source:"nlprojects",filter:["has","point_count"],
-						paint:{"circle-color":"#9C7A3C","circle-opacity":.55,"circle-stroke-width":1.4,"circle-stroke-color":"#FAF7F1",
-							"circle-radius":["step",["get","point_count"],7,10,9,50,12,150,16]}});
-					map.addLayer({id:"nl-cluster-count",type:"symbol",source:"nlprojects",filter:["has","point_count"],
-						layout:{"text-field":["get","point_count_abbreviated"],"text-size":10.5,"text-font":["DIN Pro Medium","Arial Unicode MS Bold"]},
-						paint:{"text-color":"#FAF7F1"}});
-					map.addLayer({id:"nl-points",type:"circle",source:"nlprojects",filter:["!",["has","point_count"]],
-						paint:{"circle-color":"#E9D9A8","circle-radius":["interpolate",["linear"],["zoom"],8,2,12,3.5,15,5.5],"circle-stroke-width":1,"circle-stroke-color":"#14130F"}});
-					/* little labels beside the little dots; collisions hide the text, never the dot */
-					map.addLayer({id:"nl-point-labels",type:"symbol",source:"nlprojects",filter:["!",["has","point_count"]],minzoom:9.5,
-						layout:{"text-field":["get","short"],"text-size":10,"text-font":["DIN Pro Medium","Arial Unicode MS Bold"],"text-anchor":"top","text-offset":[0,0.6],"text-optional":true,"text-allow-overlap":false},
-						paint:{"text-color":"#E9E2D2","text-halo-color":"#14130F","text-halo-width":1.1}});
-					function popHtml(p){return '<div class="nldrone-pop" dir="auto"><b>'+p.title+"</b>"+(p.img?'<img src="'+p.img+'" alt="" loading="lazy">':"")+(p.city?'<div style="font-size:12px;color:#6D665C">'+p.city+(p.conf==="city"?" · "+L.city:"")+"</div>":"")+'<a href="'+p.url+'">'+L.top+"</a></div>"}
+					map.addSource("nlprojects",{type:"geojson",data:gj});
+					map.addSource("nlcities",{type:"geojson",data:cityGj});
+					/* named city chips at country zoom - big, legible, one tap */
+					map.addLayer({id:"nl-city-chips",type:"symbol",source:"nlcities",maxzoom:CITY_MAX,
+						layout:{"text-field":["get","label"],"text-size":["interpolate",["linear"],["zoom"],7,12,10,14.5],"text-font":["DIN Pro Bold","Arial Unicode MS Bold"],"text-allow-overlap":false,"text-padding":6},
+						paint:{"text-color":PAL.chip,"text-halo-color":PAL.chipHalo,"text-halo-width":1.8}});
+					map.addLayer({id:"nl-points",type:"circle",source:"nlprojects",minzoom:PT_MIN,
+						paint:{"circle-color":PAL.pin,"circle-radius":["interpolate",["linear"],["zoom"],10.2,4.5,13,6,15,7.5],"circle-stroke-width":1.6,"circle-stroke-color":PAL.pinStroke}});
+					/* project names beside the pins; collisions hide text, never the pin */
+					map.addLayer({id:"nl-point-labels",type:"symbol",source:"nlprojects",minzoom:PT_MIN,
+						layout:{"text-field":["get","short"],"text-size":11,"text-font":["DIN Pro Medium","Arial Unicode MS Bold"],"text-anchor":"top","text-offset":[0,0.7],"text-optional":true,"text-allow-overlap":false},
+						paint:{"text-color":PAL.label,"text-halo-color":PAL.halo,"text-halo-width":1.3}});
+					function popHtml(p){return '<div class="nldrone-pop" dir="auto"><b>'+p.title+"</b>"+(p.img?'<img src="'+p.img+'" alt="" loading="lazy">':"")+(p.city?'<div style="font-size:12px;color:#6D665C">'+p.city+(p.conf==="city"?" \u00b7 "+L.city:"")+"</div>":"")+'<a href="'+p.url+'">'+L.top+"</a></div>"}
 					map.on("click","nl-points",function(e){
 						var p=e.features[0].properties;
 						new mapboxgl.Popup({offset:14,maxWidth:"250px"}).setLngLat(e.features[0].geometry.coordinates).setHTML(popHtml(p)).addTo(map);
 					});
-					map.on("click","nl-clusters",function(e){
-						var f=e.features[0],cid=f.properties.cluster_id,src=map.getSource("nlprojects");
-						var same=map.getZoom()>=15.5;
-						if(same){
-							src.getClusterLeaves(cid,8,0,function(err,leaves){
-								if(err)return;
-								var list=leaves.map(function(l){return '<a href="'+l.properties.url+'" style="display:block;margin:4px 0">'+l.properties.title+"</a>"}).join("");
-								var more=f.properties.point_count>8?'<div style="font-size:11px;color:#6D665C">ועוד '+(f.properties.point_count-8)+' פרויקטים בעיר</div>':"";
-								new mapboxgl.Popup({offset:14,maxWidth:"280px"}).setLngLat(f.geometry.coordinates).setHTML('<div class="nldrone-pop" dir="auto"><b>'+f.properties.point_count+" "+L.pn+"</b>"+list+more+"</div>").addTo(map);
-							});
-						} else {
-							src.getClusterExpansionZoom(cid,function(err,z){
-								if(err)return;
-								map.easeTo({center:f.geometry.coordinates,zoom:Math.min(z,15.6)});
-							});
-						}
+					map.on("click","nl-city-chips",function(e){
+						map.easeTo({center:e.features[0].geometry.coordinates,zoom:11.8,pitch:isHero?55:46,duration:1100});
 					});
-					["nl-points","nl-clusters"].forEach(function(l){
+					["nl-points","nl-city-chips"].forEach(function(l){
 						map.on("mouseenter",l,function(){map.getCanvas().style.cursor="pointer"});
 						map.on("mouseleave",l,function(){map.getCanvas().style.cursor=""});
 					});

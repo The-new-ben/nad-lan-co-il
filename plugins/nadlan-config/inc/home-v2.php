@@ -45,6 +45,7 @@ add_action( 'rest_api_init', function () {
 	register_setting( 'general', 'nadlan_home_video_url', array( 'type' => 'string', 'sanitize_callback' => 'esc_url_raw', 'default' => '', 'show_in_rest' => true ) );
 	register_setting( 'general', 'nadlan_home_video_webm', array( 'type' => 'string', 'sanitize_callback' => 'esc_url_raw', 'default' => '', 'show_in_rest' => true ) );
 	register_setting( 'general', 'nadlan_home_video_poster', array( 'type' => 'string', 'sanitize_callback' => 'esc_url_raw', 'default' => '', 'show_in_rest' => true ) );
+	register_setting( 'general', 'nadlan_home_hero_aerial', array( 'type' => 'string', 'sanitize_callback' => 'esc_url_raw', 'default' => '', 'show_in_rest' => true ) );
 } );
 
 add_action( 'admin_init', function () {
@@ -245,8 +246,16 @@ if ( ! function_exists( 'nadlan_hv2_band_hero' ) ) {
 		$flag   = nadlan_hv2_featured_projects( 1 );
 		$flag   = $flag ? $flag[0] : null;
 		?>
-	<section class="nlhv2-hero nlhv2-hero--map">
-		<?php if ( function_exists( 'nadlan_drone_map_band' ) ) : ?>
+	<?php $aerial = trim( (string) get_option( 'nadlan_home_hero_aerial', '' ) ); ?>
+	<section class="nlhv2-hero nlhv2-hero--map<?php echo $aerial ? ' nlhv2-hero--aerial' : ''; ?>">
+		<?php if ( $aerial ) : ?>
+		<?php /* owner 2026-07-12: the black live map was hard to read (mobile most of
+		        all); the hero is an impressive AERIAL IMAGE - fast, legible, cinematic.
+		        The LIVE map moved to its own light band lower on the page. */ ?>
+		<div class="nlhv2-hero-mapbg" style="background-image:url('<?php echo esc_url( $aerial ); ?>')" aria-hidden="true">
+			<div class="nlhv2-hero-veil" aria-hidden="true"></div>
+		</div>
+		<?php elseif ( function_exists( 'nadlan_drone_map_band' ) ) : ?>
 		<div class="nlhv2-hero-mapbg" aria-hidden="false">
 			<?php echo nadlan_drone_map_band( 'hero', function_exists( 'nadlan_current_lang' ) ? nadlan_current_lang() : 'he' ); // phpcs:ignore WordPress.Security.EscapeOutput ?>
 			<div class="nlhv2-hero-veil" aria-hidden="true"></div>
@@ -298,6 +307,42 @@ if ( ! function_exists( 'nadlan_hv2_band_video' ) ) {
 		}
 		if ( ! $embed ) { return; }
 		echo '<section class="nlhv2-band nlhv2-videoband" aria-label="סרטון היכרות"><header><p class="nlhv2-kicker">רגע לפני שמתחילים</p><h2>ככה בוחרים דירה בנדלן</h2></header><div class="nlhv2-video-frame">' . $embed . '</div></section>'; // phpcs:ignore
+	}
+}
+
+if ( ! function_exists( 'nadlan_hv2_band_dronemap' ) ) {
+	/* the LIVE map as its own designed band (light style; the hero is aerial imagery) */
+	function nadlan_hv2_band_dronemap() {
+		if ( ! function_exists( 'nadlan_drone_map_band' ) ) { return; }
+		echo '<section class="nlhv2-band nlhv2-dronemap" id="nlhv2-map">';
+		echo nadlan_drone_map_band( 'showcase', function_exists( 'nadlan_current_lang' ) ? nadlan_current_lang() : 'he' ); // phpcs:ignore WordPress.Security.EscapeOutput
+		echo '</section>';
+	}
+}
+
+if ( ! function_exists( 'nadlan_hv2_band_renewal' ) ) {
+	/* the urban renewal PRODUCT on the homepage (owner 2026-07-12): the room is
+	   a product, not a page - it earns a band like the flagships do. */
+	function nadlan_hv2_band_renewal() {
+		?>
+	<section class="nlhv2-band nlhv2-renewal">
+		<div class="nlhv2-renewal-in">
+			<p class="nlhv2-kicker nlhv2-renewal-k"><?php nadlan_e( 'ur_kicker' ); ?></p>
+			<h2><?php nadlan_e( 'ur_title' ); ?></h2>
+			<p class="nlhv2-renewal-sub"><?php nadlan_e( 'ur_sub' ); ?></p>
+			<div class="nlhv2-renewal-steps">
+				<span><i>1</i><?php nadlan_e( 'ur_step1' ); ?></span>
+				<span><i>2</i><?php nadlan_e( 'ur_step2' ); ?></span>
+				<span><i>3</i><?php nadlan_e( 'ur_step3' ); ?></span>
+			</div>
+			<div class="nlhv2-renewal-ctas">
+				<a class="nlhv2-renewal-go" href="<?php echo esc_url( home_url( '/urban-renewal/check/' ) ); ?>"><?php nadlan_e( 'ur_cta1' ); ?></a>
+				<a class="nlhv2-renewal-alt" href="<?php echo esc_url( home_url( '/my-renewal/' ) ); ?>"><?php nadlan_e( 'ur_cta2' ); ?></a>
+			</div>
+			<p class="nlhv2-renewal-note"><?php nadlan_e( 'ur_note' ); ?></p>
+		</div>
+	</section>
+		<?php
 	}
 }
 
@@ -683,8 +728,18 @@ if ( ! function_exists( 'nadlan_home_v2_shortcode' ) ) {
 			if ( false !== $hi ) { array_splice( $bands, $hi + 1, 0, 'flagships' ); }
 			else { array_unshift( $bands, 'flagships' ); }
 		}
-		// (dronemap band retired 2026-07-07: the live map IS the hero now - ONE map on the page)
+		// ONE-map law: with the aerial hero the LIVE map gets its own light band
+		// after the dark projects band; with the map-hero fallback it stays hero-only.
 		$bands = array_values( array_diff( $bands, array( 'dronemap' ) ) );
+		if ( trim( (string) get_option( 'nadlan_home_hero_aerial', '' ) ) ) {
+			$pi = array_search( 'projects', $bands, true );
+			array_splice( $bands, false !== $pi ? $pi + 1 : count( $bands ), 0, 'dronemap' );
+		}
+		// the urban renewal product rides the homepage (owner 2026-07-12)
+		if ( ! in_array( 'renewal', $bands, true ) ) {
+			$ti = array_search( 'tools', $bands, true );
+			array_splice( $bands, false !== $ti ? $ti + 1 : count( $bands ), 0, 'renewal' );
+		}
 		ob_start();
 		echo '<div class="nlhv2" dir="' . esc_attr( $dir ) . '" lang="' . esc_attr( $lang ) . '">';
 		if ( function_exists( 'nadlan_lang_switcher' ) ) { echo '<div class="nlhv2-langbar">' . nadlan_lang_switcher() . '</div>'; }
@@ -752,6 +807,23 @@ if ( ! function_exists( 'nadlan_hv2_assets' ) ) {
 .nlhv2-hero--map{display:block;position:relative;min-height:560px;padding:0;border-radius:22px;overflow:hidden;margin:8px 0 16px;background:#14130F;border:1px solid #2A251B}
 @media(max-width:860px){.nlhv2-hero--map{min-height:520px;border-radius:16px}}
 .nlhv2-hero-mapbg{position:absolute;inset:0}
+.nlhv2-hero--aerial .nlhv2-hero-mapbg{background-position:center;background-size:cover;background-repeat:no-repeat}
+.nlhv2-hero--aerial{min-height:540px}
+@media(max-width:860px){.nlhv2-hero--aerial{min-height:480px}}
+.nlhv2-dronemap{padding:0}
+.nlhv2-renewal{background:radial-gradient(ellipse at 82% 8%,#26221733 0%,transparent 55%),#14130F;border-radius:22px;padding:clamp(26px,4vw,44px)}
+.nlhv2-renewal-in{max-width:760px}
+.nlhv2-renewal-k{color:#E9D9A8!important}
+.nlhv2-renewal h2{color:#FAF7F1;font-family:"Frank Ruhl Libre",serif;font-size:clamp(1.5rem,1.1rem+1.6vw,2.1rem);margin:6px 0 8px}
+.nlhv2-renewal-sub{color:#C9C2B4;font:400 14.5px/1.75 Heebo,sans-serif;margin:0 0 18px;max-width:620px}
+.nlhv2-renewal-steps{display:flex;gap:12px;flex-wrap:wrap;margin:0 0 20px}
+.nlhv2-renewal-steps span{display:inline-flex;align-items:center;gap:9px;background:rgba(250,247,241,.06);border:1px solid rgba(233,217,168,.3);border-radius:999px;padding:9px 16px 9px 10px;color:#E9E2D2;font:600 13px Heebo,sans-serif}
+.nlhv2-renewal-steps i{display:inline-block;width:24px;height:24px;border-radius:50%;background:#9C7A3C;color:#FAF7F1;font:700 12px/24px "Frank Ruhl Libre",serif;font-style:normal;text-align:center}
+.nlhv2-renewal-ctas{display:flex;gap:12px;flex-wrap:wrap}
+.nlhv2-renewal-go{background:#C2563A;color:#FAF7F1;border-radius:11px;padding:14px 24px;font:700 14.5px Heebo,sans-serif;text-decoration:none;box-shadow:0 12px 28px -12px rgba(194,86,58,.6)}
+.nlhv2-renewal-alt{border:1.5px solid rgba(233,217,168,.5);color:#E9D9A8;border-radius:11px;padding:14px 24px;font:700 14.5px Heebo,sans-serif;text-decoration:none}
+.nlhv2-renewal-go:hover,.nlhv2-renewal-alt:hover{filter:brightness(1.07)}
+.nlhv2-renewal-note{color:#8E877A;font:600 12px Heebo,sans-serif;margin:14px 0 0}
 .nlhv2-hero-veil{position:absolute;inset:0;pointer-events:none;background:linear-gradient(180deg,rgba(20,19,15,.86) 0%,rgba(20,19,15,.55) 26%,rgba(20,19,15,.1) 52%,rgba(20,19,15,.45) 100%)}
 .nlhv2-hero--map .nlhv2-hero-copy{position:relative;z-index:6;max-width:640px;margin:26px clamp(12px,3vw,36px);padding:26px clamp(16px,3vw,32px);pointer-events:none;background:linear-gradient(180deg,rgba(20,19,15,.62),rgba(20,19,15,.42));border:1px solid rgba(233,217,168,.16);border-radius:18px;backdrop-filter:blur(3px)}
 .nlhv2-hero--map .nlhv2-hero-copy>*{pointer-events:auto}
