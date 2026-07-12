@@ -1,5 +1,35 @@
 # AGENT-LOG - the God brain (append-only, newest on top)
 
+## 2026-07-12 (59) - v1.72.104 SMART FORMS + THE AUCTION PRODUCT
+Owner: "auction apartments end-to-end + the best form in the world."
+Research (Typeform pattern, 650K-submission studies): one-question-
+per-screen converts 25-40% better; contact questions last.
+inc/smart-form.php - the conversational engine: config-driven
+instances (auction seller / renewal / buyer), animated one-question
+card, gold progress bar, chips, back, enter-to-continue, success
+pulse + WhatsApp share. Submissions ride /nadlan/v1/lead with
+structured fields -> routing/inbox/AI-qualify (flag) score them =
+the honest AI-inside. Attached: /sell-by-auction/ + auto-band on
+the urban-renewal pillar + buying-apartment guide + shortcode.
+inc/auction.php - EXTENDS offers.php (no second engine):
+- offers flag flipped ON; demo property 4957 armed (min 2.8M,
+  leading_amount transparency, 14d window) + 3 labeled demo offers.
+- AUCTION BAND on single properties (theater-dark, brand): leading
+  offer, count, min, days left, anonymized activity feed (handle +
+  amount + response), offer form (financing chips, non-binding ack
+  REQUIRED), honesty block: not a legal auction, seller may choose
+  any offer or none, receivership cases need due process + lawyer.
+- SELLER RESPONSE: /offer-respond (accept/counter/decline, owner
+  or admin) + /offer-respond-by-handle for the front seller panel;
+  responses visible anonymized in the public feed.
+- /auction-state/{card} public aggregate (sealed mode respected).
+- Metabox on nadlan_property: enabled/min/transparency.
+E2E LIVE: landing + band + form verified; submitted real offer
+(2.99M -> leading), seller countered 3.1M -> feed shows it.
+NIT: offer handle numbering counts live-only so a declined #N can
+collide with a new #N (offers.php behavior; cosmetic; queued).
+
+
 ## 2026-07-12 (58) - v1.72.103 GLOBAL WORLDS L2: 7 WORLDS + THE PREMIUM APARTMENT PICKER
 Owner: "partial job... all countries, much more details, everything
 our premium projects have." Shipped:
