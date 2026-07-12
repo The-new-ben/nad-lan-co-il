@@ -1,5 +1,52 @@
 # AGENT-LOG - the God brain (append-only, newest on top)
 
+## 2026-07-12 (54) - v1.72.98-99 THE APPOINTMENT SCHEDULER (owner-default, CMS-reassignable)
+Owner order: "appointment scheduler to show projects, listings,
+professionals... connect it to me by default but make it CMS
+changeable to paying customers." Deep-research harness ran
+(Zillow/Redfin/ShowingTime/Baymard/Cal.com; verification fleet died
+on session limit at 15:40 UTC reset but harvest landed with source
+quotes): instant-book beats request (Zillow: 3.4x lease conversion),
+14-day window + min lead time, ICS attachments not live sync,
+date-strip-then-time-grid = Baymard best pattern, Zillow BOUGHT
+ShowingTime rather than embed = build-native validated.
+BUILT inc/scheduler.php + assets/scheduler/booking.js:
+- Slot engine: availability as data (week hours, slot+buffer grid
+  step, lead hours, horizon, blackout), Israeli default Sun-Thu
+  09-19 / Fri 09-13 / Sat closed. Resolution: card meta -> host
+  user meta -> site option -> hard default.
+- HOST MODEL (the owner ask): host 0 = site owner default for
+  EVERY entity; metabox on all 3 card CPTs assigns a paying
+  customer user; that user self-serves hours + WA number at
+  /my-appointments/. Mirrors lead-routing owner_user_id mechanic.
+- REST: appt-slots (public), appt-book (honeypot, 5/hr rate limit,
+  open-slot recheck, transient lock + first-wins dedupe -> 409),
+  appt-cancel (token), appt-ics (token, VCALENDAR UTC), my-appts,
+  appt-status, my-availability. Every booking mirrors into
+  nadlan_lead + nadlan_lead_route.
+- Band on single project/property/professional (the_content pri
+  28, band ground #F3EEE3, no new floating element - anchor button
+  appended into EXISTING CTA rows by JS). 2 taps to a slot ->
+  form -> success card: WhatsApp confirm (terracotta), ICS, Google
+  Calendar, cancel-by-token.
+- Notifications: queue-behind-flag (nadlan_scheduler_notify_enabled
+  default OFF, log always); daily reminder cron nadlan_sched_tick.
+E2E VERIFIED LIVE: slots shape (Sat closed Fri short), book ->
+ref+WA+ICS, double-book 409, slot blocked then freed on cancel,
+bad token denied, anon dashboard 302, band on all 3 page types.
+DEFECT CAUGHT + FIXED (1.72.99): EN sibling page showed the band
+in Hebrew - nadlan_current_lang only set on language homepages.
+Fix: slug-suffix detection (project-experience convention) + FULL
+5-language widget strings (he/en/fr/ru/ar) per all-or-nothing law.
+Verified DUO en/fr/ru/ar siblings: correct language, zero leak.
+NEW HOST QUIRK LAW: UPress front nginx masks EVERY wp-json 403 as
+a bare nginx 404 (GET and POST) - REST statuses the client must
+distinguish may not use 403; use 400/401/409/429 (slot conflict
+is 409, passes clean).
+FLOATING: test appt 5521 left cancelled in dashboard (labeled
+נתוני דוגמה); visitor-side reminders (WA is click-only) = future;
+review-and-confirm mode (Zillow alt) = future option.
+
 ## 2026-07-12 (53) - v1.72.97 LOVABLE INTAKE: SHORELINE HERO + ILLUSTRATED PRODUCT BANDS
 Owner made nadlan-strategy-hub public ("suck all the content") and
 ordered the best-homepage round for contractors. Intake verdict:
