@@ -74,12 +74,15 @@ add_action( 'rest_api_init', function () {
 			", ARRAY_A );
 			$cities = array();
 			$cent = nadlan_ur_city_centroids();
+			// normalize: gov.il city names vary in hyphenation ("תל אביב יפו" vs "תל אביב-יפו")
+			$cent_norm = array();
+			foreach ( $cent as $k => $v ) { $cent_norm[ str_replace( array( '-', '  ' ), ' ', $k ) ] = $v; }
 			foreach ( (array) $rows as $r ) {
 				$city = trim( (string) $r['city'] );
 				if ( '' === $city ) { continue; }
 				if ( ! isset( $cities[ $city ] ) ) {
 					$cities[ $city ] = array( 'city' => $city, 'count' => 0, 'pinui_binui' => 0, 'tama38' => 0,
-						'lnglat' => $cent[ $city ] ?? null );
+						'lnglat' => $cent[ $city ] ?? ( $cent_norm[ str_replace( array( '-', '  ' ), ' ', $city ) ] ?? null ) );
 				}
 				$cities[ $city ]['count'] += (int) $r['n'];
 				if ( 'pinui_binui' === $r['track'] ) { $cities[ $city ]['pinui_binui'] += (int) $r['n']; }
