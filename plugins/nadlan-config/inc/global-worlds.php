@@ -239,6 +239,230 @@ if ( ! function_exists( 'nadlan_gw_worlds' ) ) {
 			'src_en' => 'Market data: July 2026, public sources (NYC Department of Finance, StreetEasy, published project data). Estimates for illustration only - not investment, tax or legal advice.',
 		),
 
+		'london' => array(
+			'name_he' => 'לונדון', 'name_en' => 'London', 'country_he' => 'בריטניה', 'country_en' => 'United Kingdom',
+			'flag' => '🇬🇧', 'currency' => 'GBP', 'center' => array( -0.1276, 51.5074 ), 'zoom' => 11,
+			'title_he' => 'השקעות נדל"ן בלונדון: מחירים, SDLT, אזורים והמדריך המלא למשקיע הישראלי | נדלן',
+			'title_en' => 'London Property Investment: Prices, SDLT, Districts and the Complete Guide | Nadlan',
+			'desc_he'  => 'המדריך המלא להשקעה בדירה בלונדון: מחירים באזורי Zone 2-3, מס הרכישה SDLT לתושבי חוץ, ליסהולד מול פריהולד, תהליך הרכישה ופרויקטים להמחשה בתלת ממד ועל המפה.',
+			'desc_en'  => 'The complete London investment guide: Zone 2-3 pricing, SDLT for non-residents, leasehold vs freehold, the buying process and illustrative projects in 3D and on the map.',
+			'h1_he' => 'השקעות נדל"ן בלונדון: העולם המלא למשקיע',
+			'h1_en' => 'London Property: the Complete Investor World',
+			'intro_he' => 'לונדון היא שוק הנדל"ן הבינלאומי הוותיק בעולם: מטבע חזק, מערכת משפט שמכבדת חוזים כבר מאות שנים, אוניברסיטאות שמושכות שוכרים מכל העולם, והיצע שתמיד מפגר אחרי הביקוש. משקיעים ישראלים מתרכזים היום פחות במרכז היוקרתי שהתייקר מדי, ויותר באזורי Zone 2-3 המתחדשים - קנרי וורף, סטרטפורד, באטרסי - שם דירה חדשה בפרויקט מתחילה סביב 550-800 אלף ליש"ט עם תשואות של 4%-5.5%. חשוב להכיר: מס הרכישה SDLT לתושב חוץ שקונה דירה נוספת מגיע למדרגות גבוהות, ורוב הדירות בבניינים נמכרות בליסהולד ולא בבעלות מלאה. בעמוד הזה: הנתונים, המיסים משני הצדדים, ליסהולד מול פריהולד, התהליך המלא, הסיכונים, ופרויקטים להמחשה בתלת ממד ועל המפה.',
+			'intro_en' => 'London is the oldest international property market in the world: a strong currency, a legal system that has honored contracts for centuries, universities that pull tenants from everywhere, and supply that forever lags demand. Israeli investors now focus less on overpriced Prime Central and more on regenerating Zone 2-3 districts - Canary Wharf, Stratford, Battersea - where a new-build apartment starts around GBP 550-800K with 4-5.5% yields. Know this going in: non-resident SDLT on an additional dwelling reaches steep brackets, and most flats sell leasehold, not freehold. On this page: the data, taxes on both sides, leasehold vs freehold, the full process, the risks, and illustrative projects in 3D and on the map.',
+			'facts' => array(
+				array( 'מחיר דירה חדשה Zone 2-3', 'New-build price Zone 2-3', '550-800 אלף ליש"ט לדירת 1-2 חדרי שינה', 'GBP 550-800K for a 1-2 bed' ),
+				array( 'תשואת שכירות ברוטו', 'Gross rental yield', 'כ-4%-5.5% באזורים המתחדשים', '~4-5.5% in regeneration zones' ),
+				array( 'מס רכישה (SDLT) לתושב חוץ', 'SDLT for non-residents', 'מדרגות + 2% תוספת תושב חוץ + 5% דירה נוספת', 'Brackets + 2% non-resident + 5% additional dwelling' ),
+				array( 'סוג הבעלות', 'Tenure', 'רוב הדירות ליסהולד (99-999 שנה); בדקו יתרה ודמי קרקע', 'Most flats leasehold (99-999 yrs); check term and ground rent' ),
+				array( 'מס שנתי', 'Annual tax', 'Council Tax (משלם לרוב השוכר) + מס הכנסה על שכירות', 'Council tax (usually the tenant) + income tax on rent' ),
+				array( 'ויזת זהב', 'Golden visa', 'אין (בוטלה ב-2022)', 'None (closed in 2022)' ),
+				array( 'בעלות לזרים', 'Foreign ownership', 'חופשית; חברות זרות חייבות רישום שקיפות', 'Unrestricted; overseas entities need transparency registration' ),
+				array( 'אזורים מובילים למשקיעים', 'Top investor districts', 'קנרי וורף, סטרטפורד, באטרסי, גריניץ', 'Canary Wharf, Stratford, Battersea, Greenwich' ),
+			),
+			'guide' => array(
+				array( 'ליסהולד, פריהולד ומה שביניהם', 'Leasehold, freehold and what lies between',
+					array(
+						'רוב הדירות בבנייני מגורים בלונדון נמכרות בליסהולד: בעלות על הדירה לתקופה ארוכה (לרוב 125-999 שנה) בעוד הקרקע נשארת של בעל הפריהולד. שלושה דברים לבדוק לפני חתימה: יתרת שנות החכירה (מתחת ל-80 שנה הערך נפגע והארכה מתייקרת), דמי Ground Rent (רפורמות אחרונות איפסו אותם בחוזים חדשים), ודמי Service Charge שבמגדלים חדשים יכולים להגיע ל-4-7 ליש"ט לרגל לשנה. עסקה מלווה תמיד ב-Solicitor מקומי - תפקיד חובה בשיטה האנגלית.',
+					),
+					array(
+						'Most London flats sell leasehold: you own the apartment for a long term (typically 125-999 years) while the land stays with the freeholder. Check three things before signing: remaining lease years (below 80 the value suffers and extension gets expensive), ground rent (recent reforms zeroed it in new contracts), and service charges that in new towers can reach GBP 4-7 per sqft a year. Every deal runs through a local solicitor - a mandatory role in the English system.',
+					),
+				),
+				array( 'SDLT: המס שמפתיע משקיעים', 'SDLT: the tax that surprises investors',
+					array(
+						'מס הרכישה הבריטי (SDLT) הוא ההוצאה הגדולה של משקיע זר: מדרגות רגילות לפי מחיר, ומעליהן תוספת של 2% לתושב חוץ ותוספת דירה נוספת של 5%. על דירת 700 אלף ליש"ט, משקיע זר שזו לא דירתו היחידה ישלם עשרות אלפי ליש"ט - חובה להריץ את החישוב המדויק לפני הצעה. בהכנסות שכירות: מס הכנסה בריטי, ובמכירה מס רווחי הון לתושבי חוץ. אמנת המס ישראל-בריטניה מזכה את המס ששולם.',
+					),
+					array(
+						'UK stamp duty (SDLT) is the foreign investor\'s biggest line item: standard brackets by price, plus a 2% non-resident surcharge and a 5% additional-dwelling surcharge. On a GBP 700K flat, a foreign investor with another home pays tens of thousands - run the exact calculation before offering. On rent: UK income tax; on sale, non-resident capital gains tax. The Israel-UK treaty credits tax paid.',
+					),
+				),
+				array( 'הסיכונים שאסור להתעלם מהם', 'The risks you must not ignore',
+					array(
+						'התשואה השוטפת צנועה ומבנה העלויות (SDLT, דמי ניהול, ניהול השכרה) שוחק אותה - לונדון היא השקעת מטבע ויציבות, לא תזרים. עוד לבדוק: חשיפת ליש"ט/שקל, רגולציית שכירות מתהדקת, עלויות תיקון חיפויים בבניינים ישנים - קנו רק בניין עם אישור EWS1 תקין או חדש לגמרי, ושוק המכירה החוזרת של ליסהולד קצר. הנתונים בעמוד הם אומדני שוק להמחשה ואינם ייעוץ.',
+					),
+					array(
+						'Running yield is modest and the cost stack (SDLT, service charges, management) erodes it - London is a currency-and-stability play, not cash flow. Also check: GBP/ILS exposure, tightening rental regulation, cladding remediation in older towers - buy only buildings with a clean EWS1 or brand new, and the resale market for short leaseholds. Figures on this page are market estimates for illustration, not advice.',
+					),
+				),
+			),
+			'faq' => array(
+				array( 'האם כדאי לקנות דירה בלונדון בליסהולד?', 'Is a leasehold flat worth buying?', 'כן, זו הנורמה בלונדון - בתנאי שיתרת החכירה ארוכה (מעל 125 שנה בחוזה חדש), דמי הקרקע אפס או סמליים, ודמי הניהול סבירים ומגובים בתוכנית תחזוקה.', 'Yes, it is the London norm - provided the remaining term is long (125+ years on new contracts), ground rent is zero or peppercorn, and the service charge is reasonable and backed by a maintenance plan.' ),
+				array( 'כמה SDLT ישלם משקיע ישראלי?', 'How much SDLT will an Israeli investor pay?', 'תלוי במחיר ובנסיבות: המדרגות הרגילות ועליהן 2% תושב חוץ ו-5% דירה נוספת. על 700 אלף ליש"ט זה בדרך כלל סדר גודל של 60-75 אלף ליש"ט - הריצו חישוב מדויק לפני כל הצעה.', 'Depends on price and circumstances: standard brackets plus 2% non-resident and 5% additional dwelling. On GBP 700K it typically lands around GBP 60-75K - run the exact number before any offer.' ),
+				array( 'איפה משקיעים ישראלים קונים בלונדון?', 'Where do Israeli investors buy in London?', 'בעיקר באזורי ההתחדשות של Zone 2-3: קנרי וורף וסטרטפורד במזרח, באטרסי וניין אלמס בדרום - פרויקטים חדשים ליד תחבורה, במחירי כניסה נמוכים מהמרכז בשליש ויותר.', 'Mostly in Zone 2-3 regeneration districts: Canary Wharf and Stratford in the east, Battersea and Nine Elms in the south - new schemes near transport at a third or more below central pricing.' ),
+			),
+			'src_he' => 'נתוני שוק: יולי 2026, מקורות פומביים (HM Land Registry, Rightmove, gov.uk). אומדנים להמחשה בלבד - לא ייעוץ השקעות, מס או משפט.',
+			'src_en' => 'Market data: July 2026, public sources (HM Land Registry, Rightmove, gov.uk). Estimates for illustration only - not investment, tax or legal advice.',
+		),
+
+		'greece' => array(
+			'name_he' => 'יוון', 'name_en' => 'Greece', 'country_he' => 'יוון', 'country_en' => 'Greece',
+			'flag' => '🇬🇷', 'currency' => 'EUR', 'center' => array( 23.7275, 37.9838 ), 'zoom' => 11,
+			'title_he' => 'השקעות נדל"ן ביוון: אתונה, ויזת זהב, מחירים והמדריך המלא למשקיע הישראלי | נדלן',
+			'title_en' => 'Greece Property Investment: Athens, the Golden Visa, Prices and the Complete Guide | Nadlan',
+			'desc_he'  => 'המדריך המלא להשקעה בדירה ביוון: מחירי אתונה, ויזת הזהב האירופית, מס רכישה 3.09%, תשואות שכירות, תהליך הרכישה ופרויקטים להמחשה בתלת ממד ועל המפה.',
+			'desc_en'  => 'The complete Greece investment guide: Athens prices, the EU golden visa, the 3.09% transfer tax, rental yields, the buying process and illustrative projects in 3D and on the map.',
+			'h1_he' => 'השקעות נדל"ן ביוון: העולם המלא למשקיע',
+			'h1_en' => 'Greece Property: the Complete Investor World',
+			'intro_he' => 'יוון היא ההשקעה האירופית הקרובה: שעתיים טיסה מתל אביב, מחירים שעדיין נמוכים משמעותית ממערב אירופה למרות עליות חדות מאז 2018, תיירות ששוברת שיאים שנה אחרי שנה, וויזת הזהב - תושבות אירופית למשפחה כולה דרך רכישת נכס. הכתובת המרכזית היא אתונה: שכונות כמו קוקאקי, פנגראטי וגליפדה שעל החוף מציעות דירות משופצות ופרויקטים חדשים ב-2,500-4,500 אירו למ"ר, עם תשואות של 4%-6%. חשוב להכיר את מדרגות ויזת הזהב החדשות ואת מגבלות השכירות הקצרה שנכנסו לתוקף. בעמוד הזה: הנתונים, הוויזה, המיסים משני הצדדים, תהליך הרכישה עם עורך דין ונוטריון, הסיכונים, ופרויקטים להמחשה בתלת ממד ועל המפה.',
+			'intro_en' => 'Greece is the near-Europe investment: a two-hour flight from Tel Aviv, prices still well below Western Europe despite sharp rises since 2018, record-breaking tourism year after year, and the golden visa - EU residency for the whole family through a property purchase. The main address is Athens: neighborhoods like Koukaki, Pangrati and coastal Glyfada offer renovated flats and new projects at EUR 2,500-4,500 per sqm with 4-6% yields. Know the new golden-visa thresholds and the short-term rental limits now in force. On this page: the data, the visa, taxes on both sides, the lawyer-and-notary purchase process, the risks, and illustrative projects in 3D and on the map.',
+			'facts' => array(
+				array( 'מחיר למ"ר באתונה', 'Athens price per sqm', '2,500-4,500 אירו (מרכז ופרברי חוף מבוקשים)', 'EUR 2,500-4,500 (center and prime coastal suburbs)' ),
+				array( 'תשואת שכירות ברוטו', 'Gross rental yield', 'כ-4%-6%; שכירות קצרה גבוהה יותר אך מוגבלת רגולטורית', '~4-6%; short-term higher but regulation-capped' ),
+				array( 'ויזת זהב', 'Golden visa', '800 אלף אירו באתונה/סלוניקי/איים מבוקשים; 400 אלף בשאר המדינה', 'EUR 800K in Athens/Thessaloniki/prime islands; 400K elsewhere' ),
+				array( 'מס רכישה', 'Transfer tax', '3.09% (או מע"מ 24% בנכס חדש מהיזם - בדקו פטורים)', '3.09% (or 24% VAT on new-from-developer - check exemptions)' ),
+				array( 'מס רכוש שנתי (ENFIA)', 'Annual property tax (ENFIA)', 'כמה מאות עד אלפי אירו, לפי הנכס', 'A few hundred to a few thousand EUR by asset' ),
+				array( 'מס על שכירות', 'Tax on rent', 'מדורג: 15% עד 12 אלף אירו, ואז 35%/45%', 'Tiered: 15% to EUR 12K, then 35%/45%' ),
+				array( 'בעלות לזרים', 'Foreign ownership', 'חופשית (הגבלות רק באזורי גבול)', 'Unrestricted (limits only in border zones)' ),
+				array( 'אזורים מובילים', 'Top districts', 'אתונה: קוקאקי, פנגראטי, גליפדה; סלוניקי; האיים', 'Athens: Koukaki, Pangrati, Glyfada; Thessaloniki; the islands' ),
+			),
+			'guide' => array(
+				array( 'תהליך הרכישה: עורך דין, נוטריון ומספר מס', 'The process: lawyer, notary and a tax number',
+					array(
+						'רכישה ביוון מתנהלת דרך שלושה גורמים: עורך דין מטעמכם שבודק את נסח הרישום ואת היעדר החובות (ביוון חובות ארנונה ומס נדבקים לנכס!), נוטריון שמאשר את חוזה המכר, ורואה חשבון שפותח לכם מספר מס יווני (AFM) - תנאי לכל עסקה. התהליך אורך בדרך כלל 6-10 שבועות ואפשר להשלימו בייפוי כוח מרחוק. בקניית נכס לוויזת זהב חשוב שהתשלום יעבור בערוץ בנקאי מתועד במלואו - זו דרישת הבקשה.',
+					),
+					array(
+						'A Greek purchase runs through three roles: your lawyer, who checks title and the absence of debts (in Greece municipal and tax debts attach to the property!), the notary who certifies the deed, and an accountant who opens your Greek tax number (AFM) - a precondition for any deal. It typically takes 6-10 weeks and can be completed remotely by power of attorney. For a golden-visa purchase the payment must flow through fully documented banking channels - an application requirement.',
+					),
+				),
+				array( 'ויזת הזהב: מה באמת מקבלים', 'The golden visa: what you actually get',
+					array(
+						'ויזת הזהב היוונית מעניקה תושבות מתחדשת לכל המשפחה (בני זוג, ילדים עד 21, הורים) עם חופש תנועה בשנגן - בלי דרישת מגורים בפועל. המדרגות כיום: 800 אלף אירו באזורי הביקוש (אתונה, סלוניקי, מיקונוס, סנטוריני ואיים גדולים) ו-400 אלף בשאר המדינה, עם מסלול חריג של 250 אלף בנכסים ייעודיים להשבחה או הסבה. חשוב: הוויזה אינה אזרחות ואינה מקנה זכות עבודה כשכיר ביוון; התאזרחות דורשת מגורים אמיתיים ושפה.',
+					),
+					array(
+						'The Greek golden visa grants renewable residency to the whole family (spouse, children to 21, parents) with Schengen freedom of movement - and no actual stay requirement. Current thresholds: EUR 800K in demand zones (Athens, Thessaloniki, Mykonos, Santorini and major islands), 400K elsewhere, with a special 250K track for designated renovation or conversion assets. Important: the visa is not citizenship and does not allow salaried work in Greece; naturalization requires real residence and language.',
+					),
+				),
+				array( 'הסיכונים שאסור להתעלם מהם', 'The risks you must not ignore',
+					array(
+						'השוק היווני עלה בחדות ומחירי מרכז אתונה כבר אינם מציאה; אל תקנו לפי מחירי 2018. בדקו: מגבלות שכירות קצרה חדשות במרכז אתונה, איכות בנייה בבניינים ישנים (רעידות אדמה - העדיפו בנייה מ-1985 ואילך או שיפוץ הנדסי מתועד), חובות שנדבקים לנכס, וביורוקרטיה איטית ברישום. מס ישראלי חל על ההכנסה לפי המסלולים הרגילים, עם זיכוי לפי אמנת המס. הנתונים להמחשה בלבד.',
+					),
+					array(
+						'The Greek market rose sharply and central Athens is no longer a bargain; do not underwrite at 2018 prices. Check: new short-term rental limits in central Athens, build quality in older stock (earthquakes - prefer post-1985 construction or documented structural renovation), debts that attach to the asset, and slow registry bureaucracy. Israeli tax applies to the income under the usual tracks, with treaty credits. Figures for illustration only.',
+					),
+				),
+			),
+			'faq' => array(
+				array( 'האם 250 אלף אירו עדיין מספיקים לוויזת זהב?', 'Is EUR 250K still enough for the golden visa?', 'רק במסלול מיוחד: נכסים המיועדים לשיפוץ מהותי או הסבה משימוש אחר, בתנאים מוגדרים. במסלול הרגיל: 800 אלף באזורי הביקוש או 400 אלף בשאר המדינה.', 'Only via the special track: assets designated for substantial renovation or use conversion, under defined terms. The standard track: 800K in demand zones or 400K elsewhere.' ),
+				array( 'כמה עולה להחזיק דירה באתונה?', 'What does holding an Athens flat cost?', 'ENFIA שנתי (מאות עד אלפי אירו), דמי בניין צנועים יחסית, ביטוח, וניהול השכרה של 8%-10%. מס יווני על השכירות מ-15% ומעלה לפי מדרגות.', 'Annual ENFIA (hundreds to thousands of EUR), relatively modest building fees, insurance, and 8-10% rental management. Greek tax on rent from 15% up by bracket.' ),
+				array( 'אתונה או האיים?', 'Athens or the islands?', 'אתונה = שוק שכירות עמוק כל השנה ונזילות; האיים = תשואת עונה גבוהה אך תלות מוחלטת בתיירות ובניהול מרחוק. למשקיע ראשון ביוון, אתונה היא נקודת הפתיחה הבטוחה.', 'Athens = deep year-round tenancy and liquidity; the islands = high seasonal yield but total dependence on tourism and remote management. For a first Greek investment, Athens is the safe starting point.' ),
+			),
+			'src_he' => 'נתוני שוק: יולי 2026, מקורות פומביים (Bank of Greece, Enterprise Greece, Spitogatos). אומדנים להמחשה בלבד - לא ייעוץ השקעות, מס או משפט.',
+			'src_en' => 'Market data: July 2026, public sources (Bank of Greece, Enterprise Greece, Spitogatos). Estimates for illustration only - not investment, tax or legal advice.',
+		),
+
+		'thailand' => array(
+			'name_he' => 'תאילנד', 'name_en' => 'Thailand', 'country_he' => 'תאילנד', 'country_en' => 'Thailand',
+			'flag' => '🇹🇭', 'currency' => 'THB', 'center' => array( 100.5018, 13.7563 ), 'zoom' => 11,
+			'title_he' => 'השקעות נדל"ן בתאילנד: קונדו בבנגקוק ופוקט, בעלות זרים, מחירים והמדריך המלא | נדלן',
+			'title_en' => 'Thailand Property Investment: Bangkok and Phuket Condos, Foreign Ownership and the Guide | Nadlan',
+			'desc_he'  => 'המדריך המלא להשקעה בקונדו בתאילנד: מכסת 49% לזרים, מחירי בנגקוק ופוקט, תשואות 5%-7%, מיסים, תהליך הרכישה ופרויקטים להמחשה בתלת ממד ועל המפה.',
+			'desc_en'  => 'The complete Thailand condo guide: the 49% foreign quota, Bangkok and Phuket pricing, 5-7% yields, taxes, the buying process and illustrative projects in 3D and on the map.',
+			'h1_he' => 'השקעות נדל"ן בתאילנד: העולם המלא למשקיע',
+			'h1_en' => 'Thailand Property: the Complete Investor World',
+			'intro_he' => 'תאילנד מציעה את יחס המחיר-חוויה הטוב באסיה למשקיע פרטי: קונדו חדש במרכז בנגקוק ב-80-150 אלף באט למ"ר (כ-2,200-4,200 דולר), תשואות ברוטו של 5%-7%, ותיירות של עשרות מיליוני מבקרים שמזינה את שוק השכירות בפוקט, פטאיה וקוסמוי. זר יכול להחזיק קונדו בבעלות מלאה על שמו - כל עוד חלקם של הזרים בבניין אינו עולה על 49%, המכסה שקובע החוק התאילנדי. קרקע ובתים פרטיים אי אפשר להחזיק ישירות - וכל מבנה עקיף שמציעים לכם דורש בדיקה משפטית קפדנית. בעמוד הזה: הנתונים, מכסת הזרים, המיסים, תהליך הרכישה כולל העברת המט"ח המתועדת, הסיכונים, ופרויקטים להמחשה בתלת ממד ועל המפה.',
+			'intro_en' => 'Thailand offers Asia\'s best price-to-experience ratio for the private investor: new central-Bangkok condos at THB 80-150K per sqm (~USD 2,200-4,200), 5-7% gross yields, and tens of millions of tourists feeding the rental markets of Phuket, Pattaya and Samui. A foreigner can hold a condo freehold in their own name - as long as foreign ownership in the building does not exceed the 49% quota Thai law sets. Land and houses cannot be held directly - and any indirect structure offered to you needs strict legal review. On this page: the data, the quota, taxes, the process including the documented FX transfer, the risks, and illustrative projects in 3D and on the map.',
+			'facts' => array(
+				array( 'מחיר קונדו בבנגקוק', 'Bangkok condo pricing', '80-150 אלף באט למ"ר במרכז (סוקומווית, סאטורן)', 'THB 80-150K per sqm central (Sukhumvit, Sathorn)' ),
+				array( 'תשואת שכירות ברוטו', 'Gross rental yield', 'כ-5%-7%; בפוקט עונתי וגבוה יותר', '~5-7%; Phuket seasonal and higher' ),
+				array( 'בעלות זרים בקונדו', 'Foreign condo ownership', 'בעלות מלאה עד מכסת 49% זרים בבניין', 'Full freehold within the 49% building quota' ),
+				array( 'קרקע ובתים', 'Land and houses', 'אסורים לבעלות זרה ישירה; חכירה 30 שנה בלבד', 'No direct foreign ownership; 30-year leasehold only' ),
+				array( 'מיסי רכישה', 'Purchase taxes', 'העברה 2% (מתחלק לרוב) + אגרות; סך הכל נמוך יחסית', '2% transfer (usually split) + fees; comparatively low' ),
+				array( 'מס רכוש שנתי', 'Annual property tax', 'נמוך מאוד (Land and Building Tax)', 'Very low (Land and Building Tax)' ),
+				array( 'דרישת מט"ח', 'FX requirement', 'הכסף חייב להגיע מחו"ל במט"ח עם אישור FET', 'Funds must arrive from abroad in FX with an FET certificate' ),
+				array( 'אזורים מובילים', 'Top districts', 'בנגקוק: סוקומווית, סאטורן, ראמה 9; פוקט: באנג טאו, קמאלה', 'Bangkok: Sukhumvit, Sathorn, Rama 9; Phuket: Bang Tao, Kamala' ),
+			),
+			'guide' => array(
+				array( 'מכסת ה-49% והעברת המט"ח: שני הכללים שאסור לשבור', 'The 49% quota and the FX transfer: the two unbreakable rules',
+					array(
+						'החוק התאילנדי מתיר לזרים להחזיק עד 49% משטח הדירות בכל בניין קונדו. לפני חתימה, היזם או עורך הדין חייבים להציג אישור שנותרה מכסה זרה פנויה - בבניינים מבוקשים היא נגמרת. הכלל השני: את מלוא התמורה חייבים להעביר מחו"ל במטבע זר, והבנק המקומי מנפיק אישור FET - בלעדיו לא ירשמו את הדירה על שמכם וגם לא תוכלו להוציא את הכסף בחזרה במכירה. שמרו כל מסמך.',
+					),
+					array(
+						'Thai law lets foreigners hold up to 49% of the apartment area in any condo building. Before signing, the developer or your lawyer must show that foreign quota remains - in sought-after buildings it runs out. The second rule: the full price must arrive from abroad in foreign currency, and the local bank issues an FET certificate - without it the unit cannot be registered in your name, and you cannot repatriate the money on sale. Keep every document.',
+					),
+				),
+				array( 'בנגקוק מול פוקט: שני שווקים שונים', 'Bangkok vs Phuket: two different markets',
+					array(
+						'בנגקוק היא שוק שכירות אורבני יציב: שוכרים מקומיים ומגורי אקספטים ליד קווי הרכבת, חוזים שנתיים, ותנודתיות עונתית נמוכה - הבסיס הנכון להשקעה ראשונה. פוקט היא מכונת תיירות: תשואות עונתיות גבוהות בניהול מלונאי (תוכניות של 5%-7% "מובטחים" לתקופה - קראו את האותיות הקטנות), אבל תלות מוחלטת בתיירות ובמפעיל. משקיע שמרן יתחיל בבנגקוק; מחפש תשואה עונתית - פוקט עם מפעיל מוכח.',
+					),
+					array(
+						'Bangkok is a stable urban rental market: local tenants and expats around the BTS/MRT lines, annual leases, low seasonality - the right base for a first investment. Phuket is a tourism machine: high seasonal returns under hotel management (programs "guaranteeing" 5-7% for a period - read the fine print), but total dependence on tourism and the operator. A conservative investor starts in Bangkok; yield hunters take Phuket with a proven operator.',
+					),
+				),
+				array( 'הסיכונים שאסור להתעלם מהם', 'The risks you must not ignore',
+					array(
+						'הבאט תנודתי מול השקל ואין אמנת מס מלאה עם ישראל להכנסות אלה - תכנון מס ישראלי (מסלול 15% או שולי) חובה מראש. עוד: היצע קונדו גדול בבנגקוק שוחק עליית ערך, שוק יד שנייה איטי (זרים קונים כמעט רק חדש), הבטחות תשואה של יזמים חזקות בדיוק כמו היזם - בדקו איתנות, ומבני חכירה או חברה להחזקת קרקע לזרים הם שדה מוקשים משפטי. קנו קונדו במכסה, בבניין מיזם מוכר, ותחיו בשקט. הנתונים להמחשה בלבד.',
+					),
+					array(
+						'The baht swings against the shekel and there is no full tax treaty with Israel covering this income - Israeli tax planning (15% track or marginal) is mandatory up front. Also: heavy Bangkok condo supply caps appreciation, the resale market is slow (foreigners buy almost only new), developer "guaranteed returns" are only as strong as the developer - verify strength, and leasehold or land-holding-company structures for foreigners are a legal minefield. Buy a freehold condo within quota, from an established developer, and sleep well. Figures for illustration only.',
+					),
+				),
+			),
+			'faq' => array(
+				array( 'האם זר יכול להחזיק דירה בתאילנד על שמו?', 'Can a foreigner hold a Thai condo in their own name?', 'כן - קונדו בלבד, בבעלות מלאה, כל עוד סך הזרים בבניין עד 49% מהשטח. קרקע ובתים פרטיים - לא.', 'Yes - condos only, full freehold, as long as total foreign ownership in the building is within 49% of area. Land and houses - no.' ),
+				array( 'מה זה אישור FET ולמה הוא קריטי?', 'What is the FET certificate and why is it critical?', 'אישור בנקאי שהכסף הגיע מחו"ל במט"ח לצורך רכישת הדירה. בלעדיו אין רישום בעלות לזר, ואי אפשר להחזיר את הכסף לחו"ל במכירה. שומרים אותו כמו את חוזה הרכישה.', 'A bank certificate that the funds arrived from abroad in FX for the purchase. Without it there is no foreign title registration, and no repatriation on sale. Guard it like the purchase contract.' ),
+				array( 'האם הבטחות תשואה בפוקט אמינות?', 'Are Phuket guaranteed returns reliable?', 'הן התחייבות חוזית של היזם או המפעיל - חזקות בדיוק כמוהו. בדקו עבר ביצועי, מי המפעיל המלונאי, ומה קורה בתום תקופת ההבטחה. אל תקנו על בסיס ההבטחה בלבד.', 'They are a contractual promise by the developer or operator - exactly as strong as they are. Check delivery history, who the hotel operator is, and what happens when the guarantee period ends. Never buy on the guarantee alone.' ),
+			),
+			'src_he' => 'נתוני שוק: יולי 2026, מקורות פומביים (Bank of Thailand, CBRE Thailand, DDproperty). אומדנים להמחשה בלבד - לא ייעוץ השקעות, מס או משפט.',
+			'src_en' => 'Market data: July 2026, public sources (Bank of Thailand, CBRE Thailand, DDproperty). Estimates for illustration only - not investment, tax or legal advice.',
+		),
+
+		'italy' => array(
+			'name_he' => 'איטליה', 'name_en' => 'Italy', 'country_he' => 'איטליה', 'country_en' => 'Italy',
+			'flag' => '🇮🇹', 'currency' => 'EUR', 'center' => array( 9.19, 45.4642 ), 'zoom' => 11,
+			'title_he' => 'השקעות נדל"ן באיטליה: מילאנו, רומא והדרום, מיסים והמדריך המלא למשקיע הישראלי | נדלן',
+			'title_en' => 'Italy Property Investment: Milan, Rome and the South, Taxes and the Complete Guide | Nadlan',
+			'desc_he'  => 'המדריך המלא להשקעה בדירה באיטליה: מחירי מילאנו ורומא, מס רכישה 2%/9%, מס 7% לפנסיונרים בדרום, תהליך נוטריוני, תשואות ופרויקטים להמחשה בתלת ממד ועל המפה.',
+			'desc_en'  => 'The complete Italy investment guide: Milan and Rome pricing, the 2%/9% purchase tax, the 7% southern flat tax, the notarial process, yields and illustrative projects in 3D and on the map.',
+			'h1_he' => 'השקעות נדל"ן באיטליה: העולם המלא למשקיע',
+			'h1_en' => 'Italy Property: the Complete Investor World',
+			'intro_he' => 'איטליה מציעה למשקיע הישראלי שילוב שאין באירופה: מילאנו - בירת הכלכלה והאופנה עם שוק שכירות של סטודנטים ומנהלים ותשואות של 4%-6%, רומא - ביקוש תיירותי אינסופי במרכז ההיסטורי, והדרום - מחירים נמוכים דרמטית עם הטבת מס ייחודית של 7% שטוחים לפנסיונרים זרים שעוברים לגור בעיירות הקטנות. דירת שני חדרים במילאנו מתחילה סביב 250-400 אלף אירו באזורים המתחדשים (נולו, ביקוקה), ובדרום אפשר למצוא נכסים בעשרות אלפי אירו הדורשים שיפוץ. התהליך האיטלקי נוטריוני ומסודר אך איטי, והמיסוי תלוי מאוד בשאלה אם זו דירה ראשונה או השקעה. בעמוד: הנתונים, המיסים, התהליך, הסיכונים, ופרויקטים להמחשה בתלת ממד ועל המפה.',
+			'intro_en' => 'Italy offers a combination Europe cannot match: Milan - the economic and fashion capital with a student-and-executive rental market and 4-6% yields, Rome - endless tourist demand in the historic center, and the South - dramatically low prices with a unique 7% flat tax for foreign pensioners relocating to small towns. A two-room Milan flat starts around EUR 250-400K in regenerating districts (NoLo, Bicocca), and southern assets can be found for tens of thousands needing renovation. The Italian process is notarial and orderly but slow, and taxation hinges on first-home vs investment status. On this page: the data, the taxes, the process, the risks, and illustrative projects in 3D and on the map.',
+			'facts' => array(
+				array( 'מחיר במילאנו', 'Milan pricing', '250-400 אלף אירו לדירת 2 חדרים באזורים מתחדשים', 'EUR 250-400K for a 2-room flat in regenerating districts' ),
+				array( 'תשואת שכירות ברוטו', 'Gross rental yield', 'כ-4%-6% במילאנו; רומא מרכז - תיירותי', '~4-6% in Milan; central Rome - touristic' ),
+				array( 'מס רכישה', 'Purchase tax', '9% מהערך הקדסטרלי (השקעה); 2% דירה ראשונה לתושב', '9% of cadastral value (investment); 2% first home for residents' ),
+				array( 'מס 7% בדרום', 'The 7% southern flat tax', 'לפנסיונרים זרים שעוברים לעיירות עד 20 אלף תושבים בדרום - 7% על כלל ההכנסה מחו"ל ל-10 שנים', 'Foreign pensioners relocating to southern towns under 20K residents - 7% on all foreign income for 10 years' ),
+				array( 'מס על שכירות', 'Tax on rent', 'מסלול שטוח נפוץ של 21% (Cedolare Secca)', 'The common flat 21% track (cedolare secca)' ),
+				array( 'מס רכוש שנתי (IMU)', 'Annual property tax (IMU)', 'כ-0.5%-1.1% מהערך הקדסטרלי, על נכס שאינו דירה ראשונה', '~0.5-1.1% of cadastral value on non-primary homes' ),
+				array( 'בעלות לזרים', 'Foreign ownership', 'חופשית לישראלים (הדדיות)', 'Unrestricted for Israelis (reciprocity)' ),
+				array( 'אזורים מובילים', 'Top districts', 'מילאנו: נולו, ביקוקה, פורטה רומאנה; רומא: מרכז; הדרום: פוליה, סיציליה', 'Milan: NoLo, Bicocca, Porta Romana; Rome: center; South: Puglia, Sicily' ),
+			),
+			'guide' => array(
+				array( 'התהליך האיטלקי: הסכם מוקדם, נוטריון וקדסטר', 'The Italian process: compromesso, notary and cadastre',
+					array(
+						'עסקה איטלקית נחתמת בשני שלבים: הסכם מוקדם (Compromesso) עם מקדמה של 10%-20% שנרשמת, ואז חוזה סופי (Rogito) בפני נוטריון - הדמות המרכזית בעסקה, שבודקת בעלות, שעבודים והתאמה תכנונית. לפני הכל תצטרכו מספר מס איטלקי (Codice Fiscale) - מנפיקים אותו גם בקונסוליה. שימו לב לערך הקדסטרלי: מסי הרכישה מחושבים ממנו ולא מהמחיר בפועל, ולכן המס האפקטיבי נמוך בהרבה מ-9% נומינלי ברוב העסקאות. אי-סדרים תכנוניים נפוצים בבניינים ישנים - עורך דין מטעמכם, נוסף לנוטריון, שווה כל אירו.',
+					),
+					array(
+						'An Italian deal signs in two stages: the preliminary agreement (compromesso) with a registered 10-20% deposit, then the final deed (rogito) before a notary - the central figure, who verifies title, liens and planning compliance. Before anything you need a codice fiscale (Italian tax number) - issuable at a consulate too. Note the cadastral value: purchase taxes compute from it, not the actual price, so effective tax is far below the nominal 9% in most deals. Planning irregularities are common in older buildings - your own lawyer, alongside the notary, is worth every euro.',
+					),
+				),
+				array( 'מילאנו, רומא או הדרום: שלוש אסטרטגיות', 'Milan, Rome or the South: three strategies',
+					array(
+						'מילאנו היא ההשקעה היציבה של איטליה: כלכלה חזקה, ביקוש שכירות עמוק, ואזורים מתחדשים סביב האוניברסיטאות וקווי המטרו החדשים. רומא מרכז - נכס תיירותי בשכירות קצרה (בכפוף לרגולציה המתהדקת). והדרום - פוליה, סיציליה, קלבריה - הוא סיפור אחר: מחירי כניסה נמוכים מאוד, לעיתים עם עלויות שיפוץ שעולות על מחיר הנכס, והטבת ה-7% שהופכת אותו למקלט מס אמיתי לפנסיונרים. אל תערבבו אסטרטגיות: תזרים במילאנו, תיירות ברומא, סגנון חיים ומס בדרום.',
+					),
+					array(
+						'Milan is Italy\'s stable investment: a strong economy, deep rental demand, regenerating districts around the universities and new metro lines. Central Rome - a touristic short-let asset (subject to tightening regulation). And the South - Puglia, Sicily, Calabria - is a different story: very low entry prices, renovation costs sometimes exceeding the asset price, and the 7% benefit that makes it a genuine tax haven for pensioners. Do not mix strategies: cash flow in Milan, tourism in Rome, lifestyle-and-tax in the South.',
+					),
+				),
+				array( 'הסיכונים שאסור להתעלם מהם', 'The risks you must not ignore',
+					array(
+						'איטליה איטית: רישום, היתרים ובתי משפט מתנהלים בקצב משלהם, ופינוי שוכר בעייתי יכול לקחת שנים - סננו שוכרים בקפדנות והעדיפו חוזה רשום במסלול הנכון. בדקו התחייבויות ועד בית ועבודות מאושרות בבניין (אתם יורשים החלטות שקדמו לכם), מצב סייסמי בדרום, ותכנון מס ישראלי לפי אמנת המס. נכסי "אירו אחד" ודומיהם הם פרויקט שיפוץ עם מחויבויות - לא השקעה פסיבית. הנתונים להמחשה בלבד.',
+					),
+					array(
+						'Italy is slow: registration, permits and courts run at their own pace, and evicting a problematic tenant can take years - screen tenants rigorously and prefer a properly registered lease. Check condominium obligations and approved building works (you inherit decisions made before you), seismic status in the South, and Israeli tax planning under the treaty. "One euro" homes and their cousins are renovation projects with obligations - not passive investments. Figures for illustration only.',
+					),
+				),
+			),
+			'faq' => array(
+				array( 'כמה מס רכישה משלמים בפועל?', 'How much purchase tax in practice?', 'השקעה ממוסה ב-9% מהערך הקדסטרלי - שנמוך בדרך כלל משמעותית ממחיר השוק, כך שהמס האפקטיבי על המחיר הוא לרוב 2%-4%. בנכס חדש מיזם: מע"מ 10% מהמחיר במקום.', 'Investments pay 9% of cadastral value - usually far below market price, so effective tax on price is typically 2-4%. New from a developer: 10% VAT on price instead.' ),
+				array( 'מה באמת נותן מס ה-7% בדרום?', 'What does the 7% southern tax really give?', 'פנסיונר זר שמעביר את מושבו לעיירה דרומית של עד 20 אלף תושבים משלם 7% שטוחים על כלל הכנסותיו מחו"ל (כולל פנסיה ושכירות מנכסים בחו"ל) למשך 10 שנים. דורש מעבר מגורים אמיתי.', 'A foreign pensioner relocating residence to a southern town under 20K residents pays a flat 7% on all foreign income (pension and foreign rents included) for 10 years. Requires a genuine move.' ),
+				array( 'קל לפנות שוכר באיטליה?', 'Is evicting a tenant easy in Italy?', 'לא. ההליך יכול להימשך זמן רב, במיוחד בחורף ובדירות מגורים. לכן: סינון קפדני, ערבויות, חוזה רשום במסלול הנכון, וביטוח שכירות - לפני החתימה, לא אחריה.', 'No. Proceedings can run long, especially in winter and residential lets. Hence: rigorous screening, guarantees, a properly registered lease and rent insurance - before signing, not after.' ),
+			),
+			'src_he' => 'נתוני שוק: יולי 2026, מקורות פומביים (Agenzia delle Entrate, Immobiliare.it, Idealista). אומדנים להמחשה בלבד - לא ייעוץ השקעות, מס או משפט.',
+			'src_en' => 'Market data: July 2026, public sources (Agenzia delle Entrate, Immobiliare.it, Idealista). Estimates for illustration only - not investment, tax or legal advice.',
+		),
+
 		);
 		return apply_filters( 'nadlan_gw_worlds', $W );
 	}
@@ -283,6 +507,14 @@ if ( ! function_exists( 'nadlan_gw_metabox_render' ) ) {
 			<p><label style="font-weight:600">הערת תשואה (עם תווית הגינות)</label><br><input type="text" name="gw_yield" value="<?php echo $m( 'gw_yield' ); ?>" style="width:100%"></p>
 			<p><label style="font-weight:600">תיאור EN (פסקה)</label><br><textarea name="gw_about_en" style="width:100%;min-height:70px"><?php echo esc_textarea( (string) get_post_meta( $post->ID, 'gw_about_en', true ) ); ?></textarea></p>
 			<p><label style="font-weight:600">כתובת GLB (ריק = המגדל הסטנדרטי)</label><br><input type="url" name="gw_glb" value="<?php echo $m( 'gw_glb' ); ?>" style="width:100%" dir="ltr"></p>
+			<p><label style="font-weight:600">תוכנית תשלומים</label><br><input type="text" name="gw_payment" value="<?php echo $m( 'gw_payment' ); ?>" style="width:100%" placeholder="60/40 לאורך הבנייה"></p>
+			<p><label style="font-weight:600">דמי ניהול / אחזקה</label><br><input type="text" name="gw_fees" value="<?php echo $m( 'gw_fees' ); ?>" style="width:100%"></p>
+			<p><label style="font-weight:600">מתקנים וסביבה (שורה לכל פריט: עברית | English)</label><br><textarea name="gw_facilities" style="width:100%;min-height:80px" placeholder="בריכת אינפיניטי | Infinity pool"><?php
+				$fac = json_decode( (string) get_post_meta( $post->ID, 'gw_facilities', true ), true );
+				if ( is_array( $fac ) ) { foreach ( $fac as $f ) { echo esc_textarea( $f[0] . ' | ' . $f[1] ) . "\n"; } }
+			?></textarea></p>
+			<p><label style="font-weight:600">מלאי דירות (JSON; נזרע אוטומטית בפרויקט המחשה)</label><br><textarea name="gw_apartments" style="width:100%;min-height:80px" dir="ltr"><?php echo esc_textarea( (string) get_post_meta( $post->ID, 'gw_apartments', true ) ); ?></textarea>
+			<span style="color:#666;font-size:12px">מערך של יחידות: {"id","floor","pos","dir","rooms","sqm","price","status","view_he","view_en"}. status: available/reserved/sold.</span></p>
 			<p><label><input type="checkbox" name="gw_demo" value="1" <?php checked( get_post_meta( $post->ID, 'gw_demo', true ), '1' ); ?>> פרויקט להמחשה (מציג את תג ההגינות)</label></p>
 		</div>
 		<?php
@@ -296,8 +528,20 @@ add_action( 'save_post_nadlan_intl', function ( $post_id ) {
 	if ( ! current_user_can( 'edit_post', $post_id ) ) { return; }
 	$world = isset( $_POST['gw_world'] ) ? sanitize_key( wp_unslash( $_POST['gw_world'] ) ) : '';
 	update_post_meta( $post_id, 'gw_world', array_key_exists( $world, nadlan_gw_worlds() ) ? $world : '' );
-	foreach ( array( 'gw_district', 'gw_district_en', 'gw_price_from', 'gw_delivery', 'gw_yield' ) as $k ) {
+	foreach ( array( 'gw_district', 'gw_district_en', 'gw_price_from', 'gw_delivery', 'gw_yield', 'gw_payment', 'gw_fees' ) as $k ) {
 		update_post_meta( $post_id, $k, isset( $_POST[ $k ] ) ? sanitize_text_field( wp_unslash( $_POST[ $k ] ) ) : '' );
+	}
+	if ( isset( $_POST['gw_facilities'] ) ) {
+		$fac = array();
+		foreach ( explode( "\n", sanitize_textarea_field( wp_unslash( $_POST['gw_facilities'] ) ) ) as $line ) {
+			$parts = array_map( 'trim', explode( '|', $line, 2 ) );
+			if ( '' !== $parts[0] ) { $fac[] = array( $parts[0], isset( $parts[1] ) && '' !== $parts[1] ? $parts[1] : $parts[0] ); }
+		}
+		update_post_meta( $post_id, 'gw_facilities', wp_json_encode( array_slice( $fac, 0, 24 ), JSON_UNESCAPED_UNICODE ) );
+	}
+	if ( isset( $_POST['gw_apartments'] ) ) {
+		$apts = json_decode( (string) wp_unslash( $_POST['gw_apartments'] ), true );
+		update_post_meta( $post_id, 'gw_apartments', is_array( $apts ) ? wp_json_encode( nadlan_gw_clean_apartments( $apts ), JSON_UNESCAPED_UNICODE ) : '' );
 	}
 	foreach ( array( 'gw_lat', 'gw_lng' ) as $k ) {
 		$v = isset( $_POST[ $k ] ) ? trim( sanitize_text_field( wp_unslash( $_POST[ $k ] ) ) ) : '';
@@ -321,6 +565,29 @@ add_action( 'init', function () {
 	}
 } );
 add_filter( 'query_vars', function ( $v ) { $v[] = 'nadlan_gw_hub'; $v[] = 'nadlan_gw_world'; return $v; } );
+
+if ( ! function_exists( 'nadlan_gw_clean_apartments' ) ) {
+	function nadlan_gw_clean_apartments( $raw ) {
+		if ( ! is_array( $raw ) ) { return array(); }
+		$out = array();
+		foreach ( array_slice( $raw, 0, 60 ) as $a ) {
+			if ( ! is_array( $a ) ) { continue; }
+			$out[] = array(
+				'id'      => sanitize_key( (string) ( $a['id'] ?? '' ) ),
+				'floor'   => max( 0, (int) ( $a['floor'] ?? 0 ) ),
+				'pos'     => max( 0, min( 2, (int) ( $a['pos'] ?? 0 ) ) ),
+				'dir'     => in_array( ( $a['dir'] ?? '' ), array( 'west', 'east', 'north', 'south' ), true ) ? $a['dir'] : 'west',
+				'rooms'   => max( 1, min( 6, (int) ( $a['rooms'] ?? 1 ) ) ),
+				'sqm'     => max( 0, (int) ( $a['sqm'] ?? 0 ) ),
+				'price'   => max( 0, (float) ( $a['price'] ?? 0 ) ),
+				'status'  => in_array( ( $a['status'] ?? '' ), array( 'available', 'reserved', 'sold' ), true ) ? $a['status'] : 'available',
+				'view_he' => sanitize_text_field( (string) ( $a['view_he'] ?? '' ) ),
+				'view_en' => sanitize_text_field( (string) ( $a['view_en'] ?? '' ) ),
+			);
+		}
+		return $out;
+	}
+}
 
 if ( ! function_exists( 'nadlan_gw_projects_for' ) ) {
 	function nadlan_gw_projects_for( $code ) {
@@ -686,17 +953,110 @@ add_filter( 'the_content', function ( $content ) {
 			<?php if ( $units ) : ?><div class="cell"><i><?php echo $L( 'יח״ד', 'Units' ); ?></i><b><?php echo (int) $units; ?></b></div><?php endif; ?>
 			<?php if ( $delivery ) : ?><div class="cell"><i><?php echo $L( 'מסירה', 'Delivery' ); ?></i><b><?php echo esc_html( $delivery ); ?></b></div><?php endif; ?>
 			<?php if ( $yield_n ) : ?><div class="cell"><i><?php echo $L( 'הערת תשואה', 'Yield note' ); ?></i><b><?php echo esc_html( $yield_n ); ?></b></div><?php endif; ?>
+			<?php $pay = (string) get_post_meta( $id, 'gw_payment', true ); if ( $pay ) : ?><div class="cell"><i><?php echo $L( 'תוכנית תשלומים', 'Payment plan' ); ?></i><b><?php echo esc_html( $pay ); ?></b></div><?php endif; ?>
+			<?php $fee = (string) get_post_meta( $id, 'gw_fees', true ); if ( $fee ) : ?><div class="cell"><i><?php echo $L( 'דמי ניהול', 'Service charges' ); ?></i><b><?php echo esc_html( $fee ); ?></b></div><?php endif; ?>
 		</div>
 	</div>
 
-	<?php if ( $glb ) : ?>
-	<div style="position:relative;height:52vh;min-height:380px;max-height:560px;border-radius:18px;overflow:hidden;background:radial-gradient(ellipse at 50% 30%,#26221733 0%,transparent 65%),#14130F;border:1px solid #2A251B;margin:18px 0">
-		<model-viewer src="<?php echo esc_url( $glb ); ?>" camera-controls disable-zoom auto-rotate rotation-per-second="9deg"
+	<?php
+	$apts = nadlan_gw_clean_apartments( json_decode( (string) get_post_meta( $id, 'gw_apartments', true ), true ) );
+	if ( $glb ) :
+		// hotspot geometry for flagship-tower.glb [118 x 154.5 x 104.7]
+		$tw_h = 150.0; $tw_hx = 50.0; $tw_hz = 42.0;
+		$fh = $floors > 0 ? min( 3.4, ( $tw_h * 0.88 ) / max( 1, $floors ) ) : 3.05;
+		$dirv = array( 'west' => array( -$tw_hx, 0 ), 'east' => array( $tw_hx, 0 ), 'north' => array( 0, $tw_hz ), 'south' => array( 0, -$tw_hz ) );
+		$st_lbl = array( 'available' => $L( 'זמינה', 'Available' ), 'reserved' => $L( 'שמורה', 'Reserved' ), 'sold' => $L( 'נמכרה', 'Sold' ) );
+	?>
+	<?php if ( $apts ) : ?>
+	<h2 style="font-family:'Frank Ruhl Libre',serif;font-size:1.35rem;margin:26px 0 4px"><?php echo $L( 'בחרו דירה מתוך הבניין', 'Choose your apartment from inside the building' ); ?></h2>
+	<p style="font:400 13px/1.6 Heebo;color:#8E877A;margin:0 0 10px"><?php echo $L( 'לחצו על נקודה במגדל או סננו לפי קומה. מלאי ומחירים להמחשה.', 'Tap a dot on the tower or filter by floor. Inventory and prices are illustrative.' ); ?></p>
+	<div id="nlgw-floors" style="display:flex;gap:8px;flex-wrap:wrap;margin:0 0 10px"></div>
+	<?php endif; ?>
+	<div style="position:relative;height:56vh;min-height:420px;max-height:620px;border-radius:18px;overflow:hidden;background:radial-gradient(ellipse at 50% 30%,#26221733 0%,transparent 65%),#14130F;border:1px solid #2A251B;margin:0 0 14px">
+		<model-viewer id="nlgw-mv" src="<?php echo esc_url( $glb ); ?>" camera-controls disable-zoom <?php echo $apts ? '' : 'auto-rotate rotation-per-second="9deg"'; ?>
 			style="width:100%;height:100%;direction:ltr;background:transparent;touch-action:pan-y"
-			camera-orbit="-25deg 76deg 130m" exposure="0.95" shadow-intensity="0.6"></model-viewer>
+			camera-orbit="-25deg 76deg 170m" min-camera-orbit="auto auto 90m" max-camera-orbit="auto auto 260m" exposure="0.95" shadow-intensity="0.6">
+			<?php $hi = 0; foreach ( $apts as $a ) :
+				$v = $dirv[ $a['dir'] ];
+				$perp = ( 0 === $v[0] ) ? array( 1, 0 ) : array( 0, 1 );
+				$off = ( $a['pos'] - 1 ) * 13;
+				$x = $v[0] + $perp[0] * $off;
+				$z = $v[1] + $perp[1] * $off;
+				$y = $a['floor'] * $fh + $fh * 0.5;
+				$hi++; ?>
+			<button class="nlgw-hot nlgw-hot--<?php echo esc_attr( $a['status'] ); ?>" slot="hotspot-<?php echo (int) $hi; ?>"
+				data-position="<?php echo esc_attr( round( $x, 1 ) . ' ' . round( $y, 1 ) . ' ' . round( $z, 1 ) ); ?>"
+				data-normal="<?php echo esc_attr( ( 0 === $v[1] ? ( $v[0] > 0 ? '1 0 0' : '-1 0 0' ) : ( $v[1] > 0 ? '0 0 1' : '0 0 -1' ) ) ); ?>"
+				data-visibility-attribute="visible" data-floor="<?php echo (int) $a['floor']; ?>"
+				data-apt="<?php echo esc_attr( wp_json_encode( $a, JSON_UNESCAPED_UNICODE ) ); ?>"><?php echo (int) $a['rooms']; ?></button>
+			<?php endforeach; ?>
+		</model-viewer>
 		<p style="position:absolute;bottom:10px;inset-inline-start:14px;color:#CDC5B4;font:600 11.5px Heebo;margin:0;text-shadow:0 1px 3px rgba(0,0,0,.6)"><?php echo $L( 'הדמיה עקרונית להמחשת הבניין - לא המבנה הסופי', 'A conceptual model for illustration - not the final building' ); ?></p>
+		<?php if ( $apts ) : ?>
+		<div style="position:absolute;top:12px;inset-inline-start:14px;display:flex;gap:10px;font:600 11px Heebo;color:#E9E2D2;text-shadow:0 1px 3px rgba(0,0,0,.7)">
+			<span><i style="display:inline-block;width:10px;height:10px;border-radius:50%;background:#E9D9A8;margin-inline-end:4px"></i><?php echo esc_html( $st_lbl['available'] ); ?></span>
+			<span><i style="display:inline-block;width:10px;height:10px;border-radius:50%;background:#A79E8D;margin-inline-end:4px"></i><?php echo esc_html( $st_lbl['reserved'] ); ?></span>
+			<span><i style="display:inline-block;width:10px;height:10px;border-radius:50%;background:#51483A;margin-inline-end:4px"></i><?php echo esc_html( $st_lbl['sold'] ); ?></span>
+		</div>
+		<?php endif; ?>
 	</div>
+	<style>
+	.nlgw-hot{width:26px;height:26px;border-radius:50%;border:2px solid #FAF7F1;color:#14130F;font:800 11px Heebo;cursor:pointer;box-shadow:0 2px 8px rgba(0,0,0,.5)}
+	.nlgw-hot--available{background:#E9D9A8}
+	.nlgw-hot--reserved{background:#A79E8D;color:#FAF7F1}
+	.nlgw-hot--sold{background:#51483A;color:#A79E8D}
+	.nlgw-hot[hidden]{display:none}
+	.nlgw-fl{border:1px solid #E2DCD0;border-radius:999px;padding:8px 14px;font:600 12.5px Heebo;color:#51483A;background:#fff;cursor:pointer}
+	.nlgw-fl.is-on{background:#1B1A17;color:#FAF7F1;border-color:#1B1A17}
+	#nlgw-apt-panel{display:none;background:#fff;border:1.5px solid #D6C189;border-radius:16px;padding:20px;margin:0 0 18px}
+	#nlgw-apt-panel.is-open{display:block}
+	#nlgw-apt-panel h3{font-family:"Frank Ruhl Libre",serif;margin:0 0 8px}
+	#nlgw-apt-panel .row{display:flex;gap:16px;flex-wrap:wrap;font:400 13.5px Heebo;color:#51483A;margin:0 0 12px}
+	#nlgw-apt-panel .row b{color:#1B1A17}
+	#nlgw-apt-panel .acts a{display:inline-block;border-radius:12px;padding:11px 18px;font:700 13.5px Heebo;text-decoration:none;margin-inline-end:8px}
+	#nlgw-apt-panel .acts .a1{background:#C2563A;color:#FAF7F1}
+	#nlgw-apt-panel .acts .a2{border:1.5px solid #9C7A3C;color:#9C7A3C;background:#fff}
+	</style>
+	<div id="nlgw-apt-panel"></div>
+	<?php if ( $apts ) : ?>
+	<script>
+	(function(){
+		var mv=document.getElementById("nlgw-mv"),panel=document.getElementById("nlgw-apt-panel"),flbar=document.getElementById("nlgw-floors");
+		var EN=<?php echo $en ? 'true' : 'false'; ?>;
+		var T={fl:EN?"Floor":"קומה",all:EN?"All floors":"כל הקומות",rooms:EN?"rooms":"חדרים",sqm:EN?"sqm":'מ"ר',view:EN?"View":"נוף",price:EN?"Illustrative price":"מחיר להמחשה",st:{available:EN?"Available":"זמינה",reserved:EN?"Reserved":"שמורה",sold:EN?"Sold":"נמכרה"},design:EN?"Design this apartment":"לעצב את הדירה בסטודיו",ask:EN?"Ask about this apartment":"רוצה פרטים על הדירה",cur:<?php echo wp_json_encode( $w ? $w['currency'] : '' ); ?>};
+		var hots=[].slice.call(mv.querySelectorAll(".nlgw-hot"));
+		var floors=[];hots.forEach(function(h){var f=parseInt(h.dataset.floor,10);if(floors.indexOf(f)<0)floors.push(f)});floors.sort(function(a,b){return a-b});
+		function chip(label,f){var b=document.createElement("button");b.type="button";b.className="nlgw-fl"+(f===null?" is-on":"");b.textContent=label;
+			b.addEventListener("click",function(){flbar.querySelectorAll(".nlgw-fl").forEach(function(x){x.classList.remove("is-on")});b.classList.add("is-on");
+				hots.forEach(function(h){h.hidden=(f!==null&&parseInt(h.dataset.floor,10)!==f)});});
+			flbar.appendChild(b);}
+		chip(T.all,null);floors.forEach(function(f){chip(T.fl+" "+f,f)});
+		hots.forEach(function(h){h.addEventListener("click",function(){
+			var a={};try{a=JSON.parse(h.dataset.apt)}catch(e){return}
+			var view=EN?(a.view_en||a.view_he):(a.view_he||"");
+			panel.innerHTML="<h3>"+(EN?"Apartment ":"דירה ")+a.id.toUpperCase()+" · "+T.fl+" "+a.floor+" <span style='font:700 12px Heebo;color:"+(a.status==="available"?"#517048":a.status==="reserved"?"#9C7A3C":"#C2563A")+"'>"+T.st[a.status]+"</span></h3>"
+				+"<div class='row'><span><b>"+a.rooms+"</b> "+T.rooms+"</span><span><b>"+a.sqm+"</b> "+T.sqm+"</span>"+(view?"<span>"+T.view+": <b>"+view+"</b></span>":"")
+				+(a.price?"<span>"+T.price+": <b style='color:#C2563A'>"+Number(a.price).toLocaleString()+" "+T.cur+"</b></span>":"")+"</div>"
+				+"<div class='acts'><a class='a1' href='#nlgw-lead-form'>"+T.ask+"</a><a class='a2' href='<?php echo esc_url( home_url( '/studio/' ) ); ?>'>"+T.design+"</a></div>";
+			panel.classList.add("is-open");
+			panel.scrollIntoView({behavior:"smooth",block:"nearest"});
+			var nameInput=document.querySelector("#nlgw-lead-form input[name=name]");
+			var noteHolder=document.getElementById("nlgw-lead-form");
+			if(noteHolder){noteHolder.dataset.apt=a.id;}
+		});});
+	})();
+	</script>
+	<?php endif; ?>
 	<script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.5.0/model-viewer.min.js"></script>
+	<?php endif; ?>
+
+	<?php
+	$fac = json_decode( (string) get_post_meta( $id, 'gw_facilities', true ), true );
+	if ( is_array( $fac ) && $fac ) : ?>
+	<h2 style="font-family:'Frank Ruhl Libre',serif;font-size:1.25rem;margin:20px 0 8px"><?php echo $L( 'מתקנים ומה שמסביב', 'Facilities and what is around' ); ?></h2>
+	<div style="display:flex;gap:8px;flex-wrap:wrap;margin:0 0 18px">
+		<?php foreach ( $fac as $f ) : ?><span style="background:#F3EEE3;border:1px solid #E2DCD0;border-radius:999px;padding:8px 14px;font:600 12.5px Heebo;color:#51483A"><?php echo esc_html( $en ? $f[1] : $f[0] ); ?></span><?php endforeach; ?>
+	</div>
 	<?php endif; ?>
 
 	<?php if ( $en && $about_en ) : ?><p style="font:400 15px/1.85 Heebo;color:#37322A;max-width:760px"><?php echo esc_html( $about_en ); ?></p><?php endif; ?>
@@ -791,16 +1151,91 @@ add_action( 'rest_api_init', function () {
 					'about' => 'מגדל קונדו בדאונטאון ברוקלין, אזור שהפך למרכז מגורים צעיר ותוסס: דירות 1-3 חדרים, בריכה בקומה גבוהה ונוף למנהטן. גישה לשמונה קווי רכבת תחתית. מבוסס על פרופיל פרויקטים אמיתיים באזור; להמחשה.',
 					'about_en' => 'A condo tower in Downtown Brooklyn, now a young and vibrant residential hub: 1-3 bedroom homes, a high-floor pool and Manhattan views. Access to eight subway lines. Based on real project profiles in the district; for illustration.' ),
 			);
+			$rows = array_merge( $rows, array(
+				array( 'slug' => 'canary-riverside-heights-london', 'title' => 'קנרי ריברסייד הייטס - לונדון', 'world' => 'london', 'district' => 'קנרי וורף', 'district_en' => 'Canary Wharf', 'lat' => 51.5054, 'lng' => -0.0235, 'price' => '585000', 'units' => 240, 'floors' => 40, 'delivery' => '2027', 'yield' => 'אומדן ברוטו 4.5%-5.5% (ממוצע אזורי, לא הבטחה)', 'payment' => '10% בחתימה, 10% אחרי שנה, יתרה במסירה', 'fees' => 'כ-5 ליש"ט לרגל לשנה',
+					'about' => 'מגדל מגורים על קו המים בקנרי וורף, רובע הפיננסים המזרחי של לונדון: דירות 1-3 חדרי שינה עם נוף לנהר ולסקייליין, חדר כושר, לאונג\' דיירים וקומת עבודה משותפת. ליסהולד 999 שנה, דמי קרקע אפס. מבוסס על פרופיל פרויקטים אמיתיים באזור; להמחשה.',
+					'about_en' => 'A waterline residential tower in Canary Wharf, London\'s eastern financial district: 1-3 bed apartments with river and skyline views, gym, residents lounge and a co-working floor. 999-year lease, zero ground rent. Based on real project profiles in the district; for illustration.',
+					'fac' => array( array( 'לאונג\' דיירים', 'Residents lounge' ), array( 'חדר כושר', 'Gym' ), array( 'קומת עבודה משותפת', 'Co-working floor' ), array( 'שומר 24/7', '24/7 concierge' ), array( 'תחנת Jubilee במרחק 6 דקות', 'Jubilee line 6 min away' ), array( 'טיילת נהר', 'River promenade' ) ) ),
+				array( 'slug' => 'stratford-park-gate-london', 'title' => 'סטרטפורד פארק גייט - לונדון', 'world' => 'london', 'district' => 'סטרטפורד', 'district_en' => 'Stratford', 'lat' => 51.5416, 'lng' => -0.0042, 'price' => '495000', 'units' => 320, 'floors' => 30, 'delivery' => '2028', 'yield' => 'אומדן ברוטו 5%-5.5% (אזור התחדשות, לא הבטחה)', 'payment' => '10% בחתימה, יתרה במסירה', 'fees' => 'כ-4 ליש"ט לרגל לשנה',
+					'about' => 'פרויקט מגורים מול הפארק האולימפי בסטרטפורד, מוקד ההתחדשות הגדול של מזרח לונדון: דירות 1-2 חדרי שינה במחירי הכניסה הנוחים בעיר, תחבורה מכל הכיוונים (Elizabeth Line, Jubilee, Overground) וקמפוסים של אוניברסיטאות בהליכה. מבוסס על פרופיל פרויקטים אמיתיים באזור; להמחשה.',
+					'about_en' => 'A residential scheme facing the Olympic Park in Stratford, East London\'s biggest regeneration hub: 1-2 beds at the city\'s friendliest entry prices, transport in every direction (Elizabeth Line, Jubilee, Overground) and university campuses on foot. Based on real project profiles in the district; for illustration.',
+					'fac' => array( array( 'מול הפארק האולימפי', 'Facing the Olympic Park' ), array( 'Elizabeth Line בהליכה', 'Elizabeth Line on foot' ), array( 'גינת גג', 'Roof garden' ), array( 'חדר כושר', 'Gym' ), array( 'קניון Westfield צמוד', 'Westfield mall adjacent' ) ) ),
+				array( 'slug' => 'koukaki-athens-residence', 'title' => 'רזידנס קוקאקי - אתונה', 'world' => 'greece', 'district' => 'קוקאקי, אתונה', 'district_en' => 'Koukaki, Athens', 'lat' => 37.9634, 'lng' => 23.7239, 'price' => '295000', 'units' => 36, 'floors' => 7, 'delivery' => '2027', 'yield' => 'אומדן ברוטו 4.5%-6% (מרכז אתונה, לא הבטחה)', 'payment' => '30% בחתימה, יתרה באבני דרך', 'fees' => 'דמי בניין נמוכים יחסית',
+					'about' => 'בניין בוטיק בשכונת קוקאקי שלרגלי האקרופוליס - השכונה המבוקשת ביותר באתונה לשכירות תיירותית ולצעירים: דירות 1-3 חדרים עם מרפסות, גג משותף עם נוף לאקרופוליס, והליכה לתחנת מטרו. מתאים גם למסלול ויזת זהב בצירוף נכס נוסף. מבוסס על פרופיל פרויקטים אמיתיים באזור; להמחשה.',
+					'about_en' => 'A boutique building in Koukaki at the foot of the Acropolis - Athens\' most sought-after neighborhood for tourist lets and young renters: 1-3 room flats with balconies, a shared rooftop with Acropolis views, and a metro stop on foot. Golden-visa compatible combined with an additional asset. Based on real project profiles in the district; for illustration.',
+					'fac' => array( array( 'גג משותף עם נוף לאקרופוליס', 'Rooftop with Acropolis view' ), array( 'מטרו בהליכה', 'Metro on foot' ), array( 'מרפסות לכל דירה', 'Balconies throughout' ), array( 'שכונת הקפה של אתונה', 'Athens\' cafe quarter' ) ) ),
+				array( 'slug' => 'glyfada-coast-suites-athens', 'title' => 'גליפדה קוסט סוויטס - אתונה', 'world' => 'greece', 'district' => 'גליפדה, הריביירה האתונאית', 'district_en' => 'Glyfada, Athens Riviera', 'lat' => 37.8622, 'lng' => 23.7544, 'price' => '520000', 'units' => 48, 'floors' => 6, 'delivery' => '2027', 'yield' => 'אומדן ברוטו 4%-5.5%; שכירות קצרה עונתית גבוהה יותר (לא הבטחה)', 'payment' => '30/70 לאורך הבנייה', 'fees' => 'דמי בניין + אחזקת בריכה',
+					'about' => 'פרויקט יוקרה בגליפדה שעל הריביירה האתונאית, 300 מטר מהחוף: דירות 2-4 חדרים עם מרפסות שמש עמוקות, בריכה משותפת וחניון. האזור המועדף על משפחות ישראליות ומשקיעי ויזת זהב. מבוסס על פרופיל פרויקטים אמיתיים באזור; להמחשה.',
+					'about_en' => 'A premium scheme in Glyfada on the Athens Riviera, 300 meters from the beach: 2-4 room homes with deep sun balconies, a shared pool and parking. The area of choice for Israeli families and golden-visa investors. Based on real project profiles in the district; for illustration.',
+					'fac' => array( array( 'חוף במרחק 300 מטר', 'Beach 300m away' ), array( 'בריכה משותפת', 'Shared pool' ), array( 'חניון תת קרקעי', 'Underground parking' ), array( 'מרינה וטיילת', 'Marina and promenade' ), array( 'בתי ספר בינלאומיים', 'International schools' ) ) ),
+				array( 'slug' => 'sukhumvit-sky-residence-bangkok', 'title' => 'סוקומווית סקיי רזידנס - בנגקוק', 'world' => 'thailand', 'district' => 'סוקומווית, בנגקוק', 'district_en' => 'Sukhumvit, Bangkok', 'lat' => 13.7308, 'lng' => 100.5697, 'price' => '4900000', 'units' => 420, 'floors' => 45, 'delivery' => '2027', 'yield' => 'אומדן ברוטו 5%-6.5% (מרכז בנגקוק, לא הבטחה)', 'payment' => '25% לאורך הבנייה, 75% במסירה', 'fees' => 'כ-60-80 באט למ"ר לחודש',
+					'about' => 'מגדל קונדו על ציר סוקומווית, במרחק הליכה מתחנת BTS: סטודיו ודירות 1-2 חדרים, בריכת אינפיניטי בקומה 40, סקיי לאונג\' וחדר כושר. במכסת הזרים - רישום Freehold מלא על שם הקונה. מבוסס על פרופיל פרויקטים אמיתיים באזור; להמחשה.',
+					'about_en' => 'A condo tower on the Sukhumvit corridor, walking distance to a BTS station: studios and 1-2 bed units, a 40th-floor infinity pool, sky lounge and gym. Within the foreign quota - full freehold registration in the buyer\'s name. Based on real project profiles in the district; for illustration.',
+					'fac' => array( array( 'בריכת אינפיניטי בקומה 40', '40th floor infinity pool' ), array( 'תחנת BTS בהליכה', 'BTS station on foot' ), array( 'סקיי לאונג\'', 'Sky lounge' ), array( 'חדר כושר', 'Gym' ), array( 'שומר 24/7', '24/7 security' ) ) ),
+				array( 'slug' => 'bang-tao-garden-villas-phuket', 'title' => 'באנג טאו גארדן קונדוס - פוקט', 'world' => 'thailand', 'district' => 'באנג טאו, פוקט', 'district_en' => 'Bang Tao, Phuket', 'lat' => 7.9936, 'lng' => 98.2933, 'price' => '3600000', 'units' => 96, 'floors' => 7, 'delivery' => '2027', 'yield' => 'תוכנית ניהול מלונאי; תשואה עונתית - קראו את החוזה (לא הבטחה)', 'payment' => '30/70 לאורך הבנייה', 'fees' => 'דמי ניהול מלונאי לפי חוזה',
+					'about' => 'קומפלקס קונדו נמוך בשכונת באנג טאו שבחוף המערבי של פוקט, 700 מטר מהים: דירות סטודיו עד 2 חדרים סביב בריכות שחייה, בניהול מלונאי עם תוכנית השכרה. Freehold במכסת הזרים. מבוסס על פרופיל פרויקטים אמיתיים באזור; להמחשה.',
+					'about_en' => 'A low-rise condo complex in Bang Tao on Phuket\'s west coast, 700m from the sea: studio to 2-bed units around swimming pools, hotel-managed with a rental program. Freehold within the foreign quota. Based on real project profiles in the district; for illustration.',
+					'fac' => array( array( 'חוף באנג טאו 700 מטר', 'Bang Tao beach 700m' ), array( 'שלוש בריכות', 'Three pools' ), array( 'ניהול מלונאי', 'Hotel management' ), array( 'מסעדות וביץ\' קלאבים', 'Restaurants and beach clubs' ) ) ),
+				array( 'slug' => 'nolo-district-residence-milan', 'title' => 'נולו דיסטריקט רזידנס - מילאנו', 'world' => 'italy', 'district' => 'נולו, מילאנו', 'district_en' => 'NoLo, Milan', 'lat' => 45.4949, 'lng' => 9.2183, 'price' => '310000', 'units' => 58, 'floors' => 9, 'delivery' => '2027', 'yield' => 'אומדן ברוטו 4.5%-6% (אזור מתחדש, לא הבטחה)', 'payment' => 'הסכם מוקדם 15%, יתרה ברוגיטו', 'fees' => 'ועד בית כ-1,500-2,500 אירו לשנה',
+					'about' => 'פרויקט מגורים בשכונת נולו המתחדשת של מילאנו, האזור שהפך למוקד הצעירים והסטודיו: דירות 1-3 חדרים עם מרפסות, חצר פנימית ירוקה וחניית אופניים, ליד מטרו קו 1. ביקוש שכירות חזק מסטודנטים ואנשי הייטק. מבוסס על פרופיל פרויקטים אמיתיים באזור; להמחשה.',
+					'about_en' => 'A residential scheme in Milan\'s regenerating NoLo district, the new hub for young renters and studios: 1-3 room flats with balconies, a green inner courtyard and bike parking, near Metro line 1. Strong tenant demand from students and tech workers. Based on real project profiles in the district; for illustration.',
+					'fac' => array( array( 'מטרו קו 1 בהליכה', 'Metro line 1 on foot' ), array( 'חצר פנימית ירוקה', 'Green inner courtyard' ), array( 'חניית אופניים', 'Bike parking' ), array( 'שכונת הגלריות והקפה', 'The gallery-and-cafe quarter' ) ) ),
+				array( 'slug' => 'porta-romana-garden-milan', 'title' => 'פורטה רומאנה גארדן - מילאנו', 'world' => 'italy', 'district' => 'פורטה רומאנה, מילאנו', 'district_en' => 'Porta Romana, Milan', 'lat' => 45.4494, 'lng' => 9.2042, 'price' => '440000', 'units' => 72, 'floors' => 11, 'delivery' => '2028', 'yield' => 'אומדן ברוטו 4%-5% (אזור הכפר האולימפי, לא הבטחה)', 'payment' => 'הסכם מוקדם 20%, יתרה ברוגיטו', 'fees' => 'ועד בית כ-2,000-3,000 אירו לשנה',
+					'about' => 'פרויקט חדש ליד מתחם הכפר האולימפי של פורטה רומאנה - פרויקט ההתחדשות הגדול של דרום מילאנו: דירות 2-3 חדרים עם לוג\'יות, גינה משותפת וקומת מסחר. אזור שמושך השקעות ענק לקראת העשור הקרוב. מבוסס על פרופיל פרויקטים אמיתיים באזור; להמחשה.',
+					'about_en' => 'A new scheme near the Porta Romana Olympic Village compound - southern Milan\'s biggest regeneration play: 2-3 room homes with loggias, a shared garden and a retail floor. A district drawing massive investment into the coming decade. Based on real project profiles in the district; for illustration.',
+					'fac' => array( array( 'מתחם הכפר האולימפי', 'The Olympic Village compound' ), array( 'גינה משותפת', 'Shared garden' ), array( 'לוג\'יות שמש', 'Sun loggias' ), array( 'קומת מסחר', 'Retail floor' ), array( 'מטרו קו 3', 'Metro line 3' ) ) ),
+			) );
+			// generated inventory: honest, price-scaled apartments per project
+			$gen_apts = function ( $r ) {
+				$floors = (int) $r['floors'];
+				$base = (float) $r['price'];
+				$views = array(
+					'west' => array( 'he' => 'מערב', 'en' => 'West' ), 'east' => array( 'he' => 'מזרח', 'en' => 'East' ),
+					'north' => array( 'he' => 'צפון', 'en' => 'North' ), 'south' => array( 'he' => 'דרום', 'en' => 'South' ),
+				);
+				$dirs = array( 'west', 'south', 'east', 'north' );
+				$steps = max( 4, min( 6, (int) floor( $floors / 4 ) ) );
+				$apts = array();
+				$i = 0;
+				for ( $s = 1; $s <= $steps; $s++ ) {
+					$floor = max( 2, (int) round( $floors * $s / ( $steps + 1 ) ) );
+					for ( $u = 0; $u < 2; $u++ ) {
+						$i++;
+						$rooms = 1 + ( ( $s + $u ) % 3 );
+						$sqm = 48 + $rooms * 26 + ( $u * 6 );
+						$price = round( $base * ( 1 + 0.22 * ( $rooms - 1 ) + 0.005 * $floor ), -3 );
+						$status = ( 0 === $i % 5 ) ? 'sold' : ( ( 0 === $i % 3 ) ? 'reserved' : 'available' );
+						$dir = $dirs[ ( $s + $u ) % 4 ];
+						$apts[] = array(
+							'id' => 'u' . $floor . chr( 97 + $u ), 'floor' => $floor, 'pos' => ( $i % 3 ),
+							'dir' => $dir, 'rooms' => $rooms, 'sqm' => $sqm, 'price' => $price, 'status' => $status,
+							'view_he' => $views[ $dir ]['he'], 'view_en' => $views[ $dir ]['en'],
+						);
+					}
+				}
+				return $apts;
+			};
+			$default_pay = array( 'dubai' => '60/40 לאורך הבנייה', 'miami' => '20% בחתימה, אבני דרך, יתרה בסגירה', 'new-york' => '10%-20% מקדמה בנאמנות, יתרה בסגירה' );
+			$default_fac = array(
+				'dubai' => array( array( 'בריכת אינפיניטי', 'Infinity pool' ), array( 'חדר כושר', 'Gym' ), array( 'קומת מסחר', 'Retail podium' ), array( 'שומר 24/7', '24/7 security' ) ),
+				'miami' => array( array( 'בריכה על הגג', 'Rooftop pool' ), array( 'מועדון דיירים', 'Residents club' ), array( 'חדר כושר', 'Gym' ), array( 'שירותי קונסיירז', 'Concierge' ) ),
+				'new-york' => array( array( 'רופטופ עם נוף', 'View rooftop' ), array( 'חדר כושר', 'Gym' ), array( 'לובי 24/7', '24/7 lobby' ), array( 'חדר אופניים', 'Bike room' ) ),
+			);
+			$refresh = '1' === (string) ( $_GET['refresh'] ?? '' ); // phpcs:ignore
 			$made = array();
 			foreach ( $rows as $r ) {
 				$exists = get_page_by_path( $r['slug'], OBJECT, 'nadlan_intl' );
-				if ( $exists ) { $made[] = array( 'slug' => $r['slug'], 'id' => $exists->ID, 'existed' => true ); continue; }
-				$pid = wp_insert_post( array(
-					'post_type' => 'nadlan_intl', 'post_status' => 'publish',
-					'post_name' => $r['slug'], 'post_title' => $r['title'],
-					'post_content' => '<p>' . esc_html( $r['about'] ) . '</p>',
-				), true );
-				if ( is_wp_error( $pid ) ) { return $pid; }
+				if ( $exists && ! $refresh ) { $made[] = array( 'slug' => $r['slug'], 'id' => $exists->ID, 'existed' => true ); continue; }
+				if ( $exists ) {
+					$pid = $exists->ID;
+				} else {
+					$pid = wp_insert_post( array(
+						'post_type' => 'nadlan_intl', 'post_status' => 'publish',
+						'post_name' => $r['slug'], 'post_title' => $r['title'],
+						'post_content' => '<p>' . esc_html( $r['about'] ) . '</p>',
+					), true );
+					if ( is_wp_error( $pid ) ) { return $pid; }
+				}
 				update_post_meta( $pid, 'gw_world', $r['world'] );
 				update_post_meta( $pid, 'gw_district', $r['district'] );
 				update_post_meta( $pid, 'gw_district_en', $r['district_en'] );
@@ -812,8 +1247,13 @@ add_action( 'rest_api_init', function () {
 				update_post_meta( $pid, 'gw_delivery', $r['delivery'] );
 				update_post_meta( $pid, 'gw_yield', $r['yield'] );
 				update_post_meta( $pid, 'gw_about_en', $r['about_en'] );
+				update_post_meta( $pid, 'gw_payment', isset( $r['payment'] ) ? $r['payment'] : ( $default_pay[ $r['world'] ] ?? '' ) );
+				if ( isset( $r['fees'] ) ) { update_post_meta( $pid, 'gw_fees', $r['fees'] ); }
+				$fac = isset( $r['fac'] ) ? $r['fac'] : ( $default_fac[ $r['world'] ] ?? array() );
+				update_post_meta( $pid, 'gw_facilities', wp_json_encode( $fac, JSON_UNESCAPED_UNICODE ) );
+				update_post_meta( $pid, 'gw_apartments', wp_json_encode( nadlan_gw_clean_apartments( $gen_apts( $r ) ), JSON_UNESCAPED_UNICODE ) );
 				update_post_meta( $pid, 'gw_demo', '1' );
-				$made[] = array( 'slug' => $r['slug'], 'id' => $pid, 'existed' => false );
+				$made[] = array( 'slug' => $r['slug'], 'id' => $pid, 'existed' => (bool) $exists );
 			}
 			flush_rewrite_rules( false );
 			return array( 'ok' => true, 'projects' => $made );

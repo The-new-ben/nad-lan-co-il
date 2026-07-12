@@ -1,5 +1,33 @@
 # AGENT-LOG - the God brain (append-only, newest on top)
 
+## 2026-07-12 (58) - v1.72.103 GLOBAL WORLDS L2: 7 WORLDS + THE PREMIUM APARTMENT PICKER
+Owner: "partial job... all countries, much more details, everything
+our premium projects have." Shipped:
+- +4 WORLDS with full HE+EN registries (SEO head, intro, 8 facts,
+  3 guide sections, FAQ, dated source notes): LONDON (SDLT
+  surcharges, leasehold law, EWS1/cladding), GREECE (golden visa
+  800/400/250K tiers, AFM, debts-attach-to-asset), THAILAND (49%
+  foreign quota, FET certificate, Bangkok vs Phuket), ITALY
+  (compromesso/rogito/notary, cadastral-value taxation, the 7%
+  southern pensioner flat tax). Golden-visa data now in facts.
+- PREMIUM SINGLES: apartment picker on the flagship tower GLB -
+  per-unit hotspots (status colors: available gold / reserved
+  muted / sold ink), floor filter chips, click -> apartment panel
+  (rooms/sqm/price labeled illustrative/view/status) with "design
+  in Studio" + "ask about this apartment" actions; facilities
+  chips band; payment plan + service charges in facts rail.
+  Hotspot geometry derived from INVENTORY dims (118x154.5x104.7),
+  per-project FH = min(3.4, 150*0.88/floors).
+- SEEDER v2 (refresh=1): 8 new projects (5534-5541: Canary Wharf,
+  Stratford, Koukaki, Glyfada, Sukhumvit, Bang Tao, NoLo, Porta
+  Romana) + generated honest apartment inventories (12 units per
+  tower, price scaled by rooms+floor, mixed statuses) + facilities
+  for ALL 14 projects. CMS: metabox now carries payment/fees/
+  facilities/apartments-JSON - developers feed everything.
+Verified live: 4 new world routes 200, picker rendering 12
+hotspots + panel + legend + chips on old and new singles.
+
+
 ## 2026-07-12 (57) - v1.72.102 GLOBAL WORLDS L1: DUBAI + MIAMI + NEW YORK (the jewel round, phase 1)
 Owner: "each location is a world and real estate is a world that is
 wrapping it... jewel of the crown." Built inc/global-worlds.php:
