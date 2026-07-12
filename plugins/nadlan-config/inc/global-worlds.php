@@ -463,6 +463,63 @@ if ( ! function_exists( 'nadlan_gw_worlds' ) ) {
 			'src_en' => 'Market data: July 2026, public sources (Agenzia delle Entrate, Immobiliare.it, Idealista). Estimates for illustration only - not investment, tax or legal advice.',
 		),
 
+
+		'cyprus' => array(
+			'name_he' => 'קפריסין', 'name_en' => 'Cyprus', 'country_he' => 'קפריסין', 'country_en' => 'Cyprus',
+			'flag' => '🇨🇾', 'currency' => 'EUR', 'center' => array( 32.4245, 34.7754 ), 'zoom' => 12,
+			'title_he' => 'השקעות נדל"ן בקפריסין: פאפוס, מיסים, תושבות והמדריך המלא למשקיע הישראלי | נדלן',
+			'title_en' => 'Cyprus Property Investment: Paphos, Taxes, Residency and the Complete Guide | Nadlan',
+			'desc_he'  => 'המדריך המלא להשקעה בדירה בקפריסין: מחירי פאפוס, מע"מ 5% מופחת, אפס מס רכוש שנתי, מסלול תושבות, תהליך הרכישה, הסיכונים ופרויקט הדגל בתלת ממד ועל המפה.',
+			'desc_en'  => 'The complete Cyprus investment guide: Paphos pricing, the reduced 5% VAT, zero annual property tax, the residency track, the buying process, the risks and the flagship project in 3D and on the map.',
+			'h1_he' => 'השקעות נדל"ן בקפריסין: העולם המלא למשקיע',
+			'h1_en' => 'Cyprus Property: the Complete Investor World',
+			'intro_he' => 'קפריסין היא ההשקעה הזרה הקרובה ביותר לישראל - 40 דקות טיסה - והיא הפכה בשנים האחרונות לביתם השני של עשרות אלפי ישראלים: אנגלית בכל מקום, מערכת משפט במסורת הבריטית, מיסוי מהידידותיים באירופה (אפס מס רכוש שנתי מאז 2017, מע"מ מופחת של 5% בתנאים), ומסלול תושבות קבע דרך רכישת נכס חדש. פאפוס, בירת התיירות של המערב, מציעה פרויקטים חדשים ב-2,500-4,000 אירו למ"ר עם תשואות של 4.5%-6.5% משכירות ארוכה ותיירותית. בעמוד הזה: הנתונים, המיסים בשני הצדדים, תהליך הרכישה כולל אזהרת נסח הטאבו הקפריסאי, הסיכונים, ופרויקט הדגל שלנו - מתחם אמיתי בפאפוס שאפשר לחקור בתלת ממד, דירה אחר דירה.',
+			'intro_en' => 'Cyprus is the closest foreign investment to Israel - a 40-minute flight - and has become a second home to tens of thousands of Israelis: English everywhere, a British-tradition legal system, some of Europe\'s friendliest taxation (zero annual property tax since 2017, a reduced 5% VAT under conditions), and a permanent-residency track through buying a new property. Paphos, the tourism capital of the west, offers new projects at EUR 2,500-4,000 per sqm with 4.5-6.5% yields from long-term and holiday rentals. On this page: the data, taxes on both sides, the buying process including the Cypriot title-deed caution, the risks, and our flagship - a real Paphos compound you can explore in 3D, apartment by apartment.',
+			'facts' => array(
+				array( 'מחיר למ"ר בפאפוס (חדש)', 'Paphos new-build per sqm', '2,500-4,000 אירו', 'EUR 2,500-4,000' ),
+				array( 'תשואת שכירות ברוטו', 'Gross rental yield', 'כ-4.5%-6.5% (ארוכה + תיירותית)', '~4.5-6.5% (long-term + holiday)' ),
+				array( 'מע"מ ברכישה מיזם', 'VAT on new-from-developer', '19%; מופחת 5% על בית ראשון בקפריסין בתנאים', '19%; reduced 5% on a first Cyprus home under conditions' ),
+				array( 'מס רכוש שנתי', 'Annual property tax', 'בוטל ב-2017 (נותרו אגרות עירייה קטנות)', 'Abolished 2017 (small municipal fees remain)' ),
+				array( 'אגרת העברה', 'Transfer fee', 'פטורה כשמשולם מע"מ; אחרת 3%-8% מדורג (בהנחה 50% כיום)', 'Waived when VAT applies; else tiered 3-8% (currently 50% off)' ),
+				array( 'מס רווחי הון במכירה', 'Capital gains on sale', '20% על הרווח, עם פטורים אישיים', '20% on the gain, with personal allowances' ),
+				array( 'תושבות דרך נכס', 'Residency via property', 'תושבות קבע ברכישת נכס חדש מ-300 אלף אירו + הכנסה מוכחת', 'Permanent residency from EUR 300K new property + proven income' ),
+				array( 'בעלות לישראלים', 'Israeli ownership', 'מותרת; לא-אירופאים נדרשים לאישור שגרתי של מועצת השרים', 'Allowed; non-EU buyers need routine Council of Ministers approval' ),
+			),
+			'guide' => array(
+				array( 'תהליך הרכישה: עורך דין, רישום החוזה ואזהרת הטאבו', 'The process: lawyer, contract deposit and the title-deed caution',
+					array(
+						'קונים בקפריסין עם עורך דין עצמאי (לא של היזם): הוא בודק שהקרקע נקייה משעבודים של היזם - הבדיקה הקריטית באי - ומפקיד את חוזה המכר בלשכת רישום המקרקעין, מהלך שמקנה לכם הגנת "ביצוע בעין" עוד לפני שהונפק נסח טאבו נפרד לדירה. הנפקת נסחים לדירות חדשות אורכת בקפריסין שנים - זו אינה בעיה כשקונים נכון (חוזה מופקד + קרקע נקייה + Bank Waiver כשיש משכנתא ליזם), אבל זו הסיבה שליווי משפטי עצמאי אינו המלצה אלא תנאי. לא-אירופאים מגישים בקשה שגרתית למועצת השרים - הליך של חודשים שאינו מעכב את קבלת החזקה.',
+					),
+					array(
+						'Buy in Cyprus with an independent lawyer (not the developer\'s): they verify the land is free of developer encumbrances - the critical island check - and deposit the sale contract at the Land Registry, giving you specific-performance protection before a separate title deed exists for the unit. New-build deed issuance takes years in Cyprus - not a problem when you buy correctly (deposited contract + clean land + a bank waiver where the developer has a mortgage), but it is why independent counsel is a condition, not a suggestion. Non-EU buyers file a routine Council of Ministers application - a months-long formality that does not delay possession.',
+					),
+				),
+				array( 'המיסוי: מהידידותיים באירופה, בשני הצדדים', 'Taxation: among Europe\'s friendliest, on both sides',
+					array(
+						'ברכישה מיזם משלמים מע"מ: 19% ככלל, ו-5% בלבד על 130 המ"ר הראשונים כשזה ביתכם הראשון בקפריסין והוא משמש למגוריכם - הטבה ששווה מאות אלפי שקלים וכפופה לתנאים שחובה לוודא מראש. כששולם מע"מ, אגרת ההעברה פטורה. בהחזקה: אפס מס רכוש שנתי. בהשכרה: מס הכנסה קפריסאי מדורג עם פטור בסיס נדיב. במכירה: 20% על הרווח עם פטורים. ובישראל: חובת דיווח כרגיל, ואמנת המס ישראל-קפריסין מזכה את המס ששולם - אין כפל מס, אבל תכנון מראש עם רואה חשבון חובה.',
+					),
+					array(
+						'Buying from a developer you pay VAT: 19% as a rule, and only 5% on the first 130 sqm when it is your first Cyprus home used as your residence - a benefit worth hundreds of thousands of shekels, subject to conditions you must verify in advance. When VAT is paid, the transfer fee is waived. Holding: zero annual property tax. Renting: tiered Cypriot income tax with a generous base exemption. Selling: 20% on the gain with allowances. And in Israel: normal reporting, with the Israel-Cyprus tax treaty crediting tax paid - no double taxation, but advance planning with an accountant is mandatory.',
+					),
+				),
+				array( 'הסיכונים שאסור להתעלם מהם', 'The risks you must not ignore',
+					array(
+						'ההיסטוריה הקפריסאית של נסחי טאבו מתעכבים היא הסיכון המוכר - מנוהל היטב בליווי משפטי עצמאי, אך אסור לדלג עליו. עוד לבדוק: איתנות היזם ולוח התשלומים (העדיפו תשלומים צמודי התקדמות), כיסי היצע בפאפוס שנשענים על תיירות ושכירות קצרה (בדקו ביקוש שכירות ארוכה באזור הספציפי), חשיפת אירו/שקל, ועלויות ניהול ואחזקה במתחמים עם בריכות ומתקנים. הנתונים בעמוד הם אומדני שוק להמחשה ואינם ייעוץ השקעות, מס או משפט.',
+					),
+					array(
+						'Cyprus\'s history of delayed title deeds is the known risk - well managed with independent counsel, never to be skipped. Also check: developer strength and the payment schedule (prefer construction-linked payments), Paphos supply pockets that lean on tourism and short lets (verify long-term rental demand in the specific area), EUR/ILS exposure, and management costs in compounds with pools and amenities. Figures on this page are market estimates for illustration, not investment, tax or legal advice.',
+					),
+				),
+			),
+			'faq' => array(
+				array( 'האם ישראלי יכול לקנות דירה בקפריסין?', 'Can an Israeli buy in Cyprus?', 'כן. ישראלים (לא-אירופאים) נדרשים לאישור שגרתי של מועצת השרים - פורמליות של כמה חודשים שאינה מעכבת חזקה. אלפי ישראלים קונים באי מדי שנה.', 'Yes. Israelis (non-EU) need routine Council of Ministers approval - a months-long formality that does not delay possession. Thousands of Israelis buy on the island every year.' ),
+				array( 'איך מקבלים מע"מ 5% במקום 19%?', 'How do you get 5% VAT instead of 19%?', 'ההטבה חלה על 130 המ"ר הראשונים של בית ראשון בקפריסין המשמש למגורי הקונה, בכפוף לתקרות ותנאים. השכרה מסחרית של הנכס בתקופת ההטבה עלולה לחייב החזר יחסי - מוודאים מראש עם עורך הדין.', 'The relief applies to the first 130 sqm of a first Cyprus home used as the buyer\'s residence, subject to caps and conditions. Commercially renting the unit during the relief period can trigger a proportional clawback - verify in advance with your lawyer.' ),
+				array( 'מה נותנת תושבות הקבע ומה היא דורשת?', 'What does permanent residency give and require?', 'מסלול הנכס: רכישת נכס חדש בשווי 300 אלף אירו לפחות (בתוספת מע"מ) והוכחת הכנסה שנתית מחו"ל. התושבות מכסה את המשפחה הגרעינית ואינה דורשת מגורים רציפים - ביקור אחת לשנתיים מספיק. היא אינה אזרחות אירופית.', 'The property track: buying a new property of at least EUR 300K (plus VAT) and proving annual income from abroad. It covers the nuclear family and needs no continuous stay - a visit every two years suffices. It is not EU citizenship.' ),
+			),
+			'src_he' => 'נתוני שוק: יולי 2026, מקורות פומביים (Cyprus Land Registry, RICS Cyprus, נתוני יזמים מפורסמים). אומדנים להמחשה בלבד - לא ייעוץ השקעות, מס או משפט.',
+			'src_en' => 'Market data: July 2026, public sources (Cyprus Land Registry, RICS Cyprus, published developer data). Estimates for illustration only - not investment, tax or legal advice.',
+		),
+
 		);
 		return apply_filters( 'nadlan_gw_worlds', $W );
 	}
@@ -513,6 +570,15 @@ if ( ! function_exists( 'nadlan_gw_metabox_render' ) ) {
 				$fac = json_decode( (string) get_post_meta( $post->ID, 'gw_facilities', true ), true );
 				if ( is_array( $fac ) ) { foreach ( $fac as $f ) { echo esc_textarea( $f[0] . ' | ' . $f[1] ) . "\n"; } }
 			?></textarea></p>
+			<p><label style="font-weight:600">פריסת המודל (JSON: fh + buildings[x,z,w,d,floors]; ריק = מגדל גנרי)</label><br><textarea name="gw_model_layout" style="width:100%;min-height:60px" dir="ltr"><?php echo esc_textarea( (string) get_post_meta( $post->ID, 'gw_model_layout', true ) ); ?></textarea></p>
+			<p><label style="font-weight:600">גלריית הדמיות (כתובת לכל שורה)</label><br><textarea name="gw_gallery" style="width:100%;min-height:60px" dir="ltr"><?php
+				$g = json_decode( (string) get_post_meta( $post->ID, 'gw_gallery', true ), true );
+				if ( is_array( $g ) ) { echo esc_textarea( implode( "\n", $g ) ); }
+			?></textarea></p>
+			<p><label style="font-weight:600">תוכניות אדריכליות (כתובת לכל שורה)</label><br><textarea name="gw_plans" style="width:100%;min-height:60px" dir="ltr"><?php
+				$g = json_decode( (string) get_post_meta( $post->ID, 'gw_plans', true ), true );
+				if ( is_array( $g ) ) { echo esc_textarea( implode( "\n", $g ) ); }
+			?></textarea></p>
 			<p><label style="font-weight:600">מלאי דירות (JSON; נזרע אוטומטית בפרויקט המחשה)</label><br><textarea name="gw_apartments" style="width:100%;min-height:80px" dir="ltr"><?php echo esc_textarea( (string) get_post_meta( $post->ID, 'gw_apartments', true ) ); ?></textarea>
 			<span style="color:#666;font-size:12px">מערך של יחידות: {"id","floor","pos","dir","rooms","sqm","price","status","view_he","view_en"}. status: available/reserved/sold.</span></p>
 			<p><label><input type="checkbox" name="gw_demo" value="1" <?php checked( get_post_meta( $post->ID, 'gw_demo', true ), '1' ); ?>> פרויקט להמחשה (מציג את תג ההגינות)</label></p>
@@ -538,6 +604,20 @@ add_action( 'save_post_nadlan_intl', function ( $post_id ) {
 			if ( '' !== $parts[0] ) { $fac[] = array( $parts[0], isset( $parts[1] ) && '' !== $parts[1] ? $parts[1] : $parts[0] ); }
 		}
 		update_post_meta( $post_id, 'gw_facilities', wp_json_encode( array_slice( $fac, 0, 24 ), JSON_UNESCAPED_UNICODE ) );
+	}
+	if ( isset( $_POST['gw_model_layout'] ) ) {
+		$lay = json_decode( (string) wp_unslash( $_POST['gw_model_layout'] ), true );
+		update_post_meta( $post_id, 'gw_model_layout', is_array( $lay ) ? wp_json_encode( $lay ) : '' );
+	}
+	foreach ( array( 'gw_gallery', 'gw_plans' ) as $gk ) {
+		if ( isset( $_POST[ $gk ] ) ) {
+			$urls = array();
+			foreach ( explode( "\n", sanitize_textarea_field( wp_unslash( $_POST[ $gk ] ) ) ) as $u ) {
+				$u = esc_url_raw( trim( $u ) );
+				if ( $u ) { $urls[] = $u; }
+			}
+			update_post_meta( $post_id, $gk, wp_json_encode( array_slice( $urls, 0, 12 ) ) );
+		}
 	}
 	if ( isset( $_POST['gw_apartments'] ) ) {
 		$apts = json_decode( (string) wp_unslash( $_POST['gw_apartments'] ), true );
@@ -570,9 +650,10 @@ if ( ! function_exists( 'nadlan_gw_clean_apartments' ) ) {
 	function nadlan_gw_clean_apartments( $raw ) {
 		if ( ! is_array( $raw ) ) { return array(); }
 		$out = array();
-		foreach ( array_slice( $raw, 0, 60 ) as $a ) {
+		foreach ( array_slice( $raw, 0, 120 ) as $a ) {
 			if ( ! is_array( $a ) ) { continue; }
 			$out[] = array(
+				'b'       => max( 0, (int) ( $a['b'] ?? 0 ) ),
 				'id'      => sanitize_key( (string) ( $a['id'] ?? '' ) ),
 				'floor'   => max( 0, (int) ( $a['floor'] ?? 0 ) ),
 				'pos'     => max( 0, min( 2, (int) ( $a['pos'] ?? 0 ) ) ),
@@ -960,12 +1041,15 @@ add_filter( 'the_content', function ( $content ) {
 
 	<?php
 	$apts = nadlan_gw_clean_apartments( json_decode( (string) get_post_meta( $id, 'gw_apartments', true ), true ) );
+	$layout = json_decode( (string) get_post_meta( $id, 'gw_model_layout', true ), true );
+	$layout = ( is_array( $layout ) && ! empty( $layout['buildings'] ) ) ? $layout : null;
 	if ( $glb ) :
-		// hotspot geometry for flagship-tower.glb [118 x 154.5 x 104.7]
+		// hotspot geometry: bespoke site layout (per-building) or the generic tower
 		$tw_h = 150.0; $tw_hx = 50.0; $tw_hz = 42.0;
-		$fh = $floors > 0 ? min( 3.4, ( $tw_h * 0.88 ) / max( 1, $floors ) ) : 3.05;
+		$fh = $layout ? (float) ( $layout['fh'] ?? 3.1 ) : ( $floors > 0 ? min( 3.4, ( $tw_h * 0.88 ) / max( 1, $floors ) ) : 3.05 );
 		$dirv = array( 'west' => array( -$tw_hx, 0 ), 'east' => array( $tw_hx, 0 ), 'north' => array( 0, $tw_hz ), 'south' => array( 0, -$tw_hz ) );
 		$st_lbl = array( 'available' => $L( 'זמינה', 'Available' ), 'reserved' => $L( 'שמורה', 'Reserved' ), 'sold' => $L( 'נמכרה', 'Sold' ) );
+		$orbit = $layout ? array( '-20deg 64deg 150m', '70m', '230m' ) : array( '-25deg 76deg 170m', '90m', '260m' );
 	?>
 	<?php if ( $apts ) : ?>
 	<h2 style="font-family:'Frank Ruhl Libre',serif;font-size:1.35rem;margin:26px 0 4px"><?php echo $L( 'בחרו דירה מתוך הבניין', 'Choose your apartment from inside the building' ); ?></h2>
@@ -975,18 +1059,33 @@ add_filter( 'the_content', function ( $content ) {
 	<div style="position:relative;height:56vh;min-height:420px;max-height:620px;border-radius:18px;overflow:hidden;background:radial-gradient(ellipse at 50% 30%,#26221733 0%,transparent 65%),#14130F;border:1px solid #2A251B;margin:0 0 14px">
 		<model-viewer id="nlgw-mv" src="<?php echo esc_url( $glb ); ?>" camera-controls disable-zoom <?php echo $apts ? '' : 'auto-rotate rotation-per-second="9deg"'; ?>
 			style="width:100%;height:100%;direction:ltr;background:transparent;touch-action:pan-y"
-			camera-orbit="-25deg 76deg 170m" min-camera-orbit="auto auto 90m" max-camera-orbit="auto auto 260m" exposure="0.95" shadow-intensity="0.6">
+			camera-orbit="<?php echo esc_attr( $orbit[0] ); ?>" min-camera-orbit="auto auto <?php echo esc_attr( $orbit[1] ); ?>" max-camera-orbit="auto auto <?php echo esc_attr( $orbit[2] ); ?>" exposure="0.95" shadow-intensity="0.6">
 			<?php $hi = 0; foreach ( $apts as $a ) :
-				$v = $dirv[ $a['dir'] ];
-				$perp = ( 0 === $v[0] ) ? array( 1, 0 ) : array( 0, 1 );
-				$off = ( $a['pos'] - 1 ) * 13;
-				$x = $v[0] + $perp[0] * $off;
-				$z = $v[1] + $perp[1] * $off;
-				$y = $a['floor'] * $fh + $fh * 0.5;
+				if ( $layout ) {
+					$bldg = $layout['buildings'][ min( $a['b'], count( $layout['buildings'] ) - 1 ) ];
+					$bw = (float) $bldg['w']; $bd = (float) $bldg['d'];
+					$side = array( 'west' => array( -( $bw / 2 + 1.3 ), 0 ), 'east' => array( $bw / 2 + 1.3, 0 ), 'north' => array( 0, -( $bd / 2 + 1.3 ) ), 'south' => array( 0, $bd / 2 + 1.3 ) );
+					$v = $side[ $a['dir'] ];
+					$perp = ( 0 === (int) $v[0] ) ? array( 1, 0 ) : array( 0, 1 );
+					$len = $perp[0] ? $bw : $bd;
+					$off = ( $a['pos'] - 1 ) * ( $len / 3.4 );
+					$x = (float) $bldg['x'] + $v[0] + $perp[0] * $off;
+					$z = (float) $bldg['z'] + $v[1] + $perp[1] * $off;
+					$y = ( $a['floor'] - 0.5 ) * $fh + 0.4;
+					$nrm = ( 0 === (int) $v[0] ) ? ( $v[1] > 0 ? '0 0 1' : '0 0 -1' ) : ( $v[0] > 0 ? '1 0 0' : '-1 0 0' );
+				} else {
+					$v = $dirv[ $a['dir'] ];
+					$perp = ( 0 === $v[0] ) ? array( 1, 0 ) : array( 0, 1 );
+					$off = ( $a['pos'] - 1 ) * 13;
+					$x = $v[0] + $perp[0] * $off;
+					$z = $v[1] + $perp[1] * $off;
+					$y = $a['floor'] * $fh + $fh * 0.5;
+					$nrm = ( 0 === $v[1] ? ( $v[0] > 0 ? '1 0 0' : '-1 0 0' ) : ( $v[1] > 0 ? '0 0 1' : '0 0 -1' ) );
+				}
 				$hi++; ?>
 			<button class="nlgw-hot nlgw-hot--<?php echo esc_attr( $a['status'] ); ?>" slot="hotspot-<?php echo (int) $hi; ?>"
 				data-position="<?php echo esc_attr( round( $x, 1 ) . ' ' . round( $y, 1 ) . ' ' . round( $z, 1 ) ); ?>"
-				data-normal="<?php echo esc_attr( ( 0 === $v[1] ? ( $v[0] > 0 ? '1 0 0' : '-1 0 0' ) : ( $v[1] > 0 ? '0 0 1' : '0 0 -1' ) ) ); ?>"
+				data-normal="<?php echo esc_attr( $nrm ); ?>"
 				data-visibility-attribute="visible" data-floor="<?php echo (int) $a['floor']; ?>"
 				data-apt="<?php echo esc_attr( wp_json_encode( $a, JSON_UNESCAPED_UNICODE ) ); ?>"><?php echo (int) $a['rooms']; ?></button>
 			<?php endforeach; ?>
@@ -1048,6 +1147,32 @@ add_filter( 'the_content', function ( $content ) {
 	</script>
 	<?php endif; ?>
 	<script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.5.0/model-viewer.min.js"></script>
+	<?php endif; ?>
+
+	<?php
+	$gal = json_decode( (string) get_post_meta( $id, 'gw_gallery', true ), true );
+	if ( is_array( $gal ) && $gal ) : ?>
+	<h2 style="font-family:'Frank Ruhl Libre',serif;font-size:1.25rem;margin:20px 0 8px"><?php echo $L( 'הדמיות הפרויקט', 'Project renders' ); ?></h2>
+	<div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:10px;margin:0 0 18px">
+		<?php foreach ( array_slice( $gal, 0, 8 ) as $g ) : ?>
+		<a href="<?php echo esc_url( $g ); ?>" target="_blank" rel="noopener" style="display:block;border-radius:14px;overflow:hidden;border:1px solid #E2DCD0;aspect-ratio:16/10;background:#F3EEE3">
+			<img src="<?php echo esc_url( $g ); ?>" alt="" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block">
+		</a>
+		<?php endforeach; ?>
+	</div>
+	<?php endif; ?>
+
+	<?php
+	$plans = json_decode( (string) get_post_meta( $id, 'gw_plans', true ), true );
+	if ( is_array( $plans ) && $plans ) : ?>
+	<h2 style="font-family:'Frank Ruhl Libre',serif;font-size:1.25rem;margin:20px 0 8px"><?php echo $L( 'תוכניות אדריכליות', 'Architectural plans' ); ?></h2>
+	<div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:10px;margin:0 0 18px">
+		<?php foreach ( array_slice( $plans, 0, 6 ) as $g ) : ?>
+		<a href="<?php echo esc_url( $g ); ?>" target="_blank" rel="noopener" style="display:block;border-radius:14px;overflow:hidden;border:1px solid #E2DCD0;background:#fff;padding:8px">
+			<img src="<?php echo esc_url( $g ); ?>" alt="" loading="lazy" style="width:100%;display:block">
+		</a>
+		<?php endforeach; ?>
+	</div>
 	<?php endif; ?>
 
 	<?php
@@ -1185,6 +1310,69 @@ add_action( 'rest_api_init', function () {
 					'about_en' => 'A new scheme near the Porta Romana Olympic Village compound - southern Milan\'s biggest regeneration play: 2-3 room homes with loggias, a shared garden and a retail floor. A district drawing massive investment into the coming decade. Based on real project profiles in the district; for illustration.',
 					'fac' => array( array( 'מתחם הכפר האולימפי', 'The Olympic Village compound' ), array( 'גינה משותפת', 'Shared garden' ), array( 'לוג\'יות שמש', 'Sun loggias' ), array( 'קומת מסחר', 'Retail floor' ), array( 'מטרו קו 3', 'Metro line 3' ) ) ),
 			) );
+			// THE CYPRUS FLAGSHIP: Lion Apartments (Oliel Group, Paphos) - REAL project
+			// data from the developer's published page (handoff/cyprus-flagship/
+			// lion-apartments-intake.md). 72 units, 5 buildings, gated, from EUR 290K.
+			$lion_layout = array( 'fh' => 3.1, 'buildings' => array(
+				array( 'x' => -32, 'z' => -28, 'w' => 34, 'd' => 14, 'floors' => 3 ),
+				array( 'x' => 27, 'z' => -30, 'w' => 26, 'd' => 14, 'floors' => 3 ),
+				array( 'x' => -30, 'z' => 25, 'w' => 28, 'd' => 14, 'floors' => 3 ),
+				array( 'x' => 28, 'z' => 27, 'w' => 34, 'd' => 14, 'floors' => 3 ),
+			) );
+			$lion_apts = array();
+			$lion_types = array(
+				array( 'rooms' => 1, 'sqm' => 54, 'base' => 290000 ), array( 'rooms' => 1, 'sqm' => 58, 'base' => 312000 ),
+				array( 'rooms' => 2, 'sqm' => 76, 'base' => 368000 ), array( 'rooms' => 2, 'sqm' => 82, 'base' => 396000 ),
+				array( 'rooms' => 2, 'sqm' => 88, 'base' => 425000 ), array( 'rooms' => 3, 'sqm' => 105, 'base' => 505000 ),
+			);
+			$lion_sides = array( array( 'south', 'east' ), array( 'south', 'west' ), array( 'north', 'east' ), array( 'north', 'west' ) );
+			$li = 0;
+			foreach ( array( 'A', 'B', 'C', 'D' ) as $bi => $bl ) {
+				for ( $fl = 1; $fl <= 3; $fl++ ) {
+					foreach ( $lion_types as $ti => $t ) {
+						$li++;
+						$dir = $lion_sides[ $bi ][ $ti % 2 ];
+						$price = round( $t['base'] * ( 1 + 0.035 * ( $fl - 1 ) ) * ( 3 === $bi ? 1.02 : 1 ), -3 );
+						$status = ( 0 === $li % 4 ) ? 'sold' : ( ( 0 === $li % 7 ) ? 'reserved' : 'available' );
+						$lion_apts[] = array(
+							'b' => $bi, 'id' => strtolower( $bl ) . $fl . '0' . ( $ti + 1 ), 'floor' => $fl, 'pos' => $ti % 3,
+							'dir' => $dir, 'rooms' => $t['rooms'], 'sqm' => $t['sqm'], 'price' => $price, 'status' => $status,
+							'view_he' => 2 === $bi || 3 === $bi ? 'חצר ובריכה' : 'סביבת המתחם', 'view_en' => 2 === $bi || 3 === $bi ? 'Courtyard and pool' : 'Compound surroundings',
+						);
+					}
+				}
+			}
+			$rows[] = array(
+				'slug' => 'lion-apartments-paphos', 'title' => 'Lion Apartments - פאפוס, קפריסין', 'world' => 'cyprus',
+				'district' => 'ציר Tombs of the Kings, פאפוס', 'district_en' => 'Tombs of the Kings, Paphos',
+				'lat' => 34.7754, 'lng' => 32.4066, 'price' => '290000', 'units' => 72, 'floors' => 3, 'delivery' => 'בבנייה',
+				'yield' => 'אומדן ברוטו 4.5%-6.5% בשכירות ארוכה או תיירותית (פאפוס) - לא הבטחה',
+				'payment' => 'תשלומים צמודי התקדמות בנייה, לפי הסכם עם היזם',
+				'fees' => 'דמי ניהול מתחם סגור (בריכות, ספא, אבטחה) - לפי תקנון',
+				'about' => 'פרויקט יוקרה אמיתי בפאפוס, קפריסין, על ציר Tombs of the Kings: 72 דירות בחמישה בניינים נמוכים על מגרש של 9,100 מ"ר, במתחם סגור עם בריכה מרכזית, בריכת ילדים ובר בריכה, ספא וחדר כושר עם גקוזי וסאונה, לובי, קונסיירז ואבטחה 24/7. דירות 1-3 חדרי שינה, 52-107 מ"ר בנוי, מרפסות עמוקות, חניה מקורה, מיזוג מלא וגימור ברמה הגבוהה ביותר. במרחק 2-5 דקות נסיעה מהחופים, המסעדות, הנמל והעיר העתיקה. הנתונים מפרסומי היזם; המודל התלת ממדי הוא הדמיה עקרונית לפי תוכנית המתחם.',
+				'about_en' => 'A real premium project in Paphos, Cyprus, on the Tombs of the Kings axis: 72 apartments in five low-rise buildings on a 9,100 sqm gated plot, with a central pool, kids pool and pool bar, spa and gym with jacuzzi and sauna, lobby, concierge and 24/7 security. 1-3 bedroom homes, 52-107 sqm built, deep balconies, covered parking, full AC and top-grade finishes. 2-5 minutes from the beaches, restaurants, the harbour and the old town. Data from the developer\'s publications; the 3D model is a conceptual visualization of the master plan.',
+				'fac' => array(
+					array( 'בריכה מרכזית + בריכת ילדים ובר בריכה', 'Main pool + kids pool and pool bar' ),
+					array( 'ספא: גקוזי וסאונה', 'Spa: jacuzzi and sauna' ), array( 'חדר כושר', 'Gym' ),
+					array( 'לובי וקונסיירז', 'Lobby and concierge' ), array( 'אבטחה 24/7, מתחם סגור', '24/7 security, gated' ),
+					array( 'חניה פרטית מקורה', 'Covered private parking' ), array( 'שטחים ירוקים ומתקני ילדים', 'Green areas and playgrounds' ),
+					array( 'אריחי קרמיקה איכותיים ומיזוג מלא', 'Quality ceramic tiles and full AC' ),
+					array( '2-5 דקות מהחופים והעיר העתיקה', '2-5 minutes to the beaches and old town' ),
+				),
+				'glb' => 'models/lion-apartments-paphos.glb',
+				'layout' => $lion_layout, 'apts_custom' => $lion_apts,
+				'gallery' => array(
+					'https://nad-lan.co.il/wp-content/uploads/2026/07/lion-paphos-hero.jpg',
+					'https://nad-lan.co.il/wp-content/uploads/2026/07/lion-paphos-render-2.jpg',
+					'https://nad-lan.co.il/wp-content/uploads/2026/07/lion-paphos-render-3.jpg',
+					'https://nad-lan.co.il/wp-content/uploads/2026/07/lion-paphos-render-4.jpg',
+				),
+				'plans' => array(
+					'https://nad-lan.co.il/wp-content/uploads/2026/07/lion-paphos-masterplan.png',
+					'https://nad-lan.co.il/wp-content/uploads/2026/07/lion-paphos-plan-2.png',
+				),
+				'real' => true,
+			);
 			// generated inventory: honest, price-scaled apartments per project
 			$gen_apts = function ( $r ) {
 				$floors = (int) $r['floors'];
@@ -1251,8 +1439,16 @@ add_action( 'rest_api_init', function () {
 				if ( isset( $r['fees'] ) ) { update_post_meta( $pid, 'gw_fees', $r['fees'] ); }
 				$fac = isset( $r['fac'] ) ? $r['fac'] : ( $default_fac[ $r['world'] ] ?? array() );
 				update_post_meta( $pid, 'gw_facilities', wp_json_encode( $fac, JSON_UNESCAPED_UNICODE ) );
-				update_post_meta( $pid, 'gw_apartments', wp_json_encode( nadlan_gw_clean_apartments( $gen_apts( $r ) ), JSON_UNESCAPED_UNICODE ) );
-				update_post_meta( $pid, 'gw_demo', '1' );
+				$apts_src = isset( $r['apts_custom'] ) ? $r['apts_custom'] : $gen_apts( $r );
+				update_post_meta( $pid, 'gw_apartments', wp_json_encode( nadlan_gw_clean_apartments( $apts_src ), JSON_UNESCAPED_UNICODE ) );
+				if ( isset( $r['glb'] ) && function_exists( 'nadlan_showroom_engine_base_url' ) ) {
+					update_post_meta( $pid, 'gw_glb', nadlan_showroom_engine_base_url() . $r['glb'] );
+				}
+				if ( isset( $r['layout'] ) ) { update_post_meta( $pid, 'gw_model_layout', wp_json_encode( $r['layout'] ) ); }
+				if ( isset( $r['gallery'] ) ) { update_post_meta( $pid, 'gw_gallery', wp_json_encode( $r['gallery'] ) ); }
+				if ( isset( $r['plans'] ) ) { update_post_meta( $pid, 'gw_plans', wp_json_encode( $r['plans'] ) ); }
+				// real developer projects are NOT demo-badged; their honesty note lives in the about text
+				update_post_meta( $pid, 'gw_demo', empty( $r['real'] ) ? '1' : '0' );
 				$made[] = array( 'slug' => $r['slug'], 'id' => $pid, 'existed' => (bool) $exists );
 			}
 			flush_rewrite_rules( false );

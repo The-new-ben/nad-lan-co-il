@@ -1,5 +1,43 @@
 # AGENT-LOG - the God brain (append-only, newest on top)
 
+## 2026-07-12 (60) - v1.72.105-106 THE CYPRUS FLAGSHIP: LION APARTMENTS (real project, real pipeline)
+Owner: real Cyprus developer (Oliel Group) asked to be listed; the
+Dubai depth critique accepted. Ran the FULL intake pipeline and
+DOCUMENTED it (docs/playbooks/international-project-intake-
+pipeline.md - the standing workflow, stage 0-7):
+- SELECTION: 41 properties scanned via properties-sitemap.xml
+  (cards were JS-rendered; REST hid the CPT - sitemap law), 8
+  compared. Winner: LION APARTMENTS - 72 units, 5 buildings,
+  9,100 sqm gated plot, Tombs of the Kings Paphos, from EUR 290K.
+- INTAKE DOSSIER (handoff/cyprus-flagship/): verified spec from
+  the developer's page, renders + 2 master-plan sheets DOWNLOADED
+  AND VIEWED (white low-rise, 3 floors, deep cantilevered
+  balconies, 4 slabs around a central pool + amenity block).
+- BESPOKE GLB via the factory: scripts/generate-rich-building.py
+  with a site spec mirroring the master plan (5 buildings, pool
+  courtyard, 120x100m, 2,672 tris, 108KB) - registered in
+  INVENTORY.md, ships inside the plugin zip.
+- LAYOUT-AWARE PICKER (the Dubai fix): gw_model_layout meta
+  {fh, buildings[x,z,w,d,floors]} places every hotspot on the
+  RIGHT building, floor and facade; camera adapts to low-rise.
+  72 real-derived units (4 bldgs x 3 floors x 6 types, prices
+  from the developer's 290K base + floor premium) - verified 72
+  hotspots live after fixing a silent 60-unit sanitizer cap
+  (v1.72.106 hotfix; no-silent-caps law).
+- THE PAGE: CYPRUS world added (8th; VAT 5%/19%, zero annual
+  property tax, title-deed caution, residency 300K, treaty),
+  gallery band (4 uploaded renders), architectural plans band
+  (2 sheets), REAL facilities list, payment/fees, map at the real
+  axis, lead form. real=true projects are NOT demo-badged; the
+  honesty note (developer-published data; conceptual 3D) lives in
+  the about text. CMS: layout/gallery/plans now metabox fields.
+Live: /global/cyprus/ + /global/project/lion-apartments-paphos/
+FLOATING: developer name field awaits owner (writes it himself);
+backport gallery/plans/layout depth to Dubai six; walk-inside +
+sun modes on intl = next depth level; EN sibling of the page
+verified via ?lang=en.
+
+
 ## 2026-07-12 (59) - v1.72.104 SMART FORMS + THE AUCTION PRODUCT
 Owner: "auction apartments end-to-end + the best form in the world."
 Research (Typeform pattern, 650K-submission studies): one-question-
