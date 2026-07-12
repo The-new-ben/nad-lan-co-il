@@ -1,5 +1,31 @@
 # AGENT-LOG - the God brain (append-only, newest on top)
 
+## 2026-07-12 (56) - v1.72.101 THE HTML SITEMAP /site-map/ (curated, anti-scrape, HE+EN)
+Owner order: "smart beautiful HTML sitemap... right SEO hierarchy,
+easy to use, NOT revealing all the website for scraping." Built
+inc/site-map.php, virtual route /site-map/ (+ ?lang=en sibling):
+- ANTI-SCRAPE BY CURATION: ~45 links, HUBS ONLY - products,
+  archives, pillars, tools, guides, languages. Never a leaf dump
+  (no per-project/listing/term enumeration); leaves reachable
+  through their hubs. Stated in the doc header as law.
+- EVERY candidate URL probed live BEFORE inclusion (found and
+  excluded: /calculators/ 404, /list-property/ 404 - real wizard
+  is /post-listing/, /magazine/ 404, /pricing/ 301 -> /join-pro/
+  linked directly). Post-ship audit: all 48 rendered hrefs 200
+  (my-appointments 302-to-login by design). Zero dead links.
+- DESIGN: cream ground, stats strip with LIVE counts (projects/
+  props/pros/terms via wp_count_posts, 6h transient), card grid
+  with line-icon SVGs, PRODUCT cards carry gold border + "מוצר"
+  chip and lead the page (products first - the owner's ask).
+- SEO: title/meta per lang, self-canonical, hreflang he/en/
+  x-default, CollectionPage JSON-LD, honest footer line ("hubs
+  only; everything reachable from them").
+- WIRED: מפת האתר link in the homepage megafooter (label ×5 langs,
+  links ?lang=en for non-he homepages).
+ALSO: owner added US to the international worlds order (task #77):
+New York + Miami city worlds where Israelis invest, projects per
+city, menu wiring - queued as the next build round.
+
 ## 2026-07-12 (55) - v1.72.100 MAP RICHNESS + DE-STACK (owner roast response)
 Owner: "map and video stacked one above the other; map shows only
 3 projects, not rich; want little dots/flags with prices/data like

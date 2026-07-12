@@ -732,6 +732,8 @@ if ( ! function_exists( 'nadlan_hv2_band_megafooter' ) ) {
 			<a href="<?php echo esc_url( home_url( '/post-listing/' ) ); ?>"><?php nadlan_e( 'post_free' ); ?></a>
 			<a href="<?php echo esc_url( home_url( '/advertise/' ) ); ?>"><?php nadlan_e( 'advertise_pros' ); ?></a>
 			<a href="<?php echo esc_url( home_url( '/contact/' ) ); ?>"><?php nadlan_e( 'contact' ); ?></a>
+			<?php $nlsm_lbl = array( 'he' => 'מפת האתר', 'en' => 'Site Map', 'fr' => 'Plan du site', 'ru' => 'Карта сайта', 'ar' => 'خريطة الموقع' ); $nlsm_l = function_exists( 'nadlan_current_lang' ) ? nadlan_current_lang() : 'he'; ?>
+			<a href="<?php echo esc_url( home_url( '/site-map/' . ( 'he' === $nlsm_l ? '' : '?lang=en' ) ) ); ?>"><?php echo esc_html( isset( $nlsm_lbl[ $nlsm_l ] ) ? $nlsm_lbl[ $nlsm_l ] : $nlsm_lbl['he'] ); ?></a>
 			<a href="<?php echo esc_url( home_url( '/en/' ) ); ?>">English</a>
 		</div>
 	</section>
