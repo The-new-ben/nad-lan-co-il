@@ -1,5 +1,40 @@
 # AGENT-LOG - the God brain (append-only, newest on top)
 
+## 2026-07-12 (53) - v1.72.97 LOVABLE INTAKE: SHORELINE HERO + ILLUSTRATED PRODUCT BANDS
+Owner made nadlan-strategy-hub public ("suck all the content") and
+ordered the best-homepage round for contractors. Intake verdict:
+Lovable's handoff is PROFESSIONAL - DESIGN-OUTPUT.md manifest is
+real (route/component map, token table, the 12 image prompts
+verbatim, 7 honest deviations self-declared). Judged the images
+with eyes, not filenames:
+- hero-tel-aviv-shoreline.jpg = EXCELLENT (golden-hour oblique
+  aerial, editorial, on-brand) -> now the homepage aerial hero via
+  option nadlan_home_hero_aerial (uploaded as nadlan-hero-shoreline).
+- sketch-rentals-dashboard.jpg = BULLSEYE product illustration
+  (building with status dots + hovering map, ink-and-wash on cream)
+  -> new option nadlan_rm_band_img, rentals band art.
+- sketch-urban-renewal.jpg = good concept BUT the buildings carry
+  NY fire-escapes, not Israeli balconies -> shipped for now, flagged
+  as regeneration candidate; prompt pack given to owner.
+Code: home-v2.php band-art system - registered options
+nadlan_ur_band_img / nadlan_rm_band_img (REST-settable, empty ->
+text-only, filters fail open); bands get .has-img two-column grid
+(1.15fr/.85fr, mobile 1fr art-first) + .nlhv2-band-art panel.
+DELIBERATELY NOT USED: 4 listing sketches (uploaded to media but
+NOT wired - existing bespoke per-listing images are better, no
+regression); theater-3d-stage.jpg + 4 project sketches (holon/duo/
+rainbow/sde-dov) held in reserve for showcase cards; Lovable's EN
+S2-S11 copy missing on their side (their deviation #4) - our live
+EN is already deeper, nothing lost. Their dark footer deviation is
+consistent with our theater law - acceptable.
+Ship: welded chain (zip-extracted lint PASS), healthcheck 1.72.97,
+options set via /wp/v2/settings 200, LiteSpeed purged, temp snippet
++ media zip cleaned (404/204). Live checks: shoreline hero True,
+renewal band art True, rentals band art True, has-img layout True.
+FLOATING: regenerate Israeli-authentic renewal sketch (prompt
+delivered to owner); renewal payload פרטי: title fix; owner phone
+test /my-rentals/; credential rotation still owed by owner.
+
 ## 2026-07-12 (52) - v1.72.96 EVIDENCE EXPORT + ENRICHED DEMO + THE ONE-SHOT LOVABLE PROMPT
 Sequential rentals work per owner "proceed":
 1) EVIDENCE EXPORT live: every apartment panel has "ייצוא תיק

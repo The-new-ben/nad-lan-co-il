@@ -46,6 +46,8 @@ add_action( 'rest_api_init', function () {
 	register_setting( 'general', 'nadlan_home_video_webm', array( 'type' => 'string', 'sanitize_callback' => 'esc_url_raw', 'default' => '', 'show_in_rest' => true ) );
 	register_setting( 'general', 'nadlan_home_video_poster', array( 'type' => 'string', 'sanitize_callback' => 'esc_url_raw', 'default' => '', 'show_in_rest' => true ) );
 	register_setting( 'general', 'nadlan_home_hero_aerial', array( 'type' => 'string', 'sanitize_callback' => 'esc_url_raw', 'default' => '', 'show_in_rest' => true ) );
+	register_setting( 'general', 'nadlan_ur_band_img', array( 'type' => 'string', 'sanitize_callback' => 'esc_url_raw', 'default' => '', 'show_in_rest' => true ) );
+	register_setting( 'general', 'nadlan_rm_band_img', array( 'type' => 'string', 'sanitize_callback' => 'esc_url_raw', 'default' => '', 'show_in_rest' => true ) );
 } );
 
 add_action( 'admin_init', function () {
@@ -325,7 +327,9 @@ if ( ! function_exists( 'nadlan_hv2_band_renewal' ) ) {
 	   a product, not a page - it earns a band like the flagships do. */
 	function nadlan_hv2_band_renewal() {
 		?>
-	<section class="nlhv2-band nlhv2-renewal">
+	<?php $ur_img = trim( (string) get_option( 'nadlan_ur_band_img', '' ) ); ?>
+	<section class="nlhv2-band nlhv2-renewal<?php echo $ur_img ? ' has-img' : ''; ?>">
+		<?php if ( $ur_img ) : ?><div class="nlhv2-band-art" style="background-image:url(<?php echo esc_url( $ur_img ); ?>)" role="img" aria-label=""></div><?php endif; ?>
 		<div class="nlhv2-renewal-in">
 			<p class="nlhv2-kicker nlhv2-renewal-k"><?php nadlan_e( 'ur_kicker' ); ?></p>
 			<h2><?php nadlan_e( 'ur_title' ); ?></h2>
@@ -351,7 +355,9 @@ if ( ! function_exists( 'nadlan_hv2_band_rentals' ) ) {
 	function nadlan_hv2_band_rentals() {
 		if ( ! function_exists( 'nadlan_rm_on' ) || ! nadlan_rm_on() ) { return; }
 		?>
-	<section class="nlhv2-band nlhv2-rentals">
+	<?php $rm_img = trim( (string) get_option( 'nadlan_rm_band_img', '' ) ); ?>
+	<section class="nlhv2-band nlhv2-rentals<?php echo $rm_img ? ' has-img' : ''; ?>">
+		<?php if ( $rm_img ) : ?><div class="nlhv2-band-art" style="background-image:url(<?php echo esc_url( $rm_img ); ?>)" role="img" aria-label=""></div><?php endif; ?>
 		<div class="nlhv2-rentals-in">
 			<p class="nlhv2-kicker"><?php nadlan_e( 'rm_kicker' ); ?></p>
 			<h2><?php nadlan_e( 'rm_title' ); ?></h2>
@@ -862,6 +868,10 @@ if ( ! function_exists( 'nadlan_hv2_assets' ) ) {
 .nlhv2-rentals-sub{color:#51483A;font:400 14.5px/1.75 Heebo,sans-serif;margin:0 0 18px;max-width:620px}
 .nlhv2-rentals-steps span{background:#F3EEE3;border-color:#E2DCD0;color:#51483A}
 .nlhv2-rentals-note{color:#8E877A;font:600 12px Heebo,sans-serif;margin:14px 0 0}
+.nlhv2-renewal.has-img,.nlhv2-rentals.has-img{display:grid;grid-template-columns:1.15fr .85fr;gap:clamp(18px,3vw,34px);align-items:center}
+.nlhv2-band-art{order:2;min-height:300px;height:100%;border-radius:16px;background-position:center;background-size:cover;background-repeat:no-repeat;border:1px solid #E2DCD0}
+.nlhv2-renewal.has-img .nlhv2-band-art{border-color:#3A342A}
+@media(max-width:860px){.nlhv2-renewal.has-img,.nlhv2-rentals.has-img{grid-template-columns:1fr}.nlhv2-band-art{order:0;min-height:220px}}
 .nlhv2-flagdev{display:block;margin-top:8px;color:#9C7A3C;font-weight:700;text-decoration:none;font-size:13.5px}
 .nlhv2-flagdev:hover{text-decoration:underline}
 /* sketch-plate listing art must never be cropped - the facilities must stay visible */
