@@ -1,5 +1,38 @@
 # AGENT-LOG - the God brain (append-only, newest on top)
 
+## 2026-07-12 (49) - RECOVERED. v1.72.91 LIVE AND VERIFIED. POST-MORTEM COMPLETE.
+Timeline of the recovery: (1) owner renamed nadlan-config ->
+nadlan-config.off via File Manager Advanced -> site returned;
+(2) my redeploy of 1.72.91 + activate took the site DOWN AGAIN -
+root cause best-assessed as a corrupted install: the owner's rename
+raced my Plugin_Upgrader extraction (the 1.72.91 code is clean - a
+full WP-stub harness loads every module locally without error);
+(3) recovery-mode email path is DEAD on this site (no outbound
+mail) - never rely on it; (4) owner deleted BOTH folders on my
+instruction; monitor caught wp-json 200 and the staged recover.sh
+ran: leftover snippets cleaned, KNOWN-GOOD 1.72.89 installed +
+healthcheck/home verified, then 1.72.91 installed as a normal
+upgrade + verified. Total owner-visible downtime bounded by
+LiteSpeed cache for anon pages; backend down ~1h.
+POST-RECOVERY VERIFY (all PASS on live): aerial hero, LIGHT
+renewal band, dark-band gradient gone, honest flagship copy
+("אינם לקוחות שלנו") + fl_dev CTA on HE+EN, cbs bars sand,
+disable-zoom scroll fix, map label-clicks, is-sketch no-crop,
+light map + city chips, /urban-renewal/ + /my-renewal/ +
+/projects/ + /professionals/ all 200, healthcheck 1.72.91.
+NOTE: LiteSpeed minifies + LOWERCASES hex colors in inline CSS -
+case-insensitive matching in all future CSS live-verifies.
+HYGIENE FIND: 209 snippets in Code Snippets, 109 leftover tmp-*
+from ALL agent sessions ever (0 active - no exposure, pure mess).
+Bulk-deleted. NEW HABIT: deploy rituals must delete BY NAME SWEEP
+at the end, not only by remembered id.
+NEW LAWS from the incident (in the deploy skill): (a) lint gate =
+one && chain through deploy, (b) php -l files EXTRACTED FROM THE
+ZIP, (c) NEVER deploy while anyone might be touching the file
+system - announce deploys when the owner is in the file manager,
+(d) recovery playbook: rename/delete plugin folder via owner ->
+install known-good -> upgrade, with a Monitor watching wp-json.
+
 ## 2026-07-12 (48) - OUTAGE: v1.72.90 SHIPPED A PARSE ERROR. SITE DOWN. AWAITING OWNER RENAME.
 WHAT HAPPENED: the de-darken round (light renewal band, cbs bar
 recolor, sketch no-crop, disable-zoom scroll fix, map label-click,
