@@ -386,7 +386,8 @@ if ( ! function_exists( 'nadlan_hv2_band_flagships' ) ) {
 	<section class="nlhv2-band nlhv2-flagships">
 		<header><p class="nlhv2-kicker"><?php nadlan_e( 'fl_kicker' ); ?></p><h2><?php nadlan_e( 'fl_title' ); ?></h2>
 			<a href="<?php echo esc_url( home_url( '/premium/' ) ); ?>"><?php nadlan_e( 'fl_all' ); ?></a></header>
-		<p class="nlhv2-flagsub"><?php nadlan_e( 'fl_sub' ); ?></p>
+		<p class="nlhv2-flagsub"><?php nadlan_e( 'fl_sub' ); ?>
+			<a class="nlhv2-flagdev" href="<?php echo esc_url( home_url( '/advertise/' ) ); ?>"><?php nadlan_e( 'fl_dev' ); ?> ←</a></p>
 		<div class="nlhv2-show">
 			<div class="nlhv2-show-stage" id="nlhv2-shstage" data-glb="<?php echo esc_attr( $first['glb'] ); ?>"<?php echo $first['poster'] ? ' style="background-image:url(' . esc_url( $first['poster'] ) . ')"' : ''; ?>>
 				<button class="nlhv2-show-spin" id="nlhv2-shspin" type="button"><?php nadlan_e( 'sh_spin' ); ?></button>
@@ -572,7 +573,7 @@ if ( ! function_exists( 'nadlan_hv2_band_magazine' ) ) {
 		<header><p class="nlhv2-kicker"><?php nadlan_e( 'mg_kicker' ); ?></p><h2><?php nadlan_e( 'mg_title' ); ?></h2></header>
 		<div class="nlhv2-mag">
 			<a class="nlhv2-mag-lead" href="<?php echo esc_url( get_permalink( $lead ) ); ?>">
-				<span class="nlhv2-list-media"<?php echo $img ? ' style="background-image:url(' . esc_url( $img ) . ')"' : ''; ?>></span>
+				<span class="nlhv2-list-media<?php echo $img && preg_match( '/\.svg(\?|$)/i', $img ) ? ' is-sketch' : ''; ?>"<?php echo $img ? ' style="background-image:url(' . esc_url( $img ) . ')"' : ''; ?>></span>
 				<b><?php echo esc_html( get_the_title( $lead ) ); ?></b>
 				<span><?php echo esc_html( get_the_date( 'd/m/Y', $lead ) ); ?></span>
 			</a>
@@ -811,19 +812,24 @@ if ( ! function_exists( 'nadlan_hv2_assets' ) ) {
 .nlhv2-hero--aerial{min-height:540px}
 @media(max-width:860px){.nlhv2-hero--aerial{min-height:480px}}
 .nlhv2-dronemap{padding:0}
-.nlhv2-renewal{background:radial-gradient(ellipse at 82% 8%,#26221733 0%,transparent 55%),#14130F;border-radius:22px;padding:clamp(26px,4vw,44px)}
+/* light band (owner 2026-07-12: the page had too many dark blocks) */
+.nlhv2-renewal{background:#F3EEE3;border:1px solid #E2DCD0;border-radius:22px;padding:clamp(26px,4vw,44px)}
 .nlhv2-renewal-in{max-width:760px}
-.nlhv2-renewal-k{color:#E9D9A8!important}
-.nlhv2-renewal h2{color:#FAF7F1;font-family:"Frank Ruhl Libre",serif;font-size:clamp(1.5rem,1.1rem+1.6vw,2.1rem);margin:6px 0 8px}
-.nlhv2-renewal-sub{color:#C9C2B4;font:400 14.5px/1.75 Heebo,sans-serif;margin:0 0 18px;max-width:620px}
+.nlhv2-renewal-k{color:#9C7A3C!important}
+.nlhv2-renewal h2{color:#1B1A17;font-family:"Frank Ruhl Libre",serif;font-size:clamp(1.5rem,1.1rem+1.6vw,2.1rem);margin:6px 0 8px}
+.nlhv2-renewal-sub{color:#51483A;font:400 14.5px/1.75 Heebo,sans-serif;margin:0 0 18px;max-width:620px}
 .nlhv2-renewal-steps{display:flex;gap:12px;flex-wrap:wrap;margin:0 0 20px}
-.nlhv2-renewal-steps span{display:inline-flex;align-items:center;gap:9px;background:rgba(250,247,241,.06);border:1px solid rgba(233,217,168,.3);border-radius:999px;padding:9px 16px 9px 10px;color:#E9E2D2;font:600 13px Heebo,sans-serif}
+.nlhv2-renewal-steps span{display:inline-flex;align-items:center;gap:9px;background:#fff;border:1px solid #E2DCD0;border-radius:999px;padding:9px 16px 9px 10px;color:#51483A;font:600 13px Heebo,sans-serif}
 .nlhv2-renewal-steps i{display:inline-block;width:24px;height:24px;border-radius:50%;background:#9C7A3C;color:#FAF7F1;font:700 12px/24px "Frank Ruhl Libre",serif;font-style:normal;text-align:center}
 .nlhv2-renewal-ctas{display:flex;gap:12px;flex-wrap:wrap}
-.nlhv2-renewal-go{background:#C2563A;color:#FAF7F1;border-radius:11px;padding:14px 24px;font:700 14.5px Heebo,sans-serif;text-decoration:none;box-shadow:0 12px 28px -12px rgba(194,86,58,.6)}
-.nlhv2-renewal-alt{border:1.5px solid rgba(233,217,168,.5);color:#E9D9A8;border-radius:11px;padding:14px 24px;font:700 14.5px Heebo,sans-serif;text-decoration:none}
-.nlhv2-renewal-go:hover,.nlhv2-renewal-alt:hover{filter:brightness(1.07)}
+.nlhv2-renewal-go{background:#C2563A;color:#FAF7F1;border-radius:11px;padding:14px 24px;font:700 14.5px Heebo,sans-serif;text-decoration:none;box-shadow:0 12px 28px -12px rgba(194,86,58,.45)}
+.nlhv2-renewal-alt{border:1.5px solid #9C7A3C;color:#1B1A17;background:#fff;border-radius:11px;padding:14px 24px;font:700 14.5px Heebo,sans-serif;text-decoration:none}
+.nlhv2-renewal-go:hover,.nlhv2-renewal-alt:hover{filter:brightness(1.05)}
 .nlhv2-renewal-note{color:#8E877A;font:600 12px Heebo,sans-serif;margin:14px 0 0}
+.nlhv2-flagdev{display:block;margin-top:8px;color:#9C7A3C;font-weight:700;text-decoration:none;font-size:13.5px}
+.nlhv2-flagdev:hover{text-decoration:underline}
+/* sketch-plate listing art must never be cropped - the facilities must stay visible */
+.nlhv2-list-media.is-sketch{background-size:contain!important;background-color:#F3EEE3}
 .nlhv2-hero-veil{position:absolute;inset:0;pointer-events:none;background:linear-gradient(180deg,rgba(20,19,15,.86) 0%,rgba(20,19,15,.55) 26%,rgba(20,19,15,.1) 52%,rgba(20,19,15,.45) 100%)}
 .nlhv2-hero--map .nlhv2-hero-copy{position:relative;z-index:6;max-width:640px;margin:26px clamp(12px,3vw,36px);padding:26px clamp(16px,3vw,32px);pointer-events:none;background:linear-gradient(180deg,rgba(20,19,15,.62),rgba(20,19,15,.42));border:1px solid rgba(233,217,168,.16);border-radius:18px;backdrop-filter:blur(3px)}
 .nlhv2-hero--map .nlhv2-hero-copy>*{pointer-events:auto}
@@ -840,7 +846,7 @@ if ( ! function_exists( 'nadlan_hv2_assets' ) ) {
 @media(max-width:720px){.nlhv2-cbs-bars{grid-template-columns:repeat(3,1fr);height:auto;row-gap:26px}}
 .nlhv2-cbs-bar{display:flex;flex-direction:column;align-items:center;justify-content:flex-end;gap:7px;height:100%;min-height:130px}
 .nlhv2-cbs-bar b{font:700 13.5px/1 Heebo,sans-serif;font-variant-numeric:tabular-nums;color:#1B1A17}
-.nlhv2-cbs-bar i{width:70%;max-width:54px;border-radius:7px 7px 0 0;background:#1B1A17}
+.nlhv2-cbs-bar i{width:70%;max-width:54px;border-radius:7px 7px 0 0;background:#C9BC9C}
 .nlhv2-cbs-bar.is-top i{background:var(--gold,#9C7A3C)}
 .nlhv2-cbs-bar span{font:500 12.5px/1.2 Heebo,sans-serif;color:#6D665C;text-align:center}
 .nlhv2-cbs-src{font-size:12px;color:#6D665C;border-top:1px solid var(--line,#E2DCD0);margin:16px 0 0;padding:10px 2px 2px}
@@ -1076,7 +1082,9 @@ if ( ! function_exists( 'nadlan_hv2_assets' ) ) {
 					mv.setAttribute("auto-rotate-delay","0");mv.setAttribute("rotation-per-second","16deg");
 					mv.setAttribute("interaction-prompt","none");mv.setAttribute("shadow-intensity","0.55");
 					mv.setAttribute("exposure","0.95");mv.setAttribute("environment-image","neutral");
-					mv.setAttribute("touch-action","pan-y");
+					// scroll must never get trapped over the stage (owner 2026-07-12):
+					// no wheel-zoom on the homepage showcase - drag rotates, wheel scrolls the page
+					mv.setAttribute("touch-action","pan-y");mv.setAttribute("disable-zoom","");
 					// the poster is a LOADING state only: once the real model renders,
 					// clear it so the 3D never spins on top of a frozen photo
 					mv.addEventListener("load",function(){
@@ -1119,7 +1127,7 @@ if ( ! function_exists( 'nadlan_hv2_assets' ) ) {
 			wrap.hidden=false;
 			ensureMV(function(){
 				var mv=slot.querySelector("model-viewer");
-				if(!mv){mv=document.createElement("model-viewer");mv.setAttribute("camera-controls","");mv.setAttribute("auto-rotate","");mv.setAttribute("shadow-intensity","0.6");mv.setAttribute("exposure","0.9");slot.appendChild(mv)}
+				if(!mv){mv=document.createElement("model-viewer");mv.setAttribute("camera-controls","");mv.setAttribute("auto-rotate","");mv.setAttribute("shadow-intensity","0.6");mv.setAttribute("exposure","0.9");mv.setAttribute("touch-action","pan-y");mv.setAttribute("disable-zoom","");slot.appendChild(mv)}
 				mv.setAttribute("src",b.dataset.glb);
 				mv.setAttribute("alt",b.dataset.title||"");
 				wrap.scrollIntoView({behavior:"smooth",block:"nearest"});

@@ -1,5 +1,41 @@
 # AGENT-LOG - the God brain (append-only, newest on top)
 
+## 2026-07-12 (48) - OUTAGE: v1.72.90 SHIPPED A PARSE ERROR. SITE DOWN. AWAITING OWNER RENAME.
+WHAT HAPPENED: the de-darken round (light renewal band, cbs bar
+recolor, sketch no-crop, disable-zoom scroll fix, map label-click,
+aspirational flagship reframe in 5 langs) was built into 1.72.90
+with a FATAL: a CSS comment containing an apostrophe sat inside the
+single-quoted PHP string that carries the homepage CSS - the
+apostrophe terminated the string (parse error, home-v2.php:831).
+php -l CAUGHT IT and the deploy ran anyway, because lint/build/
+deploy were separate lines, not one && chain. Deploy succeeded ->
+every WP entry point 500s (REST, wp-login, wp-admin, cron).
+RECOVERY REALITY: WP recovery-mode email never arrives (outbound
+mail was never configured - deliverability-last bit back). Checked
+owner Gmail via tools: nothing. Every self-service path exhausted:
+REST dead, cron dead, xmlrpc dead, install.php loads plugin-less
+but executes nothing. LiteSpeed masks the outage for cached anon
+pages only. ONLY fix: owner renames wp-content/plugins/
+nadlan-config -> nadlan-config-off in the UPress file manager;
+WP then skips the invalid plugin, site returns, and the FIXED
+1.72.91 zip (verified: php -l on files EXTRACTED FROM THE ZIP)
+redeploys via Code Snippets REST in ~2 min. Owner pinged by push +
+chat; outage Monitor armed (20s poll, emits on any state change).
+LAWS ADDED: deploy skill hard rule 0 - the lint gate must be one
+&& chain through the deploy call + zip-extracted lint before
+upload. Broken 1.72.90 zip deleted from plugin-dist + logged in
+docs/GRAVEYARD.md so no update path can ever grab it.
+IN FLIGHT WHEN IT BROKE (all in 1.72.91, ready): light renewal
+band, cbs bars sand, sketch listings uncropped, 3D scroll trap
+fixed (disable-zoom), map name-labels clickable, flagship honesty
+reframe ("היזמים המוצגים אינם לקוחות שלנו") + fl_dev CTA to
+/advertise/ in 5 langs. Plus the completed rental-management
+research (Zillow Rental Manager, Avail/TurboTenant/RentRedi/
+Innago/Azibo/Apartments.com, IL: WeCheck/Rentify/Yad2/Guesty, IL
+legal: 5,654 ILS exemption, 10% route + 90k rent deduction 2023,
+fair-rental-law 3/30-day repairs + 3-month security cap) - build
+starts after the site is back.
+
 ## 2026-07-12 (47) - v1.72.89 AERIAL HERO + LIGHT DE-CLUSTERED MAP + RENEWAL BAND ON HOME
 Owner: map in wrong place, black, cluster dots unusable on mobile;
 wants impressive aerial imagery, Zillow/Compass benchmark, renewal

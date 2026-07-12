@@ -229,14 +229,17 @@ if ( ! function_exists( 'nadlan_drone_map_band' ) ) {
 						layout:{"text-field":["get","short"],"text-size":11,"text-font":["DIN Pro Medium","Arial Unicode MS Bold"],"text-anchor":"top","text-offset":[0,0.7],"text-optional":true,"text-allow-overlap":false},
 						paint:{"text-color":PAL.label,"text-halo-color":PAL.halo,"text-halo-width":1.3}});
 					function popHtml(p){return '<div class="nldrone-pop" dir="auto"><b>'+p.title+"</b>"+(p.img?'<img src="'+p.img+'" alt="" loading="lazy">':"")+(p.city?'<div style="font-size:12px;color:#6D665C">'+p.city+(p.conf==="city"?" \u00b7 "+L.city:"")+"</div>":"")+'<a href="'+p.url+'">'+L.top+"</a></div>"}
-					map.on("click","nl-points",function(e){
+					var openPin=function(e){
 						var p=e.features[0].properties;
 						new mapboxgl.Popup({offset:14,maxWidth:"250px"}).setLngLat(e.features[0].geometry.coordinates).setHTML(popHtml(p)).addTo(map);
-					});
+					};
+					// the NAME LABEL is a far bigger tap target than the dot - both open the card
+					map.on("click","nl-points",openPin);
+					map.on("click","nl-point-labels",openPin);
 					map.on("click","nl-city-chips",function(e){
 						map.easeTo({center:e.features[0].geometry.coordinates,zoom:11.8,pitch:isHero?55:46,duration:1100});
 					});
-					["nl-points","nl-city-chips"].forEach(function(l){
+					["nl-points","nl-point-labels","nl-city-chips"].forEach(function(l){
 						map.on("mouseenter",l,function(){map.getCanvas().style.cursor="pointer"});
 						map.on("mouseleave",l,function(){map.getCanvas().style.cursor=""});
 					});

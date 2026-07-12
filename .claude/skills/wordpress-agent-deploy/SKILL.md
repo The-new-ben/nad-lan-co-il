@@ -97,6 +97,17 @@ curl -s -u "$WP_USER:$WP_APP_PASSWORD" -X POST "$WP_BASE_URL/wp-json/agentdeploy
 ```
 
 ## Hard rules (violations have caused real outages)
+0. **THE LINT GATE IS A CHAIN, NOT A LINE (outage 2026-07-12).** `php -l` printed
+   a parse error and the deploy STILL ran, because lint / build / deploy were
+   separate lines in one Bash call - the failure did not stop the sequence, and
+   the site went down hard (every WP entry point 500s; with outbound mail dead
+   the WP recovery email never arrives - there is NO self-service recovery).
+   The ONLY acceptable shape is one `&&` chain from lint to the deploy call:
+   `php -l a.php && php -l b.php && build && assert-zip && upload && deploy`.
+   Additionally: extract the changed file(s) FROM the built zip and `php -l`
+   them again before upload - the zip is what ships, not the working tree.
+   Root cause that day: an apostrophe in a CSS comment that lived inside a
+   single-quoted PHP string. Watch every apostrophe near PHP strings.
 1. **NEVER top-level privileged code in a global snippet.** Global snippets run
    on EVERY request at plugins_loaded; one fatal (e.g. `wp_update_post` before
    `init`) 500s the whole site including the REST API you'd fix it with.
