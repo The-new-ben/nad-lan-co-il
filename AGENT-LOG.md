@@ -1,5 +1,59 @@
 # AGENT-LOG - the God brain (append-only, newest on top)
 
+## 2026-07-12 (51) - v1.72.94-95 THE DIGITAL LEASE FILE: RESEARCH-DEEP RENTALS + FULL EN + MANUAL + LOVABLE KIT
+Owner delivered his ChatGPT deep-research (the "digital lease file"
+spec: 2026 tax numbers, fair-rental duties, CPI mechanics, status
+machines, reminder engine, monetization stack). Applied deep:
+- nadlan_rm_law(): the statutory layer as data - repair 3/30 days,
+  notices 90/60, security return 60, tax 2026 ceiling 5,654,
+  deadline 2027-01-30, renter-lessor cap 90,000. Every reminder in
+  the UI carries its number from here, labeled estimate.
+- SIX HEALTH CARDS (חוזה/שכ"ד/בטוחות/תיקונים/מס/חידוש) traffic-light
+  computed portfolio-wide + "הפעולה הבאה שלי" feed sorted by legal
+  risk (late rent > urgent repair/ended lease/over-cap deposit >
+  notice windows > docs) - the research's core dashboard pattern.
+- SECURITIES REGISTER per unit (check/shtar/arev/bank + deposit
+  amount) with the statutory cap LIVE: min(3R, M*R/3), red warning
+  above cap.
+- CPI CALCULATOR per linked unit: base index (persisted), current
+  index input, linked %, floor toggle -> adjusted rent with the
+  formula shown; honest "the lease wording governs".
+- TAX ESTIMATOR card: monthly exemption band math (E=G<=C?G:2C-G),
+  10% route annual with the 90k renter-lessor deduction
+  (D=min(P,R,90000)), deadline chip - all "verify with רשות המסים".
+- MAINTENANCE upgraded: urgency (urgent/standard) + statutory
+  outer-limit chips + past-limit red flag. NEVER an "evict" button.
+- FULL ENGLISH: ?lang=en on /my-rentals/ - landing 100% EN (LTR,
+  hreflang he/en/x-default, EN FAQ schema), app strings via
+  data-i18n, payload vocab EN (statuses, docs), lang switch links.
+- 3D ZOOM FIX (owner: opened too zoomed): initial orbit
+  max(56, floors*3.05*2.2)m, min radius 30m, max 110m.
+- CONNECTIONS: unit actions now link Studio (/studio/), pros
+  (?context=maintenance), listing wizard, WhatsApp reminder.
+- HOTFIX 95: demo route callback lacked the WP_REST_Request param
+  my lang edit referenced -> that route 500'd (site fine); welded
+  chain caught it in verification, fixed + verified EN+HE payloads.
+- docs/MANUAL.md GENERATED (78KB, 108 modules): products table,
+  all feature flags, every module's doc-header + REST routes +
+  shortcodes. Regenerate after new modules.
+- LOVABLE KIT written (handoff/claude-design/lovable-kit-2026-07-12
+  .md): Knowledge file (tokens, RTL mandate, composition laws,
+  never-do), founding scaffold prompt, 12 section prompts with real
+  Hebrew copy, final audit prompt. Strategy per research: Knowledge
+  file is the lever, section-by-section builds, real copy only.
+Live-verified: EN landing 9/9 checks (LTR, no stray Hebrew,
+hreflang), EN demo payload ("Paid"/"Signed lease"/5654), HE intact,
+healthcheck 1.72.95.
+FLOATING: studio-in-rental deep integration (mark maintenance ON
+the apartment floor plan - the owner's next wow; studio link is
+live, the marking layer is the build), lease-contract generator
+(compliance pack - the monetization anchor), tenant invite
+read-only view, evidence export (zip of the lease file), rentals
+demo seed lacks securities/base_index data (add to seed), renewal
+payload "פרטי:" title fix, imagery mega-prompt for a Claude cohort
+(after Lovable pass), homepage direction pick still open,
+GreenInvoice key, UPress ticket, credential rotation, #56.
+
 ## 2026-07-12 (50) - v1.72.92-93 RENTAL MANAGEMENT v1 IS LIVE: MAP -> 3D -> APARTMENT
 The new product front (owner order: "always use the 3D models and
 the maps - this is something others don't offer").

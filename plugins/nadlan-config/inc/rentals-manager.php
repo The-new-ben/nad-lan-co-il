@@ -73,6 +73,41 @@ if ( ! function_exists( 'nadlan_rm_unit_statuses' ) ) {
 		);
 	}
 }
+if ( ! function_exists( 'nadlan_rm_doc_keys_lang' ) ) {
+	function nadlan_rm_doc_keys_lang( $lang ) {
+		if ( 'en' === $lang ) {
+			return array( 'contract' => 'Signed lease', 'nesach' => 'Land registry extract (Tabu)', 'protocol' => 'Move-in protocol + photos', 'securities' => 'Securities (check / promissory note / guarantors)', 'insurance' => 'Building insurance' );
+		}
+		return nadlan_rm_doc_keys();
+	}
+}
+if ( ! function_exists( 'nadlan_rm_statuses_lang' ) ) {
+	function nadlan_rm_statuses_lang( $lang ) {
+		$s = nadlan_rm_unit_statuses();
+		if ( 'en' === $lang ) {
+			$en = array( 'ok' => 'Paid', 'due' => 'Month not marked yet', 'late' => 'Overdue', 'vacant' => 'Vacant', 'unowned' => 'Not mine' );
+			foreach ( $en as $k => $l ) { if ( isset( $s[ $k ] ) ) { $s[ $k ][0] = $l; } }
+		}
+		return $s;
+	}
+}
+/* the statutory layer (2026): every number labeled, every reminder sourced.
+   Source: gov.il deductions booklet 2026 + KolZchut fair-rental pages. */
+if ( ! function_exists( 'nadlan_rm_law' ) ) {
+	function nadlan_rm_law() {
+		return array(
+			'repair_urgent_days'   => 3,
+			'repair_standard_days' => 30,
+			'notice_landlord_days' => 90,
+			'notice_tenant_days'   => 60,
+			'security_return_days' => 60,
+			'tax_year'             => 2026,
+			'tax_ceiling'          => 5654,
+			'tax_deadline'         => '2027-01-30',
+			'renter_lessor_cap'    => 90000,
+		);
+	}
+}
 if ( ! function_exists( 'nadlan_rm_clean_units' ) ) {
 	function nadlan_rm_clean_units( $raw ) {
 		$dirs = array( 'west', 'east', 'north', 'south' );
@@ -89,11 +124,18 @@ if ( ! function_exists( 'nadlan_rm_clean_units' ) ) {
 			foreach ( array_slice( (array) ( $u['maintenance'] ?? array() ), 0, 60 ) as $mm ) {
 				if ( ! is_array( $mm ) || '' === trim( (string) ( $mm['text'] ?? '' ) ) ) { continue; }
 				$maint[] = array(
-					'text'   => mb_substr( sanitize_text_field( (string) $mm['text'] ), 0, 300 ),
-					'at'     => mb_substr( sanitize_text_field( (string) ( $mm['at'] ?? current_time( 'mysql' ) ) ), 0, 25 ),
-					'status' => in_array( $mm['status'] ?? '', array( 'open', 'done' ), true ) ? $mm['status'] : 'open',
+					'text'    => mb_substr( sanitize_text_field( (string) $mm['text'] ), 0, 300 ),
+					'at'      => mb_substr( sanitize_text_field( (string) ( $mm['at'] ?? current_time( 'mysql' ) ) ), 0, 25 ),
+					'status'  => in_array( $mm['status'] ?? '', array( 'open', 'done' ), true ) ? $mm['status'] : 'open',
+					'urgency' => in_array( $mm['urgency'] ?? '', array( 'urgent', 'standard' ), true ) ? $mm['urgency'] : 'standard',
 				);
 			}
+			$sec_in = (array) ( $u['securities'] ?? array() );
+			$sec = array(
+				'check' => ! empty( $sec_in['check'] ), 'shtar' => ! empty( $sec_in['shtar'] ),
+				'arev' => ! empty( $sec_in['arev'] ), 'bank' => ! empty( $sec_in['bank'] ),
+				'deposit_amount' => max( 0, min( 1000000, (int) ( $sec_in['deposit_amount'] ?? 0 ) ) ),
+			);
 			$out[] = array(
 				'id'          => sanitize_key( $u['id'] ),
 				'floor'       => max( 0, min( 60, (int) ( $u['floor'] ?? 0 ) ) ),
@@ -107,6 +149,10 @@ if ( ! function_exists( 'nadlan_rm_clean_units' ) ) {
 				'end'         => preg_match( '/^\d{4}-\d{2}-\d{2}$/', (string) ( $u['end'] ?? '' ) ) ? $u['end'] : '',
 				'option_until' => preg_match( '/^\d{4}-\d{2}-\d{2}$/', (string) ( $u['option_until'] ?? '' ) ) ? $u['option_until'] : '',
 				'linkage'     => in_array( $u['linkage'] ?? '', array( 'none', 'madad' ), true ) ? $u['linkage'] : 'none',
+				'base_index'  => round( max( 0, min( 10000, (float) ( $u['base_index'] ?? 0 ) ) ), 2 ),
+				'linked_pct'  => max( 0, min( 100, (int) ( $u['linked_pct'] ?? 100 ) ) ),
+				'floor_clause' => ! empty( $u['floor_clause'] ),
+				'securities'  => $sec,
 				'docs'        => $docs,
 				'ledger'      => $ledger,
 				'maintenance' => $maint,
@@ -115,6 +161,75 @@ if ( ! function_exists( 'nadlan_rm_clean_units' ) ) {
 			if ( count( $out ) >= 200 ) { break; }
 		}
 		return $out;
+	}
+}
+
+/* ---------- UI strings for the app (data-i18n) ---------- */
+if ( ! function_exists( 'nadlan_rm_strings' ) ) {
+	function nadlan_rm_strings( $lang = 'he' ) {
+		if ( 'en' === $lang ) {
+			return array(
+				'load_fail' => 'Could not load your properties.', 'none_yet' => 'No properties yet - add your first one below.',
+				'units' => 'apartments', 'sel_title' => 'Selected apartment',
+				'sel_hint_mgr' => 'Tap an apartment on the model. A dashed apartment is not marked as yours yet - tap it to add it to your file.',
+				'sel_hint_ro' => 'Tap a colored apartment on the model to see its rental management.',
+				'portfolio' => 'Portfolio snapshot', 'buildings' => 'buildings', 'monthly_rent' => 'Monthly rent', 'late_n' => 'overdue', 'due_n' => 'not marked this month', 'vacant_n' => 'vacant',
+				'next_actions' => 'My next actions', 'no_actions' => 'Nothing urgent. Everything is on track.',
+				'derived_note' => 'Derived automatically from your data. Reminders only - not legal or tax advice.',
+				'health' => array( 'contract' => 'Lease', 'rent' => 'Rent', 'security' => 'Securities', 'repairs' => 'Repairs', 'tax' => 'Tax', 'renewal' => 'Renewal' ),
+				'label' => 'Apartment name', 'tenant' => 'Tenant', 'phone' => 'Tenant phone', 'rent' => 'Monthly rent (ILS)',
+				'start' => 'Lease start', 'end' => 'Lease end', 'opt' => 'Option until', 'linkage' => 'CPI linkage', 'link_none' => 'None', 'link_madad' => 'CPI-linked',
+				'ledger' => 'Rent tracking (12 months)', 'docs' => 'Document file', 'maint' => 'Maintenance', 'maint_new' => 'New issue', 'add' => 'Add',
+				'urgent' => 'Urgent (no reasonable living)', 'standard' => 'Standard', 'fix_by' => 'Statutory outer limit', 'overdue_fix' => 'Past the statutory limit',
+				'mark_done' => 'Done', 'reopen' => 'Reopen', 'notes' => 'Notes', 'save' => 'Save', 'saving' => 'Saving...', 'saved' => 'Saved', 'save_fail' => 'Save failed, try again',
+				'wa_btn' => 'WhatsApp reminder', 'wa_text' => 'Hi {name}, a friendly reminder about the rent for {month}. Thank you!',
+				'pro_btn' => 'Find a professional', 'list_btn' => 'List this apartment', 'studio_btn' => 'Plan the apartment (Studio)',
+				'sec_title' => 'Securities', 'sec_check' => 'Security check', 'sec_shtar' => 'Promissory note', 'sec_arev' => 'Guarantors', 'sec_bank' => 'Bank guarantee / cash deposit',
+				'sec_amount' => 'Deposit / guarantee amount (ILS)', 'sec_cap' => 'Legal cap for costly securities', 'sec_cap_f' => 'the lower of 3 months rent or one third of the total term rent',
+				'sec_over' => 'Above the legal cap - check with a lawyer',
+				'cpi_title' => 'CPI adjustment calculator', 'cpi_base' => 'Base index (from the lease)', 'cpi_cur' => 'Current index (CBS)', 'cpi_pct' => 'Linked percent', 'cpi_floor' => 'Floor at base rent (per the lease)',
+				'cpi_res' => 'Adjusted rent', 'cpi_note' => 'Enter index values from the CBS. The formula: rent x (current / base). Calculation aid only - the lease wording governs.',
+				'tax_title' => 'Rent tax estimate ({year})', 'tax_total' => 'Total monthly residential rent (ALL your apartments, including ones not managed here)',
+				'tax_exempt' => 'Exempt', 'tax_taxable' => 'Taxable (ordinary route)', 'tax_ten' => '10% route (annual)', 'tax_paid_rent' => 'Rent you pay for your own home (annual, if you rent)',
+				'tax_deadline' => '10% route payment deadline for {year}: {date}', 'tax_note' => 'Estimates only, based on the {year} ceiling of ILS {ceiling}/month. Verify with the Tax Authority or an accountant before acting.',
+				'notice_l' => 'Landlord notice window: {d} days before end', 'notice_t' => 'Tenant notice: {d} days',
+				'act_late' => '{label}, {city}: rent is overdue', 'act_due' => '{label}: this month not marked yet', 'act_end' => '{label}: lease ends in {d} days',
+				'act_ended' => '{label}: lease ENDED - renew or close', 'act_opt' => '{label}: option window closes in {d} days',
+				'act_repair' => '{label}: urgent repair - statutory limit {d} days', 'act_repair_std' => '{label}: open repair approaching 30-day limit',
+				'act_docs' => '{label}: document file incomplete', 'act_tax' => '10% route: report and pay by {date}', 'act_sec' => '{label}: deposit above the legal cap',
+			);
+		}
+		return array(
+			'load_fail' => 'לא הצלחנו לטעון את הנכסים.', 'none_yet' => 'אין נכסים עדיין - הוסיפו את הראשון למטה.',
+			'units' => 'דירות', 'sel_title' => 'הדירה שנבחרה',
+			'sel_hint_mgr' => 'הקישו על דירה במודל. דירה מקווקוות = עדיין לא סומנה כשלכם - הקישו כדי להוסיף אותה לתיק.',
+			'sel_hint_ro' => 'הקישו על דירה צבועה במודל כדי לראות את ניהול ההשכרה שלה.',
+			'portfolio' => 'תמונת התיק', 'buildings' => 'בניינים', 'monthly_rent' => 'שכר דירה חודשי', 'late_n' => 'בפיגור', 'due_n' => 'טרם סומנו החודש', 'vacant_n' => 'פנויות',
+			'next_actions' => 'הפעולה הבאה שלי', 'no_actions' => 'אין משימות דחופות. הכל במסלול.',
+			'derived_note' => 'נגזר אוטומטית מהנתונים שלכם. תזכורות בלבד - לא ייעוץ משפטי או ייעוץ מס.',
+			'health' => array( 'contract' => 'חוזה', 'rent' => 'שכ"ד', 'security' => 'בטוחות', 'repairs' => 'תיקונים', 'tax' => 'מס', 'renewal' => 'חידוש' ),
+			'label' => 'שם הדירה', 'tenant' => 'שוכר', 'phone' => 'טלפון שוכר', 'rent' => 'שכר דירה חודשי (₪)',
+			'start' => 'תחילת חוזה', 'end' => 'סיום חוזה', 'opt' => 'אופציה עד', 'linkage' => 'הצמדה למדד', 'link_none' => 'ללא', 'link_madad' => 'צמוד מדד',
+			'ledger' => 'מעקב תשלומים (12 חודשים)', 'docs' => 'תיק מסמכים', 'maint' => 'תחזוקה', 'maint_new' => 'תקלה חדשה', 'add' => 'הוספה',
+			'urgent' => 'דחוף (מונע מגורים סבירים)', 'standard' => 'רגיל', 'fix_by' => 'המועד החוקי המרבי', 'overdue_fix' => 'חלף המועד החוקי',
+			'mark_done' => 'טופל', 'reopen' => 'פתיחה', 'notes' => 'הערות', 'save' => 'שמירה', 'saving' => 'שומרים...', 'saved' => 'נשמר', 'save_fail' => 'השמירה נכשלה, נסו שוב',
+			'wa_btn' => 'תזכורת בוואטסאפ', 'wa_text' => 'היי {name}, תזכורת ידידותית לשכר הדירה של {month}. תודה!',
+			'pro_btn' => 'מציאת בעל מקצוע', 'list_btn' => 'פרסום הדירה', 'studio_btn' => 'תכנון הדירה (סטודיו)',
+			'sec_title' => 'בטוחות', 'sec_check' => 'צ\'ק ביטחון', 'sec_shtar' => 'שטר חוב', 'sec_arev' => 'ערבים', 'sec_bank' => 'ערבות בנקאית / פיקדון',
+			'sec_amount' => 'סכום הפיקדון / הערבות (₪)', 'sec_cap' => 'התקרה החוקית לבטוחות בעלות עלות', 'sec_cap_f' => 'הנמוך מבין 3 חודשי שכירות או שליש משכר הדירה לכל התקופה',
+			'sec_over' => 'מעל התקרה החוקית - בדקו עם עורך דין',
+			'cpi_title' => 'מחשבון הצמדה למדד', 'cpi_base' => 'מדד הבסיס (מהחוזה)', 'cpi_cur' => 'המדד הנוכחי (למ"ס)', 'cpi_pct' => 'אחוז ההצמדה', 'cpi_floor' => 'רצפה בגובה שכר הבסיס (לפי החוזה)',
+			'cpi_res' => 'שכר הדירה המעודכן', 'cpi_note' => 'מזינים ערכי מדד מהלמ"ס. הנוסחה: שכ"ד x (נוכחי / בסיס). עזר חישוב בלבד - נוסח החוזה קובע.',
+			'tax_title' => 'אומדן מס על שכר דירה ({year})', 'tax_total' => 'סך שכר הדירה החודשי למגורים (כל הדירות שלכם, כולל כאלה שלא מנוהלות כאן)',
+			'tax_exempt' => 'פטור', 'tax_taxable' => 'חייב (מסלול רגיל)', 'tax_ten' => 'מסלול 10% (שנתי)', 'tax_paid_rent' => 'שכר דירה שאתם משלמים על ביתכם (שנתי, אם אתם שוכרים)',
+			'tax_deadline' => 'מועד תשלום מסלול 10% עבור {year}: {date}', 'tax_note' => 'אומדנים בלבד, לפי תקרת {year} של {ceiling} ₪ לחודש. לפני פעולה בודקים מול רשות המסים או רואה חשבון.',
+			'notice_l' => 'חלון הודעת משכיר: {d} ימים לפני הסיום', 'notice_t' => 'הודעת שוכר: {d} ימים',
+			'act_late' => '{label}, {city}: שכר הדירה בפיגור', 'act_due' => '{label}: החודש טרם סומן',
+			'act_end' => '{label}: החוזה מסתיים בעוד {d} ימים', 'act_ended' => '{label}: החוזה הסתיים - חידוש או סגירה',
+			'act_opt' => '{label}: חלון האופציה נסגר בעוד {d} ימים',
+			'act_repair' => '{label}: תיקון דחוף - המועד החוקי {d} ימים', 'act_repair_std' => '{label}: תקלה פתוחה מתקרבת למועד 30 הימים',
+			'act_docs' => '{label}: תיק המסמכים חסר', 'act_tax' => 'מסלול 10%: דיווח ותשלום עד {date}', 'act_sec' => '{label}: פיקדון מעל התקרה החוקית',
+		);
 	}
 }
 
@@ -134,7 +249,7 @@ if ( ! function_exists( 'nadlan_rm_prop_ok' ) ) {
 
 /* ---------- payload ---------- */
 if ( ! function_exists( 'nadlan_rm_payload' ) ) {
-	function nadlan_rm_payload( $id ) {
+	function nadlan_rm_payload( $id, $lang = 'he' ) {
 		$units = json_decode( (string) get_post_meta( $id, 'rm_units', true ), true );
 		$city  = (string) get_post_meta( $id, 'city', true );
 		$p = get_post( $id );
@@ -149,8 +264,9 @@ if ( ! function_exists( 'nadlan_rm_payload' ) ) {
 			'is_demo'  => '1' === (string) get_post_meta( $id, 'is_demo', true ),
 			'plan'     => (string) ( get_post_meta( $id, 'rm_plan', true ) ?: 'free' ),
 			'can_manage' => nadlan_rm_can( $id ),
-			'statuses' => nadlan_rm_unit_statuses(),
-			'doc_keys' => nadlan_rm_doc_keys(),
+			'statuses' => nadlan_rm_statuses_lang( $lang ),
+			'doc_keys' => nadlan_rm_doc_keys_lang( $lang ),
+			'law'      => nadlan_rm_law(),
 			'centroid' => function_exists( 'nadlan_ur_space_centroid' ) ? nadlan_ur_space_centroid( $city ) : null,
 		);
 	}
@@ -170,14 +286,15 @@ add_action( 'rest_api_init', function () {
 	register_rest_route( 'nadlan/v1', '/rental-demo', array(
 		'methods' => 'GET',
 		'permission_callback' => function () { return nadlan_rm_on(); },
-		'callback' => function () {
-			$p = get_transient( 'nlrm_demo_payload' );
+		'callback' => function ( WP_REST_Request $req ) {
+			$lang = function_exists( 'nadlan_ur_req_lang' ) ? nadlan_ur_req_lang( (string) $req->get_param( 'lang' ) ) : 'he';
+			$p = get_transient( 'nlrm_demo_payload_' . $lang );
 			if ( ! is_array( $p ) ) {
 				$ids = get_posts( array( 'post_type' => 'nadlan_rentalprop', 'post_status' => 'any', 'posts_per_page' => 5,
 					'fields' => 'ids', 'meta_query' => array( array( 'key' => 'is_demo', 'value' => '1' ) ) ) );
 				if ( ! $ids ) { return new WP_Error( 'not_found', 'no demo portfolio', array( 'status' => 404 ) ); }
-				$p = array_map( function ( $id ) { $x = nadlan_rm_payload( $id ); $x['can_manage'] = false; return $x; }, $ids );
-				set_transient( 'nlrm_demo_payload', $p, 10 * MINUTE_IN_SECONDS );
+				$p = array_map( function ( $id ) use ( $lang ) { $x = nadlan_rm_payload( $id, $lang ); $x['can_manage'] = false; return $x; }, $ids );
+				set_transient( 'nlrm_demo_payload_' . $lang, $p, 10 * MINUTE_IN_SECONDS );
 			}
 			foreach ( $p as &$x ) { $x['can_manage'] = false; }
 			return array( 'props' => $p );
@@ -213,14 +330,15 @@ add_action( 'rest_api_init', function () {
 	register_rest_route( 'nadlan/v1', '/rental-props', array(
 		'methods' => 'GET',
 		'permission_callback' => function () { return is_user_logged_in() && nadlan_rm_on(); },
-		'callback' => function () {
-			return array( 'props' => array_map( 'nadlan_rm_payload', nadlan_rm_my_props() ) );
+		'callback' => function ( WP_REST_Request $req ) {
+			$lang = function_exists( 'nadlan_ur_req_lang' ) ? nadlan_ur_req_lang( (string) $req->get_param( 'lang' ) ) : 'he';
+			return array( 'props' => array_map( function ( $id ) use ( $lang ) { return nadlan_rm_payload( $id, $lang ); }, nadlan_rm_my_props() ) );
 		},
 	) );
 
 	register_rest_route( 'nadlan/v1', '/rental-prop/(?P<id>\d+)', array(
 		'methods' => 'GET', 'permission_callback' => $own,
-		'callback' => function ( $req ) { return nadlan_rm_payload( (int) $req['id'] ); },
+		'callback' => function ( $req ) { return nadlan_rm_payload( (int) $req['id'], function_exists( 'nadlan_ur_req_lang' ) ? nadlan_ur_req_lang( (string) $req->get_param( 'lang' ) ) : 'he' ); },
 	) );
 
 	register_rest_route( 'nadlan/v1', '/rental-prop/(?P<id>\d+)/units', array(
@@ -228,7 +346,7 @@ add_action( 'rest_api_init', function () {
 		'callback' => function ( WP_REST_Request $req ) {
 			$id = (int) $req['id'];
 			update_post_meta( $id, 'rm_units', wp_slash( wp_json_encode( nadlan_rm_clean_units( (array) $req->get_param( 'units' ) ), JSON_UNESCAPED_UNICODE ) ) );
-			return nadlan_rm_payload( $id );
+			return nadlan_rm_payload( $id, function_exists( 'nadlan_ur_req_lang' ) ? nadlan_ur_req_lang( (string) $req->get_param( 'lang' ) ) : 'he' );
 		},
 	) );
 
@@ -273,13 +391,13 @@ add_action( 'rest_api_init', function () {
 				array( 'id' => 'f6-1', 'floor' => 6, 'pos' => 0, 'dir' => 'north', 'label' => 'דירה 21', 'tenant_name' => '', 'tenant_phone' => '', 'rent' => 0, 'start' => '', 'end' => '', 'option_until' => '', 'linkage' => 'none',
 						'docs' => array(), 'ledger' => array(), 'maintenance' => array( array( 'text' => 'צביעה לפני שוכר חדש (דוגמה)', 'at' => gmdate( 'Y-m-d' ), 'status' => 'open' ) ), 'note' => 'פנויה - נתוני דוגמה' ),
 			) );
-			delete_transient( 'nlrm_demo_payload' );
+			foreach ( array( 'he', 'en' ) as $l ) { delete_transient( 'nlrm_demo_payload_' . $l ); }
 			return array( 'created' => true, 'ids' => $ids );
 		},
 	) );
 } );
 
-add_action( 'save_post_nadlan_rentalprop', function () { delete_transient( 'nlrm_demo_payload' ); } );
+add_action( 'save_post_nadlan_rentalprop', function () { foreach ( array( 'he', 'en' ) as $l ) { delete_transient( 'nlrm_demo_payload_' . $l ); } } );
 
 /* ---------- /my-rentals/ route ---------- */
 add_action( 'init', function () {
@@ -294,42 +412,57 @@ add_filter( 'query_vars', function ( $v ) { $v[] = 'nadlan_my_rentals'; return $
 add_action( 'template_redirect', function () {
 	if ( ! get_query_var( 'nadlan_my_rentals' ) ) { return; }
 	if ( ! nadlan_rm_on() ) { wp_safe_redirect( home_url( '/' ) ); exit; }
+	$lang = function_exists( 'nadlan_ur_req_lang' ) ? nadlan_ur_req_lang() : 'he';
+	if ( 'ru' === $lang ) { $lang = 'en'; }
 	$has = is_user_logged_in() && nadlan_rm_my_props();
-	nadlan_rm_render( $has ? 'live' : 'landing' );
+	nadlan_rm_render( $has ? 'live' : 'landing', $lang );
 	exit;
 } );
 
 /* ---------- render ---------- */
 if ( ! function_exists( 'nadlan_rm_mount' ) ) {
-	function nadlan_rm_mount( $mode ) {
+	function nadlan_rm_mount( $mode, $lang = 'he' ) {
 		$glb = esc_url( function_exists( 'nadlan_showroom_engine_base_url' ) ? nadlan_showroom_engine_base_url() . 'models/standard-residential.glb' : '' );
 		$token = function_exists( 'nadlan_mapbox_token' ) ? nadlan_mapbox_token() : '';
 		$js = esc_url( plugins_url( 'assets/rentals/rental-manager.js', dirname( __FILE__ ) ) . '?v=' . rawurlencode( NADLAN_CONFIG_VERSION ) );
 		?>
 <div id="nlrm-mount" class="nlrm-app" data-loading="1"
 	data-mode="<?php echo esc_attr( $mode ); ?>"
+	data-lang="<?php echo esc_attr( $lang ); ?>"
+	data-i18n="<?php echo esc_attr( wp_json_encode( nadlan_rm_strings( $lang ), JSON_UNESCAPED_UNICODE ) ); ?>"
 	data-rest="<?php echo esc_url( rest_url( 'nadlan/v1' ) ); ?>"
 	data-nonce="<?php echo esc_attr( is_user_logged_in() ? wp_create_nonce( 'wp_rest' ) : '' ); ?>"
 	data-glb="<?php echo $glb; // phpcs:ignore ?>"
 	data-mapbox="<?php echo esc_attr( $token ); ?>"
 	data-pros="<?php echo esc_url( home_url( '/professionals/' ) ); ?>"
-	data-wizard="<?php echo esc_url( home_url( '/list-property/' ) ); ?>">טוענים את הנכסים...</div>
+	data-wizard="<?php echo esc_url( home_url( '/list-property/' ) ); ?>"
+	data-studio="<?php echo esc_url( home_url( '/studio/' ) ); ?>"
+	data-glossary="<?php echo esc_url( home_url( '/glossary/' ) ); ?>"><?php echo esc_html( 'en' === $lang ? 'Loading your properties...' : 'טוענים את הנכסים...' ); ?></div>
 <script defer src="<?php echo $js; // phpcs:ignore ?>"></script>
 		<?php
 	}
 }
 
 if ( ! function_exists( 'nadlan_rm_render' ) ) {
-	function nadlan_rm_render( $mode ) {
+	function nadlan_rm_render( $mode, $lang = 'he' ) {
 		$landing = ( 'landing' === $mode );
-		$self = home_url( '/my-rentals/' );
-		$title = 'ניהול השכרות חינם לבעלי דירות: המפה, הבניין בתלת-ממד וכל דירה מושכרת במקום אחד | נדלן';
-		$desc  = 'מערכת חינמית לניהול דירות מושכרות: כל הנכסים על מפה, כל בניין במודל תלת-ממדי, ולכל דירה - שוכר, שכר דירה, מעקב תשלומים, תזכורות חוזה ומס, מסמכים ותחזוקה. בלי סליקה, בלי עמלות.';
+		$en = ( 'en' === $lang );
+		$self = home_url( '/my-rentals/' . ( $en ? '?lang=en' : '' ) );
+		$he_url = home_url( '/my-rentals/' ); $en_url = home_url( '/my-rentals/?lang=en' );
+		$title = $en
+			? 'Free Rental Management for Landlords in Israel: the Map, the 3D Building, Every Apartment in One File | Nadlan'
+			: 'ניהול השכרות חינם לבעלי דירות: המפה, הבניין בתלת-ממד וכל דירה מושכרת במקום אחד | נדלן';
+		$desc  = $en
+			? 'A free digital lease file for Israeli landlords: every property on a map, every building in 3D, and per apartment - tenant, rent tracking, CPI and tax reminders, documents and maintenance. No payment processing, no fees.'
+			: 'מערכת חינמית לניהול דירות מושכרות: כל הנכסים על מפה, כל בניין במודל תלת-ממדי, ולכל דירה - שוכר, שכר דירה, מעקב תשלומים, תזכורות חוזה ומס, מסמכים ותחזוקה. בלי סליקה, בלי עמלות.';
 		if ( $landing ) {
 			add_filter( 'pre_get_document_title', function () use ( $title ) { return $title; }, 99 );
-			add_action( 'wp_head', function () use ( $desc, $self ) {
+			add_action( 'wp_head', function () use ( $desc, $self, $he_url, $en_url ) {
 				echo '<meta name="description" content="' . esc_attr( $desc ) . '">' . "\n";
 				echo '<link rel="canonical" href="' . esc_url( $self ) . '">' . "\n";
+				echo '<link rel="alternate" hreflang="he" href="' . esc_url( $he_url ) . '">' . "\n";
+				echo '<link rel="alternate" hreflang="en" href="' . esc_url( $en_url ) . '">' . "\n";
+				echo '<link rel="alternate" hreflang="x-default" href="' . esc_url( $he_url ) . '">' . "\n";
 			}, 4 );
 		} else {
 			nocache_headers();
@@ -337,7 +470,7 @@ if ( ! function_exists( 'nadlan_rm_render' ) ) {
 		}
 		get_header();
 		?>
-<div class="nlrm" dir="rtl">
+<div class="nlrm" dir="<?php echo $en ? 'ltr' : 'rtl'; ?>" lang="<?php echo esc_attr( $lang ); ?>">
 	<style>
 	.nlrm{max-width:1120px;margin:0 auto;padding:24px 16px 60px;font-family:Heebo,sans-serif;color:#1B1A17}
 	.nlrm h1,.nlrm h2,.nlrm h3{font-family:"Frank Ruhl Libre",Georgia,serif}
@@ -405,38 +538,46 @@ if ( ! function_exists( 'nadlan_rm_render' ) ) {
 	</style>
 	<?php if ( $landing ) : ?>
 	<header class="nlrm-hero">
-		<p class="nlrm-kicker">ניהול השכרות · חינם לבעלי דירות</p>
-		<h1>כל הדירות המושכרות שלכם: על המפה, בתוך הבניין, בשליטה מלאה</h1>
-		<p class="sub">מוסיפים נכס, מסמנים את הדירות שלכם על מודל תלת-ממדי של הבניין, ומנהלים הכל מדירה אחת: שוכר, שכר דירה, מעקב תשלומים, תזכורות חוזה ומס, מסמכים ותחזוקה. בלי אקסל ובלי עמלות.</p>
+		<p class="nlrm-kicker"><?php echo $en ? 'Rental management · free for landlords' : 'ניהול השכרות · חינם לבעלי דירות'; ?></p>
+		<h1><?php echo $en ? 'Every apartment you rent out: on the map, inside the building, fully in control' : 'כל הדירות המושכרות שלכם: על המפה, בתוך הבניין, בשליטה מלאה'; ?></h1>
+		<p class="sub"><?php echo $en ? 'Add a property, mark your apartments on a 3D model of the building, and manage everything per apartment: tenant, rent tracking, lease and tax reminders, documents and maintenance. No spreadsheets, no fees.' : 'מוסיפים נכס, מסמנים את הדירות שלכם על מודל תלת-ממדי של הבניין, ומנהלים הכל מדירה אחת: שוכר, שכר דירה, מעקב תשלומים, תזכורות חוזה ומס, מסמכים ותחזוקה. בלי אקסל ובלי עמלות.'; ?></p>
 		<div class="nlrm-ctas">
-			<a class="nlrm-cta nlrm-cta--go" href="<?php echo esc_url( is_user_logged_in() ? '#nlrm-new' : wp_login_url( $self ) ); ?>">מתחילים לנהל, חינם</a>
+			<a class="nlrm-cta nlrm-cta--go" href="<?php echo esc_url( is_user_logged_in() ? '#nlrm-new' : wp_login_url( $self ) ); ?>"><?php echo $en ? 'Start managing, free' : 'מתחילים לנהל, חינם'; ?></a>
 		</div>
-		<p class="nlrm-badges">חינם לבעלי דירות · מעקב ותזכורות, לא סליקה · פרטי ולא מופיע בחיפוש</p>
+		<p class="nlrm-badges"><?php echo $en ? 'Free for landlords · tracking and reminders, no payment processing · private, never in search' : 'חינם לבעלי דירות · מעקב ותזכורות, לא סליקה · פרטי ולא מופיע בחיפוש'; ?></p>
+	<p style="text-align:center;margin:0 0 8px"><a style="color:#9C7A3C;font:600 13px Heebo" href="<?php echo esc_url( $en ? $he_url : $en_url ); ?>"><?php echo $en ? 'עברית' : 'English'; ?></a></p>
 	</header>
 	<div class="nlrm-steps">
-		<div class="nlrm-step"><i>1</i><b>מוסיפים נכס</b><p>עיר, כתובת, קומות - ונבנה לכם מודל תלת-ממדי של הבניין על המפה.</p></div>
-		<div class="nlrm-step"><i>2</i><b>מסמנים את הדירות שלכם</b><p>מקישים על הדירות שבבעלותכם על המודל וממלאים שוכר, שכר דירה ותאריכי חוזה.</p></div>
-		<div class="nlrm-step"><i>3</i><b>הכל במעקב אחד</b><p>צבע הדירה אומר הכל: שולם, ממתין, בפיגור, פנויה. תזכורות חוזה, מסמכים ותחזוקה - במקום אחד.</p></div>
+		<div class="nlrm-step"><i>1</i><b><?php echo $en ? 'Add a property' : 'מוסיפים נכס'; ?></b><p><?php echo $en ? 'City, address, floors - and we build a 3D model of your building on the map.' : 'עיר, כתובת, קומות - ונבנה לכם מודל תלת-ממדי של הבניין על המפה.'; ?></p></div>
+		<div class="nlrm-step"><i>2</i><b><?php echo $en ? 'Mark your apartments' : 'מסמנים את הדירות שלכם'; ?></b><p><?php echo $en ? 'Tap the apartments you own on the model and fill in tenant, rent and lease dates.' : 'מקישים על הדירות שבבעלותכם על המודל וממלאים שוכר, שכר דירה ותאריכי חוזה.'; ?></p></div>
+		<div class="nlrm-step"><i>3</i><b><?php echo $en ? 'One color says it all' : 'הכל במעקב אחד'; ?></b><p><?php echo $en ? 'The apartment color tells the story: paid, pending, overdue, vacant. Lease reminders, documents and maintenance - one place.' : 'צבע הדירה אומר הכל: שולם, ממתין, בפיגור, פנויה. תזכורות חוזה, מסמכים ותחזוקה - במקום אחד.'; ?></p></div>
 	</div>
 	<section class="nlrm-demo">
-		<div class="nlrm-demo-head"><h2>הדגמה חיה: תיק של משכיר עם שתי דירות</h2><span class="lbl">נתוני דוגמה</span></div>
-		<?php nadlan_rm_mount( 'demo' ); ?>
+		<div class="nlrm-demo-head"><h2><?php echo $en ? 'Live demo: a landlord file with four apartments' : 'הדגמה חיה: תיק של משכיר עם ארבע דירות'; ?></h2><span class="lbl"><?php echo $en ? 'Sample data' : 'נתוני דוגמה'; ?></span></div>
+		<?php nadlan_rm_mount( 'demo', $lang ); ?>
 	</section>
-	<div class="nlrm-honest">הגינות מלאה: המערכת עוקבת ומזכירה - היא לא גובה כסף ולא מבצעת סליקה. שכר הדירה ממשיך לעבור כרגיל (העברה בנקאית או צ'קים). תזכורות המס הן תזכורות בלבד - את המספרים המחייבים בודקים מול רשות המסים.</div>
+	<div class="nlrm-honest"><?php echo $en ? 'Full honesty: the system tracks and reminds - it does not collect money or process payments. Rent keeps flowing as usual (bank transfer or checks). Tax reminders are reminders only - binding numbers are verified with the Israel Tax Authority.' : 'הגינות מלאה: המערכת עוקבת ומזכירה - היא לא גובה כסף ולא מבצעת סליקה. שכר הדירה ממשיך לעבור כרגיל (העברה בנקאית או צ\'קים). תזכורות המס הן תזכורות בלבד - את המספרים המחייבים בודקים מול רשות המסים.'; ?></div>
 	<?php if ( is_user_logged_in() ) : ?>
 	<section class="nlrm-new" id="nlrm-new">
-		<h2 style="margin:0 0 10px;font-size:1.15rem">הוספת הנכס הראשון</h2>
+		<h2 style="margin:0 0 10px;font-size:1.15rem"><?php echo $en ? 'Add your first property' : 'הוספת הנכס הראשון'; ?></h2>
 		<div class="nlrm-f">
-			<label>עיר<input type="text" id="nlrm-city"></label>
-			<label>רחוב ומספר<input type="text" id="nlrm-addr"></label>
-			<label>קומות<input type="number" id="nlrm-floors" min="1" max="40" value="4"></label>
-			<label>דירות בקומה<input type="number" id="nlrm-upf" min="1" max="12" value="3"></label>
+			<label><?php echo $en ? 'City' : 'עיר'; ?><input type="text" id="nlrm-city"></label>
+			<label><?php echo $en ? 'Street and number' : 'רחוב ומספר'; ?><input type="text" id="nlrm-addr"></label>
+			<label><?php echo $en ? 'Floors' : 'קומות'; ?><input type="number" id="nlrm-floors" min="1" max="40" value="4"></label>
+			<label><?php echo $en ? 'Apartments per floor' : 'דירות בקומה'; ?><input type="number" id="nlrm-upf" min="1" max="12" value="3"></label>
 		</div>
-		<button type="button" class="nlrm-btn" id="nlrm-create">יצירת הנכס</button>
+		<button type="button" class="nlrm-btn" id="nlrm-create"><?php echo $en ? 'Create the property' : 'יצירת הנכס'; ?></button>
 		<div id="nlrm-createmsg" class="nlrm-note" aria-live="polite"></div>
 	</section>
 	<?php endif; ?>
-	<script type="application/ld+json"><?php echo wp_json_encode( array(
+	<script type="application/ld+json"><?php
+	$faq = $en ? array(
+		array( 'כמה זה עולה?', 'Rental management is free for landlords. No fees, no payment processing - rent keeps flowing directly to you.' ),
+		array( 'Who sees my data?', 'Only you. Properties are private, never listed in search, and access is protected by your account.' ),
+		array( 'What about CPI linkage and tax?', 'Mark a CPI-linked lease and get an adjustment calculator; the system also reminds you of the annual reporting date (January 30 on the 10 percent route). Binding numbers are always verified with the Israel Tax Authority.' ),
+	) : null;
+	if ( $faq ) { $faq[0][0] = 'How much does it cost?'; }
+	echo wp_json_encode( $faq ? array( '@context' => 'https://schema.org', '@type' => 'FAQPage', 'mainEntity' => array_map( function ( $qa ) { return array( '@type' => 'Question', 'name' => $qa[0], 'acceptedAnswer' => array( '@type' => 'Answer', 'text' => $qa[1] ) ); }, $faq ) ) : array(
 		'@context' => 'https://schema.org', '@type' => 'FAQPage', 'mainEntity' => array(
 			array( '@type' => 'Question', 'name' => 'כמה זה עולה?', 'acceptedAnswer' => array( '@type' => 'Answer', 'text' => 'ניהול ההשכרות חינמי לבעלי דירות. אין עמלות ואין סליקה - שכר הדירה ממשיך לעבור ישירות אליכם.' ) ),
 			array( '@type' => 'Question', 'name' => 'מי רואה את הנתונים שלי?', 'acceptedAnswer' => array( '@type' => 'Answer', 'text' => 'רק אתם. הנכסים פרטיים, לא מופיעים בחיפוש, והגישה מוגנת בחשבון שלכם.' ) ),
@@ -444,19 +585,19 @@ if ( ! function_exists( 'nadlan_rm_render' ) ) {
 		) ), JSON_UNESCAPED_UNICODE ); ?></script>
 	<?php else : ?>
 	<header style="margin-bottom:6px">
-		<h1 style="margin:0 0 4px">הנכסים המושכרים שלי</h1>
-		<p class="nlrm-note">פרטי לחשבון שלכם בלבד ואינו מופיע בחיפוש. מעקב ותזכורות - לא סליקה.</p>
+		<h1 style="margin:0 0 4px"><?php echo $en ? 'My rented properties' : 'הנכסים המושכרים שלי'; ?></h1>
+		<p class="nlrm-note"><?php echo $en ? 'Private to your account, never in search. Tracking and reminders - no payment processing.' : 'פרטי לחשבון שלכם בלבד ואינו מופיע בחיפוש. מעקב ותזכורות - לא סליקה.'; ?> <a href="<?php echo esc_url( $en ? $he_url : $en_url ); ?>" style="color:#9C7A3C;font-weight:600"><?php echo $en ? 'עברית' : 'English'; ?></a></p>
 	</header>
-	<?php nadlan_rm_mount( 'live' ); ?>
+	<?php nadlan_rm_mount( 'live', $lang ); ?>
 	<section class="nlrm-new" id="nlrm-new" style="margin-top:18px">
-		<h2 style="margin:0 0 10px;font-size:1.1rem">הוספת נכס נוסף</h2>
+		<h2 style="margin:0 0 10px;font-size:1.1rem"><?php echo $en ? 'Add another property' : 'הוספת נכס נוסף'; ?></h2>
 		<div class="nlrm-f">
-			<label>עיר<input type="text" id="nlrm-city"></label>
-			<label>רחוב ומספר<input type="text" id="nlrm-addr"></label>
-			<label>קומות<input type="number" id="nlrm-floors" min="1" max="40" value="4"></label>
-			<label>דירות בקומה<input type="number" id="nlrm-upf" min="1" max="12" value="3"></label>
+			<label><?php echo $en ? 'City' : 'עיר'; ?><input type="text" id="nlrm-city"></label>
+			<label><?php echo $en ? 'Street and number' : 'רחוב ומספר'; ?><input type="text" id="nlrm-addr"></label>
+			<label><?php echo $en ? 'Floors' : 'קומות'; ?><input type="number" id="nlrm-floors" min="1" max="40" value="4"></label>
+			<label><?php echo $en ? 'Apartments per floor' : 'דירות בקומה'; ?><input type="number" id="nlrm-upf" min="1" max="12" value="3"></label>
 		</div>
-		<button type="button" class="nlrm-btn" id="nlrm-create">יצירת הנכס</button>
+		<button type="button" class="nlrm-btn" id="nlrm-create"><?php echo $en ? 'Create the property' : 'יצירת הנכס'; ?></button>
 		<div id="nlrm-createmsg" class="nlrm-note" aria-live="polite"></div>
 	</section>
 	<?php endif; ?>
@@ -465,13 +606,13 @@ if ( ! function_exists( 'nadlan_rm_render' ) ) {
 	(function(){
 		var b=document.getElementById("nlrm-create");if(!b)return;
 		b.addEventListener("click",function(){
-			var m=document.getElementById("nlrm-createmsg");m.textContent="יוצרים...";
+			var m=document.getElementById("nlrm-createmsg");m.textContent="<?php echo $en ? 'Creating...' : 'יוצרים...'; ?>";
 			fetch("<?php echo esc_url( rest_url( 'nadlan/v1/rental-prop' ) ); ?>",{method:"POST",
 				headers:{"Content-Type":"application/json","X-WP-Nonce":"<?php echo esc_js( wp_create_nonce( 'wp_rest' ) ); ?>"},
 				body:JSON.stringify({city:document.getElementById("nlrm-city").value,address:document.getElementById("nlrm-addr").value,floors:document.getElementById("nlrm-floors").value,units_per_floor:document.getElementById("nlrm-upf").value})})
 			.then(function(r){return r.json().then(function(j){if(!r.ok)throw j;return j})})
 			.then(function(){location.href="<?php echo esc_url( $self ); ?>"})
-			.catch(function(e){m.textContent=(e&&e.message)||"שגיאה"});
+			.catch(function(e){m.textContent=(e&&e.message)||"<?php echo $en ? 'Error' : 'שגיאה'; ?>"});
 		});
 	})();
 	document.addEventListener("DOMContentLoaded",function(){document.querySelectorAll("h1").forEach(function(h){if(!h.textContent.trim()&&!h.children.length){h.remove()}})});
