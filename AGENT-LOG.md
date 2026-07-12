@@ -1,5 +1,60 @@
 # AGENT-LOG - the God brain (append-only, newest on top)
 
+## 2026-07-12 (50) - v1.72.92-93 RENTAL MANAGEMENT v1 IS LIVE: MAP -> 3D -> APARTMENT
+The new product front (owner order: "always use the 3D models and
+the maps - this is something others don't offer").
+RESEARCH BASE: Zillow Rental Manager (landlord-free, tenant pays
+$35, listing->application->lease->rent funnel, NO maintenance/
+accounting), Avail/TurboTenant/RentRedi/Innago/Azibo/Apartments.com
+compared; ISRAEL: no free self-serve rental manager exists (WeCheck
+sells guarantees, Yad2 = listings only, Guesty = short-term B2B);
+legal layer: 5,654 ILS/mo exemption (verify vs 2026 booklet), 10%
+route Jan-30 deadline + the 2023 90k rent-paid deduction, fair-
+rental-law 3/30-day repairs + 3-month security cap, madad linkage.
+STRATEGIC CALL: rent moves outside platforms in Israel (checks/
+transfers) -> v1 = TRACKING + REMINDERS + DOCS, no payments, no
+screening - stated honestly on the landing.
+BUILT (inc/rentals-manager.php + assets/rentals/rental-manager.js):
+- CPT nadlan_rentalprop (private, owner-only, rm_plan meta = future
+  monetization infra). Route /my-rentals/: INDEXABLE product landing
+  (hero, 3 steps, live demo, honesty band, FAQ JSON-LD) for anon/
+  empty; dashboard for landlords.
+- THE WOW FLOW: portfolio MAP on top (pins geocoded client-side,
+  terracotta = selected; click a building -> its 3D loads) -> 3D
+  standard model where EVERY OWNED APARTMENT IS COLORED BY DERIVED
+  RENT STATE (paid #517048 / current month unmarked gold / late
+  terracotta / vacant grey) and unclaimed grid positions are dashed
+  "+" ghosts - you CLAIM YOUR APARTMENTS ON THE MODEL -> click a
+  unit -> management panel: tenant+phone+rent+dates+madad linkage,
+  12-MONTH TAP LEDGER, docs checklist (incl. securities), 
+  maintenance log with done-toggle, notes, REAL actions (WhatsApp
+  rent reminder prefilled, find a professional, list the apartment).
+- Portfolio summary card: units/buildings/total monthly rent +
+  DERIVED DEADLINE CHIPS (contract ends <=90d, expired, option
+  window <=60d, Dec-Jan the 10%-route Jan-30 tax reminder) with the
+  honest "reminders only, not tax/legal advice" note.
+- REST: rental-prop create (5/day), rental-props, get, units save
+  (sanitized), PUBLIC /rental-demo (is_demo only, 10-min transient),
+  admin-gated idempotent /rental-demo-seed.
+- Demo portfolio seeded LIVE: 5504 ארלוזורוב 78 TLV (paid unit +
+  current-month-due unit w/ open faucet ticket), 5505 ז'בוטינסקי 12
+  RG (late unit + vacant unit w/ paint ticket) - every status color
+  demonstrable on the landing.
+- Homepage: LIGHT rentals band (white + gold frame, de-darken law)
+  after listings, rm_* i18n in 5 languages.
+Ship: 1.72.92 then 1.72.93 (payload title fix: get_the_title
+prefixes private posts with "פרטי:" - use raw post_title; NOTE the
+same cosmetic exists in the renewal payload - queued). Both via the
+WELDED chain incl. zip-extracted php -l. Live-verified: healthcheck
+rentals:true, landing 200 indexable w/ FAQ schema + honesty line,
+demo API 2 props/4 units, homepage band on.
+QUEUED NEXT: Lovable mega-prompt (research done: Knowledge-file-
+first strategy, RTL mandate, section-by-section builds, real Hebrew
+copy; Google Stitch = free exploration alternative) - waiting for
+owner's ChatGPT rental report per his order; imagery regeneration
+mega-prompt for a Claude cohort; renewal payload title fix; EN pack
+for rentals; wire rentals into WA-source attribution.
+
 ## 2026-07-12 (49) - RECOVERED. v1.72.91 LIVE AND VERIFIED. POST-MORTEM COMPLETE.
 Timeline of the recovery: (1) owner renamed nadlan-config ->
 nadlan-config.off via File Manager Advanced -> site returned;

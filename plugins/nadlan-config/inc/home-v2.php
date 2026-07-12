@@ -346,6 +346,31 @@ if ( ! function_exists( 'nadlan_hv2_band_renewal' ) ) {
 	}
 }
 
+if ( ! function_exists( 'nadlan_hv2_band_rentals' ) ) {
+	/* rentals manager on the homepage - LIGHT band (the de-darken law) */
+	function nadlan_hv2_band_rentals() {
+		if ( ! function_exists( 'nadlan_rm_on' ) || ! nadlan_rm_on() ) { return; }
+		?>
+	<section class="nlhv2-band nlhv2-rentals">
+		<div class="nlhv2-rentals-in">
+			<p class="nlhv2-kicker"><?php nadlan_e( 'rm_kicker' ); ?></p>
+			<h2><?php nadlan_e( 'rm_title' ); ?></h2>
+			<p class="nlhv2-rentals-sub"><?php nadlan_e( 'rm_sub' ); ?></p>
+			<div class="nlhv2-renewal-steps nlhv2-rentals-steps">
+				<span><i>1</i><?php nadlan_e( 'rm_step1' ); ?></span>
+				<span><i>2</i><?php nadlan_e( 'rm_step2' ); ?></span>
+				<span><i>3</i><?php nadlan_e( 'rm_step3' ); ?></span>
+			</div>
+			<div class="nlhv2-renewal-ctas">
+				<a class="nlhv2-renewal-go" href="<?php echo esc_url( home_url( '/my-rentals/' ) ); ?>"><?php nadlan_e( 'rm_cta' ); ?></a>
+			</div>
+			<p class="nlhv2-rentals-note"><?php nadlan_e( 'rm_note' ); ?></p>
+		</div>
+	</section>
+		<?php
+	}
+}
+
 if ( ! function_exists( 'nadlan_hv2_band_flagships' ) ) {
 	/* The differentiator band (owner audit 2026-07-06): the four flagship 3D
 	   projects, right under the hero. Hero plates + 3D badge; every card links
@@ -741,6 +766,11 @@ if ( ! function_exists( 'nadlan_home_v2_shortcode' ) ) {
 			$ti = array_search( 'tools', $bands, true );
 			array_splice( $bands, false !== $ti ? $ti + 1 : count( $bands ), 0, 'renewal' );
 		}
+		// the rentals manager rides too (owner 2026-07-12): free product, discoverable
+		if ( ! in_array( 'rentals', $bands, true ) ) {
+			$ri = array_search( 'listings', $bands, true );
+			array_splice( $bands, false !== $ri ? $ri + 1 : count( $bands ), 0, 'rentals' );
+		}
 		ob_start();
 		echo '<div class="nlhv2" dir="' . esc_attr( $dir ) . '" lang="' . esc_attr( $lang ) . '">';
 		if ( function_exists( 'nadlan_lang_switcher' ) ) { echo '<div class="nlhv2-langbar">' . nadlan_lang_switcher() . '</div>'; }
@@ -826,6 +856,12 @@ if ( ! function_exists( 'nadlan_hv2_assets' ) ) {
 .nlhv2-renewal-alt{border:1.5px solid #9C7A3C;color:#1B1A17;background:#fff;border-radius:11px;padding:14px 24px;font:700 14.5px Heebo,sans-serif;text-decoration:none}
 .nlhv2-renewal-go:hover,.nlhv2-renewal-alt:hover{filter:brightness(1.05)}
 .nlhv2-renewal-note{color:#8E877A;font:600 12px Heebo,sans-serif;margin:14px 0 0}
+.nlhv2-rentals{background:#FFFFFF;border:1.5px solid #9C7A3C;border-radius:22px;padding:clamp(26px,4vw,44px)}
+.nlhv2-rentals-in{max-width:760px}
+.nlhv2-rentals h2{font-family:"Frank Ruhl Libre",serif;font-size:clamp(1.5rem,1.1rem+1.6vw,2.1rem);margin:6px 0 8px;color:#1B1A17}
+.nlhv2-rentals-sub{color:#51483A;font:400 14.5px/1.75 Heebo,sans-serif;margin:0 0 18px;max-width:620px}
+.nlhv2-rentals-steps span{background:#F3EEE3;border-color:#E2DCD0;color:#51483A}
+.nlhv2-rentals-note{color:#8E877A;font:600 12px Heebo,sans-serif;margin:14px 0 0}
 .nlhv2-flagdev{display:block;margin-top:8px;color:#9C7A3C;font-weight:700;text-decoration:none;font-size:13.5px}
 .nlhv2-flagdev:hover{text-decoration:underline}
 /* sketch-plate listing art must never be cropped - the facilities must stay visible */
