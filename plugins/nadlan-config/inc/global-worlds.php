@@ -681,8 +681,11 @@ if ( ! function_exists( 'nadlan_gw_projects_for' ) ) {
 }
 
 if ( ! function_exists( 'nadlan_gw_lang' ) ) {
-	function nadlan_gw_lang() {
-		return ( isset( $_GET['lang'] ) && 'en' === sanitize_key( wp_unslash( $_GET['lang'] ) ) ) ? 'en' : 'he';
+	// $with_ar: flagship singles speak he/en/ar; world pages stay he/en (ar coerces to en)
+	function nadlan_gw_lang( $with_ar = false ) {
+		$q = isset( $_GET['lang'] ) ? sanitize_key( wp_unslash( $_GET['lang'] ) ) : ''; // phpcs:ignore
+		if ( 'ar' === $q ) { return $with_ar ? 'ar' : 'en'; }
+		return 'en' === $q ? 'en' : 'he';
 	}
 }
 
@@ -998,9 +1001,32 @@ add_filter( 'the_content', function ( $content ) {
 	if ( $done ) { return $content; }
 	$done = true;
 	$id = get_the_ID();
-	$lang = nadlan_gw_lang();
+	$lang = nadlan_gw_lang( true );
 	$en = ( 'en' === $lang );
-	$L = function ( $he, $en_v ) use ( $en ) { return $en ? $en_v : $he; };
+	// Arabic dictionary keyed by the Hebrew string; missing keys fail open to English.
+	$AR = array(
+		'השקעות בחו"ל' => 'استثمار عالمي',
+		'פרויקט להמחשה על בסיס נתוני שוק אמיתיים - אינו פרויקט ספציפי בשיווק' => 'مشروع توضيحي مبني على بيانات سوق حقيقية - ليس مشروعاً محدداً في التسويق',
+		'מיקום' => 'الموقع', 'מחיר החל מ-' => 'السعر يبدأ من', 'קומות' => 'طوابق', 'יח״ד' => 'وحدات',
+		'מסירה' => 'التسليم', 'הערת תשואה' => 'ملاحظة العائد', 'תוכנית תשלומים' => 'خطة الدفع', 'דמי ניהול' => 'رسوم الإدارة',
+		'בחרו דירה מתוך הבניין' => 'اختاروا شقة من داخل المبنى',
+		'לחצו על נקודה במגדל או סננו לפי קומה. מלאי ומחירים להמחשה.' => 'انقروا على نقطة في المبنى أو صفّوا حسب الطابق. المخزون والأسعار للتوضيح.',
+		'זמינה' => 'متاحة', 'שמורה' => 'محجوزة', 'נמכרה' => 'مباعة',
+		'הדמיה עקרונית להמחשת הבניין - לא המבנה הסופי' => 'نموذج مفاهيمي للتوضيح - ليس المبنى النهائي',
+		'הדמיות הפרויקט' => 'تصاميم المشروع', 'תוכניות אדריכליות' => 'المخططات المعمارية',
+		'מתקנים ומה שמסביב' => 'المرافق وما حولها', 'מה מסביב' => 'ما حول المشروع',
+		'רוצים לשמוע עוד על השקעה כזו?' => 'تريدون معرفة المزيد عن استثمار كهذا؟',
+		'שם מלא' => 'الاسم الكامل', 'טלפון' => 'الهاتف', 'דברו איתי' => 'تواصلوا معي',
+		'קיבלנו! נחזור אליכם.' => 'استلمنا! سنعود إليكم.',
+		'כיוון שמש (להמחשה)' => 'اتجاه الشمس (للتوضيح)', 'בוקר · מזרח' => 'صباحاً · شرق',
+		'צהריים · דרום' => 'ظهراً · جنوب', 'אחר הצהריים · מערב' => 'عصراً · غرب',
+		'תוכנית הדירה (סכמטית)' => 'مخطط الشقة (تخطيطي)', 'שיתוף בוואטסאפ' => 'مشاركة عبر واتساب',
+	);
+	$L = function ( $he, $en_v ) use ( $lang, $AR ) {
+		if ( 'ar' === $lang ) { return isset( $AR[ $he ] ) ? $AR[ $he ] : $en_v; }
+		return 'en' === $lang ? $en_v : $he;
+	};
+	$fx = (float) get_post_meta( $id, 'gw_fx_ils', true );
 	$code = (string) get_post_meta( $id, 'gw_world', true );
 	$W = nadlan_gw_worlds();
 	$w = isset( $W[ $code ] ) ? $W[ $code ] : null;
@@ -1029,7 +1055,7 @@ add_filter( 'the_content', function ( $content ) {
 	<div class="nlgw-facts" style="margin-top:14px">
 		<div class="grid">
 			<?php if ( $district ) : ?><div class="cell"><i><?php echo $L( 'מיקום', 'Location' ); ?></i><b><?php echo esc_html( $district . ( $w ? ', ' . ( $en ? $w['name_en'] : $w['name_he'] ) : '' ) ); ?></b></div><?php endif; ?>
-			<?php if ( $pf && $w ) : ?><div class="cell"><i><?php echo $L( 'מחיר החל מ-', 'From' ); ?></i><b><?php echo esc_html( number_format( (float) $pf ) . ' ' . $w['currency'] ); ?></b></div><?php endif; ?>
+			<?php if ( $pf && $w ) : ?><div class="cell"><i><?php echo $L( 'מחיר החל מ-', 'From' ); ?></i><b><?php echo esc_html( number_format( (float) $pf ) . ' ' . $w['currency'] ); ?><?php if ( $fx > 0 ) : ?><span style="display:block;font:600 11.5px Heebo;color:#8E877A">≈ ₪<?php echo esc_html( number_format( (float) $pf * $fx ) ); ?> <?php echo $L( '(שער להמחשה)', '(illustrative rate)' ); ?></span><?php endif; ?></b></div><?php endif; ?>
 			<?php if ( $floors ) : ?><div class="cell"><i><?php echo $L( 'קומות', 'Floors' ); ?></i><b><?php echo (int) $floors; ?></b></div><?php endif; ?>
 			<?php if ( $units ) : ?><div class="cell"><i><?php echo $L( 'יח״ד', 'Units' ); ?></i><b><?php echo (int) $units; ?></b></div><?php endif; ?>
 			<?php if ( $delivery ) : ?><div class="cell"><i><?php echo $L( 'מסירה', 'Delivery' ); ?></i><b><?php echo esc_html( $delivery ); ?></b></div><?php endif; ?>
@@ -1057,7 +1083,7 @@ add_filter( 'the_content', function ( $content ) {
 	<div id="nlgw-floors" style="display:flex;gap:8px;flex-wrap:wrap;margin:0 0 10px"></div>
 	<?php endif; ?>
 	<div style="position:relative;height:56vh;min-height:420px;max-height:620px;border-radius:18px;overflow:hidden;background:radial-gradient(ellipse at 50% 30%,#26221733 0%,transparent 65%),#14130F;border:1px solid #2A251B;margin:0 0 14px">
-		<model-viewer id="nlgw-mv" src="<?php echo esc_url( $glb ); ?>" camera-controls disable-zoom <?php echo $apts ? '' : 'auto-rotate rotation-per-second="9deg"'; ?>
+		<model-viewer id="nlgw-mv" src="<?php echo esc_url( $glb ); ?>" camera-controls disable-zoom ar ar-modes="scene-viewer webxr quick-look" <?php echo $apts ? '' : 'auto-rotate rotation-per-second="9deg"'; ?>
 			style="width:100%;height:100%;direction:ltr;background:transparent;touch-action:pan-y"
 			camera-orbit="<?php echo esc_attr( $orbit[0] ); ?>" min-camera-orbit="auto auto <?php echo esc_attr( $orbit[1] ); ?>" max-camera-orbit="auto auto <?php echo esc_attr( $orbit[2] ); ?>" exposure="0.95" shadow-intensity="0.6">
 			<?php $hi = 0; foreach ( $apts as $a ) :
@@ -1091,6 +1117,12 @@ add_filter( 'the_content', function ( $content ) {
 			<?php endforeach; ?>
 		</model-viewer>
 		<p style="position:absolute;bottom:10px;inset-inline-start:14px;color:#CDC5B4;font:600 11.5px Heebo;margin:0;text-shadow:0 1px 3px rgba(0,0,0,.6)"><?php echo $L( 'הדמיה עקרונית להמחשת הבניין - לא המבנה הסופי', 'A conceptual model for illustration - not the final building' ); ?></p>
+		<div style="position:absolute;top:12px;inset-inline-end:14px;display:flex;gap:6px" id="nlgw-sun">
+			<span style="font:600 10.5px Heebo;color:#CDC5B4;align-self:center;text-shadow:0 1px 3px rgba(0,0,0,.7)"><?php echo $L( 'כיוון שמש (להמחשה)', 'Sun direction (illustrative)' ); ?></span>
+			<button type="button" data-o="-115deg 70deg" data-e="0.78" style="border:1px solid #3A342A;background:rgba(20,19,15,.75);color:#E9D9A8;border-radius:999px;padding:6px 10px;font:600 10.5px Heebo;cursor:pointer"><?php echo $L( 'בוקר · מזרח', 'Morning · East' ); ?></button>
+			<button type="button" data-o="-20deg 62deg" data-e="1.1" style="border:1px solid #3A342A;background:rgba(20,19,15,.75);color:#E9D9A8;border-radius:999px;padding:6px 10px;font:600 10.5px Heebo;cursor:pointer"><?php echo $L( 'צהריים · דרום', 'Noon · South' ); ?></button>
+			<button type="button" data-o="70deg 68deg" data-e="0.9" style="border:1px solid #3A342A;background:rgba(20,19,15,.75);color:#E9D9A8;border-radius:999px;padding:6px 10px;font:600 10.5px Heebo;cursor:pointer"><?php echo $L( 'אחר הצהריים · מערב', 'Afternoon · West' ); ?></button>
+		</div>
 		<?php if ( $apts ) : ?>
 		<div style="position:absolute;top:12px;inset-inline-start:14px;display:flex;gap:10px;font:600 11px Heebo;color:#E9E2D2;text-shadow:0 1px 3px rgba(0,0,0,.7)">
 			<span><i style="display:inline-block;width:10px;height:10px;border-radius:50%;background:#E9D9A8;margin-inline-end:4px"></i><?php echo esc_html( $st_lbl['available'] ); ?></span>
@@ -1121,8 +1153,31 @@ add_filter( 'the_content', function ( $content ) {
 	<script>
 	(function(){
 		var mv=document.getElementById("nlgw-mv"),panel=document.getElementById("nlgw-apt-panel"),flbar=document.getElementById("nlgw-floors");
-		var EN=<?php echo $en ? 'true' : 'false'; ?>;
-		var T={fl:EN?"Floor":"קומה",all:EN?"All floors":"כל הקומות",rooms:EN?"rooms":"חדרים",sqm:EN?"sqm":'מ"ר',view:EN?"View":"נוף",price:EN?"Illustrative price":"מחיר להמחשה",st:{available:EN?"Available":"זמינה",reserved:EN?"Reserved":"שמורה",sold:EN?"Sold":"נמכרה"},design:EN?"Design this apartment":"לעצב את הדירה בסטודיו",ask:EN?"Ask about this apartment":"רוצה פרטים על הדירה",cur:<?php echo wp_json_encode( $w ? $w['currency'] : '' ); ?>};
+		var LNG=<?php echo wp_json_encode( $lang ); ?>;
+		var TT={
+			he:{fl:"קומה",all:"כל הקומות",rooms:"חדרים",sqm:'מ"ר',view:"נוף",price:"מחיר להמחשה",st:{available:"זמינה",reserved:"שמורה",sold:"נמכרה"},design:"לעצב את הדירה בסטודיו",ask:"רוצה פרטים על הדירה",apt:"דירה ",plan:"תוכנית הדירה (סכמטית)",living:"סלון + מטבח",bed:"חדר שינה",bath:"רחצה",balc:"מרפסת"},
+			en:{fl:"Floor",all:"All floors",rooms:"rooms",sqm:"sqm",view:"View",price:"Illustrative price",st:{available:"Available",reserved:"Reserved",sold:"Sold"},design:"Design this apartment",ask:"Ask about this apartment",apt:"Apartment ",plan:"Floor plan (schematic)",living:"Living + kitchen",bed:"Bedroom",bath:"Bath",balc:"Balcony"},
+			ar:{fl:"طابق",all:"كل الطوابق",rooms:"غرف",sqm:"م²",view:"إطلالة",price:"سعر توضيحي",st:{available:"متاحة",reserved:"محجوزة",sold:"مباعة"},design:"صمموا الشقة في الاستوديو",ask:"أريد تفاصيل عن الشقة",apt:"شقة ",plan:"مخطط الشقة (تخطيطي)",living:"صالون + مطبخ",bed:"غرفة نوم",bath:"حمام",balc:"شرفة"}
+		};
+		var T=TT[LNG]||TT.en;T.cur=<?php echo wp_json_encode( $w ? $w['currency'] : '' ); ?>;
+		function planSvg(a){
+			/* schematic unit plan: open living+kitchen, N bedrooms, bath, balcony strip.
+			   Honest: proportions from sqm, labeled schematic - not the sales drawing. */
+			var W=300,H=190,beds=Math.max(1,a.rooms),pad=6;
+			var s='<svg viewBox="0 0 '+W+' '+H+'" style="width:100%;max-width:360px;background:#FAF7F1;border:1px solid #E2DCD0;border-radius:10px" xmlns="http://www.w3.org/2000/svg">';
+			function room(x,y,w,h,lbl){s+='<rect x="'+x+'" y="'+y+'" width="'+w+'" height="'+h+'" fill="#fff" stroke="#9C7A3C" stroke-width="1.4"/>'
+				+'<text x="'+(x+w/2)+'" y="'+(y+h/2+3)+'" text-anchor="middle" font-family="Heebo,sans-serif" font-size="10" font-weight="600" fill="#51483A">'+lbl+'</text>';}
+			var balcH=26;
+			room(pad,pad,W-2*pad,balcH,T.balc);
+			var mainY=pad+balcH,mainH=H-mainY-pad;
+			var livW=(W-2*pad)*0.52;
+			room(pad,mainY,livW,mainH,T.living+" · "+Math.round(a.sqm*0.42)+" "+T.sqm);
+			var rightX=pad+livW,rightW=W-2*pad-livW;
+			var bh=(mainH-(beds>1?0:0))/(beds+0.7);
+			for(var i=0;i<beds;i++){room(rightX,mainY+i*bh,rightW,bh,T.bed+" "+(beds>1?(i+1):"")+" · "+Math.round(a.sqm*0.16)+" "+T.sqm);}
+			room(rightX,mainY+beds*bh,rightW,mainH-beds*bh,T.bath);
+			s+='</svg>';return s;
+		}
 		var hots=[].slice.call(mv.querySelectorAll(".nlgw-hot"));
 		var floors=[];hots.forEach(function(h){var f=parseInt(h.dataset.floor,10);if(floors.indexOf(f)<0)floors.push(f)});floors.sort(function(a,b){return a-b});
 		function chip(label,f){var b=document.createElement("button");b.type="button";b.className="nlgw-fl"+(f===null?" is-on":"");b.textContent=label;
@@ -1133,10 +1188,11 @@ add_filter( 'the_content', function ( $content ) {
 		hots.forEach(function(h){h.addEventListener("click",function(){
 			var a={};try{a=JSON.parse(h.dataset.apt)}catch(e){return}
 			var view=EN?(a.view_en||a.view_he):(a.view_he||"");
-			panel.innerHTML="<h3>"+(EN?"Apartment ":"דירה ")+a.id.toUpperCase()+" · "+T.fl+" "+a.floor+" <span style='font:700 12px Heebo;color:"+(a.status==="available"?"#517048":a.status==="reserved"?"#9C7A3C":"#C2563A")+"'>"+T.st[a.status]+"</span></h3>"
+			panel.innerHTML="<h3>"+T.apt+a.id.toUpperCase()+" · "+T.fl+" "+a.floor+" <span style='font:700 12px Heebo;color:"+(a.status==="available"?"#517048":a.status==="reserved"?"#9C7A3C":"#C2563A")+"'>"+T.st[a.status]+"</span></h3>"
 				+"<div class='row'><span><b>"+a.rooms+"</b> "+T.rooms+"</span><span><b>"+a.sqm+"</b> "+T.sqm+"</span>"+(view?"<span>"+T.view+": <b>"+view+"</b></span>":"")
 				+(a.price?"<span>"+T.price+": <b style='color:#C2563A'>"+Number(a.price).toLocaleString()+" "+T.cur+"</b></span>":"")+"</div>"
-				+"<div class='acts'><a class='a1' href='#nlgw-lead-form'>"+T.ask+"</a><a class='a2' href='<?php echo esc_url( home_url( '/studio/' ) ); ?>'>"+T.design+"</a></div>";
+				+"<p style='font:700 12px Heebo;color:#8E877A;margin:4px 0 6px'>"+T.plan+"</p>"+planSvg(a)
+				+"<div class='acts' style='margin-top:12px'><a class='a1' href='#nlgw-lead-form'>"+T.ask+"</a><a class='a2' href='<?php echo esc_url( home_url( '/studio/' ) ); ?>'>"+T.design+"</a></div>";
 			panel.classList.add("is-open");
 			panel.scrollIntoView({behavior:"smooth",block:"nearest"});
 			var nameInput=document.querySelector("#nlgw-lead-form input[name=name]");
@@ -1147,6 +1203,23 @@ add_filter( 'the_content', function ( $content ) {
 	</script>
 	<?php endif; ?>
 	<script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.5.0/model-viewer.min.js"></script>
+	<script>
+	(function(){
+		var mv=document.getElementById("nlgw-mv"),sun=document.getElementById("nlgw-sun");
+		if(!mv||!sun)return;
+		sun.querySelectorAll("button").forEach(function(b){
+			b.addEventListener("click",function(){
+				var cur=mv.getCameraOrbit?mv.getCameraOrbit():null;
+				var r=cur?Math.round(cur.radius)+"m":"150m";
+				mv.cameraOrbit=b.dataset.o+" "+r;
+				mv.exposure=parseFloat(b.dataset.e);
+			});
+		});
+	})();
+	</script>
+	<p style="margin:10px 0 0"><a target="_blank" rel="noopener"
+		href="https://wa.me/?text=<?php echo rawurlencode( get_the_title( $id ) . ' - ' . get_permalink( $id ) ); ?>"
+		style="display:inline-block;border:1.5px solid #9C7A3C;color:#9C7A3C;border-radius:12px;padding:10px 18px;font:700 13px Heebo,sans-serif;text-decoration:none"><?php echo $L( 'שיתוף בוואטסאפ', 'Share on WhatsApp' ); ?></a></p>
 	<?php endif; ?>
 
 	<?php
@@ -1184,7 +1257,10 @@ add_filter( 'the_content', function ( $content ) {
 	</div>
 	<?php endif; ?>
 
-	<?php if ( $en && $about_en ) : ?><p style="font:400 15px/1.85 Heebo;color:#37322A;max-width:760px"><?php echo esc_html( $about_en ); ?></p><?php endif; ?>
+	<?php
+	$about_ar = (string) get_post_meta( $id, 'gw_about_ar', true );
+	if ( 'ar' === $lang && $about_ar ) : ?><p style="font:400 15px/1.9 Heebo;color:#37322A;max-width:760px"><?php echo esc_html( $about_ar ); ?></p>
+	<?php elseif ( 'he' !== $lang && $about_en ) : ?><p style="font:400 15px/1.85 Heebo;color:#37322A;max-width:760px"><?php echo esc_html( $about_en ); ?></p><?php endif; ?>
 
 	<?php if ( $token && $lat && $lng ) : ?>
 	<div class="nlgw-map"><h2><?php echo $L( 'מה מסביב', 'What is around' ); ?></h2>
@@ -1247,6 +1323,7 @@ add_action( 'wp_head', function () {
 	echo '<link rel="canonical" href="' . esc_url( $self ) . '">' . "\n";
 	echo '<link rel="alternate" hreflang="he" href="' . esc_url( $self ) . '">' . "\n";
 	echo '<link rel="alternate" hreflang="en" href="' . esc_url( add_query_arg( 'lang', 'en', $self ) ) . '">' . "\n";
+	echo '<link rel="alternate" hreflang="ar" href="' . esc_url( add_query_arg( 'lang', 'ar', $self ) ) . '">' . "\n";
 	echo '<link rel="alternate" hreflang="x-default" href="' . esc_url( $self ) . '">' . "\n";
 }, 4 );
 
@@ -1348,6 +1425,7 @@ add_action( 'rest_api_init', function () {
 				'lat' => 34.7754, 'lng' => 32.4066, 'price' => '290000', 'units' => 72, 'floors' => 3, 'delivery' => 'בבנייה',
 				'yield' => 'אומדן ברוטו 4.5%-6.5% בשכירות ארוכה או תיירותית (פאפוס) - לא הבטחה',
 				'payment' => 'תשלומים צמודי התקדמות בנייה, לפי הסכם עם היזם',
+				'fx' => 4.0,
 				'fees' => 'דמי ניהול מתחם סגור (בריכות, ספא, אבטחה) - לפי תקנון',
 				'about' => 'פרויקט יוקרה אמיתי בפאפוס, קפריסין, על ציר Tombs of the Kings: 72 דירות בחמישה בניינים נמוכים על מגרש של 9,100 מ"ר, במתחם סגור עם בריכה מרכזית, בריכת ילדים ובר בריכה, ספא וחדר כושר עם גקוזי וסאונה, לובי, קונסיירז ואבטחה 24/7. דירות 1-3 חדרי שינה, 52-107 מ"ר בנוי, מרפסות עמוקות, חניה מקורה, מיזוג מלא וגימור ברמה הגבוהה ביותר. במרחק 2-5 דקות נסיעה מהחופים, המסעדות, הנמל והעיר העתיקה. הנתונים מפרסומי היזם; המודל התלת ממדי הוא הדמיה עקרונית לפי תוכנית המתחם.',
 				'about_en' => 'A real premium project in Paphos, Cyprus, on the Tombs of the Kings axis: 72 apartments in five low-rise buildings on a 9,100 sqm gated plot, with a central pool, kids pool and pool bar, spa and gym with jacuzzi and sauna, lobby, concierge and 24/7 security. 1-3 bedroom homes, 52-107 sqm built, deep balconies, covered parking, full AC and top-grade finishes. 2-5 minutes from the beaches, restaurants, the harbour and the old town. Data from the developer\'s publications; the 3D model is a conceptual visualization of the master plan.',
@@ -1371,7 +1449,61 @@ add_action( 'rest_api_init', function () {
 					'https://nad-lan.co.il/wp-content/uploads/2026/07/lion-paphos-masterplan.png',
 					'https://nad-lan.co.il/wp-content/uploads/2026/07/lion-paphos-plan-2.png',
 				),
+				'about_ar' => 'مشروع فاخر حقيقي في بافوس، قبرص، على محور Tombs of the Kings: 72 شقة في خمسة مبانٍ منخفضة على قطعة مسوّرة بمساحة 9,100 م²، مع مسبح مركزي ومسبح أطفال وبار مسبح، سبا وناد رياضي مع جاكوزي وساونا، لوبي وكونسيرج وأمن على مدار الساعة. شقق 1-3 غرف نوم، 52-107 م² بناء، شرفات عميقة، مواقف مغطاة وتكييف كامل. على بعد 2-5 دقائق من الشواطئ والميناء والبلدة القديمة. البيانات من منشورات المطوّر؛ النموذج ثلاثي الأبعاد تصور مفاهيمي للمخطط الرئيسي.',
 				'real' => true,
+			);
+			// THE DUBAI FLAGSHIP: Sky Gardens JVC - modeled on real JVC archetypes
+			// (G+4 podium + 19 residential floors, courtyard pool, 60/40 plan, JVC avg
+			// ~AED 1,550/sqft - sources in AGENT-LOG #61). Name neutral until the owner
+			// signs a developer; data real-archetype, labeled.
+			$sky_layout = array( 'fh' => 3.1, 'buildings' => array(
+				array( 'x' => -8, 'z' => -6, 'w' => 26, 'd' => 22, 'floors' => 23 ),
+			) );
+			$sky_apts = array();
+			$sky_types = array(
+				array( 'rooms' => 1, 'sqm' => 38, 'base' => 640000, 'lbl' => 'studio' ),
+				array( 'rooms' => 1, 'sqm' => 42, 'base' => 700000, 'lbl' => 'studio' ),
+				array( 'rooms' => 2, 'sqm' => 68, 'base' => 1020000, 'lbl' => '1br' ),
+				array( 'rooms' => 2, 'sqm' => 74, 'base' => 1110000, 'lbl' => '1br' ),
+				array( 'rooms' => 3, 'sqm' => 98, 'base' => 1480000, 'lbl' => '2br' ),
+				array( 'rooms' => 3, 'sqm' => 108, 'base' => 1640000, 'lbl' => '2br' ),
+			);
+			$sky_dirs = array( 'south', 'east', 'west' );
+			$si = 0;
+			foreach ( array( 6, 8, 10, 12, 14, 16, 18, 20, 22, 23 ) as $lvl ) {
+				foreach ( $sky_types as $ti => $t ) {
+					$si++;
+					$price = round( $t['base'] * ( 1 + 0.012 * ( $lvl - 5 ) ), -3 );
+					$status = ( 0 === $si % 4 ) ? 'sold' : ( ( 0 === $si % 7 ) ? 'reserved' : 'available' );
+					$sky_apts[] = array(
+						'b' => 0, 'id' => 'l' . $lvl . '0' . ( $ti + 1 ), 'floor' => $lvl, 'pos' => $ti % 3,
+						'dir' => $sky_dirs[ ( $ti + $lvl ) % 3 ], 'rooms' => $t['rooms'], 'sqm' => $t['sqm'],
+						'price' => $price, 'status' => $status,
+						'view_he' => $lvl >= 16 ? 'קו רקיע ומרינה מרחוק' : 'שכונת JVC והפארקים',
+						'view_en' => $lvl >= 16 ? 'Skyline and distant Marina' : 'JVC parks and community',
+					);
+				}
+			}
+			$rows[] = array(
+				'slug' => 'sky-gardens-jvc-dubai', 'title' => 'Sky Gardens JVC - דובאי', 'world' => 'dubai',
+				'district' => "ג'ומיירה וילג' סירקל (JVC)", 'district_en' => 'Jumeirah Village Circle (JVC)',
+				'lat' => 25.0575, 'lng' => 55.2172, 'price' => '640000', 'units' => 228, 'floors' => 23, 'delivery' => '2027',
+				'yield' => 'אומדן ברוטו 6.5%-8% (ממוצע JVC, לא הבטחה)',
+				'payment' => '60/40 לאורך הבנייה, חשבון נאמנות DLD',
+				'fees' => 'כ-14-18 AED למ"ר לשנה (אומדן)',
+				'fx' => 1.0,
+				'about' => 'מגדל מגורים בשכונת JVC, אזור התשואות המוביל של דובאי: 19 קומות מגורים מעל פודיום של 4 קומות, כ-228 דירות סטודיו עד 2 חדרי שינה. חצר פודיום עם בריכה וקבאנות, בריכת ילדים, חדר כושר על הגג, קולנוע חוץ, מרחב עבודה משותף ומועדון דיירים - מפרט האמנטיס שמוביל היום את הפרויקטים החדשים בשכונה. תוכנית תשלומים 60/40 בחשבון נאמנות מפוקח DLD. הנתונים משקפים פרויקטים אמיתיים בשיווק ב-JVC (מחיר ממוצע כ-1,550 AED לרגל); שם הפרויקט ניטרלי עד לחתימת יזם.',
+				'about_en' => 'A residential tower in JVC, Dubai\'s leading yield district: 19 residential floors above a 4-level podium, ~228 studio to 2-bedroom homes. A podium courtyard with a pool and cabanas, kids pool, rooftop gym, outdoor cinema, co-working space and a residents clubhouse - the amenity spec leading the district\'s new launches. A 60/40 construction-linked plan in a DLD-supervised escrow. Data reflects real JVC projects currently selling (avg ~AED 1,550 per sqft); the project name is neutral until a developer signs.',
+				'about_ar' => 'برج سكني في JVC، منطقة العوائد الرائدة في دبي: 19 طابقاً سكنياً فوق بوديوم من 4 طوابق، نحو 228 شقة من استوديو إلى غرفتي نوم. فناء بوديوم مع مسبح وكابانات، مسبح أطفال، نادٍ رياضي على السطح، سينما خارجية، مساحة عمل مشتركة ونادي سكان. خطة دفع 60/40 في حساب ضمان خاضع لدائرة الأراضي. البيانات تعكس مشاريع حقيقية قيد البيع في JVC؛ اسم المشروع محايد حتى توقيع مطوّر.',
+				'fac' => array(
+					array( 'בריכת חצר עם קבאנות', 'Courtyard pool with cabanas' ), array( 'בריכת ילדים', 'Kids pool' ),
+					array( 'חדר כושר על הגג', 'Rooftop gym' ), array( 'קולנוע חוץ', 'Outdoor cinema' ),
+					array( 'מרחב עבודה משותף', 'Co-working space' ), array( 'מועדון דיירים', 'Residents clubhouse' ),
+					array( 'לובי וקונסיירז', 'Lobby and concierge' ), array( 'חניון פודיום', 'Podium parking' ),
+				),
+				'glb' => 'models/sky-gardens-jvc.glb',
+				'layout' => $sky_layout, 'apts_custom' => $sky_apts,
+				'real' => false,
 			);
 			// generated inventory: honest, price-scaled apartments per project
 			$gen_apts = function ( $r ) {
@@ -1447,6 +1579,8 @@ add_action( 'rest_api_init', function () {
 				if ( isset( $r['layout'] ) ) { update_post_meta( $pid, 'gw_model_layout', wp_json_encode( $r['layout'] ) ); }
 				if ( isset( $r['gallery'] ) ) { update_post_meta( $pid, 'gw_gallery', wp_json_encode( $r['gallery'] ) ); }
 				if ( isset( $r['plans'] ) ) { update_post_meta( $pid, 'gw_plans', wp_json_encode( $r['plans'] ) ); }
+				if ( isset( $r['fx'] ) ) { update_post_meta( $pid, 'gw_fx_ils', (float) $r['fx'] ); }
+				if ( isset( $r['about_ar'] ) ) { update_post_meta( $pid, 'gw_about_ar', $r['about_ar'] ); }
 				// real developer projects are NOT demo-badged; their honesty note lives in the about text
 				update_post_meta( $pid, 'gw_demo', empty( $r['real'] ) ? '1' : '0' );
 				$made[] = array( 'slug' => $r['slug'], 'id' => $pid, 'existed' => (bool) $exists );

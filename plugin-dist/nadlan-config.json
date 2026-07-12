@@ -1,15 +1,15 @@
 {
   "name": "NadLan Config",
   "slug": "nadlan-config",
-  "version": "1.72.106",
+  "version": "1.72.107",
   "author": "nad-lan.co.il",
   "homepage": "https://nad-lan.co.il",
   "requires": "6.7",
   "tested": "7.0",
   "requires_php": "7.4",
-  "download_url": "https://raw.githubusercontent.com/The-new-ben/nad-lan-co-il/main/plugin-dist/nadlan-config-1.72.106.zip",
+  "download_url": "https://raw.githubusercontent.com/The-new-ben/nad-lan-co-il/main/plugin-dist/nadlan-config-1.72.107.zip",
   "last_updated": "2026-07-12",
   "sections": {
-    "changelog": "<h4>1.72.106</h4><ul><li>Cyprus flagship: Lion Apartments (Paphos) - bespoke site GLB, 72-unit layout-aware picker, gallery + plans bands, Cyprus world; intake pipeline documented.</li></ul>"
+    "changelog": "<h4>1.72.107</h4><ul><li>Flagship all-the-way: scheduler on intl projects, unit floorplans, sun presets, AR mode, Arabic, ILS display, Sky Gardens JVC Dubai flagship.</li></ul>"
   }
 }

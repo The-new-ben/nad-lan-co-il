@@ -1,5 +1,44 @@
 # AGENT-LOG - the God brain (append-only, newest on top)
 
+## 2026-07-12 (61) - v1.72.107 FLAGSHIP ALL-THE-WAY: scheduler invitations, floorplans, sun, AR, Arabic, the Dubai flagship
+Owner: "Israeli flagship and better, all the way." Shipped in one release:
+- SCHEDULER ON INTL (his explicit test wish): nadlan_intl joined the
+  band + card whitelist (own validator - config validator stays
+  3-type for leads). Booked LIVE on Lion (appt 5558, ref 5B7DDE):
+  WhatsApp invitation to the owner's number carries the project
+  name + time, ICS invitation issued, appointment visible in
+  /my-appointments/. LEFT LIVE for the owner to see (labeled
+  בדיקת מערכת) - he wanted to receive a real invitation.
+- FLOORPLANS WIRED TO UNITS: planSvg() draws a schematic unit plan
+  (balcony strip, open living+kitchen, N bedrooms, bath, sqm
+  labels) inside every apartment panel - labeled schematic, 3
+  languages. Not the sales drawing; the honest v1 of "plans wired".
+- SUN/ORIENTATION (להמחשה): morning-east / noon-south /
+  afternoon-west presets swing the camera azimuth + exposure on
+  the model. AR MODE: ar-modes=scene-viewer webxr quick-look -
+  investors can place the compound on their table from a phone.
+- ARABIC on flagship singles: $L() got an AR dictionary (fails
+  open to EN), 3-lang picker strings (TT.he/en/ar), gw_about_ar
+  meta (Lion + Sky Gardens written), hreflang ar, RTL. Worlds
+  pages stay HE/EN (ar coerces to en) - honest scope.
+- ILS DISPLAY: gw_fx_ils meta -> "≈ ₪X (שער להמחשה)" under the
+  price fact. WA SHARE button on singles.
+- THE DUBAI FLAGSHIP: sky-gardens-jvc-dubai (5559 area) - modeled
+  on REAL JVC archetypes from research (Floarea-Skies-class G+4
+  podium + 19 floors; Berkeley-Square-class amenities: courtyard
+  pool + cabanas, rooftop gym, outdoor cinema, co-working; JVC avg
+  ~AED 1,550/sqft; 60/40 escrow). Bespoke factory GLB (podium +
+  tapered tower + context, 5,984 tris, INVENTORY updated). 60
+  sampled units across 10 levels with view labels. Name NEUTRAL
+  until the owner signs a developer - stated on the page.
+Verified live: Lion 72 hotspots + sun + AR + plans + ILS + share +
+scheduler; Arabic page RTL with ar picker + ar about; Sky Gardens
+60 hotspots + honesty note + scheduler; booking E2E proof above.
+FLOATING: worlds pages Arabic (full content round); real interior
+walk-inside (needs interior GLBs - factory extension); appt 5558
+awaits owner eyes then cancel from dashboard.
+
+
 ## 2026-07-12 (60) - v1.72.105-106 THE CYPRUS FLAGSHIP: LION APARTMENTS (real project, real pipeline)
 Owner: real Cyprus developer (Oliel Group) asked to be listed; the
 Dubai depth critique accepted. Ran the FULL intake pipeline and

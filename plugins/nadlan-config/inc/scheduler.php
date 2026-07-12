@@ -179,11 +179,22 @@ if ( ! function_exists( 'nadlan_sched_slots_for' ) ) {
 }
 
 /* ---------- helpers ---------- */
+if ( ! function_exists( 'nadlan_sched_valid_card' ) ) {
+	// the scheduler serves international projects too (owner 2026-07-12)
+	function nadlan_sched_valid_card( $card_id ) {
+		$card_id = absint( $card_id );
+		if ( ! $card_id ) { return 0; }
+		$post = get_post( $card_id );
+		return ( $post && in_array( $post->post_type, array( 'nadlan_professional', 'nadlan_project', 'nadlan_property', 'nadlan_intl' ), true ) ) ? $card_id : 0;
+	}
+}
+
 if ( ! function_exists( 'nadlan_sched_kind_for' ) ) {
 	function nadlan_sched_kind_for( $card_id ) {
 		$t = get_post_type( $card_id );
 		if ( 'nadlan_professional' === $t ) { return 'meeting'; }
 		if ( 'nadlan_property' === $t ) { return 'visit'; }
+		if ( 'nadlan_intl' === $t ) { return 'meeting'; }
 		return 'tour';
 	}
 }
@@ -352,6 +363,10 @@ if ( ! function_exists( 'nadlan_sched_strings' ) ) {
 if ( ! function_exists( 'nadlan_sched_page_lang' ) ) {
 	// Sibling pages carry a -en/-fr/-ru/-ar slug suffix (project-experience convention).
 	function nadlan_sched_page_lang( $post_id ) {
+		if ( 'nadlan_intl' === get_post_type( $post_id ) && isset( $_GET['lang'] ) ) { // phpcs:ignore
+			$q = sanitize_key( wp_unslash( $_GET['lang'] ) ); // phpcs:ignore
+			if ( in_array( $q, array( 'en', 'ar' ), true ) ) { return $q; }
+		}
 		$slug = (string) get_post_field( 'post_name', $post_id );
 		foreach ( array( 'en', 'fr', 'ru', 'ar' ) as $ml ) {
 			if ( substr( $slug, -3 ) === '-' . $ml ) { return $ml; }
@@ -368,7 +383,7 @@ add_action( 'rest_api_init', function () {
 		'methods'             => 'GET',
 		'permission_callback' => '__return_true',
 		'callback'            => function ( WP_REST_Request $req ) {
-			$card = function_exists( 'nadlan_config_valid_lead_card_id' ) ? nadlan_config_valid_lead_card_id( (int) $req->get_param( 'card' ) ) : 0;
+			$card = nadlan_sched_valid_card( (int) $req->get_param( 'card' ) );
 			if ( ! $card ) { return new WP_Error( 'invalid', 'invalid card', array( 'status' => 400 ) ); }
 			$data = nadlan_sched_slots_for( $card );
 			$data['kind'] = nadlan_sched_kind_for( $card );
@@ -383,7 +398,7 @@ add_action( 'rest_api_init', function () {
 		'callback'            => function ( WP_REST_Request $req ) {
 			$p = $req->get_json_params() ?: array();
 			if ( '' !== (string) ( $p['company'] ?? '' ) ) { return new WP_Error( 'spam', 'spam', array( 'status' => 400 ) ); }
-			$card  = function_exists( 'nadlan_config_valid_lead_card_id' ) ? nadlan_config_valid_lead_card_id( (int) ( $p['card'] ?? 0 ) ) : 0;
+			$card  = nadlan_sched_valid_card( (int) ( $p['card'] ?? 0 ) );
 			$start = sanitize_text_field( (string) ( $p['start'] ?? '' ) );
 			$name  = sanitize_text_field( (string) ( $p['name'] ?? '' ) );
 			$phone = preg_replace( '/[^0-9+]/', '', (string) ( $p['phone'] ?? '' ) );
@@ -637,7 +652,7 @@ if ( ! function_exists( 'nadlan_sched_list_for_user' ) ) {
 
 /* ---------- the booking band on single card pages ---------- */
 add_filter( 'the_content', function ( $content ) {
-	if ( ! nadlan_sched_on() || ! is_singular( array( 'nadlan_project', 'nadlan_property', 'nadlan_professional' ) ) || ! in_the_loop() || ! is_main_query() ) {
+	if ( ! nadlan_sched_on() || ! is_singular( array( 'nadlan_project', 'nadlan_property', 'nadlan_professional', 'nadlan_intl' ) ) || ! in_the_loop() || ! is_main_query() ) {
 		return $content;
 	}
 	static $done = false;
