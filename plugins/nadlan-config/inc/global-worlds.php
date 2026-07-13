@@ -571,6 +571,7 @@ if ( ! function_exists( 'nadlan_gw_metabox_render' ) ) {
 				if ( is_array( $fac ) ) { foreach ( $fac as $f ) { echo esc_textarea( $f[0] . ' | ' . $f[1] ) . "\n"; } }
 			?></textarea></p>
 			<p><label style="font-weight:600">פריסת המודל (JSON: fh + buildings[x,z,w,d,floors]; ריק = מגדל גנרי)</label><br><textarea name="gw_model_layout" style="width:100%;min-height:60px" dir="ltr"><?php echo esc_textarea( (string) get_post_meta( $post->ID, 'gw_model_layout', true ) ); ?></textarea></p>
+			<p><label style="font-weight:600">סרטון הפרויקט (MP4, בהרשאת היזם)</label><br><input type="url" name="gw_video" value="<?php echo esc_attr( (string) get_post_meta( $post->ID, 'gw_video', true ) ); ?>" style="width:100%" dir="ltr"></p>
 			<p><label style="font-weight:600">גלריית הדמיות (כתובת לכל שורה)</label><br><textarea name="gw_gallery" style="width:100%;min-height:60px" dir="ltr"><?php
 				$g = json_decode( (string) get_post_meta( $post->ID, 'gw_gallery', true ), true );
 				if ( is_array( $g ) ) { echo esc_textarea( implode( "\n", $g ) ); }
@@ -594,6 +595,7 @@ add_action( 'save_post_nadlan_intl', function ( $post_id ) {
 	if ( ! current_user_can( 'edit_post', $post_id ) ) { return; }
 	$world = isset( $_POST['gw_world'] ) ? sanitize_key( wp_unslash( $_POST['gw_world'] ) ) : '';
 	update_post_meta( $post_id, 'gw_world', array_key_exists( $world, nadlan_gw_worlds() ) ? $world : '' );
+	if ( isset( $_POST['gw_video'] ) ) { update_post_meta( $post_id, 'gw_video', esc_url_raw( wp_unslash( $_POST['gw_video'] ) ) ); }
 	foreach ( array( 'gw_district', 'gw_district_en', 'gw_price_from', 'gw_delivery', 'gw_yield', 'gw_payment', 'gw_fees' ) as $k ) {
 		update_post_meta( $post_id, $k, isset( $_POST[ $k ] ) ? sanitize_text_field( wp_unslash( $_POST[ $k ] ) ) : '' );
 	}
@@ -1233,6 +1235,22 @@ add_filter( 'the_content', function ( $content ) {
 	<?php endif; ?>
 
 	<?php
+	$vid = (string) get_post_meta( $id, 'gw_video', true );
+	if ( $vid ) : ?>
+	<h2 style="font-family:'Frank Ruhl Libre',serif;font-size:1.25rem;margin:22px 0 8px"><?php echo $L( 'הסרטון הרשמי של הפרויקט', 'The official project film' ); ?></h2>
+	<div style="border-radius:18px;overflow:hidden;border:1px solid #D6C189;background:#14130F;box-shadow:0 22px 48px -26px rgba(27,26,23,.5);margin:0 0 6px">
+		<video autoplay muted loop playsinline preload="metadata" controls style="width:100%;display:block" <?php $gal0 = json_decode( (string) get_post_meta( $id, 'gw_gallery', true ), true ); if ( is_array( $gal0 ) && $gal0 ) : ?>poster="<?php echo esc_url( $gal0[0] ); ?>"<?php endif; ?>>
+			<source src="<?php echo esc_url( $vid ); ?>" type="video/mp4">
+		</video>
+	</div>
+	<p style="font:400 11.5px Heebo;color:#8E877A;margin:0 0 18px"><?php echo $L( 'וידאו: חומרי היזם הרשמיים, בהרשאה', 'Video: official developer material, with permission' ); ?></p>
+	<script>
+	/* reduced-motion honesty: only genuine reduced-motion users lose autoplay */
+	(function(){if(window.matchMedia&&matchMedia("(prefers-reduced-motion: reduce)").matches){document.querySelectorAll(".nlgw--single video[autoplay]").forEach(function(v){v.removeAttribute("autoplay");v.pause();});}})();
+	</script>
+	<?php endif; ?>
+
+	<?php
 	$gal = json_decode( (string) get_post_meta( $id, 'gw_gallery', true ), true );
 	if ( is_array( $gal ) && $gal ) : ?>
 	<h2 style="font-family:'Frank Ruhl Libre',serif;font-size:1.25rem;margin:20px 0 8px"><?php echo $L( 'הדמיות הפרויקט', 'Project renders' ); ?></h2>
@@ -1587,6 +1605,7 @@ add_action( 'rest_api_init', function () {
 					'https://nad-lan.co.il/wp-content/uploads/2026/07/damac-riverside-views-lake.jpg',
 				),
 				'brochure' => 'https://nad-lan.co.il/wp-content/uploads/2026/07/damac-riverside-views-brochure.pdf',
+				'video' => 'https://nad-lan.co.il/wp-content/uploads/2026/07/damac-riverside-views-hero-video.mp4',
 				'real' => true, 'engine' => true,
 			);
 			// generated inventory: honest, price-scaled apartments per project
@@ -1711,6 +1730,7 @@ add_action( 'rest_api_init', function () {
 				}
 				if ( isset( $r['about_ar'] ) ) { update_post_meta( $pid, 'gw_about_ar', $r['about_ar'] ); }
 				if ( isset( $r['brochure'] ) ) { update_post_meta( $pid, 'gw_brochure', esc_url_raw( $r['brochure'] ) ); }
+				if ( isset( $r['video'] ) ) { update_post_meta( $pid, 'gw_video', esc_url_raw( $r['video'] ) ); }
 				if ( isset( $r['dev'] ) ) { update_post_meta( $pid, 'developer_name', $r['dev'] ); }
 				// real developer projects are NOT demo-badged; their honesty note lives in the about text
 				update_post_meta( $pid, 'gw_demo', empty( $r['real'] ) ? '1' : '0' );

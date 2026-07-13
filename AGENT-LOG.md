@@ -1,5 +1,32 @@
 # AGENT-LOG - the God brain (append-only, newest on top)
 
+## 2026-07-13 (64) - v1.72.110 CINEMA ROUND: the TLV leak killed + DAMAC's real film on our page
+Owner caught the walk-inside showing a TEL AVIV building on the
+DAMAC page + wants their high-res hovering feel. ROOT CAUSE: the
+engine's DEFAULT walk (standard-default-* media = an Israeli set)
+shows on every project until a dedicated walk-<slug>-* set exists.
+FIX (the CMS path, zero code for the leak): uploaded DAMAC's own
+authorized renders as walk-damac-riverside-views-dubai-{exterior,
+entrance,promenade,pool} (only honestly-labeled spaces; their
+gallery has no apartment interiors - those live in the brochure
+image pages, queued for when DAMAC hands files) + walk-lion-
+apartments-paphos-exterior. VERIFIED: 4 project-walk steps in the
+live payload - the walk now shows DAMAC, not Tel Aviv.
+THE HOVER FEEL: their official 27.6MB hero drone film uploaded to
+OUR media + a cinematic video band on intl singles (gw_video meta,
+CMS field): autoplay muted loop playsinline with a REAL <source>
+(autoplay-media law), poster from gallery, controls, honest
+caption "וידאו: חומרי היזם הרשמיים, בהרשאה", reduced-motion-only
+degrade. Verified live on the DAMAC page.
+NEXT (task #83 continues): THE ENTERPRISE AUTH SYSTEM - branded
+/login+/signup with roles (buyer/lister/renewal-rep/professional/
+developer), conversational onboarding, security hardening, Google
+OAuth-ready, passkeys research. CONSTRAINT: site email is DEAD
+(no outbound) so magic-links are impossible - password + OAuth +
+future passkeys. wp-login stays admin-only; all product links move
+to /login/.
+
+
 ## 2026-07-13 (63) - v1.72.109 DAMAC RIVERSIDE VIEWS (authorized, engine-grade, beat-their-page)
 Owner negotiated with DAMAC - PERMISSION GRANTED to present their
 assets. Target: Riverside Views (their showcase page).
