@@ -1,5 +1,35 @@
 # AGENT-LOG - the God brain (append-only, newest on top)
 
+## 2026-07-13 (68) - v1.72.116 DATA HONESTY: 938 compounds were mislabeled "תמא 38" + map hardening
+Owner's screenshot of /urban-renewal/map/ exposed two things.
+(1) THE BIG ONE: every city card said "תמא 38: N" == total.
+Investigated the gov.il CKAN source (f65a0daf...): the dataset
+is the PINUI-BINUI register; Maslul holds the sub-track -
+מיסוי (363) / רשויות (232) / blank (277) / טרם הוכרז (71).
+It NEVER contains the literal word "פינוי", so import.php's
+default stamped ALL 938 compounds project_type='tama38' -
+factually wrong on every compound page, lookup and map card.
+FIX: import maps honestly - project_type='pinui_binui' for all
++ NEW renewal_track meta (misui/rashuyot/terem_huchraz/'');
+status strings cleaned of nbsp+runs. FULL REIMPORT run live
+(temp agentfix snippet, 100-row batches - 500-row batches
+timed out on the host; snippet deleted, route 404 verified).
+Map cards now read "N מתחמי פינוי בינוי בפנקס · מסלול מיסוי: X
+· מסלול רשויות: Y"; copy says "מתחמי פינוי בינוי מתוך המאגר
+הרשמי" (71 rows are pre-declaration, so not "מוכרזים").
+(2) The map showed as a BLACK BOX in the owner's screenshot:
+markup/token/data all verified healthy - his QA browser lacks
+WebGL and mapbox-gl dies silently. Added fail(): try/catch on
+Map init + script onerror -> hides the canvas and shows an
+honest note pointing to the crawlable directory below. Also
+added centroids for ALL 76 register cities (was 35; incl.
+spelling variants גבעתים/פתח תקוה).
+Verified live: 948 total, 76/76 cities pinned, misui 363 +
+rashuyot 232, zero תמא-38 labels on the page.
+NEXT (owner order, new round): MAPS UPGRADE site-wide - POI
+filter chips that actually filter, richer buyer info on every
+map surface.
+
 ## 2026-07-13 (67) - v1.72.115 GOOGLE LIVE + the button on EVERY login door
 Owner configured the Google OAuth keys and ran a full logged-out
 QA: the flow passed E2E (Google account chooser -> consent with

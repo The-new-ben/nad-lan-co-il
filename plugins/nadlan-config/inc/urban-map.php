@@ -50,6 +50,28 @@ if ( ! function_exists( 'nadlan_ur_city_centroids' ) ) {
 			'יהוד'         => array( 34.8907, 32.0331 ), 'אור יהודה' => array( 34.8500, 32.0292 ),
 			'גבעת שמואל'   => array( 34.8480, 32.0781 ), 'קרית גת' => array( 34.7642, 31.6100 ),
 			'נצרת'         => array( 35.2985, 32.7021 ), 'עפולה' => array( 35.2908, 32.6078 ),
+			// registry spelling variants + the rest of the towns in the register
+			'גבעתים'       => array( 34.8100, 32.0723 ), 'פתח תקוה' => array( 34.8878, 32.0871 ),
+			'אבן יהודה'    => array( 34.8870, 32.2630 ), 'אור עקיבא' => array( 34.9170, 32.5060 ),
+			'אזור'         => array( 34.8060, 32.0240 ), 'אריאל' => array( 35.1870, 32.1060 ),
+			'באר יעקב'     => array( 34.8310, 31.9450 ), 'בית דגן' => array( 34.8300, 32.0020 ),
+			'בית שאן'      => array( 35.4970, 32.4970 ), 'בנימינה גבעת עדה' => array( 34.9490, 32.5140 ),
+			'גדרה'         => array( 34.7790, 31.8140 ), 'זכרון יעקב' => array( 34.9520, 32.5730 ),
+			'חצור הגלילית' => array( 35.5430, 32.9810 ), 'טירה' => array( 34.9500, 32.2330 ),
+			'טירת כרמל'    => array( 34.9720, 32.7600 ), 'יבנה' => array( 34.7400, 31.8780 ),
+			'יקנעם עילית'  => array( 35.0890, 32.6590 ), 'כפר יונה' => array( 34.9350, 32.3170 ),
+			'כפר קאסם'     => array( 34.9770, 32.1140 ), 'כרמיאל' => array( 35.2950, 32.9190 ),
+			'מבשרת ציון'   => array( 35.1500, 31.8010 ), 'מגדל העמק' => array( 35.2400, 32.6750 ),
+			'מזכרת בתיה'   => array( 34.8370, 31.8530 ), 'מעלה אדומים' => array( 35.2980, 31.7770 ),
+			'נוף הגליל'    => array( 35.3200, 32.7020 ), 'נס ציונה' => array( 34.8000, 31.9300 ),
+			'נשר'          => array( 35.0450, 32.7660 ), 'נתיבות' => array( 34.5880, 31.4220 ),
+			'סחנין'        => array( 35.2970, 32.8640 ), 'עתלית' => array( 34.9400, 32.6880 ),
+			'פרדס חנה כרכור' => array( 34.9770, 32.4740 ), 'צורן קדימה' => array( 34.9360, 32.2840 ),
+			'צפת'          => array( 35.4950, 32.9650 ), 'קרית אתא' => array( 35.1060, 32.8110 ),
+			'קרית טבעון'   => array( 35.1270, 32.7160 ), 'קרית מלאכי' => array( 34.7480, 31.7290 ),
+			'קרית עקרון'   => array( 34.8210, 31.8600 ), 'קרית שמונה' => array( 35.5700, 33.2070 ),
+			'שדרות'        => array( 34.5960, 31.5250 ), 'שלומי' => array( 35.1440, 33.0750 ),
+			'תל מונד'      => array( 34.9170, 32.2500 ),
 		) );
 	}
 }
@@ -58,7 +80,7 @@ if ( ! function_exists( 'nadlan_ur_city_centroids' ) ) {
    server-rendered (crawlable) city directory on the page */
 if ( ! function_exists( 'nadlan_ur_map_cities' ) ) {
 	function nadlan_ur_map_cities() {
-		$hit = get_transient( 'nadlan_ur_mapdata_v2' );
+		$hit = get_transient( 'nadlan_ur_mapdata_v3' );
 		if ( is_array( $hit ) ) { return $hit; }
 		global $wpdb;
 		$rows = $wpdb->get_results( "
@@ -66,7 +88,7 @@ if ( ! function_exists( 'nadlan_ur_map_cities' ) ) {
 			FROM {$wpdb->posts} p
 			JOIN {$wpdb->postmeta} s ON s.post_id = p.ID AND s.meta_key = 'source' AND s.meta_value = 'urban_renewal'
 			JOIN {$wpdb->postmeta} c ON c.post_id = p.ID AND c.meta_key = 'city'
-			LEFT JOIN {$wpdb->postmeta} t ON t.post_id = p.ID AND t.meta_key = 'project_type'
+			LEFT JOIN {$wpdb->postmeta} t ON t.post_id = p.ID AND t.meta_key = 'renewal_track'
 			WHERE p.post_type = 'nadlan_project' AND p.post_status = 'publish'
 			GROUP BY c.meta_value, t.meta_value
 		", ARRAY_A );
@@ -79,15 +101,15 @@ if ( ! function_exists( 'nadlan_ur_map_cities' ) ) {
 			$city = trim( (string) $r['city'] );
 			if ( '' === $city ) { continue; }
 			if ( ! isset( $cities[ $city ] ) ) {
-				$cities[ $city ] = array( 'city' => $city, 'count' => 0, 'pinui_binui' => 0, 'tama38' => 0,
+				$cities[ $city ] = array( 'city' => $city, 'count' => 0, 'misui' => 0, 'rashuyot' => 0,
 					'lnglat' => $cent[ $city ] ?? ( $cent_norm[ str_replace( array( '-', '  ' ), ' ', $city ) ] ?? null ) );
 			}
 			$cities[ $city ]['count'] += (int) $r['n'];
-			if ( 'pinui_binui' === $r['track'] ) { $cities[ $city ]['pinui_binui'] += (int) $r['n']; }
-			if ( 'tama38' === $r['track'] ) { $cities[ $city ]['tama38'] += (int) $r['n']; }
+			if ( 'misui' === $r['track'] ) { $cities[ $city ]['misui'] += (int) $r['n']; }
+			if ( 'rashuyot' === $r['track'] ) { $cities[ $city ]['rashuyot'] += (int) $r['n']; }
 		}
 		$out = array( 'total' => array_sum( wp_list_pluck( $cities, 'count' ) ), 'cities' => array_values( $cities ) );
-		set_transient( 'nadlan_ur_mapdata_v2', $out, 6 * HOUR_IN_SECONDS );
+		set_transient( 'nadlan_ur_mapdata_v3', $out, 6 * HOUR_IN_SECONDS );
 		return $out;
 	}
 }
@@ -109,7 +131,7 @@ add_action( 'rest_api_init', function () {
    is what search engines read. Cached whole for 6h. */
 if ( ! function_exists( 'nadlan_ur_map_seo_html' ) ) {
 	function nadlan_ur_map_seo_html() {
-		$hit = get_transient( 'nadlan_ur_mapseo_v2' );
+		$hit = get_transient( 'nadlan_ur_mapseo_v3' );
 		if ( is_string( $hit ) && '' !== $hit ) { return $hit; }
 		$data = nadlan_ur_map_cities();
 		$cities = $data['cities'];
@@ -132,18 +154,18 @@ if ( ! function_exists( 'nadlan_ur_map_seo_html' ) ) {
 			}
 			$more = max( 0, $c['count'] - count( $q->posts ) );
 			$cards .= '<div class="nlurm-city"><h3>' . esc_html( $c['city'] ) . '</h3>'
-				. '<p class="nlurm-cn">' . (int) $c['count'] . ' מתחמים מוכרזים'
-				. ( $c['pinui_binui'] ? ' · פינוי בינוי: ' . (int) $c['pinui_binui'] : '' )
-				. ( $c['tama38'] ? ' · תמא 38: ' . (int) $c['tama38'] : '' ) . '</p>'
+				. '<p class="nlurm-cn">' . (int) $c['count'] . ' מתחמי פינוי בינוי בפנקס'
+				. ( $c['misui'] ? ' · מסלול מיסוי: ' . (int) $c['misui'] : '' )
+				. ( $c['rashuyot'] ? ' · מסלול רשויות: ' . (int) $c['rashuyot'] : '' ) . '</p>'
 				. ( $links ? '<ul>' . $links . '</ul>' : '' )
 				. ( $more > 0 ? '<p class="nlurm-more">ועוד ' . $more . ' מתחמים בעיר (הקישו על העיר במפה לרשימה המלאה)</p>' : '' )
 				. '</div>';
-			$schema_cities[] = array( '@type' => 'ListItem', 'position' => count( $schema_cities ) + 1, 'name' => $c['city'] . ' - ' . $c['count'] . ' מתחמי התחדשות עירונית' );
+			$schema_cities[] = array( '@type' => 'ListItem', 'position' => count( $schema_cities ) + 1, 'name' => $c['city'] . ' - ' . $c['count'] . ' מתחמי פינוי בינוי' );
 		}
 		$home = home_url();
 		$copy = '<section class="nlurm-seo">'
 			. '<h2>מתחמי התחדשות עירונית מוכרזים בישראל - לפי עיר</h2>'
-			. '<p>המפה מציגה <b>' . $total . ' מתחמי התחדשות עירונית מוכרזים</b> מתוך המאגר הרשמי של הרשות הממשלתית להתחדשות עירונית (data.gov.il). לכל מתחם עמוד ייעודי עם מספר התכנית, המסלול והסטטוס. הנתונים מתעדכנים מהמאגר; מיקום מדויק לכל מתחם יתווסף בהמשך ולכן המפה מציגה ריכוזים לפי עיר.</p>'
+			. '<p>המפה מציגה <b>' . $total . ' מתחמי פינוי בינוי</b> מתוך המאגר הרשמי של הרשות הממשלתית להתחדשות עירונית (data.gov.il). לכל מתחם עמוד ייעודי עם מספר התכנית, המסלול והסטטוס. הנתונים מתעדכנים מהמאגר; מיקום מדויק לכל מתחם יתווסף בהמשך ולכן המפה מציגה ריכוזים לפי עיר.</p>'
 			. '<p>גרים בבניין שנמצא במתחם מוכרז? התחילו ב<a href="' . esc_url( $home . '/urban-renewal/' ) . '">מדריך ההתחדשות העירונית המלא</a>, בדקו את הבניין שלכם ב<a href="' . esc_url( $home . '/urban-renewal/check/' ) . '">בדיקת בניין חינמית</a>, או קראו על המסלולים: <a href="' . esc_url( $home . '/urban-renewal/pinui-binui/' ) . '">פינוי בינוי</a> ו<a href="' . esc_url( $home . '/urban-renewal/tama-38/' ) . '">תמא 38 והחלופות</a>. נציגות בניין יכולה לפתוח <a href="' . esc_url( $home . '/my-renewal/' ) . '">חדר פרויקט פרטי</a> לניהול ההסכמות והמסמכים.</p>'
 			. '<div class="nlurm-cities">' . $cards . '</div>'
 			. '</section>';
@@ -159,7 +181,7 @@ if ( ! function_exists( 'nadlan_ur_map_seo_html' ) ) {
 		);
 		$dataset = array(
 			'@context' => 'https://schema.org', '@type' => 'Dataset',
-			'name' => 'מתחמי התחדשות עירונית מוכרזים בישראל',
+			'name' => 'מתחמי פינוי בינוי במאגר ההתחדשות העירונית בישראל',
 			'description' => 'ריכוז מתחמי ההתחדשות העירונית המוכרזים בישראל לפי עיר ומסלול, מתוך המאגר הרשמי של הרשות הממשלתית להתחדשות עירונית.',
 			'creator' => array( '@type' => 'Organization', 'name' => 'הרשות הממשלתית להתחדשות עירונית (data.gov.il)' ),
 			'license' => 'https://data.gov.il/terms',
@@ -169,7 +191,7 @@ if ( ! function_exists( 'nadlan_ur_map_seo_html' ) ) {
 		$GLOBALS['nadlan_ur_map_schemas'] = array( $faq, $dataset, $list );
 		$html = $copy
 			. '<style>.nlurm-seo{margin-top:34px}.nlurm-seo h2{font-family:"Frank Ruhl Libre",Georgia,serif;font-size:clamp(1.25rem,2.6vw,1.6rem);margin:0 0 12px}.nlurm-seo>p{font:400 15px/1.75 Heebo,sans-serif;color:#3E382F;max-width:70ch}.nlurm-cities{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:14px;margin-top:20px}.nlurm-city{background:#fff;border:1px solid #E2DCD0;border-radius:14px;padding:16px 18px}.nlurm-city h3{font:700 16px Heebo,sans-serif;margin:0 0 4px}.nlurm-cn{font:400 12.5px/1.6 Heebo,sans-serif;color:#6D665C;margin:0 0 8px}.nlurm-city ul{margin:0;padding:0 18px 0 0;font:400 13.5px/1.9 Heebo,sans-serif}.nlurm-city a{color:#9C7A3C}.nlurm-more{font:400 12px/1.5 Heebo,sans-serif;color:#A79E8D;margin:6px 0 0}</style>';
-		set_transient( 'nadlan_ur_mapseo_v2', $html, 6 * HOUR_IN_SECONDS );
+		set_transient( 'nadlan_ur_mapseo_v3', $html, 6 * HOUR_IN_SECONDS );
 		return $html;
 	}
 }
@@ -205,10 +227,22 @@ add_shortcode( 'nadlan_ur_map', function () {
 <script>
 (function(){
 	var host=document.getElementById("nlurm-map");if(!host||host.dataset.wired)return;host.dataset.wired="1";
+	function fail(){
+		// no WebGL / blocked script: never leave a black box - the crawlable
+		// city directory below carries the same data
+		host.style.display="none";
+		var n=document.createElement("p");
+		n.className="nlurm-note";
+		n.textContent="המפה האינטראקטיבית דורשת דפדפן עם תמיכה גרפית (WebGL). רשימת הערים והמתחמים המלאה מוצגת מטה.";
+		host.parentNode.insertBefore(n,host.nextSibling);
+	}
 	function boot(){
-		mapboxgl.accessToken="<?php echo esc_js( $token ); ?>";
-		var map=new mapboxgl.Map({container:"nlurm-map",style:"mapbox://styles/mapbox/light-v11",center:[34.9,31.9],zoom:7,attributionControl:true,cooperativeGestures:true,
-			locale:{"CooperativeGesturesHandler.WindowsHelpText":"לחצו Ctrl וגללו כדי להתקרב במפה","CooperativeGesturesHandler.MacHelpText":"לחצו ⌘ וגללו כדי להתקרב במפה","TouchPanBlocker.Message":"הזיזו את המפה בשתי אצבעות"}});
+		var map;
+		try{
+			mapboxgl.accessToken="<?php echo esc_js( $token ); ?>";
+			map=new mapboxgl.Map({container:"nlurm-map",style:"mapbox://styles/mapbox/light-v11",center:[34.9,31.9],zoom:7,attributionControl:true,cooperativeGestures:true,
+				locale:{"CooperativeGesturesHandler.WindowsHelpText":"לחצו Ctrl וגללו כדי להתקרב במפה","CooperativeGesturesHandler.MacHelpText":"לחצו ⌘ וגללו כדי להתקרב במפה","TouchPanBlocker.Message":"הזיזו את המפה בשתי אצבעות"}});
+		}catch(e){fail();return}
 		map.addControl(new mapboxgl.NavigationControl());
 		fetch("<?php echo $rest; // phpcs:ignore ?>").then(function(r){return r.json()}).then(function(d){
 			(d.cities||[]).forEach(function(c){
@@ -232,7 +266,7 @@ add_shortcode( 'nadlan_ur_map', function () {
 	}
 	if(window.mapboxgl){boot();return}
 	var l=document.createElement("link");l.rel="stylesheet";l.href="https://api.mapbox.com/mapbox-gl-js/v3.7.0/mapbox-gl.css";document.head.appendChild(l);
-	var s=document.createElement("script");s.src="https://api.mapbox.com/mapbox-gl-js/v3.7.0/mapbox-gl.js";s.onload=boot;document.head.appendChild(s);
+	var s=document.createElement("script");s.src="https://api.mapbox.com/mapbox-gl-js/v3.7.0/mapbox-gl.js";s.onload=boot;s.onerror=fail;document.head.appendChild(s);
 })();
 </script>
 	<?php
