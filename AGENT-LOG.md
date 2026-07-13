@@ -1,5 +1,39 @@
 # AGENT-LOG - the God brain (append-only, newest on top)
 
+## 2026-07-13 (69) - v1.72.117 MAPS ROUND 1: the POI engine was dead - now the chips filter REAL data
+Owner: "the filtering is not really filtering anything... most of
+the maps are just nothing." Full audit (subagent recon over every
+map surface) + live payload checks. ROOT CAUSE FOUND on the
+flagship map: window.NLPJX_POIS was EMPTY on every page - the
+chips toggled empty arrays. Why: nearby-poi.php v1 queried OSM
+NODES only (Israeli schools/parks/supermarkets are mapped as
+WAYS/RELATIONS -> whole categories empty), dropped nameless POIs
+(most bus stops), and CACHED EMPTY RESULTS FOR 24H so one bad
+fetch blanked the map for a day. Diag snippet from the host:
+overpass-api.de answers (6s, slow), kumi mirror times out.
+V2 POI ENGINE (nearby-poi.php rewritten): nwr + "out tags
+center" (ways carry center coords), generic Hebrew labels for
+nameless items (תחנת אוטובוס/פארק/גן משחקים), haversine distance
+on every item (sorted), 2 mirrors with failover, empty cached
+15min only / real data 3 days, MORE buyer categories: parks/
+playgrounds/gardens, cafes/restaurants, community centres,
+libraries.
+SURFACES: project map (nlpjx) gets parks+food chips (labels x5
+langs), LIVE COUNTS on every chip ("חינוך (11)"), zero-count
+chips grey out, popups show name+distance ("כ-270 מטר
+מהפרויקט"); property page (property-showroom) had a caption
+PROMISING filters that did not exist - now has a real 7-chip
+row (Leaflet layerGroups), counts, distance popups, honest
+caption; property "מה יש בסביבה" list shows distances.
+VERIFIED LIVE on Rainbow TLV: schools 11, kindergartens 5,
+parks 16, transit 16, shops 13, health 3, food 16 - real names
++ distances in the payload. Property surface chips render;
+cache warms per location on first view (failures NOT cached).
+LAW: never cache an empty external-API answer for long - it
+reads as "feature is dead" to the owner.
+NEXT in round: drone-map/city maps richness pass; consider
+POI pre-warm cron for geocoded flagships.
+
 ## 2026-07-13 (68) - v1.72.116 DATA HONESTY: 938 compounds were mislabeled "תמא 38" + map hardening
 Owner's screenshot of /urban-renewal/map/ exposed two things.
 (1) THE BIG ONE: every city card said "תמא 38: N" == total.
