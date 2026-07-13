@@ -1068,6 +1068,9 @@ add_filter( 'the_content', function ( $content ) {
 			<?php $pay = (string) get_post_meta( $id, 'gw_payment', true ); if ( $pay ) : ?><div class="cell"><i><?php echo $L( 'תוכנית תשלומים', 'Payment plan' ); ?></i><b><?php echo esc_html( $pay ); ?></b></div><?php endif; ?>
 			<?php $fee = (string) get_post_meta( $id, 'gw_fees', true ); if ( $fee ) : ?><div class="cell"><i><?php echo $L( 'דמי ניהול', 'Service charges' ); ?></i><b><?php echo esc_html( $fee ); ?></b></div><?php endif; ?>
 		</div>
+		<?php $broch = (string) get_post_meta( $id, 'gw_brochure', true ); if ( $broch ) : ?>
+		<p style="margin:12px 0 0"><a href="<?php echo esc_url( $broch ); ?>" target="_blank" rel="noopener" style="display:inline-block;background:#9C7A3C;color:#FAF7F1;border-radius:12px;padding:11px 20px;font:700 13px Heebo,sans-serif;text-decoration:none"><?php echo $L( 'החוברת הרשמית של היזם (PDF)', 'The developer official brochure (PDF)' ); ?></a></p>
+		<?php endif; ?>
 	</div>
 
 	<?php
@@ -1515,6 +1518,77 @@ add_action( 'rest_api_init', function () {
 				'layout' => $sky_layout, 'apts_custom' => $sky_apts,
 				'real' => false,
 			);
+			// DAMAC RIVERSIDE VIEWS - REAL, AUTHORIZED (owner negotiated with DAMAC,
+			// permission granted to present their assets 2026-07-13). Data from the
+			// official brochure + page (28pp, 8 clusters, DIP Dubai, 1-2BR towers).
+			$rv_names = array( 'Indigo', 'Royal', 'Azure', 'Teal', 'Marine', 'Capri', 'Sky', 'Pacific' );
+			$rv_layout = array( 'fh' => 3.1, 'buildings' => array(
+				array( 'x' => -72, 'z' => -30, 'w' => 24, 'd' => 18, 'floors' => 15 ),
+				array( 'x' => -38, 'z' => -34, 'w' => 24, 'd' => 18, 'floors' => 14 ),
+				array( 'x' => -4, 'z' => -30, 'w' => 24, 'd' => 18, 'floors' => 16 ),
+				array( 'x' => 32, 'z' => -34, 'w' => 24, 'd' => 18, 'floors' => 14 ),
+				array( 'x' => 68, 'z' => -30, 'w' => 24, 'd' => 18, 'floors' => 15 ),
+				array( 'x' => -55, 'z' => 30, 'w' => 24, 'd' => 18, 'floors' => 14 ),
+				array( 'x' => -18, 'z' => 34, 'w' => 24, 'd' => 18, 'floors' => 16 ),
+				array( 'x' => 50, 'z' => 32, 'w' => 24, 'd' => 18, 'floors' => 15 ),
+			) );
+			$rv_types = array(
+				array( 'rooms' => 2, 'sqm' => 60, 'base' => 1050000 ),
+				array( 'rooms' => 2, 'sqm' => 68, 'base' => 1160000 ),
+				array( 'rooms' => 3, 'sqm' => 96, 'base' => 1580000 ),
+			);
+			$rv_apts = array();
+			$ri = 0;
+			foreach ( $rv_layout['buildings'] as $bi => $b ) {
+				foreach ( array( 3, 6, 9, 12, (int) $b['floors'] - 1 ) as $lvl ) {
+					foreach ( $rv_types as $ti => $t ) {
+						$ri++;
+						$rv_apts[] = array(
+							'b' => $bi, 'id' => strtolower( substr( $rv_names[ $bi ], 0, 2 ) ) . $lvl . '0' . ( $ti + 1 ),
+							'floor' => $lvl, 'pos' => $ti % 3,
+							'dir' => $bi < 5 ? 'south' : 'north',
+							'rooms' => $t['rooms'], 'sqm' => $t['sqm'],
+							'price' => round( $t['base'] * ( 1 + 0.01 * $lvl ), -3 ),
+							'status' => ( 0 === $ri % 4 ) ? 'sold' : ( ( 0 === $ri % 7 ) ? 'reserved' : 'available' ),
+							'view_he' => 'הנהר והלגונות', 'view_en' => 'The river and lagoons',
+						);
+						if ( count( $rv_apts ) >= 120 ) { break 3; }
+					}
+				}
+			}
+			$rows[] = array(
+				'slug' => 'damac-riverside-views-dubai', 'title' => 'DAMAC Riverside Views - דובאי', 'world' => 'dubai',
+				'district' => 'DAMAC Riverside, דובאי אינבסטמנטס פארק', 'district_en' => 'DAMAC Riverside, Dubai Investments Park',
+				'lat' => 24.9857, 'lng' => 55.1713, 'price' => '1050000', 'units' => 1100, 'floors' => 16, 'delivery' => '2028',
+				'yield' => 'מחיר פתיחה לפי פרסומים פומביים - לאימות מול DAMAC; שיווק היזם: החל מ-1,800 AED לחודש',
+				'payment' => 'תוכנית תשלומים חודשית של היזם - החל מ-1,800 AED לחודש (פרסום DAMAC)',
+				'fees' => 'דמי קהילה לפי תקנון DAMAC Riverside',
+				'fx' => 1.0, 'dev' => 'DAMAC Properties', 'bnames' => $rv_names,
+				'about' => 'DAMAC Riverside Views: מגדלי הדירות של קהילת הריברסייד הראשונה של דובאי, בדובאי אינבסטמנטס פארק. שמונה קלאסטרים בהשראת גווני הכחול - Indigo, Royal, Azure, Teal, Marine, Capri, Sky ו-Pacific - לאורך נהר מלאכותי עם רשימת מתקנים שאין דומה לה: אופרה צפה, קולנוע צף, מסעדת אי ומסעדת פורטופינו שמגיעים אליה בסירה, אגמי שמנים אתריים, חוף מאליבו קוב, קיר טיפוס, חווה הידרופונית ואמפיתיאטרון. דירות 1-2 חדרי שינה בגימור DAMAC. הנתונים והתמונות מחומרי היזם הרשמיים, בהרשאה; המודל התלת ממדי הוא הדמיה עקרונית של המתאר.',
+				'about_en' => 'DAMAC Riverside Views: the apartment towers of Dubai\'s first riverside community, in Dubai Investments Park. Eight clusters inspired by shades of blue - Indigo, Royal, Azure, Teal, Marine, Capri, Sky and Pacific - along an engineered river with an amenity list like no other: a floating opera, floating cinema, an island restaurant and the boat-access Portofino restaurant, essential-oils lakes, Malibu Cove beach, a climbing wall, a hydroponic farm and an amphitheatre. 1-2 bedroom homes in DAMAC finishing. Data and images from the developer\'s official materials, with permission; the 3D model is a conceptual massing visualization.',
+				'about_ar' => 'DAMAC Riverside Views: أبراج الشقق في أول مجتمع نهري في دبي، في مجمع دبي للاستثمار. ثمانية تجمعات مستوحاة من درجات الأزرق على طول نهر هندسي مع قائمة مرافق لا مثيل لها: أوبرا عائمة، سينما عائمة، مطعم جزيرة ومطعم بورتوفينو الذي يُوصل إليه بالقارب، بحيرات الزيوت العطرية، شاطئ ماليبو كوف، جدار تسلق ومزرعة مائية. شقق من غرفة وغرفتي نوم بتشطيب داماك. البيانات والصور من مواد المطوّر الرسمية بإذن؛ النموذج ثلاثي الأبعاد تصور مفاهيمي.',
+				'fac' => array(
+					array( 'אופרה צפה', 'Floating opera' ), array( 'קולנוע צף', 'Floating cinema' ),
+					array( 'מסעדת אי + פורטופינו בסירה', 'Island restaurant + boat-access Portofino' ),
+					array( 'אגמי שמנים אתריים', 'Essential-oils lakes' ), array( 'חוף מאליבו קוב', 'Malibu Cove beach' ),
+					array( 'קיר טיפוס ותחנות כושר', 'Climbing wall and callisthenics' ),
+					array( 'חווה הידרופונית ושיעורי בישול', 'Hydroponic farm and cooking classes' ),
+					array( 'אמפיתיאטרון ומועדון דיירים', 'Amphitheatre and clubhouse' ),
+					array( 'ספא וחדרי שלווה', 'Spa and peace rooms' ), array( 'Kidz Adventure Land', 'Kidz Adventure Land' ),
+				),
+				'glb' => 'models/damac-riverside-views.glb',
+				'layout' => $rv_layout, 'apts_custom' => $rv_apts,
+				'gallery' => array(
+					'https://nad-lan.co.il/wp-content/uploads/2026/07/damac-riverside-views-hero.jpg',
+					'https://nad-lan.co.il/wp-content/uploads/2026/07/damac-riverside-views-g1.jpg',
+					'https://nad-lan.co.il/wp-content/uploads/2026/07/damac-riverside-views-g2.jpg',
+					'https://nad-lan.co.il/wp-content/uploads/2026/07/damac-riverside-views-g3.jpg',
+					'https://nad-lan.co.il/wp-content/uploads/2026/07/damac-riverside-views-floating-stage.jpg',
+					'https://nad-lan.co.il/wp-content/uploads/2026/07/damac-riverside-views-lake.jpg',
+				),
+				'brochure' => 'https://nad-lan.co.il/wp-content/uploads/2026/07/damac-riverside-views-brochure.pdf',
+				'real' => true, 'engine' => true,
+			);
 			// generated inventory: honest, price-scaled apartments per project
 			$gen_apts = function ( $r ) {
 				$floors = (int) $r['floors'];
@@ -1607,12 +1681,12 @@ add_action( 'rest_api_init', function () {
 						$ez = round( (float) $bldg['z'] + $ev[1] + $eperp[1] * $eoff, 1 );
 						$ey = round( ( $a['floor'] - 0.5 ) * $efh + 0.4, 1 );
 						$enrm = ( 0 === (int) $ev[0] ) ? ( $ev[1] > 0 ? '0 0 1' : '0 0 -1' ) : ( $ev[0] > 0 ? '1 0 0' : '-1 0 0' );
-						$bl_letter = chr( 65 + (int) $a['b'] );
+						$bl_letter = isset( $r['bnames'][ (int) $a['b'] ] ) ? $r['bnames'][ (int) $a['b'] ] : chr( 65 + (int) $a['b'] );
 						$eunits[] = array(
-							'id' => $a['id'], 'title' => 'בניין ' . $bl_letter . ' · ' . strtoupper( $a['id'] ),
+							'id' => $a['id'], 'title' => ( isset( $r['bnames'] ) ? 'קלאסטר ' : 'בניין ' ) . $bl_letter . ' · ' . strtoupper( $a['id'] ),
 							'floor' => $a['floor'], 'rooms' => $a['rooms'], 'sqm' => $a['sqm'],
 							'balcony' => 10 + 2 * $a['rooms'], 'dir' => $a['dir'], 'line' => $bl_letter,
-							'view' => $a['view_he'], 'building' => 'בניין ' . $bl_letter,
+							'view' => $a['view_he'], 'building' => ( isset( $r['bnames'] ) ? 'קלאסטר ' : 'בניין ' ) . $bl_letter,
 							'availability' => 'זמינות ומחיר להמחשה - לפי אישור היזם',
 							'source_note' => 'נגזר מנתוני היזם המפורסמים (72 יח״ד, 1-3 חד׳, 52-107 מ״ר)',
 							'price' => $a['price'], 'status' => $a['status'],
@@ -1636,6 +1710,8 @@ add_action( 'rest_api_init', function () {
 					if ( isset( $r['gallery'][0] ) ) { update_post_meta( $pid, 'project_model_poster', $r['gallery'][0] ); }
 				}
 				if ( isset( $r['about_ar'] ) ) { update_post_meta( $pid, 'gw_about_ar', $r['about_ar'] ); }
+				if ( isset( $r['brochure'] ) ) { update_post_meta( $pid, 'gw_brochure', esc_url_raw( $r['brochure'] ) ); }
+				if ( isset( $r['dev'] ) ) { update_post_meta( $pid, 'developer_name', $r['dev'] ); }
 				// real developer projects are NOT demo-badged; their honesty note lives in the about text
 				update_post_meta( $pid, 'gw_demo', empty( $r['real'] ) ? '1' : '0' );
 				$made[] = array( 'slug' => $r['slug'], 'id' => $pid, 'existed' => (bool) $exists );

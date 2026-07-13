@@ -1,5 +1,46 @@
 # AGENT-LOG - the God brain (append-only, newest on top)
 
+## 2026-07-13 (63) - v1.72.109 DAMAC RIVERSIDE VIEWS (authorized, engine-grade, beat-their-page)
+Owner negotiated with DAMAC - PERMISSION GRANTED to present their
+assets. Target: Riverside Views (their showcase page).
+THEIR TECH, MAPPED (deep source investigation): Next.js +
+Contentful CMS. The "wow" the owner saw = PRE-RENDERED cinematic
+MP4s (hero/transition/project videos on ctfassets CDN) + gallery
+images + a 28pp digital brochure PDF. NO real-time interactive 3D,
+NO unit-level selection, NO per-apartment data on the page. (The
+109 "unity" fingerprint hits were "comm-UNIT-ies" - caught the
+false positive.) Their strength: cinematic polish. Their gap: the
+buyer can watch, not choose.
+OUR PAGE (/global/project/damac-riverside-views-dubai/):
+- Intake per the pipeline: brochure downloaded + read (28pp,
+  pypdf): 8 clusters (Indigo/Royal/Azure/Teal/Marine/Capri/Sky/
+  Pacific), DIP location, 1-2BR, floating opera/cinema, island +
+  boat-access Portofino restaurants, essential-oils lakes, Malibu
+  Cove, climbing wall, hydroponic farm.
+- Bespoke factory GLB: 8 towers (14-16 fl) in two rows along the
+  engineered RIVER (seafront water plate), 18.9K tris.
+- THE ISRAELI ENGINE mounted (engine=true): 120 units sampled
+  across all 8 clusters with authored hotspot positions, cluster
+  names in unit titles (קלאסטר Indigo), sun/view-from-window/
+  walk-inside/Studio/buyflow native.
+- THEIR AUTHORIZED MEDIA on our page: 6 official images uploaded
+  to OUR media (hero as model poster + gallery incl. floating
+  stage + oils lake) + the OFFICIAL BROCHURE PDF hosted by us with
+  a gold button. Permission noted in the about text.
+- Real name (authorized), monthly-plan framing quoted as the
+  developer's marketing, price-from labeled "לאימות מול DAMAC".
+- Scheduler routed to owner; he/en/ar about texts.
+VERIFIED LIVE: engine mounted, 120 authored hotspots, riverside
+GLB, DAMAC poster, gallery, brochure button, clusters, permission
+note, scheduler. NIT: engine payload lacks developer_name field
+(brand carried by title/about; queued).
+THE PITCH VS DAMAC: they show a film; we hand the buyer the
+building - tap a cluster, pick a floor, see the unit, walk
+inside, design it, book a meeting that lands as a WhatsApp
+invitation. Plus their own cinematic assets embedded. One page,
+both worlds.
+
+
 ## 2026-07-12 (62) - v1.72.108 THE REAL ENGINE ON THE CYPRUS FLAGSHIP (Oliel presentation)
 Owner: "why can't you clone it?" - answered by NOT cloning: the
 REAL Israeli showroom engine now runs on the Lion Apartments page.
