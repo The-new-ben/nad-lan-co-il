@@ -1,5 +1,47 @@
 # AGENT-LOG - the God brain (append-only, newest on top)
 
+## 2026-07-13 (65) - v1.72.111-112 ENTERPRISE AUTH: /login + /signup, identifier-first, roles, hardened
+Task #83 second half. Owner: renewal links land on wp-login,
+"we missed it fundamentally... first-class, enterprise class".
+RESEARCH (2026 state of the art): identifier-first flow (email
+first, system presents the right next step) beats method-picker
+walls; passkeys = the consumer default (phase 2 here); email
+magic-links IMPOSSIBLE on this site (outbound email is dead).
+Working factors: password + Google OAuth (flag-gated) + passkeys
+next. Sources: authgear/loginradius/stytch/fusionauth guides.
+NEW inc/auth.php (wired as module 'auth'):
+- Branded /login/ + /signup/ (premium DNA card, gold progress,
+  animated one-step-at-a-time: email -> password OR persona chips
+  -> details + live password strength). noindex (header + meta)
+  + branded titles. Same-origin redirect param only.
+- 6 personas with role destinations: buyer->/, seller->
+  /sell-by-auction/, landlord->/my-rentals/, renewal->/my-renewal/,
+  pro->/join-pro/, developer->/advertise/.
+- REST: auth-identify (identifier-first, honeypot, 20/10min),
+  auth-login (no-enumeration identical error, dual lockout),
+  auth-signup (5/hr/IP, pw>=8 + common-pattern block, persona+
+  phone meta, auto-login), auth-google (full server-side code
+  flow w/ tokeninfo aud+email_verified checks; 404 until owner
+  sets client id+secret in the new 'nadlan-auth' admin page).
+- login_url filter: every wp_login_url() caller now routes to
+  /login/?redirect= (verified: anon /my-appointments/ 302 there).
+LOCKOUT WAR STORY: first E2E showed the 5-try IP+email lockout
+never engaging - my egress IPs ROTATE per request (proxy pool),
+i.e. a real credential-stuffing attacker with rotating proxies
+would bypass it. v1.72.112 added a second EMAIL-ONLY counter
+(10 tries/15min) - verified live: 11th try 429, and the CORRECT
+password while locked is also 429. Note: 429 passes the UPress
+nginx unmasked (the 403->404 quirk does not apply).
+E2E VERIFIED LIVE: signup created persona'd user + auto-login +
+dest, identify flips signup->login, login ok, lockout engages,
+google 404 when unconfigured + no button markup, honeypot fake-
+success, /login/+/signup/ 200 branded, healthcheck auth block.
+Test user deleted after the run.
+NEXT: passkeys (WebAuthn) phase 2; move renewal/rental invite
+copy to mention /login/; owner action: create Google OAuth client
+(redirect URI = wp-json/nadlan/v1/auth-google) and paste keys in
+Settings -> nadlan-auth.
+
 ## 2026-07-13 (64) - v1.72.110 CINEMA ROUND: the TLV leak killed + DAMAC's real film on our page
 Owner caught the walk-inside showing a TEL AVIV building on the
 DAMAC page + wants their high-res hovering feel. ROOT CAUSE: the
