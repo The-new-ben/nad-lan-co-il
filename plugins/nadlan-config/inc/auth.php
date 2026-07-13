@@ -248,8 +248,11 @@ add_action( 'rest_api_init', function () {
 			$redirect_uri = rest_url( 'nadlan/v1/auth-google' );
 			$code = (string) $req->get_param( 'code' );
 			if ( '' === $code ) {
+				// optional same-origin return destination, carried through the state transient
+				$dest = esc_url_raw( (string) $req->get_param( 'redirect' ) );
+				if ( $dest && 0 !== strpos( $dest, home_url() ) ) { $dest = ''; }
 				$state = wp_generate_password( 16, false, false );
-				set_transient( 'nlauth_gstate_' . $state, '1', 10 * MINUTE_IN_SECONDS );
+				set_transient( 'nlauth_gstate_' . $state, $dest ?: '1', 10 * MINUTE_IN_SECONDS );
 				wp_redirect( 'https://accounts.google.com/o/oauth2/v2/auth?' . http_build_query( array(
 					'client_id' => $cid, 'redirect_uri' => $redirect_uri, 'response_type' => 'code',
 					'scope' => 'openid email profile', 'state' => $state, 'prompt' => 'select_account',
@@ -257,10 +260,12 @@ add_action( 'rest_api_init', function () {
 				exit;
 			}
 			$state = (string) $req->get_param( 'state' );
-			if ( '' === $state || '1' !== get_transient( 'nlauth_gstate_' . $state ) ) {
+			$stored = (string) get_transient( 'nlauth_gstate_' . $state );
+			if ( '' === $state || '' === $stored ) {
 				return new WP_Error( 'state', 'state mismatch', array( 'status' => 400 ) );
 			}
 			delete_transient( 'nlauth_gstate_' . $state );
+			$dest = ( '1' !== $stored && 0 === strpos( $stored, home_url() ) ) ? $stored : home_url( '/' );
 			$tok = wp_remote_post( 'https://oauth2.googleapis.com/token', array( 'timeout' => 15, 'body' => array(
 				'code' => $code, 'client_id' => $cid, 'client_secret' => $sec,
 				'redirect_uri' => $redirect_uri, 'grant_type' => 'authorization_code',
@@ -291,7 +296,7 @@ add_action( 'rest_api_init', function () {
 			}
 			wp_set_current_user( $user->ID );
 			wp_set_auth_cookie( $user->ID, true );
-			wp_safe_redirect( home_url( '/' ) );
+			wp_safe_redirect( $dest );
 			exit;
 		},
 	) );
@@ -459,6 +464,39 @@ add_filter( 'login_url', function ( $login_url, $redirect ) {
 	if ( is_admin() ) { return $login_url; }
 	return nadlan_auth_url( $redirect );
 }, 10, 2 );
+
+/* ---------- the Google entry point on EVERY login surface ---------- */
+if ( ! function_exists( 'nadlan_auth_google_button' ) ) {
+	// shared renderer: branded Google button (only when configured) + a link
+	// to the branded /login/ page. $redirect = same-origin URL to return to.
+	function nadlan_auth_google_button( $redirect = '', $lang = 'he' ) {
+		$T = nadlan_auth_i18n( $lang );
+		$out = '<div class="nlau-embed" style="margin:14px 0;text-align:center">';
+		$cid = trim( (string) get_option( 'nadlan_google_client_id', '' ) );
+		$sec = trim( (string) get_option( 'nadlan_google_client_secret', '' ) );
+		if ( '' !== $cid && '' !== $sec ) {
+			$g = rest_url( 'nadlan/v1/auth-google' );
+			if ( $redirect ) { $g = add_query_arg( 'redirect', rawurlencode( $redirect ), $g ); }
+			$out .= '<a href="' . esc_url( $g ) . '" style="display:inline-flex;align-items:center;gap:10px;border:1.5px solid #E2DCD0;border-radius:12px;padding:12px 22px;font:700 14px Heebo,sans-serif;color:#1B1A17;background:#fff;text-decoration:none">'
+				. '<svg width="18" height="18" viewBox="0 0 48 48"><path fill="#FFC107" d="M43.6 20.1H42V20H24v8h11.3C33.7 32.7 29.2 36 24 36c-6.6 0-12-5.4-12-12s5.4-12 12-12c3.1 0 5.9 1.2 8 3l5.7-5.7C34.3 6.1 29.4 4 24 4 13 4 4 13 4 24s9 20 20 20 20-9 20-20c0-1.3-.1-2.6-.4-3.9z"/><path fill="#FF3D00" d="M6.3 14.7l6.6 4.8C14.7 15.1 19 12 24 12c3.1 0 5.9 1.2 8 3l5.7-5.7C34.3 6.1 29.4 4 24 4 16.3 4 9.7 8.3 6.3 14.7z"/><path fill="#4CAF50" d="M24 44c5.2 0 9.9-2 13.4-5.2l-6.2-5.2C29.2 35.1 26.7 36 24 36c-5.2 0-9.6-3.3-11.3-8l-6.5 5C9.5 39.6 16.2 44 24 44z"/><path fill="#1976D2" d="M43.6 20.1H42V20H24v8h11.3c-.8 2.2-2.2 4.2-4.1 5.6l6.2 5.2C41 35.4 44 30.2 44 24c0-1.3-.1-2.6-.4-3.9z"/></svg>'
+				. esc_html( $T['google'] ) . '</a>';
+		}
+		$label = 'en' === $lang ? 'Or sign in with email on the new login page' : 'או התחברו עם אימייל בעמוד הכניסה החדש';
+		$out .= '<p style="margin:10px 0 0;font:400 12.5px Heebo,sans-serif"><a href="' . esc_url( nadlan_auth_url( $redirect ) ) . '" style="color:#9C7A3C">' . esc_html( $label ) . '</a></p></div>';
+		return $out;
+	}
+}
+
+// WooCommerce /my-account/ login form
+add_action( 'woocommerce_login_form_end', function () {
+	echo nadlan_auth_google_button( wc_get_page_permalink( 'myaccount' ) ); // phpcs:ignore -- built escaped
+} );
+
+// wp-login.php (stays the admin door, but a visitor who lands here still
+// gets the consumer entry points)
+add_action( 'login_form', function () {
+	echo nadlan_auth_google_button( '' ); // phpcs:ignore -- built escaped
+} );
 
 /* ---------- Google keys settings (keys hub companion) ---------- */
 add_action( 'admin_menu', function () {

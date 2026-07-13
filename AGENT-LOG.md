@@ -1,5 +1,27 @@
 # AGENT-LOG - the God brain (append-only, newest on top)
 
+## 2026-07-13 (67) - v1.72.115 GOOGLE LIVE + the button on EVERY login door
+Owner configured the Google OAuth keys and ran a full logged-out
+QA: the flow passed E2E (Google account chooser -> consent with
+NadLan branding -> session created). google_on:true in
+healthcheck; the button renders on /login/ HE+EN.
+QA finding: the button was MISSING on wp-login.php and the
+WooCommerce /my-account/ login - correct (it only lived on the
+branded /login/) but users landing on those doors had no entry
+point. FIX: shared nadlan_auth_google_button($redirect,$lang)
+renderer hooked into woocommerce_login_form_end + login_form
+(wp-login) - Google button (only when configured) + a gold link
+to the branded /login/ page on both.
+BONUS: auth-google now accepts ?redirect= (same-origin only),
+carried through the state transient, so Google sign-in returns
+users to the page they started from instead of always home.
+Verified live: button markup on /my-account/ + wp-login.php,
+redirect param carried into the state, initiation 302s to
+accounts.google.com with the real client_id.
+NOTE: owner's admin browser session is now the "jus tice"
+customer account after the QA - he re-logs to admin himself.
+Google-created users get persona 'buyer' (subscriber role).
+
 ## 2026-07-13 (66) - v1.72.113-114 AUTH IN ENGLISH + THE MAP PAGE GETS SEO MUSCLE
 Owner: "it needs to be in English also... the map must be SEO
 strong... I want traffic."
