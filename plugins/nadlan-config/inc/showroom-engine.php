@@ -242,7 +242,8 @@ if ( ! function_exists( 'nadlan_showroom_engine_resolve_target' ) ) {
 		}
 		if ( $atts['id'] ) {
 			$p = get_post( (int) $atts['id'] );
-			if ( $p && $p->post_type === 'nadlan_project' ) { return array( $p ); }
+			// international flagships run the SAME engine when addressed explicitly (owner 2026-07-12)
+			if ( $p && in_array( $p->post_type, array( 'nadlan_project', 'nadlan_intl' ), true ) ) { return array( $p ); }
 		}
 		if ( $atts['project'] ) {
 			$p = get_page_by_path( sanitize_title( $atts['project'] ), OBJECT, 'nadlan_project' );

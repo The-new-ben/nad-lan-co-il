@@ -1027,6 +1027,11 @@ add_filter( 'the_content', function ( $content ) {
 		return 'en' === $lang ? $en_v : $he;
 	};
 	$fx = (float) get_post_meta( $id, 'gw_fx_ils', true );
+	// THE ISRAELI ENGINE on international flagships (owner 2026-07-12): when the
+	// engine flag is on, the full showroom (selection, sun, view-from-window,
+	// walk-inside, studio, unified map, inquiry) replaces this module's own
+	// model/picker/map/lead blocks - ONE of everything.
+	$engine_on = get_post_meta( $id, 'nlp3d_use_engine', true ) === '1' && function_exists( 'nadlan_showroom_engine_shortcode' );
 	$code = (string) get_post_meta( $id, 'gw_world', true );
 	$W = nadlan_gw_worlds();
 	$w = isset( $W[ $code ] ) ? $W[ $code ] : null;
@@ -1069,7 +1074,9 @@ add_filter( 'the_content', function ( $content ) {
 	$apts = nadlan_gw_clean_apartments( json_decode( (string) get_post_meta( $id, 'gw_apartments', true ), true ) );
 	$layout = json_decode( (string) get_post_meta( $id, 'gw_model_layout', true ), true );
 	$layout = ( is_array( $layout ) && ! empty( $layout['buildings'] ) ) ? $layout : null;
-	if ( $glb ) :
+	if ( $engine_on ) :
+		echo nadlan_showroom_engine_shortcode( array( 'page' => 'project', 'project' => '', 'id' => (string) $id ) ); // phpcs:ignore
+	elseif ( $glb ) :
 		// hotspot geometry: bespoke site layout (per-building) or the generic tower
 		$tw_h = 150.0; $tw_hx = 50.0; $tw_hz = 42.0;
 		$fh = $layout ? (float) ( $layout['fh'] ?? 3.1 ) : ( $floors > 0 ? min( 3.4, ( $tw_h * 0.88 ) / max( 1, $floors ) ) : 3.05 );
@@ -1262,7 +1269,7 @@ add_filter( 'the_content', function ( $content ) {
 	if ( 'ar' === $lang && $about_ar ) : ?><p style="font:400 15px/1.9 Heebo;color:#37322A;max-width:760px"><?php echo esc_html( $about_ar ); ?></p>
 	<?php elseif ( 'he' !== $lang && $about_en ) : ?><p style="font:400 15px/1.85 Heebo;color:#37322A;max-width:760px"><?php echo esc_html( $about_en ); ?></p><?php endif; ?>
 
-	<?php if ( $token && $lat && $lng ) : ?>
+	<?php if ( $token && $lat && $lng && ! $engine_on ) : ?>
 	<div class="nlgw-map"><h2><?php echo $L( 'מה מסביב', 'What is around' ); ?></h2>
 		<div id="nlgw-map" class="mapbox" data-token="<?php echo esc_attr( $token ); ?>" data-center="<?php echo esc_attr( $lng . ',' . $lat ); ?>" data-zoom="14"
 			data-pins="<?php echo esc_attr( wp_json_encode( array( array( 't' => get_the_title( $id ), 'u' => '#', 'lat' => $lat, 'lng' => $lng ) ), JSON_UNESCAPED_UNICODE ) ); ?>"></div>
@@ -1291,6 +1298,7 @@ add_filter( 'the_content', function ( $content ) {
 	</script>
 	<?php endif; ?>
 
+	<?php if ( ! $engine_on ) : ?>
 	<section class="nlgw-lead">
 		<h2><?php echo $L( 'רוצים לשמוע עוד על השקעה כזו?', 'Want to hear more about an investment like this?' ); ?></h2>
 		<form id="nlgw-lead-form">
@@ -1310,6 +1318,7 @@ add_filter( 'the_content', function ( $content ) {
 		.then(function(r){if(r.ok){f.querySelector(".ok").hidden=false;f.querySelector("button").disabled=true;}});
 	});}})();
 	</script>
+	<?php endif; ?>
 </div>
 	<?php
 	return ob_get_clean() . $content;
@@ -1451,6 +1460,7 @@ add_action( 'rest_api_init', function () {
 				),
 				'about_ar' => 'مشروع فاخر حقيقي في بافوس، قبرص، على محور Tombs of the Kings: 72 شقة في خمسة مبانٍ منخفضة على قطعة مسوّرة بمساحة 9,100 م²، مع مسبح مركزي ومسبح أطفال وبار مسبح، سبا وناد رياضي مع جاكوزي وساونا، لوبي وكونسيرج وأمن على مدار الساعة. شقق 1-3 غرف نوم، 52-107 م² بناء، شرفات عميقة، مواقف مغطاة وتكييف كامل. على بعد 2-5 دقائق من الشواطئ والميناء والبلدة القديمة. البيانات من منشورات المطوّر؛ النموذج ثلاثي الأبعاد تصور مفاهيمي للمخطط الرئيسي.',
 				'real' => true,
+				'engine' => true,
 			);
 			// THE DUBAI FLAGSHIP: Sky Gardens JVC - modeled on real JVC archetypes
 			// (G+4 podium + 19 residential floors, courtyard pool, 60/40 plan, JVC avg
@@ -1580,6 +1590,51 @@ add_action( 'rest_api_init', function () {
 				if ( isset( $r['gallery'] ) ) { update_post_meta( $pid, 'gw_gallery', wp_json_encode( $r['gallery'] ) ); }
 				if ( isset( $r['plans'] ) ) { update_post_meta( $pid, 'gw_plans', wp_json_encode( $r['plans'] ) ); }
 				if ( isset( $r['fx'] ) ) { update_post_meta( $pid, 'gw_fx_ils', (float) $r['fx'] ); }
+				if ( ! empty( $r['engine'] ) && isset( $r['layout'] ) && isset( $r['apts_custom'] ) ) {
+					// THE ISRAELI ENGINE on this flagship: translate the intl inventory
+					// into engine units with AUTHORED hotspot positions per building.
+					$efh = (float) ( $r['layout']['fh'] ?? 3.1 );
+					$eunits = array();
+					foreach ( $r['apts_custom'] as $a ) {
+						$bldg = $r['layout']['buildings'][ min( (int) $a['b'], count( $r['layout']['buildings'] ) - 1 ) ];
+						$bw = (float) $bldg['w']; $bd = (float) $bldg['d'];
+						$eside = array( 'west' => array( -( $bw / 2 + 1.3 ), 0 ), 'east' => array( $bw / 2 + 1.3, 0 ), 'north' => array( 0, -( $bd / 2 + 1.3 ) ), 'south' => array( 0, $bd / 2 + 1.3 ) );
+						$ev = $eside[ $a['dir'] ];
+						$eperp = ( 0 === (int) $ev[0] ) ? array( 1, 0 ) : array( 0, 1 );
+						$elen = $eperp[0] ? $bw : $bd;
+						$eoff = ( $a['pos'] - 1 ) * ( $elen / 3.4 );
+						$ex = round( (float) $bldg['x'] + $ev[0] + $eperp[0] * $eoff, 1 );
+						$ez = round( (float) $bldg['z'] + $ev[1] + $eperp[1] * $eoff, 1 );
+						$ey = round( ( $a['floor'] - 0.5 ) * $efh + 0.4, 1 );
+						$enrm = ( 0 === (int) $ev[0] ) ? ( $ev[1] > 0 ? '0 0 1' : '0 0 -1' ) : ( $ev[0] > 0 ? '1 0 0' : '-1 0 0' );
+						$bl_letter = chr( 65 + (int) $a['b'] );
+						$eunits[] = array(
+							'id' => $a['id'], 'title' => 'בניין ' . $bl_letter . ' · ' . strtoupper( $a['id'] ),
+							'floor' => $a['floor'], 'rooms' => $a['rooms'], 'sqm' => $a['sqm'],
+							'balcony' => 10 + 2 * $a['rooms'], 'dir' => $a['dir'], 'line' => $bl_letter,
+							'view' => $a['view_he'], 'building' => 'בניין ' . $bl_letter,
+							'availability' => 'זמינות ומחיר להמחשה - לפי אישור היזם',
+							'source_note' => 'נגזר מנתוני היזם המפורסמים (72 יח״ד, 1-3 חד׳, 52-107 מ״ר)',
+							'price' => $a['price'], 'status' => $a['status'],
+							'plan' => isset( $r['plans'][0] ) ? $r['plans'][0] : '',
+							'hotspot_position' => $ex . ' ' . $ey . ' ' . $ez,
+							'hotspot_normal' => $enrm,
+						);
+					}
+					update_post_meta( $pid, 'nlp3d_use_engine', '1' );
+					update_post_meta( $pid, 'project_3d_units', wp_json_encode( $eunits, JSON_UNESCAPED_UNICODE ) );
+					update_post_meta( $pid, 'project_3d_floor_height_m', $efh );
+					if ( isset( $r['glb'] ) && function_exists( 'nadlan_showroom_engine_base_url' ) ) {
+						update_post_meta( $pid, 'project_model_glb', nadlan_showroom_engine_base_url() . $r['glb'] );
+					}
+					update_post_meta( $pid, 'lat', $r['lat'] );
+					update_post_meta( $pid, 'lng', $r['lng'] );
+					update_post_meta( $pid, 'city', $r['district'] );
+					update_post_meta( $pid, 'num_units', $r['units'] );
+					update_post_meta( $pid, 'project_status', 'בבנייה' );
+					if ( isset( $r['plans'][0] ) ) { update_post_meta( $pid, 'project_3d_site_plan_image', $r['plans'][0] ); }
+					if ( isset( $r['gallery'][0] ) ) { update_post_meta( $pid, 'project_model_poster', $r['gallery'][0] ); }
+				}
 				if ( isset( $r['about_ar'] ) ) { update_post_meta( $pid, 'gw_about_ar', $r['about_ar'] ); }
 				// real developer projects are NOT demo-badged; their honesty note lives in the about text
 				update_post_meta( $pid, 'gw_demo', empty( $r['real'] ) ? '1' : '0' );

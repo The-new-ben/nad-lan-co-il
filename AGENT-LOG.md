@@ -1,5 +1,41 @@
 # AGENT-LOG - the God brain (append-only, newest on top)
 
+## 2026-07-12 (62) - v1.72.108 THE REAL ENGINE ON THE CYPRUS FLAGSHIP (Oliel presentation)
+Owner: "why can't you clone it?" - answered by NOT cloning: the
+REAL Israeli showroom engine now runs on the Lion Apartments page.
+- 1 surgical line in showroom-engine.php: resolve_target accepts
+  nadlan_intl when addressed EXPLICITLY by id (Israeli pages
+  untouched - they never pass intl ids).
+- global-worlds single: when nlp3d_use_engine=1, the renderer
+  calls nadlan_showroom_engine_shortcode(id) - the engine mounts
+  with ALL its machinery (engine.js + studio.js + buyflow.js +
+  unified POI map + i18n) and my module SKIPS its own model/
+  picker/sun/map/lead blocks (one-of-everything). Gallery, plans,
+  facilities, facts, scheduler stay below the engine.
+- SEEDER: Lion carries full engine meta - project_3d_units (72
+  units in ENGINE format with AUTHORED hotspot_position/normal
+  computed per building from the master-plan layout - the engine
+  supports authored positions natively for offset buildings),
+  project_model_glb (lion GLB), floor_height 3.1, lat/lng/city/
+  num_units/status, site_plan_image = the REAL master plan sheet,
+  poster = the real hero render, per-unit plan = master plan,
+  honest availability + source notes on every unit.
+VERIFIED LIVE: nl-root mounted, engine+studio+buyflow loaded, 72
+authored hotspot positions in the payload, lion GLB in payload,
+walk markers present, zero duplicate picker/map/sun, gallery/
+plans/facilities/scheduler retained.
+WHAT THE ENGINE BRINGS NATIVELY to Lion: apartment selection with
+full panel, sun modes, view-from-window, walk-inside (interior-fp
+generated first-person interiors from rooms/sqm/dir - task #8
+machinery), Apartment Studio design overlay, buy-flow offer,
+unified POI map, sticky contact, tabs - the Israeli flagship set.
+GAPS vs Israeli flagships (honest): no per-unit sales floorplan
+images (developer PDFs pending - CMS field ready), no facade
+photo-tiles (facade_images meta empty), engine UI he/en (its i18n)
+while the page chrome is he/en/ar. Owner eyes: pixels of hotspot
+alignment on the 5-building site await his phone.
+
+
 ## 2026-07-12 (61) - v1.72.107 FLAGSHIP ALL-THE-WAY: scheduler invitations, floorplans, sun, AR, Arabic, the Dubai flagship
 Owner: "Israeli flagship and better, all the way." Shipped in one release:
 - SCHEDULER ON INTL (his explicit test wish): nadlan_intl joined the
