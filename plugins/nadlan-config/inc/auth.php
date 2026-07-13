@@ -51,6 +51,71 @@ if ( ! function_exists( 'nadlan_auth_url' ) ) {
 	}
 }
 
+/* full HE/EN surface - the whole flow, including server error messages */
+if ( ! function_exists( 'nadlan_auth_i18n' ) ) {
+	function nadlan_auth_i18n( $lang ) {
+		$t = array(
+			'he' => array(
+				'title_login'  => 'התחברות | נדלן',        'title_signup' => 'הרשמה | נדלן',
+				'h1_login'     => 'ברוכים השבים',            'h1_signup'    => 'נעים להכיר',
+				'sub_login'    => 'מתחברים עם האימייל, וממשיכים מאיפה שעצרתם.',
+				'sub_signup'   => 'חשבון אחד לכל המוצרים: דירות, השכרות, התחדשות, פרויקטים.',
+				'or'           => 'או',                       'google'       => 'המשך עם Google',
+				'secure'       => 'ההתחברות מאובטחת: הגבלת ניסיונות, נעילה זמנית, סיסמאות מוצפנות. אין לנו גישה לסיסמה שלכם.',
+				'lang_switch'  => 'English',
+				'email_label'  => 'האימייל שלכם',            'continue'     => 'המשך',
+				'email_bad'    => 'כתובת אימייל לא תקינה',   'generic_err'  => 'שגיאה',
+				'pw_label'     => 'הסיסמה',                   'sign_in'      => 'התחברות',
+				'other_email'  => 'אימייל אחר',               'new_account'  => 'חשבון חדש',
+				'persona_q'    => 'מה מביא אתכם לנדלן?',
+				'name_label'   => 'שם מלא',                   'phone_label'  => 'טלפון נייד',
+				'pw_choose'    => 'בחרו סיסמה (8 תווים לפחות)', 'create'     => 'יצירת החשבון',
+				'back'         => 'חזרה',
+				'name_err'     => 'איך קוראים לכם?',          'phone_err'    => 'טלפון לא תקין',
+				'pw_short'     => 'סיסמה קצרה מדי (8 תווים לפחות)',
+				'r_locked'     => 'נעול זמנית אחרי ניסיונות כושלים. נסו שוב בעוד 15 דקות.',
+				'r_wrong'      => 'האימייל או הסיסמה אינם נכונים.',
+				'r_missing'    => 'חסרים פרטים.',
+				'r_weak'       => 'הסיסמה חייבת להיות באורך 8 תווים לפחות ולא נפוצה.',
+				'r_exists'     => 'קיים כבר חשבון עם האימייל הזה. התחברו במקום.',
+				'r_rate'       => 'יותר מדי הרשמות מהכתובת הזו. נסו מאוחר יותר.',
+			),
+			'en' => array(
+				'title_login'  => 'Sign in | NadLan',         'title_signup' => 'Create account | NadLan',
+				'h1_login'     => 'Welcome back',              'h1_signup'    => 'Nice to meet you',
+				'sub_login'    => 'Sign in with your email and pick up where you left off.',
+				'sub_signup'   => 'One account for everything: homes, rentals, renewal, projects.',
+				'or'           => 'or',                        'google'       => 'Continue with Google',
+				'secure'       => 'Sign-in is protected: attempt limits, temporary lockout, encrypted passwords. We never see your password.',
+				'lang_switch'  => 'עברית',
+				'email_label'  => 'Your email',                'continue'     => 'Continue',
+				'email_bad'    => 'That email address does not look valid', 'generic_err' => 'Something went wrong',
+				'pw_label'     => 'Password',                  'sign_in'      => 'Sign in',
+				'other_email'  => 'Use a different email',     'new_account'  => 'New account',
+				'persona_q'    => 'What brings you to NadLan?',
+				'name_label'   => 'Full name',                 'phone_label'  => 'Mobile phone',
+				'pw_choose'    => 'Choose a password (8+ characters)', 'create' => 'Create my account',
+				'back'         => 'Back',
+				'name_err'     => 'What should we call you?',  'phone_err'    => 'That phone number does not look valid',
+				'pw_short'     => 'Password too short (8 characters minimum)',
+				'r_locked'     => 'Temporarily locked after failed attempts. Try again in 15 minutes.',
+				'r_wrong'      => 'The email or password is incorrect.',
+				'r_missing'    => 'Some details are missing.',
+				'r_weak'       => 'The password must be at least 8 characters and not a common one.',
+				'r_exists'     => 'An account with this email already exists. Sign in instead.',
+				'r_rate'       => 'Too many signups from this address. Try again later.',
+			),
+		);
+		return $t[ 'en' === $lang ? 'en' : 'he' ];
+	}
+}
+if ( ! function_exists( 'nadlan_auth_req_lang' ) ) {
+	// language of a REST call, sent explicitly by the client ('en' or 'he')
+	function nadlan_auth_req_lang( $p ) {
+		return ( 'en' === (string) ( $p['lang'] ?? '' ) ) ? 'en' : 'he';
+	}
+}
+
 /* ---------- routes ---------- */
 add_action( 'init', function () {
 	add_rewrite_rule( '^login/?$', 'index.php?nadlan_auth=login', 'top' );
@@ -101,6 +166,7 @@ add_action( 'rest_api_init', function () {
 		'callback'            => function ( WP_REST_Request $req ) {
 			$p = $req->get_json_params() ?: array();
 			if ( '' !== (string) ( $p['company'] ?? '' ) ) { return new WP_Error( 'auth', 'bad', array( 'status' => 401 ) ); }
+			$T = nadlan_auth_i18n( nadlan_auth_req_lang( $p ) );
 			$email = sanitize_email( (string) ( $p['email'] ?? '' ) );
 			$pass  = (string) ( $p['password'] ?? '' );
 			// two counters: per-IP+email (fast, 5 tries) and per-email-only (10 tries)
@@ -108,7 +174,7 @@ add_action( 'rest_api_init', function () {
 			$lock  = 'nlauth_lock_' . md5( strtolower( $email ) . ( $_SERVER['REMOTE_ADDR'] ?? '' ) );
 			$elock = 'nlauth_elock_' . md5( strtolower( $email ) );
 			if ( (int) get_transient( $lock ) >= 5 || (int) get_transient( $elock ) >= 10 ) {
-				return new WP_Error( 'locked', 'נעול זמנית אחרי ניסיונות כושלים. נסו שוב בעוד 15 דקות.', array( 'status' => 429 ) );
+				return new WP_Error( 'locked', $T['r_locked'], array( 'status' => 429 ) );
 			}
 			$user = get_user_by( 'email', $email );
 			$auth = $user ? wp_check_password( $pass, $user->user_pass, $user->ID ) : false;
@@ -116,7 +182,7 @@ add_action( 'rest_api_init', function () {
 				set_transient( $lock, (int) get_transient( $lock ) + 1, 15 * MINUTE_IN_SECONDS );
 				set_transient( $elock, (int) get_transient( $elock ) + 1, 15 * MINUTE_IN_SECONDS );
 				// identical message for unknown email and wrong password (no enumeration)
-				return new WP_Error( 'auth', 'האימייל או הסיסמה אינם נכונים.', array( 'status' => 401 ) );
+				return new WP_Error( 'auth', $T['r_wrong'], array( 'status' => 401 ) );
 			}
 			delete_transient( $lock );
 			delete_transient( $elock );
@@ -134,8 +200,9 @@ add_action( 'rest_api_init', function () {
 		'callback'            => function ( WP_REST_Request $req ) {
 			$p = $req->get_json_params() ?: array();
 			if ( '' !== (string) ( $p['company'] ?? '' ) ) { return new WP_Error( 'spam', 'spam', array( 'status' => 400 ) ); }
+			$T = nadlan_auth_i18n( nadlan_auth_req_lang( $p ) );
 			if ( nadlan_auth_rl( 'signup', 5, HOUR_IN_SECONDS ) ) {
-				return new WP_Error( 'rate', 'יותר מדי הרשמות מהכתובת הזו. נסו מאוחר יותר.', array( 'status' => 429 ) );
+				return new WP_Error( 'rate', $T['r_rate'], array( 'status' => 429 ) );
 			}
 			$email = sanitize_email( (string) ( $p['email'] ?? '' ) );
 			$name  = sanitize_text_field( (string) ( $p['name'] ?? '' ) );
@@ -144,13 +211,13 @@ add_action( 'rest_api_init', function () {
 			$persona = sanitize_key( (string) ( $p['persona'] ?? 'buyer' ) );
 			if ( ! array_key_exists( $persona, nadlan_auth_personas() ) ) { $persona = 'buyer'; }
 			if ( ! is_email( $email ) || '' === $name || strlen( $phone ) < 9 ) {
-				return new WP_Error( 'invalid', 'חסרים פרטים.', array( 'status' => 400 ) );
+				return new WP_Error( 'invalid', $T['r_missing'], array( 'status' => 400 ) );
 			}
 			if ( strlen( $pass ) < 8 || preg_match( '/^(12345678|password|qwerty)/i', $pass ) ) {
-				return new WP_Error( 'weak', 'הסיסמה חייבת להיות באורך 8 תווים לפחות ולא נפוצה.', array( 'status' => 400 ) );
+				return new WP_Error( 'weak', $T['r_weak'], array( 'status' => 400 ) );
 			}
 			if ( email_exists( $email ) ) {
-				return new WP_Error( 'exists', 'קיים כבר חשבון עם האימייל הזה. התחברו במקום.', array( 'status' => 409 ) );
+				return new WP_Error( 'exists', $T['r_exists'], array( 'status' => 409 ) );
 			}
 			$uid = wp_insert_user( array(
 				'user_login'   => sanitize_user( strstr( $email, '@', true ) . '_' . wp_generate_password( 4, false, false ), true ),
@@ -240,14 +307,19 @@ add_action( 'template_redirect', function () {
 	nocache_headers();
 	header( 'X-Robots-Tag: noindex, nofollow' );
 	add_filter( 'wp_robots', function ( $robots ) { return array( 'noindex' => true, 'nofollow' => true ); }, 99 );
-	add_filter( 'pre_get_document_title', function () use ( $mode ) {
-		return ( 'signup' === $mode ? 'הרשמה' : 'התחברות' ) . ' | נדלן';
+	$lang = ( 'en' === (string) ( $_GET['lang'] ?? '' ) ) ? 'en' : 'he'; // phpcs:ignore
+	$T = nadlan_auth_i18n( $lang );
+	add_filter( 'pre_get_document_title', function () use ( $mode, $T ) {
+		return 'signup' === $mode ? $T['title_signup'] : $T['title_login'];
 	}, 99 );
 	$google_on = '' !== trim( (string) get_option( 'nadlan_google_client_id', '' ) ) && '' !== trim( (string) get_option( 'nadlan_google_client_secret', '' ) );
 	$personas = nadlan_auth_personas();
+	$other_lang_url = home_url( '/' . ( 'signup' === $mode ? 'signup' : 'login' ) . '/' );
+	if ( 'he' === $lang ) { $other_lang_url = add_query_arg( 'lang', 'en', $other_lang_url ); }
+	if ( $redirect ) { $other_lang_url = add_query_arg( 'redirect', rawurlencode( $redirect ), $other_lang_url ); }
 	get_header();
 	?>
-<div class="nlau" dir="rtl">
+<div class="nlau" dir="<?php echo 'en' === $lang ? 'ltr' : 'rtl'; ?>">
 	<style>
 	.nlau{max-width:460px;margin:0 auto;padding:40px 16px 80px;font-family:Heebo,sans-serif;color:#1B1A17}
 	.nlau h1{font-family:"Frank Ruhl Libre",Georgia,serif;font-size:clamp(1.5rem,3.4vw,2rem);text-align:center;margin:0 0 6px}
@@ -277,43 +349,49 @@ add_action( 'template_redirect', function () {
 	.nlau-back{background:none;border:0;color:#A79E8D;font:600 13px Heebo;cursor:pointer;padding:6px 0;display:block}
 	.nlau-secure{text-align:center;font:400 11.5px/1.7 Heebo;color:#A79E8D;margin-top:18px}
 	.nlau-count{font:700 11.5px Heebo;color:#9C7A3C;margin:0 0 6px}
+	.nlau-lang{text-align:center;margin:0 0 14px}
+	.nlau-lang a{font:600 12.5px Heebo;color:#9C7A3C;text-decoration:none;border:1px solid #E2DCD0;border-radius:999px;padding:5px 14px}
+	.nlau-lang a:hover{border-color:#9C7A3C}
 	</style>
-	<h1><?php echo 'signup' === $mode ? 'נעים להכיר' : 'ברוכים השבים'; ?></h1>
-	<p class="nlau-sub"><?php echo 'signup' === $mode ? 'חשבון אחד לכל המוצרים: דירות, השכרות, התחדשות, פרויקטים.' : 'מתחברים עם האימייל, וממשיכים מאיפה שעצרתם.'; ?></p>
+	<h1><?php echo esc_html( 'signup' === $mode ? $T['h1_signup'] : $T['h1_login'] ); ?></h1>
+	<p class="nlau-sub"><?php echo esc_html( 'signup' === $mode ? $T['sub_signup'] : $T['sub_login'] ); ?></p>
+	<p class="nlau-lang"><a href="<?php echo esc_url( $other_lang_url ); ?>"><?php echo esc_html( $T['lang_switch'] ); ?></a></p>
 	<div class="nlau-card">
 		<div class="nlau-progress"><i id="nlau-bar"></i></div>
 		<div id="nlau-stage"></div>
 		<?php if ( $google_on ) : ?>
-		<div class="nlau-or">או</div>
+		<div class="nlau-or"><?php echo esc_html( $T['or'] ); ?></div>
 		<div class="nlau-alt"><a class="nlau-google" href="<?php echo esc_url( rest_url( 'nadlan/v1/auth-google' ) ); ?>">
 			<svg width="18" height="18" viewBox="0 0 48 48"><path fill="#FFC107" d="M43.6 20.1H42V20H24v8h11.3C33.7 32.7 29.2 36 24 36c-6.6 0-12-5.4-12-12s5.4-12 12-12c3.1 0 5.9 1.2 8 3l5.7-5.7C34.3 6.1 29.4 4 24 4 13 4 4 13 4 24s9 20 20 20 20-9 20-20c0-1.3-.1-2.6-.4-3.9z"/><path fill="#FF3D00" d="M6.3 14.7l6.6 4.8C14.7 15.1 19 12 24 12c3.1 0 5.9 1.2 8 3l5.7-5.7C34.3 6.1 29.4 4 24 4 16.3 4 9.7 8.3 6.3 14.7z"/><path fill="#4CAF50" d="M24 44c5.2 0 9.9-2 13.4-5.2l-6.2-5.2C29.2 35.1 26.7 36 24 36c-5.2 0-9.6-3.3-11.3-8l-6.5 5C9.5 39.6 16.2 44 24 44z"/><path fill="#1976D2" d="M43.6 20.1H42V20H24v8h11.3c-.8 2.2-2.2 4.2-4.1 5.6l6.2 5.2C41 35.4 44 30.2 44 24c0-1.3-.1-2.6-.4-3.9z"/></svg>
-			המשך עם Google</a></div>
+			<?php echo esc_html( $T['google'] ); ?></a></div>
 		<?php endif; ?>
 	</div>
-	<p class="nlau-secure">ההתחברות מאובטחת: הגבלת ניסיונות, נעילה זמנית, סיסמאות מוצפנות. אין לנו גישה לסיסמה שלכם.</p>
+	<p class="nlau-secure"><?php echo esc_html( $T['secure'] ); ?></p>
 </div>
 <script>
 (function(){
 	var REST=<?php echo wp_json_encode( esc_url_raw( rest_url( 'nadlan/v1' ) ) ); ?>;
 	var REDIRECT=<?php echo wp_json_encode( $redirect ); ?>;
-	var PERSONAS=<?php echo wp_json_encode( array_map( function ( $p ) { return array( 'he' => $p['he'], 'icon' => $p['icon'] ); }, $personas ), JSON_UNESCAPED_UNICODE ); ?>;
-	var START=<?php echo wp_json_encode( $mode ); ?>;
+	var LANG=<?php echo wp_json_encode( $lang ); ?>;
+	var T=<?php echo wp_json_encode( $T, JSON_UNESCAPED_UNICODE ); ?>;
+	var PERSONAS=<?php echo wp_json_encode( array_map( function ( $p ) use ( $lang ) { return array( 'label' => $p[ $lang ], 'icon' => $p['icon'] ); }, $personas ), JSON_UNESCAPED_UNICODE ); ?>;
+	var ARR=LANG==="en"?"← ":"→ ";
 	var stage=document.getElementById("nlau-stage"),bar=document.getElementById("nlau-bar");
 	var S={email:"",persona:"",name:"",phone:"",password:""};
 	function esc(t){var d=document.createElement("div");d.textContent=t;return d.innerHTML}
 	function err(m){var e=stage.querySelector(".nlau-err");if(e){e.textContent=m;e.style.display="block"}}
-	function post(path,body){return fetch(REST+path,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(Object.assign({company:""},body))}).then(function(r){return r.json().then(function(j){return{ok:r.ok,j:j}})})}
+	function post(path,body){return fetch(REST+path,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(Object.assign({company:"",lang:LANG},body))}).then(function(r){return r.json().then(function(j){return{ok:r.ok,j:j}})})}
 	function stepEmail(){
 		bar.style.width="15%";
-		stage.innerHTML='<div class="nlau-step"><label>האימייל שלכם</label><input type="email" name="email" placeholder="you@example.com" autocomplete="username webauthn"><p class="nlau-err"></p><button class="nlau-go">המשך</button></div>';
+		stage.innerHTML='<div class="nlau-step"><label>'+esc(T.email_label)+'</label><input type="email" name="email" placeholder="you@example.com" autocomplete="username webauthn"><p class="nlau-err"></p><button class="nlau-go">'+esc(T.continue)+'</button></div>';
 		var input=stage.querySelector("input");input.focus();if(S.email)input.value=S.email;
 		function go(){
 			S.email=input.value.trim();
-			if(!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(S.email)){err("כתובת אימייל לא תקינה");return}
+			if(!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(S.email)){err(T.email_bad);return}
 			var b=stage.querySelector(".nlau-go");b.disabled=true;
 			post("/auth-identify",{email:S.email}).then(function(r){
 				b.disabled=false;
-				if(!r.ok){err(r.j.message||"שגיאה");return}
+				if(!r.ok){err(r.j.message||T.generic_err);return}
 				if(r.j.flow==="login"){stepPassword()}else{stepPersona()}
 			});
 		}
@@ -322,13 +400,13 @@ add_action( 'template_redirect', function () {
 	}
 	function stepPassword(){
 		bar.style.width="70%";
-		stage.innerHTML='<div class="nlau-step"><p class="nlau-count">'+esc(S.email)+'</p><label>הסיסמה</label><input type="password" name="password" autocomplete="current-password"><p class="nlau-err"></p><button class="nlau-go">התחברות</button><button type="button" class="nlau-back">→ אימייל אחר</button></div>';
+		stage.innerHTML='<div class="nlau-step"><p class="nlau-count">'+esc(S.email)+'</p><label>'+esc(T.pw_label)+'</label><input type="password" name="password" autocomplete="current-password"><p class="nlau-err"></p><button class="nlau-go">'+esc(T.sign_in)+'</button><button type="button" class="nlau-back">'+ARR+esc(T.other_email)+'</button></div>';
 		var input=stage.querySelector("input");input.focus();
 		function go(){
 			var b=stage.querySelector(".nlau-go");b.disabled=true;
 			post("/auth-login",{email:S.email,password:input.value}).then(function(r){
 				b.disabled=false;
-				if(r.ok&&r.j.ok){bar.style.width="100%";location.href=REDIRECT||r.j.dest}else{err(r.j.message||"שגיאה")}
+				if(r.ok&&r.j.ok){bar.style.width="100%";location.href=REDIRECT||r.j.dest}else{err(r.j.message||T.generic_err)}
 			});
 		}
 		stage.querySelector(".nlau-go").addEventListener("click",go);
@@ -337,14 +415,14 @@ add_action( 'template_redirect', function () {
 	}
 	function stepPersona(){
 		bar.style.width="40%";
-		var chips=Object.keys(PERSONAS).map(function(k){return '<button type="button" class="nlau-p" data-k="'+k+'"><i>'+PERSONAS[k].icon+"</i>"+esc(PERSONAS[k].he)+"</button>"}).join("");
-		stage.innerHTML='<div class="nlau-step"><p class="nlau-count">חשבון חדש · '+esc(S.email)+'</p><label>מה מביא אתכם לנדלן?</label><div class="nlau-personas">'+chips+'</div><button type="button" class="nlau-back">→ אימייל אחר</button></div>';
+		var chips=Object.keys(PERSONAS).map(function(k){return '<button type="button" class="nlau-p" data-k="'+k+'"><i>'+PERSONAS[k].icon+"</i>"+esc(PERSONAS[k].label)+"</button>"}).join("");
+		stage.innerHTML='<div class="nlau-step"><p class="nlau-count">'+esc(T.new_account)+' · '+esc(S.email)+'</p><label>'+esc(T.persona_q)+'</label><div class="nlau-personas">'+chips+'</div><button type="button" class="nlau-back">'+ARR+esc(T.other_email)+'</button></div>';
 		stage.querySelectorAll(".nlau-p").forEach(function(c){c.addEventListener("click",function(){S.persona=c.dataset.k;stepDetails()})});
 		stage.querySelector(".nlau-back").addEventListener("click",stepEmail);
 	}
 	function stepDetails(){
 		bar.style.width="75%";
-		stage.innerHTML='<div class="nlau-step"><p class="nlau-count">'+esc(PERSONAS[S.persona].he)+'</p><label>שם מלא</label><input name="name" autocomplete="name"><label>טלפון נייד</label><input name="phone" type="tel" autocomplete="tel"><label>בחרו סיסמה (8 תווים לפחות)</label><input name="password" type="password" autocomplete="new-password"><div class="nlau-meter"><i></i></div><p class="nlau-err"></p><button class="nlau-go">יצירת החשבון</button><button type="button" class="nlau-back">→ חזרה</button></div>';
+		stage.innerHTML='<div class="nlau-step"><p class="nlau-count">'+esc(PERSONAS[S.persona].label)+'</p><label>'+esc(T.name_label)+'</label><input name="name" autocomplete="name"><label>'+esc(T.phone_label)+'</label><input name="phone" type="tel" autocomplete="tel"><label>'+esc(T.pw_choose)+'</label><input name="password" type="password" autocomplete="new-password"><div class="nlau-meter"><i></i></div><p class="nlau-err"></p><button class="nlau-go">'+esc(T.create)+'</button><button type="button" class="nlau-back">'+ARR+esc(T.back)+'</button></div>';
 		var pw=stage.querySelector("[name=password]"),meter=stage.querySelector(".nlau-meter i");
 		stage.querySelector("[name=name]").focus();
 		pw.addEventListener("input",function(){
@@ -357,18 +435,18 @@ add_action( 'template_redirect', function () {
 			S.name=stage.querySelector("[name=name]").value.trim();
 			S.phone=stage.querySelector("[name=phone]").value.trim();
 			S.password=pw.value;
-			if(!S.name){err("איך קוראים לכם?");return}
-			if(S.phone.replace(/\D/g,"").length<9){err("טלפון לא תקין");return}
-			if(S.password.length<8){err("סיסמה קצרה מדי (8 תווים לפחות)");return}
+			if(!S.name){err(T.name_err);return}
+			if(S.phone.replace(/\D/g,"").length<9){err(T.phone_err);return}
+			if(S.password.length<8){err(T.pw_short);return}
 			var b=stage.querySelector(".nlau-go");b.disabled=true;
 			post("/auth-signup",{email:S.email,name:S.name,phone:S.phone,password:S.password,persona:S.persona}).then(function(r){
 				b.disabled=false;
-				if(r.ok&&r.j.ok){bar.style.width="100%";location.href=REDIRECT||r.j.dest}else{err(r.j.message||"שגיאה")}
+				if(r.ok&&r.j.ok){bar.style.width="100%";location.href=REDIRECT||r.j.dest}else{err(r.j.message||T.generic_err)}
 			});
 		});
 		stage.querySelector(".nlau-back").addEventListener("click",stepPersona);
 	}
-	if(START==="signup"){stepEmail()}else{stepEmail()}
+	stepEmail();
 })();
 </script>
 	<?php

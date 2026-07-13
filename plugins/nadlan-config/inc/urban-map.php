@@ -54,46 +54,125 @@ if ( ! function_exists( 'nadlan_ur_city_centroids' ) ) {
 	}
 }
 
+/* city aggregates - one computation feeding BOTH the map REST payload and the
+   server-rendered (crawlable) city directory on the page */
+if ( ! function_exists( 'nadlan_ur_map_cities' ) ) {
+	function nadlan_ur_map_cities() {
+		$hit = get_transient( 'nadlan_ur_mapdata_v2' );
+		if ( is_array( $hit ) ) { return $hit; }
+		global $wpdb;
+		$rows = $wpdb->get_results( "
+			SELECT c.meta_value AS city, t.meta_value AS track, COUNT(*) AS n
+			FROM {$wpdb->posts} p
+			JOIN {$wpdb->postmeta} s ON s.post_id = p.ID AND s.meta_key = 'source' AND s.meta_value = 'urban_renewal'
+			JOIN {$wpdb->postmeta} c ON c.post_id = p.ID AND c.meta_key = 'city'
+			LEFT JOIN {$wpdb->postmeta} t ON t.post_id = p.ID AND t.meta_key = 'project_type'
+			WHERE p.post_type = 'nadlan_project' AND p.post_status = 'publish'
+			GROUP BY c.meta_value, t.meta_value
+		", ARRAY_A );
+		$cities = array();
+		$cent = nadlan_ur_city_centroids();
+		// normalize: gov.il city names vary in hyphenation ("תל אביב יפו" vs "תל אביב-יפו")
+		$cent_norm = array();
+		foreach ( $cent as $k => $v ) { $cent_norm[ str_replace( array( '-', '  ' ), ' ', $k ) ] = $v; }
+		foreach ( (array) $rows as $r ) {
+			$city = trim( (string) $r['city'] );
+			if ( '' === $city ) { continue; }
+			if ( ! isset( $cities[ $city ] ) ) {
+				$cities[ $city ] = array( 'city' => $city, 'count' => 0, 'pinui_binui' => 0, 'tama38' => 0,
+					'lnglat' => $cent[ $city ] ?? ( $cent_norm[ str_replace( array( '-', '  ' ), ' ', $city ) ] ?? null ) );
+			}
+			$cities[ $city ]['count'] += (int) $r['n'];
+			if ( 'pinui_binui' === $r['track'] ) { $cities[ $city ]['pinui_binui'] += (int) $r['n']; }
+			if ( 'tama38' === $r['track'] ) { $cities[ $city ]['tama38'] += (int) $r['n']; }
+		}
+		$out = array( 'total' => array_sum( wp_list_pluck( $cities, 'count' ) ), 'cities' => array_values( $cities ) );
+		set_transient( 'nadlan_ur_mapdata_v2', $out, 6 * HOUR_IN_SECONDS );
+		return $out;
+	}
+}
+
 add_action( 'rest_api_init', function () {
 	register_rest_route( 'nadlan/v1', '/renewal-map-data', array(
 		'methods'             => 'GET',
 		'permission_callback' => '__return_true',
 		'callback'            => function () {
 			if ( ! nadlan_ur_map_on() ) { return array( 'cities' => array() ); }
-			$hit = get_transient( 'nadlan_ur_mapdata_v2' );
-			if ( is_array( $hit ) ) { return $hit; }
-			global $wpdb;
-			$rows = $wpdb->get_results( "
-				SELECT c.meta_value AS city, t.meta_value AS track, COUNT(*) AS n
-				FROM {$wpdb->posts} p
-				JOIN {$wpdb->postmeta} s ON s.post_id = p.ID AND s.meta_key = 'source' AND s.meta_value = 'urban_renewal'
-				JOIN {$wpdb->postmeta} c ON c.post_id = p.ID AND c.meta_key = 'city'
-				LEFT JOIN {$wpdb->postmeta} t ON t.post_id = p.ID AND t.meta_key = 'project_type'
-				WHERE p.post_type = 'nadlan_project' AND p.post_status = 'publish'
-				GROUP BY c.meta_value, t.meta_value
-			", ARRAY_A );
-			$cities = array();
-			$cent = nadlan_ur_city_centroids();
-			// normalize: gov.il city names vary in hyphenation ("תל אביב יפו" vs "תל אביב-יפו")
-			$cent_norm = array();
-			foreach ( $cent as $k => $v ) { $cent_norm[ str_replace( array( '-', '  ' ), ' ', $k ) ] = $v; }
-			foreach ( (array) $rows as $r ) {
-				$city = trim( (string) $r['city'] );
-				if ( '' === $city ) { continue; }
-				if ( ! isset( $cities[ $city ] ) ) {
-					$cities[ $city ] = array( 'city' => $city, 'count' => 0, 'pinui_binui' => 0, 'tama38' => 0,
-						'lnglat' => $cent[ $city ] ?? ( $cent_norm[ str_replace( array( '-', '  ' ), ' ', $city ) ] ?? null ) );
-				}
-				$cities[ $city ]['count'] += (int) $r['n'];
-				if ( 'pinui_binui' === $r['track'] ) { $cities[ $city ]['pinui_binui'] += (int) $r['n']; }
-				if ( 'tama38' === $r['track'] ) { $cities[ $city ]['tama38'] += (int) $r['n']; }
-			}
-			$out = array( 'total' => array_sum( wp_list_pluck( $cities, 'count' ) ), 'cities' => array_values( $cities ) );
-			set_transient( 'nadlan_ur_mapdata_v2', $out, 6 * HOUR_IN_SECONDS );
-			return $out;
+			return nadlan_ur_map_cities();
 		},
 	) );
 } );
+
+/* server-rendered SEO layer for the map page: crawlable city directory with
+   direct compound links, guide copy with internal links, FAQ + Dataset +
+   ItemList schema. The interactive map is JS (invisible to crawlers) - THIS
+   is what search engines read. Cached whole for 6h. */
+if ( ! function_exists( 'nadlan_ur_map_seo_html' ) ) {
+	function nadlan_ur_map_seo_html() {
+		$hit = get_transient( 'nadlan_ur_mapseo_v2' );
+		if ( is_string( $hit ) && '' !== $hit ) { return $hit; }
+		$data = nadlan_ur_map_cities();
+		$cities = $data['cities'];
+		usort( $cities, function ( $a, $b ) { return $b['count'] - $a['count']; } );
+		$top = array_slice( $cities, 0, 12 );
+		$total = (int) $data['total'];
+		$cards = '';
+		$schema_cities = array();
+		foreach ( $top as $c ) {
+			$q = new WP_Query( array(
+				'post_type' => 'nadlan_project', 'post_status' => 'publish', 'posts_per_page' => 4,
+				'no_found_rows' => true, 'meta_query' => array(
+					array( 'key' => 'source', 'value' => 'urban_renewal' ),
+					array( 'key' => 'city', 'value' => $c['city'] ),
+				),
+			) );
+			$links = '';
+			foreach ( $q->posts as $pp ) {
+				$links .= '<li><a href="' . esc_url( get_permalink( $pp ) ) . '">' . esc_html( get_the_title( $pp ) ) . '</a></li>';
+			}
+			$more = max( 0, $c['count'] - count( $q->posts ) );
+			$cards .= '<div class="nlurm-city"><h3>' . esc_html( $c['city'] ) . '</h3>'
+				. '<p class="nlurm-cn">' . (int) $c['count'] . ' מתחמים מוכרזים'
+				. ( $c['pinui_binui'] ? ' · פינוי בינוי: ' . (int) $c['pinui_binui'] : '' )
+				. ( $c['tama38'] ? ' · תמא 38: ' . (int) $c['tama38'] : '' ) . '</p>'
+				. ( $links ? '<ul>' . $links . '</ul>' : '' )
+				. ( $more > 0 ? '<p class="nlurm-more">ועוד ' . $more . ' מתחמים בעיר (הקישו על העיר במפה לרשימה המלאה)</p>' : '' )
+				. '</div>';
+			$schema_cities[] = array( '@type' => 'ListItem', 'position' => count( $schema_cities ) + 1, 'name' => $c['city'] . ' - ' . $c['count'] . ' מתחמי התחדשות עירונית' );
+		}
+		$home = home_url();
+		$copy = '<section class="nlurm-seo">'
+			. '<h2>מתחמי התחדשות עירונית מוכרזים בישראל - לפי עיר</h2>'
+			. '<p>המפה מציגה <b>' . $total . ' מתחמי התחדשות עירונית מוכרזים</b> מתוך המאגר הרשמי של הרשות הממשלתית להתחדשות עירונית (data.gov.il). לכל מתחם עמוד ייעודי עם מספר התכנית, המסלול והסטטוס. הנתונים מתעדכנים מהמאגר; מיקום מדויק לכל מתחם יתווסף בהמשך ולכן המפה מציגה ריכוזים לפי עיר.</p>'
+			. '<p>גרים בבניין שנמצא במתחם מוכרז? התחילו ב<a href="' . esc_url( $home . '/urban-renewal/' ) . '">מדריך ההתחדשות העירונית המלא</a>, בדקו את הבניין שלכם ב<a href="' . esc_url( $home . '/urban-renewal/check/' ) . '">בדיקת בניין חינמית</a>, או קראו על המסלולים: <a href="' . esc_url( $home . '/urban-renewal/pinui-binui/' ) . '">פינוי בינוי</a> ו<a href="' . esc_url( $home . '/urban-renewal/tama-38/' ) . '">תמא 38 והחלופות</a>. נציגות בניין יכולה לפתוח <a href="' . esc_url( $home . '/my-renewal/' ) . '">חדר פרויקט פרטי</a> לניהול ההסכמות והמסמכים.</p>'
+			. '<div class="nlurm-cities">' . $cards . '</div>'
+			. '</section>';
+		$faq = array(
+			'@context' => 'https://schema.org', '@type' => 'FAQPage', 'mainEntity' => array(
+				array( '@type' => 'Question', 'name' => 'מה זה מתחם התחדשות עירונית מוכרז?',
+					'acceptedAnswer' => array( '@type' => 'Answer', 'text' => 'מתחם שהוכרז רשמית על ידי הרשות הממשלתית להתחדשות עירונית או ועדה מוסמכת, במסלול פינוי בינוי או מסלול אחר. ההכרזה פותחת הטבות מס ותהליכי תכנון ייעודיים. הנתונים במפה מגיעים מהמאגר הרשמי בdata.gov.il.' ) ),
+				array( '@type' => 'Question', 'name' => 'איך בודקים אם הבניין שלי נמצא במתחם מוכרז?',
+					'acceptedAnswer' => array( '@type' => 'Answer', 'text' => 'הקישו על העיר שלכם במפה לרשימת המתחמים המוכרזים בה, או השתמשו בבדיקת הבניין החינמית באתר שמצליבה את הכתובת מול המאגר.' ) ),
+				array( '@type' => 'Question', 'name' => 'מה ההבדל בין פינוי בינוי לתמא 38?',
+					'acceptedAnswer' => array( '@type' => 'Answer', 'text' => 'פינוי בינוי הוא הריסת מתחם שלם ובנייה חדשה, בדרך כלל ביוזמת הרשות או יזם ובהיקף גדול. תמא 38 (והחלופות שהחליפו אותה) היא חיזוק או הריסה ובנייה של בניין בודד. לכל מסלול רף הסכמות שונה של בעלי הדירות.' ) ),
+			),
+		);
+		$dataset = array(
+			'@context' => 'https://schema.org', '@type' => 'Dataset',
+			'name' => 'מתחמי התחדשות עירונית מוכרזים בישראל',
+			'description' => 'ריכוז מתחמי ההתחדשות העירונית המוכרזים בישראל לפי עיר ומסלול, מתוך המאגר הרשמי של הרשות הממשלתית להתחדשות עירונית.',
+			'creator' => array( '@type' => 'Organization', 'name' => 'הרשות הממשלתית להתחדשות עירונית (data.gov.il)' ),
+			'license' => 'https://data.gov.il/terms',
+			'url' => home_url( '/urban-renewal/map/' ),
+		);
+		$list = array( '@context' => 'https://schema.org', '@type' => 'ItemList', 'name' => 'ערים מובילות בהתחדשות עירונית', 'itemListElement' => $schema_cities );
+		$GLOBALS['nadlan_ur_map_schemas'] = array( $faq, $dataset, $list );
+		$html = $copy
+			. '<style>.nlurm-seo{margin-top:34px}.nlurm-seo h2{font-family:"Frank Ruhl Libre",Georgia,serif;font-size:clamp(1.25rem,2.6vw,1.6rem);margin:0 0 12px}.nlurm-seo>p{font:400 15px/1.75 Heebo,sans-serif;color:#3E382F;max-width:70ch}.nlurm-cities{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:14px;margin-top:20px}.nlurm-city{background:#fff;border:1px solid #E2DCD0;border-radius:14px;padding:16px 18px}.nlurm-city h3{font:700 16px Heebo,sans-serif;margin:0 0 4px}.nlurm-cn{font:400 12.5px/1.6 Heebo,sans-serif;color:#6D665C;margin:0 0 8px}.nlurm-city ul{margin:0;padding:0 18px 0 0;font:400 13.5px/1.9 Heebo,sans-serif}.nlurm-city a{color:#9C7A3C}.nlurm-more{font:400 12px/1.5 Heebo,sans-serif;color:#A79E8D;margin:6px 0 0}</style>';
+		set_transient( 'nadlan_ur_mapseo_v2', $html, 6 * HOUR_IN_SECONDS );
+		return $html;
+	}
+}
 
 add_shortcode( 'nadlan_ur_map', function () {
 	if ( ! nadlan_ur_map_on() ) { return ''; }
@@ -108,6 +187,14 @@ add_shortcode( 'nadlan_ur_map', function () {
 	<div id="nlurm-map"></div>
 	<p class="nlurm-note">המפה מציגה ריכוזי מתחמים מוכרזים לפי עיר, מתוך המאגר הרשמי (data.gov.il). מיקום מדויק לכל מתחם יתווסף בהמשך; הקישו על עיר לרשימת המתחמים בה.</p>
 	<div id="nlurm-list" aria-live="polite"></div>
+	<?php
+	echo nadlan_ur_map_seo_html(); // phpcs:ignore -- built from escaped parts
+	add_action( 'wp_footer', function () {
+		foreach ( (array) ( $GLOBALS['nadlan_ur_map_schemas'] ?? array() ) as $sc ) {
+			echo '<script type="application/ld+json">' . wp_json_encode( $sc, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES ) . '</script>' . "\n"; // phpcs:ignore
+		}
+	} );
+	?>
 </div>
 <style>
 #nlurm-map{height:520px;border-radius:16px;overflow:hidden;border:1px solid #E2DCD0;background:#14130F}

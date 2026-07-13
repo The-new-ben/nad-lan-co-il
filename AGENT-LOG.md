@@ -1,5 +1,39 @@
 # AGENT-LOG - the God brain (append-only, newest on top)
 
+## 2026-07-13 (66) - v1.72.113-114 AUTH IN ENGLISH + THE MAP PAGE GETS SEO MUSCLE
+Owner: "it needs to be in English also... the map must be SEO
+strong... I want traffic."
+AUTH EN (auth.php): full nadlan_auth_i18n(he/en) table covering
+the ENTIRE surface - page copy, every JS step string, persona
+labels, AND the REST error messages (client sends lang, server
+answers in it; the no-enumeration error stays identical per
+language). /login/?lang=en + /signup/?lang=en are LTR with
+"Welcome back"/"Nice to meet you", branded EN titles, and a
+pill toggle (English <-> עברית) that preserves the redirect
+param. Verified live both directions + EN error message E2E.
+MAP PAGE SEO (/urban-renewal/map/, /map/ 301s there): the page
+was SEO-thin - 187 visible words, ZERO crawlable links (the
+Mapbox map is JS; Google reads nothing from it). Added a
+server-rendered layer from the same city aggregates: top-12
+city cards with live counts by track + 4 direct compound-page
+links each (48 crawlable internal links), guide copy linking
+pillar/check/pinui-binui/tama-38/my-renewal, FAQPage + Dataset
+(gov.il source) + ItemList schema. Visible words 187 -> 603.
+WAR STORY: first ship emitted the JSON-LD inline in the content
+and glossary-autolink INJECTED <a> TAGS INSIDE THE JSON (it
+filters the_content), breaking the FAQPage block. v1.72.114
+moved schema emission to wp_footer (outside every content
+filter) + cache-key bump. Verified: all 4 JSON-LD blocks on the
+page parse clean.
+LAW learned: never emit JSON-LD inside the_content on this site
+- glossary-autolink rewrites Hebrew terms anywhere in content.
+Screenshots verified (EN card + city directory, design DNA ok).
+Chromium egress is blocked in this session (proxy resets browser
+CONNECTs; curl fine) - visual checks ran on extracted shipped
+markup rendered locally.
+NEXT: Google OAuth still waits on owner keys (Settings ->
+nadlan-auth); passkeys phase 2; per-compound geocoded pins.
+
 ## 2026-07-13 (65) - v1.72.111-112 ENTERPRISE AUTH: /login + /signup, identifier-first, roles, hardened
 Task #83 second half. Owner: renewal links land on wp-login,
 "we missed it fundamentally... first-class, enterprise class".
