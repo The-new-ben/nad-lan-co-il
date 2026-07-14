@@ -33,6 +33,27 @@ if ( ! function_exists( 'nadlan_gw_on' ) ) {
 	function nadlan_gw_on() { return get_option( 'nadlan_feature_global', '1' ) === '1'; }
 }
 
+/* the site's OLDER abroad cluster (short-term-rental OPERATION intent) vs the
+   worlds (BUYING new projects intent). Owner caught the near-cannibalization
+   (2026-07-14): two clusters, zero links between them. Per current SEO practice
+   the fix for distinct intents is differentiation + bidirectional linking with
+   role-clear anchors - not merging. This map powers the crosslinks both ways,
+   the /global/ hub guides strip and the /site-map/ cluster. */
+if ( ! function_exists( 'nadlan_gw_abroad_guides' ) ) {
+	function nadlan_gw_abroad_guides() {
+		return array(
+			'hub'      => array( '/short-term-rentals-abroad/', 'השוואת יעדי Airbnb בחו"ל 2026', 'Airbnb abroad: destination comparison' ),
+			'cyprus'   => array( '/short-term-rentals-abroad/short-term-rentals-cyprus/', 'השכרה לטווח קצר ומיסוי בקפריסין', 'Short-term rentals and taxes in Cyprus' ),
+			'dubai'    => array( '/short-term-rentals-abroad/short-term-rentals-dubai/', 'השכרה לטווח קצר ורישוי Holiday Homes בדובאי', 'Short-term rentals and licensing in Dubai' ),
+			'greece'   => array( '/short-term-rentals-abroad/short-term-rentals-greece/', 'השכרה לטווח קצר ורגולציה ביוון', 'Short-term rentals and regulation in Greece' ),
+			'italy'    => array( '/short-term-rentals-abroad/short-term-rentals-italy/', 'השכרה לטווח קצר ומיסוי באיטליה', 'Short-term rentals and taxes in Italy' ),
+			'thailand' => array( '/short-term-rentals-abroad/short-term-rentals-thailand/', 'השכרה לטווח קצר וחוק המלונאות בתאילנד', 'Short-term rentals and hotel law in Thailand' ),
+			'spain'    => array( '/short-term-rentals-abroad/short-term-rentals-spain/', 'השכרה לטווח קצר בספרד', 'Short-term rentals in Spain' ),
+			'portugal' => array( '/short-term-rentals-abroad/short-term-rentals-portugal/', 'השכרה לטווח קצר ורישיון AL בפורטוגל', 'Short-term rentals and the AL license in Portugal' ),
+		);
+	}
+}
+
 /* ============================ the worlds registry ============================ */
 if ( ! function_exists( 'nadlan_gw_worlds' ) ) {
 	function nadlan_gw_worlds() {
@@ -715,10 +736,10 @@ add_action( 'template_redirect', function () {
 	$lang = nadlan_gw_lang();
 	$en = ( 'en' === $lang );
 	$he_url = home_url( '/global/' ); $en_url = home_url( '/global/?lang=en' );
-	$title = $en ? 'International Real Estate Investment Worlds: Dubai, Miami, New York | Nadlan'
-		: 'השקעות נדל"ן בחו"ל: דובאי, מיאמי, ניו יורק - העולמות המלאים למשקיע הישראלי | נדלן';
-	$desc = $en ? 'Every location is a full world: market data, taxes, the buying process, illustrative projects in 3D and on the map. Dubai, Miami and New York for the Israeli investor.'
-		: 'כל מיקום הוא עולם שלם: נתוני שוק, מיסים, תהליך רכישה, פרויקטים להמחשה בתלת ממד ועל המפה. דובאי, מיאמי וניו יורק למשקיע הישראלי.';
+	$title = $en ? 'International Real Estate Investment Worlds: Dubai, Cyprus, Greece, Miami and More | Nadlan'
+		: 'השקעות נדל"ן בחו"ל: דובאי, קפריסין, יוון, מיאמי ועוד - העולמות המלאים למשקיע הישראלי | נדלן';
+	$desc = $en ? 'Every location is a full world: market data, taxes, the buying process, projects in 3D and on the map, plus in-depth short-term-rental guides. Eight destinations for the Israeli investor.'
+		: 'כל מיקום הוא עולם שלם: נתוני שוק, מיסים, תהליך רכישה, פרויקטים בתלת ממד ועל המפה, ומדריכי עומק להשכרה לטווח קצר. שמונה יעדים למשקיע הישראלי.';
 	nadlan_gw_head( $title, $desc, $he_url, $en_url, $lang, array( array(
 		'@context' => 'https://schema.org', '@type' => 'CollectionPage', 'name' => $title, 'description' => $desc, 'url' => $en ? $en_url : $he_url,
 	) ) );
@@ -750,6 +771,14 @@ add_action( 'template_redirect', function () {
 		<h2><?php echo $en ? 'Developers and agents abroad: put your project on this stage' : 'יזמים וסוכנים בחו"ל: הפרויקט שלכם על הבמה הזו'; ?></h2>
 		<p><?php echo $en ? 'A living 3D model, a real map, honest data - the way we present projects in Israel. Feed your materials the same easy way.' : 'מודל תלת ממדי חי, מפה אמיתית ונתונים הגונים - כמו שאנחנו מציגים פרויקטים בישראל. הזנת החומרים פשוטה בדיוק כמו בפרויקט ישראלי.'; ?></p>
 		<a class="btn" href="<?php echo esc_url( home_url( '/advertise/' ) ); ?>"><?php echo $en ? 'Get in touch' : 'דברו איתנו'; ?></a>
+	</section>
+	<section class="nlgw-tools">
+		<h2><?php echo $en ? 'In-depth investor guides' : 'מדריכי עומק למשקיע בחו"ל'; ?></h2>
+		<div class="row">
+		<?php foreach ( nadlan_gw_abroad_guides() as $gk => $gg ) : ?>
+			<a href="<?php echo esc_url( home_url( $gg[0] ) ); ?>"><b><?php echo esc_html( $en ? $gg[2] : $gg[1] ); ?></b><i><?php echo $en ? ( 'hub' === $gk ? 'Compare all destinations side by side' : 'Regulation, taxes and yields' ) : ( 'hub' === $gk ? 'השוואת כל היעדים זה מול זה' : 'רגולציה, מסים ותשואות' ); ?></i></a>
+		<?php endforeach; ?>
+		</div>
 	</section>
 	<p class="nlgw-honest"><?php echo $en
 		? 'All figures on the world pages are public-source estimates for illustration (July 2026) - not investment, tax or legal advice. Illustrative projects are based on real market data and are not specific marketed projects.'
@@ -856,6 +885,9 @@ add_action( 'template_redirect', function () {
 	<section class="nlgw-tools">
 		<h2><?php echo $L( 'הכלים שלנו עובדים גם כאן', 'Our tools work here too' ); ?></h2>
 		<div class="row">
+			<?php $gw_guides = nadlan_gw_abroad_guides(); if ( isset( $gw_guides[ $code ] ) ) : $gw_g = $gw_guides[ $code ]; ?>
+			<a href="<?php echo esc_url( home_url( $gw_g[0] ) ); ?>"><b><?php echo $L( 'מדריך מעמיק: ' . $gw_g[1], 'Deep guide: ' . $gw_g[2] ); ?></b><i><?php echo $L( 'רגולציה, מסים ותשואות תפעוליות - מהמדריכים שלנו למשקיע', 'Regulation, taxes and operating yields - from our investor guides' ); ?></i></a>
+			<?php endif; ?>
 			<a href="<?php echo esc_url( home_url( '/my-rentals/' . ( $en ? '?lang=en' : '' ) ) ); ?>"><b><?php echo $L( 'קניתם? נהלו את הנכס', 'Bought? Manage the asset' ); ?></b><i><?php echo $L( 'ניהול השכרות חינם: מעקב תשלומים, חוזה, מסמכים', 'Free rental manager: payments, lease, documents' ); ?></i></a>
 			<a href="<?php echo esc_url( home_url( '/mortgage-calculator/' ) ); ?>"><b><?php echo $L( 'מחשבון משכנתא', 'Mortgage calculator' ); ?></b><i><?php echo $L( 'לתכנון המימון מהצד הישראלי', 'Plan the Israeli-side financing' ); ?></i></a>
 			<a href="<?php echo esc_url( home_url( '/professionals/?profession=lawyer' ) ); ?>"><b><?php echo $L( 'ליווי מקצועי', 'Professional guidance' ); ?></b><i><?php echo $L( 'עו"ד ורו"ח המלווים ישראלים בעסקאות חו"ל', 'Lawyers and accountants for cross-border deals' ); ?></i></a>
@@ -1752,3 +1784,30 @@ add_filter( 'nadlan_config_healthcheck', function ( $out ) {
 	);
 	return $out;
 } );
+
+/* the guides -> worlds direction: every short-term-rentals-abroad page gets a
+   role-clear box to its matching world (or the /global/ hub). the_content only,
+   fails open when the world module is off. */
+add_filter( 'the_content', function ( $c ) {
+	if ( ! is_page() || ! in_the_loop() || ! is_main_query() || ! function_exists( 'nadlan_gw_on' ) || ! nadlan_gw_on() ) { return $c; }
+	$slug = get_post_field( 'post_name', get_the_ID() );
+	if ( 0 !== strpos( (string) $slug, 'short-term-rentals' ) ) { return $c; }
+	$codes = array( 'short-term-rentals-cyprus' => 'cyprus', 'short-term-rentals-dubai' => 'dubai',
+		'short-term-rentals-greece' => 'greece', 'short-term-rentals-italy' => 'italy',
+		'short-term-rentals-thailand' => 'thailand' );
+	$W = nadlan_gw_worlds();
+	if ( isset( $codes[ $slug ], $W[ $codes[ $slug ] ] ) ) {
+		$w = $W[ $codes[ $slug ] ];
+		$url = home_url( '/global/' . $codes[ $slug ] . '/' );
+		$txt = 'מחפשים לקנות דירה חדשה מיזם ב' . $w['name_he'] . '? כל הפרויקטים בתלת ממד, מחירים ותהליך הרכישה המלא';
+		$btn = 'לעולם ההשקעות ב' . $w['name_he'];
+	} else {
+		$url = home_url( '/global/' );
+		$txt = 'מחפשים לקנות דירה חדשה בחו"ל? שמונה יעדים עם פרויקטים בתלת ממד, נתוני שוק ותהליך רכישה';
+		$btn = 'לכל עולמות ההשקעה בחו"ל';
+	}
+	$box = '<div class="nlgw-crosslink" style="margin:26px 0;padding:20px 22px;background:#FAF7F1;border:1px solid #E2DCD0;border-inline-start:4px solid #9C7A3C;border-radius:14px;font-family:Heebo,sans-serif">'
+		. '<p style="margin:0 0 10px;font-weight:600;color:#1B1A17">' . esc_html( $txt ) . '</p>'
+		. '<a href="' . esc_url( $url ) . '" style="display:inline-block;background:#1B1A17;color:#F4EEDE;border-radius:10px;padding:10px 18px;text-decoration:none;font-weight:700;font-size:14px">' . esc_html( $btn ) . ' ←</a></div>';
+	return $c . $box;
+}, 26 );

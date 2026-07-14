@@ -24,9 +24,11 @@ if ( ! defined( 'ABSPATH' ) ) {
 /* ---------- route ---------- */
 add_action( 'init', function () {
 	add_rewrite_rule( '^site-map/?$', 'index.php?nadlan_site_map=1', 'top' );
-	if ( get_option( 'nadlan_site_map_rewrite_v1' ) !== '1' ) {
+	// the pre-existing thin /sitemap/ WP page duplicated this surface - one canonical
+	add_rewrite_rule( '^sitemap/?$', 'index.php?nadlan_site_map=301', 'top' );
+	if ( get_option( 'nadlan_site_map_rewrite_v2' ) !== '1' ) {
 		flush_rewrite_rules( false );
-		update_option( 'nadlan_site_map_rewrite_v1', '1' );
+		update_option( 'nadlan_site_map_rewrite_v2', '1' );
 	}
 } );
 add_filter( 'query_vars', function ( $v ) { $v[] = 'nadlan_site_map'; return $v; } );
@@ -67,6 +69,10 @@ if ( ! function_exists( 'nadlan_site_map_strings' ) ) {
 			's_langs'    => 'שפות', 's_langs_d' => 'האתר מדבר חמש שפות.',
 			's_global'   => 'השקעות בחו"ל', 's_global_d' => 'כל מיקום הוא עולם שלם: נתונים, מיסים, תהליך ופרויקטים בתלת ממד.',
 			'l_globalhub'=> 'כל היעדים', 'l_gw_dubai' => 'השקעות נדל"ן בדובאי', 'l_gw_miami' => 'השקעות נדל"ן במיאמי', 'l_gw_ny' => 'השקעות נדל"ן בניו יורק',
+		'l_gw_cyprus' => 'השקעות נדל"ן בקפריסין', 'l_gw_london' => 'השקעות נדל"ן בלונדון', 'l_gw_greece' => 'השקעות נדל"ן ביוון', 'l_gw_italy' => 'השקעות נדל"ן באיטליה', 'l_gw_thailand' => 'השקעות נדל"ן בתאילנד',
+		'l_str_hub' => 'השוואת יעדי Airbnb בחו"ל', 'l_str_note' => 'מדריכי השכרה לטווח קצר: קפריסין, דובאי, יוון, איטליה, ספרד, פורטוגל, תאילנד',
+		's_guides2' => 'מוקדי ידע נוספים', 's_guides2_d' => 'אשכולות התוכן המלאים: משפט, מיסוי, מסחרי, מכירה והשקעה.',
+		'l_hub_lawyer' => 'עורך דין מקרקעין: המדריכים המלאים', 'l_hub_tax' => 'מיסוי נדל"ן ויועצי מס', 'l_hub_sell' => 'מכירת דירה: המדריך המלא', 'l_hub_comm' => 'נדל"ן מסחרי להשקעה', 'l_hub_invest' => 'נדל"ן להשקעה בישראל', 'l_hub_newproj' => 'פרויקטים חדשים: מדריכי רכישה מקבלן', 'l_hub_auction' => 'מכירת דירה במכרז דיגיטלי',
 			'l_3d'       => 'בחירת דירה מתוך הבניין בתלת ממד', 'l_3d_n' => 'כל הפרויקטים',
 			'l_myrenewal'=> 'חדר ההתחדשות של הבניין שלכם', 'l_urcheck' => 'בדיקת כדאיות התחדשות חינם',
 			'l_myrentals'=> 'ניהול השכרות לבעלי דירות', 'l_studio' => 'סטודיו לעיצוב הדירה',
@@ -102,6 +108,10 @@ if ( ! function_exists( 'nadlan_site_map_strings' ) ) {
 			's_langs'    => 'Languages', 's_langs_d' => 'The site speaks five languages.',
 			's_global'   => 'Global investment', 's_global_d' => 'Every location is a full world: data, taxes, process and 3D projects.',
 			'l_globalhub'=> 'All destinations', 'l_gw_dubai' => 'Dubai real estate investment', 'l_gw_miami' => 'Miami real estate investment', 'l_gw_ny' => 'New York real estate investment',
+		'l_gw_cyprus' => 'Cyprus real estate investment', 'l_gw_london' => 'London real estate investment', 'l_gw_greece' => 'Greece real estate investment', 'l_gw_italy' => 'Italy real estate investment', 'l_gw_thailand' => 'Thailand real estate investment',
+		'l_str_hub' => 'Airbnb abroad: destination comparison', 'l_str_note' => 'Short-term-rental guides: Cyprus, Dubai, Greece, Italy, Spain, Portugal, Thailand',
+		's_guides2' => 'More knowledge hubs', 's_guides2_d' => 'The full content clusters: legal, tax, commercial, selling and investing.',
+		'l_hub_lawyer' => 'Real estate lawyer guides', 'l_hub_tax' => 'Real estate tax guides', 'l_hub_sell' => 'Selling an apartment: the full guide', 'l_hub_comm' => 'Commercial real estate investment', 'l_hub_invest' => 'Investment real estate in Israel', 'l_hub_newproj' => 'New projects: buying from a developer', 'l_hub_auction' => 'Sell by digital auction',
 			'l_3d'       => 'Choose your apartment from inside the 3D building', 'l_3d_n' => 'all projects',
 			'l_myrenewal'=> 'Your building\'s renewal room', 'l_urcheck' => 'Free renewal feasibility check',
 			'l_myrentals'=> 'Rental management for landlords', 'l_studio' => 'The apartment design studio',
@@ -124,7 +134,9 @@ if ( ! function_exists( 'nadlan_site_map_strings' ) ) {
 }
 
 add_action( 'template_redirect', function () {
-	if ( ! get_query_var( 'nadlan_site_map' ) ) { return; }
+	$smv = get_query_var( 'nadlan_site_map' );
+	if ( ! $smv ) { return; }
+	if ( '301' === (string) $smv ) { wp_redirect( home_url( '/site-map/' ), 301 ); exit; }
 	$lang = ( isset( $_GET['lang'] ) && 'en' === sanitize_key( wp_unslash( $_GET['lang'] ) ) ) ? 'en' : 'he';
 	$T = nadlan_site_map_strings( $lang );
 	$C = nadlan_site_map_counts();
@@ -173,6 +185,7 @@ add_action( 'template_redirect', function () {
 	.nlsm-card h2{display:flex;align-items:center;gap:10px;font-size:1.18rem;margin:0 0 4px}
 	.nlsm-card h2 svg{width:20px;height:20px;color:#9C7A3C;flex:0 0 auto}
 	.nlsm-chip{font:700 10.5px Heebo;letter-spacing:.05em;color:#14130F;background:#D6C189;border-radius:6px;padding:3px 7px;margin-inline-start:auto;text-transform:uppercase}
+	.nlsm-note{font:400 11px/1.5 Heebo;color:#A79E8D;display:block}
 	.nlsm-card .d{font:400 13px/1.6 Heebo;color:#8E877A;margin:0 0 14px}
 	.nlsm-card ul{list-style:none;margin:0;padding:0}
 	.nlsm-card li{padding:6px 0;border-top:1px solid #F3EEE3;font:400 14px/1.5 Heebo}
@@ -297,6 +310,26 @@ add_action( 'template_redirect', function () {
 				<li><a href="<?php echo $u( '/global/dubai/' . ( $en ? '?lang=en' : '' ) ); ?>"><?php echo esc_html( $T['l_gw_dubai'] ); ?></a></li>
 				<li><a href="<?php echo $u( '/global/miami/' . ( $en ? '?lang=en' : '' ) ); ?>"><?php echo esc_html( $T['l_gw_miami'] ); ?></a></li>
 				<li><a href="<?php echo $u( '/global/new-york/' . ( $en ? '?lang=en' : '' ) ); ?>"><?php echo esc_html( $T['l_gw_ny'] ); ?></a></li>
+				<li><a href="<?php echo $u( '/global/cyprus/' . ( $en ? '?lang=en' : '' ) ); ?>"><?php echo esc_html( $T['l_gw_cyprus'] ); ?></a></li>
+				<li><a href="<?php echo $u( '/global/london/' . ( $en ? '?lang=en' : '' ) ); ?>"><?php echo esc_html( $T['l_gw_london'] ); ?></a></li>
+				<li><a href="<?php echo $u( '/global/greece/' . ( $en ? '?lang=en' : '' ) ); ?>"><?php echo esc_html( $T['l_gw_greece'] ); ?></a></li>
+				<li><a href="<?php echo $u( '/global/italy/' . ( $en ? '?lang=en' : '' ) ); ?>"><?php echo esc_html( $T['l_gw_italy'] ); ?></a></li>
+				<li><a href="<?php echo $u( '/global/thailand/' . ( $en ? '?lang=en' : '' ) ); ?>"><?php echo esc_html( $T['l_gw_thailand'] ); ?></a></li>
+				<li><a href="<?php echo $u( '/short-term-rentals-abroad/' ); ?>"><?php echo esc_html( $T['l_str_hub'] ); ?></a> <span class="nlsm-note"><?php echo esc_html( $T['l_str_note'] ); ?></span></li>
+			</ul>
+		</section>
+
+		<section class="nlsm-card">
+			<h2><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" aria-hidden="true"><path d="M4 19.5A2.5 2.5 0 016.5 17H20M4 19.5A2.5 2.5 0 006.5 22H20V2H6.5A2.5 2.5 0 004 4.5v15z"/></svg><?php echo esc_html( $T['s_guides2'] ); ?></h2>
+			<p class="d"><?php echo esc_html( $T['s_guides2_d'] ); ?></p>
+			<ul>
+				<li><a href="<?php echo $u( '/investment/' ); ?>"><?php echo esc_html( $T['l_hub_invest'] ); ?></a></li>
+				<li><a href="<?php echo $u( '/real-estate-lawyer/' ); ?>"><?php echo esc_html( $T['l_hub_lawyer'] ); ?></a></li>
+				<li><a href="<?php echo $u( '/real-estate-tax-advisor/' ); ?>"><?php echo esc_html( $T['l_hub_tax'] ); ?></a></li>
+				<li><a href="<?php echo $u( '/selling-apartment/' ); ?>"><?php echo esc_html( $T['l_hub_sell'] ); ?></a></li>
+				<li><a href="<?php echo $u( '/commercial-real-estate/' ); ?>"><?php echo esc_html( $T['l_hub_comm'] ); ?></a></li>
+				<li><a href="<?php echo $u( '/new-projects/' ); ?>"><?php echo esc_html( $T['l_hub_newproj'] ); ?></a></li>
+				<li><a href="<?php echo $u( '/sell-by-auction/' ); ?>"><?php echo esc_html( $T['l_hub_auction'] ); ?></a></li>
 			</ul>
 		</section>
 

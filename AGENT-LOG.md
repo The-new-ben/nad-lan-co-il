@@ -1,5 +1,42 @@
 # AGENT-LOG - the God brain (append-only, newest on top)
 
+## 2026-07-14 (71) - v1.72.119 DE-CANNIBALIZATION: the abroad guides + worlds finally hold hands
+Owner caught a god-mode violation: the site ALREADY HAD an
+abroad cluster - /short-term-rentals-abroad/ hub + 8 country
+guides (cyprus/dubai/greece/italy/thailand/spain/portugal) -
+and the new /global/ worlds shipped with ZERO links between the
+clusters and 5 head-on country overlaps. Content inventory: 281
+pages; clusters by size: lawyer 9, abroad 8, tax-advisor 7,
+investment 7, renewal 6, mortgage-calc 5, selling 5. The
+/site-map/ was missing the abroad cluster AND lawyer/tax/
+selling/commercial/new-projects/auction hubs entirely. ALSO
+found an old thin /sitemap/ WP page duplicating /site-map/.
+RESEARCH (evidence in owner report): for SAME intent -
+consolidate + 301; for DISTINCT intents - differentiate roles +
+link bidirectionally (searchengineland/yoast); hub-spoke with
+spoke-to-spoke links, descriptive anchors, <=3 clicks from
+pillar (hubspot/topicalmap). Our two clusters have DISTINCT
+intents (guides = short-term-rental OPERATION: regulation,
+licensing, taxes; worlds = BUYING new projects: 3D, prices,
+process) -> differentiation + linking, no merging.
+SHIPPED: nadlan_gw_abroad_guides() map; every world page links
+its guide as the FIRST tools row ("מדריך מעמיק: השכרה לטווח
+קצר ומיסוי בX"); every guide page gets a role-clear box to its
+world ("לעולם ההשקעות בX", hub/spain/portugal -> /global/);
+/global/ hub gained a "מדריכי עומק" strip (all 8 guides); hub
+title now names 8 destinations not 3. /site-map/: all 8 worlds
+(was 3), the abroad hub+guides note, NEW "מוקדי ידע" card
+(investment/lawyer/tax/selling/commercial/new-projects/
+auction - every URL verified 200 pre-ship). Old /sitemap/ now
+301s to /site-map/ (rewrite flush v2). ALL crosslinks verified
+live in both directions.
+SOCIAL LOGINS: research verdict in owner report - Google 60%
+share (live), LinkedIn strong for the B2B side (pros/
+developers), Facebook declining=backup, Apple mainly iOS-app
+mandated. Feasibility: same flag-gated server-side OAuth
+pattern as Google. Cowork prompt delivered in chat; build
+awaits owner go.
+
 ## 2026-07-13 (70) - v1.72.118 CONTROL ROUND: 3D anchoring + compass, wayfinding, start-here CTAs
 Owner: models "keep spinning and you lose control", wants
 anchored angles with a click feel + a north compass + guidance
