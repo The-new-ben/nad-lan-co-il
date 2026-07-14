@@ -1136,8 +1136,7 @@ if ( ! function_exists( 'nadlan_hv2_assets' ) ) {
 				var mv=st.querySelector("model-viewer");
 				if(!mv){
 					mv=document.createElement("model-viewer");
-					mv.setAttribute("camera-controls","");mv.setAttribute("auto-rotate","");
-					mv.setAttribute("auto-rotate-delay","0");mv.setAttribute("rotation-per-second","16deg");
+					mv.setAttribute("camera-controls","");
 					mv.setAttribute("interaction-prompt","none");mv.setAttribute("shadow-intensity","0.55");
 					mv.setAttribute("exposure","0.95");mv.setAttribute("environment-image","neutral");
 					// scroll must never get trapped over the stage (owner 2026-07-12):
@@ -1185,7 +1184,7 @@ if ( ! function_exists( 'nadlan_hv2_assets' ) ) {
 			wrap.hidden=false;
 			ensureMV(function(){
 				var mv=slot.querySelector("model-viewer");
-				if(!mv){mv=document.createElement("model-viewer");mv.setAttribute("camera-controls","");mv.setAttribute("auto-rotate","");mv.setAttribute("shadow-intensity","0.6");mv.setAttribute("exposure","0.9");mv.setAttribute("touch-action","pan-y");mv.setAttribute("disable-zoom","");slot.appendChild(mv)}
+				if(!mv){mv=document.createElement("model-viewer");mv.setAttribute("camera-controls","");mv.setAttribute("shadow-intensity","0.6");mv.setAttribute("exposure","0.9");mv.setAttribute("touch-action","pan-y");mv.setAttribute("disable-zoom","");slot.appendChild(mv)}
 				mv.setAttribute("src",b.dataset.glb);
 				mv.setAttribute("alt",b.dataset.title||"");
 				wrap.scrollIntoView({behavior:"smooth",block:"nearest"});

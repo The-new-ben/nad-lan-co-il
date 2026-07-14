@@ -305,7 +305,7 @@
 			mv.setAttribute("camera-controls", ""); mv.setAttribute("interaction-prompt", "none");
 			mv.setAttribute("environment-image", "neutral"); mv.setAttribute("exposure", "0.95");
 			mv.setAttribute("shadow-intensity", "0.5"); mv.setAttribute("touch-action", "pan-y"); mv.setAttribute("disable-zoom", "");
-			if (MODE === "demo") { mv.setAttribute("auto-rotate", ""); mv.setAttribute("rotation-per-second", "8deg"); }
+			if (MODE === "demo") { }
 			var fls = CUR.floors || 4, upf = CUR.units_per_floor || 3;
 			/* owner 2026-07-12: opened too zoomed-in - start wider, allow pulling back further */
 			mv.setAttribute("camera-target", "0 " + Math.min(18, fls * FH * 0.4).toFixed(1) + " 0");

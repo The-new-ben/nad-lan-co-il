@@ -1095,7 +1095,7 @@ add_filter( 'the_content', function ( $content ) {
 	<div id="nlgw-floors" style="display:flex;gap:8px;flex-wrap:wrap;margin:0 0 10px"></div>
 	<?php endif; ?>
 	<div style="position:relative;height:56vh;min-height:420px;max-height:620px;border-radius:18px;overflow:hidden;background:radial-gradient(ellipse at 50% 30%,#26221733 0%,transparent 65%),#14130F;border:1px solid #2A251B;margin:0 0 14px">
-		<model-viewer id="nlgw-mv" src="<?php echo esc_url( $glb ); ?>" camera-controls disable-zoom ar ar-modes="scene-viewer webxr quick-look" <?php echo $apts ? '' : 'auto-rotate rotation-per-second="9deg"'; ?>
+		<model-viewer id="nlgw-mv" src="<?php echo esc_url( $glb ); ?>" camera-controls disable-zoom ar ar-modes="scene-viewer webxr quick-look" 
 			style="width:100%;height:100%;direction:ltr;background:transparent;touch-action:pan-y"
 			camera-orbit="<?php echo esc_attr( $orbit[0] ); ?>" min-camera-orbit="auto auto <?php echo esc_attr( $orbit[1] ); ?>" max-camera-orbit="auto auto <?php echo esc_attr( $orbit[2] ); ?>" exposure="0.95" shadow-intensity="0.6">
 			<?php $hi = 0; foreach ( $apts as $a ) :

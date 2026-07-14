@@ -1,5 +1,46 @@
 # AGENT-LOG - the God brain (append-only, newest on top)
 
+## 2026-07-13 (70) - v1.72.118 CONTROL ROUND: 3D anchoring + compass, wayfinding, start-here CTAs
+Owner: models "keep spinning and you lose control", wants
+anchored angles with a click feel + a north compass + guidance
+hints; can't find Dubai/Cyprus in the menus; sitemap needs an
+anchor; the below-footer strip "not looking good"; start-here
+CTAs everywhere; check glossary generation.
+1. NEW assets/showroom-engine/mv-ux.js - shared control layer
+   for EVERY model-viewer, enqueued site-wide from showroom-
+   support (tiny, self-guarding, MutationObserver catches late
+   mounts): strips auto-rotate (nothing spins unless the user
+   drags; data-keep-spin opt-out exists), DETENTS - on release
+   the azimuth snaps to the nearest 22.5deg (16 compass points,
+   the "click"), COMPASS rose overlay tracking every camera move
+   (bearing=-theta per the engine's model-north convention;
+   data-north-deg override), and ONE quiet hint chip (5 langs,
+   fades on first touch/7s; engine stages add the hotspot line).
+   auto-rotate also stripped AT SOURCE: engine.js stage,
+   property-showroom, global-worlds picker, renewal-3d wizard,
+   renewal-space/rental demo modes, home-v2 showcase+hero slots.
+2. MENUS: the real header is the CHILD-THEME template part
+   (nlpc-primary-nav in parts/header.html, DB-customized) - NOT
+   the wp_navigation post (that one got a full 8-worlds submenu
+   anyway for future block-nav use). Added "נדל\"ן בחו\"ל" ->
+   /global/ to the live header via the template-parts REST +
+   synced the repo theme file. Verified in the live header HTML.
+3. FOOTER: the 4-link below-footer strip (glossary-autolink
+   wp_footer) retired - replaced with ONE quiet line "מפת האתר
+   המלאה" -> /site-map/, which also anchors the HTML sitemap on
+   every page. Verified: old strip gone, new line live.
+4. NEW inc/cta-start.php: context-aware terracotta start pill
+   (bottom-center, clear of the AI/WA fabs): properties archive+
+   singles "פרסמו את הדירה שלכם"+חינם badge -> /post-listing/,
+   renewal pages "בדקו את הבניין שלכם"+חינם -> /check/, glossary
+   -> professionals. Surfaces with native primary CTAs excluded.
+   Filterable nadlan_cta_start_map. Verified live on both.
+5. GLOSSARY GENERATION: HEALTHY - 5 new terms queued today at
+   50-minute intervals (latest "בטון רזה"). No fix needed.
+Held for owner decision (his "tell me what you think" items):
+page-generation engine for intl projects; further god-mode
+floats - in the chat report.
+
 ## 2026-07-13 (69) - v1.72.117 MAPS ROUND 1: the POI engine was dead - now the chips filter REAL data
 Owner: "the filtering is not really filtering anything... most of
 the maps are just nothing." Full audit (subagent recon over every

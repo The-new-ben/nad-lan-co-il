@@ -109,7 +109,7 @@
       var floors = Math.max(1, Math.min(40, parseInt(el("nlurw-floors").value, 10) || 4));
       var mv = document.createElement("model-viewer");
       mv.setAttribute("src", glb);
-      mv.setAttribute("camera-controls", ""); mv.setAttribute("auto-rotate", "");
+      mv.setAttribute("camera-controls", "");
       mv.setAttribute("rotation-per-second", "12deg"); mv.setAttribute("interaction-prompt", "none");
       mv.setAttribute("environment-image", "neutral"); mv.setAttribute("exposure", "0.95");
       mv.setAttribute("shadow-intensity", "0.5"); mv.setAttribute("touch-action", "pan-y");

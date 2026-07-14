@@ -252,7 +252,7 @@
 			mv.setAttribute("camera-controls", ""); mv.setAttribute("interaction-prompt", "none");
 			mv.setAttribute("environment-image", "neutral"); mv.setAttribute("exposure", "0.95");
 			mv.setAttribute("shadow-intensity", "0.5"); mv.setAttribute("touch-action", "pan-y");
-			if (MODE === "demo") { mv.setAttribute("auto-rotate", ""); mv.setAttribute("rotation-per-second", "8deg"); }
+			if (MODE === "demo") { }
 			var fls = S.floors || 4;
 			mv.setAttribute("camera-target", "0 " + Math.min(20, fls * FH * 0.45).toFixed(1) + " 0");
 			mv.setAttribute("camera-orbit", "-28deg 76deg " + Math.max(40, fls * FH * 1.6).toFixed(0) + "m");
