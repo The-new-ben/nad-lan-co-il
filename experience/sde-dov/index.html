@@ -1,0 +1,904 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex">
+<title>רובע שדה דב — הסיור | nad-lan.co.il</title>
+<meta name="description" content="טיסת דמדומים תלת־ממדית מעל רובע שדה דב, תל אביב — דימרי ימה, ריינבו ואשירה. הדמיה להמחשה.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Heebo:wght@200;300;400;600;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --gold:#d8b46a; --gold-hi:#f2d9a4; --ink:#0e0a1c;
+    --veil:rgba(14,10,28,.42); --line:rgba(255,255,255,.14);
+    --card-bg:rgba(16,12,30,.55); --txt:#f3eee2; --dim:#b9b0c9;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:auto}
+  html,body{background:#131022;color:var(--txt);font-family:'Heebo',system-ui,-apple-system,'Segoe UI',sans-serif}
+  body{overflow-x:hidden}
+  ::selection{background:rgba(216,180,106,.35)}
+
+  #scrollway{height:780vh;pointer-events:none}
+  body.rm #scrollway{height:100vh}
+
+  canvas#stage{position:fixed;inset:0;width:100vw;height:100vh;height:100dvh;display:block;pointer-events:none;z-index:0}
+
+  /* cinematic frame */
+  #frame{position:fixed;inset:0;pointer-events:none;z-index:2;
+    background:
+      radial-gradient(120% 90% at 50% 46%, transparent 58%, rgba(8,5,18,.38) 100%),
+      linear-gradient(180deg, rgba(8,5,18,.52) 0%, transparent 12%, transparent 86%, rgba(8,5,18,.6) 100%);}
+  #grain{position:fixed;inset:-40px;pointer-events:none;z-index:2;opacity:.055;mix-blend-mode:overlay}
+
+  /* ---------- HUD ---------- */
+  #hud{position:fixed;top:0;right:0;left:0;z-index:6;display:flex;align-items:flex-start;justify-content:space-between;
+    padding:clamp(14px,2.6vh,26px) clamp(16px,3vw,34px);pointer-events:none}
+  .brand{display:flex;flex-direction:column;align-items:flex-start;gap:6px;text-align:right}
+  .brand .logo{font-weight:200;font-size:13px;letter-spacing:.28em;color:var(--dim)}
+  .brand h1{font-weight:800;font-size:clamp(19px,2.6vw,30px);line-height:1.15;
+    background:linear-gradient(120deg,#fff 30%,var(--gold-hi) 70%);-webkit-background-clip:text;background-clip:text;color:transparent}
+  .brand .sub{font-weight:300;font-size:clamp(11px,1.3vw,14px);color:var(--dim)}
+  .badge{pointer-events:none;font-size:11.5px;font-weight:400;color:var(--gold-hi);border:1px solid rgba(216,180,106,.45);
+    border-radius:99px;padding:5px 12px;background:rgba(20,14,34,.5);backdrop-filter:blur(8px);white-space:nowrap}
+
+  /* ---------- progress rail (left edge; cards live on the right) ---------- */
+  #rail{position:fixed;left:clamp(12px,2vw,26px);top:50%;transform:translateY(-50%);z-index:6;display:flex;align-items:center;gap:12px;pointer-events:none}
+  #rail .track{position:relative;width:2px;height:min(44vh,340px);background:rgba(255,255,255,.14);border-radius:2px;overflow:visible}
+  #rail .fill{position:absolute;top:0;left:0;width:100%;height:0%;background:linear-gradient(180deg,var(--gold-hi),var(--gold));border-radius:2px;
+    box-shadow:0 0 12px rgba(216,180,106,.55)}
+  #rail .stops{position:absolute;inset:0}
+  #rail .stop{position:absolute;left:50%;width:7px;height:7px;border-radius:50%;transform:translate(-50%,-50%);
+    background:#4d4568;border:1px solid rgba(255,255,255,.25);transition:all .4s}
+  #rail .stop.hit{background:var(--gold);box-shadow:0 0 10px rgba(216,180,106,.8);transform:translate(-50%,-50%) scale(1.35)}
+  #rail .labels{display:flex;flex-direction:column;justify-content:space-between;height:min(44vh,340px);padding:0}
+  #rail .labels span{font-size:10.5px;color:var(--dim);font-weight:300;opacity:.75;transition:all .4s;line-height:1}
+  #rail .labels span.hit{color:var(--gold-hi);opacity:1;font-weight:600}
+  @media (max-width:900px){ #rail .labels{display:none} }
+
+  /* ---------- scroll hint ---------- */
+  #hint{position:fixed;bottom:clamp(18px,4vh,40px);left:50%;transform:translateX(-50%);z-index:6;text-align:center;
+    transition:opacity .7s, transform .7s;pointer-events:none}
+  #hint.off{opacity:0;transform:translate(-50%,14px)}
+  #hint .txt{font-size:13px;font-weight:300;color:var(--txt);letter-spacing:.06em;text-shadow:0 1px 10px rgba(0,0,0,.6)}
+  #hint .chev{width:22px;height:22px;margin:8px auto 0;border-left:2px solid var(--gold-hi);border-bottom:2px solid var(--gold-hi);
+    transform:rotate(-45deg);animation:dip 1.8s ease-in-out infinite;opacity:.9}
+  @keyframes dip{0%,100%{transform:rotate(-45deg) translate(0,0);opacity:.35}50%{transform:rotate(-45deg) translate(-7px,7px);opacity:1}}
+
+  /* ---------- project cards ---------- */
+  .pcard{position:fixed;z-index:7;top:50%;right:clamp(18px,4.5vw,64px);transform:translateY(-50%) translateX(46px);
+    width:min(360px,86vw);opacity:0;visibility:hidden;filter:blur(8px);
+    transition:opacity .65s cubic-bezier(.22,.7,.25,1), transform .65s cubic-bezier(.22,.7,.25,1), filter .65s, visibility 0s linear .65s;
+    background:var(--card-bg);backdrop-filter:blur(18px) saturate(1.25);-webkit-backdrop-filter:blur(18px) saturate(1.25);
+    border:1px solid var(--line);border-radius:20px;padding:24px 24px 20px;pointer-events:none;
+    box-shadow:0 24px 70px rgba(0,0,0,.45), inset 0 1px 0 rgba(255,255,255,.08)}
+  .pcard.on{opacity:1;visibility:visible;transform:translateY(-50%) translateX(0);filter:blur(0);pointer-events:auto;transition-delay:0s}
+  .pcard .tag{display:inline-block;font-size:11px;font-weight:600;color:var(--gold-hi);border:1px solid rgba(216,180,106,.4);
+    padding:4px 10px;border-radius:99px;margin-bottom:12px;background:rgba(216,180,106,.08)}
+  .pcard h3{font-size:27px;font-weight:800;line-height:1.1}
+  .pcard .en{font-size:11px;letter-spacing:.3em;color:var(--dim);font-weight:300;margin:4px 0 14px}
+  .pcard ul{list-style:none;display:flex;flex-direction:column;gap:8px;margin-bottom:16px}
+  .pcard li{font-size:14px;font-weight:300;color:var(--txt);display:flex;align-items:center;gap:9px}
+  .pcard li::before{content:'';width:5px;height:5px;border-radius:50%;background:var(--gold);flex:none;box-shadow:0 0 7px rgba(216,180,106,.7)}
+  .pcard li b{font-weight:700;color:#fff}
+  .btn{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;padding:13px 18px;border-radius:13px;
+    background:linear-gradient(115deg,var(--gold) 0%,#b98f45 100%);color:#241a08;font-weight:700;font-size:14.5px;text-decoration:none;
+    transition:transform .25s, box-shadow .25s;box-shadow:0 8px 26px rgba(216,180,106,.25)}
+  .btn:hover{transform:translateY(-2px);box-shadow:0 12px 32px rgba(216,180,106,.4)}
+  .pcard .fine{margin-top:10px;font-size:10.5px;color:var(--dim);font-weight:300;text-align:center}
+
+  /* mobile: bottom sheet */
+  @media (max-width:640px){
+    .pcard{top:auto;bottom:0;right:0;left:0;width:100%;transform:translateY(106%);
+      border-radius:22px 22px 0 0;border-left:none;border-right:none;border-bottom:none;padding:16px 20px calc(16px + env(safe-area-inset-bottom))}
+    .pcard.on{transform:translateY(0)}
+    .pcard::before{content:'';display:block;width:44px;height:4px;border-radius:4px;background:rgba(255,255,255,.28);margin:0 auto 12px}
+    .pcard h3{font-size:22px}
+    .pcard .en{margin-bottom:8px}
+    .pcard ul{flex-direction:row;flex-wrap:wrap;gap:6px 16px;margin-bottom:12px}
+    .pcard li{font-size:12.5px}
+  }
+
+  /* ---------- finale ---------- */
+  #finale{position:fixed;inset:0;z-index:8;display:flex;align-items:flex-end;justify-content:center;
+    padding:0 20px calc(clamp(26px,7vh,72px) + env(safe-area-inset-bottom));
+    opacity:0;visibility:hidden;transform:translateY(30px);pointer-events:none;
+    transition:opacity .8s ease, transform .8s ease, visibility 0s linear .8s;
+    background:linear-gradient(180deg, transparent 30%, rgba(10,7,22,.72) 78%)}
+  #finale.on{opacity:1;visibility:visible;transform:translateY(0);pointer-events:auto;transition-delay:0s}
+  .fin{width:min(880px,100%);text-align:center}
+  .fin .kick{font-size:12.5px;letter-spacing:.22em;color:var(--gold-hi);font-weight:400;margin-bottom:10px}
+  .fin h2{font-size:clamp(28px,5vw,46px);font-weight:800;line-height:1.12;margin-bottom:8px;
+    background:linear-gradient(120deg,#fff 35%,var(--gold-hi));-webkit-background-clip:text;background-clip:text;color:transparent}
+  .fin p{font-weight:300;color:var(--dim);font-size:clamp(13px,1.6vw,16px);margin-bottom:22px}
+  .fin-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:12px}
+  .fin-card{display:flex;flex-direction:column;gap:3px;padding:16px 14px;border-radius:16px;text-decoration:none;color:var(--txt);
+    background:rgba(20,15,36,.6);border:1px solid var(--line);backdrop-filter:blur(14px);
+    transition:transform .3s, border-color .3s, background .3s}
+  .fin-card:hover{transform:translateY(-4px);border-color:rgba(216,180,106,.55);background:rgba(30,22,50,.7)}
+  .fin-card b{font-size:16.5px;font-weight:700}
+  .fin-card span{font-size:11.5px;color:var(--dim);font-weight:300}
+  .fin-card em{font-style:normal;font-size:11.5px;color:var(--gold-hi);margin-top:6px;font-weight:600}
+  .wa{display:inline-flex;align-items:center;gap:9px;padding:12px 26px;border-radius:99px;text-decoration:none;
+    background:rgba(37,211,102,.14);border:1px solid rgba(37,211,102,.5);color:#c9f7db;font-weight:600;font-size:14px;
+    transition:background .3s, transform .3s}
+  .wa:hover{background:rgba(37,211,102,.26);transform:translateY(-2px)}
+  .wa svg{width:17px;height:17px;fill:#4be284}
+  .fin .fine{margin-top:14px;font-size:10.5px;color:#8d84a3;font-weight:300}
+  @media (max-width:640px){ .fin-grid{grid-template-columns:1fr;gap:8px} .fin-card{flex-direction:row;align-items:center;justify-content:space-between;flex-wrap:wrap} #finale{padding-bottom:calc(18px + env(safe-area-inset-bottom))} }
+
+  /* ---------- reduced-motion controls ---------- */
+  #rmnav{position:fixed;bottom:calc(20px + env(safe-area-inset-bottom));left:50%;transform:translateX(-50%);z-index:9;display:none;
+    align-items:center;gap:14px;background:rgba(16,12,30,.72);border:1px solid var(--line);border-radius:99px;
+    padding:8px 12px;backdrop-filter:blur(14px)}
+  body.rm #rmnav{display:flex}
+  #rmnav button{cursor:pointer;border:1px solid rgba(216,180,106,.4);background:rgba(216,180,106,.1);color:var(--gold-hi);
+    font-family:inherit;font-size:13px;font-weight:600;border-radius:99px;padding:8px 18px}
+  #rmnav button:disabled{opacity:.35;cursor:default}
+  #rmnav .st{font-size:13px;font-weight:400;min-width:110px;text-align:center;color:var(--txt)}
+  body.rm #hint{display:none}
+
+  /* ---------- loader ---------- */
+  #veil{position:fixed;inset:0;z-index:20;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;
+    background:radial-gradient(130% 100% at 50% 110%, #3b2a54 0%, #1c1633 52%, #0f0c1f 100%);
+    transition:opacity .9s ease, visibility 0s linear .9s}
+  #veil.off{opacity:0;visibility:hidden;pointer-events:none}
+  #veil .logo{font-size:12px;letter-spacing:.34em;color:var(--dim);font-weight:200}
+  #veil h2{font-size:clamp(24px,4.6vw,40px);font-weight:800;
+    background:linear-gradient(120deg,#fff 30%,var(--gold-hi) 75%);-webkit-background-clip:text;background-clip:text;color:transparent}
+  #veil .bar{width:min(300px,64vw);height:2px;background:rgba(255,255,255,.12);border-radius:2px;overflow:hidden}
+  #veil .bar i{display:block;height:100%;width:0%;background:linear-gradient(90deg,var(--gold),var(--gold-hi));transition:width .3s}
+  #veil .cap{font-size:12px;color:var(--dim);font-weight:300}
+
+  /* fatal fallback (no WebGL / CDN offline) */
+  #fatal{position:fixed;inset:0;z-index:30;display:none;flex-direction:column;align-items:center;justify-content:center;gap:18px;text-align:center;
+    padding:24px;background:radial-gradient(130% 100% at 50% 110%, #3b2a54 0%, #1c1633 52%, #0f0c1f 100%)}
+  #fatal.show{display:flex}
+  #fatal h2{font-size:clamp(24px,5vw,40px);font-weight:800}
+  #fatal p{color:var(--dim);font-weight:300;max-width:520px}
+  #fatal .links{display:flex;gap:10px;flex-wrap:wrap;justify-content:center}
+  #fatal a{color:var(--gold-hi);border:1px solid rgba(216,180,106,.45);border-radius:99px;padding:10px 20px;text-decoration:none;font-size:14px}
+</style>
+</head>
+<body>
+
+<div id="scrollway"></div>
+<canvas id="stage"></canvas>
+<div id="frame"></div><div id="grain"></div>
+
+<header id="hud">
+  <div class="brand">
+    <div class="logo">NAD-LAN.CO.IL</div>
+    <h1>רובע שדה דב — הסיור</h1>
+    <div class="sub">טיסת דמדומים מעל הרובע החדש של תל אביב</div>
+  </div>
+  <div class="badge">הדמיה להמחשה</div>
+</header>
+
+<div id="rail" aria-hidden="true">
+  <div class="track"><div class="fill" id="railFill"></div>
+    <div class="stops">
+      <div class="stop" style="top:2%"  data-u="0.02"></div>
+      <div class="stop" style="top:30%" data-u="0.30"></div>
+      <div class="stop" style="top:60%" data-u="0.60"></div>
+      <div class="stop" style="top:79%" data-u="0.79"></div>
+      <div class="stop" style="top:99%" data-u="0.99"></div>
+    </div>
+  </div>
+  <div class="labels">
+    <span data-u="0.02">מעל הים</span>
+    <span data-u="0.30">דימרי ימה</span>
+    <span data-u="0.60">ריינבו</span>
+    <span data-u="0.79">אשירה</span>
+    <span data-u="0.99">הבחירה</span>
+  </div>
+</div>
+
+<div id="hint"><div class="txt">גללו מטה — הטיסה מתחילה</div><div class="chev"></div></div>
+
+<article class="pcard" id="card-dimri" data-a="0.215" data-b="0.44">
+  <div class="tag">קו ראשון לים</div>
+  <h3>דימרי ימה</h3>
+  <div class="en">DIMRI YAMA · SDE DOV</div>
+  <ul>
+    <li><b>39</b> קומות מעל פודיום</li>
+    <li><b>458</b> דירות</li>
+    <li>סטטוס: <b>בשיווק</b></li>
+  </ul>
+  <a class="btn" href="https://nad-lan.co.il/projects/dimri-yama-sde-dov/" target="_blank" rel="noopener">לעמוד הפרויקט ולבחירת דירה ←</a>
+  <div class="fine">הדמיה להמחשה בלבד</div>
+</article>
+
+<article class="pcard" id="card-rainbow" data-a="0.50" data-b="0.685">
+  <div class="tag">מגדל הדגל של הרובע</div>
+  <h3>ריינבו תל אביב</h3>
+  <div class="en">RAINBOW TEL AVIV</div>
+  <ul>
+    <li><b>כ־38</b> קומות</li>
+    <li><b>480</b> דירות</li>
+    <li>סטטוס: <b>בשיווק</b></li>
+  </ul>
+  <a class="btn" href="https://nad-lan.co.il/projects/rainbow-tel-aviv/" target="_blank" rel="noopener">לעמוד הפרויקט ולבחירת דירה ←</a>
+  <div class="fine">הדמיה להמחשה בלבד</div>
+</article>
+
+<article class="pcard" id="card-ashira" data-a="0.705" data-b="0.875">
+  <div class="tag">קומפוזיציה של 4 בניינים</div>
+  <h3>אשירה שדה דב</h3>
+  <div class="en">ASHIRA · SDE DOV</div>
+  <ul>
+    <li><b>35 / 16 / 8 / 8</b> קומות</li>
+    <li><b>406</b> דירות</li>
+    <li>סטטוס: <b>בשיווק</b></li>
+  </ul>
+  <a class="btn" href="https://nad-lan.co.il/projects/ashira-sde-dov/" target="_blank" rel="noopener">לעמוד הפרויקט ולבחירת דירה ←</a>
+  <div class="fine">הדמיה להמחשה בלבד</div>
+</article>
+
+<section id="finale">
+  <div class="fin">
+    <div class="kick">הרובע החדש של תל אביב מחכה לכם</div>
+    <h2>בחרו דירה מתוך הבניין</h2>
+    <p>שלושה פרויקטים, חופש בחירה מלא — בניין, קומה, כיוון ונוף.</p>
+    <div class="fin-grid">
+      <a class="fin-card" href="https://nad-lan.co.il/projects/dimri-yama-sde-dov/" target="_blank" rel="noopener">
+        <b>דימרי ימה</b><span>קו ראשון לים · 39 קומות · 458 דירות</span><em>לבחירת דירה ←</em></a>
+      <a class="fin-card" href="https://nad-lan.co.il/projects/rainbow-tel-aviv/" target="_blank" rel="noopener">
+        <b>ריינבו תל אביב</b><span>מגדל הדגל · כ־38 קומות · 480 דירות</span><em>לבחירת דירה ←</em></a>
+      <a class="fin-card" href="https://nad-lan.co.il/projects/ashira-sde-dov/" target="_blank" rel="noopener">
+        <b>אשירה שדה דב</b><span>4 בניינים · 35/16/8/8 קומות · 406 דירות</span><em>לבחירת דירה ←</em></a>
+    </div>
+    <a class="wa" href="https://wa.me/972525101555" target="_blank" rel="noopener">
+      <svg viewBox="0 0 32 32"><path d="M16 3C9.4 3 4 8.4 4 15c0 2.1.6 4.2 1.6 6L4 29l8.2-1.6c1.2.6 2.5.9 3.8.9 6.6 0 12-5.4 12-12S22.6 3 16 3zm6.6 16.9c-.3.8-1.6 1.5-2.2 1.6-.6.1-1.3.2-3.7-.8-3.1-1.3-5.1-4.4-5.3-4.6-.2-.2-1.3-1.7-1.3-3.2s.8-2.3 1.1-2.6c.3-.3.6-.4.8-.4h.6c.2 0 .5-.1.7.5l.9 2.3c.1.2.1.4 0 .6l-.4.7-.6.6c-.2.2-.4.4-.2.7.2.4.9 1.6 2 2.5 1.4 1.2 2.5 1.6 2.9 1.8.4.2.6.1.8-.1l1.2-1.4c.2-.3.5-.2.8-.1l2.4 1.1c.4.2.6.3.7.4.1.3.1.9-.2 1.4z"/></svg>
+      וואטסאפ ישיר — 052-510-1555</a>
+    <div class="fine">הדמיה להמחשה בלבד · הנתונים המלאים והמחייבים מופיעים בעמודי הפרויקטים</div>
+  </div>
+</section>
+
+<div id="rmnav">
+  <button id="rmPrev">→ הקודם</button>
+  <div class="st" id="rmName">מעל הים</div>
+  <button id="rmNext">הבא ←</button>
+</div>
+
+<div id="veil">
+  <div class="logo">NAD-LAN.CO.IL</div>
+  <h2>רובע שדה דב — הסיור</h2>
+  <div class="bar"><i id="veilBar"></i></div>
+  <div class="cap" id="veilCap">טוענים את הדמיית הרובע…</div>
+</div>
+
+<div id="fatal">
+  <h2>רובע שדה דב</h2>
+  <p>לא הצלחנו להפעיל את ההדמיה התלת־ממדית בדפדפן הזה, אבל הפרויקטים מחכים לכם:</p>
+  <div class="links">
+    <a href="https://nad-lan.co.il/projects/dimri-yama-sde-dov/">דימרי ימה</a>
+    <a href="https://nad-lan.co.il/projects/rainbow-tel-aviv/">ריינבו תל אביב</a>
+    <a href="https://nad-lan.co.il/projects/ashira-sde-dov/">אשירה שדה דב</a>
+    <a href="https://wa.me/972525101555">וואטסאפ</a>
+  </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script type="importmap">
+{ "imports": {
+  "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js",
+  "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"
+} }
+</script>
+<script type="module">
+/* ============================================================================
+   SDE DOV QUARTER — cinematic scroll flight (V1 prototype, local only)
+   Sea WEST (-X) · runway N-S · Dimri seafront · Rainbow + Ashira behind.
+   GLB models from the NadLan showroom engine; procedural fallback included.
+   ============================================================================ */
+const Q = new URLSearchParams(location.search);
+const RM_PARAM = Q.get('rm'); /* rm=1 force on, rm=0 force off (QA) */
+const FORCE_FALLBACK = Q.get('fb') === '1';
+const START_T = Q.has('t') ? Math.max(0, Math.min(1, parseFloat(Q.get('t')))) : null;
+const REDUCED = RM_PARAM === '1' || (RM_PARAM !== '0' && matchMedia('(prefers-reduced-motion: reduce)').matches);
+const MOBILE = matchMedia('(pointer: coarse)').matches || innerWidth < 900;
+
+const $ = s => document.querySelector(s);
+const veilBar = $('#veilBar'), veilCap = $('#veilCap');
+
+/* film grain */
+(() => { const c = document.createElement('canvas'); c.width = c.height = 128;
+  const g = c.getContext('2d'), d = g.createImageData(128, 128);
+  for (let i = 0; i < d.data.length; i += 4) { const v = 90 + Math.random() * 120 | 0; d.data[i] = d.data[i+1] = d.data[i+2] = v; d.data[i+3] = 255; }
+  g.putImageData(d, 0, 0); $('#grain').style.backgroundImage = `url(${c.toDataURL()})`; })();
+
+async function boot() {
+  const THREE = await import('three');
+  const { GLTFLoader } = await import('three/addons/loaders/GLTFLoader.js');
+  const { mergeGeometries } = await import('three/addons/utils/BufferGeometryUtils.js');
+  /* NOTE: no post-processing on purpose. Bloom/PMREM need float render targets
+     that software-GL machines lack; the dusk look is built to shine without them
+     (additive glow billboards + emissive windows + ACES). Guaranteed 60fps. */
+
+  /* ---------------- renderer / scene ---------------- */
+  const canvas = $('#stage');
+  const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, powerPreference: 'high-performance' });
+  renderer.setPixelRatio(Math.min(devicePixelRatio, MOBILE ? 1.7 : 2));
+  renderer.setSize(innerWidth, innerHeight);
+  renderer.outputColorSpace = THREE.SRGBColorSpace;
+  renderer.toneMapping = THREE.ACESFilmicToneMapping;
+  renderer.toneMappingExposure = 1.3;
+
+  const scene = new THREE.Scene();
+  const FOG_COLOR = new THREE.Color(0x473a5f);
+  scene.fog = new THREE.Fog(FOG_COLOR, 820, 3900);
+
+  const cam = new THREE.PerspectiveCamera(54, innerWidth / innerHeight, 2, 12000);
+  cam.position.set(-1280, 330, 430);
+
+  /* ---------------- dusk sky dome ---------------- */
+  const SUN_POS = new THREE.Vector3(-2300, 150, 640);
+  const SUN_DIR = SUN_POS.clone().normalize();
+  const skyMat = new THREE.ShaderMaterial({
+    side: THREE.BackSide, depthWrite: false, fog: false,
+    uniforms: { uSun: { value: SUN_DIR }, uMoon: { value: new THREE.Vector3(0.6, 0.22, -0.42).normalize() }, uFog: { value: FOG_COLOR } },
+    vertexShader: `varying vec3 vDir; void main(){ vDir = position; gl_Position = projectionMatrix * modelViewMatrix * vec4(position,1.0); }`,
+    fragmentShader: `
+      varying vec3 vDir; uniform vec3 uSun; uniform vec3 uMoon; uniform vec3 uFog;
+      float hash(vec2 p){ return fract(sin(dot(p, vec2(127.1,311.7)))*43758.5453); }
+      void main(){
+        vec3 d = normalize(vDir);
+        float h = d.y;
+        float az = max(dot(normalize(vec3(d.x,0.,d.z)), normalize(vec3(uSun.x,0.,uSun.z))), 0.);
+        vec3 zen  = vec3(0.075,0.078,0.21);
+        vec3 horC = vec3(0.318,0.243,0.395);   /* twilight rose-violet */
+        vec3 horW = vec3(0.995,0.472,0.208);
+        vec3 hor  = mix(horC, horW, pow(az, 2.4) * 0.82 + 0.14);
+        vec3 col  = mix(hor, zen, pow(clamp(h,0.,1.), 0.52));
+        float sd = max(dot(d, uSun), 0.);
+        col += vec3(1.0,0.62,0.30) * pow(sd, 1400.) * 5.0;   /* sun disc */
+        col += vec3(1.0,0.50,0.22) * pow(sd, 26.)  * 0.55;   /* corona   */
+        col += vec3(1.0,0.38,0.18) * pow(sd, 6.)   * 0.15;   /* wide glow*/
+        float md = max(dot(d, uMoon), 0.);
+        col += vec3(0.90,0.87,0.80) * pow(md, 9500.) * 1.1;  /* moon */
+        col += vec3(0.55,0.58,0.76) * pow(md, 260.) * 0.055;
+        col = mix(col, vec3(0.085,0.075,0.145), smoothstep(0.0,-0.3,h)); /* below horizon */
+        col = mix(uFog, col, smoothstep(0.015, 0.14, abs(h)));           /* haze band */
+        col += (hash(gl_FragCoord.xy) - .5) / 255.;                      /* dither */
+        gl_FragColor = vec4(col, 1.0);
+      }`
+  });
+  const sky = new THREE.Mesh(new THREE.SphereGeometry(5200, 40, 20), skyMat);
+  scene.add(sky);
+
+  /* environment reflections from the sky (bonus where the GPU supports float
+     targets; every material below is lit to work WITHOUT this) */
+  try { const pmrem = new THREE.PMREMGenerator(renderer);
+    const es = new THREE.Scene(); es.add(sky.clone());
+    scene.environment = pmrem.fromScene(es, 0.03).texture;
+  } catch (e) { console.warn('[sdedov] env skipped:', e.message); }
+
+  /* ---------------- lights ---------------- */
+  const sun = new THREE.DirectionalLight(0xffa15e, 3.1);
+  sun.position.copy(SUN_POS); scene.add(sun, sun.target);
+  scene.add(new THREE.HemisphereLight(0x4a4478, 0x392b36, 0.85));
+  const rim = new THREE.DirectionalLight(0x35476b, 0.55); rim.position.set(900, 400, -500); scene.add(rim);
+  const bounce = new THREE.DirectionalLight(0xd9926a, 0.42); bounce.position.set(-600, 1000, 300); scene.add(bounce); /* warm sky-glow fill so horizontals read at low sun */
+
+  /* ---------------- shared dusk-window shader ---------------- */
+  const TIME = { value: 0 };
+  function duskify(mat, { floorH = 3.1, winW = 2.7, lit = 0.5, glow = 1.4, seed = 1 } = {}) {
+    mat.onBeforeCompile = (sh) => {
+      sh.uniforms.uTime = TIME;
+      sh.uniforms.uFloorH = { value: floorH };
+      sh.uniforms.uWinW = { value: winW };
+      sh.uniforms.uLit = { value: lit };
+      sh.uniforms.uGlow = { value: glow };
+      sh.uniforms.uSeed = { value: seed };
+      sh.vertexShader = `varying vec3 nlWP; varying vec3 nlWN;\n` + sh.vertexShader.replace('#include <begin_vertex>', `#include <begin_vertex>
+        vec4 nlP = vec4(transformed, 1.0);
+        vec3 nlN = objectNormal;
+        #ifdef USE_INSTANCING
+          nlP = instanceMatrix * nlP;
+          nlN = mat3(instanceMatrix) * nlN;
+        #endif
+        nlWP = (modelMatrix * nlP).xyz;
+        nlWN = normalize(mat3(modelMatrix) * nlN);`);
+      sh.fragmentShader = `varying vec3 nlWP; varying vec3 nlWN;
+        uniform float uTime, uFloorH, uWinW, uLit, uGlow, uSeed;
+        float nlHash(vec2 p){ return fract(sin(dot(p, vec2(127.1,311.7))) * 43758.5453123); }\n` +
+      sh.fragmentShader.replace('#include <emissivemap_fragment>', `#include <emissivemap_fragment>
+        {
+          vec3 nn = normalize(nlWN);
+          float facade = 1.0 - smoothstep(0.5, 0.75, abs(nn.y));
+          float useX = step(abs(nn.x), abs(nn.z));
+          float uu = mix(nlWP.z, nlWP.x, useX);
+          vec2 cellId = vec2(floor(uu / uWinW), floor(nlWP.y / uFloorH));
+          vec2 f = vec2(fract(uu / uWinW), fract(nlWP.y / uFloorH));
+          float pane = step(0.10, f.x) * step(f.x, 0.90) * step(0.17, f.y) * step(f.y, 0.85);
+          float rnd = nlHash(cellId + vec2(uSeed*3.7, uSeed*1.3) + floor(nlWP.xz / vec2(153.0, 171.0)) * 7.31);
+          float isLit = step(1.0 - uLit, rnd);
+          vec3 wc = mix(vec3(1.0,0.52,0.20), vec3(1.0,0.86,0.58), nlHash(cellId * 1.37 + uSeed));
+          float pulse = 0.84 + 0.16 * sin(uTime * 0.4 + rnd * 44.0);
+          totalEmissiveRadiance += wc * (pane * facade * isLit * uGlow * pulse);
+          totalEmissiveRadiance += vec3(0.05,0.09,0.15) * (pane * facade * (1.0 - isLit) * 0.35);
+        }`);
+    };
+    mat.customProgramCacheKey = () => 'nl-dusk-windows';
+    return mat;
+  }
+  const mkGlass = (opts) => duskify(new THREE.MeshStandardMaterial({
+    color: 0x16222f, roughness: 0.3, metalness: 0.35, envMapIntensity: 1.35 }), opts);
+
+  /* ---------------- ocean, beach, land ---------------- */
+  const world = new THREE.Group(); scene.add(world);
+  const SHORE_X = -183;
+
+  /* self-lit dusk water: reads beautifully with or without env reflections */
+  const sea = new THREE.Mesh(new THREE.PlaneGeometry(4900, 9000),
+    new THREE.MeshStandardMaterial({ color: 0x14344a, roughness: 0.42, metalness: 0.25,
+      emissive: 0x0a1d2e, emissiveIntensity: 1.0, envMapIntensity: 1.1 }));
+  sea.rotation.x = -Math.PI / 2; sea.position.set(SHORE_X - 2390, -0.14, 0); world.add(sea);
+
+  /* warm dusk sheen on the water toward the sun (additive gradient sheet) */
+  { const c = document.createElement('canvas'); c.width = 256; c.height = 256;
+    const g = c.getContext('2d');
+    const gr = g.createRadialGradient(128, 40, 8, 128, 40, 230);
+    gr.addColorStop(0, 'rgba(255,150,70,0.55)'); gr.addColorStop(0.4, 'rgba(224,110,70,0.22)'); gr.addColorStop(1, 'rgba(120,60,80,0)');
+    g.fillStyle = gr; g.fillRect(0, 0, 256, 256);
+    const sheen = new THREE.Mesh(new THREE.PlaneGeometry(3400, 2600),
+      new THREE.MeshBasicMaterial({ map: new THREE.CanvasTexture(c), transparent: true, opacity: 0.85,
+        blending: THREE.AdditiveBlending, depthWrite: false, fog: false }));
+    sheen.rotation.x = -Math.PI / 2; sheen.rotation.z = Math.PI;
+    sheen.position.set(SHORE_X - 1500, -0.05, 330); world.add(sheen); }
+
+  /* sun core glow billboard (fake bloom, GPU-independent) */
+  { const c = document.createElement('canvas'); c.width = 256; c.height = 256;
+    const g = c.getContext('2d');
+    const gr = g.createRadialGradient(128, 128, 4, 128, 128, 128);
+    gr.addColorStop(0, 'rgba(255,214,150,1)'); gr.addColorStop(0.12, 'rgba(255,160,80,0.85)');
+    gr.addColorStop(0.35, 'rgba(255,110,50,0.30)'); gr.addColorStop(1, 'rgba(255,80,40,0)');
+    g.fillStyle = gr; g.fillRect(0, 0, 256, 256);
+    const halo = new THREE.Sprite(new THREE.SpriteMaterial({ map: new THREE.CanvasTexture(c),
+      transparent: true, opacity: 0.95, blending: THREE.AdditiveBlending, depthWrite: false, depthTest: false, fog: false }));
+    halo.scale.set(1500, 1500, 1); halo.position.copy(SUN_POS).multiplyScalar(1.6); halo.renderOrder = 1; world.add(halo); }
+
+  /* sun glitter streak on the water */
+  { const c = document.createElement('canvas'); c.width = 128; c.height = 512;
+    const g = c.getContext('2d'), img = g.createImageData(128, 512);
+    for (let y = 0; y < 512; y++) for (let x = 0; x < 128; x++) {
+      const i = (y * 128 + x) * 4, gs = Math.exp(-Math.pow((x - 64) / 26, 2));
+      const n = 0.5 + 0.5 * Math.sin(y * 0.55 + Math.sin(x * 0.35) * 2.2) * Math.random();
+      const a = Math.min(255, 255 * gs * n * 1.15);
+      img.data[i] = 255; img.data[i+1] = 176; img.data[i+2] = 106; img.data[i+3] = a;
+    }
+    g.putImageData(img, 0, 0);
+    const tex = new THREE.CanvasTexture(c); tex.wrapS = tex.wrapT = THREE.RepeatWrapping; tex.repeat.set(1, 5);
+    const streak = new THREE.Mesh(new THREE.PlaneGeometry(120, 2500),
+      new THREE.MeshBasicMaterial({ map: tex, color: 0xffb070, transparent: true, opacity: 0.75, blending: THREE.AdditiveBlending, depthWrite: false, fog: true }));
+    streak.rotation.x = -Math.PI / 2;
+    const az = Math.atan2(SUN_POS.z, SUN_POS.x - SHORE_X);
+    streak.rotation.z = -az + Math.PI / 2;
+    streak.position.set(SHORE_X - 1050, -0.02, 290); world.add(streak);
+    streak.userData.tex = tex; world.userData.streak = streak;
+  }
+
+  /* foam lines */
+  for (const [dx, op, w] of [[1.5, 0.30, 2.4], [7, 0.14, 1.6], [14, 0.07, 1.2]]) {
+    const foam = new THREE.Mesh(new THREE.PlaneGeometry(w, 6800),
+      new THREE.MeshBasicMaterial({ color: 0xfff4e0, transparent: true, opacity: op, depthWrite: false, fog: true }));
+    foam.rotation.x = -Math.PI / 2; foam.position.set(SHORE_X - dx, 0.02, 0); world.add(foam);
+  }
+
+  const groundTex = (() => { const c = document.createElement('canvas'); c.width = c.height = 256;
+    const g = c.getContext('2d'); g.fillStyle = '#4a4038'; g.fillRect(0, 0, 256, 256);
+    for (let i = 0; i < 2600; i++) { g.fillStyle = `rgba(${30+Math.random()*50|0},${26+Math.random()*40|0},${24+Math.random()*34|0},${0.05+Math.random()*0.1})`;
+      g.fillRect(Math.random() * 256, Math.random() * 256, 1 + Math.random() * 3, 1 + Math.random() * 3); }
+    const t = new THREE.CanvasTexture(c); t.wrapS = t.wrapT = THREE.RepeatWrapping; t.repeat.set(46, 64); t.colorSpace = THREE.SRGBColorSpace; return t; })();
+
+  const beach = new THREE.Mesh(new THREE.PlaneGeometry(70, 9000),
+    new THREE.MeshStandardMaterial({ color: 0x99836a, roughness: 0.98 }));
+  beach.rotation.x = -Math.PI / 2; beach.position.set(SHORE_X + 35, 0.0, 0); world.add(beach);
+
+  const land = new THREE.Mesh(new THREE.PlaneGeometry(2900, 9000),
+    new THREE.MeshStandardMaterial({ color: 0x968a7c, roughness: 1, map: groundTex }));
+  land.rotation.x = -Math.PI / 2; land.position.set(SHORE_X + 70 + 1450, -0.02, 0); world.add(land);
+
+  /* promenade + coast road */
+  const flat = (w, l, x, z, col, y = 0.05, op = 1) => {
+    const m = new THREE.Mesh(new THREE.PlaneGeometry(w, l),
+      op < 1 ? new THREE.MeshBasicMaterial({ color: col, transparent: true, opacity: op, depthWrite: false, fog: true })
+             : new THREE.MeshStandardMaterial({ color: col, roughness: 0.96 }));
+    m.rotation.x = -Math.PI / 2; m.position.set(x, y, z); world.add(m); return m;
+  };
+  flat(12, 3400, SHORE_X + 76, 0, 0x6b5c49, 0.04);            /* promenade */
+  flat(11, 3400, -100, 0, 0x35333b, 0.05);                     /* coast road */
+  flat(9, 2400, 470, 0, 0x35333b, 0.05);                       /* east avenue */
+  for (const z of [-260, 20, 240]) flat(2600, 9, SHORE_X + 1370, z, 0x35333b, 0.05); /* cross streets */
+
+  /* ---------------- the old Sde Dov runway (N-S, subtle) ---------------- */
+  const runway = flat(46, 3000, 74, 0, 0x67666b, 0.06);
+  runway.material.roughness = 0.9;
+  { const dash = new THREE.PlaneGeometry(1.3, 16);
+    const dm = new THREE.MeshBasicMaterial({ color: 0xd8d2c2, transparent: true, opacity: 0.32, depthWrite: false, fog: true });
+    const dashes = new THREE.InstancedMesh(dash, dm, 60);
+    const M = new THREE.Matrix4(), R = new THREE.Matrix4().makeRotationX(-Math.PI / 2);
+    for (let i = 0; i < 60; i++) { M.makeTranslation(74, 0.09, -1450 + i * 49); dashes.setMatrixAt(i, M.clone().multiply(R)); }
+    world.add(dashes);
+    for (const zz of [-1180, 1180]) for (let k = 0; k < 6; k++) flat(3.2, 26, 74 - 17 + k * 6.8, zz, 0xd8d2c2, 0.085, 0.16);
+  }
+
+  /* ---------------- park strips between towers ---------------- */
+  flat(220, 54, 225, 42, 0x33422c, 0.045);
+  flat(220, 54, 225, -46, 0x2f3d27, 0.045);
+
+  /* ---------------- ground shadow discs (fake AO) ---------------- */
+  const aoTex = (() => { const c = document.createElement('canvas'); c.width = c.height = 128;
+    const g = c.getContext('2d'), gr = g.createRadialGradient(64, 64, 6, 64, 64, 64);
+    gr.addColorStop(0, 'rgba(6,4,14,0.62)'); gr.addColorStop(1, 'rgba(6,4,14,0)');
+    g.fillStyle = gr; g.fillRect(0, 0, 128, 128); return new THREE.CanvasTexture(c); })();
+  const dropAO = (x, z, r) => { const m = new THREE.Mesh(new THREE.PlaneGeometry(r * 2, r * 2),
+      new THREE.MeshBasicMaterial({ map: aoTex, transparent: true, depthWrite: false, fog: true }));
+    m.rotation.x = -Math.PI / 2; m.position.set(x, 0.12, z); m.renderOrder = 2; world.add(m); };
+
+  /* ---------------- street lights along the promenade ---------------- */
+  { const n = 26, poleG = new THREE.CylinderGeometry(0.16, 0.2, 8.6, 5),
+      poleM = new THREE.MeshStandardMaterial({ color: 0x2c2833, roughness: 0.8 }),
+      lampG = new THREE.SphereGeometry(0.55, 8, 6),
+      lampM = new THREE.MeshBasicMaterial({ color: 0xffc27d, fog: true });
+    lampM.color.multiplyScalar(1.9);
+    const poles = new THREE.InstancedMesh(poleG, poleM, n), lamps = new THREE.InstancedMesh(lampG, lampM, n);
+    const hc = document.createElement('canvas'); hc.width = hc.height = 64;
+    const hg = hc.getContext('2d'), hgr = hg.createRadialGradient(32, 32, 2, 32, 32, 32);
+    hgr.addColorStop(0, 'rgba(255,196,120,0.9)'); hgr.addColorStop(0.35, 'rgba(255,170,90,0.28)'); hgr.addColorStop(1, 'rgba(255,150,70,0)');
+    hg.fillStyle = hgr; hg.fillRect(0, 0, 64, 64);
+    const haloTex = new THREE.CanvasTexture(hc);
+    const M = new THREE.Matrix4();
+    for (let i = 0; i < n; i++) { const z = -750 + i * 60, x = -93;
+      M.makeTranslation(x, 4.3, z); poles.setMatrixAt(i, M);
+      M.makeTranslation(x, 8.8, z); lamps.setMatrixAt(i, M);
+      const s = new THREE.Sprite(new THREE.SpriteMaterial({ map: haloTex, transparent: true, opacity: 0.85,
+        blending: THREE.AdditiveBlending, depthWrite: false, fog: true }));
+      s.scale.set(13, 13, 1); s.position.set(x, 8.8, z); world.add(s); }
+    world.add(poles, lamps); }
+
+  /* ---------------- palms (beach + park) ---------------- */
+  { const n = 54, trunkG = new THREE.CylinderGeometry(0.28, 0.42, 7.5, 5),
+      trunkM = new THREE.MeshStandardMaterial({ color: 0x3a2f26, roughness: 1 }),
+      canG = new THREE.SphereGeometry(2.6, 7, 5), canM = new THREE.MeshStandardMaterial({ color: 0x1d2b1c, roughness: 1 });
+    canG.scale(1, 0.55, 1);
+    const trunks = new THREE.InstancedMesh(trunkG, trunkM, n), cans = new THREE.InstancedMesh(canG, canM, n);
+    const M = new THREE.Matrix4(); let i = 0;
+    const put = (x, z, s = 1) => { if (i >= n) return;
+      M.makeTranslation(x, 3.7 * s, z).multiply(new THREE.Matrix4().makeScale(s, s, s)); trunks.setMatrixAt(i, M);
+      M.makeTranslation(x, 7.6 * s, z).multiply(new THREE.Matrix4().makeScale(s, s, s)); cans.setMatrixAt(i, M); i++; };
+    for (let k = 0; k < 30; k++) put(SHORE_X + 62 + (k % 2) * 22, -720 + k * 49, 0.9 + Math.random() * 0.45);
+    for (let k = 0; k < 12; k++) put(130 + k * 17, 40 + (k % 2) * 22 - 11, 0.85 + Math.random() * 0.35);
+    for (let k = 0; k < 12; k++) put(130 + k * 17, -44 - (k % 2) * 22 + 11, 0.85 + Math.random() * 0.35);
+    world.add(trunks, cans); }
+
+  /* ---------------- context city (instanced, window-lit) ---------------- */
+  { const g = new THREE.BoxGeometry(1, 1, 1); g.translate(0, 0.5, 0);
+    const m = duskify(new THREE.MeshStandardMaterial({ color: 0x3d3850, roughness: 0.85, metalness: 0.05 }),
+      { floorH: 3.0, winW: 2.9, lit: 0.42, glow: 1.15, seed: 5 });
+    const N = MOBILE ? 90 : 150, inst = new THREE.InstancedMesh(g, m, N);
+    let s = 13; const rng = () => (s = (s * 1103515245 + 12345) & 0x7fffffff) / 0x7fffffff;
+    const M = new THREE.Matrix4(); let i = 0, guard = 0;
+    while (i < N && guard++ < N * 30) {
+      const east = rng() < 0.62;
+      const x = east ? 560 + rng() * 950 : -60 + rng() * 900;
+      const z = east ? (rng() * 2 - 1) * 1500 : (rng() < 0.5 ? -1 : 1) * (470 + rng() * 900);
+      if (Math.hypot(x - 160, z - 90) < 260 && !east) continue;
+      const w = 16 + rng() * 26, d = 16 + rng() * 26, h = (4 + Math.floor(rng() * (east ? 13 : 8))) * 3.0;
+      M.makeTranslation(x, 0, z).multiply(new THREE.Matrix4().makeRotationY((rng() * 2 - 1) * 0.12)).multiply(new THREE.Matrix4().makeScale(w, h, d));
+      inst.setMatrixAt(i++, M);
+    }
+    inst.count = i; world.add(inst); }
+
+  /* ---------------- Reading chimney nod (south) ---------------- */
+  { const g = new THREE.Group(); const bands = 10, H = 62;
+    for (let i = 0; i < bands; i++) {
+      const r0 = 3.3 - i * 0.12, r1 = 3.3 - (i + 1) * 0.12;
+      const seg = new THREE.Mesh(new THREE.CylinderGeometry(r1, r0, H / bands + 0.05, 12),
+        new THREE.MeshStandardMaterial({ color: i % 2 ? 0xd9d2c4 : 0xa14a38, roughness: 0.7 }));
+      seg.position.y = (i + 0.5) * H / bands; g.add(seg);
+    }
+    const beacon = new THREE.Mesh(new THREE.SphereGeometry(0.9, 8, 6), new THREE.MeshBasicMaterial({ color: 0xff2b1e, fog: true }));
+    beacon.position.y = H + 1.4; g.add(beacon); g.userData.beacon = beacon;
+    g.position.set(-52, 0, -690); world.add(g); world.userData.reading = g; }
+
+  /* ---------------- birds over the sea ---------------- */
+  const birds = [];
+  { const c = document.createElement('canvas'); c.width = 64; c.height = 32; const g = c.getContext('2d');
+    g.strokeStyle = 'rgba(22,16,34,0.95)'; g.lineWidth = 4; g.lineCap = 'round';
+    g.beginPath(); g.moveTo(4, 26); g.quadraticCurveTo(20, 6, 32, 22); g.quadraticCurveTo(44, 6, 60, 26); g.stroke();
+    const tex = new THREE.CanvasTexture(c);
+    for (let i = 0; i < 7; i++) { const sp = new THREE.Sprite(new THREE.SpriteMaterial({ map: tex, transparent: true, opacity: 0.85, fog: true }));
+      sp.scale.set(9, 4.5, 1); sp.userData = { r: 130 + i * 26, h: 120 + i * 9, ph: i * 1.7, sp: 0.05 + i * 0.006 };
+      world.add(sp); birds.push(sp); } }
+
+  /* ================= PROJECT TOWERS ================= */
+  const PROJECTS = {
+    dimri:   { pos: [-45, 0.02, -140], glb: '../../assets/engine/rich-v1/rich-dimri-v2.glb',  rich: true,  floorH: 3.2,  seed: 11 },
+    ashira:  { pos: [350, 0.02, -70],  glb: '../../assets/engine/rich-v1/rich-ashira-v2.glb', rich: true,  floorH: 3.2,  seed: 23 },
+    rainbow: { pos: [160, 0.02, 90],   glb: '../../assets/engine/rainbow.glb',                rich: false, floorH: 3.05, seed: 31 },
+  };
+  const towersUsed = { dimri: 'pending', ashira: 'pending', rainbow: 'pending' };
+
+  const stoneMat = new THREE.MeshStandardMaterial({ color: 0xb3a58c, roughness: 0.85, metalness: 0.04 });
+  const goldMat = new THREE.MeshStandardMaterial({ color: 0xc79c55, roughness: 0.28, metalness: 0.94, envMapIntensity: 1.7 });
+
+  function mergeByMaterial(root) {
+    root.updateMatrixWorld(true);
+    const rootInv = new THREE.Matrix4().copy(root.matrixWorld).invert();
+    const buckets = new Map();
+    root.traverse(o => { if (o.isMesh && o.visible) {
+      const key = o.material.uuid;
+      if (!buckets.has(key)) buckets.set(key, { mat: o.material, geos: [] });
+      const g = o.geometry.index ? o.geometry.toNonIndexed() : o.geometry.clone();
+      for (const name of Object.keys(g.attributes)) if (name !== 'position' && name !== 'normal') g.deleteAttribute(name);
+      g.applyMatrix4(new THREE.Matrix4().multiplyMatrices(rootInv, o.matrixWorld));
+      buckets.get(key).geos.push(g);
+    } });
+    const out = new THREE.Group();
+    for (const { mat, geos } of buckets.values()) {
+      try {
+        const merged = mergeGeometries(geos, false);
+        /* degenerate source scales can bake NaN normals — rebuild from positions */
+        merged.computeVertexNormals();
+        out.add(new THREE.Mesh(merged, mat));
+      }
+      catch { for (const g of geos) out.add(new THREE.Mesh(g, mat)); }
+    }
+    return out;
+  }
+
+  function processRich(gltf, cfg) {
+    const root = gltf.scene;
+    const kill = [];
+    root.traverse(o => { const n = (o.name || '').toLowerCase();
+      if (/^ctx\d*/.test(n) || n === 'sea' || n === 'beach') kill.push(o); });
+    kill.forEach(o => o.removeFromParent());
+    const glass = mkGlass({ floorH: cfg.floorH, winW: 2.8, lit: 0.46, glow: 2.0, seed: cfg.seed });
+    glass.side = THREE.DoubleSide; /* rich models mirror parts with negative scale */
+    const GROUND = new Set(['site', 'pathx', 'pathz', 'green1', 'green2', 'courtdeck']);
+    const seen = new Map();
+    root.traverse(o => { if (!o.isMesh) return;
+      const m = o.material; if (!m) return;
+      if (o.name === 'pool') { o.material = new THREE.MeshStandardMaterial({ color: 0x14424e, roughness: 0.12, metalness: 0.7, envMapIntensity: 1.6, emissive: 0x0a2a33, emissiveIntensity: 0.7 }); return; }
+      if (m.transparent || m.opacity < 1) { o.material = glass; return; }
+      const c = m.color;
+      if (c && c.g > c.r * 1.22 && c.g > c.b * 1.22) { /* foliage */
+        if (!seen.has('tree')) seen.set('tree', new THREE.MeshStandardMaterial({ color: 0x1e2c1c, roughness: 1 }));
+        o.material = seen.get('tree'); return; }
+      const grounded = GROUND.has(o.name) || /^(tree|trunk)/.test(o.name || '');
+      const key = m.uuid + (grounded ? '-g' : '-w');
+      if (!seen.has(key)) {
+        const nm = m.clone(); nm.color.multiplyScalar(0.9); nm.envMapIntensity = 0.6;
+        nm.side = THREE.DoubleSide; /* survive mirrored (negative-scale) parts */
+        /* facades get dusk windows too — many rich-model window strips ship as
+           opaque materials, and lit walls carry the whole dusk mood */
+        if (!grounded) duskify(nm, { floorH: cfg.floorH, winW: 2.9, lit: 0.3, glow: 1.7, seed: cfg.seed + 2 });
+        seen.set(key, nm);
+      }
+      o.material = seen.get(key);
+    });
+    return mergeByMaterial(root);
+  }
+
+  function processRainbow(gltf, cfg) {
+    const keep = { stone: stoneMat, gold: goldMat, glass: mkGlass({ floorH: cfg.floorH, winW: 2.55, lit: 0.55, glow: 1.9, seed: cfg.seed }) };
+    const root = gltf.scene, kill = [];
+    root.traverse(o => { if (!o.isMesh) return;
+      const n = o.material && o.material.name;
+      if (keep[n]) o.material = keep[n]; else kill.push(o); });
+    kill.forEach(o => o.removeFromParent());
+    return root;
+  }
+
+  /* procedural fallback tower — parametric, window-lit, never empty */
+  function fallbackTower({ towers, floorH = 3.1, seed = 3 }) {
+    const g = new THREE.Group();
+    const glass = mkGlass({ floorH, winW: 2.7, lit: 0.5, glow: 1.4, seed });
+    for (const t of towers) {
+      const H = t.floors * floorH, tg = new THREE.Group();
+      const body = new THREE.Mesh(new THREE.BoxGeometry(t.w - 1, H, t.d - 1), glass);
+      body.position.y = H / 2; tg.add(body);
+      const slabs = new THREE.InstancedMesh(new THREE.BoxGeometry(1, 0.26, 1), stoneMat, t.floors);
+      const M = new THREE.Matrix4();
+      for (let f = 0; f < t.floors; f++) {
+        const sc = 1 - (t.taper || 0) * (f / t.floors);
+        M.makeTranslation(0, f * floorH + 0.13, 0).multiply(new THREE.Matrix4().makeScale(t.w * sc + 0.6, 1, t.d * sc + 0.6));
+        slabs.setMatrixAt(f, M);
+      }
+      tg.add(slabs);
+      const crown = new THREE.Mesh(new THREE.BoxGeometry(t.w * 0.9, 0.8, t.d * 0.9), goldMat);
+      crown.position.y = H + 0.4; tg.add(crown);
+      if (t.podium) { const p = new THREE.Mesh(new THREE.BoxGeometry(t.w * 1.9, t.podium * floorH, t.d * 1.7), stoneMat);
+        p.position.y = t.podium * floorH / 2; tg.add(p); }
+      tg.position.set(t.x || 0, 0, t.z || 0); g.add(tg);
+    }
+    return g;
+  }
+  const FALLBACK_SPECS = {
+    dimri:   { floorH: 3.2,  seed: 11, towers: [{ w: 30, d: 30, floors: 39, podium: 2, taper: 0.06, x: 6, z: 0 }] },
+    ashira:  { floorH: 3.2,  seed: 23, towers: [{ w: 26, d: 26, floors: 35, taper: 0.08 }, { w: 30, d: 22, floors: 16, x: 40, z: -8 }, { w: 26, d: 18, floors: 8, x: -38, z: 14 }, { w: 24, d: 18, floors: 8, x: -34, z: -22 }] },
+    rainbow: { floorH: 3.05, seed: 31, towers: [{ w: 24, d: 20, floors: 40, podium: 3, taper: 0.16 }] },
+  };
+
+  /* aviation beacons on tower tops */
+  const beacons = [];
+  const addBeacon = (x, y, z, ph) => { const b = new THREE.Mesh(new THREE.SphereGeometry(0.8, 8, 6),
+      new THREE.MeshBasicMaterial({ color: 0xff2b1e, transparent: true, fog: true }));
+    b.position.set(x, y, z); b.userData.ph = ph; world.add(b); beacons.push(b); };
+
+  /* load all three (or fall back) */
+  const loader = new GLTFLoader();
+  const loadOne = (key) => new Promise((resolve) => {
+    const cfg = PROJECTS[key];
+    if (FORCE_FALLBACK) { towersUsed[key] = 'fallback'; return resolve(fallbackTower(FALLBACK_SPECS[key])); }
+    loader.load(cfg.glb,
+      (gltf) => { try {
+          const node = cfg.rich ? processRich(gltf, cfg) : processRainbow(gltf, cfg);
+          towersUsed[key] = 'glb'; resolve(node);
+        } catch (e) { console.warn('[sdedov] process failed for', key, e); towersUsed[key] = 'fallback'; resolve(fallbackTower(FALLBACK_SPECS[key])); } },
+      undefined,
+      () => { console.warn('[sdedov] GLB missing for', key, '— procedural fallback'); towersUsed[key] = 'fallback'; resolve(fallbackTower(FALLBACK_SPECS[key])); });
+  });
+
+  veilCap.textContent = 'טוענים את מגדלי הרובע…';
+  let loaded = 0; const tick = () => { veilBar.style.width = (++loaded / 3 * 88 + 6) + '%'; };
+  const [dimriN, ashiraN, rainbowN] = await Promise.all(
+    ['dimri', 'ashira', 'rainbow'].map(k => loadOne(k).then(n => { tick(); return n; })));
+
+  dimriN.position.set(...PROJECTS.dimri.pos);     world.add(dimriN);
+  ashiraN.position.set(...PROJECTS.ashira.pos);   world.add(ashiraN);
+  rainbowN.position.set(...PROJECTS.rainbow.pos); world.add(rainbowN);
+
+  dropAO(-39, -140, 95); dropAO(160, 90, 88); dropAO(350, -70, 120); dropAO(390, -78, 55);
+  addBeacon(-39, 128.6, -140, 0); addBeacon(160, 129.2, 90, 1.4); addBeacon(350, 115.8, -70, 2.7);
+
+  /* Rainbow plaza */
+  { const plaza = new THREE.Mesh(new THREE.CircleGeometry(64, 40),
+      new THREE.MeshStandardMaterial({ color: 0x5f5347, roughness: 0.95 }));
+    plaza.rotation.x = -Math.PI / 2; plaza.position.set(160, 0.045, 90); world.add(plaza); }
+
+  /* ================= CAMERA FLIGHT ================= */
+  const V3 = (x, y, z) => new THREE.Vector3(x, y, z);
+  const camPath = new THREE.CatmullRomCurve3([
+    V3(-1280, 330, 430), V3(-760, 195, 240), V3(-300, 96, -40), V3(-158, 80, -262),
+    V3(10, 70, -120), V3(60, 84, 150), V3(262, 74, 198), V3(300, 52, 60),
+    V3(400, 58, -195), V3(262, 10, -60), V3(224, 2.7, -8),
+  ], false, 'centripetal');
+  const lookPath = new THREE.CatmullRomCurve3([
+    V3(120, 60, -40), V3(0, 62, -90), V3(-39, 60, -140), V3(-39, 62, -140),
+    V3(60, 45, 0), V3(160, 62, 90), V3(160, 64, 90), V3(350, 48, -70),
+    V3(344, 40, -70), V3(200, 30, 40), V3(162, 94, 86),
+  ], false, 'centripetal');
+
+  let targetU = START_T ?? 0, dispU = targetU, lastDisp = targetU;
+  const stations = [
+    { u: 0.02, name: 'מעל הים' }, { u: 0.30, name: 'דימרי ימה' }, { u: 0.60, name: 'ריינבו תל אביב' },
+    { u: 0.79, name: 'אשירה' }, { u: 1.0, name: 'בחירת דירה' }];
+  let station = 0;
+
+  /* UI bindings */
+  const cards = [...document.querySelectorAll('.pcard')].map(el => ({ el, a: +el.dataset.a, b: +el.dataset.b }));
+  const finale = $('#finale'), hint = $('#hint'), railFill = $('#railFill');
+  const stops = [...document.querySelectorAll('#rail .stop')], labels = [...document.querySelectorAll('#rail .labels span')];
+  function applyUI(u) {
+    for (const c of cards) c.el.classList.toggle('on', u >= c.a && u <= c.b);
+    finale.classList.toggle('on', u >= 0.94);
+    hint.classList.toggle('off', u > 0.025);
+    railFill.style.height = (u * 100).toFixed(2) + '%';
+    for (const s of stops) s.classList.toggle('hit', u >= +s.dataset.u - 0.035);
+    for (const l of labels) l.classList.toggle('hit', u >= +l.dataset.u - 0.035);
+  }
+
+  /* scroll plumbing */
+  if (!REDUCED) {
+    gsap.registerPlugin(ScrollTrigger);
+    const prog = { t: targetU };
+    gsap.to(prog, { t: 1, ease: 'none',
+      scrollTrigger: { trigger: '#scrollway', start: 'top top', end: 'bottom bottom', scrub: 1.15 },
+      onUpdate: () => { targetU = prog.t; } });
+    if (START_T !== null) {
+      requestAnimationFrame(() => {
+        const el = document.scrollingElement || document.documentElement;
+        el.scrollTop = START_T * (el.scrollHeight - innerHeight);
+        prog.t = targetU = dispU = START_T; ScrollTrigger.update();
+      });
+    }
+  } else {
+    document.body.classList.add('rm');
+    const nameEl = $('#rmName'), prev = $('#rmPrev'), next = $('#rmNext');
+    const go = (i) => { station = Math.max(0, Math.min(stations.length - 1, i));
+      targetU = dispU = stations[station].u; nameEl.textContent = stations[station].name;
+      prev.disabled = station === 0; next.disabled = station === stations.length - 1; applyUI(dispU); };
+    prev.onclick = () => go(station - 1); next.onclick = () => go(station + 1);
+    go(START_T !== null ? stations.findIndex(s => s.u >= START_T) : 0);
+  }
+
+  let lastW = 0, lastH = 0;
+  function fit(w = innerWidth, h = innerHeight) {
+    if (w < 2 || h < 2) { w = 1280; h = 800; } /* hidden/zero viewport guard */
+    lastW = w; lastH = h;
+    cam.aspect = w / h; cam.updateProjectionMatrix();
+    renderer.setSize(w, h, false);
+  }
+  fit();
+  addEventListener('resize', () => fit());
+
+  /* ---------------- render loop ---------------- */
+  const clock = new THREE.Clock();
+  const tmpP = new THREE.Vector3(), tmpL = new THREE.Vector3();
+  function frame() {
+    const dt = Math.min(clock.getDelta(), 0.05), T = clock.elapsedTime;
+    TIME.value = T;
+    if (innerWidth > 1 && (innerWidth !== lastW || innerHeight !== lastH)) fit();
+
+    dispU += (targetU - dispU) * (REDUCED ? 1 : Math.min(1, dt * 5.2));
+    const speed = Math.abs(dispU - lastDisp) / Math.max(dt, 1e-4); lastDisp = dispU;
+    const calm = REDUCED ? 0 : THREE.MathUtils.smoothstep(0.02, 0.004, speed);
+
+    camPath.getPoint(dispU, tmpP); lookPath.getPoint(dispU, tmpL);
+    if (calm > 0) { tmpP.x += Math.sin(T * 0.42) * 0.7 * calm; tmpP.y += Math.sin(T * 0.31) * 0.5 * calm; tmpP.z += Math.cos(T * 0.37) * 0.7 * calm; }
+    if (tmpP.y < 2.2) tmpP.y = 2.2;
+    cam.position.copy(tmpP); cam.lookAt(tmpL);
+    cam.fov = 54 + 14 * THREE.MathUtils.smoothstep(0.88, 1.0, dispU); cam.updateProjectionMatrix();
+
+    /* living details */
+    const streak = world.userData.streak;
+    if (streak) { streak.userData.tex.offset.y = T * 0.021; streak.material.opacity = 0.5 + Math.sin(T * 0.7) * 0.08; }
+    for (const b of beacons) b.material.opacity = 0.25 + 0.75 * (Math.sin(T * 2.1 + b.userData.ph) > 0.35 ? 1 : 0.12);
+    const rd = world.userData.reading; if (rd) rd.userData.beacon.material.color.setScalar(0).setHex(Math.sin(T * 1.7) > 0.2 ? 0xff2b1e : 0x551512);
+    const birdFade = 1 - THREE.MathUtils.smoothstep(0.3, 0.45, dispU);
+    for (const bd of birds) { const u = bd.userData;
+      bd.position.set(-620 + Math.cos(T * u.sp + u.ph) * u.r * 2.2, u.h + Math.sin(T * 0.6 + u.ph) * 6, 60 + Math.sin(T * u.sp + u.ph) * u.r);
+      bd.material.opacity = 0.8 * birdFade; bd.visible = birdFade > 0.02; }
+
+    applyUI(dispU);
+    renderer.render(scene, cam);
+    requestAnimationFrame(frame);
+  }
+
+  window.__dbg = { renderer, scene, cam, camPath, lookPath, THREE };
+  /* screenshot hook (debug/QA): window.__save('preview.png', scale, [u]) */
+  window.__save = async (name = 'preview.png', scale = 1, u = null) => {
+    if (renderer.domElement.width < 2) fit(1280, 800);
+    if (u !== null) { targetU = dispU = lastDisp = u; camPath.getPoint(dispU, tmpP); lookPath.getPoint(dispU, tmpL);
+      cam.position.copy(tmpP); cam.lookAt(tmpL);
+      cam.fov = 54 + 14 * THREE.MathUtils.smoothstep(0.88, 1.0, dispU); cam.updateProjectionMatrix(); applyUI(dispU); }
+    renderer.render(scene, cam);
+    const gl = renderer.getContext();
+    const w = gl.drawingBufferWidth, h = gl.drawingBufferHeight;
+    const buf = new Uint8Array(w * h * 4);
+    gl.readPixels(0, 0, w, h, gl.RGBA, gl.UNSIGNED_BYTE, buf);
+    const full = document.createElement('canvas'); full.width = w; full.height = h;
+    const fctx = full.getContext('2d'), img = fctx.createImageData(w, h);
+    for (let y = 0; y < h; y++) img.data.set(buf.subarray((h - 1 - y) * w * 4, (h - y) * w * 4), y * w * 4);
+    fctx.putImageData(img, 0, 0);
+    const c = document.createElement('canvas');
+    c.width = Math.round(w * scale); c.height = Math.round(h * scale);
+    c.getContext('2d').drawImage(full, 0, 0, c.width, c.height);
+    const data = c.toDataURL(name.endsWith('.jpg') ? 'image/jpeg' : 'image/png', 0.85);
+    const r = await fetch('/__save/' + name, { method: 'PUT', body: data });
+    return r.ok ? 'saved ' + name : 'save failed';
+  };
+
+  /* go */
+  veilBar.style.width = '100%';
+  setTimeout(() => $('#veil').classList.add('off'), 380);
+  if (document.hidden) { const onVis = () => { if (!document.hidden) { removeEventListener('visibilitychange', onVis); frame(); } };
+    addEventListener('visibilitychange', onVis); }
+  frame();
+  console.info('[sdedov] V1 ready · towers:', JSON.stringify(towersUsed), REDUCED ? '· reduced-motion' : '· scroll flight');
+}
+
+boot().catch(err => {
+  console.error('[sdedov] boot failed:', err);
+  $('#veil').classList.add('off');
+  $('#fatal').classList.add('show');
+});
+</script>
+</body>
+</html>
