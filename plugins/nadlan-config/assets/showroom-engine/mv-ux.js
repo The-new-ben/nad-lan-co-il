@@ -55,6 +55,9 @@
 			mv.removeAttribute("auto-rotate-delay");
 			mv.removeAttribute("rotation-per-second");
 		}
+		// no-tumble law: a building is viewed like a building - never from underneath.
+		if (!mv.hasAttribute("min-camera-orbit")) { mv.setAttribute("min-camera-orbit", "-Infinity 48deg auto"); }
+		if (!mv.hasAttribute("max-camera-orbit")) { mv.setAttribute("max-camera-orbit", "Infinity 88deg auto"); }
 		if (!mv.hasAttribute("camera-controls")) { return; } // display-only: stop after de-spin
 		var wrap = mv.parentElement || mv;
 		if (getComputedStyle(wrap).position === "static") { wrap.style.position = "relative"; }

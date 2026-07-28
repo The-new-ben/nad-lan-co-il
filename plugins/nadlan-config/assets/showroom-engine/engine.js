@@ -278,7 +278,7 @@
       '<div class="nl-theater__top"><div class="nl-theater__title"><span class="e">' + esc(t("theater_eyebrow")) + "</span><h2>" + esc(t("theater_title")) + "</h2></div>" +
         (p.model_glb ? '<div class="nl-toggle" role="group" aria-label="view"><button data-act="view" data-id="3d" aria-pressed="true">' + esc(t("view_3d")) + '</button><button data-act="view" data-id="facade" aria-pressed="false">' + esc(t("view_facade")) + "</button></div>" : "") + "</div>" +
       '<div class="nl-stagewrap">' +
-        (p.model_glb ? '<model-viewer id="nl-mv" class="nl-stage" src="' + esc(p.model_glb) + '" loading="lazy" reveal="auto" camera-controls interaction-prompt="basic" environment-image="neutral" exposure="1.02" shadow-intensity="0.55" shadow-softness="1" camera-orbit="' + esc(p.default_orbit) + '" camera-target="' + esc(p.default_target) + '" min-camera-orbit="auto 48deg auto" max-camera-orbit="auto 86deg auto" min-field-of-view="16deg" max-field-of-view="68deg" touch-action="pan-y">' + hots + "</model-viewer>" : "") +
+        (p.model_glb ? '<model-viewer id="nl-mv" class="nl-stage" src="' + esc(p.model_glb) + '" loading="lazy" reveal="auto" camera-controls interaction-prompt="none" environment-image="neutral" exposure="1.02" shadow-intensity="0.55" shadow-softness="1"' + (p.default_orbit ? ' camera-orbit="' + esc(p.default_orbit) + '"' : '') + (p.default_target ? ' camera-target="' + esc(p.default_target) + '"' : '') + ' min-camera-orbit="auto 48deg auto" max-camera-orbit="auto 86deg auto" min-field-of-view="16deg" max-field-of-view="68deg" touch-action="pan-y">' + hots + "</model-viewer>" : "") +
         '<div class="nl-poster" id="nl-poster" style="background-image:url(' + esc(p.model_poster) + ')"></div>' +
         '<div class="nl-spinner" id="nl-spin"><i></i>' + esc(t("loading_model")) + "</div>" +
         (p.model_glb && p.model_generic ? '<div class="nl-generic-chip">' + esc(t("generic_model")) + "</div>" : "") +
@@ -1141,7 +1141,7 @@
       cam.position = gl.MercatorCoordinate.fromLngLat({ lng: Number(p.geo.lng), lat: Number(p.geo.lat) }, alt);
       // standing at the window: pitch 86 = eye level at the horizon; vertical
       // drag tilts the gaze down toward the street or up toward the sky.
-      var pitch = Math.max(35, Math.min(96, 86 + (vert || 0)));
+      var pitch = Math.max(35, Math.min(90, 86 + (vert || 0)));
       cam.setPitchBearing(pitch, br);
       map.setFreeCameraOptions(cam);
     } catch (e) {}
@@ -1154,8 +1154,10 @@
       var gl = window.mapboxgl; if (!gl || !document.contains(host)) return;
       if (winState.map) { try { winState.map.remove(); } catch (e) {} winState.map = null; }
       gl.accessToken = SR.config.mapbox_token;
+      var bootBr = (function () { var k = dirKey(u.dir); return (k && k in DIR_BEARING) ? DIR_BEARING[k] : 270; })();
       var map = new gl.Map({ container: host, style: "mapbox://styles/mapbox/satellite-streets-v12",
-        center: [Number(project().geo.lng), Number(project().geo.lat)], zoom: 15,
+        center: [Number(project().geo.lng), Number(project().geo.lat)], zoom: 16.5,
+        pitch: 70, bearing: bootBr, maxPitch: 85,
         interactive: false, attributionControl: false });
       winState.map = map; winState.unit = u.id; winState.bearing = null;
       map.on("load", function () {
@@ -1338,6 +1340,7 @@
     // scrim + spotlight origin
     var scrim = document.getElementById("nl-scrim");
     var srcEl = document.querySelector('.nl-hot[data-id="' + cssesc(id) + '"]') || document.querySelector('.nl-fsq[data-id="' + cssesc(id) + '"]');
+    if (srcEl && !srcEl.getBoundingClientRect().width) { srcEl = null; }
     if (scrim) {
       var wrap = scrim.parentElement.getBoundingClientRect();
       if (srcEl) { var r = srcEl.getBoundingClientRect(); scrim.style.setProperty("--sx", ((r.left + r.width / 2 - wrap.left) / wrap.width * 100) + "%"); scrim.style.setProperty("--sy", ((r.top + r.height / 2 - wrap.top) / wrap.height * 100) + "%"); }

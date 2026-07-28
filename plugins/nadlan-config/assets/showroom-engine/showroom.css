@@ -326,7 +326,7 @@ html[lang="en"] .nl-pcard__name { font-family: var(--font-serif-en); }
   .nl-app { max-width: 100vw; }
   .nl-hero, .nl-world, .nl-inquiry__grid, .nl-investorgrid { grid-template-columns: minmax(0, 1fr); }
   .nl-hero__facts, .nl-panel__actions, .nl-hero__cta { min-width: 0; }
-  .nl-panel { inset: auto 0 0 0; width: 100%; height: auto; max-height: 84%; transform: translateY(100%); border-inline-start: 0; border-top: 1px solid var(--theater-line); border-radius: 18px 18px 0 0; }
+  .nl-panel { inset: auto 0 0 0; width: 100%; height: auto; max-height: 62%; transform: translateY(100%); border-inline-start: 0; border-top: 1px solid var(--theater-line); border-radius: 18px 18px 0 0; }
   [dir="rtl"] .nl-panel { transform: translateY(100%); }
   .nl-panel.is-open { transform: translateY(0); }
   .nl-stats { grid-template-columns: 1fr 1fr; }
