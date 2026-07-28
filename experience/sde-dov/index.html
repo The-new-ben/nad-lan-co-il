@@ -1608,7 +1608,7 @@ async function boot() {
   const AWN_COLS = [0xb2593c, 0xd8cfb4, 0x3e6e64, 0x2e4c66, 0xa8433a];
   const SIGN_BGS = ['#22303e', '#5a3a2e', '#2e4a40', '#3a2e4a', '#623b28', '#26424f'];
 
-  const LIFE_POOLS = [], FONT_REDRAWS = [];
+  const LIFE_POOLS = []; /* pools with walkers — animated in step() */
   function buildLife(parent, cap) {
     const pool = { walkers: [], meshes: {} };
     const mk = (key, geo, mat, n, colored) => {
@@ -1701,7 +1701,8 @@ async function boot() {
               g.fillText(s.name, X + 256, Y + 68, 470); }); };
           draw();
           const tex = new THREE.CanvasTexture(c); tex.colorSpace = THREE.SRGBColorSpace;
-          FONT_REDRAWS.push(() => { draw(); tex.needsUpdate = true; });
+          /* the atlas may bake before Heebo arrives — repaint once fonts settle */
+          if (document.fonts && document.fonts.ready) document.fonts.ready.then(() => { draw(); tex.needsUpdate = true; });
           const geos = api._signs.map((s, i) => {
             const col = i % 2, row = i >> 1;
             const gm = new THREE.PlaneGeometry(s.w, 1.45);
@@ -2851,6 +2852,20 @@ async function boot() {
       if (g.t >= 1) { g.node.scale.y = 1; GROWS.splice(i, 1); } }
     /* 2026: the cranes slew slowly */
     if (todayGrp.visible) for (const c of cranes) c.rotation.y += dt * c.userData.spin;
+    /* street life: walkers stroll their segments (ping-pong, facing travel) */
+    for (const pool of LIFE_POOLS) {
+      if (!pool.walkers.length) continue;
+      for (const wk of pool.walkers) {
+        const ph = T * wk.sp * 3 + wk.ph;
+        const t = 0.5 + 0.5 * Math.sin(ph);
+        const fwd = Math.cos(ph) >= 0 ? 1 : -1;
+        const yaw = Math.atan2((wk.bx - wk.ax) * fwd, (wk.bz - wk.az) * fwd);
+        const bob = 1 + Math.sin(T * 6.5 + wk.ph * 3) * 0.025;
+        wk.im.setMatrixAt(wk.idx, composeTRS(
+          wk.ax + (wk.bx - wk.ax) * t, 0, wk.az + (wk.bz - wk.az) * t, yaw, wk.s, wk.s * bob, wk.s));
+      }
+      pool.meshes.person.instanceMatrix.needsUpdate = true;
+    }
 
     if (MODE.m === 'explore') {
       exploreFrame(dt, T);
