@@ -3000,8 +3000,16 @@ async function boot() {
     };
     step();
   }
+  let demoUserStopped = false;
   ['pointerdown', 'wheel', 'touchstart', 'keydown'].forEach(function (ev) {
-    addEventListener(ev, function () { demoStop(); }, { passive: true, capture: true });
+    addEventListener(ev, function () { if (demoRun) demoUserStopped = true; demoStop(); }, { passive: true, capture: true });
+  });
+  /* hidden tabs freeze rAF, so a demo that "ran" in the background never moved.
+     When the tab becomes visible again, restart - unless a human already took over. */
+  document.addEventListener('visibilitychange', function () {
+    if (!document.hidden && Q.get('demo') === '1' && !demoUserStopped && !demoRun && sEl.scrollTop < 120) {
+      setTimeout(demoPlay, 400);
+    }
   });
   const onbDemoBtn = $('#onbDemo');
   if (onbDemoBtn) onbDemoBtn.addEventListener('click', function (ev) {
