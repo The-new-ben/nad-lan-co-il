@@ -667,6 +667,7 @@ document.body.classList.add(s==='dusk'?'dusk':'day');})();</script>
   <button id="rmPrev">→ הקודם</button>
   <div class="st" id="rmName">מעל הים</div>
   <button id="rmNext">הבא ←</button>
+  <a id="rmFull" href="?rm=0" style="border:1px dashed rgba(216,180,106,.45);background:transparent;color:var(--gold-hi);border-radius:12px;padding:10px 14px;font:600 13.5px/1 Heebo,sans-serif;text-decoration:none;white-space:nowrap">▶ לחוויה המלאה</a>
 </div>
 
 <div id="exUI">
@@ -755,7 +756,9 @@ const SUN0 = Q.get('sun') === 'dusk' ? 1 : 0;          /* V3: 0 = daylight (defa
 const YEAR0 = Q.get('year') === '2026' ? 0 : 1;        /* V3 time machine: 0 = today 2026, 1 = the 2035 quarter */
 const FOCUS = (Q.get('focus') || '').toLowerCase();    /* V3 deep link — see head comment */
 const MODE_PARAM = Q.get('mode');                      /* film (default) | explore */
-const REDUCED = RM_PARAM === '1' || (RM_PARAM !== '0' && matchMedia('(prefers-reduced-motion: reduce)').matches);
+/* an explicit ?demo=1 link is explicit intent for motion - it overrides the OS
+   reduced-motion flag (which on many Windows machines is just "animations off"). */
+const REDUCED = RM_PARAM === '1' || (RM_PARAM !== '0' && Q.get('demo') !== '1' && matchMedia('(prefers-reduced-motion: reduce)').matches);
 const MOBILE = matchMedia('(pointer: coarse)').matches || innerWidth < 900;
 
 const $ = s => document.querySelector(s);
