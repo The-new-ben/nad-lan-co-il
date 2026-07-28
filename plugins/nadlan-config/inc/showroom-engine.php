@@ -547,9 +547,15 @@ if ( ! function_exists( 'nadlan_showroom_engine_weave' ) ) {
 	 */
 	function nadlan_showroom_engine_weave( $article, $pid ) {
 		$by_section = preg_match_all( '#<section\b[^>]*class="[^"]*nlv2-section[^"]*"#i', $article ) >= 3;
+		// Articles authored with their own <section> wrappers must split at the
+		// section boundary - splitting at <h2> orphans the wrapper tags and the
+		// page renders stray empty <section> shells (found on DUO, 12 shells).
+		$by_plain = ! $by_section && preg_match_all( '#<section\b#i', $article ) >= 4;
 		$parts = $by_section
 			? preg_split( '/(?=<section\b[^>]*class="[^"]*nlv2-section)/i', $article )
-			: preg_split( '/(?=<h2\b)/i', $article );
+			: ( $by_plain
+				? preg_split( '/(?=<section\b)/i', $article )
+				: preg_split( '/(?=<h2\b)/i', $article ) );
 		if ( ! is_array( $parts ) || count( $parts ) < 4 ) { return $article; }
 		$lang = function_exists( 'nadlan_project_self_lang' ) ? nadlan_project_self_lang( $pid ) : 'he';
 		$L = array(
