@@ -5,7 +5,61 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="robots" content="noindex">
 <title>רובע שדה דב — הסיור | nad-lan.co.il</title>
-<meta name="description" content="טיסת דמדומים תלת־ממדית מעל רובע שדה דב, תל אביב — דימרי ימה, ריינבו ואשירה. הדמיה להמחשה.">
+<meta name="description" content="סיור תלת־ממדי ברובע שדה דב, תל אביב — טיסת דמדומים + סיור חופשי בין דימרי ימה, ריינבו ואשירה. הדמיה להמחשה.">
+<meta name="theme-color" content="#131022">
+<!-- ============================================================================
+  V2 MASTERPLAN RESEARCH (2026-07-28) — the surrounding quarter in this scene is
+  STYLIZED MASSING informed by the facts below. It is NOT an official rendering;
+  the context layer is labeled "על פי התכנית · הדמיה להמחשה".
+
+  Plan תא/4444 "רובע שדה דב" (statutory 507-0403931) on the former Dov Hoz
+  airport (closed July 2019). Approved 2020. ~1,300 dunams, 16,000 homes.
+  Boundaries: the sea (W), Propes St (N), Levi Eshkol St (E), Shai Agnon St (S).
+    - https://www.nadlancenter.co.il/article/2402
+    - https://www.tel-aviv.gov.il/Residents/Development/Pages/SdeDov.aspx
+    - https://sdedov.co.il/faq/
+
+  THREE compounds stacked south-to-north, each running from the beach to the
+  Ibn Gvirol extension:
+    1. South — שכונת אשכול (תמל/3001, approved 2021), ~4,850 units, lots
+       101-111. All three flagship projects of this tour are here:
+       Rainbow lot 111 (39F tower + six 9F courtyard bldgs, ~480 units,
+       Israel Canada) · Dimri Yama lot 107 (39F + 16F + two 9F, 458 units) ·
+       Ashira lot 101 (34F + 15F + boutique 7-8F, 406 units, Avisror).
+         - https://magdilim.co.il/170220213/
+         - https://sdedov.co.il/פרוייקטים-מתחם-אשכול/
+    2. Central — מרכז הרובע (תא/מק/4444/1), ~7,100 units + ~180k sqm offices
+       + ~60k sqm commerce; towers permitted up to 45 floors.
+         - https://www.ynet.co.il/economy/article/hjp2o16k0
+         - https://www.sha-ga.com/sde-dov-central-detailed-plan
+    3. North — צפון הרובע (תא/מק/4444/2), ~4,000 units on ~393 dunams;
+       9F courtyard fabric + 20-40F towers; ~83k sqm hotels.
+         - https://www.ynet.co.il/economy/article/hjp2o16k0
+
+  Quarter-wide massing: ~35 towers up to 40F placed along the main streets,
+  over a low 5-10 floor street fabric (tiers: fabric <=9F, mid <=16F,
+  towers 20-45F). ~455k sqm employment+commerce; hotels ~3,000 rooms,
+  8 of 16 tourism lots on the waterfront.
+    - https://www.nadlancenter.co.il/article/2402
+
+  Streets: the main axis is the IBN GVIROL EXTENSION running north through the
+  quarter's center, carrying the Green Line LRT (TOD, Geddes-like grid).
+    - https://www.nadlancenter.co.il/article/9005
+
+  The RUNWAY IS PRESERVED as public space: פארק המסלול (~24-30 dunams) on the
+  main runway trace with the neighborhood's civic buildings along it, plus a
+  ~43 dunam E-W linear park on the secondary runway trace linking east to sea.
+  Coastal park: ~240-265 dunams along ~2 km of car-free shoreline (kurkar
+  cliff kept). Design plans for the parks approved 2025.
+    - https://www.ynet.co.il/economy/article/rkbwcuvtyl
+    - https://sdedov.co.il/שלושה-פארקים-חדשים-בשדה-דב-החוף-המסלול/
+
+  Scene mapping (stylized, straight N-S grid): shoreline x=-183 · runway-park
+  boulevard at x~74 (N-S) · linear park at z~0 (E-W) · Ibn Gvirol axis x~250 ·
+  Eshkol band z<140 · central compound 140..620 · north 640+ · existing city
+  east of x>560. Conflicting figures noted in sources (e.g. coastal park
+  240 vs 265 dunams; central 7,128 vs 7,700 units) — ranges used loosely.
+============================================================================= -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@200;300;400;600;800&display=swap" rel="stylesheet">
@@ -14,6 +68,7 @@
     --gold:#d8b46a; --gold-hi:#f2d9a4; --ink:#0e0a1c;
     --veil:rgba(14,10,28,.42); --line:rgba(255,255,255,.14);
     --card-bg:rgba(16,12,30,.55); --txt:#f3eee2; --dim:#b9b0c9;
+    --pb:52px;
   }
   *{margin:0;padding:0;box-sizing:border-box}
   html{scroll-behavior:auto}
@@ -25,6 +80,9 @@
   body.rm #scrollway{height:100vh}
 
   canvas#stage{position:fixed;inset:0;width:100vw;height:100vh;height:100dvh;display:block;pointer-events:none;z-index:0}
+  body.explore #stage{pointer-events:auto;cursor:grab;touch-action:none}
+  body.explore.dragging #stage{cursor:grabbing}
+  body.explore{overscroll-behavior:none}
 
   /* cinematic frame */
   #frame{position:fixed;inset:0;pointer-events:none;z-index:2;
@@ -41,10 +99,32 @@
   .brand h1{font-weight:800;font-size:clamp(19px,2.6vw,30px);line-height:1.15;
     background:linear-gradient(120deg,#fff 30%,var(--gold-hi) 70%);-webkit-background-clip:text;background-clip:text;color:transparent}
   .brand .sub{font-weight:300;font-size:clamp(11px,1.3vw,14px);color:var(--dim)}
+  .hudside{display:flex;flex-direction:column;align-items:flex-end;gap:8px}
   .badge{pointer-events:none;font-size:11.5px;font-weight:400;color:var(--gold-hi);border:1px solid rgba(216,180,106,.45);
     border-radius:99px;padding:5px 12px;background:rgba(20,14,34,.5);backdrop-filter:blur(8px);white-space:nowrap}
+  #sndBtn{pointer-events:auto;cursor:pointer;width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;
+    background:rgba(20,14,34,.55);border:1px solid var(--line);color:var(--dim);transition:color .3s,border-color .3s;backdrop-filter:blur(8px)}
+  #sndBtn:hover{color:var(--gold-hi);border-color:rgba(216,180,106,.5)}
+  #sndBtn svg{width:19px;height:19px;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+  #sndBtn svg .sp{fill:currentColor;stroke:none}
+  #sndBtn .off{display:none}
+  #sndBtn.muted .on{display:none}
+  #sndBtn.muted .off{display:block}
+  #sndBtn.muted{opacity:.75}
 
-  /* ---------- progress rail (left edge; cards live on the right) ---------- */
+  /* ---------- mode pill (film <-> explore) ---------- */
+  #modePill{position:fixed;top:calc(14px + env(safe-area-inset-top));left:50%;transform:translateX(-50%);z-index:9;
+    cursor:pointer;border:1px solid rgba(216,180,106,.5);border-radius:99px;padding:9px 20px;
+    background:rgba(18,13,32,.7);backdrop-filter:blur(12px);color:var(--gold-hi);font-family:inherit;
+    font-size:13.5px;font-weight:600;letter-spacing:.02em;transition:opacity .6s, background .3s, transform .3s;
+    opacity:0;pointer-events:none;white-space:nowrap}
+  body.ready #modePill{opacity:1;pointer-events:auto}
+  #modePill:hover{background:rgba(216,180,106,.16);transform:translateX(-50%) translateY(-1px)}
+  #modePill .mEx{display:none}
+  body.explore #modePill .mFilm{display:none}
+  body.explore #modePill .mEx{display:inline}
+
+  /* ---------- progress rail (film mode) ---------- */
   #rail{position:fixed;left:clamp(12px,2vw,26px);top:50%;transform:translateY(-50%);z-index:6;display:flex;align-items:center;gap:12px;pointer-events:none}
   #rail .track{position:relative;width:2px;height:min(44vh,340px);background:rgba(255,255,255,.14);border-radius:2px;overflow:visible}
   #rail .fill{position:absolute;top:0;left:0;width:100%;height:0%;background:linear-gradient(180deg,var(--gold-hi),var(--gold));border-radius:2px;
@@ -57,8 +137,9 @@
   #rail .labels span{font-size:10.5px;color:var(--dim);font-weight:300;opacity:.75;transition:all .4s;line-height:1}
   #rail .labels span.hit{color:var(--gold-hi);opacity:1;font-weight:600}
   @media (max-width:900px){ #rail .labels{display:none} }
+  body.explore #rail{display:none}
 
-  /* ---------- scroll hint ---------- */
+  /* ---------- scroll hint + start-tour ---------- */
   #hint{position:fixed;bottom:clamp(18px,4vh,40px);left:50%;transform:translateX(-50%);z-index:6;text-align:center;
     transition:opacity .7s, transform .7s;pointer-events:none}
   #hint.off{opacity:0;transform:translate(-50%,14px)}
@@ -66,6 +147,12 @@
   #hint .chev{width:22px;height:22px;margin:8px auto 0;border-left:2px solid var(--gold-hi);border-bottom:2px solid var(--gold-hi);
     transform:rotate(-45deg);animation:dip 1.8s ease-in-out infinite;opacity:.9}
   @keyframes dip{0%,100%{transform:rotate(-45deg) translate(0,0);opacity:.35}50%{transform:rotate(-45deg) translate(-7px,7px);opacity:1}}
+  #startTour{pointer-events:auto;cursor:pointer;display:inline-flex;align-items:center;gap:8px;margin-bottom:13px;
+    padding:13px 30px;border-radius:99px;border:none;font-family:inherit;
+    background:linear-gradient(115deg,var(--gold) 0%,#b98f45 100%);color:#241a08;font-weight:800;font-size:15.5px;
+    box-shadow:0 10px 34px rgba(216,180,106,.35);transition:transform .25s, box-shadow .25s}
+  #startTour:hover{transform:translateY(-2px);box-shadow:0 14px 40px rgba(216,180,106,.5)}
+  body.explore #hint{display:none}
 
   /* ---------- project cards ---------- */
   .pcard{position:fixed;z-index:7;top:50%;right:clamp(18px,4.5vw,64px);transform:translateY(-50%) translateX(46px);
@@ -88,6 +175,11 @@
     transition:transform .25s, box-shadow .25s;box-shadow:0 8px 26px rgba(216,180,106,.25)}
   .btn:hover{transform:translateY(-2px);box-shadow:0 12px 32px rgba(216,180,106,.4)}
   .pcard .fine{margin-top:10px;font-size:10.5px;color:var(--dim);font-weight:300;text-align:center}
+  .pcx{display:none;position:absolute;top:12px;left:12px;width:30px;height:30px;border-radius:50%;cursor:pointer;
+    border:1px solid var(--line);background:rgba(255,255,255,.06);color:var(--dim);font-family:inherit;font-size:14px;line-height:1}
+  .pcx:hover{color:#fff;border-color:rgba(255,255,255,.4)}
+  body.explore .pcx{display:block}
+  #card-plan .en{margin-bottom:10px}
 
   /* mobile: bottom sheet */
   @media (max-width:640px){
@@ -99,6 +191,7 @@
     .pcard .en{margin-bottom:8px}
     .pcard ul{flex-direction:row;flex-wrap:wrap;gap:6px 16px;margin-bottom:12px}
     .pcard li{font-size:12.5px}
+    .pcx{top:16px}
   }
 
   /* ---------- finale ---------- */
@@ -126,19 +219,88 @@
     transition:background .3s, transform .3s}
   .wa:hover{background:rgba(37,211,102,.26);transform:translateY(-2px)}
   .wa svg{width:17px;height:17px;fill:#4be284}
+  #finTour{display:block;margin:12px auto 0;cursor:pointer;background:none;border:1px solid rgba(216,180,106,.4);
+    color:var(--gold-hi);font-family:inherit;font-size:13px;font-weight:600;border-radius:99px;padding:10px 22px;
+    transition:background .3s}
+  #finTour:hover{background:rgba(216,180,106,.12)}
   .fin .fine{margin-top:14px;font-size:10.5px;color:#8d84a3;font-weight:300}
   @media (max-width:640px){ .fin-grid{grid-template-columns:1fr;gap:8px} .fin-card{flex-direction:row;align-items:center;justify-content:space-between;flex-wrap:wrap} #finale{padding-bottom:calc(18px + env(safe-area-inset-bottom))} }
+
+  /* ---------- EXPLORE MODE UI ---------- */
+  #exUI{display:none}
+  body.explore #exUI{display:block}
+
+  #nodeChip{position:fixed;bottom:calc(30px + 2*var(--pb) + 26px + env(safe-area-inset-bottom));left:50%;transform:translateX(-50%);z-index:8;
+    font-size:13.5px;font-weight:600;color:var(--txt);background:rgba(16,12,30,.72);border:1px solid var(--line);
+    border-radius:99px;padding:7px 18px;backdrop-filter:blur(12px);white-space:nowrap;pointer-events:none;
+    transition:transform .3s, border-color .3s}
+  #nodeChip.deny{animation:shake .45s}
+  @keyframes shake{0%,100%{transform:translateX(-50%)}25%{transform:translateX(calc(-50% - 7px))}55%{transform:translateX(calc(-50% + 7px))}80%{transform:translateX(calc(-50% - 4px))}}
+
+  #pad{position:fixed;bottom:calc(24px + env(safe-area-inset-bottom));left:50%;transform:translateX(-50%);z-index:8;
+    display:grid;grid-template-columns:repeat(3,var(--pb));grid-template-rows:var(--pb) var(--pb);gap:9px;
+    grid-template-areas:"l f r" ". b ."}
+  .pbtn{cursor:pointer;width:var(--pb);height:var(--pb);border-radius:50%;display:flex;align-items:center;justify-content:center;
+    background:rgba(16,12,30,.66);border:1px solid rgba(216,180,106,.4);color:var(--gold-hi);backdrop-filter:blur(10px);
+    transition:background .2s, transform .12s, border-color .2s;touch-action:manipulation;-webkit-tap-highlight-color:transparent}
+  .pbtn:hover{background:rgba(216,180,106,.18);border-color:rgba(216,180,106,.7)}
+  .pbtn:active{transform:scale(.92);background:rgba(216,180,106,.3)}
+  .pbtn svg{width:26px;height:26px;fill:none;stroke:currentColor;stroke-width:2.1;stroke-linecap:round;stroke-linejoin:round}
+  #padF{grid-area:f}#padB{grid-area:b}#padL{grid-area:l}#padR{grid-area:r}
+  #padF{background:rgba(216,180,106,.2);border-color:rgba(216,180,106,.7)}
+
+  #exHelp{position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);z-index:8;pointer-events:none;text-align:center;
+    font-size:14px;font-weight:400;color:var(--txt);background:rgba(14,10,26,.72);border:1px solid var(--line);
+    border-radius:14px;padding:14px 26px;backdrop-filter:blur(12px);opacity:0;transition:opacity .8s}
+  #exHelp.show{opacity:1}
+
+  /* mini-map */
+  #mmWrap{position:fixed;left:clamp(14px,2vw,26px);bottom:calc(22px + env(safe-area-inset-bottom));z-index:8;
+    background:rgba(13,10,26,.78);border:1px solid var(--line);border-radius:16px;padding:10px 10px 8px;backdrop-filter:blur(12px);
+    box-shadow:0 14px 44px rgba(0,0,0,.45)}
+  #mm{display:block;border-radius:9px;cursor:pointer}
+  .mmbtns{display:flex;gap:6px;margin-top:8px}
+  .mmbtns button{flex:1;cursor:pointer;font-family:inherit;font-size:11.5px;font-weight:600;color:var(--gold-hi);
+    background:rgba(216,180,106,.1);border:1px solid rgba(216,180,106,.35);border-radius:9px;padding:7px 4px;transition:background .25s}
+  .mmbtns button:hover{background:rgba(216,180,106,.22)}
+  #waFab{position:fixed;right:clamp(14px,2vw,26px);bottom:calc(22px + env(safe-area-inset-bottom));z-index:8;
+    width:52px;height:52px;border-radius:50%;display:flex;align-items:center;justify-content:center;
+    background:rgba(37,211,102,.16);border:1px solid rgba(37,211,102,.55);backdrop-filter:blur(10px);
+    transition:transform .25s, background .25s}
+  #waFab:hover{transform:translateY(-3px);background:rgba(37,211,102,.3)}
+  #waFab svg{width:26px;height:26px;fill:#4be284}
+
+  /* tower hover label */
+  #twLabel{position:fixed;z-index:7;pointer-events:none;transform:translate(-50%,-130%);opacity:0;transition:opacity .25s;
+    background:rgba(16,12,30,.82);border:1px solid rgba(216,180,106,.5);border-radius:12px;padding:8px 14px;text-align:center;
+    backdrop-filter:blur(10px);white-space:nowrap}
+  #twLabel.on{opacity:1}
+  #twLabel b{display:block;font-size:14px;font-weight:700;color:#fff}
+  #twLabel span{font-size:11px;color:var(--gold-hi);font-weight:600}
+
+  @media (max-width:640px){
+    :root{--pb:56px}
+    .brand .sub{display:none}
+    #modePill{top:calc(98px + env(safe-area-inset-top));font-size:12px;padding:7px 15px}
+    #mmWrap{left:10px;bottom:auto;top:calc(142px + env(safe-area-inset-top));padding:7px 7px 6px}
+    .mmbtns button{font-size:10.5px;padding:6px 3px}
+    #waFab{bottom:calc(30px + env(safe-area-inset-bottom));width:48px;height:48px}
+    #nodeChip{bottom:calc(26px + 2*var(--pb) + 24px + env(safe-area-inset-bottom));font-size:12.5px}
+    body.cardOpen #pad,body.cardOpen #nodeChip,body.cardOpen #waFab{opacity:0;pointer-events:none;transition:opacity .3s}
+    #twLabel{display:none}
+  }
 
   /* ---------- reduced-motion controls ---------- */
   #rmnav{position:fixed;bottom:calc(20px + env(safe-area-inset-bottom));left:50%;transform:translateX(-50%);z-index:9;display:none;
     align-items:center;gap:14px;background:rgba(16,12,30,.72);border:1px solid var(--line);border-radius:99px;
     padding:8px 12px;backdrop-filter:blur(14px)}
   body.rm #rmnav{display:flex}
+  body.rm.explore #rmnav{display:none}
   #rmnav button{cursor:pointer;border:1px solid rgba(216,180,106,.4);background:rgba(216,180,106,.1);color:var(--gold-hi);
     font-family:inherit;font-size:13px;font-weight:600;border-radius:99px;padding:8px 18px}
   #rmnav button:disabled{opacity:.35;cursor:default}
   #rmnav .st{font-size:13px;font-weight:400;min-width:110px;text-align:center;color:var(--txt)}
-  body.rm #hint{display:none}
+  body.rm #hint .txt,body.rm #hint .chev{display:none}
 
   /* ---------- loader ---------- */
   #veil{position:fixed;inset:0;z-index:20;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;
@@ -172,10 +334,23 @@
   <div class="brand">
     <div class="logo">NAD-LAN.CO.IL</div>
     <h1>רובע שדה דב — הסיור</h1>
-    <div class="sub">טיסת דמדומים מעל הרובע החדש של תל אביב</div>
+    <div class="sub">טיסת דמדומים וסיור חופשי ברובע החדש של תל אביב</div>
   </div>
-  <div class="badge">הדמיה להמחשה</div>
+  <div class="hudside">
+    <div class="badge">על פי התכנית · הדמיה להמחשה</div>
+    <button id="sndBtn" class="muted" aria-label="הפעלת צלילי רקע" aria-pressed="false">
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        <path class="sp" d="M4 9.5v5h3.6L13 19V5L7.6 9.5H4z"/>
+        <path class="on" d="M16 9.2a4.2 4.2 0 010 5.6M18.6 6.8a8 8 0 010 10.4"/>
+        <path class="off" d="M16.5 9.5l5 5M21.5 9.5l-5 5"/>
+      </svg>
+    </button>
+  </div>
 </header>
+
+<button id="modePill" aria-label="החלפת מצב סיור">
+  <span class="mFilm">◈ סיור חופשי ברובע</span><span class="mEx">✕ יציאה מהסיור החופשי</span>
+</button>
 
 <div id="rail" aria-hidden="true">
   <div class="track"><div class="fill" id="railFill"></div>
@@ -196,7 +371,11 @@
   </div>
 </div>
 
-<div id="hint"><div class="txt">גללו מטה — הטיסה מתחילה</div><div class="chev"></div></div>
+<div id="hint">
+  <button id="startTour">התחילו סיור חופשי ברובע ←</button>
+  <div class="txt">או גללו מטה — טיסת ההיכרות תתחיל</div>
+  <div class="chev"></div>
+</div>
 
 <article class="pcard" id="card-dimri" data-a="0.215" data-b="0.44">
   <div class="tag">קו ראשון לים</div>
@@ -237,6 +416,20 @@
   <div class="fine">הדמיה להמחשה בלבד</div>
 </article>
 
+<article class="pcard" id="card-plan">
+  <div class="tag">על פי התכנית · הדמיה להמחשה</div>
+  <h3>רובע שדה דב</h3>
+  <div class="en">TA/4444 MASTERPLAN</div>
+  <ul>
+    <li><b>16,000</b> דירות בשלושה מתחמים</li>
+    <li><b>כ־35</b> מגדלים בגובה עד <b>40</b> קומות</li>
+    <li>פארק חוף של כ־<b>250</b> דונם לאורך כ־2 ק״מ</li>
+    <li>אבן גבירול המוארך + הקו הירוק חוצים את הרובע</li>
+    <li>המסלול ההיסטורי נשמר כפארק המסלול</li>
+  </ul>
+  <div class="fine">מסה סכמטית להתרשמות בלבד · אינה מסמך תכנוני</div>
+</article>
+
 <section id="finale">
   <div class="fin">
     <div class="kick">הרובע החדש של תל אביב מחכה לכם</div>
@@ -253,6 +446,7 @@
     <a class="wa" href="https://wa.me/972525101555" target="_blank" rel="noopener">
       <svg viewBox="0 0 32 32"><path d="M16 3C9.4 3 4 8.4 4 15c0 2.1.6 4.2 1.6 6L4 29l8.2-1.6c1.2.6 2.5.9 3.8.9 6.6 0 12-5.4 12-12S22.6 3 16 3zm6.6 16.9c-.3.8-1.6 1.5-2.2 1.6-.6.1-1.3.2-3.7-.8-3.1-1.3-5.1-4.4-5.3-4.6-.2-.2-1.3-1.7-1.3-3.2s.8-2.3 1.1-2.6c.3-.3.6-.4.8-.4h.6c.2 0 .5-.1.7.5l.9 2.3c.1.2.1.4 0 .6l-.4.7-.6.6c-.2.2-.4.4-.2.7.2.4.9 1.6 2 2.5 1.4 1.2 2.5 1.6 2.9 1.8.4.2.6.1.8-.1l1.2-1.4c.2-.3.5-.2.8-.1l2.4 1.1c.4.2.6.3.7.4.1.3.1.9-.2 1.4z"/></svg>
       וואטסאפ ישיר — 052-510-1555</a>
+    <button id="finTour">רוצים להסתובב ברובע? התחילו סיור חופשי ←</button>
     <div class="fine">הדמיה להמחשה בלבד · הנתונים המלאים והמחייבים מופיעים בעמודי הפרויקטים</div>
   </div>
 </section>
@@ -262,6 +456,29 @@
   <div class="st" id="rmName">מעל הים</div>
   <button id="rmNext">הבא ←</button>
 </div>
+
+<div id="exUI">
+  <div id="nodeChip">שדרת המסלול</div>
+  <div id="pad">
+    <button id="padL" class="pbtn" aria-label="פנייה שמאלה"><svg viewBox="0 0 24 24"><path d="M14.5 6l-6 6 6 6"/></svg></button>
+    <button id="padF" class="pbtn" aria-label="התקדמות קדימה"><svg viewBox="0 0 24 24"><path d="M6 14.5l6-6 6 6"/></svg></button>
+    <button id="padR" class="pbtn" aria-label="פנייה ימינה"><svg viewBox="0 0 24 24"><path d="M9.5 6l6 6-6 6"/></svg></button>
+    <button id="padB" class="pbtn" aria-label="חזרה אחורה"><svg viewBox="0 0 24 24"><path d="M6 9.5l6 6 6-6"/></svg></button>
+  </div>
+  <div id="exHelp"></div>
+  <div id="mmWrap">
+    <canvas id="mm" role="button" aria-label="מפת הרובע — הקישו למעבר לנקודה"></canvas>
+    <div class="mmbtns">
+      <button id="mmSky">מבט־על ↗</button>
+      <button id="mmEnd">לבחירת דירה</button>
+    </div>
+  </div>
+  <a id="waFab" href="https://wa.me/972525101555" target="_blank" rel="noopener" aria-label="וואטסאפ ישיר">
+    <svg viewBox="0 0 32 32"><path d="M16 3C9.4 3 4 8.4 4 15c0 2.1.6 4.2 1.6 6L4 29l8.2-1.6c1.2.6 2.5.9 3.8.9 6.6 0 12-5.4 12-12S22.6 3 16 3zm6.6 16.9c-.3.8-1.6 1.5-2.2 1.6-.6.1-1.3.2-3.7-.8-3.1-1.3-5.1-4.4-5.3-4.6-.2-.2-1.3-1.7-1.3-3.2s.8-2.3 1.1-2.6c.3-.3.6-.4.8-.4h.6c.2 0 .5-.1.7.5l.9 2.3c.1.2.1.4 0 .6l-.4.7-.6.6c-.2.2-.4.4-.2.7.2.4.9 1.6 2 2.5 1.4 1.2 2.5 1.6 2.9 1.8.4.2.6.1.8-.1l1.2-1.4c.2-.3.5-.2.8-.1l2.4 1.1c.4.2.6.3.7.4.1.3.1.9-.2 1.4z"/></svg>
+  </a>
+</div>
+
+<div id="twLabel"><b id="twName"></b><span id="twCta"></span></div>
 
 <div id="veil">
   <div class="logo">NAD-LAN.CO.IL</div>
@@ -291,9 +508,11 @@
 </script>
 <script type="module">
 /* ============================================================================
-   SDE DOV QUARTER — cinematic scroll flight (V1 prototype, local only)
-   Sea WEST (-X) · runway N-S · Dimri seafront · Rainbow + Ashira behind.
-   GLB models from the NadLan showroom engine; procedural fallback included.
+   SDE DOV QUARTER — V2: cinematic scroll flight + free EXPLORE mode.
+   Sea WEST (-X) · runway-park blvd N-S at x~74 · linear park E-W at z~0 ·
+   Ibn Gvirol axis x~250 · Dimri seafront · Rainbow + Ashira behind.
+   Surrounding quarter = stylized massing per TA/4444 research (see <head>).
+   GLB sources: live wp-uploads first, repo-relative second, procedural last.
    ============================================================================ */
 const Q = new URLSearchParams(location.search);
 const RM_PARAM = Q.get('rm'); /* rm=1 force on, rm=0 force off (QA) */
@@ -321,7 +540,7 @@ async function boot() {
 
   /* ---------------- renderer / scene ---------------- */
   const canvas = $('#stage');
-  const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, powerPreference: 'high-performance' });
+  const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, powerPreference: 'high-performance', preserveDrawingBuffer: false });
   renderer.setPixelRatio(Math.min(devicePixelRatio, MOBILE ? 1.7 : 2));
   renderer.setSize(innerWidth, innerHeight);
   renderer.outputColorSpace = THREE.SRGBColorSpace;
@@ -482,6 +701,41 @@ async function boot() {
     streak.userData.tex = tex; world.userData.streak = streak;
   }
 
+  /* soft light shafts through the dusk clouds, over the sea (V2) */
+  { const c = document.createElement('canvas'); c.width = 64; c.height = 256;
+    const g = c.getContext('2d'); const gr = g.createLinearGradient(0, 0, 0, 256);
+    gr.addColorStop(0, 'rgba(255,170,90,0.55)'); gr.addColorStop(0.55, 'rgba(255,140,80,0.16)'); gr.addColorStop(1, 'rgba(255,120,70,0)');
+    g.fillStyle = gr; g.fillRect(0, 0, 64, 256);
+    const gx = g.createLinearGradient(0, 0, 64, 0);
+    gx.addColorStop(0, 'rgba(0,0,0,1)'); gx.addColorStop(0.25, 'rgba(0,0,0,0)'); gx.addColorStop(0.75, 'rgba(0,0,0,0)'); gx.addColorStop(1, 'rgba(0,0,0,1)');
+    g.globalCompositeOperation = 'destination-out'; g.fillStyle = gx; g.fillRect(0, 0, 64, 256);
+    const stex = new THREE.CanvasTexture(c);
+    for (const [x, z, w, h, o, tilt] of [[-1180, 620, 130, 430, 0.11, 0.16], [-960, 340, 90, 360, 0.085, 0.1], [-1350, 880, 170, 480, 0.07, 0.22]]) {
+      const shaft = new THREE.Mesh(new THREE.PlaneGeometry(w, h),
+        new THREE.MeshBasicMaterial({ map: stex, transparent: true, opacity: o, blending: THREE.AdditiveBlending, depthWrite: false, fog: false, side: THREE.DoubleSide }));
+      shaft.position.set(x, h * 0.42, z);
+      shaft.rotation.y = Math.atan2(x - 160, z - 0) + Math.PI; /* face the quarter */
+      shaft.rotation.z = tilt;
+      shaft.renderOrder = 1; world.add(shaft);
+    } }
+
+  /* drifting dusk clouds (V2) */
+  const clouds = [];
+  { const c = document.createElement('canvas'); c.width = 256; c.height = 128;
+    const g = c.getContext('2d');
+    for (const [cx, cy, r, a] of [[70, 78, 52, .5], [120, 60, 64, .6], [178, 76, 50, .5], [220, 66, 34, .35], [40, 66, 30, .3]]) {
+      const gr = g.createRadialGradient(cx, cy, 4, cx, cy, r);
+      gr.addColorStop(0, `rgba(196,164,196,${a})`); gr.addColorStop(0.6, `rgba(150,116,160,${a * 0.5})`); gr.addColorStop(1, 'rgba(120,90,130,0)');
+      g.fillStyle = gr; g.fillRect(0, 0, 256, 128);
+    }
+    const ctex = new THREE.CanvasTexture(c);
+    const CFG = [[-2100, 640, -900, 940, .34], [-1500, 540, 300, 760, .3], [-900, 760, 1200, 900, .26], [500, 820, -1500, 1100, .22], [1400, 700, 900, 860, .2]];
+    for (const [x, y, z, s, o] of CFG) {
+      const sp = new THREE.Sprite(new THREE.SpriteMaterial({ map: ctex, transparent: true, opacity: o, depthWrite: false, fog: false }));
+      sp.scale.set(s, s * 0.4, 1); sp.position.set(x, y, z); sp.userData = { v: 2.4 + Math.random() * 2.6 };
+      world.add(sp); clouds.push(sp);
+    } }
+
   /* foam lines */
   for (const [dx, op, w] of [[1.5, 0.30, 2.4], [7, 0.14, 1.6], [14, 0.07, 1.2]]) {
     const foam = new THREE.Mesh(new THREE.PlaneGeometry(w, 6800),
@@ -503,19 +757,24 @@ async function boot() {
     new THREE.MeshStandardMaterial({ color: 0x968a7c, roughness: 1, map: groundTex }));
   land.rotation.x = -Math.PI / 2; land.position.set(SHORE_X + 70 + 1450, -0.02, 0); world.add(land);
 
-  /* promenade + coast road */
+  /* promenade + streets (per plan: coast road, Ibn Gvirol axis, cross streets) */
   const flat = (w, l, x, z, col, y = 0.05, op = 1) => {
     const m = new THREE.Mesh(new THREE.PlaneGeometry(w, l),
       op < 1 ? new THREE.MeshBasicMaterial({ color: col, transparent: true, opacity: op, depthWrite: false, fog: true })
              : new THREE.MeshStandardMaterial({ color: col, roughness: 0.96 }));
     m.rotation.x = -Math.PI / 2; m.position.set(x, y, z); world.add(m); return m;
   };
-  flat(12, 3400, SHORE_X + 76, 0, 0x6b5c49, 0.04);            /* promenade */
-  flat(11, 3400, -100, 0, 0x35333b, 0.05);                     /* coast road */
-  flat(9, 2400, 470, 0, 0x35333b, 0.05);                       /* east avenue */
-  for (const z of [-260, 20, 240]) flat(2600, 9, SHORE_X + 1370, z, 0x35333b, 0.05); /* cross streets */
+  flat(12, 3400, SHORE_X + 76, 0, 0x6b5c49, 0.04);             /* coastal promenade */
+  flat(11, 3400, -100, 0, 0x35333b, 0.05);                      /* coast road */
+  flat(9, 2400, 470, 0, 0x35333b, 0.05);                        /* Levi Eshkol st (E edge) */
+  flat(16, 1460, 250, 330, 0x35333b, 0.05);                     /* Ibn Gvirol extension */
+  flat(4.6, 1460, 250, 330, 0x2c3a26, 0.062);                   /* LRT green median */
+  for (const z of [-560, -260, 240, 520]) flat(2600, 9, SHORE_X + 1370, z, 0x35333b, 0.05); /* cross streets */
 
-  /* ---------------- the old Sde Dov runway (N-S, subtle) ---------------- */
+  /* thin kurkar-cliff hint along the beach top (per plan: cliff preserved) */
+  flat(4, 3400, -111, 0.07, 0x8a7458, 0.07);
+
+  /* ---------------- the old Sde Dov runway → פארק המסלול (N-S) ---------------- */
   const runway = flat(46, 3000, 74, 0, 0x67666b, 0.06);
   runway.material.roughness = 0.9;
   { const dash = new THREE.PlaneGeometry(1.3, 16);
@@ -524,12 +783,36 @@ async function boot() {
     const M = new THREE.Matrix4(), R = new THREE.Matrix4().makeRotationX(-Math.PI / 2);
     for (let i = 0; i < 60; i++) { M.makeTranslation(74, 0.09, -1450 + i * 49); dashes.setMatrixAt(i, M.clone().multiply(R)); }
     world.add(dashes);
-    for (const zz of [-1180, 1180]) for (let k = 0; k < 6; k++) flat(3.2, 26, 74 - 17 + k * 6.8, zz, 0xd8d2c2, 0.085, 0.16);
+    /* threshold stripes as ONE instanced mesh (was 12 draw calls in V1) */
+    const stripe = new THREE.PlaneGeometry(1, 1);
+    const sm = new THREE.MeshBasicMaterial({ color: 0xd8d2c2, transparent: true, opacity: 0.16, depthWrite: false, fog: true });
+    const stripes = new THREE.InstancedMesh(stripe, sm, 12);
+    let si = 0;
+    for (const zz of [-1180, 1180]) for (let k = 0; k < 6; k++) {
+      M.makeTranslation(74 - 17 + k * 6.8, 0.085, zz).multiply(R).multiply(new THREE.Matrix4().makeScale(3.2, 26, 1));
+      stripes.setMatrixAt(si++, M.clone());
+    }
+    world.add(stripes);
   }
 
-  /* ---------------- park strips between towers ---------------- */
-  flat(220, 54, 225, 42, 0x33422c, 0.045);
-  flat(220, 54, 225, -46, 0x2f3d27, 0.045);
+  /* ---------------- linear park (E-W, on the secondary runway trace) ---------------- */
+  flat(510, 56, 225, 44, 0x2c3b26, 0.045);
+  flat(510, 56, 225, -48, 0x283722, 0.045);
+  flat(510, 6, 225, -2, 0x6b5c49, 0.05);                        /* walking path on the trace */
+
+  /* ---------------- coastal park strips (per plan ~250 dunam along the shore) ---------------- */
+  flat(58, 560, -71, 420, 0x2b3a25, 0.042);
+  flat(58, 490, -71, -455, 0x273621, 0.042);
+
+  /* ---------------- civic pavilions along פארק המסלול ---------------- */
+  { const pg = new THREE.BoxGeometry(1, 1, 1); pg.translate(0, 0.5, 0);
+    const pm = duskify(new THREE.MeshStandardMaterial({ color: 0x6b5b49, roughness: 0.7, metalness: 0.05 }),
+      { floorH: 4.2, winW: 3.4, lit: 0.85, glow: 2.1, seed: 41 });
+    const pav = new THREE.InstancedMesh(pg, pm, 4);
+    const M = new THREE.Matrix4();
+    const P = [[36, -240, 24, 8.5, 16], [112, -100, 20, 12.5, 18], [36, 130, 26, 8.5, 15], [112, 320, 22, 12.5, 17]];
+    P.forEach(([x, z, w, h, d], i) => { M.makeTranslation(x, 0, z).multiply(new THREE.Matrix4().makeScale(w, h, d)); pav.setMatrixAt(i, M); });
+    world.add(pav); }
 
   /* ---------------- ground shadow discs (fake AO) ---------------- */
   const aoTex = (() => { const c = document.createElement('canvas'); c.width = c.height = 128;
@@ -540,7 +823,7 @@ async function boot() {
       new THREE.MeshBasicMaterial({ map: aoTex, transparent: true, depthWrite: false, fog: true }));
     m.rotation.x = -Math.PI / 2; m.position.set(x, 0.12, z); m.renderOrder = 2; world.add(m); };
 
-  /* ---------------- street lights along the promenade ---------------- */
+  /* ---------------- street lights along the promenade (halos = ONE instanced billboard) ---------------- */
   { const n = 26, poleG = new THREE.CylinderGeometry(0.16, 0.2, 8.6, 5),
       poleM = new THREE.MeshStandardMaterial({ color: 0x2c2833, roughness: 0.8 }),
       lampG = new THREE.SphereGeometry(0.55, 8, 6),
@@ -552,16 +835,37 @@ async function boot() {
     hgr.addColorStop(0, 'rgba(255,196,120,0.9)'); hgr.addColorStop(0.35, 'rgba(255,170,90,0.28)'); hgr.addColorStop(1, 'rgba(255,150,70,0)');
     hg.fillStyle = hgr; hg.fillRect(0, 0, 64, 64);
     const haloTex = new THREE.CanvasTexture(hc);
+    const bbMat = new THREE.ShaderMaterial({
+      transparent: true, depthWrite: false, blending: THREE.AdditiveBlending,
+      uniforms: { uMap: { value: haloTex } },
+      vertexShader: `
+        attribute vec3 iPos; varying vec2 vUv; varying float vD;
+        void main(){ vUv = uv;
+          vec4 mv = modelViewMatrix * vec4(iPos, 1.0);
+          mv.xy += position.xy;
+          vD = -mv.z;
+          gl_Position = projectionMatrix * mv; }`,
+      fragmentShader: `
+        uniform sampler2D uMap; varying vec2 vUv; varying float vD;
+        void main(){ vec4 t = texture2D(uMap, vUv);
+          gl_FragColor = vec4(t.rgb, t.a * 0.85 * exp(-vD * 0.00075)); }`
+    });
+    const bbGeo = new THREE.InstancedBufferGeometry();
+    const quad = new THREE.PlaneGeometry(13, 13);
+    bbGeo.index = quad.index; bbGeo.attributes.position = quad.attributes.position; bbGeo.attributes.uv = quad.attributes.uv;
+    const iPos = new Float32Array(n * 3);
     const M = new THREE.Matrix4();
     for (let i = 0; i < n; i++) { const z = -750 + i * 60, x = -93;
       M.makeTranslation(x, 4.3, z); poles.setMatrixAt(i, M);
       M.makeTranslation(x, 8.8, z); lamps.setMatrixAt(i, M);
-      const s = new THREE.Sprite(new THREE.SpriteMaterial({ map: haloTex, transparent: true, opacity: 0.85,
-        blending: THREE.AdditiveBlending, depthWrite: false, fog: true }));
-      s.scale.set(13, 13, 1); s.position.set(x, 8.8, z); world.add(s); }
-    world.add(poles, lamps); }
+      iPos[i * 3] = x; iPos[i * 3 + 1] = 8.8; iPos[i * 3 + 2] = z; }
+    bbGeo.setAttribute('iPos', new THREE.InstancedBufferAttribute(iPos, 3));
+    bbGeo.instanceCount = n;
+    const halos = new THREE.Mesh(bbGeo, bbMat);
+    halos.frustumCulled = false;
+    world.add(poles, lamps, halos); }
 
-  /* ---------------- palms (beach + park) ---------------- */
+  /* ---------------- palms (beach + linear park) ---------------- */
   { const n = 54, trunkG = new THREE.CylinderGeometry(0.28, 0.42, 7.5, 5),
       trunkM = new THREE.MeshStandardMaterial({ color: 0x3a2f26, roughness: 1 }),
       canG = new THREE.SphereGeometry(2.6, 7, 5), canM = new THREE.MeshStandardMaterial({ color: 0x1d2b1c, roughness: 1 });
@@ -571,37 +875,85 @@ async function boot() {
     const put = (x, z, s = 1) => { if (i >= n) return;
       M.makeTranslation(x, 3.7 * s, z).multiply(new THREE.Matrix4().makeScale(s, s, s)); trunks.setMatrixAt(i, M);
       M.makeTranslation(x, 7.6 * s, z).multiply(new THREE.Matrix4().makeScale(s, s, s)); cans.setMatrixAt(i, M); i++; };
-    for (let k = 0; k < 30; k++) put(SHORE_X + 62 + (k % 2) * 22, -720 + k * 49, 0.9 + Math.random() * 0.45);
-    for (let k = 0; k < 12; k++) put(130 + k * 17, 40 + (k % 2) * 22 - 11, 0.85 + Math.random() * 0.35);
-    for (let k = 0; k < 12; k++) put(130 + k * 17, -44 - (k % 2) * 22 + 11, 0.85 + Math.random() * 0.35);
+    for (let k = 0; k < 30; k++) put(SHORE_X + 46 + (k % 2) * 16, -720 + k * 49, 0.9 + Math.random() * 0.45); /* seaward of the promenade so walk nodes stay clear */
+    for (let k = 0; k < 12; k++) put(158 + k * 17, 40 + (k % 2) * 22 - 11, 0.85 + Math.random() * 0.35);
+    for (let k = 0; k < 12; k++) put(158 + k * 17, -44 - (k % 2) * 22 + 11, 0.85 + Math.random() * 0.35);
     world.add(trunks, cans); }
 
-  /* ---------------- context city (instanced, window-lit) ---------------- */
-  { const g = new THREE.BoxGeometry(1, 1, 1); g.translate(0, 0.5, 0);
-    const m = duskify(new THREE.MeshStandardMaterial({ color: 0x3d3850, roughness: 0.85, metalness: 0.05 }),
-      { floorH: 3.0, winW: 2.9, lit: 0.42, glow: 1.15, seed: 5 });
-    const N = MOBILE ? 90 : 150, inst = new THREE.InstancedMesh(g, m, N);
+  /* ================= SURROUNDING QUARTER (stylized per TA/4444 — see head) =================
+     3 compounds S→N (Eshkol ~4,850u · central ~7,100u to 45F · north ~4,000u
+     w/ hotels on the shore), ~35 towers to 40F over a 5-10F fabric, plus the
+     existing city east of Levi Eshkol. All massing = הדמיה להמחשה. */
+  { const boxG = new THREE.BoxGeometry(1, 1, 1); boxG.translate(0, 0.5, 0);
+    const fabricM = duskify(new THREE.MeshStandardMaterial({ color: 0x3d3850, roughness: 0.85, metalness: 0.05 }),
+      { floorH: 3.0, winW: 2.9, lit: 0.4, glow: 1.1, seed: 5 });
+    const towerM = duskify(new THREE.MeshStandardMaterial({ color: 0x433d5c, roughness: 0.62, metalness: 0.2, envMapIntensity: 0.9 }),
+      { floorH: 3.0, winW: 2.8, lit: 0.46, glow: 1.35, seed: 9 });
     let s = 13; const rng = () => (s = (s * 1103515245 + 12345) & 0x7fffffff) / 0x7fffffff;
-    const M = new THREE.Matrix4(); let i = 0, guard = 0;
-    while (i < N && guard++ < N * 30) {
-      const east = rng() < 0.62;
-      const x = east ? 560 + rng() * 950 : -60 + rng() * 900;
-      const z = east ? (rng() * 2 - 1) * 1500 : (rng() < 0.5 ? -1 : 1) * (470 + rng() * 900);
-      if (Math.hypot(x - 160, z - 90) < 260 && !east) continue;
-      const w = 16 + rng() * 26, d = 16 + rng() * 26, h = (4 + Math.floor(rng() * (east ? 13 : 8))) * 3.0;
-      M.makeTranslation(x, 0, z).multiply(new THREE.Matrix4().makeRotationY((rng() * 2 - 1) * 0.12)).multiply(new THREE.Matrix4().makeScale(w, h, d));
-      inst.setMatrixAt(i++, M);
+    const FLAGS = [[-45, -140, 96], [160, 90, 118], [350, -70, 118]];
+    const blocked = (x, z) => {
+      for (const [fx, fz, fr] of FLAGS) if (Math.hypot(x - fx, z - fz) < fr) return true;
+      if (Math.abs(x - 74) < 34 && Math.abs(z) < 1500) return true;          /* runway park */
+      if (Math.abs(z) < 82 && x > -35 && x < 485) return true;               /* linear park */
+      if (Math.abs(x - 250) < 15 && z > -400 && z < 1065) return true;       /* Ibn Gvirol */
+      if (x < -40) return true;                     /* coastal park stays green (hotels are placed explicitly) */
+      if (Math.hypot(x + 52, z + 690) < 130) return true;                     /* Reading */
+      return false;
+    };
+    const K = MOBILE ? 0.62 : 1;
+    const COMPOUNDS = [
+      /* [x0,x1,z0,z1, fabMin,fabMax, nFab, towMin,towMax, nTow] */
+      [-88, 465, -390, -165, 5, 9, 14, 34, 39, 3],    /* אשכול south of the flagships */
+      [-88, 465, -160, 135, 5, 9, 8, 34, 38, 1],      /* אשכול around the flagships   */
+      [-88, 465, 150, 620, 6, 10, 20, 24, 42, 8],     /* מרכז הרובע (towers to 45F)   */
+      [-88, 465, 640, 1060, 7, 9, 16, 20, 36, 5],     /* צפון הרובע                   */
+      [560, 1480, -1080, 1080, 4, 14, 40, 16, 26, 5], /* existing city E of L. Eshkol */
+      [-55, 455, -880, -440, 4, 8, 10, 20, 30, 2],    /* toward Reading (sparser)     */
+    ];
+    const fabPlaced = [], towPlaced = [];
+    for (const [x0, x1, z0, z1, f0, f1, nF, t0, t1, nT] of COMPOUNDS) {
+      let placedF = 0, guard = 0, targetF = Math.max(1, Math.round(nF * K));
+      while (placedF < targetF && guard++ < targetF * 40) {
+        const x = x0 + rng() * (x1 - x0), z = z0 + rng() * (z1 - z0);
+        if (blocked(x, z)) continue;
+        const w = 17 + rng() * 18, d = 15 + rng() * 16, h = (f0 + Math.floor(rng() * (f1 - f0 + 1))) * 3.0;
+        fabPlaced.push([x, z, w, h, d, (rng() * 2 - 1) * 0.1]); placedF++;
+      }
+      let placedT = 0; guard = 0; const targetT = Math.max(1, Math.round(nT * K));
+      while (placedT < targetT && guard++ < targetT * 60) {
+        const x = x0 + rng() * (x1 - x0), z = z0 + rng() * (z1 - z0);
+        if (blocked(x, z)) continue;
+        /* towers hug the main streets, per the plan */
+        const nearStreet = Math.abs(x - 250) < 90 || Math.abs(x - 470) < 70 || Math.abs(x - 74) < 110 || x > 560;
+        if (!nearStreet && rng() < 0.55) continue;
+        const w = 20 + rng() * 7, d = 18 + rng() * 7, h = (t0 + Math.floor(rng() * (t1 - t0 + 1))) * 3.0;
+        towPlaced.push([x, z, w, h, d, (rng() * 2 - 1) * 0.08]); placedT++;
+      }
     }
-    inst.count = i; world.add(inst); }
+    /* explicit: 45F landmark on the Ibn Gvirol axis + waterfront hotels (north) */
+    towPlaced.push([282, 385, 26, 45 * 3.0, 24, 0.03]);
+    towPlaced.push([-62, 700, 30, 13 * 3.0, 22, 0], [-58, 855, 26, 16 * 3.0, 22, 0.05], [-64, 990, 30, 12 * 3.0, 24, -0.04]);
+    const mkInst = (list, mat) => { const im = new THREE.InstancedMesh(boxG, mat, list.length);
+      const M = new THREE.Matrix4();
+      list.forEach(([x, z, w, h, d, r], i) => {
+        M.makeTranslation(x, 0, z).multiply(new THREE.Matrix4().makeRotationY(r)).multiply(new THREE.Matrix4().makeScale(w, h, d));
+        im.setMatrixAt(i, M); });
+      world.add(im); return im; };
+    mkInst(fabPlaced, fabricM); mkInst(towPlaced, towerM);
+    console.info('[sdedov] quarter massing:', fabPlaced.length, 'fabric +', towPlaced.length, 'towers (stylized per TA/4444)');
+  }
 
-  /* ---------------- Reading chimney nod (south) ---------------- */
+  /* ---------------- Reading chimney nod (south) — merged to 2 meshes ---------------- */
   { const g = new THREE.Group(); const bands = 10, H = 62;
+    const geosA = [], geosB = [];
     for (let i = 0; i < bands; i++) {
       const r0 = 3.3 - i * 0.12, r1 = 3.3 - (i + 1) * 0.12;
-      const seg = new THREE.Mesh(new THREE.CylinderGeometry(r1, r0, H / bands + 0.05, 12),
-        new THREE.MeshStandardMaterial({ color: i % 2 ? 0xd9d2c4 : 0xa14a38, roughness: 0.7 }));
-      seg.position.y = (i + 0.5) * H / bands; g.add(seg);
+      const seg = new THREE.CylinderGeometry(r1, r0, H / bands + 0.05, 12);
+      seg.translate(0, (i + 0.5) * H / bands, 0);
+      (i % 2 ? geosA : geosB).push(seg);
     }
+    g.add(new THREE.Mesh(mergeGeometries(geosA, false), new THREE.MeshStandardMaterial({ color: 0xd9d2c4, roughness: 0.7 })));
+    g.add(new THREE.Mesh(mergeGeometries(geosB, false), new THREE.MeshStandardMaterial({ color: 0xa14a38, roughness: 0.7 })));
     const beacon = new THREE.Mesh(new THREE.SphereGeometry(0.9, 8, 6), new THREE.MeshBasicMaterial({ color: 0xff2b1e, fog: true }));
     beacon.position.y = H + 1.4; g.add(beacon); g.userData.beacon = beacon;
     g.position.set(-52, 0, -690); world.add(g); world.userData.reading = g; }
@@ -617,15 +969,23 @@ async function boot() {
       world.add(sp); birds.push(sp); } }
 
   /* ================= PROJECT TOWERS ================= */
+  /* live wp-uploads first (works when hosted anywhere), repo-relative second
+     (local preview where CORS may block the live host), procedural last. */
   const PROJECTS = {
-    dimri:   { pos: [-45, 0.02, -140], glb: 'https://nad-lan.co.il/wp-content/uploads/2026/07/sdedov-rich-dimri-v2.glb',  rich: true,  floorH: 3.2,  seed: 11 },
-    ashira:  { pos: [350, 0.02, -70],  glb: 'https://nad-lan.co.il/wp-content/uploads/2026/07/sdedov-rich-ashira-v2.glb', rich: true,  floorH: 3.2,  seed: 23 },
-    rainbow: { pos: [160, 0.02, 90],   glb: 'https://nad-lan.co.il/wp-content/uploads/2026/07/sdedov-rainbow.glb',                rich: false, floorH: 3.05, seed: 31 },
+    dimri:   { pos: [-45, 0.02, -140],
+               urls: ['https://nad-lan.co.il/wp-content/uploads/2026/07/sdedov-rich-dimri-v2.glb', '../../assets/engine/rich-v1/rich-dimri-v2.glb'],
+               rich: true,  floorH: 3.2,  seed: 11 },
+    ashira:  { pos: [350, 0.02, -70],
+               urls: ['https://nad-lan.co.il/wp-content/uploads/2026/07/sdedov-rich-ashira-v2.glb', '../../assets/engine/rich-v1/rich-ashira-v2.glb'],
+               rich: true,  floorH: 3.2,  seed: 23 },
+    rainbow: { pos: [160, 0.02, 90],
+               urls: ['https://nad-lan.co.il/wp-content/uploads/2026/07/sdedov-rainbow.glb', '../../assets/engine/rainbow.glb'],
+               rich: false, floorH: 3.05, seed: 31 },
   };
   const towersUsed = { dimri: 'pending', ashira: 'pending', rainbow: 'pending' };
 
-  const stoneMat = new THREE.MeshStandardMaterial({ color: 0xb3a58c, roughness: 0.85, metalness: 0.04 });
-  const goldMat = new THREE.MeshStandardMaterial({ color: 0xc79c55, roughness: 0.28, metalness: 0.94, envMapIntensity: 1.7 });
+  const stoneMat = new THREE.MeshStandardMaterial({ color: 0x9c9080, roughness: 0.92, metalness: 0.04 }); /* muted so the low warm sun doesn't blow podium faces out */
+  const goldMat = new THREE.MeshStandardMaterial({ color: 0x8f744c, roughness: 0.44, metalness: 0.9, envMapIntensity: 1.15 }); /* bronze — reads rich at street level, not neon-orange */
 
   function mergeByMaterial(root) {
     root.updateMatrixWorld(true);
@@ -731,18 +1091,22 @@ async function boot() {
       new THREE.MeshBasicMaterial({ color: 0xff2b1e, transparent: true, fog: true }));
     b.position.set(x, y, z); b.userData.ph = ph; world.add(b); beacons.push(b); };
 
-  /* load all three (or fall back) */
+  /* load all three (live URL → repo-relative → procedural fallback) */
   const loader = new GLTFLoader();
+  const tryUrls = (urls, i = 0) => new Promise((resolve, reject) => {
+    if (i >= urls.length) return reject(new Error('all sources failed'));
+    loader.load(urls[i], gltf => resolve({ gltf, srcIndex: i }), undefined,
+      () => { tryUrls(urls, i + 1).then(resolve, reject); });
+  });
   const loadOne = (key) => new Promise((resolve) => {
     const cfg = PROJECTS[key];
     if (FORCE_FALLBACK) { towersUsed[key] = 'fallback'; return resolve(fallbackTower(FALLBACK_SPECS[key])); }
-    loader.load(cfg.glb,
-      (gltf) => { try {
-          const node = cfg.rich ? processRich(gltf, cfg) : processRainbow(gltf, cfg);
-          towersUsed[key] = 'glb'; resolve(node);
-        } catch (e) { console.warn('[sdedov] process failed for', key, e); towersUsed[key] = 'fallback'; resolve(fallbackTower(FALLBACK_SPECS[key])); } },
-      undefined,
-      () => { console.warn('[sdedov] GLB missing for', key, '— procedural fallback'); towersUsed[key] = 'fallback'; resolve(fallbackTower(FALLBACK_SPECS[key])); });
+    tryUrls(cfg.urls).then(({ gltf, srcIndex }) => {
+      try {
+        const node = cfg.rich ? processRich(gltf, cfg) : processRainbow(gltf, cfg);
+        towersUsed[key] = srcIndex === 0 ? 'glb' : 'glb-local'; resolve(node);
+      } catch (e) { console.warn('[sdedov] process failed for', key, e); towersUsed[key] = 'fallback'; resolve(fallbackTower(FALLBACK_SPECS[key])); }
+    }, () => { console.warn('[sdedov] GLB missing for', key, '— procedural fallback'); towersUsed[key] = 'fallback'; resolve(fallbackTower(FALLBACK_SPECS[key])); });
   });
 
   veilCap.textContent = 'טוענים את מגדלי הרובע…';
@@ -762,7 +1126,7 @@ async function boot() {
       new THREE.MeshStandardMaterial({ color: 0x5f5347, roughness: 0.95 }));
     plaza.rotation.x = -Math.PI / 2; plaza.position.set(160, 0.045, 90); world.add(plaza); }
 
-  /* ================= CAMERA FLIGHT ================= */
+  /* ================= CAMERA FLIGHT (film mode) ================= */
   const V3 = (x, y, z) => new THREE.Vector3(x, y, z);
   const camPath = new THREE.CatmullRomCurve3([
     V3(-1280, 330, 430), V3(-760, 195, 240), V3(-300, 96, -40), V3(-158, 80, -262),
@@ -782,7 +1146,7 @@ async function boot() {
   let station = 0;
 
   /* UI bindings */
-  const cards = [...document.querySelectorAll('.pcard')].map(el => ({ el, a: +el.dataset.a, b: +el.dataset.b }));
+  const cards = [...document.querySelectorAll('.pcard[data-a]')].map(el => ({ el, a: +el.dataset.a, b: +el.dataset.b }));
   const finale = $('#finale'), hint = $('#hint'), railFill = $('#railFill');
   const stops = [...document.querySelectorAll('#rail .stop')], labels = [...document.querySelectorAll('#rail .labels span')];
   function applyUI(u) {
@@ -795,10 +1159,12 @@ async function boot() {
   }
 
   /* scroll plumbing */
+  let rmGo = null, filmTween = null, filmProg = null, filmU0 = 0;
   if (!REDUCED) {
     gsap.registerPlugin(ScrollTrigger);
     const prog = { t: targetU };
-    gsap.to(prog, { t: 1, ease: 'none',
+    filmProg = prog; filmU0 = targetU;
+    filmTween = gsap.to(prog, { t: 1, ease: 'none',
       scrollTrigger: { trigger: '#scrollway', start: 'top top', end: 'bottom bottom', scrub: 1.15 },
       onUpdate: () => { targetU = prog.t; } });
     if (START_T !== null) {
@@ -816,6 +1182,7 @@ async function boot() {
       prev.disabled = station === 0; next.disabled = station === stations.length - 1; applyUI(dispU); };
     prev.onclick = () => go(station - 1); next.onclick = () => go(station + 1);
     go(START_T !== null ? stations.findIndex(s => s.u >= START_T) : 0);
+    rmGo = go;
   }
 
   let lastW = 0, lastH = 0;
@@ -826,46 +1193,609 @@ async function boot() {
     renderer.setSize(w, h, false);
   }
   fit();
-  addEventListener('resize', () => fit());
+  addEventListener('resize', () => { fit(); mmSize(); });
+
+  /* ============================================================
+     ================= V2 — EXPLORE MODE ========================
+     Street-View-like waypoint walk: eased glides between nodes,
+     drag-to-look, ground chevrons, WASD/arrows, mini-map.
+     ============================================================ */
+  const MODE = { m: 'film' };            /* film | explore | return */
+  const EYE = 2.7;
+  const NODES = {
+    'prom-n':  { x: -104, z: 150,  y: EYE, name: 'טיילת החוף — צפון' },
+    'prom-c':  { x: -104, z: 0,    y: EYE, name: 'טיילת החוף' },
+    'prom-s':  { x: -104, z: -150, y: EYE, name: 'הטיילת מול דימרי ימה' },
+    'beach':   { x: -152, z: -60,  y: 2.2, name: 'קו המים' },
+    'dimri':   { x: -14,  z: -92,  y: EYE, name: 'רחבת דימרי ימה', project: 'dimri' },
+    'run-s':   { x: 74,   z: -190, y: EYE, name: 'פארק המסלול — דרום' },
+    'run-c':   { x: 74,   z: -8,   y: EYE, name: 'פארק המסלול' },
+    'rainbow': { x: 112,  z: 50,   y: EYE, name: 'רחבת ריינבו', project: 'rainbow' },
+    'park':    { x: 232,  z: -2,   y: EYE, name: 'הפארק הלינארי' },
+    'ashira':  { x: 290,  z: -42,  y: EYE, name: 'החצר של אשירה', project: 'ashira' },
+    'run-n':   { x: 74,   z: 170,  y: EYE, name: 'פארק המסלול — צפון' },
+    'sky':     { x: 150,  z: 10,   y: 235, name: 'מבט־על — רובע שדה דב', sky: true },
+  };
+  const EDGES = [
+    ['prom-n', 'prom-c'], ['prom-c', 'prom-s'], ['prom-s', 'beach'], ['prom-c', 'beach'],
+    ['prom-s', 'dimri'], ['dimri', 'run-s'], ['dimri', 'run-c'],
+    ['run-s', 'run-c'], ['run-c', 'run-n'], ['run-n', 'prom-n'],
+    ['run-c', 'rainbow'], ['rainbow', 'park'], ['park', 'ashira'], ['ashira', 'run-s'],
+    ['sky', 'run-c'], ['sky', 'park'],
+  ];
+  const GRAPH = {};
+  for (const id in NODES) { GRAPH[id] = []; NODES[id].id = id; }
+  for (const [a, b] of EDGES) { GRAPH[a].push(b); GRAPH[b].push(a); }
+  const PROJECT_NODE = { dimri: 'dimri', rainbow: 'rainbow', ashira: 'ashira' };
+
+  const ex = {
+    pos: new THREE.Vector3(), from: new THREE.Vector3(), to: new THREE.Vector3(),
+    yaw: 0, tYaw: 0, pitch: -0.03, tPitch: -0.03, fov: 62, fovT: 62,
+    node: NODES['run-c'], gliding: false, t: 0, dur: 1, arc: 0, turn: 0,
+  };
+  const visited = new Set();
+  const shortAngle = a => { a = (a + Math.PI) % (2 * Math.PI); if (a < 0) a += 2 * Math.PI; return a - Math.PI; };
+  const TMPDIR = new THREE.Vector3(), TMPV = new THREE.Vector3();
+  const dirFromYawPitch = (yaw, pitch, out) =>
+    out.set(Math.sin(yaw) * Math.cos(pitch), Math.sin(pitch), Math.cos(yaw) * Math.cos(pitch));
+
+  const nodeChip = $('#nodeChip'), exHelp = $('#exHelp');
+  exHelp.textContent = MOBILE ? 'גררו כדי להביט סביב · נווטו עם החיצים למטה'
+                              : 'גררו כדי להביט סביב · WASD או חיצי המקלדת · לחצו על חיצי הזהב ברצפה';
+
+  /* ---- cards in explore mode ---- */
+  const CARD_BY_PROJECT = { dimri: $('#card-dimri'), rainbow: $('#card-rainbow'), ashira: $('#card-ashira') };
+  const planCard = $('#card-plan');
+  for (const el of [...document.querySelectorAll('.pcard')]) {
+    const x = document.createElement('button');
+    x.className = 'pcx'; x.setAttribute('aria-label', 'סגירת הכרטיס'); x.textContent = '✕';
+    x.addEventListener('click', () => { el.classList.remove('on'); document.body.classList.remove('cardOpen'); });
+    el.appendChild(x);
+  }
+  let cardTimer = 0;
+  function hideExCards() {
+    clearTimeout(cardTimer);
+    for (const k in CARD_BY_PROJECT) CARD_BY_PROJECT[k].classList.remove('on');
+    planCard.classList.remove('on');
+    document.body.classList.remove('cardOpen');
+  }
+  function showExCard(node) {
+    clearTimeout(cardTimer);
+    cardTimer = setTimeout(() => {
+      if (MODE.m !== 'explore') return;
+      if (node.project) {
+        const el = CARD_BY_PROJECT[node.project];
+        const btn = el.querySelector('.btn');
+        if (!btn.dataset.filmLabel) btn.dataset.filmLabel = btn.textContent;
+        btn.textContent = 'בחרו דירה בבניין הזה ←';
+        el.classList.add('on'); document.body.classList.add('cardOpen');
+      } else if (node.sky) {
+        planCard.classList.add('on'); document.body.classList.add('cardOpen');
+      }
+    }, 260);
+  }
+  function restoreFilmCardLabels() {
+    for (const k in CARD_BY_PROJECT) {
+      const btn = CARD_BY_PROJECT[k].querySelector('.btn');
+      if (btn.dataset.filmLabel) btn.textContent = btn.dataset.filmLabel;
+    }
+  }
+
+  /* ---- ground chevron arrows ---- */
+  const arrowGroup = new THREE.Group(); arrowGroup.visible = false; world.add(arrowGroup);
+  const arrows = [];
+  { const shape = new THREE.Shape();
+    shape.moveTo(-1.55, -0.1); shape.lineTo(0, 1.35); shape.lineTo(1.55, -0.1);
+    shape.lineTo(1.0, -0.62); shape.lineTo(0, 0.28); shape.lineTo(-1.0, -0.62); shape.closePath();
+    const geo = new THREE.ShapeGeometry(shape);
+    geo.rotateX(-Math.PI / 2); geo.rotateY(Math.PI); /* flat on ground, pointing +Z */
+    for (let i = 0; i < 5; i++) {
+      const m = new THREE.Mesh(geo, new THREE.MeshBasicMaterial({
+        color: 0xd8b46a, transparent: true, opacity: 0.55, depthWrite: false, fog: false,
+        blending: THREE.AdditiveBlending })); /* glowing gold on the dusk ground */
+      m.scale.setScalar(1.2); m.renderOrder = 3; m.visible = false;
+      m.userData.target = null; m.userData.hov = 1.2;
+      arrowGroup.add(m); arrows.push(m);
+    } }
+  let arrowsDirty = true;
+  function layoutArrows() {
+    const n = ex.node;
+    let i = 0;
+    if (!n.sky) for (const id of GRAPH[n.id]) {
+      if (i >= arrows.length) break;
+      const nb = NODES[id];
+      const yawN = Math.atan2(nb.x - n.x, nb.z - n.z);
+      const a = arrows[i++];
+      a.position.set(n.x + Math.sin(yawN) * 10.5, 0.18, n.z + Math.cos(yawN) * 10.5);
+      a.rotation.set(0, yawN, 0);
+      a.userData.target = nb; a.visible = true;
+    }
+    for (; i < arrows.length; i++) { arrows[i].visible = false; arrows[i].userData.target = null; }
+  }
+
+  /* ---- tower hover proxies + auras (never added to scene: raycast only) ---- */
+  const proxyGroup = new THREE.Group();
+  const proxies = [];
+  const TOWER_TOP = { dimri: 129, rainbow: 130, ashira: 116 };
+  for (const key of ['dimri', 'rainbow', 'ashira']) {
+    const p = PROJECTS[key].pos;
+    const h = TOWER_TOP[key];
+    const m = new THREE.Mesh(new THREE.CylinderGeometry(44, 44, h, 8), new THREE.MeshBasicMaterial());
+    m.position.set(p[0], h / 2, p[2]); m.userData.project = key;
+    proxyGroup.add(m); proxies.push(m);
+  }
+  proxyGroup.updateMatrixWorld(true);
+  const auras = {};
+  { const c = document.createElement('canvas'); c.width = c.height = 128;
+    const g = c.getContext('2d'), gr = g.createRadialGradient(64, 64, 6, 64, 64, 64);
+    gr.addColorStop(0, 'rgba(242,217,164,0.5)'); gr.addColorStop(0.55, 'rgba(216,180,106,0.18)'); gr.addColorStop(1, 'rgba(216,180,106,0)');
+    g.fillStyle = gr; g.fillRect(0, 0, 128, 128);
+    const atex = new THREE.CanvasTexture(c);
+    for (const key of ['dimri', 'rainbow', 'ashira']) {
+      const p = PROJECTS[key].pos;
+      const sp = new THREE.Sprite(new THREE.SpriteMaterial({ map: atex, transparent: true, opacity: 0,
+        blending: THREE.AdditiveBlending, depthWrite: false, fog: false }));
+      sp.scale.set(130, 160, 1); sp.position.set(p[0], TOWER_TOP[key] * 0.5, p[2]);
+      sp.visible = false; world.add(sp); auras[key] = sp;
+    } }
+  const NAME_BY_PROJECT = { dimri: 'דימרי ימה', rainbow: 'ריינבו תל אביב', ashira: 'אשירה שדה דב' };
+  let hoverProject = null, hoverArrow = null;
+
+  /* ---- mini-map ---- */
+  const mmC = $('#mm'), mmX = mmC.getContext('2d');
+  const MM = { X0: -270, X1: 520, Z0: -360, Z1: 400, k: 0.215, w: 170, h: 163, dpr: 1 };
+  const mmBG = document.createElement('canvas');
+  const w2mX = x => (x - MM.X0) * MM.k, w2mY = z => (MM.Z1 - z) * MM.k;
+  function mmSize() {
+    const small = innerWidth <= 640;
+    MM.k = small ? 0.155 : 0.215;
+    MM.w = Math.round((MM.X1 - MM.X0) * MM.k); MM.h = Math.round((MM.Z1 - MM.Z0) * MM.k);
+    MM.dpr = Math.min(devicePixelRatio || 1, 2);
+    mmC.style.width = MM.w + 'px'; mmC.style.height = MM.h + 'px';
+    mmC.width = MM.w * MM.dpr; mmC.height = MM.h * MM.dpr;
+    mmBG.width = mmC.width; mmBG.height = mmC.height;
+    const g = mmBG.getContext('2d');
+    g.setTransform(MM.dpr, 0, 0, MM.dpr, 0, 0);
+    /* land */
+    g.fillStyle = '#211b31'; g.fillRect(0, 0, MM.w, MM.h);
+    /* sea + sand */
+    g.fillStyle = '#173049'; g.fillRect(0, 0, w2mX(SHORE_X), MM.h);
+    g.fillStyle = '#54483a'; g.fillRect(w2mX(SHORE_X), 0, w2mX(-113) - w2mX(SHORE_X), MM.h);
+    /* coastal park band */
+    g.fillStyle = 'rgba(66,92,56,.5)'; g.fillRect(w2mX(-113), 0, w2mX(-42) - w2mX(-113), MM.h);
+    /* runway park (N-S) */
+    g.fillStyle = 'rgba(122,120,128,.55)'; g.fillRect(w2mX(51), 0, w2mX(97) - w2mX(51), MM.h);
+    g.strokeStyle = 'rgba(216,210,194,.5)'; g.setLineDash([3, 3]); g.lineWidth = 1;
+    g.beginPath(); g.moveTo(w2mX(74), 0); g.lineTo(w2mX(74), MM.h); g.stroke(); g.setLineDash([]);
+    /* linear park (E-W) */
+    g.fillStyle = 'rgba(66,92,56,.5)'; g.fillRect(w2mX(-30), w2mY(72), w2mX(480) - w2mX(-30), w2mY(-76) - w2mY(72));
+    /* streets */
+    g.strokeStyle = 'rgba(255,255,255,.14)'; g.lineWidth = 1.5;
+    for (const x of [-100, 250, 470]) { g.beginPath(); g.moveTo(w2mX(x), 0); g.lineTo(w2mX(x), MM.h); g.stroke(); }
+    for (const z of [-260, 240]) { g.beginPath(); g.moveTo(w2mX(-100), w2mY(z)); g.lineTo(MM.w, w2mY(z)); g.stroke(); }
+    /* edges */
+    g.strokeStyle = 'rgba(255,255,255,.12)'; g.lineWidth = 1;
+    for (const [a, b] of EDGES) { const A = NODES[a], B = NODES[b]; if (A.sky || B.sky) continue;
+      g.beginPath(); g.moveTo(w2mX(A.x), w2mY(A.z)); g.lineTo(w2mX(B.x), w2mY(B.z)); g.stroke(); }
+    /* flagships */
+    g.fillStyle = '#d8b46a';
+    for (const key of ['dimri', 'rainbow', 'ashira']) { const p = PROJECTS[key].pos;
+      g.fillRect(w2mX(p[0]) - 3, w2mY(p[2]) - 3, 6, 6); }
+    g.font = '600 8.5px Heebo, sans-serif'; g.fillStyle = 'rgba(242,217,164,.95)'; g.textAlign = 'center';
+    g.fillText('דימרי', w2mX(-45), w2mY(-140) + 12);
+    g.fillText('ריינבו', w2mX(160), w2mY(90) - 7);
+    g.fillText('אשירה', w2mX(350), w2mY(-70) + 12);
+    /* nodes */
+    for (const id in NODES) { const n = NODES[id]; if (n.sky) continue;
+      g.beginPath(); g.arc(w2mX(n.x), w2mY(n.z), n.project ? 3 : 2.2, 0, 7);
+      g.fillStyle = n.project ? 'rgba(216,180,106,.95)' : 'rgba(207,211,232,.75)'; g.fill();
+      if (n.project) { g.strokeStyle = 'rgba(216,180,106,.5)'; g.lineWidth = 1;
+        g.beginPath(); g.arc(w2mX(n.x), w2mY(n.z), 5, 0, 7); g.stroke(); } }
+    /* north + sea labels */
+    g.fillStyle = 'rgba(185,176,201,.8)'; g.font = '300 8px Heebo, sans-serif';
+    g.fillText('הים', w2mX(-236), 12);
+    g.fillText('צפ׳ ↑', MM.w - 14, 12);
+  }
+  mmSize();
+  function mmOverlay(T) {
+    mmX.setTransform(MM.dpr, 0, 0, MM.dpr, 0, 0);
+    mmX.clearRect(0, 0, MM.w, MM.h);
+    mmX.drawImage(mmBG, 0, 0, MM.w, MM.h);
+    /* visited */
+    mmX.fillStyle = 'rgba(216,180,106,.55)';
+    for (const id of visited) { const n = NODES[id]; if (n.sky) continue;
+      mmX.beginPath(); mmX.arc(w2mX(n.x), w2mY(n.z), 2.2, 0, 7); mmX.fill(); }
+    /* current position + view cone */
+    const px = w2mX(ex.pos.x), py = w2mY(ex.pos.z);
+    const a = Math.atan2(-Math.cos(ex.yaw), Math.sin(ex.yaw)); /* map angle */
+    mmX.fillStyle = 'rgba(242,217,164,.18)';
+    mmX.beginPath(); mmX.moveTo(px, py);
+    mmX.arc(px, py, 17, a - 0.48, a + 0.48); mmX.closePath(); mmX.fill();
+    mmX.beginPath(); mmX.arc(px, py, 3.6, 0, 7); mmX.fillStyle = '#f2d9a4'; mmX.fill();
+    mmX.strokeStyle = 'rgba(242,217,164,' + (0.5 + 0.4 * Math.sin(T * 3)) + ')';
+    mmX.lineWidth = 1.4;
+    mmX.beginPath(); mmX.arc(px, py, 6.5 + Math.sin(T * 3) * 1.5, 0, 7); mmX.stroke();
+  }
+  function mmPick(ev) {
+    const r = mmC.getBoundingClientRect();
+    const mx = ev.clientX - r.left, my = ev.clientY - r.top;
+    let best = null, bd = 20;
+    for (const id in NODES) { const n = NODES[id]; if (n.sky) continue;
+      const d = Math.hypot(w2mX(n.x) - mx, w2mY(n.z) - my);
+      if (d < bd) { bd = d; best = n; } }
+    return best;
+  }
+  mmC.addEventListener('click', ev => { const n = mmPick(ev); if (n && MODE.m === 'explore') glideTo(n); });
+  $('#mmSky').addEventListener('click', () => { if (MODE.m === 'explore') glideTo(NODES.sky); });
+  $('#mmEnd').addEventListener('click', () => exitExplore(true));
+
+  /* ---- glide machinery ---- */
+  function updateChip(node) { nodeChip.textContent = node.name; }
+  function glideTo(node, opts = {}) {
+    if (MODE.m !== 'explore') return;
+    if (node === ex.node && !ex.gliding && !opts.force) { showExCard(node); return; }
+    hideExCards();
+    ex.from.copy(ex.pos); ex.to.set(node.x, node.y, node.z);
+    const dist = ex.from.distanceTo(ex.to);
+    ex.dur = opts.dur ?? THREE.MathUtils.clamp(dist / (opts.entry ? 150 : 74), 0.85, 3.4);
+    if (REDUCED) ex.dur = Math.min(ex.dur, 0.45);
+    ex.t = 0; ex.gliding = true;
+    ex.arc = (node.sky || ex.node.sky) ? 0 : (REDUCED ? 0 : Math.min(24, dist * 0.09));
+    const dx = ex.to.x - ex.from.x, dz = ex.to.z - ex.from.z;
+    if (Math.hypot(dx, dz) > 8 && !node.sky) ex.tYaw = ex.yaw + shortAngle(Math.atan2(dx, dz) - ex.yaw);
+    ex.tPitch = node.sky ? -1.05 : -0.03; /* auto-level (or dive for the sky view) */
+    ex.node = node; updateChip(node);
+    arrowGroup.visible = false;
+  }
+  function onArrive() {
+    visited.add(ex.node.id);
+    layoutArrows();
+    arrowGroup.visible = !ex.node.sky;
+    showExCard(ex.node);
+  }
+  function neighborToward(back = false) {
+    const n = ex.node; let best = null, bestA = 1.35;
+    for (const id of GRAPH[n.id]) { const nb = NODES[id];
+      const a = Math.abs(shortAngle(Math.atan2(nb.x - n.x, nb.z - n.z) - (back ? ex.yaw + Math.PI : ex.yaw)));
+      if (a < bestA) { bestA = a; best = nb; } }
+    return best;
+  }
+  function move(back) {
+    if (MODE.m !== 'explore' || ex.gliding) return;
+    const nb = neighborToward(back);
+    if (nb) glideTo(nb);
+    else { nodeChip.classList.remove('deny'); void nodeChip.offsetWidth; nodeChip.classList.add('deny'); }
+  }
+
+  /* ---- mode switching ---- */
+  const scrollLock = { y: 0 };
+  const scrollEl = document.scrollingElement || document.documentElement;
+  function lockScroll() { scrollLock.y = scrollY; document.documentElement.style.overflow = 'hidden'; }
+  function unlockScroll() { document.documentElement.style.overflow = ''; scrollTo(0, scrollLock.y); }
+  function nearestNode(p) {
+    let best = null, bd = 1e9;
+    for (const id in NODES) { const n = NODES[id]; if (n.sky) continue;
+      const d = Math.hypot(n.x - p.x, n.z - p.z);
+      if (d < bd) { bd = d; best = n; } }
+    return best;
+  }
+  let helpTimer = 0;
+  function showHelp() {
+    exHelp.classList.add('show');
+    clearTimeout(helpTimer);
+    helpTimer = setTimeout(() => exHelp.classList.remove('show'), 5600);
+  }
+  function enterExplore(targetNode) {
+    if (MODE.m !== 'film') return;
+    MODE.m = 'explore';
+    document.body.classList.add('explore');
+    lockScroll();
+    hint.classList.add('off');
+    for (const c of cards) c.el.classList.remove('on');
+    finale.classList.remove('on');
+    cam.getWorldDirection(TMPDIR);
+    ex.yaw = ex.tYaw = Math.atan2(TMPDIR.x, TMPDIR.z);
+    ex.pitch = ex.tPitch = Math.asin(THREE.MathUtils.clamp(TMPDIR.y, -1, 1));
+    ex.pos.copy(cam.position);
+    ex.fov = cam.fov; ex.fovT = 62;
+    const start = targetNode || nearestNode(cam.position);
+    ex.node = { ...start, id: '_' }; /* virtual node while the entry glide runs */
+    glideTo(start, { entry: true, force: true });
+    showHelp();
+  }
+  function exitExplore(toFinale = false) {
+    if (MODE.m !== 'explore') return;
+    hideExCards(); restoreFilmCardLabels();
+    exHelp.classList.remove('show');
+    arrowGroup.visible = false;
+    canvas.style.cursor = ''; twLabel.classList.remove('on');
+    document.body.classList.remove('explore', 'dragging');
+    if (toFinale) {
+      if (REDUCED && rmGo) rmGo(stations.length - 1);
+      else {
+        const U = 0.985, max = scrollEl.scrollHeight - innerHeight;
+        scrollLock.y = U * max;
+        scrollTo(0, scrollLock.y); /* overflow:hidden still allows programmatic scroll */
+        if (filmProg) filmProg.t = U;
+        if (filmTween) filmTween.progress((U - filmU0) / (1 - filmU0 || 1)); /* align the scrub so film doesn't replay */
+        targetU = dispU = lastDisp = U;
+      }
+    }
+    MODE.m = 'return';
+    dirFromYawPitch(ex.yaw, ex.pitch, TMPDIR);
+    ret.fromP.copy(ex.pos);
+    ret.fromL.copy(ex.pos).add(TMPDIR.multiplyScalar(160));
+    ret.t = 0; ret.dur = REDUCED ? 0.4 : 1.15;
+  }
+  const ret = { t: 0, dur: 1.15, fromP: new THREE.Vector3(), fromL: new THREE.Vector3() };
+  $('#startTour').addEventListener('click', () => enterExplore());
+  $('#finTour').addEventListener('click', () => enterExplore());
+  $('#modePill').addEventListener('click', () => { MODE.m === 'film' ? enterExplore() : exitExplore(false); });
+
+  /* ---- explore input: drag look / pinch fov / keys / pad ---- */
+  const pointers = new Map();
+  let dragMoved = 0, pinch0 = 0, fov0 = 62;
+  canvas.addEventListener('pointerdown', ev => {
+    if (MODE.m !== 'explore') return;
+    try { canvas.setPointerCapture(ev.pointerId); } catch (e) { /* synthetic/stale pointer ids */ }
+    pointers.set(ev.pointerId, { x: ev.clientX, y: ev.clientY });
+    dragMoved = 0;
+    if (pointers.size === 2) { const [a, b] = [...pointers.values()];
+      pinch0 = Math.hypot(a.x - b.x, a.y - b.y); fov0 = ex.fovT; }
+    document.body.classList.add('dragging');
+  });
+  canvas.addEventListener('pointermove', ev => {
+    if (MODE.m !== 'explore' || !pointers.has(ev.pointerId)) return;
+    const p = pointers.get(ev.pointerId);
+    const dx = ev.clientX - p.x, dy = ev.clientY - p.y;
+    p.x = ev.clientX; p.y = ev.clientY;
+    if (pointers.size === 2) {
+      dragMoved = 99; /* a pinch is never a tap */
+      const [a, b] = [...pointers.values()];
+      const d = Math.hypot(a.x - b.x, a.y - b.y);
+      if (pinch0 > 0) ex.fovT = THREE.MathUtils.clamp(fov0 * pinch0 / Math.max(d, 40), 44, 76);
+      return;
+    }
+    dragMoved += Math.abs(dx) + Math.abs(dy);
+    ex.tYaw -= dx * 0.0042;
+    ex.tPitch = THREE.MathUtils.clamp(ex.tPitch + dy * 0.0034, ex.node.sky ? -1.4 : -0.6, 0.42);
+  });
+  const endPointer = ev => {
+    if (!pointers.has(ev.pointerId)) return;
+    pointers.delete(ev.pointerId);
+    if (pointers.size === 0) document.body.classList.remove('dragging');
+    if (MODE.m === 'explore' && dragMoved < 7 && pointers.size === 0) clickRay(ev.clientX, ev.clientY);
+  };
+  canvas.addEventListener('pointerup', endPointer);
+  canvas.addEventListener('pointercancel', endPointer);
+  canvas.addEventListener('wheel', ev => {
+    if (MODE.m !== 'explore') return;
+    ev.preventDefault();
+    ex.fovT = THREE.MathUtils.clamp(ex.fovT + ev.deltaY * 0.02, 44, 76);
+  }, { passive: false });
+
+  const raycaster = new THREE.Raycaster();
+  const ndc = new THREE.Vector2();
+  function clickRay(cx, cy) {
+    ndc.set(cx / innerWidth * 2 - 1, -(cy / innerHeight) * 2 + 1);
+    raycaster.setFromCamera(ndc, cam);
+    const ah = raycaster.intersectObjects(arrows.filter(a => a.visible), false);
+    if (ah.length) { glideTo(ah[0].object.userData.target); return; }
+    const th = raycaster.intersectObjects(proxies, false);
+    if (th.length) { const key = th[0].object.userData.project; glideTo(NODES[PROJECT_NODE[key]]); }
+  }
+
+  /* hover (desktop, both modes) */
+  let hovX = 0, hovY = 0, hovFresh = false;
+  addEventListener('pointermove', ev => { hovX = ev.clientX; hovY = ev.clientY; hovFresh = true; });
+  const twLabel = $('#twLabel'), twName = $('#twName'), twCta = $('#twCta');
+  function hoverPass() {
+    if (MOBILE || !hovFresh || MODE.m === 'return') return;
+    hovFresh = false;
+    ndc.set(hovX / innerWidth * 2 - 1, -(hovY / innerHeight) * 2 + 1);
+    raycaster.setFromCamera(ndc, cam);
+    hoverArrow = null;
+    if (MODE.m === 'explore') {
+      const ah = raycaster.intersectObjects(arrows.filter(a => a.visible), false);
+      if (ah.length) hoverArrow = ah[0].object;
+    }
+    const th = raycaster.intersectObjects(proxies, false);
+    hoverProject = th.length ? th[0].object.userData.project : null;
+    if (hoverProject) {
+      twName.textContent = NAME_BY_PROJECT[hoverProject];
+      twCta.textContent = MODE.m === 'explore' ? 'לחצו כדי לגשת ←' : 'לחצו לסיור חופשי כאן ←';
+      twLabel.classList.add('on');
+    } else twLabel.classList.remove('on');
+    const interactive = hoverProject || hoverArrow;
+    if (MODE.m === 'explore') canvas.style.cursor = interactive ? 'pointer' : '';
+    else document.body.style.cursor = hoverProject ? 'pointer' : '';
+  }
+  /* film-mode click on a tower enters explore at that tower */
+  addEventListener('click', ev => {
+    if (MODE.m !== 'film' || MOBILE || !hoverProject) return;
+    if (ev.target.closest('a,button,.pcard,#finale,#hud,#rail,#rmnav,#modePill,#mmWrap,#pad')) return;
+    enterExplore(NODES[PROJECT_NODE[hoverProject]]);
+  });
+
+  /* keyboard */
+  addEventListener('keydown', ev => {
+    if (MODE.m !== 'explore' || ev.metaKey || ev.ctrlKey || ev.altKey) return;
+    switch (ev.code) {
+      case 'KeyW': case 'ArrowUp': ev.preventDefault(); move(false); break;
+      case 'KeyS': case 'ArrowDown': ev.preventDefault(); move(true); break;
+      case 'KeyA': case 'ArrowLeft': ev.preventDefault(); ex.turn = -1; break;  /* yaw- = turn left */
+      case 'KeyD': case 'ArrowRight': ev.preventDefault(); ex.turn = 1; break;  /* yaw+ = turn right */
+      case 'Escape': exitExplore(false); break;
+    }
+  });
+  addEventListener('keyup', ev => {
+    if (ev.code === 'KeyA' || ev.code === 'ArrowLeft') { if (ex.turn === -1) ex.turn = 0; }
+    if (ev.code === 'KeyD' || ev.code === 'ArrowRight') { if (ex.turn === 1) ex.turn = 0; }
+  });
+
+  /* pad buttons */
+  $('#padF').addEventListener('click', () => move(false));
+  $('#padB').addEventListener('click', () => move(true));
+  const bindTurn = (el, dir) => {
+    let downAt = 0;
+    el.addEventListener('pointerdown', ev => { ev.preventDefault(); try { el.setPointerCapture(ev.pointerId); } catch (e) {} downAt = performance.now(); ex.turn = dir; });
+    const up = () => { if (!downAt) return;
+      if (performance.now() - downAt < 220) ex.tYaw += dir * 0.5; /* tap = nudge */
+      downAt = 0; if (ex.turn === dir) ex.turn = 0; };
+    el.addEventListener('pointerup', up); el.addEventListener('pointercancel', up);
+  };
+  bindTurn($('#padL'), -1); bindTurn($('#padR'), 1);
+
+  /* ---- ambient surf audio (OFF by default; generated, no assets) ---- */
+  const sndBtn = $('#sndBtn');
+  let AC = null, sndMaster = null, sndOn = false;
+  function buildAudio() {
+    AC = new (window.AudioContext || window.webkitAudioContext)();
+    sndMaster = AC.createGain(); sndMaster.gain.value = 0; sndMaster.connect(AC.destination);
+    const len = AC.sampleRate * 4, buf = AC.createBuffer(1, len, AC.sampleRate);
+    const d = buf.getChannelData(0); let last = 0;
+    for (let i = 0; i < len; i++) { const w = Math.random() * 2 - 1; last = (last + 0.02 * w) / 1.02; d[i] = last * 3.4; }
+    const src = AC.createBufferSource(); src.buffer = buf; src.loop = true;
+    const lp = AC.createBiquadFilter(); lp.type = 'lowpass'; lp.frequency.value = 430; lp.Q.value = 0.55;
+    const surf = AC.createGain(); surf.gain.value = 0.10;
+    const lfo = AC.createOscillator(); lfo.frequency.value = 0.085;
+    const lfoG = AC.createGain(); lfoG.gain.value = 0.055;
+    lfo.connect(lfoG); lfoG.connect(surf.gain);
+    src.connect(lp); lp.connect(surf); surf.connect(sndMaster);
+    const hp = AC.createBiquadFilter(); hp.type = 'bandpass'; hp.frequency.value = 1150; hp.Q.value = 0.5;
+    const spray = AC.createGain(); spray.gain.value = 0.018;
+    const lfo2 = AC.createOscillator(); lfo2.frequency.value = 0.061;
+    const lfo2G = AC.createGain(); lfo2G.gain.value = 0.012;
+    lfo2.connect(lfo2G); lfo2G.connect(spray.gain);
+    src.connect(hp); hp.connect(spray); spray.connect(sndMaster);
+    src.start(); lfo.start(); lfo2.start();
+  }
+  sndBtn.addEventListener('click', () => {
+    try {
+      if (!AC) buildAudio();
+      sndOn = !sndOn;
+      if (sndOn) { AC.resume(); sndMaster.gain.setTargetAtTime(0.85, AC.currentTime, 0.5); }
+      else sndMaster.gain.setTargetAtTime(0, AC.currentTime, 0.3);
+      sndBtn.classList.toggle('muted', !sndOn);
+      sndBtn.setAttribute('aria-pressed', String(sndOn));
+      sndBtn.setAttribute('aria-label', sndOn ? 'כיבוי צלילי רקע' : 'הפעלת צלילי רקע');
+    } catch (e) { console.warn('[sdedov] audio unavailable:', e.message); }
+  });
+
+  /* ---- explore frame ---- */
+  function exploreFrame(dt, T) {
+    const K = REDUCED ? 14 : 7.5;
+    if (ex.turn) ex.tYaw += ex.turn * dt * 1.85;
+    if (ex.gliding) {
+      ex.t = Math.min(1, ex.t + dt / ex.dur);
+      const s = ex.t * ex.t * ex.t * (ex.t * (ex.t * 6 - 15) + 10);
+      ex.pos.lerpVectors(ex.from, ex.to, s);
+      ex.pos.y += Math.sin(Math.PI * s) * ex.arc;
+      if (ex.t >= 1) { ex.gliding = false; ex.pos.copy(ex.to); onArrive(); }
+    } else if (!REDUCED) {
+      ex.pos.y = ex.node.y + Math.sin(T * 1.05) * 0.05; /* breathing */
+    }
+    ex.yaw += shortAngle(ex.tYaw - ex.yaw) * Math.min(1, dt * K);
+    ex.pitch += (ex.tPitch - ex.pitch) * Math.min(1, dt * K);
+    ex.fov += (ex.fovT - ex.fov) * Math.min(1, dt * 6);
+    cam.position.copy(ex.pos);
+    dirFromYawPitch(ex.yaw, ex.pitch, TMPDIR);
+    TMPV.copy(ex.pos).addScaledVector(TMPDIR, 60);
+    cam.lookAt(TMPV);
+    cam.fov = ex.fov; cam.updateProjectionMatrix();
+    /* arrow pulse + hover */
+    for (const a of arrows) { if (!a.visible) continue;
+      const target = (hoverArrow === a) ? 1.5 : 1.2;
+      a.userData.hov += (target - a.userData.hov) * Math.min(1, dt * 10);
+      a.scale.setScalar(a.userData.hov);
+      a.material.opacity = (hoverArrow === a ? 0.9 : 0.45 + 0.2 * Math.sin(T * 2.7));
+    }
+    mmOverlay(T);
+  }
+  function returnFrame(dt) {
+    ret.t = Math.min(1, ret.t + dt / ret.dur);
+    const s = ret.t * ret.t * (3 - 2 * ret.t);
+    camPath.getPoint(dispU, tmpP); lookPath.getPoint(dispU, tmpL);
+    cam.position.lerpVectors(ret.fromP, tmpP, s);
+    TMPV.lerpVectors(ret.fromL, tmpL, s);
+    cam.lookAt(TMPV);
+    const filmFov = 54 + 14 * THREE.MathUtils.smoothstep(0.88, 1.0, dispU); /* identical to film branch */
+    cam.fov = ex.fov + (filmFov - ex.fov) * s; cam.updateProjectionMatrix();
+    if (ret.t >= 1) {
+      MODE.m = 'film';
+      unlockScroll();
+      applyUI(dispU);
+    }
+  }
 
   /* ---------------- render loop ---------------- */
   const clock = new THREE.Clock();
   const tmpP = new THREE.Vector3(), tmpL = new THREE.Vector3();
-  function frame() {
-    const dt = Math.min(clock.getDelta(), 0.05), T = clock.elapsedTime;
+  let dcLogged = false, simT = 0;
+  function step(dt) {
+    simT += dt; const T = simT;
     TIME.value = T;
     if (innerWidth > 1 && (innerWidth !== lastW || innerHeight !== lastH)) fit();
 
-    dispU += (targetU - dispU) * (REDUCED ? 1 : Math.min(1, dt * 5.2));
-    const speed = Math.abs(dispU - lastDisp) / Math.max(dt, 1e-4); lastDisp = dispU;
-    const calm = REDUCED ? 0 : THREE.MathUtils.smoothstep(0.02, 0.004, speed);
+    if (MODE.m === 'explore') {
+      exploreFrame(dt, T);
+    } else if (MODE.m === 'return') {
+      returnFrame(dt);
+    } else {
+      dispU += (targetU - dispU) * (REDUCED ? 1 : Math.min(1, dt * 5.2));
+      const speed = Math.abs(dispU - lastDisp) / Math.max(dt, 1e-4); lastDisp = dispU;
+      const calm = REDUCED ? 0 : THREE.MathUtils.smoothstep(0.02, 0.004, speed);
+      camPath.getPoint(dispU, tmpP); lookPath.getPoint(dispU, tmpL);
+      if (calm > 0) { tmpP.x += Math.sin(T * 0.42) * 0.7 * calm; tmpP.y += Math.sin(T * 0.31) * 0.5 * calm; tmpP.z += Math.cos(T * 0.37) * 0.7 * calm; }
+      if (tmpP.y < 2.2) tmpP.y = 2.2;
+      cam.position.copy(tmpP); cam.lookAt(tmpL);
+      cam.fov = 54 + 14 * THREE.MathUtils.smoothstep(0.88, 1.0, dispU); cam.updateProjectionMatrix();
+      applyUI(dispU);
+    }
 
-    camPath.getPoint(dispU, tmpP); lookPath.getPoint(dispU, tmpL);
-    if (calm > 0) { tmpP.x += Math.sin(T * 0.42) * 0.7 * calm; tmpP.y += Math.sin(T * 0.31) * 0.5 * calm; tmpP.z += Math.cos(T * 0.37) * 0.7 * calm; }
-    if (tmpP.y < 2.2) tmpP.y = 2.2;
-    cam.position.copy(tmpP); cam.lookAt(tmpL);
-    cam.fov = 54 + 14 * THREE.MathUtils.smoothstep(0.88, 1.0, dispU); cam.updateProjectionMatrix();
-
-    /* living details */
+    /* living details (all modes) */
     const streak = world.userData.streak;
     if (streak) { streak.userData.tex.offset.y = T * 0.021; streak.material.opacity = 0.5 + Math.sin(T * 0.7) * 0.08; }
+    sea.material.emissiveIntensity = 1.0 + Math.sin(T * 0.5) * 0.09; /* subtle water shimmer */
     for (const b of beacons) b.material.opacity = 0.25 + 0.75 * (Math.sin(T * 2.1 + b.userData.ph) > 0.35 ? 1 : 0.12);
     const rd = world.userData.reading; if (rd) rd.userData.beacon.material.color.setScalar(0).setHex(Math.sin(T * 1.7) > 0.2 ? 0xff2b1e : 0x551512);
-    const birdFade = 1 - THREE.MathUtils.smoothstep(0.3, 0.45, dispU);
+    const birdFade = MODE.m === 'film' ? 1 - THREE.MathUtils.smoothstep(0.3, 0.45, dispU) : 0.85;
     for (const bd of birds) { const u = bd.userData;
       bd.position.set(-620 + Math.cos(T * u.sp + u.ph) * u.r * 2.2, u.h + Math.sin(T * 0.6 + u.ph) * 6, 60 + Math.sin(T * u.sp + u.ph) * u.r);
       bd.material.opacity = 0.8 * birdFade; bd.visible = birdFade > 0.02; }
+    for (const cl of clouds) { cl.position.x += cl.userData.v * dt; if (cl.position.x > 2300) cl.position.x = -2600; }
+    /* tower auras */
+    for (const key in auras) { const sp = auras[key];
+      const want = hoverProject === key ? 0.38 : 0;
+      const o = sp.material.opacity + (want - sp.material.opacity) * Math.min(1, dt * 8);
+      sp.material.opacity = o; sp.visible = o > 0.012; }
+    /* tower hover label position */
+    if (hoverProject && !MOBILE) {
+      const p = PROJECTS[hoverProject].pos;
+      TMPV.set(p[0], TOWER_TOP[hoverProject] + 6, p[2]).project(cam);
+      if (TMPV.z < 1) {
+        twLabel.style.left = ((TMPV.x * 0.5 + 0.5) * innerWidth) + 'px';
+        twLabel.style.top = ((-TMPV.y * 0.5 + 0.5) * innerHeight) + 'px';
+      } else twLabel.classList.remove('on');
+    }
+    hoverPass();
 
-    applyUI(dispU);
     renderer.render(scene, cam);
+    if (!dcLogged && T > 3) { dcLogged = true;
+      console.info('[sdedov] draw calls:', renderer.info.render.calls, '· triangles:', renderer.info.render.triangles); }
+  }
+  function frame() {
+    step(Math.min(clock.getDelta(), 0.05));
     requestAnimationFrame(frame);
   }
+  /* QA hook: advance the sim deterministically without rAF (headless testing) */
+  window.__tick = (dt = 1 / 60, n = 1) => { for (let i = 0; i < n; i++) step(Math.min(dt, 0.05)); return simT.toFixed(2); };
 
-  window.__dbg = { renderer, scene, cam, camPath, lookPath, THREE };
+  window.__dbg = { renderer, scene, cam, camPath, lookPath, THREE, MODE, ex, NODES, enterExplore, exitExplore, glideTo };
   /* screenshot hook (debug/QA): window.__save('preview.png', scale, [u]) */
   window.__save = async (name = 'preview.png', scale = 1, u = null) => {
     if (renderer.domElement.width < 2) fit(1280, 800);
-    if (u !== null) { targetU = dispU = lastDisp = u; camPath.getPoint(dispU, tmpP); lookPath.getPoint(dispU, tmpL);
+    if (u !== null && MODE.m === 'film') { targetU = dispU = lastDisp = u; camPath.getPoint(dispU, tmpP); lookPath.getPoint(dispU, tmpL);
       cam.position.copy(tmpP); cam.lookAt(tmpL);
       cam.fov = 54 + 14 * THREE.MathUtils.smoothstep(0.88, 1.0, dispU); cam.updateProjectionMatrix(); applyUI(dispU); }
     renderer.render(scene, cam);
@@ -887,11 +1817,12 @@ async function boot() {
 
   /* go */
   veilBar.style.width = '100%';
-  setTimeout(() => $('#veil').classList.add('off'), 380);
-  if (document.hidden) { const onVis = () => { if (!document.hidden) { removeEventListener('visibilitychange', onVis); frame(); } };
-    addEventListener('visibilitychange', onVis); }
-  frame();
-  console.info('[sdedov] V1 ready · towers:', JSON.stringify(towersUsed), REDUCED ? '· reduced-motion' : '· scroll flight');
+  setTimeout(() => { $('#veil').classList.add('off'); document.body.classList.add('ready'); }, 380);
+  if (document.hidden) { /* start exactly one loop (V1 started two when opened hidden) */
+    const onVis = () => { if (!document.hidden) { removeEventListener('visibilitychange', onVis); frame(); } };
+    addEventListener('visibilitychange', onVis);
+  } else frame();
+  console.info('[sdedov] V2 ready · towers:', JSON.stringify(towersUsed), REDUCED ? '· reduced-motion' : '· scroll flight + explore');
 }
 
 boot().catch(err => {
