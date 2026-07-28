@@ -466,7 +466,10 @@
   .onbCard h2{font-size:clamp(22px,5.6vw,30px);font-weight:800;line-height:1.15;margin-bottom:10px;
     background:linear-gradient(120deg,#fff 30%,var(--gold-hi) 75%);-webkit-background-clip:text;background-clip:text;color:transparent}
   .onbCard p{font-size:14.5px;font-weight:300;color:var(--txt);line-height:1.65;margin-bottom:20px}
-  .onbBtns{display:flex;gap:10px}
+  .onbBtns{display:flex;gap:10px;flex-wrap:wrap}
+  #onbDemo{flex-basis:100%;border:1px dashed rgba(216,180,106,.45);background:transparent;color:var(--gold-hi);font-size:14.5px;min-height:48px}
+  #onbDemo:hover{background:rgba(216,180,106,.1)}
+  #demoChip{position:fixed;bottom:18px;inset-inline-start:50%;transform:translateX(50%);z-index:60;background:rgba(12,16,28,.78);border:1px solid rgba(216,180,106,.5);color:var(--gold-hi);font:600 13px/1 Heebo,sans-serif;padding:10px 16px;border-radius:999px;pointer-events:none;backdrop-filter:blur(4px);white-space:nowrap}
   .onbBtns button{flex:1;cursor:pointer;font-family:inherit;font-weight:800;font-size:16.5px;min-height:58px;
     border-radius:15px;transition:transform .2s, box-shadow .2s, background .2s;-webkit-tap-highlight-color:transparent}
   #onbFly{border:none;background:linear-gradient(115deg,var(--gold) 0%,#b98f45 100%);color:#241a08;
@@ -702,10 +705,13 @@ document.body.classList.add(s==='dusk'?'dusk':'day');})();</script>
     <div class="onbBtns">
       <button id="onbFly">טיסה</button>
       <button id="onbWalk">סיור חופשי</button>
+      <button id="onbDemo">▶ צפייה אוטומטית · 20 שניות ללא ידיים</button>
     </div>
     <div class="sub2">אפשר להחליף מצב בכל שלב · גלילה או הקשה סוגרות את החלון</div>
   </div>
 </div>
+
+<div id="demoChip" hidden dir="rtl">▶ הדגמה אוטומטית · כל נגיעה עוצרת ומחזירה שליטה</div>
 
 <div id="veil">
   <div class="logo">NAD-LAN.CO.IL</div>
@@ -2950,7 +2956,7 @@ async function boot() {
     setTimeout(() => { onbEl.hidden = true; }, 520);
   }
   function maybeShowOnb() {
-    if (!onbOK || MODE.m !== 'film' || START_T !== null) return; /* deep links skip the intro */
+    if (!onbOK || MODE.m !== 'film' || START_T !== null || Q.get('demo') === '1') return; /* deep links + auto-demo skip the intro */
     onbShown = true;
     if (REDUCED) $('#onbLine').textContent = 'עברו בין התחנות עם הכפתורים · או צאו לסיור חופשי והסתובבו עם החצים';
     onbEl.hidden = false;
@@ -2962,6 +2968,43 @@ async function boot() {
   onbEl.addEventListener('pointerdown', ev => { if (!ev.target.closest('button')) dismissOnb(); });
   addEventListener('touchmove', () => dismissOnb(), { passive: true });
   addEventListener('scroll', () => { if (sEl.scrollTop > 4) dismissOnb(); }, { passive: true });
+
+  /* ---- auto-demo (?demo=1 / onboarding button): hands-free chapter chain.
+     A DRIVER on top of the live film, never a replacement - any touch, wheel
+     or key stops it instantly and hands full control back to the visitor. ---- */
+  const demoChipEl = $('#demoChip');
+  let demoRun = null;
+  function demoStop(done) {
+    if (!demoRun) return;
+    clearTimeout(demoRun.t);
+    demoRun = null;
+    if (demoChipEl) demoChipEl.hidden = true;
+    if (!done && autoTween) { autoTween.kill(); autoTween = null; }
+  }
+  function demoPlay() {
+    if (MODE.m !== 'film' || REDUCED) return;
+    dismissOnb();
+    demoStop();
+    demoRun = { i: 1, t: 0 };
+    if (demoChipEl) demoChipEl.hidden = false;
+    const step = () => {
+      if (!demoRun) return;
+      if (demoRun.i >= stations.length) { demoStop(true); return; }
+      chapterGo(demoRun.i);
+      const ms = (autoTween ? autoTween.duration() * 1000 : 1400) + 850;
+      demoRun.i++;
+      demoRun.t = setTimeout(step, ms);
+    };
+    step();
+  }
+  ['pointerdown', 'wheel', 'touchstart', 'keydown'].forEach(function (ev) {
+    addEventListener(ev, function () { demoStop(); }, { passive: true, capture: true });
+  });
+  const onbDemoBtn = $('#onbDemo');
+  if (onbDemoBtn) onbDemoBtn.addEventListener('click', function (ev) {
+    ev.stopPropagation();
+    setTimeout(demoPlay, 30); /* let this click's own capture-stop pass first */
+  });
 
   /* ---- ambient surf audio (OFF by default; generated, no assets) ---- */
   const sndBtn = $('#sndBtn');
@@ -3211,6 +3254,10 @@ async function boot() {
   if (MODE_PARAM === 'explore' || FOCUS_NODE[FOCUS]) {
     const target = NODES[FOCUS_NODE[FOCUS] || 'run-c'];
     setTimeout(() => enterExplore(target), 60); /* not rAF — must fire even in a hidden tab */
+  }
+  if (Q.get('demo') === '1' && MODE.m === 'film' && !REDUCED) {
+    try { sessionStorage.setItem('sdedovOnb', '1'); } catch (e) { /* private mode */ }
+    setTimeout(demoPlay, 1100); /* let the shell paint, then roll the film */
   }
   window.__bootMs = Math.round(performance.now()); /* shell-interactive time since navigation */
   console.info('[sdedov] V3 ready in', window.__bootMs + 'ms ·', SUN0 ? 'dusk' : 'day', '·', YEAR0 ? '2035' : '2026',
