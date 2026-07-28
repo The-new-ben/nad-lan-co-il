@@ -97,7 +97,7 @@
     --gold:#d8b46a; --gold-hi:#f2d9a4; --ink:#0e0a1c;
     --veil:rgba(14,10,28,.42); --line:rgba(255,255,255,.14);
     --card-bg:rgba(16,12,30,.55); --txt:#f3eee2; --dim:#b9b0c9;
-    --pb:52px;
+    --pb:58px;
   }
   *{margin:0;padding:0;box-sizing:border-box}
   html{scroll-behavior:auto}
@@ -153,20 +153,39 @@
   body.explore #modePill .mFilm{display:none}
   body.explore #modePill .mEx{display:inline}
 
-  /* ---------- progress rail (film mode) ---------- */
+  /* ---------- progress rail (film mode) — chapter dots are CLICKABLE ---------- */
   #rail{position:fixed;left:clamp(12px,2vw,26px);top:50%;transform:translateY(-50%);z-index:6;display:flex;align-items:center;gap:12px;pointer-events:none}
   #rail .track{position:relative;width:2px;height:min(44vh,340px);background:rgba(255,255,255,.14);border-radius:2px;overflow:visible}
   #rail .fill{position:absolute;top:0;left:0;width:100%;height:0%;background:linear-gradient(180deg,var(--gold-hi),var(--gold));border-radius:2px;
     box-shadow:0 0 12px rgba(216,180,106,.55)}
   #rail .stops{position:absolute;inset:0}
-  #rail .stop{position:absolute;left:50%;width:7px;height:7px;border-radius:50%;transform:translate(-50%,-50%);
-    background:#4d4568;border:1px solid rgba(255,255,255,.25);transition:all .4s}
+  #rail .stop{position:absolute;left:50%;width:9px;height:9px;border-radius:50%;transform:translate(-50%,-50%);
+    background:#4d4568;border:1px solid rgba(255,255,255,.25);transition:all .4s;cursor:pointer;pointer-events:auto;
+    -webkit-tap-highlight-color:transparent}
+  #rail .stop::after{content:'';position:absolute;inset:-18px;border-radius:50%} /* 45px tap target */
+  #rail .stop:hover{background:#6d6390;border-color:rgba(255,255,255,.5)}
   #rail .stop.hit{background:var(--gold);box-shadow:0 0 10px rgba(216,180,106,.8);transform:translate(-50%,-50%) scale(1.35)}
-  #rail .labels{display:flex;flex-direction:column;justify-content:space-between;height:min(44vh,340px);padding:0}
-  #rail .labels span{font-size:10.5px;color:var(--dim);font-weight:300;opacity:.75;transition:all .4s;line-height:1}
+  #rail .labels{position:relative;height:min(44vh,340px);width:max-content}
+  #rail .labels span{position:absolute;right:0;transform:translateY(-50%);white-space:nowrap;padding:5px 6px;
+    font-size:11.5px;color:var(--dim);font-weight:300;opacity:.8;transition:color .4s,opacity .4s;line-height:1;
+    cursor:pointer;pointer-events:auto;-webkit-tap-highlight-color:transparent}
+  #rail .labels span:hover{color:#fff;opacity:1}
   #rail .labels span.hit{color:var(--gold-hi);opacity:1;font-weight:600}
   @media (max-width:900px){ #rail .labels{display:none} }
   body.explore #rail{display:none}
+
+  /* ---------- chapter prev/next arrows (film mode, direction-neutral vertical) ---------- */
+  #chapNav{position:fixed;left:clamp(10px,2vw,24px);top:50%;transform:translateY(-50%);z-index:6;
+    height:calc(min(44vh,340px) + 140px);display:flex;flex-direction:column;justify-content:space-between;
+    pointer-events:none;transition:opacity .3s}
+  #chapNav button{pointer-events:auto;cursor:pointer;width:46px;height:46px;border-radius:50%;
+    display:flex;align-items:center;justify-content:center;background:rgba(16,12,30,.66);
+    border:1px solid rgba(216,180,106,.45);color:var(--gold-hi);backdrop-filter:blur(10px);
+    transition:background .25s, transform .12s;-webkit-tap-highlight-color:transparent}
+  #chapNav button:hover{background:rgba(216,180,106,.2)}
+  #chapNav button:active{transform:scale(.93)}
+  #chapNav button svg{width:24px;height:24px;fill:none;stroke:currentColor;stroke-width:2.1;stroke-linecap:round;stroke-linejoin:round}
+  body.explore #chapNav,body.rm #chapNav{display:none}
 
   /* ---------- scroll hint + start-tour ---------- */
   #hint{position:fixed;bottom:clamp(18px,4vh,40px);left:50%;transform:translateX(-50%);z-index:6;text-align:center;
@@ -199,27 +218,29 @@
   .pcard li{font-size:14px;font-weight:300;color:var(--txt);display:flex;align-items:center;gap:9px}
   .pcard li::before{content:'';width:5px;height:5px;border-radius:50%;background:var(--gold);flex:none;box-shadow:0 0 7px rgba(216,180,106,.7)}
   .pcard li b{font-weight:700;color:#fff}
-  .btn{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;padding:13px 18px;border-radius:13px;
+  .btn{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;min-height:44px;padding:13px 18px;border-radius:13px;
     background:linear-gradient(115deg,var(--gold) 0%,#b98f45 100%);color:#241a08;font-weight:700;font-size:14.5px;text-decoration:none;
     transition:transform .25s, box-shadow .25s;box-shadow:0 8px 26px rgba(216,180,106,.25)}
   .btn:hover{transform:translateY(-2px);box-shadow:0 12px 32px rgba(216,180,106,.4)}
-  .pcard .fine{margin-top:10px;font-size:10.5px;color:var(--dim);font-weight:300;text-align:center}
-  .pcx{display:none;position:absolute;top:12px;left:12px;width:30px;height:30px;border-radius:50%;cursor:pointer;
-    border:1px solid var(--line);background:rgba(255,255,255,.06);color:var(--dim);font-family:inherit;font-size:14px;line-height:1}
+  .pcard .fine{margin-top:10px;font-size:12px;color:var(--dim);font-weight:300;text-align:center}
+  .pcx{display:none;position:absolute;top:12px;left:12px;width:34px;height:34px;border-radius:50%;cursor:pointer;
+    border:1px solid var(--line);background:rgba(255,255,255,.06);color:var(--dim);font-family:inherit;font-size:15px;line-height:1}
+  .pcx::after{content:'';position:absolute;inset:-7px;border-radius:50%} /* 48px tap target */
   .pcx:hover{color:#fff;border-color:rgba(255,255,255,.4)}
   body.explore .pcx{display:block}
   #card-plan .en{margin-bottom:10px}
 
-  /* mobile: bottom sheet */
+  /* mobile: bottom sheet (capped height so the canvas center stays visible) */
   @media (max-width:640px){
     .pcard{top:auto;bottom:0;right:0;left:0;width:100%;transform:translateY(106%);
+      max-height:46vh;overflow-y:auto;overscroll-behavior:contain;
       border-radius:22px 22px 0 0;border-left:none;border-right:none;border-bottom:none;padding:16px 20px calc(16px + env(safe-area-inset-bottom))}
     .pcard.on{transform:translateY(0)}
     .pcard::before{content:'';display:block;width:44px;height:4px;border-radius:4px;background:rgba(255,255,255,.28);margin:0 auto 12px}
     .pcard h3{font-size:22px}
     .pcard .en{margin-bottom:8px}
     .pcard ul{flex-direction:row;flex-wrap:wrap;gap:6px 16px;margin-bottom:12px}
-    .pcard li{font-size:12.5px}
+    .pcard li{font-size:13px}
     .pcx{top:16px}
   }
 
@@ -229,7 +250,8 @@
     opacity:0;visibility:hidden;transform:translateY(30px);pointer-events:none;
     transition:opacity .8s ease, transform .8s ease, visibility 0s linear .8s;
     background:linear-gradient(180deg, transparent 30%, rgba(10,7,22,.72) 78%)}
-  #finale.on{opacity:1;visibility:visible;transform:translateY(0);pointer-events:auto;transition-delay:0s}
+  #finale.on{opacity:1;visibility:visible;transform:translateY(0);transition-delay:0s}
+  #finale.on .fin{pointer-events:auto} /* only the content blocks clicks — the rail stays usable */
   .fin{width:min(880px,100%);text-align:center}
   .fin .kick{font-size:12.5px;letter-spacing:.22em;color:var(--gold-hi);font-weight:400;margin-bottom:10px}
   .fin h2{font-size:clamp(28px,5vw,46px);font-weight:800;line-height:1.12;margin-bottom:8px;
@@ -243,17 +265,17 @@
   .fin-card b{font-size:16.5px;font-weight:700}
   .fin-card span{font-size:11.5px;color:var(--dim);font-weight:300}
   .fin-card em{font-style:normal;font-size:11.5px;color:var(--gold-hi);margin-top:6px;font-weight:600}
-  .wa{display:inline-flex;align-items:center;gap:9px;padding:12px 26px;border-radius:99px;text-decoration:none;
+  .wa{display:inline-flex;align-items:center;gap:9px;min-height:44px;padding:12px 26px;border-radius:99px;text-decoration:none;
     background:rgba(37,211,102,.14);border:1px solid rgba(37,211,102,.5);color:#c9f7db;font-weight:600;font-size:14px;
     transition:background .3s, transform .3s}
   .wa:hover{background:rgba(37,211,102,.26);transform:translateY(-2px)}
   .wa svg{width:17px;height:17px;fill:#4be284}
   #finTour{display:block;margin:12px auto 0;cursor:pointer;background:none;border:1px solid rgba(216,180,106,.4);
-    color:var(--gold-hi);font-family:inherit;font-size:13px;font-weight:600;border-radius:99px;padding:10px 22px;
+    color:var(--gold-hi);font-family:inherit;font-size:13px;font-weight:600;border-radius:99px;min-height:44px;padding:10px 22px;
     transition:background .3s}
   #finTour:hover{background:rgba(216,180,106,.12)}
-  .fin .fine{margin-top:14px;font-size:10.5px;color:#8d84a3;font-weight:300}
-  @media (max-width:640px){ .fin-grid{grid-template-columns:1fr;gap:8px} .fin-card{flex-direction:row;align-items:center;justify-content:space-between;flex-wrap:wrap} #finale{padding-bottom:calc(18px + env(safe-area-inset-bottom))} }
+  .fin .fine{margin-top:14px;font-size:12px;color:#8d84a3;font-weight:300}
+  @media (max-width:640px){ .fin-grid{grid-template-columns:1fr;gap:8px} .fin-card{flex-direction:row;align-items:center;justify-content:space-between;flex-wrap:wrap} .fin-card span{font-size:13px} #finale{padding-bottom:calc(18px + env(safe-area-inset-bottom))} }
 
   /* ---------- EXPLORE MODE UI ---------- */
   #exUI{display:none}
@@ -267,6 +289,7 @@
   @keyframes shake{0%,100%{transform:translateX(-50%)}25%{transform:translateX(calc(-50% - 7px))}55%{transform:translateX(calc(-50% + 7px))}80%{transform:translateX(calc(-50% - 4px))}}
 
   #pad{position:fixed;bottom:calc(24px + env(safe-area-inset-bottom));left:50%;transform:translateX(-50%);z-index:8;
+    direction:ltr; /* RTL grid flips the columns — keep the pad in gamepad orientation (left btn on the left) */
     display:grid;grid-template-columns:repeat(3,var(--pb));grid-template-rows:var(--pb) var(--pb);gap:9px;
     grid-template-areas:"l f r" ". b ."}
   .pbtn{cursor:pointer;width:var(--pb);height:var(--pb);border-radius:50%;display:flex;align-items:center;justify-content:center;
@@ -274,14 +297,26 @@
     transition:background .2s, transform .12s, border-color .2s;touch-action:manipulation;-webkit-tap-highlight-color:transparent}
   .pbtn:hover{background:rgba(216,180,106,.18);border-color:rgba(216,180,106,.7)}
   .pbtn:active{transform:scale(.92);background:rgba(216,180,106,.3)}
-  .pbtn svg{width:26px;height:26px;fill:none;stroke:currentColor;stroke-width:2.1;stroke-linecap:round;stroke-linejoin:round}
+  .pbtn svg{width:28px;height:28px;fill:none;stroke:currentColor;stroke-width:2.1;stroke-linecap:round;stroke-linejoin:round}
   #padF{grid-area:f}#padB{grid-area:b}#padL{grid-area:l}#padR{grid-area:r}
   #padF{background:rgba(216,180,106,.2);border-color:rgba(216,180,106,.7)}
 
   #exHelp{position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);z-index:8;pointer-events:none;text-align:center;
     font-size:14px;font-weight:400;color:var(--txt);background:rgba(14,10,26,.72);border:1px solid var(--line);
-    border-radius:14px;padding:14px 26px;backdrop-filter:blur(12px);opacity:0;transition:opacity .8s}
+    border-radius:14px;padding:14px 26px;backdrop-filter:blur(12px);opacity:0;transition:opacity .8s;
+    max-width:min(500px,88vw);line-height:1.6}
   #exHelp.show{opacity:1}
+
+  /* ---------- explore quick actions: overview + "how do I move?" ---------- */
+  #exSide{position:fixed;right:clamp(14px,2vw,26px);bottom:calc(22px + 52px + 14px + env(safe-area-inset-bottom));z-index:8;
+    display:flex;flex-direction:column;align-items:flex-end;gap:10px}
+  #exSide button{cursor:pointer;display:inline-flex;align-items:center;gap:8px;min-height:46px;padding:10px 16px;
+    border-radius:99px;border:1px solid rgba(216,180,106,.45);background:rgba(16,12,30,.66);color:var(--gold-hi);
+    font-family:inherit;font-size:13.5px;font-weight:600;backdrop-filter:blur(10px);transition:background .25s;
+    -webkit-tap-highlight-color:transparent;white-space:nowrap}
+  #exSide button:hover{background:rgba(216,180,106,.18)}
+  #exSide button svg{width:21px;height:21px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;flex:none}
+  #exSide .q{font-size:17px;font-weight:800;width:21px;text-align:center;flex:none}
 
   /* mini-map */
   #mmWrap{position:fixed;left:clamp(14px,2vw,26px);bottom:calc(22px + env(safe-area-inset-bottom));z-index:8;
@@ -289,8 +324,9 @@
     box-shadow:0 14px 44px rgba(0,0,0,.45)}
   #mm{display:block;border-radius:9px;cursor:pointer}
   .mmbtns{display:flex;gap:6px;margin-top:8px}
-  .mmbtns button{flex:1;cursor:pointer;font-family:inherit;font-size:11.5px;font-weight:600;color:var(--gold-hi);
-    background:rgba(216,180,106,.1);border:1px solid rgba(216,180,106,.35);border-radius:9px;padding:7px 4px;transition:background .25s}
+  .mmbtns button{flex:1;cursor:pointer;font-family:inherit;font-size:12.5px;font-weight:600;color:var(--gold-hi);
+    background:rgba(216,180,106,.1);border:1px solid rgba(216,180,106,.35);border-radius:9px;padding:8px 4px;transition:background .25s;
+    -webkit-tap-highlight-color:transparent}
   .mmbtns button:hover{background:rgba(216,180,106,.22)}
   #waFab{position:fixed;right:clamp(14px,2vw,26px);bottom:calc(22px + env(safe-area-inset-bottom));z-index:8;
     width:52px;height:52px;border-radius:50%;display:flex;align-items:center;justify-content:center;
@@ -308,14 +344,22 @@
   #twLabel span{font-size:11px;color:var(--gold-hi);font-weight:600}
 
   @media (max-width:640px){
-    :root{--pb:56px}
+    :root{--pb:60px}
     .brand .sub{display:none}
-    #modePill{top:calc(98px + env(safe-area-inset-top));font-size:12px;padding:7px 15px}
-    #mmWrap{left:10px;bottom:auto;top:calc(196px + env(safe-area-inset-top));padding:7px 7px 6px}
-    .mmbtns button{font-size:10.5px;padding:6px 3px}
+    #modePill{top:calc(112px + env(safe-area-inset-top));font-size:13px;padding:8px 16px}
+    #sndBtn{width:44px;height:44px}
+    .badge{font-size:12px}
+    #mmWrap{left:10px;bottom:auto;top:calc(232px + env(safe-area-inset-top));padding:7px 7px 6px}
+    .mmbtns button{font-size:13px;padding:0 4px;min-height:44px}
+    #mmSky{display:none} /* the exSide overview button covers it — keeps 2 buttons readable at >=13px */
     #waFab{bottom:calc(30px + env(safe-area-inset-bottom));width:48px;height:48px}
-    #nodeChip{bottom:calc(26px + 2*var(--pb) + 24px + env(safe-area-inset-bottom));font-size:12.5px}
-    body.cardOpen #pad,body.cardOpen #nodeChip,body.cardOpen #waFab{opacity:0;pointer-events:none;transition:opacity .3s}
+    #nodeChip{bottom:calc(26px + 2*var(--pb) + 24px + env(safe-area-inset-bottom));font-size:13px}
+    #exSide{right:auto;left:10px;bottom:calc(26px + env(safe-area-inset-bottom));align-items:flex-start}
+    #exSide button{width:48px;height:48px;min-height:48px;padding:0;justify-content:center;border-radius:50%}
+    #exSide .t{display:none}
+    body.cardOpen #pad,body.cardOpen #nodeChip,body.cardOpen #waFab,body.cardOpen #exSide{opacity:0;pointer-events:none;transition:opacity .3s}
+    #chapNav{left:auto;right:10px;height:calc(min(44vh,340px) + 112px)} /* right edge is free on mobile; the left column holds the HUD stack */
+    body.filmCard #chapNav{opacity:0;pointer-events:none} /* the bottom sheet covers the lower arrow — hide both while a card is up */
     #twLabel{display:none}
   }
 
@@ -326,7 +370,7 @@
   body.rm #rmnav{display:flex}
   body.rm.explore #rmnav{display:none}
   #rmnav button{cursor:pointer;border:1px solid rgba(216,180,106,.4);background:rgba(216,180,106,.1);color:var(--gold-hi);
-    font-family:inherit;font-size:13px;font-weight:600;border-radius:99px;padding:8px 18px}
+    font-family:inherit;font-size:13px;font-weight:600;border-radius:99px;min-height:44px;padding:8px 18px}
   #rmnav button:disabled{opacity:.35;cursor:default}
   #rmnav .st{font-size:13px;font-weight:400;min-width:110px;text-align:center;color:var(--txt)}
   body.rm #hint .txt,body.rm #hint .chev{display:none}
@@ -357,12 +401,14 @@
   @media (max-width:640px){
     /* joins the HUD column (top-right in RTL terms) — clear of pad, hint and minimap */
     #yearSw{position:static;transform:none;margin-top:4px}
-    #yearSw button{font-size:11px;padding:6px 11px}
+    #yearSw button{font-size:13px;padding:7px 13px;min-height:44px}
+    #yearSw button small{font-size:10.5px}
+    #sunSw button{min-height:44px;min-width:44px;padding:8px 16px;font-size:13px} /* after the base rule so it wins the cascade */
   }
 
   /* ---------- V3: smart-loading chip (never blocks the page) ---------- */
   #loadChip{position:fixed;bottom:calc(20px + env(safe-area-inset-bottom));left:50%;transform:translateX(-50%) translateY(0);z-index:10;
-    display:flex;align-items:center;gap:9px;font-size:12px;font-weight:400;color:var(--dim);
+    display:flex;align-items:center;gap:9px;font-size:13px;font-weight:400;color:var(--dim);
     background:rgba(16,12,30,.78);border:1px solid var(--line);border-radius:99px;padding:7px 16px;backdrop-filter:blur(12px);
     pointer-events:none;transition:opacity .7s, transform .7s}
   #loadChip.off{opacity:0;transform:translateX(-50%) translateY(12px)}
@@ -370,8 +416,12 @@
     animation:spin 1s linear infinite;flex:none}
   @keyframes spin{to{transform:rotate(360deg)}}
   body.rm #loadChip i{animation:none;border-top-color:rgba(216,180,106,.25)}
-  @media (max-width:640px){ #loadChip{bottom:auto;top:calc(142px + env(safe-area-inset-top));left:auto;right:10px;transform:none}
-    #loadChip.off{transform:translateY(-10px)} }
+  @media (max-width:640px){
+    /* left column, under the year switch — measured clear of modePill, rail dots and HUD at 375/390 */
+    #loadChip{bottom:auto;top:calc(272px + env(safe-area-inset-top));left:26px;right:auto;transform:none}
+    #loadChip.off{transform:translateY(-10px)}
+    body.explore #loadChip,body.onb #loadChip{opacity:0} /* minimap owns that corner in explore; the intro owns the first seconds */
+  }
 
   /* ---------- V3: daylight UI theme ---------- */
   body.day #frame{background:
@@ -400,6 +450,32 @@
   .btnwa svg{width:17px;height:17px;fill:#4be284;flex:none}
   #card-dyn .btn{margin-bottom:8px}
   #card-dyn .btn[hidden],#card-dyn .btnwa[hidden]{display:none}
+
+  /* ---------- first-visit onboarding (one per session) ---------- */
+  #onb{position:fixed;inset:0;z-index:15;display:flex;align-items:center;justify-content:center;padding:22px;
+    background:rgba(10,7,20,.44);backdrop-filter:blur(3px);-webkit-backdrop-filter:blur(3px);
+    opacity:0;transition:opacity .5s}
+  #onb.show{opacity:1}
+  #onb:not(.show){pointer-events:none} /* the fade-out must never eat clicks */
+  #onb[hidden]{display:none}
+  .onbCard{width:min(430px,92vw);text-align:center;background:rgba(17,12,32,.9);border:1px solid rgba(216,180,106,.4);
+    border-radius:24px;padding:30px 26px 22px;box-shadow:0 30px 90px rgba(0,0,0,.55), inset 0 1px 0 rgba(255,255,255,.07);
+    backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);transform:translateY(0);transition:transform .5s}
+  #onb:not(.show) .onbCard{transform:translateY(14px)}
+  .onbCard .kick{font-size:12px;letter-spacing:.26em;color:var(--gold-hi);font-weight:400;margin-bottom:10px}
+  .onbCard h2{font-size:clamp(22px,5.6vw,30px);font-weight:800;line-height:1.15;margin-bottom:10px;
+    background:linear-gradient(120deg,#fff 30%,var(--gold-hi) 75%);-webkit-background-clip:text;background-clip:text;color:transparent}
+  .onbCard p{font-size:14.5px;font-weight:300;color:var(--txt);line-height:1.65;margin-bottom:20px}
+  .onbBtns{display:flex;gap:10px}
+  .onbBtns button{flex:1;cursor:pointer;font-family:inherit;font-weight:800;font-size:16.5px;min-height:58px;
+    border-radius:15px;transition:transform .2s, box-shadow .2s, background .2s;-webkit-tap-highlight-color:transparent}
+  #onbFly{border:none;background:linear-gradient(115deg,var(--gold) 0%,#b98f45 100%);color:#241a08;
+    box-shadow:0 10px 30px rgba(216,180,106,.3)}
+  #onbFly:hover{transform:translateY(-2px);box-shadow:0 14px 36px rgba(216,180,106,.45)}
+  #onbWalk{border:1px solid rgba(216,180,106,.55);background:rgba(216,180,106,.08);color:var(--gold-hi)}
+  #onbWalk:hover{background:rgba(216,180,106,.18)}
+  .onbCard .sub2{margin-top:13px;font-size:12px;color:var(--dim);font-weight:300}
+  body.onb #hint{visibility:hidden}
 
   /* ---------- loader ---------- */
   #veil{position:fixed;inset:0;z-index:20;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;
@@ -460,28 +536,35 @@ document.body.classList.add(s==='dusk'?'dusk':'day');})();</script>
 </header>
 
 <button id="modePill" aria-label="החלפת מצב סיור">
-  <span class="mFilm">◈ סיור חופשי ברובע</span><span class="mEx">✕ יציאה מהסיור החופשי</span>
+  <span class="mFilm">◈ סיור חופשי ברובע</span><span class="mEx">✕ חזרה לטיסה</span>
 </button>
 
 <div id="loadChip" class="off" aria-live="polite"><i></i><span id="loadChipTxt">המגדלים נטענים ברקע…</span></div>
 
-<div id="rail" aria-hidden="true">
+<div id="rail" aria-label="פרקי הטיסה — הקישו לקפיצה">
   <div class="track"><div class="fill" id="railFill"></div>
     <div class="stops">
-      <div class="stop" style="top:2%"  data-u="0.02"></div>
-      <div class="stop" style="top:30%" data-u="0.30"></div>
-      <div class="stop" style="top:60%" data-u="0.60"></div>
-      <div class="stop" style="top:79%" data-u="0.79"></div>
-      <div class="stop" style="top:99%" data-u="0.99"></div>
+      <div class="stop" style="top:2%"  data-u="0.02" role="button" tabindex="0" aria-label="לפרק: מעל הים"></div>
+      <div class="stop" style="top:30%" data-u="0.30" role="button" tabindex="0" aria-label="לפרק: דימרי ימה"></div>
+      <div class="stop" style="top:47%" data-u="0.47" role="button" tabindex="0" aria-label="לפרק: פארק המסלול"></div>
+      <div class="stop" style="top:60%" data-u="0.60" role="button" tabindex="0" aria-label="לפרק: ריינבו"></div>
+      <div class="stop" style="top:79%" data-u="0.79" role="button" tabindex="0" aria-label="לפרק: אשירה"></div>
+      <div class="stop" style="top:99%" data-u="0.99" role="button" tabindex="0" aria-label="לפרק: סיום ובחירת דירה"></div>
     </div>
   </div>
   <div class="labels">
-    <span data-u="0.02">מעל הים</span>
-    <span data-u="0.30">דימרי ימה</span>
-    <span data-u="0.60">ריינבו</span>
-    <span data-u="0.79">אשירה</span>
-    <span data-u="0.99">הבחירה</span>
+    <span style="top:2%"  data-u="0.02">ים</span>
+    <span style="top:30%" data-u="0.30">דימרי</span>
+    <span style="top:47%" data-u="0.47">המסלול</span>
+    <span style="top:60%" data-u="0.60">ריינבו</span>
+    <span style="top:79%" data-u="0.79">אשירה</span>
+    <span style="top:99%" data-u="0.99">סיום</span>
   </div>
+</div>
+
+<div id="chapNav">
+  <button id="chapPrev" aria-label="לפרק הקודם"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 14.5l6-6 6 6"/></svg></button>
+  <button id="chapNext" aria-label="לפרק הבא"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9.5l6 6 6-6"/></svg></button>
 </div>
 
 <div id="hint">
@@ -592,6 +675,10 @@ document.body.classList.add(s==='dusk'?'dusk':'day');})();</script>
     <button id="padB" class="pbtn" aria-label="חזרה אחורה"><svg viewBox="0 0 24 24"><path d="M6 9.5l6 6 6-6"/></svg></button>
   </div>
   <div id="exHelp"></div>
+  <div id="exSide">
+    <button id="exView" aria-label="תצפית על"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2.5 12s3.6-6.2 9.5-6.2 9.5 6.2 9.5 6.2-3.6 6.2-9.5 6.2S2.5 12 2.5 12z"/><circle cx="12" cy="12" r="2.7"/></svg><span class="t">תצפית על ↗</span></button>
+    <button id="exHow" aria-label="איך זזים? הצגת ההסבר"><b class="q" aria-hidden="true">?</b><span class="t">איך זזים?</span></button>
+  </div>
   <div id="mmWrap">
     <canvas id="mm" role="button" aria-label="מפת הרובע — הקישו למעבר לנקודה"></canvas>
     <div class="mmbtns">
@@ -606,6 +693,19 @@ document.body.classList.add(s==='dusk'?'dusk':'day');})();</script>
 </div>
 
 <div id="twLabel"><b id="twName"></b><span id="twCta"></span></div>
+
+<div id="onb" hidden>
+  <div class="onbCard" role="dialog" aria-label="איך מסיירים ברובע">
+    <div class="kick">NAD-LAN.CO.IL</div>
+    <h2>ברוכים הבאים לרובע שדה דב</h2>
+    <p id="onbLine">גללו לטיסה מעל הרובע · או לחצו ״סיור חופשי״ והסתובבו עם החצים</p>
+    <div class="onbBtns">
+      <button id="onbFly">טיסה</button>
+      <button id="onbWalk">סיור חופשי</button>
+    </div>
+    <div class="sub2">אפשר להחליף מצב בכל שלב · גלילה או הקשה סוגרות את החלון</div>
+  </div>
+</div>
 
 <div id="veil">
   <div class="logo">NAD-LAN.CO.IL</div>
@@ -2131,9 +2231,11 @@ async function boot() {
   ], false, 'centripetal');
 
   let targetU = START_T ?? 0, dispU = targetU, lastDisp = targetU;
+  /* the six chapters of the flight — rail dots, prev/next arrows, PgUp/PgDn and
+     the reduced-motion station nav all share this list */
   const stations = [
-    { u: 0.02, name: 'מעל הים' }, { u: 0.30, name: 'דימרי ימה' }, { u: 0.60, name: 'ריינבו תל אביב' },
-    { u: 0.79, name: 'אשירה' }, { u: 1.0, name: 'בחירת דירה' }];
+    { u: 0.02, name: 'מעל הים' }, { u: 0.30, name: 'דימרי ימה' }, { u: 0.47, name: 'פארק המסלול' },
+    { u: 0.60, name: 'ריינבו תל אביב' }, { u: 0.79, name: 'אשירה' }, { u: 0.99, name: 'סיום ובחירה' }];
   let station = 0;
 
   /* UI bindings */
@@ -2141,7 +2243,9 @@ async function boot() {
   const finale = $('#finale'), hint = $('#hint'), railFill = $('#railFill');
   const stops = [...document.querySelectorAll('#rail .stop')], labels = [...document.querySelectorAll('#rail .labels span')];
   function applyUI(u) {
-    for (const c of cards) c.el.classList.toggle('on', u >= c.a && u <= c.b);
+    let anyCard = false;
+    for (const c of cards) { const on = u >= c.a && u <= c.b; c.el.classList.toggle('on', on); if (on) anyCard = true; }
+    document.body.classList.toggle('filmCard', anyCard); /* mobile: bottom sheet up → hide the chapter arrows under it */
     finale.classList.toggle('on', u >= 0.94);
     hint.classList.toggle('off', u > 0.025);
     railFill.style.height = (u * 100).toFixed(2) + '%';
@@ -2245,8 +2349,8 @@ async function boot() {
     out.set(Math.sin(yaw) * Math.cos(pitch), Math.sin(pitch), Math.cos(yaw) * Math.cos(pitch));
 
   const nodeChip = $('#nodeChip'), exHelp = $('#exHelp');
-  exHelp.textContent = MOBILE ? 'גררו כדי להביט סביב · הקישו על כל בניין לפרטים'
-                              : 'גררו כדי להביט סביב · WASD או חיצים · לחצו על כל בניין לפרטים';
+  exHelp.textContent = MOBILE ? 'גררו כדי להביט סביב · חיצים למטה = תנועה · הקישו על בניין לפרטים · הקשה כפולה מקרבת אליו'
+                              : 'גררו כדי להביט סביב · WASD או חיצים לתנועה · קליק על בניין לפרטים · דאבל־קליק מקרב אליו';
 
   /* ---- cards in explore mode ---- */
   const CARD_BY_PROJECT = { dimri: $('#card-dimri'), rainbow: $('#card-rainbow'), ashira: $('#card-ashira') };
@@ -2322,8 +2426,8 @@ async function boot() {
       const m = new THREE.Mesh(geo, new THREE.MeshBasicMaterial({
         color: 0xd8b46a, transparent: true, opacity: 0.55, depthWrite: false, fog: false,
         blending: THREE.AdditiveBlending })); /* glowing gold on the dusk ground */
-      m.scale.setScalar(1.2); m.renderOrder = 3; m.visible = false;
-      m.userData.target = null; m.userData.hov = 1.2;
+      m.scale.setScalar(1.45); m.renderOrder = 3; m.visible = false; /* big, easy click targets */
+      m.userData.target = null; m.userData.hov = 1.45;
       arrowGroup.add(m); arrows.push(m);
     } }
   let arrowsDirty = true;
@@ -2335,7 +2439,7 @@ async function boot() {
       const nb = NODES[id];
       const yawN = Math.atan2(nb.x - n.x, nb.z - n.z);
       const a = arrows[i++];
-      a.position.set(n.x + Math.sin(yawN) * 10.5, 0.18, n.z + Math.cos(yawN) * 10.5);
+      a.position.set(n.x + Math.sin(yawN) * 11.5, 0.18, n.z + Math.cos(yawN) * 11.5);
       a.rotation.set(0, yawN, 0);
       a.userData.target = nb; a.visible = true;
     }
@@ -2378,7 +2482,7 @@ async function boot() {
   let mmRedraw = null;
   function mmSize() {
     const small = innerWidth <= 640;
-    MM.k = small ? 0.118 : 0.163;
+    MM.k = small ? 0.128 : 0.163;
     MM.w = Math.round((MM.X1 - MM.X0) * MM.k); MM.h = Math.round((MM.Z1 - MM.Z0) * MM.k);
     MM.dpr = Math.min(devicePixelRatio || 1, 2);
     mmC.style.width = MM.w + 'px'; mmC.style.height = MM.h + 'px';
@@ -2478,12 +2582,24 @@ async function boot() {
   $('#mmSky').addEventListener('click', () => { if (MODE.m === 'explore') glideTo(ex.node.zone === 'east' ? NODES['ein-sky'] : NODES.sky); });
   $('#mmEast').addEventListener('click', () => { if (MODE.m === 'explore') glideTo(NODES['ein-gate']); });
   $('#mmEnd').addEventListener('click', () => exitExplore(true));
+  /* quick actions: overview toggle (up ↔ back down) + reopen the how-to hints */
+  $('#exView').addEventListener('click', () => { if (MODE.m !== 'explore') return;
+    if (ex.node.sky) glideTo(lastGround || NODES['run-c']);
+    else glideTo(ex.node.zone === 'east' ? NODES['ein-sky'] : NODES.sky); });
+  $('#exHow').addEventListener('click', () => { if (MODE.m === 'explore') showHelp(); });
 
   /* ---- glide machinery ---- */
-  function updateChip(node) { nodeChip.textContent = node.name; }
+  const exViewBtn = $('#exView'), exViewT = exViewBtn.querySelector('.t');
+  let lastGround = NODES['run-c']; /* where "descend from overview" returns to */
+  function updateChip(node) {
+    nodeChip.textContent = node.name;
+    exViewT.textContent = node.sky ? 'ירידה מהתצפית ↓' : 'תצפית על ↗';
+    exViewBtn.setAttribute('aria-label', node.sky ? 'ירידה מהתצפית' : 'תצפית על');
+  }
   function glideTo(node, opts = {}) {
     if (MODE.m !== 'explore') return;
     if (node.zone === 'east' && !einBuilt) buildEinsteinZone(); /* V3: lazy east zone */
+    if (!node.sky && node.id !== '_') lastGround = node;
     if (node === ex.node && !ex.gliding && !opts.force) { showExCard(node); return; }
     hideExCards();
     ex.from.copy(ex.pos); ex.to.set(node.x, node.y, node.z);
@@ -2534,10 +2650,11 @@ async function boot() {
   function showHelp() {
     exHelp.classList.add('show');
     clearTimeout(helpTimer);
-    helpTimer = setTimeout(() => exHelp.classList.remove('show'), 5600);
+    helpTimer = setTimeout(() => exHelp.classList.remove('show'), 6800);
   }
   function enterExplore(targetNode) {
     if (MODE.m !== 'film') return;
+    dismissOnb(); cancelFilmAuto();
     MODE.m = 'explore';
     document.body.classList.add('explore');
     lockScroll();
@@ -2556,6 +2673,7 @@ async function boot() {
   }
   function exitExplore(toFinale = false) {
     if (MODE.m !== 'explore') return;
+    cancelFilmAuto();
     hideExCards(); restoreFilmCardLabels();
     exHelp.classList.remove('show');
     arrowGroup.visible = false;
@@ -2611,11 +2729,17 @@ async function boot() {
     ex.tYaw -= dx * 0.0042;
     ex.tPitch = THREE.MathUtils.clamp(ex.tPitch + dy * 0.0034, ex.node.sky ? -1.4 : -0.6, 0.42);
   });
+  let lastTapT = 0, lastTapX = 0, lastTapY = 0;
   const endPointer = ev => {
     if (!pointers.has(ev.pointerId)) return;
     pointers.delete(ev.pointerId);
     if (pointers.size === 0) document.body.classList.remove('dragging');
-    if (MODE.m === 'explore' && dragMoved < 7 && pointers.size === 0) clickRay(ev.clientX, ev.clientY);
+    if (MODE.m === 'explore' && dragMoved < 7 && pointers.size === 0) {
+      const now = performance.now(); /* double-click / double-tap a building = glide to it */
+      if (now - lastTapT < 340 && Math.hypot(ev.clientX - lastTapX, ev.clientY - lastTapY) < 40) {
+        lastTapT = 0; dblRay(ev.clientX, ev.clientY);
+      } else { lastTapT = now; lastTapX = ev.clientX; lastTapY = ev.clientY; clickRay(ev.clientX, ev.clientY); }
+    }
   };
   canvas.addEventListener('pointerup', endPointer);
   canvas.addEventListener('pointercancel', endPointer);
@@ -2661,6 +2785,15 @@ async function boot() {
       if (info) { openDyn(info); return; } }
     hideExCards();
   }
+  /* double-click / double-tap: walk over to whatever was hit */
+  function dblRay(cx, cy) {
+    ndc.set(cx / innerWidth * 2 - 1, -(cy / innerHeight) * 2 + 1);
+    raycaster.setFromCamera(ndc, cam);
+    const th = raycaster.intersectObjects(proxies, false);
+    if (th.length) { glideTo(NODES[PROJECT_NODE[th[0].object.userData.project]]); return; }
+    const ch = raycaster.intersectObjects(pickables(), false);
+    if (ch.length) { const p = ch[0].point; const n = nearestNode({ x: p.x, z: p.z }); if (n) glideTo(n); }
+  }
 
   /* hover (desktop, both modes) */
   let hovX = 0, hovY = 0, hovFresh = false;
@@ -2701,7 +2834,7 @@ async function boot() {
      opens its card (works with touch taps too) */
   addEventListener('click', ev => {
     if (MODE.m !== 'film') return;
-    if (ev.target.closest('a,button,.pcard,#finale,#hud,#rail,#rmnav,#modePill,#mmWrap,#pad,#sunSw,#yearSw,#loadChip')) return;
+    if (ev.target.closest('a,button,.pcard,#finale,#hud,#rail,#chapNav,#rmnav,#modePill,#mmWrap,#pad,#sunSw,#yearSw,#loadChip,#onb,#exSide')) return;
     ndc.set(ev.clientX / innerWidth * 2 - 1, -(ev.clientY / innerHeight) * 2 + 1);
     raycaster.setFromCamera(ndc, cam);
     const th = raycaster.intersectObjects(proxies, false);
@@ -2738,6 +2871,97 @@ async function boot() {
     el.addEventListener('pointerup', up); el.addEventListener('pointercancel', up);
   };
   bindTurn($('#padL'), -1); bindTurn($('#padR'), 1);
+
+  /* ============================================================
+     USABILITY PASS — film-mode scroll feel.
+     Small wheel ticks GLIDE (amplified + inertial), chapters are
+     clickable (rail dots/labels + prev/next arrows), PgUp/PgDn
+     and Home/End jump, arrow keys nudge smoothly.
+     ============================================================ */
+  const sEl = document.scrollingElement || document.documentElement;
+  let wTarget = null, autoTween = null;
+  function killAuto() { if (autoTween) { autoTween.kill(); autoTween = null; } }
+  function cancelFilmAuto() { killAuto(); wTarget = null; }
+  function chapterGo(i) {
+    i = Math.max(0, Math.min(stations.length - 1, i));
+    if (REDUCED) { if (rmGo) rmGo(i); return; }
+    if (MODE.m !== 'film') return;
+    cancelFilmAuto();
+    const max = sEl.scrollHeight - innerHeight;
+    const pos = { y: sEl.scrollTop }, y = stations[i].u * max;
+    const dur = THREE.MathUtils.clamp(Math.abs(y - pos.y) / Math.max(max, 1) * 7.5, 0.9, 3.6);
+    autoTween = gsap.to(pos, { y, duration: dur, ease: 'power2.inOut',
+      onUpdate: () => { sEl.scrollTop = pos.y; },
+      onComplete: () => { autoTween = null; } });
+  }
+  function chapterStep(d) {
+    let cur = 0;
+    for (let i = 0; i < stations.length; i++) if (dispU >= stations[i].u - 0.015) cur = i;
+    if (d < 0 && dispU > stations[cur].u + 0.05) { chapterGo(cur); return; } /* mid-leg back = snap to chapter start */
+    chapterGo(cur + d);
+  }
+  for (const el of [...stops, ...labels]) {
+    const idx = stations.findIndex(s => Math.abs(s.u - +el.dataset.u) < 0.011);
+    if (idx < 0) continue;
+    el.addEventListener('click', () => chapterGo(idx));
+    el.addEventListener('keydown', ev => { if (ev.code === 'Enter' || ev.code === 'Space') { ev.preventDefault(); chapterGo(idx); } });
+  }
+  $('#chapPrev').addEventListener('click', () => chapterStep(-1));
+  $('#chapNext').addEventListener('click', () => chapterStep(1));
+  addEventListener('wheel', ev => {
+    if (MODE.m !== 'film' || REDUCED || ev.ctrlKey) return;
+    ev.preventDefault();
+    killAuto(); dismissOnb();
+    const max = sEl.scrollHeight - innerHeight;
+    const d = ev.deltaMode === 1 ? ev.deltaY * 40 : ev.deltaMode === 2 ? ev.deltaY * innerHeight * 0.8 : ev.deltaY;
+    if (wTarget === null) wTarget = sEl.scrollTop;
+    wTarget = THREE.MathUtils.clamp(wTarget + d * 2.1, 0, max);
+  }, { passive: false });
+  addEventListener('touchstart', () => { if (MODE.m === 'film') cancelFilmAuto(); }, { passive: true });
+  addEventListener('pointerdown', ev => {
+    if (MODE.m === 'film' && !ev.target.closest('#chapNav,#rail,#onb')) cancelFilmAuto();
+  });
+  addEventListener('keydown', ev => {
+    if (MODE.m !== 'film' || ev.metaKey || ev.ctrlKey || ev.altKey) return;
+    switch (ev.code) {
+      case 'PageDown': ev.preventDefault(); dismissOnb(); chapterStep(1); break;
+      case 'PageUp': ev.preventDefault(); dismissOnb(); chapterStep(-1); break;
+      case 'End': ev.preventDefault(); dismissOnb(); chapterGo(stations.length - 1); break;
+      case 'Home': ev.preventDefault(); dismissOnb(); chapterGo(0); break;
+      case 'ArrowDown': if (!REDUCED) { ev.preventDefault(); dismissOnb(); killAuto();
+        if (wTarget === null) wTarget = sEl.scrollTop;
+        wTarget = Math.min(wTarget + innerHeight * 0.55, sEl.scrollHeight - innerHeight); } break;
+      case 'ArrowUp': if (!REDUCED) { ev.preventDefault(); killAuto();
+        if (wTarget === null) wTarget = sEl.scrollTop;
+        wTarget = Math.max(wTarget - innerHeight * 0.55, 0); } break;
+    }
+  });
+
+  /* ---- first-visit onboarding: one per session, dies on first scroll/click ---- */
+  const onbEl = $('#onb');
+  let onbShown = false, onbOK = false;
+  try { onbOK = !sessionStorage.getItem('sdedovOnb'); } catch (e) { onbOK = true; }
+  function dismissOnb() {
+    if (!onbShown) return;
+    onbShown = false;
+    try { sessionStorage.setItem('sdedovOnb', '1'); } catch (e) { /* private mode */ }
+    onbEl.classList.remove('show');
+    document.body.classList.remove('onb');
+    setTimeout(() => { onbEl.hidden = true; }, 520);
+  }
+  function maybeShowOnb() {
+    if (!onbOK || MODE.m !== 'film' || START_T !== null) return; /* deep links skip the intro */
+    onbShown = true;
+    if (REDUCED) $('#onbLine').textContent = 'עברו בין התחנות עם הכפתורים · או צאו לסיור חופשי והסתובבו עם החצים';
+    onbEl.hidden = false;
+    document.body.classList.add('onb');
+    requestAnimationFrame(() => requestAnimationFrame(() => onbEl.classList.add('show')));
+  }
+  $('#onbFly').addEventListener('click', ev => { ev.stopPropagation(); dismissOnb(); chapterGo(1); });
+  $('#onbWalk').addEventListener('click', ev => { ev.stopPropagation(); dismissOnb(); enterExplore(); });
+  onbEl.addEventListener('pointerdown', ev => { if (!ev.target.closest('button')) dismissOnb(); });
+  addEventListener('touchmove', () => dismissOnb(), { passive: true });
+  addEventListener('scroll', () => { if (sEl.scrollTop > 4) dismissOnb(); }, { passive: true });
 
   /* ---- ambient surf audio (OFF by default; generated, no assets) ---- */
   const sndBtn = $('#sndBtn');
@@ -2798,7 +3022,7 @@ async function boot() {
     cam.fov = ex.fov; cam.updateProjectionMatrix();
     /* arrow pulse + hover */
     for (const a of arrows) { if (!a.visible) continue;
-      const target = (hoverArrow === a) ? 1.5 : 1.2;
+      const target = (hoverArrow === a) ? 1.85 : 1.45;
       a.userData.hov += (target - a.userData.hov) * Math.min(1, dt * 10);
       a.scale.setScalar(a.userData.hov);
       a.material.opacity = (hoverArrow === a ? 0.9 : 0.45 + 0.2 * Math.sin(T * 2.7));
@@ -2872,6 +3096,12 @@ async function boot() {
     } else if (MODE.m === 'return') {
       returnFrame(dt);
     } else {
+      /* wheel inertia: glide the document toward the accumulated wheel target */
+      if (wTarget !== null) {
+        const cur = sEl.scrollTop, dd = wTarget - cur;
+        if (Math.abs(dd) < 0.7) { sEl.scrollTop = wTarget; wTarget = null; }
+        else sEl.scrollTop = cur + dd * Math.min(1, dt * 7.5);
+      }
       dispU += (targetU - dispU) * (REDUCED ? 1 : Math.min(1, dt * 5.2));
       const speed = Math.abs(dispU - lastDisp) / Math.max(dt, 1e-4); lastDisp = dispU;
       const calm = REDUCED ? 0 : THREE.MathUtils.smoothstep(0.02, 0.004, speed);
@@ -2968,7 +3198,7 @@ async function boot() {
   /* go — the shell is fully procedural, so this line is reached fast;
      the GLB towers keep streaming behind the chip (V3 smart loading) */
   veilBar.style.width = '100%';
-  setTimeout(() => { $('#veil').classList.add('off'); document.body.classList.add('ready'); }, 380);
+  setTimeout(() => { $('#veil').classList.add('off'); document.body.classList.add('ready'); maybeShowOnb(); }, 380);
   if (document.hidden) { /* start exactly one loop (V1 started two when opened hidden) */
     const onVis = () => { if (!document.hidden) { removeEventListener('visibilitychange', onVis); frame(); } };
     addEventListener('visibilitychange', onVis);
