@@ -5,8 +5,37 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="robots" content="noindex">
 <title>רובע שדה דב — הסיור | nad-lan.co.il</title>
-<meta name="description" content="סיור תלת־ממדי ברובע שדה דב, תל אביב — טיסת דמדומים + סיור חופשי בין דימרי ימה, ריינבו ואשירה. הדמיה להמחשה.">
+<meta name="description" content="סיור תלת־ממדי ברובע שדה דב, תל אביב — אור יום ים־תיכוני, חיי רחוב, טיסת היכרות וסיור חופשי עד ציר איינשטיין. הדמיה להמחשה.">
 <meta name="theme-color" content="#131022">
+<!-- ============================================================================
+  V3 (2026-07-28) — DAYLIGHT + STREET LIFE + EINSTEIN EXTENSION + CLICK-EVERYTHING
+                    + TIME MACHINE 2026/2035 + SMART LOADING (never blocks boot)
+
+  DEEP-LINK PARAMS (for embedding under project pages):
+    ?mode=film|explore      start in the cinematic flight (default) or free-walk
+    ?focus=dimri|rainbow|ashira        jump straight into explore at a flagship
+    ?focus=einstein                    jump to the Einstein-street gate (east zone)
+    ?focus=einstein-tower|einstein-19|ashdar-einstein   jump to that project node
+    ?sun=day|dusk           lighting state (default day — bright Mediterranean)
+    ?year=2026|2035         time machine (default 2035 — the planned quarter;
+                            2026 = the site today: cranes, skeletons, empty lots)
+    ?t=0..1                 film-mode scrub position
+    ?rm=1|0                 force reduced-motion on/off (QA) · ?fb=1 force fallback towers
+
+  EAST-ZONE RESEARCH (ציר איינשטיין, between Sde Dov and Ramat Aviv):
+  Einstein St runs E-W from Namir/KKL up to Ramat Aviv; the strip between the
+  quarter and the university is 1950s-60s shikunim now cycling into urban
+  renewal. Catalog projects (live pages on nad-lan.co.il, linked from cards):
+    - EINSTEIN TOWER — קבוצת חג׳ג׳, W end of Einstein at Ibn Gvirol corner,
+      near the planned Green-Line LRT stop → /projects/einstein-tower/
+    - איינשטיין 19 — פינוי בינוי של אזורים, two 1960s blocks replaced by new
+      towers mid-Einstein → /projects/einstein-19/
+    - אשדר איינשטיין — boutique project in Neve Avivim by Ashdar (Ashtrom)
+      → /projects/ashdar-einstein/
+  Additional researched massing in the zone is labeled "בקרוב אצלנו" and CTAs
+  to WhatsApp. Sources are listed inline next to EPROJECTS in the script.
+  The whole east zone is stylized massing — הדמיה להמחשה, not a planning doc.
+============================================================================= -->
 <!-- ============================================================================
   V2 MASTERPLAN RESEARCH (2026-07-28) — the surrounding quarter in this scene is
   STYLIZED MASSING informed by the facts below. It is NOT an official rendering;
@@ -282,7 +311,7 @@
     :root{--pb:56px}
     .brand .sub{display:none}
     #modePill{top:calc(98px + env(safe-area-inset-top));font-size:12px;padding:7px 15px}
-    #mmWrap{left:10px;bottom:auto;top:calc(142px + env(safe-area-inset-top));padding:7px 7px 6px}
+    #mmWrap{left:10px;bottom:auto;top:calc(196px + env(safe-area-inset-top));padding:7px 7px 6px}
     .mmbtns button{font-size:10.5px;padding:6px 3px}
     #waFab{bottom:calc(30px + env(safe-area-inset-bottom));width:48px;height:48px}
     #nodeChip{bottom:calc(26px + 2*var(--pb) + 24px + env(safe-area-inset-bottom));font-size:12.5px}
@@ -301,6 +330,76 @@
   #rmnav button:disabled{opacity:.35;cursor:default}
   #rmnav .st{font-size:13px;font-weight:400;min-width:110px;text-align:center;color:var(--txt)}
   body.rm #hint .txt,body.rm #hint .chev{display:none}
+
+  /* ---------- V3: sun switch (יום/שקיעה) ---------- */
+  #sunSw{pointer-events:auto;display:flex;border:1px solid var(--line);border-radius:99px;overflow:hidden;
+    background:rgba(20,14,34,.5);backdrop-filter:blur(8px)}
+  #sunSw button{cursor:pointer;border:none;background:none;color:var(--dim);font-family:inherit;
+    font-size:11.5px;font-weight:600;padding:5px 13px;transition:background .3s,color .3s;-webkit-tap-highlight-color:transparent}
+  #sunSw button.on{background:rgba(216,180,106,.24);color:var(--gold-hi)}
+  #sunSw button:not(.on):hover{color:#fff}
+
+  /* ---------- V3: time machine (היום 2026 / הרובע 2035) ---------- */
+  #yearSw{position:fixed;top:calc(64px + env(safe-area-inset-top));left:50%;transform:translateX(-50%);z-index:9;
+    display:flex;align-items:center;border:1px solid rgba(216,180,106,.55);border-radius:99px;padding:4px;
+    background:rgba(18,13,32,.72);backdrop-filter:blur(12px);opacity:0;pointer-events:none;transition:opacity .6s;
+    box-shadow:0 10px 34px rgba(0,0,0,.35)}
+  body.ready #yearSw{opacity:1;pointer-events:auto}
+  #yearSw .thumb{position:absolute;top:4px;bottom:4px;width:calc(50% - 4px);border-radius:99px;
+    background:linear-gradient(115deg,rgba(216,180,106,.32),rgba(216,180,106,.14));border:1px solid rgba(216,180,106,.5);
+    transition:right .45s cubic-bezier(.6,.05,.25,1);right:calc(50%);pointer-events:none}
+  #yearSw.past .thumb{right:4px}
+  #yearSw button{position:relative;z-index:1;cursor:pointer;border:none;background:none;color:var(--dim);font-family:inherit;
+    font-size:13px;font-weight:700;padding:8px 18px;white-space:nowrap;transition:color .35s;-webkit-tap-highlight-color:transparent}
+  #yearSw button.on{color:var(--gold-hi)}
+  #yearSw button:not(.on):hover{color:#fff}
+  #yearSw button small{display:block;font-size:9.5px;font-weight:400;letter-spacing:.06em;color:inherit;opacity:.75}
+  @media (max-width:640px){
+    /* joins the HUD column (top-right in RTL terms) — clear of pad, hint and minimap */
+    #yearSw{position:static;transform:none;margin-top:4px}
+    #yearSw button{font-size:11px;padding:6px 11px}
+  }
+
+  /* ---------- V3: smart-loading chip (never blocks the page) ---------- */
+  #loadChip{position:fixed;bottom:calc(20px + env(safe-area-inset-bottom));left:50%;transform:translateX(-50%) translateY(0);z-index:10;
+    display:flex;align-items:center;gap:9px;font-size:12px;font-weight:400;color:var(--dim);
+    background:rgba(16,12,30,.78);border:1px solid var(--line);border-radius:99px;padding:7px 16px;backdrop-filter:blur(12px);
+    pointer-events:none;transition:opacity .7s, transform .7s}
+  #loadChip.off{opacity:0;transform:translateX(-50%) translateY(12px)}
+  #loadChip i{width:11px;height:11px;border-radius:50%;border:2px solid rgba(216,180,106,.25);border-top-color:var(--gold-hi);
+    animation:spin 1s linear infinite;flex:none}
+  @keyframes spin{to{transform:rotate(360deg)}}
+  body.rm #loadChip i{animation:none;border-top-color:rgba(216,180,106,.25)}
+  @media (max-width:640px){ #loadChip{bottom:auto;top:calc(142px + env(safe-area-inset-top));left:auto;right:10px;transform:none}
+    #loadChip.off{transform:translateY(-10px)} }
+
+  /* ---------- V3: daylight UI theme ---------- */
+  body.day #frame{background:
+      radial-gradient(120% 90% at 50% 46%, transparent 64%, rgba(18,30,52,.20) 100%),
+      linear-gradient(180deg, rgba(22,36,60,.26) 0%, transparent 11%, transparent 90%, rgba(18,30,52,.30) 100%)}
+  body.day #grain{opacity:.03}
+  body.day #veil{background:radial-gradient(130% 100% at 50% 110%, #cfe3f2 0%, #8db3d6 55%, #5b83ad 100%)}
+  body.day #veil .logo,body.day #veil .cap{color:#28405e}
+  body.day #veil h2{background:linear-gradient(120deg,#14283f 30%,#7a5c22 78%);-webkit-background-clip:text;background-clip:text}
+  body.day #veil .bar{background:rgba(20,40,66,.22)}
+  body.day .brand h1{filter:drop-shadow(0 1px 7px rgba(8,18,36,.55))}
+  body.day .brand .logo,body.day .brand .sub{color:#e8edf6;text-shadow:0 1px 6px rgba(8,18,36,.5)}
+  body.day #rail .track{background:rgba(16,28,46,.28)}
+  body.day #rail .labels span{color:#eaf0f8;text-shadow:0 1px 5px rgba(8,18,36,.55)}
+  body.day #hint .txt{text-shadow:0 1px 9px rgba(8,18,36,.85)}
+  body.day #fatal{background:radial-gradient(130% 100% at 50% 110%, #cfe3f2 0%, #8db3d6 55%, #5b83ad 100%)}
+  body.day #fatal p{color:#28405e}
+
+  /* ---------- V3: dynamic building card ---------- */
+  #card-dyn .pcx{display:block}
+  #card-dyn .desc{font-size:13px;font-weight:300;color:var(--dim);line-height:1.55;margin:-6px 0 14px}
+  .btnwa{display:flex;align-items:center;justify-content:center;gap:9px;width:100%;padding:13px 18px;border-radius:13px;
+    background:rgba(37,211,102,.15);border:1px solid rgba(37,211,102,.5);color:#c9f7db;font-weight:700;font-size:14.5px;text-decoration:none;
+    transition:transform .25s, background .25s}
+  .btnwa:hover{transform:translateY(-2px);background:rgba(37,211,102,.28)}
+  .btnwa svg{width:17px;height:17px;fill:#4be284;flex:none}
+  #card-dyn .btn{margin-bottom:8px}
+  #card-dyn .btn[hidden],#card-dyn .btnwa[hidden]{display:none}
 
   /* ---------- loader ---------- */
   #veil{position:fixed;inset:0;z-index:20;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;
@@ -325,6 +424,9 @@
 </style>
 </head>
 <body>
+<script>/* sun state before first paint (V3): default DAY, ?sun=dusk keeps the twilight look */
+(function(){var s=new URLSearchParams(location.search).get('sun');
+document.body.classList.add(s==='dusk'?'dusk':'day');})();</script>
 
 <div id="scrollway"></div>
 <canvas id="stage"></canvas>
@@ -338,6 +440,10 @@
   </div>
   <div class="hudside">
     <div class="badge">על פי התכנית · הדמיה להמחשה</div>
+    <div id="sunSw" role="group" aria-label="מצב תאורה">
+      <button id="sunDay" class="on" aria-pressed="true">יום</button>
+      <button id="sunDusk" aria-pressed="false">שקיעה</button>
+    </div>
     <button id="sndBtn" class="muted" aria-label="הפעלת צלילי רקע" aria-pressed="false">
       <svg viewBox="0 0 24 24" aria-hidden="true">
         <path class="sp" d="M4 9.5v5h3.6L13 19V5L7.6 9.5H4z"/>
@@ -345,12 +451,19 @@
         <path class="off" d="M16.5 9.5l5 5M21.5 9.5l-5 5"/>
       </svg>
     </button>
+    <div id="yearSw" role="group" aria-label="מכונת הזמן של הרובע">
+      <div class="thumb"></div>
+      <button id="year2026" aria-pressed="false">היום<small>2026</small></button>
+      <button id="year2035" class="on" aria-pressed="true">הרובע<small>2035</small></button>
+    </div>
   </div>
 </header>
 
 <button id="modePill" aria-label="החלפת מצב סיור">
   <span class="mFilm">◈ סיור חופשי ברובע</span><span class="mEx">✕ יציאה מהסיור החופשי</span>
 </button>
+
+<div id="loadChip" class="off" aria-live="polite"><i></i><span id="loadChipTxt">המגדלים נטענים ברקע…</span></div>
 
 <div id="rail" aria-hidden="true">
   <div class="track"><div class="fill" id="railFill"></div>
@@ -416,6 +529,19 @@
   <div class="fine">הדמיה להמחשה בלבד</div>
 </article>
 
+<article class="pcard" id="card-dyn">
+  <div class="tag" id="dynTag">רובע שדה דב</div>
+  <h3 id="dynTitle">בניין ברובע</h3>
+  <div class="en" id="dynSub">SDE DOV QUARTER</div>
+  <div class="desc" id="dynDesc"></div>
+  <ul id="dynList"></ul>
+  <a class="btn" id="dynBtn" href="#" target="_blank" rel="noopener">לעמוד הפרויקט ולבחירת דירה ←</a>
+  <a class="btnwa" id="dynWa" href="https://wa.me/972525101555" target="_blank" rel="noopener">
+    <svg viewBox="0 0 32 32"><path d="M16 3C9.4 3 4 8.4 4 15c0 2.1.6 4.2 1.6 6L4 29l8.2-1.6c1.2.6 2.5.9 3.8.9 6.6 0 12-5.4 12-12S22.6 3 16 3zm6.6 16.9c-.3.8-1.6 1.5-2.2 1.6-.6.1-1.3.2-3.7-.8-3.1-1.3-5.1-4.4-5.3-4.6-.2-.2-1.3-1.7-1.3-3.2s.8-2.3 1.1-2.6c.3-.3.6-.4.8-.4h.6c.2 0 .5-.1.7.5l.9 2.3c.1.2.1.4 0 .6l-.4.7-.6.6c-.2.2-.4.4-.2.7.2.4.9 1.6 2 2.5 1.4 1.2 2.5 1.6 2.9 1.8.4.2.6.1.8-.1l1.2-1.4c.2-.3.5-.2.8-.1l2.4 1.1c.4.2.6.3.7.4.1.3.1.9-.2 1.4z"/></svg>
+    <span id="dynWaTxt">בקרוב אצלנו — דברו איתנו</span></a>
+  <div class="fine" id="dynFine">הדמיה להמחשה בלבד · מסה סכמטית על פי פרסומים</div>
+</article>
+
 <article class="pcard" id="card-plan">
   <div class="tag">על פי התכנית · הדמיה להמחשה</div>
   <h3>רובע שדה דב</h3>
@@ -470,6 +596,7 @@
     <canvas id="mm" role="button" aria-label="מפת הרובע — הקישו למעבר לנקודה"></canvas>
     <div class="mmbtns">
       <button id="mmSky">מבט־על ↗</button>
+      <button id="mmEast">לאיינשטיין ←</button>
       <button id="mmEnd">לבחירת דירה</button>
     </div>
   </div>
@@ -518,6 +645,10 @@ const Q = new URLSearchParams(location.search);
 const RM_PARAM = Q.get('rm'); /* rm=1 force on, rm=0 force off (QA) */
 const FORCE_FALLBACK = Q.get('fb') === '1';
 const START_T = Q.has('t') ? Math.max(0, Math.min(1, parseFloat(Q.get('t')))) : null;
+const SUN0 = Q.get('sun') === 'dusk' ? 1 : 0;          /* V3: 0 = daylight (default), 1 = dusk */
+const YEAR0 = Q.get('year') === '2026' ? 0 : 1;        /* V3 time machine: 0 = today 2026, 1 = the 2035 quarter */
+const FOCUS = (Q.get('focus') || '').toLowerCase();    /* V3 deep link — see head comment */
+const MODE_PARAM = Q.get('mode');                      /* film (default) | explore */
 const REDUCED = RM_PARAM === '1' || (RM_PARAM !== '0' && matchMedia('(prefers-reduced-motion: reduce)').matches);
 const MOBILE = matchMedia('(pointer: coarse)').matches || innerWidth < 900;
 
@@ -545,69 +676,165 @@ async function boot() {
   renderer.setSize(innerWidth, innerHeight);
   renderer.outputColorSpace = THREE.SRGBColorSpace;
   renderer.toneMapping = THREE.ACESFilmicToneMapping;
-  renderer.toneMappingExposure = 1.3;
+  renderer.toneMappingExposure = 1.3; /* driven per sun-state below */
 
   const scene = new THREE.Scene();
-  const FOG_COLOR = new THREE.Color(0x473a5f);
+  const FOG_COLOR = new THREE.Color(0x473a5f); /* live-lerped by the sun system */
   scene.fog = new THREE.Fog(FOG_COLOR, 820, 3900);
 
   const cam = new THREE.PerspectiveCamera(54, innerWidth / innerHeight, 2, 12000);
   cam.position.set(-1280, 330, 430);
 
-  /* ---------------- dusk sky dome ---------------- */
-  const SUN_POS = new THREE.Vector3(-2300, 150, 640);
-  const SUN_DIR = SUN_POS.clone().normalize();
+  /* ============================================================
+     V3 SUN SYSTEM — two states, one world.
+     0 = DAY  (bright Mediterranean late morning, sun high SSW)
+     1 = DUSK (the V2 twilight look, sun low over the sea NW)
+     Everything registers a lerp callback via onSun(fn); applySunMix(m)
+     runs them all. duskMix eases toward duskT in step().
+     ============================================================ */
+  const C = (h) => new THREE.Color(h);
+  const SUNL = [];
+  const onSun = f => SUNL.push(f);
+  function applySunMix(m) { for (const f of SUNL) f(m); }
+  const LC = new THREE.Color(); /* scratch */
+  const lerpN = (a, b, m) => a + (b - a) * m;
+  const DUSKU = { value: SUN0 };            /* shared facade-shader uniform */
+  let duskT = SUN0, duskMix = SUN0;
+  let yearT = YEAR0, yearMix = YEAR0;       /* V3 time machine: 0 = 2026, 1 = 2035 */
+
+  const SUN_POS_DAY  = new THREE.Vector3(-950, 2400, -1500); /* high, SSW over the water */
+  const SUN_POS_DUSK = new THREE.Vector3(-2300, 150, 640);
+  const SUN_POS = SUN_POS_DUSK.clone();     /* live vector (used by streak az at build) */
+  const SUN_DIR = new THREE.Vector3();
+  /* day shadow bake: horizontal shadow direction + length factor (crisp fake shadows) */
+  const SHADOW_YAW = Math.atan2(-SUN_POS_DAY.x, -SUN_POS_DAY.z); /* away from the sun */
+  const SHADOW_LEN = Math.hypot(SUN_POS_DAY.x, SUN_POS_DAY.z) / SUN_POS_DAY.y; /* ~cot(elev) ≈ 0.74 */
+
+  const SKY = {
+    zen:  [C(0x2a61c0), C(0x131535)], zenGamma: [0.44, 0.52],
+    horC: [C(0xd9e5ee), C(0x513e65)], haze: [0.42, 0.14], /* day: wide milky Mediterranean horizon */
+    horW: [C(0xf7f2e2), C(0xfe7835)], azA: [0.30, 0.82], azB: [0.08, 0.14],
+    core: [C(0xfff7e8), C(0xff9e4d)], coreI: [3.6, 5.0], discP: [2600, 1400],
+    cor:  [C(0xfdf3d8), C(0xff8038)], corI: [0.20, 0.55],
+    wide: [C(0xe8eefc), C(0xff6130)], wideI: [0.05, 0.15],
+    below:[C(0x5b6d7e), C(0x161325)], moon: [0, 1],
+  };
   const skyMat = new THREE.ShaderMaterial({
     side: THREE.BackSide, depthWrite: false, fog: false,
-    uniforms: { uSun: { value: SUN_DIR }, uMoon: { value: new THREE.Vector3(0.6, 0.22, -0.42).normalize() }, uFog: { value: FOG_COLOR } },
+    uniforms: {
+      uSun: { value: SUN_DIR }, uMoon: { value: new THREE.Vector3(0.6, 0.22, -0.42).normalize() },
+      uFog: { value: FOG_COLOR },
+      uZen: { value: new THREE.Color() }, uZenG: { value: 0.52 },
+      uHorC: { value: new THREE.Color() }, uHorW: { value: new THREE.Color() },
+      uAzA: { value: 0.82 }, uAzB: { value: 0.14 },
+      uCore: { value: new THREE.Color() }, uDiscP: { value: 1400 },
+      uCor: { value: new THREE.Color() }, uWide: { value: new THREE.Color() },
+      uBelow: { value: new THREE.Color() }, uMoonAmt: { value: 1 },
+      uHaze: { value: 0.14 },
+    },
     vertexShader: `varying vec3 vDir; void main(){ vDir = position; gl_Position = projectionMatrix * modelViewMatrix * vec4(position,1.0); }`,
     fragmentShader: `
       varying vec3 vDir; uniform vec3 uSun; uniform vec3 uMoon; uniform vec3 uFog;
+      uniform vec3 uZen; uniform float uZenG; uniform vec3 uHorC; uniform vec3 uHorW;
+      uniform float uAzA; uniform float uAzB; uniform vec3 uCore; uniform float uDiscP;
+      uniform vec3 uCor; uniform vec3 uWide; uniform vec3 uBelow; uniform float uMoonAmt;
+      uniform float uHaze;
       float hash(vec2 p){ return fract(sin(dot(p, vec2(127.1,311.7)))*43758.5453); }
       void main(){
         vec3 d = normalize(vDir);
         float h = d.y;
         float az = max(dot(normalize(vec3(d.x,0.,d.z)), normalize(vec3(uSun.x,0.,uSun.z))), 0.);
-        vec3 zen  = vec3(0.075,0.078,0.21);
-        vec3 horC = vec3(0.318,0.243,0.395);   /* twilight rose-violet */
-        vec3 horW = vec3(0.995,0.472,0.208);
-        vec3 hor  = mix(horC, horW, pow(az, 2.4) * 0.82 + 0.14);
-        vec3 col  = mix(hor, zen, pow(clamp(h,0.,1.), 0.52));
+        vec3 hor  = mix(uHorC, uHorW, pow(az, 2.4) * uAzA + uAzB);
+        vec3 col  = mix(hor, uZen, pow(clamp(h,0.,1.), uZenG));
         float sd = max(dot(d, uSun), 0.);
-        col += vec3(1.0,0.62,0.30) * pow(sd, 1400.) * 5.0;   /* sun disc */
-        col += vec3(1.0,0.50,0.22) * pow(sd, 26.)  * 0.55;   /* corona   */
-        col += vec3(1.0,0.38,0.18) * pow(sd, 6.)   * 0.15;   /* wide glow*/
+        col += uCore * pow(sd, uDiscP);              /* sun disc */
+        col += uCor  * pow(sd, 26.);                 /* corona   */
+        col += uWide * pow(sd, 6.);                  /* wide glow*/
         float md = max(dot(d, uMoon), 0.);
-        col += vec3(0.90,0.87,0.80) * pow(md, 9500.) * 1.1;  /* moon */
-        col += vec3(0.55,0.58,0.76) * pow(md, 260.) * 0.055;
-        col = mix(col, vec3(0.085,0.075,0.145), smoothstep(0.0,-0.3,h)); /* below horizon */
-        col = mix(uFog, col, smoothstep(0.015, 0.14, abs(h)));           /* haze band */
+        col += vec3(0.90,0.87,0.80) * pow(md, 9500.) * 1.1 * uMoonAmt;  /* moon */
+        col += vec3(0.55,0.58,0.76) * pow(md, 260.) * 0.055 * uMoonAmt;
+        col = mix(col, uBelow, smoothstep(0.0,-0.3,h));                  /* below horizon */
+        col = mix(uFog, col, smoothstep(0.015, uHaze, abs(h)));          /* haze band (day: wide + milky) */
         col += (hash(gl_FragCoord.xy) - .5) / 255.;                      /* dither */
         gl_FragColor = vec4(col, 1.0);
       }`
   });
   const sky = new THREE.Mesh(new THREE.SphereGeometry(5200, 40, 20), skyMat);
   scene.add(sky);
+  onSun(m => {
+    const u = skyMat.uniforms;
+    SUN_POS.lerpVectors(SUN_POS_DAY, SUN_POS_DUSK, m);
+    SUN_DIR.copy(SUN_POS).normalize();
+    u.uZen.value.copy(SKY.zen[0]).lerp(SKY.zen[1], m);        u.uZenG.value = lerpN(...SKY.zenGamma, m);
+    u.uHorC.value.copy(SKY.horC[0]).lerp(SKY.horC[1], m);     u.uHorW.value.copy(SKY.horW[0]).lerp(SKY.horW[1], m);
+    u.uAzA.value = lerpN(...SKY.azA, m);                      u.uAzB.value = lerpN(...SKY.azB, m);
+    u.uCore.value.copy(SKY.core[0]).lerp(SKY.core[1], m).multiplyScalar(lerpN(...SKY.coreI, m));
+    u.uDiscP.value = lerpN(...SKY.discP, m);
+    u.uCor.value.copy(SKY.cor[0]).lerp(SKY.cor[1], m).multiplyScalar(lerpN(...SKY.corI, m));
+    u.uWide.value.copy(SKY.wide[0]).lerp(SKY.wide[1], m).multiplyScalar(lerpN(...SKY.wideI, m));
+    u.uBelow.value.copy(SKY.below[0]).lerp(SKY.below[1], m);  u.uMoonAmt.value = lerpN(...SKY.moon, m);
+    u.uHaze.value = lerpN(...SKY.haze, m);
+  });
 
-  /* environment reflections from the sky (bonus where the GPU supports float
-     targets; every material below is lit to work WITHOUT this) */
-  try { const pmrem = new THREE.PMREMGenerator(renderer);
-    const es = new THREE.Scene(); es.add(sky.clone());
-    scene.environment = pmrem.fromScene(es, 0.03).texture;
-  } catch (e) { console.warn('[sdedov] env skipped:', e.message); }
+  /* fog + exposure per state (fog color feeds the sky haze band too).
+     NOTE: THREE.Fog CLONES the color you construct it with — FOG_COLOR (the
+     sky's uFog instance) must be synced explicitly or the sky haze stays dusk. */
+  const FOGP = { c: [C(0xc3d6e6), C(0x473a5f)], near: [1500, 820], far: [6400, 3900], exp: [1.06, 1.3] };
+  onSun(m => {
+    scene.fog.color.copy(FOGP.c[0]).lerp(FOGP.c[1], m);
+    FOG_COLOR.copy(scene.fog.color); /* keep the sky-shader haze in the same world */
+    scene.fog.near = lerpN(...FOGP.near, m); scene.fog.far = lerpN(...FOGP.far, m);
+    renderer.toneMappingExposure = lerpN(...FOGP.exp, m);
+  });
 
-  /* ---------------- lights ---------------- */
+  /* environment reflections from the sky — cached per sun state, regenerated
+     lazily after a toggle settles (bonus where the GPU supports float targets;
+     every material is lit to work WITHOUT this) */
+  let pmrem = null; const envCache = {};
+  function buildEnv(state) {
+    if (envCache[state] !== undefined) { scene.environment = envCache[state]; return; }
+    try {
+      pmrem = pmrem || new THREE.PMREMGenerator(renderer);
+      const es = new THREE.Scene(); es.add(sky.clone());
+      envCache[state] = pmrem.fromScene(es, 0.03).texture;
+      scene.environment = envCache[state];
+    } catch (e) { envCache[state] = null; console.warn('[sdedov] env skipped:', e.message); }
+  }
+
+  /* ---------------- lights (state-lerped) ---------------- */
   const sun = new THREE.DirectionalLight(0xffa15e, 3.1);
-  sun.position.copy(SUN_POS); scene.add(sun, sun.target);
-  scene.add(new THREE.HemisphereLight(0x4a4478, 0x392b36, 0.85));
+  scene.add(sun, sun.target);
+  const hemi = new THREE.HemisphereLight(0x4a4478, 0x392b36, 0.85); scene.add(hemi);
   const rim = new THREE.DirectionalLight(0x35476b, 0.55); rim.position.set(900, 400, -500); scene.add(rim);
   const bounce = new THREE.DirectionalLight(0xd9926a, 0.42); bounce.position.set(-600, 1000, 300); scene.add(bounce); /* warm sky-glow fill so horizontals read at low sun */
+  const LIGHTS = {
+    sunC: [C(0xfff1d6), C(0xffa15e)], sunI: [2.9, 3.1],
+    hemiS: [C(0xbeddfa), C(0x4a4478)], hemiG: [C(0x9b8b74), C(0x392b36)], hemiI: [1.12, 0.85],
+    rimC: [C(0xaecbe8), C(0x35476b)], rimI: [0.5, 0.55],
+    bC: [C(0xffe9c4), C(0xd9926a)], bI: [0.22, 0.42],
+  };
+  onSun(m => {
+    sun.position.copy(SUN_POS);
+    sun.color.copy(LIGHTS.sunC[0]).lerp(LIGHTS.sunC[1], m); sun.intensity = lerpN(...LIGHTS.sunI, m);
+    hemi.color.copy(LIGHTS.hemiS[0]).lerp(LIGHTS.hemiS[1], m);
+    hemi.groundColor.copy(LIGHTS.hemiG[0]).lerp(LIGHTS.hemiG[1], m);
+    hemi.intensity = lerpN(...LIGHTS.hemiI, m);
+    rim.color.copy(LIGHTS.rimC[0]).lerp(LIGHTS.rimC[1], m); rim.intensity = lerpN(...LIGHTS.rimI, m);
+    bounce.color.copy(LIGHTS.bC[0]).lerp(LIGHTS.bC[1], m); bounce.intensity = lerpN(...LIGHTS.bI, m);
+  });
+  /* helper: register a material color/emissive lerp in one line */
+  const LC2 = new THREE.Color();
+  const sunMat = (mat, dayHex, duskHex, extra) => onSun(m => {
+    mat.color.copy(LC.setHex(dayHex)).lerp(LC2.setHex(duskHex), m);
+    if (extra) extra(m, mat);
+  });
 
-  /* ---------------- shared dusk-window shader ---------------- */
+  /* ---------------- shared facade shader (dusk windows + day glass + contact AO) ---------------- */
   const TIME = { value: 0 };
   function duskify(mat, { floorH = 3.1, winW = 2.7, lit = 0.5, glow = 1.4, seed = 1 } = {}) {
     mat.onBeforeCompile = (sh) => {
       sh.uniforms.uTime = TIME;
+      sh.uniforms.uDuskAmt = DUSKU;
       sh.uniforms.uFloorH = { value: floorH };
       sh.uniforms.uWinW = { value: winW };
       sh.uniforms.uLit = { value: lit };
@@ -623,7 +850,7 @@ async function boot() {
         nlWP = (modelMatrix * nlP).xyz;
         nlWN = normalize(mat3(modelMatrix) * nlN);`);
       sh.fragmentShader = `varying vec3 nlWP; varying vec3 nlWN;
-        uniform float uTime, uFloorH, uWinW, uLit, uGlow, uSeed;
+        uniform float uTime, uDuskAmt, uFloorH, uWinW, uLit, uGlow, uSeed;
         float nlHash(vec2 p){ return fract(sin(dot(p, vec2(127.1,311.7))) * 43758.5453123); }\n` +
       sh.fragmentShader.replace('#include <emissivemap_fragment>', `#include <emissivemap_fragment>
         {
@@ -638,27 +865,74 @@ async function boot() {
           float isLit = step(1.0 - uLit, rnd);
           vec3 wc = mix(vec3(1.0,0.52,0.20), vec3(1.0,0.86,0.58), nlHash(cellId * 1.37 + uSeed));
           float pulse = 0.84 + 0.16 * sin(uTime * 0.4 + rnd * 44.0);
-          totalEmissiveRadiance += wc * (pane * facade * isLit * uGlow * pulse);
-          totalEmissiveRadiance += vec3(0.05,0.09,0.15) * (pane * facade * (1.0 - isLit) * 0.35);
+          float dayA = 1.0 - uDuskAmt;
+          /* dusk: lit interiors */
+          totalEmissiveRadiance += wc * (pane * facade * isLit * uGlow * pulse * uDuskAmt);
+          totalEmissiveRadiance += vec3(0.05,0.09,0.15) * (pane * facade * (1.0 - isLit) * 0.35 * uDuskAmt);
+          /* day: panes read as recessed sky-tinted glass (some catch the sun) */
+          totalEmissiveRadiance += vec3(0.31,0.45,0.63) * (pane * facade * dayA * (0.10 + 0.10 * rnd));
+          totalEmissiveRadiance += vec3(1.0,0.95,0.82) * (pane * facade * dayA * step(0.965, rnd) * 0.55);
+          diffuseColor.rgb *= mix(1.0, 0.68, pane * facade * dayA);
+          /* soft ground-contact AO, both states */
+          diffuseColor.rgb *= mix(0.78, 1.0, smoothstep(0.0, 10.0, nlWP.y));
         }`);
     };
     mat.customProgramCacheKey = () => 'nl-dusk-windows';
     return mat;
   }
-  const mkGlass = (opts) => duskify(new THREE.MeshStandardMaterial({
+  const GLASSES = [];
+  const mkGlass = (opts) => { const g = duskify(new THREE.MeshStandardMaterial({
     color: 0x16222f, roughness: 0.3, metalness: 0.35, envMapIntensity: 1.35 }), opts);
+    GLASSES.push(g); return g; };
+  const TREEMS = []; /* foliage materials (rich models register here) */
+  onSun(m => {
+    for (const g of GLASSES) { g.color.copy(LC.setHex(0x4a6b85)).lerp(LC2.setHex(0x16222f), m);
+      g.roughness = lerpN(0.22, 0.3, m); g.envMapIntensity = lerpN(1.5, 1.35, m); }
+    for (const t of TREEMS) t.color.copy(LC.setHex(0x35522c)).lerp(LC2.setHex(0x1e2c1c), m);
+  });
 
   /* ---------------- ocean, beach, land ---------------- */
   const world = new THREE.Group(); scene.add(world);
   const SHORE_X = -183;
 
-  /* self-lit dusk water: reads beautifully with or without env reflections */
+  /* V3: click-everything registry — any registered mesh opens a building card.
+     pick(instanceId) returns { tag,title,sub,desc,lines,url,soon,waTxt } or null. */
+  const CLICKS = [];
+  const regClick = (mesh, pick) => { mesh.userData.pick = pick; CLICKS.push(mesh); };
+
+  /* ============================================================
+     V3 TIME MACHINE — one world, two years.
+     0 = 2026 (the site today: runway, empty lots, 3 flagship sites
+         in construction — skeletons + cranes), 1 = 2035 (the quarter
+         per TA/4444). Everything future lives in one of three groups:
+       futBld  — buildings that RISE from the ground on the crossfade
+       futLife — street life/furniture that fades in near the end
+       todayGrp — 2026-only: cranes, concrete skeletons, site fences
+     Ground-flat future surfaces (parks, Ibn Gvirol…) fade by opacity
+     via FUTFLATS. All bottom-origin, so group scale.y = the build-up.
+     ============================================================ */
+  const futBld = new THREE.Group(), futLife = new THREE.Group(), todayGrp = new THREE.Group();
+  world.add(futBld, futLife, todayGrp);
+  const einFut = new THREE.Group(), einToday = new THREE.Group(); /* year-gated slices of the lazy east zone (joined to einGroup below) */
+  const FUTFLATS = [];
+  const regFutFlat = (mesh, base = 1) => { const m = mesh.material;
+    m.transparent = true; m.userData.baseOp = base * (m.opacity < 1 ? m.opacity : 1);
+    FUTFLATS.push(m); return mesh; };
+
+  /* self-lit water: dusk = deep violet-blue mirror, day = bright Mediterranean */
   const sea = new THREE.Mesh(new THREE.PlaneGeometry(4900, 9000),
     new THREE.MeshStandardMaterial({ color: 0x14344a, roughness: 0.42, metalness: 0.25,
       emissive: 0x0a1d2e, emissiveIntensity: 1.0, envMapIntensity: 1.1 }));
   sea.rotation.x = -Math.PI / 2; sea.position.set(SHORE_X - 2390, -0.14, 0); world.add(sea);
+  let seaEmB = 1.0; /* animated base, see step() */
+  onSun(m => {
+    sea.material.color.copy(LC.setHex(0x2273a2)).lerp(LC2.setHex(0x14344a), m);
+    sea.material.emissive.copy(LC.setHex(0x0e3550)).lerp(LC2.setHex(0x0a1d2e), m);
+    sea.material.roughness = lerpN(0.33, 0.42, m);
+    seaEmB = lerpN(0.5, 1.0, m);
+  });
 
-  /* warm dusk sheen on the water toward the sun (additive gradient sheet) */
+  /* warm dusk sheen on the water toward the sun (additive gradient sheet, dusk only) */
   { const c = document.createElement('canvas'); c.width = 256; c.height = 256;
     const g = c.getContext('2d');
     const gr = g.createRadialGradient(128, 40, 8, 128, 40, 230);
@@ -668,9 +942,10 @@ async function boot() {
       new THREE.MeshBasicMaterial({ map: new THREE.CanvasTexture(c), transparent: true, opacity: 0.85,
         blending: THREE.AdditiveBlending, depthWrite: false, fog: false }));
     sheen.rotation.x = -Math.PI / 2; sheen.rotation.z = Math.PI;
-    sheen.position.set(SHORE_X - 1500, -0.05, 330); world.add(sheen); }
+    sheen.position.set(SHORE_X - 1500, -0.05, 330); world.add(sheen);
+    onSun(m => { sheen.material.opacity = 0.85 * m; sheen.visible = m > 0.02; }); }
 
-  /* sun core glow billboard (fake bloom, GPU-independent) */
+  /* sun core glow billboard (fake bloom, GPU-independent). Day: small white-hot. */
   { const c = document.createElement('canvas'); c.width = 256; c.height = 256;
     const g = c.getContext('2d');
     const gr = g.createRadialGradient(128, 128, 4, 128, 128, 128);
@@ -679,9 +954,13 @@ async function boot() {
     g.fillStyle = gr; g.fillRect(0, 0, 256, 256);
     const halo = new THREE.Sprite(new THREE.SpriteMaterial({ map: new THREE.CanvasTexture(c),
       transparent: true, opacity: 0.95, blending: THREE.AdditiveBlending, depthWrite: false, depthTest: false, fog: false }));
-    halo.scale.set(1500, 1500, 1); halo.position.copy(SUN_POS).multiplyScalar(1.6); halo.renderOrder = 1; world.add(halo); }
+    halo.renderOrder = 1; world.add(halo);
+    onSun(m => { halo.position.copy(SUN_POS).multiplyScalar(1.6);
+      const s = lerpN(760, 1500, m); halo.scale.set(s, s, 1);
+      halo.material.opacity = lerpN(0.6, 0.95, m);
+      halo.material.color.copy(LC.setHex(0xeef4ff)).lerp(LC2.setHex(0xffffff), m); }); }
 
-  /* sun glitter streak on the water */
+  /* sun glitter streak on the water — dusk amber, day silver sparkle */
   { const c = document.createElement('canvas'); c.width = 128; c.height = 512;
     const g = c.getContext('2d'), img = g.createImageData(128, 512);
     for (let y = 0; y < 512; y++) for (let x = 0; x < 128; x++) {
@@ -695,13 +974,17 @@ async function boot() {
     const streak = new THREE.Mesh(new THREE.PlaneGeometry(120, 2500),
       new THREE.MeshBasicMaterial({ map: tex, color: 0xffb070, transparent: true, opacity: 0.75, blending: THREE.AdditiveBlending, depthWrite: false, fog: true }));
     streak.rotation.x = -Math.PI / 2;
-    const az = Math.atan2(SUN_POS.z, SUN_POS.x - SHORE_X);
-    streak.rotation.z = -az + Math.PI / 2;
     streak.position.set(SHORE_X - 1050, -0.02, 290); world.add(streak);
     streak.userData.tex = tex; world.userData.streak = streak;
-  }
+    const azDusk = Math.atan2(SUN_POS_DUSK.z, SUN_POS_DUSK.x - SHORE_X);
+    const azDay = Math.atan2(SUN_POS_DAY.z, SUN_POS_DAY.x - SHORE_X);
+    onSun(m => {
+      streak.rotation.z = -lerpN(azDay, azDusk, m) + Math.PI / 2;
+      streak.material.color.copy(LC.setHex(0xe8f3ff)).lerp(LC2.setHex(0xffb070), m);
+      streak.userData.baseOp = lerpN(0.42, 0.75, m); /* step() shimmers around this */
+    }); }
 
-  /* soft light shafts through the dusk clouds, over the sea (V2) */
+  /* soft light shafts through the dusk clouds, over the sea (dusk only) */
   { const c = document.createElement('canvas'); c.width = 64; c.height = 256;
     const g = c.getContext('2d'); const gr = g.createLinearGradient(0, 0, 0, 256);
     gr.addColorStop(0, 'rgba(255,170,90,0.55)'); gr.addColorStop(0.55, 'rgba(255,140,80,0.16)'); gr.addColorStop(1, 'rgba(255,120,70,0)');
@@ -717,6 +1000,7 @@ async function boot() {
       shaft.rotation.y = Math.atan2(x - 160, z - 0) + Math.PI; /* face the quarter */
       shaft.rotation.z = tilt;
       shaft.renderOrder = 1; world.add(shaft);
+      onSun(m => { shaft.material.opacity = o * m; shaft.visible = m > 0.02; });
     } }
 
   /* drifting dusk clouds (V2) */
@@ -734,6 +1018,9 @@ async function boot() {
       const sp = new THREE.Sprite(new THREE.SpriteMaterial({ map: ctex, transparent: true, opacity: o, depthWrite: false, fog: false }));
       sp.scale.set(s, s * 0.4, 1); sp.position.set(x, y, z); sp.userData = { v: 2.4 + Math.random() * 2.6 };
       world.add(sp); clouds.push(sp);
+      /* the texture is dusk-mauve; boosting channels turns them into fair-weather white */
+      onSun(m => { sp.material.color.setRGB(lerpN(1.30, 1, m), lerpN(1.52, 1, m), lerpN(1.34, 1, m));
+        sp.material.opacity = o * lerpN(0.8, 1, m); });
     } }
 
   /* foam lines */
@@ -743,39 +1030,50 @@ async function boot() {
     foam.rotation.x = -Math.PI / 2; foam.position.set(SHORE_X - dx, 0.02, 0); world.add(foam);
   }
 
-  const groundTex = (() => { const c = document.createElement('canvas'); c.width = c.height = 256;
-    const g = c.getContext('2d'); g.fillStyle = '#4a4038'; g.fillRect(0, 0, 256, 256);
-    for (let i = 0; i < 2600; i++) { g.fillStyle = `rgba(${30+Math.random()*50|0},${26+Math.random()*40|0},${24+Math.random()*34|0},${0.05+Math.random()*0.1})`;
+  /* two ground textures: the dusk one is dark and moody; the day one is sunlit
+     kurkar — a dark map under a light color reads as scorched tar in daylight */
+  const mkGround = (base, lo, span, aMax) => { const c = document.createElement('canvas'); c.width = c.height = 256;
+    const g = c.getContext('2d'); g.fillStyle = base; g.fillRect(0, 0, 256, 256);
+    for (let i = 0; i < 2600; i++) { g.fillStyle = `rgba(${lo[0]+Math.random()*span[0]|0},${lo[1]+Math.random()*span[1]|0},${lo[2]+Math.random()*span[2]|0},${0.05+Math.random()*aMax})`;
       g.fillRect(Math.random() * 256, Math.random() * 256, 1 + Math.random() * 3, 1 + Math.random() * 3); }
-    const t = new THREE.CanvasTexture(c); t.wrapS = t.wrapT = THREE.RepeatWrapping; t.repeat.set(46, 64); t.colorSpace = THREE.SRGBColorSpace; return t; })();
+    const t = new THREE.CanvasTexture(c); t.wrapS = t.wrapT = THREE.RepeatWrapping;
+    t.repeat.set(46, 64); t.colorSpace = THREE.SRGBColorSpace; return t; };
+  const groundTexDusk = mkGround('#4a4038', [30, 26, 24], [50, 40, 34], 0.1);
+  const groundTexDay  = mkGround('#c8b89c', [150, 134, 108], [70, 58, 46], 0.08);
 
   const beach = new THREE.Mesh(new THREE.PlaneGeometry(70, 9000),
     new THREE.MeshStandardMaterial({ color: 0x99836a, roughness: 0.98 }));
   beach.rotation.x = -Math.PI / 2; beach.position.set(SHORE_X + 35, 0.0, 0); world.add(beach);
+  sunMat(beach.material, 0xc4ad87, 0x99836a);
 
   const land = new THREE.Mesh(new THREE.PlaneGeometry(2900, 9000),
-    new THREE.MeshStandardMaterial({ color: 0x968a7c, roughness: 1, map: groundTex }));
+    new THREE.MeshStandardMaterial({ color: 0x968a7c, roughness: 1, map: groundTexDusk }));
   land.rotation.x = -Math.PI / 2; land.position.set(SHORE_X + 70 + 1450, -0.02, 0); world.add(land);
+  sunMat(land.material, 0xcabb9f, 0x968a7c, (m, mat) => { mat.map = m > 0.5 ? groundTexDusk : groundTexDay; });
 
-  /* promenade + streets (per plan: coast road, Ibn Gvirol axis, cross streets) */
+  /* promenade + streets (per plan: coast road, Ibn Gvirol axis, cross streets)
+     V3: flat() takes an optional [dayColor, duskColor] pair for sun-aware surfaces */
   const flat = (w, l, x, z, col, y = 0.05, op = 1) => {
+    const day = Array.isArray(col) ? col[0] : null, dusk = Array.isArray(col) ? col[1] : col;
     const m = new THREE.Mesh(new THREE.PlaneGeometry(w, l),
-      op < 1 ? new THREE.MeshBasicMaterial({ color: col, transparent: true, opacity: op, depthWrite: false, fog: true })
-             : new THREE.MeshStandardMaterial({ color: col, roughness: 0.96 }));
-    m.rotation.x = -Math.PI / 2; m.position.set(x, y, z); world.add(m); return m;
+      op < 1 ? new THREE.MeshBasicMaterial({ color: dusk, transparent: true, opacity: op, depthWrite: false, fog: true })
+             : new THREE.MeshStandardMaterial({ color: dusk, roughness: 0.96 }));
+    m.rotation.x = -Math.PI / 2; m.position.set(x, y, z); world.add(m);
+    if (day !== null) sunMat(m.material, day, dusk);
+    return m;
   };
-  flat(12, 3400, SHORE_X + 76, 0, 0x6b5c49, 0.04);             /* coastal promenade */
-  flat(11, 3400, -100, 0, 0x35333b, 0.05);                      /* coast road */
-  flat(9, 2400, 470, 0, 0x35333b, 0.05);                        /* Levi Eshkol st (E edge) */
-  flat(16, 1460, 250, 330, 0x35333b, 0.05);                     /* Ibn Gvirol extension */
-  flat(4.6, 1460, 250, 330, 0x2c3a26, 0.062);                   /* LRT green median */
-  for (const z of [-560, -260, 240, 520]) flat(2600, 9, SHORE_X + 1370, z, 0x35333b, 0.05); /* cross streets */
+  flat(12, 3400, SHORE_X + 76, 0, [0xa08d6e, 0x6b5c49], 0.04); /* coastal promenade (exists today) */
+  flat(11, 3400, -100, 0, 0x35333b, 0.05);                      /* coast road (exists today) */
+  flat(9, 2400, 470, 0, 0x35333b, 0.05);                        /* Levi Eshkol st (exists today) */
+  regFutFlat(flat(16, 1460, 250, 330, 0x35333b, 0.05));         /* Ibn Gvirol extension (2035) */
+  regFutFlat(flat(4.6, 1460, 250, 330, [0x49682f, 0x2c3a26], 0.062)); /* LRT green median (2035) */
+  for (const z of [-560, -260, 240, 520]) regFutFlat(flat(2600, 9, SHORE_X + 1370, z, 0x35333b, 0.05)); /* cross streets (2035) */
 
   /* thin kurkar-cliff hint along the beach top (per plan: cliff preserved) */
-  flat(4, 3400, -111, 0.07, 0x8a7458, 0.07);
+  flat(4, 3400, -111, 0.07, [0xb59a70, 0x8a7458], 0.07);
 
   /* ---------------- the old Sde Dov runway → פארק המסלול (N-S) ---------------- */
-  const runway = flat(46, 3000, 74, 0, 0x67666b, 0.06);
+  const runway = flat(46, 3000, 74, 0, [0x8f8e93, 0x67666b], 0.06);
   runway.material.roughness = 0.9;
   { const dash = new THREE.PlaneGeometry(1.3, 16);
     const dm = new THREE.MeshBasicMaterial({ color: 0xd8d2c2, transparent: true, opacity: 0.32, depthWrite: false, fog: true });
@@ -795,24 +1093,28 @@ async function boot() {
     world.add(stripes);
   }
 
-  /* ---------------- linear park (E-W, on the secondary runway trace) ---------------- */
-  flat(510, 56, 225, 44, 0x2c3b26, 0.045);
-  flat(510, 56, 225, -48, 0x283722, 0.045);
-  flat(510, 6, 225, -2, 0x6b5c49, 0.05);                        /* walking path on the trace */
+  /* ---------------- linear park (E-W, on the secondary runway trace) — 2035 ---------------- */
+  regFutFlat(flat(510, 56, 225, 44, [0x4c6c31, 0x2c3b26], 0.045));
+  regFutFlat(flat(510, 56, 225, -48, [0x456427, 0x283722], 0.045));
+  regFutFlat(flat(510, 6, 225, -2, [0xa08d6e, 0x6b5c49], 0.05)); /* walking path on the trace */
 
-  /* ---------------- coastal park strips (per plan ~250 dunam along the shore) ---------------- */
-  flat(58, 560, -71, 420, 0x2b3a25, 0.042);
-  flat(58, 490, -71, -455, 0x273621, 0.042);
+  /* ---------------- coastal park strips (per plan ~250 dunam along the shore) — 2035 ---------------- */
+  regFutFlat(flat(58, 560, -71, 420, [0x4a6a30, 0x2b3a25], 0.042));
+  regFutFlat(flat(58, 490, -71, -455, [0x44622c, 0x273621], 0.042));
 
   /* ---------------- civic pavilions along פארק המסלול ---------------- */
-  { const pg = new THREE.BoxGeometry(1, 1, 1); pg.translate(0, 0.5, 0);
-    const pm = duskify(new THREE.MeshStandardMaterial({ color: 0x6b5b49, roughness: 0.7, metalness: 0.05 }),
+  const boxG = new THREE.BoxGeometry(1, 1, 1); boxG.translate(0, 0.5, 0); /* shared bottom-origin unit box */
+  { const pm = duskify(new THREE.MeshStandardMaterial({ color: 0x6b5b49, roughness: 0.7, metalness: 0.05 }),
       { floorH: 4.2, winW: 3.4, lit: 0.85, glow: 2.1, seed: 41 });
-    const pav = new THREE.InstancedMesh(pg, pm, 4);
+    sunMat(pm, 0xa5906f, 0x6b5b49);
+    const pav = new THREE.InstancedMesh(boxG, pm, 4);
     const M = new THREE.Matrix4();
     const P = [[36, -240, 24, 8.5, 16], [112, -100, 20, 12.5, 18], [36, 130, 26, 8.5, 15], [112, 320, 22, 12.5, 17]];
     P.forEach(([x, z, w, h, d], i) => { M.makeTranslation(x, 0, z).multiply(new THREE.Matrix4().makeScale(w, h, d)); pav.setMatrixAt(i, M); });
-    world.add(pav); }
+    futBld.add(pav); /* 2035 */
+    regClick(pav, () => ({ tag: 'על פי התכנית · תא/4444', title: 'מבנה ציבור מתוכנן', sub: 'RUNWAY PARK · CIVIC',
+      desc: 'לאורך פארק המסלול מתוכננים מבני הציבור של הרובע — חינוך, תרבות וקהילה — על תוואי המסלול ההיסטורי של שדה דב.',
+      lines: [['ייעוד', 'ציבורי'], ['סטטוס', 'בתכנון']], soon: true, waTxt: 'רוצים לגור ליד הפארק? דברו איתנו' })); }
 
   /* ---------------- ground shadow discs (fake AO) ---------------- */
   const aoTex = (() => { const c = document.createElement('canvas'); c.width = c.height = 128;
@@ -821,7 +1123,7 @@ async function boot() {
     g.fillStyle = gr; g.fillRect(0, 0, 128, 128); return new THREE.CanvasTexture(c); })();
   const dropAO = (x, z, r) => { const m = new THREE.Mesh(new THREE.PlaneGeometry(r * 2, r * 2),
       new THREE.MeshBasicMaterial({ map: aoTex, transparent: true, depthWrite: false, fog: true }));
-    m.rotation.x = -Math.PI / 2; m.position.set(x, 0.12, z); m.renderOrder = 2; world.add(m); };
+    m.rotation.x = -Math.PI / 2; m.position.set(x, 0.12, z); m.renderOrder = 2; futLife.add(m); }; /* AO under 2035 towers */
 
   /* ---------------- street lights along the promenade (halos = ONE instanced billboard) ---------------- */
   { const n = 26, poleG = new THREE.CylinderGeometry(0.16, 0.2, 8.6, 5),
@@ -829,6 +1131,7 @@ async function boot() {
       lampG = new THREE.SphereGeometry(0.55, 8, 6),
       lampM = new THREE.MeshBasicMaterial({ color: 0xffc27d, fog: true });
     lampM.color.multiplyScalar(1.9);
+    onSun(m => { lampM.color.copy(LC.setHex(0x565e6a)).lerp(LC2.setHex(0xffc27d).multiplyScalar(1.9), m); }); /* lamps off in daylight */
     const poles = new THREE.InstancedMesh(poleG, poleM, n), lamps = new THREE.InstancedMesh(lampG, lampM, n);
     const hc = document.createElement('canvas'); hc.width = hc.height = 64;
     const hg = hc.getContext('2d'), hgr = hg.createRadialGradient(32, 32, 2, 32, 32, 32);
@@ -837,7 +1140,7 @@ async function boot() {
     const haloTex = new THREE.CanvasTexture(hc);
     const bbMat = new THREE.ShaderMaterial({
       transparent: true, depthWrite: false, blending: THREE.AdditiveBlending,
-      uniforms: { uMap: { value: haloTex } },
+      uniforms: { uMap: { value: haloTex }, uAmt: { value: 1 } },
       vertexShader: `
         attribute vec3 iPos; varying vec2 vUv; varying float vD;
         void main(){ vUv = uv;
@@ -846,10 +1149,11 @@ async function boot() {
           vD = -mv.z;
           gl_Position = projectionMatrix * mv; }`,
       fragmentShader: `
-        uniform sampler2D uMap; varying vec2 vUv; varying float vD;
+        uniform sampler2D uMap; uniform float uAmt; varying vec2 vUv; varying float vD;
         void main(){ vec4 t = texture2D(uMap, vUv);
-          gl_FragColor = vec4(t.rgb, t.a * 0.85 * exp(-vD * 0.00075)); }`
+          gl_FragColor = vec4(t.rgb, t.a * 0.85 * uAmt * exp(-vD * 0.00075)); }`
     });
+    onSun(m => { bbMat.uniforms.uAmt.value = m; }); /* lamp halos exist only at dusk */
     const bbGeo = new THREE.InstancedBufferGeometry();
     const quad = new THREE.PlaneGeometry(13, 13);
     bbGeo.index = quad.index; bbGeo.attributes.position = quad.attributes.position; bbGeo.attributes.uv = quad.attributes.uv;
@@ -865,32 +1169,40 @@ async function boot() {
     halos.frustumCulled = false;
     world.add(poles, lamps, halos); }
 
-  /* ---------------- palms (beach + linear park) ---------------- */
-  { const n = 54, trunkG = new THREE.CylinderGeometry(0.28, 0.42, 7.5, 5),
+  /* ---------------- palms — beach rows exist today, linear-park rows are 2035 ---------------- */
+  { const trunkG = new THREE.CylinderGeometry(0.28, 0.42, 7.5, 5),
       trunkM = new THREE.MeshStandardMaterial({ color: 0x3a2f26, roughness: 1 }),
       canG = new THREE.SphereGeometry(2.6, 7, 5), canM = new THREE.MeshStandardMaterial({ color: 0x1d2b1c, roughness: 1 });
     canG.scale(1, 0.55, 1);
-    const trunks = new THREE.InstancedMesh(trunkG, trunkM, n), cans = new THREE.InstancedMesh(canG, canM, n);
-    const M = new THREE.Matrix4(); let i = 0;
-    const put = (x, z, s = 1) => { if (i >= n) return;
-      M.makeTranslation(x, 3.7 * s, z).multiply(new THREE.Matrix4().makeScale(s, s, s)); trunks.setMatrixAt(i, M);
-      M.makeTranslation(x, 7.6 * s, z).multiply(new THREE.Matrix4().makeScale(s, s, s)); cans.setMatrixAt(i, M); i++; };
-    for (let k = 0; k < 30; k++) put(SHORE_X + 46 + (k % 2) * 16, -720 + k * 49, 0.9 + Math.random() * 0.45); /* seaward of the promenade so walk nodes stay clear */
-    for (let k = 0; k < 12; k++) put(158 + k * 17, 40 + (k % 2) * 22 - 11, 0.85 + Math.random() * 0.35);
-    for (let k = 0; k < 12; k++) put(158 + k * 17, -44 - (k % 2) * 22 + 11, 0.85 + Math.random() * 0.35);
-    world.add(trunks, cans); }
+    sunMat(trunkM, 0x5c4a38, 0x3a2f26); sunMat(canM, 0x3c5c2e, 0x1d2b1c);
+    const M = new THREE.Matrix4();
+    const mkPalms = (parent, n) => {
+      const trunks = new THREE.InstancedMesh(trunkG, trunkM, n), cans = new THREE.InstancedMesh(canG, canM, n);
+      let i = 0;
+      parent.add(trunks, cans);
+      return (x, z, s = 1) => { if (i >= n) return;
+        M.makeTranslation(x, 3.7 * s, z).multiply(new THREE.Matrix4().makeScale(s, s, s)); trunks.setMatrixAt(i, M);
+        M.makeTranslation(x, 7.6 * s, z).multiply(new THREE.Matrix4().makeScale(s, s, s)); cans.setMatrixAt(i, M); i++; };
+    };
+    const putBeach = mkPalms(world, 30), putPark = mkPalms(futLife, 24);
+    for (let k = 0; k < 30; k++) putBeach(SHORE_X + 46 + (k % 2) * 16, -720 + k * 49, 0.9 + Math.random() * 0.45); /* seaward of the promenade so walk nodes stay clear */
+    for (let k = 0; k < 12; k++) putPark(158 + k * 17, 40 + (k % 2) * 22 - 11, 0.85 + Math.random() * 0.35);
+    for (let k = 0; k < 12; k++) putPark(158 + k * 17, -44 - (k % 2) * 22 + 11, 0.85 + Math.random() * 0.35); }
 
   /* ================= SURROUNDING QUARTER (stylized per TA/4444 — see head) =================
      3 compounds S→N (Eshkol ~4,850u · central ~7,100u to 45F · north ~4,000u
      w/ hotels on the shore), ~35 towers to 40F over a 5-10F fabric, plus the
      existing city east of Levi Eshkol. All massing = הדמיה להמחשה. */
-  { const boxG = new THREE.BoxGeometry(1, 1, 1); boxG.translate(0, 0.5, 0);
-    const fabricM = duskify(new THREE.MeshStandardMaterial({ color: 0x3d3850, roughness: 0.85, metalness: 0.05 }),
+  const SHADOWQ = []; /* [x,z,w,d,h,rot] of every FUTURE massing box — day shadow quads (V3) */
+  const CITYQ = [];   /* same, for the existing city (visible in both years) */
+  { const fabricM = duskify(new THREE.MeshStandardMaterial({ color: 0x3d3850, roughness: 0.85, metalness: 0.05 }),
       { floorH: 3.0, winW: 2.9, lit: 0.4, glow: 1.1, seed: 5 });
     const towerM = duskify(new THREE.MeshStandardMaterial({ color: 0x433d5c, roughness: 0.62, metalness: 0.2, envMapIntensity: 0.9 }),
       { floorH: 3.0, winW: 2.8, lit: 0.46, glow: 1.35, seed: 9 });
+    sunMat(fabricM, 0xbdb3a2, 0x3d3850);
+    sunMat(towerM, 0x9fb2c2, 0x433d5c, (m, mat) => { mat.roughness = lerpN(0.45, 0.62, m); });
     let s = 13; const rng = () => (s = (s * 1103515245 + 12345) & 0x7fffffff) / 0x7fffffff;
-    const FLAGS = [[-45, -140, 96], [160, 90, 118], [350, -70, 118]];
+    const FLAGS = [[-38, -150, 96], [-30, -258, 110], [415, -60, 112]];
     const blocked = (x, z) => {
       for (const [fx, fz, fr] of FLAGS) if (Math.hypot(x - fx, z - fz) < fr) return true;
       if (Math.abs(x - 74) < 34 && Math.abs(z) < 1500) return true;          /* runway park */
@@ -898,26 +1210,28 @@ async function boot() {
       if (Math.abs(x - 250) < 15 && z > -400 && z < 1065) return true;       /* Ibn Gvirol */
       if (x < -40) return true;                     /* coastal park stays green (hotels are placed explicitly) */
       if (Math.hypot(x + 52, z + 690) < 130) return true;                     /* Reading */
+      if (x > 500 && z > -185 && z < 75) return true; /* V3: ציר איינשטיין corridor (built explicitly, lazy) */
       return false;
     };
     const K = MOBILE ? 0.62 : 1;
     const COMPOUNDS = [
-      /* [x0,x1,z0,z1, fabMin,fabMax, nFab, towMin,towMax, nTow] */
-      [-88, 465, -390, -165, 5, 9, 14, 34, 39, 3],    /* אשכול south of the flagships */
-      [-88, 465, -160, 135, 5, 9, 8, 34, 38, 1],      /* אשכול around the flagships   */
-      [-88, 465, 150, 620, 6, 10, 20, 24, 42, 8],     /* מרכז הרובע (towers to 45F)   */
-      [-88, 465, 640, 1060, 7, 9, 16, 20, 36, 5],     /* צפון הרובע                   */
-      [560, 1480, -1080, 1080, 4, 14, 40, 16, 26, 5], /* existing city E of L. Eshkol */
-      [-55, 455, -880, -440, 4, 8, 10, 20, 30, 2],    /* toward Reading (sparser)     */
+      /* [x0,x1,z0,z1, fabMin,fabMax, nFab, towMin,towMax, nTow, existsToday] */
+      [-88, 465, -390, -165, 5, 9, 14, 34, 39, 3, 0],    /* אשכול south of the flagships */
+      [-88, 465, -160, 135, 5, 9, 8, 34, 38, 1, 0],      /* אשכול around the flagships   */
+      [-88, 465, 150, 620, 6, 10, 20, 24, 42, 8, 0],     /* מרכז הרובע (towers to 45F)   */
+      [-88, 465, 640, 1060, 7, 9, 16, 20, 36, 5, 0],     /* צפון הרובע                   */
+      [560, 1480, -1080, 1080, 4, 14, 40, 16, 26, 5, 1], /* existing city E of L. Eshkol */
+      [-55, 455, -880, -440, 4, 8, 10, 20, 30, 2, 0],    /* toward Reading (sparser)     */
     ];
-    const fabPlaced = [], towPlaced = [];
-    for (const [x0, x1, z0, z1, f0, f1, nF, t0, t1, nT] of COMPOUNDS) {
+    const fabPlaced = [], towPlaced = [], cityFab = [], cityTow = []; /* plan = 2035, city = both years */
+    for (const [x0, x1, z0, z1, f0, f1, nF, t0, t1, nT, today] of COMPOUNDS) {
+      const fabL = today ? cityFab : fabPlaced, towL = today ? cityTow : towPlaced;
       let placedF = 0, guard = 0, targetF = Math.max(1, Math.round(nF * K));
       while (placedF < targetF && guard++ < targetF * 40) {
         const x = x0 + rng() * (x1 - x0), z = z0 + rng() * (z1 - z0);
         if (blocked(x, z)) continue;
         const w = 17 + rng() * 18, d = 15 + rng() * 16, h = (f0 + Math.floor(rng() * (f1 - f0 + 1))) * 3.0;
-        fabPlaced.push([x, z, w, h, d, (rng() * 2 - 1) * 0.1]); placedF++;
+        fabL.push([x, z, w, h, d, (rng() * 2 - 1) * 0.1]); placedF++;
       }
       let placedT = 0; guard = 0; const targetT = Math.max(1, Math.round(nT * K));
       while (placedT < targetT && guard++ < targetT * 60) {
@@ -927,20 +1241,49 @@ async function boot() {
         const nearStreet = Math.abs(x - 250) < 90 || Math.abs(x - 470) < 70 || Math.abs(x - 74) < 110 || x > 560;
         if (!nearStreet && rng() < 0.55) continue;
         const w = 20 + rng() * 7, d = 18 + rng() * 7, h = (t0 + Math.floor(rng() * (t1 - t0 + 1))) * 3.0;
-        towPlaced.push([x, z, w, h, d, (rng() * 2 - 1) * 0.08]); placedT++;
+        towL.push([x, z, w, h, d, (rng() * 2 - 1) * 0.08]); placedT++;
       }
     }
-    /* explicit: 45F landmark on the Ibn Gvirol axis + waterfront hotels (north) */
+    /* explicit: 45F landmark on the Ibn Gvirol axis + waterfront hotels (north) — all 2035 */
     towPlaced.push([282, 385, 26, 45 * 3.0, 24, 0.03]);
     towPlaced.push([-62, 700, 30, 13 * 3.0, 22, 0], [-58, 855, 26, 16 * 3.0, 22, 0.05], [-64, 990, 30, 12 * 3.0, 24, -0.04]);
-    const mkInst = (list, mat) => { const im = new THREE.InstancedMesh(boxG, mat, list.length);
+    const mkInst = (list, mat, parent, shq) => { const im = new THREE.InstancedMesh(boxG, mat, list.length);
       const M = new THREE.Matrix4();
       list.forEach(([x, z, w, h, d, r], i) => {
         M.makeTranslation(x, 0, z).multiply(new THREE.Matrix4().makeRotationY(r)).multiply(new THREE.Matrix4().makeScale(w, h, d));
-        im.setMatrixAt(i, M); });
-      world.add(im); return im; };
-    mkInst(fabPlaced, fabricM); mkInst(towPlaced, towerM);
-    console.info('[sdedov] quarter massing:', fabPlaced.length, 'fabric +', towPlaced.length, 'towers (stylized per TA/4444)');
+        im.setMatrixAt(i, M);
+        shq.push([x, z, w, d, h, r]); });
+      parent.add(im); return im; };
+    /* V3: every massing box is clickable — generic researched card by compound */
+    const compoundOf = (x, z) => {
+      if (x > 500) return z < -185 ? ['שכונת ל׳ — העיר הקיימת', 'LAMED', 'קיים היום'] :
+        ['רמת אביב — העיר הקיימת', 'RAMAT AVIV', 'קיים היום'];
+      if (x < -40) return ['מלונאות על פארק החוף', 'WATERFRONT HOTELS', 'בתכנון'];
+      if (z < -400) return ['דרום הרובע — לכיוון רידינג', 'SOUTH EDGE', 'בתכנון'];
+      if (z < 140) return ['מתחם אשכול (תמל/3001)', 'ESHKOL COMPOUND', 'בתכנון ובנייה'];
+      if (z < 620) return ['מרכז הרובע (תא/מק/4444/1)', 'CENTRAL COMPOUND', 'בתכנון'];
+      return ['צפון הרובע (תא/מק/4444/2)', 'NORTH COMPOUND', 'בתכנון'];
+    };
+    const massPick = (list, kind) => (i) => {
+      if (i == null || !list[i]) return null;
+      const [x, z, , h] = list[i]; const fl = Math.round(h / 3);
+      const [comp, en, st] = compoundOf(x, z);
+      const isCity = x > 500;
+      return { tag: isCity ? 'העיר הקיימת' : 'על פי התכנית · תא/4444',
+        title: (kind === 'tow' && fl >= 18 ? 'מגדל ' : 'בניין ') + (isCity ? 'בעיר הקיימת' : 'מתוכנן'),
+        sub: en, desc: isCity
+          ? 'חלק מהמרקם הקיים של צפון תל אביב סביב הרובע. מחפשים דירה באזור? נשמח לכוון.'
+          : 'מסה סכמטית על פי הוראות ' + comp + ' — המגדלים לאורך הרחובות הראשיים, מרקם שכונתי של עד 9 קומות בפנים.',
+        lines: [['מתחם', comp], ['קומות (בקירוב)', '~' + fl], ['סטטוס', st]],
+        soon: true, waTxt: 'רוצים פרטים על הרובע? דברו איתנו' };
+    };
+    const fabInst = mkInst(fabPlaced, fabricM, futBld, SHADOWQ), towInst = mkInst(towPlaced, towerM, futBld, SHADOWQ);
+    const cFabInst = mkInst(cityFab, fabricM, world, CITYQ), cTowInst = mkInst(cityTow, towerM, world, CITYQ);
+    regClick(fabInst, massPick(fabPlaced, 'fab'));
+    regClick(towInst, massPick(towPlaced, 'tow'));
+    regClick(cFabInst, massPick(cityFab, 'fab'));
+    regClick(cTowInst, massPick(cityTow, 'tow'));
+    console.info('[sdedov] quarter massing:', fabPlaced.length + cityFab.length, 'fabric +', towPlaced.length + cityTow.length, 'towers (stylized per TA/4444)');
   }
 
   /* ---------------- Reading chimney nod (south) — merged to 2 meshes ---------------- */
@@ -971,14 +1314,20 @@ async function boot() {
   /* ================= PROJECT TOWERS ================= */
   /* live wp-uploads first (works when hosted anywhere), repo-relative second
      (local preview where CORS may block the live host), procedural last. */
+  /* V3 POSITION FIX (owner feedback: "Rainbow on the wrong side"): per the
+     municipality's own unit-design PDFs for תמל/3001 — Rainbow = lot 111 at the
+     compound's SOUTH-WEST (by Shai Agnon + Reading, closest to the sea),
+     Dimri Yama = lot 107 center-west one band north, Ashira = lot 101 on the
+     LEVI ESHKOL (east) edge. V2 had Rainbow north-east of Dimri — wrong side.
+     Sources: tel-aviv.gov.il דיון בעיצוב docs for lots 111/107/102 + sdedov.co.il. */
   const PROJECTS = {
-    dimri:   { pos: [-45, 0.02, -140],
+    dimri:   { pos: [-38, 0.02, -150],
                urls: ['https://nad-lan.co.il/wp-content/uploads/2026/07/sdedov-rich-dimri-v2.glb', '../../assets/engine/rich-v1/rich-dimri-v2.glb'],
                rich: true,  floorH: 3.2,  seed: 11 },
-    ashira:  { pos: [350, 0.02, -70],
+    ashira:  { pos: [415, 0.02, -60],
                urls: ['https://nad-lan.co.il/wp-content/uploads/2026/07/sdedov-rich-ashira-v2.glb', '../../assets/engine/rich-v1/rich-ashira-v2.glb'],
                rich: true,  floorH: 3.2,  seed: 23 },
-    rainbow: { pos: [160, 0.02, 90],
+    rainbow: { pos: [-30, 0.02, -258],
                urls: ['https://nad-lan.co.il/wp-content/uploads/2026/07/sdedov-rainbow.glb', '../../assets/engine/rainbow.glb'],
                rich: false, floorH: 3.05, seed: 31 },
   };
@@ -986,6 +1335,8 @@ async function boot() {
 
   const stoneMat = new THREE.MeshStandardMaterial({ color: 0x9c9080, roughness: 0.92, metalness: 0.04 }); /* muted so the low warm sun doesn't blow podium faces out */
   const goldMat = new THREE.MeshStandardMaterial({ color: 0x8f744c, roughness: 0.44, metalness: 0.9, envMapIntensity: 1.15 }); /* bronze — reads rich at street level, not neon-orange */
+  sunMat(stoneMat, 0xbfb4a2, 0x9c9080);
+  sunMat(goldMat, 0xa98d5f, 0x8f744c);
 
   function mergeByMaterial(root) {
     root.updateMatrixWorld(true);
@@ -1028,7 +1379,8 @@ async function boot() {
       if (m.transparent || m.opacity < 1) { o.material = glass; return; }
       const c = m.color;
       if (c && c.g > c.r * 1.22 && c.g > c.b * 1.22) { /* foliage */
-        if (!seen.has('tree')) seen.set('tree', new THREE.MeshStandardMaterial({ color: 0x1e2c1c, roughness: 1 }));
+        if (!seen.has('tree')) { const tm = new THREE.MeshStandardMaterial({ color: 0x1e2c1c, roughness: 1 });
+          seen.set('tree', tm); TREEMS.push(tm); }
         o.material = seen.get('tree'); return; }
       const grounded = GROUND.has(o.name) || /^(tree|trunk)/.test(o.name || '');
       const key = m.uuid + (grounded ? '-g' : '-w');
@@ -1109,34 +1461,672 @@ async function boot() {
     }, () => { console.warn('[sdedov] GLB missing for', key, '— procedural fallback'); towersUsed[key] = 'fallback'; resolve(fallbackTower(FALLBACK_SPECS[key])); });
   });
 
-  veilCap.textContent = 'טוענים את מגדלי הרובע…';
-  let loaded = 0; const tick = () => { veilBar.style.width = (++loaded / 3 * 88 + 6) + '%'; };
-  const [dimriN, ashiraN, rainbowN] = await Promise.all(
-    ['dimri', 'ashira', 'rainbow'].map(k => loadOne(k).then(n => { tick(); return n; })));
+  /* ============================================================
+     V3 SMART LOADING — the flagship GLBs stream in the BACKGROUND.
+     The page never blocks: the shell boots on procedural content,
+     a small chip reports progress, and a tower that lands after
+     first paint grows out of the ground instead of popping.
+     ============================================================ */
+  veilCap.textContent = 'מכינים את הרובע…';
+  const loadChip = $('#loadChip'), loadChipTxt = $('#loadChipTxt');
+  const GROWS = []; /* late arrivals rising from the ground */
+  let towersLoaded = 0;
+  function towerArrived(key, node) {
+    node.position.set(...PROJECTS[key].pos);
+    if (!REDUCED && document.body.classList.contains('ready') && yearMix > 0.5) {
+      node.scale.y = 0.001; GROWS.push({ node, t: 0 });
+    }
+    futBld.add(node);
+    towersLoaded++;
+    loadChipTxt.textContent = 'המגדלים נטענים ברקע… ' + towersLoaded + '/3';
+    if (towersLoaded === 3) { loadChip.classList.add('off');
+      console.info('[sdedov] towers ready:', JSON.stringify(towersUsed)); }
+  }
+  loadChipTxt.textContent = 'המגדלים נטענים ברקע… 0/3';
+  loadChip.classList.remove('off');
+  for (const k of ['dimri', 'ashira', 'rainbow']) loadOne(k).then(n => towerArrived(k, n));
 
-  dimriN.position.set(...PROJECTS.dimri.pos);     world.add(dimriN);
-  ashiraN.position.set(...PROJECTS.ashira.pos);   world.add(ashiraN);
-  rainbowN.position.set(...PROJECTS.rainbow.pos); world.add(rainbowN);
+  dropAO(-38, -150, 95); dropAO(-30, -258, 88); dropAO(415, -60, 120); dropAO(448, -74, 55);
+  addBeacon(-38, 128.6, -150, 0); addBeacon(-30, 129.2, -258, 1.4); addBeacon(415, 115.8, -60, 2.7);
 
-  dropAO(-39, -140, 95); dropAO(160, 90, 88); dropAO(350, -70, 120); dropAO(390, -78, 55);
-  addBeacon(-39, 128.6, -140, 0); addBeacon(160, 129.2, 90, 1.4); addBeacon(350, 115.8, -70, 2.7);
-
-  /* Rainbow plaza */
-  { const plaza = new THREE.Mesh(new THREE.CircleGeometry(64, 40),
+  /* Rainbow plaza — the plan's gateway plaza (lot 502) south of the tower (2035) */
+  { const plaza = new THREE.Mesh(new THREE.CircleGeometry(58, 40),
       new THREE.MeshStandardMaterial({ color: 0x5f5347, roughness: 0.95 }));
-    plaza.rotation.x = -Math.PI / 2; plaza.position.set(160, 0.045, 90); world.add(plaza); }
+    plaza.rotation.x = -Math.PI / 2; plaza.position.set(-2, 0.045, -232); world.add(plaza);
+    regFutFlat(plaza);
+    sunMat(plaza.material, 0x9d8d75, 0x5f5347); }
+
+  /* ============================================================
+     V3 — CRISP DAY SHADOWS (baked quads, one instanced mesh per set;
+     fade out at dusk where the ambience carries the depth instead)
+     ============================================================ */
+  const shadowTex = (() => { const c = document.createElement('canvas'); c.width = 64; c.height = 128;
+    const g = c.getContext('2d');
+    const gy = g.createLinearGradient(0, 0, 0, 128);
+    gy.addColorStop(0, 'rgba(0,0,0,0.95)'); gy.addColorStop(0.62, 'rgba(0,0,0,0.55)'); gy.addColorStop(1, 'rgba(0,0,0,0)');
+    g.fillStyle = gy; g.fillRect(0, 0, 64, 128);
+    const gx = g.createLinearGradient(0, 0, 64, 0);
+    gx.addColorStop(0, 'rgba(0,0,0,1)'); gx.addColorStop(0.16, 'rgba(0,0,0,0)'); gx.addColorStop(0.84, 'rgba(0,0,0,0)'); gx.addColorStop(1, 'rgba(0,0,0,1)');
+    g.globalCompositeOperation = 'destination-out'; g.fillStyle = gx; g.fillRect(0, 0, 64, 128);
+    return new THREE.CanvasTexture(c); })();
+  function buildShadows(parent, list) {
+    if (!list.length) return null;
+    const geo = new THREE.PlaneGeometry(1, 1); geo.rotateX(-Math.PI / 2); geo.translate(0, 0, 0.5);
+    const mat = new THREE.MeshBasicMaterial({ map: shadowTex, color: 0x14223a, transparent: true,
+      opacity: 0, depthWrite: false, fog: true });
+    const im = new THREE.InstancedMesh(geo, mat, list.length);
+    const M = new THREE.Matrix4(), R = new THREE.Matrix4().makeRotationY(SHADOW_YAW), S = new THREE.Matrix4();
+    list.forEach(([x, z, w, d, h], i) => {
+      const len = h * SHADOW_LEN * 0.82 + Math.max(w, d) * 0.4;
+      M.makeTranslation(x, 0.085 + (i % 7) * 0.004, z).multiply(R).multiply(S.makeScale(Math.max(w, d) * 1.05, 1, len));
+      im.setMatrixAt(i, M);
+    });
+    im.renderOrder = 2; im.frustumCulled = false;
+    onSun(m => { mat.opacity = 0.36 * (1 - m); im.visible = m < 0.985; });
+    parent.add(im); return im;
+  }
+  /* flagship + pavilion shadows join the massing list */
+  SHADOWQ.push([-38, -150, 60, 58, 126], [-30, -258, 46, 40, 128], [415, -60, 46, 42, 110], [448, -74, 40, 30, 50],
+    [36, -240, 24, 16, 8.5], [112, -100, 20, 18, 12.5], [36, 130, 26, 15, 8.5], [112, 320, 22, 17, 12.5]);
+
+  /* ============================================================
+     V3 — STREET LIFE ENGINE. Everything instanced/merged; a pool
+     is a set of instanced meshes bound to a parent group, so the
+     Einstein zone can lazily build its own without touching this.
+     ============================================================ */
+  const M4 = new THREE.Matrix4(), M4b = new THREE.Matrix4(), M4c = new THREE.Matrix4();
+  const composeTRS = (x, y, z, ry, sx, sy, sz) =>
+    M4.makeTranslation(x, y, z).multiply(M4b.makeRotationY(ry)).multiply(M4c.makeScale(sx, sy, sz));
+  const mergeGeo = (parts) => { /* parts: [geo, tx,ty,tz, rx?,ry?,rz?] */
+    const gs = parts.map(([g, tx, ty, tz, rx = 0, ry = 0, rz = 0]) => {
+      const c = g.clone(); if (rx) c.rotateX(rx); if (ry) c.rotateY(ry); if (rz) c.rotateZ(rz);
+      c.translate(tx, ty, tz); return c; });
+    return mergeGeometries(gs, false); };
+
+  /* shared geometries */
+  const G_TABLE = mergeGeo([[new THREE.CylinderGeometry(0.56, 0.56, 0.05, 10), 0, 0.73, 0],
+    [new THREE.CylinderGeometry(0.05, 0.07, 0.72, 6), 0, 0.36, 0]]);
+  const G_CHAIR = mergeGeo([[new THREE.BoxGeometry(0.44, 0.05, 0.44), 0, 0.45, 0],
+    [new THREE.BoxGeometry(0.44, 0.42, 0.05), 0, 0.66, -0.2],
+    [new THREE.BoxGeometry(0.05, 0.45, 0.05), 0.17, 0.22, 0.17], [new THREE.BoxGeometry(0.05, 0.45, 0.05), -0.17, 0.22, 0.17],
+    [new THREE.BoxGeometry(0.05, 0.45, 0.05), 0.17, 0.22, -0.17], [new THREE.BoxGeometry(0.05, 0.45, 0.05), -0.17, 0.22, -0.17]]);
+  const G_UMB = new THREE.ConeGeometry(1.65, 0.52, 8); G_UMB.translate(0, 2.32, 0);
+  const G_UMBPOLE = new THREE.CylinderGeometry(0.035, 0.045, 2.15, 5); G_UMBPOLE.translate(0, 1.07, 0);
+  const G_PERSON = mergeGeo([[new THREE.CapsuleGeometry(0.165, 0.52, 3, 8), 0, 0.82, 0],
+    [new THREE.SphereGeometry(0.115, 8, 6), 0, 1.33, 0]]);
+  const G_BENCH = mergeGeo([[new THREE.BoxGeometry(1.85, 0.07, 0.52), 0, 0.46, 0],
+    [new THREE.BoxGeometry(1.85, 0.4, 0.06), 0, 0.68, -0.24],
+    [new THREE.BoxGeometry(0.08, 0.44, 0.46), 0.78, 0.22, 0], [new THREE.BoxGeometry(0.08, 0.44, 0.46), -0.78, 0.22, 0]]);
+  const G_PLANTER = new THREE.BoxGeometry(0.95, 0.52, 0.95); G_PLANTER.translate(0, 0.26, 0);
+  const G_BUSH = new THREE.SphereGeometry(0.44, 7, 5); G_BUSH.scale(1, 0.72, 1); G_BUSH.translate(0, 0.62, 0);
+  const G_CAR = mergeGeo([[new THREE.BoxGeometry(4.25, 0.92, 1.84), 0, 0.76, 0],
+    [new THREE.BoxGeometry(2.25, 0.58, 1.68), -0.25, 1.5, 0]]);
+  const G_WHEEL = new THREE.CylinderGeometry(0.33, 0.33, 0.24, 9); G_WHEEL.rotateX(Math.PI / 2);
+  const G_BIKE = mergeGeo([[new THREE.TorusGeometry(0.3, 0.033, 5, 10), 0.55, 0.3, 0],
+    [new THREE.TorusGeometry(0.3, 0.033, 5, 10), -0.55, 0.3, 0],
+    [new THREE.BoxGeometry(1.1, 0.05, 0.05), 0, 0.66, 0], [new THREE.BoxGeometry(0.05, 0.42, 0.05), 0.48, 0.82, 0],
+    [new THREE.BoxGeometry(0.05, 0.36, 0.05), -0.42, 0.8, 0], [new THREE.BoxGeometry(0.05, 0.05, 0.44), 0.5, 1.02, 0],
+    [new THREE.BoxGeometry(0.26, 0.06, 0.14), -0.42, 1.0, 0]]);
+  const G_AWNING = new THREE.BoxGeometry(1, 0.08, 1);
+  const G_SHOP = boxG; /* bottom-origin unit box */
+  const G_BUSFRAME = mergeGeo([[new THREE.BoxGeometry(0.12, 2.5, 0.12), -1.55, 1.25, 0.55], [new THREE.BoxGeometry(0.12, 2.5, 0.12), 1.55, 1.25, 0.55],
+    [new THREE.BoxGeometry(3.6, 0.1, 1.5), 0, 2.52, 0], [new THREE.BoxGeometry(3.3, 0.06, 0.42), 0, 0.5, 0.42]]);
+  const G_BUSGLASS = new THREE.BoxGeometry(3.5, 1.9, 0.05); G_BUSGLASS.translate(0, 1.35, 0.72);
+  const G_CROSS = new THREE.PlaneGeometry(0.55, 7.4); G_CROSS.rotateX(-Math.PI / 2);
+
+  /* shared materials */
+  const M_TABLE = new THREE.MeshStandardMaterial({ color: 0xd8d3c6, roughness: 0.55 });
+  const M_CHAIR = new THREE.MeshStandardMaterial({ color: 0xffffff, roughness: 0.7 });
+  const M_UMB = new THREE.MeshStandardMaterial({ color: 0xffffff, roughness: 0.85, side: THREE.DoubleSide });
+  const M_POLE = new THREE.MeshStandardMaterial({ color: 0x6a625a, roughness: 0.8 });
+  const M_PERSON = new THREE.MeshStandardMaterial({ color: 0xffffff, roughness: 0.88 });
+  const M_BENCH = new THREE.MeshStandardMaterial({ color: 0x8a6d4d, roughness: 0.9 });
+  const M_PLANTER = new THREE.MeshStandardMaterial({ color: 0xb5aa98, roughness: 0.95 });
+  const M_BUSH = new THREE.MeshStandardMaterial({ color: 0x46662f, roughness: 1 });
+  const M_CAR = new THREE.MeshStandardMaterial({ color: 0xffffff, roughness: 0.35, metalness: 0.5, envMapIntensity: 1.1 });
+  const M_WHEEL = new THREE.MeshStandardMaterial({ color: 0x1c1c20, roughness: 0.9 });
+  const M_BIKE = new THREE.MeshStandardMaterial({ color: 0x2e3338, roughness: 0.6, metalness: 0.4 });
+  const M_AWNING = new THREE.MeshStandardMaterial({ color: 0xffffff, roughness: 0.92, side: THREE.DoubleSide });
+  const M_SHOP = duskify(new THREE.MeshStandardMaterial({ color: 0x574a44, roughness: 0.8, metalness: 0.04 }),
+    { floorH: 4.4, winW: 3.1, lit: 0.94, glow: 2.5, seed: 77 });
+  const M_BUSFRAME = new THREE.MeshStandardMaterial({ color: 0x3a3f47, roughness: 0.55, metalness: 0.5 });
+  const M_BUSGLASS = new THREE.MeshStandardMaterial({ color: 0x9fc2d8, roughness: 0.15, metalness: 0.4,
+    transparent: true, opacity: 0.32, envMapIntensity: 1.4 });
+  const M_CROSS = new THREE.MeshBasicMaterial({ color: 0xd8d2c2, transparent: true, opacity: 0.5, depthWrite: false, fog: true });
+  sunMat(M_PERSON, 0xffffff, 0x6a6478);   /* people dim to silhouettes at dusk */
+  sunMat(M_CAR, 0xffffff, 0x9a95a8);
+  sunMat(M_UMB, 0xffffff, 0xc9b8a8);
+  sunMat(M_AWNING, 0xffffff, 0xb8a898);
+  sunMat(M_BENCH, 0x8a6d4d, 0x4c4038);
+  sunMat(M_PLANTER, 0xb5aa98, 0x5a5264);
+  sunMat(M_BUSH, 0x46662f, 0x24361f);
+  sunMat(M_SHOP, 0xcbbfa8, 0x574a44);
+  const CHAIR_COLS = [0x37404a, 0x9a7c50, 0x5a4438, 0x2e4c3e];
+  const UMB_COLS = [0xefe6d0, 0xd8c9a8, 0xc45f4a, 0xf2ede2, 0x4e6e64];
+  const PPL_COLS = [0x40566b, 0x6b5a49, 0x77808a, 0x8a4f42, 0x4f6b55, 0x8c8578, 0x32405c, 0xa08a68, 0x704a5e];
+  const CAR_COLS = [0xf2f2f0, 0xd8d8d6, 0xb8bcc2, 0x3c414b, 0x2e3a52, 0x6b2f2f, 0xe8e4da];
+  const AWN_COLS = [0xb2593c, 0xd8cfb4, 0x3e6e64, 0x2e4c66, 0xa8433a];
+  const SIGN_BGS = ['#22303e', '#5a3a2e', '#2e4a40', '#3a2e4a', '#623b28', '#26424f'];
+
+  const LIFE_POOLS = [], FONT_REDRAWS = [];
+  function buildLife(parent, cap) {
+    const pool = { walkers: [], meshes: {} };
+    const mk = (key, geo, mat, n, colored) => {
+      const im = new THREE.InstancedMesh(geo, mat, n); im.count = 0;
+      if (colored) im.instanceColor = new THREE.InstancedBufferAttribute(new Float32Array(n * 3), 3);
+      parent.add(im); pool.meshes[key] = im; return im; };
+    mk('table', G_TABLE, M_TABLE, cap.table || 1);
+    mk('chair', G_CHAIR, M_CHAIR, cap.chair || 1, true);
+    mk('umb', G_UMB, M_UMB, cap.umb || 1, true);
+    mk('upole', G_UMBPOLE, M_POLE, cap.umb || 1);
+    mk('person', G_PERSON, M_PERSON, cap.person || 1, true);
+    mk('bench', G_BENCH, M_BENCH, cap.bench || 1);
+    mk('planter', G_PLANTER, M_PLANTER, cap.planter || 1);
+    mk('bush', G_BUSH, M_BUSH, cap.planter || 1);
+    mk('car', G_CAR, M_CAR, cap.car || 1, true);
+    mk('wheel', G_WHEEL, M_WHEEL, (cap.car || 1) * 4);
+    mk('bike', G_BIKE, M_BIKE, cap.bike || 1);
+    mk('awn', G_AWNING, M_AWNING, cap.awn || 1, true);
+    mk('shop', G_SHOP, M_SHOP, cap.shop || 1);
+    mk('busF', G_BUSFRAME, M_BUSFRAME, cap.bus || 1);
+    mk('busG', G_BUSGLASS, M_BUSGLASS, cap.bus || 1);
+    mk('cross', G_CROSS, M_CROSS, cap.cross || 1);
+    const put = (key, x, y, z, ry = 0, sx = 1, sy = 1, sz = 1, col = null) => {
+      const im = pool.meshes[key]; if (im.count >= im.instanceMatrix.count) return -1;
+      im.setMatrixAt(im.count, composeTRS(x, y, z, ry, sx, sy, sz));
+      if (col !== null && im.instanceColor) im.setColorAt(im.count, LC.setHex(col));
+      return im.count++; };
+    const rng = (() => { let s = cap.seed || 7; return () => (s = (s * 1103515245 + 12345) & 0x7fffffff) / 0x7fffffff; })();
+    const pick = arr => arr[Math.floor(rng() * arr.length) % arr.length];
+    const api = {
+      pool, put, rng,
+      person(x, z, ry = null, s = null) {
+        put('person', x, 0, z, ry === null ? rng() * 6.28 : ry, s || (0.92 + rng() * 0.16), s || (0.92 + rng() * 0.2), s || (0.92 + rng() * 0.16), pick(PPL_COLS)); },
+      kid(x, z) { put('person', x, 0, z, rng() * 6.28, 0.62, 0.58, 0.62, pick(PPL_COLS)); },
+      walker(ax, az, bx, bz, sp = 0.05) {
+        const idx = put('person', ax, 0, az, 0, 1, 1, 1, pick(PPL_COLS));
+        if (idx >= 0) pool.walkers.push({ im: pool.meshes.person, idx, ax, az, bx, bz, sp: sp * (0.8 + rng() * 0.5), ph: rng() * 6.28, s: 0.92 + rng() * 0.16 }); },
+      bench(x, z, ry) { put('bench', x, 0, z, ry); },
+      planter(x, z) { put('planter', x, 0, z, rng()); put('bush', x, 0, z, rng()); },
+      bike(x, z, ry) { put('bike', x, 0, z, ry, 1, 1, 1); },
+      car(x, z, ry) {
+        const col = pick(CAR_COLS);
+        put('car', x, 0, z, ry, 1, 1, 1, col);
+        const cy = Math.cos(ry), sy = Math.sin(ry);
+        for (const [lx, lz] of [[1.32, 0.97], [1.32, -0.97], [-1.32, 0.97], [-1.32, -0.97]])
+          put('wheel', x + lx * cy + lz * sy, 0.33, z - lx * sy + lz * cy, ry);
+      },
+      bus(x, z, ry) { put('busF', x, 0, z, ry); put('busG', x, 0, z, ry); },
+      crossing(x, z, ry, n = 8, gap = 1.1, len = 1) { /* zebra: n stripes, long axis along local Z */
+        for (let i = 0; i < n; i++) { const o = (i - (n - 1) / 2) * gap;
+          put('cross', x + Math.cos(ry) * o, 0.075, z - Math.sin(ry) * o, ry, 1, 1, len); } },
+      shop(x, z, w, h, d, ry = 0) { put('shop', x, 0, z, ry, w, h, d); return { x, z, w, h, d, ry }; },
+      awning(x, z, ry, w = 6.6) { /* front edge at (x,z), facing ry (+Z local out) */
+        const tilt = 0.30;
+        const im = pool.meshes.awn; if (im.count >= im.instanceMatrix.count) return;
+        M4.makeTranslation(x, 3.05, z).multiply(M4b.makeRotationY(ry))
+          .multiply(M4c.makeTranslation(0, 0, 1.0)).multiply(M4b.makeRotationX(tilt)).multiply(M4c.makeScale(w, 1, 2.1));
+        im.setMatrixAt(im.count, M4); im.setColorAt(im.count, LC.setHex(pick(AWN_COLS))); im.count++; },
+      cafe(cx, cz, ry, nT = 3) { /* a cluster of tables+chairs+umbrellas+people facing ry */
+        const cy = Math.cos(ry), sy = Math.sin(ry);
+        for (let i = 0; i < nT; i++) {
+          const o = (i - (nT - 1) / 2) * 2.3, jx = (rng() - 0.5) * 0.7, jz = (rng() - 0.5) * 0.7;
+          const tx = cx + cy * o + jx, tz = cz - sy * o + jz;
+          put('table', tx, 0, tz, rng() * 3);
+          const na = 2 + Math.floor(rng() * 2);
+          for (let a = 0; a < na; a++) { const aa = rng() * 6.28, rr = 0.85;
+            put('chair', tx + Math.sin(aa) * rr, 0, tz + Math.cos(aa) * rr, aa + Math.PI, 1, 1, 1, pick(CHAIR_COLS)); }
+          if (rng() < 0.65) { const uc = pick(UMB_COLS);
+            put('umb', tx, 0, tz, rng(), 1, 1, 1, uc); put('upole', tx, 0, tz, 0); }
+          if (rng() < 0.5) api.person(tx + (rng() - 0.5) * 2.4, tz + (rng() - 0.5) * 2.4);
+        } },
+      /* signage: names collected, atlas + one merged mesh built in finish() */
+      _signs: [],
+      sign(x, z, ry, name, w = 6.2) { api._signs.push({ x, z, ry, name, w }); },
+      finish() {
+        for (const k in pool.meshes) { const im = pool.meshes[k];
+          im.instanceMatrix.needsUpdate = true;
+          if (im.instanceColor) im.instanceColor.needsUpdate = true;
+          if (im.count === 0) im.visible = false; }
+        if (api._signs.length) {
+          const N = api._signs.length, c = document.createElement('canvas');
+          c.width = 1024; c.height = 128 * Math.ceil(N / 2);
+          const draw = () => { const g = c.getContext('2d');
+            api._signs.forEach((s, i) => {
+              const col = i % 2, row = i >> 1, X = col * 512, Y = row * 128;
+              g.fillStyle = SIGN_BGS[i % SIGN_BGS.length]; g.fillRect(X, Y, 512, 128);
+              g.fillStyle = 'rgba(255,255,255,.08)'; g.fillRect(X, Y, 512, 8);
+              g.fillStyle = '#f2e9d2'; g.font = '700 58px Heebo, "Segoe UI", sans-serif';
+              g.textAlign = 'center'; g.textBaseline = 'middle'; g.direction = 'rtl';
+              g.fillText(s.name, X + 256, Y + 68, 470); }); };
+          draw();
+          const tex = new THREE.CanvasTexture(c); tex.colorSpace = THREE.SRGBColorSpace;
+          FONT_REDRAWS.push(() => { draw(); tex.needsUpdate = true; });
+          const geos = api._signs.map((s, i) => {
+            const col = i % 2, row = i >> 1;
+            const gm = new THREE.PlaneGeometry(s.w, 1.45);
+            const uv = gm.attributes.uv;
+            for (let k = 0; k < uv.count; k++)
+              uv.setXY(k, (col + uv.getX(k)) / 2, 1 - (row + (1 - uv.getY(k))) / Math.ceil(N / 2));
+            gm.rotateY(s.ry); gm.translate(s.x, 3.65, s.z); return gm; });
+          const mesh = new THREE.Mesh(mergeGeometries(geos, false),
+            new THREE.MeshBasicMaterial({ map: tex, toneMapped: false, fog: true }));
+          parent.add(mesh);
+        }
+        LIFE_POOLS.push(pool);
+      },
+    };
+    return api;
+  }
+
+  /* ---------------- west-quarter street life (2035 · idle-built, never blocks boot) ---------------- */
+  buildShadows(world, CITYQ); /* existing-city crisp day shadows — both years */
+  const buildWestLife = () => { const t0 = performance.now();
+    const L = buildLife(futLife, { table: 40, chair: 120, umb: 40, person: 84, bench: 30, planter: 44,
+      car: 18, bike: 8, awn: 14, shop: 11, bus: 1, cross: 56, seed: 19 });
+    /* beach-cafe pavilions along the promenade (east side) — each: shop + sign + awning + cafe cluster */
+    const SHOPS = [
+      [-86, -175, 15, 4.6, 10, 'קפה החוף'], [-86, -120, 14, 4.2, 9, 'מסעדת הטיילת'],
+      [-86, 28, 15, 4.6, 10, 'גלידה על הים'], [-86, 84, 14, 4.2, 9, 'מאפיית הרובע'],
+      [-86, 142, 15, 4.6, 10, 'ביסטרו המסלול'],
+    ];
+    for (const [x, z, w, h, d, name] of SHOPS) {
+      L.shop(x, z, w, h, d);
+      const fx = x - w / 2 - 0.12;
+      L.sign(fx - 0.05, z, -Math.PI / 2, name, Math.min(w - 2, 7));
+      L.awning(fx, z, -Math.PI / 2, w - 3);
+      L.cafe(fx - 4.6, z, -Math.PI / 2, 3);
+      SHADOWQ.push([x, z, w, d, h]);
+    }
+    /* dimri corner cafe + rainbow plaza pair + linear-park cafe */
+    L.shop(6, -122, 13, 4.2, 9, 0.15); L.sign(-0.9, -121.0, -Math.PI / 2 + 0.15, 'קפה ימה', 6);
+    L.awning(-0.8, -121.0, -Math.PI / 2 + 0.15, 8); L.cafe(-5.5, -117, -Math.PI / 2 + 0.15, 2);
+    SHADOWQ.push([6, -122, 13, 9, 4.2]);
+    L.shop(24, -246, 13, 4.3, 9, -0.72); L.sign(20.7, -242.3, -0.72, 'קפה הכיכר', 6);
+    L.awning(20.8, -242.4, -0.72, 9); L.cafe(11, -232, -0.72, 3);
+    SHADOWQ.push([24, -246, 13, 9, 4.3]);
+    L.shop(-18, -198, 12, 4.2, 9, 2.57); L.sign(-15.4, -202.4, 2.57, 'פיצה בשדרה', 5.6);
+    L.awning(-15.5, -202.6, 2.57, 8); L.cafe(-9, -208, 2.57, 2);
+    SHADOWQ.push([-18, -198, 12, 9, 4.2]);
+    L.shop(298, 18, 13, 4.2, 9, Math.PI); L.sign(298, 12.7, Math.PI, 'קיוסק הפארק', 6);
+    L.awning(298, 13.3, Math.PI, 9); L.cafe(298, 5, Math.PI, 3);
+    SHADOWQ.push([298, 18, 13, 9, 4.2]);
+    L.shop(94, -36, 9, 3.8, 7, 0); L.sign(89.4, -36, -Math.PI / 2, 'ספרים על הים', 5.4);
+    L.awning(89.5, -36, -Math.PI / 2, 5.5);
+    SHADOWQ.push([94, -36, 9, 7, 3.8]);
+    /* benches + planters: promenade (facing the sea), runway park, linear park */
+    for (const z of [-140, -70, 0, 70, 140]) { L.bench(-109.5, z, Math.PI / 2); L.planter(-109.5, z + 3.2); }
+    for (const z of [-150, -90, -30, 30, 90, 150]) { L.bench(62, z, -Math.PI / 2); L.planter(62, z - 3.4); }
+    for (const x of [130, 196, 262, 328, 394, 458]) { L.bench(x, -7.4, Math.PI); L.planter(x + 3.4, -7.2); }
+    for (const x of [150, 240, 330]) L.bench(x, 7.2, 0);
+    /* beach umbrellas + bathers near the water node */
+    for (let i = 0; i < 7; i++) { const bx = -152 + (i % 3) * 8 + (i * 7) % 5, bz = -88 + i * 11;
+      L.pool.meshes.umb.instanceColor && L.put('umb', bx, -0.2, bz, i * 0.7, 1, 1, 1, [0xd8c9a8, 0xefe6d0, 0xc45f4a][i % 3]);
+      L.put('upole', bx, -0.2, bz, 0);
+      if (i % 2) L.person(bx + 1.4, bz + 0.8); }
+    L.kid(-146, -44); L.kid(-141, -58);
+    /* bus stop + parked cars along the coast road */
+    L.bus(-95.2, 58, -Math.PI / 2);
+    for (const z of [-228, -213, -198, -171, -157, 128, 143, 172, 187, 216]) L.car(-103.3, z, 0);
+    for (const z of [-220, -186, -150, 118, 154, 208]) L.car(-96.7, z, Math.PI);
+    /* bikes at racks */
+    L.bike(-100, -54, 1.4); L.bike(-100, -52.6, 1.5); L.bike(-100, -51.2, 1.35);
+    L.bike(22, -222, 0.35); L.bike(22, -220.6, 0.5); L.bike(268, 5, 1.2); L.bike(266.6, 5, 1.3);
+    /* crosswalks on the coast road + Ibn Gvirol */
+    L.crossing(-100, -8, Math.PI / 2, 8); L.crossing(-100, -178, Math.PI / 2, 8); L.crossing(-100, 152, Math.PI / 2, 8);
+    L.crossing(250, -16, Math.PI / 2, 12, 1.2, 2.2); L.crossing(250, 336, Math.PI / 2, 12, 1.2, 2.2);
+    /* people: plaza gatherings, promenade walkers, runway-park walkers */
+    for (const [px, pz] of [[-4, -236], [10, -218], [16, -230], [-14, -220], [104, 44], [96, 58],
+      [-100, -96], [-107, -30], [-98, 112], [70, -14], [80, 26], [236, -4], [300, 12], [8, -110], [-12, -122]]) L.person(px, pz);
+    L.kid(2, -228); L.kid(108, 50);
+    L.walker(-104, -160, -104, 60, 0.045); L.walker(-104, 150, -104, -40, 0.05);
+    L.walker(-107.5, -80, -107.5, 120, 0.038); L.walker(-101, 40, -101, -140, 0.052);
+    L.walker(74, -160, 74, 160, 0.03); L.walker(70, 120, 70, -120, 0.042); L.walker(78, -60, 78, 170, 0.048);
+    L.walker(120, -2, 300, -2, 0.03); L.walker(430, -4, 180, -4, 0.026); L.walker(210, 2, 380, 2, 0.05);
+    L.walker(-24, -140, 4, -212, 0.04); L.walker(20, -230, 60, -196, 0.045);
+    L.finish();
+    /* the pavilions are clickable commercial frontage */
+    regClick(L.pool.meshes.shop, () => ({ tag: 'קומת המסחר של הרובע', title: 'חזית מסחרית בטיילת',
+      sub: 'PROMENADE RETAIL', desc: 'לאורך הטיילת ופארק המסלול מתוכננת רצועת מסחר שכונתית — בתי קפה, מסעדות וחנויות קטנות. שמות בתי העסק בהדמיה הם להמחשה בלבד.',
+      lines: [['ייעוד', 'מסחר ופנאי'], ['סטטוס', 'על פי התכנית']], soon: true, waTxt: 'רוצים חנות על הטיילת? דברו איתנו' }));
+    buildShadows(futBld, SHADOWQ); /* one instanced mesh for every 2035 box (incl. the shops above) */
+    applyYear(yearMix);            /* late-built groups pick up the current year state */
+    console.info('[sdedov] west street life idle-built in', (performance.now() - t0).toFixed(1), 'ms');
+  };
+  (window.requestIdleCallback || (f => setTimeout(f, 60)))(buildWestLife, { timeout: 1600 });
+
+  /* ============================================================
+     V3 — 2026: THE SITE TODAY. Tower cranes + concrete skeletons
+     on the three flagship lots (they really are under construction),
+     site fences, disturbed-ground pads. Lives in todayGrp and
+     shrinks away as 2035 rises. Cheap: one merged crane geometry.
+     ============================================================ */
+  const cranes = [];
+  const M_CRANE = new THREE.MeshStandardMaterial({ color: 0x8a6a24, roughness: 0.55, metalness: 0.35 });
+  sunMat(M_CRANE, 0xd9ad3c, 0x8a6a24);
+  const M_CONC = new THREE.MeshStandardMaterial({ color: 0x7d766c, roughness: 0.95 });
+  sunMat(M_CONC, 0xaaa294, 0x5d574e);
+  const G_CRANE = (() => { /* origin at ground, jib along +X, reference height ~112 */
+    const P = [];
+    const B = (w, h, d, x, y, z, rz = 0) => { const g = new THREE.BoxGeometry(w, h, d); if (rz) g.rotateZ(rz); g.translate(x, y, z); P.push(g); };
+    B(3.4, 1.2, 3.4, 0, 0.6, 0);            /* base */
+    B(1.5, 100, 1.5, 0, 50, 0);             /* mast */
+    B(2.6, 2.2, 2.6, 0.9, 101, 0);          /* cab */
+    B(52, 1.3, 1.5, 23, 102.3, 0);          /* jib */
+    B(15, 1.3, 1.5, -7.5, 102.3, 0);        /* counter-jib */
+    B(2.4, 2.2, 2.4, -13.5, 100.6, 0);      /* counterweight */
+    B(1.0, 9, 1.0, 0, 107.5, 0);            /* apex */
+    B(31, 0.22, 0.22, 15.2, 107.6, 0, -0.27);  /* pendant → jib */
+    B(13.6, 0.22, 0.22, -6.8, 107.4, 0, 0.62); /* pendant → counter-jib */
+    B(0.18, 26, 0.18, 38, 89.3, 0);         /* hook cable */
+    B(2.6, 1.1, 1.6, 38, 75.6, 0);          /* hanging load */
+    return mergeGeometries(P, false); })();
+  function mkCrane(parent, x, z, h = 120, ry = 0) {
+    const m = new THREE.Mesh(G_CRANE, M_CRANE);
+    m.scale.setScalar(h / 112); m.position.set(x, 0, z); m.rotation.y = ry;
+    m.userData.spin = (0.02 + Math.abs(Math.sin(x * 12.9898 + z * 78.233)) * 0.05) * (Math.sin(x + z) > 0 ? 1 : -1);
+    const tip = new THREE.Mesh(new THREE.SphereGeometry(0.9, 6, 5), new THREE.MeshBasicMaterial({ color: 0xff2b1e, fog: true }));
+    tip.position.set(0, 112.5, 0); m.add(tip);
+    parent.add(m); cranes.push(m); return m;
+  }
+  function mkSkeleton(parent, x, z, w, d, floors, floorH = 3.1) {
+    const H = floors * floorH;
+    const slabs = new THREE.InstancedMesh(boxG, M_CONC, floors + 1);
+    for (let f = 0; f <= floors; f++) slabs.setMatrixAt(f, composeTRS(x, f * floorH, z, 0, w, 0.34, d));
+    const cols = new THREE.InstancedMesh(boxG, M_CONC, 4);
+    let ci = 0;
+    for (const [cx, cz] of [[w / 2 - 0.8, d / 2 - 0.8], [-w / 2 + 0.8, d / 2 - 0.8], [w / 2 - 0.8, -d / 2 + 0.8], [-w / 2 + 0.8, -d / 2 + 0.8]])
+      cols.setMatrixAt(ci++, composeTRS(x + cx, 0, z + cz, 0, 0.62, H, 0.62));
+    const core = new THREE.Mesh(boxG, M_CONC);
+    core.position.set(x + w * 0.12, 0, z - d * 0.1); core.scale.set(w * 0.3, H + 2.4, d * 0.32);
+    parent.add(slabs, cols, core);
+  }
+  { /* the three flagship sites, 2026: fenced lots, dirt, partial frames, cranes */
+    const M_FENCE = new THREE.MeshStandardMaterial({ color: 0x5d7183, roughness: 0.8, metalness: 0.2 });
+    sunMat(M_FENCE, 0x9fb3c4, 0x46586a);
+    const SITES = [ /* [x, z, w(frame), d, floors, fenceR, craneOffs] */
+      [-38, -150, 26, 26, 14, 58, [[-30, 22], [26, -18]]],
+      [-30, -258, 20, 17, 15, 50, [[24, 16]]],
+      [415, -60, 22, 22, 12, 62, [[-26, -24], [30, 20]]],
+    ];
+    const fences = new THREE.InstancedMesh(boxG, M_FENCE, SITES.length * 4);
+    let fi = 0;
+    const dirtM = new THREE.MeshStandardMaterial({ color: 0x6d5c46, roughness: 1 });
+    sunMat(dirtM, 0x99815f, 0x584a39);
+    for (const [x, z, w, d, fl, R, cr] of SITES) {
+      mkSkeleton(todayGrp, x, z, w, d, fl);
+      for (const [ox, oz] of cr) mkCrane(todayGrp, x + ox, z + oz, fl * 3.1 + 34, Math.atan2(-ox, -oz));
+      fences.setMatrixAt(fi++, composeTRS(x, 0, z - R, 0, R * 2, 2.1, 0.24));
+      fences.setMatrixAt(fi++, composeTRS(x, 0, z + R, 0, R * 2, 2.1, 0.24));
+      fences.setMatrixAt(fi++, composeTRS(x - R, 0, z, 0, 0.24, 2.1, R * 2));
+      fences.setMatrixAt(fi++, composeTRS(x + R, 0, z, 0, 0.24, 2.1, R * 2));
+      const dirt = new THREE.Mesh(new THREE.CircleGeometry(R * 0.94, 22), dirtM);
+      dirt.rotation.x = -Math.PI / 2; dirt.position.set(x, 0.03, z); todayGrp.add(dirt);
+    }
+    todayGrp.add(fences);
+    regClick(fences, () => null); /* fences aren't a story — swallow, don't card */
+  }
+
+  /* ============================================================
+     V3 — THE YEAR CROSSFADE. scale.y is the whole trick: every
+     future building is bottom-origin, so futBld rises out of the
+     ground while the 2026 cranes sink back into it. Ground-flat
+     futures fade by opacity; street life joins near the end.
+     ============================================================ */
+  const easeY = m => m * m * (3 - 2 * m);
+  function applyYear(m) {
+    const e = easeY(m);
+    futBld.visible = e > 0.012;
+    futBld.scale.y = Math.max(e, 0.0001);
+    einFut.visible = futBld.visible;
+    einFut.scale.y = futBld.scale.y;
+    const lf = THREE.MathUtils.smoothstep(m, 0.55, 1);
+    futLife.visible = lf > 0.02;
+    futLife.scale.y = Math.max(lf, 0.0001);
+    const tv = easeY(1 - m);
+    todayGrp.visible = tv > 0.012;
+    todayGrp.scale.y = Math.max(tv, 0.0001);
+    einToday.visible = todayGrp.visible;
+    einToday.scale.y = todayGrp.scale.y;
+    const fo = THREE.MathUtils.smoothstep(m, 0.12, 0.82);
+    for (const mat of FUTFLATS) mat.opacity = mat.userData.baseOp * fo;
+  }
+  const yearSw = $('#yearSw'), y26 = $('#year2026'), y35 = $('#year2035');
+  function setYear(v) { /* v: 0 = 2026, 1 = 2035 */
+    yearT = v;
+    yearSw.classList.toggle('past', v === 0);
+    y26.classList.toggle('on', v === 0); y26.setAttribute('aria-pressed', String(v === 0));
+    y35.classList.toggle('on', v === 1); y35.setAttribute('aria-pressed', String(v === 1));
+  } /* stale hovers on a hidden era are dropped by the per-frame visibility check */
+  y26.addEventListener('click', () => setYear(0));
+  y35.addEventListener('click', () => setYear(1));
+  setYear(YEAR0); applyYear(yearMix);
+
+  /* ---------------- V3: sun switch wiring + first-paint state ---------------- */
+  const sunDayB = $('#sunDay'), sunDuskB = $('#sunDusk');
+  const themeMeta = document.querySelector('meta[name="theme-color"]');
+  function setSun(v) { /* 0 = day (default), 1 = dusk */
+    duskT = v;
+    document.body.classList.toggle('day', v === 0);
+    document.body.classList.toggle('dusk', v === 1);
+    sunDayB.classList.toggle('on', v === 0); sunDayB.setAttribute('aria-pressed', String(v === 0));
+    sunDuskB.classList.toggle('on', v === 1); sunDuskB.setAttribute('aria-pressed', String(v === 1));
+    if (themeMeta) themeMeta.content = v === 0 ? '#5b83ad' : '#131022';
+  }
+  sunDayB.addEventListener('click', () => setSun(0));
+  sunDuskB.addEventListener('click', () => setSun(1));
+  setSun(SUN0);
+  applySunMix(duskMix); /* CRITICAL: materials are authored in dusk values — snap them to the real state */
+  DUSKU.value = duskMix;
+  (window.requestIdleCallback || (f => setTimeout(f, 120)))(() => buildEnv(duskT)); /* reflections join when idle */
+
+  /* ============================================================
+     V3 — "מזרחה לאיינשטיין": the corridor between the quarter and
+     Ramat Aviv, per web research 2026-07 (see sources per project).
+     Lazy-built on first entry to an east node / focus deep-link.
+     Catalog projects link to their live pages; the rest say
+     "בקרוב אצלנו" with a WhatsApp CTA.
+     Sources: tlvonline.co.il (Gindi Sde Dov center) · gindi-group.com +
+     shbiro.co.il + ymag.ynet (Einstein 2.4.6.8, Einstein 15) ·
+     calcalist + globes (Einstein 11-13 tender) · nadlancenter +
+     magdilim + hagag-group.co.il (EINSTEIN TOWER/BLVD) · nadlancenter
+     8449 + walla nadlan (Einstein 19) · shbn.co.il + galmarom
+     (Einstein 21-27, 29-39) · tel-aviv.gov.il תשקיף (41+47-55) ·
+     ice.co.il + ashtrom.co.il (Ashdar Einstein 63-65) · calcalist +
+     auranewg.co.il (Aura Ramat Aviv Gimel).
+     ============================================================ */
+  const EP = [
+    { id: 'gindi-rova', n: 'מרכז רובע שדה דב — גינדי', dev: 'גינדי ישראל 2010', st: 'בתכנון — אישור אדריכלי 01/2026',
+      un: 382, x: 578, z: -20, f: '45 · 20 · 7', soon: 1,
+      bld: [[0, 6, 25, 22, 45], [27, 16, 20, 17, 20], [-24, 14, 16, 13, 7], [3, 34, 26, 12, 5]],
+      note: 'ארבעה בניינים בפינת איינשטיין/אבן גבירול המוארך — מגדל 45 קומות מעל קולונדת מסחר, השער המזרחי של הרובע.' },
+    { id: 'ein-2468', n: 'EINSTEIN 2.4.6.8', dev: 'גינדי + קבוצת שבירו · אדר׳ משה צור', st: 'בשיווק — אכלוס משוער 2030',
+      un: null, x: 642, z: -108, f: '23 · 23 + 3 בוטיק', soon: 1,
+      bld: [[0, 0, 20, 17, 23], [30, 4, 20, 17, 23], [-24, -12, 14, 11, 6], [10, -26, 14, 11, 6], [40, -24, 14, 11, 6]],
+      note: 'שני מגדלי 23 קומות ושלושה בנייני בוטיק בקצה המערבי של איינשטיין, צמוד לפארק החוף המתוכנן ולקו הירוק.' },
+    { id: 'ein-11-13', n: 'איינשטיין 11–13', dev: 'קבוצת סנטרל טאוואר (מכרז רמ״י)', st: 'בתכנון',
+      un: 160, x: 700, z: -22, f: 'מעטפת עד ~30', soon: 1,
+      bld: [[0, 4, 22, 18, 30], [24, 14, 18, 15, 14]],
+      note: 'כ־160 דירות וכ־1,200 מ״ר מסחר על מגרש בגוש הגדול — קרקע שנרכשה במכרז רמ״י ב־237 מיליון ש״ח.' },
+    { id: 'ein-15', n: 'EINSTEIN 15', dev: 'גינדי + שבירו · אדר׳ משה צור', st: 'בבנייה ובמכירות — אכלוס 12/2028',
+      un: 180, x: 758, z: -22, f: '30 · 12', soon: 1,
+      bld: [[0, 4, 21, 18, 30], [24, 12, 18, 14, 12]],
+      note: 'מגדל 30 קומות ובניין בוטיק של 12 קומות — כבר בשלבי מכירה מתקדמים, כולל פנטהאוז בקומה ה־30.' },
+    { id: 'einstein-tower', n: 'EINSTEIN TOWER — חג׳ג׳', dev: 'קבוצת חג׳ג׳ · הגוש הגדול', st: 'בבנייה ובשיווק — היתר 10/2024',
+      un: 515, x: 842, z: -18, f: '30 · 28 + 4×13',
+      bld: [[-2, 6, 23, 19, 30], [28, 10, 22, 18, 28], [-30, 16, 16, 12, 13], [-6, 30, 16, 12, 13], [20, 32, 16, 12, 13], [46, 26, 16, 12, 13]],
+      url: 'https://nad-lan.co.il/projects/einstein-tower/',
+      note: 'כ־515 דירות ושדרת מסחר של כ־13,500 מ״ר בקצה המערבי של איינשטיין, ליד תחנת הקו הירוק המתוכננת.' },
+    { id: 'einstein-19', n: 'איינשטיין 19', dev: 'אזורים + שלום את נתן', st: 'הריסה ובנייה — לקראת ביצוע',
+      un: 80, x: 912, z: -24, f: '9 · 8',
+      bld: [[0, 2, 21, 15, 9], [23, 6, 19, 14, 8]],
+      url: 'https://nad-lan.co.il/projects/einstein-19/',
+      note: 'שני שיכונים ותיקים מתחלפים בשני בניינים חדשים — 80 דירות בלב איינשטיין, בין האוניברסיטה לקניון רמת אביב.' },
+    { id: 'ein-2939', n: 'איינשטיין 29–39 — פינת טאגור', dev: 'שלום את נתן', st: 'היתר בתנאים',
+      un: 85, x: 968, z: -22, f: '9 + קומת מסחר', soon: 1,
+      bld: [[0, 2, 32, 13, 9], [36, 6, 22, 12, 9]],
+      note: 'בניין שדרה ארוך בשני אגפים מעל קומת מסחר, עם כיכר עירונית מתוכננת בפינת טאגור.' },
+    { id: 'ashdar-einstein', n: 'אשדר איינשטיין — נווה אביבים', dev: 'אשדר מקבוצת אשטרום', st: 'הושלם',
+      un: 48, x: 1044, z: -22, f: '8',
+      bld: [[0, 2, 30, 14, 8], [-24, 6, 14, 12, 8]],
+      url: 'https://nad-lan.co.il/projects/ashdar-einstein/',
+      note: 'פרויקט בוטיק שכבר עומד — 45 דירות ו־3 פנטהאוזים בקצה האוניברסיטאי של איינשטיין, ליד קניון רמת אביב.' },
+    { id: 'aura-gimel', n: 'אאורה — רמת אביב ג׳', dev: 'אאורה ישראל', st: 'פינוי בינוי — בתכנון',
+      un: 290, x: 1096, z: 48, f: '3×18', soon: 1,
+      bld: [[0, 0, 18, 15, 18], [24, 8, 18, 15, 18], [48, 2, 18, 15, 18]],
+      note: 'שלושה בנייני רכבת משנות ה־70 ברחוב אחימאיר מתחדשים לשלושה מגדלים של 18 קומות — כ־290 דירות.' },
+    { id: 'rag-yeruka', n: 'רמת אביב הירוקה — מתחמי התחדשות', dev: 'מסגרת פינוי בינוי עירונית', st: 'בתכנון והתארגנות',
+      un: null, x: 852, z: -136, f: '4 היום · 9 בעתיד', soon: 1,
+      bld: [[0, 0, 30, 11, 4], [36, 2, 30, 11, 4], [-38, 4, 30, 11, 4], [78, -2, 28, 11, 9]],
+      note: 'שיכוני הרכבת של קרני ושמעוני בצד הדרומי של איינשטיין — מסגרת פינוי בינוי מאושרת, בניין ראשון כבר בדרך להיתר.' },
+  ];
+  const EP_BY_NODE = { 'ein-hagag': 'einstein-tower', 'ein-19': 'einstein-19', 'ein-ashdar': 'ashdar-einstein' };
+  const einGroup = new THREE.Group(); einGroup.visible = false; world.add(einGroup);
+  einGroup.add(einFut, einToday); /* the year-gated slices declared with the era groups */
+  let einBuilt = false;
+  function epCard(ep) {
+    if (!ep) return null;
+    const lines = [['קומות', ep.f]];
+    if (ep.un) lines.push(['דירות', 'כ־' + ep.un]);
+    lines.push(['סטטוס', ep.st]);
+    return { tag: ep.url ? 'מזרחה לאיינשטיין · בקטלוג שלנו' : 'מזרחה לאיינשטיין · בקרוב אצלנו',
+      title: ep.n, sub: ep.dev, desc: ep.note, lines, url: ep.url || null, soon: !ep.url,
+      waTxt: 'מתעניינים בציר איינשטיין? דברו איתנו' };
+  }
+  function buildEinsteinZone() {
+    if (einBuilt) return; einBuilt = true;
+    const t0 = performance.now();
+    const zoneFlat = (w, l, x, z, col, y = 0.05) => {
+      const day = Array.isArray(col) ? col[0] : null, dusk = Array.isArray(col) ? col[1] : col;
+      const m = new THREE.Mesh(new THREE.PlaneGeometry(w, l), new THREE.MeshStandardMaterial({ color: dusk, roughness: 0.96 }));
+      m.rotation.x = -Math.PI / 2; m.position.set(x, y, z); einGroup.add(m);
+      if (day !== null) sunMat(m.material, day, dusk);
+      return m; };
+    /* Einstein street: roadway, sidewalks, LRT median (west section), bike lane */
+    zoneFlat(740, 15, 875, -60, 0x35333b, 0.052);
+    zoneFlat(740, 5.5, 875, -47.5, [0xa08d6e, 0x6b5c49], 0.056);
+    zoneFlat(740, 5.5, 875, -72.5, [0xa08d6e, 0x6b5c49], 0.056);
+    regFutFlat(zoneFlat(310, 4.4, 660, -60, [0x49682f, 0x2c3a26], 0.062)); /* green-line LRT median (2035) */
+    zoneFlat(740, 2.2, 875, -51.6, [0xa4643f, 0x6e4433], 0.058); /* bike lane */
+    /* gate plaza where the linear park meets the corridor */
+    { const plaza = new THREE.Mesh(new THREE.CircleGeometry(26, 28),
+        new THREE.MeshStandardMaterial({ color: 0x5f5347, roughness: 0.95 }));
+      plaza.rotation.x = -Math.PI / 2; plaza.position.set(545, 0.048, -58); einGroup.add(plaza);
+      sunMat(plaza.material, 0x9d8d75, 0x5f5347); }
+    /* project massing — instanced; split by year: standing today vs 2035.
+       "exists now" = completed projects + the pre-renewal 4F rows that are
+       literally today's buildings (רמת אביב הירוקה). */
+    const eastM = duskify(new THREE.MeshStandardMaterial({ color: 0x453f5e, roughness: 0.55, metalness: 0.22, envMapIntensity: 0.95 }),
+      { floorH: 3.0, winW: 2.85, lit: 0.44, glow: 1.3, seed: 57 });
+    sunMat(eastM, 0xb6bdc4, 0x453f5e, (m, mat) => { mat.roughness = lerpN(0.42, 0.55, m); });
+    const epFutL = [], epNowL = [], epShadows = [], epNowShadows = [];
+    for (const ep of EP) for (const [dx, dz, w, d, fl] of ep.bld) {
+      const now = /הושלם/.test(ep.st) || (ep.id === 'rag-yeruka' && fl <= 4);
+      (now ? epNowL : epFutL).push({ ep, x: ep.x + dx, z: ep.z + dz, w, d, h: fl * 3.0 });
+      (now ? epNowShadows : epShadows).push([ep.x + dx, ep.z + dz, w, d, fl * 3.0]);
+    }
+    const mkEp = (list, parent) => { if (!list.length) return null;
+      const im = new THREE.InstancedMesh(boxG, eastM, list.length);
+      list.forEach((b, i) => im.setMatrixAt(i, composeTRS(b.x, 0, b.z, (i % 5 - 2) * 0.015, b.w, b.h, b.d)));
+      parent.add(im);
+      regClick(im, i => epCard(list[i] && list[i].ep));
+      return im; };
+    mkEp(epFutL, einFut); mkEp(epNowL, einGroup);
+    /* old Neve-Avivim fabric behind the street (north) — pre-renewal shikunim */
+    const oldM = duskify(new THREE.MeshStandardMaterial({ color: 0x3a3548, roughness: 0.9, metalness: 0.03 }),
+      { floorH: 2.9, winW: 3.1, lit: 0.34, glow: 0.95, seed: 63 });
+    sunMat(oldM, 0xc7bfae, 0x3a3548);
+    const oldList = [];
+    for (let i = 0; i < 12; i++) {
+      const x = 620 + i * 44 + (i % 3) * 7, z = 26 + (i % 2) * 26;
+      if (Math.abs(x - 1096) < 60 && z > 30) continue; /* keep Aura's site */
+      oldList.push([x, z, 30, 12, 4 * 2.9]);
+    }
+    const oldInst = new THREE.InstancedMesh(boxG, oldM, oldList.length);
+    oldList.forEach(([x, z, w, d, h], i) => { oldInst.setMatrixAt(i, composeTRS(x, 0, z, 0, w, h, d));
+      epNowShadows.push([x, z, w, d, h]); });
+    einGroup.add(oldInst);
+    regClick(oldInst, () => ({ tag: 'העיר הקיימת', title: 'שיכון ותיק — נווה אביבים',
+      sub: 'NEVE AVIVIM', desc: 'מרקם שנות ה־50-60 שממנו צומחת ההתחדשות של איינשטיין — חלק מהבניינים כבר בהליכי פינוי בינוי או תמ״א.',
+      lines: [['קומות', '3-4'], ['סטטוס', 'קיים היום']], soon: true, waTxt: 'גרים באזור ורוצים ללוות התחדשות? דברו איתנו' }));
+    /* 2026-only: the two 1960s blocks איינשטיין 19 replaces + the Achimeir
+       trains Aura replaces — flip the year switch to watch them hand over */
+    { const g19 = EP.find(p => p.id === 'einstein-19'), gAu = EP.find(p => p.id === 'aura-gimel');
+      const olds = [[g19.x + 1, g19.z + 2, 20, 12, 3.5 * 2.9], [g19.x + 24, g19.z + 6, 18, 11, 3.5 * 2.9],
+        [gAu.x, gAu.z, 26, 11, 4 * 2.9], [gAu.x + 25, gAu.z + 7, 26, 11, 4 * 2.9], [gAu.x + 50, gAu.z + 1, 26, 11, 4 * 2.9]];
+      const oi = new THREE.InstancedMesh(boxG, oldM, olds.length);
+      olds.forEach(([x, z, w, d, h], i) => oi.setMatrixAt(i, composeTRS(x, 0, z, 0, w, h, d)));
+      einToday.add(oi);
+      regClick(oi, () => ({ tag: 'העיר הקיימת · 2026', title: 'בניין ותיק לקראת התחדשות',
+        sub: 'PRE-RENEWAL', desc: 'הבניין הוותיק שעל מגרשו יקום אחד מפרויקטי ההתחדשות של ציר איינשטיין — החליפו לשנת 2035 כדי לראות מה מתוכנן כאן.',
+        lines: [['סטטוס', 'לקראת פינוי בינוי']], soon: true, waTxt: 'גרים בבניין כזה? דברו איתנו' })); }
+    /* cranes + skeleton over the projects that are בבנייה today */
+    for (const id of ['einstein-tower', 'ein-15']) { const p = EP.find(e => e.id === id);
+      mkCrane(einToday, p.x + 16, p.z + 18, 104, 0.6 + (p.x % 17) * 0.1);
+      mkSkeleton(einToday, p.x, p.z + 4, 21, 17, 11); }
+    buildShadows(einFut, epShadows);        /* 2035 towers cast only in 2035 */
+    buildShadows(einGroup, epNowShadows);   /* standing fabric casts in both */
+    /* street trees (ficus rows, not palms) */
+    { const n = 40, trG = new THREE.CylinderGeometry(0.2, 0.28, 4.0, 5), trM = new THREE.MeshStandardMaterial({ color: 0x4a3a2c, roughness: 1 }),
+        caG = new THREE.SphereGeometry(3.0, 7, 5), caM = new THREE.MeshStandardMaterial({ color: 0x22331f, roughness: 1 });
+      caG.scale(1, 0.7, 1);
+      sunMat(trM, 0x5e4a36, 0x4a3a2c); sunMat(caM, 0x40602c, 0x22331f);
+      const tr = new THREE.InstancedMesh(trG, trM, n), ca = new THREE.InstancedMesh(caG, caM, n);
+      let i = 0;
+      const putT = (x, z, s) => { if (i >= n) return;
+        tr.setMatrixAt(i, composeTRS(x, 2.0 * s, z, 0, s, s, s));
+        ca.setMatrixAt(i, composeTRS(x, 5.3 * s, z, i, s, s, s)); i++; };
+      for (let k = 0; k < 20; k++) putT(548 + k * 26, -45 + (k % 2) * 1.5, 0.85 + (k % 5) * 0.06);
+      for (let k = 0; k < 20; k++) putT(560 + k * 25, -75 - (k % 2) * 1.5, 0.8 + (k % 4) * 0.07);
+      einGroup.add(tr, ca); }
+    /* zone street life (own pool, lives only when the zone exists) */
+    const Z = buildLife(einGroup, { table: 14, chair: 40, umb: 12, person: 40, bench: 12, planter: 16,
+      car: 12, bike: 4, awn: 6, shop: 3, bus: 1, cross: 30, seed: 43 });
+    Z.shop(560, -38, 12, 4.2, 8); Z.sign(560, -42.3, Math.PI, 'קפה איינשטיין', 5.6); Z.awning(560, -42.2, Math.PI, 8);
+    Z.cafe(556, -50, Math.PI, 2);
+    Z.shop(806, -40, 13, 4.4, 8); Z.sign(806, -44.3, Math.PI, 'דלי מרקט BLVD', 6); Z.awning(806, -44.2, Math.PI, 9);
+    Z.cafe(806, -52, Math.PI, 3);
+    Z.shop(1010, -38, 12, 4.2, 8); Z.sign(1010, -42.3, Math.PI, 'פרחי איינשטיין', 5.6); Z.awning(1010, -42.2, Math.PI, 8);
+    Z.cafe(1013, -50, Math.PI, 2);
+    for (const z of [-45.8, -74.2]) for (const x of [620, 700, 780, 900, 990, 1070]) { /* benches under the trees */
+      if ((x + z) % 3 < 2) Z.bench(x, z, z < -60 ? 0 : Math.PI); }
+    for (const x of [590, 668, 748, 872, 940, 1032]) Z.planter(x, -49);
+    for (const x of [614, 692, 806, 936, 1016]) Z.car(x, -55.4, Math.PI);  /* parallel parking, westbound side */
+    for (const x of [582, 660, 744, 852, 962, 1052]) Z.car(x, -64.6, 0);  /* eastbound side */
+    Z.bike(552, -50, 0.4); Z.bike(553.4, -50, 0.55); Z.bike(844, -48, 1.1); Z.bike(845.4, -48, 1.2);
+    Z.bus(884, -50.5, Math.PI);
+    Z.crossing(545, -60, 0, 8, 1.1, 2); Z.crossing(842, -60, 0, 8, 1.1, 2); Z.crossing(1044, -60, 0, 8, 1.1, 2);
+    for (const [px, pz] of [[548, -54], [542, -64], [560, -66], [810, -56], [800, -66], [846, -52],
+      [908, -68], [966, -54], [1040, -66], [1046, -52], [700, -68], [760, -52]]) Z.person(px, pz);
+    Z.kid(548, -62); Z.kid(812, -60);
+    Z.walker(560, -49, 1040, -49, 0.018); Z.walker(1060, -71, 580, -71, 0.02);
+    Z.walker(700, -47.5, 980, -47.5, 0.03); Z.walker(940, -73, 640, -73, 0.026);
+    Z.walker(545, -40, 545, -80, 0.05); Z.walker(842, -44, 842, -76, 0.055);
+    Z.finish();
+    regClick(Z.pool.meshes.shop, () => ({ tag: 'רחוב איינשטיין', title: 'מסחר על איינשטיין',
+      sub: 'EINSTEIN ST RETAIL', desc: 'תכנית הרחוב (תא/5294) הופכת את איינשטיין לרחוב עירוני ראשי עם מסחר בקומות הקרקע לאורך ההתחדשות. שמות בתי העסק להמחשה.',
+      lines: [['ייעוד', 'מסחר עירוני'], ['סטטוס', 'על פי התכנית']], soon: true, waTxt: 'עסק על איינשטיין? דברו איתנו' }));
+    applyYear(yearMix);   /* the fresh groups adopt the current year immediately */
+    applySunMix(duskMix); /* …and the current sun (their materials ship in dusk values) */
+    einGroup.visible = true;
+    if (mmRedraw) mmRedraw();
+    console.info('[sdedov] Einstein zone built in', (performance.now() - t0).toFixed(1), 'ms ·', epFutL.length + epNowL.length, 'project buildings');
+  }
 
   /* ================= CAMERA FLIGHT (film mode) ================= */
+  /* V3 flight: sea → Dimri (center-west) → SW to Rainbow (by Reading/Shai Agnon,
+     the corrected side) → long eastward run to Ashira on Levi Eshkol → finale on
+     the linear park looking back west over the quarter and the water. */
   const V3 = (x, y, z) => new THREE.Vector3(x, y, z);
   const camPath = new THREE.CatmullRomCurve3([
-    V3(-1280, 330, 430), V3(-760, 195, 240), V3(-300, 96, -40), V3(-158, 80, -262),
-    V3(10, 70, -120), V3(60, 84, 150), V3(262, 74, 198), V3(300, 52, 60),
-    V3(400, 58, -195), V3(262, 10, -60), V3(224, 2.7, -8),
+    V3(-1280, 330, 430), V3(-760, 195, 240), V3(-300, 96, -40), V3(-150, 78, -252),
+    V3(-46, 64, -128), V3(-158, 56, -300), V3(34, 42, -336), V3(238, 66, -190),
+    V3(390, 56, -152), V3(455, 26, -18), V3(298, 5, -14),
   ], false, 'centripetal');
   const lookPath = new THREE.CatmullRomCurve3([
-    V3(120, 60, -40), V3(0, 62, -90), V3(-39, 60, -140), V3(-39, 62, -140),
-    V3(60, 45, 0), V3(160, 62, 90), V3(160, 64, 90), V3(350, 48, -70),
-    V3(344, 40, -70), V3(200, 30, 40), V3(162, 94, 86),
+    V3(120, 60, -40), V3(0, 62, -90), V3(-38, 60, -150), V3(-38, 62, -150),
+    V3(-36, 46, -206), V3(-30, 52, -258), V3(-30, 62, -258), V3(190, 40, -110),
+    V3(415, 48, -60), V3(415, 44, -62), V3(-70, 54, -180),
   ], false, 'centripetal');
 
   let targetU = START_T ?? 0, dispU = targetU, lastDisp = targetU;
@@ -1207,21 +2197,35 @@ async function boot() {
     'prom-c':  { x: -104, z: 0,    y: EYE, name: 'טיילת החוף' },
     'prom-s':  { x: -104, z: -150, y: EYE, name: 'הטיילת מול דימרי ימה' },
     'beach':   { x: -152, z: -60,  y: 2.2, name: 'קו המים' },
-    'dimri':   { x: -14,  z: -92,  y: EYE, name: 'רחבת דימרי ימה', project: 'dimri' },
+    'dimri':   { x: -4,   z: -118, y: EYE, name: 'רחבת דימרי ימה', project: 'dimri' },
     'run-s':   { x: 74,   z: -190, y: EYE, name: 'פארק המסלול — דרום' },
     'run-c':   { x: 74,   z: -8,   y: EYE, name: 'פארק המסלול' },
-    'rainbow': { x: 112,  z: 50,   y: EYE, name: 'רחבת ריינבו', project: 'rainbow' },
+    'rainbow': { x: 6,    z: -224, y: EYE, name: 'כיכר השער של ריינבו', project: 'rainbow' },
     'park':    { x: 232,  z: -2,   y: EYE, name: 'הפארק הלינארי' },
-    'ashira':  { x: 290,  z: -42,  y: EYE, name: 'החצר של אשירה', project: 'ashira' },
+    'ashira':  { x: 372,  z: -74,  y: EYE, name: 'החצר של אשירה', project: 'ashira' },
     'run-n':   { x: 74,   z: 170,  y: EYE, name: 'פארק המסלול — צפון' },
     'sky':     { x: 150,  z: 10,   y: 235, name: 'מבט־על — רובע שדה דב', sky: true },
+    /* V3 — the eastern corridor: מזרחה לאיינשטיין */
+    'park-e':    { x: 408, z: -6,   y: EYE, name: 'קצה הפארק הלינארי', zone: 'east' },
+    'ein-gate':  { x: 545, z: -58,  y: EYE, name: 'שער איינשטיין — מזרחה', zone: 'east' },
+    'ein-w':     { x: 706, z: -58,  y: EYE, name: 'מגדלי מערב איינשטיין', zone: 'east', eproject: 'ein-15' },
+    'ein-hagag': { x: 842, z: -56,  y: EYE, name: 'EINSTEIN TOWER — שדרת המסחר', zone: 'east', eproject: 'einstein-tower' },
+    'ein-19':    { x: 912, z: -58,  y: EYE, name: 'איינשטיין 19 — פינוי בינוי', zone: 'east', eproject: 'einstein-19' },
+    'ein-ashdar':{ x: 1044, z: -58, y: EYE, name: 'אשדר איינשטיין — נווה אביבים', zone: 'east', eproject: 'ashdar-einstein' },
+    'ein-sky':   { x: 810, z: -60, y: 205, name: 'מבט־על — ציר איינשטיין', sky: true, zone: 'east' },
   };
   const EDGES = [
     ['prom-n', 'prom-c'], ['prom-c', 'prom-s'], ['prom-s', 'beach'], ['prom-c', 'beach'],
     ['prom-s', 'dimri'], ['dimri', 'run-s'], ['dimri', 'run-c'],
     ['run-s', 'run-c'], ['run-c', 'run-n'], ['run-n', 'prom-n'],
-    ['run-c', 'rainbow'], ['rainbow', 'park'], ['park', 'ashira'], ['ashira', 'run-s'],
+    ['dimri', 'rainbow'], ['prom-s', 'rainbow'], ['rainbow', 'run-s'],
+    ['park', 'ashira'], ['ashira', 'run-s'], ['run-c', 'park'],
     ['sky', 'run-c'], ['sky', 'park'],
+    /* V3 east */
+    ['park', 'park-e'], ['ashira', 'park-e'], ['park-e', 'ein-gate'],
+    ['ein-gate', 'ein-w'], ['ein-w', 'ein-hagag'], ['ein-hagag', 'ein-19'],
+    ['ein-19', 'ein-ashdar'],
+    ['ein-sky', 'ein-gate'], ['ein-sky', 'ein-hagag'], ['ein-sky', 'ein-ashdar'], ['ein-sky', 'sky'],
   ];
   const GRAPH = {};
   for (const id in NODES) { GRAPH[id] = []; NODES[id].id = id; }
@@ -1240,12 +2244,12 @@ async function boot() {
     out.set(Math.sin(yaw) * Math.cos(pitch), Math.sin(pitch), Math.cos(yaw) * Math.cos(pitch));
 
   const nodeChip = $('#nodeChip'), exHelp = $('#exHelp');
-  exHelp.textContent = MOBILE ? 'גררו כדי להביט סביב · נווטו עם החיצים למטה'
-                              : 'גררו כדי להביט סביב · WASD או חיצי המקלדת · לחצו על חיצי הזהב ברצפה';
+  exHelp.textContent = MOBILE ? 'גררו כדי להביט סביב · הקישו על כל בניין לפרטים'
+                              : 'גררו כדי להביט סביב · WASD או חיצים · לחצו על כל בניין לפרטים';
 
   /* ---- cards in explore mode ---- */
   const CARD_BY_PROJECT = { dimri: $('#card-dimri'), rainbow: $('#card-rainbow'), ashira: $('#card-ashira') };
-  const planCard = $('#card-plan');
+  const planCard = $('#card-plan'), dynCard = $('#card-dyn');
   for (const el of [...document.querySelectorAll('.pcard')]) {
     const x = document.createElement('button');
     x.className = 'pcx'; x.setAttribute('aria-label', 'סגירת הכרטיס'); x.textContent = '✕';
@@ -1256,8 +2260,30 @@ async function boot() {
   function hideExCards() {
     clearTimeout(cardTimer);
     for (const k in CARD_BY_PROJECT) CARD_BY_PROJECT[k].classList.remove('on');
-    planCard.classList.remove('on');
+    planCard.classList.remove('on'); dynCard.classList.remove('on');
     document.body.classList.remove('cardOpen');
+  }
+  /* V3: fill + open the dynamic building card (any clicked massing) */
+  const dynTag = $('#dynTag'), dynTitle = $('#dynTitle'), dynSub = $('#dynSub'), dynDesc = $('#dynDesc'),
+        dynList = $('#dynList'), dynBtn = $('#dynBtn'), dynWa = $('#dynWa'), dynWaTxt = $('#dynWaTxt'), dynFine = $('#dynFine');
+  function openDyn(info) {
+    if (!info) return;
+    hideExCards();
+    dynTag.textContent = info.tag || 'רובע שדה דב';
+    dynTitle.textContent = info.title || '';
+    dynSub.textContent = info.sub || '';
+    dynDesc.textContent = info.desc || '';
+    dynList.innerHTML = '';
+    for (const ln of info.lines || []) { if (!ln) continue;
+      const li = document.createElement('li'); const b = document.createElement('b');
+      b.textContent = ln[1]; li.append(ln[0] + ': '); li.appendChild(b); dynList.appendChild(li); }
+    if (info.url) { dynBtn.hidden = false; dynBtn.href = info.url; } else dynBtn.hidden = true;
+    dynWa.hidden = !!info.url && !info.soon;
+    dynWaTxt.textContent = info.waTxt || 'בקרוב אצלנו — דברו איתנו';
+    dynWa.href = 'https://wa.me/972525101555?text=' +
+      encodeURIComponent('היי, ראיתי את "' + (info.title || 'הרובע') + '" בסיור שדה דב ואשמח לפרטים');
+    dynFine.textContent = info.fine || 'הדמיה להמחשה בלבד · מסה סכמטית על פי פרסומים';
+    dynCard.classList.add('on'); document.body.classList.add('cardOpen');
   }
   function showExCard(node) {
     clearTimeout(cardTimer);
@@ -1269,6 +2295,8 @@ async function boot() {
         if (!btn.dataset.filmLabel) btn.dataset.filmLabel = btn.textContent;
         btn.textContent = 'בחרו דירה בבניין הזה ←';
         el.classList.add('on'); document.body.classList.add('cardOpen');
+      } else if (node.eproject) {
+        openDyn(epCard(EP.find(p => p.id === node.eproject)));
       } else if (node.sky) {
         planCard.classList.add('on'); document.body.classList.add('cardOpen');
       }
@@ -1341,14 +2369,15 @@ async function boot() {
   const NAME_BY_PROJECT = { dimri: 'דימרי ימה', rainbow: 'ריינבו תל אביב', ashira: 'אשירה שדה דב' };
   let hoverProject = null, hoverArrow = null;
 
-  /* ---- mini-map ---- */
+  /* ---- mini-map (V3: extended to the Einstein corridor; north-up, sea LEFT/west) ---- */
   const mmC = $('#mm'), mmX = mmC.getContext('2d');
-  const MM = { X0: -270, X1: 520, Z0: -360, Z1: 400, k: 0.215, w: 170, h: 163, dpr: 1 };
+  const MM = { X0: -270, X1: 1150, Z0: -360, Z1: 400, k: 0.163, w: 231, h: 124, dpr: 1 };
   const mmBG = document.createElement('canvas');
   const w2mX = x => (x - MM.X0) * MM.k, w2mY = z => (MM.Z1 - z) * MM.k;
+  let mmRedraw = null;
   function mmSize() {
     const small = innerWidth <= 640;
-    MM.k = small ? 0.155 : 0.215;
+    MM.k = small ? 0.118 : 0.163;
     MM.w = Math.round((MM.X1 - MM.X0) * MM.k); MM.h = Math.round((MM.Z1 - MM.Z0) * MM.k);
     MM.dpr = Math.min(devicePixelRatio || 1, 2);
     mmC.style.width = MM.w + 'px'; mmC.style.height = MM.h + 'px';
@@ -1358,7 +2387,7 @@ async function boot() {
     g.setTransform(MM.dpr, 0, 0, MM.dpr, 0, 0);
     /* land */
     g.fillStyle = '#211b31'; g.fillRect(0, 0, MM.w, MM.h);
-    /* sea + sand */
+    /* sea (WEST = LEFT) + sand */
     g.fillStyle = '#173049'; g.fillRect(0, 0, w2mX(SHORE_X), MM.h);
     g.fillStyle = '#54483a'; g.fillRect(w2mX(SHORE_X), 0, w2mX(-113) - w2mX(SHORE_X), MM.h);
     /* coastal park band */
@@ -1369,34 +2398,53 @@ async function boot() {
     g.beginPath(); g.moveTo(w2mX(74), 0); g.lineTo(w2mX(74), MM.h); g.stroke(); g.setLineDash([]);
     /* linear park (E-W) */
     g.fillStyle = 'rgba(66,92,56,.5)'; g.fillRect(w2mX(-30), w2mY(72), w2mX(480) - w2mX(-30), w2mY(-76) - w2mY(72));
+    /* Einstein corridor (V3): street band heading east */
+    g.fillStyle = 'rgba(122,120,128,.4)';
+    g.fillRect(w2mX(505), w2mY(-46), w2mX(1145) - w2mX(505), w2mY(-74) - w2mY(-46));
     /* streets */
     g.strokeStyle = 'rgba(255,255,255,.14)'; g.lineWidth = 1.5;
     for (const x of [-100, 250, 470]) { g.beginPath(); g.moveTo(w2mX(x), 0); g.lineTo(w2mX(x), MM.h); g.stroke(); }
-    for (const z of [-260, 240]) { g.beginPath(); g.moveTo(w2mX(-100), w2mY(z)); g.lineTo(MM.w, w2mY(z)); g.stroke(); }
+    for (const z of [-260, 240]) { g.beginPath(); g.moveTo(w2mX(-100), w2mY(z)); g.lineTo(w2mX(500), w2mY(z)); g.stroke(); }
     /* edges */
     g.strokeStyle = 'rgba(255,255,255,.12)'; g.lineWidth = 1;
     for (const [a, b] of EDGES) { const A = NODES[a], B = NODES[b]; if (A.sky || B.sky) continue;
       g.beginPath(); g.moveTo(w2mX(A.x), w2mY(A.z)); g.lineTo(w2mX(B.x), w2mY(B.z)); g.stroke(); }
-    /* flagships */
+    /* flagships (world-truth positions: Rainbow SW by Reading, Dimri center-west, Ashira on L. Eshkol) */
     g.fillStyle = '#d8b46a';
     for (const key of ['dimri', 'rainbow', 'ashira']) { const p = PROJECTS[key].pos;
-      g.fillRect(w2mX(p[0]) - 3, w2mY(p[2]) - 3, 6, 6); }
-    g.font = '600 8.5px Heebo, sans-serif'; g.fillStyle = 'rgba(242,217,164,.95)'; g.textAlign = 'center';
-    g.fillText('דימרי', w2mX(-45), w2mY(-140) + 12);
-    g.fillText('ריינבו', w2mX(160), w2mY(90) - 7);
-    g.fillText('אשירה', w2mX(350), w2mY(-70) + 12);
+      g.fillRect(w2mX(p[0]) - 2.6, w2mY(p[2]) - 2.6, 5.2, 5.2); }
+    g.font = '600 8px Heebo, sans-serif'; g.fillStyle = 'rgba(242,217,164,.95)'; g.textAlign = 'center';
+    g.fillText('דימרי', w2mX(-38) + 16, w2mY(-150) - 4);
+    g.fillText('ריינבו', w2mX(-30) + 16, w2mY(-258) + 10);
+    g.fillText('אשירה', w2mX(415), w2mY(-60) - 7);
+    /* Einstein projects (V3): filled = in our catalog, hollow = coming soon */
+    for (const ep of EP) {
+      const px = w2mX(ep.x), py = w2mY(ep.z);
+      if (ep.url) { g.fillStyle = '#d8b46a'; g.fillRect(px - 2.2, py - 2.2, 4.4, 4.4); }
+      else { g.strokeStyle = 'rgba(216,180,106,.8)'; g.lineWidth = 1; g.strokeRect(px - 2, py - 2, 4, 4); }
+    }
+    g.fillStyle = 'rgba(242,217,164,.9)'; g.font = '600 7.5px Heebo, sans-serif';
+    g.fillText('איינשטיין', w2mX(830), w2mY(-60) + 12);
+    g.fillStyle = 'rgba(185,176,201,.85)'; g.font = '300 7.5px Heebo, sans-serif';
+    g.fillText('רמת אביב', w2mX(1000), w2mY(70));
     /* nodes */
     for (const id in NODES) { const n = NODES[id]; if (n.sky) continue;
       g.beginPath(); g.arc(w2mX(n.x), w2mY(n.z), n.project ? 3 : 2.2, 0, 7);
       g.fillStyle = n.project ? 'rgba(216,180,106,.95)' : 'rgba(207,211,232,.75)'; g.fill();
       if (n.project) { g.strokeStyle = 'rgba(216,180,106,.5)'; g.lineWidth = 1;
         g.beginPath(); g.arc(w2mX(n.x), w2mY(n.z), 5, 0, 7); g.stroke(); } }
-    /* north + sea labels */
-    g.fillStyle = 'rgba(185,176,201,.8)'; g.font = '300 8px Heebo, sans-serif';
-    g.fillText('הים', w2mX(-236), 12);
-    g.fillText('צפ׳ ↑', MM.w - 14, 12);
+    /* sea label (vertical, in the sea band) + compass (N arrow, top-right) */
+    g.save(); g.translate(w2mX(-232), MM.h / 2); g.rotate(-Math.PI / 2);
+    g.fillStyle = 'rgba(163,196,222,.85)'; g.font = '300 7.5px Heebo, sans-serif'; g.textAlign = 'center';
+    g.fillText('הים התיכון', 0, 3); g.restore();
+    const cx = MM.w - 11, cy = 13;
+    g.strokeStyle = 'rgba(242,217,164,.9)'; g.fillStyle = 'rgba(242,217,164,.9)'; g.lineWidth = 1;
+    g.beginPath(); g.moveTo(cx, cy + 4); g.lineTo(cx, cy - 4); g.stroke();
+    g.beginPath(); g.moveTo(cx - 2.6, cy - 2); g.lineTo(cx, cy - 6.5); g.lineTo(cx + 2.6, cy - 2); g.closePath(); g.fill();
+    g.font = '600 7px Heebo, sans-serif'; g.textAlign = 'center'; g.fillText('צ', cx, cy + 11);
   }
   mmSize();
+  mmRedraw = mmSize;
   function mmOverlay(T) {
     mmX.setTransform(MM.dpr, 0, 0, MM.dpr, 0, 0);
     mmX.clearRect(0, 0, MM.w, MM.h);
@@ -1426,13 +2474,15 @@ async function boot() {
     return best;
   }
   mmC.addEventListener('click', ev => { const n = mmPick(ev); if (n && MODE.m === 'explore') glideTo(n); });
-  $('#mmSky').addEventListener('click', () => { if (MODE.m === 'explore') glideTo(NODES.sky); });
+  $('#mmSky').addEventListener('click', () => { if (MODE.m === 'explore') glideTo(ex.node.zone === 'east' ? NODES['ein-sky'] : NODES.sky); });
+  $('#mmEast').addEventListener('click', () => { if (MODE.m === 'explore') glideTo(NODES['ein-gate']); });
   $('#mmEnd').addEventListener('click', () => exitExplore(true));
 
   /* ---- glide machinery ---- */
   function updateChip(node) { nodeChip.textContent = node.name; }
   function glideTo(node, opts = {}) {
     if (MODE.m !== 'explore') return;
+    if (node.zone === 'east' && !einBuilt) buildEinsteinZone(); /* V3: lazy east zone */
     if (node === ex.node && !ex.gliding && !opts.force) { showExCard(node); return; }
     hideExCards();
     ex.from.copy(ex.pos); ex.to.set(node.x, node.y, node.z);
@@ -1576,13 +2626,39 @@ async function boot() {
 
   const raycaster = new THREE.Raycaster();
   const ndc = new THREE.Vector2();
+  /* V3: hover highlight shell — a back-side additive box wrapped around the
+     hovered instance reads as a subtle gold outline glow */
+  const hlMat = new THREE.MeshBasicMaterial({ color: 0xf2d9a4, transparent: true, opacity: 0,
+    side: THREE.BackSide, blending: THREE.AdditiveBlending, depthWrite: false, fog: false });
+  const hl = new THREE.Mesh(boxG, hlMat);
+  hl.matrixAutoUpdate = false; hl.visible = false; hl.renderOrder = 4; world.add(hl);
+  const HLM = new THREE.Matrix4(), HLS = new THREE.Matrix4().makeScale(1.055, 1.018, 1.055);
+  let hoverPick = null; /* { mesh, id, info, topX, topY, topZ } */
+  let hlOp = 0;
+  function setHoverPick(mesh, id) {
+    if (hoverPick && hoverPick.mesh === mesh && hoverPick.id === id) return;
+    const info = mesh.userData.pick ? mesh.userData.pick(id) : null;
+    if (!info) { hoverPick = null; return; }
+    mesh.getMatrixAt(id, HLM); HLM.multiply(HLS);
+    hl.matrix.copy(HLM); hl.visible = true;
+    const e = HLM.elements;
+    hoverPick = { mesh, id, info, topX: e[12], topY: e[13] + Math.hypot(e[4], e[5], e[6]), topZ: e[14] };
+  }
+  function pickables() { /* only meshes whose whole ancestor chain is visible (era groups!) */
+    return CLICKS.filter(m => { if (m.count === 0) return false;
+      for (let o = m; o; o = o.parent) if (o.visible === false) return false;
+      return true; }); }
   function clickRay(cx, cy) {
     ndc.set(cx / innerWidth * 2 - 1, -(cy / innerHeight) * 2 + 1);
     raycaster.setFromCamera(ndc, cam);
     const ah = raycaster.intersectObjects(arrows.filter(a => a.visible), false);
     if (ah.length) { glideTo(ah[0].object.userData.target); return; }
     const th = raycaster.intersectObjects(proxies, false);
-    if (th.length) { const key = th[0].object.userData.project; glideTo(NODES[PROJECT_NODE[key]]); }
+    if (th.length) { const key = th[0].object.userData.project; glideTo(NODES[PROJECT_NODE[key]]); return; }
+    const ch = raycaster.intersectObjects(pickables(), false); /* V3: any building opens its card */
+    if (ch.length) { const info = ch[0].object.userData.pick(ch[0].instanceId);
+      if (info) { openDyn(info); return; } }
+    hideExCards();
   }
 
   /* hover (desktop, both modes) */
@@ -1601,20 +2677,36 @@ async function boot() {
     }
     const th = raycaster.intersectObjects(proxies, false);
     hoverProject = th.length ? th[0].object.userData.project : null;
+    if (hoverProject || hoverArrow) { hoverPick = null; }
+    else {
+      const ch = raycaster.intersectObjects(pickables(), false);
+      if (ch.length) setHoverPick(ch[0].object, ch[0].instanceId);
+      else hoverPick = null;
+    }
     if (hoverProject) {
       twName.textContent = NAME_BY_PROJECT[hoverProject];
       twCta.textContent = MODE.m === 'explore' ? 'לחצו כדי לגשת ←' : 'לחצו לסיור חופשי כאן ←';
       twLabel.classList.add('on');
+    } else if (hoverPick) {
+      twName.textContent = hoverPick.info.title;
+      twCta.textContent = 'לחצו לפרטים ←';
+      twLabel.classList.add('on');
     } else twLabel.classList.remove('on');
-    const interactive = hoverProject || hoverArrow;
+    const interactive = hoverProject || hoverArrow || hoverPick;
     if (MODE.m === 'explore') canvas.style.cursor = interactive ? 'pointer' : '';
-    else document.body.style.cursor = hoverProject ? 'pointer' : '';
+    else document.body.style.cursor = interactive ? 'pointer' : '';
   }
-  /* film-mode click on a tower enters explore at that tower */
+  /* film-mode click: flagship towers enter explore there; any other building
+     opens its card (works with touch taps too) */
   addEventListener('click', ev => {
-    if (MODE.m !== 'film' || MOBILE || !hoverProject) return;
-    if (ev.target.closest('a,button,.pcard,#finale,#hud,#rail,#rmnav,#modePill,#mmWrap,#pad')) return;
-    enterExplore(NODES[PROJECT_NODE[hoverProject]]);
+    if (MODE.m !== 'film') return;
+    if (ev.target.closest('a,button,.pcard,#finale,#hud,#rail,#rmnav,#modePill,#mmWrap,#pad,#sunSw,#yearSw,#loadChip')) return;
+    ndc.set(ev.clientX / innerWidth * 2 - 1, -(ev.clientY / innerHeight) * 2 + 1);
+    raycaster.setFromCamera(ndc, cam);
+    const th = raycaster.intersectObjects(proxies, false);
+    if (th.length) { enterExplore(NODES[PROJECT_NODE[th[0].object.userData.project]]); return; }
+    const ch = raycaster.intersectObjects(pickables(), false);
+    if (ch.length) { const info = ch[0].object.userData.pick(ch[0].instanceId); if (info) openDyn(info); }
   });
 
   /* keyboard */
@@ -1732,10 +2824,33 @@ async function boot() {
   const clock = new THREE.Clock();
   const tmpP = new THREE.Vector3(), tmpL = new THREE.Vector3();
   let dcLogged = false, simT = 0;
+  let perfN = 0, perfAcc = 0, perfTier = 0; /* V3 GPU tier probe */
   function step(dt) {
     simT += dt; const T = simT;
     TIME.value = T;
     if (innerWidth > 1 && (innerWidth !== lastW || innerHeight !== lastH)) fit();
+
+    /* V3: sun-state transition (day <-> dusk) */
+    if (Math.abs(duskMix - duskT) > 0.0006) {
+      duskMix += (duskT - duskMix) * Math.min(1, dt * (REDUCED ? 30 : 2.6));
+      if (Math.abs(duskMix - duskT) <= 0.0006) duskMix = duskT;
+      DUSKU.value = duskMix;
+      applySunMix(duskMix);
+      if (duskMix === duskT) buildEnv(duskT); /* refresh reflections once settled */
+    }
+    /* V3: time-machine crossfade (2026 <-> 2035) — slower, it IS the show */
+    if (Math.abs(yearMix - yearT) > 0.0006) {
+      yearMix += (yearT - yearMix) * Math.min(1, dt * (REDUCED ? 30 : 1.25));
+      if (Math.abs(yearMix - yearT) <= 0.0006) yearMix = yearT;
+      applyYear(yearMix);
+    }
+    /* late-arriving GLB towers grow out of the ground (smart loading) */
+    for (let i = GROWS.length - 1; i >= 0; i--) { const g = GROWS[i];
+      g.t = Math.min(1, g.t + dt / 1.1);
+      g.node.scale.y = Math.max(0.001, g.t * g.t * (3 - 2 * g.t));
+      if (g.t >= 1) { g.node.scale.y = 1; GROWS.splice(i, 1); } }
+    /* 2026: the cranes slew slowly */
+    if (todayGrp.visible) for (const c of cranes) c.rotation.y += dt * c.userData.spin;
 
     if (MODE.m === 'explore') {
       exploreFrame(dt, T);
@@ -1757,7 +2872,9 @@ async function boot() {
     const streak = world.userData.streak;
     if (streak) { streak.userData.tex.offset.y = T * 0.021; streak.material.opacity = 0.5 + Math.sin(T * 0.7) * 0.08; }
     sea.material.emissiveIntensity = 1.0 + Math.sin(T * 0.5) * 0.09; /* subtle water shimmer */
-    for (const b of beacons) b.material.opacity = 0.25 + 0.75 * (Math.sin(T * 2.1 + b.userData.ph) > 0.35 ? 1 : 0.12);
+    const bOn = towersLoaded === 3 && yearMix > 0.85; /* aviation lights only once their towers stand */
+    for (const b of beacons) { b.visible = bOn;
+      if (bOn) b.material.opacity = 0.25 + 0.75 * (Math.sin(T * 2.1 + b.userData.ph) > 0.35 ? 1 : 0.12); }
     const rd = world.userData.reading; if (rd) rd.userData.beacon.material.color.setScalar(0).setHex(Math.sin(T * 1.7) > 0.2 ? 0xff2b1e : 0x551512);
     const birdFade = MODE.m === 'film' ? 1 - THREE.MathUtils.smoothstep(0.3, 0.45, dispU) : 0.85;
     for (const bd of birds) { const u = bd.userData;
@@ -1778,11 +2895,29 @@ async function boot() {
         twLabel.style.top = ((-TMPV.y * 0.5 + 0.5) * innerHeight) + 'px';
       } else twLabel.classList.remove('on');
     }
+    /* V3: hover outline shell — eased in/out; dropped if its era got hidden */
+    if (hoverPick) { for (let o = hoverPick.mesh; o; o = o.parent) if (o.visible === false) { hoverPick = null; break; } }
+    hlOp += ((hoverPick ? 0.16 : 0) - hlOp) * Math.min(1, dt * 9);
+    hlMat.opacity = hlOp;
+    hl.visible = hlOp > 0.012;
     hoverPass();
 
     renderer.render(scene, cam);
     if (!dcLogged && T > 3) { dcLogged = true;
       console.info('[sdedov] draw calls:', renderer.info.render.calls, '· triangles:', renderer.info.render.triangles); }
+    /* V3 smart loading: one-shot GPU tier check — weak machines lose pixel
+       ratio + draw distance instead of dropping frames */
+    if (!perfTier && document.body.classList.contains('ready')) {
+      if (++perfN > 20) perfAcc += dt;
+      if (perfN === 131) { const avg = perfAcc / 110;
+        if (avg > 0.026) { perfTier = 1;
+          renderer.setPixelRatio(Math.min(devicePixelRatio, 1.15));
+          FOGP.far = [4400, 3100]; FOGP.near = [1100, 700];
+          applySunMix(duskMix);
+          console.info('[sdedov] perf: reduced tier (avg ' + (avg * 1000).toFixed(1) + 'ms/frame) — pixel ratio + draw distance lowered');
+        } else { perfTier = -1;
+          console.info('[sdedov] perf: full tier (avg ' + (avg * 1000).toFixed(1) + 'ms/frame)'); } }
+    }
   }
   function frame() {
     step(Math.min(clock.getDelta(), 0.05));
@@ -1815,14 +2950,26 @@ async function boot() {
     return r.ok ? 'saved ' + name : 'save failed';
   };
 
-  /* go */
+  /* go — the shell is fully procedural, so this line is reached fast;
+     the GLB towers keep streaming behind the chip (V3 smart loading) */
   veilBar.style.width = '100%';
   setTimeout(() => { $('#veil').classList.add('off'); document.body.classList.add('ready'); }, 380);
   if (document.hidden) { /* start exactly one loop (V1 started two when opened hidden) */
     const onVis = () => { if (!document.hidden) { removeEventListener('visibilitychange', onVis); frame(); } };
     addEventListener('visibilitychange', onVis);
   } else frame();
-  console.info('[sdedov] V2 ready · towers:', JSON.stringify(towersUsed), REDUCED ? '· reduced-motion' : '· scroll flight + explore');
+
+  /* V3 deep links: ?mode=explore drops straight into the walk;
+     ?focus=… lands on a specific node (and lazy-builds the east zone) */
+  const FOCUS_NODE = { dimri: 'dimri', rainbow: 'rainbow', ashira: 'ashira', einstein: 'ein-gate',
+    'einstein-tower': 'ein-hagag', 'einstein-19': 'ein-19', 'ashdar-einstein': 'ein-ashdar', sky: 'sky' };
+  if (MODE_PARAM === 'explore' || FOCUS_NODE[FOCUS]) {
+    const target = NODES[FOCUS_NODE[FOCUS] || 'run-c'];
+    setTimeout(() => enterExplore(target), 60); /* not rAF — must fire even in a hidden tab */
+  }
+  window.__bootMs = Math.round(performance.now()); /* shell-interactive time since navigation */
+  console.info('[sdedov] V3 ready in', window.__bootMs + 'ms ·', SUN0 ? 'dusk' : 'day', '·', YEAR0 ? '2035' : '2026',
+    REDUCED ? '· reduced-motion' : '· scroll flight + explore + time machine');
 }
 
 boot().catch(err => {
