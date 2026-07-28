@@ -332,6 +332,10 @@ if ( ! function_exists( 'nadlan_pjx_bottom' ) ) {
 	</section>
 	<?php endif; ?>
 
+	<?php if ( function_exists( 'nadlan_sdedov_tour_band' ) && in_array( get_post_field( 'post_name', $id ), nadlan_sdedov_tour_slugs(), true ) ) :
+		echo nadlan_sdedov_tour_band( 'project', nadlan_sdedov_tour_focus( get_post_field( 'post_name', $id ) ) ); // phpcs:ignore
+	endif; ?>
+
 	<section id="nlpjx-world" class="nlpjx-sec" aria-label="כל המידע סביב הפרויקט">
 		<h2>כל מה שסביב הפרויקט</h2>
 		<div class="nlpjx-world">
