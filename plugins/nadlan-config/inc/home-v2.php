@@ -147,6 +147,34 @@ if ( ! function_exists( 'nadlan_hv2_cities' ) ) {
 	}
 }
 
+/* Projects that actually have a picture to show. The dark band used to call
+   nadlan_hv2_featured_projects(), whose EXISTS check matches an EMPTY glb meta
+   and whose backfill query has no requirement at all - so it served the three
+   newest projects, image or not, and they rendered as black rectangles
+   (owner, 2026-07-29). This one filters on the real image ladder instead and
+   does NOT demand a 3D model: a new contractor project with a good photo and
+   facility badges earns its place. $exclude keeps the flagships from repeating. */
+if ( ! function_exists( 'nadlan_hv2_image_projects' ) ) {
+	function nadlan_hv2_image_projects( $n = 3, $exclude = array() ) {
+		$exclude = array_map( 'intval', (array) $exclude );
+		$pool = get_posts( array(
+			'post_type'      => 'nadlan_project',
+			'post_status'    => 'publish',
+			'posts_per_page' => 40,
+			'no_found_rows'  => true,
+			'post__not_in'   => $exclude,
+		) );
+		$out = array();
+		foreach ( $pool as $p ) {
+			if ( preg_match( '/-(en|fr|ru|ar)$/', $p->post_name ) ) { continue; } // language sibling
+			if ( '' === (string) nadlan_hv2_img( $p->ID ) ) { continue; }         // no picture, no slot
+			$out[] = $p;
+			if ( count( $out ) >= $n ) { break; }
+		}
+		return $out;
+	}
+}
+
 /* Featured projects: engine-quality, DISTINCT (no language siblings). */
 if ( ! function_exists( 'nadlan_hv2_featured_projects' ) ) {
 	function nadlan_hv2_featured_projects( $n = 3 ) {
@@ -339,8 +367,18 @@ if ( ! function_exists( 'nadlan_hv2_band_hero' ) ) {
 
 if ( ! function_exists( 'nadlan_hv2_band_video' ) ) {
 	function nadlan_hv2_band_video() {
+		$embed = nadlan_hv2_video_embed();
+		if ( ! $embed ) { return; }
+		echo '<section class="nlhv2-band nlhv2-videoband" aria-label="סרטון היכרות"><header><p class="nlhv2-kicker">רגע לפני שמתחילים</p><h2>ככה בוחרים דירה בנדלן</h2></header><div class="nlhv2-video-frame">' . $embed . '</div></section>'; // phpcs:ignore
+	}
+}
+
+/* The embed builder, split out of the band so the tour+video pair can reuse it
+   verbatim (owner 2026-07-29: the video rides beside the tour under the hero). */
+if ( ! function_exists( 'nadlan_hv2_video_embed' ) ) {
+	function nadlan_hv2_video_embed() {
 		$url = trim( (string) get_option( 'nadlan_home_video_url', '' ) );
-		if ( ! $url ) { return; }
+		if ( ! $url ) { return ''; }
 		$embed = '';
 		if ( preg_match( '~(?:youtube\.com/(?:watch\?v=|shorts/|embed/)|youtu\.be/)([A-Za-z0-9_-]{6,20})~', $url, $m ) ) {
 			$embed = '<iframe src="https://www.youtube-nocookie.com/embed/' . esc_attr( $m[1] ) . '?rel=0&amp;modestbranding=1" title="נדלן - סרטון" loading="lazy" allow="accelerometer; encrypted-media; picture-in-picture" allowfullscreen></iframe>';
@@ -352,8 +390,26 @@ if ( ! function_exists( 'nadlan_hv2_band_video' ) ) {
 			$poster = trim( (string) get_option( 'nadlan_home_video_poster', '' ) );
 			$embed  = '<video muted autoplay loop playsinline preload="metadata"' . ( $poster ? ' poster="' . esc_url( $poster ) . '"' : '' ) . '><source src="' . esc_url( $url ) . '"></video>';
 		}
-		if ( ! $embed ) { return; }
-		echo '<section class="nlhv2-band nlhv2-videoband" aria-label="סרטון היכרות"><header><p class="nlhv2-kicker">רגע לפני שמתחילים</p><h2>ככה בוחרים דירה בנדלן</h2></header><div class="nlhv2-video-frame">' . $embed . '</div></section>'; // phpcs:ignore
+		return $embed;
+	}
+}
+
+/* THE PAIR (owner 2026-07-29): the 3D quarter tour leads the page with the intro
+   video beside it, directly under the hero. Either half may be missing - the
+   survivor then takes the full width, and if both are gone nothing renders. */
+if ( ! function_exists( 'nadlan_hv2_band_tourvideo' ) ) {
+	function nadlan_hv2_band_tourvideo() {
+		$lang  = function_exists( 'nadlan_current_lang' ) ? nadlan_current_lang() : 'he';
+		$tour  = ( function_exists( 'nadlan_sdedov_tour_band' ) && 'he' === $lang ) ? nadlan_sdedov_tour_band( 'pair' ) : '';
+		$embed = nadlan_hv2_video_embed();
+		if ( '' === $tour && '' === $embed ) { return; }
+		$solo = ( '' === $tour || '' === $embed ) ? ' is-solo' : '';
+		echo '<section class="nlhv2-band nlhv2-tourvideo' . esc_attr( $solo ) . '" aria-label="סיור תלת ממדי וסרטון היכרות">'; // phpcs:ignore
+		if ( '' !== $tour ) { echo $tour; } // phpcs:ignore
+		if ( '' !== $embed ) {
+			echo '<div class="nlhv2-tvvid"><div class="nlhv2-video-frame">' . $embed . '</div><p class="nlhv2-note">ככה בוחרים דירה בנדלן</p></div>'; // phpcs:ignore
+		}
+		echo '</section>';
 	}
 }
 
@@ -458,7 +514,8 @@ if ( ! function_exists( 'nadlan_hv2_band_flagships' ) ) {
 		}
 		if ( count( $show ) < 2 ) { return; }
 		$first = $show[0];
-		if ( function_exists( 'nadlan_sdedov_tour_band' ) && 'he' === nadlan_current_lang() ) { echo nadlan_sdedov_tour_band( 'home' ); } // phpcs:ignore
+		/* the flagship IDs are handed to the projects band so it never repeats them */
+		$GLOBALS['nadlan_hv2_shown_ids'] = wp_list_pluck( $cards, 'ID' );
 		?>
 	<section class="nlhv2-band nlhv2-flagships">
 		<header><p class="nlhv2-kicker"><?php nadlan_e( 'fl_kicker' ); ?></p><h2><?php nadlan_e( 'fl_title' ); ?></h2>
@@ -529,8 +586,10 @@ if ( ! function_exists( 'nadlan_hv2_band_market' ) ) {
 
 if ( ! function_exists( 'nadlan_hv2_band_projects' ) ) {
 	function nadlan_hv2_band_projects() {
-		$projects = nadlan_hv2_featured_projects( 3 );
-		if ( ! $projects ) { return; }
+		$shown    = isset( $GLOBALS['nadlan_hv2_shown_ids'] ) ? (array) $GLOBALS['nadlan_hv2_shown_ids'] : array();
+		$projects = nadlan_hv2_image_projects( 3, $shown );
+		/* an empty tile is worse than no band: under two real pictures, stay silent */
+		if ( count( $projects ) < 2 ) { return; }
 		?>
 	<section class="nlhv2-dark">
 		<header><p class="nlhv2-kicker"><?php nadlan_e( 'pj_kicker' ); ?></p><h2><?php nadlan_e( 'pj_title' ); ?></h2>
@@ -813,6 +872,10 @@ if ( ! function_exists( 'nadlan_home_v2_shortcode' ) ) {
 		$default = array( 'ticker', 'browse', 'hero', 'market', 'projects', 'video', 'listings', 'areas', 'magazine', 'tools', 'pros', 'intl', 'megafooter' ); // video band back: the hero is the live map now (owner 2026-07-07)
 		$bands   = get_option( 'nadlan_home_bands', $default );
 		if ( ! is_array( $bands ) || ! $bands ) { $bands = $default; }
+		// the standalone video band is retired: it now rides beside the tour
+		// (owner 2026-07-29). Defensive - a stored nadlan_home_bands option
+		// would otherwise resurrect it below the fold.
+		$bands = array_values( array_diff( $bands, array( 'video' ) ) );
 		// the flagship 3D band always rides right after the hero (owner 2026-07-06)
 		if ( ! in_array( 'flagships', $bands, true ) ) {
 			$hi = array_search( 'hero', $bands, true );
@@ -823,8 +886,16 @@ if ( ! function_exists( 'nadlan_home_v2_shortcode' ) ) {
 		// after the dark projects band; with the map-hero fallback it stays hero-only.
 		$bands = array_values( array_diff( $bands, array( 'dronemap' ) ) );
 		if ( trim( (string) get_option( 'nadlan_home_hero_aerial', '' ) ) ) {
-			$pi = array_search( 'projects', $bands, true );
-			array_splice( $bands, false !== $pi ? $pi + 1 : count( $bands ), 0, 'dronemap' );
+			// the LIVE map sits directly under the 3D gallery (owner 2026-07-29):
+			// it was buried mid-page and visitors never reached it.
+			$fi = array_search( 'flagships', $bands, true );
+			array_splice( $bands, false !== $fi ? $fi + 1 : count( $bands ), 0, 'dronemap' );
+		}
+		// the tour+video pair leads, immediately after the hero and before the 3D
+		// gallery. Spliced AFTER flagships so the result is hero, pair, gallery.
+		if ( ! in_array( 'tourvideo', $bands, true ) ) {
+			$hi2 = array_search( 'hero', $bands, true );
+			array_splice( $bands, false !== $hi2 ? $hi2 + 1 : 0, 0, 'tourvideo' );
 		}
 		// the urban renewal product rides the homepage (owner 2026-07-12)
 		if ( ! in_array( 'renewal', $bands, true ) ) {
@@ -836,14 +907,9 @@ if ( ! function_exists( 'nadlan_home_v2_shortcode' ) ) {
 			$ri = array_search( 'listings', $bands, true );
 			array_splice( $bands, false !== $ri ? $ri + 1 : count( $bands ), 0, 'rentals' );
 		}
-		// composition (owner 2026-07-12): the intro video must not sit on the map's
-		// shoulder - two stacked media stages read as clutter. It moves after areas.
-		$vi = array_search( 'video', $bands, true );
-		if ( false !== $vi && in_array( 'dronemap', $bands, true ) ) {
-			array_splice( $bands, $vi, 1 );
-			$ai = array_search( 'areas', $bands, true );
-			array_splice( $bands, false !== $ai ? $ai + 1 : count( $bands ), 0, 'video' );
-		}
+		// (2026-07-12 pushed the video below the areas band to keep two media
+		// stages apart. Superseded 2026-07-29: the video is now paired with the
+		// tour at the top, which is one stage, so that rule is gone.)
 		ob_start();
 		echo '<div class="nlhv2" dir="' . esc_attr( $dir ) . '" lang="' . esc_attr( $lang ) . '">';
 		if ( function_exists( 'nadlan_lang_switcher' ) ) { echo '<div class="nlhv2-langbar">' . nadlan_lang_switcher() . '</div>'; }
@@ -935,7 +1001,7 @@ if ( ! function_exists( 'nadlan_hv2_assets' ) ) {
 .nlhv2-rentals-sub{color:#51483A;font:400 14.5px/1.75 Heebo,sans-serif;margin:0 0 18px;max-width:620px}
 .nlhv2-rentals-steps span{background:#F3EEE3;border-color:#E2DCD0;color:#51483A}
 .nlhv2-rentals-note{color:#8E877A;font:600 12px Heebo,sans-serif;margin:14px 0 0}
-.nlhv2-renewal.has-img,.nlhv2-rentals.has-img{display:grid;grid-template-columns:1.15fr .85fr;gap:clamp(18px,3vw,34px);align-items:center}
+.nlhv2-renewal.has-img,.nlhv2-rentals.has-img,.nlhv2-tourvideo{display:grid;grid-template-columns:1.15fr .85fr;gap:clamp(18px,3vw,34px);align-items:center}
 .nlhv2-band-art{order:2;min-height:300px;height:100%;border-radius:16px;background-position:center;background-size:cover;background-repeat:no-repeat;border:1px solid #E2DCD0}
 .nlhv2-renewal.has-img .nlhv2-band-art{border-color:#3A342A}
 @media(max-width:860px){.nlhv2-renewal.has-img,.nlhv2-rentals.has-img{grid-template-columns:1fr}.nlhv2-band-art{order:0;min-height:220px}}

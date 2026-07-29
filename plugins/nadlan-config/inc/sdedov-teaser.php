@@ -43,14 +43,14 @@ function nadlan_sdedov_tour_css_raw() {
 	return ''
 		. '.nlsdt{position:relative;overflow:hidden;border-radius:18px;margin:26px auto;max-width:1240px;background:#101826;color:#fff;direction:rtl}'
 		. '.nlsdt-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.55}'
-		. '.nlsdt-in{position:relative;z-index:2;padding:34px 30px;background:linear-gradient(90deg,rgba(10,15,26,.88) 0%,rgba(10,15,26,.55) 55%,rgba(10,15,26,.15) 100%)}'
+		. '.nlsdt-in{position:relative;z-index:2;padding:34px 30px;background:linear-gradient(270deg,rgba(10,15,26,.88) 0%,rgba(10,15,26,.6) 55%,rgba(10,15,26,.2) 100%)}'
 		. '.nlsdt-kick{font:700 13px/1 Heebo,sans-serif;letter-spacing:.12em;color:#F2C14E;margin:0 0 8px}'
 		. '.nlsdt h2,.nlsdt-title{font:900 clamp(22px,3vw,32px)/1.2 Heebo,sans-serif;margin:0 0 8px;color:#fff}'
 		. '.nlsdt-sub{font:400 15.5px/1.6 Heebo,sans-serif;color:#D9E0EC;max-width:34em;margin:0 0 14px}'
 		. '.nlsdt-chips{display:flex;gap:8px;flex-wrap:wrap;margin:0 0 18px;padding:0;list-style:none}'
 		. '.nlsdt-chips li{font:600 12.5px/1 Heebo,sans-serif;color:#EFE3C8;border:1px solid rgba(242,193,78,.45);border-radius:999px;padding:7px 12px}'
-		. '.nlsdt-cta{display:inline-block;background:#E2701F;color:#fff;font:800 16px/1 Heebo,sans-serif;border-radius:10px;padding:13px 26px;text-decoration:none}'
-		. '.nlsdt-cta:hover{background:#C05A12;color:#fff}'
+		. '.nlsdt-cta{display:inline-block;background:#B85410;color:#fff;font:800 17px/1 Heebo,sans-serif;border-radius:10px;padding:14px 28px;text-decoration:none}'
+		. '.nlsdt-cta:hover{background:#9C4409;color:#fff}'
 		. '.nlsdt-cta2{display:inline-block;margin-inline-start:12px;color:#F2C14E;font:700 14px/1 Heebo,sans-serif;text-decoration:none}'
 		. '.nlsdt-note{font:400 11.5px/1.5 Heebo,sans-serif;color:#94A0B4;margin:12px 0 0}'
 		. '@media(max-width:640px){.nlsdt-in{padding:24px 18px;background:linear-gradient(180deg,rgba(10,15,26,.35) 0%,rgba(10,15,26,.9) 60%)}.nlsdt-cta{display:block;text-align:center}.nlsdt-cta2{display:block;margin:10px 0 0;text-align:center}}'
@@ -63,7 +63,15 @@ function nadlan_sdedov_tour_css_raw() {
 		. '.nlsdt-ovsp{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;color:#C9D2E2;font:600 15px/1 Heebo,sans-serif}'
 		. '.nlsdt-ov.ld .nlsdt-ovsp{display:none}'
 		. '.nlsdt-cardtour{display:inline-block;margin-top:7px;color:#F2C14E;font:700 13px/1 Heebo,sans-serif;text-decoration:none}'
-		. '.nlsdt-cardtour:hover{color:#FFD98F}';
+		. '.nlsdt-cardtour:hover{color:#FFD98F}'
+		. '@media(prefers-reduced-motion:no-preference){@keyframes nlsdtPulse{0%,100%{box-shadow:0 0 0 0 rgba(242,193,78,0)}50%{box-shadow:0 0 0 7px rgba(242,193,78,.22)}}.nlsdt-cta{animation:nlsdtPulse 2.6s ease-in-out infinite}}'
+		. '.nlsdt--pair{margin:0;max-width:none;height:100%}'
+		. '.nlsdt--pair .nlsdt-in{padding:26px 24px}'
+		. '.nlhv2-tourvideo{align-items:stretch}'
+		. '.nlhv2-tourvideo.is-solo{display:block}'
+		. '.nlhv2-tvvid{display:flex;flex-direction:column;justify-content:center;gap:8px}'
+		. '.nlhv2-tourvideo .nlhv2-video-frame{max-width:none;aspect-ratio:16/9;border-radius:18px;overflow:hidden;border:1px solid #D6C189;background:#14130F}'
+		. '.nlhv2-tourvideo .nlhv2-video-frame video,.nlhv2-tourvideo .nlhv2-video-frame iframe{width:100%;height:100%;object-fit:cover;display:block;border:0}';
 }
 
 /* One overlay engine per page: click a .nlsdt-open control and the tour opens
@@ -118,7 +126,8 @@ function nadlan_sdedov_card_tour_btn( $post ) {
 function nadlan_sdedov_tour_band( $variant = 'home', $focus = '' ) {
 	$url  = nadlan_sdedov_tour_url();
 	$link = $focus ? $url . '?focus=' . rawurlencode( $focus ) . '&mode=explore' : $url;
-	$html = '<section class="nlsdt" aria-label="סיור תלת ממדי ברובע שדה דב">'
+	$cls  = ( 'pair' === $variant ) ? 'nlsdt nlsdt--pair' : 'nlsdt';
+	$html = '<section class="' . esc_attr( $cls ) . '" aria-label="סיור תלת ממדי ברובע שדה דב">'
 		. '<img class="nlsdt-img" src="' . esc_url( nadlan_sdedov_tour_poster() ) . '" alt="" loading="lazy" decoding="async">'
 		. '<div class="nlsdt-in">'
 		. '<p class="nlsdt-kick">חדש · סיור תלת ממדי חי</p>'

@@ -181,6 +181,7 @@ add_shortcode( 'nadlan_premium_catalog', function () {
       <div class="nlpc-deal"><?php echo esc_html( $p['deal'] ); ?></div>
       <div class="nlpc-foot">
         <a class="nlpc-go" href="<?php echo esc_url( $link ); ?>">לעמוד המלא: מודל, חזית, מאמר ומפה ←</a>
+        <?php if ( function_exists( 'nadlan_sdedov_card_tour_btn' ) ) { echo nadlan_sdedov_card_tour_btn( $post ); } // phpcs:ignore ?>
         <div class="nlpc-langs"><?php foreach ( $langs as $ll => $lu ) { echo '<a href="' . esc_url( $lu ) . '">' . esc_html( $ll ) . '</a>'; } ?></div>
       </div>
     </div>
