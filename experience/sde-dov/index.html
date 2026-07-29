@@ -16,6 +16,9 @@
     ?focus=dimri|rainbow|ashira        jump straight into explore at a flagship
     ?focus=einstein                    jump to the Einstein-street gate (east zone)
     ?focus=einstein-tower|einstein-19|ashdar-einstein   jump to that project node
+    ?focus=utopia-sde-dov|first-sde-dov|zohi-sde-dov|gindi-vogue-sde-dov|
+           migdalei-hayam-sde-dov|shikun-binui-sde-dov   jump to that catalog
+           project (V3.1 — the six named quarter projects, approximate lots)
     ?sun=day|dusk           lighting state (default day — bright Mediterranean)
     ?year=2026|2035         time machine (default 2035 — the planned quarter;
                             2026 = the site today: cranes, skeletons, empty lots)
@@ -1298,6 +1301,94 @@ async function boot() {
     for (let k = 0; k < 12; k++) putPark(158 + k * 17, 40 + (k % 2) * 22 - 11, 0.85 + Math.random() * 0.35);
     for (let k = 0; k < 12; k++) putPark(158 + k * 17, -44 - (k % 2) * 22 + 11, 0.85 + Math.random() * 0.35); }
 
+  /* ============================================================
+     V3.1 (2026-07-29) — SIX NAMED CATALOG PROJECTS in the quarter.
+     All six have live pages on nad-lan.co.il; until now they were
+     anonymous massing. PLACEMENT IS APPROXIMATE — every card says
+     "מיקום משוער על פי פרסומים". Eshkol lot geography per the
+     municipal design-review PDFs (tel-aviv.gov.il "דיון בעיצוב"
+     docs for lots/units 102, 103, 108, 8(109/110), 111):
+       east edge (Levi Eshkol) = 101 Ashira + 108 at the SE corner ·
+       north-center on the linear park (segments 602-603) = 102, 103
+       UTOPIA + 104 Dan hotel · west/sea band = 105-107 (Dimri=107) ·
+       SOUTH ROW on Shai Agnon running E→W: 108 → 404 → 109 → 110 →
+       road 2438 → 111 Rainbow at the SW sea corner.
+     Per-project sources (fetched + web-researched 2026-07-29):
+     · utopia  — nad-lan.co.il/projects/utopia-sde-dov/ + lot-103
+       municipal PDF + sdedov.co.il (עבודות מאוקטובר 2025) + tlvonline
+       (מגרש 103): קבוצת נחמיאס, north-central Eshkol FRONTING THE
+       LINEAR PARK (segment 603 to its north), neighbor = Dan hotel
+       lot 104; municipal mix 34F+15F+2×7F, marketing 337u "עד 36 ק׳",
+       אדר׳ אבנר ישר; in construction (excavation) since 10/2025
+       → placed south of the linear park, center-east; 2026 site.
+     · first   — nad-lan.co.il/projects/first-sde-dov/ + sdedov.co.il
+       (אושרה תוכנית העיצוב) + calcalist: קבוצת חג׳ג׳, lot 2270 (~4.9
+       dunam) at the NORTH-CENTRAL edge of מרכז הרובע on the Bashevis-
+       Singer seam with the north compound, west flank on the Ibn
+       Gvirol extension with only the coastal park to the sea ("קו
+       ראשון אמיתי לים"); 45F (258u) + 3×9F boutique (92u), ODA NY +
+       בר אוריין; design plan approved, permit track 2026 — NOT yet
+       in construction → placed center-compound NW over the coastal park.
+     · zohi    — nad-lan.co.il/projects/zohi-sde-dov/ + unit-8
+       municipal PDF + sdedov.co.il + globes (מכרז 8/2021, 659.5M):
+       לוינשטין+מבנה+אלייד, lot 110 at the WESTERN end of the Shai
+       Agnon south row, directly across road 2438 from Rainbow's
+       block, school 409 + park 607 to its north; municipal mix
+       2×16F + 9F fabric (page: "עד 12"; range shown as עד 16),
+       design approved, pre-permit → placed across the runway-park
+       strip east of Rainbow, south band.
+     · shikun-binui — nad-lan.co.il/projects/shikun-binui-sde-dov/ +
+       unit-8 municipal PDF + sdedov.co.il (היתר מלא 10.12.2025) +
+       nadlancenter 13451: lot 109 between public lot 404 (E) and
+       Zohi's 110 (W) on the south row; דירה להשכיר 20yr, 324u,
+       38-40F + 2×8-9F, אדר׳ מילבאואר; excavation done, superstructure
+       through 2026 → east of Zohi on the same band; 2026 site.
+     · gindi-vogue — nad-lan.co.il/projects/gindi-vogue-sde-dov/ +
+       nadlancenter 12256 + sdedov.co.il + project-tlv: CONFIRMED the
+       same project as Gindi Israel 2010's RMI center-compound win —
+       TWO lots marketed together: 2206 מתחם ב׳ (326u, 2×20F + 3×9F)
+       + 2255 מתחם ו׳ (382u, 45F + 20F) = 708u, אדר׳ קיקה ברא״ז,
+       on the eastern flank of the Ibn Gvirol/boulevard extension at
+       the Einstein junction, ~250m from the shore, by the Green-Line
+       LRT stop; ~450 sold since 6/2025, Danya Cebus contractor
+       → carried by the existing EP 'gindi-rova' massing at the
+       Einstein gate (same 44-45·20·7-9 mix), now with the live URL.
+     · migdalei-hayam — nad-lan.co.il/projects/migdalei-hayam-sde-dov/
+       + bizportal 20015166 + project-tlv (lot 150, 4,663 sqm) + ynet:
+       דיור מוגן, מגדלי הים התיכון + כלל ביטוח (~60%), north compound
+       lot 150, first line facing Tel Baruch beach, 300u, ~20F
+       (unconfirmed), won the RMI tender 27.03.2025 at ~418.5M NIS,
+       still in planning → waterfront hotels band, north compound.
+     ============================================================ */
+  const QPROJECTS = [
+    { id: 'utopia', n: 'UTOPIA שדה דב — קבוצת נחמיאס', dev: 'קבוצת נחמיאס · אדר׳ אבנר ישר',
+      st: 'בבנייה — בשיווק', un: 337, f: 'עד 36', x: 210, z: -135,
+      bld: [[0, 17, 26, 24, 36], [0, -17, 24, 22, 15], [-24, 0, 14, 18, 7]],
+      url: 'https://nad-lan.co.il/projects/utopia-sde-dov/',
+      note: 'מגרש 103 במתחם אשכול, על הפארק הליניארי ולצד מלון דן המתוכנן — מגדל, בניין ביניים ובנייני בוטיק עם שלוש קומות מתקנים ו־Wellness ובריכה חצי־אולימפית. העבודות בשטח החלו.' },
+    { id: 'first', n: 'FIRST שדה דב — קבוצת חג׳ג׳', dev: 'קבוצת חג׳ג׳ · אדר׳ ODA ניו יורק',
+      st: 'בשיווק — תוכנית עיצוב אושרה', un: 350, f: '45 + 3 × 9', x: -16, z: 585,
+      bld: [[0, 0, 26, 24, 45], [30, -6, 16, 13, 9], [30, -30, 16, 13, 9], [4, -34, 16, 13, 9]],
+      url: 'https://nad-lan.co.il/projects/first-sde-dov/',
+      note: 'ריזורט מגורים עירוני במגרש 2270, בקצה הצפוני של מרכז הרובע על ציר בשביס זינגר — מגדל 45 קומות ושלושה בנייני בוטיק, כשרק פארק החוף מפריד בינו לים.' },
+    { id: 'zohi', n: 'ZOHI זוהי שדה דב', dev: 'לוינשטין · מבנה · אלייד נדל״ן',
+      st: 'בשיווק — תוכנית עיצוב אושרה', un: 230, f: 'מרקמי עד 16', x: 118, z: -332,
+      bld: [[0, 0, 22, 16, 16], [26, 6, 20, 15, 16], [4, 24, 18, 14, 9], [30, -16, 18, 14, 9], [6, -20, 16, 13, 9]],
+      url: 'https://nad-lan.co.il/projects/zohi-sde-dov/',
+      note: 'מגרש 110 בדופן ש״י עגנון, מעבר לדרך ממתחם ריינבו — בנייה מרקמית בשפה באוהאוסית מודרנית בהשראת העיר הלבנה, מרפסות מדורגות ובריכה על הגג, לצד בית הספר והפארק השכונתי המתוכננים.' },
+    { id: 'shibi', n: 'שיכון ובינוי שדה דב — השכרה ארוכת טווח', dev: 'שיכון ובינוי · אדר׳ מילבאואר',
+      st: 'בבנייה — היתר 12/2025, אכלוס צפוי 2028', un: 324, f: '38 · 2 × 8', x: 196, z: -330,
+      bld: [[0, 0, 24, 22, 38], [26, 6, 18, 14, 8], [-4, 28, 18, 14, 8]],
+      url: 'https://nad-lan.co.il/projects/shikun-binui-sde-dov/',
+      note: 'פרויקט הדיור להשכרה של הרובע במגרש 109, בין זוהי (110) למגרש הציבורי בדופן ש״י עגנון — מגדל 38 קומות ושני בניינים של 8 קומות מעל חזית מסחרית, מועדון דיירים בקומה 14. להשכרה בלבד.' },
+    { id: 'migdal', n: 'דיור מוגן שדה דב — מגדלי הים התיכון', dev: 'מגדלי הים התיכון + כלל ביטוח',
+      st: 'בתכנון — זכייה במכרז רמ״י 03/2025', un: 300, f: '~20', x: -60, z: 762,
+      bld: [[0, 0, 30, 24, 20], [2, 28, 20, 16, 6]],
+      url: 'https://nad-lan.co.il/projects/migdalei-hayam-sde-dov/',
+      note: 'מתחם דיור מוגן לגיל השלישי במגרש 150 במתחם הצפוני, קו ראשון מול חוף תל ברוך — 300 יחידות מעל פארק החוף, בהפעלת רשת מגדלי הים התיכון לצד כלל ביטוח.' },
+  ];
+  const QGUARD = [[210, -135, 62], [-16, 585, 60], [118, -332, 58], [196, -330, 55], [-60, 762, 46]];
+
   /* ================= SURROUNDING QUARTER (stylized per TA/4444 — see head) =================
      3 compounds S→N (Eshkol ~4,850u · central ~7,100u to 45F · north ~4,000u
      w/ hotels on the shore), ~35 towers to 40F over a 5-10F fabric, plus the
@@ -1320,6 +1411,7 @@ async function boot() {
       if (x < -40) return true;                     /* coastal park stays green (hotels are placed explicitly) */
       if (Math.hypot(x + 52, z + 690) < 130) return true;                     /* Reading */
       if (x > 500 && z > -185 && z < 75) return true; /* V3: ציר איינשטיין corridor (built explicitly, lazy) */
+      for (const [qx, qz, qr] of QGUARD) if (Math.hypot(x - qx, z - qz) < qr) return true; /* V3.1 named catalog lots */
       return false;
     };
     const K = MOBILE ? 0.62 : 1;
@@ -1958,6 +2050,8 @@ async function boot() {
       [-38, -150, 26, 26, 14, 58, [[-30, 22], [26, -18]]],
       [-30, -258, 20, 17, 15, 50, [[24, 16]]],
       [415, -60, 22, 22, 12, 62, [[-26, -24], [30, 20]]],
+      [196, -330, 20, 18, 4, 48, [[24, -18]]], /* V3.1: שיכון ובינוי lot 109 — full permit 12/2025, early frame in 2026 */
+      [210, -135, 22, 20, 2, 54, [[26, 18]]],  /* V3.1: UTOPIA lot 103 — excavation/foundations since 10/2025 */
     ];
     const fences = new THREE.InstancedMesh(boxG, M_FENCE, SITES.length * 4);
     let fi = 0;
@@ -1975,6 +2069,36 @@ async function boot() {
     }
     todayGrp.add(fences);
     regClick(fences, () => null); /* fences aren't a story — swallow, don't card */
+  }
+
+  /* ============================================================
+     V3.1 — SIX NAMED CATALOG PROJECTS, built. One instanced mesh
+     for all their buildings (2035 era, rises with futBld), cards
+     via the click-everything registry, each linking to its live
+     page. Placement approximate — the card badge says so.
+     ============================================================ */
+  function qCard(p) {
+    if (!p) return null;
+    const lines = [['קומות', p.f]];
+    if (p.un) lines.push(['דירות', 'כ־' + p.un]);
+    lines.push(['סטטוס', p.st], ['מיקום', 'משוער על פי פרסומים']);
+    return { tag: 'רובע שדה דב · בקטלוג שלנו', title: p.n, sub: p.dev, desc: p.note,
+      lines, url: p.url, soon: false,
+      fine: 'מיקום משוער על פי פרסומים · הדמיה להמחשה בלבד' };
+  }
+  { const qMat = duskify(new THREE.MeshStandardMaterial({ color: 0x4a4162, roughness: 0.5, metalness: 0.25, envMapIntensity: 1.0 }),
+      { floorH: 3.0, winW: 2.8, lit: 0.5, glow: 1.5, seed: 77 });
+    sunMat(qMat, 0xaab8c6, 0x4a4162, (m, mat) => { mat.roughness = lerpN(0.4, 0.5, m); });
+    const qList = [];
+    for (const p of QPROJECTS) for (const [dx, dz, w, d, fl] of p.bld) {
+      qList.push({ p, x: p.x + dx, z: p.z + dz, w, d, h: fl * 3.0 });
+      SHADOWQ.push([p.x + dx, p.z + dz, w, d, fl * 3.0]);
+    }
+    const qInst = new THREE.InstancedMesh(boxG, qMat, qList.length);
+    qList.forEach((b, i) => qInst.setMatrixAt(i, composeTRS(b.x, 0, b.z, ((i % 5) - 2) * 0.02, b.w, b.h, b.d)));
+    futBld.add(qInst);
+    regClick(qInst, i => qCard(qList[i] && qList[i].p));
+    console.info('[sdedov] V3.1 catalog projects:', QPROJECTS.length + 1, 'named (' + qList.length + ' buildings + gindi-rova in the east zone)');
   }
 
   /* ============================================================
@@ -2046,10 +2170,11 @@ async function boot() {
      auranewg.co.il (Aura Ramat Aviv Gimel).
      ============================================================ */
   const EP = [
-    { id: 'gindi-rova', n: 'מרכז רובע שדה דב — גינדי', dev: 'גינדי ישראל 2010', st: 'בתכנון — אישור אדריכלי 01/2026',
-      un: 382, x: 578, z: -20, f: '45 · 20 · 7', soon: 1,
-      bld: [[0, 6, 25, 22, 45], [27, 16, 20, 17, 20], [-24, 14, 16, 13, 7], [3, 34, 26, 12, 5]],
-      note: 'ארבעה בניינים בפינת איינשטיין/אבן גבירול המוארך — מגדל 45 קומות מעל קולונדת מסחר, השער המזרחי של הרובע.' },
+    { id: 'gindi-rova', n: 'GINDI VOGUE שדה דב — מרכז הרובע', dev: 'גינדי החזקות · אדר׳ קיקה ברא״ז', st: 'בשיווק',
+      un: 708, x: 578, z: -20, f: '44 · 20 · 7-8', approx: 1, /* V3.1: זה מגרש 2206 מתחם ב׳ — עמוד חי בקטלוג */
+      bld: [[0, 6, 25, 22, 44], [27, 16, 20, 17, 20], [-24, 14, 16, 13, 7], [3, 34, 26, 12, 5]],
+      url: 'https://nad-lan.co.il/projects/gindi-vogue-sde-dov/',
+      note: 'שני מגרשים משווקים יחד (2206 + 2255) בדופן אבן גבירול 250 ליד תחנת הקו הירוק איינשטיין — מגדל 44-45 קומות, מגדלי 20 ובנייה מרקמית, קונספט "מלון 5 כוכבים דלוקס". כ־450 דירות נמכרו מאז ההשקה.' },
     { id: 'ein-2468', n: 'EINSTEIN 2.4.6.8', dev: 'גינדי + קבוצת שבירו · אדר׳ משה צור', st: 'בשיווק — אכלוס משוער 2030',
       un: null, x: 642, z: -108, f: '23 · 23 + 3 בוטיק', soon: 1,
       bld: [[0, 0, 20, 17, 23], [30, 4, 20, 17, 23], [-24, -12, 14, 11, 6], [10, -26, 14, 11, 6], [40, -24, 14, 11, 6]],
@@ -2099,8 +2224,10 @@ async function boot() {
     const lines = [['קומות', ep.f]];
     if (ep.un) lines.push(['דירות', 'כ־' + ep.un]);
     lines.push(['סטטוס', ep.st]);
+    if (ep.approx) lines.push(['מיקום', 'משוער על פי פרסומים']); /* V3.1 */
     return { tag: ep.url ? 'מזרחה לאיינשטיין · בקטלוג שלנו' : 'מזרחה לאיינשטיין · בקרוב אצלנו',
       title: ep.n, sub: ep.dev, desc: ep.note, lines, url: ep.url || null, soon: !ep.url,
+      fine: ep.approx ? 'מיקום משוער על פי פרסומים · הדמיה להמחשה בלבד' : undefined,
       waTxt: 'מתעניינים בציר איינשטיין? דברו איתנו' };
   }
   function buildEinsteinZone() {
@@ -2327,6 +2454,13 @@ async function boot() {
     'ein-19':    { x: 912, z: -58,  y: EYE, name: 'איינשטיין 19 — פינוי בינוי', zone: 'east', eproject: 'einstein-19' },
     'ein-ashdar':{ x: 1044, z: -58, y: EYE, name: 'אשדר איינשטיין — נווה אביבים', zone: 'east', eproject: 'ashdar-einstein' },
     'ein-sky':   { x: 810, z: -60, y: 205, name: 'מבט־על — ציר איינשטיין', sky: true, zone: 'east' },
+    /* V3.1 — the six named catalog projects (approximate lots) */
+    'utopia':    { x: 216, z: -92,  y: EYE, name: 'UTOPIA — על הפארק הליניארי', qproject: 'utopia' },
+    'zohi':      { x: 88,  z: -300, y: EYE, name: 'ZOHI — מגרש 110, מתחם אשכול', qproject: 'zohi' },
+    'shibi':     { x: 162, z: -300, y: EYE, name: 'שיכון ובינוי להשכרה — מגרש 109', qproject: 'shibi' },
+    'first':     { x: -104, z: 585, y: EYE, name: 'FIRST — קו ראשון לים', qproject: 'first' },
+    'migdal':    { x: -104, z: 760, y: EYE, name: 'דיור מוגן מגדלי הים — צפון הרובע', qproject: 'migdal' },
+    'gindi-c':   { x: 562, z: -40,  y: EYE, name: 'GINDI VOGUE — שער מרכז הרובע', zone: 'east', eproject: 'gindi-rova' },
   };
   const EDGES = [
     ['prom-n', 'prom-c'], ['prom-c', 'prom-s'], ['prom-s', 'beach'], ['prom-c', 'beach'],
@@ -2340,6 +2474,12 @@ async function boot() {
     ['ein-gate', 'ein-w'], ['ein-w', 'ein-hagag'], ['ein-hagag', 'ein-19'],
     ['ein-19', 'ein-ashdar'],
     ['ein-sky', 'ein-gate'], ['ein-sky', 'ein-hagag'], ['ein-sky', 'ein-ashdar'], ['ein-sky', 'sky'],
+    /* V3.1 — the six catalog projects join the walk graph.
+       FIRST + the senior-living lot chain the promenade northward. */
+    ['park', 'utopia'], ['utopia', 'ashira'],
+    ['run-s', 'zohi'], ['rainbow', 'zohi'], ['zohi', 'shibi'], ['run-s', 'shibi'],
+    ['prom-n', 'first'], ['first', 'migdal'], ['run-n', 'migdal'],
+    ['ein-gate', 'gindi-c'],
   ];
   const GRAPH = {};
   for (const id in NODES) { GRAPH[id] = []; NODES[id].id = id; }
@@ -2411,6 +2551,8 @@ async function boot() {
         el.classList.add('on'); document.body.classList.add('cardOpen');
       } else if (node.eproject) {
         openDyn(epCard(EP.find(p => p.id === node.eproject)));
+      } else if (node.qproject) { /* V3.1 named catalog projects */
+        openDyn(qCard(QPROJECTS.find(p => p.id === node.qproject)));
       } else if (node.sky) {
         planCard.classList.add('on'); document.body.classList.add('cardOpen');
       }
@@ -2485,14 +2627,15 @@ async function boot() {
 
   /* ---- mini-map (V3: extended to the Einstein corridor; north-up, sea LEFT/west) ---- */
   const mmC = $('#mm'), mmX = mmC.getContext('2d');
-  const MM = { X0: -270, X1: 1150, Z0: -360, Z1: 400, k: 0.163, w: 231, h: 124, dpr: 1 };
+  const MM = { X0: -270, X1: 1150, Z0: -540, Z1: 830, k: 0.163, kz: 0.106, w: 231, h: 145, dpr: 1 };
   const mmBG = document.createElement('canvas');
-  const w2mX = x => (x - MM.X0) * MM.k, w2mY = z => (MM.Z1 - z) * MM.k;
+  const w2mX = x => (x - MM.X0) * MM.k, w2mY = z => (MM.Z1 - z) * MM.kz; /* V3.1: separate N-S scale — map now reaches FIRST (S) + the senior-living lot (N) */
   let mmRedraw = null;
   function mmSize() {
     const small = innerWidth <= 640;
     MM.k = small ? 0.128 : 0.163;
-    MM.w = Math.round((MM.X1 - MM.X0) * MM.k); MM.h = Math.round((MM.Z1 - MM.Z0) * MM.k);
+    MM.kz = small ? 0.083 : 0.106;
+    MM.w = Math.round((MM.X1 - MM.X0) * MM.k); MM.h = Math.round((MM.Z1 - MM.Z0) * MM.kz);
     MM.dpr = Math.min(devicePixelRatio || 1, 2);
     mmC.style.width = MM.w + 'px'; mmC.style.height = MM.h + 'px';
     mmC.width = MM.w * MM.dpr; mmC.height = MM.h * MM.dpr;
@@ -2529,14 +2672,24 @@ async function boot() {
       g.fillRect(w2mX(p[0]) - 2.6, w2mY(p[2]) - 2.6, 5.2, 5.2); }
     g.font = '600 8px Heebo, sans-serif'; g.fillStyle = 'rgba(242,217,164,.95)'; g.textAlign = 'center';
     g.fillText('דימרי', w2mX(-38) + 16, w2mY(-150) - 4);
-    g.fillText('ריינבו', w2mX(-30) + 16, w2mY(-258) + 10);
+    g.fillText('ריינבו', w2mX(-30) + 16, w2mY(-258) + 17); /* V3.1: +7 — clears the Zohi diamond */
     g.fillText('אשירה', w2mX(415), w2mY(-60) - 7);
     /* Einstein projects (V3): filled = in our catalog, hollow = coming soon */
     for (const ep of EP) {
+      if (ep.id === 'gindi-rova') continue; /* V3.1: drawn as a catalog diamond below */
       const px = w2mX(ep.x), py = w2mY(ep.z);
       if (ep.url) { g.fillStyle = '#d8b46a'; g.fillRect(px - 2.2, py - 2.2, 4.4, 4.4); }
       else { g.strokeStyle = 'rgba(216,180,106,.8)'; g.lineWidth = 1; g.strokeRect(px - 2, py - 2, 4, 4); }
     }
+    /* V3.1: the six named catalog projects — gold diamonds (≠ flagship squares, ≠ EP squares) */
+    g.fillStyle = '#e6c47c';
+    for (const [qx, qz] of QPROJECTS.map(p => [p.x, p.z]).concat([[578, -20]])) {
+      const px = w2mX(qx), py = w2mY(qz);
+      g.save(); g.translate(px, py); g.rotate(Math.PI / 4); g.fillRect(-2.2, -2.2, 4.4, 4.4); g.restore();
+    }
+    g.fillStyle = 'rgba(242,217,164,.9)'; g.font = '600 7px Heebo, sans-serif';
+    g.fillText('FIRST', w2mX(-16) + 24, w2mY(585) + 3);
+    g.fillText('דיור מוגן', w2mX(-60) + 30, w2mY(762) + 3);
     g.fillStyle = 'rgba(242,217,164,.9)'; g.font = '600 7.5px Heebo, sans-serif';
     g.fillText('איינשטיין', w2mX(830), w2mY(-60) + 12);
     g.fillStyle = 'rgba(185,176,201,.85)'; g.font = '300 7.5px Heebo, sans-serif';
@@ -2569,7 +2722,7 @@ async function boot() {
       mmX.beginPath(); mmX.arc(w2mX(n.x), w2mY(n.z), 2.2, 0, 7); mmX.fill(); }
     /* current position + view cone */
     const px = w2mX(ex.pos.x), py = w2mY(ex.pos.z);
-    const a = Math.atan2(-Math.cos(ex.yaw), Math.sin(ex.yaw)); /* map angle */
+    const a = Math.atan2(-Math.cos(ex.yaw) * MM.kz, Math.sin(ex.yaw) * MM.k); /* map angle (kz-weighted for the V3.1 anisotropic map) */
     mmX.fillStyle = 'rgba(242,217,164,.18)';
     mmX.beginPath(); mmX.moveTo(px, py);
     mmX.arc(px, py, 17, a - 0.48, a + 0.48); mmX.closePath(); mmX.fill();
@@ -3261,7 +3414,10 @@ async function boot() {
   /* V3 deep links: ?mode=explore drops straight into the walk;
      ?focus=… lands on a specific node (and lazy-builds the east zone) */
   const FOCUS_NODE = { dimri: 'dimri', rainbow: 'rainbow', ashira: 'ashira', einstein: 'ein-gate',
-    'einstein-tower': 'ein-hagag', 'einstein-19': 'ein-19', 'ashdar-einstein': 'ein-ashdar', sky: 'sky' };
+    'einstein-tower': 'ein-hagag', 'einstein-19': 'ein-19', 'ashdar-einstein': 'ein-ashdar', sky: 'sky',
+    /* V3.1 — the six named catalog projects, by their live-page slugs */
+    'utopia-sde-dov': 'utopia', 'first-sde-dov': 'first', 'zohi-sde-dov': 'zohi',
+    'shikun-binui-sde-dov': 'shibi', 'migdalei-hayam-sde-dov': 'migdal', 'gindi-vogue-sde-dov': 'gindi-c' };
   if (MODE_PARAM === 'explore' || FOCUS_NODE[FOCUS]) {
     const target = NODES[FOCUS_NODE[FOCUS] || 'run-c'];
     setTimeout(() => enterExplore(target), 60); /* not rAF — must fire even in a hidden tab */
