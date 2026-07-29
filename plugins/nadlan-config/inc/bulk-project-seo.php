@@ -59,9 +59,9 @@ if ( ! function_exists( 'nadlan_bulk_project_seo_title' ) ) {
 			$city = $terms[0]->name;
 		}
 		if ( $city !== '' ) {
-			return sprintf( '%s - דירות למכירה ב%s | נדלן', $post_title, $city );
+			return sprintf( '%s %s - מחירים, דירות ובחירה מהבניין | נדלן', $post_title, $city );
 		}
-		return sprintf( '%s - דירות למכירה | נדלן', $post_title );
+		return sprintf( '%s - מחירים, דירות ובחירה מהבניין | נדלן', $post_title );
 	}
 }
 
