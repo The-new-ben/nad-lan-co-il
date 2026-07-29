@@ -90,6 +90,31 @@ add_action( 'rest_api_init', function () {
 				$svg .= '<text x="1140" y="' . $y . '" font-family="serif" font-size="72" font-weight="600" fill="#fff" text-anchor="end" direction="rtl">' . esc_html( $ln ) . '</text>';
 				$y += 90;
 			}
+			/* FACILITY BADGE STRIP - crop-safe (owner 2026-07-29). WhatsApp small
+			   thumbnails crop a centered 1:1 square out of the 1200x630 card, so
+			   only x in [285,915] survives; the right-anchored text above is cut
+			   there. The badges therefore live in the CENTRAL band - max width
+			   560px around x=600 (x 320-880 worst case), y 478-528 - visible in
+			   BOTH the full-size card and the square center crop. Up to 4 pills;
+			   overflow drops pills rather than ever leaving the safe zone. */
+			if ( 'nadlan_project' === $post->post_type && function_exists( 'nadlan_fc_for_project' ) ) {
+				$fac = array_slice( nadlan_fc_for_project( $id ), 0, 4 );
+				if ( $fac ) {
+					$gap = 14; $widths = array(); $total = -$gap;
+					foreach ( $fac as $f ) { $w = 56 + 15 * mb_strlen( $f ); $widths[] = $w; $total += $w + $gap; }
+					while ( $total > 560 && count( $fac ) > 1 ) {
+						array_pop( $fac ); $w = array_pop( $widths ); $total -= $w + $gap;
+					}
+					$xr = 600 + (int) round( $total / 2 ); // RTL: first badge sits rightmost
+					foreach ( $fac as $i => $f ) {
+						$w = $widths[ $i ];
+						$svg .= '<rect x="' . ( $xr - $w ) . '" y="478" width="' . $w . '" height="50" rx="25" fill="rgba(255,255,255,.07)" stroke="#9C7A3C" stroke-width="1.5"/>'
+							. '<circle cx="' . ( $xr - 22 ) . '" cy="503" r="4.5" fill="#E9D9A8"/>'
+							. '<text x="' . ( $xr - 15 - (int) round( $w / 2 ) ) . '" y="512" font-family="sans-serif" font-size="26" font-weight="600" fill="#F4EEDE" text-anchor="middle" direction="rtl">' . esc_html( $f ) . '</text>';
+						$xr -= $w + $gap;
+					}
+				}
+			}
 			$svg .= '<text x="1140" y="580" font-family="sans-serif" font-size="28" fill="rgba(255,255,255,.6)" text-anchor="end" direction="rtl">נדלן · nad-lan.co.il</text>';
 			$svg .= '</svg>';
 
@@ -139,6 +164,7 @@ add_filter( 'nadlan_config_healthcheck', function ( $out ) {
 	$out['og_image'] = array(
 		'https_normalizer' => true,
 		'default_card'     => true,
+		'facility_badges'  => function_exists( 'nadlan_fc_for_project' ),
 	);
 	return $out;
 } );

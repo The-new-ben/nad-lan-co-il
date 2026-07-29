@@ -75,7 +75,9 @@ if ( ! function_exists( 'nadlan_premium_catalog_data' ) ) {
 add_shortcode( 'nadlan_premium_catalog', function () {
 	nadlan_bvr_mark_pc();
 	$rows = nadlan_premium_catalog_data();
-	$fkeys = array( 'בריכה', 'ספא', 'חדר כושר', 'קולנוע', "קונסיירז'", 'לגונה', "לאונג'", 'אזורי ילדים', 'מסחר', 'חניון', 'ממ"ד' );
+	// single source of truth with the facility-chips module (chips deep-link here)
+	$fkeys = function_exists( 'nadlan_fc_keys' ) ? nadlan_fc_keys()
+		: array( 'בריכה', 'ספא', 'חדר כושר', 'קולנוע', "קונסיירז'", 'לגונה', "לאונג'", 'אזורי ילדים', 'מסחר', 'חניון', 'ממ"ד' );
 	ob_start(); ?>
 <style>
 .nlpc{max-width:1060px;margin:10px auto;font-family:var(--font-sans,Heebo,sans-serif);direction:rtl;color:#1B1A17}
@@ -106,7 +108,9 @@ add_shortcode( 'nadlan_premium_catalog', function () {
 .nlpc-meta{font-size:13.5px;color:#5C564D;margin:3px 0 8px}
 .nlpc-price{font-size:13px;color:#1B1A17;background:#F3EEE3;border-radius:8px;padding:6px 10px;display:inline-block}
 .nlpc-fac{display:flex;flex-wrap:wrap;gap:6px;margin:10px 0}
-.nlpc-fac span{font-size:12px;background:#FAF7F1;border:1px solid #E2DCD0;border-radius:999px;padding:4px 10px}
+.nlpc-fac span,.nlpc-fac a{font-size:12px;background:#FAF7F1;border:1px solid #E2DCD0;border-radius:999px;padding:4px 10px;color:inherit;text-decoration:none}
+.nlpc-fac a{cursor:pointer;transition:border-color .15s,color .15s}
+.nlpc-fac a:hover{border-color:#9C7A3C;color:#9C7A3C}
 .nlpc-deal{font-size:12.5px;color:#5C564D;border-top:1px dashed #E2DCD0;padding-top:8px}
 .nlpc-foot{display:flex;justify-content:space-between;align-items:center;margin-top:10px;flex-wrap:wrap;gap:8px}
 .nlpc-langs{display:flex;gap:4px}
@@ -167,7 +171,13 @@ add_shortcode( 'nadlan_premium_catalog', function () {
       <h3><?php echo esc_html( $p['name'] ); ?></h3>
       <div class="nlpc-meta"><?php echo esc_html( $p['dev'] . ' · ' . $p['area'] . ' · ' . $p['floors'] . ' קומות · ' . $p['units'] . ' דירות · אכלוס ' . $p['delivery'] ); ?></div>
       <span class="nlpc-price"><?php echo esc_html( $p['price_note'] ); ?></span>
-      <div class="nlpc-fac"><?php foreach ( $p['fac'] as $f ) { $ic=''; foreach ( $icons as $k2 => $svg ) { if ( strpos( $f, $k2 ) !== false ) { $ic='<i class="ic">'.$svg.'</i>'; break; } } echo '<span>' . $ic . esc_html( $f ) . '</span>'; } ?></div>
+      <div class="nlpc-fac"><?php foreach ( $p['fac'] as $f ) { $ic=''; foreach ( $icons as $k2 => $svg ) { if ( strpos( $f, $k2 ) !== false ) { $ic='<i class="ic">'.$svg.'</i>'; break; } }
+        // facility chips are CLICKABLE (owner, 2026-07-29): a chip filters the catalog by
+        // that facility. Labels with no canonical filter key stay plain spans.
+        $ck = function_exists( 'nadlan_fc_canonical' ) ? nadlan_fc_canonical( array( $f ) ) : array();
+        if ( $ck && function_exists( 'nadlan_fc_premium_url' ) ) {
+          echo '<a href="' . esc_url( nadlan_fc_premium_url( $ck[0] ) ) . '" title="' . esc_attr( 'סינון הקטלוג: ' . $ck[0] ) . '">' . $ic . esc_html( $f ) . '</a>';
+        } else { echo '<span>' . $ic . esc_html( $f ) . '</span>'; } } ?></div>
       <div class="nlpc-deal"><?php echo esc_html( $p['deal'] ); ?></div>
       <div class="nlpc-foot">
         <a class="nlpc-go" href="<?php echo esc_url( $link ); ?>">לעמוד המלא: מודל, חזית, מאמר ומפה ←</a>
@@ -230,6 +240,24 @@ document.querySelectorAll('#nlpc .fr[data-dev]').forEach(function(b){b.onclick=f
 [['data-sea','sea'],['data-park','park'],['data-marina','marina']].forEach(function(t){
  var b=document.querySelector('#nlpc .fr['+t[0]+']');if(b)b.onclick=function(){b.classList.toggle('on');st[t[1]]=b.classList.contains('on');apply();};});
 var so=document.getElementById('nlpc_sort');if(so)so.onchange=sortCards;
+/* DEEP LINK (facility chips, 2026-07-29): /premium/?fac=NAME[,NAME] pre-applies
+   the matching facility filter buttons - chips anywhere on the site land here
+   with the filter already on. Match by button TEXT, not index (reorder-proof). */
+try{
+ (new URLSearchParams(location.search).get('fac')||'').split(',').forEach(function(n){
+  n=n.trim();if(!n)return;
+  document.querySelectorAll('#nlpc .f').forEach(function(b){
+   if(b.textContent.trim()===n&&!b.classList.contains('on'))b.click();});});
+}catch(e){}
+/* card facility chips: on this page a chip toggles the filter IN PLACE
+   (no reload); anywhere else the chip's real href navigates here. */
+document.addEventListener('click',function(e){
+ var a=e.target.closest('.nlpc-fac a');if(!a)return;e.preventDefault();
+ var n=null;try{n=new URL(a.href).searchParams.get('fac')}catch(err){}
+ if(!n){return}
+ var hit=null;document.querySelectorAll('#nlpc .f').forEach(function(b){if(b.textContent.trim()===n)hit=b});
+ if(hit){if(!hit.classList.contains('on'))hit.click();hit.scrollIntoView({behavior:'smooth',block:'center'})}
+ else{window.location=a.href}});
 apply();
 })();
 </script>

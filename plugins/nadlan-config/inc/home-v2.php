@@ -32,6 +32,51 @@ if ( ! function_exists( 'nadlan_hv2_img' ) ) {
 	}
 }
 
+if ( ! function_exists( 'nadlan_hv2_interior_pool' ) ) {
+	/* Our own generated interior stills (media library, post_name interior-*),
+	   ID-ascending for a stable, deterministic order. Static + transient cache. */
+	function nadlan_hv2_interior_pool() {
+		static $pool = null;
+		if ( is_array( $pool ) ) { return $pool; }
+		$pool = get_transient( 'nadlan_hv2_interiors' );
+		if ( ! is_array( $pool ) ) {
+			global $wpdb;
+			$ids  = $wpdb->get_col( "SELECT ID FROM {$wpdb->posts} WHERE post_type='attachment' AND post_mime_type LIKE 'image/%' AND post_name LIKE 'interior-%' ORDER BY ID ASC LIMIT 40" );
+			$pool = array();
+			foreach ( (array) $ids as $aid ) {
+				$u = wp_get_attachment_image_url( (int) $aid, 'medium_large' );
+				if ( $u ) { $pool[] = $u; }
+			}
+			set_transient( 'nadlan_hv2_interiors', $pool, 6 * HOUR_IN_SECONDS );
+		}
+		return $pool;
+	}
+}
+
+if ( ! function_exists( 'nadlan_hv2_listing_media' ) ) {
+	/* LISTING IMAGERY LADDER (owner 2026-07-29: the pencil sketch plates read
+	   unprofessional as the card face). (a) a real listing photo when one
+	   exists; (b) else one of OUR OWN generated interior stills, rotated
+	   deterministically by listing id (demo listings + our renders; the card
+	   carries an honest הדמיה tag); (c) else a rich gradient placeholder in
+	   the flagship visual language. The sketch plate never leads a card.
+	   Returns array( url_or_empty, 'photo'|'interior'|'ph' ). */
+	function nadlan_hv2_listing_media( $id ) {
+		$is_sketch = function ( $u ) {
+			return '' === $u || preg_match( '~listing-plate|sketch~i', $u ) || preg_match( '~\.svg(\?|$)~i', $u );
+		};
+		$photos = array_filter( array_map( 'trim', explode( ',', (string) get_post_meta( $id, 'photos_csv', true ) ) ) );
+		foreach ( $photos as $p ) {
+			if ( preg_match( '~^https?://~i', $p ) && ! $is_sketch( $p ) ) { return array( $p, 'photo' ); }
+		}
+		$thumb = has_post_thumbnail( $id ) ? (string) get_the_post_thumbnail_url( $id, 'medium_large' ) : '';
+		if ( $thumb && ! $is_sketch( $thumb ) ) { return array( $thumb, 'photo' ); }
+		$pool = nadlan_hv2_interior_pool();
+		if ( $pool ) { return array( $pool[ absint( $id ) % count( $pool ) ], 'interior' ); }
+		return array( '', 'ph' );
+	}
+}
+
 if ( ! function_exists( 'nadlan_mapbox_token' ) ) {
 	function nadlan_mapbox_token() { return trim( (string) get_option( 'nadlan_mapbox_token', '' ) ); }
 }
@@ -530,25 +575,33 @@ if ( ! function_exists( 'nadlan_hv2_band_listings' ) ) {
 		if ( ! $sale && ! $rent ) { return; }
 		$cities = nadlan_hv2_cities( 8 );
 		$card = function ( $l ) {
-			$img = nadlan_hv2_img( $l->ID );
+			/* PORTAL-GRADE RESKIN (owner 2026-07-29): price big and first
+			   (tabular numbers), ONE quiet city-rooms-sqm-floor line, the
+			   facility chips, and a real visual - never the sketch plate.
+			   Same structure and count as before: a reskin, not a rebuild. */
+			list( $img, $src ) = nadlan_hv2_listing_media( $l->ID );
 			$pr = (int) get_post_meta( $l->ID, 'price', true ); $rm = (float) get_post_meta( $l->ID, 'rooms', true );
 			$sq = (int) get_post_meta( $l->ID, 'size_sqm', true ); $fl = get_post_meta( $l->ID, 'floor', true );
 			$city = (string) get_post_meta( $l->ID, 'city', true );
 			echo '<a class="nlhv2-list" href="' . esc_url( get_permalink( $l ) ) . '">';
-			// framed img + overlay city tag (target.html card treatment)
-			echo '<span class="nlhv2-list-media">' .
-				( $img ? '<img src="' . esc_url( $img ) . '" alt="' . esc_attr( get_the_title( $l ) ) . '" loading="lazy">' : '' ) .
-				( $city ? '<i class="nlhv2-tag">' . esc_html( $city ) . '</i>' : '' ) .
+			echo '<span class="nlhv2-list-media' . ( '' === $img ? ' nlfc-ph' : '' ) . '">' .
+				( $img ? '<img src="' . esc_url( $img ) . '" alt="' . esc_attr( get_the_title( $l ) ) . '" loading="lazy" decoding="async">' : '<i class="nlfc-ph-mark" aria-hidden="true">נדלן</i>' ) .
+				( 'interior' === $src ? '<i class="nlfc-imgtag">הדמיה</i>' : '' ) .
 			'</span>';
-			echo '<b>' . ( $pr ? number_format( $pr ) . ' ₪' : esc_html( get_the_title( $l ) ) ) . '</b>';
+			echo '<b class="nlfc-price">' . ( $pr ? number_format( $pr ) . ' ₪' : esc_html( get_the_title( $l ) ) ) . '</b>';
 			$bits = array_filter( array(
+				$city,
 				$rm ? rtrim( rtrim( number_format( $rm, 1 ), '0' ), '.' ) . ' ' . nadlan_i18n( 'u_rooms' ) : '',
 				$sq ? $sq . ' ' . nadlan_i18n( 'u_sqm' ) : '',
-				$fl !== '' && $fl !== null ? nadlan_i18n( 'u_floor' ) . ' ' . esc_html( (string) $fl ) : '',
+				$fl !== '' && $fl !== null ? nadlan_i18n( 'u_floor' ) . ' ' . (string) $fl : '',
 			) );
-			echo '<span class="nlhv2-chiprow">';
-			foreach ( $bits as $bit ) { echo '<i>' . esc_html( $bit ) . '</i>'; }
-			echo '</span></a>';
+			if ( $bits ) { echo '<span class="nlfc-line">' . esc_html( implode( ' · ', $bits ) ) . '</span>'; }
+			// facility chips carry Hebrew labels - Hebrew homepage only (the nlsdt-band rule)
+			$fc_he = ! function_exists( 'nadlan_current_lang' ) || 'he' === nadlan_current_lang();
+			if ( $fc_he && function_exists( 'nadlan_fc_for_property' ) && ( $fk = nadlan_fc_for_property( $l->ID ) ) ) {
+				echo nadlan_fc_chips_html( $fk, array( 'limit' => 3, 'link' => false, 'class' => 'nlfc-onlist' ) ); // phpcs:ignore WordPress.Security.EscapeOutput
+			}
+			echo '</a>';
 		};
 		?>
 	<section class="nlhv2-band nlhv2-alt">
@@ -1072,6 +1125,13 @@ if ( ! function_exists( 'nadlan_hv2_assets' ) ) {
 .nlhv2-mfoot-col a:hover{color:var(--ink)}
 .nlhv2-legal{font-size:11.5px;color:var(--warm);border-top:1px solid var(--line);padding:14px 0 20px;margin:16px 0 0}
 @media(max-width:560px){.nlhv2-trust{gap:14px}.nlhv2-box button{padding:0 18px}.nlhv2-dark{margin:26px -14px;border-radius:0}}
+/* LISTINGS RESKIN (owner 2026-07-29): price-first portal cards; sketch plates retired */
+.nlhv2-list .nlfc-price{display:block;padding:0 12px;font:700 1.28rem/1.25 Heebo,sans-serif;font-variant-numeric:tabular-nums;color:var(--ink);letter-spacing:-.01em}
+.nlhv2-list .nlfc-line{display:block;padding:3px 12px 0;font-size:12.5px;color:var(--warm);line-height:1.45}
+.nlhv2-list .nlfc-onlist{padding:7px 12px 0}
+.nlhv2-list-media.nlfc-ph{display:grid;place-items:center;background:radial-gradient(120% 90% at 50% 20%,#2A2418 0%,#14130F 70%);border-bottom:2px solid var(--gold,#9C7A3C)}
+.nlfc-ph-mark{font:500 1.5rem/1 "Frank Ruhl Libre",serif;font-style:normal;color:#E6D4AE;opacity:.85;letter-spacing:.04em}
+.nlfc-imgtag{position:absolute;bottom:8px;inset-inline-start:8px;font:600 10.5px/1 Heebo,sans-serif;font-style:normal;color:#F4EEDE;background:rgba(20,19,15,.72);border-radius:6px;padding:4px 8px}
 ' );
 		wp_register_script( 'nadlan-hv2-js', false, array(), '1.69.87', true );
 		wp_enqueue_script( 'nadlan-hv2-js' );

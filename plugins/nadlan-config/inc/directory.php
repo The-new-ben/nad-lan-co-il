@@ -760,6 +760,12 @@ if ( ! function_exists( 'nadlan_dir_project_card' ) ) {
 			<?php foreach ( $stats as $s ) : ?><div><dt><?php echo esc_html( $s[0] ); ?></dt><dd><?php echo esc_html( $s[1] ); ?></dd></div><?php endforeach; ?>
 		</dl>
 		<?php endif; ?>
+		<?php if ( function_exists( 'nadlan_fc_for_project' ) && ( $fac_keys = nadlan_fc_for_project( $id ) ) ) :
+			/* facility chips (owner 2026-07-29): Booking-style at-a-glance. [data-fac]
+			   spans, NOT anchors - the whole card is an <a>; the site-wide nlfc handler
+			   deep-links each chip to /premium/?fac=. No facility data = no row. */ ?>
+		<?php echo nadlan_fc_chips_html( $fac_keys, array( 'limit' => 4, 'link' => false, 'class' => 'nlfc-oncard' ) ); // phpcs:ignore WordPress.Security.EscapeOutput ?>
+		<?php endif; ?>
 		<div class="nldcp-foot">
 			<span class="nldcp-cta">לצפייה בפרויקט</span>
 			<span class="nldcp-reg" title="מאומת מול רשם הקבלנים (gov.il)"><svg class="nl-ico" aria-hidden="true" viewBox="0 0 16 16"><path fill="none" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round" d="M8 1.5l5.5 2v4c0 3.5-2.5 6-5.5 7-3-1-5.5-3.5-5.5-7v-4l5.5-2z"/><path fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" d="M5.5 8l2 2 3-4"/></svg>gov.il</span>
