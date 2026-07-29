@@ -507,6 +507,7 @@ if ( ! function_exists( 'nadlan_hv2_band_projects' ) ) {
 					<span><?php echo esc_html( get_post_meta( $p->ID, 'city', true ) ); ?><?php echo $un ? ' · ' . (int) $un . ' ' . nadlan_i18n( 'pj_units_pick' ) : ''; ?></span>
 					<?php if ( $pp ) : ?><i><?php nadlan_e( 'pj_est_pre' ); ?><?php echo number_format( $pp ); ?> <?php nadlan_e( 'pj_est_suf' ); ?></i><?php endif; ?>
 					<?php if ( $glb ) : ?><button type="button" class="nlhv2-proj-live" data-glb="<?php echo esc_url( $glb ); ?>" data-title="<?php echo esc_attr( get_the_title( $p ) ); ?>"><?php nadlan_e( 'pj_live' ); ?></button><?php endif; ?>
+					<?php if ( function_exists( 'nadlan_sdedov_card_tour_btn' ) ) { echo nadlan_sdedov_card_tour_btn( $p ); } // phpcs:ignore ?>
 				</div>
 			</div>
 			<?php endforeach; ?>

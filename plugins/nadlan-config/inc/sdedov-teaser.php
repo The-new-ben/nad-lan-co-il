@@ -54,7 +54,50 @@ function nadlan_sdedov_tour_css() {
 		. '.nlsdt-cta2{display:inline-block;margin-inline-start:12px;color:#F2C14E;font:700 14px/1 Heebo,sans-serif;text-decoration:none}'
 		. '.nlsdt-note{font:400 11.5px/1.5 Heebo,sans-serif;color:#94A0B4;margin:12px 0 0}'
 		. '@media(max-width:640px){.nlsdt-in{padding:24px 18px;background:linear-gradient(180deg,rgba(10,15,26,.35) 0%,rgba(10,15,26,.9) 60%)}.nlsdt-cta{display:block;text-align:center}.nlsdt-cta2{display:block;margin:10px 0 0;text-align:center}}'
+		. '.nlsdt-ov{position:fixed;inset:0;z-index:100000;background:#0b0f1a;display:none}'
+		. '.nlsdt-ov.on{display:block}'
+		. '.nlsdt-ovfr{position:absolute;inset:0;width:100%;height:100%;border:0;opacity:0;transition:opacity .3s}'
+		. '.nlsdt-ov.ld .nlsdt-ovfr{opacity:1}'
+		. '.nlsdt-ovx{position:absolute;top:14px;inset-inline-start:14px;z-index:2;width:44px;height:44px;border-radius:12px;border:1px solid rgba(255,255,255,.3);background:rgba(10,14,24,.72);color:#fff;font-size:18px;cursor:pointer}'
+		. '.nlsdt-ovx:hover{background:rgba(30,38,58,.85)}'
+		. '.nlsdt-ovsp{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;color:#C9D2E2;font:600 15px/1 Heebo,sans-serif}'
+		. '.nlsdt-ov.ld .nlsdt-ovsp{display:none}'
+		. '.nlsdt-cardtour{display:inline-block;margin-top:7px;color:#F2C14E;font:700 13px/1 Heebo,sans-serif;text-decoration:none}'
+		. '.nlsdt-cardtour:hover{color:#FFD98F}'
 		. '</style>';
+}
+
+/* One overlay engine per page: click a .nlsdt-open control and the tour opens
+ * full-screen IN PLACE (iframe layer) - the visitor never leaves the page.
+ * Zero bytes are loaded until the click; hovering prefetches the tour HTML. */
+function nadlan_sdedov_tour_overlay_js() {
+	static $done = false;
+	if ( $done ) { return ''; }
+	$done = true;
+	return '<script id="nlsdt-ovjs">(function(){if(window.NLSDT)return;var ov,fr,cl;'
+		. 'function build(){ov=document.createElement("div");ov.className="nlsdt-ov";ov.setAttribute("role","dialog");ov.setAttribute("aria-modal","true");ov.setAttribute("aria-label","סיור תלת ממדי");'
+		. 'ov.innerHTML=\'<button class="nlsdt-ovx" aria-label="סגירת הסיור">✕</button><div class="nlsdt-ovsp">טוען את הסיור...</div><iframe class="nlsdt-ovfr" allow="fullscreen; xr-spatial-tracking" title="סיור תלת ממדי ברובע"></iframe>\';'
+		. 'document.body.appendChild(ov);fr=ov.querySelector("iframe");cl=ov.querySelector(".nlsdt-ovx");'
+		. 'cl.addEventListener("click",close);'
+		. 'document.addEventListener("keydown",function(e){if(e.key==="Escape")close();});'
+		. 'fr.addEventListener("load",function(){if(fr.src&&fr.src!=="about:blank")ov.classList.add("ld");});}'
+		. 'function open(u){if(!ov)build();fr.src=u;ov.classList.remove("ld");ov.classList.add("on");document.documentElement.style.overflow="hidden";cl.focus();}'
+		. 'function close(){if(!ov)return;ov.classList.remove("on","ld");fr.src="about:blank";document.documentElement.style.overflow="";}'
+		. 'window.NLSDT={open:open,close:close};'
+		. 'document.addEventListener("click",function(e){var a=e.target.closest(".nlsdt-open");if(!a)return;var u=a.getAttribute("data-url")||a.getAttribute("href");if(!u)return;e.preventDefault();open(u);});'
+		. 'document.addEventListener("pointerover",function(e){var a=e.target.closest(".nlsdt-open");if(!a||a.__pf)return;a.__pf=1;var l=document.createElement("link");l.rel="prefetch";l.href=a.getAttribute("data-url")||a.getAttribute("href");document.head.appendChild(l);});'
+		. '})();</script>';
+}
+
+/* Small quarter-tour link for a flagship card (homepage gallery etc.):
+ * opens the tour focused on that building, inside the overlay. */
+function nadlan_sdedov_card_tour_btn( $post ) {
+	$slug  = get_post_field( 'post_name', $post );
+	if ( ! in_array( $slug, nadlan_sdedov_tour_slugs(), true ) ) { return ''; }
+	$focus = nadlan_sdedov_tour_focus( $slug );
+	$url   = nadlan_sdedov_tour_url() . ( $focus ? '?focus=' . rawurlencode( $focus ) . '&mode=explore' : '' );
+	return nadlan_sdedov_tour_css() . nadlan_sdedov_tour_overlay_js()
+		. '<a class="nlsdt-cardtour nlsdt-open" href="' . esc_url( $url ) . '" data-url="' . esc_url( $url ) . '" target="_blank" rel="noopener">סיור ברובע שדה דב ←</a>';
 }
 
 /**
@@ -66,7 +109,7 @@ function nadlan_sdedov_tour_css() {
 function nadlan_sdedov_tour_band( $variant = 'home', $focus = '' ) {
 	$url  = nadlan_sdedov_tour_url();
 	$link = $focus ? $url . '?focus=' . rawurlencode( $focus ) . '&mode=explore' : $url;
-	$html = nadlan_sdedov_tour_css();
+	$html = nadlan_sdedov_tour_css() . nadlan_sdedov_tour_overlay_js();
 	$html .= '<section class="nlsdt" aria-label="סיור תלת ממדי ברובע שדה דב">'
 		. '<img class="nlsdt-img" src="' . esc_url( nadlan_sdedov_tour_poster() ) . '" alt="" loading="lazy" decoding="async">'
 		. '<div class="nlsdt-in">'
@@ -77,8 +120,8 @@ function nadlan_sdedov_tour_band( $variant = 'home', $focus = '' ) {
 			: 'מסתובבים ברחובות הרובע של 2035, עוברים בין המגדלים, יורדים לטיילת, ובוחרים דירה מתוך הבניין. הדמיה חיה בדפדפן, בלי להוריד כלום.' )
 		. '</p>'
 		. '<ul class="nlsdt-chips"><li>מכונת זמן 2026 ⇄ 2035</li><li>סיור חופשי עם חצים</li><li>כל בניין לחיץ</li></ul>'
-		. '<a class="nlsdt-cta" href="' . esc_url( $link ) . '" target="_blank" rel="noopener">כניסה לסיור</a>'
-		. ( ( 'project' === $variant && $focus ) ? '<a class="nlsdt-cta2" href="' . esc_url( $url ) . '" target="_blank" rel="noopener">או מתחילים מתצפית על כל הרובע ←</a>' : '' )
+		. '<a class="nlsdt-cta nlsdt-open" href="' . esc_url( $link ) . '" data-url="' . esc_url( $link ) . '" target="_blank" rel="noopener">כניסה לסיור</a>'
+		. ( ( 'project' === $variant && $focus ) ? '<a class="nlsdt-cta2 nlsdt-open" href="' . esc_url( $url ) . '" data-url="' . esc_url( $url ) . '" target="_blank" rel="noopener">או מתחילים מתצפית על כל הרובע ←</a>' : '' )
 		. '<p class="nlsdt-note">הדמיה להמחשה על פי תכנית רובע שדה דב. אינה מטעם היזמים או גורם רשמי.</p>'
 		. '</div></section>';
 	return $html;
