@@ -10,8 +10,36 @@
 <!-- ============================================================================
   V3 (2026-07-28) — DAYLIGHT + STREET LIFE + EINSTEIN EXTENSION + CLICK-EVERYTHING
                     + TIME MACHINE 2026/2035 + SMART LOADING (never blocks boot)
+  V4 (2026-07-29) — OWNER POLISH PASS:
+    · NEVER-STUCK law: every card closes 4 ways (X >=48px hit, tap/click
+      outside, ESC, swipe-down on the mobile sheet) in EVERY mode, and closing
+      always returns full movement control. Film caption cards got an X too
+      (dismissed until the scroll leaves their range).
+    · GROUND DOUBLE-TAP TRAVEL: double-click (desktop) / double-tap (mobile)
+      on bare ground glides you toward that spot — raycast to the y=0 plane,
+      clamped to the walkable bounds, routed via the nearest walk node so the
+      camera never clips through buildings. In film mode a double-click on the
+      ground drops you straight into the walk at that spot.
+      CONVENTION NOTE (web research 2026-07): Google Maps/Earth reserve mobile
+      double-tap for zoom and long-press for "drop pin" info. This tour has NO
+      double-tap zoom (pinch drives FOV directly, canvas is touch-action:none),
+      so double-tap is free to take the Google-Earth-style "fly there" role;
+      long-press stays untouched. A second pointer (pinch) always cancels tap
+      detection; thresholds follow platform slop conventions — <=340ms between
+      taps, <7px drag slop per tap, <40px between the two taps. Sources:
+        - developers.google.com/maps/documentation/android-sdk/controls
+        - developer.mozilla.org/en-US/docs/Web/CSS/touch-action
+        - developer.chrome.com/blog/300ms-tap-delay-gone-away
+    · i18n עב/EN: lightweight UI dictionary (he default), pill in the HUD,
+      ?lang=en deep link, choice remembered in sessionStorage('ndLang').
+      Project TITLES stay as authored; UI strings, card labels and status
+      lines translate.
+    · AFFORDANCE: soft pulsing ring on the nearest clickable building (retires
+      after the first opened card, once per session) · one-time shimmer on the
+      sun + time-machine toggles · a first-entry hint chip per zone.
 
   DEEP-LINK PARAMS (for embedding under project pages):
+    ?lang=he|en             UI language (default he; remembered per session)
     ?mode=film|explore      start in the cinematic flight (default) or free-walk
     ?focus=dimri|rainbow|ashira        jump straight into explore at a flagship
     ?focus=einstein                    jump to the Einstein-street gate (east zone)
@@ -226,11 +254,13 @@
     transition:transform .25s, box-shadow .25s;box-shadow:0 8px 26px rgba(216,180,106,.25)}
   .btn:hover{transform:translateY(-2px);box-shadow:0 12px 32px rgba(216,180,106,.4)}
   .pcard .fine{margin-top:10px;font-size:12px;color:var(--dim);font-weight:300;text-align:center}
-  .pcx{display:none;position:absolute;top:12px;left:12px;width:34px;height:34px;border-radius:50%;cursor:pointer;
-    border:1px solid var(--line);background:rgba(255,255,255,.06);color:var(--dim);font-family:inherit;font-size:15px;line-height:1}
-  .pcx::after{content:'';position:absolute;inset:-7px;border-radius:50%} /* 48px tap target */
+  /* V4 NEVER-STUCK: the X lives on EVERY card in EVERY mode — 40px visible, 52px hit */
+  .pcx{display:block;position:absolute;top:10px;left:10px;width:40px;height:40px;border-radius:50%;cursor:pointer;
+    border:1px solid var(--line);background:rgba(255,255,255,.07);color:var(--dim);font-family:inherit;font-size:17px;line-height:1;
+    -webkit-tap-highlight-color:transparent}
+  .pcx::after{content:'';position:absolute;inset:-6px;border-radius:50%} /* 52px tap target */
   .pcx:hover{color:#fff;border-color:rgba(255,255,255,.4)}
-  body.explore .pcx{display:block}
+  .pcard.sheetDrag{transition:none} /* live-follow while the sheet is being dragged down */
   #card-plan .en{margin-bottom:10px}
 
   /* mobile: bottom sheet (capped height so the canvas center stays visible) */
@@ -444,7 +474,6 @@
   body.day #fatal p{color:#28405e}
 
   /* ---------- V3: dynamic building card ---------- */
-  #card-dyn .pcx{display:block}
   #card-dyn .desc{font-size:13px;font-weight:300;color:var(--dim);line-height:1.55;margin:-6px 0 14px}
   .btnwa{display:flex;align-items:center;justify-content:center;gap:9px;width:100%;padding:13px 18px;border-radius:13px;
     background:rgba(37,211,102,.15);border:1px solid rgba(37,211,102,.5);color:#c9f7db;font-weight:700;font-size:14.5px;text-decoration:none;
@@ -483,6 +512,41 @@
   .onbCard .sub2{margin-top:13px;font-size:12px;color:var(--dim);font-weight:300}
   body.onb #hint{visibility:hidden}
 
+  /* ---------- V4: language pill (עב/EN) — shares a HUD row with the sound button ---------- */
+  .hudrow{display:flex;align-items:center;gap:8px}
+  #langSw{pointer-events:auto;display:flex;border:1px solid var(--line);border-radius:99px;overflow:hidden;
+    background:rgba(20,14,34,.5);backdrop-filter:blur(8px)}
+  #langSw button{cursor:pointer;border:none;background:none;color:var(--dim);font-family:inherit;
+    font-size:11.5px;font-weight:600;padding:5px 12px;transition:background .3s,color .3s;-webkit-tap-highlight-color:transparent}
+  #langSw button.on{background:rgba(216,180,106,.24);color:var(--gold-hi)}
+  #langSw button:not(.on):hover{color:#fff}
+  @media (max-width:640px){ #langSw button{min-height:44px;min-width:44px;padding:8px 13px;font-size:13px} }
+
+  /* ---------- V4: zone-entry hint chip (once per zone per session) ---------- */
+  #zoneHint{position:fixed;left:50%;transform:translateX(-50%) translateY(8px);
+    bottom:calc(30px + 2*var(--pb) + 72px + env(safe-area-inset-bottom));z-index:8;
+    font-size:13px;font-weight:600;color:var(--gold-hi);background:rgba(16,12,30,.78);
+    border:1px solid rgba(216,180,106,.45);border-radius:99px;padding:9px 18px;backdrop-filter:blur(10px);
+    white-space:nowrap;pointer-events:none;opacity:0;transition:opacity .5s, transform .5s}
+  #zoneHint.show{opacity:1;transform:translateX(-50%) translateY(0)}
+
+  /* ---------- V4: one-time discoverability shimmer on the sun/time toggles ---------- */
+  .glint{position:relative;overflow:hidden}
+  .glint::after{content:'';position:absolute;top:-40%;bottom:-40%;width:34%;left:-45%;pointer-events:none;
+    background:linear-gradient(105deg,transparent,rgba(242,217,164,.4),transparent);
+    animation:glintSweep 2.6s ease-in-out 3}
+  @keyframes glintSweep{0%{left:-45%}55%{left:115%}100%{left:115%}}
+  body.rm .glint::after{animation:none}
+  @media (prefers-reduced-motion: reduce){ .glint::after{animation:none} }
+
+  /* ---------- V4: English UI — keep the RTL layout, flip the reading blocks ---------- */
+  body.en .pcard,body.en .onbCard,body.en #exHelp,body.en .fin,body.en #rmnav,
+  body.en #zoneHint,body.en #nodeChip,body.en #demoChip,body.en #twLabel,body.en #loadChip{direction:ltr}
+  body.en .pcard{text-align:left}
+  body.en .pcx{left:auto;right:10px}
+  body.en .onbCard,body.en .fin{text-align:center}
+  body.en .brand{text-align:left}
+
   /* ---------- loader ---------- */
   #veil{position:fixed;inset:0;z-index:20;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;
     background:radial-gradient(130% 100% at 50% 110%, #3b2a54 0%, #1c1633 52%, #0f0c1f 100%);
@@ -506,9 +570,12 @@
 </style>
 </head>
 <body>
-<script>/* sun state before first paint (V3): default DAY, ?sun=dusk keeps the twilight look */
-(function(){var s=new URLSearchParams(location.search).get('sun');
-document.body.classList.add(s==='dusk'?'dusk':'day');})();</script>
+<script>/* sun state before first paint (V3): default DAY, ?sun=dusk keeps the twilight look.
+   V4: language before first paint too — ?lang=en|he wins, else the session's choice. */
+(function(){var q=new URLSearchParams(location.search);
+document.body.classList.add(q.get('sun')==='dusk'?'dusk':'day');
+var l=q.get('lang');try{l=l||sessionStorage.getItem('ndLang')}catch(e){}
+if(l==='en'){document.body.classList.add('en');document.documentElement.lang='en';}})();</script>
 
 <div id="scrollway"></div>
 <canvas id="stage"></canvas>
@@ -526,13 +593,19 @@ document.body.classList.add(s==='dusk'?'dusk':'day');})();</script>
       <button id="sunDay" class="on" aria-pressed="true">יום</button>
       <button id="sunDusk" aria-pressed="false">שקיעה</button>
     </div>
-    <button id="sndBtn" class="muted" aria-label="הפעלת צלילי רקע" aria-pressed="false">
-      <svg viewBox="0 0 24 24" aria-hidden="true">
-        <path class="sp" d="M4 9.5v5h3.6L13 19V5L7.6 9.5H4z"/>
-        <path class="on" d="M16 9.2a4.2 4.2 0 010 5.6M18.6 6.8a8 8 0 010 10.4"/>
-        <path class="off" d="M16.5 9.5l5 5M21.5 9.5l-5 5"/>
-      </svg>
-    </button>
+    <div class="hudrow">
+      <button id="sndBtn" class="muted" aria-label="הפעלת צלילי רקע" aria-pressed="false">
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path class="sp" d="M4 9.5v5h3.6L13 19V5L7.6 9.5H4z"/>
+          <path class="on" d="M16 9.2a4.2 4.2 0 010 5.6M18.6 6.8a8 8 0 010 10.4"/>
+          <path class="off" d="M16.5 9.5l5 5M21.5 9.5l-5 5"/>
+        </svg>
+      </button>
+      <div id="langSw" role="group" aria-label="שפת הממשק">
+        <button id="langHe" aria-pressed="true">עב</button>
+        <button id="langEn" aria-pressed="false">EN</button>
+      </div>
+    </div>
     <div id="yearSw" role="group" aria-label="מכונת הזמן של הרובע">
       <div class="thumb"></div>
       <button id="year2026" aria-pressed="false">היום<small>2026</small></button>
@@ -660,7 +733,7 @@ document.body.classList.add(s==='dusk'?'dusk':'day');})();</script>
     </div>
     <a class="wa" href="https://wa.me/972525101555" target="_blank" rel="noopener">
       <svg viewBox="0 0 32 32"><path d="M16 3C9.4 3 4 8.4 4 15c0 2.1.6 4.2 1.6 6L4 29l8.2-1.6c1.2.6 2.5.9 3.8.9 6.6 0 12-5.4 12-12S22.6 3 16 3zm6.6 16.9c-.3.8-1.6 1.5-2.2 1.6-.6.1-1.3.2-3.7-.8-3.1-1.3-5.1-4.4-5.3-4.6-.2-.2-1.3-1.7-1.3-3.2s.8-2.3 1.1-2.6c.3-.3.6-.4.8-.4h.6c.2 0 .5-.1.7.5l.9 2.3c.1.2.1.4 0 .6l-.4.7-.6.6c-.2.2-.4.4-.2.7.2.4.9 1.6 2 2.5 1.4 1.2 2.5 1.6 2.9 1.8.4.2.6.1.8-.1l1.2-1.4c.2-.3.5-.2.8-.1l2.4 1.1c.4.2.6.3.7.4.1.3.1.9-.2 1.4z"/></svg>
-      וואטסאפ ישיר — 052-510-1555</a>
+      <span id="waTxtFin">וואטסאפ ישיר — 052-510-1555</span></a>
     <button id="finTour">רוצים להסתובב ברובע? התחילו סיור חופשי ←</button>
     <div class="fine">הדמיה להמחשה בלבד · הנתונים המלאים והמחייבים מופיעים בעמודי הפרויקטים</div>
   </div>
@@ -700,6 +773,7 @@ document.body.classList.add(s==='dusk'?'dusk':'day');})();</script>
 </div>
 
 <div id="twLabel"><b id="twName"></b><span id="twCta"></span></div>
+<div id="zoneHint" aria-hidden="true"></div>
 
 <div id="onb" hidden>
   <div class="onbCard" role="dialog" aria-label="איך מסיירים ברובע">
@@ -766,6 +840,222 @@ const MOBILE = matchMedia('(pointer: coarse)').matches || innerWidth < 900;
 
 const $ = s => document.querySelector(s);
 const veilBar = $('#veilBar'), veilCap = $('#veilCap');
+
+/* ============================================================================
+   V4 — lightweight UI i18n (he default · ?lang=en · עב/EN pill · session-kept).
+   Project titles stay as authored; UI strings + card labels + status lines
+   translate. The dict is flat: t('key') falls back to Hebrew when a key is
+   missing, so a gap can never blank the UI.
+   ============================================================================ */
+let LANG = document.body.classList.contains('en') ? 'en' : 'he';
+try { const ql = Q.get('lang'); if (ql === 'en' || ql === 'he') sessionStorage.setItem('ndLang', ql); } catch (e) { /* private mode */ }
+const I18N = {
+  he: {
+    docTitle: 'רובע שדה דב — הסיור | nad-lan.co.il',
+    brandH1: 'רובע שדה דב — הסיור', brandSub: 'טיסת דמדומים וסיור חופשי ברובע החדש של תל אביב',
+    badge: 'על פי התכנית · הדמיה להמחשה',
+    sunAria: 'מצב תאורה', sunDay: 'יום', sunDusk: 'שקיעה',
+    sndOn: 'הפעלת צלילי רקע', sndOff: 'כיבוי צלילי רקע',
+    yearAria: 'מכונת הזמן של הרובע', y26: 'היום', y35: 'הרובע',
+    langAria: 'שפת הממשק',
+    modeAria: 'החלפת מצב סיור', modeFilm: '◈ סיור חופשי ברובע', modeEx: '✕ חזרה לטיסה',
+    loadTowers: 'המגדלים נטענים ברקע…',
+    railAria: 'פרקי הטיסה — הקישו לקפיצה', stopAria: 'לפרק: ',
+    chapPrev: 'לפרק הקודם', chapNext: 'לפרק הבא',
+    startTour: 'התחילו סיור חופשי ברובע ←', hintScroll: 'או גללו מטה — טיסת ההיכרות תתחיל',
+    btnProject: 'לעמוד הפרויקט ולבחירת דירה ←', pickHere: 'בחרו דירה בבניין הזה ←',
+    fineIllu: 'הדמיה להמחשה בלבד',
+    fineDyn: 'הדמיה להמחשה בלבד · מסה סכמטית על פי פרסומים',
+    finePlan: 'מסה סכמטית להתרשמות בלבד · אינה מסמך תכנוני',
+    tagDimri: 'קו ראשון לים', tagRainbow: 'מגדל הדגל של הרובע', tagAshira: 'קומפוזיציה של 4 בניינים',
+    liDimri1: '<b>39</b> קומות מעל פודיום', liDimri2: '<b>458</b> דירות', liStSale: 'סטטוס: <b>בשיווק</b>',
+    liRain1: '<b>כ־38</b> קומות', liRain2: '<b>480</b> דירות',
+    liAsh1: '<b>35 / 16 / 8 / 8</b> קומות', liAsh2: '<b>406</b> דירות',
+    dynTag: 'רובע שדה דב', dynTitle: 'בניין ברובע', waSoon: 'בקרוב אצלנו — דברו איתנו',
+    planH3: 'רובע שדה דב',
+    liPlan1: '<b>16,000</b> דירות בשלושה מתחמים', liPlan2: '<b>כ־35</b> מגדלים בגובה עד <b>40</b> קומות',
+    liPlan3: 'פארק חוף של כ־<b>250</b> דונם לאורך כ־2 ק״מ', liPlan4: 'אבן גבירול המוארך + הקו הירוק חוצים את הרובע',
+    liPlan5: 'המסלול ההיסטורי נשמר כפארק המסלול',
+    finKick: 'הרובע החדש של תל אביב מחכה לכם', finH2: 'בחרו דירה מתוך הבניין',
+    finP: 'שלושה פרויקטים, חופש בחירה מלא — בניין, קומה, כיוון ונוף.',
+    finSpan1: 'קו ראשון לים · 39 קומות · 458 דירות', finSpan2: 'מגדל הדגל · כ־38 קומות · 480 דירות',
+    finSpan3: '4 בניינים · 35/16/8/8 קומות · 406 דירות', finEm: 'לבחירת דירה ←',
+    finWa: 'וואטסאפ ישיר — 052-510-1555', finTour: 'רוצים להסתובב ברובע? התחילו סיור חופשי ←',
+    finFine: 'הדמיה להמחשה בלבד · הנתונים המלאים והמחייבים מופיעים בעמודי הפרויקטים',
+    rmPrev: '→ הקודם', rmNext: 'הבא ←', rmFull: '▶ לחוויה המלאה',
+    padL: 'פנייה שמאלה', padF: 'התקדמות קדימה', padR: 'פנייה ימינה', padB: 'חזרה אחורה',
+    viewUp: 'תצפית על ↗', viewDown: 'ירידה מהתצפית ↓', viewUpAria: 'תצפית על', viewDownAria: 'ירידה מהתצפית',
+    how: 'איך זזים?', howAria: 'איך זזים? הצגת ההסבר',
+    mmAria: 'מפת הרובע — הקישו למעבר לנקודה', mmSky: 'מבט־על ↗', mmEast: 'לאיינשטיין ←', mmEnd: 'לבחירת דירה',
+    waFab: 'וואטסאפ ישיר',
+    helpMob: 'גררו כדי להביט סביב · חיצים למטה = תנועה · הקישו על בניין לפרטים · הקשה כפולה על הקרקע או על בניין מקרבת לשם',
+    helpDesk: 'גררו כדי להביט סביב · WASD או חיצים לתנועה · קליק על בניין לפרטים · דאבל־קליק על הקרקע או על בניין מקרב לשם',
+    ctaGo: 'לחצו כדי לגשת ←', ctaWalkHere: 'לחצו לסיור חופשי כאן ←', ctaDetails: 'לחצו לפרטים ←',
+    onbAria: 'איך מסיירים ברובע', onbH2: 'ברוכים הבאים לרובע שדה דב',
+    onbLine: 'גללו לטיסה מעל הרובע · או לחצו ״סיור חופשי״ והסתובבו עם החצים',
+    onbLineRm: 'עברו בין התחנות עם הכפתורים · או צאו לסיור חופשי והסתובבו עם החצים',
+    onbFly: 'טיסה', onbWalk: 'סיור חופשי', onbDemo: '▶ צפייה אוטומטית · 20 שניות ללא ידיים',
+    onbSub2: 'אפשר להחליף מצב בכל שלב · גלילה או הקשה סוגרות את החלון',
+    demoChip: '▶ הדגמה אוטומטית · כל נגיעה עוצרת ומחזירה שליטה',
+    veilCapLoad: 'טוענים את הדמיית הרובע…', veilPrep: 'מכינים את הרובע…',
+    fatalP: 'לא הצלחנו להפעיל את ההדמיה התלת־ממדית בדפדפן הזה, אבל הפרויקטים מחכים לכם:',
+    closeCard: 'סגירת הכרטיס', zoneHint: 'לחצו על בניין למידע',
+    waPrefill: 'היי, ראיתי את "{t}" בסיור שדה דב ואשמח לפרטים',
+  },
+  en: {
+    docTitle: 'Sde Dov Quarter — The 3D Tour | nad-lan.co.il',
+    brandH1: 'SDE DOV QUARTER — THE TOUR', brandSub: 'A cinematic flight & free walk through Tel Aviv’s newest quarter',
+    badge: 'Per the master plan · illustrative only',
+    sunAria: 'Lighting', sunDay: 'Day', sunDusk: 'Dusk',
+    sndOn: 'Turn ambient sound on', sndOff: 'Turn ambient sound off',
+    yearAria: 'The quarter’s time machine', y26: 'Today', y35: 'The Quarter',
+    langAria: 'Interface language',
+    modeAria: 'Switch tour mode', modeFilm: '◈ Free walk in the quarter', modeEx: '✕ Back to the flight',
+    loadTowers: 'Towers loading in the background…',
+    railAria: 'Flight chapters — tap to jump', stopAria: 'To chapter: ',
+    chapPrev: 'Previous chapter', chapNext: 'Next chapter',
+    startTour: 'Start the free walk →', hintScroll: 'or scroll down — the intro flight begins',
+    btnProject: 'Project page & pick a home →', pickHere: 'Pick a home in this building →',
+    fineIllu: 'Illustrative visualization only',
+    fineDyn: 'Illustrative only · schematic massing per public sources',
+    finePlan: 'Schematic massing for impression only · not a planning document',
+    tagDimri: 'Seafront first line', tagRainbow: 'The quarter’s flagship tower', tagAshira: 'A four-building composition',
+    liDimri1: '<b>39</b> floors above a podium', liDimri2: '<b>458</b> homes', liStSale: 'Status: <b>in sales</b>',
+    liRain1: '<b>~38</b> floors', liRain2: '<b>480</b> homes',
+    liAsh1: '<b>35 / 16 / 8 / 8</b> floors', liAsh2: '<b>406</b> homes',
+    dynTag: 'Sde Dov Quarter', dynTitle: 'A building in the quarter', waSoon: 'Coming soon — talk to us',
+    planH3: 'Sde Dov Quarter',
+    liPlan1: '<b>16,000</b> homes in three compounds', liPlan2: '<b>~35</b> towers of up to <b>40</b> floors',
+    liPlan3: 'A ~<b>250</b>-dunam coastal park along ~2 km', liPlan4: 'The Ibn Gvirol extension + Green Line LRT cross the quarter',
+    liPlan5: 'The historic runway is kept as Runway Park',
+    finKick: 'Tel Aviv’s new quarter is waiting for you', finH2: 'Pick your home from the building itself',
+    finP: 'Three projects, full freedom — building, floor, direction and view.',
+    finSpan1: 'Seafront line · 39 floors · 458 homes', finSpan2: 'Flagship tower · ~38 floors · 480 homes',
+    finSpan3: '4 buildings · 35/16/8/8 floors · 406 homes', finEm: 'Pick a home →',
+    finWa: 'WhatsApp direct — 052-510-1555', finTour: 'Want to wander the quarter? Start the free walk →',
+    finFine: 'Illustrative only · the full binding details live on the project pages',
+    rmPrev: '← Previous', rmNext: 'Next →', rmFull: '▶ Full experience',
+    padL: 'Turn left', padF: 'Move forward', padR: 'Turn right', padB: 'Move back',
+    viewUp: 'Overview ↗', viewDown: 'Back down ↓', viewUpAria: 'Overview', viewDownAria: 'Descend from overview',
+    how: 'How to move?', howAria: 'How to move? Show the help',
+    mmAria: 'Quarter map — tap to travel there', mmSky: 'Overview ↗', mmEast: 'To Einstein →', mmEnd: 'Pick a home',
+    waFab: 'WhatsApp direct',
+    helpMob: 'Drag to look around · arrows below to move · tap a building for details · double-tap the ground or a building to go there',
+    helpDesk: 'Drag to look around · WASD or arrow keys to move · click a building for details · double-click the ground or a building to travel there',
+    ctaGo: 'Click to approach →', ctaWalkHere: 'Click for a free walk here →', ctaDetails: 'Click for details →',
+    onbAria: 'How to tour the quarter', onbH2: 'Welcome to the Sde Dov Quarter',
+    onbLine: 'Scroll for the flight over the quarter · or hit “Free walk” and wander with the arrows',
+    onbLineRm: 'Step between chapters with the buttons · or take the free walk and move with the arrows',
+    onbFly: 'Flight', onbWalk: 'Free walk', onbDemo: '▶ Auto-play · 20 hands-free seconds',
+    onbSub2: 'Switch modes anytime · scrolling or tapping closes this window',
+    demoChip: '▶ Auto demo · any touch stops it and hands control back',
+    veilCapLoad: 'Loading the quarter…', veilPrep: 'Preparing the quarter…',
+    fatalP: 'We couldn’t start the 3D tour in this browser — but the projects are one tap away:',
+    closeCard: 'Close card', zoneHint: 'Tap a building for info',
+    waPrefill: 'Hi, I saw "{t}" on the Sde Dov 3D tour and would like details',
+  },
+};
+const t = k => (LANG === 'en' && I18N.en[k] != null) ? I18N.en[k] : I18N.he[k];
+/* labels + exact-match status/value phrases for the data-driven cards */
+const LBL_EN = { 'קומות': 'Floors', 'דירות': 'Homes', 'סטטוס': 'Status', 'מיקום': 'Location', 'ייעוד': 'Use',
+  'מתחם': 'Compound', 'קומות (בקירוב)': 'Floors (approx.)' };
+const VAL_EN = { 'בשיווק': 'In sales', 'בתכנון': 'In planning', 'בתכנון ובנייה': 'Planning & construction',
+  'הושלם': 'Completed', 'קיים היום': 'Standing today', 'על פי התכנית': 'Per the master plan',
+  'ציבורי': 'Civic', 'מסחר ופנאי': 'Retail & leisure', 'מסחר עירוני': 'Urban retail',
+  'לקראת פינוי בינוי': 'Heading into urban renewal', 'משוער על פי פרסומים': 'Approximate, per public sources',
+  'בשיווק — אכלוס משוער 2030': 'In sales — est. occupancy 2030',
+  'בבנייה ובמכירות — אכלוס 12/2028': 'Under construction & selling — occupancy 12/2028',
+  'בבנייה ובשיווק — היתר 10/2024': 'Under construction & in sales — permit 10/2024',
+  'הריסה ובנייה — לקראת ביצוע': 'Demolish & rebuild — nearing execution',
+  'היתר בתנאים': 'Permit in conditions stage', 'פינוי בינוי — בתכנון': 'Urban renewal — in planning',
+  'בתכנון והתארגנות': 'In planning & organization', 'בבנייה — בשיווק': 'Under construction — in sales',
+  'בשיווק — תוכנית עיצוב אושרה': 'In sales — design plan approved',
+  'בבנייה — היתר 12/2025, אכלוס צפוי 2028': 'Under construction — permit 12/2025, occupancy est. 2028',
+  'בתכנון — זכייה במכרז רמ״י 03/2025': 'In planning — ILA tender won 03/2025',
+  'שכונת ל׳ — העיר הקיימת': 'Lamed — the existing city', 'רמת אביב — העיר הקיימת': 'Ramat Aviv — the existing city',
+  'מלונאות על פארק החוף': 'Waterfront-park hotels', 'דרום הרובע — לכיוון רידינג': 'South edge — toward Reading',
+  'מתחם אשכול (תמל/3001)': 'Eshkol Compound (TML/3001)', 'מרכז הרובע (תא/מק/4444/1)': 'Central Compound (4444/1)',
+  'צפון הרובע (תא/מק/4444/2)': 'North Compound (4444/2)' };
+const TAG_EN = { 'רובע שדה דב': 'Sde Dov Quarter', 'רובע שדה דב · בקטלוג שלנו': 'Sde Dov · in our catalog',
+  'מזרחה לאיינשטיין · בקטלוג שלנו': 'East to Einstein · in our catalog',
+  'מזרחה לאיינשטיין · בקרוב אצלנו': 'East to Einstein · coming soon',
+  'העיר הקיימת': 'The existing city', 'העיר הקיימת · 2026': 'The existing city · 2026',
+  'על פי התכנית · תא/4444': 'Per plan TA/4444', 'על פי התכנית · הדמיה להמחשה': 'Per the master plan · illustrative',
+  'קומת המסחר של הרובע': 'The quarter’s retail level', 'רחוב איינשטיין': 'Einstein Street' };
+const TITLE_EN = { 'מגדל מתוכנן': 'Planned tower', 'בניין מתוכנן': 'Planned building',
+  'מגדל בעיר הקיימת': 'Tower in the existing city', 'בניין בעיר הקיימת': 'Building in the existing city',
+  'מבנה ציבור מתוכנן': 'Planned civic building', 'חזית מסחרית בטיילת': 'Promenade retail frontage',
+  'שיכון ותיק — נווה אביבים': 'Old shikun — Neve Avivim', 'בניין ותיק לקראת התחדשות': 'Old building heading into renewal',
+  'מסחר על איינשטיין': 'Retail on Einstein' };
+const FINE_EN = { 'הדמיה להמחשה בלבד · מסה סכמטית על פי פרסומים': 'Illustrative only · schematic massing per public sources',
+  'מיקום משוער על פי פרסומים · הדמיה להמחשה בלבד': 'Approximate location per public sources · illustrative only' };
+const enVal = v => { v = String(v); return VAL_EN[v] || v.replace(/^כ־/, '~'); };
+const enMap = (m, v) => (LANG === 'en' ? (m[v] || v) : v);
+/* selector-driven DOM translation: [selector, key] · attr rows carry the attribute */
+const I18N_TXT = [
+  ['.brand h1', 'brandH1'], ['.brand .sub', 'brandSub'], ['.badge', 'badge'],
+  ['#sunDay', 'sunDay'], ['#sunDusk', 'sunDusk'],
+  ['#modePill .mFilm', 'modeFilm'], ['#modePill .mEx', 'modeEx'],
+  ['#startTour', 'startTour'], ['#hint .txt', 'hintScroll'],
+  ['#card-dimri .tag', 'tagDimri'], ['#card-rainbow .tag', 'tagRainbow'], ['#card-ashira .tag', 'tagAshira'],
+  ['#card-dimri .btn', 'btnProject'], ['#card-rainbow .btn', 'btnProject'], ['#card-ashira .btn', 'btnProject'],
+  ['#card-dimri .fine', 'fineIllu'], ['#card-rainbow .fine', 'fineIllu'], ['#card-ashira .fine', 'fineIllu'],
+  ['#dynTag', 'dynTag'], ['#dynTitle', 'dynTitle'], ['#dynBtn', 'btnProject'], ['#dynWaTxt', 'waSoon'], ['#dynFine', 'fineDyn'],
+  ['#card-plan .tag', 'badge'], ['#card-plan h3', 'planH3'], ['#card-plan .fine', 'finePlan'],
+  ['#finale .kick', 'finKick'], ['#finale h2', 'finH2'], ['#finale .fin > p', 'finP'],
+  ['#finale .fin-card:nth-of-type(1) span', 'finSpan1'], ['#finale .fin-card:nth-of-type(2) span', 'finSpan2'],
+  ['#finale .fin-card:nth-of-type(3) span', 'finSpan3'],
+  ['#waTxtFin', 'finWa'], ['#finTour', 'finTour'], ['#finale .fine', 'finFine'],
+  ['#rmPrev', 'rmPrev'], ['#rmNext', 'rmNext'], ['#rmFull', 'rmFull'],
+  ['#exView .t', 'viewUp'], ['#exHow .t', 'how'],
+  ['#mmSky', 'mmSky'], ['#mmEast', 'mmEast'], ['#mmEnd', 'mmEnd'],
+  ['#onb h2', 'onbH2'], ['#onbLine', 'onbLine'], ['#onbFly', 'onbFly'], ['#onbWalk', 'onbWalk'], ['#onbDemo', 'onbDemo'], ['#onb .sub2', 'onbSub2'],
+  ['#demoChip', 'demoChip'], ['#veil .cap', 'veilCapLoad'], ['#fatal p', 'fatalP'],
+];
+const I18N_HTML = [
+  ['#card-dimri li:nth-child(1)', 'liDimri1'], ['#card-dimri li:nth-child(2)', 'liDimri2'], ['#card-dimri li:nth-child(3)', 'liStSale'],
+  ['#card-rainbow li:nth-child(1)', 'liRain1'], ['#card-rainbow li:nth-child(2)', 'liRain2'], ['#card-rainbow li:nth-child(3)', 'liStSale'],
+  ['#card-ashira li:nth-child(1)', 'liAsh1'], ['#card-ashira li:nth-child(2)', 'liAsh2'], ['#card-ashira li:nth-child(3)', 'liStSale'],
+  ['#card-plan li:nth-child(1)', 'liPlan1'], ['#card-plan li:nth-child(2)', 'liPlan2'], ['#card-plan li:nth-child(3)', 'liPlan3'],
+  ['#card-plan li:nth-child(4)', 'liPlan4'], ['#card-plan li:nth-child(5)', 'liPlan5'],
+  ['#finale .fin-card:nth-of-type(1) em', 'finEm'], ['#finale .fin-card:nth-of-type(2) em', 'finEm'],
+  ['#finale .fin-card:nth-of-type(3) em', 'finEm'],
+];
+const I18N_ATTR = [
+  ['#sunSw', 'aria-label', 'sunAria'], ['#yearSw', 'aria-label', 'yearAria'], ['#langSw', 'aria-label', 'langAria'],
+  ['#modePill', 'aria-label', 'modeAria'], ['#rail', 'aria-label', 'railAria'],
+  ['#chapPrev', 'aria-label', 'chapPrev'], ['#chapNext', 'aria-label', 'chapNext'],
+  ['#padL', 'aria-label', 'padL'], ['#padF', 'aria-label', 'padF'], ['#padR', 'aria-label', 'padR'], ['#padB', 'aria-label', 'padB'],
+  ['#exHow', 'aria-label', 'howAria'], ['#mm', 'aria-label', 'mmAria'], ['#waFab', 'aria-label', 'waFab'],
+  ['#onb .onbCard', 'aria-label', 'onbAria'],
+];
+/* the six rail labels + stop arias share the stations list — filled in by boot */
+const RAIL_SHORT = { he: ['ים', 'דימרי', 'המסלול', 'ריינבו', 'אשירה', 'סיום'],
+                     en: ['Sea', 'Dimri', 'Runway', 'Rainbow', 'Ashira', 'Finale'] };
+function applyLangDom() {
+  document.documentElement.lang = LANG === 'en' ? 'en' : 'he';
+  document.body.classList.toggle('en', LANG === 'en');
+  document.title = t('docTitle');
+  for (const [sel, k] of I18N_TXT) for (const el of document.querySelectorAll(sel)) el.textContent = t(k);
+  for (const [sel, k] of I18N_HTML) for (const el of document.querySelectorAll(sel)) el.innerHTML = t(k);
+  for (const [sel, at, k] of I18N_ATTR) for (const el of document.querySelectorAll(sel)) el.setAttribute(at, t(k));
+  for (const el of document.querySelectorAll('.pcx')) el.setAttribute('aria-label', t('closeCard'));
+  const shorts = RAIL_SHORT[LANG] || RAIL_SHORT.he;
+  [...document.querySelectorAll('#rail .labels span')].forEach((el, i) => { if (shorts[i]) el.textContent = shorts[i]; });
+  $('#langHe').classList.toggle('on', LANG === 'he'); $('#langHe').setAttribute('aria-pressed', String(LANG === 'he'));
+  $('#langEn').classList.toggle('on', LANG === 'en'); $('#langEn').setAttribute('aria-pressed', String(LANG === 'en'));
+}
+applyLangDom(); /* EN deep links see an EN shell before the 3D even boots */
+let onLangSwitch = null; /* boot() hangs its dynamic refreshes here */
+function setLang(l) {
+  if (l === LANG) return;
+  LANG = l;
+  try { sessionStorage.setItem('ndLang', l); } catch (e) { /* private mode */ }
+  applyLangDom();
+  if (onLangSwitch) onLangSwitch();
+}
+$('#langHe').addEventListener('click', () => setLang('he'));
+$('#langEn').addEventListener('click', () => setLang('en'));
 
 /* film grain */
 (() => { const c = document.createElement('canvas'); c.width = c.height = 128;
@@ -1668,10 +1958,11 @@ async function boot() {
      a small chip reports progress, and a tower that lands after
      first paint grows out of the ground instead of popping.
      ============================================================ */
-  veilCap.textContent = 'מכינים את הרובע…';
+  veilCap.textContent = t('veilPrep');
   const loadChip = $('#loadChip'), loadChipTxt = $('#loadChipTxt');
   const GROWS = []; /* late arrivals rising from the ground */
   let towersLoaded = 0;
+  const updLoadChip = () => { loadChipTxt.textContent = t('loadTowers') + ' ' + towersLoaded + '/3'; };
   function towerArrived(key, node) {
     node.position.set(...PROJECTS[key].pos);
     if (!REDUCED && document.body.classList.contains('ready') && yearMix > 0.5) {
@@ -1679,11 +1970,11 @@ async function boot() {
     }
     futBld.add(node);
     towersLoaded++;
-    loadChipTxt.textContent = 'המגדלים נטענים ברקע… ' + towersLoaded + '/3';
+    updLoadChip();
     if (towersLoaded === 3) { loadChip.classList.add('off');
       console.info('[sdedov] towers ready:', JSON.stringify(towersUsed)); }
   }
-  loadChipTxt.textContent = 'המגדלים נטענים ברקע… 0/3';
+  updLoadChip();
   loadChip.classList.remove('off');
   for (const k of ['dimri', 'ashira', 'rainbow']) loadOne(k).then(n => towerArrived(k, n));
 
@@ -2154,6 +2445,17 @@ async function boot() {
   DUSKU.value = duskMix;
   (window.requestIdleCallback || (f => setTimeout(f, 120)))(() => buildEnv(duskT)); /* reflections join when idle */
 
+  /* V4: one-time discoverability shimmer on the two "hidden gem" toggles —
+     three soft sweeps inside the first 10 seconds, once per session */
+  try {
+    if (!REDUCED && !sessionStorage.getItem('ndGlint')) {
+      sessionStorage.setItem('ndGlint', '1');
+      const sunSwEl = $('#sunSw');
+      setTimeout(() => { yearSw.classList.add('glint'); sunSwEl.classList.add('glint'); }, 1600);
+      setTimeout(() => { yearSw.classList.remove('glint'); sunSwEl.classList.remove('glint'); }, 10000);
+    }
+  } catch (e) { /* private mode — skip the shimmer */ }
+
   /* ============================================================
      V3 — "מזרחה לאיינשטיין": the corridor between the quarter and
      Ramat Aviv, per web research 2026-07 (see sources per project).
@@ -2370,9 +2672,16 @@ async function boot() {
   /* the six chapters of the flight — rail dots, prev/next arrows, PgUp/PgDn and
      the reduced-motion station nav all share this list */
   const stations = [
-    { u: 0.02, name: 'מעל הים' }, { u: 0.30, name: 'דימרי ימה' }, { u: 0.47, name: 'פארק המסלול' },
-    { u: 0.60, name: 'ריינבו תל אביב' }, { u: 0.79, name: 'אשירה' }, { u: 0.99, name: 'סיום ובחירה' }];
+    { u: 0.02, name: 'מעל הים', en: 'Above the sea' }, { u: 0.30, name: 'דימרי ימה', en: 'Dimri Yama' },
+    { u: 0.47, name: 'פארק המסלול', en: 'Runway Park' }, { u: 0.60, name: 'ריינבו תל אביב', en: 'Rainbow TLV' },
+    { u: 0.79, name: 'אשירה', en: 'Ashira' }, { u: 0.99, name: 'סיום ובחירה', en: 'Finale & choice' }];
   let station = 0;
+  const stName = s => (LANG === 'en' && s.en) ? s.en : s.name; /* V4 i18n */
+  function refreshStationAria() {
+    [...document.querySelectorAll('#rail .stop')].forEach((el, i) => {
+      if (stations[i]) el.setAttribute('aria-label', t('stopAria') + stName(stations[i])); });
+  }
+  refreshStationAria();
 
   /* UI bindings */
   const cards = [...document.querySelectorAll('.pcard[data-a]')].map(el => ({ el, a: +el.dataset.a, b: +el.dataset.b }));
@@ -2380,7 +2689,10 @@ async function boot() {
   const stops = [...document.querySelectorAll('#rail .stop')], labels = [...document.querySelectorAll('#rail .labels span')];
   function applyUI(u) {
     let anyCard = false;
-    for (const c of cards) { const on = u >= c.a && u <= c.b; c.el.classList.toggle('on', on); if (on) anyCard = true; }
+    for (const c of cards) { const inRange = u >= c.a && u <= c.b;
+      if (!inRange) c.dismissed = false; /* V4 NEVER-STUCK: an X/swipe dismissal holds until the scroll leaves the chapter */
+      const on = inRange && !c.dismissed;
+      c.el.classList.toggle('on', on); if (on) anyCard = true; }
     document.body.classList.toggle('filmCard', anyCard); /* mobile: bottom sheet up → hide the chapter arrows under it */
     finale.classList.toggle('on', u >= 0.94);
     hint.classList.toggle('off', u > 0.025);
@@ -2409,7 +2721,7 @@ async function boot() {
     document.body.classList.add('rm');
     const nameEl = $('#rmName'), prev = $('#rmPrev'), next = $('#rmNext');
     const go = (i) => { station = Math.max(0, Math.min(stations.length - 1, i));
-      targetU = dispU = stations[station].u; nameEl.textContent = stations[station].name;
+      targetU = dispU = stations[station].u; nameEl.textContent = stName(stations[station]);
       prev.disabled = station === 0; next.disabled = station === stations.length - 1; applyUI(dispU); };
     prev.onclick = () => go(station - 1); next.onclick = () => go(station + 1);
     go(START_T !== null ? stations.findIndex(s => s.u >= START_T) : 0);
@@ -2433,34 +2745,35 @@ async function boot() {
      ============================================================ */
   const MODE = { m: 'film' };            /* film | explore | return */
   const EYE = 2.7;
-  const NODES = {
-    'prom-n':  { x: -104, z: 150,  y: EYE, name: 'טיילת החוף — צפון' },
-    'prom-c':  { x: -104, z: 0,    y: EYE, name: 'טיילת החוף' },
-    'prom-s':  { x: -104, z: -150, y: EYE, name: 'הטיילת מול דימרי ימה' },
-    'beach':   { x: -152, z: -60,  y: 2.2, name: 'קו המים' },
-    'dimri':   { x: -4,   z: -118, y: EYE, name: 'רחבת דימרי ימה', project: 'dimri' },
-    'run-s':   { x: 74,   z: -190, y: EYE, name: 'פארק המסלול — דרום' },
-    'run-c':   { x: 74,   z: -8,   y: EYE, name: 'פארק המסלול' },
-    'rainbow': { x: 6,    z: -224, y: EYE, name: 'כיכר השער של ריינבו', project: 'rainbow' },
-    'park':    { x: 232,  z: -2,   y: EYE, name: 'הפארק הלינארי' },
-    'ashira':  { x: 372,  z: -74,  y: EYE, name: 'החצר של אשירה', project: 'ashira' },
-    'run-n':   { x: 74,   z: 170,  y: EYE, name: 'פארק המסלול — צפון' },
-    'sky':     { x: 150,  z: 10,   y: 235, name: 'מבט־על — רובע שדה דב', sky: true },
+  const NODES = { /* V4: en names feed the i18n node chip */
+    'prom-n':  { x: -104, z: 150,  y: EYE, name: 'טיילת החוף — צפון', en: 'The promenade — north' },
+    'prom-c':  { x: -104, z: 0,    y: EYE, name: 'טיילת החוף', en: 'The beach promenade' },
+    'prom-s':  { x: -104, z: -150, y: EYE, name: 'הטיילת מול דימרי ימה', en: 'Promenade by Dimri Yama' },
+    'beach':   { x: -152, z: -60,  y: 2.2, name: 'קו המים', en: 'The waterline' },
+    'dimri':   { x: -4,   z: -118, y: EYE, name: 'רחבת דימרי ימה', en: 'Dimri Yama plaza', project: 'dimri' },
+    'run-s':   { x: 74,   z: -190, y: EYE, name: 'פארק המסלול — דרום', en: 'Runway Park — south' },
+    'run-c':   { x: 74,   z: -8,   y: EYE, name: 'פארק המסלול', en: 'Runway Park' },
+    'rainbow': { x: 6,    z: -224, y: EYE, name: 'כיכר השער של ריינבו', en: 'Rainbow gate plaza', project: 'rainbow' },
+    'park':    { x: 232,  z: -2,   y: EYE, name: 'הפארק הלינארי', en: 'The Linear Park' },
+    'ashira':  { x: 372,  z: -74,  y: EYE, name: 'החצר של אשירה', en: 'Ashira courtyard', project: 'ashira' },
+    'run-n':   { x: 74,   z: 170,  y: EYE, name: 'פארק המסלול — צפון', en: 'Runway Park — north' },
+    'sky':     { x: 150,  z: 10,   y: 235, name: 'מבט־על — רובע שדה דב', en: 'Overview — Sde Dov Quarter', sky: true },
     /* V3 — the eastern corridor: מזרחה לאיינשטיין */
-    'park-e':    { x: 408, z: -6,   y: EYE, name: 'קצה הפארק הלינארי', zone: 'east' },
-    'ein-gate':  { x: 545, z: -58,  y: EYE, name: 'שער איינשטיין — מזרחה', zone: 'east' },
-    'ein-w':     { x: 706, z: -58,  y: EYE, name: 'מגדלי מערב איינשטיין', zone: 'east', eproject: 'ein-15' },
-    'ein-hagag': { x: 842, z: -56,  y: EYE, name: 'EINSTEIN TOWER — שדרת המסחר', zone: 'east', eproject: 'einstein-tower' },
-    'ein-19':    { x: 912, z: -58,  y: EYE, name: 'איינשטיין 19 — פינוי בינוי', zone: 'east', eproject: 'einstein-19' },
-    'ein-ashdar':{ x: 1044, z: -58, y: EYE, name: 'אשדר איינשטיין — נווה אביבים', zone: 'east', eproject: 'ashdar-einstein' },
-    'ein-sky':   { x: 810, z: -60, y: 205, name: 'מבט־על — ציר איינשטיין', sky: true, zone: 'east' },
-    /* V3.1 — the six named catalog projects (approximate lots) */
-    'utopia':    { x: 216, z: -92,  y: EYE, name: 'UTOPIA — על הפארק הליניארי', qproject: 'utopia' },
-    'zohi':      { x: 88,  z: -300, y: EYE, name: 'ZOHI — מגרש 110, מתחם אשכול', qproject: 'zohi' },
-    'shibi':     { x: 162, z: -300, y: EYE, name: 'שיכון ובינוי להשכרה — מגרש 109', qproject: 'shibi' },
-    'first':     { x: -104, z: 585, y: EYE, name: 'FIRST — קו ראשון לים', qproject: 'first' },
-    'migdal':    { x: -104, z: 760, y: EYE, name: 'דיור מוגן מגדלי הים — צפון הרובע', qproject: 'migdal' },
-    'gindi-c':   { x: 562, z: -40,  y: EYE, name: 'GINDI VOGUE — שער מרכז הרובע', zone: 'east', eproject: 'gindi-rova' },
+    'park-e':    { x: 408, z: -6,   y: EYE, name: 'קצה הפארק הלינארי', en: 'Linear Park — east end', zone: 'east' },
+    'ein-gate':  { x: 545, z: -58,  y: EYE, name: 'שער איינשטיין — מזרחה', en: 'Einstein gate — eastward', zone: 'east' },
+    'ein-w':     { x: 706, z: -58,  y: EYE, name: 'מגדלי מערב איינשטיין', en: 'West Einstein towers', zone: 'east', eproject: 'ein-15' },
+    'ein-hagag': { x: 842, z: -56,  y: EYE, name: 'EINSTEIN TOWER — שדרת המסחר', en: 'EINSTEIN TOWER — retail blvd', zone: 'east', eproject: 'einstein-tower' },
+    'ein-19':    { x: 912, z: -58,  y: EYE, name: 'איינשטיין 19 — פינוי בינוי', en: 'Einstein 19 — urban renewal', zone: 'east', eproject: 'einstein-19' },
+    'ein-ashdar':{ x: 1044, z: -58, y: EYE, name: 'אשדר איינשטיין — נווה אביבים', en: 'Ashdar Einstein — Neve Avivim', zone: 'east', eproject: 'ashdar-einstein' },
+    'ein-sky':   { x: 810, z: -60, y: 205, name: 'מבט־על — ציר איינשטיין', en: 'Overview — Einstein axis', sky: true, zone: 'east' },
+    /* V3.1 — the six named catalog projects (approximate lots).
+       V4: the two northern lots carry zone:'north' for the first-entry hint chip. */
+    'utopia':    { x: 216, z: -92,  y: EYE, name: 'UTOPIA — על הפארק הליניארי', en: 'UTOPIA — on the Linear Park', qproject: 'utopia' },
+    'zohi':      { x: 88,  z: -300, y: EYE, name: 'ZOHI — מגרש 110, מתחם אשכול', en: 'ZOHI — lot 110, Eshkol', qproject: 'zohi' },
+    'shibi':     { x: 162, z: -300, y: EYE, name: 'שיכון ובינוי להשכרה — מגרש 109', en: 'Shikun & Binui rental — lot 109', qproject: 'shibi' },
+    'first':     { x: -104, z: 585, y: EYE, name: 'FIRST — קו ראשון לים', en: 'FIRST — seafront line', qproject: 'first', zone: 'north' },
+    'migdal':    { x: -104, z: 760, y: EYE, name: 'דיור מוגן מגדלי הים — צפון הרובע', en: 'Migdalei Hayam senior living — north', qproject: 'migdal', zone: 'north' },
+    'gindi-c':   { x: 562, z: -40,  y: EYE, name: 'GINDI VOGUE — שער מרכז הרובע', en: 'GINDI VOGUE — center gate', zone: 'east', eproject: 'gindi-rova' },
   };
   const EDGES = [
     ['prom-n', 'prom-c'], ['prom-c', 'prom-s'], ['prom-s', 'beach'], ['prom-c', 'beach'],
@@ -2498,24 +2811,77 @@ async function boot() {
     out.set(Math.sin(yaw) * Math.cos(pitch), Math.sin(pitch), Math.cos(yaw) * Math.cos(pitch));
 
   const nodeChip = $('#nodeChip'), exHelp = $('#exHelp');
-  exHelp.textContent = MOBILE ? 'גררו כדי להביט סביב · חיצים למטה = תנועה · הקישו על בניין לפרטים · הקשה כפולה מקרבת אליו'
-                              : 'גררו כדי להביט סביב · WASD או חיצים לתנועה · קליק על בניין לפרטים · דאבל־קליק מקרב אליו';
+  const setHelpText = () => { exHelp.textContent = t(MOBILE ? 'helpMob' : 'helpDesk'); };
+  setHelpText();
 
-  /* ---- cards in explore mode ---- */
+  /* ============================================================
+     V4 NEVER-STUCK — one close system for every card, every mode.
+     Every card closes via: the always-visible X (52px hit), a
+     tap/click outside, ESC, and swipe-down on the mobile sheet.
+     Closing always hands movement control straight back.
+     ============================================================ */
   const CARD_BY_PROJECT = { dimri: $('#card-dimri'), rainbow: $('#card-rainbow'), ashira: $('#card-ashira') };
   const planCard = $('#card-plan'), dynCard = $('#card-dyn');
+  function syncCardOpen() {
+    document.body.classList.toggle('cardOpen', !!document.querySelector('.pcard.on'));
+  }
+  function closeCard(el) {
+    el.classList.remove('on');
+    const fc = cards.find(c => c.el === el);
+    if (fc) fc.dismissed = true; /* film caption card: stays closed until its chapter is left */
+    syncCardOpen();
+  }
+  function closeAnyCards() { /* ESC / tap-outside — close whatever is open, report if anything was */
+    let any = false;
+    for (const el of document.querySelectorAll('.pcard.on')) { closeCard(el); any = true; }
+    clearTimeout(cardTimer);
+    return any;
+  }
   for (const el of [...document.querySelectorAll('.pcard')]) {
     const x = document.createElement('button');
-    x.className = 'pcx'; x.setAttribute('aria-label', 'סגירת הכרטיס'); x.textContent = '✕';
-    x.addEventListener('click', () => { el.classList.remove('on'); document.body.classList.remove('cardOpen'); });
+    x.className = 'pcx'; x.setAttribute('aria-label', t('closeCard')); x.textContent = '✕';
+    x.addEventListener('click', () => closeCard(el));
     el.appendChild(x);
+  }
+  /* V4: swipe-down dismisses the mobile bottom sheet (only from scrollTop 0,
+     so inner card scrolling keeps working; any real scroll cancels the drag) */
+  const sheet = { el: null, id: -1, x0: 0, y0: 0, dy: 0, t0: 0, live: false };
+  for (const el of [...document.querySelectorAll('.pcard')]) {
+    el.addEventListener('pointerdown', ev => {
+      if (innerWidth > 640 || ev.target.closest('a,button') || el.scrollTop > 2) return;
+      sheet.el = el; sheet.id = ev.pointerId; sheet.x0 = ev.clientX; sheet.y0 = ev.clientY;
+      sheet.dy = 0; sheet.t0 = performance.now(); sheet.live = false;
+    });
+    el.addEventListener('pointermove', ev => {
+      if (sheet.el !== el || ev.pointerId !== sheet.id) return;
+      const dy = ev.clientY - sheet.y0, dx = ev.clientX - sheet.x0;
+      if (!sheet.live) {
+        if (dy > 12 && dy > Math.abs(dx) * 1.2 && el.scrollTop <= 2) {
+          sheet.live = true; el.classList.add('sheetDrag');
+          try { el.setPointerCapture(ev.pointerId); } catch (e) { /* stale pointer */ }
+        } else if (dy < -6 || Math.abs(dx) > 18) sheet.el = null; /* inner scroll / horizontal pan */
+        return;
+      }
+      sheet.dy = Math.max(0, dy);
+      el.style.transform = 'translateY(' + sheet.dy + 'px)';
+    });
+    const endSheet = ev => {
+      if (sheet.el !== el || ev.pointerId !== sheet.id) return;
+      if (sheet.live) {
+        const v = sheet.dy / Math.max(1, performance.now() - sheet.t0); /* px/ms flick */
+        el.classList.remove('sheetDrag'); el.style.transform = '';
+        if (sheet.dy > 88 || v > 0.55) closeCard(el);
+      }
+      sheet.el = null; sheet.live = false;
+    };
+    el.addEventListener('pointerup', endSheet); el.addEventListener('pointercancel', endSheet);
   }
   let cardTimer = 0;
   function hideExCards() {
     clearTimeout(cardTimer);
     for (const k in CARD_BY_PROJECT) CARD_BY_PROJECT[k].classList.remove('on');
     planCard.classList.remove('on'); dynCard.classList.remove('on');
-    document.body.classList.remove('cardOpen');
+    syncCardOpen();
   }
   /* V3: fill + open the dynamic building card (any clicked massing) */
   const dynTag = $('#dynTag'), dynTitle = $('#dynTitle'), dynSub = $('#dynSub'), dynDesc = $('#dynDesc'),
@@ -2523,45 +2889,51 @@ async function boot() {
   function openDyn(info) {
     if (!info) return;
     hideExCards();
-    dynTag.textContent = info.tag || 'רובע שדה דב';
-    dynTitle.textContent = info.title || '';
+    /* V4 i18n: titles/descs stay as authored, tags + labels + status values translate */
+    dynTag.textContent = enMap(TAG_EN, info.tag || 'רובע שדה דב');
+    dynTitle.textContent = enMap(TITLE_EN, info.title || '');
     dynSub.textContent = info.sub || '';
     dynDesc.textContent = info.desc || '';
     dynList.innerHTML = '';
     for (const ln of info.lines || []) { if (!ln) continue;
       const li = document.createElement('li'); const b = document.createElement('b');
-      b.textContent = ln[1]; li.append(ln[0] + ': '); li.appendChild(b); dynList.appendChild(li); }
-    if (info.url) { dynBtn.hidden = false; dynBtn.href = info.url; } else dynBtn.hidden = true;
+      const lbl = LANG === 'en' ? (LBL_EN[ln[0]] || ln[0]) : ln[0];
+      b.textContent = LANG === 'en' ? enVal(ln[1]) : ln[1];
+      li.append(lbl + ': '); li.appendChild(b); dynList.appendChild(li); }
+    if (info.url) { dynBtn.hidden = false; dynBtn.href = info.url; dynBtn.textContent = t('btnProject'); } else dynBtn.hidden = true;
     dynWa.hidden = !!info.url && !info.soon;
-    dynWaTxt.textContent = info.waTxt || 'בקרוב אצלנו — דברו איתנו';
+    dynWaTxt.textContent = LANG === 'en' ? t('waSoon') : (info.waTxt || t('waSoon'));
     dynWa.href = 'https://wa.me/972525101555?text=' +
-      encodeURIComponent('היי, ראיתי את "' + (info.title || 'הרובע') + '" בסיור שדה דב ואשמח לפרטים');
-    dynFine.textContent = info.fine || 'הדמיה להמחשה בלבד · מסה סכמטית על פי פרסומים';
-    dynCard.classList.add('on'); document.body.classList.add('cardOpen');
+      encodeURIComponent(t('waPrefill').replace('{t}', info.title || (LANG === 'en' ? 'the quarter' : 'הרובע')));
+    dynFine.textContent = LANG === 'en' ? (FINE_EN[info.fine] || t('fineDyn')) : (info.fine || t('fineDyn'));
+    dynCard.classList.add('on'); syncCardOpen();
+    affRetire(); /* V4: a card is open — the "this is clickable" ring has done its job */
   }
   function showExCard(node) {
     clearTimeout(cardTimer);
     cardTimer = setTimeout(() => {
       if (MODE.m !== 'explore') return;
+      /* V4 NEVER-STUCK: never stack — whatever is open goes down before the node card comes up */
+      for (const el of document.querySelectorAll('.pcard.on')) el.classList.remove('on');
       if (node.project) {
         const el = CARD_BY_PROJECT[node.project];
         const btn = el.querySelector('.btn');
-        if (!btn.dataset.filmLabel) btn.dataset.filmLabel = btn.textContent;
-        btn.textContent = 'בחרו דירה בבניין הזה ←';
-        el.classList.add('on'); document.body.classList.add('cardOpen');
+        btn.dataset.filmLabel = '1'; /* explore relabel marker — restore repaints via i18n */
+        btn.textContent = t('pickHere');
+        el.classList.add('on'); syncCardOpen(); affRetire();
       } else if (node.eproject) {
         openDyn(epCard(EP.find(p => p.id === node.eproject)));
       } else if (node.qproject) { /* V3.1 named catalog projects */
         openDyn(qCard(QPROJECTS.find(p => p.id === node.qproject)));
       } else if (node.sky) {
-        planCard.classList.add('on'); document.body.classList.add('cardOpen');
-      }
+        planCard.classList.add('on'); syncCardOpen(); affRetire();
+      } else syncCardOpen();
     }, 260);
   }
   function restoreFilmCardLabels() {
     for (const k in CARD_BY_PROJECT) {
       const btn = CARD_BY_PROJECT[k].querySelector('.btn');
-      if (btn.dataset.filmLabel) btn.textContent = btn.dataset.filmLabel;
+      if (btn.dataset.filmLabel) { btn.textContent = t('btnProject'); delete btn.dataset.filmLabel; }
     }
   }
 
@@ -2597,6 +2969,80 @@ async function boot() {
     for (; i < arrows.length; i++) { arrows[i].visible = false; arrows[i].userData.target = null; }
   }
 
+  /* ============================================================
+     V4 — GROUND TRAVEL + AFFORDANCE LAYER
+     · travel ping: a gold ring blinks where the double-tap sends you
+     · ground double-tap: raycast the y=0 plane, clamp to the walkable
+       bounds, route via the nearest walk node (never through buildings)
+     · affordance ring: soft pulse on the nearest clickable building,
+       retires after the first opened card (kept per session)
+     · zone hint chip: one-time "tap a building" nudge per zone
+     ============================================================ */
+  const GROUND_PLANE = new THREE.Plane(new THREE.Vector3(0, 1, 0), 0);
+  const GP = new THREE.Vector3();
+  const WALK = { x0: -170, x1: 1110, z0: -400, z1: 820 }; /* the node graph's reach */
+  const flatRing = (inner) => { const g = new THREE.RingGeometry(inner, 1, 44); g.rotateX(-Math.PI / 2); return g; };
+  const pingMesh = new THREE.Mesh(flatRing(0.82), new THREE.MeshBasicMaterial({ color: 0xf2d9a4,
+    transparent: true, opacity: 0, side: THREE.DoubleSide, blending: THREE.AdditiveBlending, depthWrite: false, fog: false }));
+  pingMesh.renderOrder = 5; pingMesh.visible = false; world.add(pingMesh);
+  let pingT = 9;
+  function travelPing(node) {
+    if (REDUCED) return;
+    pingMesh.position.set(node.x, 0.22, node.z); pingT = 0;
+  }
+  function groundTravel(cx, cy) { /* -> true when the tap became a journey */
+    ndc.set(cx / innerWidth * 2 - 1, -(cy / innerHeight) * 2 + 1);
+    raycaster.setFromCamera(ndc, cam);
+    if (!raycaster.ray.intersectPlane(GROUND_PLANE, GP)) return false; /* aimed at the sky */
+    GP.x = THREE.MathUtils.clamp(GP.x, WALK.x0, WALK.x1);
+    GP.z = THREE.MathUtils.clamp(GP.z, WALK.z0, WALK.z1);
+    const n = nearestNode(GP);
+    if (!n) return false;
+    travelPing(n);
+    if (n !== ex.node || ex.gliding) glideTo(n);
+    return true;
+  }
+  let affDone = REDUCED;
+  try { affDone = affDone || !!sessionStorage.getItem('ndAffRing'); } catch (e) { /* storage blocked — in-page retire still works */ }
+  const affRing = new THREE.Mesh(flatRing(0.88), new THREE.MeshBasicMaterial({ color: 0xd8b46a,
+    transparent: true, opacity: 0, side: THREE.DoubleSide, blending: THREE.AdditiveBlending, depthWrite: false, fog: false }));
+  affRing.renderOrder = 3; affRing.visible = false; world.add(affRing);
+  const AFF_SPOTS = [ /* [x, z, ring radius] — known clickable massings */
+    [-38, -150, 40], [-30, -258, 42], [415, -60, 40],                  /* the three flagships */
+    [210, -135, 30], [-16, 585, 30], [118, -332, 30], [196, -330, 30], /* named catalog lots */
+    [-60, 762, 30], [578, -20, 30],
+    [642, -108, 28], [700, -22, 28], [758, -22, 28], [842, -18, 30],   /* the Einstein corridor */
+    [912, -24, 26], [968, -22, 26], [1044, -22, 26], [1096, 48, 26], [852, -136, 26],
+  ];
+  let affSpot = null;
+  function affRetire() {
+    if (affDone) return;
+    affDone = true; affSpot = null; affRing.visible = false;
+    try { sessionStorage.setItem('ndAffRing', '1'); } catch (e) { /* private mode */ }
+  }
+  function affPick() { /* the nearest clickable massing to where we stand */
+    if (affDone) { affSpot = null; return; }
+    let best = null, bd = 1e9;
+    for (const s of AFF_SPOTS) { const d = Math.hypot(s[0] - ex.pos.x, s[1] - ex.pos.z);
+      if (d < bd) { bd = d; best = s; } }
+    affSpot = bd < 340 ? best : null;
+  }
+  const zoneHintEl = $('#zoneHint');
+  const zoneSeen = {};
+  try { for (const z of ['east', 'north']) if (sessionStorage.getItem('ndZone-' + z)) zoneSeen[z] = 1; } catch (e) { /* private mode */ }
+  let zoneHintTimer = 0;
+  function maybeZoneHint(node) {
+    const z = node.zone;
+    if (!z || zoneSeen[z]) return;
+    zoneSeen[z] = 1;
+    try { sessionStorage.setItem('ndZone-' + z, '1'); } catch (e) { /* private mode */ }
+    if (node.project || node.eproject || node.qproject || node.sky) return; /* a card is about to teach the same thing */
+    zoneHintEl.textContent = t('zoneHint');
+    zoneHintEl.classList.add('show');
+    clearTimeout(zoneHintTimer);
+    zoneHintTimer = setTimeout(() => zoneHintEl.classList.remove('show'), 4200);
+  }
+
   /* ---- tower hover proxies + auras (never added to scene: raycast only) ---- */
   const proxyGroup = new THREE.Group();
   const proxies = [];
@@ -2623,6 +3069,8 @@ async function boot() {
       sp.visible = false; world.add(sp); auras[key] = sp;
     } }
   const NAME_BY_PROJECT = { dimri: 'דימרי ימה', rainbow: 'ריינבו תל אביב', ashira: 'אשירה שדה דב' };
+  const NAME_EN_BY_PROJECT = { dimri: 'DIMRI YAMA', rainbow: 'RAINBOW TLV', ashira: 'ASHIRA SDE DOV' }; /* V4 i18n */
+  const projName = k => LANG === 'en' ? NAME_EN_BY_PROJECT[k] : NAME_BY_PROJECT[k];
   let hoverProject = null, hoverArrow = null;
 
   /* ---- mini-map (V3: extended to the Einstein corridor; north-up, sea LEFT/west) ---- */
@@ -2754,9 +3202,9 @@ async function boot() {
   const exViewBtn = $('#exView'), exViewT = exViewBtn.querySelector('.t');
   let lastGround = NODES['run-c']; /* where "descend from overview" returns to */
   function updateChip(node) {
-    nodeChip.textContent = node.name;
-    exViewT.textContent = node.sky ? 'ירידה מהתצפית ↓' : 'תצפית על ↗';
-    exViewBtn.setAttribute('aria-label', node.sky ? 'ירידה מהתצפית' : 'תצפית על');
+    nodeChip.textContent = (LANG === 'en' && node.en) ? node.en : node.name; /* V4 i18n */
+    exViewT.textContent = t(node.sky ? 'viewDown' : 'viewUp');
+    exViewBtn.setAttribute('aria-label', t(node.sky ? 'viewDownAria' : 'viewUpAria'));
   }
   function glideTo(node, opts = {}) {
     if (MODE.m !== 'explore') return;
@@ -2781,6 +3229,8 @@ async function boot() {
     layoutArrows();
     arrowGroup.visible = !ex.node.sky;
     showExCard(ex.node);
+    affPick();               /* V4: point the clickability ring at the nearest massing */
+    maybeZoneHint(ex.node);  /* V4: one-time "tap a building" nudge per zone */
   }
   function neighborToward(back = false) {
     const n = ex.node; let best = null, bestA = 1.35;
@@ -2817,11 +3267,13 @@ async function boot() {
   function enterExplore(targetNode) {
     if (MODE.m !== 'film') return;
     dismissOnb(); cancelFilmAuto();
+    hideExCards(); /* V4 NEVER-STUCK: a film-opened card must not ride into the walk (it hid the mobile controls) */
     MODE.m = 'explore';
     document.body.classList.add('explore');
     lockScroll();
     hint.classList.add('off');
     for (const c of cards) c.el.classList.remove('on');
+    syncCardOpen();
     finale.classList.remove('on');
     cam.getWorldDirection(TMPDIR);
     ex.yaw = ex.tYaw = Math.atan2(TMPDIR.x, TMPDIR.z);
@@ -2947,14 +3399,18 @@ async function boot() {
       if (info) { openDyn(info); return; } }
     hideExCards();
   }
-  /* double-click / double-tap: walk over to whatever was hit */
+  /* double-click / double-tap: walk over to whatever was hit.
+     V4: bare GROUND is a destination too — see the convention note in <head>
+     (this tour has no double-tap zoom, so the gesture takes the
+     Google-Earth-style "fly there" role; pinch cancels tap detection). */
   function dblRay(cx, cy) {
     ndc.set(cx / innerWidth * 2 - 1, -(cy / innerHeight) * 2 + 1);
     raycaster.setFromCamera(ndc, cam);
     const th = raycaster.intersectObjects(proxies, false);
-    if (th.length) { glideTo(NODES[PROJECT_NODE[th[0].object.userData.project]]); return; }
+    if (th.length) { const n = NODES[PROJECT_NODE[th[0].object.userData.project]]; travelPing(n); glideTo(n); return; }
     const ch = raycaster.intersectObjects(pickables(), false);
-    if (ch.length) { const p = ch[0].point; const n = nearestNode({ x: p.x, z: p.z }); if (n) glideTo(n); }
+    if (ch.length) { const p = ch[0].point; const n = nearestNode({ x: p.x, z: p.z }); if (n) { travelPing(n); glideTo(n); } return; }
+    groundTravel(cx, cy);
   }
 
   /* hover (desktop, both modes) */
@@ -2980,12 +3436,12 @@ async function boot() {
       else hoverPick = null;
     }
     if (hoverProject) {
-      twName.textContent = NAME_BY_PROJECT[hoverProject];
-      twCta.textContent = MODE.m === 'explore' ? 'לחצו כדי לגשת ←' : 'לחצו לסיור חופשי כאן ←';
+      twName.textContent = projName(hoverProject);
+      twCta.textContent = t(MODE.m === 'explore' ? 'ctaGo' : 'ctaWalkHere');
       twLabel.classList.add('on');
     } else if (hoverPick) {
-      twName.textContent = hoverPick.info.title;
-      twCta.textContent = 'לחצו לפרטים ←';
+      twName.textContent = enMap(TITLE_EN, hoverPick.info.title);
+      twCta.textContent = t('ctaDetails');
       twLabel.classList.add('on');
     } else twLabel.classList.remove('on');
     const interactive = hoverProject || hoverArrow || hoverPick;
@@ -2994,15 +3450,35 @@ async function boot() {
   }
   /* film-mode click: flagship towers enter explore there; any other building
      opens its card (works with touch taps too) */
+  const FILM_UI_GUARD = 'a,button,.pcard,#finale,#hud,#rail,#chapNav,#rmnav,#modePill,#mmWrap,#pad,#sunSw,#yearSw,#loadChip,#onb,#exSide';
   addEventListener('click', ev => {
     if (MODE.m !== 'film') return;
-    if (ev.target.closest('a,button,.pcard,#finale,#hud,#rail,#chapNav,#rmnav,#modePill,#mmWrap,#pad,#sunSw,#yearSw,#loadChip,#onb,#exSide')) return;
+    if (ev.target.closest(FILM_UI_GUARD)) return;
     ndc.set(ev.clientX / innerWidth * 2 - 1, -(ev.clientY / innerHeight) * 2 + 1);
     raycaster.setFromCamera(ndc, cam);
     const th = raycaster.intersectObjects(proxies, false);
     if (th.length) { enterExplore(NODES[PROJECT_NODE[th[0].object.userData.project]]); return; }
     const ch = raycaster.intersectObjects(pickables(), false);
-    if (ch.length) { const info = ch[0].object.userData.pick(ch[0].instanceId); if (info) openDyn(info); }
+    if (ch.length) { const info = ch[0].object.userData.pick(ch[0].instanceId); if (info) { openDyn(info); return; } }
+    closeAnyCards(); /* V4 NEVER-STUCK: film mode too — a tap on nothing closes whatever card is up */
+  });
+  /* V4: double-click the GROUND during the film = drop straight into the walk
+     there (routes via the nearest node — see the convention note in <head>) */
+  addEventListener('dblclick', ev => {
+    if (MODE.m !== 'film') return;
+    if (ev.target.closest(FILM_UI_GUARD)) return;
+    ndc.set(ev.clientX / innerWidth * 2 - 1, -(ev.clientY / innerHeight) * 2 + 1);
+    raycaster.setFromCamera(ndc, cam);
+    if (raycaster.intersectObjects(proxies, false).length) return; /* flagship: single click already dove in */
+    let target = null;
+    const ch = raycaster.intersectObjects(pickables(), false);
+    if (ch.length) target = nearestNode({ x: ch[0].point.x, z: ch[0].point.z });
+    else if (raycaster.ray.intersectPlane(GROUND_PLANE, GP)) {
+      GP.x = THREE.MathUtils.clamp(GP.x, WALK.x0, WALK.x1);
+      GP.z = THREE.MathUtils.clamp(GP.z, WALK.z0, WALK.z1);
+      target = nearestNode(GP);
+    }
+    if (target) { enterExplore(target); travelPing(target); }
   });
 
   /* keyboard */
@@ -3013,7 +3489,7 @@ async function boot() {
       case 'KeyS': case 'ArrowDown': ev.preventDefault(); move(true); break;
       case 'KeyA': case 'ArrowLeft': ev.preventDefault(); ex.turn = -1; break;  /* yaw- = turn left */
       case 'KeyD': case 'ArrowRight': ev.preventDefault(); ex.turn = 1; break;  /* yaw+ = turn right */
-      case 'Escape': exitExplore(false); break;
+      case 'Escape': if (!closeAnyCards()) exitExplore(false); break; /* V4: first ESC closes the card, second leaves the walk */
     }
   });
   addEventListener('keyup', ev => {
@@ -3086,6 +3562,7 @@ async function boot() {
   addEventListener('keydown', ev => {
     if (MODE.m !== 'film' || ev.metaKey || ev.ctrlKey || ev.altKey) return;
     switch (ev.code) {
+      case 'Escape': if (onbShown) dismissOnb(); else closeAnyCards(); break; /* V4 NEVER-STUCK */
       case 'PageDown': ev.preventDefault(); dismissOnb(); chapterStep(1); break;
       case 'PageUp': ev.preventDefault(); dismissOnb(); chapterStep(-1); break;
       case 'End': ev.preventDefault(); dismissOnb(); chapterGo(stations.length - 1); break;
@@ -3114,7 +3591,7 @@ async function boot() {
   function maybeShowOnb() {
     if (!onbOK || MODE.m !== 'film' || START_T !== null || Q.get('demo') === '1') return; /* deep links + auto-demo skip the intro */
     onbShown = true;
-    if (REDUCED) $('#onbLine').textContent = 'עברו בין התחנות עם הכפתורים · או צאו לסיור חופשי והסתובבו עם החצים';
+    if (REDUCED) $('#onbLine').textContent = t('onbLineRm');
     onbEl.hidden = false;
     document.body.classList.add('onb');
     requestAnimationFrame(() => requestAnimationFrame(() => onbEl.classList.add('show')));
@@ -3202,7 +3679,7 @@ async function boot() {
       else sndMaster.gain.setTargetAtTime(0, AC.currentTime, 0.3);
       sndBtn.classList.toggle('muted', !sndOn);
       sndBtn.setAttribute('aria-pressed', String(sndOn));
-      sndBtn.setAttribute('aria-label', sndOn ? 'כיבוי צלילי רקע' : 'הפעלת צלילי רקע');
+      sndBtn.setAttribute('aria-label', t(sndOn ? 'sndOff' : 'sndOn'));
     } catch (e) { console.warn('[sdedov] audio unavailable:', e.message); }
   });
 
@@ -3234,6 +3711,24 @@ async function boot() {
       a.scale.setScalar(a.userData.hov);
       a.material.opacity = (hoverArrow === a ? 0.9 : 0.45 + 0.2 * Math.sin(T * 2.7));
     }
+    /* V4: travel ping — one expanding blink at the double-tap destination */
+    if (pingT < 0.8) { pingT = Math.min(0.8, pingT + dt);
+      const k = pingT / 0.8;
+      pingMesh.visible = true;
+      pingMesh.scale.setScalar(3 + k * 15);
+      pingMesh.material.opacity = 0.85 * (1 - k);
+    } else if (pingMesh.visible) pingMesh.visible = false;
+    /* V4: clickability affordance — a soft ring breathing at the nearest massing */
+    if (affSpot && !affDone && !document.body.classList.contains('cardOpen')) {
+      const ph = (T % 3.4) / 3.4; /* one soft cycle every 3.4s */
+      if (ph < 0.62) {
+        const k = Math.sin((ph / 0.62) * Math.PI);
+        affRing.visible = true;
+        affRing.position.set(affSpot[0], 0.24, affSpot[1]);
+        affRing.scale.setScalar(affSpot[2] * (0.6 + ph * 0.5));
+        affRing.material.opacity = 0.3 * k;
+      } else affRing.visible = false;
+    } else if (affRing.visible) affRing.visible = false;
     mmOverlay(T);
   }
   function returnFrame(dt) {
@@ -3378,7 +3873,8 @@ async function boot() {
   /* QA hook: advance the sim deterministically without rAF (headless testing) */
   window.__tick = (dt = 1 / 60, n = 1) => { for (let i = 0; i < n; i++) step(Math.min(dt, 0.05)); return simT.toFixed(2); };
 
-  window.__dbg = { renderer, scene, cam, camPath, lookPath, THREE, MODE, ex, NODES, enterExplore, exitExplore, glideTo };
+  window.__dbg = { renderer, scene, cam, camPath, lookPath, THREE, MODE, ex, NODES, enterExplore, exitExplore, glideTo,
+    setLang, closeAnyCards, dblRay, groundTravel, openDyn, hideExCards }; /* V4 QA hooks */
   /* screenshot hook (debug/QA): window.__save('preview.png', scale, [u]) */
   window.__save = async (name = 'preview.png', scale = 1, u = null) => {
     if (renderer.domElement.width < 2) fit(1280, 800);
@@ -3400,6 +3896,18 @@ async function boot() {
     const data = c.toDataURL(name.endsWith('.jpg') ? 'image/jpeg' : 'image/png', 0.85);
     const r = await fetch('/__save/' + name, { method: 'PUT', body: data });
     return r.ok ? 'saved ' + name : 'save failed';
+  };
+
+  /* V4 i18n: everything the static DOM maps can't reach refreshes here */
+  onLangSwitch = () => {
+    closeAnyCards();            /* open cards re-render in the new language on next open */
+    setHelpText();
+    updateChip(ex.node);
+    refreshStationAria();
+    updLoadChip();
+    sndBtn.setAttribute('aria-label', t(sndOn ? 'sndOff' : 'sndOn'));
+    if (REDUCED && rmGo && MODE.m === 'film') rmGo(station); /* refreshes the station name; explore refreshes on exit */
+    if (REDUCED && onbShown) $('#onbLine').textContent = t('onbLineRm');
   };
 
   /* go — the shell is fully procedural, so this line is reached fast;
