@@ -602,7 +602,11 @@ if ( ! function_exists( 'nadlan_dir_project_profile_header' ) ) {
 }
 add_filter( 'the_content', function ( $content ) {
 	if ( ! is_singular( 'nadlan_project' ) || ! in_the_loop() || ! is_main_query() ) { return $content; }
-	return nadlan_dir_project_profile_header( get_the_ID() ) . $content;
+	$id = get_the_ID();
+	if ( function_exists( 'nadlan_utopia_is_family' ) && nadlan_utopia_is_family( $id ) ) {
+		return $content;
+	}
+	return nadlan_dir_project_profile_header( $id ) . $content;
 }, 5 );
 
 /* =========================================================================

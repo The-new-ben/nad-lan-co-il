@@ -65,15 +65,18 @@ if ( ! function_exists( 'nadlan_showroom_engine_build_project' ) ) {
 	function nadlan_showroom_engine_build_project( $post ) {
 		$post = get_post( $post );
 		if ( ! $post ) { return null; }
-		$id   = $post->ID;
-		$units = nadlan_showroom_engine_json_meta( $id, 'project_3d_units' );
+		$id                = $post->ID;
+		$is_utopia_family = function_exists( 'nadlan_utopia_is_family' ) && nadlan_utopia_is_family( $id );
+		$units             = nadlan_showroom_engine_json_meta( $id, 'project_3d_units' );
 
 		$facades = nadlan_showroom_engine_json_meta( $id, 'project_3d_facade_images' );
 		$facade  = '';
 		if ( ! empty( $facades ) && isset( $facades[0]['src'] ) ) { $facade = esc_url_raw( $facades[0]['src'] ); }
 		$asset_base    = trailingslashit( get_template_directory_uri() ) . 'assets/showroom-assets/';
 		$concept_image = $asset_base . 'favicon-architectural.jpg';
-		if ( strpos( (string) $post->post_name, 'rainbow' ) !== false ) {
+		if ( $is_utopia_family && function_exists( 'nadlan_utopia_asset_url' ) ) {
+			$concept_image = nadlan_utopia_asset_url( 'utopia-concept-exterior-v1.webp' );
+		} elseif ( strpos( (string) $post->post_name, 'rainbow' ) !== false ) {
 			$concept_image = $asset_base . 'rainbow_reading_tower_context_1782914016421.jpg';
 		}
 
@@ -82,6 +85,9 @@ if ( ! function_exists( 'nadlan_showroom_engine_build_project' ) ) {
 
 		// floors: explicit meta, else the tallest unit floor.
 		$floors = (int) get_post_meta( $id, 'project_floors', true );
+		if ( $floors <= 0 && $is_utopia_family ) {
+			$floors = (int) get_post_meta( $id, 'num_floors', true );
+		}
 		if ( $floors <= 0 ) {
 			foreach ( (array) $units as $u ) {
 				if ( isset( $u['floor'] ) ) { $floors = max( $floors, (int) $u['floor'] ); }
@@ -92,6 +98,9 @@ if ( ! function_exists( 'nadlan_showroom_engine_build_project' ) ) {
 		if ( $tier === '' ) { $tier = 'standard'; }
 
 		$sub = (string) get_post_meta( $id, 'project_subtitle', true );
+		if ( $sub === '' && $is_utopia_family ) {
+			$sub = trim( wp_strip_all_tags( get_the_excerpt( $id ) ) );
+		}
 
 		// Language siblings: each language is its own published nadlan_project post,
 		// resolved by slug convention <base> / <base>-en / -fr / -ru / -ar. The engine
@@ -109,7 +118,12 @@ if ( ! function_exists( 'nadlan_showroom_engine_build_project' ) ) {
 			if ( substr( $post->post_name, -3 ) === '-' . $l ) { $self_lang = $l; }
 		}
 
-		return array(
+		$utopia_copy = $is_utopia_family && function_exists( 'nadlan_utopia_copy' ) ? nadlan_utopia_copy( $self_lang ) : array();
+		$model_floor_height = $is_utopia_family
+			? (float) ( get_post_meta( $id, 'project_model_scale_floor_height_m', true ) ?: 3.15 )
+			: (float) ( get_post_meta( $id, 'project_3d_floor_height_m', true ) ?: 3.05 );
+
+		return array_merge( array(
 			'slug'           => $post->post_name,
 			'wp_id'          => (int) $id,
 			'name'           => get_the_title( $id ),
@@ -122,10 +136,10 @@ if ( ! function_exists( 'nadlan_showroom_engine_build_project' ) ) {
 			'sub'            => $sub,
 			'building'       => (string) get_post_meta( $id, 'building', true ),
 			'floors'         => $floors,
-			'floor_height_m' => (float) ( get_post_meta( $id, 'project_3d_floor_height_m', true ) ?: 3.05 ),
+			'floor_height_m' => $model_floor_height,
 			// fly-to-unit radius scales with tower height; the 150m engine fallback
 			// puts the camera inside the crown on 150m+ towers (DUO).
-			'frame_radius_m' => (int) max( 150, round( $floors * (float) ( get_post_meta( $id, 'project_3d_floor_height_m', true ) ?: 3.05 ) * 1.4 ) ),
+			'frame_radius_m' => (int) max( 150, round( $floors * $model_floor_height * 1.4 ) ),
 			'viewbox'        => (string) get_post_meta( $id, 'project_3d_viewbox', true ),
 			// DEFAULT MODEL (owner 2026-07-11): a project with no model of its
 			// own shows the STANDARD Israeli street building - a form
@@ -185,7 +199,23 @@ if ( ! function_exists( 'nadlan_showroom_engine_build_project' ) ) {
 			// only render the visible Q&A here, no duplicate structured data.
 			'faq'            => array_values( (array) nadlan_showroom_engine_json_meta( $id, 'project_faq_json' ) ),
 			'units'          => array_values( (array) $units ),
-		);
+		), $is_utopia_family ? array(
+			// UTOPIA has a verified total count but no verified 337-unit facade
+			// stack. Keep the inventory array empty and expose the project total
+			// separately so the hero does not mislabel sample plans as inventory.
+			'units_total'   => (int) get_post_meta( $id, 'num_units', true ),
+			'buildings'     => function_exists( 'nadlan_utopia_buildings' ) ? nadlan_utopia_buildings( $self_lang ) : array(),
+			'sample_plans'  => function_exists( 'nadlan_utopia_sample_plans' ) ? nadlan_utopia_sample_plans( $self_lang ) : array(),
+			'building_mode' => isset( $utopia_copy['building_mode'] ) ? $utopia_copy['building_mode'] : array(),
+			'media_note'    => isset( $utopia_copy['media_note'] ) ? $utopia_copy['media_note'] : '',
+			'media_alt'     => isset( $utopia_copy['media_alt'] ) ? $utopia_copy['media_alt'] : '',
+			'default_orbit' => '-28deg 68deg 220m',
+			'default_target'=> '0m 42m 0m',
+			'public_home_url' => home_url( '/' ),
+			'suppress_empty_seo' => true,
+			'preserve_document_title' => true,
+			'lock_server_language' => true,
+		) : array() );
 	}
 }
 
@@ -286,16 +316,39 @@ if ( ! function_exists( 'nadlan_showroom_engine_shortcode' ) ) {
 		);
 		$page = ( $atts['page'] === 'home' ) ? 'home' : 'project';
 		$base = trailingslashit( nadlan_showroom_engine_base_url() );
+		$posts = nadlan_showroom_engine_resolve_target( $atts );
+		$is_utopia_family = false;
+		if ( $page === 'project' ) {
+			foreach ( $posts as $target_post ) {
+				if ( function_exists( 'nadlan_utopia_is_family' ) && nadlan_utopia_is_family( $target_post->ID ) ) {
+					$is_utopia_family = true;
+					break;
+				}
+			}
+		}
 
 		// assets
 		wp_enqueue_style( 'nadlan-engine-tokens', $base . 'tokens.css', array(), NADLAN_CONFIG_VERSION );
 		wp_enqueue_style( 'nadlan-engine-css', $base . 'showroom.css', array( 'nadlan-engine-tokens' ), NADLAN_CONFIG_VERSION );
 		wp_enqueue_style( 'nadlan-engine-editorial', $base . 'editorial.css', array( 'nadlan-engine-tokens' ), NADLAN_CONFIG_VERSION );
+		if ( $is_utopia_family ) {
+			wp_enqueue_style(
+				'nadlan-engine-utopia',
+				$base . 'projects/utopia-sde-dov/utopia.css',
+				array( 'nadlan-engine-css', 'nadlan-engine-editorial' ),
+				NADLAN_CONFIG_VERSION
+			);
+		}
 		// 4.3.1 to match what retired project-3d registered on GLB pages - no silent downgrade.
 		wp_enqueue_script( 'nadlan-model-viewer', 'https://ajax.googleapis.com/ajax/libs/model-viewer/4.3.1/model-viewer.min.js', array(), '4.3.1', true );
 		wp_script_add_data( 'nadlan-model-viewer', 'type', 'module' );
 		wp_enqueue_script( 'nadlan-engine-i18n', $base . 'i18n.js', array(), NADLAN_CONFIG_VERSION, true );
-		wp_enqueue_script( 'nadlan-engine-core', $base . 'engine.js', array( 'nadlan-engine-i18n' ), NADLAN_CONFIG_VERSION, true );
+		$i18n_dependency = 'nadlan-engine-i18n';
+		if ( $is_utopia_family ) {
+			$i18n_dependency = 'nadlan-engine-i18n-utopia';
+			wp_enqueue_script( $i18n_dependency, $base . 'projects/utopia-sde-dov/utopia-i18n.js', array( 'nadlan-engine-i18n' ), NADLAN_CONFIG_VERSION, true );
+		}
+		wp_enqueue_script( 'nadlan-engine-core', $base . 'engine.js', array( $i18n_dependency ), NADLAN_CONFIG_VERSION, true );
 		// buy-flow v1: "build me an offer" overlay (configure > capture > dispatch)
 		wp_enqueue_script( 'nadlan-engine-buyflow', $base . 'buyflow.js', array( 'nadlan-engine-core' ), NADLAN_CONFIG_VERSION, true );
 		// apartment studio: design-before-you-buy overlay (drag furniture,
@@ -312,7 +365,6 @@ if ( ! function_exists( 'nadlan_showroom_engine_shortcode' ) ) {
 		wp_enqueue_script( 'nadlan-engine-mapbox', $base . 'mapbox-init.js', $mapbox_deps, NADLAN_CONFIG_VERSION, true );
 
 		// build payload from the CMS
-		$posts = nadlan_showroom_engine_resolve_target( $atts );
 		if ( ! empty( $posts ) ) {
 			$projects = array();
 			$order    = array();
@@ -321,6 +373,18 @@ if ( ! function_exists( 'nadlan_showroom_engine_shortcode' ) ) {
 				if ( $proj && $proj['slug'] !== '' ) {
 					$projects[ $proj['slug'] ] = $proj;
 					$order[] = $proj['slug'];
+				}
+			}
+			if ( $is_utopia_family && ! empty( $order ) && function_exists( 'nadlan_utopia_nearby_project_bases' ) ) {
+				$self_lang = isset( $projects[ $order[0] ]['self_lang'] ) ? $projects[ $order[0] ]['self_lang'] : 'he';
+				$suffix    = $self_lang === 'he' ? '' : '-' . $self_lang;
+				foreach ( nadlan_utopia_nearby_project_bases() as $nearby_base ) {
+					$nearby = get_page_by_path( $nearby_base . $suffix, OBJECT, 'nadlan_project' );
+					if ( ! $nearby || get_post_status( $nearby ) !== 'publish' ) { continue; }
+					$nearby_project = nadlan_showroom_engine_build_project( $nearby );
+					if ( ! $nearby_project || isset( $projects[ $nearby_project['slug'] ] ) ) { continue; }
+					$projects[ $nearby_project['slug'] ] = $nearby_project;
+					$order[] = $nearby_project['slug'];
 				}
 			}
 			if ( ! empty( $order ) ) {
@@ -341,6 +405,9 @@ if ( ! function_exists( 'nadlan_showroom_engine_shortcode' ) ) {
 						'stats'        => array(),
 					);
 				}
+				if ( $is_utopia_family && function_exists( 'nadlan_utopia_area_payload' ) ) {
+					$areas[ 'area_' . $order[0] ] = nadlan_utopia_area_payload();
+				}
 				// On a single project page, the engine opens in THAT page's own language
 				// (the EN post loads in English, the HE post in Hebrew), so the article
 				// and the UI agree. The gallery keeps the site default.
@@ -353,7 +420,9 @@ if ( ! function_exists( 'nadlan_showroom_engine_shortcode' ) ) {
 					'projects' => $projects,
 					'order'    => $order,
 					'areas'    => $areas,
-					'spokes'   => array(),
+					'spokes'   => $is_utopia_family && function_exists( 'nadlan_utopia_spokes_payload' )
+						? nadlan_utopia_spokes_payload()
+						: array(),
 				);
 				$js = 'window.NADLAN_SHOWROOM=' . wp_json_encode( $payload ) . ';';
 				wp_add_inline_script( 'nadlan-engine-core', $js, 'before' );
@@ -499,6 +568,12 @@ add_filter( 'the_content', function ( $content ) {
 	if ( ! $pid || ! nadlan_showroom_engine_active_for( $pid ) ) {
 		return $content;
 	}
+	// UTOPIA is composed once, from its raw reviewed article, by the project
+	// module at the end of the content filter chain. This prevents generic
+	// legacy project bands from leaking into its translated buyer pages.
+	if ( function_exists( 'nadlan_utopia_is_family' ) && nadlan_utopia_is_family( $pid ) ) {
+		return $content;
+	}
 	// DE-STACK (content-safe). The post body is ONE <main class="nlv2-showroom">
 	// wrapper that contains BOTH the legacy visual showroom (hero/3D/picker) AND the
 	// SEO article (<section class="nlv2-section"> ... headings, sources, disclaimer).
@@ -599,6 +674,7 @@ if ( ! function_exists( 'nadlan_showroom_engine_weave' ) ) {
    EVERY unit, no developer material needed - honest schematic label inside). */
 add_action( 'wp_footer', function () {
 	if ( ! is_singular( 'nadlan_project' ) || ! function_exists( 'nadlan_ifp_assets_html' ) ) { return; }
+	if ( function_exists( 'nadlan_utopia_is_family' ) && nadlan_utopia_is_family( get_queried_object_id() ) ) { return; }
 	echo nadlan_ifp_assets_html(); // phpcs:ignore
 } );
 

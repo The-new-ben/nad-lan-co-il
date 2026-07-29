@@ -16,11 +16,17 @@
     page: ROOT.dataset.page || "project",
     lang: qs.get("lang") || SR.config.default_lang,
     projectKey: (qs.get("project") && SR.projects[qs.get("project")]) ? qs.get("project") : SR.config.default_project,
-    unitId: qs.get("unit") || null,
+    unitId: qs.get("unit") || null, buildingId: null,
     view: "3d", tab: "plan", filter: "all", light: "day", sunMin: 720,
     favs: load("nl_favs", []), compare: [],
     mvReady: false
   };
+  // Crawlable project siblings own their language at the URL level. A marked
+  // project can lock the engine to the server-selected language so a legacy
+  // ?lang= query cannot create mixed-language UI and article content.
+  if (state.page === "project" && SR.projects[state.projectKey] && SR.projects[state.projectKey].lock_server_language) {
+    state.lang = SR.config.default_lang;
+  }
   // Sketch-first: if a project has no 3D model, start in facade (sketch) view so
   // the page never shows an empty/broken model-viewer. (Antigravity, 2026-07-01)
   if (state.projectKey && SR.projects[state.projectKey] && !SR.projects[state.projectKey].model_glb) {
@@ -38,8 +44,12 @@
   }
   function isRTL() { return SR.config.rtl_languages.indexOf(state.lang) >= 0; }
   function project() { return SR.projects[state.projectKey]; }
-  function units() { return project().units; }
+  function units() { return Array.isArray(project().units) ? project().units : []; }
   function unit(id) { var u = units().filter(function (x) { return x.id === id; }); return u[0] || null; }
+  function buildings() { return Array.isArray(project().buildings) ? project().buildings : []; }
+  function building(id) { var rows = buildings().filter(function (x) { return x.id === id; }); return rows[0] || null; }
+  function buildingMode() { return units().length === 0 && buildings().length > 0; }
+  function buildingText(key) { var copy = project().building_mode || {}; return copy[key] || ""; }
   function projName() { return t(project().name_key); }
   function content(k) { var c = project().content || {}; return (c[state.lang] && c[state.lang][k]) || (c.en && c.en[k]) || (c.he && c.he[k]) || ""; }
   var KNOWN_DIRS = { west:1, east:1, north:1, south:1, "south-west":1, "north-west":1, "south-east":1, "north-east":1 };
@@ -122,6 +132,16 @@
     var v = dv || DIRV[u.dir] || [-1, 0], y = u.floor * fh + fh * 0.4;
     return { pos: (v[0] * half).toFixed(2) + "m " + y.toFixed(2) + "m " + (v[1] * half).toFixed(2) + "m", nrm: v[0] + " 0 " + v[1] };
   }
+  function buildingPos(b) {
+    var raw = String(b.hotspot_position || "").trim().split(/\s+/);
+    var normal = String(b.hotspot_normal || "").trim().split(/\s+/);
+    if (raw.length !== 3 || !raw.every(function (n) { return isFinite(parseFloat(n)); })) { raw = ["0", "10", "0"]; }
+    if (normal.length !== 3 || !normal.every(function (n) { return isFinite(parseFloat(n)); })) { normal = ["0", "0", "1"]; }
+    return {
+      pos: raw.map(function (n) { return parseFloat(n).toFixed(2) + "m"; }).join(" "),
+      nrm: normal.map(function (n) { return String(parseFloat(n)); }).join(" ")
+    };
+  }
   function orbitRadius(orbit, r) { var p = String(orbit).trim().split(/\s+/); if (p.length >= 3) p[2] = r + "m"; return p.join(" "); }
 
   /* =====================================================================
@@ -134,8 +154,10 @@
     if (uni && ROOT.contains(uni)) { ROOT.insertAdjacentElement("afterend", uni); }
     document.documentElement.lang = state.lang;
     document.documentElement.dir = isRTL() ? "rtl" : "ltr";
-    document.title = (state.page === "home" ? t("home_gallery_title") : (projName() + " · " + t("brand_sub")));
-    ROOT.className = "nl-app";
+    if (!(state.page === "project" && project().preserve_document_title)) {
+      document.title = (state.page === "home" ? t("home_gallery_title") : (projName() + " · " + t("brand_sub")));
+    }
+    ROOT.className = "nl-app" + (state.page === "project" && buildingMode() ? " nl-app--building" : "");
     ROOT.innerHTML = (state.page === "home")
       ? header() + homeMain() + footer()
       : header() + secNav() + projectMain() + footer() + sticky() + compareTray();
@@ -169,8 +191,9 @@
     var nav = state.page === "home"
       ? '<div class="nl-nav__links"><a href="#projects" class="is-active">' + esc(t("nav_projects")) + '</a><a href="#areas">' + esc(t("nav_areas")) + '</a><a href="#list">' + esc(t("nav_list")) + "</a></div>"
       : "";
+    var homeHref = state.page === "project" && project() && project().public_home_url ? project().public_home_url : "home.html";
     return '<header class="nl-header"><div class="nl-wrap nl-header__row">' +
-      '<a class="nl-brand" href="home.html"><span class="nl-brand__mark">N</span><span><span class="nl-brand__name">' + esc(t("brand")) + '</span> <span class="nl-brand__sub">' + esc(t("brand_sub")) + "</span></span></a>" +
+      '<a class="nl-brand" href="' + esc(homeHref) + '"><span class="nl-brand__mark">N</span><span><span class="nl-brand__name">' + esc(t("brand")) + '</span> <span class="nl-brand__sub">' + esc(t("brand_sub")) + "</span></span></a>" +
       '<nav class="nl-nav">' + nav + langBar() + "</nav></div></header>";
   }
 
@@ -181,7 +204,8 @@
       ["world", "secnav_environment"], ["media", "secnav_media"], ["about", "secnav_info"]
     ];
     return '<nav class="nl-secnav" id="nl-secnav" aria-label="' + esc(t("secnav_aria")) + '">' + items.map(function (it) {
-      return '<a href="#' + it[0] + '" data-act="scroll" data-id="' + it[0] + '" data-spy="' + it[0] + '">' + esc(t(it[1])) + "</a>";
+      var label = buildingMode() && it[0] === "inventory" ? buildingText("plans_title") : t(it[1]);
+      return '<a href="#' + it[0] + '" data-act="scroll" data-id="' + it[0] + '" data-spy="' + it[0] + '">' + esc(label) + "</a>";
     }).join("") + "</nav>";
   }
 
@@ -203,8 +227,10 @@
 
   /* block 2 - hero */
   function hero() {
-    var p = project(), avail = units().filter(function (u) { return u.status === "available"; }).length;
-    var hi = units().reduce(function (m, u) { return Math.max(m, u.floor); }, 0);
+    var p = project(), buildingOnly = buildingMode();
+    var hi = buildingOnly ? buildings().length : units().reduce(function (m, u) { return Math.max(m, u.floor); }, 0);
+    var hiLabel = buildingOnly ? buildingText("buildings_label") : t("fact_from_floor");
+    var secondaryLabel = buildingOnly ? buildingText("plans_title") : t("hero_cta_secondary");
     /* SEO: exactly ONE h1 per page. Project pages already carry the
        server-rendered h1 (.nlpf-name, directory.php) - the engine hero then
        renders as a same-styled h2. Pages without a server h1 keep the h1. */
@@ -220,24 +246,30 @@
         '<hr class="nl-rule">' +
         "<" + hTag + ' class="nl-hero__h1">' + esc(projName()) + "</" + hTag + ">" +
         '<p class="nl-lede" style="margin-top:14px">' + esc(content("tagline")) + "</p>" +
-        '<div class="nl-hero__cta"><button class="nl-btn nl-btn--accent" data-act="scroll" data-id="inquiry">' + esc(t("hero_cta_primary")) + '</button><button class="nl-btn nl-btn--ghost" data-act="scroll" data-id="inventory">' + esc(t("hero_cta_secondary")) + "</button></div>" +
+        '<div class="nl-hero__cta"><button class="nl-btn nl-btn--accent" data-act="scroll" data-id="inquiry">' + esc(t("hero_cta_primary")) + '</button><button class="nl-btn nl-btn--ghost" data-act="scroll" data-id="inventory">' + esc(secondaryLabel) + "</button></div>" +
         '<div class="nl-hero__facts">' +
           '<div><div class="nl-fact__n">' + esc(p.floors) + '</div><div class="nl-fact__l">' + esc(t("fact_floors")) + "</div></div>" +
-          '<div><div class="nl-fact__n">' + esc(units().length) + '</div><div class="nl-fact__l">' + esc(t("fact_homes")) + "</div></div>" +
-          '<div><div class="nl-fact__n">' + esc(hi) + '</div><div class="nl-fact__l">' + esc(t("fact_from_floor")) + "</div></div>" +
+          '<div><div class="nl-fact__n">' + esc(p.units_total || units().length) + '</div><div class="nl-fact__l">' + esc(t("fact_homes")) + "</div></div>" +
+          '<div><div class="nl-fact__n">' + esc(hi) + '</div><div class="nl-fact__l">' + esc(hiLabel) + "</div></div>" +
         "</div>" +
       "</div>" +
-      '<div class="nl-hero__media"><img src="' + esc(p.hero_image || p.model_poster) + '" alt="' + esc(projName()) + '" loading="eager">' + (SR.config.demo ? '<span class="nl-badge nl-badge--demo nl-hero__badge">' + esc(t("demo_badge")) + "</span>" : "") + "</div>" +
+      '<div class="nl-hero__media"><img src="' + esc(p.hero_image || p.model_poster) + '" alt="' + esc(p.media_alt || projName()) + '" loading="eager">' + (p.media_note ? '<span class="nl-hero__media-note">' + esc(p.media_note) + "</span>" : "") + (SR.config.demo ? '<span class="nl-badge nl-badge--demo nl-hero__badge">' + esc(t("demo_badge")) + "</span>" : "") + "</div>" +
     "</div>";
   }
 
   /* block 3 + 4 - theater (3D) and facade backup */
   function theater() {
-    var p = project();
+    var p = project(), buildingOnly = buildingMode();
     var hots = units().map(function (u) {
       var pos = unitPos(u), cls = "nl-hot" + (u.status === "reserved" ? " nl-hot--reserved" : u.status === "sold" ? " nl-hot--sold" : "") + (u.recommended ? " nl-hot--rec" : "");
       return '<button slot="hotspot-' + esc(u.id) + '" data-position="' + pos.pos + '" data-normal="' + pos.nrm + '" data-visibility-attribute="visible" class="' + cls + '" data-act="select" data-id="' + esc(u.id) + '" aria-label="' + esc(unitTitleAria(u)) + '">' + esc(u.floor) + "</button>";
     }).join("");
+    if (buildingOnly) {
+      hots += buildings().map(function (b) {
+        var pos = buildingPos(b);
+        return '<button slot="hotspot-building-' + esc(b.id) + '" data-position="' + pos.pos + '" data-normal="' + pos.nrm + '" data-visibility-attribute="visible" class="nl-building-hot" data-act="building" data-id="' + esc(b.id) + '" aria-label="' + esc(b.label) + '">' + esc(String(b.id || "").toUpperCase()) + "</button>";
+      }).join("");
+    }
     var orient = p.orientation || {};
     function opin(side, key, pos) { return orient[key] ? '<span class="nl-orient" style="' + pos + '">' + svg(side, 12) + esc(t(orient[key])) + "</span>" : ""; }
     var orientPins =
@@ -270,12 +302,17 @@
           '<input type="range" id="nl-sunslider" min="360" max="1140" step="15" value="' + state.sunMin + '" aria-label="' + esc(t("sun_time_aria")) + '">' +
           '<output class="nl-sundial__time" id="nl-suntime">' + fmtTime(state.sunMin) + "</output>" +
         "</div>" +
-        (SR.config.studio !== "off" ? '<button class="nl-cotour-btn nl-studio-launch" data-act="studio-any" type="button">' + esc(t("nlst_open")) + "</button>" : "") +
+        (SR.config.studio !== "off" && !buildingOnly ? '<button class="nl-cotour-btn nl-studio-launch" data-act="studio-any" type="button">' + esc(t("nlst_open")) + "</button>" : "") +
         '<button class="nl-cotour-btn" data-act="cotour" type="button">' + esc(t("cotour_start")) + "</button>" +
         '<p class="nl-sundial__note">' + esc(t("sun_sim_note")) + "</p>" +
       "</div>" : "";
+    var theaterEyebrow = buildingOnly ? buildingText("eyebrow") : t("theater_eyebrow");
+    var theaterTitle = buildingOnly ? buildingText("title") : t("theater_title");
+    var stageLegend = buildingOnly
+      ? '<div class="nl-building-prompt">' + esc(buildingText("prompt")) + "</div>"
+      : '<div class="nl-legend"><span><span class="nl-dot s-available"></span>' + esc(t("legend_available")) + '</span><span><span class="nl-dot s-reserved"></span>' + esc(t("legend_reserved")) + '</span><span><span class="nl-dot s-sold"></span>' + esc(t("legend_sold")) + "</span></div>";
     return '<div class="nl-theater">' +
-      '<div class="nl-theater__top"><div class="nl-theater__title"><span class="e">' + esc(t("theater_eyebrow")) + "</span><h2>" + esc(t("theater_title")) + "</h2></div>" +
+      '<div class="nl-theater__top"><div class="nl-theater__title"><span class="e">' + esc(theaterEyebrow) + "</span><h2>" + esc(theaterTitle) + "</h2></div>" +
         (p.model_glb ? '<div class="nl-toggle" role="group" aria-label="view"><button data-act="view" data-id="3d" aria-pressed="true">' + esc(t("view_3d")) + '</button><button data-act="view" data-id="facade" aria-pressed="false">' + esc(t("view_facade")) + "</button></div>" : "") + "</div>" +
       '<div class="nl-stagewrap">' +
         (p.model_glb ? '<model-viewer id="nl-mv" class="nl-stage" src="' + esc(p.model_glb) + '" loading="lazy" reveal="auto" camera-controls interaction-prompt="none" environment-image="neutral" exposure="1.02" shadow-intensity="0.55" shadow-softness="1"' + (p.default_orbit ? ' camera-orbit="' + esc(p.default_orbit) + '"' : '') + (p.default_target ? ' camera-target="' + esc(p.default_target) + '"' : '') + ' min-camera-orbit="auto 48deg auto" max-camera-orbit="auto 86deg auto" min-field-of-view="16deg" max-field-of-view="68deg" touch-action="pan-y">' + hots + "</model-viewer>" : "") +
@@ -284,7 +321,7 @@
         (p.model_glb && p.model_generic ? '<div class="nl-generic-chip">' + esc(t("generic_model")) + "</div>" : "") +
         '<div class="nlp3d-model-error nl-model-error" id="nl-model-error" role="status" aria-live="polite" hidden>' + esc(t("model_error")) + "</div>" +
         orientPins +
-        '<div class="nl-legend"><span><span class="nl-dot s-available"></span>' + esc(t("legend_available")) + '</span><span><span class="nl-dot s-reserved"></span>' + esc(t("legend_reserved")) + '</span><span><span class="nl-dot s-sold"></span>' + esc(t("legend_sold")) + "</span></div>" +
+        stageLegend +
         '<div class="nl-facade" id="nl-facade">' + facadeInner + "</div>" +
         '<div class="nl-scrim" id="nl-scrim"></div>' +
         (p.model_glb ? '<button class="nl-resetview" id="nl-resetview" data-act="resetview" type="button" hidden>' + esc(t("reset_view")) + "</button>" : "") +
@@ -293,16 +330,38 @@
         panel() +
       "</div>" +
       dock +
+      (buildingOnly ? '<p class="nl-building-model-note">' + esc(buildingText("model_note")) + "</p>" : "") +
     "</div>";
   }
   function unitTitleAria(u) { return roomsLabel(u.rooms) + ", " + t("floor_label", { n: u.floor }) + ", " + dirLabel(u.dir) + ", " + statusLabel(u.status); }
 
   /* block 5 - slide-out panel (filled on select) */
   function panel() {
-    return '<aside class="nl-panel" id="nl-panel" aria-live="polite"><div class="nl-panel__scroll" id="nl-panel-body">' + panelEmpty() + "</div></aside>";
+    return '<aside class="nl-panel" id="nl-panel" aria-live="polite"><div class="nl-panel__scroll" id="nl-panel-body">' + (buildingMode() ? buildingPanelEmpty() : panelEmpty()) + "</div></aside>";
   }
   function panelEmpty() {
     return '<div style="display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%;text-align:center;gap:10px;color:var(--theater-sub);padding:30px">' + svg("grid", 26) + "<p>" + esc(t("panel_prompt")) + "</p></div>";
+  }
+  function buildingPanelEmpty() {
+    return '<div class="nl-building-panel-empty">' + svg("grid", 28) + '<h3>' + esc(buildingText("title")) + '</h3><p>' + esc(buildingText("prompt")) + '</p><small>' + esc(buildingText("map_note")) + "</small></div>";
+  }
+  function buildingPanelBody(b) {
+    var plans = (project().sample_plans || []).filter(function (plan) { return plan.building === b.id; });
+    var planLinks = plans.map(function (plan) {
+      var url = safeHttpUrl(plan.url);
+      return url ? '<a class="nl-building-plan" href="' + esc(url) + '" target="_blank" rel="noopener noreferrer">' + svg("grid", 15) + '<span>' + esc(plan.label) + "</span></a>" : "";
+    }).join("");
+    var source = safeHttpUrl(b.source_url);
+    return '<div class="nl-building-panel">' +
+      '<div class="nl-panel__head"><div><span class="nl-badge nl-building-panel__badge">' + esc(buildingText("eyebrow")) + '</span><h3 class="nl-panel__title">' + esc(b.label) + '</h3></div>' +
+      '<button class="nl-panel__close" data-act="close" aria-label="' + esc(buildingText("close_label")) + '">' + svg("close", 16) + "</button></div>" +
+      '<div class="nl-building-facts"><div><span>' + esc(buildingText("floors_label")) + '</span><strong>' + esc(b.floors) + '</strong></div><div><span>' + esc(buildingText("height_label")) + '</span><strong>' + esc(b.height) + "</strong></div></div>" +
+      '<p class="nl-building-panel__facts">' + esc(b.facts) + "</p>" +
+      (source ? '<a class="nl-building-source" href="' + esc(source) + '" target="_blank" rel="noopener noreferrer">' + esc(buildingText("source_label")) + "</a>" : "") +
+      (planLinks ? '<div class="nl-building-plans"><h4>' + esc(buildingText("plans_title")) + '</h4><div>' + planLinks + '</div><p>' + esc(buildingText("plans_note")) + "</p></div>" : "") +
+      '<p class="nl-building-map-note">' + esc(buildingText("map_note")) + "</p>" +
+      '<button class="nl-btn nl-btn--accent nl-btn--block" data-act="scroll" data-id="inquiry">' + esc(t("btn_inquire")) + "</button>" +
+    "</div>";
   }
   function panelBody(u) {
     var fav = state.favs.indexOf(u.id) >= 0, cmp = state.compare.indexOf(u.id) >= 0, p = project();
@@ -431,6 +490,7 @@
 
   /* block 6 - inventory */
   function inventory() {
+    if (buildingMode()) { return buildingPlanInventory(); }
     var list = filtered();
     var cards = list.map(function (u) {
       var fav = state.favs.indexOf(u.id) >= 0;
@@ -449,6 +509,17 @@
       '<div id="nl-recentwrap">' + recentStrip() + "</div>" +
       '<div class="nl-invgrid">' + cards + "</div>" +
       '<div class="nl-muted" style="margin-top:14px;font-size:13px">' + esc(t("results_count", { n: list.length })) + "</div>";
+  }
+
+  function buildingPlanInventory() {
+    var plans = Array.isArray(project().sample_plans) ? project().sample_plans : [];
+    var cards = plans.map(function (plan) {
+      var url = safeHttpUrl(plan.url), b = building(plan.building);
+      if (!url) return "";
+      return '<a class="nl-plan-card" href="' + esc(url) + '" target="_blank" rel="noopener noreferrer"><span>' + esc(b ? b.label : plan.building) + '</span><strong>' + esc(plan.label) + '</strong><small>' + esc(buildingText("plans_note")) + "</small></a>";
+    }).join("");
+    return '<div class="nl-invhead nl-building-invhead"><div><span class="nl-eyebrow">' + esc(buildingText("eyebrow")) + '</span><hr class="nl-rule"><h2>' + esc(buildingText("plans_title")) + '</h2><p class="nl-muted" style="max-width:62ch">' + esc(buildingText("plans_note")) + "</p></div></div>" +
+      '<div class="nl-plan-grid">' + cards + "</div>";
   }
 
 
@@ -870,7 +941,9 @@
 
   /* block 10 - SEO body (placeholder content from data) */
   function seoBody() {
-    return '<div style="max-width:760px"><span class="nl-eyebrow">' + esc(t("seo_eyebrow")) + '</span><hr class="nl-rule"><h2>' + esc(content("seo_h")) + '</h2><p class="nl-lede" style="margin-top:14px">' + esc(content("seo_p")) + "</p></div>";
+    var heading = content("seo_h"), paragraph = content("seo_p");
+    if (project().suppress_empty_seo && !heading && !paragraph) return "";
+    return '<div style="max-width:760px"><span class="nl-eyebrow">' + esc(t("seo_eyebrow")) + '</span><hr class="nl-rule"><h2>' + esc(heading) + '</h2><p class="nl-lede" style="margin-top:14px">' + esc(paragraph) + "</p></div>";
   }
   /* visible FAQ accordion (the FAQPage JSON-LD is emitted server-side from the same meta) */
   function faq() {
@@ -942,10 +1015,15 @@
 
   /* footer */
   function footer() {
-    var projLinks = SR.order.map(function (k) { return '<li><a href="project.html?project=' + esc(k) + '">' + esc(t(SR.projects[k].name_key)) + "</a></li>"; }).join("");
+    var current = project(), usePublicUrls = state.page === "project" && current && current.public_home_url;
+    var projLinks = SR.order.map(function (k) {
+      var p = SR.projects[k], href = usePublicUrls && p && p.url ? p.url : ("project.html?project=" + k);
+      return '<li><a href="' + esc(href) + '">' + esc(t(p.name_key)) + "</a></li>";
+    }).join("");
     var langLinks = pageLangs().map(function (l) { return '<li><a href="' + esc(langHref(l)) + '" data-act="lang" data-id="' + l + '">' + esc(t("lang_" + l)) + "</a></li>"; }).join("");
+    var homeHref = state.page === "project" && current && current.public_home_url ? current.public_home_url : "home.html";
     return '<footer class="nl-footer"><div class="nl-wrap"><div class="nl-footer__row">' +
-      '<div><a class="nl-brand" href="home.html"><span class="nl-brand__mark">N</span><span class="nl-brand__name" style="color:#efe7d6">' + esc(t("brand")) + '</span></a><p style="color:#b8b1a2;font-size:14px;margin-top:12px;max-width:34ch">' + esc(t("footer_tagline")) + "</p></div>" +
+      '<div><a class="nl-brand" href="' + esc(homeHref) + '"><span class="nl-brand__mark">N</span><span class="nl-brand__name" style="color:#efe7d6">' + esc(t("brand")) + '</span></a><p style="color:#b8b1a2;font-size:14px;margin-top:12px;max-width:34ch">' + esc(t("footer_tagline")) + "</p></div>" +
       "<div><h5>" + esc(t("footer_col_projects")) + "</h5><ul>" + projLinks + "</ul></div>" +
       "<div><h5>" + esc(t("footer_col_areas")) + '</h5><ul><li><a href="#world">' + esc(t("area_sde_dov")) + "</a></li></ul></div>" +
       "<div><h5>" + esc(t("footer_col_langs")) + "</h5><ul>" + langLinks + "</ul></div>" +
@@ -1277,6 +1355,7 @@
     var act = node.dataset.act, id = node.dataset.id;
     if (act === "lang") { e.preventDefault(); switchLang(id); }
     else if (act === "select") selectUnit(id);
+    else if (act === "building") selectBuilding(id);
     else if (act === "close") closePanel();
     else if (act === "view") setView(id);
     else if (act === "tab") setTab(id);
@@ -1308,8 +1387,12 @@
     }
   });
   ROOT.addEventListener("keydown", function (e) {
-    var node = e.target.closest('[role="button"][data-act="select"]');
-    if (node && (e.key === "Enter" || e.key === " ")) { e.preventDefault(); selectUnit(node.dataset.id); }
+    var node = e.target.closest('[role="button"][data-act="select"],[data-act="building"]');
+    if (node && (e.key === "Enter" || e.key === " ")) {
+      e.preventDefault();
+      if (node.dataset.act === "building") selectBuilding(node.dataset.id);
+      else selectUnit(node.dataset.id);
+    }
     if (e.key === "Escape") closePanel();
   });
 
@@ -1361,6 +1444,25 @@
     deeplink();
     recordRecent(u);
     var rv = document.getElementById("nl-resetview"); if (rv) rv.hidden = false;
+  }
+  function selectBuilding(id) {
+    var b = building(id); if (!b) return;
+    state.buildingId = id; state.unitId = null;
+    var body = document.getElementById("nl-panel-body"), panelEl = document.getElementById("nl-panel");
+    if (body) body.innerHTML = buildingPanelBody(b);
+    if (panelEl) panelEl.classList.add("is-open");
+    document.querySelectorAll(".nl-building-hot").forEach(function (node) { node.classList.toggle("is-active", node.dataset.id === id); });
+    var mv = document.getElementById("nl-mv");
+    if (mv) {
+      try {
+        mv.interpolationDecay = 130;
+        mv.cameraTarget = b.camera_target || buildingPos(b).pos;
+        if (b.camera_orbit) mv.cameraOrbit = b.camera_orbit;
+        mv.fieldOfView = "30deg";
+      } catch (e) {}
+    }
+    var rv = document.getElementById("nl-resetview"); if (rv) rv.hidden = false;
+    updateFormCtx(); updateSticky();
   }
   /* Apartment Studio bridge: hand the overlay everything it needs */
   function openStudio(id) {
@@ -1422,7 +1524,7 @@
     });
   }
   function closePanel() {
-    state.unitId = null;
+    state.unitId = null; state.buildingId = null;
     var p = document.getElementById("nl-panel"); if (p) p.classList.remove("is-open");
     var s = document.getElementById("nl-scrim"); if (s) s.classList.remove("is-on");
     document.querySelectorAll(".is-active").forEach(function (n) { n.classList.remove("is-active"); });

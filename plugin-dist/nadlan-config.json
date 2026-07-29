@@ -1,15 +1,15 @@
 {
   "name": "NadLan Config",
   "slug": "nadlan-config",
-  "version": "1.72.110",
+  "version": "1.72.128",
   "author": "nad-lan.co.il",
   "homepage": "https://nad-lan.co.il",
   "requires": "6.7",
   "tested": "7.0",
   "requires_php": "7.4",
-  "download_url": "https://raw.githubusercontent.com/The-new-ben/nad-lan-co-il/main/plugin-dist/nadlan-config-1.72.110.zip",
-  "last_updated": "2026-07-12",
+  "download_url": "https://raw.githubusercontent.com/The-new-ben/nad-lan-co-il/main/plugin-dist/nadlan-config-1.72.128.zip",
+  "last_updated": "2026-07-29",
   "sections": {
-    "changelog": "<h4>1.72.110</h4><ul><li>Project-specific walk sets (DAMAC + Lion), cinematic official-film band on international flagships.</li></ul>"
+    "changelog": "<h4>1.72.128</h4><ul><li>UTOPIA Sde Dov buyer guide in Hebrew, English, French, Russian and Arabic.</li><li>Source-backed four-building interactive model, official sample plans and rights-safe concept media.</li><li>UTOPIA-only canonical, hreflang, schema and safe publication migration with verified rollback.</li></ul>"
   }
 }

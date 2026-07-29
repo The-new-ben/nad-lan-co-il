@@ -167,6 +167,10 @@ add_filter( 'the_content', 'nadlan_fc_project_hero', 8 );
 
 /* ---------------- assets: one site-wide handle, kses-proof ---------------- */
 add_action( 'wp_enqueue_scripts', function () {
+	if ( is_singular( 'nadlan_project' ) && function_exists( 'nadlan_utopia_is_family' ) &&
+		nadlan_utopia_is_family( get_queried_object_id() ) ) {
+		return;
+	}
 	$ver = defined( 'NADLAN_CONFIG_VERSION' ) ? NADLAN_CONFIG_VERSION : '1';
 	wp_register_style( 'nlfc', false, array(), $ver );
 	wp_enqueue_style( 'nlfc' );

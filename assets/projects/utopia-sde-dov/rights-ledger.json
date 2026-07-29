@@ -1,0 +1,77 @@
+{
+  "schema": "nadlan-project-media-rights/v1",
+  "project": "UTOPIA Sde Dov, Tel Aviv",
+  "checked_on": "2026-07-29",
+  "policy": "Only first-party public material used as a cited source, or original independent concept media created for Nad-Lan, may appear on the page. Concept media is never presented as an official rendering, promised view or contractual specification.",
+  "assets": [
+    {
+      "file": "utopia-concept-exterior-v1.png",
+      "kind": "original_independent_concept",
+      "rights": "Created for Nad-Lan with OpenAI image generation",
+      "public_caption_requirement": "Independent concept illustration. Not an official project rendering or sales specification.",
+      "may_prove": [],
+      "may_illustrate": [
+        "four-building composition",
+        "relative published height hierarchy",
+        "general urban and coastal context"
+      ]
+    },
+    {
+      "file": "utopia-concept-interior-v1.png",
+      "kind": "original_independent_concept",
+      "rights": "Created for Nad-Lan with OpenAI image generation",
+      "public_caption_requirement": "Independent interior concept. The project specification and apartment finish must be confirmed with the developer.",
+      "may_prove": [],
+      "may_illustrate": [
+        "questions a buyer may ask about living-space planning",
+        "possible Mediterranean design atmosphere"
+      ]
+    },
+    {
+      "file": "utopia-concept-window-view-v1.png",
+      "kind": "original_independent_concept",
+      "rights": "Created for Nad-Lan with OpenAI image generation",
+      "public_caption_requirement": "Independent orientation concept. It is not the verified view from a particular apartment.",
+      "may_prove": [],
+      "may_illustrate": [
+        "why floor, direction and future obstructions matter"
+      ]
+    },
+    {
+      "file": "utopia-concept-wellness-v1.png",
+      "kind": "original_independent_concept",
+      "rights": "Created for Nad-Lan with OpenAI image generation",
+      "public_caption_requirement": "Independent wellness concept. Confirm the final amenity design and specification in the sale documents.",
+      "may_prove": [],
+      "may_illustrate": [
+        "the planned wellness program described by the developer"
+      ]
+    },
+    {
+      "file": "model-context.glb",
+      "kind": "original_illustrative_3d_massing",
+      "rights": "Generated locally from project-scoped procedural geometry",
+      "public_caption_requirement": "Interactive illustrative massing. It does not map exact apartments, windows, inventory or views.",
+      "may_prove": [],
+      "may_illustrate": [
+        "four-building composition",
+        "published floor-count hierarchy",
+        "orientation questions"
+      ]
+    }
+  ],
+  "first_party_documents": [
+    {
+      "url": "https://utopiatlv.co.il/",
+      "use": "Factual citation and links to publicly distributed plan drawings"
+    },
+    {
+      "url": "https://www.nahmias-group.co.il/project/utopia-%D7%A9%D7%93%D7%94-%D7%93%D7%91-%D7%AA%D7%9C-%D7%90%D7%91%D7%99%D7%91/",
+      "use": "Developer-published project description"
+    },
+    {
+      "url": "https://www.nahmias-group.co.il/en/project/utopia/",
+      "use": "Developer-published English project description and discrepancy check"
+    }
+  ]
+}

@@ -1,0 +1,94 @@
+{
+  "schema": "nadlan-utopia-content-depth/v1",
+  "generated_at": "2026-07-29T22:17:52.709Z",
+  "threshold_words_per_language": 5000,
+  "source_link_contract_count": 23,
+  "languages": [
+    {
+      "lang": "he",
+      "file": "content/projects/utopia-sde-dov/article-he.html",
+      "word_count": 6602,
+      "h1": [
+        "UTOPIA שדה דב תל אביב - מחירים, דירות ובחירה מהבניין"
+      ],
+      "h2_count": 9,
+      "opening_word_count": 141,
+      "source_link_count": 23,
+      "internal_link_count": 6,
+      "content_sha256": "334fbb6727f087091cfb9bbef304ff2e000b3f6d24d3bd58e0203ca337631644",
+      "plugin_sha256": "334fbb6727f087091cfb9bbef304ff2e000b3f6d24d3bd58e0203ca337631644",
+      "plugin_copy_match": true,
+      "errors": [],
+      "pass": true
+    },
+    {
+      "lang": "en",
+      "file": "content/projects/utopia-sde-dov/article-en.html",
+      "word_count": 7442,
+      "h1": [
+        "UTOPIA Sde Dov Tel Aviv - Apartments for Sale, Prices and Choosing a Home"
+      ],
+      "h2_count": 9,
+      "opening_word_count": 143,
+      "source_link_count": 23,
+      "internal_link_count": 6,
+      "content_sha256": "a7cb8b69c50a9cc5bb1f2370bd22871589ddb68bf45c2651421a070eda903fe5",
+      "plugin_sha256": "a7cb8b69c50a9cc5bb1f2370bd22871589ddb68bf45c2651421a070eda903fe5",
+      "plugin_copy_match": true,
+      "errors": [],
+      "pass": true
+    },
+    {
+      "lang": "fr",
+      "file": "content/projects/utopia-sde-dov/article-fr.html",
+      "word_count": 9304,
+      "h1": [
+        "UTOPIA Sde Dov Tel Aviv - Appartements à vendre, prix et choix d'un logement"
+      ],
+      "h2_count": 9,
+      "opening_word_count": 150,
+      "source_link_count": 23,
+      "internal_link_count": 6,
+      "content_sha256": "d344bafb736b0f56aaa4a5a0f1db59007556632c170983edb2a7f3c489fcbb51",
+      "plugin_sha256": "d344bafb736b0f56aaa4a5a0f1db59007556632c170983edb2a7f3c489fcbb51",
+      "plugin_copy_match": true,
+      "errors": [],
+      "pass": true
+    },
+    {
+      "lang": "ru",
+      "file": "content/projects/utopia-sde-dov/article-ru.html",
+      "word_count": 7762,
+      "h1": [
+        "UTOPIA Sde Dov Тель-Авив - квартиры на продажу, цены и выбор квартиры"
+      ],
+      "h2_count": 9,
+      "opening_word_count": 141,
+      "source_link_count": 23,
+      "internal_link_count": 6,
+      "content_sha256": "056a3d24e970691db7ed5142759ea9876bbdd666b61ac04e2173f5dfcd5f1459",
+      "plugin_sha256": "056a3d24e970691db7ed5142759ea9876bbdd666b61ac04e2173f5dfcd5f1459",
+      "plugin_copy_match": true,
+      "errors": [],
+      "pass": true
+    },
+    {
+      "lang": "ar",
+      "file": "content/projects/utopia-sde-dov/article-ar.html",
+      "word_count": 6777,
+      "h1": [
+        "UTOPIA Sde Dov تل أبيب - شقق للبيع والأسعار واختيار الشقة"
+      ],
+      "h2_count": 9,
+      "opening_word_count": 150,
+      "source_link_count": 23,
+      "internal_link_count": 6,
+      "content_sha256": "70b565854ff0c8710923e95280481c5a81c504806f546fd36c20a9557f4168e2",
+      "plugin_sha256": "70b565854ff0c8710923e95280481c5a81c504806f546fd36c20a9557f4168e2",
+      "plugin_copy_match": true,
+      "errors": [],
+      "pass": true
+    }
+  ],
+  "pass": true
+}

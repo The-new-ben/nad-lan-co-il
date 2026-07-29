@@ -1,0 +1,357 @@
+/*
+ * UTOPIA Sde Dov showroom presentation.
+ *
+ * This stylesheet is enqueued only for identity-verified UTOPIA sibling pages.
+ * Every engine selector is additionally bounded by .nl-app--building and every
+ * editorial selector by .utopia-project-content, so the shared showroom remains
+ * cascade-identical for all other projects.
+ */
+
+.nl-app--building .nl-hero__media-note {
+  position: absolute;
+  inset-inline: 14px;
+  inset-block-end: 14px;
+  padding: 9px 11px;
+  border: 1px solid rgba(255,255,255,.28);
+  border-radius: 9px;
+  background: rgba(17,16,12,.72);
+  color: #f7f2e8;
+  font-size: 11.5px;
+  line-height: 1.45;
+  backdrop-filter: blur(7px);
+}
+
+.nl-app--building .nl-building-hot {
+  min-width: 42px;
+  height: 34px;
+  padding: 0 10px;
+  border: 1px solid rgba(244,226,174,.82);
+  border-radius: 999px;
+  background: rgba(30,26,18,.82);
+  color: #f4e2ae;
+  box-shadow: 0 5px 18px rgba(0,0,0,.5);
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: .03em;
+  cursor: pointer;
+  transition: transform .16s ease, background .16s ease, box-shadow .16s ease;
+}
+.nl-app--building .nl-building-hot:hover,
+.nl-app--building .nl-building-hot:focus-visible {
+  transform: translateY(-2px) scale(1.06);
+  background: rgba(156,122,60,.92);
+  color: #fff;
+}
+.nl-app--building .nl-building-hot.is-active {
+  background: #9c7a3c;
+  color: #fff;
+  box-shadow: 0 0 0 5px rgba(201,156,73,.24), 0 6px 20px rgba(0,0,0,.54);
+}
+.nl-app--building .nl-building-hot:not([data-visible]) {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.nl-app--building .nl-building-prompt {
+  position: absolute;
+  z-index: 6;
+  inset-inline: clamp(12px,2vw,18px);
+  inset-block-end: clamp(12px,2vw,18px);
+  max-width: 430px;
+  margin-inline: auto;
+  padding: 9px 14px;
+  border: 1px solid var(--theater-line);
+  border-radius: 999px;
+  background: rgba(12,11,8,.72);
+  color: #e7decb;
+  text-align: center;
+  font-size: 12px;
+  font-weight: 650;
+  line-height: 1.45;
+  backdrop-filter: blur(6px);
+}
+.nl-app--building .nl-building-model-note {
+  margin: 12px 0 0;
+  color: var(--muted-foreground);
+  font-size: 12px;
+  line-height: 1.55;
+}
+.nl-app--building .nl-building-panel-empty {
+  display: flex;
+  height: 100%;
+  padding: 30px;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 10px;
+  color: var(--theater-sub);
+  text-align: center;
+}
+.nl-app--building .nl-building-panel-empty h3 {
+  margin: 0;
+  color: #fff;
+  font-size: 1.35rem;
+}
+.nl-app--building .nl-building-panel-empty p {
+  margin: 0;
+  max-width: 28ch;
+}
+.nl-app--building .nl-building-panel-empty small {
+  display: block;
+  max-width: 38ch;
+  line-height: 1.55;
+}
+.nl-app--building .nl-building-panel__badge {
+  display: inline-flex;
+  margin-bottom: 9px;
+  background: rgba(255,255,255,.08);
+  color: #f2dfaa;
+}
+.nl-app--building .nl-building-facts {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 9px;
+  margin: 18px 0;
+}
+.nl-app--building .nl-building-facts > div {
+  padding: 12px;
+  border: 1px solid var(--theater-line);
+  border-radius: 10px;
+  background: rgba(255,255,255,.04);
+}
+.nl-app--building .nl-building-facts span,
+.nl-app--building .nl-building-facts strong {
+  display: block;
+}
+.nl-app--building .nl-building-facts span {
+  color: var(--theater-sub);
+  font-size: 11px;
+  line-height: 1.35;
+}
+.nl-app--building .nl-building-facts strong {
+  margin-top: 5px;
+  color: #fff;
+  font-size: 14px;
+  line-height: 1.35;
+}
+.nl-app--building .nl-building-panel__facts {
+  color: #eee7d8;
+  line-height: 1.7;
+}
+.nl-app--building .nl-building-source {
+  display: inline-flex;
+  margin: 2px 0 18px;
+  color: #f0d792;
+  font-size: 13px;
+  text-underline-offset: 3px;
+}
+.nl-app--building .nl-building-plans {
+  margin: 4px 0 18px;
+  padding-top: 16px;
+  border-top: 1px solid var(--theater-line);
+}
+.nl-app--building .nl-building-plans h4 {
+  margin: 0 0 10px;
+  color: #fff;
+  font-size: 14px;
+}
+.nl-app--building .nl-building-plans > div {
+  display: grid;
+  gap: 7px;
+}
+.nl-app--building .nl-building-plan {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 9px 10px;
+  border: 1px solid var(--theater-line);
+  border-radius: 8px;
+  color: #f4ead4;
+  text-decoration: none;
+  background: rgba(255,255,255,.035);
+}
+.nl-app--building .nl-building-plan:hover {
+  border-color: #9c7a3c;
+  background: rgba(156,122,60,.13);
+}
+.nl-app--building .nl-building-plans p,
+.nl-app--building .nl-building-map-note {
+  color: var(--theater-sub);
+  font-size: 11.5px;
+  line-height: 1.55;
+}
+.nl-app--building .nl-building-map-note {
+  padding: 10px 11px;
+  border-radius: 8px;
+  background: rgba(255,255,255,.04);
+}
+.nl-app--building .nl-building-invhead h2 {
+  margin: 10px 0 8px;
+  font-family: var(--font-serif-he);
+  font-size: clamp(1.55rem,1.2rem + 1vw,2.2rem);
+}
+[dir="ltr"] .nl-app--building .nl-building-invhead h2 {
+  font-family: var(--font-serif-en);
+}
+.nl-app--building .nl-plan-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill,minmax(220px,1fr));
+  gap: 12px;
+}
+.nl-app--building .nl-plan-card {
+  display: flex;
+  min-height: 150px;
+  padding: 16px;
+  flex-direction: column;
+  justify-content: flex-end;
+  gap: 7px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  background: linear-gradient(145deg,#fff,#f5efe4);
+  color: var(--foreground);
+  text-decoration: none;
+  box-shadow: 0 8px 26px rgba(27,26,23,.06);
+  transition: transform .16s ease, border-color .16s ease, box-shadow .16s ease;
+}
+.nl-app--building .nl-plan-card:hover {
+  transform: translateY(-2px);
+  border-color: var(--gold);
+  box-shadow: 0 12px 30px rgba(27,26,23,.1);
+}
+.nl-app--building .nl-plan-card > span {
+  color: var(--gold);
+  font-size: 11px;
+  font-weight: 750;
+  letter-spacing: .04em;
+  text-transform: uppercase;
+}
+.nl-app--building .nl-plan-card > strong {
+  font-size: 1.05rem;
+}
+.nl-app--building .nl-plan-card > small {
+  color: var(--muted-foreground);
+  line-height: 1.45;
+}
+
+.utopia-project-content {
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+.utopia-project-content.nadlan-project-lead-wrap {
+  max-width: 1040px;
+  padding-top: clamp(24px,4vw,54px);
+  padding-bottom: clamp(18px,3vw,34px);
+}
+.utopia-project-content.nadlan-project-lead-wrap .nadlan-project-lead {
+  display: grid;
+  gap: 16px;
+}
+.utopia-project-content.nadlan-project-lead-wrap h1 {
+  max-width: 920px;
+  margin: 0;
+  color: var(--ink,#1B1A17);
+  font-family: "Frank Ruhl Libre",Georgia,serif;
+  font-size: clamp(2.25rem,1.5rem + 3vw,4.5rem);
+  font-weight: 700;
+  line-height: 1.04;
+  letter-spacing: -.025em;
+}
+[dir="ltr"] .utopia-project-content.nadlan-project-lead-wrap h1 {
+  font-family: "Fraunces",Georgia,serif;
+}
+.utopia-project-content.nadlan-project-lead-wrap .nadlan-project-lead > p:first-of-type {
+  max-width: 820px;
+  margin: 0;
+  color: var(--muted-foreground,#6B6457);
+  font-size: clamp(1.08rem,1rem + .45vw,1.35rem);
+  line-height: 1.7;
+}
+.utopia-project-content.nadlan-project-lead-wrap .project-lead-facts {
+  display: grid;
+  grid-template-columns: repeat(4,minmax(0,1fr));
+  gap: 10px;
+  margin: 4px 0 0;
+  padding: 0;
+  list-style: none;
+}
+.utopia-project-content.nadlan-project-lead-wrap .project-lead-facts li {
+  min-width: 0;
+  margin: 0;
+  padding: 13px 14px;
+  border: 1px solid var(--hairline,#E2DCD0);
+  border-radius: 10px;
+  background: var(--band,#F3EEE3);
+}
+.utopia-project-content.nadlan-project-lead-wrap .project-lead-facts strong,
+.utopia-project-content.nadlan-project-lead-wrap .project-lead-facts span {
+  display: block;
+}
+.utopia-project-content.nadlan-project-lead-wrap .project-lead-facts strong {
+  font-size: 1.05rem;
+  line-height: 1.25;
+}
+.utopia-project-content.nadlan-project-lead-wrap .project-lead-facts span {
+  margin-top: 4px;
+  color: var(--muted-foreground,#6B6457);
+  font-size: .78rem;
+  line-height: 1.35;
+}
+
+.utopia-project-content .utopia-media-gallery {
+  margin: 28px 0 34px;
+  padding: clamp(16px,3vw,24px);
+  border: 1px solid var(--hairline,#E2DCD0);
+  border-radius: 16px;
+  background: linear-gradient(145deg,#f8f4eb,#efe7d8);
+}
+.utopia-project-content .utopia-media-gallery h3 {
+  margin-top: 0;
+}
+.utopia-project-content .utopia-media-gallery__note {
+  max-width: 670px;
+  color: var(--muted-foreground,#6B6457);
+  font-size: .9rem;
+  line-height: 1.65;
+}
+.utopia-project-content .utopia-media-gallery__grid {
+  display: grid;
+  grid-template-columns: repeat(2,minmax(0,1fr));
+  gap: 12px;
+}
+.utopia-project-content .utopia-media-gallery figure {
+  min-width: 0;
+  margin: 0;
+  overflow: hidden;
+  border-radius: 12px;
+  background: #fff;
+  box-shadow: 0 8px 22px rgba(27,26,23,.08);
+}
+.utopia-project-content .utopia-media-gallery figure img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 3/2;
+  object-fit: cover;
+  border-radius: 0;
+}
+.utopia-project-content .utopia-media-gallery figcaption {
+  padding: 10px 12px 12px;
+  color: var(--ink,#1B1A17);
+  font-size: .82rem;
+  font-weight: 600;
+  line-height: 1.4;
+}
+
+@media (max-width: 600px) {
+  .utopia-project-content.nadlan-project-lead-wrap .project-lead-facts {
+    grid-template-columns: repeat(2,minmax(0,1fr));
+  }
+  .utopia-project-content .utopia-media-gallery__grid {
+    grid-template-columns: 1fr;
+  }
+  .utopia-project-content table {
+    display: block;
+    max-width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+}
