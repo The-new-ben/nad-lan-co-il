@@ -485,6 +485,7 @@ if ( ! function_exists( 'nadlan_hv2_band_projects' ) ) {
 	function nadlan_hv2_band_projects() {
 		$projects = nadlan_hv2_featured_projects( 3 );
 		if ( ! $projects ) { return; }
+		if ( function_exists( 'nadlan_sdedov_tour_band' ) && 'he' === nadlan_current_lang() ) { echo nadlan_sdedov_tour_band( 'home' ); } // phpcs:ignore
 		?>
 	<section class="nlhv2-dark">
 		<header><p class="nlhv2-kicker"><?php nadlan_e( 'pj_kicker' ); ?></p><h2><?php nadlan_e( 'pj_title' ); ?></h2>
@@ -574,8 +575,6 @@ if ( ! function_exists( 'nadlan_hv2_band_areas' ) ) {
 		$cities = nadlan_hv2_cities( 8 );
 		if ( count( $cities ) < 3 ) { return; }
 		?>
-	<?php if ( function_exists( 'nadlan_sdedov_tour_band' ) && 'he' === nadlan_current_lang() ) { echo nadlan_sdedov_tour_band( 'home' ); } // phpcs:ignore ?>
-
 	<section class="nlhv2-band">
 		<header><p class="nlhv2-kicker"><?php nadlan_e( 'ar_kicker' ); ?></p><h2><?php nadlan_e( 'ar_title' ); ?></h2></header>
 		<div class="nlhv2-areas">
