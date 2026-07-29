@@ -1,0 +1,4349 @@
+{
+  "createdAt": "2026-07-29T22:19:13.776Z",
+  "baseUrl": "http://127.0.0.1:4173",
+  "evidenceDirectory": "docs/qa/screenshots/utopia-preview-2026-07-29",
+  "serverStartedByQa": true,
+  "previewAssetNote": "The four not-yet-deployed public media URLs were fulfilled from the exact local UTOPIA release WebP files during static preview QA.",
+  "modelAsset": {
+    "path": "plugins/nadlan-config/assets/showroom-engine/models/utopia-rich-v1.glb",
+    "bytes": 309148,
+    "expectedSha256": "ba267a241f7b5d943f5eebd6f32aae9241f14da420207ddadc4d5d74ac392f24",
+    "actualSha256": "ba267a241f7b5d943f5eebd6f32aae9241f14da420207ddadc4d5d74ac392f24",
+    "exactExpectedAsset": true
+  },
+  "cases": [
+    {
+      "lang": "he",
+      "viewport": "desktop-1440x1000",
+      "dimensions": {
+        "width": 1440,
+        "height": 1000
+      },
+      "url": "http://127.0.0.1:4173/docs/previews/utopia-sde-dov-he-preview.html?lang=fr",
+      "pass": true,
+      "initial": {
+        "url": "http://127.0.0.1:4173/docs/previews/utopia-sde-dov-he-preview.html?lang=fr",
+        "title": "UTOPIA שדה דב תל אביב - מחירים, דירות ובחירה מהבניין",
+        "documentLang": "he",
+        "documentDir": "rtl",
+        "articleComputedDir": "rtl",
+        "appComputedDir": "rtl",
+        "h1Count": 1,
+        "h1Text": "UTOPIA שדה דב תל אביב - מחירים, דירות ובחירה מהבניין",
+        "h1PrecedesShowroom": true,
+        "leadTextColor": "rgb(107, 100, 87)",
+        "leadBackgroundColor": "rgb(251, 248, 241)",
+        "leadContrastRatio": 5.52,
+        "emptyHeadings": [],
+        "legacyBlocks": [],
+        "templateRelativeHrefs": [],
+        "heroImageAlt": "UTOPIA שדה דב - הדמיה עצמאית המבוססת על נתוני תכנון פומביים",
+        "buildingHotspots": 4,
+        "buildingHotspotLabels": [
+          "S1",
+          "N1",
+          "N2",
+          "S2"
+        ],
+        "buildingHotspotAriaLabels": [
+          "מגדל S1",
+          "בניין N1",
+          "בניין N2",
+          "בניין S2"
+        ],
+        "buildingModeClass": true,
+        "utopiaStylesheetCount": 1,
+        "unitHotspots": 0,
+        "samplePlanCards": 7,
+        "articleMediaImages": 4,
+        "articleMediaImagesLoaded": 4,
+        "modelViewerCount": 1,
+        "modelCustomElementDefined": true,
+        "modelSrc": "/plugins/nadlan-config/assets/showroom-engine/models/utopia-rich-v1.glb",
+        "modelLoaded": true,
+        "modelIsVisible": true,
+        "modelVisibleBox": {
+          "x": 101,
+          "y": 23,
+          "width": 1238,
+          "height": 750,
+          "visible": true
+        },
+        "modelErrorVisible": false,
+        "firstSectionNavLabel": "בניין",
+        "buildingTitle": "ארבעת מבני הפרויקט",
+        "buildingPrompt": "לחצו על מבנה כדי לראות את נתוני התכנון שפורסמו.",
+        "plansTitle": "תוכניות דוגמה שפורסמו",
+        "untranslatedEnglish": [],
+        "documentClientWidth": 1440,
+        "documentScrollWidth": 1440,
+        "horizontalOverflowPx": 0,
+        "overflowingElements": []
+      },
+      "selected": {
+        "panelOpen": true,
+        "panelTitle": "בניין N1",
+        "factLabels": [
+          "קומות שפורסמו",
+          "גובה מרבי מתוכנן"
+        ],
+        "sourceLabel": "מסמך התכנון העירוני",
+        "panelPlanLinks": 4,
+        "closeAriaLabel": "סגירת פרטי המבנה",
+        "activeBuildingHotspots": 1,
+        "activeBuildingId": "n1"
+      },
+      "browserEvents": {
+        "consoleErrors": [],
+        "pageErrors": [],
+        "requestFailures": [],
+        "locallyRoutedMedia": [
+          "plugins/nadlan-config/assets/showroom-engine/projects/utopia-sde-dov/utopia-concept-exterior-v1.webp",
+          "plugins/nadlan-config/assets/showroom-engine/projects/utopia-sde-dov/utopia-concept-interior-v1.webp",
+          "plugins/nadlan-config/assets/showroom-engine/projects/utopia-sde-dov/utopia-concept-window-view-v1.webp",
+          "plugins/nadlan-config/assets/showroom-engine/projects/utopia-sde-dov/utopia-concept-wellness-v1.webp"
+        ],
+        "modelAssetRequests": 1,
+        "modelAssetSha256": "ba267a241f7b5d943f5eebd6f32aae9241f14da420207ddadc4d5d74ac392f24"
+      },
+      "assertions": [
+        {
+          "name": "exact document title",
+          "pass": true,
+          "expected": "UTOPIA שדה דב תל אביב - מחירים, דירות ובחירה מהבניין",
+          "actual": "UTOPIA שדה דב תל אביב - מחירים, דירות ובחירה מהבניין"
+        },
+        {
+          "name": "document language",
+          "pass": true,
+          "expected": "he",
+          "actual": "he"
+        },
+        {
+          "name": "document direction",
+          "pass": true,
+          "expected": "rtl",
+          "actual": "rtl"
+        },
+        {
+          "name": "article inherited direction",
+          "pass": true,
+          "expected": "rtl",
+          "actual": "rtl"
+        },
+        {
+          "name": "showroom inherited direction",
+          "pass": true,
+          "expected": "rtl",
+          "actual": "rtl"
+        },
+        {
+          "name": "one H1",
+          "pass": true,
+          "expected": 1,
+          "actual": 1
+        },
+        {
+          "name": "H1 equals SEO title",
+          "pass": true,
+          "expected": "UTOPIA שדה דב תל אביב - מחירים, דירות ובחירה מהבניין",
+          "actual": "UTOPIA שדה דב תל אביב - מחירים, דירות ובחירה מהבניין"
+        },
+        {
+          "name": "buyer H1 precedes showroom",
+          "pass": true,
+          "expected": true,
+          "actual": true
+        },
+        {
+          "name": "opening paragraph contrast at least 4.5:1",
+          "pass": true,
+          "expected": true,
+          "actual": true
+        },
+        {
+          "name": "no empty headings",
+          "pass": true,
+          "expected": [],
+          "actual": []
+        },
+        {
+          "name": "no legacy project blocks",
+          "pass": true,
+          "expected": [],
+          "actual": []
+        },
+        {
+          "name": "no template-relative home or project URLs",
+          "pass": true,
+          "expected": [],
+          "actual": []
+        },
+        {
+          "name": "concept disclosure in hero image alt",
+          "pass": true,
+          "expected": true,
+          "actual": true
+        },
+        {
+          "name": "four building hotspots",
+          "pass": true,
+          "expected": 4,
+          "actual": 4
+        },
+        {
+          "name": "stable building hotspot labels",
+          "pass": true,
+          "expected": [
+            "S1",
+            "N1",
+            "N2",
+            "S2"
+          ],
+          "actual": [
+            "S1",
+            "N1",
+            "N2",
+            "S2"
+          ]
+        },
+        {
+          "name": "localized N1 hotspot accessible label",
+          "pass": true,
+          "expected": "בניין N1",
+          "actual": "בניין N1"
+        },
+        {
+          "name": "UTOPIA building-mode root class",
+          "pass": true,
+          "expected": true,
+          "actual": true
+        },
+        {
+          "name": "one route-scoped UTOPIA stylesheet",
+          "pass": true,
+          "expected": 1,
+          "actual": 1
+        },
+        {
+          "name": "zero unit hotspots",
+          "pass": true,
+          "expected": 0,
+          "actual": 0
+        },
+        {
+          "name": "seven sample plan cards",
+          "pass": true,
+          "expected": 7,
+          "actual": 7
+        },
+        {
+          "name": "four article media images",
+          "pass": true,
+          "expected": 4,
+          "actual": 4
+        },
+        {
+          "name": "four article media images loaded",
+          "pass": true,
+          "expected": 4,
+          "actual": 4
+        },
+        {
+          "name": "one model viewer",
+          "pass": true,
+          "expected": 1,
+          "actual": 1
+        },
+        {
+          "name": "model-viewer custom element defined",
+          "pass": true,
+          "expected": true,
+          "actual": true
+        },
+        {
+          "name": "UTOPIA GLB source",
+          "pass": true,
+          "expected": "/plugins/nadlan-config/assets/showroom-engine/models/utopia-rich-v1.glb",
+          "actual": "/plugins/nadlan-config/assets/showroom-engine/models/utopia-rich-v1.glb"
+        },
+        {
+          "name": "one optimized GLB request",
+          "pass": true,
+          "expected": 1,
+          "actual": 1
+        },
+        {
+          "name": "optimized GLB SHA-256",
+          "pass": true,
+          "expected": "ba267a241f7b5d943f5eebd6f32aae9241f14da420207ddadc4d5d74ac392f24",
+          "actual": "ba267a241f7b5d943f5eebd6f32aae9241f14da420207ddadc4d5d74ac392f24"
+        },
+        {
+          "name": "GLB loaded",
+          "pass": true,
+          "expected": true,
+          "actual": true
+        },
+        {
+          "name": "GLB visible",
+          "pass": true,
+          "expected": true,
+          "actual": true
+        },
+        {
+          "name": "model has visible dimensions",
+          "pass": true,
+          "expected": true,
+          "actual": true
+        },
+        {
+          "name": "model error hidden",
+          "pass": true,
+          "expected": false,
+          "actual": false
+        },
+        {
+          "name": "localized building section navigation",
+          "pass": true,
+          "expected": "בניין",
+          "actual": "בניין"
+        },
+        {
+          "name": "localized building title",
+          "pass": true,
+          "expected": "ארבעת מבני הפרויקט",
+          "actual": "ארבעת מבני הפרויקט"
+        },
+        {
+          "name": "localized building prompt",
+          "pass": true,
+          "expected": "לחצו על מבנה כדי לראות את נתוני התכנון שפורסמו.",
+          "actual": "לחצו על מבנה כדי לראות את נתוני התכנון שפורסמו."
+        },
+        {
+          "name": "localized sample plans heading",
+          "pass": true,
+          "expected": "תוכניות דוגמה שפורסמו",
+          "actual": "תוכניות דוגמה שפורסמו"
+        },
+        {
+          "name": "no obvious untranslated English UI labels",
+          "pass": true,
+          "expected": [],
+          "actual": []
+        },
+        {
+          "name": "building click opens detail panel",
+          "pass": true,
+          "expected": true,
+          "actual": true
+        },
+        {
+          "name": "localized selected building title",
+          "pass": true,
+          "expected": "בניין N1",
+          "actual": "בניין N1"
+        },
+        {
+          "name": "localized floor label",
+          "pass": true,
+          "expected": "קומות שפורסמו",
+          "actual": "קומות שפורסמו"
+        },
+        {
+          "name": "localized height label",
+          "pass": true,
+          "expected": "גובה מרבי מתוכנן",
+          "actual": "גובה מרבי מתוכנן"
+        },
+        {
+          "name": "localized source label",
+          "pass": true,
+          "expected": "מסמך התכנון העירוני",
+          "actual": "מסמך התכנון העירוני"
+        },
+        {
+          "name": "N1 sample plan links in panel",
+          "pass": true,
+          "expected": 4,
+          "actual": 4
+        },
+        {
+          "name": "one active building hotspot",
+          "pass": true,
+          "expected": 1,
+          "actual": 1
+        },
+        {
+          "name": "N1 hotspot active",
+          "pass": true,
+          "expected": "n1",
+          "actual": "n1"
+        },
+        {
+          "name": "no console errors",
+          "pass": true,
+          "expected": [],
+          "actual": []
+        },
+        {
+          "name": "no page errors",
+          "pass": true,
+          "expected": [],
+          "actual": []
+        }
+      ],
+      "failures": [],
+      "warnings": [],
+      "screenshots": {
+        "top": "docs/qa/screenshots/utopia-preview-2026-07-29/he-desktop-1440x1000-top.png",
+        "initial": "docs/qa/screenshots/utopia-preview-2026-07-29/he-desktop-1440x1000-initial.png",
+        "selected": "docs/qa/screenshots/utopia-preview-2026-07-29/he-desktop-1440x1000-selected-n1.png"
+      }
+    },
+    {
+      "lang": "en",
+      "viewport": "desktop-1440x1000",
+      "dimensions": {
+        "width": 1440,
+        "height": 1000
+      },
+      "url": "http://127.0.0.1:4173/docs/previews/utopia-sde-dov-en-preview.html?lang=ar",
+      "pass": true,
+      "initial": {
+        "url": "http://127.0.0.1:4173/docs/previews/utopia-sde-dov-en-preview.html?lang=ar",
+        "title": "UTOPIA Sde Dov Tel Aviv - Apartments for Sale, Prices and Choosing a Home",
+        "documentLang": "en",
+        "documentDir": "ltr",
+        "articleComputedDir": "ltr",
+        "appComputedDir": "ltr",
+        "h1Count": 1,
+        "h1Text": "UTOPIA Sde Dov Tel Aviv - Apartments for Sale, Prices and Choosing a Home",
+        "h1PrecedesShowroom": true,
+        "leadTextColor": "rgb(107, 100, 87)",
+        "leadBackgroundColor": "rgb(251, 248, 241)",
+        "leadContrastRatio": 5.52,
+        "emptyHeadings": [],
+        "legacyBlocks": [],
+        "templateRelativeHrefs": [],
+        "heroImageAlt": "UTOPIA Sde Dov - independent concept illustration based on public planning data",
+        "buildingHotspots": 4,
+        "buildingHotspotLabels": [
+          "S1",
+          "N1",
+          "N2",
+          "S2"
+        ],
+        "buildingHotspotAriaLabels": [
+          "S1 tower",
+          "N1 building",
+          "N2 building",
+          "S2 building"
+        ],
+        "buildingModeClass": true,
+        "utopiaStylesheetCount": 1,
+        "unitHotspots": 0,
+        "samplePlanCards": 7,
+        "articleMediaImages": 4,
+        "articleMediaImagesLoaded": 4,
+        "modelViewerCount": 1,
+        "modelCustomElementDefined": true,
+        "modelSrc": "/plugins/nadlan-config/assets/showroom-engine/models/utopia-rich-v1.glb",
+        "modelLoaded": true,
+        "modelIsVisible": true,
+        "modelVisibleBox": {
+          "x": 101,
+          "y": 23,
+          "width": 1238,
+          "height": 750,
+          "visible": true
+        },
+        "modelErrorVisible": false,
+        "firstSectionNavLabel": "Building",
+        "buildingTitle": "The project's four buildings",
+        "buildingPrompt": "Select a building to view its published planning data.",
+        "plansTitle": "Published sample plans",
+        "untranslatedEnglish": [],
+        "documentClientWidth": 1440,
+        "documentScrollWidth": 1440,
+        "horizontalOverflowPx": 0,
+        "overflowingElements": [
+          {
+            "tag": "aside",
+            "id": "nl-panel",
+            "className": "nl-panel",
+            "left": 1391,
+            "right": 1821,
+            "width": 430,
+            "text": "The project's four buildings Select a building to view its published planning data. The map pin marks the centroid of lo"
+          },
+          {
+            "tag": "div",
+            "id": "nl-panel-body",
+            "className": "nl-panel__scroll",
+            "left": 1392,
+            "right": 1821,
+            "width": 429,
+            "text": "The project's four buildings Select a building to view its published planning data. The map pin marks the centroid of lo"
+          },
+          {
+            "tag": "div",
+            "id": null,
+            "className": "nl-building-panel-empty",
+            "left": 1414,
+            "right": 1799,
+            "width": 385,
+            "text": "The project's four buildings Select a building to view its published planning data. The map pin marks the centroid of lo"
+          },
+          {
+            "tag": "small",
+            "id": null,
+            "className": "",
+            "left": 1454,
+            "right": 1758,
+            "width": 304,
+            "text": "The map pin marks the centroid of lot 103. Mapping a specific apartment requires an official apartment stack."
+          },
+          {
+            "tag": "h3",
+            "id": null,
+            "className": "",
+            "left": 1467,
+            "right": 1745,
+            "width": 278,
+            "text": "The project's four buildings"
+          },
+          {
+            "tag": "p",
+            "id": null,
+            "className": "",
+            "left": 1480,
+            "right": 1732,
+            "width": 252,
+            "text": "Select a building to view its published planning data."
+          },
+          {
+            "tag": "svg",
+            "id": null,
+            "className": "[object SVGAnimatedString]",
+            "left": 1592,
+            "right": 1620,
+            "width": 28,
+            "text": ""
+          },
+          {
+            "tag": "rect",
+            "id": null,
+            "className": "[object SVGAnimatedString]",
+            "left": 1608,
+            "right": 1617,
+            "width": 8,
+            "text": ""
+          },
+          {
+            "tag": "rect",
+            "id": null,
+            "className": "[object SVGAnimatedString]",
+            "left": 1608,
+            "right": 1617,
+            "width": 8,
+            "text": ""
+          },
+          {
+            "tag": "rect",
+            "id": null,
+            "className": "[object SVGAnimatedString]",
+            "left": 1596,
+            "right": 1604,
+            "width": 8,
+            "text": ""
+          },
+          {
+            "tag": "rect",
+            "id": null,
+            "className": "[object SVGAnimatedString]",
+            "left": 1596,
+            "right": 1604,
+            "width": 8,
+            "text": ""
+          }
+        ]
+      },
+      "selected": {
+        "panelOpen": true,
+        "panelTitle": "N1 building",
+        "factLabels": [
+          "Published floors",
+          "Planned maximum height"
+        ],
+        "sourceLabel": "Municipal planning document",
+        "panelPlanLinks": 4,
+        "closeAriaLabel": "Close building details",
+        "activeBuildingHotspots": 1,
+        "activeBuildingId": "n1"
+      },
+      "browserEvents": {
+        "consoleErrors": [],
+        "pageErrors": [],
+        "requestFailures": [],
+        "locallyRoutedMedia": [
+          "plugins/nadlan-config/assets/showroom-engine/projects/utopia-sde-dov/utopia-concept-exterior-v1.webp",
+          "plugins/nadlan-config/assets/showroom-engine/projects/utopia-sde-dov/utopia-concept-interior-v1.webp",
+          "plugins/nadlan-config/assets/showroom-engine/projects/utopia-sde-dov/utopia-concept-window-view-v1.webp",
+          "plugins/nadlan-config/assets/showroom-engine/projects/utopia-sde-dov/utopia-concept-wellness-v1.webp"
+        ],
+        "modelAssetRequests": 1,
+        "modelAssetSha256": "ba267a241f7b5d943f5eebd6f32aae9241f14da420207ddadc4d5d74ac392f24"
+      },
+      "assertions": [
+        {
+          "name": "exact document title",
+          "pass": true,
+          "expected": "UTOPIA Sde Dov Tel Aviv - Apartments for Sale, Prices and Choosing a Home",
+          "actual": "UTOPIA Sde Dov Tel Aviv - Apartments for Sale, Prices and Choosing a Home"
+        },
+        {
+          "name": "document language",
+          "pass": true,
+          "expected": "en",
+          "actual": "en"
+        },
+        {
+          "name": "document direction",
+          "pass": true,
+          "expected": "ltr",
+          "actual": "ltr"
+        },
+        {
+          "name": "article inherited direction",
+          "pass": true,
+          "expected": "ltr",
+          "actual": "ltr"
+        },
+        {
+          "name": "showroom inherited direction",
+          "pass": true,
+          "expected": "ltr",
+          "actual": "ltr"
+        },
+        {
+          "name": "one H1",
+          "pass": true,
+          "expected": 1,
+          "actual": 1
+        },
+        {
+          "name": "H1 equals SEO title",
+          "pass": true,
+          "expected": "UTOPIA Sde Dov Tel Aviv - Apartments for Sale, Prices and Choosing a Home",
+          "actual": "UTOPIA Sde Dov Tel Aviv - Apartments for Sale, Prices and Choosing a Home"
+        },
+        {
+          "name": "buyer H1 precedes showroom",
+          "pass": true,
+          "expected": true,
+          "actual": true
+        },
+        {
+          "name": "opening paragraph contrast at least 4.5:1",
+          "pass": true,
+          "expected": true,
+          "actual": true
+        },
+        {
+          "name": "no empty headings",
+          "pass": true,
+          "expected": [],
+          "actual": []
+        },
+        {
+          "name": "no legacy project blocks",
+          "pass": true,
+          "expected": [],
+          "actual": []
+        },
+        {
+          "name": "no template-relative home or project URLs",
+          "pass": true,
+          "expected": [],
+          "actual": []
+        },
+        {
+          "name": "concept disclosure in hero image alt",
+          "pass": true,
+          "expected": true,
+          "actual": true
+        },
+        {
+          "name": "four building hotspots",
+          "pass": true,
+          "expected": 4,
+          "actual": 4
+        },
+        {
+          "name": "stable building hotspot labels",
+          "pass": true,
+          "expected": [
+            "S1",
+            "N1",
+            "N2",
+            "S2"
+          ],
+          "actual": [
+            "S1",
+            "N1",
+            "N2",
+            "S2"
+          ]
+        },
+        {
+          "name": "localized N1 hotspot accessible label",
+          "pass": true,
+          "expected": "N1 building",
+          "actual": "N1 building"
+        },
+        {
+          "name": "UTOPIA building-mode root class",
+          "pass": true,
+          "expected": true,
+          "actual": true
+        },
+        {
+          "name": "one route-scoped UTOPIA stylesheet",
+          "pass": true,
+          "expected": 1,
+          "actual": 1
+        },
+        {
+          "name": "zero unit hotspots",
+          "pass": true,
+          "expected": 0,
+          "actual": 0
+        },
+        {
+          "name": "seven sample plan cards",
+          "pass": true,
+          "expected": 7,
+          "actual": 7
+        },
+        {
+          "name": "four article media images",
+          "pass": true,
+          "expected": 4,
+          "actual": 4
+        },
+        {
+          "name": "four article media images loaded",
+          "pass": true,
+          "expected": 4,
+          "actual": 4
+        },
+        {
+          "name": "one model viewer",
+          "pass": true,
+          "expected": 1,
+          "actual": 1
+        },
+        {
+          "name": "model-viewer custom element defined",
+          "pass": true,
+          "expected": true,
+          "actual": true
+        },
+        {
+          "name": "UTOPIA GLB source",
+          "pass": true,
+          "expected": "/plugins/nadlan-config/assets/showroom-engine/models/utopia-rich-v1.glb",
+          "actual": "/plugins/nadlan-config/assets/showroom-engine/models/utopia-rich-v1.glb"
+        },
+        {
+          "name": "one optimized GLB request",
+          "pass": true,
+          "expected": 1,
+          "actual": 1
+        },
+        {
+          "name": "optimized GLB SHA-256",
+          "pass": true,
+          "expected": "ba267a241f7b5d943f5eebd6f32aae9241f14da420207ddadc4d5d74ac392f24",
+          "actual": "ba267a241f7b5d943f5eebd6f32aae9241f14da420207ddadc4d5d74ac392f24"
+        },
+        {
+          "name": "GLB loaded",
+          "pass": true,
+          "expected": true,
+          "actual": true
+        },
+        {
+          "name": "GLB visible",
+          "pass": true,
+          "expected": true,
+          "actual": true
+        },
+        {
+          "name": "model has visible dimensions",
+          "pass": true,
+          "expected": true,
+          "actual": true
+        },
+        {
+          "name": "model error hidden",
+          "pass": true,
+          "expected": false,
+          "actual": false
+        },
+        {
+          "name": "localized building section navigation",
+          "pass": true,
+          "expected": "Building",
+          "actual": "Building"
+        },
+        {
+          "name": "localized building title",
+          "pass": true,
+          "expected": "The project's four buildings",
+          "actual": "The project's four buildings"
+        },
+        {
+          "name": "localized building prompt",
+          "pass": true,
+          "expected": "Select a building to view its published planning data.",
+          "actual": "Select a building to view its published planning data."
+        },
+        {
+          "name": "localized sample plans heading",
+          "pass": true,
+          "expected": "Published sample plans",
+          "actual": "Published sample plans"
+        },
+        {
+          "name": "no obvious untranslated English UI labels",
+          "pass": true,
+          "expected": [],
+          "actual": []
+        },
+        {
+          "name": "building click opens detail panel",
+          "pass": true,
+          "expected": true,
+          "actual": true
+        },
+        {
+          "name": "localized selected building title",
+          "pass": true,
+          "expected": "N1 building",
+          "actual": "N1 building"
+        },
+        {
+          "name": "localized floor label",
+          "pass": true,
+          "expected": "Published floors",
+          "actual": "Published floors"
+        },
+        {
+          "name": "localized height label",
+          "pass": true,
+          "expected": "Planned maximum height",
+          "actual": "Planned maximum height"
+        },
+        {
+          "name": "localized source label",
+          "pass": true,
+          "expected": "Municipal planning document",
+          "actual": "Municipal planning document"
+        },
+        {
+          "name": "N1 sample plan links in panel",
+          "pass": true,
+          "expected": 4,
+          "actual": 4
+        },
+        {
+          "name": "one active building hotspot",
+          "pass": true,
+          "expected": 1,
+          "actual": 1
+        },
+        {
+          "name": "N1 hotspot active",
+          "pass": true,
+          "expected": "n1",
+          "actual": "n1"
+        },
+        {
+          "name": "no console errors",
+          "pass": true,
+          "expected": [],
+          "actual": []
+        },
+        {
+          "name": "no page errors",
+          "pass": true,
+          "expected": [],
+          "actual": []
+        }
+      ],
+      "failures": [],
+      "warnings": [],
+      "screenshots": {
+        "top": "docs/qa/screenshots/utopia-preview-2026-07-29/en-desktop-1440x1000-top.png",
+        "initial": "docs/qa/screenshots/utopia-preview-2026-07-29/en-desktop-1440x1000-initial.png",
+        "selected": "docs/qa/screenshots/utopia-preview-2026-07-29/en-desktop-1440x1000-selected-n1.png"
+      }
+    },
+    {
+      "lang": "fr",
+      "viewport": "desktop-1440x1000",
+      "dimensions": {
+        "width": 1440,
+        "height": 1000
+      },
+      "url": "http://127.0.0.1:4173/docs/previews/utopia-sde-dov-fr-preview.html?lang=he",
+      "pass": true,
+      "initial": {
+        "url": "http://127.0.0.1:4173/docs/previews/utopia-sde-dov-fr-preview.html?lang=he",
+        "title": "UTOPIA Sde Dov Tel Aviv - Appartements à vendre, prix et choix d'un logement",
+        "documentLang": "fr",
+        "documentDir": "ltr",
+        "articleComputedDir": "ltr",
+        "appComputedDir": "ltr",
+        "h1Count": 1,
+        "h1Text": "UTOPIA Sde Dov Tel Aviv - Appartements à vendre, prix et choix d'un logement",
+        "h1PrecedesShowroom": true,
+        "leadTextColor": "rgb(107, 100, 87)",
+        "leadBackgroundColor": "rgb(251, 248, 241)",
+        "leadContrastRatio": 5.52,
+        "emptyHeadings": [],
+        "legacyBlocks": [],
+        "templateRelativeHrefs": [],
+        "heroImageAlt": "UTOPIA Sde Dov - illustration conceptuelle indépendante fondée sur les données publiques d'urbanisme",
+        "buildingHotspots": 4,
+        "buildingHotspotLabels": [
+          "S1",
+          "N1",
+          "N2",
+          "S2"
+        ],
+        "buildingHotspotAriaLabels": [
+          "Tour S1",
+          "Bâtiment N1",
+          "Bâtiment N2",
+          "Bâtiment S2"
+        ],
+        "buildingModeClass": true,
+        "utopiaStylesheetCount": 1,
+        "unitHotspots": 0,
+        "samplePlanCards": 7,
+        "articleMediaImages": 4,
+        "articleMediaImagesLoaded": 4,
+        "modelViewerCount": 1,
+        "modelCustomElementDefined": true,
+        "modelSrc": "/plugins/nadlan-config/assets/showroom-engine/models/utopia-rich-v1.glb",
+        "modelLoaded": true,
+        "modelIsVisible": true,
+        "modelVisibleBox": {
+          "x": 101,
+          "y": 23,
+          "width": 1238,
+          "height": 750,
+          "visible": true
+        },
+        "modelErrorVisible": false,
+        "firstSectionNavLabel": "Immeuble",
+        "buildingTitle": "Les quatre bâtiments du projet",
+        "buildingPrompt": "Sélectionnez un bâtiment pour consulter les données d'urbanisme publiées.",
+        "plansTitle": "Plans d'exemple publiés",
+        "untranslatedEnglish": [],
+        "documentClientWidth": 1440,
+        "documentScrollWidth": 1440,
+        "horizontalOverflowPx": 0,
+        "overflowingElements": [
+          {
+            "tag": "aside",
+            "id": "nl-panel",
+            "className": "nl-panel",
+            "left": 1391,
+            "right": 1821,
+            "width": 430,
+            "text": "Les quatre bâtiments du projet Sélectionnez un bâtiment pour consulter les données d'urbanisme publiées. Le repère carto"
+          },
+          {
+            "tag": "div",
+            "id": "nl-panel-body",
+            "className": "nl-panel__scroll",
+            "left": 1392,
+            "right": 1821,
+            "width": 429,
+            "text": "Les quatre bâtiments du projet Sélectionnez un bâtiment pour consulter les données d'urbanisme publiées. Le repère carto"
+          },
+          {
+            "tag": "div",
+            "id": null,
+            "className": "nl-building-panel-empty",
+            "left": 1414,
+            "right": 1799,
+            "width": 385,
+            "text": "Les quatre bâtiments du projet Sélectionnez un bâtiment pour consulter les données d'urbanisme publiées. Le repère carto"
+          },
+          {
+            "tag": "h3",
+            "id": null,
+            "className": "",
+            "left": 1450,
+            "right": 1762,
+            "width": 312,
+            "text": "Les quatre bâtiments du projet"
+          },
+          {
+            "tag": "small",
+            "id": null,
+            "className": "",
+            "left": 1454,
+            "right": 1758,
+            "width": 304,
+            "text": "Le repère cartographique correspond au centre de la parcelle 103. La localisation d'un appartement précis exige une gril"
+          },
+          {
+            "tag": "p",
+            "id": null,
+            "className": "",
+            "left": 1480,
+            "right": 1732,
+            "width": 252,
+            "text": "Sélectionnez un bâtiment pour consulter les données d'urbanisme publiées."
+          },
+          {
+            "tag": "svg",
+            "id": null,
+            "className": "[object SVGAnimatedString]",
+            "left": 1592,
+            "right": 1620,
+            "width": 28,
+            "text": ""
+          },
+          {
+            "tag": "rect",
+            "id": null,
+            "className": "[object SVGAnimatedString]",
+            "left": 1608,
+            "right": 1617,
+            "width": 8,
+            "text": ""
+          },
+          {
+            "tag": "rect",
+            "id": null,
+            "className": "[object SVGAnimatedString]",
+            "left": 1608,
+            "right": 1617,
+            "width": 8,
+            "text": ""
+          },
+          {
+            "tag": "rect",
+            "id": null,
+            "className": "[object SVGAnimatedString]",
+            "left": 1596,
+            "right": 1604,
+            "width": 8,
+            "text": ""
+          },
+          {
+            "tag": "rect",
+            "id": null,
+            "className": "[object SVGAnimatedString]",
+            "left": 1596,
+            "right": 1604,
+            "width": 8,
+            "text": ""
+          }
+        ]
+      },
+      "selected": {
+        "panelOpen": true,
+        "panelTitle": "Bâtiment N1",
+        "factLabels": [
+          "Étages publiés",
+          "Hauteur maximale projetée"
+        ],
+        "sourceLabel": "Document municipal d'urbanisme",
+        "panelPlanLinks": 4,
+        "closeAriaLabel": "Fermer les détails du bâtiment",
+        "activeBuildingHotspots": 1,
+        "activeBuildingId": "n1"
+      },
+      "browserEvents": {
+        "consoleErrors": [],
+        "pageErrors": [],
+        "requestFailures": [],
+        "locallyRoutedMedia": [
+          "plugins/nadlan-config/assets/showroom-engine/projects/utopia-sde-dov/utopia-concept-exterior-v1.webp",
+          "plugins/nadlan-config/assets/showroom-engine/projects/utopia-sde-dov/utopia-concept-interior-v1.webp",
+          "plugins/nadlan-config/assets/showroom-engine/projects/utopia-sde-dov/utopia-concept-window-view-v1.webp",
+          "plugins/nadlan-config/assets/showroom-engine/projects/utopia-sde-dov/utopia-concept-wellness-v1.webp"
+        ],
+        "modelAssetRequests": 1,
+        "modelAssetSha256": "ba267a241f7b5d943f5eebd6f32aae9241f14da420207ddadc4d5d74ac392f24"
+      },
+      "assertions": [
+        {
+          "name": "exact document title",
+          "pass": true,
+          "expected": "UTOPIA Sde Dov Tel Aviv - Appartements à vendre, prix et choix d'un logement",
+          "actual": "UTOPIA Sde Dov Tel Aviv - Appartements à vendre, prix et choix d'un logement"
+        },
+        {
+          "name": "document language",
+          "pass": true,
+          "expected": "fr",
+          "actual": "fr"
+        },
+        {
+          "name": "document direction",
+          "pass": true,
+          "expected": "ltr",
+          "actual": "ltr"
+        },
+        {
+          "name": "article inherited direction",
+          "pass": true,
+          "expected": "ltr",
+          "actual": "ltr"
+        },
+        {
+          "name": "showroom inherited direction",
+          "pass": true,
+          "expected": "ltr",
+          "actual": "ltr"
+        },
+        {
+          "name": "one H1",
+          "pass": true,
+          "expected": 1,
+          "actual": 1
+        },
+        {
+          "name": "H1 equals SEO title",
+          "pass": true,
+          "expected": "UTOPIA Sde Dov Tel Aviv - Appartements à vendre, prix et choix d'un logement",
+          "actual": "UTOPIA Sde Dov Tel Aviv - Appartements à vendre, prix et choix d'un logement"
+        },
+        {
+          "name": "buyer H1 precedes showroom",
+          "pass": true,
+          "expected": true,
+          "actual": true
+        },
+        {
+          "name": "opening paragraph contrast at least 4.5:1",
+          "pass": true,
+          "expected": true,
+          "actual": true
+        },
+        {
+          "name": "no empty headings",
+          "pass": true,
+          "expected": [],
+          "actual": []
+        },
+        {
+          "name": "no legacy project blocks",
+          "pass": true,
+          "expected": [],
+          "actual": []
+        },
+        {
+          "name": "no template-relative home or project URLs",
+          "pass": true,
+          "expected": [],
+          "actual": []
+        },
+        {
+          "name": "concept disclosure in hero image alt",
+          "pass": true,
+          "expected": true,
+          "actual": true
+        },
+        {
+          "name": "four building hotspots",
+          "pass": true,
+          "expected": 4,
+          "actual": 4
+        },
+        {
+          "name": "stable building hotspot labels",
+          "pass": true,
+          "expected": [
+            "S1",
+            "N1",
+            "N2",
+            "S2"
+          ],
+          "actual": [
+            "S1",
+            "N1",
+            "N2",
+            "S2"
+          ]
+        },
+        {
+          "name": "localized N1 hotspot accessible label",
+          "pass": true,
+          "expected": "Bâtiment N1",
+          "actual": "Bâtiment N1"
+        },
+        {
+          "name": "UTOPIA building-mode root class",
+          "pass": true,
+          "expected": true,
+          "actual": true
+        },
+        {
+          "name": "one route-scoped UTOPIA stylesheet",
+          "pass": true,
+          "expected": 1,
+          "actual": 1
+        },
+        {
+          "name": "zero unit hotspots",
+          "pass": true,
+          "expected": 0,
+          "actual": 0
+        },
+        {
+          "name": "seven sample plan cards",
+          "pass": true,
+          "expected": 7,
+          "actual": 7
+        },
+        {
+          "name": "four article media images",
+          "pass": true,
+          "expected": 4,
+          "actual": 4
+        },
+        {
+          "name": "four article media images loaded",
+          "pass": true,
+          "expected": 4,
+          "actual": 4
+        },
+        {
+          "name": "one model viewer",
+          "pass": true,
+          "expected": 1,
+          "actual": 1
+        },
+        {
+          "name": "model-viewer custom element defined",
+          "pass": true,
+          "expected": true,
+          "actual": true
+        },
+        {
+          "name": "UTOPIA GLB source",
+          "pass": true,
+          "expected": "/plugins/nadlan-config/assets/showroom-engine/models/utopia-rich-v1.glb",
+          "actual": "/plugins/nadlan-config/assets/showroom-engine/models/utopia-rich-v1.glb"
+        },
+        {
+          "name": "one optimized GLB request",
+          "pass": true,
+          "expected": 1,
+          "actual": 1
+        },
+        {
+          "name": "optimized GLB SHA-256",
+          "pass": true,
+          "expected": "ba267a241f7b5d943f5eebd6f32aae9241f14da420207ddadc4d5d74ac392f24",
+          "actual": "ba267a241f7b5d943f5eebd6f32aae9241f14da420207ddadc4d5d74ac392f24"
+        },
+        {
+          "name": "GLB loaded",
+          "pass": true,
+          "expected": true,
+          "actual": true
+        },
+        {
+          "name": "GLB visible",
+          "pass": true,
+          "expected": true,
+          "actual": true
+        },
+        {
+          "name": "model has visible dimensions",
+          "pass": true,
+          "expected": true,
+          "actual": true
+        },
+        {
+          "name": "model error hidden",
+          "pass": true,
+          "expected": false,
+          "actual": false
+        },
+        {
+          "name": "localized building section navigation",
+          "pass": true,
+          "expected": "Immeuble",
+          "actual": "Immeuble"
+        },
+        {
+          "name": "localized building title",
+          "pass": true,
+          "expected": "Les quatre bâtiments du projet",
+          "actual": "Les quatre bâtiments du projet"
+        },
+        {
+          "name": "localized building prompt",
+          "pass": true,
+          "expected": "Sélectionnez un bâtiment pour consulter les données d'urbanisme publiées.",
+          "actual": "Sélectionnez un bâtiment pour consulter les données d'urbanisme publiées."
+        },
+        {
+          "name": "localized sample plans heading",
+          "pass": true,
+          "expected": "Plans d'exemple publiés",
+          "actual": "Plans d'exemple publiés"
+        },
+        {
+          "name": "no obvious untranslated English UI labels",
+          "pass": true,
+          "expected": [],
+          "actual": []
+        },
+        {
+          "name": "building click opens detail panel",
+          "pass": true,
+          "expected": true,
+          "actual": true
+        },
+        {
+          "name": "localized selected building title",
+          "pass": true,
+          "expected": "Bâtiment N1",
+          "actual": "Bâtiment N1"
+        },
+        {
+          "name": "localized floor label",
+          "pass": true,
+          "expected": "Étages publiés",
+          "actual": "Étages publiés"
+        },
+        {
+          "name": "localized height label",
+          "pass": true,
+          "expected": "Hauteur maximale projetée",
+          "actual": "Hauteur maximale projetée"
+        },
+        {
+          "name": "localized source label",
+          "pass": true,
+          "expected": "Document municipal d'urbanisme",
+          "actual": "Document municipal d'urbanisme"
+        },
+        {
+          "name": "N1 sample plan links in panel",
+          "pass": true,
+          "expected": 4,
+          "actual": 4
+        },
+        {
+          "name": "one active building hotspot",
+          "pass": true,
+          "expected": 1,
+          "actual": 1
+        },
+        {
+          "name": "N1 hotspot active",
+          "pass": true,
+          "expected": "n1",
+          "actual": "n1"
+        },
+        {
+          "name": "no console errors",
+          "pass": true,
+          "expected": [],
+          "actual": []
+        },
+        {
+          "name": "no page errors",
+          "pass": true,
+          "expected": [],
+          "actual": []
+        }
+      ],
+      "failures": [],
+      "warnings": [],
+      "screenshots": {
+        "top": "docs/qa/screenshots/utopia-preview-2026-07-29/fr-desktop-1440x1000-top.png",
+        "initial": "docs/qa/screenshots/utopia-preview-2026-07-29/fr-desktop-1440x1000-initial.png",
+        "selected": "docs/qa/screenshots/utopia-preview-2026-07-29/fr-desktop-1440x1000-selected-n1.png"
+      }
+    },
+    {
+      "lang": "ru",
+      "viewport": "desktop-1440x1000",
+      "dimensions": {
+        "width": 1440,
+        "height": 1000
+      },
+      "url": "http://127.0.0.1:4173/docs/previews/utopia-sde-dov-ru-preview.html?lang=en",
+      "pass": true,
+      "initial": {
+        "url": "http://127.0.0.1:4173/docs/previews/utopia-sde-dov-ru-preview.html?lang=en",
+        "title": "UTOPIA Sde Dov Тель-Авив - квартиры на продажу, цены и выбор квартиры",
+        "documentLang": "ru",
+        "documentDir": "ltr",
+        "articleComputedDir": "ltr",
+        "appComputedDir": "ltr",
+        "h1Count": 1,
+        "h1Text": "UTOPIA Sde Dov Тель-Авив - квартиры на продажу, цены и выбор квартиры",
+        "h1PrecedesShowroom": true,
+        "leadTextColor": "rgb(107, 100, 87)",
+        "leadBackgroundColor": "rgb(251, 248, 241)",
+        "leadContrastRatio": 5.52,
+        "emptyHeadings": [],
+        "legacyBlocks": [],
+        "templateRelativeHrefs": [],
+        "heroImageAlt": "UTOPIA Sde Dov - независимая концептуальная иллюстрация по открытым данным планирования",
+        "buildingHotspots": 4,
+        "buildingHotspotLabels": [
+          "S1",
+          "N1",
+          "N2",
+          "S2"
+        ],
+        "buildingHotspotAriaLabels": [
+          "Башня S1",
+          "Здание N1",
+          "Здание N2",
+          "Здание S2"
+        ],
+        "buildingModeClass": true,
+        "utopiaStylesheetCount": 1,
+        "unitHotspots": 0,
+        "samplePlanCards": 7,
+        "articleMediaImages": 4,
+        "articleMediaImagesLoaded": 4,
+        "modelViewerCount": 1,
+        "modelCustomElementDefined": true,
+        "modelSrc": "/plugins/nadlan-config/assets/showroom-engine/models/utopia-rich-v1.glb",
+        "modelLoaded": true,
+        "modelIsVisible": true,
+        "modelVisibleBox": {
+          "x": 101,
+          "y": 23,
+          "width": 1238,
+          "height": 750,
+          "visible": true
+        },
+        "modelErrorVisible": false,
+        "firstSectionNavLabel": "Здание",
+        "buildingTitle": "Четыре здания проекта",
+        "buildingPrompt": "Выберите здание, чтобы увидеть опубликованные параметры планирования.",
+        "plansTitle": "Опубликованные примеры планов",
+        "untranslatedEnglish": [],
+        "documentClientWidth": 1440,
+        "documentScrollWidth": 1440,
+        "horizontalOverflowPx": 0,
+        "overflowingElements": [
+          {
+            "tag": "aside",
+            "id": "nl-panel",
+            "className": "nl-panel",
+            "left": 1391,
+            "right": 1821,
+            "width": 430,
+            "text": "Четыре здания проекта Выберите здание, чтобы увидеть опубликованные параметры планирования. Метка на карте показывает це"
+          },
+          {
+            "tag": "div",
+            "id": "nl-panel-body",
+            "className": "nl-panel__scroll",
+            "left": 1392,
+            "right": 1821,
+            "width": 429,
+            "text": "Четыре здания проекта Выберите здание, чтобы увидеть опубликованные параметры планирования. Метка на карте показывает це"
+          },
+          {
+            "tag": "div",
+            "id": null,
+            "className": "nl-building-panel-empty",
+            "left": 1414,
+            "right": 1799,
+            "width": 385,
+            "text": "Четыре здания проекта Выберите здание, чтобы увидеть опубликованные параметры планирования. Метка на карте показывает це"
+          },
+          {
+            "tag": "small",
+            "id": null,
+            "className": "",
+            "left": 1454,
+            "right": 1758,
+            "width": 304,
+            "text": "Метка на карте показывает центр участка 103. Для привязки конкретной квартиры нужна официальная квартирография."
+          },
+          {
+            "tag": "p",
+            "id": null,
+            "className": "",
+            "left": 1480,
+            "right": 1732,
+            "width": 252,
+            "text": "Выберите здание, чтобы увидеть опубликованные параметры планирования."
+          },
+          {
+            "tag": "h3",
+            "id": null,
+            "className": "",
+            "left": 1488,
+            "right": 1724,
+            "width": 236,
+            "text": "Четыре здания проекта"
+          },
+          {
+            "tag": "svg",
+            "id": null,
+            "className": "[object SVGAnimatedString]",
+            "left": 1592,
+            "right": 1620,
+            "width": 28,
+            "text": ""
+          },
+          {
+            "tag": "rect",
+            "id": null,
+            "className": "[object SVGAnimatedString]",
+            "left": 1608,
+            "right": 1617,
+            "width": 8,
+            "text": ""
+          },
+          {
+            "tag": "rect",
+            "id": null,
+            "className": "[object SVGAnimatedString]",
+            "left": 1608,
+            "right": 1617,
+            "width": 8,
+            "text": ""
+          },
+          {
+            "tag": "rect",
+            "id": null,
+            "className": "[object SVGAnimatedString]",
+            "left": 1596,
+            "right": 1604,
+            "width": 8,
+            "text": ""
+          },
+          {
+            "tag": "rect",
+            "id": null,
+            "className": "[object SVGAnimatedString]",
+            "left": 1596,
+            "right": 1604,
+            "width": 8,
+            "text": ""
+          }
+        ]
+      },
+      "selected": {
+        "panelOpen": true,
+        "panelTitle": "Здание N1",
+        "factLabels": [
+          "Опубликованная этажность",
+          "Планируемая предельная высота"
+        ],
+        "sourceLabel": "Муниципальный документ планирования",
+        "panelPlanLinks": 4,
+        "closeAriaLabel": "Закрыть сведения о здании",
+        "activeBuildingHotspots": 1,
+        "activeBuildingId": "n1"
+      },
+      "browserEvents": {
+        "consoleErrors": [],
+        "pageErrors": [],
+        "requestFailures": [],
+        "locallyRoutedMedia": [
+          "plugins/nadlan-config/assets/showroom-engine/projects/utopia-sde-dov/utopia-concept-exterior-v1.webp",
+          "plugins/nadlan-config/assets/showroom-engine/projects/utopia-sde-dov/utopia-concept-interior-v1.webp",
+          "plugins/nadlan-config/assets/showroom-engine/projects/utopia-sde-dov/utopia-concept-window-view-v1.webp",
+          "plugins/nadlan-config/assets/showroom-engine/projects/utopia-sde-dov/utopia-concept-wellness-v1.webp"
+        ],
+        "modelAssetRequests": 1,
+        "modelAssetSha256": "ba267a241f7b5d943f5eebd6f32aae9241f14da420207ddadc4d5d74ac392f24"
+      },
+      "assertions": [
+        {
+          "name": "exact document title",
+          "pass": true,
+          "expected": "UTOPIA Sde Dov Тель-Авив - квартиры на продажу, цены и выбор квартиры",
+          "actual": "UTOPIA Sde Dov Тель-Авив - квартиры на продажу, цены и выбор квартиры"
+        },
+        {
+          "name": "document language",
+          "pass": true,
+          "expected": "ru",
+          "actual": "ru"
+        },
+        {
+          "name": "document direction",
+          "pass": true,
+          "expected": "ltr",
+          "actual": "ltr"
+        },
+        {
+          "name": "article inherited direction",
+          "pass": true,
+          "expected": "ltr",
+          "actual": "ltr"
+        },
+        {
+          "name": "showroom inherited direction",
+          "pass": true,
+          "expected": "ltr",
+          "actual": "ltr"
+        },
+        {
+          "name": "one H1",
+          "pass": true,
+          "expected": 1,
+          "actual": 1
+        },
+        {
+          "name": "H1 equals SEO title",
+          "pass": true,
+          "expected": "UTOPIA Sde Dov Тель-Авив - квартиры на продажу, цены и выбор квартиры",
+          "actual": "UTOPIA Sde Dov Тель-Авив - квартиры на продажу, цены и выбор квартиры"
+        },
+        {
+          "name": "buyer H1 precedes showroom",
+          "pass": true,
+          "expected": true,
+          "actual": true
+        },
+        {
+          "name": "opening paragraph contrast at least 4.5:1",
+          "pass": true,
+          "expected": true,
+          "actual": true
+        },
+        {
+          "name": "no empty headings",
+          "pass": true,
+          "expected": [],
+          "actual": []
+        },
+        {
+          "name": "no legacy project blocks",
+          "pass": true,
+          "expected": [],
+          "actual": []
+        },
+        {
+          "name": "no template-relative home or project URLs",
+          "pass": true,
+          "expected": [],
+          "actual": []
+        },
+        {
+          "name": "concept disclosure in hero image alt",
+          "pass": true,
+          "expected": true,
+          "actual": true
+        },
+        {
+          "name": "four building hotspots",
+          "pass": true,
+          "expected": 4,
+          "actual": 4
+        },
+        {
+          "name": "stable building hotspot labels",
+          "pass": true,
+          "expected": [
+            "S1",
+            "N1",
+            "N2",
+            "S2"
+          ],
+          "actual": [
+            "S1",
+            "N1",
+            "N2",
+            "S2"
+          ]
+        },
+        {
+          "name": "localized N1 hotspot accessible label",
+          "pass": true,
+          "expected": "Здание N1",
+          "actual": "Здание N1"
+        },
+        {
+          "name": "UTOPIA building-mode root class",
+          "pass": true,
+          "expected": true,
+          "actual": true
+        },
+        {
+          "name": "one route-scoped UTOPIA stylesheet",
+          "pass": true,
+          "expected": 1,
+          "actual": 1
+        },
+        {
+          "name": "zero unit hotspots",
+          "pass": true,
+          "expected": 0,
+          "actual": 0
+        },
+        {
+          "name": "seven sample plan cards",
+          "pass": true,
+          "expected": 7,
+          "actual": 7
+        },
+        {
+          "name": "four article media images",
+          "pass": true,
+          "expected": 4,
+          "actual": 4
+        },
+        {
+          "name": "four article media images loaded",
+          "pass": true,
+          "expected": 4,
+          "actual": 4
+        },
+        {
+          "name": "one model viewer",
+          "pass": true,
+          "expected": 1,
+          "actual": 1
+        },
+        {
+          "name": "model-viewer custom element defined",
+          "pass": true,
+          "expected": true,
+          "actual": true
+        },
+        {
+          "name": "UTOPIA GLB source",
+          "pass": true,
+          "expected": "/plugins/nadlan-config/assets/showroom-engine/models/utopia-rich-v1.glb",
+          "actual": "/plugins/nadlan-config/assets/showroom-engine/models/utopia-rich-v1.glb"
+        },
+        {
+          "name": "one optimized GLB request",
+          "pass": true,
+          "expected": 1,
+          "actual": 1
+        },
+        {
+          "name": "optimized GLB SHA-256",
+          "pass": true,
+          "expected": "ba267a241f7b5d943f5eebd6f32aae9241f14da420207ddadc4d5d74ac392f24",
+          "actual": "ba267a241f7b5d943f5eebd6f32aae9241f14da420207ddadc4d5d74ac392f24"
+        },
+        {
+          "name": "GLB loaded",
+          "pass": true,
+          "expected": true,
+          "actual": true
+        },
+        {
+          "name": "GLB visible",
+          "pass": true,
+          "expected": true,
+          "actual": true
+        },
+        {
+          "name": "model has visible dimensions",
+          "pass": true,
+          "expected": true,
+          "actual": true
+        },
+        {
+          "name": "model error hidden",
+          "pass": true,
+          "expected": false,
+          "actual": false
+        },
+        {
+          "name": "localized building section navigation",
+          "pass": true,
+          "expected": "Здание",
+          "actual": "Здание"
+        },
+        {
+          "name": "localized building title",
+          "pass": true,
+          "expected": "Четыре здания проекта",
+          "actual": "Четыре здания проекта"
+        },
+        {
+          "name": "localized building prompt",
+          "pass": true,
+          "expected": "Выберите здание, чтобы увидеть опубликованные параметры планирования.",
+          "actual": "Выберите здание, чтобы увидеть опубликованные параметры планирования."
+        },
+        {
+          "name": "localized sample plans heading",
+          "pass": true,
+          "expected": "Опубликованные примеры планов",
+          "actual": "Опубликованные примеры планов"
+        },
+        {
+          "name": "no obvious untranslated English UI labels",
+          "pass": true,
+          "expected": [],
+          "actual": []
+        },
+        {
+          "name": "building click opens detail panel",
+          "pass": true,
+          "expected": true,
+          "actual": true
+        },
+        {
+          "name": "localized selected building title",
+          "pass": true,
+          "expected": "Здание N1",
+          "actual": "Здание N1"
+        },
+        {
+          "name": "localized floor label",
+          "pass": true,
+          "expected": "Опубликованная этажность",
+          "actual": "Опубликованная этажность"
+        },
+        {
+          "name": "localized height label",
+          "pass": true,
+          "expected": "Планируемая предельная высота",
+          "actual": "Планируемая предельная высота"
+        },
+        {
+          "name": "localized source label",
+          "pass": true,
+          "expected": "Муниципальный документ планирования",
+          "actual": "Муниципальный документ планирования"
+        },
+        {
+          "name": "N1 sample plan links in panel",
+          "pass": true,
+          "expected": 4,
+          "actual": 4
+        },
+        {
+          "name": "one active building hotspot",
+          "pass": true,
+          "expected": 1,
+          "actual": 1
+        },
+        {
+          "name": "N1 hotspot active",
+          "pass": true,
+          "expected": "n1",
+          "actual": "n1"
+        },
+        {
+          "name": "no console errors",
+          "pass": true,
+          "expected": [],
+          "actual": []
+        },
+        {
+          "name": "no page errors",
+          "pass": true,
+          "expected": [],
+          "actual": []
+        }
+      ],
+      "failures": [],
+      "warnings": [],
+      "screenshots": {
+        "top": "docs/qa/screenshots/utopia-preview-2026-07-29/ru-desktop-1440x1000-top.png",
+        "initial": "docs/qa/screenshots/utopia-preview-2026-07-29/ru-desktop-1440x1000-initial.png",
+        "selected": "docs/qa/screenshots/utopia-preview-2026-07-29/ru-desktop-1440x1000-selected-n1.png"
+      }
+    },
+    {
+      "lang": "ar",
+      "viewport": "desktop-1440x1000",
+      "dimensions": {
+        "width": 1440,
+        "height": 1000
+      },
+      "url": "http://127.0.0.1:4173/docs/previews/utopia-sde-dov-ar-preview.html?lang=ru",
+      "pass": true,
+      "initial": {
+        "url": "http://127.0.0.1:4173/docs/previews/utopia-sde-dov-ar-preview.html?lang=ru",
+        "title": "UTOPIA Sde Dov تل أبيب - شقق للبيع والأسعار واختيار الشقة",
+        "documentLang": "ar",
+        "documentDir": "rtl",
+        "articleComputedDir": "rtl",
+        "appComputedDir": "rtl",
+        "h1Count": 1,
+        "h1Text": "UTOPIA Sde Dov تل أبيب - شقق للبيع والأسعار واختيار الشقة",
+        "h1PrecedesShowroom": true,
+        "leadTextColor": "rgb(107, 100, 87)",
+        "leadBackgroundColor": "rgb(251, 248, 241)",
+        "leadContrastRatio": 5.52,
+        "emptyHeadings": [],
+        "legacyBlocks": [],
+        "templateRelativeHrefs": [],
+        "heroImageAlt": "UTOPIA Sde Dov - صورة تصورية مستقلة مبنية على بيانات التخطيط العامة",
+        "buildingHotspots": 4,
+        "buildingHotspotLabels": [
+          "S1",
+          "N1",
+          "N2",
+          "S2"
+        ],
+        "buildingHotspotAriaLabels": [
+          "البرج S1",
+          "المبنى N1",
+          "المبنى N2",
+          "المبنى S2"
+        ],
+        "buildingModeClass": true,
+        "utopiaStylesheetCount": 1,
+        "unitHotspots": 0,
+        "samplePlanCards": 7,
+        "articleMediaImages": 4,
+        "articleMediaImagesLoaded": 4,
+        "modelViewerCount": 1,
+        "modelCustomElementDefined": true,
+        "modelSrc": "/plugins/nadlan-config/assets/showroom-engine/models/utopia-rich-v1.glb",
+        "modelLoaded": true,
+        "modelIsVisible": true,
+        "modelVisibleBox": {
+          "x": 101,
+          "y": 23,
+          "width": 1238,
+          "height": 750,
+          "visible": true
+        },
+        "modelErrorVisible": false,
+        "firstSectionNavLabel": "المبنى",
+        "buildingTitle": "المباني الأربعة في المشروع",
+        "buildingPrompt": "اختر مبنى للاطلاع على بيانات التخطيط المنشورة.",
+        "plansTitle": "نماذج المخططات المنشورة",
+        "untranslatedEnglish": [],
+        "documentClientWidth": 1440,
+        "documentScrollWidth": 1440,
+        "horizontalOverflowPx": 0,
+        "overflowingElements": []
+      },
+      "selected": {
+        "panelOpen": true,
+        "panelTitle": "المبنى N1",
+        "factLabels": [
+          "الطوابق المنشورة",
+          "الارتفاع الأقصى المخطط"
+        ],
+        "sourceLabel": "وثيقة التخطيط البلدية",
+        "panelPlanLinks": 4,
+        "closeAriaLabel": "إغلاق تفاصيل المبنى",
+        "activeBuildingHotspots": 1,
+        "activeBuildingId": "n1"
+      },
+      "browserEvents": {
+        "consoleErrors": [],
+        "pageErrors": [],
+        "requestFailures": [],
+        "locallyRoutedMedia": [
+          "plugins/nadlan-config/assets/showroom-engine/projects/utopia-sde-dov/utopia-concept-exterior-v1.webp",
+          "plugins/nadlan-config/assets/showroom-engine/projects/utopia-sde-dov/utopia-concept-interior-v1.webp",
+          "plugins/nadlan-config/assets/showroom-engine/projects/utopia-sde-dov/utopia-concept-window-view-v1.webp",
+          "plugins/nadlan-config/assets/showroom-engine/projects/utopia-sde-dov/utopia-concept-wellness-v1.webp"
+        ],
+        "modelAssetRequests": 1,
+        "modelAssetSha256": "ba267a241f7b5d943f5eebd6f32aae9241f14da420207ddadc4d5d74ac392f24"
+      },
+      "assertions": [
+        {
+          "name": "exact document title",
+          "pass": true,
+          "expected": "UTOPIA Sde Dov تل أبيب - شقق للبيع والأسعار واختيار الشقة",
+          "actual": "UTOPIA Sde Dov تل أبيب - شقق للبيع والأسعار واختيار الشقة"
+        },
+        {
+          "name": "document language",
+          "pass": true,
+          "expected": "ar",
+          "actual": "ar"
+        },
+        {
+          "name": "document direction",
+          "pass": true,
+          "expected": "rtl",
+          "actual": "rtl"
+        },
+        {
+          "name": "article inherited direction",
+          "pass": true,
+          "expected": "rtl",
+          "actual": "rtl"
+        },
+        {
+          "name": "showroom inherited direction",
+          "pass": true,
+          "expected": "rtl",
+          "actual": "rtl"
+        },
+        {
+          "name": "one H1",
+          "pass": true,
+          "expected": 1,
+          "actual": 1
+        },
+        {
+          "name": "H1 equals SEO title",
+          "pass": true,
+          "expected": "UTOPIA Sde Dov تل أبيب - شقق للبيع والأسعار واختيار الشقة",
+          "actual": "UTOPIA Sde Dov تل أبيب - شقق للبيع والأسعار واختيار الشقة"
+        },
+        {
+          "name": "buyer H1 precedes showroom",
+          "pass": true,
+          "expected": true,
+          "actual": true
+        },
+        {
+          "name": "opening paragraph contrast at least 4.5:1",
+          "pass": true,
+          "expected": true,
+          "actual": true
+        },
+        {
+          "name": "no empty headings",
+          "pass": true,
+          "expected": [],
+          "actual": []
+        },
+        {
+          "name": "no legacy project blocks",
+          "pass": true,
+          "expected": [],
+          "actual": []
+        },
+        {
+          "name": "no template-relative home or project URLs",
+          "pass": true,
+          "expected": [],
+          "actual": []
+        },
+        {
+          "name": "concept disclosure in hero image alt",
+          "pass": true,
+          "expected": true,
+          "actual": true
+        },
+        {
+          "name": "four building hotspots",
+          "pass": true,
+          "expected": 4,
+          "actual": 4
+        },
+        {
+          "name": "stable building hotspot labels",
+          "pass": true,
+          "expected": [
+            "S1",
+            "N1",
+            "N2",
+            "S2"
+          ],
+          "actual": [
+            "S1",
+            "N1",
+            "N2",
+            "S2"
+          ]
+        },
+        {
+          "name": "localized N1 hotspot accessible label",
+          "pass": true,
+          "expected": "المبنى N1",
+          "actual": "المبنى N1"
+        },
+        {
+          "name": "UTOPIA building-mode root class",
+          "pass": true,
+          "expected": true,
+          "actual": true
+        },
+        {
+          "name": "one route-scoped UTOPIA stylesheet",
+          "pass": true,
+          "expected": 1,
+          "actual": 1
+        },
+        {
+          "name": "zero unit hotspots",
+          "pass": true,
+          "expected": 0,
+          "actual": 0
+        },
+        {
+          "name": "seven sample plan cards",
+          "pass": true,
+          "expected": 7,
+          "actual": 7
+        },
+        {
+          "name": "four article media images",
+          "pass": true,
+          "expected": 4,
+          "actual": 4
+        },
+        {
+          "name": "four article media images loaded",
+          "pass": true,
+          "expected": 4,
+          "actual": 4
+        },
+        {
+          "name": "one model viewer",
+          "pass": true,
+          "expected": 1,
+          "actual": 1
+        },
+        {
+          "name": "model-viewer custom element defined",
+          "pass": true,
+          "expected": true,
+          "actual": true
+        },
+        {
+          "name": "UTOPIA GLB source",
+          "pass": true,
+          "expected": "/plugins/nadlan-config/assets/showroom-engine/models/utopia-rich-v1.glb",
+          "actual": "/plugins/nadlan-config/assets/showroom-engine/models/utopia-rich-v1.glb"
+        },
+        {
+          "name": "one optimized GLB request",
+          "pass": true,
+          "expected": 1,
+          "actual": 1
+        },
+        {
+          "name": "optimized GLB SHA-256",
+          "pass": true,
+          "expected": "ba267a241f7b5d943f5eebd6f32aae9241f14da420207ddadc4d5d74ac392f24",
+          "actual": "ba267a241f7b5d943f5eebd6f32aae9241f14da420207ddadc4d5d74ac392f24"
+        },
+        {
+          "name": "GLB loaded",
+          "pass": true,
+          "expected": true,
+          "actual": true
+        },
+        {
+          "name": "GLB visible",
+          "pass": true,
+          "expected": true,
+          "actual": true
+        },
+        {
+          "name": "model has visible dimensions",
+          "pass": true,
+          "expected": true,
+          "actual": true
+        },
+        {
+          "name": "model error hidden",
+          "pass": true,
+          "expected": false,
+          "actual": false
+        },
+        {
+          "name": "localized building section navigation",
+          "pass": true,
+          "expected": "المبنى",
+          "actual": "المبنى"
+        },
+        {
+          "name": "localized building title",
+          "pass": true,
+          "expected": "المباني الأربعة في المشروع",
+          "actual": "المباني الأربعة في المشروع"
+        },
+        {
+          "name": "localized building prompt",
+          "pass": true,
+          "expected": "اختر مبنى للاطلاع على بيانات التخطيط المنشورة.",
+          "actual": "اختر مبنى للاطلاع على بيانات التخطيط المنشورة."
+        },
+        {
+          "name": "localized sample plans heading",
+          "pass": true,
+          "expected": "نماذج المخططات المنشورة",
+          "actual": "نماذج المخططات المنشورة"
+        },
+        {
+          "name": "no obvious untranslated English UI labels",
+          "pass": true,
+          "expected": [],
+          "actual": []
+        },
+        {
+          "name": "building click opens detail panel",
+          "pass": true,
+          "expected": true,
+          "actual": true
+        },
+        {
+          "name": "localized selected building title",
+          "pass": true,
+          "expected": "المبنى N1",
+          "actual": "المبنى N1"
+        },
+        {
+          "name": "localized floor label",
+          "pass": true,
+          "expected": "الطوابق المنشورة",
+          "actual": "الطوابق المنشورة"
+        },
+        {
+          "name": "localized height label",
+          "pass": true,
+          "expected": "الارتفاع الأقصى المخطط",
+          "actual": "الارتفاع الأقصى المخطط"
+        },
+        {
+          "name": "localized source label",
+          "pass": true,
+          "expected": "وثيقة التخطيط البلدية",
+          "actual": "وثيقة التخطيط البلدية"
+        },
+        {
+          "name": "N1 sample plan links in panel",
+          "pass": true,
+          "expected": 4,
+          "actual": 4
+        },
+        {
+          "name": "one active building hotspot",
+          "pass": true,
+          "expected": 1,
+          "actual": 1
+        },
+        {
+          "name": "N1 hotspot active",
+          "pass": true,
+          "expected": "n1",
+          "actual": "n1"
+        },
+        {
+          "name": "no console errors",
+          "pass": true,
+          "expected": [],
+          "actual": []
+        },
+        {
+          "name": "no page errors",
+          "pass": true,
+          "expected": [],
+          "actual": []
+        }
+      ],
+      "failures": [],
+      "warnings": [],
+      "screenshots": {
+        "top": "docs/qa/screenshots/utopia-preview-2026-07-29/ar-desktop-1440x1000-top.png",
+        "initial": "docs/qa/screenshots/utopia-preview-2026-07-29/ar-desktop-1440x1000-initial.png",
+        "selected": "docs/qa/screenshots/utopia-preview-2026-07-29/ar-desktop-1440x1000-selected-n1.png"
+      }
+    },
+    {
+      "lang": "he",
+      "viewport": "mobile-390x844",
+      "dimensions": {
+        "width": 390,
+        "height": 844
+      },
+      "url": "http://127.0.0.1:4173/docs/previews/utopia-sde-dov-he-preview.html?lang=fr",
+      "pass": true,
+      "initial": {
+        "url": "http://127.0.0.1:4173/docs/previews/utopia-sde-dov-he-preview.html?lang=fr",
+        "title": "UTOPIA שדה דב תל אביב - מחירים, דירות ובחירה מהבניין",
+        "documentLang": "he",
+        "documentDir": "rtl",
+        "articleComputedDir": "rtl",
+        "appComputedDir": "rtl",
+        "h1Count": 1,
+        "h1Text": "UTOPIA שדה דב תל אביב - מחירים, דירות ובחירה מהבניין",
+        "h1PrecedesShowroom": true,
+        "leadTextColor": "rgb(107, 100, 87)",
+        "leadBackgroundColor": "rgb(251, 248, 241)",
+        "leadContrastRatio": 5.52,
+        "emptyHeadings": [],
+        "legacyBlocks": [],
+        "templateRelativeHrefs": [],
+        "heroImageAlt": "UTOPIA שדה דב - הדמיה עצמאית המבוססת על נתוני תכנון פומביים",
+        "buildingHotspots": 4,
+        "buildingHotspotLabels": [
+          "S1",
+          "N1",
+          "N2",
+          "S2"
+        ],
+        "buildingHotspotAriaLabels": [
+          "מגדל S1",
+          "בניין N1",
+          "בניין N2",
+          "בניין S2"
+        ],
+        "buildingModeClass": true,
+        "utopiaStylesheetCount": 1,
+        "unitHotspots": 0,
+        "samplePlanCards": 7,
+        "articleMediaImages": 4,
+        "articleMediaImagesLoaded": 4,
+        "modelViewerCount": 1,
+        "modelCustomElementDefined": true,
+        "modelSrc": "/plugins/nadlan-config/assets/showroom-engine/models/utopia-rich-v1.glb",
+        "modelLoaded": true,
+        "modelIsVisible": true,
+        "modelVisibleBox": {
+          "x": 11,
+          "y": 52,
+          "width": 368,
+          "height": 491,
+          "visible": true
+        },
+        "modelErrorVisible": false,
+        "firstSectionNavLabel": "בניין",
+        "buildingTitle": "ארבעת מבני הפרויקט",
+        "buildingPrompt": "לחצו על מבנה כדי לראות את נתוני התכנון שפורסמו.",
+        "plansTitle": "תוכניות דוגמה שפורסמו",
+        "untranslatedEnglish": [],
+        "documentClientWidth": 390,
+        "documentScrollWidth": 390,
+        "horizontalOverflowPx": 0,
+        "overflowingElements": []
+      },
+      "selected": {
+        "panelOpen": true,
+        "panelTitle": "בניין N1",
+        "factLabels": [
+          "קומות שפורסמו",
+          "גובה מרבי מתוכנן"
+        ],
+        "sourceLabel": "מסמך התכנון העירוני",
+        "panelPlanLinks": 4,
+        "closeAriaLabel": "סגירת פרטי המבנה",
+        "activeBuildingHotspots": 1,
+        "activeBuildingId": "n1"
+      },
+      "browserEvents": {
+        "consoleErrors": [],
+        "pageErrors": [],
+        "requestFailures": [],
+        "locallyRoutedMedia": [
+          "plugins/nadlan-config/assets/showroom-engine/projects/utopia-sde-dov/utopia-concept-exterior-v1.webp",
+          "plugins/nadlan-config/assets/showroom-engine/projects/utopia-sde-dov/utopia-concept-interior-v1.webp",
+          "plugins/nadlan-config/assets/showroom-engine/projects/utopia-sde-dov/utopia-concept-window-view-v1.webp",
+          "plugins/nadlan-config/assets/showroom-engine/projects/utopia-sde-dov/utopia-concept-wellness-v1.webp"
+        ],
+        "modelAssetRequests": 1,
+        "modelAssetSha256": "ba267a241f7b5d943f5eebd6f32aae9241f14da420207ddadc4d5d74ac392f24"
+      },
+      "assertions": [
+        {
+          "name": "exact document title",
+          "pass": true,
+          "expected": "UTOPIA שדה דב תל אביב - מחירים, דירות ובחירה מהבניין",
+          "actual": "UTOPIA שדה דב תל אביב - מחירים, דירות ובחירה מהבניין"
+        },
+        {
+          "name": "document language",
+          "pass": true,
+          "expected": "he",
+          "actual": "he"
+        },
+        {
+          "name": "document direction",
+          "pass": true,
+          "expected": "rtl",
+          "actual": "rtl"
+        },
+        {
+          "name": "article inherited direction",
+          "pass": true,
+          "expected": "rtl",
+          "actual": "rtl"
+        },
+        {
+          "name": "showroom inherited direction",
+          "pass": true,
+          "expected": "rtl",
+          "actual": "rtl"
+        },
+        {
+          "name": "one H1",
+          "pass": true,
+          "expected": 1,
+          "actual": 1
+        },
+        {
+          "name": "H1 equals SEO title",
+          "pass": true,
+          "expected": "UTOPIA שדה דב תל אביב - מחירים, דירות ובחירה מהבניין",
+          "actual": "UTOPIA שדה דב תל אביב - מחירים, דירות ובחירה מהבניין"
+        },
+        {
+          "name": "buyer H1 precedes showroom",
+          "pass": true,
+          "expected": true,
+          "actual": true
+        },
+        {
+          "name": "opening paragraph contrast at least 4.5:1",
+          "pass": true,
+          "expected": true,
+          "actual": true
+        },
+        {
+          "name": "no empty headings",
+          "pass": true,
+          "expected": [],
+          "actual": []
+        },
+        {
+          "name": "no legacy project blocks",
+          "pass": true,
+          "expected": [],
+          "actual": []
+        },
+        {
+          "name": "no template-relative home or project URLs",
+          "pass": true,
+          "expected": [],
+          "actual": []
+        },
+        {
+          "name": "concept disclosure in hero image alt",
+          "pass": true,
+          "expected": true,
+          "actual": true
+        },
+        {
+          "name": "four building hotspots",
+          "pass": true,
+          "expected": 4,
+          "actual": 4
+        },
+        {
+          "name": "stable building hotspot labels",
+          "pass": true,
+          "expected": [
+            "S1",
+            "N1",
+            "N2",
+            "S2"
+          ],
+          "actual": [
+            "S1",
+            "N1",
+            "N2",
+            "S2"
+          ]
+        },
+        {
+          "name": "localized N1 hotspot accessible label",
+          "pass": true,
+          "expected": "בניין N1",
+          "actual": "בניין N1"
+        },
+        {
+          "name": "UTOPIA building-mode root class",
+          "pass": true,
+          "expected": true,
+          "actual": true
+        },
+        {
+          "name": "one route-scoped UTOPIA stylesheet",
+          "pass": true,
+          "expected": 1,
+          "actual": 1
+        },
+        {
+          "name": "zero unit hotspots",
+          "pass": true,
+          "expected": 0,
+          "actual": 0
+        },
+        {
+          "name": "seven sample plan cards",
+          "pass": true,
+          "expected": 7,
+          "actual": 7
+        },
+        {
+          "name": "four article media images",
+          "pass": true,
+          "expected": 4,
+          "actual": 4
+        },
+        {
+          "name": "four article media images loaded",
+          "pass": true,
+          "expected": 4,
+          "actual": 4
+        },
+        {
+          "name": "one model viewer",
+          "pass": true,
+          "expected": 1,
+          "actual": 1
+        },
+        {
+          "name": "model-viewer custom element defined",
+          "pass": true,
+          "expected": true,
+          "actual": true
+        },
+        {
+          "name": "UTOPIA GLB source",
+          "pass": true,
+          "expected": "/plugins/nadlan-config/assets/showroom-engine/models/utopia-rich-v1.glb",
+          "actual": "/plugins/nadlan-config/assets/showroom-engine/models/utopia-rich-v1.glb"
+        },
+        {
+          "name": "one optimized GLB request",
+          "pass": true,
+          "expected": 1,
+          "actual": 1
+        },
+        {
+          "name": "optimized GLB SHA-256",
+          "pass": true,
+          "expected": "ba267a241f7b5d943f5eebd6f32aae9241f14da420207ddadc4d5d74ac392f24",
+          "actual": "ba267a241f7b5d943f5eebd6f32aae9241f14da420207ddadc4d5d74ac392f24"
+        },
+        {
+          "name": "GLB loaded",
+          "pass": true,
+          "expected": true,
+          "actual": true
+        },
+        {
+          "name": "GLB visible",
+          "pass": true,
+          "expected": true,
+          "actual": true
+        },
+        {
+          "name": "model has visible dimensions",
+          "pass": true,
+          "expected": true,
+          "actual": true
+        },
+        {
+          "name": "model error hidden",
+          "pass": true,
+          "expected": false,
+          "actual": false
+        },
+        {
+          "name": "localized building section navigation",
+          "pass": true,
+          "expected": "בניין",
+          "actual": "בניין"
+        },
+        {
+          "name": "localized building title",
+          "pass": true,
+          "expected": "ארבעת מבני הפרויקט",
+          "actual": "ארבעת מבני הפרויקט"
+        },
+        {
+          "name": "localized building prompt",
+          "pass": true,
+          "expected": "לחצו על מבנה כדי לראות את נתוני התכנון שפורסמו.",
+          "actual": "לחצו על מבנה כדי לראות את נתוני התכנון שפורסמו."
+        },
+        {
+          "name": "localized sample plans heading",
+          "pass": true,
+          "expected": "תוכניות דוגמה שפורסמו",
+          "actual": "תוכניות דוגמה שפורסמו"
+        },
+        {
+          "name": "no obvious untranslated English UI labels",
+          "pass": true,
+          "expected": [],
+          "actual": []
+        },
+        {
+          "name": "building click opens detail panel",
+          "pass": true,
+          "expected": true,
+          "actual": true
+        },
+        {
+          "name": "localized selected building title",
+          "pass": true,
+          "expected": "בניין N1",
+          "actual": "בניין N1"
+        },
+        {
+          "name": "localized floor label",
+          "pass": true,
+          "expected": "קומות שפורסמו",
+          "actual": "קומות שפורסמו"
+        },
+        {
+          "name": "localized height label",
+          "pass": true,
+          "expected": "גובה מרבי מתוכנן",
+          "actual": "גובה מרבי מתוכנן"
+        },
+        {
+          "name": "localized source label",
+          "pass": true,
+          "expected": "מסמך התכנון העירוני",
+          "actual": "מסמך התכנון העירוני"
+        },
+        {
+          "name": "N1 sample plan links in panel",
+          "pass": true,
+          "expected": 4,
+          "actual": 4
+        },
+        {
+          "name": "one active building hotspot",
+          "pass": true,
+          "expected": 1,
+          "actual": 1
+        },
+        {
+          "name": "N1 hotspot active",
+          "pass": true,
+          "expected": "n1",
+          "actual": "n1"
+        },
+        {
+          "name": "no console errors",
+          "pass": true,
+          "expected": [],
+          "actual": []
+        },
+        {
+          "name": "no page errors",
+          "pass": true,
+          "expected": [],
+          "actual": []
+        },
+        {
+          "name": "no mobile horizontal overflow",
+          "pass": true,
+          "expected": 0,
+          "actual": 0
+        }
+      ],
+      "failures": [],
+      "warnings": [],
+      "screenshots": {
+        "top": "docs/qa/screenshots/utopia-preview-2026-07-29/he-mobile-390x844-top.png",
+        "initial": "docs/qa/screenshots/utopia-preview-2026-07-29/he-mobile-390x844-initial.png",
+        "selected": "docs/qa/screenshots/utopia-preview-2026-07-29/he-mobile-390x844-selected-n1.png"
+      }
+    },
+    {
+      "lang": "en",
+      "viewport": "mobile-390x844",
+      "dimensions": {
+        "width": 390,
+        "height": 844
+      },
+      "url": "http://127.0.0.1:4173/docs/previews/utopia-sde-dov-en-preview.html?lang=ar",
+      "pass": true,
+      "initial": {
+        "url": "http://127.0.0.1:4173/docs/previews/utopia-sde-dov-en-preview.html?lang=ar",
+        "title": "UTOPIA Sde Dov Tel Aviv - Apartments for Sale, Prices and Choosing a Home",
+        "documentLang": "en",
+        "documentDir": "ltr",
+        "articleComputedDir": "ltr",
+        "appComputedDir": "ltr",
+        "h1Count": 1,
+        "h1Text": "UTOPIA Sde Dov Tel Aviv - Apartments for Sale, Prices and Choosing a Home",
+        "h1PrecedesShowroom": true,
+        "leadTextColor": "rgb(107, 100, 87)",
+        "leadBackgroundColor": "rgb(251, 248, 241)",
+        "leadContrastRatio": 5.52,
+        "emptyHeadings": [],
+        "legacyBlocks": [],
+        "templateRelativeHrefs": [],
+        "heroImageAlt": "UTOPIA Sde Dov - independent concept illustration based on public planning data",
+        "buildingHotspots": 4,
+        "buildingHotspotLabels": [
+          "S1",
+          "N1",
+          "N2",
+          "S2"
+        ],
+        "buildingHotspotAriaLabels": [
+          "S1 tower",
+          "N1 building",
+          "N2 building",
+          "S2 building"
+        ],
+        "buildingModeClass": true,
+        "utopiaStylesheetCount": 1,
+        "unitHotspots": 0,
+        "samplePlanCards": 7,
+        "articleMediaImages": 4,
+        "articleMediaImagesLoaded": 4,
+        "modelViewerCount": 1,
+        "modelCustomElementDefined": true,
+        "modelSrc": "/plugins/nadlan-config/assets/showroom-engine/models/utopia-rich-v1.glb",
+        "modelLoaded": true,
+        "modelIsVisible": true,
+        "modelVisibleBox": {
+          "x": 11,
+          "y": 52,
+          "width": 368,
+          "height": 491,
+          "visible": true
+        },
+        "modelErrorVisible": false,
+        "firstSectionNavLabel": "Building",
+        "buildingTitle": "The project's four buildings",
+        "buildingPrompt": "Select a building to view its published planning data.",
+        "plansTitle": "Published sample plans",
+        "untranslatedEnglish": [],
+        "documentClientWidth": 390,
+        "documentScrollWidth": 390,
+        "horizontalOverflowPx": 0,
+        "overflowingElements": [
+          {
+            "tag": "a",
+            "id": null,
+            "className": "",
+            "left": 467,
+            "right": 495,
+            "width": 28,
+            "text": "Info"
+          },
+          {
+            "tag": "a",
+            "id": null,
+            "className": "",
+            "left": 408,
+            "right": 451,
+            "width": 43,
+            "text": "Media"
+          },
+          {
+            "tag": "a",
+            "id": null,
+            "className": "",
+            "left": 303,
+            "right": 392,
+            "width": 89,
+            "text": "Surroundings"
+          }
+        ]
+      },
+      "selected": {
+        "panelOpen": true,
+        "panelTitle": "N1 building",
+        "factLabels": [
+          "Published floors",
+          "Planned maximum height"
+        ],
+        "sourceLabel": "Municipal planning document",
+        "panelPlanLinks": 4,
+        "closeAriaLabel": "Close building details",
+        "activeBuildingHotspots": 1,
+        "activeBuildingId": "n1"
+      },
+      "browserEvents": {
+        "consoleErrors": [],
+        "pageErrors": [],
+        "requestFailures": [],
+        "locallyRoutedMedia": [
+          "plugins/nadlan-config/assets/showroom-engine/projects/utopia-sde-dov/utopia-concept-exterior-v1.webp",
+          "plugins/nadlan-config/assets/showroom-engine/projects/utopia-sde-dov/utopia-concept-interior-v1.webp",
+          "plugins/nadlan-config/assets/showroom-engine/projects/utopia-sde-dov/utopia-concept-window-view-v1.webp",
+          "plugins/nadlan-config/assets/showroom-engine/projects/utopia-sde-dov/utopia-concept-wellness-v1.webp"
+        ],
+        "modelAssetRequests": 1,
+        "modelAssetSha256": "ba267a241f7b5d943f5eebd6f32aae9241f14da420207ddadc4d5d74ac392f24"
+      },
+      "assertions": [
+        {
+          "name": "exact document title",
+          "pass": true,
+          "expected": "UTOPIA Sde Dov Tel Aviv - Apartments for Sale, Prices and Choosing a Home",
+          "actual": "UTOPIA Sde Dov Tel Aviv - Apartments for Sale, Prices and Choosing a Home"
+        },
+        {
+          "name": "document language",
+          "pass": true,
+          "expected": "en",
+          "actual": "en"
+        },
+        {
+          "name": "document direction",
+          "pass": true,
+          "expected": "ltr",
+          "actual": "ltr"
+        },
+        {
+          "name": "article inherited direction",
+          "pass": true,
+          "expected": "ltr",
+          "actual": "ltr"
+        },
+        {
+          "name": "showroom inherited direction",
+          "pass": true,
+          "expected": "ltr",
+          "actual": "ltr"
+        },
+        {
+          "name": "one H1",
+          "pass": true,
+          "expected": 1,
+          "actual": 1
+        },
+        {
+          "name": "H1 equals SEO title",
+          "pass": true,
+          "expected": "UTOPIA Sde Dov Tel Aviv - Apartments for Sale, Prices and Choosing a Home",
+          "actual": "UTOPIA Sde Dov Tel Aviv - Apartments for Sale, Prices and Choosing a Home"
+        },
+        {
+          "name": "buyer H1 precedes showroom",
+          "pass": true,
+          "expected": true,
+          "actual": true
+        },
+        {
+          "name": "opening paragraph contrast at least 4.5:1",
+          "pass": true,
+          "expected": true,
+          "actual": true
+        },
+        {
+          "name": "no empty headings",
+          "pass": true,
+          "expected": [],
+          "actual": []
+        },
+        {
+          "name": "no legacy project blocks",
+          "pass": true,
+          "expected": [],
+          "actual": []
+        },
+        {
+          "name": "no template-relative home or project URLs",
+          "pass": true,
+          "expected": [],
+          "actual": []
+        },
+        {
+          "name": "concept disclosure in hero image alt",
+          "pass": true,
+          "expected": true,
+          "actual": true
+        },
+        {
+          "name": "four building hotspots",
+          "pass": true,
+          "expected": 4,
+          "actual": 4
+        },
+        {
+          "name": "stable building hotspot labels",
+          "pass": true,
+          "expected": [
+            "S1",
+            "N1",
+            "N2",
+            "S2"
+          ],
+          "actual": [
+            "S1",
+            "N1",
+            "N2",
+            "S2"
+          ]
+        },
+        {
+          "name": "localized N1 hotspot accessible label",
+          "pass": true,
+          "expected": "N1 building",
+          "actual": "N1 building"
+        },
+        {
+          "name": "UTOPIA building-mode root class",
+          "pass": true,
+          "expected": true,
+          "actual": true
+        },
+        {
+          "name": "one route-scoped UTOPIA stylesheet",
+          "pass": true,
+          "expected": 1,
+          "actual": 1
+        },
+        {
+          "name": "zero unit hotspots",
+          "pass": true,
+          "expected": 0,
+          "actual": 0
+        },
+        {
+          "name": "seven sample plan cards",
+          "pass": true,
+          "expected": 7,
+          "actual": 7
+        },
+        {
+          "name": "four article media images",
+          "pass": true,
+          "expected": 4,
+          "actual": 4
+        },
+        {
+          "name": "four article media images loaded",
+          "pass": true,
+          "expected": 4,
+          "actual": 4
+        },
+        {
+          "name": "one model viewer",
+          "pass": true,
+          "expected": 1,
+          "actual": 1
+        },
+        {
+          "name": "model-viewer custom element defined",
+          "pass": true,
+          "expected": true,
+          "actual": true
+        },
+        {
+          "name": "UTOPIA GLB source",
+          "pass": true,
+          "expected": "/plugins/nadlan-config/assets/showroom-engine/models/utopia-rich-v1.glb",
+          "actual": "/plugins/nadlan-config/assets/showroom-engine/models/utopia-rich-v1.glb"
+        },
+        {
+          "name": "one optimized GLB request",
+          "pass": true,
+          "expected": 1,
+          "actual": 1
+        },
+        {
+          "name": "optimized GLB SHA-256",
+          "pass": true,
+          "expected": "ba267a241f7b5d943f5eebd6f32aae9241f14da420207ddadc4d5d74ac392f24",
+          "actual": "ba267a241f7b5d943f5eebd6f32aae9241f14da420207ddadc4d5d74ac392f24"
+        },
+        {
+          "name": "GLB loaded",
+          "pass": true,
+          "expected": true,
+          "actual": true
+        },
+        {
+          "name": "GLB visible",
+          "pass": true,
+          "expected": true,
+          "actual": true
+        },
+        {
+          "name": "model has visible dimensions",
+          "pass": true,
+          "expected": true,
+          "actual": true
+        },
+        {
+          "name": "model error hidden",
+          "pass": true,
+          "expected": false,
+          "actual": false
+        },
+        {
+          "name": "localized building section navigation",
+          "pass": true,
+          "expected": "Building",
+          "actual": "Building"
+        },
+        {
+          "name": "localized building title",
+          "pass": true,
+          "expected": "The project's four buildings",
+          "actual": "The project's four buildings"
+        },
+        {
+          "name": "localized building prompt",
+          "pass": true,
+          "expected": "Select a building to view its published planning data.",
+          "actual": "Select a building to view its published planning data."
+        },
+        {
+          "name": "localized sample plans heading",
+          "pass": true,
+          "expected": "Published sample plans",
+          "actual": "Published sample plans"
+        },
+        {
+          "name": "no obvious untranslated English UI labels",
+          "pass": true,
+          "expected": [],
+          "actual": []
+        },
+        {
+          "name": "building click opens detail panel",
+          "pass": true,
+          "expected": true,
+          "actual": true
+        },
+        {
+          "name": "localized selected building title",
+          "pass": true,
+          "expected": "N1 building",
+          "actual": "N1 building"
+        },
+        {
+          "name": "localized floor label",
+          "pass": true,
+          "expected": "Published floors",
+          "actual": "Published floors"
+        },
+        {
+          "name": "localized height label",
+          "pass": true,
+          "expected": "Planned maximum height",
+          "actual": "Planned maximum height"
+        },
+        {
+          "name": "localized source label",
+          "pass": true,
+          "expected": "Municipal planning document",
+          "actual": "Municipal planning document"
+        },
+        {
+          "name": "N1 sample plan links in panel",
+          "pass": true,
+          "expected": 4,
+          "actual": 4
+        },
+        {
+          "name": "one active building hotspot",
+          "pass": true,
+          "expected": 1,
+          "actual": 1
+        },
+        {
+          "name": "N1 hotspot active",
+          "pass": true,
+          "expected": "n1",
+          "actual": "n1"
+        },
+        {
+          "name": "no console errors",
+          "pass": true,
+          "expected": [],
+          "actual": []
+        },
+        {
+          "name": "no page errors",
+          "pass": true,
+          "expected": [],
+          "actual": []
+        },
+        {
+          "name": "no mobile horizontal overflow",
+          "pass": true,
+          "expected": 0,
+          "actual": 0
+        }
+      ],
+      "failures": [],
+      "warnings": [],
+      "screenshots": {
+        "top": "docs/qa/screenshots/utopia-preview-2026-07-29/en-mobile-390x844-top.png",
+        "initial": "docs/qa/screenshots/utopia-preview-2026-07-29/en-mobile-390x844-initial.png",
+        "selected": "docs/qa/screenshots/utopia-preview-2026-07-29/en-mobile-390x844-selected-n1.png"
+      }
+    },
+    {
+      "lang": "fr",
+      "viewport": "mobile-390x844",
+      "dimensions": {
+        "width": 390,
+        "height": 844
+      },
+      "url": "http://127.0.0.1:4173/docs/previews/utopia-sde-dov-fr-preview.html?lang=he",
+      "pass": true,
+      "initial": {
+        "url": "http://127.0.0.1:4173/docs/previews/utopia-sde-dov-fr-preview.html?lang=he",
+        "title": "UTOPIA Sde Dov Tel Aviv - Appartements à vendre, prix et choix d'un logement",
+        "documentLang": "fr",
+        "documentDir": "ltr",
+        "articleComputedDir": "ltr",
+        "appComputedDir": "ltr",
+        "h1Count": 1,
+        "h1Text": "UTOPIA Sde Dov Tel Aviv - Appartements à vendre, prix et choix d'un logement",
+        "h1PrecedesShowroom": true,
+        "leadTextColor": "rgb(107, 100, 87)",
+        "leadBackgroundColor": "rgb(251, 248, 241)",
+        "leadContrastRatio": 5.52,
+        "emptyHeadings": [],
+        "legacyBlocks": [],
+        "templateRelativeHrefs": [],
+        "heroImageAlt": "UTOPIA Sde Dov - illustration conceptuelle indépendante fondée sur les données publiques d'urbanisme",
+        "buildingHotspots": 4,
+        "buildingHotspotLabels": [
+          "S1",
+          "N1",
+          "N2",
+          "S2"
+        ],
+        "buildingHotspotAriaLabels": [
+          "Tour S1",
+          "Bâtiment N1",
+          "Bâtiment N2",
+          "Bâtiment S2"
+        ],
+        "buildingModeClass": true,
+        "utopiaStylesheetCount": 1,
+        "unitHotspots": 0,
+        "samplePlanCards": 7,
+        "articleMediaImages": 4,
+        "articleMediaImagesLoaded": 4,
+        "modelViewerCount": 1,
+        "modelCustomElementDefined": true,
+        "modelSrc": "/plugins/nadlan-config/assets/showroom-engine/models/utopia-rich-v1.glb",
+        "modelLoaded": true,
+        "modelIsVisible": true,
+        "modelVisibleBox": {
+          "x": 11,
+          "y": 52,
+          "width": 368,
+          "height": 491,
+          "visible": true
+        },
+        "modelErrorVisible": false,
+        "firstSectionNavLabel": "Immeuble",
+        "buildingTitle": "Les quatre bâtiments du projet",
+        "buildingPrompt": "Sélectionnez un bâtiment pour consulter les données d'urbanisme publiées.",
+        "plansTitle": "Plans d'exemple publiés",
+        "untranslatedEnglish": [],
+        "documentClientWidth": 390,
+        "documentScrollWidth": 390,
+        "horizontalOverflowPx": 0,
+        "overflowingElements": [
+          {
+            "tag": "a",
+            "id": null,
+            "className": "",
+            "left": 493,
+            "right": 577,
+            "width": 84,
+            "text": "Informations"
+          },
+          {
+            "tag": "a",
+            "id": null,
+            "className": "",
+            "left": 427,
+            "right": 477,
+            "width": 50,
+            "text": "Médias"
+          },
+          {
+            "tag": "a",
+            "id": null,
+            "className": "",
+            "left": 310,
+            "right": 411,
+            "width": 101,
+            "text": "Environnement"
+          },
+          {
+            "tag": "b",
+            "id": null,
+            "className": "",
+            "left": 268,
+            "right": 402,
+            "width": 134,
+            "text": "Accompagnement juridique et fiscal"
+          }
+        ]
+      },
+      "selected": {
+        "panelOpen": true,
+        "panelTitle": "Bâtiment N1",
+        "factLabels": [
+          "Étages publiés",
+          "Hauteur maximale projetée"
+        ],
+        "sourceLabel": "Document municipal d'urbanisme",
+        "panelPlanLinks": 4,
+        "closeAriaLabel": "Fermer les détails du bâtiment",
+        "activeBuildingHotspots": 1,
+        "activeBuildingId": "n1"
+      },
+      "browserEvents": {
+        "consoleErrors": [],
+        "pageErrors": [],
+        "requestFailures": [],
+        "locallyRoutedMedia": [
+          "plugins/nadlan-config/assets/showroom-engine/projects/utopia-sde-dov/utopia-concept-exterior-v1.webp",
+          "plugins/nadlan-config/assets/showroom-engine/projects/utopia-sde-dov/utopia-concept-interior-v1.webp",
+          "plugins/nadlan-config/assets/showroom-engine/projects/utopia-sde-dov/utopia-concept-window-view-v1.webp",
+          "plugins/nadlan-config/assets/showroom-engine/projects/utopia-sde-dov/utopia-concept-wellness-v1.webp"
+        ],
+        "modelAssetRequests": 1,
+        "modelAssetSha256": "ba267a241f7b5d943f5eebd6f32aae9241f14da420207ddadc4d5d74ac392f24"
+      },
+      "assertions": [
+        {
+          "name": "exact document title",
+          "pass": true,
+          "expected": "UTOPIA Sde Dov Tel Aviv - Appartements à vendre, prix et choix d'un logement",
+          "actual": "UTOPIA Sde Dov Tel Aviv - Appartements à vendre, prix et choix d'un logement"
+        },
+        {
+          "name": "document language",
+          "pass": true,
+          "expected": "fr",
+          "actual": "fr"
+        },
+        {
+          "name": "document direction",
+          "pass": true,
+          "expected": "ltr",
+          "actual": "ltr"
+        },
+        {
+          "name": "article inherited direction",
+          "pass": true,
+          "expected": "ltr",
+          "actual": "ltr"
+        },
+        {
+          "name": "showroom inherited direction",
+          "pass": true,
+          "expected": "ltr",
+          "actual": "ltr"
+        },
+        {
+          "name": "one H1",
+          "pass": true,
+          "expected": 1,
+          "actual": 1
+        },
+        {
+          "name": "H1 equals SEO title",
+          "pass": true,
+          "expected": "UTOPIA Sde Dov Tel Aviv - Appartements à vendre, prix et choix d'un logement",
+          "actual": "UTOPIA Sde Dov Tel Aviv - Appartements à vendre, prix et choix d'un logement"
+        },
+        {
+          "name": "buyer H1 precedes showroom",
+          "pass": true,
+          "expected": true,
+          "actual": true
+        },
+        {
+          "name": "opening paragraph contrast at least 4.5:1",
+          "pass": true,
+          "expected": true,
+          "actual": true
+        },
+        {
+          "name": "no empty headings",
+          "pass": true,
+          "expected": [],
+          "actual": []
+        },
+        {
+          "name": "no legacy project blocks",
+          "pass": true,
+          "expected": [],
+          "actual": []
+        },
+        {
+          "name": "no template-relative home or project URLs",
+          "pass": true,
+          "expected": [],
+          "actual": []
+        },
+        {
+          "name": "concept disclosure in hero image alt",
+          "pass": true,
+          "expected": true,
+          "actual": true
+        },
+        {
+          "name": "four building hotspots",
+          "pass": true,
+          "expected": 4,
+          "actual": 4
+        },
+        {
+          "name": "stable building hotspot labels",
+          "pass": true,
+          "expected": [
+            "S1",
+            "N1",
+            "N2",
+            "S2"
+          ],
+          "actual": [
+            "S1",
+            "N1",
+            "N2",
+            "S2"
+          ]
+        },
+        {
+          "name": "localized N1 hotspot accessible label",
+          "pass": true,
+          "expected": "Bâtiment N1",
+          "actual": "Bâtiment N1"
+        },
+        {
+          "name": "UTOPIA building-mode root class",
+          "pass": true,
+          "expected": true,
+          "actual": true
+        },
+        {
+          "name": "one route-scoped UTOPIA stylesheet",
+          "pass": true,
+          "expected": 1,
+          "actual": 1
+        },
+        {
+          "name": "zero unit hotspots",
+          "pass": true,
+          "expected": 0,
+          "actual": 0
+        },
+        {
+          "name": "seven sample plan cards",
+          "pass": true,
+          "expected": 7,
+          "actual": 7
+        },
+        {
+          "name": "four article media images",
+          "pass": true,
+          "expected": 4,
+          "actual": 4
+        },
+        {
+          "name": "four article media images loaded",
+          "pass": true,
+          "expected": 4,
+          "actual": 4
+        },
+        {
+          "name": "one model viewer",
+          "pass": true,
+          "expected": 1,
+          "actual": 1
+        },
+        {
+          "name": "model-viewer custom element defined",
+          "pass": true,
+          "expected": true,
+          "actual": true
+        },
+        {
+          "name": "UTOPIA GLB source",
+          "pass": true,
+          "expected": "/plugins/nadlan-config/assets/showroom-engine/models/utopia-rich-v1.glb",
+          "actual": "/plugins/nadlan-config/assets/showroom-engine/models/utopia-rich-v1.glb"
+        },
+        {
+          "name": "one optimized GLB request",
+          "pass": true,
+          "expected": 1,
+          "actual": 1
+        },
+        {
+          "name": "optimized GLB SHA-256",
+          "pass": true,
+          "expected": "ba267a241f7b5d943f5eebd6f32aae9241f14da420207ddadc4d5d74ac392f24",
+          "actual": "ba267a241f7b5d943f5eebd6f32aae9241f14da420207ddadc4d5d74ac392f24"
+        },
+        {
+          "name": "GLB loaded",
+          "pass": true,
+          "expected": true,
+          "actual": true
+        },
+        {
+          "name": "GLB visible",
+          "pass": true,
+          "expected": true,
+          "actual": true
+        },
+        {
+          "name": "model has visible dimensions",
+          "pass": true,
+          "expected": true,
+          "actual": true
+        },
+        {
+          "name": "model error hidden",
+          "pass": true,
+          "expected": false,
+          "actual": false
+        },
+        {
+          "name": "localized building section navigation",
+          "pass": true,
+          "expected": "Immeuble",
+          "actual": "Immeuble"
+        },
+        {
+          "name": "localized building title",
+          "pass": true,
+          "expected": "Les quatre bâtiments du projet",
+          "actual": "Les quatre bâtiments du projet"
+        },
+        {
+          "name": "localized building prompt",
+          "pass": true,
+          "expected": "Sélectionnez un bâtiment pour consulter les données d'urbanisme publiées.",
+          "actual": "Sélectionnez un bâtiment pour consulter les données d'urbanisme publiées."
+        },
+        {
+          "name": "localized sample plans heading",
+          "pass": true,
+          "expected": "Plans d'exemple publiés",
+          "actual": "Plans d'exemple publiés"
+        },
+        {
+          "name": "no obvious untranslated English UI labels",
+          "pass": true,
+          "expected": [],
+          "actual": []
+        },
+        {
+          "name": "building click opens detail panel",
+          "pass": true,
+          "expected": true,
+          "actual": true
+        },
+        {
+          "name": "localized selected building title",
+          "pass": true,
+          "expected": "Bâtiment N1",
+          "actual": "Bâtiment N1"
+        },
+        {
+          "name": "localized floor label",
+          "pass": true,
+          "expected": "Étages publiés",
+          "actual": "Étages publiés"
+        },
+        {
+          "name": "localized height label",
+          "pass": true,
+          "expected": "Hauteur maximale projetée",
+          "actual": "Hauteur maximale projetée"
+        },
+        {
+          "name": "localized source label",
+          "pass": true,
+          "expected": "Document municipal d'urbanisme",
+          "actual": "Document municipal d'urbanisme"
+        },
+        {
+          "name": "N1 sample plan links in panel",
+          "pass": true,
+          "expected": 4,
+          "actual": 4
+        },
+        {
+          "name": "one active building hotspot",
+          "pass": true,
+          "expected": 1,
+          "actual": 1
+        },
+        {
+          "name": "N1 hotspot active",
+          "pass": true,
+          "expected": "n1",
+          "actual": "n1"
+        },
+        {
+          "name": "no console errors",
+          "pass": true,
+          "expected": [],
+          "actual": []
+        },
+        {
+          "name": "no page errors",
+          "pass": true,
+          "expected": [],
+          "actual": []
+        },
+        {
+          "name": "no mobile horizontal overflow",
+          "pass": true,
+          "expected": 0,
+          "actual": 0
+        }
+      ],
+      "failures": [],
+      "warnings": [],
+      "screenshots": {
+        "top": "docs/qa/screenshots/utopia-preview-2026-07-29/fr-mobile-390x844-top.png",
+        "initial": "docs/qa/screenshots/utopia-preview-2026-07-29/fr-mobile-390x844-initial.png",
+        "selected": "docs/qa/screenshots/utopia-preview-2026-07-29/fr-mobile-390x844-selected-n1.png"
+      }
+    },
+    {
+      "lang": "ru",
+      "viewport": "mobile-390x844",
+      "dimensions": {
+        "width": 390,
+        "height": 844
+      },
+      "url": "http://127.0.0.1:4173/docs/previews/utopia-sde-dov-ru-preview.html?lang=en",
+      "pass": true,
+      "initial": {
+        "url": "http://127.0.0.1:4173/docs/previews/utopia-sde-dov-ru-preview.html?lang=en",
+        "title": "UTOPIA Sde Dov Тель-Авив - квартиры на продажу, цены и выбор квартиры",
+        "documentLang": "ru",
+        "documentDir": "ltr",
+        "articleComputedDir": "ltr",
+        "appComputedDir": "ltr",
+        "h1Count": 1,
+        "h1Text": "UTOPIA Sde Dov Тель-Авив - квартиры на продажу, цены и выбор квартиры",
+        "h1PrecedesShowroom": true,
+        "leadTextColor": "rgb(107, 100, 87)",
+        "leadBackgroundColor": "rgb(251, 248, 241)",
+        "leadContrastRatio": 5.52,
+        "emptyHeadings": [],
+        "legacyBlocks": [],
+        "templateRelativeHrefs": [],
+        "heroImageAlt": "UTOPIA Sde Dov - независимая концептуальная иллюстрация по открытым данным планирования",
+        "buildingHotspots": 4,
+        "buildingHotspotLabels": [
+          "S1",
+          "N1",
+          "N2",
+          "S2"
+        ],
+        "buildingHotspotAriaLabels": [
+          "Башня S1",
+          "Здание N1",
+          "Здание N2",
+          "Здание S2"
+        ],
+        "buildingModeClass": true,
+        "utopiaStylesheetCount": 1,
+        "unitHotspots": 0,
+        "samplePlanCards": 7,
+        "articleMediaImages": 4,
+        "articleMediaImagesLoaded": 4,
+        "modelViewerCount": 1,
+        "modelCustomElementDefined": true,
+        "modelSrc": "/plugins/nadlan-config/assets/showroom-engine/models/utopia-rich-v1.glb",
+        "modelLoaded": true,
+        "modelIsVisible": true,
+        "modelVisibleBox": {
+          "x": 11,
+          "y": 43,
+          "width": 368,
+          "height": 491,
+          "visible": true
+        },
+        "modelErrorVisible": false,
+        "firstSectionNavLabel": "Здание",
+        "buildingTitle": "Четыре здания проекта",
+        "buildingPrompt": "Выберите здание, чтобы увидеть опубликованные параметры планирования.",
+        "plansTitle": "Опубликованные примеры планов",
+        "untranslatedEnglish": [],
+        "documentClientWidth": 390,
+        "documentScrollWidth": 390,
+        "horizontalOverflowPx": 0,
+        "overflowingElements": [
+          {
+            "tag": "a",
+            "id": null,
+            "className": "",
+            "left": 549,
+            "right": 639,
+            "width": 90,
+            "text": "Информация"
+          },
+          {
+            "tag": "a",
+            "id": null,
+            "className": "",
+            "left": 484,
+            "right": 533,
+            "width": 49,
+            "text": "Медиа"
+          },
+          {
+            "tag": "a",
+            "id": null,
+            "className": "",
+            "left": 387,
+            "right": 468,
+            "width": 81,
+            "text": "Окружение"
+          }
+        ]
+      },
+      "selected": {
+        "panelOpen": true,
+        "panelTitle": "Здание N1",
+        "factLabels": [
+          "Опубликованная этажность",
+          "Планируемая предельная высота"
+        ],
+        "sourceLabel": "Муниципальный документ планирования",
+        "panelPlanLinks": 4,
+        "closeAriaLabel": "Закрыть сведения о здании",
+        "activeBuildingHotspots": 1,
+        "activeBuildingId": "n1"
+      },
+      "browserEvents": {
+        "consoleErrors": [],
+        "pageErrors": [],
+        "requestFailures": [],
+        "locallyRoutedMedia": [
+          "plugins/nadlan-config/assets/showroom-engine/projects/utopia-sde-dov/utopia-concept-exterior-v1.webp",
+          "plugins/nadlan-config/assets/showroom-engine/projects/utopia-sde-dov/utopia-concept-interior-v1.webp",
+          "plugins/nadlan-config/assets/showroom-engine/projects/utopia-sde-dov/utopia-concept-window-view-v1.webp",
+          "plugins/nadlan-config/assets/showroom-engine/projects/utopia-sde-dov/utopia-concept-wellness-v1.webp"
+        ],
+        "modelAssetRequests": 1,
+        "modelAssetSha256": "ba267a241f7b5d943f5eebd6f32aae9241f14da420207ddadc4d5d74ac392f24"
+      },
+      "assertions": [
+        {
+          "name": "exact document title",
+          "pass": true,
+          "expected": "UTOPIA Sde Dov Тель-Авив - квартиры на продажу, цены и выбор квартиры",
+          "actual": "UTOPIA Sde Dov Тель-Авив - квартиры на продажу, цены и выбор квартиры"
+        },
+        {
+          "name": "document language",
+          "pass": true,
+          "expected": "ru",
+          "actual": "ru"
+        },
+        {
+          "name": "document direction",
+          "pass": true,
+          "expected": "ltr",
+          "actual": "ltr"
+        },
+        {
+          "name": "article inherited direction",
+          "pass": true,
+          "expected": "ltr",
+          "actual": "ltr"
+        },
+        {
+          "name": "showroom inherited direction",
+          "pass": true,
+          "expected": "ltr",
+          "actual": "ltr"
+        },
+        {
+          "name": "one H1",
+          "pass": true,
+          "expected": 1,
+          "actual": 1
+        },
+        {
+          "name": "H1 equals SEO title",
+          "pass": true,
+          "expected": "UTOPIA Sde Dov Тель-Авив - квартиры на продажу, цены и выбор квартиры",
+          "actual": "UTOPIA Sde Dov Тель-Авив - квартиры на продажу, цены и выбор квартиры"
+        },
+        {
+          "name": "buyer H1 precedes showroom",
+          "pass": true,
+          "expected": true,
+          "actual": true
+        },
+        {
+          "name": "opening paragraph contrast at least 4.5:1",
+          "pass": true,
+          "expected": true,
+          "actual": true
+        },
+        {
+          "name": "no empty headings",
+          "pass": true,
+          "expected": [],
+          "actual": []
+        },
+        {
+          "name": "no legacy project blocks",
+          "pass": true,
+          "expected": [],
+          "actual": []
+        },
+        {
+          "name": "no template-relative home or project URLs",
+          "pass": true,
+          "expected": [],
+          "actual": []
+        },
+        {
+          "name": "concept disclosure in hero image alt",
+          "pass": true,
+          "expected": true,
+          "actual": true
+        },
+        {
+          "name": "four building hotspots",
+          "pass": true,
+          "expected": 4,
+          "actual": 4
+        },
+        {
+          "name": "stable building hotspot labels",
+          "pass": true,
+          "expected": [
+            "S1",
+            "N1",
+            "N2",
+            "S2"
+          ],
+          "actual": [
+            "S1",
+            "N1",
+            "N2",
+            "S2"
+          ]
+        },
+        {
+          "name": "localized N1 hotspot accessible label",
+          "pass": true,
+          "expected": "Здание N1",
+          "actual": "Здание N1"
+        },
+        {
+          "name": "UTOPIA building-mode root class",
+          "pass": true,
+          "expected": true,
+          "actual": true
+        },
+        {
+          "name": "one route-scoped UTOPIA stylesheet",
+          "pass": true,
+          "expected": 1,
+          "actual": 1
+        },
+        {
+          "name": "zero unit hotspots",
+          "pass": true,
+          "expected": 0,
+          "actual": 0
+        },
+        {
+          "name": "seven sample plan cards",
+          "pass": true,
+          "expected": 7,
+          "actual": 7
+        },
+        {
+          "name": "four article media images",
+          "pass": true,
+          "expected": 4,
+          "actual": 4
+        },
+        {
+          "name": "four article media images loaded",
+          "pass": true,
+          "expected": 4,
+          "actual": 4
+        },
+        {
+          "name": "one model viewer",
+          "pass": true,
+          "expected": 1,
+          "actual": 1
+        },
+        {
+          "name": "model-viewer custom element defined",
+          "pass": true,
+          "expected": true,
+          "actual": true
+        },
+        {
+          "name": "UTOPIA GLB source",
+          "pass": true,
+          "expected": "/plugins/nadlan-config/assets/showroom-engine/models/utopia-rich-v1.glb",
+          "actual": "/plugins/nadlan-config/assets/showroom-engine/models/utopia-rich-v1.glb"
+        },
+        {
+          "name": "one optimized GLB request",
+          "pass": true,
+          "expected": 1,
+          "actual": 1
+        },
+        {
+          "name": "optimized GLB SHA-256",
+          "pass": true,
+          "expected": "ba267a241f7b5d943f5eebd6f32aae9241f14da420207ddadc4d5d74ac392f24",
+          "actual": "ba267a241f7b5d943f5eebd6f32aae9241f14da420207ddadc4d5d74ac392f24"
+        },
+        {
+          "name": "GLB loaded",
+          "pass": true,
+          "expected": true,
+          "actual": true
+        },
+        {
+          "name": "GLB visible",
+          "pass": true,
+          "expected": true,
+          "actual": true
+        },
+        {
+          "name": "model has visible dimensions",
+          "pass": true,
+          "expected": true,
+          "actual": true
+        },
+        {
+          "name": "model error hidden",
+          "pass": true,
+          "expected": false,
+          "actual": false
+        },
+        {
+          "name": "localized building section navigation",
+          "pass": true,
+          "expected": "Здание",
+          "actual": "Здание"
+        },
+        {
+          "name": "localized building title",
+          "pass": true,
+          "expected": "Четыре здания проекта",
+          "actual": "Четыре здания проекта"
+        },
+        {
+          "name": "localized building prompt",
+          "pass": true,
+          "expected": "Выберите здание, чтобы увидеть опубликованные параметры планирования.",
+          "actual": "Выберите здание, чтобы увидеть опубликованные параметры планирования."
+        },
+        {
+          "name": "localized sample plans heading",
+          "pass": true,
+          "expected": "Опубликованные примеры планов",
+          "actual": "Опубликованные примеры планов"
+        },
+        {
+          "name": "no obvious untranslated English UI labels",
+          "pass": true,
+          "expected": [],
+          "actual": []
+        },
+        {
+          "name": "building click opens detail panel",
+          "pass": true,
+          "expected": true,
+          "actual": true
+        },
+        {
+          "name": "localized selected building title",
+          "pass": true,
+          "expected": "Здание N1",
+          "actual": "Здание N1"
+        },
+        {
+          "name": "localized floor label",
+          "pass": true,
+          "expected": "Опубликованная этажность",
+          "actual": "Опубликованная этажность"
+        },
+        {
+          "name": "localized height label",
+          "pass": true,
+          "expected": "Планируемая предельная высота",
+          "actual": "Планируемая предельная высота"
+        },
+        {
+          "name": "localized source label",
+          "pass": true,
+          "expected": "Муниципальный документ планирования",
+          "actual": "Муниципальный документ планирования"
+        },
+        {
+          "name": "N1 sample plan links in panel",
+          "pass": true,
+          "expected": 4,
+          "actual": 4
+        },
+        {
+          "name": "one active building hotspot",
+          "pass": true,
+          "expected": 1,
+          "actual": 1
+        },
+        {
+          "name": "N1 hotspot active",
+          "pass": true,
+          "expected": "n1",
+          "actual": "n1"
+        },
+        {
+          "name": "no console errors",
+          "pass": true,
+          "expected": [],
+          "actual": []
+        },
+        {
+          "name": "no page errors",
+          "pass": true,
+          "expected": [],
+          "actual": []
+        },
+        {
+          "name": "no mobile horizontal overflow",
+          "pass": true,
+          "expected": 0,
+          "actual": 0
+        }
+      ],
+      "failures": [],
+      "warnings": [],
+      "screenshots": {
+        "top": "docs/qa/screenshots/utopia-preview-2026-07-29/ru-mobile-390x844-top.png",
+        "initial": "docs/qa/screenshots/utopia-preview-2026-07-29/ru-mobile-390x844-initial.png",
+        "selected": "docs/qa/screenshots/utopia-preview-2026-07-29/ru-mobile-390x844-selected-n1.png"
+      }
+    },
+    {
+      "lang": "ar",
+      "viewport": "mobile-390x844",
+      "dimensions": {
+        "width": 390,
+        "height": 844
+      },
+      "url": "http://127.0.0.1:4173/docs/previews/utopia-sde-dov-ar-preview.html?lang=ru",
+      "pass": true,
+      "initial": {
+        "url": "http://127.0.0.1:4173/docs/previews/utopia-sde-dov-ar-preview.html?lang=ru",
+        "title": "UTOPIA Sde Dov تل أبيب - شقق للبيع والأسعار واختيار الشقة",
+        "documentLang": "ar",
+        "documentDir": "rtl",
+        "articleComputedDir": "rtl",
+        "appComputedDir": "rtl",
+        "h1Count": 1,
+        "h1Text": "UTOPIA Sde Dov تل أبيب - شقق للبيع والأسعار واختيار الشقة",
+        "h1PrecedesShowroom": true,
+        "leadTextColor": "rgb(107, 100, 87)",
+        "leadBackgroundColor": "rgb(251, 248, 241)",
+        "leadContrastRatio": 5.52,
+        "emptyHeadings": [],
+        "legacyBlocks": [],
+        "templateRelativeHrefs": [],
+        "heroImageAlt": "UTOPIA Sde Dov - صورة تصورية مستقلة مبنية على بيانات التخطيط العامة",
+        "buildingHotspots": 4,
+        "buildingHotspotLabels": [
+          "S1",
+          "N1",
+          "N2",
+          "S2"
+        ],
+        "buildingHotspotAriaLabels": [
+          "البرج S1",
+          "المبنى N1",
+          "المبنى N2",
+          "المبنى S2"
+        ],
+        "buildingModeClass": true,
+        "utopiaStylesheetCount": 1,
+        "unitHotspots": 0,
+        "samplePlanCards": 7,
+        "articleMediaImages": 4,
+        "articleMediaImagesLoaded": 4,
+        "modelViewerCount": 1,
+        "modelCustomElementDefined": true,
+        "modelSrc": "/plugins/nadlan-config/assets/showroom-engine/models/utopia-rich-v1.glb",
+        "modelLoaded": true,
+        "modelIsVisible": true,
+        "modelVisibleBox": {
+          "x": 11,
+          "y": 52,
+          "width": 368,
+          "height": 491,
+          "visible": true
+        },
+        "modelErrorVisible": false,
+        "firstSectionNavLabel": "المبنى",
+        "buildingTitle": "المباني الأربعة في المشروع",
+        "buildingPrompt": "اختر مبنى للاطلاع على بيانات التخطيط المنشورة.",
+        "plansTitle": "نماذج المخططات المنشورة",
+        "untranslatedEnglish": [],
+        "documentClientWidth": 390,
+        "documentScrollWidth": 390,
+        "horizontalOverflowPx": 0,
+        "overflowingElements": []
+      },
+      "selected": {
+        "panelOpen": true,
+        "panelTitle": "المبنى N1",
+        "factLabels": [
+          "الطوابق المنشورة",
+          "الارتفاع الأقصى المخطط"
+        ],
+        "sourceLabel": "وثيقة التخطيط البلدية",
+        "panelPlanLinks": 4,
+        "closeAriaLabel": "إغلاق تفاصيل المبنى",
+        "activeBuildingHotspots": 1,
+        "activeBuildingId": "n1"
+      },
+      "browserEvents": {
+        "consoleErrors": [],
+        "pageErrors": [],
+        "requestFailures": [],
+        "locallyRoutedMedia": [
+          "plugins/nadlan-config/assets/showroom-engine/projects/utopia-sde-dov/utopia-concept-exterior-v1.webp",
+          "plugins/nadlan-config/assets/showroom-engine/projects/utopia-sde-dov/utopia-concept-interior-v1.webp",
+          "plugins/nadlan-config/assets/showroom-engine/projects/utopia-sde-dov/utopia-concept-window-view-v1.webp",
+          "plugins/nadlan-config/assets/showroom-engine/projects/utopia-sde-dov/utopia-concept-wellness-v1.webp"
+        ],
+        "modelAssetRequests": 1,
+        "modelAssetSha256": "ba267a241f7b5d943f5eebd6f32aae9241f14da420207ddadc4d5d74ac392f24"
+      },
+      "assertions": [
+        {
+          "name": "exact document title",
+          "pass": true,
+          "expected": "UTOPIA Sde Dov تل أبيب - شقق للبيع والأسعار واختيار الشقة",
+          "actual": "UTOPIA Sde Dov تل أبيب - شقق للبيع والأسعار واختيار الشقة"
+        },
+        {
+          "name": "document language",
+          "pass": true,
+          "expected": "ar",
+          "actual": "ar"
+        },
+        {
+          "name": "document direction",
+          "pass": true,
+          "expected": "rtl",
+          "actual": "rtl"
+        },
+        {
+          "name": "article inherited direction",
+          "pass": true,
+          "expected": "rtl",
+          "actual": "rtl"
+        },
+        {
+          "name": "showroom inherited direction",
+          "pass": true,
+          "expected": "rtl",
+          "actual": "rtl"
+        },
+        {
+          "name": "one H1",
+          "pass": true,
+          "expected": 1,
+          "actual": 1
+        },
+        {
+          "name": "H1 equals SEO title",
+          "pass": true,
+          "expected": "UTOPIA Sde Dov تل أبيب - شقق للبيع والأسعار واختيار الشقة",
+          "actual": "UTOPIA Sde Dov تل أبيب - شقق للبيع والأسعار واختيار الشقة"
+        },
+        {
+          "name": "buyer H1 precedes showroom",
+          "pass": true,
+          "expected": true,
+          "actual": true
+        },
+        {
+          "name": "opening paragraph contrast at least 4.5:1",
+          "pass": true,
+          "expected": true,
+          "actual": true
+        },
+        {
+          "name": "no empty headings",
+          "pass": true,
+          "expected": [],
+          "actual": []
+        },
+        {
+          "name": "no legacy project blocks",
+          "pass": true,
+          "expected": [],
+          "actual": []
+        },
+        {
+          "name": "no template-relative home or project URLs",
+          "pass": true,
+          "expected": [],
+          "actual": []
+        },
+        {
+          "name": "concept disclosure in hero image alt",
+          "pass": true,
+          "expected": true,
+          "actual": true
+        },
+        {
+          "name": "four building hotspots",
+          "pass": true,
+          "expected": 4,
+          "actual": 4
+        },
+        {
+          "name": "stable building hotspot labels",
+          "pass": true,
+          "expected": [
+            "S1",
+            "N1",
+            "N2",
+            "S2"
+          ],
+          "actual": [
+            "S1",
+            "N1",
+            "N2",
+            "S2"
+          ]
+        },
+        {
+          "name": "localized N1 hotspot accessible label",
+          "pass": true,
+          "expected": "المبنى N1",
+          "actual": "المبنى N1"
+        },
+        {
+          "name": "UTOPIA building-mode root class",
+          "pass": true,
+          "expected": true,
+          "actual": true
+        },
+        {
+          "name": "one route-scoped UTOPIA stylesheet",
+          "pass": true,
+          "expected": 1,
+          "actual": 1
+        },
+        {
+          "name": "zero unit hotspots",
+          "pass": true,
+          "expected": 0,
+          "actual": 0
+        },
+        {
+          "name": "seven sample plan cards",
+          "pass": true,
+          "expected": 7,
+          "actual": 7
+        },
+        {
+          "name": "four article media images",
+          "pass": true,
+          "expected": 4,
+          "actual": 4
+        },
+        {
+          "name": "four article media images loaded",
+          "pass": true,
+          "expected": 4,
+          "actual": 4
+        },
+        {
+          "name": "one model viewer",
+          "pass": true,
+          "expected": 1,
+          "actual": 1
+        },
+        {
+          "name": "model-viewer custom element defined",
+          "pass": true,
+          "expected": true,
+          "actual": true
+        },
+        {
+          "name": "UTOPIA GLB source",
+          "pass": true,
+          "expected": "/plugins/nadlan-config/assets/showroom-engine/models/utopia-rich-v1.glb",
+          "actual": "/plugins/nadlan-config/assets/showroom-engine/models/utopia-rich-v1.glb"
+        },
+        {
+          "name": "one optimized GLB request",
+          "pass": true,
+          "expected": 1,
+          "actual": 1
+        },
+        {
+          "name": "optimized GLB SHA-256",
+          "pass": true,
+          "expected": "ba267a241f7b5d943f5eebd6f32aae9241f14da420207ddadc4d5d74ac392f24",
+          "actual": "ba267a241f7b5d943f5eebd6f32aae9241f14da420207ddadc4d5d74ac392f24"
+        },
+        {
+          "name": "GLB loaded",
+          "pass": true,
+          "expected": true,
+          "actual": true
+        },
+        {
+          "name": "GLB visible",
+          "pass": true,
+          "expected": true,
+          "actual": true
+        },
+        {
+          "name": "model has visible dimensions",
+          "pass": true,
+          "expected": true,
+          "actual": true
+        },
+        {
+          "name": "model error hidden",
+          "pass": true,
+          "expected": false,
+          "actual": false
+        },
+        {
+          "name": "localized building section navigation",
+          "pass": true,
+          "expected": "المبنى",
+          "actual": "المبنى"
+        },
+        {
+          "name": "localized building title",
+          "pass": true,
+          "expected": "المباني الأربعة في المشروع",
+          "actual": "المباني الأربعة في المشروع"
+        },
+        {
+          "name": "localized building prompt",
+          "pass": true,
+          "expected": "اختر مبنى للاطلاع على بيانات التخطيط المنشورة.",
+          "actual": "اختر مبنى للاطلاع على بيانات التخطيط المنشورة."
+        },
+        {
+          "name": "localized sample plans heading",
+          "pass": true,
+          "expected": "نماذج المخططات المنشورة",
+          "actual": "نماذج المخططات المنشورة"
+        },
+        {
+          "name": "no obvious untranslated English UI labels",
+          "pass": true,
+          "expected": [],
+          "actual": []
+        },
+        {
+          "name": "building click opens detail panel",
+          "pass": true,
+          "expected": true,
+          "actual": true
+        },
+        {
+          "name": "localized selected building title",
+          "pass": true,
+          "expected": "المبنى N1",
+          "actual": "المبنى N1"
+        },
+        {
+          "name": "localized floor label",
+          "pass": true,
+          "expected": "الطوابق المنشورة",
+          "actual": "الطوابق المنشورة"
+        },
+        {
+          "name": "localized height label",
+          "pass": true,
+          "expected": "الارتفاع الأقصى المخطط",
+          "actual": "الارتفاع الأقصى المخطط"
+        },
+        {
+          "name": "localized source label",
+          "pass": true,
+          "expected": "وثيقة التخطيط البلدية",
+          "actual": "وثيقة التخطيط البلدية"
+        },
+        {
+          "name": "N1 sample plan links in panel",
+          "pass": true,
+          "expected": 4,
+          "actual": 4
+        },
+        {
+          "name": "one active building hotspot",
+          "pass": true,
+          "expected": 1,
+          "actual": 1
+        },
+        {
+          "name": "N1 hotspot active",
+          "pass": true,
+          "expected": "n1",
+          "actual": "n1"
+        },
+        {
+          "name": "no console errors",
+          "pass": true,
+          "expected": [],
+          "actual": []
+        },
+        {
+          "name": "no page errors",
+          "pass": true,
+          "expected": [],
+          "actual": []
+        },
+        {
+          "name": "no mobile horizontal overflow",
+          "pass": true,
+          "expected": 0,
+          "actual": 0
+        }
+      ],
+      "failures": [],
+      "warnings": [],
+      "screenshots": {
+        "top": "docs/qa/screenshots/utopia-preview-2026-07-29/ar-mobile-390x844-top.png",
+        "initial": "docs/qa/screenshots/utopia-preview-2026-07-29/ar-mobile-390x844-initial.png",
+        "selected": "docs/qa/screenshots/utopia-preview-2026-07-29/ar-mobile-390x844-selected-n1.png"
+      }
+    }
+  ],
+  "pass": true,
+  "summary": {
+    "totalCases": 10,
+    "passedCases": 10,
+    "failedCases": 0,
+    "totalAssertions": 465,
+    "failedAssertions": 0,
+    "warningCases": 0,
+    "totalWarnings": 0
+  }
+}

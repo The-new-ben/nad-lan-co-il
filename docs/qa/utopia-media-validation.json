@@ -1,0 +1,39 @@
+{
+  "schema": "nadlan-media-validation/v1",
+  "project": "UTOPIA Sde Dov, Tel Aviv",
+  "validated_on": "2026-07-29",
+  "rights_ledger": "assets/projects/utopia-sde-dov/rights-ledger.json",
+  "delivery_format": "WebP",
+  "source_format": "PNG",
+  "assets": [
+    {
+      "file": "assets/projects/utopia-sde-dov/utopia-concept-exterior-v1.webp",
+      "width": 1536,
+      "height": 1024,
+      "bytes": 344680,
+      "sha256": "55122e051450af3e2715af36df05837e06f96f73db9f8291bf4a3f3e8dc263c6"
+    },
+    {
+      "file": "assets/projects/utopia-sde-dov/utopia-concept-interior-v1.webp",
+      "width": 1536,
+      "height": 1024,
+      "bytes": 192086,
+      "sha256": "d89457f00cd52385107072902e7df06fab3750f16b9b18a923396398b59d7c6b"
+    },
+    {
+      "file": "assets/projects/utopia-sde-dov/utopia-concept-window-view-v1.webp",
+      "width": 1536,
+      "height": 1024,
+      "bytes": 226098,
+      "sha256": "995a982ea8aed6ded92f3ac30c86c86b20737dd5f20b371a9cf8a4aea2c5f9f4"
+    },
+    {
+      "file": "assets/projects/utopia-sde-dov/utopia-concept-wellness-v1.webp",
+      "width": 1536,
+      "height": 1024,
+      "bytes": 241988,
+      "sha256": "c1d1a1a53b85fc61ad1c39598f4a0a404b92cb4144d3a51c2093cbaabe046a61"
+    }
+  ],
+  "result": "PASS"
+}

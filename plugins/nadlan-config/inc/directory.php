@@ -602,7 +602,11 @@ if ( ! function_exists( 'nadlan_dir_project_profile_header' ) ) {
 }
 add_filter( 'the_content', function ( $content ) {
 	if ( ! is_singular( 'nadlan_project' ) || ! in_the_loop() || ! is_main_query() ) { return $content; }
-	return nadlan_dir_project_profile_header( get_the_ID() ) . $content;
+	$id = get_the_ID();
+	if ( function_exists( 'nadlan_utopia_is_family' ) && nadlan_utopia_is_family( $id ) ) {
+		return $content;
+	}
+	return nadlan_dir_project_profile_header( $id ) . $content;
 }, 5 );
 
 /* =========================================================================
@@ -760,6 +764,12 @@ if ( ! function_exists( 'nadlan_dir_project_card' ) ) {
 			<?php foreach ( $stats as $s ) : ?><div><dt><?php echo esc_html( $s[0] ); ?></dt><dd><?php echo esc_html( $s[1] ); ?></dd></div><?php endforeach; ?>
 		</dl>
 		<?php endif; ?>
+		<?php if ( function_exists( 'nadlan_fc_for_project' ) && ( $fac_keys = nadlan_fc_for_project( $id ) ) ) :
+			/* facility chips (owner 2026-07-29): Booking-style at-a-glance. [data-fac]
+			   spans, NOT anchors - the whole card is an <a>; the site-wide nlfc handler
+			   deep-links each chip to /premium/?fac=. No facility data = no row. */ ?>
+		<?php echo nadlan_fc_chips_html( $fac_keys, array( 'limit' => 4, 'link' => false, 'class' => 'nlfc-oncard' ) ); // phpcs:ignore WordPress.Security.EscapeOutput ?>
+		<?php endif; ?>
 		<div class="nldcp-foot">
 			<span class="nldcp-cta">לצפייה בפרויקט</span>
 			<span class="nldcp-reg" title="מאומת מול רשם הקבלנים (gov.il)"><svg class="nl-ico" aria-hidden="true" viewBox="0 0 16 16"><path fill="none" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round" d="M8 1.5l5.5 2v4c0 3.5-2.5 6-5.5 7-3-1-5.5-3.5-5.5-7v-4l5.5-2z"/><path fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" d="M5.5 8l2 2 3-4"/></svg>gov.il</span>
@@ -819,20 +829,22 @@ add_action( 'rest_api_init', function () {
 } );
 
 add_filter( 'get_the_archive_title', function ( $t ) {
-	if ( is_post_type_archive( 'nadlan_project' ) )  { return 'פרויקטים והתחדשות עירונית'; }
+	if ( is_post_type_archive( 'nadlan_project' ) )  { return 'פרויקטים חדשים בישראל'; }
 	if ( is_post_type_archive( 'nadlan_property' ) ) { return 'דירות ונכסים'; }
 	return $t;
 } );
 add_filter( 'pre_get_document_title', function ( $t ) {
 	if ( is_post_type_archive( 'nadlan_project' ) ) {
-		return 'פרויקטים חדשים והתחדשות עירונית | תמ״א 38, פינוי בינוי | נדלן';
+		/* de-cannibalized 2026-07-11: the head terms התחדשות עירונית / תמ״א /
+		   פינוי בינוי moved to their P0 owner, the /urban-renewal/ pillar */
+		return 'פרויקטים חדשים בישראל | דירות מקבלן לפי עיר ויזם | נדלן';
 	}
 	return $t;
 }, 20 );
 /* The catalog had NO meta description (SERP showed scraped card fragments). */
 add_filter( 'wpseo_metadesc', function ( $desc ) {
 	if ( ! is_post_type_archive( 'nadlan_project' ) || $desc ) { return $desc; }
-	return 'כל הפרויקטים החדשים ודירות למכירה מקבלן בישראל: תמ״א 38, פינוי בינוי ובנייה חדשה, מהמאגר הרשמי. חיפוש לפי עיר ויזם, נתונים מאומתים, ובחירת דירה בתלת ממד.';
+	return 'כל הפרויקטים החדשים ודירות מקבלן בישראל מהמאגר הרשמי. חיפוש לפי עיר, יזם וסטטוס, נתונים מאומתים ובחירת דירה בתלת ממד.';
 }, 25 );
 
 if ( ! function_exists( 'nadlan_dir_archive_viewport_meta' ) ) {
@@ -879,8 +891,8 @@ if ( ! function_exists( 'nadlan_dir_project_page' ) ) {
 	data-state="<?php echo esc_attr( wp_json_encode( $state ) ); ?>">
 	<header class="nldir-hero">
 		<nav class="nldir-crumbs"><a href="<?php echo esc_url( home_url( '/' ) ); ?>">בית</a> › <span>פרויקטים</span></nav>
-		<h1>פרויקטים והתחדשות עירונית</h1>
-		<p class="nldir-lead"><strong><?php echo number_format( $facets['total'] ); ?></strong> פרויקטים: תמ״א 38, פינוי בינוי ובנייה חדשה, ממאגר התחדשות עירונית הרשמי.</p>
+		<h1>פרויקטים חדשים בישראל</h1>
+		<p class="nldir-lead"><strong><?php echo number_format( $facets['total'] ); ?></strong> פרויקטים מהמאגר הרשמי, לפי עיר, יזם וסטטוס. בעלי דירות בבניין ישן? <a href="<?php echo esc_url( home_url( '/urban-renewal/' ) ); ?>">המדריך המלא להתחדשות עירונית</a>.</p>
 		<form class="nldir-search" role="search">
 			<input type="search" name="q" value="<?php echo esc_attr( $state['q'] ); ?>" placeholder="חיפוש לפי שם פרויקט או יזם" autocomplete="off">
 			<input type="text" name="city" value="<?php echo esc_attr( $state['city'] ); ?>" placeholder="עיר" autocomplete="off">

@@ -145,9 +145,19 @@ if ( ! function_exists( 'nadlan_import_urban_batch' ) ) {
 			$mid  = (string) ( $r['MisparMitham'] ?? '' );
 			if ( $mid === '' ) { continue; }
 			$name = trim( (string) ( $r['ShemMitcham'] ?? '' ) ) ?: ( 'מתחם התחדשות ' . $mid );
+			// the gov register is the PINUI-BINUI compounds dataset. Maslul holds the
+			// pinui-binui sub-track (מיסוי / רשויות / טרם הוכרז / blank) - it never says
+			// "פינוי" literally, and nothing in it is TAMA 38. The old default stamped
+			// every compound 'tama38', which was factually wrong on 938 pages.
+			$maslul = trim( (string) ( $r['Maslul'] ?? '' ) );
+			$track  = '';
+			if ( false !== strpos( $maslul, 'מיסוי' ) )   { $track = 'misui'; }
+			elseif ( false !== strpos( $maslul, 'רשויות' ) ) { $track = 'rashuyot'; }
+			elseif ( false !== strpos( $maslul, 'טרם' ) )    { $track = 'terem_huchraz'; }
 			$meta = array(
-				'project_type'    => ( strpos( (string) ( $r['Maslul'] ?? '' ), 'פינוי' ) !== false ) ? 'pinui_binui' : 'tama38',
-				'project_status'  => (string) ( $r['Status'] ?? '' ),
+				'project_type'    => 'pinui_binui',
+				'renewal_track'   => $track,
+				'project_status'  => preg_replace( '/\s+/u', ' ', trim( str_replace( "\xc2\xa0", ' ', (string) ( $r['Status'] ?? '' ) ) ) ),
 				'city'            => trim( (string) ( $r['Yeshuv'] ?? '' ) ),
 				'num_units'       => (int) ( $r['YachadMutza'] ?? 0 ),
 				'completion_year' => (int) ( $r['ShnatMatanTokef'] ?? 0 ),

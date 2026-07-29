@@ -1,0 +1,68 @@
+{
+  "schema": "nadlan-utopia-release-candidate/v1",
+  "generated_at": "2026-07-29T22:20:14Z",
+  "project": "UTOPIA Sde Dov, Tel Aviv",
+  "release": "1.72.128",
+  "candidate_branch": "codex/utopia-perfect-1.72.128",
+  "exact_live_source_base": "8a0bec48cd8666bee978660a33592bf74015e4bd",
+  "live_health_version_before_release": "1.72.126",
+  "artifact": {
+    "path": "plugin-dist/nadlan-config-1.72.128.zip",
+    "bytes": 3851029,
+    "sha256": "03dce6301bf951f307af319b5e2fd65559abe60373b44c6b01103ea141d15d99",
+    "entries": 229,
+    "root": "nadlan-config/",
+    "backslash_paths": 0,
+    "crc": "ok",
+    "packaged_php_lint": "161/161"
+  },
+  "articles": {
+    "he": {
+      "words": 6602,
+      "sha256": "334fbb6727f087091cfb9bbef304ff2e000b3f6d24d3bd58e0203ca337631644"
+    },
+    "en": {
+      "words": 7442,
+      "sha256": "a7cb8b69c50a9cc5bb1f2370bd22871589ddb68bf45c2651421a070eda903fe5"
+    },
+    "fr": {
+      "words": 9304,
+      "sha256": "d344bafb736b0f56aaa4a5a0f1db59007556632c170983edb2a7f3c489fcbb51"
+    },
+    "ru": {
+      "words": 7762,
+      "sha256": "056a3d24e970691db7ed5142759ea9876bbdd666b61ac04e2173f5dfcd5f1459"
+    },
+    "ar": {
+      "words": 6777,
+      "sha256": "70b565854ff0c8710923e95280481c5a81c504806f546fd36c20a9557f4168e2"
+    }
+  },
+  "model": {
+    "path": "plugins/nadlan-config/assets/showroom-engine/models/utopia-rich-v1.glb",
+    "bytes": 309148,
+    "sha256": "ba267a241f7b5d943f5eebd6f32aae9241f14da420207ddadc4d5d74ac392f24",
+    "meshes": 14,
+    "triangles": 21416,
+    "gltf_validator_errors": 0,
+    "gltf_validator_warnings": 0,
+    "unit_hotspots": 0,
+    "building_hotspots": 4
+  },
+  "quality_gates": {
+    "predeploy_release_gate": "PASS",
+    "plugin_php_lint": "163/163 including harnesses",
+    "javascript_syntax": "8/8 release-surface files",
+    "content_depth_and_parity": "5/5",
+    "atomic_migration_and_recovery": "18/18",
+    "shared_engine_isolation": "12/12 non-UTOPIA fixtures plus shared gallery and language lock",
+    "comparison_rest_unchanged": "20/20",
+    "comparison_models_unchanged": "4/4",
+    "preview_browser": "10/10 cases, 465/465 assertions, 0 warnings"
+  },
+  "deployment_state": {
+    "deployed": false,
+    "reason": "The repository is private, anonymous raw artifact URLs return 404, and no authenticated WordPress administrator session is available.",
+    "required_next_action": "An authorized administrator must first capture the live plugin and scoped database/uploads backups, then upload this exact ZIP in wp-admin and load a normal privileged admin page so the atomic UTOPIA migration can run."
+  }
+}

@@ -1,0 +1,52 @@
+{
+  "schema": "nadlan-model-validation/v1",
+  "project": "UTOPIA Sde Dov, Tel Aviv",
+  "validated_on": "2026-07-29",
+  "source_spec": "assets/projects/utopia-sde-dov/massing-spec.json",
+  "model": "assets/projects/utopia-sde-dov/model-context.glb",
+  "generator": "scripts/generate-rich-building.py",
+  "optimizer": "glTF-Transform 4.4.1, flattened and joined without simplification or compression",
+  "geometry": {
+    "bytes": 309148,
+    "sha256": "ba267a241f7b5d943f5eebd6f32aae9241f14da420207ddadc4d5d74ac392f24",
+    "meshes": 14,
+    "triangles": 21416,
+    "bounds": {
+      "min": [
+        -80,
+        -1.2000000476837158,
+        -60
+      ],
+      "max": [
+        80,
+        109.94999694824219,
+        60
+      ],
+      "extents": [
+        160,
+        111.1499969959259,
+        120
+      ]
+    }
+  },
+  "gltf_validator": {
+    "version": "2.0.0-dev.3.10",
+    "errors": 0,
+    "warnings": 0,
+    "infos": 0,
+    "hints": 0,
+    "hints_truncated": false
+  },
+  "truth_boundary": {
+    "building_count": "Four, source-backed",
+    "floor_counts": "34, 15, 7 and 7, source-backed to the current Hebrew developer page and municipal application",
+    "facades": "Illustrative",
+    "footprints": "Illustrative",
+    "spacing": "Illustrative",
+    "landscaping": "Illustrative",
+    "views": "Illustrative",
+    "unit_mapping": "Not present. No exact window, apartment, inventory or availability mapping is claimed.",
+    "click_contract": "Building-level interaction and published-plan navigation only until a verified BIM/IFC model and unit schedule exist."
+  },
+  "result": "PASS"
+}

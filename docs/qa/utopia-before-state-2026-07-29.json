@@ -1,0 +1,261 @@
+{
+  "schema": "nadlan-utopia-before-state/v1",
+  "captured_on": "2026-07-29",
+  "site": "https://nad-lan.co.il",
+  "production_plugin": {
+    "live_version": "1.72.126",
+    "live_source_commit": "8a0bec48cd8666bee978660a33592bf74015e4bd",
+    "live_source_branch": "origin/claude/sde-dov-experience-v1",
+    "origin_main_commit": "f16ca096",
+    "origin_main_manifest_version": "1.72.70",
+    "note": "Live and main were already divergent before UTOPIA work began."
+  },
+  "target": {
+    "slug": "utopia-sde-dov",
+    "public_url": "https://nad-lan.co.il/projects/utopia-sde-dov/",
+    "rest_id": 4749,
+    "rest_url": "https://nad-lan.co.il/wp-json/wp/v2/nadlan_project/4749?context=view",
+    "rest_bytes": 141026,
+    "rest_sha256": "35d5412a5473a2a60e301bee8a13ffbaa720acb5092bcec6d92836415392d087",
+    "status": "publish",
+    "modified": "2026-07-03T20:55:30",
+    "rest_title": "UTOPIA שדה דב - קבוצת נחמיאס",
+    "content_characters": 26944,
+    "content_word_count_from_rendered_article": 4131,
+    "featured_media": 5045,
+    "language_pages": [
+      "he"
+    ],
+    "canonical": "https://nad-lan.co.il/projects/utopia-sde-dov/",
+    "hreflang": {
+      "he": "https://nad-lan.co.il/projects/utopia-sde-dov/",
+      "x-default": "https://nad-lan.co.il/projects/utopia-sde-dov/"
+    },
+    "live_model": {
+      "url": "https://nad-lan.co.il/wp-content/plugins/nadlan-config/assets/showroom-engine/models/standard-residential.glb",
+      "bytes": 318516,
+      "sha256": "884a70e87fd6c680fe6bb6dded83f9d92f4ef7683b04e4bafef24a2215c6f4bd",
+      "generic": true
+    },
+    "live_plate": {
+      "url": "https://nad-lan.co.il/wp-content/uploads/2026/07/utopia-tel-aviv-plate.webp",
+      "bytes": 428274,
+      "sha256": "13ddcc2de4dd61f695f6c22eeb40e465ba3936123b2a132302944d010c9c049b"
+    },
+    "known_before_defects": [
+      "The shared showroom appears before the sole H1 and buyer article.",
+      "The H1 begins approximately 7,574 CSS pixels down the captured desktop page.",
+      "The article begins approximately 8,494 CSS pixels down the captured desktop page.",
+      "The opening article paragraph is generic boilerplate.",
+      "The article is below the required 5,000 words.",
+      "The page describes 337 homes as two towers although current source-backed composition is four buildings.",
+      "The showroom shows an unsourced NIS 78,000 per square metre average and four illustrative units as if selectable inventory.",
+      "The model is the generic standard residential GLB.",
+      "No English, French, Russian or Arabic sibling exists.",
+      "Required internal links to the mortgage calculator and developer-apartment guide are absent."
+    ],
+    "visual_evidence": [
+      "C:\\Users\\pro\\.codex\\visualizations\\2026\\07\\29\\019faed7-cd18-7501-b529-5ed4cac60006\\utopia-baseline\\utopia-before-1440x1000.png",
+      "C:\\Users\\pro\\.codex\\visualizations\\2026\\07\\29\\019faed7-cd18-7501-b529-5ed4cac60006\\utopia-baseline\\utopia-before-dom-snapshot.txt",
+      "C:\\Users\\pro\\.codex\\visualizations\\2026\\07\\29\\019faed7-cd18-7501-b529-5ed4cac60006\\utopia-baseline\\utopia-before-headings-crawl-order.json",
+      "C:\\Users\\pro\\.codex\\visualizations\\2026\\07\\29\\019faed7-cd18-7501-b529-5ed4cac60006\\utopia-baseline\\utopia-before-article-metrics.json",
+      "C:\\Users\\pro\\.codex\\visualizations\\2026\\07\\29\\019faed7-cd18-7501-b529-5ed4cac60006\\utopia-baseline\\utopia-before-runtime-metrics.json"
+    ]
+  },
+  "comparison_rest_baseline": [
+    {
+      "family": "DUO Tel Aviv",
+      "lang": "he",
+      "id": 4893,
+      "slug": "duo-tel-aviv",
+      "modified": "2026-07-06T17:47:15",
+      "sha256": "a3812327b3739a8f6b73415252571e375793faefffbe758c7c5715e2dcb9facf"
+    },
+    {
+      "family": "DUO Tel Aviv",
+      "lang": "en",
+      "id": 5194,
+      "slug": "duo-tel-aviv-en",
+      "modified": "2026-07-06T17:47:20",
+      "sha256": "e00b048c57141a4798e950e06fd4ecc9967f47bae980dd34baf66e8e314363f9"
+    },
+    {
+      "family": "DUO Tel Aviv",
+      "lang": "fr",
+      "id": 5195,
+      "slug": "duo-tel-aviv-fr",
+      "modified": "2026-07-06T17:47:24",
+      "sha256": "9efe86fa2e6dc3981aa416de3370bcecd02f590f7353158a78960ae7a4edae64"
+    },
+    {
+      "family": "DUO Tel Aviv",
+      "lang": "ru",
+      "id": 5196,
+      "slug": "duo-tel-aviv-ru",
+      "modified": "2026-07-06T17:47:27",
+      "sha256": "d7ae39cda961c92ee43834562b3bbce640d7df53efb14ea51cb526d77c167b2f"
+    },
+    {
+      "family": "DUO Tel Aviv",
+      "lang": "ar",
+      "id": 5197,
+      "slug": "duo-tel-aviv-ar",
+      "modified": "2026-07-06T17:47:31",
+      "sha256": "93568cd042e499939dcd3d4e47d1df6a37387b715e5683d9ef2630969fe7fac2"
+    },
+    {
+      "family": "Rainbow Tel Aviv",
+      "lang": "he",
+      "id": 4464,
+      "slug": "rainbow-tel-aviv",
+      "modified": "2026-07-10T01:49:53",
+      "sha256": "cf439339b68255bc86de3532ba6932dd23c7d4d810f3e4615afcb21074270983"
+    },
+    {
+      "family": "Rainbow Tel Aviv",
+      "lang": "en",
+      "id": 5060,
+      "slug": "rainbow-tel-aviv-en",
+      "modified": "2026-07-10T01:49:57",
+      "sha256": "61935408d2cb6fc4d2fa4d3c8302f6f7cc348340e9142e1ffc323ce35ae349a8"
+    },
+    {
+      "family": "Rainbow Tel Aviv",
+      "lang": "fr",
+      "id": 5071,
+      "slug": "rainbow-tel-aviv-fr",
+      "modified": "2026-07-10T01:49:59",
+      "sha256": "1a19d0aef0744410856add06e0fd2cf497c3d1151982e21d4952060e26e5de76"
+    },
+    {
+      "family": "Rainbow Tel Aviv",
+      "lang": "ru",
+      "id": 5072,
+      "slug": "rainbow-tel-aviv-ru",
+      "modified": "2026-07-10T01:50:01",
+      "sha256": "b2d550a4ea8f35a21d4c7abd107ed982580e289cec64e30a737ce51db5116a8a"
+    },
+    {
+      "family": "Rainbow Tel Aviv",
+      "lang": "ar",
+      "id": 5074,
+      "slug": "rainbow-tel-aviv-ar",
+      "modified": "2026-07-10T01:50:04",
+      "sha256": "0499334f8b6cd64475a6ca65590e3ef8296a4185051bc8a878c9e01159e98194"
+    },
+    {
+      "family": "Dimri Yama Sde Dov",
+      "lang": "he",
+      "id": 4745,
+      "slug": "dimri-yama-sde-dov",
+      "modified": "2026-07-06T17:46:57",
+      "sha256": "6c481d60854840033fa2f12369a53a74dee1602fc2b67c94dcef867a3c940755"
+    },
+    {
+      "family": "Dimri Yama Sde Dov",
+      "lang": "en",
+      "id": 5061,
+      "slug": "dimri-yama-sde-dov-en",
+      "modified": "2026-07-06T17:47:01",
+      "sha256": "44396afc93413364effca4ed63923de91d786c996d6fa5311bc2dd7a1456b205"
+    },
+    {
+      "family": "Dimri Yama Sde Dov",
+      "lang": "fr",
+      "id": 5075,
+      "slug": "dimri-yama-sde-dov-fr",
+      "modified": "2026-07-06T17:47:04",
+      "sha256": "3b0ebc345ee8c8c53bac9cc8c11909735b567d181b8368137015f78f4bddc17f"
+    },
+    {
+      "family": "Dimri Yama Sde Dov",
+      "lang": "ru",
+      "id": 5076,
+      "slug": "dimri-yama-sde-dov-ru",
+      "modified": "2026-07-06T17:47:08",
+      "sha256": "b90b14e38280bb3e895244f2390f84f764b6a6ed9bfba22596afb183d75e1ab5"
+    },
+    {
+      "family": "Dimri Yama Sde Dov",
+      "lang": "ar",
+      "id": 5077,
+      "slug": "dimri-yama-sde-dov-ar",
+      "modified": "2026-07-06T17:47:12",
+      "sha256": "617162c192b22e9851aae2e1c91947787b715e4af9f64186da99567769befeb0"
+    },
+    {
+      "family": "Ashira Sde Dov",
+      "lang": "he",
+      "id": 4744,
+      "slug": "ashira-sde-dov",
+      "modified": "2026-07-06T14:49:21",
+      "sha256": "6e4c8db9c19b20360b0945371e0212e68808b327e848da03c0ea231f036cd684"
+    },
+    {
+      "family": "Ashira Sde Dov",
+      "lang": "en",
+      "id": 4927,
+      "slug": "ashira-sde-dov-en",
+      "modified": "2026-07-05T18:48:42",
+      "sha256": "89df21ab4510cdfac8cc69468bb346306a605f9928fb941f05e8be7a03395ebe"
+    },
+    {
+      "family": "Ashira Sde Dov",
+      "lang": "fr",
+      "id": 4926,
+      "slug": "ashira-sde-dov-fr",
+      "modified": "2026-07-05T18:48:46",
+      "sha256": "da20f97211f05ea852f638d744cc08caec8156e91429c3616893625cf3686994"
+    },
+    {
+      "family": "Ashira Sde Dov",
+      "lang": "ru",
+      "id": 4924,
+      "slug": "ashira-sde-dov-ru",
+      "modified": "2026-07-05T18:48:49",
+      "sha256": "c80a81a87db982ef6562882f6a1c7a2ec7ef92bc18ab66a2eb0ee398291bcf3f"
+    },
+    {
+      "family": "Ashira Sde Dov",
+      "lang": "ar",
+      "id": 4925,
+      "slug": "ashira-sde-dov-ar",
+      "modified": "2026-07-05T18:48:53",
+      "sha256": "0e444c3a976683ae19e9c3709f4dfafd20fcd1939bb2bc60f218b548bbb0565f"
+    }
+  ],
+  "comparison_models": [
+    {
+      "family": "DUO Tel Aviv",
+      "url": "https://nad-lan.co.il/wp-content/plugins/nadlan-config/assets/showroom-engine/models/duo-rich.glb",
+      "bytes": 1060876,
+      "sha256": "ea9c7420d23afd0d49e83a5064bbc58d5be524cedc82fb2446ad7e85894fa051"
+    },
+    {
+      "family": "Rainbow Tel Aviv",
+      "url": "https://nad-lan.co.il/wp-content/uploads/2026/07/rainbow-rich-model.glb",
+      "bytes": 851668,
+      "sha256": "590c633baa0fe44b8d54b3bb3cd42ac55b5ab7e2f4514b4e1e9d5d92c97d9781"
+    },
+    {
+      "family": "Dimri Yama Sde Dov",
+      "url": "https://nad-lan.co.il/wp-content/plugins/nadlan-config/assets/showroom-engine/models/dimri-rich.glb",
+      "bytes": 429444,
+      "sha256": "b9d1d80a0e7dbee59bb8950c19a93b53c4331936df43f59c30a23cf124281f8a"
+    },
+    {
+      "family": "Ashira Sde Dov",
+      "url": "https://nad-lan.co.il/wp-content/plugins/nadlan-config/assets/showroom-engine/models/ashira-rich.glb",
+      "bytes": 488188,
+      "sha256": "edba867d147090529553fbe50b97ab156eaeefd890d66f2b29dd3447c64494fe"
+    }
+  ],
+  "known_comparison_defects_not_in_scope": [
+    "Translated comparison siblings expose zero or blank project numeric metadata.",
+    "Translated comparison siblings have no featured media and no Yoast Open Graph image.",
+    "All sixteen translated comparison pages append a Hebrew suffix to the HTML title.",
+    "Ashira translated siblings use an older featured-media plate than the Hebrew page.",
+    "DUO default interior points to a Rainbow-named asset.",
+    "No published Nad-Lan project named or slugged Revolve was found among all 987 published project records."
+  ]
+}

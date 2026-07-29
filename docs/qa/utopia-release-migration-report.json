@@ -1,0 +1,25 @@
+{
+    "schema": "nadlan-utopia-release-migration-qa/v3",
+    "generated_at": "2026-07-29T22:17:53+00:00",
+    "tests": {
+        "authorized_admin_gate": true,
+        "recovery_context_unfiltered_html_gate": true,
+        "project_status_permits": true,
+        "transactional_table_engine_check": true,
+        "runtime_assets_and_attachment_reuse_validation": true,
+        "final_filter_chain_composition": true,
+        "success_and_idempotency": true,
+        "manual_restore_exact_timestamps_and_revisions": true,
+        "manual_restore_hold_and_resume": true,
+        "slug_collision_hard_stop": true,
+        "automatic_rollback": true,
+        "atomic_public_stage_failure_rollback": true,
+        "nontransactional_table_hard_stop": true,
+        "invalid_run_journal_blocks_recovery": true,
+        "lock_and_stale_recovery": true,
+        "atomic_stale_lock_claim": true,
+        "write_ahead_process_death_recovery": true,
+        "restore_readback_block": true
+    },
+    "pass": true
+}

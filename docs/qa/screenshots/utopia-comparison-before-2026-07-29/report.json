@@ -1,0 +1,127 @@
+{
+  "schema": "nadlan-utopia-live-comparison-screenshots/v1",
+  "generated_at": "2026-07-29T21:20:32.792Z",
+  "phase": "before",
+  "viewport": {
+    "width": 1440,
+    "height": 1000
+  },
+  "pages": [
+    {
+      "key": "duo-tel-aviv",
+      "label": "DUO Tel Aviv",
+      "url": "https://nad-lan.co.il/projects/duo-tel-aviv/",
+      "http_status": 200,
+      "title": "מגדלי DUO תל אביב - שני מגדלי 54 קומות במתחם סומייל · תצוגת פרויקטים",
+      "lang": "he",
+      "dir": "rtl",
+      "h1Texts": [
+        "מגדלי DUO תל אביב - שני מגדלי 54 קומות במתחם סומייל"
+      ],
+      "h2Count": 25,
+      "emptyHeadings": [
+        "<h2></h2>"
+      ],
+      "engineRoots": 1,
+      "modelViewers": 1,
+      "unitHotspots": 15,
+      "buildingHotspots": 0,
+      "legacyBlocks": 6,
+      "scrollWidth": 1440,
+      "clientWidth": 1440,
+      "horizontal_overflow_px": 0,
+      "errors": [],
+      "screenshots": {
+        "top": "docs/qa/screenshots/utopia-comparison-before-2026-07-29/duo-tel-aviv-top.png",
+        "model": "docs/qa/screenshots/utopia-comparison-before-2026-07-29/duo-tel-aviv-model.png"
+      }
+    },
+    {
+      "key": "rainbow-tel-aviv",
+      "label": "Rainbow Tel Aviv",
+      "url": "https://nad-lan.co.il/projects/rainbow-tel-aviv/",
+      "http_status": 200,
+      "title": "Rainbow Tel Aviv - ריינבו תל אביב · תצוגת פרויקטים",
+      "lang": "he",
+      "dir": "rtl",
+      "h1Texts": [
+        "Rainbow Tel Aviv - ריינבו תל אביב"
+      ],
+      "h2Count": 26,
+      "emptyHeadings": [
+        "<h2></h2>"
+      ],
+      "engineRoots": 1,
+      "modelViewers": 1,
+      "unitHotspots": 18,
+      "buildingHotspots": 0,
+      "legacyBlocks": 8,
+      "scrollWidth": 1440,
+      "clientWidth": 1440,
+      "horizontal_overflow_px": 0,
+      "errors": [],
+      "screenshots": {
+        "top": "docs/qa/screenshots/utopia-comparison-before-2026-07-29/rainbow-tel-aviv-top.png",
+        "model": "docs/qa/screenshots/utopia-comparison-before-2026-07-29/rainbow-tel-aviv-model.png"
+      }
+    },
+    {
+      "key": "dimri-yama-sde-dov",
+      "label": "Dimri Yama Sde Dov",
+      "url": "https://nad-lan.co.il/projects/dimri-yama-sde-dov/",
+      "http_status": 200,
+      "title": "DIMRI YAMA שדה דב - י.ח דמרי · תצוגת פרויקטים",
+      "lang": "he",
+      "dir": "rtl",
+      "h1Texts": [
+        "DIMRI YAMA שדה דב - י.ח דמרי"
+      ],
+      "h2Count": 25,
+      "emptyHeadings": [
+        "<h2></h2>"
+      ],
+      "engineRoots": 1,
+      "modelViewers": 1,
+      "unitHotspots": 12,
+      "buildingHotspots": 0,
+      "legacyBlocks": 7,
+      "scrollWidth": 1440,
+      "clientWidth": 1440,
+      "horizontal_overflow_px": 0,
+      "errors": [],
+      "screenshots": {
+        "top": "docs/qa/screenshots/utopia-comparison-before-2026-07-29/dimri-yama-sde-dov-top.png",
+        "model": "docs/qa/screenshots/utopia-comparison-before-2026-07-29/dimri-yama-sde-dov-model.png"
+      }
+    },
+    {
+      "key": "ashira-sde-dov",
+      "label": "Ashira Sde Dov",
+      "url": "https://nad-lan.co.il/projects/ashira-sde-dov/",
+      "http_status": 200,
+      "title": "ASHIRA - פרויקט אשירה שדה דב תל אביב מחיר · תצוגת פרויקטים",
+      "lang": "he",
+      "dir": "rtl",
+      "h1Texts": [
+        "ASHIRA - פרויקט אשירה שדה דב תל אביב מחיר"
+      ],
+      "h2Count": 28,
+      "emptyHeadings": [
+        "<h2></h2>"
+      ],
+      "engineRoots": 1,
+      "modelViewers": 1,
+      "unitHotspots": 15,
+      "buildingHotspots": 0,
+      "legacyBlocks": 4,
+      "scrollWidth": 1440,
+      "clientWidth": 1440,
+      "horizontal_overflow_px": 0,
+      "errors": [],
+      "screenshots": {
+        "top": "docs/qa/screenshots/utopia-comparison-before-2026-07-29/ashira-sde-dov-top.png",
+        "model": "docs/qa/screenshots/utopia-comparison-before-2026-07-29/ashira-sde-dov-model.png"
+      }
+    }
+  ]
+}

@@ -1,0 +1,87 @@
+{
+  "schema": "nadlan-utopia-postdeploy/v1",
+  "generatedAt": "2026-07-29T22:17:51.541Z",
+  "release": "1.72.128",
+  "site": "https://nad-lan.co.il",
+  "mode": "dry-run",
+  "evidenceDirectory": "docs/qa/screenshots/utopia-live-1.72.128",
+  "readOnlyPublicQa": true,
+  "deploymentPerformed": false,
+  "pass": true,
+  "localAssets": [
+    {
+      "kind": "model",
+      "path": "plugins/nadlan-config/assets/showroom-engine/models/utopia-rich-v1.glb",
+      "bytes": 309148,
+      "expectedBytes": 309148,
+      "sha256": "ba267a241f7b5d943f5eebd6f32aae9241f14da420207ddadc4d5d74ac392f24",
+      "expectedSha256": "ba267a241f7b5d943f5eebd6f32aae9241f14da420207ddadc4d5d74ac392f24",
+      "geometry": {
+        "version": 2,
+        "declaredBytes": 309148,
+        "meshes": 14,
+        "primitives": 14,
+        "triangles": 21416
+      },
+      "pass": true
+    },
+    {
+      "kind": "media",
+      "path": "plugins/nadlan-config/assets/showroom-engine/projects/utopia-sde-dov/utopia-concept-exterior-v1.webp",
+      "bytes": 344680,
+      "expectedBytes": 344680,
+      "sha256": "55122e051450af3e2715af36df05837e06f96f73db9f8291bf4a3f3e8dc263c6",
+      "expectedSha256": "55122e051450af3e2715af36df05837e06f96f73db9f8291bf4a3f3e8dc263c6",
+      "pass": true
+    },
+    {
+      "kind": "media",
+      "path": "plugins/nadlan-config/assets/showroom-engine/projects/utopia-sde-dov/utopia-concept-interior-v1.webp",
+      "bytes": 192086,
+      "expectedBytes": 192086,
+      "sha256": "d89457f00cd52385107072902e7df06fab3750f16b9b18a923396398b59d7c6b",
+      "expectedSha256": "d89457f00cd52385107072902e7df06fab3750f16b9b18a923396398b59d7c6b",
+      "pass": true
+    },
+    {
+      "kind": "media",
+      "path": "plugins/nadlan-config/assets/showroom-engine/projects/utopia-sde-dov/utopia-concept-window-view-v1.webp",
+      "bytes": 226098,
+      "expectedBytes": 226098,
+      "sha256": "995a982ea8aed6ded92f3ac30c86c86b20737dd5f20b371a9cf8a4aea2c5f9f4",
+      "expectedSha256": "995a982ea8aed6ded92f3ac30c86c86b20737dd5f20b371a9cf8a4aea2c5f9f4",
+      "pass": true
+    },
+    {
+      "kind": "media",
+      "path": "plugins/nadlan-config/assets/showroom-engine/projects/utopia-sde-dov/utopia-concept-wellness-v1.webp",
+      "bytes": 241988,
+      "expectedBytes": 241988,
+      "sha256": "c1d1a1a53b85fc61ad1c39598f4a0a404b92cb4144d3a51c2093cbaabe046a61",
+      "expectedSha256": "c1d1a1a53b85fc61ad1c39598f4a0a404b92cb4144d3a51c2093cbaabe046a61",
+      "pass": true
+    }
+  ],
+  "requiredScripts": [
+    {
+      "path": "scripts/qa-utopia-comparison-regression.mjs",
+      "exists": true
+    },
+    {
+      "path": "scripts/qa-utopia-live-comparison-screenshots.mjs",
+      "exists": true
+    }
+  ],
+  "googleChrome": {
+    "available": true,
+    "version": "150.0.7871.187"
+  },
+  "summary": {
+    "mode": "dry-run",
+    "localAssetsPassed": 5,
+    "localAssetsTotal": 5,
+    "requiredScriptsPresent": 2,
+    "requiredScriptsTotal": 2,
+    "googleChromeAvailable": true
+  }
+}

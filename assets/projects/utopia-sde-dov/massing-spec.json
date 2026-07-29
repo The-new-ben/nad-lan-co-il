@@ -1,0 +1,96 @@
+{
+  "schema": "nadlan-illustrative-context-model/v1",
+  "project": "UTOPIA Sde Dov, Tel Aviv",
+  "purpose": "Interactive buyer orientation model",
+  "accuracy": "Illustrative massing only. Building count and published floor counts are source-backed; facade, footprint, spacing, materials, landscaping and views are not sales specifications.",
+  "floor_h": 3.15,
+  "seafront": false,
+  "site": [
+    160,
+    120
+  ],
+  "court": [
+    12,
+    8
+  ],
+  "buildings": [
+    {
+      "id": "tower-34",
+      "label": "Published 34-floor tower",
+      "w": 28,
+      "d": 26,
+      "floors": 34,
+      "x": -38,
+      "z": -13,
+      "balconies": "WNES",
+      "taper": 0.08,
+      "podium": 1
+    },
+    {
+      "id": "midrise-15",
+      "label": "Published 15-floor building",
+      "w": 34,
+      "d": 24,
+      "floors": 15,
+      "x": 24,
+      "z": -20,
+      "balconies": "WNES",
+      "taper": 0.03,
+      "podium": 1
+    },
+    {
+      "id": "perimeter-west-7",
+      "label": "Published 7-floor perimeter building",
+      "w": 38,
+      "d": 20,
+      "floors": 7,
+      "x": -17,
+      "z": 36,
+      "balconies": "WNES",
+      "taper": 0,
+      "podium": 0
+    },
+    {
+      "id": "perimeter-east-7",
+      "label": "Published 7-floor perimeter building",
+      "w": 34,
+      "d": 20,
+      "floors": 7,
+      "x": 39,
+      "z": 34,
+      "balconies": "WNES",
+      "taper": 0,
+      "podium": 0
+    }
+  ],
+  "context": [
+    [
+      -70,
+      -45,
+      17,
+      16,
+      24
+    ],
+    [
+      66,
+      -43,
+      18,
+      15,
+      30
+    ],
+    [
+      -67,
+      43,
+      15,
+      14,
+      18
+    ],
+    [
+      70,
+      43,
+      16,
+      14,
+      21
+    ]
+  ]
+}

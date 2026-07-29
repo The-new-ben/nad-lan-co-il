@@ -172,13 +172,13 @@ if ( ! function_exists( 'nadlan_pshow_render' ) ) {
 	   "looks broken"): the generic flagship tower, spinnable, honest chip,
 	   day/dusk/night light. The floor badge states the REAL floor - no
 	   invented hotspot positions on a generic model. */
-	$glb = function_exists( 'nadlan_showroom_engine_base_url' ) ? nadlan_showroom_engine_base_url() . 'models/flagship-tower.glb' : '';
+	$glb = function_exists( 'nadlan_showroom_engine_base_url' ) ? nadlan_showroom_engine_base_url() . 'models/standard-residential.glb' : '';
 	if ( $glb ) : ?>
-	<div class="nlps-3d" id="nlps-3d" style="background-image:linear-gradient(180deg,rgba(237,242,245,.15),rgba(246,241,230,.35)),url('<?php echo esc_url( content_url( 'uploads/2026/07/nadlan-poster-flagship-tower.jpg' ) ); ?>');background-size:cover;background-position:center">
-		<model-viewer id="nlps-mv" src="<?php echo esc_url( $glb ); ?>" loading="lazy" reveal="auto" camera-controls auto-rotate auto-rotate-delay="700" rotation-per-second="13deg" interaction-prompt="basic" environment-image="neutral" exposure="1.02" shadow-intensity="0.55" min-camera-orbit="auto 48deg auto" max-camera-orbit="auto 86deg auto" min-field-of-view="16deg" max-field-of-view="68deg" touch-action="pan-y"></model-viewer>
+	<div class="nlps-3d" id="nlps-3d" style="background-image:linear-gradient(180deg,rgba(237,242,245,.15),rgba(246,241,230,.35)),url('<?php echo esc_url( content_url( 'uploads/2026/07/nadlan-poster-standard-building.jpg' ) ); ?>');background-size:cover;background-position:center">
+		<model-viewer id="nlps-mv" src="<?php echo esc_url( $glb ); ?>" loading="lazy" reveal="auto" camera-controls interaction-prompt="basic" environment-image="neutral" exposure="1.02" shadow-intensity="0.55" camera-target="0 13 0" camera-orbit="-28deg 76deg 46m" min-camera-orbit="auto 48deg 26m" max-camera-orbit="auto 86deg 80m" min-field-of-view="16deg" max-field-of-view="68deg" touch-action="pan-y"></model-viewer>
 		<span class="nlps-3d__chip">המחשה כללית של מגורים בבניין - לא הבניין של הנכס</span>
 		<?php if ( $floor ) : ?><span class="nlps-3d__floor">קומה <?php echo (int) $floor; ?><?php echo $tfloors ? ' מתוך ' . (int) $tfloors : ''; ?></span><?php endif; ?>
-		<span class="nlps-3d__hint">הקישו על הבניין לסיבוב בתלת ממד</span>
+		<span class="nlps-3d__hint">גררו לסיבוב - המבט ננעל לזווית</span>
 		<div class="nlps-3d__light" role="group" aria-label="תאורה">
 			<button type="button" data-l="day" aria-pressed="true">יום</button>
 			<button type="button" data-l="dusk" aria-pressed="false">שקיעה</button>
@@ -301,9 +301,18 @@ if ( ! function_exists( 'nadlan_pshow_render' ) ) {
 	?>
 	<section class="nlps-map-sec" aria-label="מיקום">
 		<h2>מיקום וסביבה - מפה חיה</h2>
+		<div class="nlps-poichips" role="group" aria-label="סינון נקודות עניין">
+			<button type="button" class="is-on" data-poi="schools">🏫 חינוך</button>
+			<button type="button" class="is-on" data-poi="kindergartens">🧒 גנים</button>
+			<button type="button" class="is-on" data-poi="parks">🌳 פארקים</button>
+			<button type="button" data-poi="transit">🚌 תחבורה</button>
+			<button type="button" data-poi="shops">🛒 קניות</button>
+			<button type="button" data-poi="health">⚕️ בריאות</button>
+			<button type="button" data-poi="food">☕ קפה ואוכל</button>
+		</div>
 		<div id="nlps-map" data-lat="<?php echo esc_attr( $lat ); ?>" data-lng="<?php echo esc_attr( $lng ); ?>" data-title="<?php echo esc_attr( get_the_title( $id ) ); ?>"></div>
 		<script>window.NLPS_POIS = <?php echo $poi_json ? $poi_json : '{}'; // phpcs:ignore ?>;</script>
-		<p class="nlps-cap">🏫 בתי ספר · 🧒 גנים · 🚌 תחבורה · 🛒 קניות · ⚕️ בריאות - נתונים חיים מ-OpenStreetMap. החליפו לתצוגת לוויין בכפתור השכבות.</p>
+		<p class="nlps-cap">הקישו על קטגוריה כדי להציג או להסתיר אותה במפה. נתונים חיים מ-OpenStreetMap, מרחקים אוויריים בקירוב. תצוגת לוויין בכפתור השכבות שבמפה.</p>
 	</section>
 	<?php endif; ?>
 </div>
@@ -371,6 +380,9 @@ if ( ! function_exists( 'nadlan_pshow_assets' ) ) {
 .nlps-cost-grid dt{font-size:11.5px;color:var(--warm)}
 .nlps-cost-grid dd{font-size:18px;font-weight:700;margin:2px 0 0}
 #nlps-map{height:320px;border-radius:8px;border:1px solid var(--line)}
+.nlps-poichips{display:flex;gap:6px;flex-wrap:wrap;margin:0 0 10px}
+.nlps-poichips button{font:600 12.5px/1 Heebo,sans-serif;border:1px solid var(--line);background:#fff;color:#6D665C;border-radius:999px;padding:8px 13px;cursor:pointer;min-height:34px}
+.nlps-poichips button.is-on{background:#1B1A17;border-color:#1B1A17;color:#F4EEDE}
 .nlps-trust{display:flex;align-items:center;gap:16px;margin-top:12px;padding-top:10px;border-top:1px solid var(--line);font-size:12px;color:var(--warm)}
 .nlps-share{font:inherit;font-size:12px;border:1px solid var(--line);background:#fff;border-radius:999px;padding:4px 12px;cursor:pointer;color:var(--ink)}
 .nlps-report{color:var(--warm);margin-inline-start:auto}
@@ -431,12 +443,28 @@ if ( ! function_exists( 'nadlan_pshow_assets' ) ) {
 			var map=L.map(m,{scrollWheelZoom:false,layers:[streets]}).setView([lat,lng],15);
 			L.control.layers({"מפה":streets,"לוויין":sat},null,{position:"topleft"}).addTo(map);
 			L.marker([lat,lng]).addTo(map).bindPopup("<b>"+(m.dataset.title||"")+"</b>").openPopup();
-			var P=window.NLPS_POIS||{},style={schools:["#334236","🏫"],kindergartens:["#9C7A3C","🧒"],transit:["#183C3C","🚌"],shops:["#9F6F54","🛒"],health:["#A93F2A","⚕️"]};
+			var P=window.NLPS_POIS||{},style={schools:["#334236","🏫"],kindergartens:["#9C7A3C","🧒"],parks:["#517048","🌳"],transit:["#183C3C","🚌"],shops:["#9F6F54","🛒"],health:["#A93F2A","⚕️"],food:["#8A6B3F","☕"]};
+			// REAL category filtering: one layerGroup per category, chips toggle them
+			var poiLayers={};
+			function dlab(d){if(!d){return ""}if(d>=1000){return "<br><span style=\"color:#9C7A3C;font-size:12px\">כ-"+(Math.round(d/100)/10)+" ק\"מ מהנכס</span>"}return "<br><span style=\"color:#9C7A3C;font-size:12px\">כ-"+(Math.max(50,Math.round(d/50)*50))+" מטר מהנכס</span>"}
 			Object.keys(P).forEach(function(k){
+				var grp=L.layerGroup();
 				(P[k]||[]).forEach(function(p){
 					if(!p.lat||!p.lng){return}
 					L.circleMarker([p.lat,p.lng],{radius:6,color:(style[k]||["#666"])[0],weight:2,fillColor:"#fff",fillOpacity:.9})
-						.addTo(map).bindPopup((style[k]?style[k][1]+" ":"")+(p.name||""));
+						.bindPopup("<b>"+(style[k]?style[k][1]+" ":"")+(p.name||"")+"</b>"+dlab(p.d)).addTo(grp);
+				});
+				poiLayers[k]=grp;
+			});
+			var chips=document.querySelectorAll(".nlps-poichips button");
+			chips.forEach(function(b){
+				var k=b.dataset.poi,grp=poiLayers[k],n=grp?grp.getLayers().length:0;
+				b.textContent=b.textContent+" ("+n+")";
+				if(!n){b.style.opacity=".45";b.classList.remove("is-on");return}
+				if(b.classList.contains("is-on")){grp.addTo(map)}
+				b.addEventListener("click",function(){
+					var on=b.classList.toggle("is-on");
+					if(on){grp.addTo(map)}else{map.removeLayer(grp)}
 				});
 			});
 		}

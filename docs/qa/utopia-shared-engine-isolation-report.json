@@ -1,0 +1,1000 @@
+{
+  "schema": "nadlan-utopia-shared-engine-isolation/v2",
+  "generatedAt": "2026-07-29T22:17:54.853Z",
+  "baseCommit": "8a0bec48cd8666bee978660a33592bf74015e4bd",
+  "baselineEngineSha256": "3baa49e25cc5489eeec0b9ff5f8e9caf338cdaa07c67a9ce5d9ab4e8756feb8a",
+  "currentEngineSha256": "1563cfeeb13869accc5ddf9efa5ad1dd82bc6b30d460fd641732459b4e45710c",
+  "nonUtopiaFixtures": [
+    {
+      "slug": "duo-tel-aviv",
+      "sourceUrl": "https://nad-lan.co.il/projects/duo-tel-aviv/",
+      "sourceStatus": 200,
+      "defaultProject": "duo-tel-aviv",
+      "units": 5,
+      "studioSetting": "on",
+      "exactDomParity": true,
+      "scalarParity": {
+        "rootClass": true,
+        "documentLang": true,
+        "documentDir": true,
+        "documentTitle": true,
+        "h1Count": true,
+        "unitCards": true,
+        "unitHotspots": true,
+        "buildingHotspots": true,
+        "studioLaunches": true
+      },
+      "baseline": {
+        "rootClass": "nl-app",
+        "documentLang": "he",
+        "documentDir": "rtl",
+        "documentTitle": "מגדלי DUO תל אביב - שני מגדלי 54 קומות במתחם סומייל · תצוגת פרויקטים",
+        "h1Count": 1,
+        "unitCards": 5,
+        "unitHotspots": 15,
+        "buildingHotspots": 0,
+        "buildingHotspotLabels": [],
+        "buildingHotspotAriaLabels": [],
+        "studioLaunches": 1,
+        "brandHrefs": [
+          "home.html",
+          "home.html"
+        ],
+        "templateRelativeLinks": [
+          "home.html",
+          "home.html",
+          "project.html?project=duo-tel-aviv"
+        ],
+        "consoleErrors": [],
+        "pageErrors": [],
+        "domSha256": "c846328e6523cb136b32bd6a36ad872bf3c63bedd6f64c762aeefbab7b523b2f"
+      },
+      "current": {
+        "rootClass": "nl-app",
+        "documentLang": "he",
+        "documentDir": "rtl",
+        "documentTitle": "מגדלי DUO תל אביב - שני מגדלי 54 קומות במתחם סומייל · תצוגת פרויקטים",
+        "h1Count": 1,
+        "unitCards": 5,
+        "unitHotspots": 15,
+        "buildingHotspots": 0,
+        "buildingHotspotLabels": [],
+        "buildingHotspotAriaLabels": [],
+        "studioLaunches": 1,
+        "brandHrefs": [
+          "home.html",
+          "home.html"
+        ],
+        "templateRelativeLinks": [
+          "home.html",
+          "home.html",
+          "project.html?project=duo-tel-aviv"
+        ],
+        "consoleErrors": [],
+        "pageErrors": [],
+        "domSha256": "c846328e6523cb136b32bd6a36ad872bf3c63bedd6f64c762aeefbab7b523b2f"
+      },
+      "firstDifference": null,
+      "pass": true
+    },
+    {
+      "slug": "rainbow-tel-aviv",
+      "sourceUrl": "https://nad-lan.co.il/projects/rainbow-tel-aviv/",
+      "sourceStatus": 200,
+      "defaultProject": "rainbow-tel-aviv",
+      "units": 6,
+      "studioSetting": "on",
+      "exactDomParity": true,
+      "scalarParity": {
+        "rootClass": true,
+        "documentLang": true,
+        "documentDir": true,
+        "documentTitle": true,
+        "h1Count": true,
+        "unitCards": true,
+        "unitHotspots": true,
+        "buildingHotspots": true,
+        "studioLaunches": true
+      },
+      "baseline": {
+        "rootClass": "nl-app",
+        "documentLang": "he",
+        "documentDir": "rtl",
+        "documentTitle": "Rainbow Tel Aviv - ריינבו תל אביב · תצוגת פרויקטים",
+        "h1Count": 1,
+        "unitCards": 6,
+        "unitHotspots": 18,
+        "buildingHotspots": 0,
+        "buildingHotspotLabels": [],
+        "buildingHotspotAriaLabels": [],
+        "studioLaunches": 1,
+        "brandHrefs": [
+          "home.html",
+          "home.html"
+        ],
+        "templateRelativeLinks": [
+          "home.html",
+          "home.html",
+          "project.html?project=rainbow-tel-aviv"
+        ],
+        "consoleErrors": [],
+        "pageErrors": [],
+        "domSha256": "3d57630dee4d15350a9ceab7094aa96fb1f0897d0b1a63bad5d0939dfdb69935"
+      },
+      "current": {
+        "rootClass": "nl-app",
+        "documentLang": "he",
+        "documentDir": "rtl",
+        "documentTitle": "Rainbow Tel Aviv - ריינבו תל אביב · תצוגת פרויקטים",
+        "h1Count": 1,
+        "unitCards": 6,
+        "unitHotspots": 18,
+        "buildingHotspots": 0,
+        "buildingHotspotLabels": [],
+        "buildingHotspotAriaLabels": [],
+        "studioLaunches": 1,
+        "brandHrefs": [
+          "home.html",
+          "home.html"
+        ],
+        "templateRelativeLinks": [
+          "home.html",
+          "home.html",
+          "project.html?project=rainbow-tel-aviv"
+        ],
+        "consoleErrors": [],
+        "pageErrors": [],
+        "domSha256": "3d57630dee4d15350a9ceab7094aa96fb1f0897d0b1a63bad5d0939dfdb69935"
+      },
+      "firstDifference": null,
+      "pass": true
+    },
+    {
+      "slug": "dimri-yama-sde-dov",
+      "sourceUrl": "https://nad-lan.co.il/projects/dimri-yama-sde-dov/",
+      "sourceStatus": 200,
+      "defaultProject": "dimri-yama-sde-dov",
+      "units": 4,
+      "studioSetting": "on",
+      "exactDomParity": true,
+      "scalarParity": {
+        "rootClass": true,
+        "documentLang": true,
+        "documentDir": true,
+        "documentTitle": true,
+        "h1Count": true,
+        "unitCards": true,
+        "unitHotspots": true,
+        "buildingHotspots": true,
+        "studioLaunches": true
+      },
+      "baseline": {
+        "rootClass": "nl-app",
+        "documentLang": "he",
+        "documentDir": "rtl",
+        "documentTitle": "DIMRI YAMA שדה דב - י.ח דמרי · תצוגת פרויקטים",
+        "h1Count": 1,
+        "unitCards": 4,
+        "unitHotspots": 12,
+        "buildingHotspots": 0,
+        "buildingHotspotLabels": [],
+        "buildingHotspotAriaLabels": [],
+        "studioLaunches": 1,
+        "brandHrefs": [
+          "home.html",
+          "home.html"
+        ],
+        "templateRelativeLinks": [
+          "home.html",
+          "home.html",
+          "project.html?project=dimri-yama-sde-dov"
+        ],
+        "consoleErrors": [],
+        "pageErrors": [],
+        "domSha256": "01177adf58aff8419b0dcf56eadff9ed8779416bc470c3148e37050caf624a95"
+      },
+      "current": {
+        "rootClass": "nl-app",
+        "documentLang": "he",
+        "documentDir": "rtl",
+        "documentTitle": "DIMRI YAMA שדה דב - י.ח דמרי · תצוגת פרויקטים",
+        "h1Count": 1,
+        "unitCards": 4,
+        "unitHotspots": 12,
+        "buildingHotspots": 0,
+        "buildingHotspotLabels": [],
+        "buildingHotspotAriaLabels": [],
+        "studioLaunches": 1,
+        "brandHrefs": [
+          "home.html",
+          "home.html"
+        ],
+        "templateRelativeLinks": [
+          "home.html",
+          "home.html",
+          "project.html?project=dimri-yama-sde-dov"
+        ],
+        "consoleErrors": [],
+        "pageErrors": [],
+        "domSha256": "01177adf58aff8419b0dcf56eadff9ed8779416bc470c3148e37050caf624a95"
+      },
+      "firstDifference": null,
+      "pass": true
+    },
+    {
+      "slug": "ashira-sde-dov",
+      "sourceUrl": "https://nad-lan.co.il/projects/ashira-sde-dov/",
+      "sourceStatus": 200,
+      "defaultProject": "ashira-sde-dov",
+      "units": 5,
+      "studioSetting": "on",
+      "exactDomParity": true,
+      "scalarParity": {
+        "rootClass": true,
+        "documentLang": true,
+        "documentDir": true,
+        "documentTitle": true,
+        "h1Count": true,
+        "unitCards": true,
+        "unitHotspots": true,
+        "buildingHotspots": true,
+        "studioLaunches": true
+      },
+      "baseline": {
+        "rootClass": "nl-app",
+        "documentLang": "he",
+        "documentDir": "rtl",
+        "documentTitle": "ASHIRA - פרויקט אשירה שדה דב תל אביב מחיר · תצוגת פרויקטים",
+        "h1Count": 1,
+        "unitCards": 5,
+        "unitHotspots": 15,
+        "buildingHotspots": 0,
+        "buildingHotspotLabels": [],
+        "buildingHotspotAriaLabels": [],
+        "studioLaunches": 1,
+        "brandHrefs": [
+          "home.html",
+          "home.html"
+        ],
+        "templateRelativeLinks": [
+          "home.html",
+          "home.html",
+          "project.html?project=ashira-sde-dov"
+        ],
+        "consoleErrors": [],
+        "pageErrors": [],
+        "domSha256": "5b01dd10ac94876d1764d19dedfb835358cd34d36015029397241810120f1a55"
+      },
+      "current": {
+        "rootClass": "nl-app",
+        "documentLang": "he",
+        "documentDir": "rtl",
+        "documentTitle": "ASHIRA - פרויקט אשירה שדה דב תל אביב מחיר · תצוגת פרויקטים",
+        "h1Count": 1,
+        "unitCards": 5,
+        "unitHotspots": 15,
+        "buildingHotspots": 0,
+        "buildingHotspotLabels": [],
+        "buildingHotspotAriaLabels": [],
+        "studioLaunches": 1,
+        "brandHrefs": [
+          "home.html",
+          "home.html"
+        ],
+        "templateRelativeLinks": [
+          "home.html",
+          "home.html",
+          "project.html?project=ashira-sde-dov"
+        ],
+        "consoleErrors": [],
+        "pageErrors": [],
+        "domSha256": "5b01dd10ac94876d1764d19dedfb835358cd34d36015029397241810120f1a55"
+      },
+      "firstDifference": null,
+      "pass": true
+    },
+    {
+      "slug": "first-sde-dov",
+      "sourceUrl": "https://nad-lan.co.il/projects/first-sde-dov/",
+      "sourceStatus": 200,
+      "defaultProject": "first-sde-dov",
+      "units": 4,
+      "studioSetting": "on",
+      "exactDomParity": true,
+      "scalarParity": {
+        "rootClass": true,
+        "documentLang": true,
+        "documentDir": true,
+        "documentTitle": true,
+        "h1Count": true,
+        "unitCards": true,
+        "unitHotspots": true,
+        "buildingHotspots": true,
+        "studioLaunches": true
+      },
+      "baseline": {
+        "rootClass": "nl-app",
+        "documentLang": "he",
+        "documentDir": "rtl",
+        "documentTitle": "FIRST שדה דב - קבוצת חג'ג' · תצוגת פרויקטים",
+        "h1Count": 1,
+        "unitCards": 4,
+        "unitHotspots": 8,
+        "buildingHotspots": 0,
+        "buildingHotspotLabels": [],
+        "buildingHotspotAriaLabels": [],
+        "studioLaunches": 1,
+        "brandHrefs": [
+          "home.html",
+          "home.html"
+        ],
+        "templateRelativeLinks": [
+          "home.html",
+          "home.html",
+          "project.html?project=first-sde-dov"
+        ],
+        "consoleErrors": [],
+        "pageErrors": [],
+        "domSha256": "8396cbb648e6a76b1655a45e00a7b0960155948f216dd4a274b6e84e2a525a7f"
+      },
+      "current": {
+        "rootClass": "nl-app",
+        "documentLang": "he",
+        "documentDir": "rtl",
+        "documentTitle": "FIRST שדה דב - קבוצת חג'ג' · תצוגת פרויקטים",
+        "h1Count": 1,
+        "unitCards": 4,
+        "unitHotspots": 8,
+        "buildingHotspots": 0,
+        "buildingHotspotLabels": [],
+        "buildingHotspotAriaLabels": [],
+        "studioLaunches": 1,
+        "brandHrefs": [
+          "home.html",
+          "home.html"
+        ],
+        "templateRelativeLinks": [
+          "home.html",
+          "home.html",
+          "project.html?project=first-sde-dov"
+        ],
+        "consoleErrors": [],
+        "pageErrors": [],
+        "domSha256": "8396cbb648e6a76b1655a45e00a7b0960155948f216dd4a274b6e84e2a525a7f"
+      },
+      "firstDifference": null,
+      "pass": true
+    },
+    {
+      "slug": "zohi-sde-dov",
+      "sourceUrl": "https://nad-lan.co.il/projects/zohi-sde-dov/",
+      "sourceStatus": 200,
+      "defaultProject": "zohi-sde-dov",
+      "units": 4,
+      "studioSetting": "on",
+      "exactDomParity": true,
+      "scalarParity": {
+        "rootClass": true,
+        "documentLang": true,
+        "documentDir": true,
+        "documentTitle": true,
+        "h1Count": true,
+        "unitCards": true,
+        "unitHotspots": true,
+        "buildingHotspots": true,
+        "studioLaunches": true
+      },
+      "baseline": {
+        "rootClass": "nl-app",
+        "documentLang": "he",
+        "documentDir": "rtl",
+        "documentTitle": "ZOHI זוהי שדה דב - לוינשטין מבנה אלייד · תצוגת פרויקטים",
+        "h1Count": 1,
+        "unitCards": 4,
+        "unitHotspots": 8,
+        "buildingHotspots": 0,
+        "buildingHotspotLabels": [],
+        "buildingHotspotAriaLabels": [],
+        "studioLaunches": 1,
+        "brandHrefs": [
+          "home.html",
+          "home.html"
+        ],
+        "templateRelativeLinks": [
+          "home.html",
+          "home.html",
+          "project.html?project=zohi-sde-dov"
+        ],
+        "consoleErrors": [],
+        "pageErrors": [],
+        "domSha256": "7caa9e98c2b7732d47e64fc82014fe23ce66ade9691363112e9b30036f73680f"
+      },
+      "current": {
+        "rootClass": "nl-app",
+        "documentLang": "he",
+        "documentDir": "rtl",
+        "documentTitle": "ZOHI זוהי שדה דב - לוינשטין מבנה אלייד · תצוגת פרויקטים",
+        "h1Count": 1,
+        "unitCards": 4,
+        "unitHotspots": 8,
+        "buildingHotspots": 0,
+        "buildingHotspotLabels": [],
+        "buildingHotspotAriaLabels": [],
+        "studioLaunches": 1,
+        "brandHrefs": [
+          "home.html",
+          "home.html"
+        ],
+        "templateRelativeLinks": [
+          "home.html",
+          "home.html",
+          "project.html?project=zohi-sde-dov"
+        ],
+        "consoleErrors": [],
+        "pageErrors": [],
+        "domSha256": "7caa9e98c2b7732d47e64fc82014fe23ce66ade9691363112e9b30036f73680f"
+      },
+      "firstDifference": null,
+      "pass": true
+    },
+    {
+      "slug": "gindi-vogue-sde-dov",
+      "sourceUrl": "https://nad-lan.co.il/projects/gindi-vogue-sde-dov/",
+      "sourceStatus": 200,
+      "defaultProject": "gindi-vogue-sde-dov",
+      "units": 4,
+      "studioSetting": "on",
+      "exactDomParity": true,
+      "scalarParity": {
+        "rootClass": true,
+        "documentLang": true,
+        "documentDir": true,
+        "documentTitle": true,
+        "h1Count": true,
+        "unitCards": true,
+        "unitHotspots": true,
+        "buildingHotspots": true,
+        "studioLaunches": true
+      },
+      "baseline": {
+        "rootClass": "nl-app",
+        "documentLang": "he",
+        "documentDir": "rtl",
+        "documentTitle": "GINDI VOGUE שדה דב - גינדי החזקות · תצוגת פרויקטים",
+        "h1Count": 1,
+        "unitCards": 4,
+        "unitHotspots": 8,
+        "buildingHotspots": 0,
+        "buildingHotspotLabels": [],
+        "buildingHotspotAriaLabels": [],
+        "studioLaunches": 1,
+        "brandHrefs": [
+          "home.html",
+          "home.html"
+        ],
+        "templateRelativeLinks": [
+          "home.html",
+          "home.html",
+          "project.html?project=gindi-vogue-sde-dov"
+        ],
+        "consoleErrors": [],
+        "pageErrors": [],
+        "domSha256": "9e36e90419925e450ac8ba80aab14b36c31cf1f4b4a3dd1879f4dd0ae1808ae2"
+      },
+      "current": {
+        "rootClass": "nl-app",
+        "documentLang": "he",
+        "documentDir": "rtl",
+        "documentTitle": "GINDI VOGUE שדה דב - גינדי החזקות · תצוגת פרויקטים",
+        "h1Count": 1,
+        "unitCards": 4,
+        "unitHotspots": 8,
+        "buildingHotspots": 0,
+        "buildingHotspotLabels": [],
+        "buildingHotspotAriaLabels": [],
+        "studioLaunches": 1,
+        "brandHrefs": [
+          "home.html",
+          "home.html"
+        ],
+        "templateRelativeLinks": [
+          "home.html",
+          "home.html",
+          "project.html?project=gindi-vogue-sde-dov"
+        ],
+        "consoleErrors": [],
+        "pageErrors": [],
+        "domSha256": "9e36e90419925e450ac8ba80aab14b36c31cf1f4b4a3dd1879f4dd0ae1808ae2"
+      },
+      "firstDifference": null,
+      "pass": true
+    },
+    {
+      "slug": "migdalei-hayam-sde-dov",
+      "sourceUrl": "https://nad-lan.co.il/projects/migdalei-hayam-sde-dov/",
+      "sourceStatus": 200,
+      "defaultProject": "migdalei-hayam-sde-dov",
+      "units": 4,
+      "studioSetting": "on",
+      "exactDomParity": true,
+      "scalarParity": {
+        "rootClass": true,
+        "documentLang": true,
+        "documentDir": true,
+        "documentTitle": true,
+        "h1Count": true,
+        "unitCards": true,
+        "unitHotspots": true,
+        "buildingHotspots": true,
+        "studioLaunches": true
+      },
+      "baseline": {
+        "rootClass": "nl-app",
+        "documentLang": "he",
+        "documentDir": "rtl",
+        "documentTitle": "דיור מוגן בשדה דב - מגדלי הים התיכון · תצוגת פרויקטים",
+        "h1Count": 1,
+        "unitCards": 4,
+        "unitHotspots": 8,
+        "buildingHotspots": 0,
+        "buildingHotspotLabels": [],
+        "buildingHotspotAriaLabels": [],
+        "studioLaunches": 1,
+        "brandHrefs": [
+          "home.html",
+          "home.html"
+        ],
+        "templateRelativeLinks": [
+          "home.html",
+          "home.html",
+          "project.html?project=migdalei-hayam-sde-dov"
+        ],
+        "consoleErrors": [],
+        "pageErrors": [],
+        "domSha256": "5d7d8aeb63120a6668aa900986a3188621564e38b25438f2df83c770b1fb3160"
+      },
+      "current": {
+        "rootClass": "nl-app",
+        "documentLang": "he",
+        "documentDir": "rtl",
+        "documentTitle": "דיור מוגן בשדה דב - מגדלי הים התיכון · תצוגת פרויקטים",
+        "h1Count": 1,
+        "unitCards": 4,
+        "unitHotspots": 8,
+        "buildingHotspots": 0,
+        "buildingHotspotLabels": [],
+        "buildingHotspotAriaLabels": [],
+        "studioLaunches": 1,
+        "brandHrefs": [
+          "home.html",
+          "home.html"
+        ],
+        "templateRelativeLinks": [
+          "home.html",
+          "home.html",
+          "project.html?project=migdalei-hayam-sde-dov"
+        ],
+        "consoleErrors": [],
+        "pageErrors": [],
+        "domSha256": "5d7d8aeb63120a6668aa900986a3188621564e38b25438f2df83c770b1fb3160"
+      },
+      "firstDifference": null,
+      "pass": true
+    },
+    {
+      "slug": "shikun-binui-sde-dov",
+      "sourceUrl": "https://nad-lan.co.il/projects/shikun-binui-sde-dov/",
+      "sourceStatus": 200,
+      "defaultProject": "shikun-binui-sde-dov",
+      "units": 4,
+      "studioSetting": "on",
+      "exactDomParity": true,
+      "scalarParity": {
+        "rootClass": true,
+        "documentLang": true,
+        "documentDir": true,
+        "documentTitle": true,
+        "h1Count": true,
+        "unitCards": true,
+        "unitHotspots": true,
+        "buildingHotspots": true,
+        "studioLaunches": true
+      },
+      "baseline": {
+        "rootClass": "nl-app",
+        "documentLang": "he",
+        "documentDir": "rtl",
+        "documentTitle": "שיכון ובינוי שדה דב - דיור להשכרה (מגרש 109) · תצוגת פרויקטים",
+        "h1Count": 1,
+        "unitCards": 4,
+        "unitHotspots": 8,
+        "buildingHotspots": 0,
+        "buildingHotspotLabels": [],
+        "buildingHotspotAriaLabels": [],
+        "studioLaunches": 1,
+        "brandHrefs": [
+          "home.html",
+          "home.html"
+        ],
+        "templateRelativeLinks": [
+          "home.html",
+          "home.html",
+          "project.html?project=shikun-binui-sde-dov"
+        ],
+        "consoleErrors": [],
+        "pageErrors": [],
+        "domSha256": "c108208486968f63c4f66bf96c17a7d81a8f3fa49f241240a8aedfe940bb814e"
+      },
+      "current": {
+        "rootClass": "nl-app",
+        "documentLang": "he",
+        "documentDir": "rtl",
+        "documentTitle": "שיכון ובינוי שדה דב - דיור להשכרה (מגרש 109) · תצוגת פרויקטים",
+        "h1Count": 1,
+        "unitCards": 4,
+        "unitHotspots": 8,
+        "buildingHotspots": 0,
+        "buildingHotspotLabels": [],
+        "buildingHotspotAriaLabels": [],
+        "studioLaunches": 1,
+        "brandHrefs": [
+          "home.html",
+          "home.html"
+        ],
+        "templateRelativeLinks": [
+          "home.html",
+          "home.html",
+          "project.html?project=shikun-binui-sde-dov"
+        ],
+        "consoleErrors": [],
+        "pageErrors": [],
+        "domSha256": "c108208486968f63c4f66bf96c17a7d81a8f3fa49f241240a8aedfe940bb814e"
+      },
+      "firstDifference": null,
+      "pass": true
+    },
+    {
+      "slug": "einstein-tower",
+      "sourceUrl": "https://nad-lan.co.il/projects/einstein-tower/",
+      "sourceStatus": 200,
+      "defaultProject": "einstein-tower",
+      "units": 0,
+      "studioSetting": "on",
+      "exactDomParity": true,
+      "scalarParity": {
+        "rootClass": true,
+        "documentLang": true,
+        "documentDir": true,
+        "documentTitle": true,
+        "h1Count": true,
+        "unitCards": true,
+        "unitHotspots": true,
+        "buildingHotspots": true,
+        "studioLaunches": true
+      },
+      "baseline": {
+        "rootClass": "nl-app",
+        "documentLang": "he",
+        "documentDir": "rtl",
+        "documentTitle": "EINSTEIN TOWER רמת אביב - פרויקט מגורים של קבוצת חג׳ג׳ · תצוגת פרויקטים",
+        "h1Count": 1,
+        "unitCards": 0,
+        "unitHotspots": 0,
+        "buildingHotspots": 0,
+        "buildingHotspotLabels": [],
+        "buildingHotspotAriaLabels": [],
+        "studioLaunches": 1,
+        "brandHrefs": [
+          "home.html",
+          "home.html"
+        ],
+        "templateRelativeLinks": [
+          "home.html",
+          "home.html",
+          "project.html?project=einstein-tower"
+        ],
+        "consoleErrors": [],
+        "pageErrors": [],
+        "domSha256": "2dac9a9b8897b6c1f2a3147022bc0bf2bb98e4d9b1170485c15da4b6e4b1ce94"
+      },
+      "current": {
+        "rootClass": "nl-app",
+        "documentLang": "he",
+        "documentDir": "rtl",
+        "documentTitle": "EINSTEIN TOWER רמת אביב - פרויקט מגורים של קבוצת חג׳ג׳ · תצוגת פרויקטים",
+        "h1Count": 1,
+        "unitCards": 0,
+        "unitHotspots": 0,
+        "buildingHotspots": 0,
+        "buildingHotspotLabels": [],
+        "buildingHotspotAriaLabels": [],
+        "studioLaunches": 1,
+        "brandHrefs": [
+          "home.html",
+          "home.html"
+        ],
+        "templateRelativeLinks": [
+          "home.html",
+          "home.html",
+          "project.html?project=einstein-tower"
+        ],
+        "consoleErrors": [],
+        "pageErrors": [],
+        "domSha256": "2dac9a9b8897b6c1f2a3147022bc0bf2bb98e4d9b1170485c15da4b6e4b1ce94"
+      },
+      "firstDifference": null,
+      "pass": true
+    },
+    {
+      "slug": "einstein-19",
+      "sourceUrl": "https://nad-lan.co.il/projects/einstein-19/",
+      "sourceStatus": 200,
+      "defaultProject": "einstein-19",
+      "units": 0,
+      "studioSetting": "on",
+      "exactDomParity": true,
+      "scalarParity": {
+        "rootClass": true,
+        "documentLang": true,
+        "documentDir": true,
+        "documentTitle": true,
+        "h1Count": true,
+        "unitCards": true,
+        "unitHotspots": true,
+        "buildingHotspots": true,
+        "studioLaunches": true
+      },
+      "baseline": {
+        "rootClass": "nl-app",
+        "documentLang": "he",
+        "documentDir": "rtl",
+        "documentTitle": "איינשטיין 19 רמת אביב - פינוי בינוי של אזורים · תצוגת פרויקטים",
+        "h1Count": 1,
+        "unitCards": 0,
+        "unitHotspots": 0,
+        "buildingHotspots": 0,
+        "buildingHotspotLabels": [],
+        "buildingHotspotAriaLabels": [],
+        "studioLaunches": 1,
+        "brandHrefs": [
+          "home.html",
+          "home.html"
+        ],
+        "templateRelativeLinks": [
+          "home.html",
+          "home.html",
+          "project.html?project=einstein-19"
+        ],
+        "consoleErrors": [],
+        "pageErrors": [],
+        "domSha256": "4a829ed4615312c20076e48b76da31c7c8cc036a0e91ffa0126404c0717bb446"
+      },
+      "current": {
+        "rootClass": "nl-app",
+        "documentLang": "he",
+        "documentDir": "rtl",
+        "documentTitle": "איינשטיין 19 רמת אביב - פינוי בינוי של אזורים · תצוגת פרויקטים",
+        "h1Count": 1,
+        "unitCards": 0,
+        "unitHotspots": 0,
+        "buildingHotspots": 0,
+        "buildingHotspotLabels": [],
+        "buildingHotspotAriaLabels": [],
+        "studioLaunches": 1,
+        "brandHrefs": [
+          "home.html",
+          "home.html"
+        ],
+        "templateRelativeLinks": [
+          "home.html",
+          "home.html",
+          "project.html?project=einstein-19"
+        ],
+        "consoleErrors": [],
+        "pageErrors": [],
+        "domSha256": "4a829ed4615312c20076e48b76da31c7c8cc036a0e91ffa0126404c0717bb446"
+      },
+      "firstDifference": null,
+      "pass": true
+    },
+    {
+      "slug": "ashdar-einstein",
+      "sourceUrl": "https://nad-lan.co.il/projects/ashdar-einstein/",
+      "sourceStatus": 200,
+      "defaultProject": "ashdar-einstein",
+      "units": 0,
+      "studioSetting": "on",
+      "exactDomParity": true,
+      "scalarParity": {
+        "rootClass": true,
+        "documentLang": true,
+        "documentDir": true,
+        "documentTitle": true,
+        "h1Count": true,
+        "unitCards": true,
+        "unitHotspots": true,
+        "buildingHotspots": true,
+        "studioLaunches": true
+      },
+      "baseline": {
+        "rootClass": "nl-app",
+        "documentLang": "he",
+        "documentDir": "rtl",
+        "documentTitle": "אשדר איינשטיין נווה אביבים - פרויקט בוטיק · תצוגת פרויקטים",
+        "h1Count": 1,
+        "unitCards": 0,
+        "unitHotspots": 0,
+        "buildingHotspots": 0,
+        "buildingHotspotLabels": [],
+        "buildingHotspotAriaLabels": [],
+        "studioLaunches": 1,
+        "brandHrefs": [
+          "home.html",
+          "home.html"
+        ],
+        "templateRelativeLinks": [
+          "home.html",
+          "home.html",
+          "project.html?project=ashdar-einstein"
+        ],
+        "consoleErrors": [],
+        "pageErrors": [],
+        "domSha256": "d860587964d4422a4145c22f8964c43da3365bd56240948dc024e8652622d2a4"
+      },
+      "current": {
+        "rootClass": "nl-app",
+        "documentLang": "he",
+        "documentDir": "rtl",
+        "documentTitle": "אשדר איינשטיין נווה אביבים - פרויקט בוטיק · תצוגת פרויקטים",
+        "h1Count": 1,
+        "unitCards": 0,
+        "unitHotspots": 0,
+        "buildingHotspots": 0,
+        "buildingHotspotLabels": [],
+        "buildingHotspotAriaLabels": [],
+        "studioLaunches": 1,
+        "brandHrefs": [
+          "home.html",
+          "home.html"
+        ],
+        "templateRelativeLinks": [
+          "home.html",
+          "home.html",
+          "project.html?project=ashdar-einstein"
+        ],
+        "consoleErrors": [],
+        "pageErrors": [],
+        "domSha256": "d860587964d4422a4145c22f8964c43da3365bd56240948dc024e8652622d2a4"
+      },
+      "firstDifference": null,
+      "pass": true
+    }
+  ],
+  "galleryParity": {
+    "exactDomParity": true,
+    "scalarParity": {
+      "rootClass": true,
+      "documentLang": true,
+      "documentDir": true,
+      "documentTitle": true,
+      "h1Count": true,
+      "unitCards": true,
+      "unitHotspots": true,
+      "buildingHotspots": true,
+      "studioLaunches": true
+    },
+    "baseline": {
+      "rootClass": "nl-app",
+      "documentLang": "fr",
+      "documentDir": "ltr",
+      "documentTitle": "Projets neufs à Sde Dov",
+      "h1Count": 1,
+      "unitCards": 0,
+      "unitHotspots": 0,
+      "buildingHotspots": 0,
+      "buildingHotspotLabels": [],
+      "buildingHotspotAriaLabels": [],
+      "studioLaunches": 0,
+      "brandHrefs": [
+        "home.html",
+        "home.html"
+      ],
+      "templateRelativeLinks": [
+        "home.html",
+        "home.html",
+        "project.html?project=utopia-sde-dov"
+      ],
+      "consoleErrors": [],
+      "pageErrors": [],
+      "domSha256": "17512f494c7c06bbc355d618c6305fda3fb7ead8a7ea1bbe97b14732e00af0e5"
+    },
+    "current": {
+      "rootClass": "nl-app",
+      "documentLang": "fr",
+      "documentDir": "ltr",
+      "documentTitle": "Projets neufs à Sde Dov",
+      "h1Count": 1,
+      "unitCards": 0,
+      "unitHotspots": 0,
+      "buildingHotspots": 0,
+      "buildingHotspotLabels": [],
+      "buildingHotspotAriaLabels": [],
+      "studioLaunches": 0,
+      "brandHrefs": [
+        "home.html",
+        "home.html"
+      ],
+      "templateRelativeLinks": [
+        "home.html",
+        "home.html",
+        "project.html?project=utopia-sde-dov"
+      ],
+      "consoleErrors": [],
+      "pageErrors": [],
+      "domSha256": "17512f494c7c06bbc355d618c6305fda3fb7ead8a7ea1bbe97b14732e00af0e5"
+    },
+    "firstDifference": null,
+    "pass": true
+  },
+  "utopiaLanguageLock": {
+    "configuredLanguage": "he",
+    "conflictingLanguage": "fr",
+    "documentLang": "he",
+    "documentDir": "rtl",
+    "documentTitle": "Server-owned UTOPIA SEO title",
+    "rootClass": "nl-app nl-app--building",
+    "buildingHotspotLabels": [
+      "S1",
+      "N1",
+      "N2",
+      "S2"
+    ],
+    "buildingHotspotAriaLabels": [
+      "מגדל S1",
+      "בניין N1",
+      "בניין N2",
+      "בניין S2"
+    ],
+    "consoleErrors": [],
+    "pageErrors": [],
+    "pass": true
+  },
+  "cssIsolation": {
+    "sharedStyles": [
+      {
+        "path": "plugins/nadlan-config/assets/showroom-engine/showroom.css",
+        "exactBaseBlob": true,
+        "baselineGitBlob": "da27e532c5ff20f982148f744db659728324ae84",
+        "currentGitBlob": "da27e532c5ff20f982148f744db659728324ae84"
+      },
+      {
+        "path": "plugins/nadlan-config/assets/showroom-engine/editorial.css",
+        "exactBaseBlob": true,
+        "baselineGitBlob": "b70b9a36064d9bb8feed37f50b60388eea9f6043",
+        "currentGitBlob": "b70b9a36064d9bb8feed37f50b60388eea9f6043"
+      }
+    ],
+    "utopiaStyle": {
+      "path": "plugins/nadlan-config/assets/showroom-engine/projects/utopia-sde-dov/utopia.css",
+      "exists": true,
+      "sha256": "cbfcc80998b7c1d194628b1537aca853404a4a2bfc974b6350a4333b43a92659"
+    },
+    "conditionalEnqueuePresent": true,
+    "pass": true
+  },
+  "summary": {
+    "totalNonUtopiaFixtures": 12,
+    "passedNonUtopiaFixtures": 12,
+    "failedNonUtopiaFixtures": 0,
+    "zeroUnitFixtures": [
+      "einstein-tower",
+      "einstein-19",
+      "ashdar-einstein"
+    ],
+    "zeroUnitStudioParity": true,
+    "galleryExactDomParity": true,
+    "utopiaLanguageLock": true,
+    "sharedCssByteParity": true
+  },
+  "pass": true
+}

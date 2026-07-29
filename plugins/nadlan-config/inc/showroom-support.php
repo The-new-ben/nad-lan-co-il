@@ -860,6 +860,16 @@ add_filter(
 	3
 );
 
+/* mv-ux: the shared 3D control layer (no self-spin, angle detents, compass,
+ * guidance hint) for EVERY model-viewer on the site - engine stages, intl
+ * pickers, property viewers, wizard schematics, homepage showcase. Tiny and
+ * self-guarding (does nothing on pages without a viewer), so it loads
+ * site-wide and also catches viewers mounted later via MutationObserver. */
+add_action( 'wp_enqueue_scripts', function () {
+	if ( is_admin() ) { return; }
+	wp_enqueue_script( 'nadlan-mv-ux', plugins_url( 'assets/showroom-engine/mv-ux.js', dirname( __FILE__ ) ), array(), NADLAN_CONFIG_VERSION, true );
+}, 20 );
+
 if ( ! function_exists( 'nadlan_p3d_render_admin_metabox' ) ) {
 	function nadlan_p3d_render_admin_metabox( $post ) {
 		wp_nonce_field( 'nadlan_p3d_save', 'nadlan_p3d_nonce' );
