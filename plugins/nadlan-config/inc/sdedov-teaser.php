@@ -36,11 +36,11 @@ function nadlan_sdedov_tour_focus( $slug ) {
 	return isset( $map[ $slug ] ) ? $map[ $slug ] : '';
 }
 
-function nadlan_sdedov_tour_css() {
-	static $done = false;
-	if ( $done ) { return ''; }
-	$done = true;
-	return '<style id="nlsdt-css">'
+/* Back-compat no-op: css/js now ship via wp_enqueue (kses-proof). */
+function nadlan_sdedov_tour_css() { return ''; }
+
+function nadlan_sdedov_tour_css_raw() {
+	return ''
 		. '.nlsdt{position:relative;overflow:hidden;border-radius:18px;margin:26px auto;max-width:1240px;background:#101826;color:#fff;direction:rtl}'
 		. '.nlsdt-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.55}'
 		. '.nlsdt-in{position:relative;z-index:2;padding:34px 30px;background:linear-gradient(90deg,rgba(10,15,26,.88) 0%,rgba(10,15,26,.55) 55%,rgba(10,15,26,.15) 100%)}'
@@ -63,18 +63,16 @@ function nadlan_sdedov_tour_css() {
 		. '.nlsdt-ovsp{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;color:#C9D2E2;font:600 15px/1 Heebo,sans-serif}'
 		. '.nlsdt-ov.ld .nlsdt-ovsp{display:none}'
 		. '.nlsdt-cardtour{display:inline-block;margin-top:7px;color:#F2C14E;font:700 13px/1 Heebo,sans-serif;text-decoration:none}'
-		. '.nlsdt-cardtour:hover{color:#FFD98F}'
-		. '</style>';
+		. '.nlsdt-cardtour:hover{color:#FFD98F}';
 }
 
 /* One overlay engine per page: click a .nlsdt-open control and the tour opens
  * full-screen IN PLACE (iframe layer) - the visitor never leaves the page.
  * Zero bytes are loaded until the click; hovering prefetches the tour HTML. */
-function nadlan_sdedov_tour_overlay_js() {
-	static $done = false;
-	if ( $done ) { return ''; }
-	$done = true;
-	return '<script id="nlsdt-ovjs">(function(){if(window.NLSDT)return;var ov,fr,cl;'
+function nadlan_sdedov_tour_overlay_js() { return ''; }
+
+function nadlan_sdedov_tour_overlay_js_raw() {
+	return '(function(){if(window.NLSDT)return;var ov,fr,cl;'
 		. 'function build(){ov=document.createElement("div");ov.className="nlsdt-ov";ov.setAttribute("role","dialog");ov.setAttribute("aria-modal","true");ov.setAttribute("aria-label","סיור תלת ממדי");'
 		. 'ov.innerHTML=\'<button class="nlsdt-ovx" aria-label="סגירת הסיור">✕</button><div class="nlsdt-ovsp">טוען את הסיור...</div><iframe class="nlsdt-ovfr" allow="fullscreen; xr-spatial-tracking" title="סיור תלת ממדי ברובע"></iframe>\';'
 		. 'document.body.appendChild(ov);fr=ov.querySelector("iframe");cl=ov.querySelector(".nlsdt-ovx");'
@@ -86,8 +84,20 @@ function nadlan_sdedov_tour_overlay_js() {
 		. 'window.NLSDT={open:open,close:close};'
 		. 'document.addEventListener("click",function(e){var a=e.target.closest(".nlsdt-open");if(!a)return;var u=a.getAttribute("data-url")||a.getAttribute("href");if(!u)return;e.preventDefault();open(u);});'
 		. 'document.addEventListener("pointerover",function(e){var a=e.target.closest(".nlsdt-open");if(!a||a.__pf)return;a.__pf=1;var l=document.createElement("link");l.rel="prefetch";l.href=a.getAttribute("data-url")||a.getAttribute("href");document.head.appendChild(l);});'
-		. '})();</script>';
+		. '})();';
 }
+
+/* Site-wide enqueue of the teaser skin + overlay engine (~5KB inline).
+ * Enqueued assets survive every content sanitizer, unlike in-band <style>/<script>. */
+add_action( 'wp_enqueue_scripts', function () {
+	$ver = defined( 'NADLAN_CONFIG_VERSION' ) ? NADLAN_CONFIG_VERSION : '1';
+	wp_register_style( 'nlsdt', false, array(), $ver );
+	wp_enqueue_style( 'nlsdt' );
+	wp_add_inline_style( 'nlsdt', nadlan_sdedov_tour_css_raw() );
+	wp_register_script( 'nlsdt', false, array(), $ver, true );
+	wp_enqueue_script( 'nlsdt' );
+	wp_add_inline_script( 'nlsdt', nadlan_sdedov_tour_overlay_js_raw() );
+}, 20 );
 
 /* Small quarter-tour link for a flagship card (homepage gallery etc.):
  * opens the tour focused on that building, inside the overlay. */
@@ -96,8 +106,7 @@ function nadlan_sdedov_card_tour_btn( $post ) {
 	if ( ! in_array( $slug, nadlan_sdedov_tour_slugs(), true ) ) { return ''; }
 	$focus = nadlan_sdedov_tour_focus( $slug );
 	$url   = nadlan_sdedov_tour_url() . ( $focus ? '?focus=' . rawurlencode( $focus ) . '&mode=explore' : '' );
-	return nadlan_sdedov_tour_css() . nadlan_sdedov_tour_overlay_js()
-		. '<a class="nlsdt-cardtour nlsdt-open" href="' . esc_url( $url ) . '" data-url="' . esc_url( $url ) . '" target="_blank" rel="noopener">סיור ברובע שדה דב ←</a>';
+	return '<a class="nlsdt-cardtour nlsdt-open" href="' . esc_url( $url ) . '" data-url="' . esc_url( $url ) . '" target="_blank" rel="noopener">סיור ברובע שדה דב ←</a>';
 }
 
 /**
@@ -109,8 +118,7 @@ function nadlan_sdedov_card_tour_btn( $post ) {
 function nadlan_sdedov_tour_band( $variant = 'home', $focus = '' ) {
 	$url  = nadlan_sdedov_tour_url();
 	$link = $focus ? $url . '?focus=' . rawurlencode( $focus ) . '&mode=explore' : $url;
-	$html = nadlan_sdedov_tour_css() . nadlan_sdedov_tour_overlay_js();
-	$html .= '<section class="nlsdt" aria-label="סיור תלת ממדי ברובע שדה דב">'
+	$html = '<section class="nlsdt" aria-label="סיור תלת ממדי ברובע שדה דב">'
 		. '<img class="nlsdt-img" src="' . esc_url( nadlan_sdedov_tour_poster() ) . '" alt="" loading="lazy" decoding="async">'
 		. '<div class="nlsdt-in">'
 		. '<p class="nlsdt-kick">חדש · סיור תלת ממדי חי</p>'
