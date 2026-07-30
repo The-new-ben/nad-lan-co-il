@@ -21,6 +21,7 @@ import re
 import sys
 import zipfile
 from pathlib import Path
+from typing import Optional
 
 ROOT = Path(__file__).resolve().parents[1]
 PLUGIN = ROOT / "plugins" / "nadlan-config"
@@ -49,15 +50,51 @@ def one_match(pattern: str, text: str, label: str) -> str:
     return match.group(1)
 
 
+def optional_match(pattern: str, text: str) -> Optional[str]:
+    match = re.search(pattern, text, re.MULTILINE)
+    return match.group(1) if match else None
+
+
+def resolve_health_version(text: str, label: str, constant_version: Optional[str]) -> str:
+    expression = one_match(
+        r"['\"]version['\"]\s*=>\s*([^,\r\n]+)",
+        text,
+        f"{label} version expression",
+    ).strip()
+    literal = re.fullmatch(r"['\"]([0-9][0-9.]*)['\"]", expression)
+    if literal:
+        return literal.group(1)
+    if expression == "NADLAN_CONFIG_VERSION":
+        if constant_version is None:
+            fail(f"{label} uses undefined NADLAN_CONFIG_VERSION")
+        return constant_version
+    conditional_constant = re.fullmatch(
+        r"defined\s*\(\s*['\"]NADLAN_CONFIG_VERSION['\"]\s*\)"
+        r"\s*\?\s*NADLAN_CONFIG_VERSION\s*:\s*['\"]unknown['\"]",
+        expression,
+    )
+    if conditional_constant:
+        if constant_version is None:
+            fail(f"{label} uses undefined NADLAN_CONFIG_VERSION")
+        return constant_version
+    fail(f"unsupported {label} version expression: {expression}")
+
+
 def detect_versions() -> dict[str, str]:
     main = read_text(MAIN)
     health = read_text(HEALTH) if HEALTH.exists() else ""
+    constant_version = optional_match(
+        r"define\s*\(\s*['\"]NADLAN_CONFIG_VERSION['\"]\s*,\s*['\"]([0-9][0-9.]*)['\"]\s*\)",
+        main,
+    )
     versions = {
         "plugin_header": one_match(r"^\s*\*\s*Version:\s*([0-9][0-9.]*)", main, "plugin header Version"),
-        "healthcheck_main": one_match(r"'version'\s*=>\s*'([0-9][0-9.]*)'", main, "main healthcheck version"),
+        "healthcheck_main": resolve_health_version(main, "main healthcheck", constant_version),
     }
+    if constant_version is not None:
+        versions["version_constant"] = constant_version
     if health:
-        versions["health_module"] = one_match(r"'version'\s*=>\s*'([0-9][0-9.]*)'", health, "health module version")
+        versions["health_module"] = resolve_health_version(health, "health module", constant_version)
     with MANIFEST.open(encoding="utf-8") as fh:
         manifest = json.load(fh)
     versions["manifest"] = str(manifest.get("version", ""))
