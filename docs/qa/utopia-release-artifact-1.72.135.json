@@ -1,0 +1,114 @@
+{
+  "schema": "nadlan-utopia-release-artifact/v2",
+  "generated_at": "2026-07-30T11:43:10.3243521Z",
+  "release": "1.72.135",
+  "provenance": {
+    "source_commit": "44a4c62a1c116f4474dad20d2a05f76c7cd1d207",
+    "artifact_freeze_commit": "89211d6d87082c06f3e70c028d96c7628ae56780",
+    "plugin_tree": "58f351bfe59edf036747899e8df7a4c05cf7e9df"
+  },
+  "live_base": {
+    "version": "1.72.134",
+    "commit": "064567a50466c3c1245f1abcc4e699144949492d",
+    "plugin_tree": "d2176b8ae45a9de61118ad8b50343280218ee40f",
+    "branch": "origin/claude/sde-dov-experience-v1",
+    "healthcheck_reconfirmed_before_freeze": true,
+    "last_healthcheck_before_freeze": "2026-07-30T11:42:52.4498572Z",
+    "last_healthcheck_version": "1.72.134",
+    "dependencies_ok": true
+  },
+  "version_reservation": {
+    "checked_at": "2026-07-30T11:43:10.3243521Z",
+    "remote_refs_checked": 300,
+    "remote_1_72_135_hits": 0,
+    "origin_fetch_completed_before_freeze": true,
+    "remote_ref_snapshot_sha256": "b3c0e72752408ceab44128082cf22d9ef5ac39c6e2831e3c399b2a5ad8cd8f04"
+  },
+  "artifact": {
+    "path": "plugin-dist/nadlan-config-1.72.135.zip",
+    "bytes": 3862340,
+    "sha256": "edf5644d5151d3e3302eb68598a48d68e2a66d4cc5f99f961bf150336d2d52b6",
+    "git_blob": "bf7e59dbc32210e75c25fe1c7832a80829f0209f",
+    "entries": 231,
+    "root": "nadlan-config/",
+    "backslash_entries": 0,
+    "bad_root_entries": 0,
+    "duplicate_entries": 0,
+    "crc": "ok",
+    "missing_source_entries": 0,
+    "extra_entries": 0,
+    "zip_stream_hash_mismatches": 0
+  },
+  "rollback_artifact": {
+    "kind": "source reconstruction, secondary recovery only",
+    "source_version": "1.72.134",
+    "source_commit": "064567a50466c3c1245f1abcc4e699144949492d",
+    "path": "plugin-dist/nadlan-config-1.72.134-source-reconstruction.zip",
+    "bytes": 2556966,
+    "sha256": "cab5746ea4953d8543b63756c40db0d56e9271edac5376aef79cc614902a861e",
+    "git_blob": "f9edd4c9c8cef0a94cbebb422458fb69a9606229",
+    "entries": 217,
+    "root": "nadlan-config/",
+    "backslash_entries": 0,
+    "bad_root_entries": 0,
+    "duplicate_entries": 0,
+    "crc": "ok",
+    "git_source_blob_mismatches": 0,
+    "exact_server_directory_copy": false,
+    "primary_rollback_requires_server_backup": true
+  },
+  "source_validation": {
+    "plugin_php_files": 163,
+    "php_lint_failures": 0,
+    "utopia_js_syntax": "pass",
+    "canonical_release_verifier": "pass",
+    "verifier_unit_tests": "5/5 pass",
+    "version_header": "1.72.135",
+    "cache_constant": "1.72.135",
+    "utopia_health_release": "1.72.135",
+    "utopia_loader_modules": [
+      "utopia-sde-dov"
+    ],
+    "stale_1_72_128_or_1_72_133_identifiers": 0,
+    "changes_from_live_base": {
+      "utopia_specific_additions": 14,
+      "shared_files_modified": [
+        "nadlan-config.php"
+      ]
+    }
+  },
+  "protected_source": {
+    "inc/home-v2.php": "b2ff23210a5b57b8fc8d7ef3a0831aec55c1456e",
+    "inc/i18n.php": "e1066c6a53a77791f4b6a682187268bb2b9ea557",
+    "inc/premium-catalog.php": "7a9e4b4441033671ffc06cd5344fc32d2a2cedcf",
+    "inc/sdedov-teaser.php": "fbd93d69a0d92459e8f6253154e297b3e1e08dfe",
+    "inc/showroom-engine.php": "838ba6c2b76208c1a39cf8969bf93e284cd1d752",
+    "assets/showroom-engine/engine.js": "ab5082d90eb31d28a44bff7d838f873b2629fa2c",
+    "inc/directory.php": "133cebfa7840d0b4bd17fa3a77b76a8e55ffdcd0",
+    "inc/facility-chips.php": "ea51e67eb7a65dfc3418ebeb774745c099da19d2",
+    "inc/legal-notice.php": "62ab0a9aa940baf59ffff2c9e38dff4339a48d74"
+  },
+  "protected_files_match_live_base": true,
+  "utopia_notice_compatibility": {
+    "shared_legal_notice_file_modified": false,
+    "slug_language_set_at_wp_priority": 1,
+    "localized_contract_languages": 5,
+    "localized_contract_failures": 0,
+    "duplicate_notice_removed": true,
+    "notice_precedes_showroom": true
+  },
+  "prior_isolated_browser_gate": {
+    "source_release": "1.72.133 before live-base realignment",
+    "cases": 10,
+    "assertions": 925,
+    "failures": 0,
+    "chrome": "150.0.7871.187",
+    "model_triangles": 21416
+  },
+  "live_browser_gate": {
+    "status": "pending deployment",
+    "expected_cases": 10
+  },
+  "deployed": false,
+  "artifact_integrity_pass": true
+}
