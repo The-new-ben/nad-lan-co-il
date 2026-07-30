@@ -2,7 +2,7 @@
 /**
  * Plugin Name: NadLan Config
  * Description: Lead-capture foundation: nadlan_lead CPT + lead-form handler + healthcheck. Read skills/nadlan-config-plugin.md.
- * Version: 1.72.134
+ * Version: 1.72.135
  * Author: nad-lan.co.il
  * License: GPL-2.0+
  * Requires PHP: 7.4
@@ -16,7 +16,7 @@ if ( ! defined( 'ABSPATH' ) ) {
    above (the release script bumps all three). A frozen ver= string once kept
    browsers on a June engine.js for weeks - never hardcode versions in enqueues. */
 if ( ! defined( 'NADLAN_CONFIG_VERSION' ) ) {
-	define( 'NADLAN_CONFIG_VERSION', '1.72.134' );
+	define( 'NADLAN_CONFIG_VERSION', '1.72.135' );
 }
 
 /* ---------- v1.5.0: directory cards, claim funnel, auction engine ----------
@@ -30,7 +30,7 @@ if ( ! defined( 'NADLAN_CONFIG_VERSION' ) ) {
  * project-page-assembly and project-3d removed; the pieces the live engine
  * still needs moved to showroom-support.php.
  */
-foreach ( array( 'catalog-meta', 'claim', 'import', 'schema', 'cards-render', 'listings-ux', 'avm-deals', 'saved-search', 'ai-provider', 'ai-features', 'city-hubs', 'media', 'compare', 'nearby-poi', 'map', 'lead-drip', 'ops-dashboard', 'facets', 'breadcrumbs', 'autocomplete', 'tiers', 'glossary', 'glossary-autolink', 'directory', 'reviews', 'lead-ledger', 'ai-concierge', 'archive-grid', 'calculators', 'catalog-shine', 'conversion-cta', 'whatsapp-lead-ingestion', 'lead-routing', 'feature-flags', 'compounds', 'compound-map', 'showroom-support', 'offers', 'lead-e2e', 'lead-inbox', 'preferred-partners', 'featured-upsell', 'sponsored-spot', 'pricing-schema', 'claim-prompt', 'ga4-events', 'sitemap-ping', 'social-proof', 'term-faq-schema', 'og-image', 'owner-config-rest', 'studio', 'studio-rest', 'profile-extras', 'advertiser-center', 'advertiser-orders', 'premium-ui', 'geo-search', 'roles', 'greeninvoice-recurring', 'placement-auction', 'admin-control', 'contextual-help', 'business-metrics', 'health', 'final-hardening', 'lead-ai-qualify', 'lead-nurture', 'showroom-engine', 'bulk-project-seo', 'loi-form', 'showroom-metabox', 'property-showroom', 'property-wizard', 'project-experience', 'professional-profile', 'interior-fp', 'buy-rent-calc', 'premium-catalog', 'facility-chips', 'rfp', 'guide-schema', 'drone-map', 'i18n', 'home-v2', 'keys-hub', 'en-hub', 'project-preview', 'funnel', 'renewals', 'glossary-intake', 'glossary-writer', 'accessibility', 'pro-cards', 'brochure', 'cotour', 'pro-stats-email', 'milestones', 'milestone-notify', 'ai-brain', 'related-content', 'urban-hub', 'urban-tools', 'urban-wizard', 'urban-space', 'urban-map', 'wa-source', 'rentals-manager', 'scheduler', 'site-map', 'global-worlds', 'smart-form', 'auction', 'auth', 'cta-start', 'sdedov-teaser', 'legal-notice' ) as $nadlan_mod ) {
+foreach ( array( 'catalog-meta', 'claim', 'import', 'schema', 'cards-render', 'listings-ux', 'avm-deals', 'saved-search', 'ai-provider', 'ai-features', 'city-hubs', 'media', 'compare', 'nearby-poi', 'map', 'lead-drip', 'ops-dashboard', 'facets', 'breadcrumbs', 'autocomplete', 'tiers', 'glossary', 'glossary-autolink', 'directory', 'reviews', 'lead-ledger', 'ai-concierge', 'archive-grid', 'calculators', 'catalog-shine', 'conversion-cta', 'whatsapp-lead-ingestion', 'lead-routing', 'feature-flags', 'compounds', 'compound-map', 'showroom-support', 'offers', 'lead-e2e', 'lead-inbox', 'preferred-partners', 'featured-upsell', 'sponsored-spot', 'pricing-schema', 'claim-prompt', 'ga4-events', 'sitemap-ping', 'social-proof', 'term-faq-schema', 'og-image', 'owner-config-rest', 'studio', 'studio-rest', 'profile-extras', 'advertiser-center', 'advertiser-orders', 'premium-ui', 'geo-search', 'roles', 'greeninvoice-recurring', 'placement-auction', 'admin-control', 'contextual-help', 'business-metrics', 'health', 'final-hardening', 'lead-ai-qualify', 'lead-nurture', 'showroom-engine', 'bulk-project-seo', 'loi-form', 'showroom-metabox', 'property-showroom', 'property-wizard', 'project-experience', 'professional-profile', 'interior-fp', 'buy-rent-calc', 'premium-catalog', 'facility-chips', 'rfp', 'guide-schema', 'drone-map', 'i18n', 'home-v2', 'keys-hub', 'en-hub', 'project-preview', 'funnel', 'renewals', 'glossary-intake', 'glossary-writer', 'accessibility', 'pro-cards', 'brochure', 'cotour', 'pro-stats-email', 'milestones', 'milestone-notify', 'ai-brain', 'related-content', 'urban-hub', 'urban-tools', 'urban-wizard', 'urban-space', 'urban-map', 'wa-source', 'rentals-manager', 'scheduler', 'site-map', 'global-worlds', 'smart-form', 'auction', 'auth', 'cta-start', 'sdedov-teaser', 'legal-notice', 'utopia-sde-dov' ) as $nadlan_mod ) {
 	$nadlan_mod_file = __DIR__ . '/inc/' . $nadlan_mod . '.php';
 	if ( file_exists( $nadlan_mod_file ) ) {
 		require_once $nadlan_mod_file;
