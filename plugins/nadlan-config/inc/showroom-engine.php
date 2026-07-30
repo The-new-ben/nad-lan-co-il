@@ -291,6 +291,19 @@ if ( ! function_exists( 'nadlan_showroom_engine_shortcode' ) ) {
 		wp_enqueue_style( 'nadlan-engine-tokens', $base . 'tokens.css', array(), NADLAN_CONFIG_VERSION );
 		wp_enqueue_style( 'nadlan-engine-css', $base . 'showroom.css', array( 'nadlan-engine-tokens' ), NADLAN_CONFIG_VERSION );
 		wp_enqueue_style( 'nadlan-engine-editorial', $base . 'editorial.css', array( 'nadlan-engine-tokens' ), NADLAN_CONFIG_VERSION );
+		/* Cascade repair (measured live on /projects/duo-tel-aviv/ 2026-07-30): the theme ships
+		   .single-nadlan_project .entry-content h2{color:var(--nlx-ink)!important} and
+		   nadlan-premium-revenue.css .nlpf-name{color:#FFF8E7!important}. Both outrank showroom.css,
+		   so every heading on a dark showroom surface rendered near-black (1.02-1.12:1, invisible -
+		   including the inquiry form headline) while the project name rendered cream on the white
+		   profile card. Repeated class selectors win the cascade here, so neither the theme nor
+		   showroom.css has to be edited; the colours are the ones those components already declare. */
+		wp_add_inline_style( 'nadlan-engine-css',
+			'.nl-theater__title.nl-theater__title.nl-theater__title h2{color:var(--theater-fore)!important}'
+			. '.nl-inquiry.nl-inquiry.nl-inquiry h2{color:#fff!important}'
+			. '.nl-card--dark.nl-card--dark.nl-card--dark h2,.nl-card--dark.nl-card--dark.nl-card--dark h3{color:var(--cream)!important}'
+			. '.nlpf-name.nlpf-name{color:#1B1A17!important}'
+		);
 		// 4.3.1 to match what retired project-3d registered on GLB pages - no silent downgrade.
 		wp_enqueue_script( 'nadlan-model-viewer', 'https://ajax.googleapis.com/ajax/libs/model-viewer/4.3.1/model-viewer.min.js', array(), '4.3.1', true );
 		wp_script_add_data( 'nadlan-model-viewer', 'type', 'module' );
