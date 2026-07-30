@@ -8,7 +8,7 @@ Method: one focused, non-personalized Google query per language in the user's re
 
 Clean recheck evidence:
 
-`C:\Users\pro\nad-lan-utopia\docs\qa\screenshots\utopia-2026-07-30\search-intent`
+`docs/qa/screenshots/utopia-2026-07-30/search-intent/`
 
 This is private editorial research. None of the method language belongs on the public project pages.
 

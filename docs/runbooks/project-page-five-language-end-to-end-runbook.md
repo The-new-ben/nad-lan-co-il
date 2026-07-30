@@ -449,7 +449,7 @@ On any failure:
 
 Provide a lock-aware WP-CLI restore command. Require `--user=<administrator>` and verify both `manage_options` and `unfiltered_html` before any HTML restoration. A successful operator restore must set a persistent operator hold so the next request cannot immediately reseed. Provide a separate explicit resume command that validates the backup, confirms no incomplete run journal remains, retires the old backup so later operator edits become the fresh baseline, and removes only an operator hold.
 
-UTOPIA migration QA: `scripts/qa-utopia-release-migration.php`.
+UTOPIA 1.72.135 release QA: `python -B scripts/verify-plugin-release.py 1.72.135`, `php scripts/qa-utopia-notice-contract.php`, and `docs/qa/utopia-release-artifact-1.72.135.json`.
 
 ## Phase 8: browser and regression QA
 
