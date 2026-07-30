@@ -61,15 +61,20 @@ class ResolveHealthVersionTests(unittest.TestCase):
 
 
 class UtopiaIntegrityPinParserTests(unittest.TestCase):
-    def test_parses_all_seven_raw_byte_pins(self) -> None:
+    def test_parses_all_twelve_raw_byte_pins(self) -> None:
         hashes = {
             "article_he": "1" * 64,
             "article_en": "2" * 64,
             "article_fr": "3" * 64,
             "article_ru": "4" * 64,
             "article_ar": "5" * 64,
-            "showroom_css": "6" * 64,
-            "showroom_js": "7" * 64,
+            "model": "6" * 64,
+            "exterior": "7" * 64,
+            "interior": "8" * 64,
+            "window_view": "9" * 64,
+            "wellness": "a" * 64,
+            "showroom_css": "b" * 64,
+            "showroom_js": "c" * 64,
         }
         source = "\n".join(
             [
@@ -77,12 +82,18 @@ class UtopiaIntegrityPinParserTests(unittest.TestCase):
                 for lang in ("he", "en", "fr", "ru", "ar")
             ]
             + [
-                "'showroom_css' => array("
-                " 'path' => $root . 'utopia.css',"
-                f" 'sha256' => '{hashes['showroom_css']}', )",
-                "'showroom_js' => array("
-                " 'path' => $root . 'utopia-showroom.js',"
-                f" 'sha256' => '{hashes['showroom_js']}', )",
+                f"'{key}' => array("
+                f" 'path' => $root . '{key}',"
+                f" 'sha256' => '{hashes[key]}', )"
+                for key in (
+                    "model",
+                    "exterior",
+                    "interior",
+                    "window_view",
+                    "wellness",
+                    "showroom_css",
+                    "showroom_js",
+                )
             ]
         )
         self.assertEqual(VERIFY.parse_utopia_integrity_pins(source), hashes)

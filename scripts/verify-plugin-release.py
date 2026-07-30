@@ -3,8 +3,9 @@
 
 The authoritative plugin source is the Git index, not platform-dependent
 working-tree bytes. Every ZIP entry must exactly equal its indexed Git blob.
-For UTOPIA, the five article pins plus project CSS/JavaScript pins are also
-checked against both Git and ZIP bytes.
+For UTOPIA, all twelve raw runtime pins - five articles, the GLB model, four
+concept WebPs, project CSS, and project JavaScript - are checked against both
+Git and ZIP bytes.
 
 Usage:
   python scripts/verify-plugin-release.py
@@ -43,6 +44,11 @@ UTOPIA_PINNED_PATHS = {
     "article_fr": UTOPIA_PROJECT_ARCHIVE_ROOT + "article-fr.html",
     "article_ru": UTOPIA_PROJECT_ARCHIVE_ROOT + "article-ru.html",
     "article_ar": UTOPIA_PROJECT_ARCHIVE_ROOT + "article-ar.html",
+    "model": "nadlan-config/assets/showroom-engine/models/utopia-rich-v1.glb",
+    "exterior": UTOPIA_PROJECT_ARCHIVE_ROOT + "utopia-concept-exterior-v1.webp",
+    "interior": UTOPIA_PROJECT_ARCHIVE_ROOT + "utopia-concept-interior-v1.webp",
+    "window_view": UTOPIA_PROJECT_ARCHIVE_ROOT + "utopia-concept-window-view-v1.webp",
+    "wellness": UTOPIA_PROJECT_ARCHIVE_ROOT + "utopia-concept-wellness-v1.webp",
     "showroom_css": UTOPIA_PROJECT_ARCHIVE_ROOT + "utopia.css",
     "showroom_js": UTOPIA_PROJECT_ARCHIVE_ROOT + "utopia-showroom.js",
 }
@@ -155,7 +161,15 @@ def parse_utopia_integrity_pins(module: str) -> dict[str, str]:
             module,
             f"UTOPIA article-{lang} SHA-256 pin",
         )
-    for key in ("showroom_css", "showroom_js"):
+    for key in (
+        "model",
+        "exterior",
+        "interior",
+        "window_view",
+        "wellness",
+        "showroom_css",
+        "showroom_js",
+    ):
         pins[key] = one_match(
             rf"'{key}'\s*=>\s*array\(\s*'path'\s*=>[^,\r\n]+,\s*"
             rf"'sha256'\s*=>\s*'([0-9a-f]{{64}})'",
