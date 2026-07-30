@@ -1,0 +1,242 @@
+{
+  "schema": "nadlan-utopia-release-artifact/v3",
+  "generated_at": "2026-07-30T13:04:03.1101139Z",
+  "release": "1.72.136",
+  "state": {
+    "candidate_frozen": true,
+    "deployed": false,
+    "live_acceptance_status": "pending deployment",
+    "frozen_1_72_135_artifact_touched": false
+  },
+  "provenance": {
+    "reviewed_parent_commit": "44a4c62a1c116f4474dad20d2a05f76c7cd1d207",
+    "source_and_builder_commit": "0d4fee7682c592c1b6450e748807001990ec6271",
+    "artifact_freeze_commit": "ee7c0d7f7b8123560878fa6dfcb5acc03cc5f1ca",
+    "twelve_pin_validation_commit": "2b70c23470ac1ef6c02e8145e7123b6a4ecc4fed",
+    "plugin_tree": "4803c58033492a8fff731946b86d8b0393f53d68",
+    "plugin_tree_unchanged_after_freeze": true
+  },
+  "superseded_candidate": {
+    "release": "1.72.135",
+    "path": "plugin-dist/nadlan-config-1.72.135.zip",
+    "sha256": "edf5644d5151d3e3302eb68598a48d68e2a66d4cc5f99f961bf150336d2d52b6",
+    "touched_or_rebuilt": false,
+    "deploy_eligible": false,
+    "reason": "Its Windows checkout-derived text entries use CRLF bytes while the fail-closed UTOPIA article, CSS, and JavaScript pins bind the reviewed LF Git blobs."
+  },
+  "live_base": {
+    "version": "1.72.134",
+    "commit": "064567a50466c3c1245f1abcc4e699144949492d",
+    "plugin_tree": "d2176b8ae45a9de61118ad8b50343280218ee40f",
+    "branch": "origin/claude/sde-dov-experience-v1"
+  },
+  "live_server_backup_baseline": {
+    "server_directory_archive": {
+      "version": "1.72.134",
+      "bytes": 3081950,
+      "entries": 259,
+      "sha256": "30f562f2bd3b42fdc4150d8f10c26e13a75ddffc3e01a46068fde659dd228245",
+      "exact_server_directory_copy": true
+    },
+    "canonical_files_array": {
+      "algorithm": "SHA-256 of UTF-8 JSON array sorted by path, object keys sorted, separators comma/colon, fields path/bytes/sha256",
+      "file_count": 259,
+      "canonical_json_bytes": 34128,
+      "sha256": "1d3e9115b7bc0a869e959a9806ee0eb705135e98170fa0eaa228abf8760b0f0d",
+      "reproducible_content_identity": true
+    },
+    "whole_manifest_file": {
+      "sha256": "3c5df5b9c2a8e2199eba79d0a1a77dab92ded468d57ea7c15201a621c432cfd3",
+      "reproducible_content_identity": false,
+      "reason": "The JSON file includes volatile generated_at and archive metadata; it is retained as a transport-file fingerprint only."
+    },
+    "backup_suffixed_server_extras": 42,
+    "sample_public_download_probe": "HTTP 200",
+    "wider_defect_changed": false,
+    "deployment_note": "A normal whole-plugin replacement removes the 42 server-only backup-suffixed files and therefore requires an explicit owner decision."
+  },
+  "artifact": {
+    "path": "plugin-dist/nadlan-config-1.72.136.zip",
+    "bytes": 3832095,
+    "sha256": "511e8c01960d5d24bb6d0f3b6430f4995ff9c38ff69fb4fb543889fe0d7a8649",
+    "git_blob": "bc3b5fa56706512e1fc65b9847ce1a75737aaddb",
+    "entries": 231,
+    "root": "nadlan-config/",
+    "backslash_entries": 0,
+    "bad_root_entries": 0,
+    "duplicate_entries": 0,
+    "crc": "ok",
+    "missing_index_entries": 0,
+    "extra_entries": 0,
+    "git_blob_byte_mismatches": 0,
+    "metadata_mismatches": 0,
+    "entry_timestamp": "1980-01-01T00:00:00",
+    "archive_comment": false,
+    "immutable": true
+  },
+  "build_contract": {
+    "byte_source": "Git index blobs via git ls-files --stage and git cat-file --batch",
+    "working_tree_used_as_payload_source": false,
+    "staged_plugin_bytes_supported": true,
+    "unstaged_plugin_drift_rejected": true,
+    "untracked_plugin_files_rejected": true,
+    "unmerged_or_non_regular_plugin_entries_rejected": true,
+    "existing_release_artifact_overwrite_rejected": true,
+    "entry_paths_sorted": true,
+    "entry_paths_forward_slash_only": true,
+    "entry_modes_normalized_from_git_mode": true,
+    "entry_timestamps_fixed": true,
+    "compression": "DEFLATE level 9",
+    "crlf_checkout_regression": "pass",
+    "repeat_fixture_build_byte_determinism": "pass"
+  },
+  "version_contract": {
+    "plugin_header": "1.72.136",
+    "version_constant": "1.72.136",
+    "main_healthcheck": "1.72.136",
+    "health_module": "1.72.136",
+    "manifest": "1.72.136",
+    "manifest_download_url": "https://raw.githubusercontent.com/The-new-ben/nad-lan-co-il/main/plugin-dist/nadlan-config-1.72.136.zip",
+    "utopia_health_release": "1.72.136",
+    "utopia_release_literal_occurrences": 3,
+    "utopia_option_marker": "v172136",
+    "utopia_option_marker_occurrences": 44,
+    "utopia_seed_function": "nadlan_utopia_seed_v172136",
+    "stale_1_72_135_or_v172135_identifiers": 0
+  },
+  "utopia_integrity_pins": {
+    "count": 12,
+    "all_match_git_blobs": true,
+    "all_match_zip_entries": true,
+    "pins": {
+      "article_he": "fdc161bc1c760ec28baebaebf529daf1f84d36d02641419e52e1ed88e1fc1da9",
+      "article_en": "a7cb8b69c50a9cc5bb1f2370bd22871589ddb68bf45c2651421a070eda903fe5",
+      "article_fr": "d344bafb736b0f56aaa4a5a0f1db59007556632c170983edb2a7f3c489fcbb51",
+      "article_ru": "a004900d6e9dff39fa626ea04be3e65db0f95e962c567badc3309a75db5412ea",
+      "article_ar": "9793250681d45fe6c34d1b480755488d3fb606b06fdfa24ca22657ece854248b",
+      "model": "ba267a241f7b5d943f5eebd6f32aae9241f14da420207ddadc4d5d74ac392f24",
+      "exterior": "55122e051450af3e2715af36df05837e06f96f73db9f8291bf4a3f3e8dc263c6",
+      "interior": "d89457f00cd52385107072902e7df06fab3750f16b9b18a923396398b59d7c6b",
+      "window_view": "995a982ea8aed6ded92f3ac30c86c86b20737dd5f20b371a9cf8a4aea2c5f9f4",
+      "wellness": "c1d1a1a53b85fc61ad1c39598f4a0a404b92cb4144d3a51c2093cbaabe046a61",
+      "showroom_css": "c63c5287b9e9b495ec217ae549f6b20164367b292b22f7c1a19cb3c743419ef0",
+      "showroom_js": "bce8e9afecd34eba36b327c725a7ae39ce3d6cf7eb86b27749b8a745a9ea3227"
+    }
+  },
+  "utopia_payload_preservation": {
+    "comparison_commit": "44a4c62a1c116f4474dad20d2a05f76c7cd1d207",
+    "scope": [
+      "plugins/nadlan-config/assets/showroom-engine/models/utopia-rich-v1.glb",
+      "plugins/nadlan-config/assets/showroom-engine/projects/utopia-sde-dov/"
+    ],
+    "changed_files": 0,
+    "articles_unchanged": true,
+    "model_unchanged": true,
+    "concept_media_unchanged": true,
+    "project_css_and_javascript_unchanged": true
+  },
+  "content_depth": {
+    "threshold_words_per_language": 5000,
+    "source": "reviewed UTOPIA content-depth report; exact article hashes are unchanged",
+    "languages": {
+      "he": 6539,
+      "en": 7442,
+      "fr": 9304,
+      "ru": 7762,
+      "ar": 6777
+    },
+    "all_pass": true
+  },
+  "model_validation": {
+    "path": "nadlan-config/assets/showroom-engine/models/utopia-rich-v1.glb",
+    "bytes": 309148,
+    "glb_version": 2,
+    "meshes": 14,
+    "primitives": 14,
+    "primitive_mode": "TRIANGLES",
+    "triangles": 21416,
+    "minimum_required_triangles": 20000,
+    "pass": true
+  },
+  "url_contract": {
+    "ascii_slugs_only": true,
+    "slugs": {
+      "he": "utopia-sde-dov",
+      "en": "utopia-sde-dov-en",
+      "fr": "utopia-sde-dov-fr",
+      "ru": "utopia-sde-dov-ru",
+      "ar": "utopia-sde-dov-ar"
+    },
+    "canonical_urls": {
+      "he": "https://nad-lan.co.il/projects/utopia-sde-dov/",
+      "en": "https://nad-lan.co.il/projects/utopia-sde-dov-en/",
+      "fr": "https://nad-lan.co.il/projects/utopia-sde-dov-fr/",
+      "ru": "https://nad-lan.co.il/projects/utopia-sde-dov-ru/",
+      "ar": "https://nad-lan.co.il/projects/utopia-sde-dov-ar/"
+    },
+    "reciprocal_hreflang_languages": [
+      "he",
+      "en",
+      "fr",
+      "ru",
+      "ar"
+    ],
+    "x_default": "he",
+    "shared_hreflang_engine_blob": "838ba6c2b76208c1a39cf8969bf93e284cd1d752",
+    "shared_hreflang_engine_matches_live_base": true
+  },
+  "source_validation": {
+    "plugin_php_files": 163,
+    "source_php_lint_failures": 0,
+    "zip_php_files": 163,
+    "zip_php_lint_failures": 0,
+    "source_utopia_javascript_syntax": "pass",
+    "zip_utopia_javascript_syntax": "pass",
+    "canonical_release_verifier": "pass",
+    "release_tooling_unit_tests": "12/12 pass",
+    "notice_contract_languages": "5/5 pass",
+    "raw_runtime_integrity_pins": "12/12 pass",
+    "zip_entries_equal_git_blobs": "231/231 pass",
+    "model_triangle_validation": "pass"
+  },
+  "notice_contract": {
+    "shared_legal_notice_file_modified": false,
+    "localized_contract_languages": 5,
+    "localized_contract_failures": 0,
+    "embedded_duplicate_notice_removed": true,
+    "notice_precedes_showroom": true,
+    "hashes": {
+      "he": "a45de3c4186c3727af5501a4d9cd77fade1a171d4217ef849ff5730afaebb607",
+      "en": "2e779c5e70e02278a9b2a6ebd226d01d0ea32b17e86a1080c0ccdf6d4218e9b5",
+      "fr": "c22aa7487eb218920d558a738bdadd5144d777b413ff6c3bfcd002cabf11265e",
+      "ru": "57b312b27a7400f0466c1583a9ed86eaec63f1f638068dce3710530e9b13bada",
+      "ar": "be22640fc94d7c00f05d7ed60a6bf6bec6de44bf07235b89cad5f99fd326f6dd"
+    }
+  },
+  "changes_from_live_base": {
+    "utopia_specific_additions": 14,
+    "shared_files_modified": [
+      "nadlan-config.php"
+    ],
+    "shared_showroom_engine_files_modified": [],
+    "other_project_files_modified": []
+  },
+  "protected_source": {
+    "inc/home-v2.php": "b2ff23210a5b57b8fc8d7ef3a0831aec55c1456e",
+    "inc/i18n.php": "e1066c6a53a77791f4b6a682187268bb2b9ea557",
+    "inc/premium-catalog.php": "7a9e4b4441033671ffc06cd5344fc32d2a2cedcf",
+    "inc/sdedov-teaser.php": "fbd93d69a0d92459e8f6253154e297b3e1e08dfe",
+    "inc/showroom-engine.php": "838ba6c2b76208c1a39cf8969bf93e284cd1d752",
+    "assets/showroom-engine/engine.js": "ab5082d90eb31d28a44bff7d838f873b2629fa2c",
+    "inc/directory.php": "133cebfa7840d0b4bd17fa3a77b76a8e55ffdcd0",
+    "inc/facility-chips.php": "ea51e67eb7a65dfc3418ebeb774745c099da19d2",
+    "inc/legal-notice.php": "62ab0a9aa940baf59ffff2c9e38dff4339a48d74"
+  },
+  "protected_files_match_live_base": true,
+  "live_browser_gate": {
+    "status": "pending deployment",
+    "after_regression_required": true,
+    "comparison_project_regression_required": true
+  },
+  "artifact_integrity_pass": true
+}
