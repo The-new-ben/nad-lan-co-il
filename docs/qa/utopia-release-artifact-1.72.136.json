@@ -1,6 +1,7 @@
 {
   "schema": "nadlan-utopia-release-artifact/v3",
   "generated_at": "2026-07-30T13:04:03.1101139Z",
+  "amended_at": "2026-07-30T13:31:49.0026030Z",
   "release": "1.72.136",
   "state": {
     "candidate_frozen": true,
