@@ -1,6 +1,6 @@
 # UTOPIA 1.72.133 deployment-path audit
 
-Date: 2026-07-30  
+Date: 2026-07-30
 Scope: deployment-path and rollback audit. The local release verifier and update metadata were corrected after the initial audit; the frozen candidate and plugin runtime were not changed. No production write, upload, plugin install, database change, GitHub push, or deployment was performed.
 
 ## Decision
