@@ -1,0 +1,59 @@
+[discover] duo-tel-aviv: he,en,fr,ru,ar
+[discover] rainbow-tel-aviv: he,en,fr,ru,ar
+[discover] dimri-yama-sde-dov: he,en,fr,ru,ar
+[discover] ashira-sde-dov: he,en,fr,ru,ar
+[matrix] duo-tel-aviv/he/desktop: 200 baseline_defect
+[matrix] duo-tel-aviv/he/mobile: 200 baseline_defect
+[matrix] duo-tel-aviv/en/desktop: 200 baseline_defect
+[matrix] duo-tel-aviv/en/mobile: 200 baseline_defect
+[matrix] duo-tel-aviv/fr/desktop: 200 baseline_defect
+[matrix] duo-tel-aviv/fr/mobile: 200 baseline_defect
+[matrix] duo-tel-aviv/ru/desktop: 200 baseline_defect
+[matrix] duo-tel-aviv/ru/mobile: 200 baseline_defect
+[matrix] duo-tel-aviv/ar/desktop: 200 baseline_defect
+[matrix] duo-tel-aviv/ar/mobile: 200 baseline_defect
+[matrix] rainbow-tel-aviv/he/desktop: 200 baseline_defect
+[matrix] rainbow-tel-aviv/he/mobile: 200 baseline_defect
+[matrix] rainbow-tel-aviv/en/desktop: 200 baseline_defect
+[matrix] rainbow-tel-aviv/en/mobile: 200 baseline_defect
+[matrix] rainbow-tel-aviv/fr/desktop: 200 baseline_defect
+[matrix] rainbow-tel-aviv/fr/mobile: 200 baseline_defect
+[matrix] rainbow-tel-aviv/ru/desktop: 200 baseline_defect
+[matrix] rainbow-tel-aviv/ru/mobile: 200 baseline_defect
+[matrix] rainbow-tel-aviv/ar/desktop: 200 baseline_defect
+[matrix] rainbow-tel-aviv/ar/mobile: 200 baseline_defect
+[matrix] dimri-yama-sde-dov/he/desktop: 200 baseline_defect
+[matrix] dimri-yama-sde-dov/he/mobile: 200 baseline_defect
+[matrix] dimri-yama-sde-dov/en/desktop: 200 baseline_defect
+[matrix] dimri-yama-sde-dov/en/mobile: 200 baseline_defect
+[matrix] dimri-yama-sde-dov/fr/desktop: 200 baseline_defect
+[matrix] dimri-yama-sde-dov/fr/mobile: 200 baseline_defect
+[matrix] dimri-yama-sde-dov/ru/desktop: 200 baseline_defect
+[matrix] dimri-yama-sde-dov/ru/mobile: 200 baseline_defect
+[matrix] dimri-yama-sde-dov/ar/desktop: 200 baseline_defect
+[matrix] dimri-yama-sde-dov/ar/mobile: 200 baseline_defect
+[matrix] ashira-sde-dov/he/desktop: 200 baseline_defect
+[matrix] ashira-sde-dov/he/mobile: 200 baseline_defect
+[matrix] ashira-sde-dov/en/desktop: 200 baseline_defect
+[matrix] ashira-sde-dov/en/mobile: 200 baseline_defect
+[matrix] ashira-sde-dov/fr/desktop: 200 baseline_defect
+[matrix] ashira-sde-dov/fr/mobile: 200 baseline_defect
+[matrix] ashira-sde-dov/ru/desktop: 200 baseline_defect
+[matrix] ashira-sde-dov/ru/mobile: 200 baseline_defect
+[matrix] ashira-sde-dov/ar/desktop: 200 baseline_defect
+[matrix] ashira-sde-dov/ar/mobile: 200 baseline_defect
+[deep] duo-tel-aviv/ru: trusted_unit_selection_cinematic=passed, apartment_studio=passed, unified_map=passed, model_to_map_bearing=passed, window_view=passed
+[deep] rainbow-tel-aviv/he: trusted_unit_selection_cinematic=passed, apartment_studio=passed, unified_map=passed, model_to_map_bearing=passed, window_view=passed
+[deep] dimri-yama-sde-dov/he: trusted_unit_selection_cinematic=passed, apartment_studio=passed, unified_map=passed, model_to_map_bearing=passed, window_view=passed
+[deep] ashira-sde-dov/fr: trusted_unit_selection_cinematic=passed, apartment_studio=passed, unified_map=passed, model_to_map_bearing=passed, window_view=passed
+{
+  "phase": "BEFORE",
+  "stamp": "2026-07-30",
+  "final_dir": "C:\\Users\\pro\\nad-lan-utopia\\docs\\qa\\screenshots\\mature-showroom-before-2026-07-30",
+  "report": "C:\\Users\\pro\\nad-lan-utopia\\docs\\qa\\screenshots\\mature-showroom-before-2026-07-30\\report.json",
+  "summary": "C:\\Users\\pro\\nad-lan-utopia\\docs\\qa\\screenshots\\mature-showroom-before-2026-07-30\\summary.md",
+  "hash_manifest": "C:\\Users\\pro\\nad-lan-utopia\\docs\\qa\\screenshots\\mature-showroom-before-2026-07-30\\artifact-manifest.sha256",
+  "regression_ready": true,
+  "surface_health_pass": false,
+  "matrix": "40/40"
+}
