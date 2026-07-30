@@ -97,6 +97,58 @@ if ( ! function_exists( 'nadlan_legal_notice_render' ) ) {
 }
 add_action( 'wp_footer', 'nadlan_legal_notice_render', 5 );
 
+/* Per-project non-affiliation notice.
+ *
+ * The footer notice covers the site; this one sits in the page body next to the
+ * developer name, because that is where the law asks for it. In the Tommy Hilfiger
+ * appeal the Supreme Court put a trader who names another company's mark under a
+ * duty to state the absence of sponsorship "actively, continuously and at
+ * reasonable frequency", and section 2(a)(10) of the Consumer Protection Law makes
+ * sponsorship, encouragement or authorisation a material matter in its own right.
+ * A line in the footer satisfies neither. Naming the developer where one is
+ * recorded is the point: a generic notice does not dispel an impression about a
+ * specific company.
+ */
+if ( ! function_exists( 'nadlan_project_notice_strings' ) ) {
+	function nadlan_project_notice_strings( $lang ) {
+		$all = array(
+			'he' => array( "אתר עצמאי", "עמוד זה אינו האתר הרשמי של %s ואינו מופעל מטעמה. נדל״ן היא פלטפורמת מידע עצמאית, ללא קשר מסחרי עם היזם. הפרטים נאספו ממקורות גלויים ויש לאמת אותם מול היזם.", "עמוד זה אינו אתר רשמי של היזם ואינו מופעל מטעמו. נדל״ן היא פלטפורמת מידע עצמאית. הפרטים נאספו ממקורות גלויים ויש לאמת אותם מול היזם." ),
+			'en' => array( "Independent site", "This page is not the official website of %s and is not operated on its behalf. NadLan is an independent information platform with no commercial connection to the developer. Details were gathered from public sources and should be verified with the developer.", "This page is not the developer’s official website and is not operated on its behalf. NadLan is an independent information platform. Details were gathered from public sources and should be verified with the developer." ),
+			'fr' => array( "Site indépendant", "Cette page n’est pas le site officiel de %s et n’est pas exploitée en son nom. NadLan est une plateforme d’information indépendante, sans lien commercial avec le promoteur. Les informations proviennent de sources publiques et doivent être vérifiées auprès du promoteur.", "Cette page n’est pas le site officiel du promoteur et n’est pas exploitée en son nom. NadLan est une plateforme d’information indépendante. Les informations proviennent de sources publiques et doivent être vérifiées auprès du promoteur." ),
+			'ru' => array( "Независимый сайт", "Эта страница не является официальным сайтом %s и не управляется от её имени. NadLan - независимая информационная платформа, не связанная с застройщиком коммерческими отношениями. Данные собраны из открытых источников и подлежат проверке у застройщика.", "Эта страница не является официальным сайтом застройщика и не управляется от его имени. NadLan - независимая информационная платформа. Данные собраны из открытых источников и подлежат проверке у застройщика." ),
+			'ar' => array( "موقع مستقل", "هذه الصفحة ليست الموقع الرسمي لـ%s ولا تُدار بالنيابة عنها. NadLan منصّة معلومات مستقلة، ولا تربطها علاقة تجارية بالمطوّر. جُمعت التفاصيل من مصادر علنية ويجب التحقق منها لدى المطوّر.", "هذه الصفحة ليست الموقع الرسمي للمطوّر ولا تُدار بالنيابة عنه. NadLan منصّة معلومات مستقلة. جُمعت التفاصيل من مصادر علنية ويجب التحقق منها لدى المطوّر." ),
+		);
+		return isset( $all[ $lang ] ) ? $all[ $lang ] : $all['he'];
+	}
+}
+
+if ( ! function_exists( 'nadlan_project_notice_render' ) ) {
+	function nadlan_project_notice_render( $content ) {
+		if ( ! is_singular( 'nadlan_project' ) || ! in_the_loop() || ! is_main_query() ) {
+			return $content;
+		}
+		static $done = false;
+		if ( $done ) {
+			return $content;
+		}
+		$done = true;
+		$lang = function_exists( 'nadlan_current_lang' ) ? nadlan_current_lang() : 'he';
+		$str  = nadlan_project_notice_strings( $lang );
+		$dev  = trim( (string) get_post_meta( get_the_ID(), 'developer_name', true ) );
+		$text = ( '' !== $dev ) ? sprintf( $str[1], $dev ) : $str[2];
+		$rtl  = in_array( $lang, array( 'he', 'ar' ), true );
+		$html = '<aside class="nl-projnotice" dir="' . ( $rtl ? 'rtl' : 'ltr' ) . '" role="note">'
+			. '<b>' . esc_html( $str[0] ) . '</b><span>' . esc_html( $text ) . '</span></aside>';
+		return $html . $content;
+	}
+}
+/* Priority 20, deliberately: the showroom prepends at 10, the project profile at 5
+ * and the price band at 9, each in front of whatever is already there. Running
+ * first would bury this notice under all of them - which is exactly where it
+ * landed on the first attempt, some 2,900px BELOW the enquiry form. Running last
+ * puts it at the very top, ahead of the decision point. */
+add_filter( 'the_content', 'nadlan_project_notice_render', 20 );
+
 if ( ! function_exists( 'nadlan_legal_notice_css' ) ) {
 	function nadlan_legal_notice_css() {
 		if ( is_admin() ) {
@@ -112,6 +164,9 @@ if ( ! function_exists( 'nadlan_legal_notice_css' ) ) {
 			. '.nl-legal strong{color:#C9C2B4;font-weight:700}'
 			. '.nl-legal a{color:#D8C79A;text-decoration:underline}'
 			. '.nl-legal a:hover{color:#F2C14E}'
+			. '.nl-projnotice{display:flex;gap:10px;align-items:baseline;flex-wrap:wrap;background:#FBF7EC;border:1px solid #E2DCD0;border-inline-start:4px solid #B85410;border-radius:12px;padding:12px 16px;margin:0 0 20px}'
+			. '.nl-projnotice b{color:#8A3F0C;font:800 12.5px Heebo,system-ui,sans-serif;white-space:nowrap}'
+			. '.nl-projnotice span{color:#4A4335;font:400 13px/1.65 Heebo,system-ui,sans-serif}'
 		);
 	}
 }
