@@ -1,0 +1,32 @@
+{
+  "schema": "nadlan-utopia-release-publication/v1",
+  "recorded_at": "2026-07-30T12:01:16.4330230Z",
+  "release": "1.72.135",
+  "source_commit": "5d893bc",
+  "remote": "https://github.com/The-new-ben/nad-lan-co-il",
+  "remote_branch": "codex/utopia-release-1.72.135",
+  "pull_request": {
+    "number": 463,
+    "url": "https://github.com/The-new-ben/nad-lan-co-il/pull/463",
+    "state": "open",
+    "draft": true,
+    "base": "claude/sde-dov-experience-v1",
+    "head": "codex/utopia-release-1.72.135",
+    "checks_reported_at_publication": 0
+  },
+  "artifact": {
+    "path": "plugin-dist/nadlan-config-1.72.135.zip",
+    "sha256": "edf5644d5151d3e3302eb68598a48d68e2a66d4cc5f99f961bf150336d2d52b6",
+    "bytes": 3862340,
+    "entries": 231
+  },
+  "safety": {
+    "merged_to_main": false,
+    "production_mutated": false,
+    "updater_exposed": false,
+    "server_plugin_backup_verified": false,
+    "database_backup_verified": false,
+    "authenticated_wp_admin_gate_verified": false
+  },
+  "decision": "Draft review only. Do not merge or deploy until the host recovery and backup gates are proven."
+}
