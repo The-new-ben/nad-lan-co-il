@@ -18,7 +18,8 @@
   },
   "superseded_candidate": {
     "release": "1.72.135",
-    "path": "plugin-dist/nadlan-config-1.72.135.zip",
+    "location": "Preserved in the separate 1.72.135 sibling worktree and private backup; intentionally absent from this 1.72.136 repository tree.",
+    "present_in_this_tree": false,
     "sha256": "edf5644d5151d3e3302eb68598a48d68e2a66d4cc5f99f961bf150336d2d52b6",
     "touched_or_rebuilt": false,
     "deploy_eligible": false,
@@ -34,7 +35,8 @@
     "server_directory_archive": {
       "version": "1.72.134",
       "bytes": 3081950,
-      "entries": 259,
+      "file_entries": 259,
+      "zip_records_including_directories": 283,
       "sha256": "30f562f2bd3b42fdc4150d8f10c26e13a75ddffc3e01a46068fde659dd228245",
       "exact_server_directory_copy": true
     },
@@ -159,7 +161,15 @@
     "pass": true
   },
   "url_contract": {
-    "ascii_slugs_only": true,
+    "project_route_slugs_ascii_only": true,
+    "all_public_links_ascii_only": false,
+    "known_non_ascii_internal_link": {
+      "encoded_url": "https://nad-lan.co.il/cities/%d7%aa%d7%9c-%d7%90%d7%91%d7%99%d7%91-%d7%99%d7%a4%d7%95/",
+      "decoded_path": "/cities/תל-אביב-יפו/",
+      "occurrences": 6,
+      "scope": "Five localized articles and the UTOPIA internal-link contract.",
+      "deployment_gate": "Replace with the existing ASCII Tel Aviv new-projects guide, or authorize a separate global taxonomy migration with an exact 301. Do not deploy while this decision is unresolved."
+    },
     "slugs": {
       "he": "utopia-sde-dov",
       "en": "utopia-sde-dov-en",
