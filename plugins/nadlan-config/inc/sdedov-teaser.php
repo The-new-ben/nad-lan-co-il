@@ -71,7 +71,8 @@ function nadlan_sdedov_tour_css_raw() {
 		. '.nlhv2-tourvideo.is-solo{display:block}'
 		. '.nlhv2-tvvid{display:flex;flex-direction:column;justify-content:center;gap:8px}'
 		. '.nlhv2-tourvideo .nlhv2-video-frame{max-width:none;aspect-ratio:16/9;border-radius:18px;overflow:hidden;border:1px solid #D6C189;background:#14130F}'
-		. '.nlhv2-tourvideo .nlhv2-video-frame video,.nlhv2-tourvideo .nlhv2-video-frame iframe{width:100%;height:100%;object-fit:cover;display:block;border:0}';
+		. '.nlhv2-tourvideo .nlhv2-video-frame video,.nlhv2-tourvideo .nlhv2-video-frame iframe{width:100%;height:100%;object-fit:cover;display:block;border:0}'
+		. '@media(max-width:860px){.nlhv2-tourvideo{grid-template-columns:1fr}.nlsdt--pair .nlsdt-in{padding:24px 20px}}';
 }
 
 /* One overlay engine per page: click a .nlsdt-open control and the tour opens
