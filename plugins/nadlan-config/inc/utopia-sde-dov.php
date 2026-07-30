@@ -30,6 +30,23 @@ if ( ! function_exists( 'nadlan_utopia_is_family' ) ) {
 	}
 }
 
+if ( ! function_exists( 'nadlan_utopia_set_request_language' ) ) {
+	/**
+	 * Set the shared language context from this project's verified slug family.
+	 *
+	 * The site-wide language engine otherwise recognizes only the five language
+	 * homepages. UTOPIA needs its language available before wp_head and before
+	 * the shared project non-affiliation notice is rendered.
+	 */
+	function nadlan_utopia_set_request_language() {
+		$lang = nadlan_utopia_slug_lang();
+		if ( $lang !== '' && function_exists( 'nadlan_set_lang' ) ) {
+			nadlan_set_lang( $lang );
+		}
+	}
+}
+add_action( 'wp', 'nadlan_utopia_set_request_language', 1 );
+
 if ( ! function_exists( 'nadlan_utopia_asset_url' ) ) {
 	function nadlan_utopia_asset_url( $file ) {
 		$base = function_exists( 'nadlan_showroom_engine_base_url' )
@@ -1919,8 +1936,37 @@ if ( defined( 'WP_CLI' ) && WP_CLI && class_exists( 'WP_CLI' ) ) {
 
 require_once __DIR__ . '/utopia-showroom.php';
 
+if ( ! function_exists( 'nadlan_utopia_project_notice_html' ) ) {
+	/**
+	 * Re-render the shared notice after the final UTOPIA content composition.
+	 *
+	 * The shared notice runs at priority 20, while UTOPIA deliberately rebuilds
+	 * its page from verified raw content at PHP_INT_MAX. Using the shared string
+	 * table here preserves that legal disclosure without changing shared code or
+	 * allowing duplicate notices into the public page.
+	 */
+	function nadlan_utopia_project_notice_html( $post_id, $lang ) {
+		if ( ! function_exists( 'nadlan_project_notice_strings' ) ) { return ''; }
+		$strings   = nadlan_project_notice_strings( $lang );
+		$developer = trim( (string) get_post_meta( $post_id, 'developer_name', true ) );
+		if ( $developer === '' ) {
+			$copy      = nadlan_utopia_copy( $lang );
+			$developer = isset( $copy['developer'] ) ? trim( (string) $copy['developer'] ) : '';
+		}
+		$text = $developer !== '' ? sprintf( $strings[1], $developer ) : $strings[2];
+		$rtl  = in_array( $lang, array( 'he', 'ar' ), true );
+		return '<aside class="nl-projnotice" dir="' . ( $rtl ? 'rtl' : 'ltr' ) . '" role="note">'
+			. '<b>' . esc_html( $strings[0] ) . '</b><span>' . esc_html( $text ) . '</span></aside>';
+	}
+}
+
 if ( ! function_exists( 'nadlan_utopia_compose_public_content' ) ) {
 	function nadlan_utopia_compose_public_content( $raw, $post_id, $engine ) {
+		$raw = preg_replace(
+			'#<aside\b[^>]*class=["\'][^"\']*\bnl-projnotice\b[^"\']*["\'][^>]*>.*?</aside>#is',
+			'',
+			(string) $raw
+		);
 		$raw = nadlan_utopia_rewrite_asset_urls( $raw );
 		if ( preg_match( '#<header\b[^>]*class="[^"]*nadlan-project-lead[^"]*"[^>]*>.*?</header>#is', $raw, $lead_match, PREG_OFFSET_CAPTURE ) ) {
 			$lead        = $lead_match[0][0];
@@ -1945,8 +1991,10 @@ if ( ! function_exists( 'nadlan_utopia_final_content_filter' ) ) {
 		}
 		$raw = (string) get_post_field( 'post_content', $post_id );
 		if ( $raw === '' ) { return $content; }
+		$lang   = nadlan_utopia_slug_lang( $post_id );
+		$notice = nadlan_utopia_project_notice_html( $post_id, $lang );
 		$engine = nadlan_utopia_showroom_render( $post_id );
-		return nadlan_utopia_compose_public_content( $raw, $post_id, $engine );
+		return $notice . nadlan_utopia_compose_public_content( $raw, $post_id, $engine );
 	}
 }
 add_filter( 'the_content', 'nadlan_utopia_final_content_filter', PHP_INT_MAX );
