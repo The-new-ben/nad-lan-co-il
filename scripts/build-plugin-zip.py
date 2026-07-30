@@ -1,58 +1,141 @@
 #!/usr/bin/env python3
-"""Canonical, cross-platform builder for the nadlan-config plugin ZIP.
+"""Build a deterministic nadlan-config ZIP from exact Git index blobs.
 
-WHY THIS EXISTS: a Windows-built ZIP once stored entry paths with backslashes
-(`nadlan-config\\inc\\file.php`). On Linux/uPress those do NOT unpack as folders
-— they become literal junk files inside the plugin directory, creating a
-"phantom" plugin and jamming the uPress plugin manager. This builder ALWAYS
-writes forward-slash, `nadlan-config/`-rooted paths, and refuses to emit a ZIP
-that contains a single backslash entry.
+Windows checkouts may contain CRLF bytes while the reviewed Git blobs contain
+LF. UTOPIA validates raw article, CSS, and JavaScript hashes at runtime, so the
+working tree must never be the release byte source.
 
-Usage:  python3 scripts/build-plugin-zip.py            # uses Version: header
-        python3 scripts/build-plugin-zip.py 1.66.3     # explicit version
+Usage:  python scripts/build-plugin-zip.py            # uses indexed Version
+        python scripts/build-plugin-zip.py 1.72.136    # explicit version
 """
-import os, re, sys, zipfile
+from __future__ import annotations
 
-ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-SRC = os.path.join(ROOT, "plugins", "nadlan-config")
-DIST = os.path.join(ROOT, "plugin-dist")
+import hashlib
+import os
+import re
+import sys
+import tempfile
+import zipfile
+from pathlib import Path
+
+from plugin_release_git import (
+    ZIP_TIMESTAMP,
+    IndexedPluginBlob,
+    ReleaseInputError,
+    indexed_plugin_blobs,
+    verify_archive_bytes,
+)
 
 
-def detect_version():
-    head = open(os.path.join(SRC, "nadlan-config.php"), encoding="utf-8").read(4000)
-    m = re.search(r"^\s*\*\s*Version:\s*([0-9][0-9.]*)", head, re.M)
-    if not m:
-        sys.exit("could not detect Version: header")
-    return m.group(1)
+ROOT = Path(__file__).resolve().parents[1]
+DIST_RELATIVE = Path("plugin-dist")
+MAIN_ARCHIVE_PATH = "nadlan-config/nadlan-config.php"
 
 
-def build(version):
-    out = os.path.join(DIST, f"nadlan-config-{version}.zip")
-    if os.path.exists(out):
-        os.remove(out)
-    files = []
-    for dp, _, fns in os.walk(SRC):
-        for fn in fns:
-            files.append(os.path.join(dp, fn))
-    files.sort()
-    with zipfile.ZipFile(out, "w", zipfile.ZIP_DEFLATED) as z:
-        for f in files:
-            # ALWAYS forward slashes, ALWAYS rooted at nadlan-config/
-            rel = os.path.relpath(f, SRC).replace(os.sep, "/").replace("\\", "/")
-            z.write(f, "nadlan-config/" + rel)
-    # Guard: reject poison before it can ever ship
-    z = zipfile.ZipFile(out)
-    names = z.namelist()
-    bad = [n for n in names if "\\" in n]
-    rooted = all(n.startswith("nadlan-config/") for n in names)
-    crc = z.testzip()
-    if bad or not rooted or crc is not None:
-        os.remove(out)
-        sys.exit(f"REJECTED unsafe ZIP: backslash={len(bad)} rooted={rooted} crc={crc}")
-    print(f"OK {os.path.basename(out)} entries={len(names)} backslash=0 rooted=True crc=ok")
-    return out
+class BuildError(RuntimeError):
+    """The release archive could not be built safely."""
+
+
+def _indexed_version(files: list[IndexedPluginBlob]) -> str:
+    by_archive_path = {item.archive_path: item for item in files}
+    try:
+        main = by_archive_path[MAIN_ARCHIVE_PATH].data.decode("utf-8")
+    except KeyError as exc:
+        raise BuildError(f"missing indexed plugin main file: {MAIN_ARCHIVE_PATH}") from exc
+    except UnicodeDecodeError as exc:
+        raise BuildError("indexed plugin main file is not valid UTF-8") from exc
+    match = re.search(r"^\s*\*\s*Version:\s*([0-9][0-9.]*)", main, re.MULTILINE)
+    if not match:
+        raise BuildError("could not detect Version: header in indexed plugin main file")
+    return match.group(1)
+
+
+def detect_version(root: Path = ROOT) -> str:
+    return _indexed_version(indexed_plugin_blobs(root))
+
+
+def _zip_info(item: IndexedPluginBlob) -> zipfile.ZipInfo:
+    info = zipfile.ZipInfo(item.archive_path, date_time=ZIP_TIMESTAMP)
+    info.compress_type = zipfile.ZIP_DEFLATED
+    info.create_system = 3
+    permissions = 0o755 if item.mode == "100755" else 0o644
+    info.external_attr = (0o100000 | permissions) << 16
+    info.internal_attr = 0
+    info.extra = b""
+    info.comment = b""
+    return info
+
+
+def build(version: str | None = None, root: Path = ROOT) -> Path:
+    root = root.resolve()
+    files = indexed_plugin_blobs(root)
+    indexed_version = _indexed_version(files)
+    version = version or indexed_version
+    if version != indexed_version:
+        raise BuildError(
+            f"requested version {version} does not match indexed plugin version {indexed_version}"
+        )
+    if not re.fullmatch(r"[0-9]+(?:\.[0-9]+)+", version):
+        raise BuildError(f"unsafe release version: {version}")
+
+    dist = root / DIST_RELATIVE
+    dist.mkdir(parents=True, exist_ok=True)
+    output = dist / f"nadlan-config-{version}.zip"
+    if output.exists():
+        raise BuildError(
+            f"refusing to overwrite immutable release artifact: {output.relative_to(root)}"
+        )
+
+    temporary_path: Path | None = None
+    try:
+        with tempfile.NamedTemporaryFile(
+            prefix=f".nadlan-config-{version}-",
+            suffix=".zip.tmp",
+            dir=dist,
+            delete=False,
+        ) as temporary:
+            temporary_path = Path(temporary.name)
+        with zipfile.ZipFile(
+            temporary_path,
+            "w",
+            compression=zipfile.ZIP_DEFLATED,
+            compresslevel=9,
+            allowZip64=True,
+        ) as zf:
+            for item in files:
+                zf.writestr(
+                    _zip_info(item),
+                    item.data,
+                    compress_type=zipfile.ZIP_DEFLATED,
+                    compresslevel=9,
+                )
+            zf.comment = b""
+        try:
+            result = verify_archive_bytes(temporary_path, files)
+        except ReleaseInputError as exc:
+            raise BuildError(str(exc)) from exc
+        os.replace(temporary_path, output)
+        temporary_path = None
+    finally:
+        if temporary_path is not None and temporary_path.exists():
+            temporary_path.unlink()
+
+    digest = hashlib.sha256(output.read_bytes()).hexdigest()
+    print(
+        f"OK {output.name} entries={result['entries']} sha256={digest} "
+        "git_blob_mismatches=0 deterministic_metadata=True"
+    )
+    return output
+
+
+def main() -> None:
+    version = sys.argv[1] if len(sys.argv) > 1 else None
+    try:
+        build(version)
+    except (BuildError, ReleaseInputError) as exc:
+        print(f"REJECTED: {exc}", file=sys.stderr)
+        raise SystemExit(1) from exc
 
 
 if __name__ == "__main__":
-    v = sys.argv[1] if len(sys.argv) > 1 else detect_version()
-    build(v)
+    main()

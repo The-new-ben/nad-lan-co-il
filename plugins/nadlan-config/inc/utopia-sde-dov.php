@@ -723,7 +723,7 @@ if ( ! function_exists( 'nadlan_utopia_validate_existing_identity' ) ) {
 
 if ( ! function_exists( 'nadlan_utopia_acquire_release_lock' ) ) {
 	function nadlan_utopia_acquire_release_lock() {
-		$key   = 'nadlan_utopia_release_v172135_lock';
+		$key   = 'nadlan_utopia_release_v172136_lock';
 		$token = function_exists( 'wp_generate_uuid4' ) ? wp_generate_uuid4() : uniqid( 'utopia-', true );
 		$value = array( 'token' => $token, 'acquired_at' => time() );
 		if ( add_option( $key, $value, '', 'no' ) ) {
@@ -754,7 +754,7 @@ if ( ! function_exists( 'nadlan_utopia_acquire_release_lock' ) ) {
 
 if ( ! function_exists( 'nadlan_utopia_release_lock' ) ) {
 	function nadlan_utopia_release_lock( $token ) {
-		$key      = 'nadlan_utopia_release_v172135_lock';
+		$key      = 'nadlan_utopia_release_v172136_lock';
 		$existing = get_option( $key, array() );
 		if ( is_array( $existing ) && isset( $existing['token'] ) && hash_equals( (string) $existing['token'], (string) $token ) ) {
 			delete_option( $key );
@@ -802,7 +802,7 @@ if ( ! function_exists( 'nadlan_utopia_db_option' ) ) {
 
 if ( ! function_exists( 'nadlan_utopia_release_complete' ) ) {
 	function nadlan_utopia_release_complete() {
-		return (string) nadlan_utopia_db_option( 'nadlan_utopia_release_v172135', '' ) === '1';
+		return (string) nadlan_utopia_db_option( 'nadlan_utopia_release_v172136', '' ) === '1';
 	}
 }
 
@@ -815,7 +815,7 @@ if ( ! function_exists( 'nadlan_utopia_run_checksum' ) ) {
 
 if ( ! function_exists( 'nadlan_utopia_read_run' ) ) {
 	function nadlan_utopia_read_run() {
-		$run = get_option( 'nadlan_utopia_release_v172135_run', false );
+		$run = get_option( 'nadlan_utopia_release_v172136_run', false );
 		if ( $run === false ) { return false; }
 		if ( ! is_array( $run ) || ! isset( $run['schema'], $run['token'], $run['checksum'] ) ||
 			$run['schema'] !== 'nadlan-utopia-release-run/v1' ||
@@ -830,9 +830,9 @@ if ( ! function_exists( 'nadlan_utopia_store_run' ) ) {
 	function nadlan_utopia_store_run( $run, $create = false ) {
 		$run['checksum'] = nadlan_utopia_run_checksum( $run );
 		$stored = $create
-			? add_option( 'nadlan_utopia_release_v172135_run', $run, '', 'no' )
-			: update_option( 'nadlan_utopia_release_v172135_run', $run, false );
-		if ( ! $stored && get_option( 'nadlan_utopia_release_v172135_run', false ) !== $run ) {
+			? add_option( 'nadlan_utopia_release_v172136_run', $run, '', 'no' )
+			: update_option( 'nadlan_utopia_release_v172136_run', $run, false );
+		if ( ! $stored && get_option( 'nadlan_utopia_release_v172136_run', false ) !== $run ) {
 			return new WP_Error( 'utopia_run_write', 'Could not persist the UTOPIA release run journal.' );
 		}
 		$verified = nadlan_utopia_read_run();
@@ -1009,7 +1009,7 @@ if ( ! function_exists( 'nadlan_utopia_backup_checksum' ) ) {
 
 if ( ! function_exists( 'nadlan_utopia_read_backup' ) ) {
 	function nadlan_utopia_read_backup() {
-		$backup = get_option( 'nadlan_utopia_backup_v172135', false );
+		$backup = get_option( 'nadlan_utopia_backup_v172136', false );
 		if ( ! is_array( $backup ) || ! isset( $backup['schema'], $backup['checksum'] ) ||
 			$backup['schema'] !== 'nadlan-utopia-release-backup/v3' ||
 			! hash_equals( (string) $backup['checksum'], nadlan_utopia_backup_checksum( $backup ) ) ) {
@@ -1022,9 +1022,9 @@ if ( ! function_exists( 'nadlan_utopia_read_backup' ) ) {
 if ( ! function_exists( 'nadlan_utopia_store_backup' ) ) {
 	function nadlan_utopia_store_backup( $backup ) {
 		$backup['checksum'] = nadlan_utopia_backup_checksum( $backup );
-		$changed = update_option( 'nadlan_utopia_backup_v172135', $backup, false );
+		$changed = update_option( 'nadlan_utopia_backup_v172136', $backup, false );
 		if ( ! $changed ) {
-			$current = get_option( 'nadlan_utopia_backup_v172135', false );
+			$current = get_option( 'nadlan_utopia_backup_v172136', false );
 			if ( $current !== $backup ) {
 				return new WP_Error( 'utopia_backup_write', 'Could not update the verified UTOPIA release backup.' );
 			}
@@ -1036,7 +1036,7 @@ if ( ! function_exists( 'nadlan_utopia_store_backup' ) ) {
 
 if ( ! function_exists( 'nadlan_utopia_backup_state' ) ) {
 	function nadlan_utopia_backup_state( $posts ) {
-		if ( get_option( 'nadlan_utopia_backup_v172135', false ) !== false ) {
+		if ( get_option( 'nadlan_utopia_backup_v172136', false ) !== false ) {
 			return nadlan_utopia_read_backup();
 		}
 		$backup = array(
@@ -1090,7 +1090,7 @@ if ( ! function_exists( 'nadlan_utopia_backup_state' ) ) {
 			);
 		}
 		$backup['checksum'] = nadlan_utopia_backup_checksum( $backup );
-		if ( ! add_option( 'nadlan_utopia_backup_v172135', $backup, '', 'no' ) ) {
+		if ( ! add_option( 'nadlan_utopia_backup_v172136', $backup, '', 'no' ) ) {
 			return new WP_Error( 'utopia_backup_create', 'Could not create the verified UTOPIA release backup.' );
 		}
 		$verified = nadlan_utopia_read_backup();
@@ -1157,13 +1157,13 @@ if ( ! function_exists( 'nadlan_utopia_restore_backup' ) ) {
 	function nadlan_utopia_restore_backup( $extra_resources = array(), $operator_hold = false, $run_token = '' ) {
 		$backup = nadlan_utopia_read_backup();
 		if ( is_wp_error( $backup ) ) {
-			update_option( 'nadlan_utopia_release_v172135_hold', 'blocked-recovery', false );
+			update_option( 'nadlan_utopia_release_v172136_hold', 'blocked-recovery', false );
 			return $backup;
 		}
 		$errors = array();
 		$run    = nadlan_utopia_read_run();
 		if ( is_wp_error( $run ) ) {
-			update_option( 'nadlan_utopia_release_v172135_hold', 'blocked-recovery', false );
+			update_option( 'nadlan_utopia_release_v172136_hold', 'blocked-recovery', false );
 			return $run;
 		}
 		if ( is_array( $run ) ) {
@@ -1329,17 +1329,17 @@ if ( ! function_exists( 'nadlan_utopia_restore_backup' ) ) {
 		}
 
 		if ( ! empty( $errors ) ) {
-			update_option( 'nadlan_utopia_release_v172135_hold', 'blocked-recovery', false );
+			update_option( 'nadlan_utopia_release_v172136_hold', 'blocked-recovery', false );
 			return new WP_Error( 'utopia_restore_failed', implode( ' ', array_unique( $errors ) ) );
 		}
-		delete_option( 'nadlan_utopia_release_v172135' );
-		delete_option( 'nadlan_utopia_release_v172135_manifest' );
-		delete_option( 'nadlan_utopia_release_v172135_run' );
+		delete_option( 'nadlan_utopia_release_v172136' );
+		delete_option( 'nadlan_utopia_release_v172136_manifest' );
+		delete_option( 'nadlan_utopia_release_v172136_run' );
 		if ( $operator_hold ) {
-			update_option( 'nadlan_utopia_release_v172135_hold', 'operator', false );
+			update_option( 'nadlan_utopia_release_v172136_hold', 'operator', false );
 		} else {
-			delete_option( 'nadlan_utopia_release_v172135_hold' );
-			delete_option( 'nadlan_utopia_backup_v172135' );
+			delete_option( 'nadlan_utopia_release_v172136_hold' );
+			delete_option( 'nadlan_utopia_backup_v172136' );
 		}
 		return true;
 	}
@@ -1649,10 +1649,10 @@ if ( ! function_exists( 'nadlan_utopia_finish_release_transaction' ) ) {
 			if ( function_exists( 'clean_post_cache' ) ) { clean_post_cache( $post_id ); }
 		}
 		foreach ( array(
-			'nadlan_utopia_release_v172135',
-			'nadlan_utopia_release_v172135_manifest',
-			'nadlan_utopia_release_v172135_run',
-			'nadlan_utopia_release_v172135_error',
+			'nadlan_utopia_release_v172136',
+			'nadlan_utopia_release_v172136_manifest',
+			'nadlan_utopia_release_v172136_run',
+			'nadlan_utopia_release_v172136_error',
 		) as $key ) {
 			wp_cache_delete( $key, 'options' );
 		}
@@ -1662,10 +1662,10 @@ if ( ! function_exists( 'nadlan_utopia_finish_release_transaction' ) ) {
 	}
 }
 
-if ( ! function_exists( 'nadlan_utopia_seed_v172135' ) ) {
-	function nadlan_utopia_seed_v172135() {
+if ( ! function_exists( 'nadlan_utopia_seed_v172136' ) ) {
+	function nadlan_utopia_seed_v172136() {
 		if ( nadlan_utopia_release_complete() ) { return; }
-		if ( get_option( 'nadlan_utopia_release_v172135_hold', false ) !== false ) { return; }
+		if ( get_option( 'nadlan_utopia_release_v172136_hold', false ) !== false ) { return; }
 		if ( ! nadlan_utopia_release_context_allowed() ) { return; }
 		$lock = nadlan_utopia_acquire_release_lock();
 		if ( $lock === '' ) { return; }
@@ -1679,7 +1679,7 @@ if ( ! function_exists( 'nadlan_utopia_seed_v172135' ) ) {
 		try {
 			$prior_run = nadlan_utopia_read_run();
 			if ( is_wp_error( $prior_run ) ) {
-				update_option( 'nadlan_utopia_release_v172135_hold', 'blocked-recovery', false );
+				update_option( 'nadlan_utopia_release_v172136_hold', 'blocked-recovery', false );
 				throw new RuntimeException( $prior_run->get_error_message() );
 			}
 			if ( is_array( $prior_run ) ) {
@@ -1822,7 +1822,7 @@ if ( ! function_exists( 'nadlan_utopia_seed_v172135' ) ) {
 			}
 
 			$release_manifest = array(
-				'release' => '1.72.135',
+				'release' => '1.72.136',
 				'published_at' => gmdate( 'c' ),
 				'post_ids' => $ids,
 				'article_sha256' => array_map( function ( $article ) { return hash( 'sha256', $article ); }, $articles ),
@@ -1831,10 +1831,10 @@ if ( ! function_exists( 'nadlan_utopia_seed_v172135' ) ) {
 				'asset_sha256' => array_map( function ( $asset ) { return $asset['sha256']; }, nadlan_utopia_runtime_asset_manifest() ),
 			);
 			foreach ( array(
-				nadlan_utopia_transaction_set_option( 'nadlan_utopia_release_v172135_manifest', $release_manifest ),
-				nadlan_utopia_transaction_set_option( 'nadlan_utopia_release_v172135', '1' ),
-				nadlan_utopia_transaction_delete_option( 'nadlan_utopia_release_v172135_error' ),
-				nadlan_utopia_transaction_delete_option( 'nadlan_utopia_release_v172135_run' ),
+				nadlan_utopia_transaction_set_option( 'nadlan_utopia_release_v172136_manifest', $release_manifest ),
+				nadlan_utopia_transaction_set_option( 'nadlan_utopia_release_v172136', '1' ),
+				nadlan_utopia_transaction_delete_option( 'nadlan_utopia_release_v172136_error' ),
+				nadlan_utopia_transaction_delete_option( 'nadlan_utopia_release_v172136_run' ),
 			) as $option_result ) {
 				if ( is_wp_error( $option_result ) ) {
 					throw new RuntimeException( $option_result->get_error_message() );
@@ -1845,7 +1845,7 @@ if ( ! function_exists( 'nadlan_utopia_seed_v172135' ) ) {
 			$transaction = false;
 			$committed   = true;
 			if ( ! nadlan_utopia_release_complete() ) {
-				update_option( 'nadlan_utopia_release_v172135_hold', 'blocked-recovery', false );
+				update_option( 'nadlan_utopia_release_v172136_hold', 'blocked-recovery', false );
 				throw new RuntimeException( 'The atomic UTOPIA release committed but its completion marker could not be read back.' );
 			}
 		} catch ( Throwable $error ) {
@@ -1855,28 +1855,28 @@ if ( ! function_exists( 'nadlan_utopia_seed_v172135' ) ) {
 				$transaction = false;
 				if ( is_wp_error( $rolled_back ) ) {
 					$message .= ' Transaction rollback error: ' . $rolled_back->get_error_message();
-					update_option( 'nadlan_utopia_release_v172135_hold', 'blocked-recovery', false );
+					update_option( 'nadlan_utopia_release_v172136_hold', 'blocked-recovery', false );
 				}
 			}
 			if ( $committed ) {
-				update_option( 'nadlan_utopia_release_v172135_hold', 'blocked-recovery', false );
+				update_option( 'nadlan_utopia_release_v172136_hold', 'blocked-recovery', false );
 			} elseif ( $backup_ready ) {
 				$rollback = nadlan_utopia_restore_backup( $resources, false, $run_started ? $lock : '' );
 				if ( is_wp_error( $rollback ) ) {
 					$message .= ' Rollback error: ' . $rollback->get_error_message();
 				}
 			}
-			update_option( 'nadlan_utopia_release_v172135_error', array( 'time' => gmdate( 'c' ), 'message' => $message ), false );
+			update_option( 'nadlan_utopia_release_v172136_error', array( 'time' => gmdate( 'c' ), 'message' => $message ), false );
 		} finally {
 			nadlan_utopia_release_lock( $lock );
 		}
 	}
 }
-add_action( 'init', 'nadlan_utopia_seed_v172135', 40 );
+add_action( 'init', 'nadlan_utopia_seed_v172136', 40 );
 
 if ( ! function_exists( 'nadlan_utopia_resume_release' ) ) {
 	function nadlan_utopia_resume_release() {
-		$hold = get_option( 'nadlan_utopia_release_v172135_hold', false );
+		$hold = get_option( 'nadlan_utopia_release_v172136_hold', false );
 		if ( $hold === false ) { return true; }
 		if ( $hold !== 'operator' ) {
 			return new WP_Error( 'utopia_resume_blocked', 'UTOPIA recovery is blocked and must be repaired before release can resume.' );
@@ -1888,17 +1888,17 @@ if ( ! function_exists( 'nadlan_utopia_resume_release' ) ) {
 		if ( $run !== false ) {
 			return new WP_Error( 'utopia_resume_run', 'An incomplete UTOPIA run journal still exists; recovery must finish before resume.' );
 		}
-		if ( ! delete_option( 'nadlan_utopia_backup_v172135' ) &&
-			get_option( 'nadlan_utopia_backup_v172135', false ) !== false ) {
+		if ( ! delete_option( 'nadlan_utopia_backup_v172136' ) &&
+			get_option( 'nadlan_utopia_backup_v172136', false ) !== false ) {
 			return new WP_Error( 'utopia_resume_backup', 'The prior UTOPIA backup could not be retired before a fresh release baseline.' );
 		}
-		delete_option( 'nadlan_utopia_release_v172135_hold' );
+		delete_option( 'nadlan_utopia_release_v172136_hold' );
 		return true;
 	}
 }
 
 if ( defined( 'WP_CLI' ) && WP_CLI && class_exists( 'WP_CLI' ) ) {
-	WP_CLI::add_command( 'nadlan utopia-restore-v172135', function () {
+	WP_CLI::add_command( 'nadlan utopia-restore-v172136', function () {
 		if ( ! nadlan_utopia_recovery_context_allowed() ) {
 			WP_CLI::error( 'Run this command with --user=<administrator> for a user who has manage_options and unfiltered_html.' );
 		}
@@ -1911,12 +1911,12 @@ if ( defined( 'WP_CLI' ) && WP_CLI && class_exists( 'WP_CLI' ) ) {
 			if ( is_wp_error( $result ) ) {
 				WP_CLI::error( $result->get_error_message() );
 			}
-			WP_CLI::success( 'UTOPIA release 1.72.135 was restored and placed on operator hold.' );
+			WP_CLI::success( 'UTOPIA release 1.72.136 was restored and placed on operator hold.' );
 		} finally {
 			nadlan_utopia_release_lock( $lock );
 		}
 	} );
-	WP_CLI::add_command( 'nadlan utopia-resume-v172135', function () {
+	WP_CLI::add_command( 'nadlan utopia-resume-v172136', function () {
 		if ( ! nadlan_utopia_recovery_context_allowed() ) {
 			WP_CLI::error( 'Run this command with --user=<administrator> for a user who has manage_options and unfiltered_html.' );
 		}
@@ -2144,7 +2144,7 @@ add_action( 'wp_head', function () {
 
 add_filter( 'nadlan_config_healthcheck', function ( $out ) {
 	$out['utopia_sde_dov'] = array(
-		'release' => '1.72.135',
+		'release' => '1.72.136',
 		'five_languages' => true,
 		'model_asset_validated' => true,
 		'official_model' => false,
