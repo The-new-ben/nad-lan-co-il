@@ -1009,6 +1009,16 @@ if ( ! function_exists( 'nadlan_hv2_assets' ) ) {
 .nlhv2-flagdev:hover{text-decoration:underline}
 /* sketch-plate listing art must never be cropped - the facilities must stay visible */
 .nlhv2-list-media.is-sketch{background-size:contain!important;background-color:#F3EEE3}
+/* Cascade repair (measured live 2026-07-30): nadlan-premium-sitewide.css ships
+   .page .entry-content h2{color:var(--nlx-ink)!important} and platform.css ships
+   body.nlpc-platform h1,h2,h3{color:var(--nlp-ink)}. Both outrank the band rules
+   above, so every headline sitting on a dark surface was painted near-black:
+   the hero H1 measured 1.07:1 and the dark bands 1.18:1 - invisible, not merely
+   low contrast. Winning on specificity here keeps the theme and the sitewide
+   sheet untouched. */
+.entry-content .nlhv2 .nlhv2-hero--map h1{color:#FAF7F1!important}
+.entry-content .nlhv2 .nlhv2-dark header h2{color:#F4EEDE!important}
+.entry-content .nlhv2 .nlhv2-en h2{color:#FAF8F3!important}
 .nlhv2-hero-veil{position:absolute;inset:0;pointer-events:none;background:linear-gradient(180deg,rgba(20,19,15,.86) 0%,rgba(20,19,15,.55) 26%,rgba(20,19,15,.1) 52%,rgba(20,19,15,.45) 100%)}
 .nlhv2-hero--map .nlhv2-hero-copy{position:relative;z-index:6;max-width:640px;margin:26px clamp(12px,3vw,36px);padding:26px clamp(16px,3vw,32px);pointer-events:none;background:linear-gradient(180deg,rgba(20,19,15,.62),rgba(20,19,15,.42));border:1px solid rgba(233,217,168,.16);border-radius:18px;backdrop-filter:blur(3px)}
 .nlhv2-hero--map .nlhv2-hero-copy>*{pointer-events:auto}
