@@ -1,0 +1,61 @@
+{
+  "schema": "nadlan-utopia-live-server-backup/v1",
+  "recorded_at": "2026-07-30T12:16:57.0311923Z",
+  "site": "https://nad-lan.co.il",
+  "plugin": "nadlan-config",
+  "live_version": "1.72.134",
+  "acquisition": {
+    "surface": "authenticated WordPress File Manager",
+    "operation": "direct folder download",
+    "production_files_modified": false,
+    "archive_preserved_outside_repository": true
+  },
+  "exact_server_directory_archive": {
+    "filename": "nadlan-config-live-1.72.134-server-directory.zip",
+    "bytes": 3081950,
+    "sha256": "30f562f2bd3b42fdc4150d8f10c26e13a75ddffc3e01a46068fde659dd228245",
+    "entries": 259,
+    "crc": "ok",
+    "unsafe_entries": 0,
+    "duplicate_entries": 0,
+    "manifest_sha256": "3c5df5b9c2a8e2199eba79d0a1a77dab92ded468d57ea7c15201a621c432cfd3",
+    "version_header": "1.72.134",
+    "version_constant": "1.72.134"
+  },
+  "authoritative_source_comparison": {
+    "source_commit": "064567a50466c3c1245f1abcc4e699144949492d",
+    "source_entries": 217,
+    "missing_source_entries_on_server": 0,
+    "raw_byte_differences": 8,
+    "substantive_differences_after_newline_normalization": 0,
+    "extra_server_entries": 42,
+    "extra_entries_are_all_backup_named": true,
+    "extra_php_backup_files": 38,
+    "extra_javascript_backup_files": 3,
+    "extra_css_backup_files": 1
+  },
+  "wider_defect": {
+    "status": "surfaced, not changed",
+    "description": "The active plugin directory contains 42 untracked backup files that are absent from the authoritative live source.",
+    "public_probe": {
+      "method": "HEAD",
+      "sample": "/wp-content/plugins/nadlan-config/inc/legal-notice.php.bak134",
+      "status": 200,
+      "content_type": "application/octet-stream",
+      "content_length": 12109
+    },
+    "risk": "Backup-suffixed PHP, JavaScript and CSS source is publicly downloadable.",
+    "scope_decision": "No backup file was deleted, moved or edited. A standard whole-plugin replacement may remove these extras and therefore requires an explicit deployment decision."
+  },
+  "authenticated_admin_probe": {
+    "/wp-admin/index.php": 404,
+    "/wp-admin/plugins.php": 200,
+    "/wp-admin/admin.php?page=file_manager_advanced_ui": 200,
+    "non_ajax_admin_context_available_for_seed": true
+  },
+  "database_backup": {
+    "status": "pending",
+    "required_surface": "authenticated uPress production backup and restore control",
+    "deployment_allowed": false
+  }
+}
