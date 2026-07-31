@@ -127,12 +127,15 @@ if ( ! function_exists( 'nadlan_showroom_engine_build_project' ) ) {
 			// puts the camera inside the crown on 150m+ towers (DUO).
 			'frame_radius_m' => (int) max( 150, round( $floors * (float) ( get_post_meta( $id, 'project_3d_floor_height_m', true ) ?: 3.05 ) * 1.4 ) ),
 			'viewbox'        => (string) get_post_meta( $id, 'project_3d_viewbox', true ),
-			// DEFAULT MODEL (owner 2026-07-07, "a default, not a fallback"): a
-			// project with no model of its own shows the generic flagship tower,
-			// honestly labeled as a general illustration - never as the building.
+			// DEFAULT MODEL (owner 2026-07-11): a project with no model of its
+			// own shows the STANDARD Israeli street building - a form
+			// developers recognize as "could be my project" - honestly labeled
+			// as a general illustration, never as the building. It conforms to
+			// the engine hotspot formula (26.4m at origin, floors from y=0,
+			// fh 3.05) so generic projects get working facade hotspots free.
 			'model_glb'      => ( function () use ( $id ) {
 				$own = esc_url_raw( (string) get_post_meta( $id, 'project_model_glb', true ) );
-				return $own !== '' ? $own : nadlan_showroom_engine_base_url() . 'models/flagship-tower.glb';
+				return $own !== '' ? $own : nadlan_showroom_engine_base_url() . 'models/standard-residential.glb';
 			} )(),
 			'model_generic'  => get_post_meta( $id, 'project_model_glb', true ) === '',
 			'model_poster'   => esc_url_raw( (string) get_post_meta( $id, 'project_model_poster', true ) ),
@@ -239,7 +242,8 @@ if ( ! function_exists( 'nadlan_showroom_engine_resolve_target' ) ) {
 		}
 		if ( $atts['id'] ) {
 			$p = get_post( (int) $atts['id'] );
-			if ( $p && $p->post_type === 'nadlan_project' ) { return array( $p ); }
+			// international flagships run the SAME engine when addressed explicitly (owner 2026-07-12)
+			if ( $p && in_array( $p->post_type, array( 'nadlan_project', 'nadlan_intl' ), true ) ) { return array( $p ); }
 		}
 		if ( $atts['project'] ) {
 			$p = get_page_by_path( sanitize_title( $atts['project'] ), OBJECT, 'nadlan_project' );
@@ -287,6 +291,19 @@ if ( ! function_exists( 'nadlan_showroom_engine_shortcode' ) ) {
 		wp_enqueue_style( 'nadlan-engine-tokens', $base . 'tokens.css', array(), NADLAN_CONFIG_VERSION );
 		wp_enqueue_style( 'nadlan-engine-css', $base . 'showroom.css', array( 'nadlan-engine-tokens' ), NADLAN_CONFIG_VERSION );
 		wp_enqueue_style( 'nadlan-engine-editorial', $base . 'editorial.css', array( 'nadlan-engine-tokens' ), NADLAN_CONFIG_VERSION );
+		/* Cascade repair (measured live on /projects/duo-tel-aviv/ 2026-07-30): the theme ships
+		   .single-nadlan_project .entry-content h2{color:var(--nlx-ink)!important} and
+		   nadlan-premium-revenue.css .nlpf-name{color:#FFF8E7!important}. Both outrank showroom.css,
+		   so every heading on a dark showroom surface rendered near-black (1.02-1.12:1, invisible -
+		   including the inquiry form headline) while the project name rendered cream on the white
+		   profile card. Repeated class selectors win the cascade here, so neither the theme nor
+		   showroom.css has to be edited; the colours are the ones those components already declare. */
+		wp_add_inline_style( 'nadlan-engine-css',
+			'.nl-theater__title.nl-theater__title.nl-theater__title h2{color:var(--theater-fore)!important}'
+			. '.nl-inquiry.nl-inquiry.nl-inquiry h2{color:#fff!important}'
+			. '.nl-card--dark.nl-card--dark.nl-card--dark h2,.nl-card--dark.nl-card--dark.nl-card--dark h3{color:var(--cream)!important}'
+			. '.nlpf-name.nlpf-name{color:#1B1A17!important}'
+		);
 		// 4.3.1 to match what retired project-3d registered on GLB pages - no silent downgrade.
 		wp_enqueue_script( 'nadlan-model-viewer', 'https://ajax.googleapis.com/ajax/libs/model-viewer/4.3.1/model-viewer.min.js', array(), '4.3.1', true );
 		wp_script_add_data( 'nadlan-model-viewer', 'type', 'module' );
@@ -543,9 +560,15 @@ if ( ! function_exists( 'nadlan_showroom_engine_weave' ) ) {
 	 */
 	function nadlan_showroom_engine_weave( $article, $pid ) {
 		$by_section = preg_match_all( '#<section\b[^>]*class="[^"]*nlv2-section[^"]*"#i', $article ) >= 3;
+		// Articles authored with their own <section> wrappers must split at the
+		// section boundary - splitting at <h2> orphans the wrapper tags and the
+		// page renders stray empty <section> shells (found on DUO, 12 shells).
+		$by_plain = ! $by_section && preg_match_all( '#<section\b#i', $article ) >= 4;
 		$parts = $by_section
 			? preg_split( '/(?=<section\b[^>]*class="[^"]*nlv2-section)/i', $article )
-			: preg_split( '/(?=<h2\b)/i', $article );
+			: ( $by_plain
+				? preg_split( '/(?=<section\b)/i', $article )
+				: preg_split( '/(?=<h2\b)/i', $article ) );
 		if ( ! is_array( $parts ) || count( $parts ) < 4 ) { return $article; }
 		$lang = function_exists( 'nadlan_project_self_lang' ) ? nadlan_project_self_lang( $pid ) : 'he';
 		$L = array(

@@ -289,7 +289,7 @@ if ( ! function_exists( 'nadlan_pjx_bottom' ) ) {
 	<?php if ( $lat && $lng ) :
 		$pois = function_exists( 'nadlan_poi_fetch' ) ? nadlan_poi_fetch( $lat, $lng, 1200 ) : array();
 		$poi_json = wp_json_encode( array_map( function ( $grp ) {
-			return array_values( array_filter( array_slice( (array) $grp, 0, 12 ), function ( $i ) { return ! empty( $i['lat'] ) && ! empty( $i['lng'] ); } ) );
+			return array_values( array_filter( array_slice( (array) $grp, 0, 16 ), function ( $i ) { return ! empty( $i['lat'] ) && ! empty( $i['lng'] ); } ) );
 		}, (array) $pois ) );
 		$near = nadlan_pjx_nearby_projects( $id, $lat, $lng );
 		// This section sits right under the 3D theater on every language sibling,
@@ -299,11 +299,11 @@ if ( ! function_exists( 'nadlan_pjx_bottom' ) ) {
 			if ( substr( get_post_field( 'post_name', $id ), -3 ) === '-' . $ml ) { $mlang = $ml; }
 		}
 		$MT = array(
-			'he' => array( 'aria' => 'מפה חיה של הסביבה', 'h' => 'הכל על מפה אחת: מחירים, סביבה, תוכניות עתידיות', 'layers' => 'שכבות מפה', 'comps' => '₪ מחירים בסביבה', 'schools' => '🏫 חינוך', 'transit' => '🚌 תחבורה', 'shops' => '🛒 קניות', 'health' => '⚕️ בריאות', 'plans' => '◆ תוכניות עתידיות', 'd3' => '🏙️ תלת ממד', 'sat' => '🛰️ לוויין', 'cap' => 'לחצו על כל סימון לקבלת פרטים. תגי המחיר הם אומדן לא מחייב למ״ר בפרויקטים סמוכים.', 'purple' => '◆ סגול = תוכניות התחדשות ופרויקטים עתידיים' ),
-			'en' => array( 'aria' => 'Live area map', 'h' => 'Everything on one map: prices, surroundings, future plans', 'layers' => 'Map layers', 'comps' => '₪ Nearby prices', 'schools' => '🏫 Education', 'transit' => '🚌 Transit', 'shops' => '🛒 Shopping', 'health' => '⚕️ Health', 'plans' => '◆ Future plans', 'd3' => '🏙️ 3D', 'sat' => '🛰️ Satellite', 'cap' => 'Click any marker for details. Price tags are non-binding per-sqm estimates in nearby projects.', 'purple' => '◆ purple = urban renewal and future projects' ),
-			'fr' => array( 'aria' => 'Carte interactive du quartier', 'h' => 'Tout sur une seule carte: prix, environnement, plans futurs', 'layers' => 'Couches de carte', 'comps' => '₪ Prix a proximite', 'schools' => '🏫 Education', 'transit' => '🚌 Transports', 'shops' => '🛒 Commerces', 'health' => '⚕️ Sante', 'plans' => '◆ Plans futurs', 'd3' => '🏙️ 3D', 'sat' => '🛰️ Satellite', 'cap' => 'Cliquez sur un marqueur pour les details. Les etiquettes de prix sont des estimations indicatives au m2 dans les projets voisins.', 'purple' => '◆ violet = renouvellement urbain et projets futurs' ),
-			'ru' => array( 'aria' => 'Живая карта района', 'h' => 'Все на одной карте: цены, окружение, будущие проекты', 'layers' => 'Слои карты', 'comps' => '₪ Цены рядом', 'schools' => '🏫 Образование', 'transit' => '🚌 Транспорт', 'shops' => '🛒 Магазины', 'health' => '⚕️ Здоровье', 'plans' => '◆ Будущие проекты', 'd3' => '🏙️ 3D', 'sat' => '🛰️ Спутник', 'cap' => 'Нажмите на любой маркер для подробностей. Ценовые метки - необязывающая оценка за кв.м в соседних проектах.', 'purple' => '◆ фиолетовый = городское обновление и будущие проекты' ),
-			'ar' => array( 'aria' => 'خريطة حية للمنطقة', 'h' => 'كل شيء على خريطة واحدة: الأسعار والمحيط والخطط المستقبلية', 'layers' => 'طبقات الخريطة', 'comps' => '₪ الأسعار القريبة', 'schools' => '🏫 التعليم', 'transit' => '🚌 المواصلات', 'shops' => '🛒 التسوق', 'health' => '⚕️ الصحة', 'plans' => '◆ الخطط المستقبلية', 'd3' => '🏙️ ثلاثي الأبعاد', 'sat' => '🛰️ قمر صناعي', 'cap' => 'انقر على أي علامة للتفاصيل. علامات الأسعار تقديرات غير ملزمة للمتر المربع في المشاريع المجاورة.', 'purple' => '◆ البنفسجي = التجديد الحضري والمشاريع المستقبلية' ),
+			'he' => array( 'aria' => 'מפה חיה של הסביבה', 'h' => 'הכל על מפה אחת: מחירים, סביבה, תוכניות עתידיות', 'layers' => 'שכבות מפה', 'comps' => '₪ מחירים בסביבה', 'schools' => '🏫 חינוך', 'parks' => '🌳 פארקים', 'food' => '☕ קפה ומסעדות', 'transit' => '🚌 תחבורה', 'shops' => '🛒 קניות', 'health' => '⚕️ בריאות', 'plans' => '◆ תוכניות עתידיות', 'd3' => '🏙️ תלת ממד', 'sat' => '🛰️ לוויין', 'cap' => 'לחצו על כל סימון לקבלת פרטים. תגי המחיר הם אומדן לא מחייב למ״ר בפרויקטים סמוכים.', 'purple' => '◆ סגול = תוכניות התחדשות ופרויקטים עתידיים' ),
+			'en' => array( 'aria' => 'Live area map', 'h' => 'Everything on one map: prices, surroundings, future plans', 'layers' => 'Map layers', 'comps' => '₪ Nearby prices', 'schools' => '🏫 Education', 'parks' => '🌳 Parks', 'food' => '☕ Cafes', 'transit' => '🚌 Transit', 'shops' => '🛒 Shopping', 'health' => '⚕️ Health', 'plans' => '◆ Future plans', 'd3' => '🏙️ 3D', 'sat' => '🛰️ Satellite', 'cap' => 'Click any marker for details. Price tags are non-binding per-sqm estimates in nearby projects.', 'purple' => '◆ purple = urban renewal and future projects' ),
+			'fr' => array( 'aria' => 'Carte interactive du quartier', 'h' => 'Tout sur une seule carte: prix, environnement, plans futurs', 'layers' => 'Couches de carte', 'comps' => '₪ Prix a proximite', 'schools' => '🏫 Education', 'parks' => '🌳 Parcs', 'food' => '☕ Cafes', 'transit' => '🚌 Transports', 'shops' => '🛒 Commerces', 'health' => '⚕️ Sante', 'plans' => '◆ Plans futurs', 'd3' => '🏙️ 3D', 'sat' => '🛰️ Satellite', 'cap' => 'Cliquez sur un marqueur pour les details. Les etiquettes de prix sont des estimations indicatives au m2 dans les projets voisins.', 'purple' => '◆ violet = renouvellement urbain et projets futurs' ),
+			'ru' => array( 'aria' => 'Живая карта района', 'h' => 'Все на одной карте: цены, окружение, будущие проекты', 'layers' => 'Слои карты', 'comps' => '₪ Цены рядом', 'schools' => '🏫 Образование', 'parks' => '🌳 Парки', 'food' => '☕ Кафе', 'transit' => '🚌 Транспорт', 'shops' => '🛒 Магазины', 'health' => '⚕️ Здоровье', 'plans' => '◆ Будущие проекты', 'd3' => '🏙️ 3D', 'sat' => '🛰️ Спутник', 'cap' => 'Нажмите на любой маркер для подробностей. Ценовые метки - необязывающая оценка за кв.м в соседних проектах.', 'purple' => '◆ фиолетовый = городское обновление и будущие проекты' ),
+			'ar' => array( 'aria' => 'خريطة حية للمنطقة', 'h' => 'كل شيء على خريطة واحدة: الأسعار والمحيط والخطط المستقبلية', 'layers' => 'طبقات الخريطة', 'comps' => '₪ الأسعار القريبة', 'schools' => '🏫 التعليم', 'parks' => '🌳 حدائق', 'food' => '☕ مقاهي', 'transit' => '🚌 المواصلات', 'shops' => '🛒 التسوق', 'health' => '⚕️ الصحة', 'plans' => '◆ الخطط المستقبلية', 'd3' => '🏙️ ثلاثي الأبعاد', 'sat' => '🛰️ قمر صناعي', 'cap' => 'انقر على أي علامة للتفاصيل. علامات الأسعار تقديرات غير ملزمة للمتر المربع في المشاريع المجاورة.', 'purple' => '◆ البنفسجي = التجديد الحضري والمشاريع المستقبلية' ),
 		);
 		$mt = $MT[ $mlang ];
 	?>
@@ -314,9 +314,11 @@ if ( ! function_exists( 'nadlan_pjx_bottom' ) ) {
 		<div class="nlpjx-maplayers" role="group" aria-label="<?php echo esc_attr( $mt['layers'] ); ?>">
 			<button type="button" class="is-on" data-layer="comps"><?php echo esc_html( $mt['comps'] ); ?></button>
 			<button type="button" class="is-on" data-layer="schools"><?php echo esc_html( $mt['schools'] ); ?></button>
+			<button type="button" class="is-on" data-layer="parks"><?php echo esc_html( $mt['parks'] ); ?></button>
 			<button type="button" data-layer="transit"><?php echo esc_html( $mt['transit'] ); ?></button>
 			<button type="button" data-layer="shops"><?php echo esc_html( $mt['shops'] ); ?></button>
 			<button type="button" data-layer="health"><?php echo esc_html( $mt['health'] ); ?></button>
+			<button type="button" data-layer="food"><?php echo esc_html( $mt['food'] ); ?></button>
 			<button type="button" class="is-on" data-layer="plans"><?php echo esc_html( $mt['plans'] ); ?></button>
 			<button type="button" data-layer="3d"><?php echo esc_html( $mt['d3'] ); ?></button>
 			<button type="button" data-layer="sat"><?php echo esc_html( $mt['sat'] ); ?></button>
@@ -329,6 +331,10 @@ if ( ! function_exists( 'nadlan_pjx_bottom' ) ) {
 		<p class="nlpjx-cap"><?php echo esc_html( $mt['cap'] ); ?> <b style="color:#6B4FA0"><?php echo esc_html( $mt['purple'] ); ?></b>.</p>
 	</section>
 	<?php endif; ?>
+
+	<?php if ( function_exists( 'nadlan_sdedov_tour_band' ) && in_array( get_post_field( 'post_name', $id ), nadlan_sdedov_tour_slugs(), true ) ) :
+		echo nadlan_sdedov_tour_band( 'project', nadlan_sdedov_tour_focus( get_post_field( 'post_name', $id ) ) ); // phpcs:ignore
+	endif; ?>
 
 	<section id="nlpjx-world" class="nlpjx-sec" aria-label="כל המידע סביב הפרויקט">
 		<h2>כל מה שסביב הפרויקט</h2>
@@ -436,12 +442,12 @@ document.addEventListener("DOMContentLoaded",function(){
 				if(!window.mapboxgl){return}
 				mapboxgl.accessToken=um.dataset.token;
 				var lat=parseFloat(um.dataset.lat),lng=parseFloat(um.dataset.lng);
-				var map=new mapboxgl.Map({container:um,style:"mapbox://styles/mapbox/light-v11",center:[lng,lat],zoom:14.4,pitch:0,attributionControl:true});
+				var map=new mapboxgl.Map({container:um,style:"mapbox://styles/mapbox/light-v11",center:[lng,lat],zoom:14.4,pitch:0,attributionControl:true,cooperativeGestures:true,locale:{"CooperativeGesturesHandler.WindowsHelpText":"\u05dc\u05d7\u05e6\u05d5 Ctrl \u05d5\u05d2\u05dc\u05dc\u05d5 \u05db\u05d3\u05d9 \u05dc\u05d4\u05ea\u05e7\u05e8\u05d1 \u05d1\u05de\u05e4\u05d4","CooperativeGesturesHandler.MacHelpText":"\u05dc\u05d7\u05e6\u05d5 \u2318 \u05d5\u05d2\u05dc\u05dc\u05d5 \u05db\u05d3\u05d9 \u05dc\u05d4\u05ea\u05e7\u05e8\u05d1 \u05d1\u05de\u05e4\u05d4","TouchPanBlocker.Message":"\u05d4\u05d6\u05d9\u05d6\u05d5 \u05d0\u05ea \u05d4\u05de\u05e4\u05d4 \u05d1\u05e9\u05ea\u05d9 \u05d0\u05e6\u05d1\u05e2\u05d5\u05ea"}});
 				map.on("style.load",function(){try{map.setPaintProperty("water","fill-color","#A9C6D0")}catch(e){}try{map.setPaintProperty("land","background-color","#F6F1E6")}catch(e){}});
 				map.addControl(new mapboxgl.NavigationControl({visualizePitch:true}));
 				window.NLPJX_MAP=map; // engine syncs model orbit -> map bearing through this handle
 				try{document.dispatchEvent(new CustomEvent("nlpjx:map"))}catch(e){}
-				var groups={comps:[],schools:[],transit:[],shops:[],health:[],plans:[]};
+				var groups={comps:[],schools:[],parks:[],transit:[],shops:[],health:[],food:[],plans:[]};
 				function pop(html){return new mapboxgl.Popup({offset:14,maxWidth:"260px"}).setHTML(html)}
 				function dot(color){var e=document.createElement("div");e.style.cssText="width:15px;height:15px;border-radius:50%;background:"+color+";border:2.5px solid #fff;box-shadow:0 2px 6px rgba(0,0,0,.35);cursor:pointer";return e}
 				// the project itself
@@ -458,14 +464,14 @@ document.addEventListener("DOMContentLoaded",function(){
 				});
 				// POIs by layer
 				var P=window.NLPJX_POIS||{};
-				var poiStyle={schools:["#334236","🏫 "],kindergartens:["#334236","🧒 "],transit:["#183C3C","🚌 "],shops:["#9F6F54","🛒 "],health:["#A93F2A","⚕️ "]};
+				var poiStyle={schools:["#334236","🏫 "],kindergartens:["#334236","🧒 "],parks:["#517048","🌳 "],transit:["#183C3C","🚌 "],shops:["#9F6F54","🛒 "],health:["#A93F2A","⚕️ "],food:["#8A6B3F","☕ "]};
 				Object.keys(P).forEach(function(k){
 					var g=(k==="kindergartens")?"schools":k;
 					if(!groups[g]){return}
 					(P[k]||[]).forEach(function(pt){
 						if(!pt.lat||!pt.lng){return}
 						var st=poiStyle[k]||["#666",""];
-						groups[g].push(new mapboxgl.Marker({element:dot(st[0])}).setLngLat([pt.lng,pt.lat]).setPopup(pop(st[1]+(pt.name||""))));
+						var dtxt=pt.d?(pt.d>=1000?("<br><span style=\"color:#9C7A3C;font-size:12px\">כ-"+(Math.round(pt.d/100)/10)+" ק\"מ מהפרויקט</span>"):("<br><span style=\"color:#9C7A3C;font-size:12px\">כ-"+(Math.max(50,Math.round(pt.d/50)*50))+" מטר מהפרויקט</span>")):"";groups[g].push(new mapboxgl.Marker({element:dot(st[0])}).setLngLat([pt.lng,pt.lat]).setPopup(pop("<b>"+st[1]+(pt.name||"")+"</b>"+dtxt)));
 					});
 				});
 				// future plans (purple)
@@ -474,9 +480,17 @@ document.addEventListener("DOMContentLoaded",function(){
 					var e=dot("#6B4FA0");e.style.width="17px";e.style.height="17px";
 					groups.plans.push(new mapboxgl.Marker({element:e}).setLngLat([pl.lng,pl.lat]).setPopup(pop("◆ <b>"+pl.name+"</b><br><a href=\""+pl.url+"\">לפרטי התוכנית ←</a>")));
 				});
-				var on={comps:true,schools:true,transit:false,shops:false,health:false,plans:true};
+				var on={comps:true,schools:true,parks:true,transit:false,shops:false,health:false,food:false,plans:true};
 				function apply(k){(groups[k]||[]).forEach(function(m){on[k]?m.addTo(map):m.remove()})}
 				Object.keys(groups).forEach(apply);
+				// live counts on every chip; a chip with nothing behind it says (0) and greys out
+				document.querySelectorAll(".nlpjx-maplayers button").forEach(function(b){
+					var k=b.dataset.layer;
+					if(!(k in groups)){return}
+					var n=groups[k].length;
+					b.textContent=b.textContent.replace(/\s*\(\d+\)$/,"")+" ("+n+")";
+					if(!n){b.style.opacity=".45";b.classList.remove("is-on")}
+				});
 				// 3D buildings + satellite, added after style load
 				map.on("load",function(){
 					map.addSource("nl-sat",{type:"raster",tiles:["https://api.mapbox.com/v4/mapbox.satellite/{z}/{x}/{y}@2x.jpg90?access_token="+mapboxgl.accessToken],tileSize:256});
@@ -518,7 +532,7 @@ document.addEventListener("DOMContentLoaded",function(){
 		var map=L.map(m,{scrollWheelZoom:false,layers:[streets]}).setView([lat,lng],15);
 		L.control.layers({"מפה":streets,"לוויין":sat},null,{position:"topleft"}).addTo(map);
 		L.marker([lat,lng]).addTo(map).bindPopup("<b>"+(m.dataset.title||"")+"</b>").openPopup();
-		var P=window.NLPJX_POIS||{},style={schools:["#334236","🏫"],kindergartens:["#9C7A3C","🧒"],transit:["#183C3C","🚌"],shops:["#9F6F54","🛒"],health:["#A93F2A","⚕️"]};
+		var P=window.NLPJX_POIS||{},style={schools:["#334236","🏫"],kindergartens:["#9C7A3C","🧒"],parks:["#517048","🌳"],transit:["#183C3C","🚌"],shops:["#9F6F54","🛒"],health:["#A93F2A","⚕️"],food:["#8A6B3F","☕"]};
 		Object.keys(P).forEach(function(k){(P[k]||[]).forEach(function(p){
 			if(!p.lat||!p.lng){return}
 			L.circleMarker([p.lat,p.lng],{radius:6,color:(style[k]||["#666"])[0],weight:2,fillColor:"#fff",fillOpacity:.9}).addTo(map).bindPopup((style[k]?style[k][1]+" ":"")+(p.name||""));
