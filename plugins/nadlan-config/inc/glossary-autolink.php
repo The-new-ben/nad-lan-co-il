@@ -118,28 +118,14 @@ add_filter( 'wp_nav_menu_items', function ( $items, $args ) {
 	return $items . $extras;
 }, 10, 2 );
 
-/* footer fallback links - owner-approved location for all directory entry points
- * (2026-06-01: "Only add to the footer, links to whatever"). Reachable on every page. */
+/* below-footer strip retired (owner 2026-07-13: "not looking good, check if
+ * necessary") - the 4-link band was redundant with the footer + /site-map/.
+ * Replaced with ONE quiet line that anchors the HTML sitemap on every page. */
 add_action( 'wp_footer', function () {
 	if ( is_admin() || is_front_page() ) { return; } // front page: mega footer owns this (v2)
-	$pro   = (int) wp_count_posts( 'nadlan_professional' )->publish;
-	$proj  = (int) wp_count_posts( 'nadlan_project' )->publish;
-	$terms = (int) wp_count_posts( 'nadlan_term' )->publish;
-	$links = array(
-		array( home_url( '/professionals/' ), 'מאגר בעלי המקצוע',          $pro   ? number_format( $pro )   : '' ),
-		array( home_url( '/projects/' ), 'פרויקטים והתחדשות עירונית', $proj  ? number_format( $proj )  : '' ),
-		array( home_url( '/glossary/' ),      'מילון מונחי נדל״ן',           $terms ? number_format( $terms ) : '' ),
-		array( home_url( '/catalog/' ),       'קטלוג ראשי',                  '' ),
-	);
-	$html = '<div class="nadlan-nav-foot" style="text-align:center;padding:20px 14px;margin:24px 0 0;background:#FBF9F5;border-top:1px solid rgba(27,26,23,.08);font-family:var(--font-sans,Heebo,sans-serif);font-size:13.5px;display:flex;justify-content:center;gap:28px;flex-wrap:wrap;direction:rtl">';
-	foreach ( $links as $L ) {
-		$html .= '<a href="' . esc_url( $L[0] ) . '" style="color:#9C7A3C;text-decoration:none;font-weight:600">'
-			   . esc_html( $L[1] )
-			   . ( $L[2] ? ' <span style="color:#999;font-weight:400">(' . esc_html( $L[2] ) . ')</span>' : '' )
-			   . ' ←</a>';
-	}
-	$html .= '</div>';
-	echo $html;
+	echo '<div class="nadlan-nav-foot" style="text-align:center;padding:14px;background:#FBF9F5;border-top:1px solid rgba(27,26,23,.06);font-family:var(--font-sans,Heebo,sans-serif);font-size:12.5px;direction:rtl">'
+		. '<a href="' . esc_url( home_url( '/site-map/' ) ) . '" style="color:#9C7A3C;text-decoration:none;font-weight:600">מפת האתר המלאה: כל הכלים, המדריכים והמאגרים ←</a>'
+		. '</div>';
 }, 99 );
 
 /* ---- v1.25.0: homepage discoverability block ----
