@@ -716,11 +716,16 @@ if ( ! function_exists( 'nadlan_dir_project_card' ) ) {
 			// rather than 2 dark concept SVGs so the catalog grid never reads as
 			// identical empty blocks. Falls back to the bundled concept SVG if the
 			// theme is not present (defensive).
+			// SKETCH-ONLY (2026-07-31): the three photo-realistic files that used to
+			// rotate here (tel-aviv-coast-skyline / sea-view-interior /
+			// architectural-model) are place-specific, so they illustrated a Haifa
+			// or Be'er Sheva project with a Tel Aviv coastline or a sea-view
+			// interior. An audit of 144 cards found 77 hitting one of those three.
+			// Only the neutral blueprint/sketch files remain: they never claim a
+			// place that is not the project's, and they match the house rule of
+			// architectural sketches over AI photo-realism.
 			$theme_fallbacks = array(
-				'tel-aviv-coast-skyline.jpg',
-				'sea-view-interior.jpg',
 				'tel-aviv-skyline-blueprint.jpg',
-				'architectural-model.jpg',
 				'blueprint-desk.jpg',
 			);
 			$pick = $theme_fallbacks[ absint( $id ) % count( $theme_fallbacks ) ];
