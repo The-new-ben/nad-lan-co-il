@@ -741,7 +741,7 @@ if ( ! function_exists( 'nadlan_revenue_page_url' ) ) :
 endif;
 
 if ( ! function_exists( 'nadlan_revenue_card_media' ) ) :
-	function nadlan_revenue_card_media( $post_id, $fallback = 'architectural-model.jpg' ) {
+	function nadlan_revenue_card_media( $post_id, $fallback = 'tel-aviv-skyline-blueprint.jpg' ) {
 		if ( has_post_thumbnail( $post_id ) ) {
 			$thumb = get_the_post_thumbnail_url( $post_id, 'large' );
 			if ( $thumb ) { return $thumb; }
@@ -862,7 +862,7 @@ if ( ! function_exists( 'nadlan_revenue_premium_front_page' ) ) :
 				$status = trim( (string) get_post_meta( $id, 'project_status', true ) );
 				$dev    = trim( (string) get_post_meta( $id, 'developer_name', true ) );
 				$units  = trim( (string) get_post_meta( $id, 'num_units', true ) );
-				$nlux_fallbacks = array( 'tel-aviv-coast-skyline.jpg', 'sea-view-interior.jpg', 'tel-aviv-skyline-blueprint.jpg' );
+				$nlux_fallbacks = array( 'tel-aviv-skyline-blueprint.jpg', 'blueprint-desk.jpg' ); // sketch-only, see directory.php
 				$img    = nadlan_revenue_card_media( $id, $nlux_fallbacks[ $i % count( $nlux_fallbacks ) ] );
 				?>
 				<a class="nlux-project-card" href="<?php echo esc_url( get_permalink( $id ) ); ?>">
