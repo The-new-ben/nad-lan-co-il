@@ -1687,3 +1687,9 @@ add_action( 'wp_footer', function () {
 	</style>
 	<?php
 } );
+
+// Batch 01 project images: supplies real, project-specific images for the 10
+// archive cards that were falling back to generic stock (see the file header
+// for the full audit). Non-destructive: a real featured image or stored photo
+// always wins.
+require_once get_theme_file_path( 'inc/project-image-batch.php' );
