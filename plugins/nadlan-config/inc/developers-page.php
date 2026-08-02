@@ -20,7 +20,19 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 if ( ! function_exists( 'nadlan_dev_film_url' ) ) {
+	/**
+	 * Which cut is on air.
+	 *
+	 * Held in an option rather than hardcoded because the film gets re-rendered:
+	 * the first 118s cut shipped at 600x338, which is a resolution the source
+	 * never rendered rather than a compression artefact, so no re-encode could
+	 * rescue it. Swapping masters must not need a deploy.
+	 */
 	function nadlan_dev_film_url() {
+		$set = trim( (string) get_option( 'nadlan_film_url', '' ) );
+		if ( '' !== $set ) {
+			return $set;
+		}
 		$u = wp_get_upload_dir();
 		return trailingslashit( $u['baseurl'] ) . '2026/08/nadlan-developer-film.mp4';
 	}

@@ -521,6 +521,14 @@ add_filter( 'the_content', function ( $content ) {
 	// article too; this does not.)
 	$original = (string) $content;
 	$article  = $original;
+	/* Anything earlier filters prepended - the profile card that carries the
+	   page's only <h1> (priority 5) and the price band (priority 7) - lives
+	   BEFORE the legacy <main>. Slicing from the article section onward threw
+	   it away: measured live, ashira-sde-dov was serving zero <h1> because of
+	   exactly this, while its own id is the example in the comment above.
+	   Only the isolate-the-article branch below loses it; the fallback branch
+	   already preserves it, so this is captured and re-attached there only. */
+	$prefix = '';
 	if ( stripos( $original, 'nlv2-showroom' ) !== false ) {
 		// Attribute-order-proof: the article section may carry id/aria before class
 		// (e.g. <section id="nlv2-ashira-info" class="nlv2-section">). The old literal
@@ -535,6 +543,9 @@ add_filter( 'the_content', function ( $content ) {
 			$candidate = ( $end !== false ) ? substr( $original, $start, $end - $start ) : substr( $original, $start );
 			if ( trim( wp_strip_all_tags( $candidate ) ) !== '' ) {
 				$article = $candidate; // the SEO article only; legacy showroom dropped
+				if ( preg_match( '#<main\b[^>]*class="[^"]*nlv2-showroom[^"]*"#i', $original, $mm, PREG_OFFSET_CAPTURE ) ) {
+					$prefix = substr( $original, 0, $mm[0][1] );
+				}
 			}
 		} else {
 			// No recognizable article section: strip the bounded legacy main, but only
@@ -547,7 +558,7 @@ add_filter( 'the_content', function ( $content ) {
 	}
 	$engine = nadlan_showroom_engine_shortcode( array( 'page' => 'project', 'project' => '', 'id' => '' ) );
 	// Wrap the article so editorial.css can style it (cream/gold system).
-	return $engine . '<div class="nadlan-project-article nadlan-guide">' . nadlan_showroom_engine_weave( $article, $pid ) . '</div>';
+	return $engine . $prefix . '<div class="nadlan-project-article nadlan-guide">' . nadlan_showroom_engine_weave( $article, $pid ) . '</div>';
 }, 8 );
 
 if ( ! function_exists( 'nadlan_showroom_engine_weave' ) ) {
