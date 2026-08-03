@@ -1,5 +1,49 @@
 # AGENT-LOG - the God brain (append-only, newest on top)
 
+## 2026-08-03 (73) - v1.72.149 packaged: languages unlocked for ALL projects, hybrid mobile nav, earth model race fix
+148 deployed BY THE OWNER via deploy148.ps1 and verified live
+(health 1.72.148, hamburger 42x42 opens 7-item panel at 375px,
+13 bidi-correct DOM pins in /earth/, tiles load). Two live bugs
+found in QA and fixed in 149: (a) sampleHeightMostDetailed
+against Google P3DT never settles - zero models planted; now
+races a 6s timer, fallback h=10m, verified by manual plant of
+all 4 GLBs (utopia/dimri/ashira/rainbow) on the live page. (b)
+tour skips under prefers-reduced-motion - correct behavior,
+automation env has it on, real devices will run it. LANGUAGE
+DISCOVERY: owner's rainbow translations EXIST
+(rainbow-tel-aviv-en 200 English H1, -ru 200 Russian H1) - my
+"only utopia" report was wrong (sample window). Root cause of
+"looks funny": utopia-sde-dov.php sets language context ONLY
+for its slug family; every other variant renders Hebrew chrome.
+Worse: even utopia-ar shows Hebrew nav/tagline/footer (theme
+header does not route through nadlan_i18n) and NO variant had
+hreflang, utopia included. inc/project-lang.php (149) fixes all
+three: lang context for any -(en|fr|ru|ar) project slug,
+bidirectional hreflang cluster + x-default per family
+(transient-cached, invalidated on save), footer JS retranslates
+the 11 fixed chrome strings by exact match (nav 7 + tagline +
+skip + contact) in en/fr/ru/ar. Canonicals untouched. HYBRID
+MOBILE NAV (149, owner preference "see the text"): restore
+platform.css's swipeable pill row (display:flex!important,
+doubled class, enqueue prio 99 to print after the override
+sheet) AND keep the hamburger for the full vertical list;
+verified live by injection: closed = 40px row + 42px toggle,
+open = 349px column panel. Research bank of the day (full
+reports in chat): "Poshofsky" = PRASHKOVSKY sealed-bid tender
+Aug 9-12 2026 (373 units, guarantee 25K, bids hidden, count
+shown) - content window THIS WEEK; Zillow gap = retention loop
+(saves, alerts, recently-viewed) - owner ordered FULL
+implementation; commercial twin candidates: The Park Bnei Brak
+(62K sqm, ZERO leases) + ToHa2 (owner wants BOTH, full pages);
+rainbow pin sits in Lamed outside the quarter (truth: plot 111
+Eshkol, planning unit 9) and 4+3+2 projects share duplicated
+placeholder coords - truth-audit run designed. Translation
+factory prompt (10 projects, slugs in
+docs/prompts/translation-factory-2026-08.md) + auction pillar
+article prompt delivered in chat for the owner's content agent.
+deploy149.ps1 + files149.json + d149-00..03 ready in the
+7d295ba6 scratchpad; owner runs it like 148.
+
 ## 2026-08-03 (72) - v1.72.148 EARTH V2: Hebrew fixed, hover not stick, auto-tour, our models in the world
 Owner's four /earth/ complaints closed in one rewrite of
 inc/earth-experience.php. (1) Hebrew pin names rendered

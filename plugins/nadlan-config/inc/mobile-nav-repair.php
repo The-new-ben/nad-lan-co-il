@@ -39,7 +39,16 @@ add_action( 'wp_enqueue_scripts', function () {
 .nlpc-site-header.is-nav-open-injected .nlpc-nav-toggle span:nth-child(3){transform:translateY(-6px) rotate(-45deg)}
 @media(max-width:760px){
  .nlpc-nav-toggle{display:inline-flex}
- .nlpc-site-header.is-nav-open-injected .nlpc-primary-nav{display:flex!important;grid-column:1/-1;
+ /* The owner wants the menu text VISIBLE on mobile, not only behind a tap.
+    platform.css already designed the closed state as a swipeable pill row
+    (order:3, overflow-x:auto, hidden scrollbar); the parent override sheet
+    killed it with display:none !important in favour of a hamburger that was
+    never injected. Both affordances now live together: the row shows the
+    top destinations at a glance, the hamburger opens the full vertical
+    list. This rule must outrank the override sheet, hence the doubled
+    class and the 99 enqueue priority that prints us after the theme. */
+ .nlpc-site-header .nlpc-primary-nav.nlpc-primary-nav{display:flex!important}
+ .nlpc-site-header.is-nav-open-injected .nlpc-primary-nav{grid-column:1/-1;
   flex-direction:column;align-items:stretch;overflow-x:visible;gap:2px;padding:10px 0 4px;
   border-top:1px solid var(--nlp-border,#D9D2C4)}
  .nlpc-site-header.is-nav-open-injected .nlpc-primary-nav a{min-height:46px;display:flex;
@@ -49,7 +58,7 @@ add_action( 'wp_enqueue_scripts', function () {
 	wp_register_style( 'nadlan-mnav', false, array(), NADLAN_CONFIG_VERSION );
 	wp_enqueue_style( 'nadlan-mnav' );
 	wp_add_inline_style( 'nadlan-mnav', $css );
-} );
+}, 99 );
 
 add_action( 'wp_footer', function () {
 	?>

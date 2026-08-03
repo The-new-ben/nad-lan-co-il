@@ -558,10 +558,20 @@ html,body{margin:0;height:100%;overflow:hidden;background:#14130F;font-family:He
         e.nlProject = p;
       });
     }
+    /* sampleHeightMostDetailed against the Google photorealistic tileset can
+       hang forever waiting for detail tiles (observed live 2026-08-03: promise
+       never settled, zero models planted). The models matter more than a
+       perfect ground height, so sampling races a 6s timer; whoever loses is
+       ignored. */
+    var placed = false;
+    function placeOnce(heights) {
+      if (!placed) { placed = true; place(heights); }
+    }
     if (viewer.scene.sampleHeightSupported) {
-      viewer.scene.sampleHeightMostDetailed(carto).then(place).catch(function () { place(null); });
+      viewer.scene.sampleHeightMostDetailed(carto).then(placeOnce).catch(function () { placeOnce(null); });
+      setTimeout(function () { placeOnce(null); }, 6000);
     } else {
-      place(null);
+      placeOnce(null);
     }
   }
 
