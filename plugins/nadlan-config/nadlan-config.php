@@ -2,7 +2,7 @@
 /**
  * Plugin Name: NadLan Config
  * Description: Lead-capture foundation: nadlan_lead CPT + lead-form handler + healthcheck. Read skills/nadlan-config-plugin.md.
- * Version: 1.72.147
+ * Version: 1.72.148
  * Author: nad-lan.co.il
  * License: GPL-2.0+
  * Requires PHP: 7.4
@@ -16,7 +16,7 @@ if ( ! defined( 'ABSPATH' ) ) {
    above (the release script bumps all three). A frozen ver= string once kept
    browsers on a June engine.js for weeks - never hardcode versions in enqueues. */
 if ( ! defined( 'NADLAN_CONFIG_VERSION' ) ) {
-	define( 'NADLAN_CONFIG_VERSION', '1.72.147' );
+	define( 'NADLAN_CONFIG_VERSION', '1.72.148' );
 }
 
 /* ---------- v1.5.0: directory cards, claim funnel, auction engine ----------

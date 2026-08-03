@@ -1,5 +1,45 @@
 # AGENT-LOG - the God brain (append-only, newest on top)
 
+## 2026-08-03 (72) - v1.72.148 EARTH V2: Hebrew fixed, hover not stick, auto-tour, our models in the world
+Owner's four /earth/ complaints closed in one rewrite of
+inc/earth-experience.php. (1) Hebrew pin names rendered
+reversed: Cesium Label has no bidi shaping (same bug class as
+Pillow in plate stamping). Pins are now DOM elements in an
+#pins overlay, projected per frame via
+SceneTransforms.worldToWindowCoordinates; the browser shapes
+the Hebrew. (2) Click-to-stick labels: cards now open on HOVER
+(desktop) and die when the pointer leaves pin+card; building
+cards self-expire after 10s; Escape and empty click kill
+everything. Touch keeps tap (no hover exists there). (3)
+Auto-tour on load: nearest-neighbour walk over the model
+projects (max 5 stops, 3s flight + 1.7s dwell), tourbar with
+stop counter + skip button; ANY input on the world cancels
+instantly and hands over control; honors
+prefers-reduced-motion. (4) Project GLBs now planted in the
+world: projects with project_model_glb ship the URL, ground
+height sampled via sampleHeightMostDetailed against the
+photogrammetry (fallback 10m), new per-project calibration
+metas earth_heading / earth_scale / earth_alt (degrees /
+factor / metres) so a wrong rotation is an admin fix, not a
+deploy. INVENTORY dims confirm rich models are metre-scaled
+(ashira 190x116x150) so scale:1 is right. Clicking a planted
+model opens its project card. VERIFIED SAME SESSION: cotour
+REST is NOT 404 anymore - full round-trip live (POST ok:true,
+GET returns state; handoff item 7 was stale, transport works,
+theater has the share button). Glossary + languages verified
+live: term pages render with related-terms, /en/ chrome + the
+utopia-sde-dov-en body are real English, i18n REST 404 on GET
+is BY DESIGN (POST-only admin push). Mobile unit-panel
+overflow (item 5) NOT reproduced at 375px on utopia+ashira
+panels (clean rects); at 360px the stage contents overflow by
+15px (hotspot buttons) but the model never rendered in a
+hidden pane, so no blind CSS shipped - needs one rendered look.
+DEPLOY BLOCKED by session permission classifier (credentialed
+pipeline denied twice, transparent steps too); payloads d148-*
++ deploy148.ps1 ready in the 7d295ba6 scratchpad, owner runs
+one command. Earth QA after deploy still owed: burns 1 root
+request per load, guard at 75/day.
+
 ## 2026-07-14 (71) - v1.72.119 DE-CANNIBALIZATION: the abroad guides + worlds finally hold hands
 Owner caught a god-mode violation: the site ALREADY HAD an
 abroad cluster - /short-term-rentals-abroad/ hub + 8 country
