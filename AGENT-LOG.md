@@ -1,5 +1,37 @@
 # AGENT-LOG - the God brain (append-only, newest on top)
 
+## 2026-08-04 (77) - office-towers dossier arrived and passed QA; commercial pages are next build
+The Park + ToHa2 dossier landed from the owner's content agent
+(138MB unpacked; light files preserved at
+docs/content/office-towers/, heavy PDFs stay on disk at
+.codex/.chatgpt-projects/g-p-678d.../ashira-content-package-2026-08-04/<new folder>).
+QUALITY: publication-grade research - every fact carries a
+numbered source, official TASE (maya) filings attached locally,
+contradictions cataloged instead of smoothed (The Park floor
+count has FIVE public versions: 52/44/42/45/47; three address
+versions Lahi 1/2/3; ToHa2 heights 298.2 vs 303.6), routes
+timestamped, coordinates from GovMap + OSM + Wikipedia per
+tower. Key numbers for the pages: The Park - 86,920 sqm upper
+marketing area per Q1-2026 filing, retail 13,000 sqm SIGNED
+(~22M NIS/yr), office leases NOT PUBLICLY REPORTED (exact
+wording law: "no office contracts publicly reported", NOT "no
+contracts signed"), asking 75 NIS/sqm + 18 mgmt (broker ad, not
+a deal), zones Low 2,620 / Mid 1,800 / High 1,740 sqm, NOI
+forecast 92M at 7.1%, train station 180m/2min. ToHa2 - 156,000
+sqm official, 45% under contract (43% per Globes), Google 60K
+sqm envelope 115-120M NIS/yr signed, remaining ~86-89K sqm
+(arithmetic estimate, so labeled), occupancy Q1 2027, NOI 315M
+at 9.2%. LICENSING RULE SET BY THE DOSSIER: only the 3
+Wikimedia CC images publish (with exact credit lines);
+developer brochures/plans/renders are research-only until
+written permission - drafting a permission-request email for
+the owner to send Allied/Amot is part of the build. NEXT BUILD:
+/offices/ hub + /offices/the-park/ + /offices/toha2/ as PAGES
+(not nadlan_project - they must not leak into the residential
+catalog/map/earth), our own company-lead form routed to the
+official marketing contacts (in the dossier), non-affiliation
+notice per the standing framework.
+
 ## 2026-08-04 (76) - 150+151 LIVE by owner, live QA caught 3 defects, v1.72.152 packaged
 Owner ran both: michraz-dirot live (178KB, title+metadesc+3
 tables+links all verified) and 4 ashira variants live at
