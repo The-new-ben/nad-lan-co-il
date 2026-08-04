@@ -1,5 +1,33 @@
 # AGENT-LOG - the God brain (append-only, newest on top)
 
+## 2026-08-04 (75) - ashira 4-language package passed the QA gate, deploy151-content ready
+First output of the translation factory arrived from the owner's
+content agent: ashira-sde-dov in EN/FR/RU/AR plus a frozen
+source ledger, a live Google intent ledger (real Chrome, Israel
+location, per-language autocomplete/PAA) and their own QA
+report. MY INDEPENDENT GATE PASSED: zero em/en dashes, exactly
+one H1 per file, zero Hebrew-script leakage in bodies (9,375 /
+9,335 / 6,970 / 5,665 words), slugs exactly base+suffix (the
+149 platform auto-wires lang context + hreflang + chrome from
+those), all 6 internal links live-200. Fact spine cross-checked:
+ashira = Avisror, lot 101 Eshkol, 4 buildings 35/16/8/8, 406
+homes (202 tower + 204 perimeter), full permit reported March
+2026, foundations spring 2026, target 2030 as target only.
+NOTABLE: their ledger firewalls OUR OWN Hebrew page's five
+demo units (18W/14C/10P/7A/4G) as prohibited-to-cite
+illustrative records, and flags "Levi Eshkol 29" as an
+UNVERIFIED address - two truth-audit items for the HEBREW page.
+Packaged: build151.py (strips metadata+H1, MD->HTML, per-language
+FAQPage JSON-LD: 30/31/14/20 questions), deploy151-content.ps1
+(content-only, no version bump, multi-post seed as
+nadlan_project, idempotent by slug, NO lat/lng/glb meta copied
+so no duplicate pins anywhere, self-verifies each URL, cleans
+up). Package preserved at docs/content/ashira/. GREEN LIGHT
+given for the remaining 9 projects in the same package format.
+STILL PENDING OWNER: deploy150 (michraz-dirot article) - health
+checked today shows 1.72.149, the Prashkovsky window opens Aug 9
+19:00. Run order: deploy150 first, then deploy151-content.
+
 ## 2026-08-03 (74) - v1.72.150 packaged: the michraz-dirot pillar + hreflang dedupe
 149 deployed by the owner TWICE by accident - verified harmless
 by design (second run same MD5s, bak149 not overwritten, still
