@@ -91,6 +91,9 @@ add_action( 'wp_head', function () {
 		return;
 	}
 	$codes = array( 'he' => 'he', 'en' => 'en', 'fr' => 'fr', 'ru' => 'ru', 'ar' => 'ar' );
+	/* single-owner flag: showroom-engine's older per-project emitter steps
+	   aside when this cluster printed (found doubled live on ashira-en) */
+	$GLOBALS['nl_plang_printed'] = true;
 	echo "\n<!-- project language cluster -->\n";
 	foreach ( $fam as $lang => $url ) {
 		printf( '<link rel="alternate" hreflang="%s" href="%s" />' . "\n", esc_attr( $codes[ $lang ] ), esc_url( $url ) );

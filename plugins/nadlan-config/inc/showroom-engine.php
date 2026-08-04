@@ -630,6 +630,9 @@ add_action( 'wp_footer', function () {
    Google serves the right language. Only for siblings that exist and are published. */
 add_action( 'wp_head', function () {
 	if ( ! is_singular( 'nadlan_project' ) ) { return; }
+	/* project-lang.php (prio 3) owns the cluster now; this stays only as a
+	   fallback for a request where it did not print (one emitter, never two) */
+	if ( ! empty( $GLOBALS['nl_plang_printed'] ) ) { return; }
 	$pid = get_queried_object_id();
 	if ( ! $pid || ! nadlan_showroom_engine_active_for( $pid ) ) { return; }
 	$proj = nadlan_showroom_engine_build_project( get_post( $pid ) );

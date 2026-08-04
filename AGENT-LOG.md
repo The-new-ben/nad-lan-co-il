@@ -1,6 +1,31 @@
 # AGENT-LOG - the God brain (append-only, newest on top)
 
-## 2026-08-04 (75) - ashira 4-language package passed the QA gate, deploy151-content ready
+## 2026-08-04 (76) - 150+151 LIVE by owner, live QA caught 3 defects, v1.72.152 packaged
+Owner ran both: michraz-dirot live (178KB, title+metadesc+3
+tables+links all verified) and 4 ashira variants live at
+/projects/ashira-sde-dov-{en,fr,ru,ar}/ (249-287KB each,
+htmlLang correct, English chrome, H1 present). NOTE: seed
+UPDATED existing posts 4924-4927 - owner had earlier ashira
+variant drafts; old revisions preserved in WP. Live QA caught
+three defects, all fixed in 152: (1) hreflang STILL doubled -
+the "wp_head twice" theory was WRONG; hard evidence (my set
+prints "/>", second set prints ">") led to showroom-engine.php
+:629, an older per-project emitter that predates project-lang;
+fix = single-owner flag $GLOBALS['nl_plang_printed'], engine
+defers, kept as fallback. (2) michraz FAQPage JSON-LD corrupted
+in content by the filter chain (gershayim in Hebrew answers
+broke an escape at pos 4782; English survived, so ashira-en
+parsed valid) - fix = new inc/schema-meta.php prints
+_nl_faq_schema post meta at wp_head (validated json_decode
+gate), reseed strips inline scripts from all 5 posts and writes
+meta instead (5 schemas rebuilt+validated at build). (3)
+/michraz-dirot/ renders NO H1 (the page template does not print
+the title) - reseed prepends <h1> to that post_content.
+deploy152.ps1 = phpswap (project-lang, showroom-engine,
+schema-meta, nadlan-config 1.72.152, bak152 rollback) + reseed
+stage with per-slug verify incl. faq-in-head and
+hreflang-en-count checks. Version 1.72.151 intentionally
+SKIPPED for the plugin (151 was the content-only deploy).
 First output of the translation factory arrived from the owner's
 content agent: ashira-sde-dov in EN/FR/RU/AR plus a frozen
 source ledger, a live Google intent ledger (real Chrome, Israel
