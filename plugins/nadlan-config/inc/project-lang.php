@@ -80,9 +80,12 @@ add_action( 'save_post_nadlan_project', function ( $post_id ) {
 } );
 
 add_action( 'wp_head', function () {
-	if ( ! is_singular( 'nadlan_project' ) ) {
+	/* the showroom template fires wp_head twice; the cluster prints once */
+	static $done = false;
+	if ( $done || ! is_singular( 'nadlan_project' ) ) {
 		return;
 	}
+	$done = true;
 	$fam = nadlan_plang_family( get_queried_object_id() );
 	if ( count( $fam ) < 2 ) {
 		return;

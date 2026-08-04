@@ -1,6 +1,35 @@
 # AGENT-LOG - the God brain (append-only, newest on top)
 
-## 2026-08-03 (73) - v1.72.149 packaged: languages unlocked for ALL projects, hybrid mobile nav, earth model race fix
+## 2026-08-03 (74) - v1.72.150 packaged: the michraz-dirot pillar + hreflang dedupe
+149 deployed by the owner TWICE by accident - verified harmless
+by design (second run same MD5s, bak149 not overwritten, still
+holds 148 originals; health ok, swap route cleaned). 149 QA all
+green: rainbow-en chrome in English, htmlLang=en, full 5-lang
+hreflang cluster (rainbow has ALL FOUR variants - fr+ar exist
+too), earth models plant via the 6s race fallback (4/4 at h=10),
+hamburger hybrid live. One catch: hreflang cluster printed TWICE
+(showroom template fires wp_head twice) - fixed with a static
+flag, ships in 150. THE PILLAR: owner's ChatGPT agent returned
+the auction guide - 6,434 words, 14 H2, 19 FAQ pairs, zero em/en
+dashes, EVERY internal link verified live-200 (including
+selling-apartment/real-estate-auction-sale which I feared was
+invented), facts cross-checked against my independent Prashkovsky
+research (373 units summing exactly per-project, 25K guarantee,
+3-bids-1-win, Aug 9-12 19:00, FBC + Baker Tilly). Its takanon-only
+claims (20-participant cap, 5+10 business days vs the press's 14)
+could not be re-verified from here (site geo-blocks US fetchers)
+but are hedged in-text and sourced. Packaged as a PAGE at
+/michraz-dirot/ via a new seed-snippet stage in deploy150.ps1:
+article HTML + meta travel as b64 media (ASCII-only .ps1, Hebrew
+in payloads per the PS5.1 BOM lesson), seed route creates or
+updates by slug (idempotent, double-run safe), sets Yoast
+metadesc, FAQPage JSON-LD embedded in post_content (admin context
+keeps script tags), page GET-verified by the script. Build:
+build150.py converts MD->HTML (python-markdown extra), strips the
+H1 (theme prints the title), auto-extracts the FAQ section into
+schema. DEADLINE: owner must run deploy150.ps1 before Aug 9 19:00
+- the Prashkovsky window IS the search wave. Article source
+preserved at docs/content/michraz-dirot.md.
 148 deployed BY THE OWNER via deploy148.ps1 and verified live
 (health 1.72.148, hamburger 42x42 opens 7-item panel at 375px,
 13 bidi-correct DOM pins in /earth/, tiles load). Two live bugs
