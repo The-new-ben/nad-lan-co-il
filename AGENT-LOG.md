@@ -1,5 +1,25 @@
 # AGENT-LOG - the God brain (append-only, newest on top)
 
+## 2026-08-05 (79) - 154 LIVE and verified; 155-content packaged (board prompts + ashira lead)
+Owner ran 150/151/152/153-board/154 in one sitting. Deep
+verification of 154: michraz FAQ schema LIVE (b64 fix works),
+exactly ONE real h1 (the other 3 "<h1" regex hits are strings
+inside code comments printed on the page - false alarm closed),
+hreflang single, css-as-TEXT gone (the deploy check false-
+flagged the legitimate enqueued style), and THE DNA WORKS:
+rainbow-tel-aviv now opens lead-then-notice, verified in body
+order. ashira-he fell back BY DESIGN - its post_content does
+not start with an extractable paragraph. 155-content packaged:
+(a) /board/ v2 with the PROMPTS section the owner asked for
+(dimri translation, coordinates run, facilities mapping, DAMAC
+replacement - all copyable from mobile behind the password);
+(b) ashira-HE opening paragraph (verified dossier facts only:
+406 units, 4 buildings 35/16/8/8, lot 101 Eshkol, permit March
+2026, foundations spring 2026, target 2030) prepended
+idempotently (marker-guarded). Zero em/en dashes scanned.
+Remaining 155-code queue: auction upsell in listing flow +
+area-price lead line from comps.
+
 ## 2026-08-05 (78) - v1.72.154 packaged: intent-first page order, css leak killed, window labels say the action
 The owner's DNA law implemented. (1) INTENT-FIRST ORDER
 (legal-notice.php): prio-0 filter cuts the article's first
@@ -18,9 +38,9 @@ shipped a <style> block INSIDE the content stream - raw
 project page; moved to wp_add_inline_style, plus .nl-lead
 styling rides the same handle. (3) WINDOW LABELS (i18n.js +
 engine.js): tab_view/tab_view_dir now state the action in all 5
-languages ("הנוף מהחלון · {d}", "Window view · {d}", FR/RU/AR
+languages ("×”× ×•×£ ×ž×”×—×œ×•×Ÿ Â· {d}", "Window view Â· {d}", FR/RU/AR
 suffix overrides added) and the winstage bar opens with a bold
-winview_title ("כך נראה הנוף מהחלון של הדירה הזאת"). Feature
+winview_title ("×›×š × ×¨××” ×”× ×•×£ ×ž×”×—×œ×•×Ÿ ×©×œ ×”×“×™×¨×” ×”×–××ª"). Feature
 bar already carries the designer link sitewide - the
 preload+lead-transfer part belongs to the engine-swap track.
 (4) schema-meta.php reads BASE64 (with legacy fallback);
@@ -251,12 +271,12 @@ intents (guides = short-term-rental OPERATION: regulation,
 licensing, taxes; worlds = BUYING new projects: 3D, prices,
 process) -> differentiation + linking, no merging.
 SHIPPED: nadlan_gw_abroad_guides() map; every world page links
-its guide as the FIRST tools row ("מדריך מעמיק: השכרה לטווח
-קצר ומיסוי בX"); every guide page gets a role-clear box to its
-world ("לעולם ההשקעות בX", hub/spain/portugal -> /global/);
-/global/ hub gained a "מדריכי עומק" strip (all 8 guides); hub
+its guide as the FIRST tools row ("×ž×“×¨×™×š ×ž×¢×ž×™×§: ×”×©×›×¨×” ×œ×˜×•×•×—
+×§×¦×¨ ×•×ž×™×¡×•×™ ×‘X"); every guide page gets a role-clear box to its
+world ("×œ×¢×•×œ× ×”×”×©×§×¢×•×ª ×‘X", hub/spain/portugal -> /global/);
+/global/ hub gained a "×ž×“×¨×™×›×™ ×¢×•×ž×§" strip (all 8 guides); hub
 title now names 8 destinations not 3. /site-map/: all 8 worlds
-(was 3), the abroad hub+guides note, NEW "מוקדי ידע" card
+(was 3), the abroad hub+guides note, NEW "×ž×•×§×“×™ ×™×“×¢" card
 (investment/lawyer/tax/selling/commercial/new-projects/
 auction - every URL verified 200 pre-ship). Old /sitemap/ now
 301s to /site-map/ (rewrite flush v2). ALL crosslinks verified
@@ -290,21 +310,21 @@ CTAs everywhere; check glossary generation.
 2. MENUS: the real header is the CHILD-THEME template part
    (nlpc-primary-nav in parts/header.html, DB-customized) - NOT
    the wp_navigation post (that one got a full 8-worlds submenu
-   anyway for future block-nav use). Added "נדל\"ן בחו\"ל" ->
+   anyway for future block-nav use). Added "× ×“×œ\"×Ÿ ×‘×—×•\"×œ" ->
    /global/ to the live header via the template-parts REST +
    synced the repo theme file. Verified in the live header HTML.
 3. FOOTER: the 4-link below-footer strip (glossary-autolink
-   wp_footer) retired - replaced with ONE quiet line "מפת האתר
-   המלאה" -> /site-map/, which also anchors the HTML sitemap on
+   wp_footer) retired - replaced with ONE quiet line "×ž×¤×ª ×”××ª×¨
+   ×”×ž×œ××”" -> /site-map/, which also anchors the HTML sitemap on
    every page. Verified: old strip gone, new line live.
 4. NEW inc/cta-start.php: context-aware terracotta start pill
    (bottom-center, clear of the AI/WA fabs): properties archive+
-   singles "פרסמו את הדירה שלכם"+חינם badge -> /post-listing/,
-   renewal pages "בדקו את הבניין שלכם"+חינם -> /check/, glossary
+   singles "×¤×¨×¡×ž×• ××ª ×”×“×™×¨×” ×©×œ×›×"+×—×™× × badge -> /post-listing/,
+   renewal pages "×‘×“×§×• ××ª ×”×‘× ×™×™×Ÿ ×©×œ×›×"+×—×™× × -> /check/, glossary
    -> professionals. Surfaces with native primary CTAs excluded.
    Filterable nadlan_cta_start_map. Verified live on both.
 5. GLOSSARY GENERATION: HEALTHY - 5 new terms queued today at
-   50-minute intervals (latest "בטון רזה"). No fix needed.
+   50-minute intervals (latest "×‘×˜×•×Ÿ ×¨×–×”"). No fix needed.
 Held for owner decision (his "tell me what you think" items):
 page-generation engine for intl projects; further god-mode
 floats - in the chat report.
@@ -322,18 +342,18 @@ fetch blanked the map for a day. Diag snippet from the host:
 overpass-api.de answers (6s, slow), kumi mirror times out.
 V2 POI ENGINE (nearby-poi.php rewritten): nwr + "out tags
 center" (ways carry center coords), generic Hebrew labels for
-nameless items (תחנת אוטובוס/פארק/גן משחקים), haversine distance
+nameless items (×ª×—× ×ª ××•×˜×•×‘×•×¡/×¤××¨×§/×’×Ÿ ×ž×©×—×§×™×), haversine distance
 on every item (sorted), 2 mirrors with failover, empty cached
 15min only / real data 3 days, MORE buyer categories: parks/
 playgrounds/gardens, cafes/restaurants, community centres,
 libraries.
 SURFACES: project map (nlpjx) gets parks+food chips (labels x5
-langs), LIVE COUNTS on every chip ("חינוך (11)"), zero-count
-chips grey out, popups show name+distance ("כ-270 מטר
-מהפרויקט"); property page (property-showroom) had a caption
+langs), LIVE COUNTS on every chip ("×—×™× ×•×š (11)"), zero-count
+chips grey out, popups show name+distance ("×›-270 ×ž×˜×¨
+×ž×”×¤×¨×•×™×§×˜"); property page (property-showroom) had a caption
 PROMISING filters that did not exist - now has a real 7-chip
 row (Leaflet layerGroups), counts, distance popups, honest
-caption; property "מה יש בסביבה" list shows distances.
+caption; property "×ž×” ×™×© ×‘×¡×‘×™×‘×”" list shows distances.
 VERIFIED LIVE on Rainbow TLV: schools 11, kindergartens 5,
 parks 16, transit 16, shops 13, health 3, food 16 - real names
 + distances in the payload. Property surface chips render;
@@ -343,13 +363,13 @@ reads as "feature is dead" to the owner.
 NEXT in round: drone-map/city maps richness pass; consider
 POI pre-warm cron for geocoded flagships.
 
-## 2026-07-13 (68) - v1.72.116 DATA HONESTY: 938 compounds were mislabeled "תמא 38" + map hardening
+## 2026-07-13 (68) - v1.72.116 DATA HONESTY: 938 compounds were mislabeled "×ª×ž× 38" + map hardening
 Owner's screenshot of /urban-renewal/map/ exposed two things.
-(1) THE BIG ONE: every city card said "תמא 38: N" == total.
+(1) THE BIG ONE: every city card said "×ª×ž× 38: N" == total.
 Investigated the gov.il CKAN source (f65a0daf...): the dataset
 is the PINUI-BINUI register; Maslul holds the sub-track -
-מיסוי (363) / רשויות (232) / blank (277) / טרם הוכרז (71).
-It NEVER contains the literal word "פינוי", so import.php's
+×ž×™×¡×•×™ (363) / ×¨×©×•×™×•×ª (232) / blank (277) / ×˜×¨× ×”×•×›×¨×– (71).
+It NEVER contains the literal word "×¤×™× ×•×™", so import.php's
 default stamped ALL 938 compounds project_type='tama38' -
 factually wrong on every compound page, lookup and map card.
 FIX: import maps honestly - project_type='pinui_binui' for all
@@ -357,18 +377,18 @@ FIX: import maps honestly - project_type='pinui_binui' for all
 status strings cleaned of nbsp+runs. FULL REIMPORT run live
 (temp agentfix snippet, 100-row batches - 500-row batches
 timed out on the host; snippet deleted, route 404 verified).
-Map cards now read "N מתחמי פינוי בינוי בפנקס · מסלול מיסוי: X
-· מסלול רשויות: Y"; copy says "מתחמי פינוי בינוי מתוך המאגר
-הרשמי" (71 rows are pre-declaration, so not "מוכרזים").
+Map cards now read "N ×ž×ª×—×ž×™ ×¤×™× ×•×™ ×‘×™× ×•×™ ×‘×¤× ×§×¡ Â· ×ž×¡×œ×•×œ ×ž×™×¡×•×™: X
+Â· ×ž×¡×œ×•×œ ×¨×©×•×™×•×ª: Y"; copy says "×ž×ª×—×ž×™ ×¤×™× ×•×™ ×‘×™× ×•×™ ×ž×ª×•×š ×”×ž××’×¨
+×”×¨×©×ž×™" (71 rows are pre-declaration, so not "×ž×•×›×¨×–×™×").
 (2) The map showed as a BLACK BOX in the owner's screenshot:
 markup/token/data all verified healthy - his QA browser lacks
 WebGL and mapbox-gl dies silently. Added fail(): try/catch on
 Map init + script onerror -> hides the canvas and shows an
 honest note pointing to the crawlable directory below. Also
 added centroids for ALL 76 register cities (was 35; incl.
-spelling variants גבעתים/פתח תקוה).
+spelling variants ×’×‘×¢×ª×™×/×¤×ª×— ×ª×§×•×”).
 Verified live: 948 total, 76/76 cities pinned, misui 363 +
-rashuyot 232, zero תמא-38 labels on the page.
+rashuyot 232, zero ×ª×ž×-38 labels on the page.
 NEXT (owner order, new round): MAPS UPGRADE site-wide - POI
 filter chips that actually filter, richer buyer info on every
 map surface.
@@ -404,7 +424,7 @@ labels, AND the REST error messages (client sends lang, server
 answers in it; the no-enumeration error stays identical per
 language). /login/?lang=en + /signup/?lang=en are LTR with
 "Welcome back"/"Nice to meet you", branded EN titles, and a
-pill toggle (English <-> עברית) that preserves the redirect
+pill toggle (English <-> ×¢×‘×¨×™×ª) that preserves the redirect
 param. Verified live both directions + EN error message E2E.
 MAP PAGE SEO (/urban-renewal/map/, /map/ 301s there): the page
 was SEO-thin - 187 visible words, ZERO crawlable links (the
@@ -487,7 +507,7 @@ THE HOVER FEEL: their official 27.6MB hero drone film uploaded to
 OUR media + a cinematic video band on intl singles (gw_video meta,
 CMS field): autoplay muted loop playsinline with a REAL <source>
 (autoplay-media law), poster from gallery, controls, honest
-caption "וידאו: חומרי היזם הרשמיים, בהרשאה", reduced-motion-only
+caption "×•×™×“××•: ×—×•×ž×¨×™ ×”×™×–× ×”×¨×©×ž×™×™×, ×‘×”×¨×©××”", reduced-motion-only
 degrade. Verified live on the DAMAC page.
 NEXT (task #83 continues): THE ENTERPRISE AUTH SYSTEM - branded
 /login+/signup with roles (buyer/lister/renewal-rep/professional/
@@ -519,14 +539,14 @@ OUR PAGE (/global/project/damac-riverside-views-dubai/):
   engineered RIVER (seafront water plate), 18.9K tris.
 - THE ISRAELI ENGINE mounted (engine=true): 120 units sampled
   across all 8 clusters with authored hotspot positions, cluster
-  names in unit titles (קלאסטר Indigo), sun/view-from-window/
+  names in unit titles (×§×œ××¡×˜×¨ Indigo), sun/view-from-window/
   walk-inside/Studio/buyflow native.
 - THEIR AUTHORIZED MEDIA on our page: 6 official images uploaded
   to OUR media (hero as model poster + gallery incl. floating
   stage + oils lake) + the OFFICIAL BROCHURE PDF hosted by us with
   a gold button. Permission noted in the about text.
 - Real name (authorized), monthly-plan framing quoted as the
-  developer's marketing, price-from labeled "לאימות מול DAMAC".
+  developer's marketing, price-from labeled "×œ××™×ž×•×ª ×ž×•×œ DAMAC".
 - Scheduler routed to owner; he/en/ar about texts.
 VERIFIED LIVE: engine mounted, 120 authored hotspots, riverside
 GLB, DAMAC poster, gallery, brochure button, clusters, permission
@@ -583,12 +603,12 @@ Owner: "Israeli flagship and better, all the way." Shipped in one release:
   WhatsApp invitation to the owner's number carries the project
   name + time, ICS invitation issued, appointment visible in
   /my-appointments/. LEFT LIVE for the owner to see (labeled
-  בדיקת מערכת) - he wanted to receive a real invitation.
+  ×‘×“×™×§×ª ×ž×¢×¨×›×ª) - he wanted to receive a real invitation.
 - FLOORPLANS WIRED TO UNITS: planSvg() draws a schematic unit plan
   (balcony strip, open living+kitchen, N bedrooms, bath, sqm
   labels) inside every apartment panel - labeled schematic, 3
   languages. Not the sales drawing; the honest v1 of "plans wired".
-- SUN/ORIENTATION (להמחשה): morning-east / noon-south /
+- SUN/ORIENTATION (×œ×”×ž×—×©×”): morning-east / noon-south /
   afternoon-west presets swing the camera azimuth + exposure on
   the model. AR MODE: ar-modes=scene-viewer webxr quick-look -
   investors can place the compound on their table from a phone.
@@ -596,7 +616,7 @@ Owner: "Israeli flagship and better, all the way." Shipped in one release:
   open to EN), 3-lang picker strings (TT.he/en/ar), gw_about_ar
   meta (Lion + Sky Gardens written), hreflang ar, RTL. Worlds
   pages stay HE/EN (ar coerces to en) - honest scope.
-- ILS DISPLAY: gw_fx_ils meta -> "≈ ₪X (שער להמחשה)" under the
+- ILS DISPLAY: gw_fx_ils meta -> "â‰ˆ â‚ªX (×©×¢×¨ ×œ×”×ž×—×©×”)" under the
   price fact. WA SHARE button on singles.
 - THE DUBAI FLAGSHIP: sky-gardens-jvc-dubai (5559 area) - modeled
   on REAL JVC archetypes from research (Floarea-Skies-class G+4
@@ -740,7 +760,7 @@ wrapping it... jewel of the crown." Built inc/global-worlds.php:
   price/specs/GLB/demo flag) - developers feed like IL projects.
 - TOOLS FLOW-IN: rentals manager, mortgage calc, professionals
   crosslinks on every world page; dark devcta band on hub.
-- WIRED: megafooter link ×5 langs, sitemap ninth card (gold
+- WIRED: megafooter link Ã—5 langs, sitemap ninth card (gold
   product card). E2E: all routes 200 he+en, GLB 200, form present.
 CAUGHT PRE-SHIP: 34 literal backslash-quotes (\" inside single-
   quoted PHP renders a visible backslash) + one stray CJK char.
@@ -765,12 +785,12 @@ inc/site-map.php, virtual route /site-map/ (+ ?lang=en sibling):
   (my-appointments 302-to-login by design). Zero dead links.
 - DESIGN: cream ground, stats strip with LIVE counts (projects/
   props/pros/terms via wp_count_posts, 6h transient), card grid
-  with line-icon SVGs, PRODUCT cards carry gold border + "מוצר"
+  with line-icon SVGs, PRODUCT cards carry gold border + "×ž×•×¦×¨"
   chip and lead the page (products first - the owner's ask).
 - SEO: title/meta per lang, self-canonical, hreflang he/en/
   x-default, CollectionPage JSON-LD, honest footer line ("hubs
   only; everything reachable from them").
-- WIRED: מפת האתר link in the homepage megafooter (label ×5 langs,
+- WIRED: ×ž×¤×ª ×”××ª×¨ link in the homepage megafooter (label Ã—5 langs,
   links ?lang=en for non-he homepages).
 ALSO: owner added US to the international worlds order (task #77):
 New York + Miami city worlds where Israelis invest, projects per
@@ -786,10 +806,10 @@ city text chips. Fix (drone-map.php):
 - nl-points: minzoom REMOVED - every geocoded project is a dot at
   every zoom (radius 2.4px country -> 7.5px street).
 - NEW nl-point-tags symbol layer (minzoom 7): Google-style data
-  tags - price/sqm ("₪64K למ״ר") > unit count ("118 יח״ד") >
-  status (בשיווק/בבנייה/בתכנון/הושלם) - terracotta bold, halo,
+  tags - price/sqm ("â‚ª64K ×œ×ž×´×¨") > unit count ("118 ×™×—×´×“") >
+  status (×‘×©×™×•×•×§/×‘×‘× ×™×™×”/×‘×ª×›× ×•×Ÿ/×”×•×©×œ×) - terracotta bold, halo,
   Mapbox collision engine shows as many as fit, more on zoom, all
-  clickable (openPin). Labels ×5 langs via data-l-x JSON.
+  clickable (openPin). Labels Ã—5 langs via data-l-x JSON.
 - Payload enriched: units (num_units), psqm (project_3d_avg_price_
   per_sqm), status (nadlan_drone_map_status_enum - maps enum + gov
   Hebrew strings, fails open empty). Transient bumped v1 -> v2.
@@ -846,7 +866,7 @@ a bare nginx 404 (GET and POST) - REST statuses the client must
 distinguish may not use 403; use 400/401/409/429 (slot conflict
 is 409, passes clean).
 FLOATING: test appt 5521 left cancelled in dashboard (labeled
-נתוני דוגמה); visitor-side reminders (WA is click-only) = future;
+× ×ª×•× ×™ ×“×•×’×ž×”); visitor-side reminders (WA is click-only) = future;
 review-and-confirm mode (Zillow alt) = future option.
 
 ## 2026-07-12 (53) - v1.72.97 LOVABLE INTAKE: SHORELINE HERO + ILLUSTRATED PRODUCT BANDS
@@ -881,13 +901,13 @@ options set via /wp/v2/settings 200, LiteSpeed purged, temp snippet
 + media zip cleaned (404/204). Live checks: shoreline hero True,
 renewal band art True, rentals band art True, has-img layout True.
 FLOATING: regenerate Israeli-authentic renewal sketch (prompt
-delivered to owner); renewal payload פרטי: title fix; owner phone
+delivered to owner); renewal payload ×¤×¨×˜×™: title fix; owner phone
 test /my-rentals/; credential rotation still owed by owner.
 
 ## 2026-07-12 (52) - v1.72.96 EVIDENCE EXPORT + ENRICHED DEMO + THE ONE-SHOT LOVABLE PROMPT
 Sequential rentals work per owner "proceed":
-1) EVIDENCE EXPORT live: every apartment panel has "ייצוא תיק
-ראיות" - a printable self-contained document (RTL/LTR by lang):
+1) EVIDENCE EXPORT live: every apartment panel has "×™×™×¦×•× ×ª×™×§
+×¨××™×•×ª" - a printable self-contained document (RTL/LTR by lang):
 tenancy facts, securities + the legal cap, 12-month ledger table,
 documents states, maintenance chronology, notes, honest "not a
 legal document" footer. The research's one-click evidence bundle,
@@ -919,8 +939,8 @@ machines, reminder engine, monetization stack). Applied deep:
   notices 90/60, security return 60, tax 2026 ceiling 5,654,
   deadline 2027-01-30, renter-lessor cap 90,000. Every reminder in
   the UI carries its number from here, labeled estimate.
-- SIX HEALTH CARDS (חוזה/שכ"ד/בטוחות/תיקונים/מס/חידוש) traffic-light
-  computed portfolio-wide + "הפעולה הבאה שלי" feed sorted by legal
+- SIX HEALTH CARDS (×—×•×–×”/×©×›"×“/×‘×˜×•×—×•×ª/×ª×™×§×•× ×™×/×ž×¡/×—×™×“×•×©) traffic-light
+  computed portfolio-wide + "×”×¤×¢×•×œ×” ×”×‘××” ×©×œ×™" feed sorted by legal
   risk (late rent > urgent repair/ended lease/over-cap deposit >
   notice windows > docs) - the research's core dashboard pattern.
 - SECURITIES REGISTER per unit (check/shtar/arev/bank + deposit
@@ -931,7 +951,7 @@ machines, reminder engine, monetization stack). Applied deep:
   formula shown; honest "the lease wording governs".
 - TAX ESTIMATOR card: monthly exemption band math (E=G<=C?G:2C-G),
   10% route annual with the 90k renter-lessor deduction
-  (D=min(P,R,90000)), deadline chip - all "verify with רשות המסים".
+  (D=min(P,R,90000)), deadline chip - all "verify with ×¨×©×•×ª ×”×ž×¡×™×".
 - MAINTENANCE upgraded: urgency (urgent/standard) + statutory
   outer-limit chips + past-limit red flag. NEVER an "evict" button.
 - FULL ENGLISH: ?lang=en on /my-rentals/ - landing 100% EN (LTR,
@@ -961,7 +981,7 @@ live, the marking layer is the build), lease-contract generator
 (compliance pack - the monetization anchor), tenant invite
 read-only view, evidence export (zip of the lease file), rentals
 demo seed lacks securities/base_index data (add to seed), renewal
-payload "פרטי:" title fix, imagery mega-prompt for a Claude cohort
+payload "×¤×¨×˜×™:" title fix, imagery mega-prompt for a Claude cohort
 (after Lovable pass), homepage direction pick still open,
 GreenInvoice key, UPress ticket, credential rotation, #56.
 
@@ -1001,14 +1021,14 @@ BUILT (inc/rentals-manager.php + assets/rentals/rental-manager.js):
 - REST: rental-prop create (5/day), rental-props, get, units save
   (sanitized), PUBLIC /rental-demo (is_demo only, 10-min transient),
   admin-gated idempotent /rental-demo-seed.
-- Demo portfolio seeded LIVE: 5504 ארלוזורוב 78 TLV (paid unit +
-  current-month-due unit w/ open faucet ticket), 5505 ז'בוטינסקי 12
+- Demo portfolio seeded LIVE: 5504 ××¨×œ×•×–×•×¨×•×‘ 78 TLV (paid unit +
+  current-month-due unit w/ open faucet ticket), 5505 ×–'×‘×•×˜×™× ×¡×§×™ 12
   RG (late unit + vacant unit w/ paint ticket) - every status color
   demonstrable on the landing.
 - Homepage: LIGHT rentals band (white + gold frame, de-darken law)
   after listings, rm_* i18n in 5 languages.
 Ship: 1.72.92 then 1.72.93 (payload title fix: get_the_title
-prefixes private posts with "פרטי:" - use raw post_title; NOTE the
+prefixes private posts with "×¤×¨×˜×™:" - use raw post_title; NOTE the
 same cosmetic exists in the renewal payload - queued). Both via the
 WELDED chain incl. zip-extracted php -l. Live-verified: healthcheck
 rentals:true, landing 200 indexable w/ FAQ schema + honesty line,
@@ -1036,7 +1056,7 @@ upgrade + verified. Total owner-visible downtime bounded by
 LiteSpeed cache for anon pages; backend down ~1h.
 POST-RECOVERY VERIFY (all PASS on live): aerial hero, LIGHT
 renewal band, dark-band gradient gone, honest flagship copy
-("אינם לקוחות שלנו") + fl_dev CTA on HE+EN, cbs bars sand,
+("××™× × ×œ×§×•×—×•×ª ×©×œ× ×•") + fl_dev CTA on HE+EN, cbs bars sand,
 disable-zoom scroll fix, map label-clicks, is-sketch no-crop,
 light map + city chips, /urban-renewal/ + /my-renewal/ +
 /projects/ + /professionals/ all 200, healthcheck 1.72.91.
@@ -1081,7 +1101,7 @@ docs/GRAVEYARD.md so no update path can ever grab it.
 IN FLIGHT WHEN IT BROKE (all in 1.72.91, ready): light renewal
 band, cbs bars sand, sketch listings uncropped, 3D scroll trap
 fixed (disable-zoom), map name-labels clickable, flagship honesty
-reframe ("היזמים המוצגים אינם לקוחות שלנו") + fl_dev CTA to
+reframe ("×”×™×–×ž×™× ×”×ž×•×¦×’×™× ××™× × ×œ×§×•×—×•×ª ×©×œ× ×•") + fl_dev CTA to
 /advertise/ in 5 langs. Plus the completed rental-management
 research (Zillow Rental Manager, Avail/TurboTenant/RentRedi/
 Innago/Azibo/Apartments.com, IL: WeCheck/Rentify/Yad2/Guesty, IL
@@ -1115,11 +1135,11 @@ tuning (paper ground #F0EBE1, soft water, sand-colored 3D
 buildings); night tuning survives only in the hero fallback.
 3) DE-CLUSTERED: cluster bubbles KILLED everywhere (home band +
 /projects/ toggle). Progressive disclosure: country zoom = named
-city chips ("תל אביב · 43") one tap -> flyTo city; city zoom =
+city chips ("×ª×œ ××‘×™×‘ Â· 43") one tap -> flyTo city; city zoom =
 terracotta labeled pins, one tap -> card with photo + link. Two
 taps max, big text targets on mobile. Featured flags unchanged.
 4) RENEWAL BAND on the homepage (all 5 languages, new ur_* i18n
-keys): dark stage band - "חדר הפרויקט של הבניין שלכם", 3 numbered
+keys): dark stage band - "×—×“×¨ ×”×¤×¨×•×™×§×˜ ×©×œ ×”×‘× ×™×™×Ÿ ×©×œ×›×", 3 numbered
 step chips, CTAs to the wizard + /my-renewal/ live demo, trilingual
 note. Verified on HE + EN homes.
 Ship: v1.72.89 media pipeline, healthcheck green, snippet/zips
@@ -1154,21 +1174,21 @@ text rows). Live: exactly 1 figure, old viewBox gone, pillar at
 itself answers in English when lang=en (system-prompt values-only
 instruction; enum keys untouched; disclaimer now
 nadlan_ur_advice_disclaimer($lang) with EN text, still appended
-server-side). REGRESSION KILLED: step-5 said "בקרוב: פתיחת חדר
-פרויקט" - the room EXISTS; replaced with a live gold CTA to
+server-side). REGRESSION KILLED: step-5 said "×‘×§×¨×•×‘: ×¤×ª×™×—×ª ×—×“×¨
+×¤×¨×•×™×§×˜" - the room EXISTS; replaced with a live gold CTA to
 /my-renewal/ in both languages.
 3) ROOM RU: full Russian pack (statuses, doc keys, 10-stage
 playbook, ~45 UI strings) - ?lang=ru on the dashboard + REST;
-3-way lang switcher (עברית/English/Русский) in the dashboard
+3-way lang switcher (×¢×‘×¨×™×ª/English/Ð ÑƒÑÑÐºÐ¸Ð¹) in the dashboard
 header; the LANDING coerces ru->en (copy exists HE+EN only - never
 a half-translated page). Redirectx parity on trilingual.
 4) PERIODIC CONSENT RITUAL (Singapore pattern): daily cron
 nadlan_ur_periodic_tick posts an automatic feed update per active
-room every ~28 days ("עדכון תקופתי אוטומטי: X מתוך Y חתמו (Z%),
-שלב נוכחי") - feed-only, zero email, skips demo + rooms younger
+room every ~28 days ("×¢×“×›×•×Ÿ ×ª×§×•×¤×ª×™ ××•×˜×•×ž×˜×™: X ×ž×ª×•×š Y ×—×ª×ž×• (Z%),
+×©×œ×‘ × ×•×›×—×™") - feed-only, zero email, skips demo + rooms younger
 than 28 days, option nadlan_ur_monthly_note default on.
-5) NEW PAGE 5492 /urban-renewal/tama-38-alternatives/ "מה במקום
-תמ"א 38?" (~1,330 body words): fact-checked via fresh web search
+5) NEW PAGE 5492 /urban-renewal/tama-38-alternatives/ "×ž×” ×‘×ž×§×•×
+×ª×ž"× 38?" (~1,330 body words): fact-checked via fresh web search
 (expiry staged to May 2026, Shaked = amendments 136+139, TLV/Bat
 Yam/Bnei Brak did not extend), honest "updated July 2026 + verify
 with your municipality" framing, timeline, TAMA-vs-new comparison,
@@ -1178,15 +1198,15 @@ guide's stale "(English version on the roadmap)" note fixed to
 link the EN wizard + the new page.
 6) HOMEPAGE DESIGN BOARD (artifact "three-directions-v1",
 handoff/claude-design/homepage-directions-2026-07-12.html): three
-full comps in the brand DNA with real embedded fonts - A "העיר
-החיה" (dark stage, model as sole hero), B "העיתון" (broadsheet
-front page, content authority), C "הגלריה" (museum minimal) - each
+full comps in the brand DNA with real embedded fonts - A "×”×¢×™×¨
+×”×—×™×”" (dark stage, model as sole hero), B "×”×¢×™×ª×•×Ÿ" (broadsheet
+front page, content authority), C "×”×’×œ×¨×™×”" (museum minimal) - each
 with what-changes + effort + fit; recommendation: A base + B's
-what's-new column as band two; next step = owner says "בנה כיוון
+what's-new column as band two; next step = owner says "×‘× ×” ×›×™×•×•×Ÿ
 X" -> live /home-v3/ staging.
 Ship: v1.72.88 media pipeline, healthcheck green, snippet+zip
 cleaned (404-confirmed). Live-verified: RU demo payload
-(Подписали/10 stage notes), EN wizard gate LTR + HE intact,
+(ÐŸÐ¾Ð´Ð¿Ð¸ÑÐ°Ð»Ð¸/10 stage notes), EN wizard gate LTR + HE intact,
 pillar integrity. Floating: per-resident value card (owner
 decision), signature-funnel states, wizard RU, city-by-city
 freshness cluster (page 1 done, cluster = roadmap), walk-inside
@@ -1241,7 +1261,7 @@ assets/urban/renewal-space.js ~380 lines, one app, two modes):
   directions.
 - Hotfixes in-round: block theme printed empty h1s on the virtual
   route (h1:empty CSS + DOM removal); compounds chip hidden at 0.
-CONTENT: pillar (73) got the "מתחילים כאן" dark product band after
+CONTENT: pillar (73) got the "×ž×ª×—×™×œ×™× ×›××Ÿ" dark product band after
 the lookup teaser + EN crosslink; NEW PAGE 5485
 /urban-renewal/english-guide/ "Pinui Binui and TAMA 38 in English"
 1,765 words live (olim/foreign-owner guide: tracks, 66/67/80,
@@ -1276,7 +1296,7 @@ languages (trust_law/trust_law_pre in i18n.php). Live grep: 0 matches
 for the license claim site-wide.
 2) WA SOURCE TRACKING: new inc/wa-source.php - ONE site-wide click
 interceptor stamping every wa.me/NUMBER link's text param with
-"מקור: <page title> + URL" at click time. Share-to-friend links
+"×ž×§×•×¨: <page title> + URL" at click time. Share-to-friend links
 (wa.me/?text=, no number) deliberately untouched. Idempotent. Owner
 now sees which page every WhatsApp inquiry came from = intent + a
 free page-traffic signal.
@@ -1292,7 +1312,7 @@ append-only stage_log (last 12) in the /my-renewal/ dashboard.
 5) SEEDED PROS: 3 demo professionals for the renewal advisor map -
 5477 shamai, 5478 mefakeach, 5479 organizer (is_demo, unclaimed,
 demo-badged per law #34). RFP advisor now has all 3 renewal kinds.
-6) DEMO SPACE 5480 "דוגמה: הרצל 45, גבעתיים (פרויקט שהושלם)": a FULL
+6) DEMO SPACE 5480 "×“×•×’×ž×”: ×”×¨×¦×œ 45, ×’×‘×¢×ª×™×™× (×¤×¨×•×™×§×˜ ×©×”×•×©×œ×)": a FULL
 end-to-end finished project - 12/12 apartments consented with
 complete doc sets, stage 9/10, 12 updates telling the 2019-2026
 story (assembly -> pros -> tender -> inheritance resolved -> 67% ->
@@ -1301,8 +1321,8 @@ permit -> eviction -> construction -> tofes 4), 10-entry historical
 stage log, dispute notes on apartments 3+8. Created via temp snippet
 (route deleted, 404-confirmed). The REAL space 5469 untouched.
 3D corresponds: 4 floors x 3, all hotspots green.
-7) INFOGRAPHIC on the pillar: hand-built SVG "מסע ההתחדשות: מהמסדרון
-עד המפתח" (10 stations, 3 phase-duration bands, 2024 consent-gate box
+7) INFOGRAPHIC on the pillar: hand-built SVG "×ž×¡×¢ ×”×”×ª×—×“×©×•×ª: ×ž×”×ž×¡×“×¨×•×Ÿ
+×¢×“ ×”×ž×¤×ª×—" (10 stations, 3 phase-duration bands, 2024 consent-gate box
 66/67/80+75, pro-fees vignette, key vignette, honest footer).
 Design-reviewed by rasterizing (cairosvg traps: root style attr
 kills its viewport - strip for raster only; no bidi - single-
@@ -1402,7 +1422,7 @@ GET /nadlan/v1/renewal-lookup over the ~938 imported gov.il compounds
 (city/q, 30/hr/IP) + [nadlan_ur_lookup] pillar teaser ("is my building
 in a declared compound"), verified live returning real compounds;
 (2) /projects/ archive DE-CANNIBALIZED same release (title now
-"פרויקטים חדשים בישראל | דירות מקבלן לפי עיר ויזם", crosslink to the
+"×¤×¨×•×™×§×˜×™× ×—×“×©×™× ×‘×™×©×¨××œ | ×“×™×¨×•×ª ×ž×§×‘×œ×Ÿ ×œ×¤×™ ×¢×™×¨ ×•×™×–×", crosslink to the
 pillar); (3) PILLAR REBUILT IN PLACE (page 73, 3,100+ words, dilemma-
 first: track decision tree, the three thresholds with years, timeline
 reality, role map, org playbook, red flags, economics of the developer,
@@ -1425,7 +1445,7 @@ reserved .77-.80.
 
 ## 2026-07-11 (40) - v1.72.74+75 ANTI-THIN-CONTENT + STUDIO v2
 v1.72.74 NEW inc/related-content.php (cloned the pro-cards float
-architecture): ONE restrained "כדאי לדעת" band on the two thinnest
+architecture): ONE restrained "×›×“××™ ×œ×“×¢×ª" band on the two thinnest
 surfaces - listings (glossary terms token-matched + mortgage/ptax
 calculators + buying guide) and professional profiles (terms + fresh
 nadlan-news; tools skipped there, profiles already carry a tools block -
@@ -1441,8 +1461,8 @@ architect-style top-view SVG symbols on every placed item (sofa/bed/
 table+chairs/wardrobe/washer drum/bath/door-swing arc...), AUTO-ARRANGE
 (deterministic per-room starting layout from the unit's real rooms -
 anchor piece on the top wall, counterpart opposite, honest skip when a
-piece does not fit, overlap guard, labeled "נקודת פתיחה לעריכה - לא
-תכנון מחייב"), catalog +6 (tv unit, armchair, dresser, rug, plant,
+piece does not fit, overlap guard, labeled "× ×§×•×“×ª ×¤×ª×™×—×” ×œ×¢×¨×™×›×” - ×œ×
+×ª×›× ×•×Ÿ ×ž×—×™×™×‘"), catalog +6 (tv unit, armchair, dresser, rug, plant,
 dining bench, real cm dims), EN audit PASSED (40/40 nlst_* keys in
 both HE+EN; FR/RU/AR clone EN), save/restore already existed (verified
 localStorage per project:unit). All shipped via media-library deploys,
@@ -1492,7 +1512,7 @@ co-tour, light and filter chips click-dead for weeks - only the
 (default normal 0 0 1 on every unit -> far side drew over the front);
 (c) day/dusk/night was pure color grade, disconnected from the REAL
 solar math already in sunHours(); (d) window view fixed 280px, tab
-"מבט", u.view text silently unused (viewText read nonexistent
+"×ž×‘×˜", u.view text silently unused (viewText read nonexistent
 view_key); (e) both page H1s were OURS (engine hero client-side +
 nlpf-name server-side; theme H1 already stripped); (f) homepage drone
 map had NO gesture options -> wheel-zoom trap; markers were cluster
@@ -1501,11 +1521,11 @@ future-proof child rule; slim top bar (title + toggle only); NEW
 below-stage DOCK with studio + share-tour + SUN DIAL (time slider
 06:00-19:00 -> real equinox azimuth/elevation for the project's
 latitude; continuous exposure + golden/night grades; on-stage gold sun
-marker tracking camera; .nl-sunlit rings + "שמש ישירה עכשיו" on facades
+marker tracking camera; .nl-sunlit rings + "×©×ž×© ×™×©×™×¨×” ×¢×›×©×™×•" on facades
 within 70deg of the sun; honest note; cotour syncs sun minutes with
 legacy fallback); hotspot occlusion via data-visibility-attribute +
 per-direction normals (far side fades, no more scatter); window view:
-tab now "מבט {direction}", height clamp(300px,42vh,440px), FULLSCREEN
+tab now "×ž×‘×˜ {direction}", height clamp(300px,42vh,440px), FULLSCREEN
 btn + dblclick (native + iPhone overlay fallback), viewText falls back
 to u.view; single H1 (engine hero renders h2 when a server h1 exists -
 verified live: exactly one real h1 = nlpf-name, the 3 other grep hits
@@ -1568,7 +1588,7 @@ flagship poster as a plain CSS background on the container div behind a
 transparent reveal=auto viewer - paints instantly, model reveals on
 top when ready, fails OPEN if WebGL dies. SCREENSHOT-CONFIRMED: the
 twisting flagship tower renders in the listing 3D box with the honest
-chip 'המחשה כללית - לא הבניין של הנכס', floor badge, day/dusk/night.
+chip '×”×ž×—×©×” ×›×œ×œ×™×ª - ×œ× ×”×‘× ×™×™×Ÿ ×©×œ ×”× ×›×¡', floor badge, day/dusk/night.
 Also this arc: listing H1 (was missing, SEO); engine light modes now
 use CSS filters so dusk/night read at a glance (not an exposure
 whisper); studio launch button in the theater header (was buried
@@ -1584,7 +1604,7 @@ Owner clicked a regular listing: 'no 3D, looks broken'. DIAGNOSIS
 price card, facts) but has NO H1 and ZERO interactivity above the fold
 - reads as broken vs the project experience. FIXES: (1) proper H1 on
 every listing (SEO first); (2) LISTING 3D THEATER - spinnable generic
-flagship tower with honest chip 'המחשה כללית - לא הבניין של הנכס',
+flagship tower with honest chip '×”×ž×—×©×” ×›×œ×œ×™×ª - ×œ× ×”×‘× ×™×™×Ÿ ×©×œ ×”× ×›×¡',
 REAL floor badge (no invented hotspots on a generic model), and
 day/dusk/night light buttons; model-viewer runtime enqueued on
 nadlan_property. (3) SUN MODES NOW UNMISTAKABLE: exposure alone read
@@ -1623,7 +1643,7 @@ label: geometric only, no surrounding shading. Physics sanity: south
 facade ~11h, east ~5.5h, north ~0h at equinox - correct. (2) TOPSIS
 TOP PICK in the compare tray (Hwang & Yoon 1981, LNEMS 186):
 vector-normalized closeness over sqm/floor/balcony, equal weights,
-gold star 'הבולטת לפי שטח, קומה ומרפסת' - transparent criteria named
+gold star '×”×‘×•×œ×˜×ª ×œ×¤×™ ×©×˜×—, ×§×•×ž×” ×•×ž×¨×¤×¡×ª' - transparent criteria named
 in the label. ALSO VALIDATED BY THE SWEEP: our honest-scarcity stance
 is exactly the evidence-based optimum (Barton 2022 meta-analysis:
 scarcity works; Tuncer 2023 + Luguri 2021: fabricated cues destroy
@@ -1657,11 +1677,11 @@ literature sweep to follow in the research file.
 
 ## 2026-07-07 (31) - v1.72.60 MILESTONE TRACKER + studio v1.1
 CYCLE: the Amazon/Lennar/Buildertrend pattern (cited research #6).
-inc/milestones.php renders 'איפה הפרויקט עומד' on nadlan_project
-singles: 5-stage ladder תכנון -> היתר בנייה -> שיווק ומכירות -> בנייה ->
-טופס 4 ומסירה, mapped from the REAL project_status meta (13 projects
-carry values: בתכנון/בהיתר בנייה/בשיווק/בבנייה/תכנית מאושרת; token
-order matters - היתר checked before בנייה so 'בהיתר בנייה' lands on
+inc/milestones.php renders '××™×¤×” ×”×¤×¨×•×™×§×˜ ×¢×•×ž×“' on nadlan_project
+singles: 5-stage ladder ×ª×›× ×•×Ÿ -> ×”×™×ª×¨ ×‘× ×™×™×” -> ×©×™×•×•×§ ×•×ž×›×™×¨×•×ª -> ×‘× ×™×™×” ->
+×˜×•×¤×¡ 4 ×•×ž×¡×™×¨×”, mapped from the REAL project_status meta (13 projects
+carry values: ×‘×ª×›× ×•×Ÿ/×‘×”×™×ª×¨ ×‘× ×™×™×”/×‘×©×™×•×•×§/×‘×‘× ×™×™×”/×ª×›× ×™×ª ×ž××•×©×¨×ª; token
+order matters - ×”×™×ª×¨ checked before ×‘× ×™×™×” so '×‘×”×™×ª×¨ ×‘× ×™×™×”' lands on
 permit). No status = no band (collapse law). Language siblings inherit
 the base project's status via slug-suffix lookup (systematic, not
 copied). Honest note: stage as reported, timelines are the developer's
@@ -1700,8 +1720,8 @@ research): wall-snap 15cm, live distance-to-wall labels, undo
 snapshots, red-flag doors<80cm, electrical-point icons priced,
 running-total options footer, server-side PDF of the design for the
 tenant-changes coordinator (Priority/Coralis compatible). NEXT MARATHON
-CYCLES: (a) milestone tracker היתר->טופס 4 (the 2-3yr retention engine
-Israeli buyers never get), (b) online reservation fee שריון דירה
+CYCLES: (a) milestone tracker ×”×™×ª×¨->×˜×•×¤×¡ 4 (the 2-3yr retention engine
+Israeli buyers never get), (b) online reservation fee ×©×¨×™×•×Ÿ ×“×™×¨×”
 (Tesla/Celebration Homes pattern), (c) persistent all-in price bar.
 
 ## 2026-07-07 (28) - v1.72.55-57 OWNER MARATHON: pro cards 10x + APARTMENT STUDIO
@@ -1732,9 +1752,9 @@ architects/designers (procard supply side).
 
 ## 2026-07-07 (27) - v1.72.53+54 UX-MAX QA rounds (screenshot-caught)
 Live E2E on DUO (Playwright, real clicks): panel deep-link, WA share
-href, scarcity ('הדירה הזמינה האחרונה של 3 חדרים'), reset pill, chip
-counts 5/4/1/2/2, tooltip ::before (content verified: '5 חדרים, קומה
-33, דרום-מערב, בעדיפות'), favorites chip appears on heart, recent strip
+href, scarcity ('×”×“×™×¨×” ×”×–×ž×™× ×” ×”××—×¨×•× ×” ×©×œ 3 ×—×“×¨×™×'), reset pill, chip
+counts 5/4/1/2/2, tooltip ::before (content verified: '5 ×—×“×¨×™×, ×§×•×ž×”
+33, ×“×¨×•×-×ž×¢×¨×‘, ×‘×¢×“×™×¤×•×ª'), favorites chip appears on heart, recent strip
 after unit switch - all pass. FIXED from screenshots: (.53) recent
 pill carried the FULL SEO project name -> short name + CSS ellipsis;
 WA iconbtn underlined by theme anchor rule -> !important; #nlcta
@@ -1756,15 +1776,15 @@ winview, chips). SHIPPED THE GAPS, all honest-data: (1) seat-map hover
 tooltips on every hotspot - the aria-label IS the tooltip (::before,
 ::after was taken by the rec-pulse ring), same truth for screen readers
 and hover; (2) facet counts on inventory chips from the real unit
-array; (3) 'שמורות' favorites filter chip (appears only when hearts
+array; (3) '×©×ž×•×¨×•×ª' favorites filter chip (appears only when hearts
 exist, auto-falls back to 'all' when last heart removed); (4) honest
 scarcity line in the panel (cohort<=3 from live inventory, no timers)
 with an escape-route link that fires the facade filter to show the
 alternatives; (5) WhatsApp per-apartment share - wa.me deep link
 carrying project+unit+lang so the recipient opens THAT apartment; (6)
 recently-viewed strip (localStorage nl_recent, cross-project, max 6,
-current selection filtered out); (7) reset-camera pill 'חזרה לתצוגה
-מלאה' after a unit dive - the documented #1 seat-map mobile
+current selection filtered out); (7) reset-camera pill '×—×–×¨×” ×œ×ª×¦×•×’×”
+×ž×œ××”' after a unit dive - the documented #1 seat-map mobile
 frustration; (8) heart-pop micro-interaction with
 prefers-reduced-motion exemption. DEFERRED with reasons: price heatmap
 + best-value badge (needs per-unit prices most units lack - honesty
@@ -1772,11 +1792,11 @@ law), social proof lines (needs real CRM data), floor-band panoramas
 (needs a drone day - flagged as asset request). - v1.72.51 advertiser ROI surfacing (retention moat)
 Advertisers who see their numbers renew. The advertiser center card now
 shows the two counters the new features have been accumulating:
-professionals get 'הופעות בתכנים' (procard_impressions - every render
+professionals get '×”×•×¤×¢×•×ª ×‘×ª×›× ×™×' (procard_impressions - every render
 of their card inside encyclopedia/guide content) plus a sponsorship
-status line (active-until date + sponsored domains + הארכה link;
+status line (active-until date + sponsored domains + ×”××¨×›×” link;
 expired -> loud renewal nudge; never-sponsored -> honest one-line
-pitch to /advertise/#nlspon); projects get 'צפיות בפרוספקט'
+pitch to /advertise/#nlspon); projects get '×¦×¤×™×•×ª ×‘×¤×¨×•×¡×¤×§×˜'
 (nadlan_brochure_views). Facts grid switched to auto-fit so the fifth
 cell sits inline. Domain key->label map extracted to
 nadlan_procard_domain_labels() - one source of truth for the picker
@@ -1815,9 +1835,9 @@ CO-TOURING SHIPPED: inc/cotour.php (POST broadcast -> transient 5min TTL,
 GET follow, room-code secret, 2/sec throttle) + engine client: host
 broadcasts {project, unit, cameraOrbit via getCameraOrbit(), light,
 filter} every 1.6s; viewer polls + applies (selectUnit instant,
-mv.cameraOrbit, applyLight, applyStageFilter). 'שיתוף סיור חי' button in
+mv.cameraOrbit, applyLight, applyStageFilter). '×©×™×ª×•×£ ×¡×™×•×¨ ×—×™' button in
 the theater generates a room, copies the join link, shows the terracotta
-host bar; viewers get the ink 'המסך עוקב אחרי המציג' bar.
+host bar; viewers get the ink '×”×ž×¡×š ×¢×•×§×‘ ××—×¨×™ ×”×ž×¦×™×’' bar.
 ?cotour=host|join&room=<code> works on any engine project. Realsee-class
 feature on shared hosting. PRICE INTEL (#5) STATUS: infra already armed
 (deals table + comps AVM + confidence in avm-deals.php) but data ingest
@@ -1829,7 +1849,7 @@ set.
 
 ## 2026-07-07 (22) - v1.72.48 console QA round (screenshot-caught fixes)
 Live QA of the sponsorship console (real chip clicks: cart URL built
-sponsor_domains=lawyer,mashkanta ✓, product 5403 created, option set)
+sponsor_domains=lawyer,mashkanta âœ“, product 5403 created, option set)
 caught TWO defects: (1) CTA text low-contrast (theme anchor color won
 over the terracotta button) -> color !important; (2) SELF-SERVE GAP -
 payment_complete required _nadlan_card_id which the logged-out picker
@@ -1844,7 +1864,7 @@ sponsors rank ABOVE tier order when procard_sponsor_until is future and
 their sponsor domains (profession KEYS - contract bug caught pre-ship:
 picker stored Hebrew labels while the boost intersects keys; aligned)
 intersect the matched professions; sponsored cards always carry the
-honest ממומן chip; (b) PLUMBING - cart item data from
+honest ×ž×ž×•×ž×Ÿ chip; (b) PLUMBING - cart item data from
 ?add-to-cart=<product>&sponsor_domains=<keys>&sponsor_card=<id> ->
 order item meta -> woocommerce_payment_complete sets
 procard_sponsor_until (now/expiry + 30d, campaign stacking law) +
@@ -1872,7 +1892,7 @@ inc/brochure.php: GET /nadlan/v1/brochure?p=<project>&u=<unit>&lang=he|en
 renders a print-ready branded one-pager per apartment (browser prints to
 PDF - zero server deps, works on uPress): gold band, Frank Ruhl title,
 model render (contain on ink), apartment facts grid, honest price
-estimate + mortgage line (70%/25y/5%, 'אומדן בלבד'), FULL disclaimer
+estimate + mortgage line (70%/25y/5%, '××•×ž×“×Ÿ ×‘×œ×‘×“'), FULL disclaimer
 (not an offer, subject to sale plans), deep link back to the SAME unit
 selected in 3D (the ?unit= deep-links already existed - task #21 legacy),
 date stamp, noindex. MONETIZATION: project_brochure_logo meta = paid
@@ -1925,7 +1945,7 @@ version WITH counts kept - pure dots without counts would hide the
 catalog's depth at country zoom.
 
 ## 2026-07-07 (15) - v1.72.41 RTL text plugin on the hero map (final polish of the run)
-Live-hero screenshot caught Hebrew map labels REVERSED (לארשי) - Mapbox
+Live-hero screenshot caught Hebrew map labels REVERSED (×œ××¨×©×™) - Mapbox
 renders RTL scripts backwards without mapbox-gl-rtl-text. mapbox-init.js
 (engine) already loaded it; drone-map.php did not. Added with the
 plugin-status guard. This closes the diamond run: v1.72.34 through .41.
@@ -1937,7 +1957,7 @@ complete on homepage too); (2) the returned video band rendered a giant
 BLACK rectangle (controls-mp4, no poster) -> gif-like muted autoplay loop
 with poster, native <source> (autoplay-media law); (3) the clip-art
 news-690k graph image (owner's explicit dislike) -> replaced with a
-branded editorial card (₪690K, Frank Ruhl, brand bars; media 5402) set as
+branded editorial card (â‚ª690K, Frank Ruhl, brand bars; media 5402) set as
 featured on BOTH language posts 5030+5031; (4) the vacant 'post your
 listing' CTA tiles read broken-empty -> dashed gold intentional tiles
 with plus mark. Published terms' duplicate opening h2 stripped via temp
@@ -1951,11 +1971,11 @@ render) now LEADS; the sketch plate demoted to the corner chip. English
 'Written by' byline hidden on term singles (encyclopedia entries are not
 authored posts). CONTENT REPAIR via temp snippet: stripped the duplicated
 opening h2 from the 3 articles published before the v1.72.31 strip
-(אחוזי בנייה 5199, מהנדס אזרחי רשוי 5329, תכנית מתאר מקומית 5210).
-PRO CARDS verified live desktop+mobile on אחוזי בנייה: matched עמית רון
+(××—×•×–×™ ×‘× ×™×™×” 5199, ×ž×”× ×“×¡ ××–×¨×—×™ ×¨×©×•×™ 5329, ×ª×›× ×™×ª ×ž×ª××¨ ×ž×§×•×ž×™×ª 5210).
+PRO CARDS verified live desktop+mobile on ××—×•×–×™ ×‘× ×™×™×”: matched ×¢×ž×™×ª ×¨×•×Ÿ
 (urban planner) semantically, eyebrow+row render, no sponsored chip (free
 tier - honest). Tabs unification (#41): engine already carries the tab
-language (tab_plan/מבט/סיור); full one-component adoption across property
+language (tab_plan/×ž×‘×˜/×¡×™×•×¨); full one-component adoption across property
 pages queued as next-session work - NOT half-shipped onto live surfaces
 at the end of a marathon (all-or-nothing law).
 
@@ -1963,15 +1983,15 @@ at the end of a marathon (all-or-nothing law).
 Every practice-area content page (nadlan_term + posts) now floats its
 professionals: inc/pro-cards.php. MATCHING 3 layers: (1) procard_pros meta
 = pinned IDs (full manual control, registered for term/post/page);
-(2) domain map (default tokens: משפט/מיסוי->lawyer+accountant,
-משכנתא/מימון->mashkanta, שמאות->shamai, בדק->bedek_bait+engineer,
-תכנון->urban_planner+architect, בנייה/קבלן->kablan+engineer,
-התחדשות->kablan+lawyer, תיווך->metavech, ניהול->property_manager,
-מדידה/טאבו->surveyor/lawyer...) matched against enc_domain + term-cat +
+(2) domain map (default tokens: ×ž×©×¤×˜/×ž×™×¡×•×™->lawyer+accountant,
+×ž×©×›× ×ª×/×ž×™×ž×•×Ÿ->mashkanta, ×©×ž××•×ª->shamai, ×‘×“×§->bedek_bait+engineer,
+×ª×›× ×•×Ÿ->urban_planner+architect, ×‘× ×™×™×”/×§×‘×œ×Ÿ->kablan+engineer,
+×”×ª×—×“×©×•×ª->kablan+lawyer, ×ª×™×•×•×š->metavech, × ×™×”×•×œ->property_manager,
+×ž×“×™×“×”/×˜××‘×•->surveyor/lawyer...) matched against enc_domain + term-cat +
 categories + title, editable via option nadlan_procard_map; (3) no match =
 NOTHING (no filler law). ORDER = MONETIZATION: premier>pro>free then
-rating then recency; paid cards carry honest 'ממומן' chip; seeded ratings
-keep 'נתוני דוגמה' badge (reviews_verified law). PLACEMENT (UX research
+rating then recency; paid cards carry honest '×ž×ž×•×ž×Ÿ' chip; seeded ratings
+keep '× ×ª×•× ×™ ×“×•×’×ž×”' badge (reviews_verified law). PLACEMENT (UX research
 pattern: native in-content beats sidebars on mobile): lead card injected
 BEFORE THE 2ND H2 (reader proven interested), compact experts row (up to
 5) at content end; mobile-first full-width block, no floating element
@@ -1986,8 +2006,8 @@ Hero verified by screenshot -> 4 defects caught + fixed: veil too light
 now coalesce name_he, a11y button collided with hero trust counts -> moved
 to mid-edge (standard IL widget position), H1 shadow strengthened.
 CARD v3 live on archive grids: featured image leads (-20px bleed top),
-amenity chips from wizard bool meta (ממ"ד/מיזוג/מעלית/חניה/מחסן + מרפסת
-X מ"ר), distance badge 'כ-X ק"מ ממך · משוער' via silent ipwho IL-only +
+amenity chips from wizard bool meta (×ž×ž"×“/×ž×™×–×•×’/×ž×¢×œ×™×ª/×—× ×™×”/×ž×—×¡×Ÿ + ×ž×¨×¤×¡×ª
+X ×ž"×¨), distance badge '×›-X ×§"×ž ×ž×ž×š Â· ×ž×©×•×¢×¨' via silent ipwho IL-only +
 haversine, hidden >120km. CBS PANEL replaces the market stat cards: REAL
 Q1 2026 averages (TLV 4.59M, Herzliya 3.85M, JLM 3.10M, RG 3.03M, Haifa
 1.81M, BS 1.24M), YoY index -1.3%, source PDF linked (release 150/2026),
@@ -2028,8 +2048,8 @@ lie flat without it (v1 palms were lying down). Final: 16,808 tris / 339KB
 scripts/generate-flagship-tower.py committed; GLB at assets/engine/
 flagship-tower-v1.glb + plugin models/; INVENTORY refreshed; poster
 rendered + uploaded (media 5401). WIRED: engine projects without their own
-GLB now default to the flagship, always with honest chip 'המחשה כללית - לא
-מבנה הפרויקט' (i18n he+en, fallback covers fr/ru/ar). NOT yet: 3D band on
+GLB now default to the flagship, always with honest chip '×”×ž×—×©×” ×›×œ×œ×™×ª - ×œ×
+×ž×‘× ×” ×”×¤×¨×•×™×§×˜' (i18n he+en, fallback covers fr/ru/ar). NOT yet: 3D band on
 non-engine project pages (bigger feature - backlog).
 COMPETITOR WATCH (background research landed): world bar = 3D Estate (PL),
 Vinode, Snaploader, Realsee, Bayut Studios. 3 gaps they have on us:
@@ -2070,7 +2090,7 @@ flow.
 Verified-delivery pass on the new /glossary/ hub caught a missing H1: the
 theme renders no title on this page template (the old archive had one -
 regression not allowed). The shortcode now carries its own h1 (same exact
-wording as the old archive H1: מילון מונחי נדל"ן, Frank Ruhl Libre, ink).
+wording as the old archive H1: ×ž×™×œ×•×Ÿ ×ž×•× ×—×™ × ×“×œ"×Ÿ, Frank Ruhl Libre, ink).
 Hub verified live: 267 visible words (was 9,072), 31 term links, search +
 letter nav render, old article dump absent, /glossary/page/2/ 301s, term
 pages 200, DefinedTermSet schema present. Hub page id 5397.
@@ -2088,9 +2108,9 @@ search box, letter quick-nav chips, A-Z sections, links with the one-line
 definition as tooltip - LINKS ONLY, never bodies, so the hub can never
 compete with term pages. Old /glossary/page/N/ + /glossary/feed 301 to the
 hub. DefinedTermSet JSON-LD on the hub. Page title kept EXACTLY as the
-archive's H1 (מילון מונחי נדל"ן) - no text change without permission.
+archive's H1 (×ž×™×œ×•×Ÿ ×ž×•× ×—×™ × ×“×œ"×Ÿ) - no text change without permission.
 Rewrite flush covered by the self-healing version-change guard. ALSO:
-first autonomous drip publish confirmed - עלות תחלופה went live at its
+first autonomous drip publish confirmed - ×¢×œ×•×ª ×ª×—×œ×•×¤×” went live at its
 20:42 slot with no agent involvement. The machine is alive.
 
 ## 2026-07-07 (5) - v1.72.31 DRIP RESTORED (WP edit_date gotcha) + tolerance + stuck guard
@@ -2101,9 +2121,9 @@ Root cause: WP core - wp_update_post on a draft (post_date_gmt
 edit_date=true; then status future + date now = instant publish. Fixed in
 the writer hand-off AND in the intake stage-2 fill path (same latent bug).
 The 3 already-published articles stay up (honest content, within cadence):
-אחוזי בנייה 5199 (808w, 0 bad dashes, 7 sections), מהנדס אזרחי רשוי 5329,
-תכנית מתאר מקומית 5210. Also in v1.72.31: (a) 10% tolerance band on the
-tier floor AFTER the expand pass (מכון התקנים failed at 668/700 - a
+××—×•×–×™ ×‘× ×™×™×” 5199 (808w, 0 bad dashes, 7 sections), ×ž×”× ×“×¡ ××–×¨×—×™ ×¨×©×•×™ 5329,
+×ª×›× ×™×ª ×ž×ª××¨ ×ž×§×•×ž×™×ª 5210. Also in v1.72.31: (a) 10% tolerance band on the
+tier floor AFTER the expand pass (×ž×›×•×Ÿ ×”×ª×§× ×™× failed at 668/700 - a
 near-miss, not thin content); (b) enc_fail_count per entry, parked after
 5 fails + 'stuck' count in status (prevents priority-front entries from
 blocking the queue and burning API every tick); (c) duplicated opening
@@ -2116,12 +2136,12 @@ portable spec next.
 ## 2026-07-07 (4) - v1.72.30 WRITER FIXED: the 0/6 mystery solved (undershoot, not truncation)
 FIRST TICK FAILED 0 generated / 6 failed while a simple diagnostic passed.
 Full-fidelity diagnostic (encdiag2 temp snippet, exact write_one prompts on
-real p1 skeleton 5245 'בטון מזוין'): http 200, finish_reason=stop,
+real p1 skeleton 5245 '×‘×˜×•×Ÿ ×ž×–×•×™×Ÿ'): http 200, finish_reason=stop,
 completion_tokens 1114/3000, output 422 words vs floor 700. NOT truncation,
 NOT the API, NOT kses - gpt-4o-mini simply undershoots long-form briefs
 (wrote 422 against an 800-1300 target). The floor did its honest job.
 FIX (v1.72.30): (a) expand pass - a draft under its tier floor goes back to
-the model with the measured count + target ('הרחב והעמק... בלי מלל ריק')
+the model with the measured count + target ('×”×¨×—×‘ ×•×”×¢×ž×§... ×‘×œ×™ ×ž×œ×œ ×¨×™×§')
 and the longer result wins; (b) max_tokens 3000 -> 6000 headroom; (c) the
 mandatory minimum stated again in the user prompt; (d) failures now leave a
 trace: option nadlan_enc_writer_last_fail {pid,title,words,floor,at},
@@ -2185,10 +2205,10 @@ dashes, 0 in-batch dupes, 100% name_en coverage). Distribution: 45 terms /
 35 materials / 25 tools / 25 methods / 18 roles / 18 regulations / 15
 standards / 10 formulas / 5 software / 2 orgs / 1 publication / 1 person.
 INGESTED via /nadlan/v1/glossary-intake: 199 created as DRAFTS (stage-1 rows
-carry no content_html - articles come from stage 2 "כתוב מאמרים לבאצ' 1").
-1 exact dupe auto-skipped (שיעור היוון exists). ANTI-CANNIBALIZATION PRUNE:
-deleted drafts טופס 4 + תעודת גמר (existing indexed page covers both).
-NET: 197 staged drafts awaiting articles. "דמי שכירות ראויים" kept (crude
+carry no content_html - articles come from stage 2 "×›×ª×•×‘ ×ž××ž×¨×™× ×œ×‘××¦' 1").
+1 exact dupe auto-skipped (×©×™×¢×•×¨ ×”×™×•×•×Ÿ exists). ANTI-CANNIBALIZATION PRUNE:
+deleted drafts ×˜×•×¤×¡ 4 + ×ª×¢×•×“×ª ×’×ž×¨ (existing indexed page covers both).
+NET: 197 staged drafts awaiting articles. "×“×ž×™ ×©×›×™×¨×•×ª ×¨××•×™×™×" kept (crude
 consumer filter false-positive - it is a professional appraisal term).
 Source archived handoff/research/encyclopedia/ontology-batch-1.json.
 NEXT: owner runs stage 2 on the same ChatGPT thread (50 articles/response) ->
@@ -2219,7 +2239,7 @@ All 6 drafts deleted per protocol. Caches purged via sibling snippet.
 ## 2026-07-06 (24) - v1.72.26 ENCYCLOPEDIA INTAKE + mega-prompt delivered (owner mega-project)
 OWNER SCOPE EXPANSION: full world - not only terms/materials/tools but PEOPLE
 (researchers, famous architects), ORGANIZATIONS (biggest companies world+IL),
-REGULATIONS (תקנות תכנון ובנייה, תמ"א), STANDARDS (תקן 413 etc), PUBLICATIONS,
+REGULATIONS (×ª×§× ×•×ª ×ª×›× ×•×Ÿ ×•×‘× ×™×™×”, ×ª×ž"×), STANDARDS (×ª×§×Ÿ 413 etc), PUBLICATIONS,
 FORMULAS, SOFTWARE. Target: beat Designing Buildings Wiki (7,500 articles,
 5M/yr). Owner runs the research himself on ChatGPT Pro extended / Gemini (ONE
 mega multi-prompt, delivered in chat) - Cowork bypassed (busy). PACE DECISION
@@ -2258,7 +2278,7 @@ a clean self-serve free month = differentiator. IMPLEMENTED: WC coupon
 auto-applied in cart via funnel.php when Pro present -> first checkout is a
 GENUINE 0, no card; renewal engine (v1.72.24) bills 349 at day 27. Premier
 (749) stays paid-now by design (serious-buyer filter + revenue-now path).
-Product 476 renamed honestly: "Pro - ... (חודש ראשון חינם, לאחר מכן 349 לחודש)".
+Product 476 renamed honestly: "Pro - ... (×—×•×“×© ×¨××©×•×Ÿ ×—×™× ×, ×œ××—×¨ ×ž×›×Ÿ 349 ×œ×—×•×“×©)".
 COWORK DEV BATCH-1 (draft 5182) INGESTED: 7 developer profiles (Israel
 Canada, Africa Israel, Y.H. Dimri, Avisror, Mivne, Nachmias, Gindi) - stored
 as developer_profile/developer_name meta on unambiguous flagships (rainbow
@@ -2443,7 +2463,7 @@ uncapped (-1). v1.72.19:
 - DRONE MAP CLUSTERED: geojson source cluster:true r44, gold cluster bubbles
   with counts, terracotta unclustered points, cluster click = expansion zoom
   or (>=15.5z) popup listing up to 8 projects + "and N more", city-level
-  popups say "מיקום ברמת עיר". Band note updated to the honest full-catalog
+  popups say "×ž×™×§×•× ×‘×¨×ž×ª ×¢×™×¨". Band note updated to the honest full-catalog
   wording. 197 Jerusalem projects = one honest bubble, not fake pins.
 - CONFIDENCE GATE: geo.confidence ships in engine payload; winstage/winView
   disabled when confidence=city (a window view from a city centroid is
@@ -2489,7 +2509,7 @@ SHIPPED:
   set when it has 4+ spaces (nadlan_showroom_premium_tour + tier in payload,
   dtour_tag_premium x5). Cowork premium set at 1 flat + 1 seam-passed 360
   (5139/5140) - standard remains until the premium set grows.
-OPENAI KEY HANDOFF: wp-admin left menu "נדלן מפתחות" (Keys Hub, slug
+OPENAI KEY HANDOFF: wp-admin left menu "× ×“×œ×Ÿ ×ž×¤×ª×—×•×ª" (Keys Hub, slug
 nadlan-keys) -> OpenAI API Key field -> save. NEVER paste keys in chat.
 NEXT (floated): EN investors hub page, real review capture loop, saved-search
 alerts (email infra last), per-project video tours.
@@ -2509,11 +2529,11 @@ SHIPPED:
   (nadlan_showroom_project_walk, 30min transient, sibling slugs normalized to
   parent, same canonical order/aliases/360-exclusion via generalized
   nadlan_showroom_scan_walk_media) -> 2) project's unit interiors as steps
-  labeled "{rooms} · קומה {n}" (dtour_tag_units) -> 3) standard default set ->
+  labeled "{rooms} Â· ×§×•×ž×” {n}" (dtour_tag_units) -> 3) standard default set ->
   4) pending text. Rainbow now walks through its own generated apartments.
   CMS hint added in the showroom metabox (upload title convention, zero saves).
 - #34 (owner decision): rating stars without reviews_verified meta get a
-  "נתוני דוגמה" badge on directory cards + profile pages. Flip
+  "× ×ª×•× ×™ ×“×•×’×ž×”" badge on directory cards + profile pages. Flip
   reviews_verified=1 per professional when real reviews arrive.
 i18n dtour_tag_dedicated/_units x5. Next in chat: worries/leftovers/competitor
 gaps float (owner asked).
@@ -2582,7 +2602,7 @@ Priority chain per project: dedicated tour_url > 360 panoramas > DEFAULT WALK >
 pending text (now nearly unreachable).
 
 ## 2026-07-06 (7) - v1.72.11: the view tab IS the window (owner intent clarified)
-OWNER: mvt/מבט must mean STANDING AT THE WINDOW seeing the real world - not an
+OWNER: mvt/×ž×‘×˜ must mean STANDING AT THE WINDOW seeing the real world - not an
 interior picture. Floor 50 sees one thing, floor 1 another; buyer must know if
 the window faces a building, a school, the sea. Interior renders belong to the
 upcoming POV first-shooter walkthrough (owner generating room images).
@@ -2653,7 +2673,7 @@ inc/interior-fp.php, inc/showroom-engine.php (wp_footer assets), version 1.72.9.
 
 ## 2026-07-06 (3) - v1.72.8: HOMEPAGE STRIKE LIVE (flagship band leads the front door)
 SHIPPED + LIVE-VERIFIED (flaggrid present, 4 cards, contain-fix, singular grammar):
-- NEW FLAGSHIP BAND right under the hero: "בחרו דירה מתוך הבניין, בתלת ממד" -
+- NEW FLAGSHIP BAND right under the hero: "×‘×—×¨×• ×“×™×¨×” ×ž×ª×•×š ×”×‘× ×™×™×Ÿ, ×‘×ª×œ×ª ×ž×ž×“" -
   four flagships with hero plates + gold 3D badges + units count + tour CTA +
   link to /premium/. Spliced into the band order AT RUNTIME so a DB-stored
   nadlan_home_bands option cannot hide it. i18n keys x5 languages.
@@ -2662,7 +2682,7 @@ SHIPPED + LIVE-VERIFIED (flaggrid present, 4 cards, contain-fix, singular gramma
   fully visible, letterboxed on the dark panel).
 - UPSELL TILES: DNA cards (gold plus badge, cream gradient, solid border)
   instead of empty dashed slots that read unfinished.
-- GRAMMAR: demand-areas singular forms (פרויקט אחד/דירה אחת) x5 langs.
+- GRAMMAR: demand-areas singular forms (×¤×¨×•×™×§×˜ ××—×“/×“×™×¨×” ××—×ª) x5 langs.
 EYE-QA: band reads premium; NIT for next pass - theme underline leaks onto
 flag card titles (.nlhv2-flag * text-decoration none needed); fl_sub subtitle
 contrast is low-ish. WEBSITE SWEEP STATUS (this session, all live-verified):
@@ -2687,7 +2707,7 @@ added. HONESTY FLAG FLOATED TO OWNER: top-sorted professional cards carry
 seeded rating/reviews_count meta (4.9, 87 reviews etc.) with NO real review
 records behind them; same seeded names (Dana Barak, Shira Golan) are matched
 into RFP documents as advisors. Options: label as demo, zero the counts, or
-seed-flag meta + "מאומת" only for real ones. OWNER DECISION NEEDED before
+seed-flag meta + "×ž××•×ž×ª" only for real ones. OWNER DECISION NEEDED before
 marketing push - fake social proof is a trust landmine.
 HOMEPAGE AUDIT (design+business, screenshots):
 STRONG: clear value-prop hero + tabbed search + live stat strip; sketch-plate
@@ -2697,21 +2717,21 @@ LTR overlay ("very apartment, explorable"); our crown-jewel demo looks dim.
 (2) THE FOUR FLAGSHIPS ARE ABSENT from the homepage - no premium 3D projects
 band; front door doesn't sell the differentiator. (3) two big VACANT ad-slot
 cards near the hero read unfinished (vacant inventory should collapse).
-(4) "1 דירות" grammar + thin counts in demand-areas band. Queued as task #33.
+(4) "1 ×“×™×¨×•×ª" grammar + thin counts in demand-areas band. Queued as task #33.
 
 ## 2026-07-06 - v1.72.6: BIG CATALOG SEVERE UPGRADE LIVE + guides categorized
-GUIDES: category "מדריכים" (id 35, slug guides) created; both mega guides (5117,
+GUIDES: category "×ž×“×¨×™×›×™×" (id 35, slug guides) created; both mega guides (5117,
 5118) assigned - byline no longer "Uncategorized".
 CATALOG /projects/ - evidence-driven surgery (before/after screenshots to owner):
 ROOT CAUSES FOUND: (1) language siblings (-en/-fr/-ru/-ar) flooded the grid as
 garbled duplicate cards (Russian/Arabic/English titles start-truncated by the RTL
-container); (2) machine enum "אחר" badge printed on most cards; (3) the sponsored
+container); (2) machine enum "××—×¨" badge printed on most cards; (3) the sponsored
 slot card nested <a> inside <a> - ILLEGAL HTML that browsers split into a broken
 empty gold card; (4) archive had NO meta description; (5) counts included siblings.
 FIXES SHIPPED: posts_where REGEXP excludes sibling slugs from grid + facets + total
 (973 -> 961 honest); card titles dir=auto + unicode-bidi:plaintext (correct-side
 ellipsis); "other" badge suppressed; sponsored card rebuilt as DIV with real inner
-links; meta description with buyer keywords (דירות למכירה מקבלן, תמ"א 38).
+links; meta description with buyer keywords (×“×™×¨×•×ª ×œ×ž×›×™×¨×” ×ž×§×‘×œ×Ÿ, ×ª×ž"× 38).
 LIVE VERIFIED: 0 sibling links in grid, no nested-anchor card, meta desc present,
 grid now shows distinct plate-art cards (YOO, DUO, Aura, Rainbow, Akirov, Marina
 Herzliya, Einstein, Recanati, Park Bavli, Utopia...). Eye-QA: reads premium.
@@ -2737,7 +2757,7 @@ estimate-labeled, per-unit pricing "on developer proposal" (never invented).
 NEW MODULE v1.72.5 guide-schema.php: FAQPage + hreflang + lang from post meta,
 reusable for every future guide. Fact base + article HTML saved to
 handoff/research/2026-07-05-elevated-living/.
-FLOAT: posts landed in category "Uncategorized" - create a "Guides/מדריכים" category
+FLOAT: posts landed in category "Uncategorized" - create a "Guides/×ž×“×¨×™×›×™×" category
 and reassign for cleaner byline + archive SEO. EN byline shows Hebrew author name.
 NEXT: big catalog #31 (still pending), or reassign guide category first.
 
@@ -2770,7 +2790,7 @@ ZOHI dossier saved to data/projects/dossiers/zohi-sde-dov.dossier.json + merged 
 the project record (developer: Mivne, Levinstein and Metropolis; has article
 material + units + prices). Session log archived to handoff/cowork-logs/. Both
 AGENT-INBOX drafts DELETED per protocol - inbox is clean.
-BUY-FLOW V1 SHIPPED (buyflow.js, per research spec): gold "בנו לי הצעה" CTA on every
+BUY-FLOW V1 SHIPPED (buyflow.js, per research spec): gold "×‘× ×• ×œ×™ ×”×¦×¢×”" CTA on every
 apartment panel -> finish level (no invented prices, "exact pricing in the
 developer proposal") -> add-ons: designer/lawyer/mortgage/inspection/furniture,
 never pre-checked, skippable -> 2 fields only (name + WhatsApp) + explicit consent
@@ -2827,7 +2847,7 @@ hero=v3 plate, poster=3D render, 3 premium cards each with a gold-bordered 3D ba
 VIEW CONE SHIPPED (owner ask): selecting an apartment draws a terracotta cone on the
 building pin, rotationAlignment map (turns with the terrain), pointing the apartment
 view direction; honors pre-map selections via nlpjx:map ready event. Verified live:
-dimri unit-2 (Hebrew dir "דרום מערב") -> cone drawn, bearing -135 = south-west.
+dimri unit-2 (Hebrew dir "×“×¨×•× ×ž×¢×¨×‘") -> cone drawn, bearing -135 = south-west.
 COWORK DELIVERED TODAY: 4 hero plates + more project plates (einstein x3, and the
 plate set from 7/3) + FIRST INTERIOR image (5104 interior-rainbow-tel-aviv-unit-16-w)
 -> wired into rainbow unit-16-w interior_url on HE + 4 siblings. Cowork then stalled
@@ -2850,7 +2870,7 @@ SHIPPED + VERIFIED on all 4 HE pages + dimri-EN:
   Convention: model -z = north (true for factory GLBs; Rainbow approximate).
 - I18N: map section localized he/en/fr/ru/ar (chips verified English on dimri-en);
   Hebrew compass names in unit meta resolve via HE_DIRS map (dir badge leak fixed);
-  world band renamed "כל מה שסביב הפרויקט" per owner ("all around", not "all world").
+  world band renamed "×›×œ ×ž×” ×©×¡×‘×™×‘ ×”×¤×¨×•×™×§×˜" per owner ("all around", not "all world").
 - Zero page errors on all verified pages; exactly 1 mapbox canvas per page.
 STILL OPEN (owner knows): article wall weaving (11.9k px) - next surgical band;
 nlpjx price/world sections still Hebrew-only on siblings; interiors default via
@@ -2867,7 +2887,7 @@ grade (Wolt/booking-style progress, add designer/furniture/advisors bundles -> R
 upgrade professionals dramatically; check why many pages not indexed; four projects
 identical in structure, side-by-side comparison, ready to show developers.
 DONE THIS TURN (live-verified):
-- "קטלוג תלת ממד" added to primary nav -> /premium/ (template-part DB override + repo
+- "×§×˜×œ×•×’ ×ª×œ×ª ×ž×ž×“" added to primary nav -> /premium/ (template-part DB override + repo
   file mirror).
 - Approximate coords + honest address disclaimer: dimri 32.1068,34.7823; duo (Sumail)
   32.0840,34.7830 -> both pages now have the map band. Dimri siblings synced.
