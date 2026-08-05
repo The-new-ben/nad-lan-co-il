@@ -1,5 +1,38 @@
 # AGENT-LOG - the God brain (append-only, newest on top)
 
+## 2026-08-05 (78) - v1.72.154 packaged: intent-first page order, css leak killed, window labels say the action
+The owner's DNA law implemented. (1) INTENT-FIRST ORDER
+(legal-notice.php): prio-0 filter cuts the article's first
+substantive paragraph (>=100 plain chars, not a shortcode) out
+of the base content and parks it; prio-21 filter recomposes the
+page as lead, notice, everything else - the notice's deliberate
+prio-20 top placement (Tommy Hilfiger duty) now sits DIRECTLY
+UNDER the lead: still before the decision point, still naming
+the developer, but Google's first text is the project, not the
+disclaimer. Extraction failure = nothing moves (legal placement
+never silently disappears). UTOPIA pages discard the
+arrangement in their PHP_INT_MAX rebuild - fine, they already
+open with substance. (2) CSS LEAK (milestones.php): the band
+shipped a <style> block INSIDE the content stream - raw
+".nlms{..." surfaced as readable text near the top of every
+project page; moved to wp_add_inline_style, plus .nl-lead
+styling rides the same handle. (3) WINDOW LABELS (i18n.js +
+engine.js): tab_view/tab_view_dir now state the action in all 5
+languages ("הנוף מהחלון · {d}", "Window view · {d}", FR/RU/AR
+suffix overrides added) and the winstage bar opens with a bold
+winview_title ("כך נראה הנוף מהחלון של הדירה הזאת"). Feature
+bar already carries the designer link sitewide - the
+preload+lead-transfer part belongs to the engine-swap track.
+(4) schema-meta.php reads BASE64 (with legacy fallback);
+reseed154 stores base64(faq) server-side reusing the a152
+payloads. deploy154.ps1 = swap 6 files (bak154) + reseed +
+live verification (faq-in-head, h1-count print for the =4
+audit, lead-block present, css-leak gone, hreflang count).
+Versions 153 skipped for the plugin (153 was the board content
+deploy). NOT in 154, moved to 155: auction upsell in listing
+flow, board v2 with prompts section, area-price lead line
+(owner approved the concept - comps data, area-level, sourced).
+
 ## 2026-08-04 (77) - office-towers dossier arrived and passed QA; commercial pages are next build
 The Park + ToHa2 dossier landed from the owner's content agent
 (138MB unpacked; light files preserved at

@@ -381,7 +381,7 @@
           '<div class="nl-winstage__map"></div>' +
           '<div class="nl-winstage__bar">' +
             '<button class="nl-winstage__turn" data-act="winlook" data-id="' + esc(u.id) + '" data-d="-30" aria-label="' + esc(t("winview_turn_left")) + '">&#8634;</button>' +
-            '<span class="nl-winstage__meta">' + esc(t("floor_label", { n: u.floor })) + " \u00B7 " + esc(dirLabel(u.dir)) + "</span>" +
+            '<span class="nl-winstage__meta"><b>' + esc(t("winview_title")) + "</b> \u00B7 " + esc(t("floor_label", { n: u.floor })) + " \u00B7 " + esc(dirLabel(u.dir)) + "</span>" +
             '<button class="nl-winstage__turn" data-act="winlook" data-id="' + esc(u.id) + '" data-d="30" aria-label="' + esc(t("winview_turn_right")) + '">&#8635;</button>' +
             '<button class="nl-winstage__turn nl-winstage__fs" data-act="winfs" aria-label="' + esc(t("winview_fs")) + '" title="' + esc(t("winview_fs")) + '">&#x26F6;</button>' +
           "</div>" +

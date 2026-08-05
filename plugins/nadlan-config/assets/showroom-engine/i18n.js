@@ -85,7 +85,7 @@
     panel_prompt: "בחרו דירה מהבניין או מהחזית",
     panel_floor: "קומה", panel_rooms: "חדרים", panel_sqm: "שטח", panel_balcony: "מרפסת",
     panel_view: "נוף", panel_dir: "כיוון", panel_status: "סטטוס", panel_price: "אומדן",
-    tab_plan: "תכנית", tab_view: "מבט", tab_tour: "סיור",
+    tab_plan: "תכנית", tab_view: "הנוף מהחלון", tab_tour: "סיור",
     plan_coming: "תכנית הדירה תוצג לאחר קבלת תוכנית מכר מאושרת.",
     view_coming: "מבט מהדירה יוצג לאחר אימות מיקום מול היזם.",
     interior_generic_note: "הדמיית פנים כללית להמחשה בלבד, טרם התקבלו תוכניות מהיזם",
@@ -93,10 +93,11 @@
     btn_brochure: "עמוד דירה להדפסה (PDF)",
     btn_winview: "להמשיך למפה החיה עם כל הסביבה",
     winview_note: "גררו להביט סביב - הצידה, למטה ולמעלה. גובה הקומה והכיוון אמיתיים; להמחשה, לא צילום מהדירה.",
+    winview_title: "כך נראה הנוף מהחלון של הדירה הזאת",
     winview_turn_left: "להביט שמאלה",
     winview_turn_right: "להביט ימינה",
     winview_fs: "מסך מלא", winview_fs_exit: "יציאה ממסך מלא",
-    tab_view_dir: "מבט {d}",
+    tab_view_dir: "הנוף מהחלון · {d}",
     sun_sim_label: "סימולציית שמש", sun_time_aria: "בחירת שעה ביום",
     sun_sim_note: "מסלול שמש אמיתי ליום שוויון לפי קו הרוחב של הפרויקט. גיאומטרי בלבד, ללא הצללות מבניינים שכנים.",
     sun_direct_now: "שמש ישירה עכשיו",
@@ -293,7 +294,7 @@
     panel_prompt: "Select an apartment from the building or the facade",
     panel_floor: "Floor", panel_rooms: "Rooms", panel_sqm: "Area", panel_balcony: "Balcony",
     panel_view: "View", panel_dir: "Facing", panel_status: "Status", panel_price: "Estimate",
-    tab_plan: "Plan", tab_view: "View", tab_tour: "Tour",
+    tab_plan: "Plan", tab_view: "Window view", tab_tour: "Tour",
     plan_coming: "The floor plan will appear once an approved sales plan is provided.",
     view_coming: "The view from the apartment will appear after location is verified.",
     interior_generic_note: "Generic interior visualization for illustration only, developer plans pending",
@@ -301,10 +302,11 @@
     btn_brochure: "Apartment one-pager (PDF)",
     btn_winview: "Continue on the live area map",
     winview_note: "Drag to look around - sideways, down and up. Real floor height and direction; illustrative, not a photo from the unit.",
+    winview_title: "This is the view from this apartment's window",
     winview_turn_left: "Look left",
     winview_turn_right: "Look right",
     winview_fs: "Full screen", winview_fs_exit: "Exit full screen",
-    tab_view_dir: "View {d}",
+    tab_view_dir: "Window view · {d}",
     sun_sim_label: "Sun simulation", sun_time_aria: "Choose time of day",
     sun_sim_note: "Real equinox sun path for the project's latitude. Geometric only, no shading from nearby buildings.",
     sun_direct_now: "Direct sun now",
@@ -456,6 +458,14 @@
   FR.winview_turn_left = "Regarder a gauche"; FR.winview_turn_right = "Regarder a droite";
   RU.winview_turn_left = "Посмотреть влево"; RU.winview_turn_right = "Посмотреть вправо";
   AR.winview_turn_left = "النظر يسارا"; AR.winview_turn_right = "النظر يمينا";
+  /* the tab must state the ACTION, never a bare compass value (owner law
+     2026-08-05: "דרום מערב" told users nothing about what the click reveals) */
+  FR.tab_view = "Vue de la fenetre"; FR.tab_view_dir = "Vue de la fenetre · {d}";
+  FR.winview_title = "Voici la vue depuis la fenetre de cet appartement";
+  RU.tab_view = "Вид из окна"; RU.tab_view_dir = "Вид из окна · {d}";
+  RU.winview_title = "Так выглядит вид из окна этой квартиры";
+  AR.tab_view = "الإطلالة من النافذة"; AR.tab_view_dir = "الإطلالة من النافذة · {d}";
+  AR.winview_title = "هذه هي الإطلالة من نافذة هذه الشقة";
   FR.view_interior_label = "Visualisation interieure";
   RU.view_interior_label = "Визуализация интерьера";
   AR.view_interior_label = "تصور داخلي للشقة";

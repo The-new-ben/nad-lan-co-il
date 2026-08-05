@@ -149,6 +149,77 @@ if ( ! function_exists( 'nadlan_project_notice_render' ) ) {
  * puts it at the very top, ahead of the decision point. */
 add_filter( 'the_content', 'nadlan_project_notice_render', 20 );
 
+/* INTENT-FIRST ORDER (owner law, 2026-08-05).
+ *
+ * Measured live on ashira: the first text Google reads was this notice, then a
+ * second disclaimer, and the article's own opening paragraph appeared nowhere
+ * in the first eight text blocks. A page whose opening text is disclaimers
+ * ranks as a page about disclaimers.
+ *
+ * The repair keeps the legal duty intact and reorders the page: the article's
+ * first substantive paragraph moves to the very top, and the notice sits
+ * DIRECTLY UNDER it - still high, still before any decision point, still
+ * naming the developer. Mechanics: at priority 0 (before any module prepends
+ * and before wpautop) the lead paragraph is cut out of the base content and
+ * parked; at priority 21 (right after the notice prepended at 20) the page is
+ * recomposed as lead, notice, everything else. If extraction fails on a page,
+ * nothing moves and the notice stays at the top - the legal placement never
+ * silently disappears. UTOPIA pages rebuild their content wholesale at
+ * PHP_INT_MAX and discard this arrangement; their curated page already opens
+ * with substance, so that is fine.
+ */
+if ( ! function_exists( 'nadlan_lead_extract' ) ) {
+	function nadlan_lead_extract( $content ) {
+		if ( ! is_singular( 'nadlan_project' ) || ! in_the_loop() || ! is_main_query() ) {
+			return $content;
+		}
+		if ( isset( $GLOBALS['nl_lead_html'] ) ) {
+			return $content;
+		}
+		$lead = '';
+		$rest = $content;
+		if ( preg_match( '/<p[\s>]/i', $content ) && false !== strpos( $content, '</p>' ) ) {
+			$end  = strpos( $content, '</p>' ) + 4;
+			$lead = substr( $content, 0, $end );
+			$rest = substr( $content, $end );
+		} else {
+			$parts = preg_split( "/\n\s*\n/", $content, 2 );
+			if ( 2 === count( $parts ) ) {
+				$lead = wpautop( trim( $parts[0] ) );
+				$rest = $parts[1];
+			}
+		}
+		/* a lead worth promoting is a real paragraph, not a shortcode or an image */
+		$plain = trim( wp_strip_all_tags( $lead ) );
+		if ( mb_strlen( $plain ) < 100 || '[' === substr( $plain, 0, 1 ) ) {
+			return $content;
+		}
+		$GLOBALS['nl_lead_html'] = '<div class="nl-lead">' . $lead . '</div>';
+		return $rest;
+	}
+}
+add_filter( 'the_content', 'nadlan_lead_extract', 0 );
+
+if ( ! function_exists( 'nadlan_lead_recompose' ) ) {
+	function nadlan_lead_recompose( $content ) {
+		if ( empty( $GLOBALS['nl_lead_html'] ) || ! is_singular( 'nadlan_project' ) || ! in_the_loop() || ! is_main_query() ) {
+			return $content;
+		}
+		$lead = $GLOBALS['nl_lead_html'];
+		unset( $GLOBALS['nl_lead_html'] );
+		$notice = '';
+		if ( 0 === strpos( $content, '<aside class="nl-projnotice"' ) ) {
+			$end     = strpos( $content, '</aside>' );
+			if ( false !== $end ) {
+				$notice  = substr( $content, 0, $end + 8 );
+				$content = substr( $content, $end + 8 );
+			}
+		}
+		return $lead . $notice . $content;
+	}
+}
+add_filter( 'the_content', 'nadlan_lead_recompose', 21 );
+
 if ( ! function_exists( 'nadlan_legal_notice_css' ) ) {
 	function nadlan_legal_notice_css() {
 		if ( is_admin() ) {
