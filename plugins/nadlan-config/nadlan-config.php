@@ -2,7 +2,7 @@
 /**
  * Plugin Name: NadLan Config
  * Description: Lead-capture foundation: nadlan_lead CPT + lead-form handler + healthcheck. Read skills/nadlan-config-plugin.md.
- * Version: 1.72.161
+ * Version: 1.72.162
  * Author: nad-lan.co.il
  * License: GPL-2.0+
  * Requires PHP: 7.4
