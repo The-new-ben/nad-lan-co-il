@@ -16,7 +16,7 @@ if ( ! defined( 'ABSPATH' ) ) {
    above (the release script bumps all three). A frozen ver= string once kept
    browsers on a June engine.js for weeks - never hardcode versions in enqueues. */
 if ( ! defined( 'NADLAN_CONFIG_VERSION' ) ) {
-	define( 'NADLAN_CONFIG_VERSION', '1.72.161' );
+	define( 'NADLAN_CONFIG_VERSION', '1.72.162' );
 }
 
 /* ---------- v1.5.0: directory cards, claim funnel, auction engine ----------

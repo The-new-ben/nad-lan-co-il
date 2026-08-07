@@ -291,6 +291,69 @@ if ( ! function_exists( 'nadlan_showroom_engine_shortcode' ) ) {
 		wp_enqueue_style( 'nadlan-engine-tokens', $base . 'tokens.css', array(), NADLAN_CONFIG_VERSION );
 		wp_enqueue_style( 'nadlan-engine-css', $base . 'showroom.css', array( 'nadlan-engine-tokens' ), NADLAN_CONFIG_VERSION );
 		wp_enqueue_style( 'nadlan-engine-editorial', $base . 'editorial.css', array( 'nadlan-engine-tokens' ), NADLAN_CONFIG_VERSION );
+
+		/* MOBILE UNIT SHEET (owner report 2026-08-06, screenshot from rainbow):
+		 * selecting an apartment slid a panel over ~75% of the phone screen,
+		 * the 3D died behind it, the plan/window-view/tour tabs sat below the
+		 * fold INSIDE the panel, and the page became a scroll trap. The repair
+		 * follows the non-modal bottom-sheet pattern (Google Maps style): the
+		 * panel opens at PEEK height with the theater still visible and alive,
+		 * a grip bar expands or collapses it, tabs move to the top of the
+		 * sheet, and the lead actions stick to its bottom - always reachable.
+		 * Engine-level, so every project including future ones gets it.
+		 * Desktop is untouched (media-gated); showroom.css itself is not
+		 * edited, per the cascade-repair precedent above. */
+		wp_add_inline_style(
+			'nadlan-engine-css',
+			'@media(max-width:760px){' .
+			'.nl-panel.is-open{position:fixed!important;left:0!important;right:0!important;bottom:0!important;top:auto!important;' .
+			'width:100%!important;max-width:100%!important;height:46vh!important;max-height:92vh;margin:0!important;' .
+			'border-radius:18px 18px 0 0!important;display:flex!important;flex-direction:column;overflow-y:auto;' .
+			'overscroll-behavior:contain;transition:height .22s ease;box-shadow:0 -8px 30px rgba(0,0,0,.45)}' .
+			'.nl-panel.is-open.nl-sheet-full{height:90vh!important}' .
+			'.nl-sheet-grip{display:none}' .
+			'.nl-panel.is-open .nl-sheet-grip{position:sticky;top:0;z-index:5;display:flex;align-items:center;' .
+			'justify-content:center;gap:14px;padding:8px 12px 6px;background:inherit;cursor:pointer;order:-2;min-height:34px}' .
+			'.nl-sheet-grip i{width:44px;height:5px;border-radius:3px;background:rgba(216,199,154,.55)}' .
+			'.nl-sheet-grip b{font:700 12px Heebo,sans-serif;color:#D8C79A}' .
+			'.nl-panel.is-open .nl-tabs{order:-1;position:sticky;top:34px;z-index:4;background:inherit;padding-top:4px}' .
+			'.nl-panel.is-open .nl-panel__actions{position:sticky;bottom:0;z-index:4;background:inherit;' .
+			'padding-top:8px;padding-bottom:calc(8px + env(safe-area-inset-bottom));order:99;margin-top:auto}' .
+			'}'
+		);
+		wp_add_inline_script(
+			'nadlan-engine-core',
+			'(function(){' .
+			'if(!window.matchMedia||!matchMedia("(max-width:760px)").matches)return;' .
+			'var P=document.getElementById("nl-panel");if(!P)return;' .
+			'var L=(document.documentElement.lang||"he").slice(0,2);' .
+			'var T={he:["להרחבה","לצפות בבניין"],en:["Expand","See the building"],' .
+			'fr:["Agrandir","Voir le batiment"],ru:["Развернуть","Показать здание"],' .
+			'ar:["توسيع","عرض المبنى"]};' .
+			'var W=T[L]||T.he,EXPAND=W[0],COLLAPSE=W[1];' .
+			'function grip(){var g=P.querySelector(".nl-sheet-grip");' .
+			'if(!g){g=document.createElement("div");g.className="nl-sheet-grip";g.setAttribute("role","button");' .
+			'g.setAttribute("aria-label","הרחבת הכרטיס");' .
+			'g.innerHTML="<i></i><b></b><i></i>";' .
+			'g.addEventListener("click",function(){P.classList.toggle("nl-sheet-full");sync();});' .
+			'var y0=null;' .
+			'g.addEventListener("touchstart",function(e){y0=e.touches[0].clientY;},{passive:true});' .
+			'g.addEventListener("touchend",function(e){if(y0===null)return;' .
+			'var dy=e.changedTouches[0].clientY-y0;y0=null;' .
+			'if(dy<-35){P.classList.add("nl-sheet-full");}' .
+			'else if(dy>35){if(P.classList.contains("nl-sheet-full")){P.classList.remove("nl-sheet-full");}' .
+			'else{var x=P.querySelector("[data-act=\\"close\\"]");if(x)x.click();}}' .
+			'sync();},{passive:true});}' .
+			'if(P.firstChild!==g){P.insertBefore(g,P.firstChild);}' .
+			'return g;}' .
+			'function sync(){var g=P.querySelector(".nl-sheet-grip b");' .
+			'if(g)g.textContent=P.classList.contains("nl-sheet-full")?COLLAPSE:EXPAND;}' .
+			'new MutationObserver(function(){' .
+			'if(P.classList.contains("is-open")){grip();sync();}' .
+			'else{P.classList.remove("nl-sheet-full");}' .
+			'}).observe(P,{attributes:true,attributeFilter:["class"],childList:true});' .
+			'})();'
+		);
 		/* Cascade repair (measured live on /projects/duo-tel-aviv/ 2026-07-30): the theme ships
 		   .single-nadlan_project .entry-content h2{color:var(--nlx-ink)!important} and
 		   nadlan-premium-revenue.css .nlpf-name{color:#FFF8E7!important}. Both outrank showroom.css,
