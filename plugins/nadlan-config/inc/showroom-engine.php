@@ -305,27 +305,60 @@ if ( ! function_exists( 'nadlan_showroom_engine_shortcode' ) ) {
 		 * edited, per the cascade-repair precedent above. */
 		wp_add_inline_style(
 			'nadlan-engine-css',
+			/* base rule outside the media query: a grip created on mobile must stay
+			   hidden if the viewport later crosses 760px (rotation / window resize) */
+			'.nl-sheet-grip{display:none}' .
 			'@media(max-width:760px){' .
 			'.nl-panel.is-open{position:fixed!important;left:0!important;right:0!important;bottom:0!important;top:auto!important;' .
 			'width:100%!important;max-width:100%!important;height:46vh!important;max-height:92vh;margin:0!important;' .
-			'border-radius:18px 18px 0 0!important;display:flex!important;flex-direction:column;overflow-y:auto;' .
-			'overscroll-behavior:contain;transition:height .22s ease;box-shadow:0 -8px 30px rgba(0,0,0,.45)}' .
+			'border-radius:18px 18px 0 0!important;display:flex!important;flex-direction:column;overflow:hidden;' .
+			'transition:height .22s ease;box-shadow:0 -8px 30px rgba(0,0,0,.45)}' .
 			'.nl-panel.is-open.nl-sheet-full{height:90vh!important}' .
+			/* the engine wraps everything in .nl-panel__scroll - THAT is the flex
+			   column we reorder; the panel root holds grip + scroll area */
+			'.nl-panel.is-open .nl-panel__scroll{flex:1;display:flex;flex-direction:column;overflow-y:auto;' .
+			'overscroll-behavior:contain;min-height:0}' .
 			'.nl-sheet-grip{display:none}' .
-			'.nl-panel.is-open .nl-sheet-grip{position:sticky;top:0;z-index:5;display:flex;align-items:center;' .
-			'justify-content:center;gap:14px;padding:8px 12px 6px;background:inherit;cursor:pointer;order:-2;min-height:34px}' .
+			'.nl-panel.is-open .nl-sheet-grip{flex:0 0 auto;display:flex;align-items:center;' .
+			'justify-content:center;gap:14px;padding:8px 12px 6px;background:inherit;cursor:pointer;min-height:34px}' .
 			'.nl-sheet-grip i{width:44px;height:5px;border-radius:3px;background:rgba(216,199,154,.55)}' .
 			'.nl-sheet-grip b{font:700 12px Heebo,sans-serif;color:#D8C79A}' .
-			'.nl-panel.is-open .nl-tabs{order:-1;position:sticky;top:34px;z-index:4;background:inherit;padding-top:4px}' .
-			'.nl-panel.is-open .nl-panel__actions{position:sticky;bottom:0;z-index:4;background:inherit;' .
+			'.nl-panel.is-open .nl-panel__scroll .nl-tabs{order:-1;position:sticky;top:0;z-index:4;background:inherit;padding-top:4px}' .
+			'.nl-panel.is-open .nl-panel__scroll .nl-panel__actions{position:sticky;bottom:0;z-index:4;background:inherit;' .
 			'padding-top:8px;padding-bottom:calc(8px + env(safe-area-inset-bottom));order:99;margin-top:auto}' .
 			'}'
 		);
+		/* Cascade repair (measured live on /projects/duo-tel-aviv/ 2026-07-30): the theme ships
+		   .single-nadlan_project .entry-content h2{color:var(--nlx-ink)!important} and
+		   nadlan-premium-revenue.css .nlpf-name{color:#FFF8E7!important}. Both outrank showroom.css,
+		   so every heading on a dark showroom surface rendered near-black (1.02-1.12:1, invisible -
+		   including the inquiry form headline) while the project name rendered cream on the white
+		   profile card. Repeated class selectors win the cascade here, so neither the theme nor
+		   showroom.css has to be edited; the colours are the ones those components already declare. */
+		wp_add_inline_style( 'nadlan-engine-css',
+			'.nl-theater__title.nl-theater__title.nl-theater__title h2{color:var(--theater-fore)!important}'
+			. '.nl-inquiry.nl-inquiry.nl-inquiry h2{color:#fff!important}'
+			. '.nl-card--dark.nl-card--dark.nl-card--dark h2,.nl-card--dark.nl-card--dark.nl-card--dark h3{color:var(--cream)!important}'
+			. '.nlpf-name.nlpf-name{color:#1B1A17!important}'
+		);
+		// 4.3.1 to match what retired project-3d registered on GLB pages - no silent downgrade.
+		wp_enqueue_script( 'nadlan-model-viewer', 'https://ajax.googleapis.com/ajax/libs/model-viewer/4.3.1/model-viewer.min.js', array(), '4.3.1', true );
+		wp_script_add_data( 'nadlan-model-viewer', 'type', 'module' );
+		wp_enqueue_script( 'nadlan-engine-i18n', $base . 'i18n.js', array(), NADLAN_CONFIG_VERSION, true );
+		wp_enqueue_script( 'nadlan-engine-core', $base . 'engine.js', array( 'nadlan-engine-i18n' ), NADLAN_CONFIG_VERSION, true );
+		// buy-flow v1: "build me an offer" overlay (configure > capture > dispatch)
+		wp_enqueue_script( 'nadlan-engine-buyflow', $base . 'buyflow.js', array( 'nadlan-engine-core' ), NADLAN_CONFIG_VERSION, true );
+		// apartment studio: design-before-you-buy overlay (drag furniture,
+		// accessibility clearances, notes -> travels inside the RFP)
+		wp_enqueue_script( 'nadlan-engine-studio', $base . 'studio.js', array( 'nadlan-engine-core' ), NADLAN_CONFIG_VERSION, true );
+		// Attached only AFTER the handle above is registered (add_inline_script on an
+		// unregistered handle fails silently). #nl-panel is built by engine.js at init,
+		// so wiring waits for the node instead of assuming it exists.
 		wp_add_inline_script(
 			'nadlan-engine-core',
 			'(function(){' .
 			'if(!window.matchMedia||!matchMedia("(max-width:760px)").matches)return;' .
-			'var P=document.getElementById("nl-panel");if(!P)return;' .
+			'function wire(P){' .
 			'var L=(document.documentElement.lang||"he").slice(0,2);' .
 			'var T={he:["להרחבה","לצפות בבניין"],en:["Expand","See the building"],' .
 			'fr:["Agrandir","Voir le batiment"],ru:["Развернуть","Показать здание"],' .
@@ -352,31 +385,16 @@ if ( ! function_exists( 'nadlan_showroom_engine_shortcode' ) ) {
 			'if(P.classList.contains("is-open")){grip();sync();}' .
 			'else{P.classList.remove("nl-sheet-full");}' .
 			'}).observe(P,{attributes:true,attributeFilter:["class"],childList:true});' .
+			'if(P.classList.contains("is-open")){grip();sync();}' .
+			'}' .
+			'var P=document.getElementById("nl-panel");' .
+			'if(P){wire(P);return;}' .
+			'new MutationObserver(function(m,o){' .
+			'var p=document.getElementById("nl-panel");' .
+			'if(p){o.disconnect();wire(p);}' .
+			'}).observe(document.body||document.documentElement,{childList:true,subtree:true});' .
 			'})();'
 		);
-		/* Cascade repair (measured live on /projects/duo-tel-aviv/ 2026-07-30): the theme ships
-		   .single-nadlan_project .entry-content h2{color:var(--nlx-ink)!important} and
-		   nadlan-premium-revenue.css .nlpf-name{color:#FFF8E7!important}. Both outrank showroom.css,
-		   so every heading on a dark showroom surface rendered near-black (1.02-1.12:1, invisible -
-		   including the inquiry form headline) while the project name rendered cream on the white
-		   profile card. Repeated class selectors win the cascade here, so neither the theme nor
-		   showroom.css has to be edited; the colours are the ones those components already declare. */
-		wp_add_inline_style( 'nadlan-engine-css',
-			'.nl-theater__title.nl-theater__title.nl-theater__title h2{color:var(--theater-fore)!important}'
-			. '.nl-inquiry.nl-inquiry.nl-inquiry h2{color:#fff!important}'
-			. '.nl-card--dark.nl-card--dark.nl-card--dark h2,.nl-card--dark.nl-card--dark.nl-card--dark h3{color:var(--cream)!important}'
-			. '.nlpf-name.nlpf-name{color:#1B1A17!important}'
-		);
-		// 4.3.1 to match what retired project-3d registered on GLB pages - no silent downgrade.
-		wp_enqueue_script( 'nadlan-model-viewer', 'https://ajax.googleapis.com/ajax/libs/model-viewer/4.3.1/model-viewer.min.js', array(), '4.3.1', true );
-		wp_script_add_data( 'nadlan-model-viewer', 'type', 'module' );
-		wp_enqueue_script( 'nadlan-engine-i18n', $base . 'i18n.js', array(), NADLAN_CONFIG_VERSION, true );
-		wp_enqueue_script( 'nadlan-engine-core', $base . 'engine.js', array( 'nadlan-engine-i18n' ), NADLAN_CONFIG_VERSION, true );
-		// buy-flow v1: "build me an offer" overlay (configure > capture > dispatch)
-		wp_enqueue_script( 'nadlan-engine-buyflow', $base . 'buyflow.js', array( 'nadlan-engine-core' ), NADLAN_CONFIG_VERSION, true );
-		// apartment studio: design-before-you-buy overlay (drag furniture,
-		// accessibility clearances, notes -> travels inside the RFP)
-		wp_enqueue_script( 'nadlan-engine-studio', $base . 'studio.js', array( 'nadlan-engine-core' ), NADLAN_CONFIG_VERSION, true );
 
 		// Always run the map bootstrap so missing tokens/coords render as visible failures.
 		$mapbox_deps = array( 'nadlan-engine-core' );

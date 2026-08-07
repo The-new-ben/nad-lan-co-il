@@ -1,5 +1,62 @@
 # AGENT-LOG - the God brain (append-only, newest on top)
 
+## 2026-08-07 (87) - autonomy day: whole queue executed by Claude, 163 repairs what 162 quietly missed, board v4 carries every prompt
+Deploy autonomy is REAL now (owner: "maybe you try to get all
+the things all fixed by yourself") - every run below executed
+and verified by Claude directly, no owner terminal.
+- 162 post-mortem: two failed owner runs were (a) header/define
+  version mismatch (probe caught it, auto-rollback did its job)
+  then (b) persistent MD5 mismatch caused by a LEFTOVER
+  tmp-phpswap-162 snippet from run (a) registering the same
+  route and reading the OLD payloads. Swept 300+ stale tmp-*
+  snippets (paginated REST loop). LAW: route names and payload
+  filenames are now per-run unique (stamp suffix).
+- 159 rerun: owner's runs had silently seeded NOTHING
+  (updated=0) - PS5.1 ConvertTo-Json wraps nested arrays into
+  {value,Count} objects. Fixed by injecting python-built raw
+  JSON via string concat. Result: 846/846 verified coordinates
+  live, facilities batch 1 (18 projects) live, map transient
+  purged, duplicate coordinate groups 59 -> 26 (the remaining 26
+  are the low-confidence/no-coord rows for human review).
+- 158b: damac post found server-side as type nadlan_intl
+  id=5569, media stripped by ID, their-refs=0, our GLB intact.
+- 163 (the real story): browser QA of live 162 showed the CSS
+  peek working but NO grip and tabs below the fold. Root causes:
+  (1) wp_add_inline_script was called BEFORE the
+  nadlan-engine-core handle was registered - it fails SILENTLY
+  and the JS never reached the page. Moved after the enqueue.
+  LAW: inline snippets attach only to already-registered
+  handles - verify in page source, not in php.
+  (2) the engine wraps panel content in .nl-panel__scroll, so
+  flex order on .nl-tabs at panel level was a no-op. Flex column
+  + order retargeted to the scroll wrapper. Grip wiring now
+  waits for #nl-panel via MutationObserver (engine builds it
+  async). Deployed clean first try; measured live on rainbow
+  mobile 375px: peek 46vh, theater 54% visible above, grip
+  "להרחבה" -> tap -> 90vh + "לצפות בבניין" -> collapse 46vh,
+  tabs at sheet top, actions sticky bottom; EN variant says
+  "Expand"; fresh desktop load has no grip and panel stays
+  absolute. One-line hardening staged for next deploy: base
+  .nl-sheet-grip{display:none} outside the media query covers
+  mobile->desktop rotation mid-session.
+- Board v4 live (/board/, page 5849): adds the permanent prompt
+  ARCHIVE (owner law: prompts never leave the dashboard) - mega
+  prompt v2 for /new-projects/ (SERP exhaustion + the new
+  facility-depth layer: pool length/heating, 30sqm real gym vs
+  token room, dry sauna/steam/cold plunge, in-apartment spec
+  brands, walking minutes, developer securities; 10k words min)
+  + translation factory + coordinates + facilities + auction
+  (executed) + superseded v1. Board update itself hit the SAME
+  PS5.1 {value,Count} trap on a plain Get-Content string (ETS
+  properties) - python now builds the whole request body. LAW
+  extended: NO wordpress request body is ever built by
+  ConvertTo-Json; python json.dumps only.
+- Also this session: disk crisis triage (owner freed 1.4GB ->
+  6GB), worktree .git link repaired after Windows temp cleanup
+  ate it, all 130 inc files restored via git checkout.
+Dimri v2 five variants confirmed live (160 ran). Live version
+1.72.163, health ok.
+
 ## 2026-08-06 (86) - v1.72.162: the mobile unit panel becomes a non-modal bottom sheet
 Owner screenshot from rainbow mobile: selecting an apartment
 slid the unit panel over ~75% of the screen, the theater died
