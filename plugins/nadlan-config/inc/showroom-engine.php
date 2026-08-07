@@ -360,13 +360,16 @@ if ( ! function_exists( 'nadlan_showroom_engine_shortcode' ) ) {
 			'if(!window.matchMedia||!matchMedia("(max-width:760px)").matches)return;' .
 			'function wire(P){' .
 			'var L=(document.documentElement.lang||"he").slice(0,2);' .
-			'var T={he:["להרחבה","לצפות בבניין"],en:["Expand","See the building"],' .
-			'fr:["Agrandir","Voir le batiment"],ru:["Развернуть","Показать здание"],' .
-			'ar:["توسيع","عرض المبنى"]};' .
+			/* Label law (owner 2026-08-07): copy speaks to the visitor's curiosity,
+			   never commands them. "Expand" tells a slave what to do; "more details
+			   about the apartment" tells a buyer what they get. */
+			'var T={he:["פרטים נוספים על הדירה","חזרה למבט על הבניין"],en:["More apartment details","Back to the building"],' .
+			'fr:["Plus de details sur l\'appartement","Retour a l\'immeuble"],ru:["Подробнее о квартире","Назад к зданию"],' .
+			'ar:["مزيد من التفاصيل عن الشقة","العودة إلى المبنى"]};' .
 			'var W=T[L]||T.he,EXPAND=W[0],COLLAPSE=W[1];' .
 			'function grip(){var g=P.querySelector(".nl-sheet-grip");' .
 			'if(!g){g=document.createElement("div");g.className="nl-sheet-grip";g.setAttribute("role","button");' .
-			'g.setAttribute("aria-label","הרחבת הכרטיס");' .
+			'g.setAttribute("aria-label",EXPAND);' .
 			'g.innerHTML="<i></i><b></b><i></i>";' .
 			'g.addEventListener("click",function(){P.classList.toggle("nl-sheet-full");sync();});' .
 			'var y0=null;' .

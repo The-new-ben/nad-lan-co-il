@@ -181,9 +181,38 @@ add_filter( 'the_content', 'nadlan_fbar_render', 11 );
  *
  * Running again at PHP_INT_MAX - with this module loaded AFTER utopia so it
  * wins the same-priority tie - repairs the page instead of arguing with it.
- * The presence check above makes it a no-op everywhere else.
+ * The presence check makes it a no-op everywhere else.
+ *
+ * Owner law 2026-08-07: content first, tools after. A blind prepend put
+ * "מה אפשר לעשות כאן" as the FIRST thing a visitor (and Google) read on
+ * utopia. The repair pass now inserts the bar AFTER the first substantive
+ * paragraph of the rebuilt page (skipping a leading notice aside), falling
+ * back to prepend only when no paragraph is found.
  */
-add_filter( 'the_content', 'nadlan_fbar_render', PHP_INT_MAX );
+if ( ! function_exists( 'nadlan_fbar_repair' ) ) {
+	function nadlan_fbar_repair( $content ) {
+		if ( ! is_singular( 'nadlan_project' ) || ! in_the_loop() || ! is_main_query() ) {
+			return $content;
+		}
+		if ( false !== strpos( $content, 'class="nlfb"' ) ) {
+			return $content;
+		}
+		$bar = nadlan_fbar_render( '' );
+		if ( '' === $bar ) {
+			return $content;
+		}
+		$off = 0;
+		if ( preg_match( '/^\s*<aside class="nl-projnotice".*?<\/aside>/s', $content, $m ) ) {
+			$off = strlen( $m[0] );
+		}
+		$p = strpos( $content, '</p>', $off );
+		if ( false !== $p && $p < 4000 ) {
+			return substr( $content, 0, $p + 4 ) . $bar . substr( $content, $p + 4 );
+		}
+		return $bar . $content;
+	}
+}
+add_filter( 'the_content', 'nadlan_fbar_repair', PHP_INT_MAX );
 
 add_action( 'wp_enqueue_scripts', function () {
 	if ( ! is_singular( 'nadlan_project' ) ) {
