@@ -1,5 +1,42 @@
 # AGENT-LOG - the God brain (append-only, newest on top)
 
+## 2026-08-07 (88) - v1.72.164+165: the new-projects anchor lands in FIVE languages, in place, same day it came back
+The mega-prompt v2 run returned as a complete package (5 anchors
++ SERP intent map + publishing map) and went from zip to live in
+one session. QA gates all passed: he=18,191 words (target 10k),
+en/fr/ru/ar 13-17k each, single H1 each, ZERO bad dashes, 12
+FAQ pairs per language, facility-depth chapter = 4,983 words /
+22 H3 categories (pool typology to generator to walking
+minutes), the only "Hebrew leak" in AR = statute refs 3g1/3g2
+(legit). All 10 internal links live-200; gov.il/knesset 403/247
+are bot-walls - verified rendering in a real browser.
+ARCHITECTURE: pages (not posts) at path-based URLs - he upgraded
+IN PLACE at /new-projects/ (page id 17, preserving URL equity),
+variants as child pages under the existing lang root pages:
+/en/(5974) /fr/(5975) /ru/(5976) /ar/(5977). WP's canonical
+guess-301s died on their own once real pages existed. NEW
+inc/page-lang.php = the page-shaped sibling of project-lang:
+lang context, SERVER-SIDE <html lang/dir> repair via
+language_attributes (the audit found /en/ /fr/ /ru/ homepages
+serving lang="he-IL" rtl - fixed sitewide by the same filter),
+hreflang cluster per page family (leaf slug at root + lang
+parents, transient nlpglang_fam_*, x-default=he), chrome
+retranslation reusing nadlan_plang_chrome_map. NEW
+inc/project-strip.php = [nl_project_strip]: light server-side
+live-inventory strip (8 base-project cards + catalog/archive
+CTAs, 5-lang labels) - the owner's "the page must DISPLAY
+projects". 165 hotfix: the strip sampled 24 recent-modified and
+got ONLY language variants (content deploys touch variants) ->
+empty render; now samples 100 then filters. FAQ schemas to
+_nl_faq_schema b64 + _yoast_wpseo_title/metadesc seeded (Yoast
+picked them up live). Verified rendered DOM: 1 real h1 (the
+h1=4 in raw HTML = strings inside the h1-guard script, michraz
+deja vu), strip 8 cards, 9 tables, FAQPage in head, 6 hreflang,
+17,932 rendered words, EN chrome fully English. HEALTH blipped
+"degraded" mid-deploy = openai probe curl timeout (external),
+recovered to ok by 165. Package preserved in
+docs/content/new-projects-2026-08-07/.
+
 ## 2026-08-07 (87) - autonomy day: whole queue executed by Claude, 163 repairs what 162 quietly missed, board v4 carries every prompt
 Deploy autonomy is REAL now (owner: "maybe you try to get all
 the things all fixed by yourself") - every run below executed
