@@ -206,8 +206,18 @@ if ( ! function_exists( 'nadlan_lead_extract' ) ) {
 			}
 			$block = $m[0][0];
 			$pos   = $m[0][1];
-			if ( $pos > 2500 ) {
+			/* 8000, not 2500: guide-wrap pages (yoo/meier/akirov) open with a
+			   large inline JSON-LD script, pushing the first real paragraph
+			   past any small window - extraction silently failed there and the
+			   notice stayed glued to the top (fleet sweep 2026-08-08) */
+			if ( $pos > 8000 ) {
 				break;
+			}
+			/* never cut text that sits INSIDE an open <script> block */
+			$before = substr( $rest, 0, $pos );
+			if ( substr_count( strtolower( $before ), '<script' ) > substr_count( strtolower( $before ), '</script' ) ) {
+				$offset = $pos + strlen( $block );
+				continue;
 			}
 			$plain    = trim( wp_strip_all_tags( $block ) );
 			$byline   = false !== stripos( $block, 'class="byline"' ) || false !== stripos( $block, "class='byline'" );

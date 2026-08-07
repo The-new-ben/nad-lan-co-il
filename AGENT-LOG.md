@@ -1,5 +1,35 @@
 # AGENT-LOG - the God brain (append-only, newest on top)
 
+## 2026-08-08 (90) - v1.72.171+172: THE MATCHER IS LIVE on /new-projects/; openings 7/8 content-first
+The owner's "magic tool" shipped: [nl_matcher] on the anchor -
+chip quiz, zero typing (city / rooms / budget / delivery year /
+facilities incl. near-sea and has-3D), honest percent match,
+shareable results (selection recorded in the URL hash, restored
+on load). Data = REAL meta only via /nadlan/v1/matcher-data
+(968 base projects, cached 1h, transient v2): city, price_min/
+max, completion_year, rooms parsed from project_3d_units,
+canonical facilities, coords, glb. Honesty rule: a criterion a
+project lacks data for earns nothing, the percent drops.
+LIVE-TESTED like a user, twice: first run FAILED the curation
+law - city-only compounds at 67% beat rainbow, because (a) the
+import says "תל אביב יפו" while flagship metas say "תל אביב"
+(city normalized server-side now) and (b) 4 matched facilities
+weighed less than one city hit (facilities now 30, city 20).
+Second run: tel-aviv+pool+spa+sea+3D -> DIMRI 100%, RAINBOW
+100%, UTOPIA 100%, ASHIRA 85%, DUO 85%, MEIER 85%. The shelf
+leads, everyone else ranks by probability. Coverage gaps for
+the data agent: price on 2 projects only, rooms on 9 - a
+harvest prompt for the flagship 30 goes on the board.
+171 also widened the lead-extractor scan window 2500->8000
+(guide-wrap pages open with a huge inline JSON-LD script; yoo/
+meier/akirov extraction silently failed) + a never-cut-inside-
+<script> guard. FLEET SWEEP: 7/8 CONTENT-FIRST (duo, dimri,
+ashira, rainbow, yoo, meier, akirov). Only utopia still
+notice-first - its PHP_INT_MAX wholesale rebuild, named next.
+Spam finding stands: SPF yes, DKIM missing, wp_mail Hebrew ->
+spam at benbetesh@gmail.com; fix = uPress SMTP/DKIM + WhatsApp
+lead notify. Cinematic walk (designer engine) = next big build.
+
 ## 2026-08-07 (89) - v1.72.166+167 EMERGENCY: the close-button froze every showroom on mobile; curation mode begins
 Owner escalation ("you're drowning us") triggered a god-mode
 sweep. THE BIG ONE, reproduced then fixed: my 163 grip
