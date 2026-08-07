@@ -23,35 +23,73 @@ add_shortcode( 'nl_project_strip', function ( $atts ) {
 		$lang = 'he';
 	}
 	$t = array(
-		'he' => array( 'רוצים לראות מלאי אמיתי? אלו פרויקטים חיים מהמאגר', 'לקטלוג המלא עם מפה', 'לכל הפרויקטים' ),
-		'en' => array( 'Live projects from the catalog', 'Full catalog with map', 'All projects' ),
-		'fr' => array( 'Projets en direct du catalogue', 'Catalogue complet avec carte', 'Tous les projets' ),
-		'ru' => array( 'Живые проекты из каталога', 'Полный каталог с картой', 'Все проекты' ),
-		'ar' => array( 'مشاريع حية من الكتالوج', 'الكتالوج الكامل مع الخريطة', 'جميع المشاريع' ),
+		'he' => array( 'רוצים לראות מלאי אמיתי? אלו הפרויקטים המובילים במאגר', 'למדף הפרויקטים הנבחרים', 'לכל הפרויקטים' ),
+		'en' => array( 'The leading projects in the catalog', 'The curated project shelf', 'All projects' ),
+		'fr' => array( 'Les projets phares du catalogue', 'La selection premium', 'Tous les projets' ),
+		'ru' => array( 'Ведущие проекты каталога', 'Отобранная витрина', 'Все проекты' ),
+		'ar' => array( 'المشاريع الرائدة في الكتالوج', 'الرف المختار', 'جميع المشاريع' ),
 	);
 	$s = isset( $t[ $lang ] ) ? $t[ $lang ] : $t['he'];
 
-	/* 100, not 24: recent content deploys touch the LANGUAGE VARIANTS, so the
-	   top of the modified-DESC list can be variants wall to wall - live 164
-	   rendered an empty strip exactly that way. Variants are filtered below. */
-	$q = new WP_Query( array(
-		'post_type'      => 'nadlan_project',
-		'post_status'    => 'publish',
-		'posts_per_page' => 100,
-		'orderby'        => 'modified',
-		'order'          => 'DESC',
-		'no_found_rows'  => true,
-	) );
-	$cards = array();
-	foreach ( $q->posts as $p ) {
-		/* Hebrew base entries only - language variants of the same building
-		   would render as duplicates in every language. */
-		if ( preg_match( '/-(en|fr|ru|ar)$/', $p->post_name ) ) {
-			continue;
-		}
-		$cards[] = $p;
+	/* CURATION LAW (owner 2026-08-07): the strip leads with the projects that
+	   carry the most material - 3D model first, then sourced facilities -
+	   because they convert and because their developers are the paying side.
+	   Bare cards are not banned sitewide, they just never lead. DETERMINISTIC
+	   material queries, NOT a recency sample: meta updates do not bump
+	   post_modified, so the flagship GLB projects fell out of a modified-DESC
+	   sample entirely (found live on the 166 strip - rainbow/duo missing). */
+	$cards  = array();
+	$seen   = array();
+	$rounds = array(
+		array( 'key' => 'project_model_glb', 'score_base' => 40 ),
+		array( 'key' => 'project_facilities', 'score_base' => 10 ),
+	);
+	foreach ( $rounds as $round ) {
 		if ( count( $cards ) >= (int) $atts['count'] ) {
 			break;
+		}
+		$q = new WP_Query( array(
+			'post_type'      => 'nadlan_project',
+			'post_status'    => 'publish',
+			'posts_per_page' => 60,
+			'no_found_rows'  => true,
+			'meta_query'     => array(
+				array(
+					'key'     => $round['key'],
+					'value'   => '',
+					'compare' => '!=',
+				),
+			),
+		) );
+		$scored = array();
+		foreach ( $q->posts as $p ) {
+			/* Hebrew base entries only - language variants of the same
+			   building would render as duplicates in every language. */
+			if ( isset( $seen[ $p->ID ] ) || preg_match( '/-(en|fr|ru|ar)$/', $p->post_name ) ) {
+				continue;
+			}
+			$score = $round['score_base'];
+			$fac   = (string) get_post_meta( $p->ID, 'project_facilities', true );
+			if ( '' !== $fac ) {
+				$score += min( 3 * count( array_filter( array_map( 'trim', explode( ',', $fac ) ) ) ), 18 );
+			}
+			if ( '' !== (string) get_post_meta( $p->ID, 'lat', true ) ) {
+				$score += 6;
+			}
+			if ( '' !== (string) get_post_meta( $p->ID, '_nl_faq_schema', true ) ) {
+				$score += 8;
+			}
+			$scored[] = array( $score, $p );
+		}
+		usort( $scored, function ( $a, $b ) {
+			return $b[0] - $a[0];
+		} );
+		foreach ( $scored as $row ) {
+			$cards[]            = $row[1];
+			$seen[ $row[1]->ID ] = true;
+			if ( count( $cards ) >= (int) $atts['count'] ) {
+				break;
+			}
 		}
 	}
 	if ( ! $cards ) {
@@ -76,8 +114,10 @@ add_shortcode( 'nl_project_strip', function ( $atts ) {
 	foreach ( $cards as $p ) {
 		$out .= '<a href="' . esc_url( get_permalink( $p ) ) . '">' . esc_html( get_the_title( $p ) ) . '</a>';
 	}
+	/* /premium/ is the curated shelf; /catalog/ failed the quality gate
+	   (demo rows, em dashes, no imagery) and gets no traffic from us */
 	$out .= '</div><div class="cta">'
-		. '<a href="' . esc_url( home_url( '/catalog/' ) ) . '">' . esc_html( $s[1] ) . '</a>'
+		. '<a href="' . esc_url( home_url( '/premium/' ) ) . '">' . esc_html( $s[1] ) . '</a>'
 		. '<a href="' . esc_url( home_url( '/projects/' ) ) . '">' . esc_html( $s[2] ) . '</a>'
 		. '</div></section>';
 	return $out;

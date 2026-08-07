@@ -1,5 +1,45 @@
 # AGENT-LOG - the God brain (append-only, newest on top)
 
+## 2026-08-07 (89) - v1.72.166+167 EMERGENCY: the close-button froze every showroom on mobile; curation mode begins
+Owner escalation ("you're drowning us") triggered a god-mode
+sweep. THE BIG ONE, reproduced then fixed: my 163 grip
+MutationObserver had an unguarded else-branch running
+classList.remove("nl-sheet-full") on EVERY class mutation while
+closed - classList.remove on an ABSENT token still runs the DOM
+attribute update-steps, which queues another mutation record ->
+infinite microtask loop -> TOTAL renderer freeze on panel CLOSE.
+No console error, page just dies. On phones: pick apartment,
+close card, phone frozen, lead lost. Reproduced live on ashira
+(even a trivial eval timed out), fixed with a contains() guard
+(166), then verified the full cycle live: open/close/reopen/
+window-tab/expand/collapse/final-close, renderer alive. LAW: a
+MutationObserver callback may NEVER unconditionally write the
+attribute it observes.
+Curation mode (owner directive): the anchor pages linked to
+/catalog/ - audited it: demo rows ("4 חדרים בבקעה"), em dashes,
+zero images. /premium/ audited clean (0 dashes, curated shelf
+copy, facility filters). All 34 catalog hrefs across the 5
+anchor pages now point to /premium/; strip CTA too (166). Strip
+ranking rewritten TWICE: material score over a modified-DESC
+sample still missed rainbow/duo (meta updates never bump
+post_modified!) -> 167 queries BY MATERIAL directly (meta_query
+project_model_glb != '' round 1, project_facilities round 2,
+score+sort inside rounds). Live strip now: duo, dimri, ashira,
+rainbow, utopia, yoo, meier, akirov - the flagship shelf, Ramla
+gone. CONFIRMED OPEN DEFECTS for next build: (1) utopia opens
+with "מה אפשר לעשות כאן"+disclaimer before content - its
+PHP_INT_MAX module bypasses the intent-first surgery; (2) NO
+breadcrumbs on project pages; (3) language switcher sits
+~1265px deep on mobile - a foreign visitor never finds it;
+(4) /catalog/ itself still live with demo content - needs
+noindex or rebuild decision; (5) leads_7d=1 delivered_7d=0 -
+volume collapse likely the freeze, delivery goes to admin
+fallback mail only. Benchmarks pulled (Baymard/Zillow split
+map, Apartment List quiz, 1.5->4.3% conversion via simplified
+journey): the matcher quiz spec is drafted in chat - min-click
+chips, % match, material-rich projects lead, practical intents
+(price/rooms/area) first, luxury facilities second.
+
 ## 2026-08-07 (88) - v1.72.164+165: the new-projects anchor lands in FIVE languages, in place, same day it came back
 The mega-prompt v2 run returned as a complete package (5 anchors
 + SERP intent map + publishing map) and went from zip to live in

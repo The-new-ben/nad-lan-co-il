@@ -381,9 +381,13 @@ if ( ! function_exists( 'nadlan_showroom_engine_shortcode' ) ) {
 			'return g;}' .
 			'function sync(){var g=P.querySelector(".nl-sheet-grip b");' .
 			'if(g)g.textContent=P.classList.contains("nl-sheet-full")?COLLAPSE:EXPAND;}' .
+			/* the else-branch MUST be guarded: classList.remove() on an absent token
+			   still SETS the class attribute (DOM spec update-steps), which queues
+			   another mutation record - unguarded this is an infinite microtask
+			   loop that froze the whole page on close (found live 2026-08-07) */
 			'new MutationObserver(function(){' .
 			'if(P.classList.contains("is-open")){grip();sync();}' .
-			'else{P.classList.remove("nl-sheet-full");}' .
+			'else if(P.classList.contains("nl-sheet-full")){P.classList.remove("nl-sheet-full");}' .
 			'}).observe(P,{attributes:true,attributeFilter:["class"],childList:true});' .
 			'if(P.classList.contains("is-open")){grip();sync();}' .
 			'}' .
