@@ -19,7 +19,8 @@
     unitId: qs.get("unit") || null,
     view: "3d", tab: "plan", filter: "all", light: "day", sunMin: 720,
     favs: load("nl_favs", []), compare: [],
-    mvReady: false
+    mvReady: false,
+    tool: null
   };
   // Sketch-first: if a project has no 3D model, start in facade (sketch) view so
   // the page never shows an empty/broken model-viewer. (Antigravity, 2026-07-01)
@@ -128,6 +129,12 @@
      RENDER
   ===================================================================== */
   function render() {
+    /* teardown resources the selected-unit surface owns before the DOM under
+       them disappears (language/project switch rebuilds #nl-root) */
+    if (SR.config.selected_unit_surface) {
+      if (typeof destroyBeamMap === "function") destroyBeamMap();
+      if (state.tool && typeof finishUnitToolClose === "function") finishUnitToolClose(false);
+    }
     // The adopted unified map (#nlpjx-map) lives INSIDE nl-root next to the
     // theater; rescue it before innerHTML wipes it, re-adopt in afterRender().
     var uni = document.getElementById("nlpjx-map");
@@ -296,6 +303,9 @@
         (p.model_glb ? '<button class="nl-filterflag" id="nl-filterflag" data-act="filter" data-id="all" type="button" hidden></button>' : "") +
         panel() +
       "</div>" +
+      /* selected-unit scene seam (audit 2026-08-08): a SIBLING of .nl-stagewrap,
+         so it is never clipped by its overflow or jailed by its transform */
+      '<section class="nl-unit-screen" id="nl-unit-screen" hidden></section>' +
       dock +
     "</div>";
   }
@@ -1010,6 +1020,7 @@
       dtInit();
       updateFormCtx(); updateSticky();
       if (state.unitId && unit(state.unitId)) selectUnit(state.unitId, true);
+      else if (SR.config.selected_unit_surface) clearUnitScreen();
       var form = document.getElementById("nl-form");
       if (form) form.addEventListener("submit", onSubmit);
       window.addEventListener("scroll", onScroll, { passive: true }); onScroll();
@@ -1282,8 +1293,10 @@
     var node = e.target.closest("[data-act]"); if (!node) return;
     var act = node.dataset.act, id = node.dataset.id;
     if (act === "lang") { e.preventDefault(); switchLang(id); }
-    else if (act === "select") selectUnit(id);
+    else if (act === "select") selectUnit(id, false, node);
     else if (act === "close") closePanel();
+    else if (act === "unit-back") closePanel();
+    else if (act === "unit-tool") { openUnitTool(node.dataset.tool, unit(state.unitId), node); }
     else if (act === "view") setView(id);
     else if (act === "tab") setTab(id);
     else if (act === "filter") { state.filter = id; refresh("inventory"); applyStageFilter(); }
@@ -1332,7 +1345,775 @@
     if (tb === "view") winStageInit(u);
   }
 
-  function selectUnit(id, instant) {
+
+  /* ---- audit fragment: selected-unit surface ---- */
+/* Add `tool: null` to the existing state object. */
+var UNIT_MQ = window.matchMedia(
+  "(max-width:700px), " +
+  "(max-width:900px) and (max-height:500px) and (pointer:coarse)"
+);
+
+var unitSurface = {
+  source: null,
+  beamMap: null,
+  beamHost: null
+};
+
+function setInert(el, on) {
+  if (!el) return;
+  if ("inert" in el) el.inert = !!on;
+  if (on) el.setAttribute("aria-hidden", "true");
+  else el.removeAttribute("aria-hidden");
+}
+
+function preciseGeo() {
+  var g = project().geo || {};
+  var lat = Number(g.lat);
+  var lng = Number(g.lng);
+
+  return {
+    ok: isFinite(lat) && isFinite(lng) && g.confidence !== "city",
+    lat: lat,
+    lng: lng
+  };
+}
+
+function unitBearing(u) {
+  var key = dirKey(u.dir);
+  return key && Object.prototype.hasOwnProperty.call(DIR_BEARING, key)
+    ? DIR_BEARING[key]
+    : 0;
+}
+
+function beamPoint(bearing, radius) {
+  var rad = bearing * Math.PI / 180;
+  return {
+    x: 50 + Math.sin(rad) * radius,
+    y: 50 - Math.cos(rad) * radius
+  };
+}
+
+function beamPath(bearing) {
+  var left = beamPoint(bearing - 24, 44);
+  var tip = beamPoint(bearing, 53);
+  var right = beamPoint(bearing + 24, 44);
+
+  return [
+    "M 50 50",
+    "L " + left.x.toFixed(2) + " " + left.y.toFixed(2),
+    "Q " + tip.x.toFixed(2) + " " + tip.y.toFixed(2) +
+      " " + right.x.toFixed(2) + " " + right.y.toFixed(2),
+    "Z"
+  ].join(" ");
+}
+
+function renderBeamScene(u) {
+  var view = viewText(u) || dirLabel(u.dir);
+  var bearing = unitBearing(u);
+
+  return (
+    '<figure class="nl-unit-beam" data-bearing="' + bearing + '">' +
+      '<div class="nl-unit-beam__map" data-role="beam-map" ' +
+        'role="img" aria-label="' +
+        esc(t("unit_beam_title", { view: view })) + '"></div>' +
+      '<svg class="nl-unit-beam__svg" viewBox="0 0 100 100" ' +
+        'preserveAspectRatio="none" aria-hidden="true">' +
+        '<defs>' +
+          '<linearGradient id="nl-unit-beam-gold" x1="0" y1="1" x2="0" y2="0">' +
+            '<stop offset="0" stop-color="#c9a34f" stop-opacity=".86"/>' +
+            '<stop offset="1" stop-color="#f4df9d" stop-opacity=".18"/>' +
+          '</linearGradient>' +
+        '</defs>' +
+        '<path d="' + beamPath(bearing) + '" fill="url(#nl-unit-beam-gold)"/>' +
+        '<circle cx="50" cy="50" r="4.2" fill="#1b1a17" ' +
+          'stroke="#f3d98c" stroke-width="1.4"/>' +
+      '</svg>' +
+      '<figcaption>' +
+        '<strong>' + esc(t("unit_beam_title", { view: view })) + '</strong>' +
+        '<span>' + esc(t("unit_beam_note")) + '</span>' +
+      '</figcaption>' +
+    '</figure>'
+  );
+}
+
+function destroyBeamMap() {
+  if (unitSurface.beamMap) {
+    try { unitSurface.beamMap.remove(); } catch (e) {}
+  }
+
+  unitSurface.beamMap = null;
+  unitSurface.beamHost = null;
+}
+
+function mountBeamScene(scope) {
+  destroyBeamMap();
+
+  var host = scope && scope.querySelector('[data-role="beam-map"]');
+  var geo = preciseGeo();
+  var figure = host && host.closest(".nl-unit-beam");
+
+  if (!host || !figure) return;
+
+  /* A city centroid is suitable for an area map, not for a truthful window. */
+  if (!geo.ok || !SR.config.mapbox_token || !window.mapboxgl) {
+    figure.classList.add("is-schematic");
+    return;
+  }
+
+  try {
+    window.mapboxgl.accessToken = SR.config.mapbox_token;
+
+    var map = new window.mapboxgl.Map({
+      container: host,
+      style: "mapbox://styles/mapbox/light-v11",
+      center: [geo.lng, geo.lat],
+      zoom: 15.4,
+      pitch: 0,
+      bearing: 0,
+      interactive: false,
+      attributionControl: true
+    });
+
+    unitSurface.beamMap = map;
+    unitSurface.beamHost = host;
+
+    map.once("load", function () {
+      if (unitSurface.beamMap !== map) return;
+      figure.classList.add("is-map-ready");
+      try { map.resize(); } catch (e) {}
+    });
+
+    map.once("error", function () {
+      if (unitSurface.beamMap === map) {
+        figure.classList.add("is-schematic");
+      }
+    });
+  } catch (e) {
+    figure.classList.add("is-schematic");
+  }
+}
+
+function unitFactsMarkup(u) {
+  return (
+    '<dl class="nl-unit-facts">' +
+      '<div><dt>' + esc(t("panel_floor")) + '</dt><dd>' + esc(u.floor) + '</dd></div>' +
+      '<div><dt>' + esc(t("panel_rooms")) + '</dt><dd>' + esc(u.rooms) + '</dd></div>' +
+      '<div><dt>' + esc(t("panel_sqm")) + '</dt><dd>' +
+        esc(u.sqm + " " + t("sqm_unit")) + '</dd></div>' +
+      '<div><dt>' + esc(t("panel_balcony")) + '</dt><dd>' +
+        esc(u.balcony ? u.balcony + " " + t("sqm_unit") : "–") +
+      '</dd></div>' +
+    '</dl>'
+  );
+}
+
+function unitDoorsMarkup(u) {
+  var view = viewText(u) || dirLabel(u.dir);
+
+  return (
+    '<nav class="nl-unit-doors" aria-label="' + esc(t("unit_tools_aria")) + '">' +
+      '<button type="button" data-act="unit-tool" data-tool="plan">' +
+        esc(t("unit_door_plan")) +
+      '</button>' +
+      '<button type="button" data-act="unit-tool" data-tool="view">' +
+        esc(t("unit_door_view", { view: view })) +
+      '</button>' +
+      '<button type="button" data-act="unit-tool" data-tool="tour">' +
+        esc(t("unit_door_tour")) +
+      '</button>' +
+      (SR.config.studio !== "off"
+        ? '<button type="button" data-act="unit-tool" data-tool="studio">' +
+            esc(t("unit_door_studio")) +
+          '</button>'
+        : "") +
+    '</nav>'
+  );
+}
+
+function unitQuickActionsMarkup(u) {
+  var fav = state.favs.indexOf(u.id) >= 0;
+  var cmp = state.compare.indexOf(u.id) >= 0;
+
+  return (
+    '<div class="nl-unit-quick" role="group" aria-label="' +
+      esc(t("unit_quick_actions")) + '">' +
+      '<button type="button" data-act="fav" data-id="' + esc(u.id) + '" ' +
+        'aria-pressed="' + (fav ? "true" : "false") + '">' +
+        esc(fav ? t("btn_saved") : t("btn_save")) +
+      '</button>' +
+      '<button type="button" data-act="compare" data-id="' + esc(u.id) + '" ' +
+        'aria-pressed="' + (cmp ? "true" : "false") + '">' +
+        esc(cmp ? t("btn_compared") : t("btn_compare")) +
+      '</button>' +
+      '<button type="button" data-act="share" data-id="' + esc(u.id) + '">' +
+        esc(t("btn_share")) +
+      '</button>' +
+      '<a href="' + esc(waShareUrl(u)) + '" target="_blank" rel="noopener">' +
+        esc(t("btn_wa_share")) +
+      '</a>' +
+    '</div>'
+  );
+}
+
+function unitSummaryMarkup(u, mode) {
+  return (
+    '<div class="nl-unit-summary nl-unit-summary--' + esc(mode) + '">' +
+      '<header class="nl-unit-summary__head">' +
+        '<button class="nl-unit-summary__back" type="button" data-act="unit-back">' +
+          esc(t("unit_back_building")) +
+        '</button>' +
+        '<div>' +
+          '<span>' + esc(t("unit_selected")) + '</span>' +
+          '<h3 id="nl-selected-unit-title">' +
+            esc(roomsLabel(u.rooms) + " · " + u.label) +
+          '</h3>' +
+        '</div>' +
+        '<span class="nl-unit-summary__status">' +
+          esc(statusLabel(u.status)) +
+        '</span>' +
+      '</header>' +
+      renderBeamScene(u) +
+      unitFactsMarkup(u) +
+      unitDoorsMarkup(u) +
+      unitQuickActionsMarkup(u) +
+      '<button class="nl-unit-offer" type="button" ' +
+        'data-act="scroll" data-id="inquiry">' +
+        esc(t("unit_offer")) +
+      '</button>' +
+    '</div>'
+  );
+}
+
+function renderUnitScreen(u, options) {
+  options = options || {};
+
+  var mobile = UNIT_MQ.matches;
+  var theaterEl = ROOT.querySelector(".nl-theater");
+  var screen = document.getElementById("nl-unit-screen");
+  var panelEl = document.getElementById("nl-panel");
+  var panelBodyEl = document.getElementById("nl-panel-body");
+  var host;
+
+  if (!u || !theaterEl || !screen || !panelEl || !panelBodyEl) return;
+
+  destroyBeamMap();
+
+  if (mobile) {
+    theaterEl.classList.add("nl-theater--unit-selected");
+
+    screen.innerHTML = unitSummaryMarkup(u, "screen");
+    screen.hidden = false;
+    setInert(screen, false);
+
+    panelEl.hidden = true;
+    panelEl.classList.remove("is-open", "nl-panel--unit-summary");
+    setInert(panelEl, true);
+
+    host = screen;
+  } else {
+    theaterEl.classList.remove("nl-theater--unit-selected");
+
+    screen.hidden = true;
+    screen.innerHTML = "";
+    setInert(screen, true);
+
+    panelBodyEl.innerHTML = unitSummaryMarkup(u, "panel");
+    panelEl.hidden = false;
+    panelEl.classList.add("is-open", "nl-panel--unit-summary");
+    setInert(panelEl, false);
+
+    host = panelBodyEl;
+  }
+
+  mountBeamScene(host);
+
+  if (mobile && options.scroll) {
+    requestAnimationFrame(function () {
+      theaterEl.scrollIntoView({
+        block: "start",
+        behavior: window.matchMedia("(prefers-reduced-motion:reduce)").matches
+          ? "auto"
+          : "smooth"
+      });
+    });
+  }
+
+  if (options.focus) {
+    requestAnimationFrame(function () {
+      var back = host.querySelector('[data-act="unit-back"]');
+      if (back) back.focus({ preventScroll: true });
+    });
+  }
+}
+
+function clearUnitScreen() {
+  var theaterEl = ROOT.querySelector(".nl-theater");
+  var screen = document.getElementById("nl-unit-screen");
+  var panelEl = document.getElementById("nl-panel");
+  var panelBodyEl = document.getElementById("nl-panel-body");
+
+  destroyBeamMap();
+
+  if (theaterEl) theaterEl.classList.remove("nl-theater--unit-selected");
+
+  if (screen) {
+    screen.hidden = true;
+    screen.innerHTML = "";
+    setInert(screen, true);
+  }
+
+  if (panelEl) {
+    panelEl.classList.remove("is-open", "nl-panel--unit-summary");
+    panelEl.hidden = UNIT_MQ.matches;
+    setInert(panelEl, true);
+  }
+
+  if (panelBodyEl) panelBodyEl.innerHTML = panelEmpty();
+}
+
+function syncUnitBreakpoint() {
+  var selected = unit(state.unitId);
+  if (selected) renderUnitScreen(selected, { focus: false, scroll: false });
+  else clearUnitScreen();
+}
+
+if (UNIT_MQ.addEventListener) {
+  UNIT_MQ.addEventListener("change", syncUnitBreakpoint);
+} else {
+  UNIT_MQ.addListener(syncUnitBreakpoint);
+}
+
+/*
+ * Integration seam required in theater():
+ *   '<section class="nl-unit-screen" id="nl-unit-screen" hidden></section>'
+ * Place it as a sibling immediately after .nl-stagewrap and before the dock.
+ *
+ * selectUnit(), closePanel(), toggleFav() and toggleCompare() replacement
+ * excerpts live in integration-diff-guide.md so this fragment remains focused
+ * on one responsibility: rendering and owning the selected-unit surface.
+ */
+
+  /* ---- audit fragment: body-level fullscreen tools ---- */
+var unitTool = {
+  dialog: null,
+  cleanup: null,
+  returnFocus: null,
+  historyMarker: null,
+  pendingFocusRestore: true
+};
+
+function ensureUnitToolDialog() {
+  if (unitTool.dialog) return unitTool.dialog;
+
+  var dialog = document.createElement("dialog");
+  dialog.id = "nl-unit-tool";
+  dialog.className = "nl-unit-tool";
+  document.body.appendChild(dialog);
+
+  dialog.addEventListener("cancel", function (event) {
+    event.preventDefault();
+    closeUnitTool(true, false);
+  });
+
+  dialog.addEventListener("click", function (event) {
+    var button = event.target.closest('[data-act="unit-tool-back"]');
+    if (button) closeUnitTool(true, false);
+  });
+
+  unitTool.dialog = dialog;
+  return dialog;
+}
+
+function toolTitle(kind) {
+  if (kind === "plan") return t("tab_plan");
+  if (kind === "view") return t("tab_view");
+  if (kind === "tour") return t("tab_tour");
+  return t("unit_selected");
+}
+
+function unitToolMarkup(kind, u) {
+  var content = "";
+
+  if (kind === "plan") {
+    var plan = safeHttpUrl(u.plan);
+    content = plan
+      ? '<figure class="nl-unit-tool__plan">' +
+          '<img src="' + esc(plan) + '" alt="' + esc(t("tab_plan")) + '">' +
+        '</figure>'
+      : '<p class="nl-unit-tool__empty">' + esc(t("plan_coming")) + '</p>';
+  }
+
+  if (kind === "view") {
+    content =
+      '<div class="nl-window-tool">' +
+        '<div class="nl-window-tool__map" data-role="window-map" tabindex="0" ' +
+          'aria-label="' + esc(t("tab_view")) + '"></div>' +
+        '<p class="nl-window-tool__fallback" data-role="window-fallback" hidden></p>' +
+        '<div class="nl-window-tool__controls">' +
+          '<button type="button" data-turn="-30" aria-label="' +
+            esc(t("winview_turn_left")) + '">↶</button>' +
+          '<span>' + esc(t("floor_label", { n: u.floor })) +
+            " · " + esc(dirLabel(u.dir)) + '</span>' +
+          '<button type="button" data-turn="30" aria-label="' +
+            esc(t("winview_turn_right")) + '">↷</button>' +
+        '</div>' +
+      '</div>';
+  }
+
+  if (kind === "tour") {
+    var tour = safeHttpUrl(u.tour_url || project().tour_url);
+
+    content = tour
+      ? '<div class="nl-unit-tool__tour">' +
+          '<iframe src="' + esc(tour) + '" title="' + esc(t("tab_tour")) + '" ' +
+            'allow="fullscreen; gyroscope; accelerometer" allowfullscreen></iframe>' +
+          '<a href="' + esc(tour) + '" target="_blank" rel="noopener">' +
+            esc(t("tour_open")) +
+          '</a>' +
+        '</div>'
+      : fpMarkup(u);
+  }
+
+  return (
+    '<div class="nl-unit-tool__frame">' +
+      '<header class="nl-unit-tool__head">' +
+        '<button type="button" data-act="unit-tool-back">' +
+          esc(t("unit_tool_back")) +
+        '</button>' +
+        '<h2 id="nl-unit-tool-title">' + esc(toolTitle(kind)) + '</h2>' +
+      '</header>' +
+      '<div class="nl-unit-tool__body">' + content + '</div>' +
+    '</div>'
+  );
+}
+
+function openUnitTool(kind, u, trigger) {
+  if (!u) return;
+
+  /* The current Studio already owns a body-level overlay. Do not nest it. */
+  if (kind === "studio") {
+    openStudio(u.id);
+    return;
+  }
+
+  if (kind !== "plan" && kind !== "view" && kind !== "tour") return;
+
+  var dialog = ensureUnitToolDialog();
+
+  /* Defensive only: normal UI cannot open a second tool while ROOT is inert. */
+  if (state.tool) return;
+
+  state.tool = kind;
+  unitTool.returnFocus = trigger || document.activeElement;
+  unitTool.pendingFocusRestore = true;
+
+  dialog.setAttribute("dir", isRTL() ? "rtl" : "ltr");
+  dialog.setAttribute("aria-labelledby", "nl-unit-tool-title");
+  dialog.innerHTML = unitToolMarkup(kind, u);
+
+  setInert(ROOT, true);
+  document.documentElement.classList.add("nl-unit-tool-open");
+  document.body.classList.add("nl-unit-tool-open");
+
+  if (typeof dialog.showModal === "function") dialog.showModal();
+  else dialog.setAttribute("open", "");
+
+  if (kind === "view") {
+    unitTool.cleanup = mountWindowViewport(dialog, u);
+  } else if (kind === "tour" && !(u.tour_url || project().tour_url)) {
+    fpInit();
+  }
+
+  unitTool.historyMarker = "nl-unit-tool-" + Date.now().toString(36);
+
+  history.pushState(
+    Object.assign({}, history.state || {}, {
+      nlUnitTool: unitTool.historyMarker
+    }),
+    "",
+    location.href
+  );
+
+  requestAnimationFrame(function () {
+    var back = dialog.querySelector('[data-act="unit-tool-back"]');
+    if (back) back.focus({ preventScroll: true });
+  });
+}
+
+/*
+ * UI close first walks back across the synthetic tool history entry. The
+ * popstate handler performs teardown. fromHistory=true is reserved for the
+ * popstate path and controlled sandbox teardown.
+ */
+function closeUnitTool(restoreFocus, fromHistory) {
+  if (!state.tool) return;
+
+  unitTool.pendingFocusRestore = restoreFocus !== false;
+
+  if (
+    !fromHistory &&
+    unitTool.historyMarker &&
+    history.state &&
+    history.state.nlUnitTool === unitTool.historyMarker
+  ) {
+    history.back();
+    return;
+  }
+
+  finishUnitToolClose(unitTool.pendingFocusRestore);
+}
+
+function finishUnitToolClose(restoreFocus) {
+  var dialog = unitTool.dialog;
+  var returnFocus = unitTool.returnFocus;
+
+  if (unitTool.cleanup) {
+    try { unitTool.cleanup(); } catch (e) {}
+  }
+
+  unitTool.cleanup = null;
+  unitTool.returnFocus = null;
+  unitTool.historyMarker = null;
+  state.tool = null;
+
+  if (dialog) {
+    if (dialog.open && typeof dialog.close === "function") dialog.close();
+    else dialog.removeAttribute("open");
+    dialog.innerHTML = "";
+  }
+
+  setInert(ROOT, false);
+  document.documentElement.classList.remove("nl-unit-tool-open");
+  document.body.classList.remove("nl-unit-tool-open");
+
+  if (restoreFocus && returnFocus && document.contains(returnFocus)) {
+    requestAnimationFrame(function () {
+      returnFocus.focus({ preventScroll: true });
+    });
+  }
+}
+
+window.addEventListener("popstate", function () {
+  if (state.tool) finishUnitToolClose(unitTool.pendingFocusRestore);
+});
+
+function mountWindowViewport(scope, u) {
+  var host = scope.querySelector('[data-role="window-map"]');
+  var fallback = scope.querySelector('[data-role="window-fallback"]');
+  var geo = preciseGeo();
+
+  if (!host) return function () {};
+
+  if (!geo.ok || !SR.config.mapbox_token || !window.mapboxgl) {
+    host.hidden = true;
+    if (fallback) {
+      fallback.hidden = false;
+      fallback.textContent = t("unit_map_unverified");
+    }
+    return function () {};
+  }
+
+  var controller = new AbortController();
+  var signal = controller.signal;
+  var dragging = false;
+  var lastX = 0;
+  var lastY = 0;
+  var bearing = unitBearing(u);
+  var vertical = 0;
+  var map = null;
+
+  function applyCamera() {
+    if (map) winCam(map, u, bearing, vertical);
+  }
+
+  function turn(delta) {
+    bearing = (bearing + delta + 360) % 360;
+    applyCamera();
+  }
+
+  try {
+    window.mapboxgl.accessToken = SR.config.mapbox_token;
+
+    map = new window.mapboxgl.Map({
+      container: host,
+      style: "mapbox://styles/mapbox/satellite-streets-v12",
+      center: [geo.lng, geo.lat],
+      zoom: 16.5,
+      pitch: 70,
+      bearing: bearing,
+      maxPitch: 85,
+      interactive: false,
+      attributionControl: true
+    });
+  } catch (error) {
+    host.hidden = true;
+    if (fallback) {
+      fallback.hidden = false;
+      fallback.textContent = t("unit_map_unverified");
+    }
+    controller.abort();
+    return function () {};
+  }
+
+  map.once("load", function () {
+    try {
+      var layers = map.getStyle().layers;
+      var labelLayer;
+
+      for (var i = 0; i < layers.length; i++) {
+        if (
+          layers[i].type === "symbol" &&
+          layers[i].layout &&
+          layers[i].layout["text-field"]
+        ) {
+          labelLayer = layers[i].id;
+          break;
+        }
+      }
+
+      map.addLayer({
+        id: "nl-unit-window-buildings",
+        source: "composite",
+        "source-layer": "building",
+        filter: ["==", "extrude", "true"],
+        type: "fill-extrusion",
+        minzoom: 13,
+        paint: {
+          "fill-extrusion-color": "#d8d2c4",
+          "fill-extrusion-height": ["get", "height"],
+          "fill-extrusion-base": ["get", "min_height"],
+          "fill-extrusion-opacity": 0.86
+        }
+      }, labelLayer);
+    } catch (e) {}
+
+    applyCamera();
+  });
+
+  map.once("error", function () {
+    if (fallback && !fallback.textContent) {
+      fallback.hidden = false;
+      fallback.textContent = t("unit_map_unverified");
+    }
+  });
+
+  host.addEventListener("pointerdown", function (event) {
+    dragging = true;
+    lastX = event.clientX;
+    lastY = event.clientY;
+    host.setPointerCapture(event.pointerId);
+    event.preventDefault();
+  }, { signal: signal });
+
+  host.addEventListener("pointermove", function (event) {
+    if (!dragging) return;
+
+    bearing = (bearing + (event.clientX - lastX) * 0.35 + 360) % 360;
+    vertical = Math.max(
+      -45,
+      Math.min(10, vertical - (event.clientY - lastY) * 0.22)
+    );
+
+    lastX = event.clientX;
+    lastY = event.clientY;
+    applyCamera();
+    event.preventDefault();
+  }, { signal: signal });
+
+  host.addEventListener("pointerup", function (event) {
+    dragging = false;
+    try { host.releasePointerCapture(event.pointerId); } catch (e) {}
+  }, { signal: signal });
+
+  host.addEventListener("pointercancel", function () {
+    dragging = false;
+  }, { signal: signal });
+
+  host.addEventListener("keydown", function (event) {
+    if (event.key === "ArrowLeft") {
+      event.preventDefault();
+      turn(isRTL() ? 15 : -15);
+    }
+
+    if (event.key === "ArrowRight") {
+      event.preventDefault();
+      turn(isRTL() ? -15 : 15);
+    }
+  }, { signal: signal });
+
+  scope.querySelectorAll("[data-turn]").forEach(function (button) {
+    button.addEventListener("click", function () {
+      turn(parseInt(button.dataset.turn, 10) || 0);
+    }, { signal: signal });
+  });
+
+  return function () {
+    controller.abort();
+    if (map) {
+      try { map.remove(); } catch (e) {}
+    }
+    map = null;
+  };
+}
+
+  /* ============ SELECTED-UNIT SURFACE (audit 2026-08-08, flag-gated) ============
+     Active only when SR.config.selected_unit_surface is true (sandbox meta).
+     With the flag off every path below routes to the untouched legacy code. */
+
+  function selectUnit(id, instant, source) {
+    if (!SR.config.selected_unit_surface) { selectUnitLegacy(id, instant); return; }
+    var u = unit(id); if (!u) return;
+    var theaterEl = ROOT.querySelector(".nl-theater");
+    var cameFromOutsideTheater = !!(source && theaterEl && !theaterEl.contains(source));
+    var scrim = document.getElementById("nl-scrim");
+    var srcEl = document.querySelector('.nl-hot[data-id="' + cssesc(id) + '"]') || document.querySelector('.nl-fsq[data-id="' + cssesc(id) + '"]');
+    var srcRect = null, wrapRect = null;
+    /* geometry reads before renderUnitScreen writes the DOM (no forced reflow) */
+    if (srcEl) { srcRect = srcEl.getBoundingClientRect(); if (!srcRect.width) { srcEl = null; srcRect = null; } }
+    if (scrim && scrim.parentElement) wrapRect = scrim.parentElement.getBoundingClientRect();
+    unitSurface.source = srcEl || source || null;
+    state.unitId = id; state.tab = "plan";
+    document.querySelectorAll(".nl-hot,.nl-fsq,.nl-ucard").forEach(function (n) { n.classList.toggle("is-active", n.dataset.id === id); });
+    if (scrim) {
+      if (srcRect && wrapRect && wrapRect.width && wrapRect.height) {
+        scrim.style.setProperty("--sx", ((srcRect.left + srcRect.width / 2 - wrapRect.left) / wrapRect.width * 100) + "%");
+        scrim.style.setProperty("--sy", ((srcRect.top + srcRect.height / 2 - wrapRect.top) / wrapRect.height * 100) + "%");
+      }
+      scrim.classList.add("is-on");
+    }
+    renderUnitScreen(u, { scroll: UNIT_MQ.matches && (cameFromOutsideTheater || instant), focus: !instant });
+    easeMapToUnitView(u);
+    var mv = document.getElementById("nl-mv");
+    if (mv && u.camera_orbit) {
+      try {
+        if (instant) { mv.cameraOrbit = orbitRadius(u.camera_orbit, Math.round((project().frame_radius_m || 150) * 0.66)); mv.cameraTarget = unitPos(u).pos; }
+        else { flyCamera(mv, u); }
+      } catch (e) {}
+    }
+    if (!UNIT_MQ.matches && !instant && srcEl) liftCard(srcEl, u);
+    updateFormCtx(); updateSticky(); deeplink(); recordRecent(u);
+    var rv = document.getElementById("nl-resetview"); if (rv) rv.hidden = false;
+  }
+
+  function closePanel() {
+    if (!SR.config.selected_unit_surface) { closePanelLegacy(); return; }
+    /* one back action closes the tool first; a second returns to the building */
+    if (state.tool) { closeUnitTool(true, false); return; }
+    var returnTarget = unitSurface.source;
+    clearUnitScreen();
+    state.unitId = null; state.tool = null;
+    var scrim = document.getElementById("nl-scrim"); if (scrim) scrim.classList.remove("is-on");
+    document.querySelectorAll(".is-active").forEach(function (n) { n.classList.remove("is-active"); });
+    var mv = document.getElementById("nl-mv");
+    if (mv) { try { mv.interpolationDecay = 50; mv.fieldOfView = "auto"; mv.cameraOrbit = project().default_orbit; mv.cameraTarget = project().default_target; } catch (e) {} }
+    updateFormCtx(); updateSticky(); deeplink();
+    if (returnTarget && document.contains(returnTarget)) {
+      requestAnimationFrame(function () { returnTarget.focus({ preventScroll: true }); });
+    }
+  }
+
+
+  function selectUnitLegacy(id, instant) {
     var u = unit(id); if (!u) return;
     var prev = state.unitId; state.unitId = id; state.tab = "plan";
     // panel
@@ -1427,7 +2208,7 @@
       ], { duration: 920, easing: 'cubic-bezier(.22,.61,.36,1)' }).onfinish = function () { card.remove(); };
     });
   }
-  function closePanel() {
+  function closePanelLegacy() {
     state.unitId = null;
     var p = document.getElementById("nl-panel"); if (p) p.classList.remove("is-open");
     var s = document.getElementById("nl-scrim"); if (s) s.classList.remove("is-on");
@@ -1440,14 +2221,20 @@
     save("nl_favs", state.favs);
     if (state.filter === "favs" && !state.favs.length) state.filter = "all";
     refresh("inventory"); // hearts, the saved chip and its count stay truthful
-    if (state.unitId === id) { var body = document.getElementById("nl-panel-body"); if (body) body.innerHTML = panelBody(unit(id)); }
+    if (state.unitId === id) {
+      if (SR.config.selected_unit_surface) renderUnitScreen(unit(id), { focus: false, scroll: false });
+      else { var body = document.getElementById("nl-panel-body"); if (body) body.innerHTML = panelBody(unit(id)); }
+    }
   }
   function toggleCompare(id) {
     var i = state.compare.indexOf(id);
     if (i >= 0) state.compare.splice(i, 1);
     else { if (state.compare.length >= 3) state.compare.shift(); state.compare.push(id); }
     refreshCompare();
-    if (state.unitId === id) { var body = document.getElementById("nl-panel-body"); if (body) body.innerHTML = panelBody(unit(id)); }
+    if (state.unitId === id) {
+      if (SR.config.selected_unit_surface) renderUnitScreen(unit(id), { focus: false, scroll: false });
+      else { var body2 = document.getElementById("nl-panel-body"); if (body2) body2.innerHTML = panelBody(unit(id)); }
+    }
   }
   function refreshCompare() {
     var old = document.getElementById("nl-compare"); if (old) old.outerHTML = compareTray();

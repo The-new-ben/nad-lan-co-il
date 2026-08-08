@@ -1,5 +1,26 @@
 # AGENT-LOG - the God brain (append-only, newest on top)
 
+## 2026-08-08 (96) - v1.72.182: SELECTED-UNIT SURFACE LIVE ON SANDBOX ONLY; production byte-identical
+The audit's architecture integrated exactly per its own diff
+guide: fragments pasted INSIDE the engine IIFE (helpers are
+private), selectUnit/closePanel flag-routed with legacy kept
+intact, state.tool added, nl-unit-screen seam as stagewrap
+SIBLING, teardown in render(), toggleFav/Compare re-render via
+renderUnitScreen under flag, i18n additions in 5 langs (FR/RU/
+AR pending native review), unit-surface.css attached per-flag
+on the engine handle. Flag: post meta nl_unit_scene=on OR site
+option nadlan_selected_unit_surface=on. SANDBOX: post 6201
+/projects/sandbox-unit-scene/ = rainbow clone (79 metas,
+noindex). ACCEPTANCE (emulation): nested scrollers = ZERO,
+scene = beam ('החלון פונה אל מבט לחצר ולים') + 4 facts + 4
+curiosity doors + back, dialog = body child, 375x812 exact,
+close keeps unit+scene, back-to-building clean; rainbow with
+flag off = pure legacy (panel opens, 3 tabs, seam hidden).
+skills/unit-scene-build.md = the continuation map (owner credit
+fear). NEXT: owner phone verdict -> option flip for fleet
+rollout; then desktop compact-summary phase; badge-on-hotspot
+and Earth-door enrichments; drop-materials factory intake.
+
 ## 2026-08-08 (94) - v1.72.177-179: MOBILE FLOW v2 FLEET-WIDE - the sheet is dead, separation lives
 Owner emergency ('total disaster, no frame inside frame'). The
 162-172 bottom sheet is DELETED. New engine-level mobile flow:

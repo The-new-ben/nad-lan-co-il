@@ -209,6 +209,11 @@ if ( ! function_exists( 'nadlan_showroom_engine_config' ) ) {
 			 * the site default; a project can override via project_studio_mode
 			 * meta ('on'|'off'). */
 			'studio'         => in_array( (string) get_option( 'nadlan_studio_mode', 'on' ), array( 'on', 'off' ), true ) ? (string) get_option( 'nadlan_studio_mode', 'on' ) : 'on',
+			/* SELECTED-UNIT SURFACE flag (audit 2026-08-08): per-post sandbox
+			 * gate. Production behavior is untouched until a post carries
+			 * nl_unit_scene=on (or the site option flips after phone approval). */
+			'selected_unit_surface' => ( 'on' === (string) get_post_meta( get_the_ID(), 'nl_unit_scene', true ) )
+				|| ( 'on' === (string) get_option( 'nadlan_selected_unit_surface', '' ) ),
 		);
 	}
 }
@@ -291,6 +296,17 @@ if ( ! function_exists( 'nadlan_showroom_engine_shortcode' ) ) {
 		wp_enqueue_style( 'nadlan-engine-tokens', $base . 'tokens.css', array(), NADLAN_CONFIG_VERSION );
 		wp_enqueue_style( 'nadlan-engine-css', $base . 'showroom.css', array( 'nadlan-engine-tokens' ), NADLAN_CONFIG_VERSION );
 		wp_enqueue_style( 'nadlan-engine-editorial', $base . 'editorial.css', array( 'nadlan-engine-tokens' ), NADLAN_CONFIG_VERSION );
+
+		/* selected-unit surface CSS: attached inline on the engine handle ONLY
+		 * where the flag is on (sandbox post / approved rollout) - explicit
+		 * cascade order, same artifact as the engine, zero effect elsewhere */
+		if ( ( 'on' === (string) get_post_meta( get_the_ID(), 'nl_unit_scene', true ) )
+			|| ( 'on' === (string) get_option( 'nadlan_selected_unit_surface', '' ) ) ) {
+			$nl_unit_css = @file_get_contents( __DIR__ . '/../assets/showroom-engine/unit-surface.css' );
+			if ( is_string( $nl_unit_css ) && '' !== $nl_unit_css ) {
+				wp_add_inline_style( 'nadlan-engine-css', $nl_unit_css );
+			}
+		}
 
 		/* Cascade repair (measured live on /projects/duo-tel-aviv/ 2026-07-30): the theme ships
 		   .single-nadlan_project .entry-content h2{color:var(--nlx-ink)!important} and
