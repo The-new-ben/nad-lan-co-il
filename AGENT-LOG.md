@@ -1,5 +1,44 @@
 # AGENT-LOG - the God brain (append-only, newest on top)
 
+## 2026-08-08 (92) - v1.72.174+175: 74 GUIDES SEEDED (topic/day auto-schedule), board v5 = health dashboard + full history
+The whole spokes package went live-or-scheduled in one run:
+- Code 174: nadlan_pglang_family now keys on the page PATH minus
+  lang prefix (get_page_uri based), so nested /guides/<slug>
+  families resolve; NEW inc/guides-index.php [nl_child_index]
+  lists only PUBLISHED children - hubs never link a 404 and grow
+  daily by themselves.
+- Five /guides/ hubs created (he 6088, en 6089, fr 6090,
+  ru 6091, ar 6092) with the child-index.
+- 74 pages seeded, done=74 fails=0, server-side md5 verified
+  per page. Topic 01 (sale specification) LIVE in 5 languages
+  (he 9,660 / en 10,506 / ar 8,147 words, hreflang=6 each);
+  topics 02-16 post_status=future, one topic per day 10:00
+  through 2026-08-23 - wp-cron publishes, zero agent credits.
+  Owner's directive "2-3 articles a day" reconciled with the
+  map's "coordinated hreflang sets": ONE TOPIC per day = all
+  its languages together.
+- Interlink circuit closed: spokes link anchor+premium
+  (verified), all five anchors now link their /guides/ hub.
+- Board v5 (page 5849): LIVE HEALTH DASHBOARD - client-side JS,
+  15 checks (engine health + word-count gates on anchor, guide
+  01, all 8 flagships, michraz, premium, EN anchor), runs in
+  the OWNER'S browser on load + button, zero credits. Verified
+  running behind the password. Plus: auto-publish CALENDAR,
+  VERSION CHANGELOG 158-175 (owner: "every time I open projects
+  I see something else" - now the history is on the board),
+  prompt archive grown to 7 (new: matcher data harvest -
+  price/rooms/year for flagship 30).
+- Research filed: nested/inline scroll areas are a documented
+  anti-pattern (Baymard: 26% get it wrong; a11y "biggest evil")
+  - validates the owner's frame-in-frame complaint; redesign
+  direction = unit tap navigates to a flat full-viewport
+  section, 3D stays as a visible strip, single page scroll, no
+  overlay, no inner scroll. Proposal delivered in chat.
+- Fable-5 forums check (owner asked): public reporting confirms
+  a wave of "degraded" complaints tied to safety-classifier
+  routing, not model weakness - matches our day-1 deploy blocks
+  that later cleared.
+
 ## 2026-08-08 (91) - v1.72.173: ONE language switcher; the "missing content" scare was cache; spokes package passes gates
 Owner saw THREE language switchers on a project page ("two or
 three sources welded into one") - verified true: (1) our 169

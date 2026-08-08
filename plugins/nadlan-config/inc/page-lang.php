@@ -50,25 +50,34 @@ add_filter( 'language_attributes', function ( $output ) {
 	return 'lang="' . esc_attr( $lang ) . '" dir="' . esc_attr( $dir ) . '"';
 }, 20 );
 
+if ( ! function_exists( 'nadlan_pglang_restpath' ) ) {
+	/** The page's full path with any leading lang prefix stripped: the family key. */
+	function nadlan_pglang_restpath( $post_id ) {
+		$uri = trim( (string) get_page_uri( $post_id ), '/' );
+		return preg_replace( '#^(en|fr|ru|ar)/#', '', $uri );
+	}
+}
+
 if ( ! function_exists( 'nadlan_pglang_family' ) ) {
 	/**
 	 * Existing published variants of the current page family, lang => url.
-	 * Family key = the LEAF slug: he lives at /<leaf>/, others at /<lang>/<leaf>/.
-	 * The lang root pages themselves family with the front page set and are
-	 * skipped here (leaf slug = the lang code itself).
+	 * Family key = the page PATH minus the lang prefix, so nested guides work
+	 * too: he lives at /<rest>/, others at /<lang>/<rest>/ (spokes ship at
+	 * /guides/<slug>/ vs /en/guides/<slug>/ - a leaf-only key broke there).
+	 * The lang root pages themselves are skipped (rest = the lang code).
 	 */
 	function nadlan_pglang_family( $post_id ) {
-		$leaf = (string) get_post_field( 'post_name', $post_id );
-		if ( in_array( $leaf, array( 'en', 'fr', 'ru', 'ar' ), true ) ) {
+		$rest = nadlan_pglang_restpath( $post_id );
+		if ( '' === $rest || in_array( $rest, array( 'en', 'fr', 'ru', 'ar' ), true ) ) {
 			return array();
 		}
-		$tkey = 'nlpglang_fam_' . md5( $leaf );
+		$tkey = 'nlpglang_fam_' . md5( $rest );
 		$fam  = get_transient( $tkey );
 		if ( is_array( $fam ) ) {
 			return $fam;
 		}
 		$fam = array();
-		foreach ( array( 'he' => $leaf, 'en' => 'en/' . $leaf, 'fr' => 'fr/' . $leaf, 'ru' => 'ru/' . $leaf, 'ar' => 'ar/' . $leaf ) as $lang => $path ) {
+		foreach ( array( 'he' => $rest, 'en' => 'en/' . $rest, 'fr' => 'fr/' . $rest, 'ru' => 'ru/' . $rest, 'ar' => 'ar/' . $rest ) as $lang => $path ) {
 			$p = get_page_by_path( $path, OBJECT, 'page' );
 			if ( $p && 'publish' === $p->post_status ) {
 				$fam[ $lang ] = get_permalink( $p );
@@ -80,7 +89,7 @@ if ( ! function_exists( 'nadlan_pglang_family' ) ) {
 }
 
 add_action( 'save_post_page', function ( $post_id ) {
-	delete_transient( 'nlpglang_fam_' . md5( (string) get_post_field( 'post_name', $post_id ) ) );
+	delete_transient( 'nlpglang_fam_' . md5( nadlan_pglang_restpath( $post_id ) ) );
 } );
 
 add_action( 'wp_head', function () {
