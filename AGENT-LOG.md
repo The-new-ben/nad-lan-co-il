@@ -1,5 +1,32 @@
 # AGENT-LOG - the God brain (append-only, newest on top)
 
+## 2026-08-08 (97) - COMMERCIAL FLEET LIVE: THE PARK + ToHa2 in five languages each, standard-gated
+Read docs/PROJECT-STANDARD.md FIRST this time (owner: 'you are
+skipping the skills'). Package QA before any upload: 10 files,
+7,127-10,173 words each, 1 H1, 0 bad dashes, 0 Hebrew leak in
+foreign files, 12 FAQ H3 pairs each, meta title+description
+present, lead paragraph 493-914 chars. Seeded: the-park-bnei-brak
+(6182 updated) + -en/-fr/-ru/-ar (6214-6217); toha2-tel-aviv
+(6213 new, full commercial metas incl. GovMap coords, Amot+
+Gav-Yam, Ron Arad, 75 floors, 2027) + -en/-fr/-ru/-ar
+(6218-6221). Variants INHERIT the base project's showroom metas
+(theater/GLB/coords identical per language) but never inherit
+schema/Yoast/sandbox flags. FAQ schema b64 per language; the
+RU/AR extraction initially returned 0 pairs (heading wording
+'Часто задаваемые вопросы'/'الأسئلة الشائعة' missed by the
+regex) - caught in the convert log BEFORE upload and fixed.
+WHOLE-PAGE SWEEP, all 10 live: 200, single H1, 7,481-10,786
+rendered words, CONTENT-FIRST opening (title+lead, notice
+after), hreflang 10 refs (6 cluster + 4 topbar), topbar=1,
+engine language rows=0, engine footer inside page=0, FAQPage
+present, zero long dashes. FLOATED GAP: ToHa2 has no GLB and no
+official facade, so its stage shows the honest 'concept only'
+notice - weak for a flagship; recommendation is to request
+materials from Gav-Yam/Amot rather than fake a parametric box
+(Ron Arad's form is organic; a box would misrepresent it).
+Sandbox unit-scene FLOATED per owner - untouched, flag on that
+post only. Package preserved in docs/content/.
+
 ## 2026-08-08 (96) - v1.72.182: SELECTED-UNIT SURFACE LIVE ON SANDBOX ONLY; production byte-identical
 The audit's architecture integrated exactly per its own diff
 guide: fragments pasted INSIDE the engine IIFE (helpers are
