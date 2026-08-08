@@ -35,6 +35,14 @@ if ( ! function_exists( 'nadlan_brochure_render' ) ) {
 		if ( ! $post || 'nadlan_project' !== $post->post_type || 'publish' !== $post->post_status ) {
 			return new WP_Error( 'not_found', 'project not found', array( 'status' => 404 ) );
 		}
+		/* The private unit-journey lab is direct-link/password access only. A
+		 * brochure would expose its title, media and full unit payload without
+		 * passing through the WordPress password gate. */
+		if ( ( function_exists( 'nadlan_unit_journey_is_private_lab' )
+				&& nadlan_unit_journey_is_private_lab( $pid ) )
+			|| 'private-unit-journey-v2' === (string) get_post_meta( $pid, '_nadlan_private_unit_journey', true ) ) {
+			return new WP_Error( 'not_found', 'project not found', array( 'status' => 404 ) );
+		}
 		$units = function_exists( 'nadlan_showroom_engine_json_meta' ) ? nadlan_showroom_engine_json_meta( $pid, 'project_3d_units' ) : array();
 		$unit  = null;
 		foreach ( (array) $units as $u ) {

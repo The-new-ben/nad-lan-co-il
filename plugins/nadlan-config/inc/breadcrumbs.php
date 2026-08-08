@@ -12,6 +12,9 @@ if ( ! defined( 'ABSPATH' ) ) { exit; }
 
 if ( ! function_exists( 'nadlan_breadcrumbs_items' ) ) {
 	function nadlan_breadcrumbs_items() {
+		if ( function_exists( 'nadlan_unit_journey_is_private_lab' ) && nadlan_unit_journey_is_private_lab() ) {
+			return array();
+		}
 		$items = array( array( 'name' => 'בית', 'url' => home_url( '/' ) ) );
 		if ( is_singular( 'nadlan_property' ) ) {
 			$items[] = array( 'name' => 'דירות', 'url' => home_url( '/properties/' ) );

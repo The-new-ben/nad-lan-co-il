@@ -18,6 +18,8 @@ from __future__ import annotations
 import json
 import os
 import re
+import shutil
+import subprocess
 import sys
 import zipfile
 from pathlib import Path
@@ -52,12 +54,38 @@ def one_match(pattern: str, text: str, label: str) -> str:
 def detect_versions() -> dict[str, str]:
     main = read_text(MAIN)
     health = read_text(HEALTH) if HEALTH.exists() else ""
+    plugin_header = one_match(
+        r"^\s*\*\s*Version:\s*([0-9][0-9.]*)",
+        main,
+        "plugin header Version",
+    )
+    constant_version = one_match(
+        r"define\(\s*'NADLAN_CONFIG_VERSION'\s*,\s*'([0-9][0-9.]*)'\s*\)",
+        main,
+        "NADLAN_CONFIG_VERSION",
+    )
+    if constant_version != plugin_header:
+        fail(
+            "plugin header and NADLAN_CONFIG_VERSION differ: "
+            f"{plugin_header} != {constant_version}"
+        )
     versions = {
-        "plugin_header": one_match(r"^\s*\*\s*Version:\s*([0-9][0-9.]*)", main, "plugin header Version"),
-        "healthcheck_main": one_match(r"'version'\s*=>\s*'([0-9][0-9.]*)'", main, "main healthcheck version"),
+        "plugin_header": plugin_header,
+        "healthcheck_main": constant_version,
     }
     if health:
-        versions["health_module"] = one_match(r"'version'\s*=>\s*'([0-9][0-9.]*)'", health, "health module version")
+        literal = re.search(r"'version'\s*=>\s*'([0-9][0-9.]*)'", health)
+        uses_constant = re.search(
+            r"'version'\s*=>\s*defined\(\s*'NADLAN_CONFIG_VERSION'\s*\)\s*"
+            r"\?\s*NADLAN_CONFIG_VERSION",
+            health,
+        )
+        if literal:
+            versions["health_module"] = literal.group(1)
+        elif uses_constant:
+            versions["health_module"] = constant_version
+        else:
+            fail("could not find health module version source")
     with MANIFEST.open(encoding="utf-8") as fh:
         manifest = json.load(fh)
     versions["manifest"] = str(manifest.get("version", ""))
@@ -73,6 +101,42 @@ def expected_source_entries() -> set[str]:
         rel = path.relative_to(PLUGIN).as_posix()
         entries.add(f"nadlan-config/{rel}")
     return entries
+
+
+def verify_source_syntax() -> dict[str, int]:
+    """Fail before packaging if any shipped PHP/JS file cannot even parse."""
+    php = shutil.which("php")
+    node = shutil.which("node")
+    if not php:
+        fail("php executable is required to lint the complete plugin source")
+    if not node:
+        fail("node executable is required to syntax-check the complete plugin source")
+
+    php_files = sorted(PLUGIN.rglob("*.php"))
+    js_files = sorted(PLUGIN.rglob("*.js"))
+    for path in php_files:
+        result = subprocess.run(
+            [php, "-l", str(path)],
+            capture_output=True,
+            text=True,
+            encoding="utf-8",
+            errors="replace",
+        )
+        if result.returncode != 0:
+            detail = (result.stderr or result.stdout).strip().splitlines()
+            fail(f"PHP lint failed: {path.relative_to(ROOT)}: {detail[-1] if detail else 'unknown error'}")
+    for path in js_files:
+        result = subprocess.run(
+            [node, "--check", str(path)],
+            capture_output=True,
+            text=True,
+            encoding="utf-8",
+            errors="replace",
+        )
+        if result.returncode != 0:
+            detail = (result.stderr or result.stdout).strip().splitlines()
+            fail(f"JavaScript syntax failed: {path.relative_to(ROOT)}: {detail[-1] if detail else 'unknown error'}")
+    return {"php_files": len(php_files), "js_files": len(js_files)}
 
 
 def verify_zip(version: str) -> dict[str, object]:
@@ -105,6 +169,7 @@ def verify_zip(version: str) -> dict[str, object]:
 
 
 def main() -> None:
+    syntax_result = verify_source_syntax()
     versions = detect_versions()
     version = sys.argv[1] if len(sys.argv) > 1 else versions["plugin_header"]
     mismatches = {k: v for k, v in versions.items() if k != "manifest_download_url" and v != version}
@@ -124,6 +189,7 @@ def main() -> None:
         "ok": True,
         "version": version,
         "versions": versions,
+        "syntax": syntax_result,
         "zip": zip_result,
     }, ensure_ascii=False, indent=2))
 

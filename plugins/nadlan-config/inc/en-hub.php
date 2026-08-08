@@ -12,7 +12,7 @@ if ( ! defined( 'ABSPATH' ) ) { exit; }
 
 if ( ! function_exists( 'nadlan_enhub_projects' ) ) {
 	function nadlan_enhub_projects( $limit = 6 ) {
-		$hit = get_transient( 'nadlan_enhub_projects' );
+		$hit = get_transient( 'nadlan_enhub_projects_v2' );
 		if ( is_array( $hit ) ) { return array_slice( $hit, 0, $limit ); }
 		$pool = get_posts( array( 'post_type' => 'nadlan_project', 'post_status' => 'publish', 'posts_per_page' => 50, 'no_found_rows' => true ) );
 		$out = array();
@@ -27,7 +27,7 @@ if ( ! function_exists( 'nadlan_enhub_projects' ) ) {
 				'ppsqm' => (int) get_post_meta( $p->ID, 'project_3d_avg_price_per_sqm', true ),
 			);
 		}
-		set_transient( 'nadlan_enhub_projects', $out, 6 * HOUR_IN_SECONDS );
+		set_transient( 'nadlan_enhub_projects_v2', $out, 6 * HOUR_IN_SECONDS );
 		return array_slice( $out, 0, $limit );
 	}
 }
@@ -37,7 +37,9 @@ if ( ! function_exists( 'nadlan_en_hub_shortcode' ) ) {
 		$projects = nadlan_enhub_projects();
 		$guides = get_posts( array( 'post_type' => 'post', 'posts_per_page' => 6, 'no_found_rows' => true, 'category_name' => 'english' ) );
 		$counts = array(
-			'projects' => (int) wp_count_posts( 'nadlan_project' )->publish,
+			'projects' => function_exists( 'nadlan_unit_journey_public_project_count' )
+				? nadlan_unit_journey_public_project_count()
+				: (int) wp_count_posts( 'nadlan_project' )->publish,
 			'pros'     => (int) wp_count_posts( 'nadlan_professional' )->publish,
 		);
 		ob_start(); ?>

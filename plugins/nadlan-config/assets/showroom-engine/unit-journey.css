@@ -1,0 +1,2139 @@
+/*
+ * SELECTED UNIT JOURNEY V2
+ * Feature-flag scoped. The first acceptance target is a password-protected
+ * sandbox; future public projects may opt in without inheriting lab privacy.
+ *
+ * This stylesheet is a complete replacement for unit-surface.css. The PHP
+ * loader must enqueue exactly one of the two files; loading both is unsupported.
+ * The selected scene is state-owned by engine.js. No MutationObserver or DOM
+ * patch layer is expected or supported here.
+ */
+
+:root {
+  --nl-uj-bg: #101512;
+  --nl-uj-surface: #171d19;
+  --nl-uj-surface-2: #202821;
+  --nl-uj-line: rgba(244, 224, 167, .24);
+  --nl-uj-line-strong: rgba(244, 211, 121, .58);
+  --nl-uj-text: #fffaf0;
+  --nl-uj-muted: #c8c4b8;
+  --nl-uj-gold: #f4d379;
+  --nl-uj-gold-strong: #ffe8a3;
+  --nl-uj-cta: #d96b35;
+  --nl-uj-focus: #7fd6ff;
+  --nl-uj-radius: 14px;
+  --nl-uj-gap: 7px;
+}
+
+/* The unlocked sandbox is an app-like product lab. WordPress still owns and
+ * displays the normal site shell around the password form; after unlock this
+ * scoped stylesheet removes the duplicate public header/footer and lets the
+ * engine use the full viewport. No public project receives this body class. */
+body.nl-unit-v2-sandbox > .wp-site-blocks > :is(header.wp-block-template-part, footer.wp-block-template-part),
+body.nl-unit-v2-sandbox .nlptop,
+body.nl-unit-v2-sandbox .nlfb {
+  display: none !important;
+}
+
+body.nl-unit-v2-sandbox .nlpc-main,
+body.nl-unit-v2-sandbox .entry-content {
+  inline-size: 100% !important;
+  max-inline-size: none !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+body.nl-unit-v2-sandbox .nl-unit-v2-main {
+  min-inline-size: 0;
+}
+
+/* `hidden` must win over component display declarations and dialog UA rules. */
+.nl-unit-screen[hidden],
+.nl-unit-screen--v2[hidden],
+#nl-unit-tool[hidden],
+#nl-unit-tool:not([open]),
+.nl-unit-screen--v2 [hidden],
+#nl-unit-tool [hidden] {
+  display: none !important;
+}
+
+.nl-unit-screen--v2,
+.nl-unit-screen--v2 *,
+#nl-unit-tool,
+#nl-unit-tool * {
+  box-sizing: border-box;
+}
+
+/*
+ * The engine uses nl-unit-v2-active; nl-unit-journey-active is the durable
+ * product-level alias. Supporting both keeps the state change atomic during
+ * sandbox integration and makes the acceptance selector explicit.
+ */
+body:is(.nl-unit-v2-active, .nl-unit-journey-active) .nl-sticky,
+body:is(.nl-unit-v2-active, .nl-unit-journey-active) #nl-sticky,
+body:is(.nl-unit-v2-active, .nl-unit-journey-active) .nl-compare,
+body:is(.nl-unit-v2-active, .nl-unit-journey-active) #nl-compare,
+body:is(.nl-unit-v2-active, .nl-unit-journey-active) .nl-theater__dock {
+  display: none !important;
+}
+
+/* The sandbox has one language owner: the engine's five-locale switcher. */
+body.nl-unit-v2-sandbox .nlptop-l {
+  display: none !important;
+}
+
+body:is(.nl-unit-v2-sandbox, .nl-unit-v2-enabled) .nl-langs {
+  min-inline-size: 0;
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  gap: 4px;
+}
+
+body:is(.nl-unit-v2-sandbox, .nl-unit-v2-enabled) .nl-brand {
+  min-block-size: 44px;
+  align-items: center;
+}
+
+body:is(.nl-unit-v2-sandbox, .nl-unit-v2-enabled) .nl-lang {
+  min-inline-size: 44px;
+  min-block-size: 44px;
+  inline-size: 44px;
+  block-size: 44px;
+  padding: 0 5px;
+}
+
+/* V2 inventory uses sibling controls, never a button nested in a button. */
+body:is(.nl-unit-v2-sandbox, .nl-unit-v2-enabled) .nl-ucard {
+  cursor: default;
+}
+
+body:is(.nl-unit-v2-sandbox, .nl-unit-v2-enabled) .nl-ucard__select {
+  all: unset;
+  display: block;
+  box-sizing: border-box;
+  inline-size: 100%;
+  min-block-size: 44px;
+  padding-inline-end: 44px;
+  color: inherit;
+  font: inherit;
+  text-align: inherit;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+
+body:is(.nl-unit-v2-sandbox, .nl-unit-v2-enabled) .nl-ucard__fav {
+  inset-block-start: 2px;
+  inset-inline-end: 2px;
+  inline-size: 44px;
+  block-size: 44px;
+  min-inline-size: 44px;
+  min-block-size: 44px;
+  display: grid;
+  place-items: center;
+}
+
+body:is(.nl-unit-v2-sandbox, .nl-unit-v2-enabled)
+  :is(.nl-ucard__select, .nl-ucard__fav):focus-visible {
+  outline: 3px solid #126c91 !important;
+  outline-offset: 3px !important;
+  border-radius: 9px;
+}
+
+@media (max-width: 480px) {
+  body:is(.nl-unit-v2-sandbox, .nl-unit-v2-enabled) .nl-header__row {
+    display: grid;
+    grid-template-columns: 44px minmax(0, 1fr);
+    gap: 7px;
+    padding-block: 6px;
+  }
+
+  body:is(.nl-unit-v2-sandbox, .nl-unit-v2-enabled) .nl-brand {
+    min-inline-size: 44px;
+    min-block-size: 44px;
+    display: grid;
+    place-items: center;
+  }
+
+  body:is(.nl-unit-v2-sandbox, .nl-unit-v2-enabled) .nl-brand__mark {
+    inline-size: 44px;
+    block-size: 44px;
+  }
+
+  body:is(.nl-unit-v2-sandbox, .nl-unit-v2-enabled)
+    .nl-brand > span:last-child {
+    display: none;
+  }
+
+  body:is(.nl-unit-v2-sandbox, .nl-unit-v2-enabled) .nl-nav {
+    min-inline-size: 0;
+    justify-content: flex-end;
+  }
+
+  body:is(.nl-unit-v2-sandbox, .nl-unit-v2-enabled) .nl-langs {
+    justify-content: flex-end;
+  }
+}
+
+body:is(.nl-unit-v2-active, .nl-unit-journey-active) #nla11y-btn {
+  position: fixed !important;
+  top: max(8px, env(safe-area-inset-top)) !important;
+  right: auto !important;
+  bottom: auto !important;
+  left: auto !important;
+  inset-inline-start: auto !important;
+  inset-inline-end: max(8px, env(safe-area-inset-right)) !important;
+  min-width: 44px !important;
+  min-height: 44px !important;
+  margin: 0 !important;
+  transform: none !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  z-index: 2147483646 !important;
+}
+
+body:is(.nl-unit-v2-active, .nl-unit-journey-active) .nl-header .nl-nav {
+  padding-inline-end: 52px;
+}
+
+[dir="rtl"] body:is(.nl-unit-v2-active, .nl-unit-journey-active) #nla11y-btn {
+  inset-inline-end: max(8px, env(safe-area-inset-left)) !important;
+}
+
+@media (max-width: 370px) {
+  body:is(.nl-unit-v2-active, .nl-unit-journey-active) #nla11y-btn {
+    top: max(72px, calc(64px + env(safe-area-inset-top))) !important;
+  }
+
+  body:is(.nl-unit-v2-active, .nl-unit-journey-active) .nl-header .nl-nav {
+    padding-inline-end: 0;
+  }
+
+  body:is(.nl-unit-v2-active, .nl-unit-journey-active) .nl-secnav {
+    padding-inline-end: max(60px, env(safe-area-inset-right));
+  }
+
+  [dir="rtl"] body:is(.nl-unit-v2-active, .nl-unit-journey-active) .nl-secnav {
+    padding-inline-end: max(60px, env(safe-area-inset-left));
+  }
+}
+
+:where(.nl-unit-screen--v2, #nl-unit-tool)
+  :is(button, a.nl-unit-area-tool__external, a.nl-unit-tool__external) {
+  min-inline-size: 44px;
+  min-block-size: 44px;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+}
+
+:where(.nl-unit-screen--v2, #nl-unit-tool)
+  :is(button, a, input, select, textarea):focus-visible,
+body:is(.nl-unit-v2-active, .nl-unit-journey-active) #nla11y-btn:focus-visible {
+  outline: 3px solid var(--nl-uj-focus) !important;
+  outline-offset: 3px !important;
+  box-shadow: 0 0 0 5px rgba(5, 21, 28, .78) !important;
+}
+
+/* One class controls the entire visual hand-off; JS must never transition cells separately. */
+.nl-theater--unit-v2.nl-unit-v2-transitioning {
+  pointer-events: none;
+}
+
+.nl-theater--unit-v2 > .nl-stagewrap,
+.nl-theater--unit-v2 > .nl-unit-screen--v2 > * {
+  opacity: 1;
+  transition: opacity .18s ease, transform .18s ease;
+}
+
+.nl-theater--unit-v2.nl-unit-v2-transitioning > .nl-stagewrap,
+.nl-theater--unit-v2.nl-unit-v2-transitioning > .nl-unit-screen--v2 > * {
+  opacity: 0;
+  visibility: hidden;
+}
+
+/* --------------------------------------------------------------------------
+ * Selected unit primitives
+ * ----------------------------------------------------------------------- */
+
+.nl-unit-journey__head {
+  grid-area: head;
+  min-inline-size: 0;
+  min-block-size: 44px;
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  align-items: center;
+  gap: 9px;
+  padding-inline: 10px;
+  padding-right: max(10px, env(safe-area-inset-right));
+  padding-left: max(10px, env(safe-area-inset-left));
+  color: var(--nl-uj-text);
+  background: var(--nl-uj-bg);
+}
+
+.nl-unit-summary__back {
+  min-inline-size: 44px;
+  min-block-size: 44px;
+  border: 1px solid rgba(255, 255, 255, .24);
+  border-radius: 999px;
+  padding: 5px 11px;
+  color: var(--nl-uj-text);
+  background: var(--nl-uj-surface);
+  font: inherit;
+  font-size: clamp(10px, 2.7vw, 12px);
+  font-weight: 720;
+  line-height: 1.12;
+  cursor: pointer;
+}
+
+.nl-unit-journey__head p {
+  min-inline-size: 0;
+  margin: 0;
+}
+
+.nl-unit-journey__head p > :is(strong, span),
+.nl-unit-journey__head > span {
+  min-inline-size: 0;
+  display: block;
+  overflow-wrap: anywhere;
+}
+
+.nl-unit-journey__head p > strong,
+.nl-unit-journey__head > span:first-child,
+.nl-unit-journey__head [role="heading"] {
+  color: var(--nl-uj-text);
+  font-size: clamp(14px, 3.7vw, 19px);
+  font-weight: 760;
+  line-height: 1.14;
+}
+
+.nl-unit-journey__head p > span,
+.nl-unit-journey__head > span:last-child:not(:first-child) {
+  color: var(--nl-uj-muted);
+  font-size: clamp(10px, 2.6vw, 12px);
+  line-height: 1.2;
+}
+
+.nl-unit-journey__beam {
+  grid-area: beam;
+  min-inline-size: 0;
+  min-block-size: 0;
+  padding-inline: 8px;
+  padding-right: max(8px, env(safe-area-inset-right));
+  padding-left: max(8px, env(safe-area-inset-left));
+}
+
+.nl-unit-beam__open {
+  position: static;
+  inline-size: 100%;
+  min-block-size: 44px;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) max-content;
+  align-items: center;
+  gap: 8px;
+  overflow: visible;
+  border: 0;
+  border-radius: 8px;
+  padding: 6px 8px;
+  color: var(--nl-uj-text);
+  background: transparent;
+  text-align: start;
+  cursor: pointer;
+}
+
+.nl-unit-beam {
+  position: relative;
+  inline-size: 100%;
+  block-size: 100%;
+  min-block-size: 0;
+  margin: 0;
+  overflow: hidden;
+  border-radius: inherit;
+  color: var(--nl-uj-text);
+  background:
+    linear-gradient(28deg, transparent 47%, rgba(235, 243, 225, .08) 48% 49%, transparent 50%),
+    linear-gradient(-36deg, transparent 47%, rgba(235, 243, 225, .07) 48% 49%, transparent 50%),
+    #15201b;
+  isolation: isolate;
+}
+
+.nl-unit-beam__map,
+.nl-unit-beam__svg {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  inline-size: 100%;
+  block-size: 100%;
+}
+
+.nl-unit-beam__map {
+  z-index: 1;
+  overflow: hidden;
+  background:
+    linear-gradient(24deg, transparent 47%, rgba(226, 236, 218, .12) 48% 49%, transparent 50%),
+    linear-gradient(-31deg, transparent 47%, rgba(226, 236, 218, .1) 48% 49%, transparent 50%),
+    #101b17;
+}
+
+/* Honest no-map fallback: a schematic coast/street field, never an empty box. */
+.nl-unit-beam.is-schematic .nl-unit-beam__map::before {
+  content: "";
+  position: absolute;
+  top: -18%;
+  bottom: -18%;
+  left: -7%;
+  inline-size: 29%;
+  border-inline-end: 2px solid rgba(111, 189, 205, .58);
+  border-radius: 0 62% 54% 0;
+  background: linear-gradient(90deg, rgba(52, 120, 145, .52), rgba(52, 120, 145, .08));
+}
+
+.nl-unit-beam.is-schematic .nl-unit-beam__map::after {
+  content: "";
+  position: absolute;
+  top: 12%;
+  right: 8%;
+  bottom: 12%;
+  left: 20%;
+  border: 1px dashed rgba(240, 220, 157, .23);
+  border-radius: 44% 36% 52% 39%;
+  transform: rotate(-7deg);
+}
+
+/* The real dark Mapbox style is selected in JS; this is a safe visual fallback. */
+.nl-unit-beam__map .mapboxgl-canvas {
+  filter: brightness(.48) saturate(.72) contrast(1.32);
+}
+
+.nl-unit-beam__map .mapboxgl-ctrl-attrib,
+.nl-unit-beam__map .mapboxgl-ctrl-logo {
+  opacity: .72;
+}
+
+.nl-unit-beam__svg {
+  z-index: 2;
+  overflow: visible;
+  pointer-events: none;
+  filter: drop-shadow(0 0 7px rgba(255, 216, 112, .56));
+}
+
+.nl-unit-beam__svg path {
+  stroke: var(--nl-uj-gold-strong);
+  stroke-width: 1.35;
+  stroke-linejoin: round;
+}
+
+.nl-unit-beam--v2 .nl-unit-beam__svg path {
+  stroke-width: 2.2;
+}
+
+.nl-unit-beam__svg circle {
+  fill: #fff4c7;
+  stroke: #1a160b;
+  stroke-width: 1.2;
+}
+
+.nl-unit-beam figcaption {
+  position: absolute;
+  z-index: 3;
+  right: 7px;
+  bottom: 7px;
+  left: 7px;
+  min-inline-size: 0;
+  display: block;
+  padding: 2px;
+  border: 1px solid rgba(255, 255, 255, .16);
+  border-radius: 10px;
+  color: var(--nl-uj-text);
+  background: rgba(7, 12, 10, .86);
+  backdrop-filter: blur(9px);
+  -webkit-backdrop-filter: blur(9px);
+  font-size: clamp(10px, 2.7vw, 12px);
+  line-height: 1.2;
+}
+
+.nl-unit-beam.is-caption-top figcaption {
+  top: 7px;
+  bottom: auto;
+}
+
+.nl-unit-beam.is-caption-bottom figcaption {
+  top: auto;
+  bottom: 7px;
+}
+
+.nl-unit-beam figcaption strong,
+.nl-unit-beam figcaption span {
+  min-inline-size: 0;
+  overflow-wrap: anywhere;
+}
+
+.nl-unit-beam figcaption span {
+  color: var(--nl-uj-gold-strong);
+}
+
+.nl-unit-beam.is-schematic::after {
+  content: "";
+  position: absolute;
+  z-index: 1;
+  top: 15%;
+  right: 7%;
+  bottom: 15%;
+  left: 7%;
+  border: 1px dashed rgba(255, 255, 255, .22);
+  border-radius: 48% 40% 55% 42%;
+  pointer-events: none;
+}
+
+.nl-unit-journey__facts {
+  grid-area: facts;
+  min-inline-size: 0;
+  min-block-size: 0;
+  display: grid;
+  grid-template-rows: auto auto 44px 48px;
+  gap: 5px;
+  padding-inline: 8px;
+  padding-right: max(8px, env(safe-area-inset-right));
+  padding-left: max(8px, env(safe-area-inset-left));
+}
+
+.nl-unit-journey__identity {
+  min-inline-size: 0;
+  min-block-size: 32px;
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  align-items: center;
+  gap: 7px;
+}
+
+.nl-unit-summary__status {
+  display: inline-grid;
+  place-items: center;
+  min-block-size: 28px;
+  border: 1px solid rgba(255, 255, 255, .16);
+  border-radius: 999px;
+  padding: 3px 8px;
+  color: var(--nl-uj-gold-strong);
+  background: rgba(255, 255, 255, .07);
+  font-size: 10px;
+  line-height: 1;
+  white-space: nowrap;
+}
+
+.nl-unit-journey__identity h3 {
+  min-inline-size: 0;
+  margin: 0;
+  color: var(--nl-uj-text);
+  font: inherit;
+  font-size: clamp(11px, 2.9vw, 14px);
+  font-weight: 750;
+  line-height: 1.16;
+  overflow-wrap: anywhere;
+}
+
+/* The classic theme owns entry-content h3 with !important. The v2 scene owns
+   this one heading explicitly; without this scoped repair it measured 1.03:1. */
+body.nl-unit-v2-enabled .nl-unit-journey__identity h3 {
+  color: var(--nl-uj-text) !important;
+}
+
+.nl-unit-facts {
+  min-inline-size: 0;
+  min-block-size: 48px;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  margin: 0;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, .15);
+  border-radius: 11px;
+  background: var(--nl-uj-surface);
+}
+
+.nl-unit-facts > div {
+  min-inline-size: 0;
+  display: grid;
+  place-content: center;
+  padding: 5px 3px;
+  text-align: center;
+}
+
+.nl-unit-facts > div + div {
+  border-inline-start: 1px solid rgba(255, 255, 255, .13);
+}
+
+.nl-unit-facts dt {
+  color: var(--nl-uj-muted);
+  font-size: clamp(9px, 2.35vw, 11px);
+  line-height: 1.1;
+}
+
+.nl-unit-facts dd {
+  margin: 2px 0 0;
+  color: var(--nl-uj-gold-strong);
+  font-size: clamp(12px, 3.4vw, 16px);
+  font-weight: 780;
+  line-height: 1.05;
+  white-space: nowrap;
+}
+
+.nl-unit-quick {
+  min-inline-size: 0;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 5px;
+}
+
+.nl-unit-quick > :is(button, a) {
+  min-inline-size: 0;
+  min-block-size: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  border: 1px solid rgba(255, 255, 255, .2);
+  border-radius: 10px;
+  padding: 4px 5px;
+  color: var(--nl-uj-text);
+  background: var(--nl-uj-surface);
+  font: inherit;
+  font-size: clamp(10px, 2.6vw, 12px);
+  line-height: 1.1;
+  text-align: center;
+  text-decoration: none;
+  overflow-wrap: anywhere;
+  cursor: pointer;
+}
+
+.nl-unit-contact {
+  min-inline-size: 0;
+  min-block-size: 48px;
+  border: 0;
+  border-radius: 11px;
+  padding: 6px 12px;
+  color: #1d1009;
+  background: var(--nl-uj-cta);
+  box-shadow: 0 7px 20px rgba(217, 107, 53, .26);
+  font: inherit;
+  font-size: clamp(12px, 3.2vw, 15px);
+  font-weight: 790;
+  line-height: 1.16;
+  text-align: center;
+  overflow-wrap: anywhere;
+  cursor: pointer;
+}
+
+.nl-unit-journey__doors {
+  grid-area: doors;
+  min-inline-size: 0;
+  min-block-size: 0;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-rows: repeat(2, 54px);
+  gap: 5px;
+  padding:
+    0
+    max(8px, env(safe-area-inset-right))
+    max(7px, env(safe-area-inset-bottom))
+    max(8px, env(safe-area-inset-left));
+}
+
+.nl-unit-door {
+  min-inline-size: 0;
+  min-block-size: 48px;
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 7px;
+  border: 1px solid var(--nl-uj-line-strong);
+  border-radius: 11px;
+  padding: 6px 9px;
+  color: var(--nl-uj-text);
+  background: linear-gradient(145deg, #293229, #1d251f);
+  font: inherit;
+  font-size: clamp(10.5px, 2.85vw, 13px);
+  font-weight: 700;
+  line-height: 1.16;
+  text-align: start;
+  overflow-wrap: anywhere;
+  cursor: pointer;
+  overflow: hidden;
+}
+
+.nl-unit-door::after {
+  content: "›";
+  flex: none;
+  color: var(--nl-uj-gold-strong);
+  font-size: 20px;
+  line-height: 1;
+}
+
+.nl-unit-door__icon,
+.nl-unit-door__copy {
+  min-inline-size: 0;
+}
+
+.nl-unit-door__copy {
+  display: -webkit-box;
+  overflow: hidden;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+}
+
+.nl-unit-door__copy--short {
+  display: none;
+}
+
+.nl-unit-door__icon {
+  display: grid;
+  place-items: center;
+  color: var(--nl-uj-gold-strong);
+}
+
+[dir="rtl"] .nl-unit-door::after {
+  content: "‹";
+}
+
+.nl-unit-beam__open:hover,
+.nl-unit-door:hover,
+.nl-unit-quick > :is(button, a):hover {
+  border-color: var(--nl-uj-gold-strong);
+  background-color: #2d382e;
+}
+
+.nl-unit-contact:hover {
+  background: #ed7c42;
+}
+
+/* --------------------------------------------------------------------------
+ * Portrait mobile/tablet: model strip followed by one complete summary scene.
+ * ----------------------------------------------------------------------- */
+
+@media (max-width: 900px) and (orientation: portrait) {
+  .nl-theater.nl-theater--unit-v2 {
+    --nl-uj-model-row: clamp(76px, 14dvh, 116px);
+    inline-size: 100%;
+    block-size: calc(100vh - var(--nl-unit-v2-top, 0px));
+    block-size: calc(100dvh - var(--nl-unit-v2-top, 0px));
+    height: calc(100vh - var(--nl-unit-v2-top, 0px));
+    height: calc(100dvh - var(--nl-unit-v2-top, 0px));
+    min-block-size: 0 !important;
+    max-block-size: none !important;
+    max-height: none !important;
+    display: grid !important;
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-rows:
+      var(--nl-uj-model-row)
+      auto
+      minmax(82px, 1fr)
+      auto
+      auto;
+    grid-template-areas:
+      "model"
+      "head"
+      "beam"
+      "facts"
+      "doors";
+    gap: var(--nl-uj-gap);
+    overflow: hidden !important;
+    border-radius: 0;
+    background: var(--nl-uj-bg);
+    scroll-margin-block-start: var(--nl-project-chrome-height, 0px);
+  }
+
+  .nl-theater--unit-v2 > .nl-theater__top,
+  .nl-theater--unit-v2 > .nl-theater__dock,
+  .nl-theater--unit-v2 > .nl-panel,
+  .nl-theater--unit-v2 .nl-legend,
+  .nl-theater--unit-v2 .nl-orient,
+  .nl-theater--unit-v2 .nl-filterflag,
+  .nl-theater--unit-v2 .nl-sundial,
+  .nl-theater--unit-v2 .nl-resetview {
+    display: none !important;
+  }
+
+  .nl-theater.nl-theater--unit-v2 > .nl-stagewrap {
+    grid-area: model;
+    position: relative;
+    inline-size: 100% !important;
+    block-size: var(--nl-uj-model-row) !important;
+    height: var(--nl-uj-model-row) !important;
+    min-block-size: var(--nl-uj-model-row) !important;
+    max-block-size: var(--nl-uj-model-row) !important;
+    max-height: none !important;
+    aspect-ratio: auto !important;
+    overflow: hidden !important;
+  }
+
+  .nl-theater--unit-v2 > .nl-stagewrap :is(.nl-stage, .nl-poster, .nl-facade, model-viewer) {
+    inline-size: 100% !important;
+    block-size: 100% !important;
+    height: 100% !important;
+    max-height: none !important;
+  }
+
+  .nl-theater--unit-v2 > .nl-unit-screen--v2 {
+    display: contents;
+  }
+}
+
+/* Short portrait keeps each track at or above its child's minimum size. */
+@media (max-width: 900px) and (max-height: 680px) and (orientation: portrait) {
+  .nl-theater.nl-theater--unit-v2 {
+    --nl-uj-model-row: clamp(64px, 12dvh, 78px);
+    --nl-uj-gap: 4px;
+    grid-template-rows:
+      var(--nl-uj-model-row)
+      auto
+      minmax(72px, 1fr)
+      auto
+      auto;
+  }
+
+  .nl-unit-journey__head {
+    min-block-size: 40px;
+  }
+
+  .nl-unit-journey__facts {
+    grid-template-rows: auto auto 44px 48px;
+    gap: 3px;
+  }
+
+  .nl-unit-facts {
+    min-block-size: 44px;
+  }
+
+  .nl-unit-journey__doors {
+    gap: 4px;
+    padding-bottom: max(4px, env(safe-area-inset-bottom));
+  }
+
+  .nl-unit-door {
+    min-block-size: 44px;
+    padding-block: 4px;
+  }
+
+  .nl-unit-beam figcaption {
+    padding-block: 5px;
+  }
+}
+
+/* 320 x 568-class portrait after sticky chrome: compact content, not targets. */
+@media (max-width: 900px) and (max-height: 600px) and (orientation: portrait) {
+  .nl-theater.nl-theater--unit-v2 {
+    --nl-uj-model-row: clamp(56px, 10dvh, 64px);
+    grid-template-rows:
+      var(--nl-uj-model-row)
+      auto
+      minmax(64px, 1fr)
+      auto
+      auto;
+  }
+
+  .nl-unit-journey__head p > span {
+    display: none;
+  }
+
+  .nl-unit-journey__facts {
+    grid-template-rows: 26px 40px 44px 48px;
+    gap: 2px;
+  }
+
+  .nl-unit-journey__identity {
+    min-block-size: 26px;
+  }
+
+  .nl-unit-summary__status {
+    min-block-size: 24px;
+    padding-block: 2px;
+  }
+
+  .nl-unit-journey__identity h3 {
+    font-size: 10px;
+  }
+
+  .nl-unit-facts {
+    min-block-size: 40px;
+  }
+
+  .nl-unit-facts > div {
+    padding-block: 2px;
+  }
+
+  .nl-unit-door {
+    min-block-size: 44px;
+  }
+
+  .nl-unit-journey__doors {
+    grid-template-rows: repeat(2, 44px);
+  }
+}
+
+/* --------------------------------------------------------------------------
+ * Short landscape: model and summary are siblings, never overlaying each other.
+ * ----------------------------------------------------------------------- */
+
+@media (max-width: 900px) and (orientation: landscape),
+  (max-width: 1024px) and (max-height: 600px) and (orientation: landscape) {
+  .nl-theater.nl-theater--unit-v2 {
+    inline-size: 100%;
+    block-size: calc(100vh - var(--nl-unit-v2-top, 0px));
+    block-size: calc(100dvh - var(--nl-unit-v2-top, 0px));
+    height: calc(100vh - var(--nl-unit-v2-top, 0px));
+    height: calc(100dvh - var(--nl-unit-v2-top, 0px));
+    min-block-size: 0 !important;
+    max-block-size: none !important;
+    max-height: none !important;
+    display: grid !important;
+    grid-template-columns: clamp(168px, 33vw, 340px) minmax(0, 1fr);
+    grid-template-rows: minmax(0, 1fr);
+    grid-template-areas: "model summary";
+    gap: 0;
+    overflow: hidden !important;
+    border-radius: 0;
+    background: var(--nl-uj-bg);
+  }
+
+  .nl-theater--unit-v2 > .nl-theater__top,
+  .nl-theater--unit-v2 > .nl-theater__dock,
+  .nl-theater--unit-v2 > .nl-panel,
+  .nl-theater--unit-v2 .nl-legend,
+  .nl-theater--unit-v2 .nl-orient,
+  .nl-theater--unit-v2 .nl-filterflag,
+  .nl-theater--unit-v2 .nl-sundial,
+  .nl-theater--unit-v2 .nl-resetview {
+    display: none !important;
+  }
+
+  .nl-theater.nl-theater--unit-v2 > .nl-stagewrap {
+    grid-area: model;
+    inline-size: 100% !important;
+    block-size: 100% !important;
+    height: 100% !important;
+    min-block-size: 0 !important;
+    max-block-size: none !important;
+    max-height: none !important;
+    aspect-ratio: auto !important;
+    overflow: hidden !important;
+  }
+
+  .nl-theater--unit-v2 > .nl-stagewrap :is(.nl-stage, .nl-poster, .nl-facade, model-viewer) {
+    inline-size: 100% !important;
+    block-size: 100% !important;
+    height: 100% !important;
+    max-height: none !important;
+  }
+
+  .nl-theater--unit-v2 > .nl-unit-screen--v2 {
+    grid-area: summary;
+    min-inline-size: 0;
+    min-block-size: 0;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-rows: auto minmax(62px, 1fr) auto auto;
+    grid-template-areas:
+      "head"
+      "beam"
+      "facts"
+      "doors";
+    gap: 4px;
+    overflow: hidden !important;
+    border-inline-start: 1px solid var(--nl-uj-line);
+    background: var(--nl-uj-bg);
+  }
+
+  .nl-unit-journey__head {
+    min-block-size: 40px;
+  }
+
+  .nl-unit-journey__facts {
+    grid-template-columns: minmax(0, 1fr) minmax(190px, .9fr);
+    grid-template-rows: auto 44px 48px;
+    grid-template-areas:
+      "identity identity"
+      "unitfacts unitfacts"
+      "quick contact";
+    gap: 4px;
+  }
+
+  .nl-unit-journey__identity {
+    grid-area: identity;
+    min-block-size: 28px;
+  }
+
+  .nl-unit-facts {
+    grid-area: unitfacts;
+    min-block-size: 44px;
+  }
+
+  .nl-unit-quick {
+    grid-area: quick;
+  }
+
+  .nl-unit-contact {
+    grid-area: contact;
+  }
+
+  .nl-unit-journey__doors {
+    grid-template-rows: repeat(2, 48px);
+    padding-bottom: max(4px, env(safe-area-inset-bottom));
+  }
+
+  .nl-unit-door {
+    min-block-size: 44px;
+    padding-block: 4px;
+    font-size: clamp(10px, 1.65vw, 12px);
+  }
+
+  .nl-unit-beam figcaption {
+    padding-block: 5px;
+    font-size: 10px;
+  }
+}
+
+/* Short landscape: beam, facts and doors each own a column below the header.
+   This preserves every 44px target at 568x320 instead of vertically stacking
+   250px of controls into roughly 200px of available height. */
+@media (max-width: 900px) and (max-height: 430px) and (orientation: landscape) {
+  .nl-theater--unit-v2 > .nl-unit-screen--v2 {
+    grid-template-columns: minmax(100px, .75fr) minmax(150px, 1.15fr) minmax(99px, .7fr);
+    grid-template-rows: 44px minmax(0, 1fr);
+    grid-template-areas:
+      "head head head"
+      "beam facts doors";
+    gap: 3px;
+  }
+
+  .nl-unit-journey__facts {
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-rows: 24px 38px 88px 44px;
+    grid-template-areas:
+      "identity"
+      "unitfacts"
+      "quick"
+      "contact";
+    gap: 1px;
+    padding-inline: 4px;
+  }
+
+  .nl-unit-journey__head {
+    min-block-size: 44px;
+    overflow: hidden;
+    padding-inline: 4px;
+  }
+
+  .nl-unit-journey__head p > span {
+    display: none;
+  }
+
+  .nl-unit-journey__head p > strong {
+    font-size: 11px;
+    line-height: 1.05;
+  }
+
+  .nl-unit-summary__back {
+    padding-inline: 7px;
+    font-size: 9px;
+  }
+
+  .nl-unit-journey__identity {
+    min-block-size: 24px;
+  }
+
+  .nl-unit-summary__status {
+    min-block-size: 24px;
+    padding-block: 2px;
+  }
+
+  .nl-unit-journey__identity h3 {
+    font-size: 10px;
+  }
+
+  .nl-unit-facts {
+    min-block-size: 38px;
+  }
+
+  .nl-unit-quick {
+    grid-template-columns: repeat(2, minmax(44px, 1fr));
+    grid-template-rows: repeat(2, 44px);
+    gap: 0 2px;
+  }
+
+  .nl-unit-facts > div {
+    padding-block: 2px;
+  }
+
+  .nl-unit-journey__doors {
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-rows: repeat(4, 44px);
+    gap: 3px;
+    padding: 0 4px max(3px, env(safe-area-inset-bottom));
+  }
+
+  .nl-unit-door {
+    grid-template-columns: minmax(0, 1fr) auto;
+    min-block-size: 44px;
+    padding: 3px 5px;
+    font-size: 9.5px;
+  }
+
+  .nl-unit-door__icon {
+    display: none;
+  }
+
+  .nl-unit-door__copy--long {
+    display: none;
+  }
+
+  .nl-unit-door__copy--short {
+    display: block;
+    overflow: visible;
+    white-space: normal;
+    -webkit-line-clamp: unset;
+  }
+
+  .nl-unit-contact {
+    min-block-size: 44px;
+    overflow: hidden;
+    padding: 2px 4px;
+    font-size: 9px;
+    line-height: 1.05;
+  }
+
+  .nl-unit-beam figcaption span {
+    display: block;
+  }
+
+  .nl-unit-beam figcaption strong {
+    display: none;
+  }
+
+  .nl-unit-beam__open {
+    grid-template-columns: minmax(0, 1fr);
+    justify-items: center;
+    text-align: center;
+  }
+}
+
+/* The inactive legacy panel is empty, hidden and inert in v2. Remove its old
+   overflow owner as well so automated and assistive audits see one scroll
+   owner only: the document. */
+.nl-theater--unit-v2 .nl-panel .nl-panel__scroll {
+  overflow: hidden !important;
+}
+
+/* --------------------------------------------------------------------------
+ * Desktop: a real 430 x 600 sibling panel; it never covers the 3D model.
+ * ----------------------------------------------------------------------- */
+
+@media (min-width: 901px) and (min-height: 601px),
+  (min-width: 1025px) {
+  .nl-theater.nl-theater--unit-v2 {
+    block-size: 600px;
+    height: 600px;
+    min-block-size: 600px;
+    max-block-size: 600px !important;
+    max-height: 600px !important;
+    display: grid !important;
+    grid-template-columns: minmax(0, 1fr) 430px;
+    grid-template-rows: 600px;
+    grid-template-areas: "model summary";
+    overflow: hidden !important;
+    background: var(--nl-uj-bg);
+  }
+
+  .nl-theater--unit-v2 > .nl-theater__top,
+  .nl-theater--unit-v2 > .nl-theater__dock,
+  .nl-theater--unit-v2 > .nl-panel {
+    display: none !important;
+  }
+
+  .nl-theater.nl-theater--unit-v2 > .nl-stagewrap {
+    grid-area: model;
+    inline-size: 100% !important;
+    block-size: 600px !important;
+    height: 600px !important;
+    min-block-size: 600px !important;
+    max-block-size: 600px !important;
+    max-height: 600px !important;
+    aspect-ratio: auto !important;
+    overflow: hidden !important;
+  }
+
+  .nl-theater--unit-v2 > .nl-unit-screen--v2 {
+    grid-area: summary;
+    min-inline-size: 430px;
+    min-block-size: 600px;
+    block-size: 600px;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-rows: auto minmax(142px, 1fr) auto auto;
+    grid-template-areas:
+      "head"
+      "beam"
+      "facts"
+      "doors";
+    gap: 7px;
+    overflow: hidden !important;
+    border-inline-start: 1px solid var(--nl-uj-line);
+    background: var(--nl-uj-bg);
+  }
+
+  .nl-unit-journey__head,
+  .nl-unit-journey__beam,
+  .nl-unit-journey__facts,
+  .nl-unit-journey__doors {
+    padding-inline: 12px;
+  }
+
+  .nl-unit-journey__head {
+    min-block-size: 52px;
+    padding-top: 8px;
+  }
+
+  .nl-unit-journey__doors {
+    grid-template-rows: repeat(2, 56px);
+    padding-bottom: 12px;
+  }
+
+  .nl-unit-door {
+    min-block-size: 50px;
+    font-size: 12px;
+  }
+
+  .nl-unit-facts dt,
+  .nl-unit-quick > :is(button, a) {
+    font-size: 10px;
+  }
+}
+
+/* --------------------------------------------------------------------------
+ * Body-level fullscreen tools. No transformed ancestor, no inset shorthand.
+ * ----------------------------------------------------------------------- */
+
+html.nl-unit-tool-open,
+html.nl-unit-tool-open body {
+  overflow: hidden !important;
+  overscroll-behavior: none;
+}
+
+#nl-unit-tool.nl-unit-tool {
+  position: fixed !important;
+  top: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
+  left: 0 !important;
+  width: 100vw !important;
+  height: 100vh !important;
+  height: 100dvh !important;
+  inline-size: 100vw !important;
+  block-size: 100vh !important;
+  block-size: 100dvh !important;
+  max-width: none !important;
+  max-height: none !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  border: 0 !important;
+  overflow: hidden !important;
+  transform: none !important;
+  color: var(--nl-uj-text);
+  background: #0a0e0c;
+  z-index: 2147483000;
+}
+
+#nl-unit-tool::backdrop {
+  background: rgba(0, 0, 0, .84);
+}
+
+.nl-unit-tool__frame {
+  inline-size: 100%;
+  block-size: 100%;
+  min-inline-size: 0;
+  min-block-size: 0;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  grid-template-rows:
+    max(54px, calc(44px + env(safe-area-inset-top)))
+    minmax(0, 1fr);
+  overflow: hidden !important;
+  background: #0a0e0c;
+}
+
+.nl-unit-tool__head {
+  min-inline-size: 0;
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  align-items: center;
+  gap: 11px;
+  padding:
+    env(safe-area-inset-top)
+    max(10px, env(safe-area-inset-right))
+    0
+    max(10px, env(safe-area-inset-left));
+  border-bottom: 1px solid rgba(255, 255, 255, .16);
+  background: #111713;
+}
+
+.nl-unit-tool__head button {
+  min-inline-size: 44px;
+  min-block-size: 44px;
+  border: 1px solid rgba(255, 255, 255, .28);
+  border-radius: 999px;
+  padding-inline: 13px;
+  color: var(--nl-uj-text);
+  background: #202721;
+  font: inherit;
+  cursor: pointer;
+}
+
+.nl-unit-tool__head h2 {
+  min-inline-size: 0;
+  margin: 0;
+  color: var(--nl-uj-text);
+  font-size: clamp(15px, 3.8vw, 21px);
+  line-height: 1.15;
+  overflow-wrap: anywhere;
+}
+
+/* The theme owns global h2 colors with a late !important rule. Keep the
+   body-level tool portal self-contained so every tool title remains readable. */
+#nl-unit-tool.nl-unit-tool .nl-unit-tool__head #nl-unit-tool-title {
+  color: var(--nl-uj-text) !important;
+}
+
+.nl-unit-tool__body {
+  position: relative;
+  min-inline-size: 0;
+  min-block-size: 0;
+  inline-size: 100%;
+  block-size: 100%;
+  overflow: hidden !important;
+  overscroll-behavior: none;
+  background: #0a0e0c;
+}
+
+.nl-unit-tool__body > :is(
+  .nl-unit-plan-tool,
+  .nl-window-tool,
+  .nl-unit-tool__view,
+  .nl-unit-area-tool,
+  .nl-unit-contact-tool,
+  .nl-unit-compare-tool,
+  .nl-unit-tool__tour,
+  .nl-unit-tool__studio
+) {
+  inline-size: 100%;
+  block-size: 100%;
+  min-inline-size: 0;
+  min-block-size: 0;
+  margin: 0;
+  overflow: hidden !important;
+}
+
+.nl-unit-tool__tour,
+.nl-unit-tool__studio {
+  position: relative;
+}
+
+.nl-unit-tool__tour iframe,
+.nl-unit-tool__studio iframe,
+.nl-unit-tool__view iframe,
+.nl-unit-area-tool iframe,
+.nl-unit-contact-tool iframe {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  inline-size: 100% !important;
+  block-size: 100% !important;
+  width: 100% !important;
+  height: 100% !important;
+  border: 0;
+}
+
+.nl-unit-tool__tour > a,
+.nl-unit-tool__studio > a {
+  position: absolute;
+  z-index: 3;
+  right: max(10px, env(safe-area-inset-right));
+  bottom: max(10px, env(safe-area-inset-bottom));
+  left: auto;
+  min-inline-size: 44px;
+  min-block-size: 44px;
+  display: grid;
+  place-items: center;
+  border-radius: 999px;
+  padding: 7px 14px;
+  color: #1b1308;
+  background: var(--nl-uj-gold);
+  font-weight: 760;
+  text-align: center;
+  text-decoration: none;
+}
+
+[dir="rtl"] .nl-unit-tool__tour > a,
+[dir="rtl"] .nl-unit-tool__studio > a {
+  right: auto;
+  left: max(10px, env(safe-area-inset-left));
+}
+
+/* The schematic fallback becomes a viewport tool too, without a nested scroll. */
+.nl-unit-tool__tour > .nlifp {
+  inline-size: 100%;
+  block-size: 100%;
+  min-block-size: 0;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  grid-template-rows: minmax(0, 1fr) auto;
+  margin: 0;
+  overflow: hidden !important;
+}
+
+.nl-unit-tool__tour .nlifp-stage {
+  inline-size: 100%;
+  block-size: 100% !important;
+  height: 100% !important;
+  min-block-size: 0;
+  overflow: hidden !important;
+  border: 0;
+  border-radius: 0;
+  touch-action: none;
+}
+
+.nl-unit-tool__tour .nlifp-doors {
+  min-block-size: calc(54px + env(safe-area-inset-bottom));
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  gap: 6px;
+  margin: 0;
+  padding:
+    5px
+    max(10px, env(safe-area-inset-right))
+    max(5px, env(safe-area-inset-bottom))
+    max(10px, env(safe-area-inset-left));
+  overflow: hidden !important;
+  background: #111713;
+}
+
+.nl-unit-tool__tour .nlifp-doors button {
+  min-inline-size: 44px;
+  min-block-size: 44px;
+  flex: 1 1 0;
+  padding: 5px 8px;
+}
+
+.nl-unit-tool__empty,
+.nl-window-tool__fallback {
+  min-block-size: 100%;
+  display: grid;
+  place-items: center;
+  margin: 0;
+  padding: 24px;
+  color: var(--nl-uj-muted);
+  text-align: center;
+}
+
+/* Plan: JS changes the CSS variables, while the viewport remains non-scrolling. */
+.nl-unit-plan-tool {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  grid-template-rows: minmax(0, 1fr) auto;
+  background: #e8e4da;
+}
+
+.nl-unit-plan-tool__viewport {
+  position: relative;
+  min-inline-size: 0;
+  min-block-size: 0;
+  display: grid;
+  place-items: center;
+  overflow: hidden !important;
+  touch-action: none;
+  cursor: grab;
+  user-select: none;
+}
+
+.nl-unit-plan-tool__viewport.is-dragging {
+  cursor: grabbing;
+}
+
+.nl-unit-plan-tool__image {
+  position: relative;
+  display: block;
+  max-inline-size: 92%;
+  max-block-size: 92%;
+  inline-size: auto;
+  block-size: auto;
+  object-fit: contain;
+  transform: translate3d(var(--nl-plan-x, 0px), var(--nl-plan-y, 0px), 0)
+    scale(var(--nl-plan-scale, 1));
+  transform-origin: center;
+  will-change: transform;
+  pointer-events: none;
+}
+
+.nl-unit-plan-tool__controls {
+  min-block-size: calc(54px + env(safe-area-inset-bottom));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding:
+    5px
+    max(10px, env(safe-area-inset-right))
+    max(5px, env(safe-area-inset-bottom))
+    max(10px, env(safe-area-inset-left));
+  border-top: 1px solid rgba(255, 255, 255, .16);
+  background: #111713;
+}
+
+.nl-unit-plan-tool__controls button {
+  min-inline-size: 44px;
+  min-block-size: 44px;
+  border: 1px solid rgba(255, 255, 255, .25);
+  border-radius: 999px;
+  padding-inline: 13px;
+  color: var(--nl-uj-text);
+  background: #242d26;
+  font: inherit;
+  cursor: pointer;
+}
+
+.nl-unit-plan-tool__hint {
+  position: absolute;
+  z-index: 2;
+  top: 8px;
+  right: max(8px, env(safe-area-inset-right));
+  left: max(8px, env(safe-area-inset-left));
+  width: fit-content;
+  max-width: calc(100% - 16px);
+  margin: 0 auto;
+  padding: 6px 9px;
+  border-radius: 999px;
+  color: #241d11;
+  background: rgba(255, 248, 221, .9);
+  font-size: 11px;
+  line-height: 1.2;
+  text-align: center;
+  pointer-events: none;
+}
+
+/* Window view: viewport plus one safe-area-aware control row. */
+.nl-window-tool,
+.nl-unit-tool__view {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  grid-template-rows: minmax(0, 1fr) auto;
+}
+
+.nl-window-tool__map,
+.nl-unit-tool__view-map {
+  min-inline-size: 0;
+  min-block-size: 0;
+  overflow: hidden !important;
+  touch-action: none;
+  cursor: grab;
+}
+
+.nl-window-tool__controls,
+.nl-unit-tool__view-controls {
+  min-block-size: calc(54px + env(safe-area-inset-bottom));
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 8px;
+  padding:
+    5px
+    max(10px, env(safe-area-inset-right))
+    max(5px, env(safe-area-inset-bottom))
+    max(10px, env(safe-area-inset-left));
+  color: var(--nl-uj-text);
+  background: #111713;
+  text-align: center;
+}
+
+.nl-window-tool__controls button,
+.nl-unit-tool__view-controls button {
+  min-inline-size: 44px;
+  min-block-size: 44px;
+  border: 1px solid rgba(255, 255, 255, .24);
+  border-radius: 999px;
+  padding-inline: 12px;
+  color: var(--nl-uj-text);
+  background: #242d26;
+  font: inherit;
+}
+
+.nl-window-tool__fallback {
+  position: absolute;
+  z-index: 2;
+  top: 0;
+  right: 0;
+  bottom: calc(54px + env(safe-area-inset-bottom));
+  left: 0;
+  min-block-size: 0;
+  background: #101915;
+}
+
+.nl-window-tool__note {
+  position: absolute;
+  z-index: 3;
+  top: 8px;
+  right: max(8px, env(safe-area-inset-right));
+  left: max(8px, env(safe-area-inset-left));
+  width: fit-content;
+  max-width: calc(100% - 16px);
+  margin: 0 auto;
+  padding: 6px 9px;
+  border-radius: 999px;
+  color: var(--nl-uj-text);
+  background: rgba(7, 12, 10, .78);
+  font-size: 11px;
+  line-height: 1.2;
+  text-align: center;
+  pointer-events: none;
+}
+
+/* Area map stays dark; the external-map escape hatch is always 44px or taller. */
+.nl-unit-area-tool {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  grid-template-rows: minmax(0, 1fr) auto auto;
+  background: #101915;
+}
+
+.nl-unit-area-tool [data-role="area-map"] {
+  min-inline-size: 0;
+  min-block-size: 0;
+  overflow: hidden !important;
+  background: #101915;
+}
+
+.nl-unit-area-tool__fallback {
+  position: absolute;
+  z-index: 2;
+  top: 0;
+  right: 0;
+  bottom: 96px;
+  left: 0;
+  min-block-size: 0;
+  display: grid;
+  place-items: center;
+  margin: 0;
+  padding: 20px;
+  color: var(--nl-uj-muted);
+  background: #101915;
+  text-align: center;
+}
+
+.nl-unit-area-tool__copy {
+  min-block-size: 48px;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 12px;
+  color: var(--nl-uj-text);
+  background: #111713;
+  font-size: 12px;
+}
+
+.nl-unit-area-tool__copy span {
+  color: var(--nl-uj-muted);
+}
+
+.nl-unit-area-tool [data-role="area-map"] .mapboxgl-canvas {
+  filter: brightness(.62) saturate(.74) contrast(1.2);
+}
+
+.nl-unit-area-tool .mapboxgl-ctrl-group button,
+.nl-unit-area-tool .mapboxgl-ctrl-attrib-button {
+  inline-size: 44px;
+  block-size: 44px;
+  min-inline-size: 44px;
+  min-block-size: 44px;
+}
+
+.nl-unit-area-tool__external,
+.nl-unit-tool__external {
+  min-block-size: calc(48px + env(safe-area-inset-bottom));
+  display: grid;
+  place-items: center;
+  padding:
+    6px
+    max(12px, env(safe-area-inset-right))
+    max(6px, env(safe-area-inset-bottom))
+    max(12px, env(safe-area-inset-left));
+  color: #1a1207;
+  background: var(--nl-uj-gold);
+  font-weight: 780;
+  text-align: center;
+  text-decoration: none;
+}
+
+/* Contact is a single full-viewport surface, not a sheet inside a sheet. */
+.nl-unit-contact-tool {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  grid-template-rows: auto minmax(0, 1fr);
+  align-items: center;
+  justify-items: center;
+  gap: 8px;
+  padding:
+    max(10px, env(safe-area-inset-top))
+    max(12px, env(safe-area-inset-right))
+    max(10px, env(safe-area-inset-bottom))
+    max(12px, env(safe-area-inset-left));
+  background:
+    radial-gradient(circle at 50% 0, rgba(244, 211, 121, .14), transparent 48%),
+    #0f1511;
+}
+
+.nl-unit-contact-tool > p {
+  inline-size: min(100%, 640px);
+  margin: 0;
+  color: var(--nl-uj-muted);
+  font-size: clamp(11px, 2.8vw, 14px);
+  line-height: 1.35;
+  text-align: center;
+}
+
+.nl-unit-contact-form {
+  inline-size: min(100%, 640px);
+  max-block-size: 100%;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+  margin: 0;
+  overflow: hidden;
+}
+
+.nl-unit-contact-form > :is(h3, p, .nl-unit-contact-form__full, button, .nl-unit-contact-form__feedback) {
+  grid-column: 1 / -1;
+}
+
+.nl-unit-contact-form h3,
+.nl-unit-contact-form p {
+  margin: 0;
+}
+
+.nl-unit-contact-form label {
+  min-inline-size: 0;
+  display: grid;
+  gap: 4px;
+  color: var(--nl-uj-muted);
+  font-size: 12px;
+}
+
+.nl-unit-contact-form :is(input:not([type="checkbox"]), select, textarea) {
+  inline-size: 100%;
+  min-inline-size: 0;
+  min-block-size: 48px;
+  border: 1px solid rgba(255, 255, 255, .22);
+  border-radius: 10px;
+  padding: 10px 12px;
+  color: var(--nl-uj-text);
+  background: #202821;
+  font: inherit;
+}
+
+.nl-unit-contact-form__consent {
+  min-block-size: 44px;
+  grid-column: 1 / -1;
+  grid-template-columns: 24px minmax(0, 1fr);
+  align-items: center;
+}
+
+.nl-unit-contact-form__consent input[type="checkbox"] {
+  inline-size: 22px;
+  block-size: 22px;
+  min-inline-size: 22px;
+  min-block-size: 22px;
+  margin: 0;
+  accent-color: var(--nl-uj-cta);
+}
+
+.nl-unit-contact-form textarea {
+  min-block-size: 72px;
+  resize: none;
+}
+
+.nl-unit-contact-form button[type="submit"] {
+  min-block-size: 48px;
+  border: 0;
+  border-radius: 11px;
+  color: #1d1009;
+  background: var(--nl-uj-cta);
+  font: inherit;
+  font-weight: 790;
+}
+
+.nl-unit-contact-form__feedback {
+  min-block-size: 24px;
+  color: var(--nl-uj-gold-strong);
+  text-align: center;
+}
+
+@media (max-width: 600px) and (orientation: portrait) {
+  .nl-unit-contact-form {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 7px;
+  }
+
+  .nl-unit-contact-form :is(input:not([type="checkbox"]), select) {
+    min-block-size: 44px;
+    padding-block: 7px;
+  }
+
+  .nl-unit-contact-form > * {
+    grid-column: 1;
+  }
+
+  .nl-unit-contact-form textarea {
+    min-block-size: 60px;
+  }
+}
+
+@media (max-height: 500px) {
+  .nl-unit-contact-tool {
+    align-items: stretch;
+    padding-block: 6px;
+  }
+
+  .nl-unit-contact-tool > p {
+    display: none;
+  }
+
+  .nl-unit-contact-form {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    align-content: center;
+    gap: 5px 8px;
+  }
+
+  .nl-unit-contact-form > * {
+    grid-column: auto;
+  }
+
+  .nl-unit-contact-form label:not(.nl-unit-contact-form__consent) {
+    position: relative;
+    gap: 0;
+  }
+
+  .nl-unit-contact-form label:not(.nl-unit-contact-form__consent) > span {
+    position: absolute;
+    inline-size: 1px;
+    block-size: 1px;
+    margin: -1px;
+    padding: 0;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    white-space: nowrap;
+  }
+
+  .nl-unit-contact-form :is(input:not([type="checkbox"]), select) {
+    min-block-size: 44px;
+    padding-block: 7px;
+  }
+
+  .nl-unit-contact-form textarea {
+    min-block-size: 44px;
+    block-size: 44px;
+    padding-block: 7px;
+  }
+
+  .nl-unit-contact-form__consent,
+  .nl-unit-contact-form button[type="submit"],
+  .nl-unit-contact-form__feedback {
+    grid-column: 1 / -1;
+  }
+}
+
+/* Comparison is another body-level surface. It contains three native
+   selectors and a fixed five-fact matrix, never the legacy sticky tray. */
+.nl-unit-compare-tool {
+  inline-size: 100%;
+  block-size: 100%;
+  min-inline-size: 0;
+  min-block-size: 0;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  grid-template-rows: auto auto minmax(0, 1fr);
+  align-content: stretch;
+  justify-items: center;
+  gap: clamp(7px, 1.5dvh, 13px);
+  padding:
+    max(8px, env(safe-area-inset-top))
+    max(10px, env(safe-area-inset-right))
+    max(8px, env(safe-area-inset-bottom))
+    max(10px, env(safe-area-inset-left));
+  overflow: hidden !important;
+  background:
+    radial-gradient(circle at 50% 0, rgba(244, 211, 121, .14), transparent 45%),
+    #0f1511;
+}
+
+.nl-unit-compare-tool__intro,
+.nl-unit-compare-tool__empty {
+  inline-size: min(100%, 920px);
+  margin: 0;
+  color: var(--nl-uj-muted);
+  font-size: clamp(11px, 2.7vw, 14px);
+  line-height: 1.35;
+  text-align: center;
+}
+
+.nl-unit-compare-tool__empty {
+  align-self: center;
+  color: var(--nl-uj-text);
+}
+
+.nl-unit-compare-slots {
+  inline-size: min(100%, 920px);
+  min-inline-size: 0;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  align-items: end;
+  gap: clamp(5px, 1.4vw, 12px);
+}
+
+.nl-unit-compare-slot {
+  min-inline-size: 0;
+  display: grid;
+  grid-template-rows: minmax(2.2em, auto) 44px;
+  align-items: end;
+  gap: 4px;
+  color: var(--nl-uj-muted);
+  font-size: clamp(9px, 2.3vw, 12px);
+  line-height: 1.1;
+}
+
+.nl-unit-compare-slot > span {
+  align-self: end;
+  overflow-wrap: anywhere;
+}
+
+.nl-unit-compare-slot select {
+  inline-size: 100%;
+  min-inline-size: 0;
+  block-size: 44px;
+  min-block-size: 44px;
+  border: 1px solid rgba(255, 255, 255, .24);
+  border-radius: 9px;
+  padding: 4px 26px 4px 7px;
+  color: var(--nl-uj-text);
+  background: #202821;
+  font: inherit;
+  font-size: clamp(10px, 2.5vw, 13px);
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* WordPress/theme form rules are loaded after the showroom and force a cream
+   select surface. Reassert the complete native-control palette inside this
+   isolated dialog; color-scheme also keeps the opened option list legible. */
+#nl-unit-tool.nl-unit-tool .nl-unit-compare-slot select {
+  border-color: rgba(255, 255, 255, .24) !important;
+  color: var(--nl-uj-text) !important;
+  background-color: #202821 !important;
+  background-image: none !important;
+  appearance: auto !important;
+  -webkit-appearance: menulist !important;
+  color-scheme: dark;
+}
+
+#nl-unit-tool.nl-unit-tool .nl-unit-compare-slot select option {
+  color: var(--nl-uj-text) !important;
+  background-color: #202821 !important;
+}
+
+[dir="rtl"] .nl-unit-compare-slot select {
+  padding-right: 7px;
+  padding-left: 26px;
+}
+
+.nl-unit-compare-slot select:disabled {
+  opacity: .78;
+  color: var(--nl-uj-gold-strong);
+  background: #182019;
+}
+
+#nl-unit-tool.nl-unit-tool .nl-unit-compare-slot select:disabled {
+  color: var(--nl-uj-gold-strong) !important;
+  background-color: #182019 !important;
+}
+
+.nl-unit-compare-slot select:focus-visible {
+  outline: 3px solid rgba(244, 211, 121, .55);
+  outline-offset: 1px;
+}
+
+.nl-unit-compare-summary {
+  --nl-unit-compare-count: 2;
+  inline-size: min(100%, 920px);
+  block-size: 100%;
+  min-inline-size: 0;
+  min-block-size: 0;
+  max-block-size: 360px;
+  align-self: stretch;
+  display: grid;
+  grid-template-rows: repeat(6, minmax(26px, 1fr));
+  overflow: hidden !important;
+  border: 1px solid rgba(255, 255, 255, .17);
+  border-radius: 11px;
+  background: rgba(7, 11, 8, .76);
+}
+
+.nl-unit-compare-row {
+  min-inline-size: 0;
+  min-block-size: 0;
+  display: grid;
+  grid-template-columns:
+    minmax(58px, .72fr)
+    repeat(var(--nl-unit-compare-count), minmax(0, 1fr));
+  align-items: stretch;
+}
+
+.nl-unit-compare-row + .nl-unit-compare-row {
+  border-top: 1px solid rgba(255, 255, 255, .12);
+}
+
+.nl-unit-compare-row > :is(span, strong) {
+  min-inline-size: 0;
+  min-block-size: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 3px clamp(3px, 1.1vw, 9px);
+  border-inline-start: 1px solid rgba(255, 255, 255, .1);
+  color: var(--nl-uj-text);
+  font-size: clamp(10px, 2.45vw, 13px);
+  line-height: 1.12;
+  text-align: center;
+  overflow-wrap: anywhere;
+}
+
+.nl-unit-compare-row > :first-child {
+  border-inline-start: 0;
+}
+
+.nl-unit-compare-row--head {
+  background: rgba(244, 211, 121, .1);
+}
+
+.nl-unit-compare-row--head > :is(span, strong) {
+  color: var(--nl-uj-gold-strong);
+  font-weight: 780;
+}
+
+.nl-unit-compare-row__label {
+  flex-direction: column;
+  gap: 2px;
+  color: var(--nl-uj-muted) !important;
+}
+
+.nl-unit-compare-row__label small {
+  color: var(--nl-uj-gold-strong);
+  font-size: 8px;
+  font-weight: 780;
+  line-height: 1;
+}
+
+.nl-unit-compare-row.is-different {
+  background: rgba(217, 107, 53, .105);
+  box-shadow: inset 3px 0 0 rgba(217, 107, 53, .72);
+}
+
+[dir="rtl"] .nl-unit-compare-row.is-different {
+  box-shadow: inset -3px 0 0 rgba(217, 107, 53, .72);
+}
+
+@media (max-height: 400px) {
+  .nl-unit-compare-tool {
+    grid-template-rows: 44px minmax(0, 1fr);
+    gap: 4px;
+    padding: 4px;
+  }
+
+  .nl-unit-compare-tool__intro {
+    display: none;
+  }
+
+  .nl-unit-compare-slots {
+    gap: 4px;
+  }
+
+  .nl-unit-compare-slot {
+    grid-template-rows: 44px;
+    gap: 0;
+  }
+
+  .nl-unit-compare-slot > span {
+    position: absolute;
+    inline-size: 1px;
+    block-size: 1px;
+    margin: -1px;
+    padding: 0;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    white-space: nowrap;
+  }
+
+  .nl-unit-compare-slot select {
+    padding-inline: 5px 20px;
+    font-size: 10px;
+  }
+
+  .nl-unit-compare-summary {
+    max-block-size: none;
+    grid-template-rows: repeat(6, minmax(25px, 1fr));
+  }
+
+  .nl-unit-compare-row {
+    grid-template-columns:
+      minmax(52px, .68fr)
+      repeat(var(--nl-unit-compare-count), minmax(0, 1fr));
+  }
+
+  .nl-unit-compare-row > :is(span, strong) {
+    padding: 2px 3px;
+    font-size: 9.5px;
+    line-height: 1.05;
+  }
+
+  .nl-unit-compare-row__label small {
+    display: none;
+  }
+}
+
+@media (max-width: 340px) and (min-height: 401px) {
+  .nl-unit-compare-tool {
+    gap: 6px;
+    padding-inline: 7px;
+  }
+
+  .nl-unit-compare-slot {
+    font-size: 9px;
+  }
+
+  .nl-unit-compare-row > :is(span, strong) {
+    padding-inline: 3px;
+    font-size: 10px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .nl-theater--unit-v2 > .nl-stagewrap,
+  .nl-theater--unit-v2 > .nl-unit-screen--v2 > *,
+  .nl-unit-screen--v2 *,
+  #nl-unit-tool * {
+    scroll-behavior: auto !important;
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: .01ms !important;
+  }
+}

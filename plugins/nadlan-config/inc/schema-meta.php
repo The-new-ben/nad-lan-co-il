@@ -25,6 +25,9 @@ add_action( 'wp_head', function () {
 	if ( ! is_singular() ) {
 		return;
 	}
+	if ( function_exists( 'nadlan_unit_journey_is_private_lab' ) && nadlan_unit_journey_is_private_lab() ) {
+		return;
+	}
 	$stored = (string) get_post_meta( get_queried_object_id(), '_nl_faq_schema', true );
 	if ( '' === $stored ) {
 		return;

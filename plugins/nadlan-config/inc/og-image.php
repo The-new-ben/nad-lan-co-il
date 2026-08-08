@@ -44,6 +44,7 @@ add_filter( 'wpseo_twitter_image', 'nadlan_og_https_url', 50 );
    container so every singular page with a thumbnail gets a real og:image. */
 add_action( 'wpseo_add_opengraph_images', function ( $images ) {
 	if ( ! is_singular() || ! method_exists( $images, 'has_images' ) || $images->has_images() ) { return; }
+	if ( function_exists( 'nadlan_unit_journey_is_private_lab' ) && nadlan_unit_journey_is_private_lab() ) { return; }
 	$tid = get_post_thumbnail_id( get_queried_object_id() );
 	if ( $tid && method_exists( $images, 'add_image_by_id' ) ) { $images->add_image_by_id( $tid ); }
 } );
@@ -55,6 +56,9 @@ add_action( 'rest_api_init', function () {
 			$id = (int) $req['id'];
 			$post = get_post( $id );
 			if ( ! $post || ! nadlan_og_supported_pt( $post->post_type ) ) {
+				return new WP_Error( 'not_found', 'not_found', array( 'status' => 404 ) );
+			}
+			if ( function_exists( 'nadlan_unit_journey_is_private_lab' ) && nadlan_unit_journey_is_private_lab( $id ) ) {
 				return new WP_Error( 'not_found', 'not_found', array( 'status' => 404 ) );
 			}
 			$title = get_the_title( $post );
@@ -129,6 +133,7 @@ add_action( 'rest_api_init', function () {
 add_action( 'wp_head', function () {
 	if ( ! is_singular() ) { return; }
 	$id = get_queried_object_id();
+	if ( function_exists( 'nadlan_unit_journey_is_private_lab' ) && nadlan_unit_journey_is_private_lab( $id ) ) { return; }
 	$pt = get_post_type( $id );
 	if ( ! nadlan_og_supported_pt( $pt ) ) { return; }
 	// Don't fight Yoast on pages it covers with a featured image
@@ -140,6 +145,13 @@ add_action( 'wp_head', function () {
 	echo "<meta name=\"twitter:image\" content=\"$url\">\n";
 	echo "<meta name=\"twitter:card\" content=\"summary_large_image\">\n";
 }, 28 );
+
+add_filter( 'wpseo_opengraph_image', function ( $url ) {
+	return ( function_exists( 'nadlan_unit_journey_is_private_lab' ) && nadlan_unit_journey_is_private_lab() ) ? false : $url;
+}, 99 );
+add_filter( 'wpseo_twitter_image', function ( $url ) {
+	return ( function_exists( 'nadlan_unit_journey_is_private_lab' ) && nadlan_unit_journey_is_private_lab() ) ? false : $url;
+}, 99 );
 
 /* Homepage + language homes had NO og:image at all - WhatsApp/FB/LinkedIn fell
    back to scraping the (old) favicon. A real 1200x630 PNG brand card, stored in

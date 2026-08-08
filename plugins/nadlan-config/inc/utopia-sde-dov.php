@@ -2124,6 +2124,7 @@ if ( ! function_exists( 'nadlan_utopia_visible_faq' ) ) {
 }
 
 add_action( 'wp_head', function () {
+	if ( function_exists( 'nadlan_unit_journey_is_private_lab' ) && nadlan_unit_journey_is_private_lab() ) { return; }
 	$lang = nadlan_utopia_slug_lang();
 	if ( $lang === '' ) { return; }
 	$entities = array();

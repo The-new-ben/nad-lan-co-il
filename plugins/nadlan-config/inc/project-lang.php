@@ -85,6 +85,9 @@ add_action( 'wp_head', function () {
 	if ( $done || ! is_singular( 'nadlan_project' ) ) {
 		return;
 	}
+	if ( function_exists( 'nadlan_unit_journey_is_private_lab' ) && nadlan_unit_journey_is_private_lab() ) {
+		return;
+	}
 	$done = true;
 	$fam = nadlan_plang_family( get_queried_object_id() );
 	if ( count( $fam ) < 2 ) {

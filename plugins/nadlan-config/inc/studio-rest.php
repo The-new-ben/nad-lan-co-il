@@ -129,6 +129,7 @@ add_action( 'rest_api_init', function () {
 			}
 			// invalidate the social-proof cache so the homepage reflects the change
 			delete_transient( 'nadlan_sp_block_v3' );
+			delete_transient( 'nadlan_sp_block_v4' );
 
 			return array( 'ok' => true, 'written' => $written, 'post_id' => $id );
 		},

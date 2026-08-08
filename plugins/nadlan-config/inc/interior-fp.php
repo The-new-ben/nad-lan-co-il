@@ -106,6 +106,7 @@ function initFP(root){
 	var rooms=JSON.parse(root.dataset.rooms||"[]"),world=root.querySelector(".nlifp-world"),
 		stage=root.querySelector(".nlifp-stage"),hud=root.querySelector(".nlifp-room"),
 		bar=root.querySelector(".nlifp-doors"),cur=0,yaw=0,pitch=0,SC=120; /* 1m = 120px */
+	function fmt(tpl,vars){return String(tpl||"").replace(/\{(\w+)\}/g,function(_,key){return vars[key]==null?"":vars[key]})}
 	function build(i){
 		cur=i;var r=rooms[i];if(!r){return}
 		var W=r.w*SC,D=r.d*SC,H=2.65*SC;yaw=0;pitch=0;
@@ -125,8 +126,8 @@ function initFP(root){
 		world.appendChild(face(W,D,"rotateX(90deg) translateZ("+(-H/2)+"px)","nlifp-floor"));
 		world.appendChild(face(W,D,"rotateX(-90deg) translateZ("+(-H/2)+"px)","nlifp-ceil"));
 		var nxt=rooms[(i+1)%rooms.length];
-		if(rooms.length>1){var door=document.createElement("div");door.className="nlifp-door";door.innerHTML="<small>אל "+nxt.label+" ←</small>";door.addEventListener("click",function(ev){ev.stopPropagation();build((i+1)%rooms.length)});walls[1].el.appendChild(door)}
-		hud.textContent=r.label+" · כ-"+Math.round(r.w*r.d)+' מ"ר';
+		if(rooms.length>1){var door=document.createElement("div"),small=document.createElement("small");door.className="nlifp-door";small.textContent=fmt(root.dataset.toTemplate||"אל {room}",{room:nxt.label})+" ←";door.appendChild(small);door.addEventListener("click",function(ev){ev.stopPropagation();build((i+1)%rooms.length)});walls[1].el.appendChild(door)}
+		hud.textContent=fmt(root.dataset.areaTemplate||"{label} · כ־{area} מ״ר",{label:r.label,area:Math.round(r.w*r.d)});
 		bar.querySelectorAll("button").forEach(function(b,bi){b.classList.toggle("is-on",bi===i)});
 		apply();
 	}
@@ -138,8 +139,9 @@ function initFP(root){
 	stage.addEventListener("keydown",function(e){if(e.key==="ArrowLeft"){yaw-=8;apply()}if(e.key==="ArrowRight"){yaw+=8;apply()}});
 	rooms.forEach(function(r,i){var b=document.createElement("button");b.type="button";b.textContent=r.label;b.addEventListener("click",function(){build(i)});bar.appendChild(b)});
 	build(0);
-	var spin=setInterval(function(){if(drag){return}yaw+=0.12;apply()},50);
-	stage.addEventListener("pointerdown",function(){clearInterval(spin)},{once:true});
+	var reduceMotion=window.matchMedia&&window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+	var spin=reduceMotion?0:setInterval(function(){if(!root.isConnected){clearInterval(spin);return}if(drag){return}yaw+=0.12;apply()},50);
+	if(spin){stage.addEventListener("pointerdown",function(){clearInterval(spin)},{once:true})}
 }
 function scan(){document.querySelectorAll(".nlifp").forEach(initFP)}
 if(document.readyState!=="loading"){scan()}else{document.addEventListener("DOMContentLoaded",scan)}

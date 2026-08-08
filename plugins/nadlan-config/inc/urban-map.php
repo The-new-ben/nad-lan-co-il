@@ -80,7 +80,7 @@ if ( ! function_exists( 'nadlan_ur_city_centroids' ) ) {
    server-rendered (crawlable) city directory on the page */
 if ( ! function_exists( 'nadlan_ur_map_cities' ) ) {
 	function nadlan_ur_map_cities() {
-		$hit = get_transient( 'nadlan_ur_mapdata_v3' );
+		$hit = get_transient( 'nadlan_ur_mapdata_v4' );
 		if ( is_array( $hit ) ) { return $hit; }
 		global $wpdb;
 		$rows = $wpdb->get_results( "
@@ -90,6 +90,8 @@ if ( ! function_exists( 'nadlan_ur_map_cities' ) ) {
 			JOIN {$wpdb->postmeta} c ON c.post_id = p.ID AND c.meta_key = 'city'
 			LEFT JOIN {$wpdb->postmeta} t ON t.post_id = p.ID AND t.meta_key = 'renewal_track'
 			WHERE p.post_type = 'nadlan_project' AND p.post_status = 'publish'
+			AND NOT EXISTS (SELECT 1 FROM {$wpdb->postmeta} private_v2
+				WHERE private_v2.post_id=p.ID AND private_v2.meta_key='_nadlan_private_unit_journey' AND private_v2.meta_value='private-unit-journey-v2')
 			GROUP BY c.meta_value, t.meta_value
 		", ARRAY_A );
 		$cities = array();
@@ -109,7 +111,7 @@ if ( ! function_exists( 'nadlan_ur_map_cities' ) ) {
 			if ( 'rashuyot' === $r['track'] ) { $cities[ $city ]['rashuyot'] += (int) $r['n']; }
 		}
 		$out = array( 'total' => array_sum( wp_list_pluck( $cities, 'count' ) ), 'cities' => array_values( $cities ) );
-		set_transient( 'nadlan_ur_mapdata_v3', $out, 6 * HOUR_IN_SECONDS );
+		set_transient( 'nadlan_ur_mapdata_v4', $out, 6 * HOUR_IN_SECONDS );
 		return $out;
 	}
 }

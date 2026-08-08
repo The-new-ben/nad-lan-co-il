@@ -24,16 +24,31 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 if ( ! function_exists( 'nadlan_matcher_dataset' ) ) {
 	function nadlan_matcher_dataset() {
-		$cached = get_transient( 'nl_matcher_v2' );
+		/* Do not reuse a pre-privacy aggregate: its rows may already contain a
+		 * private-lab title, URL and matching signals. */
+		$cached = get_transient( 'nl_matcher_v3_public' );
 		if ( is_array( $cached ) ) {
 			return $cached;
 		}
+		$public_meta = function_exists( 'nadlan_unit_journey_public_meta_query' )
+			? nadlan_unit_journey_public_meta_query()
+			: array(
+				'relation' => 'OR',
+				array( 'key' => '_nadlan_private_unit_journey', 'compare' => 'NOT EXISTS' ),
+				array(
+					'key'     => '_nadlan_private_unit_journey',
+					'value'   => 'private-unit-journey-v2',
+					'compare' => '!=',
+				),
+			);
 		$q = new WP_Query( array(
 			'post_type'      => 'nadlan_project',
 			'post_status'    => 'publish',
 			'posts_per_page' => -1,
 			'no_found_rows'  => true,
 			'fields'         => 'ids',
+			'meta_query'     => $public_meta,
+			'nadlan_private_visibility_applied' => true,
 		) );
 		$rows   = array();
 		$cities = array();
@@ -100,7 +115,7 @@ if ( ! function_exists( 'nadlan_matcher_dataset' ) ) {
 		}
 		arsort( $cities );
 		$out = array( 'rows' => $rows, 'cities' => array_slice( array_keys( $cities ), 0, 8 ) );
-		set_transient( 'nl_matcher_v2', $out, HOUR_IN_SECONDS );
+		set_transient( 'nl_matcher_v3_public', $out, HOUR_IN_SECONDS );
 		return $out;
 	}
 }
@@ -117,6 +132,7 @@ add_action( 'rest_api_init', function () {
 
 add_action( 'save_post_nadlan_project', function () {
 	delete_transient( 'nl_matcher_v2' );
+	delete_transient( 'nl_matcher_v3_public' );
 } );
 
 add_shortcode( 'nl_matcher', function () {

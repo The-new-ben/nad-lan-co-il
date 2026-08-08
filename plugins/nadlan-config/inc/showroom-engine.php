@@ -43,6 +43,96 @@ if ( ! function_exists( 'nadlan_showroom_engine_dir' ) ) {
 	}
 }
 
+if ( ! function_exists( 'nadlan_unit_journey_is_v2_render' ) ) {
+	/** Rendering feature flag. This says nothing about public visibility. */
+	function nadlan_unit_journey_is_v2_render( $post_id = 0 ) {
+		$post_id = (int) $post_id;
+		if ( $post_id <= 0 && function_exists( 'get_queried_object_id' ) ) {
+			$post_id = (int) get_queried_object_id();
+		}
+		return $post_id > 0
+			&& 'nadlan_project' === get_post_type( $post_id )
+			&& 'on' === (string) get_post_meta( $post_id, 'nl_unit_scene_v2', true );
+	}
+}
+
+if ( ! function_exists( 'nadlan_unit_journey_is_private_lab' ) ) {
+	/**
+	 * Dedicated privacy marker, independent from the v2 rendering flag. The
+	 * marker remains fail-closed even if the post password is removed by
+	 * mistake, so losing one defence cannot silently restore discovery.
+	 */
+	function nadlan_unit_journey_is_private_lab( $post_id = 0 ) {
+		$post_id = (int) $post_id;
+		if ( $post_id <= 0 && function_exists( 'get_queried_object_id' ) ) {
+			$post_id = (int) get_queried_object_id();
+		}
+		return $post_id > 0
+			&& 'nadlan_project' === get_post_type( $post_id )
+			&& 'private-unit-journey-v2' === (string) get_post_meta( $post_id, '_nadlan_private_unit_journey', true );
+	}
+}
+
+if ( ! function_exists( 'nadlan_unit_journey_private_lab_has_password' ) ) {
+	/** The dedicated marker is valid for front-end access only with core's password gate. */
+	function nadlan_unit_journey_private_lab_has_password( $post_id ) {
+		$post_id = (int) $post_id;
+		$post    = $post_id ? get_post( $post_id ) : null;
+		return $post instanceof WP_Post
+			&& nadlan_unit_journey_is_private_lab( $post_id )
+			&& '' !== (string) $post->post_password;
+	}
+}
+
+if ( ! function_exists( 'nadlan_unit_journey_private_project_ids' ) ) {
+	/** Published private-lab IDs for sitemap/count guards; never a public list. */
+	function nadlan_unit_journey_private_project_ids() {
+		static $ids = null;
+		if ( is_array( $ids ) ) {
+			return $ids;
+		}
+		$ids = get_posts( array(
+			'post_type'                         => 'nadlan_project',
+			'post_status'                       => 'publish',
+			'posts_per_page'                    => -1,
+			'fields'                            => 'ids',
+			'meta_key'                          => '_nadlan_private_unit_journey',
+			'meta_value'                        => 'private-unit-journey-v2',
+			'no_found_rows'                     => true,
+			'nadlan_include_private_unit_journey' => true,
+		) );
+		$ids = array_values( array_unique( array_map( 'intval', (array) $ids ) ) );
+		return $ids;
+	}
+}
+
+if ( ! function_exists( 'nadlan_unit_journey_public_project_count' ) ) {
+	/** Public aggregate count without revealing the private lab in home chrome. */
+	function nadlan_unit_journey_public_project_count() {
+		$counts = wp_count_posts( 'nadlan_project' );
+		$total  = isset( $counts->publish ) ? (int) $counts->publish : 0;
+		return max( 0, $total - count( nadlan_unit_journey_private_project_ids() ) );
+	}
+}
+
+if ( ! function_exists( 'nadlan_unit_journey_can_manage_private_labs' ) ) {
+	/** Editors/admins may inspect the private object; subscribers may not. */
+	function nadlan_unit_journey_can_manage_private_labs() {
+		if ( ! is_user_logged_in() ) {
+			return false;
+		}
+		if ( current_user_can( 'manage_options' ) ) {
+			return true;
+		}
+		foreach ( nadlan_unit_journey_private_project_ids() as $post_id ) {
+			if ( current_user_can( 'edit_post', $post_id ) ) {
+				return true;
+			}
+		}
+		return false;
+	}
+}
+
 if ( ! function_exists( 'nadlan_showroom_engine_json_meta' ) ) {
 	/** Decode a JSON-or-array post meta safely to an array. */
 	function nadlan_showroom_engine_json_meta( $post_id, $key ) {
@@ -92,6 +182,13 @@ if ( ! function_exists( 'nadlan_showroom_engine_build_project' ) ) {
 		if ( $tier === '' ) { $tier = 'standard'; }
 
 		$sub = (string) get_post_meta( $id, 'project_subtitle', true );
+		$project_name = get_the_title( $id );
+		if ( nadlan_unit_journey_is_private_lab( $id ) ) {
+			$private_source_name = sanitize_text_field( (string) get_post_meta( $id, '_nadlan_private_unit_journey_project_name', true ) );
+			if ( '' !== $private_source_name ) {
+				$project_name = $private_source_name;
+			}
+		}
 
 		// Language siblings: each language is its own published nadlan_project post,
 		// resolved by slug convention <base> / <base>-en / -fr / -ru / -ar. The engine
@@ -112,8 +209,8 @@ if ( ! function_exists( 'nadlan_showroom_engine_build_project' ) ) {
 		return array(
 			'slug'           => $post->post_name,
 			'wp_id'          => (int) $id,
-			'name'           => get_the_title( $id ),
-			'name_key'       => get_the_title( $id ),
+			'name'           => $project_name,
+			'name_key'       => $project_name,
 			'area'           => 'area_' . $post->post_name,
 			'content'        => array(
 				'he' => array( 'tagline' => $sub ),
@@ -191,10 +288,18 @@ if ( ! function_exists( 'nadlan_showroom_engine_build_project' ) ) {
 
 if ( ! function_exists( 'nadlan_showroom_engine_config' ) ) {
 	function nadlan_showroom_engine_config( $default_slug ) {
+		$post_id = (int) get_queried_object_id();
+		if ( $post_id <= 0 ) {
+			$post_id = (int) get_the_ID();
+		}
+		$selected_unit_surface_v2 = nadlan_unit_journey_is_v2_render( $post_id );
+		$private_unit_journey_lab = nadlan_unit_journey_is_private_lab( $post_id );
 		return array(
 			'brand_key'      => 'brand',
 			'lead_endpoint'  => esc_url_raw( rest_url( 'nadlan/v1/lead' ) ),
-			'brochure_endpoint' => esc_url_raw( rest_url( 'nadlan/v1/brochure' ) ),
+			/* The private lab has no public derivative endpoint. The REST route
+			 * independently rejects it as the server-side boundary. */
+			'brochure_endpoint' => $private_unit_journey_lab ? '' : esc_url_raw( rest_url( 'nadlan/v1/brochure' ) ),
 			'cotour_endpoint'   => esc_url_raw( rest_url( 'nadlan/v1/cotour' ) ),
 			'whatsapp'       => preg_replace( '/\D+/', '', (string) get_option( 'nadlan_whatsapp_e164', '' ) ),
 			'phone'          => (string) get_option( 'nadlan_phone', '' ),
@@ -212,8 +317,13 @@ if ( ! function_exists( 'nadlan_showroom_engine_config' ) ) {
 			/* SELECTED-UNIT SURFACE flag (audit 2026-08-08): per-post sandbox
 			 * gate. Production behavior is untouched until a post carries
 			 * nl_unit_scene=on (or the site option flips after phone approval). */
-			'selected_unit_surface' => ( 'on' === (string) get_post_meta( get_the_ID(), 'nl_unit_scene', true ) )
+			'selected_unit_surface' => $selected_unit_surface_v2
+				|| ( 'on' === (string) get_post_meta( $post_id, 'nl_unit_scene', true ) )
 				|| ( 'on' === (string) get_option( 'nadlan_selected_unit_surface', '' ) ),
+			/* Private journey v2 is deliberately post-scoped. There is no global
+			 * option: wider rollout still requires a separate, reviewed release. */
+			'selected_unit_surface_v2' => $selected_unit_surface_v2,
+			'private_unit_journey_lab' => $private_unit_journey_lab,
 		);
 	}
 }
@@ -224,6 +334,19 @@ if ( ! function_exists( 'nadlan_showroom_engine_gallery_posts' ) ) {
 		$q = new WP_Query( array(
 			'post_type'      => 'nadlan_project',
 			'post_status'    => 'publish',
+			'nadlan_private_visibility_applied' => true,
+			'meta_query'     => array(
+				'relation' => 'OR',
+				array(
+					'key'     => '_nadlan_private_unit_journey',
+					'compare' => 'NOT EXISTS',
+				),
+				array(
+					'key'     => '_nadlan_private_unit_journey',
+					'value'   => 'private-unit-journey-v2',
+					'compare' => '!=',
+				),
+			),
 			'posts_per_page' => 60,
 			'orderby'        => array( 'menu_order' => 'ASC', 'date' => 'DESC' ),
 			'no_found_rows'  => true,
@@ -240,6 +363,17 @@ if ( ! function_exists( 'nadlan_showroom_engine_gallery_posts' ) ) {
 }
 
 if ( ! function_exists( 'nadlan_showroom_engine_resolve_target' ) ) {
+	/** A private payload may only be built on its own, already-unlocked singular. */
+	function nadlan_unit_journey_target_is_renderable( $post_id ) {
+		$post_id = (int) $post_id;
+		if ( ! nadlan_unit_journey_is_private_lab( $post_id ) ) {
+			return true;
+		}
+		return is_singular( 'nadlan_project' )
+			&& (int) get_queried_object_id() === $post_id
+			&& ! post_password_required( $post_id );
+	}
+
 	/** Resolve which post(s) the shortcode renders, from atts or page context. */
 	function nadlan_showroom_engine_resolve_target( $atts ) {
 		if ( $atts['page'] === 'home' ) {
@@ -248,15 +382,16 @@ if ( ! function_exists( 'nadlan_showroom_engine_resolve_target' ) ) {
 		if ( $atts['id'] ) {
 			$p = get_post( (int) $atts['id'] );
 			// international flagships run the SAME engine when addressed explicitly (owner 2026-07-12)
-			if ( $p && in_array( $p->post_type, array( 'nadlan_project', 'nadlan_intl' ), true ) ) { return array( $p ); }
+			if ( $p && in_array( $p->post_type, array( 'nadlan_project', 'nadlan_intl' ), true )
+				&& nadlan_unit_journey_target_is_renderable( $p->ID ) ) { return array( $p ); }
 		}
 		if ( $atts['project'] ) {
 			$p = get_page_by_path( sanitize_title( $atts['project'] ), OBJECT, 'nadlan_project' );
-			if ( $p ) { return array( $p ); }
+			if ( $p && nadlan_unit_journey_target_is_renderable( $p->ID ) ) { return array( $p ); }
 		}
 		if ( is_singular( 'nadlan_project' ) ) {
 			$p = get_post( get_queried_object_id() );
-			if ( $p ) { return array( $p ); }
+			if ( $p && nadlan_unit_journey_target_is_renderable( $p->ID ) ) { return array( $p ); }
 		}
 		// fallback: newest project, so a generic preview page still shows something real
 		$g = nadlan_showroom_engine_gallery_posts();
@@ -291,16 +426,35 @@ if ( ! function_exists( 'nadlan_showroom_engine_shortcode' ) ) {
 		);
 		$page = ( $atts['page'] === 'home' ) ? 'home' : 'project';
 		$base = trailingslashit( nadlan_showroom_engine_base_url() );
+		$post_id = (int) get_the_ID();
+		$is_unit_journey_v2 = $post_id > 0
+			&& ( 'on' === (string) get_post_meta( $post_id, 'nl_unit_scene_v2', true ) );
+		$is_private_lab = nadlan_unit_journey_is_private_lab( $post_id );
+
+		/* A protected project must never leak its showroom payload, assets or
+		 * unit inventory before WordPress accepts the post password. */
+		if ( $post_id > 0 && post_password_required( $post_id ) ) {
+			return '';
+		}
 
 		// assets
 		wp_enqueue_style( 'nadlan-engine-tokens', $base . 'tokens.css', array(), NADLAN_CONFIG_VERSION );
 		wp_enqueue_style( 'nadlan-engine-css', $base . 'showroom.css', array( 'nadlan-engine-tokens' ), NADLAN_CONFIG_VERSION );
-		wp_enqueue_style( 'nadlan-engine-editorial', $base . 'editorial.css', array( 'nadlan-engine-tokens' ), NADLAN_CONFIG_VERSION );
+		if ( ! $is_private_lab ) {
+			wp_enqueue_style( 'nadlan-engine-editorial', $base . 'editorial.css', array( 'nadlan-engine-tokens' ), NADLAN_CONFIG_VERSION );
+		}
 
 		/* selected-unit surface CSS: attached inline on the engine handle ONLY
 		 * where the flag is on (sandbox post / approved rollout) - explicit
 		 * cascade order, same artifact as the engine, zero effect elsewhere */
-		if ( ( 'on' === (string) get_post_meta( get_the_ID(), 'nl_unit_scene', true ) )
+		if ( $is_unit_journey_v2 ) {
+			/* V2 replaces the selected-unit visual source. Do not load the v1
+			 * stylesheet underneath it and repair the cascade afterwards. */
+			$nl_unit_css = @file_get_contents( __DIR__ . '/../assets/showroom-engine/unit-journey.css' );
+			if ( is_string( $nl_unit_css ) && '' !== $nl_unit_css ) {
+				wp_add_inline_style( 'nadlan-engine-css', $nl_unit_css );
+			}
+		} elseif ( ( 'on' === (string) get_post_meta( $post_id, 'nl_unit_scene', true ) )
 			|| ( 'on' === (string) get_option( 'nadlan_selected_unit_surface', '' ) ) ) {
 			$nl_unit_css = @file_get_contents( __DIR__ . '/../assets/showroom-engine/unit-surface.css' );
 			if ( is_string( $nl_unit_css ) && '' !== $nl_unit_css ) {
@@ -326,11 +480,13 @@ if ( ! function_exists( 'nadlan_showroom_engine_shortcode' ) ) {
 		wp_script_add_data( 'nadlan-model-viewer', 'type', 'module' );
 		wp_enqueue_script( 'nadlan-engine-i18n', $base . 'i18n.js', array(), NADLAN_CONFIG_VERSION, true );
 		wp_enqueue_script( 'nadlan-engine-core', $base . 'engine.js', array( 'nadlan-engine-i18n' ), NADLAN_CONFIG_VERSION, true );
-		// buy-flow v1: "build me an offer" overlay (configure > capture > dispatch)
-		wp_enqueue_script( 'nadlan-engine-buyflow', $base . 'buyflow.js', array( 'nadlan-engine-core' ), NADLAN_CONFIG_VERSION, true );
-		// apartment studio: design-before-you-buy overlay (drag furniture,
-		// accessibility clearances, notes -> travels inside the RFP)
-		wp_enqueue_script( 'nadlan-engine-studio', $base . 'studio.js', array( 'nadlan-engine-core' ), NADLAN_CONFIG_VERSION, true );
+		if ( ! $is_private_lab ) {
+			// buy-flow v1: "build me an offer" overlay (configure > capture > dispatch)
+			wp_enqueue_script( 'nadlan-engine-buyflow', $base . 'buyflow.js', array( 'nadlan-engine-core' ), NADLAN_CONFIG_VERSION, true );
+			// apartment studio: design-before-you-buy overlay (drag furniture,
+			// accessibility clearances, notes -> travels inside the RFP)
+			wp_enqueue_script( 'nadlan-engine-studio', $base . 'studio.js', array( 'nadlan-engine-core' ), NADLAN_CONFIG_VERSION, true );
+		}
 
 		// Always run the map bootstrap so missing tokens/coords render as visible failures.
 		$mapbox_deps = array( 'nadlan-engine-core' );
@@ -529,6 +685,11 @@ add_filter( 'the_content', function ( $content ) {
 	if ( ! $pid || ! nadlan_showroom_engine_active_for( $pid ) ) {
 		return $content;
 	}
+	/* Core has already replaced the body with the password form. Returning it
+	 * unchanged is the privacy boundary: do not prepend an engine root. */
+	if ( post_password_required( $pid ) ) {
+		return $content;
+	}
 	// DE-STACK (content-safe). The post body is ONE <main class="nlv2-showroom">
 	// wrapper that contains BOTH the legacy visual showroom (hero/3D/picker) AND the
 	// SEO article (<section class="nlv2-section"> ... headings, sources, disclaimer).
@@ -574,9 +735,344 @@ add_filter( 'the_content', function ( $content ) {
 		}
 	}
 	$engine = nadlan_showroom_engine_shortcode( array( 'page' => 'project', 'project' => '', 'id' => '' ) );
+	/* The private v2 page is a focused product lab, not a second SEO article.
+	 * Keep the normal theme chrome, then lead directly with the real engine. */
+	if ( nadlan_unit_journey_is_private_lab( $pid ) ) {
+		return '<h1 id="nl-unit-v2-page-title" class="screen-reader-text">' . esc_html( get_the_title( $pid ) ) . '</h1>' . $engine;
+	}
 	// Wrap the article so editorial.css can style it (cream/gold system).
 	return $engine . $prefix . '<div class="nadlan-project-article nadlan-guide">' . nadlan_showroom_engine_weave( $article, $pid ) . '</div>';
 }, 8 );
+
+/* Several mature project modules re-compose `the_content` at very late
+ * priorities. Register this final pass only after WordPress has completed its
+ * main query, so the private lab cannot inherit profile cards, notices,
+ * feature bars or an SEO article after the focused engine filter above ran.
+ * Assets/payload were already enqueued by the priority-8 pass; this callback
+ * deliberately emits only the one existing engine mount point. */
+add_action( 'wp', function () {
+	if ( ! is_singular( 'nadlan_project' ) ) {
+		return;
+	}
+	$pid = get_queried_object_id();
+	if ( ! $pid || ! nadlan_unit_journey_is_private_lab( $pid ) ) {
+		return;
+	}
+	/* Nothing project-specific may render around a locked private lab. Named
+	 * emitters are removed here (before wp_head/wp_footer), while the final
+	 * content pass below is the single owner of the password/body surface. */
+	remove_action( 'wp_footer', 'nadlan_card_assets' );
+	if ( nadlan_unit_journey_is_private_lab( $pid ) ) {
+		remove_action( 'wp_head', 'nadlan_card_jsonld', 20 );
+		remove_action( 'wp_head', 'nadlan_pjx_faq_jsonld', 30 );
+		remove_action( 'wp_head', 'wp_oembed_add_discovery_links', 10 );
+		remove_action( 'wp_head', 'wp_oembed_add_host_js', 10 );
+		remove_action( 'wp_head', 'wp_shortlink_wp_head', 10 );
+		remove_action( 'wp_head', 'rel_canonical' );
+	}
+	add_filter( 'the_content', function ( $content ) use ( $pid ) {
+		global $post;
+		if ( ! in_the_loop() || ! is_main_query() || ! $post || (int) $post->ID !== (int) $pid ) {
+			return $content;
+		}
+		if ( post_password_required( $pid ) ) {
+			/* Do not trust content assembled by any earlier project module: a
+			 * fresh core form is the complete locked body, every time. */
+			return get_the_password_form( get_post( $pid ) );
+		}
+		return '<h1 id="nl-unit-v2-page-title" class="screen-reader-text">' . esc_html( get_the_title( $pid ) )
+			. '</h1><div id="nl-root" data-page="project"></div>';
+	}, PHP_INT_MAX );
+}, PHP_INT_MAX );
+
+/* Private sandbox indexing and cache boundary. The page is also created with
+ * a WordPress post password and Yoast noindex meta; these headers are an
+ * independent defence and remain present after the password cookie is set. */
+add_filter( 'wp_robots', function ( $robots ) {
+	if ( is_singular( 'nadlan_project' ) ) {
+		$pid = get_queried_object_id();
+		if ( $pid && nadlan_unit_journey_is_private_lab( $pid ) ) {
+			$robots['noindex']   = true;
+			$robots['nofollow']  = true;
+			$robots['noarchive'] = true;
+		}
+	}
+	return $robots;
+}, 99 );
+
+add_action( 'send_headers', function () {
+	if ( is_singular( 'nadlan_project' ) ) {
+		$pid = get_queried_object_id();
+		if ( $pid && nadlan_unit_journey_is_private_lab( $pid ) ) {
+			nocache_headers();
+			header( 'X-Robots-Tag: noindex, nofollow, noarchive', true );
+			/* Do not disclose the private URL to third-party map/tool requests,
+			 * and do not allow the password surface to be framed off-origin. These
+			 * response-only guards do not restrict the page's own child iframes. */
+			header( 'Referrer-Policy: no-referrer', true );
+			header( 'X-Content-Type-Options: nosniff', true );
+			header( 'X-Frame-Options: SAMEORIGIN', true );
+		}
+	}
+}, 99 );
+
+add_filter( 'body_class', function ( $classes ) {
+	if ( is_singular( 'nadlan_project' ) ) {
+		$pid = get_queried_object_id();
+		if ( $pid
+			&& nadlan_unit_journey_is_private_lab( $pid )
+			&& ! post_password_required( $pid ) ) {
+			$classes[] = 'nl-unit-v2-sandbox';
+		}
+	}
+	return array_values( array_unique( $classes ) );
+} );
+
+/* A password gives direct-link access; these query guards keep private v2
+ * sandboxes out of public catalogs, search, REST collections and sitemaps.
+ * They are deliberately meta-scoped so unrelated protected posts keep their
+ * existing WordPress behaviour. */
+if ( ! function_exists( 'nadlan_unit_journey_public_meta_query' ) ) {
+	function nadlan_unit_journey_public_meta_query( $existing = array() ) {
+		$private_exclusion = array(
+			'relation' => 'OR',
+			array(
+				'key'     => '_nadlan_private_unit_journey',
+				'compare' => 'NOT EXISTS',
+			),
+			array(
+				'key'     => '_nadlan_private_unit_journey',
+				'value'   => 'private-unit-journey-v2',
+				'compare' => '!=',
+			),
+		);
+		if ( empty( $existing ) ) {
+			return $private_exclusion;
+		}
+		return array(
+			'relation' => 'AND',
+			$existing,
+			$private_exclusion,
+		);
+	}
+}
+
+if ( ! function_exists( 'nadlan_unit_journey_query_may_discover_projects' ) ) {
+	/** True for public project/list/search queries, but never the direct singular lab. */
+	function nadlan_unit_journey_query_may_discover_projects( $query ) {
+		if ( ! $query instanceof WP_Query ) {
+			return false;
+		}
+		if ( $query->is_main_query() && $query->is_singular( 'nadlan_project' ) ) {
+			return false;
+		}
+		$post_type = $query->get( 'post_type' );
+		if ( 'nadlan_project' === $post_type || 'any' === $post_type ) {
+			return true;
+		}
+		if ( is_array( $post_type ) && in_array( 'nadlan_project', $post_type, true ) ) {
+			return true;
+		}
+		if ( $query->is_tax() ) {
+			$taxonomy = get_taxonomy( (string) $query->get( 'taxonomy' ) );
+			if ( $taxonomy && in_array( 'nadlan_project', (array) $taxonomy->object_type, true ) ) {
+				return true;
+			}
+		}
+		return $query->is_post_type_archive( 'nadlan_project' ) || $query->is_search();
+	}
+}
+
+add_action( 'pre_get_posts', function ( $query ) {
+	if ( ( is_admin() && ! wp_doing_ajax() )
+		|| $query->get( 'nadlan_include_private_unit_journey' )
+		|| $query->get( 'nadlan_private_visibility_applied' )
+		|| ! nadlan_unit_journey_query_may_discover_projects( $query ) ) {
+		return;
+	}
+	$query->set( 'meta_query', nadlan_unit_journey_public_meta_query( $query->get( 'meta_query' ) ) );
+	$query->set( 'nadlan_private_visibility_applied', true );
+}, 20 );
+
+add_filter( 'rest_nadlan_project_query', function ( $args, $request ) {
+	if ( ! nadlan_unit_journey_can_manage_private_labs() ) {
+		$args['meta_query'] = nadlan_unit_journey_public_meta_query(
+			isset( $args['meta_query'] ) ? $args['meta_query'] : array()
+		);
+		$args['nadlan_private_visibility_applied'] = true;
+	}
+	return $args;
+}, 20, 2 );
+
+/* Core /wp/v2/search can otherwise disclose a protected project's title,
+ * URL and subtype without ever touching the project REST collection. */
+add_filter( 'rest_post_search_query', function ( $args, $request ) {
+	if ( ! nadlan_unit_journey_can_manage_private_labs() ) {
+		$args['meta_query'] = nadlan_unit_journey_public_meta_query(
+			isset( $args['meta_query'] ) ? $args['meta_query'] : array()
+		);
+		$args['nadlan_private_visibility_applied'] = true;
+	}
+	return $args;
+}, 20, 2 );
+
+add_filter( 'rest_prepare_nadlan_project', function ( $response, $post, $request ) {
+	if ( $post instanceof WP_Post
+		&& nadlan_unit_journey_is_private_lab( $post->ID )
+		&& ! current_user_can( 'edit_post', $post->ID ) ) {
+		return new WP_Error(
+			'rest_post_invalid_id',
+			__( 'Invalid post ID.' ),
+			array( 'status' => 404 )
+		);
+	}
+	return $response;
+}, 20, 3 );
+
+add_filter( 'wp_sitemaps_posts_query_args', function ( $args, $post_type ) {
+	if ( 'nadlan_project' === $post_type ) {
+		$args['meta_query'] = nadlan_unit_journey_public_meta_query(
+			isset( $args['meta_query'] ) ? $args['meta_query'] : array()
+		);
+		$args['nadlan_private_visibility_applied'] = true;
+	}
+	return $args;
+}, 20, 2 );
+
+add_filter( 'wpseo_exclude_from_sitemap_by_post_ids', function ( $post_ids ) {
+	return array_values( array_unique( array_merge(
+		(array) $post_ids,
+		nadlan_unit_journey_private_project_ids()
+	) ) );
+} );
+
+/* Yoast's graph can re-create Article/WebPage nodes after the explicit schema
+ * callbacks above were removed. The private lab has no public graph. */
+add_filter( 'wpseo_json_ld_output', function ( $data ) {
+	return nadlan_unit_journey_is_private_lab() ? false : $data;
+}, 99 );
+
+foreach ( array(
+	'wpseo_metadesc',
+	'wpseo_opengraph_title',
+	'wpseo_opengraph_desc',
+	'wpseo_twitter_title',
+	'wpseo_twitter_description',
+) as $nadlan_private_head_filter ) {
+	add_filter( $nadlan_private_head_filter, function ( $value ) {
+		return nadlan_unit_journey_is_private_lab() ? '' : $value;
+	}, 99 );
+}
+
+/* Some special-project modules replace Yoast's canonical at priority 100.
+ * Privacy remains the final owner for the dedicated lab marker. */
+add_filter( 'wpseo_canonical', function ( $canonical ) {
+	return nadlan_unit_journey_is_private_lab() ? false : $canonical;
+}, PHP_INT_MAX );
+
+if ( ! function_exists( 'nadlan_unit_journey_id_from_public_url' ) ) {
+	/** Resolve only same-site URLs; used to make the core oEmbed endpoint opaque. */
+	function nadlan_unit_journey_id_from_public_url( $url ) {
+		$url       = esc_url_raw( (string) $url );
+		$url_parts = wp_parse_url( $url );
+		$home      = wp_parse_url( home_url( '/' ) );
+		if ( empty( $url_parts['host'] ) || empty( $home['host'] )
+			|| strtolower( $url_parts['host'] ) !== strtolower( $home['host'] ) ) {
+			return 0;
+		}
+		$post_id = (int) url_to_postid( $url );
+		if ( $post_id ) {
+			return $post_id;
+		}
+		$path  = trim( isset( $url_parts['path'] ) ? $url_parts['path'] : '', '/' );
+		$parts = array_values( array_filter( explode( '/', $path ) ) );
+		$slug  = $parts ? end( $parts ) : '';
+		$post  = $slug ? get_page_by_path( sanitize_title( $slug ), OBJECT, 'nadlan_project' ) : null;
+		return $post instanceof WP_Post ? (int) $post->ID : 0;
+	}
+}
+
+add_filter( 'rest_pre_dispatch', function ( $result, $server, $request ) {
+	if ( '/oembed/1.0/embed' !== $request->get_route() ) {
+		return $result;
+	}
+	$post_id = nadlan_unit_journey_id_from_public_url( $request->get_param( 'url' ) );
+	if ( $post_id && nadlan_unit_journey_is_private_lab( $post_id )
+		&& ! current_user_can( 'edit_post', $post_id ) ) {
+		return new WP_Error(
+			'oembed_invalid_url',
+			__( 'Not found.' ),
+			array( 'status' => 404 )
+		);
+	}
+	return $result;
+}, 20, 3 );
+
+add_action( 'template_redirect', function () {
+	$post_id = (int) get_queried_object_id();
+	if ( is_feed() && ! $post_id ) {
+		$post_id = absint( get_query_var( 'p' ) );
+		$slug    = (string) get_query_var( 'name' );
+		if ( '' === $slug ) {
+			$slug = (string) get_query_var( 'nadlan_project' );
+		}
+		if ( ! $post_id && '' !== $slug ) {
+			$feed_post = get_page_by_path( sanitize_title( $slug ), OBJECT, 'nadlan_project' );
+			$post_id   = $feed_post instanceof WP_Post ? (int) $feed_post->ID : 0;
+		}
+	}
+	if ( ( is_embed() || is_feed() ) && nadlan_unit_journey_is_private_lab( $post_id )
+		&& ! current_user_can( 'edit_post', $post_id ) ) {
+		nocache_headers();
+		wp_die(
+			esc_html__( 'Not found.' ),
+			esc_html__( 'Not found.' ),
+			array( 'response' => 404 )
+		);
+	}
+}, 0 );
+
+/* A private marker without a core post password is a broken two-factor gate,
+ * not permission to publish. Fail closed before wp_head/enqueues can expose
+ * the payload. Editors repair the object in wp-admin; front-end requests fail
+ * closed for every role while the password is missing. */
+add_action( 'template_redirect', function () {
+	$post_id = (int) get_queried_object_id();
+	$post    = $post_id ? get_post( $post_id ) : null;
+	if ( ! $post instanceof WP_Post
+		|| ! nadlan_unit_journey_is_private_lab( $post_id )
+		|| nadlan_unit_journey_private_lab_has_password( $post_id ) ) {
+		return;
+	}
+	nocache_headers();
+	header( 'X-Robots-Tag: noindex, nofollow, noarchive', true );
+	wp_die(
+		esc_html__( 'Not found.' ),
+		esc_html__( 'Not found.' ),
+		array( 'response' => 404 )
+	);
+}, -10 );
+
+/* Project modules enqueue globally on singular projects. Keep only the actual
+ * showroom dependencies for an unlocked v2 lab; no Leaflet, article modules,
+ * feature bars or walkthrough bundles should reach either locked HTML or the
+ * focused unit journey. */
+add_action( 'wp_enqueue_scripts', function () {
+	if ( ! nadlan_unit_journey_is_private_lab() ) {
+		return;
+	}
+	$handles = array(
+		'leaflet', 'nadlan-pjx', 'nadlan-pjx-js', 'nadlan-apl',
+		'nadlan-feature-bar', 'nlfc', 'nadlan-devlink',
+		'nadlan-milestones', 'nadlan-reviews', 'nlsdt',
+	);
+	foreach ( $handles as $handle ) {
+		wp_dequeue_style( $handle );
+		wp_deregister_style( $handle );
+		wp_dequeue_script( $handle );
+		wp_deregister_script( $handle );
+	}
+}, PHP_INT_MAX );
 
 if ( ! function_exists( 'nadlan_showroom_engine_weave' ) ) {
 	/**
@@ -640,6 +1136,9 @@ if ( ! function_exists( 'nadlan_showroom_engine_weave' ) ) {
    EVERY unit, no developer material needed - honest schematic label inside). */
 add_action( 'wp_footer', function () {
 	if ( ! is_singular( 'nadlan_project' ) || ! function_exists( 'nadlan_ifp_assets_html' ) ) { return; }
+	/* The private lab needs the schematic-tour provider after unlock, but the
+	 * locked password response must not receive walkthrough CSS/JS. */
+	if ( nadlan_unit_journey_is_private_lab() && post_password_required( get_queried_object_id() ) ) { return; }
 	echo nadlan_ifp_assets_html(); // phpcs:ignore
 } );
 
@@ -647,6 +1146,7 @@ add_action( 'wp_footer', function () {
    Google serves the right language. Only for siblings that exist and are published. */
 add_action( 'wp_head', function () {
 	if ( ! is_singular( 'nadlan_project' ) ) { return; }
+	if ( nadlan_unit_journey_is_private_lab() ) { return; }
 	/* project-lang.php (prio 3) owns the cluster now; this stays only as a
 	   fallback for a request where it did not print (one emitter, never two) */
 	if ( ! empty( $GLOBALS['nl_plang_printed'] ) ) { return; }

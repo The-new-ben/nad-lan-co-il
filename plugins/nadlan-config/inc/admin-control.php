@@ -412,6 +412,7 @@ if ( ! function_exists( 'nadlan_admin_control_write_card' ) ) {
 			$written[] = $key;
 		}
 		delete_transient( 'nadlan_sp_block_v3' );
+		delete_transient( 'nadlan_sp_block_v4' );
 		if ( function_exists( 'nadlan_auction_clear_rank_cache' ) ) {
 			nadlan_auction_clear_rank_cache();
 		}

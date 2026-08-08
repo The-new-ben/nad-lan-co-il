@@ -18,7 +18,7 @@
     projectKey: (qs.get("project") && SR.projects[qs.get("project")]) ? qs.get("project") : SR.config.default_project,
     unitId: qs.get("unit") || null,
     view: "3d", tab: "plan", filter: "all", light: "day", sunMin: 720,
-    favs: load("nl_favs", []), compare: [],
+    favs: normalizeIdList(load("nl_favs", [])), compare: [],
     mvReady: false,
     tool: null
   };
@@ -52,13 +52,79 @@
   function dirLabel(d) { var k = dirKey(d); return k ? t("dir_" + k) : (d || ""); }
   function statusLabel(s) { return t("status_" + s); }
   function roomsLabel(n) { return t("rooms_label", { n: n }); }
-  function viewText(u) { return u.view_key ? t(u.view_key) : (u.view || ""); }
+  function viewText(u) {
+    if (unitV2Enabled()) return unitV2View(u);
+    return u.view_key ? t(u.view_key) : (u.view || "");
+  }
   function area() { return (SR.areas && SR.areas[project().area]) || { map: { pins: [], project_pin: { x: 50, y: 50 }, coast_x: 16 }, spoke_groups: [], stats: [] }; }
   function spoke(id) { return (SR.spokes && SR.spokes[id]) || null; }
 
-  function load(k, d) { try { return JSON.parse(localStorage.getItem(k)) || d; } catch (e) { return d; } }
-  function save(k, v) { try { localStorage.setItem(k, JSON.stringify(v)); } catch (e) {} }
+  function engineStorage() {
+    /* The password lab must not write private names/URLs or cloned unit IDs
+       into the production origin's persistent buyer history. */
+    return unitV2Sandbox() ? window.sessionStorage : window.localStorage;
+  }
+  function load(k, d) { try { return JSON.parse(engineStorage().getItem(k)) || d; } catch (e) { return d; } }
+  function normalizeIdList(value) {
+    if (!Array.isArray(value)) return [];
+    return value.map(function (id) { return String(id); })
+      .filter(function (id, index, all) { return id && all.indexOf(id) === index; })
+      .slice(0, 100);
+  }
+  function save(k, v) { try { engineStorage().setItem(k, JSON.stringify(v)); } catch (e) {} }
+  function unitV2CompareStorageKey() {
+    return "nl_unit_compare_v2:" + encodeURIComponent(String(state.projectKey || "project"));
+  }
+  function validUnitV2CompareIds(value) {
+    var known = {};
+    units().forEach(function (u) { known[String(u.id)] = true; });
+    return normalizeIdList(value).filter(function (id) { return known[id]; }).slice(0, 3);
+  }
+  function loadUnitV2Compare() {
+    if (!unitV2Enabled()) return [];
+    try {
+      return validUnitV2CompareIds(JSON.parse(
+        window.sessionStorage.getItem(unitV2CompareStorageKey()) || "[]"
+      ));
+    } catch (e) {
+      return [];
+    }
+  }
+  function saveUnitV2Compare(ids) {
+    if (!unitV2Enabled()) return;
+    state.compare = validUnitV2CompareIds(ids);
+    try {
+      window.sessionStorage.setItem(
+        unitV2CompareStorageKey(),
+        JSON.stringify(state.compare)
+      );
+    } catch (e) {}
+  }
+  function prepareUnitV2Compare(current) {
+    var ordered = [String(current.id)]
+      .concat(validUnitV2CompareIds(state.compare), loadUnitV2Compare());
+    var ids = ordered.filter(function (id, index, all) {
+      return id && all.indexOf(id) === index && unit(id);
+    });
+
+    if (ids.length < 2) {
+      units().some(function (candidate) {
+        var id = String(candidate.id);
+        if (ids.indexOf(id) < 0) ids.push(id);
+        return ids.length >= 2;
+      });
+    }
+
+    saveUnitV2Compare(ids.slice(0, 3));
+    return state.compare.slice();
+  }
   function esc(s) { return String(s == null ? "" : s).replace(/[&<>"]/g, function (c) { return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]; }); }
+  function unitV2Enabled() {
+    return !!(SR.config.selected_unit_surface && SR.config.selected_unit_surface_v2);
+  }
+  function unitV2Sandbox() {
+    return unitV2Enabled() && SR.config.private_unit_journey_lab === true;
+  }
   function safeHttpUrl(url) {
     var s = String(url || "").trim();
     if (!s) return ""; // empty input must stay empty: new URL("", origin) is the homepage
@@ -119,8 +185,12 @@
         nrm: hn.map(function (n) { return String(parseFloat(n)); }).join(" ")
       };
     }
+    /* With neither an authored position nor a normalized direction there is no
+       truthful 3D face on which to place a unit. Inventory selection remains
+       available; the model must not quietly invent a west-facing hotspot. */
+    if (!dv) return null;
     var fh = parseFloat(project().floor_height_m) || 3.05, half = 13.2;
-    var v = dv || DIRV[u.dir] || [-1, 0], y = u.floor * fh + fh * 0.4;
+    var v = dv, y = u.floor * fh + fh * 0.4;
     return { pos: (v[0] * half).toFixed(2) + "m " + y.toFixed(2) + "m " + (v[1] * half).toFixed(2) + "m", nrm: v[0] + " 0 " + v[1] };
   }
   function orbitRadius(orbit, r) { var p = String(orbit).trim().split(/\s+/); if (p.length >= 3) p[2] = r + "m"; return p.join(" "); }
@@ -133,7 +203,13 @@
        them disappears (language/project switch rebuilds #nl-root) */
     if (SR.config.selected_unit_surface) {
       if (typeof destroyBeamMap === "function") destroyBeamMap();
-      if (state.tool && typeof finishUnitToolClose === "function") finishUnitToolClose(false);
+      if (state.tool && typeof finishUnitToolClose === "function") {
+        if (typeof normalizeUnitToolHistory === "function") normalizeUnitToolHistory();
+        finishUnitToolClose(false);
+      }
+      if (unitV2Enabled()) {
+        document.body.classList.remove("nl-unit-v2-active", "nl-unit-journey-active");
+      }
     }
     // The adopted unified map (#nlpjx-map) lives INSIDE nl-root next to the
     // theater; rescue it before innerHTML wipes it, re-adopt in afterRender().
@@ -141,16 +217,36 @@
     if (uni && ROOT.contains(uni)) { ROOT.insertAdjacentElement("afterend", uni); }
     document.documentElement.lang = state.lang;
     document.documentElement.dir = isRTL() ? "rtl" : "ltr";
-    document.title = (state.page === "home" ? t("home_gallery_title") : (projName() + " · " + t("brand_sub")));
+    if (unitV2Enabled() && state.page === "project") {
+      document.body.classList.add("nl-unit-v2-enabled");
+    }
+    if (unitV2Sandbox()) {
+      var labTitle = t("unit_lab_page_title", { project: projName() });
+      document.title = labTitle + " · " + t("brand");
+      var labHeading = document.getElementById("nl-unit-v2-page-title");
+      if (labHeading) labHeading.textContent = labTitle;
+    } else if (!unitV2Enabled()) {
+      document.title = (state.page === "home" ? t("home_gallery_title") : (projName() + " · " + t("brand_sub")));
+    }
     ROOT.className = "nl-app";
     ROOT.innerHTML = (state.page === "home")
       ? header() + homeMain() + footer()
-      : header() + secNav() + projectMain() + footer() + sticky() + compareTray();
+      : unitV2Sandbox()
+        ? header() + projectMainV2()
+        : header() + secNav() + projectMain() + footer() + sticky() + compareTray();
     afterRender();
   }
 
   /* ---- header + language bar ---- */
   function pageLangs() {
+    /* The private v2 sandbox is also the language acceptance surface. Its
+       switcher must expose every implemented locale even before sibling posts
+       exist; switchLang() safely falls back to an in-place query-param swap. */
+    if (unitV2Sandbox()) {
+      return ["he", "en", "fr", "ru", "ar"].filter(function (l) {
+        return !!I18N.langs[l];
+      });
+    }
     // On a project page show only languages that have a real sibling post (plus the
     // current one); never render a dead button. On the gallery, show all configured.
     var p = project(), langs = SR.config.languages;
@@ -164,11 +260,15 @@
     var p = project();
     return (state.page === "project" && p && p.lang_urls && p.lang_urls[l]) ? p.lang_urls[l] : "#";
   }
+  function homeHref() {
+    if (!unitV2Enabled()) return "home.html";
+    return safeHttpUrl(SR.config.home_url) || "/";
+  }
   function langBar() {
     // ONE switcher law (owner 2026-08-08): the server-rendered topbar
     // (.nlptop-l) owns language switching on WordPress project pages; a second
     // row in this header read as "the page has three language switchers".
-    if (document.querySelector(".nlptop-l")) { return ""; }
+    if (!unitV2Sandbox() && document.querySelector(".nlptop-l")) { return ""; }
     var langs = pageLangs();
     return '<div class="nl-langs" role="group" aria-label="language">' + langs.map(function (l) {
       return '<button class="nl-lang" data-act="lang" data-id="' + l + '" aria-pressed="' + (l === state.lang) + '">' + esc(l.toUpperCase()) + "</button>";
@@ -181,7 +281,7 @@
       ? '<div class="nl-nav__links"><a href="#projects" class="is-active">' + esc(t("nav_projects")) + '</a><a href="#areas">' + esc(t("nav_areas")) + '</a><a href="#list">' + esc(t("nav_list")) + "</a></div>"
       : "";
     return '<header class="nl-header"><div class="nl-wrap nl-header__row">' +
-      '<a class="nl-brand" href="home.html"><span class="nl-brand__mark">N</span><span><span class="nl-brand__name">' + esc(t("brand")) + '</span> <span class="nl-brand__sub">' + esc(t("brand_sub")) + "</span></span></a>" +
+      '<a class="nl-brand" href="' + esc(homeHref()) + '"><span class="nl-brand__mark">N</span><span><span class="nl-brand__name">' + esc(t("brand")) + '</span> <span class="nl-brand__sub">' + esc(t("brand_sub")) + "</span></span></a>" +
       '<nav class="nl-nav">' + nav + langBar() + "</nav></div></header>";
   }
 
@@ -197,6 +297,17 @@
   }
 
   /* ---- project page ---- */
+  function projectMainV2() {
+    /* The private lab measures one product journey, not the accumulated
+       editorial/project template. Keeping only the flagship theater and its
+       semantic inventory also removes unrelated sticky bars, horizontal
+       section scrollers and untranslated legacy modules from acceptance. */
+    return '<main class="nl-unit-v2-main" id="nl-unit-v2-main">' +
+      '<section class="nl-wrap" id="building">' + theater() + "</section>" +
+      '<section class="nl-sec nl-wrap" id="inventory">' + inventory() + "</section>" +
+      "</main>";
+  }
+
   function projectMain() {
     return "<main>" +
       '<section class="nl-sec nl-wrap" id="top">' + hero() + "</section>" +
@@ -247,6 +358,7 @@
     var p = project();
     var hots = units().map(function (u) {
       var pos = unitPos(u), cls = "nl-hot" + (u.status === "reserved" ? " nl-hot--reserved" : u.status === "sold" ? " nl-hot--sold" : "") + (u.recommended ? " nl-hot--rec" : "");
+      if (!pos) return "";
       return '<button slot="hotspot-' + esc(u.id) + '" data-position="' + pos.pos + '" data-normal="' + pos.nrm + '" data-visibility-attribute="visible" class="' + cls + '" data-act="select" data-id="' + esc(u.id) + '" aria-label="' + esc(unitTitleAria(u)) + '">' + esc(u.floor) + "</button>";
     }).join("");
     var orient = p.orientation || {};
@@ -259,7 +371,7 @@
       var cls = "nl-fsq" + (u.status === "reserved" ? " nl-fsq--reserved" : u.status === "sold" ? " nl-fsq--sold" : "");
       /* physical left/top, NOT inset-inline-start: tiles anchor to a photo, and the
          photo does not mirror in RTL - logical coords put units on the wrong tower */
-      return '<button class="' + cls + '" data-act="select" data-id="' + esc(u.id) + '" style="left:' + u.stage_x + "%;top:" + u.stage_y + "%;width:" + u.stage_w + "%;height:" + u.stage_h + '%" aria-label="' + esc(unitTitleAria(u)) + '"><b>' + esc(u.label) + "</b><span>" + esc(roomsLabel(u.rooms)) + "</span></button>";
+      return '<button class="' + cls + '" data-act="select" data-id="' + esc(u.id) + '" style="left:' + u.stage_x + "%;top:" + u.stage_y + "%;width:" + u.stage_w + "%;height:" + u.stage_h + '%" aria-label="' + esc(unitTitleAria(u)) + '"><b>' + esc(unitDisplayLabel(u)) + "</b><span>" + esc(roomsLabel(u.rooms)) + "</span></button>";
     }).join("");
     var facadeInner = "";
     if (p.facade_image) {
@@ -309,7 +421,16 @@
       dock +
     "</div>";
   }
-  function unitTitleAria(u) { return roomsLabel(u.rooms) + ", " + t("floor_label", { n: u.floor }) + ", " + dirLabel(u.dir) + ", " + statusLabel(u.status); }
+  function unitTitleAria(u) {
+    if (unitV2Enabled()) {
+      return t("unit_v2_identity", {
+        rooms: u.rooms,
+        floor: u.floor,
+        direction: unitV2Direction(u)
+      }) + ", " + statusLabel(u.status);
+    }
+    return roomsLabel(u.rooms) + ", " + t("floor_label", { n: u.floor }) + ", " + dirLabel(u.dir) + ", " + statusLabel(u.status);
+  }
 
   /* block 5 - slide-out panel (filled on select) */
   function panel() {
@@ -321,7 +442,7 @@
   function panelBody(u) {
     var fav = state.favs.indexOf(u.id) >= 0, cmp = state.compare.indexOf(u.id) >= 0, p = project();
     return '<div class="nl-panel__head"><div><span class="nl-badge" style="background:rgba(255,255,255,.08);color:#fff"><span class="nl-dot s-' + esc(u.status) + '"></span>' + esc(statusLabel(u.status)) + '</span>' +
-        '<h3 class="nl-panel__title" style="margin-top:8px">' + esc(roomsLabel(u.rooms)) + '</h3><div class="nl-muted" style="color:var(--theater-sub);font-size:13px;margin-top:3px">' + esc(projName()) + " · " + esc(dirLabel(u.dir)) + " · " + esc(u.label) + "</div></div>" +
+        '<h3 class="nl-panel__title" style="margin-top:8px">' + esc(roomsLabel(u.rooms)) + '</h3><div class="nl-muted" style="color:var(--theater-sub);font-size:13px;margin-top:3px">' + esc(projName()) + " · " + esc(dirLabel(u.dir)) + " · " + esc(unitDisplayLabel(u)) + "</div></div>" +
         '<div class="nl-panel__floor"><div style="color:#d8c79a;font-size:12px;font-weight:600">' + esc(t("panel_floor")) + '</div><b>' + esc(u.floor) + "</b>" +
         '<button class="nl-panel__close" data-act="close" aria-label="' + esc(t("btn_close")) + '">' + svg("close", 16) + "</button></div></div>" +
       '<div class="nl-grid2">' +
@@ -342,7 +463,7 @@
       '<button class="nl-btn nl-btn--gold nl-btn--block" style="margin-top:14px" data-act="rfp" data-id="' + esc(u.id) + '">' + esc(t("btn_rfp")) + "</button>" +
       (SR.config.brochure_endpoint && p.wp_id ? '<a class="nl-btn nl-btn--block" style="margin-top:9px;text-align:center" href="' + esc(SR.config.brochure_endpoint) + '?p=' + p.wp_id + '&u=' + encodeURIComponent(u.id) + '&lang=' + (state.lang === 'he' ? 'he' : 'en') + '" target="_blank" rel="noopener">' + esc(t("btn_brochure")) + "</a>" : "") +
       (SR.config.studio !== "off" ? '<button class="nl-btn nl-btn--block nl-btn--studio" style="margin-top:9px" data-act="studio" data-id="' + esc(u.id) + '">' + esc(t("nlst_open")) + "</button>" : "") +
-      '<button class="nl-btn nl-btn--accent nl-btn--block" style="margin-top:9px" data-act="scroll" data-id="inquiry">' + esc(t("btn_inquire")) + " · " + esc(t("unit_short", { label: u.label, floor: u.floor })) + "</button>";
+      '<button class="nl-btn nl-btn--accent nl-btn--block" style="margin-top:9px" data-act="scroll" data-id="inquiry">' + esc(t("btn_inquire")) + " · " + esc(t("unit_short", { label: unitDisplayLabel(u), floor: u.floor })) + "</button>";
   }
   function stat(k, v) { return '<div class="nl-stat"><div class="k">' + esc(k) + '</div><div class="v">' + esc(v) + "</div></div>"; }
   function sunLine(u) {
@@ -364,7 +485,7 @@
   /* per-apartment WhatsApp share: the deep link opens THIS unit selected. */
   function waShareUrl(u) {
     var url = location.origin + location.pathname + "?project=" + encodeURIComponent(state.projectKey) + "&unit=" + encodeURIComponent(u.id) + "&lang=" + encodeURIComponent(state.lang);
-    var msg = projName() + " · " + t("unit_short", { label: u.label, floor: u.floor }) + " · " + roomsLabel(u.rooms) + "\n" + url;
+    var msg = projName() + " · " + t("unit_short", { label: unitDisplayLabel(u), floor: u.floor }) + " · " + roomsLabel(u.rooms) + "\n" + url;
     return "https://wa.me/?text=" + encodeURIComponent(msg);
   }
   /* est. monthly payment (the number every buyer computes anyway): 70%
@@ -420,13 +541,16 @@
     return fpMarkup(u);
   }
 
-  /* recently viewed (cross-project, localStorage): the multi-session buyer
-     resumes in one tap. Current selection is filtered out at render time. */
+  /* Recently viewed is persistent across public projects. In the private lab,
+     the same UI is isolated to sessionStorage and disappears with the session. */
   function recentStrip() {
     var rec = load("nl_recent", []).filter(function (r) { return r && r.u && !(r.p === state.projectKey && r.u === state.unitId); }).slice(0, 5);
     if (!rec.length) return "";
     var items = rec.map(function (r) {
-      var label = esc(r.n || "") + " · " + esc(t("unit_short", { label: r.l, floor: r.f }));
+      var storedLabel = unitV2Enabled()
+        ? t("unit_v2_marker", { floor: r.f })
+        : r.l;
+      var label = esc(r.n || "") + " · " + esc(t("unit_short", { label: storedLabel, floor: r.f }));
       return r.p === state.projectKey
         ? '<button class="nl-recent__it" data-act="select" data-id="' + esc(r.u) + '" type="button">' + label + "</button>"
         : '<a class="nl-recent__it" href="' + esc(r.url || "#") + '">' + label + "</a>";
@@ -436,7 +560,7 @@
   function recordRecent(u) {
     try {
       var rec = load("nl_recent", []).filter(function (r) { return r && !(r.p === state.projectKey && r.u === u.id); });
-      rec.unshift({ p: state.projectKey, u: u.id, l: u.label, f: u.floor, r: u.rooms, n: String(projName()).split(" - ")[0],
+      rec.unshift({ p: state.projectKey, u: u.id, l: unitDisplayLabel(u), f: u.floor, r: u.rooms, n: String(projName()).split(" - ")[0],
         url: location.pathname + "?project=" + encodeURIComponent(state.projectKey) + "&unit=" + encodeURIComponent(u.id) + "&lang=" + encodeURIComponent(state.lang) });
       save("nl_recent", rec.slice(0, 6));
       var w = document.getElementById("nl-recentwrap"); if (w) w.innerHTML = recentStrip();
@@ -448,6 +572,25 @@
     var list = filtered();
     var cards = list.map(function (u) {
       var fav = state.favs.indexOf(u.id) >= 0;
+      if (unitV2Enabled()) {
+        return '<article class="nl-ucard' + (u.id === state.unitId ? " is-active" : "") +
+          (u.status === "sold" ? " is-sold" : "") + '" data-id="' + esc(u.id) + '">' +
+          '<button class="nl-ucard__select" type="button" data-act="select" data-id="' +
+            esc(u.id) + '" aria-label="' + esc(unitTitleAria(u)) + '">' +
+            '<div class="nl-ucard__top"><span style="display:inline-flex;align-items:center;gap:6px">' +
+              '<span class="nl-dot s-' + esc(u.status) + '"></span>' +
+              esc(statusLabel(u.status)) + '</span><span>' +
+              esc(t("floor_label", { n: u.floor })) + '</span></div>' +
+            '<div class="nl-ucard__rooms">' + esc(roomsLabel(u.rooms)) + '</div>' +
+            '<div class="nl-muted" style="font-size:13px">' +
+              esc(u.sqm + " " + t("sqm_unit")) + " · " +
+              esc(unitV2Direction(u)) + '</div>' +
+          '</button>' +
+          '<button class="nl-ucard__fav' + (fav ? " is-on" : "") +
+            '" type="button" data-act="fav" data-id="' + esc(u.id) +
+            '" aria-label="' + esc(t("btn_save")) + '">' + svg("heart", 18) + '</button>' +
+        '</article>';
+      }
       return '<div class="nl-ucard' + (u.id === state.unitId ? " is-active" : "") + (u.status === "sold" ? " is-sold" : "") + '" data-act="select" data-id="' + esc(u.id) + '" tabindex="0" role="button" aria-label="' + esc(unitTitleAria(u)) + '">' +
         '<button class="nl-ucard__fav' + (fav ? " is-on" : "") + '" data-act="fav" data-id="' + esc(u.id) + '" aria-label="' + esc(t("btn_save")) + '">' + svg("heart", 18) + "</button>" +
         '<div class="nl-ucard__top"><span style="display:inline-flex;align-items:center;gap:6px"><span class="nl-dot s-' + esc(u.status) + '"></span>' + esc(statusLabel(u.status)) + "</span><span>" + esc(t("floor_label", { n: u.floor })) + "</span></div>" +
@@ -507,7 +650,11 @@
           fetch(SR.config.cotour_endpoint + "?room=" + encodeURIComponent(cotour.room)).then(function (r) { return r.json(); }).then(function (d) {
             if (!d || !d.ok || !d.state) return;
             var st = d.state, mv = document.getElementById("nl-mv");
-            if (st.u && st.u !== lastU) { lastU = st.u; selectUnit(st.u, true); }
+            if (st.u && st.u !== lastU) {
+              lastU = st.u;
+              if (unitV2Enabled()) selectUnit(st.u, true, document.getElementById("nl-mv"));
+              else selectUnit(st.u, true);
+            }
             if (st.o && st.o !== lastO && mv) { lastO = st.o; mv.cameraOrbit = st.o; }
             if (st.s != null && parseInt(st.s, 10) !== state.sunMin) { state.sunMin = parseInt(st.s, 10) || 720; applyLight(); }
             else if (st.s == null && st.l && st.l !== state.light) { state.sunMin = ({ day: 720, dusk: 1110, night: 1200 })[st.l] || 720; applyLight(); }
@@ -948,20 +1095,29 @@
     return top;
   }
   function compareTray() {
+    /* v2 owns comparison inside its body-level dialog. Never render the
+       legacy fixed tray, even when the private session has selected units. */
+    if (unitV2Enabled()) return "";
     if (!state.compare.length) return '<div class="nl-compare" id="nl-compare"></div>';
     var top = topsisTop(state.compare);
-    var items = state.compare.map(function (id) { var u = unit(id); return u ? '<span class="nl-cmpitem' + (id === top && state.compare.length > 1 ? " is-top" : "") + '">' + (id === top && state.compare.length > 1 ? '<i class="nl-cmptop">★ ' + esc(t("compare_top")) + "</i>" : "") + '<b>' + esc(u.label) + "</b> " + esc(roomsLabel(u.rooms)) + " · " + esc(u.sqm + t("sqm_unit")) + ' <button data-act="compare" data-id="' + esc(id) + '" aria-label="remove">×</button></span>' : ""; }).join("");
+    var items = state.compare.map(function (id) { var u = unit(id); return u ? '<span class="nl-cmpitem' + (id === top && state.compare.length > 1 ? " is-top" : "") + '">' + (id === top && state.compare.length > 1 ? '<i class="nl-cmptop">★ ' + esc(t("compare_top")) + "</i>" : "") + '<b>' + esc(unitDisplayLabel(u)) + "</b> " + esc(roomsLabel(u.rooms)) + " · " + esc(u.sqm + t("sqm_unit")) + ' <button data-act="compare" data-id="' + esc(id) + '" aria-label="' + esc(unitV2Enabled() ? t("unit_compare_remove") : "remove") + '">×</button></span>' : ""; }).join("");
     return '<div class="nl-compare is-on" id="nl-compare"><div class="nl-wrap nl-compare__row"><b>' + esc(t("compare_title")) + '</b><div class="nl-compare__items">' + items + '</div><button class="nl-btn nl-btn--sm nl-btn--ghost" data-act="compare-clear" style="color:#cfc8b6;border-color:rgba(242,236,222,.2)">' + esc(t("compare_clear")) + '</button><button class="nl-btn nl-btn--sm nl-btn--accent" data-act="scroll" data-id="inquiry">' + esc(t("compare_inquire")) + "</button></div></div>";
   }
 
   /* footer */
   function footer() {
-    var projLinks = SR.order.map(function (k) { return '<li><a href="project.html?project=' + esc(k) + '">' + esc(t(SR.projects[k].name_key)) + "</a></li>"; }).join("");
+    var projLinks = SR.order.map(function (k) {
+      var p = SR.projects[k];
+      var href = unitV2Enabled()
+        ? (safeHttpUrl(p.url) || homeHref())
+        : ("project.html?project=" + k);
+      return '<li><a href="' + esc(href) + '">' + esc(t(p.name_key)) + "</a></li>";
+    }).join("");
     // ONE switcher law (owner 2026-08-08): when the server topbar owns language
     // switching, this footer column was the page's THIRD language switcher.
     var langLinks = document.querySelector(".nlptop-l") ? "" : pageLangs().map(function (l) { return '<li><a href="' + esc(langHref(l)) + '" data-act="lang" data-id="' + l + '">' + esc(t("lang_" + l)) + "</a></li>"; }).join("");
     return '<footer class="nl-footer"><div class="nl-wrap"><div class="nl-footer__row">' +
-      '<div><a class="nl-brand" href="home.html"><span class="nl-brand__mark">N</span><span class="nl-brand__name" style="color:#efe7d6">' + esc(t("brand")) + '</span></a><p style="color:#b8b1a2;font-size:14px;margin-top:12px;max-width:34ch">' + esc(t("footer_tagline")) + "</p></div>" +
+      '<div><a class="nl-brand" href="' + esc(homeHref()) + '"><span class="nl-brand__mark">N</span><span class="nl-brand__name" style="color:#efe7d6">' + esc(t("brand")) + '</span></a><p style="color:#b8b1a2;font-size:14px;margin-top:12px;max-width:34ch">' + esc(t("footer_tagline")) + "</p></div>" +
       "<div><h5>" + esc(t("footer_col_projects")) + "</h5><ul>" + projLinks + "</ul></div>" +
       "<div><h5>" + esc(t("footer_col_areas")) + '</h5><ul><li><a href="#world">' + esc(t("area_sde_dov")) + "</a></li></ul></div>" +
       "<div><h5>" + esc(t("footer_col_langs")) + "</h5><ul>" + langLinks + "</ul></div>" +
@@ -1019,7 +1175,10 @@
       document.body.classList.add("nl-has-engine");
       dtInit();
       updateFormCtx(); updateSticky();
-      if (state.unitId && unit(state.unitId)) selectUnit(state.unitId, true);
+      if (state.unitId && unit(state.unitId)) {
+        if (unitV2Enabled()) selectUnit(state.unitId, true, document.getElementById("nl-mv"));
+        else selectUnit(state.unitId, true);
+      }
       else if (SR.config.selected_unit_surface) clearUnitScreen();
       var form = document.getElementById("nl-form");
       if (form) form.addEventListener("submit", onSubmit);
@@ -1119,23 +1278,34 @@
     var count = Math.max(1, Math.min(8, parseFloat(u.rooms) || 4));
     var sqm = Math.max(30, parseInt(u.sqm, 10) || 85);
     var bedrooms = Math.max(0, Math.ceil(count) - 1);
+    /* A protected room is a material safety/purchase fact, not a layout
+       convention.  Only label one when the unit payload explicitly confirms
+       it; older showroom payloads do not carry this datum. */
+    var hasMamad = u.protected_room === true || u.protected_room === 1 ||
+      u.protected_room === "1" || u.has_mamad === true || u.has_mamad === 1 ||
+      u.has_mamad === "1";
     var salonA = sqm * 0.40, bedA = bedrooms ? (sqm * 0.42) / bedrooms : 0;
-    var k = dirKey(u.dir), wall = "n";
-    if (k.indexOf("south") >= 0) wall = "s"; else if (k.indexOf("east") >= 0) wall = "e"; else if (k.indexOf("west") >= 0) wall = "w";
+    var k = dirKey(u.dir), wall = "";
+    if (k && k.indexOf("south") >= 0) wall = "s";
+    else if (k && k.indexOf("north") >= 0) wall = "n";
+    else if (k && k.indexOf("east") >= 0) wall = "e";
+    else if (k && k.indexOf("west") >= 0) wall = "w";
     var out = [{ key: "salon", label: t("fp_salon"), w: +Math.sqrt(salonA * 1.4).toFixed(1), d: +Math.sqrt(salonA / 1.4).toFixed(1), win: wall }];
-    out.push({ key: "kitchen", label: t("fp_kitchen"), w: 3.4, d: +Math.max(2.4, sqm * 0.12 / 3.4).toFixed(1), win: "n" });
+    out.push({ key: "kitchen", label: t("fp_kitchen"), w: 3.4, d: +Math.max(2.4, sqm * 0.12 / 3.4).toFixed(1), win: wall });
     for (var i = 1; i <= bedrooms; i++) {
-      var isMamad = i === bedrooms;
+      var isMamad = hasMamad && i === bedrooms;
       out.push({ key: "bed" + i, label: isMamad ? t("fp_mamad") : (i === 1 ? t("fp_master") : t("fp_bed") + " " + i),
         w: +Math.sqrt(bedA * 1.15).toFixed(1), d: +Math.sqrt(bedA / 1.15).toFixed(1),
-        win: isMamad ? "" : (wall === "n" ? "e" : wall) });
+        win: isMamad || !wall ? "" : (wall === "n" ? "e" : wall) });
     }
     var bal = parseInt(u.balcony, 10) || 0;
     if (bal > 0) out.push({ key: "balcony", label: t("fp_balcony") + " (" + bal + " " + t("sqm_unit") + ")", w: +Math.sqrt(bal * 2.2).toFixed(1), d: +Math.sqrt(bal / 2.2).toFixed(1), win: "open" });
     return out;
   }
   function fpMarkup(u) {
-    return '<div class="nlifp" data-rooms="' + esc(JSON.stringify(fpRooms(u))) + '">' +
+    return '<div class="nlifp" data-rooms="' + esc(JSON.stringify(fpRooms(u))) + '" ' +
+      'data-to-template="' + esc(t("fp_to_room")) + '" ' +
+      'data-area-template="' + esc(t("fp_area_approx")) + '">' +
       '<div class="nlifp-stage" tabindex="0" role="application" aria-label="' + esc(t("fp_aria")) + '">' +
       '<div class="nlifp-cam"><div class="nlifp-world"></div></div>' +
       '<div class="nlifp-hud"><span class="nlifp-room"></span><span class="nlifp-hint">' + esc(t("fp_hint")) + "</span></div>" +
@@ -1328,7 +1498,11 @@
   });
   ROOT.addEventListener("keydown", function (e) {
     var node = e.target.closest('[role="button"][data-act="select"]');
-    if (node && (e.key === "Enter" || e.key === " ")) { e.preventDefault(); selectUnit(node.dataset.id); }
+    if (node && (e.key === "Enter" || e.key === " ")) {
+      e.preventDefault();
+      if (unitV2Enabled()) selectUnit(node.dataset.id, false, node);
+      else selectUnit(node.dataset.id);
+    }
     if (e.key === "Escape") closePanel();
   });
 
@@ -1353,10 +1527,21 @@ var UNIT_MQ = window.matchMedia(
   "(max-width:900px) and (max-height:500px) and (pointer:coarse)"
 );
 
+/* v2 deliberately uses a wider phone/tablet boundary and a landscape escape
+   hatch. This is JS-owned so only one complete layout exists in the DOM. */
+var UNIT_V2_MQ = window.matchMedia(
+  "(max-width:900px), " +
+  "(max-width:1024px) and (max-height:600px)"
+);
+
 var unitSurface = {
   source: null,
   beamMap: null,
-  beamHost: null
+  beamHost: null,
+  beamRetry: 0,
+  beamReadyHandler: null,
+  mode: null,
+  viewportSyncPending: false
 };
 
 function setInert(el, on) {
@@ -1368,11 +1553,17 @@ function setInert(el, on) {
 
 function preciseGeo() {
   var g = project().geo || {};
+  var rawLat = String(g.lat == null ? "" : g.lat).trim();
+  var rawLng = String(g.lng == null ? "" : g.lng).trim();
   var lat = Number(g.lat);
   var lng = Number(g.lng);
+  var valid = rawLat !== "" && rawLng !== "" &&
+    isFinite(lat) && isFinite(lng) &&
+    Math.abs(lat) <= 90 && Math.abs(lng) <= 180 &&
+    !(lat === 0 && lng === 0);
 
   return {
-    ok: isFinite(lat) && isFinite(lng) && g.confidence !== "city",
+    ok: valid && g.confidence !== "city",
     lat: lat,
     lng: lng
   };
@@ -1382,7 +1573,7 @@ function unitBearing(u) {
   var key = dirKey(u.dir);
   return key && Object.prototype.hasOwnProperty.call(DIR_BEARING, key)
     ? DIR_BEARING[key]
-    : 0;
+    : null;
 }
 
 function beamPoint(bearing, radius) {
@@ -1407,12 +1598,22 @@ function beamPath(bearing) {
   ].join(" ");
 }
 
+function beamShapeMarkup(bearing, gradientId, centerFill) {
+  var direction = bearing == null
+    ? '<circle cx="50" cy="50" r="31" fill="none" stroke="#f3d98c" ' +
+        'stroke-opacity=".58" stroke-width="1.4" stroke-dasharray="4 5"/>'
+    : '<path d="' + beamPath(bearing) + '" fill="url(#' + gradientId + ')"/>';
+  return direction + '<circle cx="50" cy="50" r="4.2" fill="' + centerFill + '" ' +
+    'stroke="#f3d98c" stroke-width="1.4"/>';
+}
+
 function renderBeamScene(u) {
   var view = viewText(u) || dirLabel(u.dir);
   var bearing = unitBearing(u);
 
   return (
-    '<figure class="nl-unit-beam" data-bearing="' + bearing + '">' +
+    '<figure class="nl-unit-beam' + (bearing == null ? ' is-direction-unknown' : '') +
+      '" data-bearing="' + (bearing == null ? '' : bearing) + '">' +
       '<div class="nl-unit-beam__map" data-role="beam-map" ' +
         'role="img" aria-label="' +
         esc(t("unit_beam_title", { view: view })) + '"></div>' +
@@ -1424,9 +1625,7 @@ function renderBeamScene(u) {
             '<stop offset="1" stop-color="#f4df9d" stop-opacity=".18"/>' +
           '</linearGradient>' +
         '</defs>' +
-        '<path d="' + beamPath(bearing) + '" fill="url(#nl-unit-beam-gold)"/>' +
-        '<circle cx="50" cy="50" r="4.2" fill="#1b1a17" ' +
-          'stroke="#f3d98c" stroke-width="1.4"/>' +
+        beamShapeMarkup(bearing, "nl-unit-beam-gold", "#1b1a17") +
       '</svg>' +
       '<figcaption>' +
         '<strong>' + esc(t("unit_beam_title", { view: view })) + '</strong>' +
@@ -1437,12 +1636,27 @@ function renderBeamScene(u) {
 }
 
 function destroyBeamMap() {
+  if (unitSurface.beamRetry) clearTimeout(unitSurface.beamRetry);
+  if (unitSurface.beamReadyHandler) {
+    document.removeEventListener("nlpjx:map", unitSurface.beamReadyHandler);
+  }
   if (unitSurface.beamMap) {
     try { unitSurface.beamMap.remove(); } catch (e) {}
   }
 
   unitSurface.beamMap = null;
   unitSurface.beamHost = null;
+  unitSurface.beamRetry = 0;
+  unitSurface.beamReadyHandler = null;
+}
+
+function restoreMapAttributionTabbing(scope) {
+  if (!scope) return;
+  scope.querySelectorAll(
+    ".mapboxgl-ctrl-attrib a, .mapboxgl-ctrl-logo, .mapboxgl-ctrl-attrib-button"
+  ).forEach(function (link) {
+    if (link.getAttribute("tabindex") === "-1") link.removeAttribute("tabindex");
+  });
 }
 
 function mountBeamScene(scope) {
@@ -1455,8 +1669,47 @@ function mountBeamScene(scope) {
   if (!host || !figure) return;
 
   /* A city centroid is suitable for an area map, not for a truthful window. */
-  if (!geo.ok || !SR.config.mapbox_token || !window.mapboxgl) {
+  if (!geo.ok || !SR.config.mapbox_token) {
     figure.classList.add("is-schematic");
+    return;
+  }
+
+  /* The engine and the deferred map library race on cold/deep-linked loads.
+     Keep the current host pending for a bounded four seconds instead of
+     permanently mislabelling a valid map as schematic. No DOM observer and no
+     stale-host mount: every retry verifies both identity and connectivity. */
+  if (!window.mapboxgl) {
+    if (!unitV2Enabled()) {
+      figure.classList.add("is-schematic");
+      return;
+    }
+    var attempts = 0;
+    unitSurface.beamHost = host;
+    figure.classList.add("is-map-pending");
+
+    var retry = function () {
+      if (unitSurface.beamHost !== host || !document.contains(host)) return;
+      if (window.mapboxgl) {
+        mountBeamScene(scope);
+        return;
+      }
+      attempts += 1;
+      if (attempts >= 40) {
+        figure.classList.remove("is-map-pending");
+        figure.classList.add("is-schematic");
+        unitSurface.beamRetry = 0;
+        return;
+      }
+      unitSurface.beamRetry = setTimeout(retry, 100);
+    };
+
+    unitSurface.beamReadyHandler = function () {
+      if (unitSurface.beamHost === host && document.contains(host) && window.mapboxgl) {
+        mountBeamScene(scope);
+      }
+    };
+    document.addEventListener("nlpjx:map", unitSurface.beamReadyHandler, { once: true });
+    unitSurface.beamRetry = setTimeout(retry, 100);
     return;
   }
 
@@ -1465,7 +1718,9 @@ function mountBeamScene(scope) {
 
     var map = new window.mapboxgl.Map({
       container: host,
-      style: "mapbox://styles/mapbox/light-v11",
+      style: figure.classList.contains("nl-unit-beam--v2")
+        ? "mapbox://styles/mapbox/dark-v11"
+        : "mapbox://styles/mapbox/light-v11",
       center: [geo.lng, geo.lat],
       zoom: 15.4,
       pitch: 0,
@@ -1479,8 +1734,10 @@ function mountBeamScene(scope) {
 
     map.once("load", function () {
       if (unitSurface.beamMap !== map) return;
+      figure.classList.remove("is-map-pending", "is-schematic");
       figure.classList.add("is-map-ready");
       try { map.resize(); } catch (e) {}
+      if (unitV2Enabled()) restoreMapAttributionTabbing(figure);
     });
 
     map.once("error", function () {
@@ -1555,6 +1812,167 @@ function unitQuickActionsMarkup(u) {
   );
 }
 
+/* v2 never falls back to CMS-authored free text for directional chrome. A
+   project may still carry a Hebrew `view` string, so non-HE locales derive a
+   truthful, translated description from the normalized compass enum. */
+function unitV2Direction(u) {
+  var key = dirKey(u.dir);
+  return key ? t("dir_" + key) : t("unit_direction_unknown");
+}
+
+function unitV2Label(u) {
+  var raw = String(u.label == null ? "" : u.label);
+  return state.lang === "he"
+    ? raw
+    : t("unit_v2_marker", { floor: u.floor });
+}
+
+function unitDisplayLabel(u) {
+  return unitV2Enabled() ? unitV2Label(u) : u.label;
+}
+
+function unitV2View(u) {
+  if (u.view_key) {
+    var translated = t(u.view_key);
+    if (
+      translated && translated !== u.view_key &&
+      (state.lang === "he" || !/[\u0590-\u05ff]/.test(translated))
+    ) return translated;
+  }
+  return unitV2Direction(u);
+}
+
+function renderBeamSceneV2(u) {
+  var view = unitV2View(u);
+  var bearing = unitBearing(u);
+  /* Keep the compact caption opposite the cone so the directional evidence is
+     never hidden by its own call-to-action. South-facing cones get a top
+     caption; north/east/west and unknown states use the bottom edge. */
+  var captionClass = bearing != null && bearing > 90 && bearing < 270
+    ? " is-caption-top"
+    : " is-caption-bottom";
+
+  return (
+    '<figure class="nl-unit-beam nl-unit-beam--v2' +
+      (bearing == null ? ' is-direction-unknown' : '') + captionClass +
+      '" data-bearing="' +
+      (bearing == null ? '' : bearing) + '">' +
+      '<div class="nl-unit-beam__map" data-role="beam-map" role="img" ' +
+        'aria-label="' + esc(t("unit_beam_title", { view: view })) + '"></div>' +
+      '<svg class="nl-unit-beam__svg" viewBox="0 0 100 100" ' +
+        'preserveAspectRatio="none" aria-hidden="true">' +
+        '<defs>' +
+          '<linearGradient id="nl-unit-beam-gold" x1="0" y1="1" x2="0" y2="0">' +
+            '<stop offset="0" stop-color="#c9a34f" stop-opacity=".92"/>' +
+            '<stop offset="1" stop-color="#f4df9d" stop-opacity=".12"/>' +
+          '</linearGradient>' +
+        '</defs>' +
+        beamShapeMarkup(bearing, "nl-unit-beam-gold", "#11130f") +
+      '</svg>' +
+      '<figcaption>' +
+        '<button class="nl-unit-beam__open" type="button" data-act="unit-tool" ' +
+          'data-tool="area" aria-label="' + esc(t("unit_area_open_aria")) + '">' +
+           '<strong>' + esc(t("unit_beam_title", { view: view })) + '</strong>' +
+           '<span>' + esc(t("unit_beam_open_short")) + '</span>' +
+         '</button>' +
+      '</figcaption>' +
+    '</figure>'
+  );
+}
+
+function unitV2FactsMarkup(u) {
+  var fav = state.favs.indexOf(u.id) >= 0;
+
+  return (
+    '<section class="nl-unit-journey__facts" aria-labelledby="nl-selected-unit-title">' +
+      '<div class="nl-unit-journey__identity">' +
+        '<span class="nl-unit-summary__status">' + esc(statusLabel(u.status)) + '</span>' +
+        '<h3 id="nl-selected-unit-title">' +
+          esc(t("unit_v2_identity", {
+            rooms: u.rooms,
+            floor: u.floor,
+            direction: unitV2Direction(u)
+          })) +
+        '</h3>' +
+      '</div>' +
+      '<dl class="nl-unit-facts">' +
+        '<div><dt>' + esc(t("panel_floor")) + '</dt><dd>' + esc(u.floor) + '</dd></div>' +
+        '<div><dt>' + esc(t("panel_rooms")) + '</dt><dd>' + esc(u.rooms) + '</dd></div>' +
+        '<div><dt>' + esc(t("panel_sqm")) + '</dt><dd>' +
+          esc(u.sqm + " " + t("sqm_unit")) + '</dd></div>' +
+        '<div><dt>' + esc(t("panel_balcony")) + '</dt><dd>' +
+          esc(u.balcony ? u.balcony + " " + t("sqm_unit") : "–") + '</dd></div>' +
+      '</dl>' +
+      '<div class="nl-unit-quick" role="group" aria-label="' +
+        esc(t("unit_quick_actions_v2")) + '">' +
+        '<button type="button" data-act="fav" data-id="' + esc(u.id) + '" ' +
+          'aria-pressed="' + (fav ? "true" : "false") + '">' +
+          svg("heart", 17) + esc(fav ? t("btn_saved") : t("btn_save")) +
+        '</button>' +
+        '<button type="button" data-act="share" data-id="' + esc(u.id) + '">' +
+          svg("share", 17) + esc(t("btn_share")) +
+        '</button>' +
+        '<a href="' + esc(waShareUrl(u)) + '" target="_blank" rel="noopener">' +
+          svg("wa", 17) + esc(t("btn_wa_share")) +
+        '</a>' +
+        '<button type="button" data-act="unit-tool" data-tool="compare">' +
+          svg("scale", 17) + esc(t("unit_compare_open")) +
+        '</button>' +
+      '</div>' +
+      '<button class="nl-unit-contact" type="button" data-act="unit-tool" ' +
+        'data-tool="contact">' + esc(t("unit_contact_cta")) + '</button>' +
+    '</section>'
+  );
+}
+
+function unitV2DoorsMarkup(u) {
+  var view = unitV2View(u);
+  var doors = [
+    ["plan", "unit_door_plan", "grid"],
+    ["view", "unit_door_view", "eye"],
+    ["tour", "unit_door_tour", "play"],
+    ["studio", "unit_door_studio", "cube"]
+  ].filter(function (door) {
+    return door[0] !== "studio" || SR.config.studio !== "off";
+  });
+
+  return (
+    '<nav class="nl-unit-journey__doors nl-unit-doors" aria-label="' +
+      esc(t("unit_tools_aria")) + '">' +
+      doors.map(function (door) {
+        var copy = door[0] === "view"
+          ? t(door[1], { view: view })
+          : t(door[1]);
+        var shortCopy = t(door[1] + "_short");
+        return (
+          '<button class="nl-unit-door nl-unit-door--' + door[0] + '" type="button" ' +
+            'data-act="unit-tool" data-tool="' + door[0] + '">' +
+            '<span class="nl-unit-door__icon" aria-hidden="true">' + svg(door[2], 22) + '</span>' +
+            '<span class="nl-unit-door__copy nl-unit-door__copy--long">' + esc(copy) + '</span>' +
+            '<span class="nl-unit-door__copy nl-unit-door__copy--short">' + esc(shortCopy) + '</span>' +
+          '</button>'
+        );
+      }).join("") +
+    '</nav>'
+  );
+}
+
+function unitV2ScreenMarkup(u) {
+  return (
+    '<header class="nl-unit-journey__head">' +
+      '<button class="nl-unit-summary__back" type="button" data-act="unit-back">' +
+        esc(t("unit_back_building")) +
+      '</button>' +
+      '<p><strong>' + esc(t("unit_selected")) + '</strong><span>' +
+        esc(t("unit_v2_instruction")) + '</span></p>' +
+    '</header>' +
+    '<section class="nl-unit-journey__beam" aria-label="' +
+      esc(t("unit_beam_region")) + '">' + renderBeamSceneV2(u) + '</section>' +
+    unitV2FactsMarkup(u) +
+    unitV2DoorsMarkup(u)
+  );
+}
+
 function unitSummaryMarkup(u, mode) {
   return (
     '<div class="nl-unit-summary nl-unit-summary--' + esc(mode) + '">' +
@@ -1565,7 +1983,7 @@ function unitSummaryMarkup(u, mode) {
         '<div>' +
           '<span>' + esc(t("unit_selected")) + '</span>' +
           '<h3 id="nl-selected-unit-title">' +
-            esc(roomsLabel(u.rooms) + " · " + u.label) +
+            esc(roomsLabel(u.rooms) + " · " + unitDisplayLabel(u)) +
           '</h3>' +
         '</div>' +
         '<span class="nl-unit-summary__status">' +
@@ -1584,7 +2002,164 @@ function unitSummaryMarkup(u, mode) {
   );
 }
 
+function unitV2TopOffset() {
+  var max = 0;
+  ["#wpadminbar", ".nlptop", ".nl-header", "#nl-secnav"].forEach(function (selector) {
+    var el = document.querySelector(selector);
+    if (!el) return;
+    var cs = window.getComputedStyle(el);
+    var rect = el.getBoundingClientRect();
+    if (cs.position === "fixed" && rect.top <= 2) {
+      max = Math.max(max, rect.bottom);
+    } else if (cs.position === "sticky") {
+      var stickyTop = parseFloat(cs.top);
+      if (!isFinite(stickyTop)) stickyTop = max;
+      max = Math.max(max, stickyTop + rect.height);
+    }
+  });
+  return Math.max(0, max) + 8;
+}
+
+function alignUnitV2Theater(instant, singlePass) {
+  var theaterEl = ROOT.querySelector(".nl-theater");
+  if (!theaterEl) return;
+  var alignmentToken = (Number(theaterEl.dataset.nlAlignToken) || 0) + 1;
+  theaterEl.dataset.nlAlignToken = String(alignmentToken);
+
+  function snap() {
+    if (!document.contains(theaterEl) ||
+        Number(theaterEl.dataset.nlAlignToken) !== alignmentToken) return;
+    var offset = unitV2TopOffset();
+    theaterEl.style.setProperty("--nl-unit-v2-top", offset + "px");
+    var top = Math.max(
+      0,
+      theaterEl.getBoundingClientRect().top + window.pageYOffset - offset
+    );
+    /* Deterministic visibility is more valuable than a scroll animation here.
+       A second layout pass can move normal-flow content during rotation. */
+    window.scrollTo({ top: top, left: 0, behavior: "auto" });
+  }
+
+  snap();
+  if (singlePass) return;
+  requestAnimationFrame(function () {
+    snap();
+    requestAnimationFrame(snap);
+  });
+  window.setTimeout(snap, instant ? 80 : 140);
+}
+
+function renderUnitScreenV2(u, options) {
+  options = options || {};
+
+  var mobile = UNIT_V2_MQ.matches;
+  var mode = mobile ? "mobile" : "desktop";
+  var theaterEl = ROOT.querySelector(".nl-theater");
+  var screen = document.getElementById("nl-unit-screen");
+  var panelEl = document.getElementById("nl-panel");
+  var panelBodyEl = document.getElementById("nl-panel-body");
+
+  if (!u || !theaterEl || !screen || !panelEl || !panelBodyEl) return;
+
+  /* Breakpoint changes replace one complete subtree. The inactive v1 panel is
+     emptied first, so IDs such as nl-selected-unit-title can never coexist. */
+  destroyBeamMap();
+  theaterEl.classList.add("nl-unit-v2-transitioning");
+  theaterEl.style.setProperty("--nl-unit-v2-top", unitV2TopOffset() + "px");
+  panelBodyEl.innerHTML = panelEmpty();
+  panelEl.classList.remove("is-open", "nl-panel--unit-summary");
+  panelEl.hidden = true;
+  setInert(panelEl, true);
+
+  screen.hidden = true;
+  screen.innerHTML = "";
+  screen.className = "nl-unit-screen nl-unit-screen--v2";
+  screen.setAttribute("data-mode", mode);
+  screen.setAttribute("role", "region");
+  screen.setAttribute("aria-labelledby", "nl-selected-unit-title");
+  screen.innerHTML = unitV2ScreenMarkup(u);
+  screen.hidden = false;
+  setInert(screen, false);
+
+  theaterEl.classList.remove(
+    "nl-theater--unit-selected",
+    "nl-theater--unit-v2-mobile",
+    "nl-theater--unit-v2-desktop"
+  );
+  theaterEl.classList.add(
+    "nl-theater--unit-v2",
+    "nl-theater--unit-v2-" + mode
+  );
+  document.body.classList.add("nl-unit-v2-active", "nl-unit-journey-active");
+  unitSurface.mode = mode;
+
+  mountBeamScene(screen);
+  requestAnimationFrame(function () {
+    if (options.align) {
+      alignUnitV2Theater(!!options.instant);
+      requestAnimationFrame(function () {
+        theaterEl.classList.remove("nl-unit-v2-transitioning");
+      });
+    } else {
+      theaterEl.classList.remove("nl-unit-v2-transitioning");
+    }
+  });
+
+  if (options.focus) {
+    requestAnimationFrame(function () {
+      var back = screen.querySelector('[data-act="unit-back"]');
+      if (back) back.focus({ preventScroll: true });
+    });
+  }
+}
+
+function clearUnitScreenV2() {
+  var theaterEl = ROOT.querySelector(".nl-theater");
+  var screen = document.getElementById("nl-unit-screen");
+  var panelEl = document.getElementById("nl-panel");
+  var panelBodyEl = document.getElementById("nl-panel-body");
+
+  destroyBeamMap();
+  unitSurface.mode = null;
+  unitSurface.viewportSyncPending = false;
+  document.body.classList.remove("nl-unit-v2-active", "nl-unit-journey-active");
+
+  if (theaterEl) {
+    theaterEl.classList.remove(
+      "nl-theater--unit-selected",
+      "nl-theater--unit-v2",
+      "nl-theater--unit-v2-mobile",
+      "nl-theater--unit-v2-desktop",
+      "nl-unit-v2-transitioning"
+    );
+    theaterEl.style.removeProperty("--nl-unit-v2-top");
+  }
+
+  if (screen) {
+    screen.hidden = true;
+    screen.innerHTML = "";
+    screen.className = "nl-unit-screen";
+    screen.removeAttribute("data-mode");
+    screen.removeAttribute("role");
+    screen.removeAttribute("aria-labelledby");
+    setInert(screen, true);
+  }
+
+  /* A v2 page never revives the legacy selected-unit panel. The building and
+     its hotspots remain the sole pre-selection surface. */
+  if (panelEl) {
+    panelEl.classList.remove("is-open", "nl-panel--unit-summary");
+    panelEl.hidden = true;
+    setInert(panelEl, true);
+  }
+  if (panelBodyEl) panelBodyEl.innerHTML = panelEmpty();
+}
+
 function renderUnitScreen(u, options) {
+  if (unitV2Enabled()) {
+    renderUnitScreenV2(u, options);
+    return;
+  }
   options = options || {};
 
   var mobile = UNIT_MQ.matches;
@@ -1647,6 +2222,10 @@ function renderUnitScreen(u, options) {
 }
 
 function clearUnitScreen() {
+  if (unitV2Enabled()) {
+    clearUnitScreenV2();
+    return;
+  }
   var theaterEl = ROOT.querySelector(".nl-theater");
   var screen = document.getElementById("nl-unit-screen");
   var panelEl = document.getElementById("nl-panel");
@@ -1672,15 +2251,130 @@ function clearUnitScreen() {
 }
 
 function syncUnitBreakpoint() {
+  if (unitV2Enabled()) return;
   var selected = unit(state.unitId);
   if (selected) renderUnitScreen(selected, { focus: false, scroll: false });
   else clearUnitScreen();
+}
+
+function syncUnitV2Breakpoint(options) {
+  if (!unitV2Enabled()) return;
+  options = options || {};
+  unitSurface.viewportSyncPending = false;
+  var selected = unit(state.unitId);
+  if (selected) {
+    var active = document.activeElement;
+    var oldScreen = document.getElementById("nl-unit-screen");
+    var focusTool = oldScreen && oldScreen.contains(active) && active.dataset
+      ? active.dataset.tool
+      : "";
+    var focusAct = oldScreen && oldScreen.contains(active) && active.dataset
+      ? active.dataset.act
+      : "";
+    var focusId = oldScreen && oldScreen.contains(active) && active.dataset
+      ? active.dataset.id
+      : "";
+
+    renderUnitScreenV2(selected, {
+      focus: false,
+      align: options.align !== false,
+      instant: true
+    });
+
+    if (focusTool || focusAct) {
+      requestAnimationFrame(function () {
+        var screen = document.getElementById("nl-unit-screen");
+        var replacement = focusTool
+          ? screen && screen.querySelector('[data-tool="' + cssesc(focusTool) + '"]')
+          : screen && screen.querySelector(
+              '[data-act="' + cssesc(focusAct) + '"]' +
+              (focusId ? '[data-id="' + cssesc(focusId) + '"]' : "")
+            );
+        if (replacement) replacement.focus({ preventScroll: true });
+      });
+    }
+  }
+  else clearUnitScreenV2();
 }
 
 if (UNIT_MQ.addEventListener) {
   UNIT_MQ.addEventListener("change", syncUnitBreakpoint);
 } else {
   UNIT_MQ.addListener(syncUnitBreakpoint);
+}
+
+var unitV2ViewportTimer = 0;
+function unitV2ExpectedMode() {
+  return UNIT_V2_MQ.matches ? "mobile" : "desktop";
+}
+
+function unitV2ViewportStateMismatch() {
+  var expected = unitV2ExpectedMode();
+  var screen = document.getElementById("nl-unit-screen");
+  var theaterEl = ROOT.querySelector(".nl-theater--unit-v2");
+  return !screen || screen.hidden || screen.getAttribute("data-mode") !== expected ||
+    unitSurface.mode !== expected || !theaterEl ||
+    !theaterEl.classList.contains("nl-theater--unit-v2-" + expected);
+}
+
+function handleUnitV2BreakpointChange() {
+  if (!unitV2Enabled() || !state.unitId) return;
+  if (state.tool) {
+    unitSurface.viewportSyncPending = true;
+    return;
+  }
+  syncUnitV2Breakpoint();
+}
+
+if (UNIT_V2_MQ.addEventListener) {
+  UNIT_V2_MQ.addEventListener("change", handleUnitV2BreakpointChange);
+} else {
+  UNIT_V2_MQ.addListener(handleUnitV2BreakpointChange);
+}
+
+function scheduleUnitV2ViewportSync() {
+  if (!unitV2Enabled() || !state.unitId) return;
+  if (state.tool) {
+    unitSurface.viewportSyncPending = true;
+    clearTimeout(unitV2ViewportTimer);
+    unitV2ViewportTimer = 0;
+    return;
+  }
+  var theaterEl = ROOT.querySelector(".nl-theater--unit-v2");
+  if (theaterEl) theaterEl.classList.add("nl-unit-v2-transitioning");
+  clearTimeout(unitV2ViewportTimer);
+  unitV2ViewportTimer = setTimeout(function () {
+    unitV2ViewportTimer = 0;
+    if (unitV2Enabled() && state.unitId && state.tool) {
+      unitSurface.viewportSyncPending = true;
+    } else if (unitV2Enabled() && state.unitId) {
+      syncUnitV2Breakpoint();
+    }
+  }, 48);
+}
+
+function flushUnitV2ViewportSyncAfterTool() {
+  clearTimeout(unitV2ViewportTimer);
+  unitV2ViewportTimer = 0;
+
+  if (!unitV2Enabled() || !state.unitId) {
+    unitSurface.viewportSyncPending = false;
+    return false;
+  }
+
+  var needsSync = unitSurface.viewportSyncPending || unitV2ViewportStateMismatch();
+  unitSurface.viewportSyncPending = false;
+  if (!needsSync) return false;
+
+  /* Replace the inactive scene subtree once, without touching URL/history.
+     The close lifecycle aligns it after the transition frame has completed. */
+  syncUnitV2Breakpoint({ align: false });
+  return true;
+}
+window.addEventListener("resize", scheduleUnitV2ViewportSync, { passive: true });
+window.addEventListener("orientationchange", scheduleUnitV2ViewportSync, { passive: true });
+if (window.visualViewport) {
+  window.visualViewport.addEventListener("resize", scheduleUnitV2ViewportSync, { passive: true });
 }
 
 /*
@@ -1698,9 +2392,23 @@ var unitTool = {
   dialog: null,
   cleanup: null,
   returnFocus: null,
+  returnKind: null,
   historyMarker: null,
-  pendingFocusRestore: true
+  pendingFocusRestore: true,
+  scrollY: 0,
+  closing: false,
+  fromHistory: false
 };
+
+function unitToolFocusable(dialog) {
+  return Array.prototype.slice.call(dialog.querySelectorAll(
+    'a[href], button:not([disabled]), input:not([disabled]), textarea:not([disabled]), ' +
+    'select:not([disabled]), [tabindex]:not([tabindex="-1"])'
+  )).filter(function (el) {
+    return !el.hidden && el.getAttribute("aria-hidden") !== "true" &&
+      el.getClientRects().length > 0;
+  });
+}
 
 function ensureUnitToolDialog() {
   if (unitTool.dialog) return unitTool.dialog;
@@ -1720,6 +2428,43 @@ function ensureUnitToolDialog() {
     if (button) closeUnitTool(true, false);
   });
 
+  /* Native dialog.close() can also be called by browser integrations or
+     future tools. It must never leave ROOT inert or the page scroll-locked. */
+  dialog.addEventListener("close", function () {
+    if (state.tool) closeUnitTool(true, false);
+  });
+
+  dialog.addEventListener("keydown", function (event) {
+    if (!unitV2Enabled() || !state.tool) return;
+    if (event.key === "Escape") {
+      event.preventDefault();
+      closeUnitTool(true, false);
+      return;
+    }
+    if (event.key !== "Tab") return;
+
+    var focusable = unitToolFocusable(dialog);
+    if (!focusable.length) {
+      event.preventDefault();
+      dialog.focus({ preventScroll: true });
+      return;
+    }
+
+    var first = focusable[0];
+    var last = focusable[focusable.length - 1];
+    var active = document.activeElement;
+    if (!dialog.contains(active)) {
+      event.preventDefault();
+      (event.shiftKey ? last : first).focus({ preventScroll: true });
+    } else if (event.shiftKey && active === first) {
+      event.preventDefault();
+      last.focus({ preventScroll: true });
+    } else if (!event.shiftKey && active === last) {
+      event.preventDefault();
+      first.focus({ preventScroll: true });
+    }
+  });
+
   unitTool.dialog = dialog;
   return dialog;
 }
@@ -1728,10 +2473,369 @@ function toolTitle(kind) {
   if (kind === "plan") return t("tab_plan");
   if (kind === "view") return t("tab_view");
   if (kind === "tour") return t("tab_tour");
+  if (kind === "area") return t("unit_area_title");
+  if (kind === "contact") return t("unit_contact_title");
+  if (kind === "compare") return t("unit_compare_title");
+  if (kind === "studio") return t("unit_studio_title");
   return t("unit_selected");
 }
 
+function designerToolUrl(u) {
+  var configured = u.designer_url || project().designer_url ||
+    SR.config.designer_url || SR.config.studio_url || "";
+  var base = safeHttpUrl(configured);
+
+  if (!base) {
+    try {
+      base = new URL("/tour/designer/", SR.config.home_url || location.origin).href;
+    } catch (e) {
+      base = "";
+    }
+  }
+
+  if (!base) return "";
+  try {
+    var url = new URL(base);
+    url.searchParams.set("project", state.projectKey);
+    url.searchParams.set("unit", u.id);
+    url.searchParams.set("lang", state.lang);
+    url.searchParams.set("embed", "1");
+    return safeHttpUrl(url.href);
+  } catch (e2) {
+    return safeHttpUrl(base);
+  }
+}
+
+function unitAreaExternalUrl() {
+  var geo = preciseGeo();
+  if (!geo.ok) return "";
+  return "https://www.google.com/maps/search/?api=1&query=" +
+    encodeURIComponent(geo.lat + "," + geo.lng);
+}
+
+function unitV2CompareHasValue(value) {
+  return value !== null && value !== undefined && String(value).trim() !== "";
+}
+
+function unitV2CompareOptionLabel(u) {
+  var label = unitV2Label(u) || t("unit_v2_marker", { floor: u.floor });
+  return t("unit_compare_option", {
+    label: label,
+    rooms: u.rooms,
+    floor: u.floor
+  });
+}
+
+function unitV2CompareOptionsMarkup(selectedId, selectedIds, optional) {
+  var blank = optional
+    ? '<option value="">' + esc(t("unit_compare_optional_empty")) + '</option>'
+    : "";
+  return blank + units().map(function (u) {
+    var id = String(u.id);
+    var selected = id === String(selectedId || "");
+    var disabled = !selected && selectedIds.indexOf(id) >= 0;
+    return '<option value="' + esc(id) + '"' +
+      (selected ? ' selected' : '') +
+      (disabled ? ' disabled' : '') + '>' +
+      esc(unitV2CompareOptionLabel(u)) + '</option>';
+  }).join("");
+}
+
+function unitV2CompareFact(u, key) {
+  var raw;
+  var value;
+
+  if (key === "floor") {
+    raw = u.floor;
+    value = unitV2CompareHasValue(raw) ? String(raw) : t("unit_compare_not_provided");
+  } else if (key === "rooms") {
+    raw = u.rooms;
+    value = unitV2CompareHasValue(raw)
+      ? roomsLabel(raw)
+      : t("unit_compare_not_provided");
+  } else if (key === "sqm") {
+    raw = u.sqm;
+    value = unitV2CompareHasValue(raw)
+      ? String(raw) + " " + t("sqm_unit")
+      : t("unit_compare_not_provided");
+  } else if (key === "balcony") {
+    raw = u.balcony;
+    value = unitV2CompareHasValue(raw)
+      ? String(raw) + " " + t("sqm_unit")
+      : t("unit_compare_not_provided");
+  } else {
+    raw = u.status;
+    value = unitV2CompareHasValue(raw)
+      ? statusLabel(raw)
+      : t("unit_compare_not_provided");
+  }
+
+  return {
+    raw: unitV2CompareHasValue(raw) ? String(raw).trim().toLowerCase() : "__missing__",
+    value: value
+  };
+}
+
+function unitV2CompareSummaryMarkup(ids) {
+  var compared = ids.map(unit).filter(Boolean).slice(0, 3);
+  var fields = [
+    ["floor", t("panel_floor")],
+    ["rooms", t("panel_rooms")],
+    ["sqm", t("panel_sqm")],
+    ["balcony", t("panel_balcony")],
+    ["status", t("unit_compare_status")]
+  ];
+  var count = Math.max(1, compared.length);
+  var head = '<div class="nl-unit-compare-row nl-unit-compare-row--head" role="row">' +
+    '<span role="columnheader">' + esc(t("unit_compare_field")) + '</span>' +
+    compared.map(function (u) {
+      return '<strong role="columnheader">' + esc(unitV2Label(u)) + '</strong>';
+    }).join("") + '</div>';
+
+  var rows = fields.map(function (field) {
+    var facts = compared.map(function (u) { return unitV2CompareFact(u, field[0]); });
+    var values = facts.map(function (fact) { return fact.raw; });
+    var different = values.length > 1 && values.some(function (value) {
+      return value !== values[0];
+    });
+    return '<div class="nl-unit-compare-row' + (different ? ' is-different' : '') +
+      '" role="row">' +
+      '<span class="nl-unit-compare-row__label" role="rowheader">' +
+        esc(field[1]) +
+        (different
+          ? '<small>' + esc(t("unit_compare_difference")) + '</small>'
+          : "") +
+      '</span>' +
+      facts.map(function (fact) {
+        return '<span class="nl-unit-compare-row__value" role="cell">' +
+          esc(fact.value) + '</span>';
+      }).join("") +
+    '</div>';
+  }).join("");
+
+  return '<div class="nl-unit-compare-summary" data-role="compare-summary" ' +
+    'role="table" aria-label="' + esc(t("unit_compare_summary_aria")) + '" ' +
+    'aria-live="polite" style="--nl-unit-compare-count:' + count + '">' +
+    head + rows + '</div>';
+}
+
+function unitV2CompareToolMarkup(current) {
+  var ids = prepareUnitV2Compare(current);
+  if (units().length < 2) {
+    return '<div class="nl-unit-compare-tool" data-role="compare-tool">' +
+      '<p class="nl-unit-compare-tool__empty">' +
+        esc(t("unit_compare_unavailable")) + '</p></div>';
+  }
+
+  var slotLabels = [
+    t("unit_compare_slot_current"),
+    t("unit_compare_slot_second"),
+    t("unit_compare_slot_third")
+  ];
+  var slots = slotLabels.map(function (label, index) {
+    var selectedId = ids[index] || "";
+    var inputId = "nl-unit-compare-slot-" + index;
+    return '<label class="nl-unit-compare-slot" for="' + inputId + '">' +
+      '<span>' + esc(label) + '</span>' +
+      '<select id="' + inputId + '" data-compare-slot="' + index + '"' +
+        (index === 0 ? ' disabled aria-disabled="true"' : '') + '>' +
+        unitV2CompareOptionsMarkup(selectedId, ids, index === 2) +
+      '</select></label>';
+  }).join("");
+
+  return '<div class="nl-unit-compare-tool" data-role="compare-tool">' +
+    '<p class="nl-unit-compare-tool__intro">' + esc(t("unit_compare_intro")) + '</p>' +
+    '<div class="nl-unit-compare-slots" role="group" aria-label="' +
+      esc(t("unit_compare_slots_aria")) + '">' + slots + '</div>' +
+    unitV2CompareSummaryMarkup(ids) +
+  '</div>';
+}
+
+function mountUnitV2Compare(scope, current) {
+  var root = scope.querySelector('[data-role="compare-tool"]');
+  if (!root || units().length < 2) return function () {};
+
+  var controller = new AbortController();
+  var signal = controller.signal;
+
+  function selectedIdsFromControls() {
+    var ids = [String(current.id)];
+    root.querySelectorAll("[data-compare-slot]").forEach(function (select, index) {
+      if (index === 0) return;
+      var id = String(select.value || "");
+      if (id && unit(id) && ids.indexOf(id) < 0) ids.push(id);
+    });
+    if (ids.length < 2) {
+      units().some(function (candidate) {
+        var id = String(candidate.id);
+        if (ids.indexOf(id) < 0) ids.push(id);
+        return ids.length >= 2;
+      });
+    }
+    return ids.slice(0, 3);
+  }
+
+  function renderSelection(ids) {
+    saveUnitV2Compare(ids);
+    root.querySelectorAll("[data-compare-slot]").forEach(function (select, index) {
+      var selectedId = state.compare[index] || "";
+      select.innerHTML = unitV2CompareOptionsMarkup(
+        selectedId,
+        state.compare,
+        index === 2
+      );
+      select.value = selectedId;
+    });
+    var summary = root.querySelector('[data-role="compare-summary"]');
+    if (summary) summary.outerHTML = unitV2CompareSummaryMarkup(state.compare);
+  }
+
+  root.querySelectorAll("[data-compare-slot]").forEach(function (select) {
+    select.addEventListener("change", function () {
+      renderSelection(selectedIdsFromControls());
+    }, { signal: signal });
+  });
+
+  return function () { controller.abort(); };
+}
+
+function unitToolMarkupV2(kind, u) {
+  var content = "";
+
+  if (kind === "plan") {
+    var plan = safeHttpUrl(u.plan);
+    content = plan
+      ? '<div class="nl-unit-plan-tool">' +
+          '<div class="nl-unit-plan-tool__viewport" data-role="plan-viewport" ' +
+            'tabindex="0" aria-label="' + esc(t("unit_plan_canvas_aria")) + '">' +
+            '<img class="nl-unit-plan-tool__image" data-role="plan-image" ' +
+              'src="' + esc(plan) + '" alt="' + esc(t("unit_plan_alt", {
+                floor: u.floor,
+                rooms: u.rooms
+              })) + '" draggable="false">' +
+          '</div>' +
+          '<div class="nl-unit-plan-tool__controls" role="group" aria-label="' +
+            esc(t("unit_plan_controls")) + '">' +
+            '<button type="button" data-plan-zoom="out" aria-label="' +
+              esc(t("unit_plan_zoom_out")) + '">−</button>' +
+            '<button type="button" data-plan-zoom="reset">' +
+              esc(t("unit_plan_reset")) + '</button>' +
+            '<button type="button" data-plan-zoom="in" aria-label="' +
+              esc(t("unit_plan_zoom_in")) + '">+</button>' +
+          '</div>' +
+          '<p class="nl-unit-plan-tool__hint">' + esc(t("unit_plan_hint")) + '</p>' +
+        '</div>'
+      : '<p class="nl-unit-tool__empty">' + esc(t("plan_coming")) + '</p>';
+  }
+
+  if (kind === "view") {
+    content =
+      '<div class="nl-window-tool">' +
+        '<div class="nl-window-tool__map" data-role="window-map" tabindex="0" ' +
+          'aria-label="' + esc(t("unit_window_canvas_aria")) + '"></div>' +
+        '<p class="nl-window-tool__fallback" data-role="window-fallback" hidden></p>' +
+        '<div class="nl-window-tool__controls">' +
+          '<button type="button" data-turn="-30" aria-label="' +
+            esc(t("winview_turn_left")) + '">↶</button>' +
+          '<span>' + esc(t("floor_label", { n: u.floor })) +
+            " · " + esc(unitV2Direction(u)) + '</span>' +
+          '<button type="button" data-turn="30" aria-label="' +
+            esc(t("winview_turn_right")) + '">↷</button>' +
+        '</div>' +
+        '<p class="nl-window-tool__note">' + esc(t("unit_window_hint")) + '</p>' +
+      '</div>';
+  }
+
+  if (kind === "tour") {
+    var tour = safeHttpUrl(u.tour_url || project().tour_url);
+    content = tour
+      ? '<div class="nl-unit-tool__tour nl-unit-tool__tour--fill">' +
+          '<iframe src="' + esc(tour) + '" title="' + esc(t("tab_tour")) + '" ' +
+            'allow="fullscreen; gyroscope; accelerometer" allowfullscreen></iframe>' +
+          '<a href="' + esc(tour) + '" target="_blank" rel="noopener">' +
+            esc(t("tour_open")) + '</a>' +
+        '</div>'
+      : '<div class="nl-unit-tool__tour nl-unit-tool__tour--fill">' +
+          fpMarkup(u) +
+        '</div>';
+  }
+
+  if (kind === "studio") {
+    var designer = designerToolUrl(u);
+    content = designer
+      ? '<div class="nl-unit-tool__studio">' +
+          '<iframe src="' + esc(designer) + '" title="' +
+            esc(t("unit_studio_iframe_title")) + '" ' +
+            'allow="fullscreen; clipboard-write" allowfullscreen></iframe>' +
+          '<a href="' + esc(designer) + '" target="_blank" rel="noopener">' +
+            esc(t("unit_studio_external")) + '</a>' +
+        '</div>'
+      : '<p class="nl-unit-tool__empty">' + esc(t("unit_studio_unavailable")) + '</p>';
+  }
+
+  if (kind === "area") {
+    var external = unitAreaExternalUrl();
+    content =
+      '<div class="nl-unit-area-tool">' +
+        '<div class="nl-unit-area-tool__map" data-role="area-map" tabindex="0" ' +
+          'aria-label="' + esc(t("unit_area_map_aria")) + '"></div>' +
+        '<p class="nl-unit-area-tool__fallback" data-role="area-fallback" hidden></p>' +
+        '<div class="nl-unit-area-tool__copy"><strong>' +
+          esc(t("unit_beam_title", { view: unitV2View(u) })) + '</strong><span>' +
+          esc(t("unit_area_note")) + '</span></div>' +
+        (external
+          ? '<a class="nl-unit-area-tool__external" href="' + esc(external) +
+              '" target="_blank" rel="noopener">' + esc(t("unit_area_external")) + '</a>'
+          : "") +
+      '</div>';
+  }
+
+  if (kind === "contact") {
+    content =
+      '<div class="nl-unit-contact-tool">' +
+        '<p>' + esc(t("unit_contact_intro", {
+          floor: u.floor,
+          rooms: u.rooms,
+          sqm: u.sqm
+        })) + '</p>' +
+        '<form class="nl-unit-contact-form" data-role="unit-contact-form" novalidate>' +
+          '<label><span>' + esc(t("form_name")) + '</span>' +
+            '<input name="name" autocomplete="name" required></label>' +
+          '<label><span>' + esc(t("form_phone")) + '</span>' +
+            '<input name="phone" inputmode="tel" autocomplete="tel"></label>' +
+          '<label><span>' + esc(t("form_email")) + '</span>' +
+            '<input name="email" type="email" inputmode="email" autocomplete="email"></label>' +
+          '<label><span>' + esc(t("unit_contact_message")) + '</span>' +
+            '<textarea name="message" rows="3"></textarea></label>' +
+          '<label class="nl-unit-contact-form__consent">' +
+            '<input name="consent" type="checkbox" required> <span>' +
+              esc(t("form_consent")) + '</span></label>' +
+          '<button type="submit">' + esc(t("unit_contact_submit")) + '</button>' +
+          '<div class="nl-unit-contact-form__feedback" data-role="contact-feedback" ' +
+            'role="status" aria-live="polite" hidden></div>' +
+        '</form>' +
+      '</div>';
+  }
+
+  if (kind === "compare") {
+    content = unitV2CompareToolMarkup(u);
+  }
+
+  return (
+    '<div class="nl-unit-tool__frame">' +
+      '<header class="nl-unit-tool__head">' +
+        '<button type="button" data-act="unit-tool-back">' +
+          esc(t("unit_tool_back")) +
+        '</button>' +
+        '<h2 id="nl-unit-tool-title">' + esc(toolTitle(kind)) + '</h2>' +
+      '</header>' +
+      '<div class="nl-unit-tool__body">' + content + '</div>' +
+    '</div>'
+  );
+}
+
 function unitToolMarkup(kind, u) {
+  if (unitV2Enabled()) return unitToolMarkupV2(kind, u);
   var content = "";
 
   if (kind === "plan") {
@@ -1787,16 +2891,316 @@ function unitToolMarkup(kind, u) {
   );
 }
 
-function openUnitTool(kind, u, trigger) {
+function mountPlanTool(scope) {
+  var viewport = scope.querySelector('[data-role="plan-viewport"]');
+  var image = scope.querySelector('[data-role="plan-image"]');
+  if (!viewport || !image) return function () {};
+
+  var controller = new AbortController();
+  var signal = controller.signal;
+  var scale = 1;
+  var x = 0;
+  var y = 0;
+  var pointers = {};
+  var dragX = 0;
+  var dragY = 0;
+  var pinchDistance = 0;
+  var pinchScale = 1;
+
+  viewport.style.touchAction = "none";
+
+  function pointerValues() {
+    return Object.keys(pointers).map(function (key) { return pointers[key]; });
+  }
+
+  function distance(a, b) {
+    var dx = a.x - b.x;
+    var dy = a.y - b.y;
+    return Math.sqrt(dx * dx + dy * dy);
+  }
+
+  function apply() {
+    image.style.transform = "translate3d(" + x.toFixed(1) + "px," +
+      y.toFixed(1) + "px,0) scale(" + scale.toFixed(3) + ")";
+  }
+
+  function setScale(next) {
+    scale = Math.max(1, Math.min(4, next));
+    if (scale === 1) { x = 0; y = 0; }
+    apply();
+  }
+
+  function reset() {
+    scale = 1;
+    x = 0;
+    y = 0;
+    apply();
+  }
+
+  viewport.addEventListener("pointerdown", function (event) {
+    pointers[event.pointerId] = { x: event.clientX, y: event.clientY };
+    var values = pointerValues();
+    if (values.length === 1) {
+      dragX = event.clientX;
+      dragY = event.clientY;
+    } else if (values.length === 2) {
+      pinchDistance = distance(values[0], values[1]) || 1;
+      pinchScale = scale;
+    }
+    try { viewport.setPointerCapture(event.pointerId); } catch (e) {}
+    event.preventDefault();
+  }, { signal: signal });
+
+  viewport.addEventListener("pointermove", function (event) {
+    if (!pointers[event.pointerId]) return;
+    pointers[event.pointerId] = { x: event.clientX, y: event.clientY };
+    var values = pointerValues();
+
+    if (values.length >= 2) {
+      setScale(pinchScale * (distance(values[0], values[1]) / pinchDistance));
+    } else if (values.length === 1) {
+      x += event.clientX - dragX;
+      y += event.clientY - dragY;
+      dragX = event.clientX;
+      dragY = event.clientY;
+      apply();
+    }
+    event.preventDefault();
+  }, { signal: signal });
+
+  function release(event) {
+    delete pointers[event.pointerId];
+    var values = pointerValues();
+    if (values.length === 1) {
+      dragX = values[0].x;
+      dragY = values[0].y;
+    }
+    try { viewport.releasePointerCapture(event.pointerId); } catch (e) {}
+  }
+
+  viewport.addEventListener("pointerup", release, { signal: signal });
+  viewport.addEventListener("pointercancel", release, { signal: signal });
+
+  viewport.addEventListener("wheel", function (event) {
+    event.preventDefault();
+    setScale(scale + (event.deltaY < 0 ? 0.25 : -0.25));
+  }, { passive: false, signal: signal });
+
+  viewport.addEventListener("keydown", function (event) {
+    var handled = true;
+    if (event.key === "+" || event.key === "=") setScale(scale + 0.25);
+    else if (event.key === "-") setScale(scale - 0.25);
+    else if (event.key === "0" || event.key === "Home") reset();
+    else if (event.key === "ArrowLeft") { x -= 24; apply(); }
+    else if (event.key === "ArrowRight") { x += 24; apply(); }
+    else if (event.key === "ArrowUp") { y -= 24; apply(); }
+    else if (event.key === "ArrowDown") { y += 24; apply(); }
+    else handled = false;
+    if (handled) event.preventDefault();
+  }, { signal: signal });
+
+  scope.querySelectorAll("[data-plan-zoom]").forEach(function (button) {
+    button.addEventListener("click", function () {
+      var action = button.dataset.planZoom;
+      if (action === "in") setScale(scale + 0.4);
+      else if (action === "out") setScale(scale - 0.4);
+      else reset();
+    }, { signal: signal });
+  });
+
+  apply();
+  return function () { controller.abort(); };
+}
+
+function mountAreaTool(scope) {
+  var host = scope.querySelector('[data-role="area-map"]');
+  var fallback = scope.querySelector('[data-role="area-fallback"]');
+  var geo = preciseGeo();
+  var selectedBearing = unitBearing(unit(state.unitId) || {});
+  var map = null;
+
+  if (!host) return function () {};
+  if (!geo.ok || !SR.config.mapbox_token || !window.mapboxgl) {
+    host.hidden = true;
+    if (fallback) {
+      fallback.hidden = false;
+      fallback.textContent = t("unit_area_unavailable");
+    }
+    return function () {};
+  }
+
+  try {
+    window.mapboxgl.accessToken = SR.config.mapbox_token;
+    map = new window.mapboxgl.Map({
+      container: host,
+      style: "mapbox://styles/mapbox/dark-v11",
+      center: [geo.lng, geo.lat],
+      zoom: 15.2,
+      pitch: 42,
+      bearing: selectedBearing == null ? 0 : selectedBearing,
+      interactive: true,
+      attributionControl: true
+    });
+    if (window.mapboxgl.NavigationControl) {
+      map.addControl(new window.mapboxgl.NavigationControl({
+        visualizePitch: true,
+        showCompass: true
+      }), "top-left");
+    }
+    if (window.mapboxgl.Marker) {
+      new window.mapboxgl.Marker({ color: "#c9a34f" })
+        .setLngLat([geo.lng, geo.lat])
+        .addTo(map);
+    }
+    map.once("load", function () {
+      try { map.resize(); } catch (e) {}
+      restoreMapAttributionTabbing(scope);
+    });
+    map.once("idle", function () { restoreMapAttributionTabbing(scope); });
+  } catch (error) {
+    host.hidden = true;
+    if (fallback) {
+      fallback.hidden = false;
+      fallback.textContent = t("unit_area_unavailable");
+    }
+  }
+
+  return function () {
+    if (map) {
+      try { map.remove(); } catch (e) {}
+    }
+    map = null;
+  };
+}
+
+function mountContactTool(scope, u) {
+  var form = scope.querySelector('[data-role="unit-contact-form"]');
+  var feedback = scope.querySelector('[data-role="contact-feedback"]');
+  if (!form) return function () {};
+
+  var controller = new AbortController();
+  var signal = controller.signal;
+
+  function report(kind, message) {
+    if (!feedback) return;
+    feedback.hidden = false;
+    feedback.className = "nl-unit-contact-form__feedback is-" + kind;
+    feedback.textContent = message;
+  }
+
+  form.addEventListener("submit", function (event) {
+    event.preventDefault();
+
+    var name = form.elements.namedItem("name");
+    var phone = form.elements.namedItem("phone");
+    var email = form.elements.namedItem("email");
+    var consent = form.elements.namedItem("consent");
+    var cleanName = name.value.trim();
+    var cleanPhone = phone.value.trim();
+    var cleanEmail = email.value.trim();
+
+    name.setCustomValidity("");
+    phone.setCustomValidity("");
+    email.setCustomValidity("");
+    consent.setCustomValidity("");
+    name.setCustomValidity(cleanName.length >= 2 ? "" : t("unit_contact_name_error"));
+    phone.setCustomValidity(
+      cleanPhone || cleanEmail ? "" : t("unit_contact_channel_error")
+    );
+    if (cleanEmail && email.validity.typeMismatch) {
+      email.setCustomValidity(t("unit_contact_email_error"));
+    }
+    consent.setCustomValidity(consent.checked ? "" : t("unit_contact_consent_error"));
+
+    if (!form.checkValidity()) {
+      report("error", t("unit_contact_validation_error"));
+      form.reportValidity();
+      return;
+    }
+
+    var endpoint = safeHttpUrl(SR.config.lead_endpoint);
+    if (!endpoint) {
+      report("error", t("unit_contact_unavailable"));
+      return;
+    }
+
+    var p = project();
+    var button = form.querySelector('button[type="submit"]');
+    var originalLabel = button.textContent;
+    var customMessage = form.elements.namedItem("message").value.trim();
+    var payload = {
+      source: "showroom_unit_journey_v2",
+      project_slug: state.projectKey,
+      project_title: projName(),
+      project_wp_id: Number(p.wp_id) || 0,
+      wp_id: Number(p.wp_id) || 0,
+      card_id: Number(p.card_id || p.wp_id) || 0,
+      lang: state.lang,
+      name: cleanName,
+      phone: cleanPhone,
+      email: cleanEmail,
+      unit: u.id,
+      floor: u.floor,
+      rooms: u.rooms,
+      sqm: u.sqm,
+      direction: dirKey(u.dir) || "",
+      status: u.status || "",
+      consent: true,
+      consent_text: t("form_consent"),
+      message: customMessage || t("unit_contact_payload", {
+        floor: u.floor,
+        rooms: u.rooms,
+        sqm: u.sqm
+      })
+    };
+
+    button.disabled = true;
+    button.textContent = t("form_submitting");
+    if (feedback) feedback.hidden = true;
+
+    fetch(endpoint, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(payload),
+      signal: signal
+    }).then(function (response) {
+      return response.text().then(function (text) {
+        var data = {};
+        try { data = text ? JSON.parse(text) : {}; } catch (e) {}
+        if (!response.ok || data.ok !== true) throw new Error("lead_rejected");
+        return data;
+      });
+    }).then(function () {
+      report("success", t("unit_contact_success"));
+      form.reset();
+      button.disabled = false;
+      button.textContent = originalLabel;
+    }).catch(function (error) {
+      if (error && error.name === "AbortError") return;
+      report("error", t("unit_contact_failure"));
+      button.disabled = false;
+      button.textContent = originalLabel;
+    });
+  }, { signal: signal });
+
+  return function () { controller.abort(); };
+}
+
+function openUnitTool(kind, u, trigger, options) {
   if (!u) return;
+  options = options || {};
 
   /* The current Studio already owns a body-level overlay. Do not nest it. */
-  if (kind === "studio") {
+  if (!unitV2Enabled() && kind === "studio") {
     openStudio(u.id);
     return;
   }
 
-  if (kind !== "plan" && kind !== "view" && kind !== "tour") return;
+  var allowed = unitV2Enabled()
+    ? ["plan", "view", "tour", "studio", "area", "contact", "compare"]
+    : ["plan", "view", "tour"];
+  if (kind === "studio" && SR.config.studio === "off") return;
+  if (allowed.indexOf(kind) < 0) return;
 
   var dialog = ensureUnitToolDialog();
 
@@ -1805,10 +3209,23 @@ function openUnitTool(kind, u, trigger) {
 
   state.tool = kind;
   unitTool.returnFocus = trigger || document.activeElement;
+  unitTool.returnKind = kind;
   unitTool.pendingFocusRestore = true;
+  unitTool.scrollY = window.pageYOffset;
+  unitTool.closing = false;
+  unitTool.fromHistory = options.fromHistory === true;
 
   dialog.setAttribute("dir", isRTL() ? "rtl" : "ltr");
   dialog.setAttribute("aria-labelledby", "nl-unit-tool-title");
+  if (unitV2Enabled()) {
+    dialog.setAttribute("tabindex", "-1");
+    dialog.setAttribute("aria-modal", "true");
+    dialog.className = "nl-unit-tool nl-unit-tool--" + kind;
+  } else {
+    dialog.removeAttribute("tabindex");
+    dialog.removeAttribute("aria-modal");
+    dialog.className = "nl-unit-tool";
+  }
   dialog.innerHTML = unitToolMarkup(kind, u);
 
   setInert(ROOT, true);
@@ -1819,20 +3236,33 @@ function openUnitTool(kind, u, trigger) {
   else dialog.setAttribute("open", "");
 
   if (kind === "view") {
-    unitTool.cleanup = mountWindowViewport(dialog, u);
+    unitTool.cleanup = mountUnitMapToolWhenReady("view", dialog, u);
+  } else if (unitV2Enabled() && kind === "plan") {
+    unitTool.cleanup = mountPlanTool(dialog);
+  } else if (unitV2Enabled() && kind === "area") {
+    unitTool.cleanup = mountUnitMapToolWhenReady("area", dialog, u);
+  } else if (unitV2Enabled() && kind === "contact") {
+    unitTool.cleanup = mountContactTool(dialog, u);
+  } else if (unitV2Enabled() && kind === "compare") {
+    unitTool.cleanup = mountUnitV2Compare(dialog, u);
   } else if (kind === "tour" && !(u.tour_url || project().tour_url)) {
     fpInit();
   }
 
-  unitTool.historyMarker = "nl-unit-tool-" + Date.now().toString(36);
+  unitTool.historyMarker = options.historyMarker ||
+    "nl-unit-tool-" + Date.now().toString(36);
 
-  history.pushState(
-    Object.assign({}, history.state || {}, {
-      nlUnitTool: unitTool.historyMarker
-    }),
-    "",
-    location.href
-  );
+  if (!unitTool.fromHistory) {
+    history.pushState(
+      Object.assign({}, history.state || {}, {
+        nlUnitTool: unitTool.historyMarker,
+        nlUnitToolKind: kind,
+        nlUnitToolUnit: u.id
+      }),
+      "",
+      location.href
+    );
+  }
 
   requestAnimationFrame(function () {
     var back = dialog.querySelector('[data-act="unit-tool-back"]');
@@ -1847,6 +3277,7 @@ function openUnitTool(kind, u, trigger) {
  */
 function closeUnitTool(restoreFocus, fromHistory) {
   if (!state.tool) return;
+  if (unitV2Enabled() && unitTool.closing) return;
 
   unitTool.pendingFocusRestore = restoreFocus !== false;
 
@@ -1856,6 +3287,7 @@ function closeUnitTool(restoreFocus, fromHistory) {
     history.state &&
     history.state.nlUnitTool === unitTool.historyMarker
   ) {
+    if (unitV2Enabled()) unitTool.closing = true;
     history.back();
     return;
   }
@@ -1863,9 +3295,135 @@ function closeUnitTool(restoreFocus, fromHistory) {
   finishUnitToolClose(unitTool.pendingFocusRestore);
 }
 
+/* A language/project rerender cannot wait for an asynchronous history.back().
+   Convert the current synthetic entry into an ordinary entry before teardown,
+   so Forward/Back never lands on an orphaned tool marker. */
+function normalizeUnitToolHistory() {
+  var current = history.state || {};
+  if (!current.nlUnitTool) return;
+  var clean = Object.assign({}, current);
+  delete clean.nlUnitTool;
+  delete clean.nlUnitToolKind;
+  delete clean.nlUnitToolUnit;
+  history.replaceState(clean, "", location.href);
+}
+
+/* Mapbox is intentionally loaded after the core engine by WordPress. A buyer
+ * can select a unit and open a map tool before that script has executed; do
+ * not turn that harmless load race into a permanent fallback. The retry is
+ * bounded, cancellable, and owns no DOM outside the body-level dialog. */
+function mountUnitMapToolWhenReady(kind, scope, u) {
+  var cancelled = false;
+  var timer = 0;
+  var cleanup = null;
+  var attempts = 0;
+  var geo = preciseGeo();
+
+  function mount() {
+    if (cancelled || !document.contains(scope)) return;
+    if (!geo.ok || !SR.config.mapbox_token || window.mapboxgl) {
+      cleanup = kind === "area"
+        ? mountAreaTool(scope)
+        : mountWindowViewport(scope, u);
+      return;
+    }
+    attempts += 1;
+    if (attempts >= 40) {
+      cleanup = kind === "area"
+        ? mountAreaTool(scope)
+        : mountWindowViewport(scope, u);
+      return;
+    }
+    timer = window.setTimeout(mount, 100);
+  }
+
+  mount();
+  return function () {
+    cancelled = true;
+    if (timer) window.clearTimeout(timer);
+    if (cleanup) cleanup();
+  };
+}
+
+function visibleFocusable(el) {
+  if (!el || !document.contains(el) || el.disabled) return false;
+  var rect = el.getBoundingClientRect();
+  var style = window.getComputedStyle(el);
+  return rect.width > 0 && rect.height > 0 &&
+    rect.bottom > 0 && rect.right > 0 &&
+    rect.top < window.innerHeight && rect.left < window.innerWidth &&
+    style.visibility !== "hidden" && style.opacity !== "0" &&
+    style.pointerEvents !== "none";
+}
+
+function unitV2ReturnTarget(original, kind) {
+  if (visibleFocusable(original)) return original;
+  var screen = document.getElementById("nl-unit-screen");
+  if (!screen || screen.hidden) return null;
+  var exact = screen.querySelector(
+    '[data-act="unit-tool"][data-tool="' + cssesc(kind || "") + '"]'
+  );
+  if (visibleFocusable(exact)) return exact;
+  var stable = screen.querySelector(
+    ".nl-unit-door, [data-act=\"unit-back\"], .nl-unit-contact"
+  );
+  return visibleFocusable(stable) ? stable : null;
+}
+
+function restoreUnitV2Scroll(y, focusTarget) {
+  var rootStyle = document.documentElement.style;
+  var previousBehavior = rootStyle.scrollBehavior;
+  rootStyle.scrollBehavior = "auto";
+  window.scrollTo(0, y);
+  requestAnimationFrame(function () {
+    window.scrollTo(0, y);
+    if (focusTarget) focusTarget.focus({ preventScroll: true });
+    window.scrollTo(0, y);
+    rootStyle.scrollBehavior = previousBehavior;
+  });
+}
+
+function restoreUnitV2AfterViewportSync(returnKind, restoreFocus) {
+  var attempts = 0;
+
+  function settle() {
+    var theaterEl = ROOT.querySelector(".nl-theater--unit-v2");
+    /* The atomic render removes this transition marker in its queued frame.
+       Do not decide visibility/focus from the intermediate geometry. */
+    if (theaterEl && theaterEl.classList.contains("nl-unit-v2-transitioning") &&
+        attempts < 3) {
+      attempts += 1;
+      requestAnimationFrame(settle);
+      return;
+    }
+
+    /* `behavior: auto` still inherits a stylesheet's smooth scroll behavior.
+       Keep this whole geometry/focus transaction synchronous so the freshly
+       rendered return target is measured only after the theater is aligned. */
+    var rootStyle = document.documentElement.style;
+    var previousBehavior = rootStyle.scrollBehavior;
+    rootStyle.scrollBehavior = "auto";
+    try {
+      alignUnitV2Theater(true, true);
+      var focusTarget = restoreFocus ? unitV2ReturnTarget(null, returnKind) : null;
+      if (focusTarget) focusTarget.focus({ preventScroll: true });
+      /* Scene visibility wins over a pre-rotation scroll coordinate. A final
+         single-pass alignment also neutralizes browser focus anchoring. */
+      alignUnitV2Theater(true, true);
+    } finally {
+      rootStyle.scrollBehavior = previousBehavior;
+    }
+  }
+
+  requestAnimationFrame(settle);
+}
+
 function finishUnitToolClose(restoreFocus) {
   var dialog = unitTool.dialog;
   var returnFocus = unitTool.returnFocus;
+  var returnKind = unitTool.returnKind;
+  var savedScrollY = unitTool.scrollY;
+  var wasV2 = unitV2Enabled();
 
   if (unitTool.cleanup) {
     try { unitTool.cleanup(); } catch (e) {}
@@ -1873,42 +3431,91 @@ function finishUnitToolClose(restoreFocus) {
 
   unitTool.cleanup = null;
   unitTool.returnFocus = null;
+  unitTool.returnKind = null;
   unitTool.historyMarker = null;
+  unitTool.closing = false;
+  unitTool.fromHistory = false;
   state.tool = null;
 
   if (dialog) {
     if (dialog.open && typeof dialog.close === "function") dialog.close();
     else dialog.removeAttribute("open");
     dialog.innerHTML = "";
+    dialog.className = "nl-unit-tool";
+    if (wasV2) {
+      dialog.removeAttribute("tabindex");
+      dialog.removeAttribute("aria-modal");
+    }
   }
 
   setInert(ROOT, false);
   document.documentElement.classList.remove("nl-unit-tool-open");
   document.body.classList.remove("nl-unit-tool-open");
 
-  if (restoreFocus && returnFocus && document.contains(returnFocus)) {
+  if (wasV2) {
+    /* A resize/orientation event may have arrived while the modal correctly
+       kept the inactive scene frozen. Reconcile that subtree before resolving
+       the replacement focus target and before restoring the saved scroll. */
+    var didViewportSync = flushUnitV2ViewportSyncAfterTool();
+    if (didViewportSync) {
+      restoreUnitV2AfterViewportSync(returnKind, restoreFocus);
+    } else {
+      restoreUnitV2Scroll(
+        savedScrollY,
+        restoreFocus ? unitV2ReturnTarget(returnFocus, returnKind) : null
+      );
+    }
+  } else if (restoreFocus && returnFocus && document.contains(returnFocus)) {
     requestAnimationFrame(function () {
       returnFocus.focus({ preventScroll: true });
     });
   }
 }
 
-window.addEventListener("popstate", function () {
-  if (state.tool) finishUnitToolClose(unitTool.pendingFocusRestore);
+window.addEventListener("popstate", function (event) {
+  if (state.tool) {
+    finishUnitToolClose(unitTool.pendingFocusRestore);
+    return;
+  }
+
+  /* Browser Forward re-enters the synthetic entry and truthfully reopens the
+     tool instead of creating an invisible, trapping history step. */
+  var markerState = event.state || {};
+  if (!unitV2Enabled() || !markerState.nlUnitTool) return;
+  var u = unit(markerState.nlUnitToolUnit);
+  var kind = markerState.nlUnitToolKind;
+  var activeScreen = document.getElementById("nl-unit-screen");
+  if (!u || state.unitId !== markerState.nlUnitToolUnit ||
+      !activeScreen || activeScreen.hidden ||
+      ["plan", "view", "tour", "studio", "area", "contact", "compare"].indexOf(kind) < 0) {
+    normalizeUnitToolHistory();
+    if (typeof deeplink === "function") deeplink();
+    return;
+  }
+  var trigger = document.querySelector(
+    '[data-act="unit-tool"][data-tool="' + cssesc(kind) + '"]'
+  );
+  openUnitTool(kind, u, trigger, {
+    fromHistory: true,
+    historyMarker: markerState.nlUnitTool
+  });
 });
 
 function mountWindowViewport(scope, u) {
   var host = scope.querySelector('[data-role="window-map"]');
   var fallback = scope.querySelector('[data-role="window-fallback"]');
   var geo = preciseGeo();
+  var bearing = unitBearing(u);
 
   if (!host) return function () {};
 
-  if (!geo.ok || !SR.config.mapbox_token || !window.mapboxgl) {
+  if (bearing == null || !geo.ok || !SR.config.mapbox_token || !window.mapboxgl) {
     host.hidden = true;
     if (fallback) {
       fallback.hidden = false;
-      fallback.textContent = t("unit_map_unverified");
+      fallback.textContent = bearing == null
+        ? t("unit_window_direction_unavailable")
+        : t("unit_map_unverified");
     }
     return function () {};
   }
@@ -1918,7 +3525,6 @@ function mountWindowViewport(scope, u) {
   var dragging = false;
   var lastX = 0;
   var lastY = 0;
-  var bearing = unitBearing(u);
   var vertical = 0;
   var map = null;
 
@@ -1988,6 +3594,7 @@ function mountWindowViewport(scope, u) {
     } catch (e) {}
 
     applyCamera();
+    if (unitV2Enabled()) restoreMapAttributionTabbing(scope);
   });
 
   map.once("error", function () {
@@ -2063,6 +3670,7 @@ function mountWindowViewport(scope, u) {
   function selectUnit(id, instant, source) {
     if (!SR.config.selected_unit_surface) { selectUnitLegacy(id, instant); return; }
     var u = unit(id); if (!u) return;
+    var v2 = unitV2Enabled();
     var theaterEl = ROOT.querySelector(".nl-theater");
     var cameFromOutsideTheater = !!(source && theaterEl && !theaterEl.contains(source));
     var scrim = document.getElementById("nl-scrim");
@@ -2071,7 +3679,9 @@ function mountWindowViewport(scope, u) {
     /* geometry reads before renderUnitScreen writes the DOM (no forced reflow) */
     if (srcEl) { srcRect = srcEl.getBoundingClientRect(); if (!srcRect.width) { srcEl = null; srcRect = null; } }
     if (scrim && scrim.parentElement) wrapRect = scrim.parentElement.getBoundingClientRect();
-    unitSurface.source = srcEl || source || null;
+    unitSurface.source = v2
+      ? (source || srcEl || null)
+      : (srcEl || source || null);
     state.unitId = id; state.tab = "plan";
     document.querySelectorAll(".nl-hot,.nl-fsq,.nl-ucard").forEach(function (n) { n.classList.toggle("is-active", n.dataset.id === id); });
     if (scrim) {
@@ -2081,7 +3691,17 @@ function mountWindowViewport(scope, u) {
       }
       scrim.classList.add("is-on");
     }
-    renderUnitScreen(u, { scroll: UNIT_MQ.matches && (cameFromOutsideTheater || instant), focus: !instant });
+    if (v2) {
+      /* Selection is a scene transition, regardless of mouse/touch/keyboard or
+         whether it originated in the model or the inventory. */
+      renderUnitScreen(u, {
+        align: true,
+        instant: !!instant,
+        focus: !instant
+      });
+    } else {
+      renderUnitScreen(u, { scroll: UNIT_MQ.matches && (cameFromOutsideTheater || instant), focus: !instant });
+    }
     easeMapToUnitView(u);
     var mv = document.getElementById("nl-mv");
     if (mv && u.camera_orbit) {
@@ -2090,7 +3710,7 @@ function mountWindowViewport(scope, u) {
         else { flyCamera(mv, u); }
       } catch (e) {}
     }
-    if (!UNIT_MQ.matches && !instant && srcEl) liftCard(srcEl, u);
+    if (!v2 && !UNIT_MQ.matches && !instant && srcEl) liftCard(srcEl, u);
     updateFormCtx(); updateSticky(); deeplink(); recordRecent(u);
     var rv = document.getElementById("nl-resetview"); if (rv) rv.hidden = false;
   }
@@ -2099,7 +3719,9 @@ function mountWindowViewport(scope, u) {
     if (!SR.config.selected_unit_surface) { closePanelLegacy(); return; }
     /* one back action closes the tool first; a second returns to the building */
     if (state.tool) { closeUnitTool(true, false); return; }
-    var returnTarget = unitSurface.source;
+    var closingUnitId = state.unitId;
+    var v2 = unitV2Enabled();
+    var returnTarget = v2 ? null : unitSurface.source;
     clearUnitScreen();
     state.unitId = null; state.tool = null;
     var scrim = document.getElementById("nl-scrim"); if (scrim) scrim.classList.remove("is-on");
@@ -2107,7 +3729,22 @@ function mountWindowViewport(scope, u) {
     var mv = document.getElementById("nl-mv");
     if (mv) { try { mv.interpolationDecay = 50; mv.fieldOfView = "auto"; mv.cameraOrbit = project().default_orbit; mv.cameraTarget = project().default_target; } catch (e) {} }
     updateFormCtx(); updateSticky(); deeplink();
-    if (returnTarget && document.contains(returnTarget)) {
+    if (v2) {
+      requestAnimationFrame(function () {
+        var stage = ROOT.querySelector(".nl-stagewrap");
+        var hotspot = stage && stage.querySelector(
+          '.nl-hot[data-id="' + cssesc(closingUnitId || "") + '"], ' +
+          '.nl-fsq[data-id="' + cssesc(closingUnitId || "") + '"]'
+        );
+        var target = visibleFocusable(hotspot)
+          ? hotspot
+          : document.getElementById("nl-mv");
+        if (target && document.contains(target)) {
+          if (!target.hasAttribute("tabindex")) target.setAttribute("tabindex", "0");
+          target.focus({ preventScroll: true });
+        }
+      });
+    } else if (returnTarget && document.contains(returnTarget)) {
       requestAnimationFrame(function () { returnTarget.focus({ preventScroll: true }); });
     }
   }
@@ -2216,7 +3853,18 @@ function mountWindowViewport(scope, u) {
     var mv = document.getElementById("nl-mv"); if (mv) { try { mv.interpolationDecay = 50; mv.fieldOfView = "auto"; mv.cameraOrbit = project().default_orbit; mv.cameraTarget = project().default_target; } catch (e) {} }
     updateFormCtx(); updateSticky(); deeplink();
   }
+  function restoreQuickActionFocus(action, id, shouldRestore) {
+    if (!shouldRestore) return;
+    requestAnimationFrame(function () {
+      var next = document.querySelector(
+        '[data-act="' + cssesc(action) + '"][data-id="' + cssesc(id) + '"]'
+      );
+      if (visibleFocusable(next)) next.focus({ preventScroll: true });
+    });
+  }
   function toggleFav(id) {
+    var restoreFocus = !!(document.activeElement &&
+      document.activeElement.matches('[data-act="fav"][data-id="' + cssesc(id) + '"]'));
     var i = state.favs.indexOf(id); if (i >= 0) state.favs.splice(i, 1); else state.favs.push(id);
     save("nl_favs", state.favs);
     if (state.filter === "favs" && !state.favs.length) state.filter = "all";
@@ -2225,8 +3873,11 @@ function mountWindowViewport(scope, u) {
       if (SR.config.selected_unit_surface) renderUnitScreen(unit(id), { focus: false, scroll: false });
       else { var body = document.getElementById("nl-panel-body"); if (body) body.innerHTML = panelBody(unit(id)); }
     }
+    restoreQuickActionFocus("fav", id, restoreFocus);
   }
   function toggleCompare(id) {
+    var restoreFocus = !!(document.activeElement &&
+      document.activeElement.matches('[data-act="compare"][data-id="' + cssesc(id) + '"]'));
     var i = state.compare.indexOf(id);
     if (i >= 0) state.compare.splice(i, 1);
     else { if (state.compare.length >= 3) state.compare.shift(); state.compare.push(id); }
@@ -2235,6 +3886,7 @@ function mountWindowViewport(scope, u) {
       if (SR.config.selected_unit_surface) renderUnitScreen(unit(id), { focus: false, scroll: false });
       else { var body2 = document.getElementById("nl-panel-body"); if (body2) body2.innerHTML = panelBody(unit(id)); }
     }
+    restoreQuickActionFocus("compare", id, restoreFocus);
   }
   function refreshCompare() {
     var old = document.getElementById("nl-compare"); if (old) old.outerHTML = compareTray();
@@ -2252,7 +3904,7 @@ function mountWindowViewport(scope, u) {
     // Each language is its own crawlable post. Navigate to the sibling URL when we
     // have it (real page, real SEO); only fall back to a client swap if no sibling.
     var p = project();
-    if (p && p.lang_urls && p.lang_urls[l]) { location.href = p.lang_urls[l]; return; }
+    if (!unitV2Sandbox() && p && p.lang_urls && p.lang_urls[l]) { location.href = p.lang_urls[l]; return; }
     if (!I18N.langs[l]) return; state.lang = l;
     var u = new URL(location.href); u.searchParams.set("lang", l); history.replaceState(null, "", u);
     render();
@@ -2277,14 +3929,14 @@ function mountWindowViewport(scope, u) {
   function updateFormCtx() {
     var ctx = document.getElementById("nl-formctx"); if (!ctx) return;
     var u = unit(state.unitId);
-    ctx.innerHTML = '<span class="d"></span>' + (u ? esc(t("form_unit_ctx", { label: u.label, floor: u.floor, rooms: u.rooms })) : esc(t("form_no_unit")));
+    ctx.innerHTML = '<span class="d"></span>' + (u ? esc(t("form_unit_ctx", { label: unitDisplayLabel(u), floor: u.floor, rooms: u.rooms })) : esc(t("form_no_unit")));
   }
   function updateSticky() {
     var c = document.getElementById("nl-stickyctx"); if (!c) return;
-    var u = unit(state.unitId); c.textContent = u ? (" · " + t("unit_short", { label: u.label, floor: u.floor })) : "";
+    var u = unit(state.unitId); c.textContent = u ? (" · " + t("unit_short", { label: unitDisplayLabel(u), floor: u.floor })) : "";
     var wa = document.getElementById("nl-wa");
     if (wa && SR.config.whatsapp) {
-      var msg = (u ? t("form_unit_ctx", { label: u.label, floor: u.floor, rooms: u.rooms }) : t("form_no_unit")) + " · " + projName();
+      var msg = (u ? t("form_unit_ctx", { label: unitDisplayLabel(u), floor: u.floor, rooms: u.rooms }) : t("form_no_unit")) + " · " + projName();
       wa.href = "https://wa.me/" + SR.config.whatsapp + "?text=" + encodeURIComponent(msg);
     }
   }
@@ -2302,11 +3954,39 @@ function mountWindowViewport(scope, u) {
       source: "showroom_engine", project_slug: state.projectKey, project_title: projName(), lang: state.lang,
       name: name, phone: phone, email: email,
       unit: u ? u.id : "", floor: u ? u.floor : "", rooms: u ? u.rooms : "", sqm: u ? u.sqm : "", direction: u ? u.dir : "", status: u ? u.status : "",
-      message: u ? t("form_unit_ctx", { label: u.label, floor: u.floor, rooms: u.rooms }) : t("form_no_unit")
+      message: u ? t("form_unit_ctx", { label: unitDisplayLabel(u), floor: u.floor, rooms: u.rooms }) : t("form_no_unit")
     };
     var btn = f.querySelector('button[type="submit"]'); btn.disabled = true; btn.textContent = t("form_submitting");
     var done = function () { show(msg, "ok", t("form_success")); f.reset(); btn.disabled = false; btn.textContent = t("form_submit"); updateFormCtx(); };
     var ep = SR.config.lead_endpoint;
+    if (unitV2Enabled()) {
+      var projectData = project();
+      payload.source = "showroom_unit_journey_v2_page_form";
+      payload.project_wp_id = Number(projectData.wp_id) || 0;
+      payload.wp_id = Number(projectData.wp_id) || 0;
+      payload.card_id = Number(projectData.card_id || projectData.wp_id) || 0;
+      var fail = function () {
+        show(msg, "err", t("unit_contact_failure"));
+        btn.disabled = false;
+        btn.textContent = t("form_submit");
+      };
+      var safeEndpoint = safeHttpUrl(ep);
+      if (!safeEndpoint) { fail(); return; }
+      try {
+        fetch(safeEndpoint, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(payload)
+        }).then(function (response) {
+          return response.text().then(function (text) {
+            var data = {};
+            try { data = text ? JSON.parse(text) : {}; } catch (e) {}
+            if (!response.ok || data.ok !== true) throw new Error("lead_rejected");
+          });
+        }).then(done).catch(fail);
+      } catch (error) { fail(); }
+      return;
+    }
     try {
       fetch(ep, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(payload) })
         .then(function (r) { return r.ok ? r.json().catch(function () { return {}; }) : Promise.reject(0); })
