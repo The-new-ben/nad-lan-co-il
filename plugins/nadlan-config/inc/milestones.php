@@ -102,7 +102,16 @@ add_action( 'wp_enqueue_scripts', function () {
 		. '.nlms-note{font:400 11.5px/1.5 Heebo,sans-serif;color:#6D665C;margin:14px 0 0}'
 		. '@media(max-width:560px){.nlms-steps span{font-size:10px}}'
 		/* the promoted lead paragraph reads as the page opener; give it lead weight */
-		. '.nl-lead{font-size:1.06em;line-height:1.75;margin:0 0 14px}'
+		/* max-width + auto margins + padding: the FIRST REAL SCREENSHOT (owner's
+		   Chrome, 2026-08-08) showed the lead running full-bleed at desktop with
+		   "Rainbow" clipped off both edges - the guide templates give the entry
+		   no column, so the lead must carry its own. unicode-bidi:plaintext keeps
+		   a mixed Hebrew/English first line from exploding the direction. */
+		/* min() with a vw guard: the guide wrapper can sit slightly off-canvas, so
+		   1240px alone still clipped a letter at the right edge. Standard bidi
+		   reordering handles the English-first opening; plaintext made it worse. */
+		. '.nl-lead{font-size:1.06em;line-height:1.75;margin:0 auto 14px;max-width:min(1240px,92vw);'
+		. 'padding:0 clamp(14px,3vw,26px);box-sizing:border-box;overflow-wrap:break-word}'
 		. '@media(max-width:560px){.nl-lead{font-size:1.02em}}';
 	wp_register_style( 'nadlan-milestones', false, array(), NADLAN_CONFIG_VERSION );
 	wp_enqueue_style( 'nadlan-milestones' );
