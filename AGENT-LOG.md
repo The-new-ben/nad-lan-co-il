@@ -1,5 +1,32 @@
 # AGENT-LOG - the God brain (append-only, newest on top)
 
+## 2026-08-08 (94) - v1.72.177-179: MOBILE FLOW v2 FLEET-WIDE - the sheet is dead, separation lives
+Owner emergency ('total disaster, no frame inside frame'). The
+162-172 bottom sheet is DELETED. New engine-level mobile flow:
+open panel = NORMAL in-flow block (position:static, height:auto,
+zero overflow rules - only the page scrolls); secondary noise
+(sun/scarcity/mortgage/icon row) hidden on phone; the three tabs
+restyle as full-width DOOR buttons; the selected tool pane opens
+TRUE FULLSCREEN (375x812 exact, measured) with one close chip -
+the designer pattern; a direction-BEAM diagram (SVG, dir parsed
+from the unit meta line) injects under the facts - the owner's
+sacred scene. THREE live-found fixes during the cycle: (a) tool
+pane jailed by .nl-panel's slide-in transform (transformed
+ancestor imprisons position:fixed) - transform:none on mobile;
+(b) inset shorthand lost to cascade - explicit top/left/right/
+bottom+100vw/100vh!important; (c) close chip display toggled in
+JS (sibling selector could not reach it). VERIFIED: Park mobile
+(innerScroll=false, beam 'מערב', fullscreen exact, close clean,
+renderer alive), rainbow mobile (same, beam 'דרום-מערב'),
+desktop 1280 (panel absolute, tabs row, pane inline, no beam -
+untouched). Fleet-wide by construction. ALSO: deep commercial
+prompt (micro-infrastructure: watts/sqm, dual feed, risers,
+fiber carriers, latency for AI tenants, destination-control
+lifts, shell&core vs CAT-A, arnona, foreign-entity leasing)
+delivered as a FILE in chat + board prompt 9 (8 superseded,
+kept). Board changelog updated. NEXT: owner verdict on the new
+flow feel; facilities-on-3D roadmap item; menu 'מדריכים' fix.
+
 ## 2026-08-08 (93) - THE PARK LIVE: first commercial flagship, parametric 19,488-tri tower, 44 selectable floors
 Owner ordered the commercial holy grail. Shipped same session:
 (1) MOBILE-UX MOCKUP live at /mockup-mobile-unit/ (phone-frame
