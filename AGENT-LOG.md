@@ -1,5 +1,31 @@
 # AGENT-LOG - the God brain (append-only, newest on top)
 
+## 2026-08-08 (93) - THE PARK LIVE: first commercial flagship, parametric 19,488-tri tower, 44 selectable floors
+Owner ordered the commercial holy grail. Shipped same session:
+(1) MOBILE-UX MOCKUP live at /mockup-mobile-unit/ (phone-frame
+tap-through: map+beam always visible, one screen, fullscreen
+tools, zero nested scroll) - awaiting his verdict on the board.
+(2) THE PARK /projects/the-park-bnei-brak/ (id 6182): pure-python
+parametric GLB (tools/glb-gen-the-park.py - glTF binary writer,
+no deps; Blender was closed; 19,488 tris, 186.7m exact, 3 PBR
+materials, 1.17MB served from uploads via the b64 pipeline -
+direct .glb upload 500s on the mime gate). 44 office-floor units
+(Low 2620/Mid 1800/High 1740 sqm zones) with 3D hotspots on the
+rainbow schema; dossier-driven content 1,807 words: key-facts
+table w/ documented source contradictions, zones, infrastructure,
+MEASURED transit routes (rail 180m/2min), asking 75+18 ILS/sqm
+labeled as broker ad, NOI 92M/7.1% labeled developer forecast,
+6 internal links to our live commercial guides, contacts,
+provenance line (auto-parks to bottom). meta project_kind=
+commercial for engine modularity (strip guard = next deploy).
+Verified live: theater+model-viewer+44 hotspots+topbar+4 tables+
+devlink; GLB HTTP 200. Board: Park card, ONE-CLICK links to all
+live+scheduled articles (dated), prompt 8 = Park/ToHa2 5-language
+commercial content factory. FOUND: menu 'מדריכים' points to
+/buying-apartment/ not /guides/ - block-theme template edit next.
+Owner's Chrome minimized mid-QA (viewport 0x0) so final visual =
+DOM-verified; he is browsing the pages himself live.
+
 ## 2026-08-08 (92) - v1.72.174+175: 74 GUIDES SEEDED (topic/day auto-schedule), board v5 = health dashboard + full history
 The whole spokes package went live-or-scheduled in one run:
 - Code 174: nadlan_pglang_family now keys on the page PATH minus
