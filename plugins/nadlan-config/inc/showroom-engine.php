@@ -292,59 +292,6 @@ if ( ! function_exists( 'nadlan_showroom_engine_shortcode' ) ) {
 		wp_enqueue_style( 'nadlan-engine-css', $base . 'showroom.css', array( 'nadlan-engine-tokens' ), NADLAN_CONFIG_VERSION );
 		wp_enqueue_style( 'nadlan-engine-editorial', $base . 'editorial.css', array( 'nadlan-engine-tokens' ), NADLAN_CONFIG_VERSION );
 
-		/* MOBILE UNIT FLOW v2 - SEPARATION, NOT A SHEET (owner law 2026-08-08:
-		 * "no frame inside frame, no scrolling inside scrolling, one scene").
-		 * The 162-172 bottom sheet is DEAD: a fixed-height container holding
-		 * rich content always grows an inner scrollbar. The replacement:
-		 *  1. the open panel is a NORMAL in-flow block after the theater -
-		 *     height:auto, zero overflow rules, only the PAGE scrolls;
-		 *  2. secondary noise (sun/scarcity/mortgage/icon row/brochure) is
-		 *     hidden on mobile - basics + doors only;
-		 *  3. the three tabs restyle as full-width DOOR buttons, and the
-		 *     selected tool's pane opens FULLSCREEN (the designer pattern the
-		 *     owner praised) with one close chip;
-		 *  4. a direction-beam diagram is injected under the facts - the
-		 *     "map with the beam" scene that must never disappear.
-		 * Desktop is untouched (media-gated). */
-		wp_add_inline_style(
-			'nadlan-engine-css',
-			'@media(max-width:760px){' .
-			/* transform:none matters: the panel ships a slide-in transform, and a
-			   transformed ancestor JAILS position:fixed children - the fullscreen
-			   tool pane measured 375px instead of the viewport (live 2026-08-08) */
-			'.nl-panel{position:static!important;width:100%!important;max-width:100%!important;' .
-			'height:auto!important;max-height:none!important;margin:10px 0 0!important;border-radius:14px!important;' .
-			'inset:auto!important;box-shadow:none;overflow:visible!important;display:block!important;' .
-			'transform:none!important;transition:none!important}' .
-			'.nl-panel .nl-panel__scroll{overflow:visible!important;max-height:none!important;height:auto!important;display:block!important}' .
-			'.nl-app.nl-unit-open .nl-stagewrap{height:42vh!important;min-height:42vh!important}' .
-			/* basics + doors only: hide the secondary layers on the phone */
-			'.nl-panel .nl-sun,.nl-panel .nl-scarce,.nl-panel .nl-mortg,' .
-			'.nl-panel .nl-panel__actions .nl-iconbtn:not(.nl-iconbtn--wa){display:none!important}' .
-			'.nl-panel .nl-panel__actions{display:flex;gap:8px}' .
-			'.nl-panel .nl-iconbtn--wa{flex:1;justify-content:center}' .
-			/* tabs become full-width doors */
-			'.nl-panel .nl-tabs{display:flex;flex-direction:column;gap:9px;margin:12px 0}' .
-			'.nl-panel .nl-tab{width:100%;text-align:start;padding:15px 16px!important;border-radius:13px!important;' .
-			'font-size:15px!important;font-weight:700!important;border:1px solid rgba(216,199,154,.35)!important;' .
-			'display:flex;justify-content:space-between;align-items:center}' .
-			'.nl-panel .nl-tab::after{content:"\\203A";font-size:20px;color:#D8C79A;transform:scaleX(-1)}' .
-			/* the pane is CLOSED until a door opens it - fullscreen, page under it untouched */
-			'.nl-tabpane{display:none}' .
-			'.nl-app.nl-tool-open .nl-tabpane{display:flex!important;position:fixed!important;' .
-			'top:0!important;left:0!important;right:0!important;bottom:0!important;' .
-			'width:100vw!important;height:100vh!important;max-height:100vh!important;margin:0!important;' .
-			'z-index:99990;background:#15140F;flex-direction:column;align-items:stretch;justify-content:center;padding:0}' .
-			'.nl-app.nl-tool-open .nl-tabpane img{max-width:100vw;max-height:100vh;object-fit:contain;margin:auto}' .
-			'.nl-app.nl-tool-open .nl-tabpane>*{max-height:100vh}' .
-			'.nl-toolclose{position:fixed;top:12px;left:12px;z-index:99991;width:44px;height:44px;border-radius:999px;' .
-			'border:0;background:rgba(0,0,0,.65);color:#fff;font-size:20px;display:none}' .
-			/* beam scene */
-			'.nl-beam{margin:10px 0;border:1px solid rgba(216,199,154,.3);border-radius:12px;overflow:hidden;background:#1c2f45}' .
-			'.nl-beam svg{display:block;width:100%;height:120px}' .
-			'.nl-beam b{display:block;padding:7px 12px;font:600 12.5px Heebo,sans-serif;color:#F6F1E6;background:rgba(0,0,0,.35)}' .
-			'}'
-		);
 		/* Cascade repair (measured live on /projects/duo-tel-aviv/ 2026-07-30): the theme ships
 		   .single-nadlan_project .entry-content h2{color:var(--nlx-ink)!important} and
 		   nadlan-premium-revenue.css .nlpf-name{color:#FFF8E7!important}. Both outrank showroom.css,
@@ -368,72 +315,6 @@ if ( ! function_exists( 'nadlan_showroom_engine_shortcode' ) ) {
 		// apartment studio: design-before-you-buy overlay (drag furniture,
 		// accessibility clearances, notes -> travels inside the RFP)
 		wp_enqueue_script( 'nadlan-engine-studio', $base . 'studio.js', array( 'nadlan-engine-core' ), NADLAN_CONFIG_VERSION, true );
-		// MOBILE UNIT FLOW v2 JS. Attached only AFTER the handle above is
-		// registered (add_inline_script on an unregistered handle fails
-		// silently - the 163 lesson). Observers here only READ the attributes
-		// they watch and write OTHER nodes - never the observed attribute
-		// (the 166 freeze lesson).
-		wp_add_inline_script(
-			'nadlan-engine-core',
-			'(function(){' .
-			'if(!window.matchMedia||!matchMedia("(max-width:760px)").matches)return;' .
-			'var APP=null,CLOSE=null;' .
-			'var DIRDEG={"צפון":0,"מזרח":90,"דרום":180,"מערב":270};' .
-			'function dirAngle(s){s=String(s||"");var a=null;' .
-			'var comb=[["צפון","מערב",315],["צפון","מזרח",45],["דרום","מערב",225],["דרום","מזרח",135]];' .
-			'for(var i=0;i<comb.length;i++){if(s.indexOf(comb[i][0])>-1&&s.indexOf(comb[i][1])>-1)return comb[i][2];}' .
-			'for(var k in DIRDEG){if(s.indexOf(k)>-1)return DIRDEG[k];}return null;}' .
-			'function beam(P){' .
-			'if(P.querySelector(".nl-beam"))return;' .
-			'var mut=P.querySelector(".nl-panel__head .nl-muted");' .
-			'var txt=mut?mut.textContent:"";var ang=dirAngle(txt);if(ang===null)return;' .
-			'var d=document.createElement("div");d.className="nl-beam";' .
-			'var a=(ang-90)*Math.PI/180;' .
-			'var cx=180,cy=88,r=70;' .
-			'var x1=cx+r*Math.cos(a-0.42),y1=cy+r*Math.sin(a-0.42);' .
-			'var x2=cx+r*Math.cos(a+0.42),y2=cy+r*Math.sin(a+0.42);' .
-			'd.innerHTML="<svg viewBox=\\"0 0 360 120\\" preserveAspectRatio=\\"xMidYMid slice\\">"+' .
-			'"<rect width=\\"360\\" height=\\"120\\" fill=\\"#22384c\\"/>"+' .
-			'"<path d=\\"M0 30 Q120 55 240 25 T360 45\\" stroke=\\"#31506b\\" stroke-width=\\"14\\" fill=\\"none\\"/>"+' .
-			'"<path d=\\"M40 0 V120 M150 0 V120 M290 0 V120\\" stroke=\\"#2a4560\\" stroke-width=\\"7\\"/>"+' .
-			'"<polygon points=\\""+cx+","+cy+" "+x1.toFixed(1)+","+y1.toFixed(1)+" "+x2.toFixed(1)+","+y2.toFixed(1)+"\\" fill=\\"rgba(216,199,154,.4)\\" stroke=\\"rgba(216,199,154,.9)\\"/>"+' .
-			'"<rect x=\\""+(cx-11)+"\\" y=\\""+(cy-8)+"\\" width=\\"22\\" height=\\"16\\" rx=\\"3\\" fill=\\"#3d3527\\" stroke=\\"#D8C79A\\"/>"+' .
-			'"</svg><b>"+txt.split("·").slice(-2).join("·").trim()+"</b>";' .
-			'var grid=P.querySelector(".nl-grid2");' .
-			'if(grid&&grid.parentNode){grid.parentNode.insertBefore(d,grid.nextSibling);}}' .
-			'function closeChip(){' .
-			'if(CLOSE)return CLOSE;' .
-			'CLOSE=document.createElement("button");CLOSE.className="nl-toolclose";CLOSE.textContent="\\u2715";' .
-			'CLOSE.setAttribute("aria-label","סגירה");' .
-			'CLOSE.addEventListener("click",function(){if(APP)APP.classList.remove("nl-tool-open");CLOSE.style.display="none";});' .
-			'document.body.appendChild(CLOSE);return CLOSE;}' .
-			'function wire(P){' .
-			'APP=P.closest(".nl-app")||document.querySelector(".nl-app");' .
-			'document.addEventListener("click",function(e){' .
-			'var t=e.target.closest("[data-act=\\"tab\\"]");' .
-			'if(t&&APP){APP.classList.add("nl-tool-open");closeChip().style.display="block";return;}' .
-			'var c=e.target.closest("[data-act=\\"close\\"]");' .
-			'if(c&&APP){APP.classList.remove("nl-tool-open");if(CLOSE)CLOSE.style.display="none";}' .
-			'},true);' .
-			'new MutationObserver(function(){' .
-			'var open=P.classList.contains("is-open");' .
-			'if(APP&&open!==APP.classList.contains("nl-unit-open")){' .
-			'APP.classList.toggle("nl-unit-open",open);' .
-			'if(open){var sw=APP.querySelector(".nl-stagewrap")||APP;' .
-			'setTimeout(function(){sw.scrollIntoView({behavior:"smooth",block:"start"});},120);}' .
-			'else{APP.classList.remove("nl-tool-open");}}' .
-			'if(open){beam(P);}' .
-			'}).observe(P,{attributes:true,attributeFilter:["class"],childList:true,subtree:true});' .
-			'if(P.classList.contains("is-open")){beam(P);}' .
-			'}' .
-			'var P=document.getElementById("nl-panel");' .
-			'if(P){wire(P);return;}' .
-			'new MutationObserver(function(m,o){' .
-			'var p=document.getElementById("nl-panel");' .
-			'if(p){o.disconnect();wire(p);}' .
-			'}).observe(document.body||document.documentElement,{childList:true,subtree:true});' .
-			'})();'
-		);
 
 		// Always run the map bootstrap so missing tokens/coords render as visible failures.
 		$mapbox_deps = array( 'nadlan-engine-core' );
