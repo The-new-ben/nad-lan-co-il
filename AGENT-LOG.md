@@ -1,5 +1,44 @@
 # AGENT-LOG - the God brain (append-only, newest on top)
 
+## 2026-08-09 (100) - 1.72.185+186: BEAM V2 - the window now names what it faces (landmarks, true bearings, aerial distances)
+Owner: "southwest inside your phone is meaningless... is it facing the sea? the
+school? the pool?" Delivered: the beam carries the project's named public
+landmarks at their TRUE bearings with aerial distances, and the caption answers
+the actual question. Live proof on toha2 floor-40 (west):
+"bechivun haze: rakevet hashalom ~200m | Azrieli ~340m | Sarona ~820m".
+
+HOW: (1) new meta project_env_landmarks (JSON, per-language labels, max 8,
+sanitized server-side in nadlan_showroom_engine_landmarks; empty meta = no
+ring, never invented). (2) engine computes bearing+haversine client-side;
+landmark dots ride the beam SVG at distance bands (<=600m inner, <=1.8km mid,
+else rim); labels are HTML overlay tags (crisp at any aspect, bidi-safe - the
+earth-v2 lesson); in-beam hits (+-26 deg) glow gold and show distance; caption
+lists top-3 in-beam by distance, falls back to nearest, then to the old note.
+(3) Same ring in BOTH beam builders - renderBeamScene (v1 panel) AND
+renderBeamSceneV2 (v2 journey; THE TRAP: v2 has its own builder at line ~1938,
+the first deploy only upgraded v1 and the caption stayed absent until grep for
+unit_beam_title exposed the second builder). The area tool caption inherits
+the same answer. (4) i18n keys (unit_beam_ahead/nearest, dist_m/km) in all 5
+languages. (5) seoBody now returns empty when seo_h/seo_p are unset - kills
+the stray "al haproyekt" eyebrow + empty h2 on every engine page.
+
+DATA seeded (10 pages, variants inherit, units intact 75/44): ToHa2 - sea
+2,979m W, HaShalom rail 196m (dossier said ~180m - independent confirmation),
+Azrieli 337m, Sarona 819m, Ayalon 114m E, Yarkon 2,116m NW. Park BB - rail
+323m, Ayalon Mall 673m (dossier ~750m), Yarkon 1,436m, Bursa 3,358m, sea 5.2km.
+Every distance sanity-gated 80m-8km in the same server request.
+
+DEPLOYS: 185 (6 files) + 186 (2 files), MD5 all, probe header+constant match,
+purge, snippet+media cleaned. mapbox token IS configured (pk..., 94 chars) -
+the beam draws the real map under the ring on verified-geo projects.
+
+FLOATS: owner phone-verdict pending on beam v2 look; desktop Chrome session
+kept stalling CDP screenshots (model-viewer+map+75 cards) - visual proofs came
+as DOM reads + partial shots; consider landmark sets for residential flagships
+(ashira/duo/rainbow) via the factory; GLB weight (2.75MB) still the likely
+cause of the owner's empty dark model box on mobile.
+
+
 ## 2026-08-09 (99) - 1.72.184: the "green square" welded-page mystery ROOT-CAUSED and killed; mobile scroll-jump fixed
 Owner sent a phone screenshot: mid-page dark box ("green square"), floating icon
 card, data.gov.il chip, the TITLE AGAIN, breadcrumbs again - "the page starts

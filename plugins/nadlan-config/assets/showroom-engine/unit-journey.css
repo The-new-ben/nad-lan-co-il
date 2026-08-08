@@ -376,6 +376,36 @@ body:is(.nl-unit-v2-active, .nl-unit-journey-active) #nla11y-btn:focus-visible {
     #101b17;
 }
 
+/* Beam v2 landmark tags (v2 surface): crisp HTML overlay above map and cone. */
+.nl-unit-beam__lm {
+  position: absolute;
+  z-index: 3;
+  transform: translate(-50%, -50%);
+  display: grid;
+  justify-items: center;
+  gap: 1px;
+  max-inline-size: 34%;
+  font-size: clamp(9.5px, 1.4vw, 11.5px);
+  font-weight: 600;
+  line-height: 1.15;
+  text-align: center;
+  color: #efe7d2;
+  text-shadow: 0 0 3px rgba(12, 16, 13, .95), 0 1px 2px rgba(12, 16, 13, .9);
+  pointer-events: none;
+}
+
+.nl-unit-beam__lm.is-hit {
+  color: #ffe9a8;
+  font-weight: 700;
+}
+
+.nl-unit-beam__lm i {
+  font-style: normal;
+  font-size: .85em;
+  font-weight: 600;
+  color: #d9cfb4;
+}
+
 /* Honest no-map fallback: a schematic coast/street field, never an empty box. */
 .nl-unit-beam.is-schematic .nl-unit-beam__map::before {
   content: "";

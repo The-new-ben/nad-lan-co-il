@@ -263,6 +263,12 @@ if ( ! function_exists( 'nadlan_showroom_engine_build_project' ) ) {
 				// but NOT for a per-apartment window view - the engine gates on this.
 				'confidence' => (string) get_post_meta( $id, 'geo_confidence', true ),
 			),
+			// Beam v2: named public landmarks (sea, rail, park...) with real
+			// coordinates from meta project_env_landmarks. The engine computes
+			// true bearings + aerial distances so the window beam answers "what
+			// do I actually face" instead of a bare compass word. Never invented:
+			// empty meta means no landmark ring.
+			'landmarks'      => nadlan_showroom_engine_landmarks( $id ),
 			// monetization: paid tier lifts a project in gallery / map / nearby order.
 			'featured'       => (bool) get_post_meta( $id, 'project_featured', true ),
 			'tier'           => $tier,
@@ -283,6 +289,38 @@ if ( ! function_exists( 'nadlan_showroom_engine_build_project' ) ) {
 			'faq'            => array_values( (array) nadlan_showroom_engine_json_meta( $id, 'project_faq_json' ) ),
 			'units'          => array_values( (array) $units ),
 		);
+	}
+}
+
+if ( ! function_exists( 'nadlan_showroom_engine_landmarks' ) ) {
+	/* Beam v2 source data. Meta project_env_landmarks holds a JSON array of
+	 * { label: {he,en,fr,ru,ar}|string, lat, lng }. Hard cap of 8; anything
+	 * without a usable label or coordinates is dropped, never guessed. */
+	function nadlan_showroom_engine_landmarks( $id ) {
+		$raw = nadlan_showroom_engine_json_meta( $id, 'project_env_landmarks' );
+		if ( ! is_array( $raw ) ) { return array(); }
+		$out = array();
+		foreach ( array_slice( array_values( $raw ), 0, 8 ) as $lm ) {
+			if ( ! is_array( $lm ) ) { continue; }
+			$lat = isset( $lm['lat'] ) ? (float) $lm['lat'] : 0.0;
+			$lng = isset( $lm['lng'] ) ? (float) $lm['lng'] : 0.0;
+			if ( ! $lat || ! $lng || abs( $lat ) > 90 || abs( $lng ) > 180 ) { continue; }
+			$label = isset( $lm['label'] ) ? $lm['label'] : '';
+			if ( is_array( $label ) ) {
+				$clean = array();
+				foreach ( array( 'he', 'en', 'fr', 'ru', 'ar' ) as $lg ) {
+					if ( ! empty( $label[ $lg ] ) ) {
+						$clean[ $lg ] = sanitize_text_field( (string) $label[ $lg ] );
+					}
+				}
+				$label = $clean;
+			} else {
+				$label = sanitize_text_field( (string) $label );
+			}
+			if ( empty( $label ) ) { continue; }
+			$out[] = array( 'label' => $label, 'lat' => $lat, 'lng' => $lng );
+		}
+		return $out;
 	}
 }
 

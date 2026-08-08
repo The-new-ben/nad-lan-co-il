@@ -116,6 +116,37 @@
   z-index: 1;
 }
 
+/* Beam v2 landmark tags: HTML overlay (not SVG text) so labels stay crisp and
+   unstretched at any aspect ratio, with a halo that survives map tiles. */
+.nl-unit-beam__lm {
+  position: absolute;
+  z-index: 3;
+  transform: translate(-50%, -50%);
+  display: grid;
+  justify-items: center;
+  gap: 1px;
+  max-inline-size: 34%;
+  font-size: 10.5px;
+  font-weight: 600;
+  line-height: 1.15;
+  text-align: center;
+  color: #efe7d2;
+  text-shadow: 0 0 3px rgba(20, 18, 14, .95), 0 1px 2px rgba(20, 18, 14, .9);
+  pointer-events: none;
+}
+
+.nl-unit-beam__lm.is-hit {
+  color: #ffe9a8;
+  font-weight: 700;
+}
+
+.nl-unit-beam__lm i {
+  font-style: normal;
+  font-size: 9px;
+  font-weight: 600;
+  color: #d9cfb4;
+}
+
 .nl-unit-beam__svg {
   z-index: 2;
   pointer-events: none;

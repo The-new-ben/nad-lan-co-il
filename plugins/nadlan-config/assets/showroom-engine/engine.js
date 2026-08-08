@@ -1031,6 +1031,9 @@
 
   /* block 10 - SEO body (placeholder content from data) */
   function seoBody() {
+    /* No data means no block: an eyebrow over an empty h2 read as a broken
+       stray section on every page whose payload never set these fields. */
+    if (!content("seo_h") && !content("seo_p")) { return ""; }
     return '<div style="max-width:760px"><span class="nl-eyebrow">' + esc(t("seo_eyebrow")) + '</span><hr class="nl-rule"><h2>' + esc(content("seo_h")) + '</h2><p class="nl-lede" style="margin-top:14px">' + esc(content("seo_p")) + "</p></div>";
   }
   /* visible FAQ accordion (the FAQPage JSON-LD is emitted server-side from the same meta) */
@@ -1607,12 +1610,100 @@ function beamShapeMarkup(bearing, gradientId, centerFill) {
     'stroke="#f3d98c" stroke-width="1.4"/>';
 }
 
+/* ---- Beam v2: real-world context ----
+   A compass word inside a phone answers nothing. The beam now carries the
+   project's named landmarks (sea, rail, park...) at their TRUE bearings and
+   aerial distances, and the caption states what actually lies inside the
+   window's field of view. Data comes only from project.landmarks (verified
+   coordinates seeded per project) - no landmarks, no ring, never invented. */
+function landmarkLabel(lm) {
+  var l = lm && lm.label;
+  if (!l) return "";
+  if (typeof l === "string") return l;
+  return l[state.lang] || l.he || l.en || "";
+}
+
+function beamLandmarks() {
+  var geo = preciseGeo();
+  var list = project().landmarks || [];
+  if (!geo.ok || !list.length) return [];
+  var out = [];
+  list.forEach(function (lm) {
+    var lat = Number(lm.lat);
+    var lng = Number(lm.lng);
+    var label = landmarkLabel(lm);
+    if (!label || !isFinite(lat) || !isFinite(lng)) return;
+    var f1 = geo.lat * Math.PI / 180;
+    var f2 = lat * Math.PI / 180;
+    var dl = (lng - geo.lng) * Math.PI / 180;
+    var y = Math.sin(dl) * Math.cos(f2);
+    var x = Math.cos(f1) * Math.sin(f2) -
+            Math.sin(f1) * Math.cos(f2) * Math.cos(dl);
+    var brg = (Math.atan2(y, x) * 180 / Math.PI + 360) % 360;
+    var sa = Math.sin((f2 - f1) / 2);
+    var sb = Math.sin(dl / 2);
+    var h = sa * sa + Math.cos(f1) * Math.cos(f2) * sb * sb;
+    out.push({
+      label: label,
+      bearing: brg,
+      dist: 12742000 * Math.asin(Math.sqrt(Math.min(1, h)))
+    });
+  });
+  return out;
+}
+
+function beamDistText(m) {
+  return m < 950
+    ? "~" + (Math.round(m / 10) * 10) + " " + t("dist_m")
+    : "~" + (Math.round(m / 100) / 10) + " " + t("dist_km");
+}
+
+function beamAngleDiff(a, b) {
+  var d = Math.abs(a - b) % 360;
+  return d > 180 ? 360 - d : d;
+}
+
 function renderBeamScene(u) {
   var view = viewText(u) || dirLabel(u.dir);
   var bearing = unitBearing(u);
+  var marks = beamLandmarks();
+  var dots = "";
+  var tags = "";
+  var inBeam = [];
+
+  marks.forEach(function (m) {
+    /* distance bands keep near things near the pin and far things at the rim */
+    var r = m.dist <= 600 ? 17 : (m.dist <= 1800 ? 29 : 41);
+    var p = beamPoint(m.bearing, r);
+    var lp = beamPoint(m.bearing, Math.min(r + 7, 46));
+    var hit = bearing != null && beamAngleDiff(m.bearing, bearing) <= 26;
+    if (hit) inBeam.push(m);
+    dots += '<circle cx="' + p.x.toFixed(1) + '" cy="' + p.y.toFixed(1) +
+      '" r="' + (hit ? 2.2 : 1.5) + '" fill="' + (hit ? "#f3d98c" : "#cfc6ae") +
+      '" fill-opacity="' + (hit ? "1" : ".72") + '"/>';
+    tags += '<span class="nl-unit-beam__lm' + (hit ? " is-hit" : "") +
+      '" style="left:' + lp.x.toFixed(1) + '%;top:' + lp.y.toFixed(1) + '%">' +
+      esc(m.label) +
+      (hit ? "<i>" + esc(beamDistText(m.dist)) + "</i>" : "") +
+      "</span>";
+  });
+
+  inBeam.sort(function (a, b) { return a.dist - b.dist; });
+  var note;
+  if (inBeam.length) {
+    note = t("unit_beam_ahead") + " " + inBeam.slice(0, 3).map(function (m) {
+      return m.label + " · " + beamDistText(m.dist);
+    }).join(" | ");
+  } else if (marks.length) {
+    var nearest = marks.slice().sort(function (a, b) { return a.dist - b.dist; })[0];
+    note = t("unit_beam_nearest") + " " + nearest.label + " · " + beamDistText(nearest.dist);
+  } else {
+    note = t("unit_beam_note");
+  }
 
   return (
     '<figure class="nl-unit-beam' + (bearing == null ? ' is-direction-unknown' : '') +
+      (marks.length ? ' has-landmarks' : '') +
       '" data-bearing="' + (bearing == null ? '' : bearing) + '">' +
       '<div class="nl-unit-beam__map" data-role="beam-map" ' +
         'role="img" aria-label="' +
@@ -1626,10 +1717,12 @@ function renderBeamScene(u) {
           '</linearGradient>' +
         '</defs>' +
         beamShapeMarkup(bearing, "nl-unit-beam-gold", "#1b1a17") +
+        dots +
       '</svg>' +
+      tags +
       '<figcaption>' +
         '<strong>' + esc(t("unit_beam_title", { view: view })) + '</strong>' +
-        '<span>' + esc(t("unit_beam_note")) + '</span>' +
+        '<span>' + esc(note) + '</span>' +
       '</figcaption>' +
     '</figure>'
   );
@@ -1852,9 +1945,39 @@ function renderBeamSceneV2(u) {
     ? " is-caption-top"
     : " is-caption-bottom";
 
+  /* Beam v2: the same landmark ring as the v1 panel beam - real bearings,
+     real aerial distances - so the caption answers what the window faces
+     instead of inviting a click for its own sake. */
+  var marks = beamLandmarks();
+  var dots = "";
+  var tags = "";
+  var inBeam = [];
+  marks.forEach(function (m) {
+    var r = m.dist <= 600 ? 17 : (m.dist <= 1800 ? 29 : 41);
+    var p = beamPoint(m.bearing, r);
+    var lp = beamPoint(m.bearing, Math.min(r + 7, 46));
+    var hit = bearing != null && beamAngleDiff(m.bearing, bearing) <= 26;
+    if (hit) inBeam.push(m);
+    dots += '<circle cx="' + p.x.toFixed(1) + '" cy="' + p.y.toFixed(1) +
+      '" r="' + (hit ? 2.2 : 1.5) + '" fill="' + (hit ? "#f3d98c" : "#cfc6ae") +
+      '" fill-opacity="' + (hit ? "1" : ".72") + '"/>';
+    tags += '<span class="nl-unit-beam__lm' + (hit ? " is-hit" : "") +
+      '" style="left:' + lp.x.toFixed(1) + '%;top:' + lp.y.toFixed(1) + '%">' +
+      esc(m.label) +
+      (hit ? "<i>" + esc(beamDistText(m.dist)) + "</i>" : "") +
+      "</span>";
+  });
+  inBeam.sort(function (a, b) { return a.dist - b.dist; });
+  var caption = inBeam.length
+    ? t("unit_beam_ahead") + " " + inBeam.slice(0, 3).map(function (m) {
+        return m.label + " · " + beamDistText(m.dist);
+      }).join(" | ")
+    : t("unit_beam_open_short");
+
   return (
     '<figure class="nl-unit-beam nl-unit-beam--v2' +
       (bearing == null ? ' is-direction-unknown' : '') + captionClass +
+      (marks.length ? ' has-landmarks' : '') +
       '" data-bearing="' +
       (bearing == null ? '' : bearing) + '">' +
       '<div class="nl-unit-beam__map" data-role="beam-map" role="img" ' +
@@ -1868,12 +1991,14 @@ function renderBeamSceneV2(u) {
           '</linearGradient>' +
         '</defs>' +
         beamShapeMarkup(bearing, "nl-unit-beam-gold", "#11130f") +
+        dots +
       '</svg>' +
+      tags +
       '<figcaption>' +
         '<button class="nl-unit-beam__open" type="button" data-act="unit-tool" ' +
           'data-tool="area" aria-label="' + esc(t("unit_area_open_aria")) + '">' +
            '<strong>' + esc(t("unit_beam_title", { view: view })) + '</strong>' +
-           '<span>' + esc(t("unit_beam_open_short")) + '</span>' +
+           '<span>' + esc(caption) + '</span>' +
          '</button>' +
       '</figcaption>' +
     '</figure>'
@@ -2791,6 +2916,18 @@ function unitToolMarkupV2(kind, u) {
 
   if (kind === "area") {
     var external = unitAreaExternalUrl();
+    /* The big map inherits the beam's real answer: name what lies in the
+       window's field of view, with aerial distances. */
+    var areaMarks = beamLandmarks();
+    var areaBearing = unitBearing(u);
+    var areaHits = areaMarks.filter(function (m) {
+      return areaBearing != null && beamAngleDiff(m.bearing, areaBearing) <= 26;
+    }).sort(function (a, b) { return a.dist - b.dist; });
+    var areaNote = areaHits.length
+      ? t("unit_beam_ahead") + " " + areaHits.slice(0, 3).map(function (m) {
+          return m.label + " · " + beamDistText(m.dist);
+        }).join(" | ")
+      : t("unit_area_note");
     content =
       '<div class="nl-unit-area-tool">' +
         '<div class="nl-unit-area-tool__map" data-role="area-map" tabindex="0" ' +
@@ -2798,7 +2935,7 @@ function unitToolMarkupV2(kind, u) {
         '<p class="nl-unit-area-tool__fallback" data-role="area-fallback" hidden></p>' +
         '<div class="nl-unit-area-tool__copy"><strong>' +
           esc(t("unit_beam_title", { view: unitV2View(u) })) + '</strong><span>' +
-          esc(t("unit_area_note")) + '</span></div>' +
+          esc(areaNote) + '</span></div>' +
         (external
           ? '<a class="nl-unit-area-tool__external" href="' + esc(external) +
               '" target="_blank" rel="noopener">' + esc(t("unit_area_external")) + '</a>'
