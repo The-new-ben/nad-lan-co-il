@@ -741,7 +741,25 @@ add_filter( 'the_content', function ( $content ) {
 		return '<h1 id="nl-unit-v2-page-title" class="screen-reader-text">' . esc_html( get_the_title( $pid ) ) . '</h1>' . $engine;
 	}
 	// Wrap the article so editorial.css can style it (cream/gold system).
-	return $engine . $prefix . '<div class="nadlan-project-article nadlan-guide">' . nadlan_showroom_engine_weave( $article, $pid ) . '</div>';
+	/* The engine owns the page identity: one machine-readable <h1> first in
+	 * the DOM (the theater shows the title visually). The legacy directory
+	 * profile header used to carry the only <h1> and now steps aside on
+	 * engine pages (see inc/directory.php), so without this line these pages
+	 * would serve zero <h1>. */
+	/* Facility chips moved out of the prefix weld into the article head -
+	 * the facility-chips module skips engine pages for exactly this reason. */
+	$chips = '';
+	if ( function_exists( 'nadlan_fc_for_project' ) && function_exists( 'nadlan_fc_chips_html' )
+		&& ! preg_match( '/-(en|fr|ru|ar)$/', (string) get_post_field( 'post_name', $pid ) ) ) {
+		$fc_keys = nadlan_fc_for_project( $pid );
+		if ( $fc_keys ) {
+			$chips = '<div class="nlfc-hero" dir="rtl" aria-label="מתקנים ושירותים בפרויקט">'
+				. nadlan_fc_chips_html( $fc_keys, array( 'limit' => 8, 'link' => true ) ) . '</div>';
+		}
+	}
+	return '<h1 id="nl-project-page-title" class="screen-reader-text" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(1px,1px,1px,1px);white-space:nowrap;margin:0;padding:0">'
+		. esc_html( get_the_title( $pid ) ) . '</h1>'
+		. $engine . $prefix . '<div class="nadlan-project-article nadlan-guide">' . $chips . nadlan_showroom_engine_weave( $article, $pid ) . '</div>';
 }, 8 );
 
 /* Several mature project modules re-compose `the_content` at very late

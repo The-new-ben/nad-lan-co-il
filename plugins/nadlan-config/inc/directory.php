@@ -602,6 +602,15 @@ if ( ! function_exists( 'nadlan_dir_project_profile_header' ) ) {
 }
 add_filter( 'the_content', function ( $content ) {
 	if ( ! is_singular( 'nadlan_project' ) || ! in_the_loop() || ! is_main_query() ) { return $content; }
+	/* Owner evidence 2026-08-09: on showroom-engine pages this header was
+	 * re-attached AFTER the theater, rendering a second "page start" (dark
+	 * banner, floating icon card, repeated title, CTA) in the middle of every
+	 * project. The engine owns page identity there - including the <h1> - so
+	 * this header now renders only where the engine does not. */
+	if ( function_exists( 'nadlan_showroom_engine_active_for' )
+		&& nadlan_showroom_engine_active_for( get_the_ID() ) ) {
+		return $content;
+	}
 	return nadlan_dir_project_profile_header( get_the_ID() ) . $content;
 }, 5 );
 

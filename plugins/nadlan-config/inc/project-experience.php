@@ -200,6 +200,14 @@ if ( ! function_exists( 'nadlan_pjx_top' ) ) {
 	function nadlan_pjx_top( $content ) {
 		if ( ! is_singular( 'nadlan_project' ) || ! in_the_loop() || ! is_main_query() ) { return $content; }
 		if ( function_exists( 'nadlan_unit_journey_is_private_lab' ) && nadlan_unit_journey_is_private_lab( get_the_ID() ) ) { return $content; }
+		/* Owner evidence 2026-08-09: on engine pages this nav+intro was
+		 * re-attached AFTER the theater together with the legacy profile
+		 * header - the photographed mid-page "page restart". The theater
+		 * panel already carries the lead and the project facts. */
+		if ( function_exists( 'nadlan_showroom_engine_active_for' )
+			&& nadlan_showroom_engine_active_for( get_the_ID() ) ) {
+			return $content;
+		}
 		$id  = get_the_ID();
 		$g   = function ( $k ) use ( $id ) { return get_post_meta( $id, $k, true ); };
 		$dev = (string) $g( 'developer_name' );

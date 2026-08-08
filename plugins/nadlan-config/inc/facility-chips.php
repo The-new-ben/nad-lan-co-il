@@ -149,6 +149,13 @@ if ( ! function_exists( 'nadlan_fc_project_hero' ) ) {
 		if ( ! is_singular( 'nadlan_project' ) || ! in_the_loop() || ! is_main_query() ) { return $content; }
 		// chips carry Hebrew labels - skip the -en/-fr/-ru/-ar language siblings
 		if ( preg_match( '/-(en|fr|ru|ar)$/', (string) get_post_field( 'post_name', get_the_ID() ) ) ) { return $content; }
+		/* On engine pages the row would join the mid-page prefix weld (owner
+		 * evidence 2026-08-09); the engine renders these same chips at the
+		 * head of the article section instead - nothing is lost. */
+		if ( function_exists( 'nadlan_showroom_engine_active_for' )
+			&& nadlan_showroom_engine_active_for( get_the_ID() ) ) {
+			return $content;
+		}
 		$keys = nadlan_fc_for_project( get_the_ID() );
 		if ( ! $keys ) { return $content; }
 		$row = '<div class="nlfc-hero" dir="rtl" aria-label="מתקנים ושירותים בפרויקט">'

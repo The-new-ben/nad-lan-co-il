@@ -1,5 +1,54 @@
 # AGENT-LOG - the God brain (append-only, newest on top)
 
+## 2026-08-09 (99) - 1.72.184: the "green square" welded-page mystery ROOT-CAUSED and killed; mobile scroll-jump fixed
+Owner sent a phone screenshot: mid-page dark box ("green square"), floating icon
+card, data.gov.il chip, the TITLE AGAIN, breadcrumbs again - "the page starts
+again, nothing logical", on every project.
+
+ROOT CAUSE (the root of the root): four legacy modules PREPEND to the_content
+at priorities 5-8 (visual breadcrumbs, the nlpf directory profile header with
+its dark-green banner + avatar + duplicate h1 + CTA, the pjx nav+intro, the
+facility chips). The engine filter at priority 8 captures everything earlier
+filters prepended as $prefix and re-attaches it AFTER the theater (an old fix
+that preserved the page's only h1). Result: theater, then a complete second
+"page start" in the middle of every project. The dark box = .nlpf-banner
+gradient (project-type colors #334236/#183C3C blended toward black).
+
+THE FIX (ownership, not patches): on engine-active pages the engine owns page
+identity - it now emits ONE screen-reader h1 first in the DOM; breadcrumbs
+(visual nav only - schema untouched), nlpf header, pjx nav+intro all step aside
+via the same nadlan_showroom_engine_active_for gate; facility chips render at
+the head of the article section instead (nothing thrown away). Non-engine
+directory cards keep the old header - it is their whole page.
+
+SCROLL-JUMP ROOT: engine.js listened to resize + orientationchange +
+visualViewport.resize and re-rendered the unit screen with align:true after
+EVERY event - and on phones the URL bar collapsing during a normal reading
+scroll IS a resize. Four window.scrollTo calls teleported the reader back to
+the theater on every scroll gesture. Fix: the sync now proceeds only on a real
+rendered-mode mismatch (rotation/split-screen), checked at event time AND
+inside the 48ms settle; plain breakpoint crossings were always owned by the
+UNIT_V2_MQ change listener.
+
+DEPLOYED 1.72.184: 7 files, MD5 7/7, probe header+constant both 184, purge,
+snippets+media cleaned. VERIFIED live: element-level checks on 6 pages (both
+towers, variants, ashira) - nlpf/nlbc/pjx-nav/intro all gone, h1==1 (the SR
+one), chips inside article, theater + pjx bottom sections + facts table all
+kept. Article integrity: toha2 7,642 words / 29 h2s, park 7,228/29, ashira
+5,025/22. Real-Chrome screenshot: lead -> chapter pills -> chapter 1 -> clean
+editorial flow where the weld used to be.
+
+FLOATS: (1) engine seoBody renders the "al haproyekt" eyebrow + EMPTY h2 when
+seo_h/seo_p payload fields are unset - pre-existing on all engine pages, fix
+next release. (2) ToHa2 GLB is 2.75MB - on the owner's phone the model often
+does not finish loading (his screenshot showed the empty dark sketch box);
+consider mesh quantization or a lighter LOD. (3) Live-map tiles painted nothing
+on a stressed desktop session - check map init failure modes. (4) Beam v2 is
+NEXT: owner - "southwest inside your phone is meaningless"; the beam must say
+what the window faces relative to the real world (sea/rail/park/school with
+true bearings + distances).
+
+
 ## 2026-08-09 (98) - ULTRA BUNDLE ABSORBED: 1.72.183 deployed, unit journey ON for both commercial towers, ToHa2 gets a 46,848-triangle model
 Read the bundle end to end before touching anything. KEY FINDING from their own
 release evidence (3-release-evidence/*.json): their guarded deploy FAILED with

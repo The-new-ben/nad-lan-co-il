@@ -2340,6 +2340,18 @@ function scheduleUnitV2ViewportSync() {
     unitV2ViewportTimer = 0;
     return;
   }
+  /* Mobile browsers fire resize/visualViewport for URL-bar collapse, pinch
+     zoom and the keyboard - many times during one ordinary reading scroll.
+     A re-render here force-aligns the theater (window.scrollTo), so acting
+     on that noise teleports a reader back up on every scroll gesture. Only
+     a genuine rendered-mode mismatch (rotation, split-screen) may proceed;
+     plain breakpoint crossings are already owned by the UNIT_V2_MQ change
+     listener. */
+  if (!unitV2ViewportStateMismatch()) {
+    clearTimeout(unitV2ViewportTimer);
+    unitV2ViewportTimer = 0;
+    return;
+  }
   var theaterEl = ROOT.querySelector(".nl-theater--unit-v2");
   if (theaterEl) theaterEl.classList.add("nl-unit-v2-transitioning");
   clearTimeout(unitV2ViewportTimer);
@@ -2347,8 +2359,12 @@ function scheduleUnitV2ViewportSync() {
     unitV2ViewportTimer = 0;
     if (unitV2Enabled() && state.unitId && state.tool) {
       unitSurface.viewportSyncPending = true;
-    } else if (unitV2Enabled() && state.unitId) {
+    } else if (unitV2Enabled() && state.unitId &&
+               unitV2ViewportStateMismatch()) {
       syncUnitV2Breakpoint();
+    } else {
+      var settled = ROOT.querySelector(".nl-theater--unit-v2");
+      if (settled) settled.classList.remove("nl-unit-v2-transitioning");
     }
   }, 48);
 }

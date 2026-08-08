@@ -59,6 +59,16 @@ if ( ! function_exists( 'nadlan_breadcrumbs_render' ) ) {
 }
 add_filter( 'the_content', function ( $content ) {
 	if ( is_singular( array( 'nadlan_property', 'nadlan_project', 'nadlan_professional' ) ) && in_the_loop() && is_main_query() ) {
+		/* Owner evidence 2026-08-09: on showroom-engine project pages this
+		 * visual nav was re-attached AFTER the theater (the engine keeps
+		 * everything filters prepend), reading as "the page starts again with
+		 * breadcrumbs" mid-scroll. The engine topbar owns wayfinding there;
+		 * BreadcrumbList schema in wp_head is unaffected. */
+		if ( is_singular( 'nadlan_project' )
+			&& function_exists( 'nadlan_showroom_engine_active_for' )
+			&& nadlan_showroom_engine_active_for( get_the_ID() ) ) {
+			return $content;
+		}
 		return nadlan_breadcrumbs_render() . $content;
 	}
 	return $content;
