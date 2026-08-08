@@ -1,5 +1,46 @@
 # AGENT-LOG - the God brain (append-only, newest on top)
 
+## 2026-08-09 (98) - ULTRA BUNDLE ABSORBED: 1.72.183 deployed, unit journey ON for both commercial towers, ToHa2 gets a 46,848-triangle model
+Read the bundle end to end before touching anything. KEY FINDING from their own
+release evidence (3-release-evidence/*.json): their guarded deploy FAILED with
+HTTP 500, rolled_back=False, and helper-absence could not be proved - so live was
+still 182 and their private sandbox page was never created. I deployed their code
+MY way instead: the 36 files changed in commit f3a3d0d, every PHP linted (0
+failures), engine.js and i18n.js parsed, MD5 36/36, probe 183/183, health ok.
+My earlier 182 splice and their 183 had COLLIDED during the rebase, so I reset the
+plugin tree to theirs (git checkout f3a3d0d -- plugins/) - one implementation owns
+the engine, no Frankenstein.
+
+UNIT JOURNEY v2 IS NOW ON for all ten commercial pages (post meta
+nl_unit_scene_v2=on; rollback = delete the meta).
+
+ToHa2 3D: new parametric GLB - 46,848 triangles, 298.2m, 75 floors, elliptical
+taper with a sky-lobby recess and a 9 degree twist, proportions from the verified
+dossier. Marked project_model_generic=1 so the page states whose geometry it is.
+75 selectable floors seeded on all five ToHa2 pages.
+
+THREE SILENT-WRITE TRAPS found and beaten while seeding those floors (now in
+docs/playbooks/project-factory.md):
+ 1. An ASCII double quote inside Hebrew unit text (the gershayim in metre-square)
+    silently empties the ENTIRE project_3d_units write. Use U+05F4.
+ 2. 183 sanitizes and NORMALIZES units (169 chars in, 512 out) and requires
+    id/label/floor/rooms/sqm/dir/status per unit; dir should be the English enum.
+ 3. The client cannot distinguish a silent empty write from success - always read
+    back and COUNT inside the same request.
+
+LIVE PROOF on toha2 mobile: 75 hotspots, scene shows, beam present, 7 doors, back
+button, tool dialog is a direct body child at 375x812 exact, nested scrollers = [].
+
+NEW SKILL: docs/playbooks/project-factory.md - the A-to-Z factory (drop, gate,
+convert, seed, traps, 3D, journey flag, live sweep, record). Bundle preserved
+under docs/audits/unit-journey-bundle-2026-08-08 including their local v2
+screenshots and the release JSON.
+
+FLOATS: ToHa2 still has no official renders (our massing model is honest but not
+the architect geometry); 292 dead tmp- snippets have accumulated on the site
+because snippet deletes fail silently - a sweep is due.
+
+
 ## 2026-08-08 (97) - COMMERCIAL FLEET LIVE: THE PARK + ToHa2 in five languages each, standard-gated
 Read docs/PROJECT-STANDARD.md FIRST this time (owner: 'you are
 skipping the skills'). Package QA before any upload: 10 files,

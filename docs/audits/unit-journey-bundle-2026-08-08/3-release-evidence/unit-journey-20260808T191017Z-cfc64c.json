@@ -1,0 +1,136 @@
+{
+  "schema_version": 1,
+  "run_id": "unit-journey-20260808T191017Z-cfc64c",
+  "generated_at_utc": "2026-08-08T19:10:17.981940+00:00",
+  "target": {
+    "site": "https://nad-lan.co.il",
+    "plugin_file": "nadlan-config/nadlan-config.php",
+    "expected_version": "1.72.183",
+    "source_post_id": 6201,
+    "page_slug": "sandbox-apartment-journey",
+    "page_title": "[PRIVATE] מסע בחירת דירה מלא",
+    "project_display_name": "Rainbow Tel Aviv"
+  },
+  "artifact": {
+    "mode": "upload",
+    "sha256": "d629049401ace6cccbecc3b4775f2bd4fc7f1a1804397299d20d5f27748f19d7",
+    "archive_bytes": 3967455,
+    "entry_count": 248,
+    "uncompressed_bytes": 11188596
+  },
+  "helper": {
+    "name": "tmp-unit-journey-20260808T191017Z-cfc64c",
+    "route": "nadlan-private-release/v1/deploy-unit-journey-20260808T191017Z-cfc64c",
+    "id": 376,
+    "code_sha256": "7bc356c78ff6cb321cac6c602fcdf5cdeae44019825cca26c7ab27bb3ba86a5d"
+  },
+  "checks": {
+    "local_artifact": {
+      "sha256": "d629049401ace6cccbecc3b4775f2bd4fc7f1a1804397299d20d5f27748f19d7",
+      "archive_bytes": 3967455,
+      "entry_count": 248,
+      "uncompressed_bytes": 11188596,
+      "crc_valid": true
+    },
+    "auth_preflight": {
+      "authenticated": true,
+      "user_id": 1,
+      "code_snippets_collection_readable": true,
+      "snippet_count_before": 375
+    },
+    "public_health_preflight": {
+      "http_status": 200,
+      "version": "1.72.182",
+      "reachable": true
+    },
+    "inactive_helper": {
+      "id": 376,
+      "name": "tmp-unit-journey-20260808T191017Z-cfc64c",
+      "active": false,
+      "scope": "global",
+      "code_sha256": "7bc356c78ff6cb321cac6c602fcdf5cdeae44019825cca26c7ab27bb3ba86a5d"
+    },
+    "active_helper": {
+      "id": 376,
+      "name": "tmp-unit-journey-20260808T191017Z-cfc64c",
+      "active": true,
+      "scope": "global",
+      "code_sha256": "7bc356c78ff6cb321cac6c602fcdf5cdeae44019825cca26c7ab27bb3ba86a5d"
+    },
+    "live_before": {
+      "run_id": "unit-journey-20260808T191017Z-cfc64c",
+      "plugin": {
+        "plugin_file": "nadlan-config/nadlan-config.php",
+        "version": "1.72.182",
+        "active": true,
+        "inventory": {
+          "file_count": 355,
+          "bytes": 21260818,
+          "digest": "981282a085c20b2f69965057f261768f531b2078b39f5cfa06ca8ecdc74e4332"
+        }
+      },
+      "lock_free": true,
+      "lock_owned": false,
+      "state_phase": "none",
+      "target_exact": "nadlan-config/nadlan-config.php",
+      "artifact": {
+        "mode": "upload",
+        "sha256": "d629049401ace6cccbecc3b4775f2bd4fc7f1a1804397299d20d5f27748f19d7",
+        "archive_bytes": 3967455,
+        "entry_count": 248,
+        "uncompressed_bytes": 11188596
+      },
+      "upload_temp_absent": true,
+      "http_status": 200
+    },
+    "artifact_upload": {
+      "sha256": "d629049401ace6cccbecc3b4775f2bd4fc7f1a1804397299d20d5f27748f19d7",
+      "archive_bytes": 3967455,
+      "entry_count": 248,
+      "uncompressed_bytes": 11188596,
+      "chunk_bytes_max": 131072,
+      "chunk_count": 31,
+      "acknowledged_chunks": 31,
+      "resume_count": 0,
+      "server_verified": true
+    },
+    "verified_upload_status": {
+      "state_phase": "upload_verified",
+      "verified": true,
+      "temp_exists": true,
+      "temp_safe": true,
+      "temp_bytes": 3967455,
+      "next_index": 31,
+      "total_chunks": 31
+    },
+    "failure_status": {
+      "http_status": 200,
+      "state_phase": "upload_verified",
+      "backup_ready": false,
+      "upload_temp_absent": true,
+      "upload_temp_safe": true,
+      "upload_temp_bytes": 0
+    },
+    "failure_finalize": {
+      "http_status": 200,
+      "resource_cleanup_complete": true,
+      "backup_deleted": true,
+      "lock_released": true,
+      "state_deleted": true,
+      "upload_temp_absent": true,
+      "helper_retained_for_phase_two": true,
+      "driver_attempts": 1
+    },
+    "independent_helper_cleanup": {
+      "target_absent": false,
+      "main_helper_absent_from_collection": true,
+      "main_helper_get_status": 500,
+      "main_route_status": 404,
+      "secondary_helpers_absent": false,
+      "release_resource_cleanup_proved": false,
+      "error": "Main helper row or route absence could not be proved"
+    }
+  },
+  "passed": false,
+  "error": "Guarded plugin deployment returned HTTP 500 (nadlan_release_deploy_failed); rolled_back=False"
+}
