@@ -1,5 +1,34 @@
 # AGENT-LOG - the God brain (append-only, newest on top)
 
+## 2026-08-08 (91) - v1.72.173: ONE language switcher; the "missing content" scare was cache; spokes package passes gates
+Owner saw THREE language switchers on a project page ("two or
+three sources welded into one") - verified true: (1) our 169
+topbar, (2) the engine's dark in-page header row (engine.js
+langBar), (3) the engine's dark in-page FOOTER languages column
+(engine.js footer). The dark bands ARE the engine app (.nl-app
+renders its own header+footer mid-page - the "welded pages"
+anatomy). 173 = ONE SWITCHER LAW: both engine rows defer when
+the server topbar (.nlptop-l) exists. Verified live on rainbow:
+distinctSwitchers=1. THE SCARE: owner reported rainbow mobile
+"only first paragraph" - server HTML measured COMPLETE (3,832
+words) and clean mobile emulation rendered the full article
+(2,996-word .nadlan-project-article present); root cause = his
+device caught a page cached during tonight's five back-to-back
+deploys. Sitewide purge run; fleet sweep now carries a
+COMPLETENESS GATE (total words >= 1500) so truncation can never
+pass again. Sweep after 173: 7/8 PASS with full word counts
+(3,741-7,447), utopia notice-order still the one open defect.
+SPOKES PACKAGE (owner upload, "Soul Ultra"): 74 articles, 16
+topics x up to 5 langs, 420,242 words, sha256 integrity ALL OK,
+zero bad dashes, single h1 each, meta present; the 4 hebrew-leak
+flags are deliberate bilingual legal-term teaching (מפרט מכר,
+גוש/חלקה, תב"ע transliterated) - PASS. Attach plan: GRADUAL, 3
+batches - wave-1 HE (11 children under page 17 + anchor
+interlinks), wave-1 variants under lang parents (+2-3 days,
+page-lang cluster mechanism already live), wave-2 (+2-3 days).
+Seeding = next run, starts by reading
+strategy/internal-link-and-hreflang-map.md for slugs.
+
 ## 2026-08-08 (90) - v1.72.171+172: THE MATCHER IS LIVE on /new-projects/; openings 7/8 content-first
 The owner's "magic tool" shipped: [nl_matcher] on the anchor -
 chip quiz, zero typing (city / rooms / budget / delivery year /

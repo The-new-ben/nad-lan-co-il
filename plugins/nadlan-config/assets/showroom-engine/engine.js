@@ -158,6 +158,10 @@
     return (state.page === "project" && p && p.lang_urls && p.lang_urls[l]) ? p.lang_urls[l] : "#";
   }
   function langBar() {
+    // ONE switcher law (owner 2026-08-08): the server-rendered topbar
+    // (.nlptop-l) owns language switching on WordPress project pages; a second
+    // row in this header read as "the page has three language switchers".
+    if (document.querySelector(".nlptop-l")) { return ""; }
     var langs = pageLangs();
     return '<div class="nl-langs" role="group" aria-label="language">' + langs.map(function (l) {
       return '<button class="nl-lang" data-act="lang" data-id="' + l + '" aria-pressed="' + (l === state.lang) + '">' + esc(l.toUpperCase()) + "</button>";
@@ -943,7 +947,9 @@
   /* footer */
   function footer() {
     var projLinks = SR.order.map(function (k) { return '<li><a href="project.html?project=' + esc(k) + '">' + esc(t(SR.projects[k].name_key)) + "</a></li>"; }).join("");
-    var langLinks = pageLangs().map(function (l) { return '<li><a href="' + esc(langHref(l)) + '" data-act="lang" data-id="' + l + '">' + esc(t("lang_" + l)) + "</a></li>"; }).join("");
+    // ONE switcher law (owner 2026-08-08): when the server topbar owns language
+    // switching, this footer column was the page's THIRD language switcher.
+    var langLinks = document.querySelector(".nlptop-l") ? "" : pageLangs().map(function (l) { return '<li><a href="' + esc(langHref(l)) + '" data-act="lang" data-id="' + l + '">' + esc(t("lang_" + l)) + "</a></li>"; }).join("");
     return '<footer class="nl-footer"><div class="nl-wrap"><div class="nl-footer__row">' +
       '<div><a class="nl-brand" href="home.html"><span class="nl-brand__mark">N</span><span class="nl-brand__name" style="color:#efe7d6">' + esc(t("brand")) + '</span></a><p style="color:#b8b1a2;font-size:14px;margin-top:12px;max-width:34ch">' + esc(t("footer_tagline")) + "</p></div>" +
       "<div><h5>" + esc(t("footer_col_projects")) + "</h5><ul>" + projLinks + "</ul></div>" +
