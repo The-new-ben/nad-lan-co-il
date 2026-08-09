@@ -1,5 +1,53 @@
 # AGENT-LOG - the God brain (append-only, newest on top)
 
+## 2026-08-10 (101) - "COMPLETE ALL" RUN: beam v3 view-up 3D map (187), ToHa2 GLB 3x lighter, menu fix, 278 dead snippets swept, landmarks fleet-wide
+Owner: complete all, no quality compromise, QA reports to follow. Shipped:
+
+1) BEAM V3 (1.72.187, 4 files, MD5 4/4, probe 187/187): view-up convention -
+the window direction always points UP; the cone is fixed upward and the map
+underneath rotates to the unit bearing, pitch 52, zoom 15.9, with a
+fill-extrusion 3D BUILDINGS layer (composite/building, height/min_height) so
+the beam shows the actual city mass, not a flat street grid. Landmark dots,
+tags and a new true-north N tick all draw rotation-relative. v2 caption is
+always bottom (cone is always up). Both beam builders + schematic fallback
+share the convention.
+
+2) ToHa2 GLB DIET: 2,750KB -> 940KB (66 percent cut, zero visual change).
+How: SEG 96->64, uint16 indices (62,592 verts, guarded), and the NORMAL
+accessor dropped entirely - verts are unshared per quad, so client-computed
+flat normals are byte-identical to what we stored (glTF spec). 31,232 tris,
+298.2m, same massing. Binary validated locally (magic/chunks/index bounds)
+before upload; swapped as VERSIONED filename toha2-tower-2.glb on all 5 pages
+(cache-proof), serves 200 at exactly 940,000 bytes. Generator preserved as
+scratchpad glb-gen-toha2-v2.py.
+
+3) LANDMARKS FLEET-WIDE: auto-seeded beam landmarks for every residential
+base project with verified geo - bank of real north/central TLV public places
+(sea/park/port/Reading/Sde Dov site/university+rail/Habima/Savidor/Azrieli/
+Sarona), selected per project by TRUE aerial distance (150m-6.5km), max 6,
+copied to language siblings, read-back verified. Sanity examples: duo sea
+897m + Yarkon 930m; yoo Savidor 744m; meier Habima 1,159m; ashdar-einstein
+university 527m. Projects already holding landmarks (commercial) untouched.
+
+4) MENU FIX: template part 5103 (header) sent 'madrichim' to
+/buying-apartment/; now /guides/. Located by DB search (wp_navigation id 4
+and footer 337 hold CORRECT buying-apartment links - untouched). Verified on
+the live homepage.
+
+5) SNIPPET SWEEP: 278 dead tmp-% snippets deleted from the DB (REST deletes
+had failed silently for weeks); 114 real snippets remain. The snippets REST
+list and rest_api_init overhead just got much lighter.
+
+FULL LIVE VERIFICATION 9/9 GREEN: ver 187, GLB referenced+serves+magic,
+landmarks payload on commercial AND residential, weld still dead, h1==1,
+menu fixed, beam v3 markers in served engine.js.
+
+FLOATS: owner QA reports incoming (his verdicts overrule everything);
+Park GLB (1.17MB) can take the same diet if his QA flags load time; area-tool
+big map could also gain the 3D-buildings layer + view-up (kept minimal this
+run - beam first, one variable at a time).
+
+
 ## 2026-08-09 (100) - 1.72.185+186: BEAM V2 - the window now names what it faces (landmarks, true bearings, aerial distances)
 Owner: "southwest inside your phone is meaningless... is it facing the sea? the
 school? the pool?" Delivered: the beam carries the project's named public

@@ -406,6 +406,19 @@ body:is(.nl-unit-v2-active, .nl-unit-journey-active) #nla11y-btn:focus-visible {
   color: #d9cfb4;
 }
 
+/* True-north tick: the view-up beam rotates the world, N keeps it honest. */
+.nl-unit-beam__north {
+  position: absolute;
+  z-index: 3;
+  transform: translate(-50%, -50%);
+  font-size: clamp(8.5px, 1.2vw, 10px);
+  font-weight: 700;
+  letter-spacing: .04em;
+  color: rgba(243, 217, 140, .62);
+  text-shadow: 0 0 3px rgba(12, 16, 13, .9);
+  pointer-events: none;
+}
+
 /* Honest no-map fallback: a schematic coast/street field, never an empty box. */
 .nl-unit-beam.is-schematic .nl-unit-beam__map::before {
   content: "";

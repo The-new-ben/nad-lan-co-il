@@ -147,6 +147,19 @@
   color: #d9cfb4;
 }
 
+/* True-north tick: the view-up beam rotates the world, N keeps it honest. */
+.nl-unit-beam__north {
+  position: absolute;
+  z-index: 3;
+  transform: translate(-50%, -50%);
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: .04em;
+  color: rgba(243, 217, 140, .62);
+  text-shadow: 0 0 3px rgba(20, 18, 14, .9);
+  pointer-events: none;
+}
+
 .nl-unit-beam__svg {
   z-index: 2;
   pointer-events: none;

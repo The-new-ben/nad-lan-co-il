@@ -1671,11 +1671,17 @@ function renderBeamScene(u) {
   var tags = "";
   var inBeam = [];
 
+  /* View-up convention: the window's own direction always points UP, the map
+     below rotates to match (mountBeamScene reads data-bearing), and every
+     overlay angle is drawn relative to that rotation. A small N tick keeps
+     the true orientation honest. */
+  var rot = bearing == null ? 0 : bearing;
+
   marks.forEach(function (m) {
     /* distance bands keep near things near the pin and far things at the rim */
     var r = m.dist <= 600 ? 17 : (m.dist <= 1800 ? 29 : 41);
-    var p = beamPoint(m.bearing, r);
-    var lp = beamPoint(m.bearing, Math.min(r + 7, 46));
+    var p = beamPoint(m.bearing - rot, r);
+    var lp = beamPoint(m.bearing - rot, Math.min(r + 7, 46));
     var hit = bearing != null && beamAngleDiff(m.bearing, bearing) <= 26;
     if (hit) inBeam.push(m);
     dots += '<circle cx="' + p.x.toFixed(1) + '" cy="' + p.y.toFixed(1) +
@@ -1687,6 +1693,9 @@ function renderBeamScene(u) {
       (hit ? "<i>" + esc(beamDistText(m.dist)) + "</i>" : "") +
       "</span>";
   });
+  var np = beamPoint(-rot, 44.5);
+  tags += '<span class="nl-unit-beam__north" style="left:' + np.x.toFixed(1) +
+    '%;top:' + np.y.toFixed(1) + '%" aria-hidden="true">N</span>';
 
   inBeam.sort(function (a, b) { return a.dist - b.dist; });
   var note;
@@ -1716,7 +1725,7 @@ function renderBeamScene(u) {
             '<stop offset="1" stop-color="#f4df9d" stop-opacity=".18"/>' +
           '</linearGradient>' +
         '</defs>' +
-        beamShapeMarkup(bearing, "nl-unit-beam-gold", "#1b1a17") +
+        beamShapeMarkup(bearing == null ? null : 0, "nl-unit-beam-gold", "#1b1a17") +
         dots +
       '</svg>' +
       tags +
@@ -1809,15 +1818,22 @@ function mountBeamScene(scope) {
   try {
     window.mapboxgl.accessToken = SR.config.mapbox_token;
 
+    /* View-up: rotate the map so the window's own direction points up, tilt
+       it and draw the 3D building mass - the beam should show the actual
+       city fabric the window faces, not an abstract street grid. */
+    var isDark = figure.classList.contains("nl-unit-beam--v2");
+    var viewBearing = parseFloat(figure.getAttribute("data-bearing"));
+    if (!isFinite(viewBearing)) viewBearing = 0;
+
     var map = new window.mapboxgl.Map({
       container: host,
-      style: figure.classList.contains("nl-unit-beam--v2")
+      style: isDark
         ? "mapbox://styles/mapbox/dark-v11"
         : "mapbox://styles/mapbox/light-v11",
       center: [geo.lng, geo.lat],
-      zoom: 15.4,
-      pitch: 0,
-      bearing: 0,
+      zoom: 15.9,
+      pitch: 52,
+      bearing: viewBearing,
       interactive: false,
       attributionControl: true
     });
@@ -1829,6 +1845,24 @@ function mountBeamScene(scope) {
       if (unitSurface.beamMap !== map) return;
       figure.classList.remove("is-map-pending", "is-schematic");
       figure.classList.add("is-map-ready");
+      try {
+        if (!map.getLayer("nl-bld-3d")) {
+          map.addLayer({
+            id: "nl-bld-3d",
+            source: "composite",
+            "source-layer": "building",
+            filter: ["==", "extrude", "true"],
+            type: "fill-extrusion",
+            minzoom: 14,
+            paint: {
+              "fill-extrusion-color": isDark ? "#46564b" : "#d9d2c2",
+              "fill-extrusion-height": ["get", "height"],
+              "fill-extrusion-base": ["get", "min_height"],
+              "fill-extrusion-opacity": 0.8
+            }
+          });
+        }
+      } catch (e) {}
       try { map.resize(); } catch (e) {}
       if (unitV2Enabled()) restoreMapAttributionTabbing(figure);
     });
@@ -1938,24 +1972,23 @@ function unitV2View(u) {
 function renderBeamSceneV2(u) {
   var view = unitV2View(u);
   var bearing = unitBearing(u);
-  /* Keep the compact caption opposite the cone so the directional evidence is
-     never hidden by its own call-to-action. South-facing cones get a top
-     caption; north/east/west and unknown states use the bottom edge. */
-  var captionClass = bearing != null && bearing > 90 && bearing < 270
-    ? " is-caption-top"
-    : " is-caption-bottom";
+  /* View-up convention: the cone always points UP now (the map rotates
+     underneath it), so the caption always belongs on the bottom edge. */
+  var captionClass = " is-caption-bottom";
 
   /* Beam v2: the same landmark ring as the v1 panel beam - real bearings,
      real aerial distances - so the caption answers what the window faces
-     instead of inviting a click for its own sake. */
+     instead of inviting a click for its own sake. View-up: the window's
+     direction points UP and the map underneath rotates to match. */
   var marks = beamLandmarks();
   var dots = "";
   var tags = "";
   var inBeam = [];
+  var rot = bearing == null ? 0 : bearing;
   marks.forEach(function (m) {
     var r = m.dist <= 600 ? 17 : (m.dist <= 1800 ? 29 : 41);
-    var p = beamPoint(m.bearing, r);
-    var lp = beamPoint(m.bearing, Math.min(r + 7, 46));
+    var p = beamPoint(m.bearing - rot, r);
+    var lp = beamPoint(m.bearing - rot, Math.min(r + 7, 46));
     var hit = bearing != null && beamAngleDiff(m.bearing, bearing) <= 26;
     if (hit) inBeam.push(m);
     dots += '<circle cx="' + p.x.toFixed(1) + '" cy="' + p.y.toFixed(1) +
@@ -1967,6 +2000,9 @@ function renderBeamSceneV2(u) {
       (hit ? "<i>" + esc(beamDistText(m.dist)) + "</i>" : "") +
       "</span>";
   });
+  var np = beamPoint(-rot, 44.5);
+  tags += '<span class="nl-unit-beam__north" style="left:' + np.x.toFixed(1) +
+    '%;top:' + np.y.toFixed(1) + '%" aria-hidden="true">N</span>';
   inBeam.sort(function (a, b) { return a.dist - b.dist; });
   var caption = inBeam.length
     ? t("unit_beam_ahead") + " " + inBeam.slice(0, 3).map(function (m) {
@@ -1990,7 +2026,7 @@ function renderBeamSceneV2(u) {
             '<stop offset="1" stop-color="#f4df9d" stop-opacity=".12"/>' +
           '</linearGradient>' +
         '</defs>' +
-        beamShapeMarkup(bearing, "nl-unit-beam-gold", "#11130f") +
+        beamShapeMarkup(bearing == null ? null : 0, "nl-unit-beam-gold", "#11130f") +
         dots +
       '</svg>' +
       tags +
