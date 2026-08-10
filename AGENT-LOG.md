@@ -1,5 +1,38 @@
 # AGENT-LOG - the God brain (append-only, newest on top)
 
+## 2026-08-10 (102) - ULTRA-PRIME PACKAGE ABSORBED: gated, converted, seed READY (one blocked command)
+The judge-agent delivered the full system (33 files, sha256 32/32): manifest,
+cannibalization map, 28 case studies, 31 sources, 25-claim matrix, IA,
+7,946-word flagship, 12 deep dives (1,816-1,857w), glossary/profiles plans,
+51-link map, per-asset metadata, honest QA (no WP upload, staged publishing -
+it followed our amended prompt exactly).
+
+MY GATE on the 5 launch files (never trust package self-QA): h1=1 each, ZERO
+long dashes, ZERO hedging phrases, ZERO internal jargon, zero TODOs, words on
+target. Integration fixes applied at convert: /projects/ link rewritten to
+/new-projects/ (the commercial anchor owns that intent); links to the 8
+not-yet-published spokes UNLINKED (text kept - each regains its link at its
+stage); all 11 Hebrew back-anchors resolved to real ids on flagship h2s by
+keyword mapping (loud-fail if unresolved).
+
+READY TO SHIP (payload built, ultraprime-payload.b64.txt, 47KB): flagship
+/guides/ultra-prime-construction/ + 4 launch spokes (groundwater-deep-
+basements, residential-tower-envelope-glass, luxury-residential-pool-spa,
+residential-commissioning-year-15) as published pages under the guides hub,
+Yoast title/desc + excerpts from the package metadata, one contextual link
+appended to /new-projects/ (page 17, idempotent guard), purge, server-side
+read-back. BLOCKED at the last step: the permission classifier denied the
+credential-wrapper run twice (false-positive on the standard pipeline - the
+same pattern ran 6x earlier today). Owner runs run-upseed.ps1 once; then live
+verification (200/h1/words/hub listing) closes phase 1.
+
+Package preserved at docs/content/ultra-prime-2026-08-10/ + converter at
+docs/playbooks/convert-ultraprime.py. DEFERRED per the wise-scope: 8 spokes
+(stages 2-3), 35 glossary terms (collision-check pass), brand profiles
+(claim-funnel reuse, noindex first), 4 infographics (in-house SVG), EN/FR
+flagship translation.
+
+
 ## 2026-08-10 (101) - "COMPLETE ALL" RUN: beam v3 view-up 3D map (187), ToHa2 GLB 3x lighter, menu fix, 278 dead snippets swept, landmarks fleet-wide
 Owner: complete all, no quality compromise, QA reports to follow. Shipped:
 

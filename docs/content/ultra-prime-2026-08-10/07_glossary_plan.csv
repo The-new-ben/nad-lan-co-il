@@ -1,0 +1,36 @@
+﻿id,term,current_site_status,recommended_action,plain_definition,placement,linked_chapters
+G01,פרוגרמה תפעולית,Unknown until WordPress check,Expand existing if present,"What spaces, users, staff and operating scenarios the building must support",Body + glossary,"Chapters 1, 8, 12"
+G02,דרישות הבעלים לפרויקט OPR,Unknown,New only if absent,Documented performance and operational requirements used as a commissioning reference,Depth box + glossary,"Chapters 1, 15"
+G03,קיר דיאפרגמה,Unknown,Expand existing if present,Deep reinforced-concrete wall used to retain an excavation and sometimes form a permanent basement wall,Body + glossary,"Chapters 3, 4"
+G04,דיפון,Unknown,Expand existing if present,Temporary or permanent system that supports the sides of an excavation,Body + glossary,"Chapters 3, 4"
+G05,כלונסאות,Unknown,Expand existing if present,Deep foundation elements transferring loads to suitable soil or rock layers,Body + glossary,Chapter 3
+G06,ברטה,Unknown,New only if absent,Large rectangular deep foundation element or load-bearing diaphragm element,Glossary,Chapter 3
+G07,רפסודת יסוד,Unknown,Expand existing if present,Thick foundation slab distributing building loads over a broad area,Body + glossary,Chapter 3
+G08,שאיבת מי תהום,Unknown,New only if absent,Temporary or controlled lowering and management of groundwater during excavation,Depth box + glossary,Chapter 3
+G09,איטום קופסה,Unknown,New only if absent,Continuous waterproofing strategy around basement walls and slab,Body + glossary,"Chapters 3, 4"
+G10,בנייה מלמעלה למטה,Unknown,New only if absent,Top-down method in which permanent slabs help brace excavation as digging proceeds,Glossary,Chapter 4
+G11,ליבה מבנית,Unknown,Expand existing if present,"Stiff central zone, often around lifts and stairs, that stabilizes a tower",Body + glossary,Chapter 5
+G12,קורת העברה,Unknown,Expand existing if present,Deep structural member transferring loads between different grids,Body + glossary,Chapter 5
+G13,Outrigger,Unknown,New only if absent,Structural element linking the core to perimeter columns to increase tower stiffness,Depth box + glossary,Chapter 5
+G14,תאוצת רוח,Unknown,New only if absent,Rate of change in building motion that occupants may perceive during wind,Body + glossary,Chapter 5
+G15,מערכת שיכוך,Unknown,Expand existing if present,"Mass, liquid or viscous system that reduces building movement or vibration",Body + glossary,Chapter 5
+G16,יחידת זכוכית בידודית IGU,Unknown,New only if absent,Two or more panes separated by a sealed cavity,Body + glossary,Chapter 7
+G17,ציפוי Low-E,Unknown,New only if absent,Low-emissivity coating that changes heat and radiation transfer through glass,Body + glossary,Chapter 7
+G18,גשר תרמי,Unknown,Expand existing if present,Local path through the envelope where heat passes more easily,Body + glossary,Chapter 7
+G19,מחסום אדים,Unknown,New only if absent,Layer controlling water-vapour movement through an assembly,Body + glossary,"Chapters 7, 12"
+G20,מוק-אפ מעטפת,Unknown,New only if absent,Full-scale sample of a façade zone built and tested before mass installation,Depth box + glossary,"Chapters 7, 14"
+G21,חדירות אוויר,Unknown,New only if absent,Uncontrolled air leakage through joints and assemblies,Glossary,Chapter 7
+G22,Commissioning למעטפת BECx,Unknown,New only if absent,Structured verification that enclosure design and installation meet owner requirements,Depth box + glossary,"Chapters 7, 14"
+G23,Back of house,Unknown,New only if absent,Service areas and routes that support the visible resident experience,Body + glossary,Chapter 8
+G24,אזור לחץ מים,Unknown,New only if absent,Group of floors served within a controlled water-pressure range,Body + glossary,Chapter 9
+G25,סחרור מים חמים,Unknown,Expand existing if present,Return loop that keeps hot water close to fixtures and reduces waiting,Body + glossary,Chapter 9
+G26,יתירות N+1,Unknown,New only if absent,One additional component beyond the minimum needed for normal operation,Body + glossary,Chapter 9
+G27,UPS,Unknown,Expand existing if present,Short-duration uninterruptible power for critical electronics and controls,Body + glossary,"Chapters 9, 13"
+G28,עומס קריטי,Unknown,New only if absent,Equipment or service selected to remain powered during an outage,Glossary,Chapter 9
+G29,BMS,Unknown,Expand existing if present,Building management system that monitors and controls technical systems,Body + glossary,"Chapters 9, 13"
+G30,פרוטוקול פתוח,Unknown,New only if absent,Published communication method enabling products from multiple suppliers to interoperate,Body + glossary,Chapter 13
+G31,רצפה צפה,Unknown,New only if absent,Floor layer isolated from the structure to reduce impact sound and vibration,Body + glossary,Chapter 10
+G32,נתיב עקיפת רעש,Unknown,New only if absent,"Path through floors, ceilings, ducts or joints that lets sound bypass a separating wall",Body + glossary,Chapter 10
+G33,כלוראמינים,Unknown,New only if absent,Combined-chlorine compounds that can off-gas above pool water and irritate occupants,Body + glossary,Chapter 12
+G34,איזון הידראולי,Unknown,New only if absent,Adjustment of water flows so each branch receives the intended amount,Glossary,"Chapters 9, 12"
+G35,Commissioning,Unknown,Expand existing if present,"Documented process verifying systems against defined requirements through design, construction and early operation",Body + glossary,"Chapters 1, 15"

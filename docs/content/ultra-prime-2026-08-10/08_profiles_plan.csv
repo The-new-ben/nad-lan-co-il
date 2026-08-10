@@ -1,0 +1,13 @@
+﻿id,entity,profile_type,priority,independent_value,evidence_gate,phase,standalone_page_recommendation
+P01,111 West 57th Street,Project case profile,High,"Wind comfort, slenderness, shear walls and tuned mass damper",WSP plus architect and independent operating source required,Stage 3,"Yes, if a second independent source and current operation data are secured"
+P02,One Dalton,Project case profile,High,"Hotel-residential systems, metering, commissioning and modular replacement",WSP plus hotel/residence operating materials,Stage 3,Yes
+P03,Złota 44,Project case profile,High,"Acoustic services, pool heat recovery and early home management",Arup plus current operator or technical documentation,Stage 3,Yes
+P04,Bosco Verticale,Project case profile,High,Landscape as common infrastructure and centralized maintenance,Designer plus independent maintenance or condominium source,Stage 3,Yes
+P05,53W53,Project case profile,Medium-high,Concrete diagrid and rebar mock-up,WSP plus contractor or technical paper,Stage 3,Yes after source expansion
+P06,One Thousand Museum,Project case profile,Medium-high,"Exoskeleton, permanent GFRC formwork and column-free interiors",ZHA plus structural engineer or contractor,Stage 3,Yes after source expansion
+P07,One Sydney Harbour,Project case profile,Medium,"Custom façade, daylight and lower-carbon aluminium procurement","Lendlease plus façade engineer, supplier or independent certification",Stage 3,Conditional
+P08,One Hyde Park,Project case profile,Medium,"Separate service cores, privacy and layered façade",RSHP plus building services or operating source,Stage 3,Conditional
+P09,Porsche Design Tower Miami,Project case profile,Low at launch,Vehicle lift system,"Brand source plus independent inspection, reliability and maintenance evidence",Do not publish at launch,No until independent evidence is found
+P10,Central Park Tower Club,Amenities profile,Low at launch,Scale of amenity program and staffing,"Official sales source plus operating rules, capacity and budget evidence",Do not publish at launch,"No, keep as case card"
+P11,"WSP, Arup or a product brand",Company profile,Low,No company receives a page merely for appearing in case studies,"Independent search need, original interview or unique technical data required",Not planned,No current justification
+P12,"Named stone, lift or smart-home brand",Manufacturer profile,Low,"Product-level evaluation only when model, performance and Israel support are verified","Current Israel representation, warranty, spares, integrators and service evidence",Not planned,No current justification
