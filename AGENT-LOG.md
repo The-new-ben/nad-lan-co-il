@@ -1,5 +1,52 @@
 # AGENT-LOG - the God brain (append-only, newest on top)
 
+## 2026-08-11 (103) - 1.72.188: GHOST CITY PAGES MATERIALIZED (owner law: no ghosts, no invisible flags, no redirect farms), OWNER ALERTS LIVE
+Root-caused the owner's GSC cannibalization find: inc/city-hubs.php v1 drew
+168 ghost pages at /city/<city>/<kind>/ (rewrite, no post behind them) and
+printed <title>/<meta robots> INSIDE THE BODY - invalid for engines - so all
+served as anonymous "נדלן" pages, fed to Google by a private sitemap. The
+noindex "guard" never worked once. Jerusalem's hub outranked/split the head
+keyword against /projects/ + /new-projects/ (which ALSO both declare
+"פרויקטים חדשים" word-for-word - crown decision still pending with owner).
+
+SHIPPED (owner-approved, per his laws):
+1) city-hubs v2: ghost dispatcher, body-printed head tags and private sitemap
+DELETED (not disabled). Kept nadlan_hub_query + new [nadlan_city_hub] shortcode
+rendering the live data blocks (stats, card grid, uplink to /projects/ +
+/new-projects/). One-time rewrite flush (nadlan_hub_rules_v=3).
+2) REAL PAGES batch 1 (21 pages): root /city/ index + 10 single-word cities
+(ירושלים 197 projects, חיפה 44, נתניה 40, הרצליה 25, חולון 25, גבעתים 24,
+חדרה 21, אשדוד 17, רמלה 17, יבנה 15) each: city parent page + projects hub
+child at the EXACT ghost URL (zero redirects, zero equity loss). City-first
+titles (never leading with the head phrase), h1 in body (the guides trap),
+Yoast title/desc, live shortcode data. VERIFIED live: Jerusalem head title
+"ירושלים: פרויקטים בבנייה והתחדשות עירונית", h1=1, 24 cards render, real
+canonical, ghost sitemap 404. Multi-word cities (פתח תקוה, ראשון לציון, tel
+aviv variants) deferred to batch 2 (slug space-vs-dash design + the TLV
+taxonomy dup) - their old ghost URLs now 404 (they were anonymous thin pages;
+owner banned redirects; natural removal).
+3) inc/alerts.php NEW: instant owner email on user_register, new nadlan_lead,
+claim_status->pending, nadlan_revenue_event; weekly digest (billing key
+missing, pending claims, week leads, cities qualifying for a hub page -
+alert-first, never auto-create). NOTE: site mail lands in spam until DKIM
+(other agent's branch) - owner told to check spam.
+
+FACTS ESTABLISHED THIS ARC: payments = GreenInvoice/Morning bridge EXISTS in
+code but webhook secret NEVER configured, 0 orders ever, 2 paid_tier cards are
+manual/demo - nobody ever paid. The "pending claim" on card 3552 (hadar yosef)
+has EMPTY claimant fields = stale test flag (reset awaiting owner ok). Redirect
+census: NO redirect farms (no htaccess, no plugins, 2 legit 301s in code).
+Owner deleted the codex_nadlan_admin service user - the OTHER agent's
+credentials are dead (ours ride user 1). Owner password was reset properly.
+WEB RESEARCH (owner-ordered) backed the plan: 38 percent of cannibalization =
+same anchor text to different pages; virtual->real on same URL needs no
+redirects; differentiation over consolidation when intents differ.
+
+OPEN: crown decision (/projects/ vs /new-projects/ title split) - OWNER CALL;
+batch 2 cities; contractors hubs (124) materialization; GreenInvoice key
+connection; GSC access for the agent; card 3552 flag reset.
+
+
 ## 2026-08-10 (102) - ULTRA-PRIME PACKAGE ABSORBED: gated, converted, seed READY (one blocked command)
 The judge-agent delivered the full system (33 files, sha256 32/32): manifest,
 cannibalization map, 28 case studies, 31 sources, 25-claim matrix, IA,
