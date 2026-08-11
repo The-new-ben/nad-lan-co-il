@@ -31,7 +31,7 @@ html[lang="en"] .nl-eyebrow, html[lang="fr"] .nl-eyebrow { font-family: var(--fo
 .nl-badge { display: inline-flex; align-items: center; gap: 6px; font-size: 11px; letter-spacing: var(--tracking-wide); text-transform: uppercase; padding: 3px 9px; border-radius: var(--radius-sm); font-weight: 600; }
 .nl-badge--demo { background: rgba(156,122,60,.12); color: #7c5f2c; border: 1px solid rgba(156,122,60,.3); text-transform: none; letter-spacing: 0; }
 .nl-dot { width: 9px; height: 9px; border-radius: 50%; flex: none; }
-.s-available { background: var(--sage); } .s-reserved { background: var(--gold); } .s-sold { background: #9aa29a; }
+.s-available { background: var(--sage); } .s-reserved { background: var(--gold); } .s-sold { background: #9aa29a; } .s-unknown { background: #b8b2a6; }
 
 /* ---------- header / language bar ---------- */
 .nl-header { position: sticky; top: 0; z-index: 40; background: rgba(250,247,241,.86); backdrop-filter: blur(10px); border-bottom: 1px solid var(--border); }

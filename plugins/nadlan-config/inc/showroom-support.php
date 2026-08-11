@@ -41,8 +41,9 @@ if ( ! function_exists( 'nadlan_p3d_status_label' ) ) {
 			'available' => 'זמינה לפנייה',
 			'reserved'  => 'בתהליך בדיקה',
 			'sold'      => 'לא זמינה',
+			'unknown'   => 'סטטוס לבירור מול היזם',
 		);
-		return $labels[ $status ] ?? $labels['available'];
+		return $labels[ $status ] ?? $labels['unknown'];
 	}
 }
 
@@ -283,9 +284,12 @@ if ( ! function_exists( 'nadlan_p3d_clean_unit_items' ) ) {
 				continue;
 			}
 
-			$status = sanitize_key( (string) ( $u['status'] ?? 'available' ) );
-			if ( ! in_array( $status, array( 'available', 'reserved', 'sold' ), true ) ) {
-				$status = 'available';
+			/* Audit 2026-08-10 (fail-open coercion): missing or unrecognized
+			 * status must NEVER become "available" - that fabricates
+			 * inventory certainty. Unknown stays unknown, data and screen. */
+			$status = sanitize_key( (string) ( $u['status'] ?? 'unknown' ) );
+			if ( ! in_array( $status, array( 'available', 'reserved', 'sold', 'unknown' ), true ) ) {
+				$status = 'unknown';
 			}
 			$price_note = sanitize_textarea_field( (string) ( $u['price_note'] ?? '' ) );
 

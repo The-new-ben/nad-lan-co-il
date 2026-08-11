@@ -494,6 +494,25 @@ body:is(.nl-unit-v2-active, .nl-unit-journey-active) #nla11y-btn:focus-visible {
   -webkit-backdrop-filter: blur(9px);
   font-size: clamp(10px, 2.7vw, 12px);
   line-height: 1.2;
+  /* Audit 2026-08-10: on a short beam the caption grew taller than the map
+     and overlapped it (measured 323x318 caption over a 337x154 map). The
+     caption may never exceed half the figure. */
+  max-block-size: 48%;
+  overflow: hidden;
+}
+
+.nl-unit-beam figcaption .nl-unit-beam__open {
+  display: block;
+  inline-size: 100%;
+  min-inline-size: 0;
+  text-align: inherit;
+}
+
+.nl-unit-beam figcaption strong {
+  display: block;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .nl-unit-beam.is-caption-top figcaption {
@@ -514,6 +533,10 @@ body:is(.nl-unit-v2-active, .nl-unit-journey-active) #nla11y-btn:focus-visible {
 
 .nl-unit-beam figcaption span {
   color: var(--nl-uj-gold-strong);
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
 
 .nl-unit-beam.is-schematic::after {

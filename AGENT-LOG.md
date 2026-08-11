@@ -1,5 +1,41 @@
 # AGENT-LOG - the God brain (append-only, newest on top)
 
+## 2026-08-11 (104) - PAYMENTS PIPE PROVEN END-TO-END + 1.72.191 HONESTY RELEASE (first audit fixes)
+GI: owner filled the webhook (name nadlan-payments, token URL both event slots,
+2 events, Secret left empty by design - GI expects a USER-invented secret, it
+never generates one; our token-in-URL covers auth). CHAIN TEST against live
+gi-ipn: no/wrong token 401, good token + garbage 400 bad_json, good token +
+safe payload {id, status pending, ref none} -> 422 bad_ref = full pipeline
+(auth -> json -> event id -> ref parse) executes. A real payment will extend
+the campaign tier and fire the owner alert email. Remaining for full commerce:
+nadlan_gi_api_key (reconcile) unset; join-pro checkout links to GI payment
+pages still unverified end-to-end (needs a 1-shekel live test with owner).
+
+1.72.191 (6 files, MD5 6/6, probe 191): the first three fixes from the buyer
+audit, verified live:
+1) FAIL-OPEN STATUS COERCION KILLED (showroom-support sanitizer): missing or
+unrecognized unit status now stays 'unknown' (new vocab member), never
+'available'. Labels: he 'סטטוס לבירור' + 4 langs; .s-unknown neutral dot.
+Existing explicit seeds untouched (toha2 75 available intentional; duo
+statuses were explicit). Protects all future/imported data from fabricated
+inventory.
+2) '0 rooms' RESIDENTIAL LANGUAGE OFF COMMERCIAL FLOORS: roomsLabel empty at
+rooms<=0; v2 identity (both sites) falls back to 'Floor N · direction'; ucard
+rooms row skipped; non-v2 label join filters empties.
+3) BEAM CAPTION 'ME'UCH' FIX (owner complaint + audit measurements 323x318
+caption over 337x154 map): figcaption max-block-size 48% + overflow hidden,
+strong single-line ellipsis, span 2-line clamp, __open full-width block.
+
+Also this arc (102-104 context): city system demand-driven complete (47
+projects + 60 contractors hubs real pages), legacy %20 URLs bridged
+serverside with canonical consolidation, /projects/?city= facets canonical
+to city hubs, TLV merged to 'תל אביב יפו' (146 rows, 94 projects), GSC export
+analyzed (biggest opportunity = projects family pos 20-60 zero CTR), buyer
+audit read (next program: commercial decision surface - floor-range
+selection instead of overlapping hotspots, area 5 modes, dossier wired to
+floor state, claim/route enquiries to named desks).
+
+
 ## 2026-08-11 (103) - 1.72.188: GHOST CITY PAGES MATERIALIZED (owner law: no ghosts, no invisible flags, no redirect farms), OWNER ALERTS LIVE
 Root-caused the owner's GSC cannibalization find: inc/city-hubs.php v1 drew
 168 ghost pages at /city/<city>/<kind>/ (rewrite, no post behind them) and

@@ -51,7 +51,9 @@
   function dirKey(d) { d = String(d == null ? "" : d).trim(); return KNOWN_DIRS[d] ? d : (HE_DIRS[d] || ""); }
   function dirLabel(d) { var k = dirKey(d); return k ? t("dir_" + k) : (d || ""); }
   function statusLabel(s) { return t("status_" + s); }
-  function roomsLabel(n) { return t("rooms_label", { n: n }); }
+  /* Audit 2026-08-10: "0 rooms" on office floors is residential language
+     forced onto commercial assets. No rooms means no rooms segment. */
+  function roomsLabel(n) { return n > 0 ? t("rooms_label", { n: n }) : ""; }
   function viewText(u) {
     if (unitV2Enabled()) return unitV2View(u);
     return u.view_key ? t(u.view_key) : (u.view || "");
@@ -423,13 +425,17 @@
   }
   function unitTitleAria(u) {
     if (unitV2Enabled()) {
-      return t("unit_v2_identity", {
-        rooms: u.rooms,
-        floor: u.floor,
-        direction: unitV2Direction(u)
-      }) + ", " + statusLabel(u.status);
+      return (u.rooms > 0
+        ? t("unit_v2_identity", {
+            rooms: u.rooms,
+            floor: u.floor,
+            direction: unitV2Direction(u)
+          })
+        : t("floor_label", { n: u.floor }) + " · " + unitV2Direction(u)
+      ) + ", " + statusLabel(u.status);
     }
-    return roomsLabel(u.rooms) + ", " + t("floor_label", { n: u.floor }) + ", " + dirLabel(u.dir) + ", " + statusLabel(u.status);
+    return [roomsLabel(u.rooms), t("floor_label", { n: u.floor }), dirLabel(u.dir), statusLabel(u.status)]
+      .filter(Boolean).join(", ");
   }
 
   /* block 5 - slide-out panel (filled on select) */
@@ -594,7 +600,7 @@
       return '<div class="nl-ucard' + (u.id === state.unitId ? " is-active" : "") + (u.status === "sold" ? " is-sold" : "") + '" data-act="select" data-id="' + esc(u.id) + '" tabindex="0" role="button" aria-label="' + esc(unitTitleAria(u)) + '">' +
         '<button class="nl-ucard__fav' + (fav ? " is-on" : "") + '" data-act="fav" data-id="' + esc(u.id) + '" aria-label="' + esc(t("btn_save")) + '">' + svg("heart", 18) + "</button>" +
         '<div class="nl-ucard__top"><span style="display:inline-flex;align-items:center;gap:6px"><span class="nl-dot s-' + esc(u.status) + '"></span>' + esc(statusLabel(u.status)) + "</span><span>" + esc(t("floor_label", { n: u.floor })) + "</span></div>" +
-        '<div class="nl-ucard__rooms">' + esc(roomsLabel(u.rooms)) + "</div>" +
+        (u.rooms > 0 ? '<div class="nl-ucard__rooms">' + esc(roomsLabel(u.rooms)) + "</div>" : "") +
         '<div class="nl-muted" style="font-size:13px">' + esc(u.sqm + " " + t("sqm_unit")) + " · " + esc(dirLabel(u.dir)) + "</div></div>";
     }).join("");
     var keys = ["all", "available", "3", "4", "5"];
@@ -2049,11 +2055,13 @@ function unitV2FactsMarkup(u) {
       '<div class="nl-unit-journey__identity">' +
         '<span class="nl-unit-summary__status">' + esc(statusLabel(u.status)) + '</span>' +
         '<h3 id="nl-selected-unit-title">' +
-          esc(t("unit_v2_identity", {
-            rooms: u.rooms,
-            floor: u.floor,
-            direction: unitV2Direction(u)
-          })) +
+          esc(u.rooms > 0
+            ? t("unit_v2_identity", {
+                rooms: u.rooms,
+                floor: u.floor,
+                direction: unitV2Direction(u)
+              })
+            : t("floor_label", { n: u.floor }) + " · " + unitV2Direction(u)) +
         '</h3>' +
       '</div>' +
       '<dl class="nl-unit-facts">' +

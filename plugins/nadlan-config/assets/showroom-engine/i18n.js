@@ -28,7 +28,7 @@
     dir_west: "מערב", dir_east: "מזרח", dir_north: "צפון", dir_south: "דרום",
     "dir_south-west": "דרום-מערב", "dir_north-west": "צפון-מערב", "dir_south-east": "דרום-מזרח", "dir_north-east": "צפון-מזרח",
     /* statuses */
-    status_available: "להמחשה", status_reserved: "בעדיפות", status_sold: "נמכרה",
+    status_available: "להמחשה", status_reserved: "בעדיפות", status_sold: "נמכרה", status_unknown: "סטטוס לבירור",
     /* orientation cues on the 3D stage */
     orient_sea: "הים", orient_reading: "ארובת רידינג", orient_district: "רובע שדה דב", orient_district_north: "המשך הרובע",
     view_sea_reading: "ים וארובת רידינג", view_district: "רובע שדה דב", view_sea_court: "ים וחצר", view_urban: "מרקם עירוני", view_garden: "גן פנימי", view_sea: "ים פתוח", view_park: "פארק", view_coast: "קו החוף", view_court: "חצר פנימית", view_promenade: "טיילת",
@@ -251,7 +251,7 @@
     proj_ashira_name: "Ashira", proj_rainbow_name: "Rainbow", proj_dimri_name: "Dimri Yama",
     dir_west: "West", dir_east: "East", dir_north: "North", dir_south: "South",
     "dir_south-west": "South-west", "dir_north-west": "North-west", "dir_south-east": "South-east", "dir_north-east": "North-east",
-    status_available: "Illustrative", status_reserved: "On hold", status_sold: "Sold",
+    status_available: "Illustrative", status_reserved: "On hold", status_sold: "Sold", status_unknown: "Status on request",
     orient_sea: "The sea", orient_reading: "Reading Tower", orient_district: "Sde Dov district", orient_district_north: "District, north",
     view_sea_reading: "Sea & Reading Tower", view_district: "Sde Dov district", view_sea_court: "Sea & courtyard", view_urban: "Urban fabric", view_garden: "Inner garden", view_sea: "Open sea", view_park: "Park", view_coast: "Coastline", view_court: "Inner court", view_promenade: "Promenade",
     apt_word: "Apartment", rooms_label: "{n} rooms", floor_label: "Floor {n}", sqm_unit: "m\u00B2",
@@ -535,7 +535,7 @@
   /* Core labels used directly by the v2 scene and its tools. These cannot
      inherit EN: the private sandbox is the five-language acceptance surface. */
   Object.assign(FR, {
-    status_available: "Illustratif", status_reserved: "En attente", status_sold: "Vendu",
+    status_available: "Illustratif", status_reserved: "En attente", status_sold: "Vendu", status_unknown: "Statut sur demande",
     panel_floor: "Étage", panel_rooms: "Pièces", panel_sqm: "Surface", panel_balcony: "Balcon",
     btn_save: "Enregistrer", btn_saved: "Enregistré", btn_compare: "Comparer",
     btn_compared: "Dans la comparaison", btn_share: "Partager",
@@ -577,7 +577,7 @@
   });
 
   Object.assign(RU, {
-    status_available: "Для иллюстрации", status_reserved: "В резерве", status_sold: "Продано",
+    status_available: "Для иллюстрации", status_reserved: "В резерве", status_sold: "Продано", status_unknown: "Статус по запросу",
     panel_floor: "Этаж", panel_rooms: "Комнаты", panel_sqm: "Площадь", panel_balcony: "Балкон",
     btn_save: "Сохранить", btn_saved: "Сохранено", btn_compare: "Сравнить",
     btn_compared: "Добавлено к сравнению", btn_share: "Поделиться",
@@ -619,7 +619,7 @@
   });
 
   Object.assign(AR, {
-    status_available: "للتوضيح", status_reserved: "قيد الحجز", status_sold: "تم البيع",
+    status_available: "للتوضيح", status_reserved: "قيد الحجز", status_sold: "تم البيع", status_unknown: "الحالة عند الطلب",
     panel_floor: "الطابق", panel_rooms: "الغرف", panel_sqm: "المساحة", panel_balcony: "الشرفة",
     btn_save: "حفظ", btn_saved: "محفوظة", btn_compare: "مقارنة",
     btn_compared: "ضمن المقارنة", btn_share: "مشاركة",
