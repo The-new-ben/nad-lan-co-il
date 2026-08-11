@@ -129,3 +129,33 @@ add_action( 'init', function () {
 		update_option( 'nadlan_hub_rules_v', '3' );
 	}
 }, 99 );
+
+/* Filtered archive views (/projects/?city=X) were indexing SEPARATELY and
+ * splitting the city keyword against the real pages (owner's GSC evidence,
+ * 2026-08-11: /projects/ and /projects/?city=tel-aviv both indexed for the
+ * same query). One visible rule, no noindex: a filtered view declares its
+ * canonical OWNER - the real city hub page when it exists, else the clean
+ * archive root. */
+add_filter( 'wpseo_canonical', function ( $canonical ) {
+	if ( ! is_post_type_archive( 'nadlan_project' ) || empty( $_GET['city'] ) ) { return $canonical; }
+	$city = sanitize_text_field( wp_unslash( $_GET['city'] ) );
+	$hub  = get_page_by_path( 'city/' . sanitize_title( $city ) . '/projects' );
+	return $hub ? get_permalink( $hub ) : get_post_type_archive_link( 'nadlan_project' );
+} );
+
+/* Multi-word city URLs: the old ghost URLs carried raw spaces (%20) while
+ * real page slugs use dashes. Serve the SAME page on the legacy space URL -
+ * no redirect (owner law), the URL in the browser stays as typed, and the
+ * page's canonical (its dash permalink) lets engines consolidate naturally.
+ * Google Search Console shows real impressions on the space URLs, so they
+ * must keep answering 200. */
+add_filter( 'request', function ( $qv ) {
+	if ( ! empty( $qv['pagename'] ) &&
+		preg_match( '#^city/([^/]+)/(projects|contractors|properties)$#u', $qv['pagename'], $m ) ) {
+		$dashed = sanitize_title( urldecode( $m[1] ) );
+		if ( $dashed && $dashed !== $m[1] ) {
+			$qv['pagename'] = 'city/' . $dashed . '/' . $m[2];
+		}
+	}
+	return $qv;
+} );

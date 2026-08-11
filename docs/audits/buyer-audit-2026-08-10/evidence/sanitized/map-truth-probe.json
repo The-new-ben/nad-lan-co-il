@@ -1,0 +1,151 @@
+{
+  "generatedAt": "2026-08-10T19:50:50.408Z",
+  "results": [
+    {
+      "project": "toha2",
+      "url": "https://nad-lan.co.il/projects/toha2-tel-aviv/?project=toha2-tel-aviv&lang=he&unit=floor-20",
+      "dialogText": "חזרה לדירה\nמה מחכה סביב הדירה\nהחלון פונה אל מערב\nבכיוון הזה: רכבת השלום · ~200 מ׳ | עזריאלי · ~340 מ׳ | שרונה · ~820 מ׳\nפתיחת המיקום במפות Google",
+      "markers": [
+        {
+          "text": "",
+          "ariaLabel": "Map marker",
+          "title": null,
+          "x": 174.5,
+          "y": 330.5,
+          "width": 27,
+          "height": 41,
+          "insideCanvas": true
+        }
+      ],
+      "googleLinks": [
+        {
+          "text": "© Mapbox",
+          "href": "https://www.mapbox.com/about/maps"
+        },
+        {
+          "text": "© OpenStreetMap",
+          "href": "https://www.openstreetmap.org/copyright/"
+        },
+        {
+          "text": "Improve this map",
+          "href": "https://apps.mapbox.com/feedback/?owner=mapbox&id=dark-v11&access_token=[REDACTED_PUBLIC_MAP_TOKEN]#/34.795307/32.073479/15.2/-90/42"
+        },
+        {
+          "text": "",
+          "href": "https://www.mapbox.com/"
+        },
+        {
+          "text": "פתיחת המיקום במפות Google",
+          "href": "https://www.google.com/maps/search/?api=1&query=32.073479%2C34.795307"
+        }
+      ],
+      "controls": [
+        {
+          "text": "חזרה לדירה",
+          "ariaLabel": null,
+          "title": ""
+        },
+        {
+          "text": "",
+          "ariaLabel": "Zoom in",
+          "title": ""
+        },
+        {
+          "text": "",
+          "ariaLabel": "Zoom out",
+          "title": ""
+        },
+        {
+          "text": "",
+          "ariaLabel": "Reset bearing to north",
+          "title": ""
+        },
+        {
+          "text": "",
+          "ariaLabel": "Toggle attribution",
+          "title": ""
+        }
+      ],
+      "visibleLegend": [],
+      "canvas": {
+        "x": 0,
+        "y": 54,
+        "width": 375,
+        "height": 622.8
+      }
+    },
+    {
+      "project": "park",
+      "url": "https://nad-lan.co.il/projects/the-park-bnei-brak/?project=the-park-bnei-brak&lang=he&unit=floor-20",
+      "dialogText": "חזרה לדירה\nמה מחכה סביב הדירה\nהחלון פונה אל מערב\nבכיוון הזה: פארק הירקון · ~1.4 ק״מ | הים · ~5.2 ק״מ\nפתיחת המיקום במפות Google",
+      "markers": [
+        {
+          "text": "",
+          "ariaLabel": "Map marker",
+          "title": null,
+          "x": 174.5,
+          "y": 350.5,
+          "width": 27,
+          "height": 41,
+          "insideCanvas": true
+        }
+      ],
+      "googleLinks": [
+        {
+          "text": "© Mapbox",
+          "href": "https://www.mapbox.com/about/maps"
+        },
+        {
+          "text": "© OpenStreetMap",
+          "href": "https://www.openstreetmap.org/copyright/"
+        },
+        {
+          "text": "Improve this map",
+          "href": "https://apps.mapbox.com/feedback/?owner=mapbox&id=dark-v11&access_token=[REDACTED_PUBLIC_MAP_TOKEN]#/34.82964/32.103671/15.2/-90/42"
+        },
+        {
+          "text": "",
+          "href": "https://www.mapbox.com/"
+        },
+        {
+          "text": "פתיחת המיקום במפות Google",
+          "href": "https://www.google.com/maps/search/?api=1&query=32.103671%2C34.82964"
+        }
+      ],
+      "controls": [
+        {
+          "text": "חזרה לדירה",
+          "ariaLabel": null,
+          "title": ""
+        },
+        {
+          "text": "",
+          "ariaLabel": "Zoom in",
+          "title": ""
+        },
+        {
+          "text": "",
+          "ariaLabel": "Zoom out",
+          "title": ""
+        },
+        {
+          "text": "",
+          "ariaLabel": "Reset bearing to north",
+          "title": ""
+        },
+        {
+          "text": "",
+          "ariaLabel": "Toggle attribution",
+          "title": ""
+        }
+      ],
+      "visibleLegend": [],
+      "canvas": {
+        "x": 0,
+        "y": 54,
+        "width": 375,
+        "height": 662.4
+      }
+    }
+  ]
+}

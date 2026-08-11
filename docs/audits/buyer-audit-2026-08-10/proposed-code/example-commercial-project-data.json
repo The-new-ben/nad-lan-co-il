@@ -1,0 +1,282 @@
+{
+  "_notice": "PROPOSAL ONLY — NOT APPLIED.",
+  "_purpose": "Honest, non-publishable ToHa2/THE PARK intake skeleton. It preserves public contradictions and unknowns; it asserts no floor or suite availability.",
+  "_wire_note": "Each project must pass through nl_proposal_normalize_commercial_project() before the JS adapter. Empty floors and unknown inventory are intentional publication blockers.",
+  "schema_version": "1.0.0",
+  "vocabularies": {
+    "asset_types": ["residential", "commercial_office", "retail", "mixed_use", "hospitality", "guide_only"],
+    "implemented_asset_types": ["commercial_office"],
+    "product_families": ["living", "premium", "commercial", "guide"],
+    "applicability_tags": ["three_d_showroom", "floor_selector", "suite_selector", "commercial_rfp", "context_map", "decision_surface"],
+    "evidence_states": ["unknown", "source_estimate", "verified", "contradictory"],
+    "confidence_levels": ["unknown", "low", "medium", "high"],
+    "beam_distance_methods": ["straight_line_geodesic", "routed_walking", "routed_cycling", "routed_driving", "routed_transit"],
+    "availability_statuses": ["unknown", "verified_available", "soft_hold", "under_offer", "under_loi", "leased", "delivered", "unavailable", "not_marketed"],
+    "compass_sectors": ["N", "NE", "E", "SE", "S", "SW", "W", "NW"]
+  },
+  "generated_at": "2026-08-10T23:30:00+03:00",
+  "projects": [
+    {
+      "schema_version": "1.0.0",
+      "project_id": "toha2-tel-aviv",
+      "wp_post_id": 6213,
+      "project_url": "https://nad-lan.co.il/projects/toha-tel-aviv/",
+      "asset_type": "commercial_office",
+      "product_family": "commercial",
+      "applicability_tags": ["three_d_showroom", "floor_selector", "suite_selector", "commercial_rfp", "context_map", "decision_surface"],
+      "title": "ToHa2",
+      "generated_at": "2026-08-10T23:30:00+03:00",
+      "towers": [
+        {
+          "building_id": "building-main",
+          "tower_id": "tower-main",
+          "display_label": {
+            "state": "verified",
+            "value": "ToHa2",
+            "unit": null,
+            "scope": "Public display label for canonical building-main/tower-main only; not a floor or availability claim.",
+            "effective_at": "2026-08-10T20:00:00+03:00",
+            "sources": [
+              {
+                "type": "developer_document",
+                "label": "Amot — ToHa2 asset page",
+                "uri": "https://www.amot.co.il/en/assets/toha-2-phase-2-of-the-toha-towers-complex-estimated-occupancy-q1-2027/",
+                "document_id": "toha2-amot-asset-page",
+                "revision": "accessed-2026-08-10",
+                "published_at": null,
+                "retrieved_at": "2026-08-10T20:00:00+03:00"
+              }
+            ],
+            "observations": [],
+            "verified_at": "2026-08-10T20:30:00+03:00",
+            "expires_at": "2027-08-09T20:30:00+03:00",
+            "owner": {"team": "Nadlan commercial data", "accountable_role": "Tower identity steward", "contact_ref": "toha2-tower-identity-owner"},
+            "confidence": "high",
+            "reason": "",
+            "applicability": ["tower_identity"],
+            "conflict_ids": [],
+            "note": "Canonical implementation identity; no leasing implication.",
+            "caveat": "",
+            "required_document_ids": ["floor_id_crosswalk"],
+            "decision_grade": true
+          }
+        }
+      ],
+      "project_facts": {
+        "floor_count_total": {
+          "state": "contradictory",
+          "value": null,
+          "unit": "levels",
+          "scope": "Public descriptions of total/storey counts; no legal/elevator/marketing crosswalk has reconciled their counting bases.",
+          "effective_at": "2026-08-10T20:10:00+03:00",
+          "sources": [],
+          "observations": [
+            {
+              "observation_id": "toha2-floor-count-75",
+              "value": 75,
+              "scope": "Amot public asset-page description; not a leasing stack.",
+              "source": {"type": "developer_document", "label": "Amot — ToHa2 asset page", "uri": "https://www.amot.co.il/en/assets/toha-2-phase-2-of-the-toha-towers-complex-estimated-occupancy-q1-2027/", "document_id": "toha2-amot-asset-page", "revision": "accessed-2026-08-10", "published_at": null, "retrieved_at": "2026-08-10T20:00:00+03:00"}
+            },
+            {
+              "observation_id": "toha2-floor-count-77",
+              "value": 77,
+              "scope": "Design-team project description; not a current legal floor register.",
+              "source": {"type": "developer_document", "label": "Ron Arad Architects — ToHa2", "uri": "https://ronarad.com/projects/toha2/", "document_id": "toha2-ron-arad-project-page", "revision": "accessed-2026-08-10", "published_at": null, "retrieved_at": "2026-08-10T20:05:00+03:00"}
+            },
+            {
+              "observation_id": "toha2-floor-count-80",
+              "value": 80,
+              "scope": "Architectural-design approval including ground/technical levels; not rentable office floors.",
+              "source": {"type": "planning_document", "label": "Tel Aviv architectural-design approval protocol 21-0004", "uri": "https://www.tel-aviv.gov.il/Residents/Development/DocLib/%D7%A4%D7%A8%D7%95%D7%98%D7%95%D7%A7%D7%95%D7%9C%20%D7%94%D7%97%D7%9C%D7%98%D7%95%D7%AA%2021-0004%20%D7%9E%D7%99%D7%95%D7%9D%2010-2-2021.pdf", "document_id": "toha2-ta-design-protocol-21-0004", "revision": "2021-02-10", "published_at": "2021-02-10T12:00:00+02:00", "retrieved_at": "2026-08-10T20:10:00+03:00"}
+            }
+          ],
+          "verified_at": null,
+          "expires_at": null,
+          "owner": {"team": "ToHa2 owner project management and leasing", "accountable_role": "Project and leasing data owner", "contact_ref": "toha2-floor-crosswalk-owner"},
+          "confidence": "medium",
+          "reason": "",
+          "applicability": ["project_fact", "floor_identity"],
+          "conflict_ids": ["toha2-floor-count-75", "toha2-floor-count-77", "toha2-floor-count-80"],
+          "note": "Do not make selectable floors from any one public count.",
+          "caveat": "Counting bases differ.",
+          "required_document_ids": ["floor_id_crosswalk", "availability_schedule"],
+          "decision_grade": false
+        },
+        "occupancy_date": {
+          "state": "unknown",
+          "value": null,
+          "unit": null,
+          "scope": null,
+          "effective_at": null,
+          "sources": [],
+          "observations": [],
+          "verified_at": null,
+          "expires_at": null,
+          "owner": {"team": "ToHa2 owner project management", "accountable_role": "Project director", "contact_ref": "toha2-delivery-data-owner"},
+          "confidence": "unknown",
+          "reason": "No verified floor-specific legal occupancy and tenant-handover date was supplied.",
+          "applicability": ["project_fact", "tenant_handover"],
+          "conflict_ids": [],
+          "note": "Public target dates are not a floor-specific handover commitment.",
+          "caveat": "",
+          "required_document_ids": ["form_4", "handover_schedule", "commissioning_summary"],
+          "decision_grade": false
+        }
+      },
+      "floor_inventory": {
+        "state": "unknown",
+        "value": null,
+        "unit": null,
+        "scope": null,
+        "effective_at": null,
+        "sources": [],
+        "observations": [],
+        "verified_at": null,
+        "expires_at": null,
+        "owner": {"team": "Amot and Gav-Yam joint leasing team", "accountable_role": "Joint leasing director", "contact_ref": "toha2-live-inventory-owner"},
+        "confidence": "unknown",
+        "reason": "No owner-controlled current floor/suite inventory was supplied.",
+        "applicability": ["floor_inventory"],
+        "conflict_ids": [],
+        "note": "Public agreement percentages must not be converted into availability.",
+        "caveat": "",
+        "required_document_ids": ["availability_schedule", "floor_id_crosswalk"],
+        "decision_grade": false
+      },
+      "floors": [],
+      "publication_blockers": [
+        "No signed owner-controlled live availability stack.",
+        "No legal/elevator/marketing floor-number crosswalk.",
+        "No evidenced per-floor orientation, technical schedule, area or asking terms."
+      ],
+      "publication_allowed": false
+    },
+    {
+      "schema_version": "1.0.0",
+      "project_id": "the-park-bnei-brak",
+      "wp_post_id": 6182,
+      "project_url": "https://nad-lan.co.il/projects/the-park-bnei-brak/",
+      "asset_type": "commercial_office",
+      "product_family": "commercial",
+      "applicability_tags": ["three_d_showroom", "floor_selector", "suite_selector", "commercial_rfp", "context_map", "decision_surface"],
+      "title": "THE PARK",
+      "generated_at": "2026-08-10T23:30:00+03:00",
+      "towers": [
+        {
+          "building_id": "building-main",
+          "tower_id": "tower-main",
+          "display_label": {
+            "state": "verified",
+            "value": "THE PARK",
+            "unit": null,
+            "scope": "Public display label for canonical building-main/tower-main only; not a floor or availability claim.",
+            "effective_at": "2026-08-10T21:00:00+03:00",
+            "sources": [
+              {"type": "developer_document", "label": "Allied Real Estate — THE PARK", "uri": "https://allied-re.co.il/project/the-park/", "document_id": "park-allied-project-page", "revision": "accessed-2026-08-10", "published_at": null, "retrieved_at": "2026-08-10T21:00:00+03:00"}
+            ],
+            "observations": [],
+            "verified_at": "2026-08-10T21:30:00+03:00",
+            "expires_at": "2027-08-09T21:30:00+03:00",
+            "owner": {"team": "Nadlan commercial data", "accountable_role": "Tower identity steward", "contact_ref": "park-tower-identity-owner"},
+            "confidence": "high",
+            "reason": "",
+            "applicability": ["tower_identity"],
+            "conflict_ids": [],
+            "note": "Canonical implementation identity; no leasing implication.",
+            "caveat": "",
+            "required_document_ids": ["floor_id_crosswalk"],
+            "decision_grade": true
+          }
+        }
+      ],
+      "project_facts": {
+        "floor_count_total": {
+          "state": "contradictory",
+          "value": null,
+          "unit": "levels",
+          "scope": "Public descriptions with unresolved total/office/retail/technical-floor counting bases.",
+          "effective_at": "2026-08-10T21:10:00+03:00",
+          "sources": [],
+          "observations": [
+            {
+              "observation_id": "park-floor-count-44",
+              "value": 44,
+              "scope": "Allied public project-page marketing description.",
+              "source": {"type": "developer_document", "label": "Allied Real Estate — THE PARK", "uri": "https://allied-re.co.il/project/the-park/", "document_id": "park-allied-project-page", "revision": "accessed-2026-08-10", "published_at": null, "retrieved_at": "2026-08-10T21:00:00+03:00"}
+            },
+            {
+              "observation_id": "park-floor-count-52",
+              "value": 52,
+              "scope": "Amot public asset-page description; numbering basis not reconciled to Allied.",
+              "source": {"type": "developer_document", "label": "Amot — HaLehi / THE PARK asset page", "uri": "https://www.amot.co.il/assets-list/offices/amot-halehi/", "document_id": "park-amot-asset-page", "revision": "accessed-2026-08-10", "published_at": null, "retrieved_at": "2026-08-10T21:05:00+03:00"}
+            },
+            {
+              "observation_id": "park-floor-count-45-office",
+              "value": 45,
+              "scope": "Company-report office-floor statement above retail; not a reconciled total-level count.",
+              "source": {"type": "developer_document", "label": "Amot Q2 2025 company report", "uri": "https://mayafiles.tase.co.il/rpdf/1685001-1686000/P1685103-00.pdf", "document_id": "park-amot-q2-2025-report", "revision": "q2-2025", "published_at": "2025-08-31T12:00:00+03:00", "retrieved_at": "2026-08-10T21:10:00+03:00"}
+            }
+          ],
+          "verified_at": null,
+          "expires_at": null,
+          "owner": {"team": "THE PARK owner project management and leasing", "accountable_role": "Project and leasing data owner", "contact_ref": "park-floor-crosswalk-owner"},
+          "confidence": "medium",
+          "reason": "",
+          "applicability": ["project_fact", "floor_identity"],
+          "conflict_ids": ["park-floor-count-44", "park-floor-count-52", "park-floor-count-45-office"],
+          "note": "Do not generate selectable floors until a signed crosswalk resolves these bases.",
+          "caveat": "Public counts are not interchangeable.",
+          "required_document_ids": ["floor_id_crosswalk", "availability_schedule"],
+          "decision_grade": false
+        },
+        "parking_stall_count": {
+          "state": "unknown",
+          "value": null,
+          "unit": "stalls",
+          "scope": null,
+          "effective_at": null,
+          "sources": [],
+          "observations": [],
+          "verified_at": null,
+          "expires_at": null,
+          "owner": {"team": "THE PARK leasing and parking operator", "accountable_role": "Leasing director", "contact_ref": "park-parking-data-owner"},
+          "confidence": "unknown",
+          "reason": "No current tenant allocation, price, accessible/EV/bicycle inventory or operating policy was supplied.",
+          "applicability": ["project_fact", "parking"],
+          "conflict_ids": [],
+          "note": "A public total, if found, would still not answer selected-floor parking terms.",
+          "caveat": "",
+          "required_document_ids": ["parking_schedule", "landlord_offer"],
+          "decision_grade": false
+        }
+      },
+      "floor_inventory": {
+        "state": "unknown",
+        "value": null,
+        "unit": null,
+        "scope": null,
+        "effective_at": null,
+        "sources": [],
+        "observations": [],
+        "verified_at": null,
+        "expires_at": null,
+        "owner": {"team": "Allied and Amot leasing team", "accountable_role": "Project leasing director", "contact_ref": "park-live-inventory-owner"},
+        "confidence": "unknown",
+        "reason": "No owner-controlled current floor/suite inventory was supplied.",
+        "applicability": ["floor_inventory"],
+        "conflict_ids": [],
+        "note": "LOWZONE, MIDZONE and HIGHZONE are archetypes, not availability records.",
+        "caveat": "",
+        "required_document_ids": ["availability_schedule", "floor_id_crosswalk"],
+        "decision_grade": false
+      },
+      "floors": [],
+      "publication_blockers": [
+        "No signed owner-controlled live availability stack.",
+        "The 44, 45-office-plus-retail and 52 floor descriptions are unresolved.",
+        "No evidenced per-floor orientation, technical schedule, area or asking terms."
+      ],
+      "publication_allowed": false
+    }
+  ]
+}

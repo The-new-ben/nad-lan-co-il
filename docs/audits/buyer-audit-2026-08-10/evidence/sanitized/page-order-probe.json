@@ -1,0 +1,2352 @@
+{
+  "generatedAt": "2026-08-10T19:47:43.116Z",
+  "results": [
+    {
+      "project": "toha2",
+      "url": "https://nad-lan.co.il/projects/toha2-tel-aviv/",
+      "height": 37539,
+      "title": "ToHa2 תל אביב - משרדים להשכרה תל אביב",
+      "theaterY": 909,
+      "inventoryY": null,
+      "firstFooterY": 8341,
+      "headings": [
+        {
+          "level": "H1",
+          "text": "ToHa2 תל אביב - משרדים להשכרה תל אביב לחברה גדולה",
+          "y": 909,
+          "parent": "div.entry-content.wp-block-post-content.has-global-padding.is-layout-constrained.wp-block-post-content-is-layout-constrained",
+          "ancestor": "main#wp--skip-link--target.wp-block-group.nlpc-main.nlpc-single-project-main.has-global-padding.is-layout-constrained.wp-block-group-is-layout-constrained"
+        },
+        {
+          "level": "H2",
+          "text": "ToHa2 תל אביב - משרדים להשכרה תל אביב לחברה גדולה",
+          "y": 1254,
+          "parent": "div",
+          "ancestor": "section#top.nl-sec.nl-wrap"
+        },
+        {
+          "level": "H2",
+          "text": "בוחרים דירה מתוך הבניין",
+          "y": 1696,
+          "parent": "div.nl-theater__title",
+          "ancestor": "section#building.nl-wrap"
+        },
+        {
+          "level": "H2",
+          "text": "הכל על מפה אחת: מחירים, סביבה, תוכניות עתידיות",
+          "y": 2453,
+          "parent": "section#nlpjx-map.nlpjx-sec.nl-adopted-map",
+          "ancestor": "section#nlpjx-map.nlpjx-sec.nl-adopted-map"
+        },
+        {
+          "level": "H2",
+          "text": "מחיר ואומדן באזור",
+          "y": 5257,
+          "parent": "section#price.nl-sec.nl-wrap",
+          "ancestor": "section#price.nl-sec.nl-wrap"
+        },
+        {
+          "level": "H2",
+          "text": "כל מה שמסביב",
+          "y": 5625,
+          "parent": "section#world.nl-sec.nl-wrap",
+          "ancestor": "section#world.nl-sec.nl-wrap"
+        },
+        {
+          "level": "H3",
+          "text": "פרויקטים סמוכים",
+          "y": 5775,
+          "parent": "section#world.nl-sec.nl-wrap",
+          "ancestor": "section#world.nl-sec.nl-wrap"
+        },
+        {
+          "level": "H2",
+          "text": "קונים מחו״ל",
+          "y": 7157,
+          "parent": "div",
+          "ancestor": "section#investor.nl-sec.nl-wrap"
+        },
+        {
+          "level": "H2",
+          "text": "מעוניינים בדירה? נחזור אליכם",
+          "y": 7747,
+          "parent": "div",
+          "ancestor": "section#inquiry.nl-wrap"
+        },
+        {
+          "level": "H5",
+          "text": "פרויקטים",
+          "y": 8381,
+          "parent": "div",
+          "ancestor": "footer.nl-footer"
+        },
+        {
+          "level": "H5",
+          "text": "אזורים",
+          "y": 8381,
+          "parent": "div",
+          "ancestor": "footer.nl-footer"
+        },
+        {
+          "level": "H5",
+          "text": "שפות",
+          "y": 8381,
+          "parent": "div",
+          "ancestor": "footer.nl-footer"
+        },
+        {
+          "level": "H2",
+          "text": "תמונת החלטה מהירה",
+          "y": 9375,
+          "parent": "section#nlw-ch-1.nlw-ch",
+          "ancestor": "section#nlw-ch-1.nlw-ch"
+        },
+        {
+          "level": "H2",
+          "text": "מי בונה ומי מתכנן",
+          "y": 10634,
+          "parent": "section#nlw-ch-2.nlw-ch",
+          "ancestor": "section#nlw-ch-2.nlw-ch"
+        },
+        {
+          "level": "H2",
+          "text": "מיקום: יגאל אלון, תוצרת הארץ ודרך השלום",
+          "y": 11354,
+          "parent": "section#nlw-ch-3.nlw-ch",
+          "ancestor": "section#nlw-ch-3.nlw-ch"
+        },
+        {
+          "level": "H2",
+          "text": "משרדים ליד רכבת: מה העובדים חווים בפועל",
+          "y": 12599,
+          "parent": "section#nlw-ch-4.nlw-ch",
+          "ancestor": "section#nlw-ch-4.nlw-ch"
+        },
+        {
+          "level": "H2",
+          "text": "סביבת עסקים, פגישות ואירוח",
+          "y": 13224,
+          "parent": "section#nlw-ch-5.nlw-ch",
+          "ancestor": "section#nlw-ch-5.nlw-ch"
+        },
+        {
+          "level": "H2",
+          "text": "הקומה הטיפוסית והמשמעות לחברה של 400 עובדים",
+          "y": 13850,
+          "parent": "section#nlw-ch-6.nlw-ch",
+          "ancestor": "section#nlw-ch-6.nlw-ch"
+        },
+        {
+          "level": "H2",
+          "text": "שש מערכות תנועה אנכית ומערך המעליות",
+          "y": 14920,
+          "parent": "section#nlw-ch-7.nlw-ch",
+          "ancestor": "section#nlw-ch-7.nlw-ch"
+        },
+        {
+          "level": "H2",
+          "text": "חשמל, גיבוי ויכולת לתמוך בחברת טכנולוגיה",
+          "y": 15990,
+          "parent": "section#nlw-ch-8.nlw-ch",
+          "ancestor": "section#nlw-ch-8.nlw-ch"
+        },
+        {
+          "level": "H2",
+          "text": "סיבים, חדרי תקשורת וקישור לענן",
+          "y": 16885,
+          "parent": "section#nlw-ch-9.nlw-ch",
+          "ancestor": "section#nlw-ch-9.nlw-ch"
+        },
+        {
+          "level": "H2",
+          "text": "מיזוג, BMS, אש ומערכות בניין",
+          "y": 17686,
+          "parent": "section#nlw-ch-10.nlw-ch",
+          "ancestor": "section#nlw-ch-10.nlw-ch"
+        },
+        {
+          "level": "H2",
+          "text": "אבטחה, כניסה ושירותים משותפים",
+          "y": 18567,
+          "parent": "section#nlw-ch-11.nlw-ch",
+          "ancestor": "section#nlw-ch-11.nlw-ch"
+        },
+        {
+          "level": "H2",
+          "text": "חניה, טעינה, אופניים ופריקה",
+          "y": 19368,
+          "parent": "section#nlw-ch-12.nlw-ch",
+          "ancestor": "section#nlw-ch-12.nlw-ch"
+        },
+        {
+          "level": "H2",
+          "text": "קיימות, חזית ועלות תפעול",
+          "y": 20312,
+          "parent": "section#nlw-ch-13.nlw-ch",
+          "ancestor": "section#nlw-ch-13.nlw-ch"
+        },
+        {
+          "level": "H2",
+          "text": "זמינות בפועל: 45% חתום אינו רשימת קומות",
+          "y": 21081,
+          "parent": "section#nlw-ch-14.nlw-ch",
+          "ancestor": "section#nlw-ch-14.nlw-ch"
+        },
+        {
+          "level": "H2",
+          "text": "עסקת Google: עוגן, לא מחירון",
+          "y": 22026,
+          "parent": "section#nlw-ch-15.nlw-ch",
+          "ancestor": "section#nlw-ch-15.nlw-ch"
+        },
+        {
+          "level": "H2",
+          "text": "מחיר ודמי ניהול: מה ידוע ומה חייב להופיע בהצעה",
+          "y": 22826,
+          "parent": "section#nlw-ch-16.nlw-ch",
+          "ancestor": "section#nlw-ch-16.nlw-ch"
+        },
+        {
+          "level": "H2",
+          "text": "השוואת שוק: יגאל אלון, שרונה, BBC והרצליה פיתוח",
+          "y": 23595,
+          "parent": "section#nlw-ch-17.nlw-ch",
+          "ancestor": "section#nlw-ch-17.nlw-ch"
+        },
+        {
+          "level": "H2",
+          "text": "ארנונה, מע\"מ וניכוי מס במקור",
+          "y": 25041,
+          "parent": "section#nlw-ch-18.nlw-ch",
+          "ancestor": "section#nlw-ch-18.nlw-ch"
+        },
+        {
+          "level": "H2",
+          "text": "חברה זרה: איך נכנסים לעסקה בישראל",
+          "y": 25842,
+          "parent": "section#nlw-ch-19.nlw-ch",
+          "ancestor": "section#nlw-ch-19.nlw-ch"
+        },
+        {
+          "level": "H2",
+          "text": "מבנה החוזה והנקודות שסמנכ\"ל הכספים צריך לסגור",
+          "y": 26674,
+          "parent": "section#nlw-ch-20.nlw-ch",
+          "ancestor": "section#nlw-ch-20.nlw-ch"
+        },
+        {
+          "level": "H2",
+          "text": "מעטפת, גמר מלא ופיט-אאוט",
+          "y": 27587,
+          "parent": "section#nlw-ch-21.nlw-ch",
+          "ancestor": "section#nlw-ch-21.nlw-ch"
+        },
+        {
+          "level": "H2",
+          "text": "לוח החלטה לחברה שרוצה להיכנס ב-2027",
+          "y": 28882,
+          "parent": "section#nlw-ch-22.nlw-ch",
+          "ancestor": "section#nlw-ch-22.nlw-ch"
+        },
+        {
+          "level": "H2",
+          "text": "נקודת המבט של משקיע מוסדי",
+          "y": 29763,
+          "parent": "section#nlw-ch-23.nlw-ch",
+          "ancestor": "section#nlw-ch-23.nlw-ch"
+        },
+        {
+          "level": "H2",
+          "text": "למי ToHa2 עשוי להתאים",
+          "y": 30708,
+          "parent": "section#nlw-ch-24.nlw-ch",
+          "ancestor": "section#nlw-ch-24.nlw-ch"
+        },
+        {
+          "level": "H2",
+          "text": "RFP מעשי למשכיר",
+          "y": 31477,
+          "parent": "section#nlw-ch-25.nlw-ch",
+          "ancestor": "section#nlw-ch-25.nlw-ch"
+        },
+        {
+          "level": "H2",
+          "text": "שאלות נפוצות",
+          "y": 32637,
+          "parent": "section#nlw-ch-26.nlw-ch",
+          "ancestor": "section#nlw-ch-26.nlw-ch"
+        },
+        {
+          "level": "H3",
+          "text": "1. מתי ToHa2 צפוי להיות מוכן לאכלוס?",
+          "y": 32710,
+          "parent": "section#nlw-ch-26.nlw-ch",
+          "ancestor": "section#nlw-ch-26.nlw-ch"
+        },
+        {
+          "level": "H3",
+          "text": "2. כמה קומות יש ב-ToHa2?",
+          "y": 32929,
+          "parent": "section#nlw-ch-26.nlw-ch",
+          "ancestor": "section#nlw-ch-26.nlw-ch"
+        },
+        {
+          "level": "H3",
+          "text": "3. כמה שטח משרד יש במגדל?",
+          "y": 33116,
+          "parent": "section#nlw-ch-26.nlw-ch",
+          "ancestor": "section#nlw-ch-26.nlw-ch"
+        },
+        {
+          "level": "H3",
+          "text": "4. האם יש מקום לחברה של 400 עובדים?",
+          "y": 33303,
+          "parent": "section#nlw-ch-26.nlw-ch",
+          "ancestor": "section#nlw-ch-26.nlw-ch"
+        },
+        {
+          "level": "H3",
+          "text": "5. מה מחיר השכירות ב-ToHa2?",
+          "y": 33491,
+          "parent": "section#nlw-ch-26.nlw-ch",
+          "ancestor": "section#nlw-ch-26.nlw-ch"
+        },
+        {
+          "level": "H3",
+          "text": "6. כמה צפויים דמי הניהול והחניה?",
+          "y": 33678,
+          "parent": "section#nlw-ch-26.nlw-ch",
+          "ancestor": "section#nlw-ch-26.nlw-ch"
+        },
+        {
+          "level": "H3",
+          "text": "7. האם ToHa2 הוא משרד ליד רכבת?",
+          "y": 33834,
+          "parent": "section#nlw-ch-26.nlw-ch",
+          "ancestor": "section#nlw-ch-26.nlw-ch"
+        },
+        {
+          "level": "H3",
+          "text": "8. האם המגדל מתאים לחברת AI או לחדר GPU?",
+          "y": 34021,
+          "parent": "section#nlw-ch-26.nlw-ch",
+          "ancestor": "section#nlw-ch-26.nlw-ch"
+        },
+        {
+          "level": "H3",
+          "text": "9. אילו ספקי סיבים פועלים במגדל?",
+          "y": 34177,
+          "parent": "section#nlw-ch-26.nlw-ch",
+          "ancestor": "section#nlw-ch-26.nlw-ch"
+        },
+        {
+          "level": "H3",
+          "text": "10. מה כוללת עסקת Google?",
+          "y": 34333,
+          "parent": "section#nlw-ch-26.nlw-ch",
+          "ancestor": "section#nlw-ch-26.nlw-ch"
+        },
+        {
+          "level": "H3",
+          "text": "11. האם אפשר לקבל משרד מוכן לכניסה?",
+          "y": 34520,
+          "parent": "section#nlw-ch-26.nlw-ch",
+          "ancestor": "section#nlw-ch-26.nlw-ch"
+        },
+        {
+          "level": "H3",
+          "text": "12. מה צריך לבקש לפני חתימת LOI?",
+          "y": 34707,
+          "parent": "section#nlw-ch-26.nlw-ch",
+          "ancestor": "section#nlw-ch-26.nlw-ch"
+        },
+        {
+          "level": "H2",
+          "text": "מחיר: איפה הפרויקט עומד מול הסביבה",
+          "y": 35055,
+          "parent": "section#nlpjx-price.nlpjx-sec.nlpjx-price",
+          "ancestor": "section#nlpjx-price.nlpjx-sec.nlpjx-price"
+        },
+        {
+          "level": "H2",
+          "text": "מימון, ייעוץ ועיצוב - הכל במקום אחד",
+          "y": 35514,
+          "parent": "section#nlpjx-finance.nlpjx-sec",
+          "ancestor": "section#nlpjx-finance.nlpjx-sec"
+        },
+        {
+          "level": "H2",
+          "text": "כל מה שסביב הפרויקט",
+          "y": 35657,
+          "parent": "section#nlpjx-world.nlpjx-sec",
+          "ancestor": "section#nlpjx-world.nlpjx-sec"
+        },
+        {
+          "level": "H2",
+          "text": "בקשה לתיאום סיור בפרויקט",
+          "y": 36391,
+          "parent": "section#nlsch.nlsch",
+          "ancestor": "section#nlsch.nlsch"
+        }
+      ],
+      "landmarks": [
+        {
+          "node": "header.wp-block-template-part",
+          "role": null,
+          "ariaLabel": null,
+          "y": 0,
+          "height": 74
+        },
+        {
+          "node": "header.nlpc-site-header",
+          "role": "banner",
+          "ariaLabel": null,
+          "y": 0,
+          "height": 73
+        },
+        {
+          "node": "nav#nlpc-primary-nav.nlpc-primary-nav",
+          "role": null,
+          "ariaLabel": "ניווט ראשי",
+          "y": 18,
+          "height": 36
+        },
+        {
+          "node": "main#wp--skip-link--target.wp-block-group.nlpc-main.nlpc-single-project-main.has-global-padding.is-layout-constrained.wp-block-group-is-layout-constrained",
+          "role": null,
+          "ariaLabel": null,
+          "y": 93,
+          "height": 36840
+        },
+        {
+          "node": "nav.nlptop",
+          "role": null,
+          "ariaLabel": "breadcrumbs",
+          "y": 144,
+          "height": 46
+        },
+        {
+          "node": "aside.nl-projnotice",
+          "role": "note",
+          "ariaLabel": null,
+          "y": 628,
+          "height": 47
+        },
+        {
+          "node": "aside.nl-devlink",
+          "role": null,
+          "ariaLabel": null,
+          "y": 696,
+          "height": 62
+        },
+        {
+          "node": "nav.nlfb",
+          "role": null,
+          "ariaLabel": "מה אפשר לעשות בעמוד הזה",
+          "y": 776,
+          "height": 111
+        },
+        {
+          "node": "header.nl-header",
+          "role": null,
+          "ariaLabel": null,
+          "y": 909,
+          "height": 65
+        },
+        {
+          "node": "nav.nl-nav",
+          "role": null,
+          "ariaLabel": null,
+          "y": 941,
+          "height": 0
+        },
+        {
+          "node": "nav#nl-secnav.nl-secnav",
+          "role": null,
+          "ariaLabel": "ניווט בעמוד",
+          "y": 974,
+          "height": 56
+        },
+        {
+          "node": "main",
+          "role": null,
+          "ariaLabel": null,
+          "y": 1030,
+          "height": 7234
+        },
+        {
+          "node": "aside#nl-panel.nl-panel",
+          "role": null,
+          "ariaLabel": null,
+          "y": 1608,
+          "height": 600
+        },
+        {
+          "node": "article.nl-ucard",
+          "role": null,
+          "ariaLabel": null,
+          "y": 3316,
+          "height": 117
+        },
+        {
+          "node": "article.nl-ucard",
+          "role": null,
+          "ariaLabel": null,
+          "y": 3316,
+          "height": 117
+        },
+        {
+          "node": "article.nl-ucard",
+          "role": null,
+          "ariaLabel": null,
+          "y": 3316,
+          "height": 117
+        },
+        {
+          "node": "article.nl-ucard",
+          "role": null,
+          "ariaLabel": null,
+          "y": 3316,
+          "height": 117
+        },
+        {
+          "node": "article.nl-ucard",
+          "role": null,
+          "ariaLabel": null,
+          "y": 3316,
+          "height": 117
+        },
+        {
+          "node": "article.nl-ucard",
+          "role": null,
+          "ariaLabel": null,
+          "y": 3316,
+          "height": 117
+        },
+        {
+          "node": "article.nl-ucard",
+          "role": null,
+          "ariaLabel": null,
+          "y": 3445,
+          "height": 117
+        },
+        {
+          "node": "article.nl-ucard",
+          "role": null,
+          "ariaLabel": null,
+          "y": 3445,
+          "height": 117
+        },
+        {
+          "node": "article.nl-ucard",
+          "role": null,
+          "ariaLabel": null,
+          "y": 3445,
+          "height": 117
+        },
+        {
+          "node": "article.nl-ucard",
+          "role": null,
+          "ariaLabel": null,
+          "y": 3445,
+          "height": 117
+        },
+        {
+          "node": "article.nl-ucard",
+          "role": null,
+          "ariaLabel": null,
+          "y": 3445,
+          "height": 117
+        },
+        {
+          "node": "article.nl-ucard",
+          "role": null,
+          "ariaLabel": null,
+          "y": 3445,
+          "height": 117
+        },
+        {
+          "node": "article.nl-ucard",
+          "role": null,
+          "ariaLabel": null,
+          "y": 3574,
+          "height": 117
+        },
+        {
+          "node": "article.nl-ucard",
+          "role": null,
+          "ariaLabel": null,
+          "y": 3574,
+          "height": 117
+        },
+        {
+          "node": "article.nl-ucard",
+          "role": null,
+          "ariaLabel": null,
+          "y": 3574,
+          "height": 117
+        },
+        {
+          "node": "article.nl-ucard",
+          "role": null,
+          "ariaLabel": null,
+          "y": 3574,
+          "height": 117
+        },
+        {
+          "node": "article.nl-ucard",
+          "role": null,
+          "ariaLabel": null,
+          "y": 3574,
+          "height": 117
+        },
+        {
+          "node": "article.nl-ucard",
+          "role": null,
+          "ariaLabel": null,
+          "y": 3574,
+          "height": 117
+        },
+        {
+          "node": "article.nl-ucard",
+          "role": null,
+          "ariaLabel": null,
+          "y": 3704,
+          "height": 117
+        },
+        {
+          "node": "article.nl-ucard",
+          "role": null,
+          "ariaLabel": null,
+          "y": 3704,
+          "height": 117
+        },
+        {
+          "node": "article.nl-ucard",
+          "role": null,
+          "ariaLabel": null,
+          "y": 3704,
+          "height": 117
+        },
+        {
+          "node": "article.nl-ucard",
+          "role": null,
+          "ariaLabel": null,
+          "y": 3704,
+          "height": 117
+        },
+        {
+          "node": "article.nl-ucard",
+          "role": null,
+          "ariaLabel": null,
+          "y": 3704,
+          "height": 117
+        },
+        {
+          "node": "article.nl-ucard",
+          "role": null,
+          "ariaLabel": null,
+          "y": 3704,
+          "height": 117
+        },
+        {
+          "node": "article.nl-ucard",
+          "role": null,
+          "ariaLabel": null,
+          "y": 3833,
+          "height": 117
+        },
+        {
+          "node": "article.nl-ucard",
+          "role": null,
+          "ariaLabel": null,
+          "y": 3833,
+          "height": 117
+        },
+        {
+          "node": "article.nl-ucard",
+          "role": null,
+          "ariaLabel": null,
+          "y": 3833,
+          "height": 117
+        },
+        {
+          "node": "article.nl-ucard",
+          "role": null,
+          "ariaLabel": null,
+          "y": 3833,
+          "height": 117
+        },
+        {
+          "node": "article.nl-ucard",
+          "role": null,
+          "ariaLabel": null,
+          "y": 3833,
+          "height": 117
+        },
+        {
+          "node": "article.nl-ucard",
+          "role": null,
+          "ariaLabel": null,
+          "y": 3833,
+          "height": 117
+        },
+        {
+          "node": "article.nl-ucard",
+          "role": null,
+          "ariaLabel": null,
+          "y": 3962,
+          "height": 117
+        },
+        {
+          "node": "article.nl-ucard",
+          "role": null,
+          "ariaLabel": null,
+          "y": 3962,
+          "height": 117
+        },
+        {
+          "node": "article.nl-ucard",
+          "role": null,
+          "ariaLabel": null,
+          "y": 3962,
+          "height": 117
+        },
+        {
+          "node": "article.nl-ucard",
+          "role": null,
+          "ariaLabel": null,
+          "y": 3962,
+          "height": 117
+        },
+        {
+          "node": "article.nl-ucard",
+          "role": null,
+          "ariaLabel": null,
+          "y": 3962,
+          "height": 117
+        },
+        {
+          "node": "article.nl-ucard",
+          "role": null,
+          "ariaLabel": null,
+          "y": 3962,
+          "height": 117
+        },
+        {
+          "node": "article.nl-ucard",
+          "role": null,
+          "ariaLabel": null,
+          "y": 4091,
+          "height": 117
+        },
+        {
+          "node": "article.nl-ucard",
+          "role": null,
+          "ariaLabel": null,
+          "y": 4091,
+          "height": 117
+        },
+        {
+          "node": "article.nl-ucard",
+          "role": null,
+          "ariaLabel": null,
+          "y": 4091,
+          "height": 117
+        },
+        {
+          "node": "article.nl-ucard",
+          "role": null,
+          "ariaLabel": null,
+          "y": 4091,
+          "height": 117
+        },
+        {
+          "node": "article.nl-ucard",
+          "role": null,
+          "ariaLabel": null,
+          "y": 4091,
+          "height": 117
+        },
+        {
+          "node": "article.nl-ucard",
+          "role": null,
+          "ariaLabel": null,
+          "y": 4091,
+          "height": 117
+        },
+        {
+          "node": "article.nl-ucard",
+          "role": null,
+          "ariaLabel": null,
+          "y": 4221,
+          "height": 117
+        },
+        {
+          "node": "article.nl-ucard",
+          "role": null,
+          "ariaLabel": null,
+          "y": 4221,
+          "height": 117
+        },
+        {
+          "node": "article.nl-ucard",
+          "role": null,
+          "ariaLabel": null,
+          "y": 4221,
+          "height": 117
+        },
+        {
+          "node": "article.nl-ucard",
+          "role": null,
+          "ariaLabel": null,
+          "y": 4221,
+          "height": 117
+        },
+        {
+          "node": "article.nl-ucard",
+          "role": null,
+          "ariaLabel": null,
+          "y": 4221,
+          "height": 117
+        },
+        {
+          "node": "article.nl-ucard",
+          "role": null,
+          "ariaLabel": null,
+          "y": 4221,
+          "height": 117
+        },
+        {
+          "node": "article.nl-ucard",
+          "role": null,
+          "ariaLabel": null,
+          "y": 4350,
+          "height": 117
+        },
+        {
+          "node": "article.nl-ucard",
+          "role": null,
+          "ariaLabel": null,
+          "y": 4350,
+          "height": 117
+        },
+        {
+          "node": "article.nl-ucard",
+          "role": null,
+          "ariaLabel": null,
+          "y": 4350,
+          "height": 117
+        },
+        {
+          "node": "article.nl-ucard",
+          "role": null,
+          "ariaLabel": null,
+          "y": 4350,
+          "height": 117
+        },
+        {
+          "node": "article.nl-ucard",
+          "role": null,
+          "ariaLabel": null,
+          "y": 4350,
+          "height": 117
+        },
+        {
+          "node": "article.nl-ucard",
+          "role": null,
+          "ariaLabel": null,
+          "y": 4350,
+          "height": 117
+        },
+        {
+          "node": "article.nl-ucard",
+          "role": null,
+          "ariaLabel": null,
+          "y": 4479,
+          "height": 117
+        },
+        {
+          "node": "article.nl-ucard",
+          "role": null,
+          "ariaLabel": null,
+          "y": 4479,
+          "height": 117
+        },
+        {
+          "node": "article.nl-ucard",
+          "role": null,
+          "ariaLabel": null,
+          "y": 4479,
+          "height": 117
+        },
+        {
+          "node": "article.nl-ucard",
+          "role": null,
+          "ariaLabel": null,
+          "y": 4479,
+          "height": 117
+        },
+        {
+          "node": "article.nl-ucard",
+          "role": null,
+          "ariaLabel": null,
+          "y": 4479,
+          "height": 117
+        },
+        {
+          "node": "article.nl-ucard",
+          "role": null,
+          "ariaLabel": null,
+          "y": 4479,
+          "height": 117
+        },
+        {
+          "node": "article.nl-ucard",
+          "role": null,
+          "ariaLabel": null,
+          "y": 4608,
+          "height": 117
+        },
+        {
+          "node": "article.nl-ucard",
+          "role": null,
+          "ariaLabel": null,
+          "y": 4608,
+          "height": 117
+        },
+        {
+          "node": "article.nl-ucard",
+          "role": null,
+          "ariaLabel": null,
+          "y": 4608,
+          "height": 117
+        },
+        {
+          "node": "article.nl-ucard",
+          "role": null,
+          "ariaLabel": null,
+          "y": 4608,
+          "height": 117
+        },
+        {
+          "node": "article.nl-ucard",
+          "role": null,
+          "ariaLabel": null,
+          "y": 4608,
+          "height": 117
+        },
+        {
+          "node": "article.nl-ucard",
+          "role": null,
+          "ariaLabel": null,
+          "y": 4608,
+          "height": 117
+        },
+        {
+          "node": "article.nl-ucard",
+          "role": null,
+          "ariaLabel": null,
+          "y": 4738,
+          "height": 117
+        },
+        {
+          "node": "article.nl-ucard",
+          "role": null,
+          "ariaLabel": null,
+          "y": 4738,
+          "height": 117
+        },
+        {
+          "node": "article.nl-ucard",
+          "role": null,
+          "ariaLabel": null,
+          "y": 4738,
+          "height": 117
+        },
+        {
+          "node": "article.nl-ucard",
+          "role": null,
+          "ariaLabel": null,
+          "y": 4738,
+          "height": 117
+        },
+        {
+          "node": "article.nl-ucard",
+          "role": null,
+          "ariaLabel": null,
+          "y": 4738,
+          "height": 117
+        },
+        {
+          "node": "article.nl-ucard",
+          "role": null,
+          "ariaLabel": null,
+          "y": 4738,
+          "height": 117
+        },
+        {
+          "node": "article.nl-ucard",
+          "role": null,
+          "ariaLabel": null,
+          "y": 4867,
+          "height": 117
+        },
+        {
+          "node": "article.nl-ucard",
+          "role": null,
+          "ariaLabel": null,
+          "y": 4867,
+          "height": 117
+        },
+        {
+          "node": "article.nl-ucard",
+          "role": null,
+          "ariaLabel": null,
+          "y": 4867,
+          "height": 117
+        },
+        {
+          "node": "footer.nl-footer",
+          "role": null,
+          "ariaLabel": null,
+          "y": 8341,
+          "height": 253
+        },
+        {
+          "node": "nav.nlw-toc",
+          "role": null,
+          "ariaLabel": "קפיצה לפרק",
+          "y": 8993,
+          "height": 300
+        },
+        {
+          "node": "footer.wp-block-template-part",
+          "role": null,
+          "ariaLabel": null,
+          "y": 36953,
+          "height": 457
+        },
+        {
+          "node": "footer#nlpc-contact.nlpc-site-footer",
+          "role": "contentinfo",
+          "ariaLabel": null,
+          "y": 37043,
+          "height": 366
+        },
+        {
+          "node": "nav.nlpc-footer-links",
+          "role": null,
+          "ariaLabel": "קישורי אתר",
+          "y": 37115,
+          "height": 159
+        },
+        {
+          "node": "aside.nl-legal",
+          "role": "note",
+          "ariaLabel": null,
+          "y": 37410,
+          "height": 80
+        }
+      ],
+      "forms": [
+        {
+          "id": "nl-form",
+          "className": "nl-form",
+          "y": 7634,
+          "text": "פנייה כללית על הפרויקט שליחת פנייה הפנייה אינה מהווה הזמנה או התחייבות. נתוני הדגמה."
+        },
+        {
+          "id": "",
+          "className": "nlsch-form",
+          "y": 0,
+          "text": "המועד שנבחר: שליחת הבקשה"
+        }
+      ],
+      "skipLinks": [
+        {
+          "text": "לדלג לתוכן",
+          "href": "#wp--skip-link--target",
+          "y": -1
+        },
+        {
+          "text": "▣\nהמודל התלת ממדי\nלסובב את הבניין",
+          "href": "#",
+          "y": 814
+        },
+        {
+          "text": "☐\nבחירת דירה\nלפי קומה וכיוון",
+          "href": "#",
+          "y": 814
+        },
+        {
+          "text": "◫\nלראות מה רואים מהחלון\nלפי גובה הקומה והכיוון",
+          "href": "#",
+          "y": 814
+        },
+        {
+          "text": "בניין",
+          "href": "#building",
+          "y": 974
+        },
+        {
+          "text": "דירות",
+          "href": "#inventory",
+          "y": 974
+        },
+        {
+          "text": "מחיר",
+          "href": "#price",
+          "y": 974
+        },
+        {
+          "text": "סביבה",
+          "href": "#world",
+          "y": 974
+        },
+        {
+          "text": "מדיה",
+          "href": "#media",
+          "y": 974
+        },
+        {
+          "text": "מידע",
+          "href": "#about",
+          "y": 974
+        },
+        {
+          "text": "רובע שדה דב",
+          "href": "#world",
+          "y": 8430
+        },
+        {
+          "text": "תמונת החלטה מהירה",
+          "href": "#nlw-ch-1",
+          "y": 9008
+        },
+        {
+          "text": "מי בונה ומי מתכנן",
+          "href": "#nlw-ch-2",
+          "y": 9008
+        },
+        {
+          "text": "מיקום: יגאל אלון, תוצרת הארץ ודרך השלום",
+          "href": "#nlw-ch-3",
+          "y": 9008
+        },
+        {
+          "text": "משרדים ליד רכבת: מה העובדים חווים בפועל",
+          "href": "#nlw-ch-4",
+          "y": 9008
+        },
+        {
+          "text": "סביבת עסקים, פגישות ואירוח",
+          "href": "#nlw-ch-5",
+          "y": 9008
+        },
+        {
+          "text": "הקומה הטיפוסית והמשמעות לחברה של 400 עובדים",
+          "href": "#nlw-ch-6",
+          "y": 9054
+        },
+        {
+          "text": "שש מערכות תנועה אנכית ומערך המעליות",
+          "href": "#nlw-ch-7",
+          "y": 9054
+        },
+        {
+          "text": "חשמל, גיבוי ויכולת לתמוך בחברת טכנולוגיה",
+          "href": "#nlw-ch-8",
+          "y": 9054
+        },
+        {
+          "text": "סיבים, חדרי תקשורת וקישור לענן",
+          "href": "#nlw-ch-9",
+          "y": 9054
+        },
+        {
+          "text": "מיזוג, BMS, אש ומערכות בניין",
+          "href": "#nlw-ch-10",
+          "y": 9100
+        },
+        {
+          "text": "אבטחה, כניסה ושירותים משותפים",
+          "href": "#nlw-ch-11",
+          "y": 9100
+        },
+        {
+          "text": "חניה, טעינה, אופניים ופריקה",
+          "href": "#nlw-ch-12",
+          "y": 9100
+        },
+        {
+          "text": "קיימות, חזית ועלות תפעול",
+          "href": "#nlw-ch-13",
+          "y": 9100
+        },
+        {
+          "text": "זמינות בפועל: 45% חתום אינו רשימת קומות",
+          "href": "#nlw-ch-14",
+          "y": 9100
+        },
+        {
+          "text": "עסקת Google: עוגן, לא מחירון",
+          "href": "#nlw-ch-15",
+          "y": 9146
+        },
+        {
+          "text": "מחיר ודמי ניהול: מה ידוע ומה חייב להופיע בהצעה",
+          "href": "#nlw-ch-16",
+          "y": 9146
+        },
+        {
+          "text": "השוואת שוק: יגאל אלון, שרונה, BBC והרצליה פיתוח",
+          "href": "#nlw-ch-17",
+          "y": 9146
+        },
+        {
+          "text": "ארנונה, מע\"מ וניכוי מס במקור",
+          "href": "#nlw-ch-18",
+          "y": 9146
+        },
+        {
+          "text": "חברה זרה: איך נכנסים לעסקה בישראל",
+          "href": "#nlw-ch-19",
+          "y": 9192
+        },
+        {
+          "text": "מבנה החוזה והנקודות שסמנכ\"ל הכספים צריך לסגור",
+          "href": "#nlw-ch-20",
+          "y": 9192
+        },
+        {
+          "text": "מעטפת, גמר מלא ופיט-אאוט",
+          "href": "#nlw-ch-21",
+          "y": 9192
+        },
+        {
+          "text": "לוח החלטה לחברה שרוצה להיכנס ב-2027",
+          "href": "#nlw-ch-22",
+          "y": 9192
+        },
+        {
+          "text": "נקודת המבט של משקיע מוסדי",
+          "href": "#nlw-ch-23",
+          "y": 9239
+        },
+        {
+          "text": "למי ToHa2 עשוי להתאים",
+          "href": "#nlw-ch-24",
+          "y": 9239
+        },
+        {
+          "text": "RFP מעשי למשכיר",
+          "href": "#nlw-ch-25",
+          "y": 9239
+        },
+        {
+          "text": "שאלות נפוצות",
+          "href": "#nlw-ch-26",
+          "y": 9239
+        },
+        {
+          "text": "כל המחירים, המוסדות והתוכניות - על המפה החיה למטה ←",
+          "href": "#nlpjx-map",
+          "y": 35116
+        },
+        {
+          "text": "צור קשר",
+          "href": "#nlpc-contact",
+          "y": 37252
+        }
+      ],
+      "sticky": [
+        {
+          "node": "div#nl-sticky.nl-sticky",
+          "text": "מעניין אותי וואטסאפ",
+          "y": 804
+        },
+        {
+          "node": "button.nl-sticky__main",
+          "text": "מעניין אותי",
+          "y": 804
+        },
+        {
+          "node": "span#nl-stickyctx.nl-sticky__ctx",
+          "text": "",
+          "y": 0
+        },
+        {
+          "node": "a#nl-wa.nl-sticky__wa",
+          "text": "וואטסאפ",
+          "y": 804
+        }
+      ]
+    },
+    {
+      "project": "park",
+      "url": "https://nad-lan.co.il/projects/the-park-bnei-brak/",
+      "height": 35076,
+      "title": "THE PARK - משרדים להשכרה בני ברק ליד רכבת",
+      "theaterY": 740,
+      "inventoryY": null,
+      "firstFooterY": 7526,
+      "headings": [
+        {
+          "level": "H1",
+          "text": "THE PARK - משרדים להשכרה בני ברק ליד רכבת",
+          "y": 740,
+          "parent": "div.entry-content.wp-block-post-content.has-global-padding.is-layout-constrained.wp-block-post-content-is-layout-constrained",
+          "ancestor": "main#wp--skip-link--target.wp-block-group.nlpc-main.nlpc-single-project-main.has-global-padding.is-layout-constrained.wp-block-group-is-layout-constrained"
+        },
+        {
+          "level": "H2",
+          "text": "THE PARK - משרדים להשכרה בני ברק ליד רכבת",
+          "y": 1085,
+          "parent": "div",
+          "ancestor": "section#top.nl-sec.nl-wrap"
+        },
+        {
+          "level": "H2",
+          "text": "בוחרים דירה מתוך הבניין",
+          "y": 1527,
+          "parent": "div.nl-theater__title",
+          "ancestor": "section#building.nl-wrap"
+        },
+        {
+          "level": "H2",
+          "text": "הכל על מפה אחת: מחירים, סביבה, תוכניות עתידיות",
+          "y": 2284,
+          "parent": "section#nlpjx-map.nlpjx-sec.nl-adopted-map",
+          "ancestor": "section#nlpjx-map.nlpjx-sec.nl-adopted-map"
+        },
+        {
+          "level": "H2",
+          "text": "מחיר ואומדן באזור",
+          "y": 4442,
+          "parent": "section#price.nl-sec.nl-wrap",
+          "ancestor": "section#price.nl-sec.nl-wrap"
+        },
+        {
+          "level": "H2",
+          "text": "כל מה שמסביב",
+          "y": 4809,
+          "parent": "section#world.nl-sec.nl-wrap",
+          "ancestor": "section#world.nl-sec.nl-wrap"
+        },
+        {
+          "level": "H3",
+          "text": "פרויקטים סמוכים",
+          "y": 4960,
+          "parent": "section#world.nl-sec.nl-wrap",
+          "ancestor": "section#world.nl-sec.nl-wrap"
+        },
+        {
+          "level": "H2",
+          "text": "קונים מחו״ל",
+          "y": 6342,
+          "parent": "div",
+          "ancestor": "section#investor.nl-sec.nl-wrap"
+        },
+        {
+          "level": "H2",
+          "text": "מעוניינים בדירה? נחזור אליכם",
+          "y": 6932,
+          "parent": "div",
+          "ancestor": "section#inquiry.nl-wrap"
+        },
+        {
+          "level": "H5",
+          "text": "פרויקטים",
+          "y": 7566,
+          "parent": "div",
+          "ancestor": "footer.nl-footer"
+        },
+        {
+          "level": "H5",
+          "text": "אזורים",
+          "y": 7566,
+          "parent": "div",
+          "ancestor": "footer.nl-footer"
+        },
+        {
+          "level": "H5",
+          "text": "שפות",
+          "y": 7566,
+          "parent": "div",
+          "ancestor": "footer.nl-footer"
+        },
+        {
+          "level": "H2",
+          "text": "סקירה ניהולית: מה יש כאן ומה עדיין צריך להוכיח",
+          "y": 8623,
+          "parent": "section#nlw-ch-1.nlw-ch",
+          "ancestor": "section#nlw-ch-1.nlw-ch"
+        },
+        {
+          "level": "H2",
+          "text": "הבעלות, הכתובת והמספרים שלא צריך להחליק",
+          "y": 9468,
+          "parent": "section#nlw-ch-2.nlw-ch",
+          "ancestor": "section#nlw-ch-2.nlw-ch"
+        },
+        {
+          "level": "H2",
+          "text": "סטטוס הפרויקט, מסירה וסיכון לוחות זמנים",
+          "y": 10520,
+          "parent": "section#nlw-ch-3.nlw-ch",
+          "ancestor": "section#nlw-ch-3.nlw-ch"
+        },
+        {
+          "level": "H2",
+          "text": "מיקום וסביבה עסקית",
+          "y": 11384,
+          "parent": "section#nlw-ch-4.nlw-ch",
+          "ancestor": "section#nlw-ch-4.nlw-ch"
+        },
+        {
+          "level": "H2",
+          "text": "בני ברק מול ציר בגין והרצליה פיתוח",
+          "y": 12342,
+          "parent": "section#nlw-ch-5.nlw-ch",
+          "ancestor": "section#nlw-ch-5.nlw-ch"
+        },
+        {
+          "level": "H2",
+          "text": "אדריכלות, מעטפת וחוויית קומה",
+          "y": 13299,
+          "parent": "section#nlw-ch-6.nlw-ch",
+          "ancestor": "section#nlw-ch-6.nlw-ch"
+        },
+        {
+          "level": "H2",
+          "text": "כמה עובדים באמת נכנסים בקומה",
+          "y": 14226,
+          "parent": "section#nlw-ch-7.nlw-ch",
+          "ancestor": "section#nlw-ch-7.nlw-ch"
+        },
+        {
+          "level": "H2",
+          "text": "חשמל, גיבוי ורציפות עסקית",
+          "y": 15296,
+          "parent": "section#nlw-ch-8.nlw-ch",
+          "ancestor": "section#nlw-ch-8.nlw-ch"
+        },
+        {
+          "level": "H2",
+          "text": "סיבים, חדרי תקשורת וחברות AI",
+          "y": 16227,
+          "parent": "section#nlw-ch-9.nlw-ch",
+          "ancestor": "section#nlw-ch-9.nlw-ch"
+        },
+        {
+          "level": "H2",
+          "text": "רצפה, תקרה, עומסים ומודול חזית",
+          "y": 17158,
+          "parent": "section#nlw-ch-10.nlw-ch",
+          "ancestor": "section#nlw-ch-10.nlw-ch"
+        },
+        {
+          "level": "H2",
+          "text": "מיזוג, BMS, בטיחות אש ונוחות",
+          "y": 17882,
+          "parent": "section#nlw-ch-11.nlw-ch",
+          "ancestor": "section#nlw-ch-11.nlw-ch"
+        },
+        {
+          "level": "H2",
+          "text": "מעליות, אבטחה ושירותי בניין",
+          "y": 18782,
+          "parent": "section#nlw-ch-12.nlw-ch",
+          "ancestor": "section#nlw-ch-12.nlw-ch"
+        },
+        {
+          "level": "H2",
+          "text": "חניה, אופניים, רכב חשמלי ולוגיסטיקה",
+          "y": 19712,
+          "parent": "section#nlw-ch-13.nlw-ch",
+          "ancestor": "section#nlw-ch-13.nlw-ch"
+        },
+        {
+          "level": "H2",
+          "text": "מסחר, הסעדה ושירותים סביבתיים",
+          "y": 20549,
+          "parent": "section#nlw-ch-14.nlw-ch",
+          "ancestor": "section#nlw-ch-14.nlw-ch"
+        },
+        {
+          "level": "H2",
+          "text": "קיימות, LEED ועלויות תפעול",
+          "y": 21206,
+          "parent": "section#nlw-ch-15.nlw-ch",
+          "ancestor": "section#nlw-ch-15.nlw-ch"
+        },
+        {
+          "level": "H2",
+          "text": "עלות fit-out ולוח זמנים ריאלי",
+          "y": 21881,
+          "parent": "section#nlw-ch-16.nlw-ch",
+          "ancestor": "section#nlw-ch-16.nlw-ch"
+        },
+        {
+          "level": "H2",
+          "text": "מה המשכיר מוסר ומה השוכר בונה",
+          "y": 22807,
+          "parent": "section#nlw-ch-17.nlw-ch",
+          "ancestor": "section#nlw-ch-17.nlw-ch"
+        },
+        {
+          "level": "H2",
+          "text": "מבנה שכירות לחברה זרה",
+          "y": 23514,
+          "parent": "section#nlw-ch-18.nlw-ch",
+          "ancestor": "section#nlw-ch-18.nlw-ch"
+        },
+        {
+          "level": "H2",
+          "text": "ישות משפטית, מע\"מ ורישום בישראל",
+          "y": 24220,
+          "parent": "section#nlw-ch-19.nlw-ch",
+          "ancestor": "section#nlw-ch-19.nlw-ch"
+        },
+        {
+          "level": "H2",
+          "text": "ארנונה בבני ברק והפער מול תל אביב",
+          "y": 24989,
+          "parent": "section#nlw-ch-20.nlw-ch",
+          "ancestor": "section#nlw-ch-20.nlw-ch"
+        },
+        {
+          "level": "H2",
+          "text": "עלות תפוסה מלאה ולא רק שכר דירה",
+          "y": 25758,
+          "parent": "section#nlw-ch-21.nlw-ch",
+          "ancestor": "section#nlw-ch-21.nlw-ch"
+        },
+        {
+          "level": "H2",
+          "text": "משקיע מוסדי: מה הנתונים מספרים ומה הם לא מספרים",
+          "y": 26559,
+          "parent": "section#nlw-ch-22.nlw-ch",
+          "ancestor": "section#nlw-ch-22.nlw-ch"
+        },
+        {
+          "level": "H2",
+          "text": "בדיקת נאותות לפני סיור ובמהלכו",
+          "y": 27409,
+          "parent": "section#nlw-ch-23.nlw-ch",
+          "ancestor": "section#nlw-ch-23.nlw-ch"
+        },
+        {
+          "level": "H2",
+          "text": "ה-RFP הטכני שחברה גדולה צריכה לשלוח",
+          "y": 28034,
+          "parent": "section#nlw-ch-24.nlw-ch",
+          "ancestor": "section#nlw-ch-24.nlw-ch"
+        },
+        {
+          "level": "H2",
+          "text": "למי THE PARK מתאים",
+          "y": 28979,
+          "parent": "section#nlw-ch-25.nlw-ch",
+          "ancestor": "section#nlw-ch-25.nlw-ch"
+        },
+        {
+          "level": "H2",
+          "text": "איך לקבל החלטה",
+          "y": 29748,
+          "parent": "section#nlw-ch-26.nlw-ch",
+          "ancestor": "section#nlw-ch-26.nlw-ch"
+        },
+        {
+          "level": "H2",
+          "text": "שאלות נפוצות",
+          "y": 30373,
+          "parent": "section#nlw-ch-27.nlw-ch",
+          "ancestor": "section#nlw-ch-27.nlw-ch"
+        },
+        {
+          "level": "H3",
+          "text": "1. איפה נמצא THE PARK בני ברק?",
+          "y": 30446,
+          "parent": "section#nlw-ch-27.nlw-ch",
+          "ancestor": "section#nlw-ch-27.nlw-ch"
+        },
+        {
+          "level": "H3",
+          "text": "2. כמה קומות יש במגדל?",
+          "y": 30665,
+          "parent": "section#nlw-ch-27.nlw-ch",
+          "ancestor": "section#nlw-ch-27.nlw-ch"
+        },
+        {
+          "level": "H3",
+          "text": "3. כמה שטח צריכה חברה של 400 עובדים?",
+          "y": 30852,
+          "parent": "section#nlw-ch-27.nlw-ch",
+          "ancestor": "section#nlw-ch-27.nlw-ch"
+        },
+        {
+          "level": "H3",
+          "text": "4. מה מחיר השכירות ב-THE PARK?",
+          "y": 31040,
+          "parent": "section#nlw-ch-27.nlw-ch",
+          "ancestor": "section#nlw-ch-27.nlw-ch"
+        },
+        {
+          "level": "H3",
+          "text": "5. איך המחיר משתווה לבני ברק, תל אביב והרצליה?",
+          "y": 31258,
+          "parent": "section#nlw-ch-27.nlw-ch",
+          "ancestor": "section#nlw-ch-27.nlw-ch"
+        },
+        {
+          "level": "H3",
+          "text": "6. האם המגדל כבר מאוכלס?",
+          "y": 31446,
+          "parent": "section#nlw-ch-27.nlw-ch",
+          "ancestor": "section#nlw-ch-27.nlw-ch"
+        },
+        {
+          "level": "H3",
+          "text": "7. האם ידוע כמה חשמל וגיבוי יש לקומה?",
+          "y": 31696,
+          "parent": "section#nlw-ch-27.nlw-ch",
+          "ancestor": "section#nlw-ch-27.nlw-ch"
+        },
+        {
+          "level": "H3",
+          "text": "8. אילו ספקי סיבים פועלים בבניין?",
+          "y": 31852,
+          "parent": "section#nlw-ch-27.nlw-ch",
+          "ancestor": "section#nlw-ch-27.nlw-ch"
+        },
+        {
+          "level": "H3",
+          "text": "9. כמה עולה fit-out למשרד גדול?",
+          "y": 32008,
+          "parent": "section#nlw-ch-27.nlw-ch",
+          "ancestor": "section#nlw-ch-27.nlw-ch"
+        },
+        {
+          "level": "H3",
+          "text": "10. מה הארנונה הצפויה לחברה בבני ברק?",
+          "y": 32226,
+          "parent": "section#nlw-ch-27.nlw-ch",
+          "ancestor": "section#nlw-ch-27.nlw-ch"
+        },
+        {
+          "level": "H3",
+          "text": "11. האם חברה זרה יכולה לחתום ישירות על שכירות?",
+          "y": 32414,
+          "parent": "section#nlw-ch-27.nlw-ch",
+          "ancestor": "section#nlw-ch-27.nlw-ch"
+        },
+        {
+          "level": "H3",
+          "text": "12. מה צריך לקבל לפני שמכניסים את THE PARK לרשימה הקצרה?",
+          "y": 32601,
+          "parent": "section#nlw-ch-27.nlw-ch",
+          "ancestor": "section#nlw-ch-27.nlw-ch"
+        },
+        {
+          "level": "H2",
+          "text": "מימון, ייעוץ ועיצוב - הכל במקום אחד",
+          "y": 32999,
+          "parent": "section#nlpjx-finance.nlpjx-sec",
+          "ancestor": "section#nlpjx-finance.nlpjx-sec"
+        },
+        {
+          "level": "H2",
+          "text": "כל מה שסביב הפרויקט",
+          "y": 33142,
+          "parent": "section#nlpjx-world.nlpjx-sec",
+          "ancestor": "section#nlpjx-world.nlpjx-sec"
+        },
+        {
+          "level": "H2",
+          "text": "בקשה לתיאום סיור בפרויקט",
+          "y": 33928,
+          "parent": "section#nlsch.nlsch",
+          "ancestor": "section#nlsch.nlsch"
+        }
+      ],
+      "landmarks": [
+        {
+          "node": "header.wp-block-template-part",
+          "role": null,
+          "ariaLabel": null,
+          "y": 0,
+          "height": 74
+        },
+        {
+          "node": "header.nlpc-site-header",
+          "role": "banner",
+          "ariaLabel": null,
+          "y": 0,
+          "height": 73
+        },
+        {
+          "node": "nav#nlpc-primary-nav.nlpc-primary-nav",
+          "role": null,
+          "ariaLabel": "ניווט ראשי",
+          "y": 18,
+          "height": 36
+        },
+        {
+          "node": "main#wp--skip-link--target.wp-block-group.nlpc-main.nlpc-single-project-main.has-global-padding.is-layout-constrained.wp-block-group-is-layout-constrained",
+          "role": null,
+          "ariaLabel": null,
+          "y": 93,
+          "height": 34377
+        },
+        {
+          "node": "nav.nlptop",
+          "role": null,
+          "ariaLabel": "breadcrumbs",
+          "y": 144,
+          "height": 46
+        },
+        {
+          "node": "aside.nl-projnotice",
+          "role": "note",
+          "ariaLabel": null,
+          "y": 459,
+          "height": 47
+        },
+        {
+          "node": "aside.nl-devlink",
+          "role": null,
+          "ariaLabel": null,
+          "y": 527,
+          "height": 62
+        },
+        {
+          "node": "nav.nlfb",
+          "role": null,
+          "ariaLabel": "מה אפשר לעשות בעמוד הזה",
+          "y": 607,
+          "height": 111
+        },
+        {
+          "node": "header.nl-header",
+          "role": null,
+          "ariaLabel": null,
+          "y": 740,
+          "height": 65
+        },
+        {
+          "node": "nav.nl-nav",
+          "role": null,
+          "ariaLabel": null,
+          "y": 772,
+          "height": 0
+        },
+        {
+          "node": "nav#nl-secnav.nl-secnav",
+          "role": null,
+          "ariaLabel": "ניווט בעמוד",
+          "y": 805,
+          "height": 56
+        },
+        {
+          "node": "main",
+          "role": null,
+          "ariaLabel": null,
+          "y": 861,
+          "height": 6588
+        },
+        {
+          "node": "aside#nl-panel.nl-panel",
+          "role": null,
+          "ariaLabel": null,
+          "y": 1439,
+          "height": 600
+        },
+        {
+          "node": "article.nl-ucard",
+          "role": null,
+          "ariaLabel": null,
+          "y": 3147,
+          "height": 117
+        },
+        {
+          "node": "article.nl-ucard",
+          "role": null,
+          "ariaLabel": null,
+          "y": 3147,
+          "height": 117
+        },
+        {
+          "node": "article.nl-ucard",
+          "role": null,
+          "ariaLabel": null,
+          "y": 3147,
+          "height": 117
+        },
+        {
+          "node": "article.nl-ucard",
+          "role": null,
+          "ariaLabel": null,
+          "y": 3147,
+          "height": 117
+        },
+        {
+          "node": "article.nl-ucard",
+          "role": null,
+          "ariaLabel": null,
+          "y": 3147,
+          "height": 117
+        },
+        {
+          "node": "article.nl-ucard",
+          "role": null,
+          "ariaLabel": null,
+          "y": 3147,
+          "height": 117
+        },
+        {
+          "node": "article.nl-ucard",
+          "role": null,
+          "ariaLabel": null,
+          "y": 3276,
+          "height": 117
+        },
+        {
+          "node": "article.nl-ucard",
+          "role": null,
+          "ariaLabel": null,
+          "y": 3276,
+          "height": 117
+        },
+        {
+          "node": "article.nl-ucard",
+          "role": null,
+          "ariaLabel": null,
+          "y": 3276,
+          "height": 117
+        },
+        {
+          "node": "article.nl-ucard",
+          "role": null,
+          "ariaLabel": null,
+          "y": 3276,
+          "height": 117
+        },
+        {
+          "node": "article.nl-ucard",
+          "role": null,
+          "ariaLabel": null,
+          "y": 3276,
+          "height": 117
+        },
+        {
+          "node": "article.nl-ucard",
+          "role": null,
+          "ariaLabel": null,
+          "y": 3276,
+          "height": 117
+        },
+        {
+          "node": "article.nl-ucard",
+          "role": null,
+          "ariaLabel": null,
+          "y": 3405,
+          "height": 117
+        },
+        {
+          "node": "article.nl-ucard",
+          "role": null,
+          "ariaLabel": null,
+          "y": 3405,
+          "height": 117
+        },
+        {
+          "node": "article.nl-ucard",
+          "role": null,
+          "ariaLabel": null,
+          "y": 3405,
+          "height": 117
+        },
+        {
+          "node": "article.nl-ucard",
+          "role": null,
+          "ariaLabel": null,
+          "y": 3405,
+          "height": 117
+        },
+        {
+          "node": "article.nl-ucard",
+          "role": null,
+          "ariaLabel": null,
+          "y": 3405,
+          "height": 117
+        },
+        {
+          "node": "article.nl-ucard",
+          "role": null,
+          "ariaLabel": null,
+          "y": 3405,
+          "height": 117
+        },
+        {
+          "node": "article.nl-ucard",
+          "role": null,
+          "ariaLabel": null,
+          "y": 3535,
+          "height": 117
+        },
+        {
+          "node": "article.nl-ucard",
+          "role": null,
+          "ariaLabel": null,
+          "y": 3535,
+          "height": 117
+        },
+        {
+          "node": "article.nl-ucard",
+          "role": null,
+          "ariaLabel": null,
+          "y": 3535,
+          "height": 117
+        },
+        {
+          "node": "article.nl-ucard",
+          "role": null,
+          "ariaLabel": null,
+          "y": 3535,
+          "height": 117
+        },
+        {
+          "node": "article.nl-ucard",
+          "role": null,
+          "ariaLabel": null,
+          "y": 3535,
+          "height": 117
+        },
+        {
+          "node": "article.nl-ucard",
+          "role": null,
+          "ariaLabel": null,
+          "y": 3535,
+          "height": 117
+        },
+        {
+          "node": "article.nl-ucard",
+          "role": null,
+          "ariaLabel": null,
+          "y": 3664,
+          "height": 117
+        },
+        {
+          "node": "article.nl-ucard",
+          "role": null,
+          "ariaLabel": null,
+          "y": 3664,
+          "height": 117
+        },
+        {
+          "node": "article.nl-ucard",
+          "role": null,
+          "ariaLabel": null,
+          "y": 3664,
+          "height": 117
+        },
+        {
+          "node": "article.nl-ucard",
+          "role": null,
+          "ariaLabel": null,
+          "y": 3664,
+          "height": 117
+        },
+        {
+          "node": "article.nl-ucard",
+          "role": null,
+          "ariaLabel": null,
+          "y": 3664,
+          "height": 117
+        },
+        {
+          "node": "article.nl-ucard",
+          "role": null,
+          "ariaLabel": null,
+          "y": 3664,
+          "height": 117
+        },
+        {
+          "node": "article.nl-ucard",
+          "role": null,
+          "ariaLabel": null,
+          "y": 3793,
+          "height": 117
+        },
+        {
+          "node": "article.nl-ucard",
+          "role": null,
+          "ariaLabel": null,
+          "y": 3793,
+          "height": 117
+        },
+        {
+          "node": "article.nl-ucard",
+          "role": null,
+          "ariaLabel": null,
+          "y": 3793,
+          "height": 117
+        },
+        {
+          "node": "article.nl-ucard",
+          "role": null,
+          "ariaLabel": null,
+          "y": 3793,
+          "height": 117
+        },
+        {
+          "node": "article.nl-ucard",
+          "role": null,
+          "ariaLabel": null,
+          "y": 3793,
+          "height": 117
+        },
+        {
+          "node": "article.nl-ucard",
+          "role": null,
+          "ariaLabel": null,
+          "y": 3793,
+          "height": 117
+        },
+        {
+          "node": "article.nl-ucard",
+          "role": null,
+          "ariaLabel": null,
+          "y": 3922,
+          "height": 117
+        },
+        {
+          "node": "article.nl-ucard",
+          "role": null,
+          "ariaLabel": null,
+          "y": 3922,
+          "height": 117
+        },
+        {
+          "node": "article.nl-ucard",
+          "role": null,
+          "ariaLabel": null,
+          "y": 3922,
+          "height": 117
+        },
+        {
+          "node": "article.nl-ucard",
+          "role": null,
+          "ariaLabel": null,
+          "y": 3922,
+          "height": 117
+        },
+        {
+          "node": "article.nl-ucard",
+          "role": null,
+          "ariaLabel": null,
+          "y": 3922,
+          "height": 117
+        },
+        {
+          "node": "article.nl-ucard",
+          "role": null,
+          "ariaLabel": null,
+          "y": 3922,
+          "height": 117
+        },
+        {
+          "node": "article.nl-ucard",
+          "role": null,
+          "ariaLabel": null,
+          "y": 4051,
+          "height": 117
+        },
+        {
+          "node": "article.nl-ucard",
+          "role": null,
+          "ariaLabel": null,
+          "y": 4051,
+          "height": 117
+        },
+        {
+          "node": "footer.nl-footer",
+          "role": null,
+          "ariaLabel": null,
+          "y": 7526,
+          "height": 253
+        },
+        {
+          "node": "nav.nlw-toc",
+          "role": null,
+          "ariaLabel": "קפיצה לפרק",
+          "y": 8241,
+          "height": 300
+        },
+        {
+          "node": "footer.wp-block-template-part",
+          "role": null,
+          "ariaLabel": null,
+          "y": 34490,
+          "height": 457
+        },
+        {
+          "node": "footer#nlpc-contact.nlpc-site-footer",
+          "role": "contentinfo",
+          "ariaLabel": null,
+          "y": 34580,
+          "height": 366
+        },
+        {
+          "node": "nav.nlpc-footer-links",
+          "role": null,
+          "ariaLabel": "קישורי אתר",
+          "y": 34652,
+          "height": 159
+        },
+        {
+          "node": "aside.nl-legal",
+          "role": "note",
+          "ariaLabel": null,
+          "y": 34947,
+          "height": 80
+        }
+      ],
+      "forms": [
+        {
+          "id": "nl-form",
+          "className": "nl-form",
+          "y": 6818,
+          "text": "פנייה כללית על הפרויקט שליחת פנייה הפנייה אינה מהווה הזמנה או התחייבות. נתוני הדגמה."
+        },
+        {
+          "id": "",
+          "className": "nlsch-form",
+          "y": 0,
+          "text": "המועד שנבחר: שליחת הבקשה"
+        }
+      ],
+      "skipLinks": [
+        {
+          "text": "לדלג לתוכן",
+          "href": "#wp--skip-link--target",
+          "y": -1
+        },
+        {
+          "text": "▣\nהמודל התלת ממדי\nלסובב את הבניין",
+          "href": "#",
+          "y": 645
+        },
+        {
+          "text": "☐\nבחירת דירה\nלפי קומה וכיוון",
+          "href": "#",
+          "y": 645
+        },
+        {
+          "text": "◫\nלראות מה רואים מהחלון\nלפי גובה הקומה והכיוון",
+          "href": "#",
+          "y": 645
+        },
+        {
+          "text": "בניין",
+          "href": "#building",
+          "y": 805
+        },
+        {
+          "text": "דירות",
+          "href": "#inventory",
+          "y": 805
+        },
+        {
+          "text": "מחיר",
+          "href": "#price",
+          "y": 805
+        },
+        {
+          "text": "סביבה",
+          "href": "#world",
+          "y": 805
+        },
+        {
+          "text": "מדיה",
+          "href": "#media",
+          "y": 805
+        },
+        {
+          "text": "מידע",
+          "href": "#about",
+          "y": 805
+        },
+        {
+          "text": "רובע שדה דב",
+          "href": "#world",
+          "y": 7615
+        },
+        {
+          "text": "סקירה ניהולית: מה יש כאן ומה עדיין צריך להוכיח",
+          "href": "#nlw-ch-1",
+          "y": 8256
+        },
+        {
+          "text": "הבעלות, הכתובת והמספרים שלא צריך להחליק",
+          "href": "#nlw-ch-2",
+          "y": 8256
+        },
+        {
+          "text": "סטטוס הפרויקט, מסירה וסיכון לוחות זמנים",
+          "href": "#nlw-ch-3",
+          "y": 8256
+        },
+        {
+          "text": "מיקום וסביבה עסקית",
+          "href": "#nlw-ch-4",
+          "y": 8256
+        },
+        {
+          "text": "בני ברק מול ציר בגין והרצליה פיתוח",
+          "href": "#nlw-ch-5",
+          "y": 8302
+        },
+        {
+          "text": "אדריכלות, מעטפת וחוויית קומה",
+          "href": "#nlw-ch-6",
+          "y": 8302
+        },
+        {
+          "text": "כמה עובדים באמת נכנסים בקומה",
+          "href": "#nlw-ch-7",
+          "y": 8302
+        },
+        {
+          "text": "חשמל, גיבוי ורציפות עסקית",
+          "href": "#nlw-ch-8",
+          "y": 8302
+        },
+        {
+          "text": "סיבים, חדרי תקשורת וחברות AI",
+          "href": "#nlw-ch-9",
+          "y": 8302
+        },
+        {
+          "text": "רצפה, תקרה, עומסים ומודול חזית",
+          "href": "#nlw-ch-10",
+          "y": 8348
+        },
+        {
+          "text": "מיזוג, BMS, בטיחות אש ונוחות",
+          "href": "#nlw-ch-11",
+          "y": 8348
+        },
+        {
+          "text": "מעליות, אבטחה ושירותי בניין",
+          "href": "#nlw-ch-12",
+          "y": 8348
+        },
+        {
+          "text": "חניה, אופניים, רכב חשמלי ולוגיסטיקה",
+          "href": "#nlw-ch-13",
+          "y": 8348
+        },
+        {
+          "text": "מסחר, הסעדה ושירותים סביבתיים",
+          "href": "#nlw-ch-14",
+          "y": 8348
+        },
+        {
+          "text": "קיימות, LEED ועלויות תפעול",
+          "href": "#nlw-ch-15",
+          "y": 8394
+        },
+        {
+          "text": "עלות fit-out ולוח זמנים ריאלי",
+          "href": "#nlw-ch-16",
+          "y": 8394
+        },
+        {
+          "text": "מה המשכיר מוסר ומה השוכר בונה",
+          "href": "#nlw-ch-17",
+          "y": 8394
+        },
+        {
+          "text": "מבנה שכירות לחברה זרה",
+          "href": "#nlw-ch-18",
+          "y": 8394
+        },
+        {
+          "text": "ישות משפטית, מע\"מ ורישום בישראל",
+          "href": "#nlw-ch-19",
+          "y": 8394
+        },
+        {
+          "text": "ארנונה בבני ברק והפער מול תל אביב",
+          "href": "#nlw-ch-20",
+          "y": 8440
+        },
+        {
+          "text": "עלות תפוסה מלאה ולא רק שכר דירה",
+          "href": "#nlw-ch-21",
+          "y": 8440
+        },
+        {
+          "text": "משקיע מוסדי: מה הנתונים מספרים ומה הם לא מספרים",
+          "href": "#nlw-ch-22",
+          "y": 8440
+        },
+        {
+          "text": "בדיקת נאותות לפני סיור ובמהלכו",
+          "href": "#nlw-ch-23",
+          "y": 8440
+        },
+        {
+          "text": "ה-RFP הטכני שחברה גדולה צריכה לשלוח",
+          "href": "#nlw-ch-24",
+          "y": 8486
+        },
+        {
+          "text": "למי THE PARK מתאים",
+          "href": "#nlw-ch-25",
+          "y": 8486
+        },
+        {
+          "text": "איך לקבל החלטה",
+          "href": "#nlw-ch-26",
+          "y": 8486
+        },
+        {
+          "text": "שאלות נפוצות",
+          "href": "#nlw-ch-27",
+          "y": 8486
+        },
+        {
+          "text": "צור קשר",
+          "href": "#nlpc-contact",
+          "y": 34789
+        }
+      ],
+      "sticky": [
+        {
+          "node": "div#nl-sticky.nl-sticky",
+          "text": "מעניין אותי וואטסאפ",
+          "y": 804
+        },
+        {
+          "node": "button.nl-sticky__main",
+          "text": "מעניין אותי",
+          "y": 804
+        },
+        {
+          "node": "span#nl-stickyctx.nl-sticky__ctx",
+          "text": "",
+          "y": 0
+        },
+        {
+          "node": "a#nl-wa.nl-sticky__wa",
+          "text": "וואטסאפ",
+          "y": 804
+        }
+      ]
+    }
+  ]
+}
