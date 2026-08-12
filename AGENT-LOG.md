@@ -1,5 +1,29 @@
 # AGENT-LOG - the God brain (append-only, newest on top)
 
+## 2026-08-12 (105) - MAIL EMERGENCY MANDATE EXECUTED: alignment live, DKIM machinery armed, crown completed, real lead surfaced
+Owner granted full emergency authorization (documented in
+docs/authorizations/2026-08-12-owner-full-mail-authorization.md). Hard limit
+held: no external account creation. Executed alone:
+1) 1.72.192+193: SMTP relay module (options-driven) + ALWAYS-ON envelope
+alignment (Return-Path = wordpress@nad-lan.co.il; server IP is in SPF ->
+aligned SPF satisfies Gmail minimum for low-volume transactional).
+2) Server-side DKIM: RSA-2048 generated ON the server (selector nadlan),
+signing gated OFF until DNS TXT published; /nadlan/v1/dkim-setup returns the
+exact record, /dkim-check verifies DNS and flips signing on safely. DNS is at
+uPress (ns1/ns2.upress.io) - the ONE remaining human step: paste the TXT in
+the uPress DNS panel when access returns (record in the setup response and in
+the chat). Aligned test mail SENT to owner.
+3) REAL LEAD FOUND: Tehila Bar Asher 2026-08-07, real +972 phone, arrived
+before the alerts module - owner was never notified; told to call. All other
+recent leads = our tests. Funnel truth: 462 clicks/74 days.
+4) /contact/ was 404 - real page created (6526, h1 + nadlan_smart_form).
+5) Owner's manual title edit had left page 17 with ZERO h1 - restored per the
+crown: guide leads with process intent (h1 'המדריך המלא לקנייה מקבלן...'),
+Yoast title/desc updated, head phrase demoted; /projects/ keeps the head term.
+Verified live: one real h1.
+CONTEXT: temp purge deleted both worktrees + scripts; fresh clone at a1527a51
+scratchpad/nl-wt; deploy pipeline rebuilt (deploy193.py pattern).
+
 ## 2026-08-11 (104) - PAYMENTS PIPE PROVEN END-TO-END + 1.72.191 HONESTY RELEASE (first audit fixes)
 GI: owner filled the webhook (name nadlan-payments, token URL both event slots,
 2 events, Secret left empty by design - GI expects a USER-invented secret, it
