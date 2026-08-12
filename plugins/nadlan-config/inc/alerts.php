@@ -35,17 +35,73 @@ add_action( 'user_register', function ( $user_id ) {
 	) );
 }, 20 );
 
-/* 2. a new lead arrived */
+/* 2. a new lead arrived - rich alert, delayed 2 minutes so the AI
+ * qualification and card routing (which run seconds after insert) are
+ * included. Owner law 2026-08-12: full context + one-tap actions, no
+ * promises, no nagging ladder. */
 add_action( 'wp_after_insert_post', function ( $post_id, $post, $update ) {
 	if ( $update || ! $post || 'nadlan_lead' !== $post->post_type ) { return; }
-	nadlan_alert_mail( 'ליד חדש התקבל', array(
-		'התקבל ליד חדש: ' . $post->post_title,
-		'מקור: ' . (string) get_post_meta( $post_id, 'source', true ),
-		'טלפון: ' . (string) get_post_meta( $post_id, 'phone', true ),
-		'אימייל: ' . (string) get_post_meta( $post_id, 'email', true ),
-		'ניהול: ' . admin_url( 'edit.php?post_type=nadlan_lead' ),
-	) );
+	wp_schedule_single_event( time() + 120, 'nadlan_lead_rich_alert', array( (int) $post_id ) );
 }, 20, 3 );
+
+add_action( 'nadlan_lead_rich_alert', function ( $lead_id ) {
+	global $wpdb;
+	$l = get_post( $lead_id );
+	if ( ! $l || 'nadlan_lead' !== $l->post_type ) { return; }
+	$m = function ( $k ) use ( $lead_id ) { return (string) get_post_meta( $lead_id, $k, true ); };
+	$phone = preg_replace( '/\D+/', '', $m( 'phone' ) );
+	$wa    = $phone ? ( '972' . ltrim( $phone, '0' ) ) : '';
+	$lines = array(
+		'שם: ' . $m( 'name' ),
+		'טלפון: ' . $m( 'phone' ) . ( $phone ? '  |  חיוג: tel:' . $phone . '  |  וואטסאפ: https://wa.me/' . $wa : '' ),
+		'אימייל: ' . $m( 'email' ),
+		'הודעה: ' . mb_substr( wp_strip_all_tags( $l->post_content ), 0, 200 ),
+		'',
+	);
+	$card_id = (int) $m( 'project_wp_id' );
+	if ( $card_id > 0 ) {
+		$g = function ( $k ) use ( $card_id ) { return (string) get_post_meta( $card_id, $k, true ); };
+		$lines[] = 'הפרויקט: ' . get_the_title( $card_id );
+		$lines[] = 'עמוד: ' . get_permalink( $card_id );
+		$lines[] = 'עיר: ' . $g( 'city' ) . ' | יזם: ' . ( $g( 'developer_name' ) ?: 'לא ידוע' )
+			. ' | יח״ד: ' . $g( 'num_units' ) . ' | כרטיס: ' . ( $g( 'claim_status' ) ?: 'לא נתבע' );
+	} elseif ( '' !== $m( 'project_title' ) ) {
+		$lines[] = 'הפרויקט (לא זוהה כרטיס): ' . $m( 'project_title' );
+	}
+	$score = $m( 'lead_score' );
+	if ( '' !== $score ) {
+		$lines[] = '';
+		$lines[] = 'ניתוח AI: ציון ' . $score . ' | דירוג ' . $m( 'lead_ai_tier' )
+			. ( $m( 'lead_ai_missing_field' ) ? ' | חסר: ' . $m( 'lead_ai_missing_field' ) : '' );
+	}
+	$dup = $phone ? (int) $wpdb->get_var( $wpdb->prepare(
+		"SELECT COUNT(*) FROM {$wpdb->postmeta} WHERE meta_key='phone' AND meta_value=%s", $m( 'phone' ) ) ) : 0;
+	$lines[] = 'אמינות: טלפון נראה ' . $dup . ' פעמים | מקור: ' . ( $m( 'utm_source' ) ?: '-' )
+		. ' | אישור אוטומטי לפונה: ' . ( 'sent' === $m( 'lead_ack_status' ) ? 'נשלח' : 'לא נשלח' );
+	$lines[] = '';
+	$lines[] = 'ניהול הליד: ' . admin_url( 'post.php?post=' . $lead_id . '&action=edit' );
+	nadlan_alert_mail( 'ליד חדש: ' . $m( 'name' ) . ( $card_id > 0 ? ' - ' . get_the_title( $card_id ) : '' ), $lines );
+} );
+
+/* 2b. one daily reminder, morning only, no nagging: leads still "new" from
+ * yesterday or earlier. */
+add_action( 'init', function () {
+	if ( ! wp_next_scheduled( 'nadlan_leads_daily' ) ) {
+		wp_schedule_event( strtotime( 'tomorrow 07:00' ), 'daily', 'nadlan_leads_daily' );
+	}
+} );
+add_action( 'nadlan_leads_daily', function () {
+	$stale = get_posts( array( 'post_type' => 'nadlan_lead', 'post_status' => 'any', 'numberposts' => 20,
+		'date_query' => array( array( 'before' => '20 hours ago' ) ),
+		'meta_query' => array( array( 'key' => 'lead_status', 'value' => 'new' ) ) ) );
+	if ( ! $stale ) { return; }
+	$lines = array( 'לידים שעדיין מסומנים "חדש" ולא טופלו:' );
+	foreach ( $stale as $l ) {
+		$lines[] = '• ' . get_post_meta( $l->ID, 'name', true ) . ' | ' . get_post_meta( $l->ID, 'phone', true )
+			. ' | ' . $l->post_date . ' | ' . admin_url( 'post.php?post=' . $l->ID . '&action=edit' );
+	}
+	nadlan_alert_mail( 'תזכורת יומית: ' . count( $stale ) . ' לידים ממתינים', $lines );
+} );
 
 /* 3. someone asked to claim a card */
 $nadlan_alert_claim = function ( $meta_id, $object_id, $meta_key, $meta_value ) {

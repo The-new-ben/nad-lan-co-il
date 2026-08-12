@@ -208,6 +208,23 @@ if ( ! function_exists( 'nadlan_lead_route' ) ) {
 
 		$fields = nadlan_lead_route_fields( $lead_id, $fields );
 		if ( $card_id <= 0 ) {
+			/* Lead 6527 (2026-08-13): callers often send only slug/title, and a
+			 * lead about an EXISTING card fell to admin as "no_card". Resolve
+			 * the card here before giving up - the stored slug arrives
+			 * URL-encoded, so decode first. */
+			$slug = rawurldecode( (string) ( $fields['project_slug'] ?? '' ) );
+			if ( '' !== $slug ) {
+				$p = get_page_by_path( $slug, OBJECT, 'nadlan_project' );
+				if ( $p instanceof WP_Post ) { $card_id = (int) $p->ID; }
+			}
+			if ( $card_id <= 0 && '' !== (string) ( $fields['project_title'] ?? '' ) ) {
+				$q = get_posts( array( 'post_type' => 'nadlan_project', 'title' => (string) $fields['project_title'],
+					'numberposts' => 1, 'post_status' => 'publish' ) );
+				if ( $q ) { $card_id = (int) $q[0]->ID; }
+			}
+			if ( $card_id > 0 ) { update_post_meta( $lead_id, 'project_wp_id', $card_id ); }
+		}
+		if ( $card_id <= 0 ) {
 			nadlan_lead_route_mark( $lead_id, 0, 0, '', 'fallback_admin', 'no_card', $context );
 			return array( 'ok' => true, 'status' => 'fallback_admin', 'reason' => 'no_card' );
 		}
