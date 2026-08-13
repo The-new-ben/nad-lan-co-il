@@ -458,7 +458,7 @@
   }
   function panelBody(u) {
     var fav = state.favs.indexOf(u.id) >= 0, cmp = state.compare.indexOf(u.id) >= 0, p = project();
-    return '<div class="nl-panel__head"><div><span class="nl-badge" style="background:rgba(255,255,255,.08);color:#fff"><span class="nl-dot s-' + esc(u.status) + '"></span>' + esc(statusLabel(u.status)) + '</span>' +
+    return '<div class="nl-panel__head"><div>' + (u.status !== "unknown" ? '<span class="nl-badge" style="background:rgba(255,255,255,.08);color:#fff"><span class="nl-dot s-' + esc(u.status) + '"></span>' + esc(statusLabel(u.status)) + '</span>' : "") +
         '<h3 class="nl-panel__title" style="margin-top:8px">' + esc(roomsLabel(u.rooms)) + '</h3><div class="nl-muted" style="color:var(--theater-sub);font-size:13px;margin-top:3px">' + esc(projName()) + " · " + esc(dirLabel(u.dir)) + " · " + esc(unitDisplayLabel(u)) + "</div></div>" +
         '<div class="nl-panel__floor"><div style="color:#d8c79a;font-size:12px;font-weight:600">' + esc(t("panel_floor")) + '</div><b>' + esc(u.floor) + "</b>" +
         '<button class="nl-panel__close" data-act="close" aria-label="' + esc(t("btn_close")) + '">' + svg("close", 16) + "</button></div></div>" +
@@ -466,7 +466,7 @@
         (u.rooms > 0 ? stat(t("panel_rooms"), u.rooms) : "") +
         (u.sqm > 0 ? stat(t("panel_sqm"), u.sqm + " " + t("sqm_unit")) : "") +
         (u.balcony ? stat(t("panel_balcony"), u.balcony + " " + t("sqm_unit")) : "") +
-        stat(t("panel_view"), viewText(u) || dirLabel(u.dir)) +
+        ((viewText(u) || dirKey(u.dir)) ? stat(t("panel_view"), viewText(u) || dirLabel(u.dir)) : "") +
       "</div>" + sunLine(u) + scarcityLine(u) + mortgageStrip(u) +
       '<div class="nl-tabs" role="tablist">' +
         '<button class="nl-tab" role="tab" data-act="tab" data-id="plan" aria-selected="' + (state.tab === "plan") + '">' + esc(t("tab_plan")) + '</button>' +
@@ -634,15 +634,22 @@
           '<button class="nl-ucard__select" type="button" data-act="select" data-id="' +
             esc(u.id) + '" aria-label="' + esc(unitTitleAria(u)) + '">' +
             '<div class="nl-ucard__top"><span style="display:inline-flex;align-items:center;gap:6px">' +
-              '<span class="nl-dot s-' + esc(u.status) + '"></span>' +
-              esc(statusLabel(u.status)) + '</span><span>' +
+              (u.status !== "unknown"
+                ? '<span class="nl-dot s-' + esc(u.status) + '"></span>' + esc(statusLabel(u.status))
+                : "") +
+              '</span><span>' +
               esc(t("floor_label", { n: u.floor })) + '</span></div>' +
             (u.rooms > 0
               ? '<div class="nl-ucard__rooms">' + esc(roomsLabel(u.rooms)) + '</div>'
               : "") +
-            '<div class="nl-muted" style="font-size:13px">' +
-              esc((u.sqm > 0 ? u.sqm + " " + t("sqm_unit") + " · " : "") +
-                unitV2Direction(u)) + '</div>' +
+            (function () {
+              var ps = [];
+              if (u.sqm > 0) ps.push(u.sqm + " " + t("sqm_unit"));
+              if (dirKey(u.dir)) ps.push(unitV2Direction(u));
+              return ps.length
+                ? '<div class="nl-muted" style="font-size:13px">' + esc(ps.join(" · ")) + '</div>'
+                : "";
+            })() +
           '</button>' +
           '<button class="nl-ucard__fav' + (fav ? " is-on" : "") +
             '" type="button" data-act="fav" data-id="' + esc(u.id) +
@@ -651,9 +658,14 @@
       }
       return '<div class="nl-ucard' + (u.id === state.unitId ? " is-active" : "") + (u.status === "sold" ? " is-sold" : "") + '" data-act="select" data-id="' + esc(u.id) + '" tabindex="0" role="button" aria-label="' + esc(unitTitleAria(u)) + '">' +
         '<button class="nl-ucard__fav' + (fav ? " is-on" : "") + '" data-act="fav" data-id="' + esc(u.id) + '" aria-label="' + esc(t("btn_save")) + '">' + svg("heart", 18) + "</button>" +
-        '<div class="nl-ucard__top"><span style="display:inline-flex;align-items:center;gap:6px"><span class="nl-dot s-' + esc(u.status) + '"></span>' + esc(statusLabel(u.status)) + "</span><span>" + esc(t("floor_label", { n: u.floor })) + "</span></div>" +
+        '<div class="nl-ucard__top"><span style="display:inline-flex;align-items:center;gap:6px">' + (u.status !== "unknown" ? '<span class="nl-dot s-' + esc(u.status) + '"></span>' + esc(statusLabel(u.status)) : "") + "</span><span>" + esc(t("floor_label", { n: u.floor })) + "</span></div>" +
         (u.rooms > 0 ? '<div class="nl-ucard__rooms">' + esc(roomsLabel(u.rooms)) + "</div>" : "") +
-        '<div class="nl-muted" style="font-size:13px">' + esc((u.sqm > 0 ? u.sqm + " " + t("sqm_unit") + " · " : "") + dirLabel(u.dir)) + "</div></div>";
+        (function () {
+          var ps = [];
+          if (u.sqm > 0) ps.push(u.sqm + " " + t("sqm_unit"));
+          if (dirKey(u.dir)) ps.push(dirLabel(u.dir));
+          return ps.length ? '<div class="nl-muted" style="font-size:13px">' + esc(ps.join(" · ")) + "</div>" : "";
+        })() + "</div>";
     }).join("");
     var keys = ["all", "available", "3", "4", "5"];
     if (filterCount("favs") > 0) keys.push("favs");
@@ -2016,6 +2028,23 @@ function unitV2Direction(u) {
   return key ? t("dir_" + key) : t("unit_direction_unknown");
 }
 
+/* Sales surface law (owner 2026-08-13): an unknown segment is OMITTED,
+   never announced. "Floor 30" sells; "Floor 30 - direction under check"
+   un-sells. Aria strings may stay verbose; visible lines use this. */
+function unitIdentityLine(u) {
+  var dk = dirKey(u.dir);
+  if (u.rooms > 0 && dk) {
+    return t("unit_v2_identity", {
+      rooms: u.rooms,
+      floor: u.floor,
+      direction: unitV2Direction(u)
+    });
+  }
+  if (u.rooms > 0) return roomsLabel(u.rooms) + " · " + t("floor_label", { n: u.floor });
+  if (dk) return t("floor_label", { n: u.floor }) + " · " + unitV2Direction(u);
+  return t("floor_label", { n: u.floor });
+}
+
 function unitV2Label(u) {
   var raw = String(u.label == null ? "" : u.label);
   return state.lang === "he"
@@ -2111,7 +2140,9 @@ function renderBeamSceneV2(u) {
       '<figcaption>' +
         '<button class="nl-unit-beam__open" type="button" data-act="unit-tool" ' +
           'data-tool="area" aria-label="' + esc(t("unit_area_open_aria")) + '">' +
-           '<strong>' + esc(t("unit_beam_title", { view: view })) + '</strong>' +
+           '<strong>' + esc(bearing == null
+             ? t("unit_beam_around")
+             : t("unit_beam_title", { view: view })) + '</strong>' +
            '<span>' + esc(caption) + '</span>' +
          '</button>' +
       '</figcaption>' +
@@ -2125,16 +2156,10 @@ function unitV2FactsMarkup(u) {
   return (
     '<section class="nl-unit-journey__facts" aria-labelledby="nl-selected-unit-title">' +
       '<div class="nl-unit-journey__identity">' +
-        '<span class="nl-unit-summary__status">' + esc(statusLabel(u.status)) + '</span>' +
-        '<h3 id="nl-selected-unit-title">' +
-          esc(u.rooms > 0
-            ? t("unit_v2_identity", {
-                rooms: u.rooms,
-                floor: u.floor,
-                direction: unitV2Direction(u)
-              })
-            : t("floor_label", { n: u.floor }) + " · " + unitV2Direction(u)) +
-        '</h3>' +
+        (u.status !== "unknown"
+          ? '<span class="nl-unit-summary__status">' + esc(statusLabel(u.status)) + '</span>'
+          : "") +
+        '<h3 id="nl-selected-unit-title">' + esc(unitIdentityLine(u)) + '</h3>' +
       '</div>' +
       /* Honesty law: unknown facts stay off the strip (same rule as
          unitFactsMarkup) - zeros are gaps, not data. */
@@ -2232,12 +2257,13 @@ function unitSummaryMarkup(u, mode) {
         '<div>' +
           '<span>' + esc(t("unit_selected")) + '</span>' +
           '<h3 id="nl-selected-unit-title">' +
-            esc(roomsLabel(u.rooms) + " · " + unitDisplayLabel(u)) +
+            esc((u.rooms > 0 ? roomsLabel(u.rooms) + " · " : "") +
+              (unitDisplayLabel(u) || t("floor_label", { n: u.floor }))) +
           '</h3>' +
         '</div>' +
-        '<span class="nl-unit-summary__status">' +
-          esc(statusLabel(u.status)) +
-        '</span>' +
+        (u.status !== "unknown"
+          ? '<span class="nl-unit-summary__status">' + esc(statusLabel(u.status)) + '</span>'
+          : "") +
       '</header>' +
       renderBeamScene(u) +
       unitFactsMarkup(u) +
@@ -2830,7 +2856,7 @@ function unitV2CompareFact(u, key) {
       : t("unit_compare_not_provided");
   } else {
     raw = u.status;
-    value = unitV2CompareHasValue(raw)
+    value = (unitV2CompareHasValue(raw) && raw !== "unknown")
       ? statusLabel(raw)
       : t("unit_compare_not_provided");
   }
