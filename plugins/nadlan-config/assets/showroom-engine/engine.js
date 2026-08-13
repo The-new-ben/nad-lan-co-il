@@ -1335,11 +1335,20 @@
   }
   function easeMapToUnitView(u) {
     var k = dirKey(u.dir);
-    if (!k || !(k in DIR_BEARING)) return;
-    showViewCone(DIR_BEARING[k]);
     var map = window.NLPJX_MAP;
+    if (k && (k in DIR_BEARING)) {
+      showViewCone(DIR_BEARING[k]);
+      if (!map) return;
+      try { map.easeTo({ bearing: DIR_BEARING[k], duration: 900 }); } catch (e) {}
+      return;
+    }
+    /* No known bearing: the map still answers the press - it settles on the
+       building. No cone, nothing invented; the link between an apartment
+       press and the map below must always feel alive. */
     if (!map) return;
-    try { map.easeTo({ bearing: DIR_BEARING[k], duration: 900 }); } catch (e) {}
+    var p = project();
+    if (!p || !p.geo || !Number(p.geo.lat) || !Number(p.geo.lng)) return;
+    try { map.easeTo({ center: [Number(p.geo.lng), Number(p.geo.lat)], zoom: 15.2, duration: 900 }); } catch (e) {}
   }
   // the map boots lazily; when it arrives, honor a selection made before it
   document.addEventListener("nlpjx:map", function () {

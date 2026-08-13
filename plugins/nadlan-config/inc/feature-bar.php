@@ -53,6 +53,16 @@ if ( ! function_exists( 'nadlan_fbar_items' ) ) {
 		$tour = function_exists( 'nadlan_sdedov_tour_slugs' )
 			&& in_array( $slug, (array) nadlan_sdedov_tour_slugs(), true );
 
+		// Earth flyover: link the scene that covers this project's district.
+		// The /earth/ pages are quota-guarded server-side (75/day), so a public
+		// link degrades politely instead of burning the Google budget.
+		$earth_scene = '';
+		if ( false !== strpos( $slug, 'somail' ) ) {
+			$earth_scene = 'somail';
+		} elseif ( false !== strpos( $slug, 'sde-dov' ) || 'rainbow-tel-aviv' === $slug ) {
+			$earth_scene = 'sde-dov';
+		}
+
 		return array(
 			array(
 				'k'    => 'model',
@@ -93,6 +103,14 @@ if ( ! function_exists( 'nadlan_fbar_items' ) ) {
 				'sub'  => 'הסביבה בתלת ממד',
 				'on'   => $tour,
 				'href' => home_url( '/tour/sde-dov/' ),
+			),
+			array(
+				'k'    => 'earth',
+				'icon' => '&#9992;',
+				'lbl'  => 'טיסה מעל המתחם',
+				'sub'  => 'כדור הארץ בתלת ממד אמיתי',
+				'on'   => ( '' !== $earth_scene ),
+				'href' => home_url( '/earth/' . ( '' !== $earth_scene ? $earth_scene : 'sde-dov' ) . '/' ),
 			),
 			array(
 				'k'    => 'plans',
