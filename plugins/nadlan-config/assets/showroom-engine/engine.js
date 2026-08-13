@@ -17,7 +17,7 @@
     lang: qs.get("lang") || SR.config.default_lang,
     projectKey: (qs.get("project") && SR.projects[qs.get("project")]) ? qs.get("project") : SR.config.default_project,
     unitId: qs.get("unit") || null,
-    view: "3d", tab: "plan", filter: "all", light: "day", sunMin: 720,
+    view: "3d", tab: "plan", filter: "all", light: "day", sunMin: 720, invBand: null,
     favs: normalizeIdList(load("nl_favs", [])), compare: [],
     mvReady: false,
     tool: null
@@ -589,6 +589,43 @@
   /* block 6 - inventory */
   function inventory() {
     var list = filtered();
+    var totalLen = list.length;
+
+    /* Owner law (52-card wall = "stupid, takes all the page"): tall towers
+       collapse into floor BANDS - a compact tappable range bar, and only the
+       active band's units render (progressive, mobile-first). Small
+       inventories keep the flat grid. */
+    var bandBar = "";
+    var bandSize = 10;
+    if (list.length > 24) {
+      var byBand = {};
+      list.forEach(function (u) {
+        var b = Math.floor((parseInt(u.floor, 10) || 0) / bandSize);
+        (byBand[b] = byBand[b] || []).push(u);
+      });
+      var bandKeys = Object.keys(byBand).map(Number).sort(function (a, b) { return b - a; });
+      var act = bandKeys.indexOf(state.invBand) >= 0 ? state.invBand : null;
+      if (act == null && state.unitId) {
+        var selU = unit(state.unitId);
+        if (selU) {
+          var sb = Math.floor((parseInt(selU.floor, 10) || 0) / bandSize);
+          if (bandKeys.indexOf(sb) >= 0) act = sb;
+        }
+      }
+      if (act == null) act = bandKeys[0]; /* penthouse first */
+      bandBar = '<div class="nl-bands" role="tablist" aria-label="' + esc(t("inv_bands_aria")) + '">' +
+        bandKeys.map(function (b) {
+          var us = byBand[b];
+          var lo = us.reduce(function (m, u) { return Math.min(m, parseInt(u.floor, 10) || 0); }, Infinity);
+          var hi = us.reduce(function (m, u) { return Math.max(m, parseInt(u.floor, 10) || 0); }, 0);
+          var label = lo === hi ? t("floor_label", { n: lo }) : t("inv_band", { from: lo, to: hi });
+          return '<button class="nl-band" role="tab" data-act="invband" data-id="' + b +
+            '" aria-selected="' + (b === act) + '">' + esc(label) +
+            '<span class="nl-chip__n">' + us.length + "</span></button>";
+        }).join("") + "</div>";
+      list = byBand[act];
+    }
+
     var cards = list.map(function (u) {
       var fav = state.favs.indexOf(u.id) >= 0;
       if (unitV2Enabled()) {
@@ -600,10 +637,12 @@
               '<span class="nl-dot s-' + esc(u.status) + '"></span>' +
               esc(statusLabel(u.status)) + '</span><span>' +
               esc(t("floor_label", { n: u.floor })) + '</span></div>' +
-            '<div class="nl-ucard__rooms">' + esc(roomsLabel(u.rooms)) + '</div>' +
+            (u.rooms > 0
+              ? '<div class="nl-ucard__rooms">' + esc(roomsLabel(u.rooms)) + '</div>'
+              : "") +
             '<div class="nl-muted" style="font-size:13px">' +
-              esc(u.sqm + " " + t("sqm_unit")) + " · " +
-              esc(unitV2Direction(u)) + '</div>' +
+              esc((u.sqm > 0 ? u.sqm + " " + t("sqm_unit") + " · " : "") +
+                unitV2Direction(u)) + '</div>' +
           '</button>' +
           '<button class="nl-ucard__fav' + (fav ? " is-on" : "") +
             '" type="button" data-act="fav" data-id="' + esc(u.id) +
@@ -614,7 +653,7 @@
         '<button class="nl-ucard__fav' + (fav ? " is-on" : "") + '" data-act="fav" data-id="' + esc(u.id) + '" aria-label="' + esc(t("btn_save")) + '">' + svg("heart", 18) + "</button>" +
         '<div class="nl-ucard__top"><span style="display:inline-flex;align-items:center;gap:6px"><span class="nl-dot s-' + esc(u.status) + '"></span>' + esc(statusLabel(u.status)) + "</span><span>" + esc(t("floor_label", { n: u.floor })) + "</span></div>" +
         (u.rooms > 0 ? '<div class="nl-ucard__rooms">' + esc(roomsLabel(u.rooms)) + "</div>" : "") +
-        '<div class="nl-muted" style="font-size:13px">' + esc(u.sqm + " " + t("sqm_unit")) + " · " + esc(dirLabel(u.dir)) + "</div></div>";
+        '<div class="nl-muted" style="font-size:13px">' + esc((u.sqm > 0 ? u.sqm + " " + t("sqm_unit") + " · " : "") + dirLabel(u.dir)) + "</div></div>";
     }).join("");
     var keys = ["all", "available", "3", "4", "5"];
     if (filterCount("favs") > 0) keys.push("favs");
@@ -623,8 +662,9 @@
     }).join("");
     return '<div class="nl-invhead"><div><span class="nl-eyebrow">' + esc(t("inventory_title")) + '</span><hr class="nl-rule"><p class="nl-muted" style="max-width:46ch">' + esc(t("inventory_sub")) + '</p></div><div class="nl-filters">' + chips + "</div></div>" +
       '<div id="nl-recentwrap">' + recentStrip() + "</div>" +
+      bandBar +
       '<div class="nl-invgrid">' + cards + "</div>" +
-      '<div class="nl-muted" style="margin-top:14px;font-size:13px">' + esc(t("results_count", { n: list.length })) + "</div>";
+      '<div class="nl-muted" style="margin-top:14px;font-size:13px">' + esc(t("results_count", { n: totalLen })) + "</div>";
   }
 
 
@@ -1493,7 +1533,8 @@
     else if (act === "unit-tool") { openUnitTool(node.dataset.tool, unit(state.unitId), node); }
     else if (act === "view") setView(id);
     else if (act === "tab") setTab(id);
-    else if (act === "filter") { state.filter = id; refresh("inventory"); applyStageFilter(); }
+    else if (act === "filter") { state.filter = id; state.invBand = null; refresh("inventory"); applyStageFilter(); }
+    else if (act === "invband") { state.invBand = parseInt(id, 10); refresh("inventory"); }
     else if (act === "light") { state.sunMin = ({ day: 720, dusk: 1110, night: 1200 })[id] || 720; applyLight(); }
     else if (act === "cotour") { cotourStart(); }
     else if (act === "winfs") { winFs(); }
