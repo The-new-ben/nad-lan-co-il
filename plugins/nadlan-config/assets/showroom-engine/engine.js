@@ -2249,8 +2249,9 @@ function unitV2ScreenMarkup(u) {
       '<p><strong>' + esc(t("unit_selected")) + '</strong><span>' +
         esc(t("unit_v2_instruction")) + '</span></p>' +
     '</header>' +
-    '<section class="nl-unit-journey__beam" aria-label="' +
-      esc(t("unit_beam_region")) + '">' + renderBeamSceneV2(u) + '</section>' +
+    /* Owner order 2026-08-13 ("get this gold thing out"): the in-panel
+       beam box is retired - no section, no reserved grid row. THE beam
+       lives on the big area map below; the window view has its own door. */
     unitV2FactsMarkup(u) +
     unitV2DoorsMarkup(u)
   );
@@ -2274,7 +2275,6 @@ function unitSummaryMarkup(u, mode) {
           ? '<span class="nl-unit-summary__status">' + esc(statusLabel(u.status)) + '</span>'
           : "") +
       '</header>' +
-      renderBeamScene(u) +
       unitFactsMarkup(u) +
       unitDoorsMarkup(u) +
       unitQuickActionsMarkup(u) +

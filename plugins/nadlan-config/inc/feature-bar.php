@@ -50,8 +50,16 @@ if ( ! function_exists( 'nadlan_fbar_items' ) ) {
 		$draw  = trim( (string) get_post_meta( $id, 'project_3d_drawings_json', true ) );
 		$slug  = get_post_field( 'post_name', $id );
 
-		$tour = function_exists( 'nadlan_sdedov_tour_slugs' )
+		$tour     = function_exists( 'nadlan_sdedov_tour_slugs' )
 			&& in_array( $slug, (array) nadlan_sdedov_tour_slugs(), true );
+		$tour_url = home_url( '/tour/sde-dov/' );
+		// The Somail district tour (generated 2026-07, shown to Africa Israel)
+		// sat orphaned in uploads until 2026-08-13. Never again: every district
+		// tour that exists gets linked from its projects' bar.
+		if ( false !== strpos( $slug, 'somail' ) ) {
+			$tour     = true;
+			$tour_url = content_url( 'uploads/2026/07/somail-tour.html' );
+		}
 
 		// Earth flyover: link the scene that covers this project's district.
 		// The /earth/ pages are quota-guarded server-side (75/day), so a public
@@ -102,7 +110,7 @@ if ( ! function_exists( 'nadlan_fbar_items' ) ) {
 				'lbl'  => 'סיור ברובע',
 				'sub'  => 'הסביבה בתלת ממד',
 				'on'   => $tour,
-				'href' => home_url( '/tour/sde-dov/' ),
+				'href' => $tour_url,
 			),
 			array(
 				'k'    => 'earth',
