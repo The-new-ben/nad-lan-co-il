@@ -355,7 +355,11 @@
             var l = avail > 0 ? t("fact_homes") : t("fact_homes_total");
             return '<div><div class="nl-fact__n">' + esc(n) + '</div><div class="nl-fact__l">' + esc(l) + "</div></div>";
           })() +
-          '<div><div class="nl-fact__n">' + esc(hi) + '</div><div class="nl-fact__l">' + esc(t("fact_from_floor")) + "</div></div>" +
+          /* degenerate stat guard: "52 high floors" next to "52 floors" is
+             noise, not information - hide when it adds nothing. */
+          (Number(hi) > 0 && Number(hi) < Number(p.floors)
+            ? '<div><div class="nl-fact__n">' + esc(hi) + '</div><div class="nl-fact__l">' + esc(t("fact_from_floor")) + "</div></div>"
+            : "") +
         "</div>" +
       "</div>" +
       '<div class="nl-hero__media"><img src="' + esc(p.hero_image || p.model_poster) + '" alt="' + esc(projName()) + '" loading="eager">' + (SR.config.demo ? '<span class="nl-badge nl-badge--demo nl-hero__badge">' + esc(t("demo_badge")) + "</span>" : "") + "</div>" +
@@ -459,8 +463,10 @@
         '<div class="nl-panel__floor"><div style="color:#d8c79a;font-size:12px;font-weight:600">' + esc(t("panel_floor")) + '</div><b>' + esc(u.floor) + "</b>" +
         '<button class="nl-panel__close" data-act="close" aria-label="' + esc(t("btn_close")) + '">' + svg("close", 16) + "</button></div></div>" +
       '<div class="nl-grid2">' +
-        stat(t("panel_rooms"), u.rooms) + stat(t("panel_sqm"), u.sqm + " " + t("sqm_unit")) +
-        stat(t("panel_balcony"), u.balcony ? (u.balcony + " " + t("sqm_unit")) : "-") + stat(t("panel_view"), viewText(u) || dirLabel(u.dir)) +
+        (u.rooms > 0 ? stat(t("panel_rooms"), u.rooms) : "") +
+        (u.sqm > 0 ? stat(t("panel_sqm"), u.sqm + " " + t("sqm_unit")) : "") +
+        (u.balcony ? stat(t("panel_balcony"), u.balcony + " " + t("sqm_unit")) : "") +
+        stat(t("panel_view"), viewText(u) || dirLabel(u.dir)) +
       "</div>" + sunLine(u) + scarcityLine(u) + mortgageStrip(u) +
       '<div class="nl-tabs" role="tablist">' +
         '<button class="nl-tab" role="tab" data-act="tab" data-id="plan" aria-selected="' + (state.tab === "plan") + '">' + esc(t("tab_plan")) + '</button>' +
@@ -1893,15 +1899,22 @@ function mountBeamScene(scope) {
 }
 
 function unitFactsMarkup(u) {
+  /* Honesty law: a fact renders only when it is known - "0 rooms" and
+     "0 sqm" are data-entry gaps, not information. */
   return (
     '<dl class="nl-unit-facts">' +
       '<div><dt>' + esc(t("panel_floor")) + '</dt><dd>' + esc(u.floor) + '</dd></div>' +
-      '<div><dt>' + esc(t("panel_rooms")) + '</dt><dd>' + esc(u.rooms) + '</dd></div>' +
-      '<div><dt>' + esc(t("panel_sqm")) + '</dt><dd>' +
-        esc(u.sqm + " " + t("sqm_unit")) + '</dd></div>' +
-      '<div><dt>' + esc(t("panel_balcony")) + '</dt><dd>' +
-        esc(u.balcony ? u.balcony + " " + t("sqm_unit") : "–") +
-      '</dd></div>' +
+      (u.rooms > 0
+        ? '<div><dt>' + esc(t("panel_rooms")) + '</dt><dd>' + esc(u.rooms) + '</dd></div>'
+        : '') +
+      (u.sqm > 0
+        ? '<div><dt>' + esc(t("panel_sqm")) + '</dt><dd>' +
+            esc(u.sqm + " " + t("sqm_unit")) + '</dd></div>'
+        : '') +
+      (u.balcony
+        ? '<div><dt>' + esc(t("panel_balcony")) + '</dt><dd>' +
+            esc(u.balcony + " " + t("sqm_unit")) + '</dd></div>'
+        : '') +
     '</dl>'
   );
 }
@@ -2045,6 +2058,15 @@ function renderBeamSceneV2(u) {
         dots +
       '</svg>' +
       tags +
+      /* Owner law (asked 16 times): the window VIEW is the crown jewel and
+         must be offered by default, not hidden behind a door - a pulsing
+         expand chip on the beam itself, YouTube-fullscreen style. */
+      '<button class="nl-unit-beam__viewbtn" type="button" data-act="unit-tool" ' +
+        'data-tool="view" aria-label="' + esc(t("unit_door_view", { view: view })) + '">' +
+        '<svg viewBox="0 0 24 24" width="15" height="15" aria-hidden="true" fill="none" ' +
+          'stroke="currentColor" stroke-width="2.2" stroke-linecap="round">' +
+          '<path d="M14 4h6v6M20 4l-7 7M10 20H4v-6M4 20l7-7"/></svg>' +
+        '<span>' + esc(t("unit_beam_view_short")) + '</span></button>' +
       '<figcaption>' +
         '<button class="nl-unit-beam__open" type="button" data-act="unit-tool" ' +
           'data-tool="area" aria-label="' + esc(t("unit_area_open_aria")) + '">' +
@@ -2073,13 +2095,21 @@ function unitV2FactsMarkup(u) {
             : t("floor_label", { n: u.floor }) + " · " + unitV2Direction(u)) +
         '</h3>' +
       '</div>' +
+      /* Honesty law: unknown facts stay off the strip (same rule as
+         unitFactsMarkup) - zeros are gaps, not data. */
       '<dl class="nl-unit-facts">' +
         '<div><dt>' + esc(t("panel_floor")) + '</dt><dd>' + esc(u.floor) + '</dd></div>' +
-        '<div><dt>' + esc(t("panel_rooms")) + '</dt><dd>' + esc(u.rooms) + '</dd></div>' +
-        '<div><dt>' + esc(t("panel_sqm")) + '</dt><dd>' +
-          esc(u.sqm + " " + t("sqm_unit")) + '</dd></div>' +
-        '<div><dt>' + esc(t("panel_balcony")) + '</dt><dd>' +
-          esc(u.balcony ? u.balcony + " " + t("sqm_unit") : "–") + '</dd></div>' +
+        (u.rooms > 0
+          ? '<div><dt>' + esc(t("panel_rooms")) + '</dt><dd>' + esc(u.rooms) + '</dd></div>'
+          : '') +
+        (u.sqm > 0
+          ? '<div><dt>' + esc(t("panel_sqm")) + '</dt><dd>' +
+              esc(u.sqm + " " + t("sqm_unit")) + '</dd></div>'
+          : '') +
+        (u.balcony
+          ? '<div><dt>' + esc(t("panel_balcony")) + '</dt><dd>' +
+              esc(u.balcony + " " + t("sqm_unit")) + '</dd></div>'
+          : '') +
       '</dl>' +
       '<div class="nl-unit-quick" role="group" aria-label="' +
         esc(t("unit_quick_actions_v2")) + '">' +
@@ -3715,16 +3745,23 @@ function mountWindowViewport(scope, u) {
 
   if (!host) return function () {};
 
-  if (bearing == null || !geo.ok || !SR.config.mapbox_token || !window.mapboxgl) {
+  /* Honesty law: an unknown window direction is never invented - but it is
+     also no reason to bury the view behind a text fallback. When bearing is
+     unknown we render an explicit 360-degree panorama from the unit's real
+     floor height, slowly orbiting and labelled as pending, until the
+     developer confirms bearings. */
+  var panorama = bearing == null;
+
+  if (!geo.ok || !SR.config.mapbox_token || !window.mapboxgl) {
     host.hidden = true;
     if (fallback) {
       fallback.hidden = false;
-      fallback.textContent = bearing == null
-        ? t("unit_window_direction_unavailable")
-        : t("unit_map_unverified");
+      fallback.textContent = t("unit_map_unverified");
     }
     return function () {};
   }
+
+  if (panorama) bearing = 0;
 
   var controller = new AbortController();
   var signal = controller.signal;
@@ -3733,12 +3770,14 @@ function mountWindowViewport(scope, u) {
   var lastY = 0;
   var vertical = 0;
   var map = null;
+  var rafId = 0;
 
   function applyCamera() {
     if (map) winCam(map, u, bearing, vertical);
   }
 
   function turn(delta) {
+    panorama = false;
     bearing = (bearing + delta + 360) % 360;
     applyCamera();
   }
@@ -3768,6 +3807,15 @@ function mountWindowViewport(scope, u) {
   }
 
   map.once("load", function () {
+    /* The dialog opens with a transition: the map can boot while its host
+       is still small and keep a sliver-sized canvas. Re-measure now and
+       again after the transition settles. */
+    try { map.resize(); } catch (e) {}
+    [250, 700].forEach(function (ms) {
+      setTimeout(function () {
+        if (!signal.aborted && map) { try { map.resize(); } catch (e) {} }
+      }, ms);
+    });
     try {
       var layers = map.getStyle().layers;
       var labelLayer;
@@ -3800,6 +3848,20 @@ function mountWindowViewport(scope, u) {
     } catch (e) {}
 
     applyCamera();
+    if (panorama && !signal.aborted) {
+      /* Half-rate camera updates: satellite tiles at pitch 86 are heavy,
+         and full-rate orbiting chokes weak (mobile) renderers. */
+      var spinTick = 0;
+      var spin = function () {
+        if (signal.aborted || !panorama) return;
+        if (!dragging && !document.hidden && (++spinTick % 2 === 0)) {
+          bearing = (bearing + 0.12) % 360;
+          applyCamera();
+        }
+        rafId = requestAnimationFrame(spin);
+      };
+      rafId = requestAnimationFrame(spin);
+    }
     if (unitV2Enabled()) restoreMapAttributionTabbing(scope);
   });
 
@@ -3811,6 +3873,7 @@ function mountWindowViewport(scope, u) {
   });
 
   host.addEventListener("pointerdown", function (event) {
+    panorama = false;
     dragging = true;
     lastX = event.clientX;
     lastY = event.clientY;
@@ -3860,7 +3923,15 @@ function mountWindowViewport(scope, u) {
     }, { signal: signal });
   });
 
+  if (panorama) {
+    var pnote = document.createElement("p");
+    pnote.className = "nl-window-tool__pan-note";
+    pnote.textContent = t("unit_window_panorama_note");
+    host.insertAdjacentElement("afterend", pnote);
+  }
+
   return function () {
+    if (rafId) cancelAnimationFrame(rafId);
     controller.abort();
     if (map) {
       try { map.remove(); } catch (e) {}

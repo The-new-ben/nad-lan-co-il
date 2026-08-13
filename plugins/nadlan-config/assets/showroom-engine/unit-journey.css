@@ -406,6 +406,59 @@ body:is(.nl-unit-v2-active, .nl-unit-journey-active) #nla11y-btn:focus-visible {
   color: #d9cfb4;
 }
 
+/* The window-view chip: the crown jewel offered by default on the beam,
+   pulsing gently until first interaction (owner law, asked 16 times). */
+.nl-unit-beam__viewbtn {
+  position: absolute;
+  z-index: 4;
+  top: 8px;
+  left: 8px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 7px 12px;
+  border: 1px solid rgba(243, 217, 140, .55);
+  border-radius: 999px;
+  background: rgba(10, 15, 12, .82);
+  color: #f3d98c;
+  font: inherit;
+  font-size: 12.5px;
+  font-weight: 600;
+  cursor: pointer;
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  animation: nl-beam-view-pulse 2.2s ease-in-out 3;
+}
+
+.nl-unit-beam__viewbtn:hover,
+.nl-unit-beam__viewbtn:focus-visible {
+  background: rgba(201, 163, 79, .28);
+  color: #ffe9a8;
+}
+
+@keyframes nl-beam-view-pulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(243, 217, 140, .45); }
+  50% { box-shadow: 0 0 0 9px rgba(243, 217, 140, 0); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .nl-unit-beam__viewbtn { animation: none; }
+}
+
+/* Honest panorama caption inside the window-view tool: shown when the exact
+   window bearing is still pending and the view auto-orbits 360 degrees. */
+.nl-window-tool__pan-note {
+  margin: 8px 0 0;
+  padding: 7px 12px;
+  border: 1px solid rgba(243, 217, 140, .35);
+  border-radius: 10px;
+  background: rgba(201, 163, 79, .14);
+  color: #e8d9a8;
+  font-size: 12.5px;
+  line-height: 1.45;
+  text-align: center;
+}
+
 /* True-north tick: the view-up beam rotates the world, N keeps it honest. */
 .nl-unit-beam__north {
   position: absolute;
