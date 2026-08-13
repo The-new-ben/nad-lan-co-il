@@ -340,14 +340,21 @@
     var hTag = hasServerH1 ? "h2" : "h1";
     return '<div class="nl-hero">' +
       "<div>" +
-        '<span class="nl-eyebrow">' + esc(t("hero_eyebrow")) + "</span>" +
+        '<span class="nl-eyebrow">' + esc(project().hero_eyebrow || t("hero_eyebrow")) + "</span>" +
         '<hr class="nl-rule">' +
         "<" + hTag + ' class="nl-hero__h1">' + esc(projName()) + "</" + hTag + ">" +
         '<p class="nl-lede" style="margin-top:14px">' + esc(content("tagline")) + "</p>" +
         '<div class="nl-hero__cta"><button class="nl-btn nl-btn--accent" data-act="scroll" data-id="inquiry">' + esc(t("hero_cta_primary")) + '</button><button class="nl-btn nl-btn--ghost" data-act="scroll" data-id="inventory">' + esc(t("hero_cta_secondary")) + "</button></div>" +
         '<div class="nl-hero__facts">' +
           '<div><div class="nl-fact__n">' + esc(p.floors) + '</div><div class="nl-fact__l">' + esc(t("fact_floors")) + "</div></div>" +
-          '<div><div class="nl-fact__n">' + esc(units().length) + '</div><div class="nl-fact__l">' + esc(t("fact_homes")) + "</div></div>" +
+          (function () {
+            /* honesty: "homes to choose" may only count units actually
+               marked available; otherwise show the project total. */
+            var avail = units().filter(function (uu) { return uu.status === "available"; }).length;
+            var n = avail > 0 ? avail : (Number(project().units_total) || units().length);
+            var l = avail > 0 ? t("fact_homes") : t("fact_homes_total");
+            return '<div><div class="nl-fact__n">' + esc(n) + '</div><div class="nl-fact__l">' + esc(l) + "</div></div>";
+          })() +
           '<div><div class="nl-fact__n">' + esc(hi) + '</div><div class="nl-fact__l">' + esc(t("fact_from_floor")) + "</div></div>" +
         "</div>" +
       "</div>" +

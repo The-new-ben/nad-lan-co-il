@@ -55,7 +55,7 @@
     hero_eyebrow: "רובע שדה דב · מול הים",
     hero_cta_primary: "השארת פרטים",
     hero_cta_secondary: "לבחירת דירה",
-    fact_floors: "קומות", fact_homes: "דירות לבחירה", fact_from_floor: "קומות גבוהות",
+    fact_floors: "קומות", fact_homes: "דירות לבחירה", fact_homes_total: "דירות בפרויקט", fact_from_floor: "קומות גבוהות",
 
     /* 3D theater (block 3) */
     theater_eyebrow: "תצוגת הפרויקט",
@@ -271,7 +271,7 @@
     hero_eyebrow: "Sde Dov district · By the sea",
     hero_cta_primary: "Enquire",
     hero_cta_secondary: "Choose an apartment",
-    fact_floors: "Floors", fact_homes: "Homes to choose", fact_from_floor: "High floors",
+    fact_floors: "Floors", fact_homes: "Homes to choose", fact_homes_total: "Homes in project", fact_from_floor: "High floors",
     theater_eyebrow: "Project showroom",
     theater_title: "Choose an apartment from the building",
     theater_hint: "Drag to rotate · tap an apartment",

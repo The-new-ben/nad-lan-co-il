@@ -263,6 +263,14 @@ if ( ! function_exists( 'nadlan_showroom_engine_build_project' ) ) {
 				// but NOT for a per-apartment window view - the engine gates on this.
 				'confidence' => (string) get_post_meta( $id, 'geo_confidence', true ),
 			),
+			// Hero truth (audit + owner 2026-08-13): the eyebrow was a hardcoded
+			// "רובע שדה דב" on EVERY project. Per-project meta wins, the true
+			// city is the fallback; the i18n default remains only when both
+			// are empty. units_total feeds an honest homes figure when no
+			// unit is actually marked available.
+			'hero_eyebrow'   => ( (string) get_post_meta( $id, 'project_hero_eyebrow', true ) )
+				?: (string) get_post_meta( $id, 'city', true ),
+			'units_total'    => (int) get_post_meta( $id, 'num_units', true ),
 			// Beam v2: named public landmarks (sea, rail, park...) with real
 			// coordinates from meta project_env_landmarks. The engine computes
 			// true bearings + aerial distances so the window beam answers "what
