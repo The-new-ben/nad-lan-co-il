@@ -1063,7 +1063,9 @@
         '<div class="nl-form__row"><input class="nl-input" name="phone" inputmode="tel" placeholder="' + esc(t("form_phone")) + '" autocomplete="tel"><input class="nl-input" name="email" inputmode="email" placeholder="' + esc(t("form_email")) + '" autocomplete="email"></div>' +
         '<button class="nl-btn nl-btn--accent nl-btn--block" type="submit" style="min-height:52px">' + esc(t("form_submit")) + "</button>" +
         '<div id="nl-formmsg" hidden></div>' +
-        '<p class="nl-consent">' + esc(t("form_consent")) + "</p>" +
+        /* Owner law + lead 6527 (2026-08-13): consent must be an ACTIVE
+           choice that is transmitted and stored, not passive text. */
+        '<label class="nl-consent"><input name="consent" type="checkbox" required> <span>' + esc(t("form_consent")) + "</span></label>" +
       "</form></div></div>";
   }
 
@@ -4146,9 +4148,12 @@ function mountWindowViewport(scope, u) {
     var f = e.target, name = f.name.value.trim(), phone = f.phone.value.trim(), email = f.email.value.trim();
     var msg = document.getElementById("nl-formmsg");
     if (!name || (!phone && !email)) { show(msg, "err", t("form_error")); return; }
+    var consentEl = f.elements.namedItem("consent");
+    if (consentEl && !consentEl.checked) { show(msg, "err", t("form_error")); return; }
     var u = unit(state.unitId);
     var payload = {
       source: "showroom_engine", project_slug: state.projectKey, project_title: projName(), lang: state.lang,
+      consent: true, consent_text: t("form_consent"),
       name: name, phone: phone, email: email,
       unit: u ? u.id : "", floor: u ? u.floor : "", rooms: u ? u.rooms : "", sqm: u ? u.sqm : "", direction: u ? u.dir : "", status: u ? u.status : "",
       message: u ? t("form_unit_ctx", { label: unitDisplayLabel(u), floor: u.floor, rooms: u.rooms }) : t("form_no_unit")
