@@ -2433,19 +2433,16 @@ add_action( 'rest_api_init', function () {
 					$stage_commit_failure_stage = 'stage_identity';
 					$stage_commit_failure_reason_code = 'stage_identity_mismatch';
 					$stage_candidate = get_post( $page_id );
-					$stage_slug_matches = get_posts(
-						array(
-							'name'                   => $page_slug,
-							'post_type'              => 'nadlan_project',
-							'post_status'            => array_values( get_post_stati( array(), 'names' ) ),
-							'posts_per_page'         => 2,
-							'fields'                 => 'ids',
-							'no_found_rows'          => true,
-							'suppress_filters'       => true,
-							'update_post_meta_cache' => false,
-							'update_post_term_cache' => false,
+					$stage_slug_matches = $wpdb->get_col(
+						$wpdb->prepare(
+							"SELECT ID FROM {$wpdb->posts} WHERE post_name = %s AND post_type = %s ORDER BY ID ASC LIMIT 2",
+							$page_slug,
+							'nadlan_project'
 						)
 					);
+					if ( ! is_array( $stage_slug_matches ) || '' !== (string) $wpdb->last_error ) {
+						throw new RuntimeException( 'External stage slug identity read failed.' );
+					}
 					if (
 						! $stage_candidate
 						|| 'nadlan_project' !== (string) $stage_candidate->post_type

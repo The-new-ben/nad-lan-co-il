@@ -6071,12 +6071,18 @@ def _finish_self_test(
         "External pre-publish raw-meta read failed.",
         "External post-publish raw-meta read failed.",
         "External post-publish taxonomy read failed.",
+        "SELECT ID FROM {$wpdb->posts} WHERE post_name = %s AND post_type = %s ORDER BY ID ASC LIMIT 2",
+        "External stage slug identity read failed.",
     ):
         if required_server_create_marker not in external_commit_section:
             raise RuntimeError(
                 "External-stage server-side create is incomplete: "
                 + required_server_create_marker
             )
+    if "$stage_slug_matches = get_posts(" in external_commit_section:
+        raise RuntimeError(
+            "External-stage identity lookup must bypass query filters with a direct bounded SQL read"
+        )
     for required_registration_marker in (
         "registered_meta_key_exists( 'post', '_nadlan_private_unit_journey', 'nadlan_project' )",
         "get_registered_meta_keys( 'post', 'nadlan_project' )",
@@ -8517,6 +8523,7 @@ def _finish_self_test(
             "supplemental_claim_status_required": missing_supplemental_rejected,
             "external_stage_helper_rendered_and_linted": php_lint,
             "external_stage_server_side_create": True,
+            "external_stage_direct_slug_identity_read": True,
             "external_stage_durable_intent_before_insert": True,
             "external_stage_draft_raw_publish_order": True,
             "external_stage_commit_before_fallible_gates": True,
