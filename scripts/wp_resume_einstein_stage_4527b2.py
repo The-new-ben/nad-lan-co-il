@@ -48,8 +48,8 @@ DRIVER_PATH = REPO_ROOT / "scripts" / "wp_deploy_private_unit_journey.py"
 DRIVER_SHA256 = "fb3a40a6cbd7ae1d4334b565df749e8efd3114432d506ba02c8deb3bc73efce2"
 DRIVER_BLOB_SHA256 = "fb3a40a6cbd7ae1d4334b565df749e8efd3114432d506ba02c8deb3bc73efce2"
 TEMPLATE_PATH = REPO_ROOT / "scripts" / "templates" / "nadlan-unit-journey-deploy-helper.php.tpl"
-TEMPLATE_SHA256 = "4c99f2459fca8ecf1b11e5aa6f6fd38f841f75d3873782fa0ecd2ae015f6ee08"
-TEMPLATE_BLOB_SHA256 = "4c99f2459fca8ecf1b11e5aa6f6fd38f841f75d3873782fa0ecd2ae015f6ee08"
+TEMPLATE_SHA256 = "165279353aa877fdfd637091fcdc54801035388a0dd4942702e0f28f5dc6d77d"
+TEMPLATE_BLOB_SHA256 = "165279353aa877fdfd637091fcdc54801035388a0dd4942702e0f28f5dc6d77d"
 CORE_TEMPLATE_BLOB_SHA256 = "e3fd05c5acab768f8799a3c98d0d9ad768454d13abccd273d9330ade3d9d66ff"
 CORE_FIX_COMMIT = "b9482f76d874945900da9cc507baff291292721a"
 RESUME_BASE_COMMIT = "9c9801af018d948d721bdc79697eb8a9f93aa0bc"
@@ -87,6 +87,9 @@ STAGE_RAW_META_SHA256 = "cc0fd63af6f339e70115231f0bfacf62e3f37628ed0abd45a4b0d8f
 STAGE_RAW_META_ROW_COUNT = 37
 CHECKPOINT_SCHEMA = "nadlan-einstein-4527b2-pre-finalize-checkpoint/v1"
 POST_FINAL_CHECKPOINT_SCHEMA = "nadlan-einstein-4527b2-post-finalize-checkpoint/v1"
+TERMINAL_PROOF_CHECKPOINT_SCHEMA = (
+    "nadlan-einstein-4527b2-terminal-proof-checkpoint/v1"
+)
 
 IDENTITY_START = "\t\t\t\t\t$stage_slug_matches = "
 IDENTITY_END = "\n\t\t\t\t\tif (\n\t\t\t\t\t\t! $stage_candidate"
@@ -97,7 +100,11 @@ SNAPSHOT_IDENTITY_END = (
 )
 RESUME_ACTION_START = "\n\t\t\tif ( 'resume_retained_contract' === $action ) {"
 RESUME_ACTION_END = "\n\n\t\t\tif ( 'recovery_status' === $action ) {"
-TERMINAL_ACTION_START = "\n\n\t\t\tif ( 'terminal_self_delete' === $action ) {"
+TERMINAL_ACTION_START = "\n\n\t\t\tif ( 'terminal_proof' === $action ) {"
+TERMINAL_DELETE_ACTION_START = "\n\n\t\t\tif ( 'terminal_delete' === $action ) {"
+LEGACY_TERMINAL_ACTION_START = (
+    "\n\n\t\t\tif ( 'terminal_self_delete' === $action ) {"
+)
 SCOPE_ABSENCE_START = "\t\t\t$stage_scope_absent = function"
 SCOPE_ABSENCE_END = "\n\n\t\t\t$stage_absence_proved = function"
 REST_EXPECTATION_START = "\t\t\t\t\t$expected_meta = $external_stage_expected_meta;"
@@ -282,6 +289,10 @@ def source_patch_contract(*, require_merged: bool) -> dict[str, str]:
     prior_resume_action = extract_resume_action(prior_template)
     base_resume_action = extract_resume_action(base_template)
     resume_action = extract_resume_action(new_template)
+    terminal_proof_start = resume_action.find(TERMINAL_ACTION_START)
+    terminal_delete_start = resume_action.find(TERMINAL_DELETE_ACTION_START)
+    terminal_proof_action = resume_action[terminal_proof_start:terminal_delete_start]
+    terminal_delete_action = resume_action[terminal_delete_start:]
     if (
         "$stage_slug_matches = get_posts(" not in old_block
         or "$wpdb->get_col(" not in new_block
@@ -321,9 +332,22 @@ def source_patch_contract(*, require_merged: bool) -> dict[str, str]:
         or "$resume_backup_inventory = $inventory( $resume_backup_path );"
         not in resume_action
         or TERMINAL_ACTION_START not in resume_action
-        or "'nadlan-private-release-terminal-self-delete/v1'" not in resume_action
-        or "\\Code_Snippets\\delete_snippet( $helper_id, false )" not in resume_action
-        or "SELECT id FROM {$wpdb->prefix}snippets WHERE id = %d OR name = %s" not in resume_action
+        or TERMINAL_DELETE_ACTION_START not in resume_action
+        or terminal_proof_start < 0
+        or terminal_delete_start <= terminal_proof_start
+        or LEGACY_TERMINAL_ACTION_START in resume_action
+        or "'nadlan-private-release-terminal-proof/v1'" not in resume_action
+        or "'nadlan-private-release-terminal-delete/v1'" not in resume_action
+        or "'helper_retained'                => true" not in resume_action
+        or "'contract_sha256'" not in resume_action
+        or "\\Code_Snippets\\delete_snippet( $helper_id, false )"
+        in terminal_proof_action
+        or terminal_delete_action.count(
+            "\\Code_Snippets\\delete_snippet( $helper_id, false )"
+        )
+        != 1
+        or "return $terminal_proof;" not in terminal_proof_action
+        or "'helper_deleted'                => true" not in terminal_delete_action
         or "SELECT COUNT(*) FROM {$wpdb->options} WHERE option_name = %s" not in resume_action
         or resume_action.count("SELECT COUNT(*) FROM {$wpdb->options} WHERE option_name = %s") != 2
         or "false !== get_option( $state_key, false ) || false !== get_option( $lock_key, false )" in resume_action
@@ -600,6 +624,8 @@ def patch_helper_code(
     new_scope_absence_count = code.count(new_scope_absence)
     resume_start_count = code.count(RESUME_ACTION_START)
     terminal_action_count = code.count(TERMINAL_ACTION_START)
+    terminal_delete_action_count = code.count(TERMINAL_DELETE_ACTION_START)
+    legacy_terminal_action_count = code.count(LEGACY_TERMINAL_ACTION_START)
     prior_resume_count = code.count(prior_resume_action)
     base_resume_count = code.count(base_resume_action)
     resume_count = code.count(resume_action)
@@ -620,6 +646,8 @@ def patch_helper_code(
         and new_scope_absence_count == 0
         and resume_start_count == 0
         and terminal_action_count == 0
+        and terminal_delete_action_count == 0
+        and legacy_terminal_action_count == 0
         and prior_resume_count == 0
         and base_resume_count == 0
         and resume_count == 0
@@ -651,6 +679,8 @@ def patch_helper_code(
         and new_scope_absence_count == 1
         and resume_start_count == 1
         and terminal_action_count == 0
+        and terminal_delete_action_count == 0
+        and legacy_terminal_action_count == 0
         and prior_resume_count == 1
         and base_resume_count == 0
         and resume_count == 0
@@ -687,7 +717,9 @@ def patch_helper_code(
         and old_scope_absence_count == 0
         and new_scope_absence_count == 1
         and resume_start_count == 1
-        and terminal_action_count == 1
+        and terminal_action_count == 0
+        and terminal_delete_action_count == 0
+        and legacy_terminal_action_count == 1
         and prior_resume_count == 1
         and base_resume_count == 1
         and resume_count == 0
@@ -720,6 +752,8 @@ def patch_helper_code(
         and new_scope_absence_count == 1
         and resume_start_count == 1
         and terminal_action_count == 1
+        and terminal_delete_action_count == 1
+        and legacy_terminal_action_count == 0
         and prior_resume_count == 1
         and base_resume_count == 0
         and resume_count == 1
@@ -771,6 +805,8 @@ def patch_helper_code(
         and patched.count(resume_action) == 1
         and patched.count(RESUME_ACTION_START) == 1
         and patched.count(TERMINAL_ACTION_START) == 1
+        and patched.count(TERMINAL_DELETE_ACTION_START) == 1
+        and patched.count(LEGACY_TERMINAL_ACTION_START) == 0
         and patched.count(new_rest_expectation) == 1
         and patched.count(old_rest_expectation) == 0
         and patched.count(new_snapshot_result) == 1
@@ -1023,29 +1059,64 @@ def exact_finalize(payload: dict[str, Any], *, require_idempotent: bool | None) 
     return payload
 
 
-def exact_terminal_self_delete(payload: dict[str, Any], *, page_contract_sha256: str) -> dict[str, Any]:
+def terminal_response_contract_sha256(payload: dict[str, Any]) -> str:
+    body = {
+        key: value
+        for key, value in payload.items()
+        if key not in {"contract_sha256", "http_status"}
+    }
+    return release.sha256_bytes(release.exact_json_bytes(body))
+
+
+def exact_terminal_proof(
+    payload: dict[str, Any],
+    *,
+    helper_sha256: str,
+    pre_finalize_contract_sha256: str,
+    post_finalize_contract_sha256: str,
+    page_contract_sha256: str,
+) -> dict[str, Any]:
     if not (
         isinstance(payload, dict)
         and set(payload)
         == {
             "http_status",
             "schema",
-            "helper_deleted",
+            "run_id",
+            "helper_retained",
+            "helper_id",
+            "helper_name",
+            "helper_sha256",
+            "pre_finalize_contract_sha256",
+            "post_finalize_contract_sha256",
             "state_absent",
             "lock_absent",
             "state_option_row_count",
             "lock_option_row_count",
             "resources_absent",
+            "upload_temp_absent",
             "page_id",
             "page_contract_sha256",
             "page_raw_meta_sha256",
+            "page_raw_meta_row_count",
+            "plugin_version",
             "plugin_digest",
+            "plugin_files",
+            "plugin_bytes",
             "canonical_storage_sha256",
+            "contract_sha256",
         }
         and payload.get("http_status") == 200
-        and payload.get("schema")
-        == "nadlan-private-release-terminal-self-delete/v1"
-        and payload.get("helper_deleted") is True
+        and payload.get("schema") == "nadlan-private-release-terminal-proof/v1"
+        and payload.get("run_id") == RUN_ID
+        and payload.get("helper_retained") is True
+        and payload.get("helper_id") == HELPER_ID
+        and payload.get("helper_name") == HELPER_NAME
+        and payload.get("helper_sha256") == helper_sha256
+        and payload.get("pre_finalize_contract_sha256")
+        == pre_finalize_contract_sha256
+        and payload.get("post_finalize_contract_sha256")
+        == post_finalize_contract_sha256
         and payload.get("state_absent") is True
         and payload.get("lock_absent") is True
         and type(payload.get("state_option_row_count")) is int
@@ -1053,13 +1124,70 @@ def exact_terminal_self_delete(payload: dict[str, Any], *, page_contract_sha256:
         and type(payload.get("lock_option_row_count")) is int
         and payload.get("lock_option_row_count") == 0
         and payload.get("resources_absent") is True
+        and payload.get("upload_temp_absent") is True
         and payload.get("page_id") == POST_ID
         and payload.get("page_contract_sha256") == page_contract_sha256
         and payload.get("page_raw_meta_sha256") == STAGE_RAW_META_SHA256
+        and type(payload.get("page_raw_meta_row_count")) is int
+        and payload.get("page_raw_meta_row_count") == STAGE_RAW_META_ROW_COUNT
+        and payload.get("plugin_version") == EXPECTED_VERSION
         and payload.get("plugin_digest") == PLUGIN_DIGEST
+        and type(payload.get("plugin_files")) is int
+        and payload.get("plugin_files") == PLUGIN_FILES
+        and type(payload.get("plugin_bytes")) is int
+        and payload.get("plugin_bytes") == PLUGIN_BYTES
         and payload.get("canonical_storage_sha256") == CANONICAL_STORAGE_SHA256
+        and re.fullmatch(r"[a-f0-9]{64}", str(payload.get("contract_sha256") or ""))
+        and secrets.compare_digest(
+            str(payload.get("contract_sha256")),
+            terminal_response_contract_sha256(payload),
+        )
     ):
-        raise RuntimeError("Terminal helper self-delete response is not exact")
+        raise RuntimeError("Terminal release proof response is not exact")
+    return payload
+
+
+def exact_terminal_delete(
+    payload: dict[str, Any],
+    *,
+    helper_sha256: str,
+    terminal_contract_sha256: str,
+    pre_finalize_contract_sha256: str,
+    post_finalize_contract_sha256: str,
+) -> dict[str, Any]:
+    if not (
+        isinstance(payload, dict)
+        and set(payload)
+        == {
+            "http_status",
+            "schema",
+            "helper_deleted",
+            "helper_id",
+            "helper_name",
+            "helper_sha256",
+            "terminal_contract_sha256",
+            "pre_finalize_contract_sha256",
+            "post_finalize_contract_sha256",
+            "contract_sha256",
+        }
+        and payload.get("http_status") == 200
+        and payload.get("schema") == "nadlan-private-release-terminal-delete/v1"
+        and payload.get("helper_deleted") is True
+        and payload.get("helper_id") == HELPER_ID
+        and payload.get("helper_name") == HELPER_NAME
+        and payload.get("helper_sha256") == helper_sha256
+        and payload.get("terminal_contract_sha256") == terminal_contract_sha256
+        and payload.get("pre_finalize_contract_sha256")
+        == pre_finalize_contract_sha256
+        and payload.get("post_finalize_contract_sha256")
+        == post_finalize_contract_sha256
+        and re.fullmatch(r"[a-f0-9]{64}", str(payload.get("contract_sha256") or ""))
+        and secrets.compare_digest(
+            str(payload.get("contract_sha256")),
+            terminal_response_contract_sha256(payload),
+        )
+    ):
+        raise RuntimeError("Terminal helper deletion response is not exact")
     return payload
 
 
@@ -1353,6 +1481,142 @@ def read_post_finalize_checkpoint(path: Path) -> dict[str, Any]:
     )
 
 
+def exact_terminal_proof_checkpoint(payload: Any) -> dict[str, Any]:
+    keys = {
+        "schema",
+        "run_id",
+        "helper_id",
+        "helper_name",
+        "helper_sha256",
+        "pre_finalize_contract_sha256",
+        "post_finalize_contract_sha256",
+        "terminal_contract_sha256",
+        "terminal_proof",
+        "ready_for_helper_delete",
+        "contract_sha256",
+    }
+    if not isinstance(payload, dict) or set(payload) != keys:
+        raise RuntimeError("Terminal-proof checkpoint shape is not exact")
+    proof = payload.get("terminal_proof")
+    if not isinstance(proof, dict):
+        raise RuntimeError("Terminal-proof checkpoint payload is unavailable")
+    helper_sha256 = str(payload.get("helper_sha256") or "")
+    pre_contract = str(payload.get("pre_finalize_contract_sha256") or "")
+    post_contract = str(payload.get("post_finalize_contract_sha256") or "")
+    terminal_contract = str(payload.get("terminal_contract_sha256") or "")
+    if not (
+        payload.get("schema") == TERMINAL_PROOF_CHECKPOINT_SCHEMA
+        and payload.get("run_id") == RUN_ID
+        and payload.get("helper_id") == HELPER_ID
+        and payload.get("helper_name") == HELPER_NAME
+        and re.fullmatch(r"[a-f0-9]{64}", helper_sha256)
+        and re.fullmatch(r"[a-f0-9]{64}", pre_contract)
+        and re.fullmatch(r"[a-f0-9]{64}", post_contract)
+        and re.fullmatch(r"[a-f0-9]{64}", terminal_contract)
+        and payload.get("ready_for_helper_delete") is True
+        and proof.get("contract_sha256") == terminal_contract
+        and secrets.compare_digest(
+            str(payload.get("contract_sha256") or ""),
+            checkpoint_contract_sha256(payload),
+        )
+    ):
+        raise RuntimeError("Terminal-proof checkpoint contract differs")
+    exact_terminal_proof(
+        proof,
+        helper_sha256=helper_sha256,
+        pre_finalize_contract_sha256=pre_contract,
+        post_finalize_contract_sha256=post_contract,
+        page_contract_sha256=str(proof.get("page_contract_sha256") or ""),
+    )
+    return payload
+
+
+def write_terminal_proof_checkpoint(
+    path: Path, payload: dict[str, Any]
+) -> dict[str, Any]:
+    exact = dict(payload)
+    exact["contract_sha256"] = checkpoint_contract_sha256(exact)
+    exact_terminal_proof_checkpoint(exact)
+    if path.exists() or path.is_symlink():
+        existing = read_terminal_proof_checkpoint(path)
+        if existing != exact:
+            raise RuntimeError("Existing terminal-proof checkpoint differs")
+        return existing
+    return durable_atomic_json_write(path, exact, exact_terminal_proof_checkpoint)
+
+
+def read_terminal_proof_checkpoint(path: Path) -> dict[str, Any]:
+    return durable_atomic_json_read(
+        path, exact_terminal_proof_checkpoint, "terminal-proof"
+    )
+
+
+def exact_linked_terminal_checkpoints(
+    pre_finalize: dict[str, Any],
+    post_finalize: dict[str, Any],
+    terminal: dict[str, Any],
+    *,
+    helper_sha256: str,
+) -> tuple[dict[str, Any], dict[str, Any], dict[str, Any]]:
+    exact_checkpoint(pre_finalize)
+    exact_post_finalize_checkpoint(post_finalize)
+    exact_terminal_proof_checkpoint(terminal)
+    proof = terminal["terminal_proof"]
+    if not (
+        pre_finalize["helper_sha256"] == helper_sha256
+        and post_finalize["helper_sha256"] == helper_sha256
+        and terminal["helper_sha256"] == helper_sha256
+        and post_finalize["pre_finalize_contract_sha256"]
+        == pre_finalize["contract_sha256"]
+        and terminal["pre_finalize_contract_sha256"]
+        == pre_finalize["contract_sha256"]
+        and terminal["post_finalize_contract_sha256"]
+        == post_finalize["contract_sha256"]
+        and post_finalize["page_contract_sha256"]
+        == pre_finalize["page_contract_sha256"]
+        == proof["page_contract_sha256"]
+        and post_finalize["page_raw_meta_sha256"]
+        == pre_finalize["page_raw_meta_sha256"]
+        == proof["page_raw_meta_sha256"]
+        and post_finalize["page_url"] == pre_finalize["page_url"]
+        and post_finalize["stage_readback_sha256"]
+        == pre_finalize["stage_readback_sha256"]
+        and post_finalize["acceptance_summary_sha256"]
+        == pre_finalize["acceptance_summary_sha256"]
+    ):
+        raise RuntimeError("Terminal cleanup checkpoints are not linked exactly")
+    return pre_finalize, post_finalize, terminal
+
+
+def terminal_delete_outcome(
+    *,
+    response_lost: bool,
+    response_status: int | None,
+    payload: dict[str, Any] | None,
+    terminal_checkpoint: dict[str, Any] | None,
+    absence_proved: bool,
+) -> str:
+    if not isinstance(terminal_checkpoint, dict):
+        raise RuntimeError("Terminal deletion lacks its durable proof checkpoint")
+    terminal = exact_terminal_proof_checkpoint(terminal_checkpoint)
+    if response_lost:
+        if absence_proved is not True:
+            raise RuntimeError("Terminal deletion response loss was not reconciled")
+        return "terminal_delete_response_loss_reconciled"
+    if response_status != 200 or not isinstance(payload, dict):
+        raise RuntimeError("Known terminal deletion response was not exact HTTP 200")
+    exact_terminal_delete(
+        payload,
+        helper_sha256=terminal["helper_sha256"],
+        terminal_contract_sha256=terminal["terminal_contract_sha256"],
+        pre_finalize_contract_sha256=terminal["pre_finalize_contract_sha256"],
+        post_finalize_contract_sha256=terminal["post_finalize_contract_sha256"],
+    )
+    if absence_proved is not True:
+        raise RuntimeError("Exact terminal deletion response lacks absence proof")
+    return "terminal_delete"
+
+
 def checkpoint_durability_self_test() -> None:
     fixture = {"schema": "checkpoint-durability-regression/v1", "value": 1}
     encoded = (json.dumps(fixture, ensure_ascii=False, indent=2) + "\n").encode(
@@ -1577,12 +1841,14 @@ def helper_patch_transition_self_test(
             in patched_base
             and "'page_meta_key_count'   => $stage_snapshot['raw_meta_row_count']"
             in patched_base
-            and "'page_raw_meta_sha256'      => $terminal_page_raw_meta_sha256"
-            in patched_base
-            and "'state_option_row_count'    => $terminal_state_option_row_count"
-            in patched_base
-            and "'lock_option_row_count'     => $terminal_lock_option_row_count"
-            in patched_base
+            and "'nadlan-private-release-terminal-proof/v1'" in patched_base
+            and "'nadlan-private-release-terminal-delete/v1'" in patched_base
+            and "'helper_retained'" in patched_base
+            and "'page_raw_meta_row_count'" in patched_base
+            and "'state_option_row_count'" in patched_base
+            and "'lock_option_row_count'" in patched_base
+            and "$terminal_proof['contract_sha256']" in patched_base
+            and "$terminal_delete_result['contract_sha256']" in patched_base
         ):
             raise RuntimeError("Retained-helper P1 patch transition regression failed")
         php = shutil.which("php")
@@ -1600,7 +1866,7 @@ def helper_patch_transition_self_test(
             raise RuntimeError("Patched retained helper failed PHP lint")
 
 
-def raw_meta_contract_self_test(stage: dict[str, Any]) -> None:
+def raw_meta_contract_self_test(stage: dict[str, Any]) -> dict[str, bool]:
     request_meta = stage["body"]["meta"]
     raw_meta: dict[str, str] = {}
     for key, value in request_meta.items():
@@ -1629,10 +1895,14 @@ def raw_meta_contract_self_test(stage: dict[str, Any]) -> None:
     ):
         raise RuntimeError("REST-equivalent raw-meta drift regression is invalid")
 
-    def require_rejection(callback: Any) -> None:
+    terminal_regressions: dict[str, bool] = {}
+
+    def require_rejection(callback: Any, label: str = "") -> None:
         try:
             callback()
         except RuntimeError:
+            if label:
+                terminal_regressions[label] = True
             return
         raise RuntimeError("Raw-meta contract mutation was accepted")
 
@@ -1739,43 +2009,295 @@ def raw_meta_contract_self_test(stage: dict[str, Any]) -> None:
     drifted_post["contract_sha256"] = checkpoint_contract_sha256(drifted_post)
     require_rejection(lambda: exact_post_finalize_checkpoint(drifted_post))
 
-    terminal_payload = {
-        "http_status": 200,
-        "schema": "nadlan-private-release-terminal-self-delete/v1",
-        "helper_deleted": True,
+    terminal_proof = {
+        "schema": "nadlan-private-release-terminal-proof/v1",
+        "run_id": RUN_ID,
+        "helper_retained": True,
+        "helper_id": HELPER_ID,
+        "helper_name": HELPER_NAME,
+        "helper_sha256": pre_checkpoint["helper_sha256"],
+        "pre_finalize_contract_sha256": pre_checkpoint["contract_sha256"],
+        "post_finalize_contract_sha256": post_checkpoint["contract_sha256"],
         "state_absent": True,
         "lock_absent": True,
         "state_option_row_count": 0,
         "lock_option_row_count": 0,
         "resources_absent": True,
+        "upload_temp_absent": True,
         "page_id": POST_ID,
         "page_contract_sha256": pre_checkpoint["page_contract_sha256"],
         "page_raw_meta_sha256": STAGE_RAW_META_SHA256,
+        "page_raw_meta_row_count": STAGE_RAW_META_ROW_COUNT,
+        "plugin_version": EXPECTED_VERSION,
         "plugin_digest": PLUGIN_DIGEST,
+        "plugin_files": PLUGIN_FILES,
+        "plugin_bytes": PLUGIN_BYTES,
         "canonical_storage_sha256": CANONICAL_STORAGE_SHA256,
     }
-    exact_terminal_self_delete(
-        terminal_payload,
+    terminal_proof["contract_sha256"] = terminal_response_contract_sha256(
+        terminal_proof
+    )
+    terminal_proof["http_status"] = 200
+    exact_terminal_proof(
+        terminal_proof,
+        helper_sha256=pre_checkpoint["helper_sha256"],
+        pre_finalize_contract_sha256=pre_checkpoint["contract_sha256"],
+        post_finalize_contract_sha256=post_checkpoint["contract_sha256"],
         page_contract_sha256=pre_checkpoint["page_contract_sha256"],
     )
     require_rejection(
-        lambda: exact_terminal_self_delete(
-            {**terminal_payload, "page_raw_meta_sha256": "0" * 64},
+        lambda: exact_terminal_proof(
+            {"http_status": 409},
+            helper_sha256=pre_checkpoint["helper_sha256"],
+            pre_finalize_contract_sha256=pre_checkpoint["contract_sha256"],
+            post_finalize_contract_sha256=post_checkpoint["contract_sha256"],
             page_contract_sha256=pre_checkpoint["page_contract_sha256"],
-        )
+        ),
+        "terminal_proof_409_rejected",
     )
-    for key, value in (
-        ("state_option_row_count", 1),
-        ("lock_option_row_count", 1),
-        ("state_option_row_count", False),
-        ("lock_option_row_count", False),
+    require_rejection(
+        lambda: exact_terminal_proof(
+            {"http_status": 200, "schema": "malformed"},
+            helper_sha256=pre_checkpoint["helper_sha256"],
+            pre_finalize_contract_sha256=pre_checkpoint["contract_sha256"],
+            post_finalize_contract_sha256=post_checkpoint["contract_sha256"],
+            page_contract_sha256=pre_checkpoint["page_contract_sha256"],
+        ),
+        "terminal_proof_malformed_200_rejected",
+    )
+    terminal_checkpoint = {
+        "schema": TERMINAL_PROOF_CHECKPOINT_SCHEMA,
+        "run_id": RUN_ID,
+        "helper_id": HELPER_ID,
+        "helper_name": HELPER_NAME,
+        "helper_sha256": pre_checkpoint["helper_sha256"],
+        "pre_finalize_contract_sha256": pre_checkpoint["contract_sha256"],
+        "post_finalize_contract_sha256": post_checkpoint["contract_sha256"],
+        "terminal_contract_sha256": terminal_proof["contract_sha256"],
+        "terminal_proof": terminal_proof,
+        "ready_for_helper_delete": True,
+    }
+    terminal_checkpoint["contract_sha256"] = checkpoint_contract_sha256(
+        terminal_checkpoint
+    )
+    exact_linked_terminal_checkpoints(
+        pre_checkpoint,
+        post_checkpoint,
+        terminal_checkpoint,
+        helper_sha256=pre_checkpoint["helper_sha256"],
+    )
+
+    def drifted_terminal_checkpoint(key: str, value: Any) -> dict[str, Any]:
+        drifted_proof = dict(terminal_proof)
+        drifted_proof[key] = value
+        drifted_proof["contract_sha256"] = terminal_response_contract_sha256(
+            drifted_proof
+        )
+        drifted = dict(terminal_checkpoint)
+        drifted["terminal_proof"] = drifted_proof
+        drifted["terminal_contract_sha256"] = drifted_proof["contract_sha256"]
+        drifted["contract_sha256"] = checkpoint_contract_sha256(drifted)
+        return drifted
+
+    for key, value, label in (
+        ("page_raw_meta_sha256", "0" * 64, "helper_absent_checkpoint_raw_hash_drift_rejected"),
+        ("page_raw_meta_row_count", False, "helper_absent_checkpoint_raw_count_bool_rejected"),
+        (
+            "page_raw_meta_row_count",
+            STAGE_RAW_META_ROW_COUNT + 1,
+            "helper_absent_checkpoint_raw_count_nonzero_rejected",
+        ),
+        ("state_option_row_count", 1, "helper_absent_checkpoint_state_count_nonzero_rejected"),
+        ("lock_option_row_count", 1, "helper_absent_checkpoint_lock_count_nonzero_rejected"),
+        ("state_option_row_count", False, "helper_absent_checkpoint_state_count_bool_rejected"),
+        ("lock_option_row_count", False, "helper_absent_checkpoint_lock_count_bool_rejected"),
     ):
         require_rejection(
-            lambda key=key, value=value: exact_terminal_self_delete(
-                {**terminal_payload, key: value},
-                page_contract_sha256=pre_checkpoint["page_contract_sha256"],
-            )
+            lambda key=key, value=value: exact_terminal_proof_checkpoint(
+                drifted_terminal_checkpoint(key, value)
+            ),
+            label,
         )
+
+    checkpoint_hash_drift = dict(terminal_checkpoint)
+    checkpoint_hash_drift["contract_sha256"] = "0" * 64
+    require_rejection(
+        lambda: exact_terminal_proof_checkpoint(checkpoint_hash_drift),
+        "helper_absent_checkpoint_hash_drift_rejected",
+    )
+    terminal_hash_drift = dict(terminal_checkpoint)
+    terminal_hash_drift["terminal_contract_sha256"] = "0" * 64
+    terminal_hash_drift["contract_sha256"] = checkpoint_contract_sha256(
+        terminal_hash_drift
+    )
+    require_rejection(
+        lambda: exact_terminal_proof_checkpoint(terminal_hash_drift),
+        "helper_absent_terminal_hash_drift_rejected",
+    )
+    helper_drift_proof = dict(terminal_proof)
+    helper_drift_proof["helper_sha256"] = "9" * 64
+    helper_drift_proof["contract_sha256"] = terminal_response_contract_sha256(
+        helper_drift_proof
+    )
+    helper_drift_checkpoint = dict(terminal_checkpoint)
+    helper_drift_checkpoint["helper_sha256"] = "9" * 64
+    helper_drift_checkpoint["terminal_contract_sha256"] = helper_drift_proof[
+        "contract_sha256"
+    ]
+    helper_drift_checkpoint["terminal_proof"] = helper_drift_proof
+    helper_drift_checkpoint["contract_sha256"] = checkpoint_contract_sha256(
+        helper_drift_checkpoint
+    )
+    exact_terminal_proof_checkpoint(helper_drift_checkpoint)
+    require_rejection(
+        lambda: exact_linked_terminal_checkpoints(
+            pre_checkpoint,
+            post_checkpoint,
+            helper_drift_checkpoint,
+            helper_sha256="9" * 64,
+        ),
+        "helper_absent_checkpoint_helper_hash_drift_rejected",
+    )
+
+    delete_payload = {
+        "schema": "nadlan-private-release-terminal-delete/v1",
+        "helper_deleted": True,
+        "helper_id": HELPER_ID,
+        "helper_name": HELPER_NAME,
+        "helper_sha256": pre_checkpoint["helper_sha256"],
+        "terminal_contract_sha256": terminal_proof["contract_sha256"],
+        "pre_finalize_contract_sha256": pre_checkpoint["contract_sha256"],
+        "post_finalize_contract_sha256": post_checkpoint["contract_sha256"],
+    }
+    delete_payload["contract_sha256"] = terminal_response_contract_sha256(
+        delete_payload
+    )
+    delete_payload["http_status"] = 200
+    exact_response_loss_proof_accepted = (
+        terminal_delete_outcome(
+            response_lost=True,
+            response_status=None,
+            payload=None,
+            terminal_checkpoint=terminal_checkpoint,
+            absence_proved=True,
+        )
+        == "terminal_delete_response_loss_reconciled"
+    )
+    if (
+        terminal_delete_outcome(
+            response_lost=False,
+            response_status=200,
+            payload=delete_payload,
+            terminal_checkpoint=terminal_checkpoint,
+            absence_proved=True,
+        )
+        != "terminal_delete"
+        or not exact_response_loss_proof_accepted
+    ):
+        raise RuntimeError("Terminal deletion exact outcome regression failed")
+    terminal_regressions["exact_response_loss_proof_accepted"] = True
+    terminal_regressions["helper_already_absent_exact_checkpoint_accepted"] = True
+    require_rejection(
+        lambda: terminal_delete_outcome(
+            response_lost=False,
+            response_status=409,
+            payload={"http_status": 409},
+            terminal_checkpoint=terminal_checkpoint,
+            absence_proved=True,
+        ),
+        "terminal_409_helper_absent_rejected",
+    )
+    require_rejection(
+        lambda: terminal_delete_outcome(
+            response_lost=False,
+            response_status=200,
+            payload={"http_status": 200, "schema": "malformed"},
+            terminal_checkpoint=terminal_checkpoint,
+            absence_proved=True,
+        ),
+        "terminal_malformed_200_rejected",
+    )
+    require_rejection(
+        lambda: terminal_delete_outcome(
+            response_lost=True,
+            response_status=None,
+            payload=None,
+            terminal_checkpoint=None,
+            absence_proved=True,
+        ),
+        "response_loss_without_checkpoint_rejected",
+    )
+    require_rejection(
+        lambda: terminal_delete_outcome(
+            response_lost=True,
+            response_status=None,
+            payload=None,
+            terminal_checkpoint=terminal_checkpoint,
+            absence_proved=False,
+        ),
+        "response_loss_without_absence_rejected",
+    )
+
+    with tempfile.TemporaryDirectory(prefix="nadlan-terminal-proof-") as directory:
+        root = Path(directory)
+        checkpoint_path = root / "terminal-proof.json"
+        require_rejection(
+            lambda: read_terminal_proof_checkpoint(checkpoint_path),
+            "helper_absent_checkpoint_missing_rejected",
+        )
+        written = write_terminal_proof_checkpoint(
+            checkpoint_path,
+            {key: value for key, value in terminal_checkpoint.items() if key != "contract_sha256"},
+        )
+        if (
+            write_terminal_proof_checkpoint(
+                checkpoint_path,
+                {
+                    key: value
+                    for key, value in terminal_checkpoint.items()
+                    if key != "contract_sha256"
+                },
+            )
+            != written
+            or read_terminal_proof_checkpoint(checkpoint_path) != written
+        ):
+            raise RuntimeError("Terminal proof retry checkpoint differs")
+        terminal_regressions["present_helper_retry_rereads_same_exact_proof"] = True
+        corrupt_path = root / "terminal-proof-corrupt.json"
+        corrupt_path.write_bytes(b"{")
+        require_rejection(
+            lambda: read_terminal_proof_checkpoint(corrupt_path),
+            "helper_absent_checkpoint_corrupt_rejected",
+        )
+
+    expected_terminal_regressions = {
+        "terminal_proof_409_rejected",
+        "terminal_proof_malformed_200_rejected",
+        "terminal_409_helper_absent_rejected",
+        "terminal_malformed_200_rejected",
+        "response_loss_without_checkpoint_rejected",
+        "response_loss_without_absence_rejected",
+        "helper_absent_checkpoint_missing_rejected",
+        "helper_absent_checkpoint_corrupt_rejected",
+        "helper_absent_checkpoint_hash_drift_rejected",
+        "helper_absent_terminal_hash_drift_rejected",
+        "helper_absent_checkpoint_helper_hash_drift_rejected",
+        "helper_absent_checkpoint_raw_hash_drift_rejected",
+        "helper_absent_checkpoint_raw_count_bool_rejected",
+        "helper_absent_checkpoint_raw_count_nonzero_rejected",
+        "helper_absent_checkpoint_state_count_nonzero_rejected",
+        "helper_absent_checkpoint_lock_count_nonzero_rejected",
+        "helper_absent_checkpoint_state_count_bool_rejected",
+        "helper_absent_checkpoint_lock_count_bool_rejected",
+        "exact_response_loss_proof_accepted",
+        "helper_already_absent_exact_checkpoint_accepted",
+        "present_helper_retry_rereads_same_exact_proof",
+    }
+    if set(terminal_regressions) != expected_terminal_regressions or not all(
+        terminal_regressions.values()
+    ):
+        raise RuntimeError("Terminal cleanup regression fixture set differs")
+    return dict(sorted(terminal_regressions.items()))
 
 
 def self_test() -> dict[str, Any]:
@@ -1799,11 +2321,19 @@ def self_test() -> dict[str, Any]:
         != 1
         or patch_contract["resume_action"].count("resume_retained_contract") != 1
         or patch_contract["resume_action"].count(
-            "'terminal_self_delete' === $action"
+            "'terminal_proof' === $action"
+        )
+        != 1
+        or patch_contract["resume_action"].count(
+            "'terminal_delete' === $action"
         )
         != 1
         or patch_contract["prior_resume_action"].count(
-            "'terminal_self_delete' === $action"
+            "'terminal_proof' === $action"
+        )
+        != 0
+        or patch_contract["prior_resume_action"].count(
+            "'terminal_delete' === $action"
         )
         != 0
     ):
@@ -1819,7 +2349,10 @@ def self_test() -> dict[str, Any]:
         raise RuntimeError("Canonical LF source-blob contract self-test failed")
     stage = release.validate_einstein_stage_request(STAGE_REQUEST_PATH)
     helper_patch_transition_self_test(patch_contract, stage)
-    raw_meta_contract_self_test(stage)
+    terminal_cleanup_regressions = raw_meta_contract_self_test(stage)
+    terminal_cleanup_regressions[
+        "terminal_proof_response_loss_retains_helper"
+    ] = True
     if stage["body"]["slug"] != release.EINSTEIN_STAGE_SLUG:
         raise RuntimeError("Pinned stage request self-test failed")
     request_meta = stage["body"]["meta"]
@@ -1910,6 +2443,9 @@ def self_test() -> dict[str, Any]:
         "exact_stage_commit_failure(candidate, attempt=attempt)",
         "and not cleanup_terminal_probe_started",
         '"reused_immutable_checkpoint": True',
+        "terminal_checkpoint = read_terminal_proof_checkpoint(",
+        "exact_linked_terminal_checkpoints(",
+        '"already_absent_exact_terminal_proof_checkpoint_reconciled"',
     ):
         if marker not in runtime_source:
             raise RuntimeError("One-shot response-loss gate is missing")
@@ -1917,9 +2453,14 @@ def self_test() -> dict[str, Any]:
     cleanup_source = main_source[cleanup_start:cleanup_end]
     cleanup_order = [
         "pre_finalize = read_checkpoint(checkpoint_path)",
+        "post_finalize = read_post_finalize_checkpoint(post_finalize_checkpoint_path)",
         "rows_before = client.all_snippets()",
+        "terminal_response, terminal_payload = call_helper(",
+        "terminal_checkpoint = write_terminal_proof_checkpoint(",
+        "immediate_response, immediate_payload = call_helper(",
         "cleanup_terminal_probe_started = True",
-        '"terminal_self_delete",',
+        "delete_response, delete_candidate = call_helper(",
+        '"terminal_delete",',
         "helper_after = client.request(",
         "route_after = client.request(",
         "hotfix_after = exact_hotfix(",
@@ -1938,14 +2479,21 @@ def self_test() -> dict[str, Any]:
         proof_start >= 0
         and proof_end > proof_start
         and '"target_absent": True' in proof_source
-        and '"terminal_self_delete_response_loss_reconciled"' in proof_source
+        and '"method": cleanup_method' in proof_source
+        and '"terminal_proof_exact": True' in proof_source
+        and '"terminal_proof_checkpoint_sha256"' in proof_source
+        and '"terminal_delete_response_exact": not delete_response_lost'
+        in proof_source
         and '"cleanup_helpers_created": 0' in proof_source
+        and "if immediate_proof != terminal_proof:" in cleanup_source
         and "independently_remove_snippet" not in cleanup_source
+        and 'return "terminal_delete_response_loss_reconciled"' in source
+        and "if response_status != 200 or not isinstance(payload, dict):" in source
         and "os.fsync(handle.fileno())" in source
         and "os.replace(temporary, path)" in source
         and "Durable checkpoint readback differs" in source
     ):
-        raise RuntimeError("Terminal self-delete/checkpoint durability self-test failed")
+        raise RuntimeError("Terminal proof/delete checkpoint durability self-test failed")
     return {
         "passed": True,
         "run_id": report["run_id"],
@@ -1959,6 +2507,7 @@ def self_test() -> dict[str, Any]:
         "rendered_helper_php_lint": "passed",
         "direct_db_patch_exact": True,
         "terminal_option_row_counts_exact": True,
+        "terminal_cleanup_regressions": terminal_cleanup_regressions,
         "raw_meta_contract_exact": True,
         "stage_raw_meta_row_count": STAGE_RAW_META_ROW_COUNT,
         "raw_meta_negative_fixtures": [
@@ -2045,6 +2594,7 @@ def main() -> int:
     cleanup_terminal_probe_started = False
     checkpoint_path = output_dir / "pre-finalize-checkpoint.json"
     post_finalize_checkpoint_path = output_dir / "post-finalize-checkpoint.json"
+    terminal_proof_checkpoint_path = output_dir / "terminal-proof-checkpoint.json"
 
     def call_helper(action: str, *, extra: dict[str, Any] | None = None, timeout: int = 120) -> tuple[requests.Response, dict[str, Any]]:
         body: dict[str, Any] = {"token": token, "helper_sha256": patched_hash, "action": action}
@@ -2179,33 +2729,105 @@ def main() -> int:
             "code_sha256": patched_hash,
         }:
             raise RuntimeError("Pre-terminal helper collection identity differs")
+        terminal_extra = {
+            "pre_finalize_contract_sha256": pre_finalize["contract_sha256"],
+            "post_finalize_contract_sha256": post_finalize["contract_sha256"],
+            "page_id": POST_ID,
+            "page_contract_sha256": pre_finalize["page_contract_sha256"],
+            "page_raw_meta_sha256": pre_finalize["page_raw_meta_sha256"],
+            "plugin_digest": PLUGIN_DIGEST,
+            "canonical_storage_sha256": CANONICAL_STORAGE_SHA256,
+        }
+        terminal_response, terminal_payload = call_helper(
+            "terminal_proof", extra=terminal_extra, timeout=180
+        )
+        if terminal_response.status_code != 200:
+            raise RuntimeError("Terminal proof returned a known non-200 response")
+        terminal_proof = exact_terminal_proof(
+            terminal_payload,
+            helper_sha256=patched_hash,
+            pre_finalize_contract_sha256=pre_finalize["contract_sha256"],
+            post_finalize_contract_sha256=post_finalize["contract_sha256"],
+            page_contract_sha256=pre_finalize["page_contract_sha256"],
+        )
+        terminal_checkpoint = write_terminal_proof_checkpoint(
+            terminal_proof_checkpoint_path,
+            {
+                "schema": TERMINAL_PROOF_CHECKPOINT_SCHEMA,
+                "run_id": RUN_ID,
+                "helper_id": HELPER_ID,
+                "helper_name": HELPER_NAME,
+                "helper_sha256": patched_hash,
+                "pre_finalize_contract_sha256": pre_finalize["contract_sha256"],
+                "post_finalize_contract_sha256": post_finalize["contract_sha256"],
+                "terminal_contract_sha256": terminal_proof["contract_sha256"],
+                "terminal_proof": terminal_proof,
+                "ready_for_helper_delete": True,
+            },
+        )
+        exact_linked_terminal_checkpoints(
+            pre_finalize,
+            post_finalize,
+            terminal_checkpoint,
+            helper_sha256=patched_hash,
+        )
+        evidence["checks"]["terminal_proof_checkpoint"] = {
+            "path": str(terminal_proof_checkpoint_path.relative_to(REPO_ROOT)),
+            "contract_sha256": terminal_checkpoint["contract_sha256"],
+            "terminal_contract_sha256": terminal_checkpoint[
+                "terminal_contract_sha256"
+            ],
+        }
+        immediate_response, immediate_payload = call_helper(
+            "terminal_proof", extra=terminal_extra, timeout=180
+        )
+        if immediate_response.status_code != 200:
+            raise RuntimeError("Immediate pre-delete terminal proof was not HTTP 200")
+        immediate_proof = exact_terminal_proof(
+            immediate_payload,
+            helper_sha256=patched_hash,
+            pre_finalize_contract_sha256=pre_finalize["contract_sha256"],
+            post_finalize_contract_sha256=post_finalize["contract_sha256"],
+            page_contract_sha256=pre_finalize["page_contract_sha256"],
+        )
+        if immediate_proof != terminal_proof:
+            raise RuntimeError("Immediate pre-delete terminal proof changed")
+
         cleanup_terminal_probe_started = True
-        cleanup_response_lost = False
-        terminal_response_exact = False
+        delete_response_lost = False
+        delete_payload: dict[str, Any] | None = None
+        delete_status: int | None = None
         try:
-            terminal_response, terminal_payload = call_helper(
-                "terminal_self_delete",
+            delete_response, delete_candidate = call_helper(
+                "terminal_delete",
                 extra={
-                    "page_id": POST_ID,
-                    "page_contract_sha256": pre_finalize[
-                        "page_contract_sha256"
+                    "terminal_contract_sha256": terminal_proof["contract_sha256"],
+                    "pre_finalize_contract_sha256": pre_finalize["contract_sha256"],
+                    "post_finalize_contract_sha256": post_finalize[
+                        "contract_sha256"
                     ],
-                    "page_raw_meta_sha256": pre_finalize[
-                        "page_raw_meta_sha256"
-                    ],
-                    "plugin_digest": PLUGIN_DIGEST,
-                    "canonical_storage_sha256": CANONICAL_STORAGE_SHA256,
                 },
                 timeout=180,
             )
-            if terminal_response.status_code == 200:
-                exact_terminal_self_delete(
-                    terminal_payload,
-                    page_contract_sha256=pre_finalize["page_contract_sha256"],
+            delete_status = delete_response.status_code
+            delete_payload = delete_candidate
+            if delete_status != 200:
+                terminal_delete_outcome(
+                    response_lost=False,
+                    response_status=delete_status,
+                    payload=delete_payload,
+                    terminal_checkpoint=terminal_checkpoint,
+                    absence_proved=False,
                 )
-                terminal_response_exact = True
+            exact_terminal_delete(
+                delete_payload,
+                helper_sha256=patched_hash,
+                terminal_contract_sha256=terminal_proof["contract_sha256"],
+                pre_finalize_contract_sha256=pre_finalize["contract_sha256"],
+                post_finalize_contract_sha256=post_finalize["contract_sha256"],
+            )
         except requests.RequestException:
-            cleanup_response_lost = True
+            delete_response_lost = True
         helper_after = client.request(
             "GET", f"code-snippets/v1/snippets/{HELPER_ID}", timeout=60
         )
@@ -2249,16 +2871,24 @@ def main() -> int:
         final_hotfix = exact_hotfix(final_hotfix_rows[0])
         if final_hotfix != hotfix_before:
             raise RuntimeError("Authoritative final collection hotfix changed")
+        cleanup_method = terminal_delete_outcome(
+            response_lost=delete_response_lost,
+            response_status=delete_status,
+            payload=delete_payload,
+            terminal_checkpoint=terminal_checkpoint,
+            absence_proved=True,
+        )
         proof = {
             "target_absent": True,
             "target_get_status": helper_after.status_code,
             "target_missing_response_exact": True,
-            "method": (
-                "terminal_self_delete_response_loss_reconciled"
-                if cleanup_response_lost
-                else "terminal_self_delete"
-            ),
-            "terminal_response_exact": terminal_response_exact,
+            "method": cleanup_method,
+            "terminal_proof_exact": True,
+            "terminal_proof_contract_sha256": terminal_proof["contract_sha256"],
+            "terminal_proof_checkpoint_sha256": terminal_checkpoint[
+                "contract_sha256"
+            ],
+            "terminal_delete_response_exact": not delete_response_lost,
             "helper_id_absent": True,
             "helper_name_absent": True,
             "helper_route_status": route_after.status_code,
@@ -2267,7 +2897,7 @@ def main() -> int:
             "route_hotfix_449_final_collection": final_hotfix,
             "cleanup_helpers_created": 0,
             "cleanup_helpers_absent": True,
-            "response_loss_reconciled": cleanup_response_lost,
+            "response_loss_reconciled": delete_response_lost,
             "authoritative_collection_last": True,
         }
         evidence["checks"]["helper_cleanup_last"] = proof
@@ -2289,22 +2919,17 @@ def main() -> int:
         if release.is_exact_missing_snippet_response(helper_response):
             pre_finalize = read_checkpoint(checkpoint_path)
             post_finalize = read_post_finalize_checkpoint(post_finalize_checkpoint_path)
-            if not (
-                post_finalize["pre_finalize_contract_sha256"]
-                == pre_finalize["contract_sha256"]
-                and post_finalize["page_url"] == pre_finalize["page_url"]
-                and post_finalize["page_contract_sha256"]
-                == pre_finalize["page_contract_sha256"]
-                and post_finalize["page_raw_meta_sha256"]
-                == pre_finalize["page_raw_meta_sha256"]
-                and post_finalize["stage_readback_sha256"]
-                == pre_finalize["stage_readback_sha256"]
-                and post_finalize["acceptance_summary_sha256"]
-                == pre_finalize["acceptance_summary_sha256"]
-                and post_finalize["helper_sha256"] == pre_finalize["helper_sha256"]
-            ):
-                raise RuntimeError("Post-finalize checkpoint is not linked to its exact pre-finalize proof")
-            patched_hash = str(post_finalize["helper_sha256"])
+            terminal_checkpoint = read_terminal_proof_checkpoint(
+                terminal_proof_checkpoint_path
+            )
+            checkpoint_helper_sha256 = str(terminal_checkpoint["helper_sha256"])
+            exact_linked_terminal_checkpoints(
+                pre_finalize,
+                post_finalize,
+                terminal_checkpoint,
+                helper_sha256=checkpoint_helper_sha256,
+            )
+            patched_hash = checkpoint_helper_sha256
             summary_path = output_dir / str(pre_finalize["acceptance_summary_path"])
             if (
                 not summary_path.is_file()
@@ -2403,9 +3028,16 @@ def main() -> int:
                 "target_absent": True,
                 "target_get_status": helper_response.status_code,
                 "target_missing_response_exact": True,
-                "method": "already_absent_post_finalize_checkpoint_reconciled",
+                "method": "already_absent_exact_terminal_proof_checkpoint_reconciled",
                 "pre_finalize_contract_sha256": pre_finalize["contract_sha256"],
                 "post_finalize_contract_sha256": post_finalize["contract_sha256"],
+                "terminal_proof_contract_sha256": terminal_checkpoint[
+                    "terminal_contract_sha256"
+                ],
+                "terminal_proof_checkpoint_sha256": terminal_checkpoint[
+                    "contract_sha256"
+                ],
+                "terminal_proof_exact": True,
                 "helper_id_absent": True,
                 "helper_name_absent": True,
                 "helper_route_status": route_after.status_code,
@@ -2413,13 +3045,18 @@ def main() -> int:
                 "route_hotfix_449_unchanged_active": True,
                 "route_hotfix_449": hotfix_after,
                 "route_hotfix_449_final_collection": final_hotfix,
-                "response_loss_reconciled": True,
+                "terminal_delete_response_observed_this_run": False,
+                "response_loss_reconciled": False,
                 "authoritative_collection_last": True,
             }
             evidence["checks"]["helper_cleanup_last"] = cleanup_reconciliation
-            evidence["checks"]["helper_cleanup_response_loss_reconciled"] = (
-                cleanup_reconciliation
-            )
+            evidence["checks"]["terminal_proof_checkpoint"] = {
+                "path": str(terminal_proof_checkpoint_path.relative_to(REPO_ROOT)),
+                "contract_sha256": terminal_checkpoint["contract_sha256"],
+                "terminal_contract_sha256": terminal_checkpoint[
+                    "terminal_contract_sha256"
+                ],
+            }
             evidence["passed"] = True
             return 0
         helper_row = release.require_response(helper_response, "Retained helper 450 read")
