@@ -847,6 +847,8 @@ add_action( 'rest_api_init', function () {
 				$external_stage_commit_enabled,
 				$external_stage_expected_meta,
 				$external_stage_supplemental_meta,
+				$external_stage_raw_meta,
+				$external_stage_raw_meta_sha256,
 				$external_stage_title_sha256,
 				$external_stage_content_sha256,
 				$external_stage_excerpt_sha256
@@ -953,6 +955,44 @@ add_action( 'rest_api_init', function () {
 				}
 				if ( array( $page_id ) !== array_map( 'intval', $slug_matches ) ) {
 					throw new RuntimeException( 'Stage contract slug is absent or ambiguous.' );
+				}
+				$wpdb->last_error = '';
+				$raw_meta_rows = $wpdb->get_results(
+					$wpdb->prepare(
+						"SELECT meta_key, meta_value FROM {$wpdb->postmeta} WHERE post_id = %d ORDER BY meta_key ASC, meta_id ASC",
+						$page_id
+					),
+					ARRAY_A
+				);
+				if ( ! is_array( $raw_meta_rows ) || '' !== (string) $wpdb->last_error ) {
+					throw new RuntimeException( 'Stage contract raw-meta read failed.' );
+				}
+				$expected_raw_meta_row_count = count( $external_stage_raw_meta );
+				if ( $external_stage_commit_enabled && count( $raw_meta_rows ) !== $expected_raw_meta_row_count ) {
+					throw new RuntimeException( 'External stage raw-meta row count differs from the embedded exact contract.' );
+				}
+				$raw_meta_contract = array();
+				foreach ( $raw_meta_rows as $raw_meta_row ) {
+					$raw_meta_key = (string) $raw_meta_row['meta_key'];
+					if ( array_key_exists( $raw_meta_key, $raw_meta_contract ) ) {
+						throw new RuntimeException( 'Stage contract raw meta contains a duplicate key.' );
+					}
+					$raw_meta_contract[ $raw_meta_key ] = (string) $raw_meta_row['meta_value'];
+				}
+				ksort( $raw_meta_contract, SORT_STRING );
+				$raw_meta_json = wp_json_encode( $raw_meta_contract, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE );
+				if ( ! is_string( $raw_meta_json ) ) {
+					throw new RuntimeException( 'Stage contract raw-meta encoding failed.' );
+				}
+				$raw_meta_sha256 = hash( 'sha256', $raw_meta_json );
+				if (
+					$external_stage_commit_enabled
+					&& (
+						$external_stage_raw_meta !== $raw_meta_contract
+						|| ! hash_equals( $external_stage_raw_meta_sha256, $raw_meta_sha256 )
+					)
+				) {
+					throw new RuntimeException( 'External stage raw meta differs from the embedded exact contract.' );
 				}
 				if (
 					$external_stage_commit_enabled
@@ -1084,6 +1124,8 @@ add_action( 'rest_api_init', function () {
 					'excerpt_sha256'       => hash( 'sha256', (string) $page->post_excerpt ),
 					'core_sha256'          => hash( 'sha256', $core_json ),
 					'meta_sha256'          => hash( 'sha256', $meta_json ),
+					'raw_meta_sha256'      => $raw_meta_sha256,
+					'raw_meta_row_count'   => count( $raw_meta_rows ),
 					'meta_keys'            => $normalized_keys,
 					'password_fingerprint' => hash_hmac( 'sha256', (string) $page->post_password, $expected_token ),
 				);
@@ -1388,6 +1430,7 @@ add_action( 'rest_api_init', function () {
 					&& 1 === preg_match( '/^[a-f0-9]{64}$/D', (string) ( isset( $state['page_excerpt_sha256'] ) ? $state['page_excerpt_sha256'] : '' ) )
 					&& 1 === preg_match( '/^[a-f0-9]{64}$/D', (string) ( isset( $state['page_core_sha256'] ) ? $state['page_core_sha256'] : '' ) )
 					&& 1 === preg_match( '/^[a-f0-9]{64}$/D', (string) ( isset( $state['page_meta_sha256'] ) ? $state['page_meta_sha256'] : '' ) )
+					&& 1 === preg_match( '/^[a-f0-9]{64}$/D', (string) ( isset( $state['page_raw_meta_sha256'] ) ? $state['page_raw_meta_sha256'] : '' ) )
 					&& 1 === preg_match( '/^[a-f0-9]{64}$/D', (string) ( isset( $state['page_password_fingerprint'] ) ? $state['page_password_fingerprint'] : '' ) )
 					&& 1 === preg_match( '/^[a-f0-9]{64}$/D', (string) ( isset( $state['page_contract_sha256'] ) ? $state['page_contract_sha256'] : '' ) );
 				return array(
@@ -1506,6 +1549,227 @@ add_action( 'rest_api_init', function () {
 					return new WP_Error(
 						'nadlan_release_retained_resume_contract_failed',
 						'Retained resume contract verification failed.',
+						array( 'status' => 409 )
+					);
+				}
+			}
+
+			if ( 'terminal_proof' === $action ) {
+				try {
+					global $wpdb;
+					$terminal_pre_finalize_contract_sha256 = strtolower( (string) $request->get_param( 'pre_finalize_contract_sha256' ) );
+					$terminal_post_finalize_contract_sha256 = strtolower( (string) $request->get_param( 'post_finalize_contract_sha256' ) );
+					$terminal_page_id = $strict_int( $request->get_param( 'page_id' ) );
+					$terminal_page_contract_sha256 = strtolower( (string) $request->get_param( 'page_contract_sha256' ) );
+					$terminal_page_raw_meta_sha256 = strtolower( (string) $request->get_param( 'page_raw_meta_sha256' ) );
+					$terminal_plugin_digest = strtolower( (string) $request->get_param( 'plugin_digest' ) );
+					$terminal_canonical_storage_sha256 = strtolower( (string) $request->get_param( 'canonical_storage_sha256' ) );
+					if (
+						true !== $external_stage_commit_enabled
+						|| 1 !== preg_match( '/^[a-f0-9]{64}$/D', $terminal_pre_finalize_contract_sha256 )
+						|| 1 !== preg_match( '/^[a-f0-9]{64}$/D', $terminal_post_finalize_contract_sha256 )
+						|| $terminal_page_id !== $request->get_param( 'page_id' )
+						|| $terminal_page_id === $source_post_id
+						|| 1 !== preg_match( '/^[a-f0-9]{64}$/D', $terminal_page_contract_sha256 )
+						|| 1 !== preg_match( '/^[a-f0-9]{64}$/D', $terminal_page_raw_meta_sha256 )
+						|| ! hash_equals( $external_stage_raw_meta_sha256, $terminal_page_raw_meta_sha256 )
+						|| 1 !== preg_match( '/^[a-f0-9]{64}$/D', $terminal_plugin_digest )
+						|| 1 !== preg_match( '/^[a-f0-9]{64}$/D', $terminal_canonical_storage_sha256 )
+					) {
+						throw new RuntimeException( 'Terminal proof request contract is invalid.' );
+					}
+					$terminal_resources_absent = function () use (
+						$storage_root,
+						$upload_root,
+						$upload_path,
+						$backup_root_expected,
+						$legacy_upload_root,
+						$legacy_upload_path,
+						$legacy_backup_root
+					) {
+						foreach ( array(
+							$storage_root,
+							$upload_root,
+							$upload_path,
+							$backup_root_expected,
+							$backup_root_expected . '/nadlan-config',
+							$legacy_upload_root,
+							$legacy_upload_path,
+							$legacy_backup_root,
+							$legacy_backup_root . '/nadlan-config',
+						) as $terminal_resource_path ) {
+							clearstatcache( true, $terminal_resource_path );
+							if ( @file_exists( $terminal_resource_path ) || @is_link( $terminal_resource_path ) ) {
+								return false;
+							}
+						}
+						return true;
+					};
+					$wpdb->last_error = '';
+					$terminal_state_rows = $wpdb->get_var(
+						$wpdb->prepare(
+							"SELECT COUNT(*) FROM {$wpdb->options} WHERE option_name = %s",
+							$state_key
+						)
+					);
+					$terminal_state_error = (string) $wpdb->last_error;
+					$wpdb->last_error = '';
+					$terminal_lock_rows = $wpdb->get_var(
+						$wpdb->prepare(
+							"SELECT COUNT(*) FROM {$wpdb->options} WHERE option_name = %s",
+							$lock_key
+						)
+					);
+					$terminal_lock_error = (string) $wpdb->last_error;
+					if (
+						null === $terminal_state_rows
+						|| null === $terminal_lock_rows
+						|| '' !== $terminal_state_error
+						|| '' !== $terminal_lock_error
+						|| ! ctype_digit( (string) $terminal_state_rows )
+						|| ! ctype_digit( (string) $terminal_lock_rows )
+						|| 0 !== (int) $terminal_state_rows
+						|| 0 !== (int) $terminal_lock_rows
+						|| ! $terminal_resources_absent()
+					) {
+						throw new RuntimeException( 'Terminal proof option-row or resource absence differs.' );
+					}
+					$terminal_state_option_row_count = (int) $terminal_state_rows;
+					$terminal_lock_option_row_count = (int) $terminal_lock_rows;
+					$terminal_upload = $upload_temp_status();
+					if (
+						! is_array( $terminal_upload )
+						|| true !== $terminal_upload['temp_absent']
+						|| false !== $terminal_upload['temp_exists']
+						|| true !== $terminal_upload['temp_safe']
+						|| 0 !== (int) $terminal_upload['temp_bytes']
+					) {
+						throw new RuntimeException( 'Terminal proof upload absence differs.' );
+					}
+					$terminal_live = $plugin_state();
+					if (
+						! is_array( $terminal_live )
+						|| $plugin_file !== (string) ( isset( $terminal_live['plugin_file'] ) ? $terminal_live['plugin_file'] : '' )
+						|| $expected_version !== (string) ( isset( $terminal_live['version'] ) ? $terminal_live['version'] : '' )
+						|| true !== ( isset( $terminal_live['active'] ) ? $terminal_live['active'] : false )
+						|| ! isset( $terminal_live['inventory'] )
+						|| ! is_array( $terminal_live['inventory'] )
+						|| $artifact_entry_count !== (int) ( isset( $terminal_live['inventory']['file_count'] ) ? $terminal_live['inventory']['file_count'] : -1 )
+						|| $artifact_uncompressed_bytes !== (int) ( isset( $terminal_live['inventory']['bytes'] ) ? $terminal_live['inventory']['bytes'] : -1 )
+						|| ! hash_equals( $terminal_plugin_digest, (string) ( isset( $terminal_live['inventory']['digest'] ) ? $terminal_live['inventory']['digest'] : '' ) )
+					) {
+						throw new RuntimeException( 'Terminal proof plugin contract differs.' );
+					}
+					$terminal_canonical = $canonical_post_storage_proof();
+					if (
+						! $canonical_post_storage_proof_valid( $terminal_canonical )
+						|| ! hash_equals( $terminal_canonical_storage_sha256, (string) $terminal_canonical['contract_sha256'] )
+					) {
+						throw new RuntimeException( 'Terminal proof canonical storage differs.' );
+					}
+					$terminal_meta_keys = array_keys( $external_stage_expected_meta );
+					sort( $terminal_meta_keys, SORT_STRING );
+					$terminal_stage = $stage_contract_snapshot( $terminal_page_id, $terminal_meta_keys );
+					if (
+						! is_array( $terminal_stage )
+						|| $terminal_page_id !== (int) ( isset( $terminal_stage['page_id'] ) ? $terminal_stage['page_id'] : 0 )
+						|| count( $external_stage_raw_meta ) !== (int) ( isset( $terminal_stage['raw_meta_row_count'] ) ? $terminal_stage['raw_meta_row_count'] : -1 )
+						|| ! hash_equals( $terminal_page_raw_meta_sha256, (string) ( isset( $terminal_stage['raw_meta_sha256'] ) ? $terminal_stage['raw_meta_sha256'] : '' ) )
+						|| ! hash_equals( $terminal_page_contract_sha256, (string) ( isset( $terminal_stage['contract_sha256'] ) ? $terminal_stage['contract_sha256'] : '' ) )
+					) {
+						throw new RuntimeException( 'Terminal proof stage contract differs.' );
+					}
+					$self_recheck = \Code_Snippets\get_snippet( $helper_id, false );
+					if (
+						! $self_recheck
+						|| $helper_id !== (int) $self_recheck->id
+						|| $helper_name !== (string) $self_recheck->name
+						|| 'global' !== (string) $self_recheck->scope
+						|| true !== (bool) $self_recheck->active
+						|| false !== (bool) $self_recheck->network
+						|| ! method_exists( $self_recheck, 'is_trashed' )
+						|| false !== $self_recheck->is_trashed()
+						|| ! hash_equals( $helper_sha256, hash( 'sha256', (string) $self_recheck->code ) )
+						|| false === strpos( (string) $self_recheck->code, $route_path )
+					) {
+						throw new RuntimeException( 'Terminal proof helper identity changed.' );
+					}
+					$terminal_proof = array(
+						'schema'                         => 'nadlan-private-release-terminal-proof/v1',
+						'run_id'                         => $run_id,
+						'helper_retained'                => true,
+						'helper_id'                      => $helper_id,
+						'helper_name'                    => $helper_name,
+						'helper_sha256'                  => $helper_sha256,
+						'pre_finalize_contract_sha256'   => $terminal_pre_finalize_contract_sha256,
+						'post_finalize_contract_sha256'  => $terminal_post_finalize_contract_sha256,
+						'state_absent'                   => true,
+						'lock_absent'                    => true,
+						'state_option_row_count'         => $terminal_state_option_row_count,
+						'lock_option_row_count'          => $terminal_lock_option_row_count,
+						'resources_absent'               => true,
+						'upload_temp_absent'             => true,
+						'page_id'                        => $terminal_page_id,
+						'page_contract_sha256'           => $terminal_page_contract_sha256,
+						'page_raw_meta_sha256'           => $terminal_page_raw_meta_sha256,
+						'page_raw_meta_row_count'        => (int) $terminal_stage['raw_meta_row_count'],
+						'plugin_version'                 => $expected_version,
+						'plugin_digest'                  => $terminal_plugin_digest,
+						'plugin_files'                   => (int) $terminal_live['inventory']['file_count'],
+						'plugin_bytes'                   => (int) $terminal_live['inventory']['bytes'],
+						'canonical_storage_sha256'       => $terminal_canonical_storage_sha256,
+					);
+					$terminal_proof_json = wp_json_encode( $terminal_proof, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE );
+					if ( ! is_string( $terminal_proof_json ) ) {
+						throw new RuntimeException( 'Terminal proof encoding failed.' );
+					}
+					$terminal_proof['contract_sha256'] = hash( 'sha256', $terminal_proof_json );
+					return $terminal_proof;
+				} catch ( Throwable $error ) {
+					return new WP_Error(
+						'nadlan_release_terminal_proof_failed',
+						'Terminal release proof failed.',
+						array( 'status' => 409 )
+					);
+				}
+			}
+
+			if ( 'terminal_delete' === $action ) {
+				try {
+					$terminal_contract_sha256 = strtolower( (string) $request->get_param( 'terminal_contract_sha256' ) );
+					$terminal_pre_finalize_contract_sha256 = strtolower( (string) $request->get_param( 'pre_finalize_contract_sha256' ) );
+					$terminal_post_finalize_contract_sha256 = strtolower( (string) $request->get_param( 'post_finalize_contract_sha256' ) );
+					if (
+						1 !== preg_match( '/^[a-f0-9]{64}$/D', $terminal_contract_sha256 )
+						|| 1 !== preg_match( '/^[a-f0-9]{64}$/D', $terminal_pre_finalize_contract_sha256 )
+						|| 1 !== preg_match( '/^[a-f0-9]{64}$/D', $terminal_post_finalize_contract_sha256 )
+						|| ! function_exists( 'Code_Snippets\\delete_snippet' )
+					) {
+						throw new RuntimeException( 'Terminal helper deletion request is invalid.' );
+					}
+					$terminal_delete_result = array(
+						'schema'                        => 'nadlan-private-release-terminal-delete/v1',
+						'helper_deleted'                => true,
+						'helper_id'                     => $helper_id,
+						'helper_name'                   => $helper_name,
+						'helper_sha256'                 => $helper_sha256,
+						'terminal_contract_sha256'      => $terminal_contract_sha256,
+						'pre_finalize_contract_sha256'  => $terminal_pre_finalize_contract_sha256,
+						'post_finalize_contract_sha256' => $terminal_post_finalize_contract_sha256,
+					);
+					$terminal_delete_json = wp_json_encode( $terminal_delete_result, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE );
+					if ( ! is_string( $terminal_delete_json ) ) {
+						throw new RuntimeException( 'Terminal helper deletion response encoding failed.' );
+					}
+					$terminal_delete_result['contract_sha256'] = hash( 'sha256', $terminal_delete_json );
+					if ( ! \Code_Snippets\delete_snippet( $helper_id, false ) ) {
+						throw new RuntimeException( 'Terminal helper deletion did not complete.' );
+					}
+					return $terminal_delete_result;
+				} catch ( Throwable $error ) {
+					return new WP_Error(
+						'nadlan_release_terminal_delete_failed',
+						'Terminal helper deletion failed.',
 						array( 'status' => 409 )
 					);
 				}
@@ -2606,6 +2870,7 @@ add_action( 'rest_api_init', function () {
 							|| ! hash_equals( (string) $stage_snapshot['excerpt_sha256'], (string) ( isset( $state['page_excerpt_sha256'] ) ? $state['page_excerpt_sha256'] : '' ) )
 							|| ! hash_equals( (string) $stage_snapshot['core_sha256'], (string) ( isset( $state['page_core_sha256'] ) ? $state['page_core_sha256'] : '' ) )
 							|| ! hash_equals( (string) $stage_snapshot['meta_sha256'], (string) ( isset( $state['page_meta_sha256'] ) ? $state['page_meta_sha256'] : '' ) )
+							|| ! hash_equals( (string) $stage_snapshot['raw_meta_sha256'], (string) ( isset( $state['page_raw_meta_sha256'] ) ? $state['page_raw_meta_sha256'] : '' ) )
 							|| ! hash_equals( (string) $stage_snapshot['contract_sha256'], (string) ( isset( $state['page_contract_sha256'] ) ? $state['page_contract_sha256'] : '' ) )
 							|| ! hash_equals( (string) $stage_snapshot['password_fingerprint'], (string) ( isset( $state['page_password_fingerprint'] ) ? $state['page_password_fingerprint'] : '' ) )
 						) {
@@ -2630,6 +2895,7 @@ add_action( 'rest_api_init', function () {
 						$state['page_excerpt_sha256'] = $stage_snapshot['excerpt_sha256'];
 						$state['page_core_sha256'] = $stage_snapshot['core_sha256'];
 						$state['page_meta_sha256'] = $stage_snapshot['meta_sha256'];
+						$state['page_raw_meta_sha256'] = $stage_snapshot['raw_meta_sha256'];
 						$state['page_password_fingerprint'] = $stage_snapshot['password_fingerprint'];
 						$state['page_contract_sha256'] = $stage_snapshot['contract_sha256'];
 						$state = $save_state( $state );
@@ -2686,7 +2952,8 @@ add_action( 'rest_api_init', function () {
 						'created_new'           => $created_new,
 						'page_contract_kind'    => 'external_committed',
 						'page_contract_sha256'  => $stage_snapshot['contract_sha256'],
-						'page_meta_key_count'   => count( $stage_snapshot['meta_keys'] ),
+						'page_raw_meta_sha256'  => $stage_snapshot['raw_meta_sha256'],
+						'page_meta_key_count'   => $stage_snapshot['raw_meta_row_count'],
 						'password_protected'    => true,
 						'plugin_digest'         => $stage_live['inventory']['digest'],
 					);
@@ -2966,6 +3233,7 @@ add_action( 'rest_api_init', function () {
 							|| 1 !== preg_match( '/^[a-f0-9]{64}$/', (string) ( isset( $state['page_excerpt_sha256'] ) ? $state['page_excerpt_sha256'] : '' ) )
 							|| 1 !== preg_match( '/^[a-f0-9]{64}$/', (string) ( isset( $state['page_core_sha256'] ) ? $state['page_core_sha256'] : '' ) )
 							|| 1 !== preg_match( '/^[a-f0-9]{64}$/', (string) ( isset( $state['page_meta_sha256'] ) ? $state['page_meta_sha256'] : '' ) )
+							|| 1 !== preg_match( '/^[a-f0-9]{64}$/', (string) ( isset( $state['page_raw_meta_sha256'] ) ? $state['page_raw_meta_sha256'] : '' ) )
 							|| 1 !== preg_match( '/^[a-f0-9]{64}$/', (string) ( isset( $state['page_password_fingerprint'] ) ? $state['page_password_fingerprint'] : '' ) )
 							|| 1 !== preg_match( '/^[a-f0-9]{64}$/', (string) ( isset( $state['page_contract_sha256'] ) ? $state['page_contract_sha256'] : '' ) )
 						) {
@@ -2991,6 +3259,7 @@ add_action( 'rest_api_init', function () {
 								|| ! hash_equals( (string) $state['page_excerpt_sha256'], (string) $page_contract_now['excerpt_sha256'] )
 								|| ! hash_equals( (string) $state['page_core_sha256'], (string) $page_contract_now['core_sha256'] )
 								|| ! hash_equals( (string) $state['page_meta_sha256'], (string) $page_contract_now['meta_sha256'] )
+								|| ! hash_equals( (string) $state['page_raw_meta_sha256'], (string) $page_contract_now['raw_meta_sha256'] )
 								|| ! hash_equals( (string) $state['page_password_fingerprint'], (string) $page_contract_now['password_fingerprint'] )
 								|| ! hash_equals( (string) $state['page_contract_sha256'], (string) $page_contract_now['contract_sha256'] )
 							) {
@@ -3329,6 +3598,7 @@ add_action( 'rest_api_init', function () {
 					$state['page_excerpt_sha256'] = $page_contract['excerpt_sha256'];
 					$state['page_core_sha256'] = $page_contract['core_sha256'];
 					$state['page_meta_sha256'] = $page_contract['meta_sha256'];
+					$state['page_raw_meta_sha256'] = $page_contract['raw_meta_sha256'];
 					$state['page_password_fingerprint'] = $page_contract['password_fingerprint'];
 					$state['page_contract_sha256'] = $page_contract['contract_sha256'];
 					$state = $save_state( $state );
@@ -3377,6 +3647,7 @@ add_action( 'rest_api_init', function () {
 								$state['page_excerpt_sha256'] = $failed_snapshot_recheck['excerpt_sha256'];
 								$state['page_core_sha256'] = $failed_snapshot_recheck['core_sha256'];
 								$state['page_meta_sha256'] = $failed_snapshot_recheck['meta_sha256'];
+								$state['page_raw_meta_sha256'] = $failed_snapshot_recheck['raw_meta_sha256'];
 								$state['page_password_fingerprint'] = $failed_snapshot_recheck['password_fingerprint'];
 								$state['page_contract_sha256'] = $failed_snapshot_recheck['contract_sha256'];
 								$state = $save_state( $state );
@@ -3487,6 +3758,7 @@ add_action( 'rest_api_init', function () {
 						&& 1 === preg_match( '/^[a-f0-9]{64}$/', (string) ( isset( $state['page_excerpt_sha256'] ) ? $state['page_excerpt_sha256'] : '' ) )
 						&& 1 === preg_match( '/^[a-f0-9]{64}$/', (string) ( isset( $state['page_core_sha256'] ) ? $state['page_core_sha256'] : '' ) )
 						&& 1 === preg_match( '/^[a-f0-9]{64}$/', (string) ( isset( $state['page_meta_sha256'] ) ? $state['page_meta_sha256'] : '' ) )
+						&& 1 === preg_match( '/^[a-f0-9]{64}$/', (string) ( isset( $state['page_raw_meta_sha256'] ) ? $state['page_raw_meta_sha256'] : '' ) )
 						&& 1 === preg_match( '/^[a-f0-9]{64}$/', (string) ( isset( $state['page_password_fingerprint'] ) ? $state['page_password_fingerprint'] : '' ) )
 						&& 1 === preg_match( '/^[a-f0-9]{64}$/', (string) ( isset( $state['page_contract_sha256'] ) ? $state['page_contract_sha256'] : '' ) );
 					$rolled_back_page_fields_present =
@@ -3639,6 +3911,7 @@ add_action( 'rest_api_init', function () {
 							|| ! hash_equals( (string) $state['page_excerpt_sha256'], (string) $page_contract_now['excerpt_sha256'] )
 							|| ! hash_equals( (string) $state['page_core_sha256'], (string) $page_contract_now['core_sha256'] )
 							|| ! hash_equals( (string) $state['page_meta_sha256'], (string) $page_contract_now['meta_sha256'] )
+							|| ! hash_equals( (string) $state['page_raw_meta_sha256'], (string) $page_contract_now['raw_meta_sha256'] )
 							|| ! hash_equals( (string) $state['page_password_fingerprint'], (string) $page_contract_now['password_fingerprint'] )
 							|| ! hash_equals( (string) $state['page_contract_sha256'], (string) $page_contract_now['contract_sha256'] )
 						) {
