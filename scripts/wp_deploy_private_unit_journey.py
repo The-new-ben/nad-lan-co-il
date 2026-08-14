@@ -287,6 +287,7 @@ def canonical_post_storage_comparison(
 ) -> dict[str, Any]:
     """Validate a same-run, stored-baseline storage comparison response."""
     response_keys = {
+        "http_status",
         "schema",
         "post_id",
         "state_phase",
@@ -298,7 +299,10 @@ def canonical_post_storage_comparison(
     if not isinstance(payload, dict) or set(payload) != response_keys:
         raise RuntimeError("Canonical post storage comparison shape is not exact")
     if (
-        payload.get("schema") != CANONICAL_POST_STORAGE_COMPARE_SCHEMA
+        not isinstance(payload.get("http_status"), int)
+        or isinstance(payload.get("http_status"), bool)
+        or payload.get("http_status") != 200
+        or payload.get("schema") != CANONICAL_POST_STORAGE_COMPARE_SCHEMA
         or payload.get("post_id") != expected_post_id
         or payload.get("state_phase")
         not in {"deployed", "page_creating", "page_ready", "rolled_back"}
@@ -314,6 +318,7 @@ def canonical_post_storage_comparison(
     if payload["unchanged"] is not observed_unchanged:
         raise RuntimeError("Canonical post storage comparison result is inconsistent")
     return {
+        "http_status": 200,
         "schema": CANONICAL_POST_STORAGE_COMPARE_SCHEMA,
         "post_id": expected_post_id,
         "state_phase": str(payload["state_phase"]),
@@ -4161,9 +4166,27 @@ def _finish_self_test(
             ),
         }
 
+    class StorageComparisonResponse:
+        def __init__(self, status_code: Any, payload: dict[str, Any]) -> None:
+            self.status_code = status_code
+            self.payload = payload
+
+        def json(self) -> dict[str, Any]:
+            return self.payload
+
+    def storage_comparison_response_fixture(
+        current: dict[str, Any], *, status_code: Any = 200
+    ) -> dict[str, Any]:
+        return response_payload(
+            StorageComparisonResponse(
+                status_code,
+                storage_comparison_fixture(current),
+            )
+        )
+
     storage_baseline = storage_proof_fixture()
     unchanged_storage = canonical_post_storage_comparison(
-        storage_comparison_fixture(copy.deepcopy(storage_baseline)),
+        storage_comparison_response_fixture(copy.deepcopy(storage_baseline)),
         EINSTEIN_CANONICAL_POST_ID,
     )
     rest_before_schema_change = {
@@ -4194,7 +4217,8 @@ def _finish_self_test(
         "term_relationships": storage_proof_fixture(term_tag="terms-v2"),
     }.items():
         comparison = canonical_post_storage_comparison(
-            storage_comparison_fixture(drift_proof), EINSTEIN_CANONICAL_POST_ID
+            storage_comparison_response_fixture(drift_proof),
+            EINSTEIN_CANONICAL_POST_ID,
         )
         storage_drift_results[drift_name] = comparison["unchanged"] is False
     if not schema_only_default_ignored or not all(storage_drift_results.values()):
@@ -4226,11 +4250,11 @@ def _finish_self_test(
         storage_count_rejected = True
     comparison_contract_rejections: dict[str, bool] = {}
     for rejection_name, malformed_comparison in {
-        "forged_unchanged": storage_comparison_fixture(
+        "forged_unchanged": storage_comparison_response_fixture(
             storage_proof_fixture(core_tag="core-v2")
         ),
-        "unowned_lock": storage_comparison_fixture(storage_proof_fixture()),
-        "invalid_phase": storage_comparison_fixture(storage_proof_fixture()),
+        "unowned_lock": storage_comparison_response_fixture(storage_proof_fixture()),
+        "invalid_phase": storage_comparison_response_fixture(storage_proof_fixture()),
     }.items():
         if rejection_name == "forged_unchanged":
             malformed_comparison["unchanged"] = True
@@ -4244,13 +4268,42 @@ def _finish_self_test(
             )
         except RuntimeError:
             comparison_contract_rejections[rejection_name] = True
+
+    missing_http_status = storage_comparison_response_fixture(storage_proof_fixture())
+    missing_http_status.pop("http_status")
+    extra_response_key = storage_comparison_fixture(storage_proof_fixture())
+    extra_response_key["unexpected"] = "must-never-be-accepted"
+    comparison_http_status_rejections: dict[str, bool] = {}
+    for rejection_name, malformed_comparison in {
+        "missing": missing_http_status,
+        "boolean": storage_comparison_response_fixture(
+            storage_proof_fixture(), status_code=True
+        ),
+        "noninteger": storage_comparison_response_fixture(
+            storage_proof_fixture(), status_code="200"
+        ),
+        "wrong": storage_comparison_response_fixture(
+            storage_proof_fixture(), status_code=201
+        ),
+        "extra": response_payload(StorageComparisonResponse(200, extra_response_key)),
+    }.items():
+        try:
+            canonical_post_storage_comparison(
+                malformed_comparison, EINSTEIN_CANONICAL_POST_ID
+            )
+        except RuntimeError:
+            comparison_http_status_rejections[rejection_name] = True
     if not (
         storage_shape_rejected
         and storage_count_rejected
         and len(comparison_contract_rejections) == 3
         and all(comparison_contract_rejections.values())
+        and len(comparison_http_status_rejections) == 5
+        and all(comparison_http_status_rejections.values())
     ):
-        raise RuntimeError("Canonical post storage proof shape/count/lock gate drifted")
+        raise RuntimeError(
+            "Canonical post storage proof shape/count/lock/http-status gate drifted"
+        )
 
     storage_proof_start = external_stage_helper.find(
         "$canonical_post_storage_proof = function"
@@ -6406,6 +6459,19 @@ def _finish_self_test(
             "invalid_phase_rejected": comparison_contract_rejections[
                 "invalid_phase"
             ],
+            "response_payload_http_status_exact": unchanged_storage["http_status"]
+            == 200,
+            "missing_http_status_rejected": comparison_http_status_rejections[
+                "missing"
+            ],
+            "boolean_http_status_rejected": comparison_http_status_rejections[
+                "boolean"
+            ],
+            "noninteger_http_status_rejected": comparison_http_status_rejections[
+                "noninteger"
+            ],
+            "wrong_http_status_rejected": comparison_http_status_rejections["wrong"],
+            "extra_response_key_rejected": comparison_http_status_rejections["extra"],
             "action_name_exact": True,
         },
         "rollback_activation_contract": True,
