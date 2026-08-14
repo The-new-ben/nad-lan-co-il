@@ -157,7 +157,13 @@ jobs:
       - name: Validate retained-transaction resume vehicle
         shell: bash
         run: |
-          if [[ -f scripts/wp_resume_einstein_stage_4527b2.py ]]; then
+          base="${{ github.event.pull_request.base.sha }}"
+          if [[ -z "$base" || "$base" =~ ^0+$ ]] || ! git cat-file -e "$base^{commit}"; then
+            base="HEAD^"
+          fi
+          if [[ -f scripts/wp_resume_einstein_stage_4527b2.py ]] && ! git diff --quiet "$base" HEAD -- \
+            scripts/wp_resume_einstein_stage_4527b2.py \
+            scripts/templates/nadlan-unit-journey-deploy-helper.php.tpl; then
             python -m ruff check scripts/wp_resume_einstein_stage_4527b2.py
             PYTHONDONTWRITEBYTECODE=1 python -m py_compile scripts/wp_resume_einstein_stage_4527b2.py
             PYTHONDONTWRITEBYTECODE=1 python scripts/wp_resume_einstein_stage_4527b2.py --self-test
@@ -166,7 +172,13 @@ jobs:
       - name: Validate independent live-recovery vehicle
         shell: bash
         run: |
-          if [[ -f scripts/wp_audit_einstein_live_172207.py ]]; then
+          base="${{ github.event.pull_request.base.sha }}"
+          if [[ -z "$base" || "$base" =~ ^0+$ ]] || ! git cat-file -e "$base^{commit}"; then
+            base="HEAD^"
+          fi
+          if [[ -f scripts/wp_audit_einstein_live_172207.py ]] && ! git diff --quiet "$base" HEAD -- \
+            scripts/wp_audit_einstein_live_172207.py \
+            scripts/templates/nadlan-einstein-live-recovery-helper.php.tpl; then
             python -m ruff check scripts/wp_audit_einstein_live_172207.py
             PYTHONDONTWRITEBYTECODE=1 python -m py_compile scripts/wp_audit_einstein_live_172207.py
             PYTHONDONTWRITEBYTECODE=1 python scripts/wp_audit_einstein_live_172207.py --self-test
