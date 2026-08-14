@@ -51,7 +51,7 @@ SOURCE_REPO_PATHS = tuple(
 )
 RUN_ID = "einstein-flagship-20260814T124439Z-4527b2"
 ROUTE_NAMESPACE = "nadlan-live-recovery/v1"
-TOKEN_ENV = "NADLAN_EINSTEIN_RECOVERY_TOKEN"
+RUNTIME_ENV_KEY = "NADLAN_EINSTEIN_RECOVERY_TOKEN"
 SNAPSHOT_ACTIONS_ENABLED = False
 PINNED_EXPECTED_LIVE_CONTRACT: dict[str, Any] | None = None
 PINNED_EXPECTED_LIVE_CONTRACT_SHA256 = ""
@@ -196,7 +196,7 @@ def resolve_runtime(
     base_url = value("WP_BASE_URL").rstrip("/")
     user = value("WP_USER")
     password = value("WP_APP_PASSWORD")
-    token = str(os.environ.get(TOKEN_ENV) or "").strip()
+    token = str(os.environ.get(RUNTIME_ENV_KEY) or "").strip()
     parsed = urlsplit(base_url)
     if (
         parsed.scheme != "https"
@@ -214,7 +214,7 @@ def resolve_runtime(
         raise RuntimeError("Current WordPress credentials are unavailable")
     if not re.fullmatch(r"[a-f0-9]{64}", token):
         raise RuntimeError(
-            f"{TOKEN_ENV} must be a caller-held 64-character lowercase hex token"
+            f"{RUNTIME_ENV_KEY} must be a caller-held 64-character lowercase hex token"
         )
     return (
         base_url,
