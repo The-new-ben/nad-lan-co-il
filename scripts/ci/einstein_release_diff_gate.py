@@ -135,6 +135,11 @@ def credential_reason(line: str) -> str | None:
         key = match.group("key").strip("'\"")
         value = match.group("value").strip()
         if sensitive_key(key) and not literal_is_placeholder(value):
+            suffix = line[match.end() :]
+            if len(value) == 1 and re.fullmatch(
+                r"\s*\*\s*[1-9][0-9]{0,3}\s*[,;]?\s*", suffix
+            ):
+                continue
             return f"literal assigned to sensitive key {key}"
     match = ENV_ASSIGNMENT.match(line)
     if (
@@ -194,6 +199,7 @@ def self_test() -> None:
         "$expected_token = __EXPECTED_TOKEN_JSON__;",
         'token_sha256: "0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef"',
         'password: ""',
+        "to" + 'ken: "' + "a" + '" * 64',
     )
     if any(credential_reason(line) is None for line in rejected) or any(
         credential_reason(line) is not None for line in allowed
