@@ -980,7 +980,33 @@ add_action( 'rest_api_init', function () {
 						throw new RuntimeException( 'External stage REST meta contract is unavailable.' );
 					}
 					ksort( $rest_meta, SORT_STRING );
-					$expected_meta = $external_stage_expected_meta;
+					$expected_rest_meta = $external_stage_expected_meta;
+					if (
+						! isset( $expected_rest_meta['lat'], $expected_rest_meta['lng'], $expected_rest_meta['project_3d_units'] )
+						|| ! is_float( $expected_rest_meta['lat'] )
+						|| ! is_float( $expected_rest_meta['lng'] )
+						|| $expected_rest_meta['lat'] < -90
+						|| $expected_rest_meta['lat'] > 90
+						|| $expected_rest_meta['lng'] < -180
+						|| $expected_rest_meta['lng'] > 180
+						|| '[]' !== $expected_rest_meta['project_3d_units']
+					) {
+						throw new RuntimeException( 'External stage REST normalization input is invalid.' );
+					}
+					$expected_rest_meta['lat'] = round( (float) $expected_rest_meta['lat'], 6 );
+					$expected_rest_meta['lng'] = round( (float) $expected_rest_meta['lng'], 6 );
+					$expected_rest_meta['project_3d_units'] = '';
+					$rest_normalized_keys = array();
+					foreach ( $external_stage_expected_meta as $meta_key => $request_value ) {
+						if ( $request_value !== $expected_rest_meta[ $meta_key ] ) {
+							$rest_normalized_keys[] = (string) $meta_key;
+						}
+					}
+					sort( $rest_normalized_keys, SORT_STRING );
+					if ( array( 'lat', 'lng', 'project_3d_units' ) !== $rest_normalized_keys ) {
+						throw new RuntimeException( 'External stage REST normalization key set is not exact.' );
+					}
+					$expected_meta = $expected_rest_meta;
 					ksort( $expected_meta, SORT_STRING );
 					$pinned_rest_meta = array_intersect_key( $rest_meta, $expected_meta );
 					ksort( $pinned_rest_meta, SORT_STRING );
