@@ -68,7 +68,10 @@ function checkUrl(value, label, errors) {
   if (value === '') return;
   try {
     const u = new URL(String(value));
-    if (!['http:', 'https:'].includes(u.protocol)) errors.push(`${label} must use http(s)`);
+    if (u.protocol !== 'https:') errors.push(`${label} must use https`);
+    if (u.username || u.password) errors.push(`${label} must not contain credentials`);
+    if (u.hash) errors.push(`${label} must not contain a fragment`);
+    if (!u.hostname) errors.push(`${label} must have a hostname`);
   } catch {
     errors.push(`${label} is not a valid URL`);
   }
@@ -153,6 +156,31 @@ function validatePayload(schema, payload) {
         checkUrl(unit.tour_url || '', `unit[${index}].tour_url`, errors);
       });
     }
+  }
+
+  const units = payload.meta && Array.isArray(payload.meta.project_3d_units)
+    ? payload.meta.project_3d_units
+    : [];
+  const inventory = payload.inventory_contract;
+  if (units.length === 0) {
+    if (!inventory || typeof inventory !== 'object' || Array.isArray(inventory)) {
+      errors.push('inventory_contract is required when project_3d_units is empty');
+    } else {
+      if (!['not_supplied', 'not_verified', 'unavailable'].includes(inventory.state)) {
+        errors.push('zero-unit inventory_contract.state must be not_supplied, not_verified, or unavailable');
+      }
+      if (inventory.decision_grade !== false) {
+        errors.push('zero-unit inventory_contract.decision_grade must be false');
+      }
+      if (!Array.isArray(inventory.source_ids)) {
+        errors.push('zero-unit inventory_contract.source_ids must be an array');
+      }
+      if (typeof inventory.note !== 'string' || inventory.note.trim() === '') {
+        errors.push('zero-unit inventory_contract.note must be non-empty');
+      }
+    }
+  } else if (inventory && inventory.state !== 'verified_units' && inventory.decision_grade === true) {
+    errors.push('only verified_units may set inventory_contract.decision_grade=true');
   }
 
   const raw = JSON.stringify(payload);

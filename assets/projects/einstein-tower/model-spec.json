@@ -1,0 +1,202 @@
+{
+  "schema_version": "nadlan-illustrative-massing-v1",
+  "project_contract_id": "einstein-tower-6885-32",
+  "public_slug": "einstein-tower",
+  "representation_name": "Einstein 33A",
+  "representation_kind": "owner_approved_illustration",
+  "decision_grade": false,
+  "owner_publication_permission": true,
+  "release_gate_state": "private_stage",
+  "owner_decision_id": "OWNER-2026-08-14-EINSTEIN-ILLUSTRATIVE-MASSING",
+  "experience_owner_decision_id": "OWNER-2026-08-14-EINSTEIN-INTERIOR-FACILITIES-DEMO",
+  "experience_version": "einstein-interior-facilities-demo-v1",
+  "experience_effective_at": "2026-08-14T00:00:00+03:00",
+  "experience_expires_at": "2027-08-14T00:00:00+03:00",
+  "effective_at": "2026-08-14T00:00:00+03:00",
+  "expires_at": "2027-08-14T00:00:00+03:00",
+  "calibration": {
+    "north_degrees": 0,
+    "north_axis": "+Z",
+    "up_axis": "+Y",
+    "units": "metres",
+    "calibration_id": "einstein-33a-illustrative-massing-v1"
+  },
+  "geometry_scope": {
+    "components": [
+      "double-level commercial podium",
+      "28-level tower massing",
+      "two 13-level boutique massing volumes",
+      "illustrative facade panels, balcony bands and landscape terraces",
+      "north reference",
+      "owner-approved illustrative interior hotspot and activation anchor",
+      "two owner-approved illustrative shared-space hotspots and activation anchors"
+    ],
+    "excluded_claims": [
+      "BIM",
+      "survey",
+      "as-built geometry",
+      "unit boundaries",
+      "floor inventory",
+      "availability",
+      "prices",
+      "views from a unit"
+    ]
+  },
+  "files": {
+    "hd": "model-hd.glb",
+    "lod": "model-lod.glb",
+    "poster": "poster.webp",
+    "experience_manifest": "experience/manifest.json"
+  },
+  "experience_mapping": {
+    "active_state": "owner_approved_illustrative_mapping",
+    "future_verified_state": "source_cited_mapping",
+    "coordinate_space": "model_metres_y_up",
+    "source_cited": false,
+    "decision_grade": false,
+    "real_world_orientation_calibrated": false,
+    "anchors": [
+      {
+        "hotspot_id": "representative-interior-concept",
+        "tool_id": "interior",
+        "open_surface_tool_id": "interior",
+        "kind": "interior_walkthrough",
+        "experience_kind": "representative_concept",
+        "scene_ids": [
+          "living",
+          "bedroom"
+        ],
+        "model_component_ids": [
+          "Tower_28_Level_Massing",
+          "Glass_Terrace_Strips",
+          "Champagne_Fins"
+        ],
+        "illustrative_zone_id": "tower_local_plus_z_glass_terrace_face",
+        "position": [
+          16,
+          34.7,
+          5.8
+        ],
+        "surface_normal": [
+          0,
+          0,
+          1
+        ],
+        "visual_offset_along_normal_m": 0.7,
+        "confidence": "model_zone_fit_high__source_spatial_confidence_none",
+        "placement_confidence": {"zone": 0.68, "exact_point": 0.18},
+        "evidence_basis": {
+          "primary_reference_ids": ["MR001"],
+          "corroborating_reference_ids": ["MR002", "MR003", "MR018"],
+          "supports": "Authored tower component and local glass/terrace facade family only; no room or spatial placement."
+        },
+        "ambiguity": "Owner interpolation on the authored glass/terrace facade family. The marker alone is offset outward for visibility; model +Z is not a calibrated real-world direction.",
+        "prohibited_inferences": [
+          "floor number",
+          "unit or room identity",
+          "interior specification",
+          "balcony access",
+          "compass or street aspect",
+          "sea or city view",
+          "availability"
+        ]
+      },
+      {
+        "hotspot_id": "facility-arrival-concept",
+        "tool_id": "facilities",
+        "open_surface_tool_id": "interior",
+        "kind": "facility_arrival_concept",
+        "experience_kind": "selectable_concept_gallery",
+        "scene_ids": [
+          "arrival"
+        ],
+        "model_component_ids": [
+          "Tower_28_Level_Massing",
+          "Podium_Double_Level"
+        ],
+        "illustrative_zone_id": "tower_podium_local_minus_z_residential_level_seam",
+        "position": [
+          12,
+          9.5,
+          -13.25
+        ],
+        "surface_normal": [
+          0,
+          0,
+          -1
+        ],
+        "visual_offset_along_normal_m": 0.45,
+        "confidence": "model_zone_fit_high__source_spatial_confidence_none",
+        "placement_confidence": {"zone": 0.63, "exact_point": 0.20},
+        "evidence_basis": {
+          "primary_reference_ids": ["MR008"],
+          "corroborating_reference_ids": ["MR002", "MR003", "MR019"],
+          "source_anchors": ["MR008 PDF p57 lines 1564-1567"],
+          "supports": "Municipal protocol separates residential/public entrances at neighborhood level from commerce at Einstein street level; the exact door/anchor remains owner interpolation on the authored tower/podium seam."
+        },
+        "ambiguity": "Owner interpolation at an authored tower/podium seam. Model -Z is not a calibrated frontage or real-world direction.",
+        "prohibited_inferences": [
+          "verified facility existence",
+          "official lobby or named amenity",
+          "official entrance or doorway",
+          "floor or room location",
+          "street frontage",
+          "plaza or cycle path",
+          "accessible route",
+          "delivery commitment"
+        ]
+      },
+      {
+        "hotspot_id": "facility-landscaped-open-space-concept",
+        "tool_id": "facilities",
+        "open_surface_tool_id": "interior",
+        "kind": "facility_landscaped_open_space_concept",
+        "experience_kind": "selectable_concept_gallery",
+        "scene_ids": [
+          "open-frame"
+        ],
+        "model_component_ids": [
+          "Landscape_Terraces",
+          "Podium_Double_Level"
+        ],
+        "illustrative_zone_id": "landscape_terrace_local_top_surface",
+        "position": [
+          27,
+          10,
+          14
+        ],
+        "surface_normal": [
+          0,
+          1,
+          0
+        ],
+        "visual_offset_along_normal_m": 0.35,
+        "confidence": "model_zone_fit_high__source_spatial_confidence_none",
+        "placement_confidence": {"zone": 0.86, "exact_point": 0.24},
+        "evidence_basis": {
+          "primary_reference_ids": ["MR003", "MR008"],
+          "corroborating_reference_ids": ["MR019"],
+          "source_anchors": ["MR008 PDF p55 lines 1495-1499", "MR008 PDF p51 lines 1396-1404", "MR008 PDF pp62-63 lines 1653-1657"],
+          "supports": "Municipal protocol requires an accessible active commercial roof/fifth facade, pedestrian/cycle grade transition and planted/seated lot-33 open space; the exact authored landscape-volume anchor remains owner interpolation and is not a named amenity."
+        },
+        "ambiguity": "Owner interpolation on an authored landscape volume. It is not a verified roof amenity, view location or delivered public realm.",
+        "prohibited_inferences": [
+          "verified facility existence",
+          "named roof or amenity",
+          "official floor or location",
+          "private or shared ownership",
+          "view promise",
+          "landscape specification",
+          "plaza or cycle path",
+          "delivery commitment"
+        ]
+      }
+    ]
+  },
+  "acceptance": {
+    "minimum_hd_triangles": 30000,
+    "maximum_hd_bytes": 5000000,
+    "maximum_lod_bytes": 500000,
+    "maximum_poster_bytes": 250000
+  }
+}

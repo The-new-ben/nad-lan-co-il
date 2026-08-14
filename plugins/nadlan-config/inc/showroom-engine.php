@@ -736,6 +736,15 @@ add_filter( 'the_content', function ( $content ) {
 	if ( post_password_required( $pid ) ) {
 		return $content;
 	}
+	/* Flagship v3 owns the complete selected surface. Read the reviewed raw
+	 * dossier from this exact post; never feed it content already decorated by
+	 * earlier project filters and never recurse through the_content here. */
+	if ( function_exists( 'nadlan_flagship_v3_is_selected' ) && nadlan_flagship_v3_is_selected( $pid ) ) {
+		$nl_flagship_v3_article = (string) get_post_field( 'post_content', $pid, 'raw' );
+		return function_exists( 'nadlan_flagship_v3_dispatch' )
+			? nadlan_flagship_v3_dispatch( $pid, $nl_flagship_v3_article )
+			: '';
+	}
 	// DE-STACK (content-safe). The post body is ONE <main class="nlv2-showroom">
 	// wrapper that contains BOTH the legacy visual showroom (hero/3D/picker) AND the
 	// SEO article (<section class="nlv2-section"> ... headings, sources, disclaimer).
@@ -843,6 +852,15 @@ add_action( 'wp', function () {
 			/* Do not trust content assembled by any earlier project module: a
 			 * fresh core form is the complete locked body, every time. */
 			return get_the_password_form( get_post( $pid ) );
+		}
+		if ( function_exists( 'nadlan_flagship_v3_is_selected' ) && nadlan_flagship_v3_is_selected( $pid ) ) {
+			if ( false !== strpos( (string) $content, 'data-nl-flagship="v3"' ) ) {
+				return $content;
+			}
+			$nl_flagship_v3_article = (string) get_post_field( 'post_content', $pid, 'raw' );
+			return function_exists( 'nadlan_flagship_v3_dispatch' )
+				? nadlan_flagship_v3_dispatch( $pid, $nl_flagship_v3_article )
+				: '';
 		}
 		return '<h1 id="nl-unit-v2-page-title" class="screen-reader-text">' . esc_html( get_the_title( $pid ) )
 			. '</h1><div id="nl-root" data-page="project"></div>';

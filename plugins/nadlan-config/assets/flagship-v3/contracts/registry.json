@@ -1,0 +1,200 @@
+{
+  "schema": "nadlan-flagship-contract-registry/v1",
+  "surface_version": "flagship-v3",
+  "contracts": [
+    {
+      "project_contract_id": "einstein-tower-6885-32",
+      "source_id": "einstein-tower-6885-32",
+      "canonical_post_id": 4867,
+      "canonical_slug": "einstein-tower",
+      "parcel": "6885/32",
+      "public_release_enabled": false,
+      "allowed_locales": [
+        "he"
+      ],
+      "page_h1": {
+        "he": "EINSTEIN TOWER תל אביב"
+      },
+      "required_article_marker": "nadlan-einstein-he-dossier-v1",
+      "sandbox": {
+        "privacy_marker": "private-unit-journey-v2",
+        "source_post_meta_key": "_nadlan_flagship_source_post_id",
+        "slug_pattern": "^sandbox-einstein-tower-flagship-v3(?:-[a-z0-9-]+)?$"
+      },
+      "asset_path_marker": "/wp-content/plugins/nadlan-config/assets/flagship-v3/projects/einstein-tower/",
+      "required_calibration_id": "einstein-33a-illustrative-massing-v1",
+      "required_representation_roles": [
+        "model_hd",
+        "model_lod",
+        "poster"
+      ],
+      "authorized_representations": [
+        {
+          "role": "model_hd",
+          "file": "model-hd.glb",
+          "bytes": 2420492,
+          "triangles": 39912,
+          "sha256": "71fcca8a0f58743b5f2257684c79957fbbff8e0169f5438bdc78231f27968a53"
+        },
+        {
+          "role": "model_lod",
+          "file": "model-lod.glb",
+          "bytes": 32244,
+          "sha256": "485161974b6d343956d249d821c893b72a59678e8e8ee2810c90cee5f23079ce"
+        },
+        {
+          "role": "poster",
+          "file": "poster.webp",
+          "bytes": 23996,
+          "sha256": "5588d09e28f95ac5d6655626027c3ad41f17c5c5c78153ecb2ba138821aa8c85"
+        }
+      ],
+      "owner_decision_ids": [
+        "OWNER-2026-08-13-DIRECTION-DEMO",
+        "OWNER-2026-08-13-MODEL-FIRST-SHOWROOM",
+        "OWNER-2026-08-13-VISUAL-PLAYGROUND",
+        "OWNER-2026-08-14-EINSTEIN-ILLUSTRATIVE-MASSING",
+        "OWNER-2026-08-14-EINSTEIN-INTERIOR-FACILITIES-DEMO"
+      ],
+      "representation_owner_decision_id": "OWNER-2026-08-14-EINSTEIN-ILLUSTRATIVE-MASSING",
+      "visual_playground_decision_id": "OWNER-2026-08-13-VISUAL-PLAYGROUND",
+      "visual_playground_version": "visual-playground-v1",
+      "visual_playground_effective_at": "2026-08-13T00:00:00+03:00",
+      "visual_playground_expires_at": "2026-12-15T23:59:59+02:00",
+      "experience_decision_id": "OWNER-2026-08-14-EINSTEIN-INTERIOR-FACILITIES-DEMO",
+      "experience_version": "einstein-interior-facilities-demo-v1",
+      "experience_effective_at": "2026-08-14T00:00:00+03:00",
+      "experience_expires_at": "2027-08-14T00:00:00+03:00",
+      "illustrative_mapping_owner_decision_id": "OWNER-2026-08-14-EINSTEIN-INTERIOR-FACILITIES-DEMO",
+      "future_verified_mapping_state": "source_cited_mapping",
+      "illustrative_mapping_crosswalk_sha256": "42072325c22a87b40b8bb6bfc6a09e29beac01ab84fccbe403a6c0d0abddfb9a",
+      "illustrative_mapping_anchor_summary_sha256": "dadc53333e2ca1ac78daae2610c4315559659510dc4b23774caaca5442e6889c",
+      "illustrative_mapping_reference_ids": [
+        "IVS001",
+        "IVS002",
+        "IVS003",
+        "IVS004",
+        "IVS005",
+        "IVS008",
+        "IVS012"
+      ],
+      "authorized_illustrative_mappings": [
+        {
+          "asset_id": "representative-apartment-living-v1",
+          "model_hotspot_group": "representative-interior-concept",
+          "model_component": "Tower_28_Level_Massing;Glass_Terrace_Strips;Champagne_Fins",
+          "illustrative_zone_id": "tower_local_plus_z_glass_terrace_face",
+          "visual_offset_along_normal_m": 0.7,
+          "position": "16m 34.7m 5.8m",
+          "normal": "0 0 1",
+          "placement_source_refs": ["IVS002", "IVS001"],
+          "placement_basis": "Source constrains tower glass-facade zone; owner authorizes one shared mid-height clickable interior-gallery anchor just outside the current glass strip",
+          "placement_confidence": {"zone": 0.68, "exact_point": 0.18},
+          "placement_ambiguity": "No unit floor room boundary view direction or cardinal facade is established"
+        },
+        {
+          "asset_id": "representative-apartment-bedroom-v1",
+          "model_hotspot_group": "representative-interior-concept",
+          "model_component": "Tower_28_Level_Massing;Glass_Terrace_Strips;Champagne_Fins",
+          "illustrative_zone_id": "tower_local_plus_z_glass_terrace_face",
+          "visual_offset_along_normal_m": 0.7,
+          "position": "16m 34.7m 5.8m",
+          "normal": "0 0 1",
+          "placement_source_refs": ["IVS002", "IVS001"],
+          "placement_basis": "Bedroom shares the aggregate interior-gallery anchor; the scene is owner-approved demonstration media and is not assigned its own floor facade or unit",
+          "placement_confidence": {"zone": 0.68, "exact_point": 0.18},
+          "placement_ambiguity": "Bedroom existence design dimensions unit floor view and room location are wholly unmapped"
+        },
+        {
+          "asset_id": "facility-arrival-gallery-v1",
+          "model_hotspot_group": "facility-arrival-concept",
+          "model_component": "Tower_28_Level_Massing;Podium_Double_Level",
+          "illustrative_zone_id": "tower_podium_local_minus_z_residential_level_seam",
+          "visual_offset_along_normal_m": 0.45,
+          "position": "12m 9.5m -13.25m",
+          "normal": "0 0 -1",
+          "placement_source_refs": ["IVS003", "IVS004", "IVS005", "IVS008"],
+          "placement_basis": "Source constrains use to the tower/base arrival zone; exact outer-face point at the current tower-podium seam is owner-approved interpolation",
+          "placement_confidence": {"zone": 0.63, "exact_point": 0.20},
+          "placement_ambiguity": "No official lobby door facade room extent finish reception desk or accessible route point is established"
+        },
+        {
+          "asset_id": "facility-landscaped-terrace-v1",
+          "model_hotspot_group": "facility-landscaped-open-space-concept",
+          "model_component": "Landscape_Terraces;Podium_Double_Level",
+          "illustrative_zone_id": "landscape_terrace_local_top_surface",
+          "visual_offset_along_normal_m": 0.35,
+          "position": "27m 10m 14m",
+          "normal": "0 1 0",
+          "placement_source_refs": ["IVS003", "IVS004", "IVS005", "IVS012"],
+          "placement_basis": "Source strongly supports the public landscaped-roof/open-space category; selected current Landscape_Terraces slab and exact point are owner-approved interpolation",
+          "placement_confidence": {"zone": 0.86, "exact_point": 0.24},
+          "placement_ambiguity": "Exact roof polygon level route planting layout view and whether the generated scene depicts any delivered facility are unresolved"
+        }
+      ],
+      "spatial_experience_source_ids": [],
+      "experience_asset_path_marker": "/wp-content/plugins/nadlan-config/assets/flagship-v3/projects/einstein-tower/experience/",
+      "authorized_experience_assets": [
+        {
+          "asset_id": "representative-apartment-living-v1",
+          "scene_id": "living",
+          "kind": "interior",
+          "preview_file": "representative-apartment-living-v1.webp",
+          "fullscreen_file": "representative-apartment-living-v1.webp",
+          "bytes": 103748,
+          "width": 1536,
+          "height": 1024,
+          "preview_sha256": "1ad84512b5cb938450b5124c199ba09d00697da605ef46214434cef80649319b",
+          "fullscreen_sha256": "1ad84512b5cb938450b5124c199ba09d00697da605ef46214434cef80649319b"
+        },
+        {
+          "asset_id": "representative-apartment-bedroom-v1",
+          "scene_id": "bedroom",
+          "kind": "interior",
+          "preview_file": "representative-apartment-bedroom-v1.webp",
+          "fullscreen_file": "representative-apartment-bedroom-v1.webp",
+          "bytes": 79384,
+          "width": 1523,
+          "height": 1024,
+          "preview_sha256": "1c4d71c6b1308867a2a9c9d1d03eec947ba6f85b9800fa1f88ae5028acf06aea",
+          "fullscreen_sha256": "1c4d71c6b1308867a2a9c9d1d03eec947ba6f85b9800fa1f88ae5028acf06aea"
+        },
+        {
+          "asset_id": "facility-arrival-gallery-v1",
+          "scene_id": "arrival",
+          "kind": "facility",
+          "preview_file": "facility-arrival-gallery-v1.webp",
+          "fullscreen_file": "facility-arrival-gallery-v1.webp",
+          "bytes": 170750,
+          "width": 1524,
+          "height": 1024,
+          "preview_sha256": "cc50acc2570612165bf20442849ac9fcdf00658c0835f2130d6824d8b2c50e9a",
+          "fullscreen_sha256": "cc50acc2570612165bf20442849ac9fcdf00658c0835f2130d6824d8b2c50e9a"
+        },
+        {
+          "asset_id": "facility-landscaped-terrace-v1",
+          "scene_id": "open-frame",
+          "kind": "facility",
+          "preview_file": "facility-landscaped-terrace-v1.webp",
+          "fullscreen_file": "facility-landscaped-terrace-v1.webp",
+          "bytes": 264926,
+          "width": 1518,
+          "height": 1024,
+          "preview_sha256": "717a33f6deb118e3d60539152147a7d1c791e84b69e77861f6086ae246cc8e0b",
+          "fullscreen_sha256": "717a33f6deb118e3d60539152147a7d1c791e84b69e77861f6086ae246cc8e0b"
+        }
+      ],
+      "minimum_experience_scenes_per_kind": 2,
+      "required_experience_hotspot_groups": [
+        "representative-interior-concept",
+        "facility-arrival-concept",
+        "facility-landscaped-open-space-concept"
+      ],
+      "required_context_layer_ids": [
+        "current",
+        "future"
+      ],
+      "required_sea_method": "straight_line_to_tel_baruch_beach_polygon"
+    }
+  ]
+}
