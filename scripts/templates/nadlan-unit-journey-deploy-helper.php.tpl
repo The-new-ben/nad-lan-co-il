@@ -851,6 +851,7 @@ add_action( 'rest_api_init', function () {
 				$external_stage_content_sha256,
 				$external_stage_excerpt_sha256
 			) {
+				global $wpdb;
 				if ( ! is_int( $page_id ) || $page_id < 1 || $page_id === $source_post_id || ! is_array( $meta_keys ) || count( $meta_keys ) < 3 || count( $meta_keys ) > 128 ) {
 					throw new RuntimeException( 'Stage contract identity or meta-key count is invalid.' );
 				}
@@ -940,20 +941,17 @@ add_action( 'rest_api_init', function () {
 				if ( ! is_string( $core_json ) ) {
 					throw new RuntimeException( 'Stage contract core-field encoding failed.' );
 				}
-				$slug_matches = get_posts(
-					array(
-						'name'                   => $page_slug,
-						'post_type'              => 'nadlan_project',
-						'post_status'            => array_values( get_post_stati( array(), 'names' ) ),
-						'posts_per_page'         => 2,
-						'fields'                 => 'ids',
-						'no_found_rows'          => true,
-						'suppress_filters'       => true,
-						'update_post_meta_cache' => false,
-						'update_post_term_cache' => false,
+				$slug_matches = $wpdb->get_col(
+					$wpdb->prepare(
+						"SELECT ID FROM {$wpdb->posts} WHERE post_name = %s AND post_type = %s ORDER BY ID ASC LIMIT 2",
+						$page_slug,
+						'nadlan_project'
 					)
 				);
-				if ( ! is_array( $slug_matches ) || array( $page_id ) !== array_map( 'intval', $slug_matches ) ) {
+				if ( ! is_array( $slug_matches ) || '' !== (string) $wpdb->last_error ) {
+					throw new RuntimeException( 'Stage contract slug identity read failed.' );
+				}
+				if ( array( $page_id ) !== array_map( 'intval', $slug_matches ) ) {
 					throw new RuntimeException( 'Stage contract slug is absent or ambiguous.' );
 				}
 				if (
@@ -1072,38 +1070,34 @@ add_action( 'rest_api_init', function () {
 			};
 
 			$stage_scope_absent = function () use ( $page_slug, $source_post_id ) {
-				$query = array(
-					'post_type'              => 'nadlan_project',
-					'post_status'            => array_values( get_post_stati( array(), 'names' ) ),
-					'posts_per_page'         => 2,
-					'fields'                 => 'ids',
-					'no_found_rows'          => true,
-					'suppress_filters'       => true,
-					'update_post_meta_cache' => false,
-					'update_post_term_cache' => false,
+				global $wpdb;
+				$wpdb->last_error = '';
+				$slug_matches = $wpdb->get_col(
+					$wpdb->prepare(
+						"SELECT ID FROM {$wpdb->posts} WHERE post_type = %s AND post_name = %s ORDER BY ID ASC LIMIT 2",
+						'nadlan_project',
+						$page_slug
+					)
 				);
-				$slug_query = $query;
-				$slug_query['name'] = $page_slug;
-				$slug_matches = get_posts( $slug_query );
-				$marker_query = $query;
-				$marker_query['meta_query'] = array(
-					'relation' => 'AND',
-					array(
-						'key'     => '_nadlan_private_unit_journey',
-						'value'   => 'private-unit-journey-v2',
-						'compare' => '=',
-					),
-					array(
-						'key'     => '_nadlan_flagship_source_post_id',
-						'value'   => (string) $source_post_id,
-						'compare' => '=',
-					),
+				if ( ! is_array( $slug_matches ) || '' !== (string) $wpdb->last_error ) {
+					throw new RuntimeException( 'Stage scope slug absence read failed.' );
+				}
+				$wpdb->last_error = '';
+				$marker_matches = $wpdb->get_col(
+					$wpdb->prepare(
+						"SELECT p.ID FROM {$wpdb->posts} p WHERE p.post_type = %s AND EXISTS ( SELECT 1 FROM {$wpdb->postmeta} marker_meta WHERE marker_meta.post_id = p.ID AND marker_meta.meta_key = %s AND marker_meta.meta_value = %s ) AND EXISTS ( SELECT 1 FROM {$wpdb->postmeta} source_meta WHERE source_meta.post_id = p.ID AND source_meta.meta_key = %s AND source_meta.meta_value = %s ) ORDER BY p.ID ASC LIMIT 2",
+						'nadlan_project',
+						'_nadlan_private_unit_journey',
+						'private-unit-journey-v2',
+						'_nadlan_flagship_source_post_id',
+						(string) $source_post_id
+					)
 				);
-				$marker_matches = get_posts( $marker_query );
+				if ( ! is_array( $marker_matches ) || '' !== (string) $wpdb->last_error ) {
+					throw new RuntimeException( 'Stage scope marker absence read failed.' );
+				}
 				return
-					is_array( $slug_matches )
-					&& empty( $slug_matches )
-					&& is_array( $marker_matches )
+					empty( $slug_matches )
 					&& empty( $marker_matches );
 			};
 
@@ -1388,6 +1382,107 @@ add_action( 'rest_api_init', function () {
 						'temp_bytes'       => $upload_status['temp_bytes'],
 					),
 				);
+			}
+
+			if ( 'resume_retained_contract' === $action ) {
+				try {
+					$resume_lock = get_option( $lock_key, false );
+					$resume_phase = isset( $state['phase'] ) ? (string) $state['phase'] : '';
+					if (
+						! is_array( $resume_lock )
+						|| $run_id !== (string) ( isset( $resume_lock['run_id'] ) ? $resume_lock['run_id'] : '' )
+						|| ! in_array( $resume_phase, array( 'page_creating', 'page_ready' ), true )
+						|| ! is_array( $state )
+						|| $run_id !== (string) ( isset( $state['run_id'] ) ? $state['run_id'] : '' )
+						|| ! isset( $state['page_id'] )
+						|| ! is_int( $state['page_id'] )
+						|| $state['page_id'] < 1
+						|| $state['page_id'] === $source_post_id
+						|| empty( $state['backup_root'] )
+						|| empty( $state['backup_digest'] )
+						|| ! isset( $state['backup_files'] )
+						|| ! is_int( $state['backup_files'] )
+						|| $state['backup_files'] < 1
+						|| ! isset( $state['backup_bytes'] )
+						|| ! is_int( $state['backup_bytes'] )
+						|| $state['backup_bytes'] < 1
+						|| empty( $state['before_version'] )
+						|| ! isset( $state['before_active'] )
+						|| ! is_bool( $state['before_active'] )
+						|| empty( $state['upload_verified'] )
+						|| ! isset( $state['upload_next_index'], $state['upload_total_chunks'], $state['upload_received_bytes'] )
+						|| ! is_int( $state['upload_next_index'] )
+						|| ! is_int( $state['upload_total_chunks'] )
+						|| ! is_int( $state['upload_received_bytes'] )
+						|| $state['upload_next_index'] !== $artifact_total_chunks
+						|| $state['upload_total_chunks'] !== $artifact_total_chunks
+						|| $state['upload_received_bytes'] !== $artifact_bytes
+						|| ! isset( $state['canonical_post_storage_baseline'] )
+						|| ! $canonical_post_storage_proof_valid( $state['canonical_post_storage_baseline'] )
+					) {
+						throw new RuntimeException( 'Retained resume state, lock, page, upload, or canonical contract is incomplete.' );
+					}
+					$resume_backup_root = wp_normalize_path( (string) $state['backup_root'] );
+					if ( ! in_array( $resume_backup_root, array( $backup_root_expected, $legacy_backup_root ), true ) || is_link( $resume_backup_root ) ) {
+						throw new RuntimeException( 'Retained resume backup path is outside its exact scope.' );
+					}
+					$resume_backup_path = $resume_backup_root . '/nadlan-config';
+					$resume_backup_main = $resume_backup_path . '/nadlan-config.php';
+					if ( ! is_dir( $resume_backup_path ) || is_link( $resume_backup_path ) || ! is_file( $resume_backup_main ) || is_link( $resume_backup_main ) ) {
+						throw new RuntimeException( 'Retained resume physical backup is unavailable or unsafe.' );
+					}
+					$resume_backup_inventory = $inventory( $resume_backup_path );
+					if (
+						! hash_equals( (string) $state['backup_digest'], (string) $resume_backup_inventory['digest'] )
+						|| $state['backup_files'] !== (int) $resume_backup_inventory['file_count']
+						|| $state['backup_bytes'] !== (int) $resume_backup_inventory['bytes']
+					) {
+						throw new RuntimeException( 'Retained resume physical backup differs from recorded state.' );
+					}
+					require_once ABSPATH . 'wp-admin/includes/plugin.php';
+					$resume_backup_data = get_plugin_data( $resume_backup_main, false, false );
+					$resume_backup_version = isset( $resume_backup_data['Version'] ) ? (string) $resume_backup_data['Version'] : '';
+					if ( '' === $resume_backup_version || $resume_backup_version !== (string) $state['before_version'] ) {
+						throw new RuntimeException( 'Retained resume backup version differs from recorded state.' );
+					}
+					$resume_upload = $upload_temp_status();
+					if ( ! $resume_upload['temp_absent'] || $resume_upload['temp_exists'] || ! $resume_upload['temp_safe'] || 0 !== (int) $resume_upload['temp_bytes'] ) {
+						throw new RuntimeException( 'Retained resume upload absence is not exact.' );
+					}
+					$resume_live = $plugin_state();
+					return array(
+						'schema'       => 'nadlan-private-release-retained-resume-contract/v1',
+						'run_id'       => $run_id,
+						'state_phase'  => $resume_phase,
+						'lock_owned'   => true,
+						'page_id'      => $state['page_id'],
+						'plugin'       => $resume_live,
+						'backup'       => array(
+							'version'    => $resume_backup_version,
+							'active'     => $state['before_active'],
+							'digest'     => $resume_backup_inventory['digest'],
+							'file_count' => $resume_backup_inventory['file_count'],
+							'bytes'      => $resume_backup_inventory['bytes'],
+						),
+						'upload'       => array(
+							'verified'       => true,
+							'next_index'     => $state['upload_next_index'],
+							'total_chunks'   => $state['upload_total_chunks'],
+							'received_bytes' => $state['upload_received_bytes'],
+							'temp_absent'    => true,
+							'temp_exists'    => false,
+							'temp_safe'      => true,
+							'temp_bytes'     => 0,
+						),
+						'canonical_storage_sha256' => (string) $state['canonical_post_storage_baseline']['contract_sha256'],
+					);
+				} catch ( Throwable $error ) {
+					return new WP_Error(
+						'nadlan_release_retained_resume_contract_failed',
+						'Retained resume contract verification failed.',
+						array( 'status' => 409 )
+					);
+				}
 			}
 
 			if ( 'recovery_status' === $action ) {
