@@ -23,10 +23,13 @@
     "no_write": "pass",
     "sandbox_catalog_dedupe": "pass",
     "password_secret_excluded": "pass",
-    "article_h1_and_disclosure_ownership": "pass"
+    "article_h1_and_disclosure_ownership": "pass",
+    "private_asset_proxy": "pass",
+    "private_asset_storage_hashes": "pass",
+    "direct_wrapper_execution_zero_bytes": "pass"
   },
   "hashes": {
-    "project_package_sha256": "3a063ab24c5f2e25863c519ed92812a6d61b829bfc606cc7aaa3ec16100db7f6",
-    "private_stage_sha256": "d06141c7a79edcf132aafd7ce62027524bc0e6b1314bbdb12f32bb8c84b85329"
+    "project_package_sha256": "953307147a236c663c98879b6ee6f137cbf8f787b7d4cd01a550e81b390eb3f5",
+    "private_stage_sha256": "e82b6aa003a9ce5edec9e08e7f09770c80bdd039af76a0a8f93ea41bb3b7cbf4"
   }
 }

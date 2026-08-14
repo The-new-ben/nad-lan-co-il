@@ -5,6 +5,7 @@ declare(strict_types=1);
 
 define( 'ABSPATH', __DIR__ . '/wordpress-stub/' );
 define( 'NADLAN_CONFIG_VERSION', 'fixture' );
+define( 'OBJECT', 'OBJECT' );
 
 final class WP_Error {
 	private $code;
@@ -51,18 +52,29 @@ $GLOBALS['nl_fixture_assets']     = array();
 $GLOBALS['nl_fixture_script_deps']= array();
 $GLOBALS['nl_fixture_style_deps'] = array();
 $GLOBALS['nl_fixture_can_edit']   = true;
+$GLOBALS['nl_fixture_password_required'] = false;
 
 function add_action( $hook, $callback, $priority = 10 ) { unset( $hook, $callback, $priority ); }
 function add_filter( $hook, $callback, $priority = 10 ) { unset( $hook, $callback, $priority ); }
+function add_rewrite_rule( $regex, $query, $after = 'bottom' ) { unset( $regex, $query, $after ); }
 function register_post_meta( $post_type, $key, $args ) { $GLOBALS['nl_fixture_registered'][ $key ] = array( $post_type, $args ); return true; }
 function current_user_can( $capability, $post_id = 0 ) { unset( $capability, $post_id ); return (bool) $GLOBALS['nl_fixture_can_edit']; }
 function absint( $value ) { return abs( (int) $value ); }
 function get_post( $post_id ) { return isset( $GLOBALS['nl_fixture_posts'][ (int) $post_id ] ) ? $GLOBALS['nl_fixture_posts'][ (int) $post_id ] : null; }
+function get_page_by_path( $slug, $output = OBJECT, $post_type = 'page' ) {
+	unset( $output );
+	foreach ( $GLOBALS['nl_fixture_posts'] as $post_id => $post ) {
+		if ( $post instanceof WP_Post && $post->post_name === $slug && get_post_type( $post_id ) === $post_type ) {
+			return $post;
+		}
+	}
+	return null;
+}
 function get_post_type( $post_id ) { return isset( $GLOBALS['nl_fixture_post_types'][ (int) $post_id ] ) ? $GLOBALS['nl_fixture_post_types'][ (int) $post_id ] : ''; }
 function get_post_meta( $post_id, $key, $single = false ) { unset( $single ); return isset( $GLOBALS['nl_fixture_meta'][ (int) $post_id ][ $key ] ) ? $GLOBALS['nl_fixture_meta'][ (int) $post_id ][ $key ] : ''; }
 function get_queried_object_id() { return (int) $GLOBALS['nl_fixture_queried']; }
 function get_the_title( $post_id ) { $post = get_post( $post_id ); return $post instanceof WP_Post ? $post->post_title : ''; }
-function post_password_required( $post_id = 0 ) { unset( $post_id ); return false; }
+function post_password_required( $post_id = 0 ) { unset( $post_id ); return (bool) $GLOBALS['nl_fixture_password_required']; }
 function is_singular( $post_type = '' ) { return 'nadlan_project' === $post_type; }
 function is_wp_error( $value ) { return $value instanceof WP_Error; }
 function sanitize_key( $value ) { return preg_replace( '/[^a-z0-9_\-]/', '', strtolower( (string) $value ) ); }
@@ -70,6 +82,7 @@ function sanitize_text_field( $value ) { return trim( strip_tags( (string) $valu
 function wp_strip_all_tags( $value ) { return strip_tags( (string) $value ); }
 function wp_kses( $html, $allowed ) { unset( $allowed ); return (string) $html; }
 function wp_parse_url( $url ) { return parse_url( (string) $url ); }
+function wp_unslash( $value ) { return (string) $value; }
 function home_url( $path = '' ) { return 'https://nad-lan.co.il' . ( '/' === $path ? '/' : '/' . ltrim( (string) $path, '/' ) ); }
 function wp_make_link_relative( $url ) { $parts = parse_url( (string) $url ); return isset( $parts['path'] ) ? $parts['path'] : ''; }
 function esc_url_raw( $url, $protocols = null ) { unset( $protocols ); return filter_var( (string) $url, FILTER_VALIDATE_URL ) ? (string) $url : ''; }
@@ -109,7 +122,7 @@ function fixture_error_code( $value ): string {
 }
 
 $post_id = 9001;
-$base    = 'https://nad-lan.co.il/wp-content/plugins/nadlan-config/assets/flagship-v3/projects/einstein-tower/';
+$base    = 'https://nad-lan.co.il/flagship-private-asset/einstein-tower-6885-32/';
 $experience_base = $base . 'experience/';
 $past    = '2026-01-01T00:00:00+03:00';
 $future  = '2030-01-01T00:00:00+03:00';
@@ -365,7 +378,7 @@ foreach ( array( '-facts', 'data-context-layer="current"', 'data-context-layer="
 fixture_assert( false !== strpos( $html, 'straight_line_to_tel_baruch_beach_polygon' ), 'runtime preserves the reviewed straight-line sea method' );
 fixture_assert( false !== strpos( $html, 'placement_basis' ) && false !== strpos( $html, 'placement_source_refs' ) && false !== strpos( $html, 'placement_confidence' ) && false !== strpos( $html, 'placement_ambiguity' ), 'runtime config retains the evidence-shaped illustrative placement contract' );
 fixture_assert( false !== strpos( $html, '"allowed_evidence_reference_ids":["IVS001","IVS002","IVS003","IVS004","IVS005","IVS008","IVS012"]' ), 'runtime trust allowlist is the exact frozen IVS union' );
-fixture_assert( false !== strpos( $html, '"allowed_asset_prefix":"/wp-content/plugins/nadlan-config/assets/flagship-v3/projects/einstein-tower/experience/"' ), 'runtime trust prefix is the exact plugin-local project experience path' );
+fixture_assert( false !== strpos( $html, '"allowed_asset_prefix":"/flagship-private-asset/einstein-tower-6885-32/experience/"' ), 'runtime trust prefix is the exact password-gated project experience route' );
 foreach ( array( '"zone":0.68,"exact_point":0.18', '"zone":0.63,"exact_point":0.2', '"zone":0.86,"exact_point":0.24' ) as $confidence_pair ) {
 	fixture_assert( false !== strpos( $html, $confidence_pair ), 'runtime preserves exact frozen confidence pair: ' . $confidence_pair );
 }
@@ -376,6 +389,52 @@ fixture_assert( isset( $GLOBALS['nl_fixture_assets']['nadlan-flagship-v3-playgro
 fixture_assert( array( 'nadlan-flagship-v3-viewer', 'nadlan-flagship-v3-playground' ) === $GLOBALS['nl_fixture_script_deps']['nadlan-flagship-v3'], 'bootstrap depends on both local runtimes in executable order' );
 fixture_assert( isset( $GLOBALS['nl_fixture_assets']['nadlan-flagship-v3-playground'] ) && isset( $GLOBALS['nl_fixture_assets']['nadlan-flagship-v3'] ), 'both canonical playground and host styles are enqueued' );
 fixture_assert( array( 'nadlan-flagship-v3-playground' ) === $GLOBALS['nl_fixture_style_deps']['nadlan-flagship-v3'], 'host style loads after the exact canonical playground style' );
+
+$_SERVER['REQUEST_METHOD'] = 'GET';
+$_SERVER['REQUEST_URI'] = '/flagship-private-asset/einstein-tower-6885-32/model-hd.glb';
+$_SERVER['QUERY_STRING'] = '';
+$private_request = nadlan_flagship_v3_private_asset_request();
+fixture_assert( ! is_wp_error( $private_request ) && 'einstein-tower-6885-32' === $private_request['project_contract_id'] && 'model-hd.glb' === $private_request['requested_name'], 'exact query-free private asset route parses' );
+$_SERVER['REQUEST_URI'] = '/flagship-private-asset/einstein-tower-6885-32/model-hd.glb?token=forbidden';
+$_SERVER['QUERY_STRING'] = 'token=forbidden';
+fixture_assert( 'private_asset_invalid_request' === fixture_error_code( nadlan_flagship_v3_private_asset_request() ), 'private asset route rejects every query string' );
+$_SERVER['REQUEST_URI'] = '/flagship-private-asset/einstein-tower-6885-32/%2e%2e/model-hd.glb';
+$_SERVER['QUERY_STRING'] = '';
+fixture_assert( 'private_asset_invalid_request' === fixture_error_code( nadlan_flagship_v3_private_asset_request() ), 'private asset route rejects encoded traversal' );
+$_SERVER['REQUEST_URI'] = '/flagship-private-asset/einstein-tower-6885-32/model-hd.glb';
+$_SERVER['QUERY_STRING'] = '';
+
+$private_contract = nadlan_flagship_v3_contract( 'einstein-tower-6885-32' );
+fixture_assert( isset( $private_contract['private_assets'] ) && 7 === count( $private_contract['private_assets'] ), 'registry owns exactly seven private asset descriptors' );
+foreach ( $private_contract['private_assets'] as $private_asset ) {
+	$descriptor = nadlan_flagship_v3_private_asset_descriptor( 'einstein-tower-6885-32', $private_asset['requested_name'] );
+	fixture_assert( ! is_wp_error( $descriptor ), 'authorized password session resolves descriptor: ' . $private_asset['requested_name'] );
+	fixture_assert( (int) $private_asset['bytes'] === (int) $descriptor['bytes']
+		&& hash_equals( (string) $private_asset['sha256'], (string) $descriptor['sha256'] )
+		&& (string) $private_asset['storage_file'] === (string) $descriptor['storage_file']
+		&& (string) $private_asset['mime'] === (string) $descriptor['mime'], 'authorized descriptor is exact: ' . $private_asset['requested_name'] );
+	$wrapper = file_get_contents( $descriptor['storage_path'] );
+	$prefix = nadlan_flagship_v3_private_asset_wrapper_prefix();
+	fixture_assert( is_string( $wrapper ) && 0 === strpos( $wrapper, $prefix ), 'wrapper prefix is exact: ' . $private_asset['requested_name'] );
+	$payload = substr( $wrapper, strlen( $prefix ) );
+	fixture_assert( strlen( $payload ) === (int) $private_asset['bytes'] && hash_equals( (string) $private_asset['sha256'], hash( 'sha256', $payload ) ), 'wrapper payload size/hash is exact: ' . $private_asset['requested_name'] );
+	$process = proc_open(
+		array( PHP_BINARY, $descriptor['storage_path'] ),
+		array( 1 => array( 'pipe', 'w' ), 2 => array( 'pipe', 'w' ) ),
+		$pipes
+	);
+	fixture_assert( is_resource( $process ), 'direct wrapper execution starts: ' . $private_asset['requested_name'] );
+	$direct_stdout = stream_get_contents( $pipes[1] );
+	$direct_stderr = stream_get_contents( $pipes[2] );
+	fclose( $pipes[1] );
+	fclose( $pipes[2] );
+	$direct_status = proc_close( $process );
+	fixture_assert( 0 === $direct_status && '' === $direct_stdout, 'direct wrapper execution returns zero payload bytes: ' . $private_asset['requested_name'] . ' ' . trim( (string) $direct_stderr ) );
+}
+$GLOBALS['nl_fixture_password_required'] = true;
+fixture_assert( 'private_asset_unauthorized' === fixture_error_code( nadlan_flagship_v3_private_asset_descriptor( 'einstein-tower-6885-32', 'model-hd.glb' ) ), 'anonymous/password-required asset request is rejected' );
+$GLOBALS['nl_fixture_password_required'] = false;
+fixture_assert( 'private_asset_not_found' === fixture_error_code( nadlan_flagship_v3_private_asset_descriptor( 'einstein-tower-6885-32', 'unregistered.glb' ) ), 'unregistered private asset is rejected' );
 
 $GLOBALS['nl_fixture_can_edit'] = false;
 $rest_response = new WP_REST_Response( array(
@@ -560,7 +619,11 @@ $experience_manifest_path = dirname( __DIR__ ) . '/assets/projects/einstein-towe
 fixture_assert( is_readable( $experience_manifest_path ), 'owner-approved experience manifest is available' );
 $experience_manifest = json_decode( (string) file_get_contents( $experience_manifest_path ), true, 64, JSON_THROW_ON_ERROR );
 $registry_contract = nadlan_flagship_v3_contract( 'einstein-tower-6885-32' );
-$plugin_project_path = dirname( __DIR__ ) . '/plugins/nadlan-config/assets/flagship-v3/projects/einstein-tower';
+$canonical_project_path = dirname( __DIR__ ) . '/assets/projects/einstein-tower';
+$private_by_name = array();
+foreach ( $registry_contract['private_assets'] as $private_asset ) {
+	$private_by_name[ $private_asset['requested_name'] ] = $private_asset;
+}
 $anchor_projection = static function ( array $anchor ): array {
 	return array(
 		'hotspot_id' => $anchor['hotspot_id'], 'tool_id' => $anchor['tool_id'], 'open_surface_tool_id' => $anchor['open_surface_tool_id'],
@@ -582,15 +645,23 @@ foreach ( $experience_manifest['assets'] as $manifest_asset ) {
 	fixture_assert( isset( $authorized_by_id[ $asset_id ] ), 'manifest asset is in the WordPress allow-list: ' . $asset_id );
 	fixture_assert( (string) $manifest_asset['scene_id'] === (string) $authorized_by_id[ $asset_id ]['scene_id'], 'manifest and WordPress scene IDs agree: ' . $asset_id );
 	fixture_assert( hash_equals( (string) $manifest_asset['sha256'], (string) $authorized_by_id[ $asset_id ]['fullscreen_sha256'] ), 'manifest and registry hashes agree: ' . $asset_id );
-	$local_asset_path = $plugin_project_path . '/experience/' . $manifest_asset['file'];
-	fixture_assert( is_readable( $local_asset_path ) && (int) $manifest_asset['bytes'] === filesize( $local_asset_path ) && hash_equals( (string) $manifest_asset['sha256'], hash_file( 'sha256', $local_asset_path ) ), 'plugin-local asset bytes match the reviewed manifest: ' . $asset_id );
+	$requested_name = 'experience/' . $manifest_asset['file'];
+	$canonical_asset_path = $canonical_project_path . '/' . $requested_name;
+	fixture_assert( isset( $private_by_name[ $requested_name ] )
+		&& is_readable( $canonical_asset_path )
+		&& (int) $manifest_asset['bytes'] === filesize( $canonical_asset_path )
+		&& hash_equals( (string) $manifest_asset['sha256'], hash_file( 'sha256', $canonical_asset_path ) )
+		&& hash_equals( (string) $manifest_asset['sha256'], (string) $private_by_name[ $requested_name ]['sha256'] ), 'canonical experience bytes and private descriptor match the reviewed manifest: ' . $asset_id );
 }
 
 foreach ( $registry_contract['authorized_representations'] as $authorized_representation ) {
-	$local_representation_path = $plugin_project_path . '/' . $authorized_representation['file'];
-	fixture_assert( is_readable( $local_representation_path )
-		&& (int) $authorized_representation['bytes'] === filesize( $local_representation_path )
-		&& hash_equals( (string) $authorized_representation['sha256'], hash_file( 'sha256', $local_representation_path ) ), 'plugin-local model/poster bytes match the frozen registry: ' . $authorized_representation['role'] );
+	$requested_name = $authorized_representation['file'];
+	$canonical_representation_path = $canonical_project_path . '/' . $requested_name;
+	fixture_assert( isset( $private_by_name[ $requested_name ] )
+		&& is_readable( $canonical_representation_path )
+		&& (int) $authorized_representation['bytes'] === filesize( $canonical_representation_path )
+		&& hash_equals( (string) $authorized_representation['sha256'], hash_file( 'sha256', $canonical_representation_path ) )
+		&& hash_equals( (string) $authorized_representation['sha256'], (string) $private_by_name[ $requested_name ]['sha256'] ), 'canonical model/poster bytes and private descriptor match the frozen registry: ' . $authorized_representation['role'] );
 }
 
 fwrite( STDOUT, "flagship-v3 PHP fixture: PASS\n" );

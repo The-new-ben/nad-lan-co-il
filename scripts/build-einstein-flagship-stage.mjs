@@ -4,10 +4,10 @@ import path from "node:path";
 import { fileURLToPath } from "node:url";
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
-const read = (relative) => fs.readFileSync(path.join(ROOT, relative), "utf8");
+const read = (relative) => fs.readFileSync(path.join(ROOT, relative), "utf8").replace(/\r\n?/g, "\n");
 const readJson = (relative) => JSON.parse(read(relative));
 const sha256 = (value) => crypto.createHash("sha256").update(value).digest("hex");
-const fileSha = (relative) => sha256(fs.readFileSync(path.join(ROOT, relative)));
+const fileSha = (relative) => sha256(Buffer.from(read(relative), "utf8"));
 const writeJson = (relative, value) => fs.writeFileSync(path.join(ROOT, relative), `${JSON.stringify(value, null, 2)}\n`, "utf8");
 
 function parseCsv(text) {
@@ -74,8 +74,8 @@ const contract = registryDoc.contracts.find((candidate) => candidate.project_con
 if (!contract) throw new Error("The Einstein flagship contract is absent from the trusted registry.");
 
 const PROJECT_CONTRACT_ID = "einstein-tower-6885-32";
-const PLUGIN_ASSET_BASE = "https://nad-lan.co.il/wp-content/plugins/nadlan-config/assets/flagship-v3/projects/einstein-tower/";
-const EXPERIENCE_ASSET_BASE = `${PLUGIN_ASSET_BASE}experience/`;
+const PRIVATE_ASSET_BASE = `https://nad-lan.co.il/flagship-private-asset/${PROJECT_CONTRACT_ID}/`;
+const EXPERIENCE_ASSET_BASE = `${PRIVATE_ASSET_BASE}experience/`;
 const SOURCE_EFFECTIVE_AT = Object.freeze({
   S001: "2026-08-14", S002: "2025-12-31", S004: "2020-04-01", S006: "2026-08-13",
   S009: "2026-08-14", S010: "2026-07-16", S012: "2026-08-14", S013: "2026-08-14",
@@ -131,7 +131,7 @@ const representations = {
   default_target: data.assets_3d.default_target,
   representations: contract.authorized_representations.map((asset) => ({
     role: asset.role,
-    url: `${PLUGIN_ASSET_BASE}${asset.file}`,
+    url: `${PRIVATE_ASSET_BASE}${asset.file}`,
     sha256: asset.sha256,
     representation_kind: "owner_approved_illustration",
     decision_grade: false,
@@ -346,8 +346,10 @@ const projectPackage = {
   owner_decision_ids: contract.owner_decision_ids,
   contracts: { identity, representations, visual, buyer_decision: buyer, experiences },
   asset_delivery: {
-    base_url: PLUGIN_ASSET_BASE,
+    transport: "password_gated_wordpress_proxy",
+    base_url: PRIVATE_ASSET_BASE,
     allowed_evidence_reference_ids: contract.illustrative_mapping_reference_ids,
+    private_assets: contract.private_assets,
     model_files: contract.authorized_representations,
     experience_files: contract.authorized_experience_assets,
   },
@@ -391,9 +393,9 @@ const meta = {
   project_contract_id: PROJECT_CONTRACT_ID,
   _nadlan_private_unit_journey: contract.sandbox.privacy_marker,
   _nadlan_flagship_source_post_id: 4867,
-  project_model_glb: `${PLUGIN_ASSET_BASE}model-hd.glb`,
-  project_model_lod_glb: `${PLUGIN_ASSET_BASE}model-lod.glb`,
-  project_model_poster: `${PLUGIN_ASSET_BASE}poster.webp`,
+  project_model_glb: `${PRIVATE_ASSET_BASE}model-hd.glb`,
+  project_model_lod_glb: `${PRIVATE_ASSET_BASE}model-lod.glb`,
+  project_model_poster: `${PRIVATE_ASSET_BASE}poster.webp`,
   project_3d_model_type: "gltf",
   project_3d_demo: "1",
   project_3d_units: "[]",

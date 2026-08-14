@@ -1,6 +1,8 @@
 # Einstein-derived flagship recipe draft
 
-Status: proposal only. No runtime, integration, project data, model asset or active agent skill is changed by this folder.
+Status: Einstein-derived repository playbook. The maintained Codex skill
+`nadlan-flagship-project-showroom` now implements this operating model; this folder keeps the full
+repository-specific architecture and acceptance detail.
 
 ## Proposed operating model
 
@@ -25,17 +27,23 @@ flowchart TD
   Q --> L["Canonical public release"]
 ```
 
-## Why the active recipe needs revision later
+## Active recipe reconciliation
 
-`skills/recipe-flagship-project-page.md` currently has three reproducibility defects:
+The earlier `skills/recipe-flagship-project-page.md` had three reproducibility defects:
 
 - it delegates to `docs/playbooks/flagship-showroom-recipe.md`, which is absent;
 - it points to `docs/playbooks/glb-gen-h-infinity.py`, which is absent;
 - it requires a `<1 MB, no normals, uint16` GLB, while Einstein's approved fidelity contract requires at least 30,000 real triangles and the first-party lighting shader depends on normals. Einstein HD is 2,419,992 bytes.
 
-It also says an unknown “stays unknown forever”. The durable rule should be: an unknown stays unknown until a newer, cited source changes its state through a reviewed replacement record.
+It also said an unknown “stays unknown forever”. The durable rule is now: an unknown stays unknown
+until a newer, cited source changes its state through a reviewed replacement record.
 
-The proposed full recipe is [flagship-showroom-recipe-v2-draft.md](flagship-showroom-recipe-v2-draft.md). The precise future skill delta, not applied here, is [proposed-skill-delta.md](proposed-skill-delta.md).
+The full repository playbook is
+[flagship-showroom-recipe-v2-draft.md](flagship-showroom-recipe-v2-draft.md). The applied skill
+change and traceability record is [proposed-skill-delta.md](proposed-skill-delta.md). The maintained
+agent skill was merged in `The-new-ben/agent-skills` at commit
+`e739ae451a9818174f9061a785482a066c2d03ac`; the repository-native entry was reconciled in this
+release.
 
 ## Einstein lessons promoted into the recipe
 

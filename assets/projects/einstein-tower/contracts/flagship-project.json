@@ -47,7 +47,7 @@
       "representations": [
         {
           "role": "model_hd",
-          "url": "https://nad-lan.co.il/wp-content/plugins/nadlan-config/assets/flagship-v3/projects/einstein-tower/model-hd.glb",
+          "url": "https://nad-lan.co.il/flagship-private-asset/einstein-tower-6885-32/model-hd.glb",
           "sha256": "71fcca8a0f58743b5f2257684c79957fbbff8e0169f5438bdc78231f27968a53",
           "representation_kind": "owner_approved_illustration",
           "decision_grade": false,
@@ -57,7 +57,7 @@
         },
         {
           "role": "model_lod",
-          "url": "https://nad-lan.co.il/wp-content/plugins/nadlan-config/assets/flagship-v3/projects/einstein-tower/model-lod.glb",
+          "url": "https://nad-lan.co.il/flagship-private-asset/einstein-tower-6885-32/model-lod.glb",
           "sha256": "485161974b6d343956d249d821c893b72a59678e8e8ee2810c90cee5f23079ce",
           "representation_kind": "owner_approved_illustration",
           "decision_grade": false,
@@ -67,7 +67,7 @@
         },
         {
           "role": "poster",
-          "url": "https://nad-lan.co.il/wp-content/plugins/nadlan-config/assets/flagship-v3/projects/einstein-tower/poster.webp",
+          "url": "https://nad-lan.co.il/flagship-private-asset/einstein-tower-6885-32/poster.webp",
           "sha256": "5588d09e28f95ac5d6655626027c3ad41f17c5c5c78153ecb2ba138821aa8c85",
           "representation_kind": "owner_approved_illustration",
           "decision_grade": false,
@@ -576,8 +576,8 @@
           "title": "חלל מגורים",
           "summary": "חלל מגורים ואירוח חזותי לבדיקת תנועה, אור, אחסון וקשר למרפסת.",
           "open_label": "להיכנס לחלל",
-          "preview_url": "https://nad-lan.co.il/wp-content/plugins/nadlan-config/assets/flagship-v3/projects/einstein-tower/experience/representative-apartment-living-v1.webp",
-          "fullscreen_url": "https://nad-lan.co.il/wp-content/plugins/nadlan-config/assets/flagship-v3/projects/einstein-tower/experience/representative-apartment-living-v1.webp",
+          "preview_url": "https://nad-lan.co.il/flagship-private-asset/einstein-tower-6885-32/experience/representative-apartment-living-v1.webp",
+          "fullscreen_url": "https://nad-lan.co.il/flagship-private-asset/einstein-tower-6885-32/experience/representative-apartment-living-v1.webp",
           "mapping_state": "owner_approved_illustrative_mapping",
           "mapping_owner_decision_id": "OWNER-2026-08-14-EINSTEIN-INTERIOR-FACILITIES-DEMO",
           "model_hotspot_group": "representative-interior-concept",
@@ -624,8 +624,8 @@
           "title": "חדר שינה ועבודה",
           "summary": "סצנת חדר חזותית לבדיקת פרטיות, אחסון, שולחן עבודה ותנועת בוקר.",
           "open_label": "להיכנס לחדר",
-          "preview_url": "https://nad-lan.co.il/wp-content/plugins/nadlan-config/assets/flagship-v3/projects/einstein-tower/experience/representative-apartment-bedroom-v1.webp",
-          "fullscreen_url": "https://nad-lan.co.il/wp-content/plugins/nadlan-config/assets/flagship-v3/projects/einstein-tower/experience/representative-apartment-bedroom-v1.webp",
+          "preview_url": "https://nad-lan.co.il/flagship-private-asset/einstein-tower-6885-32/experience/representative-apartment-bedroom-v1.webp",
+          "fullscreen_url": "https://nad-lan.co.il/flagship-private-asset/einstein-tower-6885-32/experience/representative-apartment-bedroom-v1.webp",
           "mapping_state": "owner_approved_illustrative_mapping",
           "mapping_owner_decision_id": "OWNER-2026-08-14-EINSTEIN-INTERIOR-FACILITIES-DEMO",
           "model_hotspot_group": "representative-interior-concept",
@@ -672,8 +672,8 @@
           "title": "כניסה ומרחב משותף",
           "summary": "סצנת כניסה משותפת חזותית לבדיקת הגעה, המתנה, נגישות וקצב המעבר לבניין.",
           "open_label": "לראות את הכניסה",
-          "preview_url": "https://nad-lan.co.il/wp-content/plugins/nadlan-config/assets/flagship-v3/projects/einstein-tower/experience/facility-arrival-gallery-v1.webp",
-          "fullscreen_url": "https://nad-lan.co.il/wp-content/plugins/nadlan-config/assets/flagship-v3/projects/einstein-tower/experience/facility-arrival-gallery-v1.webp",
+          "preview_url": "https://nad-lan.co.il/flagship-private-asset/einstein-tower-6885-32/experience/facility-arrival-gallery-v1.webp",
+          "fullscreen_url": "https://nad-lan.co.il/flagship-private-asset/einstein-tower-6885-32/experience/facility-arrival-gallery-v1.webp",
           "mapping_state": "owner_approved_illustrative_mapping",
           "mapping_owner_decision_id": "OWNER-2026-08-14-EINSTEIN-INTERIOR-FACILITIES-DEMO",
           "model_hotspot_group": "facility-arrival-concept",
@@ -722,8 +722,8 @@
           "title": "מרחב פתוח ונטוע",
           "summary": "סצנה חזותית של מרחב משותף נטוע לבדיקת צל, ישיבה, תנועה ושימוש לאורך היום.",
           "open_label": "לפתוח את המרחב",
-          "preview_url": "https://nad-lan.co.il/wp-content/plugins/nadlan-config/assets/flagship-v3/projects/einstein-tower/experience/facility-landscaped-terrace-v1.webp",
-          "fullscreen_url": "https://nad-lan.co.il/wp-content/plugins/nadlan-config/assets/flagship-v3/projects/einstein-tower/experience/facility-landscaped-terrace-v1.webp",
+          "preview_url": "https://nad-lan.co.il/flagship-private-asset/einstein-tower-6885-32/experience/facility-landscaped-terrace-v1.webp",
+          "fullscreen_url": "https://nad-lan.co.il/flagship-private-asset/einstein-tower-6885-32/experience/facility-landscaped-terrace-v1.webp",
           "mapping_state": "owner_approved_illustrative_mapping",
           "mapping_owner_decision_id": "OWNER-2026-08-14-EINSTEIN-INTERIOR-FACILITIES-DEMO",
           "model_hotspot_group": "facility-landscaped-open-space-concept",
@@ -769,7 +769,8 @@
     }
   },
   "asset_delivery": {
-    "base_url": "https://nad-lan.co.il/wp-content/plugins/nadlan-config/assets/flagship-v3/projects/einstein-tower/",
+    "transport": "password_gated_wordpress_proxy",
+    "base_url": "https://nad-lan.co.il/flagship-private-asset/einstein-tower-6885-32/",
     "allowed_evidence_reference_ids": [
       "IVS001",
       "IVS002",
@@ -778,6 +779,57 @@
       "IVS005",
       "IVS008",
       "IVS012"
+    ],
+    "private_assets": [
+      {
+        "requested_name": "model-hd.glb",
+        "storage_file": "assets/flagship-v3/private-assets/einstein-tower/model-hd.glb.asset.php",
+        "bytes": 2420492,
+        "sha256": "71fcca8a0f58743b5f2257684c79957fbbff8e0169f5438bdc78231f27968a53",
+        "mime": "model/gltf-binary"
+      },
+      {
+        "requested_name": "model-lod.glb",
+        "storage_file": "assets/flagship-v3/private-assets/einstein-tower/model-lod.glb.asset.php",
+        "bytes": 32244,
+        "sha256": "485161974b6d343956d249d821c893b72a59678e8e8ee2810c90cee5f23079ce",
+        "mime": "model/gltf-binary"
+      },
+      {
+        "requested_name": "poster.webp",
+        "storage_file": "assets/flagship-v3/private-assets/einstein-tower/poster.webp.asset.php",
+        "bytes": 23996,
+        "sha256": "5588d09e28f95ac5d6655626027c3ad41f17c5c5c78153ecb2ba138821aa8c85",
+        "mime": "image/webp"
+      },
+      {
+        "requested_name": "experience/representative-apartment-living-v1.webp",
+        "storage_file": "assets/flagship-v3/private-assets/einstein-tower/experience/representative-apartment-living-v1.webp.asset.php",
+        "bytes": 103748,
+        "sha256": "1ad84512b5cb938450b5124c199ba09d00697da605ef46214434cef80649319b",
+        "mime": "image/webp"
+      },
+      {
+        "requested_name": "experience/representative-apartment-bedroom-v1.webp",
+        "storage_file": "assets/flagship-v3/private-assets/einstein-tower/experience/representative-apartment-bedroom-v1.webp.asset.php",
+        "bytes": 79384,
+        "sha256": "1c4d71c6b1308867a2a9c9d1d03eec947ba6f85b9800fa1f88ae5028acf06aea",
+        "mime": "image/webp"
+      },
+      {
+        "requested_name": "experience/facility-arrival-gallery-v1.webp",
+        "storage_file": "assets/flagship-v3/private-assets/einstein-tower/experience/facility-arrival-gallery-v1.webp.asset.php",
+        "bytes": 170750,
+        "sha256": "cc50acc2570612165bf20442849ac9fcdf00658c0835f2130d6824d8b2c50e9a",
+        "mime": "image/webp"
+      },
+      {
+        "requested_name": "experience/facility-landscaped-terrace-v1.webp",
+        "storage_file": "assets/flagship-v3/private-assets/einstein-tower/experience/facility-landscaped-terrace-v1.webp.asset.php",
+        "bytes": 264926,
+        "sha256": "717a33f6deb118e3d60539152147a7d1c791e84b69e77861f6086ae246cc8e0b",
+        "mime": "image/webp"
+      }
     ],
     "model_files": [
       {
@@ -885,7 +937,7 @@
     },
     "trusted_registry": {
       "path": "plugins/nadlan-config/assets/flagship-v3/contracts/registry.json",
-      "sha256": "eaece9af0ceb41918726666d6448c0c4b59f33aaec16f9280451cf0921113a1f"
+      "sha256": "278ccbdc9545e10dfd74f89447a8e28b74de5531ddba154a66e7a178ded41cd4"
     },
     "article": {
       "path": "docs/wp-drafts/einstein-tower-he-content.html",

@@ -1,26 +1,31 @@
-# Proposed active-skill delta - not applied
+# Applied active-skill delta and traceability record
 
-Target for a future reviewed edit: `skills/recipe-flagship-project-page.md`.
+Applied targets:
 
-This document describes the minimum change needed after the Einstein work is accepted. It deliberately does not edit the skill now.
+- maintained agent skill: `skills/nadlan-flagship-project-showroom/SKILL.md` in
+  `The-new-ben/agent-skills`, merged at `e739ae451a9818174f9061a785482a066c2d03ac`;
+- repository entry: `skills/recipe-flagship-project-page.md` in this release.
+
+The sections below record the design delta that was applied so future reviewers can trace each
+Einstein lesson into the reusable factory.
 
 ## 1. Repair the entry point
 
-Current problem:
+Original problem:
 
 - the skill calls `docs/playbooks/flagship-showroom-recipe.md` canonical, but that file does not exist;
 - it also names a missing H Infinity generator.
 
-Proposed change:
+Applied change:
 
-- create one reviewed canonical playbook from `flagship-showroom-recipe-v2-draft.md` in a later task;
-- point the skill to that existing file only after it lands;
+- retain the reviewed repository playbook in `flagship-showroom-recipe-v2-draft.md`;
+- point the repository skill to that existing file;
 - point model generation to a real shared generator interface or archetype generator registry, not an absent project-specific script;
 - add a preflight that fails if referenced playbook/scripts are missing.
 
 ## 2. Replace the “shape” summary
 
-The future short skill should memorize this sequence:
+The short skill now memorizes this sequence:
 
 1. Identity/collision contract.
 2. Source and contradiction register.
@@ -37,7 +42,7 @@ The future short skill should memorize this sequence:
 
 Current text: `<1 MB, no normals, uint16`.
 
-Proposed rule:
+Applied rule:
 
 - flagship HD follows the recorded fidelity contract; default high-detail floor is 30,000 meaningful rendered triangles when required;
 - normals are required/generated when the viewer's lighting path uses them;
@@ -76,7 +81,7 @@ Every tool declares L0 teaser, L1 local simulation, L2 connected tool or L3 deci
 
 ## 6. Add shared-engine/no-copy rule
 
-Proposed red line:
+Applied red line:
 
 > New flagships provide a governed data/asset package to one shared versioned engine. Do not copy PHP, JS or CSS runtime code into a project folder. A needed project-specific behavior becomes a reviewed shared provider or remains out of scope.
 
@@ -93,7 +98,7 @@ Retain the current beam freeze. Add:
 
 ## 8. Add protected-model and visual-invitation law
 
-The skill summary should require:
+The skill summary requires:
 
 - protected stage height at 320/390/landscape/desktop;
 - no overlay or sticky control over the model;
@@ -113,7 +118,7 @@ The skill summary should require:
 
 ## 10. Replace the QA summary
 
-Minimum skill gates should link to the full playbook and name:
+Minimum skill gates link to the full playbook and name:
 
 - fixture/offline tests plus authenticated private WordPress readback;
 - 320 x 568, 390 x 844, 568 x 320, 768, 1280 x 800 and 1440;
@@ -124,8 +129,8 @@ Minimum skill gates should link to the full playbook and name:
 - HE first and complete HE/EN/FR/RU/AR siblings before reciprocal hreflang;
 - fleet regression and rollback proof.
 
-## 11. Proposed concise future skill wording
+## 11. Applied concise skill wording
 
-When the canonical playbook exists, the entry skill can remain short:
+The repository entry remains short while the maintained agent skill carries routed reference detail:
 
 > Build flagships through the shared versioned showroom engine and one governed per-project package. Start with canonical identity and claim-level evidence, select the project archetype, design the buyer decision path, then produce reviewed HD/LOD/poster, mapping and experience assets. Illustration is allowed only in the illustration lane; exact model coordinates never imply real-world precision. Zero inventory is valid. View/Interior/Design/Comments declare their real capability level. The model remains unobstructed and directly operable on mobile. Private WordPress readback, full responsive/accessibility/performance proof, fleet regression, rollback and explicit release are mandatory. Never copy a runtime or create a second canonical/lead path.

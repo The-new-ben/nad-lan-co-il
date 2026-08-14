@@ -29,7 +29,8 @@ The remaining product gaps are substantial:
 - Hebrew is the only staged language;
 - real-world model orientation and all three concept-hotspot positions remain uncalibrated;
 - the first-party WebGL viewer renders flat base-color materials and does not consume image textures;
-- the documentation entry skill points to two canonical playbook files that do not exist.
+- the former recipe drift is closed: the repository entry now points to the maintained playbook,
+  and the reusable `nadlan-flagship-project-showroom` skill is merged in the agent-skills repository.
 
 The release decision is therefore: keep Einstein private until the acceptance gates in [evidence-and-acceptance-gates.md](evidence-and-acceptance-gates.md) pass. The exact fleet and competitor comparison is in [side-by-side-gap-matrix.md](side-by-side-gap-matrix.md).
 
@@ -78,4 +79,4 @@ Existing competitor findings were used only where they name an observed capabili
 
 - [side-by-side-gap-matrix.md](side-by-side-gap-matrix.md) - project-by-project, cross-cutting and competitor capability gaps.
 - [evidence-and-acceptance-gates.md](evidence-and-acceptance-gates.md) - exact source/symbol ledger, current status and binary release gates.
-- [../../plans/einstein-flagship-recipe-draft/README.md](../../plans/einstein-flagship-recipe-draft/README.md) - proposed reusable architecture and skill delta. It does not edit the active skill.
+- [../../plans/einstein-flagship-recipe-draft/README.md](../../plans/einstein-flagship-recipe-draft/README.md) - reusable architecture, applied skill delta and traceability.

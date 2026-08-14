@@ -289,7 +289,7 @@ if ( ! function_exists( 'nadlan_flagship_v3_asset_url' ) ) {
 		$marker = $is_experience_role && isset( $contract['experience_asset_path_marker'] )
 			? (string) $contract['experience_asset_path_marker']
 			: ( isset( $contract['asset_path_marker'] ) ? (string) $contract['asset_path_marker'] : '' );
-		if ( '' === $marker || false === strpos( $path, $marker ) ) {
+		if ( '' === $marker || 0 !== strpos( $path, $marker ) ) {
 			return '';
 		}
 		$extensions = array(
@@ -307,6 +307,254 @@ if ( ! function_exists( 'nadlan_flagship_v3_asset_url' ) ) {
 		return is_string( $clean ) ? $clean : '';
 	}
 }
+
+if ( ! function_exists( 'nadlan_flagship_v3_private_asset_wrapper_prefix' ) ) {
+	/** Exact deterministic prefix emitted by scripts/build-flagship-private-assets.mjs. */
+	function nadlan_flagship_v3_private_asset_wrapper_prefix() {
+		return "<?php\n"
+			. "http_response_code( 404 );\n"
+			. "header( 'Cache-Control: private, no-store, no-cache, max-age=0, must-revalidate' );\n"
+			. "header( 'X-Robots-Tag: noindex, nofollow, noarchive' );\n"
+			. "header( 'X-Content-Type-Options: nosniff' );\n"
+			. "__halt_compiler();\n";
+	}
+}
+
+if ( ! function_exists( 'nadlan_flagship_v3_private_asset_registry_entry' ) ) {
+	/** Resolve one exact, registry-owned asset name; paths are never inferred. */
+	function nadlan_flagship_v3_private_asset_registry_entry( $contract, $requested_name ) {
+		$requested_name = (string) $requested_name;
+		if ( ! is_array( $contract )
+			|| ! preg_match( '#^[a-z0-9][a-z0-9._/-]*$#', $requested_name )
+			|| false !== strpos( $requested_name, '//' )
+			|| in_array( '..', explode( '/', $requested_name ), true ) ) {
+			return array();
+		}
+		foreach ( isset( $contract['private_assets'] ) && is_array( $contract['private_assets'] ) ? $contract['private_assets'] : array() as $asset ) {
+			if ( ! is_array( $asset ) || ! isset( $asset['requested_name'] )
+				|| ! hash_equals( (string) $asset['requested_name'], $requested_name ) ) {
+				continue;
+			}
+			$storage_file = isset( $asset['storage_file'] ) ? (string) $asset['storage_file'] : '';
+			$bytes        = isset( $asset['bytes'] ) ? (int) $asset['bytes'] : 0;
+			$sha256       = isset( $asset['sha256'] ) ? strtolower( (string) $asset['sha256'] ) : '';
+			$mime         = isset( $asset['mime'] ) ? (string) $asset['mime'] : '';
+			if ( 0 !== strpos( $storage_file, 'assets/flagship-v3/private-assets/' )
+				|| ! preg_match( '#^[a-z0-9][a-z0-9._/-]*\.asset\.php$#', $storage_file )
+				|| false !== strpos( $storage_file, '//' )
+				|| in_array( '..', explode( '/', $storage_file ), true )
+				|| $bytes <= 0 || ! preg_match( '/^[a-f0-9]{64}$/', $sha256 )
+				|| ! in_array( $mime, array( 'model/gltf-binary', 'image/webp' ), true ) ) {
+				return array();
+			}
+			return array(
+				'requested_name' => $requested_name,
+				'storage_file'   => $storage_file,
+				'bytes'          => $bytes,
+				'sha256'         => $sha256,
+				'mime'           => $mime,
+			);
+		}
+		return array();
+	}
+}
+
+if ( ! function_exists( 'nadlan_flagship_v3_private_asset_stage_post' ) ) {
+	/** Find the one reviewed private stage without falling back to a canonical post. */
+	function nadlan_flagship_v3_private_asset_stage_post( $contract ) {
+		$slug = isset( $contract['sandbox']['exact_slug'] ) ? (string) $contract['sandbox']['exact_slug'] : '';
+		if ( '' === $slug || ! preg_match( '/^[a-z0-9-]+$/', $slug ) ) {
+			return null;
+		}
+		$post = get_page_by_path( $slug, OBJECT, 'nadlan_project' );
+		if ( ! is_object( $post ) || empty( $post->ID )
+			|| 'publish' !== ( isset( $post->post_status ) ? (string) $post->post_status : '' )
+			|| ! hash_equals( $slug, isset( $post->post_name ) ? (string) $post->post_name : '' )
+			|| '' === ( isset( $post->post_password ) ? (string) $post->post_password : '' ) ) {
+			return null;
+		}
+		return $post;
+	}
+}
+
+if ( ! function_exists( 'nadlan_flagship_v3_private_asset_descriptor' ) ) {
+	/**
+	 * Authorize and verify one payload before streaming. The complete payload is
+	 * hashed first so a corrupt wrapper can never produce a partial response.
+	 */
+	function nadlan_flagship_v3_private_asset_descriptor( $project_contract_id, $requested_name ) {
+		$project_contract_id = (string) $project_contract_id;
+		$contract            = nadlan_flagship_v3_contract( $project_contract_id );
+		if ( empty( $contract ) || ! empty( $contract['public_release_enabled'] ) ) {
+			return nadlan_flagship_v3_error( 'private_asset_not_found' );
+		}
+		$post = nadlan_flagship_v3_private_asset_stage_post( $contract );
+		if ( ! is_object( $post ) ) {
+			return nadlan_flagship_v3_error( 'private_asset_stage_missing' );
+		}
+		$post_id = (int) $post->ID;
+		if ( ! nadlan_flagship_v3_is_selected( $post_id )
+			|| ! hash_equals( $project_contract_id, (string) get_post_meta( $post_id, 'project_contract_id', true ) )
+			|| ! hash_equals( (string) $contract['sandbox']['privacy_marker'], (string) get_post_meta( $post_id, '_nadlan_private_unit_journey', true ) )
+			|| (int) $contract['canonical_post_id'] !== (int) get_post_meta( $post_id, '_nadlan_flagship_source_post_id', true )
+			|| '' !== (string) get_post_meta( $post_id, 'source_id', true )
+			|| post_password_required( $post_id ) ) {
+			return nadlan_flagship_v3_error( 'private_asset_unauthorized' );
+		}
+		$validated = nadlan_flagship_v3_validate_post( $post_id );
+		if ( is_wp_error( $validated ) || ! isset( $validated['contract']['project_contract_id'] )
+			|| ! hash_equals( $project_contract_id, (string) $validated['contract']['project_contract_id'] ) ) {
+			return nadlan_flagship_v3_error( 'private_asset_stage_invalid' );
+		}
+
+		$asset = nadlan_flagship_v3_private_asset_registry_entry( $contract, $requested_name );
+		if ( empty( $asset ) ) {
+			return nadlan_flagship_v3_error( 'private_asset_not_found' );
+		}
+		$plugin_root  = realpath( dirname( __DIR__ ) );
+		$storage_root = is_string( $plugin_root ) ? realpath( $plugin_root . '/assets/flagship-v3/private-assets' ) : false;
+		$storage_path = is_string( $plugin_root ) ? realpath( $plugin_root . '/' . $asset['storage_file'] ) : false;
+		$root_prefix  = is_string( $storage_root ) ? trailingslashit( str_replace( '\\', '/', $storage_root ) ) : '';
+		$clean_path   = is_string( $storage_path ) ? str_replace( '\\', '/', $storage_path ) : '';
+		if ( '' === $root_prefix || '' === $clean_path || 0 !== strpos( $clean_path, $root_prefix ) || ! is_readable( $storage_path ) ) {
+			return nadlan_flagship_v3_error( 'private_asset_storage_missing' );
+		}
+
+		$prefix      = nadlan_flagship_v3_private_asset_wrapper_prefix();
+		$prefix_size = strlen( $prefix );
+		$file_size   = filesize( $storage_path );
+		if ( false === $file_size || $prefix_size + (int) $asset['bytes'] !== (int) $file_size ) {
+			return nadlan_flagship_v3_error( 'private_asset_size_mismatch' );
+		}
+		$handle = fopen( $storage_path, 'rb' );
+		if ( false === $handle ) {
+			return nadlan_flagship_v3_error( 'private_asset_storage_unreadable' );
+		}
+		$stored_prefix = fread( $handle, $prefix_size );
+		if ( ! is_string( $stored_prefix ) || ! hash_equals( $prefix, $stored_prefix ) ) {
+			fclose( $handle );
+			return nadlan_flagship_v3_error( 'private_asset_wrapper_mismatch' );
+		}
+		$hash_context = hash_init( 'sha256' );
+		$payload_size = 0;
+		$payload      = '';
+		while ( ! feof( $handle ) ) {
+			$chunk = fread( $handle, 1048576 );
+			if ( false === $chunk ) {
+				fclose( $handle );
+				return nadlan_flagship_v3_error( 'private_asset_storage_unreadable' );
+			}
+			if ( '' === $chunk ) {
+				continue;
+			}
+			$payload_size += strlen( $chunk );
+			hash_update( $hash_context, $chunk );
+			$payload .= $chunk;
+		}
+		fclose( $handle );
+		$payload_sha256 = hash_final( $hash_context );
+		if ( (int) $asset['bytes'] !== $payload_size || ! hash_equals( (string) $asset['sha256'], $payload_sha256 ) ) {
+			return nadlan_flagship_v3_error( 'private_asset_hash_mismatch' );
+		}
+
+		return array_merge(
+			$asset,
+			array(
+				'post_id'        => $post_id,
+				'storage_path'   => $storage_path,
+				'payload_offset' => $prefix_size,
+				'payload'        => $payload,
+			)
+		);
+	}
+}
+
+if ( ! function_exists( 'nadlan_flagship_v3_private_asset_rewrite' ) ) {
+	function nadlan_flagship_v3_private_asset_rewrite() {
+		add_rewrite_rule(
+			'^flagship-private-asset/([a-z0-9-]+)/([a-z0-9._/-]+)$',
+			'index.php?nadlan_flagship_asset_contract=$matches[1]&nadlan_flagship_asset_name=$matches[2]',
+			'top'
+		);
+	}
+}
+add_action( 'init', 'nadlan_flagship_v3_private_asset_rewrite', 11 );
+
+if ( ! function_exists( 'nadlan_flagship_v3_private_asset_query_vars' ) ) {
+	function nadlan_flagship_v3_private_asset_query_vars( $vars ) {
+		$vars[] = 'nadlan_flagship_asset_contract';
+		$vars[] = 'nadlan_flagship_asset_name';
+		return array_values( array_unique( $vars ) );
+	}
+}
+add_filter( 'query_vars', 'nadlan_flagship_v3_private_asset_query_vars' );
+
+if ( ! function_exists( 'nadlan_flagship_v3_private_asset_request' ) ) {
+	/** Parse the exact query-free route independently of rewrite-rule flush state. */
+	function nadlan_flagship_v3_private_asset_request() {
+		$request_uri = isset( $_SERVER['REQUEST_URI'] ) ? (string) wp_unslash( $_SERVER['REQUEST_URI'] ) : '';
+		$parts       = wp_parse_url( $request_uri );
+		$path        = is_array( $parts ) && isset( $parts['path'] ) ? (string) $parts['path'] : '';
+		$marker      = '/flagship-private-asset/';
+		if ( 0 !== strpos( $path, $marker ) ) {
+			return array();
+		}
+		$query_string = isset( $_SERVER['QUERY_STRING'] ) ? (string) $_SERVER['QUERY_STRING'] : '';
+		$method       = isset( $_SERVER['REQUEST_METHOD'] ) ? strtoupper( (string) $_SERVER['REQUEST_METHOD'] ) : 'GET';
+		if ( '' !== $query_string || isset( $parts['query'] ) || ! in_array( $method, array( 'GET', 'HEAD' ), true )
+			|| false !== strpos( $path, '%' ) || false !== strpos( $path, '\\' ) ) {
+			return nadlan_flagship_v3_error( 'private_asset_invalid_request' );
+		}
+		$route = substr( $path, strlen( $marker ) );
+		$bits  = explode( '/', $route, 2 );
+		if ( 2 !== count( $bits ) || ! preg_match( '/^[a-z0-9-]+$/', $bits[0] )
+			|| ! preg_match( '#^[a-z0-9][a-z0-9._/-]*$#', $bits[1] )
+			|| false !== strpos( $bits[1], '//' ) || in_array( '..', explode( '/', $bits[1] ), true ) ) {
+			return nadlan_flagship_v3_error( 'private_asset_invalid_request' );
+		}
+		return array( 'project_contract_id' => $bits[0], 'requested_name' => $bits[1], 'method' => $method );
+	}
+}
+
+if ( ! function_exists( 'nadlan_flagship_v3_private_asset_template' ) ) {
+	/** Terminal binary response; every rejected request receives the same 404. */
+	function nadlan_flagship_v3_private_asset_template() {
+		$request = nadlan_flagship_v3_private_asset_request();
+		if ( empty( $request ) ) {
+			return;
+		}
+		if ( is_wp_error( $request ) ) {
+			nadlan_flagship_v3_fail_closed();
+		}
+		$asset = nadlan_flagship_v3_private_asset_descriptor( $request['project_contract_id'], $request['requested_name'] );
+		if ( is_wp_error( $asset ) ) {
+			nadlan_flagship_v3_fail_closed();
+		}
+		while ( ob_get_level() > 0 ) {
+			ob_end_clean();
+		}
+		if ( function_exists( 'status_header' ) ) {
+			status_header( 200 );
+		}
+		nocache_headers();
+		header( 'Content-Type: ' . $asset['mime'], true );
+		header( 'Content-Length: ' . (string) $asset['bytes'], true );
+		header( 'Cache-Control: private, no-store, no-cache, max-age=0, must-revalidate', true );
+		header( 'X-Robots-Tag: noindex, nofollow, noarchive', true );
+		header( 'X-Content-Type-Options: nosniff', true );
+		header( 'Referrer-Policy: no-referrer', true );
+		if ( 'HEAD' !== $request['method'] ) {
+			$offset = 0;
+			while ( $offset < (int) $asset['bytes'] ) {
+				$chunk = substr( $asset['payload'], $offset, 1048576 );
+				$offset += strlen( $chunk );
+				echo $chunk; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- exact pre-verified binary payload.
+			}
+		}
+		exit;
+	}
+}
+add_action( 'template_redirect', 'nadlan_flagship_v3_private_asset_template', -100 );
 
 if ( ! function_exists( 'nadlan_flagship_v3_validate_inventory' ) ) {
 	function nadlan_flagship_v3_validate_inventory( $identity, $post_id ) {

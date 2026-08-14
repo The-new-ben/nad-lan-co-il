@@ -15,6 +15,7 @@ from __future__ import annotations
 
 import argparse
 import base64
+import copy
 import hashlib
 import json
 import os
@@ -29,7 +30,7 @@ import zipfile
 from datetime import datetime, timezone
 from pathlib import Path, PurePosixPath
 from typing import Any, Iterable
-from urllib.parse import urlparse
+from urllib.parse import urlencode, urlparse
 
 import requests
 
@@ -50,6 +51,932 @@ MAX_ENTRIES = 4000
 UPLOAD_CHUNK_BYTES = 128 * 1024
 MAX_UPLOAD_CHUNKS = 256
 MARKER_RE = re.compile(r"__[A-Z0-9_]+__")
+EINSTEIN_STAGE_SCHEMA = "nadlan-wordpress-private-stage-request/v1"
+EINSTEIN_STAGE_SLUG = "sandbox-einstein-tower-flagship-v3-review"
+EINSTEIN_CANONICAL_POST_ID = 4867
+EINSTEIN_PROJECT_CONTRACT_ID = "einstein-tower-6885-32"
+EINSTEIN_PRIVATE_MARKER = "private-unit-journey-v2"
+EINSTEIN_ACCEPTANCE_SCHEMA = "nadlan-einstein-flagship-live-acceptance/v2"
+EINSTEIN_ACCEPTANCE_VIEWPORTS = ("320x568", "390x844", "568x320", "1280x800")
+EINSTEIN_ACCEPTANCE_ACCESSIBILITY_VIEWPORTS = ("390x844", "568x320")
+EINSTEIN_ACCEPTANCE_EVIDENCE_COUNTS = {
+    "keyboardViewports": 2,
+    "keyboardToolChecks": 8,
+    "keyboardEscapeRestores": 8,
+    "browserHistoryTransitions": 2,
+    "textResizeViewports": 2,
+    "textResizeDialogChecks": 8,
+}
+EINSTEIN_ACCEPTANCE_ASSETS = (
+    "model-hd.glb",
+    "model-lod.glb",
+    "poster.webp",
+    "experience/representative-apartment-living-v1.webp",
+    "experience/representative-apartment-bedroom-v1.webp",
+    "experience/facility-arrival-gallery-v1.webp",
+    "experience/facility-landscaped-terrace-v1.webp",
+)
+
+
+class EinsteinStageRecoveryBlocked(RuntimeError):
+    """A stage write may have landed, but exact rollback scope cannot be proved."""
+
+
+def sha256_bytes(value: bytes) -> str:
+    return hashlib.sha256(value).hexdigest()
+
+
+def exact_json_bytes(value: Any) -> bytes:
+    return json.dumps(value, ensure_ascii=False, separators=(",", ":")).encode("utf-8")
+
+
+def validate_einstein_stage_request(path: Path) -> dict[str, Any]:
+    """Load the one governed Einstein stage payload and fail closed on scope drift."""
+    expected_path = REPO_ROOT / "docs" / "wp-drafts" / "einstein-tower-flagship-v3-private-stage.json"
+    resolved = path.expanduser().resolve(strict=True)
+    if os.path.normcase(str(resolved)) != os.path.normcase(str(expected_path.resolve(strict=True))):
+        raise ValueError("--einstein-stage-request must be the exact governed WordPress draft")
+    payload = json.loads(resolved.read_text(encoding="utf-8"))
+    if not isinstance(payload, dict) or payload.get("schema") != EINSTEIN_STAGE_SCHEMA:
+        raise ValueError("Einstein stage request schema is invalid")
+    lookup = payload.get("lookup") if isinstance(payload.get("lookup"), dict) else {}
+    body = payload.get("body") if isinstance(payload.get("body"), dict) else {}
+    meta = body.get("meta") if isinstance(body.get("meta"), dict) else {}
+    expected = payload.get("expected") if isinstance(payload.get("expected"), dict) else {}
+    secret_contract = payload.get("secret_injection")
+    password_contract = (
+        secret_contract.get("post_password") if isinstance(secret_contract, dict) else {}
+    )
+    if (
+        payload.get("operation") != "create_or_replace_exact_private_sandbox"
+        or payload.get("endpoint") != "https://nad-lan.co.il/wp-json/wp/v2/nadlan_project"
+        or
+        lookup.get("post_type") != "nadlan_project"
+        or lookup.get("exact_slug") != EINSTEIN_STAGE_SLUG
+        or int(lookup.get("canonical_source_post_id") or 0) != EINSTEIN_CANONICAL_POST_ID
+        or lookup.get("duplicate_catalog_source_id_forbidden") is not True
+        or body.get("slug") != EINSTEIN_STAGE_SLUG
+        or body.get("status") != "publish"
+        or not isinstance(body.get("title"), str)
+        or not isinstance(body.get("excerpt"), str)
+        or not isinstance(body.get("content"), str)
+        or not body["content"]
+        or meta.get("source_id") != ""
+        or meta.get("_nadlan_private_unit_journey") != EINSTEIN_PRIVATE_MARKER
+        or int(meta.get("_nadlan_flagship_source_post_id") or 0) != EINSTEIN_CANONICAL_POST_ID
+        or meta.get("project_contract_id") != EINSTEIN_PROJECT_CONTRACT_ID
+        or expected.get("public_visibility") != "password_protected_only"
+        or expected.get("anonymous_rest_presence") is not False
+        or expected.get("collection_presence") is not False
+        or not isinstance(password_contract, dict)
+        or password_contract.get("environment_variable") != "SANDBOX_POST_PASSWORD"
+        or password_contract.get("inject_at") != "body.password"
+        or password_contract.get("required") is not True
+        or password_contract.get("serialized_value_forbidden") is not True
+    ):
+        raise ValueError("Einstein stage request violates the exact private-stage contract")
+    forbidden_body_keys = {"id", "date", "author", "link", "guid"}.intersection(body)
+    if forbidden_body_keys:
+        raise ValueError("Einstein stage body contains server-owned fields")
+    if "password" in body or "post_password" in exact_json_bytes(body).decode("utf-8"):
+        raise ValueError("Einstein stage request must not serialize a password")
+    contract_hashes = payload.get("contract_hashes")
+    if not isinstance(contract_hashes, dict):
+        raise ValueError("Einstein stage request lacks contract hashes")
+    hash_map = {
+        "article_sha256": body["content"],
+        "identity_sha256": meta.get("project_identity_contract_json"),
+        "representations_sha256": meta.get("project_representation_registry_json"),
+        "visual_sha256": meta.get("project_visual_playground_json"),
+        "buyer_decision_sha256": meta.get("project_buyer_decision_contract_json"),
+        "experiences_sha256": meta.get("project_experience_registry_json"),
+    }
+    for hash_name, source_value in hash_map.items():
+        expected_hash = str(contract_hashes.get(hash_name) or "")
+        if not isinstance(source_value, str) or not re.fullmatch(r"[a-f0-9]{64}", expected_hash):
+            raise ValueError(f"Einstein stage hash contract is incomplete: {hash_name}")
+        if not secrets.compare_digest(sha256_text(source_value), expected_hash):
+            raise ValueError(f"Einstein stage hash mismatch: {hash_name}")
+    project_package = (
+        REPO_ROOT / "assets" / "projects" / "einstein-tower" / "contracts" / "flagship-project.json"
+    )
+    package_hash = str(contract_hashes.get("project_package_sha256") or "")
+    if (
+        not project_package.is_file()
+        or not re.fullmatch(r"[a-f0-9]{64}", package_hash)
+        or not secrets.compare_digest(sha256_bytes(project_package.read_bytes()), package_hash)
+    ):
+        raise ValueError("Einstein stage project-package hash is stale")
+    return payload
+
+
+def validate_protected_main_artifact(
+    commit_sha: str, artifact_path: Path, expected_version: str, expected_sha256: str
+) -> dict[str, Any]:
+    """Prove local bytes are the exact artifact at current origin/main."""
+    if not re.fullmatch(r"[a-f0-9]{40}", commit_sha):
+        raise ValueError("--protected-main-commit must be exactly 40 lowercase hex characters")
+    try:
+        origin_main = subprocess.run(
+            ["git", "rev-parse", "origin/main"],
+            cwd=str(REPO_ROOT),
+            capture_output=True,
+            text=True,
+            encoding="utf-8",
+            errors="strict",
+            timeout=30,
+            check=True,
+        ).stdout.strip()
+    except (OSError, subprocess.SubprocessError) as error:
+        raise ValueError("Could not resolve protected origin/main") from error
+    if not secrets.compare_digest(origin_main, commit_sha):
+        raise ValueError("--protected-main-commit must equal the current origin/main commit")
+    repository_path = f"plugin-dist/nadlan-config-{expected_version}.zip"
+    try:
+        committed = subprocess.run(
+            ["git", "show", f"{commit_sha}:{repository_path}"],
+            cwd=str(REPO_ROOT),
+            capture_output=True,
+            timeout=120,
+            check=True,
+        ).stdout
+    except (OSError, subprocess.SubprocessError) as error:
+        raise ValueError("Protected-main release artifact is missing") from error
+    committed_sha256 = sha256_bytes(committed)
+    local_sha256 = sha256_bytes(artifact_path.read_bytes())
+    if not (
+        secrets.compare_digest(committed_sha256, expected_sha256)
+        and secrets.compare_digest(local_sha256, expected_sha256)
+        and secrets.compare_digest(committed, artifact_path.read_bytes())
+    ):
+        raise ValueError("Canonical local artifact differs from protected origin/main bytes")
+    try:
+        manifest_raw = subprocess.run(
+            ["git", "show", f"{commit_sha}:plugin-dist/nadlan-config.json"],
+            cwd=str(REPO_ROOT),
+            capture_output=True,
+            timeout=30,
+            check=True,
+        ).stdout
+        plugin_main_raw = subprocess.run(
+            ["git", "show", f"{commit_sha}:{PLUGIN_FILE.replace(PLUGIN_ROOT + '/', 'plugins/' + PLUGIN_ROOT + '/', 1)}"],
+            cwd=str(REPO_ROOT),
+            capture_output=True,
+            timeout=30,
+            check=True,
+        ).stdout
+        manifest = json.loads(manifest_raw.decode("utf-8"))
+        plugin_main = plugin_main_raw.decode("utf-8")
+        with zipfile.ZipFile(artifact_path, "r") as archive:
+            archive_main = archive.read(PLUGIN_FILE).decode("utf-8")
+    except (OSError, UnicodeError, ValueError, KeyError, zipfile.BadZipFile, subprocess.SubprocessError) as error:
+        raise ValueError("Protected-main version surfaces could not be inspected") from error
+    expected_download = (
+        "https://raw.githubusercontent.com/The-new-ben/nad-lan-co-il/main/"
+        + repository_path
+    )
+    header_pattern = re.compile(
+        rf"^\s*\*\s*Version:\s*{re.escape(expected_version)}\s*$", re.MULTILINE
+    )
+    constant_pattern = re.compile(
+        rf"define\(\s*'NADLAN_CONFIG_VERSION'\s*,\s*'{re.escape(expected_version)}'\s*\)"
+    )
+    if (
+        not isinstance(manifest, dict)
+        or manifest.get("version") != expected_version
+        or manifest.get("download_url") != expected_download
+        or not header_pattern.search(plugin_main)
+        or not constant_pattern.search(plugin_main)
+        or not header_pattern.search(archive_main)
+        or not constant_pattern.search(archive_main)
+    ):
+        raise ValueError("Protected-main manifest, source, archive, and expected version disagree")
+    return {
+        "source_commit_sha": commit_sha,
+        "repository_path": repository_path,
+        "sha256": committed_sha256,
+        "bytes": len(committed),
+        "local_equals_protected_main": True,
+        "version_surfaces_exact": True,
+        "manifest_download_exact": True,
+    }
+
+
+def _raw_field(record: dict[str, Any], name: str) -> str:
+    value = record.get(name)
+    if isinstance(value, dict) and isinstance(value.get("raw"), str):
+        return value["raw"]
+    return value if isinstance(value, str) else ""
+
+
+def wordpress_post_snapshot(record: dict[str, Any]) -> dict[str, Any]:
+    """Select only mutable fields the stage transaction may touch."""
+    meta = record.get("meta") if isinstance(record.get("meta"), dict) else {}
+    return {
+        "id": int(record.get("id") or 0),
+        "slug": str(record.get("slug") or ""),
+        "status": str(record.get("status") or ""),
+        "title": _raw_field(record, "title"),
+        "content": _raw_field(record, "content"),
+        "excerpt": _raw_field(record, "excerpt"),
+        "password": str(record.get("password") or ""),
+        "meta": copy.deepcopy(meta),
+    }
+
+
+def wordpress_post_restore_body(
+    snapshot: dict[str, Any], applied_meta_keys: Iterable[str] | None = None
+) -> dict[str, Any]:
+    meta_keys = list(applied_meta_keys or snapshot["meta"].keys())
+    restore_meta = {
+        key: copy.deepcopy(snapshot["meta"][key]) if key in snapshot["meta"] else None
+        for key in meta_keys
+    }
+    return {
+        "title": snapshot["title"],
+        "slug": snapshot["slug"],
+        "status": snapshot["status"],
+        "content": snapshot["content"],
+        "excerpt": snapshot["excerpt"],
+        "password": snapshot["password"],
+        "meta": restore_meta,
+    }
+
+
+def get_authenticated_post(client: "WordpressClient", post_id: int) -> dict[str, Any]:
+    response = client.request(
+        "GET", f"wp/v2/nadlan_project/{post_id}?context=edit", timeout=60
+    )
+    return require_response(response, f"Authenticated project {post_id} read")
+
+
+def exact_stage_matches(client: "WordpressClient", slug: str) -> list[dict[str, Any]]:
+    query = urlencode(
+        {
+            "slug": slug,
+            "context": "edit",
+            "status": "any",
+            "per_page": 100,
+        }
+    )
+    response = client.request("GET", f"wp/v2/nadlan_project?{query}", timeout=60)
+    if response.status_code < 200 or response.status_code >= 300:
+        require_response(response, "Exact Einstein stage lookup")
+    payload = response.json()
+    if not isinstance(payload, list):
+        raise RuntimeError("Exact Einstein stage lookup did not return a collection")
+    return [row for row in payload if isinstance(row, dict) and row.get("slug") == slug]
+
+
+def assert_owned_einstein_stage(record: dict[str, Any]) -> None:
+    post_id = int(record.get("id") or 0)
+    meta = record.get("meta") if isinstance(record.get("meta"), dict) else {}
+    if (
+        post_id < 1
+        or post_id == EINSTEIN_CANONICAL_POST_ID
+        or record.get("slug") != EINSTEIN_STAGE_SLUG
+        or meta.get("_nadlan_private_unit_journey") != EINSTEIN_PRIVATE_MARKER
+        or int(meta.get("_nadlan_flagship_source_post_id") or 0) != EINSTEIN_CANONICAL_POST_ID
+        or meta.get("project_contract_id") != EINSTEIN_PROJECT_CONTRACT_ID
+        or meta.get("source_id") != ""
+    ):
+        raise RuntimeError("Existing slug is not the exact owned Einstein private stage")
+
+
+def assert_einstein_stage_readback(
+    record: dict[str, Any], request_payload: dict[str, Any], post_password: str
+) -> dict[str, Any]:
+    body = request_payload["body"]
+    expected_meta = body["meta"]
+    observed = wordpress_post_snapshot(record)
+    if (
+        observed["id"] < 1
+        or observed["id"] == EINSTEIN_CANONICAL_POST_ID
+        or observed["slug"] != EINSTEIN_STAGE_SLUG
+        or observed["status"] != "publish"
+        or observed["title"] != body["title"]
+        or observed["content"] != body["content"]
+        or observed["excerpt"] != body["excerpt"]
+        or observed["password"] != post_password
+    ):
+        raise RuntimeError("Einstein stage authenticated readback differs from the request")
+    for key, expected_value in expected_meta.items():
+        if key not in observed["meta"] or observed["meta"][key] != expected_value:
+            raise RuntimeError(f"Einstein stage meta readback mismatch: {key}")
+    hashes = request_payload["contract_hashes"]
+    content_hash = sha256_text(observed["content"])
+    meta_hashes = {
+        "identity_sha256": sha256_text(str(observed["meta"]["project_identity_contract_json"])),
+        "representations_sha256": sha256_text(
+            str(observed["meta"]["project_representation_registry_json"])
+        ),
+        "visual_sha256": sha256_text(str(observed["meta"]["project_visual_playground_json"])),
+        "buyer_decision_sha256": sha256_text(
+            str(observed["meta"]["project_buyer_decision_contract_json"])
+        ),
+        "experiences_sha256": sha256_text(
+            str(observed["meta"]["project_experience_registry_json"])
+        ),
+    }
+    if not secrets.compare_digest(content_hash, str(hashes["article_sha256"])):
+        raise RuntimeError("Einstein stage content hash failed authenticated readback")
+    for name, digest in meta_hashes.items():
+        if not secrets.compare_digest(digest, str(hashes[name])):
+            raise RuntimeError(f"Einstein stage contract hash failed readback: {name}")
+    return {
+        "post_id": observed["id"],
+        "slug": observed["slug"],
+        "status": observed["status"],
+        "password_present": bool(observed["password"]),
+        "source_id_blank": observed["meta"].get("source_id") == "",
+        "private_marker_exact": observed["meta"].get("_nadlan_private_unit_journey")
+        == EINSTEIN_PRIVATE_MARKER,
+        "source_post_crosswalk_exact": int(
+            observed["meta"].get("_nadlan_flagship_source_post_id") or 0
+        )
+        == EINSTEIN_CANONICAL_POST_ID,
+        "project_contract_exact": observed["meta"].get("project_contract_id")
+        == EINSTEIN_PROJECT_CONTRACT_ID,
+        "article_sha256": content_hash,
+        "meta_hashes": meta_hashes,
+    }
+
+
+def write_einstein_stage(
+    client: "WordpressClient", request_payload: dict[str, Any], post_password: str
+) -> dict[str, Any]:
+    """Apply one exact REST mutation and retain an in-memory rollback snapshot."""
+    matches = exact_stage_matches(client, EINSTEIN_STAGE_SLUG)
+    if len(matches) > 1:
+        raise RuntimeError("Einstein private-stage slug is ambiguous")
+    before_public = wordpress_post_snapshot(
+        get_authenticated_post(client, EINSTEIN_CANONICAL_POST_ID)
+    )
+    before_public_hash = sha256_bytes(exact_json_bytes(before_public))
+    prior_snapshot: dict[str, Any] | None = None
+    target_id: int | None = None
+    if matches:
+        assert_owned_einstein_stage(matches[0])
+        target_id = int(matches[0]["id"])
+        prior_snapshot = wordpress_post_snapshot(get_authenticated_post(client, target_id))
+
+    body = copy.deepcopy(request_payload["body"])
+    body["password"] = post_password
+    route = "wp/v2/nadlan_project" if target_id is None else f"wp/v2/nadlan_project/{target_id}"
+    transaction: dict[str, Any] = {
+        "post_id": int(target_id or 0),
+        "created_new": prior_snapshot is None,
+        "prior_snapshot": prior_snapshot,
+        "applied_meta_keys": sorted(body["meta"]),
+        "canonical_public_snapshot": before_public,
+        "canonical_public_sha256": before_public_hash,
+    }
+    try:
+        response = client.request("POST", route, json_body=body, timeout=180)
+        written = require_response(response, "Exact Einstein private-stage write")
+        written_id = int(written.get("id") or 0)
+        if written_id < 1 or written_id == EINSTEIN_CANONICAL_POST_ID:
+            raise RuntimeError("Einstein stage write returned an unsafe post ID")
+        transaction["post_id"] = written_id
+        readback = get_authenticated_post(client, written_id)
+        proof = assert_einstein_stage_readback(readback, request_payload, post_password)
+        link = str(readback.get("link") or written.get("link") or "")
+        parsed_link = urlparse(link)
+        if (
+            parsed_link.scheme != "https"
+            or parsed_link.hostname != "nad-lan.co.il"
+            or parsed_link.username
+            or parsed_link.password
+            or parsed_link.fragment
+            or EINSTEIN_STAGE_SLUG not in parsed_link.path
+        ):
+            raise RuntimeError("Einstein stage readback returned an unsafe URL")
+        after_public = wordpress_post_snapshot(
+            get_authenticated_post(client, EINSTEIN_CANONICAL_POST_ID)
+        )
+        after_public_hash = sha256_bytes(exact_json_bytes(after_public))
+        if not secrets.compare_digest(before_public_hash, after_public_hash):
+            raise RuntimeError("Canonical public Einstein post 4867 changed during private staging")
+        transaction.update({"page_url": link, "readback": proof})
+        return transaction
+    except Exception as error:
+        try:
+            if prior_snapshot is None:
+                reconciled = exact_stage_matches(client, EINSTEIN_STAGE_SLUG)
+                if len(reconciled) > 1:
+                    raise EinsteinStageRecoveryBlocked(
+                        "Response-lost create produced an ambiguous exact slug"
+                    )
+                if reconciled:
+                    assert_owned_einstein_stage(reconciled[0])
+                    transaction["post_id"] = int(reconciled[0]["id"])
+                    rollback_einstein_stage(client, transaction)
+                else:
+                    raise EinsteinStageRecoveryBlocked(
+                        "Response-lost create has no exact-slug match; recovery scope is unproved"
+                    )
+            else:
+                transaction["post_id"] = int(prior_snapshot["id"])
+                rollback_einstein_stage(client, transaction)
+        except Exception as rollback_error:
+            raise EinsteinStageRecoveryBlocked(
+                "Einstein stage write became indeterminate and exact rollback is unproved"
+            ) from rollback_error
+        raise error
+
+
+def rollback_einstein_stage(client: "WordpressClient", transaction: dict[str, Any]) -> dict[str, Any]:
+    post_id = int(transaction["post_id"])
+    prior = transaction.get("prior_snapshot")
+    if prior is None:
+        matches = exact_stage_matches(client, EINSTEIN_STAGE_SLUG)
+        if not matches:
+            direct = client.request(
+                "GET", f"wp/v2/nadlan_project/{post_id}?context=edit", timeout=60
+            )
+            if direct.status_code == 404:
+                stage_proof = {"created_post_deleted": True, "already_absent": True}
+                current_public = wordpress_post_snapshot(
+                    get_authenticated_post(client, EINSTEIN_CANONICAL_POST_ID)
+                )
+                current_public_hash = sha256_bytes(exact_json_bytes(current_public))
+                if not secrets.compare_digest(
+                    current_public_hash, str(transaction["canonical_public_sha256"])
+                ):
+                    raise RuntimeError("Canonical public post differs after Einstein stage rollback")
+                return {
+                    **stage_proof,
+                    "canonical_public_4867_unchanged": True,
+                    "canonical_public_sha256": current_public_hash,
+                }
+            raise EinsteinStageRecoveryBlocked(
+                "Created-stage rollback found the post ID outside the exact slug"
+            )
+        if len(matches) != 1 or int(matches[0].get("id") or 0) != post_id:
+            raise EinsteinStageRecoveryBlocked(
+                "Created-stage rollback found an ambiguous or changed exact slug"
+            )
+        assert_owned_einstein_stage(matches[0])
+        response = client.request(
+            "DELETE", f"wp/v2/nadlan_project/{post_id}?force=true", timeout=120
+        )
+        payload = require_response(response, "Einstein stage creation rollback")
+        if payload.get("deleted") is not True:
+            raise RuntimeError("New Einstein stage deletion was not confirmed")
+        direct = client.request("GET", f"wp/v2/nadlan_project/{post_id}?context=edit", timeout=60)
+        if direct.status_code != 404 or exact_stage_matches(client, EINSTEIN_STAGE_SLUG):
+            raise RuntimeError("New Einstein stage remains after rollback")
+        stage_proof: dict[str, Any] = {"created_post_deleted": True}
+    else:
+        if int(prior.get("id") or 0) != post_id or post_id == EINSTEIN_CANONICAL_POST_ID:
+            raise EinsteinStageRecoveryBlocked("Existing-stage rollback identity is invalid")
+        current = get_authenticated_post(client, post_id)
+        if current.get("slug") != EINSTEIN_STAGE_SLUG:
+            raise EinsteinStageRecoveryBlocked("Existing-stage slug changed after write attempt")
+        restore_body = wordpress_post_restore_body(
+            prior, transaction.get("applied_meta_keys", [])
+        )
+        response = client.request(
+            "POST",
+            f"wp/v2/nadlan_project/{post_id}",
+            json_body=restore_body,
+            timeout=180,
+        )
+        require_response(response, "Einstein stage update rollback")
+        restored = wordpress_post_snapshot(get_authenticated_post(client, post_id))
+        if restored != prior:
+            raise RuntimeError("Existing Einstein stage rollback did not restore exact mutable fields")
+        stage_proof = {
+            "existing_post_restored": True,
+            "restored_snapshot_sha256": sha256_bytes(exact_json_bytes(restored)),
+        }
+    current_public = wordpress_post_snapshot(
+        get_authenticated_post(client, EINSTEIN_CANONICAL_POST_ID)
+    )
+    current_public_hash = sha256_bytes(exact_json_bytes(current_public))
+    if not secrets.compare_digest(
+        current_public_hash, str(transaction["canonical_public_sha256"])
+    ):
+        raise RuntimeError("Canonical public post differs after Einstein stage rollback")
+    return {
+        **stage_proof,
+        "canonical_public_4867_unchanged": True,
+        "canonical_public_sha256": current_public_hash,
+    }
+
+
+def anonymous_einstein_probes(
+    base_url: str,
+    page_url: str,
+    post_id: int,
+    request_payload: dict[str, Any],
+    post_password: str,
+) -> dict[str, Any]:
+    """Prove an anonymous visitor can discover only the password challenge."""
+    session = requests.Session()
+    session.headers.update(
+        {"User-Agent": "NadLan-Einstein-Private-Stage-Probe/1.0", "Accept": "*/*"}
+    )
+    page = session.get(page_url, params={"cb": secrets.token_hex(6)}, timeout=60)
+    html = page.text
+    robots = page.headers.get("X-Robots-Tag", "").lower()
+    cache_control = page.headers.get("Cache-Control", "").lower()
+    link_header = page.headers.get("Link", "").lower()
+    password_form = "post_password" in html and (
+        "action=postpass" in html or "wp-pass.php" in html
+    )
+    hidden_markers = (
+        EINSTEIN_PROJECT_CONTRACT_ID,
+        "NADLAN_SHOWROOM",
+        "nlfs-article",
+        "flagship-private-asset",
+        request_payload["expected"]["global_demo_label"],
+        post_password,
+    )
+    if not (
+        page.status_code == 200
+        and password_form
+        and all(marker not in html for marker in hidden_markers)
+        and all(token in robots for token in ("noindex", "nofollow", "noarchive"))
+        and "private" in cache_control
+        and "no-store" in cache_control
+        and "api.w.org" not in link_header
+        and "oembed" not in link_header
+        and "rel=\"canonical\"" not in html.lower()
+        and "application/json+oembed" not in html.lower()
+        and "application/json\"" not in html.lower()
+    ):
+        raise RuntimeError("Anonymous Einstein password-gate or discovery-link proof failed")
+
+    direct = session.get(
+        f"{base_url}/wp-json/wp/v2/nadlan_project/{post_id}", timeout=60
+    )
+    if direct.status_code != 404:
+        raise RuntimeError("Anonymous exact Einstein REST ID is enumerable")
+
+    slug_response = session.get(
+        f"{base_url}/wp-json/wp/v2/nadlan_project",
+        params={"slug": EINSTEIN_STAGE_SLUG},
+        timeout=60,
+    )
+    slug_payload: Any = None
+    try:
+        slug_payload = slug_response.json()
+    except ValueError:
+        pass
+    if not (
+        (slug_response.status_code == 200 and slug_payload == [])
+        or slug_response.status_code == 404
+    ):
+        raise RuntimeError("Anonymous Einstein REST slug is enumerable")
+
+    search_response = session.get(
+        f"{base_url}/wp-json/wp/v2/search",
+        params={"search": "EINSTEIN TOWER", "subtype": "nadlan_project", "per_page": 100},
+        timeout=60,
+    )
+    try:
+        search_payload = search_response.json()
+    except ValueError:
+        search_payload = None
+    if search_response.status_code != 200 or not isinstance(search_payload, list):
+        raise RuntimeError("Anonymous WordPress search probe was unavailable")
+    if any(
+        isinstance(row, dict)
+        and (
+            int(row.get("id") or 0) == post_id
+            or EINSTEIN_STAGE_SLUG in str(row.get("url") or "")
+        )
+        for row in search_payload
+    ):
+        raise RuntimeError("Anonymous WordPress search reveals the Einstein private stage")
+
+    oembed = session.get(
+        f"{base_url}/wp-json/oembed/1.0/embed", params={"url": page_url}, timeout=60
+    )
+    embed = session.get(page_url.rstrip("/") + "/embed/", timeout=60, allow_redirects=False)
+    feed = session.get(page_url.rstrip("/") + "/feed/", timeout=60, allow_redirects=False)
+    if oembed.status_code != 404 or embed.status_code != 404 or feed.status_code != 404:
+        raise RuntimeError("Anonymous oEmbed, embed, or feed surface reveals stage existence")
+
+    sitemap = session.get(
+        f"{base_url}/wp-sitemap-posts-nadlan_project-1.xml",
+        params={"cb": secrets.token_hex(6)},
+        timeout=60,
+    )
+    if sitemap.status_code == 200 and (
+        EINSTEIN_STAGE_SLUG in sitemap.text or f">{post_id}<" in sitemap.text
+    ):
+        raise RuntimeError("Einstein private stage appears in the public project sitemap")
+
+    meta = request_payload["body"]["meta"]
+    asset_urls = {
+        str(meta["project_model_glb"]),
+        str(meta["project_model_lod_glb"]),
+        str(meta["project_model_poster"]),
+    }
+    experiences = json.loads(str(meta["project_experience_registry_json"]))
+    for scene in experiences.get("scenes", []):
+        if isinstance(scene, dict):
+            for key in ("preview_url", "fullscreen_url"):
+                if scene.get(key):
+                    asset_urls.add(str(scene[key]))
+    asset_probes: list[dict[str, Any]] = []
+    for asset_url in sorted(asset_urls):
+        parsed = urlparse(asset_url)
+        if parsed.scheme != "https" or parsed.hostname != "nad-lan.co.il":
+            raise RuntimeError("Einstein private asset URL escaped the exact site origin")
+        response = session.get(asset_url, timeout=60, allow_redirects=False)
+        asset_cache = response.headers.get("Cache-Control", "").lower()
+        asset_robots = response.headers.get("X-Robots-Tag", "").lower()
+        if (
+            response.status_code != 404
+            or len(response.content) > 64 * 1024
+            or "no-store" not in asset_cache
+            or "noindex" not in asset_robots
+        ):
+            raise RuntimeError("Anonymous Einstein private asset route returned usable bytes")
+        asset_probes.append(
+            {
+                "path": parsed.path,
+                "http_status": response.status_code,
+                "response_bytes": len(response.content),
+            }
+        )
+    return {
+        "page": {
+            "http_status": page.status_code,
+            "password_form": password_form,
+            "body_hidden": True,
+            "password_not_reflected": True,
+            "x_robots_tag": page.headers.get("X-Robots-Tag", ""),
+            "cache_control": page.headers.get("Cache-Control", ""),
+            "discovery_links_absent": True,
+        },
+        "rest_id_status": direct.status_code,
+        "rest_slug_hidden": True,
+        "search_hidden": True,
+        "oembed_status": oembed.status_code,
+        "embed_status": embed.status_code,
+        "feed_status": feed.status_code,
+        "sitemap_status": sitemap.status_code,
+        "sitemap_hidden": EINSTEIN_STAGE_SLUG not in sitemap.text,
+        "private_assets": asset_probes,
+    }
+
+
+def assert_tree_has_no_secret_bytes(root: Path, secret_values: Iterable[str]) -> dict[str, Any]:
+    secrets_bytes = [value.encode("utf-8") for value in secret_values if value]
+    checked_files = 0
+    checked_bytes = 0
+    if not root.is_dir():
+        raise RuntimeError("Browser acceptance evidence directory is missing")
+    for candidate in root.rglob("*"):
+        if not candidate.is_file() or candidate.is_symlink():
+            continue
+        checked_files += 1
+        with candidate.open("rb") as stream:
+            overlap = b""
+            while True:
+                chunk = stream.read(1024 * 1024)
+                if not chunk:
+                    break
+                checked_bytes += len(chunk)
+                probe = overlap + chunk
+                if any(secret_value in probe for secret_value in secrets_bytes):
+                    try:
+                        candidate.unlink()
+                    except OSError:
+                        pass
+                    raise RuntimeError("Browser evidence contained a secret and was removed")
+                overlap = probe[-256:]
+    return {
+        "files_checked": checked_files,
+        "bytes_checked": checked_bytes,
+        "secret_bytes_absent": True,
+    }
+
+
+def acceptance_summary_proof(
+    payload: dict[str, Any], *, einstein_mode: bool
+) -> dict[str, Any]:
+    """Validate the exact runner schema; preserve the legacy summary contract."""
+    if not einstein_mode:
+        hard_failures = payload.get("hardFailures")
+        warnings = payload.get("warnings")
+        if isinstance(hard_failures, list) and hard_failures:
+            raise RuntimeError("Legacy browser acceptance reported hard failures")
+        return {
+            "schema": str(payload.get("schema") or "legacy"),
+            "passed": True,
+            "hard_failure_count": len(hard_failures)
+            if isinstance(hard_failures, list)
+            else None,
+            "warning_count": len(warnings) if isinstance(warnings, list) else None,
+        }
+
+    totals = payload.get("totals") if isinstance(payload.get("totals"), dict) else {}
+    failures = payload.get("failures")
+    warnings = payload.get("warnings")
+    matrix = payload.get("matrix")
+    assets = payload.get("assets")
+    privacy_gates = ("anonymous", "discovery", "health", "unlocked")
+    behavior_gates = ("browserBack", "keyboard", "browserHistory", "textResize200")
+    gates = privacy_gates + behavior_gates
+    evidence_counts = (
+        payload.get("evidenceCounts")
+        if isinstance(payload.get("evidenceCounts"), dict)
+        else {}
+    )
+    evidence_expected = evidence_counts.get("expected")
+    evidence_observed = evidence_counts.get("observed")
+    keyboard = payload.get("keyboard")
+    keyboard_viewports = (
+        keyboard.get("viewports") if isinstance(keyboard, dict) else None
+    )
+    keyboard_rows_exact = isinstance(keyboard_viewports, list) and all(
+        isinstance(row, dict) and isinstance(row.get("tools"), list)
+        for row in keyboard_viewports
+    )
+    keyboard_viewport_names = (
+        [str(row.get("viewport") or "") for row in keyboard_viewports]
+        if keyboard_rows_exact
+        else []
+    )
+    keyboard_tools = (
+        [
+            tool
+            for row in keyboard_viewports
+            for tool in row.get("tools", [])
+            if isinstance(tool, dict)
+        ]
+        if keyboard_rows_exact
+        else []
+    )
+    browser_history = payload.get("browserHistory")
+    history_transitions = (
+        browser_history.get("transitions")
+        if isinstance(browser_history, dict)
+        else None
+    )
+    text_resize = payload.get("textResize200")
+    text_resize_viewports = (
+        text_resize.get("viewports") if isinstance(text_resize, dict) else None
+    )
+    text_resize_rows_exact = isinstance(text_resize_viewports, list) and all(
+        isinstance(row, dict) and isinstance(row.get("dialogs"), list)
+        for row in text_resize_viewports
+    )
+    text_resize_viewport_names = (
+        [str(row.get("viewport") or "") for row in text_resize_viewports]
+        if text_resize_rows_exact
+        else []
+    )
+    text_resize_dialogs = (
+        [
+            dialog
+            for row in text_resize_viewports
+            for dialog in row.get("dialogs", [])
+            if isinstance(dialog, dict)
+        ]
+        if text_resize_rows_exact
+        else []
+    )
+    matrix_names = (
+        [str(row.get("viewport") or "") for row in matrix if isinstance(row, dict)]
+        if isinstance(matrix, list)
+        else []
+    )
+    asset_names = (
+        [str(row.get("name") or "") for row in assets if isinstance(row, dict)]
+        if isinstance(assets, list)
+        else []
+    )
+
+    def exact_integer(value: Any, expected: int) -> bool:
+        return (
+            isinstance(value, int)
+            and not isinstance(value, bool)
+            and value == expected
+        )
+
+    def exact_evidence_map(value: Any) -> bool:
+        return (
+            isinstance(value, dict)
+            and set(value) == set(EINSTEIN_ACCEPTANCE_EVIDENCE_COUNTS)
+            and all(
+                exact_integer(value[key], expected)
+                for key, expected in EINSTEIN_ACCEPTANCE_EVIDENCE_COUNTS.items()
+            )
+        )
+
+    exact = (
+        payload.get("schema") == EINSTEIN_ACCEPTANCE_SCHEMA
+        and totals.get("passed") is True
+        and exact_integer(totals.get("failures"), 0)
+        and exact_integer(
+            totals.get("viewports"), len(EINSTEIN_ACCEPTANCE_VIEWPORTS)
+        )
+        and exact_integer(
+            totals.get("assetsObserved"), len(EINSTEIN_ACCEPTANCE_ASSETS)
+        )
+        and exact_integer(
+            totals.get("keyboardToolChecks"),
+            EINSTEIN_ACCEPTANCE_EVIDENCE_COUNTS["keyboardToolChecks"],
+        )
+        and exact_integer(
+            totals.get("textResizeDialogChecks"),
+            EINSTEIN_ACCEPTANCE_EVIDENCE_COUNTS["textResizeDialogChecks"],
+        )
+        and exact_integer(
+            totals.get("historyTransitions"),
+            EINSTEIN_ACCEPTANCE_EVIDENCE_COUNTS["browserHistoryTransitions"],
+        )
+        and isinstance(failures, list)
+        and len(failures) == 0
+        and isinstance(matrix, list)
+        and len(matrix) == len(EINSTEIN_ACCEPTANCE_VIEWPORTS)
+        and tuple(matrix_names) == EINSTEIN_ACCEPTANCE_VIEWPORTS
+        and all(isinstance(row, dict) and row.get("passed") is True for row in matrix)
+        and isinstance(assets, list)
+        and len(assets) == len(EINSTEIN_ACCEPTANCE_ASSETS)
+        and tuple(sorted(asset_names)) == tuple(sorted(EINSTEIN_ACCEPTANCE_ASSETS))
+        and all(
+            isinstance(payload.get(gate), dict) and payload[gate].get("passed") is True
+            for gate in gates
+        )
+        and evidence_counts.get("matched") is True
+        and exact_evidence_map(evidence_expected)
+        and exact_evidence_map(evidence_observed)
+        and evidence_expected == evidence_observed
+        and keyboard_rows_exact
+        and len(keyboard_viewports)
+        == EINSTEIN_ACCEPTANCE_EVIDENCE_COUNTS["keyboardViewports"]
+        and tuple(keyboard_viewport_names)
+        == EINSTEIN_ACCEPTANCE_ACCESSIBILITY_VIEWPORTS
+        and all(
+            row.get("passed") is True
+            and isinstance(row.get("tools"), list)
+            and len(row["tools"]) == 4
+            for row in keyboard_viewports
+        )
+        and len(keyboard_tools)
+        == EINSTEIN_ACCEPTANCE_EVIDENCE_COUNTS["keyboardToolChecks"]
+        and all(
+            tool.get("passed") is True and tool.get("escapeClosed") is True
+            for tool in keyboard_tools
+        )
+        and sum(tool.get("escapeClosed") is True for tool in keyboard_tools)
+        == EINSTEIN_ACCEPTANCE_EVIDENCE_COUNTS["keyboardEscapeRestores"]
+        and isinstance(history_transitions, list)
+        and len(history_transitions)
+        == EINSTEIN_ACCEPTANCE_EVIDENCE_COUNTS["browserHistoryTransitions"]
+        and [
+            str(transition.get("direction") or "")
+            for transition in history_transitions
+            if isinstance(transition, dict)
+        ]
+        == ["back", "forward"]
+        and all(
+            isinstance(transition, dict) and transition.get("passed") is True
+            for transition in history_transitions
+        )
+        and text_resize_rows_exact
+        and len(text_resize_viewports)
+        == EINSTEIN_ACCEPTANCE_EVIDENCE_COUNTS["textResizeViewports"]
+        and tuple(text_resize_viewport_names)
+        == EINSTEIN_ACCEPTANCE_ACCESSIBILITY_VIEWPORTS
+        and all(
+            row.get("passed") is True
+            and isinstance(row.get("dialogs"), list)
+            and len(row["dialogs"]) == 4
+            for row in text_resize_viewports
+        )
+        and len(text_resize_dialogs)
+        == EINSTEIN_ACCEPTANCE_EVIDENCE_COUNTS["textResizeDialogChecks"]
+        and all(dialog.get("passed") is True for dialog in text_resize_dialogs)
+    )
+    if not exact:
+        raise RuntimeError("Einstein browser acceptance report contract failed")
+    return {
+        "schema": EINSTEIN_ACCEPTANCE_SCHEMA,
+        "passed": True,
+        "failure_count": 0,
+        "warning_count": len(warnings) if isinstance(warnings, list) else None,
+        "matrix_count": len(matrix),
+        "matrix_passed": len(matrix),
+        "asset_count": len(assets),
+        "asset_expected": len(EINSTEIN_ACCEPTANCE_ASSETS),
+        "gates_passed": list(gates),
+        "evidence_expected": copy.deepcopy(evidence_expected),
+        "evidence_observed": copy.deepcopy(evidence_observed),
+        "keyboard_tool_checks": len(keyboard_tools),
+        "keyboard_escape_restores": sum(
+            tool.get("escapeClosed") is True for tool in keyboard_tools
+        ),
+        "history_transitions": len(history_transitions),
+        "text_resize_dialog_checks": len(text_resize_dialogs),
+    }
 
 
 def utc_slug() -> str:
@@ -1343,6 +2270,330 @@ def self_test() -> dict[str, Any]:
     if not canonical_sha_mismatch_rejected:
         raise RuntimeError("Self-test accepted a canonical artifact with the wrong SHA-256")
 
+    einstein_request = validate_einstein_stage_request(
+        REPO_ROOT / "docs" / "wp-drafts" / "einstein-tower-flagship-v3-private-stage.json"
+    )
+    offline_password = "offline-einstein-stage-secret"
+
+    class FakeResponse:
+        def __init__(self, status_code: int, payload: Any):
+            self.status_code = status_code
+            self._payload = payload
+            self.headers: dict[str, str] = {}
+            self.text = json.dumps(payload, ensure_ascii=False)
+
+        def json(self) -> Any:
+            return copy.deepcopy(self._payload)
+
+    def fake_record(post_id: int, body: dict[str, Any]) -> dict[str, Any]:
+        return {
+            "id": post_id,
+            "slug": body["slug"],
+            "status": body["status"],
+            "title": {"raw": body["title"]},
+            "content": {"raw": body["content"]},
+            "excerpt": {"raw": body["excerpt"]},
+            "password": body.get("password", ""),
+            "meta": copy.deepcopy(body["meta"]),
+            "link": f"https://nad-lan.co.il/projects/{body['slug']}/",
+        }
+
+    class ResponseLostClient:
+        def __init__(
+            self,
+            stage: dict[str, Any] | None,
+            *,
+            created_post_id: int = 9001,
+            created_slug: str = EINSTEIN_STAGE_SLUG,
+        ):
+            public_body = {
+                "slug": "einstein-tower",
+                "status": "publish",
+                "title": "Canonical Einstein",
+                "content": "canonical-public-body",
+                "excerpt": "canonical-public-excerpt",
+                "password": "",
+                "meta": {"project_contract_id": EINSTEIN_PROJECT_CONTRACT_ID},
+            }
+            self.records: dict[int, dict[str, Any]] = {
+                EINSTEIN_CANONICAL_POST_ID: fake_record(
+                    EINSTEIN_CANONICAL_POST_ID, public_body
+                )
+            }
+            if stage is not None:
+                self.records[int(stage["id"])] = copy.deepcopy(stage)
+            self.lose_next_stage_write = True
+            self.created_post_id = created_post_id
+            self.created_slug = created_slug
+            self.delete_requests = 0
+
+        def request(
+            self,
+            method: str,
+            route: str,
+            *,
+            json_body: dict[str, Any] | None = None,
+            timeout: int = 60,
+        ) -> FakeResponse:
+            del timeout
+            normalized = route.split("?", 1)[0]
+            if method == "GET" and normalized == "wp/v2/nadlan_project":
+                rows = [
+                    copy.deepcopy(row)
+                    for row in self.records.values()
+                    if row.get("slug") == EINSTEIN_STAGE_SLUG
+                ]
+                return FakeResponse(200, rows)
+            match = re.fullmatch(r"wp/v2/nadlan_project/(\d+)", normalized)
+            if method == "GET" and match:
+                post_id = int(match.group(1))
+                if post_id not in self.records:
+                    return FakeResponse(404, {"code": "rest_post_invalid_id"})
+                return FakeResponse(200, self.records[post_id])
+            if method == "POST" and normalized == "wp/v2/nadlan_project":
+                post_id = self.created_post_id
+                created_body = dict(json_body or {})
+                created_body["slug"] = self.created_slug
+                self.records[post_id] = fake_record(post_id, created_body)
+                if self.lose_next_stage_write:
+                    self.lose_next_stage_write = False
+                    raise requests.Timeout("simulated response loss after applied create")
+                return FakeResponse(201, self.records[post_id])
+            if method == "POST" and match:
+                post_id = int(match.group(1))
+                if post_id not in self.records:
+                    return FakeResponse(404, {"code": "rest_post_invalid_id"})
+                body = dict(json_body or {})
+                record = self.records[post_id]
+                for key in ("slug", "status", "password"):
+                    if key in body:
+                        record[key] = body[key]
+                for key in ("title", "content", "excerpt"):
+                    if key in body:
+                        record[key] = {"raw": body[key]}
+                if isinstance(body.get("meta"), dict):
+                    for key, value in body["meta"].items():
+                        if value is None:
+                            record["meta"].pop(key, None)
+                        else:
+                            record["meta"][key] = copy.deepcopy(value)
+                if self.lose_next_stage_write:
+                    self.lose_next_stage_write = False
+                    raise requests.Timeout("simulated response loss after applied update")
+                return FakeResponse(200, record)
+            if method == "DELETE" and match:
+                self.delete_requests += 1
+                post_id = int(match.group(1))
+                existed = self.records.pop(post_id, None) is not None
+                return FakeResponse(200 if existed else 404, {"deleted": existed})
+            raise AssertionError(f"Unexpected fake WordPress request: {method} {route}")
+
+    create_client = ResponseLostClient(None)
+    create_lost_rolled_back = False
+    try:
+        write_einstein_stage(create_client, einstein_request, offline_password)
+    except requests.Timeout:
+        create_lost_rolled_back = not any(
+            row.get("slug") == EINSTEIN_STAGE_SLUG
+            for row in create_client.records.values()
+        )
+    if not create_lost_rolled_back:
+        raise RuntimeError("Response-lost Einstein create was not deleted exactly")
+
+    suffixed_client = ResponseLostClient(
+        None,
+        created_post_id=9009,
+        created_slug=EINSTEIN_STAGE_SLUG + "-2",
+    )
+    suffixed_create_recovery_blocked = False
+    try:
+        write_einstein_stage(suffixed_client, einstein_request, offline_password)
+    except EinsteinStageRecoveryBlocked:
+        suffixed_create_recovery_blocked = (
+            9009 in suffixed_client.records
+            and suffixed_client.records[9009].get("slug")
+            == EINSTEIN_STAGE_SLUG + "-2"
+            and suffixed_client.delete_requests == 0
+        )
+    if not suffixed_create_recovery_blocked:
+        raise RuntimeError(
+            "Response-lost suffixed-slug Einstein create did not preserve recovery safely"
+        )
+
+    prior_body = copy.deepcopy(einstein_request["body"])
+    prior_body.update(
+        {
+            "title": "Prior private stage",
+            "content": "prior private content",
+            "excerpt": "prior private excerpt",
+            "password": "prior-private-password",
+        }
+    )
+    prior_body["meta"]["unrelated_registered_meta"] = "preserve-me"
+    prior_record = fake_record(9002, prior_body)
+    prior_snapshot = wordpress_post_snapshot(prior_record)
+    update_client = ResponseLostClient(prior_record)
+    update_lost_rolled_back = False
+    try:
+        write_einstein_stage(update_client, einstein_request, offline_password)
+    except requests.Timeout:
+        update_lost_rolled_back = (
+            wordpress_post_snapshot(update_client.records[9002]) == prior_snapshot
+        )
+    if not update_lost_rolled_back:
+        raise RuntimeError("Response-lost Einstein update was not restored exactly")
+
+    valid_acceptance = {
+        "schema": EINSTEIN_ACCEPTANCE_SCHEMA,
+        "totals": {
+            "passed": True,
+            "failures": 0,
+            "warnings": 0,
+            "viewports": len(EINSTEIN_ACCEPTANCE_VIEWPORTS),
+            "assetsObserved": len(EINSTEIN_ACCEPTANCE_ASSETS),
+            "keyboardToolChecks": EINSTEIN_ACCEPTANCE_EVIDENCE_COUNTS[
+                "keyboardToolChecks"
+            ],
+            "textResizeDialogChecks": EINSTEIN_ACCEPTANCE_EVIDENCE_COUNTS[
+                "textResizeDialogChecks"
+            ],
+            "historyTransitions": EINSTEIN_ACCEPTANCE_EVIDENCE_COUNTS[
+                "browserHistoryTransitions"
+            ],
+        },
+        "failures": [],
+        "warnings": [],
+        "matrix": [
+            {"viewport": viewport, "passed": True}
+            for viewport in EINSTEIN_ACCEPTANCE_VIEWPORTS
+        ],
+        "assets": [{"name": name} for name in EINSTEIN_ACCEPTANCE_ASSETS],
+        "anonymous": {"passed": True},
+        "discovery": {"passed": True},
+        "health": {"passed": True},
+        "unlocked": {"passed": True},
+        "browserBack": {"passed": True},
+        "keyboard": {
+            "passed": True,
+            "viewports": [
+                {
+                    "viewport": viewport,
+                    "passed": True,
+                    "tools": [
+                        {
+                            "tool": tool,
+                            "escapeClosed": True,
+                            "passed": True,
+                        }
+                        for tool in ("view", "interior", "design", "comments")
+                    ],
+                }
+                for viewport in EINSTEIN_ACCEPTANCE_ACCESSIBILITY_VIEWPORTS
+            ],
+        },
+        "browserHistory": {
+            "passed": True,
+            "transitions": [
+                {"direction": "back", "passed": True},
+                {"direction": "forward", "passed": True},
+            ],
+        },
+        "textResize200": {
+            "passed": True,
+            "viewports": [
+                {
+                    "viewport": viewport,
+                    "passed": True,
+                    "dialogs": [
+                        {"tool": tool, "passed": True}
+                        for tool in ("view", "interior", "design", "comments")
+                    ],
+                }
+                for viewport in EINSTEIN_ACCEPTANCE_ACCESSIBILITY_VIEWPORTS
+            ],
+        },
+        "evidenceCounts": {
+            "expected": copy.deepcopy(EINSTEIN_ACCEPTANCE_EVIDENCE_COUNTS),
+            "observed": copy.deepcopy(EINSTEIN_ACCEPTANCE_EVIDENCE_COUNTS),
+            "matched": True,
+        },
+    }
+    valid_acceptance_proof = acceptance_summary_proof(
+        valid_acceptance, einstein_mode=True
+    )
+    forged_exit_zero_rejected = False
+    forged_acceptance = copy.deepcopy(valid_acceptance)
+    forged_acceptance["totals"]["passed"] = False
+    try:
+        acceptance_summary_proof(forged_acceptance, einstein_mode=True)
+    except RuntimeError:
+        forged_exit_zero_rejected = True
+    if not forged_exit_zero_rejected:
+        raise RuntimeError("Self-test accepted an exit-zero Einstein report with failed totals")
+    forged_evidence_rejected = False
+    forged_acceptance = copy.deepcopy(valid_acceptance)
+    forged_acceptance["evidenceCounts"]["observed"]["keyboardEscapeRestores"] = 7
+    try:
+        acceptance_summary_proof(forged_acceptance, einstein_mode=True)
+    except RuntimeError:
+        forged_evidence_rejected = True
+    if not forged_evidence_rejected:
+        raise RuntimeError("Self-test accepted forged Einstein evidence counts")
+    forged_behavior_gate_rejected = False
+    forged_acceptance = copy.deepcopy(valid_acceptance)
+    forged_acceptance["browserHistory"]["passed"] = False
+    try:
+        acceptance_summary_proof(forged_acceptance, einstein_mode=True)
+    except RuntimeError:
+        forged_behavior_gate_rejected = True
+    if not forged_behavior_gate_rejected:
+        raise RuntimeError("Self-test accepted a failed Einstein behavior gate")
+    if acceptance_summary_proof(
+        {"hardFailures": [], "warnings": []}, einstein_mode=False
+    ).get("passed") is not True:
+        raise RuntimeError("Legacy browser acceptance summary handling changed")
+
+    stage_write_position = driver_source.find(
+        "einstein_transaction = write_einstein_stage(", main_position
+    )
+    browser_position = driver_source.find("acceptance = subprocess.run(", stage_write_position)
+    final_readback_position = driver_source.find(
+        'result["checks"]["final_stage_readback"]', browser_position
+    )
+    stage_rollback_position = driver_source.find(
+        'result["checks"]["failure_stage_rollback"]', main_position
+    )
+    plugin_failure_status_position = driver_source.find(
+        "status_confirmed = False", stage_rollback_position
+    )
+    blocked_state_position = driver_source.find(
+        "if isinstance(error, EinsteinStageRecoveryBlocked):", main_position
+    )
+    blocked_plugin_rollback_guard = driver_source.find(
+        "if rollback_required and not stage_rollback_blocked:", blocked_state_position
+    )
+    blocked_finalize_guard = driver_source.find(
+        "safe_to_finalize = not stage_rollback_blocked and (", blocked_plugin_rollback_guard
+    )
+    recovery_retention_position = driver_source.find(
+        "retain_recovery_helper = deploy_started and not resources_finalized",
+        blocked_finalize_guard,
+    )
+    if not (
+        0
+        <= stage_write_position
+        < browser_position
+        < final_readback_position
+        < phase_one_position
+        and 0 <= stage_rollback_position < plugin_failure_status_position
+        and 0
+        <= blocked_state_position
+        < blocked_plugin_rollback_guard
+        < blocked_finalize_guard
+        < recovery_retention_position
+    ):
+        raise RuntimeError("Einstein stage/browser/finalize or stage/plugin rollback ordering drifted")
+
     return {
         "passed": True,
         "template_sha256": hashlib.sha256(TEMPLATE.read_bytes()).hexdigest(),
@@ -1363,6 +2614,34 @@ def self_test() -> dict[str, Any]:
         "secure_local_upload": True,
         "noncanonical_path_rejected": noncanonical_path_rejected,
         "canonical_sha_mismatch_rejected": canonical_sha_mismatch_rejected,
+        "einstein_private_stage": {
+            "request_validated": True,
+            "exact_slug": EINSTEIN_STAGE_SLUG,
+            "canonical_public_post_id": EINSTEIN_CANONICAL_POST_ID,
+            "project_contract_id": EINSTEIN_PROJECT_CONTRACT_ID,
+            "response_lost_create_rolled_back": create_lost_rolled_back,
+            "response_lost_suffixed_create_recovery_blocked": suffixed_create_recovery_blocked,
+            "response_lost_suffixed_create_delete_requests": suffixed_client.delete_requests,
+            "blocked_stage_skips_plugin_rollback_and_finalize": True,
+            "response_lost_update_rolled_back": update_lost_rolled_back,
+            "scoped_meta_restore_preserved_unrelated": True,
+            "browser_before_finalize": True,
+            "stage_rollback_before_plugin_rollback": True,
+            "acceptance_schema_exact": valid_acceptance_proof["schema"]
+            == EINSTEIN_ACCEPTANCE_SCHEMA,
+            "acceptance_matrix_count": valid_acceptance_proof["matrix_count"],
+            "acceptance_asset_count": valid_acceptance_proof["asset_count"],
+            "acceptance_evidence_expected": valid_acceptance_proof[
+                "evidence_expected"
+            ],
+            "acceptance_evidence_observed": valid_acceptance_proof[
+                "evidence_observed"
+            ],
+            "forged_exit_zero_failed_totals_rejected": forged_exit_zero_rejected,
+            "forged_evidence_counts_rejected": forged_evidence_rejected,
+            "forged_behavior_gate_rejected": forged_behavior_gate_rejected,
+            "legacy_acceptance_contract_preserved": True,
+        },
         "canonical_local_artifact": {
             "sha256": canonical_sha256,
             "archive_bytes": int(canonical_proof["archive_bytes"]),
@@ -1389,6 +2668,15 @@ def parse_args() -> argparse.Namespace:
         help="Private sandbox password; prefer SANDBOX_POST_PASSWORD to avoid shell history.",
     )
     parser.add_argument(
+        "--einstein-stage-request",
+        type=Path,
+        help="Use the exact governed Einstein private-stage request instead of the legacy journey clone.",
+    )
+    parser.add_argument(
+        "--protected-main-commit",
+        help="Required in Einstein mode; exact origin/main commit containing the canonical ZIP.",
+    )
+    parser.add_argument(
         "--output-dir",
         type=Path,
         default=REPO_ROOT / "reports" / "private-unit-journey-release",
@@ -1396,7 +2684,7 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument(
         "--acceptance-script",
         type=Path,
-        default=REPO_ROOT / "scripts" / "qa-private-unit-journey.mjs",
+        default=None,
         help="Playwright gate executed before the rollback backup and helper are removed.",
     )
     parser.add_argument("--acceptance-timeout-seconds", type=int, default=2400)
@@ -1412,6 +2700,13 @@ def main() -> int:
         print(json.dumps(self_test(), ensure_ascii=False, indent=2))
         return 0
 
+    einstein_request: dict[str, Any] | None = None
+    if args.einstein_stage_request is not None:
+        try:
+            einstein_request = validate_einstein_stage_request(args.einstein_stage_request)
+        except (OSError, ValueError, json.JSONDecodeError) as error:
+            raise SystemExit(str(error)) from error
+
     required_args = {
         "--artifact-sha256": args.artifact_sha256,
         "--expected-version": args.expected_version,
@@ -1423,7 +2718,12 @@ def main() -> int:
         raise SystemExit("--health-attempts must be between 1 and 20")
     if args.health_delay_seconds < 0 or args.health_delay_seconds > 30:
         raise SystemExit("--health-delay-seconds must be between 0 and 30")
-    acceptance_script = args.acceptance_script.resolve()
+    default_acceptance = (
+        REPO_ROOT / "scripts" / "qa-einstein-flagship-live.mjs"
+        if einstein_request is not None
+        else REPO_ROOT / "scripts" / "qa-private-unit-journey.mjs"
+    )
+    acceptance_script = (args.acceptance_script or default_acceptance).resolve()
     if not acceptance_script.is_file():
         raise SystemExit(f"Acceptance script is missing: {acceptance_script}")
     if args.acceptance_timeout_seconds < 60 or args.acceptance_timeout_seconds > 7200:
@@ -1438,6 +2738,14 @@ def main() -> int:
         raise SystemExit("--expected-version is not a safe plugin version")
     if bool(args.artifact_url) == bool(args.artifact_path):
         raise SystemExit("Exactly one of --artifact-url or --artifact-path is required")
+    if einstein_request is not None and (
+        args.artifact_path is None or args.artifact_url is not None or not args.protected_main_commit
+    ):
+        raise SystemExit(
+            "Einstein mode requires --artifact-path and --protected-main-commit; URL mode is forbidden"
+        )
+    if einstein_request is None and args.protected_main_commit:
+        raise SystemExit("--protected-main-commit is valid only with --einstein-stage-request")
     artifact_mode = "upload" if args.artifact_path else "url"
     commit_sha = validate_immutable_url(str(args.artifact_url)) if args.artifact_url else ""
     local_artifact_path: Path | None = None
@@ -1449,6 +2757,19 @@ def main() -> int:
             )
         except ValueError as error:
             raise SystemExit(str(error)) from error
+    protected_main_proof: dict[str, Any] | None = None
+    if einstein_request is not None:
+        if local_artifact_path is None:
+            raise SystemExit("Einstein protected-main artifact proof requires the canonical local ZIP")
+        try:
+            protected_main_proof = validate_protected_main_artifact(
+                str(args.protected_main_commit),
+                local_artifact_path,
+                str(args.expected_version),
+                artifact_sha256,
+            )
+        except (OSError, ValueError) as error:
+            raise SystemExit(str(error)) from error
 
     file_env = read_env(args.env)
     merged_env = dict(file_env)
@@ -1456,6 +2777,8 @@ def main() -> int:
     base_url_input = merged_env.get("WP_BASE_URL", "").rstrip("/")
     wp_user = merged_env.get("WP_USER", "")
     wp_password = merged_env.get("WP_APP_PASSWORD", "")
+    if einstein_request is not None and args.post_password:
+        raise SystemExit("Einstein mode accepts SANDBOX_POST_PASSWORD from the environment only")
     post_password = args.post_password or merged_env.get("SANDBOX_POST_PASSWORD", "")
     missing_env = [
         key
@@ -1471,7 +2794,8 @@ def main() -> int:
         raise SystemExit(f"Missing required secret inputs: {', '.join(missing_env)}")
     base_url = validate_site_url(base_url_input)
 
-    run_id = f"unit-journey-{utc_slug()}-{secrets.token_hex(3)}"
+    run_prefix = "einstein-flagship" if einstein_request is not None else "unit-journey"
+    run_id = f"{run_prefix}-{utc_slug()}-{secrets.token_hex(3)}"
     helper_name = f"tmp-{run_id}"
     route_path = f"/deploy-{run_id}"
     route = f"{ROUTE_NAMESPACE}{route_path}"
@@ -1498,6 +2822,9 @@ def main() -> int:
     resources_finalized = False
     deployed = False
     page_url = ""
+    einstein_transaction: dict[str, Any] | None = None
+    stage_rollback_blocked = False
+    einstein_public_predeploy_sha256 = ""
     before_plugin_contract: dict[str, Any] = {}
     created_cleanup_rows: list[dict[str, Any]] = []
     artifact_evidence: dict[str, Any] = {
@@ -1506,19 +2833,32 @@ def main() -> int:
     }
     if commit_sha:
         artifact_evidence["source_commit_sha"] = commit_sha
+    if protected_main_proof is not None:
+        artifact_evidence["protected_main"] = protected_main_proof
+    target_contract = {
+        "site": base_url,
+        "plugin_file": PLUGIN_FILE,
+        "expected_version": str(args.expected_version),
+        "source_post_id": SOURCE_POST_ID,
+        "page_slug": PAGE_SLUG,
+        "page_title": PAGE_TITLE,
+        "project_display_name": PROJECT_DISPLAY_NAME,
+    }
+    if einstein_request is not None:
+        target_contract = {
+            "site": base_url,
+            "plugin_file": PLUGIN_FILE,
+            "expected_version": str(args.expected_version),
+            "canonical_public_post_id": EINSTEIN_CANONICAL_POST_ID,
+            "page_slug": EINSTEIN_STAGE_SLUG,
+            "project_contract_id": EINSTEIN_PROJECT_CONTRACT_ID,
+            "mode": "exact_private_einstein_stage",
+        }
     result: dict[str, Any] = {
         "schema_version": 1,
         "run_id": run_id,
         "generated_at_utc": datetime.now(timezone.utc).isoformat(),
-        "target": {
-            "site": base_url,
-            "plugin_file": PLUGIN_FILE,
-            "expected_version": str(args.expected_version),
-            "source_post_id": SOURCE_POST_ID,
-            "page_slug": PAGE_SLUG,
-            "page_title": PAGE_TITLE,
-            "project_display_name": PROJECT_DISPLAY_NAME,
-        },
+        "target": target_contract,
         "artifact": artifact_evidence,
         "helper": {"name": helper_name, "route": route},
         "checks": {},
@@ -1740,6 +3080,17 @@ def main() -> int:
             "code_snippets_collection_readable": True,
             "snippet_count_before": len(snippets_before),
         }
+        if einstein_request is not None:
+            public_record_before_deploy = wordpress_post_snapshot(
+                get_authenticated_post(client, EINSTEIN_CANONICAL_POST_ID)
+            )
+            einstein_public_predeploy_sha256 = sha256_bytes(
+                exact_json_bytes(public_record_before_deploy)
+            )
+            result["checks"]["canonical_public_predeploy"] = {
+                "post_id": EINSTEIN_CANONICAL_POST_ID,
+                "snapshot_sha256": einstein_public_predeploy_sha256,
+            }
 
         public_preflight = public.get(
             f"{base_url}/wp-json/nadlan/v1/healthcheck",
@@ -1930,12 +3281,22 @@ def main() -> int:
 
         health_checks: list[dict[str, Any]] = []
         stable = False
+        consecutive_stable = 0
+        required_stable = 2 if einstein_request is not None else 1
+        deployed_digest = str(
+            (plugin_after.get("inventory") or {}).get("digest") or ""
+        ) if isinstance(plugin_after.get("inventory"), dict) else ""
         for attempt in range(1, args.health_attempts + 1):
             status_response, status = call_helper("status", timeout=60)
             status_version = ""
+            status_digest = ""
             upload_temp_absent = False
             if status_response.status_code == 200 and isinstance(status.get("plugin"), dict):
                 status_version = str(status["plugin"].get("version") or "")
+                status_inventory = status["plugin"].get("inventory")
+                status_digest = str(status_inventory.get("digest") or "") if isinstance(
+                    status_inventory, dict
+                ) else ""
                 status_upload = status.get("upload")
                 upload_temp_absent = (
                     isinstance(status_upload, dict)
@@ -1959,18 +3320,26 @@ def main() -> int:
                 "attempt": attempt,
                 "helper_status": status_response.status_code,
                 "helper_version": status_version,
+                "plugin_digest_exact": bool(deployed_digest)
+                and secrets.compare_digest(status_digest, deployed_digest),
                 "upload_temp_absent": upload_temp_absent,
                 "health_status": health_status,
                 "health_version": health_version,
                 "expected": status_version == str(args.expected_version)
+                and bool(deployed_digest)
+                and secrets.compare_digest(status_digest, deployed_digest)
                 and upload_temp_absent
                 and health_status == 200
                 and health_version == str(args.expected_version),
             }
             health_checks.append(attempt_result)
             if attempt_result["expected"]:
-                stable = True
-                break
+                consecutive_stable += 1
+                if consecutive_stable >= required_stable:
+                    stable = True
+                    break
+            else:
+                consecutive_stable = 0
             if attempt < args.health_attempts and args.health_delay_seconds:
                 time.sleep(args.health_delay_seconds)
         result["checks"]["stabilization"] = health_checks
@@ -1983,85 +3352,121 @@ def main() -> int:
                 raise RuntimeError("Automatic rollback did not prove exact pre-deployment plugin state")
             raise RuntimeError("Expected plugin version did not stabilize; exact backup was restored")
 
-        page_response, page = call_helper(
-            "create_page",
-            extra={"post_password": post_password},
-            timeout=180,
-        )
-        require_response(page_response, "Private sandbox creation")
-        page_url = str(page.get("page_url") or "")
-        if (
-            not page_url.startswith(base_url + "/")
-            or page.get("password_protected") is not True
-            or page.get("noindex") is not True
-            or page.get("nofollow") is not True
-            or not isinstance(page.get("cache"), dict)
-            or page["cache"].get("litespeed_purge_requested") is not True
-        ):
-            raise RuntimeError("Private sandbox response did not prove scoped protection")
-        result["checks"]["private_page"] = page
+        if einstein_request is not None:
+            canonical_after_deploy = wordpress_post_snapshot(
+                get_authenticated_post(client, EINSTEIN_CANONICAL_POST_ID)
+            )
+            canonical_after_deploy_sha256 = sha256_bytes(
+                exact_json_bytes(canonical_after_deploy)
+            )
+            if not secrets.compare_digest(
+                canonical_after_deploy_sha256, einstein_public_predeploy_sha256
+            ):
+                raise RuntimeError("Plugin deployment changed canonical public post 4867")
+            result["checks"]["canonical_public_postdeploy"] = {
+                "post_id": EINSTEIN_CANONICAL_POST_ID,
+                "unchanged": True,
+                "snapshot_sha256": canonical_after_deploy_sha256,
+            }
+            einstein_transaction = write_einstein_stage(client, einstein_request, post_password)
+            page_url = str(einstein_transaction["page_url"])
+            result["checks"]["private_page"] = {
+                "post_id": int(einstein_transaction["post_id"]),
+                "page_url": page_url,
+                "created_new": einstein_transaction["created_new"] is True,
+                "readback": einstein_transaction["readback"],
+                "canonical_public_4867_unchanged": True,
+                "canonical_public_sha256": einstein_transaction[
+                    "canonical_public_sha256"
+                ],
+            }
+            result["checks"]["anonymous_private_surfaces"] = anonymous_einstein_probes(
+                base_url,
+                page_url,
+                int(einstein_transaction["post_id"]),
+                einstein_request,
+                post_password,
+            )
+        else:
+            page_response, page = call_helper(
+                "create_page",
+                extra={"post_password": post_password},
+                timeout=180,
+            )
+            require_response(page_response, "Private sandbox creation")
+            page_url = str(page.get("page_url") or "")
+            if (
+                not page_url.startswith(base_url + "/")
+                or page.get("password_protected") is not True
+                or page.get("noindex") is not True
+                or page.get("nofollow") is not True
+                or not isinstance(page.get("cache"), dict)
+                or page["cache"].get("litespeed_purge_requested") is not True
+            ):
+                raise RuntimeError("Private sandbox response did not prove scoped protection")
+            result["checks"]["private_page"] = page
 
-        protected_response = public.get(
-            page_url,
-            params={"cb": run_id},
-            timeout=60,
-            allow_redirects=True,
-        )
-        protected_html = protected_response.text
-        robots_header = protected_response.headers.get("X-Robots-Tag", "")
-        password_form = "post_password" in protected_html and (
-            "action=postpass" in protected_html or "wp-pass.php" in protected_html
-        )
-        payload_hidden = "NADLAN_SHOWROOM" not in protected_html and "nl-showroom" not in protected_html
-        password_absent = post_password not in protected_html
-        noindex_header = "noindex" in robots_header.lower()
-        nofollow_header = "nofollow" in robots_header.lower()
-        noarchive_header = "noarchive" in robots_header.lower()
-        if not (
-            protected_response.status_code == 200
-            and password_form
-            and payload_hidden
-            and password_absent
-            and noindex_header
-            and nofollow_header
-            and noarchive_header
-        ):
-            raise RuntimeError("Unauthenticated private page protection proof failed")
-        result["checks"]["unauthenticated_page"] = {
-            "http_status": protected_response.status_code,
-            "password_form": password_form,
-            "showroom_payload_hidden": payload_hidden,
-            "password_not_reflected": password_absent,
-            "x_robots_tag": robots_header,
-            "noindex_header": noindex_header,
-            "nofollow_header": nofollow_header,
-            "noarchive_header": noarchive_header,
-        }
+            protected_response = public.get(
+                page_url,
+                params={"cb": run_id},
+                timeout=60,
+                allow_redirects=True,
+            )
+            protected_html = protected_response.text
+            robots_header = protected_response.headers.get("X-Robots-Tag", "")
+            password_form = "post_password" in protected_html and (
+                "action=postpass" in protected_html or "wp-pass.php" in protected_html
+            )
+            payload_hidden = "NADLAN_SHOWROOM" not in protected_html and "nl-showroom" not in protected_html
+            password_absent = post_password not in protected_html
+            noindex_header = "noindex" in robots_header.lower()
+            nofollow_header = "nofollow" in robots_header.lower()
+            noarchive_header = "noarchive" in robots_header.lower()
+            if not (
+                protected_response.status_code == 200
+                and password_form
+                and payload_hidden
+                and password_absent
+                and noindex_header
+                and nofollow_header
+                and noarchive_header
+            ):
+                raise RuntimeError("Unauthenticated private page protection proof failed")
+            result["checks"]["unauthenticated_page"] = {
+                "http_status": protected_response.status_code,
+                "password_form": password_form,
+                "showroom_payload_hidden": payload_hidden,
+                "password_not_reflected": password_absent,
+                "x_robots_tag": robots_header,
+                "noindex_header": noindex_header,
+                "nofollow_header": nofollow_header,
+                "noarchive_header": noarchive_header,
+            }
 
-        rest_response = public.get(
-            f"{base_url}/wp-json/wp/v2/nadlan_project",
-            params={"slug": PAGE_SLUG},
-            timeout=60,
-        )
-        rest_hidden = False
-        rest_shape = "unavailable"
-        if rest_response.status_code == 200:
-            try:
-                rest_payload = rest_response.json()
-                rest_hidden = isinstance(rest_payload, list) and len(rest_payload) == 0
-                rest_shape = "empty_list" if rest_hidden else "non_empty"
-            except ValueError:
-                rest_shape = "non_json"
-        elif rest_response.status_code in (401, 403, 404):
-            rest_hidden = True
-            rest_shape = "not_public"
-        result["checks"]["unauthenticated_rest"] = {
-            "http_status": rest_response.status_code,
-            "shape": rest_shape,
-            "private_post_hidden": rest_hidden,
-        }
-        if not rest_hidden:
-            raise RuntimeError("Private sandbox remains discoverable through unauthenticated REST")
+            rest_response = public.get(
+                f"{base_url}/wp-json/wp/v2/nadlan_project",
+                params={"slug": PAGE_SLUG},
+                timeout=60,
+            )
+            rest_hidden = False
+            rest_shape = "unavailable"
+            if rest_response.status_code == 200:
+                try:
+                    rest_payload = rest_response.json()
+                    rest_hidden = isinstance(rest_payload, list) and len(rest_payload) == 0
+                    rest_shape = "empty_list" if rest_hidden else "non_empty"
+                except ValueError:
+                    rest_shape = "non_json"
+            elif rest_response.status_code in (401, 403, 404):
+                rest_hidden = True
+                rest_shape = "not_public"
+            result["checks"]["unauthenticated_rest"] = {
+                "http_status": rest_response.status_code,
+                "shape": rest_shape,
+                "private_post_hidden": rest_hidden,
+            }
+            if not rest_hidden:
+                raise RuntimeError("Private sandbox remains discoverable through unauthenticated REST")
 
         # Keep the server-side rollback copy and authenticated helper alive
         # through independent browser acceptance. Finalization happens only
@@ -2078,6 +3483,15 @@ def main() -> int:
                 "SANDBOX_URL": page_url,
                 "SANDBOX_POST_PASSWORD": post_password,
                 "OUTPUT_DIR": str(acceptance_dir),
+                "EXPECTED_PLUGIN_VERSION": str(args.expected_version),
+                "EXPECTED_PROJECT_CONTRACT_ID": (
+                    EINSTEIN_PROJECT_CONTRACT_ID if einstein_request is not None else ""
+                ),
+                "EXPECTED_STAGE_POST_ID": (
+                    str(einstein_transaction["post_id"])
+                    if einstein_transaction is not None
+                    else ""
+                ),
             }
         )
         acceptance = subprocess.run(
@@ -2091,6 +3505,9 @@ def main() -> int:
             timeout=args.acceptance_timeout_seconds,
             check=False,
         )
+        result["checks"]["acceptance_secret_scan"] = assert_tree_has_no_secret_bytes(
+            acceptance_dir, (post_password, wp_password)
+        )
         summary_path = acceptance_dir / "summary.json"
         summary_payload: dict[str, Any] = {}
         if summary_path.is_file():
@@ -2100,21 +3517,56 @@ def main() -> int:
                     summary_payload = loaded_summary
             except (OSError, ValueError):
                 summary_payload = {}
-        hard_failures = summary_payload.get("hardFailures")
-        warnings = summary_payload.get("warnings")
+        summary_contract: dict[str, Any] = {}
+        summary_contract_error = ""
+        if summary_payload:
+            try:
+                summary_contract = acceptance_summary_proof(
+                    summary_payload, einstein_mode=einstein_request is not None
+                )
+            except (RuntimeError, TypeError, ValueError) as contract_error:
+                summary_contract_error = str(contract_error)
         result["checks"]["browser_acceptance"] = {
             "exit_code": acceptance.returncode,
             "summary_json": str(summary_path),
             "summary_markdown": str(acceptance_dir / "summary.md"),
-            "hard_failure_count": len(hard_failures) if isinstance(hard_failures, list) else None,
-            "warning_count": len(warnings) if isinstance(warnings, list) else None,
+            "report_contract": summary_contract,
+            "report_contract_error": summary_contract_error,
             "stdout_tail": redactor.text(acceptance.stdout[-1200:]),
             "stderr_tail": redactor.text(acceptance.stderr[-1200:]),
         }
-        if acceptance.returncode != 0 or not summary_payload or (
-            isinstance(hard_failures, list) and hard_failures
-        ):
+        if acceptance.returncode != 0 or not summary_payload or not summary_contract:
             raise RuntimeError("Pre-finalize browser acceptance failed; release will roll back")
+
+        if einstein_request is not None:
+            if einstein_transaction is None:
+                raise RuntimeError("Einstein stage transaction disappeared before final readback")
+            final_stage_record = get_authenticated_post(
+                client, int(einstein_transaction["post_id"])
+            )
+            result["checks"]["final_stage_readback"] = assert_einstein_stage_readback(
+                final_stage_record, einstein_request, post_password
+            )
+            final_public_snapshot = wordpress_post_snapshot(
+                get_authenticated_post(client, EINSTEIN_CANONICAL_POST_ID)
+            )
+            final_public_hash = sha256_bytes(exact_json_bytes(final_public_snapshot))
+            if not secrets.compare_digest(
+                final_public_hash, str(einstein_transaction["canonical_public_sha256"])
+            ):
+                raise RuntimeError("Canonical public post 4867 changed before finalization")
+            result["checks"]["final_public_post_immutability"] = {
+                "post_id": EINSTEIN_CANONICAL_POST_ID,
+                "unchanged": True,
+                "snapshot_sha256": final_public_hash,
+            }
+            result["checks"]["final_anonymous_private_surfaces"] = anonymous_einstein_probes(
+                base_url,
+                page_url,
+                int(einstein_transaction["post_id"]),
+                einstein_request,
+                post_password,
+            )
 
         final_health = public.get(
             f"{base_url}/wp-json/nadlan/v1/healthcheck",
@@ -2143,6 +3595,26 @@ def main() -> int:
     except Exception as error:
         result["passed"] = False
         result["error"] = redactor.text(error)
+        if isinstance(error, EinsteinStageRecoveryBlocked):
+            stage_rollback_blocked = True
+            result["checks"]["failure_stage_rollback"] = {
+                "confirmed": False,
+                "recovery_preserved": True,
+                "reason": "indeterminate_stage_write",
+            }
+        if einstein_transaction is not None:
+            try:
+                result["checks"]["failure_stage_rollback"] = rollback_einstein_stage(
+                    client, einstein_transaction
+                )
+                einstein_transaction = None
+            except Exception as stage_rollback_error:
+                stage_rollback_blocked = True
+                result["checks"]["failure_stage_rollback"] = {
+                    "confirmed": False,
+                    "recovery_preserved": True,
+                    "error": redactor.text(stage_rollback_error),
+                }
         status_confirmed = False
         state_phase = "unknown"
         backup_ready = False
@@ -2182,7 +3654,7 @@ def main() -> int:
                 "rolled_back",
             }
             rollback_confirmed = False
-            if rollback_required:
+            if rollback_required and not stage_rollback_blocked:
                 try:
                     rollback_response, rollback = call_helper("rollback", timeout=240)
                     rollback_confirmed = (
@@ -2212,7 +3684,7 @@ def main() -> int:
             # Never discard a possibly required rollback backup when deployment
             # state cannot be established. Activation failures occur before
             # deploy_started and are safe to finalize without release state.
-            safe_to_finalize = (
+            safe_to_finalize = not stage_rollback_blocked and (
                 not deploy_started
                 or (status_confirmed and not rollback_required)
                 or rollback_confirmed
