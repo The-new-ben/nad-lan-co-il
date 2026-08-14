@@ -8,6 +8,7 @@ const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const packagePath = "assets/projects/einstein-tower/contracts/flagship-project.json";
 const stagePath = "docs/wp-drafts/einstein-tower-flagship-v3-private-stage.json";
 const reportPath = "docs/qa/einstein-tower-flagship-stage-validation.json";
+const stageOperation = "create_exact_private_sandbox";
 const read = (relative) => fs.readFileSync(path.join(ROOT, relative), "utf8").replace(/\r\n?/g, "\n");
 const readJson = (relative) => JSON.parse(read(relative));
 const sha256 = (value) => crypto.createHash("sha256").update(value).digest("hex");
@@ -37,6 +38,7 @@ const contract = registry.contracts.find((row) => row.project_contract_id === pr
 assert(contract, "Trusted Einstein contract is missing.");
 assert(project.schema === "nadlan-flagship-project-package/v1", "Project-package schema mismatch.");
 assert(stage.schema === "nadlan-wordpress-private-stage-request/v1", "Private-stage schema mismatch.");
+assert(stage.operation === stageOperation, "Private-stage operation must be exact create-only.");
 assert(project.project_contract_id === "einstein-tower-6885-32", "Project identity mismatch.");
 assert(project.canonical.post_id === 4867 && project.canonical.slug === "einstein-tower", "Canonical target mismatch.");
 assert(project.canonical.public_release_enabled === false, "Public release must remain disabled.");
@@ -157,11 +159,12 @@ const report = {
   project_contract_id: project.project_contract_id,
   canonical_post_id: 4867,
   private_stage_slug: stage.body.slug,
+  private_stage_operation: stage.operation,
   counts: { buyer_sources: buyer.sources.length, tools: visual.tools.length, scenes: experiences.scenes.length, model_hotspots: expectedHotspots.length, inventory_rows: 0 },
   gates: {
     project_identity: "pass", current_permit_state: "pass", zero_inventory: "pass", model_hashes: "pass",
     four_tool_hierarchy: "pass", interior_facilities: "pass", illustrative_mapping: "pass", no_write: "pass",
-    sandbox_catalog_dedupe: "pass", password_secret_excluded: "pass", article_h1_and_disclosure_ownership: "pass",
+    create_only_operation: "pass", sandbox_catalog_dedupe: "pass", password_secret_excluded: "pass", article_h1_and_disclosure_ownership: "pass",
     private_asset_proxy: "pass", private_asset_storage_hashes: "pass", direct_wrapper_execution_zero_bytes: "pass",
   },
   hashes: { project_package_sha256: textFileSha(packagePath), private_stage_sha256: textFileSha(stagePath) },
