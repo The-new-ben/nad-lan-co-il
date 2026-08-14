@@ -482,12 +482,7 @@ def source_patch_contract(*, require_merged: bool) -> dict[str, str]:
     }
 
 
-def pinned_report() -> dict[str, Any]:
-    if not REPORT_PATH.is_file() or not secrets.compare_digest(
-        sha256_path(REPORT_PATH), REPORT_SHA256
-    ):
-        raise RuntimeError("Pinned retained-run report is missing or changed")
-    payload = json.loads(REPORT_PATH.read_text(encoding="utf-8"))
+def validate_retained_report_contract(payload: dict[str, Any]) -> dict[str, Any]:
     checks = payload.get("checks") if isinstance(payload.get("checks"), dict) else {}
     deploy = checks.get("deploy") if isinstance(checks.get("deploy"), dict) else {}
     plugin = deploy.get("plugin") if isinstance(deploy.get("plugin"), dict) else {}
@@ -539,6 +534,72 @@ def pinned_report() -> dict[str, Any]:
     ):
         raise RuntimeError("Pinned retained-run report contract is not exact")
     return payload
+
+
+def pinned_report() -> dict[str, Any]:
+    if not REPORT_PATH.is_file() or not secrets.compare_digest(
+        sha256_path(REPORT_PATH), REPORT_SHA256
+    ):
+        raise RuntimeError("Pinned retained-run report is missing or changed")
+    payload = json.loads(REPORT_PATH.read_text(encoding="utf-8"))
+    return validate_retained_report_contract(payload)
+
+
+def retained_report_contract_self_test() -> dict[str, Any]:
+    payload = {
+        "run_id": RUN_ID,
+        "passed": False,
+        "error": "External Einstein stage commit did not reconcile within its retry bound",
+        "helper": {
+            "name": HELPER_NAME,
+            "route": HELPER_ROUTE,
+            "id": HELPER_ID,
+            "code_sha256": OLD_HELPER_SHA256,
+        },
+        "artifact": {
+            "mode": "upload",
+            "sha256": ARTIFACT_SHA256,
+            "archive_bytes": ARTIFACT_BYTES,
+            "entry_count": ARTIFACT_ENTRIES,
+            "uncompressed_bytes": ARTIFACT_UNCOMPRESSED_BYTES,
+        },
+        "checks": {
+            "deploy": {
+                "plugin": {
+                    "plugin_file": PLUGIN_FILE,
+                    "version": EXPECTED_VERSION,
+                    "active": True,
+                    "inventory": {
+                        "file_count": PLUGIN_FILES,
+                        "bytes": PLUGIN_BYTES,
+                        "digest": PLUGIN_DIGEST,
+                    },
+                },
+                "backup": {
+                    "digest": BACKUP_DIGEST,
+                    "file_count": BACKUP_FILES,
+                    "bytes": BACKUP_BYTES,
+                },
+            },
+            "canonical_public_postdeploy": {
+                "baseline": {"contract_sha256": CANONICAL_STORAGE_SHA256},
+                "unchanged": True,
+            },
+            "canonical_public_same_schema_stage_baseline": {
+                "snapshot_sha256": CANONICAL_REST_SHA256,
+            },
+            "failure_status": {"state_phase": "page_creating", "backup_ready": True},
+            "independent_helper_cleanup": {"recovery_retained": True},
+        },
+    }
+    validated = validate_retained_report_contract(payload)
+    drifted = json.loads(json.dumps(payload))
+    drifted["checks"]["failure_status"]["backup_ready"] = False
+    try:
+        validate_retained_report_contract(drifted)
+    except RuntimeError:
+        return validated
+    raise RuntimeError("Retained-report contract accepted a drifted fixture")
 
 
 def php_assignment(code: str, variable: str, *, integer: bool = False) -> Any:
@@ -2303,7 +2364,7 @@ def raw_meta_contract_self_test(stage: dict[str, Any]) -> dict[str, bool]:
 def self_test() -> dict[str, Any]:
     checkpoint_durability_self_test()
     source_line_ending_self_test()
-    report = pinned_report()
+    report = retained_report_contract_self_test()
     patch_contract = source_patch_contract(require_merged=False)
     if (
         patch_contract["old_identity"].count("get_posts(") != 1
