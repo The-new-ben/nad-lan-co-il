@@ -53,6 +53,9 @@ MAX_UPLOAD_CHUNKS = 256
 MARKER_RE = re.compile(r"__[A-Z0-9_]+__")
 EINSTEIN_STAGE_SCHEMA = "nadlan-wordpress-private-stage-request/v1"
 EINSTEIN_STAGE_OPERATION = "create_exact_private_sandbox"
+CANONICAL_POST_STORAGE_PROOF_SCHEMA = "nadlan-canonical-post-storage-proof/v1"
+CANONICAL_POST_STORAGE_COMPARE_SCHEMA = "nadlan-canonical-post-storage-compare/v1"
+CANONICAL_POST_STORAGE_VERIFY_ACTION = "verify_canonical_post_storage"
 EINSTEIN_STAGE_SLUG = "sandbox-einstein-tower-flagship-v3-review"
 EINSTEIN_CANONICAL_POST_ID = 4867
 EINSTEIN_CANONICAL_PATH = "/projects/einstein-tower/"
@@ -93,6 +96,10 @@ DEPLOY_FAILURE_CONTRACT = {
         "plugin_state_unavailable",
         "plugin_inactive",
         "prior_backup_present",
+        "canonical_post_storage_state_invalid",
+        "canonical_post_storage_baseline_failed",
+        "canonical_post_storage_baseline_persist_failed",
+        "canonical_post_storage_changed_before_install",
     ),
     "artifact_acquisition": ("artifact_download_failed", "upload_path_unavailable"),
     "artifact_verification": (
@@ -120,7 +127,10 @@ DEPLOY_FAILURE_CONTRACT = {
         "preinstall_backup_reinventory_failed",
     ),
     "backup_commit": ("backup_state_persist_failed",),
-    "plugin_install": ("plugin_upgrade_failed",),
+    "plugin_install": (
+        "canonical_post_storage_changed_before_upgrade",
+        "plugin_upgrade_failed",
+    ),
     "post_install": (
         "cache_purge_failed",
         "plugin_state_unavailable",
@@ -187,6 +197,131 @@ def sha256_bytes(value: bytes) -> str:
 
 def exact_json_bytes(value: Any) -> bytes:
     return json.dumps(value, ensure_ascii=False, separators=(",", ":")).encode("utf-8")
+
+
+def canonical_post_storage_proof(
+    payload: dict[str, Any], expected_post_id: int
+) -> dict[str, Any]:
+    """Validate hashes/counts for exact core, raw-meta, and term storage rows."""
+    response_keys = {
+        "schema",
+        "post_id",
+        "core_sha256",
+        "core_column_count",
+        "raw_meta_sha256",
+        "raw_meta_row_count",
+        "term_relationships_sha256",
+        "term_relationships_row_count",
+        "contract_sha256",
+    }
+    if not isinstance(payload, dict) or set(payload) != response_keys:
+        raise RuntimeError("Canonical post storage response shape is not exact")
+    if (
+        payload.get("schema") != CANONICAL_POST_STORAGE_PROOF_SCHEMA
+        or payload.get("post_id") != expected_post_id
+    ):
+        raise RuntimeError("Canonical post storage response identity is not exact")
+    hash_keys = {
+        "core_sha256",
+        "raw_meta_sha256",
+        "term_relationships_sha256",
+        "contract_sha256",
+    }
+    count_contract = {
+        "core_column_count": (23, 256),
+        "raw_meta_row_count": (0, 4096),
+        "term_relationships_row_count": (0, 1024),
+    }
+    if any(
+        not re.fullmatch(r"[a-f0-9]{64}", str(payload.get(key) or ""))
+        for key in hash_keys
+    ) or any(
+        not isinstance(payload.get(key), int)
+        or isinstance(payload.get(key), bool)
+        or not minimum <= payload[key] <= maximum
+        for key, (minimum, maximum) in count_contract.items()
+    ):
+        raise RuntimeError("Canonical post storage hashes or counts are invalid")
+    contract = {
+        "schema": CANONICAL_POST_STORAGE_PROOF_SCHEMA,
+        "post_id": expected_post_id,
+        "core_sha256": str(payload["core_sha256"]),
+        "core_column_count": int(payload["core_column_count"]),
+        "raw_meta_sha256": str(payload["raw_meta_sha256"]),
+        "raw_meta_row_count": int(payload["raw_meta_row_count"]),
+        "term_relationships_sha256": str(payload["term_relationships_sha256"]),
+        "term_relationships_row_count": int(
+            payload["term_relationships_row_count"]
+        ),
+    }
+    contract_sha256 = str(payload["contract_sha256"])
+    if not secrets.compare_digest(
+        sha256_bytes(exact_json_bytes(contract)), contract_sha256
+    ):
+        raise RuntimeError("Canonical post storage aggregate contract hash is invalid")
+    return {
+        **contract,
+        "contract_sha256": contract_sha256,
+        "proof_scope": "all_post_columns_all_raw_meta_all_term_relationships",
+    }
+
+
+def canonical_post_storage_unchanged(
+    before: dict[str, Any], after: dict[str, Any]
+) -> bool:
+    return (
+        before.get("schema") == CANONICAL_POST_STORAGE_PROOF_SCHEMA
+        and before.get("schema") == after.get("schema")
+        and before.get("post_id") == after.get("post_id")
+        and before.get("proof_scope") == after.get("proof_scope")
+        and re.fullmatch(r"[a-f0-9]{64}", str(before.get("contract_sha256") or ""))
+        is not None
+        and secrets.compare_digest(
+            str(before["contract_sha256"]), str(after.get("contract_sha256") or "")
+        )
+    )
+
+
+def canonical_post_storage_comparison(
+    payload: dict[str, Any], expected_post_id: int
+) -> dict[str, Any]:
+    """Validate a same-run, stored-baseline storage comparison response."""
+    response_keys = {
+        "schema",
+        "post_id",
+        "state_phase",
+        "lock_owned",
+        "baseline",
+        "current",
+        "unchanged",
+    }
+    if not isinstance(payload, dict) or set(payload) != response_keys:
+        raise RuntimeError("Canonical post storage comparison shape is not exact")
+    if (
+        payload.get("schema") != CANONICAL_POST_STORAGE_COMPARE_SCHEMA
+        or payload.get("post_id") != expected_post_id
+        or payload.get("state_phase")
+        not in {"deployed", "page_creating", "page_ready", "rolled_back"}
+        or payload.get("lock_owned") is not True
+        or not isinstance(payload.get("unchanged"), bool)
+    ):
+        raise RuntimeError("Canonical post storage comparison identity is not exact")
+    baseline = canonical_post_storage_proof(
+        payload.get("baseline"), expected_post_id
+    )
+    current = canonical_post_storage_proof(payload.get("current"), expected_post_id)
+    observed_unchanged = canonical_post_storage_unchanged(baseline, current)
+    if payload["unchanged"] is not observed_unchanged:
+        raise RuntimeError("Canonical post storage comparison result is inconsistent")
+    return {
+        "schema": CANONICAL_POST_STORAGE_COMPARE_SCHEMA,
+        "post_id": expected_post_id,
+        "state_phase": str(payload["state_phase"]),
+        "lock_owned": True,
+        "baseline": baseline,
+        "current": current,
+        "unchanged": observed_unchanged,
+    }
 
 
 def validate_einstein_stage_request(path: Path) -> dict[str, Any]:
@@ -3984,6 +4119,287 @@ def _finish_self_test(
     if "$request->get_param( 'meta_keys' )" in external_stage_helper:
         raise RuntimeError("Einstein helper accepted a caller-selected meta subset")
 
+    def storage_proof_fixture(
+        *,
+        core_tag: str = "core-v1",
+        raw_meta_tag: str = "raw-meta-v1",
+        term_tag: str = "terms-v1",
+        raw_meta_rows: int = 17,
+    ) -> dict[str, Any]:
+        contract = {
+            "schema": CANONICAL_POST_STORAGE_PROOF_SCHEMA,
+            "post_id": EINSTEIN_CANONICAL_POST_ID,
+            "core_sha256": sha256_text(core_tag),
+            "core_column_count": 23,
+            "raw_meta_sha256": sha256_text(raw_meta_tag),
+            "raw_meta_row_count": raw_meta_rows,
+            "term_relationships_sha256": sha256_text(term_tag),
+            "term_relationships_row_count": 3,
+        }
+        return {
+            **contract,
+            "contract_sha256": sha256_bytes(exact_json_bytes(contract)),
+        }
+
+    def storage_comparison_fixture(current: dict[str, Any]) -> dict[str, Any]:
+        baseline = storage_proof_fixture()
+        baseline_validated = canonical_post_storage_proof(
+            baseline, EINSTEIN_CANONICAL_POST_ID
+        )
+        current_validated = canonical_post_storage_proof(
+            current, EINSTEIN_CANONICAL_POST_ID
+        )
+        return {
+            "schema": CANONICAL_POST_STORAGE_COMPARE_SCHEMA,
+            "post_id": EINSTEIN_CANONICAL_POST_ID,
+            "state_phase": "deployed",
+            "lock_owned": True,
+            "baseline": baseline,
+            "current": current,
+            "unchanged": canonical_post_storage_unchanged(
+                baseline_validated, current_validated
+            ),
+        }
+
+    storage_baseline = storage_proof_fixture()
+    unchanged_storage = canonical_post_storage_comparison(
+        storage_comparison_fixture(copy.deepcopy(storage_baseline)),
+        EINSTEIN_CANONICAL_POST_ID,
+    )
+    rest_before_schema_change = {
+        "id": EINSTEIN_CANONICAL_POST_ID,
+        "slug": "einstein-tower",
+        "status": "publish",
+        "title": {"raw": "Einstein"},
+        "content": {"raw": "Content"},
+        "excerpt": {"raw": "Excerpt"},
+        "password": "",
+        "meta": {"existing_registered_meta": "value"},
+    }
+    rest_after_schema_change = copy.deepcopy(rest_before_schema_change)
+    rest_after_schema_change["meta"]["new_registered_default"] = ""
+    rest_schema_hash_changed = not secrets.compare_digest(
+        sha256_bytes(exact_json_bytes(wordpress_post_snapshot(rest_before_schema_change))),
+        sha256_bytes(exact_json_bytes(wordpress_post_snapshot(rest_after_schema_change))),
+    )
+    schema_only_default_ignored = (
+        rest_schema_hash_changed and unchanged_storage["unchanged"] is True
+    )
+
+    storage_drift_results: dict[str, bool] = {}
+    for drift_name, drift_proof in {
+        "core": storage_proof_fixture(core_tag="core-v2"),
+        "raw_meta": storage_proof_fixture(raw_meta_tag="raw-meta-v2"),
+        "raw_meta_count": storage_proof_fixture(raw_meta_rows=18),
+        "term_relationships": storage_proof_fixture(term_tag="terms-v2"),
+    }.items():
+        comparison = canonical_post_storage_comparison(
+            storage_comparison_fixture(drift_proof), EINSTEIN_CANONICAL_POST_ID
+        )
+        storage_drift_results[drift_name] = comparison["unchanged"] is False
+    if not schema_only_default_ignored or not all(storage_drift_results.values()):
+        raise RuntimeError("Canonical post storage drift regression failed")
+
+    malformed_storage_hash_rejected = False
+    malformed_storage = storage_proof_fixture()
+    malformed_storage["contract_sha256"] = "0" * 64
+    try:
+        canonical_post_storage_proof(malformed_storage, EINSTEIN_CANONICAL_POST_ID)
+    except RuntimeError:
+        malformed_storage_hash_rejected = True
+    if not malformed_storage_hash_rejected:
+        raise RuntimeError("Malformed canonical post storage aggregate hash was accepted")
+
+    storage_shape_rejected = False
+    malformed_shape = storage_proof_fixture()
+    malformed_shape["raw_value"] = "must-never-be-accepted"
+    try:
+        canonical_post_storage_proof(malformed_shape, EINSTEIN_CANONICAL_POST_ID)
+    except RuntimeError:
+        storage_shape_rejected = True
+    storage_count_rejected = False
+    malformed_count = storage_proof_fixture()
+    malformed_count["raw_meta_row_count"] = True
+    try:
+        canonical_post_storage_proof(malformed_count, EINSTEIN_CANONICAL_POST_ID)
+    except RuntimeError:
+        storage_count_rejected = True
+    comparison_contract_rejections: dict[str, bool] = {}
+    for rejection_name, malformed_comparison in {
+        "forged_unchanged": storage_comparison_fixture(
+            storage_proof_fixture(core_tag="core-v2")
+        ),
+        "unowned_lock": storage_comparison_fixture(storage_proof_fixture()),
+        "invalid_phase": storage_comparison_fixture(storage_proof_fixture()),
+    }.items():
+        if rejection_name == "forged_unchanged":
+            malformed_comparison["unchanged"] = True
+        elif rejection_name == "unowned_lock":
+            malformed_comparison["lock_owned"] = False
+        else:
+            malformed_comparison["state_phase"] = "backup_ready"
+        try:
+            canonical_post_storage_comparison(
+                malformed_comparison, EINSTEIN_CANONICAL_POST_ID
+            )
+        except RuntimeError:
+            comparison_contract_rejections[rejection_name] = True
+    if not (
+        storage_shape_rejected
+        and storage_count_rejected
+        and len(comparison_contract_rejections) == 3
+        and all(comparison_contract_rejections.values())
+    ):
+        raise RuntimeError("Canonical post storage proof shape/count/lock gate drifted")
+
+    storage_proof_start = external_stage_helper.find(
+        "$canonical_post_storage_proof = function"
+    )
+    storage_proof_end = external_stage_helper.find(
+        "$canonical_post_storage_proof_valid = function", storage_proof_start
+    )
+    if storage_proof_start < 0 or storage_proof_end <= storage_proof_start:
+        raise RuntimeError("Canonical post raw storage proof was not rendered")
+    storage_proof_section = external_stage_helper[
+        storage_proof_start:storage_proof_end
+    ]
+    for required_storage_marker in (
+        'SELECT * FROM {$wpdb->posts} WHERE ID = %d',
+        "SELECT meta_id, meta_key, meta_value FROM {$wpdb->postmeta} "
+        "WHERE post_id = %d ORDER BY meta_id ASC",
+        "SELECT object_id, term_taxonomy_id, term_order FROM "
+        "{$wpdb->term_relationships} WHERE object_id = %d "
+        "ORDER BY term_taxonomy_id ASC",
+        "ksort( $core_row, SORT_STRING );",
+        "ksort( $raw_meta_row, SORT_STRING );",
+        "ksort( $term_relationship_row, SORT_STRING );",
+        "serialize( $core_row )",
+        "serialize( $raw_meta_rows )",
+        "serialize( $term_relationship_rows )",
+        "return $contract;",
+    ):
+        if required_storage_marker not in storage_proof_section:
+            raise RuntimeError(
+                "Canonical post storage proof is missing exact raw marker: "
+                + required_storage_marker
+            )
+    for forbidden_storage_marker in (
+        " JOIN ",
+        "get_post_meta(",
+        "get_object_taxonomies(",
+        "wp_get_object_terms(",
+        "snapshot_b64",
+        "base64_encode(",
+    ):
+        if forbidden_storage_marker in storage_proof_section:
+            raise RuntimeError(
+                "Canonical post storage proof exposes or derives a non-raw value: "
+                + forbidden_storage_marker
+            )
+
+    storage_action_start = external_stage_helper.find(
+        "if ( 'verify_canonical_post_storage' === $action )"
+    )
+    storage_action_end = external_stage_helper.find(
+        "if ( 'deploy_preflight' === $action )", storage_action_start
+    )
+    if storage_action_start < 0 or storage_action_end <= storage_action_start:
+        raise RuntimeError("Canonical post stored-baseline action was not rendered")
+    storage_action_section = external_stage_helper[
+        storage_action_start:storage_action_end
+    ]
+    for required_action_marker in (
+        "$canonical_lock = get_option( $lock_key, false );",
+        "$canonical_state = get_option( $state_key, array() );",
+        "'canonical_post_storage_baseline'",
+        "'nadlan-canonical-post-storage-compare/v1'",
+        "'baseline'    => $canonical_state['canonical_post_storage_baseline']",
+        "'current'     => $current_proof",
+        "'unchanged'   => $canonical_post_storage_unchanged(",
+    ):
+        if required_action_marker not in storage_action_section:
+            raise RuntimeError(
+                "Canonical post stored-baseline action is incomplete: "
+                + required_action_marker
+            )
+    for forbidden_action_marker in (
+        "snapshot_b64",
+        "core_row",
+        "raw_meta_rows",
+        "term_relationship_rows",
+        "meta_value",
+    ):
+        if forbidden_action_marker in storage_action_section:
+            raise RuntimeError(
+                "Canonical post comparison action emitted raw storage values: "
+                + forbidden_action_marker
+            )
+
+    deploy_action_start = external_stage_helper.find("if ( 'deploy' === $action )")
+    deploy_action_end = external_stage_helper.find(
+        "if ( 'commit_external_stage' === $action )", deploy_action_start
+    )
+    deploy_action_section = external_stage_helper[deploy_action_start:deploy_action_end]
+    deploy_lock_position = deploy_action_section.find("if ( ! $acquire_lock() )")
+    baseline_capture_position = deploy_action_section.find(
+        "$state['canonical_post_storage_baseline'] = "
+        "$canonical_post_storage_proof();"
+    )
+    baseline_persist_position = deploy_action_section.find(
+        "$state = $save_state( $state );", baseline_capture_position
+    )
+    backup_ready_position = deploy_action_section.find("'phase'          => 'backup_ready'")
+    late_preupgrade_position = deploy_action_section.find(
+        "canonical_post_storage_changed_before_upgrade"
+    )
+    upgrader_position = deploy_action_section.find("new Plugin_Upgrader( $skin )")
+    if not (
+        0
+        <= deploy_lock_position
+        < baseline_capture_position
+        < baseline_persist_position
+        < backup_ready_position
+        < late_preupgrade_position
+        < upgrader_position
+        and "cannot recapture its canonical post storage baseline"
+        in deploy_action_section
+        and "$canonical_post_storage_proof_valid( "
+        "$state['canonical_post_storage_baseline'] )"
+        in deploy_action_section
+        and "$canonical_recovery_required ? 'failed' : 'not_required'"
+        in deploy_action_section
+    ):
+        raise RuntimeError(
+            "Canonical storage baseline is not locked, persisted, reused, and rechecked pre-upgrade"
+        )
+
+    tracked_stage_position = external_commit_section.find(
+        "$state['phase'] = 'page_creating';"
+    )
+    stage_recheck_position = external_commit_section.find(
+        "$stage_snapshot_recheck = $stage_contract_snapshot("
+    )
+    final_stage_storage_position = external_commit_section.find(
+        "Canonical post storage changed immediately before page-ready persistence."
+    )
+    page_ready_position = external_commit_section.find(
+        "$state['phase'] = 'page_ready';", final_stage_storage_position
+    )
+    if not (
+        0
+        <= tracked_stage_position
+        < stage_recheck_position
+        < final_stage_storage_position
+        < page_ready_position
+        and external_commit_section.count("$canonical_post_storage_proof()") >= 2
+        and "'page_creating' === $state_phase" in external_stage_helper
+        and "'page_rollback_tracked' => $page_rollback_tracked"
+        in external_stage_helper
+    ):
+        raise RuntimeError(
+            "External stage is not rollback-tracked and storage-rechecked before page-ready"
+        )
+
     fixture_meta = validate_einstein_stage_request(
         REPO_ROOT
         / "docs"
@@ -4139,6 +4555,43 @@ def _finish_self_test(
                 "Rolled-back finalization page guard is incomplete: "
                 + required_finalize_page_guard
             )
+    finalize_early_storage_position = external_finalize_section.find(
+        "Canonical post storage changed before release finalization."
+    )
+    finalize_cleanup_position = external_finalize_section.find(
+        "$finalize_failure_stage = 'artifact_cleanup';"
+    )
+    finalize_late_storage_position = external_finalize_section.find(
+        "Canonical post storage changed before finalization marker persistence."
+    )
+    finalize_marker_persist_position = external_finalize_section.find(
+        "$state['phase'] = 'finalizing_cleanup_complete';"
+    )
+    marker_reconcile_storage_position = external_finalize_section.find(
+        "Canonical post storage changed before finalization marker reconciliation."
+    )
+    marker_branch_position = external_finalize_section.find("if ( $finalize_marker )")
+    marker_release_position = external_finalize_section.find(
+        "$lock_released = $release_lock();", marker_branch_position
+    )
+    if not (
+        0
+        <= finalize_early_storage_position
+        < finalize_cleanup_position
+        < finalize_late_storage_position
+        < finalize_marker_persist_position
+        and 0
+        <= marker_branch_position
+        < marker_reconcile_storage_position
+        < marker_release_position
+        and "&& true === $recovery_adoption_enabled"
+        in external_finalize_section
+        and "! array_key_exists( 'canonical_post_storage_baseline', $state )"
+        in external_finalize_section
+    ):
+        raise RuntimeError(
+            "Finalization does not recheck storage before cleanup, marker persistence, and marker reconciliation"
+        )
 
     def simulate_page_first_rollback(
         *,
@@ -4679,7 +5132,30 @@ def _finish_self_test(
         raise RuntimeError("Bounded upload base64 round-trip failed")
 
     driver_source = Path(__file__).read_text(encoding="utf-8")
+    if not (
+        external_stage_helper.count(
+            "if ( 'verify_canonical_post_storage' === $action )"
+        )
+        == 1
+        and 'CANONICAL_POST_STORAGE_VERIFY_ACTION = "verify_canonical_post_storage"'
+        in driver_source
+        and "canonical_post_" + "snapshot" not in driver_source
+        and "canonical_post_storage_proof' === $action" not in external_stage_helper
+    ):
+        raise RuntimeError("Canonical post storage helper/driver action name diverged")
     main_position = driver_source.find("\ndef main(")
+    main_section = driver_source[main_position:]
+    if not (
+        main_section.count("CANONICAL_POST_STORAGE_VERIFY_ACTION") == 3
+        and main_section.count("Canonical post storage post-deployment comparison")
+        == 1
+        and main_section.count("Canonical post storage pre-finalize comparison") == 1
+        and main_section.count("Canonical post storage post-rollback comparison")
+        == 1
+    ):
+        raise RuntimeError(
+            "Canonical post storage runtime action count or call purpose diverged"
+        )
     success_health_position = driver_source.find("final_health = public.get(", main_position)
     phase_one_position = driver_source.find(
         "finalize_response, finalize, finalize_attempts = finalize_release_resources()",
@@ -4702,12 +5178,49 @@ def _finish_self_test(
     deploy_driver_position = driver_source.find(
         'deploy_response, deploy = call_helper("deploy"', upload_driver_position
     )
+    postdeploy_storage_position = driver_source.find(
+        "canonical_after_response, canonical_after_payload = call_helper(",
+        deploy_driver_position,
+    )
+    stabilization_gate_position = driver_source.find(
+        "if not stable:", deploy_driver_position
+    )
+    stage_write_position = driver_source.find(
+        "einstein_transaction = write_einstein_stage(", postdeploy_storage_position
+    )
+    browser_acceptance_position = driver_source.find(
+        "acceptance = subprocess.run(", stage_write_position
+    )
+    final_stage_readback_position = driver_source.find(
+        "final_stage_record = get_authenticated_post(", browser_acceptance_position
+    )
+    final_storage_position = driver_source.find(
+        "final_storage_response, final_storage_payload = call_helper(",
+        stage_write_position,
+    )
+    final_rest_position = driver_source.find(
+        "final_public_snapshot = wordpress_post_snapshot(", final_storage_position
+    )
+    rollback_storage_position = driver_source.find(
+        '"failure_canonical_storage_reconciliation"', final_rest_position
+    )
+    safe_finalize_position = driver_source.find(
+        "safe_to_finalize = (", rollback_storage_position
+    )
     if not (
         0 <= main_position < success_health_position < phase_one_position < finally_position < phase_two_position
         and 0
         <= preflight_driver_position
         < upload_driver_position
         < deploy_driver_position
+        < stabilization_gate_position
+        < postdeploy_storage_position
+        < stage_write_position
+        < browser_acceptance_position
+        < final_stage_readback_position
+        < final_storage_position
+        < final_rest_position
+        < phase_one_position
         and "independently_remove_snippet(" not in driver_source[phase_one_position:finally_position]
         and "and not retain_recovery_helper" in driver_source[finally_position:phase_two_position]
         and "recovery_retained" in driver_source[finally_position:]
@@ -4715,6 +5228,10 @@ def _finish_self_test(
         and '"rolled_back",' in driver_source[main_position:]
         and "rollback_response_is_exact(\n                            rollback, before_plugin_contract"
         in driver_source[main_position:]
+        and 0
+        <= rollback_storage_position
+        < safe_finalize_position
+        < finally_position
     ):
         raise RuntimeError("Driver must defer independent helper deletion to finally after phase one")
     with tempfile.TemporaryDirectory(prefix="nadlan-release-self-test-") as temp_dir:
@@ -5853,6 +6370,44 @@ def _finish_self_test(
             "strict_booleans": True,
             "rollback_outcomes": sorted(rollback_outcomes),
         },
+        "canonical_post_storage": {
+            "proof_schema": CANONICAL_POST_STORAGE_PROOF_SCHEMA,
+            "comparison_schema": CANONICAL_POST_STORAGE_COMPARE_SCHEMA,
+            "action": CANONICAL_POST_STORAGE_VERIFY_ACTION,
+            "hashes_counts_only": True,
+            "raw_posts_all_columns": True,
+            "raw_meta_ordered_by_meta_id": True,
+            "raw_term_relationships_only": True,
+            "baseline_locked_persisted_and_reused": True,
+            "terminal_baseline_failure_requires_recovery": True,
+            "late_preupgrade_recheck": True,
+            "post_stabilization_recheck": True,
+            "external_stage_tracked_before_commit_recheck": True,
+            "prefinalize_driver_and_helper_rechecks": True,
+            "postrollback_reconciliation_required": True,
+            "rest_schema_default_addition_ignored": schema_only_default_ignored,
+            "core_drift_rejected": storage_drift_results["core"],
+            "raw_meta_drift_rejected": storage_drift_results["raw_meta"],
+            "raw_meta_count_drift_rejected": storage_drift_results[
+                "raw_meta_count"
+            ],
+            "term_relationship_drift_rejected": storage_drift_results[
+                "term_relationships"
+            ],
+            "malformed_aggregate_rejected": malformed_storage_hash_rejected,
+            "unexpected_shape_rejected": storage_shape_rejected,
+            "noninteger_count_rejected": storage_count_rejected,
+            "forged_comparison_rejected": comparison_contract_rejections[
+                "forged_unchanged"
+            ],
+            "unowned_lock_rejected": comparison_contract_rejections[
+                "unowned_lock"
+            ],
+            "invalid_phase_rejected": comparison_contract_rejections[
+                "invalid_phase"
+            ],
+            "action_name_exact": True,
+        },
         "rollback_activation_contract": True,
         "secure_local_upload": True,
         "noncanonical_path_rejected": noncanonical_path_rejected,
@@ -6392,6 +6947,7 @@ def main() -> int:
             result["checks"]["canonical_public_predeploy"] = {
                 "post_id": EINSTEIN_CANONICAL_POST_ID,
                 "snapshot_sha256": einstein_public_predeploy_sha256,
+                "scope": "same_plugin_version_recovery_compatibility",
             }
             result["checks"]["einstein_create_only_preflight"] = {
                 "slug": EINSTEIN_STAGE_SLUG,
@@ -6783,21 +7339,22 @@ def main() -> int:
             raise RuntimeError("Expected plugin version did not stabilize; exact backup was restored")
 
         if einstein_request is not None:
-            canonical_after_deploy = wordpress_post_snapshot(
-                get_authenticated_post(client, EINSTEIN_CANONICAL_POST_ID)
+            canonical_after_response, canonical_after_payload = call_helper(
+                CANONICAL_POST_STORAGE_VERIFY_ACTION, timeout=120
             )
-            canonical_after_deploy_sha256 = sha256_bytes(
-                exact_json_bytes(canonical_after_deploy)
+            require_response(
+                canonical_after_response,
+                "Canonical post storage post-deployment comparison",
             )
-            if not secrets.compare_digest(
-                canonical_after_deploy_sha256, einstein_public_predeploy_sha256
+            canonical_after_deploy = canonical_post_storage_comparison(
+                canonical_after_payload, EINSTEIN_CANONICAL_POST_ID
+            )
+            if (
+                canonical_after_deploy["unchanged"] is not True
+                or canonical_after_deploy["state_phase"] != "deployed"
             ):
                 raise RuntimeError("Plugin deployment changed canonical public post 4867")
-            result["checks"]["canonical_public_postdeploy"] = {
-                "post_id": EINSTEIN_CANONICAL_POST_ID,
-                "unchanged": True,
-                "snapshot_sha256": canonical_after_deploy_sha256,
-            }
+            result["checks"]["canonical_public_postdeploy"] = canonical_after_deploy
             einstein_transaction = write_einstein_stage(client, einstein_request, post_password)
             einstein_stage_commit_attempted = True
             page_url = str(einstein_transaction["page_url"])
@@ -7045,12 +7602,31 @@ def main() -> int:
             result["checks"]["final_stage_readback"] = assert_einstein_stage_readback(
                 final_stage_record, einstein_request, post_password
             )
+            final_storage_response, final_storage_payload = call_helper(
+                CANONICAL_POST_STORAGE_VERIFY_ACTION, timeout=120
+            )
+            require_response(
+                final_storage_response,
+                "Canonical post storage pre-finalize comparison",
+            )
+            final_storage_proof = canonical_post_storage_comparison(
+                final_storage_payload, EINSTEIN_CANONICAL_POST_ID
+            )
+            if (
+                final_storage_proof["unchanged"] is not True
+                or final_storage_proof["state_phase"] != "page_ready"
+            ):
+                raise RuntimeError("Canonical public post 4867 changed before finalization")
+            result["checks"]["final_public_storage_immutability"] = (
+                final_storage_proof
+            )
             final_public_snapshot = wordpress_post_snapshot(
                 get_authenticated_post(client, EINSTEIN_CANONICAL_POST_ID)
             )
             final_public_hash = sha256_bytes(exact_json_bytes(final_public_snapshot))
             if not secrets.compare_digest(
-                final_public_hash, str(einstein_transaction["canonical_public_sha256"])
+                final_public_hash,
+                str(einstein_transaction["canonical_public_sha256"]),
             ):
                 raise RuntimeError("Canonical public post 4867 changed before finalization")
             result["checks"]["final_public_post_immutability"] = {
@@ -7113,6 +7689,7 @@ def main() -> int:
         status_confirmed = False
         state_phase = "unknown"
         backup_ready = False
+        page_rollback_tracked = False
         if not resources_finalized and helper_id is not None and helper_hash:
             try:
                 status_response, failure_status = call_helper("status", timeout=60)
@@ -7120,6 +7697,9 @@ def main() -> int:
                     status_confirmed = True
                     state_phase = str(failure_status.get("state_phase") or "none")
                     backup_ready = failure_status.get("backup_ready") is True
+                    page_rollback_tracked = (
+                        failure_status.get("page_rollback_tracked") is True
+                    )
                 failure_upload = (
                     failure_status.get("upload")
                     if isinstance(failure_status.get("upload"), dict)
@@ -7129,6 +7709,7 @@ def main() -> int:
                     "http_status": status_response.status_code,
                     "state_phase": state_phase,
                     "backup_ready": backup_ready,
+                    "page_rollback_tracked": page_rollback_tracked,
                     "upload_temp_absent": failure_upload.get("temp_absent") is True,
                     "upload_temp_safe": failure_upload.get("temp_safe") is True,
                     "upload_temp_bytes": int(failure_upload.get("temp_bytes") or 0),
@@ -7138,11 +7719,18 @@ def main() -> int:
                     "http_status": 0,
                     "state_phase": "unknown",
                     "backup_ready": False,
+                    "page_rollback_tracked": False,
                     "error": redactor.text(status_error),
                 }
 
             if stage_rollback_deferred_to_helper and (
-                not status_confirmed or state_phase not in {"page_ready", "rolled_back"}
+                not status_confirmed
+                or (
+                    state_phase not in {"page_ready", "rolled_back"}
+                    and not (
+                        state_phase == "page_creating" and page_rollback_tracked
+                    )
+                )
             ):
                 stage_rollback_blocked = True
                 result["checks"]["failure_stage_rollback"] = {
@@ -7186,6 +7774,46 @@ def main() -> int:
                         if isinstance(rollback.get("plugin"), dict)
                         else None,
                     }
+                    if rollback_confirmed and einstein_request is not None:
+                        try:
+                            storage_response, storage_payload = call_helper(
+                                CANONICAL_POST_STORAGE_VERIFY_ACTION, timeout=120
+                            )
+                            require_response(
+                                storage_response,
+                                "Canonical post storage post-rollback comparison",
+                            )
+                            storage_reconciliation = canonical_post_storage_comparison(
+                                storage_payload, EINSTEIN_CANONICAL_POST_ID
+                            )
+                            result["checks"][
+                                "failure_canonical_storage_reconciliation"
+                            ] = storage_reconciliation
+                            if (
+                                storage_reconciliation["unchanged"] is not True
+                                or storage_reconciliation["state_phase"]
+                                != "rolled_back"
+                            ):
+                                rollback_confirmed = False
+                                deploy_failure_recovery_blocked = True
+                        except Exception as storage_error:
+                            rollback_confirmed = False
+                            deploy_failure_recovery_blocked = True
+                            result["checks"][
+                                "failure_canonical_storage_reconciliation"
+                            ] = {
+                                "unchanged": False,
+                                "recovery_preserved": True,
+                                "error": redactor.text(storage_error),
+                            }
+                        if not rollback_confirmed:
+                            result["checks"]["failure_rollback"]["confirmed"] = False
+                            result["checks"]["failure_rollback"][
+                                "plugin_restored"
+                            ] = True
+                            result["checks"]["failure_rollback"][
+                                "canonical_storage_reconciled"
+                            ] = False
                     if rollback_confirmed:
                         deployed = False
                         deploy_failure_recovery_blocked = False
