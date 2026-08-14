@@ -1511,6 +1511,172 @@ add_action( 'rest_api_init', function () {
 				}
 			}
 
+			if ( 'terminal_self_delete' === $action ) {
+				try {
+					global $wpdb;
+					$terminal_page_id = $strict_int( $request->get_param( 'page_id' ) );
+					$terminal_page_contract_sha256 = strtolower( (string) $request->get_param( 'page_contract_sha256' ) );
+					$terminal_plugin_digest = strtolower( (string) $request->get_param( 'plugin_digest' ) );
+					$terminal_canonical_storage_sha256 = strtolower( (string) $request->get_param( 'canonical_storage_sha256' ) );
+					if (
+						true !== $external_stage_commit_enabled
+						|| $terminal_page_id !== $request->get_param( 'page_id' )
+						|| $terminal_page_id === $source_post_id
+						|| 1 !== preg_match( '/^[a-f0-9]{64}$/D', $terminal_page_contract_sha256 )
+						|| 1 !== preg_match( '/^[a-f0-9]{64}$/D', $terminal_plugin_digest )
+						|| 1 !== preg_match( '/^[a-f0-9]{64}$/D', $terminal_canonical_storage_sha256 )
+					) {
+						throw new RuntimeException( 'Terminal self-delete request contract is invalid.' );
+					}
+					$terminal_resources_absent = function () use (
+						$storage_root,
+						$upload_root,
+						$upload_path,
+						$backup_root_expected,
+						$legacy_upload_root,
+						$legacy_upload_path,
+						$legacy_backup_root
+					) {
+						foreach ( array(
+							$storage_root,
+							$upload_root,
+							$upload_path,
+							$backup_root_expected,
+							$backup_root_expected . '/nadlan-config',
+							$legacy_upload_root,
+							$legacy_upload_path,
+							$legacy_backup_root,
+							$legacy_backup_root . '/nadlan-config',
+						) as $terminal_resource_path ) {
+							clearstatcache( true, $terminal_resource_path );
+							if ( @file_exists( $terminal_resource_path ) || @is_link( $terminal_resource_path ) ) {
+								return false;
+							}
+						}
+						return true;
+					};
+					$terminal_contract_exact = function () use (
+						$state_key,
+						$lock_key,
+						$terminal_resources_absent,
+						$upload_temp_status,
+						$plugin_state,
+						$plugin_file,
+						$expected_version,
+						$artifact_entry_count,
+						$artifact_uncompressed_bytes,
+						$terminal_plugin_digest,
+						$canonical_post_storage_proof,
+						$canonical_post_storage_proof_valid,
+						$terminal_canonical_storage_sha256,
+						$stage_contract_snapshot,
+						$external_stage_expected_meta,
+						$terminal_page_id,
+						$terminal_page_contract_sha256
+					) {
+						if ( false !== get_option( $state_key, false ) || false !== get_option( $lock_key, false ) || ! $terminal_resources_absent() ) {
+							return false;
+						}
+						$terminal_upload = $upload_temp_status();
+						if (
+							! is_array( $terminal_upload )
+							|| true !== $terminal_upload['temp_absent']
+							|| false !== $terminal_upload['temp_exists']
+							|| true !== $terminal_upload['temp_safe']
+							|| 0 !== (int) $terminal_upload['temp_bytes']
+						) {
+							return false;
+						}
+						$terminal_live = $plugin_state();
+						if (
+							! is_array( $terminal_live )
+							|| $plugin_file !== (string) ( isset( $terminal_live['plugin_file'] ) ? $terminal_live['plugin_file'] : '' )
+							|| $expected_version !== (string) ( isset( $terminal_live['version'] ) ? $terminal_live['version'] : '' )
+							|| true !== ( isset( $terminal_live['active'] ) ? $terminal_live['active'] : false )
+							|| ! isset( $terminal_live['inventory'] )
+							|| ! is_array( $terminal_live['inventory'] )
+							|| $artifact_entry_count !== (int) ( isset( $terminal_live['inventory']['file_count'] ) ? $terminal_live['inventory']['file_count'] : -1 )
+							|| $artifact_uncompressed_bytes !== (int) ( isset( $terminal_live['inventory']['bytes'] ) ? $terminal_live['inventory']['bytes'] : -1 )
+							|| ! hash_equals( $terminal_plugin_digest, (string) ( isset( $terminal_live['inventory']['digest'] ) ? $terminal_live['inventory']['digest'] : '' ) )
+						) {
+							return false;
+						}
+						$terminal_canonical = $canonical_post_storage_proof();
+						if (
+							! $canonical_post_storage_proof_valid( $terminal_canonical )
+							|| ! hash_equals( $terminal_canonical_storage_sha256, (string) $terminal_canonical['contract_sha256'] )
+						) {
+							return false;
+						}
+						$terminal_meta_keys = array_keys( $external_stage_expected_meta );
+						sort( $terminal_meta_keys, SORT_STRING );
+						$terminal_stage = $stage_contract_snapshot( $terminal_page_id, $terminal_meta_keys );
+						return
+							is_array( $terminal_stage )
+							&& $terminal_page_id === (int) ( isset( $terminal_stage['page_id'] ) ? $terminal_stage['page_id'] : 0 )
+							&& hash_equals( $terminal_page_contract_sha256, (string) ( isset( $terminal_stage['contract_sha256'] ) ? $terminal_stage['contract_sha256'] : '' ) );
+					};
+					if ( ! $terminal_contract_exact() ) {
+						throw new RuntimeException( 'Terminal self-delete release contract differs.' );
+					}
+					if ( ! function_exists( 'Code_Snippets\\delete_snippet' ) ) {
+						throw new RuntimeException( 'Code Snippets deletion API is unavailable.' );
+					}
+					$self_recheck = \Code_Snippets\get_snippet( $helper_id, false );
+					if (
+						! $self_recheck
+						|| $helper_id !== (int) $self_recheck->id
+						|| $helper_name !== (string) $self_recheck->name
+						|| 'global' !== (string) $self_recheck->scope
+						|| true !== (bool) $self_recheck->active
+						|| false !== (bool) $self_recheck->network
+						|| ! method_exists( $self_recheck, 'is_trashed' )
+						|| false !== $self_recheck->is_trashed()
+						|| ! hash_equals( $helper_sha256, hash( 'sha256', (string) $self_recheck->code ) )
+						|| false === strpos( (string) $self_recheck->code, $route_path )
+						|| ! $terminal_contract_exact()
+					) {
+						throw new RuntimeException( 'Terminal self-delete identity or release contract changed.' );
+					}
+					$self_deleted = \Code_Snippets\delete_snippet( $helper_id, false );
+					$self_after = \Code_Snippets\get_snippet( $helper_id, false );
+					$wpdb->last_error = '';
+					$self_identity_rows = $wpdb->get_col(
+						$wpdb->prepare(
+							"SELECT id FROM {$wpdb->prefix}snippets WHERE id = %d OR name = %s ORDER BY id ASC LIMIT 2",
+							$helper_id,
+							$helper_name
+						)
+					);
+					if (
+						! $self_deleted
+						|| ( $self_after && 0 !== (int) $self_after->id )
+						|| ! is_array( $self_identity_rows )
+						|| ! empty( $self_identity_rows )
+						|| '' !== (string) $wpdb->last_error
+					) {
+						throw new RuntimeException( 'Terminal self-delete absence proof failed.' );
+					}
+					return array(
+						'schema'                    => 'nadlan-private-release-terminal-self-delete/v1',
+						'helper_deleted'            => true,
+						'state_absent'              => true,
+						'lock_absent'               => true,
+						'resources_absent'          => true,
+						'page_id'                   => $terminal_page_id,
+						'page_contract_sha256'      => $terminal_page_contract_sha256,
+						'plugin_digest'             => $terminal_plugin_digest,
+						'canonical_storage_sha256'  => $terminal_canonical_storage_sha256,
+					);
+				} catch ( Throwable $error ) {
+					return new WP_Error(
+						'nadlan_release_terminal_self_delete_failed',
+						'Terminal helper self-delete failed.',
+						array( 'status' => 409 )
+					);
+				}
+			}
+
 			if ( 'recovery_status' === $action ) {
 				try {
 					if ( true !== $recovery_adoption_enabled ) {
