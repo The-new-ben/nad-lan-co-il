@@ -66,7 +66,8 @@
       "properties": {
         "source_batch": {}, "ingested_at": {}, "verification": {},
         "canonical": {"type": "boolean"},
-        "ready_for_page": {"type": "boolean", "description": "true only when geocoded + has media + has 5-lang article + no null in the page-critical set"},
+        "ready_for_page": {"type": "boolean", "description": "true only when identity, location, truth states, media/model and every language in publication_languages pass their release gates. Do not require or claim five languages when the approved release is Hebrew-only."},
+        "publication_languages": {"type": "array", "items": {"enum": ["he","en","fr","ru","ar"]}},
         "needs": {"type": "array", "description": "what's missing before a page can ship"}
       }
     }

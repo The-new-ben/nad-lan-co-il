@@ -48,6 +48,9 @@ if ( ! function_exists( 'nadlan_card_jsonld' ) ) {
 			return;
 		}
 		$id   = get_queried_object_id();
+		if ( function_exists( 'nadlan_unit_journey_is_private_lab' ) && nadlan_unit_journey_is_private_lab( $id ) ) {
+			return;
+		}
 		$type = get_post_type( $id );
 		$url  = get_permalink( $id );
 		$name = get_the_title( $id );

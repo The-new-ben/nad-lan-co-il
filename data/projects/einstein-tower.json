@@ -1,0 +1,475 @@
+{
+  "id": "einstein-tower",
+  "identity": {
+    "project_contract_id": "einstein-tower-6885-32",
+    "wp_post_id": 4867,
+    "public_slug": "einstein-tower",
+    "name_he": "EINSTEIN TOWER – איינשטיין 33א׳",
+    "name_en": "EINSTEIN TOWER / Einstein 33A",
+    "aka": [
+      {
+        "value": "EINSTEIN TOWER",
+        "kind": "marketing_name",
+        "confirmed": true,
+        "source_ids": ["S001"]
+      },
+      {
+        "value": "Einstein 33A",
+        "kind": "company_filing_name",
+        "confirmed": true,
+        "source_ids": ["S002"]
+      },
+      {
+        "value": "Einstein 18",
+        "kind": "owner_working_alias",
+        "confirmed": false,
+        "source_ids": ["OWNER-2026-08-13", "S007"],
+        "note": "The municipal address point Einstein 18 is on adjacent parcel 6885/40 and is not the canonical project address without a signed crosswalk."
+      },
+      {
+        "value": "Levichko",
+        "kind": "owner_phonetic_alias",
+        "confirmed": false,
+        "source_ids": ["OWNER-2026-08-13"],
+        "note": "No official match was found; the official developer wording is Levi Eshkol."
+      }
+    ],
+    "developer": "קבוצת חג׳ג׳",
+    "organizer": "Regency",
+    "contractor": null,
+    "architect": "משה צור אדריכלים",
+    "marketing_status": "under_construction",
+    "urls": {
+      "official": "https://www.hagag-group.co.il/projects/ResidentProjects/einstein_tower",
+      "madlan": null,
+      "yad2": null,
+      "developer": "https://www.hagag-group.co.il/projects/ResidentProjects/einstein_tower"
+    },
+    "name_he_src": [
+      "https://www.hagag-group.co.il/projects/ResidentProjects/einstein_tower",
+      "https://www.hagag-group.co.il/Uploads/2026/04/rln33jws7WiMM6.pdf"
+    ],
+    "name_en_src": [
+      "https://www.hagag-group.co.il/projects/ResidentProjects/einstein_tower",
+      "https://www.hagag-group.co.il/Uploads/2026/04/rln33jws7WiMM6.pdf"
+    ],
+    "developer_src": ["https://www.hagag-group.co.il/projects/ResidentProjects/einstein_tower"],
+    "architect_src": ["https://www.hagag-group.co.il/projects/ResidentProjects/einstein_tower"],
+    "marketing_status_src": [
+      "https://www.hagag-group.co.il/projects/ResidentProjects/einstein_tower",
+      "https://www.hagag-group.co.il/Uploads/2026/04/rln33jws7WiMM6.pdf"
+    ]
+  },
+  "location": {
+    "building_address": "גוש 6885 חלקה 32, פינת איינשטיין–לוי אשכול",
+    "address_he": "פינת איינשטיין–לוי אשכול",
+    "address_points": [
+      "איינשטיין 14",
+      "איינשטיין 16",
+      "איינשטיין 16א׳",
+      "לוי אשכול 53"
+    ],
+    "contract_address_state": "not_reconciled",
+    "sales_office_address": null,
+    "city": "תל אביב-יפו",
+    "neighborhood": "צפון תל אביב / נווה אביבים",
+    "gush": "6885",
+    "helka": "32",
+    "parcel_area_sqm": 5099,
+    "lat": 32.11173581823549,
+    "lng": 34.78843259223059,
+    "geocode_status": "manual_confirmed",
+    "geocode_source": "tel_aviv_municipal_gis_parcel_centroid",
+    "coord_estimate_unverified": null,
+    "plot_polygon_geojson": null,
+    "ground_elevation_m": null,
+    "building_address_src": [
+      "https://www.hagag-group.co.il/Uploads/2026/04/rln33jws7WiMM6.pdf",
+      "https://gisn.tel-aviv.gov.il/arcgis/rest/services/IView2/MapServer/527/query?f=json&where=ms_gush%3D6885%20AND%20ms_chelka%3D32&outFields=t_ktovet_melea%2Ct_rechov%2Cms_bayit%2Cknisa%2Ct_bayit_veknisa%2Cms_gush%2Cms_chelka%2Clon%2Clat%2Cdate_import&returnGeometry=true&outSR=2039"
+    ],
+    "lat_src": ["https://gisn.tel-aviv.gov.il/arcgis/rest/services/IView2/MapServer/524/query?f=json&where=ms_gush%3D6885%20AND%20ms_chelka%3D32&outFields=ms_gush%2Cms_chelka%2Cms_shetach_rashum%2Cms_shetach%2Ctr_idkun_acharon%2Cdate_import%2CShape_Area&returnGeometry=true&outSR=4326"],
+    "lng_src": ["https://gisn.tel-aviv.gov.il/arcgis/rest/services/IView2/MapServer/524/query?f=json&where=ms_gush%3D6885%20AND%20ms_chelka%3D32&outFields=ms_gush%2Cms_chelka%2Cms_shetach_rashum%2Cms_shetach%2Ctr_idkun_acharon%2Cdate_import%2CShape_Area&returnGeometry=true&outSR=4326"]
+  },
+  "context": {
+    "dist_to_sea_m": 975,
+    "distance_method": "straight_line_to_tel_baruch_beach_polygon",
+    "sea_bearing_deg": null,
+    "seafront": false,
+    "terrain": "A 5–8 m level difference between main streets and the neighborhood is addressed in the planning design with pedestrian and bicycle connections.",
+    "skyline": "mixed_future_highrise",
+    "near": {
+      "park": {
+        "name": "פארק הירקון",
+        "dist_m": null,
+        "state": "context_only"
+      },
+      "light_rail": {
+        "line": "הקו הירוק",
+        "station": "איינשטיין / לוי אשכול",
+        "dist_m": null,
+        "state": "planned",
+        "stage": "construction_activity_observed_at_junction_2026-07-16",
+        "opening_date": null
+      },
+      "train": {
+        "station": "תל אביב אוניברסיטה",
+        "dist_m": null,
+        "state": "operating_distance_not_measured"
+      },
+      "retail_mall": {
+        "name": "קניון רמת אביב",
+        "dist_m": null,
+        "state": "operating_distance_not_measured"
+      },
+      "schools": [
+        {
+          "name": "נופי ים",
+          "type": "public_elementary_current_zone_snapshot",
+          "dist_m": 362,
+          "method": "straight_line_from_einstein_16a_municipal_point",
+          "school_year": "2026/27",
+          "assignment_guaranteed": false
+        }
+      ],
+      "kindergartens": [
+        {
+          "address": "בורלא 44",
+          "dist_m": 250,
+          "method": "straight_line_from_einstein_16a_municipal_point",
+          "school_year": "2026/27"
+        },
+        {
+          "address": "זינגר 1",
+          "dist_m": 316,
+          "method": "straight_line_from_einstein_16a_municipal_point",
+          "school_year": "2026/27"
+        },
+        {
+          "address": "עמיחי 1",
+          "dist_m": 381,
+          "method": "straight_line_from_einstein_16a_municipal_point",
+          "school_year": "2026/27"
+        }
+      ],
+      "landmarks": [
+        "חוף תל ברוך",
+        "קניון רמת אביב",
+        "פארק הירקון",
+        "נמל תל אביב",
+        "רובע שדה דב העתידי"
+      ]
+    },
+    "dist_to_sea_m_src": ["https://gisn.tel-aviv.gov.il/arcgis/rest/services/IView2/MapServer/579/query?f=json&geometry=180210.96%2C668804.12&geometryType=esriGeometryPoint&inSR=2039&spatialRel=esriSpatialRelIntersects&distance=4000&units=esriSRUnit_Meter&outFields=beach_name%2Caccessibility_desc%2Cdate_import&returnGeometry=true&outSR=2039"],
+    "near_src": [
+      "https://www.nta.co.il/light-rail/%D7%94%D7%A7%D7%95-%D7%94%D7%99%D7%A8%D7%95%D7%A7",
+      "https://www.nta.co.il/%D7%97%D7%93%D7%A9%D7%95%D7%AA/%D7%A2%D7%91%D7%95%D7%93%D7%95%D7%AA-%D7%AA%D7%A9%D7%AA%D7%99%D7%AA-%D7%91%D7%A9%D7%98%D7%97-%D7%94%D7%90%D7%AA%D7%A8-%D7%91%D7%A6%D7%95%D7%9E%D7%AA-%D7%A9%D7%93%D7%A8%D7%95%D7%AA-%D7%9C%D7%95%D7%99-%D7%90%D7%A9%D7%9B%D7%95%D7%9C-%D7%90%D7%99%D7%99%D7%A0%D7%A9%D7%98%D7%99%D7%99%D7%9F-16726/",
+      "https://www.tel-aviv.gov.il/Residents/Education/Pages/Registration.aspx"
+    ]
+  },
+  "building_form": {
+    "floors": 28,
+    "height_m": null,
+    "num_buildings": 3,
+    "components": [
+      {
+        "building_id": "tower-28",
+        "kind": "residential_tower",
+        "reported_floors": 28,
+        "floor_scope": "developer_and_company_description"
+      },
+      {
+        "building_id": "boutique-north",
+        "kind": "boutique_residential",
+        "reported_residential_floors": 13,
+        "floor_scope": "company_description_above_commercial_base"
+      },
+      {
+        "building_id": "boutique-south",
+        "kind": "boutique_residential",
+        "reported_residential_floors": 13,
+        "floor_scope": "company_description_above_commercial_base"
+      }
+    ],
+    "footprint_shape": null,
+    "footprint_dims_m": {
+      "x": null,
+      "z": null
+    },
+    "main_facade_orientation_deg": null,
+    "has_podium": true,
+    "podium_floors": 2,
+    "setbacks": null,
+    "twist": null,
+    "facade_material": null,
+    "balconies": true,
+    "notes": "Company and developer sources describe a 28-floor tower and two 13-residential-floor boutique buildings over a double commercial base. Planning maxima use different floor-counting conventions.",
+    "floors_src": [
+      "https://www.hagag-group.co.il/projects/ResidentProjects/einstein_tower",
+      "https://www.hagag-group.co.il/Uploads/2026/04/rln33jws7WiMM6.pdf"
+    ],
+    "num_buildings_src": [
+      "https://www.hagag-group.co.il/projects/ResidentProjects/einstein_tower",
+      "https://www.hagag-group.co.il/Uploads/2026/04/rln33jws7WiMM6.pdf"
+    ]
+  },
+  "units": {
+    "total_units": 215,
+    "mix": [],
+    "inventory": [],
+    "inventory_state": "not_supplied",
+    "inventory_decision_grade": false,
+    "price_min": null,
+    "price_max": null,
+    "ppsqm_min": null,
+    "ppsqm_max": null,
+    "price_basis": null,
+    "price_date": null,
+    "total_units_src": ["https://www.hagag-group.co.il/Uploads/2026/04/rln33jws7WiMM6.pdf"],
+    "mix_src": [],
+    "price_min_src": [],
+    "price_max_src": [],
+    "ppsqm_min_src": [],
+    "ppsqm_max_src": [],
+    "price_basis_src": [],
+    "price_date_src": []
+  },
+  "market": {
+    "area_ppsqm": null,
+    "nearby_projects": [
+      {
+        "id": "einstein-35",
+        "relationship": "separate_hagag_project",
+        "merge_allowed": false
+      },
+      {
+        "id": "einstein-ramat-aviv",
+        "relationship": "separate_ashtrom_ashdar_project_at_einstein_63_67",
+        "merge_allowed": false
+      },
+      {
+        "id": "einstein-19",
+        "relationship": "separate_azorim_project",
+        "merge_allowed": false
+      }
+    ],
+    "recent_area_deals": []
+  },
+  "urban_future": {
+    "taba_plan_numbers": ["4695(1)"],
+    "taba_urls": ["https://www.tel-aviv.gov.il/Residents/Development/DocLib/%D7%A4%D7%A8%D7%95%D7%98%D7%95%D7%A7%D7%95%D7%9C%2020-0005%20%D7%9E%D7%99%D7%95%D7%9D%201-4-20.pdf"],
+    "planned_infrastructure": [
+      {
+        "type": "light_rail",
+        "line": "Green Line",
+        "stations": ["Einstein", "Levi Eshkol"],
+        "state": "planned",
+        "operating_date": null,
+        "source": "https://www.nta.co.il/light-rail/%D7%94%D7%A7%D7%95-%D7%94%D7%99%D7%A8%D7%95%D7%A7"
+      },
+      {
+        "type": "district_buildout",
+        "name": "Sde Dov district",
+        "state": "planned_and_under_development",
+        "source": "https://www.tel-aviv.gov.il/Residents/Development/Pages/SdeDov.aspx"
+      }
+    ],
+    "renewal_type": "new",
+    "renewal_type_src": ["https://www.hagag-group.co.il/projects/ResidentProjects/einstein_tower"]
+  },
+  "construction": {
+    "observed_state": "excavation_and_shoring",
+    "effective_at": "2026-08-14",
+    "observed_state_effective_at": "2025-12-31",
+    "permit_state": "municipal_main_permit_recorded",
+    "permit_request_number": "20231320",
+    "permit_number": "20241734",
+    "permit_date": "2026-07-09",
+    "permit_decision_grade": true,
+    "municipal_building_stage_raw": "בתהליך היתר",
+    "municipal_request_stage_raw": "3",
+    "municipal_licensing_path_raw": "רישוי מלא (ללא הקלות ושימוש חורג)",
+    "permit_scope": "215 units; one 28-floor tower and two 13-floor buildings; four parking levels; municipal address Einstein 14",
+    "permit_unit_split": [121, 47, 47],
+    "enabling_works_permit_number": "20240229",
+    "enabling_works_permit_date": "2024-03-25",
+    "timeline_history": [
+      {
+        "effective_at": "2025-12-31",
+        "state": "conditions_reported_fulfilled_fees_and_levies_in_process_for_receipt",
+        "source_id": "S002"
+      },
+      {
+        "effective_at": "2026-07-09",
+        "state": "municipal_main_permit_recorded",
+        "source_id": "IVS008"
+      }
+    ],
+    "company_estimated_completion": "2030-Q3",
+    "completion_is_contractual": false,
+    "source": "https://gisn.tel-aviv.gov.il/arcgis/rest/services/IView2/MapServer/772/query?f=json&where=oid_permit%3D9945&outFields=*&returnGeometry=true&outSR=4326",
+    "source_ids": ["IVS008", "IVS009", "S002"]
+  },
+  "media": {
+    "render_urls": [],
+    "video_urls": [],
+    "brochure_pdf": null,
+    "floorplan_urls": [],
+    "site_plan_url": null,
+    "virtual_tour_url": null,
+    "bim_or_3d_available": "unknown",
+    "aerial_or_streetview_ref": null,
+    "gallery_page_url": "https://www.hagag-group.co.il/projects/ResidentProjects/einstein_tower",
+    "external_project_site": "https://www.hagag-group.co.il/projects/ResidentProjects/einstein_tower",
+    "gallery_page_url_src": ["https://www.hagag-group.co.il/projects/ResidentProjects/einstein_tower"]
+  },
+  "assets_3d": {
+    "representation_kind": "owner_approved_illustration",
+    "decision_id": "OWNER-2026-08-14-EINSTEIN-ILLUSTRATIVE-MASSING",
+    "decision_grade": false,
+    "glb_model": "assets/projects/einstein-tower/model-hd.glb",
+    "glb_lod": "assets/projects/einstein-tower/model-lod.glb",
+    "facade_variants": null,
+    "default_orbit": "35deg 64deg auto",
+    "default_target": "0m 43m 0m",
+    "frame_radius": 135,
+    "unit_hotspots": [],
+    "poster": "assets/projects/einstein-tower/poster.webp",
+    "calibration": {
+      "calibration_id": "einstein-33a-illustrative-massing-v1",
+      "north_degrees": 0,
+      "source": "owner-approved illustrative model; not an official BIM or survey",
+      "effective_at": "2026-08-14",
+      "expires_at": "2027-08-14"
+    }
+  },
+  "visual_playground": {
+    "decision_id": "OWNER-2026-08-13-VISUAL-PLAYGROUND",
+    "interior_facilities_decision_id": "OWNER-2026-08-14-EINSTEIN-INTERIOR-FACILITIES-DEMO",
+    "position": "immediately_below_protected_model_in_normal_flow",
+    "tools": ["view", "interior", "design", "comments"],
+    "representation_kind": "owner_approved_illustration",
+    "decision_grade": false,
+    "interior_experience": {
+      "mode": "representative_concept",
+      "spatial_mapping": "owner_approved_illustrative_mapping"
+    },
+    "facility_experience": {
+      "mode": "selectable_concept_gallery",
+      "spatial_mapping": "owner_approved_illustrative_mapping"
+    },
+    "comments_delivery": "prepared_no_write"
+  },
+  "content": {
+    "article": {
+      "he": null,
+      "en": null,
+      "fr": null,
+      "ru": null,
+      "ar": null
+    },
+    "usp": [
+      "שלושה מבנים מעל בסיס מסחרי בפינת איינשטיין–לוי אשכול",
+      "מודל תלת-ממד מקורי וכלי החלטה חזותיים לרוכש מרחוק",
+      "הפרדה ברורה בין מצב נוכחי, תכנון עתידי והמחשה מאושרת"
+    ],
+    "buyer_questions": [
+      "איזה מבנה וזכות מדויקים מוצעים לרכישה?",
+      "מה מצב ההיתר העדכני ומהו לוח הזמנים החוזי?",
+      "כיצד משפיעים המסחר, עבודות הקו הירוק ובינוי שדה דב על הגישה והנוף?",
+      "אילו מסמכים, עלויות ומנגנוני הגנה נדרשים לרוכש מחו״ל?"
+    ],
+    "audiences": ["local", "family", "investor", "overseas_buyer"],
+    "keywords_he": ["איינשטיין טאוור", "איינשטיין 33א", "פרויקט חג׳ג׳ איינשטיין", "דירות חדשות בצפון תל אביב"],
+    "keywords_en": ["Einstein Tower Tel Aviv", "Einstein 33A", "Hagag Einstein Tower"]
+  },
+  "field_sources": {
+    "identity": [
+      "https://www.hagag-group.co.il/projects/ResidentProjects/einstein_tower",
+      "https://www.hagag-group.co.il/Uploads/2026/04/rln33jws7WiMM6.pdf"
+    ],
+    "location": [
+      "https://gisn.tel-aviv.gov.il/arcgis/rest/services/IView2/MapServer/527/query?f=json&where=ms_gush%3D6885%20AND%20ms_chelka%3D32&outFields=t_ktovet_melea%2Ct_rechov%2Cms_bayit%2Cms_gush%2Cms_chelka%2Clon%2Clat%2Cdate_import&returnGeometry=true&outSR=2039",
+      "https://gisn.tel-aviv.gov.il/arcgis/rest/services/IView2/MapServer/524/query?f=json&where=ms_gush%3D6885%20AND%20ms_chelka%3D32&outFields=ms_gush%2Cms_chelka%2Cms_shetach_rashum%2Cms_shetach%2Ctr_idkun_acharon%2Cdate_import%2CShape_Area&returnGeometry=false"
+    ],
+    "building_form": [
+      "https://www.hagag-group.co.il/projects/ResidentProjects/einstein_tower",
+      "https://www.hagag-group.co.il/Uploads/2026/04/rln33jws7WiMM6.pdf"
+    ],
+    "units.total_units": ["https://www.hagag-group.co.il/Uploads/2026/04/rln33jws7WiMM6.pdf"],
+    "construction": [
+      "https://gisn.tel-aviv.gov.il/arcgis/rest/services/IView2/MapServer/772/query?f=json&where=oid_permit%3D9945&outFields=*&returnGeometry=true&outSR=4326",
+      "https://gisn.tel-aviv.gov.il/arcgis/rest/services/IView2/MapServer/772/query?f=json&where=oid_permit%3D6443&outFields=*&returnGeometry=true&outSR=4326",
+      "https://www.hagag-group.co.il/Uploads/2026/04/rln33jws7WiMM6.pdf"
+    ],
+    "urban_future": [
+      "https://www.nta.co.il/light-rail/%D7%94%D7%A7%D7%95-%D7%94%D7%99%D7%A8%D7%95%D7%A7",
+      "https://www.tel-aviv.gov.il/Residents/Development/Pages/SdeDov.aspx"
+    ],
+    "context.education": [
+      "https://www.tel-aviv.gov.il/Residents/Education/Pages/Registration.aspx",
+      "https://gisn.tel-aviv.gov.il/arcgis/rest/services/IView2/MapServer/793/query?f=json&geometry=180210.96%2C668804.12&geometryType=esriGeometryPoint&inSR=2039&spatialRel=esriSpatialRelIntersects&outFields=Shem_Moasad%2CMasad%2CZerem_Tichnun%2Cdate_import&returnGeometry=false"
+    ]
+  },
+  "evidence": [
+    {
+      "source_id": "S001",
+      "scope": "developer_marketing",
+      "effective_at": "2026-08-14",
+      "url": "https://www.hagag-group.co.il/projects/ResidentProjects/einstein_tower",
+      "supports": ["marketing_name", "developer", "architect", "corner", "building_composition"]
+    },
+    {
+      "source_id": "S002",
+      "scope": "company_project_snapshot",
+      "effective_at": "2025-12-31",
+      "url": "https://www.hagag-group.co.il/Uploads/2026/04/rln33jws7WiMM6.pdf",
+      "supports": ["project_name_33a", "parcel", "parcel_area", "215_units", "building_composition", "construction_state", "completion_estimate"]
+    },
+    {
+      "source_id": "IVS008",
+      "scope": "municipal_main_permit_record",
+      "effective_at": "2026-07-09",
+      "url": "https://gisn.tel-aviv.gov.il/arcgis/rest/services/IView2/MapServer/772/query?f=json&where=oid_permit%3D9945&outFields=*&returnGeometry=true&outSR=4326",
+      "supports": ["main_permit_20241734", "permit_date_2026_07_09", "215_units", "building_composition", "four_parking_levels", "municipal_address_einstein_14"]
+    },
+    {
+      "source_id": "IVS009",
+      "scope": "municipal_enabling_works_permit_record",
+      "effective_at": "2024-03-25",
+      "url": "https://gisn.tel-aviv.gov.il/arcgis/rest/services/IView2/MapServer/772/query?f=json&where=oid_permit%3D6443&outFields=*&returnGeometry=true&outSR=4326",
+      "supports": ["enabling_works_permit_20240229", "shoring_excavation_foundations_first_slab"]
+    },
+    {
+      "source_id": "S006",
+      "scope": "municipal_address_points",
+      "effective_at": "2026-08-13",
+      "url": "https://gisn.tel-aviv.gov.il/arcgis/rest/services/IView2/MapServer/527/query?f=json&where=ms_gush%3D6885%20AND%20ms_chelka%3D32&outFields=t_ktovet_melea%2Ct_rechov%2Cms_bayit%2Cms_gush%2Cms_chelka%2Clon%2Clat%2Cdate_import&returnGeometry=true&outSR=2039",
+      "supports": ["parcel_32_address_points"]
+    },
+    {
+      "source_id": "S007",
+      "scope": "identity_collision_control",
+      "effective_at": "2026-08-13",
+      "url": "https://gisn.tel-aviv.gov.il/arcgis/rest/services/IView2/MapServer/527/query?f=json&where=t_rechov%3D%27%D7%90%D7%99%D7%A0%D7%A9%D7%98%D7%99%D7%99%D7%9F%27%20AND%20ms_bayit%3D18&outFields=t_ktovet_melea%2Ct_rechov%2Cms_bayit%2Cms_gush%2Cms_chelka%2Clon%2Clat%2Cdate_import&returnGeometry=true&outSR=2039",
+      "supports": ["einstein_18_is_adjacent_parcel_40"]
+    }
+  ],
+  "confidence": {
+    "overall": "med",
+    "notes": "Identity, parcel, project program, location context and the dated municipal permit records are source-backed. The municipal record still carries the raw stage label בתהליך היתר, and exact current site progress is not inferred. Contract address, live inventory, price, unit plans, target amenities and unit-specific views are not decision-grade. Illustrative model and tools are governed separately."
+  },
+  "db_meta": {
+    "source_batch": "einstein_33a_primary_research_2026-08-14",
+    "ingested_at": "2026-08-14",
+    "verification": "35-source research register; parcel/address GIS cross-check; live WP post 4867 collision confirmed; model and showroom gates pending",
+    "canonical": true,
+    "ready_for_page": false,
+    "publication_languages": ["he"],
+    "needs": [
+      "model_and_showroom_fixture_green",
+      "hebrew_article_and_publication_manifest",
+      "private_wordpress_readback",
+      "independent_package_review"
+    ]
+  }
+}

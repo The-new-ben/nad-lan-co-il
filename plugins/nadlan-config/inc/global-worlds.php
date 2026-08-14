@@ -1568,9 +1568,12 @@ add_action( 'rest_api_init', function () {
 				'layout' => $sky_layout, 'apts_custom' => $sky_apts,
 				'real' => false,
 			);
-			// DAMAC RIVERSIDE VIEWS - REAL, AUTHORIZED (owner negotiated with DAMAC,
-			// permission granted to present their assets 2026-07-13). Data from the
-			// official brochure + page (28pp, 8 clusters, DIP Dubai, 1-2BR towers).
+			// DAMAC RIVERSIDE VIEWS - REAL. Owner decision 2026-08-05: their media
+			// (gallery, brochure, video) is UNREFERENCED until written permission is
+			// re-confirmed - the 2026-07-13 verbal arrangement may not be remembered
+			// on their side, and we do not lean on it. Only OUR massing GLB renders.
+			// The files stay in uploads, unlinked, so the owner can show them when
+			// he approaches DAMAC. Facts below are from their public releases.
 			$rv_names = array( 'Indigo', 'Royal', 'Azure', 'Teal', 'Marine', 'Capri', 'Sky', 'Pacific' );
 			$rv_layout = array( 'fh' => 3.1, 'buildings' => array(
 				array( 'x' => -72, 'z' => -30, 'w' => 24, 'd' => 18, 'floors' => 15 ),
@@ -1614,9 +1617,9 @@ add_action( 'rest_api_init', function () {
 				'payment' => 'תוכנית תשלומים חודשית של היזם - החל מ-1,800 AED לחודש (פרסום DAMAC)',
 				'fees' => 'דמי קהילה לפי תקנון DAMAC Riverside',
 				'fx' => 1.0, 'dev' => 'DAMAC Properties', 'bnames' => $rv_names,
-				'about' => 'DAMAC Riverside Views: מגדלי הדירות של קהילת הריברסייד הראשונה של דובאי, בדובאי אינבסטמנטס פארק. שמונה קלאסטרים בהשראת גווני הכחול - Indigo, Royal, Azure, Teal, Marine, Capri, Sky ו-Pacific - לאורך נהר מלאכותי עם רשימת מתקנים שאין דומה לה: אופרה צפה, קולנוע צף, מסעדת אי ומסעדת פורטופינו שמגיעים אליה בסירה, אגמי שמנים אתריים, חוף מאליבו קוב, קיר טיפוס, חווה הידרופונית ואמפיתיאטרון. דירות 1-2 חדרי שינה בגימור DAMAC. הנתונים והתמונות מחומרי היזם הרשמיים, בהרשאה; המודל התלת ממדי הוא הדמיה עקרונית של המתאר.',
-				'about_en' => 'DAMAC Riverside Views: the apartment towers of Dubai\'s first riverside community, in Dubai Investments Park. Eight clusters inspired by shades of blue - Indigo, Royal, Azure, Teal, Marine, Capri, Sky and Pacific - along an engineered river with an amenity list like no other: a floating opera, floating cinema, an island restaurant and the boat-access Portofino restaurant, essential-oils lakes, Malibu Cove beach, a climbing wall, a hydroponic farm and an amphitheatre. 1-2 bedroom homes in DAMAC finishing. Data and images from the developer\'s official materials, with permission; the 3D model is a conceptual massing visualization.',
-				'about_ar' => 'DAMAC Riverside Views: أبراج الشقق في أول مجتمع نهري في دبي، في مجمع دبي للاستثمار. ثمانية تجمعات مستوحاة من درجات الأزرق على طول نهر هندسي مع قائمة مرافق لا مثيل لها: أوبرا عائمة، سينما عائمة، مطعم جزيرة ومطعم بورتوفينو الذي يُوصل إليه بالقارب، بحيرات الزيوت العطرية، شاطئ ماليبو كوف، جدار تسلق ومزرعة مائية. شقق من غرفة وغرفتي نوم بتشطيب داماك. البيانات والصور من مواد المطوّر الرسمية بإذن؛ النموذج ثلاثي الأبعاد تصور مفاهيمي.',
+				'about' => 'DAMAC Riverside Views: מגדלי הדירות של קהילת הריברסייד הראשונה של דובאי, בדובאי אינבסטמנטס פארק. שמונה קלאסטרים בהשראת גווני הכחול - Indigo, Royal, Azure, Teal, Marine, Capri, Sky ו-Pacific - לאורך נהר מלאכותי עם רשימת מתקנים שאין דומה לה: אופרה צפה, קולנוע צף, מסעדת אי ומסעדת פורטופינו שמגיעים אליה בסירה, אגמי שמנים אתריים, חוף מאליבו קוב, קיר טיפוס, חווה הידרופונית ואמפיתיאטרון. דירות 1-2 חדרי שינה בגימור DAMAC. הנתונים לפי פרסומי היזם הפומביים; המודל התלת ממדי הוא הדמיה עקרונית של המתאר.',
+				'about_en' => 'DAMAC Riverside Views: the apartment towers of Dubai\'s first riverside community, in Dubai Investments Park. Eight clusters inspired by shades of blue - Indigo, Royal, Azure, Teal, Marine, Capri, Sky and Pacific - along an engineered river with an amenity list like no other: a floating opera, floating cinema, an island restaurant and the boat-access Portofino restaurant, essential-oils lakes, Malibu Cove beach, a climbing wall, a hydroponic farm and an amphitheatre. 1-2 bedroom homes in DAMAC finishing. Details per the developer\'s public releases; the 3D model is a conceptual massing visualization.',
+				'about_ar' => 'DAMAC Riverside Views: أبراج الشقق في أول مجتمع نهري في دبي، في مجمع دبي للاستثمار. ثمانية تجمعات مستوحاة من درجات الأزرق على طول نهر هندسي مع قائمة مرافق لا مثيل لها: أوبرا عائمة، سينما عائمة، مطعم جزيرة ومطعم بورتوفينو الذي يُوصل إليه بالقارب، بحيرات الزيوت العطرية، شاطئ ماليبو كوف، جدار تسلق ومزرعة مائية. شقق من غرفة وغرفتي نوم بتشطيب داماك. التفاصيل وفق منشورات المطوّر العلنية؛ النموذج ثلاثي الأبعاد تصور مفاهيمي.',
 				'fac' => array(
 					array( 'אופרה צפה', 'Floating opera' ), array( 'קולנוע צף', 'Floating cinema' ),
 					array( 'מסעדת אי + פורטופינו בסירה', 'Island restaurant + boat-access Portofino' ),
@@ -1628,16 +1631,9 @@ add_action( 'rest_api_init', function () {
 				),
 				'glb' => 'models/damac-riverside-views.glb',
 				'layout' => $rv_layout, 'apts_custom' => $rv_apts,
-				'gallery' => array(
-					'https://nad-lan.co.il/wp-content/uploads/2026/07/damac-riverside-views-hero.jpg',
-					'https://nad-lan.co.il/wp-content/uploads/2026/07/damac-riverside-views-g1.jpg',
-					'https://nad-lan.co.il/wp-content/uploads/2026/07/damac-riverside-views-g2.jpg',
-					'https://nad-lan.co.il/wp-content/uploads/2026/07/damac-riverside-views-g3.jpg',
-					'https://nad-lan.co.il/wp-content/uploads/2026/07/damac-riverside-views-floating-stage.jpg',
-					'https://nad-lan.co.il/wp-content/uploads/2026/07/damac-riverside-views-lake.jpg',
-				),
-				'brochure' => 'https://nad-lan.co.il/wp-content/uploads/2026/07/damac-riverside-views-brochure.pdf',
-				'video' => 'https://nad-lan.co.il/wp-content/uploads/2026/07/damac-riverside-views-hero-video.mp4',
+				'gallery' => array(),
+				'brochure' => '',
+				'video' => '',
 				'real' => true, 'engine' => true,
 			);
 			// generated inventory: honest, price-scaled apartments per project

@@ -1,0 +1,955 @@
+{
+  "generatedAt": "2026-08-10T23:34:21.319Z",
+  "passed": true,
+  "results": [
+    {
+      "viewport": {
+        "name": "mobile-375x812",
+        "width": 375,
+        "height": 812
+      },
+      "decision": {
+        "viewport": {
+          "left": 0,
+          "top": 0,
+          "right": 375,
+          "bottom": 812
+        },
+        "boxes": {
+          ".model": {
+            "x": 0,
+            "y": 28,
+            "width": 375,
+            "height": 172.46875,
+            "right": 375,
+            "bottom": 200.46875
+          },
+          ".identity": {
+            "x": 6,
+            "y": 206.46875,
+            "width": 363,
+            "height": 55.265625,
+            "right": 369,
+            "bottom": 261.734375
+          },
+          ".exposure": {
+            "x": 6,
+            "y": 266.734375,
+            "width": 363,
+            "height": 191.28125,
+            "right": 369,
+            "bottom": 458.015625
+          },
+          ".facts": {
+            "x": 6,
+            "y": 463.015625,
+            "width": 363,
+            "height": 44.6875,
+            "right": 369,
+            "bottom": 507.703125
+          },
+          ".doors": {
+            "x": 6,
+            "y": 512.703125,
+            "width": 363,
+            "height": 191.28125,
+            "right": 369,
+            "bottom": 703.984375
+          },
+          ".quick": {
+            "x": 6,
+            "y": 708.984375,
+            "width": 363,
+            "height": 44,
+            "right": 369,
+            "bottom": 752.984375
+          },
+          ".cta": {
+            "x": 6,
+            "y": 757.984375,
+            "width": 363,
+            "height": 48,
+            "right": 369,
+            "bottom": 805.984375
+          }
+        },
+        "missingRequired": [],
+        "factLabelViolations": [],
+        "clippingViolations": [],
+        "targetViolations": [],
+        "typographyViolations": [],
+        "internalScrollers": [],
+        "contentOverflows": [],
+        "duplicateIds": [],
+        "orientationTruthGate": {
+          "state": "unknown",
+          "claimedBeamCount": 0,
+          "neutralMarkerVisible": true,
+          "backgroundImage": "none",
+          "passed": true
+        },
+        "documentOverflow": {
+          "horizontal": false,
+          "vertical": false,
+          "scrollWidth": 375,
+          "scrollHeight": 812
+        }
+      },
+      "tool": {
+        "open": true,
+        "rect": {
+          "x": 0,
+          "y": 0,
+          "width": 375,
+          "height": 812,
+          "right": 375,
+          "bottom": 812
+        },
+        "geometry": {
+          ".tool-head": [
+            {
+              "x": 0,
+              "y": 0,
+              "width": 375,
+              "height": 58,
+              "right": 375,
+              "bottom": 58
+            }
+          ],
+          ".tool-body": [
+            {
+              "x": 0,
+              "y": 58,
+              "width": 375,
+              "height": 754,
+              "right": 375,
+              "bottom": 812
+            }
+          ],
+          ".tool-layout": [
+            {
+              "x": 0,
+              "y": 58,
+              "width": 375,
+              "height": 754,
+              "right": 375,
+              "bottom": 812
+            }
+          ],
+          ".tool-visual": [
+            {
+              "x": 7,
+              "y": 65,
+              "width": 361,
+              "height": 318.1875,
+              "right": 368,
+              "bottom": 383.1875
+            }
+          ],
+          ".tool-panel": [
+            {
+              "x": 7,
+              "y": 390.1875,
+              "width": 361,
+              "height": 421.796875,
+              "right": 368,
+              "bottom": 811.984375
+            }
+          ],
+          ".tabs": [
+            {
+              "x": 7,
+              "y": 390.1875,
+              "width": 361,
+              "height": 44,
+              "right": 368,
+              "bottom": 434.1875
+            }
+          ],
+          ".tool-card": [
+            {
+              "x": 7,
+              "y": 440.1875,
+              "width": 177.5,
+              "height": 189.3125,
+              "right": 184.5,
+              "bottom": 629.5
+            },
+            {
+              "x": 190.5,
+              "y": 440.1875,
+              "width": 177.5,
+              "height": 189.3125,
+              "right": 368,
+              "bottom": 629.5
+            }
+          ],
+          ".tool-card button": [
+            {
+              "x": 16,
+              "y": 576.5,
+              "width": 159.5,
+              "height": 44,
+              "right": 175.5,
+              "bottom": 620.5
+            },
+            {
+              "x": 199.5,
+              "y": 544.125,
+              "width": 159.5,
+              "height": 44,
+              "right": 359,
+              "bottom": 588.125
+            }
+          ],
+          ".basket": [
+            {
+              "x": 7,
+              "y": 635.5,
+              "width": 361,
+              "height": 60,
+              "right": 368,
+              "bottom": 695.5
+            }
+          ],
+          ".basket button": [
+            {
+              "x": 234,
+              "y": 643.5,
+              "width": 124,
+              "height": 44,
+              "right": 358,
+              "bottom": 687.5
+            }
+          ]
+        },
+        "missingRequired": [],
+        "bodyOverflow": "visible",
+        "clippingViolations": [],
+        "targetViolations": [],
+        "typographyViolations": [],
+        "internalScrollers": [],
+        "contentOverflows": [],
+        "duplicateIds": [],
+        "documentOverflow": {
+          "horizontal": false,
+          "vertical": false,
+          "scrollWidth": 375,
+          "scrollHeight": 812
+        }
+      },
+      "errors": [],
+      "passed": true
+    },
+    {
+      "viewport": {
+        "name": "short-mobile-320x568",
+        "width": 320,
+        "height": 568
+      },
+      "decision": {
+        "viewport": {
+          "left": 0,
+          "top": 0,
+          "right": 320,
+          "bottom": 568
+        },
+        "boxes": {
+          ".model": {
+            "x": 0,
+            "y": 28,
+            "width": 320,
+            "height": 102.59375,
+            "right": 320,
+            "bottom": 130.59375
+          },
+          ".identity": {
+            "x": 6,
+            "y": 136.59375,
+            "width": 308,
+            "height": 72.53125,
+            "right": 314,
+            "bottom": 209.125
+          },
+          ".exposure": {
+            "x": 6,
+            "y": 214.125,
+            "width": 308,
+            "height": 97.265625,
+            "right": 314,
+            "bottom": 311.390625
+          },
+          ".facts": {
+            "x": 6,
+            "y": 316.390625,
+            "width": 308,
+            "height": 43.328125,
+            "right": 314,
+            "bottom": 359.71875
+          },
+          ".doors": {
+            "x": 6,
+            "y": 364.71875,
+            "width": 308,
+            "height": 97.265625,
+            "right": 314,
+            "bottom": 461.984375
+          },
+          ".quick": {
+            "x": 6,
+            "y": 466.984375,
+            "width": 308,
+            "height": 44,
+            "right": 314,
+            "bottom": 510.984375
+          },
+          ".cta": {
+            "x": 6,
+            "y": 515.984375,
+            "width": 308,
+            "height": 48,
+            "right": 314,
+            "bottom": 563.984375
+          }
+        },
+        "missingRequired": [],
+        "factLabelViolations": [],
+        "clippingViolations": [],
+        "targetViolations": [],
+        "typographyViolations": [],
+        "internalScrollers": [],
+        "contentOverflows": [],
+        "duplicateIds": [],
+        "orientationTruthGate": {
+          "state": "unknown",
+          "claimedBeamCount": 0,
+          "neutralMarkerVisible": true,
+          "backgroundImage": "none",
+          "passed": true
+        },
+        "documentOverflow": {
+          "horizontal": false,
+          "vertical": false,
+          "scrollWidth": 320,
+          "scrollHeight": 568
+        }
+      },
+      "tool": {
+        "open": true,
+        "rect": {
+          "x": 0,
+          "y": 0,
+          "width": 320,
+          "height": 568,
+          "right": 320,
+          "bottom": 568
+        },
+        "geometry": {
+          ".tool-head": [
+            {
+              "x": 0,
+              "y": 0,
+              "width": 320,
+              "height": 58,
+              "right": 320,
+              "bottom": 58
+            }
+          ],
+          ".tool-body": [
+            {
+              "x": 0,
+              "y": 58,
+              "width": 320,
+              "height": 510,
+              "right": 320,
+              "bottom": 568
+            }
+          ],
+          ".tool-layout": [
+            {
+              "x": 0,
+              "y": 58,
+              "width": 320,
+              "height": 510,
+              "right": 320,
+              "bottom": 568
+            }
+          ],
+          ".tool-visual": [
+            {
+              "x": 4,
+              "y": 62,
+              "width": 312,
+              "height": 149.390625,
+              "right": 316,
+              "bottom": 211.390625
+            }
+          ],
+          ".tool-panel": [
+            {
+              "x": 4,
+              "y": 215.390625,
+              "width": 312,
+              "height": 348.609375,
+              "right": 316,
+              "bottom": 564
+            }
+          ],
+          ".tabs": [
+            {
+              "x": 4,
+              "y": 215.390625,
+              "width": 312,
+              "height": 44,
+              "right": 316,
+              "bottom": 259.390625
+            }
+          ],
+          ".tool-card": [
+            {
+              "x": 4,
+              "y": 263.390625,
+              "width": 154,
+              "height": 199.5,
+              "right": 158,
+              "bottom": 462.890625
+            },
+            {
+              "x": 162,
+              "y": 263.390625,
+              "width": 154,
+              "height": 199.5,
+              "right": 316,
+              "bottom": 462.890625
+            }
+          ],
+          ".tool-card button": [
+            {
+              "x": 10,
+              "y": 412.890625,
+              "width": 142,
+              "height": 44,
+              "right": 152,
+              "bottom": 456.890625
+            },
+            {
+              "x": 168,
+              "y": 364.328125,
+              "width": 142,
+              "height": 44,
+              "right": 310,
+              "bottom": 408.328125
+            }
+          ],
+          ".basket": [
+            {
+              "x": 4,
+              "y": 466.890625,
+              "width": 312,
+              "height": 54,
+              "right": 316,
+              "bottom": 520.890625
+            }
+          ],
+          ".basket button": [
+            {
+              "x": 185,
+              "y": 471.890625,
+              "width": 124,
+              "height": 44,
+              "right": 309,
+              "bottom": 515.890625
+            }
+          ]
+        },
+        "missingRequired": [],
+        "bodyOverflow": "visible",
+        "clippingViolations": [],
+        "targetViolations": [],
+        "typographyViolations": [],
+        "internalScrollers": [],
+        "contentOverflows": [],
+        "duplicateIds": [],
+        "documentOverflow": {
+          "horizontal": false,
+          "vertical": false,
+          "scrollWidth": 320,
+          "scrollHeight": 568
+        }
+      },
+      "errors": [],
+      "passed": true
+    },
+    {
+      "viewport": {
+        "name": "landscape-568x320",
+        "width": 568,
+        "height": 320
+      },
+      "decision": {
+        "viewport": {
+          "left": 0,
+          "top": 0,
+          "right": 568,
+          "bottom": 320
+        },
+        "boxes": {
+          ".model": {
+            "x": 0,
+            "y": 28,
+            "width": 193.109375,
+            "height": 292,
+            "right": 193.109375,
+            "bottom": 320
+          },
+          ".identity": {
+            "x": 198.109375,
+            "y": 33,
+            "width": 364.875,
+            "height": 50.40625,
+            "right": 562.984375,
+            "bottom": 83.40625
+          },
+          ".exposure": {
+            "x": 198.109375,
+            "y": 88.40625,
+            "width": 145.9375,
+            "height": 226.59375,
+            "right": 344.046875,
+            "bottom": 315
+          },
+          ".facts": {
+            "x": 349.046875,
+            "y": 88.40625,
+            "width": 213.9375,
+            "height": 59.375,
+            "right": 562.984375,
+            "bottom": 147.78125
+          },
+          ".doors": {
+            "x": 349.046875,
+            "y": 152.78125,
+            "width": 213.9375,
+            "height": 113.21875,
+            "right": 562.984375,
+            "bottom": 266
+          },
+          ".quick": null,
+          ".cta": {
+            "x": 349.046875,
+            "y": 271,
+            "width": 213.9375,
+            "height": 44,
+            "right": 562.984375,
+            "bottom": 315
+          }
+        },
+        "missingRequired": [],
+        "factLabelViolations": [],
+        "clippingViolations": [],
+        "targetViolations": [],
+        "typographyViolations": [],
+        "internalScrollers": [],
+        "contentOverflows": [],
+        "duplicateIds": [],
+        "orientationTruthGate": {
+          "state": "unknown",
+          "claimedBeamCount": 0,
+          "neutralMarkerVisible": true,
+          "backgroundImage": "none",
+          "passed": true
+        },
+        "documentOverflow": {
+          "horizontal": false,
+          "vertical": false,
+          "scrollWidth": 568,
+          "scrollHeight": 320
+        }
+      },
+      "tool": {
+        "open": true,
+        "rect": {
+          "x": 0,
+          "y": 0,
+          "width": 568,
+          "height": 320,
+          "right": 568,
+          "bottom": 320
+        },
+        "geometry": {
+          ".tool-head": [
+            {
+              "x": 0,
+              "y": 0,
+              "width": 568,
+              "height": 52,
+              "right": 568,
+              "bottom": 52
+            }
+          ],
+          ".tool-body": [
+            {
+              "x": 0,
+              "y": 52,
+              "width": 568,
+              "height": 268,
+              "right": 568,
+              "bottom": 320
+            }
+          ],
+          ".tool-layout": [
+            {
+              "x": 0,
+              "y": 52,
+              "width": 568,
+              "height": 268,
+              "right": 568,
+              "bottom": 320
+            }
+          ],
+          ".tool-visual": [
+            {
+              "x": 6,
+              "y": 58,
+              "width": 161.234375,
+              "height": 256,
+              "right": 167.234375,
+              "bottom": 314
+            }
+          ],
+          ".tool-panel": [
+            {
+              "x": 173.234375,
+              "y": 58,
+              "width": 388.765625,
+              "height": 256,
+              "right": 562,
+              "bottom": 314
+            }
+          ],
+          ".tabs": [
+            {
+              "x": 173.234375,
+              "y": 58,
+              "width": 388.765625,
+              "height": 44,
+              "right": 562,
+              "bottom": 102
+            }
+          ],
+          ".tool-card": [
+            {
+              "x": 173.234375,
+              "y": 107,
+              "width": 191.875,
+              "height": 156,
+              "right": 365.109375,
+              "bottom": 263
+            },
+            {
+              "x": 370.109375,
+              "y": 107,
+              "width": 191.890625,
+              "height": 156,
+              "right": 562,
+              "bottom": 263
+            }
+          ],
+          ".tool-card button": [
+            {
+              "x": 180.234375,
+              "y": 212,
+              "width": 177.875,
+              "height": 44,
+              "right": 358.109375,
+              "bottom": 256
+            },
+            {
+              "x": 377.109375,
+              "y": 212,
+              "width": 177.890625,
+              "height": 44,
+              "right": 555,
+              "bottom": 256
+            }
+          ],
+          ".basket": [
+            {
+              "x": 173.234375,
+              "y": 268,
+              "width": 388.765625,
+              "height": 46,
+              "right": 562,
+              "bottom": 314
+            }
+          ],
+          ".basket button": [
+            {
+              "x": 439,
+              "y": 269,
+              "width": 116,
+              "height": 44,
+              "right": 555,
+              "bottom": 313
+            }
+          ]
+        },
+        "missingRequired": [],
+        "bodyOverflow": "visible",
+        "clippingViolations": [],
+        "targetViolations": [],
+        "typographyViolations": [],
+        "internalScrollers": [],
+        "contentOverflows": [],
+        "duplicateIds": [],
+        "documentOverflow": {
+          "horizontal": false,
+          "vertical": false,
+          "scrollWidth": 568,
+          "scrollHeight": 320
+        }
+      },
+      "errors": [],
+      "passed": true
+    },
+    {
+      "viewport": {
+        "name": "desktop-1280x800",
+        "width": 1280,
+        "height": 800
+      },
+      "decision": {
+        "viewport": {
+          "left": 0,
+          "top": 0,
+          "right": 1280,
+          "bottom": 800
+        },
+        "boxes": {
+          ".model": {
+            "x": 0,
+            "y": 34,
+            "width": 850,
+            "height": 766,
+            "right": 850,
+            "bottom": 800
+          },
+          ".identity": {
+            "x": 862,
+            "y": 46,
+            "width": 406,
+            "height": 67.9375,
+            "right": 1268,
+            "bottom": 113.9375
+          },
+          ".exposure": {
+            "x": 862,
+            "y": 121.9375,
+            "width": 406,
+            "height": 230.328125,
+            "right": 1268,
+            "bottom": 352.265625
+          },
+          ".facts": {
+            "x": 862,
+            "y": 360.265625,
+            "width": 406,
+            "height": 81.390625,
+            "right": 1268,
+            "bottom": 441.65625
+          },
+          ".doors": {
+            "x": 862,
+            "y": 449.65625,
+            "width": 406,
+            "height": 230.34375,
+            "right": 1268,
+            "bottom": 680
+          },
+          ".quick": {
+            "x": 862,
+            "y": 688,
+            "width": 406,
+            "height": 44,
+            "right": 1268,
+            "bottom": 732
+          },
+          ".cta": {
+            "x": 862,
+            "y": 740,
+            "width": 406,
+            "height": 48,
+            "right": 1268,
+            "bottom": 788
+          }
+        },
+        "missingRequired": [],
+        "factLabelViolations": [],
+        "clippingViolations": [],
+        "targetViolations": [],
+        "typographyViolations": [],
+        "internalScrollers": [],
+        "contentOverflows": [],
+        "duplicateIds": [],
+        "orientationTruthGate": {
+          "state": "unknown",
+          "claimedBeamCount": 0,
+          "neutralMarkerVisible": true,
+          "backgroundImage": "none",
+          "passed": true
+        },
+        "documentOverflow": {
+          "horizontal": false,
+          "vertical": false,
+          "scrollWidth": 1280,
+          "scrollHeight": 800
+        }
+      },
+      "tool": {
+        "open": true,
+        "rect": {
+          "x": 0,
+          "y": 0,
+          "width": 1280,
+          "height": 800,
+          "right": 1280,
+          "bottom": 800
+        },
+        "geometry": {
+          ".tool-head": [
+            {
+              "x": 0,
+              "y": 0,
+              "width": 1280,
+              "height": 64,
+              "right": 1280,
+              "bottom": 64
+            }
+          ],
+          ".tool-body": [
+            {
+              "x": 0,
+              "y": 64,
+              "width": 1280,
+              "height": 736,
+              "right": 1280,
+              "bottom": 800
+            }
+          ],
+          ".tool-layout": [
+            {
+              "x": 80,
+              "y": 64,
+              "width": 1120,
+              "height": 736,
+              "right": 1200,
+              "bottom": 800
+            }
+          ],
+          ".tool-visual": [
+            {
+              "x": 94,
+              "y": 78,
+              "width": 648,
+              "height": 708,
+              "right": 742,
+              "bottom": 786
+            }
+          ],
+          ".tool-panel": [
+            {
+              "x": 754,
+              "y": 78,
+              "width": 432,
+              "height": 708,
+              "right": 1186,
+              "bottom": 786
+            }
+          ],
+          ".tabs": [
+            {
+              "x": 754,
+              "y": 78,
+              "width": 432,
+              "height": 44,
+              "right": 1186,
+              "bottom": 122
+            }
+          ],
+          ".tool-card": [
+            {
+              "x": 754,
+              "y": 130,
+              "width": 432,
+              "height": 138.46875,
+              "right": 1186,
+              "bottom": 268.46875
+            },
+            {
+              "x": 754,
+              "y": 276.46875,
+              "width": 432,
+              "height": 138.46875,
+              "right": 1186,
+              "bottom": 414.9375
+            }
+          ],
+          ".tool-card button": [
+            {
+              "x": 767,
+              "y": 211.46875,
+              "width": 406,
+              "height": 44,
+              "right": 1173,
+              "bottom": 255.46875
+            },
+            {
+              "x": 767,
+              "y": 357.9375,
+              "width": 406,
+              "height": 44,
+              "right": 1173,
+              "bottom": 401.9375
+            }
+          ],
+          ".basket": [
+            {
+              "x": 754,
+              "y": 422.9375,
+              "width": 432,
+              "height": 66,
+              "right": 1186,
+              "bottom": 488.9375
+            }
+          ],
+          ".basket button": [
+            {
+              "x": 1049,
+              "y": 433.9375,
+              "width": 124,
+              "height": 44,
+              "right": 1173,
+              "bottom": 477.9375
+            }
+          ]
+        },
+        "missingRequired": [],
+        "bodyOverflow": "visible",
+        "clippingViolations": [],
+        "targetViolations": [],
+        "typographyViolations": [],
+        "internalScrollers": [],
+        "contentOverflows": [],
+        "duplicateIds": [],
+        "documentOverflow": {
+          "horizontal": false,
+          "vertical": false,
+          "scrollWidth": 1280,
+          "scrollHeight": 800
+        }
+      },
+      "errors": [],
+      "passed": true
+    }
+  ]
+}

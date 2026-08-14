@@ -51,6 +51,14 @@ if ( ! function_exists( 'nadlan_claim_rest_handler' ) ) {
 	function nadlan_claim_rest_handler( $req ) {
 		$p = $req->get_json_params();
 		if ( ! is_array( $p ) ) { $p = $req->get_params(); }
+		$post_id = (int) ( $p['post_id'] ?? 0 );
+		if ( $post_id > 0 && 'nadlan_project' === get_post_type( $post_id ) && (
+			( function_exists( 'nadlan_unit_journey_is_private_lab' )
+				&& nadlan_unit_journey_is_private_lab( $post_id ) )
+			|| 'private-unit-journey-v2' === (string) get_post_meta( $post_id, '_nadlan_private_unit_journey', true )
+		) ) {
+			return new WP_REST_Response( array( 'ok' => false, 'error' => 'not_found' ), 404 );
+		}
 
 		// Honeypot
 		if ( ! empty( $p['company'] ) ) {
@@ -59,7 +67,6 @@ if ( ! function_exists( 'nadlan_claim_rest_handler' ) ) {
 		$g = function( $k ) use ( $p ) {
 			return isset( $p[ $k ] ) ? sanitize_text_field( wp_unslash( (string) $p[ $k ] ) ) : '';
 		};
-		$post_id = (int) ( $p['post_id'] ?? 0 );
 		$name    = $g( 'name' );
 		$phone   = $g( 'phone' );
 		$email   = isset( $p['email'] ) ? sanitize_email( wp_unslash( (string) $p['email'] ) ) : '';

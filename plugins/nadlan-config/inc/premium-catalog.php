@@ -3,8 +3,8 @@
  * nadlan-config - Premium project catalog (v1.71.6)
  *
  * [nadlan_premium_catalog]: the curated tier. Only projects that pass the full
- * experience gate appear here: complete article in 5 languages, selectable 3D,
- * facade, verified facts. Booking-style filters (facilities, rooms, delivery,
+ * experience gate for every approved publication language appear here: a complete
+ * article, truthful interactive model, context and verified facts. Booking-style filters (facilities, rooms, delivery,
  * near sea) + recent-deals line per card + language links. This is both the
  * flagship UX and a monetization product (developers pay to be in the premium
  * tier). The big /projects/ catalog (900+) stays as the wide SEO net.
@@ -48,7 +48,7 @@ if ( ! function_exists( 'nadlan_premium_catalog_data' ) ) {
 				'slug' => 'rainbow-tel-aviv', 'name' => 'Rainbow תל אביב', 'dev' => 'ישראל קנדה',
 				'area' => 'רובע שדה דב, קו ראשון לחוף', 'floors' => 39, 'units' => 459, 'delivery' => '2027',
 				'price_note' => 'ממוצע נמכרות: 80,300 ₪ למ"ר כולל מע"מ (דוח שנתי 2025)',
-				'rooms' => array( 3, 4, 5 ), 'sea' => true,
+				'rooms' => array( 3, 4, 5 ), 'sea' => true, 'park' => true, 'marina' => true,
 				'fac' => array( 'לגונה ובריכות', 'ספא', 'חדר כושר', 'קולנוע', "קונסיירז'", 'מסחר', 'חניון', 'ממ"ד' ),
 				'deal' => 'נמכרו 270 מתוך 459 (59%) עד סוף 2025, לפי דיווח רשמי',
 			),
@@ -56,7 +56,7 @@ if ( ! function_exists( 'nadlan_premium_catalog_data' ) ) {
 				'slug' => 'ashira-sde-dov', 'name' => 'ASHIRA שדה דב', 'dev' => 'אביסרור',
 				'area' => 'רובע שדה דב, מול הים', 'floors' => 35, 'units' => 406, 'delivery' => '2028',
 				'price_note' => 'אומדן אזור: כ-75,000 ₪ למ"ר (מדלן, לאימות מול היזם)',
-				'rooms' => array( 2, 3, 4, 5 ), 'sea' => true,
+				'rooms' => array( 2, 3, 4, 5 ), 'sea' => true, 'park' => true, 'marina' => true,
 				'fac' => array( 'בריכה', 'ספא', 'חדר כושר', 'קולנוע', "לאונג'", 'אזורי ילדים', 'חניון', 'ממ"ד' ),
 				'deal' => '4 בניינים במדרוג 8/8/16/35 קומות, תכנון אבנר ישר',
 			),
@@ -64,11 +64,33 @@ if ( ! function_exists( 'nadlan_premium_catalog_data' ) ) {
 				'slug' => 'dimri-yama-sde-dov', 'name' => 'Dimri Yama שדה דב', 'dev' => 'י.ח דמרי',
 				'area' => 'רובע שדה דב', 'floors' => 39, 'units' => 458, 'delivery' => '2028',
 				'price_note' => 'טרם פורסם מחירון; עוגן אזורי: 80,300 ₪ למ"ר (Rainbow, דיווח רשמי)',
-				'rooms' => array( 3, 4, 5 ), 'sea' => true,
+				'rooms' => array( 3, 4, 5 ), 'sea' => true, 'park' => true, 'marina' => true,
 				'fac' => array( 'בריכה', 'חדר כושר', 'לובי Kelly Hoppen', 'אזורי ילדים', 'חניון', 'ממ"ד' ),
 				'deal' => 'עיצוב פנים בחתימת Kelly Hoppen CBE',
 			),
+			array(
+				'slug' => 'einstein-tower', 'name' => 'EINSTEIN TOWER תל אביב', 'dev' => 'קבוצת חג׳ג׳',
+				'catalog_state' => 'private_stage', 'catalog_gate_meta' => '_nl_flagship_v3_ready',
+				'area' => 'פינת איינשטיין–לוי אשכול, צפון תל אביב', 'floors' => 28, 'units' => 215, 'delivery' => '2030',
+				'delivery_label' => 'הערכת החברה: רבעון 3, 2030 (נכון ל-31.12.2025)',
+				'price_note' => '215 יחידות בפרויקט 33א׳ (דוח שנתי 2025); נתוני מלאי ומחיר מוצגים רק לאחר אימות',
+				'rooms' => array(), 'sea' => false, 'park' => false, 'marina' => false,
+				'fac' => array( 'מסחר' ),
+				'deal' => 'מגדל בן 28 קומות ושני בנייני בוטיק בני 13 קומות מעל בסיס מסחרי',
+				'experience_label' => 'מודל החלטה תלת-ממדי',
+				'link_label' => 'לעמוד המלא: מודל, סביבת קנייה ומפה ←',
+			),
 		) );
+	}
+}
+
+if ( ! function_exists( 'nadlan_pc_row_public_ready' ) ) {
+	/** A staged catalog record is registered in the hierarchy but cannot surface before read-back promotion. */
+	function nadlan_pc_row_public_ready( $row, $post ) {
+		if ( ! is_array( $row ) || ! is_object( $post ) ) { return false; }
+		if ( ! isset( $row['catalog_state'] ) || 'private_stage' !== $row['catalog_state'] ) { return true; }
+		$gate = isset( $row['catalog_gate_meta'] ) ? (string) $row['catalog_gate_meta'] : '';
+		return '' !== $gate && '1' === (string) get_post_meta( (int) $post->ID, $gate, true );
 	}
 }
 
@@ -130,9 +152,9 @@ add_shortcode( 'nadlan_premium_catalog', function () {
   <div class="bar"><span class="lbl">חדרים</span>
     <button class="fr" data-r="2">2</button><button class="fr" data-r="3">3</button><button class="fr" data-r="4">4</button><button class="fr" data-r="5">5</button>
     <span class="lbl" style="margin-inline-start:12px">אכלוס</span>
-    <button class="fr" data-d="2027">2027</button><button class="fr" data-d="2028">2028</button>
+		<button class="fr" data-d="2027">2027</button><button class="fr" data-d="2028">2028</button><button class="fr" data-d="2030">2030</button>
     <span class="lbl" style="margin-inline-start:12px">יזם</span>
-    <button class="fr" data-dev="ישראל קנדה">ישראל קנדה</button><button class="fr" data-dev="אביסרור">אביסרור</button><button class="fr" data-dev="י.ח דמרי">י.ח דמרי</button>
+		<button class="fr" data-dev="ישראל קנדה">ישראל קנדה</button><button class="fr" data-dev="אביסרור">אביסרור</button><button class="fr" data-dev="י.ח דמרי">י.ח דמרי</button><button class="fr" data-dev="קבוצת חג׳ג׳">קבוצת חג׳ג׳</button>
   </div>
   <div class="bar"><span class="lbl">בסביבה</span>
     <button class="fr" data-sea="1"><i class="ic"><?php echo $icons['ים']; ?></i>חוף הים במרחק הליכה</button>
@@ -150,13 +172,16 @@ add_shortcode( 'nadlan_premium_catalog', function () {
   <?php foreach ( $rows as $p ) :
     $post = get_page_by_path( $p['slug'], OBJECT, 'nadlan_project' );
     if ( ! $post ) { continue; }
+	if ( ! nadlan_pc_row_public_ready( $p, $post ) ) { continue; }
     $link   = get_permalink( $post );
     // IMAGERY PIVOT (owner decision 1, 2026-07-07): the REAL model render
     // leads the card; the sketch plate is the secondary chip, not the face.
     // small badge so the buyer knows a live 3D selection experience waits inside.
     $poster = esc_url( (string) get_post_meta( $post->ID, 'project_model_poster', true ) );
     $plate  = esc_url( (string) get_post_meta( $post->ID, 'project_3d_image', true ) );
-    $hero   = $poster !== '' ? $poster : $plate;
+		$hero   = $poster !== '' ? $poster : $plate;
+		$experience_label = isset( $p['experience_label'] ) ? $p['experience_label'] : 'בחירת דירה בתלת ממד';
+		$link_label = isset( $p['link_label'] ) ? $p['link_label'] : 'לעמוד המלא: מודל, חזית, מאמר ומפה ←';
     $fattrs = '';
     foreach ( $fkeys as $i => $k ) { foreach ( $p['fac'] as $f ) { if ( strpos( $f, $k ) !== false ) { $fattrs .= ' data-f' . $i . '="1"'; break; } } }
     $langs = array();
@@ -165,11 +190,12 @@ add_shortcode( 'nadlan_premium_catalog', function () {
       if ( $sib && 'publish' === get_post_status( $sib ) ) { $langs[ $ll ] = get_permalink( $sib ); }
     }
   ?>
-  <article class="nlpc-card" data-rooms="<?php echo esc_attr( implode( ',', $p['rooms'] ) ); ?>" data-delivery="<?php echo esc_attr( $p['delivery'] ); ?>" data-sea="<?php echo $p['sea'] ? 1 : 0; ?>" data-park="1" data-marina="1" data-dev="<?php echo esc_attr( $p['dev'] ); ?>" data-floors="<?php echo (int) $p['floors']; ?>" data-units="<?php echo (int) $p['units']; ?>"<?php echo $fattrs; ?>>
-    <div class="nlpc-media<?php echo ( $hero && $hero === $poster ) ? ' is-poster' : ''; ?>" style="background-image:url('<?php echo $hero; ?>')"><em>בחירת דירה בתלת ממד</em><?php if ( $plate && $plate !== $hero ) : ?><span class="nlpc-3d" style="background-image:url('<?php echo $plate; ?>')" aria-hidden="true"><b>◆</b></span><?php endif; ?></div>
+  <article class="nlpc-card" data-rooms="<?php echo esc_attr( implode( ',', $p['rooms'] ) ); ?>" data-delivery="<?php echo esc_attr( $p['delivery'] ); ?>" data-sea="<?php echo ! empty( $p['sea'] ) ? 1 : 0; ?>" data-park="<?php echo ! empty( $p['park'] ) ? 1 : 0; ?>" data-marina="<?php echo ! empty( $p['marina'] ) ? 1 : 0; ?>" data-dev="<?php echo esc_attr( $p['dev'] ); ?>" data-floors="<?php echo (int) $p['floors']; ?>" data-units="<?php echo (int) $p['units']; ?>"<?php echo $fattrs; ?>>
+    <div class="nlpc-media<?php echo ( $hero && $hero === $poster ) ? ' is-poster' : ''; ?>" style="background-image:url('<?php echo $hero; ?>')"><em><?php echo esc_html( $experience_label ); ?></em><?php if ( $plate && $plate !== $hero ) : ?><span class="nlpc-3d" style="background-image:url('<?php echo $plate; ?>')" aria-hidden="true"><b>◆</b></span><?php endif; ?></div>
     <div class="nlpc-body">
       <h3><?php echo esc_html( $p['name'] ); ?></h3>
-      <div class="nlpc-meta"><?php echo esc_html( $p['dev'] . ' · ' . $p['area'] . ' · ' . $p['floors'] . ' קומות · ' . $p['units'] . ' דירות · אכלוס ' . $p['delivery'] ); ?></div>
+      <?php $delivery_label = isset( $p['delivery_label'] ) ? $p['delivery_label'] : 'אכלוס ' . $p['delivery']; ?>
+      <div class="nlpc-meta"><?php echo esc_html( $p['dev'] . ' · ' . $p['area'] . ' · ' . $p['floors'] . ' קומות · ' . $p['units'] . ' דירות · ' . $delivery_label ); ?></div>
       <span class="nlpc-price"><?php echo esc_html( $p['price_note'] ); ?></span>
       <div class="nlpc-fac"><?php foreach ( $p['fac'] as $f ) { $ic=''; foreach ( $icons as $k2 => $svg ) { if ( strpos( $f, $k2 ) !== false ) { $ic='<i class="ic">'.$svg.'</i>'; break; } }
         // facility chips are CLICKABLE (owner, 2026-07-29): a chip filters the catalog by
@@ -180,7 +206,7 @@ add_shortcode( 'nadlan_premium_catalog', function () {
         } else { echo '<span>' . $ic . esc_html( $f ) . '</span>'; } } ?></div>
       <div class="nlpc-deal"><?php echo esc_html( $p['deal'] ); ?></div>
       <div class="nlpc-foot">
-        <a class="nlpc-go" href="<?php echo esc_url( $link ); ?>">לעמוד המלא: מודל, חזית, מאמר ומפה ←</a>
+        <a class="nlpc-go" href="<?php echo esc_url( $link ); ?>"><?php echo esc_html( $link_label ); ?></a>
         <?php if ( function_exists( 'nadlan_sdedov_card_tour_btn' ) ) { echo nadlan_sdedov_card_tour_btn( $post ); } // phpcs:ignore ?>
         <div class="nlpc-langs"><?php foreach ( $langs as $ll => $lu ) { echo '<a href="' . esc_url( $lu ) . '">' . esc_html( $ll ) . '</a>'; } ?></div>
       </div>

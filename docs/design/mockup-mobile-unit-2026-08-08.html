@@ -1,0 +1,161 @@
+<style>
+.nlmk{max-width:1100px;margin:0 auto;padding:18px;font-family:Heebo,system-ui,sans-serif;direction:rtl}
+.nlmk h1{font-size:26px;margin:0 0 6px}
+.nlmk .sub{color:#6B655B;margin:0 0 22px;font-size:15px;line-height:1.7}
+.nlmk-wrap{display:flex;gap:34px;align-items:flex-start;flex-wrap:wrap;justify-content:center}
+.nlmk-notes{flex:1;min-width:260px;max-width:420px}
+.nlmk-notes h3{font-size:16px;color:#9C7A3C;margin:18px 0 6px}
+.nlmk-notes p{font-size:14px;line-height:1.8;color:#3A3733;margin:0 0 6px}
+.nlmk-phone{width:392px;max-width:96vw;background:#111;border-radius:38px;padding:12px;box-shadow:0 24px 60px rgba(0,0,0,.35);flex-shrink:0}
+.nlmk-screen{position:relative;width:100%;height:750px;background:#15140F;border-radius:28px;overflow:hidden}
+.mk{position:absolute;inset:0;display:none;flex-direction:column}
+.mk.on{display:flex}
+/* screen 1: building */
+.mk1-head{padding:14px 16px 8px;color:#F6F1E6}
+.mk1-head b{font-size:17px}
+.mk1-head s{display:block;text-decoration:none;font-size:12px;color:#B7AE9C}
+.mk1-stage{flex:1;position:relative;background:linear-gradient(180deg,#1c2f45 0%,#2a4258 55%,#1B1A17 100%)}
+.mk1-bld{position:absolute;left:50%;bottom:0;transform:translateX(-50%)}
+.mk-apt{cursor:pointer}
+.mk-apt rect{fill:rgba(216,199,154,.14);stroke:rgba(216,199,154,.7);stroke-width:1;transition:fill .15s}
+.mk-apt:hover rect,.mk-apt:active rect{fill:rgba(216,199,154,.45)}
+.mk1-hint{position:absolute;top:12px;right:14px;background:rgba(0,0,0,.55);color:#F6F1E6;border-radius:999px;padding:7px 14px;font-size:12.5px}
+/* screen 2: the unit - EVERYTHING on one screen, zero scroll */
+.mk2-top{height:44%;position:relative;background:linear-gradient(180deg,#1c2f45,#243a50)}
+.mk2-map{position:absolute;inset:0}
+.mk2-back{position:absolute;top:10px;right:10px;z-index:3;background:rgba(0,0,0,.55);color:#F6F1E6;border:0;border-radius:999px;padding:8px 14px;font:600 12.5px Heebo;cursor:pointer}
+.mk2-caption{position:absolute;bottom:8px;right:12px;left:12px;color:#F6F1E6;font-size:12.5px;text-shadow:0 1px 4px #000;display:flex;justify-content:space-between}
+.mk2-facts{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:#3A362E}
+.mk2-facts div{background:#1B1A17;color:#F6F1E6;text-align:center;padding:10px 4px}
+.mk2-facts b{display:block;font-size:16px;color:#D8C79A}
+.mk2-facts s{text-decoration:none;font-size:10.5px;color:#B7AE9C}
+.mk2-actions{flex:1;display:flex;flex-direction:column;gap:9px;padding:12px 14px 16px;background:#15140F}
+.mk2-actions button{flex:1;border:1px solid #4A443B;border-radius:14px;background:#242219;color:#F6F1E6;
+font:700 15px Heebo;cursor:pointer;display:flex;align-items:center;justify-content:space-between;padding:0 18px}
+.mk2-actions button i{font-style:normal;color:#D8C79A;font-size:18px}
+.mk2-actions .cta{background:#B85410;border-color:#B85410}
+/* screen 3: fullscreen takeover */
+.mk3{background:linear-gradient(180deg,#87b7d8 0%,#b9d9ea 46%,#284457 46.5%,#16293a 100%)}
+.mk3-x{position:absolute;top:12px;left:12px;z-index:3;width:40px;height:40px;border-radius:999px;border:0;background:rgba(0,0,0,.55);color:#fff;font-size:19px;cursor:pointer}
+.mk3-cap{position:absolute;bottom:0;left:0;right:0;padding:16px;background:linear-gradient(0deg,rgba(0,0,0,.75),transparent);color:#F6F1E6}
+.mk3-cap b{font-size:16px}
+.mk3-cap s{display:block;text-decoration:none;font-size:12.5px;color:#D8C79A}
+.mk-tag{position:absolute;top:12px;right:60px;left:auto;background:rgba(216,199,154,.92);color:#1B1A17;border-radius:8px;padding:6px 12px;font:700 12px Heebo}
+</style>
+<div class="nlmk">
+<h1>ההדמיה: בחירת דירה במובייל, בלי גלילה בתוך גלילה</h1>
+<p class="sub">זה אב-טיפוס לחיצה חי של הכיוון המוצע. לחצו על דירה בבניין ותראו: מסך אחד שלם עם המפה והאלומה, הנתונים והדלתות - וכל כלי נפתח מסך מלא כמו המעצב, בנגיעה אחת חזרה. שום דבר לא מכסה, שום דבר לא נגלל בתוך מסגרת.</p>
+<div class="nlmk-wrap">
+<div class="nlmk-phone"><div class="nlmk-screen" id="nlmk">
+
+<div class="mk mk1 on" data-s="1">
+  <div class="mk1-head"><b>THE PARK בני ברק</b><s>בחרו קומה ודירה מהבניין - או גררו לסיבוב</s></div>
+  <div class="mk1-stage">
+    <div class="mk1-hint">לחצו על דירה מוארת</div>
+    <svg class="mk1-bld" width="240" height="470" viewBox="0 0 240 470">
+      <rect x="20" y="20" width="200" height="450" rx="6" fill="#2E2B24" stroke="#4A443B"/>
+      <g id="mk-apts"></g>
+    </svg>
+  </div>
+</div>
+
+<div class="mk mk2" data-s="2">
+  <div class="mk2-top">
+    <button class="mk2-back" data-go="1">&#8594; לכל הבניין</button>
+    <span class="mk-tag">המפה נשארת. תמיד.</span>
+    <svg class="mk2-map" viewBox="0 0 392 330" preserveAspectRatio="xMidYMid slice">
+      <rect width="392" height="330" fill="#22384c"/>
+      <path d="M0 40 Q120 70 200 30 T392 60" stroke="#31506b" stroke-width="22" fill="none"/>
+      <path d="M0 150 Q140 120 260 170 T392 150" stroke="#31506b" stroke-width="16" fill="none"/>
+      <path d="M60 0 V330 M160 0 V330 M290 0 V330" stroke="#2a4560" stroke-width="10"/>
+      <rect x="150" y="140" width="44" height="60" rx="4" fill="#3d3527" stroke="#D8C79A"/>
+      <path id="mk-beam" d="M172 170 L60 40 A170 170 0 0 1 150 10 Z" fill="rgba(216,199,154,.34)" stroke="rgba(216,199,154,.8)" stroke-width="1.5"/>
+      <circle cx="172" cy="170" r="7" fill="#D8C79A"/>
+      <text x="80" y="70" fill="#cfe3f2" font-size="13" font-family="Heebo">הים &#8592;</text>
+    </svg>
+    <div class="mk2-caption"><span id="mk-dirlabel">החלון פונה צפון-מערב, אל הים</span><span>קומה <b id="mk-floor">21</b></span></div>
+  </div>
+  <div class="mk2-facts">
+    <div><b id="mk-rooms">4</b><s>חדרים</s></div>
+    <div><b id="mk-sqm">108</b><s>מ"ר</s></div>
+    <div><b id="mk-balc">14</b><s>מרפסת</s></div>
+    <div><b id="mk-floor2">21</b><s>קומה</s></div>
+  </div>
+  <div class="mk2-actions">
+    <button data-go="3"><span>החלון פונה לים - לחצו להסתכל מהחלון</span><i>&#9673;</i></button>
+    <button data-go="4"><span>להיכנס לדירה ולעצב אותה</span><i>&#9998;</i></button>
+    <button data-go="5"><span>תוכנית הדירה והמידות</span><i>&#9707;</i></button>
+    <button class="cta"><span>מעניין אותי - לדבר בוואטסאפ</span><i>&#10148;</i></button>
+  </div>
+</div>
+
+<div class="mk mk3" data-s="3">
+  <button class="mk3-x" data-go="2">&#10005;</button>
+  <span class="mk-tag">מסך מלא. נגיעה אחת חזרה.</span>
+  <div class="mk3-cap"><b>הנוף מהחלון שלכם</b><s>קומה 21 · צפון-מערב · הים במרחק 650 מטר</s></div>
+</div>
+
+<div class="mk" data-s="4" style="background:#221F19">
+  <button class="mk3-x" data-go="2">&#10005;</button>
+  <div style="margin:auto;text-align:center;color:#F6F1E6;padding:30px">
+    <div style="font-size:44px;margin-bottom:12px">&#9998;</div>
+    <b style="font-size:17px">כאן נכנס המעצב הקולנועי</b>
+    <p style="color:#B7AE9C;font-size:13.5px;line-height:1.8;margin-top:8px">הליכה אמיתית בתוך הדירה, מסך מלא,<br>באותו מנוע של מעצב הדירות שאהבתם.<br>נבנה בפרויקט המסחרי הראשון.</p>
+  </div>
+</div>
+
+<div class="mk" data-s="5" style="background:#F6F1E6">
+  <button class="mk3-x" data-go="2" style="background:rgba(0,0,0,.75)">&#10005;</button>
+  <div style="margin:auto;width:80%;max-width:280px">
+    <svg viewBox="0 0 280 320" style="width:100%">
+      <rect x="10" y="10" width="260" height="300" fill="none" stroke="#1B1A17" stroke-width="3"/>
+      <path d="M10 120 H150 M150 10 V120 M150 200 H270 M90 120 V310" stroke="#1B1A17" stroke-width="2" fill="none"/>
+      <text x="70" y="70" font-size="13" font-family="Heebo" fill="#6B655B">סלון 34 מ"ר</text>
+      <text x="180" y="120" font-size="12" font-family="Heebo" fill="#6B655B">חדר שינה</text>
+      <text x="30" y="220" font-size="12" font-family="Heebo" fill="#6B655B">ממ"ד</text>
+    </svg>
+  </div>
+</div>
+
+</div></div>
+<div class="nlmk-notes">
+  <h3>מה השתנה מהיום</h3>
+  <p><b>1.</b> נגיעה בדירה לא פותחת כרטיס שמכסה - היא עוברת למסך הדירה: המפה עם האלומה למעלה, תמיד גלויה. הסצנה החשובה לא נעלמת אף פעם.</p>
+  <p><b>2.</b> כל מה שחשוב על מסך אחד: כיוון, קומה, חדרים, מ"ר, והדלתות הגדולות - בלי לגלול בכלל.</p>
+  <p><b>3.</b> כל כלי נפתח מסך מלא כמו המעצב (הדפוס שעבד), עם X אחד חזרה. אפס מסגרות בתוך מסגרות, אפס גלילה פנימית.</p>
+  <p><b>4.</b> הכפתורים מדברים סקרנות: "החלון פונה לים - לחצו להסתכל מהחלון", לא "דרום-מערב".</p>
+  <h3>מה זה לא</h3>
+  <p>הדסקטופ לא משתנה. שום פרויקט קיים לא נפגע - כשהדפוס מאושר, הוא מוחל על כולם דרך המנוע.</p>
+  <h3>הצעד הבא</h3>
+  <p>אם הכיוון נכון בעיניכם - מילה אחת, וזה נבנה אמיתי בפרויקט המסחרי THE PARK יחד עם ההליכה הקולנועית בפנים, ואז מוחל על כל הפרויקטים.</p>
+</div>
+</div>
+</div>
+<script>
+(function(){
+var R=document.getElementById('nlmk');if(!R)return;
+function go(n){R.querySelectorAll('.mk').forEach(function(s){s.classList.toggle('on',s.getAttribute('data-s')===String(n));});}
+R.addEventListener('click',function(e){var b=e.target.closest('[data-go]');if(b){go(b.getAttribute('data-go'));}});
+var g=document.getElementById('mk-apts');
+var dirs=[['צפון-מערב, אל הים','M172 170 L60 40 A170 170 0 0 1 150 10 Z'],['דרום-מערב, אל הפארק','M172 170 L40 260 A170 170 0 0 0 90 300 Z'],['מזרח, אל העיר','M172 170 L330 80 A170 170 0 0 1 350 240 Z']];
+var rooms=[3,4,5];var sqm=[86,108,142];var balc=[10,14,22];
+for(var f=0;f<15;f++){for(var c=0;c<3;c++){
+(function(f,c){
+var s=document.createElementNS('http://www.w3.org/2000/svg','g');
+s.setAttribute('class','mk-apt');
+var r=document.createElementNS('http://www.w3.org/2000/svg','rect');
+r.setAttribute('x',30+c*64);r.setAttribute('y',30+f*29);r.setAttribute('width',56);r.setAttribute('height',22);r.setAttribute('rx',2);
+s.appendChild(r);g.appendChild(s);
+s.addEventListener('click',function(){
+var fl=15-f+6;
+document.getElementById('mk-floor').textContent=fl;
+document.getElementById('mk-floor2').textContent=fl;
+document.getElementById('mk-rooms').textContent=rooms[c];
+document.getElementById('mk-sqm').textContent=sqm[c];
+document.getElementById('mk-balc').textContent=balc[c];
+document.getElementById('mk-dirlabel').textContent='החלון פונה '+dirs[c][0];
+document.getElementById('mk-beam').setAttribute('d',dirs[c][1]);
+go(2);});
+})(f,c);}}
+})();
+</script>

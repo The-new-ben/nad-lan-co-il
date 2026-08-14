@@ -81,6 +81,19 @@ if ( ! function_exists( 'nadlan_rfp_create' ) ) {
 		$lang    = in_array( ( $p['lang'] ?? 'he' ), array( 'he', 'en', 'fr', 'ru', 'ar' ), true ) ? $p['lang'] : 'he';
 		$post    = $slug ? get_page_by_path( $slug, OBJECT, 'nadlan_project' ) : null;
 		if ( ! $post ) { return new WP_Error( 'not_found', 'project not found', array( 'status' => 404 ) ); }
+		/* Resolve the marker before reading inventory/title/permalink and before
+		 * generating a token or row. The private journey intentionally has no RFP
+		 * surface; this endpoint must be as opaque as a missing project. */
+		if ( ( function_exists( 'nadlan_unit_journey_is_private_lab' )
+				&& nadlan_unit_journey_is_private_lab( $post->ID ) )
+			|| 'private-unit-journey-v2' === (string) get_post_meta( $post->ID, '_nadlan_private_unit_journey', true ) ) {
+			return new WP_Error( 'not_found', 'project not found', array( 'status' => 404 ) );
+		}
+		/* Also makes a minimal privacy probe mutation-proof if the guard above is
+		 * ever regressed: no unit pointer, no document creation. */
+		if ( '' === $unit_id ) {
+			return new WP_Error( 'bad_request', 'unit required', array( 'status' => 400 ) );
+		}
 		// server-side unit facts - the client only points, never dictates
 		$unit = null;
 		$units = json_decode( (string) get_post_meta( $post->ID, 'project_3d_units', true ), true );
@@ -121,6 +134,16 @@ if ( ! function_exists( 'nadlan_rfp_render' ) ) {
 		if ( ! $q->posts ) { status_header( 404 ); echo 'Not found'; exit; }
 		$doc = json_decode( get_post_field( 'post_content', $q->posts[0] ), true );
 		if ( ! is_array( $doc ) ) { status_header( 410 ); echo 'Gone'; exit; }
+		$project_id = isset( $doc['project']['id'] ) ? (int) $doc['project']['id'] : 0;
+		if ( $project_id && (
+			( function_exists( 'nadlan_unit_journey_is_private_lab' )
+				&& nadlan_unit_journey_is_private_lab( $project_id ) )
+			|| 'private-unit-journey-v2' === (string) get_post_meta( $project_id, '_nadlan_private_unit_journey', true )
+		) ) {
+			status_header( 404 );
+			echo 'Not found';
+			exit;
+		}
 		$T = nadlan_rfp_lang_table( $doc['lang'] );
 		$u = $doc['unit']; $pr = $doc['project'];
 		$exlbl = array( 'designer' => $T['ex_designer'], 'lawyer' => $T['ex_lawyer'], 'mortgage' => $T['ex_mortgage'], 'inspect' => $T['ex_inspect'], 'furniture' => $T['ex_furniture'] );

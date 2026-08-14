@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex">
+<title>פיילוט — תל אביב האמיתית בתלת־ממד | nad-lan.co.il</title>
+<meta name="theme-color" content="#131022">
+<!-- ============================================================================
+  GOOGLE PHOTOREALISTIC 3D TILES — SIDE PILOT (2026-07-28)
+
+  A minimal, self-contained demo that streams Google's photorealistic 3D tiles
+  of Tel Aviv, centered on the Sde Dov quarter. This is an internal pilot to
+  evaluate the tech before any site adoption — it is NOT linked from the site.
+
+  KEY POLICY: no API key ships in this file, ever. The pilot runs ONLY when the
+  owner supplies their own key via  ?key=AIza…  in the URL. Without a key the
+  page shows a Hebrew instruction screen (how to create a key in Google Cloud
+  Console → Map Tiles API, and what the cost model looks like).
+
+  Stack: three.js 0.160 + 3d-tiles-renderer (NASA-AMMOS) from CDN.
+  Attribution: Google requires showing "© Google" + the data attributions the
+  tileset returns — rendered bottom-left, always on.
+============================================================================= -->
+<style>
+  :root{ --gold:#d8b46a; --gold-hi:#f2d9a4; --txt:#f3eee2; --dim:#b9b0c9; --line:rgba(255,255,255,.14); }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html,body{height:100%;background:#131022;color:var(--txt);font-family:'Heebo',system-ui,-apple-system,'Segoe UI',sans-serif;overflow:hidden}
+  canvas#stage{position:fixed;inset:0;width:100vw;height:100vh;height:100dvh;display:block}
+  a{color:var(--gold-hi)}
+
+  #hud{position:fixed;top:0;right:0;left:0;padding:16px 20px;display:flex;align-items:flex-start;justify-content:space-between;pointer-events:none;z-index:5}
+  #hud .t{text-align:right}
+  #hud .logo{font-weight:200;font-size:11px;letter-spacing:.28em;color:var(--dim)}
+  #hud h1{font-size:clamp(16px,2.4vw,22px);font-weight:800;
+    background:linear-gradient(120deg,#fff 30%,var(--gold-hi) 70%);-webkit-background-clip:text;background-clip:text;color:transparent}
+  #hud .pill{pointer-events:auto;font-size:11.5px;color:var(--gold-hi);border:1px solid rgba(216,180,106,.45);
+    border-radius:99px;padding:5px 12px;background:rgba(20,14,34,.6);backdrop-filter:blur(8px);text-decoration:none;white-space:nowrap}
+
+  #attrib{position:fixed;left:8px;bottom:8px;z-index:6;max-width:72vw;font-size:10px;line-height:1.5;color:#e8e2f2;
+    background:rgba(10,8,20,.66);border-radius:8px;padding:5px 9px;direction:ltr;text-align:left;pointer-events:none}
+  #attrib b{font-weight:700}
+
+  #stat{position:fixed;right:14px;bottom:12px;z-index:6;font-size:11px;color:var(--dim);
+    background:rgba(16,12,30,.7);border:1px solid var(--line);border-radius:99px;padding:6px 13px;pointer-events:none}
+
+  /* ---------- gate / error screens ---------- */
+  .screen{position:fixed;inset:0;z-index:10;display:flex;align-items:center;justify-content:center;padding:22px;overflow:auto;
+    background:radial-gradient(130% 100% at 50% 110%, #3b2a54 0%, #1c1633 52%, #0f0c1f 100%)}
+  .card{width:min(660px,100%);background:rgba(16,12,30,.66);border:1px solid var(--line);border-radius:22px;
+    padding:30px 30px 24px;backdrop-filter:blur(16px);box-shadow:0 24px 70px rgba(0,0,0,.45)}
+  .card .k{font-size:12px;letter-spacing:.22em;color:var(--gold-hi);margin-bottom:10px;font-weight:400}
+  .card h2{font-size:clamp(22px,4vw,32px);font-weight:800;line-height:1.15;margin-bottom:10px}
+  .card p{font-weight:300;color:var(--dim);font-size:14.5px;line-height:1.65;margin-bottom:12px}
+  .card ol{margin:0 18px 14px 0;display:flex;flex-direction:column;gap:9px}
+  .card li{font-size:14px;font-weight:300;line-height:1.55}
+  .card li b{font-weight:700;color:#fff}
+  .card .note{font-size:12.5px;color:var(--dim);border:1px solid rgba(216,180,106,.3);border-radius:12px;
+    padding:10px 14px;background:rgba(216,180,106,.06);margin-bottom:16px;line-height:1.6}
+  .keyrow{display:flex;gap:8px;margin-bottom:10px}
+  .keyrow input{flex:1;min-width:0;background:rgba(255,255,255,.06);border:1px solid var(--line);border-radius:12px;
+    color:var(--txt);font-family:inherit;font-size:14px;padding:12px 14px;direction:ltr;text-align:left}
+  .keyrow input:focus{outline:none;border-color:rgba(216,180,106,.6)}
+  .keyrow button{cursor:pointer;border:none;border-radius:12px;padding:12px 22px;font-family:inherit;font-weight:700;font-size:14px;
+    background:linear-gradient(115deg,var(--gold) 0%,#b98f45 100%);color:#241a08}
+  .fine{font-size:11px;color:#8d84a3;font-weight:300;text-align:center;margin-top:8px}
+  #err{display:none}
+  #load{position:fixed;left:50%;bottom:56px;transform:translateX(-50%);z-index:6;font-size:12.5px;color:var(--dim);
+    background:rgba(16,12,30,.78);border:1px solid var(--line);border-radius:99px;padding:8px 18px;transition:opacity .6s}
+  #load.off{opacity:0}
+</style>
+</head>
+<body>
+
+<canvas id="stage"></canvas>
+
+<header id="hud">
+  <div class="t">
+    <div class="logo">NAD-LAN.CO.IL · PILOT</div>
+    <h1>תל אביב האמיתית — Google 3D Tiles</h1>
+  </div>
+  <a class="pill" href="./sde-dov/index.html">→ חזרה לסיור שדה דב</a>
+</header>
+
+<div id="attrib"><b>© Google</b> <span id="attribData"></span></div>
+<div id="stat" hidden></div>
+<div id="load" class="off">טוענים את האריחים מגוגל…</div>
+
+<div class="screen" id="gate">
+  <div class="card">
+    <div class="k">פיילוט פנימי · לא מקושר מהאתר</div>
+    <h2>העיר האמיתית, ישר מהלוויין — על שדה דב</h2>
+    <p>הדף הזה מזרים את מודל התלת־ממד הפוטוריאליסטי של גוגל (אותו מודל של Google Earth)
+       וממקד אותו על רובע שדה דב. זה ניסוי צד — לבדוק איך זה מרגיש מול ההדמיה האמנותית שלנו —
+       והוא רץ רק עם מפתח API שלך. שום מפתח לא שמור בקוד.</p>
+    <ol>
+      <li>נכנסים ל־<b>Google Cloud Console</b> → יוצרים פרויקט (או בוחרים קיים).</li>
+      <li>ב־<b>APIs &amp; Services</b> מפעילים את <b>Map Tiles API</b>.</li>
+      <li>ב־<b>Credentials</b> יוצרים <b>API Key</b> (מומלץ להגביל אותו ל־Map Tiles API ולדומיין שלך).</li>
+      <li>מדביקים את המפתח כאן למטה — או פותחים את הדף עם <b dir="ltr">?key=AIza…</b></li>
+    </ol>
+    <div class="note">💰 מודל העלות: החיוב הוא לפי "root tileset requests" — טעינת סשן נחשבת פעם אחת,
+      והאריחים עצמם בחינם בתוך הסשן. יש מכסה חינמית חודשית נדיבה (אלפי טעינות), כך שפיילוט פנימי
+      כמעט תמיד יישאר בחינם. לפני חיבור לאתר חי — לבדוק את התמחור העדכני בדף Map Tiles API.</div>
+    <div class="keyrow">
+      <input id="keyIn" type="text" inputmode="latin" autocomplete="off" spellcheck="false" placeholder="AIza…">
+      <button id="keyGo">הפעלת הפיילוט ←</button>
+    </div>
+    <div class="fine">המפתח נשאר אצלך: הוא עובר רק כפרמטר ב־URL של הדפדפן שלך, ישירות מול שרתי גוגל.</div>
+  </div>
+</div>
+
+<div class="screen" id="err">
+  <div class="card">
+    <div class="k">משהו לא הסתדר</div>
+    <h2>האריחים לא נטענו</h2>
+    <p id="errMsg">בדקו שהמפתח תקין, ש־Map Tiles API מופעל בפרויקט, ושאין הגבלת דומיין שחוסמת את הדף הזה.</p>
+    <div class="keyrow"><button id="errBack" style="width:100%">→ חזרה למסך המפתח</button></div>
+  </div>
+</div>
+
+<script type="importmap">
+{ "imports": {
+  "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js",
+  "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/",
+  "3d-tiles-renderer": "https://cdn.jsdelivr.net/npm/3d-tiles-renderer@0.3.43/src/index.js",
+  "3d-tiles-renderer/plugins": "https://cdn.jsdelivr.net/npm/3d-tiles-renderer@0.3.43/src/plugins/index.js"
+} }
+</script>
+<script type="module">
+const KEY = new URLSearchParams(location.search).get('key');
+const gate = document.getElementById('gate'), errScr = document.getElementById('err'), errMsg = document.getElementById('errMsg');
+const attribData = document.getElementById('attribData'), stat = document.getElementById('stat'), loadChip = document.getElementById('load');
+
+/* gate: paste-a-key flow (the key travels only in the user's own URL) */
+document.getElementById('keyGo').addEventListener('click', () => {
+  const k = document.getElementById('keyIn').value.trim();
+  if (k) location.search = '?key=' + encodeURIComponent(k);
+});
+document.getElementById('keyIn').addEventListener('keydown', e => { if (e.key === 'Enter') document.getElementById('keyGo').click(); });
+document.getElementById('errBack').addEventListener('click', () => { location.search = ''; });
+
+function fail(msg) {
+  console.error('[pilot]', msg);
+  gate.style.display = 'none';
+  errScr.style.display = 'flex';
+  if (msg) errMsg.textContent = msg;
+}
+
+if (KEY) boot().catch(e => fail('שגיאת טעינה: ' + (e && e.message || e)));
+
+async function boot() {
+  gate.style.display = 'none';
+  loadChip.classList.remove('off');
+
+  const THREE = await import('three');
+  const { OrbitControls } = await import('three/addons/controls/OrbitControls.js');
+  const { TilesRenderer } = await import('3d-tiles-renderer');
+
+  /* Sde Dov, Tel Aviv */
+  const LAT = 32.1099, LON = 34.7822;
+
+  const renderer = new THREE.WebGLRenderer({ canvas: document.getElementById('stage'), antialias: true });
+  renderer.setPixelRatio(Math.min(devicePixelRatio, 1.6));
+  renderer.setSize(innerWidth, innerHeight);
+  renderer.outputColorSpace = THREE.SRGBColorSpace;
+
+  const scene = new THREE.Scene();
+  scene.background = new THREE.Color(0x87b7dd);
+  const cam = new THREE.PerspectiveCamera(55, innerWidth / innerHeight, 1, 1e7);
+
+  /* WGS84 → ECEF (proper ellipsoid math; the tileset lives in ECEF meters) */
+  const a = 6378137, e2 = 6.69437999014e-3;
+  const D2R = Math.PI / 180;
+  function ecef(latD, lonD, h) {
+    const la = latD * D2R, lo = lonD * D2R;
+    const N = a / Math.sqrt(1 - e2 * Math.sin(la) ** 2);
+    return new THREE.Vector3(
+      (N + h) * Math.cos(la) * Math.cos(lo),
+      (N + h) * Math.cos(la) * Math.sin(lo),
+      (N * (1 - e2) + h) * Math.sin(la));
+  }
+  const ground = ecef(LAT, LON, 30);
+  const up = ground.clone().normalize();
+
+  const tiles = new TilesRenderer();
+  /* GoogleCloudAuthPlugin (session tokens + attribution) when the build ships it;
+     otherwise fall back to the plain key-in-URL root tileset */
+  let usedPlugin = false;
+  try {
+    const plugins = await import('3d-tiles-renderer/plugins');
+    if (plugins.GoogleCloudAuthPlugin) {
+      tiles.registerPlugin(new plugins.GoogleCloudAuthPlugin({ apiToken: KEY, autoRefreshToken: true }));
+      tiles.rootURL = 'https://tile.googleapis.com/v1/3dtiles/root.json';
+      usedPlugin = true;
+    }
+  } catch (e) { console.warn('[pilot] plugins module unavailable, using direct key url:', e.message); }
+  if (!usedPlugin) tiles.rootURL = 'https://tile.googleapis.com/v1/3dtiles/root.json?key=' + encodeURIComponent(KEY);
+
+  tiles.errorTarget = 8;
+  tiles.maxDepth = Infinity;
+  if (tiles.lruCache) { tiles.lruCache.minSize = 450; tiles.lruCache.maxSize = 700; }
+  tiles.setCamera(cam);
+  tiles.setResolutionFromRenderer(cam, renderer);
+  scene.add(tiles.group);
+
+  /* camera: hover south-west of the runway, looking at the quarter.
+     ECEF frame, so "up" is the local vertical at Tel Aviv. */
+  const east = new THREE.Vector3(-Math.sin(LON * D2R), Math.cos(LON * D2R), 0);
+  const north = new THREE.Vector3().crossVectors(up, east).normalize();
+  cam.up.copy(up);
+  cam.position.copy(ground)
+    .addScaledVector(up, 900)
+    .addScaledVector(north, -1450)
+    .addScaledVector(east, -350);
+  const controls = new OrbitControls(cam, renderer.domElement);
+  controls.target.copy(ground);
+  controls.enableDamping = true;
+  controls.maxDistance = 30000;
+  controls.minDistance = 120;
+  controls.update();
+
+  let gotRoot = false, errored = false;
+  tiles.addEventListener('load-tile-set', () => { gotRoot = true; loadChip.classList.add('off'); });
+  tiles.addEventListener('load-error', ev => {
+    if (errored || gotRoot) return; errored = true;
+    const st = ev && ev.error && (ev.error.status || ev.error.message) || '';
+    fail('גוגל דחתה את הבקשה (' + st + '). בדקו שהמפתח תקין וש־Map Tiles API מופעל.');
+  });
+  /* if nothing arrived within 14s, say so instead of hanging silently */
+  setTimeout(() => { if (!gotRoot && !errored) fail('לא התקבלה תשובה מגוגל תוך 14 שניות — בדקו מפתח, רשת, או חוסם פרסומות.'); }, 14000);
+
+  addEventListener('resize', () => {
+    renderer.setSize(innerWidth, innerHeight);
+    cam.aspect = innerWidth / innerHeight; cam.updateProjectionMatrix();
+    tiles.setResolutionFromRenderer(cam, renderer);
+  });
+
+  stat.hidden = false;
+  const clock = new THREE.Clock();
+  (function frame() {
+    requestAnimationFrame(frame);
+    controls.update();
+    cam.updateMatrixWorld();
+    tiles.update();
+    renderer.render(scene, cam);
+    /* live stats + the attribution Google requires */
+    const s = tiles.stats || {};
+    stat.textContent = 'אריחים: ' + (s.visible ?? '—') + ' · בהורדה: ' + (s.downloading ?? 0) + ' · בפענוח: ' + (s.parsing ?? 0);
+    if (clock.getElapsedTime() % 2 < 0.02) {
+      try {
+        const at = tiles.getAttributions ? tiles.getAttributions() : [];
+        attribData.textContent = at.map(x => x.value).filter(Boolean).join(' · ');
+      } catch (e) { /* attribution API differs across versions — © Google stays regardless */ }
+    }
+  })();
+  console.info('[pilot] Google 3D tiles streaming · plugin auth:', usedPlugin);
+}
+</script>
+</body>
+</html>

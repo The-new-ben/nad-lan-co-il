@@ -125,13 +125,17 @@ add_filter( 'pre_get_document_title', function ( $title ) {
 /* Top cities by real inventory (cached). [ ['name','projects','properties'], ... ] */
 if ( ! function_exists( 'nadlan_hv2_cities' ) ) {
 	function nadlan_hv2_cities( $limit = 10 ) {
-		$hit = get_transient( 'nadlan_hv2_cities' );
+		$hit = get_transient( 'nadlan_hv2_cities_v2' );
 		if ( is_array( $hit ) ) { return array_slice( $hit, 0, $limit ); }
 		global $wpdb;
 		$rows = $wpdb->get_results( "SELECT pm.meta_value city, p.post_type pt, COUNT(*) n
 			FROM {$wpdb->postmeta} pm INNER JOIN {$wpdb->posts} p ON p.ID = pm.post_id
 			WHERE pm.meta_key = 'city' AND pm.meta_value <> '' AND p.post_status = 'publish'
 			AND p.post_type IN ('nadlan_project','nadlan_property')
+			AND (p.post_type <> 'nadlan_project' OR NOT EXISTS (
+				SELECT 1 FROM {$wpdb->postmeta} private_v2
+				WHERE private_v2.post_id=p.ID AND private_v2.meta_key='_nadlan_private_unit_journey' AND private_v2.meta_value='private-unit-journey-v2'
+			))
 			GROUP BY pm.meta_value, p.post_type", ARRAY_A );
 		$map = array();
 		foreach ( (array) $rows as $r ) {
@@ -142,7 +146,7 @@ if ( ! function_exists( 'nadlan_hv2_cities' ) ) {
 		}
 		usort( $map, function ( $a, $b ) { return ( $b['projects'] + $b['properties'] ) <=> ( $a['projects'] + $a['properties'] ); } );
 		$map = array_values( $map );
-		set_transient( 'nadlan_hv2_cities', $map, 12 * HOUR_IN_SECONDS );
+		set_transient( 'nadlan_hv2_cities_v2', $map, 12 * HOUR_IN_SECONDS );
 		return array_slice( $map, 0, $limit );
 	}
 }
@@ -200,7 +204,9 @@ if ( ! function_exists( 'nadlan_hv2_snapshot_compute' ) ) {
 			$sql = "SELECT AVG(CAST(pm.meta_value AS UNSIGNED)) FROM {$wpdb->postmeta} pm
 				INNER JOIN {$wpdb->posts} p ON p.ID = pm.post_id
 				WHERE pm.meta_key = 'project_3d_avg_price_per_sqm' AND CAST(pm.meta_value AS UNSIGNED) > 1000
-				AND p.post_type = 'nadlan_project' AND p.post_status = 'publish'";
+				AND p.post_type = 'nadlan_project' AND p.post_status = 'publish'
+				AND NOT EXISTS (SELECT 1 FROM {$wpdb->postmeta} private_v2
+					WHERE private_v2.post_id=p.ID AND private_v2.meta_key='_nadlan_private_unit_journey' AND private_v2.meta_value='private-unit-journey-v2')";
 			if ( $city_like ) {
 				$sql .= $wpdb->prepare( " AND p.ID IN (SELECT post_id FROM {$wpdb->postmeta} WHERE meta_key='city' AND meta_value LIKE %s)", '%' . $wpdb->esc_like( $city_like ) . '%' );
 			}
@@ -209,7 +215,10 @@ if ( ! function_exists( 'nadlan_hv2_snapshot_compute' ) ) {
 		$snap['ppsqm_tlv']  = $avg( 'תל אביב' );
 		$snap['ppsqm_il']   = $avg( '' );
 		$snap['listings_n'] = (int) wp_count_posts( 'nadlan_property' )->publish;
-		$snap['projects_n'] = (int) wp_count_posts( 'nadlan_project' )->publish;
+		$snap['projects_n'] = function_exists( 'nadlan_unit_journey_public_project_count' )
+			? nadlan_unit_journey_public_project_count()
+			: (int) wp_count_posts( 'nadlan_project' )->publish;
+		$snap['privacy_v2'] = 1;
 		$snap['updated']    = current_time( 'd/m/Y' );
 		// yoy + mortgage_rate are OWNER-SET (external sources); never computed, never invented.
 		update_option( 'nadlan_market_snapshot', $snap, false );
@@ -244,7 +253,7 @@ if ( ! function_exists( 'nadlan_hv2_pro_slot' ) ) {
 if ( ! function_exists( 'nadlan_hv2_band_ticker' ) ) {
 	function nadlan_hv2_band_ticker() {
 		$s = (array) get_option( 'nadlan_market_snapshot', array() );
-		if ( empty( $s ) ) { $s = nadlan_hv2_snapshot_compute(); }
+		if ( empty( $s ) || empty( $s['privacy_v2'] ) ) { $s = nadlan_hv2_snapshot_compute(); }
 		$items = array();
 		if ( ! empty( $s['ppsqm_tlv'] ) ) { $items[] = array( nadlan_i18n( 'tk_tlv' ), number_format( (int) $s['ppsqm_tlv'] ) . ' ₪', home_url( '/projects/?city=' . rawurlencode( 'תל אביב' ) ) ); }
 		// Honesty gate: the "national" average comes from the same small catalog
@@ -314,7 +323,9 @@ if ( ! function_exists( 'nadlan_hv2_band_browse' ) ) {
 if ( ! function_exists( 'nadlan_hv2_band_hero' ) ) {
 	function nadlan_hv2_band_hero() {
 		$counts = array(
-			'projects'      => (int) wp_count_posts( 'nadlan_project' )->publish,
+			'projects'      => function_exists( 'nadlan_unit_journey_public_project_count' )
+				? nadlan_unit_journey_public_project_count()
+				: (int) wp_count_posts( 'nadlan_project' )->publish,
 			'professionals' => (int) wp_count_posts( 'nadlan_professional' )->publish,
 		);
 		$cities = nadlan_hv2_cities( 12 );

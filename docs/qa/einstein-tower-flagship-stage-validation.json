@@ -1,0 +1,35 @@
+{
+  "ok": true,
+  "check": "einstein-flagship-project-and-private-stage",
+  "generated_at": "2026-08-14",
+  "project_contract_id": "einstein-tower-6885-32",
+  "canonical_post_id": 4867,
+  "private_stage_slug": "sandbox-einstein-tower-flagship-v3-review",
+  "counts": {
+    "buyer_sources": 18,
+    "tools": 4,
+    "scenes": 4,
+    "model_hotspots": 3,
+    "inventory_rows": 0
+  },
+  "gates": {
+    "project_identity": "pass",
+    "current_permit_state": "pass",
+    "zero_inventory": "pass",
+    "model_hashes": "pass",
+    "four_tool_hierarchy": "pass",
+    "interior_facilities": "pass",
+    "illustrative_mapping": "pass",
+    "no_write": "pass",
+    "sandbox_catalog_dedupe": "pass",
+    "password_secret_excluded": "pass",
+    "article_h1_and_disclosure_ownership": "pass",
+    "private_asset_proxy": "pass",
+    "private_asset_storage_hashes": "pass",
+    "direct_wrapper_execution_zero_bytes": "pass"
+  },
+  "hashes": {
+    "project_package_sha256": "953307147a236c663c98879b6ee6f137cbf8f787b7d4cd01a550e81b390eb3f5",
+    "private_stage_sha256": "e82b6aa003a9ce5edec9e08e7f09770c80bdd039af76a0a8f93ea41bb3b7cbf4"
+  }
+}

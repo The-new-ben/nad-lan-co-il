@@ -78,7 +78,24 @@ add_action( 'rest_api_init', function () {
 			$goal  = sanitize_text_field( (string) ( $p['goal'] ?? ( $p['topic'] ?? '' ) ) );
 			$msg   = sanitize_textarea_field( (string) ( $p['message'] ?? '' ) );
 			$src   = sanitize_text_field( (string) ( $p['source'] ?? '' ) );
-			$card_id = absint( $p['card_id'] ?? ( $p['lead_card_id'] ?? 0 ) );
+			$requested_card_id = absint( $p['card_id'] ?? ( $p['lead_card_id'] ?? 0 ) );
+			$card_id = $requested_card_id;
+			/* A private journey lead is part of the password-gated surface.  REST
+			 * requests carry the same wp-postpass cookie as the unlocked page; an
+			 * anonymous caller that only guesses the post ID must fail before the
+			 * honeypot, rate counter, insert, routing or notification paths. */
+			$is_private_lab = $card_id > 0 && 'nadlan_project' === get_post_type( $card_id ) && (
+				( function_exists( 'nadlan_unit_journey_is_private_lab' )
+					&& nadlan_unit_journey_is_private_lab( $card_id ) )
+				|| 'private-unit-journey-v2' === (string) get_post_meta( $card_id, '_nadlan_private_unit_journey', true )
+			);
+			if ( $is_private_lab ) {
+				$post = get_post( $card_id );
+				$has_password = $post instanceof WP_Post && '' !== (string) $post->post_password;
+				if ( ! $has_password || post_password_required( $card_id ) ) {
+					return new WP_Error( 'not_found', 'Not found.', array( 'status' => 404 ) );
+				}
+			}
 			if ( function_exists( 'nadlan_config_valid_lead_card_id' ) ) {
 				$card_id = nadlan_config_valid_lead_card_id( $card_id );
 			} else {
@@ -87,13 +104,28 @@ add_action( 'rest_api_init', function () {
 					$card_id = 0;
 				}
 			}
+			/* A supplied but invalid card uses the same opaque response as a locked
+			 * private card. This avoids turning the lead endpoint into an ID oracle;
+			 * truly generic leads still omit card_id and continue normally. */
+			if ( $requested_card_id > 0 && $card_id <= 0 ) {
+				return new WP_Error( 'not_found', 'Not found.', array( 'status' => 404 ) );
+			}
 			$hp    = (string) ( $p['company'] ?? '' );
-			if ( $hp !== '' ) { return new WP_Error( 'spam', 'spam' ); }
-			if ( ! $name || ( ! $phone && ! $email ) ) { return new WP_Error( 'invalid', 'נדרשים שם וטלפון.' ); }
+			if ( $hp !== '' ) {
+				return new WP_Error( 'spam', 'Request rejected.', array( 'status' => 400 ) );
+			}
+			if ( ! $name || ( ! $phone && ! $email ) ) {
+				return new WP_Error( 'invalid', 'נדרשים שם וטלפון או אימייל.', array( 'status' => 400 ) );
+			}
+			if ( $src === 'showroom_unit_journey_v2' && empty( $p['consent'] ) ) {
+				return new WP_Error( 'consent_required', 'נדרשת הסכמה לתנאי הפנייה.', array( 'status' => 400 ) );
+			}
 			$ip = $_SERVER['REMOTE_ADDR'] ?? '0';
 			$tk = 'nadlan_lead_rl_' . md5( $ip );
 			$ct = (int) get_transient( $tk );
-			if ( $ct >= 8 ) { return new WP_Error( 'rate', 'יותר מדי בקשות.' ); }
+			if ( $ct >= 8 ) {
+				return new WP_Error( 'rate', 'יותר מדי בקשות.', array( 'status' => 429 ) );
+			}
 			set_transient( $tk, $ct + 1, HOUR_IN_SECONDS );
 			$lead_payload = array(
 				'name'              => $name,
@@ -116,6 +148,14 @@ add_action( 'rest_api_init', function () {
 				'reservation_state' => sanitize_key( (string) ( $p['reservation_state'] ?? '' ) ),
 				'view_bearing'      => isset( $p['view_bearing'] ) ? (float) $p['view_bearing'] : '',
 				'view_altitude_m'   => isset( $p['view_altitude_m'] ) ? (float) $p['view_altitude_m'] : '',
+				'project_slug'      => sanitize_title( (string) ( $p['project_slug'] ?? '' ) ),
+				'project_title'     => sanitize_text_field( (string) ( $p['project_title'] ?? '' ) ),
+				'project_wp_id'     => absint( $p['project_wp_id'] ?? ( $p['wp_id'] ?? 0 ) ),
+				'direction'         => sanitize_key( (string) ( $p['direction'] ?? '' ) ),
+				'unit_status'       => sanitize_key( (string) ( $p['status'] ?? '' ) ),
+				'consent'           => ! empty( $p['consent'] ) ? 1 : '',
+				'consent_text'      => sanitize_textarea_field( (string) ( $p['consent_text'] ?? '' ) ),
+				'consent_recorded'  => ! empty( $p['consent'] ) ? current_time( 'mysql', true ) : '',
 			);
 			if ( function_exists( 'nadlan_lead_e2e_enabled' ) && nadlan_lead_e2e_enabled() && function_exists( 'nadlan_lead_e2e_capture' ) ) {
 				return nadlan_lead_e2e_capture( $lead_payload, $card_id, 'rest' );
@@ -133,7 +173,7 @@ add_action( 'rest_api_init', function () {
 			update_post_meta( $lid, 'goal', $goal );
 			if ( $src ) { update_post_meta( $lid, 'utm_source', $src ); }
 			if ( $card_id ) { update_post_meta( $lid, 'lead_card_id', $card_id ); }
-			foreach ( array( 'budget', 'timeline', 'unit', 'floor', 'rooms', 'sqm', 'building', 'availability', 'market_note', 'advisor', 'purchase_intent', 'reservation_state', 'view_bearing', 'view_altitude_m' ) as $extra_key ) {
+			foreach ( array( 'budget', 'timeline', 'unit', 'floor', 'rooms', 'sqm', 'building', 'availability', 'market_note', 'advisor', 'purchase_intent', 'reservation_state', 'view_bearing', 'view_altitude_m', 'project_slug', 'project_title', 'project_wp_id', 'direction', 'unit_status', 'consent', 'consent_text', 'consent_recorded' ) as $extra_key ) {
 				if ( isset( $lead_payload[ $extra_key ] ) && $lead_payload[ $extra_key ] !== '' ) {
 					update_post_meta( $lid, $extra_key, $lead_payload[ $extra_key ] );
 				}

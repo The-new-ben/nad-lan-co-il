@@ -1,0 +1,250 @@
+{
+  "contract_version": "einstein-he-content-v1",
+  "status": "editorial_ready_draft_only",
+  "generated_at": "2026-08-14",
+  "locale": "he-IL",
+  "direction": "rtl",
+  "project": {
+    "repo_id": "einstein-tower",
+    "project_contract_id": "einstein-tower-6885-32",
+    "wordpress_type": "nadlan_project",
+    "existing_wordpress_post_id": 4867,
+    "canonical_slug": "einstein-tower",
+    "canonical_url": "https://nad-lan.co.il/projects/einstein-tower/",
+    "write_policy": "update_existing_exact_slug_only",
+    "duplicate_creation_allowed": false
+  },
+  "editorial": {
+    "content_source": "docs/wp-drafts/einstein-tower-he-content.html",
+    "content_sha256": "e876dd422440e1aa2403ff0fac3c89722a3cc106fc366f714699bed1c030a25f",
+    "content_freeze": "2026-08-14",
+    "visible_word_count": 3778,
+    "h1_count": 0,
+    "h2_count": 18,
+    "faq_count": 9,
+    "global_demonstration_label_count": 0,
+    "title": "EINSTEIN TOWER תל אביב: מיקום, תכנון וכלי החלטה לרוכש",
+    "yoast_title": "EINSTEIN TOWER תל אביב | תכנון, מיקום ו-3D",
+    "yoast_description": "EINSTEIN TOWER באיינשטיין ולוי אשכול: 215 יחידות דיור בשלושה מבנים, מצב הפרויקט, תחבורה, חינוך, ים וכלי תלת ממד שמסדרים החלטה לרוכש לפני בקשת מסמכים.",
+    "focus_keyword": "EINSTEIN TOWER תל אביב",
+    "excerpt": "EINSTEIN TOWER באיינשטיין ולוי אשכול: זהות הפרויקט, שלושת המבנים, מצב הבנייה, תחבורה, חינוך, ים ומסלול מסמכים לרוכש בארץ או מחו״ל."
+  },
+  "representation": {
+    "kind": "owner_approved_illustration",
+    "decision_grade": false,
+    "decision_ids": [
+      "OWNER-2026-08-13-DIRECTION-DEMO",
+      "OWNER-2026-08-13-MODEL-FIRST-SHOWROOM",
+      "OWNER-2026-08-13-VISUAL-PLAYGROUND",
+      "OWNER-2026-08-14-EINSTEIN-ILLUSTRATIVE-MASSING",
+      "OWNER-2026-08-14-EINSTEIN-INTERIOR-FACILITIES-DEMO"
+    ],
+    "north_degrees": 0,
+    "single_public_label": "תצוגת הדגמה: המודל האינטראקטיבי, הכיוונים, חללי הפנים, כלי העיצוב וגלריית המתקנים נועדו להמחיש את חוויית הבדיקה. הם אינם BIM, מדידה, תוכנית מכר, מפרט מתקנים, מלאי דירות או התחייבות חוזית."
+  },
+  "truth_contract": {
+    "price": null,
+    "inventory_state": "not_supplied",
+    "inventory_decision_grade": false,
+    "unit_selector_commercial_state": "locked_until_signed_timestamped_inventory",
+    "permit_state": "municipal_permit_20241734_dated_2026-07-09_with_raw_stage_in_permit_process",
+    "permit_request_number": "20231320",
+    "permit_number": "20241734",
+    "permit_date": "2026-07-09",
+    "municipal_building_stage_raw": "בתהליך היתר",
+    "municipal_request_stage_raw": "3",
+    "municipal_licensing_path_raw": "רישוי מלא (ללא הקלות ושימוש חורג)",
+    "enabling_works_permit_number": "20240229",
+    "enabling_works_permit_date": "2024-03-25",
+    "company_estimated_completion": "2030-Q3",
+    "completion_is_contractual": false,
+    "sea_distance_m": 975,
+    "sea_distance_method": "straight_line_from_einstein_16a_municipal_point_to_tel_baruch_beach_polygon",
+    "sea_distance_is_route": false,
+    "green_line_state": "planned_with_works_observed_at_junction",
+    "green_line_northern_opening_date": null,
+    "education_snapshot_year": "2026/27",
+    "education_assignment_guaranteed": false
+  },
+  "claim_register": [
+    {
+      "claim_id": "identity_marketing_name",
+      "value": "EINSTEIN TOWER",
+      "source_ids": ["S001"],
+      "as_of": "2026-08-14",
+      "scope": "developer_marketing"
+    },
+    {
+      "claim_id": "identity_company_name",
+      "value": "Einstein 33A",
+      "source_ids": ["S002"],
+      "as_of": "2025-12-31",
+      "scope": "company_project_snapshot"
+    },
+    {
+      "claim_id": "parcel",
+      "value": "6885/32",
+      "source_ids": ["S002", "S006", "S008"],
+      "as_of": "2026-08-13",
+      "scope": "company_filing_and_municipal_gis"
+    },
+    {
+      "claim_id": "owner_alias_einstein_18",
+      "value": "Einstein 18",
+      "confirmed": false,
+      "source_ids": ["S007"],
+      "as_of": "2026-08-13",
+      "scope": "adjacent_parcel_6885_40_collision_control"
+    },
+    {
+      "claim_id": "project_program",
+      "value": {
+        "units": 215,
+        "buildings": 3,
+        "tower_floors": 28,
+        "boutique_residential_floors": 13,
+        "commercial_base_levels": 2
+      },
+      "source_ids": ["S001", "S002"],
+      "as_of": "2025-12-31",
+      "scope": "developer_and_company_description"
+    },
+    {
+      "claim_id": "construction_snapshot",
+      "value": "excavation_and_shoring",
+      "source_ids": ["S002"],
+      "as_of": "2025-12-31",
+      "scope": "historical_company_project_snapshot"
+    },
+    {
+      "claim_id": "municipal_main_permit_record",
+      "value": {
+        "request_number": "20231320",
+        "permit_number": "20241734",
+        "permit_date": "2026-07-09",
+        "permit_address": "אינשטיין 14",
+        "units": 215,
+        "unit_split": [121, 47, 47],
+        "parking_levels": 4,
+        "building_stage_raw": "בתהליך היתר",
+        "request_stage_raw": "3",
+        "licensing_path_raw": "רישוי מלא (ללא הקלות ושימוש חורג)"
+      },
+      "source_ids": ["IVS008"],
+      "as_of": "2026-07-09",
+      "scope": "municipal_permit_record_without_current_site_progress_inference"
+    },
+    {
+      "claim_id": "municipal_enabling_works_permit_record",
+      "value": {
+        "permit_number": "20240229",
+        "permit_date": "2024-03-25",
+        "scope": ["shoring", "excavation", "foundations", "first_slab"]
+      },
+      "source_ids": ["IVS009"],
+      "as_of": "2024-03-25",
+      "scope": "municipal_enabling_works_permit_record"
+    },
+    {
+      "claim_id": "green_line_junction_works",
+      "value": "infrastructure_work_observed",
+      "source_ids": ["S010"],
+      "as_of": "2026-07-16",
+      "scope": "exact_junction_notice"
+    },
+    {
+      "claim_id": "current_school_zone_snapshot",
+      "value": "Nofei Yam",
+      "source_ids": ["S013", "S014"],
+      "as_of": "2026/27",
+      "scope": "point_in_polygon_at_einstein_16a"
+    },
+    {
+      "claim_id": "straight_line_sea_distance",
+      "value_m": 975,
+      "source_ids": ["S017"],
+      "as_of": "2026-08-14",
+      "underlying_layer_date": "2021-06-28",
+      "scope": "derived_geometry_not_route_or_view"
+    }
+  ],
+  "required_source_links": [
+    "https://www.hagag-group.co.il/projects/ResidentProjects/einstein_tower",
+    "https://www.hagag-group.co.il/Uploads/2026/04/rln33jws7WiMM6.pdf",
+    "https://www.tel-aviv.gov.il/Residents/Development/DocLib/%D7%A4%D7%A8%D7%95%D7%98%D7%95%D7%A7%D7%95%D7%9C%2020-0005%20%D7%9E%D7%99%D7%95%D7%9D%201-4-20.pdf",
+    "https://gisn.tel-aviv.gov.il/arcgis/rest/services/IView2/MapServer/772/query?f=json&where=oid_permit%3D9945&outFields=*&returnGeometry=true&outSR=4326",
+    "https://gisn.tel-aviv.gov.il/arcgis/rest/services/IView2/MapServer/772/query?f=json&where=oid_permit%3D6443&outFields=*&returnGeometry=true&outSR=4326",
+    "https://www.nta.co.il/light-rail/%D7%94%D7%A7%D7%95-%D7%94%D7%99%D7%A8%D7%95%D7%A7",
+    "https://www.tel-aviv.gov.il/Residents/Development/Pages/SdeDov.aspx",
+    "https://www.tel-aviv.gov.il/Residents/Education/Pages/Registration.aspx"
+  ],
+  "faq": [
+    {
+      "q": "האם איינשטיין 18 היא הכתובת הרשמית של הפרויקט?",
+      "a": "הפרויקט מזוהה בדוח החברה כאיינשטיין 33א׳ בגוש 6885 חלקה 32. בשכבת הכתובות העירונית איינשטיין 18 נמצאת על חלקה 40 הסמוכה. עד למסמך התאמה רשמי משתמשים ב-EINSTEIN TOWER, איינשטיין 33א׳ ופינת איינשטיין ולוי אשכול.",
+      "source_ids": ["S002", "S006", "S007"]
+    },
+    {
+      "q": "כמה מבנים וכמה יחידות דיור מתוכננים?",
+      "a": "הדוח השנתי מתאר 215 יחידות דיור בשלושה מבנים: מגדל בן 28 קומות ושני מבני מגורים בני 13 קומות מעל בסיס מסחרי כפול.",
+      "source_ids": ["S002"]
+    },
+    {
+      "q": "מה מצב הבנייה וההיתר?",
+      "a": "רשומת העירייה מציגה היתר 20241734 מתאריך 9 ביולי 2026, ובו בזמן שדה השלב הגולמי שלה הוא בתהליך היתר. היתר הכנה נפרד, 20240229 מ-25 במרץ 2024, כולל דיפון, חפירה, ביסוס ורצפה ראשונה. לפי דוח החברה, חפירה ודיפון כבר בוצעו עד 31 בדצמבר 2025; לא נגזר מכך קצב הביצוע כיום.",
+      "source_ids": ["IVS008", "IVS009", "S002"]
+    },
+    {
+      "q": "מתי החברה מעריכה שהפרויקט יושלם?",
+      "a": "בדוח השנתי מופיעה הערכה לרבעון השלישי של 2030. מועד הרכישה הקובע הוא המועד והתרופות שנכתבים בהסכם הספציפי.",
+      "source_ids": ["S002"]
+    },
+    {
+      "q": "האם הקו הירוק פועל ליד הפרויקט?",
+      "a": "לא. איינשטיין ולוי אשכול מופיעות כתחנות עתידיות של הקו הירוק, ובצומת מתקיימות עבודות תשתית. המקור שנבדק אינו קובע מועד הפעלה מחייב למקטע הצפוני.",
+      "source_ids": ["S009", "S010"]
+    },
+    {
+      "q": "מה המרחק מהים?",
+      "a": "המדידה שנערכה היא כ-975 מטרים בקו ישר מנקודת איינשטיין 16א׳ אל הפוליגון העירוני של חוף תל ברוך. מסלול הליכה וזמן הגעה נבדקים בנפרד.",
+      "source_ids": ["S017"]
+    },
+    {
+      "q": "איזה בית ספר משויך כיום לנקודה שנבדקה?",
+      "a": "בשכבת 2026/27 התקבל אזור נופי ים לנקודת איינשטיין 16א׳. השיוך בעת האכלוס ייקבע לפי הכתובת הרשומה והכללים שיהיו באותה שנת לימודים.",
+      "source_ids": ["S013", "S014", "S015"]
+    },
+    {
+      "q": "האם אפשר לבחור דירה מתוך המודל?",
+      "a": "אפשר לחקור את המבנים, הכיוונים וחוויית הבדיקה. בחירה מסחרית של דירה תיפתח כאשר תתקבל שורת מלאי מזוהה ומתוארכת הכוללת בניין, קומה, שטח, כיוון, מחיר ומצב.",
+      "source_ids": ["DR-006"]
+    },
+    {
+      "q": "האם מופיע מחיר עדכני?",
+      "a": "לא מוצג מחיר כללי. מחיר יוצג רק כהצעה מתוארכת לזכות מסוימת, עם פירוט מה כלול, הצמדה, עלויות נוספות ומועד תוקף.",
+      "source_ids": ["S001", "S002", "DR-006"]
+    }
+  ],
+  "qa": {
+    "utf8": true,
+    "bom": false,
+    "replacement_character_count": 0,
+    "c1_control_count": 0,
+    "em_dash_count": 0,
+    "legacy_showroom_root_count": 0,
+    "runtime_mount_in_content": false,
+    "notes": "The content source is an article-only dossier marked data-nlfs-dossier=nadlan-einstein-he-dossier-v1 and intentionally contains neither H1 nor a second demonstration label. The shared flagship-v3 renderer owns the one visible page H1, the one global demonstration label, and mounts the dossier after the showroom. Do not add legacy nlv2 or nlps markers to make old validators pass."
+  },
+  "publication_gate": {
+    "wordpress_write_allowed": false,
+    "requires_before_apply": [
+      "shared_flagship_v3_renderer_green",
+      "flagship_v3_draft_validator_support",
+      "private_password_protected_stage",
+      "authenticated_readback_matches_expected_post_4867",
+      "backup_of_post_4867_content_meta_terms_media_and_yoast",
+      "responsive_and_accessibility_gate_green",
+      "owner_or_authorized_release_confirmation"
+    ]
+  }
+}

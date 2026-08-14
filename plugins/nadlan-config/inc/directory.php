@@ -602,6 +602,15 @@ if ( ! function_exists( 'nadlan_dir_project_profile_header' ) ) {
 }
 add_filter( 'the_content', function ( $content ) {
 	if ( ! is_singular( 'nadlan_project' ) || ! in_the_loop() || ! is_main_query() ) { return $content; }
+	/* Owner evidence 2026-08-09: on showroom-engine pages this header was
+	 * re-attached AFTER the theater, rendering a second "page start" (dark
+	 * banner, floating icon card, repeated title, CTA) in the middle of every
+	 * project. The engine owns page identity there - including the <h1> - so
+	 * this header now renders only where the engine does not. */
+	if ( function_exists( 'nadlan_showroom_engine_active_for' )
+		&& nadlan_showroom_engine_active_for( get_the_ID() ) ) {
+		return $content;
+	}
 	return nadlan_dir_project_profile_header( get_the_ID() ) . $content;
 }, 5 );
 
@@ -792,20 +801,24 @@ if ( ! function_exists( 'nadlan_dir_project_cards_html' ) ) {
 
 if ( ! function_exists( 'nadlan_dir_project_facets' ) ) {
 	function nadlan_dir_project_facets() {
-		$k = 'nadlan_dir_projfacets_v2';
+		$k = 'nadlan_dir_projfacets_v3';
 		$c = get_transient( $k );
 		if ( is_array( $c ) ) { return $c; }
 		global $wpdb;
-		$types  = $wpdb->get_results( "SELECT pm.meta_value v, COUNT(*) n FROM {$wpdb->postmeta} pm INNER JOIN {$wpdb->posts} p ON p.ID=pm.post_id WHERE pm.meta_key='project_type' AND pm.meta_value<>'' AND p.post_type='nadlan_project' AND p.post_status='publish' AND p.post_name NOT REGEXP '-(en|fr|ru|ar)$' GROUP BY pm.meta_value", ARRAY_A );
-		$cities = $wpdb->get_results( "SELECT pm.meta_value v, COUNT(*) n FROM {$wpdb->postmeta} pm INNER JOIN {$wpdb->posts} p ON p.ID=pm.post_id WHERE pm.meta_key='city' AND pm.meta_value<>'' AND p.post_type='nadlan_project' AND p.post_status='publish' AND p.post_name NOT REGEXP '-(en|fr|ru|ar)$' GROUP BY pm.meta_value ORDER BY n DESC LIMIT 18", ARRAY_A );
-		$out = array( 'types' => array(), 'cities' => array(), 'total' => (int) $wpdb->get_var( "SELECT COUNT(*) FROM {$wpdb->posts} WHERE post_type='nadlan_project' AND post_status='publish' AND post_name NOT REGEXP '-(en|fr|ru|ar)$'" ) );
+		$private_sql = " AND NOT EXISTS (SELECT 1 FROM {$wpdb->postmeta} private_v2 WHERE private_v2.post_id=p.ID AND private_v2.meta_key='_nadlan_private_unit_journey' AND private_v2.meta_value='private-unit-journey-v2')";
+		$types  = $wpdb->get_results( "SELECT pm.meta_value v, COUNT(*) n FROM {$wpdb->postmeta} pm INNER JOIN {$wpdb->posts} p ON p.ID=pm.post_id WHERE pm.meta_key='project_type' AND pm.meta_value<>'' AND p.post_type='nadlan_project' AND p.post_status='publish' AND p.post_name NOT REGEXP '-(en|fr|ru|ar)$'" . $private_sql . ' GROUP BY pm.meta_value', ARRAY_A );
+		$cities = $wpdb->get_results( "SELECT pm.meta_value v, COUNT(*) n FROM {$wpdb->postmeta} pm INNER JOIN {$wpdb->posts} p ON p.ID=pm.post_id WHERE pm.meta_key='city' AND pm.meta_value<>'' AND p.post_type='nadlan_project' AND p.post_status='publish' AND p.post_name NOT REGEXP '-(en|fr|ru|ar)$'" . $private_sql . ' GROUP BY pm.meta_value ORDER BY n DESC LIMIT 18', ARRAY_A );
+		$out = array( 'types' => array(), 'cities' => array(), 'total' => (int) $wpdb->get_var( "SELECT COUNT(*) FROM {$wpdb->posts} p WHERE p.post_type='nadlan_project' AND p.post_status='publish' AND p.post_name NOT REGEXP '-(en|fr|ru|ar)$'" . $private_sql ) );
 		foreach ( (array) $types as $r )  { $out['types'][ $r['v'] ] = (int) $r['n']; }
 		foreach ( (array) $cities as $r ) { $out['cities'][] = array( 'name' => nadlan_meta_norm( $r['v'] ), 'n' => (int) $r['n'] ); }
 		set_transient( $k, $out, HOUR_IN_SECONDS );
 		return $out;
 	}
 }
-add_action( 'save_post_nadlan_project', function () { delete_transient( 'nadlan_dir_projfacets_v2' ); } );
+add_action( 'save_post_nadlan_project', function () {
+	delete_transient( 'nadlan_dir_projfacets_v2' );
+	delete_transient( 'nadlan_dir_projfacets_v3' );
+} );
 
 add_action( 'rest_api_init', function () {
 	register_rest_route( 'nadlan/v1', '/projects', array(

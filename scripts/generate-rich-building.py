@@ -126,6 +126,184 @@ def build(spec, out):
     S.export(out)
     print(f"wrote {out}: {len(S.geometry)} meshes, {tris} tris")
 
+PLASTER = [242, 238, 228, 255]   # Israeli plaster white
+PLASTER2 = [232, 226, 210, 255]  # shadow tone
+WGLASS  = [70, 96, 112, 255]     # punched-window dark glass
+FRAME   = [210, 202, 186, 255]
+AC      = [236, 236, 232, 255]
+AWNING  = [194, 86, 58, 255]     # terracotta storefront awnings
+SOLARP  = [42, 52, 64, 255]      # solar collector panel
+TANK    = [238, 238, 234, 255]
+
+def cyl(scene, name, cx, cy, cz, r, h, rgba, axis='y', sections=8):
+    m = trimesh.creation.cylinder(radius=r, height=h, sections=sections)
+    if axis == 'x':
+        m.apply_transform(trimesh.transformations.rotation_matrix(np.pi/2, [0, 0, 1]))
+    elif axis == 'z':
+        m.apply_transform(trimesh.transformations.rotation_matrix(np.pi/2, [1, 0, 0]))
+    m.apply_translation([cx, cy, cz])
+    m.visual = trimesh.visual.TextureVisuals(material=PBRMaterial(
+        baseColorFactor=rgba, metallicFactor=0.05, roughnessFactor=0.7))
+    scene.add_geometry(m, node_name=name)
+
+def build_standard(spec, out):
+    """The STANDARD ISRAELI BUILDING (owner 2026-07-11): a normal Tel Aviv
+    street building a developer recognizes as "could be my project" - plaster
+    body, punched windows with AC units, continuous balcony bands, pilotis or
+    storefront ground floor, rooftop solar heaters + pergola. HOTSPOT
+    CONVENTION: main building ~26.4m square, centered at origin, floors from
+    y=0 at floor_h 3.05 - the engine formula lands hotspots on the facade
+    with zero authoring. Light low-alpha context, honest small site."""
+    S = trimesh.Scene()
+    fh = spec.get('floor_h', 3.05)
+    fl = int(spec.get('floors', 8))
+    w = d = spec.get('width', 26.4)
+    commercial = bool(spec.get('commercial_ground', False))
+    H = fl * fh
+    sw, sd = spec.get('site', [96, 78])
+
+    # honest site: plate + street + sidewalk + greens + trees
+    box(S, 'site', 0, -0.5, 0, sw, 1.0, sd, PAVE)
+    box(S, 'road', 0, 0.02, sd*0.36, sw, 0.08, 9, [88, 86, 82, 255])
+    box(S, 'lane', 0, 0.08, sd*0.36, sw*0.9, 0.02, 0.35, [214, 208, 196, 255])
+    box(S, 'walk', 0, 0.06, sd*0.27, sw, 0.16, 4.5, PATH)
+    box(S, 'green1', -sw*0.32, 0.1, -sd*0.22, sw*0.24, 0.28, sd*0.3, GREEN)
+    box(S, 'green2', sw*0.33, 0.1, -sd*0.2, sw*0.2, 0.28, sd*0.26, GREEN)
+    ti = 0
+    for gx, gz in [(-sw*0.32, -sd*0.22), (sw*0.33, -sd*0.2), (sw*0.18, sd*0.16)]:
+        for dx, dz in [(0, 0), (6, 4), (-5, 3), (3, -5)]:
+            t = trimesh.creation.cone(radius=2.4, height=5.8, sections=7)
+            t.apply_translation([gx+dx, 2.9+2.0, gz+dz])
+            t.visual = trimesh.visual.TextureVisuals(material=PBRMaterial(baseColorFactor=GREEN, roughnessFactor=0.9))
+            S.add_geometry(t, node_name=f'stree{ti}')
+            tr = trimesh.creation.cylinder(radius=0.4, height=2.2, sections=6)
+            tr.apply_translation([gx+dx, 1.1, gz+dz])
+            tr.visual = trimesh.visual.TextureVisuals(material=PBRMaterial(baseColorFactor=TRUNK, roughnessFactor=0.9))
+            S.add_geometry(tr, node_name=f'strunk{ti}'); ti += 1
+    # low-alpha neighbor masses (never a big plate, never a fake skyline)
+    for i, c in enumerate(spec.get('context', [[-34, -26, 18, 14, 15], [34, -24, 16, 13, 12], [-33, 20, 17, 13, 18], [34, 22, 15, 12, 9]])):
+        x, z, cw, cd, ch = c
+        box(S, f'sctx{i}', x, ch/2, z, cw, ch, cd, CTX)
+
+    g0 = 1 if commercial else 1   # residential floors start at floor 1 (GF is pilotis/commercial)
+    # main body: plaster, floors from y=0 (convention)
+    box(S, 'body', 0, H/2 + (fh*g0)/2, 0, w-0.2, H - fh*g0, d-0.2, PLASTER)
+    # floor slab lines (subtle shadow bands)
+    for f in range(g0, fl+1):
+        box(S, f'slab{f}', 0, f*fh, 0, w+0.15, 0.18, d+0.15, PLASTER2)
+
+    # punched windows + AC units on all 4 facades; balcony bands on S + W
+    nwin = 6
+    for f in range(g0, fl):
+        y = f*fh + fh*0.5
+        for side in 'NSEW':
+            horiz = side in 'NS'
+            length = w if horiz else d
+            for k in range(nwin):
+                off = (k - (nwin-1)/2) * (length/nwin)
+                if side in 'SW':  # balcony sides get doors instead of windows
+                    continue
+                wx = off if horiz else (w/2 + 0.06) * (1 if side == 'E' else -1)
+                wz = (d/2 + 0.06) * (1 if side == 'S' else -1) if horiz else off
+                if horiz:
+                    box(S, f'wf{f}{side}{k}', wx, y, wz, 1.7, 1.6, 0.14, FRAME)
+                    box(S, f'wg{f}{side}{k}', wx, y, wz + (0.04 if side == 'S' else -0.04), 1.45, 1.35, 0.1, WGLASS)
+                    box(S, f'ws{f}{side}{k}', wx, y - 0.95, wz + (0.12 if side == 'S' else -0.12), 1.8, 0.12, 0.3, PLASTER2)
+                    if True:
+                        box(S, f'ac{f}{side}{k}', wx + 0.55, y - 1.35, wz + (0.3 if side == 'S' else -0.3), 0.68, 0.5, 0.45, AC)
+                else:
+                    box(S, f'wf{f}{side}{k}', wx, y, wz, 0.14, 1.6, 1.7, FRAME)
+                    box(S, f'wg{f}{side}{k}', wx + (0.04 if side == 'E' else -0.04), y, wz, 0.1, 1.35, 1.45, WGLASS)
+                    box(S, f'ws{f}{side}{k}', wx + (0.12 if side == 'E' else -0.12), y - 0.95, wz, 0.3, 0.12, 1.8, PLASTER2)
+                    if True:
+                        box(S, f'ac{f}{side}{k}', wx + (0.3 if side == 'E' else -0.3), y - 1.35, wz + 0.55, 0.45, 0.5, 0.68, AC)
+        # continuous balcony bands, south + west (the street faces)
+        for side in ('S', 'W'):
+            if side == 'S':
+                bz = d/2 + 1.3
+                box(S, f'bal{f}S', 0, f*fh + 0.1, bz, w*0.86, 0.22, 2.4, CREAM)
+                box(S, f'balg{f}S', 0, f*fh + 0.75, bz + 1.05, w*0.86, 1.1, 0.08, BALG)
+                for fin in range(4):
+                    fx = (fin - 1.5) * (w*0.86/4)
+                    box(S, f'balf{f}S{fin}', fx, f*fh + 0.7, bz, 0.14, 1.15, 2.2, PLASTER2)
+                # glazed balcony doors behind the band
+                for k in range(3):
+                    off = (k - 1) * (w*0.24)
+                    box(S, f'bd{f}S{k}', off, f*fh + fh*0.5, d/2 - 0.02, 1.9, 2.1, 0.1, WGLASS)
+                if f % 2 == 0:
+                    for k in range(2):
+                        off = (k - 0.5) * (w*0.4)
+                        box(S, f'bp{f}S{k}', off, f*fh + 0.5, bz + 0.85, 1.6, 0.5, 0.5, TRUNK)
+                        box(S, f'bpg{f}S{k}', off, f*fh + 0.9, bz + 0.85, 1.5, 0.4, 0.42, GREEN)
+            else:
+                bx = -(w/2 + 1.3)
+                box(S, f'bal{f}W', bx, f*fh + 0.1, 0, 2.4, 0.22, d*0.86, CREAM)
+                box(S, f'balg{f}W', bx - 1.05, f*fh + 0.75, 0, 0.08, 1.1, d*0.86, BALG)
+                for fin in range(4):
+                    fz = (fin - 1.5) * (d*0.86/4)
+                    box(S, f'balf{f}W{fin}', bx, f*fh + 0.7, fz, 2.2, 1.15, 0.14, PLASTER2)
+                for k in range(3):
+                    off = (k - 1) * (d*0.24)
+                    box(S, f'bd{f}W{k}', -(w/2 - 0.02), f*fh + fh*0.5, off, 0.1, 2.1, 1.9, WGLASS)
+                if f % 2 == 1:
+                    for k in range(2):
+                        off = (k - 0.5) * (d*0.4)
+                        box(S, f'bp{f}W{k}', bx - 0.85, f*fh + 0.5, off, 0.5, 0.5, 1.6, TRUNK)
+                        box(S, f'bpg{f}W{k}', bx - 0.85, f*fh + 0.9, off, 0.42, 0.4, 1.5, GREEN)
+
+    # ground floor
+    if commercial:
+        # storefront glass + terracotta awnings + signage band (street sides)
+        box(S, 'gfcore', 0, fh*0.5, 0, w-0.2, fh, d-0.2, STONE)
+        box(S, 'store_s', 0, fh*0.45, d/2 - 0.05, w*0.92, fh*0.8, 0.25, GLASS)
+        box(S, 'store_w', -(w/2 - 0.05), fh*0.45, 0, 0.25, fh*0.8, d*0.92, GLASS)
+        box(S, 'sign', 0, fh - 0.25, d/2 + 0.18, w*0.94, 0.5, 0.14, PLASTER2)
+        for k in range(4):
+            off = (k - 1.5) * (w*0.23)
+            box(S, f'awn{k}', off, fh*0.72, d/2 + 0.75, w*0.2, 0.1, 1.5, AWNING)
+    else:
+        # pilotis: columns + recessed glazed lobby + canopy
+        box(S, 'lobby', 0, fh*0.5, 0, w*0.55, fh, d*0.55, GLASS)
+        box(S, 'lobbywall', -w*0.1, fh*0.5, -d*0.12, w*0.3, fh, 0.3, STONE)
+        for i2, (px, pz) in enumerate([(-w/2+1.2, -d/2+1.2), (w/2-1.2, -d/2+1.2), (-w/2+1.2, d/2-1.2), (w/2-1.2, d/2-1.2), (0, d/2-1.2), (0, -d/2+1.2), (-w/2+1.2, 0), (w/2-1.2, 0)]):
+            cyl(S, f'col{i2}', px, fh*0.5, pz, 0.34, fh, PLASTER2)
+        box(S, 'canopy', 0, fh + 0.1, d/2 + 1.6, 7.5, 0.2, 3.0, STONE)
+        box(S, 'entry', 0, fh*0.45, d/2 - 0.15, 2.6, fh*0.85, 0.2, WGLASS)
+
+    # roof: parapet + Israeli solar heaters + pergola + mechanical
+    box(S, 'par_n', 0, H + 0.55, -(d/2 - 0.15), w, 1.1, 0.3, PLASTER)
+    box(S, 'par_s', 0, H + 0.55, d/2 - 0.15, w, 1.1, 0.3, PLASTER)
+    box(S, 'par_e', w/2 - 0.15, H + 0.55, 0, 0.3, 1.1, d, PLASTER)
+    box(S, 'par_w', -(w/2 - 0.15), H + 0.55, 0, 0.3, 1.1, d, PLASTER)
+    for i3 in range(4):
+        sx = -w*0.28 + i3 * (w*0.19)
+        panel = trimesh.creation.box(extents=[2.0, 0.12, 2.6])
+        panel.apply_transform(trimesh.transformations.rotation_matrix(-0.5, [1, 0, 0]))
+        panel.apply_translation([sx, H + 0.9, -d*0.22])
+        panel.visual = trimesh.visual.TextureVisuals(material=PBRMaterial(baseColorFactor=SOLARP, roughnessFactor=0.4))
+        S.add_geometry(panel, node_name=f'solar{i3}')
+        cyl(S, f'tank{i3}', sx, H + 1.55, -d*0.22 + 1.7, 0.5, 1.9, TANK, axis='x')
+    box(S, 'perg1', w*0.24, H + 1.3, d*0.24, 6.5, 0.15, 5.0, TRUNK)
+    for pi in range(3):
+        cyl(S, f'pergp{pi}', w*0.24 - 2.6 + pi*2.6, H + 0.65, d*0.24 + 2.2, 0.14, 1.3, TRUNK)
+        cyl(S, f'pergp2{pi}', w*0.24 - 2.6 + pi*2.6, H + 0.65, d*0.24 - 2.2, 0.14, 1.3, TRUNK)
+    for sl in range(7):
+        box(S, f'pslat{sl}', w*0.24 - 2.9 + sl*0.95, H + 1.42, d*0.24, 0.18, 0.1, 5.0, TRUNK)
+    cyl(S, 'antenna', -w*0.3, H + 2.2, -d*0.3, 0.06, 2.6, PLASTER2)
+    box(S, 'mech', -w*0.28, H + 0.8, d*0.26, 3.2, 1.6, 2.4, PLASTER2)
+    # street furniture: low hedge along the sidewalk + two lamp posts
+    box(S, 'hedge', 0, 0.5, sd*0.235, sw*0.8, 0.7, 0.9, GREEN)
+    for li, lx in enumerate([-sw*0.3, sw*0.3]):
+        cyl(S, f'lamp{li}', lx, 2.6, sd*0.3, 0.09, 5.2, PLASTER2)
+        box(S, f'lamph{li}', lx, 5.3, sd*0.3 + 0.5, 0.28, 0.14, 1.1, GOLD)
+
+    tris = sum(g.faces.shape[0] for g in S.geometry.values())
+    S.export(out)
+    print(f"wrote {out}: {len(S.geometry)} meshes, {tris} tris")
+
 if __name__ == '__main__':
     spec = json.load(open(sys.argv[1]))
-    build(spec, sys.argv[2])
+    if spec.get('style') == 'standard':
+        build_standard(spec, sys.argv[2])
+    else:
+        build(spec, sys.argv[2])

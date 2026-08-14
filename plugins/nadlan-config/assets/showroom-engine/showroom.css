@@ -31,7 +31,9 @@ html[lang="en"] .nl-eyebrow, html[lang="fr"] .nl-eyebrow { font-family: var(--fo
 .nl-badge { display: inline-flex; align-items: center; gap: 6px; font-size: 11px; letter-spacing: var(--tracking-wide); text-transform: uppercase; padding: 3px 9px; border-radius: var(--radius-sm); font-weight: 600; }
 .nl-badge--demo { background: rgba(156,122,60,.12); color: #7c5f2c; border: 1px solid rgba(156,122,60,.3); text-transform: none; letter-spacing: 0; }
 .nl-dot { width: 9px; height: 9px; border-radius: 50%; flex: none; }
-.s-available { background: var(--sage); } .s-reserved { background: var(--gold); } .s-sold { background: #9aa29a; }
+.s-available { background: var(--sage); } .s-reserved { background: var(--gold); } .s-sold { background: #9aa29a; } .s-unknown { background: #b8b2a6; }
+label.nl-consent { display: flex; gap: 8px; align-items: flex-start; cursor: pointer; }
+label.nl-consent input { margin-top: 3px; flex: none; }
 
 /* ---------- header / language bar ---------- */
 .nl-header { position: sticky; top: 0; z-index: 40; background: rgba(250,247,241,.86); backdrop-filter: blur(10px); border-bottom: 1px solid var(--border); }
@@ -174,6 +176,11 @@ html[lang="en"] .nl-panel__title { font-family: var(--font-serif-en); }
 .nl-filters { display: flex; gap: 8px; flex-wrap: wrap; }
 .nl-chip { min-height: 36px; padding: 0 14px; border-radius: 999px; border: 1px solid var(--border); background: var(--card); color: #4b4639; font-size: 13px; font-weight: 600; cursor: pointer; }
 .nl-chip[aria-pressed="true"] { background: var(--ink); color: var(--cream); border-color: var(--ink); }
+/* Floor-band bar: tall towers pick a range first, only that band renders. */
+.nl-bands { display: flex; flex-wrap: wrap; gap: 8px; margin: 0 0 14px; }
+.nl-band { display: inline-flex; align-items: center; gap: 7px; min-height: 44px; padding: 0 16px; border-radius: 999px; border: 1px solid var(--border); background: var(--card); color: #4b4639; font-size: 14px; font-weight: 700; cursor: pointer; }
+.nl-band[aria-selected="true"] { background: var(--ink); color: var(--cream); border-color: var(--ink); }
+.nl-band[aria-selected="true"] .nl-chip__n { opacity: .75; }
 .nl-invgrid { display: grid; grid-template-columns: repeat(auto-fill, minmax(190px,1fr)); gap: 12px; }
 .nl-ucard { text-align: start; cursor: pointer; padding: 14px; border-radius: var(--radius-lg); background: var(--card); border: 1px solid var(--border); transition: box-shadow .15s ease, border-color .15s ease, transform .15s ease; position: relative; }
 .nl-ucard:hover { box-shadow: var(--shadow-card); transform: translateY(-2px); }

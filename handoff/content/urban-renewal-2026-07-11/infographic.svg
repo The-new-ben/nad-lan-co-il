@@ -1,0 +1,70 @@
+<svg viewBox="0 0 760 1210" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="מסע ההתחדשות העירונית בעשרה שלבים" style="max-width:760px;width:100%;height:auto;display:block;margin:0 auto">
+<rect width="760" height="1210" fill="#FAF7F1"/>
+<text x="720" y="64" text-anchor="end" font-family="Frank Ruhl Libre,Georgia,serif" font-size="30" fill="#1B1A17" font-weight="700">מסע ההתחדשות: מהמסדרון עד המפתח</text>
+<text x="720" y="92" text-anchor="end" font-family="Heebo,sans-serif" font-size="14" fill="#6D665C">עשרה שלבים, שלושה שערי הסכמה, עשור אחד בממוצע</text>
+<line x1="40" y1="106" x2="720" y2="106" stroke="#9C7A3C" stroke-width="2"/>
+<line x1="670" y1="150" x2="670" y2="1050" stroke="#1B1A17" stroke-width="2.5"/>
+<rect x="36" y="116" width="66" height="466" rx="12" fill="#F3EEE3"/>
+<text x="69" y="349.0" text-anchor="middle" font-family="Heebo,sans-serif" font-size="12.5" font-weight="700" fill="#6b5a33" transform="rotate(-90 69 349.0)">1-2 שנים</text>
+<rect x="36" y="616" width="66" height="166" rx="12" fill="#EDE4CF"/>
+<text x="69" y="699.0" text-anchor="middle" font-family="Heebo,sans-serif" font-size="12.5" font-weight="700" fill="#6b5a33" transform="rotate(-90 69 699.0)">2-5 שנים</text>
+<rect x="36" y="816" width="66" height="266" rx="12" fill="#F3EEE3"/>
+<text x="69" y="949.0" text-anchor="middle" font-family="Heebo,sans-serif" font-size="12.5" font-weight="700" fill="#6b5a33" transform="rotate(-90 69 949.0)">3-5 שנים</text>
+<circle cx="670" cy="150" r="21" fill="#FAF7F1" stroke="#1B1A17" stroke-width="2.5"/>
+<text x="670" y="156" text-anchor="middle" font-family="Frank Ruhl Libre,Georgia,serif" font-size="17" font-weight="700" fill="#1B1A17">1</text>
+<text x="632" y="148" text-anchor="end" font-family="Heebo,sans-serif" font-size="16.5" font-weight="700" fill="#1B1A17">התארגנות ראשונית</text>
+<text x="632" y="169" text-anchor="end" font-family="Heebo,sans-serif" font-size="12.5" fill="#6D665C">אסיפה, פרוטוקול, מיפוי</text>
+<circle cx="670" cy="250" r="21" fill="#FAF7F1" stroke="#1B1A17" stroke-width="2.5"/>
+<text x="670" y="256" text-anchor="middle" font-family="Frank Ruhl Libre,Georgia,serif" font-size="17" font-weight="700" fill="#1B1A17">2</text>
+<text x="632" y="248" text-anchor="end" font-family="Heebo,sans-serif" font-size="16.5" font-weight="700" fill="#1B1A17">בחירת נציגות</text>
+<text x="632" y="269" text-anchor="end" font-family="Heebo,sans-serif" font-size="12.5" fill="#6D665C">מנדט כתוב, 3-5 שכנים</text>
+<circle cx="670" cy="350" r="21" fill="#FAF7F1" stroke="#1B1A17" stroke-width="2.5"/>
+<text x="670" y="356" text-anchor="middle" font-family="Frank Ruhl Libre,Georgia,serif" font-size="17" font-weight="700" fill="#1B1A17">3</text>
+<text x="632" y="348" text-anchor="end" font-family="Heebo,sans-serif" font-size="16.5" font-weight="700" fill="#1B1A17">החתמות</text>
+<text x="632" y="369" text-anchor="end" font-family="Heebo,sans-serif" font-size="12.5" fill="#6D665C">שקוף לכל הבניין</text>
+<circle cx="670" cy="450" r="21" fill="#FAF7F1" stroke="#1B1A17" stroke-width="2.5"/>
+<text x="670" y="456" text-anchor="middle" font-family="Frank Ruhl Libre,Georgia,serif" font-size="17" font-weight="700" fill="#1B1A17">4</text>
+<text x="632" y="448" text-anchor="end" font-family="Heebo,sans-serif" font-size="16.5" font-weight="700" fill="#1B1A17">אנשי מקצוע</text>
+<text x="632" y="469" text-anchor="end" font-family="Heebo,sans-serif" font-size="12.5" fill="#6D665C">עו״ד ושמאי מטעמכם</text>
+<circle cx="670" cy="550" r="21" fill="#FAF7F1" stroke="#1B1A17" stroke-width="2.5"/>
+<text x="670" y="556" text-anchor="middle" font-family="Frank Ruhl Libre,Georgia,serif" font-size="17" font-weight="700" fill="#1B1A17">5</text>
+<text x="632" y="548" text-anchor="end" font-family="Heebo,sans-serif" font-size="16.5" font-weight="700" fill="#1B1A17">בחירת יזם</text>
+<text x="632" y="569" text-anchor="end" font-family="Heebo,sans-serif" font-size="12.5" fill="#6D665C">מכרז, בטוחות, ניסיון</text>
+<circle cx="670" cy="650" r="21" fill="#FAF7F1" stroke="#1B1A17" stroke-width="2.5"/>
+<text x="670" y="656" text-anchor="middle" font-family="Frank Ruhl Libre,Georgia,serif" font-size="17" font-weight="700" fill="#1B1A17">6</text>
+<text x="632" y="648" text-anchor="end" font-family="Heebo,sans-serif" font-size="16.5" font-weight="700" fill="#1B1A17">תב״ע ותכנון</text>
+<text x="632" y="669" text-anchor="end" font-family="Heebo,sans-serif" font-size="12.5" fill="#6D665C">המשתנה הגדול בזמן</text>
+<circle cx="670" cy="750" r="21" fill="#FAF7F1" stroke="#1B1A17" stroke-width="2.5"/>
+<text x="670" y="756" text-anchor="middle" font-family="Frank Ruhl Libre,Georgia,serif" font-size="17" font-weight="700" fill="#1B1A17">7</text>
+<text x="632" y="748" text-anchor="end" font-family="Heebo,sans-serif" font-size="16.5" font-weight="700" fill="#1B1A17">היתר בנייה</text>
+<text x="632" y="769" text-anchor="end" font-family="Heebo,sans-serif" font-size="12.5" fill="#6D665C">מפרט סופי ובחירת דירות</text>
+<circle cx="670" cy="850" r="21" fill="#FAF7F1" stroke="#1B1A17" stroke-width="2.5"/>
+<text x="670" y="856" text-anchor="middle" font-family="Frank Ruhl Libre,Georgia,serif" font-size="17" font-weight="700" fill="#1B1A17">8</text>
+<text x="632" y="848" text-anchor="end" font-family="Heebo,sans-serif" font-size="16.5" font-weight="700" fill="#1B1A17">פינוי</text>
+<text x="632" y="869" text-anchor="end" font-family="Heebo,sans-serif" font-size="12.5" fill="#6D665C">שכירות במימון היזם</text>
+<circle cx="670" cy="950" r="21" fill="#FAF7F1" stroke="#1B1A17" stroke-width="2.5"/>
+<text x="670" y="956" text-anchor="middle" font-family="Frank Ruhl Libre,Georgia,serif" font-size="17" font-weight="700" fill="#1B1A17">9</text>
+<text x="632" y="948" text-anchor="end" font-family="Heebo,sans-serif" font-size="16.5" font-weight="700" fill="#1B1A17">בנייה</text>
+<text x="632" y="969" text-anchor="end" font-family="Heebo,sans-serif" font-size="12.5" fill="#6D665C">מפקח מדווח לנציגות</text>
+<circle cx="670" cy="1050" r="21" fill="#FAF7F1" stroke="#1B1A17" stroke-width="2.5"/>
+<text x="670" y="1056" text-anchor="middle" font-family="Frank Ruhl Libre,Georgia,serif" font-size="17" font-weight="700" fill="#1B1A17">10</text>
+<text x="632" y="1048" text-anchor="end" font-family="Heebo,sans-serif" font-size="16.5" font-weight="700" fill="#1B1A17">מסירה ורישום</text>
+<text x="632" y="1069" text-anchor="end" font-family="Heebo,sans-serif" font-size="12.5" fill="#6D665C">שנת בדק + טאבו</text>
+<g><rect x="104" y="320" width="256" height="92" rx="12" fill="#FFFFFF" stroke="#C99C49" stroke-width="2"/>
+<text x="344" y="342" text-anchor="end" font-family="Heebo,sans-serif" font-size="12.5" font-weight="700" fill="#9C7A3C">שערי ההסכמה בחוק (2024)</text>
+<text x="120" y="364" text-anchor="start" font-family="Heebo,sans-serif" font-size="13" font-weight="700" fill="#1B1A17">66%</text>
+<text x="344" y="364" text-anchor="end" font-family="Heebo,sans-serif" font-size="12" fill="#51483A">קידום מתחם פינוי בינוי</text>
+<text x="120" y="383" text-anchor="start" font-family="Heebo,sans-serif" font-size="13" font-weight="700" fill="#1B1A17">67%</text>
+<text x="344" y="383" text-anchor="end" font-family="Heebo,sans-serif" font-size="12" fill="#51483A">תביעת דייר סרבן</text>
+<text x="120" y="402" text-anchor="start" font-family="Heebo,sans-serif" font-size="13" font-weight="700" fill="#1B1A17">80%+75%</text>
+<text x="344" y="402" text-anchor="end" font-family="Heebo,sans-serif" font-size="12" fill="#51483A">רוב מיוחס בבניין בודד</text>
+<line x1="360" y1="350" x2="440" y2="350" stroke="#C99C49" stroke-width="2" stroke-dasharray="6 5"/></g>
+<g><rect x="120" y="528" width="210" height="64" rx="12" fill="#FFFFFF" stroke="#E2DCD0" stroke-width="1.6"/>
+<text x="315" y="550" text-anchor="end" font-family="Heebo,sans-serif" font-size="12" font-weight="700" fill="#C2563A">שכר אנשי המקצוע שלכם</text>
+<text x="315" y="569" text-anchor="end" font-family="Heebo,sans-serif" font-size="12" fill="#51483A">משולם על ידי היזם, נבחר על ידכם</text>
+<line x1="330" y1="550" x2="440" y2="550" stroke="#E2DCD0" stroke-width="2" stroke-dasharray="4 4"/></g>
+<g transform="translate(150 1036)"><circle cx="16" cy="14" r="11" fill="none" stroke="#9C7A3C" stroke-width="3"/><rect x="26" y="11" width="34" height="6" fill="#9C7A3C"/><rect x="48" y="17" width="5" height="9" fill="#9C7A3C"/><rect x="56" y="17" width="5" height="7" fill="#9C7A3C"/></g>
+<text x="230" y="1056" text-anchor="start" font-family="Frank Ruhl Libre,Georgia,serif" font-size="16" font-weight="700" fill="#1B1A17">דירה חדשה, רשומה על שמכם</text>
+<line x1="40" y1="1146" x2="720" y2="1146" stroke="#E2DCD0" stroke-width="1.5"/>
+<text x="720" y="1170" text-anchor="end" font-family="Heebo,sans-serif" font-size="11.5" fill="#8E877A">משכי הזמן הם ממוצעים ארציים ואינם הבטחה. הרפים לפי הדין המעודכן ל-2024. nad-lan.co.il/urban-renewal</text>
+</svg>

@@ -295,7 +295,11 @@ if ( ! function_exists( 'nadlan_geo_sample_count' ) ) {
 			 INNER JOIN {$wpdb->postmeta} latm ON p.ID = latm.post_id AND latm.meta_key = 'lat'
 			 INNER JOIN {$wpdb->postmeta} lngm ON p.ID = lngm.post_id AND lngm.meta_key = 'lng'
 			 WHERE p.post_status = 'publish'
-			   AND p.post_type IN ('nadlan_project','nadlan_professional','nadlan_property')"
+			   AND p.post_type IN ('nadlan_project','nadlan_professional','nadlan_property')
+			   AND (p.post_type<>'nadlan_project' OR NOT EXISTS (
+				 SELECT 1 FROM {$wpdb->postmeta} private_v2
+				 WHERE private_v2.post_id=p.ID AND private_v2.meta_key='_nadlan_private_unit_journey' AND private_v2.meta_value='private-unit-journey-v2'
+			   ))"
 		);
 	}
 }
