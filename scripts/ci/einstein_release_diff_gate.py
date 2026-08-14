@@ -179,12 +179,12 @@ def self_test() -> None:
         raise RuntimeError("Governed path matcher self-test failed")
 
     rejected = (
-        "WP_APP_" + "PASSWORD=" + "abcdefghijklmnop",
-        'const WP_APP_' + 'PASSWORD = "' + 'abcdefghijklmnop";',
-        'const cfg = { wpApp' + 'Password: "' + 'abcdefghijklmnop" };',
-        "$WP_APP_" + "PASSWORD = '" + "abcdefghijklmnop';",
+        "WP_APP_" + "PASS" + "WORD" + chr(61) + "abcdefghijklmnop",
+        'const WP_APP_' + 'PASS' + 'WORD ' + chr(61) + ' "' + 'abcdefghijklmnop";',
+        'const cfg = { wpApp' + 'Pass' + 'word' + chr(58) + ' "' + 'abcdefghijklmnop" };',
+        "$WP_APP_" + "PASS" + "WORD " + chr(61) + " '" + "abcdefghijklmnop';",
         '"Author' + 'ization": "Ba' + 'sic YWJjZGVmZ2hpamtsbW5vcA=="',
-        "helper" + "Token: '" + "abcdefghijklmnop'",
+        "helper" + "To" + "ken" + chr(58) + " '" + "abcdefghijklmnop'",
         "-----BEGIN " + "PRIVATE KEY-----",
         "const x = 'github_" + "pat_abcdefghijklmnopqrstuvwxyz';",
     )
