@@ -18,6 +18,7 @@ import base64
 import copy
 import hashlib
 import json
+import math
 import os
 import re
 import secrets
@@ -62,6 +63,11 @@ EINSTEIN_CANONICAL_PATH = "/projects/einstein-tower/"
 EINSTEIN_PROJECT_CONTRACT_ID = "einstein-tower-6885-32"
 EINSTEIN_PRIVATE_MARKER = "private-unit-journey-v2"
 EINSTEIN_STAGE_SUPPLEMENTAL_META = {"claim_status": "unclaimed"}
+EINSTEIN_STAGE_REST_NORMALIZED_META_KEYS = (
+    "lat",
+    "lng",
+    "project_3d_units",
+)
 EINSTEIN_ACCEPTANCE_SCHEMA = "nadlan-einstein-flagship-live-acceptance/v2"
 EINSTEIN_ACCEPTANCE_VIEWPORTS = ("320x568", "390x844", "568x320", "1280x800")
 EINSTEIN_ACCEPTANCE_ACCESSIBILITY_VIEWPORTS = ("390x844", "568x320")
@@ -235,6 +241,34 @@ def constant_time_utf8_equal(left: str, right: str) -> bool:
 
 def exact_json_bytes(value: Any) -> bytes:
     return json.dumps(value, ensure_ascii=False, separators=(",", ":")).encode("utf-8")
+
+
+def einstein_stage_expected_rest_meta(meta: dict[str, Any]) -> dict[str, Any]:
+    """Return the exact REST edit-context view without changing raw storage intent."""
+    if not isinstance(meta, dict) or not meta:
+        raise RuntimeError("Einstein stage meta contract is unavailable")
+    expected = copy.deepcopy(meta)
+    for key, lower, upper in (("lat", -90.0, 90.0), ("lng", -180.0, 180.0)):
+        value = expected.get(key)
+        if (
+            isinstance(value, bool)
+            or not isinstance(value, (int, float))
+            or not math.isfinite(float(value))
+            or not lower <= float(value) <= upper
+        ):
+            raise RuntimeError(f"Einstein stage REST normalization input is invalid: {key}")
+        expected[key] = round(float(value), 6)
+    if expected.get("project_3d_units") != "[]":
+        raise RuntimeError(
+            "Einstein stage REST normalization input is invalid: project_3d_units"
+        )
+    expected["project_3d_units"] = ""
+    changed = tuple(sorted(key for key in meta if meta[key] != expected[key]))
+    if changed != tuple(sorted(EINSTEIN_STAGE_REST_NORMALIZED_META_KEYS)):
+        raise RuntimeError("Einstein stage REST normalization key set is not exact")
+    if set(expected) != set(meta):
+        raise RuntimeError("Einstein stage REST normalization changed the key set")
+    return expected
 
 
 def semantic_json_sha256(value: Any) -> str:
@@ -644,7 +678,7 @@ def assert_einstein_stage_readback(
     require_exact_meta: bool = True,
 ) -> dict[str, Any]:
     body = request_payload["body"]
-    expected_meta = body["meta"]
+    expected_meta = einstein_stage_expected_rest_meta(body["meta"])
     observed = wordpress_post_snapshot(record)
     if (
         observed["id"] < 1
@@ -7893,6 +7927,7 @@ def _finish_self_test(
     def fake_record(post_id: int, body: dict[str, Any]) -> dict[str, Any]:
         record_meta = copy.deepcopy(body["meta"])
         if body["slug"] == EINSTEIN_STAGE_SLUG:
+            record_meta = einstein_stage_expected_rest_meta(record_meta)
             for supplemental_key, supplemental_value in (
                 EINSTEIN_STAGE_SUPPLEMENTAL_META.items()
             ):
