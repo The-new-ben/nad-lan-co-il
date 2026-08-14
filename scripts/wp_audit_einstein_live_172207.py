@@ -55,7 +55,7 @@ RUNTIME_ENV_KEY = "NADLAN_EINSTEIN_RECOVERY_TOKEN"
 SNAPSHOT_ACTIONS_ENABLED = False
 PINNED_EXPECTED_LIVE_CONTRACT: dict[str, Any] | None = None
 PINNED_EXPECTED_LIVE_CONTRACT_SHA256 = ""
-TEMPLATE_SHA256 = "26c112294c178de7c424c8694643c76ebe81f61aafedf48b9330a4c771c0fef9"
+TEMPLATE_SHA256 = "77159305e6436fcffc9529b9b5398c5bac224c85fa7be5d659ea7cb1b8d8ab71"
 EXPECTED_RAW_META_MAP_SHA256 = (
     "cc0fd63af6f339e70115231f0bfacf62e3f37628ed0abd45a4b0d8fa76a1ee48"
 )
@@ -3674,6 +3674,17 @@ def self_test() -> int:
             raise RuntimeError(
                 f"Rendered helper contains forbidden public-storage/auth marker: {forbidden}"
             )
+    canonical_start = helper.index("$canonical_path = function")
+    canonical_end = helper.index("$validate_relative = function", canonical_start)
+    canonical_slice = helper[canonical_start:canonical_end]
+    if (
+        "wp_normalize_path( $real ) !== $normalized" not in canonical_slice
+        or "@is_link( $normalized )" not in canonical_slice
+        or "dirname( $current )" in canonical_slice
+        or "while ( true )" in canonical_slice
+    ):
+        raise RuntimeError("Canonical target path guard or ancestor-walk regression failed")
+    tests["canonical_target_guard_without_parent_mount_walk"] = True
     tests["rendered_helper_sha256"] = sha256_bytes(helper.encode("utf-8"))
     tests["session_identity"] = {
         "helper_name_shape": identity["helper_name"].startswith(

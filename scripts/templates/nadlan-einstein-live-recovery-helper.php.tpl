@@ -168,18 +168,8 @@ add_action( 'rest_api_init', function () {
 				) {
 					return false;
 				}
-				$current = $normalized;
-				while ( true ) {
-					$current_real = @realpath( $current );
-					if ( false === $current_real || wp_normalize_path( $current_real ) !== $current || @is_link( $current ) ) {
-						return false;
-					}
-					$parent = wp_normalize_path( dirname( $current ) );
-					if ( $parent === $current ) {
-						break;
-					}
-					$current = $parent;
-				}
+				// Exact target realpath equality already rejects a symlink anywhere in
+				// the resolved path. Parent mount aliases are not target-path drift.
 				return true;
 			};
 			if ( ! $canonical_path( $temp_root, true ) ) {
