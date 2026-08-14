@@ -619,6 +619,139 @@ add_action( 'rest_api_init', function () {
 					&& hash_equals( $artifact_sha256, (string) ( isset( $current_state['upload_archive_sha256'] ) ? $current_state['upload_archive_sha256'] : '' ) );
 			};
 
+			$canonical_post_storage_proof = function () use ( $source_post_id ) {
+				global $wpdb;
+				if ( $source_post_id < 1 ) {
+					throw new RuntimeException( 'Canonical post storage identity is invalid.' );
+				}
+				$core_row = $wpdb->get_row(
+					$wpdb->prepare( "SELECT * FROM {$wpdb->posts} WHERE ID = %d", $source_post_id ),
+					ARRAY_A
+				);
+				if (
+					! is_array( $core_row )
+					|| ! empty( $wpdb->last_error )
+					|| $source_post_id !== (int) ( isset( $core_row['ID'] ) ? $core_row['ID'] : 0 )
+					|| 'nadlan_project' !== (string) ( isset( $core_row['post_type'] ) ? $core_row['post_type'] : '' )
+				) {
+					throw new RuntimeException( 'Canonical post core storage row is unavailable.' );
+				}
+				ksort( $core_row, SORT_STRING );
+
+				$raw_meta_rows = $wpdb->get_results(
+					$wpdb->prepare(
+						"SELECT meta_id, meta_key, meta_value FROM {$wpdb->postmeta} WHERE post_id = %d ORDER BY meta_id ASC",
+						$source_post_id
+					),
+					ARRAY_A
+				);
+				if ( ! is_array( $raw_meta_rows ) || ! empty( $wpdb->last_error ) || count( $raw_meta_rows ) > 4096 ) {
+					throw new RuntimeException( 'Canonical post raw-meta storage rows are unavailable.' );
+				}
+				foreach ( $raw_meta_rows as &$raw_meta_row ) {
+					ksort( $raw_meta_row, SORT_STRING );
+				}
+				unset( $raw_meta_row );
+
+				$term_relationship_rows = $wpdb->get_results(
+					$wpdb->prepare(
+						"SELECT object_id, term_taxonomy_id, term_order FROM {$wpdb->term_relationships} WHERE object_id = %d ORDER BY term_taxonomy_id ASC",
+						$source_post_id
+					),
+					ARRAY_A
+				);
+				if ( ! is_array( $term_relationship_rows ) || ! empty( $wpdb->last_error ) || count( $term_relationship_rows ) > 1024 ) {
+					throw new RuntimeException( 'Canonical post term-relationship storage rows are unavailable.' );
+				}
+				foreach ( $term_relationship_rows as &$term_relationship_row ) {
+					ksort( $term_relationship_row, SORT_STRING );
+				}
+				unset( $term_relationship_row );
+
+				$core_bytes = serialize( $core_row );
+				$raw_meta_bytes = serialize( $raw_meta_rows );
+				$term_relationships_bytes = serialize( $term_relationship_rows );
+				if (
+					strlen( $core_bytes ) + strlen( $raw_meta_bytes ) + strlen( $term_relationships_bytes ) > 8 * 1024 * 1024
+				) {
+					throw new RuntimeException( 'Canonical post storage component encoding failed.' );
+				}
+				$contract = array(
+					'schema'                           => 'nadlan-canonical-post-storage-proof/v1',
+					'post_id'                          => $source_post_id,
+					'core_sha256'                      => hash( 'sha256', $core_bytes ),
+					'core_column_count'                 => count( $core_row ),
+					'raw_meta_sha256'                  => hash( 'sha256', $raw_meta_bytes ),
+					'raw_meta_row_count'               => count( $raw_meta_rows ),
+					'term_relationships_sha256'        => hash( 'sha256', $term_relationships_bytes ),
+					'term_relationships_row_count'     => count( $term_relationship_rows ),
+				);
+				$contract_json = wp_json_encode( $contract, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE );
+				if ( ! is_string( $contract_json ) || '' === $contract_json ) {
+					throw new RuntimeException( 'Canonical post storage proof encoding failed.' );
+				}
+				$contract['contract_sha256'] = hash( 'sha256', $contract_json );
+				return $contract;
+			};
+
+			$canonical_post_storage_proof_valid = function ( $proof ) use ( $source_post_id ) {
+				$expected_keys = array(
+					'schema',
+					'post_id',
+					'core_sha256',
+					'core_column_count',
+					'raw_meta_sha256',
+					'raw_meta_row_count',
+					'term_relationships_sha256',
+					'term_relationships_row_count',
+					'contract_sha256',
+				);
+				if (
+					! is_array( $proof )
+					|| $expected_keys !== array_keys( $proof )
+					|| 'nadlan-canonical-post-storage-proof/v1' !== $proof['schema']
+					|| $source_post_id !== $proof['post_id']
+					|| ! is_int( $proof['core_column_count'] )
+					|| $proof['core_column_count'] < 23
+					|| $proof['core_column_count'] > 256
+					|| ! is_int( $proof['raw_meta_row_count'] )
+					|| $proof['raw_meta_row_count'] < 0
+					|| $proof['raw_meta_row_count'] > 4096
+					|| ! is_int( $proof['term_relationships_row_count'] )
+					|| $proof['term_relationships_row_count'] < 0
+					|| $proof['term_relationships_row_count'] > 1024
+				) {
+					return false;
+				}
+				foreach ( array( 'core_sha256', 'raw_meta_sha256', 'term_relationships_sha256', 'contract_sha256' ) as $hash_key ) {
+					if ( 1 !== preg_match( '/^[a-f0-9]{64}$/D', (string) $proof[ $hash_key ] ) ) {
+						return false;
+					}
+				}
+				$contract = array(
+					'schema'                       => 'nadlan-canonical-post-storage-proof/v1',
+					'post_id'                      => $source_post_id,
+					'core_sha256'                  => (string) $proof['core_sha256'],
+					'core_column_count'             => $proof['core_column_count'],
+					'raw_meta_sha256'              => (string) $proof['raw_meta_sha256'],
+					'raw_meta_row_count'           => $proof['raw_meta_row_count'],
+					'term_relationships_sha256'    => (string) $proof['term_relationships_sha256'],
+					'term_relationships_row_count' => $proof['term_relationships_row_count'],
+				);
+				$contract_json = wp_json_encode( $contract, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE );
+				return
+					is_string( $contract_json )
+					&& '' !== $contract_json
+					&& hash_equals( (string) $proof['contract_sha256'], hash( 'sha256', $contract_json ) );
+			};
+
+			$canonical_post_storage_unchanged = function ( $baseline, $current ) use ( $canonical_post_storage_proof_valid ) {
+				return
+					$canonical_post_storage_proof_valid( $baseline )
+					&& $canonical_post_storage_proof_valid( $current )
+					&& hash_equals( (string) $baseline['contract_sha256'], (string) $current['contract_sha256'] );
+			};
+
 			$stage_contract_snapshot = function ( $page_id, $meta_keys ) use (
 				$page_slug,
 				$source_post_id,
@@ -991,6 +1124,42 @@ add_action( 'rest_api_init', function () {
 				);
 			}
 
+			if ( 'verify_canonical_post_storage' === $action ) {
+				try {
+					$canonical_lock = get_option( $lock_key, false );
+					if ( ! is_array( $canonical_lock ) || $run_id !== (string) ( isset( $canonical_lock['run_id'] ) ? $canonical_lock['run_id'] : '' ) ) {
+						throw new RuntimeException( 'Canonical post storage proof lock is not owned by this run.' );
+					}
+					$canonical_state = get_option( $state_key, array() );
+					$canonical_phase = is_array( $canonical_state ) && isset( $canonical_state['phase'] ) ? (string) $canonical_state['phase'] : '';
+					if (
+						! is_array( $canonical_state )
+						|| $run_id !== (string) ( isset( $canonical_state['run_id'] ) ? $canonical_state['run_id'] : '' )
+						|| ! in_array( $canonical_phase, array( 'deployed', 'page_creating', 'page_ready', 'rolled_back' ), true )
+						|| ! isset( $canonical_state['canonical_post_storage_baseline'] )
+						|| ! $canonical_post_storage_proof_valid( $canonical_state['canonical_post_storage_baseline'] )
+					) {
+						throw new RuntimeException( 'Canonical post storage proof state is not exact.' );
+					}
+					$current_proof = $canonical_post_storage_proof();
+					return array(
+						'schema'      => 'nadlan-canonical-post-storage-compare/v1',
+						'post_id'     => $source_post_id,
+						'state_phase' => $canonical_phase,
+						'lock_owned'  => true,
+						'baseline'    => $canonical_state['canonical_post_storage_baseline'],
+						'current'     => $current_proof,
+						'unchanged'   => $canonical_post_storage_unchanged( $canonical_state['canonical_post_storage_baseline'], $current_proof ),
+					);
+				} catch ( Throwable $error ) {
+					return new WP_Error(
+						'nadlan_release_canonical_post_storage_verify_failed',
+						'Canonical post storage verification failed.',
+						array( 'status' => 409 )
+					);
+				}
+			}
+
 			if ( 'deploy_preflight' === $action ) {
 				$target_readable = false;
 				$target_active   = false;
@@ -1099,11 +1268,27 @@ add_action( 'rest_api_init', function () {
 					return new WP_Error( 'nadlan_release_status_failed', 'Exact plugin status failed.', array( 'status' => 500 ) );
 				}
 				$upload_status = $upload_temp_status();
+				$state_phase = isset( $state['phase'] ) ? (string) $state['phase'] : 'none';
+				$page_rollback_tracked =
+					'page_creating' === $state_phase
+					&& true === $external_stage_commit_enabled
+					&& isset( $state['page_id'] ) && is_int( $state['page_id'] ) && $state['page_id'] > 0 && $state['page_id'] !== $source_post_id
+					&& true === ( isset( $state['page_created_new'] ) ? $state['page_created_new'] : false )
+					&& 'external_committed' === (string) ( isset( $state['page_contract_kind'] ) ? $state['page_contract_kind'] : '' )
+					&& isset( $state['page_meta_keys'] ) && is_array( $state['page_meta_keys'] )
+					&& 1 === preg_match( '/^[a-f0-9]{64}$/D', (string) ( isset( $state['page_title_sha256'] ) ? $state['page_title_sha256'] : '' ) )
+					&& 1 === preg_match( '/^[a-f0-9]{64}$/D', (string) ( isset( $state['page_content_sha256'] ) ? $state['page_content_sha256'] : '' ) )
+					&& 1 === preg_match( '/^[a-f0-9]{64}$/D', (string) ( isset( $state['page_excerpt_sha256'] ) ? $state['page_excerpt_sha256'] : '' ) )
+					&& 1 === preg_match( '/^[a-f0-9]{64}$/D', (string) ( isset( $state['page_core_sha256'] ) ? $state['page_core_sha256'] : '' ) )
+					&& 1 === preg_match( '/^[a-f0-9]{64}$/D', (string) ( isset( $state['page_meta_sha256'] ) ? $state['page_meta_sha256'] : '' ) )
+					&& 1 === preg_match( '/^[a-f0-9]{64}$/D', (string) ( isset( $state['page_password_fingerprint'] ) ? $state['page_password_fingerprint'] : '' ) )
+					&& 1 === preg_match( '/^[a-f0-9]{64}$/D', (string) ( isset( $state['page_contract_sha256'] ) ? $state['page_contract_sha256'] : '' ) );
 				return array(
 					'plugin'      => $live,
-					'state_phase' => isset( $state['phase'] ) ? (string) $state['phase'] : 'none',
+					'state_phase' => $state_phase,
 					'backup_ready'=> ! empty( $state['backup_digest'] ),
 					'page_id'     => isset( $state['page_id'] ) ? (int) $state['page_id'] : 0,
+					'page_rollback_tracked' => $page_rollback_tracked,
 					'upload'      => array(
 						'mode'             => $artifact_mode,
 						'verified'         => ! empty( $state['upload_verified'] ),
@@ -1485,6 +1670,71 @@ add_action( 'rest_api_init', function () {
 						)
 					);
 				}
+				$canonical_failure_reason_code = 'canonical_post_storage_state_invalid';
+				$canonical_existing_phase = '';
+				$canonical_recovery_required = false;
+				try {
+					$state = get_option( $state_key, array() );
+					if (
+						! is_array( $state )
+						|| ( ! empty( $state ) && $run_id !== (string) ( isset( $state['run_id'] ) ? $state['run_id'] : '' ) )
+					) {
+						throw new RuntimeException( 'Canonical post storage baseline state is not run-owned.' );
+					}
+					$canonical_existing_phase = isset( $state['phase'] ) ? (string) $state['phase'] : '';
+					$canonical_recovery_required = in_array( $canonical_existing_phase, array( 'backup_ready', 'deployed', 'page_creating', 'page_ready', 'rolled_back' ), true );
+					$canonical_lock = get_option( $lock_key, false );
+					if ( ! is_array( $canonical_lock ) || $run_id !== (string) ( isset( $canonical_lock['run_id'] ) ? $canonical_lock['run_id'] : '' ) ) {
+						throw new RuntimeException( 'Canonical post storage baseline lock changed.' );
+					}
+					$baseline_exists = array_key_exists( 'canonical_post_storage_baseline', $state );
+					if ( $baseline_exists ) {
+						if ( ! $canonical_post_storage_proof_valid( $state['canonical_post_storage_baseline'] ) ) {
+							throw new RuntimeException( 'Stored canonical post storage baseline is invalid.' );
+						}
+					} else {
+						if ( $canonical_recovery_required ) {
+							throw new RuntimeException( 'A terminal deployment state cannot recapture its canonical post storage baseline.' );
+						}
+						$canonical_failure_reason_code = 'canonical_post_storage_baseline_failed';
+						$state['canonical_post_storage_baseline'] = $canonical_post_storage_proof();
+						if ( ! $canonical_post_storage_proof_valid( $state['canonical_post_storage_baseline'] ) ) {
+							throw new RuntimeException( 'Canonical post storage baseline is invalid.' );
+						}
+						$canonical_failure_reason_code = 'canonical_post_storage_baseline_persist_failed';
+						$state = $save_state( $state );
+					}
+					$canonical_failure_reason_code = 'canonical_post_storage_changed_before_install';
+					$canonical_lock = get_option( $lock_key, false );
+					if ( ! is_array( $canonical_lock ) || $run_id !== (string) ( isset( $canonical_lock['run_id'] ) ? $canonical_lock['run_id'] : '' ) ) {
+						throw new RuntimeException( 'Canonical post storage baseline lock changed before comparison.' );
+					}
+					$canonical_current = $canonical_post_storage_proof();
+					if ( ! $canonical_post_storage_unchanged( $state['canonical_post_storage_baseline'], $canonical_current ) ) {
+						throw new RuntimeException( 'Canonical post storage changed before plugin installation.' );
+					}
+				} catch ( Throwable $error ) {
+					$upload_status = $upload_temp_status();
+					return new WP_Error(
+						'nadlan_release_deploy_failed',
+						'Guarded plugin deployment failed.',
+						array(
+							'status'              => 500,
+							'rolled_back'         => false,
+							'rollback_outcome'    => $canonical_recovery_required ? 'failed' : 'not_required',
+							'upload_temp_absent'  => $upload_status['temp_absent'],
+							'failure_stage'       => $canonical_recovery_required ? 'deployment_commit' : 'preflight',
+							'failure_reason_code' => $canonical_recovery_required ? 'deployment_storage_proof_failed' : $canonical_failure_reason_code,
+							'existence'           => array(
+								'target_plugin'  => @is_dir( $target_path ) && @is_file( $target_path . '/nadlan-config.php' ),
+								'storage_root'   => @is_dir( $storage_root ),
+								'artifact_spool' => @is_file( $upload_path ),
+								'backup_root'    => @is_dir( $backup_root_expected ),
+								'backup_plugin'  => @is_dir( $backup_root_expected . '/nadlan-config' ),
+							),
+						)
+					);
+				}
 
 				if ( isset( $state['phase'] ) && in_array( $state['phase'], array( 'deployed', 'page_ready' ), true ) ) {
 					try {
@@ -1503,6 +1753,8 @@ add_action( 'rest_api_init', function () {
 							&& isset( $state['backup_bytes'] ) && is_int( $state['backup_bytes'] ) && $state['backup_bytes'] > 0
 							&& hash_equals( $artifact_sha256, (string) ( isset( $state['preinstall_artifact_sha256'] ) ? $state['preinstall_artifact_sha256'] : '' ) )
 							&& hash_equals( (string) $state['backup_digest'], (string) ( isset( $state['preinstall_backup_digest'] ) ? $state['preinstall_backup_digest'] : '' ) )
+							&& isset( $state['canonical_post_storage_baseline'] )
+							&& $canonical_post_storage_proof_valid( $state['canonical_post_storage_baseline'] )
 							&& $idempotent_scope['safe']
 							&& $idempotent_scope['core_upgrade_disjoint']
 							&& $idempotent_scope['root_exists']
@@ -1752,6 +2004,18 @@ add_action( 'rest_api_init', function () {
 					$state = $save_state( $next_state );
 
 					$failure_stage       = 'plugin_install';
+					$failure_reason_code = 'canonical_post_storage_changed_before_upgrade';
+					$canonical_lock = get_option( $lock_key, false );
+					if ( ! is_array( $canonical_lock ) || $run_id !== (string) ( isset( $canonical_lock['run_id'] ) ? $canonical_lock['run_id'] : '' ) ) {
+						throw new RuntimeException( 'Release lock changed before final canonical post storage comparison.' );
+					}
+					if (
+						! isset( $state['canonical_post_storage_baseline'] )
+						|| ! $canonical_post_storage_proof_valid( $state['canonical_post_storage_baseline'] )
+						|| ! $canonical_post_storage_unchanged( $state['canonical_post_storage_baseline'], $canonical_post_storage_proof() )
+					) {
+						throw new RuntimeException( 'Canonical post storage changed immediately before plugin installation.' );
+					}
 					$failure_reason_code = 'plugin_upgrade_failed';
 					require_once ABSPATH . 'wp-admin/includes/class-wp-upgrader.php';
 					$skin     = new Automatic_Upgrader_Skin();
@@ -1891,7 +2155,7 @@ add_action( 'rest_api_init', function () {
 						throw new RuntimeException( 'External stage commit request is invalid.' );
 					}
 					$stage_phase = isset( $state['phase'] ) ? (string) $state['phase'] : '';
-					if ( ! in_array( $stage_phase, array( 'deployed', 'page_ready' ), true ) ) {
+					if ( ! in_array( $stage_phase, array( 'deployed', 'page_creating', 'page_ready' ), true ) ) {
 						$stage_commit_failure_reason_code = 'stage_commit_phase_invalid';
 						throw new RuntimeException( 'External stage commit requires one exact deployed state.' );
 					}
@@ -1958,27 +2222,33 @@ add_action( 'rest_api_init', function () {
 						throw new RuntimeException( 'External stage password is not exact.' );
 					}
 					$idempotent = 'page_ready' === $stage_phase;
-					if ( $idempotent ) {
+					$stage_tracked = in_array( $stage_phase, array( 'page_creating', 'page_ready' ), true );
+					if ( $stage_tracked ) {
 						if (
 							'external_committed' !== (string) ( isset( $state['page_contract_kind'] ) ? $state['page_contract_kind'] : '' )
 							|| $page_id !== ( isset( $state['page_id'] ) && is_int( $state['page_id'] ) ? $state['page_id'] : 0 )
 							|| $created_new !== ( isset( $state['page_created_new'] ) && is_bool( $state['page_created_new'] ) ? $state['page_created_new'] : null )
 							|| $stage_snapshot['meta_keys'] !== ( isset( $state['page_meta_keys'] ) && is_array( $state['page_meta_keys'] ) ? $state['page_meta_keys'] : array() )
+							|| ! hash_equals( (string) $stage_snapshot['title_sha256'], (string) ( isset( $state['page_title_sha256'] ) ? $state['page_title_sha256'] : '' ) )
+							|| ! hash_equals( (string) $stage_snapshot['content_sha256'], (string) ( isset( $state['page_content_sha256'] ) ? $state['page_content_sha256'] : '' ) )
+							|| ! hash_equals( (string) $stage_snapshot['excerpt_sha256'], (string) ( isset( $state['page_excerpt_sha256'] ) ? $state['page_excerpt_sha256'] : '' ) )
+							|| ! hash_equals( (string) $stage_snapshot['core_sha256'], (string) ( isset( $state['page_core_sha256'] ) ? $state['page_core_sha256'] : '' ) )
+							|| ! hash_equals( (string) $stage_snapshot['meta_sha256'], (string) ( isset( $state['page_meta_sha256'] ) ? $state['page_meta_sha256'] : '' ) )
 							|| ! hash_equals( (string) $stage_snapshot['contract_sha256'], (string) ( isset( $state['page_contract_sha256'] ) ? $state['page_contract_sha256'] : '' ) )
 							|| ! hash_equals( (string) $stage_snapshot['password_fingerprint'], (string) ( isset( $state['page_password_fingerprint'] ) ? $state['page_password_fingerprint'] : '' ) )
 						) {
-							throw new RuntimeException( 'Idempotent external stage commit differs from recorded state.' );
+							throw new RuntimeException( 'Tracked external stage commit differs from recorded state.' );
 						}
 					} else {
 						$stage_commit_failure_stage = 'state_commit';
-						$stage_commit_failure_reason_code = 'stage_state_persist_failed';
+						$stage_commit_failure_reason_code = 'stage_tracking_state_persist_failed';
 						$stage_lock = get_option( $lock_key, false );
 						if ( ! is_array( $stage_lock ) || $run_id !== (string) ( isset( $stage_lock['run_id'] ) ? $stage_lock['run_id'] : '' ) ) {
 							$stage_commit_failure_stage = 'lock_validation';
 							$stage_commit_failure_reason_code = 'lock_not_owned';
-							throw new RuntimeException( 'External stage commit lock changed before state persistence.' );
+							throw new RuntimeException( 'External stage commit lock changed before tracking state persistence.' );
 						}
-						$state['phase'] = 'page_ready';
+						$state['phase'] = 'page_creating';
 						$state['page_id'] = $page_id;
 						$state['page_created_new'] = $created_new;
 						$state['page_contract_kind'] = 'external_committed';
@@ -1990,6 +2260,50 @@ add_action( 'rest_api_init', function () {
 						$state['page_meta_sha256'] = $stage_snapshot['meta_sha256'];
 						$state['page_password_fingerprint'] = $stage_snapshot['password_fingerprint'];
 						$state['page_contract_sha256'] = $stage_snapshot['contract_sha256'];
+						$state = $save_state( $state );
+					}
+					$stage_commit_failure_stage = 'canonical_post_validation';
+					$stage_commit_failure_reason_code = 'canonical_post_storage_changed';
+					$stage_lock = get_option( $lock_key, false );
+					if ( ! is_array( $stage_lock ) || $run_id !== (string) ( isset( $stage_lock['run_id'] ) ? $stage_lock['run_id'] : '' ) ) {
+						$stage_commit_failure_stage = 'lock_validation';
+						$stage_commit_failure_reason_code = 'lock_not_owned';
+						throw new RuntimeException( 'External stage commit lock changed before canonical post storage validation.' );
+					}
+					if (
+						! isset( $state['canonical_post_storage_baseline'] )
+						|| ! $canonical_post_storage_proof_valid( $state['canonical_post_storage_baseline'] )
+						|| ! $canonical_post_storage_unchanged( $state['canonical_post_storage_baseline'], $canonical_post_storage_proof() )
+					) {
+						throw new RuntimeException( 'Canonical post storage changed before external stage commit.' );
+					}
+					if ( ! $idempotent ) {
+						$stage_commit_failure_stage = 'stage_validation';
+						$stage_commit_failure_reason_code = 'stage_contract_mismatch';
+						$stage_snapshot_recheck = $stage_contract_snapshot( $page_id, $meta_keys );
+						if ( ! hash_equals( (string) $stage_snapshot['contract_sha256'], (string) $stage_snapshot_recheck['contract_sha256'] ) ) {
+							throw new RuntimeException( 'External stage changed before page-ready commit.' );
+						}
+						$stage_commit_failure_stage = 'state_commit';
+						$stage_commit_failure_reason_code = 'stage_state_persist_failed';
+						$stage_lock = get_option( $lock_key, false );
+						if ( ! is_array( $stage_lock ) || $run_id !== (string) ( isset( $stage_lock['run_id'] ) ? $stage_lock['run_id'] : '' ) ) {
+							$stage_commit_failure_stage = 'lock_validation';
+							$stage_commit_failure_reason_code = 'lock_not_owned';
+							throw new RuntimeException( 'External stage commit lock changed before page-ready persistence.' );
+						}
+						$stage_commit_failure_stage = 'canonical_post_validation';
+						$stage_commit_failure_reason_code = 'canonical_post_storage_changed';
+						if (
+							! isset( $state['canonical_post_storage_baseline'] )
+							|| ! $canonical_post_storage_proof_valid( $state['canonical_post_storage_baseline'] )
+							|| ! $canonical_post_storage_unchanged( $state['canonical_post_storage_baseline'], $canonical_post_storage_proof() )
+						) {
+							throw new RuntimeException( 'Canonical post storage changed immediately before page-ready persistence.' );
+						}
+						$stage_commit_failure_stage = 'state_commit';
+						$stage_commit_failure_reason_code = 'stage_state_persist_failed';
+						$state['phase'] = 'page_ready';
 						$state = $save_state( $state );
 					}
 					return array(
@@ -2856,6 +3170,17 @@ add_action( 'rest_api_init', function () {
 						&& ! empty( $state['before_version'] )
 						&& isset( $state['before_active'] )
 						&& is_bool( $state['before_active'] )
+						&& (
+							(
+								isset( $state['canonical_post_storage_baseline'] )
+								&& $canonical_post_storage_proof_valid( $state['canonical_post_storage_baseline'] )
+							)
+							|| (
+								'rolled_back' === $finalize_phase
+								&& true === $recovery_adoption_enabled
+								&& ! array_key_exists( 'canonical_post_storage_baseline', $state )
+							)
+						)
 						&& hash_equals( $artifact_sha256, (string) ( isset( $state['artifact_sha256'] ) ? $state['artifact_sha256'] : '' ) )
 						&& ( 'upload' !== $artifact_mode || $retained_upload_state_valid( $finalize_contract_state ) );
 					if ( ! $state_structurally_exact ) {
@@ -2868,6 +3193,13 @@ add_action( 'rest_api_init', function () {
 						|| ( $finalize_marker && false !== $finalize_lock && ( ! is_array( $finalize_lock ) || $run_id !== (string) ( isset( $finalize_lock['run_id'] ) ? $finalize_lock['run_id'] : '' ) ) )
 					) {
 						throw new RuntimeException( 'Terminal release lock is not owned by this run.' );
+					}
+					if ( isset( $state['canonical_post_storage_baseline'] ) ) {
+						$finalize_failure_stage = 'canonical_post_validation';
+						$finalize_failure_reason_code = 'canonical_post_storage_changed';
+						if ( ! $canonical_post_storage_unchanged( $state['canonical_post_storage_baseline'], $canonical_post_storage_proof() ) ) {
+							throw new RuntimeException( 'Canonical post storage changed before release finalization.' );
+						}
 					}
 					if ( $rolled_back_created_page ) {
 						$finalize_failure_stage = 'page_validation';
@@ -2956,6 +3288,13 @@ add_action( 'rest_api_init', function () {
 							$finalize_failure_stage = 'page_validation';
 							$finalize_failure_reason_code = 'recovery_stage_present';
 							throw new RuntimeException( 'Recovery finalization marker found a new exact-slug or governed private stage.' );
+						}
+						if ( isset( $state['canonical_post_storage_baseline'] ) ) {
+							$finalize_failure_stage = 'canonical_post_validation';
+							$finalize_failure_reason_code = 'canonical_post_storage_changed';
+							if ( ! $canonical_post_storage_unchanged( $state['canonical_post_storage_baseline'], $canonical_post_storage_proof() ) ) {
+								throw new RuntimeException( 'Canonical post storage changed before finalization marker reconciliation.' );
+							}
 						}
 						$lock_released = false === $finalize_lock;
 						if ( ! $lock_released ) {
@@ -3114,6 +3453,13 @@ add_action( 'rest_api_init', function () {
 					$finalize_failure_reason_code = 'helper_changed';
 					if ( ! $finalize_helper_retained() ) {
 						throw new RuntimeException( 'Helper retention changed before finalization marker commit.' );
+					}
+					if ( isset( $state['canonical_post_storage_baseline'] ) ) {
+						$finalize_failure_stage = 'canonical_post_validation';
+						$finalize_failure_reason_code = 'canonical_post_storage_changed';
+						if ( ! $canonical_post_storage_unchanged( $state['canonical_post_storage_baseline'], $canonical_post_storage_proof() ) ) {
+							throw new RuntimeException( 'Canonical post storage changed before finalization marker persistence.' );
+						}
 					}
 					$finalize_failure_stage = 'marker_commit';
 					$finalize_failure_reason_code = 'marker_persist_failed';
