@@ -71,6 +71,13 @@ add_action( 'rest_api_init', function () {
 		'callback'            => function ( $req ) {
 			$p   = $req->get_json_params() ?: array();
 			$tid = (int) ( $p['target_id'] ?? 0 );
+			if ( $tid > 0 && 'nadlan_project' === get_post_type( $tid ) && (
+				( function_exists( 'nadlan_unit_journey_is_private_lab' )
+					&& nadlan_unit_journey_is_private_lab( $tid ) )
+				|| 'private-unit-journey-v2' === (string) get_post_meta( $tid, '_nadlan_private_unit_journey', true )
+			) ) {
+				return new WP_Error( 'not_found', 'not found', array( 'status' => 404 ) );
+			}
 			$name  = trim( wp_strip_all_tags( (string) ( $p['name'] ?? '' ) ) );
 			$email = sanitize_email( (string) ( $p['email'] ?? '' ) );
 			$rating= max( 1, min( 5, (int) ( $p['rating'] ?? 0 ) ) );

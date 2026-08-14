@@ -144,6 +144,7 @@ add_shortcode( 'nadlan_card', function ( $atts ) {
 if ( ! function_exists( 'nadlan_card_assets' ) ) {
 	function nadlan_card_assets() {
 		if ( ! is_singular( array( 'nadlan_project', 'nadlan_professional', 'nadlan_property' ) ) ) { return; }
+		if ( function_exists( 'nadlan_unit_journey_is_private_lab' ) && nadlan_unit_journey_is_private_lab() ) { return; }
 		?>
 <style>
 .nlcard{margin:24px 0;font-family:var(--font-sans,Heebo,sans-serif);--nl-gold:#9C7A3C;--nl-ink:#1B1A17;--nl-cream:#FAF7F1}

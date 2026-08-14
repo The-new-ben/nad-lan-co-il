@@ -22,12 +22,14 @@ if ( ! function_exists( 'nadlan_sp_render' ) ) {
 		// sorts below. Solution: cache + skip the unindexed-meta queries when no
 		// claimed contractors / no view-counts exist (true today; will turn on
 		// automatically when real data appears).
-		$ck = 'nadlan_sp_block_v3';
+		$ck = 'nadlan_sp_block_v4';
 		$cache = get_transient( $ck );
 		if ( $cache !== false ) { return (string) $cache; }
 
 		$pros  = (int) wp_count_posts( 'nadlan_professional' )->publish; // natively cached
-		$proj  = (int) wp_count_posts( 'nadlan_project' )->publish;       // natively cached
+		$proj  = function_exists( 'nadlan_unit_journey_public_project_count' )
+			? nadlan_unit_journey_public_project_count()
+			: (int) wp_count_posts( 'nadlan_project' )->publish;
 		$terms = (int) wp_count_posts( 'nadlan_term' )->publish;          // natively cached
 
 		// Cheap probe: do ANY verified claims exist? If not, skip the heavy query.
@@ -123,6 +125,7 @@ if ( ! function_exists( 'nadlan_sp_render' ) ) {
 add_action( 'updated_post_meta', function ( $mid, $object_id, $key ) {
 	if ( in_array( $key, array( 'claim_status', 'verified_at' ), true ) ) {
 		delete_transient( 'nadlan_sp_block_v3' );
+		delete_transient( 'nadlan_sp_block_v4' );
 	}
 }, 10, 3 );
 

@@ -149,6 +149,125 @@ if ( ! function_exists( 'nadlan_project_notice_render' ) ) {
  * puts it at the very top, ahead of the decision point. */
 add_filter( 'the_content', 'nadlan_project_notice_render', 20 );
 
+/* INTENT-FIRST ORDER (owner law, 2026-08-05).
+ *
+ * Measured live on ashira: the first text Google reads was this notice, then a
+ * second disclaimer, and the article's own opening paragraph appeared nowhere
+ * in the first eight text blocks. A page whose opening text is disclaimers
+ * ranks as a page about disclaimers.
+ *
+ * The repair keeps the legal duty intact and reorders the page: the article's
+ * first substantive paragraph moves to the very top, and the notice sits
+ * DIRECTLY UNDER it - still high, still before any decision point, still
+ * naming the developer. Mechanics: at priority 0 (before any module prepends
+ * and before wpautop) the lead paragraph is cut out of the base content and
+ * parked; at priority 21 (right after the notice prepended at 20) the page is
+ * recomposed as lead, notice, everything else. If extraction fails on a page,
+ * nothing moves and the notice stays at the top - the legal placement never
+ * silently disappears. UTOPIA pages rebuild their content wholesale at
+ * PHP_INT_MAX and discard this arrangement; their curated page already opens
+ * with substance, so that is fine.
+ */
+if ( ! function_exists( 'nadlan_lead_is_provenance' ) ) {
+	/* Editorial plumbing is not buyer content. Found live 2026-08-07: DUO's
+	   page OPENED with "נערך עבור nad-lan.co.il על בסיס דוסייה, מקורות: ..."
+	   and rainbow's with "עודכן ביוני 2026 · מקורות:" - the extractor had
+	   faithfully promoted the sourcing note to the lead. These lines belong at
+	   the bottom of the page, always. */
+	function nadlan_lead_is_provenance( $plain ) {
+		return (bool) preg_match(
+			'/^(נערך עבור|עודכן ב|מקורות\s*[::]|על בסיס דוסיי|Sources\s*[::]|Compiled for)|^[^.]{0,40}(מקורות\s*[::])/u',
+			trim( $plain )
+		);
+	}
+}
+
+if ( ! function_exists( 'nadlan_lead_extract' ) ) {
+	function nadlan_lead_extract( $content ) {
+		if ( ! is_singular( 'nadlan_project' ) || ! in_the_loop() || ! is_main_query() ) {
+			return $content;
+		}
+		if ( isset( $GLOBALS['nl_lead_html'] ) ) {
+			return $content;
+		}
+		/* Scan WHOLE <p> elements wherever they sit. Dossier-seeded pages nest
+		   the opening inside <section><article><header> wrappers with a
+		   <p class="byline"> provenance line first (DUO, live 2026-08-07) - an
+		   anchored from-the-start scan misses all of it, and the pre-169 code
+		   even promoted the byline WITH broken wrapper markup as the lead.
+		   Cutting complete <p> elements leaves any wrappers intact. */
+		$lead   = '';
+		$parked = array();
+		$rest   = $content;
+		$offset = 0;
+		for ( $i = 0; $i < 8; $i++ ) {
+			if ( ! preg_match( '/<p\b[^>]*>.*?<\/p>/is', $rest, $m, PREG_OFFSET_CAPTURE, $offset ) ) {
+				break;
+			}
+			$block = $m[0][0];
+			$pos   = $m[0][1];
+			/* 8000, not 2500: guide-wrap pages (yoo/meier/akirov) open with a
+			   large inline JSON-LD script, pushing the first real paragraph
+			   past any small window - extraction silently failed there and the
+			   notice stayed glued to the top (fleet sweep 2026-08-08) */
+			if ( $pos > 8000 ) {
+				break;
+			}
+			/* never cut text that sits INSIDE an open <script> block */
+			$before = substr( $rest, 0, $pos );
+			if ( substr_count( strtolower( $before ), '<script' ) > substr_count( strtolower( $before ), '</script' ) ) {
+				$offset = $pos + strlen( $block );
+				continue;
+			}
+			$plain    = trim( wp_strip_all_tags( $block ) );
+			$byline   = false !== stripos( $block, 'class="byline"' ) || false !== stripos( $block, "class='byline'" );
+			if ( $byline || nadlan_lead_is_provenance( $plain ) ) {
+				$parked[] = $block;
+				$rest     = substr( $rest, 0, $pos ) . substr( $rest, $pos + strlen( $block ) );
+				$offset   = $pos;
+				continue;
+			}
+			if ( mb_strlen( $plain ) >= 100 && '[' !== substr( $plain, 0, 1 ) ) {
+				$lead = $block;
+				$rest = substr( $rest, 0, $pos ) . substr( $rest, $pos + strlen( $block ) );
+				break;
+			}
+			/* short or unclassified paragraph: leave it, keep scanning past it */
+			$offset = $pos + strlen( $block );
+		}
+		if ( $parked ) {
+			$rest .= "\n" . '<div class="nl-provenance">' . implode( "\n", $parked ) . '</div>';
+		}
+		if ( '' === $lead ) {
+			/* provenance may still have been parked - keep that even without a lead */
+			return $parked ? $rest : $content;
+		}
+		$GLOBALS['nl_lead_html'] = '<div class="nl-lead">' . $lead . '</div>';
+		return $rest;
+	}
+}
+add_filter( 'the_content', 'nadlan_lead_extract', 0 );
+
+if ( ! function_exists( 'nadlan_lead_recompose' ) ) {
+	function nadlan_lead_recompose( $content ) {
+		if ( empty( $GLOBALS['nl_lead_html'] ) || ! is_singular( 'nadlan_project' ) || ! in_the_loop() || ! is_main_query() ) {
+			return $content;
+		}
+		$lead = $GLOBALS['nl_lead_html'];
+		unset( $GLOBALS['nl_lead_html'] );
+		$notice = '';
+		if ( 0 === strpos( $content, '<aside class="nl-projnotice"' ) ) {
+			$end     = strpos( $content, '</aside>' );
+			if ( false !== $end ) {
+				$notice  = substr( $content, 0, $end + 8 );
+				$content = substr( $content, $end + 8 );
+			}
+		}
+		return $lead . $notice . $content;
+	}
+}
+add_filter( 'the_content', 'nadlan_lead_recompose', 21 );
+
 if ( ! function_exists( 'nadlan_legal_notice_css' ) ) {
 	function nadlan_legal_notice_css() {
 		if ( is_admin() ) {
@@ -158,7 +277,9 @@ if ( ! function_exists( 'nadlan_legal_notice_css' ) ) {
 		wp_enqueue_style( 'nadlan-legal-notice' );
 		wp_add_inline_style(
 			'nadlan-legal-notice',
-			'.nl-legal{background:#14130F;color:#9B948A;padding:18px 0;margin:0}'
+			'.nl-provenance{margin-top:26px;padding-top:12px;border-top:1px dashed #D9D2C4;'
+			. 'font-size:12px;line-height:1.6;color:#8E877A}'
+			. '.nl-legal{background:#14130F;color:#9B948A;padding:18px 0;margin:0}'
 			. '.nl-legal-in{max-width:1240px;margin:0 auto;padding:0 clamp(14px,3vw,26px)}'
 			. '.nl-legal p{margin:0;font:400 12.5px/1.75 Heebo,system-ui,sans-serif;max-width:1000px}'
 			. '.nl-legal strong{color:#C9C2B4;font-weight:700}'

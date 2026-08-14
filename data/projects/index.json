@@ -1,8 +1,8 @@
 {
-  "generated_at": "2026-07-04",
-  "count": 30,
+  "generated_at": "2026-08-14",
+  "count": 31,
   "schema": "_schema.json",
-  "note": "Canonical project DB. ready_for_page=false everywhere until geocode+price+media+article filled.",
+  "note": "Canonical project DB. ready_for_page becomes true only after the approved-language content, identity, location, truth-state, media/model and release gates pass; unknown price or inventory stays explicit and never blocks a truthful non-selection page.",
   "projects": [
     {
       "id": "a-neot-afeka",
@@ -53,6 +53,16 @@
       "status": "final_units",
       "ready_for_page": false,
       "source": "chatgpt_gush_dan_2026-07-03"
+    },
+    {
+      "id": "einstein-tower",
+      "name_he": "EINSTEIN TOWER – איינשטיין 33א׳",
+      "name_en": "EINSTEIN TOWER / Einstein 33A",
+      "city": "תל אביב-יפו",
+      "developer": "קבוצת חג׳ג׳",
+      "status": "under_construction",
+      "ready_for_page": false,
+      "source": "einstein_33a_primary_research_2026-08-14"
     },
     {
       "id": "even-shaprot-herzliya",

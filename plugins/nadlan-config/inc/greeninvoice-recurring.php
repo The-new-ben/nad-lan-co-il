@@ -305,7 +305,14 @@ if ( ! function_exists( 'nadlan_gi_ipn_handler' ) ) {
 		}
 		$raw = (string) $request->get_body();
 		if ( $raw === '' ) { $raw = (string) file_get_contents( 'php://input' ); }
-		if ( ! nadlan_gi_verify( $raw, nadlan_gi_signature_header( $request ), $secret, 300, nadlan_gi_sig_scheme() ) ) {
+		/* URL-token scheme: GreenInvoice's current webhook UI issues no signing
+		 * secret (owner evidence 2026-08-11: webhook saved, no key shown). The
+		 * shared secret rides inside the webhook URL (?t=...), known only to
+		 * the two systems. A signature header, when present, still wins. */
+		$sig   = nadlan_gi_signature_header( $request );
+		$token = (string) $request->get_param( 't' );
+		$token_ok = ( '' === $sig && '' !== $token && hash_equals( $secret, $token ) );
+		if ( ! $token_ok && ! nadlan_gi_verify( $raw, $sig, $secret, 300, nadlan_gi_sig_scheme() ) ) {
 			return new WP_REST_Response( array( 'ok' => false, 'error' => 'bad_signature' ), 401 );
 		}
 		$payload = json_decode( $raw, true );

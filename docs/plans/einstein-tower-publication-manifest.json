@@ -1,0 +1,120 @@
+{
+  "manifest_version": "einstein-flagship-v3-content-preflight-1",
+  "status": "draft_preflight_only",
+  "site": "https://nad-lan.co.il",
+  "wordpress_type": "nadlan_project",
+  "endpoint": "https://nad-lan.co.il/wp-json/wp/v2/nadlan_project",
+  "public_base_path": "/projects/",
+  "asset_slug": "einstein-tower",
+  "project_contract_id": "einstein-tower-6885-32",
+  "project_title": "EINSTEIN TOWER תל אביב",
+  "x_default": "he",
+  "required_languages": [
+    "he"
+  ],
+  "existing_target": {
+    "id": 4867,
+    "slug": "einstein-tower",
+    "public_url": "https://nad-lan.co.il/projects/einstein-tower/",
+    "action": "update_in_place",
+    "create_if_missing": false,
+    "semantic_duplicate_check_required": true
+  },
+  "required_source_links": [
+    "https://www.hagag-group.co.il/projects/ResidentProjects/einstein_tower",
+    "https://www.hagag-group.co.il/Uploads/2026/04/rln33jws7WiMM6.pdf",
+    "https://www.tel-aviv.gov.il/Residents/Development/DocLib/%D7%A4%D7%A8%D7%95%D7%98%D7%95%D7%A7%D7%95%D7%9C%2020-0005%20%D7%9E%D7%99%D7%95%D7%9D%201-4-20.pdf",
+    "https://www.nta.co.il/light-rail/%D7%94%D7%A7%D7%95-%D7%94%D7%99%D7%A8%D7%95%D7%A7",
+    "https://www.tel-aviv.gov.il/Residents/Development/Pages/SdeDov.aspx",
+    "https://www.tel-aviv.gov.il/Residents/Education/Pages/Registration.aspx"
+  ],
+  "languages": [
+    {
+      "lang": "he",
+      "locale": "he-IL",
+      "dir": "rtl",
+      "slug": "einstein-tower",
+      "public_url": "https://nad-lan.co.il/projects/einstein-tower/",
+      "content_source": "docs/wp-drafts/einstein-tower-he-content.html",
+      "content_contract": "docs/wp-drafts/einstein-tower-he-content-contract.json",
+      "content_sha256": "e876dd422440e1aa2403ff0fac3c89722a3cc106fc366f714699bed1c030a25f",
+      "content_contract_sha256": "025dd65cabd0df02959f8e37535e5321f2337fdff35d1629fb85cc820910bdc4",
+      "draft": "docs/wp-drafts/einstein-tower-flagship-v3-private-stage.json",
+      "draft_state": "private_stage_payload_pending_final_build",
+      "preview": "docs/previews/einstein-tower-flagship-offline.html",
+      "content_report": "docs/qa/einstein-tower-he-content-depth-report.json",
+      "screenshot_report": "docs/qa/screenshots/einstein-tower-flagship-preview-gate/report.json"
+    }
+  ],
+  "private_stage": {
+    "required": true,
+    "must_be_distinct_from_post_4867": true,
+    "wordpress_password_required": true,
+    "source_post_id": 4867,
+    "expected_surface_version": "flagship-v3",
+    "public_discovery_allowed": false,
+    "required_checks": [
+      "locked_response_contains_no_project_payload",
+      "absent_from_public_rest_search_archive_feeds_and_sitemaps",
+      "authenticated_payload_export_matches_expected_fixture",
+      "one_h1_and_article_preserved",
+      "no_legacy_nlv2_or_nlps_surface",
+      "no_horizontal_overflow_or_model_overlap"
+    ]
+  },
+  "update_guard": {
+    "lookup": "authenticated_exact_slug",
+    "required_result_count": 1,
+    "required_id": 4867,
+    "required_slug": "einstein-tower",
+    "required_source_id_after_apply": "einstein-tower-6885-32",
+    "on_missing_or_mismatch": "abort_without_create",
+    "preserve_url": true,
+    "redirect_allowed": false,
+    "related_projects_must_remain_distinct": [
+      "einstein-35",
+      "einstein-19",
+      "einstein-ramat-aviv",
+      "ashdar-einstein"
+    ]
+  },
+  "before_snapshot": {
+    "required": true,
+    "fields": [
+      "id",
+      "slug",
+      "status",
+      "title",
+      "content",
+      "excerpt",
+      "meta",
+      "terms",
+      "featured_media",
+      "yoast_fields"
+    ],
+    "exclude_secrets": true,
+    "rollback_artifact_required": true
+  },
+  "publication_sequence": [
+    "validate_hebrew_content_contract",
+    "finish_and_validate_shared_flagship_v3_renderer",
+    "build_wordpress_draft_payload_without_legacy_showroom_markers_or_pseudo_inventory",
+    "stage_on_distinct_password_protected_post",
+    "run_private_readback_and_responsive_browser_gates",
+    "capture_and_hash_post_4867_before_snapshot",
+    "apply_as_draft_only_after_exact_slug_and_id_match",
+    "read_back_post_4867_and_compare_normalized_fields",
+    "publish_only_through_explicit_confirmed_release_flow",
+    "verify_public_canonical_archive_catalog_sitemap_and_fleet"
+  ],
+  "blocked_until": [
+    "shared_flagship_v3_renderer_green",
+    "flagship_v3_draft_builder_and_validator_green",
+    "einstein_tower_he_draft_payload_exists",
+    "private_stage_readback_green",
+    "responsive_visual_accessibility_and_performance_gates_green",
+    "post_4867_before_snapshot_and_rollback_artifact_exist"
+  ],
+  "publish_rule": "Never create a second Einstein canonical. Update WordPress post 4867 at the existing einstein-tower slug only after private staging, exact-ID readback, rollback capture and explicit release confirmation. Hebrew is the only first-release language; EN, FR, RU and AR remain absent until complete reviewed siblings exist.",
+  "hreflang_state": "not_applicable_until_real_sibling_pages_exist"
+}

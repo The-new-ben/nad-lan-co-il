@@ -1,0 +1,44 @@
+{
+  "generatedAt": "2026-08-11T03:10:08.310Z",
+  "filename": "report.html",
+  "results": [
+    {
+      "viewport": {
+        "width": 1440,
+        "height": 900,
+        "name": "desktop"
+      },
+      "geometry": {
+        "clientWidth": 1440,
+        "scrollWidth": 1440,
+        "bodyClientWidth": 1440,
+        "bodyScrollWidth": 1440,
+        "readerState": "ready",
+        "topBarFreshness": "10 Aug 2026, 23:30 IDT",
+        "topBarFreshnessAria": "Last updated 10 Aug 2026, 23:30 IDT",
+        "offenders": []
+      },
+      "errors": [],
+      "externalRequests": []
+    },
+    {
+      "viewport": {
+        "width": 390,
+        "height": 844,
+        "name": "mobile"
+      },
+      "geometry": {
+        "clientWidth": 390,
+        "scrollWidth": 390,
+        "bodyClientWidth": 390,
+        "bodyScrollWidth": 390,
+        "readerState": "ready",
+        "topBarFreshness": "10 Aug 2026, 23:30 IDT",
+        "topBarFreshnessAria": "Last updated 10 Aug 2026, 23:30 IDT",
+        "offenders": []
+      },
+      "errors": [],
+      "externalRequests": []
+    }
+  ]
+}

@@ -19,15 +19,30 @@ add_action( 'rest_api_init', function () {
 	register_rest_route( 'nadlan/v1', '/project-map', array(
 		'methods' => 'GET', 'permission_callback' => '__return_true',
 		'callback' => function () {
-			$cache = get_transient( 'nadlan_project_map_v2' );
+			/* The cache key is part of the privacy boundary: an older aggregate
+			 * may contain a lab project even after the query itself is hardened. */
+			$cache = get_transient( 'nadlan_project_map_v3_public' );
 			if ( is_array( $cache ) ) { return new WP_REST_Response( $cache, 200 ); }
+			$public_meta = function_exists( 'nadlan_unit_journey_public_meta_query' )
+				? nadlan_unit_journey_public_meta_query()
+				: array(
+					'relation' => 'OR',
+					array( 'key' => '_nadlan_private_unit_journey', 'compare' => 'NOT EXISTS' ),
+					array(
+						'key'     => '_nadlan_private_unit_journey',
+						'value'   => 'private-unit-journey-v2',
+						'compare' => '!=',
+					),
+				);
 			$q = new WP_Query( array(
 				'post_type' => 'nadlan_project', 'post_status' => 'publish',
 				'posts_per_page' => -1, 'fields' => 'ids', 'no_found_rows' => true,
 				'nadlan_no_lang_siblings' => true,
+				'nadlan_private_visibility_applied' => true,
 				'meta_query' => array( 'relation' => 'AND',
 					array( 'key' => 'lat', 'compare' => 'EXISTS' ),
 					array( 'key' => 'lng', 'compare' => 'EXISTS' ),
+					$public_meta,
 				),
 			) );
 			$items = array();
@@ -51,12 +66,15 @@ add_action( 'rest_api_init', function () {
 				);
 			}
 			$out = array( 'ok' => true, 'count' => count( $items ), 'items' => $items );
-			set_transient( 'nadlan_project_map_v2', $out, 6 * HOUR_IN_SECONDS );
+			set_transient( 'nadlan_project_map_v3_public', $out, 6 * HOUR_IN_SECONDS );
 			return new WP_REST_Response( $out, 200 );
 		},
 	) );
 } );
-add_action( 'save_post_nadlan_project', function () { delete_transient( 'nadlan_project_map_v2' ); } );
+add_action( 'save_post_nadlan_project', function () {
+	delete_transient( 'nadlan_project_map_v2' );
+	delete_transient( 'nadlan_project_map_v3_public' );
+} );
 
 if ( ! function_exists( 'nadlan_drone_map_status_enum' ) ) {
 	// Normalize project_status (enum or gov.il Hebrew) to a known enum; fail open (empty).

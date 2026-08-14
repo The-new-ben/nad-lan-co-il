@@ -1,0 +1,12 @@
+Repository: github.com/The-new-ben/nad-lan-co-il
+Audited production branch: claude/sde-dov-experience-v1
+Audited remote ref: refs/remotes/origin/claude/sde-dov-experience-v1
+Audited commit: 3fb93aa6c4544d90b7906aef06bb043a2a315422
+Observed live engine version: 1.72.181
+Removed mobile-flow proposal commit inspected: f810815
+Rollback commit inspected: 350be7c
+Audit date: 2026-08-08
+
+Important: AGENT-LOG.md contains records 86 through 94. Record 95 was not present
+in the audited branch or in the searchable Git history available during the audit.
+

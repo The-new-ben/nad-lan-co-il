@@ -220,7 +220,9 @@ if ( ! function_exists( 'nadlan_directory_hub_render' ) ) {
 	function nadlan_directory_hub_render() {
 		$prop = (int) wp_count_posts( 'nadlan_property' )->publish;
 		$pros = (int) wp_count_posts( 'nadlan_professional' )->publish;
-		$proj = (int) wp_count_posts( 'nadlan_project' )->publish;
+		$proj = function_exists( 'nadlan_unit_journey_public_project_count' )
+			? nadlan_unit_journey_public_project_count()
+			: (int) wp_count_posts( 'nadlan_project' )->publish;
 		$cards = array(
 			array(
 				'url'   => home_url( '/professionals/' ),

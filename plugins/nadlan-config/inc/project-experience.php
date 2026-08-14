@@ -48,17 +48,18 @@ if ( ! function_exists( 'nadlan_pjx_units' ) ) {
 
 if ( ! function_exists( 'nadlan_pjx_nearby_projects' ) ) {
 	function nadlan_pjx_nearby_projects( $id, $lat, $lng, $limit = 12 ) {
-		$key = 'nlpjx_near_' . $id;
+		$key = 'nlpjx_near_v2_' . $id;
 		$hit = get_transient( $key );
 		if ( is_array( $hit ) ) { return $hit; }
 		$q = new WP_Query( array(
 			'post_type' => 'nadlan_project', 'post_status' => 'publish',
 			'posts_per_page' => $limit + 1, 'post__not_in' => array( $id ),
 			'no_found_rows' => true, 'fields' => 'ids',
-			'meta_query' => array(
+			'nadlan_private_visibility_applied' => true,
+			'meta_query' => nadlan_unit_journey_public_meta_query( array(
 				array( 'key' => 'lat', 'value' => array( $lat - 0.016, $lat + 0.016 ), 'compare' => 'BETWEEN', 'type' => 'DECIMAL(10,6)' ),
 				array( 'key' => 'lng', 'value' => array( $lng - 0.018, $lng + 0.018 ), 'compare' => 'BETWEEN', 'type' => 'DECIMAL(10,6)' ),
-			),
+			) ),
 		) );
 		$out = array();
 		foreach ( $q->posts as $pid ) {
@@ -80,18 +81,19 @@ if ( ! function_exists( 'nadlan_pjx_nearby_projects' ) ) {
 /* ---------------- comps: nearby projects WITH price data (R4) ---------------- */
 if ( ! function_exists( 'nadlan_pjx_comps' ) ) {
 	function nadlan_pjx_comps( $id, $lat, $lng, $limit = 6 ) {
-		$key = 'nlpjx_comps_' . $id;
+		$key = 'nlpjx_comps_v2_' . $id;
 		$hit = get_transient( $key );
 		if ( is_array( $hit ) ) { return $hit; }
 		$q = new WP_Query( array(
 			'post_type' => 'nadlan_project', 'post_status' => 'publish',
 			'posts_per_page' => 24, 'post__not_in' => array( $id ),
 			'no_found_rows' => true, 'fields' => 'ids',
-			'meta_query' => array(
+			'nadlan_private_visibility_applied' => true,
+			'meta_query' => nadlan_unit_journey_public_meta_query( array(
 				array( 'key' => 'lat', 'value' => array( $lat - 0.03, $lat + 0.03 ), 'compare' => 'BETWEEN', 'type' => 'DECIMAL(10,6)' ),
 				array( 'key' => 'lng', 'value' => array( $lng - 0.035, $lng + 0.035 ), 'compare' => 'BETWEEN', 'type' => 'DECIMAL(10,6)' ),
 				array( 'key' => 'project_3d_avg_price_per_sqm', 'value' => 1000, 'compare' => '>', 'type' => 'NUMERIC' ),
-			),
+			) ),
 		) );
 		$out = array();
 		foreach ( $q->posts as $pid ) {
@@ -124,7 +126,8 @@ add_action( 'rest_api_init', function () {
 		'callback' => function ( $req ) {
 			$id = (int) $req->get_param( 'id' );
 			$p  = get_post( $id );
-			if ( ! $p || $p->post_type !== 'nadlan_project' || $p->post_status !== 'publish' ) {
+			if ( ! $p || $p->post_type !== 'nadlan_project' || $p->post_status !== 'publish'
+				|| ( function_exists( 'nadlan_unit_journey_is_private_lab' ) && nadlan_unit_journey_is_private_lab( $id ) ) ) {
 				return new WP_Error( 'not_found', 'not_found', array( 'status' => 404 ) );
 			}
 			$lat = (float) get_post_meta( $id, 'lat', true ); $lng = (float) get_post_meta( $id, 'lng', true );
@@ -139,6 +142,7 @@ if ( ! function_exists( 'nadlan_pjx_price_band' ) ) {
 	function nadlan_pjx_price_band( $content ) {
 		if ( ! is_singular( 'nadlan_project' ) || ! in_the_loop() || ! is_main_query() ) { return $content; }
 		$id    = get_the_ID();
+		if ( function_exists( 'nadlan_unit_journey_is_private_lab' ) && nadlan_unit_journey_is_private_lab( $id ) ) { return $content; }
 		$ppsqm = (int) get_post_meta( $id, 'project_3d_avg_price_per_sqm', true );
 		$lat   = (float) get_post_meta( $id, 'lat', true );
 		$lng   = (float) get_post_meta( $id, 'lng', true );
@@ -195,6 +199,15 @@ add_filter( 'the_content', 'nadlan_pjx_price_band', 9 );
 if ( ! function_exists( 'nadlan_pjx_top' ) ) {
 	function nadlan_pjx_top( $content ) {
 		if ( ! is_singular( 'nadlan_project' ) || ! in_the_loop() || ! is_main_query() ) { return $content; }
+		if ( function_exists( 'nadlan_unit_journey_is_private_lab' ) && nadlan_unit_journey_is_private_lab( get_the_ID() ) ) { return $content; }
+		/* Owner evidence 2026-08-09: on engine pages this nav+intro was
+		 * re-attached AFTER the theater together with the legacy profile
+		 * header - the photographed mid-page "page restart". The theater
+		 * panel already carries the lead and the project facts. */
+		if ( function_exists( 'nadlan_showroom_engine_active_for' )
+			&& nadlan_showroom_engine_active_for( get_the_ID() ) ) {
+			return $content;
+		}
 		$id  = get_the_ID();
 		$g   = function ( $k ) use ( $id ) { return get_post_meta( $id, $k, true ); };
 		$dev = (string) $g( 'developer_name' );
@@ -231,6 +244,7 @@ add_filter( 'the_content', 'nadlan_pjx_top', 7 );
 if ( ! function_exists( 'nadlan_pjx_bottom' ) ) {
 	function nadlan_pjx_bottom( $content ) {
 		if ( ! is_singular( 'nadlan_project' ) || ! in_the_loop() || ! is_main_query() ) { return $content; }
+		if ( function_exists( 'nadlan_unit_journey_is_private_lab' ) && nadlan_unit_journey_is_private_lab( get_the_ID() ) ) { return $content; }
 		$id  = get_the_ID();
 		$g   = function ( $k ) use ( $id ) { return get_post_meta( $id, $k, true ); };
 		$ppsqm = (int) $g( 'project_3d_avg_price_per_sqm' );
@@ -358,6 +372,7 @@ add_filter( 'the_content', 'nadlan_pjx_bottom', 19 );
 if ( ! function_exists( 'nadlan_pjx_assets' ) ) {
 	function nadlan_pjx_assets() {
 		if ( ! is_singular( 'nadlan_project' ) ) { return; }
+		if ( function_exists( 'nadlan_unit_journey_is_private_lab' ) && nadlan_unit_journey_is_private_lab() ) { return; }
 		$id = get_queried_object_id();
 		$has_map = get_post_meta( $id, 'lat', true ) && get_post_meta( $id, 'lng', true );
 		if ( $has_map ) {
@@ -554,6 +569,7 @@ add_action( 'wp_enqueue_scripts', 'nadlan_pjx_assets' );
 if ( ! function_exists( 'nadlan_pjx_faq_jsonld' ) ) {
 	function nadlan_pjx_faq_jsonld() {
 		if ( ! is_singular( 'nadlan_project' ) ) { return; }
+		if ( function_exists( 'nadlan_unit_journey_is_private_lab' ) && nadlan_unit_journey_is_private_lab() ) { return; }
 		$id = get_queried_object_id();
 		$g  = function ( $k ) use ( $id ) { return get_post_meta( $id, $k, true ); };
 		$name = get_the_title( $id ); $qa = array();
@@ -570,7 +586,9 @@ add_action( 'wp_head', 'nadlan_pjx_faq_jsonld', 30 );
 
 if ( ! function_exists( 'nadlan_pjx_meta_desc' ) ) {
 	function nadlan_pjx_meta_desc( $desc ) {
-		if ( ! is_singular( 'nadlan_project' ) || $desc ) { return $desc; }
+		if ( ! is_singular( 'nadlan_project' ) ) { return $desc; }
+		if ( function_exists( 'nadlan_unit_journey_is_private_lab' ) && nadlan_unit_journey_is_private_lab() ) { return ''; }
+		if ( $desc ) { return $desc; }
 		$id = get_queried_object_id();
 		$g  = function ( $k ) use ( $id ) { return get_post_meta( $id, $k, true ); };
 		$bits = array( 'דירות למכירה ב' . get_the_title( $id ) . ( $g( 'city' ) ? ', ' . $g( 'city' ) : '' ) . '.' );

@@ -30,6 +30,24 @@ if ( ! function_exists( 'nadlan_lead_route_fields' ) ) {
 			'goal'    => '',
 			'message' => '',
 			'source'  => '',
+			'unit'             => '',
+			'floor'            => '',
+			'rooms'            => '',
+			'sqm'              => '',
+			'building'         => '',
+			'availability'     => '',
+			'market_note'      => '',
+			'timeline'         => '',
+			'advisor'          => '',
+			'purchase_intent'  => '',
+			'project_slug'     => '',
+			'project_title'    => '',
+			'project_wp_id'    => '',
+			'direction'        => '',
+			'unit_status'      => '',
+			'consent'          => '',
+			'consent_text'     => '',
+			'consent_recorded' => '',
 		);
 		foreach ( $out as $key => $empty ) {
 			if ( isset( $fields[ $key ] ) && $fields[ $key ] !== '' ) {
@@ -48,6 +66,19 @@ if ( ! function_exists( 'nadlan_lead_route_fields' ) ) {
 		$out['goal']    = sanitize_text_field( $out['goal'] );
 		$out['message'] = sanitize_textarea_field( $out['message'] );
 		$out['source']  = sanitize_text_field( $out['source'] );
+		foreach ( array( 'unit', 'rooms', 'sqm', 'building', 'availability', 'timeline', 'project_title', 'consent_recorded' ) as $text_key ) {
+			$out[ $text_key ] = sanitize_text_field( $out[ $text_key ] );
+		}
+		$out['floor']           = '' !== $out['floor'] ? (int) $out['floor'] : '';
+		$out['market_note']     = sanitize_textarea_field( $out['market_note'] );
+		$out['advisor']         = sanitize_key( $out['advisor'] );
+		$out['purchase_intent'] = ! empty( $out['purchase_intent'] ) ? 1 : '';
+		$out['project_slug']    = sanitize_title( $out['project_slug'] );
+		$out['project_wp_id']   = '' !== $out['project_wp_id'] ? absint( $out['project_wp_id'] ) : '';
+		$out['direction']       = sanitize_key( $out['direction'] );
+		$out['unit_status']     = sanitize_key( $out['unit_status'] );
+		$out['consent']         = ! empty( $out['consent'] ) ? 1 : '';
+		$out['consent_text']    = sanitize_textarea_field( $out['consent_text'] );
 		return $out;
 	}
 }
@@ -122,9 +153,10 @@ if ( ! function_exists( 'nadlan_lead_route_email_body' ) ) {
 		if ( $fields['phone'] !== '' ) { $lines[] = 'טלפון: ' . $fields['phone']; }
 		if ( $fields['email'] !== '' ) { $lines[] = 'אימייל: ' . $fields['email']; }
 		if ( $fields['goal'] !== '' ) { $lines[] = 'נושא: ' . $fields['goal']; }
-		if ( ! empty( $fields['unit'] ) || ! empty( $fields['floor'] ) || ! empty( $fields['advisor'] ) ) {
+		if ( ! empty( $fields['unit'] ) || ! empty( $fields['floor'] ) || ! empty( $fields['advisor'] ) || ! empty( $fields['project_title'] ) ) {
 			$lines[] = '';
 			$lines[] = 'פרטי בחירת דירה:';
+			if ( ! empty( $fields['project_title'] ) ) { $lines[] = 'פרויקט: ' . $fields['project_title']; }
 			if ( ! empty( $fields['unit'] ) ) { $lines[] = 'דירה/קו: ' . $fields['unit']; }
 			if ( ! empty( $fields['building'] ) ) { $lines[] = 'בניין: ' . $fields['building']; }
 			if ( ! empty( $fields['floor'] ) ) { $lines[] = 'קומה: ' . $fields['floor']; }
@@ -134,7 +166,12 @@ if ( ! function_exists( 'nadlan_lead_route_email_body' ) ) {
 			if ( ! empty( $fields['market_note'] ) ) { $lines[] = 'נתוני שוק: ' . $fields['market_note']; }
 			if ( ! empty( $fields['timeline'] ) ) { $lines[] = 'מועד התקדמות: ' . $fields['timeline']; }
 			if ( ! empty( $fields['advisor'] ) ) { $lines[] = 'ליווי מבוקש: ' . $fields['advisor']; }
+			if ( ! empty( $fields['direction'] ) ) { $lines[] = 'כיוון: ' . $fields['direction']; }
+			if ( ! empty( $fields['unit_status'] ) ) { $lines[] = 'סטטוס יחידה: ' . $fields['unit_status']; }
 			if ( ! empty( $fields['purchase_intent'] ) ) { $lines[] = 'סוג פנייה: בדיקת רכישה לא מחייבת'; }
+		}
+		if ( ! empty( $fields['consent'] ) ) {
+			$lines[] = 'הסכמה לפנייה: נקלטה' . ( ! empty( $fields['consent_recorded'] ) ? ' (' . $fields['consent_recorded'] . ' UTC)' : '' );
 		}
 		if ( $fields['message'] !== '' ) {
 			$lines[] = '';
@@ -170,6 +207,23 @@ if ( ! function_exists( 'nadlan_lead_route' ) ) {
 		update_post_meta( $lead_id, 'lead_route_attempted_at', time() );
 
 		$fields = nadlan_lead_route_fields( $lead_id, $fields );
+		if ( $card_id <= 0 ) {
+			/* Lead 6527 (2026-08-13): callers often send only slug/title, and a
+			 * lead about an EXISTING card fell to admin as "no_card". Resolve
+			 * the card here before giving up - the stored slug arrives
+			 * URL-encoded, so decode first. */
+			$slug = rawurldecode( (string) ( $fields['project_slug'] ?? '' ) );
+			if ( '' !== $slug ) {
+				$p = get_page_by_path( $slug, OBJECT, 'nadlan_project' );
+				if ( $p instanceof WP_Post ) { $card_id = (int) $p->ID; }
+			}
+			if ( $card_id <= 0 && '' !== (string) ( $fields['project_title'] ?? '' ) ) {
+				$q = get_posts( array( 'post_type' => 'nadlan_project', 'title' => (string) $fields['project_title'],
+					'numberposts' => 1, 'post_status' => 'publish' ) );
+				if ( $q ) { $card_id = (int) $q[0]->ID; }
+			}
+			if ( $card_id > 0 ) { update_post_meta( $lead_id, 'project_wp_id', $card_id ); }
+		}
 		if ( $card_id <= 0 ) {
 			nadlan_lead_route_mark( $lead_id, 0, 0, '', 'fallback_admin', 'no_card', $context );
 			return array( 'ok' => true, 'status' => 'fallback_admin', 'reason' => 'no_card' );

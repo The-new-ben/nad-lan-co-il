@@ -179,11 +179,24 @@ if ( ! function_exists( 'nadlan_sched_slots_for' ) ) {
 }
 
 /* ---------- helpers ---------- */
+if ( ! function_exists( 'nadlan_sched_private_card' ) ) {
+	/** Opaque boundary shared by slot discovery and booking mutation. */
+	function nadlan_sched_private_card( $card_id ) {
+		$card_id = absint( $card_id );
+		return $card_id > 0 && 'nadlan_project' === get_post_type( $card_id ) && (
+			( function_exists( 'nadlan_unit_journey_is_private_lab' )
+				&& nadlan_unit_journey_is_private_lab( $card_id ) )
+			|| 'private-unit-journey-v2' === (string) get_post_meta( $card_id, '_nadlan_private_unit_journey', true )
+		);
+	}
+}
+
 if ( ! function_exists( 'nadlan_sched_valid_card' ) ) {
 	// the scheduler serves international projects too (owner 2026-07-12)
 	function nadlan_sched_valid_card( $card_id ) {
 		$card_id = absint( $card_id );
 		if ( ! $card_id ) { return 0; }
+		if ( nadlan_sched_private_card( $card_id ) ) { return 0; }
 		$post = get_post( $card_id );
 		return ( $post && in_array( $post->post_type, array( 'nadlan_professional', 'nadlan_project', 'nadlan_property', 'nadlan_intl' ), true ) ) ? $card_id : 0;
 	}
@@ -383,7 +396,11 @@ add_action( 'rest_api_init', function () {
 		'methods'             => 'GET',
 		'permission_callback' => '__return_true',
 		'callback'            => function ( WP_REST_Request $req ) {
-			$card = nadlan_sched_valid_card( (int) $req->get_param( 'card' ) );
+			$requested_card = (int) $req->get_param( 'card' );
+			if ( nadlan_sched_private_card( $requested_card ) ) {
+				return new WP_Error( 'not_found', 'not found', array( 'status' => 404 ) );
+			}
+			$card = nadlan_sched_valid_card( $requested_card );
 			if ( ! $card ) { return new WP_Error( 'invalid', 'invalid card', array( 'status' => 400 ) ); }
 			$data = nadlan_sched_slots_for( $card );
 			$data['kind'] = nadlan_sched_kind_for( $card );
@@ -397,8 +414,12 @@ add_action( 'rest_api_init', function () {
 		'permission_callback' => '__return_true',
 		'callback'            => function ( WP_REST_Request $req ) {
 			$p = $req->get_json_params() ?: array();
+			$requested_card = (int) ( $p['card'] ?? 0 );
+			if ( nadlan_sched_private_card( $requested_card ) ) {
+				return new WP_Error( 'not_found', 'not found', array( 'status' => 404 ) );
+			}
 			if ( '' !== (string) ( $p['company'] ?? '' ) ) { return new WP_Error( 'spam', 'spam', array( 'status' => 400 ) ); }
-			$card  = nadlan_sched_valid_card( (int) ( $p['card'] ?? 0 ) );
+			$card  = nadlan_sched_valid_card( $requested_card );
 			$start = sanitize_text_field( (string) ( $p['start'] ?? '' ) );
 			$name  = sanitize_text_field( (string) ( $p['name'] ?? '' ) );
 			$phone = preg_replace( '/[^0-9+]/', '', (string) ( $p['phone'] ?? '' ) );

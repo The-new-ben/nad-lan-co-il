@@ -14,6 +14,13 @@ plugin-dist/*
 # Installed JS deps — package.json/package-lock.json are the source of truth
 node_modules/
 
+# Private unit-journey acceptance output stays outside the public repository.
+# It may contain the protected URL and unlocked screenshots (never the password).
+reports/private-unit-journey-release/
+reports/local-v2-*.png
+docs/qa/private-unit-journey/
+scripts/__pycache__/
+
 # Credentials & local secrets — NEVER commit
 .env.local
 .env

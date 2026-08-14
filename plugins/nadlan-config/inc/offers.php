@@ -25,6 +25,17 @@ if ( ! function_exists( 'nadlan_offers_card_types' ) ) {
 	function nadlan_offers_card_types() { return array( 'nadlan_property', 'nadlan_project', 'nadlan_professional' ); }
 }
 
+if ( ! function_exists( 'nadlan_offers_private_card' ) ) {
+	function nadlan_offers_private_card( $card_id ) {
+		$card_id = (int) $card_id;
+		return $card_id > 0 && 'nadlan_project' === get_post_type( $card_id ) && (
+			( function_exists( 'nadlan_unit_journey_is_private_lab' )
+				&& nadlan_unit_journey_is_private_lab( $card_id ) )
+			|| 'private-unit-journey-v2' === (string) get_post_meta( $card_id, '_nadlan_private_unit_journey', true )
+		);
+	}
+}
+
 if ( ! function_exists( 'nadlan_offers_for_card' ) ) {
 	function nadlan_offers_for_card( $card_id, $statuses = array( 'live' ) ) {
 		$q = new WP_Query( array(
@@ -65,6 +76,7 @@ if ( ! function_exists( 'nadlan_offers_capture_nonbinding_inquiry' ) ) {
 		$lead_id = (int) $lead_id;
 		$card_id = (int) $card_id;
 		if ( $lead_id <= 0 || $card_id <= 0 || ! nadlan_offers_enabled() ) { return 0; }
+		if ( nadlan_offers_private_card( $card_id ) ) { return 0; }
 		if ( sanitize_key( (string) ( $fields['reservation_state'] ?? '' ) ) !== 'non_binding_inquiry' ) { return 0; }
 		$card = get_post( $card_id );
 		if ( ! $card || ! in_array( $card->post_type, nadlan_offers_card_types(), true ) ) { return 0; }
@@ -115,13 +127,16 @@ add_action( 'rest_api_init', function () {
 		'callback' => function ( WP_REST_Request $req ) {
 			if ( ! nadlan_offers_enabled() ) { return new WP_Error( 'offers_disabled', 'offers_disabled', array( 'status' => 404 ) ); }
 			$p = $req->get_json_params(); if ( ! is_array( $p ) ) { $p = $req->get_params(); }
+			$card_id = absint( $p['card_id'] ?? 0 );
+			if ( nadlan_offers_private_card( $card_id ) ) {
+				return new WP_Error( 'not_found', 'not found', array( 'status' => 404 ) );
+			}
 			if ( ! empty( $p['company'] ) ) { return array( 'ok' => true ); } // honeypot: pretend success
 			$ip = sanitize_text_field( $_SERVER['REMOTE_ADDR'] ?? '0' );
 			$rl = 'nadlan_offer_rl_' . md5( $ip );
 			if ( (int) get_transient( $rl ) >= 5 ) { return new WP_Error( 'rate', 'יותר מדי הצעות, נסו מאוחר יותר.', array( 'status' => 429 ) ); }
 			set_transient( $rl, (int) get_transient( $rl ) + 1, HOUR_IN_SECONDS );
 
-			$card_id = absint( $p['card_id'] ?? 0 );
 			$card = get_post( $card_id );
 			if ( ! $card || ! in_array( $card->post_type, nadlan_offers_card_types(), true ) ) { return new WP_Error( 'bad_card', 'bad_card', array( 'status' => 422 ) ); }
 			if ( get_post_meta( $card_id, 'offers_enabled', true ) !== '1' ) { return new WP_Error( 'offers_off_for_card', 'הצעות אינן פתוחות לנכס זה.', array( 'status' => 403 ) ); }
@@ -181,6 +196,9 @@ add_action( 'rest_api_init', function () {
 		'callback' => function ( WP_REST_Request $req ) {
 			if ( ! nadlan_offers_enabled() ) { return new WP_Error( 'offers_disabled', 'offers_disabled', array( 'status' => 404 ) ); }
 			$card_id = absint( $req['card'] );
+			if ( nadlan_offers_private_card( $card_id ) ) {
+				return new WP_Error( 'not_found', 'not found', array( 'status' => 404 ) );
+			}
 			$mode = get_post_meta( $card_id, 'offers_transparency', true );
 			if ( $mode === 'sealed' ) { return array( 'mode' => 'sealed', 'offers_exist' => count( nadlan_offers_for_card( $card_id ) ) > 0 ); }
 			return array( 'mode' => $mode ?: 'leading_amount', 'leading' => nadlan_offers_leading_amount( $card_id ), 'count' => count( nadlan_offers_for_card( $card_id ) ), 'window_end' => (int) get_post_meta( $card_id, 'offers_window_end', true ) );

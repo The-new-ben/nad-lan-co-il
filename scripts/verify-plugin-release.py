@@ -16,7 +16,10 @@ from __future__ import annotations
 import hashlib
 import json
 import re
+import shutil
+import subprocess
 import sys
+import tempfile
 import zipfile
 from pathlib import Path
 from typing import Optional
@@ -224,17 +227,18 @@ def verify_utopia_integrity_pins(
 
 def verify_utopia_release_markers(
     blobs: dict[str, IndexedPluginBlob],
-    version: str,
+    plugin_version: str,
 ) -> dict[str, object]:
     module = indexed_text(blobs, UTOPIA_MODULE_ARCHIVE_PATH)
-    compact = version.replace(".", "")
     release_literals = sorted(set(re.findall(r"\b1\.72\.\d+\b", module)))
     option_markers = sorted(set(re.findall(r"\bv172\d+\b", module)))
-    if release_literals != [version]:
+    if len(release_literals) != 1:
         fail(
-            f"UTOPIA release literals do not exclusively use {version}: "
+            "UTOPIA must have exactly one internally coherent release literal: "
             f"{release_literals}"
         )
+    module_version = release_literals[0]
+    compact = module_version.replace(".", "")
     expected_option_marker = f"v{compact}"
     if option_markers != [expected_option_marker]:
         fail(
@@ -243,21 +247,61 @@ def verify_utopia_release_markers(
         )
     seed_function = f"nadlan_utopia_seed_{expected_option_marker}"
     if f"function {seed_function}(" not in module:
-        fail(f"missing UTOPIA seed function for {version}")
+        fail(f"missing UTOPIA seed function for {module_version}")
     if (
         f"add_action( 'init', '{seed_function}', 40 );"
         not in module
     ):
-        fail(f"missing UTOPIA init seed hook for {version}")
+        fail(f"missing UTOPIA init seed hook for {module_version}")
     return {
-        "release": version,
+        "module_release": module_version,
+        "plugin_release": plugin_version,
+        "module_release_is_independent": module_version != plugin_version,
         "release_literal_occurrences": len(
-            re.findall(rf"\b{re.escape(version)}\b", module)
+            re.findall(rf"\b{re.escape(module_version)}\b", module)
         ),
         "option_marker": expected_option_marker,
         "option_marker_occurrences": module.count(expected_option_marker),
         "seed_function": seed_function,
     }
+
+
+def verify_source_syntax(zip_path: Path) -> dict[str, int]:
+    """Lint the exact archive bytes after Git-index parity is established."""
+    php = shutil.which("php")
+    node = shutil.which("node")
+    if not php or not node:
+        fail("php and node executables are required for complete source syntax checks")
+    with tempfile.TemporaryDirectory(prefix="nadlan-plugin-verify-") as temp_dir:
+        root = Path(temp_dir)
+        with zipfile.ZipFile(zip_path) as archive:
+            archive.extractall(root)
+        plugin = root / "nadlan-config"
+        php_files = sorted(plugin.rglob("*.php"))
+        js_files = sorted(plugin.rglob("*.js"))
+        for path in php_files:
+            result = subprocess.run(
+                [php, "-l", str(path)],
+                capture_output=True,
+                text=True,
+                encoding="utf-8",
+                errors="replace",
+            )
+            if result.returncode != 0:
+                detail = (result.stderr or result.stdout).strip().splitlines()
+                fail(f"PHP lint failed for {path.relative_to(root)}: {detail[-1] if detail else 'unknown error'}")
+        for path in js_files:
+            result = subprocess.run(
+                [node, "--check", str(path)],
+                capture_output=True,
+                text=True,
+                encoding="utf-8",
+                errors="replace",
+            )
+            if result.returncode != 0:
+                detail = (result.stderr or result.stdout).strip().splitlines()
+                fail(f"JavaScript syntax failed for {path.relative_to(root)}: {detail[-1] if detail else 'unknown error'}")
+    return {"php_files": len(php_files), "js_files": len(js_files)}
 
 
 def verify_zip(
@@ -302,6 +346,7 @@ def main() -> None:
         )
     markers = verify_utopia_release_markers(blobs, version)
     zip_result, zip_path = verify_zip(version, blobs)
+    syntax = verify_source_syntax(zip_path)
     integrity = verify_utopia_integrity_pins(blobs, zip_path)
     print(
         json.dumps(
@@ -311,6 +356,7 @@ def main() -> None:
                 "versions": versions,
                 "utopia_release_markers": markers,
                 "utopia_integrity_pins": integrity,
+                "syntax": syntax,
                 "zip": zip_result,
             },
             ensure_ascii=False,

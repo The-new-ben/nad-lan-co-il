@@ -1,0 +1,113 @@
+{
+  "ok": true,
+  "check": "einstein-tower-hebrew-editorial-readiness",
+  "generated_at": "2026-08-14",
+  "content_source": "docs/wp-drafts/einstein-tower-he-content.html",
+  "content_contract": "docs/wp-drafts/einstein-tower-he-content-contract.json",
+  "publication_manifest": "docs/plans/einstein-tower-publication-manifest.json",
+  "project_contract_id": "einstein-tower-6885-32",
+  "wordpress_target": {
+    "id": 4867,
+    "slug": "einstein-tower",
+    "action": "update_in_place_only"
+  },
+  "metrics": {
+    "bytes": 50171,
+    "visible_words": 3778,
+    "h1_count": 0,
+    "h2_count": 18,
+    "faq_count": 9,
+    "global_demonstration_label_count": 0,
+    "external_link_count": 11,
+    "fragment_link_count": 7,
+    "yoast_title_chars": 42,
+    "yoast_description_chars": 149
+  },
+  "encoding": {
+    "utf8": true,
+    "bom": false,
+    "hebrew_present": true,
+    "replacement_character_count": 0,
+    "c1_control_count": 0,
+    "em_dash_count": 0,
+    "en_dash_count": 0
+  },
+  "public_copy": {
+    "internal_english_terms_found": [],
+    "forbidden_hebrew_phrases_found": [],
+    "legacy_showroom_roots_found": [],
+    "price_claims_without_value": true,
+    "invented_inventory_count": 0,
+    "current_future_separated": true,
+    "straight_line_route_separated": true,
+    "facility_claims_without_source": 0,
+    "interior_and_facility_demo_decision_id": "OWNER-2026-08-14-EINSTEIN-INTERIOR-FACILITIES-DEMO"
+  },
+  "hashes": {
+    "content_sha256": "e876dd422440e1aa2403ff0fac3c89722a3cc106fc366f714699bed1c030a25f",
+    "content_contract_sha256": "025dd65cabd0df02959f8e37535e5321f2337fdff35d1629fb85cc820910bdc4",
+    "publication_manifest_sha256_before_report_reference": "a5a3acf3eeb541d017e0fec6e69106af346aa2d960edf7aa70753306c41e4b49"
+  },
+  "link_checks": {
+    "checked_at": "2026-08-14",
+    "method": "HTTP GET with redirect and bounded response",
+    "success_2xx_or_206": 7,
+    "official_source_access_control_403": 2,
+    "results": [
+      {
+        "source_id": "S001",
+        "status": 200,
+        "content_type": "text/html; charset=utf-8"
+      },
+      {
+        "source_id": "S002",
+        "status": 206,
+        "content_type": "application/pdf"
+      },
+      {
+        "source_id": "S004",
+        "status": 200,
+        "content_type": "application/pdf"
+      },
+      {
+        "source_id": "S006",
+        "status": 200,
+        "content_type": "application/json; charset=UTF-8"
+      },
+      {
+        "source_id": "S009",
+        "status": 403,
+        "outcome": "official NTA page denied automated retrieval; URL retained from frozen browser-verified source register"
+      },
+      {
+        "source_id": "S010",
+        "status": 403,
+        "outcome": "official NTA page denied automated retrieval; URL retained from frozen browser-verified source register"
+      },
+      {
+        "source_id": "S012",
+        "status": 200,
+        "content_type": "text/html; charset=utf-8"
+      },
+      {
+        "source_id": "S013",
+        "status": 200,
+        "content_type": "text/html; charset=utf-8"
+      },
+      {
+        "source_id": "S017",
+        "status": 200,
+        "content_type": "application/json; charset=UTF-8"
+      }
+    ]
+  },
+  "publication_ready": false,
+  "publication_blockers": [
+    "shared flagship-v3 renderer is green but not deployed",
+    "WordPress REST private-stage payload has not been built",
+    "private password-protected stage and authenticated readback have not run",
+    "responsive visual, accessibility and performance reports have not run",
+    "post 4867 before-snapshot and rollback artifact do not exist"
+  ],
+  "notes": "The editorial dossier is ready and intentionally has no H1 or demonstration label because the shared flagship-v3 renderer owns the one visible page H1 and one global demonstration label. It uses no legacy nlv2 or nlps root and creates no pseudo-units. Publication remains fail-closed until the flagship-v3 draft and staging gates exist."
+}

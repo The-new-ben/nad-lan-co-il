@@ -35,19 +35,26 @@ add_filter( 'query_vars', function ( $v ) { $v[] = 'nadlan_site_map'; return $v;
 
 if ( ! function_exists( 'nadlan_site_map_counts' ) ) {
 	function nadlan_site_map_counts() {
-		$c = get_transient( 'nadlan_site_map_counts' );
+		$c = get_transient( 'nadlan_site_map_counts_v2' );
 		if ( is_array( $c ) ) { return $c; }
 		$get = function ( $pt ) { $n = wp_count_posts( $pt ); return isset( $n->publish ) ? (int) $n->publish : 0; };
 		$c = array(
-			'projects' => $get( 'nadlan_project' ),
+			'projects' => function_exists( 'nadlan_unit_journey_public_project_count' )
+				? nadlan_unit_journey_public_project_count()
+				: $get( 'nadlan_project' ),
 			'props'    => $get( 'nadlan_property' ),
 			'pros'     => $get( 'nadlan_professional' ),
 			'terms'    => $get( 'nadlan_term' ),
 		);
-		set_transient( 'nadlan_site_map_counts', $c, 6 * HOUR_IN_SECONDS );
+		set_transient( 'nadlan_site_map_counts_v2', $c, 6 * HOUR_IN_SECONDS );
 		return $c;
 	}
 }
+
+add_action( 'save_post_nadlan_project', function () {
+	delete_transient( 'nadlan_site_map_counts' );
+	delete_transient( 'nadlan_site_map_counts_v2' );
+} );
 
 if ( ! function_exists( 'nadlan_site_map_strings' ) ) {
 	function nadlan_site_map_strings( $lang ) {

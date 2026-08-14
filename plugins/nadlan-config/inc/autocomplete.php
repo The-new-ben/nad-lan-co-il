@@ -16,7 +16,7 @@ if ( ! defined( 'ABSPATH' ) ) { exit; }
 
 if ( ! function_exists( 'nadlan_cities_index' ) ) {
 	function nadlan_cities_index( $force = false ) {
-		$key = 'nadlan_cities_idx';
+		$key = 'nadlan_cities_idx_v2';
 		$idx = $force ? null : get_transient( $key );
 		if ( is_array( $idx ) ) { return $idx; }
 		global $wpdb;
@@ -26,6 +26,10 @@ if ( ! function_exists( 'nadlan_cities_index' ) ) {
 			 WHERE pm.meta_key='city' AND pm.meta_value<>''
 			 AND p.post_status='publish'
 			 AND p.post_type IN ('nadlan_property','nadlan_project','nadlan_professional')
+			 AND (p.post_type<>'nadlan_project' OR NOT EXISTS (
+				 SELECT 1 FROM {$wpdb->postmeta} private_v2
+				 WHERE private_v2.post_id=p.ID AND private_v2.meta_key='_nadlan_private_unit_journey' AND private_v2.meta_value='private-unit-journey-v2'
+			 ))
 			 GROUP BY pm.meta_value ORDER BY n DESC LIMIT 5000", ARRAY_A );
 		$idx = array();
 		foreach ( (array) $rows as $r ) { $idx[] = array( 'name' => $r['city'], 'count' => (int) $r['n'] ); }
@@ -67,6 +71,7 @@ add_action( 'rest_api_init', function () {
 add_action( 'save_post', function ( $post_id, $post ) {
 	if ( in_array( ( $post->post_type ?? '' ), array( 'nadlan_property', 'nadlan_project', 'nadlan_professional' ), true ) ) {
 		delete_transient( 'nadlan_cities_idx' );
+		delete_transient( 'nadlan_cities_idx_v2' );
 	}
 }, 99, 2 );
 

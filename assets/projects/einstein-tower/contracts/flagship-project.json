@@ -1,0 +1,915 @@
+{
+  "schema": "nadlan-flagship-project-package/v1",
+  "generated_at": "2026-08-14",
+  "release_state": "private_stage",
+  "project_contract_id": "einstein-tower-6885-32",
+  "canonical": {
+    "post_id": 4867,
+    "slug": "einstein-tower",
+    "public_release_enabled": false
+  },
+  "owner_decision_ids": [
+    "OWNER-2026-08-13-DIRECTION-DEMO",
+    "OWNER-2026-08-13-MODEL-FIRST-SHOWROOM",
+    "OWNER-2026-08-13-VISUAL-PLAYGROUND",
+    "OWNER-2026-08-14-EINSTEIN-ILLUSTRATIVE-MASSING",
+    "OWNER-2026-08-14-EINSTEIN-INTERIOR-FACILITIES-DEMO"
+  ],
+  "contracts": {
+    "identity": {
+      "schema": "nadlan-project-identity-contract/v1",
+      "project_contract_id": "einstein-tower-6885-32",
+      "source_id": "einstein-tower-6885-32",
+      "canonical_post_id": 4867,
+      "canonical_slug": "einstein-tower",
+      "parcel": "6885/32",
+      "locale": "he",
+      "inventory_contract": {
+        "state": "not_supplied",
+        "decision_grade": false,
+        "effective_at": "2026-08-14",
+        "source_ids": [
+          "S001",
+          "S002"
+        ],
+        "note": "אין מלאי דירות מזוהה, מתוארך ומאומת שמחובר לפרויקט; המודל אינו יוצר דירות או זמינות."
+      }
+    },
+    "representations": {
+      "schema": "nadlan-project-representation-registry/v1",
+      "project_contract_id": "einstein-tower-6885-32",
+      "calibration": {
+        "calibration_id": "einstein-33a-illustrative-massing-v1",
+        "north_degrees": 0
+      },
+      "default_orbit": "35deg 64deg auto",
+      "default_target": "0m 43m 0m",
+      "representations": [
+        {
+          "role": "model_hd",
+          "url": "https://nad-lan.co.il/wp-content/plugins/nadlan-config/assets/flagship-v3/projects/einstein-tower/model-hd.glb",
+          "sha256": "71fcca8a0f58743b5f2257684c79957fbbff8e0169f5438bdc78231f27968a53",
+          "representation_kind": "owner_approved_illustration",
+          "decision_grade": false,
+          "owner_decision_id": "OWNER-2026-08-14-EINSTEIN-ILLUSTRATIVE-MASSING",
+          "effective_at": "2026-08-14T00:00:00+03:00",
+          "expires_at": "2027-08-14T00:00:00+03:00"
+        },
+        {
+          "role": "model_lod",
+          "url": "https://nad-lan.co.il/wp-content/plugins/nadlan-config/assets/flagship-v3/projects/einstein-tower/model-lod.glb",
+          "sha256": "485161974b6d343956d249d821c893b72a59678e8e8ee2810c90cee5f23079ce",
+          "representation_kind": "owner_approved_illustration",
+          "decision_grade": false,
+          "owner_decision_id": "OWNER-2026-08-14-EINSTEIN-ILLUSTRATIVE-MASSING",
+          "effective_at": "2026-08-14T00:00:00+03:00",
+          "expires_at": "2027-08-14T00:00:00+03:00"
+        },
+        {
+          "role": "poster",
+          "url": "https://nad-lan.co.il/wp-content/plugins/nadlan-config/assets/flagship-v3/projects/einstein-tower/poster.webp",
+          "sha256": "5588d09e28f95ac5d6655626027c3ad41f17c5c5c78153ecb2ba138821aa8c85",
+          "representation_kind": "owner_approved_illustration",
+          "decision_grade": false,
+          "owner_decision_id": "OWNER-2026-08-14-EINSTEIN-ILLUSTRATIVE-MASSING",
+          "effective_at": "2026-08-14T00:00:00+03:00",
+          "expires_at": "2027-08-14T00:00:00+03:00"
+        }
+      ]
+    },
+    "visual": {
+      "schema": "nadlan-visual-playground/v1",
+      "project_contract_id": "einstein-tower-6885-32",
+      "locale": "he",
+      "decision": {
+        "owner_decision_id": "OWNER-2026-08-13-VISUAL-PLAYGROUND",
+        "approved_by": "site_owner",
+        "decision_grade": false,
+        "effective_at": "2026-08-13T00:00:00+03:00",
+        "expires_at": "2026-12-15T23:59:59+02:00"
+      },
+      "comments_delivery": "prepared_no_write",
+      "writes_enabled": false,
+      "tools": [
+        {
+          "id": "view",
+          "preview_kind": "schematic_live_map",
+          "title": "מבט וסביבה",
+          "description": "פותחים מפה חזותית ומשווים בין המקום כיום, עבודות פעילות והתשתיות המתוכננות.",
+          "open_label": "לפתיחת המבט",
+          "disclosure": "המחשה מאושרת",
+          "decision_grade": false
+        },
+        {
+          "id": "interior",
+          "preview_kind": "first_person_door",
+          "title": "פנים ומרחבים",
+          "description": "נכנסים לארבע סצנות חזותיות: שני חללי פנים ושני מרחבים משותפים, כולל נקודות עניין selectable.",
+          "open_label": "לכניסה לחללים",
+          "disclosure": "המחשה מאושרת",
+          "decision_grade": false
+        },
+        {
+          "id": "design",
+          "preview_kind": "illustrative_plan_drag",
+          "title": "עיצוב הדירה",
+          "description": "גוררים ריהוט על תוכנית המחשה ובודקים זרימה, אחסון והעדפות לפני חיבור תוכנית מכר.",
+          "open_label": "לפתיחת שולחן העיצוב",
+          "disclosure": "המחשה מאושרת",
+          "decision_grade": false
+        },
+        {
+          "id": "comments",
+          "preview_kind": "visual_annotation_request",
+          "title": "הערות על המודל",
+          "description": "מסמנים נקודה ושומרים טיוטת הערה מקומית; במצב הפרטי הזה אין שליחה חיצונית.",
+          "open_label": "לפתיחת ההערות",
+          "disclosure": "המחשה מאושרת",
+          "decision_grade": false
+        }
+      ]
+    },
+    "buyer_decision": {
+      "schema": "nadlan-buyer-decision-contract/v1",
+      "project_contract_id": "einstein-tower-6885-32",
+      "locale": "he",
+      "effective_at": "2026-08-14",
+      "labels": {
+        "facts": "עובדות מפתח",
+        "context": "מה יש סביב הפרויקט",
+        "sea": "הים",
+        "education": "חינוך",
+        "transit": "תחבורה",
+        "construction": "בנייה ונוף",
+        "overseas_buyer": "רוכש מחו״ל",
+        "sources": "מקורות",
+        "current": "כיום",
+        "future": "בעתיד",
+        "source": "מקור"
+      },
+      "sources": [
+        {
+          "id": "S001",
+          "label": "EINSTEIN TOWER",
+          "effective_at": "2026-08-14",
+          "url": "https://www.hagag-group.co.il/projects/ResidentProjects/einstein_tower"
+        },
+        {
+          "id": "S002",
+          "label": "2025 annual financial report",
+          "effective_at": "2025-12-31",
+          "url": "https://www.hagag-group.co.il/Uploads/2026/04/rln33jws7WiMM6.pdf"
+        },
+        {
+          "id": "S004",
+          "label": "Architectural-design committee protocol 20-0005, plan 4695(1)",
+          "effective_at": "2020-04-01",
+          "url": "https://www.tel-aviv.gov.il/Residents/Development/DocLib/%D7%A4%D7%A8%D7%95%D7%98%D7%95%D7%A7%D7%95%D7%9C%2020-0005%20%D7%9E%D7%99%D7%95%D7%9D%201-4-20.pdf"
+        },
+        {
+          "id": "S006",
+          "label": "Address points on block 6885 parcel 32",
+          "effective_at": "2026-08-13",
+          "url": "https://gisn.tel-aviv.gov.il/arcgis/rest/services/IView2/MapServer/527/query?f=json&where=ms_gush%3D6885%20AND%20ms_chelka%3D32&outFields=t_ktovet_melea%2Ct_rechov%2Cms_bayit%2Cknisa%2Ct_bayit_veknisa%2Cms_gush%2Cms_chelka%2Clon%2Clat%2Cdate_import&returnGeometry=true&outSR=2039"
+        },
+        {
+          "id": "S009",
+          "label": "Green Line",
+          "effective_at": "2026-08-14",
+          "url": "https://www.nta.co.il/light-rail/%D7%94%D7%A7%D7%95-%D7%94%D7%99%D7%A8%D7%95%D7%A7"
+        },
+        {
+          "id": "S010",
+          "label": "Infrastructure works at Levi Eshkol–Einstein junction",
+          "effective_at": "2026-07-16",
+          "url": "https://www.nta.co.il/%D7%97%D7%93%D7%A9%D7%95%D7%AA/%D7%A2%D7%91%D7%95%D7%93%D7%95%D7%AA-%D7%AA%D7%A9%D7%AA%D7%99%D7%AA-%D7%91%D7%A9%D7%98%D7%97-%D7%94%D7%90%D7%AA%D7%A8-%D7%91%D7%A6%D7%95%D7%9E%D7%AA-%D7%A9%D7%93%D7%A8%D7%95%D7%AA-%D7%9C%D7%95%D7%99-%D7%90%D7%A9%D7%9B%D7%95%D7%9C-%D7%90%D7%99%D7%99%D7%A0%D7%A9%D7%98%D7%99%D7%99%D7%9F-16726/"
+        },
+        {
+          "id": "S012",
+          "label": "Sde Dov district",
+          "effective_at": "2026-08-14",
+          "url": "https://www.tel-aviv.gov.il/Residents/Development/Pages/SdeDov.aspx"
+        },
+        {
+          "id": "S013",
+          "label": "Registration for municipal education frameworks",
+          "effective_at": "2026-08-14",
+          "url": "https://www.tel-aviv.gov.il/Residents/Education/Pages/Registration.aspx"
+        },
+        {
+          "id": "S014",
+          "label": "Public elementary-school zone at parcel-32 address point",
+          "effective_at": "2026-06-10",
+          "url": "https://gisn.tel-aviv.gov.il/arcgis/rest/services/IView2/MapServer/793/query?f=json&geometry=180210.96%2C668804.12&geometryType=esriGeometryPoint&inSR=2039&spatialRel=esriSpatialRelIntersects&outFields=Shem_Moasad%2CMasad%2CZerem_Tichnun%2Cdate_import&returnGeometry=false"
+        },
+        {
+          "id": "S015",
+          "label": "Schools within 2 km of parcel-32 address point, 2026/27 layer",
+          "effective_at": "2026-07-31",
+          "url": "https://gisn.tel-aviv.gov.il/arcgis/rest/services/IView2/MapServer/769/query?f=json&geometry=180210.96%2C668804.12&geometryType=esriGeometryPoint&inSR=2039&spatialRel=esriSpatialRelIntersects&distance=2000&units=esriSRUnit_Meter&outFields=shem_mosad%2Cshem_rechov%2Cms_bait%2Ct_shlav_chinuch%2Ct_zerem%2Ct_sug_chinuch%2Cdate_import%2Cteur_shnat_limud&returnGeometry=true&outSR=2039&resultRecordCount=200"
+        },
+        {
+          "id": "S016",
+          "label": "Kindergartens within 1.2 km of parcel-32 address point, 2026/27 layer",
+          "effective_at": "2026-07-31",
+          "url": "https://gisn.tel-aviv.gov.il/arcgis/rest/services/IView2/MapServer/768/query?f=json&geometry=180210.96%2C668804.12&geometryType=esriGeometryPoint&inSR=2039&spatialRel=esriSpatialRelIntersects&distance=1200&units=esriSRUnit_Meter&outFields=shem_mosad%2Cshem_rechov%2Cms_bait%2Ct_shlav_chinuch%2Ct_zerem%2Ct_sug_chinuch%2Cdate_import%2Cteur_shnat_limud%2Cshem_kitat_gan&returnGeometry=true&outSR=2039&resultRecordCount=200"
+        },
+        {
+          "id": "S017",
+          "label": "Municipal beach polygons within 4 km of parcel-32 address point",
+          "effective_at": "2021-06-28",
+          "url": "https://gisn.tel-aviv.gov.il/arcgis/rest/services/IView2/MapServer/579/query?f=json&geometry=180210.96%2C668804.12&geometryType=esriGeometryPoint&inSR=2039&spatialRel=esriSpatialRelIntersects&distance=4000&units=esriSRUnit_Meter&outFields=beach_name%2Caccessibility_desc%2Cdate_import&returnGeometry=true&outSR=2039"
+        },
+        {
+          "id": "S018",
+          "label": "Public notice: groundwater lowering for Einstein lot 33, Tel Aviv",
+          "effective_at": "2021-03-11",
+          "url": "https://www.gov.il/BlobFolder/reports/introduction/he/licensing-facilities_hahdara_einstein-ta.pdf"
+        },
+        {
+          "id": "S020",
+          "label": "Bareket Capital financing for Hagag purchase groups on Einstein Street",
+          "effective_at": "2026-01-20",
+          "url": "https://www.calcalist.co.il/real-estate/article/b1hfsjpb11x"
+        },
+        {
+          "id": "IVS002",
+          "label": "Gallery 01 close tower",
+          "effective_at": "2026-08-14",
+          "url": "https://www.hagag-group.co.il/Uploads/2023/01/ZNww5uByuTRPva.jpg"
+        },
+        {
+          "id": "IVS005",
+          "label": "Architectural design plan 4695(1) protocol 20-0005",
+          "effective_at": "2020-04-01",
+          "url": "https://www.tel-aviv.gov.il/Residents/Development/DocLib/%D7%A4%D7%A8%D7%95%D7%98%D7%95%D7%A7%D7%95%D7%9C%2020-0005%20%D7%9E%D7%99%D7%95%D7%9D%201-4-20.pdf"
+        },
+        {
+          "id": "IVS008",
+          "label": "Main project permit record oid 9945",
+          "effective_at": "2026-07-09",
+          "url": "https://gisn.tel-aviv.gov.il/arcgis/rest/services/IView2/MapServer/772/query?f=json&where=oid_permit%3D9945&outFields=*&returnGeometry=true&outSR=4326"
+        },
+        {
+          "id": "IVS009",
+          "label": "Excavation and shoring record oid 6443",
+          "effective_at": "2024-03-25",
+          "url": "https://gisn.tel-aviv.gov.il/arcgis/rest/services/IView2/MapServer/772/query?f=json&where=oid_permit%3D6443&outFields=*&returnGeometry=true&outSR=4326"
+        }
+      ],
+      "facts": [
+        {
+          "id": "identity",
+          "label": "הישות המדויקת",
+          "value": "EINSTEIN TOWER / איינשטיין 33א׳",
+          "truth_state": "verified",
+          "source_ids": [
+            "S001",
+            "S002"
+          ]
+        },
+        {
+          "id": "parcel",
+          "label": "גוש וחלקה",
+          "value": "6885/32",
+          "truth_state": "verified",
+          "source_ids": [
+            "S002",
+            "S006"
+          ]
+        },
+        {
+          "id": "program",
+          "label": "תוכנית הבינוי",
+          "value": "215 דירות · מגדל 28 קומות · שני מבנים בני 13 קומות · בסיס מסחרי דו-מפלסי",
+          "truth_state": "verified",
+          "source_ids": [
+            "S002",
+            "IVS008"
+          ]
+        },
+        {
+          "id": "permit",
+          "label": "רישוי עירוני",
+          "value": "היתר 20241734 · 9 ביולי 2026 · שדה שלב גולמי: בתהליך היתר",
+          "truth_state": "current_snapshot",
+          "source_ids": [
+            "IVS008"
+          ]
+        },
+        {
+          "id": "enabling-permit",
+          "label": "היתר עבודות הכנה",
+          "value": "20240229 · דיפון, חפירה, ביסוס ורצפה ראשונה",
+          "truth_state": "verified",
+          "source_ids": [
+            "IVS009"
+          ]
+        },
+        {
+          "id": "completion",
+          "label": "הערכת החברה",
+          "value": "רבעון שלישי 2030",
+          "truth_state": "reported",
+          "source_ids": [
+            "S002"
+          ]
+        }
+      ],
+      "context_map": {
+        "title": "המקום כיום מול התמונה העתידית",
+        "layers": [
+          {
+            "id": "current",
+            "label": "כיום",
+            "items": [
+              {
+                "id": "current-corner",
+                "label": "איינשטיין–לוי אשכול",
+                "summary": "הפרויקט מזוהה בפינת הרחובות ועל חלקה 6885/32.",
+                "state": "current",
+                "source_ids": [
+                  "S001",
+                  "S006"
+                ],
+                "lat": 32.11173581823549,
+                "lng": 34.78843259223059
+              },
+              {
+                "id": "current-permit",
+                "label": "רישוי הפרויקט",
+                "summary": "רשומת העירייה מתעדת היתר 20241734 מתאריך 9 ביולי 2026 לצד שדה שלב גולמי בתהליך היתר.",
+                "state": "current",
+                "source_ids": [
+                  "IVS008"
+                ]
+              },
+              {
+                "id": "current-transit-works",
+                "label": "עבודות בצומת",
+                "summary": "נת״ע תיעדה עבודות תשתית בצומת ב-16 ביולי 2026.",
+                "state": "observed",
+                "source_ids": [
+                  "S010"
+                ]
+              }
+            ]
+          },
+          {
+            "id": "future",
+            "label": "בעתיד",
+            "items": [
+              {
+                "id": "future-green-line",
+                "label": "הקו הירוק",
+                "summary": "תחנות איינשטיין ולוי אשכול מופיעות בתכנון; אין כאן מועד הפעלה למקטע הצפוני.",
+                "state": "planned",
+                "source_ids": [
+                  "S009"
+                ]
+              },
+              {
+                "id": "future-sde-dov",
+                "label": "רובע שדה דב",
+                "summary": "הרובע המערבי מוסיף בנייה, רחובות, פארקים ומסחר ומשנה את סביבת ההחלטה לאורך זמן.",
+                "state": "planned",
+                "source_ids": [
+                  "S012"
+                ]
+              },
+              {
+                "id": "future-public-realm",
+                "label": "המרחב הציבורי במגרש",
+                "summary": "התכנון כולל גג מסחרי פעיל ושטחים פתוחים ציבוריים; המימוש המדויק ייבדק לפי מסמכי ביצוע.",
+                "state": "planned",
+                "source_ids": [
+                  "IVS005"
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "sea": {
+        "label": "חוף תל ברוך",
+        "distance_m": 975,
+        "method": "straight_line_to_tel_baruch_beach_polygon",
+        "method_label": "קו ישר מנקודת איינשטיין 16א׳ אל פוליגון החוף העירוני",
+        "source_ids": [
+          "S017"
+        ]
+      },
+      "education": {
+        "snapshot_label": "שכבות עירוניות שנבדקו לנקודת איינשטיין 16א׳",
+        "school_year": "2026/27",
+        "schools": [
+          {
+            "name": "נופי ים",
+            "distance_m": 362,
+            "method": "קו ישר מהנקודה העירונית; אזור רישום נוכחי",
+            "source_ids": [
+              "S013",
+              "S014",
+              "S015"
+            ]
+          }
+        ],
+        "kindergartens": [
+          {
+            "name": "מתחם גנים בורלא 44",
+            "distance_m": 250,
+            "method": "קו ישר מהנקודה העירונית",
+            "source_ids": [
+              "S013",
+              "S016"
+            ]
+          },
+          {
+            "name": "מתחם גנים זינגר 1",
+            "distance_m": 316,
+            "method": "קו ישר מהנקודה העירונית",
+            "source_ids": [
+              "S013",
+              "S016"
+            ]
+          },
+          {
+            "name": "מתחם גנים עמיחי 1",
+            "distance_m": 381,
+            "method": "קו ישר מהנקודה העירונית",
+            "source_ids": [
+              "S013",
+              "S016"
+            ]
+          }
+        ]
+      },
+      "transit": {
+        "line_label": "הקו הירוק · תחנות איינשטיין ולוי אשכול",
+        "current_works": {
+          "state": "observed",
+          "summary": "עבודות תשתית תועדו בצומת לוי אשכול–איינשטיין ביולי 2026.",
+          "source_ids": [
+            "S010"
+          ]
+        },
+        "planned_service": {
+          "state": "planned",
+          "summary": "השירות במקטע הצפוני עתידי; המקור שנבדק אינו מספק מועד פתיחה מחייב.",
+          "operating_date": null,
+          "source_ids": [
+            "S009"
+          ]
+        }
+      },
+      "construction_and_views": {
+        "current_state": {
+          "label": "היתר ומצב ביצוע",
+          "summary": "היתר 20241734 מתועד ביולי 2026; דיווח החברה מסוף 2025 מתעד חפירה ודיפון. אין הסקת קצב ביצוע נוכחי.",
+          "state": "current_snapshot",
+          "source_ids": [
+            "IVS008",
+            "IVS009",
+            "S002"
+          ]
+        },
+        "future_context": {
+          "label": "בנייה סביבתית",
+          "summary": "שדה דב, הקו הירוק והמרחב הציבורי המתוכנן משנים את הנגישות, הבינוי והפתיחות סביב הפרויקט.",
+          "state": "planned",
+          "source_ids": [
+            "S009",
+            "S012",
+            "IVS005"
+          ]
+        },
+        "unit_view_state": {
+          "label": "נוף מדירה",
+          "summary": "כלי המבט פתוח להמחשה סביבתית; הוא אינו מייחס נוף לדירה, קומה או חזית מסוימת.",
+          "state": "owner_approved_illustration",
+          "source_ids": [
+            "S001",
+            "IVS002"
+          ]
+        }
+      },
+      "overseas_buyer": {
+        "title": "מסלול החלטה לרוכש מחו״ל",
+        "purchase_structure": {
+          "label": "מבנה העסקה",
+          "summary": "הדוח מתאר פרויקט במסגרת קבוצת רכישה; ההחלטה צריכה להתחיל בזיהוי הזכות וההסכמים המדויקים.",
+          "source_ids": [
+            "S002",
+            "S020"
+          ]
+        },
+        "steps": [
+          {
+            "id": "identity",
+            "title": "מאמתים זהות",
+            "summary": "מצליבים את הזכות עם איינשטיין 33א׳, גוש 6885 חלקה 32 והכתובת החוזית.",
+            "source_ids": [
+              "S002",
+              "S006"
+            ]
+          },
+          {
+            "id": "permit",
+            "title": "קוראים את תיק הרישוי",
+            "summary": "מצרפים היתר 20241734, היתר עבודות ההכנה והתוכניות העדכניות לבדיקה מקצועית.",
+            "source_ids": [
+              "IVS008",
+              "IVS009"
+            ]
+          },
+          {
+            "id": "economics",
+            "title": "בונים עלות מלאה",
+            "summary": "מחברים מחיר זכות ספציפית, תשלומים עתידיים, הצמדה, מסים, מימון ועלויות מקצועיות לפני החלטה.",
+            "source_ids": [
+              "S002",
+              "S020"
+            ]
+          },
+          {
+            "id": "environment",
+            "title": "בודקים חיים במקום",
+            "summary": "משווים חינוך, חוף, עבודות תחבורה ובינוי עתידי מול סדר היום והאופק של הרוכש.",
+            "source_ids": [
+              "S009",
+              "S010",
+              "S012",
+              "S013",
+              "S017"
+            ]
+          }
+        ]
+      },
+      "primary_action": {
+        "label": "למסלול ההחלטה המלא",
+        "target_section": "overseas-buyer"
+      }
+    },
+    "experiences": {
+      "schema": "nadlan-project-experience-registry/v1",
+      "project_contract_id": "einstein-tower-6885-32",
+      "locale": "he",
+      "mapping_crosswalk_sha256": "42072325c22a87b40b8bb6bfc6a09e29beac01ab84fccbe403a6c0d0abddfb9a",
+      "mapping_anchor_summary_sha256": "dadc53333e2ca1ac78daae2610c4315559659510dc4b23774caaca5442e6889c",
+      "heading": "נכנסים לפרויקט",
+      "back_label": "חזרה לפרויקט",
+      "previous_label": "הקודם",
+      "next_label": "הבא",
+      "decision": {
+        "owner_decision_id": "OWNER-2026-08-14-EINSTEIN-INTERIOR-FACILITIES-DEMO",
+        "approved_by": "site_owner",
+        "representation_kind": "owner_approved_illustration",
+        "decision_grade": false,
+        "effective_at": "2026-08-14T00:00:00+03:00",
+        "expires_at": "2027-08-14T00:00:00+03:00"
+      },
+      "scenes": [
+        {
+          "id": "living",
+          "asset_id": "representative-apartment-living-v1",
+          "kind": "interior",
+          "title": "חלל מגורים",
+          "summary": "חלל מגורים ואירוח חזותי לבדיקת תנועה, אור, אחסון וקשר למרפסת.",
+          "open_label": "להיכנס לחלל",
+          "preview_url": "https://nad-lan.co.il/wp-content/plugins/nadlan-config/assets/flagship-v3/projects/einstein-tower/experience/representative-apartment-living-v1.webp",
+          "fullscreen_url": "https://nad-lan.co.il/wp-content/plugins/nadlan-config/assets/flagship-v3/projects/einstein-tower/experience/representative-apartment-living-v1.webp",
+          "mapping_state": "owner_approved_illustrative_mapping",
+          "mapping_owner_decision_id": "OWNER-2026-08-14-EINSTEIN-INTERIOR-FACILITIES-DEMO",
+          "model_hotspot_group": "representative-interior-concept",
+          "model_component": "Tower_28_Level_Massing;Glass_Terrace_Strips;Champagne_Fins",
+          "placement_source_refs": [
+            "IVS002",
+            "IVS001"
+          ],
+          "placement_basis": "Source constrains tower glass-facade zone; owner authorizes one shared mid-height clickable interior-gallery anchor just outside the current glass strip",
+          "placement_confidence": {
+            "zone": 0.68,
+            "exact_point": 0.18
+          },
+          "placement_ambiguity": "No unit floor room boundary view direction or cardinal facade is established",
+          "representation_kind": "owner_approved_illustration",
+          "decision_grade": false,
+          "source_ids": [],
+          "model_hotspot": {
+            "position": "16m 34.7m 5.8m",
+            "normal": "0 0 1",
+            "calibration_id": "einstein-33a-illustrative-massing-v1"
+          },
+          "image_hotspots": [
+            {
+              "id": "living-flow",
+              "x_percent": 38,
+              "y_percent": 58,
+              "label": "ציר תנועה",
+              "detail": "גררו את המבט לאורך מסלול הכניסה, האירוח והיציאה למרחב החוץ."
+            },
+            {
+              "id": "living-storage",
+              "x_percent": 73,
+              "y_percent": 47,
+              "label": "קיר אחסון",
+              "detail": "סמנו מה צריך להישאר פתוח ומה דורש אחסון רציף."
+            }
+          ]
+        },
+        {
+          "id": "bedroom",
+          "asset_id": "representative-apartment-bedroom-v1",
+          "kind": "interior",
+          "title": "חדר שינה ועבודה",
+          "summary": "סצנת חדר חזותית לבדיקת פרטיות, אחסון, שולחן עבודה ותנועת בוקר.",
+          "open_label": "להיכנס לחדר",
+          "preview_url": "https://nad-lan.co.il/wp-content/plugins/nadlan-config/assets/flagship-v3/projects/einstein-tower/experience/representative-apartment-bedroom-v1.webp",
+          "fullscreen_url": "https://nad-lan.co.il/wp-content/plugins/nadlan-config/assets/flagship-v3/projects/einstein-tower/experience/representative-apartment-bedroom-v1.webp",
+          "mapping_state": "owner_approved_illustrative_mapping",
+          "mapping_owner_decision_id": "OWNER-2026-08-14-EINSTEIN-INTERIOR-FACILITIES-DEMO",
+          "model_hotspot_group": "representative-interior-concept",
+          "model_component": "Tower_28_Level_Massing;Glass_Terrace_Strips;Champagne_Fins",
+          "placement_source_refs": [
+            "IVS002",
+            "IVS001"
+          ],
+          "placement_basis": "Bedroom shares the aggregate interior-gallery anchor; the scene is owner-approved demonstration media and is not assigned its own floor facade or unit",
+          "placement_confidence": {
+            "zone": 0.68,
+            "exact_point": 0.18
+          },
+          "placement_ambiguity": "Bedroom existence design dimensions unit floor view and room location are wholly unmapped",
+          "representation_kind": "owner_approved_illustration",
+          "decision_grade": false,
+          "source_ids": [],
+          "model_hotspot": {
+            "position": "16m 34.7m 5.8m",
+            "normal": "0 0 1",
+            "calibration_id": "einstein-33a-illustrative-massing-v1"
+          },
+          "image_hotspots": [
+            {
+              "id": "bedroom-window",
+              "x_percent": 67,
+              "y_percent": 35,
+              "label": "חזית האור",
+              "detail": "בדקו כיצד הייתם מאזנים אור, הצללה ופרטיות בחלל."
+            },
+            {
+              "id": "bedroom-work",
+              "x_percent": 30,
+              "y_percent": 62,
+              "label": "פינת עבודה",
+              "detail": "הגדירו את עומק השולחן, מעבר הכיסא והפרדה מאזור השינה."
+            }
+          ]
+        },
+        {
+          "id": "arrival",
+          "asset_id": "facility-arrival-gallery-v1",
+          "kind": "facility",
+          "title": "כניסה ומרחב משותף",
+          "summary": "סצנת כניסה משותפת חזותית לבדיקת הגעה, המתנה, נגישות וקצב המעבר לבניין.",
+          "open_label": "לראות את הכניסה",
+          "preview_url": "https://nad-lan.co.il/wp-content/plugins/nadlan-config/assets/flagship-v3/projects/einstein-tower/experience/facility-arrival-gallery-v1.webp",
+          "fullscreen_url": "https://nad-lan.co.il/wp-content/plugins/nadlan-config/assets/flagship-v3/projects/einstein-tower/experience/facility-arrival-gallery-v1.webp",
+          "mapping_state": "owner_approved_illustrative_mapping",
+          "mapping_owner_decision_id": "OWNER-2026-08-14-EINSTEIN-INTERIOR-FACILITIES-DEMO",
+          "model_hotspot_group": "facility-arrival-concept",
+          "model_component": "Tower_28_Level_Massing;Podium_Double_Level",
+          "placement_source_refs": [
+            "IVS003",
+            "IVS004",
+            "IVS005",
+            "IVS008"
+          ],
+          "placement_basis": "Source constrains use to the tower/base arrival zone; exact outer-face point at the current tower-podium seam is owner-approved interpolation",
+          "placement_confidence": {
+            "zone": 0.63,
+            "exact_point": 0.2
+          },
+          "placement_ambiguity": "No official lobby door facade room extent finish reception desk or accessible route point is established",
+          "representation_kind": "owner_approved_illustration",
+          "decision_grade": false,
+          "source_ids": [],
+          "model_hotspot": {
+            "position": "12m 9.5m -13.25m",
+            "normal": "0 0 -1",
+            "calibration_id": "einstein-33a-illustrative-massing-v1"
+          },
+          "image_hotspots": [
+            {
+              "id": "arrival-path",
+              "x_percent": 54,
+              "y_percent": 64,
+              "label": "מסלול הגעה",
+              "detail": "עקבו אחר קו הכניסה ובדקו נקודות המתנה, פנייה ומעבר."
+            },
+            {
+              "id": "arrival-seating",
+              "x_percent": 26,
+              "y_percent": 55,
+              "label": "אזור שהייה",
+              "detail": "חשבו מי משתמש באזור ובאילו שעות הוא צריך לתפקד."
+            }
+          ]
+        },
+        {
+          "id": "open-frame",
+          "asset_id": "facility-landscaped-terrace-v1",
+          "kind": "facility",
+          "title": "מרחב פתוח ונטוע",
+          "summary": "סצנה חזותית של מרחב משותף נטוע לבדיקת צל, ישיבה, תנועה ושימוש לאורך היום.",
+          "open_label": "לפתוח את המרחב",
+          "preview_url": "https://nad-lan.co.il/wp-content/plugins/nadlan-config/assets/flagship-v3/projects/einstein-tower/experience/facility-landscaped-terrace-v1.webp",
+          "fullscreen_url": "https://nad-lan.co.il/wp-content/plugins/nadlan-config/assets/flagship-v3/projects/einstein-tower/experience/facility-landscaped-terrace-v1.webp",
+          "mapping_state": "owner_approved_illustrative_mapping",
+          "mapping_owner_decision_id": "OWNER-2026-08-14-EINSTEIN-INTERIOR-FACILITIES-DEMO",
+          "model_hotspot_group": "facility-landscaped-open-space-concept",
+          "model_component": "Landscape_Terraces;Podium_Double_Level",
+          "placement_source_refs": [
+            "IVS003",
+            "IVS004",
+            "IVS005",
+            "IVS012"
+          ],
+          "placement_basis": "Source strongly supports the public landscaped-roof/open-space category; selected current Landscape_Terraces slab and exact point are owner-approved interpolation",
+          "placement_confidence": {
+            "zone": 0.86,
+            "exact_point": 0.24
+          },
+          "placement_ambiguity": "Exact roof polygon level route planting layout view and whether the generated scene depicts any delivered facility are unresolved",
+          "representation_kind": "owner_approved_illustration",
+          "decision_grade": false,
+          "source_ids": [],
+          "model_hotspot": {
+            "position": "27m 10m 14m",
+            "normal": "0 1 0",
+            "calibration_id": "einstein-33a-illustrative-massing-v1"
+          },
+          "image_hotspots": [
+            {
+              "id": "landscape-shade",
+              "x_percent": 41,
+              "y_percent": 36,
+              "label": "שכבת צל",
+              "detail": "בדקו את היחס בין צל, שמש, צמחייה ומקומות ישיבה."
+            },
+            {
+              "id": "landscape-route",
+              "x_percent": 63,
+              "y_percent": 70,
+              "label": "מסלול מעבר",
+              "detail": "עקבו אחר התנועה בין ישיבה, שתילה ושולי המרחב."
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "asset_delivery": {
+    "base_url": "https://nad-lan.co.il/wp-content/plugins/nadlan-config/assets/flagship-v3/projects/einstein-tower/",
+    "allowed_evidence_reference_ids": [
+      "IVS001",
+      "IVS002",
+      "IVS003",
+      "IVS004",
+      "IVS005",
+      "IVS008",
+      "IVS012"
+    ],
+    "model_files": [
+      {
+        "role": "model_hd",
+        "file": "model-hd.glb",
+        "bytes": 2420492,
+        "triangles": 39912,
+        "sha256": "71fcca8a0f58743b5f2257684c79957fbbff8e0169f5438bdc78231f27968a53"
+      },
+      {
+        "role": "model_lod",
+        "file": "model-lod.glb",
+        "bytes": 32244,
+        "sha256": "485161974b6d343956d249d821c893b72a59678e8e8ee2810c90cee5f23079ce"
+      },
+      {
+        "role": "poster",
+        "file": "poster.webp",
+        "bytes": 23996,
+        "sha256": "5588d09e28f95ac5d6655626027c3ad41f17c5c5c78153ecb2ba138821aa8c85"
+      }
+    ],
+    "experience_files": [
+      {
+        "asset_id": "representative-apartment-living-v1",
+        "scene_id": "living",
+        "kind": "interior",
+        "preview_file": "representative-apartment-living-v1.webp",
+        "fullscreen_file": "representative-apartment-living-v1.webp",
+        "bytes": 103748,
+        "width": 1536,
+        "height": 1024,
+        "preview_sha256": "1ad84512b5cb938450b5124c199ba09d00697da605ef46214434cef80649319b",
+        "fullscreen_sha256": "1ad84512b5cb938450b5124c199ba09d00697da605ef46214434cef80649319b"
+      },
+      {
+        "asset_id": "representative-apartment-bedroom-v1",
+        "scene_id": "bedroom",
+        "kind": "interior",
+        "preview_file": "representative-apartment-bedroom-v1.webp",
+        "fullscreen_file": "representative-apartment-bedroom-v1.webp",
+        "bytes": 79384,
+        "width": 1523,
+        "height": 1024,
+        "preview_sha256": "1c4d71c6b1308867a2a9c9d1d03eec947ba6f85b9800fa1f88ae5028acf06aea",
+        "fullscreen_sha256": "1c4d71c6b1308867a2a9c9d1d03eec947ba6f85b9800fa1f88ae5028acf06aea"
+      },
+      {
+        "asset_id": "facility-arrival-gallery-v1",
+        "scene_id": "arrival",
+        "kind": "facility",
+        "preview_file": "facility-arrival-gallery-v1.webp",
+        "fullscreen_file": "facility-arrival-gallery-v1.webp",
+        "bytes": 170750,
+        "width": 1524,
+        "height": 1024,
+        "preview_sha256": "cc50acc2570612165bf20442849ac9fcdf00658c0835f2130d6824d8b2c50e9a",
+        "fullscreen_sha256": "cc50acc2570612165bf20442849ac9fcdf00658c0835f2130d6824d8b2c50e9a"
+      },
+      {
+        "asset_id": "facility-landscaped-terrace-v1",
+        "scene_id": "open-frame",
+        "kind": "facility",
+        "preview_file": "facility-landscaped-terrace-v1.webp",
+        "fullscreen_file": "facility-landscaped-terrace-v1.webp",
+        "bytes": 264926,
+        "width": 1518,
+        "height": 1024,
+        "preview_sha256": "717a33f6deb118e3d60539152147a7d1c791e84b69e77861f6086ae246cc8e0b",
+        "fullscreen_sha256": "717a33f6deb118e3d60539152147a7d1c791e84b69e77861f6086ae246cc8e0b"
+      }
+    ]
+  },
+  "safeguards": {
+    "zero_inventory": true,
+    "top_level_tools": [
+      "view",
+      "interior",
+      "design",
+      "comments"
+    ],
+    "facilities_inside_interior": true,
+    "model_hotspot_groups": [
+      "representative-interior-concept",
+      "facility-arrival-concept",
+      "facility-landscaped-open-space-concept"
+    ],
+    "comments_delivery": "prepared_no_write",
+    "external_writes": false,
+    "private_stage_only": true,
+    "sandbox_catalog_source_id": ""
+  },
+  "component_hashes": {
+    "data": {
+      "path": "data/projects/einstein-tower.json",
+      "sha256": "f126b849b03c40fe2eab0d5bf775977bef95e6719473718af435c4906c564f8a"
+    },
+    "model_spec": {
+      "path": "assets/projects/einstein-tower/model-spec.json",
+      "sha256": "a2f3b547ca976d96f5ac2bf96777e01103620172840bec62333c0db03379ea3c"
+    },
+    "experience_manifest": {
+      "path": "assets/projects/einstein-tower/experience/manifest.json",
+      "sha256": "dc60cffeda9444bc7d7284a9f77a57d1161f2427b215dceac939edb134cd9bdf"
+    },
+    "trusted_registry": {
+      "path": "plugins/nadlan-config/assets/flagship-v3/contracts/registry.json",
+      "sha256": "eaece9af0ceb41918726666d6448c0c4b59f33aaec16f9280451cf0921113a1f"
+    },
+    "article": {
+      "path": "docs/wp-drafts/einstein-tower-he-content.html",
+      "sha256": "e876dd422440e1aa2403ff0fac3c89722a3cc106fc366f714699bed1c030a25f"
+    },
+    "article_contract": {
+      "path": "docs/wp-drafts/einstein-tower-he-content-contract.json",
+      "sha256": "025dd65cabd0df02959f8e37535e5321f2337fdff35d1629fb85cc820910bdc4"
+    },
+    "source_register": {
+      "path": "assets/projects/einstein-tower/evidence/source-register.csv",
+      "sha256": "ca42590fb00f5709f83c8332d19daeafa65a1a14d1dad5daccdd840ea8a6e5b9"
+    },
+    "visual_source_register": {
+      "path": "assets/projects/einstein-tower/evidence/primary-source-register.csv",
+      "sha256": "6f07b2347df7eb090bb94f8eabbf725c436566a5596365151390e917e84586a8"
+    },
+    "mapping_crosswalk": {
+      "path": "assets/projects/einstein-tower/evidence/hotspot-placement-crosswalk.csv",
+      "sha256": "42072325c22a87b40b8bb6bfc6a09e29beac01ab84fccbe403a6c0d0abddfb9a"
+    },
+    "mapping_anchor_summary": {
+      "path": "assets/projects/einstein-tower/evidence/hotspot-anchor-summary.csv",
+      "sha256": "dadc53333e2ca1ac78daae2610c4315559659510dc4b23774caaca5442e6889c"
+    }
+  }
+}

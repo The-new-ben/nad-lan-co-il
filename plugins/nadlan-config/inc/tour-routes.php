@@ -23,8 +23,12 @@ if ( ! function_exists( 'nadlan_tour_map' ) ) {
 	/** Allowlist: slug => path under the uploads basedir. Nothing else is served. */
 	function nadlan_tour_map() {
 		return array(
-			'sde-dov' => '2026/07/sde-dov-tour.html',
-			'somail'  => '2026/07/somail-tour.html',
+			'sde-dov'  => '2026/07/sde-dov-tour.html',
+			'somail'   => '2026/07/somail-tour.html',
+			/* The cinematic apartment designer has been live since July and was
+			   linked from nowhere - not one reference to it anywhere in the
+			   plugin. It is byte-identical to the v2 branch build. */
+			'designer' => '2026/07/apartment-designer.html',
 		);
 	}
 }
