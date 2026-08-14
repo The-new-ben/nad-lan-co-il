@@ -6083,6 +6083,71 @@ def _finish_self_test(
         raise RuntimeError(
             "External-stage identity lookup must bypass query filters with a direct bounded SQL read"
         )
+    stage_snapshot_start = external_stage_helper.find(
+        "$stage_contract_snapshot = function"
+    )
+    stage_snapshot_end = external_stage_helper.find(
+        "$stage_scope_absent = function", stage_snapshot_start
+    )
+    stage_snapshot_section = external_stage_helper[
+        stage_snapshot_start:stage_snapshot_end
+    ]
+    if not (
+        0 <= stage_snapshot_start < stage_snapshot_end
+        and "global $wpdb;" in stage_snapshot_section
+        and "SELECT ID FROM {$wpdb->posts} WHERE post_name = %s AND post_type = %s ORDER BY ID ASC LIMIT 2"
+        in stage_snapshot_section
+        and "Stage contract slug identity read failed." in stage_snapshot_section
+        and "$slug_matches = get_posts(" not in stage_snapshot_section
+    ):
+        raise RuntimeError(
+            "Stage contract snapshot must bypass privacy query filters with a bounded direct DB identity read"
+        )
+    stage_scope_start = stage_snapshot_end
+    stage_scope_end = external_stage_helper.find(
+        "$stage_absence_proved = function", stage_scope_start
+    )
+    stage_scope_section = external_stage_helper[stage_scope_start:stage_scope_end]
+    if not (
+        0 <= stage_scope_start < stage_scope_end
+        and "global $wpdb;" in stage_scope_section
+        and stage_scope_section.count("$wpdb->get_col(") == 2
+        and "ORDER BY ID ASC LIMIT 2" in stage_scope_section
+        and "Stage scope slug absence read failed." in stage_scope_section
+        and "Stage scope marker absence read failed." in stage_scope_section
+        and "get_posts(" not in stage_scope_section
+    ):
+        raise RuntimeError(
+            "Stage scope absence proof must bypass privacy query filters with bounded direct DB reads"
+        )
+    resume_contract_start = external_stage_helper.find(
+        "if ( 'resume_retained_contract' === $action )"
+    )
+    resume_contract_end = external_stage_helper.find(
+        "if ( 'recovery_status' === $action )", resume_contract_start
+    )
+    resume_contract_section = external_stage_helper[
+        resume_contract_start:resume_contract_end
+    ]
+    for required_resume_marker in (
+        "'nadlan-private-release-retained-resume-contract/v1'",
+        "array( 'page_creating', 'page_ready' )",
+        "$resume_backup_inventory = $inventory( $resume_backup_path );",
+        "$resume_backup_version = isset( $resume_backup_data['Version'] )",
+        "$state['upload_next_index'] !== $artifact_total_chunks",
+        "$state['upload_received_bytes'] !== $artifact_bytes",
+        "'canonical_storage_sha256'",
+        "'nadlan_release_retained_resume_contract_failed'",
+    ):
+        if (
+            resume_contract_start < 0
+            or resume_contract_end <= resume_contract_start
+            or required_resume_marker not in resume_contract_section
+        ):
+            raise RuntimeError(
+                "Retained same-run read-only contract action is incomplete: "
+                + required_resume_marker
+            )
     for required_registration_marker in (
         "registered_meta_key_exists( 'post', '_nadlan_private_unit_journey', 'nadlan_project' )",
         "get_registered_meta_keys( 'post', 'nadlan_project' )",
@@ -6512,10 +6577,14 @@ def _finish_self_test(
         raise RuntimeError("External helper is missing the broad stage-absence predicate")
     stage_scope_section = external_stage_helper[stage_scope_start:stage_scope_end]
     for required_scope_marker in (
-        "'name'] = $page_slug",
+        "global $wpdb;",
+        "SELECT ID FROM {$wpdb->posts} WHERE post_type = %s AND post_name = %s ORDER BY ID ASC LIMIT 2",
+        "EXISTS ( SELECT 1 FROM {$wpdb->postmeta} marker_meta",
+        "EXISTS ( SELECT 1 FROM {$wpdb->postmeta} source_meta",
         "'_nadlan_private_unit_journey'",
         "'_nadlan_flagship_source_post_id'",
-        "'suppress_filters'       => true",
+        "Stage scope slug absence read failed.",
+        "Stage scope marker absence read failed.",
         "empty( $slug_matches )",
         "empty( $marker_matches )",
     ):
@@ -6526,6 +6595,8 @@ def _finish_self_test(
             )
     if "project_contract_id" in stage_scope_section:
         raise RuntimeError("Stage-absence marker crosswalk was narrowed by mutable project meta")
+    if "get_posts(" in stage_scope_section:
+        raise RuntimeError("Stage-absence scope must bypass privacy query filters")
 
     external_rollback_start = external_stage_helper.find(
         "if ( 'rollback' === $action )"
@@ -8524,6 +8595,9 @@ def _finish_self_test(
             "external_stage_helper_rendered_and_linted": php_lint,
             "external_stage_server_side_create": True,
             "external_stage_direct_slug_identity_read": True,
+            "external_stage_snapshot_direct_slug_identity_read": True,
+            "external_stage_direct_scope_absence_reads": True,
+            "external_stage_retained_resume_contract": True,
             "external_stage_durable_intent_before_insert": True,
             "external_stage_draft_raw_publish_order": True,
             "external_stage_commit_before_fallible_gates": True,
