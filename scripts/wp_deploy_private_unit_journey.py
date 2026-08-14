@@ -76,6 +76,75 @@ EINSTEIN_ACCEPTANCE_ASSETS = (
     "experience/facility-arrival-gallery-v1.webp",
     "experience/facility-landscaped-terrace-v1.webp",
 )
+MISSING_SNIPPET_CODE = "rest_cannot_get"
+MISSING_SNIPPET_MESSAGE = "The snippet could not be found."
+DEPLOY_PREFLIGHT_SCHEMA = "nadlan-private-release-deploy-preflight/v1"
+DEPLOY_FAILURE_CONTRACT = {
+    "request_validation": ("artifact_identity_invalid",),
+    "lock_acquisition": ("deployment_lock_unavailable",),
+    "idempotent_cleanup": ("artifact_cleanup_failed",),
+    "preflight": (
+        "plugin_state_unavailable",
+        "plugin_inactive",
+        "prior_backup_present",
+    ),
+    "artifact_acquisition": ("artifact_download_failed", "upload_path_unavailable"),
+    "artifact_verification": (
+        "artifact_hash_mismatch",
+        "artifact_zip_invalid",
+        "artifact_contract_mismatch",
+    ),
+    "capacity_check": ("disk_space_unavailable", "disk_space_insufficient"),
+    "backup_prepare": (
+        "backup_destination_unsafe",
+        "filesystem_unavailable",
+        "upgrade_directory_prepare_failed",
+        "backup_root_create_failed",
+        "backup_guard_write_failed",
+    ),
+    "backup_copy": ("plugin_backup_copy_failed",),
+    "backup_verify": ("backup_inventory_failed", "backup_digest_mismatch"),
+    "backup_commit": ("backup_state_persist_failed",),
+    "plugin_install": ("plugin_upgrade_failed",),
+    "post_install": (
+        "cache_purge_failed",
+        "plugin_state_unavailable",
+        "plugin_contract_mismatch",
+    ),
+    "artifact_cleanup": ("artifact_cleanup_failed",),
+    "deployment_commit": ("deployment_state_persist_failed",),
+}
+DEPLOY_FAILURE_CODES = {
+    "nadlan_release_artifact_identity_invalid",
+    "nadlan_release_locked",
+    "nadlan_release_upload_cleanup_failed",
+    "nadlan_release_deploy_failed",
+}
+DEPLOY_FAILURE_REQUIRES_ROLLBACK_STAGES = {
+    "plugin_install",
+    "post_install",
+    "artifact_cleanup",
+    "deployment_commit",
+}
+DEPLOY_FAILURE_PREBACKUP_STAGES = {
+    "preflight",
+    "artifact_acquisition",
+    "artifact_verification",
+    "capacity_check",
+    "backup_prepare",
+    "backup_copy",
+    "backup_verify",
+}
+DEPLOY_FAILURE_CODE_STAGES = {
+    "nadlan_release_artifact_identity_invalid": {"request_validation"},
+    "nadlan_release_locked": {"lock_acquisition"},
+    "nadlan_release_upload_cleanup_failed": {"idempotent_cleanup"},
+    "nadlan_release_deploy_failed": (
+        DEPLOY_FAILURE_PREBACKUP_STAGES
+        | {"backup_commit"}
+        | DEPLOY_FAILURE_REQUIRES_ROLLBACK_STAGES
+    ),
+}
 
 
 class EinsteinStageRecoveryBlocked(RuntimeError):
@@ -1120,12 +1189,193 @@ def response_payload(response: requests.Response) -> dict[str, Any]:
     return payload
 
 
+def is_exact_missing_snippet_response(response: requests.Response) -> bool:
+    """Recognize only the two observed Code Snippets item-missing responses."""
+    if response.status_code == 404:
+        return True
+    if response.status_code != 500:
+        return False
+    try:
+        payload = response.json()
+    except ValueError:
+        return False
+    if not isinstance(payload, dict):
+        return False
+    if (
+        payload.get("code") != MISSING_SNIPPET_CODE
+        or payload.get("message") != MISSING_SNIPPET_MESSAGE
+    ):
+        return False
+    keys = set(payload)
+    return keys == {"code", "message"} or (
+        keys == {"code", "message", "data"}
+        and payload.get("data") == {"status": 500}
+    )
+
+
+def snippet_absent_from_collection(
+    rows: list[dict[str, Any]], *, snippet_id: int, snippet_name: str
+) -> bool:
+    return all(
+        int(row.get("id") or 0) != snippet_id
+        and str(row.get("name") or "") != snippet_name
+        for row in rows
+    )
+
+
+def snippet_absence_is_proved(
+    response: requests.Response,
+    rows: list[dict[str, Any]],
+    *,
+    snippet_id: int,
+    snippet_name: str,
+    route_status: int,
+) -> bool:
+    """Require item-missing, collection absence, and a dead helper route together."""
+    return (
+        is_exact_missing_snippet_response(response)
+        and snippet_absent_from_collection(
+            rows, snippet_id=snippet_id, snippet_name=snippet_name
+        )
+        and route_status == 404
+    )
+
+
+def deploy_failure_proof(
+    response: requests.Response, payload: dict[str, Any]
+) -> dict[str, Any]:
+    """Return only allowlisted deployment diagnostics from a helper error."""
+    data = payload.get("data") if isinstance(payload.get("data"), dict) else {}
+    code = str(payload.get("code") or "")
+    stage = str(data.get("failure_stage") or "")
+    reason = str(data.get("failure_reason_code") or "")
+    rollback_outcome = str(data.get("rollback_outcome") or "")
+    rollback_semantics_valid = (
+        (stage in DEPLOY_FAILURE_PREBACKUP_STAGES and rollback_outcome == "not_required")
+        or (
+            stage == "backup_commit"
+            and rollback_outcome in {"not_required", "succeeded", "failed"}
+        )
+        or (
+            stage in DEPLOY_FAILURE_REQUIRES_ROLLBACK_STAGES
+            and rollback_outcome in {"succeeded", "failed"}
+        )
+    )
+    catch_contract_valid = code != "nadlan_release_deploy_failed" or (
+        isinstance(data.get("rolled_back"), bool)
+        and isinstance(data.get("upload_temp_absent"), bool)
+        and rollback_outcome in {"not_required", "succeeded", "failed"}
+        and (data.get("rolled_back") is True) == (rollback_outcome == "succeeded")
+        and rollback_semantics_valid
+    )
+    contract_valid = (
+        code in DEPLOY_FAILURE_CODES
+        and stage in DEPLOY_FAILURE_CODE_STAGES[code]
+        and stage in DEPLOY_FAILURE_CONTRACT
+        and reason in DEPLOY_FAILURE_CONTRACT[stage]
+        and catch_contract_valid
+    )
+    return {
+        "http_status": int(response.status_code),
+        "code": code if code in DEPLOY_FAILURE_CODES else "unexpected_error",
+        "failure_stage": stage if contract_valid else "invalid_contract",
+        "failure_reason_code": reason if contract_valid else "invalid_contract",
+        "contract_valid": contract_valid,
+        "rolled_back": data.get("rolled_back") is True,
+        "rollback_outcome": (
+            rollback_outcome
+            if contract_valid and code == "nadlan_release_deploy_failed"
+            else "not_reported"
+        ),
+        "upload_temp_absent": data.get("upload_temp_absent") is True,
+    }
+
+
+def deploy_preflight_proof(
+    payload: dict[str, Any],
+    *,
+    before_version: str,
+    artifact_bytes: int,
+    artifact_uncompressed_bytes: int,
+) -> dict[str, Any]:
+    """Validate and minimize the helper's read-only pre-deployment proof."""
+    target = payload.get("target") if isinstance(payload.get("target"), dict) else {}
+    disk = payload.get("disk") if isinstance(payload.get("disk"), dict) else {}
+    upgrade = payload.get("upgrade") if isinstance(payload.get("upgrade"), dict) else {}
+    filesystem = (
+        payload.get("filesystem")
+        if isinstance(payload.get("filesystem"), dict)
+        else {}
+    )
+
+    def count(value: Any) -> int | None:
+        return value if isinstance(value, int) and not isinstance(value, bool) else None
+
+    target_files = count(target.get("file_count"))
+    target_bytes = count(target.get("bytes"))
+    free_bytes = count(disk.get("free_bytes"))
+    required_bytes = count(disk.get("required_bytes"))
+    expected_required = (
+        target_bytes + artifact_uncompressed_bytes + artifact_bytes + 20 * 1024 * 1024
+        if target_bytes is not None
+        else None
+    )
+    structural = (
+        payload.get("schema") == DEPLOY_PREFLIGHT_SCHEMA
+        and target.get("readable") is True
+        and target.get("active") is True
+        and str(target.get("version") or "") == before_version
+        and target_files is not None
+        and target_files > 0
+        and target_bytes is not None
+        and target_bytes > 0
+        and disk.get("measurable") is True
+        and free_bytes is not None
+        and required_bytes is not None
+        and required_bytes == expected_required
+        and disk.get("sufficient") is True
+        and free_bytes >= required_bytes
+        and upgrade.get("root_safe") is True
+        and upgrade.get("root_writable") is True
+        and upgrade.get("backup_path_absent") is True
+        and filesystem.get("available") is True
+        and payload.get("passed") is True
+    )
+    return {
+        "schema": DEPLOY_PREFLIGHT_SCHEMA,
+        "passed": structural,
+        "target": {
+            "readable": target.get("readable") is True,
+            "active": target.get("active") is True,
+            "version": str(target.get("version") or ""),
+            "file_count": target_files or 0,
+            "bytes": target_bytes or 0,
+        },
+        "disk": {
+            "measurable": disk.get("measurable") is True,
+            "free_bytes": free_bytes or 0,
+            "required_bytes": required_bytes or 0,
+            "sufficient": disk.get("sufficient") is True,
+        },
+        "upgrade": {
+            "root_safe": upgrade.get("root_safe") is True,
+            "root_writable": upgrade.get("root_writable") is True,
+            "backup_path_absent": upgrade.get("backup_path_absent") is True,
+        },
+        "filesystem": {"available": filesystem.get("available") is True},
+    }
+
+
 def require_response(response: requests.Response, operation: str) -> dict[str, Any]:
     payload = response_payload(response)
     if response.status_code < 200 or response.status_code >= 300:
         code = str(payload.get("code") or "unknown_error")
         rolled_back = payload.get("data", {}).get("rolled_back") if isinstance(payload.get("data"), dict) else None
-        suffix = f"; rolled_back={bool(rolled_back)}" if rolled_back is not None else ""
+        suffix = (
+            f"; rolled_back={rolled_back}"
+            if isinstance(rolled_back, bool)
+            else ""
+        )
         raise RuntimeError(f"{operation} returned HTTP {response.status_code} ({code}){suffix}")
     return payload
 
@@ -1421,7 +1671,8 @@ add_action( 'rest_api_init', function () {
 			}
 
 			$target = \Code_Snippets\get_snippet( __TARGET_ID__, false );
-			if ( $target ) {
+			$target_exists = $target && 0 < (int) $target->id;
+			if ( $target_exists ) {
 				$target_valid =
 					__TARGET_ID__ === (int) $target->id
 					&& __TARGET_NAME__ === (string) $target->name
@@ -1618,7 +1869,8 @@ add_action( 'rest_api_init', function () {
 				}
 			}
 			$target = \Code_Snippets\get_snippet( __TARGET_ID__, false );
-			if ( $target ) {
+			$target_exists = $target && 0 < (int) $target->id;
+			if ( $target_exists ) {
 				$target_ready =
 					__TARGET_ID__ === (int) $target->id
 					&& __TARGET_NAME__ === (string) $target->name
@@ -1670,6 +1922,7 @@ def independently_remove_snippet(
     artifact_entry_count: int,
     artifact_uncompressed_bytes: int,
     manage_release_resources: bool = True,
+    resources_known_absent: bool = False,
     depth: int = 0,
     created_cleanup_rows: list[dict[str, Any]] | None = None,
 ) -> dict[str, Any]:
@@ -1686,20 +1939,26 @@ def independently_remove_snippet(
             raise RuntimeError("Independent helper cleanup found duplicate target names")
         target_id = int(name_matches[0].get("id") or 0) if name_matches else None
     if target_id is None or target_id < 1:
+        if manage_release_resources and not resources_known_absent:
+            raise RuntimeError(
+                "Managed release-resource absence cannot be proved without the helper"
+            )
         return {
             "target_absent": not name_matches,
             "target_get_status": 404,
-            "release_resource_cleanup_proved": True,
+            "target_missing_response_exact": True,
+            "release_resource_cleanup_proved": (
+                resources_known_absent or not manage_release_resources
+            ),
             "method": "already_absent",
         }
 
     target_response = client.request("GET", f"code-snippets/v1/snippets/{target_id}", timeout=60)
-    target_already_absent = target_response.status_code == 404
+    target_already_absent = is_exact_missing_snippet_response(target_response)
     if target_already_absent:
         remaining = client.all_snippets()
-        absent = all(
-            int(row.get("id") or 0) != target_id and str(row.get("name") or "") != target_name
-            for row in remaining
+        absent = snippet_absent_from_collection(
+            remaining, snippet_id=target_id, snippet_name=target_name
         )
         if not absent:
             raise RuntimeError("Independent helper cleanup found collection drift")
@@ -1763,7 +2022,12 @@ def independently_remove_snippet(
         )
         cleanup_hash = sha256_text(cleanup_code)
         created_cleanup_rows.append(
-            {"id": cleanup_id, "name": cleanup_name, "code_sha256": cleanup_hash}
+            {
+                "id": cleanup_id,
+                "name": cleanup_name,
+                "code_sha256": cleanup_hash,
+                "route": cleanup_route,
+            }
         )
         update_response = client.request(
             "PUT",
@@ -1860,14 +2124,19 @@ def independently_remove_snippet(
                         f"/* inactive placeholder for {cleanup_name} */"
                     )
                     created_cleanup_rows.append(
-                        {"id": cleanup_id, "name": cleanup_name, "code_sha256": cleanup_hash}
+                        {
+                            "id": cleanup_id,
+                            "name": cleanup_name,
+                            "code_sha256": cleanup_hash,
+                            "route": cleanup_route,
+                        }
                     )
             except Exception:
                 if depth >= 3:
                     raise
         if cleanup_id is not None:
             cleanup_after = client.request("GET", f"code-snippets/v1/snippets/{cleanup_id}", timeout=60)
-            if cleanup_after.status_code != 404:
+            if not is_exact_missing_snippet_response(cleanup_after):
                 try:
                     cleanup_row = require_response(cleanup_after, "Cleanup helper residual read")
                     cleanup_observed = observed_snippet(cleanup_row)
@@ -1912,24 +2181,24 @@ def independently_remove_snippet(
     target_after = client.request("GET", f"code-snippets/v1/snippets/{target_id}", timeout=60)
     route_after = client.request("POST", cleanup_route, json_body={}, timeout=60)
     rows_after = client.all_snippets()
-    target_absent = all(
-        int(row.get("id") or 0) != target_id and str(row.get("name") or "") != target_name
-        for row in rows_after
-    )
-    cleanup_absent = all(
-        int(row.get("id") or 0) != (cleanup_id or 0) and str(row.get("name") or "") != cleanup_name
-        for row in rows_after
+    cleanup_absent = snippet_absent_from_collection(
+        rows_after, snippet_id=cleanup_id or 0, snippet_name=cleanup_name
     )
     if not (
-        target_after.status_code == 404
-        and route_after.status_code == 404
-        and target_absent
+        snippet_absence_is_proved(
+            target_after,
+            rows_after,
+            snippet_id=target_id,
+            snippet_name=target_name,
+            route_status=route_after.status_code,
+        )
         and cleanup_absent
     ):
         raise RuntimeError("Independent helper hard-delete proof failed")
     return {
         "target_absent": True,
         "target_get_status": target_after.status_code,
+        "target_missing_response_exact": True,
         "cleanup_route_status": route_after.status_code,
         "cleanup_helper_absent": cleanup_absent,
         "release_resource_cleanup_proved": manage_release_resources,
@@ -2141,6 +2410,11 @@ def self_test() -> dict[str, Any]:
     if simulated_route_loss_cleanup_safe("uploading", foreign_lock=True):
         raise RuntimeError("Route-loss simulation accepted a foreign global lock")
     for required_upload_marker in (
+        "if ( 'deploy_preflight' === $action )",
+        "'nadlan-private-release-deploy-preflight/v1'",
+        "@disk_free_space( WP_CONTENT_DIR )",
+        "'backup_path_absent'",
+        "'filesystem' => array( 'available' => $filesystem_available )",
         "if ( 'upload_init' === $action )",
         "if ( 'upload_chunk' === $action )",
         "if ( 'upload_finish' === $action )",
@@ -2154,6 +2428,30 @@ def self_test() -> dict[str, Any]:
     ):
         if required_upload_marker not in upload_helper:
             raise RuntimeError(f"Self-test is missing secure upload marker: {required_upload_marker}")
+    for stage, reason_codes in DEPLOY_FAILURE_CONTRACT.items():
+        if f"'{stage}'" not in upload_helper:
+            raise RuntimeError(f"Self-test is missing deployment failure stage: {stage}")
+        for reason_code in reason_codes:
+            if f"'{reason_code}'" not in upload_helper:
+                raise RuntimeError(
+                    f"Self-test is missing deployment failure reason: {reason_code}"
+                )
+    for diagnostic_marker in (
+        "'failure_stage'",
+        "'failure_reason_code'",
+        "'rollback_outcome'",
+        "'not_required'",
+        "'succeeded'",
+        "'failed'",
+    ):
+        if diagnostic_marker not in upload_helper:
+            raise RuntimeError(
+                f"Self-test is missing finite deploy diagnostic: {diagnostic_marker}"
+            )
+    if "getMessage()" in upload_helper:
+        raise RuntimeError("Deploy helper must not serialize exception messages")
+    if cleanup_helper.count("$target_exists = $target && 0 < (int) $target->id;") != 2:
+        raise RuntimeError("Cleanup helper must treat truthy id=0 snippets as absent")
     for rollback_marker in (
         "activate_plugin( $plugin_file, '', false, true )",
         "deactivate_plugins( $plugin_file, true, false )",
@@ -2191,8 +2489,22 @@ def self_test() -> dict[str, Any]:
     phase_two_position = driver_source.find(
         "cleanup_proof = independently_remove_snippet(", finally_position
     )
+    preflight_driver_position = driver_source.find(
+        'call_helper("deploy_preflight"', main_position
+    )
+    upload_driver_position = driver_source.find(
+        'result["checks"]["artifact_upload"] = upload_local_artifact()',
+        preflight_driver_position,
+    )
+    deploy_driver_position = driver_source.find(
+        'deploy_response, deploy = call_helper("deploy"', upload_driver_position
+    )
     if not (
         0 <= main_position < success_health_position < phase_one_position < finally_position < phase_two_position
+        and 0
+        <= preflight_driver_position
+        < upload_driver_position
+        < deploy_driver_position
         and "independently_remove_snippet(" not in driver_source[phase_one_position:finally_position]
         and "and not retain_recovery_helper" in driver_source[finally_position:phase_two_position]
         and "recovery_retained" in driver_source[finally_position:]
@@ -2284,6 +2596,222 @@ def self_test() -> dict[str, Any]:
 
         def json(self) -> Any:
             return copy.deepcopy(self._payload)
+
+    missing_404 = FakeResponse(404, {"code": "rest_cannot_get"})
+    missing_500 = FakeResponse(
+        500,
+        {
+            "code": MISSING_SNIPPET_CODE,
+            "message": MISSING_SNIPPET_MESSAGE,
+            "data": {"status": 500},
+        },
+    )
+    missing_500_without_data = FakeResponse(
+        500,
+        {"code": MISSING_SNIPPET_CODE, "message": MISSING_SNIPPET_MESSAGE},
+    )
+    wrong_missing_message = FakeResponse(
+        500,
+        {"code": MISSING_SNIPPET_CODE, "message": "Different message"},
+    )
+    extra_missing_field = FakeResponse(
+        500,
+        {
+            "code": MISSING_SNIPPET_CODE,
+            "message": MISSING_SNIPPET_MESSAGE,
+            "unexpected": True,
+        },
+    )
+    if not all(
+        is_exact_missing_snippet_response(response)
+        for response in (missing_404, missing_500, missing_500_without_data)
+    ) or any(
+        is_exact_missing_snippet_response(response)
+        for response in (wrong_missing_message, extra_missing_field)
+    ):
+        raise RuntimeError("Exact Code Snippets missing-response predicate drifted")
+    if snippet_absent_from_collection(
+        [{"id": 7002, "name": "same-name"}],
+        snippet_id=7001,
+        snippet_name="same-name",
+    ):
+        raise RuntimeError("Same-name/different-ID snippet residue was accepted as absent")
+    if not snippet_absence_is_proved(
+        missing_500,
+        [],
+        snippet_id=7001,
+        snippet_name="missing-helper",
+        route_status=404,
+    ) or snippet_absence_is_proved(
+        missing_500,
+        [],
+        snippet_id=7001,
+        snippet_name="missing-helper",
+        route_status=200,
+    ):
+        raise RuntimeError("Snippet absence was not paired with exact route absence")
+
+    class EmptySnippetClient:
+        @staticmethod
+        def all_snippets() -> list[dict[str, Any]]:
+            return []
+
+    managed_absence_without_proof_rejected = False
+    try:
+        independently_remove_snippet(
+            EmptySnippetClient(),  # type: ignore[arg-type]
+            target_id=None,
+            target_name="missing-helper",
+            release_run_id="missing-helper-test",
+            release_token="1" * 64,
+            artifact_mode="upload",
+            artifact_sha256="2" * 64,
+            artifact_bytes=355,
+            artifact_entry_count=2,
+            artifact_uncompressed_bytes=60,
+            manage_release_resources=True,
+        )
+    except RuntimeError:
+        managed_absence_without_proof_rejected = True
+    if not managed_absence_without_proof_rejected:
+        raise RuntimeError("Missing helper claimed unproved managed-resource cleanup")
+    known_absence = independently_remove_snippet(
+        EmptySnippetClient(),  # type: ignore[arg-type]
+        target_id=None,
+        target_name="never-created-helper",
+        release_run_id="never-created-helper-test",
+        release_token="3" * 64,
+        artifact_mode="upload",
+        artifact_sha256="4" * 64,
+        artifact_bytes=355,
+        artifact_entry_count=2,
+        artifact_uncompressed_bytes=60,
+        manage_release_resources=True,
+        resources_known_absent=True,
+    )
+    if known_absence.get("release_resource_cleanup_proved") is not True:
+        raise RuntimeError("Explicit pre-resource helper absence was not accepted")
+
+    failure_payload = {
+        "code": "nadlan_release_deploy_failed",
+        "data": {
+            "failure_stage": "backup_copy",
+            "failure_reason_code": "plugin_backup_copy_failed",
+            "rolled_back": False,
+            "rollback_outcome": "not_required",
+            "upload_temp_absent": True,
+        },
+    }
+    failure_response = FakeResponse(500, failure_payload)
+    finite_failure_proof = deploy_failure_proof(failure_response, failure_payload)
+    if finite_failure_proof.get("contract_valid") is not True:
+        raise RuntimeError("Valid finite deployment failure proof was rejected")
+    cross_paired_failure = copy.deepcopy(failure_payload)
+    cross_paired_failure["data"]["failure_reason_code"] = "disk_space_insufficient"
+    if deploy_failure_proof(
+        FakeResponse(500, cross_paired_failure), cross_paired_failure
+    ).get("contract_valid") is not False:
+        raise RuntimeError("Cross-paired deployment failure proof was accepted")
+    nonboolean_failure = copy.deepcopy(failure_payload)
+    nonboolean_failure["data"]["rolled_back"] = "false"
+    if deploy_failure_proof(
+        FakeResponse(500, nonboolean_failure), nonboolean_failure
+    ).get("contract_valid") is not False:
+        raise RuntimeError("Non-boolean deployment rollback evidence was accepted")
+    rollback_outcomes = set()
+    for outcome, rolled_back in (
+        ("not_required", False),
+        ("succeeded", True),
+        ("failed", False),
+    ):
+        outcome_payload = copy.deepcopy(failure_payload)
+        outcome_payload["data"]["failure_stage"] = "backup_commit"
+        outcome_payload["data"]["failure_reason_code"] = (
+            "backup_state_persist_failed"
+        )
+        outcome_payload["data"]["rollback_outcome"] = outcome
+        outcome_payload["data"]["rolled_back"] = rolled_back
+        outcome_proof = deploy_failure_proof(
+            FakeResponse(500, outcome_payload), outcome_payload
+        )
+        if outcome_proof.get("contract_valid") is not True:
+            raise RuntimeError("Finite deployment rollback outcome was rejected")
+        rollback_outcomes.add(str(outcome_proof["rollback_outcome"]))
+    if rollback_outcomes != {"not_required", "succeeded", "failed"}:
+        raise RuntimeError("Deployment rollback outcomes are not distinguishable")
+    impossible_prebackup_rollback = copy.deepcopy(failure_payload)
+    impossible_prebackup_rollback["data"]["rolled_back"] = True
+    impossible_prebackup_rollback["data"]["rollback_outcome"] = "succeeded"
+    if deploy_failure_proof(
+        FakeResponse(500, impossible_prebackup_rollback),
+        impossible_prebackup_rollback,
+    ).get("contract_valid") is not False:
+        raise RuntimeError("Impossible pre-backup rollback outcome was accepted")
+    contradictory_postinstall = copy.deepcopy(failure_payload)
+    contradictory_postinstall["data"].update(
+        {
+            "failure_stage": "plugin_install",
+            "failure_reason_code": "plugin_upgrade_failed",
+            "rolled_back": False,
+            "rollback_outcome": "not_required",
+        }
+    )
+    if deploy_failure_proof(
+        FakeResponse(500, contradictory_postinstall), contradictory_postinstall
+    ).get("contract_valid") is not False:
+        raise RuntimeError("Post-backup failure without rollback outcome was accepted")
+    rolled_back_postinstall = copy.deepcopy(contradictory_postinstall)
+    rolled_back_postinstall["data"]["rolled_back"] = True
+    rolled_back_postinstall["data"]["rollback_outcome"] = "succeeded"
+    if deploy_failure_proof(
+        FakeResponse(500, rolled_back_postinstall), rolled_back_postinstall
+    ).get("contract_valid") is not True:
+        raise RuntimeError("Post-backup failure with confirmed rollback was rejected")
+
+    preflight_target_bytes = 1234
+    preflight_required = (
+        preflight_target_bytes + 355 + 60 + 20 * 1024 * 1024
+    )
+    valid_preflight = {
+        "schema": DEPLOY_PREFLIGHT_SCHEMA,
+        "passed": True,
+        "target": {
+            "readable": True,
+            "active": True,
+            "version": "1.2.3",
+            "file_count": 10,
+            "bytes": preflight_target_bytes,
+        },
+        "disk": {
+            "measurable": True,
+            "free_bytes": preflight_required + 1,
+            "required_bytes": preflight_required,
+            "sufficient": True,
+        },
+        "upgrade": {
+            "root_safe": True,
+            "root_writable": True,
+            "backup_path_absent": True,
+        },
+        "filesystem": {"available": True},
+    }
+    valid_preflight_proof = deploy_preflight_proof(
+        valid_preflight,
+        before_version="1.2.3",
+        artifact_bytes=355,
+        artifact_uncompressed_bytes=60,
+    )
+    if valid_preflight_proof.get("passed") is not True:
+        raise RuntimeError("Valid read-only deployment preflight proof was rejected")
+    failed_preflight = copy.deepcopy(valid_preflight)
+    failed_preflight["upgrade"]["root_writable"] = False
+    if deploy_preflight_proof(
+        failed_preflight,
+        before_version="1.2.3",
+        artifact_bytes=355,
+        artifact_uncompressed_bytes=60,
+    ).get("passed") is not False:
+        raise RuntimeError("Failed read-only deployment preflight was accepted")
 
     def fake_record(post_id: int, body: dict[str, Any]) -> dict[str, Any]:
         return {
@@ -2573,7 +3101,10 @@ def self_test() -> dict[str, Any]:
         "if rollback_required and not stage_rollback_blocked:", blocked_state_position
     )
     blocked_finalize_guard = driver_source.find(
-        "safe_to_finalize = not stage_rollback_blocked and (", blocked_plugin_rollback_guard
+        "safe_to_finalize = (", blocked_plugin_rollback_guard
+    )
+    deploy_recovery_finalize_guard = driver_source.find(
+        "and not deploy_failure_recovery_blocked", blocked_finalize_guard
     )
     recovery_retention_position = driver_source.find(
         "retain_recovery_helper = deploy_started and not resources_finalized",
@@ -2590,6 +3121,7 @@ def self_test() -> dict[str, Any]:
         <= blocked_state_position
         < blocked_plugin_rollback_guard
         < blocked_finalize_guard
+        < deploy_recovery_finalize_guard
         < recovery_retention_position
     ):
         raise RuntimeError("Einstein stage/browser/finalize or stage/plugin rollback ordering drifted")
@@ -2609,6 +3141,27 @@ def self_test() -> dict[str, Any]:
             "upload_finish": "safe_cleanup",
             "deployed_recovery": "retained",
             "foreign_lock": "retained",
+        },
+        "code_snippets_missing_contract": {
+            "http_404_accepted": True,
+            "exact_http_500_accepted": True,
+            "wrong_500_rejected": True,
+            "same_name_different_id_rejected": True,
+            "managed_absence_without_proof_rejected": (
+                managed_absence_without_proof_rejected
+            ),
+        },
+        "deploy_preflight": {
+            "schema": DEPLOY_PREFLIGHT_SCHEMA,
+            "valid_proof_passed": valid_preflight_proof["passed"],
+            "failed_proof_rejected": True,
+            "before_upload": True,
+        },
+        "deploy_failure_contract": {
+            "finite_pair_allowlist": True,
+            "cross_pair_rejected": True,
+            "strict_booleans": True,
+            "rollback_outcomes": sorted(rollback_outcomes),
         },
         "rollback_activation_contract": True,
         "secure_local_upload": True,
@@ -2819,11 +3372,13 @@ def main() -> int:
     helper_hash = ""
     helper_creation_attempted = False
     deploy_started = False
+    release_resources_may_exist = False
     resources_finalized = False
     deployed = False
     page_url = ""
     einstein_transaction: dict[str, Any] | None = None
     stage_rollback_blocked = False
+    deploy_failure_recovery_blocked = False
     einstein_public_predeploy_sha256 = ""
     before_plugin_contract: dict[str, Any] = {}
     created_cleanup_rows: list[dict[str, Any]] = []
@@ -3215,7 +3770,20 @@ def main() -> int:
             raise RuntimeError("Live helper inspection did not confirm the exact artifact contract")
         result["checks"]["live_before"] = inspect
 
+        preflight_response, preflight = call_helper("deploy_preflight", timeout=120)
+        require_response(preflight_response, "Read-only deployment preflight")
+        preflight_proof = deploy_preflight_proof(
+            preflight,
+            before_version=str(before_plugin_contract["version"]),
+            artifact_bytes=int(artifact_proof["archive_bytes"]),
+            artifact_uncompressed_bytes=int(artifact_proof["uncompressed_bytes"]),
+        )
+        result["checks"]["deploy_preflight"] = preflight_proof
+        if preflight_proof["passed"] is not True:
+            raise RuntimeError("Read-only deployment preflight did not pass")
+
         if artifact_mode == "upload":
+            release_resources_may_exist = True
             result["checks"]["artifact_upload"] = upload_local_artifact()
             upload_status_response, upload_status = call_helper("status", timeout=60)
             require_response(upload_status_response, "Verified upload status")
@@ -3242,8 +3810,23 @@ def main() -> int:
                 "total_chunks": int(upload_state.get("total_chunks") or 0),
             }
 
+        release_resources_may_exist = True
         deploy_started = True
         deploy_response, deploy = call_helper("deploy", timeout=360)
+        if not 200 <= deploy_response.status_code < 300:
+            deploy_failure = deploy_failure_proof(
+                deploy_response, deploy
+            )
+            result["checks"]["deploy_failure"] = deploy_failure
+            deploy_failure_recovery_blocked = (
+                deploy_failure.get("contract_valid") is not True
+                or deploy_failure.get("rollback_outcome") == "failed"
+                or (
+                    deploy_failure.get("failure_stage")
+                    in DEPLOY_FAILURE_REQUIRES_ROLLBACK_STAGES
+                    and deploy_failure.get("rollback_outcome") != "succeeded"
+                )
+            )
         require_response(deploy_response, "Guarded plugin deployment")
         deployed = True
         plugin_after = deploy.get("plugin") if isinstance(deploy.get("plugin"), dict) else {}
@@ -3675,6 +4258,7 @@ def main() -> int:
                     }
                     if rollback_confirmed:
                         deployed = False
+                        deploy_failure_recovery_blocked = False
                 except Exception as rollback_error:
                     result["checks"]["failure_rollback"] = {
                         "confirmed": False,
@@ -3684,10 +4268,14 @@ def main() -> int:
             # Never discard a possibly required rollback backup when deployment
             # state cannot be established. Activation failures occur before
             # deploy_started and are safe to finalize without release state.
-            safe_to_finalize = not stage_rollback_blocked and (
-                not deploy_started
-                or (status_confirmed and not rollback_required)
-                or rollback_confirmed
+            safe_to_finalize = (
+                not stage_rollback_blocked
+                and not deploy_failure_recovery_blocked
+                and (
+                    not deploy_started
+                    or (status_confirmed and not rollback_required)
+                    or rollback_confirmed
+                )
             )
             if safe_to_finalize:
                 try:
@@ -3712,6 +4300,9 @@ def main() -> int:
                 result["checks"]["failure_finalize"] = {
                     "resource_cleanup_complete": False,
                     "skipped_to_preserve_recovery": True,
+                    "deploy_failure_recovery_blocked": (
+                        deploy_failure_recovery_blocked
+                    ),
                 }
     finally:
         retain_recovery_helper = deploy_started and not resources_finalized
@@ -3734,6 +4325,9 @@ def main() -> int:
                         artifact_entry_count=int(artifact_proof["entry_count"]),
                         artifact_uncompressed_bytes=int(
                             artifact_proof["uncompressed_bytes"]
+                        ),
+                        resources_known_absent=(
+                            resources_finalized or not release_resources_may_exist
                         ),
                         created_cleanup_rows=created_cleanup_rows,
                     )
@@ -3758,7 +4352,9 @@ def main() -> int:
                 except Exception as cleanup_error:
                     cleanup_failure = cleanup_error
                     continue
-                if cleanup_get.status_code == 404:
+                # A missing item response only skips another delete attempt;
+                # collection and route absence are still proved below.
+                if is_exact_missing_snippet_response(cleanup_get):
                     continue
                 try:
                     independently_remove_snippet(
@@ -3782,34 +4378,33 @@ def main() -> int:
                 except Exception as cleanup_error:
                     cleanup_failure = cleanup_error
             residual_cleanup_rows = []
-            for cleanup_row in created_cleanup_rows:
-                try:
-                    cleanup_get = client.request(
-                        "GET",
-                        f"code-snippets/v1/snippets/{int(cleanup_row['id'])}",
-                        timeout=60,
-                    )
-                    cleanup_absent = cleanup_get.status_code == 404
-                except Exception as cleanup_error:
-                    cleanup_failure = cleanup_error
-                    cleanup_absent = False
-                if not cleanup_absent:
-                    residual_cleanup_rows.append(int(cleanup_row["id"]))
-            if residual_cleanup_rows:
-                cleanup_failure = RuntimeError("Secondary cleanup helper absence could not be proved")
-
+            secondary_route_statuses: dict[int, int] = {}
+            secondary_get_responses: dict[int, requests.Response] = {}
             helper_absent = False
             helper_get_status = 0
+            helper_get_missing_exact = False
             route_after_status = 0
             snippet_count_after: int | None = None
             try:
-                snippets_after = client.all_snippets()
-                snippet_count_after = len(snippets_after)
-                helper_absent = all(
-                    (helper_id is None or int(row.get("id") or 0) != helper_id)
-                    and str(row.get("name") or "") != helper_name
-                    for row in snippets_after
-                )
+                if len(created_cleanup_rows) > 12:
+                    raise RuntimeError("Secondary cleanup helper bound was exceeded")
+                for cleanup_row in created_cleanup_rows:
+                    cleanup_id_value = int(cleanup_row["id"])
+                    cleanup_get = client.request(
+                        "GET",
+                        f"code-snippets/v1/snippets/{cleanup_id_value}",
+                        timeout=60,
+                    )
+                    secondary_get_responses[cleanup_id_value] = cleanup_get
+                    cleanup_route = str(cleanup_row.get("route") or "")
+                    if not cleanup_route.startswith(f"{ROUTE_NAMESPACE}/cleanup-"):
+                        raise RuntimeError("Secondary cleanup helper route is invalid")
+                    cleanup_route_after = client.request(
+                        "POST", cleanup_route, json_body={}, timeout=60
+                    )
+                    secondary_route_statuses[cleanup_id_value] = (
+                        cleanup_route_after.status_code
+                    )
                 if helper_id is None:
                     helper_get_status = int(
                         (cleanup_proof or {}).get("target_get_status") or 0
@@ -3819,16 +4414,48 @@ def main() -> int:
                         "GET", f"code-snippets/v1/snippets/{helper_id}", timeout=60
                     )
                     helper_get_status = helper_get_after.status_code
+                    helper_get_missing_exact = is_exact_missing_snippet_response(
+                        helper_get_after
+                    )
                 route_after = client.request(
                     "POST", route, json_body={"action": "inspect"}, timeout=60
                 )
                 route_after_status = route_after.status_code
+
+                # One final collection snapshot is authoritative for the main
+                # helper and every secondary bridge after all item/route probes.
+                snippets_after = client.all_snippets()
+                snippet_count_after = len(snippets_after)
+                helper_absent = snippet_absent_from_collection(
+                    snippets_after,
+                    snippet_id=helper_id or 0,
+                    snippet_name=helper_name,
+                )
+                if helper_id is None:
+                    helper_get_missing_exact = helper_absent
+                for cleanup_row in created_cleanup_rows:
+                    cleanup_id_value = int(cleanup_row["id"])
+                    cleanup_get = secondary_get_responses.get(cleanup_id_value)
+                    if cleanup_get is None or not snippet_absence_is_proved(
+                        cleanup_get,
+                        snippets_after,
+                        snippet_id=cleanup_id_value,
+                        snippet_name=str(cleanup_row["name"]),
+                        route_status=secondary_route_statuses.get(
+                            cleanup_id_value, 0
+                        ),
+                    ):
+                        residual_cleanup_rows.append(cleanup_id_value)
             except Exception as cleanup_error:
                 cleanup_failure = cleanup_error
+            if residual_cleanup_rows:
+                cleanup_failure = RuntimeError(
+                    "Secondary cleanup helper absence could not be proved"
+                )
 
             main_absence_proved = (
                 helper_absent
-                and helper_get_status == 404
+                and helper_get_missing_exact
                 and route_after_status == 404
                 and cleanup_proof is not None
                 and cleanup_proof.get("release_resource_cleanup_proved") is True
@@ -3838,8 +4465,14 @@ def main() -> int:
             if cleanup_proof is not None:
                 cleanup_proof["secondary_helpers_created"] = len(created_cleanup_rows)
                 cleanup_proof["secondary_helpers_absent"] = not residual_cleanup_rows
+                cleanup_proof["secondary_helper_route_statuses"] = (
+                    secondary_route_statuses
+                )
                 cleanup_proof["main_helper_absent_from_collection"] = helper_absent
                 cleanup_proof["main_helper_get_status"] = helper_get_status
+                cleanup_proof["main_helper_get_missing_exact"] = (
+                    helper_get_missing_exact
+                )
                 cleanup_proof["main_route_status"] = route_after_status
                 cleanup_proof["snippet_count_after"] = snippet_count_after
                 result["checks"]["independent_helper_cleanup"] = cleanup_proof
@@ -3854,6 +4487,7 @@ def main() -> int:
                     "target_absent": False,
                     "main_helper_absent_from_collection": helper_absent,
                     "main_helper_get_status": helper_get_status,
+                    "main_helper_get_missing_exact": helper_get_missing_exact,
                     "main_route_status": route_after_status,
                     "secondary_helpers_absent": not residual_cleanup_rows,
                     "release_resource_cleanup_proved": bool(

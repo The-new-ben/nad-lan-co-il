@@ -528,6 +528,95 @@ add_action( 'rest_api_init', function () {
 				);
 			}
 
+			if ( 'deploy_preflight' === $action ) {
+				$target_readable = false;
+				$target_active   = false;
+				$target_version  = '';
+				$target_files    = 0;
+				$target_bytes    = 0;
+				try {
+					$live            = $plugin_state();
+					$target_readable = true;
+					$target_active   = true === (bool) $live['active'];
+					$target_version  = (string) $live['version'];
+					$target_files    = (int) $live['inventory']['file_count'];
+					$target_bytes    = (int) $live['inventory']['bytes'];
+				} catch ( Throwable $error ) {
+					// Return only coarse allowlisted diagnostics; never serialize the exception.
+				}
+
+				$disk_free = false;
+				try {
+					$disk_free = @disk_free_space( WP_CONTENT_DIR );
+				} catch ( Throwable $error ) {
+					// A disabled/unavailable probe is reported only as measurable=false.
+				}
+				$disk_measurable = false !== $disk_free;
+				$disk_free_bytes = $disk_measurable ? (int) $disk_free : 0;
+				$disk_required   = $target_bytes + $artifact_uncompressed_bytes + $artifact_bytes + 20 * 1024 * 1024;
+				$disk_sufficient = $target_readable && $disk_measurable && $disk_free_bytes >= $disk_required;
+				$backup_root     = $upgrade_root . '/.nadlan-unit-journey-' . substr( hash( 'sha256', $run_id ), 0, 20 );
+				$root_safe       = false;
+				$root_writable   = false;
+				$backup_absent   = false;
+				try {
+					$root_exists   = @file_exists( $upgrade_root );
+					$root_safe     =
+						$upgrade_root === wp_normalize_path( WP_CONTENT_DIR . '/upgrade' )
+						&& ! @is_link( $upgrade_root )
+						&& ( ! $root_exists || @is_dir( $upgrade_root ) );
+					$root_writable = $root_safe && (
+						$root_exists
+						? @is_writable( $upgrade_root )
+						: ( ! @is_link( WP_CONTENT_DIR ) && @is_dir( WP_CONTENT_DIR ) && @is_writable( WP_CONTENT_DIR ) )
+					);
+					$backup_absent = ! @file_exists( $backup_root ) && ! @is_link( $backup_root );
+				} catch ( Throwable $error ) {
+					// Filesystem probe failures remain coarse false booleans.
+				}
+				$filesystem_available = false;
+				try {
+					$wp_filesystem = $ensure_filesystem();
+					$filesystem_available = is_object( $wp_filesystem );
+				} catch ( Throwable $error ) {
+					// Boolean result only; never serialize the exception or filesystem paths.
+				}
+				$passed =
+					$target_readable
+					&& $target_active
+					&& '' !== $target_version
+					&& $target_files > 0
+					&& $target_bytes > 0
+					&& $disk_sufficient
+					&& $root_safe
+					&& $root_writable
+					&& $backup_absent
+					&& $filesystem_available;
+				return array(
+					'schema'     => 'nadlan-private-release-deploy-preflight/v1',
+					'passed'     => $passed,
+					'target'     => array(
+						'readable'   => $target_readable,
+						'active'     => $target_active,
+						'version'    => $target_version,
+						'file_count' => $target_files,
+						'bytes'      => $target_bytes,
+					),
+					'disk'       => array(
+						'measurable'    => $disk_measurable,
+						'free_bytes'    => $disk_free_bytes,
+						'required_bytes'=> $disk_required,
+						'sufficient'    => $disk_sufficient,
+					),
+					'upgrade'    => array(
+						'root_safe'         => $root_safe,
+						'root_writable'     => $root_writable,
+						'backup_path_absent'=> $backup_absent,
+					),
+					'filesystem' => array( 'available' => $filesystem_available ),
+				);
+			}
+
 			if ( 'status' === $action ) {
 				try {
 					$live = $plugin_state();
@@ -838,10 +927,26 @@ add_action( 'rest_api_init', function () {
 						);
 				}
 				if ( ! $valid_source ) {
-					return new WP_Error( 'nadlan_release_artifact_identity_invalid', 'Immutable artifact identity is invalid.', array( 'status' => 400 ) );
+					return new WP_Error(
+						'nadlan_release_artifact_identity_invalid',
+						'Immutable artifact identity is invalid.',
+						array(
+							'status'              => 400,
+							'failure_stage'       => 'request_validation',
+							'failure_reason_code' => 'artifact_identity_invalid',
+						)
+					);
 				}
 				if ( ! $acquire_lock() ) {
-					return new WP_Error( 'nadlan_release_locked', 'Another release owns the deployment lock.', array( 'status' => 409 ) );
+					return new WP_Error(
+						'nadlan_release_locked',
+						'Another release owns the deployment lock.',
+						array(
+							'status'              => 409,
+							'failure_stage'       => 'lock_acquisition',
+							'failure_reason_code' => 'deployment_lock_unavailable',
+						)
+					);
 				}
 
 				if ( isset( $state['phase'] ) && in_array( $state['phase'], array( 'deployed', 'page_ready' ), true ) ) {
@@ -849,7 +954,15 @@ add_action( 'rest_api_init', function () {
 						$live = $plugin_state();
 						if ( $expected_version === $live['version'] ) {
 							if ( ! $cleanup_upload_temp() ) {
-								return new WP_Error( 'nadlan_release_upload_cleanup_failed', 'Run-scoped upload temp cleanup could not be verified.', array( 'status' => 500 ) );
+								return new WP_Error(
+									'nadlan_release_upload_cleanup_failed',
+									'Run-scoped upload temp cleanup could not be verified.',
+									array(
+										'status'              => 500,
+										'failure_stage'       => 'idempotent_cleanup',
+										'failure_reason_code' => 'artifact_cleanup_failed',
+									)
+								);
 							}
 							return array(
 								'idempotent'          => true,
@@ -881,40 +994,53 @@ add_action( 'rest_api_init', function () {
 					$temp_file = '';
 					return $absent && $cleanup_upload_temp();
 				};
+				$failure_stage       = 'preflight';
+				$failure_reason_code = 'plugin_state_unavailable';
 				try {
 					$before = $plugin_state();
 					if ( ! $before['active'] ) {
+						$failure_reason_code = 'plugin_inactive';
 						throw new RuntimeException( 'Exact nadlan-config plugin is not active.' );
 					}
 					if ( ! empty( $state['backup_digest'] ) ) {
+						$failure_reason_code = 'prior_backup_present';
 						throw new RuntimeException( 'A prior backup already exists for this run.' );
 					}
 
 					require_once ABSPATH . 'wp-admin/includes/file.php';
+					$failure_stage = 'artifact_acquisition';
 					if ( 'url' === $artifact_mode ) {
+						$failure_reason_code = 'artifact_download_failed';
 						$download_url = add_query_arg( 'nlcb', rawurlencode( $run_id ), $artifact_url );
 						$temp_file = download_url( $download_url, 120 );
 						if ( is_wp_error( $temp_file ) ) {
 							throw new RuntimeException( 'Immutable artifact download failed.' );
 						}
 					} else {
+						$failure_reason_code = 'upload_path_unavailable';
 						$temp_file = $upload_path;
 						if ( $upload_path !== wp_normalize_path( (string) $state['upload_path'] ) || is_link( $upload_path ) || ! is_file( $upload_path ) ) {
 							throw new RuntimeException( 'Recorded verified upload path is unavailable.' );
 						}
 					}
+					$failure_stage       = 'artifact_verification';
+					$failure_reason_code = 'artifact_hash_mismatch';
 					$download_hash = @hash_file( 'sha256', $temp_file );
 					if ( false === $download_hash || ! hash_equals( $artifact_sha256, $download_hash ) ) {
 						throw new RuntimeException( 'Immutable artifact SHA-256 mismatch.' );
 					}
+					$failure_reason_code = 'artifact_zip_invalid';
 					$zip_proof = $validate_zip( $temp_file );
 					if (
 						$artifact_bytes !== (int) $zip_proof['archive_bytes']
 						|| $artifact_entry_count !== (int) $zip_proof['entry_count']
 						|| $artifact_uncompressed_bytes !== (int) $zip_proof['uncompressed_bytes']
 					) {
+						$failure_reason_code = 'artifact_contract_mismatch';
 						throw new RuntimeException( 'Artifact ZIP differs from its embedded entry contract.' );
 					}
+					$failure_stage       = 'capacity_check';
+					$failure_reason_code = 'disk_space_unavailable';
 					$disk_free = disk_free_space( WP_CONTENT_DIR );
 					$disk_required =
 						(int) $before['inventory']['bytes']
@@ -922,6 +1048,7 @@ add_action( 'rest_api_init', function () {
 						+ (int) $zip_proof['archive_bytes']
 						+ 20 * 1024 * 1024;
 					if ( false === $disk_free || $disk_free < $disk_required ) {
+						$failure_reason_code = false === $disk_free ? 'disk_space_unavailable' : 'disk_space_insufficient';
 						throw new RuntimeException( 'Free disk space is insufficient for active, incoming, and backup plugin copies.' );
 					}
 					$disk_proof = array(
@@ -930,31 +1057,42 @@ add_action( 'rest_api_init', function () {
 						'sufficient'     => true,
 					);
 
+					$failure_stage       = 'backup_prepare';
+					$failure_reason_code = 'backup_destination_unsafe';
 					$backup_root = $upgrade_root . '/.nadlan-unit-journey-' . substr( hash( 'sha256', $run_id ), 0, 20 );
 					$backup_path = $backup_root . '/nadlan-config';
 					if ( 0 !== strpos( $backup_root, $upgrade_root . '/' ) || file_exists( $backup_root ) ) {
 						throw new RuntimeException( 'Scoped backup destination is not empty and exact.' );
 					}
+					$failure_reason_code = 'filesystem_unavailable';
 					$wp_filesystem = $ensure_filesystem();
+					$failure_reason_code = 'upgrade_directory_prepare_failed';
 					if ( ! $wp_filesystem->exists( $upgrade_root ) && ! $wp_filesystem->mkdir( $upgrade_root, FS_CHMOD_DIR ) ) {
 						throw new RuntimeException( 'WordPress upgrade directory could not be created.' );
 					}
+					$failure_reason_code = 'backup_root_create_failed';
 					if ( ! $wp_filesystem->mkdir( $backup_root, FS_CHMOD_DIR ) ) {
 						throw new RuntimeException( 'Scoped backup root could not be created.' );
 					}
+					$failure_reason_code = 'backup_guard_write_failed';
 					$deny_written  = $wp_filesystem->put_contents( $backup_root . '/.htaccess', "Deny from all\n", FS_CHMOD_FILE );
 					$index_written = $wp_filesystem->put_contents( $backup_root . '/index.php', "<?php\nhttp_response_code(404);\nexit;\n", FS_CHMOD_FILE );
 					if ( ! $deny_written || ! $index_written ) {
 						$wp_filesystem->delete( $backup_root, true, 'd' );
 						throw new RuntimeException( 'Scoped backup access guards could not be written.' );
 					}
+					$failure_stage       = 'backup_copy';
+					$failure_reason_code = 'plugin_backup_copy_failed';
 					$copied = copy_dir( $target_path, $backup_path );
 					if ( is_wp_error( $copied ) ) {
 						$wp_filesystem->delete( $backup_root, true, 'd' );
 						throw new RuntimeException( 'Scoped plugin backup failed.' );
 					}
+					$failure_stage       = 'backup_verify';
+					$failure_reason_code = 'backup_inventory_failed';
 					$backup_inventory = $inventory( $backup_path );
 					if ( ! hash_equals( (string) $before['inventory']['digest'], (string) $backup_inventory['digest'] ) ) {
+						$failure_reason_code = 'backup_digest_mismatch';
 						$wp_filesystem->delete( $backup_root, true, 'd' );
 						throw new RuntimeException( 'Scoped plugin backup digest mismatch.' );
 					}
@@ -968,8 +1106,12 @@ add_action( 'rest_api_init', function () {
 						'before_active'  => $before['active'],
 						'artifact_sha256'=> $artifact_sha256,
 					) );
+					$failure_stage       = 'backup_commit';
+					$failure_reason_code = 'backup_state_persist_failed';
 					$state = $save_state( $next_state );
 
+					$failure_stage       = 'plugin_install';
+					$failure_reason_code = 'plugin_upgrade_failed';
 					require_once ABSPATH . 'wp-admin/includes/class-wp-upgrader.php';
 					$skin     = new Automatic_Upgrader_Skin();
 					$upgrader = new Plugin_Upgrader( $skin );
@@ -977,18 +1119,26 @@ add_action( 'rest_api_init', function () {
 					if ( is_wp_error( $result ) || true !== $result ) {
 						throw new RuntimeException( 'Plugin_Upgrader did not confirm overwrite installation.' );
 					}
+					$failure_stage       = 'post_install';
+					$failure_reason_code = 'cache_purge_failed';
 					$cache_proof = $purge_caches();
+					$failure_reason_code = 'plugin_state_unavailable';
 					$after = $plugin_state();
 					if ( $expected_version !== $after['version'] || ! $after['active'] ) {
+						$failure_reason_code = 'plugin_contract_mismatch';
 						throw new RuntimeException( 'Installed plugin version or activation state is unexpected.' );
 					}
 					$state['phase']         = 'deployed';
 					$state['after_version'] = $after['version'];
 					$state['after_digest']  = $after['inventory']['digest'];
+					$failure_stage       = 'artifact_cleanup';
+					$failure_reason_code = 'artifact_cleanup_failed';
 					if ( ! $cleanup_deploy_temp() ) {
 						throw new RuntimeException( 'Artifact temp cleanup could not be verified after installation.' );
 					}
 					$state['upload_temp_absent'] = true;
+					$failure_stage       = 'deployment_commit';
+					$failure_reason_code = 'deployment_state_persist_failed';
 					$state = $save_state( $state );
 					return array(
 						'idempotent'   => false,
@@ -1008,14 +1158,17 @@ add_action( 'rest_api_init', function () {
 						'upload_temp_absent'=> true,
 					);
 				} catch ( Throwable $error ) {
-					$rolled_back = false;
-					$state       = get_option( $state_key, array() );
+					$rolled_back     = false;
+					$rollback_outcome = 'not_required';
+					$state           = get_option( $state_key, array() );
 					if ( is_array( $state ) && ! empty( $state['backup_digest'] ) ) {
 						try {
-							$state       = $restore_backup( $state );
-							$rolled_back = true;
+							$state            = $restore_backup( $state );
+							$rolled_back      = true;
+							$rollback_outcome = 'succeeded';
 						} catch ( Throwable $rollback_error ) {
-							$rolled_back = false;
+							$rolled_back      = false;
+							$rollback_outcome = 'failed';
 						}
 					} elseif ( is_string( $backup_root ) && '' !== $backup_root ) {
 						$allowed = $upgrade_root . '/.nadlan-unit-journey-' . substr( hash( 'sha256', $run_id ), 0, 20 );
@@ -1032,7 +1185,14 @@ add_action( 'rest_api_init', function () {
 					return new WP_Error(
 						'nadlan_release_deploy_failed',
 						'Guarded plugin deployment failed.',
-						array( 'status' => 500, 'rolled_back' => $rolled_back, 'upload_temp_absent' => $temp_absent )
+						array(
+							'status'              => 500,
+							'rolled_back'         => $rolled_back,
+							'rollback_outcome'    => $rollback_outcome,
+							'upload_temp_absent'  => $temp_absent,
+							'failure_stage'       => $failure_stage,
+							'failure_reason_code' => $failure_reason_code,
+						)
 					);
 				} finally {
 					$cleanup_deploy_temp();
