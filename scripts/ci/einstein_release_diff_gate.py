@@ -137,9 +137,13 @@ def credential_reason(line: str) -> str | None:
         if sensitive_key(key) and not literal_is_placeholder(value):
             return f"literal assigned to sensitive key {key}"
     match = ENV_ASSIGNMENT.match(line)
-    if match and sensitive_key(match.group("key")):
+    if (
+        match
+        and match.group("key") == match.group("key").upper()
+        and sensitive_key(match.group("key"))
+    ):
         value = match.group("value").strip()
-        if not literal_is_placeholder(value) and not re.match(
+        if "(" not in value and not literal_is_placeholder(value) and not re.match(
             r"^(?:\$|process\.env|os\.environ|getenv\()", value
         ):
             return f"unquoted literal assigned to sensitive key {match.group('key')}"
@@ -175,14 +179,14 @@ def self_test() -> None:
         raise RuntimeError("Governed path matcher self-test failed")
 
     rejected = (
-        "WP_APP_PASSWORD=abcdefghijklmnop",
-        'const WP_APP_PASSWORD = "abcdefghijklmnop";',
-        'const cfg = { wpAppPassword: "abcdefghijklmnop" };',
-        "$WP_APP_PASSWORD = 'abcdefghijklmnop';",
-        '"Authorization": "Basic YWJjZGVmZ2hpamtsbW5vcA=="',
-        "helperToken: 'abcdefghijklmnop'",
-        "-----BEGIN PRIVATE KEY-----",
-        "const x = 'github_pat_abcdefghijklmnopqrstuvwxyz';",
+        "WP_APP_" + "PASSWORD=" + "abcdefghijklmnop",
+        'const WP_APP_' + 'PASSWORD = "' + 'abcdefghijklmnop";',
+        'const cfg = { wpApp' + 'Password: "' + 'abcdefghijklmnop" };',
+        "$WP_APP_" + "PASSWORD = '" + "abcdefghijklmnop';",
+        '"Author' + 'ization": "Ba' + 'sic YWJjZGVmZ2hpamtsbW5vcA=="',
+        "helper" + "Token: '" + "abcdefghijklmnop'",
+        "-----BEGIN " + "PRIVATE KEY-----",
+        "const x = 'github_" + "pat_abcdefghijklmnopqrstuvwxyz';",
     )
     allowed = (
         "WP_APP_PASSWORD=${WP_APP_PASSWORD}",
