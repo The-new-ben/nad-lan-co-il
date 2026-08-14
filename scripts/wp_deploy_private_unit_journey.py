@@ -54,8 +54,10 @@ MARKER_RE = re.compile(r"__[A-Z0-9_]+__")
 EINSTEIN_STAGE_SCHEMA = "nadlan-wordpress-private-stage-request/v1"
 EINSTEIN_STAGE_SLUG = "sandbox-einstein-tower-flagship-v3-review"
 EINSTEIN_CANONICAL_POST_ID = 4867
+EINSTEIN_CANONICAL_PATH = "/projects/einstein-tower/"
 EINSTEIN_PROJECT_CONTRACT_ID = "einstein-tower-6885-32"
 EINSTEIN_PRIVATE_MARKER = "private-unit-journey-v2"
+EINSTEIN_STAGE_SUPPLEMENTAL_META = {"claim_status": "unclaimed"}
 EINSTEIN_ACCEPTANCE_SCHEMA = "nadlan-einstein-flagship-live-acceptance/v2"
 EINSTEIN_ACCEPTANCE_VIEWPORTS = ("320x568", "390x844", "568x320", "1280x800")
 EINSTEIN_ACCEPTANCE_ACCESSIBILITY_VIEWPORTS = ("390x844", "568x320")
@@ -79,6 +81,8 @@ EINSTEIN_ACCEPTANCE_ASSETS = (
 MISSING_SNIPPET_CODE = "rest_cannot_get"
 MISSING_SNIPPET_MESSAGE = "The snippet could not be found."
 DEPLOY_PREFLIGHT_SCHEMA = "nadlan-private-release-deploy-preflight/v1"
+RECOVERY_REPORT_SCHEMA = "nadlan-private-release-retained-recovery/v1"
+RECOVERY_ADOPTION_SCHEMA = "nadlan-private-release-adopt-exact-rollback/v1"
 DEPLOY_UNMEASURED_CAPACITY_BYTES = 96 * 1024 * 1024
 DEPLOY_FAILURE_CONTRACT = {
     "request_validation": ("artifact_identity_invalid",),
@@ -103,21 +107,30 @@ DEPLOY_FAILURE_CONTRACT = {
     "backup_prepare": (
         "backup_destination_unsafe",
         "filesystem_unavailable",
-        "upgrade_directory_prepare_failed",
         "backup_root_create_failed",
         "backup_guard_write_failed",
     ),
     "backup_copy": ("plugin_backup_copy_failed",),
-    "backup_verify": ("backup_inventory_failed", "backup_digest_mismatch"),
+    "backup_verify": (
+        "backup_inventory_failed",
+        "backup_digest_mismatch",
+        "preinstall_storage_invariant_failed",
+        "preinstall_artifact_rehash_failed",
+        "preinstall_backup_reinventory_failed",
+    ),
     "backup_commit": ("backup_state_persist_failed",),
     "plugin_install": ("plugin_upgrade_failed",),
     "post_install": (
         "cache_purge_failed",
         "plugin_state_unavailable",
         "plugin_contract_mismatch",
+        "postinstall_backup_reinventory_failed",
     ),
     "artifact_cleanup": ("artifact_cleanup_failed",),
-    "deployment_commit": ("deployment_state_persist_failed",),
+    "deployment_commit": (
+        "deployment_storage_proof_failed",
+        "deployment_state_persist_failed",
+    ),
 }
 DEPLOY_FAILURE_CODES = {
     "nadlan_release_artifact_identity_invalid",
@@ -125,6 +138,13 @@ DEPLOY_FAILURE_CODES = {
     "nadlan_release_upload_cleanup_failed",
     "nadlan_release_deploy_failed",
 }
+DEPLOY_EXISTENCE_KEYS = (
+    "target_plugin",
+    "storage_root",
+    "artifact_spool",
+    "backup_root",
+    "backup_plugin",
+)
 DEPLOY_FAILURE_REQUIRES_ROLLBACK_STAGES = {
     "plugin_install",
     "post_install",
@@ -154,6 +174,10 @@ DEPLOY_FAILURE_CODE_STAGES = {
 
 class EinsteinStageRecoveryBlocked(RuntimeError):
     """A stage write may have landed, but exact rollback scope cannot be proved."""
+
+
+class RetainedRunRecoveryBlocked(RuntimeError):
+    """Exact retained-run ownership or reconciliation could not be proved."""
 
 
 def sha256_bytes(value: bytes) -> str:
@@ -409,16 +433,25 @@ def assert_owned_einstein_stage(record: dict[str, Any]) -> None:
         post_id < 1
         or post_id == EINSTEIN_CANONICAL_POST_ID
         or record.get("slug") != EINSTEIN_STAGE_SLUG
+        or record.get("status") != "publish"
+        or not str(record.get("password") or "")
         or meta.get("_nadlan_private_unit_journey") != EINSTEIN_PRIVATE_MARKER
         or int(meta.get("_nadlan_flagship_source_post_id") or 0) != EINSTEIN_CANONICAL_POST_ID
         or meta.get("project_contract_id") != EINSTEIN_PROJECT_CONTRACT_ID
         or meta.get("source_id") != ""
+        or meta.get("claim_status") != "unclaimed"
+        or meta.get("owner_user_id") not in (None, "", 0, False)
+        or meta.get("verified_at") not in (None, "", 0, False)
     ):
         raise RuntimeError("Existing slug is not the exact owned Einstein private stage")
 
 
 def assert_einstein_stage_readback(
-    record: dict[str, Any], request_payload: dict[str, Any], post_password: str
+    record: dict[str, Any],
+    request_payload: dict[str, Any],
+    post_password: str,
+    *,
+    require_exact_meta: bool = True,
 ) -> dict[str, Any]:
     body = request_payload["body"]
     expected_meta = body["meta"]
@@ -437,6 +470,41 @@ def assert_einstein_stage_readback(
     for key, expected_value in expected_meta.items():
         if key not in observed["meta"] or observed["meta"][key] != expected_value:
             raise RuntimeError(f"Einstein stage meta readback mismatch: {key}")
+    neutral_meta_keys: list[str] = []
+    supplemental_meta_keys: list[str] = []
+    if require_exact_meta:
+        for key, observed_value in observed["meta"].items():
+            if key in expected_meta:
+                continue
+            if key in EINSTEIN_STAGE_SUPPLEMENTAL_META:
+                if observed_value != EINSTEIN_STAGE_SUPPLEMENTAL_META[key]:
+                    raise RuntimeError(
+                        f"Einstein stage supplemental REST meta mismatch: {key}"
+                    )
+                supplemental_meta_keys.append(key)
+                continue
+            neutral_default = (
+                observed_value is None
+                or observed_value is False
+                or (
+                    isinstance(observed_value, int)
+                    and not isinstance(observed_value, bool)
+                    and observed_value == 0
+                )
+                or observed_value == ""
+                or observed_value == []
+                or observed_value == {}
+            )
+            if not neutral_default:
+                raise RuntimeError(
+                    f"Einstein stage has non-neutral unpinned REST meta: {key}"
+                )
+            neutral_meta_keys.append(key)
+        missing_supplemental = set(EINSTEIN_STAGE_SUPPLEMENTAL_META).difference(
+            observed["meta"]
+        )
+        if missing_supplemental:
+            raise RuntimeError("Einstein stage supplemental REST meta is missing")
     hashes = request_payload["contract_hashes"]
     content_hash = sha256_text(observed["content"])
     meta_hashes = {
@@ -471,6 +539,14 @@ def assert_einstein_stage_readback(
         == EINSTEIN_CANONICAL_POST_ID,
         "project_contract_exact": observed["meta"].get("project_contract_id")
         == EINSTEIN_PROJECT_CONTRACT_ID,
+        "meta_allowlist_exact": require_exact_meta,
+        "supplemental_meta_exact": (
+            not require_exact_meta
+            or sorted(supplemental_meta_keys)
+            == sorted(EINSTEIN_STAGE_SUPPLEMENTAL_META)
+        ),
+        "neutral_rest_default_count": len(neutral_meta_keys),
+        "meta_key_count": len(observed["meta"]),
         "article_sha256": content_hash,
         "meta_hashes": meta_hashes,
     }
@@ -487,20 +563,19 @@ def write_einstein_stage(
         get_authenticated_post(client, EINSTEIN_CANONICAL_POST_ID)
     )
     before_public_hash = sha256_bytes(exact_json_bytes(before_public))
-    prior_snapshot: dict[str, Any] | None = None
-    target_id: int | None = None
     if matches:
         assert_owned_einstein_stage(matches[0])
-        target_id = int(matches[0]["id"])
-        prior_snapshot = wordpress_post_snapshot(get_authenticated_post(client, target_id))
+        raise RuntimeError(
+            "Einstein guarded staging is create-only; an existing exact slug requires a separate raw-meta transaction"
+        )
 
     body = copy.deepcopy(request_payload["body"])
     body["password"] = post_password
-    route = "wp/v2/nadlan_project" if target_id is None else f"wp/v2/nadlan_project/{target_id}"
+    route = "wp/v2/nadlan_project"
     transaction: dict[str, Any] = {
-        "post_id": int(target_id or 0),
-        "created_new": prior_snapshot is None,
-        "prior_snapshot": prior_snapshot,
+        "post_id": 0,
+        "created_new": True,
+        "prior_snapshot": None,
         "applied_meta_keys": sorted(body["meta"]),
         "canonical_public_snapshot": before_public,
         "canonical_public_sha256": before_public_hash,
@@ -513,7 +588,14 @@ def write_einstein_stage(
             raise RuntimeError("Einstein stage write returned an unsafe post ID")
         transaction["post_id"] = written_id
         readback = get_authenticated_post(client, written_id)
-        proof = assert_einstein_stage_readback(readback, request_payload, post_password)
+        proof = assert_einstein_stage_readback(
+            readback,
+            request_payload,
+            post_password,
+            require_exact_meta=True,
+        )
+        created_snapshot = wordpress_post_snapshot(readback)
+        created_snapshot_sha256 = sha256_bytes(exact_json_bytes(created_snapshot))
         link = str(readback.get("link") or written.get("link") or "")
         parsed_link = urlparse(link)
         if (
@@ -531,38 +613,105 @@ def write_einstein_stage(
         after_public_hash = sha256_bytes(exact_json_bytes(after_public))
         if not secrets.compare_digest(before_public_hash, after_public_hash):
             raise RuntimeError("Canonical public Einstein post 4867 changed during private staging")
-        transaction.update({"page_url": link, "readback": proof})
+        transaction.update(
+            {
+                "page_url": link,
+                "readback": proof,
+                "created_authenticated_snapshot": created_snapshot,
+                "created_authenticated_snapshot_sha256": created_snapshot_sha256,
+            }
+        )
         return transaction
-    except Exception as error:
+    except Exception:
         try:
-            if prior_snapshot is None:
-                reconciled = exact_stage_matches(client, EINSTEIN_STAGE_SLUG)
-                if len(reconciled) > 1:
+            reconciled = exact_stage_matches(client, EINSTEIN_STAGE_SLUG)
+            if len(reconciled) > 1:
+                raise EinsteinStageRecoveryBlocked(
+                    "Response-lost create produced an ambiguous exact slug"
+                )
+            if reconciled:
+                reconciled_id = int(reconciled[0].get("id") or 0)
+                if reconciled_id < 1 or reconciled_id == EINSTEIN_CANONICAL_POST_ID:
                     raise EinsteinStageRecoveryBlocked(
-                        "Response-lost create produced an ambiguous exact slug"
+                        "Response-lost create returned an unsafe exact-slug ID"
                     )
-                if reconciled:
-                    assert_owned_einstein_stage(reconciled[0])
-                    transaction["post_id"] = int(reconciled[0]["id"])
-                    rollback_einstein_stage(client, transaction)
-                else:
+                reconciled_record = get_authenticated_post(client, reconciled_id)
+                if int(reconciled_record.get("id") or 0) != reconciled_id:
                     raise EinsteinStageRecoveryBlocked(
-                        "Response-lost create has no exact-slug match; recovery scope is unproved"
+                        "Response-lost create authenticated identity changed"
                     )
+                reconciled_proof = assert_einstein_stage_readback(
+                    reconciled_record,
+                    request_payload,
+                    post_password,
+                    require_exact_meta=True,
+                )
+                reconciled_snapshot = wordpress_post_snapshot(reconciled_record)
+                reconciled_link = str(reconciled_record.get("link") or "")
+                parsed_reconciled_link = urlparse(reconciled_link)
+                if (
+                    parsed_reconciled_link.scheme != "https"
+                    or parsed_reconciled_link.hostname != "nad-lan.co.il"
+                    or parsed_reconciled_link.username
+                    or parsed_reconciled_link.password
+                    or parsed_reconciled_link.fragment
+                    or EINSTEIN_STAGE_SLUG not in parsed_reconciled_link.path
+                ):
+                    raise EinsteinStageRecoveryBlocked(
+                        "Response-lost create returned an unsafe exact stage URL"
+                    )
+                reconciled_public = wordpress_post_snapshot(
+                    get_authenticated_post(client, EINSTEIN_CANONICAL_POST_ID)
+                )
+                reconciled_public_sha256 = sha256_bytes(
+                    exact_json_bytes(reconciled_public)
+                )
+                if not secrets.compare_digest(
+                    before_public_hash, reconciled_public_sha256
+                ):
+                    raise EinsteinStageRecoveryBlocked(
+                        "Canonical public post changed during response-lost stage creation"
+                    )
+                transaction["post_id"] = reconciled_id
+                transaction["created_authenticated_snapshot"] = reconciled_snapshot
+                transaction["created_authenticated_snapshot_sha256"] = sha256_bytes(
+                    exact_json_bytes(reconciled_snapshot)
+                )
+                transaction["page_url"] = reconciled_link
+                transaction["readback"] = reconciled_proof
+                transaction["response_lost_reconciled"] = True
+                return transaction
             else:
-                transaction["post_id"] = int(prior_snapshot["id"])
-                rollback_einstein_stage(client, transaction)
-        except Exception as rollback_error:
+                raise EinsteinStageRecoveryBlocked(
+                    "Response-lost create has no exact-slug match; recovery scope is unproved"
+                )
+        except Exception as reconciliation_error:
             raise EinsteinStageRecoveryBlocked(
-                "Einstein stage write became indeterminate and exact rollback is unproved"
-            ) from rollback_error
-        raise error
+                "Einstein stage write became indeterminate and exact commit scope is unproved"
+            ) from reconciliation_error
 
 
 def rollback_einstein_stage(client: "WordpressClient", transaction: dict[str, Any]) -> dict[str, Any]:
     post_id = int(transaction["post_id"])
     prior = transaction.get("prior_snapshot")
     if prior is None:
+        created_snapshot = transaction.get("created_authenticated_snapshot")
+        created_snapshot_sha256 = str(
+            transaction.get("created_authenticated_snapshot_sha256") or ""
+        )
+        if (
+            not isinstance(created_snapshot, dict)
+            or int(created_snapshot.get("id") or 0) != post_id
+            or created_snapshot.get("slug") != EINSTEIN_STAGE_SLUG
+            or not re.fullmatch(r"[a-f0-9]{64}", created_snapshot_sha256)
+            or not secrets.compare_digest(
+                created_snapshot_sha256,
+                sha256_bytes(exact_json_bytes(created_snapshot)),
+            )
+        ):
+            raise EinsteinStageRecoveryBlocked(
+                "Created-stage rollback lacks one exact authenticated snapshot"
+            )
         matches = exact_stage_matches(client, EINSTEIN_STAGE_SLUG)
         if not matches:
             direct = client.request(
@@ -590,7 +739,22 @@ def rollback_einstein_stage(client: "WordpressClient", transaction: dict[str, An
             raise EinsteinStageRecoveryBlocked(
                 "Created-stage rollback found an ambiguous or changed exact slug"
             )
-        assert_owned_einstein_stage(matches[0])
+        current_created = get_authenticated_post(client, post_id)
+        current_created_snapshot = wordpress_post_snapshot(current_created)
+        current_created_sha256 = sha256_bytes(
+            exact_json_bytes(current_created_snapshot)
+        )
+        if (
+            int(current_created.get("id") or 0) != post_id
+            or current_created.get("slug") != EINSTEIN_STAGE_SLUG
+            or not secrets.compare_digest(
+                current_created_sha256, created_snapshot_sha256
+            )
+            or current_created_snapshot != created_snapshot
+        ):
+            raise EinsteinStageRecoveryBlocked(
+                "Created-stage rollback found post drift before deletion"
+            )
         response = client.request(
             "DELETE", f"wp/v2/nadlan_project/{post_id}?force=true", timeout=120
         )
@@ -651,7 +815,12 @@ def anonymous_einstein_probes(
     session.headers.update(
         {"User-Agent": "NadLan-Einstein-Private-Stage-Probe/1.0", "Accept": "*/*"}
     )
-    page = session.get(page_url, params={"cb": secrets.token_hex(6)}, timeout=60)
+    page = session.get(
+        page_url,
+        params={"cb": secrets.token_hex(6)},
+        timeout=60,
+        allow_redirects=False,
+    )
     html = page.text
     robots = page.headers.get("X-Robots-Tag", "").lower()
     cache_control = page.headers.get("Cache-Control", "").lower()
@@ -669,6 +838,10 @@ def anonymous_einstein_probes(
     )
     if not (
         page.status_code == 200
+        and not page.history
+        and urlparse(page.url).scheme == "https"
+        and urlparse(page.url).hostname == "nad-lan.co.il"
+        and urlparse(page.url).path == urlparse(page_url).path
         and password_form
         and all(marker not in html for marker in hidden_markers)
         and all(token in robots for token in ("noindex", "nofollow", "noarchive"))
@@ -683,15 +856,18 @@ def anonymous_einstein_probes(
         raise RuntimeError("Anonymous Einstein password-gate or discovery-link proof failed")
 
     direct = session.get(
-        f"{base_url}/wp-json/wp/v2/nadlan_project/{post_id}", timeout=60
+        f"{base_url}/wp-json/wp/v2/nadlan_project/{post_id}",
+        timeout=60,
+        allow_redirects=False,
     )
-    if direct.status_code != 404:
+    if direct.status_code != 404 or direct.history:
         raise RuntimeError("Anonymous exact Einstein REST ID is enumerable")
 
     slug_response = session.get(
         f"{base_url}/wp-json/wp/v2/nadlan_project",
         params={"slug": EINSTEIN_STAGE_SLUG},
         timeout=60,
+        allow_redirects=False,
     )
     slug_payload: Any = None
     try:
@@ -699,8 +875,9 @@ def anonymous_einstein_probes(
     except ValueError:
         pass
     if not (
-        (slug_response.status_code == 200 and slug_payload == [])
-        or slug_response.status_code == 404
+        not slug_response.history
+        and slug_response.status_code == 200
+        and slug_payload == []
     ):
         raise RuntimeError("Anonymous Einstein REST slug is enumerable")
 
@@ -708,12 +885,17 @@ def anonymous_einstein_probes(
         f"{base_url}/wp-json/wp/v2/search",
         params={"search": "EINSTEIN TOWER", "subtype": "nadlan_project", "per_page": 100},
         timeout=60,
+        allow_redirects=False,
     )
     try:
         search_payload = search_response.json()
     except ValueError:
         search_payload = None
-    if search_response.status_code != 200 or not isinstance(search_payload, list):
+    if (
+        search_response.status_code != 200
+        or search_response.history
+        or not isinstance(search_payload, list)
+    ):
         raise RuntimeError("Anonymous WordPress search probe was unavailable")
     if any(
         isinstance(row, dict)
@@ -726,18 +908,31 @@ def anonymous_einstein_probes(
         raise RuntimeError("Anonymous WordPress search reveals the Einstein private stage")
 
     oembed = session.get(
-        f"{base_url}/wp-json/oembed/1.0/embed", params={"url": page_url}, timeout=60
+        f"{base_url}/wp-json/oembed/1.0/embed",
+        params={"url": page_url},
+        timeout=60,
+        allow_redirects=False,
     )
     embed = session.get(page_url.rstrip("/") + "/embed/", timeout=60, allow_redirects=False)
     feed = session.get(page_url.rstrip("/") + "/feed/", timeout=60, allow_redirects=False)
-    if oembed.status_code != 404 or embed.status_code != 404 or feed.status_code != 404:
+    if (
+        oembed.status_code != 404
+        or embed.status_code != 404
+        or feed.status_code != 404
+        or oembed.history
+        or embed.history
+        or feed.history
+    ):
         raise RuntimeError("Anonymous oEmbed, embed, or feed surface reveals stage existence")
 
     sitemap = session.get(
         f"{base_url}/wp-sitemap-posts-nadlan_project-1.xml",
         params={"cb": secrets.token_hex(6)},
         timeout=60,
+        allow_redirects=False,
     )
+    if sitemap.history or 300 <= sitemap.status_code < 400:
+        raise RuntimeError("Einstein project sitemap probe redirected")
     if sitemap.status_code == 200 and (
         EINSTEIN_STAGE_SLUG in sitemap.text or f">{post_id}<" in sitemap.text
     ):
@@ -765,7 +960,9 @@ def anonymous_einstein_probes(
         asset_robots = response.headers.get("X-Robots-Tag", "").lower()
         if (
             response.status_code != 404
-            or len(response.content) > 64 * 1024
+            or response.history
+            or response.url != asset_url
+            or len(response.content) != 0
             or "no-store" not in asset_cache
             or "noindex" not in asset_robots
         ):
@@ -1255,6 +1452,14 @@ def deploy_failure_proof(
     stage = str(data.get("failure_stage") or "")
     reason = str(data.get("failure_reason_code") or "")
     rollback_outcome = str(data.get("rollback_outcome") or "")
+    existence = data.get("existence") if isinstance(data.get("existence"), dict) else {}
+    existence_valid = (
+        code != "nadlan_release_deploy_failed"
+        or (
+            set(existence) == set(DEPLOY_EXISTENCE_KEYS)
+            and all(isinstance(existence.get(key), bool) for key in DEPLOY_EXISTENCE_KEYS)
+        )
+    )
     rollback_semantics_valid = (
         (stage in DEPLOY_FAILURE_PREBACKUP_STAGES and rollback_outcome == "not_required")
         or (
@@ -1272,6 +1477,7 @@ def deploy_failure_proof(
         and rollback_outcome in {"not_required", "succeeded", "failed"}
         and (data.get("rolled_back") is True) == (rollback_outcome == "succeeded")
         and rollback_semantics_valid
+        and existence_valid
     )
     contract_valid = (
         code in DEPLOY_FAILURE_CODES
@@ -1293,6 +1499,11 @@ def deploy_failure_proof(
             else "not_reported"
         ),
         "upload_temp_absent": data.get("upload_temp_absent") is True,
+        "existence": (
+            {key: existence[key] for key in DEPLOY_EXISTENCE_KEYS}
+            if contract_valid and code == "nadlan_release_deploy_failed"
+            else {}
+        ),
     }
 
 
@@ -1446,6 +1657,8 @@ def deploy_preflight_proof(
         and isinstance(upgrade.get("root_safe"), bool)
         and isinstance(upgrade.get("root_writable"), bool)
         and isinstance(upgrade.get("backup_path_absent"), bool)
+        and isinstance(upgrade.get("storage_scope_exact"), bool)
+        and isinstance(upgrade.get("core_upgrade_disjoint"), bool)
         and isinstance(filesystem.get("available"), bool)
     )
     expected_passed = (
@@ -1456,6 +1669,8 @@ def deploy_preflight_proof(
         and upgrade.get("root_safe") is True
         and upgrade.get("root_writable") is True
         and upgrade.get("backup_path_absent") is True
+        and upgrade.get("storage_scope_exact") is True
+        and upgrade.get("core_upgrade_disjoint") is True
         and filesystem.get("available") is True
         and expected_capacity.get("accepted") is True
     )
@@ -1511,6 +1726,8 @@ def deploy_preflight_proof(
             "root_safe": upgrade.get("root_safe") is True,
             "root_writable": upgrade.get("root_writable") is True,
             "backup_path_absent": upgrade.get("backup_path_absent") is True,
+            "storage_scope_exact": upgrade.get("storage_scope_exact") is True,
+            "core_upgrade_disjoint": upgrade.get("core_upgrade_disjoint") is True,
         },
         "filesystem": {"available": filesystem.get("available") is True},
     }
@@ -1710,8 +1927,22 @@ def render_helper(
     artifact_entry_count: int,
     artifact_uncompressed_bytes: int,
     expected_version: str,
+    page_slug: str = PAGE_SLUG,
+    source_post_id: int = SOURCE_POST_ID,
+    recovery_adoption_enabled: bool = False,
+    external_stage_commit_enabled: bool = False,
+    project_contract_id: str = "",
+    external_stage_body: dict[str, Any] | None = None,
 ) -> str:
     template = TEMPLATE.read_text(encoding="utf-8")
+    external_body = external_stage_body if isinstance(external_stage_body, dict) else {}
+    external_meta = (
+        external_body.get("meta")
+        if isinstance(external_body.get("meta"), dict)
+        else {}
+    )
+    external_meta_bytes = exact_json_bytes(external_meta)
+    supplemental_meta_bytes = exact_json_bytes(EINSTEIN_STAGE_SUPPLEMENTAL_META)
     replacements = {
         "__ROUTE_PATH__": json.dumps(route_path),
         "__TOKEN__": json.dumps(token),
@@ -1725,10 +1956,38 @@ def render_helper(
         "__ARTIFACT_ENTRY_COUNT__": str(int(artifact_entry_count)),
         "__ARTIFACT_UNCOMPRESSED_BYTES__": str(int(artifact_uncompressed_bytes)),
         "__EXPECTED_VERSION__": json.dumps(expected_version),
-        "__SOURCE_POST_ID__": str(SOURCE_POST_ID),
-        "__PAGE_SLUG__": json.dumps(PAGE_SLUG),
+        "__SOURCE_POST_ID__": str(int(source_post_id)),
+        "__PAGE_SLUG__": json.dumps(page_slug),
         "__PAGE_TITLE__": json.dumps(PAGE_TITLE, ensure_ascii=False),
         "__PROJECT_DISPLAY_NAME__": json.dumps(PROJECT_DISPLAY_NAME, ensure_ascii=False),
+        "__RECOVERY_ADOPTION_ENABLED__": (
+            "true" if recovery_adoption_enabled else "false"
+        ),
+        "__EXTERNAL_STAGE_COMMIT_ENABLED__": (
+            "true" if external_stage_commit_enabled else "false"
+        ),
+        "__PROJECT_CONTRACT_ID__": json.dumps(project_contract_id),
+        "__EXTERNAL_STAGE_META_B64__": json.dumps(
+            base64.b64encode(external_meta_bytes).decode("ascii")
+        ),
+        "__EXTERNAL_STAGE_META_SHA256__": json.dumps(
+            sha256_bytes(external_meta_bytes)
+        ),
+        "__EXTERNAL_STAGE_SUPPLEMENTAL_META_B64__": json.dumps(
+            base64.b64encode(supplemental_meta_bytes).decode("ascii")
+        ),
+        "__EXTERNAL_STAGE_SUPPLEMENTAL_META_SHA256__": json.dumps(
+            sha256_bytes(supplemental_meta_bytes)
+        ),
+        "__EXTERNAL_STAGE_TITLE_SHA256__": json.dumps(
+            sha256_text(str(external_body.get("title") or ""))
+        ),
+        "__EXTERNAL_STAGE_CONTENT_SHA256__": json.dumps(
+            sha256_text(str(external_body.get("content") or ""))
+        ),
+        "__EXTERNAL_STAGE_EXCERPT_SHA256__": json.dumps(
+            sha256_text(str(external_body.get("excerpt") or ""))
+        ),
     }
     for marker, value in replacements.items():
         if marker not in template:
@@ -1844,21 +2103,29 @@ add_action( 'rest_api_init', function () {
 			$artifact_uncompressed    = __ARTIFACT_UNCOMPRESSED_BYTES__;
 			$chunk_bytes              = 128 * 1024;
 			$total_chunks             = (int) ceil( $artifact_bytes / $chunk_bytes );
+			$content_root             = wp_normalize_path( WP_CONTENT_DIR );
 			$upgrade_root             = wp_normalize_path( WP_CONTENT_DIR . '/upgrade' );
-			$upload_root              = $upgrade_root . '/.nadlan-unit-journey-upload-' . substr( hash( 'sha256', $release_run_id . '|' . $release_token ), 0, 24 );
+			$storage_name             = '.nadlan-unit-journey-release-' . substr( hash( 'sha256', $release_run_id . '|' . $release_token . '|storage' ), 0, 32 );
+			$storage_root             = $content_root . '/' . $storage_name;
+			$upload_root              = $storage_root . '/artifact';
 			$upload_path              = $upload_root . '/nadlan-config.zip';
 			$state_key                = 'nadlan_unit_journey_state_' . substr( hash( 'sha256', $release_run_id ), 0, 16 );
 			$lock_key                 = 'nadlan_unit_journey_deploy_lock';
 
-			$upload_status = function () use ( $upgrade_root, $upload_root, $upload_path ) {
+			$upload_status = function () use ( $content_root, $upgrade_root, $storage_root, $upload_root, $upload_path ) {
 				clearstatcache( true, $upload_path );
 				$root_exists = file_exists( $upload_root );
 				$file_exists = file_exists( $upload_path );
 				$root_real   = $root_exists ? @realpath( $upload_root ) : false;
 				$file_real   = $file_exists ? @realpath( $upload_path ) : false;
 				$safe        =
-					0 === strpos( $upload_root, $upgrade_root . '/' )
-					&& ! is_link( $upgrade_root )
+					0 === strpos( $storage_root, $content_root . '/.nadlan-unit-journey-release-' )
+					&& $upload_root === $storage_root . '/artifact'
+					&& $upload_path === $upload_root . '/nadlan-config.zip'
+					&& $storage_root !== $upgrade_root
+					&& 0 !== strpos( $storage_root . '/', $upgrade_root . '/' )
+					&& ! is_link( $content_root )
+					&& ! is_link( $storage_root )
 					&& ! is_link( $upload_root )
 					&& ! is_link( $upload_path )
 					&& ( ! $root_exists || ( is_dir( $upload_root ) && false !== $root_real ) )
@@ -1941,19 +2208,48 @@ add_action( 'rest_api_init', function () {
 						if ( ! $status['safe'] ) {
 							throw new RuntimeException( 'Run-scoped upload path is unsafe.' );
 						}
+						require_once ABSPATH . 'wp-admin/includes/file.php';
+						if ( ! WP_Filesystem() ) {
+							throw new RuntimeException( 'WordPress filesystem is unavailable.' );
+						}
+						global $wp_filesystem;
+						if ( ! is_object( $wp_filesystem ) ) {
+							throw new RuntimeException( 'WordPress filesystem object is unavailable.' );
+						}
 						if ( ! $status['absent'] ) {
-							require_once ABSPATH . 'wp-admin/includes/file.php';
-							if ( ! WP_Filesystem() ) {
-								throw new RuntimeException( 'WordPress filesystem is unavailable.' );
-							}
-							global $wp_filesystem;
-							if ( ! is_object( $wp_filesystem ) || ! $wp_filesystem->delete( $upload_root, true, 'd' ) ) {
+							if ( ! $wp_filesystem->delete( $upload_root, true, 'd' ) ) {
 								throw new RuntimeException( 'Run-scoped upload cleanup failed.' );
 							}
 						}
 						$status = $upload_status();
 						if ( ! $status['safe'] || ! $status['absent'] ) {
 							throw new RuntimeException( 'Run-scoped upload absence could not be proved.' );
+						}
+						if ( $wp_filesystem->exists( $storage_root ) ) {
+							if ( is_link( $storage_root ) || ! is_dir( $storage_root ) ) {
+								throw new RuntimeException( 'Run-scoped release root changed before cleanup.' );
+							}
+							$entries = @scandir( $storage_root );
+							if ( false === $entries ) {
+								throw new RuntimeException( 'Run-scoped release root could not be inventoried.' );
+							}
+							$entries = array_values( array_diff( $entries, array( '.', '..' ) ) );
+							if ( array_diff( $entries, array( '.htaccess', 'index.php' ) ) ) {
+								throw new RuntimeException( 'Run-scoped release root contains an unexpected child.' );
+							}
+							if ( in_array( 'index.php', $entries, true ) && ! $wp_filesystem->delete( $storage_root . '/index.php', false, 'f' ) ) {
+								throw new RuntimeException( 'Run-scoped release index cleanup failed.' );
+							}
+							if ( in_array( '.htaccess', $entries, true ) && ! $wp_filesystem->delete( $storage_root . '/.htaccess', false, 'f' ) ) {
+								throw new RuntimeException( 'Run-scoped release deny-file cleanup failed.' );
+							}
+							if ( ! $wp_filesystem->delete( $storage_root, false, 'd' ) ) {
+								throw new RuntimeException( 'Run-scoped release root cleanup failed.' );
+							}
+						}
+						clearstatcache( true, $storage_root );
+						if ( $wp_filesystem->exists( $storage_root ) || file_exists( $storage_root ) || is_link( $storage_root ) ) {
+							throw new RuntimeException( 'Run-scoped release root absence could not be proved.' );
 						}
 						$current_state = get_option( $state_key, false );
 						if (
@@ -2012,6 +2308,8 @@ add_action( 'rest_api_init', function () {
 				if (
 					! $status['safe']
 					|| ! $status['absent']
+					|| file_exists( $storage_root )
+					|| is_link( $storage_root )
 					|| false !== get_option( $state_key, false )
 					|| false !== get_option( $lock_key, false )
 				) {
@@ -2385,6 +2683,340 @@ def find_health_version(payload: Any) -> str:
     return ""
 
 
+def _strict_positive_int(value: Any) -> int | None:
+    return (
+        value
+        if isinstance(value, int) and not isinstance(value, bool) and value > 0
+        else None
+    )
+
+
+def validate_retained_recovery_evidence(
+    path: Path,
+    *,
+    expected_run_id: str,
+    expected_helper_id: int,
+    expected_helper_sha256: str,
+) -> dict[str, Any]:
+    """Load one sanitized failed-run report and pin every recovery identity."""
+    resolved = path.expanduser().resolve(strict=True)
+    if path.is_symlink() or not resolved.is_file() or resolved.suffix.lower() != ".json":
+        raise ValueError("Recovery evidence must be one regular JSON file")
+    size = resolved.stat().st_size
+    if size < 100 or size > 2 * 1024 * 1024:
+        raise ValueError("Recovery evidence size is outside the bounded contract")
+    raw = resolved.read_bytes()
+    payload = json.loads(raw.decode("utf-8"))
+    if not isinstance(payload, dict) or payload.get("schema_version") != 1:
+        raise ValueError("Recovery evidence schema is invalid")
+    run_id = str(payload.get("run_id") or "")
+    if (
+        run_id != expected_run_id
+        or not re.fullmatch(
+            r"einstein-flagship-[0-9]{8}T[0-9]{6}Z-[a-f0-9]{6}", run_id
+        )
+        or payload.get("passed") is not False
+    ):
+        raise ValueError("Recovery evidence does not identify one failed Einstein run")
+
+    target = payload.get("target") if isinstance(payload.get("target"), dict) else {}
+    artifact = (
+        payload.get("artifact") if isinstance(payload.get("artifact"), dict) else {}
+    )
+    helper = payload.get("helper") if isinstance(payload.get("helper"), dict) else {}
+    checks = payload.get("checks") if isinstance(payload.get("checks"), dict) else {}
+    live_before = (
+        checks.get("live_before")
+        if isinstance(checks.get("live_before"), dict)
+        else {}
+    )
+    live_plugin = (
+        live_before.get("plugin")
+        if isinstance(live_before.get("plugin"), dict)
+        else {}
+    )
+    inventory = (
+        live_plugin.get("inventory")
+        if isinstance(live_plugin.get("inventory"), dict)
+        else {}
+    )
+    failure_status = (
+        checks.get("failure_status")
+        if isinstance(checks.get("failure_status"), dict)
+        else {}
+    )
+    deploy_failure = (
+        checks.get("deploy_failure")
+        if isinstance(checks.get("deploy_failure"), dict)
+        else {}
+    )
+    failure_rollback = (
+        checks.get("failure_rollback")
+        if isinstance(checks.get("failure_rollback"), dict)
+        else {}
+    )
+    failure_finalize = (
+        checks.get("failure_finalize")
+        if isinstance(checks.get("failure_finalize"), dict)
+        else {}
+    )
+    retained = (
+        checks.get("independent_helper_cleanup")
+        if isinstance(checks.get("independent_helper_cleanup"), dict)
+        else {}
+    )
+    canonical = (
+        checks.get("canonical_public_predeploy")
+        if isinstance(checks.get("canonical_public_predeploy"), dict)
+        else {}
+    )
+
+    helper_id = _strict_positive_int(helper.get("id"))
+    helper_hash = str(helper.get("code_sha256") or "")
+    helper_name = str(helper.get("name") or "")
+    helper_route = str(helper.get("route") or "")
+    expected_name = f"tmp-{run_id}"
+    expected_route = f"{ROUTE_NAMESPACE}/deploy-{run_id}"
+    if not (
+        helper_id == expected_helper_id
+        and helper_hash == expected_helper_sha256
+        and re.fullmatch(r"[a-f0-9]{64}", helper_hash)
+        and helper_name == expected_name
+        and helper_route == expected_route
+        and retained.get("recovery_retained") is True
+        and retained.get("helper_active") is True
+        and retained.get("helper_code_sha256") == helper_hash
+    ):
+        raise ValueError("Recovery helper identity is not exact in the evidence")
+
+    archive_bytes = _strict_positive_int(artifact.get("archive_bytes"))
+    entry_count = _strict_positive_int(artifact.get("entry_count"))
+    uncompressed_bytes = _strict_positive_int(artifact.get("uncompressed_bytes"))
+    artifact_sha256 = str(artifact.get("sha256") or "")
+    before_files = _strict_positive_int(inventory.get("file_count"))
+    before_bytes = _strict_positive_int(inventory.get("bytes"))
+    before_digest = str(inventory.get("digest") or "")
+    before_version = str(live_plugin.get("version") or "")
+    candidate_version = str(target.get("expected_version") or "")
+    canonical_sha256 = str(canonical.get("snapshot_sha256") or "")
+    base_url = validate_site_url(str(target.get("site") or ""))
+    if not (
+        target.get("mode") == "exact_private_einstein_stage"
+        and target.get("plugin_file") == PLUGIN_FILE
+        and target.get("canonical_public_post_id") == EINSTEIN_CANONICAL_POST_ID
+        and target.get("page_slug") == EINSTEIN_STAGE_SLUG
+        and target.get("project_contract_id") == EINSTEIN_PROJECT_CONTRACT_ID
+        and artifact.get("mode") == "upload"
+        and re.fullmatch(r"[a-f0-9]{64}", artifact_sha256)
+        and archive_bytes is not None
+        and archive_bytes <= MAX_ARCHIVE_BYTES
+        and entry_count is not None
+        and entry_count <= MAX_ENTRIES
+        and uncompressed_bytes is not None
+        and uncompressed_bytes <= MAX_EXPANDED_BYTES
+        and re.fullmatch(
+            r"[0-9]+(?:\.[0-9]+){1,3}(?:[-.][A-Za-z0-9]+)*",
+            candidate_version,
+        )
+        and live_before.get("run_id") == run_id
+        and live_plugin.get("plugin_file") == PLUGIN_FILE
+        and live_plugin.get("active") is True
+        and before_files is not None
+        and before_bytes is not None
+        and re.fullmatch(r"[a-f0-9]{64}", before_digest)
+        and bool(before_version)
+        and canonical.get("post_id") == EINSTEIN_CANONICAL_POST_ID
+        and re.fullmatch(r"[a-f0-9]{64}", canonical_sha256)
+        and failure_status.get("state_phase") == "backup_ready"
+        and failure_status.get("backup_ready") is True
+        and failure_status.get("upload_temp_absent") is True
+        and failure_status.get("upload_temp_safe") is True
+        and failure_status.get("upload_temp_bytes") == 0
+        and deploy_failure.get("http_status") == 500
+        and deploy_failure.get("code") == "nadlan_release_deploy_failed"
+        and deploy_failure.get("contract_valid") is True
+        and deploy_failure.get("failure_stage") == "plugin_install"
+        and deploy_failure.get("failure_reason_code") == "plugin_upgrade_failed"
+        and deploy_failure.get("rolled_back") is False
+        and deploy_failure.get("rollback_outcome") == "failed"
+        and deploy_failure.get("upload_temp_absent") is True
+        and failure_rollback.get("http_status") == 500
+        and failure_rollback.get("confirmed") is False
+        and failure_finalize.get("skipped_to_preserve_recovery") is True
+        and failure_finalize.get("resource_cleanup_complete") is False
+        and not payload.get("page_url")
+    ):
+        raise ValueError("Recovery evidence contract is incomplete or ambiguous")
+    return {
+        "evidence_path": resolved,
+        "evidence_sha256": sha256_bytes(raw),
+        "base_url": base_url,
+        "run_id": run_id,
+        "helper": {
+            "id": helper_id,
+            "name": helper_name,
+            "route": helper_route,
+            "route_path": f"/deploy-{run_id}",
+            "code_sha256": helper_hash,
+        },
+        "artifact": {
+            "mode": "upload",
+            "sha256": artifact_sha256,
+            "archive_bytes": archive_bytes,
+            "entry_count": entry_count,
+            "uncompressed_bytes": uncompressed_bytes,
+        },
+        "candidate_version": candidate_version,
+        "before_plugin": {
+            "plugin_file": PLUGIN_FILE,
+            "version": before_version,
+            "active": True,
+            "inventory_file_count": before_files,
+            "inventory_bytes": before_bytes,
+            "inventory_digest": before_digest,
+        },
+        "canonical_public_sha256": canonical_sha256,
+    }
+
+
+def _php_assignment(code: str, variable: str, *, integer: bool = False) -> Any:
+    if integer:
+        matches = re.findall(
+            rf"\${re.escape(variable)}\s*=\s*([0-9]+)\s*;", code
+        )
+        if len(matches) != 1:
+            raise RetainedRunRecoveryBlocked("Retained helper integer contract is missing")
+        return int(matches[0])
+    matches = re.findall(
+        rf"\${re.escape(variable)}\s*=\s*(\"(?:\\.|[^\"\\])*\")\s*;",
+        code,
+    )
+    if len(matches) != 1:
+        raise RetainedRunRecoveryBlocked("Retained helper string contract is missing")
+    value = json.loads(matches[0])
+    if not isinstance(value, str):
+        raise RetainedRunRecoveryBlocked("Retained helper string contract is invalid")
+    return value
+
+
+def extract_retained_helper_contract(
+    code: str, evidence: dict[str, Any]
+) -> dict[str, Any]:
+    """Extract the old route token only in memory and bind every embedded value."""
+    helper = evidence["helper"]
+    artifact = evidence["artifact"]
+    observed = {
+        "route_path": _php_assignment(code, "route_path"),
+        "token": _php_assignment(code, "expected_token"),
+        "run_id": _php_assignment(code, "run_id"),
+        "helper_id": _php_assignment(code, "helper_id", integer=True),
+        "helper_name": _php_assignment(code, "helper_name"),
+        "artifact_mode": _php_assignment(code, "artifact_mode"),
+        "artifact_url": _php_assignment(code, "artifact_url"),
+        "artifact_sha256": _php_assignment(code, "artifact_sha256"),
+        "artifact_bytes": _php_assignment(code, "artifact_bytes", integer=True),
+        "artifact_entry_count": _php_assignment(
+            code, "artifact_entry_count", integer=True
+        ),
+        "artifact_uncompressed_bytes": _php_assignment(
+            code, "artifact_uncompressed_bytes", integer=True
+        ),
+        "expected_version": _php_assignment(code, "expected_version"),
+    }
+    if not re.fullmatch(r"[a-f0-9]{64}", observed["token"]):
+        raise RetainedRunRecoveryBlocked("Retained helper token shape is invalid")
+    expected = {
+        "route_path": helper["route_path"],
+        "run_id": evidence["run_id"],
+        "helper_id": helper["id"],
+        "helper_name": helper["name"],
+        "artifact_mode": "upload",
+        "artifact_url": "",
+        "artifact_sha256": artifact["sha256"],
+        "artifact_bytes": artifact["archive_bytes"],
+        "artifact_entry_count": artifact["entry_count"],
+        "artifact_uncompressed_bytes": artifact["uncompressed_bytes"],
+        "expected_version": evidence["candidate_version"],
+    }
+    for key, expected_value in expected.items():
+        if observed[key] != expected_value:
+            raise RetainedRunRecoveryBlocked(
+                "Retained helper differs from the sanitized evidence contract"
+            )
+    return observed
+
+
+def classify_recovery_helper_row(
+    row: dict[str, Any],
+    *,
+    helper_id: int,
+    helper_name: str,
+    old_hash: str,
+    new_hash: str,
+) -> str:
+    observed = observed_snippet(row)
+    if not (
+        observed["id"] == helper_id
+        and observed["name"] == helper_name
+        and observed["scope"] == "global"
+        and isinstance(observed["active"], bool)
+        and ("network" not in row or row.get("network") is False)
+    ):
+        return "invalid"
+    if observed["code_sha256"] == old_hash and observed["active"] is True:
+        return "old_active"
+    if observed["code_sha256"] == new_hash:
+        return "new_active" if observed["active"] is True else "new_inactive"
+    return "invalid"
+
+
+def rollback_response_is_exact(
+    payload: dict[str, Any], before_plugin_contract: dict[str, Any]
+) -> bool:
+    plugin = payload.get("plugin") if isinstance(payload.get("plugin"), dict) else {}
+    before = payload.get("before") if isinstance(payload.get("before"), dict) else {}
+    inventory = (
+        plugin.get("inventory") if isinstance(plugin.get("inventory"), dict) else {}
+    )
+    return bool(before_plugin_contract) and (
+        payload.get("rolled_back") is True
+        and payload.get("upload_temp_absent") is True
+        and plugin.get("plugin_file") == PLUGIN_FILE
+        and plugin.get("version") == before_plugin_contract.get("version")
+        and plugin.get("active") is before_plugin_contract.get("active")
+        and before.get("version") == before_plugin_contract.get("version")
+        and before.get("active") is before_plugin_contract.get("active")
+        and inventory.get("file_count")
+        == before_plugin_contract.get("inventory_file_count")
+        and inventory.get("bytes") == before_plugin_contract.get("inventory_bytes")
+        and inventory.get("digest") == before_plugin_contract.get("inventory_digest")
+        and payload.get("rollback_digest")
+        == before_plugin_contract.get("inventory_digest")
+    )
+
+
+def adoption_response_is_exact(
+    payload: dict[str, Any], before_plugin_contract: dict[str, Any]
+) -> bool:
+    backup = payload.get("backup") if isinstance(payload.get("backup"), dict) else {}
+    return (
+        payload.get("schema") == RECOVERY_ADOPTION_SCHEMA
+        and isinstance(payload.get("idempotent"), bool)
+        and payload.get("adopted_without_copy") is True
+        and payload.get("rolled_back") is True
+        and payload.get("state_phase") == "rolled_back"
+        and payload.get("backup_disposition")
+        in {"absent_due_core_upgrade_purge", "present_exact"}
+        and payload.get("upload_temp_absent") is True
+        and payload.get("lock_owned") is True
+        and backup.get("digest") == before_plugin_contract.get("inventory_digest")
+        and backup.get("file_count")
+        == before_plugin_contract.get("inventory_file_count")
+        and backup.get("bytes") == before_plugin_contract.get("inventory_bytes")
+        and rollback_response_is_exact(payload, before_plugin_contract)
+    )
+
+
 def self_test() -> dict[str, Any]:
     validate_immutable_url(
         "https://raw.githubusercontent.com/The-new-ben/nad-lan-co-il/"
@@ -2422,6 +3054,31 @@ def self_test() -> dict[str, Any]:
         artifact_entry_count=2,
         artifact_uncompressed_bytes=60,
         expected_version="9.9.9",
+    )
+    einstein_fixture = validate_einstein_stage_request(
+        REPO_ROOT
+        / "docs"
+        / "wp-drafts"
+        / "einstein-tower-flagship-v3-private-stage.json"
+    )
+    external_stage_helper = render_helper(
+        route_path="/deploy-einstein-stage-self-test",
+        token="a" * 64,
+        run_id="einstein-stage-self-test",
+        helper_id=126,
+        helper_name="tmp-einstein-stage-self-test",
+        artifact_mode="upload",
+        artifact_url="",
+        artifact_sha256="9" * 64,
+        artifact_bytes=355,
+        artifact_entry_count=2,
+        artifact_uncompressed_bytes=60,
+        expected_version="9.9.9",
+        page_slug=EINSTEIN_STAGE_SLUG,
+        source_post_id=EINSTEIN_CANONICAL_POST_ID,
+        external_stage_commit_enabled=True,
+        project_contract_id=EINSTEIN_PROJECT_CONTRACT_ID,
+        external_stage_body=einstein_fixture["body"],
     )
     cleanup_helper = render_cleanup_helper(
         route_path="/cleanup-self-test",
@@ -2472,6 +3129,7 @@ def self_test() -> dict[str, Any]:
     for required_finalize_marker in (
         "'resource_cleanup_complete'",
         "'backup_deleted'",
+        "'storage_root_deleted'",
         "'lock_released'",
         "'state_deleted'",
         "'upload_temp_absent'",
@@ -2480,14 +3138,44 @@ def self_test() -> dict[str, Any]:
     ):
         if required_finalize_marker not in finalize_section:
             raise RuntimeError(f"Self-test is missing two-phase finalize marker: {required_finalize_marker}")
+    finalize_backup_position = finalize_section.find(
+        "$wp_filesystem->delete( $backup_root"
+    )
+    finalize_marker_position = finalize_section.find(
+        "$state['phase'] = 'finalizing_cleanup_complete';",
+        finalize_backup_position,
+    )
+    finalize_lock_position = finalize_section.find(
+        "$lock_released = $release_lock();", finalize_marker_position
+    )
+    finalize_helper_position = finalize_section.find(
+        "$helper_retained = $finalize_helper_retained();", finalize_lock_position
+    )
+    finalize_state_position = finalize_section.find(
+        "delete_option( $state_key );", finalize_helper_position
+    )
     finalize_order = (
-        finalize_section.find("$wp_filesystem->delete( $backup_root"),
-        finalize_section.find("$lock_released = $release_lock();"),
-        finalize_section.find("delete_option( $state_key );"),
-        finalize_section.find(r"$helper_after = \Code_Snippets\get_snippet"),
+        finalize_backup_position,
+        finalize_marker_position,
+        finalize_lock_position,
+        finalize_helper_position,
+        finalize_state_position,
     )
     if any(position < 0 for position in finalize_order) or tuple(sorted(finalize_order)) != finalize_order:
-        raise RuntimeError("Two-phase finalize ordering is not backup -> lock -> state -> helper-retention proof")
+        raise RuntimeError(
+            "Two-phase finalize ordering is not backup -> marker -> lock -> helper -> state"
+        )
+    for finalize_recovery_marker in (
+        "if ( $finalize_marker )",
+        "'nadlan-private-release-finalize-marker/v1'",
+        "if ( false !== $finalize_lock )",
+        "Absent release state requires an already-absent lock.",
+        "$finalize_resources_absent()",
+    ):
+        if finalize_recovery_marker not in finalize_section:
+            raise RuntimeError(
+                f"Self-test is missing response-loss finalize marker: {finalize_recovery_marker}"
+            )
     if cleanup_helper.count(r"\Code_Snippets\delete_snippet") < 2:
         raise RuntimeError("Independent cleanup helper must hard-delete both target and itself")
     for route_loss_marker in (
@@ -2527,6 +3215,1274 @@ def self_test() -> dict[str, Any]:
         "upload_chunk_bytes": UPLOAD_CHUNK_BYTES,
         "upload_total_chunks": 1,
     }
+    return _finish_self_test(
+        helper,
+        upload_helper,
+        external_stage_helper,
+        cleanup_helper,
+        cleanup_contract,
+    )
+
+
+def recover_retained_run(args: argparse.Namespace) -> int:
+    """Adopt one exact already-original retained run and remove its resources."""
+    required = {
+        "--recovery-run-id": args.recovery_run_id,
+        "--recovery-helper-id": args.recovery_helper_id,
+        "--recovery-helper-sha256": args.recovery_helper_sha256,
+    }
+    missing = [name for name, value in required.items() if value in {None, ""}]
+    if missing:
+        raise SystemExit(f"Missing recovery arguments: {', '.join(missing)}")
+    if any(
+        value is not None
+        for value in (
+            args.artifact_url,
+            args.artifact_path,
+            args.artifact_sha256,
+            args.expected_version,
+            args.post_password,
+            args.einstein_stage_request,
+            args.protected_main_commit,
+            args.acceptance_script,
+        )
+    ):
+        raise SystemExit(
+            "Recovery mode forbids artifact, deploy, page, and acceptance arguments"
+        )
+    helper_id = _strict_positive_int(args.recovery_helper_id)
+    helper_hash_arg = str(args.recovery_helper_sha256 or "").lower()
+    if helper_id is None or not re.fullmatch(r"[a-f0-9]{64}", helper_hash_arg):
+        raise SystemExit("Recovery helper identity is invalid")
+    try:
+        evidence = validate_retained_recovery_evidence(
+            args.recover_retained_run,
+            expected_run_id=str(args.recovery_run_id or ""),
+            expected_helper_id=helper_id,
+            expected_helper_sha256=helper_hash_arg,
+        )
+    except (OSError, ValueError, json.JSONDecodeError) as error:
+        raise SystemExit(str(error)) from error
+
+    file_env = read_env(args.env)
+    merged_env = dict(file_env)
+    merged_env.update({key: value for key, value in os.environ.items() if value})
+    wp_user = merged_env.get("WP_USER", "")
+    wp_password = merged_env.get("WP_APP_PASSWORD", "")
+    base_url_input = merged_env.get("WP_BASE_URL", "").rstrip("/")
+    if not wp_user or not wp_password or not base_url_input:
+        raise SystemExit(
+            "Recovery mode requires WP_BASE_URL, WP_USER, and WP_APP_PASSWORD"
+        )
+    base_url = validate_site_url(base_url_input)
+    if base_url != evidence["base_url"]:
+        raise SystemExit("Recovery environment site differs from the evidence target")
+
+    client = WordpressClient(base_url, wp_user, wp_password)
+    public = requests.Session()
+    public.headers.update(
+        {
+            "User-Agent": "NadLan-Retained-Run-Recovery/1.0",
+            "Accept": "application/json",
+        }
+    )
+    helper = evidence["helper"]
+    artifact = evidence["artifact"]
+    before_plugin = evidence["before_plugin"]
+    route = str(helper["route"])
+    token = ""
+    new_helper_hash = ""
+    created_cleanup_rows: list[dict[str, Any]] = []
+    resources_finalized = False
+    helper_cleanup_proved = False
+    redactor = Redactor((wp_user, wp_password))
+    result: dict[str, Any] = {
+        "schema": RECOVERY_REPORT_SCHEMA,
+        "passed": False,
+        "run_id": evidence["run_id"],
+        "generated_at_utc": datetime.now(timezone.utc).isoformat(),
+        "evidence": {
+            "sha256": evidence["evidence_sha256"],
+            "run_id_exact": True,
+            "helper_id": helper_id,
+            "helper_sha256": helper_hash_arg,
+        },
+        "target": {
+            "site": base_url,
+            "plugin_file": PLUGIN_FILE,
+            "canonical_public_post_id": EINSTEIN_CANONICAL_POST_ID,
+            "stage_slug": EINSTEIN_STAGE_SLUG,
+            "mode": "retained_already_original_recovery",
+        },
+        "checks": {},
+    }
+
+    def current_project_proof(label: str) -> dict[str, Any]:
+        canonical_raw = get_authenticated_post(client, EINSTEIN_CANONICAL_POST_ID)
+        canonical_record = wordpress_post_snapshot(canonical_raw)
+        canonical_hash = sha256_bytes(exact_json_bytes(canonical_record))
+        matches = exact_stage_matches(client, EINSTEIN_STAGE_SLUG)
+        if canonical_hash != evidence["canonical_public_sha256"] or matches:
+            raise RetainedRunRecoveryBlocked(
+                "Canonical post or exact private-stage absence changed"
+            )
+        canonical_url = str(canonical_raw.get("link") or "")
+        expected_canonical_url = f"{base_url}{EINSTEIN_CANONICAL_PATH}"
+        if canonical_url != expected_canonical_url:
+            raise RetainedRunRecoveryBlocked(
+                "Canonical authenticated record returned an unexpected public URL"
+            )
+        canonical_public = public.get(
+            canonical_url,
+            params={"cb": f"{evidence['run_id']}-{label}"},
+            timeout=30,
+            allow_redirects=False,
+        )
+        stage_public = public.get(
+            f"{base_url}/projects/{EINSTEIN_STAGE_SLUG}/",
+            params={"cb": f"{evidence['run_id']}-{label}"},
+            timeout=30,
+            allow_redirects=False,
+        )
+        stage_rest = public.get(
+            f"{base_url}/wp-json/wp/v2/nadlan_project",
+            params={"slug": EINSTEIN_STAGE_SLUG, "per_page": 100},
+            timeout=30,
+            allow_redirects=False,
+        )
+        try:
+            stage_rest_rows: Any = stage_rest.json()
+        except ValueError:
+            stage_rest_rows = None
+        if not (
+            canonical_public.status_code == 200
+            and stage_public.status_code == 404
+            and stage_rest.status_code == 200
+            and stage_rest_rows == []
+        ):
+            raise RetainedRunRecoveryBlocked(
+                "Anonymous canonical or exact-stage surface proof failed"
+            )
+        return {
+            "label": label,
+            "canonical_post_id": EINSTEIN_CANONICAL_POST_ID,
+            "canonical_snapshot_sha256": canonical_hash,
+            "stage_slug": EINSTEIN_STAGE_SLUG,
+            "stage_match_count": 0,
+            "canonical_public_status": 200,
+            "stage_public_status": 404,
+            "stage_rest_status": 200,
+            "stage_rest_match_count": 0,
+        }
+
+    def public_health_proof(label: str) -> dict[str, Any]:
+        response = public.get(
+            f"{base_url}/wp-json/nadlan/v1/healthcheck",
+            params={"cb": f"{evidence['run_id']}-{label}-{utc_slug()}"},
+            timeout=30,
+            allow_redirects=False,
+        )
+        try:
+            payload: Any = response.json() if response.status_code == 200 else {}
+        except ValueError:
+            payload = {}
+        version = find_health_version(payload)
+        exact = response.status_code == 200 and version == before_plugin["version"]
+        if not exact:
+            raise RetainedRunRecoveryBlocked(
+                "Public health is not the exact pre-deployment plugin version"
+            )
+        return {
+            "label": label,
+            "http_status": response.status_code,
+            "version": version,
+            "exact": True,
+        }
+
+    def plugin_payload_is_exact(payload: dict[str, Any]) -> bool:
+        inventory = (
+            payload.get("inventory")
+            if isinstance(payload.get("inventory"), dict)
+            else {}
+        )
+        return (
+            payload.get("plugin_file") == PLUGIN_FILE
+            and payload.get("version") == before_plugin["version"]
+            and payload.get("active") is True
+            and inventory.get("file_count")
+            == before_plugin["inventory_file_count"]
+            and inventory.get("bytes") == before_plugin["inventory_bytes"]
+            and inventory.get("digest") == before_plugin["inventory_digest"]
+        )
+
+    def read_helper_row() -> dict[str, Any]:
+        response = client.request(
+            "GET", f"code-snippets/v1/snippets/{helper_id}", timeout=60
+        )
+        return require_response(response, "Retained recovery helper read")
+
+    def call_helper(
+        action: str, *, timeout: int = 120
+    ) -> tuple[requests.Response, dict[str, Any]]:
+        response = client.request(
+            "POST",
+            route,
+            json_body={
+                "token": token,
+                "helper_sha256": new_helper_hash,
+                "action": action,
+            },
+            timeout=timeout,
+        )
+        return response, response_payload(response)
+
+    try:
+        auth = require_response(
+            client.request("GET", "wp/v2/users/me", timeout=60),
+            "Recovery authentication preflight",
+        )
+        if _strict_positive_int(auth.get("id")) is None:
+            raise RetainedRunRecoveryBlocked(
+                "Recovery authentication did not return one user"
+            )
+        rows_before = client.all_snippets()
+        identity_rows = [
+            row
+            for row in rows_before
+            if int(row.get("id") or 0) == helper_id
+            or str(row.get("name") or "") == helper["name"]
+        ]
+        if len(identity_rows) != 1:
+            raise RetainedRunRecoveryBlocked(
+                "Retained helper identity is absent or ambiguous"
+            )
+        result["checks"]["auth_preflight"] = {
+            "authenticated": True,
+            "user_id": int(auth["id"]),
+            "helper_identity_unique": True,
+            "snippet_count": len(rows_before),
+        }
+        result["checks"]["project_before"] = current_project_proof("before")
+        result["checks"]["health_before"] = public_health_proof("before")
+
+        old_row = read_helper_row()
+        old_code = str(old_row.get("code") or "")
+        if not old_code or len(old_code.encode("utf-8")) > 512 * 1024:
+            raise RetainedRunRecoveryBlocked("Retained helper code size is invalid")
+        embedded = extract_retained_helper_contract(old_code, evidence)
+        token = str(embedded["token"])
+        redactor = Redactor((wp_user, wp_password, token, old_code))
+        new_helper_code = render_helper(
+            route_path=helper["route_path"],
+            token=token,
+            run_id=evidence["run_id"],
+            helper_id=helper_id,
+            helper_name=helper["name"],
+            artifact_mode="upload",
+            artifact_url="",
+            artifact_sha256=artifact["sha256"],
+            artifact_bytes=artifact["archive_bytes"],
+            artifact_entry_count=artifact["entry_count"],
+            artifact_uncompressed_bytes=artifact["uncompressed_bytes"],
+            expected_version=evidence["candidate_version"],
+            page_slug=EINSTEIN_STAGE_SLUG,
+            source_post_id=EINSTEIN_CANONICAL_POST_ID,
+            recovery_adoption_enabled=True,
+            external_stage_commit_enabled=False,
+            project_contract_id=EINSTEIN_PROJECT_CONTRACT_ID,
+        )
+        new_helper_hash = sha256_text(new_helper_code)
+        current_hash = sha256_text(old_code)
+        if current_hash not in {helper_hash_arg, new_helper_hash}:
+            raise RetainedRunRecoveryBlocked(
+                "Retained helper code is neither the evidence hash nor the exact recovery helper"
+            )
+        helper_state = classify_recovery_helper_row(
+            old_row,
+            helper_id=helper_id,
+            helper_name=helper["name"],
+            old_hash=helper_hash_arg,
+            new_hash=new_helper_hash,
+        )
+        if helper_state == "invalid":
+            raise RetainedRunRecoveryBlocked(
+                "Retained helper identity or activation state changed"
+            )
+
+        update_attempts = 0
+        while helper_state == "old_active" and update_attempts < 2:
+            update_attempts += 1
+            try:
+                client.request(
+                    "PUT",
+                    f"code-snippets/v1/snippets/{helper_id}",
+                    json_body={
+                        "name": helper["name"],
+                        "code": new_helper_code,
+                        "scope": "global",
+                        "active": False,
+                    },
+                    timeout=60,
+                )
+            except requests.RequestException:
+                pass
+            helper_state = classify_recovery_helper_row(
+                read_helper_row(),
+                helper_id=helper_id,
+                helper_name=helper["name"],
+                old_hash=helper_hash_arg,
+                new_hash=new_helper_hash,
+            )
+            if helper_state == "invalid":
+                raise RetainedRunRecoveryBlocked(
+                    "Response-lost helper update reconciled to an unknown state"
+                )
+        if helper_state == "old_active":
+            raise RetainedRunRecoveryBlocked(
+                "Retained helper update did not converge within its retry bound"
+            )
+
+        activation_attempts = 0
+        while helper_state == "new_inactive" and activation_attempts < 2:
+            activation_attempts += 1
+            try:
+                client.request(
+                    "PUT",
+                    f"code-snippets/v1/snippets/{helper_id}/activate",
+                    json_body={},
+                    timeout=60,
+                )
+            except requests.RequestException:
+                pass
+            helper_state = classify_recovery_helper_row(
+                read_helper_row(),
+                helper_id=helper_id,
+                helper_name=helper["name"],
+                old_hash=helper_hash_arg,
+                new_hash=new_helper_hash,
+            )
+            if helper_state not in {"new_inactive", "new_active"}:
+                raise RetainedRunRecoveryBlocked(
+                    "Response-lost helper activation reconciled to an unknown state"
+                )
+        if helper_state != "new_active":
+            raise RetainedRunRecoveryBlocked(
+                "Exact recovery helper activation did not converge"
+            )
+        result["checks"]["helper_update"] = {
+            "same_helper_id": True,
+            "old_code_sha256": helper_hash_arg,
+            "new_code_sha256": new_helper_hash,
+            "update_attempts": update_attempts,
+            "activation_attempts": activation_attempts,
+            "active": True,
+        }
+
+        inspect_response, inspect = call_helper("inspect", timeout=120)
+        require_response(inspect_response, "Recovery helper reload inspection")
+        inspect_plugin = (
+            inspect.get("plugin") if isinstance(inspect.get("plugin"), dict) else {}
+        )
+        inspect_artifact = (
+            inspect.get("artifact")
+            if isinstance(inspect.get("artifact"), dict)
+            else {}
+        )
+        if not (
+            inspect.get("run_id") == evidence["run_id"]
+            and inspect.get("target_exact") == PLUGIN_FILE
+            and plugin_payload_is_exact(inspect_plugin)
+            and inspect_artifact.get("mode") == "upload"
+            and inspect_artifact.get("sha256") == artifact["sha256"]
+            and inspect_artifact.get("archive_bytes") == artifact["archive_bytes"]
+            and inspect_artifact.get("entry_count") == artifact["entry_count"]
+            and inspect_artifact.get("uncompressed_bytes")
+            == artifact["uncompressed_bytes"]
+            and inspect.get("upload_temp_absent") is True
+        ):
+            raise RetainedRunRecoveryBlocked(
+                "Reloaded recovery helper did not prove the exact retained run"
+            )
+        result["checks"]["retained_inspect"] = {
+            "state_phase": inspect.get("state_phase"),
+            "lock_owned": inspect.get("lock_owned") is True,
+            "lock_free": inspect.get("lock_free") is True,
+            "plugin_exact": True,
+            "artifact_exact": True,
+            "upload_temp_absent": True,
+        }
+
+        status_response, status = call_helper("status", timeout=120)
+        require_response(status_response, "Retained recovery status")
+        status_plugin = (
+            status.get("plugin") if isinstance(status.get("plugin"), dict) else {}
+        )
+        status_upload = (
+            status.get("upload") if isinstance(status.get("upload"), dict) else {}
+        )
+        if not plugin_payload_is_exact(status_plugin):
+            raise RetainedRunRecoveryBlocked(
+                "Retained status plugin differs from the original inventory"
+            )
+        recovery_status_response, recovery_status = call_helper(
+            "recovery_status", timeout=120
+        )
+        require_response(
+            recovery_status_response, "Exact retained recovery status"
+        )
+        recovery_status_plugin = (
+            recovery_status.get("plugin")
+            if isinstance(recovery_status.get("plugin"), dict)
+            else {}
+        )
+        if not (
+            recovery_status.get("schema")
+            == "nadlan-private-release-recovery-status/v1"
+            and plugin_payload_is_exact(recovery_status_plugin)
+            and recovery_status.get("exact_stage_match_count") == 0
+            and recovery_status.get("owned_stage_match_count") == 0
+            and recovery_status.get("legacy_upload_absent") is True
+        ):
+            raise RetainedRunRecoveryBlocked(
+                "Read-only recovery status did not prove exact page and legacy-upload absence"
+            )
+        already_finalized = (
+            inspect.get("state_phase") == "none"
+            and inspect.get("lock_free") is True
+            and status.get("state_phase") == "none"
+            and status.get("backup_ready") is False
+            and status_upload.get("temp_absent") is True
+            and status_upload.get("temp_safe") is True
+            and recovery_status.get("state_phase") == "none"
+            and recovery_status.get("backup_ready") is False
+            and recovery_status.get("lock_free") is True
+            and recovery_status.get("legacy_backup_absent") is True
+            and recovery_status.get("current_storage_absent") is True
+        )
+        if not already_finalized:
+            if not (
+                inspect.get("lock_owned") is True
+                and inspect.get("state_phase") in {"backup_ready", "rolled_back"}
+                and status.get("state_phase") in {"backup_ready", "rolled_back"}
+                and status.get("backup_ready") is True
+                and status.get("page_id") == 0
+                and status_upload.get("temp_absent") is True
+                and status_upload.get("temp_safe") is True
+                and status_upload.get("temp_bytes") == 0
+                and recovery_status.get("state_phase")
+                in {"backup_ready", "rolled_back"}
+                and recovery_status.get("backup_ready") is True
+                and recovery_status.get("lock_owned") is True
+            ):
+                raise RetainedRunRecoveryBlocked(
+                    "Retained state, lock, upload, or page proof is not exact"
+                )
+
+            adoption: dict[str, Any] = {}
+            adoption_attempts = 0
+            while adoption_attempts < 3:
+                adoption_attempts += 1
+                try:
+                    adoption_response, adoption_payload = call_helper(
+                        "adopt_exact_rollback", timeout=180
+                    )
+                    if (
+                        adoption_response.status_code == 200
+                        and adoption_response_is_exact(
+                            adoption_payload, before_plugin
+                        )
+                    ):
+                        adoption = adoption_payload
+                        break
+                except requests.RequestException:
+                    pass
+            if not adoption:
+                raise RetainedRunRecoveryBlocked(
+                    "Already-original adoption did not reconcile within its retry bound"
+                )
+            result["checks"]["adoption"] = {
+                "schema": adoption["schema"],
+                "idempotent": adoption["idempotent"],
+                "adopted_without_copy": True,
+                "backup_disposition": adoption["backup_disposition"],
+                "attempts": adoption_attempts,
+                "plugin_exact": True,
+            }
+
+            rollback: dict[str, Any] = {}
+            rollback_response_status = 0
+            rollback_attempts = 0
+            while rollback_attempts < 3:
+                rollback_attempts += 1
+                try:
+                    rollback_response, rollback_payload = call_helper(
+                        "rollback", timeout=240
+                    )
+                    if (
+                        rollback_response.status_code == 200
+                        and rollback_response_is_exact(
+                            rollback_payload, before_plugin
+                        )
+                    ):
+                        rollback = rollback_payload
+                        rollback_response_status = rollback_response.status_code
+                        break
+                except requests.RequestException:
+                    pass
+            if not rollback:
+                raise RetainedRunRecoveryBlocked(
+                    "Existing rollback response checker did not reconcile within its retry bound"
+                )
+            result["checks"]["rollback_confirmation"] = {
+                "http_status": rollback_response_status,
+                "confirmed": True,
+                "idempotent": rollback.get("idempotent") is True,
+                "plugin_exact": True,
+                "upload_temp_absent": True,
+                "attempts": rollback_attempts,
+            }
+
+            finalize: dict[str, Any] = {}
+            finalize_attempts = 0
+            while finalize_attempts < 2:
+                finalize_attempts += 1
+                try:
+                    finalize_response, finalize_payload = call_helper(
+                        "finalize", timeout=180
+                    )
+                    if finalize_response.status_code == 200 and (
+                        finalize_payload.get("resource_cleanup_complete") is True
+                        and finalize_payload.get("backup_deleted") is True
+                        and finalize_payload.get("storage_root_deleted") is True
+                        and finalize_payload.get("lock_released") is True
+                        and finalize_payload.get("state_deleted") is True
+                        and finalize_payload.get("upload_temp_absent") is True
+                        and finalize_payload.get("helper_retained") is True
+                        and finalize_payload.get("helper_cleanup_pending") is True
+                        and finalize_payload.get("helper_id") == helper_id
+                    ):
+                        finalize = finalize_payload
+                        break
+                except requests.RequestException:
+                    pass
+            if not finalize:
+                raise RetainedRunRecoveryBlocked(
+                    "Release-resource finalization did not reconcile within its retry bound"
+                )
+            resources_finalized = True
+            result["checks"]["finalize"] = {
+                "resource_cleanup_complete": True,
+                "backup_deleted": True,
+                "storage_root_deleted": True,
+                "lock_released": True,
+                "state_deleted": True,
+                "upload_temp_absent": True,
+                "helper_retained": True,
+                "attempts": finalize_attempts,
+            }
+        else:
+            resources_finalized = True
+            result["checks"]["adoption"] = {
+                "already_finalized_response_loss_reconciled": True,
+                "plugin_exact": True,
+            }
+            result["checks"]["finalize"] = {
+                "resource_cleanup_complete": True,
+                "already_absent": True,
+            }
+
+        final_status_response, final_recovery_status = call_helper(
+            "recovery_status", timeout=120
+        )
+        require_response(
+            final_status_response, "Post-finalize exact recovery status"
+        )
+        final_status_plugin = (
+            final_recovery_status.get("plugin")
+            if isinstance(final_recovery_status.get("plugin"), dict)
+            else {}
+        )
+        if not (
+            final_recovery_status.get("schema")
+            == "nadlan-private-release-recovery-status/v1"
+            and plugin_payload_is_exact(final_status_plugin)
+            and final_recovery_status.get("state_phase") == "none"
+            and final_recovery_status.get("backup_ready") is False
+            and final_recovery_status.get("lock_free") is True
+            and final_recovery_status.get("legacy_upload_absent") is True
+            and final_recovery_status.get("legacy_backup_absent") is True
+            and final_recovery_status.get("current_storage_absent") is True
+            and final_recovery_status.get("exact_stage_match_count") == 0
+            and final_recovery_status.get("owned_stage_match_count") == 0
+        ):
+            raise RetainedRunRecoveryBlocked(
+                "Post-finalize recovery resources or governed stage are not proved absent"
+            )
+        result["checks"]["post_finalize_status"] = {
+            "state_absent": True,
+            "lock_free": True,
+            "legacy_upload_absent": True,
+            "legacy_backup_absent": True,
+            "current_storage_absent": True,
+            "stage_absent": True,
+            "plugin_exact": True,
+        }
+
+        result["checks"]["project_pre_cleanup"] = current_project_proof(
+            "pre_cleanup"
+        )
+        result["checks"]["health_pre_cleanup"] = public_health_proof(
+            "pre_cleanup"
+        )
+        cleanup_proof = independently_remove_snippet(
+            client,
+            target_id=helper_id,
+            target_name=helper["name"],
+            expected_hash=new_helper_hash,
+            release_run_id=evidence["run_id"],
+            release_token=token,
+            artifact_mode="upload",
+            artifact_sha256=artifact["sha256"],
+            artifact_bytes=artifact["archive_bytes"],
+            artifact_entry_count=artifact["entry_count"],
+            artifact_uncompressed_bytes=artifact["uncompressed_bytes"],
+            resources_known_absent=True,
+            created_cleanup_rows=created_cleanup_rows,
+        )
+        if cleanup_proof.get("target_absent") is not True:
+            raise RetainedRunRecoveryBlocked(
+                "Independent recovery-helper deletion did not complete"
+            )
+
+        item_responses: dict[int, requests.Response] = {}
+        route_statuses: dict[int, int] = {}
+        for row in created_cleanup_rows:
+            row_id = int(row["id"])
+            item_responses[row_id] = client.request(
+                "GET", f"code-snippets/v1/snippets/{row_id}", timeout=60
+            )
+            route_statuses[row_id] = client.request(
+                "POST", str(row["route"]), json_body={}, timeout=60
+            ).status_code
+        main_get = client.request(
+            "GET", f"code-snippets/v1/snippets/{helper_id}", timeout=60
+        )
+        main_route_status = client.request(
+            "POST", route, json_body={}, timeout=60
+        ).status_code
+        final_rows = client.all_snippets()
+        if not snippet_absence_is_proved(
+            main_get,
+            final_rows,
+            snippet_id=helper_id,
+            snippet_name=helper["name"],
+            route_status=main_route_status,
+        ):
+            raise RetainedRunRecoveryBlocked(
+                "Final authoritative collection did not prove main-helper absence"
+            )
+        for row in created_cleanup_rows:
+            row_id = int(row["id"])
+            if not snippet_absence_is_proved(
+                item_responses[row_id],
+                final_rows,
+                snippet_id=row_id,
+                snippet_name=str(row["name"]),
+                route_status=route_statuses[row_id],
+            ):
+                raise RetainedRunRecoveryBlocked(
+                    "Final authoritative collection found a cleanup-helper residual"
+                )
+        helper_cleanup_proved = True
+        result["checks"]["helper_cleanup"] = {
+            "main_helper_absent": True,
+            "main_route_status": main_route_status,
+            "secondary_helpers_created": len(created_cleanup_rows),
+            "secondary_helpers_absent": True,
+            "snippet_count_after": len(final_rows),
+        }
+        result["checks"]["project_after"] = current_project_proof("after")
+        result["checks"]["health_after"] = public_health_proof("after")
+        result["passed"] = True
+    except Exception as error:
+        result["passed"] = False
+        result["error"] = redactor.text(error)
+        result["recovery_preserved"] = not resources_finalized
+        result["helper_cleanup_proved"] = helper_cleanup_proved
+
+    serialized = json.dumps(redactor.value(result), ensure_ascii=False, indent=2) + "\n"
+    redactor.assert_absent(serialized)
+    args.output_dir.mkdir(parents=True, exist_ok=True)
+    output = args.output_dir / (
+        f"{evidence['run_id']}-retained-recovery-{utc_slug()}.json"
+    )
+    output.write_text(serialized, encoding="utf-8")
+    summary = {
+        "output": str(output),
+        "passed": result.get("passed") is True,
+        "run_id": evidence["run_id"],
+        "resources_finalized": resources_finalized,
+        "helper_cleanup_proved": helper_cleanup_proved,
+    }
+    print(json.dumps(redactor.value(summary), ensure_ascii=False, indent=2))
+    return 0 if result.get("passed") is True else 5
+
+
+def _finish_self_test(
+    helper: str,
+    upload_helper: str,
+    external_stage_helper: str,
+    cleanup_helper: str,
+    cleanup_contract: dict[str, Any],
+) -> dict[str, Any]:
+    external_commit_start = external_stage_helper.find(
+        "if ( 'commit_external_stage' === $action )"
+    )
+    external_commit_end = external_stage_helper.find(
+        "if ( 'adopt_exact_rollback' === $action )", external_commit_start
+    )
+    if external_commit_start < 0 or external_commit_end <= external_commit_start:
+        raise RuntimeError("Einstein external-stage helper action was not rendered")
+    external_commit_section = external_stage_helper[
+        external_commit_start:external_commit_end
+    ]
+    for forbidden_mutation in (
+        "delete_post_meta(",
+        "add_post_meta(",
+        "update_post_meta(",
+        "wp_update_post(",
+        "wp_insert_post(",
+        "wp_delete_post(",
+        "clean_post_cache(",
+    ):
+        if forbidden_mutation in external_commit_section:
+            raise RuntimeError(
+                "External-stage commit must be page read-only: "
+                + forbidden_mutation
+            )
+    supplemental_bytes = exact_json_bytes(EINSTEIN_STAGE_SUPPLEMENTAL_META)
+    for required_external_stage_marker in (
+        base64.b64encode(supplemental_bytes).decode("ascii"),
+        sha256_bytes(supplemental_bytes),
+        "array_intersect_key( $rest_meta, $expected_meta )",
+        "array_intersect_key( $rest_meta, $external_stage_supplemental_meta )",
+        "metadata_exists( 'post', $page_id, (string) $rest_meta_key )",
+        "get_post_meta( $page_id, $meta_key, false )",
+        "1 !== count( $raw_values )",
+        "External stage contains unexpected raw meta.",
+        "External stage supplemental raw meta is missing, duplicated, or changed.",
+        "hash_hmac( 'sha256', $post_password, $expected_token )",
+        "'page_ready' === $stage_phase",
+        "$page_contract_now = $stage_contract_snapshot(",
+    ):
+        if required_external_stage_marker not in external_stage_helper:
+            raise RuntimeError(
+                "Rendered Einstein helper is missing exact stage marker: "
+                + required_external_stage_marker
+            )
+    if "$request->get_param( 'meta_keys' )" in external_stage_helper:
+        raise RuntimeError("Einstein helper accepted a caller-selected meta subset")
+
+    fixture_meta = validate_einstein_stage_request(
+        REPO_ROOT
+        / "docs"
+        / "wp-drafts"
+        / "einstein-tower-flagship-v3-private-stage.json"
+    )["body"]["meta"]
+
+    def simulated_external_raw_meta_exact(rows: dict[str, list[Any]]) -> bool:
+        expected_keys = set(fixture_meta)
+        supplemental_keys = set(EINSTEIN_STAGE_SUPPLEMENTAL_META)
+        if set(rows) != expected_keys | supplemental_keys:
+            return False
+        if any(len(rows[key]) != 1 or rows[key][0] != value for key, value in fixture_meta.items()):
+            return False
+        return all(
+            len(rows[key]) == 1 and rows[key][0] == value
+            for key, value in EINSTEIN_STAGE_SUPPLEMENTAL_META.items()
+        )
+
+    exact_raw_rows = {key: [copy.deepcopy(value)] for key, value in fixture_meta.items()}
+    exact_raw_rows.update(
+        {
+            key: [copy.deepcopy(value)]
+            for key, value in EINSTEIN_STAGE_SUPPLEMENTAL_META.items()
+        }
+    )
+    duplicate_raw_rows = copy.deepcopy(exact_raw_rows)
+    duplicate_raw_rows["project_contract_id"].append(EINSTEIN_PROJECT_CONTRACT_ID)
+    unexpected_building_rows = copy.deepcopy(exact_raw_rows)
+    unexpected_building_rows["building"] = ["stale"]
+    unexpected_photos_rows = copy.deepcopy(exact_raw_rows)
+    unexpected_photos_rows["photos_csv"] = ["stale.jpg"]
+    if not simulated_external_raw_meta_exact(exact_raw_rows) or any(
+        simulated_external_raw_meta_exact(rows)
+        for rows in (
+            duplicate_raw_rows,
+            unexpected_building_rows,
+            unexpected_photos_rows,
+        )
+    ):
+        raise RuntimeError("External-stage raw-meta exactness simulation drifted")
+
+    page_rows_before_commit = copy.deepcopy(exact_raw_rows)
+    recorded_contract = sha256_bytes(exact_json_bytes(fixture_meta))
+    first_commit_state = {
+        "phase": "page_ready",
+        "page_contract_sha256": recorded_contract,
+    }
+    retry_commit_state = copy.deepcopy(first_commit_state)
+    if (
+        first_commit_state != retry_commit_state
+        or page_rows_before_commit != exact_raw_rows
+    ):
+        raise RuntimeError("External-stage response-loss idempotency simulation drifted")
+
+    stage_scope_start = external_stage_helper.find(
+        "$stage_scope_absent = function"
+    )
+    stage_scope_end = external_stage_helper.find(
+        "$stage_absence_proved = function", stage_scope_start
+    )
+    if stage_scope_start < 0 or stage_scope_end <= stage_scope_start:
+        raise RuntimeError("External helper is missing the broad stage-absence predicate")
+    stage_scope_section = external_stage_helper[stage_scope_start:stage_scope_end]
+    for required_scope_marker in (
+        "'name'] = $page_slug",
+        "'_nadlan_private_unit_journey'",
+        "'_nadlan_flagship_source_post_id'",
+        "'suppress_filters'       => true",
+        "empty( $slug_matches )",
+        "empty( $marker_matches )",
+    ):
+        if required_scope_marker not in stage_scope_section:
+            raise RuntimeError(
+                "External helper stage-absence scope is incomplete: "
+                + required_scope_marker
+            )
+    if "project_contract_id" in stage_scope_section:
+        raise RuntimeError("Stage-absence marker crosswalk was narrowed by mutable project meta")
+
+    external_rollback_start = external_stage_helper.find(
+        "if ( 'rollback' === $action )"
+    )
+    external_rollback_end = external_stage_helper.find(
+        "if ( 'create_page' === $action )", external_rollback_start
+    )
+    if external_rollback_start < 0 or external_rollback_end <= external_rollback_start:
+        raise RuntimeError("Einstein helper rollback action was not rendered")
+    external_rollback_section = external_stage_helper[
+        external_rollback_start:external_rollback_end
+    ]
+    rollback_snapshot_position = external_rollback_section.find(
+        "$page_contract_now = $stage_contract_snapshot("
+    )
+    rollback_delete_position = external_rollback_section.find(
+        "$deleted = wp_delete_post( $page_id, true );"
+    )
+    rollback_absence_position = external_rollback_section.find(
+        "$stage_absence_proved( $page_id )", rollback_delete_position
+    )
+    rollback_page_state_position = external_rollback_section.find(
+        "$state['page_deleted'] = true;", rollback_absence_position
+    )
+    rollback_restore_position = external_rollback_section.find(
+        "$state = $restore_backup( $state );", rollback_page_state_position
+    )
+    rollback_positions = (
+        rollback_snapshot_position,
+        rollback_delete_position,
+        rollback_absence_position,
+        rollback_page_state_position,
+        rollback_restore_position,
+    )
+    if (
+        any(position < 0 for position in rollback_positions)
+        or tuple(sorted(rollback_positions)) != rollback_positions
+        or external_rollback_section.count("wp_delete_post(") != 1
+    ):
+        raise RuntimeError(
+            "Exact page rollback is not snapshot -> delete -> absence -> state -> plugin"
+        )
+    for required_rollback_contract in (
+        "page_title_sha256",
+        "page_content_sha256",
+        "page_excerpt_sha256",
+        "page_core_sha256",
+        "page_meta_sha256",
+        "page_password_fingerprint",
+        "page_contract_sha256",
+        "Rollback refused a changed exact page contract.",
+        "Rolled-back plugin state still has a tracked private page.",
+        "'page_deleted'",
+    ):
+        if required_rollback_contract not in external_rollback_section:
+            raise RuntimeError(
+                "Exact helper rollback contract is incomplete: "
+                + required_rollback_contract
+            )
+
+    external_finalize_start = external_stage_helper.find(
+        "if ( 'finalize' === $action )"
+    )
+    external_finalize_section = external_stage_helper[external_finalize_start:]
+    for required_finalize_page_guard in (
+        "$rolled_back_created_page",
+        "true !== ( isset( $state['page_deleted'] ) ? $state['page_deleted'] : false )",
+        "! $stage_absence_proved( (int) $state['page_id'] )",
+        "$recovery_adoption_enabled && ! $stage_scope_absent()",
+        "recovery_stage_present",
+    ):
+        if required_finalize_page_guard not in external_finalize_section:
+            raise RuntimeError(
+                "Rolled-back finalization page guard is incomplete: "
+                + required_finalize_page_guard
+            )
+
+    def simulate_page_first_rollback(
+        *,
+        tracked_page_present: bool,
+        contract_exact: bool,
+        exact_slug_present_after: bool,
+        governed_marker_present_after: bool,
+        already_rolled_back: bool = False,
+        page_deleted_recorded: bool = False,
+    ) -> dict[str, Any]:
+        events: list[str] = []
+        delete_count = 0
+        if tracked_page_present:
+            events.append("snapshot")
+            if already_rolled_back or not contract_exact:
+                return {
+                    "passed": False,
+                    "delete_count": 0,
+                    "plugin_restored": False,
+                    "events": events,
+                }
+            events.append("delete")
+            delete_count = 1
+            tracked_page_present = False
+        events.append("absence")
+        if (
+            tracked_page_present
+            or exact_slug_present_after
+            or governed_marker_present_after
+        ):
+            return {
+                "passed": False,
+                "delete_count": delete_count,
+                "plugin_restored": False,
+                "events": events,
+            }
+        if not page_deleted_recorded:
+            events.append("page_deleted_state")
+        if not already_rolled_back:
+            events.append("plugin_restore")
+        return {
+            "passed": True,
+            "delete_count": delete_count,
+            "plugin_restored": not already_rolled_back,
+            "events": events,
+        }
+
+    exact_page_rollback = simulate_page_first_rollback(
+        tracked_page_present=True,
+        contract_exact=True,
+        exact_slug_present_after=False,
+        governed_marker_present_after=False,
+    )
+    changed_page_rollback = simulate_page_first_rollback(
+        tracked_page_present=True,
+        contract_exact=False,
+        exact_slug_present_after=False,
+        governed_marker_present_after=False,
+    )
+    response_lost_page_rollback = simulate_page_first_rollback(
+        tracked_page_present=False,
+        contract_exact=True,
+        exact_slug_present_after=False,
+        governed_marker_present_after=False,
+    )
+    replacement_page_rollback = simulate_page_first_rollback(
+        tracked_page_present=False,
+        contract_exact=True,
+        exact_slug_present_after=True,
+        governed_marker_present_after=True,
+    )
+    already_rolled_back_page_present = simulate_page_first_rollback(
+        tracked_page_present=True,
+        contract_exact=True,
+        exact_slug_present_after=False,
+        governed_marker_present_after=False,
+        already_rolled_back=True,
+    )
+    helper_page_first_rollback_exact = (
+        exact_page_rollback["passed"] is True
+        and exact_page_rollback["delete_count"] == 1
+        and exact_page_rollback["events"]
+        == [
+            "snapshot",
+            "delete",
+            "absence",
+            "page_deleted_state",
+            "plugin_restore",
+        ]
+        and changed_page_rollback["passed"] is False
+        and changed_page_rollback["delete_count"] == 0
+        and changed_page_rollback["plugin_restored"] is False
+        and response_lost_page_rollback["passed"] is True
+        and response_lost_page_rollback["delete_count"] == 0
+        and response_lost_page_rollback["events"]
+        == ["absence", "page_deleted_state", "plugin_restore"]
+        and replacement_page_rollback["passed"] is False
+        and replacement_page_rollback["delete_count"] == 0
+        and already_rolled_back_page_present["passed"] is False
+        and already_rolled_back_page_present["delete_count"] == 0
+    )
+    if not helper_page_first_rollback_exact:
+        raise RuntimeError("Exact helper page-first rollback simulation drifted")
+
+    helper_snapshot_start = helper.find("$stage_contract_snapshot = function")
+    helper_snapshot_end = helper.find(
+        "$stage_scope_absent = function", helper_snapshot_start
+    )
+    helper_snapshot_section = helper[helper_snapshot_start:helper_snapshot_end]
+    for required_helper_raw_marker in (
+        "Helper-created stage raw meta keys differ from the exact created allowlist.",
+        "Helper-created stage meta is missing or duplicated.",
+        "$observed_raw_keys !== $normalized_keys",
+        "get_post_meta( $page_id, $meta_key, false )",
+        "1 !== count( $raw_values )",
+    ):
+        if required_helper_raw_marker not in helper_snapshot_section:
+            raise RuntimeError(
+                "Helper-created snapshot raw-meta gate is incomplete: "
+                + required_helper_raw_marker
+            )
+
+    helper_create_start = helper.find("if ( 'create_page' === $action )")
+    helper_create_end = helper.find("if ( 'finalize' === $action )", helper_create_start)
+    helper_create_section = helper[helper_create_start:helper_create_end]
+    helper_create_catch_start = helper_create_section.find(
+        "} catch ( Throwable $error ) {"
+    )
+    helper_create_catch = helper_create_section[helper_create_catch_start:]
+    create_failure_match_position = helper_create_catch.find(
+        "$failed_page && $page_matches_expected( $failed_page )"
+    )
+    create_failure_snapshot_position = helper_create_catch.find(
+        "$failed_snapshot = $stage_contract_snapshot("
+    )
+    create_failure_state_position = helper_create_catch.find(
+        "$state['page_contract_sha256'] = $failed_snapshot_recheck['contract_sha256'];"
+    )
+    create_failure_delete_position = helper_create_catch.find(
+        "$deleted = wp_delete_post( $page_id, true );"
+    )
+    create_failure_absence_position = helper_create_catch.find(
+        "$stage_absence_proved( $page_id )", create_failure_delete_position
+    )
+    create_failure_positions = (
+        create_failure_match_position,
+        create_failure_snapshot_position,
+        create_failure_state_position,
+        create_failure_delete_position,
+        create_failure_absence_position,
+    )
+    if (
+        helper_create_catch_start < 0
+        or any(position < 0 for position in create_failure_positions)
+        or tuple(sorted(create_failure_positions)) != create_failure_positions
+        or helper_create_catch.count("wp_delete_post(") != 1
+    ):
+        raise RuntimeError(
+            "Helper create-failure cleanup is not exact-check -> state -> delete -> absence"
+        )
+
+    def simulated_helper_created_raw_exact(
+        expected_keys: list[str], rows: dict[str, list[Any]]
+    ) -> bool:
+        return sorted(rows) == sorted(expected_keys) and all(
+            len(rows[key]) == 1 for key in expected_keys
+        )
+
+    helper_created_expected_keys = [
+        "_nadlan_flagship_source_post_id",
+        "_nadlan_private_unit_journey",
+        "nl_unit_scene_v2",
+    ]
+    helper_created_exact_rows = {
+        key: ["exact"] for key in helper_created_expected_keys
+    }
+    helper_created_extra_rows = copy.deepcopy(helper_created_exact_rows)
+    helper_created_extra_rows["concurrent_extra"] = ["drift"]
+    helper_created_duplicate_rows = copy.deepcopy(helper_created_exact_rows)
+    helper_created_duplicate_rows["nl_unit_scene_v2"].append("duplicate")
+    helper_created_raw_drift_zero_delete = (
+        simulated_helper_created_raw_exact(
+            helper_created_expected_keys, helper_created_exact_rows
+        )
+        and not simulated_helper_created_raw_exact(
+            helper_created_expected_keys, helper_created_extra_rows
+        )
+        and not simulated_helper_created_raw_exact(
+            helper_created_expected_keys, helper_created_duplicate_rows
+        )
+    )
+    if not helper_created_raw_drift_zero_delete:
+        raise RuntimeError("Helper-created raw-meta rollback simulation drifted")
+
+    for required_core_contract_marker in (
+        "'author_id'",
+        "'parent_id'",
+        "'comment_status'",
+        "'ping_status'",
+        "'menu_order'",
+        "'template'",
+        "'taxonomy_terms'",
+        "get_object_taxonomies( 'nadlan_project', 'names' )",
+        "wp_get_object_terms( $page_id, $taxonomy, array( 'fields' => 'ids' ) )",
+        "'core_sha256'",
+    ):
+        if required_core_contract_marker not in helper_snapshot_section:
+            raise RuntimeError(
+                "Stage core/taxonomy contract is incomplete: "
+                + required_core_contract_marker
+            )
+
+    expected_core_contract = {
+        "author_id": 42,
+        "parent_id": 0,
+        "comment_status": "closed",
+        "ping_status": "closed",
+        "menu_order": 0,
+        "template": "",
+        "taxonomy_terms": [],
+    }
+    expected_core_sha256 = sha256_bytes(exact_json_bytes(expected_core_contract))
+    author_drift_contract = {**expected_core_contract, "author_id": 77}
+    taxonomy_drift_contract = {
+        **expected_core_contract,
+        "taxonomy_terms": ["nadlan_city:123"],
+    }
+    core_field_drift_zero_delete = (
+        secrets.compare_digest(
+            expected_core_sha256, sha256_bytes(exact_json_bytes(expected_core_contract))
+        )
+        and not secrets.compare_digest(
+            expected_core_sha256, sha256_bytes(exact_json_bytes(author_drift_contract))
+        )
+        and not secrets.compare_digest(
+            expected_core_sha256,
+            sha256_bytes(exact_json_bytes(taxonomy_drift_contract)),
+        )
+        and simulate_page_first_rollback(
+            tracked_page_present=True,
+            contract_exact=False,
+            exact_slug_present_after=False,
+            governed_marker_present_after=False,
+        )["delete_count"]
+        == 0
+    )
+    if not core_field_drift_zero_delete:
+        raise RuntimeError("Core-field/taxonomy rollback drift simulation failed")
+
+    adoption_start = external_stage_helper.find(
+        "if ( 'adopt_exact_rollback' === $action )"
+    )
+    adoption_end = external_stage_helper.find(
+        "if ( 'rollback' === $action )", adoption_start
+    )
+    adoption_section = external_stage_helper[adoption_start:adoption_end]
+    adoption_state_commit_position = adoption_section.find(
+        "$state['phase']                         = 'rolled_back';"
+    )
+    adoption_late_scope_positions = [
+        match.start()
+        for match in re.finditer(
+            re.escape("if ( ! $stage_scope_absent() )"), adoption_section
+        )
+    ]
+    if (
+        adoption_start < 0
+        or adoption_end <= adoption_start
+        or len(adoption_late_scope_positions) < 2
+        or adoption_state_commit_position < 0
+        or adoption_late_scope_positions[-1] >= adoption_state_commit_position
+        or "before idempotent adoption success" not in adoption_section
+        or "before adoption state commit" not in adoption_section
+        or "'late_stage_present'" not in adoption_section
+    ):
+        raise RuntimeError("Recovery adoption lacks its late stage-absence gates")
+
+    def simulate_recovery_adoption(
+        *, initial_stage_absent: bool, late_stage_absent: bool, idempotent: bool
+    ) -> dict[str, bool]:
+        if not initial_stage_absent or not late_stage_absent:
+            return {"state_committed": False, "success_returned": False}
+        return {
+            "state_committed": not idempotent,
+            "success_returned": True,
+        }
+
+    late_stage_new_adoption = simulate_recovery_adoption(
+        initial_stage_absent=True,
+        late_stage_absent=False,
+        idempotent=False,
+    )
+    late_stage_idempotent_adoption = simulate_recovery_adoption(
+        initial_stage_absent=True,
+        late_stage_absent=False,
+        idempotent=True,
+    )
+    adoption_late_stage_zero_commit = (
+        late_stage_new_adoption
+        == {"state_committed": False, "success_returned": False}
+        and late_stage_idempotent_adoption
+        == {"state_committed": False, "success_returned": False}
+        and simulate_recovery_adoption(
+            initial_stage_absent=True,
+            late_stage_absent=True,
+            idempotent=False,
+        )
+        == {"state_committed": True, "success_returned": True}
+    )
+    if not adoption_late_stage_zero_commit:
+        raise RuntimeError("Late-stage adoption simulation drifted")
+
+    def simulate_rolled_back_finalize(
+        *, page_created_new: bool, page_deleted: bool, stage_scope_absent: bool
+    ) -> bool:
+        if page_created_new and (not page_deleted or not stage_scope_absent):
+            return False
+        return stage_scope_absent
+
+    post_adopt_stage_blocks_finalize = not simulate_rolled_back_finalize(
+        page_created_new=False,
+        page_deleted=False,
+        stage_scope_absent=False,
+    )
+    rolled_back_created_page_blocks_finalize = not simulate_rolled_back_finalize(
+        page_created_new=True,
+        page_deleted=False,
+        stage_scope_absent=True,
+    )
+    rolled_back_replacement_blocks_finalize = not simulate_rolled_back_finalize(
+        page_created_new=True,
+        page_deleted=True,
+        stage_scope_absent=False,
+    )
+    if not (
+        post_adopt_stage_blocks_finalize
+        and rolled_back_created_page_blocks_finalize
+        and rolled_back_replacement_blocks_finalize
+        and simulate_rolled_back_finalize(
+            page_created_new=True,
+            page_deleted=True,
+            stage_scope_absent=True,
+        )
+    ):
+        raise RuntimeError("Rolled-back finalization stage-absence simulation drifted")
 
     def simulated_route_loss_cleanup_safe(
         phase: str, *, backup: bool = False, foreign_lock: bool = False
@@ -2559,6 +4515,82 @@ def self_test() -> dict[str, Any]:
         raise RuntimeError("Route-loss simulation discarded a deployment recovery state")
     if simulated_route_loss_cleanup_safe("uploading", foreign_lock=True):
         raise RuntimeError("Route-loss simulation accepted a foreign global lock")
+
+    def simulate_finalize_retry(
+        state_phase: str, lock_state: str, *, resources_absent: bool
+    ) -> tuple[str, str, str]:
+        if state_phase == "none":
+            if lock_state == "absent" and resources_absent:
+                return "none", "absent", "idempotent"
+            return state_phase, lock_state, "blocked"
+        if state_phase == "terminal":
+            if lock_state != "owned":
+                return state_phase, lock_state, "blocked"
+            return "marker", "owned", "marker_persisted"
+        if state_phase == "marker":
+            if not resources_absent or lock_state == "foreign":
+                return state_phase, lock_state, "blocked"
+            if lock_state == "owned":
+                return "marker", "absent", "lock_released"
+            if lock_state == "absent":
+                return "none", "absent", "state_deleted"
+        return state_phase, lock_state, "blocked"
+
+    marker_before_lock = simulate_finalize_retry(
+        "marker", "owned", resources_absent=True
+    )
+    marker_after_lock = simulate_finalize_retry(
+        marker_before_lock[0], marker_before_lock[1], resources_absent=True
+    )
+    lock_before_state = simulate_finalize_retry(
+        "marker", "absent", resources_absent=True
+    )
+    state_delete_response_lost = simulate_finalize_retry(
+        "none", "absent", resources_absent=True
+    )
+    absent_with_owned_lock = simulate_finalize_retry(
+        "none", "owned", resources_absent=True
+    )
+    if not (
+        marker_before_lock == ("marker", "absent", "lock_released")
+        and marker_after_lock == ("none", "absent", "state_deleted")
+        and lock_before_state == ("none", "absent", "state_deleted")
+        and state_delete_response_lost == ("none", "absent", "idempotent")
+        and absent_with_owned_lock == ("none", "owned", "blocked")
+    ):
+        raise RuntimeError("Finalize checkpoint reconciliation simulation drifted")
+
+    def simulated_storage_root_cleanup(entries: set[str] | None) -> bool:
+        if entries is None:
+            return True
+        return entries.issubset({".htaccess", "index.php"})
+
+    if not all(
+        simulated_storage_root_cleanup(entries)
+        for entries in (
+            None,
+            set(),
+            {".htaccess"},
+            {"index.php"},
+            {".htaccess", "index.php"},
+        )
+    ) or simulated_storage_root_cleanup({".htaccess", "orphan.zip"}):
+        raise RuntimeError("Guard-only storage cleanup is not retry-convergent")
+
+    upgrade_path = PurePosixPath("/wp-content/upgrade")
+    legacy_upload_path = upgrade_path / ".nadlan-unit-journey-upload-owned"
+    legacy_backup_path = upgrade_path / ".nadlan-unit-journey-owned"
+    current_storage_path = PurePosixPath(
+        "/wp-content/.nadlan-unit-journey-release-owned"
+    )
+    def core_upgrade_sweeps(candidate: PurePosixPath) -> bool:
+        return upgrade_path in candidate.parents
+    if not (
+        core_upgrade_sweeps(legacy_upload_path)
+        and core_upgrade_sweeps(legacy_backup_path)
+        and not core_upgrade_sweeps(current_storage_path)
+    ):
+        raise RuntimeError("WordPress core-upgrade purge scope regression is invalid")
     for required_upload_marker in (
         "if ( 'deploy_preflight' === $action )",
         "'nadlan-private-release-deploy-preflight/v1'",
@@ -2678,9 +4710,10 @@ def self_test() -> dict[str, Any]:
         and "independently_remove_snippet(" not in driver_source[phase_one_position:finally_position]
         and "and not retain_recovery_helper" in driver_source[finally_position:phase_two_position]
         and "recovery_retained" in driver_source[finally_position:]
-        and "def rollback_response_is_exact(" in driver_source[main_position:]
+        and "def rollback_response_is_exact(" in driver_source[:main_position]
         and '"rolled_back",' in driver_source[main_position:]
-        and "rollback_response_is_exact(rollback)" in driver_source[main_position:]
+        and "rollback_response_is_exact(\n                            rollback, before_plugin_contract"
+        in driver_source[main_position:]
     ):
         raise RuntimeError("Driver must defer independent helper deletion to finally after phase one")
     with tempfile.TemporaryDirectory(prefix="nadlan-release-self-test-") as temp_dir:
@@ -2723,7 +4756,16 @@ def self_test() -> dict[str, Any]:
             cleanup_rendered.write_text("<?php\n" + cleanup_helper + "\n", encoding="utf-8")
             upload_rendered = temp / "upload-helper.php"
             upload_rendered.write_text("<?php\n" + upload_helper + "\n", encoding="utf-8")
-            for candidate in (rendered, upload_rendered, cleanup_rendered):
+            external_stage_rendered = temp / "einstein-stage-helper.php"
+            external_stage_rendered.write_text(
+                "<?php\n" + external_stage_helper + "\n", encoding="utf-8"
+            )
+            for candidate in (
+                rendered,
+                upload_rendered,
+                external_stage_rendered,
+                cleanup_rendered,
+            ):
                 completed = subprocess.run(
                     [php, "-l", str(candidate)],
                     capture_output=True,
@@ -2870,6 +4912,13 @@ def self_test() -> dict[str, Any]:
             "rolled_back": False,
             "rollback_outcome": "not_required",
             "upload_temp_absent": True,
+            "existence": {
+                "target_plugin": True,
+                "storage_root": True,
+                "artifact_spool": False,
+                "backup_root": False,
+                "backup_plugin": False,
+            },
         },
     }
     failure_response = FakeResponse(500, failure_payload)
@@ -2888,6 +4937,24 @@ def self_test() -> dict[str, Any]:
         FakeResponse(500, nonboolean_failure), nonboolean_failure
     ).get("contract_valid") is not False:
         raise RuntimeError("Non-boolean deployment rollback evidence was accepted")
+    missing_existence = copy.deepcopy(failure_payload)
+    del missing_existence["data"]["existence"]
+    if deploy_failure_proof(
+        FakeResponse(500, missing_existence), missing_existence
+    ).get("contract_valid") is not False:
+        raise RuntimeError("Deployment failure without existence evidence was accepted")
+    extra_existence = copy.deepcopy(failure_payload)
+    extra_existence["data"]["existence"]["unexpected"] = False
+    if deploy_failure_proof(
+        FakeResponse(500, extra_existence), extra_existence
+    ).get("contract_valid") is not False:
+        raise RuntimeError("Deployment failure with extra existence evidence was accepted")
+    nonboolean_existence = copy.deepcopy(failure_payload)
+    nonboolean_existence["data"]["existence"]["storage_root"] = 1
+    if deploy_failure_proof(
+        FakeResponse(500, nonboolean_existence), nonboolean_existence
+    ).get("contract_valid") is not False:
+        raise RuntimeError("Non-boolean deployment existence evidence was accepted")
     rollback_outcomes = set()
     for outcome, rolled_back in (
         ("not_required", False),
@@ -3028,6 +5095,8 @@ def self_test() -> dict[str, Any]:
                 "root_safe": True,
                 "root_writable": True,
                 "backup_path_absent": True,
+                "storage_scope_exact": True,
+                "core_upgrade_disjoint": True,
             },
             "filesystem": {"available": True},
         }
@@ -3164,6 +5233,12 @@ def self_test() -> dict[str, Any]:
         raise RuntimeError("Failed read-only deployment preflight was accepted")
 
     def fake_record(post_id: int, body: dict[str, Any]) -> dict[str, Any]:
+        record_meta = copy.deepcopy(body["meta"])
+        if body["slug"] == EINSTEIN_STAGE_SLUG:
+            for supplemental_key, supplemental_value in (
+                EINSTEIN_STAGE_SUPPLEMENTAL_META.items()
+            ):
+                record_meta.setdefault(supplemental_key, supplemental_value)
         return {
             "id": post_id,
             "slug": body["slug"],
@@ -3172,9 +5247,57 @@ def self_test() -> dict[str, Any]:
             "content": {"raw": body["content"]},
             "excerpt": {"raw": body["excerpt"]},
             "password": body.get("password", ""),
-            "meta": copy.deepcopy(body["meta"]),
+            "meta": record_meta,
             "link": f"https://nad-lan.co.il/projects/{body['slug']}/",
         }
+
+    exact_stage_body = copy.deepcopy(einstein_request["body"])
+    exact_stage_body["password"] = offline_password
+    neutral_stage_record = fake_record(9010, exact_stage_body)
+    neutral_stage_record["meta"].update(
+        {
+            "price_min": 0,
+            "video_url": "",
+            "owner_user_id": 0,
+            "registered_empty_list": [],
+        }
+    )
+    neutral_stage_proof = assert_einstein_stage_readback(
+        neutral_stage_record,
+        einstein_request,
+        offline_password,
+    )
+    if (
+        neutral_stage_proof["neutral_rest_default_count"] != 4
+        or neutral_stage_proof["supplemental_meta_exact"] is not True
+    ):
+        raise RuntimeError("Neutral REST defaults were not accepted exactly")
+    nonneutral_extra_record = copy.deepcopy(neutral_stage_record)
+    nonneutral_extra_record["meta"]["building"] = "stale-rendering-input"
+    nonneutral_extra_rejected = False
+    try:
+        assert_einstein_stage_readback(
+            nonneutral_extra_record,
+            einstein_request,
+            offline_password,
+        )
+    except RuntimeError:
+        nonneutral_extra_rejected = True
+    if not nonneutral_extra_rejected:
+        raise RuntimeError("Non-neutral unpinned stage meta was accepted")
+    missing_supplemental_record = copy.deepcopy(neutral_stage_record)
+    missing_supplemental_record["meta"].pop("claim_status")
+    missing_supplemental_rejected = False
+    try:
+        assert_einstein_stage_readback(
+            missing_supplemental_record,
+            einstein_request,
+            offline_password,
+        )
+    except RuntimeError:
+        missing_supplemental_rejected = True
+    if not missing_supplemental_rejected:
+        raise RuntimeError("Missing claim_status supplemental contract was accepted")
 
     class ResponseLostClient:
         def __init__(
@@ -3183,6 +5306,8 @@ def self_test() -> dict[str, Any]:
             *,
             created_post_id: int = 9001,
             created_slug: str = EINSTEIN_STAGE_SLUG,
+            lose_next_stage_write: bool = True,
+            mutate_created_after_write: bool = False,
         ):
             public_body = {
                 "slug": "einstein-tower",
@@ -3200,10 +5325,12 @@ def self_test() -> dict[str, Any]:
             }
             if stage is not None:
                 self.records[int(stage["id"])] = copy.deepcopy(stage)
-            self.lose_next_stage_write = True
+            self.lose_next_stage_write = lose_next_stage_write
+            self.mutate_created_after_write = mutate_created_after_write
             self.created_post_id = created_post_id
             self.created_slug = created_slug
             self.delete_requests = 0
+            self.stage_write_requests = 0
 
         def request(
             self,
@@ -3229,15 +5356,21 @@ def self_test() -> dict[str, Any]:
                     return FakeResponse(404, {"code": "rest_post_invalid_id"})
                 return FakeResponse(200, self.records[post_id])
             if method == "POST" and normalized == "wp/v2/nadlan_project":
+                self.stage_write_requests += 1
                 post_id = self.created_post_id
                 created_body = dict(json_body or {})
                 created_body["slug"] = self.created_slug
                 self.records[post_id] = fake_record(post_id, created_body)
+                if self.mutate_created_after_write:
+                    self.records[post_id]["title"] = {"raw": "Concurrent stage"}
+                    self.records[post_id]["password"] = "concurrent-password"
+                    self.records[post_id]["meta"]["project_status"] = "changed"
                 if self.lose_next_stage_write:
                     self.lose_next_stage_write = False
                     raise requests.Timeout("simulated response loss after applied create")
                 return FakeResponse(201, self.records[post_id])
             if method == "POST" and match:
+                self.stage_write_requests += 1
                 post_id = int(match.group(1))
                 if post_id not in self.records:
                     return FakeResponse(404, {"code": "rest_post_invalid_id"})
@@ -3267,16 +5400,68 @@ def self_test() -> dict[str, Any]:
             raise AssertionError(f"Unexpected fake WordPress request: {method} {route}")
 
     create_client = ResponseLostClient(None)
-    create_lost_rolled_back = False
-    try:
-        write_einstein_stage(create_client, einstein_request, offline_password)
-    except requests.Timeout:
-        create_lost_rolled_back = not any(
+    create_lost_transaction = write_einstein_stage(
+        create_client, einstein_request, offline_password
+    )
+    create_lost_reconciled_for_helper_commit = (
+        create_lost_transaction.get("response_lost_reconciled") is True
+        and int(create_lost_transaction.get("post_id") or 0) == 9001
+        and create_client.delete_requests == 0
+        and any(
             row.get("slug") == EINSTEIN_STAGE_SLUG
             for row in create_client.records.values()
         )
-    if not create_lost_rolled_back:
-        raise RuntimeError("Response-lost Einstein create was not deleted exactly")
+    )
+    if not create_lost_reconciled_for_helper_commit:
+        raise RuntimeError(
+            "Response-lost Einstein create was not reconciled for immediate helper commit"
+        )
+
+    changed_reconcile_client = ResponseLostClient(
+        None,
+        created_post_id=9011,
+        mutate_created_after_write=True,
+    )
+    changed_reconcile_blocked_without_delete = False
+    try:
+        write_einstein_stage(
+            changed_reconcile_client, einstein_request, offline_password
+        )
+    except EinsteinStageRecoveryBlocked:
+        changed_reconcile_blocked_without_delete = (
+            changed_reconcile_client.delete_requests == 0
+            and 9011 in changed_reconcile_client.records
+        )
+    if not changed_reconcile_blocked_without_delete:
+        raise RuntimeError(
+            "Changed response-lost stage was not preserved without deletion"
+        )
+
+    changed_before_delete_client = ResponseLostClient(
+        None,
+        created_post_id=9012,
+        lose_next_stage_write=False,
+    )
+    changed_before_delete_transaction = write_einstein_stage(
+        changed_before_delete_client, einstein_request, offline_password
+    )
+    changed_before_delete_client.records[9012]["excerpt"] = {
+        "raw": "Concurrent changed excerpt"
+    }
+    changed_before_delete_blocked = False
+    try:
+        rollback_einstein_stage(
+            changed_before_delete_client, changed_before_delete_transaction
+        )
+    except EinsteinStageRecoveryBlocked:
+        changed_before_delete_blocked = (
+            changed_before_delete_client.delete_requests == 0
+            and 9012 in changed_before_delete_client.records
+        )
+    if not changed_before_delete_blocked:
+        raise RuntimeError(
+            "Created stage drift before rollback was not preserved without deletion"
+        )
 
     suffixed_client = ResponseLostClient(
         None,
@@ -3311,15 +5496,43 @@ def self_test() -> dict[str, Any]:
     prior_record = fake_record(9002, prior_body)
     prior_snapshot = wordpress_post_snapshot(prior_record)
     update_client = ResponseLostClient(prior_record)
-    update_lost_rolled_back = False
+    existing_stage_blocked_before_write = False
+    existing_stage_keeps_release_rollback_eligible = False
     try:
         write_einstein_stage(update_client, einstein_request, offline_password)
-    except requests.Timeout:
-        update_lost_rolled_back = (
-            wordpress_post_snapshot(update_client.records[9002]) == prior_snapshot
+    except EinsteinStageRecoveryBlocked:
+        existing_stage_blocked_before_write = False
+    except RuntimeError as error:
+        existing_stage_blocked_before_write = (
+            update_client.stage_write_requests == 0
+            and update_client.delete_requests == 0
+            and wordpress_post_snapshot(update_client.records[9002]) == prior_snapshot
         )
-    if not update_lost_rolled_back:
-        raise RuntimeError("Response-lost Einstein update was not restored exactly")
+        existing_stage_keeps_release_rollback_eligible = not isinstance(
+            error, EinsteinStageRecoveryBlocked
+        )
+    if not (
+        existing_stage_blocked_before_write
+        and existing_stage_keeps_release_rollback_eligible
+    ):
+        raise RuntimeError("Existing Einstein stage was not blocked before mutation")
+
+    claimed_record = copy.deepcopy(prior_record)
+    claimed_record["meta"]["claim_status"] = "verified"
+    claimed_record["meta"]["owner_user_id"] = 77
+    claimed_record["meta"]["verified_at"] = "2026-08-14T00:00:00Z"
+    claimed_client = ResponseLostClient(claimed_record)
+    claimed_stage_blocked_before_write = False
+    try:
+        write_einstein_stage(claimed_client, einstein_request, offline_password)
+    except RuntimeError:
+        claimed_stage_blocked_before_write = (
+            claimed_client.stage_write_requests == 0
+            and wordpress_post_snapshot(claimed_client.records[9002])
+            == wordpress_post_snapshot(claimed_record)
+        )
+    if not claimed_stage_blocked_before_write:
+        raise RuntimeError("Claimed Einstein stage was not blocked before mutation")
 
     valid_acceptance = {
         "schema": EINSTEIN_ACCEPTANCE_SCHEMA,
@@ -3434,7 +5647,25 @@ def self_test() -> dict[str, Any]:
     stage_write_position = driver_source.find(
         "einstein_transaction = write_einstein_stage(", main_position
     )
-    browser_position = driver_source.find("acceptance = subprocess.run(", stage_write_position)
+    stage_absence_preflight_position = driver_source.find(
+        "stage_matches_before_deploy = exact_stage_matches(", main_position
+    )
+    helper_create_position = driver_source.find(
+        "helper_creation_attempted = True", stage_absence_preflight_position
+    )
+    stage_commit_attempt_position = driver_source.find(
+        "einstein_stage_commit_attempted = True", stage_write_position
+    )
+    stage_commit_success_position = driver_source.find(
+        "einstein_stage_committed = True", stage_commit_attempt_position
+    )
+    anonymous_stage_position = driver_source.find(
+        'result["checks"]["anonymous_private_surfaces"] = anonymous_einstein_probes(',
+        stage_commit_success_position,
+    )
+    browser_position = driver_source.find(
+        "acceptance = subprocess.run(", anonymous_stage_position
+    )
     final_readback_position = driver_source.find(
         'result["checks"]["final_stage_readback"]', browser_position
     )
@@ -3446,6 +5677,18 @@ def self_test() -> dict[str, Any]:
     )
     blocked_state_position = driver_source.find(
         "if isinstance(error, EinsteinStageRecoveryBlocked):", main_position
+    )
+    helper_delegation_position = driver_source.find(
+        "stage_rollback_deferred_to_helper = True", blocked_state_position
+    )
+    main_driver_stage_delete_position = driver_source.find(
+        "rollback_einstein_stage(", blocked_state_position
+    )
+    helper_state_reconcile_position = driver_source.find(
+        "if stage_rollback_deferred_to_helper and (", plugin_failure_status_position
+    )
+    exact_helper_rollback_position = driver_source.find(
+        'call_helper("rollback", timeout=240)', helper_state_reconcile_position
     )
     blocked_plugin_rollback_guard = driver_source.find(
         "if rollback_required and not stage_rollback_blocked:", blocked_state_position
@@ -3462,25 +5705,111 @@ def self_test() -> dict[str, Any]:
     )
     if not (
         0
-        <= stage_write_position
+        <= stage_absence_preflight_position
+        < helper_create_position
+        < deploy_driver_position
+        < stage_write_position
+        < stage_commit_attempt_position
+        < stage_commit_success_position
+        < anonymous_stage_position
         < browser_position
         < final_readback_position
         < phase_one_position
         and 0 <= stage_rollback_position < plugin_failure_status_position
         and 0
         <= blocked_state_position
+        < helper_delegation_position
+        < plugin_failure_status_position
+        < helper_state_reconcile_position
         < blocked_plugin_rollback_guard
+        < exact_helper_rollback_position
         < blocked_finalize_guard
         < deploy_recovery_finalize_guard
         < recovery_retention_position
+        and main_driver_stage_delete_position < 0
     ):
         raise RuntimeError("Einstein stage/browser/finalize or stage/plugin rollback ordering drifted")
+
+    write_stage_function_start = driver_source.find("def write_einstein_stage(")
+    write_stage_function_end = driver_source.find(
+        "def rollback_einstein_stage(", write_stage_function_start
+    )
+    write_stage_function_section = driver_source[
+        write_stage_function_start:write_stage_function_end
+    ]
+    if (
+        write_stage_function_start < 0
+        or write_stage_function_end <= write_stage_function_start
+        or "rollback_einstein_stage(" in write_stage_function_section
+        or 'transaction["response_lost_reconciled"] = True'
+        not in write_stage_function_section
+    ):
+        raise RuntimeError(
+            "Response-lost Einstein create is not zero-delete helper-commit reconciliation"
+        )
+
+    def simulate_post_commit_failure(
+        *, helper_state_phase: str, raw_contract_exact: bool
+    ) -> dict[str, Any]:
+        driver_delete_count = 0
+        helper_delete_count = 0
+        plugin_restored = False
+        if helper_state_phase not in {"page_ready", "rolled_back"}:
+            return {
+                "driver_delete_count": driver_delete_count,
+                "helper_delete_count": helper_delete_count,
+                "plugin_restored": plugin_restored,
+                "recovery_retained": True,
+            }
+        if not raw_contract_exact:
+            return {
+                "driver_delete_count": driver_delete_count,
+                "helper_delete_count": helper_delete_count,
+                "plugin_restored": plugin_restored,
+                "recovery_retained": True,
+            }
+        helper_delete_count = 1
+        plugin_restored = True
+        return {
+            "driver_delete_count": driver_delete_count,
+            "helper_delete_count": helper_delete_count,
+            "plugin_restored": plugin_restored,
+            "recovery_retained": False,
+        }
+
+    post_commit_raw_drift = simulate_post_commit_failure(
+        helper_state_phase="page_ready", raw_contract_exact=False
+    )
+    indeterminate_commit_state = simulate_post_commit_failure(
+        helper_state_phase="deployed", raw_contract_exact=True
+    )
+    post_commit_exact_rollback = simulate_post_commit_failure(
+        helper_state_phase="page_ready", raw_contract_exact=True
+    )
+    post_commit_raw_drift_zero_delete = (
+        post_commit_raw_drift["driver_delete_count"] == 0
+        and post_commit_raw_drift["helper_delete_count"] == 0
+        and post_commit_raw_drift["plugin_restored"] is False
+        and post_commit_raw_drift["recovery_retained"] is True
+        and indeterminate_commit_state["driver_delete_count"] == 0
+        and indeterminate_commit_state["helper_delete_count"] == 0
+        and indeterminate_commit_state["plugin_restored"] is False
+        and indeterminate_commit_state["recovery_retained"] is True
+        and post_commit_exact_rollback["driver_delete_count"] == 0
+        and post_commit_exact_rollback["helper_delete_count"] == 1
+        and post_commit_exact_rollback["plugin_restored"] is True
+    )
+    if not post_commit_raw_drift_zero_delete:
+        raise RuntimeError("Post-commit helper-exclusive rollback simulation drifted")
 
     return {
         "passed": True,
         "template_sha256": hashlib.sha256(TEMPLATE.read_bytes()).hexdigest(),
         "rendered_helper_bytes": len(helper.encode("utf-8")),
         "rendered_upload_helper_bytes": len(upload_helper.encode("utf-8")),
+        "rendered_external_stage_helper_bytes": len(
+            external_stage_helper.encode("utf-8")
+        ),
         "rendered_cleanup_helper_bytes": len(cleanup_helper.encode("utf-8")),
         "zip_validation": zip_proof,
         "traversal_rejected": traversal_rejected,
@@ -3532,12 +5861,60 @@ def self_test() -> dict[str, Any]:
             "exact_slug": EINSTEIN_STAGE_SLUG,
             "canonical_public_post_id": EINSTEIN_CANONICAL_POST_ID,
             "project_contract_id": EINSTEIN_PROJECT_CONTRACT_ID,
-            "response_lost_create_rolled_back": create_lost_rolled_back,
+            "response_lost_create_reconciled_for_helper_commit": (
+                create_lost_reconciled_for_helper_commit
+            ),
+            "response_lost_changed_stage_zero_delete": (
+                changed_reconcile_blocked_without_delete
+            ),
+            "predelete_snapshot_drift_zero_delete": changed_before_delete_blocked,
             "response_lost_suffixed_create_recovery_blocked": suffixed_create_recovery_blocked,
             "response_lost_suffixed_create_delete_requests": suffixed_client.delete_requests,
             "blocked_stage_skips_plugin_rollback_and_finalize": True,
-            "response_lost_update_rolled_back": update_lost_rolled_back,
-            "scoped_meta_restore_preserved_unrelated": True,
+            "existing_stage_blocked_before_write": existing_stage_blocked_before_write,
+            "existing_stage_release_rollback_eligible": (
+                existing_stage_keeps_release_rollback_eligible
+            ),
+            "claimed_stage_blocked_before_write": claimed_stage_blocked_before_write,
+            "create_only_stage_transaction": True,
+            "authenticated_absence_before_helper_and_plugin": True,
+            "neutral_rest_defaults_accepted": True,
+            "nonneutral_rest_extra_rejected": nonneutral_extra_rejected,
+            "supplemental_claim_status_required": missing_supplemental_rejected,
+            "external_stage_helper_rendered_and_linted": php_lint,
+            "external_stage_commit_page_read_only": True,
+            "external_stage_commit_before_fallible_gates": True,
+            "post_commit_raw_drift_zero_delete": post_commit_raw_drift_zero_delete,
+            "duplicate_raw_meta_rejected": True,
+            "unexpected_raw_rendering_meta_rejected": True,
+            "response_lost_stage_commit_idempotent": True,
+            "finalize_revalidates_stage_contract": True,
+            "helper_page_first_exact_rollback": helper_page_first_rollback_exact,
+            "helper_changed_page_zero_delete": (
+                changed_page_rollback["delete_count"] == 0
+            ),
+            "helper_created_raw_drift_zero_delete": (
+                helper_created_raw_drift_zero_delete
+            ),
+            "core_field_and_taxonomy_drift_zero_delete": (
+                core_field_drift_zero_delete
+            ),
+            "helper_response_lost_delete_reconciled": (
+                response_lost_page_rollback["passed"] is True
+            ),
+            "helper_replacement_blocks_rollback": (
+                replacement_page_rollback["passed"] is False
+            ),
+            "post_adopt_stage_blocks_finalize": post_adopt_stage_blocks_finalize,
+            "late_stage_blocks_adoption_commit_and_success": (
+                adoption_late_stage_zero_commit
+            ),
+            "rolled_back_created_page_blocks_finalize": (
+                rolled_back_created_page_blocks_finalize
+            ),
+            "rolled_back_replacement_blocks_finalize": (
+                rolled_back_replacement_blocks_finalize
+            ),
             "browser_before_finalize": True,
             "stage_rollback_before_plugin_rollback": True,
             "acceptance_schema_exact": valid_acceptance_proof["schema"]
@@ -3603,6 +5980,14 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--acceptance-timeout-seconds", type=int, default=2400)
     parser.add_argument("--health-attempts", type=int, default=6)
     parser.add_argument("--health-delay-seconds", type=float, default=3.0)
+    parser.add_argument(
+        "--recover-retained-run",
+        type=Path,
+        help="Exact sanitized failed-run evidence JSON for recovery-only adoption.",
+    )
+    parser.add_argument("--recovery-run-id")
+    parser.add_argument("--recovery-helper-id", type=int)
+    parser.add_argument("--recovery-helper-sha256")
     parser.add_argument("--self-test", action="store_true")
     return parser.parse_args()
 
@@ -3612,6 +5997,19 @@ def main() -> int:
     if args.self_test:
         print(json.dumps(self_test(), ensure_ascii=False, indent=2))
         return 0
+    if args.recover_retained_run is not None:
+        return recover_retained_run(args)
+    if any(
+        value is not None
+        for value in (
+            args.recovery_run_id,
+            args.recovery_helper_id,
+            args.recovery_helper_sha256,
+        )
+    ):
+        raise SystemExit(
+            "Recovery identity arguments require --recover-retained-run"
+        )
 
     einstein_request: dict[str, Any] | None = None
     if args.einstein_stage_request is not None:
@@ -3737,6 +6135,8 @@ def main() -> int:
     deployed = False
     page_url = ""
     einstein_transaction: dict[str, Any] | None = None
+    einstein_stage_commit_attempted = False
+    einstein_stage_committed = False
     stage_rollback_blocked = False
     deploy_failure_recovery_blocked = False
     einstein_public_predeploy_sha256 = ""
@@ -3791,29 +6191,6 @@ def main() -> int:
             body.update(extra)
         response = client.request("POST", route, json_body=body, timeout=timeout)
         return response, response_payload(response)
-
-    def rollback_response_is_exact(payload: dict[str, Any]) -> bool:
-        plugin = payload.get("plugin") if isinstance(payload.get("plugin"), dict) else {}
-        before = payload.get("before") if isinstance(payload.get("before"), dict) else {}
-        inventory = (
-            plugin.get("inventory") if isinstance(plugin.get("inventory"), dict) else {}
-        )
-        return bool(before_plugin_contract) and (
-            payload.get("rolled_back") is True
-            and payload.get("upload_temp_absent") is True
-            and plugin.get("plugin_file") == PLUGIN_FILE
-            and str(plugin.get("version") or "")
-            == str(before_plugin_contract.get("version") or "")
-            and plugin.get("active") is before_plugin_contract.get("active")
-            and str(before.get("version") or "")
-            == str(before_plugin_contract.get("version") or "")
-            and before.get("active") is before_plugin_contract.get("active")
-            and bool(payload.get("rollback_digest"))
-            and secrets.compare_digest(
-                str(payload.get("rollback_digest") or ""),
-                str(inventory.get("digest") or ""),
-            )
-        )
 
     def upload_local_artifact() -> dict[str, Any]:
         if local_artifact_path is None or artifact_proof is None:
@@ -3942,6 +6319,7 @@ def main() -> int:
                     helper_id is not None
                     and payload.get("resource_cleanup_complete") is True
                     and payload.get("backup_deleted") is True
+                    and payload.get("storage_root_deleted") is True
                     and payload.get("lock_released") is True
                     and payload.get("state_deleted") is True
                     and payload.get("upload_temp_absent") is True
@@ -3996,6 +6374,13 @@ def main() -> int:
             "snippet_count_before": len(snippets_before),
         }
         if einstein_request is not None:
+            stage_matches_before_deploy = exact_stage_matches(
+                client, EINSTEIN_STAGE_SLUG
+            )
+            if stage_matches_before_deploy:
+                raise RuntimeError(
+                    "Einstein create-only preflight found an existing exact stage slug"
+                )
             public_record_before_deploy = wordpress_post_snapshot(
                 get_authenticated_post(client, EINSTEIN_CANONICAL_POST_ID)
             )
@@ -4005,6 +6390,12 @@ def main() -> int:
             result["checks"]["canonical_public_predeploy"] = {
                 "post_id": EINSTEIN_CANONICAL_POST_ID,
                 "snapshot_sha256": einstein_public_predeploy_sha256,
+            }
+            result["checks"]["einstein_create_only_preflight"] = {
+                "slug": EINSTEIN_STAGE_SLUG,
+                "authenticated_match_count": 0,
+                "before_helper_creation": True,
+                "before_plugin_mutation": True,
             }
 
         public_preflight = public.get(
@@ -4056,6 +6447,23 @@ def main() -> int:
             artifact_entry_count=int(artifact_proof["entry_count"]),
             artifact_uncompressed_bytes=int(artifact_proof["uncompressed_bytes"]),
             expected_version=str(args.expected_version),
+            page_slug=(
+                EINSTEIN_STAGE_SLUG if einstein_request is not None else PAGE_SLUG
+            ),
+            source_post_id=(
+                EINSTEIN_CANONICAL_POST_ID
+                if einstein_request is not None
+                else SOURCE_POST_ID
+            ),
+            external_stage_commit_enabled=einstein_request is not None,
+            project_contract_id=(
+                EINSTEIN_PROJECT_CONTRACT_ID
+                if einstein_request is not None
+                else ""
+            ),
+            external_stage_body=(
+                einstein_request["body"] if einstein_request is not None else None
+            ),
         )
         helper_hash = sha256_text(helper_code)
         result["helper"]["code_sha256"] = helper_hash
@@ -4196,6 +6604,25 @@ def main() -> int:
                 "next_index": int(upload_state.get("next_index") or 0),
                 "total_chunks": int(upload_state.get("total_chunks") or 0),
             }
+            storage_name = (
+                ".nadlan-unit-journey-release-"
+                + sha256_text(f"{run_id}|{token}|storage")[:32]
+            )
+            guarded_artifact_response = public.get(
+                f"{base_url}/wp-content/{storage_name}/artifact/nadlan-config.zip",
+                params={"cb": run_id},
+                timeout=30,
+                allow_redirects=False,
+            )
+            if guarded_artifact_response.status_code not in {403, 404}:
+                raise RuntimeError(
+                    "Run-scoped artifact spool is anonymously retrievable"
+                )
+            result["checks"]["artifact_spool_access_guard"] = {
+                "http_status": guarded_artifact_response.status_code,
+                "redirects_followed": False,
+                "blocked": True,
+            }
 
         release_resources_may_exist = True
         deploy_started = True
@@ -4227,6 +6654,19 @@ def main() -> int:
             or deploy.get("upload_temp_absent") is not True
         ):
             raise RuntimeError("Deployment response did not confirm artifact identity and temp cleanup")
+        deploy_storage = (
+            deploy.get("storage") if isinstance(deploy.get("storage"), dict) else {}
+        )
+        if set(deploy_storage) != {
+            "scope_exact",
+            "core_upgrade_disjoint",
+            "artifact_rehashed",
+            "backup_reinventoried",
+            "protected_root",
+        } or any(value is not True for value in deploy_storage.values()):
+            raise RuntimeError(
+                "Deployment response did not prove guarded storage and retained backup integrity"
+            )
         if deploy.get("idempotent") is not True:
             deployed_zip = deploy.get("zip")
             if not (
@@ -4336,7 +6776,7 @@ def main() -> int:
             result["checks"]["automatic_rollback"] = rollback
             deployed = False
             require_response(rollback_response, "Automatic stabilization rollback")
-            if not rollback_response_is_exact(rollback):
+            if not rollback_response_is_exact(rollback, before_plugin_contract):
                 raise RuntimeError("Automatic rollback did not prove exact pre-deployment plugin state")
             raise RuntimeError("Expected plugin version did not stabilize; exact backup was restored")
 
@@ -4357,6 +6797,7 @@ def main() -> int:
                 "snapshot_sha256": canonical_after_deploy_sha256,
             }
             einstein_transaction = write_einstein_stage(client, einstein_request, post_password)
+            einstein_stage_commit_attempted = True
             page_url = str(einstein_transaction["page_url"])
             result["checks"]["private_page"] = {
                 "post_id": int(einstein_transaction["post_id"]),
@@ -4368,6 +6809,73 @@ def main() -> int:
                     "canonical_public_sha256"
                 ],
             }
+            stage_meta_keys = sorted(str(key) for key in einstein_request["body"]["meta"])
+            stage_commit: dict[str, Any] = {}
+            stage_commit_attempts = 0
+            for stage_commit_attempts in range(1, 4):
+                try:
+                    einstein_stage_commit_attempted = True
+                    stage_commit_response, stage_commit_payload = call_helper(
+                        "commit_external_stage",
+                        extra={
+                            "page_id": int(einstein_transaction["post_id"]),
+                            "created_new": einstein_transaction["created_new"] is True,
+                            "post_password": post_password,
+                        },
+                        timeout=180,
+                    )
+                    if (
+                        stage_commit_response.status_code == 200
+                        and stage_commit_payload.get("schema")
+                        == "nadlan-private-release-stage-commit/v1"
+                        and isinstance(stage_commit_payload.get("idempotent"), bool)
+                        and stage_commit_payload.get("state_phase") == "page_ready"
+                        and _strict_positive_int(stage_commit_payload.get("page_id"))
+                        == int(einstein_transaction["post_id"])
+                        and stage_commit_payload.get("created_new")
+                        is (einstein_transaction["created_new"] is True)
+                        and stage_commit_payload.get("page_contract_kind")
+                        == "external_committed"
+                        and re.fullmatch(
+                            r"[a-f0-9]{64}",
+                            str(stage_commit_payload.get("page_contract_sha256") or ""),
+                        )
+                        and stage_commit_payload.get("page_meta_key_count")
+                        == len(stage_meta_keys)
+                        and stage_commit_payload.get("password_protected") is True
+                        and stage_commit_payload.get("plugin_digest") == deployed_digest
+                    ):
+                        stage_commit = stage_commit_payload
+                        einstein_stage_committed = True
+                        break
+                except requests.RequestException:
+                    continue
+            if not stage_commit:
+                raise RuntimeError(
+                    "External Einstein stage commit did not reconcile within its retry bound"
+                )
+            result["checks"]["external_stage_commit"] = {
+                "schema": stage_commit["schema"],
+                "idempotent": stage_commit["idempotent"],
+                "state_phase": "page_ready",
+                "page_id": stage_commit["page_id"],
+                "created_new": stage_commit["created_new"],
+                "page_contract_kind": "external_committed",
+                "page_contract_sha256": stage_commit["page_contract_sha256"],
+                "page_meta_key_count": stage_commit["page_meta_key_count"],
+                "password_protected": True,
+                "plugin_digest_exact": True,
+                "attempts": stage_commit_attempts,
+            }
+            result["checks"]["external_stage_exact_meta_readback"] = (
+                assert_einstein_stage_readback(
+                    get_authenticated_post(
+                        client, int(einstein_transaction["post_id"])
+                    ),
+                    einstein_request,
+                    post_password,
+                )
+            )
             result["checks"]["anonymous_private_surfaces"] = anonymous_einstein_probes(
                 base_url,
                 page_url,
@@ -4583,6 +7091,7 @@ def main() -> int:
     except Exception as error:
         result["passed"] = False
         result["error"] = redactor.text(error)
+        stage_rollback_deferred_to_helper = False
         if isinstance(error, EinsteinStageRecoveryBlocked):
             stage_rollback_blocked = True
             result["checks"]["failure_stage_rollback"] = {
@@ -4591,18 +7100,14 @@ def main() -> int:
                 "reason": "indeterminate_stage_write",
             }
         if einstein_transaction is not None:
-            try:
-                result["checks"]["failure_stage_rollback"] = rollback_einstein_stage(
-                    client, einstein_transaction
-                )
-                einstein_transaction = None
-            except Exception as stage_rollback_error:
-                stage_rollback_blocked = True
-                result["checks"]["failure_stage_rollback"] = {
-                    "confirmed": False,
-                    "recovery_preserved": True,
-                    "error": redactor.text(stage_rollback_error),
-                }
+            stage_rollback_deferred_to_helper = True
+            result["checks"]["failure_stage_rollback"] = {
+                "confirmed": False,
+                "recovery_preserved": True,
+                "delegated_to_exact_helper_contract": True,
+                "commit_request_started": einstein_stage_commit_attempted,
+                "commit_response_confirmed": einstein_stage_committed,
+            }
         status_confirmed = False
         state_phase = "unknown"
         backup_ready = False
@@ -4634,6 +7139,18 @@ def main() -> int:
                     "error": redactor.text(status_error),
                 }
 
+            if stage_rollback_deferred_to_helper and (
+                not status_confirmed or state_phase not in {"page_ready", "rolled_back"}
+            ):
+                stage_rollback_blocked = True
+                result["checks"]["failure_stage_rollback"] = {
+                    "confirmed": False,
+                    "recovery_preserved": True,
+                    "delegated_to_exact_helper_contract": True,
+                    "reason": "external_stage_commit_state_unproved",
+                    "state_phase": state_phase,
+                }
+
             rollback_required = deployed or backup_ready or state_phase in {
                 "backup_ready",
                 "deployed",
@@ -4647,7 +7164,13 @@ def main() -> int:
                     rollback_response, rollback = call_helper("rollback", timeout=240)
                     rollback_confirmed = (
                         rollback_response.status_code == 200
-                        and rollback_response_is_exact(rollback)
+                        and rollback_response_is_exact(
+                            rollback, before_plugin_contract
+                        )
+                        and (
+                            not stage_rollback_deferred_to_helper
+                            or rollback.get("page_deleted") is True
+                        )
                     )
                     result["checks"]["failure_rollback"] = {
                         "http_status": rollback_response.status_code,
@@ -4664,6 +7187,13 @@ def main() -> int:
                     if rollback_confirmed:
                         deployed = False
                         deploy_failure_recovery_blocked = False
+                        if stage_rollback_deferred_to_helper:
+                            einstein_transaction = None
+                            result["checks"]["failure_stage_rollback"] = {
+                                "confirmed": True,
+                                "delegated_to_exact_helper_contract": True,
+                                "page_deleted": rollback.get("page_deleted") is True,
+                            }
                 except Exception as rollback_error:
                     result["checks"]["failure_rollback"] = {
                         "confirmed": False,
