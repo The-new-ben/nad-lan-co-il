@@ -148,6 +148,7 @@ jobs:
           keys = r"(?:WP_APP_PASSWORD|SANDBOX_POST_PASSWORD)"
           patterns = (
               rf"(?m)^\s*{keys}\s*=\s*['\"][^'\"]+['\"]\s*$",
+              rf"(?m)^\s*(?:const|let|var)\s+{keys}\s*=\s*['\"][^'\"]+['\"]",
               rf"['\"]{keys}['\"]\s*:\s*['\"][^'\"]+['\"]",
               r"Authorization\s*:\s*Basic\s+[A-Za-z0-9+/=]{16,}",
           )
