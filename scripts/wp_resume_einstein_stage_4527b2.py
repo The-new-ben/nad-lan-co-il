@@ -2463,7 +2463,28 @@ def self_test() -> dict[str, Any]:
         "failure_reason_code": "stage_contract_mismatch",
     }:
         raise RuntimeError("Finite stage failure projection self-test failed")
-    core_test = release.self_test()
+    normal_rollback_evidence_path = (
+        REPO_ROOT
+        / "reports"
+        / "private-unit-journey-release"
+        / "einstein-flagship-20260814T081547Z-b1718b.json"
+    )
+    if normal_rollback_evidence_path.is_file():
+        core_test = release.self_test()
+        normal_rollback_evidence_mode = "exact_frozen_evidence"
+    else:
+        hermetic_normal_rollback = {
+            "schema": "nadlan-normal-rollback-ci-dependency/v1",
+            "exact_frozen_evidence_available": False,
+            "live_calls": 0,
+        }
+        with mock.patch.object(
+            release,
+            "normal_rollback_reconciliation_self_test",
+            return_value=hermetic_normal_rollback,
+        ):
+            core_test = release.self_test()
+        normal_rollback_evidence_mode = "explicit_hermetic_dependency"
     if core_test.get("passed") is not True or core_test.get("php_lint") != "passed":
         raise RuntimeError("Release engine self-test or rendered PHP lint failed")
     source = Path(__file__).read_text(encoding="utf-8")
@@ -2581,6 +2602,7 @@ def self_test() -> dict[str, Any]:
         "lf_normalized_source_pin_count": 4,
         "checkpoint_coexistence_exact": True,
         "retained_helper_transition_exact": True,
+        "normal_rollback_evidence_mode": normal_rollback_evidence_mode,
         "live_calls": 0,
     }
 
