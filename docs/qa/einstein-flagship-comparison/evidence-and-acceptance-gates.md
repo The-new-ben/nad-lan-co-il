@@ -26,11 +26,13 @@ Use `file :: symbol` as the stable citation. Line numbers may move while the bra
 | Remaining target-size gap | `plugins/nadlan-config/assets/flagship-v3/flagship.css :: .nlfs__source-refs a` | Source-reference targets are 32 x 32, below the site's 44 px product standard |
 | Shared loader | `plugins/nadlan-config/nadlan-config.php :: module list` | Working tree loads `flagship-surface` before `showroom-engine` |
 | Shared dispatch seam | `plugins/nadlan-config/inc/showroom-engine.php :: priority-8 content composer`, `PHP_INT_MAX content callback` | Selected v3 pages route through the new surface while unselected projects retain legacy rendering |
+| Remaining project-specific runtime profile | `plugins/nadlan-config/assets/flagship-v3/flagship-playground.js :: EXPERIENCE_DECISION_ID, ALLOWED_TOOLS, normalizeConfig()`; `plugins/nadlan-config/assets/flagship-v3/flagship-playground.css :: open-frame`; `plugins/nadlan-config/inc/flagship-surface.php :: inventory/calibration/tool/scene validation and rendering` | The files are shared by path, not yet project-neutral: the client pins Einstein's decision ID plus current tools/scenes/anchors/copy, CSS pins an Einstein scene hook, and PHP pins current inventory/North/tool/group/routing/copy policies |
 | Legacy data engine | `plugins/nadlan-config/inc/showroom-engine.php :: nadlan_showroom_engine_build_project()` | Shared project meta feeds model, units, floor height, environment, tours and landmarks |
 | Legacy live context map | `plugins/nadlan-config/inc/project-experience.php :: unified map renderer`, `plugins/nadlan-config/assets/showroom-engine/mapbox-init.js :: mount()` | Live Mapbox map, project/nearby pins, POI layers and one-map doctrine |
 | Legacy direction/view | `plugins/nadlan-config/assets/showroom-engine/engine.js :: showViewCone()`, `winCam()`, `winView()` | Direction cone/beam, model-to-map bearing and live view-from-unit camera paths |
 | Existing lead rail | `plugins/nadlan-config/assets/showroom-engine/buyflow.js :: submit path` | Selected unit context is posted through the existing shared lead route |
-| Recipe reconciliation | `skills/recipe-flagship-project-page.md`; `docs/plans/einstein-flagship-recipe-draft/`; maintained `nadlan-flagship-project-showroom` agent skill | Obsolete `<1 MB`/no-normal rule and missing links are removed; shared-engine, governed-package, measured-model and private-readback gates are active |
+| Recipe reconciliation | `skills/recipe-flagship-project-page.md`; `docs/plans/einstein-flagship-recipe-v2-draft/`; maintained `nadlan-flagship-project-showroom` agent skill merged at `026c84f0d7b32efa1b4fa2ecf94297a407dc831b` | Shared-engine, archetype, governed-package, measured-model, private-asset and fail-closed recovery gates are aligned; no live stage or public release is inferred |
+| Private-asset denial source contract | `plugins/nadlan-config/inc/flagship-surface.php :: nadlan_flagship_v3_private_asset_deny()`; repository plugin artifact `1.72.206` | Rejected binary requests clear buffers and terminate as zero-byte 404 responses with no-store/noindex/nosniff/no-referrer headers; WordPress network proof remains open |
 | New owner fidelity rule | `docs/plans/einstein-tower-owner-decision-log.md :: OWNER-2026-08-14-EINSTEIN-ILLUSTRATIVE-MASSING` | Einstein HD must contain at least 30,000 real rendered triangles and retain a separate LOD |
 | Publication boundary | `docs/plans/einstein-tower-publication-manifest.json :: private_stage`, `blocked_until`, `publish_rule` | Distinct password sandbox, before snapshot, private readback and explicit release are mandatory |
 | Prior cross-market UI research | `docs/2026-06-04-sitewide-premium-micro-ui-standard.md :: Reference signals checked` | Records which Israeli and international product surfaces informed the repository's micro-UI standard; it is a capability reference, not proof of commercial impact |
@@ -60,7 +62,8 @@ The H1 exists semantically but is not a visible page title: its measured box is 
 | `php scripts/qa-flagship-v3-php.php` | PASS | Private fixture, exact contracts/assets, one visible H1, no form/write path, source/mapping rejection, same-origin viewer, unselected legacy preservation |
 | `node scripts/qa-einstein-project-identity.mjs` | PASS | Post/slug/parcel/building/unit identity, aliases, related-project separation and catalog row |
 | `node scripts/qa-project-showroom-inventory-contract.mjs` | PASS | Zero units fail closed; explicit non-decision inventory remains a future compatible lane; legacy payload remains compatible |
-| `node scripts/qa-einstein-flagship-offline.mjs` | PASS | Real local GLB, protected model, four permanent teasers, four selectable interior/facility scenes, three anchors, exact Back, no tool I/O, 44 px/12 px/no-inner-scroll at four viewports |
+| `node scripts/qa-einstein-flagship-offline.mjs` | PASS | The exact tracked preview was materialized from sparse checkout, then the unchanged-input test passed at 320 x 568, 390 x 844, 568 x 320 and 1280 x 800 in 33.4 seconds with artifact writes disabled |
+| `node scripts/qa-flagship-private-asset-denial.mjs` | PASS in fixture/source scope | Rejected private-asset routes have identical terminal zero-byte 404 behavior while ordinary page validation retains its body; authenticated WordPress network proof remains open |
 
 These are local/fixture results. They do not substitute for authenticated WordPress readback, actual network performance or public-page proof.
 
@@ -84,7 +87,7 @@ Legend: PASS = evidenced now; FAIL = current implementation contradicts the gate
 | --- | --- | --- |
 | B1 | Every public factual value has a source ID, effective date and truth/current/future state where applicable | PASS in buyer contract fixture; OPEN in WordPress |
 | B2 | No model-local coordinate is described as a surveyed/cardinal/official real-world location | PASS in contracts |
-| B3 | One global demonstration label is visible; repetitive caveats do not bury the interaction | PASS in fixture/offline; OPEN in WordPress |
+| B3 | One global demonstration label is visible; repetitive caveats do not bury the interaction | PASS in fixture and current offline matrix; OPEN in WordPress |
 | B4 | Unit, availability, price, plan and unit-view claims remain absent while inventory is empty | PASS |
 | B5 | Source refresh identifies changed/expired claims before publication | OPEN |
 
@@ -92,12 +95,12 @@ Legend: PASS = evidenced now; FAIL = current implementation contradicts the gate
 
 | ID | Gate | Current |
 | --- | --- | --- |
-| C1 | HD contains at least 30,000 real rendered triangles, no hidden/filler geometry used to reach the count | PASS on count: independent GLB accessor recount = 39,912 triangles / 79,824 vertices; filler/visual review PASS only in offline preview |
+| C1 | HD contains at least 30,000 real rendered triangles, no hidden/filler geometry used to reach the count | PASS on count: independent GLB accessor recount = 39,912 triangles / 79,824 vertices; current offline visual matrix PASS |
 | C2 | HD/LOD/poster bytes and SHA-256 values exactly match the contract registry | PASS locally; HD = 2,420,492 bytes / `71fcca8…68a53`, LOD = 32,244 bytes / `4851619…079ce` |
 | C3 | HD and LOD are distinct; LOD preserves a readable project silhouette at constrained-data/mobile scale | Distinct PASS; visual sufficiency OPEN in WordPress |
-| C4 | Model center remains directly hit-testable; no CTA, teaser, label or hotspot layer covers the building | PASS offline; OPEN in WordPress |
+| C4 | Model center remains directly hit-testable; no CTA, teaser, label or hotspot layer covers the building | Current offline matrix PASS; OPEN in WordPress |
 | C5 | Every hotspot has asset/scene binding, model component, model coordinate, confidence, evidence basis, ambiguity and prohibited inferences | PASS; three HD and three LOD hotspot contracts/meshes have exact core parity with the model spec and experience manifest; four scenes intentionally share three anchors |
-| C6 | Projected hotspots remain at least 47.5 px apart at required camera/viewports or collapse into an accessible list/cluster | PASS offline for three anchors; OPEN in WordPress |
+| C6 | Projected hotspots remain at least 47.5 px apart at required camera/viewports or collapse into an accessible list/cluster | Current offline matrix PASS for three anchors; OPEN in WordPress |
 | C7 | Every model/scene asset is same-origin, immutable/reviewed and route-scoped | PASS locally; OPEN in deployed headers/network |
 | C8 | Material rendering meets the intended visual standard, including textures when required | FAIL for texture support in current first-party viewer |
 
@@ -105,14 +108,14 @@ Legend: PASS = evidenced now; FAIL = current implementation contradicts the gate
 
 | ID | Gate | Current |
 | --- | --- | --- |
-| D1 | Exactly four permanent top-level invitations: View, Interior, Design, Comments | PASS offline/fixture |
-| D2 | Touch/focus visually activates the invitation; activation opens a body-level full-screen experience | PASS offline |
-| D3 | Back restores exact model camera, scroll, active teaser and focus | PASS offline |
+| D1 | Exactly four permanent top-level invitations: View, Interior, Design, Comments | PASS in fixture and current offline matrix |
+| D2 | Touch/focus visually activates the invitation; activation opens a body-level full-screen experience | Current offline matrix PASS |
+| D3 | Back restores exact model camera, scroll, active teaser and focus | Current offline matrix PASS |
 | D4 | View capability label matches reality: schematic until a live map and beam are connected | OPEN copy review |
 | D5 | Interior capability label matches reality: concept simulation until a spatial tour/plan exists | OPEN copy review |
-| D6 | Facilities are selectable inside the Interior experience and bound to governed anchors | PASS offline |
+| D6 | Facilities are selectable inside the Interior experience and bound to governed anchors | Current offline matrix PASS |
 | D7 | Design is labeled as an illustrative layout interaction until official plan geometry exists | OPEN copy review |
-| D8 | Comments visibly says local/prepared-only and creates no external write | PASS offline |
+| D8 | Comments visibly says local/prepared-only and creates no external write | Current offline matrix and no-write fixture PASS |
 | D9 | OLP delivery remains disabled until recipient/auth/privacy/retention/idempotency/acknowledgement/retry/failure gates pass | PASS by absence; production DEFERRED |
 
 ### E. Buyer decision and money path
@@ -130,9 +133,9 @@ Legend: PASS = evidenced now; FAIL = current implementation contradicts the gate
 
 | ID | Gate | Current |
 | --- | --- | --- |
-| F1 | 320 x 568, 390 x 844, 568 x 320 and 1280 x 800: no horizontal overflow, clipped controls or inner scroll trap | PASS offline; OPEN in WordPress |
+| F1 | 320 x 568, 390 x 844, 568 x 320 and 1280 x 800: no horizontal overflow, clipped controls or inner scroll trap | Current offline matrix PASS; OPEN in WordPress |
 | F2 | All interactive targets are at least 44 x 44 px, including citation/source controls | FAIL; source-reference chips are 32 x 32 |
-| F3 | Keyboard operates model, dialogs, tools and Back; visible focus returns correctly | PASS offline; OPEN in WordPress |
+| F3 | Keyboard operates model, dialogs, tools and Back; visible focus returns correctly | Current offline matrix PASS; OPEN in WordPress |
 | F4 | Canvas/model has an accessible name and poster alternative | PASS in renderer fixture; OPEN in WordPress |
 | F5 | RTL/LTR, screen-reader reading order, dialog announcements and contrast pass manual/automated review | OPEN |
 | F6 | Reduced-motion and Save-Data paths work without losing content or control | Code present; OPEN in WordPress |
@@ -150,6 +153,7 @@ Legend: PASS = evidenced now; FAIL = current implementation contradicts the gate
 | G5 | Future HE/EN/FR/RU/AR siblings are complete, reciprocal, functionally equivalent and include x-default before hreflang activation | DEFERRED |
 | G6 | Rainbow, Dimri Yama, Ashira, ToHa2, The Park and H Infinity retain renderer, map, beam, unit/lead and responsive behavior | OPEN fleet regression |
 | G7 | Public archive, REST search, sitemap, feeds and catalog exclude private stage and include only the released canonical | Fixture PASS for protections; OPEN in WordPress |
+| G8 | Trusted package/registry supplies every project-specific decision/profile value; unchanged runtime accepts Einstein and a second project with different valid IDs/cardinalities/language/archetype needs; mismatch fails closed; shared files contain no project-specific identifier, scene/style hook, copy or fixed policy | FAIL; current JS/CSS/PHP v3 surface still encodes the Einstein profile |
 
 ## 5. Explicitly not checked
 

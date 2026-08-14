@@ -19,7 +19,8 @@ It improves the parts that make a flagship safe to scale:
 
 The remaining product gaps are substantial:
 
-- the v3 WordPress path has fixture and offline proof, but no authenticated private WordPress readback or live screenshot proof;
+- the v3 WordPress path has fixture and current four-viewport offline proof, but there is no
+  authenticated private WordPress readback or live screenshot proof;
 - the View tool is a schematic visual, not the fleet's live Mapbox context map or direction beam;
 - Interior is a controlled concept simulation with four selectable images, not a spatial tour tied to an official plan;
 - Design drags one illustrative sofa, not a plan-aware apartment configurator;
@@ -63,7 +64,9 @@ The comparison combines four evidence types and keeps their states separate:
    - `php scripts/qa-flagship-v3-php.php` - PASS;
    - `node scripts/qa-einstein-project-identity.mjs` - PASS;
    - `node scripts/qa-project-showroom-inventory-contract.mjs` - PASS;
-   - `node scripts/qa-einstein-flagship-offline.mjs` - PASS at 320 x 568, 390 x 844, 568 x 320 and 1280 x 800.
+   - `node scripts/qa-einstein-flagship-offline.mjs` - PASS at 320 x 568, 390 x 844,
+     568 x 320 and 1280 x 800 after materializing the tracked `docs/previews` sparse-checkout path;
+     the full unchanged-input matrix completed in 33.4 seconds with artifact writes disabled.
 
 Existing competitor findings were used only where they name an observed capability and a source. No ranking, conversion or causation claim is inferred from the comparison.
 
@@ -81,4 +84,4 @@ Existing competitor findings were used only where they name an observed capabili
 
 - [side-by-side-gap-matrix.md](side-by-side-gap-matrix.md) - project-by-project, cross-cutting and competitor capability gaps.
 - [evidence-and-acceptance-gates.md](evidence-and-acceptance-gates.md) - exact source/symbol ledger, current status and binary release gates.
-- [../../plans/einstein-flagship-recipe-draft/README.md](../../plans/einstein-flagship-recipe-draft/README.md) - reusable architecture, applied skill delta and traceability.
+- [../../plans/einstein-flagship-recipe-v2-draft/README.md](../../plans/einstein-flagship-recipe-v2-draft/README.md) - reusable architecture and merged-skill traceability.
