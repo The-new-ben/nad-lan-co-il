@@ -79,6 +79,7 @@ add_action( 'rest_api_init', function () {
 			$artifact_total_chunks = (int) ceil( $artifact_bytes / $upload_chunk_bytes );
 			$upload_root   = $upgrade_root . '/.nadlan-unit-journey-upload-' . substr( hash( 'sha256', $run_id . '|' . $expected_token ), 0, 24 );
 			$upload_path   = $upload_root . '/nadlan-config.zip';
+			$unmeasured_capacity_cap = 96 * 1024 * 1024;
 			$artifact_contract_valid =
 				in_array( $artifact_mode, array( 'url', 'upload' ), true )
 				&& 1 === preg_match( '/^[a-f0-9]{64}$/', $artifact_sha256 )
@@ -551,10 +552,14 @@ add_action( 'rest_api_init', function () {
 				} catch ( Throwable $error ) {
 					// A disabled/unavailable probe is reported only as measurable=false.
 				}
-				$disk_measurable = false !== $disk_free;
-				$disk_free_bytes = $disk_measurable ? (int) $disk_free : 0;
+				$disk_probe_unavailable = false === $disk_free;
+				$disk_measurable = false !== $disk_free && is_numeric( $disk_free ) && (float) $disk_free >= 0;
+				$disk_free_bytes = $disk_measurable ? (int) floor( (float) $disk_free ) : null;
 				$disk_required   = $target_bytes + $artifact_uncompressed_bytes + $artifact_bytes + 20 * 1024 * 1024;
-				$disk_sufficient = $target_readable && $disk_measurable && $disk_free_bytes >= $disk_required;
+				$disk_sufficient = $disk_measurable ? $disk_free_bytes >= $disk_required : null;
+				$bounded_unmeasured = $disk_probe_unavailable && $disk_required <= $unmeasured_capacity_cap;
+				$capacity_mode = $disk_measurable ? 'measured' : ( $bounded_unmeasured ? 'bounded_unmeasured' : 'unavailable' );
+				$capacity_accepted = $disk_measurable ? true === $disk_sufficient : $bounded_unmeasured;
 				$backup_root     = $upgrade_root . '/.nadlan-unit-journey-' . substr( hash( 'sha256', $run_id ), 0, 20 );
 				$root_safe       = false;
 				$root_writable   = false;
@@ -587,7 +592,7 @@ add_action( 'rest_api_init', function () {
 					&& '' !== $target_version
 					&& $target_files > 0
 					&& $target_bytes > 0
-					&& $disk_sufficient
+					&& $capacity_accepted
 					&& $root_safe
 					&& $root_writable
 					&& $backup_absent
@@ -602,11 +607,20 @@ add_action( 'rest_api_init', function () {
 						'file_count' => $target_files,
 						'bytes'      => $target_bytes,
 					),
+					'artifact'   => array(
+						'archive_bytes'      => $artifact_bytes,
+						'entry_count'       => $artifact_entry_count,
+						'uncompressed_bytes'=> $artifact_uncompressed_bytes,
+					),
 					'disk'       => array(
-						'measurable'    => $disk_measurable,
-						'free_bytes'    => $disk_free_bytes,
-						'required_bytes'=> $disk_required,
-						'sufficient'    => $disk_sufficient,
+						'capacity_mode'      => $capacity_mode,
+						'measurable'         => $disk_measurable,
+						'probe_unavailable'  => $disk_probe_unavailable,
+						'free_bytes'         => $disk_free_bytes,
+						'required_bytes'     => $disk_required,
+						'hard_cap_bytes'     => $unmeasured_capacity_cap,
+						'sufficient'         => $disk_sufficient,
+						'bounded_unmeasured' => $bounded_unmeasured,
 					),
 					'upgrade'    => array(
 						'root_safe'         => $root_safe,
@@ -1041,20 +1055,40 @@ add_action( 'rest_api_init', function () {
 					}
 					$failure_stage       = 'capacity_check';
 					$failure_reason_code = 'disk_space_unavailable';
-					$disk_free = disk_free_space( WP_CONTENT_DIR );
+					$disk_free = false;
+					try {
+						$disk_free = @disk_free_space( WP_CONTENT_DIR );
+					} catch ( Throwable $capacity_error ) {
+						// The bounded-unmeasured policy below handles an unavailable host probe.
+					}
 					$disk_required =
 						(int) $before['inventory']['bytes']
 						+ (int) $zip_proof['uncompressed_bytes']
 						+ (int) $zip_proof['archive_bytes']
 						+ 20 * 1024 * 1024;
-					if ( false === $disk_free || $disk_free < $disk_required ) {
-						$failure_reason_code = false === $disk_free ? 'disk_space_unavailable' : 'disk_space_insufficient';
+					$disk_probe_unavailable = false === $disk_free;
+					$disk_measurable = false !== $disk_free && is_numeric( $disk_free ) && (float) $disk_free >= 0;
+					$disk_free_bytes = $disk_measurable ? (int) floor( (float) $disk_free ) : null;
+					$disk_sufficient = $disk_measurable ? $disk_free_bytes >= $disk_required : null;
+					$bounded_unmeasured = $disk_probe_unavailable && $disk_required <= $unmeasured_capacity_cap;
+					$capacity_mode = $disk_measurable ? 'measured' : ( $bounded_unmeasured ? 'bounded_unmeasured' : 'unavailable' );
+					if ( $disk_measurable && true !== $disk_sufficient ) {
+						$failure_reason_code = 'disk_space_insufficient';
 						throw new RuntimeException( 'Free disk space is insufficient for active, incoming, and backup plugin copies.' );
 					}
+					if ( ! $disk_measurable && ! $bounded_unmeasured ) {
+						$failure_reason_code = $disk_probe_unavailable ? 'unmeasured_capacity_over_cap' : 'disk_space_unavailable';
+						throw new RuntimeException( 'Unmeasured deployment capacity exceeds the bounded release cap.' );
+					}
 					$disk_proof = array(
-						'free_bytes'     => (int) $disk_free,
-						'required_bytes' => $disk_required,
-						'sufficient'     => true,
+						'capacity_mode'      => $capacity_mode,
+						'measurable'         => $disk_measurable,
+						'probe_unavailable'  => $disk_probe_unavailable,
+						'free_bytes'         => $disk_free_bytes,
+						'required_bytes'     => $disk_required,
+						'hard_cap_bytes'     => $unmeasured_capacity_cap,
+						'sufficient'         => $disk_sufficient,
+						'bounded_unmeasured' => $bounded_unmeasured,
 					);
 
 					$failure_stage       = 'backup_prepare';

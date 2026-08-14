@@ -79,6 +79,7 @@ EINSTEIN_ACCEPTANCE_ASSETS = (
 MISSING_SNIPPET_CODE = "rest_cannot_get"
 MISSING_SNIPPET_MESSAGE = "The snippet could not be found."
 DEPLOY_PREFLIGHT_SCHEMA = "nadlan-private-release-deploy-preflight/v1"
+DEPLOY_UNMEASURED_CAPACITY_BYTES = 96 * 1024 * 1024
 DEPLOY_FAILURE_CONTRACT = {
     "request_validation": ("artifact_identity_invalid",),
     "lock_acquisition": ("deployment_lock_unavailable",),
@@ -94,7 +95,11 @@ DEPLOY_FAILURE_CONTRACT = {
         "artifact_zip_invalid",
         "artifact_contract_mismatch",
     ),
-    "capacity_check": ("disk_space_unavailable", "disk_space_insufficient"),
+    "capacity_check": (
+        "disk_space_unavailable",
+        "disk_space_insufficient",
+        "unmeasured_capacity_over_cap",
+    ),
     "backup_prepare": (
         "backup_destination_unsafe",
         "filesystem_unavailable",
@@ -1291,16 +1296,104 @@ def deploy_failure_proof(
     }
 
 
+def bounded_capacity_policy(
+    observed_free_bytes: Any, required_bytes: int
+) -> dict[str, Any]:
+    """Classify a strict measured value or an unavailable hosting probe."""
+    if not (
+        isinstance(required_bytes, int)
+        and not isinstance(required_bytes, bool)
+        and required_bytes >= 0
+    ):
+        raise ValueError("Required deployment capacity must be a non-negative integer")
+    measured_bytes = (
+        observed_free_bytes
+        if isinstance(observed_free_bytes, int)
+        and not isinstance(observed_free_bytes, bool)
+        and observed_free_bytes >= 0
+        else None
+    )
+    if measured_bytes is not None:
+        sufficient = measured_bytes >= required_bytes
+        return {
+            "capacity_mode": "measured",
+            "measurable": True,
+            "probe_unavailable": False,
+            "free_bytes": measured_bytes,
+            "required_bytes": required_bytes,
+            "hard_cap_bytes": DEPLOY_UNMEASURED_CAPACITY_BYTES,
+            "sufficient": sufficient,
+            "bounded_unmeasured": False,
+            "accepted": sufficient,
+        }
+    probe_unavailable = observed_free_bytes is None or observed_free_bytes is False
+    if not probe_unavailable:
+        return {
+            "capacity_mode": "invalid",
+            "measurable": False,
+            "probe_unavailable": False,
+            "free_bytes": None,
+            "required_bytes": required_bytes,
+            "hard_cap_bytes": DEPLOY_UNMEASURED_CAPACITY_BYTES,
+            "sufficient": None,
+            "bounded_unmeasured": False,
+            "accepted": False,
+        }
+    bounded = required_bytes <= DEPLOY_UNMEASURED_CAPACITY_BYTES
+    return {
+        "capacity_mode": "bounded_unmeasured" if bounded else "unavailable",
+        "measurable": False,
+        "probe_unavailable": True,
+        "free_bytes": None,
+        "required_bytes": required_bytes,
+        "hard_cap_bytes": DEPLOY_UNMEASURED_CAPACITY_BYTES,
+        "sufficient": None,
+        "bounded_unmeasured": bounded,
+        "accepted": bounded,
+    }
+
+
+def capacity_evidence_is_exact(
+    payload: dict[str, Any], *, required_bytes: int
+) -> bool:
+    measurable = payload.get("measurable")
+    observed_free = payload.get("free_bytes") if measurable is True else None
+    expected = bounded_capacity_policy(observed_free, required_bytes)
+    return (
+        isinstance(measurable, bool)
+        and isinstance(payload.get("probe_unavailable"), bool)
+        and isinstance(payload.get("bounded_unmeasured"), bool)
+        and payload.get("capacity_mode") == expected["capacity_mode"]
+        and measurable is expected["measurable"]
+        and payload.get("probe_unavailable") is expected["probe_unavailable"]
+        and payload.get("free_bytes") == expected["free_bytes"]
+        and payload.get("required_bytes") == required_bytes
+        and isinstance(payload.get("required_bytes"), int)
+        and not isinstance(payload.get("required_bytes"), bool)
+        and payload.get("hard_cap_bytes") == DEPLOY_UNMEASURED_CAPACITY_BYTES
+        and isinstance(payload.get("hard_cap_bytes"), int)
+        and not isinstance(payload.get("hard_cap_bytes"), bool)
+        and payload.get("sufficient") is expected["sufficient"]
+        and payload.get("bounded_unmeasured") is expected["bounded_unmeasured"]
+    )
+
+
 def deploy_preflight_proof(
     payload: dict[str, Any],
     *,
     before_version: str,
+    before_inventory_files: int,
+    before_inventory_bytes: int,
     artifact_bytes: int,
+    artifact_entry_count: int,
     artifact_uncompressed_bytes: int,
 ) -> dict[str, Any]:
     """Validate and minimize the helper's read-only pre-deployment proof."""
     target = payload.get("target") if isinstance(payload.get("target"), dict) else {}
     disk = payload.get("disk") if isinstance(payload.get("disk"), dict) else {}
+    artifact = (
+        payload.get("artifact") if isinstance(payload.get("artifact"), dict) else {}
+    )
     upgrade = payload.get("upgrade") if isinstance(payload.get("upgrade"), dict) else {}
     filesystem = (
         payload.get("filesystem")
@@ -1313,49 +1406,106 @@ def deploy_preflight_proof(
 
     target_files = count(target.get("file_count"))
     target_bytes = count(target.get("bytes"))
-    free_bytes = count(disk.get("free_bytes"))
     required_bytes = count(disk.get("required_bytes"))
+    hard_cap_bytes = count(disk.get("hard_cap_bytes"))
     expected_required = (
-        target_bytes + artifact_uncompressed_bytes + artifact_bytes + 20 * 1024 * 1024
-        if target_bytes is not None
-        else None
+        before_inventory_bytes
+        + artifact_uncompressed_bytes
+        + artifact_bytes
+        + 20 * 1024 * 1024
     )
-    structural = (
+    expected_capacity = (
+        bounded_capacity_policy(
+            disk.get("free_bytes") if disk.get("measurable") is True else None,
+            expected_required,
+        )
+    )
+    capacity_contract_valid = capacity_evidence_is_exact(
+        disk, required_bytes=expected_required
+    )
+    non_capacity_contract_valid = (
         payload.get("schema") == DEPLOY_PREFLIGHT_SCHEMA
-        and target.get("readable") is True
-        and target.get("active") is True
-        and str(target.get("version") or "") == before_version
+        and isinstance(payload.get("passed"), bool)
+        and isinstance(target.get("readable"), bool)
+        and isinstance(target.get("active"), bool)
+        and isinstance(target.get("version"), str)
+        and target.get("version") == before_version
         and target_files is not None
-        and target_files > 0
+        and target_files == before_inventory_files
         and target_bytes is not None
-        and target_bytes > 0
-        and disk.get("measurable") is True
-        and free_bytes is not None
+        and target_bytes == before_inventory_bytes
         and required_bytes is not None
         and required_bytes == expected_required
-        and disk.get("sufficient") is True
-        and free_bytes >= required_bytes
+        and artifact.get("archive_bytes") == artifact_bytes
+        and artifact.get("entry_count") == artifact_entry_count
+        and artifact.get("uncompressed_bytes") == artifact_uncompressed_bytes
+        and all(
+            count(artifact.get(key)) is not None
+            for key in ("archive_bytes", "entry_count", "uncompressed_bytes")
+        )
+        and isinstance(upgrade.get("root_safe"), bool)
+        and isinstance(upgrade.get("root_writable"), bool)
+        and isinstance(upgrade.get("backup_path_absent"), bool)
+        and isinstance(filesystem.get("available"), bool)
+    )
+    expected_passed = (
+        non_capacity_contract_valid
+        and capacity_contract_valid
+        and target.get("readable") is True
+        and target.get("active") is True
         and upgrade.get("root_safe") is True
         and upgrade.get("root_writable") is True
         and upgrade.get("backup_path_absent") is True
         and filesystem.get("available") is True
-        and payload.get("passed") is True
+        and expected_capacity.get("accepted") is True
+    )
+    contract_valid = (
+        non_capacity_contract_valid
+        and capacity_contract_valid
+        and payload.get("passed") is expected_passed
     )
     return {
         "schema": DEPLOY_PREFLIGHT_SCHEMA,
-        "passed": structural,
+        "contract_valid": contract_valid,
+        "passed": contract_valid and expected_passed,
         "target": {
             "readable": target.get("readable") is True,
             "active": target.get("active") is True,
-            "version": str(target.get("version") or ""),
+            "version": target.get("version") if isinstance(target.get("version"), str) else "",
             "file_count": target_files or 0,
             "bytes": target_bytes or 0,
         },
+        "artifact": {
+            "archive_bytes": count(artifact.get("archive_bytes")) or 0,
+            "entry_count": count(artifact.get("entry_count")) or 0,
+            "uncompressed_bytes": count(artifact.get("uncompressed_bytes")) or 0,
+        },
         "disk": {
-            "measurable": disk.get("measurable") is True,
-            "free_bytes": free_bytes or 0,
+            "capacity_mode": (
+                str(disk.get("capacity_mode"))
+                if disk.get("capacity_mode")
+                in {"measured", "bounded_unmeasured", "unavailable"}
+                else "invalid"
+            ),
+            "measurable": disk.get("measurable")
+            if isinstance(disk.get("measurable"), bool)
+            else None,
+            "probe_unavailable": disk.get("probe_unavailable")
+            if isinstance(disk.get("probe_unavailable"), bool)
+            else None,
+            "free_bytes": disk.get("free_bytes")
+            if disk.get("free_bytes") is None
+            or count(disk.get("free_bytes")) is not None
+            else "invalid",
             "required_bytes": required_bytes or 0,
-            "sufficient": disk.get("sufficient") is True,
+            "hard_cap_bytes": hard_cap_bytes or 0,
+            "sufficient": disk.get("sufficient")
+            if disk.get("sufficient") is None
+            or isinstance(disk.get("sufficient"), bool)
+            else "invalid",
+            "bounded_unmeasured": disk.get("bounded_unmeasured")
+            if isinstance(disk.get("bounded_unmeasured"), bool)
+            else None,
         },
         "upgrade": {
             "root_safe": upgrade.get("root_safe") is True,
@@ -2412,7 +2562,12 @@ def self_test() -> dict[str, Any]:
     for required_upload_marker in (
         "if ( 'deploy_preflight' === $action )",
         "'nadlan-private-release-deploy-preflight/v1'",
+        "$unmeasured_capacity_cap = 96 * 1024 * 1024;",
         "@disk_free_space( WP_CONTENT_DIR )",
+        "'capacity_mode'",
+        "'probe_unavailable'",
+        "'bounded_unmeasured'",
+        "'hard_cap_bytes'",
         "'backup_path_absent'",
         "'filesystem' => array( 'available' => $filesystem_available )",
         "if ( 'upload_init' === $action )",
@@ -2428,6 +2583,21 @@ def self_test() -> dict[str, Any]:
     ):
         if required_upload_marker not in upload_helper:
             raise RuntimeError(f"Self-test is missing secure upload marker: {required_upload_marker}")
+    if upload_helper.count("@disk_free_space( WP_CONTENT_DIR )") != 2:
+        raise RuntimeError("Preflight and deploy must share the guarded disk probe")
+    if upload_helper.count("$unmeasured_capacity_cap = 96 * 1024 * 1024;") != 1:
+        raise RuntimeError("Bounded-unmeasured capacity cap must have one source of truth")
+    capacity_stage_position = upload_helper.find(
+        "$failure_stage       = 'capacity_check';"
+    )
+    backup_stage_position = upload_helper.find(
+        "$failure_stage       = 'backup_prepare';", capacity_stage_position
+    )
+    install_stage_position = upload_helper.find(
+        "$failure_stage       = 'plugin_install';", backup_stage_position
+    )
+    if not 0 <= capacity_stage_position < backup_stage_position < install_stage_position:
+        raise RuntimeError("Capacity fallback must remain before backup and installation")
     for stage, reason_codes in DEPLOY_FAILURE_CONTRACT.items():
         if f"'{stage}'" not in upload_helper:
             raise RuntimeError(f"Self-test is missing deployment failure stage: {stage}")
@@ -2768,48 +2938,228 @@ def self_test() -> dict[str, Any]:
     ).get("contract_valid") is not True:
         raise RuntimeError("Post-backup failure with confirmed rollback was rejected")
 
+    preflight_target_files = 10
     preflight_target_bytes = 1234
+    preflight_archive_bytes = 355
+    preflight_entry_count = 2
+    preflight_uncompressed_bytes = 60
     preflight_required = (
-        preflight_target_bytes + 355 + 60 + 20 * 1024 * 1024
+        preflight_target_bytes
+        + preflight_archive_bytes
+        + preflight_uncompressed_bytes
+        + 20 * 1024 * 1024
     )
-    valid_preflight = {
-        "schema": DEPLOY_PREFLIGHT_SCHEMA,
-        "passed": True,
-        "target": {
-            "readable": True,
-            "active": True,
-            "version": "1.2.3",
-            "file_count": 10,
-            "bytes": preflight_target_bytes,
-        },
-        "disk": {
-            "measurable": True,
-            "free_bytes": preflight_required + 1,
-            "required_bytes": preflight_required,
-            "sufficient": True,
-        },
-        "upgrade": {
-            "root_safe": True,
-            "root_writable": True,
-            "backup_path_absent": True,
-        },
-        "filesystem": {"available": True},
-    }
+
+    def simulate_capacity_probe(probe: Any, required_bytes: int) -> dict[str, Any]:
+        try:
+            observed = probe()
+        except Exception:
+            observed = None
+        return bounded_capacity_policy(observed, required_bytes)
+
+    unavailable_from_throw = simulate_capacity_probe(
+        lambda: (_ for _ in ()).throw(RuntimeError("disabled probe")),
+        preflight_required,
+    )
+    unavailable_from_false = simulate_capacity_probe(
+        lambda: False, preflight_required
+    )
+    measured_sufficient = bounded_capacity_policy(
+        preflight_required + 1, preflight_required
+    )
+    measured_insufficient = bounded_capacity_policy(
+        preflight_required - 1, preflight_required
+    )
+    measured_zero = bounded_capacity_policy(0, preflight_required)
+    unavailable_over_cap = bounded_capacity_policy(
+        None, DEPLOY_UNMEASURED_CAPACITY_BYTES + 1
+    )
+    malformed_probe_rejected = all(
+        bounded_capacity_policy(value, preflight_required)["accepted"] is False
+        and bounded_capacity_policy(value, preflight_required)["capacity_mode"]
+        == "invalid"
+        for value in (-1, True, 1.0, "0")
+    )
+    if not (
+        unavailable_from_throw["accepted"] is True
+        and unavailable_from_false["accepted"] is True
+        and unavailable_from_throw["free_bytes"] is None
+        and unavailable_from_throw["sufficient"] is None
+        and unavailable_from_throw["bounded_unmeasured"] is True
+        and measured_sufficient["accepted"] is True
+        and measured_insufficient["accepted"] is False
+        and measured_insufficient["bounded_unmeasured"] is False
+        and measured_zero["measurable"] is True
+        and measured_zero["accepted"] is False
+        and unavailable_over_cap["accepted"] is False
+        and unavailable_over_cap["capacity_mode"] == "unavailable"
+        and malformed_probe_rejected
+        and bounded_capacity_policy(None, 83_715_814)["accepted"] is True
+    ):
+        raise RuntimeError("Bounded unmeasured capacity policy drifted")
+
+    def preflight_fixture(
+        capacity: dict[str, Any],
+        *,
+        target_bytes: int = preflight_target_bytes,
+        passed: bool | None = None,
+    ) -> dict[str, Any]:
+        return {
+            "schema": DEPLOY_PREFLIGHT_SCHEMA,
+            "passed": capacity["accepted"] if passed is None else passed,
+            "target": {
+                "readable": True,
+                "active": True,
+                "version": "1.2.3",
+                "file_count": preflight_target_files,
+                "bytes": target_bytes,
+            },
+            "artifact": {
+                "archive_bytes": preflight_archive_bytes,
+                "entry_count": preflight_entry_count,
+                "uncompressed_bytes": preflight_uncompressed_bytes,
+            },
+            "disk": {
+                key: value
+                for key, value in capacity.items()
+                if key != "accepted"
+            },
+            "upgrade": {
+                "root_safe": True,
+                "root_writable": True,
+                "backup_path_absent": True,
+            },
+            "filesystem": {"available": True},
+        }
+
+    valid_preflight = preflight_fixture(measured_sufficient)
     valid_preflight_proof = deploy_preflight_proof(
         valid_preflight,
         before_version="1.2.3",
-        artifact_bytes=355,
-        artifact_uncompressed_bytes=60,
+        before_inventory_files=preflight_target_files,
+        before_inventory_bytes=preflight_target_bytes,
+        artifact_bytes=preflight_archive_bytes,
+        artifact_entry_count=preflight_entry_count,
+        artifact_uncompressed_bytes=preflight_uncompressed_bytes,
     )
     if valid_preflight_proof.get("passed") is not True:
         raise RuntimeError("Valid read-only deployment preflight proof was rejected")
+    bounded_preflight = preflight_fixture(unavailable_from_false)
+    bounded_preflight_proof = deploy_preflight_proof(
+        bounded_preflight,
+        before_version="1.2.3",
+        before_inventory_files=preflight_target_files,
+        before_inventory_bytes=preflight_target_bytes,
+        artifact_bytes=preflight_archive_bytes,
+        artifact_entry_count=preflight_entry_count,
+        artifact_uncompressed_bytes=preflight_uncompressed_bytes,
+    )
+    if not (
+        bounded_preflight_proof.get("contract_valid") is True
+        and bounded_preflight_proof.get("passed") is True
+        and bounded_preflight_proof["disk"]["measurable"] is False
+        and bounded_preflight_proof["disk"]["free_bytes"] is None
+        and bounded_preflight_proof["disk"]["sufficient"] is None
+        and bounded_preflight_proof["disk"]["bounded_unmeasured"] is True
+    ):
+        raise RuntimeError("Bounded-unmeasured deployment preflight was rejected")
+    insufficient_preflight = preflight_fixture(measured_insufficient)
+    insufficient_proof = deploy_preflight_proof(
+        insufficient_preflight,
+        before_version="1.2.3",
+        before_inventory_files=preflight_target_files,
+        before_inventory_bytes=preflight_target_bytes,
+        artifact_bytes=preflight_archive_bytes,
+        artifact_entry_count=preflight_entry_count,
+        artifact_uncompressed_bytes=preflight_uncompressed_bytes,
+    )
+    if not (
+        insufficient_proof.get("contract_valid") is True
+        and insufficient_proof.get("passed") is False
+        and insufficient_proof["disk"]["bounded_unmeasured"] is False
+    ):
+        raise RuntimeError("Measured-insufficient preflight did not fail closed")
+    zero_preflight = preflight_fixture(measured_zero)
+    zero_proof = deploy_preflight_proof(
+        zero_preflight,
+        before_version="1.2.3",
+        before_inventory_files=preflight_target_files,
+        before_inventory_bytes=preflight_target_bytes,
+        artifact_bytes=preflight_archive_bytes,
+        artifact_entry_count=preflight_entry_count,
+        artifact_uncompressed_bytes=preflight_uncompressed_bytes,
+    )
+    if not (
+        zero_proof.get("contract_valid") is True
+        and zero_proof.get("passed") is False
+        and zero_proof["disk"]["measurable"] is True
+        and zero_proof["disk"]["bounded_unmeasured"] is False
+    ):
+        raise RuntimeError("A measured zero-byte capacity incorrectly used fallback")
+    over_cap_target_bytes = DEPLOY_UNMEASURED_CAPACITY_BYTES
+    over_cap_required = (
+        over_cap_target_bytes
+        + preflight_archive_bytes
+        + preflight_uncompressed_bytes
+        + 20 * 1024 * 1024
+    )
+    over_cap_preflight = preflight_fixture(
+        bounded_capacity_policy(None, over_cap_required),
+        target_bytes=over_cap_target_bytes,
+    )
+    over_cap_proof = deploy_preflight_proof(
+        over_cap_preflight,
+        before_version="1.2.3",
+        before_inventory_files=preflight_target_files,
+        before_inventory_bytes=over_cap_target_bytes,
+        artifact_bytes=preflight_archive_bytes,
+        artifact_entry_count=preflight_entry_count,
+        artifact_uncompressed_bytes=preflight_uncompressed_bytes,
+    )
+    if not (
+        over_cap_proof.get("contract_valid") is True
+        and over_cap_proof.get("passed") is False
+        and over_cap_proof["disk"]["capacity_mode"] == "unavailable"
+    ):
+        raise RuntimeError("Unmeasured over-cap preflight was accepted")
+    malformed_capacity_rejected = True
+    for field, malformed_value in (
+        ("measurable", 0),
+        ("probe_unavailable", 1),
+        ("free_bytes", 0),
+        ("sufficient", False),
+        ("bounded_unmeasured", 1),
+        ("required_bytes", True),
+        ("hard_cap_bytes", float(DEPLOY_UNMEASURED_CAPACITY_BYTES)),
+    ):
+        malformed_preflight = copy.deepcopy(bounded_preflight)
+        malformed_preflight["disk"][field] = malformed_value
+        malformed_proof = deploy_preflight_proof(
+            malformed_preflight,
+            before_version="1.2.3",
+            before_inventory_files=preflight_target_files,
+            before_inventory_bytes=preflight_target_bytes,
+            artifact_bytes=preflight_archive_bytes,
+            artifact_entry_count=preflight_entry_count,
+            artifact_uncompressed_bytes=preflight_uncompressed_bytes,
+        )
+        malformed_capacity_rejected = (
+            malformed_capacity_rejected
+            and malformed_proof.get("contract_valid") is False
+        )
+    if not malformed_capacity_rejected:
+        raise RuntimeError("Malformed capacity evidence passed strict validation")
     failed_preflight = copy.deepcopy(valid_preflight)
     failed_preflight["upgrade"]["root_writable"] = False
+    failed_preflight["passed"] = False
     if deploy_preflight_proof(
         failed_preflight,
         before_version="1.2.3",
-        artifact_bytes=355,
-        artifact_uncompressed_bytes=60,
+        before_inventory_files=preflight_target_files,
+        before_inventory_bytes=preflight_target_bytes,
+        artifact_bytes=preflight_archive_bytes,
+        artifact_entry_count=preflight_entry_count,
+        artifact_uncompressed_bytes=preflight_uncompressed_bytes,
     ).get("passed") is not False:
         raise RuntimeError("Failed read-only deployment preflight was accepted")
 
@@ -3154,6 +3504,16 @@ def self_test() -> dict[str, Any]:
         "deploy_preflight": {
             "schema": DEPLOY_PREFLIGHT_SCHEMA,
             "valid_proof_passed": valid_preflight_proof["passed"],
+            "bounded_unmeasured_proof_passed": bounded_preflight_proof["passed"],
+            "hard_cap_bytes": DEPLOY_UNMEASURED_CAPACITY_BYTES,
+            "disabled_probe_bounded": unavailable_from_throw["accepted"],
+            "false_probe_bounded": unavailable_from_false["accepted"],
+            "measured_insufficient_rejected": (
+                insufficient_proof["passed"] is False
+            ),
+            "measured_zero_rejected": measured_zero["accepted"] is False,
+            "unmeasured_over_cap_rejected": over_cap_proof["passed"] is False,
+            "malformed_capacity_rejected": malformed_capacity_rejected,
             "failed_proof_rejected": True,
             "before_upload": True,
         },
@@ -3746,9 +4106,31 @@ def main() -> int:
         plugin_before = inspect.get("plugin") if isinstance(inspect.get("plugin"), dict) else {}
         if plugin_before.get("plugin_file") != PLUGIN_FILE or plugin_before.get("active") is not True:
             raise RuntimeError("Live inspection did not confirm exact active nadlan-config plugin")
+        before_inventory = (
+            plugin_before.get("inventory")
+            if isinstance(plugin_before.get("inventory"), dict)
+            else {}
+        )
+        before_inventory_files = before_inventory.get("file_count")
+        before_inventory_bytes = before_inventory.get("bytes")
+        before_inventory_digest = before_inventory.get("digest")
+        if not (
+            isinstance(before_inventory_files, int)
+            and not isinstance(before_inventory_files, bool)
+            and before_inventory_files > 0
+            and isinstance(before_inventory_bytes, int)
+            and not isinstance(before_inventory_bytes, bool)
+            and before_inventory_bytes > 0
+            and isinstance(before_inventory_digest, str)
+            and re.fullmatch(r"[a-f0-9]{64}", before_inventory_digest)
+        ):
+            raise RuntimeError("Live inspection did not provide an exact plugin inventory")
         before_plugin_contract = {
             "version": str(plugin_before.get("version") or ""),
             "active": plugin_before.get("active"),
+            "inventory_file_count": before_inventory_files,
+            "inventory_bytes": before_inventory_bytes,
+            "inventory_digest": before_inventory_digest,
         }
         if not before_plugin_contract["version"]:
             raise RuntimeError("Live inspection did not provide the pre-deployment plugin version")
@@ -3775,7 +4157,12 @@ def main() -> int:
         preflight_proof = deploy_preflight_proof(
             preflight,
             before_version=str(before_plugin_contract["version"]),
+            before_inventory_files=int(
+                before_plugin_contract["inventory_file_count"]
+            ),
+            before_inventory_bytes=int(before_plugin_contract["inventory_bytes"]),
             artifact_bytes=int(artifact_proof["archive_bytes"]),
+            artifact_entry_count=int(artifact_proof["entry_count"]),
             artifact_uncompressed_bytes=int(artifact_proof["uncompressed_bytes"]),
         )
         result["checks"]["deploy_preflight"] = preflight_proof
@@ -3852,8 +4239,26 @@ def main() -> int:
                 == int(artifact_proof["uncompressed_bytes"])
             ):
                 raise RuntimeError("Deployment response did not confirm the exact ZIP contract")
-            if not isinstance(deploy.get("disk"), dict) or deploy["disk"].get("sufficient") is not True:
-                raise RuntimeError("Deployment response did not confirm sufficient release disk space")
+            deployed_capacity = (
+                deploy.get("disk") if isinstance(deploy.get("disk"), dict) else {}
+            )
+            expected_required_bytes = (
+                int(before_plugin_contract["inventory_bytes"])
+                + int(artifact_proof["uncompressed_bytes"])
+                + int(artifact_proof["archive_bytes"])
+                + 20 * 1024 * 1024
+            )
+            if not capacity_evidence_is_exact(
+                deployed_capacity, required_bytes=expected_required_bytes
+            ) or bounded_capacity_policy(
+                deployed_capacity.get("free_bytes")
+                if deployed_capacity.get("measurable") is True
+                else None,
+                expected_required_bytes,
+            ).get("accepted") is not True:
+                raise RuntimeError(
+                    "Deployment response did not confirm the exact capacity contract"
+                )
             if (
                 not isinstance(deploy.get("cache"), dict)
                 or deploy["cache"].get("object_cache_flushed") is not True
